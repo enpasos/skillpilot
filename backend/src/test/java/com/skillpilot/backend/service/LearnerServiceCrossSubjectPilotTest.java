@@ -92,6 +92,31 @@ class LearnerServiceCrossSubjectPilotTest {
     private static final String LEGACY_SEK1_PHYSICS_ENERGY_ID = "3ebf05d1-ddd5-4199-8899-9d2fe34cf484";
     private static final String LEGACY_SEK1_PHYSICS_HEAT_ENERGY_ID = "c4dd83af-0a29-401b-af0b-95d76d3470fa";
     private static final String LEGACY_SEK1_PHYSICS_ELECTRICAL_ENERGY_ID = "9a37d05c-e957-4900-b722-539e6cec4ca7";
+    private static final String LEGACY_SEK1_PHYSICS_HEAT_CLUSTER_ID = "16100fe0-3569-4290-94df-e14c472cbd6e";
+    private static final String LEGACY_SEK1_PHYSICS_TEMPERATURE_ID = "f9ae3721-ff6d-40fe-94e0-3ed12264d044";
+    private static final String LEGACY_SEK1_PHYSICS_EXPANSION_ID = "6866bdd0-1015-4a9d-9be3-91535d66cf97";
+    private static final String LEGACY_SEK1_PHYSICS_PARTICLE_MODEL_ID = "15e2d789-f003-4934-a73c-e01d3f22e7f1";
+    private static final String LEGACY_SEK1_PHYSICS_HEAT_TRANSFER_ID = "46717be6-c3b6-40d4-9f21-1bac1a1b05e7";
+    private static final String LEGACY_SEK1_PHYSICS_PRESSURE_CLUSTER_ID = "bdfe02d7-0792-454b-8a00-684c8f4ac11d";
+    private static final String LEGACY_SEK1_PHYSICS_PRESSURE_ID = "6c0b16ef-94d3-417b-8ba8-0da48aa2e989";
+    private static final String LEGACY_SEK1_PHYSICS_PRESSURE_TEMPERATURE_ID = "dffc852e-d7a3-42b9-968e-19575a52bd1e";
+    private static final String LEGACY_SEK1_PHYSICS_BUOYANCY_ID = "f6f2eaca-e635-402b-ba7a-5bac7de925e4";
+    private static final String LEGACY_SEK1_PHYSICS_FLIGHT_ID = "ddb0a146-de79-44ce-832a-81295f7c4b8d";
+    private static final String LEGACY_SEK1_PHYSICS_ACOUSTICS_CLUSTER_ID = "7d8f00d0-311a-42a3-a5ad-bb9904ebecc8";
+    private static final String LEGACY_SEK1_PHYSICS_SOUND_SOURCES_ID = "e5e63e4e-6b2c-4474-b6d7-3f0fde2834fb";
+    private static final String LEGACY_SEK1_PHYSICS_SOUND_PROPAGATION_ID = "4e05720e-2009-420f-a2d3-5c2d3489e809";
+    private static final String LEGACY_SEK1_PHYSICS_SOUND_CHARACTERIZATION_ID = "2b396054-8508-4f4d-80ef-2c89cc64ec7f";
+    private static final String LEGACY_SEK1_PHYSICS_HEARING_ID = "28dfd9ce-59b3-4d32-8d28-f7dd22cb08c4";
+    private static final String LEGACY_SEK1_PHYSICS_SOUND_MUSIC_ID = "9e98a602-fddd-4aad-b55a-cff4900097e4";
+    private static final String LEGACY_SEK1_PHYSICS_COLORS_CLUSTER_ID = "cc82aa80-b71d-46b8-8ebe-cee49531f907";
+    private static final String LEGACY_SEK1_PHYSICS_COLOR_ORIGIN_ID = "39fd7151-c6ee-4d60-84e3-e762d3cac33e";
+    private static final String LEGACY_SEK1_PHYSICS_COLOR_MIXING_ID = "503f87c1-9e30-4731-8753-6a382f0ce31d";
+    private static final String LEGACY_SEK1_PHYSICS_COLOR_PERCEPTION_ID = "27a7deb7-f195-4a65-a064-74d170f181fc";
+    private static final String LEGACY_SEK1_PHYSICS_COLOR_TECH_ID = "2ac88d02-ef92-4968-9df3-e4c22e7e4749";
+    private static final String LEGACY_SEK1_PHYSICS_RADIOACTIVITY_CLUSTER_ID = "facfd62d-9240-47bf-b2a5-919ada412987";
+    private static final String LEGACY_SEK1_PHYSICS_ATOM_ID = "f882cc85-6225-4f63-98f7-2349d2c7385c";
+    private static final String LEGACY_SEK1_PHYSICS_RADIATION_ID = "24350b45-cd48-4c91-b0c6-71480fa1681f";
+    private static final String LEGACY_SEK1_PHYSICS_RADIATION_APPLICATIONS_ID = "89e717eb-c36a-4945-872c-5da7b1292b5c";
     private static final String LEGACY_SEK1_PHYSICS_LIGHT_CLUSTER_ID = "9d0b0fea-c866-42da-8c26-9a9691977d35";
     private static final String LEGACY_SEK1_PHYSICS_LIGHT_PROPAGATION_ID = "c8a36d2b-19f9-4cbf-b564-537678388646";
     private static final String LEGACY_SEK1_PHYSICS_RAY_MODEL_ID = "cea91b60-1970-40bb-bbed-b0c142f26b0e";
@@ -123,6 +148,31 @@ class LearnerServiceCrossSubjectPilotTest {
     private static final String CANONICAL_PHYSICS_SEK1_ENERGY_ID = "722857cf-f327-5740-8151-64eb92195ec8";
     private static final String CANONICAL_PHYSICS_SEK1_HEAT_ENERGY_ID = "eeba6bf8-a2b9-4d7d-a1d6-67286c923cef";
     private static final String CANONICAL_PHYSICS_SEK1_ELECTRICAL_ENERGY_ID = "cbb26ed2-6979-46f6-a4ae-128f5c5d9d76";
+    private static final String CANONICAL_PHYSICS_SEK1_HEAT_CLUSTER_ID = "2d3d42ae-492b-4795-a22f-eeca03aaed38";
+    private static final String CANONICAL_PHYSICS_SEK1_TEMPERATURE_ID = "940978fa-1f2d-4e54-9c28-081a6df9b76f";
+    private static final String CANONICAL_PHYSICS_SEK1_EXPANSION_ID = "d27c8860-12a4-4d7d-9849-ccd8b7caca48";
+    private static final String CANONICAL_PHYSICS_SEK1_PARTICLE_MODEL_ID = "9ac4973a-21d5-48a5-90b4-eb90e10391ae";
+    private static final String CANONICAL_PHYSICS_SEK1_HEAT_TRANSFER_ID = "fbe0faae-7fba-482b-888e-341f926770f3";
+    private static final String CANONICAL_PHYSICS_SEK1_PRESSURE_CLUSTER_ID = "84096c02-0767-4725-8956-37ce7e4b9bbf";
+    private static final String CANONICAL_PHYSICS_SEK1_PRESSURE_ID = "5308de76-79f0-44f4-8cb7-fc9de4772217";
+    private static final String CANONICAL_PHYSICS_SEK1_PRESSURE_TEMPERATURE_ID = "310b4f62-e261-46be-bb1b-1f125fc1699a";
+    private static final String CANONICAL_PHYSICS_SEK1_BUOYANCY_ID = "e11b2ee9-e528-4857-9ecd-59bd460fba81";
+    private static final String CANONICAL_PHYSICS_SEK1_FLIGHT_ID = "24b4686a-e8a6-4583-8952-33e6f653c2a3";
+    private static final String CANONICAL_PHYSICS_SEK1_ACOUSTICS_CLUSTER_ID = "41fd5575-b1a6-40e7-8ea2-66b75a597a79";
+    private static final String CANONICAL_PHYSICS_SEK1_SOUND_SOURCES_ID = "c1006f55-0406-48cc-92d4-0d8345897cf4";
+    private static final String CANONICAL_PHYSICS_SEK1_SOUND_PROPAGATION_ID = "3c82510a-1f12-4eaa-81c2-8599437a5b85";
+    private static final String CANONICAL_PHYSICS_SEK1_SOUND_CHARACTERIZATION_ID = "10aad90e-a1db-42b6-8d1e-1d856e14b47d";
+    private static final String CANONICAL_PHYSICS_SEK1_HEARING_ID = "3e33813d-db75-4571-8345-3845b02b956d";
+    private static final String CANONICAL_PHYSICS_SEK1_SOUND_MUSIC_ID = "e62e48bc-2387-4b2b-8d6f-7a06c8e7580e";
+    private static final String CANONICAL_PHYSICS_SEK1_COLORS_CLUSTER_ID = "48fb4a0b-62a0-4c8f-9792-3aeef6316885";
+    private static final String CANONICAL_PHYSICS_SEK1_COLOR_ORIGIN_ID = "a4681378-ade4-4f20-bf77-fb020469510f";
+    private static final String CANONICAL_PHYSICS_SEK1_COLOR_MIXING_ID = "cdab9fd1-5054-4a7e-8c9a-4474062ddd23";
+    private static final String CANONICAL_PHYSICS_SEK1_COLOR_PERCEPTION_ID = "1c8dd14c-0fbf-44a5-85a3-25c8e3bd0075";
+    private static final String CANONICAL_PHYSICS_SEK1_COLOR_TECH_ID = "cc9eea77-2a7f-4f35-ac22-6c230c0d6fa5";
+    private static final String CANONICAL_PHYSICS_SEK1_RADIOACTIVITY_CLUSTER_ID = "8917c71a-bfcb-4003-971c-188a69446b60";
+    private static final String CANONICAL_PHYSICS_SEK1_ATOM_ID = "2a6703e0-2a6f-4ebf-a5c6-7aa05a4b86eb";
+    private static final String CANONICAL_PHYSICS_SEK1_RADIATION_ID = "f6f646db-3544-49ed-8f55-67bc684e80ce";
+    private static final String CANONICAL_PHYSICS_SEK1_RADIATION_APPLICATIONS_ID = "979e0d0d-8933-4ace-814f-f28060ad280f";
     private static final String CANONICAL_PHYSICS_SEK1_LIGHT_CLUSTER_ID = "051cedc5-d380-4716-9751-b18f2e67a912";
     private static final String CANONICAL_PHYSICS_SEK1_LIGHT_PROPAGATION_ID = "dd7cdcea-0950-461b-96ac-ce49989fca47";
     private static final String CANONICAL_PHYSICS_SEK1_RAY_MODEL_ID = "79cb1695-f985-443a-b93e-27b57ab474b7";
@@ -153,6 +203,9 @@ class LearnerServiceCrossSubjectPilotTest {
     private static final String CANONICAL_PHYSICS_ENERGY_CONSERVATION_ID = "91c49019-ea51-4ce5-a919-c91c45b25e83";
     private static final String CANONICAL_PHYSICS_SIMPLE_COLLISIONS_ID = "2eecd0e2-a7ca-4568-9b12-3d47706c65fb";
     private static final String CANONICAL_PHYSICS_INELASTIC_COLLISIONS_ID = "0da13365-02c2-44f1-8a81-d524ca0ac3ae";
+    private static final String CANONICAL_PHYSICS_UPPER_SECONDARY_RADIATION_ID = "e5c08365-a0d3-592c-ad8e-d2c2c6e2b717";
+    private static final String CANONICAL_PHYSICS_HARMONIC_WAVES_ID = "cb0ced6d-b7c1-5b7d-9922-8c394f6030e8";
+    private static final String CANONICAL_PHYSICS_EM_SPECTRUM_ID = "4a7cbe83-b694-57d3-85ce-1eeca418daaf";
 
     private static ObjectMapper objectMapper;
     private static LandscapeService landscapeService;
@@ -275,6 +328,141 @@ class LearnerServiceCrossSubjectPilotTest {
 
         assertThat(mastery).containsEntry(CANONICAL_PHYSICS_SEK1_HEAT_ENERGY_ID, 1.0);
         assertThat(mastery).containsEntry(CANONICAL_PHYSICS_SEK1_ELECTRICAL_ENERGY_ID, 1.0);
+    }
+
+    @Test
+    void getMasteryProjectsExactLegacySek1PhysicsHeatMasteryIntoCanonicalPhysicsBridgeGoals() {
+        when(masteryRepository.findByLearner_SkillpilotId(LEARNER_ID))
+                .thenReturn(List.of(
+                        new Mastery(learner, LEGACY_SEK1_PHYSICS_TEMPERATURE_ID, 1.0),
+                        new Mastery(learner, LEGACY_SEK1_PHYSICS_EXPANSION_ID, 1.0),
+                        new Mastery(learner, LEGACY_SEK1_PHYSICS_PARTICLE_MODEL_ID, 1.0),
+                        new Mastery(learner, LEGACY_SEK1_PHYSICS_HEAT_TRANSFER_ID, 1.0)));
+
+        Map<String, Double> mastery = learnerService.getMastery(LEARNER_ID);
+
+        assertThat(mastery).containsEntry(CANONICAL_PHYSICS_SEK1_TEMPERATURE_ID, 1.0);
+        assertThat(mastery).containsEntry(CANONICAL_PHYSICS_SEK1_EXPANSION_ID, 1.0);
+        assertThat(mastery).containsEntry(CANONICAL_PHYSICS_SEK1_PARTICLE_MODEL_ID, 1.0);
+        assertThat(mastery).containsEntry(CANONICAL_PHYSICS_SEK1_HEAT_TRANSFER_ID, 1.0);
+    }
+
+    @Test
+    void getMasteryProjectsExactLegacySek1PhysicsHeatClusterIntoCanonicalPhysicsBridgeGoals() {
+        when(masteryRepository.findByLearner_SkillpilotId(LEARNER_ID))
+                .thenReturn(List.of(new Mastery(learner, LEGACY_SEK1_PHYSICS_HEAT_CLUSTER_ID, 1.0)));
+
+        Map<String, Double> mastery = learnerService.getMastery(LEARNER_ID);
+
+        assertThat(mastery).containsEntry(CANONICAL_PHYSICS_SEK1_HEAT_CLUSTER_ID, 1.0);
+    }
+
+    @Test
+    void getMasteryProjectsExactLegacySek1PhysicsPressureMasteryIntoCanonicalPhysicsBridgeGoals() {
+        when(masteryRepository.findByLearner_SkillpilotId(LEARNER_ID))
+                .thenReturn(List.of(
+                        new Mastery(learner, LEGACY_SEK1_PHYSICS_PRESSURE_ID, 1.0),
+                        new Mastery(learner, LEGACY_SEK1_PHYSICS_PRESSURE_TEMPERATURE_ID, 1.0),
+                        new Mastery(learner, LEGACY_SEK1_PHYSICS_BUOYANCY_ID, 1.0),
+                        new Mastery(learner, LEGACY_SEK1_PHYSICS_FLIGHT_ID, 1.0)));
+
+        Map<String, Double> mastery = learnerService.getMastery(LEARNER_ID);
+
+        assertThat(mastery).containsEntry(CANONICAL_PHYSICS_SEK1_PRESSURE_ID, 1.0);
+        assertThat(mastery).containsEntry(CANONICAL_PHYSICS_SEK1_PRESSURE_TEMPERATURE_ID, 1.0);
+        assertThat(mastery).containsEntry(CANONICAL_PHYSICS_SEK1_BUOYANCY_ID, 1.0);
+        assertThat(mastery).containsEntry(CANONICAL_PHYSICS_SEK1_FLIGHT_ID, 1.0);
+    }
+
+    @Test
+    void getMasteryProjectsExactLegacySek1PhysicsPressureClusterIntoCanonicalPhysicsBridgeGoals() {
+        when(masteryRepository.findByLearner_SkillpilotId(LEARNER_ID))
+                .thenReturn(List.of(new Mastery(learner, LEGACY_SEK1_PHYSICS_PRESSURE_CLUSTER_ID, 1.0)));
+
+        Map<String, Double> mastery = learnerService.getMastery(LEARNER_ID);
+
+        assertThat(mastery).containsEntry(CANONICAL_PHYSICS_SEK1_PRESSURE_CLUSTER_ID, 1.0);
+    }
+
+    @Test
+    void getMasteryProjectsExactLegacySek1PhysicsAcousticsMasteryIntoCanonicalPhysicsBridgeGoals() {
+        when(masteryRepository.findByLearner_SkillpilotId(LEARNER_ID))
+                .thenReturn(List.of(
+                        new Mastery(learner, LEGACY_SEK1_PHYSICS_SOUND_SOURCES_ID, 1.0),
+                        new Mastery(learner, LEGACY_SEK1_PHYSICS_SOUND_PROPAGATION_ID, 1.0),
+                        new Mastery(learner, LEGACY_SEK1_PHYSICS_SOUND_CHARACTERIZATION_ID, 1.0),
+                        new Mastery(learner, LEGACY_SEK1_PHYSICS_HEARING_ID, 1.0),
+                        new Mastery(learner, LEGACY_SEK1_PHYSICS_SOUND_MUSIC_ID, 1.0)));
+
+        Map<String, Double> mastery = learnerService.getMastery(LEARNER_ID);
+
+        assertThat(mastery).containsEntry(CANONICAL_PHYSICS_SEK1_SOUND_SOURCES_ID, 1.0);
+        assertThat(mastery).containsEntry(CANONICAL_PHYSICS_SEK1_SOUND_PROPAGATION_ID, 1.0);
+        assertThat(mastery).containsEntry(CANONICAL_PHYSICS_SEK1_SOUND_CHARACTERIZATION_ID, 1.0);
+        assertThat(mastery).containsEntry(CANONICAL_PHYSICS_SEK1_HEARING_ID, 1.0);
+        assertThat(mastery).containsEntry(CANONICAL_PHYSICS_SEK1_SOUND_MUSIC_ID, 1.0);
+    }
+
+    @Test
+    void getMasteryProjectsExactLegacySek1PhysicsAcousticsClusterIntoCanonicalPhysicsBridgeGoals() {
+        when(masteryRepository.findByLearner_SkillpilotId(LEARNER_ID))
+                .thenReturn(List.of(new Mastery(learner, LEGACY_SEK1_PHYSICS_ACOUSTICS_CLUSTER_ID, 1.0)));
+
+        Map<String, Double> mastery = learnerService.getMastery(LEARNER_ID);
+
+        assertThat(mastery).containsEntry(CANONICAL_PHYSICS_SEK1_ACOUSTICS_CLUSTER_ID, 1.0);
+    }
+
+    @Test
+    void getMasteryProjectsExactLegacySek1PhysicsColorsMasteryIntoCanonicalPhysicsBridgeGoals() {
+        when(masteryRepository.findByLearner_SkillpilotId(LEARNER_ID))
+                .thenReturn(List.of(
+                        new Mastery(learner, LEGACY_SEK1_PHYSICS_COLOR_ORIGIN_ID, 1.0),
+                        new Mastery(learner, LEGACY_SEK1_PHYSICS_COLOR_MIXING_ID, 1.0),
+                        new Mastery(learner, LEGACY_SEK1_PHYSICS_COLOR_PERCEPTION_ID, 1.0),
+                        new Mastery(learner, LEGACY_SEK1_PHYSICS_COLOR_TECH_ID, 1.0)));
+
+        Map<String, Double> mastery = learnerService.getMastery(LEARNER_ID);
+
+        assertThat(mastery).containsEntry(CANONICAL_PHYSICS_SEK1_COLOR_ORIGIN_ID, 1.0);
+        assertThat(mastery).containsEntry(CANONICAL_PHYSICS_SEK1_COLOR_MIXING_ID, 1.0);
+        assertThat(mastery).containsEntry(CANONICAL_PHYSICS_SEK1_COLOR_PERCEPTION_ID, 1.0);
+        assertThat(mastery).containsEntry(CANONICAL_PHYSICS_SEK1_COLOR_TECH_ID, 1.0);
+    }
+
+    @Test
+    void getMasteryProjectsExactLegacySek1PhysicsColorsClusterIntoCanonicalPhysicsBridgeGoals() {
+        when(masteryRepository.findByLearner_SkillpilotId(LEARNER_ID))
+                .thenReturn(List.of(new Mastery(learner, LEGACY_SEK1_PHYSICS_COLORS_CLUSTER_ID, 1.0)));
+
+        Map<String, Double> mastery = learnerService.getMastery(LEARNER_ID);
+
+        assertThat(mastery).containsEntry(CANONICAL_PHYSICS_SEK1_COLORS_CLUSTER_ID, 1.0);
+    }
+
+    @Test
+    void getMasteryProjectsExactLegacySek1PhysicsRadioactivityMasteryIntoCanonicalPhysicsBridgeGoals() {
+        when(masteryRepository.findByLearner_SkillpilotId(LEARNER_ID))
+                .thenReturn(List.of(
+                        new Mastery(learner, LEGACY_SEK1_PHYSICS_ATOM_ID, 1.0),
+                        new Mastery(learner, LEGACY_SEK1_PHYSICS_RADIATION_ID, 1.0),
+                        new Mastery(learner, LEGACY_SEK1_PHYSICS_RADIATION_APPLICATIONS_ID, 1.0)));
+
+        Map<String, Double> mastery = learnerService.getMastery(LEARNER_ID);
+
+        assertThat(mastery).containsEntry(CANONICAL_PHYSICS_SEK1_ATOM_ID, 1.0);
+        assertThat(mastery).containsEntry(CANONICAL_PHYSICS_SEK1_RADIATION_ID, 1.0);
+        assertThat(mastery).containsEntry(CANONICAL_PHYSICS_SEK1_RADIATION_APPLICATIONS_ID, 1.0);
+    }
+
+    @Test
+    void getMasteryProjectsExactLegacySek1PhysicsRadioactivityClusterIntoCanonicalPhysicsBridgeGoals() {
+        when(masteryRepository.findByLearner_SkillpilotId(LEARNER_ID))
+                .thenReturn(List.of(new Mastery(learner, LEGACY_SEK1_PHYSICS_RADIOACTIVITY_CLUSTER_ID, 1.0)));
+
+        Map<String, Double> mastery = learnerService.getMastery(LEARNER_ID);
+
+        assertThat(mastery).containsEntry(CANONICAL_PHYSICS_SEK1_RADIOACTIVITY_CLUSTER_ID, 1.0);
     }
 
     @Test
@@ -849,9 +1037,141 @@ class LearnerServiceCrossSubjectPilotTest {
                 .findFirst()
                 .orElseThrow();
 
-        assertThat(heatGoal.getRequires()).containsExactly(CANONICAL_PHYSICS_SEK1_ENERGY_ID);
+        assertThat(heatGoal.getRequires())
+                .containsExactly(CANONICAL_PHYSICS_SEK1_ENERGY_ID, CANONICAL_PHYSICS_SEK1_HEAT_CLUSTER_ID);
         assertThat(electricalGoal.getRequires())
                 .containsExactly(CANONICAL_PHYSICS_SEK1_ENERGY_ID, CANONICAL_PHYSICS_SEK1_VOLTAGE_CLUSTER_ID);
+    }
+
+    @Test
+    void canonicalPhysicsPilotPressureClusterAndTemperatureGoalDependOnReviewedMechanicsAndHeatBridges() {
+        LearningLandscape landscape = landscapeService.getById(CANONICAL_PHYSICS_PILOT_ID);
+        LearningGoal pressureCluster = landscape.getGoals().stream()
+                .filter(goal -> CANONICAL_PHYSICS_SEK1_PRESSURE_CLUSTER_ID.equals(goal.getId()))
+                .findFirst()
+                .orElseThrow();
+        LearningGoal pressureTemperatureGoal = landscape.getGoals().stream()
+                .filter(goal -> CANONICAL_PHYSICS_SEK1_PRESSURE_TEMPERATURE_ID.equals(goal.getId()))
+                .findFirst()
+                .orElseThrow();
+
+        assertThat(pressureCluster.getRequires()).containsExactly(CANONICAL_PHYSICS_SEK1_MECHANICS_CLUSTER_ID);
+        assertThat(pressureTemperatureGoal.getRequires())
+                .containsExactly(CANONICAL_PHYSICS_SEK1_PRESSURE_ID, CANONICAL_PHYSICS_SEK1_HEAT_CLUSTER_ID);
+    }
+
+    @Test
+    void canonicalPhysicsPilotHarmonicWavesEntryDependsOnReviewedSek1AcousticsBridge() {
+        LearningLandscape landscape = landscapeService.getById(CANONICAL_PHYSICS_PILOT_ID);
+        LearningGoal harmonicWavesGoal = landscape.getGoals().stream()
+                .filter(goal -> CANONICAL_PHYSICS_HARMONIC_WAVES_ID.equals(goal.getId()))
+                .findFirst()
+                .orElseThrow();
+
+        assertThat(harmonicWavesGoal.getRequires())
+                .containsExactly("fcf8580c-ecfd-58ea-bbf5-a1b29c9ecf8e", CANONICAL_PHYSICS_SEK1_ACOUSTICS_CLUSTER_ID);
+    }
+
+    @Test
+    void canonicalPhysicsPilotElectromagneticSpectrumEntryDependsOnReviewedSek1ColorsBridge() {
+        LearningLandscape landscape = landscapeService.getById(CANONICAL_PHYSICS_PILOT_ID);
+        LearningGoal electromagneticSpectrumGoal = landscape.getGoals().stream()
+                .filter(goal -> CANONICAL_PHYSICS_EM_SPECTRUM_ID.equals(goal.getId()))
+                .findFirst()
+                .orElseThrow();
+
+        assertThat(electromagneticSpectrumGoal.getRequires())
+                .containsExactly(CANONICAL_PHYSICS_HARMONIC_WAVES_ID, CANONICAL_PHYSICS_SEK1_COLORS_CLUSTER_ID);
+    }
+
+    @Test
+    void canonicalPhysicsPilotUpperSecondaryRadiationGoalDependsOnReviewedSek1RadioactivityBridge() {
+        LearningLandscape landscape = landscapeService.getById(CANONICAL_PHYSICS_PILOT_ID);
+        LearningGoal upperSecondaryRadiationGoal = landscape.getGoals().stream()
+                .filter(goal -> CANONICAL_PHYSICS_UPPER_SECONDARY_RADIATION_ID.equals(goal.getId()))
+                .findFirst()
+                .orElseThrow();
+
+        assertThat(upperSecondaryRadiationGoal.getRequires())
+                .containsExactly("5c44b9ba-9b05-4774-95d5-073230d3fc4f", CANONICAL_PHYSICS_SEK1_RADIOACTIVITY_CLUSTER_ID);
+    }
+
+    @Test
+    void canonicalPhysicsPilotFrontierUnlocksHeatTransferFromProjectedLegacyParticleModelMastery() {
+        when(plannedGoalRepository.findByLearner_SkillpilotId(LEARNER_ID))
+                .thenReturn(List.of(new PlannedGoal(learner, CANONICAL_PHYSICS_SEK1_HEAT_CLUSTER_ID)));
+        when(masteryRepository.findByLearner_SkillpilotId(LEARNER_ID))
+                .thenReturn(List.of(new Mastery(learner, LEGACY_SEK1_PHYSICS_PARTICLE_MODEL_ID, 1.0)));
+
+        List<FrontierGoal> frontier = learnerService.getRichFrontier(LEARNER_ID);
+
+        assertThat(frontier)
+                .extracting(FrontierGoal::id)
+                .contains(CANONICAL_PHYSICS_SEK1_HEAT_TRANSFER_ID);
+    }
+
+    @Test
+    void canonicalPhysicsPilotFrontierUnlocksBuoyancyFromProjectedLegacyPressureAndDensityMastery() {
+        when(plannedGoalRepository.findByLearner_SkillpilotId(LEARNER_ID))
+                .thenReturn(List.of(new PlannedGoal(learner, CANONICAL_PHYSICS_SEK1_PRESSURE_CLUSTER_ID)));
+        when(masteryRepository.findByLearner_SkillpilotId(LEARNER_ID))
+                .thenReturn(List.of(
+                        new Mastery(learner, LEGACY_SEK1_PHYSICS_PRESSURE_ID, 1.0),
+                        new Mastery(learner, LEGACY_SEK1_PHYSICS_DENSITY_ID, 1.0)));
+
+        List<FrontierGoal> frontier = learnerService.getRichFrontier(LEARNER_ID);
+
+        assertThat(frontier)
+                .extracting(FrontierGoal::id)
+                .contains(CANONICAL_PHYSICS_SEK1_BUOYANCY_ID)
+                .doesNotContain(CANONICAL_PHYSICS_SEK1_FLIGHT_ID);
+    }
+
+    @Test
+    void canonicalPhysicsPilotFrontierUnlocksSoundPropagationFromProjectedLegacySoundSourceAndParticleModelMastery() {
+        when(plannedGoalRepository.findByLearner_SkillpilotId(LEARNER_ID))
+                .thenReturn(List.of(new PlannedGoal(learner, CANONICAL_PHYSICS_SEK1_ACOUSTICS_CLUSTER_ID)));
+        when(masteryRepository.findByLearner_SkillpilotId(LEARNER_ID))
+                .thenReturn(List.of(
+                        new Mastery(learner, LEGACY_SEK1_PHYSICS_SOUND_SOURCES_ID, 1.0),
+                        new Mastery(learner, LEGACY_SEK1_PHYSICS_PARTICLE_MODEL_ID, 1.0)));
+
+        List<FrontierGoal> frontier = learnerService.getRichFrontier(LEARNER_ID);
+
+        assertThat(frontier)
+                .extracting(FrontierGoal::id)
+                .contains(CANONICAL_PHYSICS_SEK1_SOUND_PROPAGATION_ID)
+                .doesNotContain(CANONICAL_PHYSICS_SEK1_SOUND_CHARACTERIZATION_ID);
+    }
+
+    @Test
+    void canonicalPhysicsPilotFrontierUnlocksColorMixingFromProjectedLegacyColorOriginMastery() {
+        when(plannedGoalRepository.findByLearner_SkillpilotId(LEARNER_ID))
+                .thenReturn(List.of(new PlannedGoal(learner, CANONICAL_PHYSICS_SEK1_COLORS_CLUSTER_ID)));
+        when(masteryRepository.findByLearner_SkillpilotId(LEARNER_ID))
+                .thenReturn(List.of(new Mastery(learner, LEGACY_SEK1_PHYSICS_COLOR_ORIGIN_ID, 1.0)));
+
+        List<FrontierGoal> frontier = learnerService.getRichFrontier(LEARNER_ID);
+
+        assertThat(frontier)
+                .extracting(FrontierGoal::id)
+                .contains(CANONICAL_PHYSICS_SEK1_COLOR_MIXING_ID)
+                .doesNotContain(CANONICAL_PHYSICS_SEK1_COLOR_PERCEPTION_ID);
+    }
+
+    @Test
+    void canonicalPhysicsPilotFrontierUnlocksRadiationDetectionFromProjectedLegacyAtomicStructureMastery() {
+        when(plannedGoalRepository.findByLearner_SkillpilotId(LEARNER_ID))
+                .thenReturn(List.of(new PlannedGoal(learner, CANONICAL_PHYSICS_SEK1_RADIOACTIVITY_CLUSTER_ID)));
+        when(masteryRepository.findByLearner_SkillpilotId(LEARNER_ID))
+                .thenReturn(List.of(new Mastery(learner, LEGACY_SEK1_PHYSICS_ATOM_ID, 1.0)));
+
+        List<FrontierGoal> frontier = learnerService.getRichFrontier(LEARNER_ID);
+
+        assertThat(frontier)
+                .extracting(FrontierGoal::id)
+                .contains(CANONICAL_PHYSICS_SEK1_RADIATION_ID)
+                .doesNotContain(CANONICAL_PHYSICS_SEK1_RADIATION_APPLICATIONS_ID);
     }
 
     @Test

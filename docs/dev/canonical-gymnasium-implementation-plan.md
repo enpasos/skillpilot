@@ -438,6 +438,11 @@ WP6 progress so far:
   - the Hessen `10.1 Arbeit und Energie` row now binds exactly to a dedicated canonical Sek-I `work-and-energy` cluster that contains qualitative work, mechanical energy, heat, and electrical-energy children
   - selected upper-secondary physics goals now explicitly depend on these adopted Sek-I mechanics anchors
   - mastery projection and frontier unlocking are covered by targeted backend tests
+- first Hessen Sek I heat bridge slice added to the canonical DE physics landscape:
+  - new canonical Sek-I heat cluster under DE physics
+  - exact mappings now cover the full Hessen `7.2 Wärmelehre` row, including temperature/heat, temperature measurement and expansion, particle model, and heat transfer
+  - the canonical `Wärme als Energieform` atom now explicitly depends on this reviewed Sek-I heat bridge instead of only on the coarse mechanical-energy baseline
+  - mastery projection for the adopted heat cluster and its atomic rows, plus a particle-model frontier unlock for heat transfer, are covered by targeted backend tests
 - first Hessen Sek I optics bridge slice added to the canonical DE physics landscape:
   - new canonical Sek-I optics bridge cluster under DE physics
   - exact mappings now cover both `7.1 Optik 1` and `8.1 Optik 2`, including light propagation, ray model, reflection, lens imaging, vision, and simple optical instruments
@@ -448,13 +453,47 @@ WP6 progress so far:
   - exact mappings now cover both `7.3 Magnetismus und Elektrizität 1` and `8.2 Elektrizität 2`, including magnets/fields, simple circuits, current effects, current measurement, static electricity/voltage, current-voltage relation, resistor circuits, and electrical safety
   - the J8 voltage/safety cluster now explicitly depends on the adopted J7 electricity cluster
   - mastery projection for both adopted electricity clusters and their atomic rows, plus frontier unlocks for current effects/current measurement and the voltage-current relation, are covered by targeted backend tests
+- first Hessen Sek I radioactivity bridge slice added to the canonical DE physics landscape:
+  - new canonical Sek-I radioactivity cluster under DE physics
+  - exact mappings now cover the full non-fakultative Hessen `10.2 Radioaktivität` row, including atomic structure, radiation detection/effects, and applications/risks
+  - the upper-secondary `Radioaktive Strahlung und Wirkungen` entry point now explicitly depends on this reviewed Sek-I radioactivity bridge
+  - mastery projection for the adopted radioactivity cluster and its atomic rows, plus a frontier unlock from atomic structure toward radiation detection, are covered by targeted backend tests
+- first Hessen Sek I pressure/buoyancy bridge slice added to the canonical DE physics landscape:
+  - new canonical Sek-I pressure-and-buoyancy cluster under DE physics
+  - exact mappings now cover the facultative Hessen `8.3 Druck und Auftrieb` row, including pressure in liquids/gases, qualitative pressure-temperature relations, Archimedes' principle, and first qualitative flight/air-resistance interpretations
+  - the new cluster explicitly depends on the reviewed Sek-I mechanics bridge, and the pressure-temperature atom additionally depends on the reviewed Sek-I heat bridge
+  - mastery projection for the adopted pressure cluster and its atomic rows, plus a frontier unlock from projected pressure/density mastery toward buoyancy, are covered by targeted backend tests
+- first Hessen Sek I acoustics bridge slice added to the canonical DE physics landscape:
+  - new canonical Sek-I acoustics cluster under DE physics
+  - exact mappings now cover the facultative Hessen `8.3b Akustik` row, including sound sources, sound propagation, pitch/loudness, hearing/noise, and music-related sound phenomena
+  - the sound-propagation atom explicitly reuses the reviewed Sek-I particle-model anchor, and the upper-secondary Q2 `Harmonische Wellen und ihre Größen` entry point now additionally depends on the reviewed Sek-I acoustics bridge
+  - mastery projection for the adopted acoustics cluster and its atomic rows, plus a frontier unlock from projected sound-source and particle-model mastery toward sound propagation, are covered by targeted backend tests
+- first Hessen Sek I colors bridge slice added to the canonical DE physics landscape:
+  - new canonical Sek-I colors cluster under DE physics
+  - exact mappings now cover the facultative Hessen `8.3c Farben` row, including color origin/decomposition, additive and subtractive color mixing, simple color perception, and technical color applications
+  - the colors bridge explicitly reuses the reviewed Sek-I light-propagation anchor, and the upper-secondary Q3 `Spektrum elektromagnetischer Wellen` entry point now additionally depends on the reviewed Sek-I colors bridge
+  - mastery projection for the adopted colors cluster and its atomic rows, plus a frontier unlock from projected color-origin mastery toward color mixing, are covered by targeted backend tests
 - the Hessen Sek I work/energy bridge is now widened into the `J10` continuation of `10.1 Arbeit und Energie`:
-  - exact mappings now also cover `Wärme als Energieform` and `Elektrische Energie nutzen`, and the canonical electrical-energy atom depends explicitly on the reviewed Sek-I voltage bridge rather than only on the coarse energy baseline
+  - exact mappings now also cover `Wärme als Energieform` and `Elektrische Energie nutzen`, with the canonical heat-energy atom depending explicitly on the reviewed Sek-I heat bridge and the canonical electrical-energy atom on the reviewed Sek-I voltage bridge
 - first Hessen Sek I chemistry bridge slice added to the canonical DE chemistry landscape:
   - new canonical foundations cluster for working methods, substances, states, solutions, and first acid-base distinctions
   - exact mappings for the adopted J8 chemistry atoms plus partial scope anchors from Hessen J8/8.1
   - selected E-phase protolysis goals now explicitly depend on these adopted Sek-I chemistry anchors
   - mastery projection, planned-goal projection, and frontier unlocking are covered by targeted backend tests
+- the Hessen Sek I chemistry foundations bridge is now widened to the full reviewed `8.1 Stoffe – Strukturen – Eigenschaften` row:
+  - new canonical Sek-I safety and separation atoms now sit inside the existing foundations cluster
+  - the Hessen `Gefahren beim Umgang mit Chemikalien` and `Trennverfahren für Stoffgemische` atoms now map exactly, and the old `8.1` cluster itself upgrades from `partial` to `exact`
+  - mastery projection for the widened safety/separation slice, plus a local Sek-I frontier unlock from projected working-methods and substance mastery toward safety, separation, and states, are covered by targeted backend tests
+- the Hessen Sek I chemistry reactions bridge now extends reviewed adoption into `8.2 Chemische Reaktion – Stoff- und Energieumsatz`:
+  - new canonical Sek-I reactions cluster for reaction characteristics, simple oxidation/reduction, combustion, reaction energy, and conservation of mass
+  - the Hessen `8.2` row and all five adopted J8 atoms now map exactly into that cluster
+  - the upper-secondary E-phase redox route `Einfache Redoxreihen aufstellen` now additionally depends on the adopted Sek-I oxidation/reduction anchor, without widening the earlier E-phase start nodes
+  - mastery projection, planned-goal projection, and local Sek-I frontier unlocking for the widened reactions slice are covered by targeted backend tests
+- the Hessen Sek I chemistry symbol-language bridge now extends reviewed adoption into `9.1 Chemische Symbolsprache und Anwendung`:
+  - new canonical Sek-I symbol-language cluster for constant proportions, Dalton model, chemical symbols/formulas, simple reaction equations, and first redox schemes
+  - the Hessen `9.1` row and all five adopted J9 atoms now map exactly into that cluster
+  - the new cluster reuses the reviewed `8.2` reactions bridge as its didactic base, and local frontier unlocking now covers the late J9 symbol-language endpoint `Redoxreaktionen und Oxidationszahlen`
+  - mastery projection, planned-goal projection, and symbol-language frontier unlocking are covered by targeted backend tests
 - first Hessen Sek I biology bridge slice added to the canonical DE biology landscape:
   - new canonical foundations-and-cells cluster for biology-as-science, characteristics of life, microscopy, plant cells, and plant/animal cell comparison
   - exact mappings for the adopted Sek-I biology atoms plus partial scope anchors from Hessen introductory biology and cells clusters

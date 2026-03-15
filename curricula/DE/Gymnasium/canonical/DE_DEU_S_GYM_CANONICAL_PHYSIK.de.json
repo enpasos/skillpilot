@@ -8,8 +8,8 @@
   "frameworkId": "canonical-gymnasium-physics",
   "title": "Physik (Gymnasium, DE)",
   "titleEn": "Physics (Gymnasium, DE)",
-  "description": "Physik für das Gymnasium in Deutschland. Die aktuelle Baseline sichert die hessische Oberstufe vollständig, behält die bereits aufgebauten fachübergreifenden Mathematik-Voraussetzungen im Mechanikbereich und verankert erste mechanische, optische sowie elektrische Grundlagen aus der hessischen Sekundarstufe I.",
-  "descriptionEn": "Physics for Gymnasium in Germany. The current baseline fully secures the Hessian upper-secondary curriculum, keeps the already established cross-subject mathematics prerequisites in the mechanics domain, and anchors first mechanics, optics, and electricity foundations from Hessian lower secondary.",
+  "description": "Physik für das Gymnasium in Deutschland. Die aktuelle Baseline sichert die hessische Oberstufe vollständig, behält die bereits aufgebauten fachübergreifenden Mathematik-Voraussetzungen im Mechanikbereich und verankert erste mechanische, thermische, optische, farbbezogene, akustische, elektrische, druck- und auftriebsbezogene sowie atomare Grundlagen aus der hessischen Sekundarstufe I.",
+  "descriptionEn": "Physics for Gymnasium in Germany. The current baseline fully secures the Hessian upper-secondary curriculum, keeps the already established cross-subject mathematics prerequisites in the mechanics domain, and anchors first mechanics, thermal, optics, color-related, acoustics, electricity, pressure-and-buoyancy, and atomic foundations from Hessian lower secondary.",
   "filters": [
     {
       "id": "GK",
@@ -25,8 +25,8 @@
       "id": "bf980fff-b62b-4ea4-a20d-31681a7ad785",
       "title": "Physik",
       "titleEn": "Physics",
-      "description": "Gemeinsame Wurzel für Physik am Gymnasium in Deutschland. Die aktuelle Baseline übernimmt die hessische Oberstufe vollständig, behält die bereits eingeführten expliziten Mathematik-Voraussetzungen im Mechanik-Korridor und verankert erste mechanische, optische sowie elektrische Grundlagen aus der hessischen Sekundarstufe I.",
-      "descriptionEn": "Shared root for physics at Gymnasium in Germany. The current baseline fully adopts the Hessian upper-secondary curriculum, keeps the already introduced explicit mathematics prerequisites in the mechanics corridor, and anchors first mechanics, optics, and electricity foundations from Hessian lower secondary.",
+      "description": "Gemeinsame Wurzel für Physik am Gymnasium in Deutschland. Die aktuelle Baseline übernimmt die hessische Oberstufe vollständig, behält die bereits eingeführten expliziten Mathematik-Voraussetzungen im Mechanik-Korridor und verankert erste mechanische, thermische, optische, farbbezogene, akustische, elektrische, druck- und auftriebsbezogene sowie atomare Grundlagen aus der hessischen Sekundarstufe I.",
+      "descriptionEn": "Shared root for physics at Gymnasium in Germany. The current baseline fully adopts the Hessian upper-secondary curriculum, keeps the already introduced explicit mathematics prerequisites in the mechanics corridor, and anchors first mechanics, thermal, optics, color-related, acoustics, electricity, pressure-and-buoyancy, and atomic foundations from Hessian lower secondary.",
       "weight": 1.2,
       "tags": [
         "GK",
@@ -39,9 +39,14 @@
         "5c44b9ba-9b05-4774-95d5-073230d3fc4f",
         "9645f0d8-43a3-5f29-873c-daa5ace638db",
         "051cedc5-d380-4716-9751-b18f2e67a912",
+        "2d3d42ae-492b-4795-a22f-eeca03aaed38",
+        "84096c02-0767-4725-8956-37ce7e4b9bbf",
+        "48fb4a0b-62a0-4c8f-9792-3aeef6316885",
+        "41fd5575-b1a6-40e7-8ea2-66b75a597a79",
         "84b1bc70-dadf-449b-a8d4-8bcee1da1fea",
         "4924d83e-5e4b-4819-9d70-86cda3496195",
         "bbabac7c-9613-4c7e-877e-d7dc3df5300f",
+        "8917c71a-bfcb-4003-971c-188a69446b60",
         "942de15b-32f1-5713-80e5-e7aeb8749fc4",
         "0735269d-703d-57ab-8861-6f7e1c5e2b8a",
         "fcefb129-ad4c-50a2-9762-a910caa1af16",
@@ -322,6 +327,481 @@
       "type": "cluster"
     },
     {
+      "id": "2d3d42ae-492b-4795-a22f-eeca03aaed38",
+      "shortKey": "canonical_physics_sek1_heat_cluster",
+      "title": "Wärmelehre und Teilchenmodell (Sek I)",
+      "titleEn": "Heat, Temperature, and Particle Model (Lower Secondary)",
+      "description": "Brückencluster für Temperatur, Wärme, Ausdehnung, Teilchenmodell und Wärmeausbreitung in der gymnasialen Sekundarstufe I.",
+      "descriptionEn": "Bridge cluster for temperature, heat, expansion, the particle model, and heat transfer in lower-secondary Gymnasium physics.",
+      "weight": 4,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekI"
+      ],
+      "contains": [
+        "940978fa-1f2d-4e54-9c28-081a6df9b76f",
+        "d27c8860-12a4-4d7d-9849-ccd8b7caca48",
+        "9ac4973a-21d5-48a5-90b4-eb90e10391ae",
+        "fbe0faae-7fba-482b-888e-341f926770f3"
+      ],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-physics",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "PK1_EXPERIMENTIEREN",
+          "PK2_MODELLIEREN"
+        ],
+        "guidingIdeas": [
+          "LI_ENERGIE",
+          "LI_MATERIE"
+        ],
+        "phase": "GLOBAL",
+        "area": "Wärmelehre",
+        "topicCode": "CANONICAL.PHYSICS.SEK1.HEAT"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-HE"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "996d097a-cac2-4b5f-979a-b3a0b9803265",
+          "sourceLandscapeTitle": "Physik Sekundarstufe I (Hessen, G9)",
+          "sourceGoalId": "16100fe0-3569-4290-94df-e14c472cbd6e"
+        }
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "940978fa-1f2d-4e54-9c28-081a6df9b76f",
+      "shortKey": "canonical_physics_sek1_temperature_heat",
+      "title": "Temperatur und Wärme unterscheiden",
+      "titleEn": "Distinguish Temperature and Heat",
+      "description": "Die lernende Person kann Temperatur als Zustandsgröße vom Wärmeempfinden unterscheiden und typische Wärmequellen benennen.",
+      "descriptionEn": "The learner can distinguish temperature as a state variable from the sensation of heat and name typical heat sources.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekI"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-physics",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "PK4_KOMMUNIZIEREN"
+        ],
+        "guidingIdeas": [
+          "LI_ENERGIE",
+          "LI_MATERIE"
+        ],
+        "phase": "GLOBAL",
+        "area": "Wärmelehre",
+        "topicCode": "CANONICAL.PHYSICS.SEK1.HEAT.TEMPERATURE"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-HE"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "996d097a-cac2-4b5f-979a-b3a0b9803265",
+          "sourceLandscapeTitle": "Physik Sekundarstufe I (Hessen, G9)",
+          "sourceGoalId": "f9ae3721-ff6d-40fe-94e0-3ed12264d044"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "d27c8860-12a4-4d7d-9849-ccd8b7caca48",
+      "shortKey": "canonical_physics_sek1_temperature_expansion",
+      "title": "Temperatur messen und Ausdehnung deuten",
+      "titleEn": "Measure Temperature and Interpret Expansion",
+      "description": "Die lernende Person kann Temperatur messen und die Ausdehnung fester Stoffe, Flüssigkeiten und Gase bei Temperaturänderung fachlich deuten.",
+      "descriptionEn": "The learner can measure temperature and appropriately interpret the expansion of solids, liquids, and gases when temperature changes.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekI"
+      ],
+      "contains": [],
+      "requires": [
+        "940978fa-1f2d-4e54-9c28-081a6df9b76f"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-physics",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "PK1_EXPERIMENTIEREN",
+          "PK2_MODELLIEREN"
+        ],
+        "guidingIdeas": [
+          "LI_ENERGIE",
+          "LI_MATERIE"
+        ],
+        "phase": "GLOBAL",
+        "area": "Wärmelehre",
+        "topicCode": "CANONICAL.PHYSICS.SEK1.HEAT.EXPANSION"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-HE"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "996d097a-cac2-4b5f-979a-b3a0b9803265",
+          "sourceLandscapeTitle": "Physik Sekundarstufe I (Hessen, G9)",
+          "sourceGoalId": "6866bdd0-1015-4a9d-9be3-91535d66cf97"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "9ac4973a-21d5-48a5-90b4-eb90e10391ae",
+      "shortKey": "canonical_physics_sek1_particle_model",
+      "title": "Teilchenmodell für Temperaturänderungen nutzen",
+      "titleEn": "Use the Particle Model for Temperature Changes",
+      "description": "Die lernende Person kann Temperaturänderungen und einfache Wärmevorgänge mithilfe des Teilchenmodells qualitativ erklären.",
+      "descriptionEn": "The learner can qualitatively explain temperature changes and simple thermal processes using the particle model.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekI"
+      ],
+      "contains": [],
+      "requires": [
+        "940978fa-1f2d-4e54-9c28-081a6df9b76f"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-physics",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "PK2_MODELLIEREN"
+        ],
+        "guidingIdeas": [
+          "LI_MATERIE",
+          "LI_ENERGIE"
+        ],
+        "phase": "GLOBAL",
+        "area": "Wärmelehre",
+        "topicCode": "CANONICAL.PHYSICS.SEK1.HEAT.PARTICLE_MODEL"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-HE"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "996d097a-cac2-4b5f-979a-b3a0b9803265",
+          "sourceLandscapeTitle": "Physik Sekundarstufe I (Hessen, G9)",
+          "sourceGoalId": "15e2d789-f003-4934-a73c-e01d3f22e7f1"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "fbe0faae-7fba-482b-888e-341f926770f3",
+      "shortKey": "canonical_physics_sek1_heat_transfer",
+      "title": "Wärmeleitung, Konvektion und Wärmestrahlung unterscheiden",
+      "titleEn": "Distinguish Conduction, Convection, and Thermal Radiation",
+      "description": "Die lernende Person kann Wärmeleitung, Konvektion und Wärmestrahlung unterscheiden und passende Alltagsbeispiele fachlich zuordnen.",
+      "descriptionEn": "The learner can distinguish heat conduction, convection, and thermal radiation and appropriately assign everyday examples.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekI"
+      ],
+      "contains": [],
+      "requires": [
+        "9ac4973a-21d5-48a5-90b4-eb90e10391ae"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-physics",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "PK2_MODELLIEREN",
+          "PK4_KOMMUNIZIEREN"
+        ],
+        "guidingIdeas": [
+          "LI_ENERGIE",
+          "LI_MATERIE"
+        ],
+        "phase": "GLOBAL",
+        "area": "Wärmelehre",
+        "topicCode": "CANONICAL.PHYSICS.SEK1.HEAT.TRANSFER"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-HE"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "996d097a-cac2-4b5f-979a-b3a0b9803265",
+          "sourceLandscapeTitle": "Physik Sekundarstufe I (Hessen, G9)",
+          "sourceGoalId": "46717be6-c3b6-40d4-9f21-1bac1a1b05e7"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "84096c02-0767-4725-8956-37ce7e4b9bbf",
+      "shortKey": "canonical_physics_sek1_pressure_buoyancy_cluster",
+      "title": "Druck und Auftrieb (Sek I)",
+      "titleEn": "Pressure and Buoyancy (Lower Secondary)",
+      "description": "Brückencluster für fakultative Druck- und Auftriebsgrundlagen der gymnasialen Sekundarstufe I: Druck in Flüssigkeiten und Gasen, qualitative Druck-Temperatur-Zusammenhänge, das Archimedische Prinzip sowie erste Deutungen von Auftrieb an Tragflächen und Luftwiderstand.",
+      "descriptionEn": "Bridge cluster for optional lower-secondary Gymnasium pressure and buoyancy foundations: pressure in liquids and gases, qualitative pressure-temperature relations, Archimedes' principle, and first interpretations of lift on airfoils and air resistance.",
+      "weight": 4,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekI"
+      ],
+      "contains": [
+        "5308de76-79f0-44f4-8cb7-fc9de4772217",
+        "310b4f62-e261-46be-bb1b-1f125fc1699a",
+        "e11b2ee9-e528-4857-9ecd-59bd460fba81",
+        "24b4686a-e8a6-4583-8952-33e6f653c2a3"
+      ],
+      "requires": [
+        "9645f0d8-43a3-5f29-873c-daa5ace638db"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-physics",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "PK2_MODELLIEREN",
+          "PK4_KOMMUNIZIEREN"
+        ],
+        "guidingIdeas": [
+          "LI_BEWEGUNG",
+          "LI_MATERIE",
+          "LI_TECHNIK"
+        ],
+        "phase": "GLOBAL",
+        "area": "Druck und Auftrieb",
+        "topicCode": "CANONICAL.PHYSICS.SEK1.FLUIDS"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-HE"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "996d097a-cac2-4b5f-979a-b3a0b9803265",
+          "sourceLandscapeTitle": "Physik Sekundarstufe I (Hessen, G9)",
+          "sourceGoalId": "bdfe02d7-0792-454b-8a00-684c8f4ac11d"
+        }
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "5308de76-79f0-44f4-8cb7-fc9de4772217",
+      "shortKey": "canonical_physics_sek1_pressure_fluids_gases",
+      "title": "Druck in Flüssigkeiten und Gasen qualitativ beschreiben",
+      "titleEn": "Qualitatively Describe Pressure in Liquids and Gases",
+      "description": "Die lernende Person kann Druck als Kraft pro Fläche qualitativ beschreiben und Beispiele für Druck in Flüssigkeiten und Gasen fachlich zuordnen.",
+      "descriptionEn": "The learner can qualitatively describe pressure as force per area and appropriately classify examples of pressure in liquids and gases.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekI"
+      ],
+      "contains": [],
+      "requires": [
+        "10bb8262-fb0f-40cf-94ef-408420ec7cf2"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-physics",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "PK2_MODELLIEREN",
+          "PK4_KOMMUNIZIEREN"
+        ],
+        "guidingIdeas": [
+          "LI_MATERIE",
+          "LI_TECHNIK"
+        ],
+        "phase": "GLOBAL",
+        "area": "Druck und Auftrieb",
+        "topicCode": "CANONICAL.PHYSICS.SEK1.FLUIDS.PRESSURE"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-HE"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "996d097a-cac2-4b5f-979a-b3a0b9803265",
+          "sourceLandscapeTitle": "Physik Sekundarstufe I (Hessen, G9)",
+          "sourceGoalId": "6c0b16ef-94d3-417b-8ba8-0da48aa2e989"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "310b4f62-e261-46be-bb1b-1f125fc1699a",
+      "shortKey": "canonical_physics_sek1_pressure_temperature",
+      "title": "Druck-Temperatur-Zusammenhänge qualitativ erklären",
+      "titleEn": "Qualitatively Explain Pressure-Temperature Relations",
+      "description": "Die lernende Person kann qualitative Zusammenhänge zwischen Druck- und Temperaturänderungen in Gasen fachlich erläutern.",
+      "descriptionEn": "The learner can appropriately explain qualitative relations between pressure and temperature changes in gases.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekI"
+      ],
+      "contains": [],
+      "requires": [
+        "5308de76-79f0-44f4-8cb7-fc9de4772217",
+        "2d3d42ae-492b-4795-a22f-eeca03aaed38"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-physics",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "PK2_MODELLIEREN"
+        ],
+        "guidingIdeas": [
+          "LI_MATERIE",
+          "LI_ENERGIE"
+        ],
+        "phase": "GLOBAL",
+        "area": "Druck und Auftrieb",
+        "topicCode": "CANONICAL.PHYSICS.SEK1.FLUIDS.PRESSURE_TEMPERATURE"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-HE"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "996d097a-cac2-4b5f-979a-b3a0b9803265",
+          "sourceLandscapeTitle": "Physik Sekundarstufe I (Hessen, G9)",
+          "sourceGoalId": "dffc852e-d7a3-42b9-968e-19575a52bd1e"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "e11b2ee9-e528-4857-9ecd-59bd460fba81",
+      "shortKey": "canonical_physics_sek1_buoyancy_archimedes",
+      "title": "Auftrieb mit dem archimedischen Prinzip erklären",
+      "titleEn": "Explain Buoyancy Using Archimedes' Principle",
+      "description": "Die lernende Person kann Auftrieb in Wasser und Luft mithilfe des archimedischen Prinzips qualitativ erklären.",
+      "descriptionEn": "The learner can qualitatively explain buoyancy in water and air using Archimedes' principle.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekI"
+      ],
+      "contains": [],
+      "requires": [
+        "5308de76-79f0-44f4-8cb7-fc9de4772217",
+        "e41356c1-968b-435a-af25-b663f080ae5a"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-physics",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "PK2_MODELLIEREN"
+        ],
+        "guidingIdeas": [
+          "LI_BEWEGUNG",
+          "LI_MATERIE"
+        ],
+        "phase": "GLOBAL",
+        "area": "Druck und Auftrieb",
+        "topicCode": "CANONICAL.PHYSICS.SEK1.FLUIDS.BUOYANCY"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-HE"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "996d097a-cac2-4b5f-979a-b3a0b9803265",
+          "sourceLandscapeTitle": "Physik Sekundarstufe I (Hessen, G9)",
+          "sourceGoalId": "f6f2eaca-e635-402b-ba7a-5bac7de925e4"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "24b4686a-e8a6-4583-8952-33e6f653c2a3",
+      "shortKey": "canonical_physics_sek1_flight_air_resistance",
+      "title": "Auftrieb an Tragflächen und Luftwiderstand qualitativ einordnen",
+      "titleEn": "Qualitatively Classify Lift on Airfoils and Air Resistance",
+      "description": "Die lernende Person kann Auftrieb an Tragflächen und Luftwiderstand qualitativ beschreiben und in einfachen Anwendungssituationen einordnen.",
+      "descriptionEn": "The learner can qualitatively describe lift on airfoils and air resistance and classify them in simple application contexts.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekI"
+      ],
+      "contains": [],
+      "requires": [
+        "e11b2ee9-e528-4857-9ecd-59bd460fba81"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-physics",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "PK2_MODELLIEREN",
+          "PK4_KOMMUNIZIEREN"
+        ],
+        "guidingIdeas": [
+          "LI_BEWEGUNG",
+          "LI_TECHNIK"
+        ],
+        "phase": "GLOBAL",
+        "area": "Druck und Auftrieb",
+        "topicCode": "CANONICAL.PHYSICS.SEK1.FLUIDS.FLIGHT"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-HE"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "996d097a-cac2-4b5f-979a-b3a0b9803265",
+          "sourceLandscapeTitle": "Physik Sekundarstufe I (Hessen, G9)",
+          "sourceGoalId": "ddb0a146-de79-44ce-832a-81295f7c4b8d"
+        }
+      },
+      "type": "atomic"
+    },
+    {
       "id": "4924d83e-5e4b-4819-9d70-86cda3496195",
       "shortKey": "canonical_physics_sek1_magnetism_electricity_cluster",
       "title": "Magnetismus und einfache Stromkreise (Sek I)",
@@ -426,6 +906,525 @@
       "type": "cluster"
     },
     {
+      "id": "48fb4a0b-62a0-4c8f-9792-3aeef6316885",
+      "shortKey": "canonical_physics_sek1_colors_cluster",
+      "title": "Farben und Farbmischung (Sek I)",
+      "titleEn": "Colors and Color Mixing (Lower Secondary)",
+      "description": "Brückencluster für fakultative farbbezogene Grundlagen der gymnasialen Sekundarstufe I: Entstehung von Farben, additive und subtraktive Farbmischung, einfache Farbwahrnehmung sowie technische Anwendungen.",
+      "descriptionEn": "Bridge cluster for optional lower-secondary Gymnasium color foundations: origin of colors, additive and subtractive color mixing, simple color perception, and technical applications.",
+      "weight": 4,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekI"
+      ],
+      "contains": [
+        "a4681378-ade4-4f20-bf77-fb020469510f",
+        "cdab9fd1-5054-4a7e-8c9a-4474062ddd23",
+        "1c8dd14c-0fbf-44a5-85a3-25c8e3bd0075",
+        "cc9eea77-2a7f-4f35-ac22-6c230c0d6fa5"
+      ],
+      "requires": [
+        "051cedc5-d380-4716-9751-b18f2e67a912"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-physics",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "PK2_MODELLIEREN",
+          "PK4_KOMMUNIZIEREN"
+        ],
+        "guidingIdeas": [
+          "LI_WELLEN",
+          "LI_TECHNIK"
+        ],
+        "phase": "GLOBAL",
+        "area": "Farben",
+        "topicCode": "CANONICAL.PHYSICS.SEK1.COLORS"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-HE"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "996d097a-cac2-4b5f-979a-b3a0b9803265",
+          "sourceLandscapeTitle": "Physik Sekundarstufe I (Hessen, G9)",
+          "sourceGoalId": "cc82aa80-b71d-46b8-8ebe-cee49531f907"
+        }
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "a4681378-ade4-4f20-bf77-fb020469510f",
+      "shortKey": "canonical_physics_sek1_color_origin",
+      "title": "Entstehung und Zerlegung von Farben erklären",
+      "titleEn": "Explain the Origin and Decomposition of Colors",
+      "description": "Die lernende Person kann Farbzerlegung mit Prisma oder Farbkreis erklären und Weiß als zusammengesetzte Farbe deuten.",
+      "descriptionEn": "The learner can explain color decomposition using a prism or color wheel and interpret white as a composite color.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekI"
+      ],
+      "contains": [],
+      "requires": [
+        "dd7cdcea-0950-461b-96ac-ce49989fca47"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-physics",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "PK2_MODELLIEREN",
+          "PK4_KOMMUNIZIEREN"
+        ],
+        "guidingIdeas": [
+          "LI_WELLEN"
+        ],
+        "phase": "GLOBAL",
+        "area": "Farben",
+        "topicCode": "CANONICAL.PHYSICS.SEK1.COLORS.ORIGIN"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-HE"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "996d097a-cac2-4b5f-979a-b3a0b9803265",
+          "sourceLandscapeTitle": "Physik Sekundarstufe I (Hessen, G9)",
+          "sourceGoalId": "39fd7151-c6ee-4d60-84e3-e762d3cac33e"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "cdab9fd1-5054-4a7e-8c9a-4474062ddd23",
+      "shortKey": "canonical_physics_sek1_color_mixing",
+      "title": "Additive und subtraktive Farbmischung unterscheiden",
+      "titleEn": "Distinguish Additive and Subtractive Color Mixing",
+      "description": "Die lernende Person kann additive und subtraktive Farbmischung unterscheiden und an einfachen Beispielen anwenden.",
+      "descriptionEn": "The learner can distinguish additive and subtractive color mixing and apply them to simple examples.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekI"
+      ],
+      "contains": [],
+      "requires": [
+        "a4681378-ade4-4f20-bf77-fb020469510f"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-physics",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "PK2_MODELLIEREN",
+          "PK4_KOMMUNIZIEREN"
+        ],
+        "guidingIdeas": [
+          "LI_WELLEN",
+          "LI_TECHNIK"
+        ],
+        "phase": "GLOBAL",
+        "area": "Farben",
+        "topicCode": "CANONICAL.PHYSICS.SEK1.COLORS.MIXING"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-HE"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "996d097a-cac2-4b5f-979a-b3a0b9803265",
+          "sourceLandscapeTitle": "Physik Sekundarstufe I (Hessen, G9)",
+          "sourceGoalId": "503f87c1-9e30-4731-8753-6a382f0ce31d"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "1c8dd14c-0fbf-44a5-85a3-25c8e3bd0075",
+      "shortKey": "canonical_physics_sek1_color_perception",
+      "title": "Einfache Farbwahrnehmung beschreiben",
+      "titleEn": "Describe Simple Color Perception",
+      "description": "Die lernende Person kann Alltagserfahrungen zur Farbwahrnehmung fachlich beschreiben.",
+      "descriptionEn": "The learner can appropriately describe everyday experiences of color perception.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekI"
+      ],
+      "contains": [],
+      "requires": [
+        "cdab9fd1-5054-4a7e-8c9a-4474062ddd23"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-physics",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "PK4_KOMMUNIZIEREN"
+        ],
+        "guidingIdeas": [
+          "LI_WELLEN"
+        ],
+        "phase": "GLOBAL",
+        "area": "Farben",
+        "topicCode": "CANONICAL.PHYSICS.SEK1.COLORS.PERCEPTION"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-HE"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "996d097a-cac2-4b5f-979a-b3a0b9803265",
+          "sourceLandscapeTitle": "Physik Sekundarstufe I (Hessen, G9)",
+          "sourceGoalId": "27a7deb7-f195-4a65-a064-74d170f181fc"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "cc9eea77-2a7f-4f35-ac22-6c230c0d6fa5",
+      "shortKey": "canonical_physics_sek1_colors_in_technology",
+      "title": "Farben in technischen Anwendungen erklären",
+      "titleEn": "Explain Colors in Technical Applications",
+      "description": "Die lernende Person kann technische Anwendungen wie Farbdruck oder Bildschirmfarben fachlich erklären.",
+      "descriptionEn": "The learner can appropriately explain technical applications such as color printing or screen colors.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekI"
+      ],
+      "contains": [],
+      "requires": [
+        "cdab9fd1-5054-4a7e-8c9a-4474062ddd23"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-physics",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "PK2_MODELLIEREN",
+          "PK4_KOMMUNIZIEREN"
+        ],
+        "guidingIdeas": [
+          "LI_WELLEN",
+          "LI_TECHNIK"
+        ],
+        "phase": "GLOBAL",
+        "area": "Farben",
+        "topicCode": "CANONICAL.PHYSICS.SEK1.COLORS.TECH"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-HE"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "996d097a-cac2-4b5f-979a-b3a0b9803265",
+          "sourceLandscapeTitle": "Physik Sekundarstufe I (Hessen, G9)",
+          "sourceGoalId": "2ac88d02-ef92-4968-9df3-e4c22e7e4749"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "41fd5575-b1a6-40e7-8ea2-66b75a597a79",
+      "shortKey": "canonical_physics_sek1_acoustics_cluster",
+      "title": "Akustische Grundlagen (Sek I)",
+      "titleEn": "Acoustics Foundations (Lower Secondary)",
+      "description": "Brückencluster für fakultative akustische Grundlagen der gymnasialen Sekundarstufe I: Schallquellen, Schallausbreitung, Tonhöhe und Lautstärke, Hören und Lärm sowie erste Musik- und Klangphänomene.",
+      "descriptionEn": "Bridge cluster for optional lower-secondary Gymnasium acoustics foundations: sound sources, sound propagation, pitch and loudness, hearing and noise, and first music and sound phenomena.",
+      "weight": 5,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekI"
+      ],
+      "contains": [
+        "c1006f55-0406-48cc-92d4-0d8345897cf4",
+        "3c82510a-1f12-4eaa-81c2-8599437a5b85",
+        "10aad90e-a1db-42b6-8d1e-1d856e14b47d",
+        "3e33813d-db75-4571-8345-3845b02b956d",
+        "e62e48bc-2387-4b2b-8d6f-7a06c8e7580e"
+      ],
+      "requires": [
+        "9645f0d8-43a3-5f29-873c-daa5ace638db"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-physics",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "PK2_MODELLIEREN",
+          "PK4_KOMMUNIZIEREN",
+          "PK5_BEWERTEN"
+        ],
+        "guidingIdeas": [
+          "LI_WELLEN",
+          "LI_TECHNIK",
+          "LI_MATERIE"
+        ],
+        "phase": "GLOBAL",
+        "area": "Akustik",
+        "topicCode": "CANONICAL.PHYSICS.SEK1.ACOUSTICS"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-HE"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "996d097a-cac2-4b5f-979a-b3a0b9803265",
+          "sourceLandscapeTitle": "Physik Sekundarstufe I (Hessen, G9)",
+          "sourceGoalId": "7d8f00d0-311a-42a3-a5ad-bb9904ebecc8"
+        }
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "c1006f55-0406-48cc-92d4-0d8345897cf4",
+      "shortKey": "canonical_physics_sek1_sound_sources_receivers",
+      "title": "Schallquellen und Schallempfänger beschreiben",
+      "titleEn": "Describe Sound Sources and Receivers",
+      "description": "Die lernende Person kann Schall als Schwingung deuten und typische Schallquellen sowie Schallempfänger fachlich benennen.",
+      "descriptionEn": "The learner can interpret sound as vibration and appropriately name typical sound sources and receivers.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekI"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-physics",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "PK4_KOMMUNIZIEREN"
+        ],
+        "guidingIdeas": [
+          "LI_WELLEN"
+        ],
+        "phase": "GLOBAL",
+        "area": "Akustik",
+        "topicCode": "CANONICAL.PHYSICS.SEK1.ACOUSTICS.SOURCES"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-HE"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "996d097a-cac2-4b5f-979a-b3a0b9803265",
+          "sourceLandscapeTitle": "Physik Sekundarstufe I (Hessen, G9)",
+          "sourceGoalId": "e5e63e4e-6b2c-4474-b6d7-3f0fde2834fb"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "3c82510a-1f12-4eaa-81c2-8599437a5b85",
+      "shortKey": "canonical_physics_sek1_sound_propagation",
+      "title": "Schallausbreitung im Teilchenmodell erklären",
+      "titleEn": "Explain Sound Propagation Using the Particle Model",
+      "description": "Die lernende Person kann Schallausbreitung mithilfe des Teilchenmodells qualitativ erklären und Schallgeschwindigkeiten in verschiedenen Medien vergleichen.",
+      "descriptionEn": "The learner can qualitatively explain sound propagation using the particle model and compare sound velocities in different media.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekI"
+      ],
+      "contains": [],
+      "requires": [
+        "c1006f55-0406-48cc-92d4-0d8345897cf4",
+        "9ac4973a-21d5-48a5-90b4-eb90e10391ae"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-physics",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "PK2_MODELLIEREN"
+        ],
+        "guidingIdeas": [
+          "LI_WELLEN",
+          "LI_MATERIE"
+        ],
+        "phase": "GLOBAL",
+        "area": "Akustik",
+        "topicCode": "CANONICAL.PHYSICS.SEK1.ACOUSTICS.PROPAGATION"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-HE"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "996d097a-cac2-4b5f-979a-b3a0b9803265",
+          "sourceLandscapeTitle": "Physik Sekundarstufe I (Hessen, G9)",
+          "sourceGoalId": "4e05720e-2009-420f-a2d3-5c2d3489e809"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "10aad90e-a1db-42b6-8d1e-1d856e14b47d",
+      "shortKey": "canonical_physics_sek1_sound_characterization",
+      "title": "Tonhöhe, Lautstärke und Geräusche unterscheiden",
+      "titleEn": "Distinguish Pitch, Loudness, and Noise",
+      "description": "Die lernende Person kann Ton, Geräusch, Lautstärke und Tonhöhe unterscheiden und in einfachen Darstellungen fachlich beschreiben.",
+      "descriptionEn": "The learner can distinguish tone, noise, loudness, and pitch and appropriately describe them in simple representations.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekI"
+      ],
+      "contains": [],
+      "requires": [
+        "3c82510a-1f12-4eaa-81c2-8599437a5b85"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-physics",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "PK4_KOMMUNIZIEREN"
+        ],
+        "guidingIdeas": [
+          "LI_WELLEN"
+        ],
+        "phase": "GLOBAL",
+        "area": "Akustik",
+        "topicCode": "CANONICAL.PHYSICS.SEK1.ACOUSTICS.CHARACTERIZE"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-HE"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "996d097a-cac2-4b5f-979a-b3a0b9803265",
+          "sourceLandscapeTitle": "Physik Sekundarstufe I (Hessen, G9)",
+          "sourceGoalId": "2b396054-8508-4f4d-80ef-2c89cc64ec7f"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "3e33813d-db75-4571-8345-3845b02b956d",
+      "shortKey": "canonical_physics_sek1_hearing_noise",
+      "title": "Hören, Ohr und Lärmbelastung einordnen",
+      "titleEn": "Classify Hearing, the Ear, and Noise Exposure",
+      "description": "Die lernende Person kann den Aufbau des Ohrs qualitativ erläutern und Auswirkungen von Lärm fachlich beurteilen.",
+      "descriptionEn": "The learner can qualitatively explain the structure of the ear and appropriately assess the effects of noise.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekI"
+      ],
+      "contains": [],
+      "requires": [
+        "10aad90e-a1db-42b6-8d1e-1d856e14b47d"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-physics",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "PK5_BEWERTEN"
+        ],
+        "guidingIdeas": [
+          "LI_WELLEN",
+          "LI_TECHNIK"
+        ],
+        "phase": "GLOBAL",
+        "area": "Akustik",
+        "topicCode": "CANONICAL.PHYSICS.SEK1.ACOUSTICS.HEARING"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-HE"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "996d097a-cac2-4b5f-979a-b3a0b9803265",
+          "sourceLandscapeTitle": "Physik Sekundarstufe I (Hessen, G9)",
+          "sourceGoalId": "28dfd9ce-59b3-4d32-8d28-f7dd22cb08c4"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "e62e48bc-2387-4b2b-8d6f-7a06c8e7580e",
+      "shortKey": "canonical_physics_sek1_sound_music",
+      "title": "Schallphänomene an Musikinstrumenten beschreiben",
+      "titleEn": "Describe Sound Phenomena in Musical Instruments",
+      "description": "Die lernende Person kann Schallphänomene an Musikinstrumenten beschreiben und einfache Klanggestaltung fachlich erklären.",
+      "descriptionEn": "The learner can describe sound phenomena in musical instruments and appropriately explain simple sound shaping.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekI"
+      ],
+      "contains": [],
+      "requires": [
+        "10aad90e-a1db-42b6-8d1e-1d856e14b47d"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-physics",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "PK4_KOMMUNIZIEREN"
+        ],
+        "guidingIdeas": [
+          "LI_WELLEN",
+          "LI_TECHNIK"
+        ],
+        "phase": "GLOBAL",
+        "area": "Akustik",
+        "topicCode": "CANONICAL.PHYSICS.SEK1.ACOUSTICS.MUSIC"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-HE"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "996d097a-cac2-4b5f-979a-b3a0b9803265",
+          "sourceLandscapeTitle": "Physik Sekundarstufe I (Hessen, G9)",
+          "sourceGoalId": "9e98a602-fddd-4aad-b55a-cff4900097e4"
+        }
+      },
+      "type": "atomic"
+    },
+    {
       "id": "84b1bc70-dadf-449b-a8d4-8bcee1da1fea",
       "shortKey": "canonical_physics_sek1_optics_cluster",
       "title": "Optische Grundlagen (Sek I)",
@@ -472,6 +1471,192 @@
         }
       },
       "type": "cluster"
+    },
+    {
+      "id": "8917c71a-bfcb-4003-971c-188a69446b60",
+      "shortKey": "canonical_physics_sek1_radioactivity_cluster",
+      "title": "Atomaufbau und Radioaktivität (Sek I)",
+      "titleEn": "Atomic Structure and Radioactivity (Lower Secondary)",
+      "description": "Brückencluster für atomare Grundvorstellungen, radioaktive Strahlung und erste Anwendungen bzw. Bewertungen in der gymnasialen Sekundarstufe I.",
+      "descriptionEn": "Bridge cluster for basic atomic concepts, radioactive radiation, and first applications and evaluations in lower-secondary Gymnasium physics.",
+      "weight": 3,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekI"
+      ],
+      "contains": [
+        "2a6703e0-2a6f-4ebf-a5c6-7aa05a4b86eb",
+        "f6f646db-3544-49ed-8f55-67bc684e80ce",
+        "979e0d0d-8933-4ace-814f-f28060ad280f"
+      ],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-physics",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "PK2_MODELLIEREN",
+          "PK5_BEWERTEN"
+        ],
+        "guidingIdeas": [
+          "LI_MATERIE",
+          "LI_TECHNIK"
+        ],
+        "phase": "GLOBAL",
+        "area": "Atom- und Kernphysik",
+        "topicCode": "CANONICAL.PHYSICS.SEK1.NUCLEAR"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-HE"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "996d097a-cac2-4b5f-979a-b3a0b9803265",
+          "sourceLandscapeTitle": "Physik Sekundarstufe I (Hessen, G9)",
+          "sourceGoalId": "facfd62d-9240-47bf-b2a5-919ada412987"
+        }
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "2a6703e0-2a6f-4ebf-a5c6-7aa05a4b86eb",
+      "shortKey": "canonical_physics_sek1_atomic_structure",
+      "title": "Kern und Hülle des Atoms qualitativ beschreiben",
+      "titleEn": "Describe Nucleus and Electron Shell Qualitatively",
+      "description": "Die lernende Person kann Kern und Hülle des Atoms qualitativ beschreiben und Größenordnungen im Atom modellhaft einordnen.",
+      "descriptionEn": "The learner can qualitatively describe the nucleus and electron shell of the atom and model orders of magnitude within the atom.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekI"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-physics",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "PK2_MODELLIEREN"
+        ],
+        "guidingIdeas": [
+          "LI_MATERIE"
+        ],
+        "phase": "GLOBAL",
+        "area": "Atom- und Kernphysik",
+        "topicCode": "CANONICAL.PHYSICS.SEK1.NUCLEAR.ATOM"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-HE"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "996d097a-cac2-4b5f-979a-b3a0b9803265",
+          "sourceLandscapeTitle": "Physik Sekundarstufe I (Hessen, G9)",
+          "sourceGoalId": "f882cc85-6225-4f63-98f7-2349d2c7385c"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "f6f646db-3544-49ed-8f55-67bc684e80ce",
+      "shortKey": "canonical_physics_sek1_radioactivity_detection",
+      "title": "Radioaktive Strahlung nachweisen und Wirkungen einordnen",
+      "titleEn": "Detect Radioactive Radiation and Classify Its Effects",
+      "description": "Die lernende Person kann Arten radioaktiver Strahlung benennen, Nachweismethoden beschreiben und grundlegende Wirkungen qualitativ einordnen.",
+      "descriptionEn": "The learner can name types of radioactive radiation, describe detection methods, and qualitatively classify basic effects.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekI"
+      ],
+      "contains": [],
+      "requires": [
+        "2a6703e0-2a6f-4ebf-a5c6-7aa05a4b86eb"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-physics",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "PK1_EXPERIMENTIEREN",
+          "PK4_KOMMUNIZIEREN"
+        ],
+        "guidingIdeas": [
+          "LI_MATERIE",
+          "LI_TECHNIK"
+        ],
+        "phase": "GLOBAL",
+        "area": "Atom- und Kernphysik",
+        "topicCode": "CANONICAL.PHYSICS.SEK1.NUCLEAR.RADIATION"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-HE"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "996d097a-cac2-4b5f-979a-b3a0b9803265",
+          "sourceLandscapeTitle": "Physik Sekundarstufe I (Hessen, G9)",
+          "sourceGoalId": "24350b45-cd48-4c91-b0c6-71480fa1681f"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "979e0d0d-8933-4ace-814f-f28060ad280f",
+      "shortKey": "canonical_physics_sek1_radioactivity_applications",
+      "title": "Anwendungen und Risiken radioaktiver Strahlung beurteilen",
+      "titleEn": "Evaluate Applications and Risks of Radioactive Radiation",
+      "description": "Die lernende Person kann Anwendungen und Risiken radioaktiver Strahlung in Medizin, Technik oder Energieversorgung qualitativ beurteilen.",
+      "descriptionEn": "The learner can qualitatively evaluate applications and risks of radioactive radiation in medicine, technology, or energy supply.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekI"
+      ],
+      "contains": [],
+      "requires": [
+        "f6f646db-3544-49ed-8f55-67bc684e80ce"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "PK5_BEWERTEN"
+        ],
+        "guidingIdeas": [
+          "LI_MATERIE",
+          "LI_TECHNIK",
+          "LI_ENERGIE"
+        ],
+        "phase": "GLOBAL",
+        "area": "Atom- und Kernphysik",
+        "topicCode": "CANONICAL.PHYSICS.SEK1.NUCLEAR.APPLICATIONS"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-HE"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "996d097a-cac2-4b5f-979a-b3a0b9803265",
+          "sourceLandscapeTitle": "Physik Sekundarstufe I (Hessen, G9)",
+          "sourceGoalId": "89e717eb-c36a-4945-872c-5da7b1292b5c"
+        }
+      },
+      "type": "atomic"
     },
     {
       "id": "dd7cdcea-0950-461b-96ac-ce49989fca47",
@@ -1530,7 +2715,8 @@
       ],
       "contains": [],
       "requires": [
-        "722857cf-f327-5740-8151-64eb92195ec8"
+        "722857cf-f327-5740-8151-64eb92195ec8",
+        "2d3d42ae-492b-4795-a22f-eeca03aaed38"
       ],
       "dimensionTags": {
         "framework": "canonical-gymnasium-physics",
@@ -1667,7 +2853,8 @@
       ],
       "contains": [],
       "requires": [
-        "5c44b9ba-9b05-4774-95d5-073230d3fc4f"
+        "5c44b9ba-9b05-4774-95d5-073230d3fc4f",
+        "8917c71a-bfcb-4003-971c-188a69446b60"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
@@ -10547,7 +11734,8 @@
       ],
       "contains": [],
       "requires": [
-        "fcf8580c-ecfd-58ea-bbf5-a1b29c9ecf8e"
+        "fcf8580c-ecfd-58ea-bbf5-a1b29c9ecf8e",
+        "41fd5575-b1a6-40e7-8ea2-66b75a597a79"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
@@ -10792,7 +11980,8 @@
       ],
       "contains": [],
       "requires": [
-        "cb0ced6d-b7c1-5b7d-9922-8c394f6030e8"
+        "cb0ced6d-b7c1-5b7d-9922-8c394f6030e8",
+        "48fb4a0b-62a0-4c8f-9792-3aeef6316885"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
@@ -11569,7 +12758,8 @@
       ],
       "contains": [],
       "requires": [
-        "cb0ced6d-b7c1-5b7d-9922-8c394f6030e8"
+        "cb0ced6d-b7c1-5b7d-9922-8c394f6030e8",
+        "48fb4a0b-62a0-4c8f-9792-3aeef6316885"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
@@ -13449,7 +14639,8 @@
       ],
       "contains": [],
       "requires": [
-        "5c44b9ba-9b05-4774-95d5-073230d3fc4f"
+        "5c44b9ba-9b05-4774-95d5-073230d3fc4f",
+        "8917c71a-bfcb-4003-971c-188a69446b60"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",

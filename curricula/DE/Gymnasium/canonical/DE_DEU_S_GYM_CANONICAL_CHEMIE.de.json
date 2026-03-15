@@ -8,8 +8,8 @@
   "frameworkId": "canonical-gymnasium-chemistry",
   "title": "Chemie (Gymnasium, DE)",
   "titleEn": "Chemistry (Gymnasium, DE)",
-  "description": "Chemie für das Gymnasium in Deutschland. Die aktuelle Baseline sichert die hessische Oberstufe vollständig als Ausgangspunkt für spätere bundesländerübergreifende Angleichung und verankert einen ersten Hessen-Sek-I-Brückenschnitt für Stoff- und Lösungsgrundlagen.",
-  "descriptionEn": "Chemistry for Gymnasium in Germany. The current baseline fully secures the Hessian upper-secondary curriculum as the starting point for later cross-state alignment and now anchors a first Hessian lower-secondary bridge slice for substance and solution foundations.",
+  "description": "Chemie für das Gymnasium in Deutschland. Die aktuelle Baseline sichert die hessische Oberstufe vollständig als Ausgangspunkt für spätere bundesländerübergreifende Angleichung und verankert erste Hessen-Sek-I-Brückenschnitte für Stoff-, Reaktions-, Symbol-, Sicherheits-, Trenn- und Lösungsgrundlagen.",
+  "descriptionEn": "Chemistry for Gymnasium in Germany. The current baseline fully secures the Hessian upper-secondary curriculum as the starting point for later cross-state alignment and now anchors first Hessian lower-secondary bridge slices for substance, reaction, symbolic-language, safety, separation, and solution foundations.",
   "filters": [
     {
       "id": "GK",
@@ -25,8 +25,8 @@
       "id": "442c31c5-c561-5c7a-90bb-2335d779175c",
       "title": "Chemie",
       "titleEn": "Chemistry",
-      "description": "Gemeinsame Wurzel für Chemie am Gymnasium in Deutschland. Die aktuelle Baseline übernimmt die hessische Oberstufe vollständig, behält sie als belastbaren Startpunkt für die spätere bundesländerübergreifende Konvergenz und bindet erste Stoff- und Lösungsgrundlagen aus der hessischen Sekundarstufe I an.",
-      "descriptionEn": "Shared root for chemistry at Gymnasium in Germany. The current baseline fully adopts the Hessian upper-secondary curriculum, keeps it as a reliable starting point for later cross-state convergence, and attaches first substance and solution foundations from Hessian lower secondary.",
+      "description": "Gemeinsame Wurzel für Chemie am Gymnasium in Deutschland. Die aktuelle Baseline übernimmt die hessische Oberstufe vollständig, behält sie als belastbaren Startpunkt für die spätere bundesländerübergreifende Konvergenz und bindet erste Stoff-, Reaktions-, Symbol-, Sicherheits-, Trenn- und Lösungsgrundlagen aus der hessischen Sekundarstufe I an.",
+      "descriptionEn": "Shared root for chemistry at Gymnasium in Germany. The current baseline fully adopts the Hessian upper-secondary curriculum, keeps it as a reliable starting point for later cross-state convergence, and attaches first substance, reaction, symbolic-language, safety, separation, and solution foundations from Hessian lower secondary.",
       "weight": 1.2,
       "tags": [
         "GK",
@@ -38,6 +38,8 @@
       "contains": [
         "a9c22adc-b543-5b0c-a2d8-3189facdff08",
         "3588c15e-adbe-5b81-b3a7-10da20574e3d",
+        "a00d302b-7762-4b9d-a6d7-de0c58b35540",
+        "fb3bdf39-4baf-4510-a192-c8a12fbf5dba",
         "323a222e-5db8-53c5-b2dc-6f9c1d0d277c",
         "a0893975-1677-5dae-bbfb-675789be4f17",
         "ae683d59-06a5-59be-87b5-b8648fd138c8",
@@ -106,9 +108,9 @@
       "shortKey": "canonical_chemistry_sek1_foundations_cluster",
       "title": "Chemische Grundlagen (Sek I)",
       "titleEn": "Chemistry Foundations (Lower Secondary)",
-      "description": "Cluster für grundlegende Arbeitsweisen, Stoffeigenschaften, Lösungen und erste Säure-Base-Unterscheidungen aus der gymnasialen Sekundarstufe I.",
-      "descriptionEn": "Cluster for foundational working methods, substance properties, solutions, and first acid-base distinctions from lower secondary Gymnasium chemistry.",
-      "weight": 5,
+      "description": "Cluster für grundlegende Arbeitsweisen, Gefahrenerkennung, Stoffeigenschaften, Trennverfahren, Lösungen und erste Säure-Base-Unterscheidungen aus der gymnasialen Sekundarstufe I.",
+      "descriptionEn": "Cluster for foundational working methods, hazard recognition, substance properties, separation methods, solutions, and first acid-base distinctions from lower secondary Gymnasium chemistry.",
+      "weight": 7,
       "tags": [
         "GK",
         "LK",
@@ -117,7 +119,9 @@
       ],
       "contains": [
         "266a2b2a-9ee2-52f6-ae09-59343da9a60b",
+        "c7d4d9f7-d23f-44fc-bf22-3872e0f2b9a0",
         "fcc73fb5-7413-557f-aea3-b9692a66ee75",
+        "5a709938-e0f5-42b7-94f0-cfded08963a2",
         "326d45bf-9f77-57d5-a054-93e76b034dd5",
         "53fd1bfd-facb-54ae-b2dc-f667ed1414fc",
         "d2ccd1d5-56f7-583f-9724-e97441367f91"
@@ -242,6 +246,98 @@
           "sourceLandscapeId": "bea90c22-b9c5-4c0c-9b10-89d875f50772",
           "sourceLandscapeTitle": "Chemie Sekundarstufe I (Hessen, G9)",
           "sourceGoalId": "465935ab-3813-40a5-b1d8-51aa8fa0c6ec"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "c7d4d9f7-d23f-44fc-bf22-3872e0f2b9a0",
+      "shortKey": "canonical_chemistry_sek1_hazard_symbols_safety",
+      "title": "Gefahrensymbole deuten und Sicherheitsregeln anwenden",
+      "titleEn": "Interpret hazard symbols and apply safety rules",
+      "description": "Die lernende Person kann Gefahrstoffsymbole deuten und Sicherheitsregeln beim Umgang mit Chemikalien fachgerecht anwenden.",
+      "descriptionEn": "The learner can interpret hazard symbols and appropriately apply safety rules when handling chemicals.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekI"
+      ],
+      "contains": [],
+      "requires": [
+        "266a2b2a-9ee2-52f6-ae09-59343da9a60b"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-chemistry",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "PK1_EXPERIMENTIEREN",
+          "PK4_KOMMUNIZIEREN"
+        ],
+        "guidingIdeas": [
+          "BC_REAKTION"
+        ],
+        "phase": "GLOBAL",
+        "area": "Grundlagen",
+        "topicCode": "CANONICAL.CHEMISTRY.SEK1.SAFETY"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-HE"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "bea90c22-b9c5-4c0c-9b10-89d875f50772",
+          "sourceLandscapeTitle": "Chemie Sekundarstufe I (Hessen, G9)",
+          "sourceGoalId": "3b6a4f7c-178c-4b0a-b786-f7e11693ea6d"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "5a709938-e0f5-42b7-94f0-cfded08963a2",
+      "shortKey": "canonical_chemistry_sek1_separation_methods",
+      "title": "Stoffgemische mit Trennverfahren trennen",
+      "titleEn": "Separate mixtures using separation methods",
+      "description": "Die lernende Person kann Stoffgemische mit Verfahren wie Filtration, Destillation und Extraktion trennen und die Verfahrenswahl begründen.",
+      "descriptionEn": "The learner can separate mixtures using methods such as filtration, distillation, and extraction and justify the choice of method.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekI"
+      ],
+      "contains": [],
+      "requires": [
+        "fcc73fb5-7413-557f-aea3-b9692a66ee75"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-chemistry",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "PK1_EXPERIMENTIEREN",
+          "PK2_MODELLIEREN"
+        ],
+        "guidingIdeas": [
+          "BC_AUFBAU"
+        ],
+        "phase": "GLOBAL",
+        "area": "Grundlagen",
+        "topicCode": "CANONICAL.CHEMISTRY.SEK1.SEPARATION"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-HE"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "bea90c22-b9c5-4c0c-9b10-89d875f50772",
+          "sourceLandscapeTitle": "Chemie Sekundarstufe I (Hessen, G9)",
+          "sourceGoalId": "474c73d9-d8bf-4fa3-9fbf-ee21207c2aab"
         }
       },
       "type": "atomic"
@@ -380,6 +476,575 @@
           "sourceLandscapeId": "bea90c22-b9c5-4c0c-9b10-89d875f50772",
           "sourceLandscapeTitle": "Chemie Sekundarstufe I (Hessen, G9)",
           "sourceGoalId": "0bfc34bc-9a17-4e86-ac62-b2bf4b967a43"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "a00d302b-7762-4b9d-a6d7-de0c58b35540",
+      "shortKey": "canonical_chemistry_sek1_reactions_cluster",
+      "title": "Chemische Reaktionen und Energieumsatz (Sek I)",
+      "titleEn": "Chemical Reactions and Energy Turnover (Lower Secondary)",
+      "description": "Cluster für Reaktionsmerkmale, einfache Oxidations- und Reduktionsvorgänge, Verbrennung, Energieumsatz und Massenerhaltung aus der gymnasialen Sekundarstufe I.",
+      "descriptionEn": "Cluster for reaction characteristics, simple oxidation and reduction processes, combustion, energy turnover, and mass conservation from lower secondary Gymnasium chemistry.",
+      "weight": 5,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekI"
+      ],
+      "contains": [
+        "8d4ef102-e6a6-4d2e-bb6b-e707d3f2e566",
+        "bcf8b24b-3eed-4a36-8fb3-d6bffc1e193a",
+        "bb707fda-504c-4699-a78c-d0a6c320658f",
+        "1286f2fe-89b7-4454-8e11-85b6abd6e278",
+        "1bdaf7f2-ff3b-455a-a7fb-95a44642762a"
+      ],
+      "requires": [
+        "3588c15e-adbe-5b81-b3a7-10da20574e3d"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-chemistry",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "PK1_EXPERIMENTIEREN",
+          "PK2_MODELLIEREN",
+          "PK4_KOMMUNIZIEREN"
+        ],
+        "guidingIdeas": [
+          "BC_REAKTION",
+          "BC_ENERGIE"
+        ],
+        "phase": "GLOBAL",
+        "area": "Reaktionen",
+        "topicCode": "CANONICAL.CHEMISTRY.SEK1.REACTIONS"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-HE"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "bea90c22-b9c5-4c0c-9b10-89d875f50772",
+          "sourceLandscapeTitle": "Chemie Sekundarstufe I (Hessen, G9)",
+          "sourceGoalId": "13a84828-e2e6-4bde-9c26-f4b54eb90fd3"
+        }
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "8d4ef102-e6a6-4d2e-bb6b-e707d3f2e566",
+      "shortKey": "canonical_chemistry_sek1_reaction_characteristics",
+      "title": "Chemische Reaktionen von physikalischen Vorgängen unterscheiden",
+      "titleEn": "Distinguish chemical reactions from physical processes",
+      "description": "Die lernende Person kann chemische Reaktionen von physikalischen Veränderungen unterscheiden und typische Reaktionsmerkmale beschreiben.",
+      "descriptionEn": "The learner can distinguish chemical reactions from physical changes and describe typical reaction characteristics.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekI"
+      ],
+      "contains": [],
+      "requires": [
+        "326d45bf-9f77-57d5-a054-93e76b034dd5"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-chemistry",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "PK2_MODELLIEREN",
+          "PK4_KOMMUNIZIEREN"
+        ],
+        "guidingIdeas": [
+          "BC_REAKTION"
+        ],
+        "phase": "GLOBAL",
+        "area": "Reaktionen",
+        "topicCode": "CANONICAL.CHEMISTRY.SEK1.REACTION_CHARACTERISTICS"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-HE"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "bea90c22-b9c5-4c0c-9b10-89d875f50772",
+          "sourceLandscapeTitle": "Chemie Sekundarstufe I (Hessen, G9)",
+          "sourceGoalId": "ff3db7ec-444f-44d6-bd8c-7e452de3f2a0"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "bcf8b24b-3eed-4a36-8fb3-d6bffc1e193a",
+      "shortKey": "canonical_chemistry_sek1_oxidation_reduction",
+      "title": "Oxidation und Reduktion bei einfachen Reaktionen erkennen",
+      "titleEn": "Recognize oxidation and reduction in simple reactions",
+      "description": "Die lernende Person kann Oxidations- und Reduktionsvorgänge bei einfachen Reaktionen von Metallen und Nichtmetallen fachlich deuten.",
+      "descriptionEn": "The learner can interpret oxidation and reduction processes in simple reactions involving metals and non-metals.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekI"
+      ],
+      "contains": [],
+      "requires": [
+        "8d4ef102-e6a6-4d2e-bb6b-e707d3f2e566"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-chemistry",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "PK2_MODELLIEREN"
+        ],
+        "guidingIdeas": [
+          "BC_REAKTION"
+        ],
+        "phase": "GLOBAL",
+        "area": "Reaktionen",
+        "topicCode": "CANONICAL.CHEMISTRY.SEK1.REDOX"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-HE"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "bea90c22-b9c5-4c0c-9b10-89d875f50772",
+          "sourceLandscapeTitle": "Chemie Sekundarstufe I (Hessen, G9)",
+          "sourceGoalId": "0b9ff7a1-3767-4942-8573-3474aa0fd572"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "bb707fda-504c-4699-a78c-d0a6c320658f",
+      "shortKey": "canonical_chemistry_sek1_combustion_air_water",
+      "title": "Luft, Wasser und Verbrennung chemisch deuten",
+      "titleEn": "Interpret air, water, and combustion chemically",
+      "description": "Die lernende Person kann die Zusammensetzung von Luft, einfache Verbrennungsvorgänge und die Wirkung geeigneter Löschmittel fachlich deuten.",
+      "descriptionEn": "The learner can interpret the composition of air, simple combustion processes, and the effect of suitable extinguishing agents.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekI"
+      ],
+      "contains": [],
+      "requires": [
+        "8d4ef102-e6a6-4d2e-bb6b-e707d3f2e566"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-chemistry",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "PK2_MODELLIEREN",
+          "PK4_KOMMUNIZIEREN"
+        ],
+        "guidingIdeas": [
+          "BC_REAKTION",
+          "BC_ENERGIE"
+        ],
+        "phase": "GLOBAL",
+        "area": "Reaktionen",
+        "topicCode": "CANONICAL.CHEMISTRY.SEK1.COMBUSTION"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-HE"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "bea90c22-b9c5-4c0c-9b10-89d875f50772",
+          "sourceLandscapeTitle": "Chemie Sekundarstufe I (Hessen, G9)",
+          "sourceGoalId": "8933dbfb-1d50-41fc-8e59-3ec9b65ed482"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "1286f2fe-89b7-4454-8e11-85b6abd6e278",
+      "shortKey": "canonical_chemistry_sek1_reaction_energy",
+      "title": "Exotherme und endotherme Reaktionen unterscheiden",
+      "titleEn": "Distinguish exothermic and endothermic reactions",
+      "description": "Die lernende Person kann exotherme und endotherme Reaktionen unterscheiden und typische Beispiele dem Energieumsatz fachlich zuordnen.",
+      "descriptionEn": "The learner can distinguish exothermic and endothermic reactions and classify typical examples by their energy turnover.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekI"
+      ],
+      "contains": [],
+      "requires": [
+        "8d4ef102-e6a6-4d2e-bb6b-e707d3f2e566"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-chemistry",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "PK2_MODELLIEREN"
+        ],
+        "guidingIdeas": [
+          "BC_ENERGIE"
+        ],
+        "phase": "GLOBAL",
+        "area": "Reaktionen",
+        "topicCode": "CANONICAL.CHEMISTRY.SEK1.ENERGY"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-HE"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "bea90c22-b9c5-4c0c-9b10-89d875f50772",
+          "sourceLandscapeTitle": "Chemie Sekundarstufe I (Hessen, G9)",
+          "sourceGoalId": "b6808c45-970e-4918-b57e-294d03409ad7"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "1bdaf7f2-ff3b-455a-a7fb-95a44642762a",
+      "shortKey": "canonical_chemistry_sek1_mass_conservation",
+      "title": "Massenerhaltung bei Reaktionen erklären",
+      "titleEn": "Explain conservation of mass in reactions",
+      "description": "Die lernende Person kann einfache Massenbilanz-Versuche auswerten und das Gesetz von der Erhaltung der Masse fachlich erklären.",
+      "descriptionEn": "The learner can evaluate simple mass-balance experiments and explain the law of conservation of mass.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekI"
+      ],
+      "contains": [],
+      "requires": [
+        "8d4ef102-e6a6-4d2e-bb6b-e707d3f2e566"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-chemistry",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "PK1_EXPERIMENTIEREN",
+          "PK2_MODELLIEREN"
+        ],
+        "guidingIdeas": [
+          "BC_REAKTION"
+        ],
+        "phase": "GLOBAL",
+        "area": "Reaktionen",
+        "topicCode": "CANONICAL.CHEMISTRY.SEK1.MASS_CONSERVATION"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-HE"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "bea90c22-b9c5-4c0c-9b10-89d875f50772",
+          "sourceLandscapeTitle": "Chemie Sekundarstufe I (Hessen, G9)",
+          "sourceGoalId": "4f94579b-7db0-4792-84f2-eb38df3327b3"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "fb3bdf39-4baf-4510-a192-c8a12fbf5dba",
+      "shortKey": "canonical_chemistry_sek1_symbol_language_cluster",
+      "title": "Chemische Symbolsprache und Anwendung (Sek I)",
+      "titleEn": "Chemical Symbolism and Application (Lower Secondary)",
+      "description": "Cluster für konstante Massenverhältnisse, Dalton-Modell, chemische Formelsprache, einfache Reaktionsgleichungen und erste Redoxschemata aus der gymnasialen Sekundarstufe I.",
+      "descriptionEn": "Cluster for constant proportions, Dalton's model, chemical formula language, simple reaction equations, and first redox schemes from lower secondary Gymnasium chemistry.",
+      "weight": 5,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekI"
+      ],
+      "contains": [
+        "e0d05c36-eaac-4c75-8ead-3fd5bdafefca",
+        "9b5d6326-d27c-4ece-8c72-debda705464a",
+        "e7c363d4-e02d-4895-8750-ba62c2eb63fe",
+        "11bea4c6-7b8a-47e0-8293-2eb1ce34cf66",
+        "22133f29-ef02-4408-8f8d-2bbea3275d91"
+      ],
+      "requires": [
+        "a00d302b-7762-4b9d-a6d7-de0c58b35540"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-chemistry",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "PK1_EXPERIMENTIEREN",
+          "PK2_MODELLIEREN",
+          "PK4_KOMMUNIZIEREN"
+        ],
+        "guidingIdeas": [
+          "BC_AUFBAU",
+          "BC_REAKTION"
+        ],
+        "phase": "GLOBAL",
+        "area": "Symbolsprache",
+        "topicCode": "CANONICAL.CHEMISTRY.SEK1.SYMBOL_LANGUAGE"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-HE"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "bea90c22-b9c5-4c0c-9b10-89d875f50772",
+          "sourceLandscapeTitle": "Chemie Sekundarstufe I (Hessen, G9)",
+          "sourceGoalId": "ef2e2a68-566f-4059-acd4-9ed504c411b9"
+        }
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "e0d05c36-eaac-4c75-8ead-3fd5bdafefca",
+      "shortKey": "canonical_chemistry_sek1_constant_proportions",
+      "title": "Konstante Massenverhältnisse beschreiben",
+      "titleEn": "Describe constant mass proportions",
+      "description": "Die lernende Person kann konstante Massenverhältnisse an einfachen Oxid- und Sulfidbildungen erkennen und fachlich beschreiben.",
+      "descriptionEn": "The learner can recognize and describe constant mass proportions in simple oxide and sulfide formation.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekI"
+      ],
+      "contains": [],
+      "requires": [
+        "1bdaf7f2-ff3b-455a-a7fb-95a44642762a"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-chemistry",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "PK2_MODELLIEREN"
+        ],
+        "guidingIdeas": [
+          "BC_AUFBAU",
+          "BC_REAKTION"
+        ],
+        "phase": "GLOBAL",
+        "area": "Symbolsprache",
+        "topicCode": "CANONICAL.CHEMISTRY.SEK1.CONSTANT_PROPORTIONS"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-HE"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "bea90c22-b9c5-4c0c-9b10-89d875f50772",
+          "sourceLandscapeTitle": "Chemie Sekundarstufe I (Hessen, G9)",
+          "sourceGoalId": "d902cc1b-fe62-4a4a-bbc1-d1dc54b34a54"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "9b5d6326-d27c-4ece-8c72-debda705464a",
+      "shortKey": "canonical_chemistry_sek1_dalton_particle_model",
+      "title": "Dalton-Modell und Modellcharakter erläutern",
+      "titleEn": "Explain Dalton's model and the nature of models",
+      "description": "Die lernende Person kann Daltons Atomhypothese erläutern und den Modellcharakter gegenüber Gesetz und Hypothese fachlich abgrenzen.",
+      "descriptionEn": "The learner can explain Dalton's atomic hypothesis and distinguish the model character from laws and hypotheses.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekI"
+      ],
+      "contains": [],
+      "requires": [
+        "e0d05c36-eaac-4c75-8ead-3fd5bdafefca"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-chemistry",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "PK2_MODELLIEREN",
+          "PK4_KOMMUNIZIEREN"
+        ],
+        "guidingIdeas": [
+          "BC_AUFBAU"
+        ],
+        "phase": "GLOBAL",
+        "area": "Symbolsprache",
+        "topicCode": "CANONICAL.CHEMISTRY.SEK1.DALTON_MODEL"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-HE"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "bea90c22-b9c5-4c0c-9b10-89d875f50772",
+          "sourceLandscapeTitle": "Chemie Sekundarstufe I (Hessen, G9)",
+          "sourceGoalId": "ae7e4674-eadc-4d75-a3a0-8466a5688e25"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "e7c363d4-e02d-4895-8750-ba62c2eb63fe",
+      "shortKey": "canonical_chemistry_sek1_symbols_formulas",
+      "title": "Chemische Symbole und Formeln sicher nutzen",
+      "titleEn": "Use chemical symbols and formulas confidently",
+      "description": "Die lernende Person kann chemische Symbole deuten und Molekülformeln einfacher Verbindungen fachlich korrekt bilden.",
+      "descriptionEn": "The learner can interpret chemical symbols and correctly form molecular formulas of simple compounds.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekI"
+      ],
+      "contains": [],
+      "requires": [
+        "9b5d6326-d27c-4ece-8c72-debda705464a"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-chemistry",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "PK2_MODELLIEREN",
+          "PK4_KOMMUNIZIEREN"
+        ],
+        "guidingIdeas": [
+          "BC_AUFBAU"
+        ],
+        "phase": "GLOBAL",
+        "area": "Symbolsprache",
+        "topicCode": "CANONICAL.CHEMISTRY.SEK1.SYMBOLS_FORMULAS"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-HE"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "bea90c22-b9c5-4c0c-9b10-89d875f50772",
+          "sourceLandscapeTitle": "Chemie Sekundarstufe I (Hessen, G9)",
+          "sourceGoalId": "aba0f8ad-06c3-4553-ad37-e060c38cb0ff"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "11bea4c6-7b8a-47e0-8293-2eb1ce34cf66",
+      "shortKey": "canonical_chemistry_sek1_reaction_equations",
+      "title": "Einfache Reaktionsgleichungen ableiten",
+      "titleEn": "Derive simple reaction equations",
+      "description": "Die lernende Person kann einfache Reaktionsgleichungen aus Reaktionsschemata fachlich korrekt ableiten.",
+      "descriptionEn": "The learner can correctly derive simple reaction equations from reaction schemes.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekI"
+      ],
+      "contains": [],
+      "requires": [
+        "e7c363d4-e02d-4895-8750-ba62c2eb63fe",
+        "8d4ef102-e6a6-4d2e-bb6b-e707d3f2e566"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-chemistry",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "PK2_MODELLIEREN",
+          "PK4_KOMMUNIZIEREN"
+        ],
+        "guidingIdeas": [
+          "BC_REAKTION"
+        ],
+        "phase": "GLOBAL",
+        "area": "Symbolsprache",
+        "topicCode": "CANONICAL.CHEMISTRY.SEK1.REACTION_EQUATIONS"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-HE"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "bea90c22-b9c5-4c0c-9b10-89d875f50772",
+          "sourceLandscapeTitle": "Chemie Sekundarstufe I (Hessen, G9)",
+          "sourceGoalId": "877990c1-6534-4328-81aa-5351396eb3d1"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "22133f29-ef02-4408-8f8d-2bbea3275d91",
+      "shortKey": "canonical_chemistry_sek1_redox_schemes",
+      "title": "Einfache Redoxgleichungen mit Oxidationszahlen erstellen",
+      "titleEn": "Create simple redox equations using oxidation numbers",
+      "description": "Die lernende Person kann Oxidationszahlen nutzen und einfache Redoxgleichungen fachlich korrekt erstellen.",
+      "descriptionEn": "The learner can use oxidation numbers and correctly create simple redox equations.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekI"
+      ],
+      "contains": [],
+      "requires": [
+        "11bea4c6-7b8a-47e0-8293-2eb1ce34cf66",
+        "bcf8b24b-3eed-4a36-8fb3-d6bffc1e193a"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-chemistry",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "PK2_MODELLIEREN",
+          "PK4_KOMMUNIZIEREN"
+        ],
+        "guidingIdeas": [
+          "BC_REAKTION"
+        ],
+        "phase": "GLOBAL",
+        "area": "Symbolsprache",
+        "topicCode": "CANONICAL.CHEMISTRY.SEK1.REDOX_SCHEMES"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-HE"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "bea90c22-b9c5-4c0c-9b10-89d875f50772",
+          "sourceLandscapeTitle": "Chemie Sekundarstufe I (Hessen, G9)",
+          "sourceGoalId": "343e6f57-6dcf-49c1-91c7-001dbe446c4e"
         }
       },
       "type": "atomic"
@@ -606,7 +1271,8 @@
       ],
       "contains": [],
       "requires": [
-        "4961130b-1ee8-58f2-a319-dff0a864db6a"
+        "4961130b-1ee8-58f2-a319-dff0a864db6a",
+        "bcf8b24b-3eed-4a36-8fb3-d6bffc1e193a"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-chemistry",

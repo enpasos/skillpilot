@@ -125,7 +125,7 @@ class GoalMappingRepositoryFixtureTest {
         assertThat(file.getVersion()).isEqualTo(1);
         assertThat(file.getSourceLandscapeId()).isEqualTo(HESSEN_PHYSICS_SEK1_LANDSCAPE_ID);
         assertThat(file.getTargetLandscapeId()).isEqualTo(CANONICAL_PHYSICS_PILOT_ID);
-        assertThat(file.getMappings()).hasSize(28);
+        assertThat(file.getMappings()).hasSize(53);
         assertThat(file.getMappings())
                 .extracting(GoalMappingEntry::getMatchType)
                 .containsOnly("exact");
@@ -138,7 +138,12 @@ class GoalMappingRepositoryFixtureTest {
                         Tuple.tuple("ac0b8d1b-294b-4faa-b407-e719b9f914c1", "cd4fe3f9-a04d-4dcc-9c0b-db214daa72ba", "exact"),
                         Tuple.tuple("3ebf05d1-ddd5-4199-8899-9d2fe34cf484", "722857cf-f327-5740-8151-64eb92195ec8", "exact"),
                         Tuple.tuple("9d0b0fea-c866-42da-8c26-9a9691977d35", "051cedc5-d380-4716-9751-b18f2e67a912", "exact"),
+                        Tuple.tuple("16100fe0-3569-4290-94df-e14c472cbd6e", "2d3d42ae-492b-4795-a22f-eeca03aaed38", "exact"),
                         Tuple.tuple("c8a36d2b-19f9-4cbf-b564-537678388646", "dd7cdcea-0950-461b-96ac-ce49989fca47", "exact"),
+                        Tuple.tuple("f9ae3721-ff6d-40fe-94e0-3ed12264d044", "940978fa-1f2d-4e54-9c28-081a6df9b76f", "exact"),
+                        Tuple.tuple("6866bdd0-1015-4a9d-9be3-91535d66cf97", "d27c8860-12a4-4d7d-9849-ccd8b7caca48", "exact"),
+                        Tuple.tuple("15e2d789-f003-4934-a73c-e01d3f22e7f1", "9ac4973a-21d5-48a5-90b4-eb90e10391ae", "exact"),
+                        Tuple.tuple("46717be6-c3b6-40d4-9f21-1bac1a1b05e7", "fbe0faae-7fba-482b-888e-341f926770f3", "exact"),
                         Tuple.tuple("cea91b60-1970-40bb-bbed-b0c142f26b0e", "79cb1695-f985-443a-b93e-27b57ab474b7", "exact"),
                         Tuple.tuple("10109c2a-788e-4969-9476-82d7cdd06f8f", "cca06d84-28fe-4b80-9bcd-968dda026e0e", "exact"),
                         Tuple.tuple("800df877-c091-400c-ac88-2286b79524c0", "4924d83e-5e4b-4819-9d70-86cda3496195", "exact"),
@@ -153,10 +158,30 @@ class GoalMappingRepositoryFixtureTest {
                         Tuple.tuple("669d4da4-762a-40db-98b9-dab127d86346", "1911920e-b099-4310-82f2-b47f51a78b33", "exact"),
                         Tuple.tuple("c4dd83af-0a29-401b-af0b-95d76d3470fa", "eeba6bf8-a2b9-4d7d-a1d6-67286c923cef", "exact"),
                         Tuple.tuple("9a37d05c-e957-4900-b722-539e6cec4ca7", "cbb26ed2-6979-46f6-a4ae-128f5c5d9d76", "exact"),
+                        Tuple.tuple("facfd62d-9240-47bf-b2a5-919ada412987", "8917c71a-bfcb-4003-971c-188a69446b60", "exact"),
+                        Tuple.tuple("f882cc85-6225-4f63-98f7-2349d2c7385c", "2a6703e0-2a6f-4ebf-a5c6-7aa05a4b86eb", "exact"),
+                        Tuple.tuple("24350b45-cd48-4c91-b0c6-71480fa1681f", "f6f646db-3544-49ed-8f55-67bc684e80ce", "exact"),
+                        Tuple.tuple("89e717eb-c36a-4945-872c-5da7b1292b5c", "979e0d0d-8933-4ace-814f-f28060ad280f", "exact"),
                         Tuple.tuple("eb6bf9d8-943c-42af-85fc-1b3d08985b6f", "84b1bc70-dadf-449b-a8d4-8bcee1da1fea", "exact"),
                         Tuple.tuple("171b3ec7-1039-45a6-8dcb-be560f1517e5", "078ce4d2-3193-4cd0-ae59-4fb8ab16e9e5", "exact"),
                         Tuple.tuple("1402524f-0965-44f1-b560-7a29690ae8a8", "90e1e6cf-4092-41d6-81f7-5206f9d68f84", "exact"),
-                        Tuple.tuple("8690086e-dfbf-4dd1-a996-e34b7e7db712", "6367d45e-919e-4c19-bcd9-7770a2d51139", "exact"));
+                        Tuple.tuple("8690086e-dfbf-4dd1-a996-e34b7e7db712", "6367d45e-919e-4c19-bcd9-7770a2d51139", "exact"),
+                        Tuple.tuple("bdfe02d7-0792-454b-8a00-684c8f4ac11d", "84096c02-0767-4725-8956-37ce7e4b9bbf", "exact"),
+                        Tuple.tuple("6c0b16ef-94d3-417b-8ba8-0da48aa2e989", "5308de76-79f0-44f4-8cb7-fc9de4772217", "exact"),
+                        Tuple.tuple("dffc852e-d7a3-42b9-968e-19575a52bd1e", "310b4f62-e261-46be-bb1b-1f125fc1699a", "exact"),
+                        Tuple.tuple("f6f2eaca-e635-402b-ba7a-5bac7de925e4", "e11b2ee9-e528-4857-9ecd-59bd460fba81", "exact"),
+                        Tuple.tuple("ddb0a146-de79-44ce-832a-81295f7c4b8d", "24b4686a-e8a6-4583-8952-33e6f653c2a3", "exact"),
+                        Tuple.tuple("7d8f00d0-311a-42a3-a5ad-bb9904ebecc8", "41fd5575-b1a6-40e7-8ea2-66b75a597a79", "exact"),
+                        Tuple.tuple("e5e63e4e-6b2c-4474-b6d7-3f0fde2834fb", "c1006f55-0406-48cc-92d4-0d8345897cf4", "exact"),
+                        Tuple.tuple("4e05720e-2009-420f-a2d3-5c2d3489e809", "3c82510a-1f12-4eaa-81c2-8599437a5b85", "exact"),
+                        Tuple.tuple("2b396054-8508-4f4d-80ef-2c89cc64ec7f", "10aad90e-a1db-42b6-8d1e-1d856e14b47d", "exact"),
+                        Tuple.tuple("28dfd9ce-59b3-4d32-8d28-f7dd22cb08c4", "3e33813d-db75-4571-8345-3845b02b956d", "exact"),
+                        Tuple.tuple("9e98a602-fddd-4aad-b55a-cff4900097e4", "e62e48bc-2387-4b2b-8d6f-7a06c8e7580e", "exact"),
+                        Tuple.tuple("cc82aa80-b71d-46b8-8ebe-cee49531f907", "48fb4a0b-62a0-4c8f-9792-3aeef6316885", "exact"),
+                        Tuple.tuple("39fd7151-c6ee-4d60-84e3-e762d3cac33e", "a4681378-ade4-4f20-bf77-fb020469510f", "exact"),
+                        Tuple.tuple("503f87c1-9e30-4731-8753-6a382f0ce31d", "cdab9fd1-5054-4a7e-8c9a-4474062ddd23", "exact"),
+                        Tuple.tuple("27a7deb7-f195-4a65-a064-74d170f181fc", "1c8dd14c-0fbf-44a5-85a3-25c8e3bd0075", "exact"),
+                        Tuple.tuple("2ac88d02-ef92-4968-9df3-e4c22e7e4749", "cc9eea77-2a7f-4f35-ac22-6c230c0d6fa5", "exact"));
     }
 
     @Test
@@ -166,10 +191,28 @@ class GoalMappingRepositoryFixtureTest {
         assertThat(file.getVersion()).isEqualTo(1);
         assertThat(file.getSourceLandscapeId()).isEqualTo(HESSEN_CHEMISTRY_SEK1_LANDSCAPE_ID);
         assertThat(file.getTargetLandscapeId()).isEqualTo(CANONICAL_CHEMISTRY_ID);
-        assertThat(file.getMappings()).hasSize(8);
+        assertThat(file.getMappings()).hasSize(22);
         assertThat(file.getMappings())
                 .extracting(GoalMappingEntry::getMatchType)
                 .contains("exact", "partial");
+        assertThat(file.getMappings())
+                .extracting(GoalMappingEntry::getLegacyGoalId, GoalMappingEntry::getCanonicalGoalId, GoalMappingEntry::getMatchType)
+                .contains(
+                        Tuple.tuple("8feb6b0f-d39c-4daf-9a13-9cb00413ff55", "3588c15e-adbe-5b81-b3a7-10da20574e3d", "exact"),
+                        Tuple.tuple("3b6a4f7c-178c-4b0a-b786-f7e11693ea6d", "c7d4d9f7-d23f-44fc-bf22-3872e0f2b9a0", "exact"),
+                        Tuple.tuple("474c73d9-d8bf-4fa3-9fbf-ee21207c2aab", "5a709938-e0f5-42b7-94f0-cfded08963a2", "exact"),
+                        Tuple.tuple("13a84828-e2e6-4bde-9c26-f4b54eb90fd3", "a00d302b-7762-4b9d-a6d7-de0c58b35540", "exact"),
+                        Tuple.tuple("ff3db7ec-444f-44d6-bd8c-7e452de3f2a0", "8d4ef102-e6a6-4d2e-bb6b-e707d3f2e566", "exact"),
+                        Tuple.tuple("0b9ff7a1-3767-4942-8573-3474aa0fd572", "bcf8b24b-3eed-4a36-8fb3-d6bffc1e193a", "exact"),
+                        Tuple.tuple("8933dbfb-1d50-41fc-8e59-3ec9b65ed482", "bb707fda-504c-4699-a78c-d0a6c320658f", "exact"),
+                        Tuple.tuple("b6808c45-970e-4918-b57e-294d03409ad7", "1286f2fe-89b7-4454-8e11-85b6abd6e278", "exact"),
+                        Tuple.tuple("4f94579b-7db0-4792-84f2-eb38df3327b3", "1bdaf7f2-ff3b-455a-a7fb-95a44642762a", "exact"),
+                        Tuple.tuple("ef2e2a68-566f-4059-acd4-9ed504c411b9", "fb3bdf39-4baf-4510-a192-c8a12fbf5dba", "exact"),
+                        Tuple.tuple("d902cc1b-fe62-4a4a-bbc1-d1dc54b34a54", "e0d05c36-eaac-4c75-8ead-3fd5bdafefca", "exact"),
+                        Tuple.tuple("ae7e4674-eadc-4d75-a3a0-8466a5688e25", "9b5d6326-d27c-4ece-8c72-debda705464a", "exact"),
+                        Tuple.tuple("aba0f8ad-06c3-4553-ad37-e060c38cb0ff", "e7c363d4-e02d-4895-8750-ba62c2eb63fe", "exact"),
+                        Tuple.tuple("877990c1-6534-4328-81aa-5351396eb3d1", "11bea4c6-7b8a-47e0-8293-2eb1ce34cf66", "exact"),
+                        Tuple.tuple("343e6f57-6dcf-49c1-91c7-001dbe446c4e", "22133f29-ef02-4408-8f8d-2bbea3275d91", "exact"));
     }
 
     @Test
