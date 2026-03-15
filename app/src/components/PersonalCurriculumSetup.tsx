@@ -373,7 +373,7 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
                 <div className="p-6 border-b border-border-color flex items-center justify-between">
                     <div>
                         <h2 className="text-xl font-bold text-text-primary">
-                            {retirementOnly ? 'Kompatibilitaetsansicht' : 'Mein Lehrplan'}
+                            {retirementOnly ? 'Legacy-Ansicht' : 'Mein Lehrplan'}
                         </h2>
                         <p className="text-text-secondary text-sm mt-1">
                             {retirementOnly

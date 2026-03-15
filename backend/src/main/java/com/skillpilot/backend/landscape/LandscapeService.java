@@ -60,6 +60,13 @@ public class LandscapeService {
             "7651cbe2-5fb8-464d-b0c4-3e830cda41dd",
             "a8c23058-6998-49f2-9f3b-a85e951d5ab0",
             "a334a745-1d67-4e1d-86a5-dadc04f144d2");
+    private static final Set<String> LEGACY_HIDDEN_BY_DEFAULT_LANDSCAPE_IDS = Set.of(
+            "f050ee48-6891-4f83-995f-0f8be5e31b7f",
+            "b167b4cd-4b78-4c84-a721-6b2adbbcab3c",
+            "996d097a-cac2-4b5f-979a-b3a0b9803265",
+            "bea90c22-b9c5-4c0c-9b10-89d875f50772",
+            "71438941-0ceb-46ee-ad31-773cee700779",
+            "762de708-85fa-4324-958e-56002a318f7f");
 
     private final LandscapeProperties properties;
     private final ObjectMapper objectMapper;
@@ -545,7 +552,8 @@ public class LandscapeService {
             for (String id : curriculumManifest) {
                 LandscapeSummary summary = byId.get(id);
                 if (summary != null) {
-                    if (!includeCompatibility && summary.isCompatibilityOnly()) {
+                    if (!includeCompatibility
+                            && (summary.isCompatibilityOnly() || summary.isLegacyHiddenByDefault())) {
                         continue;
                     }
                     rootSummaries.add(summary);
@@ -555,7 +563,7 @@ public class LandscapeService {
             // Filter out non-root curricula (those that are contained in others)
             Set<String> referencedIds = getReferencedLandscapeIds();
             rootSummaries = summaries.stream()
-                    .filter(s -> includeCompatibility || !s.isCompatibilityOnly())
+                    .filter(s -> includeCompatibility || (!s.isCompatibilityOnly() && !s.isLegacyHiddenByDefault()))
                     .filter(s -> !referencedIds.contains(s.getCurriculumId()))
                     .filter(s -> {
                         LearningLandscape landscape = cachedById.get(s.getCurriculumId());
@@ -662,6 +670,10 @@ public class LandscapeService {
 
     public boolean isCompatibilityOnlyLandscape(String landscapeId) {
         return landscapeId != null && COMPATIBILITY_ONLY_LANDSCAPE_IDS.contains(landscapeId);
+    }
+
+    public boolean isLegacyHiddenByDefaultLandscape(String landscapeId) {
+        return landscapeId != null && LEGACY_HIDDEN_BY_DEFAULT_LANDSCAPE_IDS.contains(landscapeId);
     }
 
     public String resolveSourceLandscapeJurisdiction(String landscapeId) {
@@ -1124,7 +1136,8 @@ public class LandscapeService {
         return new LandscapeSummary(ll.getLandscapeId(), displayTitle, displayDescription,
                 country, region, mappedType, mappedSubject, ll.getLocale(),
                 ll.getFilters() != null ? ll.getFilters() : new ArrayList<>(),
-                isCompatibilityOnlyLandscape(ll.getLandscapeId()));
+                isCompatibilityOnlyLandscape(ll.getLandscapeId()),
+                isLegacyHiddenByDefaultLandscape(ll.getLandscapeId()));
     }
 
     private Set<String> loadCurriculumManifest(Path dir, Set<String> knownLandscapeIds) {

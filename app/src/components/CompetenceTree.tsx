@@ -280,7 +280,7 @@ const TreeNode: React.FC<TreeNodeProps> = ({
           readOnly ? (
             <div
               className={`p-1 ${isPlanned ? 'text-red-400' : 'text-slate-300 dark:text-slate-600'}`}
-              title="In der Kompatibilitaetsansicht schreibgeschuetzt"
+              title="In der Legacy-Ansicht schreibgeschuetzt"
             >
               {isPlanned ? <SquareX size={16} className="text-red-400" /> : <Square size={16} className="text-slate-300" />}
             </div>

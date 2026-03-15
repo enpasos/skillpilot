@@ -19,6 +19,7 @@ import { getSrsFilterTagsForGoal } from '../utils/srsTags'
 import {
   CANONICAL_GYMNASIUM_ROOT_ID,
   LEGACY_HESSEN_GYMNASIUM_UPPER_IDS,
+  LEGACY_HESSEN_GYMNASIUM_LOWER_IDS,
 } from '../utils/curriculumDisplay'
 import {
   ABI26_CAMPAIGN_SLUG,
@@ -50,6 +51,89 @@ interface LearnerViewProps {
 }
 
 type PersonalCurriculumConfig = Record<string, { selected: boolean; filterId?: string }>
+
+const HESSEN_GYMNASIUM_LOWER_ROOT_ID = 'f050ee48-6891-4f83-995f-0f8be5e31b7f'
+const HESSEN_GYMNASIUM_LOWER_MATH_ID = 'b167b4cd-4b78-4c84-a721-6b2adbbcab3c'
+const HESSEN_GYMNASIUM_LOWER_PHYSICS_ID = '996d097a-cac2-4b5f-979a-b3a0b9803265'
+const HESSEN_GYMNASIUM_LOWER_CHEMISTRY_ID = 'bea90c22-b9c5-4c0c-9b10-89d875f50772'
+const HESSEN_GYMNASIUM_LOWER_BIOLOGY_ID = '71438941-0ceb-46ee-ad31-773cee700779'
+const HESSEN_GYMNASIUM_LOWER_FRENCH_ID = '762de708-85fa-4324-958e-56002a318f7f'
+
+type HessenLowerSelection = {
+  mathSelected: boolean
+  physicsSelected: boolean
+  chemistrySelected: boolean
+  biologySelected: boolean
+  frenchSelected: boolean
+  retirementEligible: boolean
+}
+
+const inferLegacyHessenLowerSelection = (
+  selectedCurriculum: string | null | undefined,
+  personalConfig: PersonalCurriculumConfig,
+  plannedGoals: Set<string>,
+  activeGoalId: string | null,
+  goalIndexAll: Map<string, UiGoal>,
+): HessenLowerSelection => {
+  if (!selectedCurriculum || !LEGACY_HESSEN_GYMNASIUM_LOWER_IDS.has(selectedCurriculum)) {
+    return {
+      mathSelected: false,
+      physicsSelected: false,
+      chemistrySelected: false,
+      biologySelected: false,
+      frenchSelected: false,
+      retirementEligible: false,
+    }
+  }
+
+  const goalBelongsToLandscape = (goalId: string | null | undefined, landscapeId: string) =>
+    !!goalId && goalIndexAll.get(goalId)?.landscapeId === landscapeId
+
+  let mathSelected = selectedCurriculum === HESSEN_GYMNASIUM_LOWER_MATH_ID
+  let physicsSelected = selectedCurriculum === HESSEN_GYMNASIUM_LOWER_PHYSICS_ID
+  let chemistrySelected = selectedCurriculum === HESSEN_GYMNASIUM_LOWER_CHEMISTRY_ID
+  let biologySelected = selectedCurriculum === HESSEN_GYMNASIUM_LOWER_BIOLOGY_ID
+  let frenchSelected = selectedCurriculum === HESSEN_GYMNASIUM_LOWER_FRENCH_ID
+
+  if (selectedCurriculum === HESSEN_GYMNASIUM_LOWER_ROOT_ID) {
+    const plannedGoalIds = Array.from(plannedGoals)
+    mathSelected = personalConfig[HESSEN_GYMNASIUM_LOWER_MATH_ID]?.selected === true
+      || plannedGoalIds.some((goalId) => goalBelongsToLandscape(goalId, HESSEN_GYMNASIUM_LOWER_MATH_ID))
+      || goalBelongsToLandscape(activeGoalId, HESSEN_GYMNASIUM_LOWER_MATH_ID)
+    physicsSelected = personalConfig[HESSEN_GYMNASIUM_LOWER_PHYSICS_ID]?.selected === true
+      || plannedGoalIds.some((goalId) => goalBelongsToLandscape(goalId, HESSEN_GYMNASIUM_LOWER_PHYSICS_ID))
+      || goalBelongsToLandscape(activeGoalId, HESSEN_GYMNASIUM_LOWER_PHYSICS_ID)
+    chemistrySelected = personalConfig[HESSEN_GYMNASIUM_LOWER_CHEMISTRY_ID]?.selected === true
+      || plannedGoalIds.some((goalId) => goalBelongsToLandscape(goalId, HESSEN_GYMNASIUM_LOWER_CHEMISTRY_ID))
+      || goalBelongsToLandscape(activeGoalId, HESSEN_GYMNASIUM_LOWER_CHEMISTRY_ID)
+    biologySelected = personalConfig[HESSEN_GYMNASIUM_LOWER_BIOLOGY_ID]?.selected === true
+      || plannedGoalIds.some((goalId) => goalBelongsToLandscape(goalId, HESSEN_GYMNASIUM_LOWER_BIOLOGY_ID))
+      || goalBelongsToLandscape(activeGoalId, HESSEN_GYMNASIUM_LOWER_BIOLOGY_ID)
+    frenchSelected = personalConfig[HESSEN_GYMNASIUM_LOWER_FRENCH_ID]?.selected === true
+      || plannedGoalIds.some((goalId) => goalBelongsToLandscape(goalId, HESSEN_GYMNASIUM_LOWER_FRENCH_ID))
+      || goalBelongsToLandscape(activeGoalId, HESSEN_GYMNASIUM_LOWER_FRENCH_ID)
+  }
+
+  if (!mathSelected && !physicsSelected && !chemistrySelected && !biologySelected && !frenchSelected) {
+    mathSelected = true
+    physicsSelected = true
+    chemistrySelected = true
+    biologySelected = true
+  }
+
+  if (physicsSelected) {
+    mathSelected = true
+  }
+
+  return {
+    mathSelected,
+    physicsSelected,
+    chemistrySelected,
+    biologySelected,
+    frenchSelected,
+    retirementEligible: !frenchSelected && (mathSelected || physicsSelected || chemistrySelected || biologySelected),
+  }
+}
 
 const isWildcardFilter = (filterId?: string) => {
   if (!filterId) return false
@@ -641,18 +725,47 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     }
   }, [skillpilotId])
 
-  const canCutoverLegacyHessenGymnasium = useMemo(() => {
+  const isUpperLegacyHessenSession = useMemo(() => {
     const selectedCurriculum = learnerData?.selectedCurriculum
     return !!selectedCurriculum && LEGACY_HESSEN_GYMNASIUM_UPPER_IDS.has(selectedCurriculum)
   }, [learnerData?.selectedCurriculum])
+  const lowerLegacySelection = useMemo(() => inferLegacyHessenLowerSelection(
+    learnerData?.selectedCurriculum,
+    personalConfig,
+    plannedGoals,
+    effectiveActiveGoalId,
+    goalIndexAll,
+  ), [learnerData?.selectedCurriculum, personalConfig, plannedGoals, effectiveActiveGoalId, goalIndexAll])
+  const isLowerLegacyRetirementOnly = lowerLegacySelection.retirementEligible
+  const canCutoverLegacyHessenGymnasium = isUpperLegacyHessenSession || isLowerLegacyRetirementOnly
+  const supportsCompatibilityArchive = isUpperLegacyHessenSession
   const isCompatibilityAuditOnly = canCutoverLegacyHessenGymnasium
   const shouldShowCompatibilityRetirementGate =
     compatibilityRouteRetired &&
-    canCutoverLegacyHessenGymnasium
+    isUpperLegacyHessenSession
 
   const legacyCutoverPreviewItems = useMemo(() => {
     const selectedCurriculum = learnerData?.selectedCurriculum
-    if (!selectedCurriculum || !LEGACY_HESSEN_GYMNASIUM_UPPER_IDS.has(selectedCurriculum)) {
+    if (!selectedCurriculum) {
+      return []
+    }
+
+    if (isLowerLegacyRetirementOnly) {
+      const selectedSubjects = [
+        lowerLegacySelection.mathSelected ? 'Mathematik' : null,
+        lowerLegacySelection.physicsSelected ? 'Physik' : null,
+        lowerLegacySelection.chemistrySelected ? 'Chemie' : null,
+        lowerLegacySelection.biologySelected ? 'Biologie' : null,
+      ].filter(Boolean).join(', ')
+
+      return [
+        { label: 'Quelle', value: 'Hessen Sek I' },
+        { label: 'Ziel', value: 'Gymnasium (DE)' },
+        { label: 'Faecher', value: selectedSubjects || 'Mathematik, Physik, Chemie, Biologie' },
+      ]
+    }
+
+    if (!LEGACY_HESSEN_GYMNASIUM_UPPER_IDS.has(selectedCurriculum)) {
       return []
     }
 
@@ -862,7 +975,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     }
 
     return items
-  }, [learnerData?.selectedCurriculum, personalConfig])
+  }, [learnerData?.selectedCurriculum, personalConfig, isLowerLegacyRetirementOnly, lowerLegacySelection])
 
 
   const refreshState = useCallback(
@@ -1019,8 +1132,8 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
       setModalTitle(language === 'de' ? 'Nur Lesemodus' : 'Read-only mode')
       setModalMessage(
         language === 'de'
-          ? 'In dieser Kompatibilitaetsansicht koennen keine neuen aktiven Lernziele gesetzt werden. Bitte auf Gymnasium (DE) umstellen.'
-          : 'You cannot set new active goals in this compatibility view. Please migrate to Gymnasium (DE).',
+          ? 'In dieser Legacy-Ansicht koennen keine neuen aktiven Lernziele gesetzt werden. Bitte auf Gymnasium (DE) umstellen.'
+          : 'You cannot set new active goals in this legacy view. Please migrate to Gymnasium (DE).',
       )
       setModalType('info')
       setIsModalOpen(true)
@@ -1089,8 +1202,8 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
       setModalTitle(language === 'de' ? 'Nur Lesemodus' : 'Read-only mode')
       setModalMessage(
         language === 'de'
-          ? 'Der Lernfokus kann in dieser Kompatibilitaetsansicht nicht mehr veraendert werden. Bitte auf Gymnasium (DE) umstellen.'
-          : 'Planned-goal changes are disabled in this compatibility view. Please migrate to Gymnasium (DE).',
+          ? 'Der Lernfokus kann in dieser Legacy-Ansicht nicht mehr veraendert werden. Bitte auf Gymnasium (DE) umstellen.'
+          : 'Planned-goal changes are disabled in this legacy view. Please migrate to Gymnasium (DE).',
       )
       setModalType('info')
       setIsModalOpen(true)
@@ -1897,22 +2010,28 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
                       {language === 'de' ? 'Hessen-Lernstand erkannt' : 'Hesse learner state detected'}
                     </div>
                     <p className="mt-1 text-sm text-amber-900/90 dark:text-amber-100/90">
-                      {language === 'de'
-                        ? 'Diese Hessen-Lernspur bleibt als eingefrorenes Kompatibilitaetsarchiv exportierbar. Fuer die gemeinsame DE-Struktur kannst du jetzt direkt auf Gymnasium (DE) umstellen, ohne deinen bisherigen Mastery-Verlauf zu verlieren.'
-                        : 'This Hesse learner trail remains exportable as a frozen compatibility archive. You can now move directly to Gymnasium (DE) without losing your existing mastery history.'}
+                      {isUpperLegacyHessenSession
+                        ? (language === 'de'
+                          ? 'Diese Hessen-Lernspur bleibt als eingefrorenes Kompatibilitaetsarchiv exportierbar. Fuer die gemeinsame DE-Struktur kannst du jetzt direkt auf Gymnasium (DE) umstellen, ohne deinen bisherigen Mastery-Verlauf zu verlieren.'
+                          : 'This Hesse learner trail remains exportable as a frozen compatibility archive. You can now move directly to Gymnasium (DE) without losing your existing mastery history.')
+                        : (language === 'de'
+                          ? 'Diese Hessen-Sek-I-Lernspur laeuft jetzt als schreibgeschuetzte Legacy-Ansicht. Fuer die gemeinsame DE-Struktur kannst du direkt auf Gymnasium (DE) umstellen, ohne deinen bisherigen Mastery-Verlauf zu verlieren.'
+                          : 'This Hesse lower-secondary learner trail now runs as a read-only legacy view. You can move directly to Gymnasium (DE) without losing your existing mastery history.')}
                     </p>
                   </div>
                   <div className="flex shrink-0 gap-2">
-                    <button
-                      type="button"
-                      onClick={handleCompatibilityArchiveDownload}
-                      disabled={isCompatibilityArchivePending}
-                      className="rounded-lg border border-amber-300 bg-white px-3 py-2 text-sm font-medium text-amber-900 transition-colors hover:bg-amber-100 disabled:cursor-not-allowed disabled:opacity-60 dark:border-amber-700 dark:bg-amber-950/40 dark:text-amber-100 dark:hover:bg-amber-900/50"
-                    >
-                      {isCompatibilityArchivePending
-                        ? (language === 'de' ? 'Erstelle Archiv...' : 'Creating archive...')
-                        : (language === 'de' ? 'Archiv herunterladen' : 'Download archive')}
-                    </button>
+                    {supportsCompatibilityArchive && (
+                      <button
+                        type="button"
+                        onClick={handleCompatibilityArchiveDownload}
+                        disabled={isCompatibilityArchivePending}
+                        className="rounded-lg border border-amber-300 bg-white px-3 py-2 text-sm font-medium text-amber-900 transition-colors hover:bg-amber-100 disabled:cursor-not-allowed disabled:opacity-60 dark:border-amber-700 dark:bg-amber-950/40 dark:text-amber-100 dark:hover:bg-amber-900/50"
+                      >
+                        {isCompatibilityArchivePending
+                          ? (language === 'de' ? 'Erstelle Archiv...' : 'Creating archive...')
+                          : (language === 'de' ? 'Archiv herunterladen' : 'Download archive')}
+                      </button>
+                    )}
                     <button
                       type="button"
                       onClick={() => setIsSetupOpen(true)}
@@ -2090,7 +2209,11 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
         initialStrictMode={learnerData?.strictMode}
         onPreferencesChange={handlePreferencesChange}
         migrationTitle={canCutoverLegacyHessenGymnasium ? 'Auf Gymnasium (DE) umstellen' : undefined}
-        migrationDescription={canCutoverLegacyHessenGymnasium ? 'Dein bisheriger Hessen-Lernstand bleibt erhalten und wird auf die gemeinsame DE-Struktur übernommen. Mathe, Physik, Chemie, Biologie, Informatik, Geschichte, Deutsch, Politik und Wirtschaft, Englisch, Französisch, Latein, Spanisch, Griechisch, Chinesisch, Musik und Wirtschaftswissenschaften laufen danach unter einem gemeinsamen Gymnasium-Root weiter.' : undefined}
+        migrationDescription={canCutoverLegacyHessenGymnasium
+          ? (isUpperLegacyHessenSession
+            ? 'Dein bisheriger Hessen-Lernstand bleibt erhalten und wird auf die gemeinsame DE-Struktur übernommen. Mathe, Physik, Chemie, Biologie, Informatik, Geschichte, Deutsch, Politik und Wirtschaft, Englisch, Französisch, Latein, Spanisch, Griechisch, Chinesisch, Musik und Wirtschaftswissenschaften laufen danach unter einem gemeinsamen Gymnasium-Root weiter.'
+            : 'Dein bisheriger Hessen-Sek-I-Lernstand bleibt erhalten und wird auf die gemeinsame DE-Struktur übernommen. Mathe, Physik, Chemie und Biologie laufen danach unter einem gemeinsamen Gymnasium-Root weiter.')
+          : undefined}
         migrationActionLabel={canCutoverLegacyHessenGymnasium ? 'Jetzt umstellen' : undefined}
         migrationActionPending={isCutoverPending}
         onMigrationAction={canCutoverLegacyHessenGymnasium ? handleCutoverCanonicalGymnasium : undefined}

@@ -103,6 +103,7 @@ export interface LearningLandscape {
   title: string
   description: string
   compatibilityOnly?: boolean
+  legacyHiddenByDefault?: boolean
   filters?: LandscapeFilter[]
   goals: LearningGoal[]
 }

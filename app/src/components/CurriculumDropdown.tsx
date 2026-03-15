@@ -5,6 +5,7 @@ import {
     CANONICAL_GYMNASIUM_ROOT_ID,
     getCurriculumDisplayTitle,
     isCompatibilityOnlyCurriculum,
+    isLegacyHiddenByDefaultCurriculum,
 } from '../utils/curriculumDisplay'
 
 export interface LandscapeSummary {
@@ -21,6 +22,7 @@ export interface LandscapeSummary {
     title?: string
     schoolType?: string
     compatibilityOnly?: boolean
+    legacyHiddenByDefault?: boolean
 }
 
 interface CurriculumDropdownProps {
@@ -61,6 +63,7 @@ export const CurriculumDropdown: React.FC<CurriculumDropdownProps> = ({
                 const url = apiBase ? `${apiBase}/api/ui/landscapes` : '/api/ui/landscapes'
                 const includeCompatibility = showCompatibilityViews
                     || isCompatibilityOnlyCurriculum(currentLandscapeId, null)
+                    || isLegacyHiddenByDefaultCurriculum(currentLandscapeId, null)
 
                 // Pass current language to backend
                 const query = `?lang=${language}&includeCompatibility=${includeCompatibility ? 'true' : 'false'}`
@@ -111,11 +114,13 @@ export const CurriculumDropdown: React.FC<CurriculumDropdownProps> = ({
         subject: l.subject,
         language,
         compatibilityOnly: l.compatibilityOnly,
+        legacyHiddenByDefault: l.legacyHiddenByDefault,
     })
 
     const getSortPriority = (l: LandscapeSummary) => {
         if (l.curriculumId === CANONICAL_GYMNASIUM_ROOT_ID) return 0
         if (isCompatibilityOnlyCurriculum(l.curriculumId, l.compatibilityOnly)) return 2
+        if (isLegacyHiddenByDefaultCurriculum(l.curriculumId, l.legacyHiddenByDefault)) return 2
         return 1
     }
 
@@ -149,14 +154,23 @@ export const CurriculumDropdown: React.FC<CurriculumDropdownProps> = ({
     });
 
     const primaryLandscapes = sortedLandscapes.filter(
-        (landscape) => !isCompatibilityOnlyCurriculum(landscape.curriculumId, landscape.compatibilityOnly),
+        (landscape) =>
+            !isCompatibilityOnlyCurriculum(landscape.curriculumId, landscape.compatibilityOnly)
+            && !isLegacyHiddenByDefaultCurriculum(landscape.curriculumId, landscape.legacyHiddenByDefault),
     )
     const compatibilityLandscapes = sortedLandscapes.filter((landscape) =>
         isCompatibilityOnlyCurriculum(landscape.curriculumId, landscape.compatibilityOnly),
     )
+    const legacyLandscapes = sortedLandscapes.filter((landscape) =>
+        !isCompatibilityOnlyCurriculum(landscape.curriculumId, landscape.compatibilityOnly)
+        && isLegacyHiddenByDefaultCurriculum(landscape.curriculumId, landscape.legacyHiddenByDefault),
+    )
     const visibleCompatibilityLandscapes = showCompatibilityViews
         ? compatibilityLandscapes
         : compatibilityLandscapes.filter((landscape) => landscape.curriculumId === currentLandscapeId)
+    const visibleLegacyLandscapes = showCompatibilityViews
+        ? legacyLandscapes
+        : legacyLandscapes.filter((landscape) => landscape.curriculumId === currentLandscapeId)
 
     const categoryLabels: Record<Category, string> = {
         'SCHOOL': language === 'de' ? 'Schule' : 'School',
@@ -203,6 +217,15 @@ export const CurriculumDropdown: React.FC<CurriculumDropdownProps> = ({
                 {visibleCompatibilityLandscapes.length > 0 && (
                     <optgroup label={language === 'de' ? 'Kompatibilitaetsansichten' : 'Compatibility views'}>
                         {visibleCompatibilityLandscapes.map((l) => (
+                            <option key={l.curriculumId} value={l.curriculumId} className="bg-input-bg text-text-primary">
+                                {getDisplayTitle(l)}
+                            </option>
+                        ))}
+                    </optgroup>
+                )}
+                {visibleLegacyLandscapes.length > 0 && (
+                    <optgroup label={language === 'de' ? 'Legacy-Ansichten' : 'Legacy views'}>
+                        {visibleLegacyLandscapes.map((l) => (
                             <option key={l.curriculumId} value={l.curriculumId} className="bg-input-bg text-text-primary">
                                 {getDisplayTitle(l)}
                             </option>

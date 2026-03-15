@@ -13,14 +13,21 @@ public class LandscapeSummary {
     private String locale;
     private List<LandscapeFilter> filters;
     private boolean compatibilityOnly;
+    private boolean legacyHiddenByDefault;
 
     public LandscapeSummary(String curriculumId, String title, String description, String country, String region,
             String type, String subject, String locale, List<LandscapeFilter> filters) {
-        this(curriculumId, title, description, country, region, type, subject, locale, filters, false);
+        this(curriculumId, title, description, country, region, type, subject, locale, filters, false, false);
     }
 
     public LandscapeSummary(String curriculumId, String title, String description, String country, String region,
             String type, String subject, String locale, List<LandscapeFilter> filters, boolean compatibilityOnly) {
+        this(curriculumId, title, description, country, region, type, subject, locale, filters, compatibilityOnly, false);
+    }
+
+    public LandscapeSummary(String curriculumId, String title, String description, String country, String region,
+            String type, String subject, String locale, List<LandscapeFilter> filters, boolean compatibilityOnly,
+            boolean legacyHiddenByDefault) {
         this.curriculumId = curriculumId;
         this.title = title;
         this.description = description;
@@ -31,6 +38,7 @@ public class LandscapeSummary {
         this.locale = locale;
         this.filters = filters;
         this.compatibilityOnly = compatibilityOnly;
+        this.legacyHiddenByDefault = legacyHiddenByDefault;
     }
 
     public String getCurriculumId() {
@@ -71,5 +79,9 @@ public class LandscapeSummary {
 
     public boolean isCompatibilityOnly() {
         return compatibilityOnly;
+    }
+
+    public boolean isLegacyHiddenByDefault() {
+        return legacyHiddenByDefault;
     }
 }

@@ -139,10 +139,12 @@ public class LearnerService {
     private static final String HESSEN_GYMNASIUM_UPPER_CHINESE_ID = "7651cbe2-5fb8-464d-b0c4-3e830cda41dd";
     private static final String HESSEN_GYMNASIUM_UPPER_MUSIC_ID = "a8c23058-6998-49f2-9f3b-a85e951d5ab0";
     private static final String HESSEN_GYMNASIUM_UPPER_ECONOMICS_ID = "a334a745-1d67-4e1d-86a5-dadc04f144d2";
+    private static final String HESSEN_GYMNASIUM_LOWER_ROOT_ID = "f050ee48-6891-4f83-995f-0f8be5e31b7f";
     private static final String HESSEN_GYMNASIUM_LOWER_MATH_ID = "b167b4cd-4b78-4c84-a721-6b2adbbcab3c";
     private static final String HESSEN_GYMNASIUM_LOWER_PHYSICS_ID = "996d097a-cac2-4b5f-979a-b3a0b9803265";
     private static final String HESSEN_GYMNASIUM_LOWER_CHEMISTRY_ID = "bea90c22-b9c5-4c0c-9b10-89d875f50772";
     private static final String HESSEN_GYMNASIUM_LOWER_BIOLOGY_ID = "71438941-0ceb-46ee-ad31-773cee700779";
+    private static final String HESSEN_GYMNASIUM_LOWER_FRENCH_ID = "762de708-85fa-4324-958e-56002a318f7f";
     private static final String DEFAULT_COURSE_FILTER_ID = "GK";
 
     @Value("${skillpilot.security.signing-secret}")
@@ -1143,12 +1145,12 @@ public class LearnerService {
     @Transactional(readOnly = true)
     public void assertWritableLearningSession(String skillpilotId) {
         Learner learner = getLearner(skillpilotId);
-        if (!isReadOnlyCompatibilitySession(learner)) {
+        if (!isReadOnlyCompatibilitySession(learner) && !isReadOnlyLowerSecondaryLegacySession(learner)) {
             return;
         }
         throw new ResponseStatusException(
                 org.springframework.http.HttpStatus.CONFLICT,
-                "This compatibility-only learner session is read-only. Use the canonical cutover flow before changing learner state.");
+                "This retired legacy learner session is read-only. Use the canonical cutover flow before changing learner state.");
     }
 
     @Transactional(readOnly = true)
@@ -1170,6 +1172,33 @@ public class LearnerService {
         return curriculumId != null
                 && !curriculumId.isBlank()
                 && landscapeService.isCompatibilityOnlyLandscape(curriculumId);
+    }
+
+    private boolean isReadOnlyLowerSecondaryLegacySession(Learner learner) {
+        if (learner == null) {
+            return false;
+        }
+        String curriculumId = learner.getSelectedCurriculum();
+        if (curriculumId == null || curriculumId.isBlank()) {
+            return false;
+        }
+        if (!HESSEN_GYMNASIUM_LOWER_ROOT_ID.equals(curriculumId)
+                && !HESSEN_GYMNASIUM_LOWER_MATH_ID.equals(curriculumId)
+                && !HESSEN_GYMNASIUM_LOWER_PHYSICS_ID.equals(curriculumId)
+                && !HESSEN_GYMNASIUM_LOWER_CHEMISTRY_ID.equals(curriculumId)
+                && !HESSEN_GYMNASIUM_LOWER_BIOLOGY_ID.equals(curriculumId)) {
+            return false;
+        }
+        List<String> storedPlannedGoals = plannedGoalRepository.findByLearner_SkillpilotId(learner.getSkillpilotId())
+                .stream()
+                .map(PlannedGoal::getGoalId)
+                .toList();
+        HessenLowerSecondarySelection selection = inferLowerSecondarySelectionState(learner, storedPlannedGoals);
+        return !selection.frenchSelected()
+                && (selection.mathSelected()
+                        || selection.physicsSelected()
+                        || selection.chemistrySelected()
+                        || selection.biologySelected());
     }
 
     @Transactional
@@ -1451,6 +1480,7 @@ public class LearnerService {
                 || HESSEN_GYMNASIUM_UPPER_CHINESE_ID.equals(curriculumId)
                 || HESSEN_GYMNASIUM_UPPER_MUSIC_ID.equals(curriculumId)
                 || HESSEN_GYMNASIUM_UPPER_ECONOMICS_ID.equals(curriculumId)
+                || HESSEN_GYMNASIUM_LOWER_ROOT_ID.equals(curriculumId)
                 || HESSEN_GYMNASIUM_LOWER_MATH_ID.equals(curriculumId)
                 || HESSEN_GYMNASIUM_LOWER_PHYSICS_ID.equals(curriculumId)
                 || HESSEN_GYMNASIUM_LOWER_CHEMISTRY_ID.equals(curriculumId)
@@ -1458,7 +1488,7 @@ public class LearnerService {
     }
 
     private CanonicalGymnasiumCutoverPlan buildCanonicalGymnasiumCutoverPlan(Learner learner, List<String> storedPlannedGoals) {
-        if (isSupportedHessenGymnasiumLowerSubjectCutoverSource(learner.getSelectedCurriculum())) {
+        if (isSupportedHessenGymnasiumLowerCutoverSource(learner.getSelectedCurriculum())) {
             return buildLowerSecondaryCanonicalGymnasiumCutoverPlan(learner, storedPlannedGoals);
         }
 
@@ -1717,16 +1747,26 @@ public class LearnerService {
                 normalizedLearningState != null ? normalizedLearningState : LearningState.FRONTIER);
     }
 
-    private boolean isSupportedHessenGymnasiumLowerSubjectCutoverSource(String curriculumId) {
-        return HESSEN_GYMNASIUM_LOWER_MATH_ID.equals(curriculumId)
+    private boolean isSupportedHessenGymnasiumLowerCutoverSource(String curriculumId) {
+        return HESSEN_GYMNASIUM_LOWER_ROOT_ID.equals(curriculumId)
+                || HESSEN_GYMNASIUM_LOWER_MATH_ID.equals(curriculumId)
                 || HESSEN_GYMNASIUM_LOWER_PHYSICS_ID.equals(curriculumId)
                 || HESSEN_GYMNASIUM_LOWER_CHEMISTRY_ID.equals(curriculumId)
                 || HESSEN_GYMNASIUM_LOWER_BIOLOGY_ID.equals(curriculumId);
     }
 
-    private CanonicalGymnasiumCutoverPlan buildLowerSecondaryCanonicalGymnasiumCutoverPlan(
+    private record HessenLowerSecondarySelection(
+            boolean mathSelected,
+            boolean physicsSelected,
+            boolean chemistrySelected,
+            boolean biologySelected,
+            boolean frenchSelected) {
+    }
+
+    private HessenLowerSecondarySelection inferLowerSecondarySelectionState(
             Learner learner,
             List<String> storedPlannedGoals) {
+        Map<String, Map<String, Object>> legacyConfig = parsePersonalCurriculumConfig(learner.getPersonalCurriculum());
         String currentCurriculumId = learner.getSelectedCurriculum();
         String activeGoalId = learner.getActiveGoalId();
 
@@ -1734,9 +1774,66 @@ public class LearnerService {
         boolean physicsSelected = HESSEN_GYMNASIUM_LOWER_PHYSICS_ID.equals(currentCurriculumId);
         boolean chemistrySelected = HESSEN_GYMNASIUM_LOWER_CHEMISTRY_ID.equals(currentCurriculumId);
         boolean biologySelected = HESSEN_GYMNASIUM_LOWER_BIOLOGY_ID.equals(currentCurriculumId);
+        boolean frenchSelected = HESSEN_GYMNASIUM_LOWER_FRENCH_ID.equals(currentCurriculumId);
+
+        if (HESSEN_GYMNASIUM_LOWER_ROOT_ID.equals(currentCurriculumId)) {
+            mathSelected = readSelectedFlag(legacyConfig, HESSEN_GYMNASIUM_LOWER_MATH_ID)
+                    || containsGoalFromLandscape(storedPlannedGoals, HESSEN_GYMNASIUM_LOWER_MATH_ID)
+                    || goalBelongsToLandscape(activeGoalId, HESSEN_GYMNASIUM_LOWER_MATH_ID);
+            physicsSelected = readSelectedFlag(legacyConfig, HESSEN_GYMNASIUM_LOWER_PHYSICS_ID)
+                    || containsGoalFromLandscape(storedPlannedGoals, HESSEN_GYMNASIUM_LOWER_PHYSICS_ID)
+                    || goalBelongsToLandscape(activeGoalId, HESSEN_GYMNASIUM_LOWER_PHYSICS_ID);
+            chemistrySelected = readSelectedFlag(legacyConfig, HESSEN_GYMNASIUM_LOWER_CHEMISTRY_ID)
+                    || containsGoalFromLandscape(storedPlannedGoals, HESSEN_GYMNASIUM_LOWER_CHEMISTRY_ID)
+                    || goalBelongsToLandscape(activeGoalId, HESSEN_GYMNASIUM_LOWER_CHEMISTRY_ID);
+            biologySelected = readSelectedFlag(legacyConfig, HESSEN_GYMNASIUM_LOWER_BIOLOGY_ID)
+                    || containsGoalFromLandscape(storedPlannedGoals, HESSEN_GYMNASIUM_LOWER_BIOLOGY_ID)
+                    || goalBelongsToLandscape(activeGoalId, HESSEN_GYMNASIUM_LOWER_BIOLOGY_ID);
+            frenchSelected = readSelectedFlag(legacyConfig, HESSEN_GYMNASIUM_LOWER_FRENCH_ID)
+                    || containsGoalFromLandscape(storedPlannedGoals, HESSEN_GYMNASIUM_LOWER_FRENCH_ID)
+                    || goalBelongsToLandscape(activeGoalId, HESSEN_GYMNASIUM_LOWER_FRENCH_ID);
+            if (!mathSelected && !physicsSelected && !chemistrySelected && !biologySelected && !frenchSelected) {
+                mathSelected = true;
+                physicsSelected = true;
+                chemistrySelected = true;
+                biologySelected = true;
+            }
+        }
 
         if (physicsSelected) {
             mathSelected = true;
+        }
+
+        if (!mathSelected && !physicsSelected && !chemistrySelected && !biologySelected && !frenchSelected) {
+            mathSelected = true;
+            physicsSelected = true;
+            chemistrySelected = true;
+            biologySelected = true;
+        }
+
+        return new HessenLowerSecondarySelection(
+                mathSelected,
+                physicsSelected,
+                chemistrySelected,
+                biologySelected,
+                frenchSelected);
+    }
+
+    private CanonicalGymnasiumCutoverPlan buildLowerSecondaryCanonicalGymnasiumCutoverPlan(
+            Learner learner,
+            List<String> storedPlannedGoals) {
+        HessenLowerSecondarySelection selection = inferLowerSecondarySelectionState(learner, storedPlannedGoals);
+        boolean mathSelected = selection.mathSelected();
+        boolean physicsSelected = selection.physicsSelected();
+        boolean chemistrySelected = selection.chemistrySelected();
+        boolean biologySelected = selection.biologySelected();
+        boolean frenchSelected = selection.frenchSelected();
+
+        if (frenchSelected) {
+            throw new ResponseStatusException(
+                    org.springframework.http.HttpStatus.BAD_REQUEST,
+                    "Unsupported curriculum for canonical Gymnasium cutover: "
+                            + HESSEN_GYMNASIUM_LOWER_FRENCH_ID);
         }
 
         Map<String, Object> personalCurriculumConfig = new LinkedHashMap<>();
@@ -1756,6 +1853,7 @@ public class LearnerService {
                 .filter(structuralGoals::containsKey)
                 .toList();
         Map<String, LearningGoal> visibleGoals = getFilteredGoals(CANONICAL_GYMNASIUM_ROOT_ID, personalCurriculumJson);
+        String activeGoalId = learner.getActiveGoalId();
         String normalizedActiveGoalId = resolveGoalIdInVisibleGoals(activeGoalId, visibleGoals, false);
         LearningGoal activeGoal = normalizedActiveGoalId != null ? visibleGoals.get(normalizedActiveGoalId) : null;
         LearningState normalizedLearningState = learner.getLearningState();

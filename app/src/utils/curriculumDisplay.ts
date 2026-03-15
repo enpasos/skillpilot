@@ -20,6 +20,15 @@ export const LEGACY_HESSEN_GYMNASIUM_UPPER_IDS = new Set([
   'a334a745-1d67-4e1d-86a5-dadc04f144d2',
 ])
 
+export const LEGACY_HESSEN_GYMNASIUM_LOWER_IDS = new Set([
+  'f050ee48-6891-4f83-995f-0f8be5e31b7f',
+  'b167b4cd-4b78-4c84-a721-6b2adbbcab3c',
+  '996d097a-cac2-4b5f-979a-b3a0b9803265',
+  'bea90c22-b9c5-4c0c-9b10-89d875f50772',
+  '71438941-0ceb-46ee-ad31-773cee700779',
+  '762de708-85fa-4324-958e-56002a318f7f',
+])
+
 interface CurriculumDisplayTitleInput {
   curriculumId?: string
   title?: string
@@ -27,15 +36,24 @@ interface CurriculumDisplayTitleInput {
   subject?: string
   language?: string
   compatibilityOnly?: boolean
+  legacyHiddenByDefault?: boolean
 }
 
 export const isLegacyHessenGymnasiumUpper = (curriculumId?: string | null) =>
   !!curriculumId && LEGACY_HESSEN_GYMNASIUM_UPPER_IDS.has(curriculumId)
 
+export const isLegacyHessenGymnasiumLower = (curriculumId?: string | null) =>
+  !!curriculumId && LEGACY_HESSEN_GYMNASIUM_LOWER_IDS.has(curriculumId)
+
 export const isCompatibilityOnlyCurriculum = (
   curriculumId?: string | null,
   compatibilityOnly?: boolean | null,
 ) => Boolean(compatibilityOnly) || isLegacyHessenGymnasiumUpper(curriculumId)
+
+export const isLegacyHiddenByDefaultCurriculum = (
+  curriculumId?: string | null,
+  legacyHiddenByDefault?: boolean | null,
+) => Boolean(legacyHiddenByDefault) || isLegacyHessenGymnasiumLower(curriculumId)
 
 export const getCurriculumDisplayTitle = ({
   curriculumId,
@@ -44,6 +62,7 @@ export const getCurriculumDisplayTitle = ({
   subject,
   language,
   compatibilityOnly,
+  legacyHiddenByDefault,
 }: CurriculumDisplayTitleInput) => {
   const base = title || description || subject || curriculumId || ''
   if (!base) {
@@ -51,6 +70,9 @@ export const getCurriculumDisplayTitle = ({
   }
   if (isCompatibilityOnlyCurriculum(curriculumId, compatibilityOnly)) {
     return language === 'de' ? `${base} (Kompatibilitaetsansicht)` : `${base} (Compatibility view)`
+  }
+  if (isLegacyHiddenByDefaultCurriculum(curriculumId, legacyHiddenByDefault)) {
+    return language === 'de' ? `${base} (Legacy-Ansicht)` : `${base} (Legacy view)`
   }
   return base
 }

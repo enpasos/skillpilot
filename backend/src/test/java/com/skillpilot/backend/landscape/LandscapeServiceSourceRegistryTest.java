@@ -89,6 +89,48 @@ class LandscapeServiceSourceRegistryTest {
     }
 
     @Test
+    void loadsArchivedLowerSecondarySourceLandscapeSnapshotWhenLiveTreeIsAbsent() throws IOException {
+        writeJson(tempDir.resolve("DE/Gymnasium/input/DE-HE/lower-secondary/source-json/legacy-lower-overview.de.json.snapshot"), """
+                {
+                  "landscapeId": "legacy-lower-overview",
+                  "title": "Legacy Lower Overview Snapshot",
+                  "goals": [
+                    {
+                      "id": "legacy-lower-root-goal",
+                      "title": "Root",
+                      "contains": ["legacy-lower-atom"],
+                      "tags": ["root"]
+                    },
+                    {
+                      "id": "legacy-lower-atom",
+                      "title": "Atom"
+                    }
+                  ]
+                }
+                """);
+        writeJson(tempDir.resolve("DE/Gymnasium/provenance/source-landscape-registry.json"), """
+                {
+                  "version": 1,
+                  "entries": [
+                    {
+                      "landscapeId": "legacy-lower-overview",
+                      "jurisdiction": "DE-HE",
+                      "sourcePath": "curricula/DE/HE/Kultusministerium/Gymnasium_9_Mittelstufe/json/DE_HES_S_GYM_1_OVERVIEW.de.json",
+                      "archiveSourcePath": "curricula/DE/Gymnasium/input/DE-HE/lower-secondary/source-json/legacy-lower-overview.de.json.snapshot",
+                      "archivePath": "curricula/DE/Gymnasium/input/DE-HE/lower-secondary/"
+                    }
+                  ]
+                }
+                """);
+
+        LandscapeService service = createService(tempDir);
+
+        assertThat(service.getById("legacy-lower-overview")).isNotNull();
+        assertThat(service.getLandscapeIdForGoal("legacy-lower-atom")).isEqualTo("legacy-lower-overview");
+        assertThat(service.resolveSourceLandscapeJurisdiction("legacy-lower-overview")).isEqualTo("DE-HE");
+    }
+
+    @Test
     void resolvesAtomicGoalClosureFromSourceGoalClosureRegistry() throws IOException {
         writeJson(tempDir.resolve("DE/Gymnasium/provenance/source-goal-closure-registry.json"), """
                 {

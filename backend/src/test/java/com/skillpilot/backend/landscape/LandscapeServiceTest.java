@@ -28,6 +28,10 @@ class LandscapeServiceTest {
         private static final String CANONICAL_MUSIC_ID = "f620c251-c1e1-41c1-b4e1-b10950b43608";
         private static final String CANONICAL_ECONOMICS_ID = "605bdaf6-32d5-56fd-8d92-5a80c2fd2901";
         private static final String HESSEN_UPPER_MATH_ID = "2796fc7b-ba9d-446f-8f26-711dd6d8a9a3";
+        private static final String HESSEN_LOWER_OVERVIEW_ID = "f050ee48-6891-4f83-995f-0f8be5e31b7f";
+        private static final String HESSEN_LOWER_OVERVIEW_WHY_ID = "27e64f66-856d-5316-ad35-653259580816";
+        private static final String HESSEN_LOWER_MATH_ID = "b167b4cd-4b78-4c84-a721-6b2adbbcab3c";
+        private static final String HESSEN_LOWER_MATH_PROCESS_CLUSTER_ID = "69eae42e-5386-4892-a6c3-0263661f66ce";
 
         @Test
         void getOverview_returnsEmptyFilters_forModifiedCurricula() {
@@ -120,11 +124,64 @@ class LandscapeServiceTest {
 
                 assertThat(response.getSummaries()).extracting(LandscapeSummary::getCurriculumId)
                                 .contains(CANONICAL_GYMNASIUM_ROOT_ID)
-                                .doesNotContain("bbbf39f3-4a5b-46cf-9edd-48f2c54ae0da");
+                                .doesNotContain("bbbf39f3-4a5b-46cf-9edd-48f2c54ae0da", HESSEN_LOWER_OVERVIEW_ID);
                 assertThat(landscapeService.getBaseCurricula(false))
                                 .extracting(LandscapeSummary::getCurriculumId)
                                 .contains(CANONICAL_GYMNASIUM_ROOT_ID)
-                                .doesNotContain("bbbf39f3-4a5b-46cf-9edd-48f2c54ae0da");
+                                .doesNotContain("bbbf39f3-4a5b-46cf-9edd-48f2c54ae0da", HESSEN_LOWER_OVERVIEW_ID);
+        }
+
+        @Test
+        void getOverviewMarksHessenLowerOverviewAsLegacyHiddenByDefault() {
+                LandscapeProperties properties = new LandscapeProperties();
+                properties.setDirectory("../curricula");
+                ObjectMapper objectMapper = new ObjectMapper();
+                LandscapeService landscapeService = new LandscapeService(properties, objectMapper);
+
+                LandscapeOverviewResponse response = landscapeService.getOverview("de", true);
+
+                LandscapeSummary lowerOverviewSummary = response.getSummaries().stream()
+                                .filter(summary -> HESSEN_LOWER_OVERVIEW_ID.equals(summary.getCurriculumId()))
+                                .findFirst()
+                                .orElseThrow();
+                LandscapeSummary canonicalRootSummary = response.getSummaries().stream()
+                                .filter(summary -> CANONICAL_GYMNASIUM_ROOT_ID.equals(summary.getCurriculumId()))
+                                .findFirst()
+                                .orElseThrow();
+
+                assertThat(lowerOverviewSummary.isLegacyHiddenByDefault()).isTrue();
+                assertThat(lowerOverviewSummary.isCompatibilityOnly()).isFalse();
+                assertThat(canonicalRootSummary.isLegacyHiddenByDefault()).isFalse();
+        }
+
+        @Test
+        void resolvesLowerSecondaryArchivedGoalMembershipFromRealRegistry() {
+                LandscapeProperties properties = new LandscapeProperties();
+                properties.setDirectory("../curricula");
+                ObjectMapper objectMapper = new ObjectMapper();
+                LandscapeService landscapeService = new LandscapeService(properties, objectMapper);
+
+                assertThat(landscapeService.resolveLandscapeIdForGoalIncludingArchived(HESSEN_LOWER_OVERVIEW_WHY_ID))
+                                .isEqualTo(HESSEN_LOWER_OVERVIEW_ID);
+        }
+
+        @Test
+        void resolvesLowerSecondaryArchivedAtomicClosureFromRealRegistry() {
+                LandscapeProperties properties = new LandscapeProperties();
+                properties.setDirectory("../curricula");
+                ObjectMapper objectMapper = new ObjectMapper();
+                LandscapeService landscapeService = new LandscapeService(properties, objectMapper);
+
+                assertThat(landscapeService.resolveSourceAtomicGoalIds(
+                                HESSEN_LOWER_MATH_ID,
+                                HESSEN_LOWER_MATH_PROCESS_CLUSTER_ID))
+                                .containsExactly(
+                                                "5e98e2f2-c53c-44ce-99af-af2dc755bd94",
+                                                "e5f5f559-a768-4474-a98d-c0a5b5abe767",
+                                                "cb39ebff-23a2-48cb-aca1-e640985f43ca",
+                                                "52b3be07-60ac-4342-94c6-7a7ab6d91b0b",
+                                                "9e694f53-bdd8-42aa-9938-2f14f4a74cce",
+                                                "75eb887e-0f14-4ac9-86a0-81671bcc1c90");
         }
 
         @Test

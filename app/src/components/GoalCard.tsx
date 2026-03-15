@@ -447,7 +447,7 @@ export const GoalCard: React.FC<GoalCardProps> = ({
         <div className="mt-4 space-y-4">
           {readOnly && (
             <div className="rounded-xl border border-amber-200 bg-amber-50/40 p-4 text-sm text-text-secondary dark:border-amber-900/40 dark:bg-amber-900/10">
-              Diese Kompatibilitaetsansicht ist schreibgeschuetzt. Fuer aktives Lernen und Statusaenderungen bitte auf Gymnasium (DE) umstellen.
+              Diese Legacy-Ansicht ist schreibgeschuetzt. Fuer aktives Lernen und Statusaenderungen bitte auf Gymnasium (DE) umstellen.
             </div>
           )}
 

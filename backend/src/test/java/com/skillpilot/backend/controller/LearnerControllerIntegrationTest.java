@@ -78,6 +78,7 @@ public class LearnerControllerIntegrationTest {
     private static final String HESSEN_GYMNASIUM_LOWER_PHYSICS_ID = "996d097a-cac2-4b5f-979a-b3a0b9803265";
     private static final String HESSEN_GYMNASIUM_LOWER_CHEMISTRY_ID = "bea90c22-b9c5-4c0c-9b10-89d875f50772";
     private static final String HESSEN_GYMNASIUM_LOWER_BIOLOGY_ID = "71438941-0ceb-46ee-ad31-773cee700779";
+    private static final String HESSEN_GYMNASIUM_LOWER_FRENCH_ID = "762de708-85fa-4324-958e-56002a318f7f";
     private static final String CANONICAL_PHYSICS_GK_PERSONAL_CONFIG = """
             {
               "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a": {"selected": true, "filterId": "GK"}
@@ -218,6 +219,7 @@ public class LearnerControllerIntegrationTest {
     private static final String LEGACY_SEK1_BIOLOGY_FOUNDATIONS_CLUSTER_ID = "09ada9f9-7ed6-454c-b1cf-105c3e803ddc";
     private static final String CANONICAL_SEK1_BIOLOGY_FOUNDATIONS_CLUSTER_ID = "b530a382-2786-5794-8821-3e01a62d88fd";
     private static final String LEGACY_SEK1_BIOLOGY_LIFE_CHARACTERISTICS_ID = "6829bc14-3ac9-4e99-a0ca-b73f2e126d1a";
+    private static final String LEGACY_SEK1_FRENCH_ROOT_ID = "2470bbf6-afaf-47de-a60a-c378aa10633a";
 
     @Autowired
     private LearnerRepository learnerRepository;
@@ -1005,9 +1007,58 @@ public class LearnerControllerIntegrationTest {
     }
 
     @Test
-    void cutoverEndpointRejectsLegacyHessenSekIOverviewUntilUnsupportedSubjectsAreCovered() throws Exception {
+    void cutoverEndpointMigratesLegacyHessenSekIOverviewLearnerToCanonicalGymnasiumRootWithChemistryAndBiology()
+            throws Exception {
         Learner learner = learnerRepository.findById(learnerId).orElseThrow();
         learner.setSelectedCurriculum(HESSEN_GYMNASIUM_LOWER_ROOT_ID);
+        learner.setPersonalCurriculum("""
+                {
+                  "bea90c22-b9c5-4c0c-9b10-89d875f50772": {"selected": true},
+                  "71438941-0ceb-46ee-ad31-773cee700779": {"selected": true}
+                }
+                """);
+        learnerRepository.save(learner);
+
+        plannedGoalRepository.saveAll(List.of(
+                new PlannedGoal(learner, LEGACY_SEK1_CHEMISTRY_FOUNDATIONS_CLUSTER_ID),
+                new PlannedGoal(learner, LEGACY_SEK1_BIOLOGY_FOUNDATIONS_CLUSTER_ID)));
+        masteryRepository.saveAll(List.of(
+                new Mastery(learner, LEGACY_SEK1_CHEMISTRY_METHODS_ID, 1.0),
+                new Mastery(learner, LEGACY_SEK1_BIOLOGY_LIFE_CHARACTERISTICS_ID, 1.0)));
+
+        HttpResponse<String> response = postCutover();
+
+        assertThat(response.statusCode()).isEqualTo(HttpStatus.OK.value());
+
+        Learner migratedLearner = learnerRepository.findById(learnerId).orElseThrow();
+        JsonNode persistedConfig = objectMapper.readTree(migratedLearner.getPersonalCurriculum());
+        JsonNode body = objectMapper.readTree(response.body());
+        JsonNode planned = body.path("goals").path("planned");
+
+        assertThat(migratedLearner.getSelectedCurriculum()).isEqualTo(CANONICAL_GYMNASIUM_ROOT_ID);
+        assertThat(body.path("curriculum").path("curriculumId").asText()).isEqualTo(CANONICAL_GYMNASIUM_ROOT_ID);
+        assertThat(persistedConfig.path(CANONICAL_GYMNASIUM_ROOT_ID).path("filterId").asText()).isEqualTo("DE-HE");
+        assertThat(persistedConfig.path(CANONICAL_CHEMISTRY_ID).path("selected").asBoolean()).isTrue();
+        assertThat(persistedConfig.path(CANONICAL_BIOLOGY_ID).path("selected").asBoolean()).isTrue();
+        assertThat(persistedConfig.path(CANONICAL_MATH_PILOT_ID).path("selected").asBoolean()).isFalse();
+        assertThat(persistedConfig.path(CANONICAL_PHYSICS_PILOT_ID).path("selected").asBoolean()).isFalse();
+        assertThat(planned).hasSize(2);
+        assertThat(jsonIds(planned))
+                .containsExactlyInAnyOrder(
+                        CANONICAL_SEK1_CHEMISTRY_FOUNDATIONS_CLUSTER_ID,
+                        CANONICAL_SEK1_BIOLOGY_FOUNDATIONS_CLUSTER_ID);
+        assertThat(response.body())
+                .doesNotContain(LEGACY_SEK1_CHEMISTRY_FOUNDATIONS_CLUSTER_ID)
+                .doesNotContain(LEGACY_SEK1_CHEMISTRY_METHODS_ID)
+                .doesNotContain(LEGACY_SEK1_BIOLOGY_FOUNDATIONS_CLUSTER_ID)
+                .doesNotContain(LEGACY_SEK1_BIOLOGY_LIFE_CHARACTERISTICS_ID);
+    }
+
+    @Test
+    void cutoverEndpointRejectsLegacyHessenSekIOverviewWhenFrenchIsActive() throws Exception {
+        Learner learner = learnerRepository.findById(learnerId).orElseThrow();
+        learner.setSelectedCurriculum(HESSEN_GYMNASIUM_LOWER_ROOT_ID);
+        learner.setActiveGoalId(LEGACY_SEK1_FRENCH_ROOT_ID);
         learnerRepository.save(learner);
 
         HttpResponse<String> response = postCutover();
@@ -2877,6 +2928,122 @@ public class LearnerControllerIntegrationTest {
         assertThat(masteryRepository.findById(new com.skillpilot.backend.domain.MasteryId(
                 "readonly-ai-mastery",
                 LEGACY_MATH_FUNCTION_CONCEPT_ID))).isEmpty();
+    }
+
+    @Test
+    void lowerSecondaryRetirementSessionRejectsUiLearningWrites() throws Exception {
+        Learner learner = new Learner();
+        learner.setSkillpilotId("readonly-lower-ui-learning");
+        learner.setSelectedCurriculum(HESSEN_GYMNASIUM_LOWER_MATH_ID);
+        learnerRepository.save(learner);
+
+        HttpResponse<String> activeGoalResponse = sendJsonRequest(
+                "POST",
+                "/api/ui/learners/readonly-lower-ui-learning/active-goal",
+                """
+                        {
+                          "goalId": "%s"
+                        }
+                        """.formatted(LEGACY_SEK1_LINEAR_FUNCTIONS_ID));
+        assertThat(activeGoalResponse.statusCode()).isEqualTo(HttpStatus.CONFLICT.value());
+        assertThat(learnerRepository.findById("readonly-lower-ui-learning").orElseThrow().getActiveGoalId()).isNull();
+
+        HttpResponse<String> plannedResponse = sendJsonRequest(
+                "PUT",
+                "/api/ui/learners/readonly-lower-ui-learning/planned",
+                """
+                        {
+                          "goals": ["%s"]
+                        }
+                        """.formatted(LEGACY_SEK1_LINEAR_FUNCTIONS_ID));
+        assertThat(plannedResponse.statusCode()).isEqualTo(HttpStatus.CONFLICT.value());
+        assertThat(plannedGoalRepository.findByLearner_SkillpilotId("readonly-lower-ui-learning")).isEmpty();
+
+        HttpResponse<String> clientStateResponse = sendJsonRequest(
+                "PUT",
+                "/api/ui/learners/readonly-lower-ui-learning/client-state/" + LEGACY_SEK1_LINEAR_FUNCTIONS_ID,
+                """
+                        {
+                          "updatedAt": "2026-03-15T09:30:00Z",
+                          "srsState": {
+                            "card-1": {
+                              "interval": 1,
+                              "repetition": 0,
+                              "ef": 2.5,
+                              "nextReview": 0
+                            }
+                          }
+                        }
+                        """);
+        assertThat(clientStateResponse.statusCode()).isEqualTo(HttpStatus.CONFLICT.value());
+        assertThat(learnerClientStateRepository.findById(
+                new LearnerClientStateId("readonly-lower-ui-learning", LEGACY_SEK1_LINEAR_FUNCTIONS_ID))).isEmpty();
+    }
+
+    @Test
+    void lowerSecondaryRetirementSessionRejectsUiCurriculumAndAiMasteryWrites() throws Exception {
+        Learner learner = new Learner();
+        learner.setSkillpilotId("readonly-lower-ui-config");
+        learner.setSelectedCurriculum(HESSEN_GYMNASIUM_LOWER_PHYSICS_ID);
+        learnerRepository.save(learner);
+
+        HttpResponse<String> curriculumResponse = sendJsonRequest(
+                "PUT",
+                "/api/ui/learners/readonly-lower-ui-config/curriculum",
+                """
+                        {
+                          "curriculumId": "%s"
+                        }
+                        """.formatted(CANONICAL_GYMNASIUM_ROOT_ID));
+        assertThat(curriculumResponse.statusCode()).isEqualTo(HttpStatus.CONFLICT.value());
+        assertThat(learnerRepository.findById("readonly-lower-ui-config").orElseThrow().getSelectedCurriculum())
+                .isEqualTo(HESSEN_GYMNASIUM_LOWER_PHYSICS_ID);
+
+        HttpResponse<String> personalCurriculumResponse = sendJsonRequest(
+                "PUT",
+                "/api/ui/learners/readonly-lower-ui-config/personal-curriculum",
+                """
+                        {
+                          "%s": {
+                            "selected": true,
+                            "filterId": "DE-HE"
+                          }
+                        }
+                        """.formatted(CANONICAL_GYMNASIUM_ROOT_ID));
+        assertThat(personalCurriculumResponse.statusCode()).isEqualTo(HttpStatus.CONFLICT.value());
+
+        HttpResponse<String> masteryResponse = sendJsonRequest(
+                "POST",
+                "/api/ai/en/learners/readonly-lower-ui-config/mastery",
+                """
+                        {
+                          "goalId": "%s"
+                        }
+                        """.formatted(LEGACY_SEK1_PHYSICS_MECHANICS_CLUSTER_ID));
+        assertThat(masteryResponse.statusCode()).isEqualTo(HttpStatus.CONFLICT.value());
+        assertThat(masteryRepository.findById(new com.skillpilot.backend.domain.MasteryId(
+                "readonly-lower-ui-config",
+                LEGACY_SEK1_PHYSICS_MECHANICS_CLUSTER_ID))).isEmpty();
+    }
+
+    @Test
+    void lowerSecondaryOverviewWithFrenchRemainsWritableUntilCutoverSurfaceExists() throws Exception {
+        Learner learner = new Learner();
+        learner.setSkillpilotId("lower-french-still-writable");
+        learner.setSelectedCurriculum(HESSEN_GYMNASIUM_LOWER_ROOT_ID);
+        learner.setActiveGoalId(LEGACY_SEK1_FRENCH_ROOT_ID);
+        learnerRepository.save(learner);
+
+        HttpResponse<String> plannedResponse = sendJsonRequest(
+                "PUT",
+                "/api/ui/learners/lower-french-still-writable/planned",
+                """
+                        {
+                          "goals": []
+                        }
+                        """);
+
+        assertThat(plannedResponse.statusCode()).isEqualTo(HttpStatus.OK.value());
     }
 
     @Test
