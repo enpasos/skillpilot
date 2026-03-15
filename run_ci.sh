@@ -34,6 +34,10 @@ echo "--> Validating Hessen Lower-Secondary Archive Paths"
 SKILLPILOT_DISABLE_RG=1 python3 scripts/validate_hessen_lower_secondary_archive_paths.py
 echo "--> Validating Hessen Lower-Secondary Legacy References"
 SKILLPILOT_DISABLE_RG=1 python3 scripts/validate_hessen_lower_secondary_legacy_refs.py
+echo "--> Validating Bavaria Gymnasium Archive Paths"
+SKILLPILOT_DISABLE_RG=1 python3 scripts/validate_bavaria_gymnasium_archive_paths.py
+echo "--> Validating Bavaria Gymnasium Legacy References"
+SKILLPILOT_DISABLE_RG=1 python3 scripts/validate_bavaria_gymnasium_legacy_refs.py
 
 echo ""
 echo "=========================================="

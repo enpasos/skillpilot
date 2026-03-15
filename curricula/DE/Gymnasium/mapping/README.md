@@ -13,7 +13,4 @@ Current active lanes:
 
 - `DE-HE/upper-secondary`
 - `DE-HE/lower-secondary`
-
-Planned later lanes:
-
 - `DE-BY/gymnasium`

@@ -38,6 +38,8 @@ Steps:
 7. `python scripts/validate_hessen_upper_secondary_legacy_refs.py`
 8. `python scripts/validate_hessen_lower_secondary_archive_paths.py`
 9. `python scripts/validate_hessen_lower_secondary_legacy_refs.py`
+10. `python scripts/validate_bavaria_gymnasium_archive_paths.py`
+11. `python scripts/validate_bavaria_gymnasium_legacy_refs.py`
 
 The graph rule catalog is documented in:
 
@@ -83,5 +85,5 @@ bash run_ci.sh
 This runs:
 
 1. app checks (`validate:graph`, `validate:view-filters`, `lint`, `build`)
-2. repo-level data checks (`validate_schemas.py`, `validate_goal_ids_uuid.py`, `validate_hessen_upper_secondary_archive_paths.py`, `validate_hessen_upper_secondary_legacy_refs.py`, `validate_hessen_lower_secondary_archive_paths.py`, `validate_hessen_lower_secondary_legacy_refs.py`)
+2. repo-level data checks (`validate_schemas.py`, `validate_goal_ids_uuid.py`, `validate_hessen_upper_secondary_archive_paths.py`, `validate_hessen_upper_secondary_legacy_refs.py`, `validate_hessen_lower_secondary_archive_paths.py`, `validate_hessen_lower_secondary_legacy_refs.py`, `validate_bavaria_gymnasium_archive_paths.py`, `validate_bavaria_gymnasium_legacy_refs.py`)
 3. backend checks (`./gradlew clean check --no-daemon`)

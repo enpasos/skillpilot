@@ -131,6 +131,48 @@ class LandscapeServiceSourceRegistryTest {
     }
 
     @Test
+    void loadsArchivedBavariaSourceLandscapeSnapshotWhenLiveTreeIsAbsent() throws IOException {
+        writeJson(tempDir.resolve("DE/Gymnasium/input/DE-BY/gymnasium/Mathematik.json"), """
+                {
+                  "landscapeId": "legacy-bavaria-math",
+                  "title": "Legacy Bavaria Math Snapshot",
+                  "goals": [
+                    {
+                      "id": "legacy-bavaria-root-goal",
+                      "title": "Root",
+                      "contains": ["legacy-bavaria-atom"],
+                      "tags": ["root"]
+                    },
+                    {
+                      "id": "legacy-bavaria-atom",
+                      "title": "Atom"
+                    }
+                  ]
+                }
+                """);
+        writeJson(tempDir.resolve("DE/Gymnasium/provenance/source-landscape-registry.json"), """
+                {
+                  "version": 1,
+                  "entries": [
+                    {
+                      "landscapeId": "legacy-bavaria-math",
+                      "jurisdiction": "DE-BY",
+                      "sourcePath": "curricula/DE/BY/archived-source/Mathematik.json",
+                      "archiveSourcePath": "curricula/DE/Gymnasium/input/DE-BY/gymnasium/Mathematik.json",
+                      "archivePath": "curricula/DE/Gymnasium/input/DE-BY/gymnasium/"
+                    }
+                  ]
+                }
+                """);
+
+        LandscapeService service = createService(tempDir);
+
+        assertThat(service.getById("legacy-bavaria-math")).isNotNull();
+        assertThat(service.getLandscapeIdForGoal("legacy-bavaria-atom")).isEqualTo("legacy-bavaria-math");
+        assertThat(service.resolveSourceLandscapeJurisdiction("legacy-bavaria-math")).isEqualTo("DE-BY");
+    }
+
+    @Test
     void resolvesAtomicGoalClosureFromSourceGoalClosureRegistry() throws IOException {
         writeJson(tempDir.resolve("DE/Gymnasium/provenance/source-goal-closure-registry.json"), """
                 {

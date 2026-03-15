@@ -7,7 +7,7 @@ This note turns the Bavaria Sek-I normalization rule into a concrete first probe
 It complements:
 
 - `docs/dev/canonical-gymnasium-by-sek1-normalization.md`
-- `curricula/DE/BY/Gymnasium/mapping/bavaria_math_to_canonical_math_pilot.json`
+- `curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_math_to_canonical_math_pilot.json`
 - `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json`
 
 ## Why Mathematics first

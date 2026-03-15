@@ -180,6 +180,9 @@ Current operational baseline:
 - the currently cutover-supported Hessen Sek-I legacy learner bundle is now frontend- and backend-read-only across `Mathematik`/`Physik`/`Chemie`/`Biologie`/`Französisch`; mixed overview sessions that resolve into that supported bundle also reject active-learning writes once the canonical cutover surface exists
 - the first Bavaria learner-cutover path is now operational for direct legacy `Mathematik` learners: Bavaria `Mathematik` migrates into `Gymnasium (DE)` with the root filter `DE-BY`, canonical Mathematics selected, and normalized planned-scope continuation on the shared canonical Math spine
 - ordinary learner entry now also prefers the canonical DE path over the Bavaria legacy root: `Gymnasium (Bayern)` is hidden by default from general overview/bootstrap surfaces and only retained when it is already the active learner selection
+- the active Bavaria Math/Physics pilot provenance no longer hangs solely off the live `curricula/DE/BY/Gymnasium` tree: the Bavaria pilot mappings now live under `curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/`, the shared source-landscape registry now exposes `archiveSourcePath` for the current Bavaria Math/Physics source landscapes, and `scripts/validate_bavaria_gymnasium_archive_paths.py` plus `scripts/validate_bavaria_gymnasium_legacy_refs.py` now fence the DE-level retained-source lane and repo-level operational references
+- the currently supported Bavaria legacy mathematics learner path is now detached as an active runtime path: direct `Mathematik` sessions are frontend- and backend-read-only retirement views, UI/AI write endpoints reject mutations, and the canonical `Gymnasium (DE)` + `DE-BY` cutover remains the supported continuation
+- the current Bavaria Physics pilot surface now has the same direct learner-cutover and retirement handling: direct legacy `Physik` learners migrate into `Gymnasium (DE)` with `DE-BY`, canonical Physics selected plus the required Math bridge, and active legacy Physics sessions are frontend- and backend-read-only retirement views instead of ordinary writable learner paths
 - the canonical Mathematics pilot function corridor is `cutover_ready`
 - the canonical Physics motion corridor is `cutover_ready`
 - the canonical Physics E.2 mechanics corridor is `cutover_ready`
@@ -220,7 +223,7 @@ From here on, the main overall percentage should be the completion-track score f
 
 Current close-out headline:
 
-- `80.8%`
+- `83.3%`
 
 Operational consequence:
 
@@ -571,7 +574,7 @@ Tasks:
 WP7 progress so far:
 
 - first Bavaria mapping fixture added:
-  - `curricula/DE/BY/Gymnasium/mapping/bavaria_math_to_canonical_math_pilot.json`
+  - `curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_math_to_canonical_math_pilot.json`
 - initial pilot scope stays deliberately narrow and reuses the already stabilized canonical function path:
   - function concept
   - linear-function interpretation

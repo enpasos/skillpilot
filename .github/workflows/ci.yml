@@ -85,6 +85,10 @@ jobs:
         run: cd .. && python scripts/validate_hessen_lower_secondary_archive_paths.py
       - name: Validate Hessen Lower-Secondary Legacy References
         run: cd .. && python scripts/validate_hessen_lower_secondary_legacy_refs.py
+      - name: Validate Bavaria Gymnasium Archive Paths
+        run: cd .. && python scripts/validate_bavaria_gymnasium_archive_paths.py
+      - name: Validate Bavaria Gymnasium Legacy References
+        run: cd .. && python scripts/validate_bavaria_gymnasium_legacy_refs.py
 
   backend-ci:
     runs-on: ubuntu-latest

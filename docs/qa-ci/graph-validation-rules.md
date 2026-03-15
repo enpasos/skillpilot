@@ -15,6 +15,10 @@ This is the single source of truth for algorithmic graph validation in CI.
 - Archive-boundary CI entrypoint: `python scripts/validate_hessen_lower_secondary_archive_paths.py` in `.github/workflows/ci.yml` (`graph-validation` job)
 - Hessen Sek-I legacy-reference validator: `scripts/validate_hessen_lower_secondary_legacy_refs.py`
 - Legacy-reference CI entrypoint: `python scripts/validate_hessen_lower_secondary_legacy_refs.py` in `.github/workflows/ci.yml` (`graph-validation` job)
+- Bavaria Gymnasium archive-boundary validator: `scripts/validate_bavaria_gymnasium_archive_paths.py`
+- Archive-boundary CI entrypoint: `python scripts/validate_bavaria_gymnasium_archive_paths.py` in `.github/workflows/ci.yml` (`graph-validation` job)
+- Bavaria Gymnasium legacy-reference validator: `scripts/validate_bavaria_gymnasium_legacy_refs.py`
+- Legacy-reference CI entrypoint: `python scripts/validate_bavaria_gymnasium_legacy_refs.py` in `.github/workflows/ci.yml` (`graph-validation` job)
 - The lower-secondary legacy-reference validator fences repo references to `curricula/DE/HE/Kultusministerium/Gymnasium_9_Mittelstufe` to the explicit delete-handoff allowlist until the final repo-side remove is executed.
 
 ## Enforcement profiles

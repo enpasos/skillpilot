@@ -146,6 +146,7 @@ public class LearnerService {
     private static final String HESSEN_GYMNASIUM_LOWER_BIOLOGY_ID = "71438941-0ceb-46ee-ad31-773cee700779";
     private static final String HESSEN_GYMNASIUM_LOWER_FRENCH_ID = "762de708-85fa-4324-958e-56002a318f7f";
     private static final String BAVARIA_GYMNASIUM_MATH_ID = "c1600692-e543-5cf2-a399-6bd96e6b817f";
+    private static final String BAVARIA_GYMNASIUM_PHYSICS_ID = "42c2f7e3-91b4-5de8-bef0-d563440e9d52";
     private static final String DEFAULT_COURSE_FILTER_ID = "GK";
 
     @Value("${skillpilot.security.signing-secret}")
@@ -1146,7 +1147,9 @@ public class LearnerService {
     @Transactional(readOnly = true)
     public void assertWritableLearningSession(String skillpilotId) {
         Learner learner = getLearner(skillpilotId);
-        if (!isReadOnlyCompatibilitySession(learner) && !isReadOnlyLowerSecondaryLegacySession(learner)) {
+        if (!isReadOnlyCompatibilitySession(learner)
+                && !isReadOnlyLowerSecondaryLegacySession(learner)
+                && !isReadOnlyBavariaLegacySession(learner)) {
             return;
         }
         throw new ResponseStatusException(
@@ -1201,6 +1204,15 @@ public class LearnerService {
                 || selection.chemistrySelected()
                 || selection.biologySelected()
                 || selection.frenchSelected();
+    }
+
+    private boolean isReadOnlyBavariaLegacySession(Learner learner) {
+        if (learner == null) {
+            return false;
+        }
+        String curriculumId = learner.getSelectedCurriculum();
+        return BAVARIA_GYMNASIUM_MATH_ID.equals(curriculumId)
+                || BAVARIA_GYMNASIUM_PHYSICS_ID.equals(curriculumId);
     }
 
     @Transactional
@@ -1488,7 +1500,8 @@ public class LearnerService {
                 || HESSEN_GYMNASIUM_LOWER_CHEMISTRY_ID.equals(curriculumId)
                 || HESSEN_GYMNASIUM_LOWER_BIOLOGY_ID.equals(curriculumId)
                 || HESSEN_GYMNASIUM_LOWER_FRENCH_ID.equals(curriculumId)
-                || BAVARIA_GYMNASIUM_MATH_ID.equals(curriculumId);
+                || BAVARIA_GYMNASIUM_MATH_ID.equals(curriculumId)
+                || BAVARIA_GYMNASIUM_PHYSICS_ID.equals(curriculumId);
     }
 
     private CanonicalGymnasiumCutoverPlan buildCanonicalGymnasiumCutoverPlan(Learner learner, List<String> storedPlannedGoals) {
@@ -1764,7 +1777,8 @@ public class LearnerService {
     }
 
     private boolean isSupportedBavariaGymnasiumCutoverSource(String curriculumId) {
-        return BAVARIA_GYMNASIUM_MATH_ID.equals(curriculumId);
+        return BAVARIA_GYMNASIUM_MATH_ID.equals(curriculumId)
+                || BAVARIA_GYMNASIUM_PHYSICS_ID.equals(curriculumId);
     }
 
     private record HessenLowerSecondarySelection(
@@ -1881,13 +1895,17 @@ public class LearnerService {
     private CanonicalGymnasiumCutoverPlan buildBavariaCanonicalGymnasiumCutoverPlan(
             Learner learner,
             List<String> storedPlannedGoals) {
+        boolean physicsSelected = BAVARIA_GYMNASIUM_PHYSICS_ID.equals(learner.getSelectedCurriculum());
+
         Map<String, Object> personalCurriculumConfig = new LinkedHashMap<>();
         personalCurriculumConfig.put(CANONICAL_GYMNASIUM_ROOT_ID, createSelectionConfig(true, "DE-BY"));
         personalCurriculumConfig.put(CANONICAL_GYMNASIUM_MATH_ID, createSelectionConfig(true, null));
+        personalCurriculumConfig.put(CANONICAL_GYMNASIUM_PHYSICS_ID, createSelectionConfig(physicsSelected, null));
 
         String personalCurriculumJson = writePersonalCurriculumConfig(personalCurriculumConfig);
         Map<String, LearningGoal> structuralGoals = new LinkedHashMap<>(getFilteredGoals(CANONICAL_GYMNASIUM_ROOT_ID, "{}"));
         structuralGoals.putAll(getFilteredGoals(CANONICAL_GYMNASIUM_MATH_ID, "{}"));
+        structuralGoals.putAll(getFilteredGoals(CANONICAL_GYMNASIUM_PHYSICS_ID, "{}"));
         List<String> normalizedPlannedGoalIds = normalizeCutoverPlannedGoalIds(storedPlannedGoals, structuralGoals).stream()
                 .filter(structuralGoals::containsKey)
                 .toList();

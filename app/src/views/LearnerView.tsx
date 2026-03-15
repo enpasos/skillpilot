@@ -58,6 +58,8 @@ const HESSEN_GYMNASIUM_LOWER_PHYSICS_ID = '996d097a-cac2-4b5f-979a-b3a0b9803265'
 const HESSEN_GYMNASIUM_LOWER_CHEMISTRY_ID = 'bea90c22-b9c5-4c0c-9b10-89d875f50772'
 const HESSEN_GYMNASIUM_LOWER_BIOLOGY_ID = '71438941-0ceb-46ee-ad31-773cee700779'
 const HESSEN_GYMNASIUM_LOWER_FRENCH_ID = '762de708-85fa-4324-958e-56002a318f7f'
+const BAVARIA_GYMNASIUM_MATH_ID = 'c1600692-e543-5cf2-a399-6bd96e6b817f'
+const BAVARIA_GYMNASIUM_PHYSICS_ID = '42c2f7e3-91b4-5de8-bef0-d563440e9d52'
 
 type HessenLowerSelection = {
   mathSelected: boolean
@@ -730,6 +732,17 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     const selectedCurriculum = learnerData?.selectedCurriculum
     return !!selectedCurriculum && LEGACY_HESSEN_GYMNASIUM_UPPER_IDS.has(selectedCurriculum)
   }, [learnerData?.selectedCurriculum])
+  const bavariaLegacyRetirementSubject = useMemo(() => {
+    const selectedCurriculum = learnerData?.selectedCurriculum
+    if (selectedCurriculum === BAVARIA_GYMNASIUM_MATH_ID) {
+      return 'Mathematik'
+    }
+    if (selectedCurriculum === BAVARIA_GYMNASIUM_PHYSICS_ID) {
+      return 'Physik'
+    }
+    return null
+  }, [learnerData?.selectedCurriculum])
+  const isBavariaLegacyRetirementOnly = bavariaLegacyRetirementSubject !== null
   const lowerLegacySelection = useMemo(() => inferLegacyHessenLowerSelection(
     learnerData?.selectedCurriculum,
     personalConfig,
@@ -738,9 +751,10 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     goalIndexAll,
   ), [learnerData?.selectedCurriculum, personalConfig, plannedGoals, effectiveActiveGoalId, goalIndexAll])
   const isLowerLegacyRetirementOnly = lowerLegacySelection.retirementEligible
-  const canCutoverLegacyHessenGymnasium = isUpperLegacyHessenSession || isLowerLegacyRetirementOnly
+  const canCutoverLegacyGymnasium =
+    isUpperLegacyHessenSession || isLowerLegacyRetirementOnly || isBavariaLegacyRetirementOnly
   const supportsCompatibilityArchive = isUpperLegacyHessenSession
-  const isCompatibilityAuditOnly = canCutoverLegacyHessenGymnasium
+  const isCompatibilityAuditOnly = canCutoverLegacyGymnasium
   const shouldShowCompatibilityRetirementGate =
     compatibilityRouteRetired &&
     isUpperLegacyHessenSession
@@ -749,6 +763,15 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     const selectedCurriculum = learnerData?.selectedCurriculum
     if (!selectedCurriculum) {
       return []
+    }
+
+    if (selectedCurriculum === BAVARIA_GYMNASIUM_MATH_ID || selectedCurriculum === BAVARIA_GYMNASIUM_PHYSICS_ID) {
+      return [
+        { label: 'Quelle', value: `Bayern Gymnasium ${bavariaLegacyRetirementSubject}` },
+        { label: 'Ziel', value: 'Gymnasium (DE)' },
+        { label: 'Filter', value: 'DE-BY' },
+        { label: 'Fach', value: bavariaLegacyRetirementSubject ?? 'Mathematik' },
+      ]
     }
 
     if (isLowerLegacyRetirementOnly) {
@@ -977,7 +1000,13 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     }
 
     return items
-  }, [learnerData?.selectedCurriculum, personalConfig, isLowerLegacyRetirementOnly, lowerLegacySelection])
+  }, [
+    bavariaLegacyRetirementSubject,
+    learnerData?.selectedCurriculum,
+    personalConfig,
+    isLowerLegacyRetirementOnly,
+    lowerLegacySelection,
+  ])
 
 
   const refreshState = useCallback(
@@ -2004,18 +2033,24 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
         )}
         {currentGoal ? (
           <div className="w-full max-w-3xl animate-in fade-in slide-in-from-bottom-4 duration-500">
-            {canCutoverLegacyHessenGymnasium && (
+            {canCutoverLegacyGymnasium && (
               <div className="mb-6 rounded-xl border border-amber-300/70 bg-amber-50/90 p-4 shadow-sm dark:border-amber-700/60 dark:bg-amber-950/30">
                 <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
                   <div>
                     <div className="text-sm font-semibold text-amber-800 dark:text-amber-300">
-                      {language === 'de' ? 'Hessen-Lernstand erkannt' : 'Hesse learner state detected'}
+                      {isBavariaLegacyRetirementOnly
+                        ? (language === 'de' ? 'Bayern-Lernstand erkannt' : 'Bavaria learner state detected')
+                        : (language === 'de' ? 'Hessen-Lernstand erkannt' : 'Hesse learner state detected')}
                     </div>
                     <p className="mt-1 text-sm text-amber-900/90 dark:text-amber-100/90">
                       {isUpperLegacyHessenSession
                         ? (language === 'de'
                           ? 'Diese Hessen-Lernspur bleibt als eingefrorenes Kompatibilitaetsarchiv exportierbar. Fuer die gemeinsame DE-Struktur kannst du jetzt direkt auf Gymnasium (DE) umstellen, ohne deinen bisherigen Mastery-Verlauf zu verlieren.'
                           : 'This Hesse learner trail remains exportable as a frozen compatibility archive. You can now move directly to Gymnasium (DE) without losing your existing mastery history.')
+                        : isBavariaLegacyRetirementOnly
+                          ? (language === 'de'
+                            ? `Diese Bayern-${bavariaLegacyRetirementSubject}-Lernspur laeuft jetzt als schreibgeschuetzte Legacy-Ansicht. Fuer die gemeinsame DE-Struktur kannst du direkt auf Gymnasium (DE) mit Filter DE-BY umstellen, ohne deinen bisherigen Mastery-Verlauf zu verlieren.`
+                            : `This Bavaria ${bavariaLegacyRetirementSubject === 'Physik' ? 'physics' : 'mathematics'} learner trail now runs as a read-only legacy view. You can move directly to Gymnasium (DE) with filter DE-BY without losing your existing mastery history.`)
                         : (language === 'de'
                           ? 'Diese Hessen-Sek-I-Lernspur laeuft jetzt als schreibgeschuetzte Legacy-Ansicht. Fuer die gemeinsame DE-Struktur kannst du direkt auf Gymnasium (DE) umstellen, ohne deinen bisherigen Mastery-Verlauf zu verlieren.'
                           : 'This Hesse lower-secondary learner trail now runs as a read-only legacy view. You can move directly to Gymnasium (DE) without losing your existing mastery history.')}
@@ -2051,7 +2086,13 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
                       <span>
                         {isCutoverPending
                           ? (language === 'de' ? 'Stelle um...' : 'Migrating...')
-                          : (language === 'de' ? 'Auf Gymnasium (DE) umstellen' : 'Migrate to Gymnasium (DE)')}
+                          : (language === 'de'
+                            ? (isBavariaLegacyRetirementOnly
+                              ? 'Auf Gymnasium (DE) mit DE-BY umstellen'
+                              : 'Auf Gymnasium (DE) umstellen')
+                            : (isBavariaLegacyRetirementOnly
+                              ? 'Migrate to Gymnasium (DE) with DE-BY'
+                              : 'Migrate to Gymnasium (DE)'))}
                       </span>
                     </button>
                   </div>
@@ -2202,7 +2243,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
         onClose={() => setIsSetupOpen(false)}
         availableLandscapes={availableLandscapes}
         currentLandscapeId={landscapeId}
-        retirementOnly={canCutoverLegacyHessenGymnasium}
+        retirementOnly={canCutoverLegacyGymnasium}
         onConfigChange={handleConfigChange}
         initialConfig={personalConfig}
         rootLandscapeId={rootLandscapeId}
@@ -2210,16 +2251,18 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
         initialAutoPilot={learnerData?.autoPilot}
         initialStrictMode={learnerData?.strictMode}
         onPreferencesChange={handlePreferencesChange}
-        migrationTitle={canCutoverLegacyHessenGymnasium ? 'Auf Gymnasium (DE) umstellen' : undefined}
-        migrationDescription={canCutoverLegacyHessenGymnasium
+        migrationTitle={canCutoverLegacyGymnasium ? 'Auf Gymnasium (DE) umstellen' : undefined}
+        migrationDescription={canCutoverLegacyGymnasium
           ? (isUpperLegacyHessenSession
             ? 'Dein bisheriger Hessen-Lernstand bleibt erhalten und wird auf die gemeinsame DE-Struktur übernommen. Mathe, Physik, Chemie, Biologie, Informatik, Geschichte, Deutsch, Politik und Wirtschaft, Englisch, Französisch, Latein, Spanisch, Griechisch, Chinesisch, Musik und Wirtschaftswissenschaften laufen danach unter einem gemeinsamen Gymnasium-Root weiter.'
-            : 'Dein bisheriger Hessen-Sek-I-Lernstand bleibt erhalten und wird auf die gemeinsame DE-Struktur übernommen. Mathe, Physik, Chemie, Biologie und Französisch laufen danach unter einem gemeinsamen Gymnasium-Root weiter.')
+            : isBavariaLegacyRetirementOnly
+              ? `Dein bisheriger Bayern-${bavariaLegacyRetirementSubject}-Lernstand bleibt erhalten und wird auf die gemeinsame DE-Struktur übernommen. ${bavariaLegacyRetirementSubject === 'Physik' ? 'Physik und die benoetigte Mathe-Bruecke' : 'Mathematik'} laufen danach unter dem gemeinsamen Gymnasium-Root mit Filter DE-BY weiter.`
+              : 'Dein bisheriger Hessen-Sek-I-Lernstand bleibt erhalten und wird auf die gemeinsame DE-Struktur übernommen. Mathe, Physik, Chemie, Biologie und Französisch laufen danach unter einem gemeinsamen Gymnasium-Root weiter.')
           : undefined}
-        migrationActionLabel={canCutoverLegacyHessenGymnasium ? 'Jetzt umstellen' : undefined}
+        migrationActionLabel={canCutoverLegacyGymnasium ? 'Jetzt umstellen' : undefined}
         migrationActionPending={isCutoverPending}
-        onMigrationAction={canCutoverLegacyHessenGymnasium ? handleCutoverCanonicalGymnasium : undefined}
-        migrationPreviewItems={canCutoverLegacyHessenGymnasium ? legacyCutoverPreviewItems : undefined}
+        onMigrationAction={canCutoverLegacyGymnasium ? handleCutoverCanonicalGymnasium : undefined}
+        migrationPreviewItems={canCutoverLegacyGymnasium ? legacyCutoverPreviewItems : undefined}
       />
 
       <InfoModal

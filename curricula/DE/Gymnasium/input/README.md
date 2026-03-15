@@ -36,6 +36,7 @@ Migration convention:
 - `DE-HE/lower-secondary/retained-asset-registry.json` defines the DE-level retained-asset and mapping lane for Hessen Sek-I delete handoff work
 - `DE-HE/abi/` receives retained Hessen Abitur material from `curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/abi/`
 - `DE-BY/gymnasium/` is the landing zone for Bavaria source/input material that currently still lives directly under `curricula/DE/BY/Gymnasium/`
+- `DE-BY/retained-asset-registry.json` defines the stable DE-level retained-source lane for Bavaria Gymnasium delete-handoff work
 - `DE-BY/abi/` is reserved for later Bavaria exam/release inputs if they become part of the canonical migration scope
 
 Bundesland rule:
@@ -60,6 +61,7 @@ Current snapshot:
 - `python3 scripts/validate_hessen_lower_secondary_archive_paths.py` now enforces that no operational retained-asset file under `DE-HE/lower-secondary/` still embeds `Gymnasium_9_Mittelstufe` path strings.
 - the original Hessen Sek-I tree is now retired from the active repo path; `bash scripts/run_hessen_lower_secondary_delete_handoff_dry_run.sh` now serves as the post-retirement verification command against the surviving archive/provenance/mapping lanes.
 - `DE-BY/gymnasium/` now mirrors the frozen Bavaria subject-source JSON snapshot.
+- `DE-BY/retained-asset-registry.json` now pins that Bavaria retained-source lane, and the shared source-landscape registry now also exposes `archiveSourcePath` for the currently active Bavaria Math/Physics pilot sources.
 - `DE-HE/abi/` now mirrors the full retained Hessen Abitur bundle.
 - `DE-HE/retained-asset-registry.json` now defines the stable DE-level tooling defaults for Hessen upper-secondary exam assets and archived mapping files, while source-landscape lookup stays centralized in the DE-level provenance registry.
 - Operational Hessen `abi/` metadata now follows that same split: `task_bank.json` headers use `sourceLandscapeId` plus the shared provenance registry, and blueprint/source-catalog/release-bundle source references point at retained DE-level `DE-HE/abi/` or `DE-HE/upper-secondary/` assets instead of hardcoded live legacy source paths.
@@ -67,6 +69,7 @@ Current snapshot:
 - `python3 scripts/validate_hessen_upper_secondary_archive_paths.py` now enforces that boundary: outside the allowlisted raw-provenance files from `DE-HE/retained-asset-registry.json`, no `Gymnasiale_Oberstufe` path strings may remain under `DE-HE/abi/`.
 - the original Hessen Oberstufe tree has now been retired from the active repo path; `bash scripts/run_hessen_upper_secondary_delete_handoff_dry_run.sh` therefore serves both as the historical delete-handoff dry-run and as the post-retirement verification command against the surviving DE-level archive lanes.
 - `DE-BY/abi/` remains a reserved lane until Bavaria exam assets become part of the active migration scope.
+- `python3 scripts/validate_bavaria_gymnasium_archive_paths.py` and `python3 scripts/validate_bavaria_gymnasium_legacy_refs.py` now fence the retained Bavaria source lane plus repo-level references so the audit/provenance handoff can advance before final tree retirement.
 
 Deletion rule:
 
