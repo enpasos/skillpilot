@@ -24,6 +24,7 @@ type ToolingRegistry = {
 }
 
 type SourceRegistryEntry = {
+  archiveSourcePath?: string
   landscapeId: string
   sourcePath: string
 }
@@ -71,7 +72,10 @@ export function resolveHessenUpperSecondaryLandscapePath(
       `Missing source-landscape registry entry for Hessen upper-secondary landscapeId ${subjectEntry.landscapeId}`,
     )
   }
-  return path.join(ROOT_DIR, sourceEntry.sourcePath)
+  return path.join(
+    ROOT_DIR,
+    sourceEntry.archiveSourcePath || sourceEntry.sourcePath,
+  )
 }
 
 export function resolveHessenUpperSecondaryMappingPath(

@@ -34,7 +34,7 @@ class LandscapeServiceSourceRegistryTest {
                     {
                       "landscapeId": "legacy-math",
                       "jurisdiction": "DE-HE",
-                      "sourcePath": "curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/json/DE_HES_S_GYM_2_MATHEMATIK.de.json",
+                      "sourcePath": "curricula/DE/Gymnasium/input/DE-HE/upper-secondary/DE_HES_S_GYM_2_MATHEMATIK.de.json",
                       "archivePath": "curricula/DE/Gymnasium/input/DE-HE/upper-secondary/"
                     }
                   ]
@@ -45,6 +45,47 @@ class LandscapeServiceSourceRegistryTest {
 
         assertThat(service.getById("legacy-math")).isNotNull();
         assertThat(service.resolveSourceLandscapeJurisdiction("legacy-math")).isEqualTo("DE-HE");
+    }
+
+    @Test
+    void loadsArchivedSourceLandscapeSnapshotWhenLiveTreeIsAbsent() throws IOException {
+        writeJson(tempDir.resolve("DE/Gymnasium/input/DE-HE/upper-secondary/source-json/legacy-math.de.json.snapshot"), """
+                {
+                  "landscapeId": "legacy-math",
+                  "title": "Legacy Math Snapshot",
+                  "goals": [
+                    {
+                      "id": "legacy-root-goal",
+                      "title": "Root",
+                      "contains": ["legacy-atom"],
+                      "tags": ["root"]
+                    },
+                    {
+                      "id": "legacy-atom",
+                      "title": "Atom"
+                    }
+                  ]
+                }
+                """);
+        writeJson(tempDir.resolve("DE/Gymnasium/provenance/source-landscape-registry.json"), """
+                {
+                  "version": 1,
+                  "entries": [
+                    {
+                      "landscapeId": "legacy-math",
+                      "jurisdiction": "DE-HE",
+                      "sourcePath": "curricula/DE/Gymnasium/input/DE-HE/upper-secondary/source-json/legacy-math.de.json.snapshot",
+                      "archiveSourcePath": "curricula/DE/Gymnasium/input/DE-HE/upper-secondary/source-json/legacy-math.de.json.snapshot",
+                      "archivePath": "curricula/DE/Gymnasium/input/DE-HE/upper-secondary/"
+                    }
+                  ]
+                }
+                """);
+
+        LandscapeService service = createService(tempDir);
+
+        assertThat(service.getById("legacy-math")).isNotNull();
+        assertThat(service.getLandscapeIdForGoal("legacy-atom")).isEqualTo("legacy-math");
     }
 
     @Test

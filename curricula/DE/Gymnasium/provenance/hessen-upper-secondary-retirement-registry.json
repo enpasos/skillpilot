@@ -1,0 +1,26 @@
+{
+  "version": 1,
+  "legacyTreePath": "curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe",
+  "legacyTreeMustBeAbsent": true,
+  "scanRoots": [
+    "backend/src",
+    "app",
+    "scripts",
+    "curricula/DE/Gymnasium/provenance",
+    "curricula/DE/Gymnasium/input",
+    "extract_frontier.py",
+    "validate_schema.py"
+  ],
+  "excludedPathGlobs": [
+    "curricula/DE/Gymnasium/input/DE-HE/abi/**"
+  ],
+  "allowedReferenceGlobs": [
+    "curricula/DE/Gymnasium/input/README.md",
+    "curricula/DE/Gymnasium/input/transfer-manifest.md",
+    "curricula/DE/Gymnasium/provenance/hessen-upper-secondary-retirement-registry.json",
+    "curricula/DE/Gymnasium/provenance/source-landscape-registry.json",
+    "scripts/run_hessen_upper_secondary_delete_handoff_dry_run.sh",
+    "scripts/validate_hessen_upper_secondary_archive_paths.py",
+    "scripts/validate_hessen_upper_secondary_legacy_refs.py"
+  ]
+}

@@ -1,37 +1,53 @@
+#!/usr/bin/env python3
+"""Validate one landscape JSON against the runtime schema."""
+
+from __future__ import annotations
+
+import argparse
 import json
-import jsonschema
-import os
 import sys
+from pathlib import Path
 
-# Paths
-json_path = "curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/json/DE_HES_S_GYM_2_MATHEMATIK.de.json"
-schema_path = "docs/landscape-runtime.schema.json"
+import jsonschema
 
-if not os.path.exists(json_path):
-    print(f"Error: Data file not found: {json_path}")
-    sys.exit(1)
 
-if not os.path.exists(schema_path):
-    print(f"Error: Schema file not found: {schema_path}")
-    sys.exit(1)
+DEFAULT_JSON = Path("curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json")
+DEFAULT_SCHEMA = Path("docs/landscape-runtime.schema.json")
 
-# Load Schema
-with open(schema_path, 'r', encoding='utf-8') as f:
-    schema = json.load(f)
 
-# Load Data
-with open(json_path, 'r', encoding='utf-8') as f:
-    data = json.load(f)
+def main() -> None:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("json_path", nargs="?", default=str(DEFAULT_JSON))
+    parser.add_argument("--schema", default=str(DEFAULT_SCHEMA))
+    args = parser.parse_args()
 
-# Validate
-try:
-    jsonschema.validate(instance=data, schema=schema)
-    print(f"SUCCESS: {json_path} is valid against {schema_path}")
-except jsonschema.exceptions.ValidationError as e:
-    print(f"FAILURE: Validation failed!")
-    print(f"Message: {e.message}")
-    print(f"Path: {e.path}")
-    sys.exit(1)
-except Exception as e:
-    print(f"An error occurred: {e}")
-    sys.exit(1)
+    json_path = Path(args.json_path)
+    schema_path = Path(args.schema)
+
+    if not json_path.exists():
+        print(f"Error: Data file not found: {json_path}")
+        raise SystemExit(1)
+    if not schema_path.exists():
+        print(f"Error: Schema file not found: {schema_path}")
+        raise SystemExit(1)
+
+    with schema_path.open("r", encoding="utf-8") as handle:
+        schema = json.load(handle)
+    with json_path.open("r", encoding="utf-8") as handle:
+        data = json.load(handle)
+
+    try:
+        jsonschema.validate(instance=data, schema=schema)
+        print(f"SUCCESS: {json_path} is valid against {schema_path}")
+    except jsonschema.exceptions.ValidationError as error:
+        print("FAILURE: Validation failed!")
+        print(f"Message: {error.message}")
+        print(f"Path: {list(error.path)}")
+        raise SystemExit(1)
+    except Exception as error:  # pragma: no cover - helper script only
+        print(f"An error occurred: {error}")
+        raise SystemExit(1)
+
+
+if __name__ == "__main__":
+    main()

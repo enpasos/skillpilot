@@ -2,11 +2,11 @@
 
 Datum: 2026-02-06
 Bezug:
-- `curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/abi/Physik/Klausurbeispiel2026_2/checkliste.md`
-- `curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/abi/Physik/Klausurbeispiel2026_2/abi_2026_physik_exam_blueprint_2.json`
-- `curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/abi/Physik/Klausurbeispiel2026_2/Physik_Hessen_2026_Klausurbeispiel_2.md`
-- `curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/abi/Physik/Klausurbeispiel2026_2/Physik_Hessen_2026_Klausurbeispiel_2_Musterloesung.md`
-- Vergleichsbezug: `curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/abi/Physik/Klausurbeispiel2026_1/`
+- `checkliste.md`
+- `abi_2026_physik_exam_blueprint_2.json`
+- `Physik_Hessen_2026_Klausurbeispiel_2.md`
+- `Physik_Hessen_2026_Klausurbeispiel_2_Musterloesung.md`
+- Vergleichsbezug: `../Klausurbeispiel2026_1/`
 
 Legende:
 - `[x]` erfuellt

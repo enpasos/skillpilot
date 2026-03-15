@@ -106,6 +106,10 @@ interface ParsedLandscape {
 
 const curriculaDir = join(process.cwd(), '../curricula')
 const curriculumManifestPath = join(curriculaDir, 'curriculum_manifest.json')
+const compatibilityArchiveRegistryPath = join(
+  curriculaDir,
+  'DE/Gymnasium/archive/compatibility-landscape-registry.json',
+)
 
 function getAllJsonFiles(dir: string, fileList: string[] = []): string[] {
   const files = readdirSync(dir, { withFileTypes: true })
@@ -127,6 +131,7 @@ const issues: Issue[] = []
 const parsedLandscapes: ParsedLandscape[] = []
 const landscapeById = new Map<string, ParsedLandscape>()
 const titlesByLandscapeId = new Map<string, Set<string>>()
+const compatibilityArchiveLandscapeIds = new Set<string>()
 
 for (const file of landscapeFiles) {
   try {
@@ -161,6 +166,35 @@ for (const file of landscapeFiles) {
     issues.push({
       level: 'error',
       message: `[${file}] Failed to parse landscape JSON: ${String(error)}`,
+    })
+  }
+}
+
+if (existsSync(compatibilityArchiveRegistryPath)) {
+  try {
+    const raw = readFileSync(compatibilityArchiveRegistryPath, 'utf8')
+    const json = JSON.parse(raw) as { entries?: unknown }
+    if (Array.isArray(json.entries)) {
+      for (const entry of json.entries) {
+        if (!entry || typeof entry !== 'object') continue
+        const record = entry as { landscapeId?: unknown; title?: unknown }
+        if (typeof record.landscapeId !== 'string' || record.landscapeId.trim() === '') {
+          continue
+        }
+        const landscapeId = record.landscapeId.trim()
+        compatibilityArchiveLandscapeIds.add(landscapeId)
+
+        if (typeof record.title === 'string' && record.title.trim() !== '') {
+          const titleSet = titlesByLandscapeId.get(landscapeId) ?? new Set<string>()
+          titleSet.add(record.title.trim())
+          titlesByLandscapeId.set(landscapeId, titleSet)
+        }
+      }
+    }
+  } catch (error) {
+    issues.push({
+      level: 'error',
+      message: `[${compatibilityArchiveRegistryPath}] Failed to parse compatibility archive registry: ${String(error)}`,
     })
   }
 }
@@ -916,7 +950,9 @@ if (!existsSync(curriculumManifestPath)) {
         })
       }
 
-      const unknownIds = manifestIds.filter((id) => !landscapeById.has(id))
+      const unknownIds = manifestIds.filter((id) =>
+        !landscapeById.has(id) && !compatibilityArchiveLandscapeIds.has(id),
+      )
       if (unknownIds.length) {
         issues.push({
           level: 'error',

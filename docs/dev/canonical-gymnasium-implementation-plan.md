@@ -21,8 +21,9 @@ The project should therefore start with a small, testable pilot rather than a br
 ## Guardrails
 
 - Do not duplicate canonical goals per Bundesland.
-- Keep `curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe` operational throughout the transition.
-- Do not modify the existing Hessen source JSON under `curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/json/` just to host canonical content.
+- Keep the remaining legacy source trees operational only until their delete-handoff gates are closed.
+- Hessen upper-secondary has already left the active repo path; use the archived source snapshots under `curricula/DE/Gymnasium/input/DE-HE/upper-secondary/source-json/` instead of reactivating the old tree.
+- Do not modify the archived Hessen upper-secondary source snapshots under `curricula/DE/Gymnasium/input/DE-HE/upper-secondary/source-json/` just to host canonical content.
 - Keep the Custom GPT interface unchanged: one learner state, one frontier, one mastery flow.
 - Use ISO 3166-2 state codes in new Bundesland-facing metadata, filters, and API-visible fields, for example `DE-HE` and `DE-BY`.
 - Do not rename existing curriculum directory segments just to enforce that convention during the pilot.
@@ -31,7 +32,7 @@ The project should therefore start with a small, testable pilot rather than a br
 - Introduce only the minimum new data structures required for the first pilot.
 - Preserve multi-subject navigation as a design target from the beginning.
 - For Sek I with different overall school lengths, normalize the first canonical layer to G9 year levels `5-10` rather than creating separate G8/G9 canonical branches.
-- For retained non-canonical materials, use DE-level but state-scoped archive lanes. `curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/abi` is the model case, not a special exception.
+- For retained non-canonical materials, use DE-level but state-scoped archive lanes. `curricula/DE/Gymnasium/input/DE-HE/abi` is the model case, not a special exception.
 
 ## First implementation slice
 
@@ -114,7 +115,8 @@ Adoption checklist for a subtree:
 
 Current operational baseline:
 
-- Hessen upper-secondary and lower-secondary source JSON remain `legacy_frozen`
+- Hessen lower-secondary source JSON remains `legacy_frozen`
+- Hessen upper-secondary source JSON now survives only as archived DE-level snapshots under `curricula/DE/Gymnasium/input/DE-HE/upper-secondary/source-json/`; the original tree is retired from the active repo
 - the first canonical Sek-I normalization target is the shared G9-aligned year-level grid `5-10`; duration-specific source labels stay in provenance and archived inputs
 - retained state-owned assets such as `abi/`, source bundles, and derived exam packages are expected to survive the transition in state-scoped DE archive lanes
 - the canonical `Gymnasium (DE)` overview root is the current preferred DE-level learner entry point
@@ -158,6 +160,13 @@ Current operational baseline:
 - new learner curriculum selections now also reject retired Hessen compatibility IDs server-side even when the caller already knows those IDs, so the compatibility route cannot be reopened as a fresh runtime path
 - Hessen upper-secondary exam/deploy/adoption helper tooling now resolves retained `abi/` defaults plus archived mapping defaults via `curricula/DE/Gymnasium/input/DE-HE/retained-asset-registry.json`, and resolves legacy subject-landscape source paths through the shared DE-level provenance source registry instead of per-script hardcoded legacy-tree defaults
 - DE-level Hessen `abi/` operational metadata now follows the same rule: task banks store `sourceLandscapeId` plus the shared provenance registry path instead of embedding legacy source-landscape file paths, while blueprint/source-catalog/release-bundle source references now only target retained DE-level `curricula/DE/Gymnasium/input/DE-HE/...` assets
+- repo-authored Hessen `abi/` markdown now also follows that split: authored pipeline/QS/guide documents reference DE-level retained assets or provenance registry entries, while imported/raw source markdown remains intentionally untouched as archival provenance
+- the retained/raw boundary is now enforced by `scripts/validate_hessen_upper_secondary_archive_paths.py`, using the explicit Hessen `allowedRawLegacyPathGlobs` in `curricula/DE/Gymnasium/input/DE-HE/retained-asset-registry.json`, and this gate is now part of both `.github/workflows/ci.yml` and local `run_ci.sh`
+- the remaining repo-level legacy-tree references are now also fenced by `curricula/DE/Gymnasium/provenance/hessen-upper-secondary-retirement-registry.json` plus `scripts/validate_hessen_upper_secondary_legacy_refs.py`, so active runtime/tooling/test surfaces can only refer to the frozen Hessen upper-secondary tree from an explicit handoff allowlist
+- backend/src no longer contains any explicit Hessen upper-secondary tree references; the remaining repo-level blockers are now purely declarative provenance/transfer files plus the validators that guard that boundary
+- the frozen Hessen upper-secondary source-JSON lane is now mirrored under `curricula/DE/Gymnasium/input/DE-HE/upper-secondary/source-json/`, and `curricula/DE/Gymnasium/provenance/source-landscape-registry.json` now provides `archiveSourcePath` so authoring/deploy tooling can read those snapshots without requiring the live legacy tree
+- backend landscape loading now also falls back to those archived Hessen upper-secondary source snapshots, so retired curriculum IDs remain readable for release metadata, frontier invariants, and explicit retirement/conflict handling after the repo-side delete handoff
+- the Hessen upper-secondary delete handoff has now been executed: the original tree is gone from the active repo path, and `bash scripts/run_hessen_upper_secondary_delete_handoff_dry_run.sh` now acts as the post-retirement verification command for the surviving archive/provenance lane
 - an explicit backend bulk-cutover path with `dryRun` and a supplied learner-ID list is now available, so later Hessen -> DE migrations can be rehearsed and executed without exposing global learner listings
 - the operator-facing bulk-cutover UI now supports CSV export of dry-run/execution results and lets operators reduce the current input list to the `eligible` learner IDs before triggering the real migration
 - the canonical Mathematics pilot function corridor is `cutover_ready`

@@ -52,6 +52,9 @@ def resolve_hessen_upper_secondary_landscape_path(subject_key: str) -> Path:
             f"Missing source-landscape registry entry for Hessen upper-secondary landscapeId "
             f"{subject['landscapeId']}"
         )
+    archive_source_path = landscape_entry.get("archiveSourcePath")
+    if archive_source_path:
+        return ROOT / archive_source_path
     return ROOT / landscape_entry["sourcePath"]
 
 

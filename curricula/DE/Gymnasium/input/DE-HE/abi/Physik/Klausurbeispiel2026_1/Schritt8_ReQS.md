@@ -15,10 +15,10 @@ Datum: 2026-02-06
 | F-007 | Induktion GK A: Lenz-Richtung zusätzlich zum Betrag | behoben | `Physik_Hessen_2026_Klausurbeispiel_1.md`, `Physik_Hessen_2026_Klausurbeispiel_1_Musterloesung.md` |
 | F-008 | LK C: Explizite Linearisierungsdarstellung (Moseley) | behoben | `Physik_Hessen_2026_Klausurbeispiel_1_Musterloesung.md` |
 | F-009 | Signifikante Stellen + expliziter 15 %-Toleranzbezug | behoben | `Physik_Hessen_2026_Klausurbeispiel_1_Musterloesung.md` |
-| F-010 | Q4-Wahlpflichtregel (min. 2 optionale Cluster) in Landscape-Datenstruktur | behoben | `curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/json/DE_HES_S_GYM_2_PHYSIK.de.json` |
-| F-011 | Ergänzung Standardmodell/Elementarteilchen in Q4_OPTIONAL | behoben | `curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/json/DE_HES_S_GYM_2_PHYSIK.de.json` |
-| F-012 | Leitideen-Schärfung Kernphysik (Technikbezug) | behoben | `curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/json/DE_HES_S_GYM_2_PHYSIK.de.json` |
-| F-013 | Integration Klausurbeispiel 2026/1 in Landscape (`examData`) | behoben | `curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/json/DE_HES_S_GYM_2_PHYSIK.de.json` |
+| F-010 | Q4-Wahlpflichtregel (min. 2 optionale Cluster) in Landscape-Datenstruktur | behoben | `curricula/DE/Gymnasium/provenance/source-landscape-registry.json` (`landscapeId: 24f2ca0f-b94a-444e-bb70-677cb6f85c02`) |
+| F-011 | Ergänzung Standardmodell/Elementarteilchen in Q4_OPTIONAL | behoben | `curricula/DE/Gymnasium/provenance/source-landscape-registry.json` (`landscapeId: 24f2ca0f-b94a-444e-bb70-677cb6f85c02`) |
+| F-012 | Leitideen-Schärfung Kernphysik (Technikbezug) | behoben | `curricula/DE/Gymnasium/provenance/source-landscape-registry.json` (`landscapeId: 24f2ca0f-b94a-444e-bb70-677cb6f85c02`) |
+| F-013 | Integration Klausurbeispiel 2026/1 in Landscape (`examData`) | behoben | `curricula/DE/Gymnasium/provenance/source-landscape-registry.json` (`landscapeId: 24f2ca0f-b94a-444e-bb70-677cb6f85c02`) |
 | F-014 | LaTeX-Indexkorrektur (`_{...}` bei Mehrbuchstaben-Indizes) | behoben | `Physik_Hessen_2026_Klausurbeispiel_1.md`, `Physik_Hessen_2026_Klausurbeispiel_1_Musterloesung.md`, `Schritt7_Finding_Bearbeitung.md` |
 
 ## Freigabestatus

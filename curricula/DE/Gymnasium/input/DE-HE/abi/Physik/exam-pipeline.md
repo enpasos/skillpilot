@@ -1,8 +1,8 @@
 # Physics Exam Pipeline
 
-The curriculum JSON is the single canonical release artifact for the 2026 Hessen physics exam setup:
+The registered Hessen physics source landscape is the single canonical release artifact for the 2026 exam setup:
 
-- `curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/json/DE_HES_S_GYM_2_PHYSIK.de.json`
+- `curricula/DE/Gymnasium/provenance/source-landscape-registry.json` (`landscapeId: 24f2ca0f-b94a-444e-bb70-677cb6f85c02`)
 
 The curriculum keeps only the canonical offer release anchors as ordinary goals with minimal `release` metadata:
 

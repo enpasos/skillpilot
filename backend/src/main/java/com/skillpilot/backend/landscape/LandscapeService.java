@@ -366,6 +366,11 @@ public class LandscapeService {
             log.error("Failed to list landscapes in {}", dir, e);
         }
 
+        long archivedSourceMaxLastModified = loadArchivedSourceLandscapes(dir, loaded);
+        if (archivedSourceMaxLastModified > maxLastModified) {
+            maxLastModified = archivedSourceMaxLastModified;
+        }
+
         if (criticalParseError && !cachedLandscapes.isEmpty()) {
             log.warn("Critical landscape parse errors detected. Keeping previous cache with {} landscapes and {} goals.",
                     cachedLandscapes.size(), goalIdToLandscapeId.size());
@@ -397,6 +402,113 @@ public class LandscapeService {
         curriculumManifest = loadCurriculumManifest(dir, knownRootIds);
         lastLoadedFingerprint = maxLastModified;
         log.info("Loaded {} landscapes and {} goals from {}", loaded.size(), goalIndex.size(), dir);
+    }
+
+    private long loadArchivedSourceLandscapes(Path dir, List<LearningLandscape> loaded) {
+        Path registryFile = dir.resolve(SOURCE_LANDSCAPE_REGISTRY_PATH);
+        if (!Files.isRegularFile(registryFile)) {
+            return 0L;
+        }
+        long maxLastModified = 0L;
+        Set<String> loadedLandscapeIds = loaded.stream()
+                .map(LearningLandscape::getLandscapeId)
+                .filter(StringUtils::hasText)
+                .collect(Collectors.toCollection(LinkedHashSet::new));
+        try {
+            JsonNode root = objectMapper.readTree(registryFile.toFile());
+            if (root == null || !root.isObject()) {
+                throw new IllegalStateException("Invalid source landscape registry root: " + registryFile);
+            }
+            JsonNode versionNode = root.get("version");
+            if (versionNode == null || !versionNode.canConvertToInt()
+                    || versionNode.intValue() != SUPPORTED_SOURCE_REGISTRY_VERSION) {
+                throw new IllegalStateException("Unsupported source landscape registry version in " + registryFile);
+            }
+            JsonNode entriesNode = root.get("entries");
+            if (entriesNode == null || !entriesNode.isArray()) {
+                throw new IllegalStateException("Source landscape registry has no entries array: " + registryFile);
+            }
+
+            for (JsonNode entry : entriesNode) {
+                if (entry == null || !entry.isObject()) {
+                    continue;
+                }
+                String landscapeId = readRegistryText(entry, "landscapeId");
+                String archiveSourcePath = readRegistryText(entry, "archiveSourcePath");
+                if (!StringUtils.hasText(landscapeId) || !StringUtils.hasText(archiveSourcePath)
+                        || loadedLandscapeIds.contains(landscapeId)) {
+                    continue;
+                }
+
+                Path snapshotFile = resolveRegistryRepoPath(dir, archiveSourcePath);
+                if (!Files.isRegularFile(snapshotFile)) {
+                    log.warn("Archived source landscape snapshot not found for {}: {}", landscapeId, snapshotFile);
+                    continue;
+                }
+
+                try {
+                    long lastModified = Files.getLastModifiedTime(snapshotFile).toMillis();
+                    if (lastModified > maxLastModified) {
+                        maxLastModified = lastModified;
+                    }
+                } catch (IOException e) {
+                    log.debug("Could not read lastModified for {}", snapshotFile, e);
+                }
+
+                try {
+                    JsonNode snapshotRoot = objectMapper.readTree(snapshotFile.toFile());
+                    if (snapshotRoot == null || !snapshotRoot.isObject()) {
+                        log.warn("Skipping archived source snapshot {}: invalid JSON object", snapshotFile);
+                        continue;
+                    }
+                    boolean hasLandscapeId = snapshotRoot.hasNonNull("landscapeId") || snapshotRoot.hasNonNull("id");
+                    if (!hasLandscapeId || !snapshotRoot.has("goals") || !snapshotRoot.get("goals").isArray()) {
+                        log.warn("Skipping archived source snapshot {}: not a landscape payload", snapshotFile);
+                        continue;
+                    }
+
+                    LearningLandscape landscape = objectMapper.treeToValue(snapshotRoot, LearningLandscape.class);
+                    if (!StringUtils.hasText(landscape.getLandscapeId())) {
+                        log.warn("Skipping archived source snapshot without landscapeId: {}", snapshotFile);
+                        continue;
+                    }
+                    if (!landscapeId.equals(landscape.getLandscapeId())) {
+                        log.warn(
+                                "Skipping archived source snapshot {}: registry landscapeId {} does not match payload {}",
+                                snapshotFile,
+                                landscapeId,
+                                landscape.getLandscapeId());
+                        continue;
+                    }
+
+                    loaded.add(landscape);
+                    loadedLandscapeIds.add(landscapeId);
+                } catch (Exception e) {
+                    log.error("Failed to read archived source landscape {}", snapshotFile, e);
+                }
+            }
+        } catch (IOException e) {
+            throw new IllegalStateException("Failed to load archived source landscapes from " + registryFile, e);
+        }
+        return maxLastModified;
+    }
+
+    private Path resolveRegistryRepoPath(Path curriculaDir, String repoRelativePath) {
+        Path directCandidate = curriculaDir.resolve(repoRelativePath).normalize();
+        if (Files.exists(directCandidate)) {
+            return directCandidate;
+        }
+        Path repoRoot = curriculaDir.getParent();
+        if (repoRoot != null) {
+            Path repoCandidate = repoRoot.resolve(repoRelativePath).normalize();
+            if (Files.exists(repoCandidate)) {
+                return repoCandidate;
+            }
+        }
+        if (repoRelativePath.startsWith("curricula/")) {
+            return curriculaDir.resolve(repoRelativePath.substring("curricula/".length())).normalize();
+        }
+        return directCandidate;
     }
 
     private boolean isCriticalLandscapeFile(Path file) {

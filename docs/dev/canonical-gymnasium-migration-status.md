@@ -4,8 +4,8 @@ This document tracks the migration progress from legacy Gymnasium source trees i
 
 Assumption for this document:
 
-- "existing repos" means the legacy curriculum source trees that are still operationally relevant inside this monorepo.
-- The main trees in scope today are:
+- "existing repos" means the legacy curriculum source trees that are or recently were operationally relevant inside this monorepo.
+- The main tracked trees in scope today are:
   - `curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe`
   - `curricula/DE/HE/Kultusministerium/Gymnasium_9_Mittelstufe`
   - `curricula/DE/BY/Gymnasium`
@@ -38,7 +38,7 @@ Important interpretation:
 - `legacy_view_retained` is deliberately not `100%`.
 - We only call the program `100%` when the old trees are actually removable.
 
-## Snapshot 2026-03-14
+## Snapshot 2026-03-15
 
 Observed repo state:
 
@@ -86,10 +86,19 @@ Observed repo state:
 - new UI and AI curriculum-selection writes now also reject retired Hessen compatibility IDs even when a caller already knows them, so compatibility routes are no longer re-openable as fresh learner selections
 - Hessen upper-secondary exam/deploy/adoption helper tooling now resolves retained `abi/` defaults plus archived mapping defaults from the DE-level lanes `curricula/DE/Gymnasium/input/DE-HE/` and `curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/` via a shared retained-asset registry, while legacy subject-landscape lookup is centralized through the DE-level provenance source registry instead of per-script hardcoded legacy paths
 - DE-level Hessen `abi/` operational metadata now follows the same handoff: `task_bank.json` stores `sourceLandscapeId` plus `curricula/DE/Gymnasium/provenance/source-landscape-registry.json` instead of embedding legacy landscape file paths, and blueprint/source-catalog/release-bundle source references now point only at retained DE-level `curricula/DE/Gymnasium/input/DE-HE/...` assets
+- repo-authored Hessen `abi/` markdown (`exam-pipeline.md`, physics authoring/QS docs, LEIFI README) is now aligned to the same DE-level archive/provenance lane; remaining legacy path strings inside `DE-HE/abi/` are confined to imported/raw archival texts such as source-extracted markdown and official text excerpts
+- that remaining raw-provenance boundary is now machine-checked by `scripts/validate_hessen_upper_secondary_archive_paths.py`, with the explicit allowlist stored in `curricula/DE/Gymnasium/input/DE-HE/retained-asset-registry.json`
+- the Hessen upper-secondary archive-boundary validator is now wired into both `.github/workflows/ci.yml` (`graph-validation`) and local `run_ci.sh`, so regressions on retained-vs-raw archive path usage fail the standard QA path instead of relying on ad-hoc manual checks
+- the remaining repo-level references to `curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe` are now also narrowed to an explicit handoff allowlist in `curricula/DE/Gymnasium/provenance/hessen-upper-secondary-retirement-registry.json`; active operational surfaces are machine-checked by `scripts/validate_hessen_upper_secondary_legacy_refs.py`, and the old root helper scripts no longer carry hardcoded Hessen legacy defaults
+- backend/src is now free of explicit Hessen upper-secondary tree references; the remaining allowlisted repo-level references are reduced to `7` explicit handoff files: provenance/input descriptors plus the validator/dry-run scripts that police that boundary
+- the frozen Hessen upper-secondary source-JSON lane is now mirrored under `curricula/DE/Gymnasium/input/DE-HE/upper-secondary/source-json/` (`39` files), and the shared source-landscape registry now offers `archiveSourcePath` so tooling can read those snapshots without depending on the live legacy tree
+- backend landscape loading now also falls back to those archived Hessen upper-secondary source snapshots, so retired curriculum IDs remain resolvable for release metadata, frontier invariants, and explicit retirement/conflict handling even after the old tree is gone
+- the Hessen upper-secondary delete handoff has now actually been executed: `curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe` is gone from the active repo path, and `bash scripts/run_hessen_upper_secondary_delete_handoff_dry_run.sh` now serves as the post-retirement verification command over the surviving DE-level archive/provenance lanes
+- `scripts/validate_hessen_upper_secondary_legacy_refs.py` now enforces not only the allowlisted textual reference boundary, but also that the retired Hessen upper-secondary tree stays absent from the active repo
 - Reviewed canonical landscapes now carry committed node-level `applicability`; the currently enforced CI set now covers the full committed DE Gymnasium canonical set: `Mathematik`, `Physik`, `Chemie`, `Biologie`, `Informatik`, `Deutsch`, `Englisch`, `Französisch`, `Griechisch`, `Chinesisch`, `Geschichte`, `Politik und Wirtschaft`, `Musik`, `Latein`, `Spanisch`, `Wirtschaft`, `Overview`
 - `validate:view-filters` is now clean on active reviewed findings for that scope: `0` errors, `0` active warnings, `8` accepted warnings recorded in `docs/qa-ci/applicability-accepted-warnings.json`
-- `curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe` has now effectively reached `legacy_view_retained` as an operational runtime state, even though hard repo deletion is still tracked separately
-- No legacy source tree has been deleted yet
+- `curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe` has now crossed from `legacy_view_retained` to `legacy_deleted` at tree level: only the DE-level input/provenance lanes survive as operational artifacts
+- `curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe` is the first tracked legacy source tree that has actually been deleted from the active repo
 
 ## Input transfer lane
 
@@ -105,7 +114,7 @@ Rule:
 
 - canonical DE landscapes stay shared and non-state-specific
 - transferred source inputs must stay explicitly state-scoped
-- the same state-scoped rule applies to retained non-canonical materials beyond pure `input/`, with `curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/abi` as the clearest current example
+- the same state-scoped rule applies to retained non-canonical materials beyond pure `input/`, with `curricula/DE/Gymnasium/input/DE-HE/abi` as the clearest current example
 
 Recommended target structure:
 
@@ -135,6 +144,7 @@ Current status of this lane:
 - a first Hessen `abi/` small-subject batch has been transferred into that archive
 - the Hessen `abi/Physik` bulk has now also been transferred into that archive
 - the Hessen `abi/Mathe` bulk has now also been transferred into that archive
+- the Hessen upper-secondary source-JSON snapshots (`39` files) have now also been transferred into that archive
 - Hessen upper-secondary exam/deploy/adoption helper defaults now resolve against the DE-level `abi/` and mapping archives via `curricula/DE/Gymnasium/input/DE-HE/retained-asset-registry.json` instead of subject-local hardcoded legacy-tree paths
 - Hessen upper-secondary `abi/` task banks, blueprints, source catalogs, and the math release bundle now also use DE-level retained asset paths plus provenance registry references instead of embedding live `Gymnasiale_Oberstufe` source paths in their operational metadata
 - the Bavaria subject-source snapshot has now also been transferred into that archive
@@ -147,6 +157,7 @@ Current status of this lane:
 | State lane | Current source location | Current form | Observed size | Migrated into DE archive | Planned target |
 | --- | --- | --- | ---: | ---: | --- |
 | `DE-HE` upper-secondary input | `curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/input/` | source PDFs + references | `24` files | `24` files | `curricula/DE/Gymnasium/input/DE-HE/upper-secondary/` |
+| `DE-HE` upper-secondary source snapshot | `curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/json/` | frozen source landscapes + deck/report sidecars | `39` files | `39` files | `curricula/DE/Gymnasium/input/DE-HE/upper-secondary/source-json/` |
 | `DE-HE` upper-secondary abi | `curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/abi/` | exam/release assets by subject | `2130` files | `2130` files | `curricula/DE/Gymnasium/input/DE-HE/abi/` |
 | `DE-HE` lower-secondary input | `curricula/DE/HE/Kultusministerium/Gymnasium_9_Mittelstufe/input/` | source PDFs + references | `20` files | `20` files | `curricula/DE/Gymnasium/input/DE-HE/lower-secondary/` |
 | `DE-BY` gymnasium source lane | `curricula/DE/BY/Gymnasium/` | subject JSON source set, no dedicated `input/` tree yet | `45` subject JSON files | `45` files | `curricula/DE/Gymnasium/input/DE-BY/gymnasium/` |
@@ -165,9 +176,9 @@ Interpretation:
 Input-lane proxy score:
 
 ```text
-known files in scope = 24 + 2130 + 20 + 45 = 2219
-transferred so far   = 24 + 20 + 45 + 2130 = 2219
-proxy score          = 2219 / 2219 = 100.00%
+known files in scope = 24 + 39 + 2130 + 20 + 45 = 2258
+transferred so far   = 24 + 39 + 20 + 45 + 2130 = 2258
+proxy score          = 2258 / 2258 = 100.00%
 ```
 
 Working input-transfer score:
@@ -268,7 +279,7 @@ Scoring rule:
 
 | Legacy source tree | Canonical replacement | Runtime default | Cutover path | Input/assets mirrored | Audit/provenance survivability | Legacy UI/API detached | Gate score | Deletable now | Biggest blocker | Next work package |
 | --- | --- | --- | --- | --- | --- | --- | ---: | --- | --- | --- |
-| `curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe` | done | done | done | done | done | done | 100% | no | the runtime migration/detachment work is complete, but the legacy tree is still intentionally kept in the active repo until an explicit delete/archive decision is executed | keep the Hessen upper-secondary tree frozen, shift active migration effort to Sek I, and prepare the explicit repo-delete/handoff step separately |
+| `curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe` | done | done | done | done | done | done | 100% | yes | none; delete handoff executed and CI now enforces that the tree stays absent | closed; keep the DE-level provenance/archive registries as the surviving audit trail and leave the post-retirement gate in CI |
 | `curricula/DE/HE/Kultusministerium/Gymnasium_9_Mittelstufe` | partial | no | no | done | no | no | 25% | no | only selected Sek I bridges are adopted; there is no broad canonical replacement or learner cutover path yet | move from bridge pilots to the first subject-wide Sek I canonical slices and add an explicit lower-secondary cutover plan |
 | `curricula/DE/BY/Gymnasium` | partial | no | no | done | no | no | 25% | no | Bavaria is still pilot-shaped; broad canonical subject coverage and runtime migration are missing | extend Bavaria beyond pilot mappings into the first reviewed subject-wide canonical replacements, then add a first Bavaria learner-view cutover path |
 
@@ -276,7 +287,7 @@ Practical conclusion:
 
 - The overall migration program is around `55%`.
 - The input-transfer lane is at `100%` for the currently known mandatory scope.
-- Hard deletion readiness is still `0%`, because no tracked legacy tree is deletable today.
+- Hard legacy-tree retirement progress is now `33%` at tracked-tree granularity, because Hessen upper-secondary has actually been removed from the active repo while Hessen lower-secondary and Bavaria Gymnasium have not.
 - Soft delete-gate progress is now visible tree by tree: `100%` for Hessen upper-secondary, `25%` for Hessen lower-secondary, `25%` for Bavaria Gymnasium.
 
 All four statements can be true at the same time, because migration progress, retained-input transfer, delete-gate progress, and actual deletability are different planning dimensions.
@@ -325,6 +336,6 @@ This document therefore uses:
 - `55%` as the current migration-program score
 - `100%` as the current input-transfer score for the currently known mandatory scope
 - `100%` / `25%` / `25%` as the current delete-gate progress picture for the three tracked legacy trees
-- `0%` as the current hard deletion-readiness picture, because none of those trees can yet be removed from the active repo
+- `33%` as the current hard legacy-tree retirement picture, because one of the three tracked legacy trees has now actually been removed from the active repo without breaking the verified handoff paths
 
 That is, in my view, the most honest planning representation of the current state.

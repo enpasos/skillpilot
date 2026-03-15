@@ -4,8 +4,8 @@ This folder hosts derived build and QA artifacts for the Hessen 2026 chemistry A
 
 ## Source of truth
 
-- The canonical release artifact remains the curriculum file:
-  - `curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/json/DE_HES_S_GYM_2_CHEMIE.de.json`
+- The canonical release artifact remains the registered Hessen chemistry source landscape:
+  - `curricula/DE/Gymnasium/provenance/source-landscape-registry.json` (`landscapeId: 2f391ba2-ba1e-40e4-a8d2-dff049516c13`)
 - Only runtime-relevant release anchors belong in the curriculum.
 - Future build and QA files in `abi/Chemie/` are derived artifacts, not the release itself.
 

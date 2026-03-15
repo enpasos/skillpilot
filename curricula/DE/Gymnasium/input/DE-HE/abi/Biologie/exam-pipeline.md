@@ -1,8 +1,8 @@
 # Biology Exam Pipeline
 
-Der kanonische fachliche Release-Pfad fuer Biologie bleibt das Curriculum:
+Der kanonische fachliche Release-Pfad fuer Biologie bleibt die registrierte Hessen-Quelllandschaft:
 
-- `curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/json/DE_HES_S_GYM_2_BIOLOGIE.de.json`
+- `curricula/DE/Gymnasium/provenance/source-landscape-registry.json` (`landscapeId: 3e56aa75-c76c-4de5-883b-0aac98297846`)
 
 Die aktuelle Biologie-Pipeline umfasst jetzt:
 

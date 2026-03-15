@@ -1,8 +1,8 @@
 # Economics Exam Pipeline
 
-Der kanonische fachliche Release-Pfad fuer Wirtschaftswissenschaften bleibt das Curriculum:
+Der kanonische fachliche Release-Pfad fuer Wirtschaftswissenschaften bleibt die registrierte Hessen-Quelllandschaft:
 
-- `curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/json/DE_HES_S_GYM_2_WIRTSCHAFT.de.json`
+- `curricula/DE/Gymnasium/provenance/source-landscape-registry.json` (`landscapeId: a334a745-1d67-4e1d-86a5-dadc04f144d2`)
 
 Die Wirtschaft-Pipeline umfasst jetzt:
 

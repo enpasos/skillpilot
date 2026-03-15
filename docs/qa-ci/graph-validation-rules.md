@@ -6,6 +6,11 @@ This is the single source of truth for algorithmic graph validation in CI.
 - CI entrypoint: `npm run validate:graph` in `.github/workflows/ci.yml` (`graph-validation` job)
 - Filter-projection validator: `app/scripts/validateViewFilters.ts`
 - Filter-projection CI entrypoint: `npm run validate:view-filters` in `.github/workflows/ci.yml` (`graph-validation` job)
+- Hessen Oberstufe archive-boundary validator: `scripts/validate_hessen_upper_secondary_archive_paths.py`
+- Archive-boundary CI entrypoint: `python scripts/validate_hessen_upper_secondary_archive_paths.py` in `.github/workflows/ci.yml` (`graph-validation` job)
+- Hessen Oberstufe legacy-reference validator: `scripts/validate_hessen_upper_secondary_legacy_refs.py`
+- Legacy-reference CI entrypoint: `python scripts/validate_hessen_upper_secondary_legacy_refs.py` in `.github/workflows/ci.yml` (`graph-validation` job)
+- The legacy-reference validator also enforces post-retirement absence of the old `curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe` tree; only allowlisted provenance/handoff files may still mention that path textually.
 
 ## Enforcement profiles
 
@@ -219,6 +224,47 @@ Planned future addition:
   - projected filtered graphs such as `G[jurisdiction = DE-HE]`
   - later, if needed, selected multi-dimensional combinations
 
+## Auxiliary archive-boundary validator
+
+This is a separate retained-asset hygiene gate, not a `GVR-*` or `APV-*` rule family.
+
+Purpose:
+
+- keep the Hessen upper-secondary DE-level archive operationally detached from live legacy repo paths
+- allow remaining `Gymnasiale_Oberstufe` path strings only inside explicitly allowlisted raw archival provenance files
+
+Implementation and data source:
+
+- validator: `scripts/validate_hessen_upper_secondary_archive_paths.py`
+- allowlist and archive root: `curricula/DE/Gymnasium/input/DE-HE/retained-asset-registry.json`
+
+Current CI semantics:
+
+- scans `curricula/DE/Gymnasium/input/DE-HE/abi`
+- fails if a legacy `Gymnasiale_Oberstufe` path string appears outside the allowlisted raw-provenance files
+- keeps machine-readable ABI metadata and repo-authored archive docs on the normalized DE-level archive path
+
+## Auxiliary legacy-reference validator
+
+This is the repo-level handoff gate for the retired Hessen upper-secondary legacy tree.
+
+Purpose:
+
+- keep active tooling/runtime/test surfaces detached from the retired legacy tree
+- keep the old tree absent from the active repo after the delete handoff
+- make the remaining allowed references explicit as the surviving provenance/handoff boundary
+
+Implementation and data source:
+
+- validator: `scripts/validate_hessen_upper_secondary_legacy_refs.py`
+- scan roots, exclusions, and allowlist: `curricula/DE/Gymnasium/provenance/hessen-upper-secondary-retirement-registry.json`
+
+Current CI semantics:
+
+- scans active repo surfaces (`backend/src`, `app`, `scripts`, DE-level provenance/input lanes, selected root helpers)
+- ignores the already-separated raw ABI archive scope under `curricula/DE/Gymnasium/input/DE-HE/abi/**`
+- fails if a `Gymnasiale_Oberstufe` tree reference appears outside the explicit handoff allowlist
+
 Expected rule family for that validator:
 
 - `APV-*` for applicability and projected-view validation
@@ -239,7 +285,7 @@ This layer is intentionally documented here already so CI semantics stay aligned
 
 Reference implementations already curated:
 
-- Physics landscape file: `curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/json/DE_HES_S_GYM_2_PHYSIK.de.json`
+- Physics landscape file: `curricula/DE/Gymnasium/input/DE-HE/upper-secondary/source-json/DE_HES_S_GYM_2_PHYSIK.de.json.snapshot`
   - subtree: `Einführungsphase: Mechanik, Gravitation, Thermodynamik und Drehbewegungen`
   - benchmark value:
     - no cluster-level `requires` inside the subtree
@@ -247,7 +293,7 @@ Reference implementations already curated:
     - every non-memory atomic goal in the subtree also lies on at least one atomic path toward terminal autonomy goals under `Übungen E-Phase`
     - the single memorization node in that subtree is explicitly typed as `nodeKind: "memory"` and is therefore a documented exception rather than an ambiguous leaf
 
-- Mathematics landscape file: `curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/json/DE_HES_S_GYM_2_MATHEMATIK.de.json`
+- Mathematics landscape file: `curricula/DE/Gymnasium/input/DE-HE/upper-secondary/source-json/DE_HES_S_GYM_2_MATHEMATIK.de.json.snapshot`
   - scope: ordinary phases `E`, `Q1`, `Q2`, `Q3`, `Q4` plus `Übungen Prozesskompetenzen`
   - benchmark value:
     - all local phase-autonomy branches (`Übungen E-Phase`, `Übungen Q1`, `Übungen Q2`, `Übungen Q3`, `Übungen Q4`) and the global process-competency branch contain only atomic terminal goals

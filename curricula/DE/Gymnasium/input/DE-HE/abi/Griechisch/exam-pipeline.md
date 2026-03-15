@@ -3,8 +3,8 @@
 This folder contains derived build and QA artifacts for the Hessen 2026 Ancient Greek exam pipeline.
 
 ## Source of truth
-- The canonical release artifact is the curriculum JSON:
-  `curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/json/DE_HES_S_GYM_2_GRIECHISCH.de.json`
+- The canonical release artifact is the registered Hessen Ancient Greek source landscape:
+  `curricula/DE/Gymnasium/provenance/source-landscape-registry.json` (`landscapeId: c7209caa-18e5-4dd8-b68f-dd86e228d045`)
 - This folder is build and QA infrastructure only.
 
 ## Collections

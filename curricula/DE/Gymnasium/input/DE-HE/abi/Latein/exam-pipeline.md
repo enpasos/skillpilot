@@ -3,8 +3,8 @@
 This folder contains derived build and QA artifacts for the Hessen 2026 Latin exam pipeline.
 
 ## Source of truth
-- The canonical release artifact is the curriculum JSON:
-  `curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/json/DE_HES_S_GYM_2_LATEIN.de.json`
+- The canonical release artifact is the registered Hessen Latin source landscape:
+  `curricula/DE/Gymnasium/provenance/source-landscape-registry.json` (`landscapeId: fe28bda8-03f3-4c4a-8286-7fcfce4eeac1`)
 - This folder is build and QA infrastructure only.
 
 ## Collections

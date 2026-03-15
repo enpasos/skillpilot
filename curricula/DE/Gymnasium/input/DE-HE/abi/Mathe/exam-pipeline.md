@@ -1,8 +1,8 @@
 # Math Exam Pipeline
 
-The curriculum JSON is the single canonical release artifact for the 2026 Hessen math exam setup:
+The registered Hessen math source landscape is the single canonical release artifact for the 2026 exam setup:
 
-- `curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/json/DE_HES_S_GYM_2_MATHEMATIK.de.json`
+- `curricula/DE/Gymnasium/provenance/source-landscape-registry.json` (`landscapeId: 2796fc7b-ba9d-446f-8f26-711dd6d8a9a3`)
 
 The curriculum keeps only the canonical offer release anchors as ordinary goals with minimal `release` metadata:
 

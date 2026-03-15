@@ -7,36 +7,36 @@ Erstellung eines vollständigen, eigenständigen Klausurbeispiels für das Lande
 ## Allgemeine Pipeline-Referenz
 
 - Generische Production Pipeline: `docs/production-pipelines/exam-example.md`
-- Zentrale Quellenliste Hessen Oberstufe: `curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/input/references.md`
+- Zentrale Quellenliste Hessen Oberstufe: `curricula/DE/Gymnasium/input/DE-HE/upper-secondary/references.md`
 - Diese Authoring-Guide-Datei konkretisiert die allgemeine Pipeline für das Fach Physik und den Jahrgang 2026.
 
 ## Verbindliche Quellen
 
-- Zentrale PDF-Registry: `curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/input/references.md`
-- Erlassauszug: `curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/abi/Physik/la26_abiturerlass_physik.txt`
-- Primärquelle: `curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/abi/la26-abiturerlass.pdf`
-- Stilreferenz (Niveau/Art): `curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/abi/Physik/input/leifiphysik_abitur_md`
-- Mathe-Referenz für Aufbau/QS: `curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/abi/Mathe/Klausurbeispiel2026_1`
+- Zentrale PDF-Registry: `curricula/DE/Gymnasium/input/DE-HE/upper-secondary/references.md`
+- Erlassauszug: `curricula/DE/Gymnasium/input/DE-HE/abi/Physik/la26_abiturerlass_physik.txt`
+- Primärquelle: `curricula/DE/Gymnasium/input/DE-HE/abi/la26-abiturerlass.pdf`
+- Stilreferenz (Niveau/Art): `curricula/DE/Gymnasium/input/DE-HE/abi/Physik/input/leifiphysik_abitur_md`
+- Mathe-Referenz für Aufbau/QS: `curricula/DE/Gymnasium/input/DE-HE/abi/Mathe/Klausurbeispiel2026_1`
 
 ## Harte Randbedingungen
 
 - Aufgaben müssen die Vorgaben des Erlasses erfüllen (Inhalt, Auswahlmodus, Hilfsmittel, formale Anforderungen).
 - Aufgabenstil soll dem Niveau und der Aufgabenart der LEIFIphysik-Abituraufgaben entsprechen.
 - Es dürfen keine Aufgaben oder Teilaufgaben aus `.../leifiphysik_abitur_md` kopiert werden (weder wörtlich noch als nahezu identische Struktur).
-- Alle Formeln und mathematischen Ausdrücke sind durchgängig in LaTeX zu schreiben (inline `$...$`, abgesetzt `$$...$$`), analog zum Stil in `curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/abi/Mathe/Klausurbeispiel2026_1/Mathe_Hessen_2026_Klausurbeispiel_1.md`.
+- Alle Formeln und mathematischen Ausdrücke sind durchgängig in LaTeX zu schreiben (inline `$...$`, abgesetzt `$$...$$`), analog zum Stil in `curricula/DE/Gymnasium/input/DE-HE/abi/Mathe/Klausurbeispiel2026_1/Mathe_Hessen_2026_Klausurbeispiel_1.md`.
 - Deutsche Umlaute sind im Fließtext als `ä/ö/ü` zu verwenden (statt `ae/oe/ue`), sofern keine technischen Ausnahmen vorliegen.
 - Der Hilfsmittelhinweis im Aufgabentext ist wortlautnah am Erlass zu formulieren (insbesondere die Einschränkung der eingeführten Formelsammlung: „ohne Herleitungen, weitergehende physikalische Erklärungen, Beispielaufgaben“).
 
 ## Artefakte in diesem Ordner
 
-- Checkliste (Schritt 1): `curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/abi/Physik/Klausurbeispiel2026_1/checkliste.md`
-- Blueprint (Schritt 2): `curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/abi/Physik/abi_2026_physik_exam_blueprint.json`
-- Klausurentwurf GK/LK (Schritt 3): `curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/abi/Physik/Klausurbeispiel2026_1/Physik_Hessen_2026_Klausurbeispiel_1.md`
-- Musterlösung GK/LK (Schritt 4): `curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/abi/Physik/Klausurbeispiel2026_1/Physik_Hessen_2026_Klausurbeispiel_1_Musterloesung.md`
-- Abschluss-QS (Schritt 5): `curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/abi/Physik/Klausurbeispiel2026_1/Schritt5_Abschluss_QS.md`
-- Findings-Backlog (Schritt 6): `curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/abi/Physik/Klausurbeispiel2026_1/findings.md`
-- Finding-Bearbeitung (Schritt 7): `curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/abi/Physik/Klausurbeispiel2026_1/Schritt7_Finding_Bearbeitung.md`
-- Re-QS nach Findings (Schritt 8): `curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/abi/Physik/Klausurbeispiel2026_1/Schritt8_ReQS.md`
+- Checkliste (Schritt 1): `Klausurbeispiel2026_1/checkliste.md`
+- Blueprint (Schritt 2): `abi_2026_physik_exam_blueprint.json`
+- Klausurentwurf GK/LK (Schritt 3): `Klausurbeispiel2026_1/Physik_Hessen_2026_Klausurbeispiel_1.md`
+- Musterlösung GK/LK (Schritt 4): `Klausurbeispiel2026_1/Physik_Hessen_2026_Klausurbeispiel_1_Musterloesung.md`
+- Abschluss-QS (Schritt 5): `Klausurbeispiel2026_1/Schritt5_Abschluss_QS.md`
+- Findings-Backlog (Schritt 6): `Klausurbeispiel2026_1/findings.md`
+- Finding-Bearbeitung (Schritt 7): `Klausurbeispiel2026_1/Schritt7_Finding_Bearbeitung.md`
+- Re-QS nach Findings (Schritt 8): `Klausurbeispiel2026_1/Schritt8_ReQS.md`
 - Für weitere Klausurbeispiele gilt derselbe Artefaktsatz analog im jeweiligen `Klausurbeispiel...`-Ordner.
 
 ## Fachspezifische Ergänzungen zur allgemeinen Pipeline
@@ -101,7 +101,7 @@ Die folgenden Punkte konkretisieren nur die Physik-spezifischen Erwartungen.
 
 ### Schritt 9: Landschafts-Integration (separat, nach Stabilisierung)
 
-- Integration der finalen Abiaufgaben in `curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/json/DE_HES_S_GYM_2_PHYSIK.de.json` erfolgt **erst**, wenn Aufgabenblatt und Musterlösung inhaltlich stabil/freigegeben sind.
+- Integration der finalen Abiaufgaben in die registrierte Hessen-Physik-Quelllandschaft erfolgt **erst**, wenn Aufgabenblatt und Musterlösung inhaltlich stabil/freigegeben sind (`curricula/DE/Gymnasium/provenance/source-landscape-registry.json`, `landscapeId: 24f2ca0f-b94a-444e-bb70-677cb6f85c02`).
 - Vorher dürfen nur unabhängige Landscape-Findings umgesetzt werden (z. B. Metadaten, Auswahllogik, zusätzliche optionale Q4-Cluster).
 
 #### Didaktische Integrationsregel für die Landscape-Anbindung

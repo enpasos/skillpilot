@@ -12,7 +12,7 @@ Bezug: `la26_abiturerlass_physik.txt`, `abi/la26-abiturerlass.pdf`, Aufgabenstil
 - [ ] Sprachliche Richtigkeit (Rechtschreibung/Zeichensetzung) ist gewährleistet.
 - [ ] Wording ist unmissverständlich (klarer Auftrag, klare Größen, klarer Kontext).
 - [ ] Umlaute sind im Fließtext als `ä/ö/ü` gesetzt (keine unnötigen Umschreibungen `ae/oe/ue`; technische Ausnahmen sind dokumentiert).
-- [ ] Alle Formeln und mathematischen Ausdrücke sind durchgängig in LaTeX gesetzt (inline `$...$`, display `$$...$$`) analog zur Mathe-Referenz `curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/abi/Mathe/Klausurbeispiel2026_1/Mathe_Hessen_2026_Klausurbeispiel_1.md`.
+- [ ] Alle Formeln und mathematischen Ausdrücke sind durchgängig in LaTeX gesetzt (inline `$...$`, display `$$...$$`) analog zur Mathe-Referenz `curricula/DE/Gymnasium/input/DE-HE/abi/Mathe/Klausurbeispiel2026_1/Mathe_Hessen_2026_Klausurbeispiel_1.md`.
 - [ ] Für abgesetzte Formeln (`$$...$$`) sind Leerzeilen vor der öffnenden und nach der schließenden `$$`-Zeile gesetzt (MarkText-kompatibel).
 
 ## 2) Prüfungsstruktur und Auswahlmodus
