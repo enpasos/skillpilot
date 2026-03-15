@@ -1186,7 +1186,8 @@ public class LearnerService {
                 && !HESSEN_GYMNASIUM_LOWER_MATH_ID.equals(curriculumId)
                 && !HESSEN_GYMNASIUM_LOWER_PHYSICS_ID.equals(curriculumId)
                 && !HESSEN_GYMNASIUM_LOWER_CHEMISTRY_ID.equals(curriculumId)
-                && !HESSEN_GYMNASIUM_LOWER_BIOLOGY_ID.equals(curriculumId)) {
+                && !HESSEN_GYMNASIUM_LOWER_BIOLOGY_ID.equals(curriculumId)
+                && !HESSEN_GYMNASIUM_LOWER_FRENCH_ID.equals(curriculumId)) {
             return false;
         }
         List<String> storedPlannedGoals = plannedGoalRepository.findByLearner_SkillpilotId(learner.getSkillpilotId())
@@ -1194,11 +1195,11 @@ public class LearnerService {
                 .map(PlannedGoal::getGoalId)
                 .toList();
         HessenLowerSecondarySelection selection = inferLowerSecondarySelectionState(learner, storedPlannedGoals);
-        return !selection.frenchSelected()
-                && (selection.mathSelected()
-                        || selection.physicsSelected()
-                        || selection.chemistrySelected()
-                        || selection.biologySelected());
+        return selection.mathSelected()
+                || selection.physicsSelected()
+                || selection.chemistrySelected()
+                || selection.biologySelected()
+                || selection.frenchSelected();
     }
 
     @Transactional
@@ -1484,7 +1485,8 @@ public class LearnerService {
                 || HESSEN_GYMNASIUM_LOWER_MATH_ID.equals(curriculumId)
                 || HESSEN_GYMNASIUM_LOWER_PHYSICS_ID.equals(curriculumId)
                 || HESSEN_GYMNASIUM_LOWER_CHEMISTRY_ID.equals(curriculumId)
-                || HESSEN_GYMNASIUM_LOWER_BIOLOGY_ID.equals(curriculumId);
+                || HESSEN_GYMNASIUM_LOWER_BIOLOGY_ID.equals(curriculumId)
+                || HESSEN_GYMNASIUM_LOWER_FRENCH_ID.equals(curriculumId);
     }
 
     private CanonicalGymnasiumCutoverPlan buildCanonicalGymnasiumCutoverPlan(Learner learner, List<String> storedPlannedGoals) {
@@ -1752,7 +1754,8 @@ public class LearnerService {
                 || HESSEN_GYMNASIUM_LOWER_MATH_ID.equals(curriculumId)
                 || HESSEN_GYMNASIUM_LOWER_PHYSICS_ID.equals(curriculumId)
                 || HESSEN_GYMNASIUM_LOWER_CHEMISTRY_ID.equals(curriculumId)
-                || HESSEN_GYMNASIUM_LOWER_BIOLOGY_ID.equals(curriculumId);
+                || HESSEN_GYMNASIUM_LOWER_BIOLOGY_ID.equals(curriculumId)
+                || HESSEN_GYMNASIUM_LOWER_FRENCH_ID.equals(curriculumId);
     }
 
     private record HessenLowerSecondarySelection(
@@ -1797,6 +1800,7 @@ public class LearnerService {
                 physicsSelected = true;
                 chemistrySelected = true;
                 biologySelected = true;
+                frenchSelected = true;
             }
         }
 
@@ -1809,6 +1813,7 @@ public class LearnerService {
             physicsSelected = true;
             chemistrySelected = true;
             biologySelected = true;
+            frenchSelected = true;
         }
 
         return new HessenLowerSecondarySelection(
@@ -1829,19 +1834,13 @@ public class LearnerService {
         boolean biologySelected = selection.biologySelected();
         boolean frenchSelected = selection.frenchSelected();
 
-        if (frenchSelected) {
-            throw new ResponseStatusException(
-                    org.springframework.http.HttpStatus.BAD_REQUEST,
-                    "Unsupported curriculum for canonical Gymnasium cutover: "
-                            + HESSEN_GYMNASIUM_LOWER_FRENCH_ID);
-        }
-
         Map<String, Object> personalCurriculumConfig = new LinkedHashMap<>();
         personalCurriculumConfig.put(CANONICAL_GYMNASIUM_ROOT_ID, createSelectionConfig(true, "DE-HE"));
         personalCurriculumConfig.put(CANONICAL_GYMNASIUM_MATH_ID, createSelectionConfig(mathSelected, null));
         personalCurriculumConfig.put(CANONICAL_GYMNASIUM_PHYSICS_ID, createSelectionConfig(physicsSelected, null));
         personalCurriculumConfig.put(CANONICAL_GYMNASIUM_CHEMISTRY_ID, createSelectionConfig(chemistrySelected, null));
         personalCurriculumConfig.put(CANONICAL_GYMNASIUM_BIOLOGY_ID, createSelectionConfig(biologySelected, null));
+        personalCurriculumConfig.put(CANONICAL_GYMNASIUM_FRENCH_ID, createSelectionConfig(frenchSelected, null));
 
         String personalCurriculumJson = writePersonalCurriculumConfig(personalCurriculumConfig);
         Map<String, LearningGoal> structuralGoals = new LinkedHashMap<>(getFilteredGoals(CANONICAL_GYMNASIUM_ROOT_ID, "{}"));
@@ -1849,6 +1848,7 @@ public class LearnerService {
         structuralGoals.putAll(getFilteredGoals(CANONICAL_GYMNASIUM_PHYSICS_ID, "{}"));
         structuralGoals.putAll(getFilteredGoals(CANONICAL_GYMNASIUM_CHEMISTRY_ID, "{}"));
         structuralGoals.putAll(getFilteredGoals(CANONICAL_GYMNASIUM_BIOLOGY_ID, "{}"));
+        structuralGoals.putAll(getFilteredGoals(CANONICAL_GYMNASIUM_FRENCH_ID, "{}"));
         List<String> normalizedPlannedGoalIds = normalizeCutoverPlannedGoalIds(storedPlannedGoals, structuralGoals).stream()
                 .filter(structuralGoals::containsKey)
                 .toList();

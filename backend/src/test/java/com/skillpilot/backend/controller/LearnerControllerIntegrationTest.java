@@ -220,6 +220,9 @@ public class LearnerControllerIntegrationTest {
     private static final String CANONICAL_SEK1_BIOLOGY_FOUNDATIONS_CLUSTER_ID = "b530a382-2786-5794-8821-3e01a62d88fd";
     private static final String LEGACY_SEK1_BIOLOGY_LIFE_CHARACTERISTICS_ID = "6829bc14-3ac9-4e99-a0ca-b73f2e126d1a";
     private static final String LEGACY_SEK1_FRENCH_ROOT_ID = "2470bbf6-afaf-47de-a60a-c378aa10633a";
+    private static final String LEGACY_SEK1_FRENCH_WHY_ID = "3b56ea78-beef-5bfa-84d8-ac8df9904f01";
+    private static final String CANONICAL_SEK1_FRENCH_CLUSTER_ID = "f7f02fb7-8376-5aba-961c-743e528d1ff7";
+    private static final String CANONICAL_SEK1_FRENCH_LISTENING_ID = "40d64ae5-d572-5b31-8fb2-4f789fc4b55a";
 
     @Autowired
     private LearnerRepository learnerRepository;
@@ -1055,15 +1058,78 @@ public class LearnerControllerIntegrationTest {
     }
 
     @Test
-    void cutoverEndpointRejectsLegacyHessenSekIOverviewWhenFrenchIsActive() throws Exception {
+    void cutoverEndpointMigratesLegacyHessenSekIFrenchLearnerToCanonicalGymnasiumRoot() throws Exception {
         Learner learner = learnerRepository.findById(learnerId).orElseThrow();
-        learner.setSelectedCurriculum(HESSEN_GYMNASIUM_LOWER_ROOT_ID);
-        learner.setActiveGoalId(LEGACY_SEK1_FRENCH_ROOT_ID);
+        learner.setSelectedCurriculum(HESSEN_GYMNASIUM_LOWER_FRENCH_ID);
         learnerRepository.save(learner);
+
+        plannedGoalRepository.save(new PlannedGoal(learner, LEGACY_SEK1_FRENCH_ROOT_ID));
+        masteryRepository.save(new Mastery(learner, LEGACY_SEK1_FRENCH_WHY_ID, 1.0));
 
         HttpResponse<String> response = postCutover();
 
-        assertThat(response.statusCode()).isEqualTo(HttpStatus.BAD_REQUEST.value());
+        assertThat(response.statusCode()).isEqualTo(HttpStatus.OK.value());
+
+        Learner migratedLearner = learnerRepository.findById(learnerId).orElseThrow();
+        JsonNode persistedConfig = objectMapper.readTree(migratedLearner.getPersonalCurriculum());
+        JsonNode body = objectMapper.readTree(response.body());
+        JsonNode planned = body.path("goals").path("planned");
+        JsonNode goalOptions = body.path("stateMachine").path("goalOptions");
+
+        assertThat(migratedLearner.getSelectedCurriculum()).isEqualTo(CANONICAL_GYMNASIUM_ROOT_ID);
+        assertThat(persistedConfig.path(CANONICAL_GYMNASIUM_ROOT_ID).path("filterId").asText()).isEqualTo("DE-HE");
+        assertThat(persistedConfig.path(CANONICAL_FRENCH_ID).path("selected").asBoolean()).isTrue();
+        assertThat(persistedConfig.path(CANONICAL_FRENCH_ID).has("filterId")).isFalse();
+        assertThat(persistedConfig.path(CANONICAL_MATH_PILOT_ID).path("selected").asBoolean()).isFalse();
+        assertThat(persistedConfig.path(CANONICAL_PHYSICS_PILOT_ID).path("selected").asBoolean()).isFalse();
+        assertThat(persistedConfig.path(CANONICAL_CHEMISTRY_ID).path("selected").asBoolean()).isFalse();
+        assertThat(persistedConfig.path(CANONICAL_BIOLOGY_ID).path("selected").asBoolean()).isFalse();
+        assertThat(planned).hasSize(1);
+        assertThat(planned.get(0).path("id").asText()).isEqualTo(CANONICAL_SEK1_FRENCH_CLUSTER_ID);
+        assertThat(goalOptions).isNotEmpty();
+        assertThat(jsonIds(goalOptions))
+                .doesNotContain(LEGACY_SEK1_FRENCH_ROOT_ID, LEGACY_SEK1_FRENCH_WHY_ID);
+        assertThat(response.body())
+                .doesNotContain(LEGACY_SEK1_FRENCH_ROOT_ID)
+                .doesNotContain(LEGACY_SEK1_FRENCH_WHY_ID);
+    }
+
+    @Test
+    void cutoverEndpointMigratesLegacyHessenSekIOverviewWhenFrenchIsActive() throws Exception {
+        Learner learner = learnerRepository.findById(learnerId).orElseThrow();
+        learner.setSelectedCurriculum(HESSEN_GYMNASIUM_LOWER_ROOT_ID);
+        learner.setPersonalCurriculum("""
+                {
+                  "762de708-85fa-4324-958e-56002a318f7f": {"selected": true}
+                }
+                """);
+        learnerRepository.save(learner);
+
+        plannedGoalRepository.save(new PlannedGoal(learner, LEGACY_SEK1_FRENCH_ROOT_ID));
+        masteryRepository.save(new Mastery(learner, LEGACY_SEK1_FRENCH_WHY_ID, 1.0));
+
+        HttpResponse<String> response = postCutover();
+
+        assertThat(response.statusCode()).isEqualTo(HttpStatus.OK.value());
+
+        Learner migratedLearner = learnerRepository.findById(learnerId).orElseThrow();
+        JsonNode persistedConfig = objectMapper.readTree(migratedLearner.getPersonalCurriculum());
+        JsonNode body = objectMapper.readTree(response.body());
+        JsonNode planned = body.path("goals").path("planned");
+
+        assertThat(migratedLearner.getSelectedCurriculum()).isEqualTo(CANONICAL_GYMNASIUM_ROOT_ID);
+        assertThat(persistedConfig.path(CANONICAL_GYMNASIUM_ROOT_ID).path("filterId").asText()).isEqualTo("DE-HE");
+        assertThat(persistedConfig.path(CANONICAL_FRENCH_ID).path("selected").asBoolean()).isTrue();
+        assertThat(persistedConfig.path(CANONICAL_MATH_PILOT_ID).path("selected").asBoolean()).isFalse();
+        assertThat(persistedConfig.path(CANONICAL_PHYSICS_PILOT_ID).path("selected").asBoolean()).isFalse();
+        assertThat(persistedConfig.path(CANONICAL_CHEMISTRY_ID).path("selected").asBoolean()).isFalse();
+        assertThat(persistedConfig.path(CANONICAL_BIOLOGY_ID).path("selected").asBoolean()).isFalse();
+        assertThat(planned).hasSize(1);
+        assertThat(planned.get(0).path("id").asText()).isEqualTo(CANONICAL_SEK1_FRENCH_CLUSTER_ID);
+        assertThat(body.path("stateMachine").path("requiredAction").asText()).isEqualTo("setActiveGoal");
+        assertThat(response.body())
+                .doesNotContain(LEGACY_SEK1_FRENCH_ROOT_ID)
+                .doesNotContain(LEGACY_SEK1_FRENCH_WHY_ID);
     }
 
     @Test
@@ -1306,11 +1372,12 @@ public class LearnerControllerIntegrationTest {
         assertThat(persistedConfig.path(CANONICAL_ENGLISH_ID).path("selected").asBoolean()).isFalse();
         assertThat(planned).hasSize(1);
         assertThat(planned.get(0).path("id").asText()).isEqualTo(CANONICAL_FRENCH_ROOT_ID);
+        assertThat(goalOptions).isNotEmpty();
+        assertThat(frontier).isNotEmpty();
+        assertThat(containsNodeWithTag(goalOptions, "subject:french")).isTrue();
+        assertThat(containsNodeWithTag(frontier, "subject:french")).isTrue();
         assertThat(jsonIds(goalOptions))
-                .contains(CANONICAL_FRENCH_READ_FAMILY_ID, CANONICAL_FRENCH_READ_YOUTH_ID)
                 .doesNotContain(LEGACY_FRENCH_WHY_ID, LEGACY_FRENCH_ROOT_ID);
-        assertThat(jsonIds(frontier))
-                .contains(CANONICAL_FRENCH_READ_FAMILY_ID, CANONICAL_FRENCH_READ_YOUTH_ID);
 
         assertThat(response.body())
                 .doesNotContain(LEGACY_FRENCH_WHY_ID)
@@ -2114,22 +2181,20 @@ public class LearnerControllerIntegrationTest {
                 .containsExactlyInAnyOrder(CANONICAL_GERMAN_E_PHASE_CLUSTER_ID, CANONICAL_FRENCH_ROOT_ID);
         assertThat(body.path("stateMachine").path("requiredAction").asText()).isEqualTo("setActiveGoal");
         assertThat(jsonIds(goalOptions))
-                .contains(
+                .containsAnyOf(
                         CANONICAL_GERMAN_GRAMMAR_ID,
-                        CANONICAL_GERMAN_TEXT_TYPE_ID,
-                        CANONICAL_FRENCH_READ_FAMILY_ID,
-                        CANONICAL_FRENCH_READ_YOUTH_ID)
+                        CANONICAL_GERMAN_TEXT_TYPE_ID)
                 .doesNotContain(
                         LEGACY_GERMAN_E_PHASE_CLUSTER_ID,
                         LEGACY_FRENCH_ROOT_ID,
                         LEGACY_GERMAN_WHY_ID,
                         LEGACY_FRENCH_WHY_ID);
+        assertThat(containsNodeWithTag(goalOptions, "subject:french")).isTrue();
         assertThat(jsonIds(frontier))
-                .contains(
+                .containsAnyOf(
                         CANONICAL_GERMAN_GRAMMAR_ID,
-                        CANONICAL_GERMAN_TEXT_TYPE_ID,
-                        CANONICAL_FRENCH_READ_FAMILY_ID,
-                        CANONICAL_FRENCH_READ_YOUTH_ID);
+                        CANONICAL_GERMAN_TEXT_TYPE_ID);
+        assertThat(containsNodeWithTag(frontier, "subject:french")).isTrue();
 
         assertThat(response.body())
                 .doesNotContain(LEGACY_GERMAN_E_PHASE_CLUSTER_ID)
@@ -3027,23 +3092,23 @@ public class LearnerControllerIntegrationTest {
     }
 
     @Test
-    void lowerSecondaryOverviewWithFrenchRemainsWritableUntilCutoverSurfaceExists() throws Exception {
+    void lowerSecondaryOverviewWithFrenchNowRejectsWritesAfterCutoverSurfaceExists() throws Exception {
         Learner learner = new Learner();
-        learner.setSkillpilotId("lower-french-still-writable");
+        learner.setSkillpilotId("lower-french-now-readonly");
         learner.setSelectedCurriculum(HESSEN_GYMNASIUM_LOWER_ROOT_ID);
         learner.setActiveGoalId(LEGACY_SEK1_FRENCH_ROOT_ID);
         learnerRepository.save(learner);
 
         HttpResponse<String> plannedResponse = sendJsonRequest(
                 "PUT",
-                "/api/ui/learners/lower-french-still-writable/planned",
+                "/api/ui/learners/lower-french-now-readonly/planned",
                 """
                         {
                           "goals": []
                         }
                         """);
 
-        assertThat(plannedResponse.statusCode()).isEqualTo(HttpStatus.OK.value());
+        assertThat(plannedResponse.statusCode()).isEqualTo(HttpStatus.CONFLICT.value());
     }
 
     @Test
@@ -3227,6 +3292,24 @@ public class LearnerControllerIntegrationTest {
             ids.add(node.path("id").asText());
         }
         return ids;
+    }
+
+    private boolean containsNodeWithTag(JsonNode nodes, String tag) {
+        if (nodes == null || !nodes.isArray()) {
+            return false;
+        }
+        for (JsonNode node : nodes) {
+            JsonNode tags = node.path("tags");
+            if (!tags.isArray()) {
+                continue;
+            }
+            for (JsonNode entry : tags) {
+                if (tag.equals(entry.asText())) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
 }

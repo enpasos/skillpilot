@@ -169,11 +169,11 @@ Current operational baseline:
 - the Hessen upper-secondary delete handoff has now been executed: the original tree is gone from the active repo path, and `bash scripts/run_hessen_upper_secondary_delete_handoff_dry_run.sh` now acts as the post-retirement verification command for the surviving archive/provenance lane
 - an explicit backend bulk-cutover path with `dryRun` and a supplied learner-ID list is now available, so later Hessen -> DE migrations can be rehearsed and executed without exposing global learner listings
 - the operator-facing bulk-cutover UI now supports CSV export of dry-run/execution results and lets operators reduce the current input list to the `eligible` learner IDs before triggering the real migration
-- the Hessen Sek-I backend learner-cutover path now also covers the frozen mixed overview root as long as the active bundle stays within the currently supported `Mathematik`/`Physik`/`Chemie`/`Biologie` surface; lower-secondary physics still auto-selects canonical mathematics to keep the existing cross-subject bridge visible, while lower-secondary French remains an explicit guard that still blocks full overview retirement
+- the Hessen Sek-I backend learner-cutover path now also covers the frozen mixed overview root across the currently supported `Mathematik`/`Physik`/`Chemie`/`Biologie`/`Französisch` surface; lower-secondary physics still auto-selects canonical mathematics to keep the existing cross-subject bridge visible, and lower-secondary French now cuts over onto the shared canonical French landscape instead of blocking mixed-overview retirement
 - ordinary learner entry now also prefers the canonical DE path over Hessen Sek-I legacy roots: the lower-secondary Hessen overview and subject roots are hidden by default from bootstrap and general picker surfaces, but remain retainable when they are already the active selection
 - the frozen Hessen lower-secondary source-JSON lane is now mirrored under `curricula/DE/Gymnasium/input/DE-HE/lower-secondary/source-json/` (`6` files), and `curricula/DE/Gymnasium/provenance/source-landscape-registry.json` now also exposes `archiveSourcePath` for those lower-secondary landscapes
 - Hessen Sek-I source-goal closures and goal memberships are now also frozen in the shared DE-level provenance registries `curricula/DE/Gymnasium/provenance/source-goal-closure-registry.json` and `curricula/DE/Gymnasium/provenance/source-goal-membership-registry.json`, so lower overview/root survivability no longer depends on the live legacy tree
-- the currently cutover-supported Hessen Sek-I legacy learner bundle is now frontend- and backend-read-only: lower-secondary `Mathematik`/`Physik`/`Chemie`/`Biologie` sessions, including mixed overview sessions that resolve into that bundle, reject active-learning writes; lower-secondary French remains intentionally writable until a canonical cutover surface exists there
+- the currently cutover-supported Hessen Sek-I legacy learner bundle is now frontend- and backend-read-only across `Mathematik`/`Physik`/`Chemie`/`Biologie`/`Französisch`; mixed overview sessions that resolve into that supported bundle also reject active-learning writes once the canonical cutover surface exists
 - the canonical Mathematics pilot function corridor is `cutover_ready`
 - the canonical Physics motion corridor is `cutover_ready`
 - the canonical Physics E.2 mechanics corridor is `cutover_ready`
@@ -214,7 +214,7 @@ From here on, the main overall percentage should be the completion-track score f
 
 Current close-out headline:
 
-- `66.7%`
+- `72.5%`
 
 Operational consequence:
 

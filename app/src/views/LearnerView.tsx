@@ -119,6 +119,7 @@ const inferLegacyHessenLowerSelection = (
     physicsSelected = true
     chemistrySelected = true
     biologySelected = true
+    frenchSelected = true
   }
 
   if (physicsSelected) {
@@ -131,7 +132,7 @@ const inferLegacyHessenLowerSelection = (
     chemistrySelected,
     biologySelected,
     frenchSelected,
-    retirementEligible: !frenchSelected && (mathSelected || physicsSelected || chemistrySelected || biologySelected),
+    retirementEligible: mathSelected || physicsSelected || chemistrySelected || biologySelected || frenchSelected,
   }
 }
 
@@ -756,12 +757,13 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
         lowerLegacySelection.physicsSelected ? 'Physik' : null,
         lowerLegacySelection.chemistrySelected ? 'Chemie' : null,
         lowerLegacySelection.biologySelected ? 'Biologie' : null,
+        lowerLegacySelection.frenchSelected ? 'Französisch' : null,
       ].filter(Boolean).join(', ')
 
       return [
         { label: 'Quelle', value: 'Hessen Sek I' },
         { label: 'Ziel', value: 'Gymnasium (DE)' },
-        { label: 'Faecher', value: selectedSubjects || 'Mathematik, Physik, Chemie, Biologie' },
+        { label: 'Faecher', value: selectedSubjects || 'Mathematik, Physik, Chemie, Biologie, Französisch' },
       ]
     }
 
@@ -2212,7 +2214,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
         migrationDescription={canCutoverLegacyHessenGymnasium
           ? (isUpperLegacyHessenSession
             ? 'Dein bisheriger Hessen-Lernstand bleibt erhalten und wird auf die gemeinsame DE-Struktur übernommen. Mathe, Physik, Chemie, Biologie, Informatik, Geschichte, Deutsch, Politik und Wirtschaft, Englisch, Französisch, Latein, Spanisch, Griechisch, Chinesisch, Musik und Wirtschaftswissenschaften laufen danach unter einem gemeinsamen Gymnasium-Root weiter.'
-            : 'Dein bisheriger Hessen-Sek-I-Lernstand bleibt erhalten und wird auf die gemeinsame DE-Struktur übernommen. Mathe, Physik, Chemie und Biologie laufen danach unter einem gemeinsamen Gymnasium-Root weiter.')
+            : 'Dein bisheriger Hessen-Sek-I-Lernstand bleibt erhalten und wird auf die gemeinsame DE-Struktur übernommen. Mathe, Physik, Chemie, Biologie und Französisch laufen danach unter einem gemeinsamen Gymnasium-Root weiter.')
           : undefined}
         migrationActionLabel={canCutoverLegacyHessenGymnasium ? 'Jetzt umstellen' : undefined}
         migrationActionPending={isCutoverPending}

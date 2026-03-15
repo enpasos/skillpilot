@@ -480,6 +480,8 @@ class LandscapeServiceTest {
                                 .extracting(LearningGoal::getTitle)
                                 .contains(
                                                 "Warum Französisch? - Relevanz und Orientierung",
+                                                "Französisch Sek I",
+                                                "Jahrgangsstufe 5",
                                                 "Compréhension écrite Le cercle familial et amical",
                                                 "Compréhension écrite E-Phase Französisch",
                                                 "Compréhension écrite Französisch Oberstufe (KC 2024)");

@@ -14,6 +14,7 @@ class GoalMappingRepositoryFixtureTest {
     private static final String HESSEN_PHYSICS_SEK1_LANDSCAPE_ID = "996d097a-cac2-4b5f-979a-b3a0b9803265";
     private static final String HESSEN_CHEMISTRY_SEK1_LANDSCAPE_ID = "bea90c22-b9c5-4c0c-9b10-89d875f50772";
     private static final String HESSEN_BIOLOGY_SEK1_LANDSCAPE_ID = "71438941-0ceb-46ee-ad31-773cee700779";
+    private static final String HESSEN_FRENCH_SEK1_LANDSCAPE_ID = "762de708-85fa-4324-958e-56002a318f7f";
     private static final String HESSEN_PHYSICS_LANDSCAPE_ID = "24f2ca0f-b94a-444e-bb70-677cb6f85c02";
     private static final String HESSEN_CHEMISTRY_LANDSCAPE_ID = "2f391ba2-ba1e-40e4-a8d2-dff049516c13";
     private static final String HESSEN_BIOLOGY_LANDSCAPE_ID = "3e56aa75-c76c-4de5-883b-0aac98297846";
@@ -68,6 +69,7 @@ class GoalMappingRepositoryFixtureTest {
     private static final Path PHYSICS_SEK1_MAPPING_FILE = Path.of("../curricula/DE/HE/Kultusministerium/Gymnasium_9_Mittelstufe/mapping/hessen_physics_lower_secondary_to_canonical_physics.json");
     private static final Path CHEMISTRY_SEK1_MAPPING_FILE = Path.of("../curricula/DE/HE/Kultusministerium/Gymnasium_9_Mittelstufe/mapping/hessen_chemistry_lower_secondary_to_canonical_chemistry.json");
     private static final Path BIOLOGY_SEK1_MAPPING_FILE = Path.of("../curricula/DE/HE/Kultusministerium/Gymnasium_9_Mittelstufe/mapping/hessen_biology_lower_secondary_to_canonical_biology.json");
+    private static final Path FRENCH_SEK1_MAPPING_FILE = Path.of("../curricula/DE/HE/Kultusministerium/Gymnasium_9_Mittelstufe/mapping/hessen_french_lower_secondary_to_canonical_french.json");
     private static final Path BAYERN_MAPPING_FILE = Path.of("../curricula/DE/BY/Gymnasium/mapping/bavaria_math_to_canonical_math_pilot.json");
     private static final Path BAYERN_PHYSICS_MAPPING_FILE = Path.of("../curricula/DE/BY/Gymnasium/mapping/bavaria_physics_to_canonical_physics_pilot.json");
     private static final Path CURRICULA_DIR = Path.of("../curricula");
@@ -236,6 +238,25 @@ class GoalMappingRepositoryFixtureTest {
         assertThat(file.getMappings())
                 .extracting(GoalMappingEntry::getMatchType)
                 .contains("exact", "partial");
+    }
+
+    @Test
+    void parsesRepositoryBackedCanonicalFrenchSek1MappingFixture() throws Exception {
+        GoalMappingFile file = new ObjectMapper().readValue(FRENCH_SEK1_MAPPING_FILE.toFile(), GoalMappingFile.class);
+
+        assertThat(file.getVersion()).isEqualTo(1);
+        assertThat(file.getSourceLandscapeId()).isEqualTo(HESSEN_FRENCH_SEK1_LANDSCAPE_ID);
+        assertThat(file.getTargetLandscapeId()).isEqualTo(CANONICAL_FRENCH_ID);
+        assertThat(file.getMappings()).hasSize(152);
+        assertThat(file.getMappings())
+                .extracting(GoalMappingEntry::getMatchType)
+                .containsOnly("exact");
+        assertThat(file.getMappings())
+                .extracting(GoalMappingEntry::getLegacyGoalId, GoalMappingEntry::getCanonicalGoalId, GoalMappingEntry::getMatchType)
+                .contains(
+                        Tuple.tuple("2470bbf6-afaf-47de-a60a-c378aa10633a", "f7f02fb7-8376-5aba-961c-743e528d1ff7", "exact"),
+                        Tuple.tuple("3b56ea78-beef-5bfa-84d8-ac8df9904f01", "81f0501c-890a-5ebd-be54-4ae7698d4d52", "exact"),
+                        Tuple.tuple("8bfee19a-5594-4aa2-8a80-10409a34db15", "40d64ae5-d572-5b31-8fb2-4f789fc4b55a", "exact"));
     }
 
     @Test
@@ -469,6 +490,9 @@ class GoalMappingRepositoryFixtureTest {
         assertThat(service.getMappingsForSourceLandscape(HESSEN_BIOLOGY_LANDSCAPE_ID))
                 .isNotEmpty()
                 .allMatch(mapping -> CANONICAL_BIOLOGY_ID.equals(mapping.targetLandscapeId()));
+        assertThat(service.getMappingsForSourceLandscape(HESSEN_FRENCH_SEK1_LANDSCAPE_ID))
+                .isNotEmpty()
+                .allMatch(mapping -> CANONICAL_FRENCH_ID.equals(mapping.targetLandscapeId()));
         assertThat(service.getMappingsForSourceLandscape(HESSEN_INFORMATICS_LANDSCAPE_ID))
                 .isNotEmpty()
                 .allMatch(mapping -> CANONICAL_INFORMATICS_ID.equals(mapping.targetLandscapeId()));
