@@ -139,6 +139,10 @@ public class LearnerService {
     private static final String HESSEN_GYMNASIUM_UPPER_CHINESE_ID = "7651cbe2-5fb8-464d-b0c4-3e830cda41dd";
     private static final String HESSEN_GYMNASIUM_UPPER_MUSIC_ID = "a8c23058-6998-49f2-9f3b-a85e951d5ab0";
     private static final String HESSEN_GYMNASIUM_UPPER_ECONOMICS_ID = "a334a745-1d67-4e1d-86a5-dadc04f144d2";
+    private static final String HESSEN_GYMNASIUM_LOWER_MATH_ID = "b167b4cd-4b78-4c84-a721-6b2adbbcab3c";
+    private static final String HESSEN_GYMNASIUM_LOWER_PHYSICS_ID = "996d097a-cac2-4b5f-979a-b3a0b9803265";
+    private static final String HESSEN_GYMNASIUM_LOWER_CHEMISTRY_ID = "bea90c22-b9c5-4c0c-9b10-89d875f50772";
+    private static final String HESSEN_GYMNASIUM_LOWER_BIOLOGY_ID = "71438941-0ceb-46ee-ad31-773cee700779";
     private static final String DEFAULT_COURSE_FILTER_ID = "GK";
 
     @Value("${skillpilot.security.signing-secret}")
@@ -1446,10 +1450,18 @@ public class LearnerService {
                 || HESSEN_GYMNASIUM_UPPER_GREEK_ID.equals(curriculumId)
                 || HESSEN_GYMNASIUM_UPPER_CHINESE_ID.equals(curriculumId)
                 || HESSEN_GYMNASIUM_UPPER_MUSIC_ID.equals(curriculumId)
-                || HESSEN_GYMNASIUM_UPPER_ECONOMICS_ID.equals(curriculumId);
+                || HESSEN_GYMNASIUM_UPPER_ECONOMICS_ID.equals(curriculumId)
+                || HESSEN_GYMNASIUM_LOWER_MATH_ID.equals(curriculumId)
+                || HESSEN_GYMNASIUM_LOWER_PHYSICS_ID.equals(curriculumId)
+                || HESSEN_GYMNASIUM_LOWER_CHEMISTRY_ID.equals(curriculumId)
+                || HESSEN_GYMNASIUM_LOWER_BIOLOGY_ID.equals(curriculumId);
     }
 
     private CanonicalGymnasiumCutoverPlan buildCanonicalGymnasiumCutoverPlan(Learner learner, List<String> storedPlannedGoals) {
+        if (isSupportedHessenGymnasiumLowerSubjectCutoverSource(learner.getSelectedCurriculum())) {
+            return buildLowerSecondaryCanonicalGymnasiumCutoverPlan(learner, storedPlannedGoals);
+        }
+
         Map<String, Map<String, Object>> legacyConfig = parsePersonalCurriculumConfig(learner.getPersonalCurriculum());
         String currentCurriculumId = learner.getSelectedCurriculum();
         String activeGoalId = learner.getActiveGoalId();
@@ -1686,6 +1698,60 @@ public class LearnerService {
         structuralGoals.putAll(getFilteredGoals(CANONICAL_GYMNASIUM_CHINESE_ID, "{}"));
         structuralGoals.putAll(getFilteredGoals(CANONICAL_GYMNASIUM_MUSIC_ID, "{}"));
         structuralGoals.putAll(getFilteredGoals(CANONICAL_GYMNASIUM_ECONOMICS_ID, "{}"));
+        List<String> normalizedPlannedGoalIds = normalizeCutoverPlannedGoalIds(storedPlannedGoals, structuralGoals).stream()
+                .filter(structuralGoals::containsKey)
+                .toList();
+        Map<String, LearningGoal> visibleGoals = getFilteredGoals(CANONICAL_GYMNASIUM_ROOT_ID, personalCurriculumJson);
+        String normalizedActiveGoalId = resolveGoalIdInVisibleGoals(activeGoalId, visibleGoals, false);
+        LearningGoal activeGoal = normalizedActiveGoalId != null ? visibleGoals.get(normalizedActiveGoalId) : null;
+        LearningState normalizedLearningState = learner.getLearningState();
+        if (normalizedActiveGoalId == null || activeGoal == null || !isAtomicGoal(activeGoal)) {
+            normalizedActiveGoalId = null;
+            normalizedLearningState = LearningState.FRONTIER;
+        }
+
+        return new CanonicalGymnasiumCutoverPlan(
+                personalCurriculumConfig,
+                normalizedPlannedGoalIds,
+                normalizedActiveGoalId,
+                normalizedLearningState != null ? normalizedLearningState : LearningState.FRONTIER);
+    }
+
+    private boolean isSupportedHessenGymnasiumLowerSubjectCutoverSource(String curriculumId) {
+        return HESSEN_GYMNASIUM_LOWER_MATH_ID.equals(curriculumId)
+                || HESSEN_GYMNASIUM_LOWER_PHYSICS_ID.equals(curriculumId)
+                || HESSEN_GYMNASIUM_LOWER_CHEMISTRY_ID.equals(curriculumId)
+                || HESSEN_GYMNASIUM_LOWER_BIOLOGY_ID.equals(curriculumId);
+    }
+
+    private CanonicalGymnasiumCutoverPlan buildLowerSecondaryCanonicalGymnasiumCutoverPlan(
+            Learner learner,
+            List<String> storedPlannedGoals) {
+        String currentCurriculumId = learner.getSelectedCurriculum();
+        String activeGoalId = learner.getActiveGoalId();
+
+        boolean mathSelected = HESSEN_GYMNASIUM_LOWER_MATH_ID.equals(currentCurriculumId);
+        boolean physicsSelected = HESSEN_GYMNASIUM_LOWER_PHYSICS_ID.equals(currentCurriculumId);
+        boolean chemistrySelected = HESSEN_GYMNASIUM_LOWER_CHEMISTRY_ID.equals(currentCurriculumId);
+        boolean biologySelected = HESSEN_GYMNASIUM_LOWER_BIOLOGY_ID.equals(currentCurriculumId);
+
+        if (physicsSelected) {
+            mathSelected = true;
+        }
+
+        Map<String, Object> personalCurriculumConfig = new LinkedHashMap<>();
+        personalCurriculumConfig.put(CANONICAL_GYMNASIUM_ROOT_ID, createSelectionConfig(true, "DE-HE"));
+        personalCurriculumConfig.put(CANONICAL_GYMNASIUM_MATH_ID, createSelectionConfig(mathSelected, null));
+        personalCurriculumConfig.put(CANONICAL_GYMNASIUM_PHYSICS_ID, createSelectionConfig(physicsSelected, null));
+        personalCurriculumConfig.put(CANONICAL_GYMNASIUM_CHEMISTRY_ID, createSelectionConfig(chemistrySelected, null));
+        personalCurriculumConfig.put(CANONICAL_GYMNASIUM_BIOLOGY_ID, createSelectionConfig(biologySelected, null));
+
+        String personalCurriculumJson = writePersonalCurriculumConfig(personalCurriculumConfig);
+        Map<String, LearningGoal> structuralGoals = new LinkedHashMap<>(getFilteredGoals(CANONICAL_GYMNASIUM_ROOT_ID, "{}"));
+        structuralGoals.putAll(getFilteredGoals(CANONICAL_GYMNASIUM_MATH_ID, "{}"));
+        structuralGoals.putAll(getFilteredGoals(CANONICAL_GYMNASIUM_PHYSICS_ID, "{}"));
+        structuralGoals.putAll(getFilteredGoals(CANONICAL_GYMNASIUM_CHEMISTRY_ID, "{}"));
+        structuralGoals.putAll(getFilteredGoals(CANONICAL_GYMNASIUM_BIOLOGY_ID, "{}"));
         List<String> normalizedPlannedGoalIds = normalizeCutoverPlannedGoalIds(storedPlannedGoals, structuralGoals).stream()
                 .filter(structuralGoals::containsKey)
                 .toList();

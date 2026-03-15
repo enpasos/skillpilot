@@ -169,6 +169,7 @@ Current operational baseline:
 - the Hessen upper-secondary delete handoff has now been executed: the original tree is gone from the active repo path, and `bash scripts/run_hessen_upper_secondary_delete_handoff_dry_run.sh` now acts as the post-retirement verification command for the surviving archive/provenance lane
 - an explicit backend bulk-cutover path with `dryRun` and a supplied learner-ID list is now available, so later Hessen -> DE migrations can be rehearsed and executed without exposing global learner listings
 - the operator-facing bulk-cutover UI now supports CSV export of dry-run/execution results and lets operators reduce the current input list to the `eligible` learner IDs before triggering the real migration
+- a first Hessen Sek-I backend learner-cutover path is now available for direct frozen `Mathematik`/`Physik`/`Chemie`/`Biologie` subject views into the DE-level `Gymnasium (DE)` root; lower-secondary physics auto-selects canonical mathematics to keep the existing cross-subject bridge visible, while the mixed Sek-I overview root remains intentionally unsupported until the remaining subject surface is covered
 - the canonical Mathematics pilot function corridor is `cutover_ready`
 - the canonical Physics motion corridor is `cutover_ready`
 - the canonical Physics E.2 mechanics corridor is `cutover_ready`
