@@ -29,9 +29,13 @@ export const LEGACY_HESSEN_GYMNASIUM_LOWER_IDS = new Set([
   '762de708-85fa-4324-958e-56002a318f7f',
 ])
 
+export const COMPATIBILITY_ONLY_BAVARIA_GYMNASIUM_IDS = new Set([
+  'c1600692-e543-5cf2-a399-6bd96e6b817f',
+  '42c2f7e3-91b4-5de8-bef0-d563440e9d52',
+])
+
 export const LEGACY_BAVARIA_GYMNASIUM_IDS = new Set([
   '12322e3f-f351-5d40-b4ea-4a13d7e15854',
-  'c1600692-e543-5cf2-a399-6bd96e6b817f',
 ])
 
 interface CurriculumDisplayTitleInput {
@@ -56,7 +60,9 @@ export const isLegacyBavariaGymnasium = (curriculumId?: string | null) =>
 export const isCompatibilityOnlyCurriculum = (
   curriculumId?: string | null,
   compatibilityOnly?: boolean | null,
-) => Boolean(compatibilityOnly) || isLegacyHessenGymnasiumUpper(curriculumId)
+) => Boolean(compatibilityOnly)
+  || isLegacyHessenGymnasiumUpper(curriculumId)
+  || (!!curriculumId && COMPATIBILITY_ONLY_BAVARIA_GYMNASIUM_IDS.has(curriculumId))
 
 export const isLegacyHiddenByDefaultCurriculum = (
   curriculumId?: string | null,

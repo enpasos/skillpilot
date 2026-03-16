@@ -3045,6 +3045,68 @@ public class LearnerControllerIntegrationTest {
     }
 
     @Test
+    void retiredBavariaPilotCompatibilityCurriculaCannotBeSelectedViaUiEndpoint() throws Exception {
+        Learner learner = new Learner();
+        learner.setSkillpilotId("retired-bavaria-ui-selection");
+        learnerRepository.save(learner);
+
+        HttpResponse<String> mathResponse = sendJsonRequest(
+                "PUT",
+                "/api/ui/learners/retired-bavaria-ui-selection/curriculum",
+                """
+                        {
+                          "curriculumId": "%s"
+                        }
+                        """.formatted(BAVARIA_GYMNASIUM_MATH_ID));
+        assertThat(mathResponse.statusCode()).isEqualTo(HttpStatus.CONFLICT.value());
+        assertThat(learnerRepository.findById("retired-bavaria-ui-selection").orElseThrow().getSelectedCurriculum())
+                .isNull();
+
+        HttpResponse<String> physicsResponse = sendJsonRequest(
+                "PUT",
+                "/api/ui/learners/retired-bavaria-ui-selection/curriculum",
+                """
+                        {
+                          "curriculumId": "%s"
+                        }
+                        """.formatted(BAVARIA_GYMNASIUM_PHYSICS_ID));
+        assertThat(physicsResponse.statusCode()).isEqualTo(HttpStatus.CONFLICT.value());
+        assertThat(learnerRepository.findById("retired-bavaria-ui-selection").orElseThrow().getSelectedCurriculum())
+                .isNull();
+    }
+
+    @Test
+    void retiredBavariaPilotCompatibilityCurriculaCannotBeSelectedViaAiEndpoint() throws Exception {
+        Learner learner = new Learner();
+        learner.setSkillpilotId("retired-bavaria-ai-selection");
+        learnerRepository.save(learner);
+
+        HttpResponse<String> mathResponse = sendJsonRequest(
+                "POST",
+                "/api/ai/en/learners/retired-bavaria-ai-selection/curriculum",
+                """
+                        {
+                          "curriculumId": "%s"
+                        }
+                        """.formatted(BAVARIA_GYMNASIUM_MATH_ID));
+        assertThat(mathResponse.statusCode()).isEqualTo(HttpStatus.CONFLICT.value());
+        assertThat(learnerRepository.findById("retired-bavaria-ai-selection").orElseThrow().getSelectedCurriculum())
+                .isNull();
+
+        HttpResponse<String> physicsResponse = sendJsonRequest(
+                "POST",
+                "/api/ai/en/learners/retired-bavaria-ai-selection/curriculum",
+                """
+                        {
+                          "curriculumId": "%s"
+                        }
+                        """.formatted(BAVARIA_GYMNASIUM_PHYSICS_ID));
+        assertThat(physicsResponse.statusCode()).isEqualTo(HttpStatus.CONFLICT.value());
+        assertThat(learnerRepository.findById("retired-bavaria-ai-selection").orElseThrow().getSelectedCurriculum())
+                .isNull();
+    }
+
+    @Test
     void compatibilitySessionRejectsAiMasteryWrites() throws Exception {
         Learner learner = new Learner();
         learner.setSkillpilotId("readonly-ai-mastery");

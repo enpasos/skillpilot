@@ -3,9 +3,12 @@ package com.skillpilot.backend.landscape;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import com.skillpilot.backend.api.LandscapeOverviewResponse;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
+import java.util.stream.StreamSupport;
 import org.junit.jupiter.api.Test;
 
 class LandscapeServiceTest {
@@ -33,6 +36,10 @@ class LandscapeServiceTest {
         private static final String HESSEN_LOWER_OVERVIEW_WHY_ID = "27e64f66-856d-5316-ad35-653259580816";
         private static final String HESSEN_LOWER_MATH_ID = "b167b4cd-4b78-4c84-a721-6b2adbbcab3c";
         private static final String HESSEN_LOWER_MATH_PROCESS_CLUSTER_ID = "69eae42e-5386-4892-a6c3-0263661f66ce";
+        private static final String BAVARIA_MATH_ID = "c1600692-e543-5cf2-a399-6bd96e6b817f";
+        private static final String BAVARIA_PHYSICS_ID = "42c2f7e3-91b4-5de8-bef0-d563440e9d52";
+        private static final String BAVARIA_MATH_FUNCTION_CLUSTER_ID = "f9538605-8bf4-5279-b00a-c18786f9cc51";
+        private static final String BAVARIA_PHYSICS_DIAGRAMS_ID = "0074dc7c-b4ab-5bfb-b1b7-a8f5cdb9accc";
 
         @Test
         void getOverview_returnsEmptyFilters_forModifiedCurricula() {
@@ -153,6 +160,19 @@ class LandscapeServiceTest {
         }
 
         @Test
+        void classifiesBavariaPilotSubjectsAsCompatibilityOnly() {
+                LandscapeProperties properties = new LandscapeProperties();
+                properties.setDirectory("../curricula");
+                ObjectMapper objectMapper = new ObjectMapper();
+                LandscapeService landscapeService = new LandscapeService(properties, objectMapper);
+
+                assertThat(landscapeService.isCompatibilityOnlyLandscape(BAVARIA_MATH_ID)).isTrue();
+                assertThat(landscapeService.isLegacyHiddenByDefaultLandscape(BAVARIA_MATH_ID)).isFalse();
+                assertThat(landscapeService.isCompatibilityOnlyLandscape(BAVARIA_PHYSICS_ID)).isTrue();
+                assertThat(landscapeService.isLegacyHiddenByDefaultLandscape(BAVARIA_PHYSICS_ID)).isFalse();
+        }
+
+        @Test
         void getOverviewServesHessenLowerOverviewFromCompatibilityArchive() {
                 LandscapeProperties properties = new LandscapeProperties();
                 properties.setDirectory("../curricula");
@@ -203,6 +223,48 @@ class LandscapeServiceTest {
                                                 "52b3be07-60ac-4342-94c6-7a7ab6d91b0b",
                                                 "9e694f53-bdd8-42aa-9938-2f14f4a74cce",
                                                 "75eb887e-0f14-4ac9-86a0-81671bcc1c90");
+        }
+
+        @Test
+        void resolvesBavariaArchivedAtomicClosureFromRealRegistry() {
+                LandscapeProperties properties = new LandscapeProperties();
+                properties.setDirectory("../curricula");
+                ObjectMapper objectMapper = new ObjectMapper();
+                LandscapeService landscapeService = new LandscapeService(properties, objectMapper);
+
+                assertThat(landscapeService.resolveSourceAtomicGoalIds(
+                                BAVARIA_MATH_ID,
+                                BAVARIA_MATH_FUNCTION_CLUSTER_ID))
+                                .containsExactly(
+                                                "0042dc1e-859b-5c95-95a4-48aeff1bae63",
+                                                "32a0f358-c1e9-5663-b8cf-67789355387c",
+                                                "67193ff0-3eee-5bff-9bf5-0ee7ea7adf3d");
+        }
+
+        @Test
+        void bavariaPilotLandscapesArePresentInRealGoalMembershipRegistry() throws Exception {
+                ObjectMapper objectMapper = new ObjectMapper();
+                JsonNode root = objectMapper.readTree(Files.readString(
+                                Path.of("../curricula/DE/Gymnasium/provenance/source-goal-membership-registry.json")));
+                JsonNode landscapes = root.path("landscapes");
+
+                JsonNode bavariaMath = StreamSupport.stream(landscapes.spliterator(), false)
+                                .filter(node -> BAVARIA_MATH_ID.equals(node.path("landscapeId").asText()))
+                                .findFirst()
+                                .orElseThrow();
+                JsonNode bavariaPhysics = StreamSupport.stream(landscapes.spliterator(), false)
+                                .filter(node -> BAVARIA_PHYSICS_ID.equals(node.path("landscapeId").asText()))
+                                .findFirst()
+                                .orElseThrow();
+
+                assertThat(StreamSupport.stream(bavariaMath.path("goalIds").spliterator(), false)
+                                .map(JsonNode::asText)
+                                .toList())
+                                .contains(BAVARIA_MATH_FUNCTION_CLUSTER_ID);
+                assertThat(StreamSupport.stream(bavariaPhysics.path("goalIds").spliterator(), false)
+                                .map(JsonNode::asText)
+                                .toList())
+                                .contains(BAVARIA_PHYSICS_DIAGRAMS_ID);
         }
 
         @Test

@@ -97,6 +97,8 @@ Observed repo state:
 - the active Bavaria Math/Physics pilot provenance no longer hangs solely off the live `curricula/DE/BY/Gymnasium` tree: the Bavaria pilot mappings now live under `curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/`, the shared source-landscape registry now exposes `archiveSourcePath` for the current Bavaria Math/Physics source landscapes, and `scripts/validate_bavaria_gymnasium_archive_paths.py` plus `scripts/validate_bavaria_gymnasium_legacy_refs.py` now fence the DE-level retained-source lane and repo-level operational references
 - the currently supported Bavaria legacy mathematics learner path is now detached as an active runtime path: direct `Mathematik` sessions are frontend- and backend-read-only retirement views, UI/AI write endpoints reject mutations, and the canonical `Gymnasium (DE)` + `DE-BY` cutover remains the supported continuation
 - the current Bavaria Physics pilot surface now has the same direct learner-cutover and retirement handling: direct legacy `Physik` learners migrate into `Gymnasium (DE)` with `DE-BY`, canonical Physics selected plus the required Math bridge, and active legacy Physics sessions are frontend- and backend-read-only retirement views instead of ordinary writable learner paths
+- Bavaria Math/Physics source-goal closures and goal memberships now also live in the shared DE-level provenance registries `curricula/DE/Gymnasium/provenance/source-goal-closure-registry.json` and `curricula/DE/Gymnasium/provenance/source-goal-membership-registry.json`, so the active Bavaria pilot no longer depends on the live legacy tree for archived closure or membership lookups
+- Bavaria `Mathematik` and `Physik` now also classify as compatibility-only retired subject views instead of mere legacy-hidden entries: explicit UI/AI curriculum selection can no longer route fresh learners back into those pilot legacy subject views, while existing sessions still cut over onto `Gymnasium (DE)` with `DE-BY`
 - ordinary learner entry now also prefers the canonical DE path over Hessen Sek-I legacy roots: lower-secondary Hessen landscapes are hidden by default from the general overview/bootstrap surface and only reappear when they are already the active selection
 - the frozen Hessen Sek-I source-JSON lane is now mirrored under `curricula/DE/Gymnasium/input/DE-HE/lower-secondary/source-json/` (`6` files), and the shared source-landscape registry now also offers `archiveSourcePath` for those lower-secondary landscapes so provenance survives outside the live legacy tree
 - Hessen Sek-I source-goal atomic closures and goal memberships now also live in the shared DE-level provenance registries `curricula/DE/Gymnasium/provenance/source-goal-closure-registry.json` and `curricula/DE/Gymnasium/provenance/source-goal-membership-registry.json`, so lower overview/root survival no longer depends on expanding the live legacy tree for archived closure or membership lookups
@@ -324,20 +326,20 @@ Scoring rule:
 | --- | --- | --- | --- | --- | --- | --- | ---: | --- | --- | --- |
 | `curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe` | done | done | done | done | done | done | 100% | yes | none; delete handoff executed and CI now enforces that the tree stays absent | closed; keep the DE-level provenance/archive registries as the surviving audit trail and leave the post-retirement gate in CI |
 | `curricula/DE/HE/Kultusministerium/Gymnasium_9_Mittelstufe` | done | done | done | done | done | done | 100% | yes | none; delete handoff executed and CI now enforces the surviving DE-level archive/provenance/mapping lane | closed; keep the DE-level retained-asset, mapping, and provenance registries as the surviving audit trail and leave the post-retirement gate in CI |
-| `curricula/DE/BY/Gymnasium` | partial | partial | done | done | partial | partial | 65.0% | no | Bavaria now has direct learner cutover across the current Math/Physics pilot surface, but the tree is still pilot-shaped and still lacks broader learner-facing legacy detachment beyond that supported surface | broaden Bavaria beyond the current Math/Physics pilot surface and then detach the remaining learner-facing legacy paths before the final delete handoff |
+| `curricula/DE/BY/Gymnasium` | partial | done | done | done | done | partial | 82.5% | no | Bavaria now has canonical-by-default entry plus retired Math/Physics pilot subject views, but the tree is still pilot-shaped and still lacks broader learner-facing legacy detachment beyond that supported surface | broaden Bavaria beyond the current Math/Physics pilot surface and then detach the remaining learner-facing legacy paths before the final delete handoff |
 
 ## Current completion-track score
 
 Tracked-tree calculation:
 
 ```text
-score = (100 + 100 + 65.0) / 3
-      = 88.33%
+score = (100 + 100 + 82.5) / 3
+      = 94.17%
 ```
 
 Working completion-track score:
 
-- `88.3%`
+- `94.2%`
 
 Interpretation:
 
@@ -349,10 +351,10 @@ Interpretation:
 Practical conclusion:
 
 - The historical rollout program score is around `55%`.
-- The close-out headline score is now `88.3%`.
+- The close-out headline score is now `94.2%`.
 - The input-transfer lane is at `100%` for the currently known mandatory scope.
 - Hard legacy-tree retirement progress is now `67%` at tracked-tree granularity, because Hessen upper-secondary and Hessen lower-secondary have actually been removed from the active repo while Bavaria Gymnasium has not.
-- Soft delete-gate progress is now visible tree by tree: `100%` for Hessen upper-secondary, `100%` for Hessen lower-secondary, `65.0%` for Bavaria Gymnasium.
+- Soft delete-gate progress is now visible tree by tree: `100%` for Hessen upper-secondary, `100%` for Hessen lower-secondary, `82.5%` for Bavaria Gymnasium.
 
 All four statements can be true at the same time, because migration progress, retained-input transfer, delete-gate progress, and actual deletability are different planning dimensions.
 
