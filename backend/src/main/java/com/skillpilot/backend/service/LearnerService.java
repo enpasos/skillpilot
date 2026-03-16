@@ -150,6 +150,7 @@ public class LearnerService {
     private static final String BAVARIA_GYMNASIUM_CHEMISTRY_ID = "ff1ca997-b6cc-5ece-8e13-5498b4bbf808";
     private static final String BAVARIA_GYMNASIUM_BIOLOGY_ID = "357a7003-b636-570e-a0bd-6bb63518d2f6";
     private static final String BAVARIA_GYMNASIUM_INFORMATICS_ID = "1af3eba8-749f-5359-8f12-18f87b13616c";
+    private static final String BAVARIA_GYMNASIUM_GERMAN_ID = "05f1cd27-5a58-5415-8fda-d4807067f70a";
     private static final String BAVARIA_GYMNASIUM_ECONOMICS_ID = "4959d7df-e430-5c1d-bb7b-873d6252a27f";
     private static final String DEFAULT_COURSE_FILTER_ID = "GK";
 
@@ -1220,6 +1221,7 @@ public class LearnerService {
                 || BAVARIA_GYMNASIUM_CHEMISTRY_ID.equals(curriculumId)
                 || BAVARIA_GYMNASIUM_BIOLOGY_ID.equals(curriculumId)
                 || BAVARIA_GYMNASIUM_INFORMATICS_ID.equals(curriculumId)
+                || BAVARIA_GYMNASIUM_GERMAN_ID.equals(curriculumId)
                 || BAVARIA_GYMNASIUM_ECONOMICS_ID.equals(curriculumId);
     }
 
@@ -1513,6 +1515,7 @@ public class LearnerService {
                 || BAVARIA_GYMNASIUM_CHEMISTRY_ID.equals(curriculumId)
                 || BAVARIA_GYMNASIUM_BIOLOGY_ID.equals(curriculumId)
                 || BAVARIA_GYMNASIUM_INFORMATICS_ID.equals(curriculumId)
+                || BAVARIA_GYMNASIUM_GERMAN_ID.equals(curriculumId)
                 || BAVARIA_GYMNASIUM_ECONOMICS_ID.equals(curriculumId);
     }
 
@@ -1794,6 +1797,7 @@ public class LearnerService {
                 || BAVARIA_GYMNASIUM_CHEMISTRY_ID.equals(curriculumId)
                 || BAVARIA_GYMNASIUM_BIOLOGY_ID.equals(curriculumId)
                 || BAVARIA_GYMNASIUM_INFORMATICS_ID.equals(curriculumId)
+                || BAVARIA_GYMNASIUM_GERMAN_ID.equals(curriculumId)
                 || BAVARIA_GYMNASIUM_ECONOMICS_ID.equals(curriculumId);
     }
 
@@ -1916,6 +1920,7 @@ public class LearnerService {
         boolean chemistrySelected = BAVARIA_GYMNASIUM_CHEMISTRY_ID.equals(learner.getSelectedCurriculum());
         boolean biologySelected = BAVARIA_GYMNASIUM_BIOLOGY_ID.equals(learner.getSelectedCurriculum());
         boolean informaticsSelected = BAVARIA_GYMNASIUM_INFORMATICS_ID.equals(learner.getSelectedCurriculum());
+        boolean germanSelected = BAVARIA_GYMNASIUM_GERMAN_ID.equals(learner.getSelectedCurriculum());
         boolean economicsSelected = BAVARIA_GYMNASIUM_ECONOMICS_ID.equals(learner.getSelectedCurriculum());
 
         if (physicsSelected) {
@@ -1929,6 +1934,9 @@ public class LearnerService {
         personalCurriculumConfig.put(CANONICAL_GYMNASIUM_CHEMISTRY_ID, createSelectionConfig(chemistrySelected, null));
         personalCurriculumConfig.put(CANONICAL_GYMNASIUM_BIOLOGY_ID, createSelectionConfig(biologySelected, null));
         personalCurriculumConfig.put(CANONICAL_GYMNASIUM_INFORMATICS_ID, createSelectionConfig(informaticsSelected, null));
+        personalCurriculumConfig.put(
+                CANONICAL_GYMNASIUM_GERMAN_ID,
+                createSelectionConfig(germanSelected, germanSelected ? DEFAULT_COURSE_FILTER_ID : null));
         personalCurriculumConfig.put(CANONICAL_GYMNASIUM_ECONOMICS_ID, createSelectionConfig(economicsSelected, null));
 
         String personalCurriculumJson = writePersonalCurriculumConfig(personalCurriculumConfig);
@@ -1938,6 +1946,7 @@ public class LearnerService {
         structuralGoals.putAll(getFilteredGoals(CANONICAL_GYMNASIUM_CHEMISTRY_ID, "{}"));
         structuralGoals.putAll(getFilteredGoals(CANONICAL_GYMNASIUM_BIOLOGY_ID, "{}"));
         structuralGoals.putAll(getFilteredGoals(CANONICAL_GYMNASIUM_INFORMATICS_ID, "{}"));
+        structuralGoals.putAll(getFilteredGoals(CANONICAL_GYMNASIUM_GERMAN_ID, "{}"));
         structuralGoals.putAll(getFilteredGoals(CANONICAL_GYMNASIUM_ECONOMICS_ID, "{}"));
         List<String> normalizedPlannedGoalIds = normalizeCutoverPlannedGoalIds(storedPlannedGoals, structuralGoals).stream()
                 .filter(structuralGoals::containsKey)

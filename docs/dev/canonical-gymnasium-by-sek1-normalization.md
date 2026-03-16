@@ -58,7 +58,7 @@ As of `2026-03-16`:
 
 Practical consequence:
 
-- the next percentage increase should come from adopting at least one additional Bavaria subject corridor from Cohort A or Cohort C beyond the current Math/Physics/Chemistry/Biology/Informatik/Wirtschaft_und_Recht lane
+- the next percentage increase should come from adopting at least one additional Bavaria subject corridor from Cohort A or Cohort C beyond the current Math/Physics/Chemistry/Biology/Informatik/Deutsch/Wirtschaft_und_Recht lane
 - more inventory detail alone should not raise the reported migration headline beyond the current `96.7%`
 
 ## Entry cohorts
@@ -148,7 +148,7 @@ The first pass should focus on subjects that are both migration-relevant and str
    Detailed probe note: `docs/dev/canonical-gymnasium-by-math-sek1-probe.md`
 2. Add the science corridor `Physik`, `Chemie`, `Biologie` on the shared `8-10` buckets.
 3. Add `Geschichte` and `Politik_und_Gesellschaft` only after the mixed `G8` / `G9` provenance handling is stable in mappings.
-4. `Informatik` and `Wirtschaft_und_Recht` have now landed as reviewed Bavaria bridges; keep `Berufliche_Orientierung`, `Sozialpraktische_Grundbildung`, and `Wirtschaftsinformatik` as secondary work rather than part of the canonical lower-secondary spine.
+4. `Informatik`, `Deutsch`, and `Wirtschaft_und_Recht` have now landed as reviewed Bavaria bridges; keep `Berufliche_Orientierung`, `Sozialpraktische_Grundbildung`, and `Wirtschaftsinformatik` as secondary work rather than part of the canonical lower-secondary spine.
 
 ## Practical consequence for mapping work
 

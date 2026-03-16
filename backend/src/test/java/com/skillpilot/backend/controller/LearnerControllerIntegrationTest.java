@@ -85,6 +85,7 @@ public class LearnerControllerIntegrationTest {
     private static final String BAVARIA_GYMNASIUM_CHEMISTRY_ID = "ff1ca997-b6cc-5ece-8e13-5498b4bbf808";
     private static final String BAVARIA_GYMNASIUM_BIOLOGY_ID = "357a7003-b636-570e-a0bd-6bb63518d2f6";
     private static final String BAVARIA_GYMNASIUM_INFORMATICS_ID = "1af3eba8-749f-5359-8f12-18f87b13616c";
+    private static final String BAVARIA_GYMNASIUM_GERMAN_ID = "05f1cd27-5a58-5415-8fda-d4807067f70a";
     private static final String BAVARIA_GYMNASIUM_ECONOMICS_ID = "4959d7df-e430-5c1d-bb7b-873d6252a27f";
     private static final String BAVARIA_GYMNASIUM_FRENCH_ID = "49aefe0c-f365-5f30-b84f-b9a7699e4f2c";
     private static final String LEGACY_BAVARIA_MATH_ROOT_ID = "eb9048a4-9cb9-5aaf-8a91-aeba08e05b0c";
@@ -121,6 +122,7 @@ public class LearnerControllerIntegrationTest {
     private static final String CANONICAL_HISTORY_FORMS_CONTEXT_ID = "6fb3ce2a-8273-5b62-8a46-59f28ed3ad76";
     private static final String CANONICAL_HISTORY_REVOLUTION_CONTEXT_ID = "c5cb2db1-73ba-59bc-9ca0-c8c8a512b47a";
     private static final String CANONICAL_GERMAN_E_PHASE_CLUSTER_ID = "bbcabb0c-b319-5622-a5b7-a0259f7de255";
+    private static final String CANONICAL_GERMAN_WHY_ID = "eff86a92-e048-5494-b561-6ecdda1fbf67";
     private static final String CANONICAL_GERMAN_GRAMMAR_ID = "abf6d684-791e-5e0d-90bf-3466087dc937";
     private static final String CANONICAL_GERMAN_TEXT_TYPE_ID = "bc28576e-243e-5bff-aca0-872e174d59e5";
     private static final String CANONICAL_ENGLISH_E_PHASE_CLUSTER_ID = "8d4bc24e-8eb1-5167-9bd3-dda9845277c9";
@@ -241,6 +243,12 @@ public class LearnerControllerIntegrationTest {
             "eb772e65-91bb-541a-9d7a-06ab1a0b4b5e";
     private static final String LEGACY_BAYERN_INFORMATICS_INTERNET_STRUCTURE_ID =
             "0bb9320e-cfb2-5944-a4cf-2e0d26c4c9f7";
+    private static final String LEGACY_BAYERN_GERMAN_E_PHASE_CLUSTER_ID =
+            "eeb4ac18-a545-55fd-84ed-acce0fec5947";
+    private static final String LEGACY_BAYERN_GERMAN_GRAMMAR_ID =
+            "e8bf22b0-cd8d-5224-869d-8b94c7fe6d33";
+    private static final String LEGACY_BAYERN_GERMAN_WHY_ID =
+            "2968400d-768c-517b-a598-dce1985b157b";
     private static final String LEGACY_BAYERN_ECONOMICS_HOUSEHOLD_CLUSTER_ID =
             "4b55574a-14fc-5f97-a9eb-682e919c18fa";
     private static final String LEGACY_BAYERN_ECONOMICS_CONSUMER_PROTECTION_ID =
@@ -1161,6 +1169,45 @@ public class LearnerControllerIntegrationTest {
         assertThat(response.body())
                 .doesNotContain(LEGACY_BAYERN_ECONOMICS_HOUSEHOLD_CLUSTER_ID)
                 .doesNotContain(LEGACY_BAYERN_ECONOMICS_CONSUMER_PROTECTION_ID);
+    }
+
+    @Test
+    void cutoverEndpointMigratesLegacyBavariaGermanLearnerToCanonicalGymnasiumRoot() throws Exception {
+        Learner learner = learnerRepository.findById(learnerId).orElseThrow();
+        learner.setSelectedCurriculum(BAVARIA_GYMNASIUM_GERMAN_ID);
+        learnerRepository.save(learner);
+
+        plannedGoalRepository.save(new PlannedGoal(learner, LEGACY_BAYERN_GERMAN_E_PHASE_CLUSTER_ID));
+        masteryRepository.save(new Mastery(learner, LEGACY_BAYERN_GERMAN_WHY_ID, 1.0));
+
+        HttpResponse<String> response = postCutover();
+
+        assertThat(response.statusCode()).isEqualTo(HttpStatus.OK.value());
+
+        Learner migratedLearner = learnerRepository.findById(learnerId).orElseThrow();
+        JsonNode persistedConfig = objectMapper.readTree(migratedLearner.getPersonalCurriculum());
+        JsonNode body = objectMapper.readTree(response.body());
+        JsonNode planned = body.path("goals").path("planned");
+
+        assertThat(migratedLearner.getSelectedCurriculum()).isEqualTo(CANONICAL_GYMNASIUM_ROOT_ID);
+        assertThat(body.path("curriculum").path("curriculumId").asText()).isEqualTo(CANONICAL_GYMNASIUM_ROOT_ID);
+        assertThat(persistedConfig.path(CANONICAL_GYMNASIUM_ROOT_ID).path("filterId").asText()).isEqualTo("DE-BY");
+        assertThat(persistedConfig.path(CANONICAL_GERMAN_ID).path("selected").asBoolean()).isTrue();
+        assertThat(persistedConfig.path(CANONICAL_GERMAN_ID).path("filterId").asText()).isEqualTo("GK");
+        assertThat(persistedConfig.path(CANONICAL_MATH_PILOT_ID).path("selected").asBoolean()).isFalse();
+        assertThat(persistedConfig.path(CANONICAL_PHYSICS_PILOT_ID).path("selected").asBoolean()).isFalse();
+        assertThat(persistedConfig.path(CANONICAL_CHEMISTRY_ID).path("selected").asBoolean()).isFalse();
+        assertThat(persistedConfig.path(CANONICAL_BIOLOGY_ID).path("selected").asBoolean()).isFalse();
+        assertThat(persistedConfig.path(CANONICAL_INFORMATICS_ID).path("selected").asBoolean()).isFalse();
+        assertThat(persistedConfig.path(CANONICAL_ECONOMICS_ID).path("selected").asBoolean()).isFalse();
+        assertThat(planned).hasSize(1);
+        assertThat(planned.get(0).path("id").asText()).isEqualTo(CANONICAL_GERMAN_E_PHASE_CLUSTER_ID);
+        assertThat(masteryRepository.findById(new com.skillpilot.backend.domain.MasteryId(
+                learnerId,
+                CANONICAL_GERMAN_WHY_ID))).isPresent();
+        assertThat(response.body())
+                .doesNotContain(LEGACY_BAYERN_GERMAN_E_PHASE_CLUSTER_ID)
+                .doesNotContain(LEGACY_BAYERN_GERMAN_WHY_ID);
     }
 
     @Test
@@ -4123,6 +4170,109 @@ public class LearnerControllerIntegrationTest {
         assertThat(masteryRepository.findById(new com.skillpilot.backend.domain.MasteryId(
                 "readonly-bavaria-economics-ui-config",
                 LEGACY_BAYERN_ECONOMICS_WHY_ID))).isEmpty();
+    }
+
+    @Test
+    void bavariaGermanRetirementSessionRejectsUiLearningWrites() throws Exception {
+        Learner learner = new Learner();
+        learner.setSkillpilotId("readonly-bavaria-german-ui-learning");
+        learner.setSelectedCurriculum(BAVARIA_GYMNASIUM_GERMAN_ID);
+        learnerRepository.save(learner);
+
+        HttpResponse<String> activeGoalResponse = sendJsonRequest(
+                "POST",
+                "/api/ui/learners/readonly-bavaria-german-ui-learning/active-goal",
+                """
+                        {
+                          "goalId": "%s"
+                        }
+                        """.formatted(LEGACY_BAYERN_GERMAN_WHY_ID));
+        assertThat(activeGoalResponse.statusCode()).isEqualTo(HttpStatus.CONFLICT.value());
+        assertThat(
+                learnerRepository.findById("readonly-bavaria-german-ui-learning").orElseThrow().getActiveGoalId())
+                .isNull();
+
+        HttpResponse<String> plannedResponse = sendJsonRequest(
+                "PUT",
+                "/api/ui/learners/readonly-bavaria-german-ui-learning/planned",
+                """
+                        {
+                          "goals": ["%s"]
+                        }
+                        """.formatted(LEGACY_BAYERN_GERMAN_E_PHASE_CLUSTER_ID));
+        assertThat(plannedResponse.statusCode()).isEqualTo(HttpStatus.CONFLICT.value());
+        assertThat(plannedGoalRepository.findByLearner_SkillpilotId("readonly-bavaria-german-ui-learning"))
+                .isEmpty();
+
+        HttpResponse<String> clientStateResponse = sendJsonRequest(
+                "PUT",
+                "/api/ui/learners/readonly-bavaria-german-ui-learning/client-state/" + LEGACY_BAYERN_GERMAN_WHY_ID,
+                """
+                        {
+                          "updatedAt": "2026-03-15T09:30:00Z",
+                          "srsState": {
+                            "card-1": {
+                              "interval": 1,
+                              "repetition": 0,
+                              "ef": 2.5,
+                              "nextReview": 0
+                            }
+                          }
+                        }
+                        """);
+        assertThat(clientStateResponse.statusCode()).isEqualTo(HttpStatus.CONFLICT.value());
+        assertThat(learnerClientStateRepository.findById(
+                new LearnerClientStateId(
+                        "readonly-bavaria-german-ui-learning",
+                        LEGACY_BAYERN_GERMAN_WHY_ID))).isEmpty();
+    }
+
+    @Test
+    void bavariaGermanRetirementSessionRejectsUiCurriculumAndAiMasteryWrites() throws Exception {
+        Learner learner = new Learner();
+        learner.setSkillpilotId("readonly-bavaria-german-ui-config");
+        learner.setSelectedCurriculum(BAVARIA_GYMNASIUM_GERMAN_ID);
+        learnerRepository.save(learner);
+
+        HttpResponse<String> curriculumResponse = sendJsonRequest(
+                "PUT",
+                "/api/ui/learners/readonly-bavaria-german-ui-config/curriculum",
+                """
+                        {
+                          "curriculumId": "%s"
+                        }
+                        """.formatted(CANONICAL_GYMNASIUM_ROOT_ID));
+        assertThat(curriculumResponse.statusCode()).isEqualTo(HttpStatus.CONFLICT.value());
+        assertThat(
+                learnerRepository.findById("readonly-bavaria-german-ui-config").orElseThrow()
+                        .getSelectedCurriculum())
+                .isEqualTo(BAVARIA_GYMNASIUM_GERMAN_ID);
+
+        HttpResponse<String> personalCurriculumResponse = sendJsonRequest(
+                "PUT",
+                "/api/ui/learners/readonly-bavaria-german-ui-config/personal-curriculum",
+                """
+                        {
+                          "%s": {
+                            "selected": true,
+                            "filterId": "DE-BY"
+                          }
+                        }
+                        """.formatted(CANONICAL_GYMNASIUM_ROOT_ID));
+        assertThat(personalCurriculumResponse.statusCode()).isEqualTo(HttpStatus.CONFLICT.value());
+
+        HttpResponse<String> masteryResponse = sendJsonRequest(
+                "POST",
+                "/api/ai/en/learners/readonly-bavaria-german-ui-config/mastery",
+                """
+                        {
+                          "goalId": "%s"
+                        }
+                        """.formatted(LEGACY_BAYERN_GERMAN_WHY_ID));
+        assertThat(masteryResponse.statusCode()).isEqualTo(HttpStatus.CONFLICT.value());
+        assertThat(masteryRepository.findById(new com.skillpilot.backend.domain.MasteryId(
+                "readonly-bavaria-german-ui-config",
+                LEGACY_BAYERN_GERMAN_WHY_ID))).isEmpty();
     }
 
     @Test

@@ -27,7 +27,7 @@ Observed repo status on `2026-03-16`:
 Interpretation:
 
 - the design decisions below are no longer hypothetical for the reviewed scope
-- the remaining architectural work is now about widening and hardening the reviewed applicability surface, especially as Bavaria broadens beyond the current Math/Physics/Chemistry/Biology/Informatik/Wirtschaft_und_Recht adopted corridor
+- the remaining architectural work is now about widening and hardening the reviewed applicability surface, especially as Bavaria broadens beyond the current Math/Physics/Chemistry/Biology/Informatik/Deutsch/Wirtschaft_und_Recht adopted corridor
 
 ## Problem
 
