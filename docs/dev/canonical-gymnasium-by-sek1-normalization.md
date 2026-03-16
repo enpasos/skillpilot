@@ -53,12 +53,12 @@ This inventory is now stable enough to guide the next Bavaria breadth increase, 
 As of `2026-03-16`:
 
 - `31` Bavaria subjects show some Sek-I coverage on the shared `5-10` grid
-- `6` Bavaria Gymnasium pilot mapping files are currently adopted in the DE-level mapping lane
+- `20` Bavaria Gymnasium pilot mapping files are currently adopted in the DE-level mapping lane
 - therefore `curricula/DE/BY/Gymnasium` remains `partial` on canonical replacement breadth in the current delete matrix
 
 Practical consequence:
 
-- the next percentage increase should come from adopting at least one additional Bavaria subject corridor from Cohort A or Cohort C beyond the current Math/Physics/Chemistry/Biology/Informatik/Deutsch/Wirtschaft_und_Recht lane
+- the next percentage increase should come from adopting at least one additional Bavaria subject corridor from Cohort A or Cohort C beyond the current Math/Physics/Chemistry/Biology/Informatik/Geschichte/Deutsch/Englisch/Französisch/Spanisch/Italienisch/Russisch/Polnisch/Tschechisch/Griechisch/Wirtschaft_und_Recht/Politik_und_Gesellschaft/Latein/Musik/Chinesisch lane
 - more inventory detail alone should not raise the reported migration headline beyond the current `96.7%`
 
 ## Entry cohorts
@@ -147,8 +147,8 @@ The first pass should focus on subjects that are both migration-relevant and str
 1. Use `Mathematik` as the first Bavaria Sek-I normalization probe because it already spans the full shared year grid `5-10`.
    Detailed probe note: `docs/dev/canonical-gymnasium-by-math-sek1-probe.md`
 2. Add the science corridor `Physik`, `Chemie`, `Biologie` on the shared `8-10` buckets.
-3. Add `Geschichte` and `Politik_und_Gesellschaft` only after the mixed `G8` / `G9` provenance handling is stable in mappings.
-4. `Informatik`, `Deutsch`, and `Wirtschaft_und_Recht` have now landed as reviewed Bavaria bridges; keep `Berufliche_Orientierung`, `Sozialpraktische_Grundbildung`, and `Wirtschaftsinformatik` as secondary work rather than part of the canonical lower-secondary spine.
+3. `Geschichte` and `Politik_und_Gesellschaft` have now landed as the reviewed mixed `G8` / `G9` bridges; keep any further mixed-label Bavaria corridors secondary until a second canonical consumer actually needs them.
+4. `Informatik`, `Deutsch`, `Griechisch`, `Wirtschaft_und_Recht`, `Latein`, `Musik`, and `Chinesisch` have now landed as reviewed Bavaria bridges; keep `Berufliche_Orientierung`, `Sozialpraktische_Grundbildung`, and `Wirtschaftsinformatik` as secondary work rather than part of the canonical lower-secondary spine.
 
 ## Practical consequence for mapping work
 

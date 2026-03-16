@@ -26,6 +26,10 @@ class LandscapeServiceTest {
         private static final String CANONICAL_FRENCH_ID = "96a915cc-4fd6-5dc2-8cee-aaf3ab8c2977";
         private static final String CANONICAL_LATIN_ID = "668cf206-941e-51f8-8704-3e8938631235";
         private static final String CANONICAL_SPANISH_ID = "90eedebf-9ea8-5247-85dd-31c147f907c3";
+        private static final String CANONICAL_ITALIAN_ID = "25c6b527-10d6-5d92-9d76-fab23585f29b";
+        private static final String CANONICAL_RUSSIAN_ID = "242ba9bd-7ec7-5ec3-a15e-4f0f2b01aa37";
+        private static final String CANONICAL_POLISH_ID = "f145785b-0c44-5246-af66-8a153d202cb9";
+        private static final String CANONICAL_CZECH_ID = "0900df4c-beeb-5542-86f9-bd479c94746a";
         private static final String CANONICAL_GREEK_ID = "70a2cb55-127b-5c6e-b518-4a1c9f4f77a0";
         private static final String CANONICAL_CHINESE_ID = "8fdb83f5-b42a-5b36-ab5d-64edd4b2ab80";
         private static final String CANONICAL_MUSIC_ID = "f620c251-c1e1-41c1-b4e1-b10950b43608";
@@ -40,8 +44,18 @@ class LandscapeServiceTest {
         private static final String BAVARIA_PHYSICS_ID = "42c2f7e3-91b4-5de8-bef0-d563440e9d52";
         private static final String BAVARIA_CHEMISTRY_ID = "ff1ca997-b6cc-5ece-8e13-5498b4bbf808";
         private static final String BAVARIA_BIOLOGY_ID = "357a7003-b636-570e-a0bd-6bb63518d2f6";
+        private static final String BAVARIA_CHINESE_ID = "40744ec5-7de1-5e41-9fc2-a1e774721644";
         private static final String BAVARIA_INFORMATICS_ID = "1af3eba8-749f-5359-8f12-18f87b13616c";
         private static final String BAVARIA_FRENCH_ID = "49aefe0c-f365-5f30-b84f-b9a7699e4f2c";
+        private static final String BAVARIA_HISTORY_ID = "01c2ba7a-ebd4-5840-bc09-123d7b31c914";
+        private static final String BAVARIA_POLITICS_SOCIETY_ID = "486a8278-39b2-5450-96f8-1076a47b655b";
+        private static final String BAVARIA_GREEK_ID = "22703293-7307-5ad2-b158-efe6ae28c7c3";
+        private static final String BAVARIA_LATIN_ID = "c7eeaaa4-7c23-5ab7-8643-b7a03760cd6b";
+        private static final String BAVARIA_MUSIC_ID = "a00d70bf-3d3c-58fc-af4f-881b29635c2e";
+        private static final String BAVARIA_ITALIAN_ID = "c7643536-1163-50d8-86a6-9645c8fd3e25";
+        private static final String BAVARIA_RUSSIAN_ID = "2b6e79f6-5130-56cb-9a2f-d08e6dc4b4d7";
+        private static final String BAVARIA_POLISH_ID = "21148204-794c-515d-ae20-c4d5cd4e56d8";
+        private static final String BAVARIA_CZECH_ID = "097f3667-2488-57b2-a3e0-2cb334e422a2";
         private static final String BAVARIA_MATH_FUNCTION_CLUSTER_ID = "f9538605-8bf4-5279-b00a-c18786f9cc51";
         private static final String BAVARIA_PHYSICS_DIAGRAMS_ID = "0074dc7c-b4ab-5bfb-b1b7-a8f5cdb9accc";
         private static final String BAVARIA_BIOLOGY_GENETICS_CLUSTER_ID = "83af486d-92eb-501a-b32d-15a256be7d60";
@@ -108,6 +122,10 @@ class LandscapeServiceTest {
                                                 CANONICAL_FRENCH_ID,
                                                 CANONICAL_LATIN_ID,
                                                 CANONICAL_SPANISH_ID,
+                                                CANONICAL_ITALIAN_ID,
+                                                CANONICAL_RUSSIAN_ID,
+                                                CANONICAL_POLISH_ID,
+                                                CANONICAL_CZECH_ID,
                                                 CANONICAL_GREEK_ID,
                                                 CANONICAL_CHINESE_ID,
                                                 CANONICAL_MUSIC_ID,
@@ -181,10 +199,30 @@ class LandscapeServiceTest {
                 assertThat(landscapeService.isLegacyHiddenByDefaultLandscape(BAVARIA_CHEMISTRY_ID)).isFalse();
                 assertThat(landscapeService.isCompatibilityOnlyLandscape(BAVARIA_BIOLOGY_ID)).isTrue();
                 assertThat(landscapeService.isLegacyHiddenByDefaultLandscape(BAVARIA_BIOLOGY_ID)).isFalse();
+                assertThat(landscapeService.isCompatibilityOnlyLandscape(BAVARIA_CHINESE_ID)).isTrue();
+                assertThat(landscapeService.isLegacyHiddenByDefaultLandscape(BAVARIA_CHINESE_ID)).isFalse();
                 assertThat(landscapeService.isCompatibilityOnlyLandscape(BAVARIA_INFORMATICS_ID)).isTrue();
                 assertThat(landscapeService.isLegacyHiddenByDefaultLandscape(BAVARIA_INFORMATICS_ID)).isFalse();
                 assertThat(landscapeService.isCompatibilityOnlyLandscape(BAVARIA_FRENCH_ID)).isTrue();
                 assertThat(landscapeService.isLegacyHiddenByDefaultLandscape(BAVARIA_FRENCH_ID)).isFalse();
+                assertThat(landscapeService.isCompatibilityOnlyLandscape(BAVARIA_HISTORY_ID)).isTrue();
+                assertThat(landscapeService.isLegacyHiddenByDefaultLandscape(BAVARIA_HISTORY_ID)).isFalse();
+                assertThat(landscapeService.isCompatibilityOnlyLandscape(BAVARIA_POLITICS_SOCIETY_ID)).isTrue();
+                assertThat(landscapeService.isLegacyHiddenByDefaultLandscape(BAVARIA_POLITICS_SOCIETY_ID)).isFalse();
+                assertThat(landscapeService.isCompatibilityOnlyLandscape(BAVARIA_GREEK_ID)).isTrue();
+                assertThat(landscapeService.isLegacyHiddenByDefaultLandscape(BAVARIA_GREEK_ID)).isFalse();
+                assertThat(landscapeService.isCompatibilityOnlyLandscape(BAVARIA_LATIN_ID)).isTrue();
+                assertThat(landscapeService.isLegacyHiddenByDefaultLandscape(BAVARIA_LATIN_ID)).isFalse();
+                assertThat(landscapeService.isCompatibilityOnlyLandscape(BAVARIA_MUSIC_ID)).isTrue();
+                assertThat(landscapeService.isLegacyHiddenByDefaultLandscape(BAVARIA_MUSIC_ID)).isFalse();
+                assertThat(landscapeService.isCompatibilityOnlyLandscape(BAVARIA_ITALIAN_ID)).isTrue();
+                assertThat(landscapeService.isLegacyHiddenByDefaultLandscape(BAVARIA_ITALIAN_ID)).isFalse();
+                assertThat(landscapeService.isCompatibilityOnlyLandscape(BAVARIA_RUSSIAN_ID)).isTrue();
+                assertThat(landscapeService.isLegacyHiddenByDefaultLandscape(BAVARIA_RUSSIAN_ID)).isFalse();
+                assertThat(landscapeService.isCompatibilityOnlyLandscape(BAVARIA_POLISH_ID)).isTrue();
+                assertThat(landscapeService.isLegacyHiddenByDefaultLandscape(BAVARIA_POLISH_ID)).isFalse();
+                assertThat(landscapeService.isCompatibilityOnlyLandscape(BAVARIA_CZECH_ID)).isTrue();
+                assertThat(landscapeService.isLegacyHiddenByDefaultLandscape(BAVARIA_CZECH_ID)).isFalse();
         }
 
         @Test

@@ -46,6 +46,10 @@ class GoalMappingRepositoryFixtureTest {
     private static final String CANONICAL_FRENCH_ID = "96a915cc-4fd6-5dc2-8cee-aaf3ab8c2977";
     private static final String CANONICAL_LATIN_ID = "668cf206-941e-51f8-8704-3e8938631235";
     private static final String CANONICAL_SPANISH_ID = "90eedebf-9ea8-5247-85dd-31c147f907c3";
+    private static final String CANONICAL_ITALIAN_ID = "25c6b527-10d6-5d92-9d76-fab23585f29b";
+    private static final String CANONICAL_RUSSIAN_ID = "242ba9bd-7ec7-5ec3-a15e-4f0f2b01aa37";
+    private static final String CANONICAL_POLISH_ID = "f145785b-0c44-5246-af66-8a153d202cb9";
+    private static final String CANONICAL_CZECH_ID = "0900df4c-beeb-5542-86f9-bd479c94746a";
     private static final String CANONICAL_GREEK_ID = "70a2cb55-127b-5c6e-b518-4a1c9f4f77a0";
     private static final String CANONICAL_CHINESE_ID = "8fdb83f5-b42a-5b36-ab5d-64edd4b2ab80";
     private static final String CANONICAL_MUSIC_ID = "f620c251-c1e1-41c1-b4e1-b10950b43608";
@@ -80,6 +84,14 @@ class GoalMappingRepositoryFixtureTest {
             BAVARIA_GYMNASIUM_MAPPING_DIR.resolve("bavaria_chemistry_to_canonical_chemistry.json");
     private static final Path BAYERN_BIOLOGY_MAPPING_FILE =
             BAVARIA_GYMNASIUM_MAPPING_DIR.resolve("bavaria_biology_to_canonical_biology.json");
+    private static final Path BAYERN_ITALIAN_MAPPING_FILE =
+            BAVARIA_GYMNASIUM_MAPPING_DIR.resolve("bavaria_italian_to_canonical_italian.json");
+    private static final Path BAYERN_RUSSIAN_MAPPING_FILE =
+            BAVARIA_GYMNASIUM_MAPPING_DIR.resolve("bavaria_russian_to_canonical_russian.json");
+    private static final Path BAYERN_POLISH_MAPPING_FILE =
+            BAVARIA_GYMNASIUM_MAPPING_DIR.resolve("bavaria_polish_to_canonical_polish.json");
+    private static final Path BAYERN_CZECH_MAPPING_FILE =
+            BAVARIA_GYMNASIUM_MAPPING_DIR.resolve("bavaria_czech_to_canonical_czech.json");
     private static final Path CURRICULA_DIR = Path.of("../curricula");
 
     @Test
@@ -689,5 +701,95 @@ class GoalMappingRepositoryFixtureTest {
                         Tuple.tuple("b36b6f3b-658b-5850-8f78-281a84e9c823", "43673384-387a-51ea-9d04-6831b0ad7e2d", "partial"),
                         Tuple.tuple("60dd81ee-67d7-5b65-add8-07fc9c111c85", "25eaa5cf-e8f9-573d-8a53-8ae9d1cd02e2", "exact"),
                         Tuple.tuple("e8e2f7a6-c2e2-537e-85aa-cd00aeb61941", "914fb22b-e19e-5f5e-adfd-eff27bf5f1f5", "partial"));
+    }
+
+    @Test
+    void parsesRepositoryBackedCanonicalItalianBavariaMappingFixture() throws Exception {
+        GoalMappingFile file = new ObjectMapper().readValue(BAYERN_ITALIAN_MAPPING_FILE.toFile(), GoalMappingFile.class);
+
+        assertThat(file.getVersion()).isEqualTo(1);
+        assertThat(file.getSourceLandscapeId()).isEqualTo("c7643536-1163-50d8-86a6-9645c8fd3e25");
+        assertThat(file.getTargetLandscapeId()).isEqualTo(CANONICAL_ITALIAN_ID);
+        assertThat(file.getMappings()).hasSize(8);
+        assertThat(file.getMappings())
+                .extracting(GoalMappingEntry::getMatchType)
+                .containsOnly("exact");
+        assertThat(file.getMappings())
+                .extracting(GoalMappingEntry::getLegacyGoalId, GoalMappingEntry::getCanonicalGoalId, GoalMappingEntry::getMatchType)
+                .contains(
+                        Tuple.tuple("36bfe00a-bc24-51c3-a637-75e1dfcfcd61", "cb32eb5a-9a4b-5dd5-80be-73d8fbda172c", "exact"),
+                        Tuple.tuple("fcb79ea5-e777-50a0-927a-72edc5dfb4c5", "7c89bfc4-b001-59c1-9a19-9c9e4a83fd21", "exact"),
+                        Tuple.tuple("a6a8a7eb-30a9-5337-a02d-33a7f8be17a8", "df6d1dc9-dadc-5ff0-bebe-eface1b95948", "exact"),
+                        Tuple.tuple("171c1c85-16bd-521a-ad1d-b9d3d1b5e8b9", "6eec68b1-4dd2-5a42-8467-5b7deb213dfa", "exact"),
+                        Tuple.tuple("9c91106a-0182-5ac0-af41-fd34580ecb81", "f8810521-c399-5775-b779-1af2cb588663", "exact"),
+                        Tuple.tuple("b710be14-8d49-5f14-ab37-394b35b84e10", "a9b442ce-de30-55f4-b682-838a706f26a4", "exact"),
+                        Tuple.tuple("fff7f4a6-0f64-5f5f-9d49-a95e3f585205", "23f29732-237f-5f20-b0b0-5e865b9b593c", "exact"),
+                        Tuple.tuple("cee158c8-bf51-5eaf-8e7a-026c2ad1426f", "563b7785-04ac-51ae-b580-769f15630b9f", "exact"));
+    }
+
+    @Test
+    void parsesRepositoryBackedCanonicalRussianBavariaMappingFixture() throws Exception {
+        GoalMappingFile file = new ObjectMapper().readValue(BAYERN_RUSSIAN_MAPPING_FILE.toFile(), GoalMappingFile.class);
+
+        assertThat(file.getVersion()).isEqualTo(1);
+        assertThat(file.getSourceLandscapeId()).isEqualTo("2b6e79f6-5130-56cb-9a2f-d08e6dc4b4d7");
+        assertThat(file.getTargetLandscapeId()).isEqualTo(CANONICAL_RUSSIAN_ID);
+        assertThat(file.getMappings()).hasSize(8);
+        assertThat(file.getMappings())
+                .extracting(GoalMappingEntry::getMatchType)
+                .containsOnly("exact");
+        assertThat(file.getMappings())
+                .extracting(GoalMappingEntry::getLegacyGoalId, GoalMappingEntry::getCanonicalGoalId, GoalMappingEntry::getMatchType)
+                .contains(
+                        Tuple.tuple("012e0bc6-3a26-5714-9b24-b680c39c4c67", "19432aca-4835-5af0-9424-a1e0cbd5ec13", "exact"),
+                        Tuple.tuple("37df8430-2f97-50f8-a852-84e0be2da04e", "90e9542c-d052-5919-b6f7-ab461d155e75", "exact"),
+                        Tuple.tuple("9cbf13bd-be33-5065-8bf9-fccd417ffde3", "a60dcdfb-e81d-5d16-9c7b-086e16a5503d", "exact"),
+                        Tuple.tuple("1870e5d4-820b-5b5f-977c-18b057650f8f", "5f0b7317-bb89-5372-926b-89d2a3752d3d", "exact"),
+                        Tuple.tuple("7734c2e5-082e-5627-890e-3a7a4d6ba087", "d20ee7f6-a045-5918-b650-49b93e6c9301", "exact"),
+                        Tuple.tuple("3ee5e185-0780-5393-bffa-0969a0333812", "749d4bf1-adae-5c7d-a3e3-bd589074454f", "exact"),
+                        Tuple.tuple("27a72fb0-ff7a-57c0-b099-f4db126f2113", "23be9650-c714-53eb-8854-0c0bbdbe1ae4", "exact"),
+                        Tuple.tuple("0c88e884-8ae3-5c64-8ee3-09a27a8781a8", "ec657ef1-ec24-5e59-8eeb-1f7ef7748eee", "exact"));
+    }
+
+    @Test
+    void parsesRepositoryBackedCanonicalPolishBavariaMappingFixture() throws Exception {
+        GoalMappingFile file = new ObjectMapper().readValue(BAYERN_POLISH_MAPPING_FILE.toFile(), GoalMappingFile.class);
+
+        assertThat(file.getVersion()).isEqualTo(1);
+        assertThat(file.getSourceLandscapeId()).isEqualTo("21148204-794c-515d-ae20-c4d5cd4e56d8");
+        assertThat(file.getTargetLandscapeId()).isEqualTo(CANONICAL_POLISH_ID);
+        assertThat(file.getMappings()).hasSize(5);
+        assertThat(file.getMappings())
+                .extracting(GoalMappingEntry::getMatchType)
+                .containsOnly("exact");
+        assertThat(file.getMappings())
+                .extracting(GoalMappingEntry::getLegacyGoalId, GoalMappingEntry::getCanonicalGoalId, GoalMappingEntry::getMatchType)
+                .contains(
+                        Tuple.tuple("de5177a9-8ab6-5212-8df4-3caa69d1f465", "bada14f4-1b44-5ff1-89d1-8a3c8c2127ca", "exact"),
+                        Tuple.tuple("22cafb13-f570-501c-b7e6-1455f9db04e9", "dbe53e98-bc35-5568-89ed-fa292051c1dd", "exact"),
+                        Tuple.tuple("44807e72-96c6-576e-bd89-43954a0e281a", "7253caaf-5994-558d-a03f-ff52414ddc37", "exact"),
+                        Tuple.tuple("fe788439-8cf6-5974-9027-317cc4be0555", "89b2c61e-d557-553d-9998-8e79ee95c5ce", "exact"),
+                        Tuple.tuple("05cf291b-4511-5083-ac04-ace963b1461b", "44045cab-2b51-5c1a-836e-8d3bafe14e29", "exact"));
+    }
+
+    @Test
+    void parsesRepositoryBackedCanonicalCzechBavariaMappingFixture() throws Exception {
+        GoalMappingFile file = new ObjectMapper().readValue(BAYERN_CZECH_MAPPING_FILE.toFile(), GoalMappingFile.class);
+
+        assertThat(file.getVersion()).isEqualTo(1);
+        assertThat(file.getSourceLandscapeId()).isEqualTo("097f3667-2488-57b2-a3e0-2cb334e422a2");
+        assertThat(file.getTargetLandscapeId()).isEqualTo(CANONICAL_CZECH_ID);
+        assertThat(file.getMappings()).hasSize(5);
+        assertThat(file.getMappings())
+                .extracting(GoalMappingEntry::getMatchType)
+                .containsOnly("exact");
+        assertThat(file.getMappings())
+                .extracting(GoalMappingEntry::getLegacyGoalId, GoalMappingEntry::getCanonicalGoalId, GoalMappingEntry::getMatchType)
+                .contains(
+                        Tuple.tuple("31ccde1c-6733-5e7b-888c-885111a2ce59", "b75e9bca-6470-5c4e-b7c8-1f52012a27c9", "exact"),
+                        Tuple.tuple("c09a1fe9-529b-5022-a541-a073b28f3d76", "bce55678-c4c3-52e9-9e21-97c0ba051135", "exact"),
+                        Tuple.tuple("fada773b-c6bb-5574-bffc-728e0cb78052", "6d8b2fdb-af63-5110-abc2-fee9946b91ff", "exact"),
+                        Tuple.tuple("7fd2f437-be58-5f8b-acef-4e8b6b6113a5", "6c3b3d83-8114-5a20-a317-eff44a1dd250", "exact"),
+                        Tuple.tuple("983cd7b4-717c-5871-b4d1-b6b0681153b2", "37ddd926-3e77-585a-bf0f-1a27fa2689d6", "exact"));
     }
 }

@@ -118,6 +118,10 @@ public class LearnerService {
     private static final String CANONICAL_GYMNASIUM_FRENCH_ID = "96a915cc-4fd6-5dc2-8cee-aaf3ab8c2977";
     private static final String CANONICAL_GYMNASIUM_LATIN_ID = "668cf206-941e-51f8-8704-3e8938631235";
     private static final String CANONICAL_GYMNASIUM_SPANISH_ID = "90eedebf-9ea8-5247-85dd-31c147f907c3";
+    private static final String CANONICAL_GYMNASIUM_ITALIAN_ID = "25c6b527-10d6-5d92-9d76-fab23585f29b";
+    private static final String CANONICAL_GYMNASIUM_RUSSIAN_ID = "242ba9bd-7ec7-5ec3-a15e-4f0f2b01aa37";
+    private static final String CANONICAL_GYMNASIUM_POLISH_ID = "f145785b-0c44-5246-af66-8a153d202cb9";
+    private static final String CANONICAL_GYMNASIUM_CZECH_ID = "0900df4c-beeb-5542-86f9-bd479c94746a";
     private static final String CANONICAL_GYMNASIUM_GREEK_ID = "70a2cb55-127b-5c6e-b518-4a1c9f4f77a0";
     private static final String CANONICAL_GYMNASIUM_CHINESE_ID = "8fdb83f5-b42a-5b36-ab5d-64edd4b2ab80";
     private static final String CANONICAL_GYMNASIUM_MUSIC_ID = "f620c251-c1e1-41c1-b4e1-b10950b43608";
@@ -149,9 +153,22 @@ public class LearnerService {
     private static final String BAVARIA_GYMNASIUM_PHYSICS_ID = "42c2f7e3-91b4-5de8-bef0-d563440e9d52";
     private static final String BAVARIA_GYMNASIUM_CHEMISTRY_ID = "ff1ca997-b6cc-5ece-8e13-5498b4bbf808";
     private static final String BAVARIA_GYMNASIUM_BIOLOGY_ID = "357a7003-b636-570e-a0bd-6bb63518d2f6";
+    private static final String BAVARIA_GYMNASIUM_CHINESE_ID = "40744ec5-7de1-5e41-9fc2-a1e774721644";
     private static final String BAVARIA_GYMNASIUM_INFORMATICS_ID = "1af3eba8-749f-5359-8f12-18f87b13616c";
+    private static final String BAVARIA_GYMNASIUM_HISTORY_ID = "01c2ba7a-ebd4-5840-bc09-123d7b31c914";
     private static final String BAVARIA_GYMNASIUM_GERMAN_ID = "05f1cd27-5a58-5415-8fda-d4807067f70a";
+    private static final String BAVARIA_GYMNASIUM_ENGLISH_ID = "9da8e86b-92dc-5ba0-827e-339400af2b38";
+    private static final String BAVARIA_GYMNASIUM_GREEK_ID = "22703293-7307-5ad2-b158-efe6ae28c7c3";
     private static final String BAVARIA_GYMNASIUM_ECONOMICS_ID = "4959d7df-e430-5c1d-bb7b-873d6252a27f";
+    private static final String BAVARIA_GYMNASIUM_POLITICS_SOCIETY_ID = "486a8278-39b2-5450-96f8-1076a47b655b";
+    private static final String BAVARIA_GYMNASIUM_LATIN_ID = "c7eeaaa4-7c23-5ab7-8643-b7a03760cd6b";
+    private static final String BAVARIA_GYMNASIUM_MUSIC_ID = "a00d70bf-3d3c-58fc-af4f-881b29635c2e";
+    private static final String BAVARIA_GYMNASIUM_FRENCH_ID = "49aefe0c-f365-5f30-b84f-b9a7699e4f2c";
+    private static final String BAVARIA_GYMNASIUM_SPANISH_ID = "8dba4715-f75e-5339-9e99-02236e4b80dd";
+    private static final String BAVARIA_GYMNASIUM_ITALIAN_ID = "c7643536-1163-50d8-86a6-9645c8fd3e25";
+    private static final String BAVARIA_GYMNASIUM_RUSSIAN_ID = "2b6e79f6-5130-56cb-9a2f-d08e6dc4b4d7";
+    private static final String BAVARIA_GYMNASIUM_POLISH_ID = "21148204-794c-515d-ae20-c4d5cd4e56d8";
+    private static final String BAVARIA_GYMNASIUM_CZECH_ID = "097f3667-2488-57b2-a3e0-2cb334e422a2";
     private static final String DEFAULT_COURSE_FILTER_ID = "GK";
 
     @Value("${skillpilot.security.signing-secret}")
@@ -1220,9 +1237,22 @@ public class LearnerService {
                 || BAVARIA_GYMNASIUM_PHYSICS_ID.equals(curriculumId)
                 || BAVARIA_GYMNASIUM_CHEMISTRY_ID.equals(curriculumId)
                 || BAVARIA_GYMNASIUM_BIOLOGY_ID.equals(curriculumId)
+                || BAVARIA_GYMNASIUM_CHINESE_ID.equals(curriculumId)
                 || BAVARIA_GYMNASIUM_INFORMATICS_ID.equals(curriculumId)
+                || BAVARIA_GYMNASIUM_HISTORY_ID.equals(curriculumId)
                 || BAVARIA_GYMNASIUM_GERMAN_ID.equals(curriculumId)
-                || BAVARIA_GYMNASIUM_ECONOMICS_ID.equals(curriculumId);
+                || BAVARIA_GYMNASIUM_ENGLISH_ID.equals(curriculumId)
+                || BAVARIA_GYMNASIUM_GREEK_ID.equals(curriculumId)
+                || BAVARIA_GYMNASIUM_ECONOMICS_ID.equals(curriculumId)
+                || BAVARIA_GYMNASIUM_POLITICS_SOCIETY_ID.equals(curriculumId)
+                || BAVARIA_GYMNASIUM_LATIN_ID.equals(curriculumId)
+                || BAVARIA_GYMNASIUM_MUSIC_ID.equals(curriculumId)
+                || BAVARIA_GYMNASIUM_FRENCH_ID.equals(curriculumId)
+                || BAVARIA_GYMNASIUM_SPANISH_ID.equals(curriculumId)
+                || BAVARIA_GYMNASIUM_ITALIAN_ID.equals(curriculumId)
+                || BAVARIA_GYMNASIUM_RUSSIAN_ID.equals(curriculumId)
+                || BAVARIA_GYMNASIUM_POLISH_ID.equals(curriculumId)
+                || BAVARIA_GYMNASIUM_CZECH_ID.equals(curriculumId);
     }
 
     @Transactional
@@ -1514,9 +1544,22 @@ public class LearnerService {
                 || BAVARIA_GYMNASIUM_PHYSICS_ID.equals(curriculumId)
                 || BAVARIA_GYMNASIUM_CHEMISTRY_ID.equals(curriculumId)
                 || BAVARIA_GYMNASIUM_BIOLOGY_ID.equals(curriculumId)
+                || BAVARIA_GYMNASIUM_CHINESE_ID.equals(curriculumId)
                 || BAVARIA_GYMNASIUM_INFORMATICS_ID.equals(curriculumId)
+                || BAVARIA_GYMNASIUM_HISTORY_ID.equals(curriculumId)
                 || BAVARIA_GYMNASIUM_GERMAN_ID.equals(curriculumId)
-                || BAVARIA_GYMNASIUM_ECONOMICS_ID.equals(curriculumId);
+                || BAVARIA_GYMNASIUM_ENGLISH_ID.equals(curriculumId)
+                || BAVARIA_GYMNASIUM_GREEK_ID.equals(curriculumId)
+                || BAVARIA_GYMNASIUM_ECONOMICS_ID.equals(curriculumId)
+                || BAVARIA_GYMNASIUM_POLITICS_SOCIETY_ID.equals(curriculumId)
+                || BAVARIA_GYMNASIUM_LATIN_ID.equals(curriculumId)
+                || BAVARIA_GYMNASIUM_MUSIC_ID.equals(curriculumId)
+                || BAVARIA_GYMNASIUM_FRENCH_ID.equals(curriculumId)
+                || BAVARIA_GYMNASIUM_SPANISH_ID.equals(curriculumId)
+                || BAVARIA_GYMNASIUM_ITALIAN_ID.equals(curriculumId)
+                || BAVARIA_GYMNASIUM_RUSSIAN_ID.equals(curriculumId)
+                || BAVARIA_GYMNASIUM_POLISH_ID.equals(curriculumId)
+                || BAVARIA_GYMNASIUM_CZECH_ID.equals(curriculumId);
     }
 
     private CanonicalGymnasiumCutoverPlan buildCanonicalGymnasiumCutoverPlan(Learner learner, List<String> storedPlannedGoals) {
@@ -1796,9 +1839,22 @@ public class LearnerService {
                 || BAVARIA_GYMNASIUM_PHYSICS_ID.equals(curriculumId)
                 || BAVARIA_GYMNASIUM_CHEMISTRY_ID.equals(curriculumId)
                 || BAVARIA_GYMNASIUM_BIOLOGY_ID.equals(curriculumId)
+                || BAVARIA_GYMNASIUM_CHINESE_ID.equals(curriculumId)
                 || BAVARIA_GYMNASIUM_INFORMATICS_ID.equals(curriculumId)
+                || BAVARIA_GYMNASIUM_HISTORY_ID.equals(curriculumId)
                 || BAVARIA_GYMNASIUM_GERMAN_ID.equals(curriculumId)
-                || BAVARIA_GYMNASIUM_ECONOMICS_ID.equals(curriculumId);
+                || BAVARIA_GYMNASIUM_ENGLISH_ID.equals(curriculumId)
+                || BAVARIA_GYMNASIUM_GREEK_ID.equals(curriculumId)
+                || BAVARIA_GYMNASIUM_ECONOMICS_ID.equals(curriculumId)
+                || BAVARIA_GYMNASIUM_POLITICS_SOCIETY_ID.equals(curriculumId)
+                || BAVARIA_GYMNASIUM_LATIN_ID.equals(curriculumId)
+                || BAVARIA_GYMNASIUM_MUSIC_ID.equals(curriculumId)
+                || BAVARIA_GYMNASIUM_FRENCH_ID.equals(curriculumId)
+                || BAVARIA_GYMNASIUM_SPANISH_ID.equals(curriculumId)
+                || BAVARIA_GYMNASIUM_ITALIAN_ID.equals(curriculumId)
+                || BAVARIA_GYMNASIUM_RUSSIAN_ID.equals(curriculumId)
+                || BAVARIA_GYMNASIUM_POLISH_ID.equals(curriculumId)
+                || BAVARIA_GYMNASIUM_CZECH_ID.equals(curriculumId);
     }
 
     private record HessenLowerSecondarySelection(
@@ -1919,9 +1975,22 @@ public class LearnerService {
         boolean physicsSelected = BAVARIA_GYMNASIUM_PHYSICS_ID.equals(learner.getSelectedCurriculum());
         boolean chemistrySelected = BAVARIA_GYMNASIUM_CHEMISTRY_ID.equals(learner.getSelectedCurriculum());
         boolean biologySelected = BAVARIA_GYMNASIUM_BIOLOGY_ID.equals(learner.getSelectedCurriculum());
+        boolean chineseSelected = BAVARIA_GYMNASIUM_CHINESE_ID.equals(learner.getSelectedCurriculum());
         boolean informaticsSelected = BAVARIA_GYMNASIUM_INFORMATICS_ID.equals(learner.getSelectedCurriculum());
+        boolean historySelected = BAVARIA_GYMNASIUM_HISTORY_ID.equals(learner.getSelectedCurriculum());
         boolean germanSelected = BAVARIA_GYMNASIUM_GERMAN_ID.equals(learner.getSelectedCurriculum());
+        boolean englishSelected = BAVARIA_GYMNASIUM_ENGLISH_ID.equals(learner.getSelectedCurriculum());
+        boolean greekSelected = BAVARIA_GYMNASIUM_GREEK_ID.equals(learner.getSelectedCurriculum());
         boolean economicsSelected = BAVARIA_GYMNASIUM_ECONOMICS_ID.equals(learner.getSelectedCurriculum());
+        boolean politicsEconomicsSelected = BAVARIA_GYMNASIUM_POLITICS_SOCIETY_ID.equals(learner.getSelectedCurriculum());
+        boolean latinSelected = BAVARIA_GYMNASIUM_LATIN_ID.equals(learner.getSelectedCurriculum());
+        boolean musicSelected = BAVARIA_GYMNASIUM_MUSIC_ID.equals(learner.getSelectedCurriculum());
+        boolean frenchSelected = BAVARIA_GYMNASIUM_FRENCH_ID.equals(learner.getSelectedCurriculum());
+        boolean spanishSelected = BAVARIA_GYMNASIUM_SPANISH_ID.equals(learner.getSelectedCurriculum());
+        boolean italianSelected = BAVARIA_GYMNASIUM_ITALIAN_ID.equals(learner.getSelectedCurriculum());
+        boolean russianSelected = BAVARIA_GYMNASIUM_RUSSIAN_ID.equals(learner.getSelectedCurriculum());
+        boolean polishSelected = BAVARIA_GYMNASIUM_POLISH_ID.equals(learner.getSelectedCurriculum());
+        boolean czechSelected = BAVARIA_GYMNASIUM_CZECH_ID.equals(learner.getSelectedCurriculum());
 
         if (physicsSelected) {
             mathSelected = true;
@@ -1933,11 +2002,52 @@ public class LearnerService {
         personalCurriculumConfig.put(CANONICAL_GYMNASIUM_PHYSICS_ID, createSelectionConfig(physicsSelected, null));
         personalCurriculumConfig.put(CANONICAL_GYMNASIUM_CHEMISTRY_ID, createSelectionConfig(chemistrySelected, null));
         personalCurriculumConfig.put(CANONICAL_GYMNASIUM_BIOLOGY_ID, createSelectionConfig(biologySelected, null));
+        personalCurriculumConfig.put(
+                CANONICAL_GYMNASIUM_CHINESE_ID,
+                createSelectionConfig(chineseSelected, chineseSelected ? DEFAULT_COURSE_FILTER_ID : null));
         personalCurriculumConfig.put(CANONICAL_GYMNASIUM_INFORMATICS_ID, createSelectionConfig(informaticsSelected, null));
+        personalCurriculumConfig.put(
+                CANONICAL_GYMNASIUM_HISTORY_ID,
+                createSelectionConfig(historySelected, historySelected ? DEFAULT_COURSE_FILTER_ID : null));
         personalCurriculumConfig.put(
                 CANONICAL_GYMNASIUM_GERMAN_ID,
                 createSelectionConfig(germanSelected, germanSelected ? DEFAULT_COURSE_FILTER_ID : null));
+        personalCurriculumConfig.put(
+                CANONICAL_GYMNASIUM_ENGLISH_ID,
+                createSelectionConfig(englishSelected, englishSelected ? DEFAULT_COURSE_FILTER_ID : null));
+        personalCurriculumConfig.put(
+                CANONICAL_GYMNASIUM_GREEK_ID,
+                createSelectionConfig(greekSelected, greekSelected ? DEFAULT_COURSE_FILTER_ID : null));
         personalCurriculumConfig.put(CANONICAL_GYMNASIUM_ECONOMICS_ID, createSelectionConfig(economicsSelected, null));
+        personalCurriculumConfig.put(
+                CANONICAL_GYMNASIUM_POLITICS_ECONOMICS_ID,
+                createSelectionConfig(
+                        politicsEconomicsSelected,
+                        politicsEconomicsSelected ? DEFAULT_COURSE_FILTER_ID : null));
+        personalCurriculumConfig.put(
+                CANONICAL_GYMNASIUM_LATIN_ID,
+                createSelectionConfig(latinSelected, latinSelected ? DEFAULT_COURSE_FILTER_ID : null));
+        personalCurriculumConfig.put(
+                CANONICAL_GYMNASIUM_MUSIC_ID,
+                createSelectionConfig(musicSelected, musicSelected ? DEFAULT_COURSE_FILTER_ID : null));
+        personalCurriculumConfig.put(
+                CANONICAL_GYMNASIUM_FRENCH_ID,
+                createSelectionConfig(frenchSelected, frenchSelected ? DEFAULT_COURSE_FILTER_ID : null));
+        personalCurriculumConfig.put(
+                CANONICAL_GYMNASIUM_SPANISH_ID,
+                createSelectionConfig(spanishSelected, spanishSelected ? DEFAULT_COURSE_FILTER_ID : null));
+        personalCurriculumConfig.put(
+                CANONICAL_GYMNASIUM_ITALIAN_ID,
+                createSelectionConfig(italianSelected, italianSelected ? DEFAULT_COURSE_FILTER_ID : null));
+        personalCurriculumConfig.put(
+                CANONICAL_GYMNASIUM_RUSSIAN_ID,
+                createSelectionConfig(russianSelected, russianSelected ? DEFAULT_COURSE_FILTER_ID : null));
+        personalCurriculumConfig.put(
+                CANONICAL_GYMNASIUM_POLISH_ID,
+                createSelectionConfig(polishSelected, polishSelected ? DEFAULT_COURSE_FILTER_ID : null));
+        personalCurriculumConfig.put(
+                CANONICAL_GYMNASIUM_CZECH_ID,
+                createSelectionConfig(czechSelected, czechSelected ? DEFAULT_COURSE_FILTER_ID : null));
 
         String personalCurriculumJson = writePersonalCurriculumConfig(personalCurriculumConfig);
         Map<String, LearningGoal> structuralGoals = new LinkedHashMap<>(getFilteredGoals(CANONICAL_GYMNASIUM_ROOT_ID, "{}"));
@@ -1945,9 +2055,22 @@ public class LearnerService {
         structuralGoals.putAll(getFilteredGoals(CANONICAL_GYMNASIUM_PHYSICS_ID, "{}"));
         structuralGoals.putAll(getFilteredGoals(CANONICAL_GYMNASIUM_CHEMISTRY_ID, "{}"));
         structuralGoals.putAll(getFilteredGoals(CANONICAL_GYMNASIUM_BIOLOGY_ID, "{}"));
+        structuralGoals.putAll(getFilteredGoals(CANONICAL_GYMNASIUM_CHINESE_ID, "{}"));
         structuralGoals.putAll(getFilteredGoals(CANONICAL_GYMNASIUM_INFORMATICS_ID, "{}"));
+        structuralGoals.putAll(getFilteredGoals(CANONICAL_GYMNASIUM_HISTORY_ID, "{}"));
         structuralGoals.putAll(getFilteredGoals(CANONICAL_GYMNASIUM_GERMAN_ID, "{}"));
+        structuralGoals.putAll(getFilteredGoals(CANONICAL_GYMNASIUM_ENGLISH_ID, "{}"));
+        structuralGoals.putAll(getFilteredGoals(CANONICAL_GYMNASIUM_GREEK_ID, "{}"));
         structuralGoals.putAll(getFilteredGoals(CANONICAL_GYMNASIUM_ECONOMICS_ID, "{}"));
+        structuralGoals.putAll(getFilteredGoals(CANONICAL_GYMNASIUM_POLITICS_ECONOMICS_ID, "{}"));
+        structuralGoals.putAll(getFilteredGoals(CANONICAL_GYMNASIUM_LATIN_ID, "{}"));
+        structuralGoals.putAll(getFilteredGoals(CANONICAL_GYMNASIUM_MUSIC_ID, "{}"));
+        structuralGoals.putAll(getFilteredGoals(CANONICAL_GYMNASIUM_FRENCH_ID, "{}"));
+        structuralGoals.putAll(getFilteredGoals(CANONICAL_GYMNASIUM_SPANISH_ID, "{}"));
+        structuralGoals.putAll(getFilteredGoals(CANONICAL_GYMNASIUM_ITALIAN_ID, "{}"));
+        structuralGoals.putAll(getFilteredGoals(CANONICAL_GYMNASIUM_RUSSIAN_ID, "{}"));
+        structuralGoals.putAll(getFilteredGoals(CANONICAL_GYMNASIUM_POLISH_ID, "{}"));
+        structuralGoals.putAll(getFilteredGoals(CANONICAL_GYMNASIUM_CZECH_ID, "{}"));
         List<String> normalizedPlannedGoalIds = normalizeCutoverPlannedGoalIds(storedPlannedGoals, structuralGoals).stream()
                 .filter(structuralGoals::containsKey)
                 .toList();

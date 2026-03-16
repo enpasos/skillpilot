@@ -52,6 +52,10 @@ public class LearnerControllerIntegrationTest {
     private static final String CANONICAL_FRENCH_ID = "96a915cc-4fd6-5dc2-8cee-aaf3ab8c2977";
     private static final String CANONICAL_LATIN_ID = "668cf206-941e-51f8-8704-3e8938631235";
     private static final String CANONICAL_SPANISH_ID = "90eedebf-9ea8-5247-85dd-31c147f907c3";
+    private static final String CANONICAL_ITALIAN_ID = "25c6b527-10d6-5d92-9d76-fab23585f29b";
+    private static final String CANONICAL_RUSSIAN_ID = "242ba9bd-7ec7-5ec3-a15e-4f0f2b01aa37";
+    private static final String CANONICAL_POLISH_ID = "f145785b-0c44-5246-af66-8a153d202cb9";
+    private static final String CANONICAL_CZECH_ID = "0900df4c-beeb-5542-86f9-bd479c94746a";
     private static final String CANONICAL_GREEK_ID = "70a2cb55-127b-5c6e-b518-4a1c9f4f77a0";
     private static final String CANONICAL_CHINESE_ID = "8fdb83f5-b42a-5b36-ab5d-64edd4b2ab80";
     private static final String CANONICAL_MUSIC_ID = "f620c251-c1e1-41c1-b4e1-b10950b43608";
@@ -84,10 +88,22 @@ public class LearnerControllerIntegrationTest {
     private static final String BAVARIA_GYMNASIUM_PHYSICS_ID = "42c2f7e3-91b4-5de8-bef0-d563440e9d52";
     private static final String BAVARIA_GYMNASIUM_CHEMISTRY_ID = "ff1ca997-b6cc-5ece-8e13-5498b4bbf808";
     private static final String BAVARIA_GYMNASIUM_BIOLOGY_ID = "357a7003-b636-570e-a0bd-6bb63518d2f6";
+    private static final String BAVARIA_GYMNASIUM_CHINESE_ID = "40744ec5-7de1-5e41-9fc2-a1e774721644";
     private static final String BAVARIA_GYMNASIUM_INFORMATICS_ID = "1af3eba8-749f-5359-8f12-18f87b13616c";
+    private static final String BAVARIA_GYMNASIUM_HISTORY_ID = "01c2ba7a-ebd4-5840-bc09-123d7b31c914";
     private static final String BAVARIA_GYMNASIUM_GERMAN_ID = "05f1cd27-5a58-5415-8fda-d4807067f70a";
+    private static final String BAVARIA_GYMNASIUM_ENGLISH_ID = "9da8e86b-92dc-5ba0-827e-339400af2b38";
+    private static final String BAVARIA_GYMNASIUM_GREEK_ID = "22703293-7307-5ad2-b158-efe6ae28c7c3";
     private static final String BAVARIA_GYMNASIUM_ECONOMICS_ID = "4959d7df-e430-5c1d-bb7b-873d6252a27f";
+    private static final String BAVARIA_GYMNASIUM_POLITICS_SOCIETY_ID = "486a8278-39b2-5450-96f8-1076a47b655b";
+    private static final String BAVARIA_GYMNASIUM_LATIN_ID = "c7eeaaa4-7c23-5ab7-8643-b7a03760cd6b";
+    private static final String BAVARIA_GYMNASIUM_MUSIC_ID = "a00d70bf-3d3c-58fc-af4f-881b29635c2e";
     private static final String BAVARIA_GYMNASIUM_FRENCH_ID = "49aefe0c-f365-5f30-b84f-b9a7699e4f2c";
+    private static final String BAVARIA_GYMNASIUM_SPANISH_ID = "8dba4715-f75e-5339-9e99-02236e4b80dd";
+    private static final String BAVARIA_GYMNASIUM_ITALIAN_ID = "c7643536-1163-50d8-86a6-9645c8fd3e25";
+    private static final String BAVARIA_GYMNASIUM_RUSSIAN_ID = "2b6e79f6-5130-56cb-9a2f-d08e6dc4b4d7";
+    private static final String BAVARIA_GYMNASIUM_POLISH_ID = "21148204-794c-515d-ae20-c4d5cd4e56d8";
+    private static final String BAVARIA_GYMNASIUM_CZECH_ID = "097f3667-2488-57b2-a3e0-2cb334e422a2";
     private static final String LEGACY_BAVARIA_MATH_ROOT_ID = "eb9048a4-9cb9-5aaf-8a91-aeba08e05b0c";
     private static final String CANONICAL_PHYSICS_GK_PERSONAL_CONFIG = """
             {
@@ -119,13 +135,16 @@ public class LearnerControllerIntegrationTest {
     private static final String CANONICAL_INFORMATICS_NETWORKS_ID = "ca07458c-1fc1-5ca1-b226-69f59e2d62d3";
     private static final String CANONICAL_INFORMATICS_TCP_IP_ID = "6539320a-aa0e-59e5-a34a-55f1a8b78337";
     private static final String CANONICAL_HISTORY_E_PHASE_CLUSTER_ID = "abed1f19-6cf8-54a4-aae2-d7691f97c2cf";
+    private static final String CANONICAL_HISTORY_WHY_ID = "178c5d72-5a0c-514e-abed-0dc65c8d1aa2";
     private static final String CANONICAL_HISTORY_FORMS_CONTEXT_ID = "6fb3ce2a-8273-5b62-8a46-59f28ed3ad76";
     private static final String CANONICAL_HISTORY_REVOLUTION_CONTEXT_ID = "c5cb2db1-73ba-59bc-9ca0-c8c8a512b47a";
+    private static final String CANONICAL_HISTORY_WEIMAR_CLUSTER_ID = "e7718577-7e82-5481-8398-460a06c5f3fb";
     private static final String CANONICAL_GERMAN_E_PHASE_CLUSTER_ID = "bbcabb0c-b319-5622-a5b7-a0259f7de255";
     private static final String CANONICAL_GERMAN_WHY_ID = "eff86a92-e048-5494-b561-6ecdda1fbf67";
     private static final String CANONICAL_GERMAN_GRAMMAR_ID = "abf6d684-791e-5e0d-90bf-3466087dc937";
     private static final String CANONICAL_GERMAN_TEXT_TYPE_ID = "bc28576e-243e-5bff-aca0-872e174d59e5";
     private static final String CANONICAL_ENGLISH_E_PHASE_CLUSTER_ID = "8d4bc24e-8eb1-5167-9bd3-dda9845277c9";
+    private static final String CANONICAL_ENGLISH_WHY_ID = "8610bd4b-6c16-579e-a741-5f602b3c2ea4";
     private static final String CANONICAL_ENGLISH_GROWING_UP_ID = "aefe30a8-cb8e-54dc-b1db-da7634f32584";
     private static final String CANONICAL_ENGLISH_TEXT_COMPREHENSION_ID = "4ba50e17-1a1c-5ea3-a615-ceb4229844c9";
     private static final String CANONICAL_ENGLISH_MAKING_A_DIFFERENCE_ID = "aeacdf33-3be6-5a7f-adae-d2b490f81a0a";
@@ -134,20 +153,37 @@ public class LearnerControllerIntegrationTest {
     private static final String CANONICAL_ENGLISH_MAKING_A_DIFFERENCE_WRITING_MEDIATE_ID =
             "a9ba9796-5e6e-5a99-8c89-265aed2b6cbc";
     private static final String CANONICAL_FRENCH_ROOT_ID = "3cdb4109-e977-54f3-b662-0800e2f043d3";
+    private static final String CANONICAL_FRENCH_E_PHASE_CLUSTER_ID = "fb4e7e31-be77-57ff-addb-d329633c049f";
+    private static final String CANONICAL_FRENCH_WHY_ID = "81f0501c-890a-5ebd-be54-4ae7698d4d52";
     private static final String CANONICAL_FRENCH_READ_FAMILY_ID = "5f0b8adf-e7af-5cdd-a50c-0a721662b54c";
     private static final String CANONICAL_FRENCH_READ_YOUTH_ID = "a39ca386-25f4-53ee-9fb7-f4e787cb218a";
     private static final String CANONICAL_LATIN_E_PHASE_CLUSTER_ID = "415d72d7-34e2-5321-94c6-1d7a9a04404c";
+    private static final String CANONICAL_LATIN_WHY_ID = "551f2d6c-a030-57cc-9dbd-af30b2c3972a";
     private static final String CANONICAL_LATIN_GRAMMAR_ID = "1476af3f-0ff9-59c0-8a1a-e81dfc011ae2";
     private static final String CANONICAL_LATIN_INTERPRETATION_ID = "662680a7-6018-5721-9166-2f73a7ea92c6";
     private static final String CANONICAL_SPANISH_E_PHASE_CLUSTER_ID = "f4bf14a4-099c-5baf-b1b2-75b5f5a8b8d0";
+    private static final String CANONICAL_SPANISH_WHY_ID = "45767ca3-092b-5a6e-938d-72d6a08792dd";
     private static final String CANONICAL_SPANISH_READ_IDENTITY_ID = "2e40b905-27db-5976-bf4f-98c450cef0ac";
     private static final String CANONICAL_SPANISH_LISTEN_RELATIONSHIPS_ID = "31fc4aa9-6aaa-5728-9f93-4056e7524e8c";
+    private static final String CANONICAL_ITALIAN_YEAR11_ID = "a9b442ce-de30-55f4-b682-838a706f26a4";
+    private static final String CANONICAL_ITALIAN_WHY_ID = "7c89bfc4-b001-59c1-9a19-9c9e4a83fd21";
+    private static final String CANONICAL_RUSSIAN_YEAR11_ID = "749d4bf1-adae-5c7d-a3e3-bd589074454f";
+    private static final String CANONICAL_RUSSIAN_WHY_ID = "90e9542c-d052-5919-b6f7-ab461d155e75";
+    private static final String CANONICAL_POLISH_YEAR11_ID = "7253caaf-5994-558d-a03f-ff52414ddc37";
+    private static final String CANONICAL_POLISH_WHY_ID = "dbe53e98-bc35-5568-89ed-fa292051c1dd";
+    private static final String CANONICAL_CZECH_YEAR11_ID = "6d8b2fdb-af63-5110-abc2-fee9946b91ff";
+    private static final String CANONICAL_CZECH_WHY_ID = "bce55678-c4c3-52e9-9e21-97c0ba051135";
+    private static final String CANONICAL_GREEK_E_PHASE_CLUSTER_ID = "fa373166-b85a-5cbb-ac34-1f9a97e39e49";
     private static final String CANONICAL_GREEK_E_PHASE_ID = "b743649c-d25a-50b8-8302-9e972e2a72c2";
+    private static final String CANONICAL_GREEK_WHY_ID = "c8acea81-7cc7-5471-ba3d-cedde0e28bc6";
     private static final String CANONICAL_GREEK_LANGUAGE_FORMS_ID = "98a4f066-729b-517e-aa43-0975df521f1a";
     private static final String CANONICAL_GREEK_TEXT_UNDERSTANDING_ID = "2e09f77d-6e0c-5d11-aba2-f53863579a22";
     private static final String CANONICAL_GREEK_CULTURE_RELIGION_ID = "086a36a2-a443-5205-b59a-247d6bbb5d9f";
     private static final String CANONICAL_CHINESE_E_PHASE_ID = "e3a03481-cca8-510a-a559-e648aa7c2576";
+    private static final String CANONICAL_CHINESE_E_PHASE_CLUSTER_ID = "78e54102-c215-50a5-b0c2-4f1deaa7a200";
+    private static final String CANONICAL_CHINESE_WHY_ID = "d7a23bd7-81ee-5c3e-8e92-f5915ab588f2";
     private static final String CANONICAL_MUSIC_E_PHASE_ID = "c2bf22c5-4627-5e07-8e6c-d0dfaed165c0";
+    private static final String CANONICAL_MUSIC_WHY_ID = "13716bad-4406-581e-8947-a685fb4f02a4";
     private static final String CANONICAL_MUSIC_NOTATION_ID = "a51650e4-40a6-572f-821e-839e8cff83c1";
     private static final String CANONICAL_MUSIC_RHYTHM_ID = "18479156-9314-5047-94fb-f112b846ccf1";
     private static final String CANONICAL_ECONOMICS_E1_CLUSTER_ID = "464e91ba-1aa4-56d1-bc00-818b5673a163";
@@ -158,6 +194,9 @@ public class LearnerControllerIntegrationTest {
     private static final String CANONICAL_POLITICS_ECONOMICS_E_PHASE_CLUSTER_ID = "bb341613-10ba-5d25-a331-36831bf766e3";
     private static final String CANONICAL_POLITICS_ECONOMICS_SOCIETY_CLUSTER_ID = "56cc2051-994e-57cc-8cbf-2d60bcad16a3";
     private static final String CANONICAL_POLITICS_ECONOMICS_ECONOMY_CLUSTER_ID = "7fbc5949-2c8c-53e5-a97f-af3cedf020c9";
+    private static final String CANONICAL_POLITICS_ECONOMICS_WHY_ID = "b76a024a-55a6-5c77-85cd-b37ef10e5197";
+    private static final String CANONICAL_POLITICS_ECONOMICS_RULE_OF_LAW_CLUSTER_ID =
+            "8438a4b4-1275-51de-a222-c421b243d6fc";
     private static final String CANONICAL_POLITICS_ECONOMICS_SOCIETY_SYSTEMS_ID =
             "af5870d3-ceb7-59cb-a038-ee9f273f9847";
     private static final String CANONICAL_POLITICS_ECONOMICS_MARKET_FOUNDATIONS_ID =
@@ -191,8 +230,12 @@ public class LearnerControllerIntegrationTest {
     private static final String LEGACY_SPANISH_WHY_ID = "549ca3b3-28f3-42dc-ba23-eb299061ec93";
     private static final String LEGACY_GREEK_E_PHASE_ID = "bb6a397a-076b-4bdc-b2f2-7f42d11cd63e";
     private static final String LEGACY_GREEK_WHY_ID = "f4c86e99-93b1-4376-b9d0-408d611de20e";
+    private static final String LEGACY_BAYERN_GREEK_YEAR10_CLUSTER_ID = "58470b33-4e36-58a7-97f8-9c49bab419fc";
+    private static final String LEGACY_BAYERN_GREEK_WHY_ID = "8ef4c145-81b1-5c3c-81de-48dc3b49f61f";
     private static final String LEGACY_CHINESE_E_PHASE_ID = "edcbd970-9484-470a-9f59-2949fcc11775";
     private static final String LEGACY_CHINESE_WHY_ID = "e8aa1479-67e9-47bd-a248-496f1d1b8078";
+    private static final String LEGACY_BAYERN_CHINESE_E_PHASE_CLUSTER_ID = "65974585-84e6-5cef-b1e5-e3098b0e6db0";
+    private static final String LEGACY_BAYERN_CHINESE_WHY_ID = "f843da87-8244-5931-9400-aaf71e14d2fa";
     private static final String LEGACY_MUSIC_E_PHASE_ID = "1f2736e0-7ce6-4ce3-b699-c087debea900";
     private static final String LEGACY_MUSIC_WHY_ID = "b962c0be-d534-44ba-81d9-289cea06732a";
     private static final String LEGACY_ECONOMICS_E1_CLUSTER_ID = "d8960ba2-2e78-4cf8-b213-6cfcf3c4b135";
@@ -229,6 +272,30 @@ public class LearnerControllerIntegrationTest {
             "23135ca7-9f40-593a-9542-aeadb070ab92";
     private static final String CANONICAL_SEK1_CHEMISTRY_REACTIONS_CLUSTER_ID =
             "a00d302b-7762-4b9d-a6d7-de0c58b35540";
+    private static final String LEGACY_BAYERN_ENGLISH_YEAR11_CLUSTER_ID =
+            "bb82312d-72b3-581e-b2a8-4ff7d5a5c0e1";
+    private static final String LEGACY_BAYERN_ENGLISH_WHY_ID =
+            "60827dde-1e79-5d24-9199-8e3b1db2020a";
+    private static final String LEGACY_BAYERN_SPANISH_YEAR11_CLUSTER_ID =
+            "8af1354d-41d8-5247-bd13-ed687280e2df";
+    private static final String LEGACY_BAYERN_SPANISH_WHY_ID =
+            "54ebc139-4bc5-5a91-80ad-c0e0e2ddf011";
+    private static final String LEGACY_BAYERN_ITALIAN_YEAR11_CLUSTER_ID =
+            "b710be14-8d49-5f14-ab37-394b35b84e10";
+    private static final String LEGACY_BAYERN_ITALIAN_WHY_ID =
+            "fcb79ea5-e777-50a0-927a-72edc5dfb4c5";
+    private static final String LEGACY_BAYERN_RUSSIAN_YEAR11_CLUSTER_ID =
+            "3ee5e185-0780-5393-bffa-0969a0333812";
+    private static final String LEGACY_BAYERN_RUSSIAN_WHY_ID =
+            "37df8430-2f97-50f8-a852-84e0be2da04e";
+    private static final String LEGACY_BAYERN_POLISH_YEAR11_CLUSTER_ID =
+            "44807e72-96c6-576e-bd89-43954a0e281a";
+    private static final String LEGACY_BAYERN_POLISH_WHY_ID =
+            "22cafb13-f570-501c-b7e6-1455f9db04e9";
+    private static final String LEGACY_BAYERN_CZECH_YEAR11_CLUSTER_ID =
+            "fada773b-c6bb-5574-bffc-728e0cb78052";
+    private static final String LEGACY_BAYERN_CZECH_WHY_ID =
+            "c09a1fe9-529b-5022-a541-a073b28f3d76";
     private static final String LEGACY_BAYERN_BIOLOGY_ROOT_ID =
             "3684bc95-f3db-5b57-b12e-9e02de718fad";
     private static final String LEGACY_BAYERN_BIOLOGY_GENETICS_CLUSTER_ID =
@@ -243,18 +310,40 @@ public class LearnerControllerIntegrationTest {
             "eb772e65-91bb-541a-9d7a-06ab1a0b4b5e";
     private static final String LEGACY_BAYERN_INFORMATICS_INTERNET_STRUCTURE_ID =
             "0bb9320e-cfb2-5944-a4cf-2e0d26c4c9f7";
+    private static final String LEGACY_BAYERN_HISTORY_WHY_ID =
+            "7d92749a-3614-5e2b-97e4-eacd6339ccaf";
+    private static final String LEGACY_BAYERN_HISTORY_WEIMAR_CLUSTER_ID =
+            "1a54f4d8-c86d-5c19-b05f-cfbdec101df0";
     private static final String LEGACY_BAYERN_GERMAN_E_PHASE_CLUSTER_ID =
             "eeb4ac18-a545-55fd-84ed-acce0fec5947";
     private static final String LEGACY_BAYERN_GERMAN_GRAMMAR_ID =
             "e8bf22b0-cd8d-5224-869d-8b94c7fe6d33";
     private static final String LEGACY_BAYERN_GERMAN_WHY_ID =
             "2968400d-768c-517b-a598-dce1985b157b";
+    private static final String LEGACY_BAYERN_FRENCH_ROOT_ID =
+            "a2cc33f1-8751-5be7-aca0-14250f4fba33";
+    private static final String LEGACY_BAYERN_FRENCH_YEAR11_CLUSTER_ID =
+            "ef0e8cd9-7aec-57bc-af53-cebbdb628010";
+    private static final String LEGACY_BAYERN_FRENCH_WHY_ID =
+            "86e9e6b9-9859-5e8e-83ae-3e6362f476af";
+    private static final String LEGACY_BAYERN_LATIN_E_PHASE_CLUSTER_ID =
+            "b32269d2-70c1-54f9-a0df-bcbd3fbd6fe4";
+    private static final String LEGACY_BAYERN_LATIN_WHY_ID =
+            "0976df84-5b34-5c83-8b0a-ed374af4615b";
+    private static final String LEGACY_BAYERN_MUSIC_E_PHASE_CLUSTER_ID =
+            "423aa1a3-1bab-51c1-9e5f-02e027f4c50c";
+    private static final String LEGACY_BAYERN_MUSIC_WHY_ID =
+            "aac9c038-c7fd-51ff-95de-aeab19545483";
     private static final String LEGACY_BAYERN_ECONOMICS_HOUSEHOLD_CLUSTER_ID =
             "4b55574a-14fc-5f97-a9eb-682e919c18fa";
     private static final String LEGACY_BAYERN_ECONOMICS_CONSUMER_PROTECTION_ID =
             "84f15888-3d5b-54e5-ab4d-cbe007bc2570";
     private static final String LEGACY_BAYERN_ECONOMICS_WHY_ID =
             "eee51d91-0175-5a15-94ff-af7cf7484c49";
+    private static final String LEGACY_BAYERN_POLITICS_SOCIETY_WHY_ID =
+            "1311e9ab-0422-5744-b8c9-fd39bf15dd38";
+    private static final String LEGACY_BAYERN_POLITICS_SOCIETY_RULE_OF_LAW_CLUSTER_ID =
+            "ff38498e-2154-59ca-b69c-b0af47cc3d98";
     private static final String CANONICAL_BIOLOGY_Q1_CLUSTER_ID =
             "3ae95c96-e058-5045-b5e7-a613b8086f8b";
     private static final String LEGACY_BAYERN_PHYSICS_MOMENTUM_CONSERVATION_ID =
@@ -1135,6 +1224,43 @@ public class LearnerControllerIntegrationTest {
     }
 
     @Test
+    void cutoverEndpointMigratesLegacyBavariaHistoryLearnerToCanonicalGymnasiumRoot() throws Exception {
+        Learner learner = learnerRepository.findById(learnerId).orElseThrow();
+        learner.setSelectedCurriculum(BAVARIA_GYMNASIUM_HISTORY_ID);
+        learnerRepository.save(learner);
+
+        plannedGoalRepository.save(new PlannedGoal(learner, LEGACY_BAYERN_HISTORY_WEIMAR_CLUSTER_ID));
+        masteryRepository.save(new Mastery(learner, LEGACY_BAYERN_HISTORY_WHY_ID, 1.0));
+
+        HttpResponse<String> response = postCutover();
+
+        assertThat(response.statusCode()).isEqualTo(HttpStatus.OK.value());
+
+        Learner migratedLearner = learnerRepository.findById(learnerId).orElseThrow();
+        JsonNode persistedConfig = objectMapper.readTree(migratedLearner.getPersonalCurriculum());
+        JsonNode body = objectMapper.readTree(response.body());
+        JsonNode planned = body.path("goals").path("planned");
+
+        assertThat(migratedLearner.getSelectedCurriculum()).isEqualTo(CANONICAL_GYMNASIUM_ROOT_ID);
+        assertThat(body.path("curriculum").path("curriculumId").asText()).isEqualTo(CANONICAL_GYMNASIUM_ROOT_ID);
+        assertThat(persistedConfig.path(CANONICAL_GYMNASIUM_ROOT_ID).path("filterId").asText()).isEqualTo("DE-BY");
+        assertThat(persistedConfig.path(CANONICAL_HISTORY_ID).path("selected").asBoolean()).isTrue();
+        assertThat(persistedConfig.path(CANONICAL_HISTORY_ID).path("filterId").asText()).isEqualTo("GK");
+        assertThat(persistedConfig.path(CANONICAL_MATH_PILOT_ID).path("selected").asBoolean()).isFalse();
+        assertThat(persistedConfig.path(CANONICAL_PHYSICS_PILOT_ID).path("selected").asBoolean()).isFalse();
+        assertThat(persistedConfig.path(CANONICAL_GERMAN_ID).path("selected").asBoolean()).isFalse();
+        assertThat(persistedConfig.path(CANONICAL_GREEK_ID).path("selected").asBoolean()).isFalse();
+        assertThat(planned).hasSize(1);
+        assertThat(planned.get(0).path("id").asText()).isEqualTo(CANONICAL_HISTORY_WEIMAR_CLUSTER_ID);
+        assertThat(masteryRepository.findById(new com.skillpilot.backend.domain.MasteryId(
+                learnerId,
+                CANONICAL_HISTORY_WHY_ID))).isPresent();
+        assertThat(response.body())
+                .doesNotContain(LEGACY_BAYERN_HISTORY_WEIMAR_CLUSTER_ID)
+                .doesNotContain(LEGACY_BAYERN_HISTORY_WHY_ID);
+    }
+
+    @Test
     void cutoverEndpointMigratesLegacyBavariaEconomicsLearnerToCanonicalGymnasiumRoot() throws Exception {
         Learner learner = learnerRepository.findById(learnerId).orElseThrow();
         learner.setSelectedCurriculum(BAVARIA_GYMNASIUM_ECONOMICS_ID);
@@ -1169,6 +1295,41 @@ public class LearnerControllerIntegrationTest {
         assertThat(response.body())
                 .doesNotContain(LEGACY_BAYERN_ECONOMICS_HOUSEHOLD_CLUSTER_ID)
                 .doesNotContain(LEGACY_BAYERN_ECONOMICS_CONSUMER_PROTECTION_ID);
+    }
+
+    @Test
+    void cutoverEndpointMigratesLegacyBavariaPoliticsSocietyLearnerToCanonicalGymnasiumRoot() throws Exception {
+        Learner learner = learnerRepository.findById(learnerId).orElseThrow();
+        learner.setSelectedCurriculum(BAVARIA_GYMNASIUM_POLITICS_SOCIETY_ID);
+        learnerRepository.save(learner);
+
+        plannedGoalRepository.save(new PlannedGoal(learner, LEGACY_BAYERN_POLITICS_SOCIETY_RULE_OF_LAW_CLUSTER_ID));
+        masteryRepository.save(new Mastery(learner, LEGACY_BAYERN_POLITICS_SOCIETY_WHY_ID, 1.0));
+
+        HttpResponse<String> response = postCutover();
+
+        assertThat(response.statusCode()).isEqualTo(HttpStatus.OK.value());
+
+        Learner migratedLearner = learnerRepository.findById(learnerId).orElseThrow();
+        JsonNode persistedConfig = objectMapper.readTree(migratedLearner.getPersonalCurriculum());
+        JsonNode body = objectMapper.readTree(response.body());
+        JsonNode planned = body.path("goals").path("planned");
+
+        assertThat(migratedLearner.getSelectedCurriculum()).isEqualTo(CANONICAL_GYMNASIUM_ROOT_ID);
+        assertThat(body.path("curriculum").path("curriculumId").asText()).isEqualTo(CANONICAL_GYMNASIUM_ROOT_ID);
+        assertThat(persistedConfig.path(CANONICAL_GYMNASIUM_ROOT_ID).path("filterId").asText()).isEqualTo("DE-BY");
+        assertThat(persistedConfig.path(CANONICAL_POLITICS_ECONOMICS_ID).path("selected").asBoolean()).isTrue();
+        assertThat(persistedConfig.path(CANONICAL_POLITICS_ECONOMICS_ID).path("filterId").asText()).isEqualTo("GK");
+        assertThat(persistedConfig.path(CANONICAL_MATH_PILOT_ID).path("selected").asBoolean()).isFalse();
+        assertThat(persistedConfig.path(CANONICAL_ECONOMICS_ID).path("selected").asBoolean()).isFalse();
+        assertThat(planned).hasSize(1);
+        assertThat(planned.get(0).path("id").asText()).isEqualTo(CANONICAL_POLITICS_ECONOMICS_RULE_OF_LAW_CLUSTER_ID);
+        assertThat(masteryRepository.findById(new com.skillpilot.backend.domain.MasteryId(
+                learnerId,
+                CANONICAL_POLITICS_ECONOMICS_WHY_ID))).isPresent();
+        assertThat(response.body())
+                .doesNotContain(LEGACY_BAYERN_POLITICS_SOCIETY_RULE_OF_LAW_CLUSTER_ID)
+                .doesNotContain(LEGACY_BAYERN_POLITICS_SOCIETY_WHY_ID);
     }
 
     @Test
@@ -1208,6 +1369,404 @@ public class LearnerControllerIntegrationTest {
         assertThat(response.body())
                 .doesNotContain(LEGACY_BAYERN_GERMAN_E_PHASE_CLUSTER_ID)
                 .doesNotContain(LEGACY_BAYERN_GERMAN_WHY_ID);
+    }
+
+    @Test
+    void cutoverEndpointMigratesLegacyBavariaGreekLearnerToCanonicalGymnasiumRoot() throws Exception {
+        Learner learner = learnerRepository.findById(learnerId).orElseThrow();
+        learner.setSelectedCurriculum(BAVARIA_GYMNASIUM_GREEK_ID);
+        learnerRepository.save(learner);
+
+        plannedGoalRepository.save(new PlannedGoal(learner, LEGACY_BAYERN_GREEK_YEAR10_CLUSTER_ID));
+        masteryRepository.save(new Mastery(learner, LEGACY_BAYERN_GREEK_WHY_ID, 1.0));
+
+        HttpResponse<String> response = postCutover();
+
+        assertThat(response.statusCode()).isEqualTo(HttpStatus.OK.value());
+
+        Learner migratedLearner = learnerRepository.findById(learnerId).orElseThrow();
+        JsonNode persistedConfig = objectMapper.readTree(migratedLearner.getPersonalCurriculum());
+        JsonNode body = objectMapper.readTree(response.body());
+        JsonNode planned = body.path("goals").path("planned");
+
+        assertThat(migratedLearner.getSelectedCurriculum()).isEqualTo(CANONICAL_GYMNASIUM_ROOT_ID);
+        assertThat(body.path("curriculum").path("curriculumId").asText()).isEqualTo(CANONICAL_GYMNASIUM_ROOT_ID);
+        assertThat(persistedConfig.path(CANONICAL_GYMNASIUM_ROOT_ID).path("filterId").asText()).isEqualTo("DE-BY");
+        assertThat(persistedConfig.path(CANONICAL_GREEK_ID).path("selected").asBoolean()).isTrue();
+        assertThat(persistedConfig.path(CANONICAL_GREEK_ID).path("filterId").asText()).isEqualTo("GK");
+        assertThat(persistedConfig.path(CANONICAL_MATH_PILOT_ID).path("selected").asBoolean()).isFalse();
+        assertThat(persistedConfig.path(CANONICAL_PHYSICS_PILOT_ID).path("selected").asBoolean()).isFalse();
+        assertThat(persistedConfig.path(CANONICAL_GERMAN_ID).path("selected").asBoolean()).isFalse();
+        assertThat(persistedConfig.path(CANONICAL_LATIN_ID).path("selected").asBoolean()).isFalse();
+        assertThat(planned).hasSize(1);
+        assertThat(planned.get(0).path("id").asText()).isEqualTo(CANONICAL_GREEK_E_PHASE_CLUSTER_ID);
+        assertThat(masteryRepository.findById(new com.skillpilot.backend.domain.MasteryId(
+                learnerId,
+                CANONICAL_GREEK_WHY_ID))).isPresent();
+        assertThat(response.body())
+                .doesNotContain(LEGACY_BAYERN_GREEK_YEAR10_CLUSTER_ID)
+                .doesNotContain(LEGACY_BAYERN_GREEK_WHY_ID);
+    }
+
+    @Test
+    void cutoverEndpointMigratesLegacyBavariaLatinLearnerToCanonicalGymnasiumRoot() throws Exception {
+        Learner learner = learnerRepository.findById(learnerId).orElseThrow();
+        learner.setSelectedCurriculum(BAVARIA_GYMNASIUM_LATIN_ID);
+        learnerRepository.save(learner);
+
+        plannedGoalRepository.save(new PlannedGoal(learner, LEGACY_BAYERN_LATIN_E_PHASE_CLUSTER_ID));
+        masteryRepository.save(new Mastery(learner, LEGACY_BAYERN_LATIN_WHY_ID, 1.0));
+
+        HttpResponse<String> response = postCutover();
+
+        assertThat(response.statusCode()).isEqualTo(HttpStatus.OK.value());
+
+        Learner migratedLearner = learnerRepository.findById(learnerId).orElseThrow();
+        JsonNode persistedConfig = objectMapper.readTree(migratedLearner.getPersonalCurriculum());
+        JsonNode body = objectMapper.readTree(response.body());
+        JsonNode planned = body.path("goals").path("planned");
+
+        assertThat(migratedLearner.getSelectedCurriculum()).isEqualTo(CANONICAL_GYMNASIUM_ROOT_ID);
+        assertThat(body.path("curriculum").path("curriculumId").asText()).isEqualTo(CANONICAL_GYMNASIUM_ROOT_ID);
+        assertThat(persistedConfig.path(CANONICAL_GYMNASIUM_ROOT_ID).path("filterId").asText()).isEqualTo("DE-BY");
+        assertThat(persistedConfig.path(CANONICAL_LATIN_ID).path("selected").asBoolean()).isTrue();
+        assertThat(persistedConfig.path(CANONICAL_LATIN_ID).path("filterId").asText()).isEqualTo("GK");
+        assertThat(persistedConfig.path(CANONICAL_MATH_PILOT_ID).path("selected").asBoolean()).isFalse();
+        assertThat(persistedConfig.path(CANONICAL_PHYSICS_PILOT_ID).path("selected").asBoolean()).isFalse();
+        assertThat(persistedConfig.path(CANONICAL_GERMAN_ID).path("selected").asBoolean()).isFalse();
+        assertThat(persistedConfig.path(CANONICAL_ECONOMICS_ID).path("selected").asBoolean()).isFalse();
+        assertThat(planned).hasSize(1);
+        assertThat(planned.get(0).path("id").asText()).isEqualTo(CANONICAL_LATIN_E_PHASE_CLUSTER_ID);
+        assertThat(masteryRepository.findById(new com.skillpilot.backend.domain.MasteryId(
+                learnerId,
+                CANONICAL_LATIN_WHY_ID))).isPresent();
+        assertThat(response.body())
+                .doesNotContain(LEGACY_BAYERN_LATIN_E_PHASE_CLUSTER_ID)
+                .doesNotContain(LEGACY_BAYERN_LATIN_WHY_ID);
+    }
+
+    @Test
+    void cutoverEndpointMigratesLegacyBavariaMusicLearnerToCanonicalGymnasiumRoot() throws Exception {
+        Learner learner = learnerRepository.findById(learnerId).orElseThrow();
+        learner.setSelectedCurriculum(BAVARIA_GYMNASIUM_MUSIC_ID);
+        learnerRepository.save(learner);
+
+        plannedGoalRepository.save(new PlannedGoal(learner, LEGACY_BAYERN_MUSIC_E_PHASE_CLUSTER_ID));
+        masteryRepository.save(new Mastery(learner, LEGACY_BAYERN_MUSIC_WHY_ID, 1.0));
+
+        HttpResponse<String> response = postCutover();
+
+        assertThat(response.statusCode()).isEqualTo(HttpStatus.OK.value());
+
+        Learner migratedLearner = learnerRepository.findById(learnerId).orElseThrow();
+        JsonNode persistedConfig = objectMapper.readTree(migratedLearner.getPersonalCurriculum());
+        JsonNode body = objectMapper.readTree(response.body());
+        JsonNode planned = body.path("goals").path("planned");
+
+        assertThat(migratedLearner.getSelectedCurriculum()).isEqualTo(CANONICAL_GYMNASIUM_ROOT_ID);
+        assertThat(body.path("curriculum").path("curriculumId").asText()).isEqualTo(CANONICAL_GYMNASIUM_ROOT_ID);
+        assertThat(persistedConfig.path(CANONICAL_GYMNASIUM_ROOT_ID).path("filterId").asText()).isEqualTo("DE-BY");
+        assertThat(persistedConfig.path(CANONICAL_MUSIC_ID).path("selected").asBoolean()).isTrue();
+        assertThat(persistedConfig.path(CANONICAL_MUSIC_ID).path("filterId").asText()).isEqualTo("GK");
+        assertThat(persistedConfig.path(CANONICAL_MATH_PILOT_ID).path("selected").asBoolean()).isFalse();
+        assertThat(persistedConfig.path(CANONICAL_PHYSICS_PILOT_ID).path("selected").asBoolean()).isFalse();
+        assertThat(persistedConfig.path(CANONICAL_GERMAN_ID).path("selected").asBoolean()).isFalse();
+        assertThat(persistedConfig.path(CANONICAL_LATIN_ID).path("selected").asBoolean()).isFalse();
+        assertThat(planned).hasSize(1);
+        assertThat(planned.get(0).path("id").asText()).isEqualTo(CANONICAL_MUSIC_E_PHASE_ID);
+        assertThat(masteryRepository.findById(new com.skillpilot.backend.domain.MasteryId(
+                learnerId,
+                CANONICAL_MUSIC_WHY_ID))).isPresent();
+        assertThat(response.body())
+                .doesNotContain(LEGACY_BAYERN_MUSIC_E_PHASE_CLUSTER_ID)
+                .doesNotContain(LEGACY_BAYERN_MUSIC_WHY_ID);
+    }
+
+    @Test
+    void cutoverEndpointMigratesLegacyBavariaEnglishLearnerToCanonicalGymnasiumRoot() throws Exception {
+        Learner learner = learnerRepository.findById(learnerId).orElseThrow();
+        learner.setSelectedCurriculum(BAVARIA_GYMNASIUM_ENGLISH_ID);
+        learnerRepository.save(learner);
+
+        plannedGoalRepository.save(new PlannedGoal(learner, LEGACY_BAYERN_ENGLISH_YEAR11_CLUSTER_ID));
+        masteryRepository.save(new Mastery(learner, LEGACY_BAYERN_ENGLISH_WHY_ID, 1.0));
+
+        HttpResponse<String> response = postCutover();
+
+        assertThat(response.statusCode()).isEqualTo(HttpStatus.OK.value());
+
+        Learner migratedLearner = learnerRepository.findById(learnerId).orElseThrow();
+        JsonNode persistedConfig = objectMapper.readTree(migratedLearner.getPersonalCurriculum());
+        JsonNode body = objectMapper.readTree(response.body());
+        JsonNode planned = body.path("goals").path("planned");
+
+        assertThat(migratedLearner.getSelectedCurriculum()).isEqualTo(CANONICAL_GYMNASIUM_ROOT_ID);
+        assertThat(body.path("curriculum").path("curriculumId").asText()).isEqualTo(CANONICAL_GYMNASIUM_ROOT_ID);
+        assertThat(persistedConfig.path(CANONICAL_GYMNASIUM_ROOT_ID).path("filterId").asText()).isEqualTo("DE-BY");
+        assertThat(persistedConfig.path(CANONICAL_ENGLISH_ID).path("selected").asBoolean()).isTrue();
+        assertThat(persistedConfig.path(CANONICAL_ENGLISH_ID).path("filterId").asText()).isEqualTo("GK");
+        assertThat(persistedConfig.path(CANONICAL_GERMAN_ID).path("selected").asBoolean()).isFalse();
+        assertThat(persistedConfig.path(CANONICAL_FRENCH_ID).path("selected").asBoolean()).isFalse();
+        assertThat(persistedConfig.path(CANONICAL_GREEK_ID).path("selected").asBoolean()).isFalse();
+        assertThat(planned).hasSize(1);
+        assertThat(planned.get(0).path("id").asText()).isEqualTo(CANONICAL_ENGLISH_E_PHASE_CLUSTER_ID);
+        assertThat(masteryRepository.findById(new com.skillpilot.backend.domain.MasteryId(
+                learnerId,
+                CANONICAL_ENGLISH_WHY_ID))).isPresent();
+        assertThat(response.body())
+                .doesNotContain(LEGACY_BAYERN_ENGLISH_YEAR11_CLUSTER_ID)
+                .doesNotContain(LEGACY_BAYERN_ENGLISH_WHY_ID);
+    }
+
+    @Test
+    void cutoverEndpointMigratesLegacyBavariaFrenchLearnerToCanonicalGymnasiumRoot() throws Exception {
+        Learner learner = learnerRepository.findById(learnerId).orElseThrow();
+        learner.setSelectedCurriculum(BAVARIA_GYMNASIUM_FRENCH_ID);
+        learnerRepository.save(learner);
+
+        plannedGoalRepository.save(new PlannedGoal(learner, LEGACY_BAYERN_FRENCH_YEAR11_CLUSTER_ID));
+        masteryRepository.save(new Mastery(learner, LEGACY_BAYERN_FRENCH_WHY_ID, 1.0));
+
+        HttpResponse<String> response = postCutover();
+
+        assertThat(response.statusCode()).isEqualTo(HttpStatus.OK.value());
+
+        Learner migratedLearner = learnerRepository.findById(learnerId).orElseThrow();
+        JsonNode persistedConfig = objectMapper.readTree(migratedLearner.getPersonalCurriculum());
+        JsonNode body = objectMapper.readTree(response.body());
+        JsonNode planned = body.path("goals").path("planned");
+
+        assertThat(migratedLearner.getSelectedCurriculum()).isEqualTo(CANONICAL_GYMNASIUM_ROOT_ID);
+        assertThat(body.path("curriculum").path("curriculumId").asText()).isEqualTo(CANONICAL_GYMNASIUM_ROOT_ID);
+        assertThat(persistedConfig.path(CANONICAL_GYMNASIUM_ROOT_ID).path("filterId").asText()).isEqualTo("DE-BY");
+        assertThat(persistedConfig.path(CANONICAL_FRENCH_ID).path("selected").asBoolean()).isTrue();
+        assertThat(persistedConfig.path(CANONICAL_FRENCH_ID).path("filterId").asText()).isEqualTo("GK");
+        assertThat(persistedConfig.path(CANONICAL_GERMAN_ID).path("selected").asBoolean()).isFalse();
+        assertThat(persistedConfig.path(CANONICAL_GREEK_ID).path("selected").asBoolean()).isFalse();
+        assertThat(persistedConfig.path(CANONICAL_LATIN_ID).path("selected").asBoolean()).isFalse();
+        assertThat(planned).hasSize(1);
+        assertThat(planned.get(0).path("id").asText()).isEqualTo(CANONICAL_FRENCH_E_PHASE_CLUSTER_ID);
+        assertThat(masteryRepository.findById(new com.skillpilot.backend.domain.MasteryId(
+                learnerId,
+                CANONICAL_FRENCH_WHY_ID))).isPresent();
+        assertThat(response.body())
+                .doesNotContain(LEGACY_BAYERN_FRENCH_YEAR11_CLUSTER_ID)
+                .doesNotContain(LEGACY_BAYERN_FRENCH_WHY_ID);
+    }
+
+    @Test
+    void cutoverEndpointMigratesLegacyBavariaSpanishLearnerToCanonicalGymnasiumRoot() throws Exception {
+        Learner learner = learnerRepository.findById(learnerId).orElseThrow();
+        learner.setSelectedCurriculum(BAVARIA_GYMNASIUM_SPANISH_ID);
+        learnerRepository.save(learner);
+
+        plannedGoalRepository.save(new PlannedGoal(learner, LEGACY_BAYERN_SPANISH_YEAR11_CLUSTER_ID));
+        masteryRepository.save(new Mastery(learner, LEGACY_BAYERN_SPANISH_WHY_ID, 1.0));
+
+        HttpResponse<String> response = postCutover();
+
+        assertThat(response.statusCode()).isEqualTo(HttpStatus.OK.value());
+
+        Learner migratedLearner = learnerRepository.findById(learnerId).orElseThrow();
+        JsonNode persistedConfig = objectMapper.readTree(migratedLearner.getPersonalCurriculum());
+        JsonNode body = objectMapper.readTree(response.body());
+        JsonNode planned = body.path("goals").path("planned");
+
+        assertThat(migratedLearner.getSelectedCurriculum()).isEqualTo(CANONICAL_GYMNASIUM_ROOT_ID);
+        assertThat(body.path("curriculum").path("curriculumId").asText()).isEqualTo(CANONICAL_GYMNASIUM_ROOT_ID);
+        assertThat(persistedConfig.path(CANONICAL_GYMNASIUM_ROOT_ID).path("filterId").asText()).isEqualTo("DE-BY");
+        assertThat(persistedConfig.path(CANONICAL_SPANISH_ID).path("selected").asBoolean()).isTrue();
+        assertThat(persistedConfig.path(CANONICAL_SPANISH_ID).path("filterId").asText()).isEqualTo("GK");
+        assertThat(persistedConfig.path(CANONICAL_ENGLISH_ID).path("selected").asBoolean()).isFalse();
+        assertThat(persistedConfig.path(CANONICAL_FRENCH_ID).path("selected").asBoolean()).isFalse();
+        assertThat(persistedConfig.path(CANONICAL_LATIN_ID).path("selected").asBoolean()).isFalse();
+        assertThat(planned).hasSize(1);
+        assertThat(planned.get(0).path("id").asText()).isEqualTo(CANONICAL_SPANISH_E_PHASE_CLUSTER_ID);
+        assertThat(masteryRepository.findById(new com.skillpilot.backend.domain.MasteryId(
+                learnerId,
+                CANONICAL_SPANISH_WHY_ID))).isPresent();
+        assertThat(response.body())
+                .doesNotContain(LEGACY_BAYERN_SPANISH_YEAR11_CLUSTER_ID)
+                .doesNotContain(LEGACY_BAYERN_SPANISH_WHY_ID);
+    }
+
+    @Test
+    void cutoverEndpointMigratesLegacyBavariaItalianLearnerToCanonicalGymnasiumRoot() throws Exception {
+        Learner learner = learnerRepository.findById(learnerId).orElseThrow();
+        learner.setSelectedCurriculum(BAVARIA_GYMNASIUM_ITALIAN_ID);
+        learnerRepository.save(learner);
+
+        plannedGoalRepository.save(new PlannedGoal(learner, LEGACY_BAYERN_ITALIAN_YEAR11_CLUSTER_ID));
+        masteryRepository.save(new Mastery(learner, LEGACY_BAYERN_ITALIAN_WHY_ID, 1.0));
+
+        HttpResponse<String> response = postCutover();
+
+        assertThat(response.statusCode()).isEqualTo(HttpStatus.OK.value());
+
+        Learner migratedLearner = learnerRepository.findById(learnerId).orElseThrow();
+        JsonNode persistedConfig = objectMapper.readTree(migratedLearner.getPersonalCurriculum());
+        JsonNode body = objectMapper.readTree(response.body());
+        JsonNode planned = body.path("goals").path("planned");
+
+        assertThat(migratedLearner.getSelectedCurriculum()).isEqualTo(CANONICAL_GYMNASIUM_ROOT_ID);
+        assertThat(body.path("curriculum").path("curriculumId").asText()).isEqualTo(CANONICAL_GYMNASIUM_ROOT_ID);
+        assertThat(persistedConfig.path(CANONICAL_GYMNASIUM_ROOT_ID).path("filterId").asText()).isEqualTo("DE-BY");
+        assertThat(persistedConfig.path(CANONICAL_ITALIAN_ID).path("selected").asBoolean()).isTrue();
+        assertThat(persistedConfig.path(CANONICAL_ITALIAN_ID).path("filterId").asText()).isEqualTo("GK");
+        assertThat(persistedConfig.path(CANONICAL_SPANISH_ID).path("selected").asBoolean()).isFalse();
+        assertThat(persistedConfig.path(CANONICAL_FRENCH_ID).path("selected").asBoolean()).isFalse();
+        assertThat(persistedConfig.path(CANONICAL_LATIN_ID).path("selected").asBoolean()).isFalse();
+        assertThat(planned).hasSize(1);
+        assertThat(planned.get(0).path("id").asText()).isEqualTo(CANONICAL_ITALIAN_YEAR11_ID);
+        assertThat(masteryRepository.findById(new com.skillpilot.backend.domain.MasteryId(
+                learnerId,
+                CANONICAL_ITALIAN_WHY_ID))).isPresent();
+        assertThat(response.body())
+                .doesNotContain(LEGACY_BAYERN_ITALIAN_YEAR11_CLUSTER_ID)
+                .doesNotContain(LEGACY_BAYERN_ITALIAN_WHY_ID);
+    }
+
+    @Test
+    void cutoverEndpointMigratesLegacyBavariaRussianLearnerToCanonicalGymnasiumRoot() throws Exception {
+        Learner learner = learnerRepository.findById(learnerId).orElseThrow();
+        learner.setSelectedCurriculum(BAVARIA_GYMNASIUM_RUSSIAN_ID);
+        learnerRepository.save(learner);
+
+        plannedGoalRepository.save(new PlannedGoal(learner, LEGACY_BAYERN_RUSSIAN_YEAR11_CLUSTER_ID));
+        masteryRepository.save(new Mastery(learner, LEGACY_BAYERN_RUSSIAN_WHY_ID, 1.0));
+
+        HttpResponse<String> response = postCutover();
+
+        assertThat(response.statusCode()).isEqualTo(HttpStatus.OK.value());
+
+        Learner migratedLearner = learnerRepository.findById(learnerId).orElseThrow();
+        JsonNode persistedConfig = objectMapper.readTree(migratedLearner.getPersonalCurriculum());
+        JsonNode body = objectMapper.readTree(response.body());
+        JsonNode planned = body.path("goals").path("planned");
+
+        assertThat(migratedLearner.getSelectedCurriculum()).isEqualTo(CANONICAL_GYMNASIUM_ROOT_ID);
+        assertThat(body.path("curriculum").path("curriculumId").asText()).isEqualTo(CANONICAL_GYMNASIUM_ROOT_ID);
+        assertThat(persistedConfig.path(CANONICAL_GYMNASIUM_ROOT_ID).path("filterId").asText()).isEqualTo("DE-BY");
+        assertThat(persistedConfig.path(CANONICAL_RUSSIAN_ID).path("selected").asBoolean()).isTrue();
+        assertThat(persistedConfig.path(CANONICAL_RUSSIAN_ID).path("filterId").asText()).isEqualTo("GK");
+        assertThat(persistedConfig.path(CANONICAL_ITALIAN_ID).path("selected").asBoolean()).isFalse();
+        assertThat(persistedConfig.path(CANONICAL_SPANISH_ID).path("selected").asBoolean()).isFalse();
+        assertThat(persistedConfig.path(CANONICAL_FRENCH_ID).path("selected").asBoolean()).isFalse();
+        assertThat(planned).hasSize(1);
+        assertThat(planned.get(0).path("id").asText()).isEqualTo(CANONICAL_RUSSIAN_YEAR11_ID);
+        assertThat(masteryRepository.findById(new com.skillpilot.backend.domain.MasteryId(
+                learnerId,
+                CANONICAL_RUSSIAN_WHY_ID))).isPresent();
+        assertThat(response.body())
+                .doesNotContain(LEGACY_BAYERN_RUSSIAN_YEAR11_CLUSTER_ID)
+                .doesNotContain(LEGACY_BAYERN_RUSSIAN_WHY_ID);
+    }
+
+    @Test
+    void cutoverEndpointMigratesLegacyBavariaPolishLearnerToCanonicalGymnasiumRoot() throws Exception {
+        Learner learner = learnerRepository.findById(learnerId).orElseThrow();
+        learner.setSelectedCurriculum(BAVARIA_GYMNASIUM_POLISH_ID);
+        learnerRepository.save(learner);
+
+        plannedGoalRepository.save(new PlannedGoal(learner, LEGACY_BAYERN_POLISH_YEAR11_CLUSTER_ID));
+        masteryRepository.save(new Mastery(learner, LEGACY_BAYERN_POLISH_WHY_ID, 1.0));
+
+        HttpResponse<String> response = postCutover();
+
+        assertThat(response.statusCode()).isEqualTo(HttpStatus.OK.value());
+
+        Learner migratedLearner = learnerRepository.findById(learnerId).orElseThrow();
+        JsonNode persistedConfig = objectMapper.readTree(migratedLearner.getPersonalCurriculum());
+        JsonNode body = objectMapper.readTree(response.body());
+        JsonNode planned = body.path("goals").path("planned");
+
+        assertThat(migratedLearner.getSelectedCurriculum()).isEqualTo(CANONICAL_GYMNASIUM_ROOT_ID);
+        assertThat(body.path("curriculum").path("curriculumId").asText()).isEqualTo(CANONICAL_GYMNASIUM_ROOT_ID);
+        assertThat(persistedConfig.path(CANONICAL_GYMNASIUM_ROOT_ID).path("filterId").asText()).isEqualTo("DE-BY");
+        assertThat(persistedConfig.path(CANONICAL_POLISH_ID).path("selected").asBoolean()).isTrue();
+        assertThat(persistedConfig.path(CANONICAL_POLISH_ID).path("filterId").asText()).isEqualTo("GK");
+        assertThat(persistedConfig.path(CANONICAL_RUSSIAN_ID).path("selected").asBoolean()).isFalse();
+        assertThat(persistedConfig.path(CANONICAL_ITALIAN_ID).path("selected").asBoolean()).isFalse();
+        assertThat(planned).hasSize(1);
+        assertThat(planned.get(0).path("id").asText()).isEqualTo(CANONICAL_POLISH_YEAR11_ID);
+        assertThat(masteryRepository.findById(new com.skillpilot.backend.domain.MasteryId(
+                learnerId,
+                CANONICAL_POLISH_WHY_ID))).isPresent();
+        assertThat(response.body())
+                .doesNotContain(LEGACY_BAYERN_POLISH_YEAR11_CLUSTER_ID)
+                .doesNotContain(LEGACY_BAYERN_POLISH_WHY_ID);
+    }
+
+    @Test
+    void cutoverEndpointMigratesLegacyBavariaCzechLearnerToCanonicalGymnasiumRoot() throws Exception {
+        Learner learner = learnerRepository.findById(learnerId).orElseThrow();
+        learner.setSelectedCurriculum(BAVARIA_GYMNASIUM_CZECH_ID);
+        learnerRepository.save(learner);
+
+        plannedGoalRepository.save(new PlannedGoal(learner, LEGACY_BAYERN_CZECH_YEAR11_CLUSTER_ID));
+        masteryRepository.save(new Mastery(learner, LEGACY_BAYERN_CZECH_WHY_ID, 1.0));
+
+        HttpResponse<String> response = postCutover();
+
+        assertThat(response.statusCode()).isEqualTo(HttpStatus.OK.value());
+
+        Learner migratedLearner = learnerRepository.findById(learnerId).orElseThrow();
+        JsonNode persistedConfig = objectMapper.readTree(migratedLearner.getPersonalCurriculum());
+        JsonNode body = objectMapper.readTree(response.body());
+        JsonNode planned = body.path("goals").path("planned");
+
+        assertThat(migratedLearner.getSelectedCurriculum()).isEqualTo(CANONICAL_GYMNASIUM_ROOT_ID);
+        assertThat(body.path("curriculum").path("curriculumId").asText()).isEqualTo(CANONICAL_GYMNASIUM_ROOT_ID);
+        assertThat(persistedConfig.path(CANONICAL_GYMNASIUM_ROOT_ID).path("filterId").asText()).isEqualTo("DE-BY");
+        assertThat(persistedConfig.path(CANONICAL_CZECH_ID).path("selected").asBoolean()).isTrue();
+        assertThat(persistedConfig.path(CANONICAL_CZECH_ID).path("filterId").asText()).isEqualTo("GK");
+        assertThat(persistedConfig.path(CANONICAL_POLISH_ID).path("selected").asBoolean()).isFalse();
+        assertThat(persistedConfig.path(CANONICAL_RUSSIAN_ID).path("selected").asBoolean()).isFalse();
+        assertThat(planned).hasSize(1);
+        assertThat(planned.get(0).path("id").asText()).isEqualTo(CANONICAL_CZECH_YEAR11_ID);
+        assertThat(masteryRepository.findById(new com.skillpilot.backend.domain.MasteryId(
+                learnerId,
+                CANONICAL_CZECH_WHY_ID))).isPresent();
+        assertThat(response.body())
+                .doesNotContain(LEGACY_BAYERN_CZECH_YEAR11_CLUSTER_ID)
+                .doesNotContain(LEGACY_BAYERN_CZECH_WHY_ID);
+    }
+
+    @Test
+    void cutoverEndpointMigratesLegacyBavariaChineseLearnerToCanonicalGymnasiumRoot() throws Exception {
+        Learner learner = learnerRepository.findById(learnerId).orElseThrow();
+        learner.setSelectedCurriculum(BAVARIA_GYMNASIUM_CHINESE_ID);
+        learnerRepository.save(learner);
+
+        plannedGoalRepository.save(new PlannedGoal(learner, LEGACY_BAYERN_CHINESE_E_PHASE_CLUSTER_ID));
+        masteryRepository.save(new Mastery(learner, LEGACY_BAYERN_CHINESE_WHY_ID, 1.0));
+
+        HttpResponse<String> response = postCutover();
+
+        assertThat(response.statusCode()).isEqualTo(HttpStatus.OK.value());
+
+        Learner migratedLearner = learnerRepository.findById(learnerId).orElseThrow();
+        JsonNode persistedConfig = objectMapper.readTree(migratedLearner.getPersonalCurriculum());
+        JsonNode body = objectMapper.readTree(response.body());
+        JsonNode planned = body.path("goals").path("planned");
+
+        assertThat(migratedLearner.getSelectedCurriculum()).isEqualTo(CANONICAL_GYMNASIUM_ROOT_ID);
+        assertThat(body.path("curriculum").path("curriculumId").asText()).isEqualTo(CANONICAL_GYMNASIUM_ROOT_ID);
+        assertThat(persistedConfig.path(CANONICAL_GYMNASIUM_ROOT_ID).path("filterId").asText()).isEqualTo("DE-BY");
+        assertThat(persistedConfig.path(CANONICAL_CHINESE_ID).path("selected").asBoolean()).isTrue();
+        assertThat(persistedConfig.path(CANONICAL_CHINESE_ID).path("filterId").asText()).isEqualTo("GK");
+        assertThat(persistedConfig.path(CANONICAL_MATH_PILOT_ID).path("selected").asBoolean()).isFalse();
+        assertThat(persistedConfig.path(CANONICAL_PHYSICS_PILOT_ID).path("selected").asBoolean()).isFalse();
+        assertThat(persistedConfig.path(CANONICAL_MUSIC_ID).path("selected").asBoolean()).isFalse();
+        assertThat(persistedConfig.path(CANONICAL_LATIN_ID).path("selected").asBoolean()).isFalse();
+        assertThat(planned).hasSize(1);
+        assertThat(planned.get(0).path("id").asText()).isEqualTo(CANONICAL_CHINESE_E_PHASE_CLUSTER_ID);
+        assertThat(masteryRepository.findById(new com.skillpilot.backend.domain.MasteryId(
+                learnerId,
+                CANONICAL_CHINESE_WHY_ID))).isPresent();
+        assertThat(response.body())
+                .doesNotContain(LEGACY_BAYERN_CHINESE_E_PHASE_CLUSTER_ID)
+                .doesNotContain(LEGACY_BAYERN_CHINESE_WHY_ID);
     }
 
     @Test
@@ -4273,6 +4832,630 @@ public class LearnerControllerIntegrationTest {
         assertThat(masteryRepository.findById(new com.skillpilot.backend.domain.MasteryId(
                 "readonly-bavaria-german-ui-config",
                 LEGACY_BAYERN_GERMAN_WHY_ID))).isEmpty();
+    }
+
+    @Test
+    void bavariaHistoryRetirementSessionRejectsUiCurriculumAndAiMasteryWrites() throws Exception {
+        Learner learner = new Learner();
+        learner.setSkillpilotId("readonly-bavaria-history-ui-config");
+        learner.setSelectedCurriculum(BAVARIA_GYMNASIUM_HISTORY_ID);
+        learnerRepository.save(learner);
+
+        HttpResponse<String> curriculumResponse = sendJsonRequest(
+                "PUT",
+                "/api/ui/learners/readonly-bavaria-history-ui-config/curriculum",
+                """
+                        {
+                          "curriculumId": "%s"
+                        }
+                        """.formatted(CANONICAL_GYMNASIUM_ROOT_ID));
+        assertThat(curriculumResponse.statusCode()).isEqualTo(HttpStatus.CONFLICT.value());
+        assertThat(
+                learnerRepository.findById("readonly-bavaria-history-ui-config").orElseThrow()
+                        .getSelectedCurriculum())
+                .isEqualTo(BAVARIA_GYMNASIUM_HISTORY_ID);
+
+        HttpResponse<String> personalCurriculumResponse = sendJsonRequest(
+                "PUT",
+                "/api/ui/learners/readonly-bavaria-history-ui-config/personal-curriculum",
+                """
+                        {
+                          "%s": {
+                            "selected": true,
+                            "filterId": "DE-BY"
+                          }
+                        }
+                        """.formatted(CANONICAL_GYMNASIUM_ROOT_ID));
+        assertThat(personalCurriculumResponse.statusCode()).isEqualTo(HttpStatus.CONFLICT.value());
+
+        HttpResponse<String> masteryResponse = sendJsonRequest(
+                "POST",
+                "/api/ai/en/learners/readonly-bavaria-history-ui-config/mastery",
+                """
+                        {
+                          "goalId": "%s"
+                        }
+                        """.formatted(LEGACY_BAYERN_HISTORY_WHY_ID));
+        assertThat(masteryResponse.statusCode()).isEqualTo(HttpStatus.CONFLICT.value());
+        assertThat(masteryRepository.findById(new com.skillpilot.backend.domain.MasteryId(
+                "readonly-bavaria-history-ui-config",
+                LEGACY_BAYERN_HISTORY_WHY_ID))).isEmpty();
+    }
+
+    @Test
+    void bavariaPoliticsSocietyRetirementSessionRejectsUiCurriculumAndAiMasteryWrites() throws Exception {
+        Learner learner = new Learner();
+        learner.setSkillpilotId("readonly-bavaria-politics-society-ui-config");
+        learner.setSelectedCurriculum(BAVARIA_GYMNASIUM_POLITICS_SOCIETY_ID);
+        learnerRepository.save(learner);
+
+        HttpResponse<String> curriculumResponse = sendJsonRequest(
+                "PUT",
+                "/api/ui/learners/readonly-bavaria-politics-society-ui-config/curriculum",
+                """
+                        {
+                          "curriculumId": "%s"
+                        }
+                        """.formatted(CANONICAL_GYMNASIUM_ROOT_ID));
+        assertThat(curriculumResponse.statusCode()).isEqualTo(HttpStatus.CONFLICT.value());
+        assertThat(
+                learnerRepository.findById("readonly-bavaria-politics-society-ui-config").orElseThrow()
+                        .getSelectedCurriculum())
+                .isEqualTo(BAVARIA_GYMNASIUM_POLITICS_SOCIETY_ID);
+
+        HttpResponse<String> personalCurriculumResponse = sendJsonRequest(
+                "PUT",
+                "/api/ui/learners/readonly-bavaria-politics-society-ui-config/personal-curriculum",
+                """
+                        {
+                          "%s": {
+                            "selected": true,
+                            "filterId": "DE-BY"
+                          }
+                        }
+                        """.formatted(CANONICAL_GYMNASIUM_ROOT_ID));
+        assertThat(personalCurriculumResponse.statusCode()).isEqualTo(HttpStatus.CONFLICT.value());
+
+        HttpResponse<String> masteryResponse = sendJsonRequest(
+                "POST",
+                "/api/ai/en/learners/readonly-bavaria-politics-society-ui-config/mastery",
+                """
+                        {
+                          "goalId": "%s"
+                        }
+                        """.formatted(LEGACY_BAYERN_POLITICS_SOCIETY_WHY_ID));
+        assertThat(masteryResponse.statusCode()).isEqualTo(HttpStatus.CONFLICT.value());
+        assertThat(masteryRepository.findById(new com.skillpilot.backend.domain.MasteryId(
+                "readonly-bavaria-politics-society-ui-config",
+                LEGACY_BAYERN_POLITICS_SOCIETY_WHY_ID))).isEmpty();
+    }
+
+    @Test
+    void bavariaGreekRetirementSessionRejectsUiCurriculumAndAiMasteryWrites() throws Exception {
+        Learner learner = new Learner();
+        learner.setSkillpilotId("readonly-bavaria-greek-ui-config");
+        learner.setSelectedCurriculum(BAVARIA_GYMNASIUM_GREEK_ID);
+        learnerRepository.save(learner);
+
+        HttpResponse<String> curriculumResponse = sendJsonRequest(
+                "PUT",
+                "/api/ui/learners/readonly-bavaria-greek-ui-config/curriculum",
+                """
+                        {
+                          "curriculumId": "%s"
+                        }
+                        """.formatted(CANONICAL_GYMNASIUM_ROOT_ID));
+        assertThat(curriculumResponse.statusCode()).isEqualTo(HttpStatus.CONFLICT.value());
+        assertThat(
+                learnerRepository.findById("readonly-bavaria-greek-ui-config").orElseThrow()
+                        .getSelectedCurriculum())
+                .isEqualTo(BAVARIA_GYMNASIUM_GREEK_ID);
+
+        HttpResponse<String> personalCurriculumResponse = sendJsonRequest(
+                "PUT",
+                "/api/ui/learners/readonly-bavaria-greek-ui-config/personal-curriculum",
+                """
+                        {
+                          "%s": {
+                            "selected": true,
+                            "filterId": "DE-BY"
+                          }
+                        }
+                        """.formatted(CANONICAL_GYMNASIUM_ROOT_ID));
+        assertThat(personalCurriculumResponse.statusCode()).isEqualTo(HttpStatus.CONFLICT.value());
+
+        HttpResponse<String> masteryResponse = sendJsonRequest(
+                "POST",
+                "/api/ai/en/learners/readonly-bavaria-greek-ui-config/mastery",
+                """
+                        {
+                          "goalId": "%s"
+                        }
+                        """.formatted(LEGACY_BAYERN_GREEK_WHY_ID));
+        assertThat(masteryResponse.statusCode()).isEqualTo(HttpStatus.CONFLICT.value());
+        assertThat(masteryRepository.findById(new com.skillpilot.backend.domain.MasteryId(
+                "readonly-bavaria-greek-ui-config",
+                LEGACY_BAYERN_GREEK_WHY_ID))).isEmpty();
+    }
+
+    @Test
+    void bavariaLatinRetirementSessionRejectsUiCurriculumAndAiMasteryWrites() throws Exception {
+        Learner learner = new Learner();
+        learner.setSkillpilotId("readonly-bavaria-latin-ui-config");
+        learner.setSelectedCurriculum(BAVARIA_GYMNASIUM_LATIN_ID);
+        learnerRepository.save(learner);
+
+        HttpResponse<String> curriculumResponse = sendJsonRequest(
+                "PUT",
+                "/api/ui/learners/readonly-bavaria-latin-ui-config/curriculum",
+                """
+                        {
+                          "curriculumId": "%s"
+                        }
+                        """.formatted(CANONICAL_GYMNASIUM_ROOT_ID));
+        assertThat(curriculumResponse.statusCode()).isEqualTo(HttpStatus.CONFLICT.value());
+        assertThat(
+                learnerRepository.findById("readonly-bavaria-latin-ui-config").orElseThrow()
+                        .getSelectedCurriculum())
+                .isEqualTo(BAVARIA_GYMNASIUM_LATIN_ID);
+
+        HttpResponse<String> personalCurriculumResponse = sendJsonRequest(
+                "PUT",
+                "/api/ui/learners/readonly-bavaria-latin-ui-config/personal-curriculum",
+                """
+                        {
+                          "%s": {
+                            "selected": true,
+                            "filterId": "DE-BY"
+                          }
+                        }
+                        """.formatted(CANONICAL_GYMNASIUM_ROOT_ID));
+        assertThat(personalCurriculumResponse.statusCode()).isEqualTo(HttpStatus.CONFLICT.value());
+
+        HttpResponse<String> masteryResponse = sendJsonRequest(
+                "POST",
+                "/api/ai/en/learners/readonly-bavaria-latin-ui-config/mastery",
+                """
+                        {
+                          "goalId": "%s"
+                        }
+                        """.formatted(LEGACY_BAYERN_LATIN_WHY_ID));
+        assertThat(masteryResponse.statusCode()).isEqualTo(HttpStatus.CONFLICT.value());
+        assertThat(masteryRepository.findById(new com.skillpilot.backend.domain.MasteryId(
+                "readonly-bavaria-latin-ui-config",
+                LEGACY_BAYERN_LATIN_WHY_ID))).isEmpty();
+    }
+
+    @Test
+    void bavariaMusicRetirementSessionRejectsUiCurriculumAndAiMasteryWrites() throws Exception {
+        Learner learner = new Learner();
+        learner.setSkillpilotId("readonly-bavaria-music-ui-config");
+        learner.setSelectedCurriculum(BAVARIA_GYMNASIUM_MUSIC_ID);
+        learnerRepository.save(learner);
+
+        HttpResponse<String> curriculumResponse = sendJsonRequest(
+                "PUT",
+                "/api/ui/learners/readonly-bavaria-music-ui-config/curriculum",
+                """
+                        {
+                          "curriculumId": "%s"
+                        }
+                        """.formatted(CANONICAL_GYMNASIUM_ROOT_ID));
+        assertThat(curriculumResponse.statusCode()).isEqualTo(HttpStatus.CONFLICT.value());
+        assertThat(
+                learnerRepository.findById("readonly-bavaria-music-ui-config").orElseThrow()
+                        .getSelectedCurriculum())
+                .isEqualTo(BAVARIA_GYMNASIUM_MUSIC_ID);
+
+        HttpResponse<String> personalCurriculumResponse = sendJsonRequest(
+                "PUT",
+                "/api/ui/learners/readonly-bavaria-music-ui-config/personal-curriculum",
+                """
+                        {
+                          "%s": {
+                            "selected": true,
+                            "filterId": "DE-BY"
+                          }
+                        }
+                        """.formatted(CANONICAL_GYMNASIUM_ROOT_ID));
+        assertThat(personalCurriculumResponse.statusCode()).isEqualTo(HttpStatus.CONFLICT.value());
+
+        HttpResponse<String> masteryResponse = sendJsonRequest(
+                "POST",
+                "/api/ai/en/learners/readonly-bavaria-music-ui-config/mastery",
+                """
+                        {
+                          "goalId": "%s"
+                        }
+                        """.formatted(LEGACY_BAYERN_MUSIC_WHY_ID));
+        assertThat(masteryResponse.statusCode()).isEqualTo(HttpStatus.CONFLICT.value());
+        assertThat(masteryRepository.findById(new com.skillpilot.backend.domain.MasteryId(
+                "readonly-bavaria-music-ui-config",
+                LEGACY_BAYERN_MUSIC_WHY_ID))).isEmpty();
+    }
+
+    @Test
+    void bavariaFrenchRetirementSessionRejectsUiCurriculumAndAiMasteryWrites() throws Exception {
+        Learner learner = new Learner();
+        learner.setSkillpilotId("readonly-bavaria-french-ui-config");
+        learner.setSelectedCurriculum(BAVARIA_GYMNASIUM_FRENCH_ID);
+        learnerRepository.save(learner);
+
+        HttpResponse<String> curriculumResponse = sendJsonRequest(
+                "PUT",
+                "/api/ui/learners/readonly-bavaria-french-ui-config/curriculum",
+                """
+                        {
+                          "curriculumId": "%s"
+                        }
+                        """.formatted(CANONICAL_GYMNASIUM_ROOT_ID));
+        assertThat(curriculumResponse.statusCode()).isEqualTo(HttpStatus.CONFLICT.value());
+        assertThat(
+                learnerRepository.findById("readonly-bavaria-french-ui-config").orElseThrow()
+                        .getSelectedCurriculum())
+                .isEqualTo(BAVARIA_GYMNASIUM_FRENCH_ID);
+
+        HttpResponse<String> personalCurriculumResponse = sendJsonRequest(
+                "PUT",
+                "/api/ui/learners/readonly-bavaria-french-ui-config/personal-curriculum",
+                """
+                        {
+                          "%s": {
+                            "selected": true,
+                            "filterId": "DE-BY"
+                          }
+                        }
+                        """.formatted(CANONICAL_GYMNASIUM_ROOT_ID));
+        assertThat(personalCurriculumResponse.statusCode()).isEqualTo(HttpStatus.CONFLICT.value());
+
+        HttpResponse<String> masteryResponse = sendJsonRequest(
+                "POST",
+                "/api/ai/en/learners/readonly-bavaria-french-ui-config/mastery",
+                """
+                        {
+                          "goalId": "%s"
+                        }
+                        """.formatted(LEGACY_BAYERN_FRENCH_WHY_ID));
+        assertThat(masteryResponse.statusCode()).isEqualTo(HttpStatus.CONFLICT.value());
+        assertThat(masteryRepository.findById(new com.skillpilot.backend.domain.MasteryId(
+                "readonly-bavaria-french-ui-config",
+                LEGACY_BAYERN_FRENCH_WHY_ID))).isEmpty();
+    }
+
+    @Test
+    void bavariaEnglishRetirementSessionRejectsUiCurriculumAndAiMasteryWrites() throws Exception {
+        Learner learner = new Learner();
+        learner.setSkillpilotId("readonly-bavaria-english-ui-config");
+        learner.setSelectedCurriculum(BAVARIA_GYMNASIUM_ENGLISH_ID);
+        learnerRepository.save(learner);
+
+        HttpResponse<String> curriculumResponse = sendJsonRequest(
+                "PUT",
+                "/api/ui/learners/readonly-bavaria-english-ui-config/curriculum",
+                """
+                        {
+                          "curriculumId": "%s"
+                        }
+                        """.formatted(CANONICAL_GYMNASIUM_ROOT_ID));
+        assertThat(curriculumResponse.statusCode()).isEqualTo(HttpStatus.CONFLICT.value());
+        assertThat(
+                learnerRepository.findById("readonly-bavaria-english-ui-config").orElseThrow()
+                        .getSelectedCurriculum())
+                .isEqualTo(BAVARIA_GYMNASIUM_ENGLISH_ID);
+
+        HttpResponse<String> personalCurriculumResponse = sendJsonRequest(
+                "PUT",
+                "/api/ui/learners/readonly-bavaria-english-ui-config/personal-curriculum",
+                """
+                        {
+                          "%s": {
+                            "selected": true,
+                            "filterId": "DE-BY"
+                          }
+                        }
+                        """.formatted(CANONICAL_GYMNASIUM_ROOT_ID));
+        assertThat(personalCurriculumResponse.statusCode()).isEqualTo(HttpStatus.CONFLICT.value());
+
+        HttpResponse<String> masteryResponse = sendJsonRequest(
+                "POST",
+                "/api/ai/en/learners/readonly-bavaria-english-ui-config/mastery",
+                """
+                        {
+                          "goalId": "%s"
+                        }
+                        """.formatted(LEGACY_BAYERN_ENGLISH_WHY_ID));
+        assertThat(masteryResponse.statusCode()).isEqualTo(HttpStatus.CONFLICT.value());
+        assertThat(masteryRepository.findById(new com.skillpilot.backend.domain.MasteryId(
+                "readonly-bavaria-english-ui-config",
+                LEGACY_BAYERN_ENGLISH_WHY_ID))).isEmpty();
+    }
+
+    @Test
+    void bavariaSpanishRetirementSessionRejectsUiCurriculumAndAiMasteryWrites() throws Exception {
+        Learner learner = new Learner();
+        learner.setSkillpilotId("readonly-bavaria-spanish-ui-config");
+        learner.setSelectedCurriculum(BAVARIA_GYMNASIUM_SPANISH_ID);
+        learnerRepository.save(learner);
+
+        HttpResponse<String> curriculumResponse = sendJsonRequest(
+                "PUT",
+                "/api/ui/learners/readonly-bavaria-spanish-ui-config/curriculum",
+                """
+                        {
+                          "curriculumId": "%s"
+                        }
+                        """.formatted(CANONICAL_GYMNASIUM_ROOT_ID));
+        assertThat(curriculumResponse.statusCode()).isEqualTo(HttpStatus.CONFLICT.value());
+        assertThat(
+                learnerRepository.findById("readonly-bavaria-spanish-ui-config").orElseThrow()
+                        .getSelectedCurriculum())
+                .isEqualTo(BAVARIA_GYMNASIUM_SPANISH_ID);
+
+        HttpResponse<String> personalCurriculumResponse = sendJsonRequest(
+                "PUT",
+                "/api/ui/learners/readonly-bavaria-spanish-ui-config/personal-curriculum",
+                """
+                        {
+                          "%s": {
+                            "selected": true,
+                            "filterId": "DE-BY"
+                          }
+                        }
+                        """.formatted(CANONICAL_GYMNASIUM_ROOT_ID));
+        assertThat(personalCurriculumResponse.statusCode()).isEqualTo(HttpStatus.CONFLICT.value());
+
+        HttpResponse<String> masteryResponse = sendJsonRequest(
+                "POST",
+                "/api/ai/en/learners/readonly-bavaria-spanish-ui-config/mastery",
+                """
+                        {
+                          "goalId": "%s"
+                        }
+                        """.formatted(LEGACY_BAYERN_SPANISH_WHY_ID));
+        assertThat(masteryResponse.statusCode()).isEqualTo(HttpStatus.CONFLICT.value());
+        assertThat(masteryRepository.findById(new com.skillpilot.backend.domain.MasteryId(
+                "readonly-bavaria-spanish-ui-config",
+                LEGACY_BAYERN_SPANISH_WHY_ID))).isEmpty();
+    }
+
+    @Test
+    void bavariaItalianRetirementSessionRejectsUiCurriculumAndAiMasteryWrites() throws Exception {
+        Learner learner = new Learner();
+        learner.setSkillpilotId("readonly-bavaria-italian-ui-config");
+        learner.setSelectedCurriculum(BAVARIA_GYMNASIUM_ITALIAN_ID);
+        learnerRepository.save(learner);
+
+        HttpResponse<String> curriculumResponse = sendJsonRequest(
+                "PUT",
+                "/api/ui/learners/readonly-bavaria-italian-ui-config/curriculum",
+                """
+                        {
+                          "curriculumId": "%s"
+                        }
+                        """.formatted(CANONICAL_GYMNASIUM_ROOT_ID));
+        assertThat(curriculumResponse.statusCode()).isEqualTo(HttpStatus.CONFLICT.value());
+        assertThat(
+                learnerRepository.findById("readonly-bavaria-italian-ui-config").orElseThrow()
+                        .getSelectedCurriculum())
+                .isEqualTo(BAVARIA_GYMNASIUM_ITALIAN_ID);
+
+        HttpResponse<String> personalCurriculumResponse = sendJsonRequest(
+                "PUT",
+                "/api/ui/learners/readonly-bavaria-italian-ui-config/personal-curriculum",
+                """
+                        {
+                          "%s": {
+                            "selected": true,
+                            "filterId": "DE-BY"
+                          }
+                        }
+                        """.formatted(CANONICAL_GYMNASIUM_ROOT_ID));
+        assertThat(personalCurriculumResponse.statusCode()).isEqualTo(HttpStatus.CONFLICT.value());
+
+        HttpResponse<String> masteryResponse = sendJsonRequest(
+                "POST",
+                "/api/ai/en/learners/readonly-bavaria-italian-ui-config/mastery",
+                """
+                        {
+                          "goalId": "%s"
+                        }
+                        """.formatted(LEGACY_BAYERN_ITALIAN_WHY_ID));
+        assertThat(masteryResponse.statusCode()).isEqualTo(HttpStatus.CONFLICT.value());
+        assertThat(masteryRepository.findById(new com.skillpilot.backend.domain.MasteryId(
+                "readonly-bavaria-italian-ui-config",
+                LEGACY_BAYERN_ITALIAN_WHY_ID))).isEmpty();
+    }
+
+    @Test
+    void bavariaRussianRetirementSessionRejectsUiCurriculumAndAiMasteryWrites() throws Exception {
+        Learner learner = new Learner();
+        learner.setSkillpilotId("readonly-bavaria-russian-ui-config");
+        learner.setSelectedCurriculum(BAVARIA_GYMNASIUM_RUSSIAN_ID);
+        learnerRepository.save(learner);
+
+        HttpResponse<String> curriculumResponse = sendJsonRequest(
+                "PUT",
+                "/api/ui/learners/readonly-bavaria-russian-ui-config/curriculum",
+                """
+                        {
+                          "curriculumId": "%s"
+                        }
+                        """.formatted(CANONICAL_GYMNASIUM_ROOT_ID));
+        assertThat(curriculumResponse.statusCode()).isEqualTo(HttpStatus.CONFLICT.value());
+        assertThat(
+                learnerRepository.findById("readonly-bavaria-russian-ui-config").orElseThrow()
+                        .getSelectedCurriculum())
+                .isEqualTo(BAVARIA_GYMNASIUM_RUSSIAN_ID);
+
+        HttpResponse<String> personalCurriculumResponse = sendJsonRequest(
+                "PUT",
+                "/api/ui/learners/readonly-bavaria-russian-ui-config/personal-curriculum",
+                """
+                        {
+                          "%s": {
+                            "selected": true,
+                            "filterId": "DE-BY"
+                          }
+                        }
+                        """.formatted(CANONICAL_GYMNASIUM_ROOT_ID));
+        assertThat(personalCurriculumResponse.statusCode()).isEqualTo(HttpStatus.CONFLICT.value());
+
+        HttpResponse<String> masteryResponse = sendJsonRequest(
+                "POST",
+                "/api/ai/en/learners/readonly-bavaria-russian-ui-config/mastery",
+                """
+                        {
+                          "goalId": "%s"
+                        }
+                        """.formatted(LEGACY_BAYERN_RUSSIAN_WHY_ID));
+        assertThat(masteryResponse.statusCode()).isEqualTo(HttpStatus.CONFLICT.value());
+        assertThat(masteryRepository.findById(new com.skillpilot.backend.domain.MasteryId(
+                "readonly-bavaria-russian-ui-config",
+                LEGACY_BAYERN_RUSSIAN_WHY_ID))).isEmpty();
+    }
+
+    @Test
+    void bavariaPolishRetirementSessionRejectsUiCurriculumAndAiMasteryWrites() throws Exception {
+        Learner learner = new Learner();
+        learner.setSkillpilotId("readonly-bavaria-polish-ui-config");
+        learner.setSelectedCurriculum(BAVARIA_GYMNASIUM_POLISH_ID);
+        learnerRepository.save(learner);
+
+        HttpResponse<String> curriculumResponse = sendJsonRequest(
+                "PUT",
+                "/api/ui/learners/readonly-bavaria-polish-ui-config/curriculum",
+                """
+                        {
+                          "curriculumId": "%s"
+                        }
+                        """.formatted(CANONICAL_GYMNASIUM_ROOT_ID));
+        assertThat(curriculumResponse.statusCode()).isEqualTo(HttpStatus.CONFLICT.value());
+        assertThat(
+                learnerRepository.findById("readonly-bavaria-polish-ui-config").orElseThrow()
+                        .getSelectedCurriculum())
+                .isEqualTo(BAVARIA_GYMNASIUM_POLISH_ID);
+
+        HttpResponse<String> personalCurriculumResponse = sendJsonRequest(
+                "PUT",
+                "/api/ui/learners/readonly-bavaria-polish-ui-config/personal-curriculum",
+                """
+                        {
+                          "%s": {
+                            "selected": true,
+                            "filterId": "DE-BY"
+                          }
+                        }
+                        """.formatted(CANONICAL_GYMNASIUM_ROOT_ID));
+        assertThat(personalCurriculumResponse.statusCode()).isEqualTo(HttpStatus.CONFLICT.value());
+
+        HttpResponse<String> masteryResponse = sendJsonRequest(
+                "POST",
+                "/api/ai/en/learners/readonly-bavaria-polish-ui-config/mastery",
+                """
+                        {
+                          "goalId": "%s"
+                        }
+                        """.formatted(LEGACY_BAYERN_POLISH_WHY_ID));
+        assertThat(masteryResponse.statusCode()).isEqualTo(HttpStatus.CONFLICT.value());
+        assertThat(masteryRepository.findById(new com.skillpilot.backend.domain.MasteryId(
+                "readonly-bavaria-polish-ui-config",
+                LEGACY_BAYERN_POLISH_WHY_ID))).isEmpty();
+    }
+
+    @Test
+    void bavariaCzechRetirementSessionRejectsUiCurriculumAndAiMasteryWrites() throws Exception {
+        Learner learner = new Learner();
+        learner.setSkillpilotId("readonly-bavaria-czech-ui-config");
+        learner.setSelectedCurriculum(BAVARIA_GYMNASIUM_CZECH_ID);
+        learnerRepository.save(learner);
+
+        HttpResponse<String> curriculumResponse = sendJsonRequest(
+                "PUT",
+                "/api/ui/learners/readonly-bavaria-czech-ui-config/curriculum",
+                """
+                        {
+                          "curriculumId": "%s"
+                        }
+                        """.formatted(CANONICAL_GYMNASIUM_ROOT_ID));
+        assertThat(curriculumResponse.statusCode()).isEqualTo(HttpStatus.CONFLICT.value());
+        assertThat(
+                learnerRepository.findById("readonly-bavaria-czech-ui-config").orElseThrow()
+                        .getSelectedCurriculum())
+                .isEqualTo(BAVARIA_GYMNASIUM_CZECH_ID);
+
+        HttpResponse<String> personalCurriculumResponse = sendJsonRequest(
+                "PUT",
+                "/api/ui/learners/readonly-bavaria-czech-ui-config/personal-curriculum",
+                """
+                        {
+                          "%s": {
+                            "selected": true,
+                            "filterId": "DE-BY"
+                          }
+                        }
+                        """.formatted(CANONICAL_GYMNASIUM_ROOT_ID));
+        assertThat(personalCurriculumResponse.statusCode()).isEqualTo(HttpStatus.CONFLICT.value());
+
+        HttpResponse<String> masteryResponse = sendJsonRequest(
+                "POST",
+                "/api/ai/en/learners/readonly-bavaria-czech-ui-config/mastery",
+                """
+                        {
+                          "goalId": "%s"
+                        }
+                        """.formatted(LEGACY_BAYERN_CZECH_WHY_ID));
+        assertThat(masteryResponse.statusCode()).isEqualTo(HttpStatus.CONFLICT.value());
+        assertThat(masteryRepository.findById(new com.skillpilot.backend.domain.MasteryId(
+                "readonly-bavaria-czech-ui-config",
+                LEGACY_BAYERN_CZECH_WHY_ID))).isEmpty();
+    }
+
+    @Test
+    void bavariaChineseRetirementSessionRejectsUiCurriculumAndAiMasteryWrites() throws Exception {
+        Learner learner = new Learner();
+        learner.setSkillpilotId("readonly-bavaria-chinese-ui-config");
+        learner.setSelectedCurriculum(BAVARIA_GYMNASIUM_CHINESE_ID);
+        learnerRepository.save(learner);
+
+        HttpResponse<String> curriculumResponse = sendJsonRequest(
+                "PUT",
+                "/api/ui/learners/readonly-bavaria-chinese-ui-config/curriculum",
+                """
+                        {
+                          "curriculumId": "%s"
+                        }
+                        """.formatted(CANONICAL_GYMNASIUM_ROOT_ID));
+        assertThat(curriculumResponse.statusCode()).isEqualTo(HttpStatus.CONFLICT.value());
+        assertThat(
+                learnerRepository.findById("readonly-bavaria-chinese-ui-config").orElseThrow()
+                        .getSelectedCurriculum())
+                .isEqualTo(BAVARIA_GYMNASIUM_CHINESE_ID);
+
+        HttpResponse<String> personalCurriculumResponse = sendJsonRequest(
+                "PUT",
+                "/api/ui/learners/readonly-bavaria-chinese-ui-config/personal-curriculum",
+                """
+                        {
+                          "%s": {
+                            "selected": true,
+                            "filterId": "DE-BY"
+                          }
+                        }
+                        """.formatted(CANONICAL_GYMNASIUM_ROOT_ID));
+        assertThat(personalCurriculumResponse.statusCode()).isEqualTo(HttpStatus.CONFLICT.value());
+
+        HttpResponse<String> masteryResponse = sendJsonRequest(
+                "POST",
+                "/api/ai/en/learners/readonly-bavaria-chinese-ui-config/mastery",
+                """
+                        {
+                          "goalId": "%s"
+                        }
+                        """.formatted(LEGACY_BAYERN_CHINESE_WHY_ID));
+        assertThat(masteryResponse.statusCode()).isEqualTo(HttpStatus.CONFLICT.value());
+        assertThat(masteryRepository.findById(new com.skillpilot.backend.domain.MasteryId(
+                "readonly-bavaria-chinese-ui-config",
+                LEGACY_BAYERN_CHINESE_WHY_ID))).isEmpty();
     }
 
     @Test

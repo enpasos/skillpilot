@@ -62,9 +62,22 @@ const BAVARIA_GYMNASIUM_MATH_ID = 'c1600692-e543-5cf2-a399-6bd96e6b817f'
 const BAVARIA_GYMNASIUM_PHYSICS_ID = '42c2f7e3-91b4-5de8-bef0-d563440e9d52'
 const BAVARIA_GYMNASIUM_CHEMISTRY_ID = 'ff1ca997-b6cc-5ece-8e13-5498b4bbf808'
 const BAVARIA_GYMNASIUM_BIOLOGY_ID = '357a7003-b636-570e-a0bd-6bb63518d2f6'
+const BAVARIA_GYMNASIUM_CHINESE_ID = '40744ec5-7de1-5e41-9fc2-a1e774721644'
 const BAVARIA_GYMNASIUM_INFORMATICS_ID = '1af3eba8-749f-5359-8f12-18f87b13616c'
+const BAVARIA_GYMNASIUM_HISTORY_ID = '01c2ba7a-ebd4-5840-bc09-123d7b31c914'
 const BAVARIA_GYMNASIUM_GERMAN_ID = '05f1cd27-5a58-5415-8fda-d4807067f70a'
+const BAVARIA_GYMNASIUM_ENGLISH_ID = '9da8e86b-92dc-5ba0-827e-339400af2b38'
+const BAVARIA_GYMNASIUM_GREEK_ID = '22703293-7307-5ad2-b158-efe6ae28c7c3'
 const BAVARIA_GYMNASIUM_ECONOMICS_ID = '4959d7df-e430-5c1d-bb7b-873d6252a27f'
+const BAVARIA_GYMNASIUM_POLITICS_SOCIETY_ID = '486a8278-39b2-5450-96f8-1076a47b655b'
+const BAVARIA_GYMNASIUM_LATIN_ID = 'c7eeaaa4-7c23-5ab7-8643-b7a03760cd6b'
+const BAVARIA_GYMNASIUM_MUSIC_ID = 'a00d70bf-3d3c-58fc-af4f-881b29635c2e'
+const BAVARIA_GYMNASIUM_FRENCH_ID = '49aefe0c-f365-5f30-b84f-b9a7699e4f2c'
+const BAVARIA_GYMNASIUM_SPANISH_ID = '8dba4715-f75e-5339-9e99-02236e4b80dd'
+const BAVARIA_GYMNASIUM_ITALIAN_ID = 'c7643536-1163-50d8-86a6-9645c8fd3e25'
+const BAVARIA_GYMNASIUM_RUSSIAN_ID = '2b6e79f6-5130-56cb-9a2f-d08e6dc4b4d7'
+const BAVARIA_GYMNASIUM_POLISH_ID = '21148204-794c-515d-ae20-c4d5cd4e56d8'
+const BAVARIA_GYMNASIUM_CZECH_ID = '097f3667-2488-57b2-a3e0-2cb334e422a2'
 
 type HessenLowerSelection = {
   mathSelected: boolean
@@ -751,14 +764,53 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     if (selectedCurriculum === BAVARIA_GYMNASIUM_BIOLOGY_ID) {
       return 'Biologie'
     }
+    if (selectedCurriculum === BAVARIA_GYMNASIUM_CHINESE_ID) {
+      return 'Chinesisch'
+    }
     if (selectedCurriculum === BAVARIA_GYMNASIUM_INFORMATICS_ID) {
       return 'Informatik'
+    }
+    if (selectedCurriculum === BAVARIA_GYMNASIUM_HISTORY_ID) {
+      return 'Geschichte'
     }
     if (selectedCurriculum === BAVARIA_GYMNASIUM_GERMAN_ID) {
       return 'Deutsch'
     }
+    if (selectedCurriculum === BAVARIA_GYMNASIUM_ENGLISH_ID) {
+      return 'Englisch'
+    }
+    if (selectedCurriculum === BAVARIA_GYMNASIUM_GREEK_ID) {
+      return 'Griechisch'
+    }
     if (selectedCurriculum === BAVARIA_GYMNASIUM_ECONOMICS_ID) {
       return 'Wirtschaft und Recht'
+    }
+    if (selectedCurriculum === BAVARIA_GYMNASIUM_POLITICS_SOCIETY_ID) {
+      return 'Politik und Gesellschaft'
+    }
+    if (selectedCurriculum === BAVARIA_GYMNASIUM_LATIN_ID) {
+      return 'Latein'
+    }
+    if (selectedCurriculum === BAVARIA_GYMNASIUM_MUSIC_ID) {
+      return 'Musik'
+    }
+    if (selectedCurriculum === BAVARIA_GYMNASIUM_FRENCH_ID) {
+      return 'Französisch'
+    }
+    if (selectedCurriculum === BAVARIA_GYMNASIUM_SPANISH_ID) {
+      return 'Spanisch'
+    }
+    if (selectedCurriculum === BAVARIA_GYMNASIUM_ITALIAN_ID) {
+      return 'Italienisch'
+    }
+    if (selectedCurriculum === BAVARIA_GYMNASIUM_RUSSIAN_ID) {
+      return 'Russisch'
+    }
+    if (selectedCurriculum === BAVARIA_GYMNASIUM_POLISH_ID) {
+      return 'Polnisch'
+    }
+    if (selectedCurriculum === BAVARIA_GYMNASIUM_CZECH_ID) {
+      return 'Tschechisch'
     }
     return null
   }, [learnerData?.selectedCurriculum])
@@ -775,14 +827,53 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     if (bavariaLegacyRetirementSubject === 'Biologie') {
       return 'biology'
     }
+    if (bavariaLegacyRetirementSubject === 'Chinesisch') {
+      return 'chinese'
+    }
     if (bavariaLegacyRetirementSubject === 'Informatik') {
       return 'computer science'
+    }
+    if (bavariaLegacyRetirementSubject === 'Geschichte') {
+      return 'history'
     }
     if (bavariaLegacyRetirementSubject === 'Deutsch') {
       return 'german'
     }
+    if (bavariaLegacyRetirementSubject === 'Englisch') {
+      return 'english'
+    }
+    if (bavariaLegacyRetirementSubject === 'Griechisch') {
+      return 'greek'
+    }
     if (bavariaLegacyRetirementSubject === 'Wirtschaft und Recht') {
       return 'economics and law'
+    }
+    if (bavariaLegacyRetirementSubject === 'Politik und Gesellschaft') {
+      return 'politics and society'
+    }
+    if (bavariaLegacyRetirementSubject === 'Latein') {
+      return 'latin'
+    }
+    if (bavariaLegacyRetirementSubject === 'Musik') {
+      return 'music'
+    }
+    if (bavariaLegacyRetirementSubject === 'Französisch') {
+      return 'french'
+    }
+    if (bavariaLegacyRetirementSubject === 'Spanisch') {
+      return 'spanish'
+    }
+    if (bavariaLegacyRetirementSubject === 'Italienisch') {
+      return 'italian'
+    }
+    if (bavariaLegacyRetirementSubject === 'Russisch') {
+      return 'russian'
+    }
+    if (bavariaLegacyRetirementSubject === 'Polnisch') {
+      return 'polish'
+    }
+    if (bavariaLegacyRetirementSubject === 'Tschechisch') {
+      return 'czech'
     }
     return null
   }, [bavariaLegacyRetirementSubject])
@@ -814,9 +905,18 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
       || selectedCurriculum === BAVARIA_GYMNASIUM_PHYSICS_ID
       || selectedCurriculum === BAVARIA_GYMNASIUM_CHEMISTRY_ID
       || selectedCurriculum === BAVARIA_GYMNASIUM_BIOLOGY_ID
+      || selectedCurriculum === BAVARIA_GYMNASIUM_CHINESE_ID
       || selectedCurriculum === BAVARIA_GYMNASIUM_INFORMATICS_ID
+      || selectedCurriculum === BAVARIA_GYMNASIUM_HISTORY_ID
       || selectedCurriculum === BAVARIA_GYMNASIUM_GERMAN_ID
+      || selectedCurriculum === BAVARIA_GYMNASIUM_ENGLISH_ID
+      || selectedCurriculum === BAVARIA_GYMNASIUM_GREEK_ID
       || selectedCurriculum === BAVARIA_GYMNASIUM_ECONOMICS_ID
+      || selectedCurriculum === BAVARIA_GYMNASIUM_POLITICS_SOCIETY_ID
+      || selectedCurriculum === BAVARIA_GYMNASIUM_LATIN_ID
+      || selectedCurriculum === BAVARIA_GYMNASIUM_MUSIC_ID
+      || selectedCurriculum === BAVARIA_GYMNASIUM_FRENCH_ID
+      || selectedCurriculum === BAVARIA_GYMNASIUM_SPANISH_ID
     ) {
       return [
         { label: 'Quelle', value: `Bayern Gymnasium ${bavariaLegacyRetirementSubject}` },
@@ -2306,9 +2406,9 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
         migrationTitle={canCutoverLegacyGymnasium ? 'Auf Gymnasium (DE) umstellen' : undefined}
         migrationDescription={canCutoverLegacyGymnasium
           ? (isUpperLegacyHessenSession
-            ? 'Dein bisheriger Hessen-Lernstand bleibt erhalten und wird auf die gemeinsame DE-Struktur übernommen. Mathe, Physik, Chemie, Biologie, Informatik, Geschichte, Deutsch, Politik und Wirtschaft, Englisch, Französisch, Latein, Spanisch, Griechisch, Chinesisch, Musik und Wirtschaftswissenschaften laufen danach unter einem gemeinsamen Gymnasium-Root weiter.'
+            ? 'Dein bisheriger Hessen-Lernstand bleibt erhalten und wird auf die gemeinsame DE-Struktur übernommen. Mathe, Physik, Chemie, Biologie, Informatik, Geschichte, Deutsch, Politik und Wirtschaft, Englisch, Französisch, Latein, Spanisch, Italienisch, Russisch, Polnisch, Tschechisch, Griechisch, Chinesisch, Musik und Wirtschaftswissenschaften laufen danach unter einem gemeinsamen Gymnasium-Root weiter.'
             : isBavariaLegacyRetirementOnly
-              ? `Dein bisheriger Bayern-${bavariaLegacyRetirementSubject}-Lernstand bleibt erhalten und wird auf die gemeinsame DE-Struktur übernommen. ${bavariaLegacyRetirementSubject === 'Physik' ? 'Physik und die benoetigte Mathe-Bruecke' : bavariaLegacyRetirementSubject === 'Chemie' ? 'Chemie' : bavariaLegacyRetirementSubject === 'Biologie' ? 'Biologie' : bavariaLegacyRetirementSubject === 'Informatik' ? 'Informatik' : bavariaLegacyRetirementSubject === 'Deutsch' ? 'Deutsch' : bavariaLegacyRetirementSubject === 'Wirtschaft und Recht' ? 'Wirtschaftswissenschaften' : 'Mathematik'} laufen danach unter dem gemeinsamen Gymnasium-Root mit Filter DE-BY weiter.`
+              ? `Dein bisheriger Bayern-${bavariaLegacyRetirementSubject}-Lernstand bleibt erhalten und wird auf die gemeinsame DE-Struktur übernommen. ${bavariaLegacyRetirementSubject === 'Physik' ? 'Physik und die benoetigte Mathe-Bruecke' : bavariaLegacyRetirementSubject === 'Chemie' ? 'Chemie' : bavariaLegacyRetirementSubject === 'Biologie' ? 'Biologie' : bavariaLegacyRetirementSubject === 'Chinesisch' ? 'Chinesisch' : bavariaLegacyRetirementSubject === 'Informatik' ? 'Informatik' : bavariaLegacyRetirementSubject === 'Geschichte' ? 'Geschichte' : bavariaLegacyRetirementSubject === 'Deutsch' ? 'Deutsch' : bavariaLegacyRetirementSubject === 'Englisch' ? 'Englisch' : bavariaLegacyRetirementSubject === 'Französisch' ? 'Französisch' : bavariaLegacyRetirementSubject === 'Spanisch' ? 'Spanisch' : bavariaLegacyRetirementSubject === 'Italienisch' ? 'Italienisch' : bavariaLegacyRetirementSubject === 'Russisch' ? 'Russisch' : bavariaLegacyRetirementSubject === 'Polnisch' ? 'Polnisch' : bavariaLegacyRetirementSubject === 'Tschechisch' ? 'Tschechisch' : bavariaLegacyRetirementSubject === 'Griechisch' ? 'Griechisch' : bavariaLegacyRetirementSubject === 'Wirtschaft und Recht' ? 'Wirtschaftswissenschaften' : bavariaLegacyRetirementSubject === 'Politik und Gesellschaft' ? 'Politik und Wirtschaft' : bavariaLegacyRetirementSubject === 'Latein' ? 'Latein' : bavariaLegacyRetirementSubject === 'Musik' ? 'Musik' : 'Mathematik'} laufen danach unter dem gemeinsamen Gymnasium-Root mit Filter DE-BY weiter.`
               : 'Dein bisheriger Hessen-Sek-I-Lernstand bleibt erhalten und wird auf die gemeinsame DE-Struktur übernommen. Mathe, Physik, Chemie, Biologie und Französisch laufen danach unter einem gemeinsamen Gymnasium-Root weiter.')
           : undefined}
         migrationActionLabel={canCutoverLegacyGymnasium ? 'Jetzt umstellen' : undefined}
