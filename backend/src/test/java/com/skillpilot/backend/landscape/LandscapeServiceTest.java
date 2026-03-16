@@ -39,8 +39,10 @@ class LandscapeServiceTest {
         private static final String BAVARIA_MATH_ID = "c1600692-e543-5cf2-a399-6bd96e6b817f";
         private static final String BAVARIA_PHYSICS_ID = "42c2f7e3-91b4-5de8-bef0-d563440e9d52";
         private static final String BAVARIA_CHEMISTRY_ID = "ff1ca997-b6cc-5ece-8e13-5498b4bbf808";
+        private static final String BAVARIA_BIOLOGY_ID = "357a7003-b636-570e-a0bd-6bb63518d2f6";
         private static final String BAVARIA_MATH_FUNCTION_CLUSTER_ID = "f9538605-8bf4-5279-b00a-c18786f9cc51";
         private static final String BAVARIA_PHYSICS_DIAGRAMS_ID = "0074dc7c-b4ab-5bfb-b1b7-a8f5cdb9accc";
+        private static final String BAVARIA_BIOLOGY_GENETICS_CLUSTER_ID = "83af486d-92eb-501a-b32d-15a256be7d60";
 
         @Test
         void getOverview_returnsEmptyFilters_forModifiedCurricula() {
@@ -173,6 +175,8 @@ class LandscapeServiceTest {
                 assertThat(landscapeService.isLegacyHiddenByDefaultLandscape(BAVARIA_PHYSICS_ID)).isFalse();
                 assertThat(landscapeService.isCompatibilityOnlyLandscape(BAVARIA_CHEMISTRY_ID)).isTrue();
                 assertThat(landscapeService.isLegacyHiddenByDefaultLandscape(BAVARIA_CHEMISTRY_ID)).isFalse();
+                assertThat(landscapeService.isCompatibilityOnlyLandscape(BAVARIA_BIOLOGY_ID)).isTrue();
+                assertThat(landscapeService.isLegacyHiddenByDefaultLandscape(BAVARIA_BIOLOGY_ID)).isFalse();
         }
 
         @Test
@@ -245,6 +249,30 @@ class LandscapeServiceTest {
         }
 
         @Test
+        void resolvesBavariaBiologyArchivedAtomicClosureFromRealRegistry() {
+                LandscapeProperties properties = new LandscapeProperties();
+                properties.setDirectory("../curricula");
+                ObjectMapper objectMapper = new ObjectMapper();
+                LandscapeService landscapeService = new LandscapeService(properties, objectMapper);
+
+                assertThat(landscapeService.resolveSourceAtomicGoalIds(
+                                BAVARIA_BIOLOGY_ID,
+                                BAVARIA_BIOLOGY_GENETICS_CLUSTER_ID))
+                                .containsExactly(
+                                                "caa62aba-fb03-5b28-8df1-d09624168990",
+                                                "e4f857b8-85da-58e5-9fb4-b4f05048d3b5",
+                                                "a6ad1554-558e-51e4-9d05-aa9b38ebfa40",
+                                                "673d3825-e43d-585c-9ee7-58bb143fd382",
+                                                "b9b18077-88f5-57ed-981e-2f7e2512af4c",
+                                                "55793844-76b0-57d8-a3c1-e5db5fa2e370",
+                                                "e0bbe3b2-96d7-5e7a-b8c1-d649a084e355",
+                                                "706204f2-4768-56d3-984a-85e9ec6fc370",
+                                                "a3e24e24-e489-57ad-88f1-64e85633225d",
+                                                "2802979c-6270-521c-87e0-1ed9360d6bea",
+                                                "1ad96d9d-03d9-565f-94b2-94f6ed17c523");
+        }
+
+        @Test
         void bavariaPilotLandscapesArePresentInRealGoalMembershipRegistry() throws Exception {
                 ObjectMapper objectMapper = new ObjectMapper();
                 JsonNode root = objectMapper.readTree(Files.readString(
@@ -259,6 +287,10 @@ class LandscapeServiceTest {
                                 .filter(node -> BAVARIA_PHYSICS_ID.equals(node.path("landscapeId").asText()))
                                 .findFirst()
                                 .orElseThrow();
+                JsonNode bavariaBiology = StreamSupport.stream(landscapes.spliterator(), false)
+                                .filter(node -> BAVARIA_BIOLOGY_ID.equals(node.path("landscapeId").asText()))
+                                .findFirst()
+                                .orElseThrow();
 
                 assertThat(StreamSupport.stream(bavariaMath.path("goalIds").spliterator(), false)
                                 .map(JsonNode::asText)
@@ -268,6 +300,10 @@ class LandscapeServiceTest {
                                 .map(JsonNode::asText)
                                 .toList())
                                 .contains(BAVARIA_PHYSICS_DIAGRAMS_ID);
+                assertThat(StreamSupport.stream(bavariaBiology.path("goalIds").spliterator(), false)
+                                .map(JsonNode::asText)
+                                .toList())
+                                .contains(BAVARIA_BIOLOGY_GENETICS_CLUSTER_ID);
         }
 
         @Test

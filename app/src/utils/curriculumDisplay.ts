@@ -33,6 +33,7 @@ export const COMPATIBILITY_ONLY_BAVARIA_GYMNASIUM_IDS = new Set([
   'c1600692-e543-5cf2-a399-6bd96e6b817f',
   '42c2f7e3-91b4-5de8-bef0-d563440e9d52',
   'ff1ca997-b6cc-5ece-8e13-5498b4bbf808',
+  '357a7003-b636-570e-a0bd-6bb63518d2f6',
 ])
 
 export const LEGACY_BAVARIA_GYMNASIUM_IDS = new Set([

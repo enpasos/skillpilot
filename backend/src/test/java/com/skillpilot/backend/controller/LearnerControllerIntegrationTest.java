@@ -82,6 +82,7 @@ public class LearnerControllerIntegrationTest {
     private static final String BAVARIA_GYMNASIUM_MATH_ID = "c1600692-e543-5cf2-a399-6bd96e6b817f";
     private static final String BAVARIA_GYMNASIUM_PHYSICS_ID = "42c2f7e3-91b4-5de8-bef0-d563440e9d52";
     private static final String BAVARIA_GYMNASIUM_CHEMISTRY_ID = "ff1ca997-b6cc-5ece-8e13-5498b4bbf808";
+    private static final String BAVARIA_GYMNASIUM_BIOLOGY_ID = "357a7003-b636-570e-a0bd-6bb63518d2f6";
     private static final String LEGACY_BAVARIA_MATH_ROOT_ID = "eb9048a4-9cb9-5aaf-8a91-aeba08e05b0c";
     private static final String CANONICAL_PHYSICS_GK_PERSONAL_CONFIG = """
             {
@@ -219,6 +220,16 @@ public class LearnerControllerIntegrationTest {
             "23135ca7-9f40-593a-9542-aeadb070ab92";
     private static final String CANONICAL_SEK1_CHEMISTRY_REACTIONS_CLUSTER_ID =
             "a00d302b-7762-4b9d-a6d7-de0c58b35540";
+    private static final String LEGACY_BAYERN_BIOLOGY_ROOT_ID =
+            "3684bc95-f3db-5b57-b12e-9e02de718fad";
+    private static final String LEGACY_BAYERN_BIOLOGY_GENETICS_CLUSTER_ID =
+            "83af486d-92eb-501a-b32d-15a256be7d60";
+    private static final String LEGACY_BAYERN_BIOLOGY_DNA_MODEL_ID =
+            "e4f857b8-85da-58e5-9fb4-b4f05048d3b5";
+    private static final String LEGACY_BAYERN_BIOLOGY_WHY_ID =
+            "51457572-b3ad-5ba3-aa12-86ca45067b08";
+    private static final String CANONICAL_BIOLOGY_Q1_CLUSTER_ID =
+            "3ae95c96-e058-5045-b5e7-a613b8086f8b";
     private static final String LEGACY_BAYERN_PHYSICS_MOMENTUM_CONSERVATION_ID =
             "713ad139-bcb8-5a71-a520-3f194a0f8754";
     private static final String LEGACY_BAYERN_FUNCTION_CLUSTER_ID =
@@ -1029,6 +1040,38 @@ public class LearnerControllerIntegrationTest {
         assertThat(response.body())
                 .doesNotContain(LEGACY_BAYERN_CHEMISTRY_REACTIONS_CLUSTER_ID)
                 .doesNotContain(LEGACY_BAYERN_CHEMISTRY_MASS_CONSERVATION_ID);
+    }
+
+    @Test
+    void cutoverEndpointMigratesLegacyBavariaBiologyLearnerToCanonicalGymnasiumRoot() throws Exception {
+        Learner learner = learnerRepository.findById(learnerId).orElseThrow();
+        learner.setSelectedCurriculum(BAVARIA_GYMNASIUM_BIOLOGY_ID);
+        learnerRepository.save(learner);
+
+        plannedGoalRepository.save(new PlannedGoal(learner, LEGACY_BAYERN_BIOLOGY_GENETICS_CLUSTER_ID));
+        masteryRepository.save(new Mastery(learner, LEGACY_BAYERN_BIOLOGY_DNA_MODEL_ID, 1.0));
+
+        HttpResponse<String> response = postCutover();
+
+        assertThat(response.statusCode()).isEqualTo(HttpStatus.OK.value());
+
+        Learner migratedLearner = learnerRepository.findById(learnerId).orElseThrow();
+        JsonNode persistedConfig = objectMapper.readTree(migratedLearner.getPersonalCurriculum());
+        JsonNode body = objectMapper.readTree(response.body());
+        JsonNode planned = body.path("goals").path("planned");
+
+        assertThat(migratedLearner.getSelectedCurriculum()).isEqualTo(CANONICAL_GYMNASIUM_ROOT_ID);
+        assertThat(body.path("curriculum").path("curriculumId").asText()).isEqualTo(CANONICAL_GYMNASIUM_ROOT_ID);
+        assertThat(persistedConfig.path(CANONICAL_GYMNASIUM_ROOT_ID).path("filterId").asText()).isEqualTo("DE-BY");
+        assertThat(persistedConfig.path(CANONICAL_BIOLOGY_ID).path("selected").asBoolean()).isTrue();
+        assertThat(persistedConfig.path(CANONICAL_MATH_PILOT_ID).path("selected").asBoolean()).isFalse();
+        assertThat(persistedConfig.path(CANONICAL_PHYSICS_PILOT_ID).path("selected").asBoolean()).isFalse();
+        assertThat(persistedConfig.path(CANONICAL_CHEMISTRY_ID).path("selected").asBoolean()).isFalse();
+        assertThat(planned).hasSize(1);
+        assertThat(planned.get(0).path("id").asText()).isEqualTo(CANONICAL_BIOLOGY_Q1_CLUSTER_ID);
+        assertThat(response.body())
+                .doesNotContain(LEGACY_BAYERN_BIOLOGY_GENETICS_CLUSTER_ID)
+                .doesNotContain(LEGACY_BAYERN_BIOLOGY_DNA_MODEL_ID);
     }
 
     @Test
@@ -3128,6 +3171,18 @@ public class LearnerControllerIntegrationTest {
         assertThat(chemistryResponse.statusCode()).isEqualTo(HttpStatus.CONFLICT.value());
         assertThat(learnerRepository.findById("retired-bavaria-ui-selection").orElseThrow().getSelectedCurriculum())
                 .isNull();
+
+        HttpResponse<String> biologyResponse = sendJsonRequest(
+                "PUT",
+                "/api/ui/learners/retired-bavaria-ui-selection/curriculum",
+                """
+                        {
+                          "curriculumId": "%s"
+                        }
+                        """.formatted(BAVARIA_GYMNASIUM_BIOLOGY_ID));
+        assertThat(biologyResponse.statusCode()).isEqualTo(HttpStatus.CONFLICT.value());
+        assertThat(learnerRepository.findById("retired-bavaria-ui-selection").orElseThrow().getSelectedCurriculum())
+                .isNull();
     }
 
     @Test
@@ -3169,6 +3224,18 @@ public class LearnerControllerIntegrationTest {
                         }
                         """.formatted(BAVARIA_GYMNASIUM_CHEMISTRY_ID));
         assertThat(chemistryResponse.statusCode()).isEqualTo(HttpStatus.CONFLICT.value());
+        assertThat(learnerRepository.findById("retired-bavaria-ai-selection").orElseThrow().getSelectedCurriculum())
+                .isNull();
+
+        HttpResponse<String> biologyResponse = sendJsonRequest(
+                "POST",
+                "/api/ai/en/learners/retired-bavaria-ai-selection/curriculum",
+                """
+                        {
+                          "curriculumId": "%s"
+                        }
+                        """.formatted(BAVARIA_GYMNASIUM_BIOLOGY_ID));
+        assertThat(biologyResponse.statusCode()).isEqualTo(HttpStatus.CONFLICT.value());
         assertThat(learnerRepository.findById("retired-bavaria-ai-selection").orElseThrow().getSelectedCurriculum())
                 .isNull();
     }
@@ -3611,6 +3678,108 @@ public class LearnerControllerIntegrationTest {
         assertThat(masteryRepository.findById(new com.skillpilot.backend.domain.MasteryId(
                 "readonly-bavaria-chemistry-ui-config",
                 LEGACY_BAYERN_CHEMISTRY_WHY_ID))).isEmpty();
+    }
+
+    @Test
+    void bavariaBiologyRetirementSessionRejectsUiLearningWrites() throws Exception {
+        Learner learner = new Learner();
+        learner.setSkillpilotId("readonly-bavaria-biology-ui-learning");
+        learner.setSelectedCurriculum(BAVARIA_GYMNASIUM_BIOLOGY_ID);
+        learnerRepository.save(learner);
+
+        HttpResponse<String> activeGoalResponse = sendJsonRequest(
+                "POST",
+                "/api/ui/learners/readonly-bavaria-biology-ui-learning/active-goal",
+                """
+                        {
+                          "goalId": "%s"
+                        }
+                        """.formatted(LEGACY_BAYERN_BIOLOGY_WHY_ID));
+        assertThat(activeGoalResponse.statusCode()).isEqualTo(HttpStatus.CONFLICT.value());
+        assertThat(
+                learnerRepository.findById("readonly-bavaria-biology-ui-learning").orElseThrow().getActiveGoalId())
+                .isNull();
+
+        HttpResponse<String> plannedResponse = sendJsonRequest(
+                "PUT",
+                "/api/ui/learners/readonly-bavaria-biology-ui-learning/planned",
+                """
+                        {
+                          "goals": ["%s"]
+                        }
+                        """.formatted(LEGACY_BAYERN_BIOLOGY_GENETICS_CLUSTER_ID));
+        assertThat(plannedResponse.statusCode()).isEqualTo(HttpStatus.CONFLICT.value());
+        assertThat(plannedGoalRepository.findByLearner_SkillpilotId("readonly-bavaria-biology-ui-learning"))
+                .isEmpty();
+
+        HttpResponse<String> clientStateResponse = sendJsonRequest(
+                "PUT",
+                "/api/ui/learners/readonly-bavaria-biology-ui-learning/client-state/" + LEGACY_BAYERN_BIOLOGY_WHY_ID,
+                """
+                        {
+                          "updatedAt": "2026-03-15T09:30:00Z",
+                          "srsState": {
+                            "card-1": {
+                              "interval": 1,
+                              "repetition": 0,
+                              "ef": 2.5,
+                              "nextReview": 0
+                            }
+                          }
+                        }
+                        """);
+        assertThat(clientStateResponse.statusCode()).isEqualTo(HttpStatus.CONFLICT.value());
+        assertThat(learnerClientStateRepository.findById(
+                new LearnerClientStateId(
+                        "readonly-bavaria-biology-ui-learning",
+                        LEGACY_BAYERN_BIOLOGY_WHY_ID))).isEmpty();
+    }
+
+    @Test
+    void bavariaBiologyRetirementSessionRejectsUiCurriculumAndAiMasteryWrites() throws Exception {
+        Learner learner = new Learner();
+        learner.setSkillpilotId("readonly-bavaria-biology-ui-config");
+        learner.setSelectedCurriculum(BAVARIA_GYMNASIUM_BIOLOGY_ID);
+        learnerRepository.save(learner);
+
+        HttpResponse<String> curriculumResponse = sendJsonRequest(
+                "PUT",
+                "/api/ui/learners/readonly-bavaria-biology-ui-config/curriculum",
+                """
+                        {
+                          "curriculumId": "%s"
+                        }
+                        """.formatted(CANONICAL_GYMNASIUM_ROOT_ID));
+        assertThat(curriculumResponse.statusCode()).isEqualTo(HttpStatus.CONFLICT.value());
+        assertThat(
+                learnerRepository.findById("readonly-bavaria-biology-ui-config").orElseThrow().getSelectedCurriculum())
+                .isEqualTo(BAVARIA_GYMNASIUM_BIOLOGY_ID);
+
+        HttpResponse<String> personalCurriculumResponse = sendJsonRequest(
+                "PUT",
+                "/api/ui/learners/readonly-bavaria-biology-ui-config/personal-curriculum",
+                """
+                        {
+                          "%s": {
+                            "selected": true,
+                            "filterId": "DE-BY"
+                          }
+                        }
+                        """.formatted(CANONICAL_GYMNASIUM_ROOT_ID));
+        assertThat(personalCurriculumResponse.statusCode()).isEqualTo(HttpStatus.CONFLICT.value());
+
+        HttpResponse<String> masteryResponse = sendJsonRequest(
+                "POST",
+                "/api/ai/en/learners/readonly-bavaria-biology-ui-config/mastery",
+                """
+                        {
+                          "goalId": "%s"
+                        }
+                        """.formatted(LEGACY_BAYERN_BIOLOGY_WHY_ID));
+        assertThat(masteryResponse.statusCode()).isEqualTo(HttpStatus.CONFLICT.value());
+        assertThat(masteryRepository.findById(new com.skillpilot.backend.domain.MasteryId(
+                "readonly-bavaria-biology-ui-config",
+                LEGACY_BAYERN_BIOLOGY_WHY_ID))).isEmpty();
     }
 
     @Test

@@ -22,6 +22,7 @@ This project is an invitation to the community to jointly build and bring to lif
 ### Curriculum champions
 -   [Curricula & Champions](https://skillpilot.com/curricula)
 -   [Champion guide](qa-ci/champion-guide.md)
+-   [4-Stufen-QA-Modell (DE)](qa-ci/four-level-champion-model.de.md)
 
 ### High-level overview
 -   [Whitepaper (EN)](whitepaper/whitepaper.en.md)

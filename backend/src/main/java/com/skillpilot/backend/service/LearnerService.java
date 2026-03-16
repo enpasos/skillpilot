@@ -148,6 +148,7 @@ public class LearnerService {
     private static final String BAVARIA_GYMNASIUM_MATH_ID = "c1600692-e543-5cf2-a399-6bd96e6b817f";
     private static final String BAVARIA_GYMNASIUM_PHYSICS_ID = "42c2f7e3-91b4-5de8-bef0-d563440e9d52";
     private static final String BAVARIA_GYMNASIUM_CHEMISTRY_ID = "ff1ca997-b6cc-5ece-8e13-5498b4bbf808";
+    private static final String BAVARIA_GYMNASIUM_BIOLOGY_ID = "357a7003-b636-570e-a0bd-6bb63518d2f6";
     private static final String DEFAULT_COURSE_FILTER_ID = "GK";
 
     @Value("${skillpilot.security.signing-secret}")
@@ -1214,7 +1215,8 @@ public class LearnerService {
         String curriculumId = learner.getSelectedCurriculum();
         return BAVARIA_GYMNASIUM_MATH_ID.equals(curriculumId)
                 || BAVARIA_GYMNASIUM_PHYSICS_ID.equals(curriculumId)
-                || BAVARIA_GYMNASIUM_CHEMISTRY_ID.equals(curriculumId);
+                || BAVARIA_GYMNASIUM_CHEMISTRY_ID.equals(curriculumId)
+                || BAVARIA_GYMNASIUM_BIOLOGY_ID.equals(curriculumId);
     }
 
     @Transactional
@@ -1504,7 +1506,8 @@ public class LearnerService {
                 || HESSEN_GYMNASIUM_LOWER_FRENCH_ID.equals(curriculumId)
                 || BAVARIA_GYMNASIUM_MATH_ID.equals(curriculumId)
                 || BAVARIA_GYMNASIUM_PHYSICS_ID.equals(curriculumId)
-                || BAVARIA_GYMNASIUM_CHEMISTRY_ID.equals(curriculumId);
+                || BAVARIA_GYMNASIUM_CHEMISTRY_ID.equals(curriculumId)
+                || BAVARIA_GYMNASIUM_BIOLOGY_ID.equals(curriculumId);
     }
 
     private CanonicalGymnasiumCutoverPlan buildCanonicalGymnasiumCutoverPlan(Learner learner, List<String> storedPlannedGoals) {
@@ -1782,7 +1785,8 @@ public class LearnerService {
     private boolean isSupportedBavariaGymnasiumCutoverSource(String curriculumId) {
         return BAVARIA_GYMNASIUM_MATH_ID.equals(curriculumId)
                 || BAVARIA_GYMNASIUM_PHYSICS_ID.equals(curriculumId)
-                || BAVARIA_GYMNASIUM_CHEMISTRY_ID.equals(curriculumId);
+                || BAVARIA_GYMNASIUM_CHEMISTRY_ID.equals(curriculumId)
+                || BAVARIA_GYMNASIUM_BIOLOGY_ID.equals(curriculumId);
     }
 
     private record HessenLowerSecondarySelection(
@@ -1902,6 +1906,7 @@ public class LearnerService {
         boolean mathSelected = BAVARIA_GYMNASIUM_MATH_ID.equals(learner.getSelectedCurriculum());
         boolean physicsSelected = BAVARIA_GYMNASIUM_PHYSICS_ID.equals(learner.getSelectedCurriculum());
         boolean chemistrySelected = BAVARIA_GYMNASIUM_CHEMISTRY_ID.equals(learner.getSelectedCurriculum());
+        boolean biologySelected = BAVARIA_GYMNASIUM_BIOLOGY_ID.equals(learner.getSelectedCurriculum());
 
         if (physicsSelected) {
             mathSelected = true;
@@ -1912,12 +1917,14 @@ public class LearnerService {
         personalCurriculumConfig.put(CANONICAL_GYMNASIUM_MATH_ID, createSelectionConfig(mathSelected, null));
         personalCurriculumConfig.put(CANONICAL_GYMNASIUM_PHYSICS_ID, createSelectionConfig(physicsSelected, null));
         personalCurriculumConfig.put(CANONICAL_GYMNASIUM_CHEMISTRY_ID, createSelectionConfig(chemistrySelected, null));
+        personalCurriculumConfig.put(CANONICAL_GYMNASIUM_BIOLOGY_ID, createSelectionConfig(biologySelected, null));
 
         String personalCurriculumJson = writePersonalCurriculumConfig(personalCurriculumConfig);
         Map<String, LearningGoal> structuralGoals = new LinkedHashMap<>(getFilteredGoals(CANONICAL_GYMNASIUM_ROOT_ID, "{}"));
         structuralGoals.putAll(getFilteredGoals(CANONICAL_GYMNASIUM_MATH_ID, "{}"));
         structuralGoals.putAll(getFilteredGoals(CANONICAL_GYMNASIUM_PHYSICS_ID, "{}"));
         structuralGoals.putAll(getFilteredGoals(CANONICAL_GYMNASIUM_CHEMISTRY_ID, "{}"));
+        structuralGoals.putAll(getFilteredGoals(CANONICAL_GYMNASIUM_BIOLOGY_ID, "{}"));
         List<String> normalizedPlannedGoalIds = normalizeCutoverPlannedGoalIds(storedPlannedGoals, structuralGoals).stream()
                 .filter(structuralGoals::containsKey)
                 .toList();

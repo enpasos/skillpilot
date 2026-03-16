@@ -62,7 +62,8 @@ public class LandscapeService {
             "a334a745-1d67-4e1d-86a5-dadc04f144d2",
             "c1600692-e543-5cf2-a399-6bd96e6b817f",
             "42c2f7e3-91b4-5de8-bef0-d563440e9d52",
-            "ff1ca997-b6cc-5ece-8e13-5498b4bbf808");
+            "ff1ca997-b6cc-5ece-8e13-5498b4bbf808",
+            "357a7003-b636-570e-a0bd-6bb63518d2f6");
     private static final Set<String> LEGACY_HIDDEN_BY_DEFAULT_LANDSCAPE_IDS = Set.of(
             "12322e3f-f351-5d40-b4ea-4a13d7e15854",
             "f050ee48-6891-4f83-995f-0f8be5e31b7f",
