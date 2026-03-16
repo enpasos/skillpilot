@@ -54,12 +54,12 @@ As of `2026-03-16`:
 
 - `31` Bavaria subjects show some Sek-I coverage on the shared `5-10` grid
 - `20` Bavaria Gymnasium pilot mapping files are currently adopted in the DE-level mapping lane
-- therefore `curricula/DE/BY/Gymnasium` remains `partial` on canonical replacement breadth in the current delete matrix
+- although delete-handoff for `curricula/DE/BY/Gymnasium` is now complete, `curricula/DE/BY/Gymnasium` is still only `partial` in this specific breadth inventory snapshot
 
 Practical consequence:
 
-- the next percentage increase should come from adopting at least one additional Bavaria subject corridor from Cohort A or Cohort C beyond the current Math/Physics/Chemistry/Biology/Informatik/Geschichte/Deutsch/Englisch/Französisch/Spanisch/Italienisch/Russisch/Polnisch/Tschechisch/Griechisch/Wirtschaft_und_Recht/Politik_und_Gesellschaft/Latein/Musik/Chinesisch lane
-- more inventory detail alone should not raise the reported migration headline beyond the current `96.7%`
+- any further Bavaria subject adoption should be treated as post-closeout breadth work on top of the already completed tree-retirement track
+- more inventory detail alone should not raise the reported close-out headline beyond the already-determined `100%` tree-retirement completion
 
 ## Entry cohorts
 

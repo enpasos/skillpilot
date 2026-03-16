@@ -26,18 +26,18 @@ Use `docs/dev/canonical-gymnasium-migration-status.md` as the single headline-sc
 
 Current reported migration status on `2026-03-16`:
 
-- `96.7%`
+- `100%`
 
 Interpretation:
 
 - `curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe` is at `100%` tree-level delete-gate completion and is already deleted from the active repo
 - `curricula/DE/HE/Kultusministerium/Gymnasium_9_Mittelstufe` is at `100%` tree-level delete-gate completion and is already deleted from the active repo
-- `curricula/DE/BY/Gymnasium` is at `90.0%` tree-level delete-gate progress and remains the only tracked close-out tree that is still open
+- `curricula/DE/BY/Gymnasium` is now at `100%` tree-level delete-gate completion and removed from the active repo
 
 ## Guardrails
 
 - Do not duplicate canonical goals per Bundesland.
-- Keep the remaining legacy source trees operational only until their delete-handoff gates are closed.
+- Do not reintroduce deleted legacy source trees; any retained compatibility or audit need should resolve through the DE-level archive, mapping, and provenance lanes.
 - Hessen upper-secondary has already left the active repo path; use the archived source snapshots under `curricula/DE/Gymnasium/input/DE-HE/upper-secondary/source-json/` instead of reactivating the old tree.
 - Do not modify the archived Hessen upper-secondary source snapshots under `curricula/DE/Gymnasium/input/DE-HE/upper-secondary/source-json/` just to host canonical content.
 - Keep the Custom GPT interface unchanged: one learner state, one frontier, one mastery flow.
@@ -254,14 +254,14 @@ Current operational baseline:
 - the canonical Chinese Hessen baseline is `subtree_adopted`
 - the canonical Music Hessen baseline is `subtree_adopted`
 - the canonical Economics Hessen baseline is `subtree_adopted`
-- at tracked-tree granularity, Hessen upper-secondary and Hessen lower-secondary have already completed the delete handoff (`legacy_deleted`); Bavaria Gymnasium remains the only open tree-level close-out program
+- at tracked-tree granularity, Hessen upper-secondary, Hessen lower-secondary, and Bavaria Gymnasium have now completed the delete handoff (`legacy_deleted`)
 
 ## Close-out steering
 
 The migration has now entered the explicit close-out phase:
 
 - Hessen upper-secondary is already retired from the active repo
-- the remaining program risk is now dominated by Bavaria tree retirement
+- the remaining program risk is now dominated by optional scope extension decisions
 - therefore the primary top-line progress number should no longer be the historical subtree-adoption score alone
 
 From here on, the main overall percentage should be the completion-track score from
@@ -271,12 +271,12 @@ From here on, the main overall percentage should be the completion-track score f
 
 Current close-out headline:
 
-- `96.7%`
+- `100%`
 
 Operational consequence:
 
-- prioritize work that closes the remaining Bavaria breadth gate on `DE/BY/Gymnasium`
-- de-prioritize work that only refines already-closed Bavaria gates such as runtime default, cutover, audit survival, or legacy detachment
+- prioritize work on optional out-of-scope items such as whether to include Bavaria `abi/` assets as mandatory scope
+- de-prioritize work that only re-validates already-completed close-out gates
 
 ## Work packages
 
