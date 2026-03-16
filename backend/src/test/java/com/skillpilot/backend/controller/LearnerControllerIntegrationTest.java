@@ -85,6 +85,7 @@ public class LearnerControllerIntegrationTest {
     private static final String BAVARIA_GYMNASIUM_CHEMISTRY_ID = "ff1ca997-b6cc-5ece-8e13-5498b4bbf808";
     private static final String BAVARIA_GYMNASIUM_BIOLOGY_ID = "357a7003-b636-570e-a0bd-6bb63518d2f6";
     private static final String BAVARIA_GYMNASIUM_INFORMATICS_ID = "1af3eba8-749f-5359-8f12-18f87b13616c";
+    private static final String BAVARIA_GYMNASIUM_ECONOMICS_ID = "4959d7df-e430-5c1d-bb7b-873d6252a27f";
     private static final String BAVARIA_GYMNASIUM_FRENCH_ID = "49aefe0c-f365-5f30-b84f-b9a7699e4f2c";
     private static final String LEGACY_BAVARIA_MATH_ROOT_ID = "eb9048a4-9cb9-5aaf-8a91-aeba08e05b0c";
     private static final String CANONICAL_PHYSICS_GK_PERSONAL_CONFIG = """
@@ -148,8 +149,10 @@ public class LearnerControllerIntegrationTest {
     private static final String CANONICAL_MUSIC_NOTATION_ID = "a51650e4-40a6-572f-821e-839e8cff83c1";
     private static final String CANONICAL_MUSIC_RHYTHM_ID = "18479156-9314-5047-94fb-f112b846ccf1";
     private static final String CANONICAL_ECONOMICS_E1_CLUSTER_ID = "464e91ba-1aa4-56d1-bc00-818b5673a163";
+    private static final String CANONICAL_ECONOMICS_E2_CLUSTER_ID = "f14dcf9f-66c5-5907-9e06-08f59a9a0e13";
     private static final String CANONICAL_ECONOMICS_ANALYZE_WORK_ID = "8768186a-a52c-50b3-a1d7-a56084aa31e0";
     private static final String CANONICAL_ECONOMICS_SOCIAL_CHANGE_ID = "77edbcf9-d14d-547e-8a5f-43863a3e300b";
+    private static final String CANONICAL_ECONOMICS_CONSUMER_PROTECTION_ID = "c386592a-b259-538c-9929-25775af99b83";
     private static final String CANONICAL_POLITICS_ECONOMICS_E_PHASE_CLUSTER_ID = "bb341613-10ba-5d25-a331-36831bf766e3";
     private static final String CANONICAL_POLITICS_ECONOMICS_SOCIETY_CLUSTER_ID = "56cc2051-994e-57cc-8cbf-2d60bcad16a3";
     private static final String CANONICAL_POLITICS_ECONOMICS_ECONOMY_CLUSTER_ID = "7fbc5949-2c8c-53e5-a97f-af3cedf020c9";
@@ -238,6 +241,12 @@ public class LearnerControllerIntegrationTest {
             "eb772e65-91bb-541a-9d7a-06ab1a0b4b5e";
     private static final String LEGACY_BAYERN_INFORMATICS_INTERNET_STRUCTURE_ID =
             "0bb9320e-cfb2-5944-a4cf-2e0d26c4c9f7";
+    private static final String LEGACY_BAYERN_ECONOMICS_HOUSEHOLD_CLUSTER_ID =
+            "4b55574a-14fc-5f97-a9eb-682e919c18fa";
+    private static final String LEGACY_BAYERN_ECONOMICS_CONSUMER_PROTECTION_ID =
+            "84f15888-3d5b-54e5-ab4d-cbe007bc2570";
+    private static final String LEGACY_BAYERN_ECONOMICS_WHY_ID =
+            "eee51d91-0175-5a15-94ff-af7cf7484c49";
     private static final String CANONICAL_BIOLOGY_Q1_CLUSTER_ID =
             "3ae95c96-e058-5045-b5e7-a613b8086f8b";
     private static final String LEGACY_BAYERN_PHYSICS_MOMENTUM_CONSERVATION_ID =
@@ -1115,6 +1124,43 @@ public class LearnerControllerIntegrationTest {
         assertThat(response.body())
                 .doesNotContain(LEGACY_BAYERN_INFORMATICS_NETWORKS_CLUSTER_ID)
                 .doesNotContain(LEGACY_BAYERN_INFORMATICS_INTERNET_STRUCTURE_ID);
+    }
+
+    @Test
+    void cutoverEndpointMigratesLegacyBavariaEconomicsLearnerToCanonicalGymnasiumRoot() throws Exception {
+        Learner learner = learnerRepository.findById(learnerId).orElseThrow();
+        learner.setSelectedCurriculum(BAVARIA_GYMNASIUM_ECONOMICS_ID);
+        learnerRepository.save(learner);
+
+        plannedGoalRepository.save(new PlannedGoal(learner, LEGACY_BAYERN_ECONOMICS_HOUSEHOLD_CLUSTER_ID));
+        masteryRepository.save(new Mastery(learner, LEGACY_BAYERN_ECONOMICS_CONSUMER_PROTECTION_ID, 1.0));
+
+        HttpResponse<String> response = postCutover();
+
+        assertThat(response.statusCode()).isEqualTo(HttpStatus.OK.value());
+
+        Learner migratedLearner = learnerRepository.findById(learnerId).orElseThrow();
+        JsonNode persistedConfig = objectMapper.readTree(migratedLearner.getPersonalCurriculum());
+        JsonNode body = objectMapper.readTree(response.body());
+        JsonNode planned = body.path("goals").path("planned");
+
+        assertThat(migratedLearner.getSelectedCurriculum()).isEqualTo(CANONICAL_GYMNASIUM_ROOT_ID);
+        assertThat(body.path("curriculum").path("curriculumId").asText()).isEqualTo(CANONICAL_GYMNASIUM_ROOT_ID);
+        assertThat(persistedConfig.path(CANONICAL_GYMNASIUM_ROOT_ID).path("filterId").asText()).isEqualTo("DE-BY");
+        assertThat(persistedConfig.path(CANONICAL_ECONOMICS_ID).path("selected").asBoolean()).isTrue();
+        assertThat(persistedConfig.path(CANONICAL_MATH_PILOT_ID).path("selected").asBoolean()).isFalse();
+        assertThat(persistedConfig.path(CANONICAL_PHYSICS_PILOT_ID).path("selected").asBoolean()).isFalse();
+        assertThat(persistedConfig.path(CANONICAL_CHEMISTRY_ID).path("selected").asBoolean()).isFalse();
+        assertThat(persistedConfig.path(CANONICAL_BIOLOGY_ID).path("selected").asBoolean()).isFalse();
+        assertThat(persistedConfig.path(CANONICAL_INFORMATICS_ID).path("selected").asBoolean()).isFalse();
+        assertThat(planned).hasSize(1);
+        assertThat(planned.get(0).path("id").asText()).isEqualTo(CANONICAL_ECONOMICS_E2_CLUSTER_ID);
+        assertThat(masteryRepository.findById(new com.skillpilot.backend.domain.MasteryId(
+                learnerId,
+                CANONICAL_ECONOMICS_CONSUMER_PROTECTION_ID))).isPresent();
+        assertThat(response.body())
+                .doesNotContain(LEGACY_BAYERN_ECONOMICS_HOUSEHOLD_CLUSTER_ID)
+                .doesNotContain(LEGACY_BAYERN_ECONOMICS_CONSUMER_PROTECTION_ID);
     }
 
     @Test
@@ -3974,6 +4020,109 @@ public class LearnerControllerIntegrationTest {
         assertThat(masteryRepository.findById(new com.skillpilot.backend.domain.MasteryId(
                 "readonly-bavaria-informatics-ui-config",
                 LEGACY_BAYERN_INFORMATICS_WHY_ID))).isEmpty();
+    }
+
+    @Test
+    void bavariaEconomicsRetirementSessionRejectsUiLearningWrites() throws Exception {
+        Learner learner = new Learner();
+        learner.setSkillpilotId("readonly-bavaria-economics-ui-learning");
+        learner.setSelectedCurriculum(BAVARIA_GYMNASIUM_ECONOMICS_ID);
+        learnerRepository.save(learner);
+
+        HttpResponse<String> activeGoalResponse = sendJsonRequest(
+                "POST",
+                "/api/ui/learners/readonly-bavaria-economics-ui-learning/active-goal",
+                """
+                        {
+                          "goalId": "%s"
+                        }
+                        """.formatted(LEGACY_BAYERN_ECONOMICS_WHY_ID));
+        assertThat(activeGoalResponse.statusCode()).isEqualTo(HttpStatus.CONFLICT.value());
+        assertThat(
+                learnerRepository.findById("readonly-bavaria-economics-ui-learning").orElseThrow().getActiveGoalId())
+                .isNull();
+
+        HttpResponse<String> plannedResponse = sendJsonRequest(
+                "PUT",
+                "/api/ui/learners/readonly-bavaria-economics-ui-learning/planned",
+                """
+                        {
+                          "goals": ["%s"]
+                        }
+                        """.formatted(LEGACY_BAYERN_ECONOMICS_HOUSEHOLD_CLUSTER_ID));
+        assertThat(plannedResponse.statusCode()).isEqualTo(HttpStatus.CONFLICT.value());
+        assertThat(plannedGoalRepository.findByLearner_SkillpilotId("readonly-bavaria-economics-ui-learning"))
+                .isEmpty();
+
+        HttpResponse<String> clientStateResponse = sendJsonRequest(
+                "PUT",
+                "/api/ui/learners/readonly-bavaria-economics-ui-learning/client-state/" + LEGACY_BAYERN_ECONOMICS_WHY_ID,
+                """
+                        {
+                          "updatedAt": "2026-03-15T09:30:00Z",
+                          "srsState": {
+                            "card-1": {
+                              "interval": 1,
+                              "repetition": 0,
+                              "ef": 2.5,
+                              "nextReview": 0
+                            }
+                          }
+                        }
+                        """);
+        assertThat(clientStateResponse.statusCode()).isEqualTo(HttpStatus.CONFLICT.value());
+        assertThat(learnerClientStateRepository.findById(
+                new LearnerClientStateId(
+                        "readonly-bavaria-economics-ui-learning",
+                        LEGACY_BAYERN_ECONOMICS_WHY_ID))).isEmpty();
+    }
+
+    @Test
+    void bavariaEconomicsRetirementSessionRejectsUiCurriculumAndAiMasteryWrites() throws Exception {
+        Learner learner = new Learner();
+        learner.setSkillpilotId("readonly-bavaria-economics-ui-config");
+        learner.setSelectedCurriculum(BAVARIA_GYMNASIUM_ECONOMICS_ID);
+        learnerRepository.save(learner);
+
+        HttpResponse<String> curriculumResponse = sendJsonRequest(
+                "PUT",
+                "/api/ui/learners/readonly-bavaria-economics-ui-config/curriculum",
+                """
+                        {
+                          "curriculumId": "%s"
+                        }
+                        """.formatted(CANONICAL_GYMNASIUM_ROOT_ID));
+        assertThat(curriculumResponse.statusCode()).isEqualTo(HttpStatus.CONFLICT.value());
+        assertThat(
+                learnerRepository.findById("readonly-bavaria-economics-ui-config").orElseThrow()
+                        .getSelectedCurriculum())
+                .isEqualTo(BAVARIA_GYMNASIUM_ECONOMICS_ID);
+
+        HttpResponse<String> personalCurriculumResponse = sendJsonRequest(
+                "PUT",
+                "/api/ui/learners/readonly-bavaria-economics-ui-config/personal-curriculum",
+                """
+                        {
+                          "%s": {
+                            "selected": true,
+                            "filterId": "DE-BY"
+                          }
+                        }
+                        """.formatted(CANONICAL_GYMNASIUM_ROOT_ID));
+        assertThat(personalCurriculumResponse.statusCode()).isEqualTo(HttpStatus.CONFLICT.value());
+
+        HttpResponse<String> masteryResponse = sendJsonRequest(
+                "POST",
+                "/api/ai/en/learners/readonly-bavaria-economics-ui-config/mastery",
+                """
+                        {
+                          "goalId": "%s"
+                        }
+                        """.formatted(LEGACY_BAYERN_ECONOMICS_WHY_ID));
+        assertThat(masteryResponse.statusCode()).isEqualTo(HttpStatus.CONFLICT.value());
+        assertThat(masteryRepository.findById(new com.skillpilot.backend.domain.MasteryId(
+                "readonly-bavaria-economics-ui-config",
+                LEGACY_BAYERN_ECONOMICS_WHY_ID))).isEmpty();
     }
 
     @Test

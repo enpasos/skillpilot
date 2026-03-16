@@ -244,13 +244,13 @@ Reason:
 - the Bavaria math pilot now has `64` mappings on a real `J5-J10` spine
 - the Bavaria physics pilot adds only `23` further mappings under the same legacy tree
 - the live legacy Bavaria Gymnasium tree still contains `45` subject JSON files
-- `5` Bavaria Gymnasium mapping files currently exist under `curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/`
+- `6` Bavaria Gymnasium mapping files currently exist under `curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/`
 
 Operational reading:
 
 - this probe helps sustain the remaining close-out program while the overall headline now sits at `96.7%`
 - it does not yet justify a higher Bavaria tree delete-gate score than `90.0%`
-- the next honest percentage increase now requires broader Bavaria canonical replacement breadth beyond the current Math/Physics/Chemistry/Biology/Informatik corridor
+- the next honest percentage increase now requires broader Bavaria canonical replacement breadth beyond the current Math/Physics/Chemistry/Biology/Informatik/Wirtschaft_und_Recht corridor
 
 ## Practical consequence
 
