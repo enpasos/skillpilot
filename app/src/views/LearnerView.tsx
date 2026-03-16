@@ -62,6 +62,7 @@ const BAVARIA_GYMNASIUM_MATH_ID = 'c1600692-e543-5cf2-a399-6bd96e6b817f'
 const BAVARIA_GYMNASIUM_PHYSICS_ID = '42c2f7e3-91b4-5de8-bef0-d563440e9d52'
 const BAVARIA_GYMNASIUM_CHEMISTRY_ID = 'ff1ca997-b6cc-5ece-8e13-5498b4bbf808'
 const BAVARIA_GYMNASIUM_BIOLOGY_ID = '357a7003-b636-570e-a0bd-6bb63518d2f6'
+const BAVARIA_GYMNASIUM_INFORMATICS_ID = '1af3eba8-749f-5359-8f12-18f87b13616c'
 
 type HessenLowerSelection = {
   mathSelected: boolean
@@ -748,6 +749,9 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     if (selectedCurriculum === BAVARIA_GYMNASIUM_BIOLOGY_ID) {
       return 'Biologie'
     }
+    if (selectedCurriculum === BAVARIA_GYMNASIUM_INFORMATICS_ID) {
+      return 'Informatik'
+    }
     return null
   }, [learnerData?.selectedCurriculum])
   const bavariaLegacyRetirementSubjectEn = useMemo(() => {
@@ -762,6 +766,9 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     }
     if (bavariaLegacyRetirementSubject === 'Biologie') {
       return 'biology'
+    }
+    if (bavariaLegacyRetirementSubject === 'Informatik') {
+      return 'computer science'
     }
     return null
   }, [bavariaLegacyRetirementSubject])
@@ -793,6 +800,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
       || selectedCurriculum === BAVARIA_GYMNASIUM_PHYSICS_ID
       || selectedCurriculum === BAVARIA_GYMNASIUM_CHEMISTRY_ID
       || selectedCurriculum === BAVARIA_GYMNASIUM_BIOLOGY_ID
+      || selectedCurriculum === BAVARIA_GYMNASIUM_INFORMATICS_ID
     ) {
       return [
         { label: 'Quelle', value: `Bayern Gymnasium ${bavariaLegacyRetirementSubject}` },
@@ -2284,7 +2292,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
           ? (isUpperLegacyHessenSession
             ? 'Dein bisheriger Hessen-Lernstand bleibt erhalten und wird auf die gemeinsame DE-Struktur übernommen. Mathe, Physik, Chemie, Biologie, Informatik, Geschichte, Deutsch, Politik und Wirtschaft, Englisch, Französisch, Latein, Spanisch, Griechisch, Chinesisch, Musik und Wirtschaftswissenschaften laufen danach unter einem gemeinsamen Gymnasium-Root weiter.'
             : isBavariaLegacyRetirementOnly
-              ? `Dein bisheriger Bayern-${bavariaLegacyRetirementSubject}-Lernstand bleibt erhalten und wird auf die gemeinsame DE-Struktur übernommen. ${bavariaLegacyRetirementSubject === 'Physik' ? 'Physik und die benoetigte Mathe-Bruecke' : bavariaLegacyRetirementSubject === 'Chemie' ? 'Chemie' : bavariaLegacyRetirementSubject === 'Biologie' ? 'Biologie' : 'Mathematik'} laufen danach unter dem gemeinsamen Gymnasium-Root mit Filter DE-BY weiter.`
+              ? `Dein bisheriger Bayern-${bavariaLegacyRetirementSubject}-Lernstand bleibt erhalten und wird auf die gemeinsame DE-Struktur übernommen. ${bavariaLegacyRetirementSubject === 'Physik' ? 'Physik und die benoetigte Mathe-Bruecke' : bavariaLegacyRetirementSubject === 'Chemie' ? 'Chemie' : bavariaLegacyRetirementSubject === 'Biologie' ? 'Biologie' : bavariaLegacyRetirementSubject === 'Informatik' ? 'Informatik' : 'Mathematik'} laufen danach unter dem gemeinsamen Gymnasium-Root mit Filter DE-BY weiter.`
               : 'Dein bisheriger Hessen-Sek-I-Lernstand bleibt erhalten und wird auf die gemeinsame DE-Struktur übernommen. Mathe, Physik, Chemie, Biologie und Französisch laufen danach unter einem gemeinsamen Gymnasium-Root weiter.')
           : undefined}
         migrationActionLabel={canCutoverLegacyGymnasium ? 'Jetzt umstellen' : undefined}
