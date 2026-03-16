@@ -22,12 +22,12 @@ Observed repo status on `2026-03-16`:
 - validator entrypoint exists in `app/scripts/validateViewFilters.ts`
 - persistence step exists in `app/scripts/applyApplicability.ts`
 - accepted review debt is tracked in `docs/qa-ci/applicability-accepted-warnings.json`
-- current reviewed validator result is `0` errors, `0` active warnings, `8` accepted `APV-201` warnings
+- current reviewed validator result is `0` errors, `0` active warnings, `29` accepted warnings
 
 Interpretation:
 
 - the design decisions below are no longer hypothetical for the reviewed scope
-- the remaining architectural work is now about widening and hardening the reviewed applicability surface, especially as Bavaria broadens beyond the current Math/Physics pilot
+- the remaining architectural work is now about widening and hardening the reviewed applicability surface, especially as Bavaria broadens beyond the current Math/Physics/Chemistry/Biology adopted corridor
 
 ## Problem
 

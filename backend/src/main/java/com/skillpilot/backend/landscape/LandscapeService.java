@@ -674,11 +674,24 @@ public class LandscapeService {
     }
 
     public boolean isCompatibilityOnlyLandscape(String landscapeId) {
-        return landscapeId != null && COMPATIBILITY_ONLY_LANDSCAPE_IDS.contains(landscapeId);
+        ensureFresh();
+        return landscapeId != null
+                && (COMPATIBILITY_ONLY_LANDSCAPE_IDS.contains(landscapeId)
+                        || isLegacyBavariaGymnasiumLandscape(landscapeId));
     }
 
     public boolean isLegacyHiddenByDefaultLandscape(String landscapeId) {
         return landscapeId != null && LEGACY_HIDDEN_BY_DEFAULT_LANDSCAPE_IDS.contains(landscapeId);
+    }
+
+    private boolean isLegacyBavariaGymnasiumLandscape(String landscapeId) {
+        LearningLandscape landscape = cachedById.get(landscapeId);
+        if (landscape == null) {
+            return false;
+        }
+        return "DE".equalsIgnoreCase(landscape.getCountry())
+                && "BY".equalsIgnoreCase(landscape.getRegion())
+                && "Gymnasium".equalsIgnoreCase(landscape.getSchoolType());
     }
 
     public String resolveSourceLandscapeJurisdiction(String landscapeId) {

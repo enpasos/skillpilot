@@ -40,6 +40,7 @@ class LandscapeServiceTest {
         private static final String BAVARIA_PHYSICS_ID = "42c2f7e3-91b4-5de8-bef0-d563440e9d52";
         private static final String BAVARIA_CHEMISTRY_ID = "ff1ca997-b6cc-5ece-8e13-5498b4bbf808";
         private static final String BAVARIA_BIOLOGY_ID = "357a7003-b636-570e-a0bd-6bb63518d2f6";
+        private static final String BAVARIA_FRENCH_ID = "49aefe0c-f365-5f30-b84f-b9a7699e4f2c";
         private static final String BAVARIA_MATH_FUNCTION_CLUSTER_ID = "f9538605-8bf4-5279-b00a-c18786f9cc51";
         private static final String BAVARIA_PHYSICS_DIAGRAMS_ID = "0074dc7c-b4ab-5bfb-b1b7-a8f5cdb9accc";
         private static final String BAVARIA_BIOLOGY_GENETICS_CLUSTER_ID = "83af486d-92eb-501a-b32d-15a256be7d60";
@@ -159,16 +160,18 @@ class LandscapeServiceTest {
                                 .orElseThrow();
 
                 assertThat(bavariaRootSummary.isLegacyHiddenByDefault()).isTrue();
-                assertThat(bavariaRootSummary.isCompatibilityOnly()).isFalse();
+                assertThat(bavariaRootSummary.isCompatibilityOnly()).isTrue();
         }
 
         @Test
-        void classifiesBavariaPilotSubjectsAsCompatibilityOnly() {
+        void classifiesBavariaLegacyTreeAsCompatibilityOnly() {
                 LandscapeProperties properties = new LandscapeProperties();
                 properties.setDirectory("../curricula");
                 ObjectMapper objectMapper = new ObjectMapper();
                 LandscapeService landscapeService = new LandscapeService(properties, objectMapper);
 
+                assertThat(landscapeService.isCompatibilityOnlyLandscape(BAVARIA_GYMNASIUM_ROOT_ID)).isTrue();
+                assertThat(landscapeService.isLegacyHiddenByDefaultLandscape(BAVARIA_GYMNASIUM_ROOT_ID)).isTrue();
                 assertThat(landscapeService.isCompatibilityOnlyLandscape(BAVARIA_MATH_ID)).isTrue();
                 assertThat(landscapeService.isLegacyHiddenByDefaultLandscape(BAVARIA_MATH_ID)).isFalse();
                 assertThat(landscapeService.isCompatibilityOnlyLandscape(BAVARIA_PHYSICS_ID)).isTrue();
@@ -177,6 +180,8 @@ class LandscapeServiceTest {
                 assertThat(landscapeService.isLegacyHiddenByDefaultLandscape(BAVARIA_CHEMISTRY_ID)).isFalse();
                 assertThat(landscapeService.isCompatibilityOnlyLandscape(BAVARIA_BIOLOGY_ID)).isTrue();
                 assertThat(landscapeService.isLegacyHiddenByDefaultLandscape(BAVARIA_BIOLOGY_ID)).isFalse();
+                assertThat(landscapeService.isCompatibilityOnlyLandscape(BAVARIA_FRENCH_ID)).isTrue();
+                assertThat(landscapeService.isLegacyHiddenByDefaultLandscape(BAVARIA_FRENCH_ID)).isFalse();
         }
 
         @Test

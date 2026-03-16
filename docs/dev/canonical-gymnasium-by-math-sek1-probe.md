@@ -248,9 +248,9 @@ Reason:
 
 Operational reading:
 
-- this probe helps sustain the overall close-out headline of `94.2%`
-- it does not yet justify a higher Bavaria tree delete-gate score than `82.5%`
-- the next honest percentage increase requires broader Bavaria subject adoption or broader learner-facing retirement handling than the current Math/Physics pilot
+- this probe helps sustain the remaining close-out program while the overall headline now sits at `96.7%`
+- it does not yet justify a higher Bavaria tree delete-gate score than `90.0%`
+- the next honest percentage increase now requires broader Bavaria canonical replacement breadth beyond the current Math/Physics/Chemistry/Biology corridor
 
 ## Practical consequence
 

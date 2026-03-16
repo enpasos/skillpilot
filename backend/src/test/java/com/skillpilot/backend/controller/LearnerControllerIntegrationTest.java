@@ -79,10 +79,12 @@ public class LearnerControllerIntegrationTest {
     private static final String HESSEN_GYMNASIUM_LOWER_CHEMISTRY_ID = "bea90c22-b9c5-4c0c-9b10-89d875f50772";
     private static final String HESSEN_GYMNASIUM_LOWER_BIOLOGY_ID = "71438941-0ceb-46ee-ad31-773cee700779";
     private static final String HESSEN_GYMNASIUM_LOWER_FRENCH_ID = "762de708-85fa-4324-958e-56002a318f7f";
+    private static final String BAVARIA_GYMNASIUM_ROOT_ID = "12322e3f-f351-5d40-b4ea-4a13d7e15854";
     private static final String BAVARIA_GYMNASIUM_MATH_ID = "c1600692-e543-5cf2-a399-6bd96e6b817f";
     private static final String BAVARIA_GYMNASIUM_PHYSICS_ID = "42c2f7e3-91b4-5de8-bef0-d563440e9d52";
     private static final String BAVARIA_GYMNASIUM_CHEMISTRY_ID = "ff1ca997-b6cc-5ece-8e13-5498b4bbf808";
     private static final String BAVARIA_GYMNASIUM_BIOLOGY_ID = "357a7003-b636-570e-a0bd-6bb63518d2f6";
+    private static final String BAVARIA_GYMNASIUM_FRENCH_ID = "49aefe0c-f365-5f30-b84f-b9a7699e4f2c";
     private static final String LEGACY_BAVARIA_MATH_ROOT_ID = "eb9048a4-9cb9-5aaf-8a91-aeba08e05b0c";
     private static final String CANONICAL_PHYSICS_GK_PERSONAL_CONFIG = """
             {
@@ -3136,6 +3138,18 @@ public class LearnerControllerIntegrationTest {
         learner.setSkillpilotId("retired-bavaria-ui-selection");
         learnerRepository.save(learner);
 
+        HttpResponse<String> rootResponse = sendJsonRequest(
+                "PUT",
+                "/api/ui/learners/retired-bavaria-ui-selection/curriculum",
+                """
+                        {
+                          "curriculumId": "%s"
+                        }
+                        """.formatted(BAVARIA_GYMNASIUM_ROOT_ID));
+        assertThat(rootResponse.statusCode()).isEqualTo(HttpStatus.CONFLICT.value());
+        assertThat(learnerRepository.findById("retired-bavaria-ui-selection").orElseThrow().getSelectedCurriculum())
+                .isNull();
+
         HttpResponse<String> mathResponse = sendJsonRequest(
                 "PUT",
                 "/api/ui/learners/retired-bavaria-ui-selection/curriculum",
@@ -3181,6 +3195,18 @@ public class LearnerControllerIntegrationTest {
                         }
                         """.formatted(BAVARIA_GYMNASIUM_BIOLOGY_ID));
         assertThat(biologyResponse.statusCode()).isEqualTo(HttpStatus.CONFLICT.value());
+        assertThat(learnerRepository.findById("retired-bavaria-ui-selection").orElseThrow().getSelectedCurriculum())
+                .isNull();
+
+        HttpResponse<String> frenchResponse = sendJsonRequest(
+                "PUT",
+                "/api/ui/learners/retired-bavaria-ui-selection/curriculum",
+                """
+                        {
+                          "curriculumId": "%s"
+                        }
+                        """.formatted(BAVARIA_GYMNASIUM_FRENCH_ID));
+        assertThat(frenchResponse.statusCode()).isEqualTo(HttpStatus.CONFLICT.value());
         assertThat(learnerRepository.findById("retired-bavaria-ui-selection").orElseThrow().getSelectedCurriculum())
                 .isNull();
     }
@@ -3191,6 +3217,18 @@ public class LearnerControllerIntegrationTest {
         learner.setSkillpilotId("retired-bavaria-ai-selection");
         learnerRepository.save(learner);
 
+        HttpResponse<String> rootResponse = sendJsonRequest(
+                "POST",
+                "/api/ai/en/learners/retired-bavaria-ai-selection/curriculum",
+                """
+                        {
+                          "curriculumId": "%s"
+                        }
+                        """.formatted(BAVARIA_GYMNASIUM_ROOT_ID));
+        assertThat(rootResponse.statusCode()).isEqualTo(HttpStatus.CONFLICT.value());
+        assertThat(learnerRepository.findById("retired-bavaria-ai-selection").orElseThrow().getSelectedCurriculum())
+                .isNull();
+
         HttpResponse<String> mathResponse = sendJsonRequest(
                 "POST",
                 "/api/ai/en/learners/retired-bavaria-ai-selection/curriculum",
@@ -3236,6 +3274,18 @@ public class LearnerControllerIntegrationTest {
                         }
                         """.formatted(BAVARIA_GYMNASIUM_BIOLOGY_ID));
         assertThat(biologyResponse.statusCode()).isEqualTo(HttpStatus.CONFLICT.value());
+        assertThat(learnerRepository.findById("retired-bavaria-ai-selection").orElseThrow().getSelectedCurriculum())
+                .isNull();
+
+        HttpResponse<String> frenchResponse = sendJsonRequest(
+                "POST",
+                "/api/ai/en/learners/retired-bavaria-ai-selection/curriculum",
+                """
+                        {
+                          "curriculumId": "%s"
+                        }
+                        """.formatted(BAVARIA_GYMNASIUM_FRENCH_ID));
+        assertThat(frenchResponse.statusCode()).isEqualTo(HttpStatus.CONFLICT.value());
         assertThat(learnerRepository.findById("retired-bavaria-ai-selection").orElseThrow().getSelectedCurriculum())
                 .isNull();
     }

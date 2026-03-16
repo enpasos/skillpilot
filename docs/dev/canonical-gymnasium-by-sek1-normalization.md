@@ -59,7 +59,7 @@ As of `2026-03-16`:
 Practical consequence:
 
 - the next percentage increase should come from adopting at least one additional Bavaria subject corridor from Cohort A or Cohort C
-- more inventory detail alone should not raise the reported migration headline beyond the current `94.2%`
+- more inventory detail alone should not raise the reported migration headline beyond the current `96.7%`
 
 ## Entry cohorts
 
