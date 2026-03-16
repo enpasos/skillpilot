@@ -1,5 +1,7 @@
 # Canonical Gymnasium Implementation Plan
 
+Snapshot: `2026-03-16`
+
 This document turns the rollout strategy from the concept docs into an implementation-oriented plan.
 
 See also:
@@ -17,6 +19,20 @@ The implementation should start without breaking:
 - the current unified learner-state contract.
 
 The project should therefore start with a small, testable pilot rather than a broad curriculum rewrite.
+
+## Current reported status
+
+Use `docs/dev/canonical-gymnasium-migration-status.md` as the single headline-score source.
+
+Current reported migration status on `2026-03-16`:
+
+- `94.2%`
+
+Interpretation:
+
+- `curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe` is at `100%` tree-level delete-gate completion and is already deleted from the active repo
+- `curricula/DE/HE/Kultusministerium/Gymnasium_9_Mittelstufe` is at `100%` tree-level delete-gate completion and is already deleted from the active repo
+- `curricula/DE/BY/Gymnasium` is at `82.5%` tree-level delete-gate progress and remains the only tracked close-out tree that is still open
 
 ## Guardrails
 
@@ -120,6 +136,7 @@ Current operational baseline:
 - the first canonical Sek-I normalization target is the shared G9-aligned year-level grid `5-10`; duration-specific source labels stay in provenance and archived inputs
 - retained state-owned assets such as `abi/`, source bundles, and derived exam packages are expected to survive the transition in state-scoped DE archive lanes
 - the canonical `Gymnasium (DE)` overview root is the current preferred DE-level learner entry point
+- compiled node-level `applicability` is now implemented for the reviewed canonical DE Gymnasium set via `app/scripts/compileApplicability.ts`, `app/scripts/validateViewFilters.ts`, and `app/scripts/applyApplicability.ts`; the current reviewed validator result is `0` errors, `0` active warnings, `8` accepted warnings
 - the DE-level Mathematics landscape now bulk-adopts the Hessen upper-secondary tree and keeps the existing Sek-I bridge plus exact Hessen legacy mappings for later learner migration
 - the DE-level Physics landscape now bulk-adopts the Hessen upper-secondary tree and keeps the pre-existing cross-subject Math bridge and Bavaria collision anchor IDs stable for later learner migration
 - the DE-level Chemistry landscape now bulk-adopts the Hessen upper-secondary tree as the next Hessen-first subject slice and is attached below the shared DE root
@@ -208,7 +225,7 @@ Current operational baseline:
 - the canonical Chinese Hessen baseline is `subtree_adopted`
 - the canonical Music Hessen baseline is `subtree_adopted`
 - the canonical Economics Hessen baseline is `subtree_adopted`
-- no subtree has reached `legacy_view_retained` yet
+- at tracked-tree granularity, Hessen upper-secondary and Hessen lower-secondary have already completed the delete handoff (`legacy_deleted`); Bavaria Gymnasium remains the only open tree-level close-out program
 
 ## Close-out steering
 
@@ -225,11 +242,11 @@ From here on, the main overall percentage should be the completion-track score f
 
 Current close-out headline:
 
-- `83.3%`
+- `94.2%`
 
 Operational consequence:
 
-- prioritize work that closes delete gates on `Gymnasium_9_Mittelstufe` and `DE/BY/Gymnasium`
+- prioritize work that closes delete gates on `DE/BY/Gymnasium`
 - de-prioritize new pilot breadth unless it directly unlocks runtime default, cutover, audit survival, or tree deletion
 
 ## Work packages

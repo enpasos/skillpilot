@@ -1,12 +1,13 @@
 # Bavaria Mathematics Sek I Probe
 
-Snapshot: `2026-03-14`
+Snapshot: `2026-03-16`
 
 This note turns the Bavaria Sek-I normalization rule into a concrete first probe for `Mathematik`.
 
 It complements:
 
 - `docs/dev/canonical-gymnasium-by-sek1-normalization.md`
+- `docs/dev/canonical-gymnasium-migration-status.md`
 - `curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_math_to_canonical_math_pilot.json`
 - `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json`
 
@@ -233,6 +234,23 @@ These are the first practical Bavaria source rows to use when building the ancho
 - `M10 3 Sinus- und Kosinusfunktion`
 - `M10 4 Ganzrationale Funktionen`
 - `M10 5 Fortführung der Raumgeometrie`
+
+## Migration-status implication
+
+As of `2026-03-16`, this probe is strong enough to justify the Bavaria pilot staying on the close-out path, but not strong enough to move the Bavaria tree beyond `partial` canonical-replacement breadth in `docs/dev/canonical-gymnasium-migration-status.md`.
+
+Reason:
+
+- the Bavaria math pilot now has `64` mappings on a real `J5-J10` spine
+- the Bavaria physics pilot adds only `23` further mappings under the same legacy tree
+- the live legacy Bavaria Gymnasium tree still contains `45` subject JSON files
+- only `2` Bavaria Gymnasium mapping files currently exist under `curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/`
+
+Operational reading:
+
+- this probe helps sustain the overall close-out headline of `94.2%`
+- it does not yet justify a higher Bavaria tree delete-gate score than `82.5%`
+- the next honest percentage increase requires broader Bavaria subject adoption or broader learner-facing retirement handling than the current Math/Physics pilot
 
 ## Practical consequence
 

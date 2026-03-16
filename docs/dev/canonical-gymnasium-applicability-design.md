@@ -1,6 +1,6 @@
 # Canonical Gymnasium Applicability Design
 
-Snapshot: `2026-03-14`
+Snapshot: `2026-03-16`
 
 This note defines the target design for **generic runtime filtering on canonical Gymnasium graphs**.
 
@@ -11,6 +11,23 @@ Related documents:
 - `docs/concept/curriculum-graph/canonical-gymnasium-rollout.md`
 - `docs/dev/canonical-gymnasium-implementation-plan.md`
 - `docs/dev/canonical-gymnasium-migration-status.md`
+
+## Current implementation status
+
+The first applicability slice is now implemented for the reviewed canonical DE Gymnasium set.
+
+Observed repo status on `2026-03-16`:
+
+- compiler entrypoint exists in `app/scripts/compileApplicability.ts`
+- validator entrypoint exists in `app/scripts/validateViewFilters.ts`
+- persistence step exists in `app/scripts/applyApplicability.ts`
+- accepted review debt is tracked in `docs/qa-ci/applicability-accepted-warnings.json`
+- current reviewed validator result is `0` errors, `0` active warnings, `8` accepted `APV-201` warnings
+
+Interpretation:
+
+- the design decisions below are no longer hypothetical for the reviewed scope
+- the remaining architectural work is now about widening and hardening the reviewed applicability surface, especially as Bavaria broadens beyond the current Math/Physics pilot
 
 ## Problem
 
@@ -209,9 +226,9 @@ Rules for overrides:
 
 ## Review checklist
 
-This section is the intended review surface before implementation starts.
+This section remains the review surface for widening or changing the implemented applicability mechanism.
 
-The implementation should only proceed once these points are accepted.
+The reviewed scope should only expand once these points still hold.
 
 ### R1. Runtime field choice
 
@@ -494,7 +511,7 @@ Recommended first set:
 | `APV-202` | warning | applicability is backed only by `partial` mappings | surface in report; allowed for visibility |
 | `APV-203` | warning | compiled applicability changed since the previous committed state for a reviewed canonical file | surface in review diff |
 
-The exact code names can still change before implementation, but the split between hard validation errors and auditable warnings should remain.
+These code names are now used by the compiler and validator in the repo; the split between hard validation errors and auditable warnings should remain stable.
 
 ## Runtime consequences
 
@@ -618,7 +635,7 @@ Report requirements:
 Recommended approval output:
 
 - one explicit yes/no answer for each item in the review checklist above
-- note any naming changes before implementation starts
+- note any naming changes before the reviewed applicability scope is widened further
 
 ### Phase 2. Read-only compiler
 
@@ -695,6 +712,11 @@ Recommended go/no-go rule for implementation:
 
 - proceed to runtime integration only after the reviewed pilot set has zero `APV-0xx` and `APV-1xx` errors
 - warnings may remain temporarily, but only if they are explicitly accepted in review
+
+Current status note `2026-03-16`:
+
+- the reviewed CI scope already satisfies the hard-error rule
+- `A5` is exercised by the current accepted Bavaria `APV-201` cases tracked in `docs/qa-ci/applicability-accepted-warnings.json`
 
 ## Implementation touchpoints
 
@@ -841,10 +863,11 @@ Current recommendation:
 
 ## Recommended next implementation step
 
-After review, the first implementation step should be:
+After the now-landed first applicability slice, the next implementation step should be:
 
-- a read-only `applicability` compiler plus projected-graph validator for canonical Gymnasium landscapes
+- widen the reviewed applicability scope and keep reducing override-backed Bavaria pilot debt before broader delete-handoff claims are raised
 
 and not yet:
 
-- a direct runtime rewrite.
+- introduce a second compiled dimension
+- merge visibility applicability with mastery projection

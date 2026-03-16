@@ -1,8 +1,13 @@
 # Bavaria Sek I Year-Level Normalization
 
-Snapshot: `2026-03-14`
+Snapshot: `2026-03-16`
 
 This note turns the new Sek-I normalization rule into an operational inventory for the Bavaria source snapshot under `curricula/DE/Gymnasium/input/DE-BY/gymnasium/`.
+
+It complements:
+
+- `docs/dev/canonical-gymnasium-by-math-sek1-probe.md`
+- `docs/dev/canonical-gymnasium-migration-status.md`
 
 Working rule:
 
@@ -40,6 +45,21 @@ Interpretation:
 - Bavaria Sek I source coverage becomes much denser from year `8` onward.
 - Year `5-7` already have broad coverage in languages, math, arts, religion/ethics, sport, and `Natur_und_Technik_(Gym)`.
 - Science-heavy adoption corridors in Bavaria naturally start at `8-10`, which still fits the shared canonical `5-10` grid.
+
+## Migration-status implication
+
+This inventory is now stable enough to guide the next Bavaria breadth increase, but by itself it is still planning evidence rather than delete-handoff proof.
+
+As of `2026-03-16`:
+
+- `31` Bavaria subjects show some Sek-I coverage on the shared `5-10` grid
+- only `2` Bavaria Gymnasium pilot mapping files are currently adopted in the DE-level mapping lane
+- therefore `curricula/DE/BY/Gymnasium` remains `partial` on canonical replacement breadth in the current delete matrix
+
+Practical consequence:
+
+- the next percentage increase should come from adopting at least one additional Bavaria subject corridor from Cohort A or Cohort C
+- more inventory detail alone should not raise the reported migration headline beyond the current `94.2%`
 
 ## Entry cohorts
 

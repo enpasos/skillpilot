@@ -147,6 +147,7 @@ public class LearnerService {
     private static final String HESSEN_GYMNASIUM_LOWER_FRENCH_ID = "762de708-85fa-4324-958e-56002a318f7f";
     private static final String BAVARIA_GYMNASIUM_MATH_ID = "c1600692-e543-5cf2-a399-6bd96e6b817f";
     private static final String BAVARIA_GYMNASIUM_PHYSICS_ID = "42c2f7e3-91b4-5de8-bef0-d563440e9d52";
+    private static final String BAVARIA_GYMNASIUM_CHEMISTRY_ID = "ff1ca997-b6cc-5ece-8e13-5498b4bbf808";
     private static final String DEFAULT_COURSE_FILTER_ID = "GK";
 
     @Value("${skillpilot.security.signing-secret}")
@@ -1212,7 +1213,8 @@ public class LearnerService {
         }
         String curriculumId = learner.getSelectedCurriculum();
         return BAVARIA_GYMNASIUM_MATH_ID.equals(curriculumId)
-                || BAVARIA_GYMNASIUM_PHYSICS_ID.equals(curriculumId);
+                || BAVARIA_GYMNASIUM_PHYSICS_ID.equals(curriculumId)
+                || BAVARIA_GYMNASIUM_CHEMISTRY_ID.equals(curriculumId);
     }
 
     @Transactional
@@ -1228,7 +1230,7 @@ public class LearnerService {
         }
         if (landscapeService.isCompatibilityOnlyLandscape(effectiveCurriculumId)) {
             throw new ResponseStatusException(org.springframework.http.HttpStatus.CONFLICT,
-                    "This compatibility-only curriculum is retired. Select Gymnasium (DE) and use the canonical DE-HE filter instead.");
+                    buildCompatibilityOnlyRetirementMessage(effectiveCurriculumId));
         }
         Learner learner = getLearner(skillpilotId);
         boolean curriculumChanged = !Objects.equals(learner.getSelectedCurriculum(), effectiveCurriculumId);
@@ -1501,7 +1503,8 @@ public class LearnerService {
                 || HESSEN_GYMNASIUM_LOWER_BIOLOGY_ID.equals(curriculumId)
                 || HESSEN_GYMNASIUM_LOWER_FRENCH_ID.equals(curriculumId)
                 || BAVARIA_GYMNASIUM_MATH_ID.equals(curriculumId)
-                || BAVARIA_GYMNASIUM_PHYSICS_ID.equals(curriculumId);
+                || BAVARIA_GYMNASIUM_PHYSICS_ID.equals(curriculumId)
+                || BAVARIA_GYMNASIUM_CHEMISTRY_ID.equals(curriculumId);
     }
 
     private CanonicalGymnasiumCutoverPlan buildCanonicalGymnasiumCutoverPlan(Learner learner, List<String> storedPlannedGoals) {
@@ -1778,7 +1781,8 @@ public class LearnerService {
 
     private boolean isSupportedBavariaGymnasiumCutoverSource(String curriculumId) {
         return BAVARIA_GYMNASIUM_MATH_ID.equals(curriculumId)
-                || BAVARIA_GYMNASIUM_PHYSICS_ID.equals(curriculumId);
+                || BAVARIA_GYMNASIUM_PHYSICS_ID.equals(curriculumId)
+                || BAVARIA_GYMNASIUM_CHEMISTRY_ID.equals(curriculumId);
     }
 
     private record HessenLowerSecondarySelection(
@@ -1895,17 +1899,25 @@ public class LearnerService {
     private CanonicalGymnasiumCutoverPlan buildBavariaCanonicalGymnasiumCutoverPlan(
             Learner learner,
             List<String> storedPlannedGoals) {
+        boolean mathSelected = BAVARIA_GYMNASIUM_MATH_ID.equals(learner.getSelectedCurriculum());
         boolean physicsSelected = BAVARIA_GYMNASIUM_PHYSICS_ID.equals(learner.getSelectedCurriculum());
+        boolean chemistrySelected = BAVARIA_GYMNASIUM_CHEMISTRY_ID.equals(learner.getSelectedCurriculum());
+
+        if (physicsSelected) {
+            mathSelected = true;
+        }
 
         Map<String, Object> personalCurriculumConfig = new LinkedHashMap<>();
         personalCurriculumConfig.put(CANONICAL_GYMNASIUM_ROOT_ID, createSelectionConfig(true, "DE-BY"));
-        personalCurriculumConfig.put(CANONICAL_GYMNASIUM_MATH_ID, createSelectionConfig(true, null));
+        personalCurriculumConfig.put(CANONICAL_GYMNASIUM_MATH_ID, createSelectionConfig(mathSelected, null));
         personalCurriculumConfig.put(CANONICAL_GYMNASIUM_PHYSICS_ID, createSelectionConfig(physicsSelected, null));
+        personalCurriculumConfig.put(CANONICAL_GYMNASIUM_CHEMISTRY_ID, createSelectionConfig(chemistrySelected, null));
 
         String personalCurriculumJson = writePersonalCurriculumConfig(personalCurriculumConfig);
         Map<String, LearningGoal> structuralGoals = new LinkedHashMap<>(getFilteredGoals(CANONICAL_GYMNASIUM_ROOT_ID, "{}"));
         structuralGoals.putAll(getFilteredGoals(CANONICAL_GYMNASIUM_MATH_ID, "{}"));
         structuralGoals.putAll(getFilteredGoals(CANONICAL_GYMNASIUM_PHYSICS_ID, "{}"));
+        structuralGoals.putAll(getFilteredGoals(CANONICAL_GYMNASIUM_CHEMISTRY_ID, "{}"));
         List<String> normalizedPlannedGoalIds = normalizeCutoverPlannedGoalIds(storedPlannedGoals, structuralGoals).stream()
                 .filter(structuralGoals::containsKey)
                 .toList();
@@ -1924,6 +1936,17 @@ public class LearnerService {
                 normalizedPlannedGoalIds,
                 normalizedActiveGoalId,
                 normalizedLearningState != null ? normalizedLearningState : LearningState.FRONTIER);
+    }
+
+    private String buildCompatibilityOnlyRetirementMessage(String curriculumId) {
+        String jurisdiction = landscapeService.resolveSourceLandscapeJurisdiction(curriculumId);
+        if ("DE-BY".equals(jurisdiction)) {
+            return "This compatibility-only curriculum is retired. Select Gymnasium (DE) and use the canonical DE-BY filter instead.";
+        }
+        if ("DE-HE".equals(jurisdiction)) {
+            return "This compatibility-only curriculum is retired. Select Gymnasium (DE) and use the canonical DE-HE filter instead.";
+        }
+        return "This compatibility-only curriculum is retired. Select Gymnasium (DE) instead.";
     }
 
     private Map<String, Map<String, Object>> parsePersonalCurriculumConfig(String personalCurriculumJson) {

@@ -62,7 +62,19 @@ Interpretation:
 - unlike the older rollout score, it is tied directly to the remaining delete-handoff work
 - from here on, progress updates should prefer this number as the main "how close are we?" headline
 
-## Snapshot 2026-03-15
+## Reported headline 2026-03-16
+
+Current reported migration status:
+
+- `94.2%`
+
+Why this is the right number right now:
+
+- `2` of the `3` tracked legacy trees are already deleted from the active repo
+- the remaining Bavaria tree still exists and currently scores `82.5%`
+- a higher close-out headline would overstate the current delete-handoff position
+
+## Snapshot 2026-03-16
 
 Observed repo state:
 
@@ -72,6 +84,9 @@ Observed repo state:
 - Hessen upper-secondary mapping files present: `16`
 - Hessen Sek I mapping files present: `5`
 - Bavaria Gymnasium pilot mapping files present: `2`
+- `npm run validate:view-filters` currently returns `0` errors, `0` active warnings, `8` accepted warnings
+- `python3 scripts/validate_bavaria_gymnasium_legacy_refs.py` currently passes with `0` violations while still reporting `Legacy tree present: yes`
+- `python3 scripts/validate_bavaria_gymnasium_archive_paths.py` currently passes with `0` violations
 - the Bavaria Sek-I mathematics pilot now spans the shared canonical `J5-J10` spine with `64` reviewed mappings, including first explicit subrow refinement for `M8 3`, `M8 4`, `M9 3`, `M9 7`, and `M10 2`
 - the Hessen Sek-I mathematics pilot now carries `33` explicit mappings and reaches reviewed row coverage beyond the old function/quadratic slice: J5 number basics, linear equations/inequalities, quadratic binomial-form routes, roots, similarity/Strahlensatz, Pythagoras, circle/cylinder, and integer-exponent rules
 - the reviewed Hessen Sek-I mathematics pilot no longer carries any `APV-202` findings; remaining reviewed math debt is now limited to the two Bayern override-backed `APV-201` cases
@@ -386,8 +401,8 @@ Recommended update rhythm:
 - update the program score only from explicit state transitions
 - update the completion-track score whenever one of the tracked legacy-tree gate scores changes
 - update the tree-by-tree delete matrix whenever one of the six delete gates materially changes for a legacy source tree
-- keep `docs/dev/canonical-gymnasium-applicability-design.md` as the review target for the next state-filter architecture step
-- treat checklist `R1-R7` and pilot gates `A1-A5` in that document as the review gate before compiler/validator implementation starts
+- keep `docs/dev/canonical-gymnasium-applicability-design.md` as the review target for the next widening step of the implemented state-filter architecture
+- treat checklist `R1-R7` and pilot gates `A1-A5` in that document as the review gate before widening the reviewed applicability scope further
 - do not increase the percentage because of "felt progress"
 
 ## My assessment
@@ -401,10 +416,10 @@ If we collapse both into one naive percentage too early, the number becomes misl
 
 This document therefore uses:
 
-- `83.3%` as the current completion-track headline score
+- `94.2%` as the current completion-track headline score
 - `55%` as the current historical migration-program score
 - `100%` as the current input-transfer score for the currently known mandatory scope
-- `100%` / `100%` / `50.0%` as the current delete-gate progress picture for the three tracked legacy trees
+- `100%` / `100%` / `82.5%` as the current delete-gate progress picture for the three tracked legacy trees
 - `67%` as the current hard legacy-tree retirement picture, because two of the three tracked legacy trees have now actually been removed from the active repo without breaking the verified handoff paths
 
 That is, in my view, the most honest planning representation of the current state.
