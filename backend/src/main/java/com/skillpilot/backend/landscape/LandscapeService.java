@@ -42,6 +42,11 @@ public class LandscapeService {
     private static final int SUPPORTED_COMPATIBILITY_TOPIC_REGISTRY_VERSION = 1;
     private static final Path COMPATIBILITY_TOPIC_REGISTRY_PATH = Path.of(
             "DE", "Gymnasium", "archive", "compatibility-topic-summary-registry.json");
+    private static final Map<String, String> RETAINED_ASSET_PATH_NORMALIZATIONS = Map.of(
+            "curricula/DE/Gymnasium/input/DE-HE/",
+            "curricula/DE/Gymnasium/input/HE/",
+            "curricula/DE/Gymnasium/input/DE-BY/",
+            "curricula/DE/Gymnasium/input/BY/");
     private static final Set<String> COMPATIBILITY_ONLY_LANDSCAPE_IDS = Set.of(
             "bbbf39f3-4a5b-46cf-9edd-48f2c54ae0da",
             "2796fc7b-ba9d-446f-8f26-711dd6d8a9a3",
@@ -506,21 +511,52 @@ public class LandscapeService {
     }
 
     private Path resolveRegistryRepoPath(Path curriculaDir, String repoRelativePath) {
-        Path directCandidate = curriculaDir.resolve(repoRelativePath).normalize();
-        if (Files.exists(directCandidate)) {
-            return directCandidate;
-        }
-        Path repoRoot = curriculaDir.getParent();
-        if (repoRoot != null) {
-            Path repoCandidate = repoRoot.resolve(repoRelativePath).normalize();
-            if (Files.exists(repoCandidate)) {
-                return repoCandidate;
+        for (String candidatePath : registryPathCandidates(repoRelativePath)) {
+            Path directCandidate = curriculaDir.resolve(candidatePath).normalize();
+            if (Files.exists(directCandidate)) {
+                return directCandidate;
+            }
+            Path repoRoot = curriculaDir.getParent();
+            if (repoRoot != null) {
+                Path repoCandidate = repoRoot.resolve(candidatePath).normalize();
+                if (Files.exists(repoCandidate)) {
+                    return repoCandidate;
+                }
+            }
+            if (candidatePath.startsWith("curricula/")) {
+                Path curriculaRelativeCandidate = curriculaDir.resolve(candidatePath.substring("curricula/".length()))
+                        .normalize();
+                if (Files.exists(curriculaRelativeCandidate)) {
+                    return curriculaRelativeCandidate;
+                }
             }
         }
-        if (repoRelativePath.startsWith("curricula/")) {
-            return curriculaDir.resolve(repoRelativePath.substring("curricula/".length())).normalize();
+        String normalizedRepoRelativePath = normalizeRetainedAssetPath(repoRelativePath);
+        if (normalizedRepoRelativePath.startsWith("curricula/")) {
+            return curriculaDir.resolve(normalizedRepoRelativePath.substring("curricula/".length())).normalize();
         }
-        return directCandidate;
+        return curriculaDir.resolve(normalizedRepoRelativePath).normalize();
+    }
+
+    private List<String> registryPathCandidates(String repoRelativePath) {
+        String normalized = normalizeRetainedAssetPath(repoRelativePath);
+        if (normalized.equals(repoRelativePath)) {
+            return List.of(repoRelativePath);
+        }
+        return List.of(repoRelativePath, normalized);
+    }
+
+    private String normalizeRetainedAssetPath(String repoRelativePath) {
+        if (!StringUtils.hasText(repoRelativePath)) {
+            return repoRelativePath;
+        }
+        String normalized = repoRelativePath;
+        for (Map.Entry<String, String> entry : RETAINED_ASSET_PATH_NORMALIZATIONS.entrySet()) {
+            if (normalized.startsWith(entry.getKey())) {
+                return entry.getValue() + normalized.substring(entry.getKey().length());
+            }
+        }
+        return normalized;
     }
 
     private boolean isCriticalLandscapeFile(Path file) {

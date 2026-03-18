@@ -7,7 +7,12 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parent.parent
-TOOLING_REGISTRY_PATH = ROOT / "curricula/DE/Gymnasium/input/DE-HE/retained-asset-registry.json"
+TOOLING_REGISTRY_PATH_CANDIDATES = (
+    ROOT / "curricula/DE/Gymnasium/input/DE-HE/retained-asset-registry.json",
+    ROOT / "curricula/DE/Gymnasium/input/HE/retained-asset-registry.json",
+)
+LEGACY_UPPER_SECONDARY_PATH_PREFIX = "curricula/DE/Gymnasium/input/DE-HE/"
+UPPER_SECONDARY_PATH_PREFIX = "curricula/DE/Gymnasium/input/HE/"
 
 
 @dataclass(frozen=True)
@@ -25,16 +30,46 @@ def _load_json(path: Path) -> dict:
         return json.load(handle)
 
 
+def _normalize_tooling_path(path_value: str) -> str:
+    return path_value.replace(
+        LEGACY_UPPER_SECONDARY_PATH_PREFIX,
+        UPPER_SECONDARY_PATH_PREFIX,
+    )
+
+
+def _tooling_registry_path() -> Path:
+    for candidate in TOOLING_REGISTRY_PATH_CANDIDATES:
+        if candidate.exists():
+            return candidate
+    raise FileNotFoundError(
+        "Missing Hessen upper-secondary tooling registry: "
+        + ", ".join(str(path) for path in TOOLING_REGISTRY_PATH_CANDIDATES)
+    )
+
+
 @lru_cache(maxsize=1)
 def _tooling_registry() -> dict:
-    return _load_json(TOOLING_REGISTRY_PATH)
+    return _load_json(_tooling_registry_path())
 
 
 @lru_cache(maxsize=1)
 def _source_registry_entries() -> dict[str, dict]:
-    source_registry_path = ROOT / _tooling_registry()["sourceLandscapeRegistryPath"]
+    source_registry_path = ROOT / _normalize_tooling_path(
+        _tooling_registry()["sourceLandscapeRegistryPath"]
+    )
     source_registry = _load_json(source_registry_path)
-    return {entry["landscapeId"]: entry for entry in source_registry["entries"]}
+    return {
+        entry["landscapeId"]: {
+            **entry,
+            "archiveSourcePath": (
+                _normalize_tooling_path(entry["archiveSourcePath"])
+                if entry.get("archiveSourcePath")
+                else None
+            ),
+            "sourcePath": _normalize_tooling_path(entry["sourcePath"]),
+        }
+        for entry in source_registry["entries"]
+    }
 
 
 def _subject_registry(subject_key: str) -> dict:
@@ -54,8 +89,8 @@ def resolve_hessen_upper_secondary_landscape_path(subject_key: str) -> Path:
         )
     archive_source_path = landscape_entry.get("archiveSourcePath")
     if archive_source_path:
-        return ROOT / archive_source_path
-    return ROOT / landscape_entry["sourcePath"]
+        return ROOT / _normalize_tooling_path(archive_source_path)
+    return ROOT / _normalize_tooling_path(landscape_entry["sourcePath"])
 
 
 def resolve_hessen_upper_secondary_landscape_directory(subject_key: str) -> Path:
@@ -72,7 +107,7 @@ def resolve_hessen_upper_secondary_mapping_path(subject_key: str) -> Path:
     mapping_file = subject.get("mappingFile")
     if not mapping_file:
         raise KeyError(f"Missing Hessen upper-secondary mapping file for subject key: {subject_key}")
-    return ROOT / _tooling_registry()["mappingArchivePath"] / mapping_file
+    return ROOT / _normalize_tooling_path(_tooling_registry()["mappingArchivePath"]) / mapping_file
 
 
 def resolve_hessen_upper_secondary_exam_paths(subject_key: str) -> HessenUpperSecondaryExamPaths:
@@ -80,7 +115,8 @@ def resolve_hessen_upper_secondary_exam_paths(subject_key: str) -> HessenUpperSe
     subject = _subject_registry(subject_key)
     return HessenUpperSecondaryExamPaths(
         source_landscape_id=subject["landscapeId"],
-        source_landscape_registry_path=ROOT / _tooling_registry()["sourceLandscapeRegistryPath"],
+        source_landscape_registry_path=ROOT
+        / _normalize_tooling_path(_tooling_registry()["sourceLandscapeRegistryPath"]),
         landscape_path=resolve_hessen_upper_secondary_landscape_path(subject_key),
         slot_matrix_path=abi_directory / "slot_matrix.json",
         coverage_path=abi_directory / "coverage_requirements.json",

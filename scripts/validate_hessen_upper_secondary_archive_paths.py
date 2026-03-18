@@ -16,14 +16,36 @@ from file_pattern_search import find_matching_files
 
 
 ROOT = Path(__file__).resolve().parent.parent
-TOOLING_REGISTRY_PATH = ROOT / "curricula/DE/Gymnasium/input/DE-HE/retained-asset-registry.json"
+TOOLING_REGISTRY_PATH_CANDIDATES = (
+    ROOT / "curricula/DE/Gymnasium/input/DE-HE/retained-asset-registry.json",
+    ROOT / "curricula/DE/Gymnasium/input/HE/retained-asset-registry.json",
+)
+LEGACY_UPPER_SECONDARY_PATH_PREFIX = "curricula/DE/Gymnasium/input/DE-HE/"
+UPPER_SECONDARY_PATH_PREFIX = "curricula/DE/Gymnasium/input/HE/"
 RETIREMENT_REGISTRY_PATH = (
     ROOT / "curricula/DE/Gymnasium/provenance/hessen-upper-secondary-retirement-registry.json"
 )
 
 
+def _normalize_tooling_path(path: str) -> str:
+    return path.replace(
+        LEGACY_UPPER_SECONDARY_PATH_PREFIX,
+        UPPER_SECONDARY_PATH_PREFIX,
+    )
+
+
+def _tooling_registry_path() -> Path:
+    for candidate in TOOLING_REGISTRY_PATH_CANDIDATES:
+        if candidate.exists():
+            return candidate
+    raise FileNotFoundError(
+        "Missing Hessen upper-secondary tooling registry: "
+        + ", ".join(str(path) for path in TOOLING_REGISTRY_PATH_CANDIDATES)
+    )
+
+
 def load_registry() -> dict:
-    with TOOLING_REGISTRY_PATH.open("r", encoding="utf-8") as handle:
+    with _tooling_registry_path().open("r", encoding="utf-8") as handle:
         return json.load(handle)
 
 
@@ -41,8 +63,11 @@ def matches_allowlist(path: str, allowlist: list[str]) -> bool:
 def main() -> None:
     registry = load_registry()
     legacy_pattern = load_legacy_pattern()
-    archive_root = ROOT / registry["abiArchivePath"]
-    allowlist = registry.get("allowedRawLegacyPathGlobs", [])
+    archive_root = ROOT / _normalize_tooling_path(registry["abiArchivePath"])
+    allowlist = [
+        _normalize_tooling_path(pattern)
+        for pattern in registry.get("allowedRawLegacyPathGlobs", [])
+    ]
 
     archive_arg = (
         str(archive_root.relative_to(ROOT))

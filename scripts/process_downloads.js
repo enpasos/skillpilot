@@ -4,11 +4,33 @@ const https = require('https');
 const crypto = require('crypto');
 
 const ROOT_DIR = path.resolve(__dirname, '..');
-const TOOLING_REGISTRY_PATH = path.join(
-    ROOT_DIR,
-    'curricula/DE/Gymnasium/input/DE-HE/retained-asset-registry.json',
+const TOOLING_REGISTRY_PATH_CANDIDATES = [
+    path.join(ROOT_DIR, 'curricula/DE/Gymnasium/input/DE-HE/retained-asset-registry.json'),
+    path.join(ROOT_DIR, 'curricula/DE/Gymnasium/input/HE/retained-asset-registry.json'),
+];
+const LEGACY_UPPER_SECONDARY_PATH_PREFIX = 'curricula/DE/Gymnasium/input/DE-HE/';
+const UPPER_SECONDARY_PATH_PREFIX = 'curricula/DE/Gymnasium/input/HE/';
+const TOOLING_REGISTRY_PATH = TOOLING_REGISTRY_PATH_CANDIDATES.find((candidatePath) =>
+    fs.existsSync(candidatePath),
 );
-const toolingRegistry = JSON.parse(fs.readFileSync(TOOLING_REGISTRY_PATH, 'utf8'));
+
+if (!TOOLING_REGISTRY_PATH || !fs.existsSync(TOOLING_REGISTRY_PATH)) {
+    throw new Error(
+        `Missing Hessen upper-secondary tooling registry: ${TOOLING_REGISTRY_PATH_CANDIDATES.join(', ')}`,
+    );
+}
+
+const normalizeToolingPath = (value) => value.replaceAll(
+  LEGACY_UPPER_SECONDARY_PATH_PREFIX,
+  UPPER_SECONDARY_PATH_PREFIX,
+);
+
+const rawToolingRegistry = JSON.parse(fs.readFileSync(TOOLING_REGISTRY_PATH, 'utf8'));
+const toolingRegistry = {
+    ...rawToolingRegistry,
+    abiArchivePath: normalizeToolingPath(rawToolingRegistry.abiArchivePath),
+    mappingArchivePath: normalizeToolingPath(rawToolingRegistry.mappingArchivePath),
+};
 
 // Target directory
 const TARGET_DIR = path.join(ROOT_DIR, toolingRegistry.abiArchivePath, 'input');
