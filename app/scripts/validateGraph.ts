@@ -286,18 +286,20 @@ function refsIncludeGoal(refs: string[], goalId: string): boolean {
 
 function getComparablePhaseRank(phase: string): number | null {
   const upper = phase.toUpperCase()
-  if (upper === 'E') return 10
-  if (upper === 'Q1') return 11
-  if (upper === 'Q2') return 12
-  if (upper === 'Q3') return 13
-  if (upper === 'Q4') return 14
-  if (upper === 'ABITUR') return 15
-
   const sMatch = upper.match(/^S(\d{1,2})$/)
   if (sMatch) return 100 + Number(sMatch[1])
 
   const jMatch = upper.match(/^J(\d{1,2})$/)
   if (jMatch) return 200 + Number(jMatch[1])
+
+  // In mixed school landscapes, late Sek-I year buckets must come before
+  // upper-secondary phases so J8/J9/J10 -> E/Q/Abitur bridge edges stay valid.
+  if (upper === 'E') return 300
+  if (upper === 'Q1') return 310
+  if (upper === 'Q2') return 320
+  if (upper === 'Q3') return 330
+  if (upper === 'Q4') return 340
+  if (upper === 'ABITUR') return 350
 
   return null
 }

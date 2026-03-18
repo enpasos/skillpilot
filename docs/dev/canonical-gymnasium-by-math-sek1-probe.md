@@ -155,6 +155,29 @@ Interpretation:
 - several previously coarse Bavaria row-bridges are now split into reviewed subrow slices, now including `M8 3`, `M8 4`, `M9 3`, `M9 7`, and `M10 2`,
 - broad Bavaria-wide runtime replacement would still be premature until finer subrow refinement and second-source overlap are added.
 
+## Implemented Sek-I to Q-phase bridge package
+
+The next leverage point is no longer more Sek-I breadth alone, but explicit bridge edges from late Sek-I atoms into the first upper-secondary anchor clusters.
+
+Implemented bridge package:
+
+- `Q1 Analysis – Integralrechnung und Differenzialgleichungen`
+  receives explicit lower-secondary bridge requirements from `Ganzrationale Funktionen beschreiben`, `Quadratische Funktionen beschreiben`, `Scheitelpunkte quadratischer Funktionen bestimmen`, `Quadratische Gleichungen loesen`, `Exponentielles Wachstum modellieren und Logarithmen nutzen`, `Sinus- und Kosinusfunktionen beschreiben`, and `Potenz- und Wurzelfunktionen graphisch untersuchen`.
+- `Q2 Analytische Geometrie, Lineare Algebra und Vertiefung der Analysis`
+  receives explicit bridge requirements from `Lineare Gleichungssysteme lösen und deuten`, `Geradengleichungen, Nullstellen und Schnittpunkte bestimmen`, `Satz des Pythagoras anwenden`, `Trigonometrie am rechtwinkligen Dreieck anwenden`, `Sinus- und Kosinussatz nutzen`, `Ähnlichkeit und Strahlensatz anwenden`, and `Raumgeometrische Probleme mit Körpern lösen`.
+- `Q3 Stochastik`
+  receives explicit bridge requirements from `Laplace-Experimente auswerten`, `Baumdiagramme und Pfadregeln für zusammengesetzte Experimente nutzen`, `Verknüpfte Ereignisse mit Mengen- und Vierfelderdarstellungen strukturieren`, `Wahrscheinlichkeiten verknüpfter Ereignisse berechnen`, `Kenngrößen von Daten bestimmen und interpretieren`, and `Stochastische Simulationen und Monte-Carlo-Verfahren deuten`.
+- `Q4 Vertiefung und Ergänzung`
+  receives explicit function-family bridge requirements from `Ganzrationale Funktionen beschreiben`, `Exponentielles Wachstum modellieren und Logarithmen nutzen`, and `Sinus- und Kosinusfunktionen beschreiben`.
+
+This is intentionally a first anchor-level package, not yet a full E-phase atomization. It makes the Sek-I to upper-secondary bridge explicitly three-track:
+
+- Analysis
+- Analytic geometry / linear algebra
+- Stochastics
+
+To make these bridge edges technically valid for the Hessen upper-secondary anchors, the selected late Sek-I source atoms are treated as canonical cross-jurisdiction bridge nodes and explicitly widened to cover `DE-HE` in addition to the existing Bavaria pilot coverage where needed.
+
 ## Proposed year-anchor probe
 
 The first Bavaria mathematics probe should introduce the following canonical planning anchors:

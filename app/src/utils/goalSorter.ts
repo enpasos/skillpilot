@@ -96,12 +96,12 @@ const getManualOrder = (goal: UiGoal): number | undefined => {
 }
 
 const phaseRankMap: Record<string, number> = {
-  E: 100,
-  Q1: 110,
-  Q2: 120,
-  Q3: 130,
-  Q4: 140,
-  Abitur: 150,
+  E: 700,
+  Q1: 710,
+  Q2: 720,
+  Q3: 730,
+  Q4: 740,
+  Abitur: 750,
   GLOBAL: 900,
 }
 
@@ -112,6 +112,7 @@ const getPhaseRank = (phase: string): number | undefined => {
   const sMatch = /^S(\d{1,2})$/.exec(phase)
   if (sMatch) return 300 + Number.parseInt(sMatch[1], 10)
 
+  // Late Sek-I year anchors should sort before upper-secondary E/Q phases.
   const jMatch = /^J(\d{1,2})$/.exec(phase)
   if (jMatch) return 500 + Number.parseInt(jMatch[1], 10)
 
