@@ -223,53 +223,62 @@ const bridgeApplicabilityExpansions = [
 ];
 
 const bridgeUpdates = [
-  {
-    targetTitle: "Q1 Analysis – Integralrechnung und Differenzialgleichungen",
-    reqRefs: [
-      "Ganzrationale Funktionen beschreiben",
-      "Quadratische Funktionen beschreiben",
-      {
-        id: "c23705d2-57fc-4260-80d8-2d340203a173",
-        title: "Scheitelpunkte quadratischer Funktionen bestimmen",
-        type: "cluster"
-      },
-      "Quadratische Gleichungen loesen",
-      "Exponentielles Wachstum modellieren und Logarithmen nutzen",
-      "Sinus- und Kosinusfunktionen beschreiben",
-      "Potenz- und Wurzelfunktionen graphisch untersuchen"
-    ]
-  },
-  {
-    targetTitle: "Q4 Vertiefung und Ergänzung",
-    reqRefs: [
-      "Ganzrationale Funktionen beschreiben",
-      "Exponentielles Wachstum modellieren und Logarithmen nutzen",
-      "Sinus- und Kosinusfunktionen beschreiben"
-    ]
-  },
-  {
-    targetTitle: "Q2 Analytische Geometrie, Lineare Algebra und Vertiefung der Analysis",
-    reqRefs: [
-      "Lineare Gleichungssysteme lösen und deuten",
-      "Geradengleichungen, Nullstellen und Schnittpunkte bestimmen",
-      "Satz des Pythagoras anwenden",
-      "Trigonometrie am rechtwinkligen Dreieck anwenden",
-      "Sinus- und Kosinussatz nutzen",
-      "Ähnlichkeit und Strahlensatz anwenden",
-      "Raumgeometrische Probleme mit Körpern lösen"
-    ]
-  },
-  {
-    targetTitle: "Q3 Stochastik",
-    reqRefs: [
-      "Laplace-Experimente auswerten",
-      "Baumdiagramme und Pfadregeln für zusammengesetzte Experimente nutzen",
-      "Verknüpfte Ereignisse mit Mengen- und Vierfelderdarstellungen strukturieren",
-      "Wahrscheinlichkeiten verknüpfter Ereignisse berechnen",
-      "Kenngrößen von Daten bestimmen und interpretieren",
-      "Stochastische Simulationen und Monte-Carlo-Verfahren deuten"
-    ]
-  }
+  [
+    'Geradengleichungen, Nullstellen und Schnittpunkte bestimmen',
+    'Q2.3 Geraden und Ebenen im Raum',
+  ],
+  [
+    'Potenz- und Wurzelfunktionen graphisch untersuchen',
+    'Q1.1 Einführung in die Integralrechnung',
+  ],
+  [
+    'Quadratische Funktionen beschreiben',
+    'Q1.1 Einführung in die Integralrechnung',
+  ],
+  [
+    'Exponentielles Wachstum modellieren und Logarithmen nutzen',
+    'Q1.3 Vertiefung der Differenzial- und Integralrechnung',
+  ],
+  [
+    'Ganzrationale Funktionen beschreiben',
+    'Q1.1 Einführung in die Integralrechnung',
+  ],
+  [
+    'Raumgeometrische Probleme mit Körpern lösen',
+    'Q2.2 Orientieren und Bewegen im Raum',
+  ],
+  [
+    'Lineare Gleichungssysteme lösen und deuten',
+    'Q2.1 Vertiefung der Analysis',
+  ],
+  [
+    'Trigonometrie am rechtwinkligen Dreieck anwenden',
+    'Q2.3 Geraden und Ebenen im Raum',
+  ],
+  [
+    'Sinus- und Kosinussatz nutzen',
+    'Q2.3 Geraden und Ebenen im Raum',
+  ],
+  [
+    'Kenngrößen von Daten bestimmen und interpretieren',
+    'Q3.1 Grundlegende Begriffe und Methoden der Stochastik',
+  ],
+  [
+    'Stochastische Simulationen und Monte-Carlo-Verfahren deuten',
+    'Q3.2 Wahrscheinlichkeitsverteilungen (Überblick)',
+  ],
+  [
+    'Laplace-Experimente auswerten',
+    'Q3.2 Wahrscheinlichkeitsverteilungen (Überblick)',
+  ],
+  [
+    'Wahrscheinlichkeiten verknüpfter Ereignisse berechnen',
+    'Q3.2 Wahrscheinlichkeitsverteilungen (Überblick)',
+  ],
+  [
+    'Baumdiagramme und Pfadregeln für zusammengesetzte Experimente nutzen',
+    'Q3.2 Wahrscheinlichkeitsverteilungen (Überblick)',
+  ],
 ];
 
 let missingCount = 0;
@@ -360,12 +369,10 @@ for (const { targetRef, reqRefs } of targetedUpdates) {
   }
 }
 
-for (const { targetTitle, reqRefs } of bridgeUpdates) {
+for (const [sourceTitle, targetTitle] of bridgeUpdates) {
   const targetCandidates = titleToGoals.get(normalizeTitle(targetTitle)) || [];
   if (targetCandidates.length !== 1) {
-    console.log(`Could not find target node with title: ${targetTitle}`);
-    missingCount++;
-    continue;
+    throw new Error(`Bridge target not found: ${targetTitle}`);
   }
 
   const [targetNode] = targetCandidates;
@@ -373,18 +380,14 @@ for (const { targetTitle, reqRefs } of bridgeUpdates) {
     targetNode.requires = [];
   }
 
-  for (const reqRef of reqRefs) {
-    const resolution = resolveGoalReference(targetNode, reqRef);
-    if (!resolution.goal) {
-      console.log(resolution.reason);
-      missingCount++;
-      continue;
-    }
+  const sourceResolution = resolveGoalReference(targetNode, sourceTitle);
+  if (!sourceResolution.goal) {
+    throw new Error(`Bridge source not found: ${sourceTitle}`);
+  }
 
-    if (!targetNode.requires.includes(resolution.goal.id)) {
-      targetNode.requires.push(resolution.goal.id);
-      updatedCount++;
-    }
+  if (!targetNode.requires.includes(sourceResolution.goal.id)) {
+    targetNode.requires.push(sourceResolution.goal.id);
+    updatedCount++;
   }
 }
 
