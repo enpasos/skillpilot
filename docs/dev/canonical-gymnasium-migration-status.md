@@ -745,3 +745,25 @@ Deferred on purpose:
 
 - no broader Hessen arithmetic leaf review beyond the prerequisite chain needed for the current validator findings
 - no validator or CI run in this patch step
+
+
+### 2026-03-19: J7 Bavaria variable-term mapping tranche
+
+Approach used:
+
+- started `M7` with the smallest useful Bavaria slice: `M7 1 Terme mit Variablen`
+- stayed `reuse-first` and did not split the canonical J7 algebra anchor yet; instead, the tranche reuses the existing canonical goal `Terme mit Variablen aufstellen und umformen` wherever the Bayern source already fits that umbrella cleanly enough
+- reused the existing early power atom for the Bavaria leaf on power laws instead of opening a second near-duplicate algebra target prematurely
+- stayed conservative on match quality: only the broad `M7 1` cluster and the explicit term-transformation leaf were upgraded to `exact`; the remaining leaves stay `partial`
+
+Applied changes:
+
+- upgraded the Bavaria `M7 1 Terme mit Variablen` cluster mapping from `partial` to `exact`
+- added nine Bavaria `M7 1.1` / `M7 1.2` leaf mappings onto the existing canonical J7 algebra anchor and the early power atom
+- updated the repository-backed Bavaria mapping fixture to the new mapping count
+
+Deferred on purpose:
+
+- no canonical J7 algebra refactor yet; the current step is mapping-first
+- no `M7 2` / `M7 3` Bavaria tranche yet
+- no validator or CI run in this patch step

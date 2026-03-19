@@ -564,7 +564,7 @@ class GoalMappingRepositoryFixtureTest {
         assertThat(file.getVersion()).isEqualTo(1);
         assertThat(file.getSourceLandscapeId()).isEqualTo(BAYERN_MATH_LANDSCAPE_ID);
         assertThat(file.getTargetLandscapeId()).isEqualTo(CANONICAL_MATH_PILOT_ID);
-        assertThat(file.getMappings()).hasSize(125);
+        assertThat(file.getMappings()).hasSize(134);
         assertThat(file.getMappings())
                 .extracting(GoalMappingEntry::getMatchType)
                 .contains("exact", "partial");
@@ -591,7 +591,11 @@ class GoalMappingRepositoryFixtureTest {
                         Tuple.tuple("a36f594f-1af9-5b23-b221-71b162bee6fa", "d98849c7-bd0b-50d4-90aa-6293a3adb211", "exact"),
                         Tuple.tuple("fd9fbf2a-f74e-5bdd-874f-4ba62db3bd54", "cafd6520-c4af-4109-9863-cc49ba6fad4d", "partial"),
                         Tuple.tuple("f9e2689e-c719-554b-83bf-7672610d65f2", "8f7bb79b-f014-4bb6-8dce-7e3f1c92e893", "partial"),
-                        Tuple.tuple("0235cf56-da4b-5657-86be-92608b235e6c", "fd860da9-73ba-47cd-a1a8-452424915a80", "partial"),
+                        Tuple.tuple("0235cf56-da4b-5657-86be-92608b235e6c", "fd860da9-73ba-47cd-a1a8-452424915a80", "exact"),
+                        Tuple.tuple("4aa5a331-6709-5c03-a105-b4bcd58e313c", "fd860da9-73ba-47cd-a1a8-452424915a80", "partial"),
+                        Tuple.tuple("54ec2f95-b4b6-5749-ad24-2cb2e1654a19", "eb993c0c-9b1d-52af-97c8-4a534fd78be3", "partial"),
+                        Tuple.tuple("f5089a02-6357-5d00-b8de-8f9ab9b79163", "fd860da9-73ba-47cd-a1a8-452424915a80", "exact"),
+                        Tuple.tuple("ec1ffbeb-7195-5dc5-959a-b3473fcccad1", "fd860da9-73ba-47cd-a1a8-452424915a80", "partial"),
                         Tuple.tuple("fc5f5e55-a6c4-5175-8e96-a04dee910927", "e07fa2ee-c26f-4032-9140-358a4f6c1457", "exact"),
                         Tuple.tuple("dcee9e49-f692-5b96-bf72-9c45c46ebe28", "491e0858-e977-516e-a339-1cc2f9e9690f", "exact"),
                         Tuple.tuple("8b1bb498-dd60-5dfb-bba0-dab3d7f28873", "b44f038c-fb1f-527e-b9ad-382214d0328a", "exact"),
