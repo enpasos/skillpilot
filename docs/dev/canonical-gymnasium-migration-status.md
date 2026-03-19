@@ -788,3 +788,24 @@ Deferred on purpose:
 - no canonical J7 geometry split yet
 - no `M7 3` or `M7 5` Bavaria tranche yet
 - no validator or CI run in this patch step
+
+
+### 2026-03-19: J7 Bavaria linear-equation and percentage tranche
+
+Approach used:
+
+- kept `M7 3 Lineare Gleichungen und Vertiefung der Prozentrechnung` on the existing canonical J7 algebra anchor instead of opening a new split before the current Bavaria slice actually demands it
+- upgraded the broad Bavaria `M7 3` cluster to `exact`, because the canonical goal `Lineare Gleichungen lösen und Prozentrechnung vertiefen` already mirrors the corridor directly
+- stayed conservative on the leaf mappings: the explicit equivalence-transformation leaf is `exact`, while equation setup, solution interpretation, and the broader applied-percentage leaf remain `partial`
+
+Applied changes:
+
+- upgraded the Bavaria `M7 3` cluster mapping from `partial` to `exact`
+- added four Bavaria `M7 3` leaf mappings onto the existing canonical J7 algebra/percentage anchor
+- updated the repository-backed Bavaria mapping fixture to the new mapping count
+
+Deferred on purpose:
+
+- no canonical J7 algebra split beyond the existing two anchors
+- no `M7 5` Bavaria triangle/congruence tranche yet
+- no validator or CI run in this patch step
