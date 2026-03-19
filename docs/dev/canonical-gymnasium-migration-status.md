@@ -1089,3 +1089,149 @@ Applied changes:
 Deferred on purpose:
 
 - no validator or CI run in this patch step
+
+
+### 2026-03-19: Bavaria math residual audit for Jgst. 5-10 after the M5-M10 wave
+
+Audit scope:
+
+- Bavaria source corridor restricted to the descendants of `Jahrgangsstufe 5` through `Jahrgangsstufe 10`
+- excludes Bavaria `M11` to `M13`, because those were not part of the current migration tranche
+
+Observed state:
+
+- corridor size: `246` Bavaria source goals
+- remaining `partial` mappings: `103`
+- remaining unmapped source goals: `31`
+- of those unmapped goals:
+  - `17` are subsection clusters
+  - `14` are atomic goals
+
+Interpretation:
+
+- the residual set is no longer dominated by missing year-level coverage; the year clusters are already mapped and the remaining work is mostly local cleanup
+- the `17` unmapped subsection clusters are primarily mapping-hygiene debt, not canonical blind spots:
+  - `M5 1.1`, `M5 1.2`, `M5 3.1`, `M5 3.2`, `M5 4.1`, `M5 4.2`
+  - `M6 1.1` through `M6 1.5`
+  - `M6 2.1`, `M6 2.2`
+  - `M7 1.1`, `M7 1.2`, `M7 2.1`, `M7 2.2`
+- the largest remaining `partial` hot clusters are broad canonical anchors rather than newly missing Bavaria coverage:
+  - `5d17ebb4-4e27-4f9c-8d0b-3520f34b2e11` trigonometrische Funktionen (`7` partial leaves)
+  - `8da730f1-8947-498d-9e78-7fb20b00a994` J7-Geometrieanker (`7`)
+  - `fd860da9-73ba-47cd-a1a8-452424915a80` J7-Algebra/Termanker (`7`)
+  - `f0a49da2-018b-4cda-adbd-27047b610a0f` Kongruenz-/Konstruktionsanker (`6`)
+  - `1f89d69e-ead1-424b-8221-fae37fdea2bc` J6-Fläche/Volumen-Anwendungen (`5`)
+
+Residual gap judgment:
+
+- strongest remaining canonical gap candidate:
+  - `M7 4 Kenngrößen von Daten`
+  - still only a broad cluster bridge, while the Bavaria source still leaves the three atomic strands unmapped:
+    - median / boxplots
+    - quartiles / spread
+    - extracting information from boxplots
+- plausible secondary gap candidates, but lower priority than `M7 4`:
+  - early counting-principle atom in `M5 3.1`
+  - basic multiplicative equation atom in `M5 3.1`
+- most other remaining atomic `partial` bridges are acceptable breadth mismatches for now, not evidence of missing canonical structure
+
+Recommended order from this audit:
+
+1. close the real content gap around `M7 4` descriptive statistics
+2. then do the subsection-cluster cleanup for `M5` to `M7`
+3. only afterwards revisit the broad but acceptable `partial` bridges if a stricter exactness target is needed
+
+
+### 2026-03-19: Reuse-first patch plan for Bavaria M7 4 descriptive statistics
+
+Reuse baseline already present in canonical math:
+
+- `91571d3f-3651-4477-ba21-320fc4077453` `Absolute und relative Häufigkeiten bestimmen und darstellen`
+- existing J6 percentage/data corridor already also contains atoms for:
+  - diagram interpretation
+  - arithmetic mean
+- current Bavaria `M7 4` umbrella still lands only partially on the broad canonical bridge `075ef99c-7f84-48b5-97f1-4e28c7d78f95`
+
+Source-side residual structure in Bavaria `M7 4`:
+
+- one already partially mapped leaf bundles absolute/relative frequencies together with early aggregate use
+- three source leaves still expose the actual remaining gap more clearly:
+  - median use
+  - quartiles / spread / boxplots
+  - extracting information from boxplots and known descriptive measures
+
+Patch recommendation:
+
+1. refactor `075ef99c-7f84-48b5-97f1-4e28c7d78f95` from broad atom to retained cluster
+2. reuse the existing atoms for:
+  - absolute and relative frequencies
+  - arithmetic mean
+  - generic diagram interpretation where it already fits
+3. add only the missing descriptive-statistics atoms:
+  - `Median bestimmen und mit dem arithmetischen Mittel vergleichen`
+  - `Spannweite und Quartile bestimmen und Boxplots erstellen`
+  - `Datenverteilungen mithilfe von Kenngrößen und Boxplots vergleichen und deuten`
+
+Expected mapping consequence:
+
+- the mixed Bavaria leaf that currently combines frequencies with early aggregate use will likely remain `partial`, because the source bundles more than one fine-grained canonical atom and the mapping layer is intentionally one-to-one
+- the median / quartile / boxplot corridor should become cleanly mappable without opening duplicate canonical data goals
+
+Decision rationale:
+
+- this is the smallest patch that closes the last clearly visible Sek-I data-analysis gap
+- it avoids inventing a duplicate “descriptive statistics basics” atom just to force one exact mapping for a bundled Bavaria leaf
+- it keeps the canonical graph aligned with the established rule: exactness where the source isolates a didactic strand cleanly, partial where the source intentionally bundles multiple strands
+
+
+### 2026-03-19: J7 descriptive-statistics split for Bavaria M7 4
+
+Approach used:
+
+- refactored the broad J7 data-indicators atom `075ef99c-7f84-48b5-97f1-4e28c7d78f95` into a retained cluster so downstream references stay stable
+- kept the already reusable arithmetic-mean atom outside the new cluster and used it as an explicit prerequisite instead of duplicating a J7 copy of the same competence
+- introduced only the three missing descriptive-statistics atoms that Bavaria `M7 4` actually isolates cleanly:
+  - median versus arithmetic mean
+  - quartiles / range / boxplots
+  - comparing data distributions with indicators and boxplots
+- closed Hessen visibility immediately for the three new J7 atoms via the established override-backed prerequisite bridge
+
+Applied changes:
+
+- turned `075ef99c-7f84-48b5-97f1-4e28c7d78f95` into a three-child J7 data-indicators cluster
+- upgraded the Bavaria `M7 4` cluster bridge from `partial` to `exact`
+- mapped the three Bavaria `M7 4` leaves exactly to the new canonical J7 descriptive-statistics atoms
+- updated the Bavaria mapping fixture and added the three matching `APV-201` accepted-warning entries for the Hessen prerequisite bridge
+
+Deferred on purpose:
+
+- no subsection-cluster cleanup for `M5` to `M7` in this patch step
+- no validator or CI run in this patch step
+
+
+### 2026-03-19: Bavaria M5-M7 subsection-cluster cleanup
+
+Approach used:
+
+- treated the remaining unmapped subsection nodes in `M5` to `M7` as mapping-hygiene work, not as a new canonical-authoring wave
+- mapped each subsection cluster to the closest existing canonical corridor that its already mapped children were predominantly using
+- kept these bridges deliberately `partial`, because these subsection clusters still bundle multiple finer canonical atoms and the mapping layer stays one-to-one
+
+Applied changes:
+
+- added subsection-cluster mappings for:
+  - `M5 1.1`, `M5 1.2`, `M5 3.1`, `M5 3.2`, `M5 4.1`, `M5 4.2`
+  - `M6 1.1` to `M6 1.5`
+  - `M6 2.1`, `M6 2.2`
+  - `M7 1.1`, `M7 1.2`, `M7 2.1`, `M7 2.2`
+- updated the Bavaria mapping fixture to the new repository-backed mapping size
+
+Resulting interpretation:
+
+- the remaining residual Bavaria Sek-I math gaps are now concentrated much more clearly in true leaf-level breadth mismatches instead of administrative subsection omissions
+- this makes the next residual audit materially sharper, because the unmapped set is no longer inflated by missing subsection wrappers
+
+Deferred on purpose:
+
+- no new canonical atoms in this cleanup step
+- no validator or CI run in this patch step

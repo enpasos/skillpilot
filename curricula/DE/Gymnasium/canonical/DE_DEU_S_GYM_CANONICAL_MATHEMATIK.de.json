@@ -3165,8 +3165,114 @@
       "shortKey": "canonical_math_sek1_j7_data_indicators",
       "title": "Kenngrößen von Daten bestimmen und interpretieren",
       "titleEn": "Determine and interpret data indicators",
-      "description": "Die lernende Person kann Lage- und Streuungsmaße aus Datensätzen bestimmen, passende Darstellungen auswählen und statistische Aussagen verständlich interpretieren.",
-      "descriptionEn": "The learner can determine measures of central tendency and spread from data sets, choose suitable representations, and interpret statistical statements clearly.",
+      "description": "Die lernende Person kann Median, Quartile und Spannweite aus Datensätzen bestimmen, Boxplots erstellen und Datenverteilungen mithilfe von Kenngrößen und Boxplots verständlich vergleichen und interpretieren.",
+      "descriptionEn": "The learner can determine the median, quartiles and range from data sets, create box plots and compare and interpret data distributions clearly using indicators and box plots.",
+      "core": true,
+      "weight": 3,
+      "tags": [
+        "canonical",
+        "pilot"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math-pilot",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "K3.1",
+          "K4.1"
+        ],
+        "guidingIdeas": [
+          "L5"
+        ],
+        "phase": "J7",
+        "area": "Data",
+        "topicCode": "CANONICAL.MATH.SEK1.J7.4"
+      },
+      "contains": [
+        "2242c379-ddbb-4f03-8aed-13f49a4674e8",
+        "3e0c9bce-2528-4cf1-9b1f-c79146b0a5f2",
+        "b819973b-4cad-48a4-9f7e-f74b5e75ea6c"
+      ],
+      "requires": [
+        "32c9955e-c0e7-4085-8a9a-9341376a453b"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BY",
+          "DE-HE"
+        ]
+      },
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
+          "sourceLandscapeTitle": "Mathematik (Gymnasium)",
+          "sourceGoalId": "96f18796-b6a6-57c3-aba1-2ee9b7ab4a14",
+          "additionalSourceLandscapeIds": [
+            "b167b4cd-4b78-4c84-a721-6b2adbbcab3c"
+          ]
+        }
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "2242c379-ddbb-4f03-8aed-13f49a4674e8",
+      "shortKey": "canonical_math_sek1_j7_determine_median_and_compare_with_mean",
+      "title": "Median bestimmen und mit dem arithmetischen Mittel vergleichen",
+      "titleEn": "Determine the median and compare it with the arithmetic mean",
+      "description": "Die lernende Person kann zu Datensätzen den Median bestimmen, ihn als weiteren Lagewert neben dem arithmetischen Mittel deuten und die Aussagekraft beider Kenngrößen in Sachzusammenhängen kritisch vergleichen.",
+      "descriptionEn": "The learner can determine the median for data sets, interpret it as another measure of central tendency alongside the arithmetic mean and critically compare the explanatory power of both indicators in context.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical",
+        "pilot"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math-pilot",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K2.2",
+          "K4.2"
+        ],
+        "guidingIdeas": [
+          "L5"
+        ],
+        "phase": "J7",
+        "area": "Data",
+        "topicCode": "CANONICAL.MATH.SEK1.J7.4"
+      },
+      "contains": [],
+      "requires": [
+        "15505229-efec-4d01-8e71-acf15f9c2424"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BY",
+          "DE-HE"
+        ]
+      },
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
+          "sourceLandscapeTitle": "Mathematik (Gymnasium)",
+          "sourceGoalId": "9728e341-4cf5-5afb-ae2a-86ecccdf5e9c"
+        },
+        "applicabilityOverrides": {
+          "jurisdiction": [
+            "DE-HE"
+          ]
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "3e0c9bce-2528-4cf1-9b1f-c79146b0a5f2",
+      "shortKey": "canonical_math_sek1_j7_determine_quartiles_and_create_boxplots",
+      "title": "Spannweite und Quartile bestimmen und Boxplots erstellen",
+      "titleEn": "Determine the range and quartiles and create box plots",
+      "description": "Die lernende Person kann Spannweite und Quartile als Kenngrößen der beschreibenden Statistik bestimmen, Boxplots erstellen und damit charakteristische Merkmale eines Datensatzes nachvollziehbar darstellen.",
+      "descriptionEn": "The learner can determine the range and quartiles as indicators of descriptive statistics, create box plots and use them to represent characteristic features of a data set clearly.",
       "core": true,
       "weight": 1,
       "tags": [
@@ -3189,7 +3295,7 @@
       },
       "contains": [],
       "requires": [
-        "32c9955e-c0e7-4085-8a9a-9341376a453b"
+        "91571d3f-3651-4477-ba21-320fc4077453"
       ],
       "applicability": {
         "jurisdiction": [
@@ -3202,9 +3308,64 @@
         "provenance": {
           "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
           "sourceLandscapeTitle": "Mathematik (Gymnasium)",
-          "sourceGoalId": "96f18796-b6a6-57c3-aba1-2ee9b7ab4a14",
-          "additionalSourceLandscapeIds": [
-            "b167b4cd-4b78-4c84-a721-6b2adbbcab3c"
+          "sourceGoalId": "411d5503-e9d7-5804-8c18-e9da20432d81"
+        },
+        "applicabilityOverrides": {
+          "jurisdiction": [
+            "DE-HE"
+          ]
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "b819973b-4cad-48a4-9f7e-f74b5e75ea6c",
+      "shortKey": "canonical_math_sek1_j7_compare_distributions_with_indicators_and_boxplots",
+      "title": "Datenverteilungen mithilfe von Kenngrößen und Boxplots vergleichen und deuten",
+      "titleEn": "Compare and interpret data distributions using indicators and box plots",
+      "description": "Die lernende Person kann aus bekannten Kenngrößen und aus Boxplots Informationen über zugrunde liegende Datensätze gewinnen, vergleichende Aussagen formulieren und diese fachlich begründet beurteilen.",
+      "descriptionEn": "The learner can infer information about underlying data sets from known indicators and box plots, formulate comparative statements and evaluate them with mathematical justification.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical",
+        "pilot"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math-pilot",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K2.2",
+          "K6.2"
+        ],
+        "guidingIdeas": [
+          "L5"
+        ],
+        "phase": "J7",
+        "area": "Data",
+        "topicCode": "CANONICAL.MATH.SEK1.J7.4"
+      },
+      "contains": [],
+      "requires": [
+        "2242c379-ddbb-4f03-8aed-13f49a4674e8",
+        "3e0c9bce-2528-4cf1-9b1f-c79146b0a5f2"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BY",
+          "DE-HE"
+        ]
+      },
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
+          "sourceLandscapeTitle": "Mathematik (Gymnasium)",
+          "sourceGoalId": "121d4786-c326-5539-b64e-ca0f0d3ea8c8"
+        },
+        "applicabilityOverrides": {
+          "jurisdiction": [
+            "DE-HE"
           ]
         }
       },
