@@ -47,11 +47,6 @@ type GoalProvenance = {
   sourceLicenseUrl?: string
 }
 
-type ApplicabilityEntry = {
-  dimension: string
-  value: string
-}
-
 type ApplicabilityGroup = {
   dimension: string
   values: string[]
