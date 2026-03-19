@@ -902,3 +902,104 @@ Deferred on purpose:
 - no new canonical split yet for the bogenmaß/einheitskreis detail in `M10 3`
 - no new canonical split yet for the cone/pyramid/sphere-heavy `M10 5` corridor
 - no validator or CI run in this patch step
+
+
+### 2026-03-19: Residual Bavaria math partial-gap audit after M10
+
+Audit result:
+
+- after the `M5` to `M10` tranches, the Bavaria math pilot now has only `11` remaining `partial` bridges inside the year-5-to-year-10 corridor
+- in addition, `17` intermediate Bavaria section nodes remain unmapped; these are broad subsection wrappers rather than missing leaf coverage
+
+Residual `partial` bridges grouped by type:
+
+- acceptable broad bridges for now:
+  - `M5 3 Natürliche und ganze Zahlen – Multiplikation und Division` -> `Natürliche und ganze Zahlen multiplizieren und dividieren`
+  - `M5 4 Größen und ihre Einheiten` -> `Größen und Einheiten vergleichen und umrechnen`
+  - `M7 4 Kenngrößen von Daten` -> `Kenngrößen von Daten bestimmen und interpretieren`
+  - `M8 1 Funktion und Term` -> `Funktionsgrundlagen (Sek I)`
+  - `M8 2 Lineare Funktionen` -> `Funktionsgrundlagen (Sek I)`
+
+- likely real canonical-structure gaps:
+  - `M9 1 Quadratwurzeln` -> current canonical atom is too narrow for the full Bavaria corridor with irrationality, Heron iteration, root-term algebra and rationalisation
+  - `M9 2` / `M9 2.1` / `M9 2.2` -> the current quadratic corridor is distributed over several atoms, but still lacks a cleaner shared quadratic cluster for exact subsection anchoring
+  - `M9 7.2 Sinus- und Kosinussatz` -> unit-circle and setup aspects still exceed the current `Sinus- und Kosinussatz nutzen` atom
+  - `M10 5 Fortführung der Raumgeometrie` -> the current J10 space-geometry atom is too coarse for the Bavaria cone/pyramid/sphere continuation
+
+Unmapped intermediate subsection nodes:
+
+- `M5`:
+  - `M5 1.1`
+  - `M5 1.2`
+  - `M5 3.1`
+  - `M5 3.2`
+  - `M5 4.1`
+  - `M5 4.2`
+
+- `M6`:
+  - `M6 1.1`
+  - `M6 1.2`
+  - `M6 1.3`
+  - `M6 1.4`
+  - `M6 1.5`
+  - `M6 2.1`
+  - `M6 2.2`
+
+- `M7`:
+  - `M7 1.1`
+  - `M7 1.2`
+  - `M7 2.1`
+  - `M7 2.2`
+
+Interpretation:
+
+- the remaining subsection-node gaps are mainly mapping hygiene and do not indicate missing Bavaria leaf coverage
+- the next canonical-modeling work should focus on the four real gap zones instead of broad cleanup
+
+Recommended next patch order:
+
+1. `M10 5 Fortführung der Raumgeometrie`
+2. `M9 7.2 Sinus- und Kosinussatz` plus unit-circle preparation
+3. `M9 1 Quadratwurzeln`
+4. only afterwards: subsection-node mapping cleanup for `M5` to `M7`
+
+
+### 2026-03-19: J10 space-geometry split for Bavaria M10 5
+
+Approach used:
+
+- refactored the existing canonical J10 space-geometry atom `6248bbd7-c7e8-4f91-b3dc-de885cf5abce` into a cluster while retaining its ID as the stable corridor anchor
+- reused the existing circle/cylinder, pythagoras, right-triangle trigonometry and sinus/cosinus-law prerequisites instead of duplicating earlier geometry content
+- introduced only the six missing J10 atoms that the Bavaria `M10 5` corridor actually isolates: bodies and nets, solids of revolution, cone surface area, pyramid/cone volumes, sphere formulas and applied space-geometry modeling
+- kept the new J10 atoms voorlopig on `DE-BY` only; no Hessen closure decision was folded into this patch step
+
+Applied changes:
+
+- split the canonical J10 space-geometry corridor into one retained cluster plus six new atomic descendants
+- remapped the Bavaria `M10 5` cluster and all six leaf goals onto the refined canonical J10 space-geometry atoms
+- upgraded the Bavaria `M10 5` cluster bridge from `partial` to `exact` now that the canonical corridor mirrors the Bavaria subsection directly
+- updated the repository-backed Bavaria math mapping fixture to the new J10 space-geometry targets
+
+Deferred on purpose:
+
+- no `DE-HE` applicability review yet for the six new J10 space-geometry atoms
+- no validator or CI run in this patch step
+
+
+### 2026-03-19: Hessen closure for the new J10 space-geometry split
+
+Approach used:
+
+- kept the J10 space-geometry split itself unchanged and closed only the missing Hessen visibility chain
+- avoided new Hessen one-to-many mappings and used the established math closure mechanism via `extendedData.applicabilityOverrides`
+- opened exactly the six new J10 space-geometry atoms for `DE-HE`, because the broad retained cluster `6248bbd7-c7e8-4f91-b3dc-de885cf5abce` is already referenced by visible Hessen goals
+
+Applied changes:
+
+- added `DE-HE` applicability overrides to all six new J10 space-geometry atoms
+- added the corresponding `APV-201` accepted-warning entries for the Hessen math prerequisite bridge rationale
+
+Deferred on purpose:
+
+- no new Hessen leaf-mapping tranche for these J10 atoms
+- no validator or CI run in this patch step
