@@ -809,3 +809,48 @@ Deferred on purpose:
 - no canonical J7 algebra split beyond the existing two anchors
 - no `M7 5` Bavaria triangle/congruence tranche yet
 - no validator or CI run in this patch step
+
+
+### 2026-03-19: J7 Bavaria congruence-and-triangle mapping tranche
+
+Approach used:
+
+- kept `M7 5 Kongruenz, besondere Dreiecke und Dreieckskonstruktionen` on the existing canonical J7 triangle anchor instead of splitting the geometry branch prematurely
+- upgraded the broad Bavaria `M7 5` cluster to `exact`, because the canonical goal `Kongruenz begründen und Dreieckskonstruktionen ausführen` already mirrors the corridor directly
+- stayed conservative on leaf quality: concept introduction, converse logic, dynamic-geometry exploration, Thales work, tangent construction, and application modelling remain `partial`; the construction-heavy and special-triangle leaves are mapped `exact`
+
+Applied changes:
+
+- upgraded the Bavaria `M7 5` cluster mapping from `partial` to `exact`
+- added nine Bavaria `M7 5` leaf mappings onto the existing canonical J7 triangle/congruence anchor
+- updated the repository-backed Bavaria mapping fixture to the new mapping count
+
+Deferred on purpose:
+
+- no canonical J7 geometry split beyond the current shared anchors
+- no `M8` Bavaria tranche yet
+- no validator or CI run in this patch step
+
+
+### 2026-03-19: M8 Bavaria function, rational-function, probability and geometry tranche
+
+Approach used:
+
+- kept the current canonical J8 corridor intact instead of opening a new split before the Bavaria `M8` slice actually forces one
+- reused the existing cross-phase canonical atom `Funktionsbegriff und Darstellungen verstehen` for the explicit function-concept leaf in `M8 1`
+- kept `M8 1 Funktion und Term` and `M8 2 Lineare Funktionen` on conservative partial cluster bridges where the current canonical function corridor is still broader than the Bavaria source wording
+- upgraded the direct J8 corridor matches for elementary rational functions, fraction terms, Laplace experiments, linear systems, and circle/cylinder work where the canonical pilot already mirrors the Bavaria slice closely enough
+
+Applied changes:
+
+- completed the Bavaria `M8` mapping tranche across `M8 1` to `M8 7`
+- upgraded the existing `M8 3`, `M8 4`, `M8 5`, `M8 6`, and `M8 7` cluster bridges from `partial` to `exact`
+- upgraded the existing J8 rational-function and fraction-term leaf bridges from `partial` to `exact` where the canonical child atoms already match the Bavaria leaf goals directly
+- added the missing Bavaria leaf mappings for the introductory function block, the remaining linear-function leaves, the Laplace block, the linear-system block, and the circle/cylinder block
+- updated the repository-backed Bavaria mapping fixture to the new mapping count
+
+Deferred on purpose:
+
+- no new canonical split for the `M8 1` or `M8 2` function-introduction corridor yet; graph-reading and introductory function-language aspects still lean on partial bridges where the current canonical structure stays coarser than the Bavaria source
+- no `M9` Bavaria audit yet
+- no validator or CI run in this patch step
