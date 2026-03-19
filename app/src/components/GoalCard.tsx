@@ -52,6 +52,11 @@ type ApplicabilityEntry = {
   value: string
 }
 
+type ApplicabilityGroup = {
+  dimension: string
+  values: string[]
+}
+
 const LEGACY_ATTRIBUTION_LINE_PATTERNS = [
   /^\s*\[(course url|kurs-url)\]\(.*\)\s*$/i,
   /^\s*(license|lizenz)\s*:\s*\[.*\]\(.*\)\s*$/i,
@@ -222,18 +227,30 @@ export const GoalCard: React.FC<GoalCardProps> = ({
   const learningMaterialLinks = helpfulLinks.filter(isLearningMaterialLink).slice(0, 3)
   const sourceLinkLabel = provenance.sourceTitle || (language === 'en' ? 'Course page' : 'Kursseite')
   const displayDescription = stripLegacyAttributionLines(goal.description, Boolean(provenance.sourceUrl))
-  const applicabilityEntries = React.useMemo<ApplicabilityEntry[]>(() => {
+  const applicabilityGroups = React.useMemo<ApplicabilityGroup[]>(() => {
     const entries = Object.entries(goal.applicability ?? {})
       .flatMap(([dimension, values]) =>
         (Array.isArray(values) ? values : [])
           .filter((value): value is string => typeof value === 'string' && value.trim().length > 0)
           .map((value) => ({ dimension, value })),
       )
-    return entries.sort((a, b) => {
+      .sort((a, b) => {
       const byDimension = a.dimension.localeCompare(b.dimension)
       if (byDimension !== 0) return byDimension
       return a.value.localeCompare(b.value)
     })
+
+    const grouped = new Map<string, string[]>()
+    entries.forEach(({ dimension, value }) => {
+      const existing = grouped.get(dimension) ?? []
+      existing.push(value)
+      grouped.set(dimension, existing)
+    })
+
+    return Array.from(grouped.entries()).map(([dimension, values]) => ({
+      dimension,
+      values,
+    }))
   }, [goal.applicability])
 
   // Determine Status Icon
@@ -383,19 +400,39 @@ export const GoalCard: React.FC<GoalCardProps> = ({
       {showDetails && (
         <div className="mt-4 space-y-3 text-[11px] text-text-secondary border-t border-border-color pt-4">
           {/* Applicability */}
-          {applicabilityEntries.length > 0 && (
+          {applicabilityGroups.length > 0 && (
             <div>
               <span className="font-semibold text-text-primary">{language === 'en' ? 'Applies to:' : 'Gilt fuer:'}</span>
-              <div className="mt-1 flex flex-wrap gap-1.5">
-                {applicabilityEntries.map(({ dimension, value }) => (
-                  <span
-                    key={`${dimension}:${value}`}
-                    className="px-2 py-0.5 rounded-full bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-300"
-                  >
-                    {formatApplicabilityDimension(dimension, language === 'en' ? 'en' : 'de')}: {formatApplicabilityValue(value, language === 'en' ? 'en' : 'de')}
-                  </span>
-                ))}
-              </div>
+              {applicabilityGroups.length === 1 ? (
+                <div className="mt-1 flex flex-wrap gap-1.5">
+                  {applicabilityGroups[0].values.map((value) => (
+                    <span
+                      key={`${applicabilityGroups[0].dimension}:${value}`}
+                      className="px-2 py-0.5 rounded-full bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-300"
+                    >
+                      {formatApplicabilityValue(value, language === 'en' ? 'en' : 'de')}
+                    </span>
+                  ))}
+                </div>
+              ) : (
+                <div className="mt-1 space-y-1.5">
+                  {applicabilityGroups.map(({ dimension, values }) => (
+                    <div key={dimension} className="flex flex-wrap items-center gap-1.5">
+                      <span className="font-semibold text-text-primary">
+                        {formatApplicabilityDimension(dimension, language === 'en' ? 'en' : 'de')}:
+                      </span>
+                      {values.map((value) => (
+                        <span
+                          key={`${dimension}:${value}`}
+                          className="px-2 py-0.5 rounded-full bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-300"
+                        >
+                          {formatApplicabilityValue(value, language === 'en' ? 'en' : 'de')}
+                        </span>
+                      ))}
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
           )}
 
