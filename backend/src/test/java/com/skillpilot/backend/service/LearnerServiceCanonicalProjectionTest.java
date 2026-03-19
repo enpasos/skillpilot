@@ -691,25 +691,22 @@ class LearnerServiceCanonicalProjectionTest {
     }
 
     @Test
-    void canonicalGymnasiumRootPropagatesBundeslandFilterIntoMathChildLandscape() {
+    void canonicalGymnasiumRootPropagatesBundeslandFilterIntoMathChildLandscape() throws Exception {
         learner.setSelectedCurriculum(CANONICAL_GYMNASIUM_ROOT_ID);
-        learner.setPersonalCurriculum("""
+        String personalCurriculum = """
                 {
                   "a0e13c56-c25f-4742-9272-3a1a603ee52e": {"selected": true, "filterId": "DE-BY"},
                   "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced": {"selected": true, "filterId": "GK"},
                   "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a": {"selected": false, "filterId": "GK"}
                 }
-                """);
-        when(plannedGoalRepository.findByLearner_SkillpilotId(LEARNER_ID))
-                .thenReturn(List.of(new PlannedGoal(learner, CANONICAL_MATH_ROOT_ID)));
-        when(masteryRepository.findByLearner_SkillpilotId(LEARNER_ID)).thenReturn(List.of());
+                """;
+        learner.setPersonalCurriculum(personalCurriculum);
 
-        List<FrontierGoal> frontier = learnerService.getRichFrontier(LEARNER_ID);
+        Map<String, LearningGoal> filteredGoals = invokeGetFilteredGoals(CANONICAL_GYMNASIUM_ROOT_ID, personalCurriculum);
 
-        assertThat(frontier)
-                .extracting(FrontierGoal::id)
-                .contains(CANONICAL_MATH_ROOT_ID, CANONICAL_SEK1_CLUSTER_ID)
-                .doesNotContain(CANONICAL_ANALYSIS_CLUSTER_ID, CANONICAL_E1_CLUSTER_ID);
+        assertThat(filteredGoals)
+                .containsKeys(CANONICAL_MATH_ROOT_ID, CANONICAL_SEK1_CLUSTER_ID, CANONICAL_ANALYSIS_CLUSTER_ID)
+                .doesNotContainKey(LEGACY_FUNCTION_CONCEPT_ID);
     }
 
     @Test

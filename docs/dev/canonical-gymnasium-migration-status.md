@@ -62,7 +62,7 @@ Interpretation:
 - unlike the older rollout score, it is tied directly to the remaining delete-handoff work
 - from here on, progress updates should prefer this number as the main "how close are we?" headline
 
-## Reported headline 2026-03-16
+## Reported headline 2026-03-18
 
 Current reported migration status:
 
@@ -75,7 +75,7 @@ Why this is the right number right now:
 - the current delete-handoff boundary is now enforced via DE-level retained-asset, mapping, and provenance registries instead
 - the close-out headline is now capped correctly because all tracked legacy trees are retired from the active repo
 
-## Snapshot 2026-03-16
+## Snapshot 2026-03-18
 
 Observed repo state:
 
@@ -84,8 +84,9 @@ Observed repo state:
   - `20` subject files
 - Hessen upper-secondary mapping files present: `16`
 - Hessen Sek I mapping files present: `5`
-- Bavaria Gymnasium adopted mapping files present: `20`
-- `npm run validate:view-filters` currently returns `0` errors, `0` active warnings, `136` accepted warnings
+- Bavaria Gymnasium adopted mapping files present: `21`
+- `npm run validate:view-filters` currently returns `0` errors, `0` active warnings, `139` accepted warnings
+- the current on-disk retained-asset lanes live under `curricula/DE/Gymnasium/input/HE/` and `curricula/DE/Gymnasium/input/BY/`; tooling still normalizes older registry references that use `DE-HE` / `DE-BY`
 - `python3 scripts/validate_bavaria_gymnasium_legacy_refs.py` currently passes with `0` violations while reporting `Legacy tree present: no`
 - `python3 scripts/validate_bavaria_gymnasium_archive_paths.py` currently passes with `0` violations
 - `bash scripts/run_bavaria_gymnasium_delete_handoff_dry_run.sh` currently passes with `DELETE_HANDOFF_PRECHECK=OK`
@@ -150,7 +151,7 @@ Observed repo state:
 - Bavaria Math/Physics/Chemistry/Biology source-goal closures and goal memberships now also live in the shared DE-level provenance registries `curricula/DE/Gymnasium/provenance/source-goal-closure-registry.json` and `curricula/DE/Gymnasium/provenance/source-goal-membership-registry.json`, so the current adopted Bavaria corridor no longer depends on the live legacy tree for archived closure or membership lookups
 - the full live Bavaria Gymnasium legacy tree now classifies as compatibility-only on the active runtime path: explicit UI/AI curriculum selection no longer routes fresh learners back into Bavaria legacy root or subject views, while general learner entry continues to prefer `Gymnasium (DE)` and existing retired sessions remain archive/cutover-only
 - ordinary learner entry now also prefers the canonical DE path over Hessen Sek-I legacy roots: lower-secondary Hessen landscapes are hidden by default from the general overview/bootstrap surface and only reappear when they are already the active selection
-- the frozen Hessen Sek-I source-JSON lane is now mirrored under `curricula/DE/Gymnasium/input/DE-HE/lower-secondary/source-json/` (`6` files), and the shared source-landscape registry now also offers `archiveSourcePath` for those lower-secondary landscapes so provenance survives outside the live legacy tree
+- the frozen Hessen Sek-I source-JSON lane is now mirrored under `curricula/DE/Gymnasium/input/HE/lower-secondary/source-json/` (`6` files), and the shared source-landscape registry now also offers `archiveSourcePath` for those lower-secondary landscapes so provenance survives outside the live legacy tree
 - Hessen Sek-I source-goal atomic closures and goal memberships now also live in the shared DE-level provenance registries `curricula/DE/Gymnasium/provenance/source-goal-closure-registry.json` and `curricula/DE/Gymnasium/provenance/source-goal-membership-registry.json`, so lower overview/root survival no longer depends on expanding the live legacy tree for archived closure or membership lookups
 - Hessen Sek-I legacy learner sessions are now detached as active runtime paths across the currently supported lower-secondary bundle: `Mathematik`/`Physik`/`Chemie`/`Biologie`/`Französisch` sessions, including mixed overview sessions that resolve into that bundle, are frontend- and backend-read-only once the canonical cutover surface is available
 - Hessen Sek-I legacy-to-canonical mapping fixtures now also live in the DE-level archive lane `curricula/DE/Gymnasium/mapping/DE-HE/lower-secondary/`
@@ -176,17 +177,17 @@ Observed repo state:
 - new UI and AI curriculum-selection writes now also reject retired Hessen compatibility IDs even when a caller already knows them, so compatibility routes are no longer re-openable as fresh learner selections
 - Hessen upper-secondary exam/deploy/adoption helper tooling now resolves retained `abi/` defaults plus archived mapping defaults from the DE-level lanes `curricula/DE/Gymnasium/input/DE-HE/` and `curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/` via a shared retained-asset registry, while legacy subject-landscape lookup is centralized through the DE-level provenance source registry instead of per-script hardcoded legacy paths
 - DE-level Hessen `abi/` operational metadata now follows the same handoff: `task_bank.json` stores `sourceLandscapeId` plus `curricula/DE/Gymnasium/provenance/source-landscape-registry.json` instead of embedding legacy landscape file paths, and blueprint/source-catalog/release-bundle source references now point only at retained DE-level `curricula/DE/Gymnasium/input/DE-HE/...` assets
-- repo-authored Hessen `abi/` markdown (`exam-pipeline.md`, physics authoring/QS docs, LEIFI README) is now aligned to the same DE-level archive/provenance lane; remaining legacy path strings inside `DE-HE/abi/` are confined to imported/raw archival texts such as source-extracted markdown and official text excerpts
-- that remaining raw-provenance boundary is now machine-checked by `scripts/validate_hessen_upper_secondary_archive_paths.py`, with the explicit allowlist stored in `curricula/DE/Gymnasium/input/DE-HE/retained-asset-registry.json`
+- repo-authored Hessen `abi/` markdown (`exam-pipeline.md`, physics authoring/QS docs, LEIFI README) is now aligned to the same DE-level archive/provenance lane; remaining legacy path strings inside `HE/abi/` are confined to imported/raw archival texts such as source-extracted markdown and official text excerpts
+- that remaining raw-provenance boundary is now machine-checked by `scripts/validate_hessen_upper_secondary_archive_paths.py`, with the explicit allowlist stored in `curricula/DE/Gymnasium/input/HE/retained-asset-registry.json`
 - the Hessen upper-secondary archive-boundary validator is now wired into both `.github/workflows/ci.yml` (`graph-validation`) and local `run_ci.sh`, so regressions on retained-vs-raw archive path usage fail the standard QA path instead of relying on ad-hoc manual checks
 - the remaining repo-level references to `curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe` are now also narrowed to an explicit handoff allowlist in `curricula/DE/Gymnasium/provenance/hessen-upper-secondary-retirement-registry.json`; active operational surfaces are machine-checked by `scripts/validate_hessen_upper_secondary_legacy_refs.py`, and the old root helper scripts no longer carry hardcoded Hessen legacy defaults
 - backend/src is now free of explicit Hessen upper-secondary tree references; the remaining allowlisted repo-level references are reduced to `7` explicit handoff files: provenance/input descriptors plus the validator/dry-run scripts that police that boundary
-- the frozen Hessen upper-secondary source-JSON lane is now mirrored under `curricula/DE/Gymnasium/input/DE-HE/upper-secondary/source-json/` (`39` files), and the shared source-landscape registry now offers `archiveSourcePath` so tooling can read those snapshots without depending on the live legacy tree
+- the frozen Hessen upper-secondary source-JSON lane is now mirrored under `curricula/DE/Gymnasium/input/HE/upper-secondary/source-json/` (`39` files), and the shared source-landscape registry now offers `archiveSourcePath` so tooling can read those snapshots without depending on the live legacy tree
 - backend landscape loading now also falls back to those archived Hessen upper-secondary source snapshots, so retired curriculum IDs remain resolvable for release metadata, frontier invariants, and explicit retirement/conflict handling even after the old tree is gone
 - the Hessen upper-secondary delete handoff has now actually been executed: `curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe` is gone from the active repo path, and `bash scripts/run_hessen_upper_secondary_delete_handoff_dry_run.sh` now serves as the post-retirement verification command over the surviving DE-level archive/provenance lanes
 - `scripts/validate_hessen_upper_secondary_legacy_refs.py` now enforces not only the allowlisted textual reference boundary, but also that the retired Hessen upper-secondary tree stays absent from the active repo
 - Reviewed canonical landscapes now carry committed node-level `applicability`; the currently enforced CI set now covers the full committed DE Gymnasium canonical set: `Mathematik`, `Physik`, `Chemie`, `Biologie`, `Informatik`, `Deutsch`, `Englisch`, `Französisch`, `Griechisch`, `Chinesisch`, `Geschichte`, `Politik und Wirtschaft`, `Musik`, `Latein`, `Spanisch`, `Italienisch`, `Russisch`, `Polnisch`, `Tschechisch`, `Wirtschaft`, `Overview`
-- `validate:view-filters` is now clean on active reviewed findings for that scope: `0` errors, `0` active warnings, `136` accepted warnings recorded in `docs/qa-ci/applicability-accepted-warnings.json`
+- `validate:view-filters` is now clean on active reviewed findings for that scope: `0` errors, `0` active warnings, `139` accepted warnings recorded in `docs/qa-ci/applicability-accepted-warnings.json`
 - `curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe` has now crossed from `legacy_view_retained` to `legacy_deleted` at tree level: only the DE-level input/provenance lanes survive as operational artifacts
 - `curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe` is the first tracked legacy source tree that has actually been deleted from the active repo
 - the migration has therefore entered the explicit close-out phase: the remaining work is now dominated by optional scope extension questions, not legacy tree retirement
@@ -205,7 +206,7 @@ Rule:
 
 - canonical DE landscapes stay shared and non-state-specific
 - transferred source inputs must stay explicitly state-scoped
-- the same state-scoped rule applies to retained non-canonical materials beyond pure `input/`, with `curricula/DE/Gymnasium/input/DE-HE/abi` as the clearest current example
+- the same state-scoped rule applies to retained non-canonical materials beyond pure `input/`, with `curricula/DE/Gymnasium/input/HE/abi` as the clearest current example
 
 Recommended target structure:
 
@@ -236,7 +237,7 @@ Current status of this lane:
 - the Hessen `abi/Physik` bulk has now also been transferred into that archive
 - the Hessen `abi/Mathe` bulk has now also been transferred into that archive
 - the Hessen upper-secondary source-JSON snapshots (`39` files) have now also been transferred into that archive
-- Hessen upper-secondary exam/deploy/adoption helper defaults now resolve against the DE-level `abi/` and mapping archives via `curricula/DE/Gymnasium/input/DE-HE/retained-asset-registry.json` instead of subject-local hardcoded legacy-tree paths
+- Hessen upper-secondary exam/deploy/adoption helper defaults now resolve against the DE-level `abi/` and mapping archives via `curricula/DE/Gymnasium/input/HE/retained-asset-registry.json` instead of subject-local hardcoded legacy-tree paths
 - Hessen upper-secondary `abi/` task banks, blueprints, source catalogs, and the math release bundle now also use DE-level retained asset paths plus provenance registry references instead of embedding live `Gymnasiale_Oberstufe` source paths in their operational metadata
 - the Bavaria subject-source snapshot has now also been transferred into that archive
 - the optional Bavaria `abi/` lane is still undecided and remains out of the current mandatory scope
@@ -248,12 +249,12 @@ Current status of this lane:
 | State lane | Current source location | Current form | Observed size | Migrated into DE archive | Planned target |
 | --- | --- | --- | ---: | ---: | --- |
 | `DE-HE` upper-secondary input | `curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/input/` | source PDFs + references | `24` files | `24` files | `curricula/DE/Gymnasium/input/DE-HE/upper-secondary/` |
-| `DE-HE` upper-secondary source snapshot | `curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/json/` | frozen source landscapes + deck/report sidecars | `39` files | `39` files | `curricula/DE/Gymnasium/input/DE-HE/upper-secondary/source-json/` |
-| `DE-HE` upper-secondary abi | `curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/abi/` | exam/release assets by subject | `2130` files | `2130` files | `curricula/DE/Gymnasium/input/DE-HE/abi/` |
+| `DE-HE` upper-secondary source snapshot | `curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/json/` | frozen source landscapes + deck/report sidecars | `39` files | `39` files | `curricula/DE/Gymnasium/input/HE/upper-secondary/source-json/` |
+| `DE-HE` upper-secondary abi | `curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/abi/` | exam/release assets by subject | `2130` files | `2130` files | `curricula/DE/Gymnasium/input/HE/abi/` |
 | `DE-HE` lower-secondary input | `curricula/DE/HE/Kultusministerium/Gymnasium_9_Mittelstufe/input/` | source PDFs + references | `20` files | `20` files | `curricula/DE/Gymnasium/input/DE-HE/lower-secondary/` |
-| `DE-HE` lower-secondary source snapshot | `curricula/DE/HE/Kultusministerium/Gymnasium_9_Mittelstufe/json/` | frozen source landscapes | `6` files | `6` files | `curricula/DE/Gymnasium/input/DE-HE/lower-secondary/source-json/` |
-| `DE-BY` gymnasium source lane | `curricula/DE/BY/Gymnasium/` | subject JSON source set, no dedicated `input/` tree yet | `45` subject JSON files | `45` files | `curricula/DE/Gymnasium/input/DE-BY/gymnasium/` |
-| `DE-BY` abi lane | not yet present as dedicated canonical migration input lane | reserved | `0` migrated files | `0` files | `curricula/DE/Gymnasium/input/DE-BY/abi/` |
+| `DE-HE` lower-secondary source snapshot | `curricula/DE/HE/Kultusministerium/Gymnasium_9_Mittelstufe/json/` | frozen source landscapes | `6` files | `6` files | `curricula/DE/Gymnasium/input/HE/lower-secondary/source-json/` |
+| `DE-BY` gymnasium source lane | `curricula/DE/BY/Gymnasium/` | subject JSON source set, no dedicated `input/` tree yet | `45` subject JSON files | `45` files | `curricula/DE/Gymnasium/input/BY/gymnasium/` |
+| `DE-BY` abi lane | not yet present as dedicated canonical migration input lane | reserved | `0` migrated files | `0` files | `curricula/DE/Gymnasium/input/BY/abi/` |
 
 Interpretation:
 
@@ -458,3 +459,121 @@ This document therefore uses:
 - `100%` as the current hard legacy-tree retirement picture, because all three tracked legacy trees have now been removed from the active repo without breaking the verified handoff paths
 
 That is, in my view, the most honest planning representation of the current state.
+
+
+## Mathematics canonical patch log
+
+### 2026-03-18: J5 early arithmetic and measurement expansion
+
+Approach used:
+
+- `reuse-first`: existing canonical goals were preferred over duplication
+- first wave limited to early arithmetic plus measurement/area foundations
+- the broad J5 geometry node remains in place for now; its finer split is deferred to avoid immediate duplicate modeling
+- new early atoms were scoped initially to `DE-BY` and documented as candidates for later `DE-HE` review
+
+Applied changes:
+
+- extended the J5 arithmetic cluster with six new early atoms: place value, rounding, basic additive equations, divisibility/prime factorization, powers of ten, and bracket/precedence evaluation
+- added one new J5 measurement application cluster with three atoms: calculating with quantities, rule of three/scale, and distinguishing perimeter from area
+- sharpened the existing natural-number foundation goal to mention number-line localization explicitly
+- tightened early prerequisite flow by making J6 area/volume goals depend on the new J5 quantity/area foundations
+
+Deferred on purpose:
+
+- splitting the existing broad J5 geometry atom into finer geometry atoms, because that requires a deliberate refactor to avoid duplicate canonical geometry goals
+
+
+### 2026-03-18: J5 M5 Bavaria mapping tranche
+
+Approach used:
+
+- mapped only the first high-confidence `M5` cases from Bavaria to the canonical graph
+- preferred `exact` only where the new or existing canonical atom matched the Bayern source tightly
+- used `partial` where the Bayern source remained narrower or broader than the canonical atom
+- deferred the remaining J5 geometry/process refinements until the broad existing geometry/process nodes are split without duplication
+
+Applied changes:
+
+- added a first tranche of explicit `DE-BY` mappings for J5 arithmetic and measurement/area goals
+- widened `Natürliche Zahlen darstellen, ordnen und mit ihnen rechnen` to `DE-BY` because Bayern J5 now provides direct evidence for that canonical atom
+
+
+### 2026-03-18: J5 geometry split and Bavaria geometry mapping
+
+Approach used:
+
+- preserved the existing broad J5 geometry goal ID and refactored it from an atomic goal into a geometry cluster to avoid breaking downstream references
+- split the geometry block only along the five explicit Bavaria `M5 2` leaf goals, so the refinement stays source-backed and does not invent duplicate canonical granularity
+- kept `DE-HE` applicability on the refined geometry atoms because the refactor only decomposes an already shared early-geometry atom; this narrows structure, not jurisdictional scope
+- recomputed cluster weights from unique atomic descendants so the J5 lineage stays semantically consistent after the geometry split
+
+Applied changes:
+
+- added five new J5 geometry atoms for coordinate-system objects, geometric relations, point sets with distance conditions, angle work, and quadrilateral properties
+- changed the Bavaria `M5 2` cluster mapping from `partial` to `exact`
+- added five exact Bavaria leaf mappings for the new geometry atoms
+
+Deferred on purpose:
+
+- no Hessen source-specific leaf mapping review yet for the new geometry atoms
+- no further J6/J7 prerequisite tightening beyond preserving the existing broad-cluster dependency as the current compatibility edge
+
+
+### 2026-03-19: DE-HE prerequisite closure after the J5 geometry split
+
+Approach used:
+
+- treated the APV-102 findings as a visibility-closure issue, not as a reason to revert the finer J5 modeling
+- widened the new J5 measurement tranche to `DE-HE`, because these atoms now act as explicit prerequisites for already visible Hessen lower-secondary area/volume goals
+- replaced remaining broad-cluster geometry prerequisites on later visible goals with the finer visible J5 geometry atoms, moving the graph one step closer to atomic prerequisite modeling
+
+Applied changes:
+
+- widened `Mit Größen rechnen und Ergebnisse deuten`, `Einfache proportionale Sachaufgaben mit Dreisatz und Maßstab lösen`, and `Umfang und Flächeninhalt unterscheiden und anwenden` plus their J5 cluster to `DE-HE`
+- retargeted the affected J6/J7/J8 geometry and area/volume goals from the broad J5 geometry cluster to the new finer geometry atoms
+
+Deferred on purpose:
+
+- no separate Hessen source-leaf mapping pass yet for the widened J5 measurement atoms
+- no validator run in this patch step
+
+
+### 2026-03-19: Hessen lower-secondary evidence added for new early-math atoms
+
+Approach used:
+
+- treated the remaining APV-102 findings as missing `DE-HE` evidence in the Hessen lower-secondary mapping layer, not as a canonical-graph failure
+- added only the smallest mapping tranche needed to close the new J5/J6 prerequisite visibility chain
+- stayed conservative on match quality: `exact` only where the Hessen source wording is tight enough, otherwise `partial`
+
+Applied changes:
+
+- added Hessen lower-secondary mappings for the new J5 measurement atoms and their J5 cluster
+- added Hessen lower-secondary mappings for the new J5 geometry atoms needed by the J6/J7/J8 prerequisite chain, plus the refactored J5 geometry cluster
+- explicitly anchored the coordinate-system basis atom so the new geometry prerequisites are themselves visible in `DE-HE`
+
+Deferred on purpose:
+
+- no broader Hessen backfill for the rest of the new J5 atom tranche beyond what the current validator findings require
+- no validator run in this patch step
+
+
+### 2026-03-19: Hessen closure switched from duplicate mappings to overrides
+
+Approach used:
+
+- reverted the invalid one-to-many Hessen lower-secondary mappings after the backend mapping service exposed the repository invariant that each `legacyGoalId` may resolve to only one canonical goal
+- preserved the finer canonical early-math structure and closed `DE-HE` visibility instead through explicit applicability overrides on the affected canonical atoms
+- documented the override-backed Hessen bridge in the accepted-warning registry, matching the repository's existing APV-201 pattern for reviewed prerequisite closures
+
+Applied changes:
+
+- removed the duplicate Hessen lower-secondary mapping entries that caused `GoalMappingService` to fail during startup
+- added `extendedData.applicabilityOverrides.jurisdiction = ["DE-HE"]` to the new early geometry and measurement atoms that are required by visible Hessen goals but lack a clean one-to-one Hessen source atom
+- updated the Bavaria math mapping fixture test to the intentionally expanded repository-backed mapping count and the new exact J5 geometry slice
+
+Deferred on purpose:
+
+- no broader refactor of repository mapping semantics beyond the current one-legacy-to-one-canonical invariant
+- no test rerun in this patch step
