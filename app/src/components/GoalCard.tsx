@@ -47,6 +47,11 @@ type GoalProvenance = {
   sourceLicenseUrl?: string
 }
 
+type ApplicabilityEntry = {
+  dimension: string
+  value: string
+}
+
 const LEGACY_ATTRIBUTION_LINE_PATTERNS = [
   /^\s*\[(course url|kurs-url)\]\(.*\)\s*$/i,
   /^\s*(license|lizenz)\s*:\s*\[.*\]\(.*\)\s*$/i,
@@ -74,6 +79,42 @@ const extractLicenseFromTags = (tags?: string[]): string | undefined => {
 }
 
 const normalize = (value?: string): string => (value ?? '').trim().toLowerCase()
+
+const APPLICABILITY_DIMENSION_LABELS: Record<string, { de: string; en: string }> = {
+  jurisdiction: { de: 'Bundesland', en: 'Jurisdiction' },
+  courseLevel: { de: 'Kursniveau', en: 'Course level' },
+  gradeBand: { de: 'Jahrgangsband', en: 'Grade band' },
+  track: { de: 'Zweig', en: 'Track' },
+  language: { de: 'Sprache', en: 'Language' },
+}
+
+const APPLICABILITY_VALUE_LABELS: Record<string, { de: string; en: string }> = {
+  'DE-BY': { de: 'Bayern', en: 'Bavaria' },
+  'DE-HE': { de: 'Hessen', en: 'Hesse' },
+  GK: { de: 'GK', en: 'GK' },
+  LK: { de: 'LK', en: 'LK' },
+}
+
+const humanizeKey = (value: string): string => {
+  const spaced = value
+    .replace(/([a-z0-9])([A-Z])/g, '$1 $2')
+    .replace(/[_-]+/g, ' ')
+    .trim()
+  if (!spaced) return value
+  return spaced.charAt(0).toUpperCase() + spaced.slice(1)
+}
+
+const formatApplicabilityDimension = (dimension: string, language: 'de' | 'en'): string => {
+  const mapped = APPLICABILITY_DIMENSION_LABELS[dimension]
+  if (mapped) return mapped[language]
+  return humanizeKey(dimension)
+}
+
+const formatApplicabilityValue = (value: string, language: 'de' | 'en'): string => {
+  const mapped = APPLICABILITY_VALUE_LABELS[value]
+  if (mapped) return mapped[language]
+  return value
+}
 
 const mapRawLink = (entry: Record<string, unknown>): GoalSourceLink | null => {
   const url = readString(entry.url)
@@ -181,6 +222,19 @@ export const GoalCard: React.FC<GoalCardProps> = ({
   const learningMaterialLinks = helpfulLinks.filter(isLearningMaterialLink).slice(0, 3)
   const sourceLinkLabel = provenance.sourceTitle || (language === 'en' ? 'Course page' : 'Kursseite')
   const displayDescription = stripLegacyAttributionLines(goal.description, Boolean(provenance.sourceUrl))
+  const applicabilityEntries = React.useMemo<ApplicabilityEntry[]>(() => {
+    const entries = Object.entries(goal.applicability ?? {})
+      .flatMap(([dimension, values]) =>
+        (Array.isArray(values) ? values : [])
+          .filter((value): value is string => typeof value === 'string' && value.trim().length > 0)
+          .map((value) => ({ dimension, value })),
+      )
+    return entries.sort((a, b) => {
+      const byDimension = a.dimension.localeCompare(b.dimension)
+      if (byDimension !== 0) return byDimension
+      return a.value.localeCompare(b.value)
+    })
+  }, [goal.applicability])
 
   // Determine Status Icon
   let StatusIcon = Target
@@ -328,6 +382,23 @@ export const GoalCard: React.FC<GoalCardProps> = ({
       {/* Detail Information Section - only shown in Explorer view */}
       {showDetails && (
         <div className="mt-4 space-y-3 text-[11px] text-text-secondary border-t border-border-color pt-4">
+          {/* Applicability */}
+          {applicabilityEntries.length > 0 && (
+            <div>
+              <span className="font-semibold text-text-primary">{language === 'en' ? 'Applies to:' : 'Gilt fuer:'}</span>
+              <div className="mt-1 flex flex-wrap gap-1.5">
+                {applicabilityEntries.map(({ dimension, value }) => (
+                  <span
+                    key={`${dimension}:${value}`}
+                    className="px-2 py-0.5 rounded-full bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-300"
+                  >
+                    {formatApplicabilityDimension(dimension, language === 'en' ? 'en' : 'de')}: {formatApplicabilityValue(value, language === 'en' ? 'en' : 'de')}
+                  </span>
+                ))}
+              </div>
+            </div>
+          )}
+
           {/* Tags */}
           {goal.tags && goal.tags.length > 0 && (
             <div className="flex flex-wrap gap-1.5">

@@ -106,12 +106,35 @@ export function useAppCore({ role, setLearnerMeta, skillpilotId }: AppCoreOption
   const matchesActiveFilter = useCallback(
     (goal: Goal) => {
       if (!activeFilter || activeFilter === 'all') return true
-      if (!goal.tags || goal.tags.length === 0) return true
-      return goal.tags.includes(activeFilter)
+      const applicabilityValues = goal.applicability
+        ? Object.values(goal.applicability)
+            .flatMap((values) => (Array.isArray(values) ? values : []))
+            .filter((value): value is string => typeof value === 'string' && value.trim().length > 0)
+        : []
+      const tagValues = (goal.tags ?? []).filter(
+        (value): value is string => typeof value === 'string' && value.trim().length > 0,
+      )
+
+      if (applicabilityValues.includes(activeFilter)) return true
+      if (tagValues.includes(activeFilter)) return true
+
+      return applicabilityValues.length === 0 && tagValues.length === 0
     },
     [activeFilter],
   )
-  const filteredNeighbors = neighbors
+  const filteredNeighbors = useMemo(
+    () => ({
+      containers: neighbors.containers.filter(matchesActiveFilter),
+      children: neighbors.children.filter(matchesActiveFilter),
+      requires: neighbors.requires.filter(matchesActiveFilter),
+      inheritedRequires: neighbors.inheritedRequires.filter(matchesActiveFilter),
+      effectiveRequires: neighbors.effectiveRequires.filter(matchesActiveFilter),
+      directForward: neighbors.directForward.filter(matchesActiveFilter),
+      inheritedForward: neighbors.inheritedForward.filter(matchesActiveFilter),
+      forward: neighbors.forward.filter(matchesActiveFilter),
+    }),
+    [matchesActiveFilter, neighbors],
+  )
 
   const externalRequires: ExternalRequirement[] = useMemo(() => {
     if (!currentGoal) return []
