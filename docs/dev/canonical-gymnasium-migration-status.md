@@ -854,3 +854,27 @@ Deferred on purpose:
 - no new canonical split for the `M8 1` or `M8 2` function-introduction corridor yet; graph-reading and introductory function-language aspects still lean on partial bridges where the current canonical structure stays coarser than the Bavaria source
 - no `M9` Bavaria audit yet
 - no validator or CI run in this patch step
+
+
+### 2026-03-19: M9 Bavaria quadratics, probability and trigonometry tranche
+
+Approach used:
+
+- kept the current canonical J9 corridor intact and reused the existing year-9 anchors instead of opening a new split before the Bavaria `M9` slice actually proves a missing atom
+- treated `M9 2 Quadratische Funktionen` as a mixed corridor: the leaf level can already attach well to the existing quadratic-function, vertex, quadratic-equation, fraction-equation and linear-system anchors, while the broad Bayern cluster still needs `partial` umbrella bridges
+- upgraded the direct J9 corridor matches for connected probability, similarity, power-function, Pythagoras and trigonometry blocks where the canonical pilot already mirrors the Bavaria slice closely enough
+- stayed conservative on the root and advanced trig leaves where proof, Heron iteration, rationalisation, unit-circle work or broader strategy language exceed the current canonical atom granularity
+
+Applied changes:
+
+- completed the Bavaria `M9` mapping tranche across `M9 1` to `M9 7.2`
+- upgraded the existing Bavaria `M9 3`, `M9 4`, `M9 5`, `M9 6`, `M9 7` and `M9 7.1` cluster bridges from `partial` to `exact`; `M9 7.2` stays `partial`
+- upgraded the existing leaf bridges for connected probability, power-function graphs, Pythagoras calculations and right-triangle trigonometry where the canonical J9 atoms already match directly
+- added the missing Bavaria leaf mappings for roots, quadratics, connected probability, similarity, extended power work, Pythagoras and both trigonometry subcorridors
+- updated the repository-backed Bavaria mapping fixture to the new mapping count
+
+Deferred on purpose:
+
+- no new canonical split yet for the broader `M9 1` root corridor or the unit-circle/setup part of `M9 7.2`
+- no `M10` Bavaria audit yet
+- no validator or CI run in this patch step
