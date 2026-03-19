@@ -767,3 +767,24 @@ Deferred on purpose:
 - no canonical J7 algebra refactor yet; the current step is mapping-first
 - no `M7 2` / `M7 3` Bavaria tranche yet
 - no validator or CI run in this patch step
+
+
+### 2026-03-19: J7 Bavaria symmetry-and-angle mapping tranche
+
+Approach used:
+
+- kept `M7 2 Geometrische Figuren: Symmetrie und Winkel` on the existing canonical J7 geometry anchor instead of splitting J7 geometry prematurely
+- upgraded the broad Bavaria `M7 2` cluster to `exact`, because the canonical goal `Symmetrie und Winkel begründen` already mirrors this corridor closely enough at cluster level
+- stayed conservative on the leaf mappings: all `M7 2.1` and `M7 2.2` leaves remain `partial`, because the Bavaria source mixes concrete construction routines, model references, historical/contextual framing, and multi-step proof language more tightly than the current canonical J7 geometry atom
+
+Applied changes:
+
+- upgraded the Bavaria `M7 2` cluster mapping from `partial` to `exact`
+- added seven Bavaria `M7 2.1` / `M7 2.2` leaf mappings onto the existing canonical J7 geometry anchor
+- updated the repository-backed Bavaria mapping fixture to the new mapping count
+
+Deferred on purpose:
+
+- no canonical J7 geometry split yet
+- no `M7 3` or `M7 5` Bavaria tranche yet
+- no validator or CI run in this patch step
