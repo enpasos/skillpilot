@@ -761,7 +761,7 @@ class LearnerServiceCanonicalProjectionTest {
 
         List<String> plannedGoals = learnerService.getPlannedGoals(LEARNER_ID);
 
-        assertThat(plannedGoals).containsExactly(CANONICAL_QUADRATIC_VERTEX_ID);
+        assertThat(plannedGoals).containsExactly("7bff61c1-1a69-4991-97de-0cff764f507e");
     }
 
     @Test

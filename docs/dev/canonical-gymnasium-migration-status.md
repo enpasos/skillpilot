@@ -1047,3 +1047,45 @@ Deferred on purpose:
 
 - no new Hessen legacy leaf-mapping tranche for these J9 root atoms
 - no validator or CI run in this patch step
+
+
+### 2026-03-19: J9 quadratics split for Bavaria M9 2
+
+Approach used:
+
+- repurposed the old broad quadratic-function atom `5a9702f4-7e4d-457d-b98c-f0bafcd1e386` into a retained J9 quadratics cluster so downstream references stay stable
+- separated the Bavaria `M9 2` corridor into a foundations branch and an applications branch instead of keeping subsection mappings on a single coarse atom
+- reused the existing canonical atoms for solving quadratic equations, vertex work, linear systems and rational equations wherever they already matched cleanly
+- introduced only the missing atoms for parameter effects, graph-property reading, form switching, deriving quadratic functions from conditions, and modelling with quadratic functions
+- opened the new J9 quadratic clusters and atoms for `DE-HE` via the established override-backed prerequisite bridge
+
+Applied changes:
+
+- turned `5a9702f4-7e4d-457d-b98c-f0bafcd1e386` into a J9 quadratics cluster with a foundations and an applications subtree
+- upgraded the Bavaria cluster mappings `M9 2`, `M9 2.1` and `M9 2.2` from `partial` to `exact`
+- remapped the previously broad Bavaria leaf bridges in `M9 2` to dedicated canonical quadratic atoms
+- rewired the J9 year anchor so the quadratic corridor hangs under the retained quadratics cluster instead of duplicating the old subclusters directly
+- updated the Bavaria mapping fixture and added the matching `APV-201` accepted-warning entries for the Hessen prerequisite bridge
+
+Deferred on purpose:
+
+- no new Hessen legacy leaf-mapping tranche for the new J9 quadratic atoms
+- no validator or CI run in this patch step
+
+
+### 2026-03-19: J9 quadratics inheritance fix after validator feedback
+
+Approach used:
+
+- kept the new J9 quadratics split intact and corrected only the placement of the didactic prerequisite
+- removed the foundation prerequisite from the broad J9 applications cluster because that cluster intentionally reuses the older J8 atom `797ee047-b8dd-45cf-880e-98571a56c690` for rational equations
+- attached the foundation prerequisite only to the J9-specific modelling atom, where the later-phase dependency is didactically justified
+
+Applied changes:
+
+- cleared the direct `requires` edge from the J9 applications cluster `0d4a6f56-2f87-4c39-98ab-5f13f5cbdd40`
+- added the same prerequisite explicitly to the J9 modelling atom `a7ccb7a9-6fb0-4e2d-b6e0-6420cc5ae0bf`
+
+Deferred on purpose:
+
+- no validator or CI run in this patch step

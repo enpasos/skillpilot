@@ -2967,7 +2967,7 @@
       "description": "Kanonischer Jahrgangsanker für J9 der gymnasialen Sekundarstufe I in Mathematik. Der aktuelle Pilot bindet hier quadratische, stochastische, ähnlichkeitstheoretische, potenzbezogene und trigonometrische Anschlussziele an.",
       "descriptionEn": "Canonical year anchor for year 9 in lower-secondary Gymnasium mathematics. The current pilot attaches quadratic, stochastic, similarity-based, power-related, and trigonometric bridge goals here.",
       "core": true,
-      "weight": 18,
+      "weight": 23,
       "tags": [
         "canonical",
         "pilot",
@@ -2989,13 +2989,11 @@
       },
       "contains": [
         "8a0b0baf-c7e6-43df-a470-f56050ecaa46",
-        "9023226b-fc17-412b-807c-2bb45cd551d5",
         "50aeb801-d2b5-4939-b66b-2fcae0352dcf",
         "ffd1ae26-c461-4439-9b18-d835c8f38e1a",
         "289db903-2831-45ef-afc2-c0619c91d680",
         "4d78bbcc-89b8-47f0-aa45-516199e4da5d",
         "219ce079-6bfd-4827-8b66-5dd199e44686",
-        "c23705d2-57fc-4260-80d8-2d340203a173",
         "5a9702f4-7e4d-457d-b98c-f0bafcd1e386"
       ],
       "requires": [],
@@ -5332,13 +5330,13 @@
     },
     {
       "id": "5a9702f4-7e4d-457d-b98c-f0bafcd1e386",
-      "shortKey": "canonical_math_describe_quadratic_functions",
-      "title": "Quadratische Funktionen beschreiben",
-      "titleEn": "Describe quadratic functions",
-      "description": "Die lernende Person kann Parabeln ueber Scheitelpunkt, Nullstellen und Verschiebungen analysieren und ihre Graphen darstellen.",
-      "descriptionEn": "The learner can analyze parabolas using vertex, roots, and shifts and represent their graphs.",
+      "shortKey": "canonical_math_sek1_j9_quadratics",
+      "title": "Quadratische Funktionen beschreiben und anwenden",
+      "titleEn": "Describe and apply quadratic functions",
+      "description": "Kanonischer Cluster fuer den J9-Quadratik-Korridor. Der aktuelle Bayern-Slice trennt hier zwischen grundlegenden Darstellungen und Eigenschaften quadratischer Funktionen, quadratischen Gleichungen sowie Anwendungen mit Parametern, Bedingungen und Modellierungen.",
+      "descriptionEn": "Canonical cluster for the year-9 quadratic corridor. The current Bavaria slice distinguishes between fundamental representations and properties of quadratic functions, quadratic equations, and applications involving parameters, conditions, and modelling.",
       "core": true,
-      "weight": 1,
+      "weight": 9,
       "tags": [
         "canonical",
         "pilot"
@@ -5359,12 +5357,11 @@
         "area": "Analysis",
         "topicCode": "CANONICAL.MATH.SEK1.3"
       },
-      "contains": [],
-      "requires": [
-        "c23705d2-57fc-4260-80d8-2d340203a173",
-        "3e4032bd-4d8c-4e72-bfdd-64a34df053c9",
-        "af3d6bff-c5fb-4ec6-a9f0-c0be09fc9186"
+      "contains": [
+        "d4a9fc20-d1be-46e7-86e9-2bf8d7a9cc40",
+        "0d4a6f56-2f87-4c39-98ab-5f13f5cbdd40"
       ],
+      "requires": [],
       "applicability": {
         "jurisdiction": [
           "DE-BY",
@@ -5374,8 +5371,390 @@
       "extendedData": {
         "pilot": true,
         "provenance": {
-          "sourceLandscapeId": "b167b4cd-4b78-4c84-a721-6b2adbbcab3c",
-          "sourceGoalId": "1ebf8f29-5c87-4fa3-879b-dac273057605"
+          "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
+          "sourceGoalId": "15c31e1c-ddaf-5db8-a6a2-5d177fdad216",
+          "sourceLandscapeTitle": "Mathematik (Gymnasium)"
+        }
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "d4a9fc20-d1be-46e7-86e9-2bf8d7a9cc40",
+      "shortKey": "canonical_math_sek1_j9_quadratic_basics",
+      "title": "Quadratische Funktionen und Gleichungen grundlegend untersuchen",
+      "titleEn": "Investigate quadratic functions and equations in a foundational way",
+      "description": "Kanonischer Cluster fuer den Grundlagenstrang zu quadratischen Funktionen und Gleichungen in J9. Er buendelt Scheitelpunktarbeit, Graphdeutung, Gleichungsloesen und den gezielten Wechsel zwischen Darstellungsformen.",
+      "descriptionEn": "Canonical cluster for the foundational year-9 strand on quadratic functions and equations. It bundles vertex work, graph interpretation, solving equations, and purposeful switching between representations.",
+      "core": true,
+      "weight": 6,
+      "tags": [
+        "canonical",
+        "pilot"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math-pilot",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "K1.1",
+          "K2.1",
+          "K4.1",
+          "K5.1"
+        ],
+        "guidingIdeas": [
+          "L1",
+          "L4"
+        ],
+        "phase": "J9",
+        "area": "Analysis",
+        "topicCode": "CANONICAL.MATH.SEK1.J9.2A"
+      },
+      "contains": [
+        "5bced7dc-6557-4af1-9e70-d87f850d3b7f",
+        "c23705d2-57fc-4260-80d8-2d340203a173",
+        "e0c3359d-7d8a-4d01-a25e-a8cd5ebce90e",
+        "9023226b-fc17-412b-807c-2bb45cd551d5",
+        "7bff61c1-1a69-4991-97de-0cff764f507e"
+      ],
+      "requires": [
+        "af3d6bff-c5fb-4ec6-a9f0-c0be09fc9186"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BY"
+        ]
+      },
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
+          "sourceLandscapeTitle": "Mathematik (Gymnasium)",
+          "sourceGoalId": "1aab2db4-7a01-53d5-88ce-ef89adc54f02"
+        },
+        "applicabilityOverrides": {
+          "jurisdiction": [
+            "DE-HE"
+          ]
+        }
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "0d4a6f56-2f87-4c39-98ab-5f13f5cbdd40",
+      "shortKey": "canonical_math_sek1_j9_quadratic_applications",
+      "title": "Quadratische Funktionen in Anwendungen nutzen",
+      "titleEn": "Use quadratic functions in applications",
+      "description": "Kanonischer Cluster fuer den Anwendungsstrang quadratischer Funktionen in J9. Er umfasst das Bestimmen quadratischer Terme aus Bedingungen, Bruchgleichungen mit quadratischer Rueckfuehrung und Modellierungen mit quadratischen Funktionen.",
+      "descriptionEn": "Canonical cluster for the application strand of quadratic functions in year 9. It covers deriving quadratic terms from conditions, rational equations reducible to quadratics, and modelling with quadratic functions.",
+      "core": true,
+      "weight": 3,
+      "tags": [
+        "canonical",
+        "pilot"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math-pilot",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K2.1",
+          "K3.1",
+          "K4.1",
+          "K5.1"
+        ],
+        "guidingIdeas": [
+          "L1",
+          "L4"
+        ],
+        "phase": "J9",
+        "area": "Analysis",
+        "topicCode": "CANONICAL.MATH.SEK1.J9.2B"
+      },
+      "contains": [
+        "5743b8f9-86cb-4e24-8859-351708d070ab",
+        "797ee047-b8dd-45cf-880e-98571a56c690",
+        "a7ccb7a9-6fb0-4e2d-b6e0-6420cc5ae0bf"
+      ],
+      "requires": [],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BY"
+        ]
+      },
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
+          "sourceLandscapeTitle": "Mathematik (Gymnasium)",
+          "sourceGoalId": "aa132996-19d1-5788-a303-2d9a3d44337a"
+        },
+        "applicabilityOverrides": {
+          "jurisdiction": [
+            "DE-HE"
+          ]
+        }
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "5bced7dc-6557-4af1-9e70-d87f850d3b7f",
+      "shortKey": "canonical_math_sek1_j9_vertex_form_parameters",
+      "title": "Parameter quadratischer Funktionen in Scheitelpunktform deuten",
+      "titleEn": "Interpret parameters of quadratic functions in vertex form",
+      "description": "Die lernende Person kann bei quadratischen Funktionen der Form a(x+d)^2+e die Wirkung der Parameter auf die Parabel beschreiben, die Anzahl der Nullstellen deuten und die zugehoerige Gleichung in einfachen Faellen graphisch und rechnerisch einordnen.",
+      "descriptionEn": "The learner can describe how the parameters in quadratic functions of the form a(x+d)^2+e affect the parabola, interpret the number of roots, and classify the corresponding equation in simple graphical and algebraic cases.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical",
+        "pilot"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math-pilot",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "K1.1",
+          "K2.1",
+          "K4.1"
+        ],
+        "guidingIdeas": [
+          "L1",
+          "L4"
+        ],
+        "phase": "J9",
+        "area": "Analysis",
+        "topicCode": "CANONICAL.MATH.SEK1.J9.2A1"
+      },
+      "contains": [],
+      "requires": [
+        "af3d6bff-c5fb-4ec6-a9f0-c0be09fc9186"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BY"
+        ]
+      },
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
+          "sourceLandscapeTitle": "Mathematik (Gymnasium)",
+          "sourceGoalId": "c74ac5a2-32bb-5c9c-af1a-627fe7b55782"
+        },
+        "applicabilityOverrides": {
+          "jurisdiction": [
+            "DE-HE"
+          ]
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "e0c3359d-7d8a-4d01-a25e-a8cd5ebce90e",
+      "shortKey": "canonical_math_sek1_j9_read_quadratic_graph_properties",
+      "title": "Eigenschaften quadratischer Funktionen aus Graphen ablesen",
+      "titleEn": "Read properties of quadratic functions from graphs",
+      "description": "Die lernende Person kann aus dem Graphen einer quadratischen Funktion Wertemenge, Nullstellen, Vorzeichenbereiche, Monotonieverhalten, Extremwerte und den y-Achsenabschnitt bestimmen.",
+      "descriptionEn": "The learner can determine the range, roots, sign intervals, monotonic behaviour, extrema, and y-intercept of a quadratic function from its graph.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical",
+        "pilot"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math-pilot",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "K1.1",
+          "K4.1"
+        ],
+        "guidingIdeas": [
+          "L4"
+        ],
+        "phase": "J9",
+        "area": "Analysis",
+        "topicCode": "CANONICAL.MATH.SEK1.J9.2A2"
+      },
+      "contains": [],
+      "requires": [
+        "5bced7dc-6557-4af1-9e70-d87f850d3b7f"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BY"
+        ]
+      },
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
+          "sourceLandscapeTitle": "Mathematik (Gymnasium)",
+          "sourceGoalId": "cb153956-608d-5f83-98f2-da7f479c7ba2"
+        },
+        "applicabilityOverrides": {
+          "jurisdiction": [
+            "DE-HE"
+          ]
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "7bff61c1-1a69-4991-97de-0cff764f507e",
+      "shortKey": "canonical_math_sek1_j9_use_quadratic_representations",
+      "title": "Darstellungsformen quadratischer Funktionen situationsgerecht nutzen",
+      "titleEn": "Use representations of quadratic functions appropriately",
+      "description": "Die lernende Person kann allgemeine Form, Scheitelpunktform und Nullstellenform quadratischer Funktionen unterscheiden, ihre jeweiligen Vorteile erklaeren und in passenden Situationen gezielt verwenden.",
+      "descriptionEn": "The learner can distinguish the standard, vertex, and factorized forms of quadratic functions, explain their respective advantages, and use them purposefully in suitable situations.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical",
+        "pilot"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math-pilot",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K1.1",
+          "K2.1",
+          "K5.1"
+        ],
+        "guidingIdeas": [
+          "L1",
+          "L4"
+        ],
+        "phase": "J9",
+        "area": "Analysis",
+        "topicCode": "CANONICAL.MATH.SEK1.J9.2A3"
+      },
+      "contains": [],
+      "requires": [
+        "c23705d2-57fc-4260-80d8-2d340203a173",
+        "9023226b-fc17-412b-807c-2bb45cd551d5"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BY"
+        ]
+      },
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
+          "sourceLandscapeTitle": "Mathematik (Gymnasium)",
+          "sourceGoalId": "cd991abf-058c-54a3-8690-a76ed51060f8"
+        },
+        "applicabilityOverrides": {
+          "jurisdiction": [
+            "DE-HE"
+          ]
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "5743b8f9-86cb-4e24-8859-351708d070ab",
+      "shortKey": "canonical_math_sek1_j9_determine_quadratic_from_conditions",
+      "title": "Quadratische Funktionen aus Punkten oder Bedingungen bestimmen",
+      "titleEn": "Determine quadratic functions from points or conditions",
+      "description": "Die lernende Person kann lineare Gleichungssysteme mit drei Unbekannten nutzen, um Koeffizienten quadratischer Funktionen aus Punkten oder Bedingungen zu bestimmen, und das Verfahren algorithmisch erlaeutern.",
+      "descriptionEn": "The learner can use systems of three linear equations to determine coefficients of quadratic functions from points or conditions and explain the procedure algorithmically.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical",
+        "pilot"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math-pilot",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K2.1",
+          "K3.1",
+          "K5.1"
+        ],
+        "guidingIdeas": [
+          "L1",
+          "L4"
+        ],
+        "phase": "J9",
+        "area": "Analysis",
+        "topicCode": "CANONICAL.MATH.SEK1.J9.2B1"
+      },
+      "contains": [],
+      "requires": [
+        "546bf0b3-6921-416b-a2ef-8fd37d429dc7"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BY"
+        ]
+      },
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
+          "sourceLandscapeTitle": "Mathematik (Gymnasium)",
+          "sourceGoalId": "c7a84905-dab0-53da-be54-e4bb8a499d2c"
+        },
+        "applicabilityOverrides": {
+          "jurisdiction": [
+            "DE-HE"
+          ]
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "a7ccb7a9-6fb0-4e2d-b6e0-6420cc5ae0bf",
+      "shortKey": "canonical_math_sek1_j9_model_with_quadratic_functions",
+      "title": "Quadratische Funktionen in Anwendungen modellieren und loesen",
+      "titleEn": "Model and solve applications with quadratic functions",
+      "description": "Die lernende Person kann innermathematische und realitaetsnahe Problemstellungen mithilfe quadratischer Funktionen modellieren, Extremwerte deuten, Ergebnisse im Sachzusammenhang validieren und Loesungswege nachvollziehbar dokumentieren.",
+      "descriptionEn": "The learner can model mathematical and real-world problems using quadratic functions, interpret extrema, validate results in context, and document solution paths coherently.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical",
+        "pilot"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math-pilot",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K1.1",
+          "K2.1",
+          "K4.1",
+          "K5.1"
+        ],
+        "guidingIdeas": [
+          "L1",
+          "L4"
+        ],
+        "phase": "J9",
+        "area": "Analysis",
+        "topicCode": "CANONICAL.MATH.SEK1.J9.2B2"
+      },
+      "contains": [],
+      "requires": [
+        "d4a9fc20-d1be-46e7-86e9-2bf8d7a9cc40"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BY"
+        ]
+      },
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
+          "sourceLandscapeTitle": "Mathematik (Gymnasium)",
+          "sourceGoalId": "9c7c7e7c-68e5-5432-8ec9-44ca6d47a23d"
+        },
+        "applicabilityOverrides": {
+          "jurisdiction": [
+            "DE-HE"
+          ]
         }
       },
       "type": "atomic"
