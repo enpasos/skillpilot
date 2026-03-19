@@ -76,6 +76,12 @@ Options:
 - UUID v5 with a project namespace.
 - A deterministic mapping from `(landscapeId, shortKey)`.
 
+If `shortKey` is used:
+
+- it remains optional at goal level
+- but it must be unique within the logical `landscapeId`
+- in multi-file locale serializations of the same landscape, repeating the same `(goalId, shortKey)` pair is acceptable, while reusing one `shortKey` for different goal IDs is not
+
 ### 2.2 Required fields (minimum)
 
 Top-level:
@@ -85,7 +91,7 @@ Top-level:
 Goal-level:
 
 - `id`, `title`, `description`, `weight`, `requires`, `contains`, `dimensionTags`
-- Recommended stable cross-layer field: `shortKey`
+- Recommended stable cross-layer field: `shortKey` (optional, but unique within `landscapeId` if present)
 - Inside `dimensionTags`, require at least `phase`; prefer `area`, `topicCode`, `demandLevel`, `processCompetencies`, and `guidingIdeas` when available
 - Optional metadata: `tags`, `core`, `examples`, `sourceRef`, `resourceLinks`
 

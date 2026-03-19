@@ -1235,3 +1235,140 @@ Deferred on purpose:
 
 - no new canonical atoms in this cleanup step
 - no validator or CI run in this patch step
+
+
+### 2026-03-19: Updated residual Bavaria Sek-I math audit after subsection cleanup
+
+Scope used:
+
+- Bavaria Gymnasium mathematics source corridor `Jahrgangsstufe 5` to `Jahrgangsstufe 10`
+- source file: `curricula/DE/Gymnasium/input/BY/gymnasium/Mathematik.json`
+- mapping file: `curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_math_to_canonical_math_pilot.json`
+
+Current repository-backed counts for the reviewed Sek-I corridor:
+
+- total source goals in scope: `246`
+- mapped goals: `235`
+- of those mapped:
+  - `116` `exact`
+  - `119` `partial`
+- remaining unmapped goals: `11`
+
+Remaining unmapped goals are now concentrated in a single early corridor rather than spread across later-year canonical gaps.
+
+Residual unmapped set:
+
+- `M5` arithmetic / early-process leaves only:
+  - natural-number infinity / very large-number orientation
+  - checking integer statements with counterexamples
+  - arithmetic-advantage leaves around commutativity / associativity / distributivity
+  - one early counting-principle leaf
+  - one multiplication/division-equation leaf
+  - one term-structure leaf for whole-number mixed operations
+  - two problem-solving / heuristic / application leaves with whole numbers
+  - one benchmark-based estimation leaf
+
+Residual `partial` hotspots by size:
+
+- `8da730f1-8947-498d-9e78-7fb20b00a994` J7 symmetry / angle geometry corridor: `9`
+- `fd860da9-73ba-47cd-a1a8-452424915a80` J7 algebra corridor: `9`
+- `5d17ebb4-4e27-4f9c-8d0b-3520f34b2e11` J9 trigonometric-functions corridor: `7`
+- `1f89d69e-ead1-424b-8221-fae37fdea2bc` J6/J10 volume-surface corridor: `6`
+- `f0a49da2-018b-4cda-adbd-27047b610a0f` J7 congruence / Thales corridor: `6`
+
+Residual-gap judgment:
+
+- the remaining large `partial` groups are mostly acceptable breadth mismatches, not evidence of another urgent canonical modeling hole
+- after the J7/J9/J10 splits already completed, the sharpest remaining uncovered content is no longer in later-year function or geometry corridors
+- the real residual blind spot is now the early Bavaria `M5` arithmetic/process layer, because all `11` unmapped goals sit there
+
+Recommended next patch wave:
+
+1. close the remaining `M5` unmapped arithmetic/process leaves
+2. keep the broad J7/J9 partial corridors as reviewed breadth mismatches unless a stricter exactness target is explicitly needed
+3. only after the `M5` closure, decide whether any of the large partial hotspots merit another canonical split at all
+
+
+### 2026-03-19: Reuse-first patch plan for residual Bavaria M5 arithmetic/process closure
+
+Residual source leaves still unmapped in the Bavaria Sek-I scope:
+
+- natural-number infinity / naming very large numbers
+- checking integer statements with counterexamples
+- arithmetic-advantage leaves for addition/subtraction and multiplication/division
+- early counting-principle leaf
+- multiplication/division-equation leaf
+- mixed-operation term-structure leaf
+- heuristic problem-solving / application leaves with whole numbers
+- benchmark-based estimation leaf
+
+High-confidence reuse targets already present in the canonical J5 corridor:
+
+- `624764d6-becd-5f9b-ada3-0d4f9d143073` `Stellenwertsystem und Zahlendarstellungen verstehen`
+- `fe07241a-b779-5f35-a82d-7aa51ae74f42` `Natürliche Zahlen runden`
+- `4b67bed9-06da-40b2-a306-24e9e7dfd390` early whole-number / integer number corridor
+- `cafd6520-c4af-4109-9863-cc49ba6fad4d` early multiplication/division corridor
+- `5d1decb2-b01b-5c85-88fc-9fc255ff9776` `Klammerterme und Rechenreihenfolge sicher auswerten`
+- `ca9093cd-9ccf-5fb4-9dd8-bf4f92af4e70` simple proportional / measure-context problem solving
+
+Likely true residual canonical gaps:
+
+1. `Natürliche Zahlen als unbegrenzt fortsetzbar verstehen und große Zahlbezeichnungen sicher verwenden`
+2. `Aussagen über ganze Zahlen prüfen und mit Gegenbeispielen widerlegen`
+3. `Einfache Multiplikations- und Divisionsgleichungen durch Umkehroperationen lösen`
+4. `Rechenvorteile mit Kommutativ-, Assoziativ- und Distributivgesetz gezielt nutzen`
+5. `Problemstellungen mit ganzen Zahlen heuristisch lösen und Lösungswege dokumentieren`
+6. `Größen in Sachsituationen mithilfe von Bezugsgrößen schätzen`
+
+Open review candidate before authoring a new atom:
+
+- `Zählprinzip in einfachen realitätsnahen Kontexten systematisch anwenden`
+
+Reason:
+
+- this leaf may deserve a small early counting atom
+- but first it should be checked against the existing stochastic / combinatorial entry corridor to avoid inventing a duplicate precursor if a reusable canonical node already exists
+
+Planned patch order:
+
+1. verify whether the early counting-principle leaf can reuse an existing canonical atom
+2. add only the six clearly missing J5 arithmetic/process atoms listed above
+3. remap the `11` remaining Bavaria M5 leaves
+4. keep any still bundled source leaf on `partial` if it genuinely mixes more than one of the new fine-grained strands
+
+Expected result:
+
+- the Bavaria Sek-I pilot should then have no obvious unmapped `M5` blind spot left
+- remaining residual debt would mostly be deliberate `partial` breadth mismatches rather than missing canonical authoring
+
+
+### 2026-03-19: Residual Bavaria M5 arithmetic/process closure
+
+Approach used:
+
+- kept the existing J5 arithmetic and measurement clusters as retained anchors instead of opening another large structural refactor
+- reused the existing term-structure atom `5d1decb2-b01b-5c85-88fc-9fc255ff9776` for the previously unmapped mixed-operation leaf
+- added only the genuinely missing early J5 atoms for:
+  - unbounded natural-number understanding and large-number naming
+  - checking integer statements with counterexamples
+  - arithmetic advantages from commutative / associative laws
+  - basic multiplicative equations via inverse operations
+  - simple counting principles in contextual situations
+  - heuristic whole-number problem solving with documented solution paths
+  - benchmark-based estimation in quantity contexts
+- closed Hessen visibility for these new prerequisite atoms directly via the established override-backed bridge
+
+Applied changes:
+
+- expanded the retained J5 arithmetic cluster `8dd5199b-f614-4ebd-8819-b5ff37326524` with six new early-process atoms and recomputed its weight
+- expanded the retained J5 measurement-application cluster `b40bebc2-91e3-5aac-916d-43247ee08d09` with one new estimation atom and recomputed its weight
+- updated the J5 year anchor weight accordingly
+- mapped the `11` previously unmapped Bavaria `M5` leaves:
+  - `10` to the newly added J5 atoms
+  - `1` (`4d77f5fc-016f-527e-a1c3-44797aead19a`) to the already existing term-structure atom
+- updated the repository-backed Bavaria mapping fixture and added the corresponding Hessen `APV-201` accepted-warning entries
+
+Resulting interpretation:
+
+- the Bavaria Sek-I pilot no longer has an obvious unmapped `M5` blind spot
+- remaining residual debt now sits predominantly in deliberate `partial` breadth mismatches rather than in missing canonical J5 authoring

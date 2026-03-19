@@ -93,6 +93,7 @@ top level and per goal for future layers and exports.
 - Type: string (ASCII identifier)
 - Example: `q3_5_gk_02_datenanalyse_modellvergleich`
 - Used by: accepted by schema and intended for stable cross-layer/export references; the current UI still derives fallback short keys from UUIDs in `app/src/hooks/useAppCore.ts`
+- Constraint: optional, but if present it must be unique within the logical `landscapeId`; duplicate locale serializations are only valid when the same `shortKey` still refers to the same `goalId`
 - Status: not yet consumed directly by the current UI runtime
 
 ### title
