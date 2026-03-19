@@ -878,3 +878,27 @@ Deferred on purpose:
 - no new canonical split yet for the broader `M9 1` root corridor or the unit-circle/setup part of `M9 7.2`
 - no `M10` Bavaria audit yet
 - no validator or CI run in this patch step
+
+
+### 2026-03-19: M10 Bavaria exponential, stochastic and trigonometric tranche
+
+Approach used:
+
+- reused the existing canonical J10 corridor without opening a new split for exponential growth, stochastic simulations, sinus/cosinus functions or polynomial basics
+- upgraded `M10 1`, `M10 2`, `M10 3` and `M10 4` to `exact` at cluster level where the existing J10 anchors already inherit their provenance directly from the same Bavaria source corridors
+- stayed conservative on most leaf mappings for sinus/cosinus functions, polynomial behaviour and the broad space-geometry continuation, because the current canonical atoms remain coarser than the detailed Bavaria leaf wording
+- kept `M10 5 Fortführung der Raumgeometrie` on a deliberate `partial` bridge, since the current canonical J10 space-geometry atom is still too narrow for the full Bavaria cone/pyramid/sphere corridor
+
+Applied changes:
+
+- completed the Bavaria `M10` mapping tranche across `M10 1` to `M10 5`
+- upgraded the existing cluster bridges for `M10 1`, `M10 2`, `M10 3` and `M10 4` from `partial` to `exact`
+- upgraded the direct simulation and tree-rule leaves in `M10 2` to `exact`
+- added the missing Bavaria leaf mappings for exponential growth, logarithms, sinus/cosinus functions, polynomial basics and the space-geometry continuation
+- updated the repository-backed Bavaria mapping fixture to the new mapping count
+
+Deferred on purpose:
+
+- no new canonical split yet for the bogenmaß/einheitskreis detail in `M10 3`
+- no new canonical split yet for the cone/pyramid/sphere-heavy `M10 5` corridor
+- no validator or CI run in this patch step
