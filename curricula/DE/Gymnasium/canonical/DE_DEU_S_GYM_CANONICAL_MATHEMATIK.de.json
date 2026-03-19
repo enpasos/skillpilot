@@ -2967,7 +2967,7 @@
       "description": "Kanonischer Jahrgangsanker für J9 der gymnasialen Sekundarstufe I in Mathematik. Der aktuelle Pilot bindet hier quadratische, stochastische, ähnlichkeitstheoretische, potenzbezogene und trigonometrische Anschlussziele an.",
       "descriptionEn": "Canonical year anchor for year 9 in lower-secondary Gymnasium mathematics. The current pilot attaches quadratic, stochastic, similarity-based, power-related, and trigonometric bridge goals here.",
       "core": true,
-      "weight": 14,
+      "weight": 18,
       "tags": [
         "canonical",
         "pilot",
@@ -3442,7 +3442,8 @@
       "contains": [],
       "requires": [
         "af3d6bff-c5fb-4ec6-a9f0-c0be09fc9186",
-        "8a0b0baf-c7e6-43df-a470-f56050ecaa46",
+        "f8704a7b-e93d-4e32-b0f9-1b171545fe28",
+        "4f889e45-3c1d-4a8e-8fcb-3582d40d9e8a",
         "fd860da9-73ba-47cd-a1a8-452424915a80"
       ],
       "applicability": {
@@ -4256,12 +4257,12 @@
     {
       "id": "8a0b0baf-c7e6-43df-a470-f56050ecaa46",
       "shortKey": "canonical_math_sek1_j9_square_roots",
-      "title": "Quadratwurzeln darstellen und nutzen",
-      "titleEn": "Represent and use square roots",
-      "description": "Die lernende Person kann Quadratwurzeln als Zahlkonzept deuten, Werte abschätzen und sie in einfachen algebraischen und geometrischen Zusammenhängen sicher verwenden.",
-      "descriptionEn": "The learner can interpret square roots as a number concept, estimate values, and use them reliably in simple algebraic and geometric contexts.",
+      "title": "Quadratwurzeln und Wurzelterme verstehen und nutzen",
+      "titleEn": "Understand and use square roots and radical expressions",
+      "description": "Kanonischer Cluster für den J9-Wurzelkorridor. Der aktuelle Bayern-Slice trennt hier zwischen Grundvorstellungen zu Quadratwurzeln, Irrationalität, iterativer Approximation sowie algebraischen Umformungen von Wurzeltermen.",
+      "descriptionEn": "Canonical cluster for the year-9 square-root corridor. The current Bavaria slice distinguishes basic square-root concepts, irrationality, iterative approximation, and algebraic transformations of radical expressions here.",
       "core": true,
-      "weight": 1,
+      "weight": 5,
       "tags": [
         "canonical",
         "pilot"
@@ -4280,7 +4281,13 @@
         "area": "Algebra",
         "topicCode": "CANONICAL.MATH.SEK1.J9.1"
       },
-      "contains": [],
+      "contains": [
+        "f8704a7b-e93d-4e32-b0f9-1b171545fe28",
+        "7676b0f9-340d-4a91-ab1f-92745a8f88db",
+        "c9eb293a-9be7-4a3d-8cd0-a1d885a3fdc1",
+        "4f889e45-3c1d-4a8e-8fcb-3582d40d9e8a",
+        "62e0a4e3-d1d3-46a2-982d-6b99dca6d3fb"
+      ],
       "requires": [
         "de39c9fe-5940-4320-aca8-2be85d6ada8f",
         "6596405a-9728-41df-9163-53670ec2a937"
@@ -4297,6 +4304,266 @@
           "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
           "sourceLandscapeTitle": "Mathematik (Gymnasium)",
           "sourceGoalId": "51b3e1f8-f6e9-5db8-a5ce-403815407d45"
+        }
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "f8704a7b-e93d-4e32-b0f9-1b171545fe28",
+      "shortKey": "canonical_math_sek1_j9_basic_square_roots",
+      "title": "Quadratwurzeln definieren, schaetzen und einfache Wurzelterme vereinfachen",
+      "titleEn": "Define square roots, estimate them, and simplify basic radical expressions",
+      "description": "Die lernende Person kann die Quadratwurzel definieren, Werte geeigneter Quadratwurzeln exakt oder naeherungsweise bestimmen und einfache vollstaendig radizierbare Wurzelterme bei Bedarf mithilfe von Betraegen vereinfachen.",
+      "descriptionEn": "The learner can define square roots, determine suitable square-root values exactly or approximately, and simplify basic fully reducible radical expressions, using absolute values when needed.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical",
+        "pilot"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math-pilot",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "K1.1",
+          "K5.1"
+        ],
+        "guidingIdeas": [
+          "L1"
+        ],
+        "phase": "J9",
+        "area": "Algebra",
+        "topicCode": "CANONICAL.MATH.SEK1.J9.1A"
+      },
+      "contains": [],
+      "requires": [
+        "de39c9fe-5940-4320-aca8-2be85d6ada8f",
+        "6596405a-9728-41df-9163-53670ec2a937"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BY"
+        ]
+      },
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
+          "sourceLandscapeTitle": "Mathematik (Gymnasium)",
+          "sourceGoalId": "0a656ad8-0c77-5ad6-9470-fb1df7fcc552"
+        },
+        "applicabilityOverrides": {
+          "jurisdiction": [
+            "DE-HE"
+          ]
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "7676b0f9-340d-4a91-ab1f-92745a8f88db",
+      "shortKey": "canonical_math_sek1_j9_irrationality_of_square_roots",
+      "title": "Irrationalitaet von Wurzelzahlen begruenden und reelle Zahlen einordnen",
+      "titleEn": "Justify the irrationality of root numbers and classify real numbers",
+      "description": "Die lernende Person kann das Grundprinzip eines indirekten Beweises am Beispiel der Irrationalitaet einer Quadratwurzel nachvollziehen, die Erweiterung von rationalen zu reellen Zahlen begruenden und irrationale Zahlen fachsprachlich einordnen.",
+      "descriptionEn": "The learner can follow the basic principle of an indirect proof using the irrationality of a square root, justify the extension from rational to real numbers, and classify irrational numbers using mathematical language.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical",
+        "pilot"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math-pilot",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "K1.2",
+          "K5.1"
+        ],
+        "guidingIdeas": [
+          "L1"
+        ],
+        "phase": "J9",
+        "area": "Algebra",
+        "topicCode": "CANONICAL.MATH.SEK1.J9.1B"
+      },
+      "contains": [],
+      "requires": [
+        "de39c9fe-5940-4320-aca8-2be85d6ada8f"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BY"
+        ]
+      },
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
+          "sourceLandscapeTitle": "Mathematik (Gymnasium)",
+          "sourceGoalId": "ff811135-d54c-532a-82e1-a3ef98a1feeb"
+        },
+        "applicabilityOverrides": {
+          "jurisdiction": [
+            "DE-HE"
+          ]
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "c9eb293a-9be7-4a3d-8cd0-a1d885a3fdc1",
+      "shortKey": "canonical_math_sek1_j9_heron_method",
+      "title": "Quadratwurzeln iterativ mit dem Heron-Verfahren approximieren",
+      "titleEn": "Approximate square roots iteratively with Heron's method",
+      "description": "Die lernende Person kann das Heron-Verfahren erklaeren, in einer Tabellenkalkulation oder aehnlicher Software umsetzen und iterative Naeherungswerte fuer Quadratwurzeln bestimmen.",
+      "descriptionEn": "The learner can explain Heron's method, implement it in a spreadsheet or similar software, and determine iterative approximations for square roots.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical",
+        "pilot"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math-pilot",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "K2.1",
+          "K3.1",
+          "K5.1"
+        ],
+        "guidingIdeas": [
+          "L1"
+        ],
+        "phase": "J9",
+        "area": "Algebra",
+        "topicCode": "CANONICAL.MATH.SEK1.J9.1C"
+      },
+      "contains": [],
+      "requires": [
+        "f8704a7b-e93d-4e32-b0f9-1b171545fe28"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BY"
+        ]
+      },
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
+          "sourceLandscapeTitle": "Mathematik (Gymnasium)",
+          "sourceGoalId": "2cd98956-470a-58a4-97c7-274366ba9794"
+        },
+        "applicabilityOverrides": {
+          "jurisdiction": [
+            "DE-HE"
+          ]
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "4f889e45-3c1d-4a8e-8fcb-3582d40d9e8a",
+      "shortKey": "canonical_math_sek1_j9_calculate_with_radical_expressions",
+      "title": "Mit Wurzeltermen rechnen und Potenzen von Wurzeltermen vereinfachen",
+      "titleEn": "Calculate with radical expressions and simplify powers of radicals",
+      "description": "Die lernende Person kann Produkte, Quotienten, Summen und Differenzen von Wurzeltermen in strukturierter Rechnung zusammenfassen sowie Potenzen von Wurzeltermen zielgerichtet vereinfachen und Rechenschritte fachsprachlich erlaeutern.",
+      "descriptionEn": "The learner can combine products, quotients, sums, and differences of radical expressions in a structured calculation, simplify powers of radicals, and explain steps with appropriate terminology.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical",
+        "pilot"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math-pilot",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "K1.1",
+          "K2.1",
+          "K5.1"
+        ],
+        "guidingIdeas": [
+          "L1"
+        ],
+        "phase": "J9",
+        "area": "Algebra",
+        "topicCode": "CANONICAL.MATH.SEK1.J9.1D"
+      },
+      "contains": [],
+      "requires": [
+        "f8704a7b-e93d-4e32-b0f9-1b171545fe28",
+        "6596405a-9728-41df-9163-53670ec2a937"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BY"
+        ]
+      },
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
+          "sourceLandscapeTitle": "Mathematik (Gymnasium)",
+          "sourceGoalId": "62713690-253f-5266-b11f-8f694b97b395"
+        },
+        "applicabilityOverrides": {
+          "jurisdiction": [
+            "DE-HE"
+          ]
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "62e0a4e3-d1d3-46a2-982d-6b99dca6d3fb",
+      "shortKey": "canonical_math_sek1_j9_rationalize_radicals",
+      "title": "Wurzelterme rationalisieren und teilweise radizieren",
+      "titleEn": "Rationalize radical expressions and partially extract roots",
+      "description": "Die lernende Person kann Wurzelterme ohne Variablen so umformen, dass Nenner rational werden, Wurzelterme teilweise radizieren und entsprechende Umformungen auch mit Variablen unter Einsatz von Betraegen korrekt darstellen.",
+      "descriptionEn": "The learner can transform radical expressions without variables so that denominators become rational, partially extract roots, and carry out analogous transformations with variables using absolute values when required.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical",
+        "pilot"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math-pilot",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "K1.1",
+          "K2.1",
+          "K5.1"
+        ],
+        "guidingIdeas": [
+          "L1"
+        ],
+        "phase": "J9",
+        "area": "Algebra",
+        "topicCode": "CANONICAL.MATH.SEK1.J9.1E"
+      },
+      "contains": [],
+      "requires": [
+        "4f889e45-3c1d-4a8e-8fcb-3582d40d9e8a"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BY"
+        ]
+      },
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
+          "sourceLandscapeTitle": "Mathematik (Gymnasium)",
+          "sourceGoalId": "4a6cfdff-0b94-5713-913b-5db6f0e068ac"
+        },
+        "applicabilityOverrides": {
+          "jurisdiction": [
+            "DE-HE"
+          ]
         }
       },
       "type": "atomic"

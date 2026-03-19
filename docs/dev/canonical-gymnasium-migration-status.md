@@ -1025,3 +1025,25 @@ Deferred on purpose:
 
 - no new Hessen legacy leaf-mapping tranche for these J9 atoms
 - no validator or CI run in this patch step
+
+
+### 2026-03-19: J9 square-roots split for Bavaria M9 1
+
+Approach used:
+
+- refactored the old broad J9 square-root atom `8a0b0baf-c7e6-43df-a470-f56050ecaa46` into a retained cluster so downstream references stay stable
+- split the corridor into the five Bavaria `M9 1` strands that were previously collapsed: square-root basics, irrationality/reals, Heron iteration, radical arithmetic, and rationalisation/partial extraction
+- tightened the sequencing for `Quadratische Gleichungen loesen` by replacing the former broad cluster prerequisite with the two new root atoms that are actually needed there
+- closed Hessen visibility immediately for the new J9 root atoms via the established override-backed prerequisite bridge
+
+Applied changes:
+
+- turned the old J9 square-root atom into a five-child cluster
+- upgraded the Bavaria `M9 1` cluster bridge from `partial` to `exact` and remapped all five Bavaria leaf goals to dedicated canonical J9 root atoms
+- rewired the canonical quadratic-equations goal away from the broad root cluster to the relevant fine-grained root prerequisites
+- updated the Bavaria mapping fixture and added the five matching `APV-201` accepted-warning entries for the Hessen prerequisite bridge
+
+Deferred on purpose:
+
+- no new Hessen legacy leaf-mapping tranche for these J9 root atoms
+- no validator or CI run in this patch step
