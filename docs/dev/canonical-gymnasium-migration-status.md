@@ -577,3 +577,171 @@ Deferred on purpose:
 
 - no broader refactor of repository mapping semantics beyond the current one-legacy-to-one-canonical invariant
 - no test rerun in this patch step
+
+
+### 2026-03-19: M6 rationale numbers patch plan
+
+Approach used:
+
+- keep the existing broad J6 goal `Rationale Zahlen darstellen und berechnen` as the stable public anchor ID and refactor it into a cluster if the finer split is implemented
+- apply the same `reuse-first` rule as in J5: reuse existing early arithmetic atoms wherever they already carry the didactic foundation cleanly
+- add new canonical atoms only for the M6 content that is not yet isolated in the canonical graph at usable granularity
+- keep the repository mapping invariant in mind: one legacy source goal may map to only one canonical goal; any later jurisdiction widening without clean one-to-one source evidence must be done through `applicabilityOverrides`, not duplicate mappings
+
+Planned reuse base:
+
+- reuse `Natürliche Zahlen runden` as the rounding prerequisite for decimal fractions
+- reuse `Teilbarkeitsregeln prüfen und Primfaktorzerlegungen angeben` as the divisibility and denominator-analysis basis for fraction comparison and decimal conversion
+- reuse `Natürliche und ganze Zahlen addieren und subtrahieren` as the additive prerequisite for rational arithmetic
+- reuse `Natürliche und ganze Zahlen multiplizieren und dividieren` as the multiplicative prerequisite for rational arithmetic
+- reuse `Klammerterme und Rechenreihenfolge sicher auswerten` as the early term-structure basis
+- reuse `Potenzen mit natürlichen Exponenten und Zehnerpotenzen verwenden` as the entry point for later extension to rational bases and negative exponents
+
+Planned canonical patch candidates for `M6 1.1` to `M6 1.5`:
+
+| Planned canonical atom | Bavaria source evidence | Reuse check | Planned action |
+|---|---|---|---|
+| `Brüche als Zahlen, Anteile und Quotienten deuten` | `c851474e-5629-592a-97f0-66a2b5b48485`, `37111b61-0ec2-5768-b19c-16b42cbf3b9f` | not isolated in current canonical J6 | `new_canonical_atom` |
+| `Brüche erweitern, kürzen und vergleichen` | `2aa11de2-4cbc-5c4c-b024-c5483a94958f` | current divisibility atom is prerequisite only, not the target skill | `new_canonical_atom` |
+| `Brüche und Dezimalbrüche ineinander umwandeln` | `5cb98b8f-6aac-5a00-aaf4-57db0223abeb`, `9e6c6b5c-9a05-5e8c-affa-e2156a782022`, `1bd6fc10-3149-5617-8bd0-93bba977ce88` | current canonical graph has rounding and powers, but not the conversion atom itself | `new_canonical_atom` |
+| `Rationale Zahlen an der Zahlengeraden darstellen und ordnen` | `37111b61-0ec2-5768-b19c-16b42cbf3b9f` | no clean canonical atom yet for signed fractional number-line work | `new_canonical_atom` |
+| `Rationale Zahlen addieren und subtrahieren` | `c8b47f9b-1b66-5532-a413-e8640f9393e9`, `fc9f6f92-3413-5d08-b34e-495a9842b70e`, `c9989d33-f558-5f2d-87fc-df688f5e942d`, `5343da29-6c71-51d5-b7da-3acaad01988a`, `502b1839-1208-57db-ae9d-65c6003e5de9` | current broad J6 atom is too coarse, J5 additive atoms are prerequisite only | `new_canonical_atom` |
+| `Rationale Zahlen multiplizieren und dividieren` | `2ebe83ff-92fb-5361-a22c-59e9dabc8da0`, `07e0b570-57a9-5439-9e48-53da16598592` | current broad J6 atom is too coarse, J5 multiplicative atom is prerequisite only | `new_canonical_atom` |
+| `Potenzen mit rationalen Basen und negativen Exponenten deuten und berechnen` | `5b08c1b6-30ef-54bd-b37e-9edec60a135d` | existing powers atom is too narrow because it stops at natural exponents and powers of ten | `new_canonical_atom` |
+| `Terme mit rationalen Zahlen strukturiert berechnen` | `81b0008e-77cc-59eb-b47f-ff771798feea`, `208542fe-e324-569a-a8ba-80924e363909`, `fdd34616-ed0d-5113-ad65-db5efb5e132e`, `a078cf03-1512-56ad-b635-f065a190e8e3` | existing term-order atom is prerequisite only and does not cover the full M6 rational-number target | `new_canonical_atom` |
+
+Planned implementation order:
+
+- first refactor the broad J6 rational-number goal into a cluster without changing its stable public ID
+- then add the eight finer atoms above
+- then map the Bavaria `M6 1.*` leaves onto those atoms
+- only after the Bavaria tranche is stable, review whether any of the new J6 atoms should also be widened to `DE-HE` through exact evidence or override-backed closure
+
+
+### 2026-03-19: J6 rationale numbers expansion
+
+Approach used:
+
+- preserved the existing broad J6 rational-number goal ID and refactored it from an atomic goal into a stable cluster, mirroring the J5 geometry strategy
+- applied the documented `reuse-first` plan: the new J6 atoms reuse J5 arithmetic prerequisites where possible and only add granularity where the canonical graph did not yet isolate the M6 targets cleanly
+- scoped the new fine-grained J6 atoms initially to `DE-BY`, because this patch is still source-backed by the Bavaria M6 slice and no Hessen leaf review has been performed yet
+- recomputed cluster weights from unique atomic descendants so the J6 and root-level progress semantics remain proportional after the split
+
+Applied changes:
+
+- refactored `Rationale Zahlen darstellen und berechnen` into a cluster
+- added eight J6 rational-number atoms for fraction concepts, comparison, decimal conversion, number-line ordering, additive arithmetic, multiplicative arithmetic, powers with rational bases, and term evaluation with rational numbers
+- wired each new atom to existing J5 prerequisites instead of duplicating earlier foundational goals
+
+Deferred on purpose:
+
+- no Bavaria mapping tranche yet for the new J6 atoms
+- no Hessen applicability widening or override review yet for the new J6 atoms
+- no validator or CI run in this patch step
+
+
+### 2026-03-19: J6 Bavaria rational-number mapping tranche
+
+Approach used:
+
+- mapped the full Bavaria `M6 1.*` rational-number leaf set onto the new J6 canonical atoms while keeping the repository's one-legacy-to-one-canonical invariant intact
+- upgraded the broad Bavaria `M6 1` cluster mapping to `exact` after the J6 rational-number refactor, because the canonical cluster now mirrors the Bavaria block deliberately
+- used `exact` only where the Bavaria leaf matches the new canonical atom tightly; left the remaining leaves on `partial` where the source still mixes adjacent subskills such as conceptual interpretation, strategy choice, or plausibility checks
+
+Applied changes:
+
+- added nineteen Bavaria `M6 1.*` mappings onto the new J6 rational-number atoms
+- upgraded `M6 1 Rationale Zahlen` from `partial` to `exact`
+- updated the repository-backed Bavaria mapping fixture to the new mapping count and representative M6 tuples
+
+Deferred on purpose:
+
+- no `M6 2` or `M6 3` Bavaria mapping tranche yet
+- no Hessen review for the new J6 rational-number atoms yet
+- no validator or CI run in this patch step
+
+
+### 2026-03-19: J6 area and volume expansion plus Bavaria mapping tranche
+
+Approach used:
+
+- kept the existing J6 area-volume cluster as the stable public anchor and added only the three geometry atoms that were missing after the reuse-first audit
+- avoided new cross-jurisdiction prerequisite breaks by not wiring the new `DE-BY`-only atoms into the existing `DE-HE`-visible J6 atoms yet
+- upgraded the broad Bavaria `M6 2` cluster mapping to `exact` after the canonical J6 cluster now mirrors the Bavaria block more faithfully
+- stayed conservative on the leaf mappings: `exact` only for the derivation and volume-unit/formula atoms, `partial` for the broader application goals that still mix adjacent modeling or argumentation aspects
+
+Applied changes:
+
+- added three new J6 geometry atoms for deriving area formulas, justifying the cuboid volume formula, and interpreting/converting volume units
+- sharpened the existing J6 area and solid-calculation descriptions to mention the relevant M6 figure families and unit handling more explicitly
+- added the Bavaria `M6 2.1` and `M6 2.2` leaf mappings and updated the repository-backed Bavaria mapping fixture to the new count
+
+Deferred on purpose:
+
+- no `M6 3 Prozentrechnung, Daten und Diagramme` tranche yet
+- no Hessen review for the new J6 geometry atoms yet
+- no validator or CI run in this patch step
+
+
+### 2026-03-19: J6 percent, data and diagrams expansion plus Bavaria mapping tranche
+
+Approach used:
+
+- kept the existing J6 percent/data node as the stable public anchor and refactored it into a cluster instead of replacing the public ID
+- stayed `reuse-first`: no late Q3 data goals were reused blindly, because they model broader upper-secondary statistics and would have created a second, phase-skipping data route instead of a clean J6 slice
+- scoped the five new fine-grained J6 atoms initially to `DE-BY` only, because this tranche is still backed by the Bavaria M6.3 source block and no Hessen leaf review has been done yet
+- upgraded the broad Bavaria `M6 3` cluster mapping to `exact` after the canonical J6 cluster now mirrors the source block intentionally
+- stayed conservative on leaf match quality: the representation/frequency leaf remains `partial`, while the tighter percentage-text, diagram-critique and arithmetic-mean leaves are mapped `exact`
+
+Applied changes:
+
+- refactored `Prozentrechnung anwenden und Daten auswerten` into a J6 cluster with five atoms for basic percentage problems, percentage-text interpretation, frequencies, critical diagram reading, and arithmetic mean
+- wired the new atoms to the existing J5/J6 arithmetic foundations without duplicating earlier number or ratio goals
+- added the Bavaria `M6 3` leaf mappings and updated the repository-backed Bavaria mapping fixture to the new mapping count
+
+Deferred on purpose:
+
+- no Hessen review for the new J6 percent/data atoms yet
+- no further J7/Q3 prerequisite tightening beyond keeping the broad J6 cluster as the compatibility bridge
+- no validator or CI run in this patch step
+
+
+### 2026-03-19: DE-HE closure for new J6 rational-number and percent/data atoms
+
+Approach used:
+
+- treated the new `APV-102` findings as the same repository constraint we already hit after the J5 split: the broad J6 clusters stayed visible in theory, but their newly introduced children were still `DE-BY`-only and therefore disappeared in the `DE-HE` projection
+- stayed repo-conform by avoiding duplicate Hessen leaf mappings; the backend still requires one legacy source goal per canonical target mapping entry
+- used the same closure mechanism as before: widen the newly introduced J6 atoms to `DE-HE` via `applicabilityOverrides` and record the deliberate override in the accepted-warning registry
+- kept the fix minimal: no new `requires`, no additional Hessen mapping tranche, no speculative widening of later J7/Q3 atoms
+
+Applied changes:
+
+- widened all eight new J6 rational-number atoms to `DE-HE` via `extendedData.applicabilityOverrides`
+- widened all five new J6 percent/data atoms to `DE-HE` via `extendedData.applicabilityOverrides`
+- added the corresponding `APV-201` accepted warnings for the thirteen override-backed J6 atoms
+
+Deferred on purpose:
+
+- no Hessen source-specific leaf review yet for these J6 atoms
+- no attempt to replace the overrides with cleaner Hessen one-to-one evidence in this patch step
+- no validator or CI run in this patch step
+
+
+### 2026-03-19: DE-HE closure for early J5 arithmetic prerequisites after the J6 widening
+
+Approach used:
+
+- treated the follow-up `APV-102` findings as the next layer of the same prerequisite-visibility chain: the new J6 atoms were now visible in `DE-HE`, but some of their early J5 arithmetic prerequisites were still `DE-BY`-only
+- again stayed repo-conform by avoiding duplicate Hessen mappings and using the existing override-backed closure pattern instead
+- kept the fix minimal and local to the five missing J5 arithmetic atoms that actually appear in the failing prerequisite list
+
+Applied changes:
+
+- widened `Stellenwertsystem und Zahlendarstellungen verstehen`, `Natürliche Zahlen runden`, `Teilbarkeitsregeln prüfen und Primfaktorzerlegungen angeben`, `Potenzen mit natürlichen Exponenten und Zehnerpotenzen verwenden`, and `Klammerterme und Rechenreihenfolge sicher auswerten` to `DE-HE` via `extendedData.applicabilityOverrides`
+- added the corresponding `APV-201` accepted warnings for those five J5 arithmetic atoms
+
+Deferred on purpose:
+
+- no broader Hessen arithmetic leaf review beyond the prerequisite chain needed for the current validator findings
+- no validator or CI run in this patch step

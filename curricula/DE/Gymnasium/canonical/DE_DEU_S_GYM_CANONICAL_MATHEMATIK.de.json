@@ -29,7 +29,7 @@
       "description": "Gemeinsame Wurzel für Mathematik am Gymnasium in Deutschland. Die aktuelle Baseline übernimmt die hessische Oberstufe vollständig, realisiert kanonische Jahrgangsanker J5 bis J10 für die Sekundarstufe I und ergänzt den bestehenden Funktionskorridor um erste arithmetische, algebraische, geometrische, datenbezogene, stochastische und trigonometrische Anschlussziele.",
       "descriptionEn": "Shared root for mathematics at Gymnasium in Germany. The current baseline fully adopts the Hessian upper-secondary curriculum, realizes canonical lower-secondary year anchors J5 to J10, and extends the existing function corridor with first arithmetic, algebraic, geometry, data, stochastic, and trigonometric bridge goals.",
       "core": true,
-      "weight": 422,
+      "weight": 436,
       "tags": [
         "root",
         "canonical",
@@ -737,7 +737,8 @@
       "requires": [],
       "applicability": {
         "jurisdiction": [
-          "DE-BY"
+          "DE-BY",
+          "DE-HE"
         ]
       },
       "extendedData": {
@@ -746,6 +747,11 @@
           "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
           "sourceLandscapeTitle": "Mathematik (Gymnasium)",
           "sourceGoalId": "5cfbfbf6-e966-56f1-bbb3-0af0d75e86be"
+        },
+        "applicabilityOverrides": {
+          "jurisdiction": [
+            "DE-HE"
+          ]
         }
       },
       "type": "atomic"
@@ -783,7 +789,8 @@
       ],
       "applicability": {
         "jurisdiction": [
-          "DE-BY"
+          "DE-BY",
+          "DE-HE"
         ]
       },
       "extendedData": {
@@ -792,6 +799,11 @@
           "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
           "sourceLandscapeTitle": "Mathematik (Gymnasium)",
           "sourceGoalId": "e9f8946b-1e67-5ddc-9e15-ce207e2730b6"
+        },
+        "applicabilityOverrides": {
+          "jurisdiction": [
+            "DE-HE"
+          ]
         }
       },
       "type": "atomic"
@@ -875,7 +887,8 @@
       ],
       "applicability": {
         "jurisdiction": [
-          "DE-BY"
+          "DE-BY",
+          "DE-HE"
         ]
       },
       "extendedData": {
@@ -884,6 +897,11 @@
           "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
           "sourceLandscapeTitle": "Mathematik (Gymnasium)",
           "sourceGoalId": "cb924558-3827-568c-b5e6-59f54827e2fd"
+        },
+        "applicabilityOverrides": {
+          "jurisdiction": [
+            "DE-HE"
+          ]
         }
       },
       "type": "atomic"
@@ -921,7 +939,8 @@
       ],
       "applicability": {
         "jurisdiction": [
-          "DE-BY"
+          "DE-BY",
+          "DE-HE"
         ]
       },
       "extendedData": {
@@ -930,6 +949,11 @@
           "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
           "sourceLandscapeTitle": "Mathematik (Gymnasium)",
           "sourceGoalId": "b0cd5e41-0cb9-5f96-b0fe-5e40390c0915"
+        },
+        "applicabilityOverrides": {
+          "jurisdiction": [
+            "DE-HE"
+          ]
         }
       },
       "type": "atomic"
@@ -968,7 +992,8 @@
       ],
       "applicability": {
         "jurisdiction": [
-          "DE-BY"
+          "DE-BY",
+          "DE-HE"
         ]
       },
       "extendedData": {
@@ -977,6 +1002,11 @@
           "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
           "sourceLandscapeTitle": "Mathematik (Gymnasium)",
           "sourceGoalId": "dfefcf2f-f4fc-543e-916f-09dbd431005a"
+        },
+        "applicabilityOverrides": {
+          "jurisdiction": [
+            "DE-HE"
+          ]
         }
       },
       "type": "atomic"
@@ -1194,7 +1224,7 @@
       "description": "Kanonischer Jahrgangsanker für J6 der gymnasialen Sekundarstufe I in Mathematik. Der aktuelle Bayern-Slice bindet hier erste rationale Zahlvorstellungen, Flächen- und Volumenideen sowie Prozent- und Datenroutinen an.",
       "descriptionEn": "Canonical year anchor for year 6 in lower-secondary Gymnasium mathematics. The current Bavaria slice attaches first rational-number concepts, area and volume ideas, and percentage and data routines here.",
       "core": true,
-      "weight": 4,
+      "weight": 18,
       "tags": [
         "canonical",
         "pilot",
@@ -1241,10 +1271,10 @@
       "shortKey": "canonical_math_sek1_j6_rational_numbers",
       "title": "Rationale Zahlen darstellen und berechnen",
       "titleEn": "Represent and calculate with rational numbers",
-      "description": "Die lernende Person kann Brüche, Dezimalzahlen und negative Zahlen ineinander überführen, vergleichen und die vier Grundrechenarten bei rationalen Zahlen sicher anwenden.",
-      "descriptionEn": "The learner can convert fractions, decimals, and negative numbers into one another, compare them, and confidently apply the four basic operations to rational numbers.",
+      "description": "Kanonischer Cluster für den J6-Ausbau zu Brüchen, Dezimalbrüchen und rationalen Zahlen. Der aktuelle Bayern-Slice trennt hier zwischen Grundvorstellungen zu Brüchen, Darstellungswechseln, rationaler Arithmetik, Potenzen und Termstrukturen.",
+      "descriptionEn": "Canonical cluster for the year-6 expansion into fractions, decimal numbers, and rational numbers. The current Bavaria slice differentiates basic fraction concepts, representation changes, rational arithmetic, powers, and expression structures here.",
       "core": true,
-      "weight": 1,
+      "weight": 8,
       "tags": [
         "canonical",
         "pilot"
@@ -1263,7 +1293,16 @@
         "area": "Arithmetic",
         "topicCode": "CANONICAL.MATH.SEK1.J6.1"
       },
-      "contains": [],
+      "contains": [
+        "6b0075bb-f71c-59f6-ab98-fb894568cc26",
+        "a075ae99-7669-563d-807a-f91b119c020a",
+        "ca8b2e67-7d14-5baf-8404-26820fe3d548",
+        "c9e01667-24c4-56a2-8cf4-dfb6c360d7b9",
+        "4eeab7d5-eeb3-579b-845e-1c52ffe9e89f",
+        "ee48e811-4c9c-5080-9836-8403fc9f0810",
+        "26f668a0-6425-5466-9cf7-6295dd189005",
+        "0a6dab2e-1bbb-5587-adb0-456d3991c327"
+      ],
       "requires": [
         "8dd5199b-f614-4ebd-8819-b5ff37326524",
         "4b67bed9-06da-40b2-a306-24e9e7dfd390",
@@ -1283,6 +1322,433 @@
           "sourceGoalId": "13fbb93a-d54f-5785-a186-3f1ad76c7069"
         }
       },
+      "type": "cluster"
+    },
+    {
+      "id": "6b0075bb-f71c-59f6-ab98-fb894568cc26",
+      "shortKey": "canonical_math_interpret_fractions_as_numbers_parts_and_quotients",
+      "title": "Brüche als Zahlen, Anteile und Quotienten deuten",
+      "titleEn": "Interpret fractions as numbers, parts, and quotients",
+      "description": "Die lernende Person kann Brüche als Anteile, Quotienten und Zahlen deuten, passende Darstellungen auswählen und zugehörige Ganze oder Teilmengen bestimmen.",
+      "descriptionEn": "The learner can interpret fractions as parts, quotients, and numbers, choose suitable representations, and determine corresponding wholes or partial quantities.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical",
+        "pilot"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math-pilot",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "K3.1",
+          "K4.1"
+        ],
+        "guidingIdeas": [
+          "L1"
+        ],
+        "phase": "J6",
+        "area": "Arithmetic",
+        "topicCode": "CANONICAL.MATH.SEK1.J6.1A"
+      },
+      "contains": [],
+      "requires": [
+        "624764d6-becd-5f9b-ada3-0d4f9d143073"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BY",
+          "DE-HE"
+        ]
+      },
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
+          "sourceLandscapeTitle": "Mathematik (Gymnasium)",
+          "sourceGoalId": "c851474e-5629-592a-97f0-66a2b5b48485"
+        },
+        "applicabilityOverrides": {
+          "jurisdiction": [
+            "DE-HE"
+          ]
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "a075ae99-7669-563d-807a-f91b119c020a",
+      "shortKey": "canonical_math_expand_reduce_and_compare_fractions",
+      "title": "Brüche erweitern, kürzen und vergleichen",
+      "titleEn": "Expand, reduce, and compare fractions",
+      "description": "Die lernende Person kann Brüche erweitern, kürzen, in äquivalente Darstellungen überführen und zum Größenvergleich geeignete Strategien auswählen.",
+      "descriptionEn": "The learner can expand and reduce fractions, transform them into equivalent representations, and choose suitable strategies for comparing their size.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical",
+        "pilot"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math-pilot",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "K3.1",
+          "K4.1"
+        ],
+        "guidingIdeas": [
+          "L1"
+        ],
+        "phase": "J6",
+        "area": "Arithmetic",
+        "topicCode": "CANONICAL.MATH.SEK1.J6.1B"
+      },
+      "contains": [],
+      "requires": [
+        "f2d4a7de-57c3-5749-bbb4-6cd4b57b7562"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BY",
+          "DE-HE"
+        ]
+      },
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
+          "sourceLandscapeTitle": "Mathematik (Gymnasium)",
+          "sourceGoalId": "2aa11de2-4cbc-5c4c-b024-c5483a94958f"
+        },
+        "applicabilityOverrides": {
+          "jurisdiction": [
+            "DE-HE"
+          ]
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "ca8b2e67-7d14-5baf-8404-26820fe3d548",
+      "shortKey": "canonical_math_convert_between_fractions_and_decimals",
+      "title": "Brüche und Dezimalbrüche ineinander umwandeln",
+      "titleEn": "Convert between fractions and decimal numbers",
+      "description": "Die lernende Person kann Brüche in endliche oder periodische Dezimalbrüche umwandeln, umgekehrt endliche und einfache periodische Dezimalbrüche als Brüche darstellen und Darstellungswechsel begründet wählen.",
+      "descriptionEn": "The learner can convert fractions into terminating or repeating decimals, represent terminating and simple repeating decimals as fractions, and justify chosen representation changes.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical",
+        "pilot"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math-pilot",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "K3.1",
+          "K4.1"
+        ],
+        "guidingIdeas": [
+          "L1"
+        ],
+        "phase": "J6",
+        "area": "Arithmetic",
+        "topicCode": "CANONICAL.MATH.SEK1.J6.1C"
+      },
+      "contains": [],
+      "requires": [
+        "624764d6-becd-5f9b-ada3-0d4f9d143073",
+        "fe07241a-b779-5f35-a82d-7aa51ae74f42",
+        "f2d4a7de-57c3-5749-bbb4-6cd4b57b7562"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BY",
+          "DE-HE"
+        ]
+      },
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
+          "sourceLandscapeTitle": "Mathematik (Gymnasium)",
+          "sourceGoalId": "1bd6fc10-3149-5617-8bd0-93bba977ce88"
+        },
+        "applicabilityOverrides": {
+          "jurisdiction": [
+            "DE-HE"
+          ]
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "c9e01667-24c4-56a2-8cf4-dfb6c360d7b9",
+      "shortKey": "canonical_math_order_rational_numbers_on_number_line",
+      "title": "Rationale Zahlen an der Zahlengeraden darstellen und ordnen",
+      "titleEn": "Represent and order rational numbers on the number line",
+      "description": "Die lernende Person kann positive und negative Bruchzahlen an der Zahlengeraden darstellen, rationale Zahlen begründet ordnen und Beziehungen zwischen natürlichen, ganzen und rationalen Zahlen erläutern.",
+      "descriptionEn": "The learner can represent positive and negative fractions on the number line, order rational numbers with justification, and explain relationships between natural, integer, and rational numbers.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical",
+        "pilot"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math-pilot",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "K3.1",
+          "K4.1"
+        ],
+        "guidingIdeas": [
+          "L1"
+        ],
+        "phase": "J6",
+        "area": "Arithmetic",
+        "topicCode": "CANONICAL.MATH.SEK1.J6.1D"
+      },
+      "contains": [],
+      "requires": [
+        "cf474eab-1379-4877-907e-58b0892ce734",
+        "4b67bed9-06da-40b2-a306-24e9e7dfd390"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BY",
+          "DE-HE"
+        ]
+      },
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
+          "sourceLandscapeTitle": "Mathematik (Gymnasium)",
+          "sourceGoalId": "37111b61-0ec2-5768-b19c-16b42cbf3b9f"
+        },
+        "applicabilityOverrides": {
+          "jurisdiction": [
+            "DE-HE"
+          ]
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "4eeab7d5-eeb3-579b-845e-1c52ffe9e89f",
+      "shortKey": "canonical_math_add_and_subtract_rational_numbers",
+      "title": "Rationale Zahlen addieren und subtrahieren",
+      "titleEn": "Add and subtract rational numbers",
+      "description": "Die lernende Person kann rationale Zahlen in unterschiedlichen Darstellungsformen addieren und subtrahieren, Rechenvorteile nutzen und Ergebnisse mit Überschlägen plausibilisieren.",
+      "descriptionEn": "The learner can add and subtract rational numbers in different representations, use calculation advantages, and check results with estimates.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical",
+        "pilot"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math-pilot",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "K3.1",
+          "K4.1"
+        ],
+        "guidingIdeas": [
+          "L1"
+        ],
+        "phase": "J6",
+        "area": "Arithmetic",
+        "topicCode": "CANONICAL.MATH.SEK1.J6.1E"
+      },
+      "contains": [],
+      "requires": [
+        "4b67bed9-06da-40b2-a306-24e9e7dfd390",
+        "f2d4a7de-57c3-5749-bbb4-6cd4b57b7562",
+        "5d1decb2-b01b-5c85-88fc-9fc255ff9776"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BY",
+          "DE-HE"
+        ]
+      },
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
+          "sourceLandscapeTitle": "Mathematik (Gymnasium)",
+          "sourceGoalId": "fc9f6f92-3413-5d08-b34e-495a9842b70e"
+        },
+        "applicabilityOverrides": {
+          "jurisdiction": [
+            "DE-HE"
+          ]
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "ee48e811-4c9c-5080-9836-8403fc9f0810",
+      "shortKey": "canonical_math_multiply_and_divide_rational_numbers",
+      "title": "Rationale Zahlen multiplizieren und dividieren",
+      "titleEn": "Multiply and divide rational numbers",
+      "description": "Die lernende Person kann rationale Zahlen in verschiedenen Darstellungsformen multiplizieren und dividieren, dabei tragfähige Operationsvorstellungen nutzen und Rechenvorteile gezielt einsetzen.",
+      "descriptionEn": "The learner can multiply and divide rational numbers in different representations, use solid operation concepts, and apply calculation advantages purposefully.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical",
+        "pilot"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math-pilot",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "K3.1",
+          "K4.1"
+        ],
+        "guidingIdeas": [
+          "L1"
+        ],
+        "phase": "J6",
+        "area": "Arithmetic",
+        "topicCode": "CANONICAL.MATH.SEK1.J6.1F"
+      },
+      "contains": [],
+      "requires": [
+        "cafd6520-c4af-4109-9863-cc49ba6fad4d",
+        "f2d4a7de-57c3-5749-bbb4-6cd4b57b7562",
+        "5d1decb2-b01b-5c85-88fc-9fc255ff9776"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BY",
+          "DE-HE"
+        ]
+      },
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
+          "sourceLandscapeTitle": "Mathematik (Gymnasium)",
+          "sourceGoalId": "2ebe83ff-92fb-5361-a22c-59e9dabc8da0"
+        },
+        "applicabilityOverrides": {
+          "jurisdiction": [
+            "DE-HE"
+          ]
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "26f668a0-6425-5466-9cf7-6295dd189005",
+      "shortKey": "canonical_math_interpret_and_compute_powers_with_rational_bases",
+      "title": "Potenzen mit rationalen Basen und negativen Exponenten deuten und berechnen",
+      "titleEn": "Interpret and compute powers with rational bases and negative exponents",
+      "description": "Die lernende Person kann Potenzen mit rationalen Basen berechnen, negative ganzzahlige Exponenten als Kehrwertschreibweisen deuten und Darstellungen mit kleinen Zehnerpotenzen in Sachzusammenhängen interpretieren.",
+      "descriptionEn": "The learner can compute powers with rational bases, interpret negative integer exponents as reciprocal forms, and interpret representations with small powers of ten in contextual situations.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical",
+        "pilot"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math-pilot",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "K3.1",
+          "K4.1"
+        ],
+        "guidingIdeas": [
+          "L1"
+        ],
+        "phase": "J6",
+        "area": "Arithmetic",
+        "topicCode": "CANONICAL.MATH.SEK1.J6.1G"
+      },
+      "contains": [],
+      "requires": [
+        "eb993c0c-9b1d-52af-97c8-4a534fd78be3",
+        "cafd6520-c4af-4109-9863-cc49ba6fad4d"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BY",
+          "DE-HE"
+        ]
+      },
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
+          "sourceLandscapeTitle": "Mathematik (Gymnasium)",
+          "sourceGoalId": "5b08c1b6-30ef-54bd-b37e-9edec60a135d"
+        },
+        "applicabilityOverrides": {
+          "jurisdiction": [
+            "DE-HE"
+          ]
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "0a6dab2e-1bbb-5587-adb0-456d3991c327",
+      "shortKey": "canonical_math_evaluate_terms_with_rational_numbers",
+      "title": "Terme mit rationalen Zahlen strukturiert berechnen",
+      "titleEn": "Evaluate expressions with rational numbers in a structured way",
+      "description": "Die lernende Person kann Terme mit rationalen Zahlen und Klammern strukturiert auswerten, Rechengesetze gezielt nutzen und Sachprobleme mit Anteilen oder Anteilen von Anteilen nachvollziehbar lösen.",
+      "descriptionEn": "The learner can evaluate expressions with rational numbers and brackets in a structured way, use arithmetic laws purposefully, and solve contextual problems with fractions or fractions of fractions transparently.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical",
+        "pilot"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math-pilot",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "K2.1",
+          "K3.1",
+          "K4.1"
+        ],
+        "guidingIdeas": [
+          "L1"
+        ],
+        "phase": "J6",
+        "area": "Arithmetic",
+        "topicCode": "CANONICAL.MATH.SEK1.J6.1H"
+      },
+      "contains": [],
+      "requires": [
+        "5d1decb2-b01b-5c85-88fc-9fc255ff9776",
+        "4b67bed9-06da-40b2-a306-24e9e7dfd390",
+        "cafd6520-c4af-4109-9863-cc49ba6fad4d"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BY",
+          "DE-HE"
+        ]
+      },
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
+          "sourceLandscapeTitle": "Mathematik (Gymnasium)",
+          "sourceGoalId": "81b0008e-77cc-59eb-b47f-ff771798feea"
+        },
+        "applicabilityOverrides": {
+          "jurisdiction": [
+            "DE-HE"
+          ]
+        }
+      },
       "type": "atomic"
     },
     {
@@ -1290,10 +1756,10 @@
       "shortKey": "canonical_math_sek1_j6_area_volume",
       "title": "Flächeninhalt und Volumen berechnen",
       "titleEn": "Calculate area and volume",
-      "description": "Kanonischer Cluster für Flächen- und Volumenroutinen in J6. Der aktuelle Pilot trennt hier zwischen Flächeninhalten ebener Figuren und Volumina/Oberflächen einfacher Körper.",
-      "descriptionEn": "Canonical cluster for area and volume routines in year 6. The current pilot distinguishes between areas of plane figures and volumes/surfaces of simple solids.",
+      "description": "Kanonischer Cluster für Flächen- und Volumenroutinen in J6. Der aktuelle Bayern-Slice trennt hier zwischen dem Herleiten von Flächenformeln, dem Berechnen von Flächen und Oberflächen sowie dem Plausibilisieren und Anwenden von Volumenvorstellungen.",
+      "descriptionEn": "Canonical cluster for area and volume routines in year 6. The current Bavaria slice differentiates deriving area formulas, calculating areas and surfaces, and justifying and applying volume concepts here.",
       "core": true,
-      "weight": 2,
+      "weight": 5,
       "tags": [
         "canonical",
         "pilot"
@@ -1313,7 +1779,10 @@
         "topicCode": "CANONICAL.MATH.SEK1.J6.2"
       },
       "contains": [
+        "491e0858-e977-516e-a339-1cc2f9e9690f",
         "87c55be5-06a9-41e2-a0d4-c60f7c8b8078",
+        "b44f038c-fb1f-527e-b9ad-382214d0328a",
+        "57fbbf31-9b8c-5408-9af5-fbc73acd12bb",
         "1f89d69e-ead1-424b-8221-fae37fdea2bc"
       ],
       "requires": [
@@ -1337,11 +1806,152 @@
       "type": "cluster"
     },
     {
+      "id": "491e0858-e977-516e-a339-1cc2f9e9690f",
+      "shortKey": "canonical_math_derive_area_formulas_by_dissection",
+      "title": "Flächenformeln ebener Figuren durch Zerlegen und Ergänzen herleiten",
+      "titleEn": "Derive area formulas of plane figures by decomposition and completion",
+      "description": "Die lernende Person kann die Flächenformeln für Parallelogramm, Dreieck und Trapez ausgehend vom Rechteck mithilfe von Zerlegen und Ergänzen herleiten und begründen.",
+      "descriptionEn": "The learner can derive and justify the area formulas for parallelograms, triangles, and trapezoids from the rectangle using decomposition and completion.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical",
+        "pilot"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math-pilot",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "K2.1",
+          "K3.1",
+          "K4.1"
+        ],
+        "guidingIdeas": [
+          "L2"
+        ],
+        "phase": "J6",
+        "area": "Geometry",
+        "topicCode": "CANONICAL.MATH.SEK1.J6.2A0"
+      },
+      "contains": [],
+      "requires": [
+        "d6c3fb37-ece6-5b56-9221-1eeb21845877",
+        "d98849c7-bd0b-50d4-90aa-6293a3adb211"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BY"
+        ]
+      },
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
+          "sourceLandscapeTitle": "Mathematik (Gymnasium)",
+          "sourceGoalId": "dcee9e49-f692-5b96-bf72-9c45c46ebe28"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "b44f038c-fb1f-527e-b9ad-382214d0328a",
+      "shortKey": "canonical_math_justify_cuboid_volume_with_unit_cubes",
+      "title": "Volumenformel des Quaders mit Einheitswürfeln plausibilisieren",
+      "titleEn": "Justify the cuboid volume formula with unit cubes",
+      "description": "Die lernende Person kann die Volumenformel des Quaders mithilfe von Einheitswürfeln oder Messvorstellungen plausibilisieren und den Aufbau von Volumeneinheiten erläutern.",
+      "descriptionEn": "The learner can justify the cuboid volume formula using unit cubes or measurement concepts and explain the construction of volume units.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical",
+        "pilot"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math-pilot",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "K2.1",
+          "K3.1",
+          "K4.1"
+        ],
+        "guidingIdeas": [
+          "L2"
+        ],
+        "phase": "J6",
+        "area": "Geometry",
+        "topicCode": "CANONICAL.MATH.SEK1.J6.2B0"
+      },
+      "contains": [],
+      "requires": [
+        "ca623958-c204-5d1b-bdd0-3f76765674cb"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BY"
+        ]
+      },
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
+          "sourceLandscapeTitle": "Mathematik (Gymnasium)",
+          "sourceGoalId": "8b1bb498-dd60-5dfb-bba0-dab3d7f28873"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "57fbbf31-9b8c-5408-9af5-fbc73acd12bb",
+      "shortKey": "canonical_math_interpret_and_convert_volume_units",
+      "title": "Volumeneinheiten deuten und umrechnen",
+      "titleEn": "Interpret and convert volume units",
+      "description": "Die lernende Person kann Volumeneinheiten, auch Liter und Milliliter, mithilfe von Einheitswürfeln oder Größenbezügen deuten, sicher umrechnen und ihr Vorgehen begründen.",
+      "descriptionEn": "The learner can interpret volume units, including litres and millilitres, using unit cubes or quantity references, convert them reliably, and justify the process.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical",
+        "pilot"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math-pilot",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "K2.1",
+          "K3.1"
+        ],
+        "guidingIdeas": [
+          "L2"
+        ],
+        "phase": "J6",
+        "area": "Geometry",
+        "topicCode": "CANONICAL.MATH.SEK1.J6.2B1"
+      },
+      "contains": [],
+      "requires": [
+        "ca623958-c204-5d1b-bdd0-3f76765674cb"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BY"
+        ]
+      },
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
+          "sourceLandscapeTitle": "Mathematik (Gymnasium)",
+          "sourceGoalId": "5038bcee-e704-5314-bc3b-69d970cbb4c8"
+        }
+      },
+      "type": "atomic"
+    },
+    {
       "id": "87c55be5-06a9-41e2-a0d4-c60f7c8b8078",
       "shortKey": "canonical_math_sek1_j6_area_figures",
       "title": "Flächeninhalte ebener Figuren berechnen",
       "titleEn": "Calculate areas of plane figures",
-      "description": "Die lernende Person kann Flächeninhalte ebener und zusammengesetzter Figuren berechnen, Zerlegungsstrategien nutzen und Ergebnisse mit passenden Einheiten deuten.",
+      "description": "Die lernende Person kann Flächeninhalte von Parallelogrammen, Dreiecken, Trapezen sowie zusammengesetzten Figuren berechnen, Zerlegungsstrategien nutzen und Ergebnisse mit passenden Einheiten deuten.",
       "descriptionEn": "The learner can calculate areas of plane and composite figures, use decomposition strategies, and interpret results with suitable units.",
       "core": true,
       "weight": 1,
@@ -1390,7 +2000,7 @@
       "shortKey": "canonical_math_sek1_j6_volume_solids",
       "title": "Volumina und Oberflächen einfacher Körper berechnen",
       "titleEn": "Calculate volumes and surfaces of simple solids",
-      "description": "Die lernende Person kann Volumina und Oberflächen einfacher Körper berechnen, Einheiten sicher verwenden und Ergebnisse an Modellen oder Sachsituationen prüfen.",
+      "description": "Die lernende Person kann Volumina und Oberflächen einfacher Körper berechnen, Volumeneinheiten sicher verwenden und Ergebnisse an Modellen oder in Sachsituationen prüfen.",
       "descriptionEn": "The learner can calculate volumes and surfaces of simple solids, use units reliably, and check results on models or in contextual situations.",
       "core": true,
       "weight": 1,
@@ -1439,8 +2049,171 @@
       "shortKey": "canonical_math_sek1_j6_percent_data",
       "title": "Prozentrechnung anwenden und Daten auswerten",
       "titleEn": "Apply percentage calculations and analyze data",
-      "description": "Die lernende Person kann Grundaufgaben der Prozentrechnung lösen, Daten in Tabellen und Diagrammen darstellen und einfache statistische Aussagen nachvollziehbar auswerten.",
-      "descriptionEn": "The learner can solve basic percentage problems, represent data in tables and charts, and evaluate simple statistical statements in a comprehensible way.",
+      "description": "Die lernende Person kann Grundaufgaben der Prozentrechnung lösen, Prozentangaben in Texten prüfen, absolute und relative Häufigkeiten bestimmen, Diagramme kritisch interpretieren und das arithmetische Mittel zur Datendeutung verwenden.",
+      "descriptionEn": "The learner can solve basic percentage problems, check percentage statements in texts, determine absolute and relative frequencies, interpret diagrams critically and use the arithmetic mean to interpret data.",
+      "core": true,
+      "weight": 5,
+      "tags": [
+        "canonical",
+        "pilot"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math-pilot",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "K3.1",
+          "K4.1"
+        ],
+        "guidingIdeas": [
+          "L5"
+        ],
+        "phase": "J6",
+        "area": "Data",
+        "topicCode": "CANONICAL.MATH.SEK1.J6.3"
+      },
+      "contains": [
+        "71d43fcc-d787-4874-ae4a-2336364e9c0a",
+        "72b6bfa5-8e34-4029-8f85-0277207c485e",
+        "91571d3f-3651-4477-ba21-320fc4077453",
+        "acbb7e26-f85f-405b-a3e5-affa6add6711",
+        "15505229-efec-4d01-8e71-acf15f9c2424"
+      ],
+      "requires": [
+        "de39c9fe-5940-4320-aca8-2be85d6ada8f",
+        "f2e42af5-67a6-477e-82ea-e65b09cc6cb3"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BY",
+          "DE-HE"
+        ]
+      },
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
+          "sourceLandscapeTitle": "Mathematik (Gymnasium)",
+          "sourceGoalId": "a0ffba4e-bc61-5461-af88-c14577534f15",
+          "additionalSourceLandscapeIds": [
+            "b167b4cd-4b78-4c84-a721-6b2adbbcab3c"
+          ]
+        }
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "71d43fcc-d787-4874-ae4a-2336364e9c0a",
+      "shortKey": "canonical_math_sek1_j6_solve_basic_percentage_problems",
+      "title": "Grundaufgaben der Prozentrechnung lösen",
+      "titleEn": "Solve basic percentage problems",
+      "description": "Die lernende Person kann Grundaufgaben der Prozentrechnung in einfachen Sachzusammenhängen lösen und dabei insbesondere Grundgleichung, Schlussrechnung sowie typische Anwendungen wie Rabatt und Zins nachvollziehbar einsetzen.",
+      "descriptionEn": "The learner can solve basic percentage problems in simple real-world contexts and apply the basic percentage equation, rule-of-three reasoning and common applications such as discounts and interest in a comprehensible way.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical",
+        "pilot"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math-pilot",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "K2.1",
+          "K4.1"
+        ],
+        "guidingIdeas": [
+          "L1",
+          "L5"
+        ],
+        "phase": "J6",
+        "area": "Data",
+        "topicCode": "CANONICAL.MATH.SEK1.J6.3"
+      },
+      "contains": [],
+      "requires": [
+        "ca9093cd-9ccf-5fb4-9dd8-bf4f92af4e70",
+        "ca8b2e67-7d14-5baf-8404-26820fe3d548"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BY",
+          "DE-HE"
+        ]
+      },
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
+          "sourceLandscapeTitle": "Mathematik (Gymnasium)",
+          "sourceGoalId": "daa23b30-8add-5020-a20b-553475e48c49"
+        },
+        "applicabilityOverrides": {
+          "jurisdiction": [
+            "DE-HE"
+          ]
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "72b6bfa5-8e34-4029-8f85-0277207c485e",
+      "shortKey": "canonical_math_sek1_j6_interpret_percentage_statements",
+      "title": "Prozentangaben in Texten deuten und prüfen",
+      "titleEn": "Interpret and check percentage statements in texts",
+      "description": "Die lernende Person kann Prozentangaben in einfachen Texten erschließen, mathematisch relevante Informationen herausarbeiten, zwischen Prozent und Prozentpunkten unterscheiden und gebräuchliche alternative Darstellungen wie \"jeder Siebte\" oder \"drei von fünf\" kritisch prüfen.",
+      "descriptionEn": "The learner can interpret percentage statements in simple texts, extract the mathematically relevant information, distinguish between percent and percentage points and critically check common alternative phrasings such as \"one in seven\" or \"three out of five\".",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical",
+        "pilot"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math-pilot",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K2.2",
+          "K6.2"
+        ],
+        "guidingIdeas": [
+          "L5"
+        ],
+        "phase": "J6",
+        "area": "Data",
+        "topicCode": "CANONICAL.MATH.SEK1.J6.3"
+      },
+      "contains": [],
+      "requires": [
+        "71d43fcc-d787-4874-ae4a-2336364e9c0a"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BY",
+          "DE-HE"
+        ]
+      },
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
+          "sourceLandscapeTitle": "Mathematik (Gymnasium)",
+          "sourceGoalId": "514f2677-ab12-575f-859d-076c5a638608"
+        },
+        "applicabilityOverrides": {
+          "jurisdiction": [
+            "DE-HE"
+          ]
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "91571d3f-3651-4477-ba21-320fc4077453",
+      "shortKey": "canonical_math_sek1_j6_determine_and_represent_frequencies",
+      "title": "Absolute und relative Häufigkeiten bestimmen und darstellen",
+      "titleEn": "Determine and represent absolute and relative frequencies",
+      "description": "Die lernende Person kann zu statistischen Erhebungen absolute und relative Häufigkeiten bestimmen, flexibel zwischen Bruch, Dezimalbruch und Prozentsatz wechseln und die Daten tabellarisch oder grafisch in geeigneter Form darstellen.",
+      "descriptionEn": "The learner can determine absolute and relative frequencies for statistical data, switch flexibly between fractions, decimals and percentages, and represent the data in suitable tabular or graphical form.",
       "core": true,
       "weight": 1,
       "tags": [
@@ -1463,8 +2236,7 @@
       },
       "contains": [],
       "requires": [
-        "de39c9fe-5940-4320-aca8-2be85d6ada8f",
-        "f2e42af5-67a6-477e-82ea-e65b09cc6cb3"
+        "ca8b2e67-7d14-5baf-8404-26820fe3d548"
       ],
       "applicability": {
         "jurisdiction": [
@@ -1477,9 +2249,115 @@
         "provenance": {
           "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
           "sourceLandscapeTitle": "Mathematik (Gymnasium)",
-          "sourceGoalId": "a0ffba4e-bc61-5461-af88-c14577534f15",
-          "additionalSourceLandscapeIds": [
-            "b167b4cd-4b78-4c84-a721-6b2adbbcab3c"
+          "sourceGoalId": "139f9c35-eadb-500e-831a-8ad2fc135d2a"
+        },
+        "applicabilityOverrides": {
+          "jurisdiction": [
+            "DE-HE"
+          ]
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "acbb7e26-f85f-405b-a3e5-affa6add6711",
+      "shortKey": "canonical_math_sek1_j6_interpret_diagrams_critically",
+      "title": "Diagramme kritisch interpretieren",
+      "titleEn": "Interpret diagrams critically",
+      "description": "Die lernende Person kann zu Diagrammen sinnvolle Fragen formulieren, begründete Aussagen treffen, manipulative Darstellungen erkennen und die Aussagekraft verschiedener Visualisierungen altersangemessen diskutieren.",
+      "descriptionEn": "The learner can formulate sensible questions about diagrams, make justified statements, detect manipulative representations and discuss the explanatory power of different visualisations in an age-appropriate way.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical",
+        "pilot"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math-pilot",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K4.2",
+          "K6.2"
+        ],
+        "guidingIdeas": [
+          "L5"
+        ],
+        "phase": "J6",
+        "area": "Data",
+        "topicCode": "CANONICAL.MATH.SEK1.J6.3"
+      },
+      "contains": [],
+      "requires": [
+        "91571d3f-3651-4477-ba21-320fc4077453"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BY",
+          "DE-HE"
+        ]
+      },
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
+          "sourceLandscapeTitle": "Mathematik (Gymnasium)",
+          "sourceGoalId": "6ea1627f-a173-55c5-b673-9d72b01a1b96"
+        },
+        "applicabilityOverrides": {
+          "jurisdiction": [
+            "DE-HE"
+          ]
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "15505229-efec-4d01-8e71-acf15f9c2424",
+      "shortKey": "canonical_math_sek1_j6_determine_and_interpret_arithmetic_mean",
+      "title": "Arithmetisches Mittel bestimmen und deuten",
+      "titleEn": "Determine and interpret the arithmetic mean",
+      "description": "Die lernende Person kann das arithmetische Mittel aus Daten bestimmen, auch mit einem Tabellenkalkulationsprogramm berechnen, und seine Bedeutung bei der Interpretation von Daten im Kontext erläutern.",
+      "descriptionEn": "The learner can determine the arithmetic mean from data, calculate it with a spreadsheet when appropriate and explain its role in interpreting data in context.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical",
+        "pilot"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math-pilot",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "K2.2",
+          "K6.2"
+        ],
+        "guidingIdeas": [
+          "L5"
+        ],
+        "phase": "J6",
+        "area": "Data",
+        "topicCode": "CANONICAL.MATH.SEK1.J6.3"
+      },
+      "contains": [],
+      "requires": [
+        "91571d3f-3651-4477-ba21-320fc4077453"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BY",
+          "DE-HE"
+        ]
+      },
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
+          "sourceLandscapeTitle": "Mathematik (Gymnasium)",
+          "sourceGoalId": "53bdf2fb-bd6d-504f-a0b4-6911dac6df41"
+        },
+        "applicabilityOverrides": {
+          "jurisdiction": [
+            "DE-HE"
           ]
         }
       },
@@ -22115,7 +22993,7 @@
       "titleEn": "Flashcards - E-Phase",
       "description": "",
       "descriptionEn": "",
-      "weight": 0.5,
+      "weight": 1,
       "tags": [
         "GK",
         "LK",
@@ -22161,7 +23039,7 @@
       "titleEn": "Flashcards - Q1",
       "description": "",
       "descriptionEn": "",
-      "weight": 0.5,
+      "weight": 1,
       "tags": [
         "GK",
         "LK",
@@ -22208,7 +23086,7 @@
       "titleEn": "Flashcards - Q2",
       "description": "",
       "descriptionEn": "",
-      "weight": 0.5,
+      "weight": 1,
       "tags": [
         "GK",
         "LK",
@@ -22256,7 +23134,7 @@
       "titleEn": "Flashcards - Q3",
       "description": "",
       "descriptionEn": "",
-      "weight": 0.5,
+      "weight": 1,
       "tags": [
         "GK",
         "LK",
@@ -22304,7 +23182,7 @@
       "titleEn": "Flashcards - Q4",
       "description": "",
       "descriptionEn": "",
-      "weight": 0.5,
+      "weight": 1,
       "tags": [
         "GK",
         "LK",
