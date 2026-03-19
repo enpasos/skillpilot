@@ -2967,7 +2967,7 @@
       "description": "Kanonischer Jahrgangsanker für J9 der gymnasialen Sekundarstufe I in Mathematik. Der aktuelle Pilot bindet hier quadratische, stochastische, ähnlichkeitstheoretische, potenzbezogene und trigonometrische Anschlussziele an.",
       "descriptionEn": "Canonical year anchor for year 9 in lower-secondary Gymnasium mathematics. The current pilot attaches quadratic, stochastic, similarity-based, power-related, and trigonometric bridge goals here.",
       "core": true,
-      "weight": 13,
+      "weight": 14,
       "tags": [
         "canonical",
         "pilot",
@@ -4652,10 +4652,10 @@
       "shortKey": "canonical_math_sek1_j9_trigonometry",
       "title": "Trigonometrie am Dreieck anwenden",
       "titleEn": "Apply trigonometry to triangles",
-      "description": "Kanonischer Cluster für trigonometrische Brücken in J9. Der aktuelle Bayern-Slice trennt hier zwischen rechtwinkliger Dreieckstrigonometrie und dem weiterführenden Einsatz von Sinus- und Kosinussatz.",
-      "descriptionEn": "Canonical cluster for trigonometric bridges in year 9. The current Bavaria slice distinguishes between right-triangle trigonometry and the more advanced use of sine and cosine laws.",
+      "description": "Kanonischer Cluster für trigonometrische Brücken in J9. Der aktuelle Bayern-Slice trennt hier zwischen rechtwinkliger Dreieckstrigonometrie und dem weiterführenden Einsatz von Einheitskreisvorstellungen, Sinus- und Kosinussatz.",
+      "descriptionEn": "Canonical cluster for trigonometric bridges in year 9. The current Bavaria slice distinguishes between right-triangle trigonometry and the more advanced use of unit-circle reasoning together with the sine and cosine laws.",
       "core": true,
-      "weight": 2,
+      "weight": 3,
       "tags": [
         "canonical",
         "pilot"
@@ -4752,12 +4752,12 @@
     {
       "id": "0cefa694-636e-4c4b-abff-3ac3750dca18",
       "shortKey": "canonical_math_sek1_j9_sine_cosine_laws",
-      "title": "Sinus- und Kosinussatz nutzen",
-      "titleEn": "Use the sine and cosine laws",
-      "description": "Die lernende Person kann Sinus- und Kosinussatz nutzen, Winkel- und Seitenbeziehungen in allgemeinen Dreiecken bestimmen und trigonometrische Lösungen geometrisch interpretieren.",
-      "descriptionEn": "The learner can use the sine and cosine laws, determine angle and side relations in general triangles, and interpret trigonometric solutions geometrically.",
+      "title": "Sinus- und Kosinussatz sowie trigonometrische Orientierung nutzen",
+      "titleEn": "Use the sine and cosine laws and trigonometric orientation",
+      "description": "Kanonischer Cluster für den J9-Übergang zwischen Sinus- und Kosinuswerten am Einheitskreis im Gradmaß und dem Einsatz von Sinus- und Kosinussatz in allgemeinen Dreiecken.",
+      "descriptionEn": "Canonical cluster for the year-9 transition between unit-circle based sine/cosine values in degree measure and the use of the sine and cosine laws in general triangles.",
       "core": true,
-      "weight": 1,
+      "weight": 2,
       "tags": [
         "canonical",
         "pilot"
@@ -4778,7 +4778,10 @@
         "area": "Geometry",
         "topicCode": "CANONICAL.MATH.SEK1.J9.7B"
       },
-      "contains": [],
+      "contains": [
+        "97b3232d-b89f-48b8-9fa1-7a25a1bdbb3d",
+        "ef40a255-b6d4-4a1e-93b1-b79e65fb585d"
+      ],
       "requires": [
         "71a483ba-9680-4654-bb5e-5ab5427f0919"
       ],
@@ -4796,6 +4799,112 @@
           "sourceGoalId": "5c48c28e-71b1-51c3-9dc4-ba200746a18d",
           "additionalSourceLandscapeIds": [
             "b167b4cd-4b78-4c84-a721-6b2adbbcab3c"
+          ]
+        }
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "97b3232d-b89f-48b8-9fa1-7a25a1bdbb3d",
+      "shortKey": "canonical_math_sek1_j9_unit_circle_sine_cosine_values",
+      "title": "Sinus- und Kosinuswerte am Einheitskreis im Gradmaß deuten",
+      "titleEn": "Interpret sine and cosine values on the unit circle in degrees",
+      "description": "Die lernende Person kann Sinus- und Kosinuswerte für Winkel zwischen 0° und 360° am Einheitskreis veranschaulichen, Vorzeichen sicher bestimmen, zu vorgegebenen Werten passende Winkel finden und negative Taschenrechnerausgaben korrekt interpretieren.",
+      "descriptionEn": "The learner can visualize sine and cosine values for angles between 0° and 360° on the unit circle, determine signs reliably, find suitable angles for given values, and interpret negative calculator outputs correctly.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical",
+        "pilot"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math-pilot",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K1.1",
+          "K2.1",
+          "K4.1"
+        ],
+        "guidingIdeas": [
+          "L2",
+          "L4"
+        ],
+        "phase": "J9",
+        "area": "Geometry",
+        "topicCode": "CANONICAL.MATH.SEK1.J9.7B1"
+      },
+      "contains": [],
+      "requires": [
+        "71a483ba-9680-4654-bb5e-5ab5427f0919"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BY"
+        ]
+      },
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
+          "sourceLandscapeTitle": "Mathematik (Gymnasium)",
+          "sourceGoalId": "e8867a12-8662-5d23-85ca-081e6559403f"
+        },
+        "applicabilityOverrides": {
+          "jurisdiction": [
+            "DE-HE"
+          ]
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "ef40a255-b6d4-4a1e-93b1-b79e65fb585d",
+      "shortKey": "canonical_math_sek1_j9_prove_and_apply_sine_cosine_laws",
+      "title": "Sinus- und Kosinussatz begründen und anwenden",
+      "titleEn": "Justify and apply the sine and cosine laws",
+      "description": "Die lernende Person kann den Sinussatz nachvollziehen, den Satz des Pythagoras als Spezialfall des Kosinussatzes deuten und Anwendungsaufgaben in allgemeinen Dreiecken rechnerisch lösen.",
+      "descriptionEn": "The learner can follow the proof of the sine law, interpret the Pythagorean theorem as a special case of the cosine law, and solve application problems in general triangles computationally.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical",
+        "pilot"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math-pilot",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K1.1",
+          "K2.1",
+          "K4.1"
+        ],
+        "guidingIdeas": [
+          "L2",
+          "L4"
+        ],
+        "phase": "J9",
+        "area": "Geometry",
+        "topicCode": "CANONICAL.MATH.SEK1.J9.7B2"
+      },
+      "contains": [],
+      "requires": [
+        "71a483ba-9680-4654-bb5e-5ab5427f0919"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BY"
+        ]
+      },
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
+          "sourceLandscapeTitle": "Mathematik (Gymnasium)",
+          "sourceGoalId": "87b53bf0-19ff-5f09-bef0-f210b2d6199f"
+        },
+        "applicabilityOverrides": {
+          "jurisdiction": [
+            "DE-HE"
           ]
         }
       },

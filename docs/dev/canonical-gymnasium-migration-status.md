@@ -1003,3 +1003,25 @@ Deferred on purpose:
 
 - no new Hessen leaf-mapping tranche for these J10 atoms
 - no validator or CI run in this patch step
+
+
+### 2026-03-19: J9 trigonometry split for Bavaria M9 7.2
+
+Approach used:
+
+- kept the existing J9 trigonometry bridge cluster `219ce079-6bfd-4827-8b66-5dd199e44686` and refactored only the broad child `0cefa694-636e-4c4b-abff-3ac3750dca18`
+- split the old mixed atom into exactly the two Bavaria `M9 7.2` strands that had been entangled before: unit-circle based sign/orientation work and the proof/application corridor for sinus- and cosine-law work
+- reused the existing right-triangle trigonometry atom as the shared prerequisite instead of opening a wider trigonometric dependency fan
+- closed Hessen visibility immediately for the two new J9 atoms via the established override-backed prerequisite bridge, because the retained HE corridor already depends on the broad J9 trig bridge
+
+Applied changes:
+
+- refactored `0cefa694-636e-4c4b-abff-3ac3750dca18` from atomic goal to J9 trig cluster
+- added the two new canonical J9 atoms for unit-circle sine/cosine values in degree measure and for proving/applying the sine and cosine laws
+- upgraded the Bavaria `M9 7.2` cluster bridge from `partial` to `exact` and remapped both Bavaria leaf goals to the new canonical atoms
+- updated the Bavaria mapping fixture and added the two matching `APV-201` accepted-warning entries for the Hessen prerequisite bridge
+
+Deferred on purpose:
+
+- no new Hessen legacy leaf-mapping tranche for these J9 atoms
+- no validator or CI run in this patch step
