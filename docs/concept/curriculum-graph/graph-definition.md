@@ -41,6 +41,15 @@ Each goal $g\in G$ has the following attributes:
 - $Phase: G \to P$
 - $Weight: G \to \mathbb{R}_{>0}$
 
+Implementations MAY additionally expose an optional stable cross-layer reference:
+
+- $ShortKey: G \rightharpoonup \Sigma^*$
+
+Interpretation:
+
+- `ShortKey` is an optional stable ASCII-style identifier for cross-layer references, exports, APIs, and similar non-graph-facing integration points
+- `ShortKey` does not replace `Id`; `Id` remains the canonical identity of a goal
+
 Implementations MAY additionally expose optional cross-cutting metadata for scoped learner views.
 
 One preferred structured form is a partial applicability mapping:
@@ -65,6 +74,20 @@ Identifiers MUST be unique:
 $$
 \forall g,h\in G:\ g\neq h \Rightarrow Id(g)\neq Id(h)
 $$
+
+### 2.3.1 Optional `ShortKey` uniqueness
+
+If `ShortKey` is exposed, it MUST be unique within the logical landscape:
+
+$$
+\forall g,h\in G:\ g\neq h \land g,h\in dom(ShortKey) \Rightarrow ShortKey(g)\neq ShortKey(h)
+$$
+
+Interpretation:
+
+- `ShortKey` is optional, but if present it is a secondary stable key and therefore must not collide between different goals of the same landscape
+- in repositories that serialize the same logical landscape into multiple locale files sharing one `landscapeId`, this uniqueness requirement applies to the shared logical landscape, not merely to one file serialization
+- repeated `(goalId, ShortKey)` pairs across locale serializations of the same landscape are therefore acceptable; collisions where the same `ShortKey` names different goal IDs are not
 
 ### 2.4 Atomic and cluster goals (canonical semantic classification)
 
@@ -557,6 +580,42 @@ F_Q(g)=1
 $$
 
 This is only one possible realization of a filter, but it is the preferred one for derived, prevalidated scoped views.
+
+### 12.1.1 Repository convention: explicit applicability overrides
+
+The normative filter semantics in this document depend on the effective applicability predicate only.  
+Some repositories MAY additionally maintain an explicit auxiliary metadata field such as:
+
+$$
+ApplicabilityOverrides: G \rightharpoonup \bigl(D \to \mathcal{P}(V_d)\bigr)
+$$
+
+Interpretation:
+
+- `ApplicabilityOverrides` is **not** a second filter system beside `Applicability`
+- it is review and migration metadata that marks which in-force applicability values were added through an explicit, documented override decision
+- runtime view projection should still evaluate the compiled `Applicability` field, not the override field by itself
+
+Typical use case:
+
+- a canonical goal is already didactically needed in a scoped view such as `jurisdiction = DE-HE`
+- but the retained source landscape for that scope does not expose a clean one-to-one source atom for the same competence
+- the repository therefore widens `Applicability(g)` deliberately and records the exceptional part again in `ApplicabilityOverrides(g)` so the widening remains auditable
+
+This convention is useful because it keeps three facts separate:
+
+- where the goal is currently visible: `Applicability`
+- where the currently strongest direct source evidence comes from: provenance and mapping layers
+- which visibility values were added by an explicit reviewed exception instead of by ordinary source alignment: `ApplicabilityOverrides`
+
+Practical guidance:
+
+- if a value is present only because of such an explicit closure decision, keep it in both places:
+  - in `Applicability`, so filtered views work correctly
+  - in `ApplicabilityOverrides`, so validators and maintainers can see that the value is override-backed
+- if cleaner exact evidence becomes available later, the override marker should be removed while the ordinary applicability value may remain
+
+In the current repository validator profile, explicit use of such an override path is tracked by rule `APV-201`.
 
 ### 12.2 Filter predicate and induced subgraph
 

@@ -69,6 +69,7 @@ const RULE_REQUIRES_DIRECT_CHILD = 'GVR-006'
 const RULE_MIT_ATOMIC_SOURCE_LINKS = 'GVR-007'
 const RULE_NO_LEGACY_LINK_FIELDS = 'GVR-008'
 const RULE_EXPLICIT_TYPE_CONSISTENCY = 'GVR-009'
+const RULE_SHORTKEY_UNIQUE_WITHIN_LANDSCAPE = 'GVR-010'
 const HESSEN_GYM_OVERVIEW_LANDSCAPE_ID = 'bbbf39f3-4a5b-46cf-9edd-48f2c54ae0da'
 const motivationRuleLandscapeIds = new Set<string>([
   '3e56aa75-c76c-4de5-883b-0aac98297846', // DE_HES_S_GYM_2_BIOLOGIE
@@ -203,6 +204,7 @@ const globalGoalMap = new Map<string, { goal: UiGoal; landscapeId: string; sourc
 const guidMap = new Map<string, string[]>()
 const goalIdToLandscapeId = new Map<string, string>()
 const ambiguousGoalIds = new Set<string>()
+const shortKeyOwnersByLandscape = new Map<string, Map<string, Set<string>>>()
 
 for (const landscape of parsedLandscapes) {
   for (const goal of landscape.goals) {
@@ -236,6 +238,27 @@ for (const landscape of parsedLandscapes) {
         ambiguousGoalIds.add(goal.id)
       }
     }
+
+    const shortKey = goal.shortKey?.trim()
+    if (shortKey) {
+      const landscapeShortKeys = shortKeyOwnersByLandscape.get(landscape.landscapeId) ?? new Map<string, Set<string>>()
+      const owners = landscapeShortKeys.get(shortKey) ?? new Set<string>()
+      owners.add(goal.id)
+      landscapeShortKeys.set(shortKey, owners)
+      shortKeyOwnersByLandscape.set(landscape.landscapeId, landscapeShortKeys)
+    }
+  }
+}
+
+for (const [landscapeId, shortKeyOwners] of shortKeyOwnersByLandscape.entries()) {
+  for (const [shortKey, ownerIds] of shortKeyOwners.entries()) {
+    if (ownerIds.size <= 1) continue
+    issues.push({
+      level: 'error',
+      message:
+        `[${landscapeId}] [${RULE_SHORTKEY_UNIQUE_WITHIN_LANDSCAPE}] shortKey "${shortKey}" must be unique within landscapeId ${landscapeId}. `
+        + `Found on goal ids: ${Array.from(ownerIds).sort().join(', ')}`,
+    })
   }
 }
 

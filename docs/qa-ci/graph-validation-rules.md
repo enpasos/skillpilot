@@ -43,6 +43,7 @@ This is the single source of truth for algorithmic graph validation in CI.
 | `GVR-007` | MIT OCW module atomic goals must include intensive source-link coverage (`concept` + `practice` + `assessment`) in canonical `resourceLinks`. | MIT OCW module landscapes (`frameworkId` starts with `mit-ocw-` and root tagged `module:*`) | `error` |
 | `GVR-008` | Committed landscape goals must use canonical `resourceLinks` as the only supported goal-level helper-link field. | Local landscape | `error` |
 | `GVR-009` | If explicit `type` metadata is present, it must match the canonical node classification derived from direct `contains` children (`atomic` iff leaf, `cluster` iff non-leaf). | Local landscape | `error` |
+| `GVR-010` | If `shortKey` is present, it must be unique within the logical `landscapeId` (duplicates across locale serializations are allowed only when they refer to the same goal id). | Logical landscape (`landscapeId`, including multi-file localizations) | `error` |
 
 ## Core validator checks (always active, fail CI)
 
@@ -50,6 +51,7 @@ These checks are already implemented and treated as `error`:
 
 - JSON parsing and landscape loading
 - Goal ID uniqueness inside a landscape
+- Optional `shortKey` uniqueness within a logical `landscapeId`
 - Referential integrity for `requires` and `contains`
 - Self-reference guards (`goal cannot require itself`, `goal cannot contain itself`)
 - Allowed metadata domains:
