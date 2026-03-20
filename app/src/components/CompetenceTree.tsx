@@ -5,6 +5,7 @@ import type { UiGoal } from '../goalTypes'
 import { sortGoalsTopologically } from '../utils/goalSorter'
 import { isMastered } from '../goalUiUtils'
 import { InlineMathText } from './InlineMathText'
+import { goalMatchesFilter, isWildcardFilter } from '../utils/goalFilters'
 
 interface TreeNodeProps {
   goalId: string
@@ -26,11 +27,6 @@ interface TreeNodeProps {
   activeGoalId?: string
   forcedExpandedIds?: Set<string>
   frontierIds?: Set<string>
-}
-
-const isWildcardFilter = (filterId?: string) => {
-  if (!filterId) return false
-  return filterId.toLowerCase() === 'all'
 }
 
 const formatFilterLabel = (filterId?: string) => {
@@ -89,19 +85,16 @@ const TreeNode: React.FC<TreeNodeProps> = ({
     })
 
     return childIds.filter((childId) => {
-      // Global goal-tag filters are only valid in legacy single-filter mode.
-      // Landscape-level filters such as DE-HE/DE-BY or per-subject GK/LK are
-      // already handled via personalConfig and must not be re-applied here.
-      if (!hasConfig && activeFilter && activeFilter !== 'all') {
-        const child = allGoals.get(childId)
-        if (!child) return false
-        if (!isWildcardFilter(activeFilter) && child.tags && child.tags.length > 0 && !child.tags.includes(activeFilter)) {
-          return false
-        }
+      const child = allGoals.get(childId)
+      if (!child) return false
+
+      // Apply the currently active cockpit filter (e.g. DE-BY/DE-HE or GK/LK)
+      // on top of personal curriculum selections.
+      if (!goalMatchesFilter(child, activeFilter)) {
+        return false
       }
 
       // 2. Filter by Personal Curriculum (Level 2)
-      const child = allGoals.get(childId)
       if (child && hasConfig) {
         const config = (child.landscapeId ? personalConfig[child.landscapeId] : undefined) ?? personalConfig[child.id]
 
@@ -109,7 +102,7 @@ const TreeNode: React.FC<TreeNodeProps> = ({
           if (config.selected !== true) return false
 
           // 3. Filter by 'filterId' (e.g. "LK", "GK") if configured for this landscape
-          if (config.filterId && !isWildcardFilter(config.filterId) && child.tags && child.tags.length > 0 && !child.tags.includes(config.filterId)) {
+          if (!goalMatchesFilter(child, config.filterId)) {
             return false
           }
         } else {

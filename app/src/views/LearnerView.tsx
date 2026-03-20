@@ -16,6 +16,7 @@ import { useLanguage } from '../contexts/LanguageContext'
 import { isMastered } from '../goalUiUtils'
 import { useSrsMastery } from '../hooks/useSrsMastery'
 import { getSrsFilterTagsForGoal } from '../utils/srsTags'
+import { goalMatchesFilter, isWildcardFilter } from '../utils/goalFilters'
 import {
   CANONICAL_GYMNASIUM_ROOT_ID,
   LEGACY_HESSEN_GYMNASIUM_UPPER_IDS,
@@ -154,11 +155,6 @@ const inferLegacyHessenLowerSelection = (
     frenchSelected,
     retirementEligible: mathSelected || physicsSelected || chemistrySelected || biologySelected || frenchSelected,
   }
-}
-
-const isWildcardFilter = (filterId?: string) => {
-  if (!filterId) return false
-  return filterId.toLowerCase() === 'all'
 }
 
 const normalizePersonalConfig = (
@@ -390,7 +386,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     if (config?.filterId) {
       return supportedFilterIds.has(config.filterId) ? config.filterId : undefined
     }
-    if (!activeFilter || activeFilter === 'all') return activeFilter
+    if (!activeFilter || isWildcardFilter(activeFilter)) return activeFilter
     return supportedFilterIds.has(activeFilter) ? activeFilter : undefined
   }, [landscapeId, personalConfig, activeFilter, supportedFilterIds])
 
@@ -411,13 +407,10 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
       const child = goalIndexAll.get(childId)
       if (!child) return false
 
-      // Global goal-tag filters are only valid in legacy single-filter mode.
-      // Landscape-level filters such as DE-HE/DE-BY or per-subject GK/LK are
-      // already represented in personalConfig and must not be re-applied here.
-      if (!hasConfig && effectiveActiveFilter && effectiveActiveFilter !== 'all') {
-        if (!isWildcardFilter(effectiveActiveFilter) && child.tags && child.tags.length > 0 && !child.tags.includes(effectiveActiveFilter)) {
-          return false
-        }
+      // Apply the currently active cockpit filter (e.g. DE-BY/DE-HE or GK/LK)
+      // on top of personal curriculum selections.
+      if (!goalMatchesFilter(child, effectiveActiveFilter)) {
+        return false
       }
 
       // 2) Personal curriculum selection + per-landscape filterId
@@ -425,7 +418,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
         const cfg = (child.landscapeId ? personalConfig[child.landscapeId] : undefined) ?? personalConfig[child.id]
         if (cfg) {
           if (cfg.selected !== true) return false
-          if (cfg.filterId && !isWildcardFilter(cfg.filterId) && child.tags && child.tags.length > 0 && !child.tags.includes(cfg.filterId)) {
+          if (!goalMatchesFilter(child, cfg.filterId)) {
             return false
           }
         } else if (hasPositiveSibling) {
@@ -463,6 +456,21 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     }
     return visible
   }, [visibleRootGoals, goalIndexAll, personalConfig, getVisibleChildIds])
+
+  useEffect(() => {
+    if (!currentGoal) return
+    if (visibleGoals.has(currentGoal.id)) return
+
+    const nextVisibleGoalId =
+      (effectiveActiveGoalId && visibleGoals.has(effectiveActiveGoalId) ? effectiveActiveGoalId : undefined)
+      ?? Array.from(plannedGoals).find((goalId) => visibleGoals.has(goalId))
+      ?? visibleRootGoals.find((goal) => visibleGoals.has(goal.id))?.id
+      ?? Array.from(visibleGoals)[0]
+
+    if (nextVisibleGoalId && nextVisibleGoalId !== currentGoal.id) {
+      onSelectGoal(nextVisibleGoalId)
+    }
+  }, [currentGoal, visibleGoals, effectiveActiveGoalId, plannedGoals, visibleRootGoals, onSelectGoal])
 
   const getFilteredMastery = useCallback(
     (goalId: string) => {
@@ -511,7 +519,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   // Relative to Focus (Planned Subtree) if active, otherwise Global Visible.
   const stats = useMemo(() => {
     const hasPersonalConfig = Object.keys(personalConfig).length > 0
-    const hasActiveFilter = !!effectiveActiveFilter && effectiveActiveFilter !== 'all'
+    const hasActiveFilter = !!effectiveActiveFilter && !isWildcardFilter(effectiveActiveFilter)
 
     // In global mode (no planned goals), prefer backend stats only when no filters are active
     if (plannedGoals.size === 0 && backendStats && !hasPersonalConfig && !hasActiveFilter) {
@@ -665,13 +673,8 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
 
       // 1. If Atomic
       if (!g.contains || g.contains.length === 0) {
-
-        // Final Filter Check for Atomic Goal
-        if (activeFilter && activeFilter !== 'all') {
-          // Only strictly enforce if the goal HAS tags. If it has no tags, we assume it's generic/OK.
-          if (g.tags && g.tags.length > 0 && !g.tags.includes(activeFilter)) {
-            return false; // Skip this goal, it's not for this profile
-          }
+        if (!goalMatchesFilter(g, effectiveActiveFilter)) {
+          return false
         }
 
         const m = getEffectiveMastery(id)
@@ -702,7 +705,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     visibleRootGoals.forEach(r => check(r.id))
 
     return ids
-  }, [visibleRootGoals, goalIndexAll, getEffectiveMastery, visibleGoals, activeFilter])
+  }, [visibleRootGoals, goalIndexAll, getEffectiveMastery, visibleGoals, effectiveActiveFilter])
 
   const atomicFrontierOptions = useMemo(() => {
     const atomic = frontierOptions.filter((candidate) => candidate.type === 'atomic')

@@ -9,6 +9,7 @@ import { useGoalIndex } from './useGoalIndex'
 import { useLearnerProgress } from './useLearnerProgress'
 import { useMasteryCalculation } from './useMasteryCalculation'
 import { useLanguage } from '../contexts/LanguageContext'
+import { goalMatchesFilter } from '../utils/goalFilters'
 
 type Role = 'learner' | 'trainer' | 'explorer'
 
@@ -101,30 +102,13 @@ export function useAppCore({ role, setLearnerMeta, skillpilotId }: AppCoreOption
   }, [goalId, goalIndexAll, goals])
 
   const currentGoalId = currentGoal?.id ?? ''
-  const isWildcardFilter = useCallback((filterId?: string) => {
-    if (!filterId) return false
-    return filterId.toLowerCase() === 'all'
-  }, [])
 
   const { neighbors } = useCompetenceGraph(currentGoal, allGoalsGlobal)
   const matchesActiveFilter = useCallback(
     (goal: Goal) => {
-      if (!activeFilter || isWildcardFilter(activeFilter)) return true
-      const applicabilityValues = goal.applicability
-        ? Object.values(goal.applicability)
-            .flatMap((values) => (Array.isArray(values) ? values : []))
-            .filter((value): value is string => typeof value === 'string' && value.trim().length > 0)
-        : []
-      const tagValues = (goal.tags ?? []).filter(
-        (value): value is string => typeof value === 'string' && value.trim().length > 0,
-      )
-
-      if (applicabilityValues.includes(activeFilter)) return true
-      if (tagValues.includes(activeFilter)) return true
-
-      return applicabilityValues.length === 0 && tagValues.length === 0
+      return goalMatchesFilter(goal, activeFilter)
     },
-    [activeFilter, isWildcardFilter],
+    [activeFilter],
   )
   const filteredNeighbors = useMemo(
     () => ({
