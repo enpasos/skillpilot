@@ -29,7 +29,7 @@
       "description": "Gemeinsame Wurzel für Mathematik am Gymnasium in Deutschland. Die Landschaft übernimmt die hessische Oberstufe vollständig, realisiert kanonische Jahrgangsanker J5 bis J10 für die Sekundarstufe I und bündelt arithmetische, algebraische, geometrische, datenbezogene, stochastische und trigonometrische Anschlussziele für DE-HE und DE-BY.",
       "descriptionEn": "Shared root for mathematics at Gymnasium in Germany. The landscape fully adopts the Hessian upper-secondary curriculum, realizes canonical lower-secondary year anchors J5 to J10, and bundles arithmetic, algebraic, geometric, data, stochastic, and trigonometric bridge goals for DE-HE and DE-BY.",
       "core": true,
-      "weight": 443,
+      "weight": 447,
       "tags": [
         "root",
         "canonical",
@@ -6109,7 +6109,7 @@
       "titleEn": "Q3 Stochastics",
       "description": "Zusammenfassender Cluster für die Themenfelder Q3.1 bis Q3.5: Grundlagen der Stochastik, Wahrscheinlichkeitsverteilungen, Hypothesentests, Prognose- und Konfidenzintervalle sowie Statistik.",
       "descriptionEn": "Summarizing cluster for topics Q3.1 to Q3.5: basic stochastics, probability distributions, hypothesis tests, prediction and confidence intervals, and statistics.",
-      "weight": 57,
+      "weight": 61,
       "tags": [
         "GK",
         "LK"
@@ -14736,9 +14736,9 @@
       "id": "dd550132-2a3f-5b4e-a3c6-f940621186ac",
       "title": "Q3.1 Grundlegende Begriffe und Methoden der Stochastik",
       "titleEn": "Q3.1 Basic Concepts and Methods of Stochastics",
-      "description": "Clusterknoten für die Q3.1-Grundlagen der Stochastik: statistischer Wahrscheinlichkeitsbegriff, Ergebnisraum/Ereignisse, Baumdiagramme und Pfadregeln, Mengenkalkül von Ereignissen, bedingte Wahrscheinlichkeiten und Unabhängigkeit, kombinatorische Zählprinzipien und Binomialköffizient sowie Laplace-Wahrscheinlichkeiten mit und ohne Zurücklegen inklusive Modellvergleich - jeweils mit konkreten Beispielrechnungen.",
-      "descriptionEn": "Cluster node for Q3.1 stochastics foundations: statistical concept of probability, sample space/events, tree diagrams and path rules, set calculus of events, conditional probabilities and independence, combinatorial counting principles and binomial cöfficient, and Laplace probabilities with and without replacement including model comparison - always with concrete worked examples.",
-      "weight": 14,
+      "description": "Clusterknoten für die Q3.1-Grundlagen der Stochastik: statistischer Wahrscheinlichkeitsbegriff, Ergebnisraum/Ereignisse, Baumdiagramme und Pfadregeln, Mengenkalkül von Ereignissen, bedingte Wahrscheinlichkeiten und Unabhängigkeit, kritische Prüfung datenbezogener Aussagen sowie kombinatorische Zählprinzipien und Binomialköffizient inklusive konkreter Beispielrechnungen.",
+      "descriptionEn": "Cluster node for Q3.1 stochastics foundations: statistical concept of probability, sample space/events, tree diagrams and path rules, set calculus of events, conditional probabilities and independence, critical assessment of data-based claims, and combinatorial counting principles plus binomial coefficient with concrete worked examples.",
+      "weight": 18,
       "tags": [
         "GK",
         "LK"
@@ -14750,6 +14750,10 @@
         "71d1fd4d-8471-5f25-94a0-4c531a74783c",
         "52e57eb5-7cd1-5df0-a8c6-7b090f097d9f",
         "c3b9c561-dd83-5903-9ec6-49c7f51bafd5",
+        "508292f2-671b-4fd3-acbf-53d705e44693",
+        "c2831918-26f1-421e-90fb-ce707689594e",
+        "dabff49b-d40a-4c81-a584-21408b2d4219",
+        "3e974075-b2fd-43e6-88d9-5f596ad053ec",
         "122ab909-04ed-572b-a499-754f3bcc8ef0",
         "935a68e3-b0c5-5a4a-9b2f-ac43007fdd2e",
         "70efdec0-110c-5564-849b-bc05cfff0f6a",
@@ -14778,6 +14782,7 @@
       },
       "applicability": {
         "jurisdiction": [
+          "DE-BY",
           "DE-HE"
         ]
       },
@@ -14954,6 +14959,179 @@
           "sourceLandscapeId": "2796fc7b-ba9d-446f-8f26-711dd6d8a9a3",
           "sourceLandscapeTitle": "Mathematik Oberstufe (Hessen, KC 2024)",
           "sourceGoalId": "7c6b894d-8580-4edd-82e9-356fe13ba30f"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "508292f2-671b-4fd3-acbf-53d705e44693",
+      "title": "Bedingte Wahrscheinlichkeiten mit Baumdiagrammen und Vierfeldertafeln bestimmen",
+      "titleEn": "Determine conditional probabilities using tree diagrams and contingency tables",
+      "description": "Die lernende Person kann bedingte Wahrscheinlichkeiten in Sachzusammenhängen erkennen und sie mit Baumdiagrammen sowie Vier- oder Mehrfeldertafeln bestimmen.",
+      "descriptionEn": "The learner can identify conditional probabilities in contextual situations and determine them using tree diagrams as well as four- or multi-field tables.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "efc3506a-5f35-4d77-9498-d70a091a470b",
+        "4ac925cf-3862-4810-be2a-d92efff7d735"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K2.2",
+          "K3.3",
+          "K4.2"
+        ],
+        "guidingIdeas": [
+          "L4",
+          "L5"
+        ],
+        "phase": "Q3"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BY"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
+          "sourceLandscapeTitle": "Mathematik (Gymnasium)",
+          "sourceGoalId": "65f2a13f-402b-57d5-8395-7cbc590b6da8"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "c2831918-26f1-421e-90fb-ce707689594e",
+      "title": "Bedingte und gemeinsame Wahrscheinlichkeiten im Kontext unterscheiden",
+      "titleEn": "Distinguish conditional and joint probabilities in context",
+      "description": "Die lernende Person kann in Sachzusammenhängen zwischen P(B|A), P(A|B) und P(A∩B) unterscheiden und mithilfe von Baumdiagrammen oder Vierfeldertafeln von einer Darstellung zur anderen übergehen.",
+      "descriptionEn": "The learner can distinguish between P(B|A), P(A|B), and P(A∩B) in contextual settings and move from one representation to another using tree diagrams or contingency tables.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "508292f2-671b-4fd3-acbf-53d705e44693"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K1.4",
+          "K2.2",
+          "K4.2"
+        ],
+        "guidingIdeas": [
+          "L4",
+          "L5"
+        ],
+        "phase": "Q3"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BY"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
+          "sourceLandscapeTitle": "Mathematik (Gymnasium)",
+          "sourceGoalId": "d93b49e1-efbb-5d59-9a64-b1f0f9ad4a88"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "dabff49b-d40a-4c81-a584-21408b2d4219",
+      "title": "Stochastische Unabhängigkeit an Baumdiagrammen und Vierfeldertafeln prüfen",
+      "titleEn": "Check stochastic independence using tree diagrams and contingency tables",
+      "description": "Die lernende Person kann stochastische Unabhängigkeit bzw. Abhängigkeit an konkreten Beispielen erläutern, in Baumdiagrammen oder Vierfeldertafeln erkennen und rechnerisch überprüfen.",
+      "descriptionEn": "The learner can explain stochastic independence or dependence in concrete examples, identify it in tree diagrams or contingency tables, and verify it computationally.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "c2831918-26f1-421e-90fb-ce707689594e"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K2.2",
+          "K3.3",
+          "K4.2"
+        ],
+        "guidingIdeas": [
+          "L4",
+          "L5"
+        ],
+        "phase": "Q3"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BY"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
+          "sourceLandscapeTitle": "Mathematik (Gymnasium)",
+          "sourceGoalId": "411f1354-7d69-511d-8ed8-f9a521e3ad12"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "3e974075-b2fd-43e6-88d9-5f596ad053ec",
+      "title": "Datenaussagen mit bedingten Wahrscheinlichkeiten kritisch prüfen",
+      "titleEn": "Critically examine data-based claims using conditional probabilities",
+      "description": "Die lernende Person kann aus Daten abgeleitete Aussagen kritisch hinterfragen, indem sie Stichprobenumfang und -zusammensetzung, Teilmengen- und Basisrateneffekte, Art der Datenerhebung und Fragestellung berücksichtigt sowie Korrelation und Kausalität unterscheidet.",
+      "descriptionEn": "The learner can critically question claims derived from data by considering sample size and composition, subgroup and base-rate effects, data-collection method and framing, and by distinguishing correlation from causation.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "c2831918-26f1-421e-90fb-ce707689594e"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [
+          "K3.3",
+          "K4.2",
+          "K6.2"
+        ],
+        "guidingIdeas": [
+          "L4",
+          "L5"
+        ],
+        "phase": "Q3"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BY"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
+          "sourceLandscapeTitle": "Mathematik (Gymnasium)",
+          "sourceGoalId": "ed350633-79b6-54f5-bf99-dcb649992f7e"
         }
       },
       "type": "atomic"
