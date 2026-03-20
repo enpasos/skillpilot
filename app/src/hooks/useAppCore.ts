@@ -101,11 +101,15 @@ export function useAppCore({ role, setLearnerMeta, skillpilotId }: AppCoreOption
   }, [goalId, goalIndexAll, goals])
 
   const currentGoalId = currentGoal?.id ?? ''
+  const isWildcardFilter = useCallback((filterId?: string) => {
+    if (!filterId) return false
+    return filterId.toLowerCase() === 'all'
+  }, [])
 
   const { neighbors } = useCompetenceGraph(currentGoal, allGoalsGlobal)
   const matchesActiveFilter = useCallback(
     (goal: Goal) => {
-      if (!activeFilter || activeFilter === 'all') return true
+      if (!activeFilter || isWildcardFilter(activeFilter)) return true
       const applicabilityValues = goal.applicability
         ? Object.values(goal.applicability)
             .flatMap((values) => (Array.isArray(values) ? values : []))
@@ -120,7 +124,7 @@ export function useAppCore({ role, setLearnerMeta, skillpilotId }: AppCoreOption
 
       return applicabilityValues.length === 0 && tagValues.length === 0
     },
-    [activeFilter],
+    [activeFilter, isWildcardFilter],
   )
   const filteredNeighbors = useMemo(
     () => ({

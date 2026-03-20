@@ -58,6 +58,12 @@ export const ExplorerView: React.FC<ExplorerViewProps> = ({
 }) => {
   console.log('[ExplorerView] Render. currentGoal:', currentGoal?.id)
   const hasFilters = availableFilters.length > 0
+  const isWildcardFilter = (value?: string) => {
+    if (!value) return false
+    return value.toLowerCase() === 'all'
+  }
+  const wildcardFilterOption = availableFilters.find((option) => isWildcardFilter(option.id))
+  const selectableFilters = availableFilters.filter((option) => !isWildcardFilter(option.id))
   const { language } = useLanguage()
   const t = language === 'en' ? en.explorer : de.explorer
   const [showRequiresFlow, setShowRequiresFlow] = useState(false)
@@ -81,16 +87,16 @@ export const ExplorerView: React.FC<ExplorerViewProps> = ({
                 <div className="flex rounded-full border border-border-color bg-input-bg p-0.5">
                   <button
                     type="button"
-                    aria-pressed={activeFilter === 'all'}
-                    onClick={() => onFilterChange('all')}
-                    className={`px-2 py-1 rounded-full text-[11px] transition-colors ${activeFilter === 'all'
+                    aria-pressed={isWildcardFilter(activeFilter)}
+                    onClick={() => onFilterChange(wildcardFilterOption?.id ?? 'all')}
+                    className={`px-2 py-1 rounded-full text-[11px] transition-colors ${isWildcardFilter(activeFilter)
                       ? 'bg-sky-600 text-white shadow'
                       : 'text-text-secondary hover:text-text-primary'
                       }`}
                   >
-                    Alle
+                    {wildcardFilterOption?.label ?? 'Alle'}
                   </button>
-                  {availableFilters.map((option) => {
+                  {selectableFilters.map((option) => {
                     const isActive = activeFilter === option.id
                     return (
                       <button
