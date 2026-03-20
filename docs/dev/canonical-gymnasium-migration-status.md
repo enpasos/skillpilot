@@ -1427,3 +1427,35 @@ Interpretation:
 
 - reviewed Bavaria math no longer depends on Bavaria-specific explicit applicability overrides for the canonical function-value pair
 - the residual Bavaria math debt on this slice is now partial-bridge review debt, not override debt
+
+
+### 2026-03-20: Bavaria music partial-bridge debt reduced by two exact upgrades
+
+Approach used:
+
+- reviewed the smallest remaining non-math `APV-202` slice in the Bavaria pilot set
+- kept the canonical music structure stable and only sharpened two E-phase atom descriptions so they match both the Hessen source wording and the reviewed Bavaria leaf wording
+- upgraded the two Bavaria music bridges to `exact` where the reviewed canonical wording now covers the source goals tightly enough
+
+Applied changes:
+
+- refined `Grundformen erkennen` into `Satzstruktur und Grundformen erkennen`
+- refined `Proben organisieren` into `Gestaltungs- und Probenprozesse organisieren`
+- upgraded the Bavaria music mappings for `4e9fd039-4532-5337-b06a-083eca009613` and `8a850d1b-f325-5a40-bac1-0c06517c902c` from `partial` to `exact`
+- removed the two corresponding Bavaria music `APV-202` entries from the accepted-warning registry
+
+Validation used:
+
+- `npm run validate:view-filters`
+- `./gradlew test --tests 'com.skillpilot.backend.landscape.GoalMappingRepositoryFixtureTest'`
+
+Validation result:
+
+- `validate:view-filters` still passes with `0` errors and `0` active warnings
+- accepted reviewed warnings dropped from `193` to `191`
+- the repository-backed mapping fixture test still passes
+
+Interpretation:
+
+- the reviewed Bavaria music pilot no longer carries any accepted `APV-202` debt on the currently reviewed surface
+- the next applicability-review candidate should now come from a larger remaining `APV-202` lane such as Bavaria Latin, Bavaria economics, Bavaria politics/economics, Bavaria biology, or Bavaria history
