@@ -26,6 +26,15 @@ Activation result:
 - the upper-secondary source snapshot now also carries the explicit E-phase tangent/normal-steigung clause from `2.3`, again widened in place under the same retained upper-secondary `sourceLandscapeId`
 - the upper-secondary source snapshot now also carries the first explicit E-phase differential-calculus follow-on atoms for derivative rules, extrema criteria, and second-derivative curvature / Wendepunkt work
 - the upper-secondary source snapshot now also carries its first explicit Q-phase Grundkurs extremal-problem atom, and the shared provenance registries were widened in place for that same retained source landscape
+- the upper-secondary source snapshot now also carries a retained Q-phase integral split, and the shared provenance registries now resolve that corridor through a dedicated productsum-and-area child without changing the reserved upper-secondary `sourceLandscapeId`
+- the upper-secondary source snapshot now also carries a dedicated Q-phase Hauptsatz/Stammfunktions atom, again widened in place under the same retained upper-secondary `sourceLandscapeId`
+- the upper-secondary source snapshot now also carries a dedicated Q-phase definite-integral area atom, again widened in place under the same retained upper-secondary `sourceLandscapeId`
+- the upper-secondary source snapshot now also carries a dedicated Q-phase interval-additivity/linearity atom, again widened in place under the same retained upper-secondary `sourceLandscapeId`
+- the upper-secondary source snapshot now also carries the remaining introductory integral pair as dedicated retained atoms, again widened in place under the same retained upper-secondary `sourceLandscapeId`
+- the upper-secondary source snapshot now also carries a retained three-way split of the broad exponential clause under the same source goal cluster, and the shared provenance registries now resolve that corridor through separate `a^x`-properties, natural-exponential, and growth/decay children without changing the reserved upper-secondary `sourceLandscapeId`
+- the upper-secondary source snapshot now also carries the first explicit NRW LK inverse-function / logarithm clause, again widened in place under the same retained upper-secondary `sourceLandscapeId`
+- the upper-secondary source snapshot now also carries the explicit NRW LK inverse-graph clause, again widened in place under the same retained upper-secondary `sourceLandscapeId`
+- the upper-secondary source snapshot now also carries a retained two-way split of the broad E-phase power/polynomial clause, again widened in place under the same retained upper-secondary `sourceLandscapeId`
 - the lower-secondary source snapshot now carries the first NRW prerequisite strip for canonical function onboarding:
   - Erprobungsstufe quantity relations and rule-of-three basics
   - first-stage rational-number, term, and linear-equation prerequisites
@@ -41,4 +50,4 @@ Operational rule from here:
 
 - keep these reserved `sourceLandscapeId` values stable while broadening the NRW source snapshots
 - extend the registered goal sets in place only when later NRW mathematics corridors need additional explicit source atoms
-- keep the next reviewed NRW upper-secondary mapping pass on the already imported Grundkurs integral/bestands atom before restarting broader NRW Q-phase breadth expansion
+- keep the next reviewed NRW upper-secondary mapping pass on the new retained E-phase power-function child unless we intentionally decide that this clause should stay source-structural only

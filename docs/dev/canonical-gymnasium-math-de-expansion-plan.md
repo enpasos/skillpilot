@@ -179,8 +179,19 @@ Interpretation:
 - Stage D13 (NRW upper-secondary first Q-phase extremal-problem bridge) is complete
 - Stage D14 (NRW upper-secondary E-phase tangent/normal bridge) is complete
 - Stage D15 (NRW upper-secondary first integral-as-stock bridge plus Q1 cluster-prerequisite trim) is complete
-- the next executable task is to stay on the same imported Q-phase integral surface without widening the broader NRW lane blindly
-- the cleaner next candidate is to test whether `cc57ef8b-b0a6-4a42-b82d-92433e0ad227` can also carry `94d63ad9-ae1c-5ff2-b05e-188a0f5ebec6`, before the broader parameter or exponential lane
+- Stage D16 (NRW upper-secondary retained integral source split plus area-approximation bridge) is complete
+- Stage D17 (NRW upper-secondary Q-phase Hauptsatz source add and bridge) is complete
+- Stage D18 (NRW upper-secondary definite-integral area source add plus area-with-integrals bridge) is complete
+- Stage D19 (NRW upper-secondary interval-additivity source add plus integral-term argumentation bridge) is complete
+- Stage D20 (NRW upper-secondary introductory integral pair import plus narrower approximation remap) is complete
+- Stage D21 (NRW upper-secondary exponential entry mapping-gap closure) is complete
+- Stage D22 (NRW upper-secondary exponential source split plus parameter follow-on bridge) is complete
+- Stage D23 (NRW upper-secondary natural-exponential follow-on bridge) is complete
+- Stage D24 (NRW upper-secondary LK inverse-function source add plus natural-logarithm bridge and Q2 overview prerequisite trim) is complete
+- Stage D25 (NRW upper-secondary inverse-graph source add plus canonical Q2.1 inverse-graph leaf) is complete
+- the cleaner next candidate is now:
+  - the imported LK-side function-family parameter clause
+  - or, only if we deliberately widen the integral side again, the still-unmapped NRW clause that uses `ln(x)` as Stammfunktion von `1/x`
 
 ## Initial NRW task list
 
@@ -224,7 +235,37 @@ Interpretation:
    - the activated NRW-visible canonical E.2 derivative-introduction cluster
 15. on that active upper-secondary base, keep the NRW follow-on decisions narrow and source-led:
    - first prefer small source additions or source splits when NRW exposes a clean clause such as the E-phase tangent/normal-steigung expectation
-   - after that, prefer the already imported Q-phase integral/bestands atom before broader parameter or exponential widening
+   - after that, prefer the already imported Q-phase integral corridor:
+     - `Integral als Bestand und Flächeninhalt verstehen`
+     - `Flächen unter Graphen näherungsweise bestimmen`
+     - `Hauptsatz der Differential- und Integralrechnung nutzen`
+     - `Integralterme interpretieren und begründen`
+     - `Flächen mit Integralen berechnen`
+   - the same Q1.1 introduction corridor now also carries the NRW-exact leaf:
+     - `9441bb35-2a2f-4edc-9d8a-bc58c257054d` from `371359c2-6e29-4863-879f-d53b044204ce` (`Graphen von Flaecheninhaltsfunktionen skizzieren`)
+   - the retained Q2.1 parameter corridor is now active through a small mixed-state split of `e7c9a459-52d1-5e29-8714-2b038c4d3a7f`:
+     - Hessen stays exact on `972cc7e8-be9c-444c-ba45-98e817b3cf14`
+     - NRW now reaches `71683f37-24de-4e0f-badd-858b56fa4d64` and `91e2f564-3bc8-4924-af85-2a3fa84c1471` via exact mappings from `99e37d46-3b0c-4989-b8a8-c8a72501fc15` and `8ddb7c8f-b27e-4353-85b4-6801a7fdfa5b`
+   - the same LK corridor now also carries the NRW-exact leaf:
+     - `899ed286-0cc2-4d6d-ba46-7d4e40a11f41` from `d9121fe6-058a-4ab8-a8ce-68d6eefea520` (`Produktregel, Kettenregel und zusammengesetzte Funktionen nutzen`)
+   - the earlier E-phase tangent/angle lane is now also closed through an exact split of `bb979dbd-b080-432c-8cf1-067ba6eff381`:
+     - Bavaria now stays exact on `0264591c-fdd7-41c6-9fb9-7cb3a03f7658`
+     - NRW now reaches `6aed5be9-f62f-482a-9b98-4253c3275e6e` exactly from `43b21038-8dbb-4f85-ab8e-898a9cef38fb`
+   - the same Q2.1 inverse-function lane now also closes through an exact retained split of `392440db-6a43-59c0-a48d-958128fa16a8`:
+     - Hessen now stays exact on `1e26404a-93ef-45f3-a28c-15679fbae96b`
+     - NRW now reaches `c15fe32d-1c83-4127-b1a4-9125af3d8f5d` exactly from `85be691c-c569-4cdf-b332-b9d77d47666d`
+   - the downstream inverse-graph lane is now also exact without another retained split:
+     - the NRW source atom `e0c4432f-fc34-48c2-84d8-0e998b978500` now maps exactly to `dbc13bb0-963b-49a8-a441-2183f4b64c8e` after narrowing that NRW-only canonical leaf to the source wording
+   - the adjacent Hessen-only follow-on atom `c72a8032-71f6-56ed-a896-06ae435ff2ec` currently has no comparably clean NRW source clause and should stay HE-only unless a later NRW source add changes that
+   - the broad NRW E-phase source atom `22e2cc01-be7c-4478-8d22-0409ff5b14a0` is now resolved as a retained two-way split:
+     - `ae5ec3d2-7ff8-4f08-92c0-5dec8006cf81` now maps `exact` to `30c013ac-5164-4c3c-8bc1-9a10b2f49533` (`Potenzfunktionen mit ganzzahligen Exponenten beschreiben`)
+     - `fb1eebf2-3d5d-40a6-a0e5-879bb7d4f422` now maps `exact` to `1ce8af38-082a-477b-af48-b924c92761bf` (`Ganzrationale Funktionen beschreiben`)
+   - the late-Sek-I power corridor is now resolved as a mixed-state exact split:
+     - the broad HE/BY leaf `66077296-a8f8-4645-938b-7c3424cb2f14` keeps the Potenz-/Wurzelfunktionssurface
+     - the new NRW leaf `30c013ac-5164-4c3c-8bc1-9a10b2f49533` keeps the narrower source wording without another `APV-202` bridge
+     - the shared cluster is now child-driven instead of cluster-prerequisite-driven, so NRW does not need an extra prerequisite workaround for `6596405a-9728-41df-9163-53670ec2a937`
+   - the remaining unmapped NRW upper-secondary atom is now:
+     - `71539804-c722-4fe6-bc71-e4e2abe1773f` (`Produktsummen und Flächeninhalte im Sachkontext deuten`), intentionally retained after the narrower Q1.1 integral splits
 
 ## Decision rule after NRW
 

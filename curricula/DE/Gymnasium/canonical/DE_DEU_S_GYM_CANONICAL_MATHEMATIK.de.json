@@ -29,7 +29,7 @@
       "description": "Gemeinsame Wurzel für Mathematik am Gymnasium in Deutschland. Die Landschaft übernimmt die hessische Oberstufe vollständig, realisiert kanonische Jahrgangsanker J5 bis J10 für die Sekundarstufe I und bündelt arithmetische, algebraische, geometrische, datenbezogene, stochastische und trigonometrische Anschlussziele für DE-HE und DE-BY.",
       "descriptionEn": "Shared root for mathematics at Gymnasium in Germany. The landscape fully adopts the Hessian upper-secondary curriculum, realizes canonical lower-secondary year anchors J5 to J10, and bundles arithmetic, algebraic, geometric, data, stochastic, and trigonometric bridge goals for DE-HE and DE-BY.",
       "core": true,
-      "weight": 447,
+      "weight": 454,
       "tags": [
         "root",
         "canonical",
@@ -1594,7 +1594,7 @@
       "description": "Kanonischer Cluster für den J6-Ausbau zu Brüchen, Dezimalbrüchen und rationalen Zahlen. Der aktuelle Bayern-Slice trennt hier zwischen Grundvorstellungen zu Brüchen, Darstellungswechseln, rationaler Arithmetik, Potenzen und Termstrukturen.",
       "descriptionEn": "Canonical cluster for the year-6 expansion into fractions, decimal numbers, and rational numbers. The current Bavaria slice differentiates basic fraction concepts, representation changes, rational arithmetic, powers, and expression structures here.",
       "core": true,
-      "weight": 8,
+      "weight": 9,
       "tags": [
         "canonical"
       ],
@@ -2740,7 +2740,8 @@
       "applicability": {
         "jurisdiction": [
           "DE-BY",
-          "DE-HE"
+          "DE-HE",
+          "DE-NW"
         ]
       },
       "extendedData": {
@@ -3039,7 +3040,8 @@
       "applicability": {
         "jurisdiction": [
           "DE-BY",
-          "DE-HE"
+          "DE-HE",
+          "DE-NW"
         ]
       },
       "extendedData": {
@@ -5124,10 +5126,10 @@
       "shortKey": "canonical_math_sek1_j9_power_functions",
       "title": "Potenzfunktionen und Potenzgesetze nutzen",
       "titleEn": "Use power functions and exponent rules",
-      "description": "Kanonischer Cluster für Potenzgesetze und Potenz-/Wurzelfunktionsbilder im späten Sek-I-Korridor. Der Cluster trennt hier zwischen den Rechenregeln zu Potenzen und der graphischen Untersuchung von Potenz- und Wurzelfunktionen.",
-      "descriptionEn": "Canonical cluster for exponent rules and power/root-function representations in the late lower-secondary corridor. The cluster distinguishes between calculation rules for powers and the graphical investigation of power and root functions.",
+      "description": "Kanonischer Cluster für Potenzgesetze sowie Potenz-/Wurzelfunktionsbilder im späten Sek-I-Korridor. Der Cluster trennt zwischen den Rechenregeln zu Potenzen, der breiteren graphischen Untersuchung von Potenz- und Wurzelfunktionen und dem schmaleren NRW-Zug zu Potenzfunktionen mit ganzzahligen Exponenten.",
+      "descriptionEn": "Canonical cluster for exponent rules as well as power/root-function representations in the late lower-secondary corridor. The cluster distinguishes between calculation rules for powers, the broader graphical investigation of power and root functions, and the narrower NRW lane on power functions with integer exponents.",
       "core": true,
-      "weight": 2,
+      "weight": 3,
       "tags": [
         "canonical"
       ],
@@ -5149,15 +5151,15 @@
       },
       "contains": [
         "6596405a-9728-41df-9163-53670ec2a937",
-        "66077296-a8f8-4645-938b-7c3424cb2f14"
+        "66077296-a8f8-4645-938b-7c3424cb2f14",
+        "30c013ac-5164-4c3c-8bc1-9a10b2f49533"
       ],
-      "requires": [
-        "6596405a-9728-41df-9163-53670ec2a937"
-      ],
+      "requires": [],
       "applicability": {
         "jurisdiction": [
           "DE-BY",
-          "DE-HE"
+          "DE-HE",
+          "DE-NW"
         ]
       },
       "extendedData": {
@@ -5212,6 +5214,49 @@
           "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
           "sourceLandscapeTitle": "Mathematik (Gymnasium)",
           "sourceGoalId": "220d1b8c-ec1c-530e-a812-a5b4190da8f9"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "30c013ac-5164-4c3c-8bc1-9a10b2f49533",
+      "shortKey": "canonical_math_sek1_j9_integer_power_functions",
+      "title": "Potenzfunktionen mit ganzzahligen Exponenten beschreiben",
+      "titleEn": "Describe power functions with integer exponents",
+      "description": "Die lernende Person kann Potenzfunktionen mit ganzzahligen Exponenten anhand ihrer charakteristischen Eigenschaften beschreiben und typische Verläufe vergleichen.",
+      "descriptionEn": "The learner can describe power functions with integer exponents through their characteristic properties and compare typical behaviours.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "K1.1",
+          "K2.1"
+        ],
+        "guidingIdeas": [
+          "L1",
+          "L4"
+        ],
+        "phase": "J9",
+        "area": "Algebra",
+        "topicCode": "CANONICAL.MATH.SEK1.J9.5C"
+      },
+      "contains": [],
+      "requires": [],
+      "applicability": {
+        "jurisdiction": [
+          "DE-NW"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "d3a068ca-90c6-4d7f-ab6b-4d8b43085cb1",
+          "sourceLandscapeTitle": "Mathematik Oberstufe (Nordrhein-Westfalen, Pilot-Quellsnapshot)",
+          "sourceGoalId": "ae5ec3d2-7ff8-4f08-92c0-5dec8006cf81"
         }
       },
       "type": "atomic"
@@ -12536,7 +12581,7 @@
       "titleEn": "Introduction Phase · Analysis Cluster",
       "description": "Cluster-Knoten für alle Analysis-Themenfelder der Einführungsphase (E.1–E.3).",
       "descriptionEn": "Cluster node for all analysis topics in the introductory phase (E.1-E.3).",
-      "weight": 50,
+      "weight": 51,
       "tags": [
         "GK",
         "LK",
@@ -12789,7 +12834,8 @@
       },
       "applicability": {
         "jurisdiction": [
-          "DE-HE"
+          "DE-HE",
+          "DE-NW"
         ]
       },
       "extendedData": {
@@ -12833,7 +12879,8 @@
       },
       "applicability": {
         "jurisdiction": [
-          "DE-HE"
+          "DE-HE",
+          "DE-NW"
         ]
       },
       "extendedData": {
@@ -12876,7 +12923,8 @@
       },
       "applicability": {
         "jurisdiction": [
-          "DE-HE"
+          "DE-HE",
+          "DE-NW"
         ]
       },
       "extendedData": {
@@ -12919,7 +12967,8 @@
       },
       "applicability": {
         "jurisdiction": [
-          "DE-HE"
+          "DE-HE",
+          "DE-NW"
         ]
       },
       "extendedData": {
@@ -14333,6 +14382,52 @@
     },
     {
       "id": "bb979dbd-b080-432c-8cf1-067ba6eff381",
+      "title": "Tangenten, Normalen und Steigungswinkel untersuchen",
+      "titleEn": "Investigate tangents, normals, and slope angles",
+      "description": "Die lernende Person kann Tangenten und Normalen an Funktionsgraphen untersuchen, zugehörige Steigungen und Winkel bestimmen und Tangentengleichungen im passenden Kontext aufstellen.",
+      "descriptionEn": "The learner can investigate tangents and normals on function graphs, determine corresponding slopes and angles, and set up tangent equations in the appropriate context.",
+      "weight": 2,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "contains": [
+        "0264591c-fdd7-41c6-9fb9-7cb3a03f7658",
+        "6aed5be9-f62f-482a-9b98-4253c3275e6e"
+      ],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K2.3",
+          "K3.2",
+          "K5.2"
+        ],
+        "guidingIdeas": [
+          "L1",
+          "L2",
+          "L4"
+        ],
+        "phase": "E"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BY",
+          "DE-NW"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
+          "sourceLandscapeTitle": "Mathematik (Gymnasium)",
+          "sourceGoalId": "28e3394e-90d7-5812-8b7b-2c55558468ad"
+        }
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "0264591c-fdd7-41c6-9fb9-7cb3a03f7658",
       "title": "Tangentengleichungen und Steigungswinkel bestimmen",
       "titleEn": "Determine tangent equations and slope angles",
       "description": "Die lernende Person kann mit Hilfe der Ableitung Tangentengleichungen an Funktionsgraphen aufstellen und den Steigungswinkel der Tangente berechnen.",
@@ -14363,8 +14458,7 @@
       },
       "applicability": {
         "jurisdiction": [
-          "DE-BY",
-          "DE-NW"
+          "DE-BY"
         ]
       },
       "extendedData": {
@@ -14372,6 +14466,50 @@
           "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
           "sourceLandscapeTitle": "Mathematik (Gymnasium)",
           "sourceGoalId": "28e3394e-90d7-5812-8b7b-2c55558468ad"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "6aed5be9-f62f-482a-9b98-4253c3275e6e",
+      "title": "Sekanten-, Tangenten- und Normalensteigungen mit Steigungswinkeln bestimmen",
+      "titleEn": "Determine secant, tangent, and normal slopes with slope angles",
+      "description": "Die lernende Person kann Sekanten-, Tangenten- und Normalensteigungen bestimmen und zugehörige Steigungswinkel berechnen.",
+      "descriptionEn": "The learner can determine secant, tangent, and normal slopes and calculate corresponding slope angles.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "b1dcc191-d046-50de-984a-ee5c17157628"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K2.3",
+          "K3.2",
+          "K5.2"
+        ],
+        "guidingIdeas": [
+          "L1",
+          "L2",
+          "L4"
+        ],
+        "phase": "E"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-NW"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "d3a068ca-90c6-4d7f-ab6b-4d8b43085cb1",
+          "sourceLandscapeTitle": "Mathematik Oberstufe (Nordrhein-Westfalen, Pilot-Quellsnapshot)",
+          "sourceGoalId": "43b21038-8dbb-4f85-ab8e-898a9cef38fb"
         }
       },
       "type": "atomic"
@@ -18420,7 +18558,7 @@
       "titleEn": "Q1 Analysis – Integral Calculus and Differential Equations",
       "description": "Zusammenfassender Cluster für die Themenfelder Q1.1 bis Q1.5: Einführung und Anwendungen der Integralrechnung, Vertiefung von Differenzial- und Integralrechnung, Integrationsmethoden und gewöhnliche Differenzialgleichungen.",
       "descriptionEn": "Summarizing cluster for topics Q1.1 to Q1.5: Introduction and applications of integral calculus, deepening of differential and integral calculus, integration methods, and ordinary differential equations.",
-      "weight": 31,
+      "weight": 32,
       "tags": [
         "GK",
         "LK"
@@ -18473,13 +18611,14 @@
       "titleEn": "Q1.1 Introduction to Integral Calculus",
       "description": "Grundlegende Vorstellungen zum bestimmten Integral als Bestandsgröße und Flächeninhalt, Näherungsverfahren, Hauptsatz und elementare Integrationsregeln.",
       "descriptionEn": "Basic concepts of the definite integral as stock quantity and area, approximation methods, Fundamental Theorem of Calculus, and elementary integration rules.",
-      "weight": 5,
+      "weight": 6,
       "tags": [
         "GK",
         "LK"
       ],
       "contains": [
         "2afba4a2-287d-5e8f-aeee-a3bcf8652236",
+        "9441bb35-2a2f-4edc-9d8a-bc58c257054d",
         "94d63ad9-ae1c-5ff2-b05e-188a0f5ebec6",
         "b9bbd2a8-1379-5ffb-817f-41467d48abef",
         "a9ed219d-d497-55e5-a4e0-4d45d2554f6b",
@@ -18561,6 +18700,48 @@
       "type": "atomic"
     },
     {
+      "id": "9441bb35-2a2f-4edc-9d8a-bc58c257054d",
+      "title": "Graphen von Flächeninhaltsfunktionen skizzieren",
+      "titleEn": "Sketch graphs of area functions",
+      "description": "Die lernende Person kann zu dem Graphen einer gegebenen Randfunktion den Graphen der zugehörigen Flächeninhaltsfunktion qualitativ skizzieren.",
+      "descriptionEn": "The learner can qualitatively sketch the graph of the associated area function for the graph of a given boundary function.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "2afba4a2-287d-5e8f-aeee-a3bcf8652236"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K2.2",
+          "K3.2"
+        ],
+        "guidingIdeas": [
+          "L2",
+          "L4"
+        ],
+        "phase": "Q1"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-NW"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "d3a068ca-90c6-4d7f-ab6b-4d8b43085cb1",
+          "sourceLandscapeTitle": "Mathematik Oberstufe (Nordrhein-Westfalen, Pilot-Quellsnapshot)",
+          "sourceGoalId": "371359c2-6e29-4863-879f-d53b044204ce"
+        }
+      },
+      "type": "atomic"
+    },
+    {
       "id": "94d63ad9-ae1c-5ff2-b05e-188a0f5ebec6",
       "title": "Flächen unter Graphen näherungsweise bestimmen",
       "titleEn": "Determine areas under graphs approximately",
@@ -18590,7 +18771,8 @@
       },
       "applicability": {
         "jurisdiction": [
-          "DE-HE"
+          "DE-HE",
+          "DE-NW"
         ]
       },
       "extendedData": {
@@ -18633,7 +18815,8 @@
       },
       "applicability": {
         "jurisdiction": [
-          "DE-HE"
+          "DE-HE",
+          "DE-NW"
         ]
       },
       "extendedData": {
@@ -18762,7 +18945,8 @@
       },
       "applicability": {
         "jurisdiction": [
-          "DE-HE"
+          "DE-HE",
+          "DE-NW"
         ]
       },
       "extendedData": {
@@ -18806,7 +18990,8 @@
       },
       "applicability": {
         "jurisdiction": [
-          "DE-HE"
+          "DE-HE",
+          "DE-NW"
         ]
       },
       "extendedData": {
@@ -18934,7 +19119,8 @@
       },
       "applicability": {
         "jurisdiction": [
-          "DE-HE"
+          "DE-HE",
+          "DE-NW"
         ]
       },
       "extendedData": {
@@ -19757,7 +19943,7 @@
       "titleEn": "Q2 Analytic Geometry, Linear Algebra and Deepening of Analysis",
       "description": "Überblicksknoten für Q2.1 Vertiefung der Analysis, Q2.2 Orientieren und Bewegen im Raum, Q2.3 Geraden und Ebenen im Raum, Q2.4 Matrizen für Übergangsprozesse sowie Q2.5 Matrizen für lineare geometrische Abbildungen.",
       "descriptionEn": "Overview node for Q2.1 Deepening of Calculus, Q2.2 Orientation and Movement in Space, Q2.3 Lines and Planes in Space, Q2.4 Matrices for Transition Processes, and Q2.5 Matrices for Linear Geometric Mappings.",
-      "weight": 65,
+      "weight": 70,
       "tags": [
         "GK",
         "LK"
@@ -19771,15 +19957,7 @@
         "bd55594a-3e06-5097-8324-4f2f1349fd2a",
         "14b19ee4-364e-50bd-b6a3-499471356ef3"
       ],
-      "requires": [
-        "4d78bbcc-89b8-47f0-aa45-516199e4da5d",
-        "ffd1ae26-c461-4439-9b18-d835c8f38e1a",
-        "546bf0b3-6921-416b-a2ef-8fd37d429dc7",
-        "ae772695-d55e-4cc5-81bc-6605272759b4",
-        "71a483ba-9680-4654-bb5e-5ab5427f0919",
-        "0cefa694-636e-4c4b-abff-3ac3750dca18",
-        "6248bbd7-c7e8-4f91-b3dc-de885cf5abce"
-      ],
+      "requires": [],
       "dimensionTags": {
         "framework": "hessen-kc-2024",
         "demandLevel": "AB2",
@@ -19799,7 +19977,8 @@
       },
       "applicability": {
         "jurisdiction": [
-          "DE-HE"
+          "DE-HE",
+          "DE-NW"
         ]
       },
       "extendedData": {
@@ -19818,7 +19997,7 @@
       "titleEn": "Q2.1 Deepening of Analysis",
       "description": "Weitere Funktionsklassen (gebrochen-rational, Wurzelfunktionen), Transformationen bekannter Funktionen sowie Umkehrfunktionen inklusive des natürlichen Logarithmus als Umkehrfunktion der e-Funktion.",
       "descriptionEn": "Further function classes (rational, root functions), transformations of known functions, and inverse functions including the natural logarithm as inverse function of the exponential function.",
-      "weight": 9,
+      "weight": 14,
       "tags": [
         "GK",
         "LK"
@@ -19828,13 +20007,13 @@
         "5dabf0b3-89b1-59a6-ae57-014f92becd3b",
         "bf922603-bfb7-5107-9aa9-e270b519d239",
         "392440db-6a43-59c0-a48d-958128fa16a8",
+        "dbc13bb0-963b-49a8-a441-2183f4b64c8e",
         "e7c9a459-52d1-5e29-8714-2b038c4d3a7f",
         "bf17cada-3ccd-5d9a-b9e3-42065cfdbb01",
+        "899ed286-0cc2-4d6d-ba46-7d4e40a11f41",
         "c72a8032-71f6-56ed-a896-06ae435ff2ec"
       ],
-      "requires": [
-        "546bf0b3-6921-416b-a2ef-8fd37d429dc7"
-      ],
+      "requires": [],
       "dimensionTags": {
         "framework": "hessen-kc-2024",
         "demandLevel": "AB2",
@@ -19851,7 +20030,8 @@
       },
       "applicability": {
         "jurisdiction": [
-          "DE-HE"
+          "DE-HE",
+          "DE-NW"
         ]
       },
       "extendedData": {
@@ -20141,6 +20321,49 @@
     },
     {
       "id": "392440db-6a43-59c0-a48d-958128fa16a8",
+      "title": "Umkehrfunktionen und natürlichen Logarithmus untersuchen (LK)",
+      "titleEn": "Investigate inverse functions and the natural logarithm (advanced course)",
+      "description": "Die lernende Person kann ausgewählte Funktionen auf Umkehrbarkeit untersuchen, einfache Umkehrfunktionen bestimmen und den natürlichen Logarithmus als Umkehrfunktion der e-Funktion nutzen.",
+      "descriptionEn": "The learner can investigate selected functions for invertibility, determine simple inverse functions, and use the natural logarithm as the inverse of the exponential function.",
+      "weight": 2,
+      "tags": [
+        "LK"
+      ],
+      "contains": [
+        "1e26404a-93ef-45f3-a28c-15679fbae96b",
+        "c15fe32d-1c83-4127-b1a4-9125af3d8f5d"
+      ],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K2.3",
+          "K5.2"
+        ],
+        "guidingIdeas": [
+          "L1",
+          "L2"
+        ],
+        "phase": "Q2"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-HE",
+          "DE-NW"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "2796fc7b-ba9d-446f-8f26-711dd6d8a9a3",
+          "sourceLandscapeTitle": "Mathematik Oberstufe (Hessen, KC 2024)",
+          "sourceGoalId": "d603080f-0268-4da1-811a-b55ed05665ba"
+        }
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "1e26404a-93ef-45f3-a28c-15679fbae96b",
       "title": "Natürlichen Logarithmus als Umkehrfunktion verstehen (LK)",
       "titleEn": "Understand natural logarithm as inverse function",
       "description": "Die lernende Person kann $\\ln(x)$ als Umkehrfunktion der e-Funktion herleiten, Eigenschaften begründen und einfache Exponentialgleichungen mithilfe des Logarithmus lösen.",
@@ -20183,10 +20406,139 @@
       "type": "atomic"
     },
     {
+      "id": "c15fe32d-1c83-4127-b1a4-9125af3d8f5d",
+      "title": "Umkehrbarkeit ausgewählter Funktionen untersuchen und einfache Umkehrfunktionen bestimmen",
+      "titleEn": "Investigate invertibility of selected functions and determine simple inverse functions",
+      "description": "Die lernende Person kann ausgewählte Funktionen, insbesondere die natürliche Exponential- und Logarithmusfunktion, auf Umkehrbarkeit untersuchen und in einfachen Fällen einen Funktionsterm der Umkehrfunktion unter Berücksichtigung von Definitions- und Wertebereich bestimmen.",
+      "descriptionEn": "The learner can investigate selected functions, in particular the natural exponential and logarithmic function, for invertibility and determine an inverse-function term in simple cases while taking domain and range into account.",
+      "weight": 1,
+      "tags": [
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "b9bbd2a8-1379-5ffb-817f-41467d48abef",
+        "858113c5-e53b-57bb-b01f-ba95c3ddcb6f",
+        "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [
+          "K2.3",
+          "K5.2"
+        ],
+        "guidingIdeas": [
+          "L1",
+          "L2"
+        ],
+        "phase": "Q2"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-NW"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "d3a068ca-90c6-4d7f-ab6b-4d8b43085cb1",
+          "sourceLandscapeTitle": "Mathematik Oberstufe (Nordrhein-Westfalen, Pilot-Quellsnapshot)",
+          "sourceGoalId": "85be691c-c569-4cdf-b332-b9d77d47666d"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "dbc13bb0-963b-49a8-a441-2183f4b64c8e",
+      "title": "Zusammenhang von Funktionsgraph und Umkehrgraph erläutern (LK)",
+      "titleEn": "Explain the relation between a function graph and its inverse graph (advanced course)",
+      "description": "Die lernende Person kann den Zusammenhang zwischen dem Graphen einer Funktion und dem Graphen ihrer Umkehrfunktion erläutern.",
+      "descriptionEn": "The learner can explain the relation between the graph of a function and the graph of its inverse function.",
+      "weight": 1,
+      "tags": [
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "392440db-6a43-59c0-a48d-958128fa16a8"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [
+          "K2.2",
+          "K3.2"
+        ],
+        "guidingIdeas": [
+          "L1",
+          "L4"
+        ],
+        "phase": "Q2"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-NW"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "d3a068ca-90c6-4d7f-ab6b-4d8b43085cb1",
+          "sourceLandscapeTitle": "Mathematik Oberstufe (Nordrhein-Westfalen, Pilot-Quellsnapshot)",
+          "sourceGoalId": "e0c4432f-fc34-48c2-84d8-0e998b978500"
+        }
+      },
+      "type": "atomic"
+    },
+    {
       "id": "e7c9a459-52d1-5e29-8714-2b038c4d3a7f",
       "title": "Parameter in Analysisaufgaben untersuchen",
       "titleEn": "Investigate parameters in analysis problems",
       "description": "Die lernende Person kann Parameter in Funktionen nutzen, um Lage und Form des Graphen zu beeinflussen, Parameterwerte aus Bedingungen abzuleiten und Ergebnisse begründen.",
+      "descriptionEn": "The learner can use parameters in functions to influence the position and shape of the graph, derive parameter values from conditions, and justify results.",
+      "weight": 3,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "contains": [
+        "972cc7e8-be9c-444c-ba45-98e817b3cf14",
+        "71683f37-24de-4e0f-badd-858b56fa4d64",
+        "91e2f564-3bc8-4924-af85-2a3fa84c1471"
+      ],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K2.3",
+          "K5.2"
+        ],
+        "guidingIdeas": [
+          "L1",
+          "L4"
+        ],
+        "phase": "Q2"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-HE",
+          "DE-NW"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "2796fc7b-ba9d-446f-8f26-711dd6d8a9a3",
+          "sourceLandscapeTitle": "Mathematik Oberstufe (Hessen, KC 2024)",
+          "sourceGoalId": "ed7e8906-d5a5-4ca7-8566-89b5b3034414"
+        }
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "972cc7e8-be9c-444c-ba45-98e817b3cf14",
+      "title": "Parameter in Analysisaufgaben nutzen, bestimmen und begründen",
+      "titleEn": "Use, determine, and justify parameters in analysis problems",
+      "description": "Die lernende Person kann Parameter in Funktionen nutzen, um Lage und Form des Graphen zu beeinflussen, Parameterwerte aus Bedingungen ableiten und Ergebnisse begründen.",
       "descriptionEn": "The learner can use parameters in functions to influence the position and shape of the graph, derive parameter values from conditions, and justify results.",
       "weight": 1,
       "tags": [
@@ -20221,6 +20573,88 @@
           "sourceLandscapeId": "2796fc7b-ba9d-446f-8f26-711dd6d8a9a3",
           "sourceLandscapeTitle": "Mathematik Oberstufe (Hessen, KC 2024)",
           "sourceGoalId": "ed7e8906-d5a5-4ca7-8566-89b5b3034414"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "71683f37-24de-4e0f-badd-858b56fa4d64",
+      "title": "Parameter einer Funktion aus Kontextbedingungen bestimmen",
+      "titleEn": "Determine function parameters from contextual conditions",
+      "description": "Die lernende Person kann Parameter einer Funktion mithilfe von Bedingungen bestimmen, die sich aus einer Fragestellung oder einem Sachkontext ergeben.",
+      "descriptionEn": "The learner can determine parameters of a function using conditions that arise from a question or real-world context.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K2.3",
+          "K5.2"
+        ],
+        "guidingIdeas": [
+          "L1",
+          "L4"
+        ],
+        "phase": "Q2"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-NW"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "d3a068ca-90c6-4d7f-ab6b-4d8b43085cb1",
+          "sourceLandscapeTitle": "Mathematik Oberstufe (Nordrhein-Westfalen, Pilot-Quellsnapshot)",
+          "sourceGoalId": "99e37d46-3b0c-4989-b8a8-c8a72501fc15"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "91e2f564-3bc8-4924-af85-2a3fa84c1471",
+      "title": "Parameter von Funktionen und Funktionsscharen im Kontext untersuchen",
+      "titleEn": "Investigate parameters of functions and function families in context",
+      "description": "Die lernende Person kann Parameter von Funktionen und Funktionsscharen im Kontext einer Fragestellung interpretieren und ihren Einfluss auf charakteristische Eigenschaften untersuchen.",
+      "descriptionEn": "The learner can interpret parameters of functions and function families in the context of a question and investigate their influence on characteristic properties.",
+      "weight": 1,
+      "tags": [
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "71683f37-24de-4e0f-badd-858b56fa4d64",
+        "392440db-6a43-59c0-a48d-958128fa16a8"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [
+          "K2.3",
+          "K5.2"
+        ],
+        "guidingIdeas": [
+          "L1",
+          "L4"
+        ],
+        "phase": "Q2"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-NW"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "d3a068ca-90c6-4d7f-ab6b-4d8b43085cb1",
+          "sourceLandscapeTitle": "Mathematik Oberstufe (Nordrhein-Westfalen, Pilot-Quellsnapshot)",
+          "sourceGoalId": "8ddb7c8f-b27e-4353-85b4-6801a7fdfa5b"
         }
       },
       "type": "atomic"
@@ -20264,6 +20698,48 @@
           "sourceLandscapeId": "2796fc7b-ba9d-446f-8f26-711dd6d8a9a3",
           "sourceLandscapeTitle": "Mathematik Oberstufe (Hessen, KC 2024)",
           "sourceGoalId": "e16ce917-2d7e-41fc-af66-4f46d31c026c"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "899ed286-0cc2-4d6d-ba46-7d4e40a11f41",
+      "title": "Produktregel, Kettenregel und zusammengesetzte Funktionen nutzen (LK)",
+      "titleEn": "Use product rule, chain rule, and composed functions (advanced course)",
+      "description": "Die lernende Person kann mit Produkt- und Kettenregel Ableitungen bilden und zusammengesetzte Funktionen zur Beschreibung quantifizierbarer Zusammenhänge nutzen.",
+      "descriptionEn": "The learner can form derivatives using the product and chain rule and use composed functions to describe quantifiable relationships.",
+      "weight": 1,
+      "tags": [
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "858113c5-e53b-57bb-b01f-ba95c3ddcb6f"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [
+          "K2.3",
+          "K3.2",
+          "K5.2"
+        ],
+        "guidingIdeas": [
+          "L1",
+          "L4"
+        ],
+        "phase": "Q2"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-NW"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "d3a068ca-90c6-4d7f-ab6b-4d8b43085cb1",
+          "sourceLandscapeTitle": "Mathematik Oberstufe (Nordrhein-Westfalen, Pilot-Quellsnapshot)",
+          "sourceGoalId": "d9121fe6-058a-4ab8-a8ce-68d6eefea520"
         }
       },
       "type": "atomic"
