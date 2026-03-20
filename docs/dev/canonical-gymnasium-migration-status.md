@@ -1372,3 +1372,27 @@ Resulting interpretation:
 
 - the Bavaria Sek-I pilot no longer has an obvious unmapped `M5` blind spot
 - remaining residual debt now sits predominantly in deliberate `partial` breadth mismatches rather than in missing canonical J5 authoring
+
+
+### 2026-03-20: Validation pass after Bavaria M5 arithmetic/process closure
+
+Validation used:
+
+- `./run_ci.sh`
+
+Validation result:
+
+- `./run_ci.sh` passed after the residual Bavaria `M5` closure commit
+- the repository-backed Bavaria Sek-I mathematics review corridor `Jahrgangsstufe 5-10` is now fully mapped:
+  - total source goals in scope: `246`
+  - mapped goals: `246`
+  - of those mapped:
+    - `126` `exact`
+    - `120` `partial`
+  - remaining unmapped goals: `0`
+
+Interpretation:
+
+- the Bavaria Sek-I mathematics pilot no longer has an unmapped reviewed-source gap in the `J5-J10` corridor
+- the next substantive work should therefore not be another residual Bavaria `M5` authoring patch
+- the next widening step should move back to applicability-review scope using `docs/dev/canonical-gymnasium-applicability-design.md` and its `R1-R7` / `A1-A5` review gates
