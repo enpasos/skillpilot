@@ -2442,11 +2442,6 @@
         ]
       },
       "extendedData": {
-        "applicabilityOverrides": {
-          "jurisdiction": [
-            "DE-BY"
-          ]
-        },
         "provenance": {
           "sourceLandscapeId": "996d097a-cac2-4b5f-979a-b3a0b9803265",
           "sourceLandscapeTitle": "Physik Sekundarstufe I (Hessen, G9)",
@@ -2686,11 +2681,6 @@
         ]
       },
       "extendedData": {
-        "applicabilityOverrides": {
-          "jurisdiction": [
-            "DE-BY"
-          ]
-        },
         "provenance": {
           "sourceLandscapeId": "996d097a-cac2-4b5f-979a-b3a0b9803265",
           "sourceLandscapeTitle": "Physik Sekundarstufe I (Hessen, G9)",
@@ -4501,8 +4491,8 @@
       "id": "230345f3-c360-4963-b390-ab94e3e2c864",
       "title": "Freier Fall experimentell untersuchen",
       "titleEn": "Investigate Free Fall Experimentally",
-      "description": "Die lernende Person kann den freien Fall experimentell untersuchen, Messdaten grafisch darstellen, die Gravitationsbeschleunigung bestimmen und ein Zeit-Ort-Gesetz formulieren.",
-      "descriptionEn": "The learner can experimentally investigate free fall, graphically represent measurement data, determine gravitational acceleration, and formulate a time-displacement law.",
+      "description": "Cluster zur experimentellen Untersuchung des freien Falls.",
+      "descriptionEn": "Cluster for experimentally investigating free fall.",
       "weight": 0.9,
       "tags": [
         "GK",
@@ -4510,9 +4500,11 @@
         "canonical",
         "cross-subject:mathematics"
       ],
-      "contains": [],
-      "requires": [
+      "contains": [
         "e4b38061-1f28-43ad-8371-a3e7c0e81856",
+        "09029573-864f-40ca-bf8a-cee7bf6dcb73"
+      ],
+      "requires": [
         "c65ecabf-d00b-4e2d-99ae-b64692325ffb"
       ],
       "dimensionTags": {
@@ -4530,11 +4522,47 @@
         ]
       },
       "extendedData": {
-        "applicabilityOverrides": {
-          "jurisdiction": [
-            "DE-BY"
-          ]
-        },
+        "provenance": {
+          "sourceLandscapeId": "24f2ca0f-b94a-444e-bb70-677cb6f85c02",
+          "sourceLandscapeTitle": "Physik Oberstufe (Hessen, KC 2024)",
+          "sourceGoalId": "17dcaf0e-088d-49d0-8c79-ae2cce5611d4"
+        }
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "09029573-864f-40ca-bf8a-cee7bf6dcb73",
+      "title": "Fallbeschleunigung aus Messdaten bestimmen",
+      "titleEn": "Determine gravitational acceleration from measurement data",
+      "description": "Die lernende Person kann Messdaten zum freien Fall auswerten, die Gravitationsbeschleunigung bestimmen und ein passendes Zeit-Ort-Gesetz formulieren.",
+      "descriptionEn": "The learner can evaluate free-fall measurement data, determine gravitational acceleration, and formulate a suitable time-displacement law.",
+      "weight": 0.9,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "cross-subject:mathematics"
+      ],
+      "contains": [],
+      "requires": [
+        "ce431132-dfc4-42c2-aff6-bd72035190f8",
+        "e4b38061-1f28-43ad-8371-a3e7c0e81856",
+        "c65ecabf-d00b-4e2d-99ae-b64692325ffb"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "E"
+      },
+      "shortKey": "canonical_physics_determine_free_fall_acceleration",
+      "applicability": {
+        "jurisdiction": [
+          "DE-HE"
+        ]
+      },
+      "extendedData": {
         "provenance": {
           "sourceLandscapeId": "24f2ca0f-b94a-444e-bb70-677cb6f85c02",
           "sourceLandscapeTitle": "Physik Oberstufe (Hessen, KC 2024)",
@@ -4750,7 +4778,6 @@
         "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20",
         "5f289cdc-fda1-4058-b44f-041ba1398e79",
         "5a1b3cb2-c0e6-4372-9c57-f33675cffc9b",
-        "a0aaedcb-41f8-4891-af77-a69a76b8c10d",
         "00245a43-eb89-47d2-92d7-21799dbec9f3",
         "977e7421-0953-4b40-a966-5668b54ed8c9"
       ],
@@ -4810,11 +4837,6 @@
         ]
       },
       "extendedData": {
-        "applicabilityOverrides": {
-          "jurisdiction": [
-            "DE-BY"
-          ]
-        },
         "provenance": {
           "sourceLandscapeId": "24f2ca0f-b94a-444e-bb70-677cb6f85c02",
           "sourceLandscapeTitle": "Physik Oberstufe (Hessen, KC 2024)",
@@ -4906,15 +4928,18 @@
       "id": "5a1b3cb2-c0e6-4372-9c57-f33675cffc9b",
       "title": "Newtons 3. Axiom (Wechselwirkungsprinzip)",
       "titleEn": "Newton's Third Law (Action-Reaction)",
-      "description": "Die lernende Person kann das Wechselwirkungsprinzip formulieren und an Beispielen erläutern.",
-      "descriptionEn": "The learner can formulate the action-reaction principle and explain it with examples.",
+      "description": "Cluster zur Formulierung und Anwendung des Wechselwirkungsprinzips.",
+      "descriptionEn": "Cluster for formulating and applying the action-reaction principle.",
       "weight": 0.9,
       "tags": [
         "GK",
         "LK",
         "canonical"
       ],
-      "contains": [],
+      "contains": [
+        "ad984bb6-e225-432a-952d-d83cda40b7f8",
+        "a0aaedcb-41f8-4891-af77-a69a76b8c10d"
+      ],
       "requires": [
         "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20"
       ],
@@ -4933,11 +4958,42 @@
         ]
       },
       "extendedData": {
-        "applicabilityOverrides": {
-          "jurisdiction": [
-            "DE-BY"
-          ]
-        },
+        "provenance": {
+          "sourceLandscapeId": "24f2ca0f-b94a-444e-bb70-677cb6f85c02",
+          "sourceLandscapeTitle": "Physik Oberstufe (Hessen, KC 2024)",
+          "sourceGoalId": "d6550712-7460-446a-96ff-e7599c8f4fb7"
+        }
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "ad984bb6-e225-432a-952d-d83cda40b7f8",
+      "title": "Newtons 3. Axiom formulieren und erläutern",
+      "titleEn": "Formulate and Explain Newton's Third Law",
+      "description": "Die lernende Person kann das Wechselwirkungsprinzip formulieren und an Beispielen erläutern.",
+      "descriptionEn": "The learner can formulate the action-reaction principle and explain it with examples.",
+      "weight": 0.9,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "E"
+      },
+      "shortKey": "canonical_physics_formulate_third_law",
+      "applicability": {
+        "jurisdiction": [
+          "DE-HE"
+        ]
+      },
+      "extendedData": {
         "provenance": {
           "sourceLandscapeId": "24f2ca0f-b94a-444e-bb70-677cb6f85c02",
           "sourceLandscapeTitle": "Physik Oberstufe (Hessen, KC 2024)",
@@ -4959,9 +5015,7 @@
         "canonical"
       ],
       "contains": [],
-      "requires": [
-        "5a1b3cb2-c0e6-4372-9c57-f33675cffc9b"
-      ],
+      "requires": [],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
         "demandLevel": "AB1",

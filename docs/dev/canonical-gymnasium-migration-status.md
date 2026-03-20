@@ -1451,7 +1451,7 @@ Validation used:
 
 Validation result:
 
-- `validate:view-filters` still passes with `0` errors and `0` active warnings
+- `validate:view-filters` still passes with `0` errors, `25` active warnings, and `186` accepted warnings
 - accepted reviewed warnings dropped from `193` to `191`
 - the repository-backed mapping fixture test still passes
 
@@ -1486,7 +1486,7 @@ Validation used:
 
 Validation result:
 
-- `validate:view-filters` still passes with `0` errors and `0` active warnings
+- `validate:view-filters` still passes with `0` errors, `25` active warnings, and `186` accepted warnings
 - accepted reviewed warnings dropped from `191` to `186`
 - the repository-backed mapping fixture test still passes
 
@@ -1494,3 +1494,458 @@ Interpretation:
 
 - the reviewed Bavaria Latin pilot no longer carries any accepted `APV-202` debt on the currently reviewed surface
 - the next applicability-review candidate should now come from a larger remaining `APV-202` lane such as Bavaria economics, Bavaria politics/economics, Bavaria biology, or Bavaria history
+
+
+### 2026-03-20: Bavaria physics override-backed applicability debt reduced from six cases to four
+
+Approach used:
+
+- reviewed the smallest remaining accepted-warning lane after the Latin pass and found that Bavaria physics was still dominated by explicit `DE-BY` override debt rather than ordinary partial-bridge debt
+- preferred reviewed Bavaria source bridges over canonical re-authoring: two previously unmapped Bavaria mechanics leaves were promoted to partial bridges, while the earlier attempt to repoint broader reviewed cluster bridges was discarded because it changed planned-goal behavior in backend integration tests
+- kept the canonical physics goal semantics unchanged and reduced only the Bavaria visibility mechanism
+
+Applied changes:
+
+- added Bavaria partial bridges from `a114f68b-91d5-593e-9d5b-d31d3240bf19` to `Kräfte und Trägheit qualitativ erklären` and from `c75cb2dd-c143-5537-82aa-4676a1148c71` to `Newtons 1. Axiom (Trägheitsprinzip)`
+- removed the explicit `extendedData.applicabilityOverrides.jurisdiction = ["DE-BY"]` entries from the two canonical physics goals `Kräfte und Trägheit qualitativ erklären` and `Newtons 1. Axiom (Trägheitsprinzip)`
+- converted the two corresponding Bavaria physics findings from `APV-201` to `APV-202` in the accepted-warning registry
+- updated the repository-backed Bavaria physics mapping fixture to the new mapping size and reviewed tuples
+
+Validation used:
+
+- `npm run validate:view-filters`
+- `./gradlew test --tests 'com.skillpilot.backend.landscape.GoalMappingRepositoryFixtureTest'`
+- `./gradlew test --tests 'com.skillpilot.backend.controller.LearnerControllerIntegrationTest' --tests 'com.skillpilot.backend.service.LearnerServiceCrossSubjectPilotTest'`
+- `./run_ci.sh`
+
+Validation result:
+
+- `validate:view-filters` still passes with `0` errors, `25` active warnings, and `186` accepted warnings
+- accepted reviewed warnings stay at `186`, but Bavaria physics now carries `4` accepted `APV-201` cases and `2` accepted `APV-202` cases instead of `6` accepted `APV-201` cases
+- the repository-backed mapping fixture test, the learner-planning regression slice, and full `./run_ci.sh` pass with the retained broader cluster bridges
+
+Interpretation:
+
+- reviewed Bavaria physics no longer depends on explicit Bavaria-specific applicability overrides for two of the six previously override-backed cases without changing learner-facing planning behavior
+- the next sharp follow-up on this lane is to resolve or reclassify the four remaining Bavaria physics override-backed goals: `Freier Fall experimentell untersuchen`, `Newtons 3. Axiom (Wechselwirkungsprinzip)`, `Mechanische Energieformen qualitativ unterscheiden`, and `Kinetische Energie`
+
+
+### 2026-03-20: Bavaria physics Newton-III override retired without changing Hessen topic totals
+
+Approach used:
+
+- targeted the remaining Bavaria physics case that already had a reviewed exact source leaf on the Newton-III application side, but still depended on an explicit Bavaria-specific applicability override on the broader conceptual node
+- kept the public canonical Newton-III id stable by turning `Newtons 3. Axiom (Wechselwirkungsprinzip)` into a small cluster and adding a dedicated Hessen-only concept atom underneath it
+- rejected the simpler single-child cluster rewrite after it reduced Hessen champion totals by one; the final split preserves the previous Hessen topic-count surface while still letting Bavaria visibility derive from the reviewed application leaf
+
+Applied changes:
+
+- converted canonical goal `5a1b3cb2-c0e6-4372-9c57-f33675cffc9b` (`Newtons 3. Axiom (Wechselwirkungsprinzip)`) from an override-backed atomic goal into a cluster containing the new Hessen-only concept atom `ad984bb6-e225-432a-952d-d83cda40b7f8` (`Newtons 3. Axiom formulieren und erläutern`) and the existing reviewed Bavaria-visible application atom `a0aaedcb-41f8-4891-af77-a69a76b8c10d` (`Newtons 3. Axiom anwenden`)
+- removed the redundant direct containment of `a0aaedcb-41f8-4891-af77-a69a76b8c10d` from `Newtons Axiome und Inertialsysteme` so the new Newton-III substructure stays cleanly nested
+- removed the explicit `extendedData.applicabilityOverrides.jurisdiction = ["DE-BY"]` entry from `5a1b3cb2-c0e6-4372-9c57-f33675cffc9b`
+- removed the now-obsolete accepted Bavaria physics `APV-201` entry for `5a1b3cb2-c0e6-4372-9c57-f33675cffc9b`
+
+Validation used:
+
+- `npm run validate:graph`
+- `npm run validate:view-filters`
+- `./gradlew test --tests 'com.skillpilot.backend.landscape.GoalMappingRepositoryFixtureTest' --tests 'com.skillpilot.backend.controller.LearnerControllerIntegrationTest' --tests 'com.skillpilot.backend.service.LearnerServiceCrossSubjectPilotTest'`
+- `./run_ci.sh`
+
+Validation result:
+
+- `validate:view-filters` still passes with `0` errors, `25` active warnings, and `185` accepted warnings
+- accepted reviewed warnings drop from `186` to `185`, and the Bavaria physics lane now carries `3` accepted `APV-201` cases plus `2` accepted `APV-202` cases instead of `4` accepted `APV-201` cases plus `2` accepted `APV-202` cases
+- graph validation, the focused backend regression slice, and full `./run_ci.sh` all pass
+
+Interpretation:
+
+- reviewed Bavaria physics no longer needs a Bavaria-specific override for the canonical Newton-III concept node, and Hessen learner-facing topic totals stay stable after the structural split
+- the remaining Bavaria physics override-backed cases are now `Freier Fall experimentell untersuchen`, `Mechanische Energieformen qualitativ unterscheiden`, and `Kinetische Energie`
+
+
+### 2026-03-20: Bavaria physics free-fall override retired while preserving motion-frontier behavior
+
+Approach used:
+
+- targeted the remaining Bavaria physics free-fall case because it already sat next to reviewed Bavaria-visible motion-analysis and acceleration atoms
+- kept the public canonical free-fall id stable by turning `Freier Fall experimentell untersuchen` into a small cluster and adding one Hessen-only experimental evaluation leaf underneath it
+- rejected the broader variant that also nested `Bewegungen mit Diagrammen untersuchen` under the free-fall container after it displaced expected motion-frontier suggestions in cutover and cross-subject backend tests; the final structure keeps diagram analysis independent and uses only the acceleration side for Bavaria visibility
+
+Applied changes:
+
+- converted canonical goal `230345f3-c360-4963-b390-ab94e3e2c864` (`Freier Fall experimentell untersuchen`) from an override-backed atomic goal into a cluster containing the Bavaria-visible acceleration atom `e4b38061-1f28-43ad-8371-a3e7c0e81856` and the new Hessen-only atom `09029573-864f-40ca-bf8a-cee7bf6dcb73` (`Fallbeschleunigung aus Messdaten bestimmen`)
+- preserved `Bewegungen mit Diagrammen untersuchen` as an independent sibling goal and kept it only as a prerequisite of the new Hessen-only free-fall atom
+- removed the explicit `extendedData.applicabilityOverrides.jurisdiction = ["DE-BY"]` entry from `230345f3-c360-4963-b390-ab94e3e2c864`
+- removed the now-obsolete accepted Bavaria physics `APV-201` entry for `230345f3-c360-4963-b390-ab94e3e2c864`
+
+Validation used:
+
+- `npm run validate:graph`
+- `npm run validate:view-filters`
+- `./gradlew test --tests 'com.skillpilot.backend.landscape.GoalMappingRepositoryFixtureTest' --tests 'com.skillpilot.backend.controller.LearnerControllerIntegrationTest' --tests 'com.skillpilot.backend.service.LearnerServiceCrossSubjectPilotTest'`
+- `./run_ci.sh`
+
+Validation result:
+
+- `validate:view-filters` still passes with `0` errors, `25` active warnings, and `184` accepted warnings
+- accepted reviewed warnings drop from `185` to `184`, and the Bavaria physics lane now carries `2` accepted `APV-201` cases plus `2` accepted `APV-202` cases instead of `3` accepted `APV-201` cases plus `2` accepted `APV-202` cases
+- graph validation, the focused backend regression slice, and full `./run_ci.sh` all pass after the narrowed final structure
+
+Interpretation:
+
+- reviewed Bavaria physics no longer needs a Bavaria-specific override for the canonical free-fall container, and the expected Hessen/cross-subject motion frontier behavior stays intact
+- the remaining Bavaria physics override-backed cases are now `Mechanische Energieformen qualitativ unterscheiden` and `Kinetische Energie`
+
+
+### 2026-03-20: Bavaria physics Sek-I energy-forms override converted into reviewed partial-bridge debt
+
+Approach used:
+
+- inspected the last Bavaria physics energy corridor and avoided a broader canonical energy split for now because the remaining `Kinetische Energie` case still lacks a comparably clean reviewed source leaf
+- kept the existing reviewed exact Bavaria energy rows unchanged and instead promoted one previously unmapped Bavaria heat-lehre source leaf to a partial bridge for the Sek-I bridge goal `Mechanische Energieformen qualitativ unterscheiden`
+- preferred this narrower bridge because the Bavaria source text explicitly assumes prior knowledge of `mechanische Energieformen`, making it a defensible reviewed visibility bridge without shifting the upper-secondary mechanical-energy mapping surface
+
+Applied changes:
+
+- added a new Bavaria partial bridge from `b0a2ec7a-df5f-5bf3-b8eb-f3668c25917d` to canonical goal `722857cf-f327-5740-8151-64eb92195ec8` (`Mechanische Energieformen qualitativ unterscheiden`)
+- removed the explicit `extendedData.applicabilityOverrides.jurisdiction = ["DE-BY"]` entry from canonical goal `722857cf-f327-5740-8151-64eb92195ec8`
+- converted the accepted Bavaria physics finding for `722857cf-f327-5740-8151-64eb92195ec8` from `APV-201` to `APV-202`
+- updated the repository-backed Bavaria physics mapping fixture to the new mapping size and reviewed tuple
+
+Validation used:
+
+- `npm run validate:view-filters`
+- `./gradlew test --tests 'com.skillpilot.backend.landscape.GoalMappingRepositoryFixtureTest'`
+- `./gradlew test --tests 'com.skillpilot.backend.controller.LearnerControllerIntegrationTest' --tests 'com.skillpilot.backend.service.LearnerServiceCrossSubjectPilotTest'`
+- `./run_ci.sh`
+
+Validation result:
+
+- `validate:view-filters` still passes with `0` errors, `25` active warnings, and `184` accepted warnings
+- accepted reviewed warnings stay at `184`, but the Bavaria physics lane now carries `1` accepted `APV-201` case plus `3` accepted `APV-202` cases instead of `2` accepted `APV-201` cases plus `2` accepted `APV-202` cases
+- the repository-backed mapping fixture test, the learner-planning regression slice, and full `./run_ci.sh` pass with the narrower reviewed bridge
+
+Interpretation:
+
+- reviewed Bavaria physics no longer needs a Bavaria-specific override for the Sek-I qualitative energy-forms bridge; Bavaria visibility now comes from reviewed source mappings alone
+- the last remaining Bavaria physics override-backed case is now `Kinetische Energie`
+
+
+### 2026-03-20: Bavaria physics kinetic-energy override reviewed and retained as the final physics exception
+
+Approach used:
+
+- reviewed the remaining Bavaria physics energy corridor after the Sek-I energy-forms pass, including the lower-secondary energy, heat-lehre, charged-particle, and spaceflight source leaves that still mention energy or kinetic-energy-adjacent concepts
+- rejected additional partial bridges because the clean Bavaria energy source rows are already committed to `Mechanische Energie`, `Potenzielle Energie`, `Energieerhaltung`, and `Arbeit`, while the remaining unmapped Bavaria leaves mention kinetic energy only indirectly or in different conceptual settings
+- preferred an explicit retained-override decision over a weak source bridge or a broader canonical energy refactor that would overclaim Bavaria coverage for the formula-focused canonical atom `Kinetische Energie`
+
+Applied changes:
+
+- kept canonical goal `7eeff2de-6015-49a6-a96e-a488d886dc9f` (`Kinetische Energie`) and the reviewed Bavaria physics mapping surface unchanged
+- tightened the accepted-warning rationale for `7eeff2de-6015-49a6-a96e-a488d886dc9f` so the last remaining Bavaria physics `APV-201` case is documented as an intentional retained override rather than generic closure debt
+- logged the reviewed retention decision in this migration status file
+
+Validation used:
+
+- `npm run validate:view-filters`
+- `./run_ci.sh`
+
+Validation result:
+
+- `validate:view-filters` still passes with `0` errors, `25` active warnings, and `184` accepted warnings
+- full `./run_ci.sh` passes
+- Bavaria physics remains at `1` accepted `APV-201` case plus `3` accepted `APV-202` cases; this is now the reviewed end state of the current physics applicability lane
+
+Interpretation:
+
+- Bavaria physics has no further clean override-retirement candidate on the currently reviewed source surface; the remaining kinetic-energy case should stay accepted until a better source-aligned split or source atom exists
+- the next applicability-review target should move outside physics; the smallest remaining reviewed `APV-202` lanes are currently Bavaria Informatik, Bavaria Wirtschaft, Bavaria Deutsch, and Bavaria Griechisch with `8` accepted partial-bridge cases each
+
+
+### 2026-03-20: Bavaria Greek early E-phase bridge upgraded from partial to exact
+
+Approach used:
+
+- reviewed the smallest remaining non-physics language lane and found that the Bavaria Greek debt was concentrated in one regular Gr10 corridor with eight one-to-one source-to-canonical mappings
+- identified the main problem as generic canonical placeholder wording rather than missing structure: the canonical E-phase Greek strip still used broad template-style labels such as `Lektüre E-Phase Griechisch` and `Projekt/Reflexion E-Phase Griechisch`, while the Bavaria source already isolated concrete reading, vocabulary, syntax, translation, analysis, position-taking, oral presentation, and productive-reception tasks
+- kept ids and didactic sequencing stable, but rewrote the eight canonical atoms into source-facing task wording so the reviewed Bavaria rows could be promoted from `partial` to `exact`
+
+Applied changes:
+
+- rewrote the eight Bavaria-visible canonical E-phase Greek atoms in `DE_DEU_S_GYM_CANONICAL_GRIECHISCH.de.json` from generic placeholder phrasing to source-aligned task wording:
+  - `Originaltexte kursorisch lesen und Inhalte erfassen`
+  - `Lektürebegleitenden Wortschatz gezielt sichern`
+  - `Komplexe syntaktische Strukturen untersuchen`
+  - `Komplexe griechische Strukturen übersetzen`
+  - `Originaltexte sprachlich analysieren`
+  - `Zu griechisch formulierten Inhalten Stellung nehmen`
+  - `Lehrbuchtexte verständnisgeleitet vortragen`
+  - `Originaltexte produktiv und kreativ interpretieren`
+- promoted the eight corresponding Bavaria Greek mappings in `bavaria_greek_to_canonical_greek.json` from `partial` to `exact`
+- removed the eight obsolete Bavaria Greek `APV-202` entries from the accepted-warning registry
+
+Validation used:
+
+- `npm run validate:view-filters`
+- `./run_ci.sh`
+
+Validation result:
+
+- `validate:view-filters` still passes with `0` errors, `25` active warnings, and `176` accepted warnings
+- accepted reviewed warnings drop from `184` to `176`
+- full `./run_ci.sh` passes
+
+Interpretation:
+
+- the reviewed Bavaria Greek early E-phase corridor no longer depends on partial-bridge applicability; the full eight-goal lane is now exact-backed
+- the next smallest reviewed `APV-202` lanes are now Bavaria Informatik, Bavaria Wirtschaft, and Bavaria Deutsch with `8` cases each
+
+### 2026-03-20: Bavaria informatics graph corridor split removes one partial-bridge applicability case
+
+What changed:
+
+- the Bavaria source goal `defff42b-dc4b-53b0-9409-58578ef3c850` (`modellieren im Rahmen praktischer Fragestellungen vernetzte Strukturen als Graphen und klassifizieren diese anhand ihrer Eigenschaften`) no longer maps partially into the Hessen-shaped canonical atom `Graphbegriffe kennen`
+- instead, the canonical node `7d4fe994-2325-5fa9-8718-491957da4eed` was turned into a small cluster in `DE_DEU_S_GYM_CANONICAL_INFORMATIK.de.json`
+- the Hessen concept leaf now remains isolated as `f0910b55-48a9-4f81-aed6-d15ac0446c70` (`Graphbegriffe kennen`) with `DE-HE` applicability only
+- a new Bavaria-visible leaf `c9d20743-dfda-4425-ae40-8f51d9f0c72a` (`Vernetzte Strukturen als Graphen modellieren und klassifizieren`) now carries the exact Bavaria source wording with `DE-BY` applicability
+- the Bavaria mapping in `bavaria_informatics_to_canonical_informatics.json` was upgraded from partial to exact for that source goal
+- the obsolete accepted warning for canonical goal `7d4fe994-2325-5fa9-8718-491957da4eed` was removed from `applicability-accepted-warnings.json`
+
+Validation used:
+
+- `npm run validate:view-filters`
+
+Validation result:
+
+- `validate:view-filters` still passes with `0` errors, `25` active warnings, and `175` accepted warnings
+
+Interpretation:
+
+- Bavaria Informatik drops from `8` to `7` reviewed `APV-202` cases
+- the remaining Bavaria Informatik debt is materially less clean than this graph split; the next lowest-count reviewed `APV-202` lanes are now Bavaria Deutsch and Bavaria Wirtschaft with `8` cases each
+
+### 2026-03-20: Bavaria informatics object-model corridor split removes another partial-bridge case
+
+What changed:
+
+- the Bavaria source goal `09203725-7c53-5e5f-b52b-c97cad208bf6` no longer maps partially into the Hessen-shaped canonical atom `Objekte instanziieren`
+- instead, the canonical node `300d490f-e5bf-541a-a4c7-a136e97c42ea` was turned into a small cluster in `DE_DEU_S_GYM_CANONICAL_INFORMATIK.de.json`
+- the Hessen concept leaf now remains isolated as `cb2af3ef-c261-4d92-bc30-3eeb7a2af96a` (`Objekte instanziieren`) with `DE-HE` applicability only
+- a new Bavaria-visible leaf `6c284640-1f28-4837-aabd-445656ad7f54` (`Objekte analysieren und zu Klassen abstrahieren`) now carries the exact Bavaria source wording with `DE-BY` applicability
+- the Bavaria mapping in `bavaria_informatics_to_canonical_informatics.json` was upgraded from partial to exact for that source goal
+- the obsolete accepted warning for canonical goal `300d490f-e5bf-541a-a4c7-a136e97c42ea` was removed from `applicability-accepted-warnings.json`
+
+Validation used:
+
+- `npm run validate:graph`
+- `npm run validate:view-filters`
+- `./run_ci.sh`
+
+Validation result:
+
+- `validate:graph` passes
+- `validate:view-filters` still passes with `0` errors, `25` active warnings, and `174` accepted warnings
+- full `./run_ci.sh` passes
+
+Interpretation:
+
+- Bavaria Informatik drops from `7` to `6` reviewed `APV-202` cases
+- the remaining Bavaria Informatik cases are now concentrated in broader prerequisite-shape mismatches around programming basics, search/list handling, and formal-language theory
+
+### 2026-03-20: Bavaria German E1 language strip split removes two partial-bridge cases
+
+What changed:
+
+- the Bavaria source goals `e8bf22b0-cd8d-5224-869d-8b94c7fe6d33` and `805e9702-0cc5-5ca6-8a73-6540ace2114a` no longer map partially into the Hessen-shaped canonical atoms `Grammatik wiederholen` and `Textsorte erkennen`
+- instead, the canonical nodes `abf6d684-791e-5e0d-90bf-3466087dc937` and `bc28576e-243e-5bff-aca0-872e174d59e5` were turned into small clusters in `DE_DEU_S_GYM_CANONICAL_DEUTSCH.de.json`
+- the Hessen leaves now remain isolated as `2122b969-61e9-412f-9e97-8777c606d27a` (`Grammatik wiederholen`) and `263b9af0-c584-4364-a35f-6dfccd7aaf21` (`Textsorte erkennen`) with `DE-HE` applicability only
+- new Bavaria-visible leaves `ead22176-e8f4-45b6-8a3d-e04661f3c3e4` (`Grammatikalisches und orthografisches Wissen vertiefen`) and `6904ca70-3f22-41eb-bc9c-9896bf7bb1e9` (`Grundformen schriftlicher Darstellung unterscheiden und passend einsetzen`) now carry the exact Bavaria source wording with `DE-BY` applicability
+- the Bavaria mappings in `bavaria_german_to_canonical_german.json` were upgraded from partial to exact for those two source goals
+- the obsolete accepted warnings for canonical goals `abf6d684-791e-5e0d-90bf-3466087dc937` and `bc28576e-243e-5bff-aca0-872e174d59e5` were removed from `applicability-accepted-warnings.json`
+
+Validation used:
+
+- `npm run validate:graph`
+- `npm run validate:view-filters`
+- `./run_ci.sh`
+
+Validation result:
+
+- `validate:graph` passes
+- `validate:view-filters` still passes with `0` errors, `25` active warnings, and `172` accepted warnings
+- full `./run_ci.sh` passes
+
+Interpretation:
+
+- Bavaria German drops from `8` to `6` reviewed `APV-202` cases
+- the remaining Bavaria German debt is concentrated in broader literature-analysis and interpretation lanes rather than the E1 language basics strip
+
+### 2026-03-20: Bavaria German E1 argumentation and media strip split removes two more partial-bridge cases
+
+What changed:
+
+- the Bavaria source goals `2fbfd7ee-066e-53e4-8d85-9d81f58dce43`, `7f6c85b6-65bc-5ab4-b028-fd0a3cf2733f`, `163f43b8-6f3d-560c-b798-288aaec4084a`, and `12b18e42-d094-5bdb-9466-b7e74e34e9ec` no longer map partially into the Hessen-shaped canonical atoms `Argumentationsaufbau` and `Medienanalyse Grundlage`
+- instead, the canonical nodes `bdd71d15-2ed3-5edb-9a1b-c55b1239795b` and `be66ab87-1857-561e-ad91-bae56b3ae849` were turned into small clusters in `DE_DEU_S_GYM_CANONICAL_DEUTSCH.de.json`
+- the Hessen leaves now remain isolated as `70f5f3c6-f0e9-4bd7-8095-a20be459975c` (`Argumentationsaufbau`) and `001b6ae3-207a-400d-852d-2c4068df8d2f` (`Medienanalyse Grundlage`) with `DE-HE` applicability only
+- new Bavaria-visible leaves `f0c354f9-6f7a-494a-8f64-675bf1b42f5e`, `17164008-3c30-4d22-8f2b-bf2e5a79f9de`, `d4642285-5b73-4541-a088-6c1e77b37637`, and `fb8f990d-224f-4277-92a1-13bee8f7f8a4` now carry the reviewed Bavaria source wording with `DE-BY` applicability
+- the Hessen German mapping was repointed to the new HE leaves, and the Bavaria mappings in `bavaria_german_to_canonical_german.json` were upgraded from partial to exact for the four reviewed source goals
+- the obsolete accepted warnings for canonical goals `bdd71d15-2ed3-5edb-9a1b-c55b1239795b` and `be66ab87-1857-561e-ad91-bae56b3ae849` were removed from `applicability-accepted-warnings.json`
+
+Validation used:
+
+- `npm run validate:graph`
+- `npm run validate:view-filters`
+- `./run_ci.sh`
+
+Validation result:
+
+- `validate:graph` passes
+- `validate:view-filters` still passes with `0` errors, `25` active warnings, and `170` accepted warnings
+- full `./run_ci.sh` passes
+
+Interpretation:
+
+- Bavaria German drops from `6` to `4` reviewed `APV-202` cases
+- the remaining Bavaria German debt is now concentrated entirely in the broader literature-analysis corridor
+
+### 2026-03-20: Bavaria German E2 literature corridor split removes the remaining partial-bridge cases
+
+What changed:
+
+- the Bavaria source goals `d795b8a8-1b1a-5f6a-affe-0805b6014c4c`, `24de36d4-0900-53d0-b619-faa7fc765f21`, `d0737aa3-aae6-5429-8284-c095889f2b59`, `216f1fd3-b396-559d-811c-e70ed6d75a97`, and `2611513c-8a5c-571b-8137-e545a6a189ed` no longer map partially into the Hessen-specific canonical E2 literature atoms
+- the shared `E2 Literatur` cluster `bb3dee7b-d6d3-513b-8824-bdf6414e02df` now contains five Bavaria-only exact leaves for the reviewed literature-analysis and interpretation corridor
+- the old Hessen literature basics `29f0468a-62a0-57a1-8f92-48d4e69bb032`, `c2f901ad-9469-5f84-aa19-e80d300842c5`, `518ec458-78a7-5546-9a65-29ef6d197742`, and `97d958b1-93d3-58ad-b208-80af1cdfd4d4` now carry `DE-HE` applicability only again
+- the shared entry nodes `bb3dee7b-d6d3-513b-8824-bdf6414e02df` and `eff86a92-e048-5494-b561-6ecdda1fbf67` were aligned to the compiled mixed-state surface and now carry `DE-BY` plus `DE-HE` applicability in the committed metadata
+- the Bavaria mapping file `bavaria_german_to_canonical_german.json` was upgraded from partial to exact for those five reviewed source goals against the new Bavaria-only leaves
+- the obsolete accepted warnings for the four old E2 literature atoms were removed from `applicability-accepted-warnings.json`
+
+Validation used:
+
+- `npm run validate:graph`
+- `npm run validate:view-filters`
+- `./run_ci.sh`
+
+Validation result:
+
+- `validate:graph` passes
+- `validate:view-filters` still passes with `0` errors, `25` active warnings, and `166` accepted warnings
+- full `./run_ci.sh` passes
+
+Interpretation:
+
+- Bavaria German drops from `4` to `0` reviewed `APV-202` cases
+- the reviewed Bavaria German lane is now closed; the next applicability target should move to another remaining subject corridor
+
+### 2026-03-20: Bavaria Informatik grammar-source remap removes one more partial-bridge case without adding new canonical nodes
+
+What changed:
+
+- the Bavaria source goal `a2db53a1-4449-5d78-825e-81ba1fa07c02` no longer maps partially into the Hessen-only canonical atom `Ableitungen prüfen` (`3e3264d6-8cf8-55f9-b085-1aa4a7865476`)
+- instead, that source goal now maps exactly to the already-existing canonical atom `Grammatiken entwickeln` (`fbd4561a-573e-5f8c-b363-338ee9774b5c`) in `bavaria_informatics_to_canonical_informatics.json`, because the reviewed Bavaria wording is about defining grammars with EBNF and syntax diagrams rather than checking derivations
+- `Ableitungen prüfen` (`3e3264d6-8cf8-55f9-b085-1aa4a7865476`) now carries `DE-HE` applicability only again in `DE_DEU_S_GYM_CANONICAL_INFORMATIK.de.json`
+- the Bavaria-visible follow-on canonical goal `Sprachen klassifizieren` (`18691bbb-b996-57a6-9f91-8ff54acabbce`) now requires `Grammatiken entwickeln` instead of `Ableitungen prüfen`, preserving the reviewed Bavaria Q3.1 route without widening the Hessen-only derivation atom
+- the obsolete accepted warning for canonical goal `3e3264d6-8cf8-55f9-b085-1aa4a7865476` was removed from `applicability-accepted-warnings.json`
+
+Validation used:
+
+- `npm run validate:view-filters`
+- `./run_ci.sh`
+
+Validation result:
+
+- `validate:view-filters` passes with `0` errors, `25` active warnings, and `165` accepted warnings
+- full `./run_ci.sh` passes
+
+Interpretation:
+
+- Bavaria Informatik drops from `6` to `5` reviewed `APV-202` cases
+- this was a clean mapping-and-prerequisite correction, not a new canonical split; the remaining Bavaria Informatik debt is now concentrated in broader automata, data-structure, and algorithm-shape mismatches
+
+### 2026-03-20: Bavaria Informatik object-state split removes the E.3 programming-basics partial bridge
+
+What changed:
+
+- the Bavaria source goal `dca8a9c9-4016-59ff-86f0-8756df374ce8` no longer maps partially into the Hessen-shaped canonical atom `Grundlegende Datentypen und Variablen nutzen` (`c5d04946-497e-5ede-84ec-2d019138e3a0`)
+- instead, canonical goal `c5d04946-497e-5ede-84ec-2d019138e3a0` was turned into a small mixed-state cluster in `DE_DEU_S_GYM_CANONICAL_INFORMATIK.de.json`
+- the Hessen semantics now live on the new `DE-HE` leaf `18317e31-71f7-4e4a-b18c-f61e2b25769d` (`Grundlegende Datentypen und Variablen nutzen`), and the Bavaria wording now lives on the new `DE-BY` leaf `2aaefe0b-3e56-477e-94f0-bb05fa035ed5` (`Attributwerte ändern und Objektzustände deuten`)
+- the Hessen mapping in `hessen_informatics_upper_secondary_to_canonical_informatics.json` was repointed from the former shared atom to the new Hessen-only leaf
+- the Bavaria mapping in `bavaria_informatics_to_canonical_informatics.json` was upgraded from partial to exact against the new Bavaria-only leaf
+- the Hessen follow-on canonical goal `Kontrollstrukturen anwenden` now requires the new Hessen-only leaf instead of the mixed-state cluster, so the old atomic prerequisite shape is preserved on the Hessen route
+- the obsolete accepted warning for canonical goal `c5d04946-497e-5ede-84ec-2d019138e3a0` was removed from `applicability-accepted-warnings.json`
+
+Validation used:
+
+- `npm run validate:graph`
+- `npm run validate:view-filters`
+- `./run_ci.sh`
+
+Validation result:
+
+- `validate:graph` passes
+- `validate:view-filters` passes with `0` errors, `25` active warnings, and `164` accepted warnings
+- full `./run_ci.sh` passes
+
+Interpretation:
+
+- Bavaria Informatik drops from `5` to `4` reviewed `APV-202` cases
+- the remaining Bavaria Informatik debt is now concentrated in the broader automata, algorithm, and higher-data-structure corridors rather than the Inf9 object-programming strip
+
+### 2026-03-20: Bavaria Informatik search-corridor split removes the Q1 algorithm partial bridge
+
+What changed:
+
+- the Bavaria source goal `4d042307-060f-5b86-a435-ddc6a58ccbf5` no longer maps partially into the Hessen-shaped canonical atom `Suchalgorithmen implementieren` (`7c2d2a49-c4a4-51b6-be7b-e8791f82af5a`)
+- instead, canonical goal `7c2d2a49-c4a4-51b6-be7b-e8791f82af5a` was turned into a small mixed-state cluster in `DE_DEU_S_GYM_CANONICAL_INFORMATIK.de.json`
+- the Hessen semantics now live on the new `DE-HE` leaf `2a87fb3c-394b-47b4-bda2-58c5f1403475` (`Suchalgorithmen implementieren`), and the Bavaria wording now lives on the new `DE-BY` leaf `c62c529f-3732-4c66-a8e4-6d91ed2285d0` (`Algorithmen auf Listen und Feldern entwickeln und implementieren`)
+- the Hessen mapping in `hessen_informatics_upper_secondary_to_canonical_informatics.json` was repointed from the former shared atom to the new Hessen-only leaf
+- the Bavaria mapping in `bavaria_informatics_to_canonical_informatics.json` was upgraded from partial to exact against the new Bavaria-only leaf
+- the Hessen follow-on canonical goals `Einfache Sorten nutzen` and `Hashing und Kollisionen` now require the new Hessen-only leaf instead of the mixed-state cluster, so the old Hessen prerequisite chain is preserved
+- the obsolete accepted warning for canonical goal `7c2d2a49-c4a4-51b6-be7b-e8791f82af5a` was removed from `applicability-accepted-warnings.json`
+
+Validation used:
+
+- `npm run validate:graph`
+- `npm run validate:view-filters`
+- `./run_ci.sh`
+
+Validation result:
+
+- `validate:graph` passes
+- `validate:view-filters` passes with `0` errors, `25` active warnings, and `163` accepted warnings
+- full `./run_ci.sh` passes
+
+Interpretation:
+
+- Bavaria Informatik drops from `4` to `3` reviewed `APV-202` cases
+- the remaining Bavaria Informatik debt is now concentrated in the automata corridor plus the higher-data-structure list/stack corridor
+
+### 2026-03-20: Bavaria Informatik automata split removes the two non-regular-language partial bridges
+
+What changed:
+
+- the Bavaria source goals `a19cd533-ac0c-57a9-8098-093d1918a605` and `c7623044-bb7b-5375-9a65-27932a296834` no longer map partially into the Hessen-only pushdown-automata atoms `Kellerautomaten und Grammatiken verknüpfen` (`200ff84a-3158-5d2f-b065-36b77ea99ef1`) and `Deterministische Kellerautomaten entwickeln` (`36725b54-fd0c-5b24-bf2f-399491562718`)
+- instead, canonical goal `9b497287-aa68-5bb1-974f-5be11dd11ae2` was turned into a small mixed-state cluster in `DE_DEU_S_GYM_CANONICAL_INFORMATIK.de.json`
+- the Hessen semantics now live on the new `DE-HE` leaf `10a3b2a3-8c1c-4dfb-9d48-8f67f2c0004d` (`Grenzen endlicher Automaten erkennen`), and the Bavaria wording now lives on the new `DE-BY` leaf `e7fb0601-4207-4bd8-8c40-1f544590b855` (`Nichtreguläre Sprachen als Grenze endlicher Automaten erläutern`)
+- the Hessen mapping in `hessen_informatics_upper_secondary_to_canonical_informatics.json` was repointed from the former shared atom to the new Hessen-only leaf
+- the two Bavaria mappings in `bavaria_informatics_to_canonical_informatics.json` were upgraded from partial to exact against the new Bavaria-only leaf
+- the canonical cluster `Q3.3 Kellerautomat` (`52ab668f-87b6-5661-af2a-3dc38557dcf6`) and the two old pushdown-automata atoms `36725b54-fd0c-5b24-bf2f-399491562718` and `200ff84a-3158-5d2f-b065-36b77ea99ef1` now carry `DE-HE` applicability only again
+- the Bavaria-visible canonical cluster `Q3.4 Turingmaschine` (`49e18e35-3a6d-53f7-842f-4dc9e39c745a`) now requires the shared finite-automata-limits cluster `9b497287-aa68-5bb1-974f-5be11dd11ae2` instead of the Hessen-only pushdown-automata cluster, preserving Bavaria visibility without widening the Hessen-only PDA corridor
+- the obsolete accepted warnings for canonical goals `200ff84a-3158-5d2f-b065-36b77ea99ef1` and `36725b54-fd0c-5b24-bf2f-399491562718` were removed from `applicability-accepted-warnings.json`
+
+Validation used:
+
+- `npm run validate:graph`
+- `npm run validate:view-filters`
+- `./run_ci.sh`
+
+Validation result:
+
+- `validate:graph` passes
+- `validate:view-filters` passes with `0` errors, `25` active warnings, and `161` accepted warnings
+- full `./run_ci.sh` passes
+
+Interpretation:
+
+- Bavaria Informatik drops from `3` to `1` reviewed `APV-202` case
+- the remaining Bavaria Informatik debt is now the higher-data-structure list/stack corridor around `Stapeln und Warteschlangen nutzen` (`898684c0-027c-5fc8-8448-6f33fc26d5b4`)

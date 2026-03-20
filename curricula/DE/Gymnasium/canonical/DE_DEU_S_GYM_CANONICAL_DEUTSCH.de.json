@@ -60,7 +60,6 @@
       },
       "applicability": {
         "jurisdiction": [
-          "DE-BY",
           "DE-HE"
         ]
       },
@@ -119,7 +118,6 @@
       },
       "applicability": {
         "jurisdiction": [
-          "DE-BY",
           "DE-HE"
         ]
       },
@@ -189,7 +187,12 @@
         "29f0468a-62a0-57a1-8f92-48d4e69bb032",
         "c2f901ad-9469-5f84-aa19-e80d300842c5",
         "518ec458-78a7-5546-9a65-29ef6d197742",
-        "97d958b1-93d3-58ad-b208-80af1cdfd4d4"
+        "97d958b1-93d3-58ad-b208-80af1cdfd4d4",
+        "139e4c3f-3702-41e7-bf10-71b89d8dd75f",
+        "abff3835-09b4-4024-99b8-e1b2cdf955ff",
+        "06adb7c2-1a89-48b9-bfd2-8f1bc84d31af",
+        "fc121034-b6c8-4daf-8762-6f32b2bed9ac",
+        "ee95b531-b189-4767-ad94-d539baccfc6d"
       ],
       "requires": [],
       "dimensionTags": {
@@ -253,17 +256,20 @@
     },
     {
       "id": "abf6d684-791e-5e0d-90bf-3466087dc937",
-      "title": "Grammatik wiederholen",
-      "titleEn": "Review Grammar",
-      "description": "Die lernende Person kann grundlegende Grammatikstrukturen (z. B. Satzarten, Satzglieder, Zeiten) sicher anwenden.",
-      "descriptionEn": "The learner can confidently apply basic grammatical structures (e.g. sentence types, sentence parts, tenses).",
+      "title": "Grammatik und sprachliche Normen sichern",
+      "titleEn": "Secure Grammar and Language Norms",
+      "description": "Cluster zum Anwenden grundlegender Grammatik sowie zum sicheren Umgang mit sprachlichen und orthografischen Normen.",
+      "descriptionEn": "Cluster for applying basic grammar and for using language and orthographic norms securely.",
       "weight": 1,
       "tags": [
         "skill:sprachreflexion",
         "GK",
         "LK"
       ],
-      "contains": [],
+      "contains": [
+        "2122b969-61e9-412f-9e97-8777c606d27a",
+        "ead22176-e8f4-45b6-8a3d-e04661f3c3e4"
+      ],
       "requires": [
         "eff86a92-e048-5494-b561-6ecdda1fbf67"
       ],
@@ -276,7 +282,41 @@
       },
       "applicability": {
         "jurisdiction": [
-          "DE-BY",
+          "DE-HE"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "f1ba2118-853f-4aa0-bef5-4f749bc621ed",
+          "sourceLandscapeTitle": "Deutsch Oberstufe (Hessen, KC 2024)",
+          "sourceGoalId": "5def1ba2-e22c-47e1-987a-f8c85bf6ab17"
+        }
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "2122b969-61e9-412f-9e97-8777c606d27a",
+      "title": "Grammatik wiederholen",
+      "titleEn": "Review Grammar",
+      "description": "Die lernende Person kann grundlegende Grammatikstrukturen (z. B. Satzarten, Satzglieder, Zeiten) sicher anwenden.",
+      "descriptionEn": "The learner can confidently apply basic grammatical structures (e.g. sentence types, sentence parts, tenses).",
+      "weight": 1,
+      "tags": [
+        "skill:sprachreflexion",
+        "GK",
+        "LK"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-german",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "E"
+      },
+      "applicability": {
+        "jurisdiction": [
           "DE-HE"
         ]
       },
@@ -290,7 +330,73 @@
       "type": "atomic"
     },
     {
+      "id": "ead22176-e8f4-45b6-8a3d-e04661f3c3e4",
+      "title": "Grammatikalisches und orthografisches Wissen vertiefen",
+      "titleEn": "Deepen Grammatical and Orthographic Knowledge",
+      "description": "Die lernende Person kann Regeln, Rechtschreibstrategien und Methoden der Fehleranalyse wiederholen, individuelle orthografische Schwierigkeiten beheben und sprachliche Normen sicher für die korrekte Gestaltung von Texten anwenden.",
+      "descriptionEn": "The learner can review rules, spelling strategies, and methods of error analysis, remedy individual orthographic difficulties, and apply language norms securely for correct text production.",
+      "weight": 1,
+      "tags": [
+        "skill:sprachreflexion",
+        "GK",
+        "LK"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-german",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "E"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BY"
+        ]
+      },
+      "type": "atomic"
+    },
+    {
       "id": "bc28576e-243e-5bff-aca0-872e174d59e5",
+      "title": "Textsorten und Darstellungsformen unterscheiden",
+      "titleEn": "Distinguish Text Types and Modes of Presentation",
+      "description": "Cluster zum Bestimmen von Textsorten sowie zum Unterscheiden grundlegender schriftlicher Darstellungsformen.",
+      "descriptionEn": "Cluster for determining text types and distinguishing basic written modes of presentation.",
+      "weight": 1,
+      "tags": [
+        "skill:lesen",
+        "GK",
+        "LK"
+      ],
+      "contains": [
+        "263b9af0-c584-4364-a35f-6dfccd7aaf21",
+        "6904ca70-3f22-41eb-bc9c-9896bf7bb1e9"
+      ],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-german",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "E"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-HE"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "f1ba2118-853f-4aa0-bef5-4f749bc621ed",
+          "sourceLandscapeTitle": "Deutsch Oberstufe (Hessen, KC 2024)",
+          "sourceGoalId": "edbaceb0-8060-42d1-8dbf-130adcf182ec"
+        }
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "263b9af0-c584-4364-a35f-6dfccd7aaf21",
       "title": "Textsorte erkennen",
       "titleEn": "Identify Text Type",
       "description": "Die lernende Person kann Textsorten bestimmen und deren Kommunikationsabsicht begründen.",
@@ -312,7 +418,6 @@
       },
       "applicability": {
         "jurisdiction": [
-          "DE-BY",
           "DE-HE"
         ]
       },
@@ -326,7 +431,73 @@
       "type": "atomic"
     },
     {
+      "id": "6904ca70-3f22-41eb-bc9c-9896bf7bb1e9",
+      "title": "Grundformen schriftlicher Darstellung unterscheiden und passend einsetzen",
+      "titleEn": "Distinguish and Apply Basic Written Modes of Presentation",
+      "description": "Die lernende Person kann sicher zwischen den Grundformen schriftlicher Darstellung (Erzählen, Informieren und Argumentieren) unterscheiden und diese dem Schreibanlass angemessen wirkungsvoll einsetzen.",
+      "descriptionEn": "The learner can confidently distinguish between the basic written modes of presentation (narrating, informing, and arguing) and use them effectively according to the writing purpose.",
+      "weight": 1,
+      "tags": [
+        "skill:lesen",
+        "GK",
+        "LK"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-german",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "E"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BY"
+        ]
+      },
+      "type": "atomic"
+    },
+    {
       "id": "bdd71d15-2ed3-5edb-9a1b-c55b1239795b",
+      "title": "Argumentationsstrukturen erkennen und argumentierende Texte aufbauen",
+      "titleEn": "Recognize Argument Structures and Build Argumentative Texts",
+      "description": "Cluster zum Erkennen einfacher Argumentationsstrukturen sowie zum situationsgerechten Aufbau argumentierender Texte.",
+      "descriptionEn": "Cluster for recognizing simple argument structures and building argumentative texts appropriate to the situation.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "contains": [
+        "70f5f3c6-f0e9-4bd7-8095-a20be459975c",
+        "f0c354f9-6f7a-494a-8f64-675bf1b42f5e",
+        "17164008-3c30-4d22-8f2b-bf2e5a79f9de"
+      ],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-german",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "E"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-HE"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "f1ba2118-853f-4aa0-bef5-4f749bc621ed",
+          "sourceLandscapeTitle": "Deutsch Oberstufe (Hessen, KC 2024)",
+          "sourceGoalId": "8104f8c6-231c-4414-bb20-cb73aacd61e2"
+        }
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "70f5f3c6-f0e9-4bd7-8095-a20be459975c",
       "title": "Argumentationsaufbau",
       "titleEn": "Argumentation Structure",
       "description": "Die lernende Person kann einfache Argumentationsstrukturen (These–Argument–Beleg) erkennen und selbst nutzen.",
@@ -347,7 +518,6 @@
       },
       "applicability": {
         "jurisdiction": [
-          "DE-BY",
           "DE-HE"
         ]
       },
@@ -361,7 +531,99 @@
       "type": "atomic"
     },
     {
+      "id": "f0c354f9-6f7a-494a-8f64-675bf1b42f5e",
+      "title": "Argumente nach Stichhaltigkeit ordnen und linear argumentieren",
+      "titleEn": "Order Arguments by Strength and Argue Linearly",
+      "description": "Die lernende Person kann Argumente nach ihrer Stichhaltigkeit ordnen und einen argumentierenden Text linear aufbauen, z. B. in Form eines sachlichen Briefs.",
+      "descriptionEn": "The learner can order arguments by their strength and structure an argumentative text linearly, for example as a formal letter.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-german",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "E"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BY"
+        ]
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "17164008-3c30-4d22-8f2b-bf2e5a79f9de",
+      "title": "Komplexere argumentierende Texte differenziert verfassen",
+      "titleEn": "Write More Complex Argumentative Texts in a Differentiated Way",
+      "description": "Die lernende Person kann textbezogen oder materialgestützt komplexere argumentierende Texte verfassen, ihre Argumente schlüssig strukturieren, Gegenargumente einbeziehen und abwägende Schlussfolgerungen formulieren.",
+      "descriptionEn": "The learner can write more complex argumentative texts based on texts or materials, structure arguments coherently, include counterarguments, and formulate balanced conclusions.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-german",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "E"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BY"
+        ]
+      },
+      "type": "atomic"
+    },
+    {
       "id": "be66ab87-1857-561e-ad91-bae56b3ae849",
+      "title": "Medien reflektiert nutzen und analysieren",
+      "titleEn": "Use and Analyze Media Reflectively",
+      "description": "Cluster zum reflektierten und kritischen Umgang mit Medien sowie zur Analyse audiovisueller und multimodaler Formate.",
+      "descriptionEn": "Cluster for reflective and critical media use and for analyzing audiovisual and multimodal formats.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "contains": [
+        "001b6ae3-207a-400d-852d-2c4068df8d2f",
+        "d4642285-5b73-4541-a088-6c1e77b37637",
+        "fb8f990d-224f-4277-92a1-13bee8f7f8a4"
+      ],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-german",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "E"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-HE"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "f1ba2118-853f-4aa0-bef5-4f749bc621ed",
+          "sourceLandscapeTitle": "Deutsch Oberstufe (Hessen, KC 2024)",
+          "sourceGoalId": "2a05c3d3-992e-4360-957c-aa10faa51ed9"
+        }
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "001b6ae3-207a-400d-852d-2c4068df8d2f",
       "title": "Medienanalyse Grundlage",
       "titleEn": "Media Analysis Basics",
       "description": "Die lernende Person kann mediale Beiträge (z. B. Artikel, Posts) hinsichtlich Intention und zentraler Mittel untersuchen.",
@@ -382,7 +644,6 @@
       },
       "applicability": {
         "jurisdiction": [
-          "DE-BY",
           "DE-HE"
         ]
       },
@@ -392,6 +653,60 @@
           "sourceLandscapeTitle": "Deutsch Oberstufe (Hessen, KC 2024)",
           "sourceGoalId": "2a05c3d3-992e-4360-957c-aa10faa51ed9"
         }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "d4642285-5b73-4541-a088-6c1e77b37637",
+      "title": "Unterschiedliche Medien reflektiert und kritisch nutzen",
+      "titleEn": "Use Different Media Reflectively and Critically",
+      "description": "Die lernende Person kann unterschiedliche Medien reflektiert und kritisch nutzen, um sich zu informieren und sich eine Meinung zu bilden.",
+      "descriptionEn": "The learner can use different media reflectively and critically to inform themselves and form an opinion.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-german",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "E"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BY"
+        ]
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "fb8f990d-224f-4277-92a1-13bee8f7f8a4",
+      "title": "Filme, Hörtexte und grafische Literatur analysieren und interpretieren",
+      "titleEn": "Analyze and Interpret Films, Audio Texts, and Graphic Literature",
+      "description": "Die lernende Person kann Filme oder Filmsequenzen analysieren und interpretieren, Deutungshypothesen überprüfen und bei Bedarf auch Hörtexte oder grafische Literatur als eigenständige Kunstwerke beurteilen.",
+      "descriptionEn": "The learner can analyze and interpret films or film sequences, test interpretive hypotheses, and when appropriate also assess audio texts or graphic literature as independent works of art.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-german",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "E"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BY"
+        ]
       },
       "type": "atomic"
     },
@@ -418,7 +733,6 @@
       },
       "applicability": {
         "jurisdiction": [
-          "DE-BY",
           "DE-HE"
         ]
       },
@@ -453,7 +767,6 @@
       },
       "applicability": {
         "jurisdiction": [
-          "DE-BY",
           "DE-HE"
         ]
       },
@@ -489,7 +802,6 @@
       },
       "applicability": {
         "jurisdiction": [
-          "DE-BY",
           "DE-HE"
         ]
       },
@@ -525,7 +837,6 @@
       },
       "applicability": {
         "jurisdiction": [
-          "DE-BY",
           "DE-HE"
         ]
       },
@@ -535,6 +846,146 @@
           "sourceLandscapeTitle": "Deutsch Oberstufe (Hessen, KC 2024)",
           "sourceGoalId": "8550652f-f4fa-46c9-b975-e93a20dd497d"
         }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "139e4c3f-3702-41e7-bf10-71b89d8dd75f",
+      "title": "Literarische Texte grundlegend gattungsspezifisch erschließen",
+      "titleEn": "Develop a Basic Genre-Specific Understanding of Literary Texts",
+      "description": "Die lernende Person kann Inhalt, Aufbau und Gestaltung literarischer Texte im Zusammenwirken erschließen, grundlegende gattungsspezifische Kategorien in Epik, Drama und Lyrik anwenden und Fiktionalitätssignale erkennen.",
+      "descriptionEn": "The learner can develop an understanding of the interplay of content, structure, and design in literary texts, apply basic genre-specific categories in epic, drama, and lyric, and recognize signals of fictionality.",
+      "weight": 1,
+      "tags": [
+        "skill:lesen",
+        "GK",
+        "LK"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-german",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "E"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BY"
+        ]
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "abff3835-09b4-4024-99b8-e1b2cdf955ff",
+      "title": "Literarische Texte mit erweiterten gattungsspezifischen Kategorien erschließen",
+      "titleEn": "Develop Literary Understanding with Expanded Genre-Specific Categories",
+      "description": "Die lernende Person kann Inhalt, Aufbau und Gestaltung literarischer Texte im Zusammenwirken erschließen, erweiterte gattungsspezifische Kategorien in Epik, Drama und Lyrik anwenden und Fiktionalitätssignale reflektieren.",
+      "descriptionEn": "The learner can develop an understanding of the interplay of content, structure, and design in literary texts, apply expanded genre-specific categories in epic, drama, and lyric, and reflect on signals of fictionality.",
+      "weight": 1,
+      "tags": [
+        "skill:lesen",
+        "GK",
+        "LK"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-german",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "E"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BY"
+        ]
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "06adb7c2-1a89-48b9-bfd2-8f1bc84d31af",
+      "title": "Literarische Texte vertieft gattungsspezifisch analysieren",
+      "titleEn": "Analyze Literary Texts in Greater Genre-Specific Depth",
+      "description": "Die lernende Person kann literarische Texte in ihrem Zusammenwirken vertieft erschließen, traditionelle und moderne Gestaltungsmittel in Epik, Drama und Lyrik untersuchen und dabei auch den Textbegriff reflektieren.",
+      "descriptionEn": "The learner can analyze literary texts in greater depth, examine traditional and modern devices in epic, drama, and lyric, and reflect on the concept of text itself.",
+      "weight": 1,
+      "tags": [
+        "skill:lesen",
+        "GK",
+        "LK"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-german",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "E"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BY"
+        ]
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "fc121034-b6c8-4daf-8762-6f32b2bed9ac",
+      "title": "Literarische Texte mit Deutungshypothese interpretieren",
+      "titleEn": "Interpret Literary Texts with an Interpretive Hypothesis",
+      "description": "Die lernende Person kann literarische Texte interpretieren, eine Deutungshypothese formulieren und begründen sowie Überlegungen zu Inhalt, Aufbau und sprachlich-stilistischen sowie gattungsspezifischen Gestaltungsmitteln argumentativ entfalten.",
+      "descriptionEn": "The learner can interpret literary texts, formulate and justify an interpretive hypothesis, and argue coherently about content, structure, stylistic features, and genre-specific devices.",
+      "weight": 1,
+      "tags": [
+        "skill:lesen",
+        "GK",
+        "LK"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-german",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "E"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BY"
+        ]
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "ee95b531-b189-4767-ad94-d539baccfc6d",
+      "title": "Literarische Texte kontextbezogen und vergleichend interpretieren",
+      "titleEn": "Interpret Literary Texts in Context and by Comparison",
+      "description": "Die lernende Person kann literarische Texte interpretieren, gesellschaftliche, poetologische, philosophische, biografische oder historische Kontexte einbeziehen und zentrale Themen und Motive vergleichend über Zeiten und Kulturräume hinweg untersuchen.",
+      "descriptionEn": "The learner can interpret literary texts, incorporate social, poetological, philosophical, biographical, or historical contexts, and compare central themes and motifs across times and cultures.",
+      "weight": 1,
+      "tags": [
+        "skill:lesen",
+        "GK",
+        "LK"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-german",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "E"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BY"
+        ]
       },
       "type": "atomic"
     },

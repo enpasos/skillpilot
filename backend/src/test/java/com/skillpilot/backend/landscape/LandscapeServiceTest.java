@@ -726,7 +726,7 @@ class LandscapeServiceTest {
                                 .extracting(LearningGoal::getTitle)
                                 .contains(
                                                 "Warum Griechisch? - Relevanz und Orientierung",
-                                                "Lektüre E-Phase Griechisch",
+                                                "Originaltexte kursorisch lesen und Inhalte erfassen",
                                                 "Lektüre Q1 Griechisch",
                                                 "Lektüre Q4 Griechisch",
                                                 "Abiturprüfung Griechisch (GK)",

@@ -136,7 +136,6 @@
       },
       "applicability": {
         "jurisdiction": [
-          "DE-BY",
           "DE-HE"
         ]
       },
@@ -618,16 +617,19 @@
     },
     {
       "id": "c5d04946-497e-5ede-84ec-2d019138e3a0",
-      "title": "Grundlegende Datentypen und Variablen nutzen",
-      "titleEn": "Use basic data types and variables",
-      "description": "Die lernende Person kann einfache Datentypen und Variablen deklarieren sowie Ein-/Ausgabe implementieren.",
-      "descriptionEn": "The learner can declare simple data types and variables and implement input/output.",
+      "title": "Programmdaten und Objektzustände nutzen",
+      "titleEn": "Use Program Data and Object States",
+      "description": "Cluster zum Nutzen grundlegender Variablen, Ein-/Ausgabe und Zustandsänderungen in einfachen Programmen.",
+      "descriptionEn": "Cluster for using basic variables, input/output, and state changes in simple programs.",
       "weight": 0.9,
       "tags": [
         "GK",
         "LK"
       ],
-      "contains": [],
+      "contains": [
+        "18317e31-71f7-4e4a-b18c-f61e2b25769d",
+        "2aaefe0b-3e56-477e-94f0-bb05fa035ed5"
+      ],
       "requires": [],
       "dimensionTags": {
         "framework": "hessen-kc-2024-informatics",
@@ -657,6 +659,83 @@
           "sourceGoalId": "944546be-1a5b-4978-a1db-38a841d332ae"
         }
       },
+      "type": "cluster"
+    },
+    {
+      "id": "18317e31-71f7-4e4a-b18c-f61e2b25769d",
+      "title": "Grundlegende Datentypen und Variablen nutzen",
+      "titleEn": "Use basic data types and variables",
+      "description": "Die lernende Person kann einfache Datentypen und Variablen deklarieren sowie Ein-/Ausgabe implementieren.",
+      "descriptionEn": "The learner can declare simple data types and variables and implement input/output.",
+      "weight": 0.9,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-informatics",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "P3"
+        ],
+        "guidingIdeas": [
+          "I1",
+          "I2",
+          "I3",
+          "I4",
+          "I5"
+        ],
+        "phase": "E"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-HE"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "c1a02ddd-736d-4975-920b-18b03aff147f",
+          "sourceLandscapeTitle": "Informatik Oberstufe (Hessen, KC 2024)",
+          "sourceGoalId": "944546be-1a5b-4978-a1db-38a841d332ae"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "2aaefe0b-3e56-477e-94f0-bb05fa035ed5",
+      "title": "Attributwerte ändern und Objektzustände deuten",
+      "titleEn": "Modify Attribute Values and Interpret Object States",
+      "description": "Die lernende Person kann bei der Implementierung Wertzuweisungen verwenden, um Attributwerte zu ändern, und diese als Zustandsänderung des zugehörigen Objekts deuten.",
+      "descriptionEn": "The learner can use assignments during implementation to change attribute values and interpret them as state changes of the corresponding object.",
+      "weight": 0.9,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-informatics",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "P3"
+        ],
+        "guidingIdeas": [
+          "I1",
+          "I2",
+          "I3",
+          "I4",
+          "I5"
+        ],
+        "phase": "E"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BY"
+        ]
+      },
       "type": "atomic"
     },
     {
@@ -672,7 +751,7 @@
       ],
       "contains": [],
       "requires": [
-        "c5d04946-497e-5ede-84ec-2d019138e3a0"
+        "18317e31-71f7-4e4a-b18c-f61e2b25769d"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-informatics",
@@ -1266,16 +1345,19 @@
     },
     {
       "id": "300d490f-e5bf-541a-a4c7-a136e97c42ea",
-      "title": "Objekte instanziieren",
-      "titleEn": "Instantiate Objects",
-      "description": "Die lernende Person kann das Zusammenspiel von Klasse, Attributen, Methoden und Konstruktoren erläutern.",
-      "descriptionEn": "The learner can explain the interaction of class, attributes, methods, and constructors.",
+      "title": "Klassen und Objekte erschließen",
+      "titleEn": "Develop Classes and Objects",
+      "description": "Cluster zum Erschließen von Klassen, Objekten, Attributen und Methoden in einfachen objektorientierten Modellen.",
+      "descriptionEn": "Cluster for developing classes, objects, attributes, and methods in simple object-oriented models.",
       "weight": 1,
       "tags": [
         "GK",
         "LK"
       ],
-      "contains": [],
+      "contains": [
+        "cb2af3ef-c261-4d92-bc30-3eeb7a2af96a",
+        "6c284640-1f28-4837-aabd-445656ad7f54"
+      ],
       "requires": [],
       "dimensionTags": {
         "framework": "hessen-kc-2024-informatics",
@@ -1303,6 +1385,81 @@
           "sourceLandscapeTitle": "Informatik Oberstufe (Hessen, KC 2024)",
           "sourceGoalId": "6836e91a-2ec5-4a8d-9a56-1ad7d1c9be5d"
         }
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "cb2af3ef-c261-4d92-bc30-3eeb7a2af96a",
+      "title": "Objekte instanziieren",
+      "titleEn": "Instantiate Objects",
+      "description": "Die lernende Person kann das Zusammenspiel von Klasse, Attributen, Methoden und Konstruktoren erläutern.",
+      "descriptionEn": "The learner can explain the interaction of class, attributes, methods, and constructors.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-informatics",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "P1",
+          "P2"
+        ],
+        "guidingIdeas": [
+          "I1",
+          "I3",
+          "I4"
+        ],
+        "phase": "Q1"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-HE"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "c1a02ddd-736d-4975-920b-18b03aff147f",
+          "sourceLandscapeTitle": "Informatik Oberstufe (Hessen, KC 2024)",
+          "sourceGoalId": "6836e91a-2ec5-4a8d-9a56-1ad7d1c9be5d"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "6c284640-1f28-4837-aabd-445656ad7f54",
+      "title": "Objekte analysieren und zu Klassen abstrahieren",
+      "titleEn": "Analyze Objects and Abstract Them into Classes",
+      "description": "Die lernende Person kann Objekte aus ihrer Erfahrungswelt anhand von Attributen und Methoden analysieren, zu Klassen abstrahieren und Objekte und Klassen grafisch darstellen.",
+      "descriptionEn": "The learner can analyze objects from everyday experience by attributes and methods, abstract them into classes, and represent objects and classes graphically.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-informatics",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "P1",
+          "P2"
+        ],
+        "guidingIdeas": [
+          "I1",
+          "I3",
+          "I4"
+        ],
+        "phase": "Q1"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BY"
+        ]
       },
       "type": "atomic"
     },
@@ -1534,16 +1691,19 @@
     },
     {
       "id": "7c2d2a49-c4a4-51b6-be7b-e8791f82af5a",
-      "title": "Suchalgorithmen implementieren",
-      "titleEn": "Implement Search Algorithms",
-      "description": "Die lernende Person kann lineare und binäre Suche korrekt programmieren.",
-      "descriptionEn": "The learner can correctly program linear and binary search.",
+      "title": "Algorithmen auf linearen Datenstrukturen entwickeln",
+      "titleEn": "Develop Algorithms on Linear Data Structures",
+      "description": "Cluster zum Entwickeln und Implementieren von Suchverfahren sowie weiterer einfacher Algorithmen auf Listen und Feldern.",
+      "descriptionEn": "Cluster for developing and implementing search procedures and other simple algorithms on lists and arrays.",
       "weight": 1,
       "tags": [
         "GK",
         "LK"
       ],
-      "contains": [],
+      "contains": [
+        "2a87fb3c-394b-47b4-bda2-58c5f1403475",
+        "c62c529f-3732-4c66-a8e4-6d91ed2285d0"
+      ],
       "requires": [],
       "dimensionTags": {
         "framework": "hessen-kc-2024-informatics",
@@ -1571,6 +1731,79 @@
           "sourceGoalId": "4b27cd79-2922-4f23-a545-d25042aac6d5"
         }
       },
+      "type": "cluster"
+    },
+    {
+      "id": "2a87fb3c-394b-47b4-bda2-58c5f1403475",
+      "title": "Suchalgorithmen implementieren",
+      "titleEn": "Implement Search Algorithms",
+      "description": "Die lernende Person kann lineare und binäre Suche korrekt programmieren.",
+      "descriptionEn": "The learner can correctly program linear and binary search.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-informatics",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "P3"
+        ],
+        "guidingIdeas": [
+          "I1",
+          "I3",
+          "I4"
+        ],
+        "phase": "Q1"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-HE"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "c1a02ddd-736d-4975-920b-18b03aff147f",
+          "sourceLandscapeTitle": "Informatik Oberstufe (Hessen, KC 2024)",
+          "sourceGoalId": "4b27cd79-2922-4f23-a545-d25042aac6d5"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "c62c529f-3732-4c66-a8e4-6d91ed2285d0",
+      "title": "Algorithmen auf Listen und Feldern entwickeln und implementieren",
+      "titleEn": "Develop and Implement Algorithms on Lists and Arrays",
+      "description": "Die lernende Person kann eine vorhandene lineare Datenstruktur (Liste oder Feld) nutzen, um Algorithmen zur Lösung angemessener Problemstellungen, z. B. zur Suche des Maximums, zu entwickeln und zu implementieren.",
+      "descriptionEn": "The learner can use an existing linear data structure (list or array) to develop and implement algorithms for appropriate problem settings, for example to find a maximum.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-informatics",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "P3"
+        ],
+        "guidingIdeas": [
+          "I1",
+          "I3",
+          "I4"
+        ],
+        "phase": "Q1"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BY"
+        ]
+      },
       "type": "atomic"
     },
     {
@@ -1586,7 +1819,7 @@
       ],
       "contains": [],
       "requires": [
-        "7c2d2a49-c4a4-51b6-be7b-e8791f82af5a"
+        "2a87fb3c-394b-47b4-bda2-58c5f1403475"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-informatics",
@@ -2116,15 +2349,18 @@
     },
     {
       "id": "7d4fe994-2325-5fa9-8718-491957da4eed",
-      "title": "Graphbegriffe kennen",
-      "titleEn": "Know Graph Terms",
-      "description": "Die lernende Person kann Knoten, Kanten, Pfade sowie gerichtete und gewichtete Graphen erläutern.",
-      "descriptionEn": "The learner can explain nodes, edges, paths, as well as directed and weighted graphs.",
+      "title": "Graphbegriffe und vernetzte Strukturen",
+      "titleEn": "Graph Concepts and Networked Structures",
+      "description": "Cluster zu Graphbegriffen sowie zur Modellierung und Klassifikation vernetzter Strukturen.",
+      "descriptionEn": "Cluster for graph concepts and for modeling and classifying networked structures.",
       "weight": 1,
       "tags": [
         "LK"
       ],
-      "contains": [],
+      "contains": [
+        "f0910b55-48a9-4f81-aed6-d15ac0446c70",
+        "c9d20743-dfda-4425-ae40-8f51d9f0c72a"
+      ],
       "requires": [],
       "dimensionTags": {
         "framework": "hessen-kc-2024-informatics",
@@ -2151,6 +2387,77 @@
           "sourceLandscapeTitle": "Informatik Oberstufe (Hessen, KC 2024)",
           "sourceGoalId": "62bec828-2f85-4672-8946-94f81607ab20"
         }
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "f0910b55-48a9-4f81-aed6-d15ac0446c70",
+      "title": "Graphbegriffe kennen",
+      "titleEn": "Know Graph Terms",
+      "description": "Die lernende Person kann Knoten, Kanten, Pfade sowie gerichtete und gewichtete Graphen erläutern.",
+      "descriptionEn": "The learner can explain nodes, edges, paths, as well as directed and weighted graphs.",
+      "weight": 1,
+      "tags": [
+        "LK"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-informatics",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "P2"
+        ],
+        "guidingIdeas": [
+          "I1",
+          "I3",
+          "I4"
+        ],
+        "phase": "Q1"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-HE"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "c1a02ddd-736d-4975-920b-18b03aff147f",
+          "sourceLandscapeTitle": "Informatik Oberstufe (Hessen, KC 2024)",
+          "sourceGoalId": "62bec828-2f85-4672-8946-94f81607ab20"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "c9d20743-dfda-4425-ae40-8f51d9f0c72a",
+      "title": "Vernetzte Strukturen als Graphen modellieren und klassifizieren",
+      "titleEn": "Model and Classify Networked Structures as Graphs",
+      "description": "Die lernende Person kann vernetzte Strukturen in praktischen Fragestellungen als Graphen modellieren und diese anhand ihrer Eigenschaften klassifizieren.",
+      "descriptionEn": "The learner can model networked structures in practical contexts as graphs and classify them by their properties.",
+      "weight": 1,
+      "tags": [
+        "LK"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-informatics",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "P2"
+        ],
+        "guidingIdeas": [
+          "I1",
+          "I3",
+          "I4"
+        ],
+        "phase": "Q1"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BY"
+        ]
       },
       "type": "atomic"
     },
@@ -3315,7 +3622,6 @@
       },
       "applicability": {
         "jurisdiction": [
-          "DE-BY",
           "DE-HE"
         ]
       },
@@ -3341,7 +3647,7 @@
       ],
       "contains": [],
       "requires": [
-        "3e3264d6-8cf8-55f9-b085-1aa4a7865476"
+        "fbd4561a-573e-5f8c-b363-338ee9774b5c"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-informatics",
@@ -3511,6 +3817,52 @@
       "id": "9b497287-aa68-5bb1-974f-5be11dd11ae2",
       "title": "Grenzen endlicher Automaten erkennen",
       "titleEn": "Recognize Limits of Finite Automata",
+      "description": "Cluster zum Erkennen der Grenzen endlicher Automaten und regulärer Sprachen.",
+      "descriptionEn": "Cluster for recognizing the limits of finite automata and regular languages.",
+      "weight": 1.1,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "contains": [
+        "10a3b2a3-8c1c-4dfb-9d48-8f67f2c0004d",
+        "e7fb0601-4207-4bd8-8c40-1f544590b855"
+      ],
+      "requires": [
+        "7ad8caf0-3a31-56f1-bee1-574c01b0c156"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-informatics",
+        "demandLevel": "AB3",
+        "processCompetencies": [
+          "P2",
+          "P5"
+        ],
+        "guidingIdeas": [
+          "I1",
+          "I2",
+          "I5"
+        ],
+        "phase": "Q3"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-HE"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "c1a02ddd-736d-4975-920b-18b03aff147f",
+          "sourceLandscapeTitle": "Informatik Oberstufe (Hessen, KC 2024)",
+          "sourceGoalId": "fd993f0c-65cb-47c5-8eee-e0da06ccb36f"
+        }
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "10a3b2a3-8c1c-4dfb-9d48-8f67f2c0004d",
+      "title": "Grenzen endlicher Automaten erkennen",
+      "titleEn": "Recognize Limits of Finite Automata",
       "description": "Die lernende Person kann die Grenzen regulärer Sprachen anhand eines Beispiels argumentieren.",
       "descriptionEn": "The learner can argue the limits of regular languages using an example.",
       "weight": 1.1,
@@ -3551,6 +3903,42 @@
       "type": "atomic"
     },
     {
+      "id": "e7fb0601-4207-4bd8-8c40-1f544590b855",
+      "title": "Nichtreguläre Sprachen als Grenze endlicher Automaten erläutern",
+      "titleEn": "Explain Non-Regular Languages as a Limit of Finite Automata",
+      "description": "Die lernende Person kann anhand eines Beispiels wie beliebig tief geschachtelten Klammerausdrücken erläutern, dass es nichtreguläre Sprachen gibt und dass endliche Automaten für deren Verarbeitung nicht ausreichen.",
+      "descriptionEn": "The learner can use an example such as arbitrarily nested parenthesized expressions to explain that non-regular languages exist and that finite automata are insufficient to process them.",
+      "weight": 1.1,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "7ad8caf0-3a31-56f1-bee1-574c01b0c156"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-informatics",
+        "demandLevel": "AB3",
+        "processCompetencies": [
+          "P2",
+          "P5"
+        ],
+        "guidingIdeas": [
+          "I1",
+          "I2",
+          "I5"
+        ],
+        "phase": "Q3"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BY"
+        ]
+      },
+      "type": "atomic"
+    },
+    {
       "id": "52ab668f-87b6-5661-af2a-3dc38557dcf6",
       "title": "Q3.3 Kellerautomat",
       "titleEn": "Q3.3 Pushdown Automata",
@@ -3586,7 +3974,6 @@
       },
       "applicability": {
         "jurisdiction": [
-          "DE-BY",
           "DE-HE"
         ]
       },
@@ -3627,7 +4014,6 @@
       },
       "applicability": {
         "jurisdiction": [
-          "DE-BY",
           "DE-HE"
         ]
       },
@@ -3702,7 +4088,7 @@
         "8f89ef67-f521-5eab-919b-e74f59f3178b"
       ],
       "requires": [
-        "52ab668f-87b6-5661-af2a-3dc38557dcf6"
+        "9b497287-aa68-5bb1-974f-5be11dd11ae2"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-informatics",
@@ -5174,7 +5560,6 @@
       },
       "applicability": {
         "jurisdiction": [
-          "DE-BY",
           "DE-HE"
         ]
       },
@@ -5664,7 +6049,7 @@
       ],
       "contains": [],
       "requires": [
-        "7c2d2a49-c4a4-51b6-be7b-e8791f82af5a"
+        "2a87fb3c-394b-47b4-bda2-58c5f1403475"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-informatics",

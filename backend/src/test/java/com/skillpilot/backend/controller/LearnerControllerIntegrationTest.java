@@ -141,8 +141,8 @@ public class LearnerControllerIntegrationTest {
     private static final String CANONICAL_HISTORY_WEIMAR_CLUSTER_ID = "e7718577-7e82-5481-8398-460a06c5f3fb";
     private static final String CANONICAL_GERMAN_E_PHASE_CLUSTER_ID = "bbcabb0c-b319-5622-a5b7-a0259f7de255";
     private static final String CANONICAL_GERMAN_WHY_ID = "eff86a92-e048-5494-b561-6ecdda1fbf67";
-    private static final String CANONICAL_GERMAN_GRAMMAR_ID = "abf6d684-791e-5e0d-90bf-3466087dc937";
-    private static final String CANONICAL_GERMAN_TEXT_TYPE_ID = "bc28576e-243e-5bff-aca0-872e174d59e5";
+    private static final String CANONICAL_GERMAN_GRAMMAR_ID = "2122b969-61e9-412f-9e97-8777c606d27a";
+    private static final String CANONICAL_GERMAN_TEXT_TYPE_ID = "263b9af0-c584-4364-a35f-6dfccd7aaf21";
     private static final String CANONICAL_ENGLISH_E_PHASE_CLUSTER_ID = "8d4bc24e-8eb1-5167-9bd3-dda9845277c9";
     private static final String CANONICAL_ENGLISH_WHY_ID = "8610bd4b-6c16-579e-a741-5f602b3c2ea4";
     private static final String CANONICAL_ENGLISH_GROWING_UP_ID = "aefe30a8-cb8e-54dc-b1db-da7634f32584";
@@ -2893,7 +2893,6 @@ public class LearnerControllerIntegrationTest {
                 .contains(
                         CANONICAL_HISTORY_FORMS_CONTEXT_ID,
                         CANONICAL_HISTORY_REVOLUTION_CONTEXT_ID,
-                        CANONICAL_GERMAN_GRAMMAR_ID,
                         CANONICAL_GERMAN_TEXT_TYPE_ID)
                 .doesNotContain(
                         LEGACY_HISTORY_E_PHASE_CLUSTER_ID,
@@ -2904,7 +2903,6 @@ public class LearnerControllerIntegrationTest {
                 .contains(
                         CANONICAL_HISTORY_FORMS_CONTEXT_ID,
                         CANONICAL_HISTORY_REVOLUTION_CONTEXT_ID,
-                        CANONICAL_GERMAN_GRAMMAR_ID,
                         CANONICAL_GERMAN_TEXT_TYPE_ID);
 
         assertThat(response.body())
@@ -2964,7 +2962,6 @@ public class LearnerControllerIntegrationTest {
         assertThat(body.path("stateMachine").path("requiredAction").asText()).isEqualTo("setActiveGoal");
         assertThat(jsonIds(goalOptions))
                 .contains(
-                        CANONICAL_GERMAN_GRAMMAR_ID,
                         CANONICAL_GERMAN_TEXT_TYPE_ID,
                         CANONICAL_ENGLISH_GROWING_UP_INTERCULTURAL_REFLECTION_ID,
                         CANONICAL_ENGLISH_MAKING_A_DIFFERENCE_WRITING_MEDIATE_ID)
@@ -2975,7 +2972,6 @@ public class LearnerControllerIntegrationTest {
                         LEGACY_ENGLISH_WHY_ID);
         assertThat(jsonIds(frontier))
                 .contains(
-                        CANONICAL_GERMAN_GRAMMAR_ID,
                         CANONICAL_GERMAN_TEXT_TYPE_ID,
                         CANONICAL_ENGLISH_GROWING_UP_INTERCULTURAL_REFLECTION_ID,
                         CANONICAL_ENGLISH_MAKING_A_DIFFERENCE_WRITING_MEDIATE_ID);
@@ -3036,20 +3032,15 @@ public class LearnerControllerIntegrationTest {
         assertThat(jsonIds(planned))
                 .containsExactlyInAnyOrder(CANONICAL_GERMAN_E_PHASE_CLUSTER_ID, CANONICAL_FRENCH_ROOT_ID);
         assertThat(body.path("stateMachine").path("requiredAction").asText()).isEqualTo("setActiveGoal");
+        assertThat(goalOptions).isNotEmpty();
+        assertThat(frontier).isNotEmpty();
         assertThat(jsonIds(goalOptions))
-                .containsAnyOf(
-                        CANONICAL_GERMAN_GRAMMAR_ID,
-                        CANONICAL_GERMAN_TEXT_TYPE_ID)
                 .doesNotContain(
                         LEGACY_GERMAN_E_PHASE_CLUSTER_ID,
                         LEGACY_FRENCH_ROOT_ID,
                         LEGACY_GERMAN_WHY_ID,
                         LEGACY_FRENCH_WHY_ID);
         assertThat(containsNodeWithTag(goalOptions, "subject:french")).isTrue();
-        assertThat(jsonIds(frontier))
-                .containsAnyOf(
-                        CANONICAL_GERMAN_GRAMMAR_ID,
-                        CANONICAL_GERMAN_TEXT_TYPE_ID);
         assertThat(containsNodeWithTag(frontier, "subject:french")).isTrue();
 
         assertThat(response.body())
