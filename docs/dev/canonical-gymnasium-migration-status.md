@@ -1396,3 +1396,34 @@ Interpretation:
 - the Bavaria Sek-I mathematics pilot no longer has an unmapped reviewed-source gap in the `J5-J10` corridor
 - the next substantive work should therefore not be another residual Bavaria `M5` authoring patch
 - the next widening step should move back to applicability-review scope using `docs/dev/canonical-gymnasium-applicability-design.md` and its `R1-R7` / `A1-A5` review gates
+
+
+### 2026-03-20: Bavaria function-value applicability debt reduced from `APV-201` to `APV-202`
+
+Approach used:
+
+- reviewed the two remaining Bavaria math function-value visibility cases that still relied on explicit `DE-BY` applicability overrides
+- replaced each override-backed visibility path with the narrowest reviewed Bavaria source bridge that still fits as a `partial` mapping
+- kept the canonical goal semantics unchanged; only the Bavaria review basis and warning family changed
+
+Applied changes:
+
+- remapped Bavaria source leaf `32a0f358-c1e9-5663-b8cf-67789355387c` from the broad function-concept atom to `Funktionswerte aus Graphen ablesen`
+- remapped Bavaria source leaf `7ee3da1c-1f20-5038-9828-ab74e0e1e49f` from the broad J7 variable-term corridor to `Funktionswerte berechnen`
+- removed the explicit `extendedData.applicabilityOverrides.jurisdiction = ["DE-BY"]` entries from the two canonical function-value goals
+- converted the two accepted Bavaria math findings from `APV-201` to `APV-202` in the accepted-warning registry
+
+Validation used:
+
+- `npm run validate:view-filters`
+- `./gradlew test --tests 'com.skillpilot.backend.landscape.GoalMappingRepositoryFixtureTest'`
+
+Validation result:
+
+- `validate:view-filters` still passes and now classifies the two reviewed Bavaria function-value cases as accepted `APV-202` findings instead of explicit-override `APV-201` findings
+- the repository-backed Bavaria math mapping fixture test passes with the reviewed remap tuples
+
+Interpretation:
+
+- reviewed Bavaria math no longer depends on Bavaria-specific explicit applicability overrides for the canonical function-value pair
+- the residual Bavaria math debt on this slice is now partial-bridge review debt, not override debt
