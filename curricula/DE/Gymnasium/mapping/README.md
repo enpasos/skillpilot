@@ -14,3 +14,5 @@ Current active lanes:
 - `DE-HE/upper-secondary`
 - `DE-HE/lower-secondary`
 - `DE-BY/gymnasium`
+
+Planned lanes may exist as README-only scaffolds before the first real mapping fixture is added.

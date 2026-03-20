@@ -275,8 +275,17 @@ Current close-out headline:
 
 Operational consequence:
 
-- prioritize work on optional out-of-scope items such as whether to include Bavaria `abi/` assets as mandatory scope
-- de-prioritize work that only re-validates already-completed close-out gates
+- keep the historical close-out score stable, but shift new expansion work onto a Mathematics-first DE-wide track
+- prefer adding the next Bundesland to canonical Gymnasium `Mathematik` over widening additional non-math subject lanes
+- keep the migration unit didactically closed even on that Math-first track; do not switch to whole-subject or whole-state big-bang cutovers
+- treat source import and mapping-lane setup for the next mathematics state as higher priority than optional out-of-scope items such as Bavaria `abi/` scope debates
+
+Strategic refocus on `2026-03-20`:
+
+- after the reviewed Bavaria applicability close-out across the currently active subject set, the next convergence pressure should come from **new Bundesländer in canonical Gymnasium Mathematics**
+- current mapping archive reality still reflects only `DE-HE` and `DE-BY`; the next meaningful architecture test is therefore a third state on the shared canonical math spine, not more subject breadth on the same two-state base
+- the working model from here on is: **Mathematics first, one Bundesland at a time, one didactically closed corridor at a time**
+- see `docs/dev/canonical-gymnasium-math-de-expansion-plan.md` for the concrete ordering and onboarding criteria
 
 ## Work packages
 

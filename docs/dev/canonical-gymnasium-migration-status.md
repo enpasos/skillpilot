@@ -1949,3 +1949,32 @@ Interpretation:
 
 - Bavaria Informatik drops from `3` to `1` reviewed `APV-202` case
 - the remaining Bavaria Informatik debt is now the higher-data-structure list/stack corridor around `Stapeln und Warteschlangen nutzen` (`898684c0-027c-5fc8-8448-6f33fc26d5b4`)
+
+### 2026-03-20: Bavaria Informatik list-operations split closes the last reviewed APV-202 case
+
+What changed:
+
+- the Bavaria source goal `340f8522-7e39-5361-8886-4c8767a76af2` no longer maps partially into the Hessen-shaped canonical atom `Stapeln und Warteschlangen nutzen` (`898684c0-027c-5fc8-8448-6f33fc26d5b4`)
+- instead, canonical goal `898684c0-027c-5fc8-8448-6f33fc26d5b4` was turned into a small mixed-state cluster in `DE_DEU_S_GYM_CANONICAL_INFORMATIK.de.json`
+- the Hessen semantics now live on the new `DE-HE` leaf `8179e63e-764c-4348-a5f1-f738fb2cc04e` (`Stapeln und Warteschlangen nutzen`), and the Bavaria wording now lives on the new `DE-BY` leaf `0bfd9371-8a7b-407c-9244-fe6ecbe2b56d` (`Operationen auf einfach verketteten Listen entwickeln`)
+- the Hessen mapping in `hessen_informatics_upper_secondary_to_canonical_informatics.json` was repointed from the former shared atom to the new Hessen-only leaf
+- the Bavaria mapping in `bavaria_informatics_to_canonical_informatics.json` was upgraded from partial to exact against the new Bavaria-only leaf
+- the shared canonical goal `Binäre Bäume bearbeiten` (`56a88f2f-cc47-5e1d-b7d9-1822a66e3b91`) continues to require the mixed-state cluster, so the shared higher-data-structure route stays visible without widening the Hessen-only stack/queue leaf
+- the obsolete accepted warning for canonical goal `898684c0-027c-5fc8-8448-6f33fc26d5b4` was removed from `applicability-accepted-warnings.json`
+
+Validation used:
+
+- `npm run validate:graph`
+- `npm run validate:view-filters`
+- `./run_ci.sh`
+
+Validation result:
+
+- `validate:graph` passes
+- `validate:view-filters` passes with `0` errors, `25` active warnings, and `160` accepted warnings
+- full `./run_ci.sh` passes
+
+Interpretation:
+
+- Bavaria Informatik drops from `1` to `0` reviewed `APV-202` cases
+- the reviewed Bavaria Informatik applicability lane is now closed; the next cut should move to another subject
