@@ -8,8 +8,8 @@
   "frameworkId": "canonical-gymnasium-math",
   "title": "Mathematik (Gymnasium, DE)",
   "titleEn": "Mathematics (Gymnasium, DE)",
-  "description": "Mathematik für das Gymnasium in Deutschland. Die aktuelle Baseline sichert die hessische Oberstufe vollständig, realisiert nun Jahrgangsanker J5 bis J10 für die Sekundarstufe I und erweitert den vorhandenen Sek-I-Funktionsanschluss um erste arithmetische, algebraische, geometrische, datenbezogene, stochastische und trigonometrische Ankerkorridore.",
-  "descriptionEn": "Mathematics for Gymnasium in Germany. The current baseline fully secures the Hessian upper-secondary curriculum, now realizes lower-secondary year anchors J5 to J10, and extends the existing lower-secondary function bridge with first arithmetic, algebraic, geometry, data, stochastic, and trigonometric anchor corridors.",
+  "description": "Mathematik für das Gymnasium in Deutschland. Die Landschaft sichert die hessische Oberstufe vollständig, realisiert kanonische Jahrgangsanker J5 bis J10 für die Sekundarstufe I und deckt arithmetische, algebraische, geometrische, datenbezogene, stochastische und trigonometrische Korridore für DE-HE und DE-BY ab.",
+  "descriptionEn": "Mathematics for Gymnasium in Germany. This landscape fully secures the Hessian upper-secondary curriculum, realizes canonical lower-secondary year anchors J5 to J10, and covers arithmetic, algebraic, geometric, data, stochastic, and trigonometric corridors for DE-HE and DE-BY.",
   "filters": [
     {
       "id": "GK",
@@ -23,11 +23,11 @@
   "goals": [
     {
       "id": "c01b1ce9-a667-4a46-b251-ec33ae602b15",
-      "shortKey": "canonical_math_pilot_module",
+      "shortKey": "canonical_math_module",
       "title": "Mathematik",
       "titleEn": "Mathematics",
-      "description": "Gemeinsame Wurzel für Mathematik am Gymnasium in Deutschland. Die aktuelle Baseline übernimmt die hessische Oberstufe vollständig, realisiert kanonische Jahrgangsanker J5 bis J10 für die Sekundarstufe I und ergänzt den bestehenden Funktionskorridor um erste arithmetische, algebraische, geometrische, datenbezogene, stochastische und trigonometrische Anschlussziele.",
-      "descriptionEn": "Shared root for mathematics at Gymnasium in Germany. The current baseline fully adopts the Hessian upper-secondary curriculum, realizes canonical lower-secondary year anchors J5 to J10, and extends the existing function corridor with first arithmetic, algebraic, geometry, data, stochastic, and trigonometric bridge goals.",
+      "description": "Gemeinsame Wurzel für Mathematik am Gymnasium in Deutschland. Die Landschaft übernimmt die hessische Oberstufe vollständig, realisiert kanonische Jahrgangsanker J5 bis J10 für die Sekundarstufe I und bündelt arithmetische, algebraische, geometrische, datenbezogene, stochastische und trigonometrische Anschlussziele für DE-HE und DE-BY.",
+      "descriptionEn": "Shared root for mathematics at Gymnasium in Germany. The landscape fully adopts the Hessian upper-secondary curriculum, realizes canonical lower-secondary year anchors J5 to J10, and bundles arithmetic, algebraic, geometric, data, stochastic, and trigonometric bridge goals for DE-HE and DE-BY.",
       "core": true,
       "weight": 436,
       "tags": [
@@ -52,7 +52,7 @@
         ],
         "phase": "GLOBAL",
         "area": "Mathematik",
-        "topicCode": "CANONICAL.MATH.PILOT"
+        "topicCode": "CANONICAL.MATH"
       },
       "contains": [
         "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
@@ -104,13 +104,12 @@
       "weight": 18,
       "tags": [
         "canonical",
-        "pilot",
         "phase:SekI",
         "phase:J5",
         "area:Mathematik"
       ],
       "dimensionTags": {
-        "framework": "canonical-gymnasium-math-pilot",
+        "framework": "canonical-gymnasium-math",
         "demandLevel": "AB1",
         "processCompetencies": [],
         "guidingIdeas": [
@@ -135,7 +134,6 @@
         ]
       },
       "extendedData": {
-        "pilot": true,
         "treeOrder": 2,
         "provenance": {
           "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
@@ -150,16 +148,15 @@
       "shortKey": "canonical_math_sek1_j5_integer_arithmetic",
       "title": "Zahlenverständnis und Grundoperationen aufbauen",
       "titleEn": "Build number sense and basic operations",
-      "description": "Kanonischer Cluster für den J5-Einstieg in Zahlvorstellungen und elementare Rechenroutinen. Der aktuelle Pilot trennt hier zwischen Zahlendarstellungen, Grundoperationen, ersten Gleichungen, Rechengesetzen, heuristischen Problemlösestrategien sowie den Bayern-Ergänzungen zu Teilbarkeit, Potenzen, Termstrukturen und einfachen Zählprinzipien.",
-      "descriptionEn": "Canonical cluster for the year-5 entry into number sense and elementary calculation routines. The current pilot differentiates number representations, basic operations, first equations, arithmetic laws, heuristic problem-solving strategies, and the Bavaria-driven additions for divisibility, powers, expression structure, and simple counting principles.",
+      "description": "Kanonischer Cluster für den J5-Einstieg in Zahlvorstellungen und elementare Rechenroutinen. Der Cluster trennt hier zwischen Zahlendarstellungen, Grundoperationen, ersten Gleichungen, Rechengesetzen, heuristischen Problemlösestrategien sowie den Bayern-Ergänzungen zu Teilbarkeit, Potenzen, Termstrukturen und einfachen Zählprinzipien.",
+      "descriptionEn": "Canonical cluster for the year-5 entry into number sense and elementary calculation routines. The cluster differentiates number representations, basic operations, first equations, arithmetic laws, heuristic problem-solving strategies, and the Bavaria-driven additions for divisibility, powers, expression structure, and simple counting principles.",
       "core": true,
       "weight": 14,
       "tags": [
-        "canonical",
-        "pilot"
+        "canonical"
       ],
       "dimensionTags": {
-        "framework": "canonical-gymnasium-math-pilot",
+        "framework": "canonical-gymnasium-math",
         "demandLevel": "AB1",
         "processCompetencies": [
           "K3.1",
@@ -196,7 +193,6 @@
         ]
       },
       "extendedData": {
-        "pilot": true,
         "provenance": {
           "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
           "sourceLandscapeTitle": "Mathematik (Gymnasium)",
@@ -215,11 +211,10 @@
       "core": true,
       "weight": 1,
       "tags": [
-        "canonical",
-        "pilot"
+        "canonical"
       ],
       "dimensionTags": {
-        "framework": "canonical-gymnasium-math-pilot",
+        "framework": "canonical-gymnasium-math",
         "demandLevel": "AB1",
         "processCompetencies": [
           "K3.1",
@@ -241,7 +236,6 @@
         ]
       },
       "extendedData": {
-        "pilot": true,
         "applicabilityOverrides": {
           "jurisdiction": [
             "DE-HE"
@@ -265,11 +259,10 @@
       "core": true,
       "weight": 1,
       "tags": [
-        "canonical",
-        "pilot"
+        "canonical"
       ],
       "dimensionTags": {
-        "framework": "canonical-gymnasium-math-pilot",
+        "framework": "canonical-gymnasium-math",
         "demandLevel": "AB1",
         "processCompetencies": [
           "K3.1",
@@ -291,7 +284,6 @@
         ]
       },
       "extendedData": {
-        "pilot": true,
         "provenance": {
           "sourceLandscapeId": "b167b4cd-4b78-4c84-a721-6b2adbbcab3c",
           "sourceLandscapeTitle": "Mathematik",
@@ -310,11 +302,10 @@
       "core": true,
       "weight": 5,
       "tags": [
-        "canonical",
-        "pilot"
+        "canonical"
       ],
       "dimensionTags": {
-        "framework": "canonical-gymnasium-math-pilot",
+        "framework": "canonical-gymnasium-math",
         "demandLevel": "AB1",
         "processCompetencies": [
           "K3.1",
@@ -342,7 +333,6 @@
         ]
       },
       "extendedData": {
-        "pilot": true,
         "provenance": {
           "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
           "sourceLandscapeTitle": "Mathematik (Gymnasium)",
@@ -361,11 +351,10 @@
       "core": true,
       "weight": 1,
       "tags": [
-        "canonical",
-        "pilot"
+        "canonical"
       ],
       "dimensionTags": {
-        "framework": "canonical-gymnasium-math-pilot",
+        "framework": "canonical-gymnasium-math",
         "demandLevel": "AB1",
         "processCompetencies": [
           "K3.1",
@@ -387,7 +376,6 @@
         ]
       },
       "extendedData": {
-        "pilot": true,
         "provenance": {
           "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
           "sourceLandscapeTitle": "Mathematik (Gymnasium)",
@@ -411,11 +399,10 @@
       "core": true,
       "weight": 1,
       "tags": [
-        "canonical",
-        "pilot"
+        "canonical"
       ],
       "dimensionTags": {
-        "framework": "canonical-gymnasium-math-pilot",
+        "framework": "canonical-gymnasium-math",
         "demandLevel": "AB1",
         "processCompetencies": [
           "K3.1",
@@ -439,7 +426,6 @@
         ]
       },
       "extendedData": {
-        "pilot": true,
         "provenance": {
           "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
           "sourceLandscapeTitle": "Mathematik (Gymnasium)",
@@ -463,11 +449,10 @@
       "core": true,
       "weight": 1,
       "tags": [
-        "canonical",
-        "pilot"
+        "canonical"
       ],
       "dimensionTags": {
-        "framework": "canonical-gymnasium-math-pilot",
+        "framework": "canonical-gymnasium-math",
         "demandLevel": "AB1",
         "processCompetencies": [
           "K2.1",
@@ -492,7 +477,6 @@
         ]
       },
       "extendedData": {
-        "pilot": true,
         "provenance": {
           "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
           "sourceLandscapeTitle": "Mathematik (Gymnasium)",
@@ -516,11 +500,10 @@
       "core": true,
       "weight": 1,
       "tags": [
-        "canonical",
-        "pilot"
+        "canonical"
       ],
       "dimensionTags": {
-        "framework": "canonical-gymnasium-math-pilot",
+        "framework": "canonical-gymnasium-math",
         "demandLevel": "AB1",
         "processCompetencies": [
           "K3.1",
@@ -544,7 +527,6 @@
         ]
       },
       "extendedData": {
-        "pilot": true,
         "provenance": {
           "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
           "sourceLandscapeTitle": "Mathematik (Gymnasium)",
@@ -568,11 +550,10 @@
       "core": true,
       "weight": 1,
       "tags": [
-        "canonical",
-        "pilot"
+        "canonical"
       ],
       "dimensionTags": {
-        "framework": "canonical-gymnasium-math-pilot",
+        "framework": "canonical-gymnasium-math",
         "demandLevel": "AB1",
         "processCompetencies": [
           "K2.1",
@@ -598,7 +579,6 @@
         ]
       },
       "extendedData": {
-        "pilot": true,
         "provenance": {
           "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
           "sourceLandscapeTitle": "Mathematik (Gymnasium)",
@@ -622,11 +602,10 @@
       "core": true,
       "weight": 1,
       "tags": [
-        "canonical",
-        "pilot"
+        "canonical"
       ],
       "dimensionTags": {
-        "framework": "canonical-gymnasium-math-pilot",
+        "framework": "canonical-gymnasium-math",
         "demandLevel": "AB1",
         "processCompetencies": [
           "K2.1",
@@ -650,7 +629,6 @@
         ]
       },
       "extendedData": {
-        "pilot": true,
         "provenance": {
           "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
           "sourceLandscapeTitle": "Mathematik (Gymnasium)",
@@ -669,11 +647,10 @@
       "core": true,
       "weight": 1,
       "tags": [
-        "canonical",
-        "pilot"
+        "canonical"
       ],
       "dimensionTags": {
-        "framework": "canonical-gymnasium-math-pilot",
+        "framework": "canonical-gymnasium-math",
         "demandLevel": "AB1",
         "processCompetencies": [
           "K2.1",
@@ -698,7 +675,6 @@
         ]
       },
       "extendedData": {
-        "pilot": true,
         "applicabilityOverrides": {
           "jurisdiction": [
             "DE-HE"
@@ -722,11 +698,10 @@
       "core": true,
       "weight": 1,
       "tags": [
-        "canonical",
-        "pilot"
+        "canonical"
       ],
       "dimensionTags": {
-        "framework": "canonical-gymnasium-math-pilot",
+        "framework": "canonical-gymnasium-math",
         "demandLevel": "AB1",
         "processCompetencies": [
           "K3.1",
@@ -748,7 +723,6 @@
         ]
       },
       "extendedData": {
-        "pilot": true,
         "provenance": {
           "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
           "sourceLandscapeTitle": "Mathematik (Gymnasium)",
@@ -772,11 +746,10 @@
       "core": true,
       "weight": 1,
       "tags": [
-        "canonical",
-        "pilot"
+        "canonical"
       ],
       "dimensionTags": {
-        "framework": "canonical-gymnasium-math-pilot",
+        "framework": "canonical-gymnasium-math",
         "demandLevel": "AB1",
         "processCompetencies": [
           "K2.1",
@@ -800,7 +773,6 @@
         ]
       },
       "extendedData": {
-        "pilot": true,
         "provenance": {
           "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
           "sourceLandscapeTitle": "Mathematik (Gymnasium)",
@@ -824,11 +796,10 @@
       "core": true,
       "weight": 1,
       "tags": [
-        "canonical",
-        "pilot"
+        "canonical"
       ],
       "dimensionTags": {
-        "framework": "canonical-gymnasium-math-pilot",
+        "framework": "canonical-gymnasium-math",
         "demandLevel": "AB1",
         "processCompetencies": [
           "K3.1",
@@ -852,7 +823,6 @@
         ]
       },
       "extendedData": {
-        "pilot": true,
         "provenance": {
           "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
           "sourceLandscapeTitle": "Mathematik (Gymnasium)",
@@ -876,11 +846,10 @@
       "core": true,
       "weight": 1,
       "tags": [
-        "canonical",
-        "pilot"
+        "canonical"
       ],
       "dimensionTags": {
-        "framework": "canonical-gymnasium-math-pilot",
+        "framework": "canonical-gymnasium-math",
         "demandLevel": "AB1",
         "processCompetencies": [
           "K4.1"
@@ -903,7 +872,6 @@
         ]
       },
       "extendedData": {
-        "pilot": true,
         "provenance": {
           "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
           "sourceLandscapeTitle": "Mathematik (Gymnasium)",
@@ -927,11 +895,10 @@
       "core": true,
       "weight": 1,
       "tags": [
-        "canonical",
-        "pilot"
+        "canonical"
       ],
       "dimensionTags": {
-        "framework": "canonical-gymnasium-math-pilot",
+        "framework": "canonical-gymnasium-math",
         "demandLevel": "AB1",
         "processCompetencies": [
           "K2.1",
@@ -955,7 +922,6 @@
         ]
       },
       "extendedData": {
-        "pilot": true,
         "provenance": {
           "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
           "sourceLandscapeTitle": "Mathematik (Gymnasium)",
@@ -979,11 +945,10 @@
       "core": true,
       "weight": 1,
       "tags": [
-        "canonical",
-        "pilot"
+        "canonical"
       ],
       "dimensionTags": {
-        "framework": "canonical-gymnasium-math-pilot",
+        "framework": "canonical-gymnasium-math",
         "demandLevel": "AB1",
         "processCompetencies": [
           "K2.1",
@@ -1006,7 +971,6 @@
         ]
       },
       "extendedData": {
-        "pilot": true,
         "provenance": {
           "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
           "sourceLandscapeTitle": "Mathematik (Gymnasium)",
@@ -1025,11 +989,10 @@
       "core": true,
       "weight": 1,
       "tags": [
-        "canonical",
-        "pilot"
+        "canonical"
       ],
       "dimensionTags": {
-        "framework": "canonical-gymnasium-math-pilot",
+        "framework": "canonical-gymnasium-math",
         "demandLevel": "AB1",
         "processCompetencies": [
           "K2.1",
@@ -1053,7 +1016,6 @@
         ]
       },
       "extendedData": {
-        "pilot": true,
         "provenance": {
           "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
           "sourceLandscapeTitle": "Mathematik (Gymnasium)",
@@ -1077,11 +1039,10 @@
       "core": true,
       "weight": 1,
       "tags": [
-        "canonical",
-        "pilot"
+        "canonical"
       ],
       "dimensionTags": {
-        "framework": "canonical-gymnasium-math-pilot",
+        "framework": "canonical-gymnasium-math",
         "demandLevel": "AB1",
         "processCompetencies": [
           "K2.1",
@@ -1105,7 +1066,6 @@
         ]
       },
       "extendedData": {
-        "pilot": true,
         "provenance": {
           "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
           "sourceLandscapeTitle": "Mathematik (Gymnasium)",
@@ -1129,11 +1089,10 @@
       "core": true,
       "weight": 1,
       "tags": [
-        "canonical",
-        "pilot"
+        "canonical"
       ],
       "dimensionTags": {
-        "framework": "canonical-gymnasium-math-pilot",
+        "framework": "canonical-gymnasium-math",
         "demandLevel": "AB1",
         "processCompetencies": [
           "K2.1",
@@ -1157,7 +1116,6 @@
         ]
       },
       "extendedData": {
-        "pilot": true,
         "provenance": {
           "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
           "sourceLandscapeTitle": "Mathematik (Gymnasium)",
@@ -1181,11 +1139,10 @@
       "core": true,
       "weight": 1,
       "tags": [
-        "canonical",
-        "pilot"
+        "canonical"
       ],
       "dimensionTags": {
-        "framework": "canonical-gymnasium-math-pilot",
+        "framework": "canonical-gymnasium-math",
         "demandLevel": "AB1",
         "processCompetencies": [
           "K2.1",
@@ -1210,7 +1167,6 @@
         ]
       },
       "extendedData": {
-        "pilot": true,
         "provenance": {
           "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
           "sourceLandscapeTitle": "Mathematik (Gymnasium)",
@@ -1234,11 +1190,10 @@
       "core": true,
       "weight": 1,
       "tags": [
-        "canonical",
-        "pilot"
+        "canonical"
       ],
       "dimensionTags": {
-        "framework": "canonical-gymnasium-math-pilot",
+        "framework": "canonical-gymnasium-math",
         "demandLevel": "AB1",
         "processCompetencies": [
           "K2.1",
@@ -1262,7 +1217,6 @@
         ]
       },
       "extendedData": {
-        "pilot": true,
         "provenance": {
           "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
           "sourceLandscapeTitle": "Mathematik (Gymnasium)",
@@ -1286,11 +1240,10 @@
       "core": true,
       "weight": 1,
       "tags": [
-        "canonical",
-        "pilot"
+        "canonical"
       ],
       "dimensionTags": {
-        "framework": "canonical-gymnasium-math-pilot",
+        "framework": "canonical-gymnasium-math",
         "demandLevel": "AB1",
         "processCompetencies": [
           "K1.1",
@@ -1316,7 +1269,6 @@
         ]
       },
       "extendedData": {
-        "pilot": true,
         "provenance": {
           "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
           "sourceLandscapeTitle": "Mathematik (Gymnasium)",
@@ -1340,11 +1292,10 @@
       "core": true,
       "weight": 4,
       "tags": [
-        "canonical",
-        "pilot"
+        "canonical"
       ],
       "dimensionTags": {
-        "framework": "canonical-gymnasium-math-pilot",
+        "framework": "canonical-gymnasium-math",
         "demandLevel": "AB1",
         "processCompetencies": [
           "K2.1",
@@ -1371,7 +1322,6 @@
         ]
       },
       "extendedData": {
-        "pilot": true,
         "provenance": {
           "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
           "sourceLandscapeTitle": "Mathematik (Gymnasium)",
@@ -1390,11 +1340,10 @@
       "core": true,
       "weight": 1,
       "tags": [
-        "canonical",
-        "pilot"
+        "canonical"
       ],
       "dimensionTags": {
-        "framework": "canonical-gymnasium-math-pilot",
+        "framework": "canonical-gymnasium-math",
         "demandLevel": "AB1",
         "processCompetencies": [
           "K2.1",
@@ -1418,7 +1367,6 @@
         ]
       },
       "extendedData": {
-        "pilot": true,
         "provenance": {
           "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
           "sourceLandscapeTitle": "Mathematik (Gymnasium)",
@@ -1442,11 +1390,10 @@
       "core": true,
       "weight": 1,
       "tags": [
-        "canonical",
-        "pilot"
+        "canonical"
       ],
       "dimensionTags": {
-        "framework": "canonical-gymnasium-math-pilot",
+        "framework": "canonical-gymnasium-math",
         "demandLevel": "AB1",
         "processCompetencies": [
           "K2.1",
@@ -1470,7 +1417,6 @@
         ]
       },
       "extendedData": {
-        "pilot": true,
         "provenance": {
           "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
           "sourceLandscapeTitle": "Mathematik (Gymnasium)",
@@ -1494,11 +1440,10 @@
       "core": true,
       "weight": 1,
       "tags": [
-        "canonical",
-        "pilot"
+        "canonical"
       ],
       "dimensionTags": {
-        "framework": "canonical-gymnasium-math-pilot",
+        "framework": "canonical-gymnasium-math",
         "demandLevel": "AB1",
         "processCompetencies": [
           "K2.1",
@@ -1523,7 +1468,6 @@
         ]
       },
       "extendedData": {
-        "pilot": true,
         "provenance": {
           "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
           "sourceLandscapeTitle": "Mathematik (Gymnasium)",
@@ -1547,11 +1491,10 @@
       "core": true,
       "weight": 1,
       "tags": [
-        "canonical",
-        "pilot"
+        "canonical"
       ],
       "dimensionTags": {
-        "framework": "canonical-gymnasium-math-pilot",
+        "framework": "canonical-gymnasium-math",
         "demandLevel": "AB1",
         "processCompetencies": [
           "K2.1",
@@ -1575,7 +1518,6 @@
         ]
       },
       "extendedData": {
-        "pilot": true,
         "provenance": {
           "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
           "sourceLandscapeTitle": "Mathematik (Gymnasium)",
@@ -1600,13 +1542,12 @@
       "weight": 18,
       "tags": [
         "canonical",
-        "pilot",
         "phase:SekI",
         "phase:J6",
         "area:Mathematik"
       ],
       "dimensionTags": {
-        "framework": "canonical-gymnasium-math-pilot",
+        "framework": "canonical-gymnasium-math",
         "demandLevel": "AB1",
         "processCompetencies": [],
         "guidingIdeas": [
@@ -1629,7 +1570,6 @@
         ]
       },
       "extendedData": {
-        "pilot": true,
         "treeOrder": 3,
         "provenance": {
           "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
@@ -1649,11 +1589,10 @@
       "core": true,
       "weight": 8,
       "tags": [
-        "canonical",
-        "pilot"
+        "canonical"
       ],
       "dimensionTags": {
-        "framework": "canonical-gymnasium-math-pilot",
+        "framework": "canonical-gymnasium-math",
         "demandLevel": "AB1",
         "processCompetencies": [
           "K3.1",
@@ -1688,7 +1627,6 @@
         ]
       },
       "extendedData": {
-        "pilot": true,
         "provenance": {
           "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
           "sourceLandscapeTitle": "Mathematik (Gymnasium)",
@@ -1707,11 +1645,10 @@
       "core": true,
       "weight": 1,
       "tags": [
-        "canonical",
-        "pilot"
+        "canonical"
       ],
       "dimensionTags": {
-        "framework": "canonical-gymnasium-math-pilot",
+        "framework": "canonical-gymnasium-math",
         "demandLevel": "AB1",
         "processCompetencies": [
           "K3.1",
@@ -1735,7 +1672,6 @@
         ]
       },
       "extendedData": {
-        "pilot": true,
         "provenance": {
           "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
           "sourceLandscapeTitle": "Mathematik (Gymnasium)",
@@ -1759,11 +1695,10 @@
       "core": true,
       "weight": 1,
       "tags": [
-        "canonical",
-        "pilot"
+        "canonical"
       ],
       "dimensionTags": {
-        "framework": "canonical-gymnasium-math-pilot",
+        "framework": "canonical-gymnasium-math",
         "demandLevel": "AB1",
         "processCompetencies": [
           "K3.1",
@@ -1787,7 +1722,6 @@
         ]
       },
       "extendedData": {
-        "pilot": true,
         "provenance": {
           "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
           "sourceLandscapeTitle": "Mathematik (Gymnasium)",
@@ -1811,11 +1745,10 @@
       "core": true,
       "weight": 1,
       "tags": [
-        "canonical",
-        "pilot"
+        "canonical"
       ],
       "dimensionTags": {
-        "framework": "canonical-gymnasium-math-pilot",
+        "framework": "canonical-gymnasium-math",
         "demandLevel": "AB1",
         "processCompetencies": [
           "K3.1",
@@ -1841,7 +1774,6 @@
         ]
       },
       "extendedData": {
-        "pilot": true,
         "provenance": {
           "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
           "sourceLandscapeTitle": "Mathematik (Gymnasium)",
@@ -1865,11 +1797,10 @@
       "core": true,
       "weight": 1,
       "tags": [
-        "canonical",
-        "pilot"
+        "canonical"
       ],
       "dimensionTags": {
-        "framework": "canonical-gymnasium-math-pilot",
+        "framework": "canonical-gymnasium-math",
         "demandLevel": "AB1",
         "processCompetencies": [
           "K3.1",
@@ -1894,7 +1825,6 @@
         ]
       },
       "extendedData": {
-        "pilot": true,
         "provenance": {
           "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
           "sourceLandscapeTitle": "Mathematik (Gymnasium)",
@@ -1918,11 +1848,10 @@
       "core": true,
       "weight": 1,
       "tags": [
-        "canonical",
-        "pilot"
+        "canonical"
       ],
       "dimensionTags": {
-        "framework": "canonical-gymnasium-math-pilot",
+        "framework": "canonical-gymnasium-math",
         "demandLevel": "AB1",
         "processCompetencies": [
           "K3.1",
@@ -1948,7 +1877,6 @@
         ]
       },
       "extendedData": {
-        "pilot": true,
         "provenance": {
           "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
           "sourceLandscapeTitle": "Mathematik (Gymnasium)",
@@ -1972,11 +1900,10 @@
       "core": true,
       "weight": 1,
       "tags": [
-        "canonical",
-        "pilot"
+        "canonical"
       ],
       "dimensionTags": {
-        "framework": "canonical-gymnasium-math-pilot",
+        "framework": "canonical-gymnasium-math",
         "demandLevel": "AB1",
         "processCompetencies": [
           "K3.1",
@@ -2002,7 +1929,6 @@
         ]
       },
       "extendedData": {
-        "pilot": true,
         "provenance": {
           "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
           "sourceLandscapeTitle": "Mathematik (Gymnasium)",
@@ -2026,11 +1952,10 @@
       "core": true,
       "weight": 1,
       "tags": [
-        "canonical",
-        "pilot"
+        "canonical"
       ],
       "dimensionTags": {
-        "framework": "canonical-gymnasium-math-pilot",
+        "framework": "canonical-gymnasium-math",
         "demandLevel": "AB1",
         "processCompetencies": [
           "K3.1",
@@ -2055,7 +1980,6 @@
         ]
       },
       "extendedData": {
-        "pilot": true,
         "provenance": {
           "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
           "sourceLandscapeTitle": "Mathematik (Gymnasium)",
@@ -2079,11 +2003,10 @@
       "core": true,
       "weight": 1,
       "tags": [
-        "canonical",
-        "pilot"
+        "canonical"
       ],
       "dimensionTags": {
-        "framework": "canonical-gymnasium-math-pilot",
+        "framework": "canonical-gymnasium-math",
         "demandLevel": "AB1",
         "processCompetencies": [
           "K2.1",
@@ -2110,7 +2033,6 @@
         ]
       },
       "extendedData": {
-        "pilot": true,
         "provenance": {
           "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
           "sourceLandscapeTitle": "Mathematik (Gymnasium)",
@@ -2134,11 +2056,10 @@
       "core": true,
       "weight": 5,
       "tags": [
-        "canonical",
-        "pilot"
+        "canonical"
       ],
       "dimensionTags": {
-        "framework": "canonical-gymnasium-math-pilot",
+        "framework": "canonical-gymnasium-math",
         "demandLevel": "AB1",
         "processCompetencies": [
           "K2.1",
@@ -2169,7 +2090,6 @@
         ]
       },
       "extendedData": {
-        "pilot": true,
         "provenance": {
           "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
           "sourceLandscapeTitle": "Mathematik (Gymnasium)",
@@ -2188,11 +2108,10 @@
       "core": true,
       "weight": 1,
       "tags": [
-        "canonical",
-        "pilot"
+        "canonical"
       ],
       "dimensionTags": {
-        "framework": "canonical-gymnasium-math-pilot",
+        "framework": "canonical-gymnasium-math",
         "demandLevel": "AB1",
         "processCompetencies": [
           "K2.1",
@@ -2217,7 +2136,6 @@
         ]
       },
       "extendedData": {
-        "pilot": true,
         "provenance": {
           "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
           "sourceLandscapeTitle": "Mathematik (Gymnasium)",
@@ -2236,11 +2154,10 @@
       "core": true,
       "weight": 1,
       "tags": [
-        "canonical",
-        "pilot"
+        "canonical"
       ],
       "dimensionTags": {
-        "framework": "canonical-gymnasium-math-pilot",
+        "framework": "canonical-gymnasium-math",
         "demandLevel": "AB1",
         "processCompetencies": [
           "K2.1",
@@ -2264,7 +2181,6 @@
         ]
       },
       "extendedData": {
-        "pilot": true,
         "provenance": {
           "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
           "sourceLandscapeTitle": "Mathematik (Gymnasium)",
@@ -2283,11 +2199,10 @@
       "core": true,
       "weight": 1,
       "tags": [
-        "canonical",
-        "pilot"
+        "canonical"
       ],
       "dimensionTags": {
-        "framework": "canonical-gymnasium-math-pilot",
+        "framework": "canonical-gymnasium-math",
         "demandLevel": "AB1",
         "processCompetencies": [
           "K2.1",
@@ -2310,7 +2225,6 @@
         ]
       },
       "extendedData": {
-        "pilot": true,
         "provenance": {
           "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
           "sourceLandscapeTitle": "Mathematik (Gymnasium)",
@@ -2329,11 +2243,10 @@
       "core": true,
       "weight": 1,
       "tags": [
-        "canonical",
-        "pilot"
+        "canonical"
       ],
       "dimensionTags": {
-        "framework": "canonical-gymnasium-math-pilot",
+        "framework": "canonical-gymnasium-math",
         "demandLevel": "AB1",
         "processCompetencies": [
           "K2.1",
@@ -2359,7 +2272,6 @@
         ]
       },
       "extendedData": {
-        "pilot": true,
         "provenance": {
           "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
           "sourceLandscapeTitle": "Mathematik (Gymnasium)",
@@ -2378,11 +2290,10 @@
       "core": true,
       "weight": 1,
       "tags": [
-        "canonical",
-        "pilot"
+        "canonical"
       ],
       "dimensionTags": {
-        "framework": "canonical-gymnasium-math-pilot",
+        "framework": "canonical-gymnasium-math",
         "demandLevel": "AB1",
         "processCompetencies": [
           "K2.1",
@@ -2408,7 +2319,6 @@
         ]
       },
       "extendedData": {
-        "pilot": true,
         "provenance": {
           "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
           "sourceLandscapeTitle": "Mathematik (Gymnasium)",
@@ -2427,11 +2337,10 @@
       "core": true,
       "weight": 5,
       "tags": [
-        "canonical",
-        "pilot"
+        "canonical"
       ],
       "dimensionTags": {
-        "framework": "canonical-gymnasium-math-pilot",
+        "framework": "canonical-gymnasium-math",
         "demandLevel": "AB1",
         "processCompetencies": [
           "K3.1",
@@ -2462,7 +2371,6 @@
         ]
       },
       "extendedData": {
-        "pilot": true,
         "provenance": {
           "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
           "sourceLandscapeTitle": "Mathematik (Gymnasium)",
@@ -2484,11 +2392,10 @@
       "core": true,
       "weight": 1,
       "tags": [
-        "canonical",
-        "pilot"
+        "canonical"
       ],
       "dimensionTags": {
-        "framework": "canonical-gymnasium-math-pilot",
+        "framework": "canonical-gymnasium-math",
         "demandLevel": "AB1",
         "processCompetencies": [
           "K2.1",
@@ -2514,7 +2421,6 @@
         ]
       },
       "extendedData": {
-        "pilot": true,
         "provenance": {
           "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
           "sourceLandscapeTitle": "Mathematik (Gymnasium)",
@@ -2538,11 +2444,10 @@
       "core": true,
       "weight": 1,
       "tags": [
-        "canonical",
-        "pilot"
+        "canonical"
       ],
       "dimensionTags": {
-        "framework": "canonical-gymnasium-math-pilot",
+        "framework": "canonical-gymnasium-math",
         "demandLevel": "AB2",
         "processCompetencies": [
           "K2.2",
@@ -2566,7 +2471,6 @@
         ]
       },
       "extendedData": {
-        "pilot": true,
         "provenance": {
           "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
           "sourceLandscapeTitle": "Mathematik (Gymnasium)",
@@ -2590,11 +2494,10 @@
       "core": true,
       "weight": 1,
       "tags": [
-        "canonical",
-        "pilot"
+        "canonical"
       ],
       "dimensionTags": {
-        "framework": "canonical-gymnasium-math-pilot",
+        "framework": "canonical-gymnasium-math",
         "demandLevel": "AB1",
         "processCompetencies": [
           "K3.1",
@@ -2618,7 +2521,6 @@
         ]
       },
       "extendedData": {
-        "pilot": true,
         "provenance": {
           "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
           "sourceLandscapeTitle": "Mathematik (Gymnasium)",
@@ -2642,11 +2544,10 @@
       "core": true,
       "weight": 1,
       "tags": [
-        "canonical",
-        "pilot"
+        "canonical"
       ],
       "dimensionTags": {
-        "framework": "canonical-gymnasium-math-pilot",
+        "framework": "canonical-gymnasium-math",
         "demandLevel": "AB2",
         "processCompetencies": [
           "K4.2",
@@ -2670,7 +2571,6 @@
         ]
       },
       "extendedData": {
-        "pilot": true,
         "provenance": {
           "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
           "sourceLandscapeTitle": "Mathematik (Gymnasium)",
@@ -2694,11 +2594,10 @@
       "core": true,
       "weight": 1,
       "tags": [
-        "canonical",
-        "pilot"
+        "canonical"
       ],
       "dimensionTags": {
-        "framework": "canonical-gymnasium-math-pilot",
+        "framework": "canonical-gymnasium-math",
         "demandLevel": "AB1",
         "processCompetencies": [
           "K2.2",
@@ -2722,7 +2621,6 @@
         ]
       },
       "extendedData": {
-        "pilot": true,
         "provenance": {
           "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
           "sourceLandscapeTitle": "Mathematik (Gymnasium)",
@@ -2741,18 +2639,17 @@
       "shortKey": "canonical_math_sek1_function_foundations",
       "title": "Funktionsgrundlagen (Sek I)",
       "titleEn": "Function Foundations (Lower Secondary)",
-      "description": "Cluster für grundlegende Vorstellungen zu Zuordnungen, linearen Funktionen und quadratischen Funktionen aus der gymnasialen Sekundarstufe I. Der aktuelle Pilotkorridor ist zusätzlich an die kanonischen Jahrgangsanker J7 bis J9 angebunden.",
-      "descriptionEn": "Cluster for foundational ideas of mappings, linear functions, and quadratic functions from lower secondary Gymnasium mathematics. The current pilot corridor is additionally attached to the canonical year anchors J7 to J9.",
+      "description": "Cluster für grundlegende Vorstellungen zu Zuordnungen, linearen Funktionen und quadratischen Funktionen aus der gymnasialen Sekundarstufe I. Der Korridor ist zusätzlich an die kanonischen Jahrgangsanker J7 bis J9 angebunden.",
+      "descriptionEn": "Cluster for foundational ideas of mappings, linear functions, and quadratic functions from lower secondary Gymnasium mathematics. The corridor is additionally attached to the canonical year anchors J7 to J9.",
       "core": true,
       "weight": 9,
       "tags": [
         "canonical",
-        "pilot",
         "phase:SekI",
         "area:Analysis"
       ],
       "dimensionTags": {
-        "framework": "canonical-gymnasium-math-pilot",
+        "framework": "canonical-gymnasium-math",
         "demandLevel": "AB1",
         "processCompetencies": [
           "K1",
@@ -2784,7 +2681,6 @@
         ]
       },
       "extendedData": {
-        "pilot": true,
         "treeOrder": 8,
         "provenance": {
           "sourceLandscapeId": "b167b4cd-4b78-4c84-a721-6b2adbbcab3c",
@@ -2807,13 +2703,12 @@
       "weight": 11,
       "tags": [
         "canonical",
-        "pilot",
         "phase:SekI",
         "phase:J10",
         "area:Mathematik"
       ],
       "dimensionTags": {
-        "framework": "canonical-gymnasium-math-pilot",
+        "framework": "canonical-gymnasium-math",
         "demandLevel": "AB2",
         "processCompetencies": [],
         "guidingIdeas": [
@@ -2838,7 +2733,6 @@
         ]
       },
       "extendedData": {
-        "pilot": true,
         "treeOrder": 7,
         "provenance": {
           "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
@@ -2858,11 +2752,10 @@
       "core": true,
       "weight": 1,
       "tags": [
-        "canonical",
-        "pilot"
+        "canonical"
       ],
       "dimensionTags": {
-        "framework": "canonical-gymnasium-math-pilot",
+        "framework": "canonical-gymnasium-math",
         "demandLevel": "AB2",
         "processCompetencies": [
           "K1.2",
@@ -2890,7 +2783,6 @@
         ]
       },
       "extendedData": {
-        "pilot": true,
         "provenance": {
           "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
           "sourceLandscapeTitle": "Mathematik (Gymnasium)",
@@ -2912,11 +2804,10 @@
       "core": true,
       "weight": 2,
       "tags": [
-        "canonical",
-        "pilot"
+        "canonical"
       ],
       "dimensionTags": {
-        "framework": "canonical-gymnasium-math-pilot",
+        "framework": "canonical-gymnasium-math",
         "demandLevel": "AB2",
         "processCompetencies": [
           "K1.2",
@@ -2941,7 +2832,6 @@
         ]
       },
       "extendedData": {
-        "pilot": true,
         "provenance": {
           "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
           "sourceLandscapeTitle": "Mathematik (Gymnasium)",
@@ -2960,11 +2850,10 @@
       "core": true,
       "weight": 1,
       "tags": [
-        "canonical",
-        "pilot"
+        "canonical"
       ],
       "dimensionTags": {
-        "framework": "canonical-gymnasium-math-pilot",
+        "framework": "canonical-gymnasium-math",
         "demandLevel": "AB2",
         "processCompetencies": [
           "K1.2",
@@ -2991,7 +2880,6 @@
         ]
       },
       "extendedData": {
-        "pilot": true,
         "provenance": {
           "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
           "sourceLandscapeTitle": "Mathematik (Gymnasium)",
@@ -3013,11 +2901,10 @@
       "core": true,
       "weight": 1,
       "tags": [
-        "canonical",
-        "pilot"
+        "canonical"
       ],
       "dimensionTags": {
-        "framework": "canonical-gymnasium-math-pilot",
+        "framework": "canonical-gymnasium-math",
         "demandLevel": "AB2",
         "processCompetencies": [
           "K1.2",
@@ -3042,7 +2929,6 @@
         ]
       },
       "extendedData": {
-        "pilot": true,
         "provenance": {
           "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
           "sourceLandscapeTitle": "Mathematik (Gymnasium)",
@@ -3064,11 +2950,10 @@
       "core": true,
       "weight": 1,
       "tags": [
-        "canonical",
-        "pilot"
+        "canonical"
       ],
       "dimensionTags": {
-        "framework": "canonical-gymnasium-math-pilot",
+        "framework": "canonical-gymnasium-math",
         "demandLevel": "AB2",
         "processCompetencies": [
           "K1.1",
@@ -3096,7 +2981,6 @@
         ]
       },
       "extendedData": {
-        "pilot": true,
         "provenance": {
           "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
           "sourceLandscapeTitle": "Mathematik (Gymnasium)",
@@ -3118,11 +3002,10 @@
       "core": true,
       "weight": 1,
       "tags": [
-        "canonical",
-        "pilot"
+        "canonical"
       ],
       "dimensionTags": {
-        "framework": "canonical-gymnasium-math-pilot",
+        "framework": "canonical-gymnasium-math",
         "demandLevel": "AB2",
         "processCompetencies": [
           "K1.1",
@@ -3148,7 +3031,6 @@
         ]
       },
       "extendedData": {
-        "pilot": true,
         "provenance": {
           "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
           "sourceLandscapeTitle": "Mathematik (Gymnasium)",
@@ -3170,11 +3052,10 @@
       "core": true,
       "weight": 6,
       "tags": [
-        "canonical",
-        "pilot"
+        "canonical"
       ],
       "dimensionTags": {
-        "framework": "canonical-gymnasium-math-pilot",
+        "framework": "canonical-gymnasium-math",
         "demandLevel": "AB2",
         "processCompetencies": [
           "K2.1",
@@ -3206,7 +3087,6 @@
         ]
       },
       "extendedData": {
-        "pilot": true,
         "provenance": {
           "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
           "sourceLandscapeTitle": "Mathematik (Gymnasium)",
@@ -3223,19 +3103,18 @@
       "shortKey": "canonical_math_sek1_j7_anchor",
       "title": "Jahrgang 7 (Sek I)",
       "titleEn": "Year 7 (Lower Secondary)",
-      "description": "Kanonischer Jahrgangsanker für J7 der gymnasialen Sekundarstufe I in Mathematik. Der aktuelle Pilot bindet hier vorbereitende Zuordnungs- und Proportionalitätsziele sowie erste algebraische, geometrische und datenbezogene Anker an.",
-      "descriptionEn": "Canonical year anchor for year 7 in lower-secondary Gymnasium mathematics. The current pilot attaches preparatory mapping and proportionality goals as well as first algebraic, geometric, and data anchors here.",
+      "description": "Kanonischer Jahrgangsanker für J7 der gymnasialen Sekundarstufe I in Mathematik. Er bindet hier vorbereitende Zuordnungs- und Proportionalitätsziele sowie erste algebraische, geometrische und datenbezogene Anker an.",
+      "descriptionEn": "Canonical year anchor for year 7 in lower-secondary Gymnasium mathematics. It attaches preparatory mapping and proportionality goals as well as first algebraic, geometric, and data anchors here.",
       "core": true,
       "weight": 7,
       "tags": [
         "canonical",
-        "pilot",
         "phase:SekI",
         "phase:J7",
         "area:Mathematik"
       ],
       "dimensionTags": {
-        "framework": "canonical-gymnasium-math-pilot",
+        "framework": "canonical-gymnasium-math",
         "demandLevel": "AB1",
         "processCompetencies": [],
         "guidingIdeas": [
@@ -3263,7 +3142,6 @@
         ]
       },
       "extendedData": {
-        "pilot": true,
         "treeOrder": 4,
         "provenance": {
           "sourceLandscapeId": "b167b4cd-4b78-4c84-a721-6b2adbbcab3c",
@@ -3280,19 +3158,18 @@
       "shortKey": "canonical_math_sek1_j8_anchor",
       "title": "Jahrgang 8 (Sek I)",
       "titleEn": "Year 8 (Lower Secondary)",
-      "description": "Kanonischer Jahrgangsanker für J8 der gymnasialen Sekundarstufe I in Mathematik. Der aktuelle Pilot bindet hier lineare, gebrochen-rationale, stochastische, körpergeometrische und gleichungssystembezogene Anschlussziele an.",
-      "descriptionEn": "Canonical year anchor for year 8 in lower-secondary Gymnasium mathematics. The current pilot attaches linear, elementary rational-function, stochastic, solid-geometry, and system-of-equations bridge goals here.",
+      "description": "Kanonischer Jahrgangsanker für J8 der gymnasialen Sekundarstufe I in Mathematik. Er bindet hier lineare, gebrochen-rationale, stochastische, körpergeometrische und gleichungssystembezogene Anschlussziele an.",
+      "descriptionEn": "Canonical year anchor for year 8 in lower-secondary Gymnasium mathematics. It attaches linear, elementary rational-function, stochastic, solid-geometry, and system-of-equations bridge goals here.",
       "core": true,
       "weight": 14,
       "tags": [
         "canonical",
-        "pilot",
         "phase:SekI",
         "phase:J8",
         "area:Mathematik"
       ],
       "dimensionTags": {
-        "framework": "canonical-gymnasium-math-pilot",
+        "framework": "canonical-gymnasium-math",
         "demandLevel": "AB1",
         "processCompetencies": [],
         "guidingIdeas": [
@@ -3320,7 +3197,6 @@
         ]
       },
       "extendedData": {
-        "pilot": true,
         "treeOrder": 5,
         "provenance": {
           "sourceLandscapeId": "b167b4cd-4b78-4c84-a721-6b2adbbcab3c",
@@ -3337,19 +3213,18 @@
       "shortKey": "canonical_math_sek1_j9_anchor",
       "title": "Jahrgang 9 (Sek I)",
       "titleEn": "Year 9 (Lower Secondary)",
-      "description": "Kanonischer Jahrgangsanker für J9 der gymnasialen Sekundarstufe I in Mathematik. Der aktuelle Pilot bindet hier quadratische, stochastische, ähnlichkeitstheoretische, potenzbezogene und trigonometrische Anschlussziele an.",
-      "descriptionEn": "Canonical year anchor for year 9 in lower-secondary Gymnasium mathematics. The current pilot attaches quadratic, stochastic, similarity-based, power-related, and trigonometric bridge goals here.",
+      "description": "Kanonischer Jahrgangsanker für J9 der gymnasialen Sekundarstufe I in Mathematik. Er bindet hier quadratische, stochastische, ähnlichkeitstheoretische, potenzbezogene und trigonometrische Anschlussziele an.",
+      "descriptionEn": "Canonical year anchor for year 9 in lower-secondary Gymnasium mathematics. It attaches quadratic, stochastic, similarity-based, power-related, and trigonometric bridge goals here.",
       "core": true,
       "weight": 23,
       "tags": [
         "canonical",
-        "pilot",
         "phase:SekI",
         "phase:J9",
         "area:Mathematik"
       ],
       "dimensionTags": {
-        "framework": "canonical-gymnasium-math-pilot",
+        "framework": "canonical-gymnasium-math",
         "demandLevel": "AB1",
         "processCompetencies": [],
         "guidingIdeas": [
@@ -3377,7 +3252,6 @@
         ]
       },
       "extendedData": {
-        "pilot": true,
         "treeOrder": 6,
         "provenance": {
           "sourceLandscapeId": "b167b4cd-4b78-4c84-a721-6b2adbbcab3c",
@@ -3399,11 +3273,10 @@
       "core": true,
       "weight": 1,
       "tags": [
-        "canonical",
-        "pilot"
+        "canonical"
       ],
       "dimensionTags": {
-        "framework": "canonical-gymnasium-math-pilot",
+        "framework": "canonical-gymnasium-math",
         "demandLevel": "AB1",
         "processCompetencies": [
           "K1.1",
@@ -3429,7 +3302,6 @@
         ]
       },
       "extendedData": {
-        "pilot": true,
         "provenance": {
           "sourceLandscapeId": "b167b4cd-4b78-4c84-a721-6b2adbbcab3c",
           "sourceGoalId": "4261f57b-13c9-4733-a0dc-72f2dcd4726d"
@@ -3447,11 +3319,10 @@
       "core": true,
       "weight": 1,
       "tags": [
-        "canonical",
-        "pilot"
+        "canonical"
       ],
       "dimensionTags": {
-        "framework": "canonical-gymnasium-math-pilot",
+        "framework": "canonical-gymnasium-math",
         "demandLevel": "AB1",
         "processCompetencies": [
           "K1.1",
@@ -3477,7 +3348,6 @@
         ]
       },
       "extendedData": {
-        "pilot": true,
         "provenance": {
           "sourceLandscapeId": "b167b4cd-4b78-4c84-a721-6b2adbbcab3c",
           "sourceGoalId": "ed0c5283-b1b2-4562-9115-7336fca7a8d4"
@@ -3495,11 +3365,10 @@
       "core": true,
       "weight": 1,
       "tags": [
-        "canonical",
-        "pilot"
+        "canonical"
       ],
       "dimensionTags": {
-        "framework": "canonical-gymnasium-math-pilot",
+        "framework": "canonical-gymnasium-math",
         "demandLevel": "AB1",
         "processCompetencies": [
           "K2.1",
@@ -3524,7 +3393,6 @@
         ]
       },
       "extendedData": {
-        "pilot": true,
         "provenance": {
           "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
           "sourceLandscapeTitle": "Mathematik (Gymnasium)",
@@ -3543,11 +3411,10 @@
       "core": true,
       "weight": 3,
       "tags": [
-        "canonical",
-        "pilot"
+        "canonical"
       ],
       "dimensionTags": {
-        "framework": "canonical-gymnasium-math-pilot",
+        "framework": "canonical-gymnasium-math",
         "demandLevel": "AB1",
         "processCompetencies": [
           "K3.1",
@@ -3575,7 +3442,6 @@
         ]
       },
       "extendedData": {
-        "pilot": true,
         "provenance": {
           "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
           "sourceLandscapeTitle": "Mathematik (Gymnasium)",
@@ -3597,11 +3463,10 @@
       "core": true,
       "weight": 1,
       "tags": [
-        "canonical",
-        "pilot"
+        "canonical"
       ],
       "dimensionTags": {
-        "framework": "canonical-gymnasium-math-pilot",
+        "framework": "canonical-gymnasium-math",
         "demandLevel": "AB2",
         "processCompetencies": [
           "K2.2",
@@ -3625,7 +3490,6 @@
         ]
       },
       "extendedData": {
-        "pilot": true,
         "provenance": {
           "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
           "sourceLandscapeTitle": "Mathematik (Gymnasium)",
@@ -3649,11 +3513,10 @@
       "core": true,
       "weight": 1,
       "tags": [
-        "canonical",
-        "pilot"
+        "canonical"
       ],
       "dimensionTags": {
-        "framework": "canonical-gymnasium-math-pilot",
+        "framework": "canonical-gymnasium-math",
         "demandLevel": "AB1",
         "processCompetencies": [
           "K3.1",
@@ -3677,7 +3540,6 @@
         ]
       },
       "extendedData": {
-        "pilot": true,
         "provenance": {
           "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
           "sourceLandscapeTitle": "Mathematik (Gymnasium)",
@@ -3701,11 +3563,10 @@
       "core": true,
       "weight": 1,
       "tags": [
-        "canonical",
-        "pilot"
+        "canonical"
       ],
       "dimensionTags": {
-        "framework": "canonical-gymnasium-math-pilot",
+        "framework": "canonical-gymnasium-math",
         "demandLevel": "AB2",
         "processCompetencies": [
           "K2.2",
@@ -3730,7 +3591,6 @@
         ]
       },
       "extendedData": {
-        "pilot": true,
         "provenance": {
           "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
           "sourceLandscapeTitle": "Mathematik (Gymnasium)",
@@ -3754,11 +3614,10 @@
       "core": true,
       "weight": 1,
       "tags": [
-        "canonical",
-        "pilot"
+        "canonical"
       ],
       "dimensionTags": {
-        "framework": "canonical-gymnasium-math-pilot",
+        "framework": "canonical-gymnasium-math",
         "demandLevel": "AB1",
         "processCompetencies": [
           "K1.1",
@@ -3783,7 +3642,6 @@
         ]
       },
       "extendedData": {
-        "pilot": true,
         "provenance": {
           "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
           "sourceLandscapeTitle": "Mathematik (Gymnasium)",
@@ -3802,11 +3660,10 @@
       "core": true,
       "weight": 1,
       "tags": [
-        "canonical",
-        "pilot"
+        "canonical"
       ],
       "dimensionTags": {
-        "framework": "canonical-gymnasium-math-pilot",
+        "framework": "canonical-gymnasium-math",
         "demandLevel": "AB2",
         "processCompetencies": [
           "K1.1",
@@ -3834,7 +3691,6 @@
         ]
       },
       "extendedData": {
-        "pilot": true,
         "provenance": {
           "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
           "sourceLandscapeTitle": "Mathematik (Gymnasium)",
@@ -3856,11 +3712,10 @@
       "core": true,
       "weight": 1,
       "tags": [
-        "canonical",
-        "pilot"
+        "canonical"
       ],
       "dimensionTags": {
-        "framework": "canonical-gymnasium-math-pilot",
+        "framework": "canonical-gymnasium-math",
         "demandLevel": "AB2",
         "processCompetencies": [
           "K2.1",
@@ -3885,7 +3740,6 @@
         ]
       },
       "extendedData": {
-        "pilot": true,
         "provenance": {
           "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
           "sourceLandscapeTitle": "Mathematik (Gymnasium)",
@@ -3904,11 +3758,10 @@
       "core": true,
       "weight": 1,
       "tags": [
-        "canonical",
-        "pilot"
+        "canonical"
       ],
       "dimensionTags": {
-        "framework": "canonical-gymnasium-math-pilot",
+        "framework": "canonical-gymnasium-math",
         "demandLevel": "AB1",
         "processCompetencies": [
           "K1.1",
@@ -3934,7 +3787,6 @@
         ]
       },
       "extendedData": {
-        "pilot": true,
         "provenance": {
           "sourceLandscapeId": "b167b4cd-4b78-4c84-a721-6b2adbbcab3c",
           "sourceGoalId": "faafd111-21a1-4f67-945a-6bff60b3e19b"
@@ -3952,11 +3804,10 @@
       "core": true,
       "weight": 1,
       "tags": [
-        "canonical",
-        "pilot"
+        "canonical"
       ],
       "dimensionTags": {
-        "framework": "canonical-gymnasium-math-pilot",
+        "framework": "canonical-gymnasium-math",
         "demandLevel": "AB1",
         "processCompetencies": [
           "K1.1",
@@ -3985,7 +3836,6 @@
         ]
       },
       "extendedData": {
-        "pilot": true,
         "provenance": {
           "sourceLandscapeId": "b167b4cd-4b78-4c84-a721-6b2adbbcab3c",
           "sourceGoalId": "3fd40670-16c0-4a3c-b9f5-e64e3a56792f"
@@ -3998,16 +3848,15 @@
       "shortKey": "canonical_math_analyze_linear_functions_rechnerisch",
       "title": "Lineare Funktionen rechnerisch untersuchen",
       "titleEn": "Analyze linear functions algebraically",
-      "description": "Kanonischer Cluster für lineare Rechenroutinen im J8-Korridor. Der aktuelle Pilot trennt hier zwischen dem rechnerischen Arbeiten mit Geradengleichungen, Nullstellen und Schnittpunkten sowie dem systematischen Lösen linearer Gleichungen und Ungleichungen.",
-      "descriptionEn": "Canonical cluster for linear calculation routines in the year-8 corridor. The current pilot distinguishes between algebraic work with line equations, roots, and intersections, and the systematic solving of linear equations and inequalities.",
+      "description": "Kanonischer Cluster für lineare Rechenroutinen im J8-Korridor. Der Cluster trennt hier zwischen dem rechnerischen Arbeiten mit Geradengleichungen, Nullstellen und Schnittpunkten sowie dem systematischen Lösen linearer Gleichungen und Ungleichungen.",
+      "descriptionEn": "Canonical cluster for linear calculation routines in the year-8 corridor. The cluster distinguishes between algebraic work with line equations, roots, and intersections, and the systematic solving of linear equations and inequalities.",
       "core": true,
       "weight": 2,
       "tags": [
-        "canonical",
-        "pilot"
+        "canonical"
       ],
       "dimensionTags": {
-        "framework": "canonical-gymnasium-math-pilot",
+        "framework": "canonical-gymnasium-math",
         "demandLevel": "AB2",
         "processCompetencies": [
           "K1.1",
@@ -4037,7 +3886,6 @@
         ]
       },
       "extendedData": {
-        "pilot": true,
         "provenance": {
           "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
           "sourceGoalId": "edd3e6df-7f3d-5230-9377-dcf9d095c49c"
@@ -4055,11 +3903,10 @@
       "core": true,
       "weight": 1,
       "tags": [
-        "canonical",
-        "pilot"
+        "canonical"
       ],
       "dimensionTags": {
-        "framework": "canonical-gymnasium-math-pilot",
+        "framework": "canonical-gymnasium-math",
         "demandLevel": "AB2",
         "processCompetencies": [
           "K1.1",
@@ -4085,7 +3932,6 @@
         ]
       },
       "extendedData": {
-        "pilot": true,
         "provenance": {
           "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
           "sourceGoalId": "edd3e6df-7f3d-5230-9377-dcf9d095c49c",
@@ -4106,11 +3952,10 @@
       "core": true,
       "weight": 1,
       "tags": [
-        "canonical",
-        "pilot"
+        "canonical"
       ],
       "dimensionTags": {
-        "framework": "canonical-gymnasium-math-pilot",
+        "framework": "canonical-gymnasium-math",
         "demandLevel": "AB2",
         "processCompetencies": [
           "K1.1",
@@ -4135,7 +3980,6 @@
         ]
       },
       "extendedData": {
-        "pilot": true,
         "provenance": {
           "sourceLandscapeId": "b167b4cd-4b78-4c84-a721-6b2adbbcab3c",
           "sourceGoalId": "05b6a520-c23a-414a-842a-ba1c0e57b776"
@@ -4153,11 +3997,10 @@
       "core": true,
       "weight": 3,
       "tags": [
-        "canonical",
-        "pilot"
+        "canonical"
       ],
       "dimensionTags": {
-        "framework": "canonical-gymnasium-math-pilot",
+        "framework": "canonical-gymnasium-math",
         "demandLevel": "AB2",
         "processCompetencies": [
           "K1.1",
@@ -4184,7 +4027,6 @@
         ]
       },
       "extendedData": {
-        "pilot": true,
         "provenance": {
           "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
           "sourceLandscapeTitle": "Mathematik (Gymnasium)",
@@ -4203,11 +4045,10 @@
       "core": true,
       "weight": 1,
       "tags": [
-        "canonical",
-        "pilot"
+        "canonical"
       ],
       "dimensionTags": {
-        "framework": "canonical-gymnasium-math-pilot",
+        "framework": "canonical-gymnasium-math",
         "demandLevel": "AB2",
         "processCompetencies": [
           "K1.1",
@@ -4233,7 +4074,6 @@
         ]
       },
       "extendedData": {
-        "pilot": true,
         "provenance": {
           "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
           "sourceLandscapeTitle": "Mathematik (Gymnasium)",
@@ -4252,11 +4092,10 @@
       "core": true,
       "weight": 1,
       "tags": [
-        "canonical",
-        "pilot"
+        "canonical"
       ],
       "dimensionTags": {
-        "framework": "canonical-gymnasium-math-pilot",
+        "framework": "canonical-gymnasium-math",
         "demandLevel": "AB2",
         "processCompetencies": [
           "K1.1",
@@ -4281,7 +4120,6 @@
         ]
       },
       "extendedData": {
-        "pilot": true,
         "provenance": {
           "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
           "sourceLandscapeTitle": "Mathematik (Gymnasium)",
@@ -4300,11 +4138,10 @@
       "core": true,
       "weight": 1,
       "tags": [
-        "canonical",
-        "pilot"
+        "canonical"
       ],
       "dimensionTags": {
-        "framework": "canonical-gymnasium-math-pilot",
+        "framework": "canonical-gymnasium-math",
         "demandLevel": "AB2",
         "processCompetencies": [
           "K2.1",
@@ -4332,7 +4169,6 @@
         ]
       },
       "extendedData": {
-        "pilot": true,
         "provenance": {
           "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
           "sourceLandscapeTitle": "Mathematik (Gymnasium)",
@@ -4351,11 +4187,10 @@
       "core": true,
       "weight": 5,
       "tags": [
-        "canonical",
-        "pilot"
+        "canonical"
       ],
       "dimensionTags": {
-        "framework": "canonical-gymnasium-math-pilot",
+        "framework": "canonical-gymnasium-math",
         "demandLevel": "AB2",
         "processCompetencies": [
           "K1.1",
@@ -4384,7 +4219,6 @@
         ]
       },
       "extendedData": {
-        "pilot": true,
         "provenance": {
           "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
           "sourceLandscapeTitle": "Mathematik (Gymnasium)",
@@ -4403,11 +4237,10 @@
       "core": true,
       "weight": 1,
       "tags": [
-        "canonical",
-        "pilot"
+        "canonical"
       ],
       "dimensionTags": {
-        "framework": "canonical-gymnasium-math-pilot",
+        "framework": "canonical-gymnasium-math",
         "demandLevel": "AB2",
         "processCompetencies": [
           "K1.1",
@@ -4432,7 +4265,6 @@
         ]
       },
       "extendedData": {
-        "pilot": true,
         "provenance": {
           "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
           "sourceLandscapeTitle": "Mathematik (Gymnasium)",
@@ -4451,11 +4283,10 @@
       "core": true,
       "weight": 1,
       "tags": [
-        "canonical",
-        "pilot"
+        "canonical"
       ],
       "dimensionTags": {
-        "framework": "canonical-gymnasium-math-pilot",
+        "framework": "canonical-gymnasium-math",
         "demandLevel": "AB2",
         "processCompetencies": [
           "K1.1",
@@ -4479,7 +4310,6 @@
         ]
       },
       "extendedData": {
-        "pilot": true,
         "provenance": {
           "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
           "sourceLandscapeTitle": "Mathematik (Gymnasium)",
@@ -4498,11 +4328,10 @@
       "core": true,
       "weight": 1,
       "tags": [
-        "canonical",
-        "pilot"
+        "canonical"
       ],
       "dimensionTags": {
-        "framework": "canonical-gymnasium-math-pilot",
+        "framework": "canonical-gymnasium-math",
         "demandLevel": "AB1",
         "processCompetencies": [
           "K1.1",
@@ -4526,7 +4355,6 @@
         ]
       },
       "extendedData": {
-        "pilot": true,
         "provenance": {
           "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
           "sourceLandscapeTitle": "Mathematik (Gymnasium)",
@@ -4545,11 +4373,10 @@
       "core": true,
       "weight": 1,
       "tags": [
-        "canonical",
-        "pilot"
+        "canonical"
       ],
       "dimensionTags": {
-        "framework": "canonical-gymnasium-math-pilot",
+        "framework": "canonical-gymnasium-math",
         "demandLevel": "AB2",
         "processCompetencies": [
           "K1.1",
@@ -4576,7 +4403,6 @@
         ]
       },
       "extendedData": {
-        "pilot": true,
         "provenance": {
           "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
           "sourceLandscapeTitle": "Mathematik (Gymnasium)",
@@ -4595,11 +4421,10 @@
       "core": true,
       "weight": 1,
       "tags": [
-        "canonical",
-        "pilot"
+        "canonical"
       ],
       "dimensionTags": {
-        "framework": "canonical-gymnasium-math-pilot",
+        "framework": "canonical-gymnasium-math",
         "demandLevel": "AB2",
         "processCompetencies": [
           "K1.1",
@@ -4624,7 +4449,6 @@
         ]
       },
       "extendedData": {
-        "pilot": true,
         "provenance": {
           "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
           "sourceLandscapeTitle": "Mathematik (Gymnasium)",
@@ -4643,11 +4467,10 @@
       "core": true,
       "weight": 1,
       "tags": [
-        "canonical",
-        "pilot"
+        "canonical"
       ],
       "dimensionTags": {
-        "framework": "canonical-gymnasium-math-pilot",
+        "framework": "canonical-gymnasium-math",
         "demandLevel": "AB2",
         "processCompetencies": [
           "K1.1",
@@ -4673,7 +4496,6 @@
         ]
       },
       "extendedData": {
-        "pilot": true,
         "provenance": {
           "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
           "sourceLandscapeTitle": "Mathematik (Gymnasium)",
@@ -4695,11 +4517,10 @@
       "core": true,
       "weight": 1,
       "tags": [
-        "canonical",
-        "pilot"
+        "canonical"
       ],
       "dimensionTags": {
-        "framework": "canonical-gymnasium-math-pilot",
+        "framework": "canonical-gymnasium-math",
         "demandLevel": "AB1",
         "processCompetencies": [
           "K1.1",
@@ -4724,7 +4545,6 @@
         ]
       },
       "extendedData": {
-        "pilot": true,
         "provenance": {
           "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
           "sourceLandscapeTitle": "Mathematik (Gymnasium)",
@@ -4746,11 +4566,10 @@
       "core": true,
       "weight": 1,
       "tags": [
-        "canonical",
-        "pilot"
+        "canonical"
       ],
       "dimensionTags": {
-        "framework": "canonical-gymnasium-math-pilot",
+        "framework": "canonical-gymnasium-math",
         "demandLevel": "AB2",
         "processCompetencies": [
           "K2.1",
@@ -4777,7 +4596,6 @@
         ]
       },
       "extendedData": {
-        "pilot": true,
         "provenance": {
           "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
           "sourceLandscapeTitle": "Mathematik (Gymnasium)",
@@ -4796,11 +4614,10 @@
       "core": true,
       "weight": 5,
       "tags": [
-        "canonical",
-        "pilot"
+        "canonical"
       ],
       "dimensionTags": {
-        "framework": "canonical-gymnasium-math-pilot",
+        "framework": "canonical-gymnasium-math",
         "demandLevel": "AB1",
         "processCompetencies": [
           "K1.1",
@@ -4831,7 +4648,6 @@
         ]
       },
       "extendedData": {
-        "pilot": true,
         "provenance": {
           "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
           "sourceLandscapeTitle": "Mathematik (Gymnasium)",
@@ -4850,11 +4666,10 @@
       "core": true,
       "weight": 1,
       "tags": [
-        "canonical",
-        "pilot"
+        "canonical"
       ],
       "dimensionTags": {
-        "framework": "canonical-gymnasium-math-pilot",
+        "framework": "canonical-gymnasium-math",
         "demandLevel": "AB1",
         "processCompetencies": [
           "K1.1",
@@ -4878,7 +4693,6 @@
         ]
       },
       "extendedData": {
-        "pilot": true,
         "provenance": {
           "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
           "sourceLandscapeTitle": "Mathematik (Gymnasium)",
@@ -4902,11 +4716,10 @@
       "core": true,
       "weight": 1,
       "tags": [
-        "canonical",
-        "pilot"
+        "canonical"
       ],
       "dimensionTags": {
-        "framework": "canonical-gymnasium-math-pilot",
+        "framework": "canonical-gymnasium-math",
         "demandLevel": "AB1",
         "processCompetencies": [
           "K1.2",
@@ -4929,7 +4742,6 @@
         ]
       },
       "extendedData": {
-        "pilot": true,
         "provenance": {
           "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
           "sourceLandscapeTitle": "Mathematik (Gymnasium)",
@@ -4953,11 +4765,10 @@
       "core": true,
       "weight": 1,
       "tags": [
-        "canonical",
-        "pilot"
+        "canonical"
       ],
       "dimensionTags": {
-        "framework": "canonical-gymnasium-math-pilot",
+        "framework": "canonical-gymnasium-math",
         "demandLevel": "AB1",
         "processCompetencies": [
           "K2.1",
@@ -4981,7 +4792,6 @@
         ]
       },
       "extendedData": {
-        "pilot": true,
         "provenance": {
           "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
           "sourceLandscapeTitle": "Mathematik (Gymnasium)",
@@ -5005,11 +4815,10 @@
       "core": true,
       "weight": 1,
       "tags": [
-        "canonical",
-        "pilot"
+        "canonical"
       ],
       "dimensionTags": {
-        "framework": "canonical-gymnasium-math-pilot",
+        "framework": "canonical-gymnasium-math",
         "demandLevel": "AB1",
         "processCompetencies": [
           "K1.1",
@@ -5034,7 +4843,6 @@
         ]
       },
       "extendedData": {
-        "pilot": true,
         "provenance": {
           "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
           "sourceLandscapeTitle": "Mathematik (Gymnasium)",
@@ -5058,11 +4866,10 @@
       "core": true,
       "weight": 1,
       "tags": [
-        "canonical",
-        "pilot"
+        "canonical"
       ],
       "dimensionTags": {
-        "framework": "canonical-gymnasium-math-pilot",
+        "framework": "canonical-gymnasium-math",
         "demandLevel": "AB1",
         "processCompetencies": [
           "K1.1",
@@ -5086,7 +4893,6 @@
         ]
       },
       "extendedData": {
-        "pilot": true,
         "provenance": {
           "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
           "sourceLandscapeTitle": "Mathematik (Gymnasium)",
@@ -5110,11 +4916,10 @@
       "core": true,
       "weight": 2,
       "tags": [
-        "canonical",
-        "pilot"
+        "canonical"
       ],
       "dimensionTags": {
-        "framework": "canonical-gymnasium-math-pilot",
+        "framework": "canonical-gymnasium-math",
         "demandLevel": "AB2",
         "processCompetencies": [
           "K1.1",
@@ -5139,7 +4944,6 @@
         ]
       },
       "extendedData": {
-        "pilot": true,
         "provenance": {
           "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
           "sourceLandscapeTitle": "Mathematik (Gymnasium)",
@@ -5158,11 +4962,10 @@
       "core": true,
       "weight": 1,
       "tags": [
-        "canonical",
-        "pilot"
+        "canonical"
       ],
       "dimensionTags": {
-        "framework": "canonical-gymnasium-math-pilot",
+        "framework": "canonical-gymnasium-math",
         "demandLevel": "AB1",
         "processCompetencies": [
           "K1.1",
@@ -5186,7 +4989,6 @@
         ]
       },
       "extendedData": {
-        "pilot": true,
         "provenance": {
           "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
           "sourceLandscapeTitle": "Mathematik (Gymnasium)",
@@ -5208,11 +5010,10 @@
       "core": true,
       "weight": 1,
       "tags": [
-        "canonical",
-        "pilot"
+        "canonical"
       ],
       "dimensionTags": {
-        "framework": "canonical-gymnasium-math-pilot",
+        "framework": "canonical-gymnasium-math",
         "demandLevel": "AB2",
         "processCompetencies": [
           "K1.1",
@@ -5237,7 +5038,6 @@
         ]
       },
       "extendedData": {
-        "pilot": true,
         "provenance": {
           "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
           "sourceLandscapeTitle": "Mathematik (Gymnasium)",
@@ -5259,11 +5059,10 @@
       "core": true,
       "weight": 1,
       "tags": [
-        "canonical",
-        "pilot"
+        "canonical"
       ],
       "dimensionTags": {
-        "framework": "canonical-gymnasium-math-pilot",
+        "framework": "canonical-gymnasium-math",
         "demandLevel": "AB2",
         "processCompetencies": [
           "K2.1",
@@ -5288,7 +5087,6 @@
         ]
       },
       "extendedData": {
-        "pilot": true,
         "provenance": {
           "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
           "sourceLandscapeTitle": "Mathematik (Gymnasium)",
@@ -5302,16 +5100,15 @@
       "shortKey": "canonical_math_sek1_j9_power_functions",
       "title": "Potenzfunktionen und Potenzgesetze nutzen",
       "titleEn": "Use power functions and exponent rules",
-      "description": "Kanonischer Cluster für Potenzgesetze und Potenz-/Wurzelfunktionsbilder im späten Sek-I-Korridor. Der aktuelle Pilot trennt hier zwischen den Rechenregeln zu Potenzen und der graphischen Untersuchung von Potenz- und Wurzelfunktionen.",
-      "descriptionEn": "Canonical cluster for exponent rules and power/root-function representations in the late lower-secondary corridor. The current pilot distinguishes between calculation rules for powers and the graphical investigation of power and root functions.",
+      "description": "Kanonischer Cluster für Potenzgesetze und Potenz-/Wurzelfunktionsbilder im späten Sek-I-Korridor. Der Cluster trennt hier zwischen den Rechenregeln zu Potenzen und der graphischen Untersuchung von Potenz- und Wurzelfunktionen.",
+      "descriptionEn": "Canonical cluster for exponent rules and power/root-function representations in the late lower-secondary corridor. The cluster distinguishes between calculation rules for powers and the graphical investigation of power and root functions.",
       "core": true,
       "weight": 2,
       "tags": [
-        "canonical",
-        "pilot"
+        "canonical"
       ],
       "dimensionTags": {
-        "framework": "canonical-gymnasium-math-pilot",
+        "framework": "canonical-gymnasium-math",
         "demandLevel": "AB2",
         "processCompetencies": [
           "K1.1",
@@ -5340,7 +5137,6 @@
         ]
       },
       "extendedData": {
-        "pilot": true,
         "provenance": {
           "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
           "sourceLandscapeTitle": "Mathematik (Gymnasium)",
@@ -5359,11 +5155,10 @@
       "core": true,
       "weight": 1,
       "tags": [
-        "canonical",
-        "pilot"
+        "canonical"
       ],
       "dimensionTags": {
-        "framework": "canonical-gymnasium-math-pilot",
+        "framework": "canonical-gymnasium-math",
         "demandLevel": "AB2",
         "processCompetencies": [
           "K1.1",
@@ -5389,7 +5184,6 @@
         ]
       },
       "extendedData": {
-        "pilot": true,
         "provenance": {
           "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
           "sourceLandscapeTitle": "Mathematik (Gymnasium)",
@@ -5408,11 +5202,10 @@
       "core": true,
       "weight": 1,
       "tags": [
-        "canonical",
-        "pilot"
+        "canonical"
       ],
       "dimensionTags": {
-        "framework": "canonical-gymnasium-math-pilot",
+        "framework": "canonical-gymnasium-math",
         "demandLevel": "AB2",
         "processCompetencies": [
           "K2.1",
@@ -5437,7 +5230,6 @@
         ]
       },
       "extendedData": {
-        "pilot": true,
         "provenance": {
           "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
           "sourceLandscapeTitle": "Mathematik (Gymnasium)",
@@ -5456,11 +5248,10 @@
       "core": true,
       "weight": 3,
       "tags": [
-        "canonical",
-        "pilot"
+        "canonical"
       ],
       "dimensionTags": {
-        "framework": "canonical-gymnasium-math-pilot",
+        "framework": "canonical-gymnasium-math",
         "demandLevel": "AB2",
         "processCompetencies": [
           "K1.1",
@@ -5486,7 +5277,6 @@
         ]
       },
       "extendedData": {
-        "pilot": true,
         "provenance": {
           "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
           "sourceLandscapeTitle": "Mathematik (Gymnasium)",
@@ -5505,11 +5295,10 @@
       "core": true,
       "weight": 1,
       "tags": [
-        "canonical",
-        "pilot"
+        "canonical"
       ],
       "dimensionTags": {
-        "framework": "canonical-gymnasium-math-pilot",
+        "framework": "canonical-gymnasium-math",
         "demandLevel": "AB2",
         "processCompetencies": [
           "K1.1",
@@ -5536,7 +5325,6 @@
         ]
       },
       "extendedData": {
-        "pilot": true,
         "provenance": {
           "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
           "sourceLandscapeTitle": "Mathematik (Gymnasium)",
@@ -5558,11 +5346,10 @@
       "core": true,
       "weight": 2,
       "tags": [
-        "canonical",
-        "pilot"
+        "canonical"
       ],
       "dimensionTags": {
-        "framework": "canonical-gymnasium-math-pilot",
+        "framework": "canonical-gymnasium-math",
         "demandLevel": "AB2",
         "processCompetencies": [
           "K1.1",
@@ -5591,7 +5378,6 @@
         ]
       },
       "extendedData": {
-        "pilot": true,
         "provenance": {
           "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
           "sourceLandscapeTitle": "Mathematik (Gymnasium)",
@@ -5613,11 +5399,10 @@
       "core": true,
       "weight": 1,
       "tags": [
-        "canonical",
-        "pilot"
+        "canonical"
       ],
       "dimensionTags": {
-        "framework": "canonical-gymnasium-math-pilot",
+        "framework": "canonical-gymnasium-math",
         "demandLevel": "AB2",
         "processCompetencies": [
           "K1.1",
@@ -5642,7 +5427,6 @@
         ]
       },
       "extendedData": {
-        "pilot": true,
         "provenance": {
           "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
           "sourceLandscapeTitle": "Mathematik (Gymnasium)",
@@ -5666,11 +5450,10 @@
       "core": true,
       "weight": 1,
       "tags": [
-        "canonical",
-        "pilot"
+        "canonical"
       ],
       "dimensionTags": {
-        "framework": "canonical-gymnasium-math-pilot",
+        "framework": "canonical-gymnasium-math",
         "demandLevel": "AB2",
         "processCompetencies": [
           "K1.1",
@@ -5695,7 +5478,6 @@
         ]
       },
       "extendedData": {
-        "pilot": true,
         "provenance": {
           "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
           "sourceLandscapeTitle": "Mathematik (Gymnasium)",
@@ -5714,16 +5496,15 @@
       "shortKey": "canonical_math_determine_vertices_of_quadratic_functions",
       "title": "Scheitelpunkte quadratischer Funktionen bestimmen",
       "titleEn": "Determine vertices of quadratic functions",
-      "description": "Kanonischer Cluster für Scheitelpunkt- und Umformroutinen quadratischer Funktionen. Der aktuelle Pilot trennt hier zwischen dem Bestimmen des Scheitelpunkts aus quadratischen Termen und dem gezielten Umformen quadratischer Terme mit binomischen Formeln.",
-      "descriptionEn": "Canonical cluster for vertex and transformation routines of quadratic functions. The current pilot distinguishes between determining the vertex from quadratic expressions and purposefully transforming quadratic expressions using binomial formulas.",
+      "description": "Kanonischer Cluster für Scheitelpunkt- und Umformroutinen quadratischer Funktionen. Der Cluster trennt hier zwischen dem Bestimmen des Scheitelpunkts aus quadratischen Termen und dem gezielten Umformen quadratischer Terme mit binomischen Formeln.",
+      "descriptionEn": "Canonical cluster for vertex and transformation routines of quadratic functions. The cluster distinguishes between determining the vertex from quadratic expressions and purposefully transforming quadratic expressions using binomial formulas.",
       "core": true,
       "weight": 2,
       "tags": [
-        "canonical",
-        "pilot"
+        "canonical"
       ],
       "dimensionTags": {
-        "framework": "canonical-gymnasium-math-pilot",
+        "framework": "canonical-gymnasium-math",
         "demandLevel": "AB2",
         "processCompetencies": [
           "K1.1",
@@ -5754,7 +5535,6 @@
         ]
       },
       "extendedData": {
-        "pilot": true,
         "provenance": {
           "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
           "sourceGoalId": "6e7ff196-a9e4-5bac-afee-621801ec85c2"
@@ -5772,11 +5552,10 @@
       "core": true,
       "weight": 1,
       "tags": [
-        "canonical",
-        "pilot"
+        "canonical"
       ],
       "dimensionTags": {
-        "framework": "canonical-gymnasium-math-pilot",
+        "framework": "canonical-gymnasium-math",
         "demandLevel": "AB2",
         "processCompetencies": [
           "K1.1",
@@ -5803,7 +5582,6 @@
         ]
       },
       "extendedData": {
-        "pilot": true,
         "applicabilityOverrides": {
           "jurisdiction": [
             "DE-HE"
@@ -5826,11 +5604,10 @@
       "core": true,
       "weight": 1,
       "tags": [
-        "canonical",
-        "pilot"
+        "canonical"
       ],
       "dimensionTags": {
-        "framework": "canonical-gymnasium-math-pilot",
+        "framework": "canonical-gymnasium-math",
         "demandLevel": "AB2",
         "processCompetencies": [
           "K1.1",
@@ -5854,7 +5631,6 @@
         ]
       },
       "extendedData": {
-        "pilot": true,
         "provenance": {
           "sourceLandscapeId": "b167b4cd-4b78-4c84-a721-6b2adbbcab3c",
           "sourceGoalId": "172f1e73-b8fa-47be-b7af-50c93ce8cc7b"
@@ -5872,11 +5648,10 @@
       "core": true,
       "weight": 9,
       "tags": [
-        "canonical",
-        "pilot"
+        "canonical"
       ],
       "dimensionTags": {
-        "framework": "canonical-gymnasium-math-pilot",
+        "framework": "canonical-gymnasium-math",
         "demandLevel": "AB1",
         "processCompetencies": [
           "K1.1",
@@ -5903,7 +5678,6 @@
         ]
       },
       "extendedData": {
-        "pilot": true,
         "provenance": {
           "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
           "sourceGoalId": "15c31e1c-ddaf-5db8-a6a2-5d177fdad216",
@@ -5922,11 +5696,10 @@
       "core": true,
       "weight": 6,
       "tags": [
-        "canonical",
-        "pilot"
+        "canonical"
       ],
       "dimensionTags": {
-        "framework": "canonical-gymnasium-math-pilot",
+        "framework": "canonical-gymnasium-math",
         "demandLevel": "AB1",
         "processCompetencies": [
           "K1.1",
@@ -5958,7 +5731,6 @@
         ]
       },
       "extendedData": {
-        "pilot": true,
         "provenance": {
           "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
           "sourceLandscapeTitle": "Mathematik (Gymnasium)",
@@ -5982,11 +5754,10 @@
       "core": true,
       "weight": 3,
       "tags": [
-        "canonical",
-        "pilot"
+        "canonical"
       ],
       "dimensionTags": {
-        "framework": "canonical-gymnasium-math-pilot",
+        "framework": "canonical-gymnasium-math",
         "demandLevel": "AB2",
         "processCompetencies": [
           "K2.1",
@@ -6014,7 +5785,6 @@
         ]
       },
       "extendedData": {
-        "pilot": true,
         "provenance": {
           "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
           "sourceLandscapeTitle": "Mathematik (Gymnasium)",
@@ -6038,11 +5808,10 @@
       "core": true,
       "weight": 1,
       "tags": [
-        "canonical",
-        "pilot"
+        "canonical"
       ],
       "dimensionTags": {
-        "framework": "canonical-gymnasium-math-pilot",
+        "framework": "canonical-gymnasium-math",
         "demandLevel": "AB1",
         "processCompetencies": [
           "K1.1",
@@ -6067,7 +5836,6 @@
         ]
       },
       "extendedData": {
-        "pilot": true,
         "provenance": {
           "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
           "sourceLandscapeTitle": "Mathematik (Gymnasium)",
@@ -6091,11 +5859,10 @@
       "core": true,
       "weight": 1,
       "tags": [
-        "canonical",
-        "pilot"
+        "canonical"
       ],
       "dimensionTags": {
-        "framework": "canonical-gymnasium-math-pilot",
+        "framework": "canonical-gymnasium-math",
         "demandLevel": "AB1",
         "processCompetencies": [
           "K1.1",
@@ -6118,7 +5885,6 @@
         ]
       },
       "extendedData": {
-        "pilot": true,
         "provenance": {
           "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
           "sourceLandscapeTitle": "Mathematik (Gymnasium)",
@@ -6142,11 +5908,10 @@
       "core": true,
       "weight": 1,
       "tags": [
-        "canonical",
-        "pilot"
+        "canonical"
       ],
       "dimensionTags": {
-        "framework": "canonical-gymnasium-math-pilot",
+        "framework": "canonical-gymnasium-math",
         "demandLevel": "AB2",
         "processCompetencies": [
           "K1.1",
@@ -6172,7 +5937,6 @@
         ]
       },
       "extendedData": {
-        "pilot": true,
         "provenance": {
           "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
           "sourceLandscapeTitle": "Mathematik (Gymnasium)",
@@ -6196,11 +5960,10 @@
       "core": true,
       "weight": 1,
       "tags": [
-        "canonical",
-        "pilot"
+        "canonical"
       ],
       "dimensionTags": {
-        "framework": "canonical-gymnasium-math-pilot",
+        "framework": "canonical-gymnasium-math",
         "demandLevel": "AB2",
         "processCompetencies": [
           "K2.1",
@@ -6225,7 +5988,6 @@
         ]
       },
       "extendedData": {
-        "pilot": true,
         "provenance": {
           "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
           "sourceLandscapeTitle": "Mathematik (Gymnasium)",
@@ -6249,11 +6011,10 @@
       "core": true,
       "weight": 1,
       "tags": [
-        "canonical",
-        "pilot"
+        "canonical"
       ],
       "dimensionTags": {
-        "framework": "canonical-gymnasium-math-pilot",
+        "framework": "canonical-gymnasium-math",
         "demandLevel": "AB2",
         "processCompetencies": [
           "K1.1",
@@ -6279,7 +6040,6 @@
         ]
       },
       "extendedData": {
-        "pilot": true,
         "provenance": {
           "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
           "sourceLandscapeTitle": "Mathematik (Gymnasium)",
@@ -27389,11 +27149,10 @@
       "core": true,
       "weight": 1,
       "tags": [
-        "canonical",
-        "pilot"
+        "canonical"
       ],
       "dimensionTags": {
-        "framework": "canonical-gymnasium-math-pilot",
+        "framework": "canonical-gymnasium-math",
         "demandLevel": "AB2",
         "processCompetencies": [
           "K2.1",
@@ -27417,7 +27176,6 @@
         ]
       },
       "extendedData": {
-        "pilot": true,
         "provenance": {
           "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
           "sourceLandscapeTitle": "Mathematik (Gymnasium)",
@@ -27441,11 +27199,10 @@
       "core": true,
       "weight": 1,
       "tags": [
-        "canonical",
-        "pilot"
+        "canonical"
       ],
       "dimensionTags": {
-        "framework": "canonical-gymnasium-math-pilot",
+        "framework": "canonical-gymnasium-math",
         "demandLevel": "AB2",
         "processCompetencies": [
           "K2.1",
@@ -27469,7 +27226,6 @@
         ]
       },
       "extendedData": {
-        "pilot": true,
         "provenance": {
           "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
           "sourceLandscapeTitle": "Mathematik (Gymnasium)",
@@ -27493,11 +27249,10 @@
       "core": true,
       "weight": 1,
       "tags": [
-        "canonical",
-        "pilot"
+        "canonical"
       ],
       "dimensionTags": {
-        "framework": "canonical-gymnasium-math-pilot",
+        "framework": "canonical-gymnasium-math",
         "demandLevel": "AB2",
         "processCompetencies": [
           "K2.1",
@@ -27522,7 +27277,6 @@
         ]
       },
       "extendedData": {
-        "pilot": true,
         "provenance": {
           "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
           "sourceLandscapeTitle": "Mathematik (Gymnasium)",
@@ -27546,11 +27300,10 @@
       "core": true,
       "weight": 1,
       "tags": [
-        "canonical",
-        "pilot"
+        "canonical"
       ],
       "dimensionTags": {
-        "framework": "canonical-gymnasium-math-pilot",
+        "framework": "canonical-gymnasium-math",
         "demandLevel": "AB2",
         "processCompetencies": [
           "K2.1",
@@ -27575,7 +27328,6 @@
         ]
       },
       "extendedData": {
-        "pilot": true,
         "provenance": {
           "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
           "sourceLandscapeTitle": "Mathematik (Gymnasium)",
@@ -27602,11 +27354,10 @@
       "core": true,
       "weight": 1,
       "tags": [
-        "canonical",
-        "pilot"
+        "canonical"
       ],
       "dimensionTags": {
-        "framework": "canonical-gymnasium-math-pilot",
+        "framework": "canonical-gymnasium-math",
         "demandLevel": "AB2",
         "processCompetencies": [
           "K2.1",
@@ -27631,7 +27382,6 @@
         ]
       },
       "extendedData": {
-        "pilot": true,
         "provenance": {
           "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
           "sourceLandscapeTitle": "Mathematik (Gymnasium)",
@@ -27655,11 +27405,10 @@
       "core": true,
       "weight": 1,
       "tags": [
-        "canonical",
-        "pilot"
+        "canonical"
       ],
       "dimensionTags": {
-        "framework": "canonical-gymnasium-math-pilot",
+        "framework": "canonical-gymnasium-math",
         "demandLevel": "AB2",
         "processCompetencies": [
           "K1.2",
@@ -27689,7 +27438,6 @@
         ]
       },
       "extendedData": {
-        "pilot": true,
         "provenance": {
           "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
           "sourceLandscapeTitle": "Mathematik (Gymnasium)",
