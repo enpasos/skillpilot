@@ -40,6 +40,10 @@ class LandscapeServiceTest {
         private static final String HESSEN_LOWER_OVERVIEW_WHY_ID = "27e64f66-856d-5316-ad35-653259580816";
         private static final String HESSEN_LOWER_MATH_ID = "b167b4cd-4b78-4c84-a721-6b2adbbcab3c";
         private static final String HESSEN_LOWER_MATH_PROCESS_CLUSTER_ID = "69eae42e-5386-4892-a6c3-0263661f66ce";
+        private static final String NRW_LOWER_MATH_ID = "c862423f-d0ac-4a65-8ad2-9a6e560313a8";
+        private static final String NRW_UPPER_MATH_ID = "d3a068ca-90c6-4d7f-ab6b-4d8b43085cb1";
+        private static final String NRW_LOWER_FUNCTION_CLUSTER_ID = "f43fd248-195e-4168-bf70-ce92f864738f";
+        private static final String NRW_UPPER_ANALYSIS_CLUSTER_ID = "31305eea-edf2-41b3-b312-bb1bc92f8fb7";
         private static final String BAVARIA_MATH_ID = "c1600692-e543-5cf2-a399-6bd96e6b817f";
         private static final String BAVARIA_PHYSICS_ID = "42c2f7e3-91b4-5de8-bef0-d563440e9d52";
         private static final String BAVARIA_CHEMISTRY_ID = "ff1ca997-b6cc-5ece-8e13-5498b4bbf808";
@@ -295,6 +299,61 @@ class LandscapeServiceTest {
         }
 
         @Test
+        void loadsNrwArchivedSourceLandscapesFromRealRegistry() {
+                LandscapeProperties properties = new LandscapeProperties();
+                properties.setDirectory("../curricula");
+                ObjectMapper objectMapper = new ObjectMapper();
+                LandscapeService landscapeService = new LandscapeService(properties, objectMapper);
+
+                assertThat(landscapeService.getById(NRW_LOWER_MATH_ID)).isNotNull();
+                assertThat(landscapeService.getById(NRW_UPPER_MATH_ID)).isNotNull();
+                assertThat(landscapeService.resolveSourceLandscapeJurisdiction(NRW_LOWER_MATH_ID)).isEqualTo("DE-NW");
+                assertThat(landscapeService.resolveSourceLandscapeJurisdiction(NRW_UPPER_MATH_ID)).isEqualTo("DE-NW");
+                assertThat(landscapeService.isLegacyHiddenByDefaultLandscape(NRW_LOWER_MATH_ID)).isTrue();
+                assertThat(landscapeService.isLegacyHiddenByDefaultLandscape(NRW_UPPER_MATH_ID)).isTrue();
+        }
+
+        @Test
+        void resolvesNrwArchivedAtomicClosureFromRealRegistry() {
+                LandscapeProperties properties = new LandscapeProperties();
+                properties.setDirectory("../curricula");
+                ObjectMapper objectMapper = new ObjectMapper();
+                LandscapeService landscapeService = new LandscapeService(properties, objectMapper);
+
+                assertThat(landscapeService.resolveSourceAtomicGoalIds(
+                                NRW_LOWER_MATH_ID,
+                                NRW_LOWER_FUNCTION_CLUSTER_ID))
+                                .containsExactly(
+                                                "527f56fd-3163-4845-b9e6-3ea75aa7ea96",
+                                                "ca652aeb-4f91-4718-acaf-b1c398567abe",
+                                                "6d4fedfd-96b5-4237-aab0-74b9d60ea800",
+                                                "b958a8e3-ff11-4cfb-b65c-184c73c00d99",
+                                                "0159a2d5-baca-4652-8515-350f7b853267",
+                                                "ec6f0c55-6008-4792-b315-09918e7f7248",
+                                                "cfadb2dd-a25f-4f83-bbf6-6df00bdd091d",
+                                                "f02c5ec8-cb34-410a-bf5e-fb331b0a2080",
+                                                "890a6667-7cec-41ac-be6b-c7ed6121b0d7");
+                assertThat(landscapeService.resolveSourceAtomicGoalIds(
+                                NRW_UPPER_MATH_ID,
+                                NRW_UPPER_ANALYSIS_CLUSTER_ID))
+                                .containsExactly(
+                                                "22e2cc01-be7c-4478-8d22-0409ff5b14a0",
+                                                "0c1195ec-efe3-4d68-9219-e46a807c802d",
+                                                "c3791879-8901-443a-ac91-bf9cd712b38e",
+                                                "43b21038-8dbb-4f85-ab8e-898a9cef38fb",
+                                                "c876c75b-dcc4-426e-be0f-15698add835d",
+                                                "0c3056ad-ee56-49e8-aff4-fabcae51eb98",
+                                                "fd54f82d-0846-4277-ae97-b3964fb41de0",
+                                                "53563e97-253b-4f3c-8911-d1ec1ac1edb3",
+                                                "ef475a7e-a647-4140-bad9-304ca3a53ef5",
+                                                "99e37d46-3b0c-4989-b8a8-c8a72501fc15",
+                                                "c714c662-b476-4945-9352-e62869770bed",
+                                                "cc57ef8b-b0a6-4a42-b82d-92433e0ad227",
+                                                "8ddb7c8f-b27e-4353-85b4-6801a7fdfa5b",
+                                                "d9121fe6-058a-4ab8-a8ce-68d6eefea520");
+        }
+
+        @Test
         void resolvesBavariaBiologyArchivedAtomicClosureFromRealRegistry() {
                 LandscapeProperties properties = new LandscapeProperties();
                 properties.setDirectory("../curricula");
@@ -353,6 +412,32 @@ class LandscapeServiceTest {
         }
 
         @Test
+        void nrwPilotMathSourceLandscapesArePresentInRealGoalMembershipRegistry() throws Exception {
+                ObjectMapper objectMapper = new ObjectMapper();
+                JsonNode root = objectMapper.readTree(Files.readString(
+                                Path.of("../curricula/DE/Gymnasium/provenance/source-goal-membership-registry.json")));
+                JsonNode landscapes = root.path("landscapes");
+
+                JsonNode nrwLowerMath = StreamSupport.stream(landscapes.spliterator(), false)
+                                .filter(node -> NRW_LOWER_MATH_ID.equals(node.path("landscapeId").asText()))
+                                .findFirst()
+                                .orElseThrow();
+                JsonNode nrwUpperMath = StreamSupport.stream(landscapes.spliterator(), false)
+                                .filter(node -> NRW_UPPER_MATH_ID.equals(node.path("landscapeId").asText()))
+                                .findFirst()
+                                .orElseThrow();
+
+                assertThat(StreamSupport.stream(nrwLowerMath.path("goalIds").spliterator(), false)
+                                .map(JsonNode::asText)
+                                .toList())
+                                .contains(NRW_LOWER_FUNCTION_CLUSTER_ID);
+                assertThat(StreamSupport.stream(nrwUpperMath.path("goalIds").spliterator(), false)
+                                .map(JsonNode::asText)
+                                .toList())
+                                .contains(NRW_UPPER_ANALYSIS_CLUSTER_ID);
+        }
+
+        @Test
         void loadsCanonicalGymnasiumOverviewAsRootCurriculum() {
                 LandscapeProperties properties = new LandscapeProperties();
                 properties.setDirectory("../curricula");
@@ -365,7 +450,7 @@ class LandscapeServiceTest {
                 assertThat(root.getTitle()).isEqualTo("Gymnasium (DE)");
                 assertThat(root.getFilters())
                                 .extracting(LandscapeFilter::getId)
-                                .containsExactly("ALL", "DE-HE", "DE-BY");
+                                .containsExactly("ALL", "DE-HE", "DE-BY", "DE-NW");
                 assertThat(root.getGoals())
                                 .extracting(LearningGoal::getTitle)
                                 .contains("Warum Gymnasium gemeinsam denken? - Fächer, Voraussetzungen & Wege");

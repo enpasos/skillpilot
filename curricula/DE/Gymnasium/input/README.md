@@ -25,6 +25,11 @@ curricula/DE/Gymnasium/input/
   DE-BY/
     gymnasium/
     abi/
+  NW/
+    lower-secondary/
+      source-json/
+    upper-secondary/
+      source-json/
 ```
 
 Migration convention:
@@ -61,6 +66,7 @@ Current snapshot:
 - `python3 scripts/validate_hessen_lower_secondary_archive_paths.py` now enforces that no operational retained-asset file under `DE-HE/lower-secondary/` still embeds `Gymnasium_9_Mittelstufe` path strings.
 - the original Hessen Sek-I tree is now retired from the active repo path; `bash scripts/run_hessen_lower_secondary_delete_handoff_dry_run.sh` now serves as the post-retirement verification command against the surviving archive/provenance/mapping lanes.
 - `DE-BY/gymnasium/` now mirrors the frozen Bavaria subject-source JSON snapshot.
+- `NW/lower-secondary/source-json/` and `NW/upper-secondary/source-json/` now hold the first NRW mathematics pilot source snapshots derived from the archived official PDFs; the shared provenance registry can resolve them via `archiveSourcePath`.
 - `DE-BY/retained-asset-registry.json` now pins that Bavaria retained-source lane, and the shared source-landscape registry now also exposes `archiveSourcePath` for the currently active Bavaria Math/Physics pilot sources.
 - `DE-HE/abi/` now mirrors the full retained Hessen Abitur bundle.
 - `DE-HE/retained-asset-registry.json` now defines the stable DE-level tooling defaults for Hessen upper-secondary exam assets and archived mapping files, while source-landscape lookup stays centralized in the DE-level provenance registry.

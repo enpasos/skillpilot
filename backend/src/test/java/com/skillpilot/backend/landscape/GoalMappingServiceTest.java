@@ -142,6 +142,23 @@ class GoalMappingServiceTest {
                 .hasMessageContaining("Unsupported matchType");
     }
 
+    @Test
+    void allowsPlaceholderMappingFilesWithEmptyMappings() throws IOException {
+        writeJson(tempDir.resolve("mapping/planned.json"), """
+                {
+                  "version": 1,
+                  "sourceLandscapeId": "planned-state-math",
+                  "targetLandscapeId": "canonical-math",
+                  "mappings": []
+                }
+                """);
+
+        GoalMappingService service = createService(tempDir);
+
+        assertThat(service.getAllMappings()).isEmpty();
+        assertThat(service.getMappingsForSourceLandscape("planned-state-math")).isEmpty();
+    }
+
     private GoalMappingService createService(Path directory) {
         LandscapeProperties properties = new LandscapeProperties();
         properties.setDirectory(directory.toString());

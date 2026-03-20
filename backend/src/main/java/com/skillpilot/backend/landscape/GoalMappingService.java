@@ -186,8 +186,8 @@ public class GoalMappingService {
         if (!StringUtils.hasText(mappingFile.getTargetLandscapeId())) {
             throw new IllegalStateException("Goal mapping file missing targetLandscapeId: " + file);
         }
-        if (mappingFile.getMappings() == null || mappingFile.getMappings().isEmpty()) {
-            throw new IllegalStateException("Goal mapping file has no mappings: " + file);
+        if (mappingFile.getMappings() == null) {
+            throw new IllegalStateException("Goal mapping file has no mappings array: " + file);
         }
     }
 

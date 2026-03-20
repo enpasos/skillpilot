@@ -8,8 +8,8 @@
   "frameworkId": "canonical-gymnasium-overview",
   "title": "Gymnasium (DE)",
   "titleEn": "Gymnasium (DE)",
-  "description": "Gemeinsamer Einstiegspunkt für das Gymnasium in Deutschland. Die Fächer sind unter einer gemeinsamen Übersicht gebündelt und lassen sich nach Bundesland, Sekundarstufe I oder II, Fach und Jahrgangsstufe filtern. So ist sowohl eine länderspezifische Sicht, etwa für Hessen oder Bayern, als auch eine gemeinsame bundeslandübergreifende Perspektive möglich.",
-  "descriptionEn": "Shared entry point for Gymnasium in Germany. Subjects are bundled in one shared overview and can be filtered by state, lower or upper secondary level, subject, and grade level. This supports both state-specific views, for example for Hesse or Bavaria, and a shared cross-state perspective.",
+  "description": "Gemeinsamer Einstiegspunkt für das Gymnasium in Deutschland. Die Fächer sind unter einer gemeinsamen Übersicht gebündelt und lassen sich nach Bundesland, Sekundarstufe I oder II, Fach und Jahrgangsstufe filtern. So ist sowohl eine länderspezifische Sicht, etwa für Hessen, Bayern oder Nordrhein-Westfalen, als auch eine gemeinsame bundeslandübergreifende Perspektive möglich.",
+  "descriptionEn": "Shared entry point for Gymnasium in Germany. Subjects are bundled in one shared overview and can be filtered by state, lower or upper secondary level, subject, and grade level. This supports both state-specific views, for example for Hesse, Bavaria, or North Rhine-Westphalia, and a shared cross-state perspective.",
   "filters": [
     {
       "id": "ALL",
@@ -22,6 +22,10 @@
     {
       "id": "DE-BY",
       "label": "Bayern"
+    },
+    {
+      "id": "DE-NW",
+      "label": "Nordrhein-Westfalen"
     }
   ],
   "goals": [
@@ -76,7 +80,8 @@
       "applicability": {
         "jurisdiction": [
           "DE-BY",
-          "DE-HE"
+          "DE-HE",
+          "DE-NW"
         ]
       },
       "sourceRef": "DE-level umbrella over the current mathematics, physics, chemistry, biology, computer science, history, German, politics and economics, English, French, Latin, Spanish, Italian, Russian, Polish, Czech, Greek, Chinese, music, and economics landscapes",

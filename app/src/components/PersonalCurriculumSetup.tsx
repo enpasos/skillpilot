@@ -29,6 +29,7 @@ const DEFAULT_GYMNASIUM_DE_ROOT_FILTERS = [
     { id: 'ALL', label: 'Alle Bundeslaender' },
     { id: 'DE-HE', label: 'Hessen' },
     { id: 'DE-BY', label: 'Bayern' },
+    { id: 'DE-NW', label: 'Nordrhein-Westfalen' },
 ]
 
 const COMBINED_COURSE_FILTER = { id: 'ALL', label: 'Grund- und Leistungskurs' }

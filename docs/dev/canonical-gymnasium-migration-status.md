@@ -1978,3 +1978,627 @@ Interpretation:
 
 - Bavaria Informatik drops from `1` to `0` reviewed `APV-202` cases
 - the reviewed Bavaria Informatik applicability lane is now closed; the next cut should move to another subject
+
+### 2026-03-20: Steering refocus to Mathematics-first DE expansion
+
+What changed:
+
+- after the current Hessen/Bavaria close-out wave, the preferred expansion path is no longer broader subject coverage on the same two-state base
+- the next convergence track should instead add further Bundeslaender to canonical Gymnasium `Mathematik`, one state at a time and one didactically closed corridor at a time
+- the concrete execution note now lives in `docs/dev/canonical-gymnasium-math-de-expansion-plan.md`
+- `DE-NW` is the preferred next onboarding target because the existing input lane already points to both a Gymnasium `G9` Sek-I mathematics curriculum and an upper-secondary mathematics curriculum, while still exposing the current blocker clearly: only README-level source references are present so far
+
+Interpretation:
+
+- the next executable task is NRW mathematics source import plus `DE-NW` mapping-lane setup
+- further optional non-math widening should pause until at least one third-state mathematics corridor has been onboarded on the shared canonical math spine
+
+### 2026-03-20: NRW mathematics source import completes Stage A of the Math-first DE expansion
+
+What changed:
+
+- the first non-Hessen, non-Bavaria mathematics source import step is now complete for `DE-NW`
+- the official NRW Gymnasium mathematics source PDFs are now archived locally under `curricula/DE/Gymnasium/input/NW/`
+- Sek I mathematics now lives at `curricula/DE/Gymnasium/input/NW/lower-secondary/g9_m_klp_3401_2019_06_23_0.pdf`
+- upper-secondary mathematics now lives at `curricula/DE/Gymnasium/input/NW/upper-secondary/gost_klp_m_2023_06_07.pdf`
+- source provenance is documented beside each file in `lower-secondary/references.md` and `upper-secondary/references.md`
+- the NRW input README now reflects the archived-file state instead of only pointing to external curriculum links
+
+Interpretation:
+
+- Stage A from `canonical-gymnasium-math-de-expansion-plan.md` is complete for NRW mathematics
+- the next executable NRW task is Stage B/C: keep the planned `DE-NW` mapping lanes, then register NRW mathematics source landscapes and provenance material before starting the first reviewed function-corridor mappings
+
+### 2026-03-20: NRW mathematics mapping-lane setup completes Stage B without premature provenance activation
+
+What changed:
+
+- the first real `DE-NW` canonical math mapping fixtures now exist at `curricula/DE/Gymnasium/mapping/DE-NW/lower-secondary/nrw_math_lower_secondary_to_canonical_math.json` and `curricula/DE/Gymnasium/mapping/DE-NW/upper-secondary/nrw_math_upper_secondary_to_canonical_math.json`
+- both fixtures are repository-backed and test-covered, but intentionally still empty (`0` mappings)
+- stable NRW source-landscape IDs are now reserved for the future source snapshots:
+  - lower-secondary math: `c862423f-d0ac-4a65-8ad2-9a6e560313a8`
+  - upper-secondary math: `d3a068ca-90c6-4d7f-ab6b-4d8b43085cb1`
+- the reservation and activation rule now live in `curricula/DE/Gymnasium/provenance/nrw-math-onboarding.md`
+- the shared provenance README now states the operational rule explicitly: do not add planned state-onboarding entries to the active shared registries before a real archived source-landscape snapshot with stable source goal IDs exists
+
+Interpretation:
+
+- Stage B from `canonical-gymnasium-math-de-expansion-plan.md` is now complete for NRW mathematics
+- the next NRW task is no longer generic mapping-lane setup; it is a concrete source-snapshot import problem
+- active `source-landscape-registry.json`, `source-goal-membership-registry.json`, and `source-goal-closure-registry.json` updates should wait until the first NRW source-landscape JSON exists
+
+### 2026-03-20: NRW mathematics pilot source snapshots complete Stage C and activate shared provenance
+
+What changed:
+
+- the first NRW mathematics source snapshots now exist under `curricula/DE/Gymnasium/input/NW/lower-secondary/source-json/DE_NRW_S_GYM_1_MATHEMATIK.de.json.snapshot` and `curricula/DE/Gymnasium/input/NW/upper-secondary/source-json/DE_NRW_S_GYM_2_MATHEMATIK.de.json.snapshot`
+- both source snapshots are intentionally narrow pilot subsets focused on the first shared functions corridor, not yet full NRW subject imports
+- the shared provenance registries now actively expose both NRW source landscapes plus their imported goal memberships and atomic closures
+- the NRW archive lane now also contains a short structure note at `curricula/DE/Gymnasium/input/NW/math-structure-note.md`
+- the DE-NW mapping-lane READMEs now point at active source snapshots instead of a deferred provenance state
+
+Interpretation:
+
+- Stage C from `canonical-gymnasium-math-de-expansion-plan.md` is now complete for NRW mathematics
+- the next executable NRW task is the first reviewed canonical math mapping cut on the shared function spine
+- there is no longer a provenance blocker for DE-NW mathematics onboarding; the remaining blocker is reviewed corridor authoring quality
+
+### 2026-03-20: DE-NW becomes an active canonical Gymnasium filter, but NRW function authoring exposes a prerequisite-snapshot blocker
+
+What changed:
+
+- the applicability compiler now treats `DE-NW` as a supported Gymnasium jurisdiction next to `DE-HE` and `DE-BY`
+- the canonical Gymnasium overview now exposes `DE-NW` / `Nordrhein-Westfalen` as a real root filter option
+- backend and frontend filter plumbing now recognize `DE-NW` in the shared canonical Gymnasium root instead of silently treating NRW as an unknown filter value
+- the first two real NRW canonical math mappings now exist:
+  - lower-secondary source goal `779925c9-038c-4905-b049-de083db123ac`
+  - upper-secondary source goal `8fe81d64-ff44-46cf-964b-3312ca6dfa28`
+- both NRW source goals map exactly to the shared canonical motivation atom `71cec9fb-3751-4d61-8b34-c5adbbf6e5f2` (`Warum Mathematik? – Denken, Muster & Zukunft`)
+- compiled applicability was reapplied afterwards, so the canonical math root now genuinely exposes a first `DE-NW` slice instead of only a speculative filter placeholder
+- the same DE-NW activation also reaches the canonical overview root and the existing cross-subject physics entry corridor through already-modeled mathematics-to-physics dependencies
+
+Validation used:
+
+- `./gradlew test --tests 'com.skillpilot.backend.landscape.GoalMappingRepositoryFixtureTest' --tests 'com.skillpilot.backend.landscape.LandscapeServiceTest'`
+- `npm run validate:view-filters`
+- `./run_ci.sh`
+
+Validation result:
+
+- `npm run validate:view-filters` now reports `0` errors, `3` warnings, `160` accepted warnings
+- the focused backend regression slice passed
+- full `./run_ci.sh` passed after the DE-NW activation step
+- the new `DE-NW` projection is now active with:
+  - mathematics: `2` visible goals
+  - physics: `3` visible goals
+  - overview: `1` visible goal
+- no new NRW-specific applicability warnings were introduced by this exact-bridge step
+
+Interpretation:
+
+- this step successfully turns `DE-NW` from a planned onboarding lane into a real third-state canonical filter
+- the first attempted NRW function review also made the generic blocker explicit: the current narrow NRW pilot snapshots do **not** yet contain the prerequisite strip that the shared canonical function atoms depend on
+- the next NRW task is therefore **not** another blind function mapping pass
+- instead, widen the NRW source snapshots first by the missing function prerequisites (`Zuordnungen`, proportionality / early linear foundations, and the still-missing arithmetic or equation prerequisites), then return to the first reviewed function-atom mappings
+
+### 2026-03-20: NRW Sek-I source snapshot widened by the prerequisite strip for first function mappings
+
+What changed:
+
+- the NRW Sek-I source snapshot now no longer starts directly at imported function atoms
+- instead, the same `sourceLandscapeId` now also contains the first prerequisite strip needed before shared canonical function mappings become plausible:
+  - Erprobungsstufe quantity-relation and rule-of-three goals
+  - first-stage rational-number, variable, term, and linear-equation goals
+  - first-stage mapping-characterization goals that sit immediately in front of the imported linear-function atoms
+- the shared provenance registries `source-goal-membership-registry.json` and `source-goal-closure-registry.json` were widened in place for the same NRW lower-secondary landscape
+- the NRW math structure note and onboarding note now treat this lower-secondary prerequisite strip as part of the active NRW pilot surface
+
+Validation used:
+
+- `./gradlew test --tests 'com.skillpilot.backend.landscape.LandscapeServiceTest'`
+- `npm run validate:graph`
+- `npm run validate:view-filters`
+- `./run_ci.sh`
+
+Validation result:
+
+- the widened NRW lower-secondary source snapshot loads cleanly and remains backed by the shared DE-level provenance registries
+- canonical graph validation still passes
+- `npm run validate:view-filters` remains at `0` errors, `3` warnings, `160` accepted warnings
+- full `./run_ci.sh` passed after the source-snapshot widening step
+
+Interpretation:
+
+- the NRW blocker has moved one layer deeper: the source side is now broad enough for a real first review of `Zuordnungen analysieren` and `Funktionsbegriff und Darstellungen verstehen`
+- the next NRW task is now the first reviewed lower-secondary function mapping pass, not more source widening by default
+
+### 2026-03-20: NRW lower-secondary exact bridges complete Stage D2 on the shared function spine
+
+What changed:
+
+- the first reviewed NRW lower-secondary function mapping pass is now complete on top of the already-live motivation bridge
+- the NRW lower-secondary mapping fixture now carries `7` exact mappings in total:
+  - the shared motivation atom
+  - three lower-secondary arithmetic anchors
+  - the first rational-number ordering anchor
+  - `Zuordnungen analysieren`
+  - `Funktionsbegriff und Darstellungen verstehen`
+- to make the function-side bridges valid, the NRW Sek-I source snapshot was widened one more time by three explicit arithmetic atoms in the Erprobungsstufe strip:
+  - natural numbers represent / order / calculate
+  - natural and whole numbers add / subtract
+  - natural and whole numbers multiply / divide
+- compiled applicability was reapplied afterwards, so the new DE-NW reach is now persisted in canonical mathematics instead of living only in temporary reports
+
+Validation used:
+
+- `./gradlew test --tests 'com.skillpilot.backend.landscape.GoalMappingRepositoryFixtureTest'`
+- `npm run validate:graph`
+- `npm run apply:applicability`
+- `npm run validate:view-filters`
+- `./run_ci.sh`
+
+Validation result:
+
+- the repository-backed NRW lower-secondary mapping fixture now parses cleanly with all `7` exact rows
+- canonical graph validation still passes after the added NRW arithmetic and function bridges
+- `npm run validate:view-filters` is back at `0` errors, `3` warnings, `160` accepted warnings after persisting applicability
+- full `./run_ci.sh` passed after the NRW Stage-D2 step
+
+Interpretation:
+
+- the hidden-prerequisite blocker for the first shared NRW function corridor is gone; `Zuordnungen analysieren` and `Funktionsbegriff und Darstellungen verstehen` are now genuinely active for `DE-NW`
+- the next NRW task is no longer more prerequisite widening by default
+- instead, stay on the existing `2.4.1 Funktionen` slice and review the next follow-on atoms in order:
+  - `Funktionswerte berechnen`
+  - `Funktionswerte aus Graphen ablesen`
+  - the first linear-parameter atom if the source alignment is strong enough
+
+### 2026-03-20: NRW function-value follow-on atoms reach DE-NW through reviewed partial bridges
+
+What changed:
+
+- the broad NRW Stage-1 source expectation around function representations is now modeled as a small source-aligned subcluster under `5cf6e2fd-ce79-4a7e-b21f-fd5f68d97edc`
+- that split yields one exact NRW representation leaf for the shared canonical representation atom and two additional NRW leaves that back the immediate follow-on canonical value atoms:
+  - `c65ecabf-d00b-4e2d-99ae-b64692325ffb` (`Funktionswerte berechnen`)
+  - `a8c42ee9-2898-4247-819f-c235032ac78a` (`Funktionswerte aus Graphen ablesen`)
+- both new NRW bridges are intentionally `partial`, not `exact`
+- the reason is the same one already accepted in Bavaria: the NRW source wording clearly covers representation work with tables and graphs, but does not isolate separate one-to-one source atoms for direct value calculation and graph-based value reading
+- the accepted-warning registry now records these two DE-NW-specific `APV-202` decisions explicitly instead of leaving them as active drift
+
+Validation used:
+
+- `./gradlew test --tests 'com.skillpilot.backend.landscape.GoalMappingRepositoryFixtureTest'`
+- `npm run apply:applicability`
+- `npm run validate:view-filters`
+- `./run_ci.sh`
+
+Validation result:
+
+- the repository-backed NRW lower-secondary mapping fixture now parses cleanly with `9` rows
+- `npm run validate:view-filters` remains at `0` errors, `3` warnings, `162` accepted warnings after persisting applicability
+- full `./run_ci.sh` passed after the NRW follow-on bridge step
+
+Interpretation:
+
+- `DE-NW` now reaches the first shared function-concept atom plus the two immediate function-value follow-on atoms without reopening the hidden-prerequisite problem
+- this is a reviewed retention of source breadth mismatch, not a claim that NRW already exposes cleaner exact atoms here
+- the next NRW task should stay in the same corridor and decide whether the linear-parameter pair can be handled more cleanly:
+  - `0159a2d5-baca-4652-8515-350f7b853267` against the graph-side parameter atom
+  - `ec6f0c55-6008-4792-b315-09918e7f7248` against the contextual parameter atom
+
+### 2026-03-20: NRW linear-parameter corridor reaches DE-NW with reviewed prerequisite-backed partial bridges
+
+What changed:
+
+- the NRW lower-secondary math mapping lane now carries `12` rows instead of `9`
+- the two reviewed Stage-1 parameter atoms are now bridged into the shared canonical line/parameter corridor:
+  - `0159a2d5-baca-4652-8515-350f7b853267` -> `af3d6bff-c5fb-4ec6-a9f0-c0be09fc9186` (`Lineare Funktionen beschreiben`) as `partial`
+  - `ec6f0c55-6008-4792-b315-09918e7f7248` -> `2d75fd3f-c68b-4a11-89ae-19a30fefc47a` (`Parameter linearer Funktionen deuten`) as `partial`
+- the attempted `af3d6bff-c5fb-4ec6-a9f0-c0be09fc9186` bridge surfaced a real hidden-prerequisite gap for `c1f50bcc-7848-4e49-b9de-0ec030cc6bca` (`Proportionale Zuordnungen nutzen`)
+- instead of accepting a new override, the NRW Erprobungsstufe source atom `d54b396e-653f-48c6-966d-cada189a84aa` (`Dreisatzverfahren zur Loesung von Sachproblemen anwenden`) now backs that canonical prerequisite as a reviewed `partial` bridge
+- the accepted-warning registry now records these three DE-NW-specific `APV-202` decisions explicitly:
+  - `c1f50bcc-7848-4e49-b9de-0ec030cc6bca`
+  - `af3d6bff-c5fb-4ec6-a9f0-c0be09fc9186`
+  - `2d75fd3f-c68b-4a11-89ae-19a30fefc47a`
+
+Validation used:
+
+- `./gradlew test --tests 'com.skillpilot.backend.landscape.GoalMappingRepositoryFixtureTest'`
+- `npm run apply:applicability`
+- `npm run validate:view-filters`
+- `./run_ci.sh`
+
+Validation result:
+
+- the repository-backed NRW lower-secondary mapping fixture now parses cleanly with `12` rows
+- `npm run apply:applicability` persisted the expected canonical math applicability update without new validation errors
+- `npm run validate:view-filters` remains at `0` errors, `3` warnings, `165` accepted warnings
+- full `./run_ci.sh` passed after the NRW linear-parameter bridge step
+
+Interpretation:
+
+- `DE-NW` now reaches the shared lower-secondary line foundation plus the first linear-parameter interpretation atom without introducing any new applicability overrides
+- this is still reviewed source-breadth retention, not a claim that NRW exposes one-to-one canonical atoms for proportional mappings or linear-parameter semantics
+- the next NRW decision point has moved beyond the Stage-1 linear corridor:
+  - either stay in lower-secondary functions and review the first Stage-2 function-class atom
+  - or switch deliberately to widening the upper-secondary NRW math snapshot before adding more canonical bridges
+
+### 2026-03-20: NRW reaches the first effective Stage-2 quadratic bridge through the graph-parameter atom
+
+What changed:
+
+- the NRW lower-secondary math mapping lane now carries `13` rows instead of `12`
+- the first effective NRW Stage-2 bridge is not the broad class-distinction atom itself, but the more concrete graph-parameter source goal `f02c5ec8-cb34-410a-bf5e-fb331b0a2080`
+- that NRW source atom now maps as a reviewed `partial` bridge to `5bced7dc-6557-4af1-9e70-d87f850d3b7f` (`Parameter quadratischer Funktionen in Scheitelpunktform deuten`)
+- this in turn activates the first NRW-visible J9 quadratic child and pulls the shared quadratic clusters into `DE-NW` through compiled child-union:
+  - `d4a9fc20-d1be-46e7-86e9-2bf8d7a9cc40` (`Quadratische Funktionen und Gleichungen grundlegend untersuchen`)
+  - `5a9702f4-7e4d-457d-b98c-f0bafcd1e386` (`Quadratische Funktionen beschreiben und anwenden`)
+- the accepted-warning registry now records the new DE-NW-specific `APV-202` for `5bced7dc-6557-4af1-9e70-d87f850d3b7f`
+- the earlier exploratory idea to bridge the broad NRW class-distinction atom directly to the quadratic cluster was not kept; the effective retained step is the atomic graph-parameter bridge because cluster applicability compiles from visible children
+
+Validation used:
+
+- `./gradlew test --tests 'com.skillpilot.backend.landscape.GoalMappingRepositoryFixtureTest'`
+- `npm run apply:applicability`
+- `npm run validate:view-filters`
+- `./run_ci.sh`
+
+Validation result:
+
+- the repository-backed NRW lower-secondary mapping fixture now parses cleanly with `13` rows
+- `npm run apply:applicability` persisted the expected canonical math applicability update and changed `4` goals in the canonical math file
+- `npm run validate:view-filters` remains at `0` errors, `3` warnings, `166` accepted warnings
+- full `./run_ci.sh` passed after the NRW Stage-2 quadratic bridge step
+
+Interpretation:
+
+- `DE-NW` now reaches the first real lower-secondary quadratic atom in the shared canonical graph, not just Stage-1 function foundations
+- the NRW Stage-2 lane is therefore active, but still only at its entry point
+- the next NRW task should stay in this quadratic corridor and make the broad class-distinction decision explicit:
+  - either review `cfadb2dd-a25f-4f83-bbf6-6df00bdd091d` against the next quadratic follow-on atom if the alignment is defensible
+  - or introduce a small NRW Stage-2 source split before attempting more canonical quadratic bridges
+
+### 2026-03-20: NRW extends the Stage-2 quadratic lane to graph-property reading without a source split
+
+What changed:
+
+- the NRW lower-secondary math mapping lane now carries `14` rows instead of `13`
+- the broad NRW class-distinction source atom `cfadb2dd-a25f-4f83-bbf6-6df00bdd091d` now maps as a reviewed `partial` bridge to `e0c3359d-7d8a-4d01-a25e-a8cd5ebce90e` (`Eigenschaften quadratischer Funktionen aus Graphen ablesen`)
+- this makes the second visible NRW quadratic foundation leaf available in the shared canonical J9 corridor without adding or splitting NRW source nodes
+- the accepted-warning registry now records the new DE-NW-specific `APV-202` for `e0c3359d-7d8a-4d01-a25e-a8cd5ebce90e`
+
+Validation used:
+
+- `./gradlew test --tests 'com.skillpilot.backend.landscape.GoalMappingRepositoryFixtureTest'`
+- `npm run apply:applicability`
+- `npm run validate:view-filters`
+- `./run_ci.sh`
+
+Validation result:
+
+- the repository-backed NRW lower-secondary mapping fixture now parses cleanly with `14` rows
+- `npm run apply:applicability` changed `1` goal in the canonical math file, exactly the newly bridged quadratic graph-property atom
+- `npm run validate:view-filters` remains at `0` errors, `3` warnings, `167` accepted warnings
+- full `./run_ci.sh` passed after the NRW Stage-2 graph-property step
+
+Interpretation:
+
+- the earlier Stage-2 decision is now closed: for this slice, the broad NRW class-distinction atom was defensible enough as a direct reviewed `partial` bridge, so no source split was needed
+- `DE-NW` now reaches both the first parameter leaf and the next graph-property leaf in the retained J9 quadratic foundations corridor
+- the next NRW task should stay in Stage 2, but move from quadratic foundations into the application/growth atom:
+  - either review `890a6667-7cec-41ac-be6b-c7ed6121b0d7` against the first quadratic application node if the alignment is defensible
+  - or introduce a small NRW Stage-2 source split before attempting that application bridge
+
+### 2026-03-20: NRW activates the first quadratic application bridge through the broad growth atom
+
+What changed:
+
+- the NRW lower-secondary math mapping lane now carries `15` rows instead of `14`
+- the broad NRW Stage-2 growth/application source atom `890a6667-7cec-41ac-be6b-c7ed6121b0d7` now maps as a reviewed `partial` bridge to `a7ccb7a9-6fb0-4e2d-b6e0-6420cc5ae0bf` (`Quadratische Funktionen in Anwendungen modellieren und loesen`)
+- this activates the first NRW-visible quadratic application leaf and pulls the shared quadratic application cluster `0d4a6f56-2f87-4c39-98ab-5f13f5cbdd40` into `DE-NW`
+- the accepted-warning registry now records the new DE-NW-specific `APV-202` for `a7ccb7a9-6fb0-4e2d-b6e0-6420cc5ae0bf`
+
+Validation used:
+
+- `./gradlew test --tests 'com.skillpilot.backend.landscape.GoalMappingRepositoryFixtureTest'`
+- `npm run apply:applicability`
+- `npm run validate:view-filters`
+- `./run_ci.sh`
+
+Validation result:
+
+- the repository-backed NRW lower-secondary mapping fixture now parses cleanly with `15` rows
+- `npm run apply:applicability` changed `2` goals in the canonical math file: the new quadratic application leaf and its parent application cluster
+- `npm run validate:view-filters` remains at `0` errors, `3` warnings, `168` accepted warnings
+- full `./run_ci.sh` passed after the NRW Stage-2 application step
+
+Interpretation:
+
+- the second Stage-2 decision is now also closed: for this slice, the broad NRW growth/application atom was defensible enough as a direct reviewed `partial` bridge, so no NRW source split was needed
+- `DE-NW` now reaches both the quadratic foundations branch and the first quadratic applications branch in the shared J9 corridor
+- the next NRW task should move to upper-secondary breadth instead of forcing more lower-secondary Stage-2 splits:
+  - keep the reviewed lower-secondary NRW Stage-2 bridges stable
+  - then widen the NRW upper-secondary math lane beyond the current motivation-only exact bridge
+
+### 2026-03-20: NRW reaches the first upper-secondary analysis entry leaf beyond motivation
+
+What changed:
+
+- the NRW upper-secondary math mapping lane now carries `2` rows instead of `1`
+- the first real NRW upper-secondary analysis bridge is not yet the broad derivative bundle, but the more conservative E-phase source atom `0c1195ec-efe3-4d68-9219-e46a807c802d` (`Mittlere und lokale Aenderungsraten berechnen und deuten`)
+- that NRW source atom now maps as a reviewed `partial` bridge to `ae20183e-92b5-5521-b8e0-9a8662cf51f5` (`Mittlere Änderungsrate berechnen und deuten`)
+- this activates the first NRW-visible upper-secondary analysis leaf and pulls the shared canonical E.2 cluster `a115f984-2628-54fb-9702-9511e460d684` (`E.2 Einführung des Ableitungsbegriffs`) into `DE-NW`
+- the accepted-warning registry now records the new DE-NW-specific `APV-202` for `ae20183e-92b5-5521-b8e0-9a8662cf51f5`
+
+Validation used:
+
+- `./gradlew test --tests 'com.skillpilot.backend.landscape.GoalMappingRepositoryFixtureTest'`
+- `npm run apply:applicability`
+- `npm run validate:view-filters`
+- `./run_ci.sh`
+
+Validation result:
+
+- the repository-backed NRW upper-secondary mapping fixture now parses cleanly with `2` rows
+- `npm run apply:applicability` changed `2` goals in the canonical math file: the new E-phase change-rate leaf and its parent E.2 derivative-introduction cluster
+- `npm run validate:view-filters` remains at `0` errors, `3` warnings, `169` accepted warnings
+- full `./run_ci.sh` passed after the NRW upper-secondary E-phase entry step
+
+Interpretation:
+
+- NRW upper-secondary math is now active on the shared canonical analysis spine beyond the motivation anchor
+- the broad NRW derivative/monotonicity source atom is still intentionally untouched; the retained step is the narrower change-rate bridge because it is the cleanest first E-phase entry
+- the next NRW task should stay in the upper-secondary E.2 corridor and make the derivative-entry decision explicit:
+  - either review `3d1a8d83-27a4-4a0d-b8e0-c738f274d4bd` against the next derivative-entry atom if the alignment is defensible
+  - or introduce a small NRW upper-secondary source split before attempting broader derivative and monotonicity bridges
+
+### 2026-03-20: NRW reaches the next E.2 derivative-entry leaf through a reviewed prerequisite bridge
+
+What changed:
+
+- the NRW upper-secondary math mapping lane now carries `3` rows instead of `2`
+- the previously deferred broad NRW source atom `3d1a8d83-27a4-4a0d-b8e0-c738f274d4bd` (`Ableitung als Tangentensteigung und Monotonieinstrument deuten`) is now reused once as a reviewed `partial` bridge to `2143e9e8-b176-545b-b2fa-91bbb6c8cf5c` (`Momentane Änderungsrate qualitativ verstehen`)
+- this exposed a real hidden-prerequisite edge in the shared canonical E.2 route: `2143e9e8-b176-545b-b2fa-91bbb6c8cf5c` requires `b42bdfcc-3db7-5697-8b3e-69e50962ca86` (`Grenzwerte des Differenzenquotienten bestimmen`)
+- instead of forcing a weaker second mapping immediately, the prerequisite atom now carries a reviewed retained `DE-NW` applicability override in the canonical math graph
+- the accepted-warning registry now records the NRW-specific follow-on decisions explicitly:
+  - `APV-202` for `2143e9e8-b176-545b-b2fa-91bbb6c8cf5c`
+  - `APV-201` for `b42bdfcc-3db7-5697-8b3e-69e50962ca86`
+
+Validation used:
+
+- `npm run apply:applicability`
+- `./gradlew test --tests 'com.skillpilot.backend.landscape.GoalMappingRepositoryFixtureTest'`
+- `npm run validate:view-filters`
+- `./run_ci.sh`
+
+Validation result:
+
+- the repository-backed NRW upper-secondary mapping fixture now parses cleanly with `3` rows
+- `npm run apply:applicability` changed `2` goals in the canonical math file: the retained prerequisite atom `b42bdfcc-3db7-5697-8b3e-69e50962ca86` and the new NRW-visible derivative-entry leaf `2143e9e8-b176-545b-b2fa-91bbb6c8cf5c`
+- `npm run validate:view-filters` remains at `0` errors, `3` warnings, `171` accepted warnings
+- full `./run_ci.sh` passed after the NRW upper-secondary prerequisite-backed derivative-entry step
+
+Interpretation:
+
+- NRW upper-secondary math now reaches the next shared E.2 derivative-entry leaf beyond the first average-rate bridge
+- the reused broad NRW derivative/monotonicity source atom is now proven usable for one more conservative follow-on step, but only with an explicit retained prerequisite bridge
+- the next NRW task should stay in the same upper-secondary E.2 corridor and decide whether the same broad source atom can defensibly support one more follow-on derivative leaf, or whether a small NRW source split is now the cleaner move before broader derivative/monotonicity authoring
+
+### 2026-03-20: NRW upper-secondary E.2 gains a source-split point-derivative bridge without reopening hidden-prerequisite drift
+
+What changed:
+
+- the broad NRW upper-secondary source atom `3d1a8d83-27a4-4a0d-b8e0-c738f274d4bd` is no longer treated as an indivisible atomic leaf inside the archived source snapshot
+- the NRW upper-secondary source snapshot now keeps `3d1a8d83-27a4-4a0d-b8e0-c738f274d4bd` as a retained corridor cluster and splits it into two child atoms:
+  - `c3791879-8901-443a-ac91-bf9cd712b38e` for pointwise derivative interpretation as local rate and tangent slope
+  - `c876c75b-dcc4-426e-be0f-15698add835d` for monotonicity and derivative-function interpretation
+- the existing reviewed `partial` bridge from the retained corridor cluster `3d1a8d83-27a4-4a0d-b8e0-c738f274d4bd` to `2143e9e8-b176-545b-b2fa-91bbb6c8cf5c` stays in place
+- the new NRW child atom `c3791879-8901-443a-ac91-bf9cd712b38e` now maps as a reviewed `partial` bridge to `b1dcc191-d046-50de-984a-ee5c17157628` (`Ableitung als Steigung im Punkt deuten`)
+- the canonical prerequisite cut was tightened at the same time:
+  - `b1dcc191-d046-50de-984a-ee5c17157628` now depends only on `b42bdfcc-3db7-5697-8b3e-69e50962ca86`
+  - `bb979dbd-b080-432c-8cf1-067ba6eff381` (`Tangentengleichungen und Steigungswinkel bestimmen`) now requires `858113c5-e53b-57bb-b01f-ba95c3ddcb6f` directly, so tangent-equation calculation stays gated by derivative-rule fluency
+- the shared NRW source-goal membership and closure registries were widened in place for the split source snapshot, and the backend registry expectation was updated accordingly
+- the accepted-warning registry now records the new NRW-specific `APV-202` for `b1dcc191-d046-50de-984a-ee5c17157628`
+
+Validation used:
+
+- `npm run validate:graph`
+- `npm run apply:applicability`
+- `./gradlew test --tests 'com.skillpilot.backend.landscape.GoalMappingRepositoryFixtureTest'`
+- `./gradlew test --tests 'com.skillpilot.backend.landscape.LandscapeServiceTest.resolvesNrwArchivedAtomicClosureFromRealRegistry'`
+- `npm run validate:view-filters`
+- `./run_ci.sh`
+
+Validation result:
+
+- the repository-backed NRW upper-secondary mapping fixture now parses cleanly with `4` rows
+- `npm run apply:applicability` changed `1` goal in the canonical math file: `b1dcc191-d046-50de-984a-ee5c17157628` is now visible for `DE-NW`
+- the NRW archived upper-secondary closure registry now resolves the split E-phase analysis corridor with `c3791879-8901-443a-ac91-bf9cd712b38e` and `c876c75b-dcc4-426e-be0f-15698add835d` instead of the old unsplit atomic closure
+- `npm run validate:view-filters` remains at `0` errors, `3` warnings, `172` accepted warnings
+- full `./run_ci.sh` passed after the NRW upper-secondary source-split point-derivative step
+
+Interpretation:
+
+- NRW upper-secondary math now reaches the next shared point-derivative interpretation leaf without forcing another applicability override
+- the retained NRW source split proved to be the cleaner move than stacking further broad-source mappings on one legacy goal ID
+- the next NRW task should stay on the second split child `c876c75b-dcc4-426e-be0f-15698add835d` and decide whether it can defensibly back `845440ce-f63f-5835-903f-739145ca27bd` (`Zusammenhang von f und f′ am Graphen beschreiben`) directly, or whether the canonical monotonicity/f-prime route still needs one more modeling adjustment first
+
+### 2026-03-20: NRW upper-secondary E.2 reaches the shared `f`/`f′` graph leaf after one more canonical prerequisite cut
+
+What changed:
+
+- the second NRW upper-secondary split child `c876c75b-dcc4-426e-be0f-15698add835d` now maps as a reviewed `partial` bridge to `845440ce-f63f-5835-903f-739145ca27bd` (`Zusammenhang von f und f′ am Graphen beschreiben`)
+- the canonical prerequisite cut was tightened once more so that `845440ce-f63f-5835-903f-739145ca27bd` now depends only on `b1dcc191-d046-50de-984a-ee5c17157628` and no longer on `858113c5-e53b-57bb-b01f-ba95c3ddcb6f`
+- this keeps the first shared `f`/`f′` graph-reading leaf reachable in `DE-NW` without prematurely exposing the downstream tangent-calculation corridor
+- the accepted-warning registry now records the NRW-specific `APV-202` for `845440ce-f63f-5835-903f-739145ca27bd`
+- the repository-backed NRW upper-secondary mapping fixture now expects `5` rows, and the real archived-source registry test remains aligned with the earlier NRW E.2 source split
+
+Validation used:
+
+- `npm run validate:graph`
+- `npm run apply:applicability`
+- `./gradlew test --tests 'com.skillpilot.backend.landscape.GoalMappingRepositoryFixtureTest'`
+- `./gradlew test --tests 'com.skillpilot.backend.landscape.LandscapeServiceTest.resolvesNrwArchivedAtomicClosureFromRealRegistry'`
+- `npm run validate:view-filters`
+- `./run_ci.sh`
+
+Validation result:
+
+- `npm run apply:applicability` changed `1` goal in the canonical math file: `845440ce-f63f-5835-903f-739145ca27bd` is now visible for `DE-NW`
+- the repository-backed NRW upper-secondary mapping fixture now parses cleanly with `5` rows
+- `npm run validate:view-filters` remains at `0` errors, `3` warnings, `173` accepted warnings
+- full `./run_ci.sh` passed after the NRW upper-secondary `f`/`f′` graph step
+
+Interpretation:
+
+- NRW upper-secondary math now reaches the first shared graph-level relation between `f` and `f′`, not just local derivative-entry leaves
+- the earlier NRW source split was sufficient; the remaining blocker was canonical prerequisite shape, not another missing NRW source atom
+- the next NRW task should stay in the same upper-secondary derivative corridor and decide which first downstream monotonicity/extrema leaf can be opened next without dragging in broader tangent-rule fluency too early
+
+### 2026-03-20: NRW upper-secondary broadens the E-phase source snapshot and reaches the first computational E.3 leaves
+
+What changed:
+
+- the NRW upper-secondary source snapshot was widened in place inside the same E-phase analysis lane instead of forcing another canonical shortcut
+- the E-phase source cluster `54d2c225-f931-4ba7-ab9e-0d9055820c09` now also contains three newly imported NRW source atoms:
+  - `0c3056ad-ee56-49e8-aff4-fabcae51eb98` for Potenz-, Summen- und Faktorregel
+  - `fd54f82d-0846-4277-ae97-b3964fb41de0` for graphical derivatives, monotonicity, and extrema criteria
+  - `53563e97-253b-4f3c-8911-d1ec1ac1edb3` for curvature and Wendepunkt criteria via the second derivative
+- the NRW upper-secondary mapping lane now carries `8` rows instead of `5`
+- the three new NRW source atoms map as reviewed `partial` bridges to:
+  - `858113c5-e53b-57bb-b01f-ba95c3ddcb6f` (`Ableitungen elementarer Funktionen berechnen`)
+  - `350fc8b1-ead0-4239-b28a-217cbd3bd1c3` (`Monotonie und Extremstellen mit der ersten Ableitung untersuchen`)
+  - `b3604df4-15a8-41c8-a8b0-50dadd698bd3` (`Krümmung und Wendestellen mit der zweiten Ableitung untersuchen`)
+- the shared NRW source-goal membership and closure registries were widened in place for the same upper-secondary `sourceLandscapeId`
+- the accepted-warning registry now records the three new NRW-specific `APV-202` entries for `858113c5-e53b-57bb-b01f-ba95c3ddcb6f`, `350fc8b1-ead0-4239-b28a-217cbd3bd1c3`, and `b3604df4-15a8-41c8-a8b0-50dadd698bd3`
+
+Validation used:
+
+- `npm run validate:graph`
+- `npm run apply:applicability`
+- `./gradlew test --tests 'com.skillpilot.backend.landscape.GoalMappingRepositoryFixtureTest' --tests 'com.skillpilot.backend.landscape.LandscapeServiceTest.resolvesNrwArchivedAtomicClosureFromRealRegistry'`
+- `npm run validate:view-filters`
+- `./run_ci.sh`
+
+Validation result:
+
+- the repository-backed NRW upper-secondary mapping fixture now parses cleanly with `8` rows
+- `npm run apply:applicability` changed `4` goals in the canonical math file: `858113c5-e53b-57bb-b01f-ba95c3ddcb6f`, `350fc8b1-ead0-4239-b28a-217cbd3bd1c3`, `b3604df4-15a8-41c8-a8b0-50dadd698bd3`, and the parent `E.3` cluster `6fc51848-6705-532f-9dfe-2070bef2f9ad`
+- the NRW archived upper-secondary closure registry now resolves the widened E-phase analysis corridor with `12` atomic source goals instead of `9`
+- `npm run validate:view-filters` remains at `0` errors, `3` warnings, `176` accepted warnings
+- full `./run_ci.sh` passed after the NRW upper-secondary E-phase differential-expansion step
+
+Interpretation:
+
+- NRW upper-secondary math now reaches the first genuinely computational shared `E.3` analysis corridor, not only interpretive `E.2` leaves
+- the cleaner move here was source-snapshot widening from the archived NRW KLP, not another canonical prerequisite workaround
+- the next NRW task should leave the pure E-phase import lane and add the first Q-phase extremal-problem source atom from `2.4.1`, because `858...`, `350...`, and `b360...` are now already present on the shared canonical spine
+
+### 2026-03-20: NRW upper-secondary imports the first Q-phase extremal-problem source atom and reaches the shared extremal leaf
+
+What changed:
+
+- the NRW upper-secondary source snapshot now also carries the first explicit Q-phase Grundkurs extremal-problem atom:
+  - `ef475a7e-a647-4140-bad9-304ca3a53ef5` (`Extremwertprobleme mit Nebenbedingungen auf eine Variable zurueckfuehren und loesen`)
+- the Q-phase Grundkurs source cluster `3ad7040a-095d-4356-9972-2403cf0967bb` was widened in place and renamed from a pure exponential/integral cluster to an extremal-, exponential-, and integral-understanding cluster
+- the NRW upper-secondary mapping lane now carries `9` rows instead of `8`
+- the new NRW source atom maps as a reviewed `partial` bridge to:
+  - `1511b39a-4094-5450-a755-4a3ad3339733` (`Einfache Extremwertprobleme lösen`)
+- the shared NRW source-goal membership and closure registries were widened in place for the same upper-secondary `sourceLandscapeId`
+- the accepted-warning registry now records the NRW-specific `APV-202` entry for `1511b39a-4094-5450-a755-4a3ad3339733`
+
+Validation used:
+
+- `npm run validate:graph`
+- `./gradlew test --tests 'com.skillpilot.backend.landscape.GoalMappingRepositoryFixtureTest' --tests 'com.skillpilot.backend.landscape.LandscapeServiceTest.resolvesNrwArchivedAtomicClosureFromRealRegistry'`
+- `npm run apply:applicability`
+- `npm run validate:view-filters`
+- `./run_ci.sh`
+
+Validation result:
+
+- the repository-backed NRW upper-secondary mapping fixture now parses cleanly with `9` rows
+- `npm run apply:applicability` changed `1` goal in the canonical math file: `1511b39a-4094-5450-a755-4a3ad3339733` is now visible for `DE-NW`
+- the NRW archived upper-secondary closure registry now resolves the widened analysis corridor with `13` atomic source goals instead of `12`
+- `npm run validate:view-filters` remains at `0` errors, `3` warnings, `177` accepted warnings
+- full `./run_ci.sh` passed after the NRW upper-secondary Q-phase extremal-problem step
+
+Interpretation:
+
+- NRW upper-secondary math now reaches the first shared optimization leaf in the canonical differential-calculus corridor, not only derivative and graph-reading atoms
+- the cleanest move here was a small source-snapshot widening from the archived NRW Q-phase text, not a canonical graph reshaping
+- the next NRW task should not immediately widen the broader Q-phase parameter/integral surface; it should first decide whether the still-unimported E-phase tangent/normal-steigung clause from `2.3` deserves a small source-split or source-addition for `bb979dbd-b080-432c-8cf1-067ba6eff381` (`Tangentengleichungen und Steigungswinkel bestimmen`)
+
+### 2026-03-20: NRW upper-secondary adds the E-phase tangent/normal-steigung clause and reaches the shared tangent leaf
+
+What changed:
+
+- the NRW upper-secondary E-phase derivative corridor was widened in place instead of opening another broad Q-phase bridge first
+- the retained E-phase source cluster `3d1a8d83-27a4-4a0d-b8e0-c738f274d4bd` now also contains the explicit NRW source atom:
+  - `43b21038-8dbb-4f85-ab8e-898a9cef38fb` (`Sekanten-, Tangenten- und Normalensteigungen mit Steigungswinkeln bestimmen`)
+- the same retained source cluster was renamed and widened so its archived wording now explicitly covers derivative interpretation, tangent work, and monotonicity
+- the NRW upper-secondary mapping lane now carries `10` rows instead of `9`
+- the new NRW source atom maps as a reviewed `partial` bridge to:
+  - `bb979dbd-b080-432c-8cf1-067ba6eff381` (`Tangentengleichungen und Steigungswinkel bestimmen`)
+- the shared NRW source-goal membership and closure registries were widened in place for the same upper-secondary `sourceLandscapeId`
+- the accepted-warning registry now records the NRW-specific `APV-202` entry for `bb979dbd-b080-432c-8cf1-067ba6eff381`
+
+Validation used:
+
+- `npm run validate:graph`
+- `./gradlew test --tests 'com.skillpilot.backend.landscape.GoalMappingRepositoryFixtureTest' --tests 'com.skillpilot.backend.landscape.LandscapeServiceTest.resolvesNrwArchivedAtomicClosureFromRealRegistry'`
+- `npm run apply:applicability`
+- `npm run validate:view-filters`
+- `./run_ci.sh`
+
+Validation result:
+
+- the repository-backed NRW upper-secondary mapping fixture now parses cleanly with `10` rows
+- `npm run apply:applicability` changed `1` goal in the canonical math file: `bb979dbd-b080-432c-8cf1-067ba6eff381` is now visible for `DE-NW`
+- the NRW archived upper-secondary closure registry now resolves the widened analysis corridor with `14` atomic source goals instead of `13`
+- `npm run validate:view-filters` remains at `0` errors, `3` warnings, `178` accepted warnings
+- full `./run_ci.sh` passed after the NRW upper-secondary tangent/normal step
+
+Interpretation:
+
+- NRW upper-secondary math now reaches the first shared tangent-equation leaf on the canonical analysis spine, not only derivative, graph, and extremal leaves
+- the cleaner move here was a small E-phase source add from the archived NRW text, not another broad Q-phase corridor mapping
+- the next NRW task should return to the already imported Q-phase Grundkurs integral/bestands atom `cc57ef8b-b0a6-4a42-b82d-92433e0ad227` and test it against `2afba4a2-287d-5e8f-aeee-a3bcf8652236` (`Integral als Bestand und Flächeninhalt verstehen`) before widening the broader parameter or exponential surface
+
+### 2026-03-20: NRW upper-secondary reaches the shared integral-as-stock leaf and trims obsolete Q1 cluster prerequisites
+
+What changed:
+
+- the already imported NRW Grundkurs source atom `cc57ef8b-b0a6-4a42-b82d-92433e0ad227` now maps as a reviewed `partial` bridge to:
+  - `2afba4a2-287d-5e8f-aeee-a3bcf8652236` (`Integral als Bestand und Flächeninhalt verstehen`)
+- the NRW upper-secondary mapping lane now carries `11` rows instead of `10`
+- the accepted-warning registry now records the NRW-specific `APV-202` entry for `2afba4a2-287d-5e8f-aeee-a3bcf8652236`
+- the canonical Q1 integral clusters
+  - `c8951a07-a3e7-59d2-8a23-dce545dd811a` (`Q1 Analysis – Integralrechnung und Differenzialgleichungen`)
+  - `93ac7fc8-6d83-5394-bbea-80758b463da1` (`Q1.1 Einführung in die Integralrechnung`)
+  no longer carry the old broad cluster-level `requires`; the didactic sequencing now stays on the child leaves instead of forcing a Hessen-specific prerequisite wall onto the new NRW child-union visibility
+
+Validation used:
+
+- `npm run validate:graph`
+- `npm run apply:applicability`
+- `./gradlew test --tests 'com.skillpilot.backend.landscape.GoalMappingRepositoryFixtureTest'`
+- `npm run validate:view-filters`
+- `./run_ci.sh`
+
+Validation result:
+
+- the repository-backed NRW upper-secondary mapping fixture now parses cleanly with `11` rows
+- `npm run apply:applicability` changed `3` goals in the canonical math file:
+  - `2afba4a2-287d-5e8f-aeee-a3bcf8652236`
+  - `93ac7fc8-6d83-5394-bbea-80758b463da1`
+  - `c8951a07-a3e7-59d2-8a23-dce545dd811a`
+  are now visible for `DE-NW`
+- `npm run validate:view-filters` remains at `0` errors, `3` warnings, `179` accepted warnings
+- full `./run_ci.sh` passed after the NRW upper-secondary integral step
+
+Interpretation:
+
+- NRW upper-secondary math now reaches the first shared integral-introduction leaf on the canonical analysis spine, not only derivative, tangent, and extremal leaves
+- the decisive technical fix here was not further NRW source widening, but removing two obsolete cluster-wide Q1 prerequisite bundles so the canonical route is again carried by leaf-level didactic dependencies
+- the next NRW task should stay on the same imported Q-phase integral surface and test whether `cc57ef8b-b0a6-4a42-b82d-92433e0ad227` can also carry `94d63ad9-ae1c-5ff2-b05e-188a0f5ebec6` (`Flächen unter Graphen näherungsweise bestimmen`) before widening the broader parameter or exponential lane

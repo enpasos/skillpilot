@@ -76,7 +76,9 @@ public class LandscapeService {
             "996d097a-cac2-4b5f-979a-b3a0b9803265",
             "bea90c22-b9c5-4c0c-9b10-89d875f50772",
             "71438941-0ceb-46ee-ad31-773cee700779",
-            "762de708-85fa-4324-958e-56002a318f7f");
+            "762de708-85fa-4324-958e-56002a318f7f",
+            "c862423f-d0ac-4a65-8ad2-9a6e560313a8",
+            "d3a068ca-90c6-4d7f-ab6b-4d8b43085cb1");
 
     private final LandscapeProperties properties;
     private final ObjectMapper objectMapper;
@@ -1106,6 +1108,9 @@ public class LandscapeService {
         }
         if (normalized.equals("BY") || normalized.equals("BAY") || normalized.equals("DE-BY")) {
             return "DE-BY";
+        }
+        if (normalized.equals("NW") || normalized.equals("NRW") || normalized.equals("DE-NW")) {
+            return "DE-NW";
         }
         return null;
     }
