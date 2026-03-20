@@ -8,7 +8,7 @@ It complements:
 
 - `docs/dev/canonical-gymnasium-by-sek1-normalization.md`
 - `docs/dev/canonical-gymnasium-migration-status.md`
-- `curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_math_to_canonical_math_pilot.json`
+- `curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_math_to_canonical_math.json`
 - `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json`
 
 ## Why Mathematics first
@@ -264,7 +264,7 @@ As of `2026-03-16`, this probe is strong enough to justify the Bavaria pilot sta
 
 Reason:
 
-- the Bavaria math pilot now has `64` mappings on a real `J5-J10` spine
+- the Bavaria math landscape now has `64` mappings on a real `J5-J10` spine
 - the Bavaria physics pilot adds only `23` further mappings under the same legacy tree
 - the live legacy Bavaria Gymnasium tree still contains `45` subject JSON files
 - `19` Bavaria Gymnasium mapping files currently exist under `curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/`

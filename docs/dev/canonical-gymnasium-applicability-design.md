@@ -593,7 +593,7 @@ Recommended report shape:
           "value": "DE-BY",
           "kind": "mapping",
           "mappingStrength": "partial",
-          "source": "curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_math_to_canonical_math_pilot.json"
+          "source": "curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_math_to_canonical_math.json"
         }
       ]
     }
@@ -702,7 +702,7 @@ Before runtime changes begin, the dry-run compiler plus validator should satisfy
 
 | Gate | Pilot slice | Expected outcome |
 | --- | --- | --- |
-| `A1` | canonical mathematics + `curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_math_to_canonical_math_pilot.json` | projected graph `jurisdiction = DE-BY` contains the `J7-J9` anchors and the existing function corridor with zero closure errors |
+| `A1` | canonical mathematics + `curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_math_to_canonical_math.json` | projected graph `jurisdiction = DE-BY` contains the `J7-J9` anchors and the existing function corridor with zero closure errors |
 | `A2` | canonical mathematics + Hessen math upper-secondary and lower-secondary pilot mappings | projected graph `jurisdiction = DE-HE` for the currently cutover-relevant Hessen math slice has zero closure errors |
 | `A3` | canonical economics + `curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_economics_upper_secondary_to_canonical_economics.json` | the reviewed Hessen economics mirror compiles with stable `jurisdiction = DE-HE` applicability and no unexpected `DE-BY` visibility |
 | `A4` | canonical overview root plus child subject roots | root and subject clusters inherit only the union of visible child values; no phantom root visibility appears in the projected filtered graphs |

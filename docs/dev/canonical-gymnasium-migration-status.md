@@ -90,7 +90,7 @@ Observed repo state:
 - `python3 scripts/validate_bavaria_gymnasium_legacy_refs.py` currently passes with `0` violations while reporting `Legacy tree present: no`
 - `python3 scripts/validate_bavaria_gymnasium_archive_paths.py` currently passes with `0` violations
 - `bash scripts/run_bavaria_gymnasium_delete_handoff_dry_run.sh` currently passes with `DELETE_HANDOFF_PRECHECK=OK`
-- the Bavaria Sek-I mathematics pilot now spans the shared canonical `J5-J10` spine with `64` reviewed mappings, including first explicit subrow refinement for `M8 3`, `M8 4`, `M9 3`, `M9 7`, and `M10 2`
+- the Bavaria Sek-I mathematics surface now spans the shared canonical `J5-J10` spine with `64` reviewed mappings, including first explicit subrow refinement for `M8 3`, `M8 4`, `M9 3`, `M9 7`, and `M10 2`
 - the Bavaria Informatics pilot now adds `84` reviewed mappings into the canonical DE informatics layer, yielding `45` committed `DE-BY` applicability nodes plus a direct Bavaria `Informatik` cutover path into `Gymnasium (DE)`
 - the Bavaria Wirtschaft-und-Recht pilot now adds `27` reviewed mappings into the canonical DE economics layer, yielding `26` committed `DE-BY` applicability nodes plus a direct Bavaria `Wirtschaft und Recht` cutover path into `Gymnasium (DE)`
 - the Bavaria German pilot now adds `16` reviewed mappings into the canonical DE German layer, yielding `13` committed `DE-BY` applicability nodes plus a direct Bavaria `Deutsch` cutover path into `Gymnasium (DE)`
@@ -107,8 +107,8 @@ Observed repo state:
 - the Bavaria Latin pilot now adds `15` reviewed mappings into the canonical DE Latin layer, yielding `16` committed `DE-BY` applicability nodes plus a direct Bavaria `Latein` cutover path into `Gymnasium (DE)`
 - the Bavaria Music pilot now adds `15` reviewed mappings into the canonical DE music layer, yielding `15` committed `DE-BY` applicability nodes plus a direct Bavaria `Musik` cutover path into `Gymnasium (DE)`
 - the Bavaria Chinese pilot now adds `35` reviewed mappings into the canonical DE Chinese layer, yielding `33` committed `DE-BY` applicability nodes plus a direct Bavaria `Chinesisch` cutover path into `Gymnasium (DE)`
-- the Hessen Sek-I mathematics pilot now carries `33` explicit mappings and reaches reviewed row coverage beyond the old function/quadratic slice: J5 number basics, linear equations/inequalities, quadratic binomial-form routes, roots, similarity/Strahlensatz, Pythagoras, circle/cylinder, and integer-exponent rules
-- the reviewed Hessen Sek-I mathematics pilot no longer carries any `APV-202` findings; remaining reviewed math debt is now limited to the two Bayern override-backed `APV-201` cases
+- the Hessen Sek-I mathematics landscape now carries `33` explicit mappings and reaches reviewed row coverage beyond the old function/quadratic slice: J5 number basics, linear equations/inequalities, quadratic binomial-form routes, roots, similarity/Strahlensatz, Pythagoras, circle/cylinder, and integer-exponent rules
+- the reviewed Hessen Sek-I mathematics landscape no longer carries any `APV-202` findings; remaining reviewed math debt is now limited to the two Bayern override-backed `APV-201` cases
 - the Hessen Sek-I physics mechanics bridge now closes the old `7.4 Mechanik` row at exact reviewed coverage: a dedicated canonical density/mass/volume atom plus exact row- and subrow-mappings now cover the full Hessen mechanics anchor, while `Kräfteigenschaften nutzen` and `10.1 Arbeit und Energie` already bind to their own reviewed canonical targets
 - the Hessen Sek-I physics heat bridge now closes the foundational `7.2 Wärmelehre` row at exact reviewed coverage: temperature/heat, temperature measurement and expansion, particle model, and heat transfer all map exactly into a dedicated canonical Sek-I heat cluster that also backs the later `J10` heat-energy route
 - the Hessen Sek-I physics optics bridge now spans both reviewed source rows `7.1 Optik 1` and `8.1 Optik 2`: light propagation, ray model, reflection, lens imaging, vision, and simple optical instruments all map exactly into dedicated canonical Sek-I optics anchors
@@ -908,7 +908,7 @@ Deferred on purpose:
 
 Audit result:
 
-- after the `M5` to `M10` tranches, the Bavaria math pilot now has only `11` remaining `partial` bridges inside the year-5-to-year-10 corridor
+- after the `M5` to `M10` tranches, the Bavaria math landscape now has only `11` remaining `partial` bridges inside the year-5-to-year-10 corridor
 - in addition, `17` intermediate Bavaria section nodes remain unmapped; these are broad subsection wrappers rather than missing leaf coverage
 
 Residual `partial` bridges grouped by type:
@@ -1243,7 +1243,7 @@ Scope used:
 
 - Bavaria Gymnasium mathematics source corridor `Jahrgangsstufe 5` to `Jahrgangsstufe 10`
 - source file: `curricula/DE/Gymnasium/input/BY/gymnasium/Mathematik.json`
-- mapping file: `curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_math_to_canonical_math_pilot.json`
+- mapping file: `curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_math_to_canonical_math.json`
 
 Current repository-backed counts for the reviewed Sek-I corridor:
 

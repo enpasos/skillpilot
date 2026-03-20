@@ -34,7 +34,7 @@ class GoalMappingRepositoryFixtureTest {
     private static final String BAYERN_PHYSICS_LANDSCAPE_ID = "42c2f7e3-91b4-5de8-bef0-d563440e9d52";
     private static final String BAYERN_CHEMISTRY_LANDSCAPE_ID = "ff1ca997-b6cc-5ece-8e13-5498b4bbf808";
     private static final String BAYERN_BIOLOGY_LANDSCAPE_ID = "357a7003-b636-570e-a0bd-6bb63518d2f6";
-    private static final String CANONICAL_MATH_PILOT_ID = "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced";
+    private static final String CANONICAL_MATH_ID = "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced";
     private static final String CANONICAL_PHYSICS_PILOT_ID = "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a";
     private static final String CANONICAL_CHEMISTRY_ID = "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0";
     private static final String CANONICAL_BIOLOGY_ID = "08a43a1b-d97e-522c-9dfa-c950a493364e";
@@ -57,7 +57,7 @@ class GoalMappingRepositoryFixtureTest {
     private static final Path HESSEN_UPPER_SECONDARY_MAPPING_DIR = Path.of("../curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary");
     private static final Path HESSEN_LOWER_SECONDARY_MAPPING_DIR = Path.of("../curricula/DE/Gymnasium/mapping/DE-HE/lower-secondary");
     private static final Path BAVARIA_GYMNASIUM_MAPPING_DIR = Path.of("../curricula/DE/Gymnasium/mapping/DE-BY/gymnasium");
-    private static final Path MAPPING_FILE = HESSEN_UPPER_SECONDARY_MAPPING_DIR.resolve("hessen_math_upper_secondary_to_canonical_math_pilot.json");
+    private static final Path MAPPING_FILE = HESSEN_UPPER_SECONDARY_MAPPING_DIR.resolve("hessen_math_upper_secondary_to_canonical_math.json");
     private static final Path PHYSICS_MAPPING_FILE = HESSEN_UPPER_SECONDARY_MAPPING_DIR.resolve("hessen_physics_upper_secondary_to_canonical_physics_pilot.json");
     private static final Path CHEMISTRY_MAPPING_FILE = HESSEN_UPPER_SECONDARY_MAPPING_DIR.resolve("hessen_chemistry_upper_secondary_to_canonical_chemistry.json");
     private static final Path BIOLOGY_MAPPING_FILE = HESSEN_UPPER_SECONDARY_MAPPING_DIR.resolve("hessen_biology_upper_secondary_to_canonical_biology.json");
@@ -73,12 +73,12 @@ class GoalMappingRepositoryFixtureTest {
     private static final Path CHINESE_MAPPING_FILE = HESSEN_UPPER_SECONDARY_MAPPING_DIR.resolve("hessen_chinese_upper_secondary_to_canonical_chinese.json");
     private static final Path MUSIC_MAPPING_FILE = HESSEN_UPPER_SECONDARY_MAPPING_DIR.resolve("hessen_music_upper_secondary_to_canonical_music.json");
     private static final Path ECONOMICS_MAPPING_FILE = HESSEN_UPPER_SECONDARY_MAPPING_DIR.resolve("hessen_economics_upper_secondary_to_canonical_economics.json");
-    private static final Path SEK1_MAPPING_FILE = HESSEN_LOWER_SECONDARY_MAPPING_DIR.resolve("hessen_math_lower_secondary_to_canonical_math_pilot.json");
+    private static final Path SEK1_MAPPING_FILE = HESSEN_LOWER_SECONDARY_MAPPING_DIR.resolve("hessen_math_lower_secondary_to_canonical_math.json");
     private static final Path PHYSICS_SEK1_MAPPING_FILE = HESSEN_LOWER_SECONDARY_MAPPING_DIR.resolve("hessen_physics_lower_secondary_to_canonical_physics.json");
     private static final Path CHEMISTRY_SEK1_MAPPING_FILE = HESSEN_LOWER_SECONDARY_MAPPING_DIR.resolve("hessen_chemistry_lower_secondary_to_canonical_chemistry.json");
     private static final Path BIOLOGY_SEK1_MAPPING_FILE = HESSEN_LOWER_SECONDARY_MAPPING_DIR.resolve("hessen_biology_lower_secondary_to_canonical_biology.json");
     private static final Path FRENCH_SEK1_MAPPING_FILE = HESSEN_LOWER_SECONDARY_MAPPING_DIR.resolve("hessen_french_lower_secondary_to_canonical_french.json");
-    private static final Path BAYERN_MAPPING_FILE = BAVARIA_GYMNASIUM_MAPPING_DIR.resolve("bavaria_math_to_canonical_math_pilot.json");
+    private static final Path BAYERN_MAPPING_FILE = BAVARIA_GYMNASIUM_MAPPING_DIR.resolve("bavaria_math_to_canonical_math.json");
     private static final Path BAYERN_PHYSICS_MAPPING_FILE = BAVARIA_GYMNASIUM_MAPPING_DIR.resolve("bavaria_physics_to_canonical_physics_pilot.json");
     private static final Path BAYERN_CHEMISTRY_MAPPING_FILE =
             BAVARIA_GYMNASIUM_MAPPING_DIR.resolve("bavaria_chemistry_to_canonical_chemistry.json");
@@ -95,12 +95,12 @@ class GoalMappingRepositoryFixtureTest {
     private static final Path CURRICULA_DIR = Path.of("../curricula");
 
     @Test
-    void parsesRepositoryBackedCanonicalMathPilotMappingFixture() throws Exception {
+    void parsesRepositoryBackedCanonicalMathMappingFixture() throws Exception {
         GoalMappingFile file = new ObjectMapper().readValue(MAPPING_FILE.toFile(), GoalMappingFile.class);
 
         assertThat(file.getVersion()).isEqualTo(1);
         assertThat(file.getSourceLandscapeId()).isEqualTo(HESSEN_MATH_LANDSCAPE_ID);
-        assertThat(file.getTargetLandscapeId()).isEqualTo(CANONICAL_MATH_PILOT_ID);
+        assertThat(file.getTargetLandscapeId()).isEqualTo(CANONICAL_MATH_ID);
         assertThat(file.getMappings()).hasSize(451);
         assertThat(file.getMappings())
                 .extracting(GoalMappingEntry::getMatchType)
@@ -108,12 +108,12 @@ class GoalMappingRepositoryFixtureTest {
     }
 
     @Test
-    void parsesRepositoryBackedCanonicalMathPilotSek1MappingFixture() throws Exception {
+    void parsesRepositoryBackedCanonicalMathSek1MappingFixture() throws Exception {
         GoalMappingFile file = new ObjectMapper().readValue(SEK1_MAPPING_FILE.toFile(), GoalMappingFile.class);
 
         assertThat(file.getVersion()).isEqualTo(1);
         assertThat(file.getSourceLandscapeId()).isEqualTo(HESSEN_MATH_SEK1_LANDSCAPE_ID);
-        assertThat(file.getTargetLandscapeId()).isEqualTo(CANONICAL_MATH_PILOT_ID);
+        assertThat(file.getTargetLandscapeId()).isEqualTo(CANONICAL_MATH_ID);
         assertThat(file.getMappings()).hasSize(33);
         assertThat(file.getMappings())
                 .extracting(GoalMappingEntry::getMatchType)
@@ -482,10 +482,10 @@ class GoalMappingRepositoryFixtureTest {
 
         assertThat(service.getMappingsForSourceLandscape(HESSEN_MATH_LANDSCAPE_ID))
                 .isNotEmpty()
-                .allMatch(mapping -> CANONICAL_MATH_PILOT_ID.equals(mapping.targetLandscapeId()));
+                .allMatch(mapping -> CANONICAL_MATH_ID.equals(mapping.targetLandscapeId()));
         assertThat(service.getMappingsForSourceLandscape(HESSEN_MATH_SEK1_LANDSCAPE_ID))
                 .isNotEmpty()
-                .allMatch(mapping -> CANONICAL_MATH_PILOT_ID.equals(mapping.targetLandscapeId()));
+                .allMatch(mapping -> CANONICAL_MATH_ID.equals(mapping.targetLandscapeId()));
         assertThat(service.getMappingsForSourceLandscape(HESSEN_PHYSICS_SEK1_LANDSCAPE_ID))
                 .isNotEmpty()
                 .allMatch(mapping -> CANONICAL_PHYSICS_PILOT_ID.equals(mapping.targetLandscapeId()));
@@ -497,7 +497,7 @@ class GoalMappingRepositoryFixtureTest {
                 .allMatch(mapping -> CANONICAL_BIOLOGY_ID.equals(mapping.targetLandscapeId()));
         assertThat(service.getMappingsForSourceLandscape(BAYERN_MATH_LANDSCAPE_ID))
                 .isNotEmpty()
-                .allMatch(mapping -> CANONICAL_MATH_PILOT_ID.equals(mapping.targetLandscapeId()));
+                .allMatch(mapping -> CANONICAL_MATH_ID.equals(mapping.targetLandscapeId()));
         assertThat(service.getMappingsForSourceLandscape(BAYERN_PHYSICS_LANDSCAPE_ID))
                 .isNotEmpty()
                 .allMatch(mapping -> CANONICAL_PHYSICS_PILOT_ID.equals(mapping.targetLandscapeId()));
@@ -558,12 +558,12 @@ class GoalMappingRepositoryFixtureTest {
     }
 
     @Test
-    void parsesRepositoryBackedCanonicalMathPilotBavariaMappingFixture() throws Exception {
+    void parsesRepositoryBackedCanonicalMathBavariaMappingFixture() throws Exception {
         GoalMappingFile file = new ObjectMapper().readValue(BAYERN_MAPPING_FILE.toFile(), GoalMappingFile.class);
 
         assertThat(file.getVersion()).isEqualTo(1);
         assertThat(file.getSourceLandscapeId()).isEqualTo(BAYERN_MATH_LANDSCAPE_ID);
-        assertThat(file.getTargetLandscapeId()).isEqualTo(CANONICAL_MATH_PILOT_ID);
+        assertThat(file.getTargetLandscapeId()).isEqualTo(CANONICAL_MATH_ID);
         assertThat(file.getMappings()).hasSize(247);
         assertThat(file.getMappings())
                 .extracting(GoalMappingEntry::getMatchType)

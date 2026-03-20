@@ -43,7 +43,7 @@ class LearnerServiceCanonicalProjectionTest {
     private static final String CANONICAL_GYMNASIUM_ROOT_ID = "a0e13c56-c25f-4742-9272-3a1a603ee52e";
     private static final String HESSEN_MATH_LANDSCAPE_ID = "2796fc7b-ba9d-446f-8f26-711dd6d8a9a3";
     private static final String BAYERN_MATH_LANDSCAPE_ID = "c1600692-e543-5cf2-a399-6bd96e6b817f";
-    private static final String CANONICAL_MATH_PILOT_ID = "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced";
+    private static final String CANONICAL_MATH_ID = "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced";
     private static final String CANONICAL_MATH_ROOT_ID = "c01b1ce9-a667-4a46-b251-ec33ae602b15";
     private static final String CANONICAL_CHEMISTRY_ID = "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0";
     private static final String CANONICAL_BIOLOGY_ID = "08a43a1b-d97e-522c-9dfa-c950a493364e";
@@ -227,7 +227,7 @@ class LearnerServiceCanonicalProjectionTest {
 
         learner = new Learner();
         learner.setSkillpilotId(LEARNER_ID);
-        learner.setSelectedCurriculum(CANONICAL_MATH_PILOT_ID);
+        learner.setSelectedCurriculum(CANONICAL_MATH_ID);
         learner.setLearningState(LearningState.FRONTIER);
         learner.setPersonalCurriculum("{}");
 
@@ -682,7 +682,7 @@ class LearnerServiceCanonicalProjectionTest {
         UnifiedLearnerStateResponse state = learnerService.getLearnerState(LEARNER_ID);
 
         assertThat(state.curriculum()).isNotNull();
-        assertThat(state.curriculum().getCurriculumId()).isEqualTo(CANONICAL_MATH_PILOT_ID);
+        assertThat(state.curriculum().getCurriculumId()).isEqualTo(CANONICAL_MATH_ID);
         assertThat(state.stateMachine().requiredAction()).isEqualTo("setActiveGoal");
         assertThat(state.stateMachine().goalOptions())
                 .extracting(FrontierGoal::id)

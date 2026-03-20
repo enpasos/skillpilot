@@ -38,7 +38,7 @@ import org.springframework.test.context.ActiveProfiles;
 public class LearnerControllerIntegrationTest {
 
     private static final String CANONICAL_GYMNASIUM_ROOT_ID = "a0e13c56-c25f-4742-9272-3a1a603ee52e";
-    private static final String CANONICAL_MATH_PILOT_ID = "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced";
+    private static final String CANONICAL_MATH_ID = "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced";
     private static final String CANONICAL_MATH_ROOT_ID = "c01b1ce9-a667-4a46-b251-ec33ae602b15";
     private static final String CANONICAL_PHYSICS_PILOT_ID = "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a";
     private static final String CANONICAL_PHYSICS_ROOT_ID = "bf980fff-b62b-4ea4-a20d-31681a7ad785";
@@ -804,8 +804,8 @@ public class LearnerControllerIntegrationTest {
         assertThat(migratedLearner.getSelectedCurriculum()).isEqualTo(CANONICAL_GYMNASIUM_ROOT_ID);
         assertThat(body.path("curriculum").path("curriculumId").asText()).isEqualTo(CANONICAL_GYMNASIUM_ROOT_ID);
         assertThat(persistedConfig.path(CANONICAL_GYMNASIUM_ROOT_ID).path("filterId").asText()).isEqualTo("DE-HE");
-        assertThat(persistedConfig.path(CANONICAL_MATH_PILOT_ID).path("selected").asBoolean()).isTrue();
-        assertThat(persistedConfig.path(CANONICAL_MATH_PILOT_ID).path("filterId").asText()).isEqualTo("LK");
+        assertThat(persistedConfig.path(CANONICAL_MATH_ID).path("selected").asBoolean()).isTrue();
+        assertThat(persistedConfig.path(CANONICAL_MATH_ID).path("filterId").asText()).isEqualTo("LK");
         assertThat(persistedConfig.path(CANONICAL_PHYSICS_PILOT_ID).path("selected").asBoolean()).isFalse();
         assertThat(planned).hasSize(1);
         assertThat(planned.get(0).path("id").asText()).isEqualTo(CANONICAL_MATH_ANALYSIS_CLUSTER_ID);
@@ -922,7 +922,7 @@ public class LearnerControllerIntegrationTest {
         assertThat(body.path("curriculum").path("curriculumId").asText()).isEqualTo(CANONICAL_GYMNASIUM_ROOT_ID);
         assertThat(persistedConfig.path(CANONICAL_GYMNASIUM_ROOT_ID).path("filterId").asText()).isEqualTo("DE-HE");
         assertThat(persistedConfig.path(CANONICAL_PHYSICS_PILOT_ID).path("selected").asBoolean()).isTrue();
-        assertThat(persistedConfig.path(CANONICAL_MATH_PILOT_ID).path("selected").asBoolean()).isTrue();
+        assertThat(persistedConfig.path(CANONICAL_MATH_ID).path("selected").asBoolean()).isTrue();
         assertThat(persistedConfig.path(CANONICAL_PHYSICS_PILOT_ID).path("filterId").asText()).isEqualTo("GK");
         assertThat(planned).hasSize(1);
         assertThat(planned.get(0).path("id").asText()).isEqualTo(CANONICAL_PHYSICS_CLUSTER_ID);
@@ -967,7 +967,7 @@ public class LearnerControllerIntegrationTest {
         assertThat(persistedConfig.path(CANONICAL_GYMNASIUM_ROOT_ID).path("filterId").asText()).isEqualTo("DE-HE");
         assertThat(persistedConfig.path(CANONICAL_CHEMISTRY_ID).path("selected").asBoolean()).isTrue();
         assertThat(persistedConfig.path(CANONICAL_CHEMISTRY_ID).path("filterId").asText()).isEqualTo("GK");
-        assertThat(persistedConfig.path(CANONICAL_MATH_PILOT_ID).path("selected").asBoolean()).isFalse();
+        assertThat(persistedConfig.path(CANONICAL_MATH_ID).path("selected").asBoolean()).isFalse();
         assertThat(persistedConfig.path(CANONICAL_PHYSICS_PILOT_ID).path("selected").asBoolean()).isFalse();
         assertThat(planned).hasSize(1);
         assertThat(planned.get(0).path("id").asText()).isEqualTo(CANONICAL_CHEMISTRY_E_PHASE_CLUSTER_ID);
@@ -1012,7 +1012,7 @@ public class LearnerControllerIntegrationTest {
         assertThat(persistedConfig.path(CANONICAL_GYMNASIUM_ROOT_ID).path("filterId").asText()).isEqualTo("DE-HE");
         assertThat(persistedConfig.path(CANONICAL_BIOLOGY_ID).path("selected").asBoolean()).isTrue();
         assertThat(persistedConfig.path(CANONICAL_BIOLOGY_ID).path("filterId").asText()).isEqualTo("GK");
-        assertThat(persistedConfig.path(CANONICAL_MATH_PILOT_ID).path("selected").asBoolean()).isFalse();
+        assertThat(persistedConfig.path(CANONICAL_MATH_ID).path("selected").asBoolean()).isFalse();
         assertThat(persistedConfig.path(CANONICAL_PHYSICS_PILOT_ID).path("selected").asBoolean()).isFalse();
         assertThat(persistedConfig.path(CANONICAL_CHEMISTRY_ID).path("selected").asBoolean()).isFalse();
         assertThat(planned).hasSize(1);
@@ -1048,8 +1048,8 @@ public class LearnerControllerIntegrationTest {
 
         assertThat(migratedLearner.getSelectedCurriculum()).isEqualTo(CANONICAL_GYMNASIUM_ROOT_ID);
         assertThat(persistedConfig.path(CANONICAL_GYMNASIUM_ROOT_ID).path("filterId").asText()).isEqualTo("DE-HE");
-        assertThat(persistedConfig.path(CANONICAL_MATH_PILOT_ID).path("selected").asBoolean()).isTrue();
-        assertThat(persistedConfig.path(CANONICAL_MATH_PILOT_ID).has("filterId")).isFalse();
+        assertThat(persistedConfig.path(CANONICAL_MATH_ID).path("selected").asBoolean()).isTrue();
+        assertThat(persistedConfig.path(CANONICAL_MATH_ID).has("filterId")).isFalse();
         assertThat(persistedConfig.path(CANONICAL_PHYSICS_PILOT_ID).path("selected").asBoolean()).isFalse();
         assertThat(persistedConfig.path(CANONICAL_CHEMISTRY_ID).path("selected").asBoolean()).isFalse();
         assertThat(persistedConfig.path(CANONICAL_BIOLOGY_ID).path("selected").asBoolean()).isFalse();
@@ -1081,8 +1081,8 @@ public class LearnerControllerIntegrationTest {
         assertThat(migratedLearner.getSelectedCurriculum()).isEqualTo(CANONICAL_GYMNASIUM_ROOT_ID);
         assertThat(body.path("curriculum").path("curriculumId").asText()).isEqualTo(CANONICAL_GYMNASIUM_ROOT_ID);
         assertThat(persistedConfig.path(CANONICAL_GYMNASIUM_ROOT_ID).path("filterId").asText()).isEqualTo("DE-BY");
-        assertThat(persistedConfig.path(CANONICAL_MATH_PILOT_ID).path("selected").asBoolean()).isTrue();
-        assertThat(persistedConfig.path(CANONICAL_MATH_PILOT_ID).has("filterId")).isFalse();
+        assertThat(persistedConfig.path(CANONICAL_MATH_ID).path("selected").asBoolean()).isTrue();
+        assertThat(persistedConfig.path(CANONICAL_MATH_ID).has("filterId")).isFalse();
         assertThat(persistedConfig.path(CANONICAL_PHYSICS_PILOT_ID).path("selected").asBoolean()).isFalse();
         assertThat(persistedConfig.path(CANONICAL_CHEMISTRY_ID).path("selected").asBoolean()).isFalse();
         assertThat(persistedConfig.path(CANONICAL_BIOLOGY_ID).path("selected").asBoolean()).isFalse();
@@ -1115,8 +1115,8 @@ public class LearnerControllerIntegrationTest {
         assertThat(body.path("curriculum").path("curriculumId").asText()).isEqualTo(CANONICAL_GYMNASIUM_ROOT_ID);
         assertThat(persistedConfig.path(CANONICAL_GYMNASIUM_ROOT_ID).path("filterId").asText()).isEqualTo("DE-BY");
         assertThat(persistedConfig.path(CANONICAL_PHYSICS_PILOT_ID).path("selected").asBoolean()).isTrue();
-        assertThat(persistedConfig.path(CANONICAL_MATH_PILOT_ID).path("selected").asBoolean()).isTrue();
-        assertThat(persistedConfig.path(CANONICAL_MATH_PILOT_ID).has("filterId")).isFalse();
+        assertThat(persistedConfig.path(CANONICAL_MATH_ID).path("selected").asBoolean()).isTrue();
+        assertThat(persistedConfig.path(CANONICAL_MATH_ID).has("filterId")).isFalse();
         assertThat(persistedConfig.path(CANONICAL_CHEMISTRY_ID).path("selected").asBoolean()).isFalse();
         assertThat(persistedConfig.path(CANONICAL_BIOLOGY_ID).path("selected").asBoolean()).isFalse();
         assertThat(planned).hasSize(1);
@@ -1148,7 +1148,7 @@ public class LearnerControllerIntegrationTest {
         assertThat(body.path("curriculum").path("curriculumId").asText()).isEqualTo(CANONICAL_GYMNASIUM_ROOT_ID);
         assertThat(persistedConfig.path(CANONICAL_GYMNASIUM_ROOT_ID).path("filterId").asText()).isEqualTo("DE-BY");
         assertThat(persistedConfig.path(CANONICAL_CHEMISTRY_ID).path("selected").asBoolean()).isTrue();
-        assertThat(persistedConfig.path(CANONICAL_MATH_PILOT_ID).path("selected").asBoolean()).isFalse();
+        assertThat(persistedConfig.path(CANONICAL_MATH_ID).path("selected").asBoolean()).isFalse();
         assertThat(persistedConfig.path(CANONICAL_PHYSICS_PILOT_ID).path("selected").asBoolean()).isFalse();
         assertThat(persistedConfig.path(CANONICAL_BIOLOGY_ID).path("selected").asBoolean()).isFalse();
         assertThat(planned).hasSize(1);
@@ -1180,7 +1180,7 @@ public class LearnerControllerIntegrationTest {
         assertThat(body.path("curriculum").path("curriculumId").asText()).isEqualTo(CANONICAL_GYMNASIUM_ROOT_ID);
         assertThat(persistedConfig.path(CANONICAL_GYMNASIUM_ROOT_ID).path("filterId").asText()).isEqualTo("DE-BY");
         assertThat(persistedConfig.path(CANONICAL_BIOLOGY_ID).path("selected").asBoolean()).isTrue();
-        assertThat(persistedConfig.path(CANONICAL_MATH_PILOT_ID).path("selected").asBoolean()).isFalse();
+        assertThat(persistedConfig.path(CANONICAL_MATH_ID).path("selected").asBoolean()).isFalse();
         assertThat(persistedConfig.path(CANONICAL_PHYSICS_PILOT_ID).path("selected").asBoolean()).isFalse();
         assertThat(persistedConfig.path(CANONICAL_CHEMISTRY_ID).path("selected").asBoolean()).isFalse();
         assertThat(planned).hasSize(1);
@@ -1212,7 +1212,7 @@ public class LearnerControllerIntegrationTest {
         assertThat(body.path("curriculum").path("curriculumId").asText()).isEqualTo(CANONICAL_GYMNASIUM_ROOT_ID);
         assertThat(persistedConfig.path(CANONICAL_GYMNASIUM_ROOT_ID).path("filterId").asText()).isEqualTo("DE-BY");
         assertThat(persistedConfig.path(CANONICAL_INFORMATICS_ID).path("selected").asBoolean()).isTrue();
-        assertThat(persistedConfig.path(CANONICAL_MATH_PILOT_ID).path("selected").asBoolean()).isFalse();
+        assertThat(persistedConfig.path(CANONICAL_MATH_ID).path("selected").asBoolean()).isFalse();
         assertThat(persistedConfig.path(CANONICAL_PHYSICS_PILOT_ID).path("selected").asBoolean()).isFalse();
         assertThat(persistedConfig.path(CANONICAL_CHEMISTRY_ID).path("selected").asBoolean()).isFalse();
         assertThat(persistedConfig.path(CANONICAL_BIOLOGY_ID).path("selected").asBoolean()).isFalse();
@@ -1246,7 +1246,7 @@ public class LearnerControllerIntegrationTest {
         assertThat(persistedConfig.path(CANONICAL_GYMNASIUM_ROOT_ID).path("filterId").asText()).isEqualTo("DE-BY");
         assertThat(persistedConfig.path(CANONICAL_HISTORY_ID).path("selected").asBoolean()).isTrue();
         assertThat(persistedConfig.path(CANONICAL_HISTORY_ID).path("filterId").asText()).isEqualTo("GK");
-        assertThat(persistedConfig.path(CANONICAL_MATH_PILOT_ID).path("selected").asBoolean()).isFalse();
+        assertThat(persistedConfig.path(CANONICAL_MATH_ID).path("selected").asBoolean()).isFalse();
         assertThat(persistedConfig.path(CANONICAL_PHYSICS_PILOT_ID).path("selected").asBoolean()).isFalse();
         assertThat(persistedConfig.path(CANONICAL_GERMAN_ID).path("selected").asBoolean()).isFalse();
         assertThat(persistedConfig.path(CANONICAL_GREEK_ID).path("selected").asBoolean()).isFalse();
@@ -1282,7 +1282,7 @@ public class LearnerControllerIntegrationTest {
         assertThat(body.path("curriculum").path("curriculumId").asText()).isEqualTo(CANONICAL_GYMNASIUM_ROOT_ID);
         assertThat(persistedConfig.path(CANONICAL_GYMNASIUM_ROOT_ID).path("filterId").asText()).isEqualTo("DE-BY");
         assertThat(persistedConfig.path(CANONICAL_ECONOMICS_ID).path("selected").asBoolean()).isTrue();
-        assertThat(persistedConfig.path(CANONICAL_MATH_PILOT_ID).path("selected").asBoolean()).isFalse();
+        assertThat(persistedConfig.path(CANONICAL_MATH_ID).path("selected").asBoolean()).isFalse();
         assertThat(persistedConfig.path(CANONICAL_PHYSICS_PILOT_ID).path("selected").asBoolean()).isFalse();
         assertThat(persistedConfig.path(CANONICAL_CHEMISTRY_ID).path("selected").asBoolean()).isFalse();
         assertThat(persistedConfig.path(CANONICAL_BIOLOGY_ID).path("selected").asBoolean()).isFalse();
@@ -1320,7 +1320,7 @@ public class LearnerControllerIntegrationTest {
         assertThat(persistedConfig.path(CANONICAL_GYMNASIUM_ROOT_ID).path("filterId").asText()).isEqualTo("DE-BY");
         assertThat(persistedConfig.path(CANONICAL_POLITICS_ECONOMICS_ID).path("selected").asBoolean()).isTrue();
         assertThat(persistedConfig.path(CANONICAL_POLITICS_ECONOMICS_ID).path("filterId").asText()).isEqualTo("GK");
-        assertThat(persistedConfig.path(CANONICAL_MATH_PILOT_ID).path("selected").asBoolean()).isFalse();
+        assertThat(persistedConfig.path(CANONICAL_MATH_ID).path("selected").asBoolean()).isFalse();
         assertThat(persistedConfig.path(CANONICAL_ECONOMICS_ID).path("selected").asBoolean()).isFalse();
         assertThat(planned).hasSize(1);
         assertThat(planned.get(0).path("id").asText()).isEqualTo(CANONICAL_POLITICS_ECONOMICS_RULE_OF_LAW_CLUSTER_ID);
@@ -1355,7 +1355,7 @@ public class LearnerControllerIntegrationTest {
         assertThat(persistedConfig.path(CANONICAL_GYMNASIUM_ROOT_ID).path("filterId").asText()).isEqualTo("DE-BY");
         assertThat(persistedConfig.path(CANONICAL_GERMAN_ID).path("selected").asBoolean()).isTrue();
         assertThat(persistedConfig.path(CANONICAL_GERMAN_ID).path("filterId").asText()).isEqualTo("GK");
-        assertThat(persistedConfig.path(CANONICAL_MATH_PILOT_ID).path("selected").asBoolean()).isFalse();
+        assertThat(persistedConfig.path(CANONICAL_MATH_ID).path("selected").asBoolean()).isFalse();
         assertThat(persistedConfig.path(CANONICAL_PHYSICS_PILOT_ID).path("selected").asBoolean()).isFalse();
         assertThat(persistedConfig.path(CANONICAL_CHEMISTRY_ID).path("selected").asBoolean()).isFalse();
         assertThat(persistedConfig.path(CANONICAL_BIOLOGY_ID).path("selected").asBoolean()).isFalse();
@@ -1394,7 +1394,7 @@ public class LearnerControllerIntegrationTest {
         assertThat(persistedConfig.path(CANONICAL_GYMNASIUM_ROOT_ID).path("filterId").asText()).isEqualTo("DE-BY");
         assertThat(persistedConfig.path(CANONICAL_GREEK_ID).path("selected").asBoolean()).isTrue();
         assertThat(persistedConfig.path(CANONICAL_GREEK_ID).path("filterId").asText()).isEqualTo("GK");
-        assertThat(persistedConfig.path(CANONICAL_MATH_PILOT_ID).path("selected").asBoolean()).isFalse();
+        assertThat(persistedConfig.path(CANONICAL_MATH_ID).path("selected").asBoolean()).isFalse();
         assertThat(persistedConfig.path(CANONICAL_PHYSICS_PILOT_ID).path("selected").asBoolean()).isFalse();
         assertThat(persistedConfig.path(CANONICAL_GERMAN_ID).path("selected").asBoolean()).isFalse();
         assertThat(persistedConfig.path(CANONICAL_LATIN_ID).path("selected").asBoolean()).isFalse();
@@ -1431,7 +1431,7 @@ public class LearnerControllerIntegrationTest {
         assertThat(persistedConfig.path(CANONICAL_GYMNASIUM_ROOT_ID).path("filterId").asText()).isEqualTo("DE-BY");
         assertThat(persistedConfig.path(CANONICAL_LATIN_ID).path("selected").asBoolean()).isTrue();
         assertThat(persistedConfig.path(CANONICAL_LATIN_ID).path("filterId").asText()).isEqualTo("GK");
-        assertThat(persistedConfig.path(CANONICAL_MATH_PILOT_ID).path("selected").asBoolean()).isFalse();
+        assertThat(persistedConfig.path(CANONICAL_MATH_ID).path("selected").asBoolean()).isFalse();
         assertThat(persistedConfig.path(CANONICAL_PHYSICS_PILOT_ID).path("selected").asBoolean()).isFalse();
         assertThat(persistedConfig.path(CANONICAL_GERMAN_ID).path("selected").asBoolean()).isFalse();
         assertThat(persistedConfig.path(CANONICAL_ECONOMICS_ID).path("selected").asBoolean()).isFalse();
@@ -1468,7 +1468,7 @@ public class LearnerControllerIntegrationTest {
         assertThat(persistedConfig.path(CANONICAL_GYMNASIUM_ROOT_ID).path("filterId").asText()).isEqualTo("DE-BY");
         assertThat(persistedConfig.path(CANONICAL_MUSIC_ID).path("selected").asBoolean()).isTrue();
         assertThat(persistedConfig.path(CANONICAL_MUSIC_ID).path("filterId").asText()).isEqualTo("GK");
-        assertThat(persistedConfig.path(CANONICAL_MATH_PILOT_ID).path("selected").asBoolean()).isFalse();
+        assertThat(persistedConfig.path(CANONICAL_MATH_ID).path("selected").asBoolean()).isFalse();
         assertThat(persistedConfig.path(CANONICAL_PHYSICS_PILOT_ID).path("selected").asBoolean()).isFalse();
         assertThat(persistedConfig.path(CANONICAL_GERMAN_ID).path("selected").asBoolean()).isFalse();
         assertThat(persistedConfig.path(CANONICAL_LATIN_ID).path("selected").asBoolean()).isFalse();
@@ -1755,7 +1755,7 @@ public class LearnerControllerIntegrationTest {
         assertThat(persistedConfig.path(CANONICAL_GYMNASIUM_ROOT_ID).path("filterId").asText()).isEqualTo("DE-BY");
         assertThat(persistedConfig.path(CANONICAL_CHINESE_ID).path("selected").asBoolean()).isTrue();
         assertThat(persistedConfig.path(CANONICAL_CHINESE_ID).path("filterId").asText()).isEqualTo("GK");
-        assertThat(persistedConfig.path(CANONICAL_MATH_PILOT_ID).path("selected").asBoolean()).isFalse();
+        assertThat(persistedConfig.path(CANONICAL_MATH_ID).path("selected").asBoolean()).isFalse();
         assertThat(persistedConfig.path(CANONICAL_PHYSICS_PILOT_ID).path("selected").asBoolean()).isFalse();
         assertThat(persistedConfig.path(CANONICAL_MUSIC_ID).path("selected").asBoolean()).isFalse();
         assertThat(persistedConfig.path(CANONICAL_LATIN_ID).path("selected").asBoolean()).isFalse();
@@ -1790,8 +1790,8 @@ public class LearnerControllerIntegrationTest {
         assertThat(migratedLearner.getSelectedCurriculum()).isEqualTo(CANONICAL_GYMNASIUM_ROOT_ID);
         assertThat(persistedConfig.path(CANONICAL_GYMNASIUM_ROOT_ID).path("filterId").asText()).isEqualTo("DE-HE");
         assertThat(persistedConfig.path(CANONICAL_PHYSICS_PILOT_ID).path("selected").asBoolean()).isTrue();
-        assertThat(persistedConfig.path(CANONICAL_MATH_PILOT_ID).path("selected").asBoolean()).isTrue();
-        assertThat(persistedConfig.path(CANONICAL_MATH_PILOT_ID).has("filterId")).isFalse();
+        assertThat(persistedConfig.path(CANONICAL_MATH_ID).path("selected").asBoolean()).isTrue();
+        assertThat(persistedConfig.path(CANONICAL_MATH_ID).has("filterId")).isFalse();
         assertThat(persistedConfig.path(CANONICAL_CHEMISTRY_ID).path("selected").asBoolean()).isFalse();
         assertThat(persistedConfig.path(CANONICAL_BIOLOGY_ID).path("selected").asBoolean()).isFalse();
         assertThat(planned).hasSize(1);
@@ -1823,7 +1823,7 @@ public class LearnerControllerIntegrationTest {
         assertThat(persistedConfig.path(CANONICAL_GYMNASIUM_ROOT_ID).path("filterId").asText()).isEqualTo("DE-HE");
         assertThat(persistedConfig.path(CANONICAL_CHEMISTRY_ID).path("selected").asBoolean()).isTrue();
         assertThat(persistedConfig.path(CANONICAL_CHEMISTRY_ID).has("filterId")).isFalse();
-        assertThat(persistedConfig.path(CANONICAL_MATH_PILOT_ID).path("selected").asBoolean()).isFalse();
+        assertThat(persistedConfig.path(CANONICAL_MATH_ID).path("selected").asBoolean()).isFalse();
         assertThat(persistedConfig.path(CANONICAL_PHYSICS_PILOT_ID).path("selected").asBoolean()).isFalse();
         assertThat(persistedConfig.path(CANONICAL_BIOLOGY_ID).path("selected").asBoolean()).isFalse();
         assertThat(planned).hasSize(1);
@@ -1855,7 +1855,7 @@ public class LearnerControllerIntegrationTest {
         assertThat(persistedConfig.path(CANONICAL_GYMNASIUM_ROOT_ID).path("filterId").asText()).isEqualTo("DE-HE");
         assertThat(persistedConfig.path(CANONICAL_BIOLOGY_ID).path("selected").asBoolean()).isTrue();
         assertThat(persistedConfig.path(CANONICAL_BIOLOGY_ID).has("filterId")).isFalse();
-        assertThat(persistedConfig.path(CANONICAL_MATH_PILOT_ID).path("selected").asBoolean()).isFalse();
+        assertThat(persistedConfig.path(CANONICAL_MATH_ID).path("selected").asBoolean()).isFalse();
         assertThat(persistedConfig.path(CANONICAL_PHYSICS_PILOT_ID).path("selected").asBoolean()).isFalse();
         assertThat(persistedConfig.path(CANONICAL_CHEMISTRY_ID).path("selected").asBoolean()).isFalse();
         assertThat(planned).hasSize(1);
@@ -1899,7 +1899,7 @@ public class LearnerControllerIntegrationTest {
         assertThat(persistedConfig.path(CANONICAL_GYMNASIUM_ROOT_ID).path("filterId").asText()).isEqualTo("DE-HE");
         assertThat(persistedConfig.path(CANONICAL_CHEMISTRY_ID).path("selected").asBoolean()).isTrue();
         assertThat(persistedConfig.path(CANONICAL_BIOLOGY_ID).path("selected").asBoolean()).isTrue();
-        assertThat(persistedConfig.path(CANONICAL_MATH_PILOT_ID).path("selected").asBoolean()).isFalse();
+        assertThat(persistedConfig.path(CANONICAL_MATH_ID).path("selected").asBoolean()).isFalse();
         assertThat(persistedConfig.path(CANONICAL_PHYSICS_PILOT_ID).path("selected").asBoolean()).isFalse();
         assertThat(planned).hasSize(2);
         assertThat(jsonIds(planned))
@@ -1936,7 +1936,7 @@ public class LearnerControllerIntegrationTest {
         assertThat(persistedConfig.path(CANONICAL_GYMNASIUM_ROOT_ID).path("filterId").asText()).isEqualTo("DE-HE");
         assertThat(persistedConfig.path(CANONICAL_FRENCH_ID).path("selected").asBoolean()).isTrue();
         assertThat(persistedConfig.path(CANONICAL_FRENCH_ID).has("filterId")).isFalse();
-        assertThat(persistedConfig.path(CANONICAL_MATH_PILOT_ID).path("selected").asBoolean()).isFalse();
+        assertThat(persistedConfig.path(CANONICAL_MATH_ID).path("selected").asBoolean()).isFalse();
         assertThat(persistedConfig.path(CANONICAL_PHYSICS_PILOT_ID).path("selected").asBoolean()).isFalse();
         assertThat(persistedConfig.path(CANONICAL_CHEMISTRY_ID).path("selected").asBoolean()).isFalse();
         assertThat(persistedConfig.path(CANONICAL_BIOLOGY_ID).path("selected").asBoolean()).isFalse();
@@ -1976,7 +1976,7 @@ public class LearnerControllerIntegrationTest {
         assertThat(migratedLearner.getSelectedCurriculum()).isEqualTo(CANONICAL_GYMNASIUM_ROOT_ID);
         assertThat(persistedConfig.path(CANONICAL_GYMNASIUM_ROOT_ID).path("filterId").asText()).isEqualTo("DE-HE");
         assertThat(persistedConfig.path(CANONICAL_FRENCH_ID).path("selected").asBoolean()).isTrue();
-        assertThat(persistedConfig.path(CANONICAL_MATH_PILOT_ID).path("selected").asBoolean()).isFalse();
+        assertThat(persistedConfig.path(CANONICAL_MATH_ID).path("selected").asBoolean()).isFalse();
         assertThat(persistedConfig.path(CANONICAL_PHYSICS_PILOT_ID).path("selected").asBoolean()).isFalse();
         assertThat(persistedConfig.path(CANONICAL_CHEMISTRY_ID).path("selected").asBoolean()).isFalse();
         assertThat(persistedConfig.path(CANONICAL_BIOLOGY_ID).path("selected").asBoolean()).isFalse();
@@ -2018,7 +2018,7 @@ public class LearnerControllerIntegrationTest {
         assertThat(persistedConfig.path(CANONICAL_GYMNASIUM_ROOT_ID).path("filterId").asText()).isEqualTo("DE-HE");
         assertThat(persistedConfig.path(CANONICAL_INFORMATICS_ID).path("selected").asBoolean()).isTrue();
         assertThat(persistedConfig.path(CANONICAL_INFORMATICS_ID).path("filterId").asText()).isEqualTo("GK");
-        assertThat(persistedConfig.path(CANONICAL_MATH_PILOT_ID).path("selected").asBoolean()).isFalse();
+        assertThat(persistedConfig.path(CANONICAL_MATH_ID).path("selected").asBoolean()).isFalse();
         assertThat(persistedConfig.path(CANONICAL_PHYSICS_PILOT_ID).path("selected").asBoolean()).isFalse();
         assertThat(persistedConfig.path(CANONICAL_CHEMISTRY_ID).path("selected").asBoolean()).isFalse();
         assertThat(persistedConfig.path(CANONICAL_BIOLOGY_ID).path("selected").asBoolean()).isFalse();
@@ -2065,7 +2065,7 @@ public class LearnerControllerIntegrationTest {
         assertThat(persistedConfig.path(CANONICAL_GYMNASIUM_ROOT_ID).path("filterId").asText()).isEqualTo("DE-HE");
         assertThat(persistedConfig.path(CANONICAL_HISTORY_ID).path("selected").asBoolean()).isTrue();
         assertThat(persistedConfig.path(CANONICAL_HISTORY_ID).path("filterId").asText()).isEqualTo("GK");
-        assertThat(persistedConfig.path(CANONICAL_MATH_PILOT_ID).path("selected").asBoolean()).isFalse();
+        assertThat(persistedConfig.path(CANONICAL_MATH_ID).path("selected").asBoolean()).isFalse();
         assertThat(persistedConfig.path(CANONICAL_PHYSICS_PILOT_ID).path("selected").asBoolean()).isFalse();
         assertThat(persistedConfig.path(CANONICAL_CHEMISTRY_ID).path("selected").asBoolean()).isFalse();
         assertThat(persistedConfig.path(CANONICAL_BIOLOGY_ID).path("selected").asBoolean()).isFalse();
@@ -2113,7 +2113,7 @@ public class LearnerControllerIntegrationTest {
         assertThat(persistedConfig.path(CANONICAL_GYMNASIUM_ROOT_ID).path("filterId").asText()).isEqualTo("DE-HE");
         assertThat(persistedConfig.path(CANONICAL_GERMAN_ID).path("selected").asBoolean()).isTrue();
         assertThat(persistedConfig.path(CANONICAL_GERMAN_ID).path("filterId").asText()).isEqualTo("GK");
-        assertThat(persistedConfig.path(CANONICAL_MATH_PILOT_ID).path("selected").asBoolean()).isFalse();
+        assertThat(persistedConfig.path(CANONICAL_MATH_ID).path("selected").asBoolean()).isFalse();
         assertThat(persistedConfig.path(CANONICAL_PHYSICS_PILOT_ID).path("selected").asBoolean()).isFalse();
         assertThat(persistedConfig.path(CANONICAL_CHEMISTRY_ID).path("selected").asBoolean()).isFalse();
         assertThat(persistedConfig.path(CANONICAL_BIOLOGY_ID).path("selected").asBoolean()).isFalse();
@@ -2162,7 +2162,7 @@ public class LearnerControllerIntegrationTest {
         assertThat(persistedConfig.path(CANONICAL_GYMNASIUM_ROOT_ID).path("filterId").asText()).isEqualTo("DE-HE");
         assertThat(persistedConfig.path(CANONICAL_ENGLISH_ID).path("selected").asBoolean()).isTrue();
         assertThat(persistedConfig.path(CANONICAL_ENGLISH_ID).path("filterId").asText()).isEqualTo("GK");
-        assertThat(persistedConfig.path(CANONICAL_MATH_PILOT_ID).path("selected").asBoolean()).isFalse();
+        assertThat(persistedConfig.path(CANONICAL_MATH_ID).path("selected").asBoolean()).isFalse();
         assertThat(persistedConfig.path(CANONICAL_PHYSICS_PILOT_ID).path("selected").asBoolean()).isFalse();
         assertThat(persistedConfig.path(CANONICAL_CHEMISTRY_ID).path("selected").asBoolean()).isFalse();
         assertThat(persistedConfig.path(CANONICAL_BIOLOGY_ID).path("selected").asBoolean()).isFalse();
@@ -2217,7 +2217,7 @@ public class LearnerControllerIntegrationTest {
         assertThat(persistedConfig.path(CANONICAL_GYMNASIUM_ROOT_ID).path("filterId").asText()).isEqualTo("DE-HE");
         assertThat(persistedConfig.path(CANONICAL_FRENCH_ID).path("selected").asBoolean()).isTrue();
         assertThat(persistedConfig.path(CANONICAL_FRENCH_ID).path("filterId").asText()).isEqualTo("GK");
-        assertThat(persistedConfig.path(CANONICAL_MATH_PILOT_ID).path("selected").asBoolean()).isFalse();
+        assertThat(persistedConfig.path(CANONICAL_MATH_ID).path("selected").asBoolean()).isFalse();
         assertThat(persistedConfig.path(CANONICAL_PHYSICS_PILOT_ID).path("selected").asBoolean()).isFalse();
         assertThat(persistedConfig.path(CANONICAL_CHEMISTRY_ID).path("selected").asBoolean()).isFalse();
         assertThat(persistedConfig.path(CANONICAL_BIOLOGY_ID).path("selected").asBoolean()).isFalse();
@@ -2270,7 +2270,7 @@ public class LearnerControllerIntegrationTest {
         assertThat(persistedConfig.path(CANONICAL_GYMNASIUM_ROOT_ID).path("filterId").asText()).isEqualTo("DE-HE");
         assertThat(persistedConfig.path(CANONICAL_LATIN_ID).path("selected").asBoolean()).isTrue();
         assertThat(persistedConfig.path(CANONICAL_LATIN_ID).path("filterId").asText()).isEqualTo("GK");
-        assertThat(persistedConfig.path(CANONICAL_MATH_PILOT_ID).path("selected").asBoolean()).isFalse();
+        assertThat(persistedConfig.path(CANONICAL_MATH_ID).path("selected").asBoolean()).isFalse();
         assertThat(persistedConfig.path(CANONICAL_PHYSICS_PILOT_ID).path("selected").asBoolean()).isFalse();
         assertThat(persistedConfig.path(CANONICAL_CHEMISTRY_ID).path("selected").asBoolean()).isFalse();
         assertThat(persistedConfig.path(CANONICAL_BIOLOGY_ID).path("selected").asBoolean()).isFalse();
@@ -2323,7 +2323,7 @@ public class LearnerControllerIntegrationTest {
         assertThat(persistedConfig.path(CANONICAL_GYMNASIUM_ROOT_ID).path("filterId").asText()).isEqualTo("DE-HE");
         assertThat(persistedConfig.path(CANONICAL_SPANISH_ID).path("selected").asBoolean()).isTrue();
         assertThat(persistedConfig.path(CANONICAL_SPANISH_ID).path("filterId").asText()).isEqualTo("GK");
-        assertThat(persistedConfig.path(CANONICAL_MATH_PILOT_ID).path("selected").asBoolean()).isFalse();
+        assertThat(persistedConfig.path(CANONICAL_MATH_ID).path("selected").asBoolean()).isFalse();
         assertThat(persistedConfig.path(CANONICAL_PHYSICS_PILOT_ID).path("selected").asBoolean()).isFalse();
         assertThat(persistedConfig.path(CANONICAL_CHEMISTRY_ID).path("selected").asBoolean()).isFalse();
         assertThat(persistedConfig.path(CANONICAL_BIOLOGY_ID).path("selected").asBoolean()).isFalse();
@@ -2377,7 +2377,7 @@ public class LearnerControllerIntegrationTest {
         assertThat(persistedConfig.path(CANONICAL_GYMNASIUM_ROOT_ID).path("filterId").asText()).isEqualTo("DE-HE");
         assertThat(persistedConfig.path(CANONICAL_GREEK_ID).path("selected").asBoolean()).isTrue();
         assertThat(persistedConfig.path(CANONICAL_GREEK_ID).path("filterId").asText()).isEqualTo("GK");
-        assertThat(persistedConfig.path(CANONICAL_MATH_PILOT_ID).path("selected").asBoolean()).isFalse();
+        assertThat(persistedConfig.path(CANONICAL_MATH_ID).path("selected").asBoolean()).isFalse();
         assertThat(persistedConfig.path(CANONICAL_PHYSICS_PILOT_ID).path("selected").asBoolean()).isFalse();
         assertThat(persistedConfig.path(CANONICAL_CHEMISTRY_ID).path("selected").asBoolean()).isFalse();
         assertThat(persistedConfig.path(CANONICAL_BIOLOGY_ID).path("selected").asBoolean()).isFalse();
@@ -2431,7 +2431,7 @@ public class LearnerControllerIntegrationTest {
         assertThat(persistedConfig.path(CANONICAL_GYMNASIUM_ROOT_ID).path("filterId").asText()).isEqualTo("DE-HE");
         assertThat(persistedConfig.path(CANONICAL_CHINESE_ID).path("selected").asBoolean()).isTrue();
         assertThat(persistedConfig.path(CANONICAL_CHINESE_ID).path("filterId").asText()).isEqualTo("GK");
-        assertThat(persistedConfig.path(CANONICAL_MATH_PILOT_ID).path("selected").asBoolean()).isFalse();
+        assertThat(persistedConfig.path(CANONICAL_MATH_ID).path("selected").asBoolean()).isFalse();
         assertThat(persistedConfig.path(CANONICAL_PHYSICS_PILOT_ID).path("selected").asBoolean()).isFalse();
         assertThat(persistedConfig.path(CANONICAL_CHEMISTRY_ID).path("selected").asBoolean()).isFalse();
         assertThat(persistedConfig.path(CANONICAL_BIOLOGY_ID).path("selected").asBoolean()).isFalse();
@@ -2486,7 +2486,7 @@ public class LearnerControllerIntegrationTest {
         assertThat(persistedConfig.path(CANONICAL_GYMNASIUM_ROOT_ID).path("filterId").asText()).isEqualTo("DE-HE");
         assertThat(persistedConfig.path(CANONICAL_ECONOMICS_ID).path("selected").asBoolean()).isTrue();
         assertThat(persistedConfig.path(CANONICAL_ECONOMICS_ID).path("filterId").asText()).isEqualTo("GK");
-        assertThat(persistedConfig.path(CANONICAL_MATH_PILOT_ID).path("selected").asBoolean()).isFalse();
+        assertThat(persistedConfig.path(CANONICAL_MATH_ID).path("selected").asBoolean()).isFalse();
         assertThat(persistedConfig.path(CANONICAL_PHYSICS_PILOT_ID).path("selected").asBoolean()).isFalse();
         assertThat(persistedConfig.path(CANONICAL_CHEMISTRY_ID).path("selected").asBoolean()).isFalse();
         assertThat(persistedConfig.path(CANONICAL_BIOLOGY_ID).path("selected").asBoolean()).isFalse();
@@ -2543,7 +2543,7 @@ public class LearnerControllerIntegrationTest {
         assertThat(persistedConfig.path(CANONICAL_GYMNASIUM_ROOT_ID).path("filterId").asText()).isEqualTo("DE-HE");
         assertThat(persistedConfig.path(CANONICAL_MUSIC_ID).path("selected").asBoolean()).isTrue();
         assertThat(persistedConfig.path(CANONICAL_MUSIC_ID).path("filterId").asText()).isEqualTo("GK");
-        assertThat(persistedConfig.path(CANONICAL_MATH_PILOT_ID).path("selected").asBoolean()).isFalse();
+        assertThat(persistedConfig.path(CANONICAL_MATH_ID).path("selected").asBoolean()).isFalse();
         assertThat(persistedConfig.path(CANONICAL_PHYSICS_PILOT_ID).path("selected").asBoolean()).isFalse();
         assertThat(persistedConfig.path(CANONICAL_CHEMISTRY_ID).path("selected").asBoolean()).isFalse();
         assertThat(persistedConfig.path(CANONICAL_BIOLOGY_ID).path("selected").asBoolean()).isFalse();
@@ -2672,8 +2672,8 @@ public class LearnerControllerIntegrationTest {
         assertThat(migratedLearner.getSelectedCurriculum()).isEqualTo(CANONICAL_GYMNASIUM_ROOT_ID);
         assertThat(body.path("curriculum").path("curriculumId").asText()).isEqualTo(CANONICAL_GYMNASIUM_ROOT_ID);
         assertThat(persistedConfig.path(CANONICAL_GYMNASIUM_ROOT_ID).path("filterId").asText()).isEqualTo("DE-HE");
-        assertThat(persistedConfig.path(CANONICAL_MATH_PILOT_ID).path("selected").asBoolean()).isTrue();
-        assertThat(persistedConfig.path(CANONICAL_MATH_PILOT_ID).path("filterId").asText()).isEqualTo("LK");
+        assertThat(persistedConfig.path(CANONICAL_MATH_ID).path("selected").asBoolean()).isTrue();
+        assertThat(persistedConfig.path(CANONICAL_MATH_ID).path("filterId").asText()).isEqualTo("LK");
         assertThat(persistedConfig.path(CANONICAL_PHYSICS_PILOT_ID).path("selected").asBoolean()).isTrue();
         assertThat(persistedConfig.path(CANONICAL_PHYSICS_PILOT_ID).path("filterId").asText()).isEqualTo("GK");
         assertThat(planned).hasSize(2);
@@ -2744,7 +2744,7 @@ public class LearnerControllerIntegrationTest {
         assertThat(persistedConfig.path(CANONICAL_CHEMISTRY_ID).path("filterId").asText()).isEqualTo("GK");
         assertThat(persistedConfig.path(CANONICAL_BIOLOGY_ID).path("selected").asBoolean()).isTrue();
         assertThat(persistedConfig.path(CANONICAL_BIOLOGY_ID).path("filterId").asText()).isEqualTo("LK");
-        assertThat(persistedConfig.path(CANONICAL_MATH_PILOT_ID).path("selected").asBoolean()).isFalse();
+        assertThat(persistedConfig.path(CANONICAL_MATH_ID).path("selected").asBoolean()).isFalse();
         assertThat(persistedConfig.path(CANONICAL_PHYSICS_PILOT_ID).path("selected").asBoolean()).isFalse();
         assertThat(planned).hasSize(2);
         assertThat(jsonIds(planned))
@@ -2812,7 +2812,7 @@ public class LearnerControllerIntegrationTest {
         assertThat(persistedConfig.path(CANONICAL_INFORMATICS_ID).path("filterId").asText()).isEqualTo("GK");
         assertThat(persistedConfig.path(CANONICAL_HISTORY_ID).path("selected").asBoolean()).isTrue();
         assertThat(persistedConfig.path(CANONICAL_HISTORY_ID).path("filterId").asText()).isEqualTo("LK");
-        assertThat(persistedConfig.path(CANONICAL_MATH_PILOT_ID).path("selected").asBoolean()).isFalse();
+        assertThat(persistedConfig.path(CANONICAL_MATH_ID).path("selected").asBoolean()).isFalse();
         assertThat(persistedConfig.path(CANONICAL_PHYSICS_PILOT_ID).path("selected").asBoolean()).isFalse();
         assertThat(persistedConfig.path(CANONICAL_CHEMISTRY_ID).path("selected").asBoolean()).isFalse();
         assertThat(persistedConfig.path(CANONICAL_BIOLOGY_ID).path("selected").asBoolean()).isFalse();
@@ -2880,7 +2880,7 @@ public class LearnerControllerIntegrationTest {
         assertThat(persistedConfig.path(CANONICAL_HISTORY_ID).path("filterId").asText()).isEqualTo("LK");
         assertThat(persistedConfig.path(CANONICAL_GERMAN_ID).path("selected").asBoolean()).isTrue();
         assertThat(persistedConfig.path(CANONICAL_GERMAN_ID).path("filterId").asText()).isEqualTo("GK");
-        assertThat(persistedConfig.path(CANONICAL_MATH_PILOT_ID).path("selected").asBoolean()).isFalse();
+        assertThat(persistedConfig.path(CANONICAL_MATH_ID).path("selected").asBoolean()).isFalse();
         assertThat(persistedConfig.path(CANONICAL_PHYSICS_PILOT_ID).path("selected").asBoolean()).isFalse();
         assertThat(persistedConfig.path(CANONICAL_CHEMISTRY_ID).path("selected").asBoolean()).isFalse();
         assertThat(persistedConfig.path(CANONICAL_BIOLOGY_ID).path("selected").asBoolean()).isFalse();
@@ -2951,7 +2951,7 @@ public class LearnerControllerIntegrationTest {
         assertThat(persistedConfig.path(CANONICAL_GERMAN_ID).path("filterId").asText()).isEqualTo("LK");
         assertThat(persistedConfig.path(CANONICAL_ENGLISH_ID).path("selected").asBoolean()).isTrue();
         assertThat(persistedConfig.path(CANONICAL_ENGLISH_ID).path("filterId").asText()).isEqualTo("GK");
-        assertThat(persistedConfig.path(CANONICAL_MATH_PILOT_ID).path("selected").asBoolean()).isFalse();
+        assertThat(persistedConfig.path(CANONICAL_MATH_ID).path("selected").asBoolean()).isFalse();
         assertThat(persistedConfig.path(CANONICAL_PHYSICS_PILOT_ID).path("selected").asBoolean()).isFalse();
         assertThat(persistedConfig.path(CANONICAL_CHEMISTRY_ID).path("selected").asBoolean()).isFalse();
         assertThat(persistedConfig.path(CANONICAL_BIOLOGY_ID).path("selected").asBoolean()).isFalse();
@@ -3024,7 +3024,7 @@ public class LearnerControllerIntegrationTest {
         assertThat(persistedConfig.path(CANONICAL_GERMAN_ID).path("filterId").asText()).isEqualTo("LK");
         assertThat(persistedConfig.path(CANONICAL_FRENCH_ID).path("selected").asBoolean()).isTrue();
         assertThat(persistedConfig.path(CANONICAL_FRENCH_ID).path("filterId").asText()).isEqualTo("GK");
-        assertThat(persistedConfig.path(CANONICAL_MATH_PILOT_ID).path("selected").asBoolean()).isFalse();
+        assertThat(persistedConfig.path(CANONICAL_MATH_ID).path("selected").asBoolean()).isFalse();
         assertThat(persistedConfig.path(CANONICAL_PHYSICS_PILOT_ID).path("selected").asBoolean()).isFalse();
         assertThat(persistedConfig.path(CANONICAL_CHEMISTRY_ID).path("selected").asBoolean()).isFalse();
         assertThat(persistedConfig.path(CANONICAL_BIOLOGY_ID).path("selected").asBoolean()).isFalse();
@@ -3096,7 +3096,7 @@ public class LearnerControllerIntegrationTest {
         assertThat(persistedConfig.path(CANONICAL_GERMAN_ID).path("filterId").asText()).isEqualTo("LK");
         assertThat(persistedConfig.path(CANONICAL_LATIN_ID).path("selected").asBoolean()).isTrue();
         assertThat(persistedConfig.path(CANONICAL_LATIN_ID).path("filterId").asText()).isEqualTo("GK");
-        assertThat(persistedConfig.path(CANONICAL_MATH_PILOT_ID).path("selected").asBoolean()).isFalse();
+        assertThat(persistedConfig.path(CANONICAL_MATH_ID).path("selected").asBoolean()).isFalse();
         assertThat(persistedConfig.path(CANONICAL_PHYSICS_PILOT_ID).path("selected").asBoolean()).isFalse();
         assertThat(persistedConfig.path(CANONICAL_CHEMISTRY_ID).path("selected").asBoolean()).isFalse();
         assertThat(persistedConfig.path(CANONICAL_BIOLOGY_ID).path("selected").asBoolean()).isFalse();
@@ -3171,7 +3171,7 @@ public class LearnerControllerIntegrationTest {
         assertThat(persistedConfig.path(CANONICAL_GERMAN_ID).path("filterId").asText()).isEqualTo("LK");
         assertThat(persistedConfig.path(CANONICAL_SPANISH_ID).path("selected").asBoolean()).isTrue();
         assertThat(persistedConfig.path(CANONICAL_SPANISH_ID).path("filterId").asText()).isEqualTo("GK");
-        assertThat(persistedConfig.path(CANONICAL_MATH_PILOT_ID).path("selected").asBoolean()).isFalse();
+        assertThat(persistedConfig.path(CANONICAL_MATH_ID).path("selected").asBoolean()).isFalse();
         assertThat(persistedConfig.path(CANONICAL_PHYSICS_PILOT_ID).path("selected").asBoolean()).isFalse();
         assertThat(persistedConfig.path(CANONICAL_CHEMISTRY_ID).path("selected").asBoolean()).isFalse();
         assertThat(persistedConfig.path(CANONICAL_BIOLOGY_ID).path("selected").asBoolean()).isFalse();
@@ -3247,7 +3247,7 @@ public class LearnerControllerIntegrationTest {
         assertThat(persistedConfig.path(CANONICAL_GERMAN_ID).path("filterId").asText()).isEqualTo("LK");
         assertThat(persistedConfig.path(CANONICAL_GREEK_ID).path("selected").asBoolean()).isTrue();
         assertThat(persistedConfig.path(CANONICAL_GREEK_ID).path("filterId").asText()).isEqualTo("GK");
-        assertThat(persistedConfig.path(CANONICAL_MATH_PILOT_ID).path("selected").asBoolean()).isFalse();
+        assertThat(persistedConfig.path(CANONICAL_MATH_ID).path("selected").asBoolean()).isFalse();
         assertThat(persistedConfig.path(CANONICAL_PHYSICS_PILOT_ID).path("selected").asBoolean()).isFalse();
         assertThat(persistedConfig.path(CANONICAL_CHEMISTRY_ID).path("selected").asBoolean()).isFalse();
         assertThat(persistedConfig.path(CANONICAL_BIOLOGY_ID).path("selected").asBoolean()).isFalse();
@@ -3322,7 +3322,7 @@ public class LearnerControllerIntegrationTest {
         assertThat(persistedConfig.path(CANONICAL_GERMAN_ID).path("filterId").asText()).isEqualTo("LK");
         assertThat(persistedConfig.path(CANONICAL_CHINESE_ID).path("selected").asBoolean()).isTrue();
         assertThat(persistedConfig.path(CANONICAL_CHINESE_ID).path("filterId").asText()).isEqualTo("GK");
-        assertThat(persistedConfig.path(CANONICAL_MATH_PILOT_ID).path("selected").asBoolean()).isFalse();
+        assertThat(persistedConfig.path(CANONICAL_MATH_ID).path("selected").asBoolean()).isFalse();
         assertThat(persistedConfig.path(CANONICAL_PHYSICS_PILOT_ID).path("selected").asBoolean()).isFalse();
         assertThat(persistedConfig.path(CANONICAL_CHEMISTRY_ID).path("selected").asBoolean()).isFalse();
         assertThat(persistedConfig.path(CANONICAL_BIOLOGY_ID).path("selected").asBoolean()).isFalse();
@@ -3454,7 +3454,7 @@ public class LearnerControllerIntegrationTest {
         assertThat(persistedConfig.path(CANONICAL_GYMNASIUM_ROOT_ID).path("filterId").asText()).isEqualTo("DE-HE");
         assertThat(persistedConfig.path(CANONICAL_POLITICS_ECONOMICS_ID).path("selected").asBoolean()).isTrue();
         assertThat(persistedConfig.path(CANONICAL_POLITICS_ECONOMICS_ID).path("filterId").asText()).isEqualTo("GK");
-        assertThat(persistedConfig.path(CANONICAL_MATH_PILOT_ID).path("selected").asBoolean()).isFalse();
+        assertThat(persistedConfig.path(CANONICAL_MATH_ID).path("selected").asBoolean()).isFalse();
         assertThat(persistedConfig.path(CANONICAL_PHYSICS_PILOT_ID).path("selected").asBoolean()).isFalse();
         assertThat(persistedConfig.path(CANONICAL_CHEMISTRY_ID).path("selected").asBoolean()).isFalse();
         assertThat(persistedConfig.path(CANONICAL_BIOLOGY_ID).path("selected").asBoolean()).isFalse();
@@ -3515,7 +3515,7 @@ public class LearnerControllerIntegrationTest {
         assertThat(persistedConfig.path(CANONICAL_POLITICS_ECONOMICS_ID).path("filterId").asText()).isEqualTo("GK");
         assertThat(persistedConfig.path(CANONICAL_HISTORY_ID).path("selected").asBoolean()).isTrue();
         assertThat(persistedConfig.path(CANONICAL_HISTORY_ID).path("filterId").asText()).isEqualTo("LK");
-        assertThat(persistedConfig.path(CANONICAL_MATH_PILOT_ID).path("selected").asBoolean()).isFalse();
+        assertThat(persistedConfig.path(CANONICAL_MATH_ID).path("selected").asBoolean()).isFalse();
         assertThat(persistedConfig.path(CANONICAL_PHYSICS_PILOT_ID).path("selected").asBoolean()).isFalse();
         assertThat(persistedConfig.path(CANONICAL_CHEMISTRY_ID).path("selected").asBoolean()).isFalse();
         assertThat(persistedConfig.path(CANONICAL_BIOLOGY_ID).path("selected").asBoolean()).isFalse();
@@ -3679,10 +3679,10 @@ public class LearnerControllerIntegrationTest {
         JsonNode physicsConfig = objectMapper.readTree(migratedPhysicsLearner.getPersonalCurriculum());
 
         assertThat(mathConfig.path(CANONICAL_GYMNASIUM_ROOT_ID).path("filterId").asText()).isEqualTo("DE-HE");
-        assertThat(mathConfig.path(CANONICAL_MATH_PILOT_ID).path("filterId").asText()).isEqualTo("LK");
+        assertThat(mathConfig.path(CANONICAL_MATH_ID).path("filterId").asText()).isEqualTo("LK");
         assertThat(physicsConfig.path(CANONICAL_GYMNASIUM_ROOT_ID).path("filterId").asText()).isEqualTo("DE-HE");
         assertThat(physicsConfig.path(CANONICAL_PHYSICS_PILOT_ID).path("filterId").asText()).isEqualTo("GK");
-        assertThat(physicsConfig.path(CANONICAL_MATH_PILOT_ID).path("selected").asBoolean()).isTrue();
+        assertThat(physicsConfig.path(CANONICAL_MATH_ID).path("selected").asBoolean()).isTrue();
 
         assertThat(plannedGoalRepository.findByLearner_SkillpilotId("bulk-math"))
                 .extracting(PlannedGoal::getGoalId)

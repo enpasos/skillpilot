@@ -14,7 +14,7 @@ import org.junit.jupiter.api.Test;
 class LandscapeServiceTest {
 
         private static final String CANONICAL_GYMNASIUM_ROOT_ID = "a0e13c56-c25f-4742-9272-3a1a603ee52e";
-        private static final String CANONICAL_MATH_PILOT_ID = "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced";
+        private static final String CANONICAL_MATH_ID = "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced";
         private static final String CANONICAL_PHYSICS_PILOT_ID = "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a";
         private static final String CANONICAL_CHEMISTRY_ID = "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0";
         private static final String CANONICAL_BIOLOGY_ID = "08a43a1b-d97e-522c-9dfa-c950a493364e";
@@ -110,7 +110,7 @@ class LandscapeServiceTest {
                 assertThat(summaries).extracting(LandscapeSummary::getCurriculumId)
                                 .doesNotContain("3e56aa75-c76c-4de5-883b-0aac98297846",
                                                 "2796fc7b-ba9d-446f-8f26-711dd6d8a9a3",
-                                                CANONICAL_MATH_PILOT_ID,
+                                                CANONICAL_MATH_ID,
                                                 CANONICAL_PHYSICS_PILOT_ID,
                                                 CANONICAL_CHEMISTRY_ID,
                                                 CANONICAL_BIOLOGY_ID,
@@ -372,13 +372,13 @@ class LandscapeServiceTest {
                 assertThat(landscapeService.getOverview().getSummaries())
                                 .extracting(LandscapeSummary::getCurriculumId)
                                 .contains(CANONICAL_GYMNASIUM_ROOT_ID)
-                                .doesNotContain(CANONICAL_MATH_PILOT_ID, CANONICAL_PHYSICS_PILOT_ID, CANONICAL_CHEMISTRY_ID,
+                                .doesNotContain(CANONICAL_MATH_ID, CANONICAL_PHYSICS_PILOT_ID, CANONICAL_CHEMISTRY_ID,
                                                 CANONICAL_BIOLOGY_ID, CANONICAL_INFORMATICS_ID, CANONICAL_HISTORY_ID,
                                                 CANONICAL_GERMAN_ID, CANONICAL_POLITICS_ECONOMICS_ID,
                                                 CANONICAL_ECONOMICS_ID);
                 assertThat(landscapeService.getClosure(CANONICAL_GYMNASIUM_ROOT_ID))
                                 .extracting(LearningLandscape::getLandscapeId)
-                                .contains(CANONICAL_GYMNASIUM_ROOT_ID, CANONICAL_MATH_PILOT_ID, CANONICAL_PHYSICS_PILOT_ID,
+                                .contains(CANONICAL_GYMNASIUM_ROOT_ID, CANONICAL_MATH_ID, CANONICAL_PHYSICS_PILOT_ID,
                                                 CANONICAL_CHEMISTRY_ID, CANONICAL_BIOLOGY_ID, CANONICAL_INFORMATICS_ID,
                                                 CANONICAL_HISTORY_ID, CANONICAL_GERMAN_ID,
                                                 CANONICAL_POLITICS_ECONOMICS_ID, CANONICAL_ENGLISH_ID,
@@ -390,18 +390,18 @@ class LandscapeServiceTest {
         }
 
         @Test
-        void loadsCanonicalMathPilotAsChildCurriculum() {
+        void loadsCanonicalMathAsChildCurriculum() {
                 LandscapeProperties properties = new LandscapeProperties();
                 properties.setDirectory("../curricula");
                 ObjectMapper objectMapper = new ObjectMapper();
                 LandscapeService landscapeService = new LandscapeService(properties, objectMapper);
 
-                LearningLandscape pilot = landscapeService.getById(CANONICAL_MATH_PILOT_ID);
+                LearningLandscape landscape = landscapeService.getById(CANONICAL_MATH_ID);
 
-                assertThat(pilot).isNotNull();
-                assertThat(pilot.getTitle()).isEqualTo("Mathematik (Gymnasium, DE)");
-                assertThat(pilot.getGoals()).isNotEmpty();
-                assertThat(pilot.getGoals())
+                assertThat(landscape).isNotNull();
+                assertThat(landscape.getTitle()).isEqualTo("Mathematik (Gymnasium, DE)");
+                assertThat(landscape.getGoals()).isNotEmpty();
+                assertThat(landscape.getGoals())
                                 .extracting(LearningGoal::getTitle)
                                 .contains(
                                                 "Funktionsgrundlagen (Sek I)",
@@ -409,7 +409,7 @@ class LandscapeServiceTest {
                                                 "Scheitelpunkte quadratischer Funktionen bestimmen",
                                                 "Q3 Stochastik",
                                                 "Prozessbezogene Kompetenzen (K)");
-                assertThat(pilot.getFilters())
+                assertThat(landscape.getFilters())
                                 .extracting(LandscapeFilter::getId)
                                 .containsExactly("GK", "LK");
         }
@@ -443,7 +443,7 @@ class LandscapeServiceTest {
                                 .containsExactly("GK", "LK");
                 assertThat(landscapeService.getClosure(CANONICAL_PHYSICS_PILOT_ID))
                                 .extracting(LearningLandscape::getLandscapeId)
-                                .contains(CANONICAL_PHYSICS_PILOT_ID, CANONICAL_MATH_PILOT_ID)
+                                .contains(CANONICAL_PHYSICS_PILOT_ID, CANONICAL_MATH_ID)
                                 .doesNotContain(HESSEN_UPPER_MATH_ID);
         }
 

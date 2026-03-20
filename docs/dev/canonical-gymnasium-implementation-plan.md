@@ -58,7 +58,7 @@ The first slice should be:
 - source: Hessen Gymnasiale Oberstufe
 - mode: additive pilot
 
-This slice should produce a canonical math pilot without yet changing the outward-facing learner workflow.
+This slice should produce a canonical mathematics landscape without yet changing the outward-facing learner workflow.
 
 ## Deliverables
 
@@ -351,7 +351,7 @@ WP1 result:
 - initial test coverage:
   - `backend/src/test/java/com/skillpilot/backend/landscape/GoalMappingServiceTest.java`
 
-## WP2. Canonical math pilot
+## WP2. Canonical mathematics landscape
 
 Status: `done`
 
@@ -369,10 +369,10 @@ Acceptance criteria:
 
 WP2 result:
 
-- first canonical mathematics pilot landscape added:
+- first canonical mathematics landscape added:
   - `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json`
 - first real Hessen-to-canonical mapping fixture added:
-  - `curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_math_upper_secondary_to_canonical_math_pilot.json`
+  - `curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_math_upper_secondary_to_canonical_math.json`
 - pilot location decision for now:
   - keep the first canonical seed physically separate from state-owned source trees on a Germany-level path
 - pilot scope kept intentionally small:
@@ -505,7 +505,7 @@ Tasks:
 
 WP6 progress so far:
 
-- first Hessen Sek I attachment slice added to the canonical math pilot:
+- first Hessen Sek I attachment slice added to the canonical mathematics landscape:
   - mappings / functional relationships
   - proportional relationships
   - linear functions
@@ -622,7 +622,7 @@ Tasks:
 WP7 progress so far:
 
 - first Bavaria mapping fixture added:
-  - `curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_math_to_canonical_math_pilot.json`
+  - `curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_math_to_canonical_math.json`
 - initial pilot scope stays deliberately narrow and reuses the already stabilized canonical function path:
   - function concept
   - linear-function interpretation
@@ -748,7 +748,7 @@ WP8 progress so far:
 
 1. WP0 baseline inventory
 2. WP1 mapping format and loader
-3. WP2 canonical math pilot
+3. WP2 canonical mathematics landscape
 4. WP3 read-side mastery projection
 5. WP4 learner-state compatibility
 6. WP5 test coverage
