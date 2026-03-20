@@ -1459,3 +1459,38 @@ Interpretation:
 
 - the reviewed Bavaria music pilot no longer carries any accepted `APV-202` debt on the currently reviewed surface
 - the next applicability-review candidate should now come from a larger remaining `APV-202` lane such as Bavaria Latin, Bavaria economics, Bavaria politics/economics, Bavaria biology, or Bavaria history
+
+
+### 2026-03-20: Bavaria Latin partial-bridge debt cleared by five exact upgrades
+
+Approach used:
+
+- reviewed the smallest remaining language-side `APV-202` lane in the Bavaria pilot set after music
+- kept the canonical Latin structure stable but replaced five placeholder-like atom labels with source-aligned operational wording
+- upgraded only those Bavaria bridges whose reviewed source leaves now fit the canonical targets one-to-one
+
+Applied changes:
+
+- refined `Grammatik festigen` into `Lektürespezifische Grammatikphänomene analysieren`
+- refined `Grundinterpretation` into `Originaltexte grundlegend interpretieren`
+- refined `Kontext/Autoren` into `Autoren, Werke und Kontexte einordnen`
+- refined `Interpretation` into `Kommunikations- und Ethikfragen interpretieren`
+- refined `Vergleich/Transfer` into `Rhetorische Texte vergleichen und Transfer leisten`
+- upgraded the five Bavaria Latin mappings for `192be448-1888-5f15-a100-38c58f74dd58`, `4b3bef2c-a27d-5334-b2cf-53548ab5a438`, `ec10b9a4-fc64-5e8f-a19b-45a187c39017`, `35793922-864f-5739-a56c-42ad6df8410a`, and `b952bb09-3ff6-573c-9a41-0575345e4e5a` from `partial` to `exact`
+- removed the five corresponding Bavaria Latin `APV-202` entries from the accepted-warning registry
+
+Validation used:
+
+- `npm run validate:view-filters`
+- `./gradlew test --tests 'com.skillpilot.backend.landscape.GoalMappingRepositoryFixtureTest'`
+
+Validation result:
+
+- `validate:view-filters` still passes with `0` errors and `0` active warnings
+- accepted reviewed warnings dropped from `191` to `186`
+- the repository-backed mapping fixture test still passes
+
+Interpretation:
+
+- the reviewed Bavaria Latin pilot no longer carries any accepted `APV-202` debt on the currently reviewed surface
+- the next applicability-review candidate should now come from a larger remaining `APV-202` lane such as Bavaria economics, Bavaria politics/economics, Bavaria biology, or Bavaria history
