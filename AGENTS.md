@@ -60,6 +60,30 @@ The overall structure is a **DAG (Directed Acyclic Graph)**:
 - `requires` should never form cycles.
 - `contains` also should not create cycles (think of it as a hierarchy of clusters).
 
+### 2.3 Separate goals from structure and taxonomy
+
+The long-term target model should distinguish four concepts that are currently still partly mixed in some landscapes:
+
+- **Goal layer**: actual assessable learning goals and fachliche clusters
+- **Program layer**: structural units such as year, semester, module, phase, track, or exam
+- **Placement layer**: links from goals into program units
+- **Competency-axis layer**: taxonomy entries such as process competencies (`K1`-`K6`)
+
+Interpretation rules:
+
+- year/semester/module/phase nodes are **not** the durable semantic backbone of the competence graph
+- broad capability families such as `K1`-`K6` are **not** program units
+- only concrete, assessable process skills become actual goals
+- current `phase` values should increasingly be treated as compatibility/view metadata rather than as the canonical semantic anchor
+- user-facing initial narrowing by school form, stage, jurisdiction, duration model, course profile, and current year/phase should be treated as **entry scope** over program units, placements, and applicability, not as duplicated goal semantics
+- preferred design maxim: **as much semantics as necessary, as little ontology as possible**
+- add semantic distinctions only when they solve a concrete authoring, migration, validation, projection, or runtime problem
+
+Reference:
+
+- `docs/concept/curriculum-graph/general-goal-system-and-migration.md`
+- `docs/concept/curriculum-graph/general-goal-system-minimal-schema-runtime-fallback-and-math-pilot.md`
+
 ---
 
 ## 3. Semantics of the `Goal` fields

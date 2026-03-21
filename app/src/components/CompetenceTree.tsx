@@ -7,6 +7,13 @@ import { isMastered } from '../goalUiUtils'
 import { InlineMathText } from './InlineMathText'
 import { goalMatchesFilter, isWildcardFilter } from '../utils/goalFilters'
 
+export type TreeStructureMode = 'all' | 'content' | 'competency'
+
+const COMPETENCY_DIMENSION_ROOT_TAG = 'competency-axis:dimension-root'
+
+const isCompetencyDimensionRoot = (goal: UiGoal) =>
+  (goal.tags ?? []).includes(COMPETENCY_DIMENSION_ROOT_TAG)
+
 interface TreeNodeProps {
   goalId: string
   allGoals: Map<string, UiGoal>
@@ -18,6 +25,7 @@ interface TreeNodeProps {
   selectedId: string
   depth?: number
   activeFilter?: string
+  structureMode?: TreeStructureMode
 
   aggregatedPlannedGoals?: Map<string, number>
   totalStudents?: number
@@ -48,6 +56,7 @@ const TreeNode: React.FC<TreeNodeProps> = ({
   selectedId,
   depth = 0,
   activeFilter,
+  structureMode = 'all',
   aggregatedPlannedGoals,
   totalStudents,
   personalConfig,
@@ -94,6 +103,16 @@ const TreeNode: React.FC<TreeNodeProps> = ({
         return false
       }
 
+      if (parent?.tags?.includes('root')) {
+        const isCompetencyRoot = isCompetencyDimensionRoot(child)
+        if (structureMode === 'content' && isCompetencyRoot) {
+          return false
+        }
+        if (structureMode === 'competency' && !isCompetencyRoot) {
+          return false
+        }
+      }
+
       // 2. Filter by Personal Curriculum (Level 2)
       if (child && hasConfig) {
         const config = (child.landscapeId ? personalConfig[child.landscapeId] : undefined) ?? personalConfig[child.id]
@@ -112,7 +131,7 @@ const TreeNode: React.FC<TreeNodeProps> = ({
 
       return true
     })
-  }, [activeFilter, allGoals, personalConfig])
+  }, [activeFilter, allGoals, personalConfig, structureMode])
 
   // Memoize visibleChildren computation to stabilize dependency for sortedChildren
   const visibleChildren = React.useMemo(() => {
@@ -309,6 +328,7 @@ const TreeNode: React.FC<TreeNodeProps> = ({
                 selectedId={selectedId}
                 depth={depth + 1}
                 activeFilter={activeFilter}
+                structureMode={structureMode}
                 aggregatedPlannedGoals={aggregatedPlannedGoals}
                 totalStudents={totalStudents}
                 personalConfig={personalConfig}
@@ -336,6 +356,7 @@ interface CompetenceTreeProps {
   onSelect: (id: string) => void
   selectedId: string
   activeFilter?: string
+  structureMode?: TreeStructureMode
 
   aggregatedPlannedGoals?: Map<string, number>
   totalStudents?: number
@@ -345,7 +366,13 @@ interface CompetenceTreeProps {
   frontierIds?: Set<string>
 }
 
-export const CompetenceTree: React.FC<CompetenceTreeProps> = ({ rootGoals, activeFilter, personalConfig, ...props }) => {
+export const CompetenceTree: React.FC<CompetenceTreeProps> = ({
+  rootGoals,
+  activeFilter,
+  personalConfig,
+  structureMode = 'all',
+  ...props
+}) => {
   // We don't strictly filter root goals by activeFilter, because root goals usually represent 'Structure' (e.g. 'Fächer')
   // and might not have the specific tags (e.g. 'GK') that their children have.
   // We let TreeNode handle the filtering of children.
@@ -359,6 +386,7 @@ export const CompetenceTree: React.FC<CompetenceTreeProps> = ({ rootGoals, activ
           key={g.id}
           goalId={g.id}
           activeFilter={activeFilter}
+          structureMode={structureMode}
           personalConfig={personalConfig}
           hasActivePlan={hasActivePlan}
           isInPlannedSubtree={false}

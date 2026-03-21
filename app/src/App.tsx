@@ -2,7 +2,9 @@ import React, { Suspense, lazy, useEffect, useMemo, useState } from 'react'
 import { Routes, Route, Navigate, useNavigate, useLocation } from 'react-router-dom'
 
 import { SessionSetup } from './components/SessionSetup'
+import { ToastHost } from './components/ToastHost'
 import { useAppCore } from './hooks/useAppCore'
+import { consumeQueuedToast, useToast } from './hooks/useToast'
 import { useTranslation } from './hooks/useTranslation'
 import { useLanguage } from './contexts/LanguageContext'
 
@@ -98,6 +100,7 @@ const App: React.FC = () => {
   const [, setLearnerMeta] = useState<{ lastUpdated: string }>({
     lastUpdated: new Date().toISOString(),
   })
+  const { toast, showToast } = useToast()
   const navigate = useNavigate()
   const location = useLocation()
   // Use window.location as fallback for initial load after OAuth redirect (SPA cache issue)
@@ -125,6 +128,26 @@ const App: React.FC = () => {
 
   const core = useAppCore({ role: role || 'explorer', setLearnerMeta, skillpilotId })
   const { currentLandscapeEntry, goalIndexAll, landscapeEntries } = core
+
+  useEffect(() => {
+    const queuedToast = consumeQueuedToast()
+    if (!queuedToast) return
+    showToast(queuedToast.kind, queuedToast.message)
+  }, [showToast])
+
+  const handleShareContextWithFeedback = React.useCallback(async () => {
+    const result = await core.handleShareContext()
+    showToast(
+      result,
+      result === 'success'
+        ? t.notifications.shareContextCopied
+        : t.notifications.shareContextFailed,
+    )
+  }, [core, showToast, t.notifications.shareContextCopied, t.notifications.shareContextFailed])
+
+  const handleNotify = React.useCallback((kind: 'success' | 'error' | 'info', message: string) => {
+    showToast(kind, message)
+  }, [showToast])
 
   // Handle OAuth success redirect at App level
   // This is needed because after OAuth redirect, the SPA might be loaded from service worker cache
@@ -484,6 +507,8 @@ const App: React.FC = () => {
 
   return (
     <Suspense fallback={<RouteLoadingFallback />}>
+      <>
+        <ToastHost toast={toast} />
       <Routes>
         <Route
           path="/learner/:goalId?"
@@ -497,6 +522,10 @@ const App: React.FC = () => {
               skillpilotId={skillpilotId}
               landscapeId={core.selectedLandscapeId}
               activeFilter={core.activeFilter}
+              structureMode={core.treeStructureMode}
+              onStructureModeChange={core.setTreeStructureMode}
+              onShareContext={handleShareContextWithFeedback}
+              onNotify={handleNotify}
               onLogout={handleLogout}
               availableLandscapes={availableLandscapes}
               rootLandscapeId={core.selectedLandscapeId}
@@ -518,6 +547,10 @@ const App: React.FC = () => {
               currentLearnerId="__ALL__"
               onSelectLearner={() => { }}
               goalShortKeyMap={core.goalShortKeyMap}
+              structureMode={core.treeStructureMode}
+              onStructureModeChange={core.setTreeStructureMode}
+              onShareContext={handleShareContextWithFeedback}
+              onNotify={handleNotify}
               onLogout={handleLogout}
               getMastery={core.getMasteryValue}
             />
@@ -533,6 +566,7 @@ const App: React.FC = () => {
               availableFilters={core.availableFilters}
               onFilterChange={core.setActiveFilter}
               externalRequires={core.externalRequires}
+              onShareContext={handleShareContextWithFeedback}
               currentGoal={core.currentGoal}
               getMastery={core.getMasteryValue}
               onNavigate={core.handleNavigateTo}
@@ -554,6 +588,7 @@ const App: React.FC = () => {
 
         <Route path="/" element={<Navigate to="/explorer" />} />
       </Routes>
+      </>
     </Suspense>
   )
 }

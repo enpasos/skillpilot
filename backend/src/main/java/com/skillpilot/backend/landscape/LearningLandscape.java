@@ -21,6 +21,9 @@ public class LearningLandscape {
     private String region;
     private String schoolType;
     private List<LandscapeFilter> filters;
+    private List<ProgramUnit> programUnits;
+    private List<GoalPlacement> goalPlacements;
+    private List<CompetencyCatalogEntry> competencyCatalog;
     private List<LearningGoal> goals;
 
     public String getLandscapeId() {
@@ -118,6 +121,30 @@ public class LearningLandscape {
 
     public void setFilters(List<LandscapeFilter> filters) {
         this.filters = filters;
+    }
+
+    public List<ProgramUnit> getProgramUnits() {
+        return programUnits;
+    }
+
+    public void setProgramUnits(List<ProgramUnit> programUnits) {
+        this.programUnits = programUnits;
+    }
+
+    public List<GoalPlacement> getGoalPlacements() {
+        return goalPlacements;
+    }
+
+    public void setGoalPlacements(List<GoalPlacement> goalPlacements) {
+        this.goalPlacements = goalPlacements;
+    }
+
+    public List<CompetencyCatalogEntry> getCompetencyCatalog() {
+        return competencyCatalog;
+    }
+
+    public void setCompetencyCatalog(List<CompetencyCatalogEntry> competencyCatalog) {
+        this.competencyCatalog = competencyCatalog;
     }
 
     public List<LearningGoal> getGoals() {

@@ -5,6 +5,7 @@ import { NeighborSection } from '../components/NeighborSection'
 import { GoalCard } from '../components/GoalCard'
 import { ThemeToggle } from '../components/ThemeToggle'
 import { LogoutButton } from '../components/LogoutButton'
+import { Link2 } from 'lucide-react'
 
 import type { NeighborSets } from '../hooks/useCompetenceGraph'
 import { useLanguage } from '../contexts/LanguageContext'
@@ -35,6 +36,7 @@ interface ExplorerViewProps {
   availableFilters?: { id: string; label: string }[]
   onFilterChange: (value: string) => void
   onLogout?: () => void
+  onShareContext?: () => void
   children?: React.ReactNode
   goalIndexAll: Map<string, Goal>
 }
@@ -53,6 +55,7 @@ export const ExplorerView: React.FC<ExplorerViewProps> = ({
   availableFilters = [],
   onFilterChange,
   onLogout,
+  onShareContext,
   children,
   goalIndexAll,
 }) => {
@@ -141,6 +144,17 @@ export const ExplorerView: React.FC<ExplorerViewProps> = ({
           </div>
 
           <div className="flex items-center gap-4">
+            {onShareContext && (
+              <button
+                type="button"
+                onClick={onShareContext}
+                className="p-2 rounded-lg border border-border-color text-text-secondary hover:bg-sky-50 dark:hover:bg-sky-900/30 hover:border-sky-300 dark:hover:border-sky-700 hover:text-sky-600 dark:hover:text-sky-400 transition-colors"
+                title={t.shareContext}
+                aria-label={t.shareContext}
+              >
+                <Link2 size={16} />
+              </button>
+            )}
             <ThemeToggle />
             {onLogout && (
               <LogoutButton onLogout={onLogout} />

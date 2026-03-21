@@ -9,9 +9,24 @@ import { useGoalIndex } from './useGoalIndex'
 import { useLearnerProgress } from './useLearnerProgress'
 import { useMasteryCalculation } from './useMasteryCalculation'
 import { useLanguage } from '../contexts/LanguageContext'
-import { goalMatchesFilter } from '../utils/goalFilters'
+import { goalMatchesFilter, isWildcardFilter } from '../utils/goalFilters'
+import { applyGoalPlacementProjection } from '../utils/goalPlacementProjection'
+import { applyCompetencyAxisProjection } from '../utils/goalCompetencyProjection'
 
 type Role = 'learner' | 'trainer' | 'explorer'
+type TreeStructureMode = 'all' | 'content' | 'competency'
+const DEFAULT_TREE_STRUCTURE_MODE: TreeStructureMode = 'all'
+const DEFAULT_ACTIVE_FILTER = 'all'
+const isTreeStructureMode = (value: string | null): value is TreeStructureMode =>
+  value === 'all' || value === 'content' || value === 'competency'
+const normalizeActiveFilter = (
+  value: string | null | undefined,
+  availableFilters: { id: string }[],
+) => {
+  const wildcardFilterId = availableFilters.find((filter) => isWildcardFilter(filter.id))?.id ?? DEFAULT_ACTIVE_FILTER
+  if (!value || isWildcardFilter(value)) return wildcardFilterId
+  return availableFilters.some((filter) => filter.id === value) ? value : wildcardFilterId
+}
 
 interface AppCoreOptions {
   role: Role
@@ -31,6 +46,10 @@ export function useAppCore({ role, setLearnerMeta, skillpilotId }: AppCoreOption
   // Manage selectedLandscapeId state here
   const [selectedLandscapeId, setSelectedLandscapeId] = React.useState<string>(() => {
     return searchParams.get('l') ?? ''
+  })
+  const [treeStructureMode, setTreeStructureMode] = React.useState<TreeStructureMode>(() => {
+    const fromUrl = searchParams.get('sm')
+    return isTreeStructureMode(fromUrl) ? fromUrl : DEFAULT_TREE_STRUCTURE_MODE
   })
 
   // Sync from URL if it changes externally
@@ -53,6 +72,27 @@ export function useAppCore({ role, setLearnerMeta, skillpilotId }: AppCoreOption
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedLandscapeId])
 
+  useEffect(() => {
+    const fromUrl = searchParams.get('sm')
+    const nextMode = isTreeStructureMode(fromUrl) ? fromUrl : DEFAULT_TREE_STRUCTURE_MODE
+    if (nextMode !== treeStructureMode) {
+      setTreeStructureMode(nextMode)
+    }
+  }, [location.search, searchParams, treeStructureMode])
+
+  useEffect(() => {
+    const current = searchParams.get('sm')
+    const normalizedCurrent = isTreeStructureMode(current) ? current : DEFAULT_TREE_STRUCTURE_MODE
+    if (normalizedCurrent === treeStructureMode) return
+    const next = new URLSearchParams(searchParams)
+    if (treeStructureMode === DEFAULT_TREE_STRUCTURE_MODE) {
+      next.delete('sm')
+    } else {
+      next.set('sm', treeStructureMode)
+    }
+    setSearchParams(next, { replace: true })
+  }, [searchParams, setSearchParams, treeStructureMode])
+
 
 
 
@@ -71,17 +111,54 @@ export function useAppCore({ role, setLearnerMeta, skillpilotId }: AppCoreOption
   } = useLearnerProgress({ landscapeEntries, selectedLandscapeId, skillpilotId })
 
   useEffect(() => {
-    const targetFilter = searchParams.get('f')
-    if (targetFilter) {
-      setActiveFilter(targetFilter)
+    if (!currentLandscapeEntry) return
+    const nextFilter = normalizeActiveFilter(searchParams.get('f'), currentLandscapeEntry.meta.filters ?? [])
+    if (nextFilter !== activeFilter) {
+      setActiveFilter(nextFilter)
     }
-  }, [searchParams, setActiveFilter])
+  }, [activeFilter, currentLandscapeEntry, searchParams, setActiveFilter])
 
-  const goals = useMemo(() => currentLandscapeEntry?.goals ?? [], [currentLandscapeEntry])
+  useEffect(() => {
+    if (!currentLandscapeEntry) return
+    const availableFilters = currentLandscapeEntry.meta.filters ?? []
+    const normalizedFilter = normalizeActiveFilter(activeFilter, availableFilters)
+    if (normalizedFilter !== activeFilter) {
+      setActiveFilter(normalizedFilter)
+      return
+    }
+
+    const currentFilterParam = searchParams.get('f')
+    const next = new URLSearchParams(searchParams)
+    if (isWildcardFilter(normalizedFilter)) {
+      if (!currentFilterParam) return
+      next.delete('f')
+    } else {
+      if (currentFilterParam === normalizedFilter) return
+      next.set('f', normalizedFilter)
+    }
+    setSearchParams(next, { replace: true })
+  }, [activeFilter, currentLandscapeEntry, searchParams, setActiveFilter, setSearchParams])
+
+  const projectedLandscapeEntries = useMemo(
+    () => applyCompetencyAxisProjection(
+      applyGoalPlacementProjection(landscapeEntries, activeFilter),
+      activeFilter,
+    ),
+    [landscapeEntries, activeFilter],
+  )
+
+  const projectedCurrentLandscapeEntry = useMemo(() => {
+    const targetLandscapeId = currentLandscapeEntry?.meta.landscapeId ?? selectedLandscapeId
+    return projectedLandscapeEntries.find((entry) => entry.meta.landscapeId === targetLandscapeId)
+      ?? projectedLandscapeEntries[0]
+      ?? null
+  }, [currentLandscapeEntry, projectedLandscapeEntries, selectedLandscapeId])
+
+  const goals = useMemo(() => projectedCurrentLandscapeEntry?.goals ?? [], [projectedCurrentLandscapeEntry])
 
   const allGoalsGlobal = useMemo(
-    () => landscapeEntries.flatMap((entry) => entry.goals),
-    [landscapeEntries],
+    () => projectedLandscapeEntries.flatMap((entry) => entry.goals),
+    [projectedLandscapeEntries],
   )
   const { goalIndexAll, parentMapAll, globalRootGoals } = useGoalIndex(allGoalsGlobal)
 
@@ -209,11 +286,18 @@ export function useAppCore({ role, setLearnerMeta, skillpilotId }: AppCoreOption
     [navigate, searchParams, setSearchParams],
   )
 
-  const handleShareContext = () => {
-    const url = new URL(window.location.href)
-    navigator.clipboard.writeText(url.toString()).catch(() => { })
-    window.alert('Link kopiert. Teilen Sie ihn mit Ihrer Lerngruppe.')
-  }
+  const handleShareContext = useCallback(async (): Promise<'success' | 'error'> => {
+    try {
+      if (!navigator.clipboard?.writeText) {
+        return 'error'
+      }
+      const url = new URL(window.location.href)
+      await navigator.clipboard.writeText(url.toString())
+      return 'success'
+    } catch {
+      return 'error'
+    }
+  }, [])
   const filteredRootGoals = useMemo(() => {
     const relevantRoots = globalRootGoals
     return relevantRoots.filter(matchesActiveFilter)
@@ -248,6 +332,8 @@ export function useAppCore({ role, setLearnerMeta, skillpilotId }: AppCoreOption
     currentLandscapeEntry,
     activeFilter,
     setActiveFilter,
+    treeStructureMode,
+    setTreeStructureMode,
     currentGoal,
     goalIndexAll,
     getMasteryValue,

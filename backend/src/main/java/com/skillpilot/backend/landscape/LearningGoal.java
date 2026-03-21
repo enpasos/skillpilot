@@ -21,6 +21,7 @@ public class LearningGoal {
     private java.util.Map<String, java.util.List<String>> applicability;
     private String sourceRef;
     private List<java.util.Map<String, Object>> resourceLinks;
+    private List<String> competencyRefs;
     private java.util.Map<String, Object> extendedData;
     private ReleaseMetadata release;
     // Explicit node type ("atomic" | "cluster"), optional for backward compatibility
@@ -170,6 +171,14 @@ public class LearningGoal {
 
     public void setResourceLinks(List<java.util.Map<String, Object>> resourceLinks) {
         this.resourceLinks = resourceLinks;
+    }
+
+    public List<String> getCompetencyRefs() {
+        return competencyRefs;
+    }
+
+    public void setCompetencyRefs(List<String> competencyRefs) {
+        this.competencyRefs = competencyRefs;
     }
 
     public String getType() {

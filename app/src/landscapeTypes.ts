@@ -1,5 +1,46 @@
 export type DemandLevel = 'AB1' | 'AB2' | 'AB3'
 
+export type ProgramUnitKind =
+  | 'program'
+  | 'stage'
+  | 'year'
+  | 'phase'
+  | 'semester'
+  | 'module'
+  | 'track'
+  | 'exam'
+
+export interface ProgramUnit {
+  id: string
+  kind: ProgramUnitKind
+  label: string
+  shortLabel?: string
+  order?: number
+  parentUnitId?: string
+}
+
+export interface GoalPlacementContext {
+  schoolForm?: string
+  stage?: string
+  jurisdiction?: string
+  durationModel?: string
+  courseProfile?: string
+  [key: string]: string | undefined
+}
+
+export interface GoalPlacement {
+  goalId: string
+  unitId: string
+  relation: 'primary' | 'secondary' | 'assessed'
+  context?: GoalPlacementContext
+}
+
+export interface CompetencyCatalogEntry {
+  id: string
+  label: string
+  dimension: string
+}
+
 export interface DimensionTags {
   framework: string
   demandLevel: DemandLevel
@@ -83,6 +124,7 @@ export interface LearningGoal {
   sourceRef?: string
   resourceLinks?: ResourceLink[]
   applicability?: ApplicabilityMap
+  competencyRefs?: string[]
   extendedData?: Record<string, unknown>
   release?: ReleaseMetadata
   examData?: ExamData
@@ -105,5 +147,8 @@ export interface LearningLandscape {
   compatibilityOnly?: boolean
   legacyHiddenByDefault?: boolean
   filters?: LandscapeFilter[]
+  programUnits?: ProgramUnit[]
+  goalPlacements?: GoalPlacement[]
+  competencyCatalog?: CompetencyCatalogEntry[]
   goals: LearningGoal[]
 }

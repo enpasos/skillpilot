@@ -73,6 +73,27 @@
         }
       }
     },
+    "programUnits": {
+      "type": "array",
+      "description": "Optional structural program units used for projected entry-scope views such as years, phases, semesters, or modules.",
+      "items": {
+        "$ref": "#/$defs/programUnit"
+      }
+    },
+    "goalPlacements": {
+      "type": "array",
+      "description": "Optional placements that attach goals to structural program units.",
+      "items": {
+        "$ref": "#/$defs/goalPlacement"
+      }
+    },
+    "competencyCatalog": {
+      "type": "array",
+      "description": "Optional catalog of orthogonal competency-axis entries such as process competencies.",
+      "items": {
+        "$ref": "#/$defs/competencyCatalogEntry"
+      }
+    },
     "goals": {
       "type": "array",
       "items": {
@@ -127,6 +148,13 @@
           "description": "Canonical helpful learning resources for this goal, ordered by pedagogical priority.",
           "items": {
             "$ref": "#/$defs/resourceLink"
+          }
+        },
+        "competencyRefs": {
+          "type": "array",
+          "description": "Optional references into the top-level competencyCatalog for projected competency views.",
+          "items": {
+            "type": "string"
           }
         },
         "core": {
@@ -313,6 +341,84 @@
               }
             }
           }
+        }
+      }
+    },
+    "programUnit": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": [
+        "id",
+        "kind",
+        "label"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "kind": {
+          "type": "string",
+          "description": "Structural unit kind such as program, stage, year, phase, semester, module, track, or exam."
+        },
+        "label": {
+          "type": "string"
+        },
+        "shortLabel": {
+          "type": "string"
+        },
+        "order": {
+          "type": "number"
+        },
+        "parentUnitId": {
+          "type": "string"
+        }
+      }
+    },
+    "goalPlacement": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": [
+        "goalId",
+        "unitId",
+        "relation"
+      ],
+      "properties": {
+        "goalId": {
+          "type": "string"
+        },
+        "unitId": {
+          "type": "string"
+        },
+        "relation": {
+          "type": "string",
+          "description": "Placement relation such as primary, secondary, or assessed."
+        },
+        "context": {
+          "type": "object",
+          "description": "Optional reviewed placement context used for entry-scope projection such as jurisdiction, duration model, or course profile.",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "competencyCatalogEntry": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": [
+        "id",
+        "label",
+        "dimension"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "label": {
+          "type": "string"
+        },
+        "dimension": {
+          "type": "string"
         }
       }
     },

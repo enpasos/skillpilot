@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { CompetenceTree } from '../components/CompetenceTree'
+import type { TreeStructureMode } from '../components/CompetenceTree'
 import { GoalCard } from '../components/GoalCard'
 import { NeighborSection } from '../components/NeighborSection'
 import { ClassSetup } from '../components/ClassSetup'
@@ -12,10 +13,11 @@ import type { UiGoal } from '../goalTypes'
 import type { ClassSession } from '../trainerTypes'
 import type { MasteryMap } from '../learnerTypes'
 
-import { Save, Trash2 } from 'lucide-react'
+import { Save, Trash2, Link2 } from 'lucide-react'
 import { useLanguage } from '../contexts/LanguageContext'
 import { en } from '../locales/en'
 import { de } from '../locales/de'
+import type { ToastKind } from '../hooks/useToast'
 
 const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
 const toApi = (path: string) => (apiBase ? `${apiBase}${path}` : path)
@@ -29,7 +31,11 @@ interface TrainerViewProps {
   currentLearnerId: string
   onSelectLearner: (id: string) => void
   goalShortKeyMap: Map<string, string>
+  structureMode?: TreeStructureMode
+  onStructureModeChange?: (mode: TreeStructureMode) => void
   onLogout?: () => void
+  onShareContext?: () => void
+  onNotify?: (kind: ToastKind, message: string) => void
 }
 
 export const TrainerView: React.FC<TrainerViewProps> = ({
@@ -40,11 +46,16 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
   currentLearnerId,
   onSelectLearner,
   goalShortKeyMap,
+  structureMode = 'all',
+  onStructureModeChange = () => {},
   onLogout,
+  onShareContext,
+  onNotify,
 }) => {
   const { language } = useLanguage()
   const t = language === 'en' ? en.trainer : de.trainer
   const tExp = language === 'en' ? en.explorer : de.explorer
+  const notifications = language === 'en' ? en.notifications : de.notifications
   const [classes, setClasses] = useState<ClassSession[]>([])
   const [activeClassId, setActiveClassId] = useState<string | null>(null)
   const [isCreating, setIsCreating] = useState(false)
@@ -84,6 +95,20 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
     () => rootGoals.filter((g) => !activeClass || g.landscapeId === activeClass.landscapeId),
     [activeClass, rootGoals],
   )
+  const hasCompetencyStructure = useMemo(
+    () => classRootGoals.some((rootGoal) =>
+      (rootGoal.contains ?? []).some((childId) =>
+        goalIndexAll.get(childId)?.tags?.includes('competency-axis:dimension-root'),
+      ),
+    ),
+    [classRootGoals, goalIndexAll],
+  )
+  useEffect(() => {
+    if (structureMode !== 'competency' || hasCompetencyStructure) {
+      return
+    }
+    onStructureModeChange('all')
+  }, [hasCompetencyStructure, onStructureModeChange, structureMode])
   const landscapeGoals = useMemo(
     () => Array.from(goalIndexAll.values()).filter((g) => !activeClass || g.landscapeId === activeClass.landscapeId),
     [activeClass, goalIndexAll],
@@ -375,6 +400,7 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
     a.click()
     document.body.removeChild(a)
     URL.revokeObjectURL(url)
+    onNotify?.('success', notifications.classExported)
   }
 
   const handleDeleteClass = (e: React.MouseEvent, id: string, name: string) => {
@@ -427,6 +453,7 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
             localStorage.setItem('skillpilot_classes', JSON.stringify(next))
             return next
           })
+          onNotify?.('success', notifications.classImported)
           setConfirmation({ isOpen: false, title: '', message: '', onConfirm: () => { } })
         }
         const idx = classes.findIndex((c) => c.id === session.id)
@@ -443,7 +470,10 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
         }
       } catch (err) {
         console.error(err)
-        window.alert('Fehler beim Importieren: ' + (err as Error).message)
+        onNotify?.(
+          'error',
+          `${notifications.classImportFailed}: ${(err as Error).message}`,
+        )
       }
       if (fileInputRef.current) fileInputRef.current.value = ''
     }
@@ -475,6 +505,17 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
             <button onClick={() => fileInputRef.current?.click()} className="border border-border-color hover:bg-gray-200 dark:hover:bg-slate-800 px-4 py-2 rounded-lg text-text-secondary transition-colors">{t.import}</button>
             <input type="file" ref={fileInputRef} onChange={handleImportClass} hidden accept=".json" />
             <button onClick={() => setIsCreating(true)} className="bg-sky-600 hover:bg-sky-500 px-6 py-2 rounded-lg font-medium transition-colors text-white">+ {t.newClass}</button>
+            {onShareContext && (
+              <button
+                type="button"
+                onClick={onShareContext}
+                className="border border-border-color hover:bg-sky-50 dark:hover:bg-sky-900/30 hover:border-sky-300 dark:hover:border-sky-700 px-4 py-2 rounded-lg text-text-secondary hover:text-sky-600 dark:hover:text-sky-400 transition-colors"
+                title={t.shareContext}
+                aria-label={t.shareContext}
+              >
+                <Link2 size={16} />
+              </button>
+            )}
             {onLogout && (
               <LogoutButton
                 onLogout={onLogout}
@@ -531,9 +572,22 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
             <button onClick={() => setActiveClassId(null)} className="text-xs text-text-secondary hover:text-text-primary mb-2">← {t.allClasses}</button>
             <h2 className="font-bold text-sky-600 dark:text-sky-400 truncate" title={activeClass.name}>{activeClass.name}</h2>
           </div>
-          {onLogout && (
-            <LogoutButton onLogout={onLogout} className="text-text-secondary hover:text-rose-600 dark:hover:text-rose-400" />
-          )}
+          <div className="flex items-center gap-2">
+            {onShareContext && (
+              <button
+                type="button"
+                onClick={onShareContext}
+                className="p-2 rounded-lg border border-border-color text-text-secondary hover:bg-sky-50 dark:hover:bg-sky-900/30 hover:border-sky-300 dark:hover:border-sky-700 hover:text-sky-600 dark:hover:text-sky-400 transition-colors"
+                title={t.shareContext}
+                aria-label={t.shareContext}
+              >
+                <Link2 size={16} />
+              </button>
+            )}
+            {onLogout && (
+              <LogoutButton onLogout={onLogout} className="text-text-secondary hover:text-rose-600 dark:hover:text-rose-400" />
+            )}
+          </div>
         </div>
 
         <div className="flex-1 overflow-y-auto p-2 space-y-1">
@@ -560,9 +614,40 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
               className="font-medium text-text-primary truncate mb-2"
             />
           )}
+          {hasCompetencyStructure && (
+            <div className="mt-3">
+              <div className="text-[10px] uppercase tracking-wide text-text-secondary font-bold mb-2">
+                {t.structureMode}
+              </div>
+              <div className="inline-flex rounded-lg border border-border-color overflow-hidden bg-chat-bg/40">
+                {([
+                  ['all', t.structureAll],
+                  ['content', t.structureContent],
+                  ['competency', t.structureCompetencies],
+                ] as const).map(([mode, label]) => {
+                  const isActive = structureMode === mode
+                  return (
+                    <button
+                      key={mode}
+                      type="button"
+                      onClick={() => onStructureModeChange(mode)}
+                      className={`px-3 py-1.5 text-xs font-medium transition-colors ${
+                        isActive
+                          ? 'bg-sky-600 text-white'
+                          : 'text-text-secondary hover:bg-slate-200 dark:hover:bg-slate-800/60'
+                      }`}
+                    >
+                      {label}
+                    </button>
+                  )
+                })}
+              </div>
+            </div>
+          )}
         </div>
         <div className="flex-1 p-2 overflow-y-auto">
           <CompetenceTree
+            key={`trainer-competence-tree-${activeClass?.id ?? 'none'}-${structureMode}`}
             rootGoals={classRootGoals}
             allGoals={goalIndexAll}
             getMastery={getStudentMastery}
@@ -571,6 +656,7 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
             onSelect={handleSelectGoal}
             selectedId={selectedGoalId}
             activeFilter={currentLearnerId === '__ALL__' ? 'all' : activeClass.activeFilter}
+            structureMode={structureMode}
             aggregatedPlannedGoals={aggregatedPlannedGoals}
             totalStudents={activeClass.students.length}
           />

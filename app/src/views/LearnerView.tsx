@@ -3,8 +3,9 @@ import { useLocation } from 'react-router-dom'
 import { useLearnerUpdates } from '../hooks/useLearnerUpdates'
 import { useTranslation } from '../hooks/useTranslation'
 import { CompetenceTree } from '../components/CompetenceTree'
+import type { TreeStructureMode } from '../components/CompetenceTree'
 import { PersonalCurriculumSetup } from '../components/PersonalCurriculumSetup'
-import { Settings, Upload, Download, Menu, X, Target, Send, Check, MoveRight } from 'lucide-react'
+import { Settings, Upload, Download, Menu, X, Target, Send, Check, MoveRight, Link2 } from 'lucide-react'
 import { ThemeToggle } from '../components/ThemeToggle'
 import { InfoModal } from '../components/InfoModal'
 import { LogoutButton } from '../components/LogoutButton'
@@ -29,6 +30,8 @@ import {
   saveAbi26CampaignContext,
 } from '../utils/abi26MatheCampaign'
 import { trackCampaignEvent } from '../utils/campaignTracking'
+import type { ToastKind } from '../hooks/useToast'
+import { queueToastForNextLoad } from '../hooks/useToast'
 
 import type { UiGoal } from '../goalTypes'
 import type { Learner, FrontierGoal } from '../learnerTypes'
@@ -42,7 +45,11 @@ interface LearnerViewProps {
   skillpilotId: string
   landscapeId: string
   activeFilter?: string
+  structureMode?: TreeStructureMode
+  onStructureModeChange?: (mode: TreeStructureMode) => void
   onLogout?: () => void
+  onShareContext?: () => void
+  onNotify?: (kind: ToastKind, message: string) => void
   availableLandscapes?: { landscapeId: string; title: string; filters?: { id: string; label: string }[]; compatibilityOnly?: boolean }[]
   rootLandscapeId?: string
   onRefresh?: () => void
@@ -248,7 +255,11 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   skillpilotId,
   landscapeId,
   activeFilter = 'all',
+  structureMode = 'all',
+  onStructureModeChange = () => {},
   onLogout,
+  onShareContext,
+  onNotify,
   availableLandscapes = [],
   rootLandscapeId,
   onRefresh,
@@ -291,6 +302,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   const srsCompletionInFlightRef = useRef<Set<string>>(new Set())
   const fullRefreshInFlightRef = useRef(false)
   const lastFullRefreshAtRef = useRef(0)
+  const reportedLoadErrorsRef = useRef<Set<string>>(new Set())
 
   const { language, setLanguage } = useLanguage();
   const t = useTranslation();
@@ -317,6 +329,21 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   const effectiveActiveGoalId = stateActiveGoalId ?? learnerData?.activeGoalId ?? null
   const hasTrackedCampaignOpenRef = useRef(false)
   const hasAppliedCampaignFilterRef = useRef(false)
+
+  const notifyLoadErrorOnce = useCallback((key: string, message: string) => {
+    if (!onNotify) return
+    if (reportedLoadErrorsRef.current.has(key)) return
+    reportedLoadErrorsRef.current.add(key)
+    onNotify('error', message)
+  }, [onNotify])
+
+  const clearReportedLoadError = useCallback((key: string) => {
+    reportedLoadErrorsRef.current.delete(key)
+  }, [])
+
+  useEffect(() => {
+    reportedLoadErrorsRef.current.clear()
+  }, [skillpilotId])
 
   const getSrsSource = useCallback((goal: UiGoal) => {
     const extendedData = goal.extendedData as {
@@ -371,6 +398,21 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   const visibleRootGoals = useMemo(() => {
     return currentLandscapeRootGoals
   }, [currentLandscapeRootGoals])
+
+  const hasCompetencyStructure = useMemo(() => {
+    return visibleRootGoals.some((rootGoal) =>
+      (rootGoal.contains ?? []).some((childId) =>
+        goalIndexAll.get(childId)?.tags?.includes('competency-axis:dimension-root'),
+      ),
+    )
+  }, [goalIndexAll, visibleRootGoals])
+
+  useEffect(() => {
+    if (structureMode !== 'competency' || hasCompetencyStructure) {
+      return
+    }
+    onStructureModeChange('all')
+  }, [hasCompetencyStructure, onStructureModeChange, structureMode])
 
   // Determine effective active filter based on personal config for current landscape
   const supportedFilterIds = useMemo(() => {
@@ -743,11 +785,15 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
       if (res.ok) {
         const data = await res.json()
         setLearnerData(data)
+        clearReportedLoadError('learner-initial-load')
+        return
       }
+      notifyLoadErrorOnce('learner-initial-load', t.notifications.learnerInitialLoadFailed)
     } catch (e) {
       console.warn('Failed to load learner data', e)
+      notifyLoadErrorOnce('learner-initial-load', t.notifications.learnerInitialLoadFailed)
     }
-  }, [skillpilotId])
+  }, [clearReportedLoadError, notifyLoadErrorOnce, skillpilotId, t.notifications.learnerInitialLoadFailed])
 
   const isUpperLegacyHessenSession = useMemo(() => {
     const selectedCurriculum = learnerData?.selectedCurriculum
@@ -1195,6 +1241,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
               personalizedTotalAtomic: data.goals.personalized?.total_atomic,
             })
           }
+          clearReportedLoadError('learner-initial-load')
           return
         }
         if (res.status === 409) {
@@ -1203,12 +1250,16 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
           setStateActiveGoalId(null)
           setStateRequiredAction('compatibilityArchive')
           setBackendStats(null)
+          clearReportedLoadError('learner-initial-load')
+          return
         }
+        notifyLoadErrorOnce('learner-initial-load', t.notifications.learnerInitialLoadFailed)
       } catch (e) {
         console.warn('Failed to load learner state', e)
+        notifyLoadErrorOnce('learner-initial-load', t.notifications.learnerInitialLoadFailed)
       }
     },
-    [skillpilotId],
+    [clearReportedLoadError, notifyLoadErrorOnce, skillpilotId, t.notifications.learnerInitialLoadFailed],
 
   )
 
@@ -1223,11 +1274,15 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
         if (data.goals && Array.isArray(data.goals)) {
           setPlannedGoals(new Set(data.goals))
         }
+        clearReportedLoadError('learner-initial-load')
+        return
       }
+      notifyLoadErrorOnce('learner-initial-load', t.notifications.learnerInitialLoadFailed)
     } catch (e) {
       console.warn('Failed to load planned goals', e)
+      notifyLoadErrorOnce('learner-initial-load', t.notifications.learnerInitialLoadFailed)
     }
-  }, [skillpilotId])
+  }, [clearReportedLoadError, notifyLoadErrorOnce, skillpilotId, t.notifications.learnerInitialLoadFailed])
 
   const [srsReloadCounter, setSrsReloadCounter] = useState(0)
 
@@ -1371,17 +1426,33 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
         onRefresh?.()
       } else {
         const message = await res.text()
-        setModalTitle(language === 'de' ? 'Aktion nicht möglich' : 'Action not allowed')
-        setModalMessage(message || (language === 'de'
-          ? 'Dieses Ziel ist nicht im aktuellen Frontier.'
-          : 'This goal is not in the current frontier.'))
-        setModalType('error')
-        setIsModalOpen(true)
+        if (onNotify) {
+          onNotify('error', message || t.notifications.activeGoalSetFailed)
+        } else {
+          setModalTitle(language === 'de' ? 'Aktion nicht möglich' : 'Action not allowed')
+          setModalMessage(message || (language === 'de'
+            ? 'Dieses Ziel ist nicht im aktuellen Frontier.'
+            : 'This goal is not in the current frontier.'))
+          setModalType('error')
+          setIsModalOpen(true)
+        }
       }
     } catch (e) {
       console.warn('Failed to set active goal', e)
+      onNotify?.('error', t.notifications.activeGoalSetSystemFailed)
     }
-  }, [isCompatibilityAuditOnly, skillpilotId, onRefresh, parentMap, selectedId, onSelectGoal, language])
+  }, [
+    isCompatibilityAuditOnly,
+    language,
+    onNotify,
+    onRefresh,
+    onSelectGoal,
+    parentMap,
+    selectedId,
+    skillpilotId,
+    t.notifications.activeGoalSetFailed,
+    t.notifications.activeGoalSetSystemFailed,
+  ])
 
   const togglePlan = useCallback(async (id: string) => {
     if (isCompatibilityAuditOnly) {
@@ -1399,6 +1470,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     // If clicking the ALREADY selected goal -> Deselect it (Set empty)
     // If clicking a NEW goal -> Select only that one (Set with 1 item)
     let next: Set<string>;
+    const previousPlannedGoals = new Set(plannedGoals)
 
     if (plannedGoals.has(id)) {
       next = new Set();
@@ -1412,17 +1484,29 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     try {
       const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
       const url = apiBase ? `${apiBase}/api/ui/learners/${skillpilotId}/planned` : `/api/ui/learners/${skillpilotId}/planned`
-      await fetch(url, {
+      const res = await fetch(url, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ goals: Array.from(next) })
       })
+      if (!res.ok) {
+        throw new Error(`planned-goal-save-failed:${res.status}`)
+      }
       await refreshState(true)
     } catch (e) {
       console.warn('Failed to save planned goals', e)
-      // Revert on error? For now, just warn.
+      setPlannedGoals(previousPlannedGoals)
+      onNotify?.('error', t.notifications.plannedGoalSaveFailed)
     }
-  }, [isCompatibilityAuditOnly, language, plannedGoals, skillpilotId, refreshState])
+  }, [
+    isCompatibilityAuditOnly,
+    language,
+    onNotify,
+    plannedGoals,
+    refreshState,
+    skillpilotId,
+    t.notifications.plannedGoalSaveFailed,
+  ])
 
   // Load personal config from backend
   React.useEffect(() => {
@@ -1450,14 +1534,26 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
               })
             }
           }
+          clearReportedLoadError('learner-initial-load')
+          return
         }
+        notifyLoadErrorOnce('learner-initial-load', t.notifications.learnerInitialLoadFailed)
       } catch (e) {
         console.warn('Failed to load personal curriculum', e)
+        notifyLoadErrorOnce('learner-initial-load', t.notifications.learnerInitialLoadFailed)
       }
     }
     fetchConfig()
     refreshState()
-  }, [skillpilotId, refreshState, availableLandscapes, rootLandscapeId])
+  }, [
+    availableLandscapes,
+    clearReportedLoadError,
+    notifyLoadErrorOnce,
+    refreshState,
+    rootLandscapeId,
+    skillpilotId,
+    t.notifications.learnerInitialLoadFailed,
+  ])
 
   // Check mobile state
   const [isMobile, setIsMobile] = useState(false)
@@ -1497,21 +1593,33 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
 
   // Save personal config to backend
   const handleConfigChange = useCallback(async (newConfig: PersonalCurriculumConfig) => {
+    const previousConfig = personalConfig
     setPersonalConfig(newConfig)
     if (!skillpilotId) return
     try {
       const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
       const url = apiBase ? `${apiBase}/api/ui/learners/${skillpilotId}/personal-curriculum` : `/api/ui/learners/${skillpilotId}/personal-curriculum`
-      await fetch(url, {
+      const res = await fetch(url, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(newConfig)
       })
+      if (!res.ok) {
+        throw new Error(`personal-curriculum-save-failed:${res.status}`)
+      }
       await refreshState(true)
     } catch (e) {
       console.warn('Failed to save personal curriculum', e)
+      setPersonalConfig(previousConfig)
+      onNotify?.('error', t.notifications.personalCurriculumSaveFailed)
     }
-  }, [skillpilotId, refreshState])
+  }, [
+    onNotify,
+    personalConfig,
+    refreshState,
+    skillpilotId,
+    t.notifications.personalCurriculumSaveFailed,
+  ])
 
   const handleCutoverCanonicalGymnasium = useCallback(async () => {
     if (!skillpilotId || isCutoverPending) return
@@ -1627,23 +1735,42 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
 
   // Save preferences to backend
   const handlePreferencesChange = useCallback(async (strategy: 'RANDOM' | 'SEQUENTIAL', autoPilot: boolean, strictMode: boolean) => {
+    const previousPreferences = learnerData
+      ? {
+          learningStrategy: learnerData.learningStrategy,
+          autoPilot: learnerData.autoPilot,
+          strictMode: learnerData.strictMode,
+        }
+      : null
     setLearnerData(prev => prev ? { ...prev, learningStrategy: strategy, autoPilot, strictMode } : null)
 
     if (!skillpilotId) return
     try {
       const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
       const url = apiBase ? `${apiBase}/api/ui/learners/${skillpilotId}/preferences` : `/api/ui/learners/${skillpilotId}/preferences`
-      await fetch(url, {
+      const res = await fetch(url, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ learningStrategy: strategy, autoPilot, strictMode })
       })
+      if (!res.ok) {
+        throw new Error(`preferences-save-failed:${res.status}`)
+      }
       // Refresh state to reflect strict mode changes in frontier
       await refreshState(true)
     } catch (e) {
       console.warn('Failed to save preferences', e)
+      if (previousPreferences) {
+        setLearnerData(prev => prev ? {
+          ...prev,
+          learningStrategy: previousPreferences.learningStrategy,
+          autoPilot: previousPreferences.autoPilot,
+          strictMode: previousPreferences.strictMode,
+        } : prev)
+      }
+      onNotify?.('error', t.notifications.preferencesSaveFailed)
     }
-  }, [skillpilotId, refreshState])
+  }, [learnerData, onNotify, refreshState, skillpilotId, t.notifications.preferencesSaveFailed])
 
   // Save preferences to backend
 
@@ -1672,16 +1799,20 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
       const res = await fetch(url)
       if (!res.ok) {
         const message = await res.text()
-        setModalTitle(language === 'de' ? 'Archivexport fehlgeschlagen' : 'Archive export failed')
-        setModalMessage(
-          message || (
-            language === 'de'
-              ? 'Das Kompatibilitaetsarchiv konnte nicht erstellt werden.'
-              : 'Could not create the compatibility archive.'
-          ),
-        )
-        setModalType('error')
-        setIsModalOpen(true)
+        if (onNotify) {
+          onNotify('error', message || t.notifications.compatibilityArchiveExportFailed)
+        } else {
+          setModalTitle(language === 'de' ? 'Archivexport fehlgeschlagen' : 'Archive export failed')
+          setModalMessage(
+            message || (
+              language === 'de'
+                ? 'Das Kompatibilitaetsarchiv konnte nicht erstellt werden.'
+                : 'Could not create the compatibility archive.'
+            ),
+          )
+          setModalType('error')
+          setIsModalOpen(true)
+        }
         return
       }
 
@@ -1709,28 +1840,44 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
       }
 
       downloadJsonPayload(exportPayload, 'compatibility_archive')
-      setModalTitle(language === 'de' ? 'Archiv erstellt' : 'Archive created')
-      setModalMessage(
-        language === 'de'
-          ? 'Die eingefrorene Hessen-Kompatibilitaetsansicht wurde als Archiv exportiert.'
-          : 'The frozen Hesse compatibility view was exported as an archive.',
-      )
-      setModalType('success')
-      setIsModalOpen(true)
+      if (onNotify) {
+        onNotify('success', t.notifications.compatibilityArchiveExported)
+      } else {
+        setModalTitle(language === 'de' ? 'Archiv erstellt' : 'Archive created')
+        setModalMessage(
+          language === 'de'
+            ? 'Die eingefrorene Hessen-Kompatibilitaetsansicht wurde als Archiv exportiert.'
+            : 'The frozen Hesse compatibility view was exported as an archive.',
+        )
+        setModalType('success')
+        setIsModalOpen(true)
+      }
     } catch (e) {
       console.error('Compatibility archive export error', e)
-      setModalTitle(language === 'de' ? 'Archivexport fehlgeschlagen' : 'Archive export failed')
-      setModalMessage(
-        language === 'de'
-          ? 'Waehrend des Archivexports ist ein Netzwerk- oder Systemfehler aufgetreten.'
-          : 'A network or system error occurred during archive export.',
-      )
-      setModalType('error')
-      setIsModalOpen(true)
+      if (onNotify) {
+        onNotify('error', t.notifications.compatibilityArchiveExportFailed)
+      } else {
+        setModalTitle(language === 'de' ? 'Archivexport fehlgeschlagen' : 'Archive export failed')
+        setModalMessage(
+          language === 'de'
+            ? 'Waehrend des Archivexports ist ein Netzwerk- oder Systemfehler aufgetreten.'
+            : 'A network or system error occurred during archive export.',
+        )
+        setModalType('error')
+        setIsModalOpen(true)
+      }
     } finally {
       setIsCompatibilityArchivePending(false)
     }
-  }, [downloadJsonPayload, isCompatibilityArchivePending, language, skillpilotId])
+  }, [
+    downloadJsonPayload,
+    isCompatibilityArchivePending,
+    language,
+    onNotify,
+    skillpilotId,
+    t.notifications.compatibilityArchiveExportFailed,
+    t.notifications.compatibilityArchiveExported,
+  ])
 
   const handleExport = useCallback(async () => {
     if (!skillpilotId) return
@@ -1809,13 +1956,16 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
         }
 
         downloadJsonPayload(exportPayload, 'learner_data')
+        onNotify?.('success', t.notifications.learnerExported)
       } else {
         console.error("Export failed", res.status, res.statusText)
+        onNotify?.('error', t.notifications.learnerExportFailed)
       }
     } catch (e) {
       console.error("Export error", e)
+      onNotify?.('error', t.notifications.learnerExportFailed)
     }
-  }, [downloadJsonPayload, skillpilotId, srsGoals])
+  }, [downloadJsonPayload, onNotify, skillpilotId, srsGoals, t.notifications.learnerExportFailed, t.notifications.learnerExported])
 
   const syncClientData = useCallback(async (nodeId: string): Promise<boolean> => {
     if (!skillpilotId || !nodeId) return false
@@ -1990,7 +2140,9 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
             }
           }
 
-          // Reload page to reflect imported state (simplest way to ensure consistency)
+          queueToastForNextLoad('success', t.notifications.learnerImported)
+          // Keep the reload for now because import may replace learner context,
+          // selected curriculum, and local mirrored state across the app.
           window.location.reload();
         } else {
           console.error("Import failed", res.status);
@@ -2001,45 +2153,79 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
             if (errData && errData.message) serverMsg = errData.message;
           } catch { /* ignore */ }
 
+          const notifyImportError = (message: string, title: string) => {
+            if (onNotify) {
+              onNotify('error', message)
+              return
+            }
+            setModalMessage(message)
+            setModalTitle(title)
+            setModalType('error')
+            setIsModalOpen(true)
+          }
+
           // Use helpful message if signature error suspected (400 Bad Request) or generic otherwise
           if (res.status === 400) {
             if (language === 'de') {
-              setModalMessage("Diese Datei kann nicht importiert werden. Die digitale Signatur konnte nicht verifiziert werden. Dies bedeutet in der Regel, dass der Dateiinhalt manuell verändert wurde. Bitte stellen Sie sicher, dass Sie eine originale, unveränderte Exportdatei importieren.");
-              setModalTitle("Import-Validierung fehlgeschlagen");
+              notifyImportError(
+                t.notifications.learnerImportValidationFailed,
+                "Import-Validierung fehlgeschlagen",
+              )
             } else {
-              setModalMessage("Cannot import this file. The digital signature could not be verified. This usually means the file content has been modified manually. Please ensure you are importing an original, unmodified export file.");
-              setModalTitle("Import Validation Failed");
+              notifyImportError(
+                t.notifications.learnerImportValidationFailed,
+                "Import Validation Failed",
+              )
             }
-            setModalType('error');
           } else {
             if (language === 'de') {
-              setModalMessage(serverMsg || "Ein unbekannter Fehler ist aufgetreten.");
-              setModalTitle("Import fehlgeschlagen");
+              notifyImportError(
+                serverMsg || t.notifications.learnerImportFailed,
+                "Import fehlgeschlagen",
+              )
             } else {
-              setModalMessage(serverMsg || "An unknown error occurred.");
-              setModalTitle("Import Failed");
+              notifyImportError(
+                serverMsg || t.notifications.learnerImportFailed,
+                "Import Failed",
+              )
             }
-            setModalType('error');
           }
-          setIsModalOpen(true);
         }
       } catch (err) {
         console.error("Import error", err);
         if (language === 'de') {
-          setModalMessage("Ein Netzwerk- oder Systemfehler ist während des Imports aufgetreten.");
-          setModalTitle("Import-Fehler");
+          if (onNotify) {
+            onNotify('error', t.notifications.learnerImportSystemFailed)
+          } else {
+            setModalMessage("Ein Netzwerk- oder Systemfehler ist während des Imports aufgetreten.");
+            setModalTitle("Import-Fehler");
+            setModalType('error');
+            setIsModalOpen(true);
+          }
         } else {
-          setModalMessage("A network or system error occurred during import.");
-          setModalTitle("Import Error");
+          if (onNotify) {
+            onNotify('error', t.notifications.learnerImportSystemFailed)
+          } else {
+            setModalMessage("A network or system error occurred during import.");
+            setModalTitle("Import Error");
+            setModalType('error');
+            setIsModalOpen(true);
+          }
         }
-        setModalType('error');
-        setIsModalOpen(true);
       }
     };
     reader.readAsText(file);
     // Reset input so same file can be selected again if needed
     if (fileInputRef.current) fileInputRef.current.value = '';
-  }, [skillpilotId, language]);
+  }, [
+    skillpilotId,
+    language,
+    onNotify,
+    t.notifications.learnerImported,
+    t.notifications.learnerImportFailed,
+    t.notifications.learnerImportSystemFailed,
+    t.notifications.learnerImportValidationFailed,
+  ]);
 
   return (
     <div className="flex h-screen bg-chat-bg text-text-primary overflow-hidden transition-colors">
@@ -2104,6 +2290,16 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
           <div className="flex items-center gap-1 shrink-0">
 
             {/* SSE auto-refresh now active - manual refresh button removed */}
+            {onShareContext && (
+              <button
+                onClick={onShareContext}
+                className="p-1 text-text-secondary hover:text-sky-400"
+                title={t.learner.shareContext}
+                aria-label={t.learner.shareContext}
+              >
+                <Link2 size={16} />
+              </button>
+            )}
             <button onClick={() => setIsSetupOpen(true)} className="p-1 text-text-secondary hover:text-sky-400"><Settings size={16} /></button>
             <ThemeToggle />
             {isMobile && (
@@ -2116,9 +2312,39 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
             )}
           </div>
         </div>
+        {hasCompetencyStructure && (
+          <div className="px-4 py-2 border-b border-border-color">
+            <div className="text-[10px] uppercase tracking-wide text-text-secondary font-bold mb-2">
+              {t.learner.structureMode}
+            </div>
+            <div className="inline-flex rounded-lg border border-border-color overflow-hidden bg-chat-bg/40">
+              {([
+                ['all', t.learner.structureAll],
+                ['content', t.learner.structureContent],
+                ['competency', t.learner.structureCompetencies],
+              ] as const).map(([mode, label]) => {
+                const isActive = structureMode === mode
+                return (
+                  <button
+                    key={mode}
+                    type="button"
+                      onClick={() => onStructureModeChange(mode)}
+                    className={`px-3 py-1.5 text-xs font-medium transition-colors ${
+                      isActive
+                        ? 'bg-sky-600 text-white'
+                        : 'text-text-secondary hover:bg-slate-200 dark:hover:bg-slate-800/60'
+                    }`}
+                  >
+                    {label}
+                  </button>
+                )
+              })}
+            </div>
+          </div>
+        )}
         <div className="flex-1 overflow-y-auto p-2">
           <CompetenceTree
-            key={`competence-tree-${refreshCounter}`}
+            key={`competence-tree-${refreshCounter}-${structureMode}`}
             rootGoals={visibleRootGoals}
             allGoals={goalIndexAll}
             getMastery={getEffectiveMastery}
@@ -2128,6 +2354,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
             onSelect={onSelectGoal}
             selectedId={selectedId}
             activeFilter={effectiveActiveFilter}
+            structureMode={structureMode}
             personalConfig={personalConfig}
             activeGoalId={effectiveActiveGoalId ?? undefined}
             forcedExpandedIds={forcedExpandedIds}

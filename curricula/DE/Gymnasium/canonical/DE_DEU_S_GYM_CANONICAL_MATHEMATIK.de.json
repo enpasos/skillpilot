@@ -20,6 +20,248 @@
       "label": "Leistungskurs"
     }
   ],
+  "programUnits": [
+    {
+      "id": "de-gym-math-program",
+      "kind": "program",
+      "label": "Gymnasium Mathematik (DE)",
+      "shortLabel": "Gymnasium"
+    },
+    {
+      "id": "de-gym-math-sek1",
+      "kind": "stage",
+      "label": "Sekundarstufe I",
+      "shortLabel": "Sek I",
+      "order": 10,
+      "parentUnitId": "de-gym-math-program"
+    },
+    {
+      "id": "de-gym-math-sek2",
+      "kind": "stage",
+      "label": "Sekundarstufe II",
+      "shortLabel": "Sek II",
+      "order": 20,
+      "parentUnitId": "de-gym-math-program"
+    },
+    {
+      "id": "de-gym-math-j5",
+      "kind": "year",
+      "label": "Jahrgang 5",
+      "shortLabel": "J5",
+      "order": 5,
+      "parentUnitId": "de-gym-math-sek1"
+    },
+    {
+      "id": "de-gym-math-j6",
+      "kind": "year",
+      "label": "Jahrgang 6",
+      "shortLabel": "J6",
+      "order": 6,
+      "parentUnitId": "de-gym-math-sek1"
+    },
+    {
+      "id": "de-gym-math-j7",
+      "kind": "year",
+      "label": "Jahrgang 7",
+      "shortLabel": "J7",
+      "order": 7,
+      "parentUnitId": "de-gym-math-sek1"
+    },
+    {
+      "id": "de-gym-math-j8",
+      "kind": "year",
+      "label": "Jahrgang 8",
+      "shortLabel": "J8",
+      "order": 8,
+      "parentUnitId": "de-gym-math-sek1"
+    },
+    {
+      "id": "de-gym-math-j9",
+      "kind": "year",
+      "label": "Jahrgang 9",
+      "shortLabel": "J9",
+      "order": 9,
+      "parentUnitId": "de-gym-math-sek1"
+    },
+    {
+      "id": "de-gym-math-j10",
+      "kind": "year",
+      "label": "Jahrgang 10",
+      "shortLabel": "J10",
+      "order": 10,
+      "parentUnitId": "de-gym-math-sek1"
+    },
+    {
+      "id": "de-gym-math-e",
+      "kind": "phase",
+      "label": "E-Phase",
+      "shortLabel": "E",
+      "order": 11,
+      "parentUnitId": "de-gym-math-sek2"
+    },
+    {
+      "id": "de-gym-math-q1",
+      "kind": "phase",
+      "label": "Q1",
+      "shortLabel": "Q1",
+      "order": 12,
+      "parentUnitId": "de-gym-math-sek2"
+    },
+    {
+      "id": "de-gym-math-q2",
+      "kind": "phase",
+      "label": "Q2",
+      "shortLabel": "Q2",
+      "order": 13,
+      "parentUnitId": "de-gym-math-sek2"
+    },
+    {
+      "id": "de-gym-math-q3",
+      "kind": "phase",
+      "label": "Q3",
+      "shortLabel": "Q3",
+      "order": 14,
+      "parentUnitId": "de-gym-math-sek2"
+    },
+    {
+      "id": "de-gym-math-q4",
+      "kind": "phase",
+      "label": "Q4",
+      "shortLabel": "Q4",
+      "order": 15,
+      "parentUnitId": "de-gym-math-sek2"
+    }
+  ],
+  "goalPlacements": [
+    {
+      "goalId": "5c6b7342-0f67-4b4c-894d-fd83a6df64b3",
+      "unitId": "de-gym-math-j8",
+      "relation": "primary",
+      "context": {
+        "schoolForm": "Gymnasium",
+        "stage": "SekI",
+        "durationModel": "G9"
+      }
+    },
+    {
+      "goalId": "5c6b7342-0f67-4b4c-894d-fd83a6df64b3",
+      "unitId": "de-gym-math-j7",
+      "relation": "secondary",
+      "context": {
+        "schoolForm": "Gymnasium",
+        "stage": "SekI",
+        "durationModel": "G9"
+      }
+    },
+    {
+      "goalId": "5c6b7342-0f67-4b4c-894d-fd83a6df64b3",
+      "unitId": "de-gym-math-j9",
+      "relation": "secondary",
+      "context": {
+        "schoolForm": "Gymnasium",
+        "stage": "SekI",
+        "durationModel": "G9"
+      }
+    },
+    {
+      "goalId": "c8951a07-a3e7-59d2-8a23-dce545dd811a",
+      "unitId": "de-gym-math-q1",
+      "relation": "primary",
+      "context": {
+        "schoolForm": "Gymnasium",
+        "stage": "SekII",
+        "jurisdiction": "DE-BW",
+        "courseProfile": "GK+LK"
+      }
+    },
+    {
+      "goalId": "c8951a07-a3e7-59d2-8a23-dce545dd811a",
+      "unitId": "de-gym-math-q1",
+      "relation": "primary",
+      "context": {
+        "schoolForm": "Gymnasium",
+        "stage": "SekII",
+        "jurisdiction": "DE-HE",
+        "courseProfile": "GK+LK"
+      }
+    },
+    {
+      "goalId": "c8951a07-a3e7-59d2-8a23-dce545dd811a",
+      "unitId": "de-gym-math-q1",
+      "relation": "primary",
+      "context": {
+        "schoolForm": "Gymnasium",
+        "stage": "SekII",
+        "jurisdiction": "DE-NW",
+        "courseProfile": "GK+LK"
+      }
+    },
+    {
+      "goalId": "93ac7fc8-6d83-5394-bbea-80758b463da1",
+      "unitId": "de-gym-math-q1",
+      "relation": "primary",
+      "context": {
+        "schoolForm": "Gymnasium",
+        "stage": "SekII",
+        "jurisdiction": "DE-BW",
+        "courseProfile": "GK+LK"
+      }
+    },
+    {
+      "goalId": "93ac7fc8-6d83-5394-bbea-80758b463da1",
+      "unitId": "de-gym-math-q1",
+      "relation": "primary",
+      "context": {
+        "schoolForm": "Gymnasium",
+        "stage": "SekII",
+        "jurisdiction": "DE-HE",
+        "courseProfile": "GK+LK"
+      }
+    },
+    {
+      "goalId": "93ac7fc8-6d83-5394-bbea-80758b463da1",
+      "unitId": "de-gym-math-q1",
+      "relation": "primary",
+      "context": {
+        "schoolForm": "Gymnasium",
+        "stage": "SekII",
+        "jurisdiction": "DE-NW",
+        "courseProfile": "GK+LK"
+      }
+    }
+  ],
+  "competencyCatalog": [
+    {
+      "id": "PROCESS.K1",
+      "label": "Mathematisch argumentieren",
+      "dimension": "process-competency"
+    },
+    {
+      "id": "PROCESS.K2",
+      "label": "Probleme mathematisch lösen",
+      "dimension": "process-competency"
+    },
+    {
+      "id": "PROCESS.K3",
+      "label": "Mathematisieren",
+      "dimension": "process-competency"
+    },
+    {
+      "id": "PROCESS.K4",
+      "label": "Darstellen",
+      "dimension": "process-competency"
+    },
+    {
+      "id": "PROCESS.K5",
+      "label": "Symbolisch, formal, technisch umgehen",
+      "dimension": "process-competency"
+    },
+    {
+      "id": "PROCESS.K6",
+      "label": "Kommunizieren",
+      "dimension": "process-competency"
+    }
+  ],
   "goals": [
     {
       "id": "c01b1ce9-a667-4a46-b251-ec33ae602b15",
@@ -2836,6 +3078,11 @@
           "DE-NW"
         ]
       },
+      "competencyRefs": [
+        "PROCESS.K1",
+        "PROCESS.K3",
+        "PROCESS.K4"
+      ],
       "extendedData": {
         "treeOrder": 8,
         "provenance": {
@@ -18843,6 +19090,12 @@
           "DE-NW"
         ]
       },
+      "competencyRefs": [
+        "PROCESS.K1",
+        "PROCESS.K2",
+        "PROCESS.K3",
+        "PROCESS.K5"
+      ],
       "extendedData": {
         "treeOrder": 10,
         "provenance": {
@@ -18896,6 +19149,11 @@
           "DE-NW"
         ]
       },
+      "competencyRefs": [
+        "PROCESS.K2",
+        "PROCESS.K3",
+        "PROCESS.K5"
+      ],
       "extendedData": {
         "provenance": {
           "sourceLandscapeId": "2796fc7b-ba9d-446f-8f26-711dd6d8a9a3",

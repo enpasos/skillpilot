@@ -187,6 +187,9 @@ public class LandscapeService {
         copy.setSubject(original.getSubject());
         copy.setFrameworkId(original.getFrameworkId());
         copy.setFilters(original.getFilters());
+        copy.setProgramUnits(original.getProgramUnits());
+        copy.setGoalPlacements(original.getGoalPlacements());
+        copy.setCompetencyCatalog(original.getCompetencyCatalog());
 
         // Localize Landscape Title/Desc
         copy.setTitle(StringUtils.hasText(original.getTitleEn()) ? original.getTitleEn() : original.getTitle());
@@ -210,6 +213,7 @@ public class LandscapeService {
                 gc.setExamples(g.getExamples());
                 gc.setApplicability(g.getApplicability());
                 gc.setSourceRef(g.getSourceRef());
+                gc.setCompetencyRefs(g.getCompetencyRefs());
                 gc.setExtendedData(g.getExtendedData());
                 gc.setRelease(g.getRelease());
                 gc.setType(g.getType());

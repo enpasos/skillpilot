@@ -32,6 +32,7 @@ export interface UiGoal {
   examples: string[]
   resourceLinks?: import('./landscapeTypes').ResourceLink[]
   applicability?: import('./landscapeTypes').ApplicabilityMap
+  competencyRefs?: string[]
   effectiveRequires?: string[]
   inheritedRequires?: string[]
   extendedData?: Record<string, unknown>
@@ -90,6 +91,7 @@ export function convertLearningGoal(
     examples: goal.examples ?? [],
     resourceLinks: goal.resourceLinks,
     applicability: goal.applicability,
+    competencyRefs: goal.competencyRefs ?? [],
     effectiveRequires: goal.requires ?? [],
     inheritedRequires: [],
     extendedData: goal.extendedData,
