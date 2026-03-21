@@ -1,0 +1,286 @@
+{
+  "version": 1,
+  "updatedAt": "2026-03-21",
+  "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+  "quickViewPath": "docs/dev/canonical-gymnasium-math-bundeslaender-status.md",
+  "renderCommand": "python3 scripts/render_canonical_math_bundesland_status.py",
+  "phaseScale": [
+    {
+      "id": "P0",
+      "label": "Placeholder",
+      "score": 0,
+      "description": "README/source links only, no active math rollout lane."
+    },
+    {
+      "id": "P1",
+      "label": "Source archived",
+      "score": 15,
+      "description": "Math source material is archived in the DE-level input lane."
+    },
+    {
+      "id": "P2",
+      "label": "Snapshots active",
+      "score": 30,
+      "description": "Math source snapshots and provenance are active."
+    },
+    {
+      "id": "P3",
+      "label": "Anchors mapped",
+      "score": 50,
+      "description": "Canonical structural anchors are mapped on the shared spine."
+    },
+    {
+      "id": "P4",
+      "label": "First corridor reviewed",
+      "score": 65,
+      "description": "At least one didactically closed reviewed corridor is mapped."
+    },
+    {
+      "id": "P5",
+      "label": "Broad state coverage",
+      "score": 85,
+      "description": "The state has broad reviewed coverage across the main math spine."
+    },
+    {
+      "id": "P6",
+      "label": "State cutover ready",
+      "score": 100,
+      "description": "The state is operationally ready on the canonical math landscape."
+    }
+  ],
+  "programPhases": [
+    {
+      "id": "F0",
+      "title": "Tracking scaffold",
+      "status": "completed"
+    },
+    {
+      "id": "F1",
+      "title": "Active five-state base",
+      "status": "in_progress"
+    },
+    {
+      "id": "F2",
+      "title": "Remaining source onboarding",
+      "status": "in_progress"
+    },
+    {
+      "id": "F3",
+      "title": "Nationwide first-corridor pass",
+      "status": "in_progress"
+    },
+    {
+      "id": "F4",
+      "title": "Lower-secondary breadth",
+      "status": "pending"
+    },
+    {
+      "id": "F5",
+      "title": "Upper-secondary breadth",
+      "status": "pending"
+    },
+    {
+      "id": "F6",
+      "title": "Cutover and maintenance",
+      "status": "pending"
+    }
+  ],
+  "states": [
+    {
+      "jurisdiction": "DE-HE",
+      "repoStateKey": "HE",
+      "displayName": "Hessen",
+      "phase": "P5",
+      "priority": "active",
+      "sourceStage": "snapshots_active",
+      "mappingFiles": [
+        "curricula/DE/Gymnasium/mapping/DE-HE/lower-secondary/hessen_math_lower_secondary_to_canonical_math.json",
+        "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_math_upper_secondary_to_canonical_math.json"
+      ],
+      "notes": "Reference donor for upper-secondary mathematics and the current broad Hessen baseline on the canonical spine.",
+      "nextStep": "Keep Hessen as the stable reference baseline while other states broaden."
+    },
+    {
+      "jurisdiction": "DE-BY",
+      "repoStateKey": "BY",
+      "displayName": "Bayern",
+      "phase": "P5",
+      "priority": "active",
+      "sourceStage": "archived_inputs",
+      "mappingFiles": [
+        "curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_math_to_canonical_math.json"
+      ],
+      "notes": "Broad Bavaria bridge on the shared math spine through the retained gymnasium source lane.",
+      "nextStep": "Use Bavaria as the second broad comparison lane and keep gap-closing work corridor-specific."
+    },
+    {
+      "jurisdiction": "DE-NW",
+      "repoStateKey": "NW",
+      "displayName": "Nordrhein-Westfalen",
+      "phase": "P4",
+      "priority": "active",
+      "sourceStage": "snapshots_active",
+      "mappingFiles": [
+        "curricula/DE/Gymnasium/mapping/DE-NW/lower-secondary/nrw_math_lower_secondary_to_canonical_math.json",
+        "curricula/DE/Gymnasium/mapping/DE-NW/upper-secondary/nrw_math_upper_secondary_to_canonical_math.json"
+      ],
+      "notes": "First reviewed lower-secondary and upper-secondary corridors are already active.",
+      "nextStep": "Broaden from corridor coverage toward broad state coverage."
+    },
+    {
+      "jurisdiction": "DE-NI",
+      "repoStateKey": "NI",
+      "displayName": "Niedersachsen",
+      "phase": "P4",
+      "priority": "active",
+      "sourceStage": "snapshots_active",
+      "mappingFiles": [
+        "curricula/DE/Gymnasium/mapping/DE-NI/lower-secondary/ni_math_lower_secondary_to_canonical_math.json",
+        "curricula/DE/Gymnasium/mapping/DE-NI/upper-secondary/ni_math_upper_secondary_to_canonical_math.json"
+      ],
+      "notes": "Initial lower-secondary and upper-secondary bridges are active on the shared math spine.",
+      "nextStep": "Retry the next Niedersachsen lower-secondary and derivative-entry follow-on corridors on the active base."
+    },
+    {
+      "jurisdiction": "DE-BW",
+      "repoStateKey": "BW",
+      "displayName": "Baden-Wuerttemberg",
+      "phase": "P4",
+      "priority": "active",
+      "sourceStage": "snapshots_active",
+      "mappingFiles": [
+        "curricula/DE/Gymnasium/mapping/DE-BW/lower-secondary/bw_math_lower_secondary_to_canonical_math.json",
+        "curricula/DE/Gymnasium/mapping/DE-BW/upper-secondary/bw_math_upper_secondary_to_canonical_math.json"
+      ],
+      "notes": "First lower-secondary and upper-secondary function corridors are onboarded from the archived BW source snapshot.",
+      "nextStep": "Close the remaining BW representation debt before broadening the next corridor."
+    },
+    {
+      "jurisdiction": "DE-BB",
+      "repoStateKey": "BB",
+      "displayName": "Brandenburg",
+      "phase": "P4",
+      "priority": "next_wave",
+      "sourceStage": "snapshots_active",
+      "mappingFiles": [
+        "curricula/DE/Gymnasium/mapping/DE-BB/lower-secondary/bb_math_lower_secondary_to_canonical_math.json",
+        "curricula/DE/Gymnasium/mapping/DE-BB/upper-secondary/bb_math_upper_secondary_to_canonical_math.json"
+      ],
+      "notes": "The Brandenburg lane now carries its first reviewed lower-secondary functions corridor, its first reviewed upper-secondary E-phase analysis entry corridor, its first reviewed Q1 model-functions follow-on corridor, its first reviewed Q2 integral-calculus follow-on corridor, its first reviewed Q2 stochastics follow-on corridor, and its first reviewed Q2 data-and-distribution follow-on corridor on the canonical spine. Active mapped surface reaches J7-J10, the shared E/F functions corridor, the Brandenburg E-phase derivative starter strip, the Q1 model-functions strip around exponential, logarithmic, and periodic functions, the Q2 integral strip around upper and lower sums, reconstructed stock, the Fundamental Theorem, antiderivatives, and first area and context applications, the Q2 stochastics strip around tree diagrams, contingency tables, conditional probabilities, stochastic independence, urn models, and simulations, the Q2 data-and-distribution strip around sample characteristics, random variables, discrete distributions, histograms, and first binomial situations, and the structural upper-secondary phase bridge E/Q1-Q4.",
+      "nextStep": "Widen the Brandenburg upper-secondary lane from the active Q2 data-and-distribution corridor toward the first Q2 survey-and-critique follow-on corridor."
+    },
+    {
+      "jurisdiction": "DE-BE",
+      "repoStateKey": "BE",
+      "displayName": "Berlin",
+      "phase": "P4",
+      "priority": "next_wave",
+      "sourceStage": "snapshots_active",
+      "mappingFiles": [
+        "curricula/DE/Gymnasium/mapping/DE-BE/lower-secondary/be_math_lower_secondary_to_canonical_math.json",
+        "curricula/DE/Gymnasium/mapping/DE-BE/upper-secondary/be_math_upper_secondary_to_canonical_math.json"
+      ],
+      "notes": "The Berlin lane now carries its first reviewed lower-secondary functions corridor, its first reviewed upper-secondary Q1 differential entry corridor, its first reviewed Q2 integral-calculus follow-on corridor, its first reviewed Q2 stochastics follow-on corridor, its first reviewed Q2 data-and-survey follow-on corridor, and its first reviewed Q4 distribution-and-binomial follow-on corridor on the canonical spine. Active mapped surface reaches J7-J10, the shared E/F functions corridor, the Berlin Q1 differential starter strip, the Q2 integral strip around reconstructed stock, the Fundamental Theorem, antiderivatives, and first area applications, the Q2 stochastics strip around tree diagrams, contingency tables, conditional probabilities, stochastic independence, urn models, and simulations, the Q2 data-and-survey strip around statistical surveys, data preparation, sample location and dispersion measures, and survey evaluation with descriptive measures, the Q4 distribution-and-binomial strip around binomial models with parameters n and p, Bernoulli chains, binomial probabilities, expected value, standard deviation, and first context use, and the structural upper-secondary phase bridge E/Q1-Q4.",
+      "nextStep": "Widen the Berlin upper-secondary lane from the active Q4 distribution-and-binomial corridor toward the first Q4 inference, tests, and normal-approximation follow-on corridor."
+    },
+    {
+      "jurisdiction": "DE-HB",
+      "repoStateKey": "HB",
+      "displayName": "Bremen",
+      "phase": "P0",
+      "priority": "backlog",
+      "sourceStage": "placeholder_only",
+      "mappingFiles": [],
+      "notes": "Placeholder lane only.",
+      "nextStep": "Archive the official math source bundle and create the first state mapping lane scaffold."
+    },
+    {
+      "jurisdiction": "DE-HH",
+      "repoStateKey": "HH",
+      "displayName": "Hamburg",
+      "phase": "P0",
+      "priority": "backlog",
+      "sourceStage": "placeholder_only",
+      "mappingFiles": [],
+      "notes": "Placeholder lane only.",
+      "nextStep": "Archive the official math source bundle and create the first state mapping lane scaffold."
+    },
+    {
+      "jurisdiction": "DE-MV",
+      "repoStateKey": "MV",
+      "displayName": "Mecklenburg-Vorpommern",
+      "phase": "P0",
+      "priority": "backlog",
+      "sourceStage": "placeholder_only",
+      "mappingFiles": [],
+      "notes": "Placeholder lane only.",
+      "nextStep": "Archive the official math source bundle and create the first state mapping lane scaffold."
+    },
+    {
+      "jurisdiction": "DE-RP",
+      "repoStateKey": "RP",
+      "displayName": "Rheinland-Pfalz",
+      "phase": "P0",
+      "priority": "backlog",
+      "sourceStage": "placeholder_only",
+      "mappingFiles": [],
+      "notes": "Placeholder lane only.",
+      "nextStep": "Archive the official math source bundle and create the first state mapping lane scaffold."
+    },
+    {
+      "jurisdiction": "DE-SH",
+      "repoStateKey": "SH",
+      "displayName": "Schleswig-Holstein",
+      "phase": "P0",
+      "priority": "backlog",
+      "sourceStage": "placeholder_only",
+      "mappingFiles": [],
+      "notes": "Placeholder lane only.",
+      "nextStep": "Archive the official math source bundle and create the first state mapping lane scaffold."
+    },
+    {
+      "jurisdiction": "DE-SL",
+      "repoStateKey": "SL",
+      "displayName": "Saarland",
+      "phase": "P0",
+      "priority": "backlog",
+      "sourceStage": "placeholder_only",
+      "mappingFiles": [],
+      "notes": "Placeholder lane only.",
+      "nextStep": "Archive the official math source bundle and create the first state mapping lane scaffold."
+    },
+    {
+      "jurisdiction": "DE-SN",
+      "repoStateKey": "SN",
+      "displayName": "Sachsen",
+      "phase": "P0",
+      "priority": "backlog",
+      "sourceStage": "placeholder_only",
+      "mappingFiles": [],
+      "notes": "Placeholder lane only.",
+      "nextStep": "Archive the official math source bundle and create the first state mapping lane scaffold."
+    },
+    {
+      "jurisdiction": "DE-ST",
+      "repoStateKey": "ST",
+      "displayName": "Sachsen-Anhalt",
+      "phase": "P0",
+      "priority": "backlog",
+      "sourceStage": "placeholder_only",
+      "mappingFiles": [],
+      "notes": "Placeholder lane only.",
+      "nextStep": "Archive the official math source bundle and create the first state mapping lane scaffold."
+    },
+    {
+      "jurisdiction": "DE-TH",
+      "repoStateKey": "TH",
+      "displayName": "Thueringen",
+      "phase": "P0",
+      "priority": "backlog",
+      "sourceStage": "placeholder_only",
+      "mappingFiles": [],
+      "notes": "Placeholder lane only.",
+      "nextStep": "Archive the official math source bundle and create the first state mapping lane scaffold."
+    }
+  ]
+}

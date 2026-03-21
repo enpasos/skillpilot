@@ -14,6 +14,7 @@ const SUPPORTED_DIMENSION = 'jurisdiction' as const
 const SUPPORTED_JURISDICTIONS = ['DE-BW', 'DE-BY', 'DE-HE', 'DE-NI', 'DE-NW'] as const
 
 type SupportedJurisdiction = (typeof SUPPORTED_JURISDICTIONS)[number]
+type KnownJurisdiction = SupportedJurisdiction | 'DE-BB' | 'DE-BE'
 type FindingSeverity = 'error' | 'warning'
 type FindingCode =
   | 'APV-001'
@@ -64,13 +65,13 @@ interface LoadedMappingFile {
   file: string
   sourceLandscapeId?: string
   targetLandscapeId?: string
-  jurisdiction: SupportedJurisdiction | null
+  jurisdiction: KnownJurisdiction | null
   mappings: GoalMappingEntry[]
 }
 
 interface LoadedSourceLandscapeRegistryEntry {
   landscapeId: string
-  jurisdiction: SupportedJurisdiction | null
+  jurisdiction: KnownJurisdiction | null
   sourcePath?: string
   archivePath?: string
 }
@@ -199,7 +200,7 @@ function isAtomicGoal(goal: LearningGoal): boolean {
   return !Array.isArray(goal.contains) || goal.contains.length === 0
 }
 
-function normalizeJurisdictionValue(raw: string): SupportedJurisdiction | null {
+function normalizeJurisdictionValue(raw: string): KnownJurisdiction | null {
   const normalized = raw.trim().toUpperCase()
   if (normalized === 'DE-HE' || normalized === 'HE' || normalized === 'HES' || normalized === 'DE-HES') {
     return 'DE-HE'
@@ -210,6 +211,12 @@ function normalizeJurisdictionValue(raw: string): SupportedJurisdiction | null {
   if (normalized === 'DE-BW' || normalized === 'BW' || normalized === 'BAW' || normalized === 'DE-BAW') {
     return 'DE-BW'
   }
+  if (normalized === 'DE-BB' || normalized === 'BB' || normalized === 'BRA' || normalized === 'DE-BRA') {
+    return 'DE-BB'
+  }
+  if (normalized === 'DE-BE' || normalized === 'BE' || normalized === 'BER' || normalized === 'DE-BER') {
+    return 'DE-BE'
+  }
   if (normalized === 'DE-NW' || normalized === 'NW' || normalized === 'NRW' || normalized === 'DE-NRW') {
     return 'DE-NW'
   }
@@ -219,7 +226,11 @@ function normalizeJurisdictionValue(raw: string): SupportedJurisdiction | null {
   return null
 }
 
-function jurisdictionFromPath(file: string): SupportedJurisdiction | null {
+function isSupportedJurisdiction(value: KnownJurisdiction | null): value is SupportedJurisdiction {
+  return value !== null && (SUPPORTED_JURISDICTIONS as readonly string[]).includes(value)
+}
+
+function jurisdictionFromPath(file: string): KnownJurisdiction | null {
   const normalized = file.replace(/\\/g, '/').toUpperCase()
   for (const segment of normalized.split('/')) {
     const jurisdiction = normalizeJurisdictionValue(segment)
@@ -434,7 +445,7 @@ function getApplicabilityOverrideValues(
         continue
       }
       const normalized = normalizeJurisdictionValue(rawValue)
-      if (!normalized) {
+      if (!normalized || !isSupportedJurisdiction(normalized)) {
         findings.push({
           code: 'APV-001',
           severity: 'error',
@@ -489,7 +500,7 @@ function currentApplicabilityForGoal(goal: LearningGoal): ApplicabilityMap {
   const normalized = jurisdictions
     .filter((value): value is string => typeof value === 'string')
     .map((value) => normalizeJurisdictionValue(value))
-    .filter((value): value is SupportedJurisdiction => Boolean(value))
+    .filter(isSupportedJurisdiction)
   return normalizeCompiledApplicability(normalized)
 }
 
@@ -646,6 +657,9 @@ export function buildApplicabilityCompilation(): ApplicabilityCompilationResult 
             })
             continue
           }
+          if (!isSupportedJurisdiction(registryEntry.jurisdiction)) {
+            continue
+          }
 
           jurisdictions.add(registryEntry.jurisdiction)
           evidence.push({
@@ -683,6 +697,9 @@ export function buildApplicabilityCompilation(): ApplicabilityCompilationResult 
           })
           continue
         }
+        if (!isSupportedJurisdiction(jurisdiction)) {
+          continue
+        }
         jurisdictions.add(jurisdiction)
         evidence.push({
           dimension: SUPPORTED_DIMENSION,
@@ -704,6 +721,9 @@ export function buildApplicabilityCompilation(): ApplicabilityCompilationResult 
             dimension: SUPPORTED_DIMENSION,
             message: `Cannot resolve jurisdiction from mapping file ${repoRelative(mappingFile.file)}.`,
           })
+          continue
+        }
+        if (!isSupportedJurisdiction(mappingFile.jurisdiction)) {
           continue
         }
         const matchTypes = mappingFile.mappings

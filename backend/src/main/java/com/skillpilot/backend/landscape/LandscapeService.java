@@ -1113,6 +1113,14 @@ public class LandscapeService {
         if (normalized.equals("BY") || normalized.equals("BAY") || normalized.equals("DE-BY")) {
             return "DE-BY";
         }
+        if (normalized.equals("BB") || normalized.equals("BRA") || normalized.equals("DE-BB")
+                || normalized.equals("DE-BRA")) {
+            return "DE-BB";
+        }
+        if (normalized.equals("BE") || normalized.equals("BER") || normalized.equals("DE-BE")
+                || normalized.equals("DE-BER")) {
+            return "DE-BE";
+        }
         if (normalized.equals("NW") || normalized.equals("NRW") || normalized.equals("DE-NW")) {
             return "DE-NW";
         }
