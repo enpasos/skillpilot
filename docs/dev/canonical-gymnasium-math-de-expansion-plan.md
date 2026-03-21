@@ -34,17 +34,18 @@ Current adopted mapping lanes:
 - `DE-HE/lower-secondary`
 - `DE-HE/upper-secondary`
 - `DE-BY/gymnasium`
+- `DE-NW/lower-secondary`
+- `DE-NW/upper-secondary`
+- `DE-NI/lower-secondary`
+- `DE-NI/upper-secondary`
 
-Current additional Gymnasium input placeholders already present:
+Current additional not-yet-onboarded Gymnasium input placeholders already present:
 
 - `BB`
 - `BE`
-- `BW`
 - `HB`
 - `HH`
 - `MV`
-- `NI`
-- `NW`
 - `RP`
 - `SH`
 - `SL`
@@ -54,13 +55,14 @@ Current additional Gymnasium input placeholders already present:
 
 Important limitation:
 
-- outside `DE-HE` and `DE-BY`, these state lanes currently hold only README-level source references
-- there is no imported mathematics source bundle or mapping fixture yet for a third state
+- outside `DE-HE`, `DE-BY`, `DE-NW`, `DE-NI`, and `DE-BW`, these state input lanes currently hold only README-level source references
+- there is no imported mathematics source bundle yet for a sixth state
+- `DE-BW` now has archived mathematics source PDFs plus the first active lower-secondary source snapshot, but no upper-secondary source snapshot yet
 
 Operational consequence:
 
-- the next real task is source onboarding and archive/provenance preparation for one additional math state
-- it is not yet another applicability cleanup inside already-onboarded non-math subjects
+- the next real task is source onboarding and archive/provenance preparation for one additional math state beyond Niedersachsen
+- it is not another applicability cleanup inside already-onboarded non-math subjects
 
 ## Working rule
 
@@ -140,26 +142,45 @@ Use the same corridor order for every new math state whenever the source materia
 
 This order keeps the early state comparisons focused on the most reusable canonical spine.
 
-## Preferred next state: `DE-NW`
+## Preferred next state after NRW: `DE-NI`
 
-`DE-NW` is the best next onboarding target with the current repo evidence.
+`DE-NI` is the best next onboarding target with the current repo evidence.
 
 Reasons:
 
 - the existing input lane already points to both:
-  - `Kernlehrplan Mathematik Sekundarstufe I Gymnasium (2019/2020)`
-  - `Kernlehrplan Mathematik gymnasiale Oberstufe (2023/2024)`
-- the source references sit behind one provider family (`QUA-LiS` / Lehrplannavigator), which should simplify repeatable extraction compared with more fragmented state portals
-- the Sek-I reference is already explicitly `Gymnasium G9`, which aligns well with the current canonical `J5-J10` authoring grid
-- NRW adds a strong third comparison case next to Hessen and Bavaria without forcing an immediate G8-first normalization problem
+  - `Kerncurriculum Mathematik Gymnasium Sekundarbereich I (2015)`
+  - `Kerncurriculum Mathematik Sekundarbereich II (2018/2020)`
+- both references sit behind one provider family (`NIBIS`), which should simplify repeatable extraction compared with more fragmented state portals
+- Niedersachsen adds a fourth comparison case after Hessen, Bavaria, and NRW without immediately forcing a combined G8/G9 authoring split
+- unlike several alternative placeholder states, the current NI lane is already explicitly math-first in both Sek I and Sek II under one consistent provider
 
 Current blocker:
 
-- NRW now has archived source PDFs, active pilot source snapshots, shared provenance registration, `DE-NW` applicability plumbing, and a first exact lower-secondary bridge set on the shared math spine; the next blocker is no longer generic state onboarding or hidden-prerequisite import debt
-- the current NRW follow-on blocker sits one layer later in the same Stage-1 function slice: the imported source atom for representations is broader than the individual canonical value-, graph-reading-, and parameter leaves, so the next pass needs a deliberate exact-vs-partial review instead of more blind widening
+- Niedersachsen now has archived mathematics source PDFs under `curricula/DE/Gymnasium/input/NI/`
+- the repository-backed `DE-NI` mapping lane is reserved and the first lower-secondary and upper-secondary source snapshots are now active
+- the first Niedersachsen mapping pass exposed two reusable blockers:
+  - the DE-level canonical runtime and compiled applicability stack still needed explicit `DE-NI` jurisdiction support
+  - the lower-secondary NI functions corridor still sits behind a broader arithmetic prerequisite strip than the initial minimal mapping pass could safely close
 
 Interpretation:
 
+- Stage A/B/C/D are already active for NRW and no longer the main program bottleneck
+- the next reusable learning step is to repeat Stage A and Stage B once for a fourth state
+- Niedersachsen is the cleanest next place to do that
+- Stage A and Stage B are now complete for Niedersachsen mathematics
+- Stage C is now complete for the first Niedersachsen lower-secondary and upper-secondary pilot subsets
+- the first Niedersachsen execution pass now also has a clean Stage-D0-style result:
+  - `DE-NI` is active end-to-end in canonical Gymnasium jurisdiction handling
+  - the first exact NI lower-secondary motivation bridge is live on the shared canonical root
+  - the widened lower-secondary arithmetic prerequisite strip is archived in the active NI source snapshot and provenance registries
+- the next Niedersachsen execution pass now also has a clean Stage-D1-style result:
+  - the new NI arithmetic prerequisite strip is bridged exact onto the shared lower-secondary arithmetic spine
+  - the old cluster-wide prerequisite claim on the canonical J6 rational-number cluster was removed so applicability can stay child-driven
+- the next executable NI step is now:
+  - retry the NI lower-secondary proportional / linear functions corridor on top of the new arithmetic base
+  - only after that resume the first NI upper-secondary derivative-entry bridges
+- NRW already completed:
 - Stage A (source PDF import) is complete
 - Stage B (real DE-NW mapping-fixture setup) is complete
 - Stage C (source-snapshot import plus shared provenance activation) is complete
@@ -189,9 +210,8 @@ Interpretation:
 - Stage D23 (NRW upper-secondary natural-exponential follow-on bridge) is complete
 - Stage D24 (NRW upper-secondary LK inverse-function source add plus natural-logarithm bridge and Q2 overview prerequisite trim) is complete
 - Stage D25 (NRW upper-secondary inverse-graph source add plus canonical Q2.1 inverse-graph leaf) is complete
-- the cleaner next candidate is now:
-  - the imported LK-side function-family parameter clause
-  - or, only if we deliberately widen the integral side again, the still-unmapped NRW clause that uses `ln(x)` as Stammfunktion von `1/x`
+- the current clean next program decision is no longer another local NRW follow-on atom inside the current pilot subset
+- the preferred next reusable move is now the next Bundesland onboarding lane, with `DE-NI` as the first target
 
 ## Initial NRW task list
 
@@ -264,8 +284,12 @@ Interpretation:
      - the broad HE/BY leaf `66077296-a8f8-4645-938b-7c3424cb2f14` keeps the Potenz-/Wurzelfunktionssurface
      - the new NRW leaf `30c013ac-5164-4c3c-8bc1-9a10b2f49533` keeps the narrower source wording without another `APV-202` bridge
      - the shared cluster is now child-driven instead of cluster-prerequisite-driven, so NRW does not need an extra prerequisite workaround for `6596405a-9728-41df-9163-53670ec2a937`
-   - the remaining unmapped NRW upper-secondary atom is now:
-     - `71539804-c722-4fe6-bc71-e4e2abe1773f` (`Produktsummen und Flächeninhalte im Sachkontext deuten`), intentionally retained after the narrower Q1.1 integral splits
+   - the retained Q1.1 productsum/area atom is now also resolved exactly:
+     - `71539804-c722-4fe6-bc71-e4e2abe1773f` now maps `exact` to `269675a9-13cd-4a3a-ab75-63794f5c9710` (`Produktsummen und orientierte Flächen im Sachkontext deuten`)
+   - the current NRW upper-secondary pilot snapshot now has `0` unmapped atomic goals
+   - the next clean program decision is therefore no longer inside the current NRW snapshot:
+     - either widen NRW source breadth beyond the current pilot subset
+     - or begin the next Bundesland onboarding lane for canonical Gymnasium Mathematik
 
 ## Decision rule after NRW
 
@@ -275,3 +299,117 @@ After the first NRW math corridor is stable, decide using this rule:
 - if the main new problems are canonical-shape problems, widen NRW inside mathematics before taking the next state
 
 The point is to learn the generic multi-state mathematics pattern as quickly as possible without opening a full nationwide scope all at once.
+
+## Current NI rollout state
+
+The Niedersachsen onboarding lane is now in mixed execution state:
+
+- `DE-NI` lower-secondary now has:
+  - archived raw PDF input
+  - a first archived source snapshot
+  - active shared provenance registration
+  - active canonical jurisdiction support at root/runtime/compiler level
+  - eight reviewed bridges:
+    - the shared motivation leaf
+    - three shared J6 arithmetic prerequisite leaves
+    - one shared lower-secondary functions leaf
+    - three reviewed partial lower-secondary function follow-on bridges
+  - a source-backed arithmetic prerequisite strip now bridged onto the canonical arithmetic spine
+- `DE-NI` upper-secondary now has:
+  - archived raw PDF input
+  - a first archived source snapshot
+  - active shared provenance registration
+  - one reviewed upper-secondary derivative-entry bridge on the shared E.2 spine
+
+This keeps the Niedersachsen rollout aligned with the NRW pattern while still moving one bounded lane at a time.
+
+Status update:
+
+- `DE-NI` Stage B is complete
+- `DE-NI` Stage A is now also complete through archived NIBIS mathematics PDFs and local provenance notes
+- the first lower-secondary and upper-secondary `DE-NI` Stage C pilot subsets are now complete
+- `DE-NI` now also has a first clean Stage-D0-style execution slice:
+  - end-to-end jurisdiction activation
+  - one exact lower-secondary motivation bridge
+  - source-backed lower-secondary arithmetic prerequisite widening for the next pass
+- `DE-NI` now also has a first clean Stage-D1-style execution slice:
+  - three exact lower-secondary arithmetic bridges on the shared J6 rational-number spine
+  - no new accepted-warning debt
+- `DE-NI` now also has a first clean Stage-D2-style execution slice:
+  - one exact lower-secondary Zuordnungen bridge on the shared function spine
+  - three reviewed partial lower-secondary follow-on bridges for proportionality, function representations, and linear foundations
+- `DE-NI` now also has a first clean Stage-D3-style execution slice:
+  - one reviewed partial upper-secondary average-rate bridge on the shared E.2 derivative-entry spine
+  - two explicit retained NI prerequisite bridges for the shared function-value atoms needed by that first E.2 route
+- `DE-NI` now also has a first clean Stage-D4-style execution slice:
+  - one reviewed partial upper-secondary qualitative derivative-entry follow-on bridge on the shared E.2 spine
+  - one explicit retained NI prerequisite bridge for the shared difference-quotient limit atom needed by that route
+- `DE-NI` now also has a first clean Stage-D5-style execution slice:
+  - one reviewed partial upper-secondary pointwise derivative-interpretation bridge on the shared E.2 spine
+  - no additional retained prerequisite debt beyond the already-open NI E.2 route
+- `DE-NI` now also has a first clean Stage-D6-style execution slice:
+  - one reviewed partial upper-secondary derivative-graph bridge on the shared E.2 spine
+  - no new retained prerequisite debt beyond the already-open NI E.2 route
+- `DE-NI` now also has a first clean Stage-D7-style execution slice:
+  - one reviewed partial upper-secondary elementary-derivative-rules bridge on the shared E.2 spine
+  - no new retained prerequisite debt beyond the already-open NI E.2 route
+- `DE-NI` now also has a first clean Stage-D8-style execution slice:
+  - one reviewed partial upper-secondary downstream extremal-problem bridge beyond the shared E.2 starter corridor
+  - no new retained prerequisite debt beyond the already-open NI E.2 route
+- `DE-NI` now also has a first clean Stage-D9-style execution slice:
+  - the broad NI AB3 source atom is retained-split into tangent / monotonicity / optimization children
+  - one reviewed partial upper-secondary downstream first-derivative investigation bridge now hangs on that narrower retained child
+- `DE-NI` now also has a second clean Stage-D9-style execution slice:
+  - the retained monotonicity / Wendestellen child is itself split into narrower monotonicity-extrema and Wendestellen children
+  - the shared second-derivative curvature leaf is now backed by the narrower Wendestellen child instead of the broader first-stage split
+- `DE-NI` now also has a bounded tangent-lane closure:
+  - the retained tangent / normal child now backs the shared tangent-equation leaf through one reviewed partial bridge
+  - no further NI source split was introduced for this lane
+- the next executable NI step is now outside the retained NI E-phase starter subset:
+  - either widen the NI upper-secondary source snapshot beyond the current derivative-usage corridor
+  - or switch to the next Bundesland after closing the current NI pilot slice
+
+## Preferred next state after NI: `DE-BW`
+
+`DE-BW` is now the cleanest next onboarding target with the current repo evidence.
+
+Reasons:
+
+- the existing input lane already points to both:
+  - `Bildungsplan 2016 / Neufassung 2024` for Gymnasium mathematics `Klassen 5-10`
+  - `Bildungsplan 2016` for Gymnasium mathematics `Kursstufe`
+- both references sit behind one provider family (`Landesbildungsserver Baden-Wuerttemberg`)
+- Baden-Wuerttemberg adds a fifth comparison case after Hessen, Bavaria, NRW, and Niedersachsen while bringing a Kursstufe structure that should stress the shared upper-secondary spine differently from NI and NRW
+
+Current blocker:
+
+- Baden-Wuerttemberg now has the official combined Gymnasium mathematics source PDF archived under `curricula/DE/Gymnasium/input/BW/`
+- the reserved lower-secondary `DE-BW` source lane now also has its first archived pilot snapshot and active shared provenance registration
+- the upper-secondary `DE-BW` lane now also has its first archived pilot snapshot and active shared provenance registration
+- the first reviewed Baden-Wuerttemberg lower-secondary mapping cut is now active on the shared motivation / first-functions anchors
+
+Interpretation:
+
+- Niedersachsen is now far enough through its first pilot slice that the next reusable learning step is no longer another bounded NI tangent/derivative cleanup
+- the clean next repetition of the national math rollout pattern is therefore:
+  - continue the BW lower-secondary `JG7/8` linear-functions corridor from the now active first mapping cut
+  - this second BW cut is now active on shared graph-reading, linear-description, line-equation, and linear-rate-of-change leaves
+  - the remaining broad BW representation debt has now been removed via a retained source split on `d45b4ec2-8604-490e-9c11-d3b8fc54251b`
+  - the first reviewed BW upper-secondary analysis cut is now active on seven reviewed rows across five shared leaves after retained splits of both broad BW integral source atoms and the broad Basisfach e-function atom
+  - the former broad Basisfach e-function source atom `d061f00d-6118-46de-a476-ec4c9112e222` is now retained-split into `e0769810-ba73-4a52-8e9c-660d1fb9d6e6` and `7bf62048-84ba-467f-ba23-f053c4e2989f`
+  - the new Basisfach e-function-properties child `e0769810-ba73-4a52-8e9c-660d1fb9d6e6` now maps `partial` to `4047af71-de53-5dc3-80c6-a7c78fb4bfe4`
+  - the new Basisfach Stammfunktions child `7bf62048-84ba-467f-ba23-f053c4e2989f` now maps `partial` to `a9ed219d-d497-55e5-a4e0-4d45d2554f6b`
+  - the former broad Basisfach integral source atom `8f8c4bc8-5b0c-4a62-b6d7-f7fb263c7f1d` is retained-split into `97ab0ab9-9444-410d-b2d9-1ac9fa935ad8` and `e0c333ea-9873-4718-819c-d39b22ccee30`
+  - the introductory-integral child `97ab0ab9-9444-410d-b2d9-1ac9fa935ad8` now maps `exact` to `2afba4a2-287d-5e8f-aeee-a3bcf8652236`
+  - the separated Hauptsatz child `e0c333ea-9873-4718-819c-d39b22ccee30` now maps `partial` to `b9bbd2a8-1379-5ffb-817f-41467d48abef`
+  - the former broad Leistungsfach integral source atom `37d1e9d7-6909-4421-a9f1-11f7b41061ff` is now retained-split into `72d7ad67-e2ef-41a0-bb52-b62eb5d071e0` and `fb742d93-6c9b-487a-bc7c-f54b363c0c01`
+  - the new Leistungsfach introductory-integral child `72d7ad67-e2ef-41a0-bb52-b62eb5d071e0` now maps `partial` to `2afba4a2-287d-5e8f-aeee-a3bcf8652236`
+  - the new Leistungsfach Hauptsatz / Integralfunktions child `fb742d93-6c9b-487a-bc7c-f54b363c0c01` now maps `partial` to `b9bbd2a8-1379-5ffb-817f-41467d48abef`
+  - the retained BW analysis debt on this spine is now explicit and small: one prerequisite `APV-201` on `94d63ad9-ae1c-5ff2-b05e-188a0f5ebec6` plus bridge-width `APV-202` on the shared simple-integral and Hauptsatz nodes where the BW source stays intentionally narrower or differently bundled
+  - the adjacent Basisfach composition / application slice is now also active on two further reviewed partial bridges:
+    - `46690ab9-0b1f-4bd9-9409-4976a40c6ec2` -> `e9ad45b9-c0d2-5804-b6bf-79e5ce041d2c`
+    - `c5739dd3-a261-4229-aff6-678d8ee618b3` -> `1511b39a-4094-5450-a755-4a3ad3339733`
+  - the aligned Leistungsfach composition / application follow-on is now also active on the same opened derivative / integral corridor:
+    - `13e285f3-522c-4eae-9fed-8b13b2af7b7d` -> `e9ad45b9-c0d2-5804-b6bf-79e5ce041d2c`
+    - `8ab263f6-a460-4ca2-bbe9-b7e9a22bbaa2` -> `1511b39a-4094-5450-a755-4a3ad3339733`
+  - the next reusable BW step should now decide how to handle the still-broad Leistungsfach e/logarithm front atom `fa4597c7-fabd-4a55-8be3-d06f7c432738`

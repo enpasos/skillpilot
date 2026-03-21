@@ -44,6 +44,14 @@ class LandscapeServiceTest {
         private static final String NRW_UPPER_MATH_ID = "d3a068ca-90c6-4d7f-ab6b-4d8b43085cb1";
         private static final String NRW_LOWER_FUNCTION_CLUSTER_ID = "f43fd248-195e-4168-bf70-ce92f864738f";
         private static final String NRW_UPPER_ANALYSIS_CLUSTER_ID = "31305eea-edf2-41b3-b312-bb1bc92f8fb7";
+        private static final String NIEDERSACHSEN_LOWER_MATH_ID = "2b995085-dc5e-47c6-a563-9dcfc01fb74d";
+        private static final String NIEDERSACHSEN_LOWER_FUNCTION_CLUSTER_ID = "9dcde142-1bae-417b-b08c-999ce0a3e963";
+        private static final String NIEDERSACHSEN_UPPER_MATH_ID = "fcb04661-6ea2-4030-a9b2-97e6cc03daf8";
+        private static final String NIEDERSACHSEN_UPPER_ANALYSIS_CLUSTER_ID = "6aa63fbe-6b48-41ae-a650-7d80074c5a94";
+        private static final String BADEN_WUERTTEMBERG_LOWER_MATH_ID = "6232b783-199c-4c50-92f2-9fb31277e619";
+        private static final String BADEN_WUERTTEMBERG_LOWER_FUNCTION_CLUSTER_ID = "fda87c17-1522-4764-b3ac-743c5331c03d";
+        private static final String BADEN_WUERTTEMBERG_UPPER_MATH_ID = "fa8f864a-aac5-486d-8e77-40df2af038a3";
+        private static final String BADEN_WUERTTEMBERG_UPPER_ANALYSIS_CLUSTER_ID = "c8fc1595-a76c-4858-bbd4-411ceed59c71";
         private static final String BAVARIA_MATH_ID = "c1600692-e543-5cf2-a399-6bd96e6b817f";
         private static final String BAVARIA_PHYSICS_ID = "42c2f7e3-91b4-5de8-bef0-d563440e9d52";
         private static final String BAVARIA_CHEMISTRY_ID = "ff1ca997-b6cc-5ece-8e13-5498b4bbf808";
@@ -364,6 +372,131 @@ class LandscapeServiceTest {
         }
 
         @Test
+        void loadsNiedersachsenArchivedSourceLandscapeFromRealRegistry() {
+                LandscapeProperties properties = new LandscapeProperties();
+                properties.setDirectory("../curricula");
+                ObjectMapper objectMapper = new ObjectMapper();
+                LandscapeService landscapeService = new LandscapeService(properties, objectMapper);
+
+                assertThat(landscapeService.getById(NIEDERSACHSEN_LOWER_MATH_ID)).isNotNull();
+                assertThat(landscapeService.getById(NIEDERSACHSEN_UPPER_MATH_ID)).isNotNull();
+                assertThat(landscapeService.resolveSourceLandscapeJurisdiction(NIEDERSACHSEN_LOWER_MATH_ID))
+                                .isEqualTo("DE-NI");
+                assertThat(landscapeService.resolveSourceLandscapeJurisdiction(NIEDERSACHSEN_UPPER_MATH_ID))
+                                .isEqualTo("DE-NI");
+                assertThat(landscapeService.isLegacyHiddenByDefaultLandscape(NIEDERSACHSEN_LOWER_MATH_ID)).isTrue();
+                assertThat(landscapeService.isLegacyHiddenByDefaultLandscape(NIEDERSACHSEN_UPPER_MATH_ID)).isTrue();
+        }
+
+        @Test
+        void resolvesNiedersachsenArchivedAtomicClosureFromRealRegistry() {
+                LandscapeProperties properties = new LandscapeProperties();
+                properties.setDirectory("../curricula");
+                ObjectMapper objectMapper = new ObjectMapper();
+                LandscapeService landscapeService = new LandscapeService(properties, objectMapper);
+
+                assertThat(landscapeService.resolveSourceAtomicGoalIds(
+                                NIEDERSACHSEN_LOWER_MATH_ID,
+                                NIEDERSACHSEN_LOWER_FUNCTION_CLUSTER_ID))
+                                .containsExactly(
+                                                "08dbb0ce-effb-478c-be9e-d49e0651a618",
+                                                "52bd16c1-ce2a-46ac-a89c-8c41cc40bf9e",
+                                                "a0518109-541e-43a9-b38e-93ace522ad71",
+                                                "5d08f9c9-c45a-4b7d-a416-d21fae73df57",
+                                                "0f2a3cbe-37b8-4701-a5f0-87a58241765c",
+                                                "7ad51e84-1b5b-41e9-a0ec-854c11b45fee",
+                                                "a11a70bd-7c0d-4c8c-865e-a6eb095a4f77",
+                                                "35de148c-6991-48fa-b517-2690c28d4f35");
+                assertThat(landscapeService.resolveSourceAtomicGoalIds(
+                                NIEDERSACHSEN_UPPER_MATH_ID,
+                                NIEDERSACHSEN_UPPER_ANALYSIS_CLUSTER_ID))
+                                .containsExactly(
+                                                "5e7e8e47-2183-44cf-a026-6285f3b0083a",
+                                                "55d56662-56db-4a76-a965-01a7f5534da6",
+                                                "d83b5cdd-3060-4c6f-874a-99473a205214",
+                                                "250ba641-b2a1-4717-9a27-4ee0e6aa83c2",
+                                                "234dde5d-cc9d-4508-af9e-092e614ea304",
+                                                "6c021ee2-f600-4977-a4a8-877ece6c8c3b",
+                                                "d1ca482c-4184-464f-a057-2d61ba077803",
+                                                "5b284b66-f417-4366-8685-012ae000b3b1",
+                                                "23e03002-37c4-4268-ba3a-ddcdffc2e666",
+                                                "22074d55-5227-4487-9fcc-4bc5dcec970e",
+                                                "d3e91530-938e-46c9-b0de-55bbae83e5a0",
+                                                "270b0f43-623c-413c-b7f1-eb690079ad8d");
+                assertThat(landscapeService.resolveSourceAtomicGoalIds(
+                                NIEDERSACHSEN_UPPER_MATH_ID,
+                                "d08d5280-3561-4d02-91f0-5f7465dd88a7"))
+                                .containsExactly(
+                                                "23e03002-37c4-4268-ba3a-ddcdffc2e666",
+                                                "22074d55-5227-4487-9fcc-4bc5dcec970e",
+                                                "d3e91530-938e-46c9-b0de-55bbae83e5a0",
+                                                "270b0f43-623c-413c-b7f1-eb690079ad8d");
+                assertThat(landscapeService.resolveSourceAtomicGoalIds(
+                                NIEDERSACHSEN_UPPER_MATH_ID,
+                                "f4515a28-7161-49ae-8e74-f58d81ec0812"))
+                                .containsExactly(
+                                                "22074d55-5227-4487-9fcc-4bc5dcec970e",
+                                                "d3e91530-938e-46c9-b0de-55bbae83e5a0");
+        }
+
+        @Test
+        void loadsBadenWuerttembergArchivedSourceLandscapesFromRealRegistry() {
+                LandscapeProperties properties = new LandscapeProperties();
+                properties.setDirectory("../curricula");
+                ObjectMapper objectMapper = new ObjectMapper();
+                LandscapeService landscapeService = new LandscapeService(properties, objectMapper);
+
+                assertThat(landscapeService.getById(BADEN_WUERTTEMBERG_LOWER_MATH_ID)).isNotNull();
+                assertThat(landscapeService.getById(BADEN_WUERTTEMBERG_UPPER_MATH_ID)).isNotNull();
+                assertThat(landscapeService.resolveSourceLandscapeJurisdiction(BADEN_WUERTTEMBERG_LOWER_MATH_ID))
+                                .isEqualTo("DE-BW");
+                assertThat(landscapeService.resolveSourceLandscapeJurisdiction(BADEN_WUERTTEMBERG_UPPER_MATH_ID))
+                                .isEqualTo("DE-BW");
+                assertThat(landscapeService.isLegacyHiddenByDefaultLandscape(BADEN_WUERTTEMBERG_LOWER_MATH_ID)).isTrue();
+                assertThat(landscapeService.isLegacyHiddenByDefaultLandscape(BADEN_WUERTTEMBERG_UPPER_MATH_ID)).isTrue();
+        }
+
+        @Test
+        void resolvesBadenWuerttembergArchivedAtomicClosureFromRealRegistry() {
+                LandscapeProperties properties = new LandscapeProperties();
+                properties.setDirectory("../curricula");
+                ObjectMapper objectMapper = new ObjectMapper();
+                LandscapeService landscapeService = new LandscapeService(properties, objectMapper);
+
+                assertThat(landscapeService.resolveSourceAtomicGoalIds(
+                                BADEN_WUERTTEMBERG_LOWER_MATH_ID,
+                                BADEN_WUERTTEMBERG_LOWER_FUNCTION_CLUSTER_ID))
+                                .containsExactly(
+                                                "83041ef8-6480-435c-aeb6-a09cb4af5ec2",
+                                                "332b3bd1-afc0-4266-a977-49ef0843e5b1",
+                                                "0886ec62-bfa3-4501-9bc9-daee3d84b758",
+                                                "0282af40-1f9f-4f74-a3ac-d9fe29796068",
+                                                "5e889254-5088-4c9f-ac62-e94d95113644",
+                                                "56842db6-253b-4fea-b50c-2940db2fd174",
+                                                "95bee2cc-cdb0-4611-8bc9-36f6263ea417",
+                                                "a7840b04-88b2-4f2a-8f94-8a75e0a27200",
+                                                "52b15961-33be-4ee9-97ec-1911dc982910",
+                                                "eca22013-61e3-4fad-a771-fa4e224fe1d5",
+                                                "72041e85-2d03-4a3c-862c-57ebc79e9dbb",
+                                                "9cb473f6-06f0-4fa3-9bf1-34445aa58551");
+                assertThat(landscapeService.resolveSourceAtomicGoalIds(
+                                BADEN_WUERTTEMBERG_UPPER_MATH_ID,
+                                BADEN_WUERTTEMBERG_UPPER_ANALYSIS_CLUSTER_ID))
+                                .containsExactly(
+                                                "e0769810-ba73-4a52-8e9c-660d1fb9d6e6",
+                                                "7bf62048-84ba-467f-ba23-f053c4e2989f",
+                                                "46690ab9-0b1f-4bd9-9409-4976a40c6ec2",
+                                                "c5739dd3-a261-4229-aff6-678d8ee618b3",
+                                                "97ab0ab9-9444-410d-b2d9-1ac9fa935ad8",
+                                                "e0c333ea-9873-4718-819c-d39b22ccee30",
+                                                "fa4597c7-fabd-4a55-8be3-d06f7c432738",
+                                                "13e285f3-522c-4eae-9fed-8b13b2af7b7d",
+                                                "8ab263f6-a460-4ca2-bbe9-b7e9a22bbaa2",
+                                                "72d7ad67-e2ef-41a0-bb52-b62eb5d071e0",
+                                                "fb742d93-6c9b-487a-bc7c-f54b363c0c01");
+        }
+
+        @Test
         void resolvesBavariaBiologyArchivedAtomicClosureFromRealRegistry() {
                 LandscapeProperties properties = new LandscapeProperties();
                 properties.setDirectory("../curricula");
@@ -448,6 +581,32 @@ class LandscapeServiceTest {
         }
 
         @Test
+        void niedersachsenPilotMathSourceLandscapeIsPresentInRealGoalMembershipRegistry() throws Exception {
+                ObjectMapper objectMapper = new ObjectMapper();
+                JsonNode root = objectMapper.readTree(Files.readString(
+                                Path.of("../curricula/DE/Gymnasium/provenance/source-goal-membership-registry.json")));
+                JsonNode landscapes = root.path("landscapes");
+
+                JsonNode niedersachsenLowerMath = StreamSupport.stream(landscapes.spliterator(), false)
+                                .filter(node -> NIEDERSACHSEN_LOWER_MATH_ID.equals(node.path("landscapeId").asText()))
+                                .findFirst()
+                                .orElseThrow();
+                JsonNode niedersachsenUpperMath = StreamSupport.stream(landscapes.spliterator(), false)
+                                .filter(node -> NIEDERSACHSEN_UPPER_MATH_ID.equals(node.path("landscapeId").asText()))
+                                .findFirst()
+                                .orElseThrow();
+
+                assertThat(StreamSupport.stream(niedersachsenLowerMath.path("goalIds").spliterator(), false)
+                                .map(JsonNode::asText)
+                                .toList())
+                                .contains(NIEDERSACHSEN_LOWER_FUNCTION_CLUSTER_ID);
+                assertThat(StreamSupport.stream(niedersachsenUpperMath.path("goalIds").spliterator(), false)
+                                .map(JsonNode::asText)
+                                .toList())
+                                .contains(NIEDERSACHSEN_UPPER_ANALYSIS_CLUSTER_ID);
+        }
+
+        @Test
         void loadsCanonicalGymnasiumOverviewAsRootCurriculum() {
                 LandscapeProperties properties = new LandscapeProperties();
                 properties.setDirectory("../curricula");
@@ -460,7 +619,7 @@ class LandscapeServiceTest {
                 assertThat(root.getTitle()).isEqualTo("Gymnasium (DE)");
                 assertThat(root.getFilters())
                                 .extracting(LandscapeFilter::getId)
-                                .containsExactly("ALL", "DE-HE", "DE-BY", "DE-NW");
+                                .containsExactly("ALL", "DE-BW", "DE-HE", "DE-BY", "DE-NI", "DE-NW");
                 assertThat(root.getGoals())
                                 .extracting(LearningGoal::getTitle)
                                 .contains("Warum Gymnasium gemeinsam denken? - Fächer, Voraussetzungen & Wege");

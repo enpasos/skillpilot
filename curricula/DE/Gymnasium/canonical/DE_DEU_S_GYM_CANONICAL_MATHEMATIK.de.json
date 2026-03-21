@@ -75,13 +75,20 @@
       "requires": [],
       "applicability": {
         "jurisdiction": [
+          "DE-BW",
           "DE-BY",
           "DE-HE",
+          "DE-NI",
           "DE-NW"
         ]
       },
       "sourceRef": "Derived from Hessen KC 2024 Mathematik Oberstufe with lower-secondary alignment from Hessen G9 and Bayern Gymnasium",
       "extendedData": {
+        "applicabilityOverrides": {
+          "jurisdiction": [
+            "DE-BW"
+          ]
+        },
         "provenance": {
           "sourceLandscapeId": "2796fc7b-ba9d-446f-8f26-711dd6d8a9a3",
           "sourceLandscapeTitle": "Mathematik Oberstufe (Hessen, KC 2024)",
@@ -1542,10 +1549,10 @@
       "shortKey": "canonical_math_sek1_j6_anchor",
       "title": "Jahrgang 6 (Sek I)",
       "titleEn": "Year 6 (Lower Secondary)",
-      "description": "Kanonischer Jahrgangsanker für J6 der gymnasialen Sekundarstufe I in Mathematik. Der aktuelle Bayern-Slice bindet hier erste rationale Zahlvorstellungen, Flächen- und Volumenideen sowie Prozent- und Datenroutinen an.",
-      "descriptionEn": "Canonical year anchor for year 6 in lower-secondary Gymnasium mathematics. The current Bavaria slice attaches first rational-number concepts, area and volume ideas, and percentage and data routines here.",
+      "description": "Kanonischer Jahrgangsanker für J6 der gymnasialen Sekundarstufe I in Mathematik. Der aktuelle Bayern-Slice bindet hier erste rationale Zahlvorstellungen, Flächen- und Volumenideen sowie Prozent- und Datenroutinen an; der Niedersachsen-Slice ergänzt erste source-exakte Voraussetzungen im Rationalzahlenkorridor.",
+      "descriptionEn": "Canonical year anchor for year 6 in lower-secondary Gymnasium mathematics. The current Bavaria slice attaches first rational-number concepts, area and volume ideas, and percentage and data routines here; the Lower Saxony slice adds the first source-exact prerequisites in the rational-number corridor.",
       "core": true,
-      "weight": 18,
+      "weight": 21,
       "tags": [
         "canonical",
         "phase:SekI",
@@ -1571,8 +1578,10 @@
       "requires": [],
       "applicability": {
         "jurisdiction": [
+          "DE-BW",
           "DE-BY",
           "DE-HE",
+          "DE-NI",
           "DE-NW"
         ]
       },
@@ -1591,10 +1600,10 @@
       "shortKey": "canonical_math_sek1_j6_rational_numbers",
       "title": "Rationale Zahlen darstellen und berechnen",
       "titleEn": "Represent and calculate with rational numbers",
-      "description": "Kanonischer Cluster für den J6-Ausbau zu Brüchen, Dezimalbrüchen und rationalen Zahlen. Der aktuelle Bayern-Slice trennt hier zwischen Grundvorstellungen zu Brüchen, Darstellungswechseln, rationaler Arithmetik, Potenzen und Termstrukturen.",
-      "descriptionEn": "Canonical cluster for the year-6 expansion into fractions, decimal numbers, and rational numbers. The current Bavaria slice differentiates basic fraction concepts, representation changes, rational arithmetic, powers, and expression structures here.",
+      "description": "Kanonischer Cluster für den J6-Ausbau zu Brüchen, Dezimalbrüchen und rationalen Zahlen. Der aktuelle Bayern-Slice trennt hier zwischen Grundvorstellungen zu Brüchen, Darstellungswechseln, rationaler Arithmetik, Potenzen und Termstrukturen; der Niedersachsen-Slice ergänzt source-exakte Grundlagen zu Bruchdarstellungen, Dezimalzahlen und vorzeichenbehafteten Zahlen.",
+      "descriptionEn": "Canonical cluster for the year-6 expansion into fractions, decimal numbers, and rational numbers. The current Bavaria slice differentiates basic fraction concepts, representation changes, rational arithmetic, powers, and expression structures here; the Lower Saxony slice adds source-exact basics on fraction representations, decimal numbers, and signed numbers.",
       "core": true,
-      "weight": 9,
+      "weight": 12,
       "tags": [
         "canonical"
       ],
@@ -1617,20 +1626,21 @@
         "a075ae99-7669-563d-807a-f91b119c020a",
         "ca8b2e67-7d14-5baf-8404-26820fe3d548",
         "c9e01667-24c4-56a2-8cf4-dfb6c360d7b9",
+        "f6a54a49-b6cf-4ab7-a185-aa08bfcb6c97",
+        "2f565855-bcd6-4da5-bc80-4b72a2d93d50",
+        "199fe2ed-2576-4611-b8de-fd56fb9f78fc",
         "4eeab7d5-eeb3-579b-845e-1c52ffe9e89f",
         "ee48e811-4c9c-5080-9836-8403fc9f0810",
         "26f668a0-6425-5466-9cf7-6295dd189005",
         "0a6dab2e-1bbb-5587-adb0-456d3991c327"
       ],
-      "requires": [
-        "8dd5199b-f614-4ebd-8819-b5ff37326524",
-        "4b67bed9-06da-40b2-a306-24e9e7dfd390",
-        "cafd6520-c4af-4109-9863-cc49ba6fad4d"
-      ],
+      "requires": [],
       "applicability": {
         "jurisdiction": [
+          "DE-BW",
           "DE-BY",
           "DE-HE",
+          "DE-NI",
           "DE-NW"
         ]
       },
@@ -1843,6 +1853,140 @@
           "jurisdiction": [
             "DE-HE"
           ]
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "f6a54a49-b6cf-4ab7-a185-aa08bfcb6c97",
+      "shortKey": "canonical_math_use_compare_reduce_and_expand_fraction_representations",
+      "title": "Bruchdarstellungen verwenden, Brüche vergleichen, kürzen und erweitern",
+      "titleEn": "Use fraction representations and compare, reduce, and expand fractions",
+      "description": "Die lernende Person kann bildliche, verbale, geometrische und algebraische Bruchdarstellungen verwenden sowie Brüche in einfachen Situationen vergleichen, kürzen und erweitern.",
+      "descriptionEn": "The learner can use visual, verbal, geometric, and algebraic fraction representations and compare, reduce, and expand fractions in simple situations.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "K3.1",
+          "K4.1"
+        ],
+        "guidingIdeas": [
+          "L1"
+        ],
+        "phase": "J6",
+        "area": "Arithmetic",
+        "topicCode": "CANONICAL.MATH.SEK1.J6.1NI-A"
+      },
+      "contains": [],
+      "requires": [],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BW",
+          "DE-NI"
+        ]
+      },
+      "extendedData": {
+        "applicabilityOverrides": {
+          "jurisdiction": [
+            "DE-BW"
+          ]
+        },
+        "provenance": {
+          "sourceLandscapeId": "2b995085-dc5e-47c6-a563-9dcfc01fb74d",
+          "sourceLandscapeTitle": "Mathematik Sekundarstufe I (Niedersachsen, Pilot-Quellsnapshot)",
+          "sourceGoalId": "430a4b3b-1442-4542-a27a-5fe8726dc447"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "2f565855-bcd6-4da5-bc80-4b72a2d93d50",
+      "shortKey": "canonical_math_represent_decimal_numbers_on_number_line_in_place_value_and_as_fractions",
+      "title": "Dezimalzahlen auf der Zahlengeraden, im Stellenwertsystem und als Bruch darstellen",
+      "titleEn": "Represent decimal numbers on the number line, in place value form, and as fractions",
+      "description": "Die lernende Person kann Dezimalzahlen auf der Zahlengeraden, im Stellenwertsystem und als Bruch darstellen und zwischen diesen Darstellungen wechseln.",
+      "descriptionEn": "The learner can represent decimal numbers on the number line, in place value form, and as fractions and switch between these representations.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "K3.1",
+          "K4.1"
+        ],
+        "guidingIdeas": [
+          "L1"
+        ],
+        "phase": "J6",
+        "area": "Arithmetic",
+        "topicCode": "CANONICAL.MATH.SEK1.J6.1NI-B"
+      },
+      "contains": [],
+      "requires": [
+        "f6a54a49-b6cf-4ab7-a185-aa08bfcb6c97"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-NI"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "2b995085-dc5e-47c6-a563-9dcfc01fb74d",
+          "sourceLandscapeTitle": "Mathematik Sekundarstufe I (Niedersachsen, Pilot-Quellsnapshot)",
+          "sourceGoalId": "2c6d3275-ac7d-47d9-9de6-bbf2ad6b4d69"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "199fe2ed-2576-4611-b8de-fd56fb9f78fc",
+      "shortKey": "canonical_math_illustrate_positive_and_negative_numbers_on_number_line",
+      "title": "Positive und negative Zahlen an der Zahlengeraden veranschaulichen",
+      "titleEn": "Illustrate positive and negative numbers on the number line",
+      "description": "Die lernende Person kann positive und negative Zahlen an der Zahlengeraden veranschaulichen und zum Vergleichen sowie Einordnen nutzen.",
+      "descriptionEn": "The learner can illustrate positive and negative numbers on the number line and use this representation for comparing and locating them.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "K3.1",
+          "K4.1"
+        ],
+        "guidingIdeas": [
+          "L1"
+        ],
+        "phase": "J6",
+        "area": "Arithmetic",
+        "topicCode": "CANONICAL.MATH.SEK1.J6.1NI-C"
+      },
+      "contains": [],
+      "requires": [],
+      "applicability": {
+        "jurisdiction": [
+          "DE-NI"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "2b995085-dc5e-47c6-a563-9dcfc01fb74d",
+          "sourceLandscapeTitle": "Mathematik Sekundarstufe I (Niedersachsen, Pilot-Quellsnapshot)",
+          "sourceGoalId": "20f4e9dc-d898-45e2-b7df-eb89c9ee6195"
         }
       },
       "type": "atomic"
@@ -2685,8 +2829,10 @@
       "requires": [],
       "applicability": {
         "jurisdiction": [
+          "DE-BW",
           "DE-BY",
           "DE-HE",
+          "DE-NI",
           "DE-NW"
         ]
       },
@@ -2739,6 +2885,7 @@
       "requires": [],
       "applicability": {
         "jurisdiction": [
+          "DE-BW",
           "DE-BY",
           "DE-HE",
           "DE-NW"
@@ -2790,11 +2937,17 @@
       ],
       "applicability": {
         "jurisdiction": [
+          "DE-BW",
           "DE-BY",
           "DE-HE"
         ]
       },
       "extendedData": {
+        "applicabilityOverrides": {
+          "jurisdiction": [
+            "DE-BW"
+          ]
+        },
         "provenance": {
           "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
           "sourceLandscapeTitle": "Mathematik (Gymnasium)",
@@ -3151,8 +3304,10 @@
       "requires": [],
       "applicability": {
         "jurisdiction": [
+          "DE-BW",
           "DE-BY",
           "DE-HE",
+          "DE-NI",
           "DE-NW"
         ]
       },
@@ -3207,8 +3362,10 @@
       "requires": [],
       "applicability": {
         "jurisdiction": [
+          "DE-BW",
           "DE-BY",
           "DE-HE",
+          "DE-NI",
           "DE-NW"
         ]
       },
@@ -3263,6 +3420,7 @@
       "requires": [],
       "applicability": {
         "jurisdiction": [
+          "DE-BW",
           "DE-BY",
           "DE-HE",
           "DE-NW"
@@ -3314,8 +3472,10 @@
       ],
       "applicability": {
         "jurisdiction": [
+          "DE-BW",
           "DE-BY",
           "DE-HE",
+          "DE-NI",
           "DE-NW"
         ]
       },
@@ -3361,8 +3521,10 @@
       ],
       "applicability": {
         "jurisdiction": [
+          "DE-BW",
           "DE-BY",
           "DE-HE",
+          "DE-NI",
           "DE-NW"
         ]
       },
@@ -3656,11 +3818,17 @@
       ],
       "applicability": {
         "jurisdiction": [
+          "DE-BW",
           "DE-BY",
           "DE-HE"
         ]
       },
       "extendedData": {
+        "applicabilityOverrides": {
+          "jurisdiction": [
+            "DE-BW"
+          ]
+        },
         "provenance": {
           "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
           "sourceLandscapeTitle": "Mathematik (Gymnasium)",
@@ -3801,8 +3969,10 @@
       ],
       "applicability": {
         "jurisdiction": [
+          "DE-BW",
           "DE-BY",
           "DE-HE",
+          "DE-NI",
           "DE-NW"
         ]
       },
@@ -3901,6 +4071,7 @@
       ],
       "applicability": {
         "jurisdiction": [
+          "DE-BW",
           "DE-BY",
           "DE-HE"
         ]
@@ -3947,6 +4118,7 @@
       ],
       "applicability": {
         "jurisdiction": [
+          "DE-BW",
           "DE-BY",
           "DE-HE"
         ]
@@ -4234,6 +4406,7 @@
       "requires": [],
       "applicability": {
         "jurisdiction": [
+          "DE-BW",
           "DE-BY",
           "DE-HE"
         ]
@@ -4370,11 +4543,17 @@
       ],
       "applicability": {
         "jurisdiction": [
+          "DE-BW",
           "DE-BY",
           "DE-HE"
         ]
       },
       "extendedData": {
+        "applicabilityOverrides": {
+          "jurisdiction": [
+            "DE-BW"
+          ]
+        },
         "provenance": {
           "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
           "sourceLandscapeTitle": "Mathematik (Gymnasium)",
@@ -5157,6 +5336,7 @@
       "requires": [],
       "applicability": {
         "jurisdiction": [
+          "DE-BW",
           "DE-BY",
           "DE-HE",
           "DE-NW"
@@ -6154,8 +6334,10 @@
       ],
       "applicability": {
         "jurisdiction": [
+          "DE-BW",
           "DE-BY",
           "DE-HE",
+          "DE-NI",
           "DE-NW"
         ]
       },
@@ -12622,8 +12804,10 @@
       "shortKey": "canonical_math_e_analysis_foundations",
       "applicability": {
         "jurisdiction": [
+          "DE-BW",
           "DE-BY",
           "DE-HE",
+          "DE-NI",
           "DE-NW"
         ]
       },
@@ -12680,8 +12864,10 @@
       "shortKey": "canonical_math_functions_and_representations",
       "applicability": {
         "jurisdiction": [
+          "DE-BW",
           "DE-BY",
           "DE-HE",
+          "DE-NI",
           "DE-NW"
         ]
       },
@@ -12734,8 +12920,10 @@
       },
       "applicability": {
         "jurisdiction": [
+          "DE-BW",
           "DE-BY",
           "DE-HE",
+          "DE-NI",
           "DE-NW"
         ]
       },
@@ -12785,8 +12973,10 @@
       },
       "applicability": {
         "jurisdiction": [
+          "DE-BW",
           "DE-BY",
           "DE-HE",
+          "DE-NI",
           "DE-NW"
         ]
       },
@@ -13820,8 +14010,10 @@
       "shortKey": "canonical_math_function_concept_and_representations",
       "applicability": {
         "jurisdiction": [
+          "DE-BW",
           "DE-BY",
           "DE-HE",
+          "DE-NI",
           "DE-NW"
         ]
       },
@@ -13866,12 +14058,20 @@
       "shortKey": "canonical_math_calculate_function_values",
       "applicability": {
         "jurisdiction": [
+          "DE-BW",
           "DE-BY",
           "DE-HE",
+          "DE-NI",
           "DE-NW"
         ]
       },
       "extendedData": {
+        "applicabilityOverrides": {
+          "jurisdiction": [
+            "DE-BW",
+            "DE-NI"
+          ]
+        },
         "provenance": {
           "sourceLandscapeId": "2796fc7b-ba9d-446f-8f26-711dd6d8a9a3",
           "sourceLandscapeTitle": "Mathematik Oberstufe (Hessen, KC 2024)",
@@ -13912,12 +14112,19 @@
       "shortKey": "canonical_math_read_function_values_from_graphs",
       "applicability": {
         "jurisdiction": [
+          "DE-BW",
           "DE-BY",
           "DE-HE",
+          "DE-NI",
           "DE-NW"
         ]
       },
       "extendedData": {
+        "applicabilityOverrides": {
+          "jurisdiction": [
+            "DE-NI"
+          ]
+        },
         "provenance": {
           "sourceLandscapeId": "2796fc7b-ba9d-446f-8f26-711dd6d8a9a3",
           "sourceLandscapeTitle": "Mathematik Oberstufe (Hessen, KC 2024)",
@@ -13960,6 +14167,7 @@
       "shortKey": "canonical_math_interpret_linear_function_parameters",
       "applicability": {
         "jurisdiction": [
+          "DE-BW",
           "DE-HE",
           "DE-NW"
         ]
@@ -14096,12 +14304,19 @@
       },
       "applicability": {
         "jurisdiction": [
+          "DE-BW",
           "DE-BY",
           "DE-HE",
+          "DE-NI",
           "DE-NW"
         ]
       },
       "extendedData": {
+        "applicabilityOverrides": {
+          "jurisdiction": [
+            "DE-BW"
+          ]
+        },
         "provenance": {
           "sourceLandscapeId": "2796fc7b-ba9d-446f-8f26-711dd6d8a9a3",
           "sourceLandscapeTitle": "Mathematik Oberstufe (Hessen, KC 2024)",
@@ -14141,14 +14356,18 @@
       },
       "applicability": {
         "jurisdiction": [
+          "DE-BW",
           "DE-BY",
           "DE-HE",
+          "DE-NI",
           "DE-NW"
         ]
       },
       "extendedData": {
         "applicabilityOverrides": {
           "jurisdiction": [
+            "DE-BW",
+            "DE-NI",
             "DE-NW"
           ]
         },
@@ -14192,6 +14411,7 @@
       "applicability": {
         "jurisdiction": [
           "DE-HE",
+          "DE-NI",
           "DE-NW"
         ]
       },
@@ -14276,12 +14496,19 @@
       },
       "applicability": {
         "jurisdiction": [
+          "DE-BW",
           "DE-BY",
           "DE-HE",
+          "DE-NI",
           "DE-NW"
         ]
       },
       "extendedData": {
+        "applicabilityOverrides": {
+          "jurisdiction": [
+            "DE-BW"
+          ]
+        },
         "provenance": {
           "sourceLandscapeId": "2796fc7b-ba9d-446f-8f26-711dd6d8a9a3",
           "sourceLandscapeTitle": "Mathematik Oberstufe (Hessen, KC 2024)",
@@ -14322,12 +14549,19 @@
       },
       "applicability": {
         "jurisdiction": [
+          "DE-BW",
           "DE-BY",
           "DE-HE",
+          "DE-NI",
           "DE-NW"
         ]
       },
       "extendedData": {
+        "applicabilityOverrides": {
+          "jurisdiction": [
+            "DE-BW"
+          ]
+        },
         "provenance": {
           "sourceLandscapeId": "2796fc7b-ba9d-446f-8f26-711dd6d8a9a3",
           "sourceLandscapeTitle": "Mathematik Oberstufe (Hessen, KC 2024)",
@@ -14366,12 +14600,19 @@
       },
       "applicability": {
         "jurisdiction": [
+          "DE-BW",
           "DE-BY",
           "DE-HE",
+          "DE-NI",
           "DE-NW"
         ]
       },
       "extendedData": {
+        "applicabilityOverrides": {
+          "jurisdiction": [
+            "DE-BW"
+          ]
+        },
         "provenance": {
           "sourceLandscapeId": "2796fc7b-ba9d-446f-8f26-711dd6d8a9a3",
           "sourceLandscapeTitle": "Mathematik Oberstufe (Hessen, KC 2024)",
@@ -14414,6 +14655,7 @@
       "applicability": {
         "jurisdiction": [
           "DE-BY",
+          "DE-NI",
           "DE-NW"
         ]
       },
@@ -14458,7 +14700,8 @@
       },
       "applicability": {
         "jurisdiction": [
-          "DE-BY"
+          "DE-BY",
+          "DE-NI"
         ]
       },
       "extendedData": {
@@ -14547,7 +14790,9 @@
       },
       "applicability": {
         "jurisdiction": [
+          "DE-BW",
           "DE-HE",
+          "DE-NI",
           "DE-NW"
         ]
       },
@@ -14594,6 +14839,7 @@
       "applicability": {
         "jurisdiction": [
           "DE-BY",
+          "DE-NI",
           "DE-NW"
         ]
       },
@@ -14640,6 +14886,7 @@
       "applicability": {
         "jurisdiction": [
           "DE-BY",
+          "DE-NI",
           "DE-NW"
         ]
       },
@@ -18591,6 +18838,7 @@
       },
       "applicability": {
         "jurisdiction": [
+          "DE-BW",
           "DE-HE",
           "DE-NW"
         ]
@@ -18609,15 +18857,16 @@
       "id": "93ac7fc8-6d83-5394-bbea-80758b463da1",
       "title": "Q1.1 Einführung in die Integralrechnung",
       "titleEn": "Q1.1 Introduction to Integral Calculus",
-      "description": "Grundlegende Vorstellungen zum bestimmten Integral als Bestandsgröße und Flächeninhalt, Näherungsverfahren, Hauptsatz und elementare Integrationsregeln.",
-      "descriptionEn": "Basic concepts of the definite integral as stock quantity and area, approximation methods, Fundamental Theorem of Calculus, and elementary integration rules.",
-      "weight": 6,
+      "description": "Grundlegende Vorstellungen zu Produktsummen und zum bestimmten Integral als Bestandsgröße und Flächeninhalt, Näherungsverfahren, Hauptsatz und elementare Integrationsregeln.",
+      "descriptionEn": "Basic concepts of product sums and of the definite integral as stock quantity and area, approximation methods, Fundamental Theorem of Calculus, and elementary integration rules.",
+      "weight": 7,
       "tags": [
         "GK",
         "LK"
       ],
       "contains": [
         "2afba4a2-287d-5e8f-aeee-a3bcf8652236",
+        "269675a9-13cd-4a3a-ab75-63794f5c9710",
         "9441bb35-2a2f-4edc-9d8a-bc58c257054d",
         "94d63ad9-ae1c-5ff2-b05e-188a0f5ebec6",
         "b9bbd2a8-1379-5ffb-817f-41467d48abef",
@@ -18642,6 +18891,7 @@
       },
       "applicability": {
         "jurisdiction": [
+          "DE-BW",
           "DE-HE",
           "DE-NW"
         ]
@@ -18686,6 +18936,7 @@
       },
       "applicability": {
         "jurisdiction": [
+          "DE-BW",
           "DE-HE",
           "DE-NW"
         ]
@@ -18695,6 +18946,49 @@
           "sourceLandscapeId": "2796fc7b-ba9d-446f-8f26-711dd6d8a9a3",
           "sourceLandscapeTitle": "Mathematik Oberstufe (Hessen, KC 2024)",
           "sourceGoalId": "ff3062f2-62e1-4736-b2af-593859f7fe01"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "269675a9-13cd-4a3a-ab75-63794f5c9710",
+      "title": "Produktsummen und orientierte Flächen im Sachkontext deuten",
+      "titleEn": "Interpret product sums and oriented areas in context",
+      "description": "Die lernende Person kann Produktsummen und Inhalte orientierter Flächen in Sachsituationen deuten und ihre Bedeutung für Gesamtwirkungen qualitativ erläutern.",
+      "descriptionEn": "The learner can interpret product sums and oriented areas in real-world situations and qualitatively explain their meaning for total effects.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "858113c5-e53b-57bb-b01f-ba95c3ddcb6f",
+        "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K2.2",
+          "K3.2"
+        ],
+        "guidingIdeas": [
+          "L2",
+          "L4"
+        ],
+        "phase": "Q1"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-NW"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "d3a068ca-90c6-4d7f-ab6b-4d8b43085cb1",
+          "sourceLandscapeTitle": "Mathematik Oberstufe (Nordrhein-Westfalen, Pilot-Quellsnapshot)",
+          "sourceGoalId": "71539804-c722-4fe6-bc71-e4e2abe1773f"
         }
       },
       "type": "atomic"
@@ -18771,11 +19065,17 @@
       },
       "applicability": {
         "jurisdiction": [
+          "DE-BW",
           "DE-HE",
           "DE-NW"
         ]
       },
       "extendedData": {
+        "applicabilityOverrides": {
+          "jurisdiction": [
+            "DE-BW"
+          ]
+        },
         "provenance": {
           "sourceLandscapeId": "2796fc7b-ba9d-446f-8f26-711dd6d8a9a3",
           "sourceLandscapeTitle": "Mathematik Oberstufe (Hessen, KC 2024)",
@@ -18815,6 +19115,7 @@
       },
       "applicability": {
         "jurisdiction": [
+          "DE-BW",
           "DE-HE",
           "DE-NW"
         ]
@@ -18857,6 +19158,7 @@
       },
       "applicability": {
         "jurisdiction": [
+          "DE-BW",
           "DE-HE"
         ]
       },
@@ -19253,6 +19555,7 @@
       },
       "applicability": {
         "jurisdiction": [
+          "DE-BW",
           "DE-HE"
         ]
       },
@@ -19298,10 +19601,16 @@
       },
       "applicability": {
         "jurisdiction": [
+          "DE-BW",
           "DE-HE"
         ]
       },
       "extendedData": {
+        "applicabilityOverrides": {
+          "jurisdiction": [
+            "DE-BW"
+          ]
+        },
         "provenance": {
           "sourceLandscapeId": "2796fc7b-ba9d-446f-8f26-711dd6d8a9a3",
           "sourceLandscapeTitle": "Mathematik Oberstufe (Hessen, KC 2024)",
@@ -19341,6 +19650,7 @@
       },
       "applicability": {
         "jurisdiction": [
+          "DE-BW",
           "DE-HE"
         ]
       },

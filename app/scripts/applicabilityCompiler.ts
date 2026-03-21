@@ -11,7 +11,7 @@ const sourceLandscapeRegistryFile = join(curriculaDir, 'DE', 'Gymnasium', 'prove
 const reportDir = join(repoRoot, 'tmp', 'applicability')
 
 const SUPPORTED_DIMENSION = 'jurisdiction' as const
-const SUPPORTED_JURISDICTIONS = ['DE-BY', 'DE-HE', 'DE-NW'] as const
+const SUPPORTED_JURISDICTIONS = ['DE-BW', 'DE-BY', 'DE-HE', 'DE-NI', 'DE-NW'] as const
 
 type SupportedJurisdiction = (typeof SUPPORTED_JURISDICTIONS)[number]
 type FindingSeverity = 'error' | 'warning'
@@ -207,8 +207,14 @@ function normalizeJurisdictionValue(raw: string): SupportedJurisdiction | null {
   if (normalized === 'DE-BY' || normalized === 'BY' || normalized === 'BAY' || normalized === 'DE-BAY') {
     return 'DE-BY'
   }
+  if (normalized === 'DE-BW' || normalized === 'BW' || normalized === 'BAW' || normalized === 'DE-BAW') {
+    return 'DE-BW'
+  }
   if (normalized === 'DE-NW' || normalized === 'NW' || normalized === 'NRW' || normalized === 'DE-NRW') {
     return 'DE-NW'
+  }
+  if (normalized === 'DE-NI' || normalized === 'NI' || normalized === 'NDS' || normalized === 'DE-NDS') {
+    return 'DE-NI'
   }
   return null
 }

@@ -89,8 +89,10 @@ const APPLICABILITY_DIMENSION_LABELS: Record<string, { de: string; en: string }>
 }
 
 const APPLICABILITY_VALUE_LABELS: Record<string, { de: string; en: string }> = {
+  'DE-BW': { de: 'Baden-Wuerttemberg', en: 'Baden-Wuerttemberg' },
   'DE-BY': { de: 'Bayern', en: 'Bavaria' },
   'DE-HE': { de: 'Hessen', en: 'Hesse' },
+  'DE-NI': { de: 'Niedersachsen', en: 'Lower Saxony' },
   'DE-NW': { de: 'Nordrhein-Westfalen', en: 'North Rhine-Westphalia' },
   GK: { de: 'GK', en: 'GK' },
   LK: { de: 'LK', en: 'LK' },

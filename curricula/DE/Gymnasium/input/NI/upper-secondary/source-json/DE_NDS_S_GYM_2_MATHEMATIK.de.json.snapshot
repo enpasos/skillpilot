@@ -1,0 +1,555 @@
+{
+  "landscapeId": "fcb04661-6ea2-4030-a9b2-97e6cc03daf8",
+  "locale": "de-DE",
+  "country": "DE",
+  "region": "NI",
+  "schoolType": "Gymnasium",
+  "subject": "Mathematik",
+  "frameworkId": "ni-kc-gost-math",
+  "title": "Mathematik Oberstufe (Niedersachsen, Pilot-Quellsnapshot)",
+  "titleEn": "Mathematics Upper Secondary (Lower Saxony, Pilot Source Snapshot)",
+  "description": "Erster archivierter Niedersachsen-Quellsnapshot fuer den Oberstufen-Pilotkorridor Mathematik. Der Snapshot umfasst in der Einfuehrungsphase zunaechst nur die priorisierte Analysis-Oberflaeche aus elementarer Funktionenlehre und Ableitungen.",
+  "descriptionEn": "First archived Lower Saxony source snapshot for the upper-secondary mathematics pilot corridor. The snapshot initially covers only the prioritized analysis surface from the introductory phase learning areas on elementary functions and derivatives.",
+  "compatibilityOnly": true,
+  "legacyHiddenByDefault": true,
+  "goals": [
+    {
+      "id": "dc0170c6-bbe8-48e4-98da-1f609023d216",
+      "title": "Mathematik Oberstufe",
+      "titleEn": "Mathematics Upper Secondary",
+      "description": "Pilot-Subset der niedersaechsischen Mathematik-Kompetenzen der Oberstufe mit Fokus auf elementare Funktionenlehre und Ableitungen in der Einfuehrungsphase.",
+      "descriptionEn": "Pilot subset of Lower Saxony upper-secondary mathematics competencies with a focus on elementary functions and derivatives in the introductory phase.",
+      "weight": 10,
+      "tags": [
+        "E",
+        "PilotSubset",
+        "Analysis"
+      ],
+      "contains": [
+        "867f28ba-1d9d-4d2d-8cf4-0f175c3d4d5b",
+        "6aa63fbe-6b48-41ae-a650-7d80074c5a94"
+      ],
+      "requires": [
+        "867f28ba-1d9d-4d2d-8cf4-0f175c3d4d5b"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, 2.2 Einfuehrungs- und Qualifikationsphase sowie Lernbereiche 'Elementare Funktionenlehre' und 'Ableitungen', S. 8 sowie 38-41.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "GLOBAL",
+        "area": "Funktionen und Analysis"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "867f28ba-1d9d-4d2d-8cf4-0f175c3d4d5b",
+      "title": "Warum Mathematik in der Einfuehrungsphase? - gemeinsame Basis fuer die Qualifikationsphase",
+      "titleEn": "Why Mathematics in the Introductory Phase? - Shared Basis for the Qualification Phase",
+      "description": "Die Einfuehrungsphase schafft fuer alle Schuelerinnen und Schueler eine gemeinsame Basis fuer die Mitarbeit in der Qualifikationsphase, fuehrt in deren Arbeitsweisen ein und unterstuetzt die Kurswahl.",
+      "descriptionEn": "The introductory phase creates a shared basis for all students to work in the qualification phase, introduces its ways of working, and supports course selection.",
+      "weight": 1,
+      "tags": [
+        "E",
+        "Motivation",
+        "Orientation"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, 2.2 Einfuehrungs- und Qualifikationsphase, S. 8.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "GLOBAL",
+        "area": "Orientierung"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "6aa63fbe-6b48-41ae-a650-7d80074c5a94",
+      "title": "Einfuehrungsphase: Elementare Funktionenlehre und Ableitungen",
+      "titleEn": "Introductory Phase: Elementary Functions and Derivatives",
+      "description": "Pilot-Cluster fuer den ersten niedersaechsischen Analysis-Korridor der Einfuehrungsphase aus elementarer Funktionenlehre und Ableitungen.",
+      "descriptionEn": "Pilot cluster for the first Lower Saxony analysis corridor of the introductory phase from elementary functions and derivatives.",
+      "weight": 9,
+      "tags": [
+        "E",
+        "PilotSubset",
+        "Analysis"
+      ],
+      "contains": [
+        "fe598333-6c43-4518-be0a-51ad412e8353",
+        "f3c60cea-3fd6-4120-819e-578e33a029f8"
+      ],
+      "requires": [
+        "867f28ba-1d9d-4d2d-8cf4-0f175c3d4d5b"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereiche 'Elementare Funktionenlehre' und 'Ableitungen', S. 38-41.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "E",
+        "area": "Funktionen und Analysis"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "fe598333-6c43-4518-be0a-51ad412e8353",
+      "title": "Elementare Funktionenlehre",
+      "titleEn": "Elementary Functions",
+      "description": "Lernbereich der Einfuehrungsphase zu Potenzfunktionen, Funktionsvergleich und ganzrationalen Funktionen als Grundlage des Analysis-Korridors.",
+      "descriptionEn": "Introductory phase learning area on power functions, function comparison, and polynomial functions as the basis of the analysis corridor.",
+      "weight": 3,
+      "tags": [
+        "E",
+        "Funktionen",
+        "PilotSubset"
+      ],
+      "contains": [
+        "5e7e8e47-2183-44cf-a026-6285f3b0083a",
+        "55d56662-56db-4a76-a965-01a7f5534da6",
+        "d83b5cdd-3060-4c6f-874a-99473a205214"
+      ],
+      "requires": [],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Elementare Funktionenlehre', S. 38-39.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "E",
+        "area": "Elementare Funktionenlehre"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "f3c60cea-3fd6-4120-819e-578e33a029f8",
+      "title": "Ableitungen",
+      "titleEn": "Derivatives",
+      "description": "Lernbereich der Einfuehrungsphase zu Aenderungsraten, Tangenten, Ableitungsgraphen, Ableitungsregeln und ersten Kurvenuntersuchungen.",
+      "descriptionEn": "Introductory phase learning area on rates of change, tangents, derivative graphs, differentiation rules, and first curve investigations.",
+      "weight": 6,
+      "tags": [
+        "E",
+        "Analysis",
+        "PilotSubset"
+      ],
+      "contains": [
+        "250ba641-b2a1-4717-9a27-4ee0e6aa83c2",
+        "234dde5d-cc9d-4508-af9e-092e614ea304",
+        "6c021ee2-f600-4977-a4a8-877ece6c8c3b",
+        "d1ca482c-4184-464f-a057-2d61ba077803",
+        "5b284b66-f417-4366-8685-012ae000b3b1",
+        "d08d5280-3561-4d02-91f0-5f7465dd88a7"
+      ],
+      "requires": [
+        "fe598333-6c43-4518-be0a-51ad412e8353"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Ableitungen', S. 40-41.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "E",
+        "area": "Ableitungen"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "5e7e8e47-2183-44cf-a026-6285f3b0083a",
+      "title": "Potenz- und Wurzelfunktionen skizzieren, Symmetrie und Globalverhalten beschreiben",
+      "titleEn": "Sketch Power and Root Functions and Describe Symmetry and End Behaviour",
+      "description": "Die Schuelerinnen und Schueler skizzieren Graphen von Potenzfunktionen hilfsmittelfrei, beschreiben Symmetrie und Globalverhalten und stellen Wurzelfunktionen als spezielle Potenzfunktionen dar.",
+      "descriptionEn": "Students sketch graphs of power functions without tools, describe symmetry and end behaviour, and represent root functions as special power functions.",
+      "weight": 1,
+      "tags": [
+        "E",
+        "Funktionen",
+        "Potenzfunktionen"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Elementare Funktionenlehre', Kern, 'Potenzfunktionen', S. 38-39.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "E",
+        "area": "Elementare Funktionenlehre"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "55d56662-56db-4a76-a965-01a7f5534da6",
+      "title": "Funktionsklassen vergleichen und Parametervariationen deuten",
+      "titleEn": "Compare Function Classes and Interpret Parameter Variations",
+      "description": "Die Schuelerinnen und Schueler fuehren exemplarisch Parametervariationen durch, beschreiben deren Auswirkungen auf Graphen und grenzen Potenz-, Exponential- und Sinusfunktionen in Anwendungssituationen gegeneinander ab.",
+      "descriptionEn": "Students carry out exemplary parameter variations, describe their effects on graphs, and distinguish power, exponential, and sine functions in application contexts.",
+      "weight": 1,
+      "tags": [
+        "E",
+        "Funktionen",
+        "Parametervariation"
+      ],
+      "contains": [],
+      "requires": [
+        "5e7e8e47-2183-44cf-a026-6285f3b0083a"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Elementare Funktionenlehre', Kern, 'Vergleich von Potenz-, Exponential- und Sinusfunktionen', S. 39.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "E",
+        "area": "Elementare Funktionenlehre"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "d83b5cdd-3060-4c6f-874a-99473a205214",
+      "title": "Ganzrationale Funktionen deuten, modellieren und ueber ihre Termdarstellung beschreiben",
+      "titleEn": "Interpret, Model and Describe Polynomial Functions via Their Terms",
+      "description": "Die Schuelerinnen und Schueler deuten ganzrationale Funktionen als Ueberlagerung von Potenzfunktionen, modellieren Sachsituationen, bestimmen Nullstellen und beschreiben Globalverhalten, Symmetrien sowie den Zusammenhang von Funktionsgleichung und Graph.",
+      "descriptionEn": "Students interpret polynomial functions as combinations of power functions, model contextual situations, determine roots, and describe end behaviour, symmetry, and the relation between function equation and graph.",
+      "weight": 1,
+      "tags": [
+        "E",
+        "Funktionen",
+        "GanzrationaleFunktionen"
+      ],
+      "contains": [],
+      "requires": [
+        "5e7e8e47-2183-44cf-a026-6285f3b0083a",
+        "55d56662-56db-4a76-a965-01a7f5534da6"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Elementare Funktionenlehre', Kern, 'Ganzrationale Funktionen', S. 39.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "E",
+        "area": "Elementare Funktionenlehre"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "250ba641-b2a1-4717-9a27-4ee0e6aa83c2",
+      "title": "Mittlere und lokale Aenderungsraten sowie Sekanten- und Tangentensteigungen bestimmen",
+      "titleEn": "Determine Average and Local Rates of Change as well as Secant and Tangent Slopes",
+      "description": "Die Schuelerinnen und Schueler bestimmen mittlere und lokale Aenderungsraten in Sachzusammenhaengen sowie Sekanten- und Tangentensteigungen.",
+      "descriptionEn": "Students determine average and local rates of change in contexts as well as secant and tangent slopes.",
+      "weight": 1,
+      "tags": [
+        "E",
+        "Analysis",
+        "Aenderungsrate"
+      ],
+      "contains": [],
+      "requires": [
+        "d83b5cdd-3060-4c6f-874a-99473a205214"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Ableitungen', Kern, 'Ableitung an einer Stelle', S. 40-41.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "E",
+        "area": "Ableitungen"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "234dde5d-cc9d-4508-af9e-092e614ea304",
+      "title": "Lokale Aenderungsrate und Tangentensteigung mit propaedeutischem Grenzwertbegriff entwickeln",
+      "titleEn": "Develop Local Rate of Change and Tangent Slope Using a Propedeutic Limit Concept",
+      "description": "Die Schuelerinnen und Schueler beschreiben und interpretieren mit einem propaedeutischen Grenzwertbegriff die Entwicklung der lokalen Aenderungsrate aus mittleren Aenderungsraten und die Entwicklung der Tangentensteigung aus Sekantensteigungen.",
+      "descriptionEn": "Students use a propedeutic concept of limit to describe and interpret how local rates of change emerge from average rates of change and how tangent slopes emerge from secant slopes.",
+      "weight": 1,
+      "tags": [
+        "E",
+        "Analysis",
+        "Grenzwert"
+      ],
+      "contains": [],
+      "requires": [
+        "250ba641-b2a1-4717-9a27-4ee0e6aa83c2"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Ableitungen', Kern, 'Ableitung an einer Stelle', S. 40-41.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "E",
+        "area": "Ableitungen"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "6c021ee2-f600-4977-a4a8-877ece6c8c3b",
+      "title": "Ableitung als lokale Aenderungsrate und Tangentensteigung deuten",
+      "titleEn": "Interpret the Derivative as Local Rate of Change and Tangent Slope",
+      "description": "Die Schuelerinnen und Schueler deuten die Ableitung als lokale Aenderungsrate und als Tangentensteigung und erlaeutern diesen Zusammenhang an Beispielen.",
+      "descriptionEn": "Students interpret the derivative as local rate of change and as tangent slope and explain this relation using examples.",
+      "weight": 1,
+      "tags": [
+        "E",
+        "Analysis",
+        "Ableitung"
+      ],
+      "contains": [],
+      "requires": [
+        "234dde5d-cc9d-4508-af9e-092e614ea304"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Ableitungen', Kern, 'Ableitung an einer Stelle', S. 40-41.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "E",
+        "area": "Ableitungen"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "d1ca482c-4184-464f-a057-2d61ba077803",
+      "title": "Funktionsgraph und Ableitungsgraph zusammen beschreiben",
+      "titleEn": "Describe Function Graphs and Derivative Graphs Together",
+      "description": "Die Schuelerinnen und Schueler entwickeln wechselseitig Funktionsgraph und Ableitungsgraph auseinander und beschreiben sowie begruenden ihre Zusammenhaenge mit Blick auf Monotonie, Extrem- und Wendepunkte.",
+      "descriptionEn": "Students derive function graphs and derivative graphs from each other and describe and justify their relationships with regard to monotonicity, extrema, and inflection points.",
+      "weight": 1,
+      "tags": [
+        "E",
+        "Analysis",
+        "Ableitungsgraph"
+      ],
+      "contains": [],
+      "requires": [
+        "6c021ee2-f600-4977-a4a8-877ece6c8c3b"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Ableitungen', Kern, 'Ableitungsfunktion', S. 41.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "E",
+        "area": "Ableitungen"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "5b284b66-f417-4366-8685-012ae000b3b1",
+      "title": "Standardableitungen sowie Summen- und Faktorregel nutzen",
+      "titleEn": "Use Standard Derivatives as well as Sum and Factor Rules",
+      "description": "Die Schuelerinnen und Schueler geben die Ableitungsfunktionen von ausgewaehlten Standardfunktionen an und wenden Summen- und Faktorregel zur Bestimmung weiterer Ableitungen an.",
+      "descriptionEn": "Students state derivative functions of selected standard functions and use the sum and factor rules to determine further derivatives.",
+      "weight": 1,
+      "tags": [
+        "E",
+        "Analysis",
+        "Ableitungsregeln"
+      ],
+      "contains": [],
+      "requires": [
+        "6c021ee2-f600-4977-a4a8-877ece6c8c3b"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Ableitungen', Kern, 'Ableitungsfunktion', S. 41.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "E",
+        "area": "Ableitungen"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "d08d5280-3561-4d02-91f0-5f7465dd88a7",
+      "title": "Tangenten, Normalen, Monotonie, Extrem- und Wendestellen untersuchen und Sachprobleme loesen",
+      "titleEn": "Investigate Tangents, Normals, Monotonicity, Extrema and Inflection Points and Solve Contextual Problems",
+      "description": "Retained Split-Cluster fuer den niedersaechsischen AB3-Ableitungszug zu Tangenten und Normalen, Kurvenuntersuchungen und ersten Optimierungsproblemen.",
+      "descriptionEn": "Retained split cluster for the Lower Saxony AB3 derivative corridor covering tangents and normals, curve analysis, and first optimisation problems.",
+      "weight": 3,
+      "tags": [
+        "E",
+        "Analysis",
+        "Kurvenuntersuchung"
+      ],
+      "contains": [
+        "23e03002-37c4-4268-ba3a-ddcdffc2e666",
+        "f4515a28-7161-49ae-8e74-f58d81ec0812",
+        "270b0f43-623c-413c-b7f1-eb690079ad8d"
+      ],
+      "requires": [
+        "d1ca482c-4184-464f-a057-2d61ba077803",
+        "5b284b66-f417-4366-8685-012ae000b3b1"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Ableitungen', Kern, 'Verwendung von Ableitungen', S. 41.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "E",
+        "area": "Ableitungen"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "23e03002-37c4-4268-ba3a-ddcdffc2e666",
+      "title": "Tangenten- und Normalengleichungen bestimmen",
+      "titleEn": "Determine tangent and normal equations",
+      "description": "Die Schuelerinnen und Schueler bestimmen Tangenten- und Normalengleichungen an Funktionsgraphen.",
+      "descriptionEn": "Students determine tangent and normal equations on function graphs.",
+      "weight": 1,
+      "tags": [
+        "E",
+        "Analysis",
+        "TangentenUndNormalen"
+      ],
+      "contains": [],
+      "requires": [
+        "6c021ee2-f600-4977-a4a8-877ece6c8c3b",
+        "5b284b66-f417-4366-8685-012ae000b3b1"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Ableitungen', Kern, 'Verwendung von Ableitungen', S. 41.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "E",
+        "area": "Ableitungen"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "f4515a28-7161-49ae-8e74-f58d81ec0812",
+      "title": "Funktionen auf Monotonie sowie Extrem- und Wendestellen untersuchen",
+      "titleEn": "Investigate functions for monotonicity as well as extrema and inflection points",
+      "description": "Retained Split-Cluster fuer den niedersaechsischen AB2-Ableitungszug zu Monotonie, Extrem- und Wendestellen.",
+      "descriptionEn": "Retained split cluster for the Lower Saxony AB2 derivative corridor covering monotonicity, extrema, and inflection points.",
+      "weight": 2,
+      "tags": [
+        "E",
+        "Analysis",
+        "Kurvenuntersuchung"
+      ],
+      "contains": [
+        "22074d55-5227-4487-9fcc-4bc5dcec970e",
+        "d3e91530-938e-46c9-b0de-55bbae83e5a0"
+      ],
+      "requires": [
+        "d1ca482c-4184-464f-a057-2d61ba077803",
+        "5b284b66-f417-4366-8685-012ae000b3b1"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Ableitungen', Kern, 'Verwendung von Ableitungen', S. 41.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "E",
+        "area": "Ableitungen"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "22074d55-5227-4487-9fcc-4bc5dcec970e",
+      "title": "Funktionen auf Monotonie und Extremstellen untersuchen",
+      "titleEn": "Investigate functions for monotonicity and extrema",
+      "description": "Die Schuelerinnen und Schueler untersuchen Funktionen auf Monotonie und Extremstellen.",
+      "descriptionEn": "Students investigate functions for monotonicity and extrema.",
+      "weight": 1,
+      "tags": [
+        "E",
+        "Analysis",
+        "Kurvenuntersuchung"
+      ],
+      "contains": [],
+      "requires": [
+        "d1ca482c-4184-464f-a057-2d61ba077803",
+        "5b284b66-f417-4366-8685-012ae000b3b1"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Ableitungen', Kern, 'Verwendung von Ableitungen', S. 41.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "E",
+        "area": "Ableitungen"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "d3e91530-938e-46c9-b0de-55bbae83e5a0",
+      "title": "Funktionen auf Wendestellen untersuchen",
+      "titleEn": "Investigate functions for inflection points",
+      "description": "Die Schuelerinnen und Schueler untersuchen Funktionen auf Wendestellen.",
+      "descriptionEn": "Students investigate functions for inflection points.",
+      "weight": 1,
+      "tags": [
+        "E",
+        "Analysis",
+        "Wendestellen"
+      ],
+      "contains": [],
+      "requires": [
+        "d1ca482c-4184-464f-a057-2d61ba077803",
+        "5b284b66-f417-4366-8685-012ae000b3b1"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Ableitungen', Kern, 'Verwendung von Ableitungen', S. 41.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "E",
+        "area": "Ableitungen"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "270b0f43-623c-413c-b7f1-eb690079ad8d",
+      "title": "Optimierungsprobleme mit Ableitungen loesen",
+      "titleEn": "Solve optimization problems using derivatives",
+      "description": "Die Schuelerinnen und Schueler loesen mit Hilfe der Ableitung insbesondere Optimierungsprobleme in Sachsituationen.",
+      "descriptionEn": "Students use derivatives in particular to solve optimisation problems in contextual situations.",
+      "weight": 1,
+      "tags": [
+        "E",
+        "Analysis",
+        "Optimierung"
+      ],
+      "contains": [],
+      "requires": [
+        "d1ca482c-4184-464f-a057-2d61ba077803",
+        "5b284b66-f417-4366-8685-012ae000b3b1"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Ableitungen', Kern, 'Verwendung von Ableitungen', S. 41.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "E",
+        "area": "Ableitungen"
+      },
+      "type": "atomic"
+    }
+  ]
+}

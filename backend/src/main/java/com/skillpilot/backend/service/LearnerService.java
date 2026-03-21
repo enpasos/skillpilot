@@ -103,7 +103,7 @@ public class LearnerService {
             "C2");
 
     private static final Set<String> COURSE_FILTER_IDS = Set.of("GK", "LK");
-    private static final Set<String> STATE_FILTER_IDS = Set.of("ALL", "DE-HE", "DE-BY", "DE-NW");
+    private static final Set<String> STATE_FILTER_IDS = Set.of("ALL", "DE-BW", "DE-HE", "DE-BY", "DE-NI", "DE-NW");
     private static final String APPLICABILITY_DIMENSION_JURISDICTION = "jurisdiction";
     private static final String CANONICAL_GYMNASIUM_ROOT_ID = "a0e13c56-c25f-4742-9272-3a1a603ee52e";
     private static final String CANONICAL_GYMNASIUM_MATH_ID = "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced";
@@ -3723,6 +3723,8 @@ public class LearnerService {
         return switch (normalized) {
             case "HE", "HES" -> "DE-HE";
             case "BY", "BAY" -> "DE-BY";
+            case "BW", "BAW" -> "DE-BW";
+            case "NI", "NDS" -> "DE-NI";
             case "NW", "NRW" -> "DE-NW";
             default -> null;
         };
@@ -3736,6 +3738,8 @@ public class LearnerService {
         return switch (normalized) {
             case "HE", "HES", "DE-HES" -> "DE-HE";
             case "BY", "BAY", "DE-BAY" -> "DE-BY";
+            case "BW", "BAW", "DE-BAW" -> "DE-BW";
+            case "NI", "NDS", "DE-NDS" -> "DE-NI";
             case "NW", "NRW", "DE-NRW" -> "DE-NW";
             default -> normalized;
         };

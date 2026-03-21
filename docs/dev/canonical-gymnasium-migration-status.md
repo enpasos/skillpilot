@@ -3001,6 +3001,433 @@ Validation used:
 - `npm run validate:view-filters`
 - `./run_ci.sh`
 
+### 2026-03-21: Baden-Wuerttemberg lower-secondary starts the first reviewed function-corridor mapping cut
+
+What changed:
+
+- `DE-BW` is now active in the canonical Gymnasium jurisdiction stack:
+  - applicability compiler
+  - learner-service state filters and jurisdiction normalization
+  - root filter UI and goal-card labels
+  - canonical Gymnasium overview root filter list and root applicability
+- the repository-backed Baden-Wuerttemberg Sek-I mapping lane now carries its first `4` reviewed rows:
+  - `572f46ab-e5a7-471d-955e-a07aa7ae6a72`
+    -> `71cec9fb-3751-4d61-8b34-c5adbbf6e5f2`
+    as `exact`
+  - `332b3bd1-afc0-4266-a977-49ef0843e5b1`
+    -> `2bb4bb91-7929-483a-b735-44275f6b5cdc`
+    as `partial`
+  - `a7840b04-88b2-4f2a-8f94-8a75e0a27200`
+    -> `c1f50bcc-7848-4e49-b9de-0ec030cc6bca`
+    as `partial`
+  - `52b15961-33be-4ee9-97ec-1911dc982910`
+    -> `09f47964-2cd0-410e-93ee-9632b582fc91`
+    as `partial`
+- the first BW cut also needed one explicit retained prerequisite bridge:
+  - the canonical J6 rational-number cluster stays child-driven
+  - the BW prerequisite closure is therefore carried through the no-requires child `f6a54a49-b6cf-4ab7-a185-aa08bfcb6c97`
+    via `extendedData.applicabilityOverrides`
+- the accepted-warning registry now records:
+  - three new BW `APV-202` findings for the first partial function bridges
+  - one BW `APV-201` for the retained J6 prerequisite leaf
+- the Baden-Wuerttemberg lower-secondary mapping README and the repository-backed mapping fixture were aligned to the four-row state
+
+Why this cut:
+
+- the archived BW Sek-I pilot snapshot already exposes a clean first function corridor, but not yet a source-aligned arithmetic prerequisite strip
+- forcing a wider BW source import just to close the first entry visibility would have slowed the bundeslandweise rollout without teaching us a new pattern
+- the clean compromise is therefore:
+  - start the first BW mappings on the same shared anchors already used by NRW and Niedersachsen
+  - keep the missing arithmetic base explicit as one reviewed retained prerequisite bridge
+
+Validation used:
+
+- `npm run validate:graph`
+- `./gradlew test --tests 'com.skillpilot.backend.landscape.GoalMappingRepositoryFixtureTest'`
+- `npm run apply:applicability`
+- `npm run validate:view-filters`
+- `./run_ci.sh`
+
+Validation result:
+
+- the repository-backed Baden-Wuerttemberg Sek-I mapping fixture now parses cleanly with `4` rows
+- `npm run apply:applicability` changed `15` goals across `2` files
+- `npm run validate:view-filters` reports `0` errors, `3` warnings, and `202` accepted warnings
+- full `./run_ci.sh` passed after the first Baden-Wuerttemberg lower-secondary mapping cut
+
+Interpretation:
+
+- Baden-Wuerttemberg is no longer only source-archived; it now has the first real reviewed Sek-I bridges on the shared canonical math spine
+- the remaining BW lower-secondary debt is now concentrated in the adjacent `JG7/8` linear-functions corridor, not in generic onboarding or runtime plumbing
+- the next clean BW step is therefore:
+  - stay in Baden-Wuerttemberg Sek I
+  - review the lineare-Funktionen follow-on around representation reading, line equations, and rate-of-change instead of switching to BW Sek II immediately
+
+### 2026-03-21: Baden-Wuerttemberg lower-secondary opens the adjacent JG7/8 linear-functions corridor
+
+What changed:
+
+- the repository-backed Baden-Wuerttemberg Sek-I mapping lane now carries `8` reviewed rows instead of `4`
+- four new BW lower-secondary mappings are active:
+  - `95bee2cc-cdb0-4611-8bc9-36f6263ea417`
+    -> `a8c42ee9-2898-4247-819f-c235032ac78a`
+    as `partial`
+  - `eca22013-61e3-4fad-a771-fa4e224fe1d5`
+    -> `af3d6bff-c5fb-4ec6-a9f0-c0be09fc9186`
+    as `partial`
+  - `72041e85-2d03-4a3c-862c-57ebc79e9dbb`
+    -> `ae772695-d55e-4cc5-81bc-6605272759b4`
+    as `partial`
+  - `9cb473f6-06f0-4fa3-9bf1-34445aa58551`
+    -> `2d75fd3f-c68b-4a11-89ae-19a30fefc47a`
+    as `partial`
+- the BW linear follow-on route also needed two explicit retained prerequisite bridges:
+  - the canonical leaf `c65ecabf-d00b-4e2d-99ae-b64692325ffb` now carries `DE-BW`
+    through `extendedData.applicabilityOverrides`
+  - because the archived BW pilot source still does not isolate a one-to-one function-value-calculation atom
+  - the canonical leaf `fd860da9-73ba-47cd-a1a8-452424915a80` also now carries `DE-BW`
+    through `extendedData.applicabilityOverrides`
+  - because the archived BW pilot source still does not isolate a one-to-one J7 variable-term atom for the linear-equation route
+- the accepted-warning registry now records:
+  - four new BW `APV-202` findings for graph reading, linear description, line equations, and linear rate-of-change interpretation
+  - two BW `APV-201` findings for the retained direct-function-value and variable-term prerequisite bridges
+- the Baden-Wuerttemberg lower-secondary mapping README and repository-backed mapping fixture were aligned to the new eight-row state
+
+Why this cut:
+
+- the archived BW `JG7/8` source corridor already exposes three clean linear follow-on atoms and one narrow graph-reading atom
+- those four atoms fit the shared canonical spine without another source split:
+  - graph reading -> shared graph-reading leaf
+  - `y = mx + c` / two-point line work -> shared linear-description and line-equation leaves
+  - rate-of-change in context -> shared linear-parameter leaf
+- the only remaining gaps were direct function-value calculation and variable-term work:
+  - instead of forcing a broader source import, the cut keeps both dependencies explicit as two reviewed retained prerequisite bridges
+
+Validation used:
+
+- `npm run validate:graph`
+- `./gradlew test --tests 'com.skillpilot.backend.landscape.GoalMappingRepositoryFixtureTest'`
+- `npm run apply:applicability`
+- `npm run validate:view-filters`
+- `./run_ci.sh`
+
+Validation result:
+
+- the repository-backed Baden-Wuerttemberg Sek-I mapping fixture now parses cleanly with `8` rows
+- `npm run apply:applicability` changed `8` goals across `1` file
+- `npm run validate:view-filters` remains at `0` errors and `3` warnings; accepted warnings now stand at `207`
+- full `./run_ci.sh` passed after the Baden-Wuerttemberg `JG7/8` linear follow-on cut
+
+Interpretation:
+
+- Baden-Wuerttemberg lower-secondary now reaches the shared canonical line-reading and line-equation corridor, not just the first entry anchors
+- the remaining BW lower-secondary debt is no longer the first linear follow-on itself, but the still broad representation atom `d45b4ec2-8604-490e-9c11-d3b8fc54251b`
+- the next clean BW step is therefore:
+  - stay in Baden-Wuerttemberg Sek I
+  - decide whether that broad representation atom deserves a small retained split before any further BW Sek-II expansion
+
+### 2026-03-21: Baden-Wuerttemberg lower-secondary broad representation atom becomes a retained split
+
+What changed:
+
+- the archived BW Sek-I source atom:
+  - `d45b4ec2-8604-490e-9c11-d3b8fc54251b`
+  is no longer treated as one broad atomic bundle
+- instead, the archived BW source snapshot now carries a small retained split:
+  - `5e889254-5088-4c9f-ac62-e94d95113644` (`Zusammenhaenge durch Tabellen, Gleichungen, Graphen oder Text darstellen`)
+  - `56842db6-253b-4fea-b50c-2940db2fd174` (`Zwischen Darstellungen situationsgerecht wechseln`)
+- the downstream BW source prerequisites now point to those narrower children instead of the old broad atom:
+  - `95bee2cc-cdb0-4611-8bc9-36f6263ea417` now depends on the representation-building child
+  - `a7840b04-88b2-4f2a-8f94-8a75e0a27200` now depends on the representation-switching child
+  - `52b15961-33be-4ee9-97ec-1911dc982910` now depends on the representation-building child
+  - `eca22013-61e3-4fad-a771-fa4e224fe1d5` now depends on the representation-switching child plus the existing linear-dependency child
+- the shared source registries were refreshed accordingly:
+  - `source-goal-membership-registry.json`
+  - `source-goal-closure-registry.json`
+- the real-registry runtime assertion in `LandscapeServiceTest` now expects the two new BW source leaves instead of the old broad atom
+
+Why this cut:
+
+- the remaining BW Sek-I blocker was no longer a canonical mapping question but a source-shape problem
+- the broad archived representation atom mixed two didactically different operations:
+  - building representations from context
+  - switching between existing representations
+- keeping it broad would have pushed the next BW mapping step into avoidable retained prerequisite debt
+- the retained split keeps the source lane honest without forcing another canonical split too early
+
+Validation used:
+
+- `npm run validate:graph`
+- `./gradlew test --tests 'com.skillpilot.backend.landscape.LandscapeServiceTest'`
+- `./run_ci.sh`
+
+Validation result:
+
+- the archived BW Sek-I source closure now resolves through the two new retained children
+- `npm run validate:view-filters` remains at `0` errors and `3` warnings; accepted warnings remain at `207`
+- full `./run_ci.sh` passed after the BW retained source split
+
+Interpretation:
+
+- Baden-Wuerttemberg lower-secondary no longer carries the broad representation-atom blocker inside the archived pilot lane
+- this was a source-precision cut, not a new canonical visibility cut
+- the next clean BW step is now no longer another Sek-I source cleanup
+- the next executable work item is the first reviewed Baden-Wuerttemberg upper-secondary analysis mapping pass against the already archived Kursstufe source IDs
+
+### 2026-03-21: Baden-Wuerttemberg upper-secondary upgrades the first analysis cut via a retained split
+
+What changed:
+
+- the repository-backed Baden-Wuerttemberg Sek-II mapping lane now carries `3` reviewed rows:
+  - `f84004f9-0987-40f4-88dd-830c039b7bf6` maps `exact` to the shared canonical motivation anchor `71cec9fb-3751-4d61-8b34-c5adbbf6e5f2` (`Warum Mathematik? – Denken, Muster & Zukunft`)
+  - `97ab0ab9-9444-410d-b2d9-1ac9fa935ad8` maps `exact` to `2afba4a2-287d-5e8f-aeee-a3bcf8652236` (`Integral als Bestand und Flächeninhalt verstehen`)
+  - `e0c333ea-9873-4718-819c-d39b22ccee30` maps `partial` to `b9bbd2a8-1379-5ffb-817f-41467d48abef` (`Hauptsatz der Differential- und Integralrechnung nutzen`)
+- the former broad Basisfach integral source atom `8f8c4bc8-5b0c-4a62-b6d7-f7fb263c7f1d` remains a retained split cluster with two archived child atoms:
+  - `97ab0ab9-9444-410d-b2d9-1ac9fa935ad8` (`Integrale als Flaecheninhalt und Bestandsaenderung deuten sowie Bestaende aus Aenderungsraten rekonstruieren`)
+  - `e0c333ea-9873-4718-819c-d39b22ccee30` (`Mit Hauptsatz arbeiten und Stammfunktionsgraphen deuten`)
+- retained BW applicability now runs through the smallest derivative-and-integral prerequisite closure that keeps both active BW Kursstufe bridges didactically closed:
+  - `ae20183e-92b5-5521-b8e0-9a8662cf51f5` (`Mittlere Änderungsrate berechnen und deuten`)
+  - `b42bdfcc-3db7-5697-8b3e-69e50962ca86` (`Differenzenquotient als Grenzwert verstehen`)
+  - `858113c5-e53b-57bb-b01f-ba95c3ddcb6f` (`Mit Ableitungsregeln differenzieren`)
+  - `94d63ad9-ae1c-5ff2-b05e-188a0f5ebec6` (`Flächen unter Graphen näherungsweise bestimmen`)
+- the canonical math landscape now carries the BW applicability closure for `94d63ad9...`, so the new Hauptsatz bridge no longer fails `APV-102` on an invisible prerequisite
+- the accepted-warning registry now records the reviewed BW end state of this cut explicitly:
+  - one retained-prerequisite `APV-201` for `94d63ad9-ae1c-5ff2-b05e-188a0f5ebec6`
+  - one partial-bridge `APV-202` for `b9bbd2a8-1379-5ffb-817f-41467d48abef`
+- the BW upper-secondary mapping README, the repository-backed mapping fixture, and the real-registry landscape service test were aligned to the new third reviewed row
+
+Why this cut:
+
+- the retained split had already isolated the smallest remaining BW Hauptsatz / Stammfunktionsgraph clause
+- that child is strong enough to open the shared Hauptsatz leaf as a reviewed `partial` bridge, but still too narrow to justify a false `exact` fit because it does not isolate the full canonical `F(b)-F(a)` routine
+- widening the route required one explicit retained prerequisite closure on the approximate-area atom, which is smaller and more honest than inventing another source split or forcing a broader canonical match
+
+Validation used:
+
+- `npm run validate:graph`
+- `./gradlew test --tests 'com.skillpilot.backend.landscape.GoalMappingRepositoryFixtureTest' --tests 'com.skillpilot.backend.landscape.LandscapeServiceTest'`
+- `npm run apply:applicability`
+- `npm run validate:view-filters`
+- `./run_ci.sh`
+
+Validation result:
+
+- the repository-backed Baden-Wuerttemberg Sek-II mapping fixture now parses cleanly with `3` rows
+- the archived source closure coverage stays green after the retained split follow-on
+- `npm run apply:applicability` changed `2` goals across `1` file
+- `npm run validate:view-filters` remains at `0` errors and `3` warnings; accepted warnings now stand at `211`
+- full `./run_ci.sh` passed after the BW Hauptsatz follow-on
+
+Interpretation:
+
+- Baden-Wuerttemberg upper-secondary now has two exact reviewed analysis bridges and one narrower reviewed Hauptsatz bridge on the shared derivative / integral spine
+- the remaining BW debt on this opened corridor is no longer source invisibility; it is the explicit retained approximation prerequisite and the still narrower-than-canonical Hauptsatz source wording
+- the next clean BW step should therefore stay on this same analysis surface:
+  - the retained source-precision split on the broad Leistungsfach integral atom is now complete
+  - the clearer follow-on is the next adjacent reviewed integral-analysis slice unless we explicitly decide to attack the remaining `APV-201` / `APV-202` pair first
+
+### 2026-03-21: Baden-Wuerttemberg upper-secondary retained-splits the broad Leistungsfach integral atom
+
+What changed:
+
+- the repository-backed Baden-Wuerttemberg Sek-II mapping lane now carries `5` reviewed rows
+- the broad Leistungsfach integral source atom:
+  - `37d1e9d7-6909-4421-a9f1-11f7b41061ff` (`Integrale als Bestand und Flaecheninhalt deuten, Hauptsatz nutzen und Linearitaet begruenden`)
+  now survives only as a retained split parent over:
+  - `72d7ad67-e2ef-41a0-bb52-b62eb5d071e0` (`Integrale als Bestand und Flaecheninhalt deuten sowie Funktionen aus Aenderungsraten rekonstruieren`)
+  - `fb742d93-6c9b-487a-bc7c-f54b363c0c01` (`Integralfunktion und Stammfunktion unterscheiden, Stammfunktionsgraphen deuten und den Hauptsatz bis zur Linearitaet nutzen`)
+- the first new Leistungsfach child now maps `partial` to:
+  - `2afba4a2-287d-5e8f-aeee-a3bcf8652236` (`Integral als Bestand und Flächeninhalt verstehen`)
+- the second new Leistungsfach child now maps `partial` to:
+  - `b9bbd2a8-1379-5ffb-817f-41467d48abef` (`Hauptsatz der Differential- und Integralrechnung nutzen`)
+- the BW upper-secondary source snapshot, provenance registries, mapping README, structure note, and repository fixture were aligned to the retained split
+
+Why this cut:
+
+- one legacy source goal can currently resolve to only one canonical goal in the backend mapping service, so the broad Leistungsfach atom had to be split before it could land on two different shared leaves honestly
+- the BW source wording already separates an introductory integral / reconstruction clause from a narrower Hauptsatz / Integralfunktion / Linearitaet clause well enough for a retained source split
+- both resulting bridges remain `partial`, because neither child isolates the full canonical wording exactly:
+  - the introductory child keeps the broader Leistungsfach phrasing around reconstructing functions from rates of change
+  - the Hauptsatz child still bundles Integralfunktion / Linearitaet breadth without isolating the full canonical `F(b) - F(a)` routine
+
+Validation used:
+
+- `npm run validate:graph`
+- `./gradlew test --tests 'com.skillpilot.backend.landscape.GoalMappingRepositoryFixtureTest'`
+
+Validation result:
+
+- the repository-backed Baden-Wuerttemberg Sek-II mapping fixture now parses cleanly with `5` rows
+- the archived BW source snapshot and provenance registries remain graph-valid after the retained split
+
+Interpretation:
+
+- the shared BW introductory-integral and Hauptsatz leaves are now both backed by retained Basisfach and Leistungsfach source children instead of one broad LF approximation
+- BW applicability and the reviewed `APV-201` / `APV-202` pair remain unchanged after this cut
+- the next clean BW step is now the next adjacent reviewed integral-analysis slice, unless we want to explicitly tighten the remaining applicability debt first
+
+### 2026-03-21: Baden-Wuerttemberg upper-secondary retained-splits the broad Basisfach e-function atom
+
+What changed:
+
+- the repository-backed Baden-Wuerttemberg Sek-II mapping lane now carries `7` reviewed rows
+- the broad Basisfach e-function source atom:
+  - `d061f00d-6118-46de-a476-ec4c9112e222` (`Die natuerliche Exponentialfunktion beschreiben sowie ihre Ableitung und Stammfunktion angeben`)
+  now survives only as a retained split parent over:
+  - `e0769810-ba73-4a52-8e9c-660d1fb9d6e6` (`Die natuerliche Exponentialfunktion mit Basis e beschreiben und ihre Ableitung angeben`)
+  - `7bf62048-84ba-467f-ba23-f053c4e2989f` (`Die Stammfunktion der natuerlichen Exponentialfunktion angeben`)
+- the first new Basisfach child now maps `partial` to:
+  - `4047af71-de53-5dc3-80c6-a7c78fb4bfe4` (`E.4 Exponentialfunktionen`)
+- the second new Basisfach child now maps `partial` to:
+  - `a9ed219d-d497-55e5-a4e0-4d45d2554f6b` (`Einfache Integrale berechnen`)
+- the BW upper-secondary source snapshot, provenance registries, mapping README, structure note, repository fixture, and real-registry BW closure regression were aligned to the retained split
+- the accepted-warning registry now records the reviewed BW simple-integral follow-on explicitly:
+  - one partial-bridge `APV-202` for `a9ed219d-d497-55e5-a4e0-4d45d2554f6b`
+
+Why this cut:
+
+- one legacy source goal can currently resolve to only one canonical goal in the backend mapping service, so the broad Basisfach atom had to be split before it could land on the shared E.4 exponential cluster and the shared simple-integral leaf honestly
+- the BW source wording already separates an e-function / Ableitungs clause from the narrower Stammfunktionsaussage well enough for a small retained source split
+- both resulting bridges remain `partial`, because neither child isolates the full canonical wording exactly:
+  - the e-function child does not carry the canonical continuous-process modelling surface
+  - the Stammfunktions child is much narrower than the shared simple-integral routine
+
+Validation used:
+
+- `npm run validate:graph`
+- `npm run apply:applicability`
+- `npm run validate:view-filters`
+- `./gradlew test --tests 'com.skillpilot.backend.landscape.GoalMappingRepositoryFixtureTest' --tests 'com.skillpilot.backend.landscape.LandscapeServiceTest.resolvesBadenWuerttembergArchivedAtomicClosureFromRealRegistry'`
+
+Validation result:
+
+- the repository-backed Baden-Wuerttemberg Sek-II mapping fixture now parses cleanly with `7` rows
+- the archived BW source snapshot and provenance registries remain graph-valid after the retained split
+- the shared canonical applicability layer can now surface the newly backed BW E.4 cluster and the new simple-integral leaf directly
+- `npm run validate:view-filters` returns `0` errors, `3` warnings, `212` accepted warnings after recording the new BW simple-integral partial bridge
+
+Interpretation:
+
+- the first BW upper-secondary analysis cut now spans four shared leaves plus the shared E.4 cluster instead of only the integral pair plus the orientation anchor
+- the retained source-precision work is now done not only for the broad BW integral atoms but also for the first broad Basisfach e-function entry atom
+- the next clean BW step is the adjacent composition / optimization follow-on on the same analysis corridor
+
+### 2026-03-21: Baden-Wuerttemberg upper-secondary opens the adjacent Basisfach composition / application slice
+
+What changed:
+
+- the repository-backed Baden-Wuerttemberg Sek-II mapping lane now carries `9` reviewed rows instead of `7`
+- two new BW Basisfach mappings are active:
+  - `46690ab9-0b1f-4bd9-9409-4976a40c6ec2`
+    -> `e9ad45b9-c0d2-5804-b6bf-79e5ce041d2c`
+    as `partial`
+  - `c5739dd3-a261-4229-aff6-678d8ee618b3`
+    -> `1511b39a-4094-5450-a755-4a3ad3339733`
+    as `partial`
+- the BW composition / application follow-on also needed five explicit retained prerequisite bridges in the canonical math graph:
+  - `b1dcc191-d046-50de-984a-ee5c17157628`
+  - `845440ce-f63f-5835-903f-739145ca27bd`
+  - `6596405a-9728-41df-9163-53670ec2a937`
+  - `42e19186-6769-41ac-a7bf-ab39bdb50661`
+  - `2713980f-75d2-5455-a8cb-bcd3888c49a0`
+- these retained bridges keep the new BW upper-secondary route didactically closed without widening the archived BW pilot source lanes or forcing another source split
+- the accepted-warning registry now records the reviewed BW debt for this cut explicitly:
+  - five new `APV-201` entries for the retained prerequisite bridges above
+  - one BW `APV-202` for `e9ad45b9-c0d2-5804-b6bf-79e5ce041d2c`
+  - one BW `APV-202` for `1511b39a-4094-5450-a755-4a3ad3339733`
+- the BW upper-secondary mapping README, structure note, expansion plan note, and repository fixture were aligned to the new nine-row state
+
+Why this cut:
+
+- the archived BW Basisfach corridor already exposed a clean next pair immediately after the retained e-function split:
+  - one composition atom with linear inner function
+  - one application atom for extremal work and function-term recovery
+- both source atoms fit existing canonical leaves closely enough for reviewed `partial` bridges, but neither source clause is narrow enough for an `exact` match:
+  - the composition source stays on graphical sum/product/composition work with linear inner functions
+  - the application source bundles contextual extremal work together with graph-property based function reconstruction
+- the only real blocker was applicability closure:
+  - the optimization leaf still depends on derivative-graph interpretation atoms not isolated in the BW source snapshot
+  - the composition leaf still depends on a shared Q1 recap route that in turn reaches back into the late Sek-I exponential bridge
+- explicit retained prerequisite overrides were therefore the smaller and more honest move than opening new BW source corridors just to satisfy those dependencies mechanically
+
+Validation used:
+
+- `npm run apply:applicability`
+- `npm run validate:graph`
+- `npm run validate:view-filters`
+- `./gradlew test --tests 'com.skillpilot.backend.landscape.GoalMappingRepositoryFixtureTest.parsesRepositoryBackedCanonicalMathBadenWuerttembergUpperSecondaryMappingFixture'`
+- `./run_ci.sh`
+
+Validation result:
+
+- the repository-backed Baden-Wuerttemberg Sek-II mapping fixture now parses cleanly with `9` rows
+- `npm run apply:applicability` changed `13` goals across `1` file
+- `npm run validate:graph` still reports `593` landscapes passed
+- `npm run validate:view-filters` remains at `0` errors, `3` warnings, `219` accepted warnings
+- full `./run_ci.sh` passed after the BW Basisfach composition / application step
+
+Interpretation:
+
+- Baden-Wuerttemberg upper-secondary now reaches the first shared composition and simple-extremal leaves on the opened analysis spine, not only the earlier e-function and integral route
+- the remaining BW debt on this corridor is no longer the Basisfach follow-on itself, but the still-unmapped aligned Leistungsfach composition / application pair
+- the next clean BW step is therefore the adjacent Leistungsfach follow-on around:
+  - `13e285f3-522c-4eae-9fed-8b13b2af7b7d`
+  - `8ab263f6-a460-4ca2-bbe9-b7e9a22bbaa2`
+
+### 2026-03-21: Baden-Wuerttemberg upper-secondary opens the aligned Leistungsfach composition / application follow-on
+
+What changed:
+
+- the repository-backed Baden-Wuerttemberg Sek-II mapping lane now carries `11` reviewed rows instead of `9`
+- two new BW Leistungsfach mappings are active:
+  - `13e285f3-522c-4eae-9fed-8b13b2af7b7d`
+    -> `e9ad45b9-c0d2-5804-b6bf-79e5ce041d2c`
+    as `partial`
+  - `8ab263f6-a460-4ca2-bbe9-b7e9a22bbaa2`
+    -> `1511b39a-4094-5450-a755-4a3ad3339733`
+    as `partial`
+- no new retained applicability bridges were needed in the canonical math graph for this follow-on
+- no new accepted-warning entries were needed either:
+  - the two target leaves were already active for `DE-BW`
+  - the existing reviewed BW `APV-202` entries on those shared leaves remain sufficient
+- the BW upper-secondary mapping README, structure note, expansion-plan note, and repository fixture were aligned to the new eleven-row state
+
+Why this cut:
+
+- this is the smallest honest next step on the already opened BW upper-secondary analysis corridor:
+  - the new Leistungsfach composition source stays closest to the shared exponential/polynomial-combination leaf even though it also carries a quotient/asymptote side clause
+  - the new Leistungsfach application source stays closest to the shared simple-extremal-problem leaf even though it also bundles function-term recovery and first function-family work
+- both bridges remain `partial`, because neither BW Leistungsfach clause isolates the full canonical wording exactly:
+  - the composition source is broader on asymptotes and zeros, but narrower on the shared contextual investigation surface
+  - the application source combines extremal work with graph-property and Schar questions instead of isolating only the simple contextual extremal leaf
+- unlike the preceding Basisfach step, this follow-on does not open any new canonical prerequisite chain:
+  - both shared targets were already visible for `DE-BW`
+  - the earlier retained BW prerequisite overrides therefore already closed the relevant applicability surface
+
+Validation used:
+
+- `npm run apply:applicability`
+- `npm run validate:graph`
+- `npm run validate:view-filters`
+- `./gradlew test --tests 'com.skillpilot.backend.landscape.GoalMappingRepositoryFixtureTest.parsesRepositoryBackedCanonicalMathBadenWuerttembergUpperSecondaryMappingFixture'`
+- `./run_ci.sh`
+
+Validation result:
+
+- the repository-backed Baden-Wuerttemberg Sek-II mapping fixture now parses cleanly with `11` rows
+- `npm run apply:applicability` changed `0` goals across `0` files
+- `npm run validate:graph` still reports `593` landscapes passed
+- `npm run validate:view-filters` remains at `0` errors, `3` warnings, `219` accepted warnings
+- full `./run_ci.sh` passed after the BW aligned Leistungsfach composition / application step
+
+Interpretation:
+
+- Baden-Wuerttemberg upper-secondary now reaches the shared composition and simple-extremal leaves through both Basisfach and Leistungsfach follow-on children, not only through the earlier Basisfach slice
+- the remaining open BW debt on this corridor is now narrower and clearer:
+  - the still-broad Leistungsfach e/logarithm front atom `fa4597c7-fabd-4a55-8be3-d06f7c432738`
+- the next clean BW step should therefore decide whether that broad Leistungsfach front atom needs its own retained split or whether one direct reviewed bridge is already honest enough
+  
+
 ### 2026-03-20: NRW upper-secondary broad E-phase polynomial atom becomes a retained split with one exact canonical bridge
 
 What changed:
@@ -3089,6 +3516,1007 @@ Interpretation:
 - the shared canonical late-Sek-I power corridor is now active for `DE-NW` through an exact leaf rather than a reviewed `partial`
 - the corridor no longer needs a synthetic NRW prerequisite workaround, because the shared cluster is now sequenced through its children rather than an inherited cluster-wide `requires`
 - the remaining NRW upper-secondary unmapped atom is now only `71539804-c722-4fe6-bc71-e4e2abe1773f` (`Produktsummen und Flächeninhalte im Sachkontext deuten`), which remains deliberately source-structural after the narrower integral splits
+
+### 2026-03-20: NRW upper-secondary retained productsum/area atom becomes an exact canonical Q1.1 leaf
+
+What changed:
+
+- the previously retained NRW Q1.1 source atom:
+  - `71539804-c722-4fe6-bc71-e4e2abe1773f` (`Produktsummen und Flächeninhalte im Sachkontext deuten`)
+  now maps `exact`
+- the canonical Q1.1 introduction cluster:
+  - `93ac7fc8-6d83-5394-bbea-80758b463da1`
+  now also contains the new NRW-backed leaf:
+  - `269675a9-13cd-4a3a-ab75-63794f5c9710` (`Produktsummen und orientierte Flächen im Sachkontext deuten`)
+- the Q1.1 cluster description now names product sums explicitly and its weight advances from `6` to `7`
+- the repository-backed NRW upper-secondary mapping lane now carries `27` rows instead of `26`
+
+Why this cut:
+
+- the retained NRW source wording is narrower than the existing canonical leaves for
+  - `2afba4a2-287d-5e8f-aeee-a3bcf8652236` (`Integral als Bestand und Flächeninhalt verstehen`)
+  - `34604a97-0c64-5b06-81e2-6ac818732d60` (`Integralterme interpretieren und begründen`)
+- but it is still precise enough to justify its own exact canonical entry leaf in `Q1.1`
+- this closes the last unmapped atomic goal in the current NRW upper-secondary source snapshot without creating another reviewed breadth mismatch
+
+Validation used:
+
+- `npm run validate:graph`
+- `./gradlew test --tests 'com.skillpilot.backend.landscape.GoalMappingRepositoryFixtureTest'`
+- `npm run apply:applicability`
+- `npm run validate:view-filters`
+- `./run_ci.sh`
+
+Validation result:
+
+- the repository-backed NRW upper-secondary mapping fixture now parses cleanly with `27` rows
+- `npm run apply:applicability` changed `0` goals across `0` files because the committed applicability state was already consistent with the new exact leaf
+- `npm run validate:view-filters` remains at `0` errors, `3` warnings, `184` accepted warnings
+- full `./run_ci.sh` passed after the new exact Q1.1 leaf
+
+Interpretation:
+
+- the current NRW upper-secondary pilot snapshot now has `0` unmapped atomic source goals
+- NRW is no longer carrying a deliberately retained leftover inside the current Q1.1 integral surface
+- the next NRW decision is no longer “close the last leftover atom”, but whether to widen NRW source breadth further or move to the next Bundesland onboarding lane
+
+### 2026-03-20: Niedersachsen mathematics mapping-lane setup opens the post-NRW Stage-B lane
+
+What changed:
+
+- the next post-NRW onboarding lane is now prepared for `DE-NI`
+- the first real `DE-NI` canonical math mapping fixtures now exist at:
+  - `curricula/DE/Gymnasium/mapping/DE-NI/lower-secondary/ni_math_lower_secondary_to_canonical_math.json`
+  - `curricula/DE/Gymnasium/mapping/DE-NI/upper-secondary/ni_math_upper_secondary_to_canonical_math.json`
+- both fixtures are repository-backed and test-covered, but intentionally still empty (`0` mappings)
+- stable Niedersachsen source-landscape IDs are now reserved for the future source snapshots:
+  - lower-secondary math: `2b995085-dc5e-47c6-a563-9dcfc01fb74d`
+  - upper-secondary math: `fcb04661-6ea2-4030-a9b2-97e6cc03daf8`
+- the reservation and no-premature-activation rule now live in:
+  - `curricula/DE/Gymnasium/provenance/ni-math-onboarding.md`
+- the new `DE-NI` mapping-lane READMEs record the planned lane purpose and current non-activated state
+
+Why this cut:
+
+- the current NRW pilot subset already has `0` unmapped atomic source goals, so the next reusable learning step is no longer another local NRW cleanup
+- Niedersachsen is the cleanest remaining placeholder lane for repeating the early multi-state onboarding pattern once more:
+  - one provider family (`NIBIS`)
+  - explicit mathematics references for both Sek I and Sek II
+  - no immediate need to mix multiple unrelated subject imports into the same state step
+- committing empty repository-backed fixtures first keeps the reserved IDs stable and test-visible before any real NI source snapshots exist
+
+Validation used:
+
+- `./gradlew test --tests 'com.skillpilot.backend.landscape.GoalMappingRepositoryFixtureTest'`
+- `./run_ci.sh`
+
+Validation result:
+
+- both Niedersachsen mapping fixtures parse cleanly with `0` mappings
+- full `./run_ci.sh` passed after the new `DE-NI` scaffold and fixture coverage
+
+Interpretation:
+
+- Stage B from `canonical-gymnasium-math-de-expansion-plan.md` is now prepared for Niedersachsen mathematics
+- the next Niedersachsen blocker is no longer repository setup, but source import:
+  - archive the NI mathematics source bundle under `curricula/DE/Gymnasium/input/NI/`
+  - then activate shared provenance only after real source snapshots with stable source goal IDs exist
+
+### 2026-03-20: Niedersachsen mathematics source import completes Stage A after the new Stage-B lane
+
+What changed:
+
+- the official Niedersachsen mathematics source PDFs are now archived locally under `curricula/DE/Gymnasium/input/NI/`
+- lower-secondary mathematics now lives at:
+  - `curricula/DE/Gymnasium/input/NI/lower-secondary/ma_gym_si_kc_druck.pdf`
+- upper-secondary mathematics now lives at:
+  - `curricula/DE/Gymnasium/input/NI/upper-secondary/ma_go_kc_druck_2019.pdf`
+- source provenance is documented beside each file in:
+  - `curricula/DE/Gymnasium/input/NI/lower-secondary/references.md`
+  - `curricula/DE/Gymnasium/input/NI/upper-secondary/references.md`
+- the Niedersachsen input README now reflects the archived-file state for mathematics instead of only pointing to generic NIBIS landing pages
+
+Why this cut:
+
+- after the new `DE-NI` mapping-lane scaffold, the next reusable blocker was no longer repository shape but raw source availability
+- archiving the official PDFs first keeps the state-owned source bundle stable before any source-snapshot extraction begins
+- this mirrors the earlier NRW onboarding order closely enough to keep the next multi-state comparison step mechanical
+
+Validation used:
+
+- `./run_ci.sh`
+
+Validation result:
+
+- full `./run_ci.sh` passed after the Niedersachsen archive import
+
+Interpretation:
+
+- Stage A and Stage B are now complete for Niedersachsen mathematics
+- the next Niedersachsen blocker is Stage C:
+  - import the first archived NI source snapshots with stable source goal IDs
+  - then activate shared provenance only after those snapshots exist
+
+### 2026-03-20: Niedersachsen lower-secondary pilot source snapshot completes the first Stage-C activation
+
+What changed:
+
+- the first real Niedersachsen Sek-I source snapshot now exists at:
+  - `curricula/DE/Gymnasium/input/NI/lower-secondary/source-json/DE_NDS_S_GYM_1_MATHEMATIK.de.json.snapshot`
+- the new archived source landscape uses the reserved Niedersachsen lower-secondary math `sourceLandscapeId`:
+  - `2b995085-dc5e-47c6-a563-9dcfc01fb74d`
+- the first imported NI pilot subset is deliberately small and source-led:
+  - curriculum-wide `Funktionaler Zusammenhang` motivation
+  - `Proportionale und antiproportionale Zusammenhaenge`
+  - `Lineare Zusammenhaenge`
+- the lower-secondary Niedersachsen source lane is now active in shared provenance:
+  - `curricula/DE/Gymnasium/provenance/source-landscape-registry.json`
+  - `curricula/DE/Gymnasium/provenance/source-goal-membership-registry.json`
+  - `curricula/DE/Gymnasium/provenance/source-goal-closure-registry.json`
+- the local NI source inventory now also includes:
+  - `curricula/DE/Gymnasium/input/NI/math-structure-note.md`
+- archived-source runtime handling and test coverage were widened for Niedersachsen:
+  - `backend/src/main/java/com/skillpilot/backend/landscape/LandscapeService.java`
+  - `backend/src/test/java/com/skillpilot/backend/landscape/LandscapeServiceTest.java`
+
+Why this cut:
+
+- after NI Stage A and Stage B, the next reusable step was no longer repository setup but a first real archived source landscape with stable source goal IDs
+- the lower-secondary functions corridor is the cleanest first Niedersachsen subset because it matches the already proven NRW onboarding shape without immediately forcing a broader subject import
+- activating provenance at this point keeps the future NI mapping work grounded in repository-backed source IDs instead of PDF-only references
+
+Validation used:
+
+- `./gradlew test --tests 'com.skillpilot.backend.landscape.LandscapeServiceTest' --tests 'com.skillpilot.backend.landscape.GoalMappingRepositoryFixtureTest'`
+- `./run_ci.sh`
+
+Validation result:
+
+- the new Niedersachsen lower-secondary pilot source landscape loads from the real registry
+- its archived atomic closure resolves correctly for the first NI functions corridor
+- full `./run_ci.sh` passed after the new snapshot, provenance activation, and test coverage
+
+Interpretation:
+
+- Stage C is now complete for the first Niedersachsen lower-secondary pilot subset
+- Niedersachsen upper-secondary remains source-PDF-only for now
+- the next Niedersachsen blocker is therefore narrower than before:
+  - import the first NI upper-secondary source snapshot with stable source goal IDs
+  - then activate the shared provenance registries for that upper-secondary lane
+
+### 2026-03-20: Niedersachsen upper-secondary pilot source snapshot closes the first Stage-C source pair
+
+What changed:
+
+- the first real Niedersachsen Sek-II source snapshot now exists at:
+  - `curricula/DE/Gymnasium/input/NI/upper-secondary/source-json/DE_NDS_S_GYM_2_MATHEMATIK.de.json.snapshot`
+- the new archived source landscape uses the reserved Niedersachsen upper-secondary math `sourceLandscapeId`:
+  - `fcb04661-6ea2-4030-a9b2-97e6cc03daf8`
+- the first imported NI upper-secondary pilot subset is deliberately small and source-led:
+  - the Einfuehrungsphase orientation layer for the gemeinsame Basis der Qualifikationsphase
+  - `Elementare Funktionenlehre`
+  - `Ableitungen`
+- the upper-secondary Niedersachsen source lane is now also active in shared provenance:
+  - `curricula/DE/Gymnasium/provenance/source-landscape-registry.json`
+  - `curricula/DE/Gymnasium/provenance/source-goal-membership-registry.json`
+  - `curricula/DE/Gymnasium/provenance/source-goal-closure-registry.json`
+- the local NI source inventory now records both active pilot snapshots in:
+  - `curricula/DE/Gymnasium/input/NI/math-structure-note.md`
+- archived-source runtime handling and registry-backed tests now also cover the Niedersachsen upper-secondary lane:
+  - `backend/src/main/java/com/skillpilot/backend/landscape/LandscapeService.java`
+  - `backend/src/test/java/com/skillpilot/backend/landscape/LandscapeServiceTest.java`
+
+Why this cut:
+
+- after the lower-secondary NI Stage-C step, the cleanest next move was to activate the matching upper-secondary analysis entry corridor before starting any Niedersachsen mapping authoring
+- `Elementare Funktionenlehre` plus `Ableitungen` in the Einfuehrungsphase is the smallest upper-secondary NI subset that can later support the shared change-rate and derivative-entry canonical spine
+- activating both NI source lanes first keeps the next reviewed mappings source-grounded on repository-backed IDs for Sek I and Sek II alike
+
+Validation used:
+
+- `./gradlew test --tests 'com.skillpilot.backend.landscape.LandscapeServiceTest' --tests 'com.skillpilot.backend.landscape.GoalMappingRepositoryFixtureTest'`
+- `./run_ci.sh`
+
+Validation result:
+
+- the new Niedersachsen upper-secondary pilot source landscape loads from the real registry
+- its archived atomic closure resolves correctly for the first NI upper-secondary analysis corridor
+- full `./run_ci.sh` passed after the new snapshot, provenance activation, and test coverage
+
+Interpretation:
+
+- Stage C is now complete for the initial Niedersachsen lower-secondary and upper-secondary pilot source pair
+- the next Niedersachsen blocker is no longer source import, but the first reviewed canonical mapping pass
+- the clean next execution order is:
+  - first NI Sek I motivation and function anchors
+  - then NI Sek II change-rate / derivative-entry anchors
+
+### 2026-03-20: Niedersachsen first mapping pass stops at a clean D0-style cut instead of forcing the functions corridor
+
+What changed:
+
+- `DE-NI` is now supported end-to-end in the canonical Gymnasium jurisdiction layer:
+  - `app/scripts/applicabilityCompiler.ts`
+  - `backend/src/main/java/com/skillpilot/backend/service/LearnerService.java`
+  - `app/src/components/PersonalCurriculumSetup.tsx`
+  - `app/src/components/GoalCard.tsx`
+  - `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_OVERVIEW.de.json`
+- the first reviewed Niedersachsen lower-secondary mapping is now live:
+  - `e1942eb6-f1a5-45a7-b160-c7be0b5e30fa`
+  - maps `exact` to the shared canonical motivation atom:
+  - `71cec9fb-3751-4d61-8b34-c5adbbf6e5f2` (`Warum Mathematik? – Denken, Muster & Zukunft`)
+- the first NI lower-secondary source pass was widened before keeping any broader function bridges:
+  - `curricula/DE/Gymnasium/input/NI/lower-secondary/source-json/DE_NDS_S_GYM_1_MATHEMATIK.de.json.snapshot`
+  now contains a new arithmetic prerequisite strip for the active functions corridor:
+  - fractions
+  - decimals
+  - positive / negative numbers on the number line
+- that widened lower-secondary NI source strip is now also active in shared provenance:
+  - `curricula/DE/Gymnasium/provenance/source-goal-membership-registry.json`
+  - `curricula/DE/Gymnasium/provenance/source-goal-closure-registry.json`
+- the repository-backed NI lower-secondary mapping lane was intentionally cut back to the stable green subset:
+  - one exact motivation bridge
+  - no retained NI functions / proportional / linear bridges yet
+- repository-backed tests were widened to cover the clean NI intermediate state:
+  - `backend/src/test/java/com/skillpilot/backend/landscape/GoalMappingRepositoryFixtureTest.java`
+  - `backend/src/test/java/com/skillpilot/backend/landscape/LandscapeServiceTest.java`
+
+Why this cut:
+
+- the first Niedersachsen functions attempt immediately exposed two reusable rollout problems:
+  - the canonical DE-level jurisdiction plumbing still lacked explicit `DE-NI` support
+  - the NI lower-secondary function corridor sits behind a longer arithmetic prerequisite chain than the first minimal mapping slice could safely satisfy
+- instead of keeping weak or half-supported NI function bridges, the cleaner move was:
+  - activate `DE-NI` properly at root/compiler/runtime level
+  - keep the first exact shared motivation bridge
+  - archive the missing arithmetic prerequisite strip directly in the NI source snapshot
+  - leave the broader functions pass for the next arithmetic-backed mapping slice
+
+Validation used:
+
+- `npm run validate:graph`
+- `./gradlew test --tests 'com.skillpilot.backend.landscape.GoalMappingRepositoryFixtureTest' --tests 'com.skillpilot.backend.landscape.LandscapeServiceTest'`
+- `npm run apply:applicability`
+- `npm run validate:view-filters`
+- `./run_ci.sh`
+
+Validation result:
+
+- the clean NI lower-secondary repository fixture now parses with `1` mapping instead of an empty lane
+- the widened NI lower-secondary archived source closure resolves through the real provenance registries
+- `npm run apply:applicability` changed `5` goals across `2` files while compiling the new `DE-NI` jurisdiction support and root visibility
+- `npm run validate:view-filters` remains at `0` errors, `3` warnings, `184` accepted warnings
+- full `./run_ci.sh` passed after the NI jurisdiction activation, source widening, and intermediate mapping cut
+
+Interpretation:
+
+- Niedersachsen is no longer at pure Stage-C-only source readiness:
+  - the first clean Stage-D0-style slice is now complete
+- the first reusable NI lesson is not yet a kept functions bridge, but the shape of the missing prerequisite corridor
+- the next Niedersachsen step should therefore be:
+  - first bridge the new NI arithmetic prerequisite strip into the shared lower-secondary arithmetic spine
+  - then retry the NI proportional / linear functions corridor
+  - only after that resume the first NI upper-secondary derivative-entry bridges
+
+### 2026-03-20: Niedersachsen lower-secondary arithmetic prerequisite strip closes as exact J6 spine bridges
+
+What changed:
+
+- the widened Niedersachsen lower-secondary arithmetic strip is no longer source-only; it now maps exactly into the shared canonical J6 rational-number corridor:
+  - `430a4b3b-1442-4542-a27a-5fe8726dc447`
+    -> `f6a54a49-b6cf-4ab7-a185-aa08bfcb6c97`
+  - `2c6d3275-ac7d-47d9-9de6-bbf2ad6b4d69`
+    -> `2f565855-bcd6-4da5-bc80-4b72a2d93d50`
+  - `20f4e9dc-d898-45e2-b7df-eb89c9ee6195`
+    -> `199fe2ed-2576-4611-b8de-fd56fb9f78fc`
+- the repository-backed Niedersachsen Sek-I mapping lane now carries `4` rows instead of `1`:
+  - shared motivation exact bridge
+  - three exact arithmetic prerequisite bridges
+- the canonical J6 rational-number cluster:
+  - `de39c9fe-5940-4320-aca8-2be85d6ada8f`
+  now contains three new NI-exact leaves for:
+  - fraction representations plus compare / reduce / expand
+  - decimal numbers on the number line, in place value form, and as fractions
+  - positive and negative numbers on the number line
+- the old cluster-wide `requires` claim on:
+  - `de39c9fe-5940-4320-aca8-2be85d6ada8f`
+  was removed so the rational-number corridor can compile applicability child-driven instead of failing on non-imported legacy prerequisites
+- cluster weights were advanced for the directly affected J6 branch:
+  - `Rationale Zahlen darstellen und berechnen`
+  - `Jahrgang 6 (Sek I)`
+- the NI lane README and repository-backed fixture were aligned to the new exact four-row state
+
+Why this cut:
+
+- the widened NI prerequisite strip was already source-backed and source-atomic; keeping it unmapped would have left the next NI functions pass blocked behind known but still dormant arithmetic groundwork
+- none of the existing canonical J6 leaves matched the NI source wording cleanly enough for safe exact reuse:
+  - the fraction leaf in NI combines representation use with compare / reduce / expand
+  - the decimal leaf is representation-driven, not just conversion-driven
+  - the signed-number leaf is narrower than the existing broad rational-number line leaf
+- the cleaner move was therefore a small exact canonical extension inside the existing J6 rational-number cluster, not another reviewed partial bridge
+
+Validation used:
+
+- `npm run validate:graph`
+- `./gradlew test --tests 'com.skillpilot.backend.landscape.GoalMappingRepositoryFixtureTest'`
+- `npm run apply:applicability`
+- `npm run validate:view-filters`
+- `./run_ci.sh`
+
+Validation result:
+
+- the Niedersachsen Sek-I repository mapping fixture now parses cleanly with `4` rows
+- `npm run apply:applicability` changed `2` goals across `1` file while recompiling the J6 rational-number branch
+- `npm run validate:view-filters` remains at `0` errors, `3` warnings, `184` accepted warnings
+- full `./run_ci.sh` passed after the NI arithmetic bridge pass
+
+Interpretation:
+
+- Niedersachsen is now past the pure D0-style activation cut:
+  - the first clean D1-style arithmetic spine bridge is complete
+- the next reusable NI question is no longer prerequisite import, but whether the function corridor now closes cleanly on top of that exact arithmetic base
+- the next Niedersachsen step should therefore be:
+  - retry the NI lower-secondary proportional / linear functions corridor
+  - only after that resume the first NI upper-secondary derivative-entry bridges
+
+### 2026-03-20: Niedersachsen lower-secondary function corridor reopens on the shared proportional / linear spine
+
+What changed:
+
+- the Niedersachsen Sek-I mapping lane now carries `8` reviewed rows instead of `4`:
+  - the existing exact motivation bridge
+  - the existing three exact arithmetic prerequisite bridges
+  - one new exact lower-secondary function bridge:
+    - `08dbb0ce-effb-478c-be9e-d49e0651a618`
+      -> `2bb4bb91-7929-483a-b735-44275f6b5cdc`
+  - three new reviewed partial follow-on bridges:
+    - `52bd16c1-ce2a-46ac-a89c-8c41cc40bf9e`
+      -> `c1f50bcc-7848-4e49-b9de-0ec030cc6bca`
+    - `0f2a3cbe-37b8-4701-a5f0-87a58241765c`
+      -> `09f47964-2cd0-410e-93ee-9632b582fc91`
+    - `7ad51e84-1b5b-41e9-a0ec-854c11b45fee`
+      -> `af3d6bff-c5fb-4ec6-a9f0-c0be09fc9186`
+- after applicability compilation, `DE-NI` is now visible on the shared canonical lower-secondary function spine for:
+  - `Zuordnungen analysieren`
+  - `Proportionale Zuordnungen nutzen`
+  - `Funktionsbegriff und Darstellungen verstehen`
+  - `Lineare Funktionen beschreiben`
+- the repository-backed Niedersachsen Sek-I fixture and lower-secondary mapping README were aligned to the new eight-row state
+- three reviewed Niedersachsen `APV-202` entries were added for the intentionally broader partial bridges:
+  - proportionality
+  - function representations
+  - linear-function foundations
+
+Why this cut:
+
+- the arithmetic prerequisite strip is now exact and active, so the NI functions corridor no longer had to stay dormant behind known groundwork
+- `Zuordnungen mit Worten, Tabellen und Graphen ...` is already narrow enough for a clean exact bridge to the shared canonical mappings atom
+- the next three NI source atoms are didactically useful but still broader than the current canonical leaves:
+  - proportionality also carries relation discrimination and multiple interpretation routes
+  - the linear-representations clause still lacks the full canonical function-language wording
+  - the linear-analysis clause also includes equations, roots, parameter variation, and modelling
+- the cleaner move was therefore:
+  - reopen the shared lower-secondary function spine for Niedersachsen now
+  - keep the first NI bridge exact where the wording already matches
+  - record the broader follow-on bridges explicitly as reviewed `partial`, not force premature canonical splits
+
+Validation used:
+
+- `npm run validate:graph`
+- `./gradlew test --tests 'com.skillpilot.backend.landscape.GoalMappingRepositoryFixtureTest'`
+- `npm run apply:applicability`
+- `npm run validate:view-filters`
+- `./run_ci.sh`
+
+Validation result:
+
+- the Niedersachsen Sek-I repository mapping fixture now parses cleanly with `8` rows
+- `npm run apply:applicability` changed the shared canonical math landscape while compiling the reopened NI function spine
+- `npm run validate:view-filters` remains at `0` errors, `3` warnings, `187` accepted warnings
+- full `./run_ci.sh` passed after the NI lower-secondary function-bridge pass
+
+Interpretation:
+
+- Niedersachsen now also has a clean D2-style lower-secondary function result:
+  - one exact shared function-anchor bridge
+  - three reviewed partial follow-on bridges on the shared proportional / linear spine
+- the next Niedersachsen step should therefore be:
+  - resume the first NI upper-secondary change-rate / derivative-entry bridges
+  - only return to lower-secondary again if a clearly source-atomic downstream NI clause emerges
+
+### 2026-03-20: Niedersachsen upper-secondary reaches the next shared E.2 qualitative derivative-entry leaf
+
+What changed:
+
+- the Niedersachsen Sek-II mapping lane now carries a second reviewed row in the same retained derivative-entry corridor:
+  - `234dde5d-cc9d-4508-af9e-092e614ea304`
+    -> `2143e9e8-b176-545b-b2fa-91bbb6c8cf5c`
+    as `partial`
+- the NI source atom `Lokale Aenderungsrate und Tangentensteigung mit propaedeutischem Grenzwertbegriff entwickeln` is now reused once for the shared canonical leaf `Momentane Änderungsrate qualitativ verstehen`
+- the shared canonical difference-quotient prerequisite `b42bdfcc-3db7-5697-8b3e-69e50962ca86` now carries an explicit retained `DE-NI` applicability override so the qualitative follow-on route can compile cleanly
+- the repository-backed Niedersachsen Sek-II fixture and upper-secondary mapping README were aligned to the new two-row state
+- the accepted-warning registry now records:
+  - the Niedersachsen-specific `APV-202` for `2143e9e8-b176-545b-b2fa-91bbb6c8cf5c`
+  - the matching retained-prerequisite `APV-201` for `b42bdfcc-3db7-5697-8b3e-69e50962ca86`
+
+Why this cut:
+
+- the NI source wording fits the qualitative derivative-entry follow-on more closely than the narrower computational limit leaf:
+  - it develops local rate of change from average rates
+  - and tangent slope from secant slopes
+  - but it does not yet isolate the canonical `h -> 0` determination step as a separate one-to-one source atom
+- this is therefore the same bounded pattern already proven in NRW:
+  - retain the shared limit prerequisite explicitly
+  - and let the broader NI source atom open the next qualitative derivative-entry leaf as a reviewed `partial`
+
+Validation used:
+
+- `npm run validate:graph`
+- `./gradlew test --tests 'com.skillpilot.backend.landscape.GoalMappingRepositoryFixtureTest'`
+- `npm run apply:applicability`
+- `npm run validate:view-filters`
+- `./run_ci.sh`
+
+Validation result:
+
+- the Niedersachsen Sek-II repository mapping fixture now parses cleanly with `2` rows
+- `npm run apply:applicability` stays idempotent for this slice at `0` changed goals across `0` files because the canonical math file is already aligned to the retained NI qualitative derivative-entry route
+- `npm run validate:view-filters` remains at `0` errors, `3` warnings, `191` accepted warnings
+- full `./run_ci.sh` passed after the NI upper-secondary qualitative derivative-entry pass
+
+Interpretation:
+
+- Niedersachsen upper-secondary math now reaches the first two shared canonical E.2 leaves through a bounded retained route
+- the next Niedersachsen step should stay in the same upper-secondary corridor:
+  - either `6c021ee2-f600-4977-a4a8-877ece6c8c3b` against the pointwise derivative-interpretation leaf
+  - or a small retained NI source split if that follow-on alignment turns out too broad
+
+### 2026-03-20: Niedersachsen upper-secondary reaches the shared pointwise derivative-interpretation leaf
+
+What changed:
+
+- the Niedersachsen Sek-II mapping lane now carries a third reviewed row in the same E.2 corridor:
+  - `6c021ee2-f600-4977-a4a8-877ece6c8c3b`
+    -> `b1dcc191-d046-50de-984a-ee5c17157628`
+    as `partial`
+- the NI source atom `Ableitung als lokale Aenderungsrate und Tangentensteigung deuten` is now reused once for the shared canonical leaf `Ableitung als Steigung im Punkt deuten`
+- the repository-backed Niedersachsen Sek-II fixture and upper-secondary mapping README were aligned to the new three-row state
+- the accepted-warning registry now records the Niedersachsen-specific `APV-202` for `b1dcc191-d046-50de-984a-ee5c17157628`
+
+Why this cut:
+
+- this is the cleanest next NI follow-on after the retained qualitative route:
+  - the source atom explicitly interprets the derivative as local rate of change and tangent slope
+  - and the canonical target narrows that same idea to the derivative value at a point
+- the fit is still intentionally kept as reviewed `partial`, because the NI wording remains slightly broader and example-based rather than fully point-value-specific
+- no new retained prerequisite bridge is needed here:
+  - the already-open NI `b42bdfcc-3db7-5697-8b3e-69e50962ca86` prerequisite route is sufficient for the shared pointwise interpretation leaf
+
+Validation used:
+
+- `npm run validate:graph`
+- `./gradlew test --tests 'com.skillpilot.backend.landscape.GoalMappingRepositoryFixtureTest'`
+- `npm run apply:applicability`
+- `npm run validate:view-filters`
+- `./run_ci.sh`
+
+Validation result:
+
+- the Niedersachsen Sek-II repository mapping fixture now parses cleanly with `3` rows
+- `npm run apply:applicability` changed `1` goal across `1` file while compiling the NI pointwise derivative-interpretation bridge:
+  - the shared canonical leaf `b1dcc191-d046-50de-984a-ee5c17157628` now also carries `DE-NI`
+- `npm run validate:view-filters` remains at `0` errors, `3` warnings, `192` accepted warnings
+- full `./run_ci.sh` passed after the NI upper-secondary pointwise derivative-interpretation pass
+
+Interpretation:
+
+- Niedersachsen upper-secondary math now reaches the first three shared canonical E.2 leaves through one bounded retained route
+- the next Niedersachsen step should stay in the same upper-secondary corridor:
+  - either `d1ca482c-4184-464f-a057-2d61ba077803` against the derivative-graph leaf
+  - or `5b284b66-f417-4366-8685-012ae000b3b1` against the elementary-derivative-rules leaf
+
+### 2026-03-20: Niedersachsen upper-secondary reaches the shared derivative-graph leaf
+
+What changed:
+
+- the Niedersachsen Sek-II mapping lane now carries a fourth reviewed row in the same E.2 corridor:
+  - `d1ca482c-4184-464f-a057-2d61ba077803`
+    -> `845440ce-f63f-5835-903f-739145ca27bd`
+    as `partial`
+- the NI source atom `Funktionsgraph und Ableitungsgraph zusammen beschreiben` is now reused once for the shared canonical leaf `Zusammenhang von f und f′ am Graphen beschreiben`
+- the repository-backed Niedersachsen Sek-II fixture and upper-secondary mapping README were aligned to the new four-row state
+- the accepted-warning registry now records the Niedersachsen-specific `APV-202` for `845440ce-f63f-5835-903f-739145ca27bd`
+
+Why this cut:
+
+- this is the cleanest next NI follow-on after the pointwise interpretation step:
+  - the source atom explicitly relates function graph and derivative graph in both directions
+  - and the canonical target narrows that same relation to sign, course, monotonicity, and extrema
+- the bridge remains reviewed `partial` because the NI wording is broader and also references inflection points
+- no new retained prerequisite bridge is needed here:
+  - the already-open NI route through `b1dcc191-d046-50de-984a-ee5c17157628` is sufficient for this derivative-graph leaf
+
+Validation used:
+
+- `npm run validate:graph`
+- `./gradlew test --tests 'com.skillpilot.backend.landscape.GoalMappingRepositoryFixtureTest'`
+- `npm run apply:applicability`
+- `npm run validate:view-filters`
+- `./run_ci.sh`
+
+Validation result:
+
+- the Niedersachsen Sek-II repository mapping fixture now parses cleanly with `4` rows
+- `npm run apply:applicability` changed `1` goal across `1` file while compiling the NI derivative-graph bridge
+- `npm run validate:view-filters` remains at `0` errors, `3` warnings, `193` accepted warnings
+- full `./run_ci.sh` passed after the NI upper-secondary derivative-graph pass
+
+Interpretation:
+
+- Niedersachsen upper-secondary math now reaches the first four shared canonical E.2 leaves through one bounded retained route
+- the next Niedersachsen step should stay in the same upper-secondary corridor:
+  - either `5b284b66-f417-4366-8685-012ae000b3b1` against the elementary-derivative-rules leaf
+  - or a small NI follow-on on the graph/curve-discussion side if a cleaner source-atomic clause emerges
+
+### 2026-03-20: Niedersachsen upper-secondary reaches the shared elementary-derivative-rules leaf
+
+What changed:
+
+- the Niedersachsen Sek-II mapping lane now carries a fifth reviewed row in the same E.2 corridor:
+  - `5b284b66-f417-4366-8685-012ae000b3b1`
+    -> `858113c5-e53b-57bb-b01f-ba95c3ddcb6f`
+    as `partial`
+- the NI source atom `Standardableitungen sowie Summen- und Faktorregel nutzen` is now reused once for the shared canonical leaf `Ableitungen elementarer Funktionen berechnen`
+- the repository-backed Niedersachsen Sek-II fixture and upper-secondary mapping README were aligned to the new five-row state
+- the accepted-warning registry now records the Niedersachsen-specific `APV-202` for `858113c5-e53b-57bb-b01f-ba95c3ddcb6f`
+
+Why this cut:
+
+- this is the cleanest next NI follow-on after the derivative-graph step:
+  - the source atom explicitly covers selected standard derivatives plus sum and factor rule
+  - and the canonical target narrows that same route to elementary derivatives calculated with differentiation rules
+- the bridge remains reviewed `partial` because the NI wording is slightly narrower than the canonical atom and does not claim the full current shared elementary-function breadth
+- no new retained prerequisite bridge is needed here:
+  - the already-open NI route through `b42bdfcc-3db7-5697-8b3e-69e50962ca86` is sufficient for this rule-based leaf
+
+Validation used:
+
+- `npm run validate:graph`
+- `./gradlew test --tests 'com.skillpilot.backend.landscape.GoalMappingRepositoryFixtureTest'`
+- `npm run apply:applicability`
+- `npm run validate:view-filters`
+- `./run_ci.sh`
+
+Validation result:
+
+- the Niedersachsen Sek-II repository mapping fixture now parses cleanly with `5` rows
+- `npm run apply:applicability` changed `1` goal across `1` file while compiling the NI elementary-derivative-rules bridge
+- `npm run validate:view-filters` remains at `0` errors, `3` warnings, `194` accepted warnings
+- full `./run_ci.sh` passed after the NI upper-secondary elementary-derivative-rules pass
+
+Interpretation:
+
+- Niedersachsen upper-secondary math now reaches the first five shared canonical E.2 leaves through one bounded retained route
+- the next Niedersachsen step should now move to the next downstream NI analysis lane beyond this starter corridor rather than reopening lower-secondary work
+
+### 2026-03-20: Niedersachsen upper-secondary reaches the first downstream extremal-problem leaf
+
+What changed:
+
+- the Niedersachsen Sek-II mapping lane now carries a sixth reviewed row beyond the retained E.2 starter corridor:
+  - `d08d5280-3561-4d02-91f0-5f7465dd88a7`
+    -> `1511b39a-4094-5450-a755-4a3ad3339733`
+    as `partial`
+- the broad NI source atom `Tangenten, Normalen, Monotonie, Extrem- und Wendestellen untersuchen und Sachprobleme loesen`
+  - is now reused once for the narrower shared canonical leaf `Einfache Extremwertprobleme lösen`
+- after applicability compilation, `DE-NI` is now also visible on the shared canonical `E.3 Anwendungen des Ableitungsbegriffs` cluster
+- the repository-backed Niedersachsen Sek-II fixture and upper-secondary mapping README were aligned to the new six-row state
+- the accepted-warning registry now records the Niedersachsen-specific `APV-202` for `1511b39a-4094-5450-a755-4a3ad3339733`
+
+Why this cut:
+
+- this is the cleanest first downstream NI follow-on beyond the current E.2 starter route:
+  - the source atom explicitly includes optimization use
+  - and the canonical target narrows that same surface to simple extremal problems solved and interpreted in context
+- the bridge remains reviewed `partial` because the NI wording is broader and still bundles tangent / normal equations, monotonicity, and special-point analysis into the same clause
+- no new retained prerequisite bridge is needed here:
+  - the already-open NI route through `845440ce-f63f-5835-903f-739145ca27bd` and `858113c5-e53b-57bb-b01f-ba95c3ddcb6f` is sufficient for this downstream leaf
+
+Validation used:
+
+- `npm run validate:graph`
+- `./gradlew test --tests 'com.skillpilot.backend.landscape.GoalMappingRepositoryFixtureTest'`
+- `npm run apply:applicability`
+- `npm run validate:view-filters`
+- `./run_ci.sh`
+
+Validation result:
+
+- the Niedersachsen Sek-II repository mapping fixture now parses cleanly with `6` rows
+- `npm run apply:applicability` changed `2` goals across `1` file while compiling the NI extremal-problem bridge
+- `npm run validate:view-filters` remains at `0` errors, `3` warnings, `195` accepted warnings
+- full `./run_ci.sh` passed after the NI downstream extremal-problem pass
+
+Interpretation:
+
+- Niedersachsen upper-secondary math now reaches the first downstream `E.3` application leaf without widening the retained prerequisite surface
+- the next Niedersachsen step should stay on the same broad NI AB3 source atom and decide whether a retained split is justified for tangent / monotonicity / Wendestellen follow-ons
+
+### 2026-03-20: Niedersachsen retained-splits the downstream AB3 source atom and reaches the first-derivative investigation leaf
+
+What changed:
+
+- the broad Niedersachsen Sek-II source atom `d08d5280-3561-4d02-91f0-5f7465dd88a7`
+  - is no longer kept as one coarse atomic clause
+  - it is now a retained split-cluster with three source-aligned children for:
+    - tangent / normal equations
+    - monotonicity plus Extrem- and Wendestellen
+    - optimization use
+- the existing extremal-problem bridge was repointed from the old broad parent to the narrower optimization child:
+  - `270b0f43-623c-413c-b7f1-eb690079ad8d`
+    -> `1511b39a-4094-5450-a755-4a3ad3339733`
+    as `partial`
+- the Niedersachsen Sek-II mapping lane now carries a seventh reviewed row:
+  - `f4515a28-7161-49ae-8e74-f58d81ec0812`
+    -> `350fc8b1-ead0-4239-b28a-217cbd3bd1c3`
+    as `partial`
+- after applicability compilation, `DE-NI` is now also visible on the shared canonical leaf `Monotonie und Extremstellen mit der ersten Ableitung untersuchen`
+- the source membership / closure registries, the NI closure regression, the repository-backed Niedersachsen Sek-II fixture, and the upper-secondary mapping README were aligned to the retained-split seven-row state
+- the accepted-warning registry now records the Niedersachsen-specific `APV-202` for `350fc8b1-ead0-4239-b28a-217cbd3bd1c3`, and the NI rationale for `1511b39a-4094-5450-a755-4a3ad3339733` was narrowed to the new optimization child
+
+Why this cut:
+
+- the previous NI AB3 source atom had become too broad for repeated downstream reuse:
+  - it bundled tangents / normals, monotonicity, special points, and optimization in one clause
+  - so another direct broad partial would have increased review debt without improving source precision
+- the retained split keeps the archived source landscape stable while making the next NI bridge source-tighter
+- the new monotonicity bridge remains reviewed `partial` because the retained NI child still combines extrema with Wendestellen rather than isolating the narrower first-derivative-only canonical leaf
+
+Validation used:
+
+- `npm run validate:graph`
+- `./gradlew test --tests 'com.skillpilot.backend.landscape.GoalMappingRepositoryFixtureTest' --tests 'com.skillpilot.backend.landscape.LandscapeServiceTest'`
+- `npm run apply:applicability`
+- `npm run validate:view-filters`
+- `./run_ci.sh`
+
+Validation result:
+
+- the Niedersachsen Sek-II repository mapping fixture now parses cleanly with `7` rows
+- the NI upper-secondary source closure regression now resolves the retained split-cluster to its three new atomic children
+- `npm run apply:applicability` changed `1` goal across `1` file while compiling the NI first-derivative investigation bridge
+- `npm run validate:view-filters` remains at `0` errors, `3` warnings, `196` accepted warnings
+- full `./run_ci.sh` passed after the NI retained-split monotonicity pass
+
+Interpretation:
+
+- Niedersachsen upper-secondary math now reaches a second downstream `E.3` application leaf without keeping the old coarse AB3 source atom in active bridge use
+- the next Niedersachsen step should stay inside this retained split:
+  - either leave the tangent / normal child intentionally unmapped for now
+  - or split the monotonicity / Wendestellen child once more before attempting a second-derivative follow-on
+
+### 2026-03-21: Niedersachsen closes the retained tangent lane with one bounded shared-leaf bridge
+
+What changed:
+
+- the retained Niedersachsen source child `23e03002-37c4-4268-ba3a-ddcdffc2e666`
+  - now maps as one reviewed `partial`
+  - to the shared canonical tangent-equation leaf `0264591c-fdd7-41c6-9fb9-7cb3a03f7658`
+- this closes the remaining open tangent-lane decision inside the retained NI AB3 split without introducing another source split
+- after applicability compilation, `DE-NI` is now also visible on the shared canonical leaf `Tangentengleichungen und Steigungswinkel bestimmen` and thereby on the surrounding tangents/normals cluster
+- the repository-backed Niedersachsen Sek-II fixture and upper-secondary mapping README were aligned to the new nine-row state
+- the accepted-warning registry now records the Niedersachsen-specific `APV-202` for `0264591c-fdd7-41c6-9fb9-7cb3a03f7658`
+
+Why this cut:
+
+- the NI source child isolates tangent and normal equations cleanly enough to justify one bounded shared-leaf bridge
+- forcing another source split would not buy much:
+  - the remaining mismatch is mainly the missing explicit Steigungswinkel surface
+  - that is already narrow enough to live as reviewed `partial` debt
+- mapping to the shared tangent-equation leaf is cleaner than forcing another NI-only split:
+  - the Bayern-derived tangent-equation leaf is closer to the NI wording than the NRW slope-focused leaf
+  - the remaining mismatch is limited and reviewable: missing explicit Steigungswinkel on the source side, extra Normalengleichungen on the NI side
+
+Validation used:
+
+- `npm run validate:graph`
+- `./gradlew test --tests 'com.skillpilot.backend.landscape.GoalMappingRepositoryFixtureTest'`
+- `npm run apply:applicability`
+- `npm run validate:view-filters`
+- `./run_ci.sh`
+
+Validation result:
+
+- the Niedersachsen Sek-II repository mapping fixture now parses cleanly with `9` rows
+- `npm run apply:applicability` changed `2` goals across `1` file while compiling the NI tangent-lane bridge
+- `npm run validate:view-filters` remains at `0` errors, `3` warnings, `198` accepted warnings
+- full `./run_ci.sh` passed after the NI tangent-lane pass
+
+Interpretation:
+
+- the retained NI E-phase derivative-usage starter slice is now closed without further source-shape debt inside the current pilot subset
+- the next Niedersachsen step should now move outside this retained starter slice:
+  - either widen the NI upper-secondary source snapshot into the next corridor
+  - or stop the NI pilot here and move to the next Bundesland
+
+### 2026-03-21: Baden-Wuerttemberg mathematics mapping-lane setup opens the post-Niedersachsen Stage-B lane
+
+What changed:
+
+- the next post-Niedersachsen onboarding lane is now prepared for `DE-BW`
+- the first real `DE-BW` canonical math mapping fixtures now exist at:
+  - `curricula/DE/Gymnasium/mapping/DE-BW/lower-secondary/bw_math_lower_secondary_to_canonical_math.json`
+  - `curricula/DE/Gymnasium/mapping/DE-BW/upper-secondary/bw_math_upper_secondary_to_canonical_math.json`
+- both fixtures are repository-backed and intentionally still empty (`0` mappings)
+- stable Baden-Wuerttemberg source-landscape IDs are now reserved for the future source snapshots:
+  - lower-secondary math: `6232b783-199c-4c50-92f2-9fb31277e619`
+  - upper-secondary math: `fa8f864a-aac5-486d-8e77-40df2af038a3`
+- the reservation and no-premature-activation rule now live in:
+  - `curricula/DE/Gymnasium/provenance/bw-math-onboarding.md`
+- the new `DE-BW` mapping-lane READMEs record the planned lane purpose and current non-activated state
+
+Why this cut:
+
+- the retained NI E-phase starter slice is now closed cleanly enough that the next reusable rollout learning step is no longer another local NI cleanup
+- Baden-Wuerttemberg is the cleanest remaining placeholder lane for repeating the early multi-state onboarding pattern once more:
+  - one provider family
+  - explicit math references for both lower-secondary and upper-secondary Gymnasium
+  - a Kursstufe structure that should pressure-test the shared upper-secondary canonical spine differently from NRW and Niedersachsen
+- preparing the Stage-B lane first keeps the next move operationally simple:
+  - source import can follow without reopening runtime or fixture semantics
+  - the reserved IDs are now stable before any source snapshots are authored
+
+Validation used:
+
+- `./gradlew test --tests 'com.skillpilot.backend.landscape.GoalMappingRepositoryFixtureTest'`
+- `./run_ci.sh`
+
+Validation result:
+
+- the repository-backed Baden-Wuerttemberg lower-secondary mapping fixture parses cleanly with `0` rows
+- the repository-backed Baden-Wuerttemberg upper-secondary mapping fixture parses cleanly with `0` rows
+- full `./run_ci.sh` passed after the post-Niedersachsen Stage-B scaffold pass
+
+Interpretation:
+
+- the next executable program step is now no longer a local NI tangent/derivative follow-on
+- the clean next move is Baden-Wuerttemberg Stage A:
+  - archive the official mathematics source bundle under `curricula/DE/Gymnasium/input/BW/`
+  - then build the first lower-secondary and upper-secondary source snapshots
+
+### 2026-03-21: Baden-Wuerttemberg mathematics source import completes post-Niedersachsen Stage A
+
+What changed:
+
+- the official Baden-Wuerttemberg Gymnasium mathematics source PDF is now archived locally at:
+  - `curricula/DE/Gymnasium/input/BW/BP2016BW_ALLG_GYM_M.pdf`
+- this provider export currently covers both lower-secondary and Kursstufe mathematics in one official source bundle
+- the Baden-Wuerttemberg input lane README now records that shared archive state and points both math sections at the local file
+- lane-specific provenance notes now exist at:
+  - `curricula/DE/Gymnasium/input/BW/lower-secondary/references.md`
+  - `curricula/DE/Gymnasium/input/BW/upper-secondary/references.md`
+- the BW onboarding note now records that the source PDF is archived while the source registries still remain inactive until real snapshots exist
+
+Why this cut:
+
+- the post-NI reusable next step was source onboarding for one further mathematics state, not more local NI corridor cleanup
+- Baden-Wuerttemberg exposes a slightly different source shape than NRW and Niedersachsen:
+  - one official combined Gymnasium mathematics export instead of two separate Sek-I / Sek-II PDFs
+- archiving that official combined export first keeps the next Stage-C snapshot work grounded in a fixed on-disk source bundle before any source-goal IDs are authored
+
+Validation used:
+
+- `./gradlew test --tests 'com.skillpilot.backend.landscape.GoalMappingRepositoryFixtureTest'`
+- `./run_ci.sh`
+
+Validation result:
+
+- the repository-backed Baden-Wuerttemberg Stage-B mapping fixtures still parse cleanly with `0` rows
+- full `./run_ci.sh` passed after the Baden-Wuerttemberg Stage-A source import
+- `npm run validate:view-filters` remains at `0` errors, `3` warnings, `198` accepted warnings
+
+Interpretation:
+
+- Baden-Wuerttemberg is no longer a README-only placeholder lane
+- the next executable program step is now Baden-Wuerttemberg Stage C:
+  - derive the first lower-secondary pilot snapshot from the archived combined mathematics PDF
+  - then derive the first upper-secondary pilot snapshot from the same source bundle
+
+### 2026-03-21: Baden-Wuerttemberg lower-secondary pilot source snapshot completes the first Stage-C activation
+
+What changed:
+
+- the first real Baden-Wuerttemberg Sek-I source snapshot now exists at:
+  - `curricula/DE/Gymnasium/input/BW/lower-secondary/source-json/DE_BAW_S_GYM_1_MATHEMATIK.de.json.snapshot`
+- the new archived source landscape uses the reserved Baden-Wuerttemberg lower-secondary math `sourceLandscapeId`:
+  - `6232b783-199c-4c50-92f2-9fb31277e619`
+- the first imported BW pilot subset is deliberately small and source-led:
+  - the curriculum-wide orientation layer from `1.1 Bildungswert des Faches Mathematik`
+  - `3.1.4 Leitidee Funktionaler Zusammenhang` in `Klassen 5/6`
+  - `3.2.4 Leitidee Funktionaler Zusammenhang` in `Klassen 7/8`
+- the lower-secondary Baden-Wuerttemberg source lane is now active in shared provenance:
+  - `curricula/DE/Gymnasium/provenance/source-landscape-registry.json`
+  - `curricula/DE/Gymnasium/provenance/source-goal-membership-registry.json`
+  - `curricula/DE/Gymnasium/provenance/source-goal-closure-registry.json`
+- the local BW source inventory now also includes:
+  - `curricula/DE/Gymnasium/input/BW/math-structure-note.md`
+- archived-source runtime handling and test coverage were widened for Baden-Wuerttemberg:
+  - `backend/src/main/java/com/skillpilot/backend/landscape/LandscapeService.java`
+  - `backend/src/test/java/com/skillpilot/backend/landscape/LandscapeServiceTest.java`
+
+Why this cut:
+
+- after BW Stage A and Stage B, the next reusable step was no longer repository setup but a first real archived source landscape with stable source goal IDs
+- the lower-secondary shared functions corridor is the cleanest first Baden-Wuerttemberg subset because the combined source PDF already exposes it in a form close to the earlier NRW and Niedersachsen onboarding cuts
+- activating provenance at this point keeps the later BW mapping work grounded in repository-backed source IDs instead of PDF-only references
+
+Validation used:
+
+- `./gradlew test --tests 'com.skillpilot.backend.landscape.LandscapeServiceTest' --tests 'com.skillpilot.backend.landscape.GoalMappingRepositoryFixtureTest'`
+- `npm run validate:graph`
+- `./run_ci.sh`
+
+Validation result:
+
+- the new Baden-Wuerttemberg lower-secondary pilot source landscape loads from the real registry
+- its archived atomic closure resolves correctly for the first BW functions corridor
+- full `./run_ci.sh` passed after the new snapshot, provenance activation, and test coverage
+- `npm run validate:view-filters` remains at `0` errors, `3` warnings, `198` accepted warnings
+
+Interpretation:
+
+- Stage C is now complete for the first Baden-Wuerttemberg lower-secondary pilot subset
+- Baden-Wuerttemberg upper-secondary remains source-PDF-only for now
+- the next Baden-Wuerttemberg blocker is therefore narrower than before:
+  - import the first BW upper-secondary source snapshot with stable source goal IDs
+  - then activate the shared provenance registries for that upper-secondary lane
+
+### 2026-03-21: Baden-Wuerttemberg course-stage pilot source snapshot completes the first upper-secondary Stage-C activation
+
+What changed:
+
+- the first real Baden-Wuerttemberg Kursstufe source snapshot now exists at:
+  - `curricula/DE/Gymnasium/input/BW/upper-secondary/source-json/DE_BAW_S_GYM_2_MATHEMATIK.de.json.snapshot`
+- the new archived source landscape uses the reserved Baden-Wuerttemberg upper-secondary math `sourceLandscapeId`:
+  - `fa8f864a-aac5-486d-8e77-40df2af038a3`
+- the first imported BW Kursstufe pilot subset is deliberately small and source-led:
+  - the shared orientation layer from `1.4 Basisfach und Leistungsfach in der Oberstufe`
+  - `3.5.4 Leitidee Funktionaler Zusammenhang` in `Basisfach`
+  - `3.4.4 Leitidee Funktionaler Zusammenhang` in `Leistungsfach`
+- the upper-secondary Baden-Wuerttemberg source lane is now also active in shared provenance:
+  - `curricula/DE/Gymnasium/provenance/source-landscape-registry.json`
+  - `curricula/DE/Gymnasium/provenance/source-goal-membership-registry.json`
+  - `curricula/DE/Gymnasium/provenance/source-goal-closure-registry.json`
+- archived-source runtime handling and test coverage were widened again for Baden-Wuerttemberg:
+  - `backend/src/main/java/com/skillpilot/backend/landscape/LandscapeService.java`
+  - `backend/src/test/java/com/skillpilot/backend/landscape/LandscapeServiceTest.java`
+
+Why this cut:
+
+- after the first BW Sek-I Stage-C activation, the next reusable source step was the matching Kursstufe lane from the same archived combined PDF
+- Baden-Wuerttemberg now has enough real source structure on disk to avoid further PDF-first reasoning for the first mapping pass
+- the imported Basisfach/Leistungsfach pair gives the rollout a fifth upper-secondary comparison shape after Hessen, Bavaria, NRW, and Niedersachsen without forcing an early broad subject import
+
+Validation used:
+
+- `npm run validate:graph`
+- `./gradlew test --tests 'com.skillpilot.backend.landscape.LandscapeServiceTest' --tests 'com.skillpilot.backend.landscape.GoalMappingRepositoryFixtureTest'`
+- `./run_ci.sh`
+
+Validation result:
+
+- the first BW Kursstufe pilot snapshot parses cleanly and is now reachable through the shared archived-source registries
+- full `./run_ci.sh` passed after the BW Kursstufe Stage-C activation
+- `npm run validate:view-filters` remains at `0` errors, `3` warnings, `198` accepted warnings
+
+Interpretation:
+
+- Baden-Wuerttemberg is no longer source-incomplete on the mathematics-first rollout track
+- the clean next program step is now no longer another BW source snapshot
+- the next executable work item is the first reviewed BW lower-secondary function-corridor mapping pass against the already archived Sek-I source IDs
+
+### 2026-03-21: Niedersachsen retained-splits the monotonicity/Wendestellen child and reaches the second-derivative curvature leaf
+
+What changed:
+
+- the retained Niedersachsen source child `f4515a28-7161-49ae-8e74-f58d81ec0812`
+  - is no longer kept as one broad atomic clause
+  - it is now a retained split-cluster with two narrower children for:
+    - monotonicity plus Extremstellen
+    - Wendestellen
+- the existing first-derivative bridge was repointed from the broader first-stage child to the narrower monotonicity/extrema child:
+  - `22074d55-5227-4487-9fcc-4bc5dcec970e`
+    -> `350fc8b1-ead0-4239-b28a-217cbd3bd1c3`
+    as `partial`
+- the Niedersachsen Sek-II mapping lane now carries an eighth reviewed row:
+  - `d3e91530-938e-46c9-b0de-55bbae83e5a0`
+    -> `b3604df4-15a8-41c8-a8b0-50dadd698bd3`
+    as `partial`
+- after applicability compilation, `DE-NI` is now also visible on the shared canonical leaf `Krümmung und Wendestellen mit der zweiten Ableitung untersuchen`
+- the source membership / closure registries, the NI closure regression, the repository-backed Niedersachsen Sek-II fixture, and the upper-secondary mapping README were aligned to the retained-split eight-row state
+- the accepted-warning registry now records the Niedersachsen-specific `APV-202` for `b3604df4-15a8-41c8-a8b0-50dadd698bd3`, and the NI rationale for `350fc8b1-ead0-4239-b28a-217cbd3bd1c3` was narrowed to the new monotonicity/extrema child
+
+Why this cut:
+
+- the first retained NI child was still too broad for a clean second-derivative follow-on:
+  - it bundled monotonicity, extremal behavior, and Wendestellen in one clause
+  - so reusing it again would have stacked another broad partial on top of already reviewed debt
+- the second retained split keeps the archived NI source lane stable while making the first- and second-derivative bridges materially tighter
+- the new second-derivative bridge still remains reviewed `partial` because the retained NI Wendestellen child does not isolate the full canonical curvature surface or the contextual interpretation layer
+
+Validation used:
+
+- `npm run validate:graph`
+- `./gradlew test --tests 'com.skillpilot.backend.landscape.GoalMappingRepositoryFixtureTest' --tests 'com.skillpilot.backend.landscape.LandscapeServiceTest'`
+- `npm run apply:applicability`
+- `npm run validate:view-filters`
+- `./run_ci.sh`
+
+Validation result:
+
+- the Niedersachsen Sek-II repository mapping fixture now parses cleanly with `8` rows
+- the NI upper-secondary source closure regression now resolves the first retained child to its two narrower atomic children
+- `npm run apply:applicability` changed `1` goal across `1` file while compiling the NI second-derivative curvature bridge
+- `npm run validate:view-filters` remains at `0` errors, `3` warnings, `197` accepted warnings
+- full `./run_ci.sh` passed after the NI retained-split second-derivative pass
+
+Interpretation:
+
+- Niedersachsen upper-secondary math now reaches the shared second-derivative curvature leaf without forcing another reuse of the broad first-stage retained child
+- the next Niedersachsen step should now decide only the remaining tangent-lane question:
+  - either leave the tangent / normal child intentionally unmapped for now
+  - or accept one bounded reviewed partial onto the shared tangents leaf
+
+### 2026-03-20: Niedersachsen upper-secondary reaches the first shared E.2 change-rate leaf
+
+What changed:
+
+- the Niedersachsen Sek-II mapping lane now carries its first reviewed row instead of staying empty:
+  - `250ba641-b2a1-4717-9a27-4ee0e6aa83c2`
+    -> `ae20183e-92b5-5521-b8e0-9a8662cf51f5`
+    as `partial`
+- this is the same conservative first upper-secondary Analysis cut previously proven in NRW:
+  - the NI source atom `Mittlere und lokale Aenderungsraten sowie Sekanten- und Tangentensteigungen bestimmen`
+  - is reused once for the narrower shared canonical leaf `Mittlere Änderungsrate berechnen und deuten`
+- after applicability compilation, `DE-NI` is now visible on the first shared upper-secondary derivative-entry leaf and pulls the shared canonical E.2 cluster into Niedersachsen as well
+- the repository-backed Niedersachsen Sek-II fixture and upper-secondary mapping README were aligned to the new one-row state
+- the accepted-warning registry now records:
+  - the Niedersachsen-specific `APV-202` for `ae20183e-92b5-5521-b8e0-9a8662cf51f5`
+  - two matching retained-prerequisite `APV-201` entries for `c65ecabf-d00b-4e2d-99ae-b64692325ffb` and `a8c42ee9-2898-4247-819f-c235032ac78a`
+- the canonical function-value leaves `c65ecabf-d00b-4e2d-99ae-b64692325ffb` and `a8c42ee9-2898-4247-819f-c235032ac78a` now carry explicit retained `DE-NI` applicability so the first derivative-entry route can compile cleanly
+
+Why this cut:
+
+- the imported NI upper-secondary corridor is still intentionally narrow, and the broadest derivative bundle would be too coarse as a first kept bridge
+- the cleanest reusable move is the same one that worked in NRW:
+  - start with the average-rate entry leaf
+  - do not force the next derivative follow-on until the route is visible and validated
+- the NI source wording is still broader than the canonical average-rate atom because it also includes local rates and secant / tangent slopes, so the bridge is intentionally kept as reviewed `partial`
+- the NI pilot source still does not isolate one-to-one legacy atoms for the two shared function-value prerequisites, so those two prerequisite closures are intentionally documented as retained `APV-201` bridges instead of being forced into weak new partial mappings
+
+Validation used:
+
+- `npm run validate:graph`
+- `./gradlew test --tests 'com.skillpilot.backend.landscape.GoalMappingRepositoryFixtureTest'`
+- `npm run apply:applicability`
+- `npm run validate:view-filters`
+- `./run_ci.sh`
+
+Validation result:
+
+- the Niedersachsen Sek-II repository mapping fixture now parses cleanly with `1` row
+- `npm run apply:applicability` changed `2` goals across `1` file while compiling the first NI upper-secondary derivative-entry route:
+  - the two retained NI prerequisite leaves for direct and graph-based function-value work
+- `npm run validate:view-filters` remains at `0` errors, `3` warnings, `190` accepted warnings
+- full `./run_ci.sh` passed after the NI upper-secondary change-rate bridge pass
+
+Interpretation:
+
+- Niedersachsen upper-secondary math is now active on the shared canonical Analysis spine beyond source-only readiness
+- the first NI E.2 route is now open, but only with the two explicit retained function-value prerequisite bridges documented in the accepted-warning registry
+- the next Niedersachsen step should stay in the same upper-secondary E.2 corridor:
+  - either `234dde5d-cc9d-4508-af9e-092e614ea304` against the next derivative-entry atom
+  - or a small retained NI source split if that follow-on alignment turns out too broad
 
 ### 2026-03-20: NRW upper-secondary Q1.1 gains an exact area-function leaf
 

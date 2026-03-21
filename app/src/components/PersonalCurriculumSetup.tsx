@@ -27,8 +27,10 @@ interface MigrationPreviewItem {
 
 const DEFAULT_GYMNASIUM_DE_ROOT_FILTERS = [
     { id: 'ALL', label: 'Alle Bundeslaender' },
+    { id: 'DE-BW', label: 'Baden-Wuerttemberg' },
     { id: 'DE-HE', label: 'Hessen' },
     { id: 'DE-BY', label: 'Bayern' },
+    { id: 'DE-NI', label: 'Niedersachsen' },
     { id: 'DE-NW', label: 'Nordrhein-Westfalen' },
 ]
 
