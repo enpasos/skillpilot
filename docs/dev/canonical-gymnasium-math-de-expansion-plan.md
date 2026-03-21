@@ -331,6 +331,47 @@ Resulting rollout effect:
 - the Brandenburg total mapping surface rises from `62` to `71` mappings
 - the next derivable tasks are now the Berlin `Q4` distribution-and-binomial follow-on corridor and the Brandenburg `Q2` survey-and-critique follow-on corridor, while the lower-secondary shared lane can remain stable until those upper-secondary widening steps are secured
 
+### 2026-03-21 / Step 14 completed
+
+Executed work:
+
+- expanded the Berlin upper-secondary source snapshot from the first reviewed `Q2` data-and-survey strip into the first reviewed `Q4` distribution-and-binomial follow-on corridor
+- activated the new Berlin `Q4` corridor goals in:
+  - `source-goal-membership-registry.json`
+  - `source-goal-closure-registry.json`
+- mapped the Berlin `Q4` distribution-and-binomial strip onto the canonical upper-secondary math spine:
+  - `Q3.2 Wahrscheinlichkeitsverteilungen`
+  - reviewed leaf bridges for binomial models with `n` and `p`, Bernoulli chains, binomial probabilities, expected value, standard deviation, and first context use
+- updated the Berlin upper-secondary lane notes so the next follow-on work is now a `Q4` inference, tests, and normal-approximation widening step rather than the first `Q4` distribution-and-binomial cut
+
+Resulting rollout effect:
+
+- Berlin now has reviewed corridor coverage on both the lower-secondary shared functions lane and five reviewed upper-secondary corridors on the active differential/stochastics/statistics spine
+- the nationwide score stays at `30.9%` because no state phase transition changed
+- the Berlin total mapping surface rises from `58` to `64` mappings
+- the next derivable tasks are now the Brandenburg `Q2` survey-and-critique follow-on corridor and the Berlin `Q4` inference, tests, and normal-approximation follow-on corridor, while the lower-secondary shared lane can remain stable until those upper-secondary widening steps are secured
+
+### 2026-03-21 / Step 15 completed
+
+Executed work:
+
+- expanded the Brandenburg upper-secondary source snapshot from the first reviewed `Q2` data-and-distribution strip into the first reviewed `Q2` survey-and-critique follow-on corridor
+- activated the new Brandenburg `Q2` corridor goals in:
+  - `source-goal-membership-registry.json`
+  - `source-goal-closure-registry.json`
+- mapped the Brandenburg `Q2` survey-and-critique strip onto the canonical upper-secondary math spine:
+  - `Q3.5 Statistik und weitere Wahrscheinlichkeitsverteilungen`
+  - `Zufallsexperimente statistisch auswerten`
+  - reviewed leaf bridges for statistical survey planning, data preparation, and the critical evaluation of survey data with descriptive measures
+- updated the Brandenburg lane notes so the next follow-on work now shifts from this upper-secondary `Q2` widening step toward the next lower-secondary corridor on the shared BE/BB functions spine
+
+Resulting rollout effect:
+
+- Brandenburg now has reviewed corridor coverage on both the lower-secondary shared functions lane and six reviewed upper-secondary corridors on the active analysis/stochastics/statistics spine
+- the nationwide score stays at `30.9%` because no state phase transition changed
+- the Brandenburg total mapping surface rises from `71` to `76` mappings
+- the next derivable tasks are now the Berlin `Q4` inference, tests, and normal-approximation follow-on corridor and the first Brandenburg lower-secondary follow-on corridor, while broader lower-secondary widening can stay behind those two clearly bounded moves
+
 ## Coverage target
 
 For this rollout, a Bundesland counts as operationally covered only when all of the following are true:
@@ -536,22 +577,22 @@ Program interpretation:
 - the repo is beyond pure pilot mode for math
 - but nationwide state coverage is still in an early stage
 - the first backlog wave `DE-BB` / `DE-BE` has now reached reviewed multi-corridor upper-secondary state on both active lanes
-- the Berlin lane now also carries its first reviewed `Q4` distribution-and-binomial corridor, so the next focus shifts to the Brandenburg `Q2` survey-and-critique widening step, then the Berlin `Q4` inference/test/normal-approximation widening step, then corridor-by-corridor widening on the active shared spine
+- the Brandenburg lane now also carries its first reviewed `Q2` survey-and-critique corridor, so the next focus shifts to the Berlin `Q4` inference/test/normal-approximation widening step, then the first tightly shared lower-secondary follow-on corridors for Brandenburg and Berlin, then corridor-by-corridor widening on the active shared spine
 
 ## Update workflow
 
 1. update `curricula/DE/Gymnasium/provenance/math-bundesland-rollout-tracker.json`
 2. run `python3 scripts/render_canonical_math_bundesland_status.py`
 3. review the generated `docs/dev/canonical-gymnasium-math-bundeslaender-status.md`
-4. commit plan, tracker, and generated status together when the rollout picture changed
+4. update `docs/dev/canonical-gymnasium-math-de-expansion-plan.md`
+5. commit plan, tracker, and generated status together when the rollout picture changed
 
 ## Suggested next concrete move
 
 Keep the tracker stable and use it to drive math work in this order:
 
-1. widen `DE-BB` from the active `Q2` data-and-distribution strip toward the first `Q2` survey-and-critique follow-on corridor
-2. widen `DE-BE` from the active `Q4` distribution-and-binomial strip toward the first `Q4` inference/test/normal-approximation follow-on corridor
-3. widen `DE-BB` / `DE-BE` beyond the first lower-secondary functions corridor where the canonical overlap stays tight
-4. only then decide whether the next move is another new-state onboarding wave or more BB/BE upper-secondary depth
+1. widen `DE-BE` from the active `Q4` distribution-and-binomial strip toward the first `Q4` inference/test/normal-approximation follow-on corridor
+2. widen `DE-BB` / `DE-BE` beyond the first lower-secondary functions corridor where the canonical overlap stays tight
+3. only then decide whether the next move is another new-state onboarding wave or more upper-secondary depth on the active BB/BE lanes
 
 That makes nationwide progress visible without overloading the canonical landscape file with project-management metadata.

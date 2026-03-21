@@ -53,7 +53,7 @@ This file is generated from:
 | `DE-BW` Baden-Wuerttemberg | `P4` First corridor reviewed | `65%` | `yes` | `19` | `snapshots_active` | `active` |
 | `DE-NI` Niedersachsen | `P4` First corridor reviewed | `65%` | `yes` | `17` | `snapshots_active` | `active` |
 | `DE-NW` Nordrhein-Westfalen | `P4` First corridor reviewed | `65%` | `yes` | `42` | `snapshots_active` | `active` |
-| `DE-BB` Brandenburg | `P4` First corridor reviewed | `65%` | `no` | `71` | `snapshots_active` | `next_wave` |
+| `DE-BB` Brandenburg | `P4` First corridor reviewed | `65%` | `no` | `76` | `snapshots_active` | `next_wave` |
 | `DE-BE` Berlin | `P4` First corridor reviewed | `65%` | `no` | `64` | `snapshots_active` | `next_wave` |
 | `DE-HB` Bremen | `P0` Placeholder | `0%` | `no` | `0` | `placeholder_only` | `backlog` |
 | `DE-HH` Hamburg | `P0` Placeholder | `0%` | `no` | `0` | `placeholder_only` | `backlog` |
@@ -72,7 +72,7 @@ This file is generated from:
 - `DE-BW` (`P4`, `active`): Close the remaining BW representation debt before broadening the next corridor.
 - `DE-NI` (`P4`, `active`): Retry the next Niedersachsen lower-secondary and derivative-entry follow-on corridors on the active base.
 - `DE-NW` (`P4`, `active`): Broaden from corridor coverage toward broad state coverage.
-- `DE-BB` (`P4`, `next_wave`): Widen the Brandenburg upper-secondary lane from the active Q2 data-and-distribution corridor toward the first Q2 survey-and-critique follow-on corridor.
+- `DE-BB` (`P4`, `next_wave`): Widen the Brandenburg lower-secondary lane beyond the first functions corridor while the shared BE/BB overlap stays tight.
 - `DE-BE` (`P4`, `next_wave`): Widen the Berlin upper-secondary lane from the active Q4 distribution-and-binomial corridor toward the first Q4 inference, tests, and normal-approximation follow-on corridor.
 
 ## Next steps
@@ -82,7 +82,7 @@ This file is generated from:
 - `DE-BW`: Close the remaining BW representation debt before broadening the next corridor.
 - `DE-NI`: Retry the next Niedersachsen lower-secondary and derivative-entry follow-on corridors on the active base.
 - `DE-NW`: Broaden from corridor coverage toward broad state coverage.
-- `DE-BB`: Widen the Brandenburg upper-secondary lane from the active Q2 data-and-distribution corridor toward the first Q2 survey-and-critique follow-on corridor.
+- `DE-BB`: Widen the Brandenburg lower-secondary lane beyond the first functions corridor while the shared BE/BB overlap stays tight.
 - `DE-BE`: Widen the Berlin upper-secondary lane from the active Q4 distribution-and-binomial corridor toward the first Q4 inference, tests, and normal-approximation follow-on corridor.
 - `DE-HB`: Archive the official math source bundle and create the first state mapping lane scaffold.
 - `DE-HH`: Archive the official math source bundle and create the first state mapping lane scaffold.

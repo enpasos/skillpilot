@@ -8,8 +8,8 @@
   "frameworkId": "bb-gost-2022-math",
   "title": "Mathematik Oberstufe (Brandenburg, Pilot-Quellsnapshot)",
   "titleEn": "Mathematics Upper Secondary (Brandenburg, Pilot Source Snapshot)",
-  "description": "Erster archivierter Brandenburg-Quellsnapshot fuer die gymnasiale Oberstufe Mathematik. Der Snapshot aktiviert die Phasenanker von Einfuehrungsphase und Qualifikationsphase mit den vier Kurshalbjahren sowie den ersten reviewed Analysis-Einstiegskorridor der Einfuehrungsphase, den ersten reviewed Q1-Modellfunktionskorridor, den ersten reviewed Q2-Integralrechnungskorridor, den ersten reviewed Q2-Stochastikkorridor und den ersten reviewed Q2-Daten-und-Verteilungskorridor.",
-  "descriptionEn": "First archived Brandenburg source snapshot for upper-secondary mathematics. The snapshot activates the phase anchors of the introductory and qualification phases together with the four course semesters and the first reviewed introductory analysis corridor as well as the first reviewed Q1 model-functions corridor, the first reviewed Q2 integral-calculus corridor, the first reviewed Q2 stochastics corridor, and the first reviewed Q2 data-and-distribution corridor.",
+  "description": "Erster archivierter Brandenburg-Quellsnapshot fuer die gymnasiale Oberstufe Mathematik. Der Snapshot aktiviert die Phasenanker von Einfuehrungsphase und Qualifikationsphase mit den vier Kurshalbjahren sowie den ersten reviewed Analysis-Einstiegskorridor der Einfuehrungsphase, den ersten reviewed Q1-Modellfunktionskorridor, den ersten reviewed Q2-Integralrechnungskorridor, den ersten reviewed Q2-Stochastikkorridor, den ersten reviewed Q2-Daten-und-Verteilungskorridor und den ersten reviewed Q2-Survey-und-Kritik-Korridor.",
+  "descriptionEn": "First archived Brandenburg source snapshot for upper-secondary mathematics. The snapshot activates the phase anchors of the introductory and qualification phases together with the four course semesters and the first reviewed introductory analysis corridor as well as the first reviewed Q1 model-functions corridor, the first reviewed Q2 integral-calculus corridor, the first reviewed Q2 stochastics corridor, the first reviewed Q2 data-and-distribution corridor, and the first reviewed Q2 survey-and-critique corridor.",
   "compatibilityOnly": true,
   "legacyHiddenByDefault": true,
   "goals": [
@@ -17,9 +17,9 @@
       "id": "28d6faea-7459-4e61-8450-c5affcb93a48",
       "title": "Mathematik Oberstufe",
       "titleEn": "Mathematics Upper Secondary",
-      "description": "Pilot-Subset der Brandenburgischen Mathematik-Oberstufe mit Fokus auf dem strukturellen Uebergang von der Einfuehrungsphase in die vier Kurshalbjahre der Qualifikationsphase, dem ersten reviewed Analysis-Einstiegskorridor, dem ersten reviewed Q1-Modellfunktionskorridor, dem ersten reviewed Q2-Integralrechnungskorridor, dem ersten reviewed Q2-Stochastikkorridor und dem ersten reviewed Q2-Daten-und-Verteilungskorridor.",
-      "descriptionEn": "Pilot subset of Brandenburg upper-secondary mathematics focusing on the structural transition from the introductory phase into the four course semesters of the qualification phase, the first reviewed introductory analysis corridor, the first reviewed Q1 model-functions corridor, the first reviewed Q2 integral-calculus corridor, the first reviewed Q2 stochastics corridor, and the first reviewed Q2 data-and-distribution corridor.",
-      "weight": 46,
+      "description": "Pilot-Subset der Brandenburgischen Mathematik-Oberstufe mit Fokus auf dem strukturellen Uebergang von der Einfuehrungsphase in die vier Kurshalbjahre der Qualifikationsphase, dem ersten reviewed Analysis-Einstiegskorridor, dem ersten reviewed Q1-Modellfunktionskorridor, dem ersten reviewed Q2-Integralrechnungskorridor, dem ersten reviewed Q2-Stochastikkorridor, dem ersten reviewed Q2-Daten-und-Verteilungskorridor und dem ersten reviewed Q2-Survey-und-Kritik-Korridor.",
+      "descriptionEn": "Pilot subset of Brandenburg upper-secondary mathematics focusing on the structural transition from the introductory phase into the four course semesters of the qualification phase, the first reviewed introductory analysis corridor, the first reviewed Q1 model-functions corridor, the first reviewed Q2 integral-calculus corridor, the first reviewed Q2 stochastics corridor, the first reviewed Q2 data-and-distribution corridor, and the first reviewed Q2 survey-and-critique corridor.",
+      "weight": 49,
       "tags": [
         "Sek2",
         "Gymnasium",
@@ -29,7 +29,8 @@
         "Q1ModelFunctionCorridor",
         "Q2IntegralCorridor",
         "Q2StochasticsCorridor",
-        "Q2DataDistributionCorridor"
+        "Q2DataDistributionCorridor",
+        "Q2SurveyCritiqueCorridor"
       ],
       "contains": [
         "ac259f4a-8d7e-4f1e-939f-4fe6e0f4f534",
@@ -42,7 +43,8 @@
         "86c14536-f791-42cf-8f27-53594b238ce5",
         "045be183-58ef-4902-babf-f6ea92609d1d",
         "c5fec5b3-fcd8-462a-beb5-d5d5d7544fec",
-        "cf83da48-17ef-488b-9a68-75323d5764de"
+        "cf83da48-17ef-488b-9a68-75323d5764de",
+        "7ddb6b75-55a5-48b4-8ce4-2f5a3dc5274e"
       ],
       "requires": [
         "ac259f4a-8d7e-4f1e-939f-4fe6e0f4f534"
@@ -1845,6 +1847,154 @@
         "d8a872b0-befb-47d3-9699-9bcb6b6b5074"
       ],
       "sourceRef": "RLP Brandenburg GOST Mathematik 2022, 2. Kurshalbjahr: Stochastik, 'Punkt- und Intervallwahrscheinlichkeiten fuer die Anzahl an Erfolgen', S. 27.",
+      "dimensionTags": {
+        "framework": "bb-gost-2022-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q2",
+        "area": "Stochastik"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "7ddb6b75-55a5-48b4-8ce4-2f5a3dc5274e",
+      "title": "Erster Q2-Survey-und-Kritik-Korridor",
+      "titleEn": "First Q2 Survey-and-Critique Corridor",
+      "description": "Erster reviewed Brandenburg-Q2-Folgekorridor zu statistischen Erhebungen, Datenaufbereitung und kritischer Auswertung von Erhebungsdaten auf der Basis der aktiven Stichprobenkennwerte.",
+      "descriptionEn": "First reviewed Brandenburg Q2 follow-on corridor covering statistical surveys, data preparation, and the critical evaluation of survey data on top of the active sample-characteristics base.",
+      "weight": 3,
+      "tags": [
+        "Sek2",
+        "Q2",
+        "PilotSubset",
+        "Q2SurveyCritiqueCorridor"
+      ],
+      "contains": [
+        "7c467c89-5608-4f73-ad40-0bd38d06c5ef",
+        "091586f3-22fe-4b82-a207-719daa638558"
+      ],
+      "requires": [
+        "c673e3dd-370d-4cb3-9c98-bf41328a4b57"
+      ],
+      "sourceRef": "RLP Brandenburg GOST Mathematik 2022, 2. Kurshalbjahr: Stochastik, 'exemplarisch statistische Erhebungen planen und auswerten', S. 26.",
+      "dimensionTags": {
+        "framework": "bb-gost-2022-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q2",
+        "area": "Stochastik"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "7c467c89-5608-4f73-ad40-0bd38d06c5ef",
+      "title": "Q2-Statistische Erhebungen planen und Daten aufbereiten",
+      "titleEn": "Q2 Plan Statistical Surveys and Prepare Data",
+      "description": "Teilcluster des Brandenburg-Q2-Survey-und-Kritik-Korridors zur Planung exemplarischer statistischer Erhebungen, zur Datenerfassung und zur tabellarischen oder grafischen Aufbereitung der Ergebnisse.",
+      "descriptionEn": "Subcluster of the Brandenburg Q2 survey-and-critique corridor covering the planning of exemplar statistical surveys, data collection, and the tabular or graphical preparation of the results.",
+      "weight": 2,
+      "tags": [
+        "Sek2",
+        "Q2",
+        "Stochastik",
+        "Q2SurveyCritiqueCorridor"
+      ],
+      "contains": [
+        "4ec28779-2898-4e08-b36d-e764a53e0531",
+        "f7d5be1b-108d-4424-9f9e-f6cc9f2dcaa8"
+      ],
+      "requires": [
+        "c673e3dd-370d-4cb3-9c98-bf41328a4b57"
+      ],
+      "sourceRef": "RLP Brandenburg GOST Mathematik 2022, 2. Kurshalbjahr: Stochastik, 'exemplarisch statistische Erhebungen planen und auswerten', S. 26.",
+      "dimensionTags": {
+        "framework": "bb-gost-2022-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q2",
+        "area": "Stochastik"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "4ec28779-2898-4e08-b36d-e764a53e0531",
+      "title": "Statistische Erhebungen exemplarisch planen und dokumentieren",
+      "titleEn": "Plan and Document Statistical Surveys Exemplarily",
+      "description": "Die lernende Person kann exemplarisch statistische Erhebungen planen, Erfassungsmerkmale begruenden und die Datenerhebung nachvollziehbar dokumentieren.",
+      "descriptionEn": "The learner can plan statistical surveys exemplarily, justify the recorded characteristics, and document the data collection in a traceable way.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "Q2",
+        "Stochastik",
+        "Erhebung"
+      ],
+      "contains": [],
+      "requires": [
+        "c673e3dd-370d-4cb3-9c98-bf41328a4b57"
+      ],
+      "sourceRef": "RLP Brandenburg GOST Mathematik 2022, 2. Kurshalbjahr: Stochastik, 'exemplarisch statistische Erhebungen planen und auswerten', S. 26.",
+      "dimensionTags": {
+        "framework": "bb-gost-2022-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q2",
+        "area": "Stochastik"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "f7d5be1b-108d-4424-9f9e-f6cc9f2dcaa8",
+      "title": "Erhebungsdaten tabellarisch und grafisch aufbereiten",
+      "titleEn": "Prepare Survey Data in Tables and Graphs",
+      "description": "Die lernende Person kann erhobene Daten tabellarisch und grafisch aufbereiten, passende Darstellungen auswaehlen und die Ergebnisse fuer die weitere Auswertung bereitstellen.",
+      "descriptionEn": "The learner can prepare collected data in tables and graphs, choose suitable representations, and make the results available for further evaluation.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "Q2",
+        "Stochastik",
+        "Datenaufbereitung"
+      ],
+      "contains": [],
+      "requires": [
+        "4ec28779-2898-4e08-b36d-e764a53e0531"
+      ],
+      "sourceRef": "RLP Brandenburg GOST Mathematik 2022, 2. Kurshalbjahr: Stochastik, 'exemplarisch statistische Erhebungen planen und auswerten', S. 26.",
+      "dimensionTags": {
+        "framework": "bb-gost-2022-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q2",
+        "area": "Stochastik"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "091586f3-22fe-4b82-a207-719daa638558",
+      "title": "Erhebungsdaten mit Kenngroessen auswerten und kritisch beurteilen",
+      "titleEn": "Evaluate Survey Data Using Descriptive Measures and Judge Them Critically",
+      "description": "Die lernende Person kann Erhebungsdaten mithilfe von Lage- und Streuungsmassen auswerten, Ergebnisse im Kontext interpretieren und veroeffentlichte Erhebungen kritisch beurteilen.",
+      "descriptionEn": "The learner can evaluate survey data using measures of location and dispersion, interpret the results in context, and critically assess published surveys.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "Q2",
+        "Stochastik",
+        "Erhebungskritik"
+      ],
+      "contains": [],
+      "requires": [
+        "f7d5be1b-108d-4424-9f9e-f6cc9f2dcaa8",
+        "13a20456-21ef-48ea-9768-9f4eececb975",
+        "dc5f227f-2c12-409f-b1ba-39c7e3da086b"
+      ],
+      "sourceRef": "RLP Brandenburg GOST Mathematik 2022, 2. Kurshalbjahr: Stochastik, 'exemplarisch statistische Erhebungen planen und auswerten' und 'kritische Betrachtung von veroeffentlichten Erhebungen', S. 26; 'Lage- und Streumasse einer Stichprobe bestimmen und deuten', S. 26.",
       "dimensionTags": {
         "framework": "bb-gost-2022-math",
         "demandLevel": "AB2",

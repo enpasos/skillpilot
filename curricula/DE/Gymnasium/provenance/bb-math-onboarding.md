@@ -37,6 +37,7 @@ Activation state:
   - the first reviewed Brandenburg Q2 integral-calculus corridor on Ober- und Untersummen, rekonstruierten Bestaenden, Hauptsatz, Stammfunktionen und ersten Flaechen- und Kontextdeutungen
   - the first reviewed Brandenburg Q2 stochastics corridor on Baumdiagrammen, Vierfeldertafeln, bedingten Wahrscheinlichkeiten, stochastischer Unabhaengigkeit, Urnenmodellen und Simulationen
   - the first reviewed Brandenburg Q2 data-and-distribution corridor on Stichprobenkennwerten, Zufallsgroessen, diskreten Verteilungen, Histogrammen und ersten binomialverteilten Situationen
+  - the first reviewed Brandenburg Q2 survey-and-critique corridor on statistischen Erhebungen, Datenaufbereitung und kritischer Auswertung mit Lage- und Streuungsmassen
 - the lower-secondary mapping lane now carries the first structural anchor mappings:
   - `J7`, `J8`, `J9`, `J10`
 - the lower-secondary mapping lane now also carries the first reviewed corridor mappings:
@@ -82,7 +83,11 @@ Activation state:
   - Histogramme diskreter Zufallsgroessen lesen und deuten
   - Erwartungswert und Standardabweichung binomialverteilter Zufallsgroessen bestimmen
   - Punkt- und Intervallwahrscheinlichkeiten binomialverteilter Situationen nutzen
-- repository-backed lower-secondary and upper-secondary mapping fixtures now carry `71` mappings in total
+- the upper-secondary mapping lane now also carries the first reviewed Q2 survey-and-critique mappings:
+  - statistische Erhebungen exemplarisch planen und dokumentieren
+  - Erhebungsdaten tabellarisch und grafisch aufbereiten
+  - Erhebungsdaten mit Kenngroessen auswerten und kritisch beurteilen
+- repository-backed lower-secondary and upper-secondary mapping fixtures now carry `76` mappings in total
 
 Operational rule from here:
 
@@ -96,5 +101,6 @@ Operational rule from here:
 - the first reviewed Brandenburg upper-secondary Q2 integral-calculus corridor is now mapped
 - the first reviewed Brandenburg upper-secondary Q2 stochastics corridor is now mapped
 - the first reviewed Brandenburg upper-secondary Q2 data-and-distribution corridor is now mapped
-- next, widen the Brandenburg upper-secondary lane from the active `Q2` data-and-distribution strip toward the first `Q2` survey-and-critique follow-on corridor
-- after that, widen the Brandenburg lower-secondary lane beyond the initial functions corridor
+- the first reviewed Brandenburg upper-secondary Q2 survey-and-critique corridor is now mapped
+- next, widen the Brandenburg lower-secondary lane beyond the initial functions corridor while the shared BE/BB overlap still stays tight
+- after that, decide whether another Brandenburg upper-secondary follow-on corridor or a broader multi-state lower-secondary wave gives the cleaner payoff

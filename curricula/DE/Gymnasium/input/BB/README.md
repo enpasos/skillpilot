@@ -19,13 +19,13 @@ Das LISUM gibt gemeinsame Rahmenlehrpläne für Berlin und Brandenburg heraus.
 - Aktiver Source-Snapshot:
   `curricula/DE/Gymnasium/input/BB/upper-secondary/source-json/DE_BRA_S_GYM_2_MATHEMATIK.de.json.snapshot`
 - Aktiver Pilotumfang:
-  strukturelle Phasenanker `E/Q1/Q2/Q3/Q4` plus reviewed `E`-Analysis-Einstiegskorridor, erster reviewed `Q1`-Modellfunktionskorridor, erster reviewed `Q2`-Integralrechnungskorridor, erster reviewed `Q2`-Stochastikkorridor und erster reviewed `Q2`-Daten-und-Verteilungskorridor
+  strukturelle Phasenanker `E/Q1/Q2/Q3/Q4` plus reviewed `E`-Analysis-Einstiegskorridor, erster reviewed `Q1`-Modellfunktionskorridor, erster reviewed `Q2`-Integralrechnungskorridor, erster reviewed `Q2`-Stochastikkorridor, erster reviewed `Q2`-Daten-und-Verteilungskorridor und erster reviewed `Q2`-Survey-und-Kritik-Korridor
 - Offizielle Quelle:
   `https://bildungsserver.berlin-brandenburg.de/fileadmin/bbb/unterricht/rahmenlehrplaene/gymnasiale_oberstufe/curricula/2022/Teil_C_RLP_GOST_2022_Mathematik.pdf`
 
 ### Mathematik-Nächste Schritte
-- den ersten Brandenburg-`Q2`-Survey-und-Kritik-Folgekorridor auf der aktiven `Q2`-Daten-und-Verteilungs-Basis reviewen und mappen
-- danach den naechsten Brandenburg-Sek-I-Folgekorridor auf derselben kanonischen Spine priorisieren
+- den naechsten Brandenburg-Sek-I-Folgekorridor auf derselben kanonischen Spine priorisieren
+- danach entscheiden, ob die naechste Brandenburg-Erweiterung wieder in Sek II oder in einer breiteren Sek-I-Welle liegen soll
 - erst dann die Brandenburg-Lane von erster Korridorabdeckung in breitere Sek-I/Sek-II-Abdeckung ueberfuehren
 
 ## Physik
