@@ -353,15 +353,23 @@ export function useAppCore({ role, setLearnerMeta, skillpilotId }: AppCoreOption
 
   const handleTrainerContextChange = React.useCallback(
     (lid: string, filter: string, goalId?: string) => {
+      const normalizedLandscapeId = normalizeLandscapeIdForRole(lid, role)
+      if (normalizedLandscapeId !== selectedLandscapeId) {
+        setSelectedLandscapeId(normalizedLandscapeId)
+      }
+      if (filter && filter !== activeFilter) {
+        setActiveFilter(filter)
+      }
       const newSearchParams = new URLSearchParams(searchParams)
-      if (lid) newSearchParams.set('l', lid)
+      if (normalizedLandscapeId) newSearchParams.set('l', normalizedLandscapeId)
+      else newSearchParams.delete('l')
       if (filter) newSearchParams.set('f', filter)
-      setSearchParams(newSearchParams)
+      replaceSearchParamsIfNeeded(newSearchParams)
       if (goalId) {
         navigate(`/trainer/${goalId}?${newSearchParams.toString()}`)
       }
     },
-    [navigate, searchParams, setSearchParams],
+    [activeFilter, navigate, replaceSearchParamsIfNeeded, role, searchParams, selectedLandscapeId, setActiveFilter],
   )
 
   const handleShareContext = useCallback(async (): Promise<'success' | 'error'> => {
