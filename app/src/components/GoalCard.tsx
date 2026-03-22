@@ -52,6 +52,9 @@ type ApplicabilityGroup = {
   values: string[]
 }
 
+const SYNTHETIC_PROGRAM_UNIT_TAG = 'synthetic:program-unit'
+const PROGRAM_UNIT_KIND_TAG_PREFIX = 'program-unit:'
+
 const LEGACY_ATTRIBUTION_LINE_PATTERNS = [
   /^\s*\[(course url|kurs-url)\]\(.*\)\s*$/i,
   /^\s*(license|lizenz)\s*:\s*\[.*\]\(.*\)\s*$/i,
@@ -213,6 +216,33 @@ export const GoalCard: React.FC<GoalCardProps> = ({
   const examTaskLabel = language === 'en' ? 'Exam Task' : 'Prüfungsaufgabe'
   const solutionLabel = language === 'en' ? 'Sample Solution' : 'Musterlösung'
   const handleChange = onMasteryChange ?? (() => { })
+  const isProjectedStructureNode = (goal.tags ?? []).includes(SYNTHETIC_PROGRAM_UNIT_TAG)
+  const projectedProgramUnitKind = (goal.tags ?? [])
+    .find((tag) => tag.startsWith(PROGRAM_UNIT_KIND_TAG_PREFIX))
+    ?.slice(PROGRAM_UNIT_KIND_TAG_PREFIX.length)
+  const projectedStructureBadge = language === 'en' ? 'Structure' : 'Struktur'
+  const projectedStructureTitle = language === 'en' ? 'Projected structure node' : 'Projizierter Strukturknoten'
+  const projectedStructureDescription = language === 'en'
+    ? 'This node is generated at runtime from program units and goal placements. It groups content for navigation and progress, but it is not a standalone learning goal.'
+    : 'Dieser Knoten wird zur Laufzeit aus programUnits und goalPlacements projiziert. Er gruppiert Inhalte fuer Navigation und Fortschritt, ist aber kein eigenstaendiges fachliches Lernziel.'
+  const projectedStructureHint = language === 'en'
+    ? 'You can use this node to navigate into the corresponding section, but not treat it like a directly plannable learning goal.'
+    : 'Du kannst diesen Knoten zum Navigieren in den entsprechenden Abschnitt nutzen, ihn aber nicht wie ein direkt planbares Lernziel behandeln.'
+  const projectedStructureKindLabel = (() => {
+    if (!projectedProgramUnitKind) return undefined
+    if (language === 'en') {
+      if (projectedProgramUnitKind === 'stage') return 'Stage'
+      if (projectedProgramUnitKind === 'year') return 'Year'
+      if (projectedProgramUnitKind === 'phase') return 'Phase'
+      if (projectedProgramUnitKind === 'program') return 'Program'
+      return projectedProgramUnitKind
+    }
+    if (projectedProgramUnitKind === 'stage') return 'Stufe'
+    if (projectedProgramUnitKind === 'year') return 'Jahrgang'
+    if (projectedProgramUnitKind === 'phase') return 'Phase'
+    if (projectedProgramUnitKind === 'program') return 'Programm'
+    return projectedProgramUnitKind
+  })()
 
   // Detect if Atomic Goal (no children)
   const isAtomic = !goal.contains || goal.contains.length === 0
@@ -225,6 +255,10 @@ export const GoalCard: React.FC<GoalCardProps> = ({
   const learningMaterialLinks = helpfulLinks.filter(isLearningMaterialLink).slice(0, 3)
   const sourceLinkLabel = provenance.sourceTitle || (language === 'en' ? 'Course page' : 'Kursseite')
   const displayDescription = stripLegacyAttributionLines(goal.description, Boolean(provenance.sourceUrl))
+  const visibleTags = React.useMemo(
+    () => (goal.tags ?? []).filter((tag) => !tag.startsWith('synthetic:') && !tag.startsWith(PROGRAM_UNIT_KIND_TAG_PREFIX)),
+    [goal.tags],
+  )
   const applicabilityGroups = React.useMemo<ApplicabilityGroup[]>(() => {
     const entries = Object.entries(goal.applicability ?? {})
       .flatMap(([dimension, values]) =>
@@ -270,9 +304,23 @@ export const GoalCard: React.FC<GoalCardProps> = ({
   return (
     <div className="bg-sidebar-bg border border-border-color rounded-3xl p-5 shadow-none dark:shadow-card-2xl transition-colors relative group">
       <div className="flex items-start justify-between gap-2 mb-2">
-        <h2 className="text-2xl font-semibold text-text-primary leading-tight pr-8">
-          <InlineMathText text={goal.title} />
-        </h2>
+        <div className="pr-8">
+          <h2 className="text-2xl font-semibold text-text-primary leading-tight">
+            <InlineMathText text={goal.title} />
+          </h2>
+          {isProjectedStructureNode && (
+            <div className="mt-2 flex flex-wrap gap-2">
+              <span className="inline-flex items-center rounded-full border border-slate-300 dark:border-slate-600 px-2 py-0.5 text-[11px] font-medium uppercase tracking-wide text-slate-600 dark:text-slate-300">
+                {projectedStructureBadge}
+              </span>
+              {projectedStructureKindLabel && (
+                <span className="inline-flex items-center rounded-full border border-sky-200 dark:border-sky-800 px-2 py-0.5 text-[11px] font-medium text-sky-700 dark:text-sky-300">
+                  {projectedStructureKindLabel}
+                </span>
+              )}
+            </div>
+          )}
+        </div>
         <div className="flex items-center gap-2 shrink-0">
           {isAtomic && (
             canSetActive ? (
@@ -293,6 +341,14 @@ export const GoalCard: React.FC<GoalCardProps> = ({
           )}
         </div>
       </div>
+
+      {isProjectedStructureNode && (
+        <div className="mb-4 rounded-2xl border border-slate-200 bg-slate-50/80 p-4 text-sm text-text-secondary dark:border-slate-700 dark:bg-slate-800/40">
+          <div className="font-semibold text-text-primary">{projectedStructureTitle}</div>
+          <p className="mt-1">{projectedStructureDescription}</p>
+          <p className="mt-2 text-xs">{projectedStructureHint}</p>
+        </div>
+      )}
 
 
       {/* SSE auto-refresh now active - manual refresh button removed */}
@@ -332,12 +388,14 @@ export const GoalCard: React.FC<GoalCardProps> = ({
 
           </div>
         ) : (
-          <ReactMarkdown
-            remarkPlugins={[remarkGfm, remarkMath]}
-            rehypePlugins={[rehypeKatex]}
-          >
-            {displayDescription ?? ''}
-          </ReactMarkdown>
+          !isProjectedStructureNode && (
+            <ReactMarkdown
+              remarkPlugins={[remarkGfm, remarkMath]}
+              rehypePlugins={[rehypeKatex]}
+            >
+              {displayDescription ?? ''}
+            </ReactMarkdown>
+          )
         )}
       </div>
 
@@ -435,10 +493,10 @@ export const GoalCard: React.FC<GoalCardProps> = ({
           )}
 
           {/* Tags */}
-          {goal.tags && goal.tags.length > 0 && (
+          {visibleTags.length > 0 && (
             <div className="flex flex-wrap gap-1.5">
               <span className="font-semibold text-text-primary">Tags:</span>
-              {goal.tags.map((tag) => (
+              {visibleTags.map((tag) => (
                 <span
                   key={tag}
                   className="px-2 py-0.5 rounded-full bg-sky-100 dark:bg-sky-900/30 text-sky-700 dark:text-sky-300"
@@ -557,6 +615,12 @@ export const GoalCard: React.FC<GoalCardProps> = ({
             </div>
           )}
 
+          {isProjectedStructureNode && (
+            <div className="rounded-xl border border-slate-200 bg-slate-50/40 p-4 text-sm text-text-secondary dark:border-slate-700 dark:bg-slate-800/30">
+              {projectedStructureHint}
+            </div>
+          )}
+
           {/* Frontier Recommendations (When Mastered) */}
           {!readOnly && mastered && nextCandidates.length > 0 && onSetActive && (
             <div className="bg-amber-50 dark:bg-amber-900/10 rounded-xl p-4 border border-amber-100 dark:border-amber-900/30">
@@ -597,7 +661,11 @@ export const GoalCard: React.FC<GoalCardProps> = ({
 
           {!isAtomic && (
             <div className="flex items-center justify-between text-xs text-text-secondary">
-              <span className="font-medium">Kompetenzstand für dieses Lernziel</span>
+              <span className="font-medium">
+                {isProjectedStructureNode
+                  ? (language === 'en' ? 'Progress in this structure section' : 'Fortschritt in diesem Strukturabschnitt')
+                  : 'Kompetenzstand für dieses Lernziel'}
+              </span>
               <span className="tabular-nums">{Math.round(masteryValue * 100)}%</span>
             </div>
           )}

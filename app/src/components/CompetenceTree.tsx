@@ -10,9 +10,13 @@ import { goalMatchesFilter, isWildcardFilter } from '../utils/goalFilters'
 export type TreeStructureMode = 'all' | 'content' | 'competency'
 
 const COMPETENCY_DIMENSION_ROOT_TAG = 'competency-axis:dimension-root'
+const SYNTHETIC_PROGRAM_UNIT_TAG = 'synthetic:program-unit'
 
 const isCompetencyDimensionRoot = (goal: UiGoal) =>
   (goal.tags ?? []).includes(COMPETENCY_DIMENSION_ROOT_TAG)
+
+const isSyntheticProgramUnit = (goal: UiGoal) =>
+  (goal.tags ?? []).includes(SYNTHETIC_PROGRAM_UNIT_TAG)
 
 interface TreeNodeProps {
   goalId: string
@@ -196,6 +200,7 @@ const TreeNode: React.FC<TreeNodeProps> = ({
   const mastered = isMastered(mastery)
   const isPlanned = plannedGoals.has(goal.id)
   const isSelected = selectedId === goal.id
+  const isSyntheticStructureNode = isSyntheticProgramUnit(goal)
   // Frontier highlighting is intentionally disabled (we only mark active goal + mastery).
 
   // Propagate: If I am in the subtree (passed from parent) OR I am the start of the plan
@@ -279,6 +284,15 @@ const TreeNode: React.FC<TreeNodeProps> = ({
             }`}
         />
 
+        {isSyntheticStructureNode && (
+          <span
+            className="px-1.5 py-0.5 rounded-full border border-slate-300 dark:border-slate-600 text-[10px] font-medium uppercase tracking-wide text-slate-500 dark:text-slate-400"
+            title={t.tooltips.projectedStructureReadOnly}
+          >
+            {t.tooltips.projectedStructureBadge}
+          </span>
+        )}
+
         {aggregatedPlannedGoals ? (
           <div className="flex items-center gap-1 text-slate-500">
             {plannedCount > 0 && (
@@ -289,10 +303,10 @@ const TreeNode: React.FC<TreeNodeProps> = ({
             )}
           </div>
         ) : (
-          readOnly ? (
+          readOnly || (isSyntheticStructureNode && !isPlanned) ? (
             <div
               className={`p-1 ${isPlanned ? 'text-red-400' : 'text-slate-300 dark:text-slate-600'}`}
-              title="In der Legacy-Ansicht schreibgeschuetzt"
+              title={readOnly ? t.tooltips.legacyReadOnly : t.tooltips.projectedStructureReadOnly}
             >
               {isPlanned ? <SquareX size={16} className="text-red-400" /> : <Square size={16} className="text-slate-300" />}
             </div>

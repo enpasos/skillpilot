@@ -3,6 +3,7 @@ import { CheckCircle } from 'lucide-react'
 import { useLanguage } from '../../contexts/LanguageContext'
 import { calculateReview, INITIAL_DECK_STATE, type ReviewItem } from './srsLogic'
 import { FlashcardFlipCard } from './FlashcardFlipCard'
+import { interpolateTemplate } from '../../utils/interpolateTemplate'
 
 interface FlashcardDrillProps {
     dataSourceUrl?: string
@@ -666,7 +667,7 @@ export function FlashcardDrill({
                         {t.speedMemorization}
                     </span>
                     <span className="text-[10px] text-gray-400">
-                        {t.readyForReview.replace('{0}', stats.due.toString())}
+                        {interpolateTemplate(t.readyForReview, [stats.due])}
                     </span>
                 </div>
             </div>
@@ -682,7 +683,7 @@ export function FlashcardDrill({
                 </div>
                 {/* Tooltip */}
                 <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-1 w-max bg-black text-white text-[10px] px-2 py-1 rounded opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity z-50">
-                    {t.progressTooltip.replace('{0}', progressDone.toString()).replace('{1}', progressTotal.toString())}
+                    {interpolateTemplate(t.progressTooltip, [progressDone, progressTotal])}
                 </div>
             </div>
 

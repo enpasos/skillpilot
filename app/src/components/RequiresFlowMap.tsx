@@ -1,6 +1,7 @@
 import React, { Suspense, lazy, useEffect, useId, useMemo, useRef, useState } from 'react'
 import type { UiGoal as Goal } from '../goalTypes'
 import { InlineMathText } from './InlineMathText'
+import { interpolateTemplate } from '../utils/interpolateTemplate'
 
 type PrereqKind = 'direct' | 'inherited'
 
@@ -666,7 +667,7 @@ export const RequiresFlowMap: React.FC<RequiresFlowMapProps> = ({
               )
             })}
             {leftOverflow > 0 && (
-              <OverflowLabel text={labels.plusMore.replace('{{count}}', String(leftOverflow))} />
+              <OverflowLabel text={interpolateTemplate(labels.plusMore, { count: leftOverflow })} />
             )}
           </FlowColumn>
 
@@ -711,7 +712,7 @@ export const RequiresFlowMap: React.FC<RequiresFlowMapProps> = ({
               )
             })}
             {rightOverflow > 0 && (
-              <OverflowLabel text={labels.plusMore.replace('{{count}}', String(rightOverflow))} />
+              <OverflowLabel text={interpolateTemplate(labels.plusMore, { count: rightOverflow })} />
             )}
           </FlowColumn>
         </div>
@@ -726,13 +727,14 @@ export const RequiresFlowMap: React.FC<RequiresFlowMapProps> = ({
           {fullPrerequisiteFlow.nodes.length > 0 && (
             <>
               <p className="mt-1 text-[10px] text-text-secondary">
-                {labels.fullFlowSummary
-                  .replace('{{nodes}}', String(fullPrerequisiteFlow.nodes.length))
-                  .replace('{{edges}}', String(fullPrerequisiteFlow.edges.length))}
+                {interpolateTemplate(labels.fullFlowSummary, {
+                  nodes: fullPrerequisiteFlow.nodes.length,
+                  edges: fullPrerequisiteFlow.edges.length,
+                })}
               </p>
               <p className="text-[10px] text-text-secondary">
                 {openPrerequisiteCount > 0
-                  ? labels.fullFlowSummaryOpen.replace('{{count}}', String(openPrerequisiteCount))
+                  ? interpolateTemplate(labels.fullFlowSummaryOpen, { count: openPrerequisiteCount })
                   : labels.fullFlowSummaryDone}
               </p>
             </>

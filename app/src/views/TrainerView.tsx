@@ -18,6 +18,7 @@ import { useLanguage } from '../contexts/LanguageContext'
 import { en } from '../locales/en'
 import { de } from '../locales/de'
 import type { ToastKind } from '../hooks/useToast'
+import { interpolateTemplate } from '../utils/interpolateTemplate'
 
 const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
 const toApi = (path: string) => (apiBase ? `${apiBase}${path}` : path)
@@ -77,6 +78,18 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
     message: '',
     onConfirm: () => { },
   })
+  const reportedLoadErrorsRef = useRef<Set<string>>(new Set())
+
+  const notifyLoadErrorOnce = useCallback((key: string, message: string) => {
+    if (!onNotify) return
+    if (reportedLoadErrorsRef.current.has(key)) return
+    reportedLoadErrorsRef.current.add(key)
+    onNotify('error', message)
+  }, [onNotify])
+
+  const clearReportedLoadError = useCallback((key: string) => {
+    reportedLoadErrorsRef.current.delete(key)
+  }, [])
 
   // --- DERIVED STATE & MEMOS ---
   const aggregatedPlannedGoals = useMemo(() => {
@@ -203,18 +216,29 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
       }
       const lastActive = localStorage.getItem('skillpilot_active_class')
       if (lastActive) setActiveClassId(lastActive)
+      clearReportedLoadError('trainer-class-list-load')
     } catch (err) {
       console.warn('Could not load classes', err)
+      notifyLoadErrorOnce('trainer-class-list-load', notifications.trainerInitialLoadFailed)
     }
-  }, [])
+  }, [clearReportedLoadError, notifications.trainerInitialLoadFailed, notifyLoadErrorOnce])
 
   useEffect(() => {
-    if (activeClassId) {
-      localStorage.setItem('skillpilot_active_class', activeClassId)
-    } else {
-      localStorage.removeItem('skillpilot_active_class')
+    try {
+      if (activeClassId) {
+        localStorage.setItem('skillpilot_active_class', activeClassId)
+      } else {
+        localStorage.removeItem('skillpilot_active_class')
+      }
+    } catch (err) {
+      console.warn('Could not save active class', err)
+      onNotify?.('error', notifications.trainerClassSaveFailed)
     }
-  }, [activeClassId])
+  }, [activeClassId, notifications.trainerClassSaveFailed, onNotify])
+
+  useEffect(() => {
+    clearReportedLoadError('trainer-class-data-load')
+  }, [activeClassId, clearReportedLoadError])
 
   const lastContextRef = useRef<{ lid: string; filter: string; goalId?: string }>({ lid: '', filter: '', goalId: undefined })
   useEffect(() => {
@@ -241,15 +265,19 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
   useEffect(() => {
     if (!activeClass) return
     const fetchAllData = async () => {
+      let hadDataLoadFailure = false
       const masteryPromises = activeClass.students.map(async (student) => {
         try {
           const res = await fetch(toApi(`/api/ui/learners/${encodeURIComponent(student.id)}/mastery`))
           if (res.ok) {
             const data = await res.json()
             if (data && data.mastery) return [student.id, data.mastery] as const
+          } else {
+            hadDataLoadFailure = true
           }
         } catch (err) {
           console.warn(`Could not load mastery for ${student.name}`, err)
+          hadDataLoadFailure = true
         }
         return [student.id, {}] as const
       })
@@ -259,9 +287,12 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
           if (res.ok) {
             const data = await res.json()
             if (data && Array.isArray(data.goals)) return [student.id, new Set<string>(data.goals as string[])] as const
+          } else {
+            hadDataLoadFailure = true
           }
         } catch (err) {
           console.warn(`Could not load planned goals for ${student.name}`, err)
+          hadDataLoadFailure = true
         }
         return [student.id, new Set()] as const
       })
@@ -271,9 +302,14 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
       ])
       setMasteryByStudent(new Map(masteryResults))
       setPlannedGoalsByStudent(new Map<string, Set<string>>(plannedGoalsResults as [string, Set<string>][]))
+      if (hadDataLoadFailure) {
+        notifyLoadErrorOnce('trainer-class-data-load', notifications.trainerClassDataLoadFailed)
+      } else {
+        clearReportedLoadError('trainer-class-data-load')
+      }
     }
     void fetchAllData()
-  }, [activeClass])
+  }, [activeClass, clearReportedLoadError, notifications.trainerClassDataLoadFailed, notifyLoadErrorOnce])
 
   useEffect(() => {
     if (currentLearnerId && currentLearnerId !== '__ALL__') {
@@ -288,8 +324,11 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
     setClasses(items)
     try {
       localStorage.setItem('skillpilot_classes', JSON.stringify(items))
+      return true
     } catch (err) {
       console.warn('Could not save classes', err)
+      onNotify?.('error', notifications.trainerClassSaveFailed)
+      return false
     }
   }
 
@@ -302,18 +341,30 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
     onContextChange(activeClass?.landscapeId ?? '', activeClass?.activeFilter ?? 'all', id)
   }
 
-  const handleTogglePlan = (goalId: string) => {
+  const handleTogglePlan = async (goalId: string) => {
     if (!currentLearnerId || currentLearnerId === '__ALL__') return
+    const previousPlannedGoals = plannedGoals
+    const previousPlannedGoalsByStudent = plannedGoalsByStudent
     const next = new Set(plannedGoals)
     if (next.has(goalId)) next.delete(goalId)
     else next.add(goalId)
     setPlannedGoals(next)
     setPlannedGoalsByStudent(new Map(plannedGoalsByStudent).set(currentLearnerId, next))
-    fetch(toApi(`/api/ui/learners/${encodeURIComponent(currentLearnerId)}/planned`), {
-      method: 'PUT',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ goals: Array.from(next) }),
-    }).catch((err) => console.warn('Could not save learning plan', err))
+    try {
+      const res = await fetch(toApi(`/api/ui/learners/${encodeURIComponent(currentLearnerId)}/planned`), {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ goals: Array.from(next) }),
+      })
+      if (!res.ok) {
+        throw new Error(`Unexpected status ${res.status}`)
+      }
+    } catch (err) {
+      console.warn('Could not save learning plan', err)
+      setPlannedGoals(previousPlannedGoals)
+      setPlannedGoalsByStudent(previousPlannedGoalsByStudent)
+      onNotify?.('error', notifications.trainerPlannedGoalSaveFailed)
+    }
   }
 
   const handleTogglePlanForAll = async (goalId: string) => {
@@ -343,11 +394,14 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
               newGoals.add(goalId)
             }
             if (newGoals) {
-              await fetch(toApi(`/api/ui/learners/${encodeURIComponent(student.id)}/planned`), {
+              const res = await fetch(toApi(`/api/ui/learners/${encodeURIComponent(student.id)}/planned`), {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ goals: Array.from(newGoals) }),
               })
+              if (!res.ok) {
+                throw new Error(`Unexpected status ${res.status} while saving planned goals for ${student.id}`)
+              }
             }
           }),
         )
@@ -358,26 +412,28 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
               const data = await res.json()
               if (data && Array.isArray(data.goals)) return [student.id, new Set(data.goals)] as const
             }
+            throw new Error(`Unexpected status ${res.status} while loading planned goals for ${student.id}`)
           } catch (err) {
             console.warn(`Could not load planned goals for ${student.name}`, err)
+            throw err
           }
-          return [student.id, new Set()] as const
         })
         const plannedGoalsResults = await Promise.all(plannedGoalsPromises)
         setPlannedGoalsByStudent(new Map<string, Set<string>>(plannedGoalsResults as [string, Set<string>][]))
       } catch (err) {
         console.error(err)
+        onNotify?.('error', notifications.trainerBulkPlannedGoalSaveFailed)
       } finally {
         setIsAssigning(false)
       }
     }
     setConfirmation({
       isOpen: true,
-      title: isRemoving ? 'Lernziel entfernen' : 'Lernziel hinzufügen',
+      title: isRemoving ? t.bulkRemoveDialogTitle : t.bulkAddDialogTitle,
       message: isRemoving
-        ? `Möchten Sie das Ziel "${goal.title}" vom Lernplan aller Schüler entfernen, bei denen es aktuell geplant ist (${plannedCount} Schüler)?`
-        : `Möchten Sie das Ziel "${goal.title}" auf den Lernplan aller ${activeClass.students.length} Schüler setzen?`,
-      confirmText: isRemoving ? 'Entfernen' : 'Hinzufügen',
+        ? interpolateTemplate(t.bulkRemoveDialogMessage, { goal: goal.title, count: plannedCount })
+        : interpolateTemplate(t.bulkAddDialogMessage, { goal: goal.title, count: activeClass.students.length }),
+      confirmText: isRemoving ? t.bulkRemoveDialogConfirm : t.bulkAddDialogConfirm,
       confirmClassName: isRemoving ? 'bg-rose-600 hover:bg-rose-500' : 'bg-sky-600 hover:bg-sky-500',
       onConfirm: doToggle,
     })
@@ -408,20 +464,12 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
     e.stopPropagation()
     setConfirmation({
       isOpen: true,
-      title: 'Klasse löschen',
-      message: `Möchten Sie die Klasse "${name}" wirklich unwiderruflich löschen?`,
-      confirmText: 'Löschen',
+      title: t.deleteClassDialogTitle,
+      message: interpolateTemplate(t.deleteClassDialogMessage, { name }),
+      confirmText: t.deleteClassDialogConfirm,
       confirmClassName: 'bg-rose-600 hover:bg-rose-500',
       onConfirm: () => {
-        setClasses((prev) => {
-          const next = prev.filter((c) => c.id !== id)
-          try {
-            localStorage.setItem('skillpilot_classes', JSON.stringify(next))
-          } catch (err) {
-            console.warn('Could not save classes', err)
-          }
-          return next
-        })
+        persistClasses(classes.filter((c) => c.id !== id))
         setConfirmation({ isOpen: false, title: '', message: '', onConfirm: () => { } })
       },
     })
@@ -437,22 +485,21 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
         const content = ev.target?.result as string
         const session = JSON.parse(content)
         if (!session.id || !session.name || !Array.isArray(session.students)) {
-          throw new Error('Ungültiges Dateiformat')
+          throw new Error(t.invalidImportFormat)
         }
         const doImport = (overwrite = false) => {
-          setClasses((prev) => {
-            const idx = prev.findIndex((c) => c.id === session.id)
-            let next
-            if (idx >= 0) {
-              if (!overwrite) return prev
-              next = [...prev]
-              next[idx] = session
-            } else {
-              next = [...prev, session]
-            }
-            localStorage.setItem('skillpilot_classes', JSON.stringify(next))
-            return next
-          })
+          const idx = classes.findIndex((c) => c.id === session.id)
+          let next = classes
+          if (idx >= 0) {
+            if (!overwrite) return
+            next = [...classes]
+            next[idx] = session
+          } else {
+            next = [...classes, session]
+          }
+          if (!persistClasses(next)) {
+            return
+          }
           onNotify?.('success', notifications.classImported)
           setConfirmation({ isOpen: false, title: '', message: '', onConfirm: () => { } })
         }
@@ -460,9 +507,9 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
         if (idx >= 0) {
           setConfirmation({
             isOpen: true,
-            title: 'Klasse importieren',
-            message: `Klasse "${session.name}" existiert bereits. Möchten Sie sie überschreiben?`,
-            confirmText: 'Überschreiben',
+            title: t.importClassDialogTitle,
+            message: interpolateTemplate(t.importClassDialogMessage, { name: session.name }),
+            confirmText: t.importClassDialogConfirm,
             onConfirm: () => doImport(true),
           })
         } else {
@@ -534,14 +581,14 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
                   <button
                     onClick={(e) => handleExportClass(e, c)}
                     className="p-2 rounded-lg border border-border-color text-text-secondary hover:bg-sky-50 dark:hover:bg-sky-900/30 hover:border-sky-300 dark:hover:border-sky-700 hover:text-sky-600 dark:hover:text-sky-400 transition-colors"
-                    title="Klasse lokal speichern (JSON)"
+                    title={t.classExportTooltip}
                   >
                     <Save size={16} className="pointer-events-none" />
                   </button>
                   <button
                     onClick={(e) => handleDeleteClass(e, c.id, c.name)}
                     className="p-2 rounded-lg border border-border-color text-text-secondary hover:bg-rose-50 dark:hover:bg-rose-900/30 hover:border-rose-300 dark:hover:border-rose-700 hover:text-rose-600 dark:hover:text-rose-400 transition-colors"
-                    title="Klasse löschen"
+                    title={t.classDeleteTooltip}
                   >
                     <Trash2 size={16} className="pointer-events-none" />
                   </button>
@@ -555,7 +602,7 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
               </div>
             </div>
           ))}
-          {classes.length === 0 && <div className="col-span-full text-center py-20 border-2 border-dashed border-border-color rounded-2xl text-text-secondary">Noch keine Klassen angelegt. Starte jetzt!</div>}
+          {classes.length === 0 && <div className="col-span-full text-center py-20 border-2 border-dashed border-border-color rounded-2xl text-text-secondary">{t.emptyClasses}</div>}
         </div>
 
       </div>
@@ -593,7 +640,7 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
         <div className="flex-1 overflow-y-auto p-2 space-y-1">
           <div className="text-[10px] uppercase text-text-secondary font-bold px-2 mb-1 mt-2">{t.studentList} ({activeClass.students.length})</div>
           <button onClick={() => onSelectLearner('__ALL__')} className={`w-full text-left px-3 py-2 rounded text-sm flex justify-between items-center group ${currentLearnerId === '__ALL__' ? 'bg-sky-100 dark:bg-sky-900/40 text-sky-700 dark:text-sky-200 border border-sky-300 dark:border-sky-500/30' : 'text-text-secondary hover:bg-gray-200 dark:hover:bg-slate-900'}`}>
-            <span className="truncate">All</span>
+            <span className="truncate">{t.allStudents}</span>
             {currentLearnerId === '__ALL__' && <span className="w-2 h-2 rounded-full bg-sky-400" />}
           </button>
           {activeClass.students.map((s) => (
@@ -717,7 +764,11 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
                     showMastery
                   />
                   <button onClick={handleAssignToClass} disabled={isAssigning} className={`w-full px-6 py-3 rounded-lg font-medium transition-colors text-white disabled:bg-gray-400 dark:disabled:bg-slate-700 disabled:text-gray-200 dark:disabled:text-slate-500 ${isRemoving ? 'bg-rose-600 hover:bg-rose-500' : 'bg-sky-600 hover:bg-sky-500'}`}>
-                    {isAssigning ? (isRemoving ? t.removing : t.assigning) : isRemoving ? t.removeFromPlan.replace('{{count}}', plannedCount.toString()) : t.assignToAll.replace('{{count}}', activeClass.students.length.toString())}
+                    {isAssigning
+                        ? (isRemoving ? t.removing : t.assigning)
+                      : isRemoving
+                        ? interpolateTemplate(t.removeFromPlan, { count: plannedCount })
+                        : interpolateTemplate(t.assignToAll, { count: activeClass.students.length })}
                   </button>
                 </div>
               )
@@ -774,7 +825,10 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
                 <div className="bg-amber-100 dark:bg-amber-900/20 border border-amber-300 dark:border-amber-500/30 p-3 rounded-lg flex gap-3 items-center">
                   <div className="text-amber-500 dark:text-amber-400 text-xl">★</div>
                   <div className="text-sm text-amber-800 dark:text-amber-200">
-                    <strong>{t.selectedGoal}:</strong> {t.goalOnPlan.replace('{{name}}', activeClass.students.find((s) => s.id === currentLearnerId)?.name ?? '')}
+                    <strong>{t.selectedGoal}:</strong>{' '}
+                    {interpolateTemplate(t.goalOnPlan, {
+                      name: activeClass.students.find((s) => s.id === currentLearnerId)?.name ?? '',
+                    })}
                   </div>
                 </div>
               )}
