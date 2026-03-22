@@ -134,6 +134,31 @@
   ],
   "goalPlacements": [
     {
+      "goalId": "65365dce-f33f-49d8-9516-42f75883aa86",
+      "unitId": "de-gym-math-sek1",
+      "relation": "primary"
+    },
+    {
+      "goalId": "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+      "unitId": "de-gym-math-sek2",
+      "relation": "primary"
+    },
+    {
+      "goalId": "9ad83149-3cb7-5b87-a617-3eae3715a50c",
+      "unitId": "de-gym-math-sek2",
+      "relation": "primary"
+    },
+    {
+      "goalId": "464a6024-a2f8-53b4-84e0-d7b9df22a0b1",
+      "unitId": "de-gym-math-sek2",
+      "relation": "primary"
+    },
+    {
+      "goalId": "9f7124ff-c42c-5e61-a8c1-334c96e7851d",
+      "unitId": "de-gym-math-sek2",
+      "relation": "primary"
+    },
+    {
       "goalId": "6377e1e3-8c26-4cf1-997d-8802690d74dd",
       "unitId": "de-gym-math-sek1",
       "relation": "primary"
@@ -646,7 +671,7 @@
       "description": "Gemeinsame Wurzel für Mathematik am Gymnasium in Deutschland. Die Landschaft übernimmt die hessische Oberstufe vollständig, realisiert kanonische Jahrgangsanker J5 bis J10 für die Sekundarstufe I und bündelt arithmetische, algebraische, geometrische, datenbezogene, stochastische und trigonometrische Anschlussziele für DE-HE und DE-BY.",
       "descriptionEn": "Shared root for mathematics at Gymnasium in Germany. The landscape fully adopts the Hessian upper-secondary curriculum, realizes canonical lower-secondary year anchors J5 to J10, and bundles arithmetic, algebraic, geometric, data, stochastic, and trigonometric bridge goals for DE-HE and DE-BY.",
       "core": true,
-      "weight": 454,
+      "weight": 455,
       "tags": [
         "root",
         "canonical",
@@ -672,6 +697,7 @@
         "topicCode": "CANONICAL.MATH"
       },
       "contains": [
+        "65365dce-f33f-49d8-9516-42f75883aa86",
         "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
         "6377e1e3-8c26-4cf1-997d-8802690d74dd",
         "8f7bb79b-f014-4bb6-8dce-7e3f1c92e893",
@@ -7665,6 +7691,49 @@
           ]
         }
       },
+      "type": "atomic"
+    },
+    {
+      "id": "65365dce-f33f-49d8-9516-42f75883aa86",
+      "title": "Warum Mathematik? – Entdecken, Muster & Alltag",
+      "titleEn": "Why Mathematics? – Discovery, Patterns & Everyday Life",
+      "description": "Der Sek-I-Einstieg: Wie Mathematik beim Messen, Vergleichen, Bauen, Planen und in Spielen hilft, wie Muster, Daten und Formen im Alltag auftauchen und warum mathematisches Denken beim Begründen und Problemlösen unterstützt. Überblick über Zahlen, Größen, Geometrie, Daten und erste funktionale Zusammenhänge.",
+      "descriptionEn": "The lower-secondary entry point: how mathematics helps with measuring, comparing, building, planning and games, how patterns, data and shapes appear in everyday life, and why mathematical thinking supports reasoning and problem solving. Overview of numbers, quantities, geometry, data and first functional relationships.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "Motivation",
+        "Orientation",
+        "canonical",
+        "phase:SekI"
+      ],
+      "sourceRef": "Canonical lower-secondary orientation anchor for Gymnasium mathematics in Germany",
+      "extendedData": {
+        "treeOrder": 1
+      },
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "K2",
+          "K3",
+          "K4"
+        ],
+        "guidingIdeas": [
+          "L1",
+          "L2",
+          "L3",
+          "L4",
+          "L5"
+        ],
+        "phase": "GLOBAL",
+        "area": "Mathematik",
+        "topicCode": "CANONICAL.MATH.SEK1.ORIENTATION"
+      },
+      "shortKey": "canonical_math_why_sek1",
       "type": "atomic"
     },
     {

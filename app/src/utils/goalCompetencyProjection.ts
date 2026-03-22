@@ -10,6 +10,7 @@ export interface CompetencyProjectableLandscapeEntry {
 const SYNTHETIC_COMPETENCY_TAG = 'synthetic:competency-axis'
 const COMPETENCY_DIMENSION_ROOT_TAG = 'competency-axis:dimension-root'
 const COMPETENCY_ENTRY_TAG = 'competency-axis:entry'
+const SYNTHETIC_PROGRAM_UNIT_TAG = 'synthetic:program-unit'
 
 const normalizeComparableText = (value: string | undefined): string =>
   (value ?? '')
@@ -266,7 +267,13 @@ export function applyCompetencyAxisProjection<T extends CompetencyProjectableLan
         )
       }
 
-      if (!clonedRoot.contains.includes(dimensionRootId)) {
+      const dimensionRootAlreadyNestedUnderProgramUnit = clonedGoals.some((goal) =>
+        goal.id !== clonedRoot.id
+        && goal.tags?.includes(SYNTHETIC_PROGRAM_UNIT_TAG)
+        && (goal.contains ?? []).includes(dimensionRootId),
+      )
+
+      if (!dimensionRootAlreadyNestedUnderProgramUnit && !clonedRoot.contains.includes(dimensionRootId)) {
         clonedRoot.contains.push(dimensionRootId)
         didMutate = true
       }

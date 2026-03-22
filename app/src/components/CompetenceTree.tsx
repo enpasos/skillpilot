@@ -26,6 +26,14 @@ const buildVisibleChildrenMap = (
 ) => {
   const visibleChildrenByParent = new Map<string, string[]>()
   const hasConfig = !!personalConfig && Object.keys(personalConfig).length > 0
+  const nestedUnderSyntheticProgramUnit = new Set<string>()
+
+  allGoals.forEach((parent) => {
+    if (!isSyntheticProgramUnit(parent)) return
+    ;(parent.contains ?? []).forEach((childId) => {
+      nestedUnderSyntheticProgramUnit.add(childId)
+    })
+  })
 
   allGoals.forEach((parent) => {
     const childIds = parent.contains ?? []
@@ -49,6 +57,9 @@ const buildVisibleChildrenMap = (
       if (parent.tags?.includes('root')) {
         const isCompetencyRoot = isCompetencyDimensionRoot(child)
         if (structureMode === 'content' && isCompetencyRoot) {
+          return false
+        }
+        if (structureMode === 'all' && isCompetencyRoot && nestedUnderSyntheticProgramUnit.has(child.id)) {
           return false
         }
         if (structureMode === 'competency' && !isCompetencyRoot) {
