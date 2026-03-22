@@ -298,7 +298,7 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
                 : withCombinedCourseFilter(landscape.filters)
         const hasFilters = effectiveFilters.length > 0
         const showCourseProfileControls = isRoot ? true : globalStageSelection.sek2Selected
-        const showFilterControls = Boolean(hasFilters) && showCourseProfileControls
+        const showFilterControls = Boolean(hasFilters) && showCourseProfileControls && (isRoot || isSelected)
         const isExpandable = isRoot || showFilterControls
         const isExpanded = expanded.has(landscape.landscapeId)
         const rawDisplayLabel = isRoot ? landscape.title : (landscape.subject?.trim() || landscape.title)
