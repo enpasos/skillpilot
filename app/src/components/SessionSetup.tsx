@@ -21,6 +21,10 @@ import { LanguageToggle } from './LanguageToggle'
 import { useLanguage } from '../contexts/LanguageContext'
 import { AudioPlayer } from './AudioPlayer'
 import { getSkillpilotGptUrl } from '../utils/skillpilotGpt'
+import { isCompatibilityOnlyCurriculum } from '../utils/curriculumDisplay'
+
+const normalizeTrainerLandscapeId = (landscapeId?: string | null) =>
+  landscapeId && !isCompatibilityOnlyCurriculum(landscapeId, null) ? landscapeId : ''
 
 export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skillpilotId, setSkillpilotId, onStart }) => {
   const t = useTranslation()
@@ -28,7 +32,7 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
   const [selectedLandscapeId, setSelectedLandscapeId] = useState<string>(() => {
     // Restore trainer's last selection from local storage
     if (role === 'trainer') {
-      return localStorage.getItem('skillpilot_trainer_landscape') || ''
+      return normalizeTrainerLandscapeId(localStorage.getItem('skillpilot_trainer_landscape'))
     }
     // Restore learner's last selection from local storage for faster startup
     if (role === 'learner') {
@@ -46,7 +50,7 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
     const deepLinkGoal = params.get('goal') || params.get('g')
 
     if (deepLinkCurriculum && deepLinkCurriculum !== selectedLandscapeId) {
-      setSelectedLandscapeId(deepLinkCurriculum)
+      setSelectedLandscapeId(role === 'trainer' ? normalizeTrainerLandscapeId(deepLinkCurriculum) : deepLinkCurriculum)
     }
 
     if (deepLinkId) {
@@ -155,6 +159,11 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
     }
 
     if (role === 'trainer' && selectedLandscapeId) {
+      if (isCompatibilityOnlyCurriculum(selectedLandscapeId, null)) {
+        localStorage.removeItem('skillpilot_trainer_landscape')
+        setSelectedLandscapeId('')
+        return
+      }
       localStorage.setItem('skillpilot_trainer_landscape', selectedLandscapeId)
     }
 
@@ -169,9 +178,12 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
   // Effect to restore trainer selection when role changes
   React.useEffect(() => {
     if (role === 'trainer') {
-      const saved = localStorage.getItem('skillpilot_trainer_landscape')
+      const saved = normalizeTrainerLandscapeId(localStorage.getItem('skillpilot_trainer_landscape'))
       if (saved) {
         setSelectedLandscapeId(saved)
+      } else {
+        localStorage.removeItem('skillpilot_trainer_landscape')
+        setSelectedLandscapeId('')
       }
     } else if (role === 'explorer') {
       setSelectedLandscapeId('')
