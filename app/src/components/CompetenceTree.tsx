@@ -18,10 +18,138 @@ const isCompetencyDimensionRoot = (goal: UiGoal) =>
 const isSyntheticProgramUnit = (goal: UiGoal) =>
   (goal.tags ?? []).includes(SYNTHETIC_PROGRAM_UNIT_TAG)
 
+const buildVisibleChildrenMap = (
+  allGoals: Map<string, UiGoal>,
+  activeFilter?: string,
+  personalConfig?: Record<string, { selected: boolean; filterId?: string }>,
+  structureMode: TreeStructureMode = 'all',
+) => {
+  const visibleChildrenByParent = new Map<string, string[]>()
+  const hasConfig = !!personalConfig && Object.keys(personalConfig).length > 0
+
+  allGoals.forEach((parent) => {
+    const childIds = parent.contains ?? []
+    if (childIds.length === 0) return
+
+    const hasPositiveSibling = hasConfig && childIds.some((childId) => {
+      const child = allGoals.get(childId)
+      if (!child) return false
+      const config = (child.landscapeId ? personalConfig?.[child.landscapeId] : undefined) ?? personalConfig?.[child.id]
+      return config?.selected === true
+    })
+
+    const visibleChildren = childIds.filter((childId) => {
+      const child = allGoals.get(childId)
+      if (!child) return false
+
+      if (!goalMatchesFilter(child, activeFilter)) {
+        return false
+      }
+
+      if (parent.tags?.includes('root')) {
+        const isCompetencyRoot = isCompetencyDimensionRoot(child)
+        if (structureMode === 'content' && isCompetencyRoot) {
+          return false
+        }
+        if (structureMode === 'competency' && !isCompetencyRoot) {
+          return false
+        }
+      }
+
+      if (hasConfig) {
+        const config = (child.landscapeId ? personalConfig?.[child.landscapeId] : undefined) ?? personalConfig?.[child.id]
+        if (config) {
+          if (config.selected !== true) return false
+          if (!goalMatchesFilter(child, config.filterId)) {
+            return false
+          }
+        } else if (hasPositiveSibling) {
+          return false
+        }
+      }
+
+      return true
+    })
+
+    visibleChildrenByParent.set(parent.id, visibleChildren)
+  })
+
+  return visibleChildrenByParent
+}
+
+const buildSortedChildrenMap = (
+  visibleChildrenByParent: Map<string, string[]>,
+  allGoals: Map<string, UiGoal>,
+) => {
+  const sortedChildrenByParent = new Map<string, string[]>()
+
+  visibleChildrenByParent.forEach((childIds, parentId) => {
+    const goals = childIds
+      .map((id) => allGoals.get(id))
+      .filter((goal): goal is UiGoal => !!goal)
+    const sorted = sortGoalsTopologically(goals, { allGoalsById: allGoals })
+    sortedChildrenByParent.set(parentId, sorted.map((goal) => goal.id))
+  })
+
+  return sortedChildrenByParent
+}
+
+const buildAggregatedMasteryMap = (
+  allGoals: Map<string, UiGoal>,
+  visibleChildrenByParent: Map<string, string[]>,
+  getMastery: (goalId: string) => number,
+) => {
+  const totalsByGoalId = new Map<string, { masterySum: number; weightSum: number }>()
+  const masteryByGoalId = new Map<string, number>()
+
+  const computeTotals = (goalId: string, visiting: Set<string> = new Set()) => {
+    const cached = totalsByGoalId.get(goalId)
+    if (cached) return cached
+    if (visiting.has(goalId)) return { masterySum: 0, weightSum: 0 }
+
+    visiting.add(goalId)
+    const goal = allGoals.get(goalId)
+    if (!goal) return { masterySum: 0, weightSum: 0 }
+
+    let masterySum = 0
+    let weightSum = 0
+    const hasStructuralChildren = (goal.contains ?? []).length > 0
+    const visibleChildren = visibleChildrenByParent.get(goalId) ?? []
+
+    if (!hasStructuralChildren) {
+      const masteryValue = getMastery(goalId)
+      const weight = goal.weight ?? 1
+      masterySum = masteryValue * weight
+      weightSum = weight
+    } else {
+      visibleChildren.forEach((childId) => {
+        const childTotals = computeTotals(childId, new Set(visiting))
+        masterySum += childTotals.masterySum
+        weightSum += childTotals.weightSum
+      })
+    }
+
+    visiting.delete(goalId)
+    const totals = { masterySum, weightSum }
+    totalsByGoalId.set(goalId, totals)
+    masteryByGoalId.set(goalId, weightSum > 0 ? masterySum / weightSum : 0)
+    return totals
+  }
+
+  allGoals.forEach((_, goalId) => {
+    computeTotals(goalId)
+  })
+
+  return masteryByGoalId
+}
+
 interface TreeNodeProps {
   goalId: string
   allGoals: Map<string, UiGoal>
   getMastery: (goalId: string) => number
+  visibleChildrenByParent: Map<string, string[]>
+  sortedChildrenByParent: Map<string, string[]>
+  masteryByGoalId: Map<string, number>
   plannedGoals: Set<string>
   onTogglePlan: (id: string) => void
   readOnly?: boolean
@@ -53,6 +181,9 @@ const TreeNode: React.FC<TreeNodeProps> = ({
   goalId,
   allGoals,
   getMastery,
+  visibleChildrenByParent,
+  sortedChildrenByParent,
+  masteryByGoalId,
   plannedGoals,
   onTogglePlan,
   readOnly = false,
@@ -81,119 +212,8 @@ const TreeNode: React.FC<TreeNodeProps> = ({
     }
   }, [forcedExpandedIds, goalId])
 
-
-  const getVisibleChildrenIds = React.useCallback((parentId: string) => {
-    const parent = allGoals.get(parentId)
-    const childIds = parent?.contains ?? []
-    if (childIds.length === 0) return []
-
-    const hasConfig = !!personalConfig && Object.keys(personalConfig).length > 0
-
-    // Check if this level has any "Positive Selection" (at least one sibling explicitly selected).
-    const hasPositiveSibling = hasConfig && childIds.some(childId => {
-      const c = allGoals.get(childId)
-      if (!c) return false
-      const config = (c.landscapeId ? personalConfig[c.landscapeId] : undefined) ?? personalConfig[c.id]
-      return config?.selected === true
-    })
-
-    return childIds.filter((childId) => {
-      const child = allGoals.get(childId)
-      if (!child) return false
-
-      // Apply the currently active cockpit filter (e.g. DE-BY/DE-HE or GK/LK)
-      // on top of personal curriculum selections.
-      if (!goalMatchesFilter(child, activeFilter)) {
-        return false
-      }
-
-      if (parent?.tags?.includes('root')) {
-        const isCompetencyRoot = isCompetencyDimensionRoot(child)
-        if (structureMode === 'content' && isCompetencyRoot) {
-          return false
-        }
-        if (structureMode === 'competency' && !isCompetencyRoot) {
-          return false
-        }
-      }
-
-      // 2. Filter by Personal Curriculum (Level 2)
-      if (child && hasConfig) {
-        const config = (child.landscapeId ? personalConfig[child.landscapeId] : undefined) ?? personalConfig[child.id]
-
-        if (config) {
-          if (config.selected !== true) return false
-
-          // 3. Filter by 'filterId' (e.g. "LK", "GK") if configured for this landscape
-          if (!goalMatchesFilter(child, config.filterId)) {
-            return false
-          }
-        } else {
-          if (hasPositiveSibling) return false
-        }
-      }
-
-      return true
-    })
-  }, [activeFilter, allGoals, personalConfig, structureMode])
-
-  // Memoize visibleChildren computation to stabilize dependency for sortedChildren
-  const visibleChildren = React.useMemo(() => {
-    return getVisibleChildrenIds(goalId)
-  }, [getVisibleChildrenIds, goalId])
-
-  // Sort visible children
-  const sortedChildren = React.useMemo(() => {
-    // Map IDs to Goal Objects
-    const goals = visibleChildren
-      .map(id => allGoals.get(id))
-      .filter((g): g is UiGoal => !!g)
-
-    // Sort topologically + alphabetical
-    const sorted = sortGoalsTopologically(goals, { allGoalsById: allGoals })
-
-    // Return IDs
-    return sorted.map(g => g.id)
-  }, [visibleChildren, allGoals])
-
-  const mastery = React.useMemo(() => {
-    if (!goal) return 0
-    const masteryCache = new Map<string, { masterySum: number; weightSum: number }>()
-
-    const getFilteredTotals = (gId: string, visited: Set<string> = new Set()) => {
-      if (masteryCache.has(gId)) return masteryCache.get(gId)!
-      if (visited.has(gId)) return { masterySum: 0, weightSum: 0 }
-
-      visited.add(gId)
-      const g = allGoals.get(gId)
-      if (!g) return { masterySum: 0, weightSum: 0 }
-
-      let masterySum = 0
-      let weightSum = 0
-      const childrenIds = g.contains ?? []
-
-      if (childrenIds.length === 0) {
-        const masteryValue = getMastery(gId)
-        const weight = g.weight ?? 1
-        masterySum = masteryValue * weight
-        weightSum = weight
-      } else {
-        const filteredChildren = getVisibleChildrenIds(gId)
-        filteredChildren.forEach((childId) => {
-          const childTotals = getFilteredTotals(childId, new Set(visited))
-          masterySum += childTotals.masterySum
-          weightSum += childTotals.weightSum
-        })
-      }
-
-      visited.delete(gId)
-      masteryCache.set(gId, { masterySum, weightSum })
-      return { masterySum, weightSum }
-    }
-
-    const totals = getFilteredTotals(goal.id)
-    return totals.weightSum > 0 ? totals.masterySum / totals.weightSum : 0
-  }, [goal, allGoals, getMastery, getVisibleChildrenIds])
+  const sortedChildren = sortedChildrenByParent.get(goalId) ?? []
+  const mastery = masteryByGoalId.get(goalId) ?? 0
   if (!goal) return null
 
   const hasChildren = sortedChildren.length > 0
@@ -335,6 +355,9 @@ const TreeNode: React.FC<TreeNodeProps> = ({
                 goalId={childId}
                 allGoals={allGoals}
                 getMastery={getMastery}
+                visibleChildrenByParent={visibleChildrenByParent}
+                sortedChildrenByParent={sortedChildrenByParent}
+                masteryByGoalId={masteryByGoalId}
                 plannedGoals={plannedGoals}
                 onTogglePlan={onTogglePlan}
                 readOnly={readOnly}
@@ -392,6 +415,18 @@ export const CompetenceTree: React.FC<CompetenceTreeProps> = ({
   // We let TreeNode handle the filtering of children.
   const visibleRoots = rootGoals
   const hasActivePlan = props.plannedGoals.size > 0
+  const visibleChildrenByParent = React.useMemo(
+    () => buildVisibleChildrenMap(props.allGoals, activeFilter, personalConfig, structureMode),
+    [activeFilter, personalConfig, props.allGoals, structureMode],
+  )
+  const sortedChildrenByParent = React.useMemo(
+    () => buildSortedChildrenMap(visibleChildrenByParent, props.allGoals),
+    [props.allGoals, visibleChildrenByParent],
+  )
+  const masteryByGoalId = React.useMemo(
+    () => buildAggregatedMasteryMap(props.allGoals, visibleChildrenByParent, props.getMastery),
+    [props.allGoals, props.getMastery, visibleChildrenByParent],
+  )
 
   return (
     <div className="flex flex-col gap-1 overflow-y-auto max-h-full pr-2">
@@ -399,6 +434,9 @@ export const CompetenceTree: React.FC<CompetenceTreeProps> = ({
         <TreeNode
           key={g.id}
           goalId={g.id}
+          visibleChildrenByParent={visibleChildrenByParent}
+          sortedChildrenByParent={sortedChildrenByParent}
+          masteryByGoalId={masteryByGoalId}
           activeFilter={activeFilter}
           structureMode={structureMode}
           personalConfig={personalConfig}
