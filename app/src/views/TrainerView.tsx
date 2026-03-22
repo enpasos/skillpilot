@@ -111,12 +111,14 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
     () => hasReachableCompetencyDimensionRoot(classRootGoals, goalIndexAll),
     [classRootGoals, goalIndexAll],
   )
+  const trainerStructureMode: TreeStructureMode =
+    structureMode === 'competency' ? 'competency' : 'content'
   useEffect(() => {
-    if (structureMode !== 'competency' || hasCompetencyStructure) {
+    if (trainerStructureMode !== 'competency' || hasCompetencyStructure) {
       return
     }
-    onStructureModeChange('all')
-  }, [hasCompetencyStructure, onStructureModeChange, structureMode])
+    onStructureModeChange('content')
+  }, [hasCompetencyStructure, onStructureModeChange, trainerStructureMode])
   const landscapeGoals = useMemo(
     () => Array.from(goalIndexAll.values()).filter((g) => !activeClass || g.landscapeId === activeClass.landscapeId),
     [activeClass, goalIndexAll],
@@ -641,11 +643,10 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
               </div>
               <div className="inline-flex rounded-lg border border-border-color overflow-hidden bg-chat-bg/40">
                 {([
-                  ['all', t.structureAll],
                   ['content', t.structureContent],
                   ['competency', t.structureCompetencies],
                 ] as const).map(([mode, label]) => {
-                  const isActive = structureMode === mode
+                  const isActive = trainerStructureMode === mode
                   return (
                     <button
                       key={mode}
@@ -667,7 +668,7 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
         </div>
         <div className="flex-1 p-2 overflow-y-auto">
           <CompetenceTree
-            key={`trainer-competence-tree-${activeClass?.id ?? 'none'}-${structureMode}`}
+            key={`trainer-competence-tree-${activeClass?.id ?? 'none'}-${trainerStructureMode}`}
             rootGoals={classRootGoals}
             allGoals={goalIndexAll}
             getMastery={getStudentMastery}
@@ -676,7 +677,7 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
             onSelect={handleSelectGoal}
             selectedId={selectedGoalId}
             activeFilter={currentLearnerId === '__ALL__' ? 'all' : activeClass.activeFilter}
-            structureMode={structureMode}
+            structureMode={trainerStructureMode}
             aggregatedPlannedGoals={aggregatedPlannedGoals}
             totalStudents={activeClass.students.length}
           />
