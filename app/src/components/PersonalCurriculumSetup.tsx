@@ -1,6 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import { X, ChevronDown, ChevronRight } from 'lucide-react'
-import { isCompatibilityOnlyCurriculum } from '../utils/curriculumDisplay'
+import { CANONICAL_GYMNASIUM_ROOT_ID, isCompatibilityOnlyCurriculum } from '../utils/curriculumDisplay'
+import {
+    applyDefaultGlobalStageScope,
+    getGlobalStageScopeSelection,
+    GLOBAL_STAGE_SCOPE_CONFIG_IDS,
+    GLOBAL_STAGE_SCOPE_OPTIONS,
+} from '../utils/personalCurriculumStageScope'
 
 interface LandscapeSummary {
     landscapeId: string
@@ -116,8 +122,11 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
                 initial[landscapeId] = value
             }
         })
+        if (rootLandscapeId === CANONICAL_GYMNASIUM_ROOT_ID) {
+            return applyDefaultGlobalStageScope(initial).config
+        }
         return initial
-    }, [availableLandscapes, initialConfig])
+    }, [availableLandscapes, initialConfig, rootLandscapeId])
 
     const initialExpanded = React.useMemo(() => {
         const next = new Set<string>()
@@ -243,6 +252,32 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
         })
     }
 
+    const toggleGlobalStageScope = (stageScopeId: string) => {
+        setConfig(prev => {
+            const currentSelection = getGlobalStageScopeSelection(prev)
+            const isCurrentlySelected = prev[stageScopeId]?.selected ?? true
+            const nextSelected = !isCurrentlySelected
+
+            if (!nextSelected) {
+                const wouldDisableLastStage =
+                    (stageScopeId === GLOBAL_STAGE_SCOPE_CONFIG_IDS.sek1 && !currentSelection.sek2Selected)
+                    || (stageScopeId === GLOBAL_STAGE_SCOPE_CONFIG_IDS.sek2 && !currentSelection.sek1Selected)
+                if (wouldDisableLastStage) {
+                    return prev
+                }
+            }
+
+            const next = {
+                ...prev,
+                [stageScopeId]: {
+                    selected: nextSelected,
+                },
+            }
+            onConfigChange(next)
+            return next
+        })
+    }
+
     if (!isOpen) return null
 
     // Separate Root and Children
@@ -256,12 +291,15 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
     const renderNode = (landscape: LandscapeSummary, isRoot: boolean) => {
         const isSelected = config[landscape.landscapeId]?.selected ?? false
         const currentFilter = config[landscape.landscapeId]?.filterId ?? ''
+        const globalStageSelection = getGlobalStageScopeSelection(config)
+        const shouldShowGlobalStageScope = isRoot && rootLandscapeId === CANONICAL_GYMNASIUM_ROOT_ID
         const effectiveFilters =
             isRoot && landscape.title === 'Gymnasium (DE)' && (!landscape.filters || landscape.filters.length === 0)
                 ? DEFAULT_GYMNASIUM_DE_ROOT_FILTERS
                 : withCombinedCourseFilter(landscape.filters)
         const hasFilters = effectiveFilters.length > 0
-        const showFilterControls = Boolean(hasFilters)
+        const showCourseProfileControls = isRoot ? true : globalStageSelection.sek2Selected
+        const showFilterControls = Boolean(hasFilters) && showCourseProfileControls
         const isExpandable = isRoot || showFilterControls
         const isExpanded = expanded.has(landscape.landscapeId)
         const rawDisplayLabel = isRoot ? landscape.title : (landscape.subject?.trim() || landscape.title)
@@ -322,6 +360,31 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
                                 <span className="text-sm">{f.label}</span>
                             </label>
                         ))}
+                        {shouldShowGlobalStageScope && (
+                            <>
+                                <div className="mt-4 mb-2 text-xs font-semibold uppercase tracking-wide text-text-secondary">
+                                    Sekundarstufe
+                                </div>
+                                {GLOBAL_STAGE_SCOPE_OPTIONS.map(option => {
+                                    const checked = config[option.id]?.selected ?? true
+                                    return (
+                                        <label
+                                            key={option.id}
+                                            className={`flex items-center gap-2 p-1.5 rounded cursor-pointer hover:bg-input-bg/50 transition-colors ${checked ? 'text-sky-600 dark:text-sky-300' : 'text-text-secondary'
+                                                }`}
+                                        >
+                                            <input
+                                                type="checkbox"
+                                                checked={checked}
+                                                onChange={() => toggleGlobalStageScope(option.id)}
+                                                className="w-3.5 h-3.5 rounded border-border-color bg-input-bg text-sky-500 focus:ring-sky-500 focus:ring-offset-sidebar-bg"
+                                            />
+                                            <span className="text-sm">{option.label}</span>
+                                        </label>
+                                    )
+                                })}
+                            </>
+                        )}
                     </div>
                 )}
 
@@ -381,7 +444,7 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
                         <p className="text-text-secondary text-sm mt-1">
                             {retirementOnly
                                 ? 'Diese Hessen-Ansicht bleibt nur noch fuer Migration, Vergleich und Audit verfuegbar.'
-                                : 'Wähle deine Fächer und Kursniveaus.'}
+                                : 'Wähle zuerst Sekundarstufen, dann Fächer und für Sekundarstufe II die Kursniveaus.'}
                         </p>
                     </div>
                     <button

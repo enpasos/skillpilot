@@ -29,6 +29,7 @@ import {
   loadAbi26CampaignContext,
   saveAbi26CampaignContext,
 } from '../utils/abi26MatheCampaign'
+import { applyDefaultGlobalStageScope, goalMatchesGlobalStageScope } from '../utils/personalCurriculumStageScope'
 import { trackCampaignEvent } from '../utils/campaignTracking'
 import type { ToastKind } from '../hooks/useToast'
 import { queueToastForNextLoad } from '../hooks/useToast'
@@ -177,6 +178,9 @@ const normalizePersonalConfig = (
         ...(landscape.filters && landscape.filters.length > 0 ? { filterId: landscape.filters[0].id } : {}),
       }
     })
+    if (rootLandscapeId === CANONICAL_GYMNASIUM_ROOT_ID) {
+      return applyDefaultGlobalStageScope(next).config
+    }
     return next
   }
 
@@ -196,8 +200,14 @@ const normalizePersonalConfig = (
   }
 
   let corrected = false
-  const normalized: PersonalCurriculumConfig = { ...input }
+  let normalized: PersonalCurriculumConfig = { ...input }
   const availableLandscapeIds = new Set(availableLandscapes.map((landscape) => landscape.landscapeId))
+
+  if (rootLandscapeId === CANONICAL_GYMNASIUM_ROOT_ID) {
+    const stageScoped = applyDefaultGlobalStageScope(normalized)
+    normalized = stageScoped.config
+    corrected = corrected || stageScoped.corrected
+  }
 
   availableLandscapes.forEach((landscape) => {
     const current = normalized[landscape.landscapeId]
@@ -454,6 +464,10 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     return childIds.filter((childId) => {
       const child = goalIndexAll.get(childId)
       if (!child) return false
+
+      if (!goalMatchesGlobalStageScope(child, personalConfig)) {
+        return false
+      }
 
       // Apply the currently active cockpit filter (e.g. DE-BY/DE-HE or GK/LK)
       // on top of personal curriculum selections.

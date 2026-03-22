@@ -6,6 +6,7 @@ import { sortGoalsTopologically } from '../utils/goalSorter'
 import { isMastered } from '../goalUiUtils'
 import { InlineMathText } from './InlineMathText'
 import { goalMatchesFilter, isWildcardFilter } from '../utils/goalFilters'
+import { goalMatchesGlobalStageScope, isCourseProfileFilterId } from '../utils/personalCurriculumStageScope'
 
 export type TreeStructureMode = 'all' | 'content' | 'competency'
 
@@ -63,6 +64,10 @@ const buildVisibleChildrenMap = (
     const visibleChildren = childIds.filter((childId) => {
       const child = allGoals.get(childId)
       if (!child) return false
+
+      if (!goalMatchesGlobalStageScope(child, personalConfig ?? {})) {
+        return false
+      }
 
       if (!goalMatchesFilter(child, activeFilter)) {
         return false
@@ -261,14 +266,32 @@ const TreeNode: React.FC<TreeNodeProps> = ({
 
   const personalFilterId = (goal.landscapeId ? personalConfig?.[goal.landscapeId]?.filterId : undefined)
     ?? personalConfig?.[goal.id]?.filterId
+  const parentLandscapeFilterId = parentGoal?.landscapeId ? personalConfig?.[parentGoal.landscapeId]?.filterId : undefined
   const effectiveFilterLabel = formatFilterLabel(
     personalFilterId && personalFilterId !== 'all'
       ? personalFilterId
       : (activeFilter && activeFilter !== 'all' ? activeFilter : undefined),
   )
-  const shouldShowFilterBadge = depth === 1 && !!effectiveFilterLabel
+  const hasSyntheticSek2Child = (goal.contains ?? []).some((childId) => {
+    const child = allGoals.get(childId)
+    return !!child && isSyntheticProgramUnit(child) && child.title === 'Sekundarstufe II'
+  })
+  const shouldMoveCourseProfileToSek2 =
+    depth === 1
+    && !!effectiveFilterLabel
+    && isCourseProfileFilterId(personalFilterId ?? activeFilter)
+    && hasSyntheticSek2Child
+  const inheritedSek2FilterLabel =
+    goal.title === 'Sekundarstufe II' && isSyntheticStructureNode && isCourseProfileFilterId(parentLandscapeFilterId)
+      ? formatFilterLabel(parentLandscapeFilterId)
+      : undefined
+  const shouldShowFilterBadge = depth === 1 && !!effectiveFilterLabel && !shouldMoveCourseProfileToSek2
   const contextualTitle = getContextualTreeTitle(goal, parentGoal)
-  const displayTitle = shouldShowFilterBadge ? `${contextualTitle} (${effectiveFilterLabel})` : contextualTitle
+  const displayTitle = shouldShowFilterBadge
+    ? `${contextualTitle} (${effectiveFilterLabel})`
+    : inheritedSek2FilterLabel
+      ? `${contextualTitle} (${inheritedSek2FilterLabel})`
+      : contextualTitle
 
   return (
     <div className="">
