@@ -52,6 +52,21 @@ export function useAppCore({ role, setLearnerMeta, skillpilotId }: AppCoreOption
   const goalId = match?.params.goalId
   console.log('[useAppCore] Render. goalId from matchPath:', goalId)
   const [searchParams, setSearchParams] = useSearchParams()
+  const pendingSearchRef = React.useRef<string | null>(null)
+  const currentSearchString = location.search.startsWith('?') ? location.search.slice(1) : location.search
+
+  const replaceSearchParamsIfNeeded = useCallback((next: URLSearchParams) => {
+    const nextString = next.toString()
+    if (nextString === currentSearchString) {
+      pendingSearchRef.current = null
+      return
+    }
+    if (pendingSearchRef.current === nextString) {
+      return
+    }
+    pendingSearchRef.current = nextString
+    setSearchParams(next, { replace: true })
+  }, [currentSearchString, setSearchParams])
 
   // Manage selectedLandscapeId state here
   const [selectedLandscapeId, setSelectedLandscapeId] = React.useState<string>(() => {
@@ -62,6 +77,12 @@ export function useAppCore({ role, setLearnerMeta, skillpilotId }: AppCoreOption
     return isTreeStructureMode(fromUrl) ? fromUrl : DEFAULT_TREE_STRUCTURE_MODE
   })
 
+  useEffect(() => {
+    if (pendingSearchRef.current === currentSearchString) {
+      pendingSearchRef.current = null
+    }
+  }, [currentSearchString])
+
   // Sync from URL if it changes externally
   useEffect(() => {
     const fromUrl = normalizeLandscapeIdForRole(searchParams.get('l'), role)
@@ -69,7 +90,7 @@ export function useAppCore({ role, setLearnerMeta, skillpilotId }: AppCoreOption
       setSelectedLandscapeId(fromUrl)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [location.search, role, selectedLandscapeId])
+  }, [location.search, role])
 
   // Update URL when selection changes
   useEffect(() => {
@@ -78,14 +99,14 @@ export function useAppCore({ role, setLearnerMeta, skillpilotId }: AppCoreOption
     if (!selectedLandscapeId) {
       if (!current) return
       next.delete('l')
-      setSearchParams(next, { replace: true })
+      replaceSearchParamsIfNeeded(next)
       return
     }
     if (current === selectedLandscapeId) return
     next.set('l', selectedLandscapeId)
-    setSearchParams(next, { replace: true })
+    replaceSearchParamsIfNeeded(next)
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [searchParams, selectedLandscapeId])
+  }, [replaceSearchParamsIfNeeded, searchParams, selectedLandscapeId])
 
   useEffect(() => {
     const fromUrl = searchParams.get('sm')
@@ -105,8 +126,8 @@ export function useAppCore({ role, setLearnerMeta, skillpilotId }: AppCoreOption
     } else {
       next.set('sm', treeStructureMode)
     }
-    setSearchParams(next, { replace: true })
-  }, [searchParams, setSearchParams, treeStructureMode])
+    replaceSearchParamsIfNeeded(next)
+  }, [replaceSearchParamsIfNeeded, searchParams, treeStructureMode])
 
 
 
@@ -188,8 +209,8 @@ export function useAppCore({ role, setLearnerMeta, skillpilotId }: AppCoreOption
       if (currentFilterParam === normalizedFilter) return
       next.set('f', normalizedFilter)
     }
-    setSearchParams(next, { replace: true })
-  }, [activeFilter, currentLandscapeEntry, searchParams, setActiveFilter, setSearchParams])
+    replaceSearchParamsIfNeeded(next)
+  }, [activeFilter, currentLandscapeEntry, replaceSearchParamsIfNeeded, searchParams, setActiveFilter])
 
   const projectedLandscapeEntries = useMemo(
     () => applyCompetencyAxisProjection(
