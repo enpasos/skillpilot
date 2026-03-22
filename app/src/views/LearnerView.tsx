@@ -33,6 +33,7 @@ import { applyDefaultGlobalStageScope, goalMatchesGlobalStageScope } from '../ut
 import { trackCampaignEvent } from '../utils/campaignTracking'
 import type { ToastKind } from '../hooks/useToast'
 import { queueToastForNextLoad } from '../hooks/useToast'
+import { hasReachableCompetencyDimensionRoot } from '../utils/goalCompetencyProjection'
 
 import type { UiGoal } from '../goalTypes'
 import type { Learner, FrontierGoal } from '../learnerTypes'
@@ -437,11 +438,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   }, [currentLandscapeRootGoals, isPersonalConfigHydrating])
 
   const hasCompetencyStructure = useMemo(() => {
-    return visibleRootGoals.some((rootGoal) =>
-      (rootGoal.contains ?? []).some((childId) =>
-        goalIndexAll.get(childId)?.tags?.includes('competency-axis:dimension-root'),
-      ),
-    )
+    return hasReachableCompetencyDimensionRoot(visibleRootGoals, goalIndexAll)
   }, [goalIndexAll, visibleRootGoals])
 
   useEffect(() => {

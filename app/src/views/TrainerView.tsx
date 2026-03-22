@@ -19,6 +19,7 @@ import { en } from '../locales/en'
 import { de } from '../locales/de'
 import type { ToastKind } from '../hooks/useToast'
 import { interpolateTemplate } from '../utils/interpolateTemplate'
+import { hasReachableCompetencyDimensionRoot } from '../utils/goalCompetencyProjection'
 
 const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
 const toApi = (path: string) => (apiBase ? `${apiBase}${path}` : path)
@@ -107,11 +108,7 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
     [activeClass, rootGoals],
   )
   const hasCompetencyStructure = useMemo(
-    () => classRootGoals.some((rootGoal) =>
-      (rootGoal.contains ?? []).some((childId) =>
-        goalIndexAll.get(childId)?.tags?.includes('competency-axis:dimension-root'),
-      ),
-    ),
+    () => hasReachableCompetencyDimensionRoot(classRootGoals, goalIndexAll),
     [classRootGoals, goalIndexAll],
   )
   useEffect(() => {

@@ -10,6 +10,35 @@ export interface CompetencyProjectableLandscapeEntry {
 const SYNTHETIC_COMPETENCY_TAG = 'synthetic:competency-axis'
 const COMPETENCY_DIMENSION_ROOT_TAG = 'competency-axis:dimension-root'
 const COMPETENCY_ENTRY_TAG = 'competency-axis:entry'
+
+export const hasReachableCompetencyDimensionRoot = (
+  rootGoals: Array<Pick<UiGoal, 'id' | 'contains'>>,
+  allGoals: Map<string, Pick<UiGoal, 'id' | 'contains' | 'tags'>>,
+) => {
+  const visited = new Set<string>()
+  const stack = rootGoals.map((goal) => goal.id)
+
+  while (stack.length > 0) {
+    const goalId = stack.pop()
+    if (!goalId || visited.has(goalId)) continue
+    visited.add(goalId)
+
+    const goal = allGoals.get(goalId)
+    if (!goal) continue
+
+    if ((goal.tags ?? []).includes(COMPETENCY_DIMENSION_ROOT_TAG)) {
+      return true
+    }
+
+    ;(goal.contains ?? []).forEach((childId) => {
+      if (!visited.has(childId)) {
+        stack.push(childId)
+      }
+    })
+  }
+
+  return false
+}
 const normalizeComparableText = (value: string | undefined): string =>
   (value ?? '')
     .normalize('NFKC')
