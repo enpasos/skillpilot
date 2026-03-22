@@ -103,10 +103,23 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
   }, [currentLearnerId, plannedGoalsByStudent])
 
   const activeClass = useMemo(() => classes.find((c) => c.id === activeClassId) ?? null, [activeClassId, classes])
-  const classRootGoals = useMemo(
-    () => rootGoals.filter((g) => !activeClass || g.landscapeId === activeClass.landscapeId),
-    [activeClass, rootGoals],
-  )
+  const classRootGoals = useMemo(() => {
+    if (!activeClass) {
+      return rootGoals
+    }
+
+    const directLandscapeRoots = Array.from(goalIndexAll.values()).filter(
+      (goal) =>
+        goal.landscapeId === activeClass.landscapeId &&
+        (goal.tags ?? []).includes('root'),
+    )
+
+    if (directLandscapeRoots.length > 0) {
+      return directLandscapeRoots
+    }
+
+    return rootGoals.filter((g) => g.landscapeId === activeClass.landscapeId)
+  }, [activeClass, goalIndexAll, rootGoals])
   const hasCompetencyStructure = useMemo(
     () => hasReachableCompetencyDimensionRoot(classRootGoals, goalIndexAll),
     [classRootGoals, goalIndexAll],

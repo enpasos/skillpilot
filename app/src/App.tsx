@@ -97,6 +97,7 @@ const App: React.FC = () => {
   })
   // Track pending landscape selection to prevent SessionSetup re-mount during navigation
   const [pendingLandscapeId, setPendingLandscapeId] = useState<string | null>(null)
+  const [trainerLearnerId, setTrainerLearnerId] = useState('__ALL__')
   const [, setLearnerMeta] = useState<{ lastUpdated: string }>({
     lastUpdated: new Date().toISOString(),
   })
@@ -534,8 +535,8 @@ const App: React.FC = () => {
               onContextChange={core.handleTrainerContextChange}
               rootGoals={core.breadcrumbRootGoals}
               goalIndexAll={core.goalIndexAll}
-              currentLearnerId="__ALL__"
-              onSelectLearner={() => { }}
+              currentLearnerId={trainerLearnerId}
+              onSelectLearner={setTrainerLearnerId}
               goalShortKeyMap={core.goalShortKeyMap}
               structureMode={core.treeStructureMode}
               onStructureModeChange={core.setTreeStructureMode}
