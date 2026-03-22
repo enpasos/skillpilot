@@ -20,6 +20,7 @@ import { de } from '../locales/de'
 import type { ToastKind } from '../hooks/useToast'
 import { interpolateTemplate } from '../utils/interpolateTemplate'
 import { hasReachableCompetencyDimensionRoot } from '../utils/goalCompetencyProjection'
+import { migrateTrainerClassSession } from '../utils/trainerLandscapeContext'
 
 const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
 const toApi = (path: string) => (apiBase ? `${apiBase}${path}` : path)
@@ -103,9 +104,18 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
   }, [currentLearnerId, plannedGoalsByStudent])
 
   const activeClass = useMemo(() => classes.find((c) => c.id === activeClassId) ?? null, [activeClassId, classes])
+  const activeLandscapeEntry = useMemo(
+    () => landscapeEntries.find((entry) => entry.meta.landscapeId === activeClass?.landscapeId) ?? null,
+    [activeClass, landscapeEntries],
+  )
   const classRootGoals = useMemo(() => {
     if (!activeClass) {
       return rootGoals
+    }
+
+    const entryRoots = (activeLandscapeEntry?.goals ?? []).filter((goal) => (goal.tags ?? []).includes('root'))
+    if (entryRoots.length > 0) {
+      return entryRoots
     }
 
     const directLandscapeRoots = Array.from(goalIndexAll.values()).filter(
@@ -119,7 +129,7 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
     }
 
     return rootGoals.filter((g) => g.landscapeId === activeClass.landscapeId)
-  }, [activeClass, goalIndexAll, rootGoals])
+  }, [activeClass, activeLandscapeEntry, goalIndexAll, rootGoals])
   const hasCompetencyStructure = useMemo(
     () => hasReachableCompetencyDimensionRoot(classRootGoals, goalIndexAll),
     [classRootGoals, goalIndexAll],
@@ -222,7 +232,13 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
       const raw = localStorage.getItem('skillpilot_classes')
       if (raw) {
         const parsed = JSON.parse(raw)
-        if (Array.isArray(parsed)) setClasses(parsed)
+        if (Array.isArray(parsed)) {
+          const migrated = parsed.map((session) => migrateTrainerClassSession(session))
+          setClasses(migrated)
+          if (JSON.stringify(migrated) !== JSON.stringify(parsed)) {
+            localStorage.setItem('skillpilot_classes', JSON.stringify(migrated))
+          }
+        }
       }
       const lastActive = localStorage.getItem('skillpilot_active_class')
       if (lastActive) setActiveClassId(lastActive)
@@ -254,7 +270,7 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
   useEffect(() => {
     if (!activeClass) return
     const isSameLandscape = lastContextRef.current.lid === activeClass.landscapeId
-    const targetGoalId = activeClass.currentGoalId || (isSameLandscape ? selectedGoalId : undefined) || rootGoals[0]?.id
+    const targetGoalId = activeClass.currentGoalId || (isSameLandscape ? selectedGoalId : undefined) || classRootGoals[0]?.id
 
     const next = { lid: activeClass.landscapeId, filter: activeClass.activeFilter, goalId: targetGoalId }
     const prev = lastContextRef.current
@@ -270,7 +286,7 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
     if (!activeClass.students.find((s) => s.id === currentLearnerId) && currentLearnerId !== '__ALL__') {
       onSelectLearner('__ALL__')
     }
-  }, [activeClass, currentLearnerId, onSelectLearner, rootGoals, selectedGoalId, onContextChange])
+  }, [activeClass, classRootGoals, currentLearnerId, onSelectLearner, selectedGoalId, onContextChange])
 
   useEffect(() => {
     if (!activeClass) return

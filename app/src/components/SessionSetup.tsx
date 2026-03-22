@@ -21,10 +21,7 @@ import { LanguageToggle } from './LanguageToggle'
 import { useLanguage } from '../contexts/LanguageContext'
 import { AudioPlayer } from './AudioPlayer'
 import { getSkillpilotGptUrl } from '../utils/skillpilotGpt'
-import { isCompatibilityOnlyCurriculum } from '../utils/curriculumDisplay'
-
-const normalizeTrainerLandscapeId = (landscapeId?: string | null) =>
-  landscapeId && !isCompatibilityOnlyCurriculum(landscapeId, null) ? landscapeId : ''
+import { normalizeTrainerLandscapeId } from '../utils/trainerLandscapeContext'
 
 export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skillpilotId, setSkillpilotId, onStart }) => {
   const t = useTranslation()
@@ -159,12 +156,16 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
     }
 
     if (role === 'trainer' && selectedLandscapeId) {
-      if (isCompatibilityOnlyCurriculum(selectedLandscapeId, null)) {
+      const normalizedTrainerLandscapeId = normalizeTrainerLandscapeId(selectedLandscapeId)
+      if (!normalizedTrainerLandscapeId) {
         localStorage.removeItem('skillpilot_trainer_landscape')
         setSelectedLandscapeId('')
         return
       }
-      localStorage.setItem('skillpilot_trainer_landscape', selectedLandscapeId)
+      if (normalizedTrainerLandscapeId !== selectedLandscapeId) {
+        setSelectedLandscapeId(normalizedTrainerLandscapeId)
+      }
+      localStorage.setItem('skillpilot_trainer_landscape', normalizedTrainerLandscapeId)
     }
 
     // Save learner curriculum to localStorage for faster startup next time

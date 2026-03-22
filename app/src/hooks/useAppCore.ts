@@ -13,7 +13,7 @@ import { useLanguage } from '../contexts/LanguageContext'
 import { goalMatchesFilter, isWildcardFilter } from '../utils/goalFilters'
 import { applyGoalPlacementProjection } from '../utils/goalPlacementProjection'
 import { applyCompetencyAxisProjection } from '../utils/goalCompetencyProjection'
-import { isCompatibilityOnlyCurriculum } from '../utils/curriculumDisplay'
+import { normalizeTrainerLandscapeId } from '../utils/trainerLandscapeContext'
 
 type Role = 'learner' | 'trainer' | 'explorer'
 type TreeStructureMode = 'all' | 'content' | 'competency'
@@ -37,8 +37,8 @@ interface AppCoreOptions {
 
 const normalizeLandscapeIdForRole = (landscapeId: string | null, role: Role) => {
   if (!landscapeId) return ''
-  if (role === 'trainer' && isCompatibilityOnlyCurriculum(landscapeId, null)) {
-    return ''
+  if (role === 'trainer') {
+    return normalizeTrainerLandscapeId(landscapeId)
   }
   return landscapeId
 }
