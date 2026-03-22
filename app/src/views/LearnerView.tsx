@@ -5,7 +5,7 @@ import { useTranslation } from '../hooks/useTranslation'
 import { CompetenceTree } from '../components/CompetenceTree'
 import type { TreeStructureMode } from '../components/CompetenceTree'
 import { PersonalCurriculumSetup } from '../components/PersonalCurriculumSetup'
-import { Settings, Upload, Download, Menu, X, Target, Send, Check, MoveRight, Link2 } from 'lucide-react'
+import { Settings, Upload, Download, Menu, X, Target, Send, Check, MoveRight } from 'lucide-react'
 import { ThemeToggle } from '../components/ThemeToggle'
 import { InfoModal } from '../components/InfoModal'
 import { LogoutButton } from '../components/LogoutButton'
@@ -49,7 +49,6 @@ interface LearnerViewProps {
   structureMode?: TreeStructureMode
   onStructureModeChange?: (mode: TreeStructureMode) => void
   onLogout?: () => void
-  onShareContext?: () => void
   onNotify?: (kind: ToastKind, message: string) => void
   availableLandscapes?: { landscapeId: string; title: string; filters?: { id: string; label: string }[]; compatibilityOnly?: boolean }[]
   rootLandscapeId?: string
@@ -61,6 +60,11 @@ interface LearnerViewProps {
 }
 
 type PersonalCurriculumConfig = Record<string, { selected: boolean; filterId?: string }>
+type PersonalCurriculumPreferences = {
+  strategy: 'RANDOM' | 'SEQUENTIAL'
+  autoPilot: boolean
+  strictMode: boolean
+}
 
 const HESSEN_GYMNASIUM_LOWER_ROOT_ID = 'f050ee48-6891-4f83-995f-0f8be5e31b7f'
 const HESSEN_GYMNASIUM_LOWER_MATH_ID = 'b167b4cd-4b78-4c84-a721-6b2adbbcab3c'
@@ -257,6 +261,24 @@ const normalizePersonalConfig = (
   return { config: normalized, corrected }
 }
 
+const personalCurriculumConfigsEqual = (
+  left: PersonalCurriculumConfig,
+  right: PersonalCurriculumConfig,
+) => {
+  const allLandscapeIds = new Set([...Object.keys(left), ...Object.keys(right)])
+  for (const landscapeId of allLandscapeIds) {
+    const leftEntry = left[landscapeId]
+    const rightEntry = right[landscapeId]
+    if ((leftEntry?.selected ?? false) !== (rightEntry?.selected ?? false)) {
+      return false
+    }
+    if ((leftEntry?.filterId ?? '') !== (rightEntry?.filterId ?? '')) {
+      return false
+    }
+  }
+  return true
+}
+
 export const LearnerView: React.FC<LearnerViewProps> = ({
   rootGoals,
   goalIndexAll,
@@ -269,7 +291,6 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   structureMode = 'all',
   onStructureModeChange = () => {},
   onLogout,
-  onShareContext,
   onNotify,
   availableLandscapes = [],
   rootLandscapeId,
@@ -1776,44 +1797,103 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     hasAppliedCampaignFilterRef.current = false
   }, [skillpilotId, rootLandscapeId, campaignContext?.courseLevel])
 
-  // Save preferences to backend
-  const handlePreferencesChange = useCallback(async (strategy: 'RANDOM' | 'SEQUENTIAL', autoPilot: boolean, strictMode: boolean) => {
-    const previousPreferences = learnerData
-      ? {
-          learningStrategy: learnerData.learningStrategy,
-          autoPilot: learnerData.autoPilot,
-          strictMode: learnerData.strictMode,
-        }
-      : null
-    setLearnerData(prev => prev ? { ...prev, learningStrategy: strategy, autoPilot, strictMode } : null)
+  const handlePersonalCurriculumApply = useCallback(async (
+    newConfig: PersonalCurriculumConfig,
+    preferences: PersonalCurriculumPreferences,
+  ) => {
+    const configChanged = !personalCurriculumConfigsEqual(newConfig, personalConfig)
+    const preferencesChanged =
+      (learnerData?.learningStrategy ?? 'RANDOM') !== preferences.strategy
+      || (learnerData?.autoPilot ?? false) !== preferences.autoPilot
+      || (learnerData?.strictMode ?? false) !== preferences.strictMode
 
-    if (!skillpilotId) return
-    try {
-      const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
-      const url = apiBase ? `${apiBase}/api/ui/learners/${skillpilotId}/preferences` : `/api/ui/learners/${skillpilotId}/preferences`
-      const res = await fetch(url, {
-        method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ learningStrategy: strategy, autoPilot, strictMode })
-      })
-      if (!res.ok) {
-        throw new Error(`preferences-save-failed:${res.status}`)
+    if (!configChanged && !preferencesChanged) {
+      return
+    }
+
+    if (!skillpilotId) {
+      if (configChanged) {
+        setPersonalConfig(newConfig)
       }
-      // Refresh state to reflect strict mode changes in frontier
-      await refreshState(true)
-    } catch (e) {
-      console.warn('Failed to save preferences', e)
-      if (previousPreferences) {
+      if (preferencesChanged) {
         setLearnerData(prev => prev ? {
           ...prev,
-          learningStrategy: previousPreferences.learningStrategy,
-          autoPilot: previousPreferences.autoPilot,
-          strictMode: previousPreferences.strictMode,
+          learningStrategy: preferences.strategy,
+          autoPilot: preferences.autoPilot,
+          strictMode: preferences.strictMode,
         } : prev)
       }
-      onNotify?.('error', t.notifications.preferencesSaveFailed)
+      return
     }
-  }, [learnerData, onNotify, refreshState, skillpilotId, t.notifications.preferencesSaveFailed])
+
+    try {
+      const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
+
+      if (configChanged) {
+        const configUrl = apiBase
+          ? `${apiBase}/api/ui/learners/${skillpilotId}/personal-curriculum`
+          : `/api/ui/learners/${skillpilotId}/personal-curriculum`
+        const configRes = await fetch(configUrl, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(newConfig)
+        })
+        if (!configRes.ok) {
+          throw new Error(`personal-curriculum-save-failed:${configRes.status}`)
+        }
+      }
+
+      if (preferencesChanged) {
+        const preferencesUrl = apiBase
+          ? `${apiBase}/api/ui/learners/${skillpilotId}/preferences`
+          : `/api/ui/learners/${skillpilotId}/preferences`
+        const preferencesRes = await fetch(preferencesUrl, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            learningStrategy: preferences.strategy,
+            autoPilot: preferences.autoPilot,
+            strictMode: preferences.strictMode,
+          })
+        })
+        if (!preferencesRes.ok) {
+          throw new Error(`preferences-save-failed:${preferencesRes.status}`)
+        }
+      }
+
+      if (configChanged) {
+        setPersonalConfig(newConfig)
+        onScopeDataRefresh?.()
+      }
+      if (preferencesChanged) {
+        setLearnerData(prev => prev ? {
+          ...prev,
+          learningStrategy: preferences.strategy,
+          autoPilot: preferences.autoPilot,
+          strictMode: preferences.strictMode,
+        } : prev)
+      }
+
+      await refreshState(true)
+    } catch (e) {
+      console.warn('Failed to apply personal curriculum setup', e)
+      if (configChanged) {
+        onNotify?.('error', t.notifications.personalCurriculumSaveFailed)
+      } else {
+        onNotify?.('error', t.notifications.preferencesSaveFailed)
+      }
+      throw e
+    }
+  }, [
+    learnerData,
+    onNotify,
+    onScopeDataRefresh,
+    personalConfig,
+    refreshState,
+    skillpilotId,
+    t.notifications.personalCurriculumSaveFailed,
+    t.notifications.preferencesSaveFailed,
+  ])
 
   // Save preferences to backend
 
@@ -2333,16 +2413,6 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
           <div className="flex items-center gap-1 shrink-0">
 
             {/* SSE auto-refresh now active - manual refresh button removed */}
-            {onShareContext && (
-              <button
-                onClick={onShareContext}
-                className="p-1 text-text-secondary hover:text-sky-400"
-                title={t.learner.shareContext}
-                aria-label={t.learner.shareContext}
-              >
-                <Link2 size={16} />
-              </button>
-            )}
             <button onClick={() => setIsSetupOpen(true)} className="p-1 text-text-secondary hover:text-sky-400"><Settings size={16} /></button>
             <ThemeToggle />
             {isMobile && (
@@ -2676,13 +2746,12 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
         availableLandscapes={availableLandscapes}
         currentLandscapeId={landscapeId}
         retirementOnly={canCutoverLegacyGymnasium}
-        onConfigChange={handleConfigChange}
+        onApply={handlePersonalCurriculumApply}
         initialConfig={personalConfig}
         rootLandscapeId={rootLandscapeId}
         initialStrategy={learnerData?.learningStrategy}
         initialAutoPilot={learnerData?.autoPilot}
         initialStrictMode={learnerData?.strictMode}
-        onPreferencesChange={handlePreferencesChange}
         migrationTitle={canCutoverLegacyGymnasium ? 'Auf Gymnasium (DE) umstellen' : undefined}
         migrationDescription={canCutoverLegacyGymnasium
           ? (isUpperLegacyHessenSession

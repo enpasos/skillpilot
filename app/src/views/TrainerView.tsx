@@ -13,7 +13,7 @@ import type { UiGoal } from '../goalTypes'
 import type { ClassSession } from '../trainerTypes'
 import type { MasteryMap } from '../learnerTypes'
 
-import { Save, Trash2, Link2 } from 'lucide-react'
+import { Save, Trash2 } from 'lucide-react'
 import { useLanguage } from '../contexts/LanguageContext'
 import { en } from '../locales/en'
 import { de } from '../locales/de'
@@ -35,7 +35,6 @@ interface TrainerViewProps {
   structureMode?: TreeStructureMode
   onStructureModeChange?: (mode: TreeStructureMode) => void
   onLogout?: () => void
-  onShareContext?: () => void
   onNotify?: (kind: ToastKind, message: string) => void
 }
 
@@ -50,7 +49,6 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
   structureMode = 'all',
   onStructureModeChange = () => {},
   onLogout,
-  onShareContext,
   onNotify,
 }) => {
   const { language } = useLanguage()
@@ -552,17 +550,6 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
             <button onClick={() => fileInputRef.current?.click()} className="border border-border-color hover:bg-gray-200 dark:hover:bg-slate-800 px-4 py-2 rounded-lg text-text-secondary transition-colors">{t.import}</button>
             <input type="file" ref={fileInputRef} onChange={handleImportClass} hidden accept=".json" />
             <button onClick={() => setIsCreating(true)} className="bg-sky-600 hover:bg-sky-500 px-6 py-2 rounded-lg font-medium transition-colors text-white">+ {t.newClass}</button>
-            {onShareContext && (
-              <button
-                type="button"
-                onClick={onShareContext}
-                className="border border-border-color hover:bg-sky-50 dark:hover:bg-sky-900/30 hover:border-sky-300 dark:hover:border-sky-700 px-4 py-2 rounded-lg text-text-secondary hover:text-sky-600 dark:hover:text-sky-400 transition-colors"
-                title={t.shareContext}
-                aria-label={t.shareContext}
-              >
-                <Link2 size={16} />
-              </button>
-            )}
             {onLogout && (
               <LogoutButton
                 onLogout={onLogout}
@@ -620,17 +607,6 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
             <h2 className="font-bold text-sky-600 dark:text-sky-400 truncate" title={activeClass.name}>{activeClass.name}</h2>
           </div>
           <div className="flex items-center gap-2">
-            {onShareContext && (
-              <button
-                type="button"
-                onClick={onShareContext}
-                className="p-2 rounded-lg border border-border-color text-text-secondary hover:bg-sky-50 dark:hover:bg-sky-900/30 hover:border-sky-300 dark:hover:border-sky-700 hover:text-sky-600 dark:hover:text-sky-400 transition-colors"
-                title={t.shareContext}
-                aria-label={t.shareContext}
-              >
-                <Link2 size={16} />
-              </button>
-            )}
             {onLogout && (
               <LogoutButton onLogout={onLogout} className="text-text-secondary hover:text-rose-600 dark:hover:text-rose-400" />
             )}

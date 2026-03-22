@@ -23,6 +23,12 @@ interface PersonalCurriculumConfig {
     }
 }
 
+interface PersonalCurriculumPreferences {
+    strategy: 'RANDOM' | 'SEQUENTIAL'
+    autoPilot: boolean
+    strictMode: boolean
+}
+
 const isCompatibilityOnlyLandscape = (landscape: LandscapeSummary) =>
     isCompatibilityOnlyCurriculum(landscape.landscapeId, landscape.compatibilityOnly)
 
@@ -72,13 +78,12 @@ interface PersonalCurriculumSetupProps {
     availableLandscapes: LandscapeSummary[]
     currentLandscapeId?: string
     retirementOnly?: boolean
-    onConfigChange: (config: PersonalCurriculumConfig) => void
+    onApply?: (config: PersonalCurriculumConfig, preferences: PersonalCurriculumPreferences) => Promise<void> | void
     initialConfig?: PersonalCurriculumConfig
     rootLandscapeId?: string
     initialStrategy?: 'RANDOM' | 'SEQUENTIAL'
     initialAutoPilot?: boolean
     initialStrictMode?: boolean
-    onPreferencesChange?: (strategy: 'RANDOM' | 'SEQUENTIAL', autoPilot: boolean, strictMode: boolean) => void
     migrationTitle?: string
     migrationDescription?: string
     migrationActionLabel?: string
@@ -93,13 +98,12 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
     availableLandscapes,
     currentLandscapeId,
     retirementOnly = false,
-    onConfigChange,
+    onApply,
     initialConfig = {},
     rootLandscapeId,
     initialStrategy = 'RANDOM',
     initialAutoPilot = false,
     initialStrictMode = false,
-    onPreferencesChange,
     migrationTitle,
     migrationDescription,
     migrationActionLabel,
@@ -147,6 +151,7 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
     const [autoPilot, setAutoPilot] = useState<boolean>(initialAutoPilot)
     const [strictMode, setStrictMode] = useState<boolean>(initialStrictMode)
     const [expanded, setExpanded] = useState<Set<string>>(new Set(initialExpanded))
+    const [isApplying, setIsApplying] = useState(false)
     const currentLandscape = availableLandscapes.find((landscape) => landscape.landscapeId === currentLandscapeId)
     const currentLandscapeIsCompatibilityOnly = isCompatibilityOnlyLandscape(
         currentLandscape ?? { landscapeId: currentLandscapeId ?? '', title: '' },
@@ -156,17 +161,14 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
 
     const handleStrategyChange = (newStrategy: 'RANDOM' | 'SEQUENTIAL') => {
         setStrategy(newStrategy)
-        onPreferencesChange?.(newStrategy, autoPilot, strictMode)
     }
 
     const handleAutoPilotChange = (newAutoPilot: boolean) => {
         setAutoPilot(newAutoPilot)
-        onPreferencesChange?.(strategy, newAutoPilot, strictMode)
     }
 
     const handleStrictModeChange = (newStrictMode: boolean) => {
         setStrictMode(newStrictMode)
-        onPreferencesChange?.(strategy, autoPilot, newStrictMode)
     }
 
     const toggleSelection = (landscapeId: string, isRoot: boolean) => {
@@ -202,7 +204,6 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
                 }
             }
 
-            onConfigChange(next)
             return next
         })
     }
@@ -217,7 +218,6 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
             }
         }
         setConfig(next)
-        onConfigChange(next)
     }
 
     const toggleExpand = (landscapeId: string) => {
@@ -253,9 +253,28 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
                     selected: nextSelected,
                 },
             }
-            onConfigChange(next)
             return next
         })
+    }
+
+    const handleApply = async () => {
+        if (retirementOnly) {
+            onClose()
+            return
+        }
+
+        if (!onApply) {
+            onClose()
+            return
+        }
+
+        setIsApplying(true)
+        try {
+            await onApply(config, { strategy, autoPilot, strictMode })
+            onClose()
+        } finally {
+            setIsApplying(false)
+        }
     }
 
     if (!isOpen) return null
@@ -429,6 +448,7 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
                     </div>
                     <button
                         onClick={onClose}
+                        disabled={isApplying}
                         className="p-2 hover:bg-input-bg rounded-full transition-colors text-text-secondary hover:text-text-primary"
                     >
                         <X size={24} />
@@ -485,7 +505,7 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
                     )}
 
                     {/* Preferences Section */}
-                    {!retirementOnly && onPreferencesChange && (
+                    {!retirementOnly && (
                         <div className="mb-6 bg-blue-50 dark:bg-blue-900/10 p-4 rounded-xl border border-blue-100 dark:border-blue-900/30">
                             <h3 className="text-sm font-semibold text-text-primary mb-3">Auswahlpriorisierung</h3>
                             <div className="flex flex-col gap-3">
@@ -552,10 +572,13 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
 
                 <div className="p-6 border-t border-border-color bg-sidebar-bg/50 rounded-b-2xl flex justify-end">
                     <button
-                        onClick={onClose}
+                        onClick={() => {
+                            void handleApply()
+                        }}
+                        disabled={isApplying}
                         className="px-6 py-2.5 bg-sky-600 hover:bg-sky-500 text-white rounded-lg font-medium transition-colors shadow-lg shadow-sky-900/20"
                     >
-                        {retirementOnly ? 'Schliessen' : 'Fertig'}
+                        {retirementOnly ? 'Schliessen' : isApplying ? 'Speichert...' : 'Fertig'}
                     </button>
                 </div>
             </div>

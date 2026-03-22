@@ -135,16 +135,6 @@ const App: React.FC = () => {
     showToast(queuedToast.kind, queuedToast.message)
   }, [showToast])
 
-  const handleShareContextWithFeedback = React.useCallback(async () => {
-    const result = await core.handleShareContext()
-    showToast(
-      result,
-      result === 'success'
-        ? t.notifications.shareContextCopied
-        : t.notifications.shareContextFailed,
-    )
-  }, [core, showToast, t.notifications.shareContextCopied, t.notifications.shareContextFailed])
-
   const handleNotify = React.useCallback((kind: 'success' | 'error' | 'info', message: string) => {
     showToast(kind, message)
   }, [showToast])
@@ -524,7 +514,6 @@ const App: React.FC = () => {
               activeFilter={core.activeFilter}
               structureMode={core.treeStructureMode}
               onStructureModeChange={core.setTreeStructureMode}
-              onShareContext={handleShareContextWithFeedback}
               onNotify={handleNotify}
               onLogout={handleLogout}
               availableLandscapes={availableLandscapes}
@@ -550,7 +539,6 @@ const App: React.FC = () => {
               goalShortKeyMap={core.goalShortKeyMap}
               structureMode={core.treeStructureMode}
               onStructureModeChange={core.setTreeStructureMode}
-              onShareContext={handleShareContextWithFeedback}
               onNotify={handleNotify}
               onLogout={handleLogout}
               getMastery={core.getMasteryValue}
@@ -567,7 +555,6 @@ const App: React.FC = () => {
               availableFilters={core.availableFilters}
               onFilterChange={core.setActiveFilter}
               externalRequires={core.externalRequires}
-              onShareContext={handleShareContextWithFeedback}
               currentGoal={core.currentGoal}
               getMastery={core.getMasteryValue}
               onNavigate={core.handleNavigateTo}
