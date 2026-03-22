@@ -33,7 +33,6 @@ import { applyDefaultGlobalStageScope, goalMatchesGlobalStageScope } from '../ut
 import { trackCampaignEvent } from '../utils/campaignTracking'
 import type { ToastKind } from '../hooks/useToast'
 import { queueToastForNextLoad } from '../hooks/useToast'
-import { hasReachableCompetencyDimensionRoot } from '../utils/goalCompetencyProjection'
 
 import type { UiGoal } from '../goalTypes'
 import type { Learner, FrontierGoal } from '../learnerTypes'
@@ -289,8 +288,6 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   skillpilotId,
   landscapeId,
   activeFilter = 'all',
-  structureMode = 'all',
-  onStructureModeChange = () => {},
   onLogout,
   onNotify,
   availableLandscapes = [],
@@ -436,17 +433,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     }
     return currentLandscapeRootGoals
   }, [currentLandscapeRootGoals, isPersonalConfigHydrating])
-
-  const hasCompetencyStructure = useMemo(() => {
-    return hasReachableCompetencyDimensionRoot(visibleRootGoals, goalIndexAll)
-  }, [goalIndexAll, visibleRootGoals])
-
-  useEffect(() => {
-    if (structureMode !== 'competency' || hasCompetencyStructure) {
-      return
-    }
-    onStructureModeChange('all')
-  }, [hasCompetencyStructure, onStructureModeChange, structureMode])
+  const learnerStructureMode: TreeStructureMode = 'content'
 
   // Determine effective active filter based on personal config for current landscape
   const supportedFilterIds = useMemo(() => {
@@ -2422,36 +2409,6 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
             )}
           </div>
         </div>
-        {hasCompetencyStructure && (
-          <div className="px-4 py-2 border-b border-border-color">
-            <div className="text-[10px] uppercase tracking-wide text-text-secondary font-bold mb-2">
-              {t.learner.structureMode}
-            </div>
-            <div className="inline-flex rounded-lg border border-border-color overflow-hidden bg-chat-bg/40">
-              {([
-                ['all', t.learner.structureAll],
-                ['content', t.learner.structureContent],
-                ['competency', t.learner.structureCompetencies],
-              ] as const).map(([mode, label]) => {
-                const isActive = structureMode === mode
-                return (
-                  <button
-                    key={mode}
-                    type="button"
-                      onClick={() => onStructureModeChange(mode)}
-                    className={`px-3 py-1.5 text-xs font-medium transition-colors ${
-                      isActive
-                        ? 'bg-sky-600 text-white'
-                        : 'text-text-secondary hover:bg-slate-200 dark:hover:bg-slate-800/60'
-                    }`}
-                  >
-                    {label}
-                  </button>
-                )
-              })}
-            </div>
-          </div>
-        )}
         <div className="flex-1 overflow-y-auto p-2">
           {isPersonalConfigHydrating ? (
             <div className="p-8 text-center text-sm text-text-secondary">
@@ -2459,7 +2416,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
             </div>
           ) : (
             <CompetenceTree
-              key={`competence-tree-${refreshCounter}-${structureMode}`}
+              key={`competence-tree-${refreshCounter}-${learnerStructureMode}`}
               rootGoals={visibleRootGoals}
               allGoals={goalIndexAll}
               getMastery={getEffectiveMastery}
@@ -2469,7 +2426,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
               onSelect={onSelectGoal}
               selectedId={selectedId}
               activeFilter={effectiveActiveFilter}
-              structureMode={structureMode}
+              structureMode={learnerStructureMode}
               personalConfig={personalConfig}
               activeGoalId={effectiveActiveGoalId ?? undefined}
               forcedExpandedIds={forcedExpandedIds}
