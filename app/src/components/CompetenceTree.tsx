@@ -18,6 +18,20 @@ const isCompetencyDimensionRoot = (goal: UiGoal) =>
 const isSyntheticProgramUnit = (goal: UiGoal) =>
   (goal.tags ?? []).includes(SYNTHETIC_PROGRAM_UNIT_TAG)
 
+const getContextualTreeTitle = (goal: UiGoal, parentGoal?: UiGoal): string => {
+  if (!parentGoal || !isSyntheticProgramUnit(parentGoal)) return goal.title
+
+  if (parentGoal.title === 'Sekundarstufe I') {
+    return goal.title.replace(/\s+\(Sek I\)$/u, '')
+  }
+
+  if (parentGoal.title === 'Sekundarstufe II') {
+    return goal.title.replace(/\s+\(Sek II\)$/u, '')
+  }
+
+  return goal.title
+}
+
 const buildVisibleChildrenMap = (
   allGoals: Map<string, UiGoal>,
   activeFilter?: string,
@@ -178,6 +192,7 @@ interface TreeNodeProps {
   activeGoalId?: string
   forcedExpandedIds?: Set<string>
   frontierIds?: Set<string>
+  parentGoalId?: string
 }
 
 const formatFilterLabel = (filterId?: string) => {
@@ -211,9 +226,11 @@ const TreeNode: React.FC<TreeNodeProps> = ({
   activeGoalId,
   forcedExpandedIds,
   frontierIds,
+  parentGoalId,
 }) => {
   const t = useTranslation()
   const goal = allGoals.get(goalId)
+  const parentGoal = parentGoalId ? allGoals.get(parentGoalId) : undefined
   const [isExpanded, setIsExpanded] = useState(depth < 1)
 
   // Force expansion if this ID is in the forced set
@@ -250,7 +267,8 @@ const TreeNode: React.FC<TreeNodeProps> = ({
       : (activeFilter && activeFilter !== 'all' ? activeFilter : undefined),
   )
   const shouldShowFilterBadge = depth === 1 && !!effectiveFilterLabel
-  const displayTitle = shouldShowFilterBadge ? `${goal.title} (${effectiveFilterLabel})` : goal.title
+  const contextualTitle = getContextualTreeTitle(goal, parentGoal)
+  const displayTitle = shouldShowFilterBadge ? `${contextualTitle} (${effectiveFilterLabel})` : contextualTitle
 
   return (
     <div className="">
@@ -385,6 +403,7 @@ const TreeNode: React.FC<TreeNodeProps> = ({
                 activeGoalId={activeGoalId}
                 forcedExpandedIds={forcedExpandedIds}
                 frontierIds={frontierIds}
+                parentGoalId={goal.id}
               />
             ))}
           </div>
