@@ -281,6 +281,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   } | null>(null)
   const [isSetupOpen, setIsSetupOpen] = useState(false)
   const [personalConfig, setPersonalConfig] = useState<PersonalCurriculumConfig>({})
+  const [isPersonalConfigHydrating, setIsPersonalConfigHydrating] = useState<boolean>(!!skillpilotId)
   const [isCutoverPending, setIsCutoverPending] = useState(false)
   const [compatibilityRouteRetired, setCompatibilityRouteRetired] = useState(false)
   const [isCompatibilityArchivePending, setIsCompatibilityArchivePending] = useState(false)
@@ -396,8 +397,11 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   }, [rootGoals, landscapeId])
 
   const visibleRootGoals = useMemo(() => {
+    if (isPersonalConfigHydrating) {
+      return []
+    }
     return currentLandscapeRootGoals
-  }, [currentLandscapeRootGoals])
+  }, [currentLandscapeRootGoals, isPersonalConfigHydrating])
 
   const hasCompetencyStructure = useMemo(() => {
     return visibleRootGoals.some((rootGoal) =>
@@ -433,6 +437,8 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   }, [landscapeId, personalConfig, activeFilter, supportedFilterIds])
 
   const getVisibleChildIds = useCallback((parentId: string) => {
+    if (isPersonalConfigHydrating) return []
+
     const parent = goalIndexAll.get(parentId)
     const childIds = parent?.contains ?? []
     if (childIds.length === 0) return []
@@ -470,9 +476,13 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
 
       return true
     })
-  }, [goalIndexAll, personalConfig, effectiveActiveFilter])
+  }, [goalIndexAll, isPersonalConfigHydrating, personalConfig, effectiveActiveFilter])
 
   const visibleGoals = useMemo(() => {
+    if (isPersonalConfigHydrating) {
+      return new Set<string>()
+    }
+
     const visible = new Set<string>()
     const stack = [...visibleRootGoals]
     const hasConfig = Object.keys(personalConfig).length > 0
@@ -497,7 +507,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
       })
     }
     return visible
-  }, [visibleRootGoals, goalIndexAll, personalConfig, getVisibleChildIds])
+  }, [visibleRootGoals, goalIndexAll, isPersonalConfigHydrating, personalConfig, getVisibleChildIds])
 
   useEffect(() => {
     if (!currentGoal) return
@@ -1510,7 +1520,13 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
 
   // Load personal config from backend
   React.useEffect(() => {
-    if (!skillpilotId) return
+    let cancelled = false
+    if (!skillpilotId) {
+      setIsPersonalConfigHydrating(false)
+      return
+    }
+
+    setIsPersonalConfigHydrating(true)
     const fetchConfig = async () => {
       try {
         const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
@@ -1521,7 +1537,9 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
           if (data.personalCurriculum) {
             const parsed = JSON.parse(data.personalCurriculum)
             const { config, corrected } = normalizePersonalConfig(parsed || {}, availableLandscapes, rootLandscapeId)
-            setPersonalConfig(config || {})
+            if (!cancelled) {
+              setPersonalConfig(config || {})
+            }
 
             if (corrected) {
               const saveUrl = apiBase
@@ -1541,10 +1559,17 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
       } catch (e) {
         console.warn('Failed to load personal curriculum', e)
         notifyLoadErrorOnce('learner-initial-load', t.notifications.learnerInitialLoadFailed)
+      } finally {
+        if (!cancelled) {
+          setIsPersonalConfigHydrating(false)
+        }
       }
     }
     fetchConfig()
     refreshState()
+    return () => {
+      cancelled = true
+    }
   }, [
     availableLandscapes,
     clearReportedLoadError,
@@ -2343,23 +2368,29 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
           </div>
         )}
         <div className="flex-1 overflow-y-auto p-2">
-          <CompetenceTree
-            key={`competence-tree-${refreshCounter}-${structureMode}`}
-            rootGoals={visibleRootGoals}
-            allGoals={goalIndexAll}
-            getMastery={getEffectiveMastery}
-            plannedGoals={plannedGoals}
-            onTogglePlan={togglePlan}
-            readOnly={isCompatibilityAuditOnly}
-            onSelect={onSelectGoal}
-            selectedId={selectedId}
-            activeFilter={effectiveActiveFilter}
-            structureMode={structureMode}
-            personalConfig={personalConfig}
-            activeGoalId={effectiveActiveGoalId ?? undefined}
-            forcedExpandedIds={forcedExpandedIds}
-            frontierIds={frontierIds}
-          />
+          {isPersonalConfigHydrating ? (
+            <div className="p-8 text-center text-sm text-text-secondary">
+              {t.learner.loadingGoals}
+            </div>
+          ) : (
+            <CompetenceTree
+              key={`competence-tree-${refreshCounter}-${structureMode}`}
+              rootGoals={visibleRootGoals}
+              allGoals={goalIndexAll}
+              getMastery={getEffectiveMastery}
+              plannedGoals={plannedGoals}
+              onTogglePlan={togglePlan}
+              readOnly={isCompatibilityAuditOnly}
+              onSelect={onSelectGoal}
+              selectedId={selectedId}
+              activeFilter={effectiveActiveFilter}
+              structureMode={structureMode}
+              personalConfig={personalConfig}
+              activeGoalId={effectiveActiveGoalId ?? undefined}
+              forcedExpandedIds={forcedExpandedIds}
+              frontierIds={frontierIds}
+            />
+          )}
         </div>
         {learnerData && learnerData.copySources && learnerData.copySources.length > 0 && (
           <div className="p-3 border-t border-border-color bg-gray-50 dark:bg-slate-900 text-xs text-text-secondary shrink-0">

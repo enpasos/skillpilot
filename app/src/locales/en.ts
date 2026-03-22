@@ -136,6 +136,7 @@ export const en = {
         structureAll: "All",
         structureContent: "Content",
         structureCompetencies: "Competencies",
+        loadingGoals: "Preparing learning goals...",
         shareContext: "Copy context link",
         marked: "marked",
         completed: "completed",
