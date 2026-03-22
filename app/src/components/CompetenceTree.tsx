@@ -73,15 +73,23 @@ const buildVisibleChildrenMap = (
         return false
       }
 
-      if (parent.tags?.includes('root')) {
-        const isCompetencyRoot = isCompetencyDimensionRoot(child)
-        if (structureMode === 'content' && isCompetencyRoot) {
+      const isCompetencyRoot = isCompetencyDimensionRoot(child)
+      const isRootParent = parent.tags?.includes('root')
+
+      if (isCompetencyRoot) {
+        if (structureMode !== 'competency') {
+          return false
+        }
+        if (!isRootParent) {
+          return false
+        }
+      }
+
+      if (isRootParent) {
+        if (structureMode === 'competency' && !isCompetencyRoot) {
           return false
         }
         if (structureMode === 'all' && isCompetencyRoot && nestedUnderSyntheticProgramUnit.has(child.id)) {
-          return false
-        }
-        if (structureMode === 'competency' && !isCompetencyRoot) {
           return false
         }
       }

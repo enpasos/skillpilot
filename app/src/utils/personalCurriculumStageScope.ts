@@ -12,6 +12,44 @@ export const GLOBAL_STAGE_SCOPE_OPTIONS = [
 
 type PersonalCurriculumConfigLike = Record<string, { selected: boolean; filterId?: string }>
 
+const normalizeComparableText = (value?: string) =>
+  (value ?? '').trim().toUpperCase()
+
+const inferGoalStageScope = (
+  goal: Pick<UiGoal, 'title' | 'tags' | 'phase'> | undefined,
+): 'sek1' | 'sek2' | undefined => {
+  if (!goal) return undefined
+
+  const title = normalizeComparableText(goal.title)
+  const phase = normalizeComparableText(goal.phase)
+
+  if (title === 'SEKUNDARSTUFE I' || title.endsWith('(SEK I)')) {
+    return 'sek1'
+  }
+
+  if (title === 'SEKUNDARSTUFE II' || title.endsWith('(SEK II)')) {
+    return 'sek2'
+  }
+
+  if (/^J([5-9]|10)$/.test(phase)) {
+    return 'sek1'
+  }
+
+  if (/^(E|Q[1-4]|ABITUR)$/.test(phase)) {
+    return 'sek2'
+  }
+
+  if (/^JAHRGANG\s+([5-9]|10)\b/.test(title)) {
+    return 'sek1'
+  }
+
+  if (/^(E-PHASE|Q[1-4]\b|ABITUR)/.test(title)) {
+    return 'sek2'
+  }
+
+  return undefined
+}
+
 export const isCourseProfileFilterId = (filterId?: string) => {
   const normalized = (filterId ?? '').trim().toUpperCase()
   return normalized === 'GK' || normalized === 'LK' || normalized === 'ALL' || normalized === 'GK+LK'
@@ -43,20 +81,21 @@ export const applyDefaultGlobalStageScope = (config: PersonalCurriculumConfigLik
 }
 
 export const goalMatchesGlobalStageScope = (
-  goal: Pick<UiGoal, 'title' | 'tags'> | undefined,
+  goal: Pick<UiGoal, 'title' | 'tags' | 'phase'> | undefined,
   config: PersonalCurriculumConfigLike,
 ) => {
-  if (!goal || !(goal.tags ?? []).includes('synthetic:program-unit')) {
+  const inferredStage = inferGoalStageScope(goal)
+  if (!goal || !inferredStage) {
     return true
   }
 
   const selection = getGlobalStageScopeSelection(config)
 
-  if (goal.title === 'Sekundarstufe I') {
+  if (inferredStage === 'sek1') {
     return selection.sek1Selected
   }
 
-  if (goal.title === 'Sekundarstufe II') {
+  if (inferredStage === 'sek2') {
     return selection.sek2Selected
   }
 
