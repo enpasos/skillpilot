@@ -5514,6 +5514,36 @@ public class LearnerControllerIntegrationTest {
     }
 
     @Test
+    void learnerScopedClosureReturnsOnlySelectedCanonicalLandscapes() throws Exception {
+        Learner learner = new Learner();
+        learner.setSkillpilotId("scoped-closure");
+        learner.setSelectedCurriculum(CANONICAL_GYMNASIUM_ROOT_ID);
+        learner.setPersonalCurriculum("""
+                {
+                  "a0e13c56-c25f-4742-9272-3a1a603ee52e": {"selected": true, "filterId": "DE-HE"},
+                  "__skillpilot_stage_scope_sek1__": {"selected": true},
+                  "__skillpilot_stage_scope_sek2__": {"selected": true},
+                  "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced": {"selected": true, "filterId": "ALL"},
+                  "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a": {"selected": false, "filterId": "ALL"}
+                }
+                """);
+        learnerRepository.save(learner);
+
+        HttpResponse<String> response = getRequest(
+                "/api/ui/learners/scoped-closure/landscapes/" + CANONICAL_GYMNASIUM_ROOT_ID + "/closure?lang=de");
+
+        assertThat(response.statusCode()).isEqualTo(HttpStatus.OK.value());
+        JsonNode body = objectMapper.readTree(response.body());
+        assertThat(body.isArray()).isTrue();
+        List<String> landscapeIds = new ArrayList<>();
+        for (JsonNode landscape : body) {
+            landscapeIds.add(landscape.path("landscapeId").asText());
+        }
+        assertThat(landscapeIds).contains(CANONICAL_GYMNASIUM_ROOT_ID, CANONICAL_MATH_ID);
+        assertThat(landscapeIds).doesNotContain(CANONICAL_PHYSICS_PILOT_ID);
+    }
+
+    @Test
     void compatibilityCurriculumTopicsUseFrozenArchiveRegistry() throws Exception {
         HttpResponse<String> response = getRequest("/api/ui/curricula/" + HESSEN_GYMNASIUM_UPPER_MATH_ID + "/topics");
 

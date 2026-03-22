@@ -93,6 +93,34 @@ function applyEffectiveRequires(entries: LandscapeEntry[]): LandscapeEntry[] {
   return entries
 }
 
+export function prepareLandscapeEntries(items: LearningLandscape[]): LandscapeEntry[] {
+  const allGoalIds = new Set<string>()
+  items.forEach((item) => {
+    item.goals?.forEach((g) => allGoalIds.add(g.id))
+  })
+
+  const resolved = items.map((item) => {
+    if (!Array.isArray(item.goals)) return item
+    const goals = item.goals.map((g) => {
+      const contains = (g.contains ?? []).map((ref) => {
+        if (typeof ref === 'string' && ref.includes(':')) {
+          const [, goalId] = ref.split(':', 2)
+          return goalId && allGoalIds.has(goalId) ? goalId : ref
+        }
+        return ref
+      })
+      return { ...g, contains }
+    })
+    return { ...item, goals }
+  })
+
+  const normalized = resolved
+    .map((item) => normalizeLandscape(item))
+    .filter((entry): entry is LandscapeEntry => Boolean(entry))
+
+  return applyEffectiveRequires(normalized)
+}
+
 export function useLandscapes(landscapeId?: string, language: string = 'de') {
   const [entries, setEntries] = useState<LandscapeEntry[]>([])
   // Start loading immediately to prevent "No Data" flash during initial effect cycle
@@ -151,36 +179,7 @@ export function useLandscapes(landscapeId?: string, language: string = 'de') {
         }
         const json = (await res.json()) as LearningLandscape[]
 
-        const items = json
-
-        // Two-pass: collect all goal IDs to resolve cross-landscape references in `contains`
-        const allGoalIds = new Set<string>()
-        items.forEach((item) => {
-          item.goals?.forEach((g) => allGoalIds.add(g.id))
-        })
-
-        const resolved = items.map((item) => {
-          if (!Array.isArray(item.goals)) return item
-          const goals = item.goals.map((g) => {
-            const contains = (g.contains ?? []).map((ref) => {
-              if (typeof ref === 'string' && ref.includes(':')) {
-                const [, goalId] = ref.split(':', 2)
-                return goalId && allGoalIds.has(goalId) ? goalId : ref
-              }
-              return ref
-            })
-            return { ...g, contains }
-          })
-          return { ...item, goals }
-        })
-
-        const normalized = resolved
-          .map((item) => normalizeLandscape(item))
-          .filter((entry): entry is LandscapeEntry => Boolean(entry))
-
-        const withEffectiveRequires = applyEffectiveRequires(normalized)
-
-        setEntries(withEffectiveRequires)
+        setEntries(prepareLandscapeEntries(json))
       })
       .catch((err) => {
         if (signal.aborted) return // Ignore abort errors

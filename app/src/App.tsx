@@ -127,7 +127,7 @@ const App: React.FC = () => {
   // console.log('Routing State:', { normalizedPath, isPublicRoute, hasSession })
 
   const core = useAppCore({ role: role || 'explorer', setLearnerMeta, skillpilotId })
-  const { currentLandscapeEntry, goalIndexAll, landscapeEntries } = core
+  const { currentLandscapeEntry, landscapeEntries, selectionGoalIndexAll } = core
 
   useEffect(() => {
     const queuedToast = consumeQueuedToast()
@@ -181,7 +181,7 @@ const App: React.FC = () => {
       const rootGoal = currentEntry.goals.find((goal) => goal.tags?.includes('root')) ?? currentEntry.goals[0]
 
       for (const childId of rootGoal?.contains ?? []) {
-        const childGoal = goalIndexAll.get(childId)
+        const childGoal = selectionGoalIndexAll.get(childId)
         const childLandscapeId = childGoal?.landscapeId
         if (!childLandscapeId || seenLandscapeIds.has(childLandscapeId) || childLandscapeId === currentEntry.meta.landscapeId) {
           continue
@@ -198,7 +198,7 @@ const App: React.FC = () => {
 
       return summaries
     },
-    [currentLandscapeEntry, goalIndexAll, landscapeEntries],
+    [currentLandscapeEntry, landscapeEntries, selectionGoalIndexAll],
   )
 
   useEffect(() => {
@@ -530,6 +530,7 @@ const App: React.FC = () => {
               availableLandscapes={availableLandscapes}
               rootLandscapeId={core.selectedLandscapeId}
               onRefresh={core.refreshMastery}
+              onScopeDataRefresh={core.refreshLearnerGraphData}
               parentMap={core.parentMapAll}
               onLandscapeChange={core.setSelectedLandscapeId}
               onLandscapeGoalChange={core.handleNavigateToExternal}

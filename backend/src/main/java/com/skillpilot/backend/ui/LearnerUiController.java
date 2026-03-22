@@ -30,6 +30,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.extensions.Extension;
@@ -59,6 +60,16 @@ public class LearnerUiController {
     public UnifiedLearnerStateResponse getLearnerState(@PathVariable String skillpilotId) {
         learnerService.assertActiveLearnerRouteAccess(skillpilotId);
         return learnerService.getLearnerState(skillpilotId);
+    }
+
+    @GetMapping("/{skillpilotId}/landscapes/{landscapeId}/closure")
+    @Operation(extensions = @Extension(properties = @ExtensionProperty(name = "x-openai-isConsequential", value = "false", parseValue = true)))
+    public java.util.List<com.skillpilot.backend.landscape.LearningLandscape> getLearnerLandscapeClosure(
+            @PathVariable String skillpilotId,
+            @PathVariable String landscapeId,
+            @RequestParam(defaultValue = "de") String lang) {
+        learnerService.assertActiveLearnerRouteAccess(skillpilotId);
+        return learnerService.getLearnerLandscapeClosure(skillpilotId, landscapeId, lang);
     }
 
     @GetMapping("/{skillpilotId}/compatibility-archive")

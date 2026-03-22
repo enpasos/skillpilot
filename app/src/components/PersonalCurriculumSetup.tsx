@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { X, ChevronDown, ChevronRight } from 'lucide-react'
 import { CANONICAL_GYMNASIUM_ROOT_ID, isCompatibilityOnlyCurriculum } from '../utils/curriculumDisplay'
 import {
@@ -153,26 +153,6 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
     )
     const shouldAutoRevealCompatibility = currentLandscapeIsCompatibilityOnly
     const [showCompatibilityChildren, setShowCompatibilityChildren] = useState(shouldAutoRevealCompatibility)
-
-    // Update config when initialConfig changes (e.g. loaded from backend)
-    useEffect(() => {
-        setConfig(computedInitial)
-    }, [computedInitial])
-
-    useEffect(() => {
-        if (!isOpen) return
-        setExpanded(new Set(initialExpanded))
-    }, [isOpen, initialExpanded])
-
-    useEffect(() => {
-        setShowCompatibilityChildren(shouldAutoRevealCompatibility)
-    }, [shouldAutoRevealCompatibility, isOpen])
-
-    useEffect(() => {
-        setStrategy(initialStrategy)
-        setAutoPilot(initialAutoPilot)
-        setStrictMode(initialStrictMode)
-    }, [initialStrategy, initialAutoPilot, initialStrictMode])
 
     const handleStrategyChange = (newStrategy: 'RANDOM' | 'SEQUENTIAL') => {
         setStrategy(newStrategy)

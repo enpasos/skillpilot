@@ -3,6 +3,7 @@ import { useNavigate, useSearchParams, useLocation, matchPath } from 'react-rout
 import type { UiGoal as Goal, ExternalRequirement } from '../goalTypes'
 import { shortKeyFromId } from '../shortKey'
 import { useLandscapes } from './useLandscapes'
+import { useLearnerScopedLandscapes } from './useLearnerScopedLandscapes'
 import { useCompetenceGraph } from './useCompetenceGraph'
 import { useBreadcrumbs } from './useBreadcrumbs'
 import { useGoalIndex } from './useGoalIndex'
@@ -98,7 +99,18 @@ export function useAppCore({ role, setLearnerMeta, skillpilotId }: AppCoreOption
 
   const { language } = useLanguage()
 
+  const [learnerGraphRefreshToken, setLearnerGraphRefreshToken] = React.useState(0)
   const { landscapeEntries, loadingLandscapes, landscapeError } = useLandscapes(selectedLandscapeId, language)
+  const {
+    learnerScopedLandscapeEntries,
+    loadingLearnerScopedLandscapes,
+    learnerScopedLandscapeError,
+  } = useLearnerScopedLandscapes(
+    selectedLandscapeId,
+    language,
+    skillpilotId,
+    { enabled: role === 'learner', refreshToken: learnerGraphRefreshToken },
+  )
   const showLearnerTools = role !== 'explorer'
 
   const {
@@ -109,6 +121,32 @@ export function useAppCore({ role, setLearnerMeta, skillpilotId }: AppCoreOption
     setActiveFilter,
     refreshMastery,
   } = useLearnerProgress({ landscapeEntries, selectedLandscapeId, skillpilotId })
+
+  const graphSourceLandscapeEntries = useMemo(() => {
+    if (role !== 'learner') {
+      return landscapeEntries
+    }
+    if (loadingLearnerScopedLandscapes) {
+      return []
+    }
+    if (learnerScopedLandscapeEntries.length > 0) {
+      return learnerScopedLandscapeEntries
+    }
+    if (learnerScopedLandscapeError) {
+      return landscapeEntries
+    }
+    return []
+  }, [
+    landscapeEntries,
+    learnerScopedLandscapeEntries,
+    learnerScopedLandscapeError,
+    loadingLearnerScopedLandscapes,
+    role,
+  ])
+
+  const refreshLearnerGraphData = useCallback(() => {
+    setLearnerGraphRefreshToken((current) => current + 1)
+  }, [])
 
   useEffect(() => {
     if (!currentLandscapeEntry) return
@@ -141,10 +179,10 @@ export function useAppCore({ role, setLearnerMeta, skillpilotId }: AppCoreOption
 
   const projectedLandscapeEntries = useMemo(
     () => applyCompetencyAxisProjection(
-      applyGoalPlacementProjection(landscapeEntries, activeFilter),
+      applyGoalPlacementProjection(graphSourceLandscapeEntries, activeFilter),
       activeFilter,
     ),
-    [landscapeEntries, activeFilter],
+    [graphSourceLandscapeEntries, activeFilter],
   )
 
   const projectedCurrentLandscapeEntry = useMemo(() => {
@@ -161,6 +199,11 @@ export function useAppCore({ role, setLearnerMeta, skillpilotId }: AppCoreOption
     [projectedLandscapeEntries],
   )
   const { goalIndexAll, parentMapAll, globalRootGoals } = useGoalIndex(allGoalsGlobal)
+  const rawAllGoalsGlobal = useMemo(
+    () => landscapeEntries.flatMap((entry) => entry.goals),
+    [landscapeEntries],
+  )
+  const { goalIndexAll: selectionGoalIndexAll } = useGoalIndex(rawAllGoalsGlobal)
 
   const goalShortKeyMap = useMemo(() => {
     const map = new Map<string, string>()
@@ -325,7 +368,7 @@ export function useAppCore({ role, setLearnerMeta, skillpilotId }: AppCoreOption
 
   return {
     landscapeEntries,
-    loadingLandscapes,
+    loadingLandscapes: loadingLandscapes || (role === 'learner' && !!selectedLandscapeId && loadingLearnerScopedLandscapes),
     landscapeError,
     showLearnerTools,
     selectedLandscapeId,
@@ -349,8 +392,10 @@ export function useAppCore({ role, setLearnerMeta, skillpilotId }: AppCoreOption
     handleNavigateTo,
     handleNavigateToExternal,
     goalShortKeyMap,
+    selectionGoalIndexAll,
     setSelectedLandscapeId,
     refreshMastery,
+    refreshLearnerGraphData,
     parentMapAll,
   }
 }

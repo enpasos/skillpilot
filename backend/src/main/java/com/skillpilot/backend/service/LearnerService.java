@@ -1190,6 +1190,49 @@ public class LearnerService {
                 "This compatibility-only learner session is retired as a normal learner route. Use the canonical cutover flow or download a compatibility archive instead.");
     }
 
+    @Transactional(readOnly = true)
+    public List<LearningLandscape> getLearnerLandscapeClosure(String skillpilotId, String landscapeId, String lang) {
+        Learner learner = getLearner(skillpilotId);
+        List<LearningLandscape> localizedClosure = landscapeService.getClosure(landscapeId, lang);
+        Map<String, LearningGoal> visibleGoals = getFilteredGoals(landscapeId, learner.getPersonalCurriculum());
+        if (localizedClosure == null || localizedClosure.isEmpty()) {
+            return Collections.emptyList();
+        }
+
+        List<LearningLandscape> scopedClosure = new ArrayList<>();
+        for (LearningLandscape landscape : localizedClosure) {
+            List<LearningGoal> sourceGoals = landscape.getGoals();
+            if (sourceGoals == null || sourceGoals.isEmpty()) {
+                continue;
+            }
+
+            List<LearningGoal> filteredGoals = new ArrayList<>();
+            for (LearningGoal goal : sourceGoals) {
+                if (!visibleGoals.containsKey(goal.getId())) {
+                    continue;
+                }
+                filteredGoals.add(cloneScopedGoal(goal, visibleGoals));
+            }
+
+            if (filteredGoals.isEmpty()) {
+                continue;
+            }
+
+            LearningLandscape scopedLandscape = objectMapper.convertValue(landscape, LearningLandscape.class);
+            scopedLandscape.setGoals(filteredGoals);
+            if (scopedLandscape.getGoalPlacements() != null) {
+                scopedLandscape.setGoalPlacements(scopedLandscape.getGoalPlacements().stream()
+                        .filter(placement -> placement != null
+                                && placement.getGoalId() != null
+                                && visibleGoals.containsKey(placement.getGoalId()))
+                        .collect(Collectors.toList()));
+            }
+            scopedClosure.add(scopedLandscape);
+        }
+
+        return scopedClosure;
+    }
+
     private boolean isReadOnlyCompatibilitySession(Learner learner) {
         if (learner == null) {
             return false;
@@ -3835,6 +3878,26 @@ public class LearnerService {
             }
         }
         return null;
+    }
+
+    private LearningGoal cloneScopedGoal(LearningGoal goal, Map<String, LearningGoal> visibleGoals) {
+        LearningGoal clonedGoal = objectMapper.convertValue(goal, LearningGoal.class);
+        clonedGoal.setContains(filterVisibleGoalRefs(goal.getContains(), visibleGoals));
+        clonedGoal.setRequires(filterVisibleGoalRefs(goal.getRequires(), visibleGoals));
+        return clonedGoal;
+    }
+
+    private List<String> filterVisibleGoalRefs(List<String> refs, Map<String, LearningGoal> visibleGoals) {
+        if (refs == null || refs.isEmpty() || visibleGoals == null || visibleGoals.isEmpty()) {
+            return refs == null ? null : Collections.emptyList();
+        }
+        List<String> filtered = new ArrayList<>();
+        for (String ref : refs) {
+            if (resolveGoalRef(ref, visibleGoals) != null) {
+                filtered.add(ref);
+            }
+        }
+        return filtered;
     }
 
     private void collectDescendants(String goalId, Map<String, LearningGoal> allGoals, Set<String> result) {

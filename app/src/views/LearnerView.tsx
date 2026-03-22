@@ -54,6 +54,7 @@ interface LearnerViewProps {
   availableLandscapes?: { landscapeId: string; title: string; filters?: { id: string; label: string }[]; compatibilityOnly?: boolean }[]
   rootLandscapeId?: string
   onRefresh?: () => void
+  onScopeDataRefresh?: () => void
   parentMap?: Map<string, string[]>
   onLandscapeChange?: (landscapeId: string) => void
   onLandscapeGoalChange?: (landscapeId: string, goalId: string) => void
@@ -273,6 +274,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   availableLandscapes = [],
   rootLandscapeId,
   onRefresh,
+  onScopeDataRefresh,
   parentMap,
   onLandscapeChange,
   onLandscapeGoalChange,
@@ -1646,6 +1648,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
       if (!res.ok) {
         throw new Error(`personal-curriculum-save-failed:${res.status}`)
       }
+      onScopeDataRefresh?.()
       await refreshState(true)
     } catch (e) {
       console.warn('Failed to save personal curriculum', e)
@@ -1654,6 +1657,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     }
   }, [
     onNotify,
+    onScopeDataRefresh,
     personalConfig,
     refreshState,
     skillpilotId,
@@ -2666,6 +2670,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
       </main>
 
       <PersonalCurriculumSetup
+        key={`personal-curriculum:${skillpilotId}:${landscapeId}:${isSetupOpen ? 'open' : 'closed'}`}
         isOpen={isSetupOpen}
         onClose={() => setIsSetupOpen(false)}
         availableLandscapes={availableLandscapes}
