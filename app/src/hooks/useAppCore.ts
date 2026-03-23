@@ -12,7 +12,6 @@ import { useMasteryCalculation } from './useMasteryCalculation'
 import { useLanguage } from '../contexts/LanguageContext'
 import { goalMatchesFilter, isWildcardFilter } from '../utils/goalFilters'
 import { applyGoalPlacementProjection } from '../utils/goalPlacementProjection'
-import { applyCompetencyAxisProjection } from '../utils/goalCompetencyProjection'
 import { normalizeTrainerLandscapeId } from '../utils/trainerLandscapeContext'
 
 type Role = 'learner' | 'trainer' | 'explorer'
@@ -97,7 +96,6 @@ export function useAppCore({ role, setLearnerMeta, skillpilotId }: AppCoreOption
     if (current === selectedLandscapeId) return
     next.set('l', selectedLandscapeId)
     replaceSearchParamsIfNeeded(next)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [replaceSearchParamsIfNeeded, searchParams, selectedLandscapeId])
 
   const { language } = useLanguage()
@@ -181,10 +179,7 @@ export function useAppCore({ role, setLearnerMeta, skillpilotId }: AppCoreOption
   }, [activeFilter, currentLandscapeEntry, replaceSearchParamsIfNeeded, searchParams, setActiveFilter])
 
   const projectedLandscapeEntries = useMemo(
-    () => applyCompetencyAxisProjection(
-      applyGoalPlacementProjection(graphSourceLandscapeEntries, activeFilter),
-      activeFilter,
-    ),
+    () => applyGoalPlacementProjection(graphSourceLandscapeEntries, activeFilter),
     [graphSourceLandscapeEntries, activeFilter],
   )
 

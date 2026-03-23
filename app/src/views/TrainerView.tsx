@@ -18,7 +18,6 @@ import { en } from '../locales/en'
 import { de } from '../locales/de'
 import type { ToastKind } from '../hooks/useToast'
 import { interpolateTemplate } from '../utils/interpolateTemplate'
-import { hasReachableCompetencyDimensionRoot } from '../utils/goalCompetencyProjection'
 import { migrateTrainerClassSession } from '../utils/trainerLandscapeContext'
 
 const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
@@ -92,7 +91,6 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
   const [plannedGoals, setPlannedGoals] = useState<Set<string>>(new Set())
   const [masteryByStudent, setMasteryByStudent] = useState<Map<string, MasteryMap>>(new Map())
   const [plannedGoalsByStudent, setPlannedGoalsByStudent] = useState<Map<string, Set<string>>>(new Map())
-  const [trainerStructureMode, setTrainerStructureMode] = useState<'content' | 'competency'>('content')
   const [confirmation, setConfirmation] = useState<{
     isOpen: boolean
     title: string
@@ -158,16 +156,6 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
 
     return rootGoals.filter((g) => g.landscapeId === activeClass.landscapeId)
   }, [activeClass, activeLandscapeEntry, goalIndexAll, rootGoals])
-  const hasCompetencyStructure = useMemo(
-    () => hasReachableCompetencyDimensionRoot(classRootGoals, goalIndexAll),
-    [classRootGoals, goalIndexAll],
-  )
-  useEffect(() => {
-    if (trainerStructureMode !== 'competency' || hasCompetencyStructure) {
-      return
-    }
-    setTrainerStructureMode('content')
-  }, [hasCompetencyStructure, trainerStructureMode])
   const landscapeGoals = useMemo(
     () => Array.from(goalIndexAll.values()).filter((g) => !activeClass || g.landscapeId === activeClass.landscapeId),
     [activeClass, goalIndexAll],
@@ -686,39 +674,10 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
               className="font-medium text-text-primary truncate mb-2"
             />
           )}
-          {hasCompetencyStructure && (
-            <div className="mt-3">
-              <div className="text-[10px] uppercase tracking-wide text-text-secondary font-bold mb-2">
-                {t.structureMode}
-              </div>
-              <div className="inline-flex rounded-lg border border-border-color overflow-hidden bg-chat-bg/40">
-                {([
-                  ['content', t.structureContent],
-                  ['competency', t.structureCompetencies],
-                ] as const).map(([mode, label]) => {
-                  const isActive = trainerStructureMode === mode
-                  return (
-                    <button
-                      key={mode}
-                      type="button"
-                      onClick={() => setTrainerStructureMode(mode)}
-                      className={`px-3 py-1.5 text-xs font-medium transition-colors ${
-                        isActive
-                          ? 'bg-sky-600 text-white'
-                          : 'text-text-secondary hover:bg-slate-200 dark:hover:bg-slate-800/60'
-                      }`}
-                    >
-                      {label}
-                    </button>
-                  )
-                })}
-              </div>
-            </div>
-          )}
         </div>
         <div className="flex-1 p-2 overflow-y-auto">
           <CompetenceTree
-            key={`trainer-competence-tree-${activeClass?.id ?? 'none'}-${trainerStructureMode}`}
+            key={`trainer-competence-tree-${activeClass?.id ?? 'none'}`}
             rootGoals={classRootGoals}
             allGoals={goalIndexAll}
             getMastery={getStudentMastery}
@@ -727,7 +686,7 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
             onSelect={handleSelectGoal}
             selectedId={selectedGoalId}
             activeFilter={currentLearnerId === '__ALL__' ? 'all' : activeClass.activeFilter}
-            structureMode={trainerStructureMode}
+            structureMode="content"
             aggregatedPlannedGoals={aggregatedPlannedGoals}
             totalStudents={activeClass.students.length}
           />
