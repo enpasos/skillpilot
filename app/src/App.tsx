@@ -521,7 +521,7 @@ const App: React.FC = () => {
     )
   }
 
-  if (core.loadingLandscapes) {
+  if (core.loadingLandscapes && role !== 'trainer') {
     return (
       <div className="min-h-screen bg-app-gradient text-slate-100 p-6">
         Landscapes laden ...
@@ -529,7 +529,7 @@ const App: React.FC = () => {
     )
   }
 
-  if (core.landscapeError) {
+  if (core.landscapeError && role !== 'trainer') {
     return (
       <div className="min-h-screen bg-app-gradient text-slate-100 p-6">
         Fehler beim Laden der Lernlandschaften: {core.landscapeError.message}

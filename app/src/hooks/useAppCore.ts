@@ -106,6 +106,7 @@ export function useAppCore({ role, setLearnerMeta, skillpilotId }: AppCoreOption
     learnerScopedLandscapeEntries,
     loadingLearnerScopedLandscapes,
     learnerScopedLandscapeError,
+    learnerScopedLandscapeResolved,
   } = useLearnerScopedLandscapes(
     selectedLandscapeId,
     language,
@@ -127,7 +128,7 @@ export function useAppCore({ role, setLearnerMeta, skillpilotId }: AppCoreOption
     if (role !== 'learner') {
       return landscapeEntries
     }
-    if (loadingLearnerScopedLandscapes) {
+    if (!learnerScopedLandscapeResolved || loadingLearnerScopedLandscapes) {
       return []
     }
     if (learnerScopedLandscapeEntries.length > 0) {
@@ -141,6 +142,7 @@ export function useAppCore({ role, setLearnerMeta, skillpilotId }: AppCoreOption
     landscapeEntries,
     learnerScopedLandscapeEntries,
     learnerScopedLandscapeError,
+    learnerScopedLandscapeResolved,
     loadingLearnerScopedLandscapes,
     role,
   ])
@@ -150,14 +152,16 @@ export function useAppCore({ role, setLearnerMeta, skillpilotId }: AppCoreOption
   }, [])
 
   useEffect(() => {
+    if (role === 'trainer') return
     if (!currentLandscapeEntry) return
     const nextFilter = normalizeActiveFilter(searchParams.get('f'), currentLandscapeEntry.meta.filters ?? [])
     if (nextFilter !== activeFilter) {
       setActiveFilter(nextFilter)
     }
-  }, [activeFilter, currentLandscapeEntry, searchParams, setActiveFilter])
+  }, [activeFilter, currentLandscapeEntry, role, searchParams, setActiveFilter])
 
   useEffect(() => {
+    if (role === 'trainer') return
     if (!currentLandscapeEntry) return
     const availableFilters = currentLandscapeEntry.meta.filters ?? []
     const normalizedFilter = normalizeActiveFilter(activeFilter, availableFilters)
@@ -176,7 +180,7 @@ export function useAppCore({ role, setLearnerMeta, skillpilotId }: AppCoreOption
       next.set('f', normalizedFilter)
     }
     replaceSearchParamsIfNeeded(next)
-  }, [activeFilter, currentLandscapeEntry, replaceSearchParamsIfNeeded, searchParams, setActiveFilter])
+  }, [activeFilter, currentLandscapeEntry, replaceSearchParamsIfNeeded, role, searchParams, setActiveFilter])
 
   const projectedLandscapeEntries = useMemo(
     () => applyGoalPlacementProjection(graphSourceLandscapeEntries, activeFilter),
@@ -355,7 +359,13 @@ export function useAppCore({ role, setLearnerMeta, skillpilotId }: AppCoreOption
 
   return {
     landscapeEntries,
-    loadingLandscapes: loadingLandscapes || (role === 'learner' && !!selectedLandscapeId && loadingLearnerScopedLandscapes),
+    loadingLandscapes:
+      loadingLandscapes
+      || (
+        role === 'learner'
+        && !!selectedLandscapeId
+        && (!learnerScopedLandscapeResolved || loadingLearnerScopedLandscapes)
+      ),
     landscapeError,
     showLearnerTools,
     selectedLandscapeId,

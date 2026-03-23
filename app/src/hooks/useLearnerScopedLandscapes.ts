@@ -18,6 +18,7 @@ export function useLearnerScopedLandscapes(
   const [entries, setEntries] = useState<LandscapeEntry[]>([])
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<Error | null>(null)
+  const [resolved, setResolved] = useState(false)
   const isActive = enabled && !!landscapeId && !!skillpilotId
 
   useEffect(() => {
@@ -26,11 +27,16 @@ export function useLearnerScopedLandscapes(
     const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
 
     if (!isActive || !landscapeId || !skillpilotId) {
+      setEntries([])
+      setLoading(false)
+      setError(null)
+      setResolved(false)
       return () => controller.abort()
     }
 
     setLoading(true)
     setError(null)
+    setResolved(false)
 
     const url = apiBase
       ? `${apiBase}/api/ui/learners/${skillpilotId}/landscapes/${landscapeId}/closure`
@@ -45,10 +51,12 @@ export function useLearnerScopedLandscapes(
         }
         const json = (await res.json()) as LearningLandscape[]
         setEntries(prepareLandscapeEntries(json))
+        setResolved(true)
       })
       .catch((err) => {
         if (signal.aborted) return
         setError(err as Error)
+        setResolved(true)
       })
       .finally(() => {
         if (!signal.aborted) {
@@ -63,5 +71,6 @@ export function useLearnerScopedLandscapes(
     learnerScopedLandscapeEntries: isActive ? entries : [],
     loadingLearnerScopedLandscapes: isActive ? loading : false,
     learnerScopedLandscapeError: isActive ? error : null,
+    learnerScopedLandscapeResolved: isActive ? resolved : false,
   }
 }
