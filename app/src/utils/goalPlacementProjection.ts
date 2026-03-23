@@ -9,6 +9,10 @@ export interface ProjectableLandscapeEntry {
 const SYNTHETIC_PROGRAM_UNIT_TAG = 'synthetic:program-unit'
 const PROGRAM_UNIT_ANCHOR_TAG = 'program-unit:anchor'
 
+const PROJECTED_EFFECTIVE_UNIT_IDS_KEY = 'projectedEffectiveUnitIds'
+const PROJECTED_PRIMARY_UNIT_IDS_KEY = 'projectedPrimaryUnitIds'
+const PROJECTED_CONTEXT_UNIT_IDS_KEY = 'projectedContextUnitIds'
+
 const normalizeComparableText = (value: string | undefined): string =>
   (value ?? '')
     .normalize('NFKC')
@@ -50,7 +54,6 @@ const resolveProgramUnitAnchorGoalId = (
 ): string | undefined => {
   const unitLabel = normalizeComparableText(unit.label)
   const unitShortLabel = normalizeComparableText(unit.shortLabel)
-  const unitPhaseTokens = getProgramUnitPhaseTokens(unit)
 
   let bestGoalId: string | undefined
   let bestScore = 0
@@ -58,35 +61,29 @@ const resolveProgramUnitAnchorGoalId = (
   goals.forEach((goal) => {
     if (!Array.isArray(goal.contains) || goal.contains.length === 0) return
 
-    const goalPhase = normalizeComparableText(goal.phase)
     const rawTitle = normalizeComparableText(goal.title)
     let semanticScore = 0
 
-    if (unitPhaseTokens.some((token) => token && goalPhase === token)) {
-      semanticScore += 100
-    }
+    const matchesExactly =
+      (unitLabel && rawTitle === unitLabel)
+      || (unitShortLabel && rawTitle === unitShortLabel)
+    const matchesYearWrapper =
+      unit.kind === 'year'
+      && (
+        (unitLabel && (rawTitle === `${unitLabel} (sek i)` || rawTitle === `${unitLabel} (sek ii)`))
+        || (unitShortLabel && (rawTitle === `${unitShortLabel} (sek i)` || rawTitle === `${unitShortLabel} (sek ii)`))
+      )
+    const matchesStageWrapper =
+      unit.kind === 'stage'
+      && (
+        (unitLabel && rawTitle === `${unitLabel} (gk+lk)`)
+        || (unitShortLabel && rawTitle === `${unitShortLabel} (gk+lk)`)
+      )
 
-    if (unitLabel) {
-      if (rawTitle === unitLabel) semanticScore += 120
-      if (
-        rawTitle.startsWith(`${unitLabel} `)
-        || rawTitle.startsWith(`${unitLabel} (`)
-        || rawTitle.startsWith(`${unitLabel} ·`)
-      ) {
-        semanticScore += 90
-      }
-    }
-
-    if (unitShortLabel) {
-      if (rawTitle === unitShortLabel) semanticScore += 130
-      if (
-        rawTitle.startsWith(`${unitShortLabel} `)
-        || rawTitle.startsWith(`${unitShortLabel} –`)
-        || rawTitle.startsWith(`${unitShortLabel} -`)
-        || rawTitle.startsWith(`${unitShortLabel}:`)
-      ) {
-        semanticScore += 110
-      }
+    if (matchesExactly) {
+      semanticScore += 200
+    } else if (matchesYearWrapper || matchesStageWrapper) {
+      semanticScore += 180
     }
 
     if (semanticScore === 0) return
@@ -125,6 +122,46 @@ const containsTransitively = (
   }
 
   return false
+}
+
+const getUnitAncestorChain = (
+  unitsById: Map<string, ProgramUnit>,
+  unitId: string,
+): string[] => {
+  const ancestors: string[] = []
+  let currentId: string | undefined = unitId
+  const visiting = new Set<string>()
+
+  while (currentId && !visiting.has(currentId)) {
+    visiting.add(currentId)
+    const currentUnit = unitsById.get(currentId)
+    if (!currentUnit) break
+    ancestors.push(currentId)
+    currentId = currentUnit.parentUnitId
+  }
+
+  return ancestors
+}
+
+const isUnitAncestor = (
+  unitsById: Map<string, ProgramUnit>,
+  maybeAncestorUnitId: string,
+  unitId: string,
+): boolean => {
+  if (maybeAncestorUnitId === unitId) return true
+  return getUnitAncestorChain(unitsById, unitId).includes(maybeAncestorUnitId)
+}
+
+const collapseToMostSpecificUnits = (
+  unitsById: Map<string, ProgramUnit>,
+  unitIds: string[],
+): string[] => {
+  const deduped = Array.from(new Set(unitIds)).filter((unitId) => unitsById.has(unitId))
+  return deduped.filter((candidateUnitId) =>
+    !deduped.some((otherUnitId) =>
+      otherUnitId !== candidateUnitId && isUnitAncestor(unitsById, candidateUnitId, otherUnitId),
+    ),
+  )
 }
 
 const inferPlacementFilterDimension = (filterId?: string): keyof GoalPlacementContext | undefined => {
@@ -185,6 +222,7 @@ const placementIsDefaultSafe = (placement: GoalPlacement): boolean => {
 const createSyntheticProgramUnitAnchor = (
   landscapeId: string,
   unit: ProgramUnit,
+  projectedContextUnitIds: string[],
 ): UiGoal => ({
   id: `synthetic:${landscapeId}:program-unit:${unit.id}`,
   landscapeId,
@@ -214,6 +252,9 @@ const createSyntheticProgramUnitAnchor = (
     synthetic: true,
     treeOrder: unit.order ?? 0,
     programUnitId: unit.id,
+    [PROJECTED_EFFECTIVE_UNIT_IDS_KEY]: [unit.id],
+    [PROJECTED_PRIMARY_UNIT_IDS_KEY]: [unit.id],
+    [PROJECTED_CONTEXT_UNIT_IDS_KEY]: projectedContextUnitIds,
   },
   type: 'cluster',
   nodeKind: 'tutor',
@@ -241,6 +282,96 @@ export function applyGoalPlacementProjection<T extends ProjectableLandscapeEntry
     const anchorByUnitId = new Map<string, string>()
     const unitIdByAnchorGoalId = new Map<string, string>()
     const primaryPlacementAnchorByGoalId = new Map<string, string>()
+    const phaseFallbackUnitIdByToken = new Map<string, string>()
+    const eligiblePlacementsByGoalId = new Map<string, GoalPlacement[]>()
+    const effectiveUnitIdsByGoalId = new Map<string, string[]>()
+    const primaryEffectiveUnitIdsByGoalId = new Map<string, string[]>()
+
+    entry.meta.programUnits.forEach((unit) => {
+      getProgramUnitPhaseTokens(unit).forEach((token) => {
+        if (token) {
+          phaseFallbackUnitIdByToken.set(token, unit.id)
+        }
+      })
+    })
+
+    const inferGoalPhaseUnitId = (goal: UiGoal): string | undefined => {
+      const phaseToken = normalizeComparableText(goal.phase)
+      if (!phaseToken || phaseToken === 'global') return undefined
+      return phaseFallbackUnitIdByToken.get(phaseToken)
+    }
+
+    const refineUnitIdsWithPhaseHint = (goal: UiGoal, unitIds: string[]): string[] => {
+      const inferredUnitId = inferGoalPhaseUnitId(goal)
+      if (!inferredUnitId) {
+        return collapseToMostSpecificUnits(unitsById, unitIds)
+      }
+
+      const refined = unitIds.filter((unitId) => {
+        if (unitId === inferredUnitId) return true
+        return !isUnitAncestor(unitsById, unitId, inferredUnitId)
+      })
+
+      if (!refined.includes(inferredUnitId)) {
+        refined.push(inferredUnitId)
+      }
+
+      return collapseToMostSpecificUnits(unitsById, refined)
+    }
+
+    const toContextUnitIds = (goal: UiGoal, effectiveUnitIds: string[]): string[] => {
+      const contextUnitIds = new Set<string>()
+      const sourceUnitIds = effectiveUnitIds.length > 0
+        ? effectiveUnitIds
+        : (() => {
+          const inferredUnitId = inferGoalPhaseUnitId(goal)
+          return inferredUnitId ? [inferredUnitId] : []
+        })()
+
+      sourceUnitIds.forEach((unitId) => {
+        getUnitAncestorChain(unitsById, unitId).forEach((ancestorUnitId) => {
+          contextUnitIds.add(ancestorUnitId)
+        })
+      })
+
+      return Array.from(contextUnitIds)
+    }
+
+    goalPlacements.forEach((placement) => {
+      const eligible = normalizeFilterIds(activeFilter).length === 0
+        ? placementIsDefaultSafe(placement)
+        : placementMatchesFilters(placement, activeFilter)
+      if (!eligible) return
+      if (!unitsById.has(placement.unitId)) return
+
+      const existingPlacements = eligiblePlacementsByGoalId.get(placement.goalId) ?? []
+      existingPlacements.push(placement)
+      eligiblePlacementsByGoalId.set(placement.goalId, existingPlacements)
+    })
+
+    clonedGoals.forEach((goal) => {
+      const eligiblePlacements = eligiblePlacementsByGoalId.get(goal.id) ?? []
+      const effectiveUnitIds = refineUnitIdsWithPhaseHint(
+        goal,
+        eligiblePlacements.map((placement) => placement.unitId),
+      )
+      const primaryEffectiveUnitIds = refineUnitIdsWithPhaseHint(
+        goal,
+        eligiblePlacements
+          .filter((placement) => placement.relation === 'primary')
+          .map((placement) => placement.unitId),
+      )
+
+      effectiveUnitIdsByGoalId.set(goal.id, effectiveUnitIds)
+      primaryEffectiveUnitIdsByGoalId.set(goal.id, primaryEffectiveUnitIds)
+
+      goal.extendedData = {
+        ...(goal.extendedData ?? {}),
+        [PROJECTED_EFFECTIVE_UNIT_IDS_KEY]: effectiveUnitIds,
+        [PROJECTED_PRIMARY_UNIT_IDS_KEY]: primaryEffectiveUnitIds,
+        [PROJECTED_CONTEXT_UNIT_IDS_KEY]: toContextUnitIds(goal, effectiveUnitIds),
+      }
+    })
 
     entry.meta.programUnits.forEach((unit) => {
       const anchorGoalId = resolveProgramUnitAnchorGoalId(unit, clonedGoals)
@@ -270,6 +401,22 @@ export function applyGoalPlacementProjection<T extends ProjectableLandscapeEntry
       }
     })
 
+    entry.meta.programUnits.forEach((unit) => {
+      const anchorGoalId = anchorByUnitId.get(unit.id)
+      if (!anchorGoalId) return
+
+      const anchorGoal = goalById.get(anchorGoalId)
+      if (!anchorGoal) return
+
+      anchorGoal.extendedData = {
+        ...(anchorGoal.extendedData ?? {}),
+        programUnitId: unit.id,
+        [PROJECTED_EFFECTIVE_UNIT_IDS_KEY]: [unit.id],
+        [PROJECTED_PRIMARY_UNIT_IDS_KEY]: [unit.id],
+        [PROJECTED_CONTEXT_UNIT_IDS_KEY]: getUnitAncestorChain(unitsById, unit.id),
+      }
+    })
+
     const rootDetachedGoalIds = new Set<string>()
 
     const ensureAnchorForUnit = (unitId: string): string | undefined => {
@@ -279,7 +426,11 @@ export function applyGoalPlacementProjection<T extends ProjectableLandscapeEntry
       const unit = unitsById.get(unitId)
       if (!unit) return undefined
 
-      const syntheticAnchor = createSyntheticProgramUnitAnchor(entry.meta.landscapeId, unit)
+      const syntheticAnchor = createSyntheticProgramUnitAnchor(
+        entry.meta.landscapeId,
+        unit,
+        getUnitAncestorChain(unitsById, unit.id),
+      )
       clonedGoals.push(syntheticAnchor)
       goalById.set(syntheticAnchor.id, syntheticAnchor)
       anchorByUnitId.set(unit.id, syntheticAnchor.id)
@@ -302,30 +453,47 @@ export function applyGoalPlacementProjection<T extends ProjectableLandscapeEntry
       return syntheticAnchor.id
     }
 
-    goalPlacements.forEach((placement) => {
-      const eligible = normalizeFilterIds(activeFilter).length === 0
-        ? placementIsDefaultSafe(placement)
-        : placementMatchesFilters(placement, activeFilter)
-      if (!eligible) return
+    const attachedGoalIdsByUnitId = new Map<string, Set<string>>()
 
-      const unit = unitsById.get(placement.unitId)
-      if (!unit) return
+    clonedGoals.forEach((goal) => {
+      const effectiveUnitIds = effectiveUnitIdsByGoalId.get(goal.id) ?? []
+      effectiveUnitIds.forEach((unitId) => {
+        const attachedGoalIds = attachedGoalIdsByUnitId.get(unitId) ?? new Set<string>()
+        attachedGoalIds.add(goal.id)
+        attachedGoalIdsByUnitId.set(unitId, attachedGoalIds)
+      })
+    })
 
-      const anchorGoalId = ensureAnchorForUnit(unit.id)
-      if (!anchorGoalId || anchorGoalId === placement.goalId) return
+    attachedGoalIdsByUnitId.forEach((candidateGoalIdsSet, unitId) => {
+      const candidateGoalIds = Array.from(candidateGoalIdsSet)
+      const reducedGoalIds = candidateGoalIds.filter((candidateGoalId) =>
+        !candidateGoalIds.some((otherGoalId) =>
+          otherGoalId !== candidateGoalId && containsTransitively(goalById, otherGoalId, candidateGoalId),
+        ),
+      )
 
-      const anchorGoal = goalById.get(anchorGoalId)
-      const placedGoal = goalById.get(placement.goalId)
-      if (!anchorGoal || !placedGoal) return
+      reducedGoalIds.forEach((goalId) => {
+        const anchorGoalId = ensureAnchorForUnit(unitId)
+        if (!anchorGoalId || anchorGoalId === goalId) return
 
-      if (!anchorGoal.contains.includes(placedGoal.id)) {
-        anchorGoal.contains.push(placedGoal.id)
-      }
+        const anchorGoal = goalById.get(anchorGoalId)
+        if (!anchorGoal) return
 
-      if (placement.relation === 'primary') {
-        rootDetachedGoalIds.add(placedGoal.id)
-        primaryPlacementAnchorByGoalId.set(placedGoal.id, anchorGoal.id)
-      }
+        if (!anchorGoal.contains.includes(goalId)) {
+          anchorGoal.contains.push(goalId)
+        }
+      })
+    })
+
+    clonedGoals.forEach((goal) => {
+      const primaryEffectiveUnitIds = primaryEffectiveUnitIdsByGoalId.get(goal.id) ?? []
+      if (primaryEffectiveUnitIds.length !== 1) return
+
+      const primaryAnchorGoalId = ensureAnchorForUnit(primaryEffectiveUnitIds[0])
+      if (!primaryAnchorGoalId) return
+
+      rootDetachedGoalIds.add(goal.id)
+      primaryPlacementAnchorByGoalId.set(goal.id, primaryAnchorGoalId)
     })
 
     if (rootGoal && rootDetachedGoalIds.size > 0) {
