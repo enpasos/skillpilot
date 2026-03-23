@@ -2,9 +2,6 @@ import React, { useState, useMemo, useCallback, useRef, useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
 import { useLearnerUpdates } from '../hooks/useLearnerUpdates'
 import { useTranslation } from '../hooks/useTranslation'
-import { useResizableSidebar } from '../hooks/useResizableSidebar'
-import { useLearnerIO } from '../hooks/useLearnerIO'
-import type { ToastKind } from '../hooks/useToast'
 import { CompetenceTree } from '../components/CompetenceTree'
 import type { TreeStructureMode } from '../components/CompetenceTree'
 import { PersonalCurriculumSetup } from '../components/PersonalCurriculumSetup'
@@ -24,6 +21,7 @@ import { goalMatchesFilter, isWildcardFilter } from '../utils/goalFilters'
 import {
   CANONICAL_GYMNASIUM_ROOT_ID,
   LEGACY_HESSEN_GYMNASIUM_UPPER_IDS,
+  LEGACY_HESSEN_GYMNASIUM_LOWER_IDS,
 } from '../utils/curriculumDisplay'
 import {
   ABI26_CAMPAIGN_SLUG,
@@ -33,11 +31,8 @@ import {
 } from '../utils/abi26MatheCampaign'
 import { applyDefaultGlobalStageScope, goalMatchesGlobalStageScope } from '../utils/personalCurriculumStageScope'
 import { trackCampaignEvent } from '../utils/campaignTracking'
-import { lookupBavariaSubject } from '../utils/legacySubjectMapping'
-import { inferLegacyHessenLowerSelection } from '../utils/legacyHessenSelection'
-
-const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
-const toApi = (path: string) => (apiBase ? `${apiBase}${path}` : path)
+import type { ToastKind } from '../hooks/useToast'
+import { queueToastForNextLoad } from '../hooks/useToast'
 
 import type { UiGoal } from '../goalTypes'
 import type { Learner, FrontierGoal } from '../learnerTypes'
@@ -69,10 +64,109 @@ type PersonalCurriculumPreferences = {
   strictMode: boolean
 }
 
-// Bavaria/Hessen legacy constants have been moved to utils/legacySubjectMapping.ts
-// and utils/legacyHessenSelection.ts
+const HESSEN_GYMNASIUM_LOWER_ROOT_ID = 'f050ee48-6891-4f83-995f-0f8be5e31b7f'
+const HESSEN_GYMNASIUM_LOWER_MATH_ID = 'b167b4cd-4b78-4c84-a721-6b2adbbcab3c'
+const HESSEN_GYMNASIUM_LOWER_PHYSICS_ID = '996d097a-cac2-4b5f-979a-b3a0b9803265'
+const HESSEN_GYMNASIUM_LOWER_CHEMISTRY_ID = 'bea90c22-b9c5-4c0c-9b10-89d875f50772'
+const HESSEN_GYMNASIUM_LOWER_BIOLOGY_ID = '71438941-0ceb-46ee-ad31-773cee700779'
+const HESSEN_GYMNASIUM_LOWER_FRENCH_ID = '762de708-85fa-4324-958e-56002a318f7f'
+const BAVARIA_GYMNASIUM_MATH_ID = 'c1600692-e543-5cf2-a399-6bd96e6b817f'
+const BAVARIA_GYMNASIUM_PHYSICS_ID = '42c2f7e3-91b4-5de8-bef0-d563440e9d52'
+const BAVARIA_GYMNASIUM_CHEMISTRY_ID = 'ff1ca997-b6cc-5ece-8e13-5498b4bbf808'
+const BAVARIA_GYMNASIUM_BIOLOGY_ID = '357a7003-b636-570e-a0bd-6bb63518d2f6'
+const BAVARIA_GYMNASIUM_CHINESE_ID = '40744ec5-7de1-5e41-9fc2-a1e774721644'
+const BAVARIA_GYMNASIUM_INFORMATICS_ID = '1af3eba8-749f-5359-8f12-18f87b13616c'
+const BAVARIA_GYMNASIUM_HISTORY_ID = '01c2ba7a-ebd4-5840-bc09-123d7b31c914'
+const BAVARIA_GYMNASIUM_GERMAN_ID = '05f1cd27-5a58-5415-8fda-d4807067f70a'
+const BAVARIA_GYMNASIUM_ENGLISH_ID = '9da8e86b-92dc-5ba0-827e-339400af2b38'
+const BAVARIA_GYMNASIUM_GREEK_ID = '22703293-7307-5ad2-b158-efe6ae28c7c3'
+const BAVARIA_GYMNASIUM_ECONOMICS_ID = '4959d7df-e430-5c1d-bb7b-873d6252a27f'
+const BAVARIA_GYMNASIUM_POLITICS_SOCIETY_ID = '486a8278-39b2-5450-96f8-1076a47b655b'
+const BAVARIA_GYMNASIUM_LATIN_ID = 'c7eeaaa4-7c23-5ab7-8643-b7a03760cd6b'
+const BAVARIA_GYMNASIUM_MUSIC_ID = 'a00d70bf-3d3c-58fc-af4f-881b29635c2e'
+const BAVARIA_GYMNASIUM_FRENCH_ID = '49aefe0c-f365-5f30-b84f-b9a7699e4f2c'
+const BAVARIA_GYMNASIUM_SPANISH_ID = '8dba4715-f75e-5339-9e99-02236e4b80dd'
+const BAVARIA_GYMNASIUM_ITALIAN_ID = 'c7643536-1163-50d8-86a6-9645c8fd3e25'
+const BAVARIA_GYMNASIUM_RUSSIAN_ID = '2b6e79f6-5130-56cb-9a2f-d08e6dc4b4d7'
+const BAVARIA_GYMNASIUM_POLISH_ID = '21148204-794c-515d-ae20-c4d5cd4e56d8'
+const BAVARIA_GYMNASIUM_CZECH_ID = '097f3667-2488-57b2-a3e0-2cb334e422a2'
 
-// inferLegacyHessenLowerSelection has been moved to utils/legacyHessenSelection.ts
+type HessenLowerSelection = {
+  mathSelected: boolean
+  physicsSelected: boolean
+  chemistrySelected: boolean
+  biologySelected: boolean
+  frenchSelected: boolean
+  retirementEligible: boolean
+}
+
+const inferLegacyHessenLowerSelection = (
+  selectedCurriculum: string | null | undefined,
+  personalConfig: PersonalCurriculumConfig,
+  plannedGoals: Set<string>,
+  activeGoalId: string | null,
+  goalIndexAll: Map<string, UiGoal>,
+): HessenLowerSelection => {
+  if (!selectedCurriculum || !LEGACY_HESSEN_GYMNASIUM_LOWER_IDS.has(selectedCurriculum)) {
+    return {
+      mathSelected: false,
+      physicsSelected: false,
+      chemistrySelected: false,
+      biologySelected: false,
+      frenchSelected: false,
+      retirementEligible: false,
+    }
+  }
+
+  const goalBelongsToLandscape = (goalId: string | null | undefined, landscapeId: string) =>
+    !!goalId && goalIndexAll.get(goalId)?.landscapeId === landscapeId
+
+  let mathSelected = selectedCurriculum === HESSEN_GYMNASIUM_LOWER_MATH_ID
+  let physicsSelected = selectedCurriculum === HESSEN_GYMNASIUM_LOWER_PHYSICS_ID
+  let chemistrySelected = selectedCurriculum === HESSEN_GYMNASIUM_LOWER_CHEMISTRY_ID
+  let biologySelected = selectedCurriculum === HESSEN_GYMNASIUM_LOWER_BIOLOGY_ID
+  let frenchSelected = selectedCurriculum === HESSEN_GYMNASIUM_LOWER_FRENCH_ID
+
+  if (selectedCurriculum === HESSEN_GYMNASIUM_LOWER_ROOT_ID) {
+    const plannedGoalIds = Array.from(plannedGoals)
+    mathSelected = personalConfig[HESSEN_GYMNASIUM_LOWER_MATH_ID]?.selected === true
+      || plannedGoalIds.some((goalId) => goalBelongsToLandscape(goalId, HESSEN_GYMNASIUM_LOWER_MATH_ID))
+      || goalBelongsToLandscape(activeGoalId, HESSEN_GYMNASIUM_LOWER_MATH_ID)
+    physicsSelected = personalConfig[HESSEN_GYMNASIUM_LOWER_PHYSICS_ID]?.selected === true
+      || plannedGoalIds.some((goalId) => goalBelongsToLandscape(goalId, HESSEN_GYMNASIUM_LOWER_PHYSICS_ID))
+      || goalBelongsToLandscape(activeGoalId, HESSEN_GYMNASIUM_LOWER_PHYSICS_ID)
+    chemistrySelected = personalConfig[HESSEN_GYMNASIUM_LOWER_CHEMISTRY_ID]?.selected === true
+      || plannedGoalIds.some((goalId) => goalBelongsToLandscape(goalId, HESSEN_GYMNASIUM_LOWER_CHEMISTRY_ID))
+      || goalBelongsToLandscape(activeGoalId, HESSEN_GYMNASIUM_LOWER_CHEMISTRY_ID)
+    biologySelected = personalConfig[HESSEN_GYMNASIUM_LOWER_BIOLOGY_ID]?.selected === true
+      || plannedGoalIds.some((goalId) => goalBelongsToLandscape(goalId, HESSEN_GYMNASIUM_LOWER_BIOLOGY_ID))
+      || goalBelongsToLandscape(activeGoalId, HESSEN_GYMNASIUM_LOWER_BIOLOGY_ID)
+    frenchSelected = personalConfig[HESSEN_GYMNASIUM_LOWER_FRENCH_ID]?.selected === true
+      || plannedGoalIds.some((goalId) => goalBelongsToLandscape(goalId, HESSEN_GYMNASIUM_LOWER_FRENCH_ID))
+      || goalBelongsToLandscape(activeGoalId, HESSEN_GYMNASIUM_LOWER_FRENCH_ID)
+  }
+
+  if (!mathSelected && !physicsSelected && !chemistrySelected && !biologySelected && !frenchSelected) {
+    mathSelected = true
+    physicsSelected = true
+    chemistrySelected = true
+    biologySelected = true
+    frenchSelected = true
+  }
+
+  if (physicsSelected) {
+    mathSelected = true
+  }
+
+  return {
+    mathSelected,
+    physicsSelected,
+    chemistrySelected,
+    biologySelected,
+    frenchSelected,
+    retirementEligible: mathSelected || physicsSelected || chemistrySelected || biologySelected || frenchSelected,
+  }
+}
 
 const normalizePersonalConfig = (
   input: PersonalCurriculumConfig,
@@ -233,12 +327,12 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   const [optimisticSrsMasteryByGoal, setOptimisticSrsMasteryByGoal] = useState<Record<string, number>>({});
 
 
+  const fileInputRef = useRef<HTMLInputElement>(null)
   const srsCompletionRef = useRef<Record<string, number>>({})
   const srsCompletionInFlightRef = useRef<Set<string>>(new Set())
   const fullRefreshInFlightRef = useRef(false)
   const lastFullRefreshAtRef = useRef(0)
   const reportedLoadErrorsRef = useRef<Set<string>>(new Set())
-  const masteryCacheRef = useRef(new Map<string, { masterySum: number; weightSum: number }>())
 
   const { language, setLanguage } = useLanguage();
   const t = useTranslation();
@@ -304,25 +398,6 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   }, [goalIndexAll, landscapeId, getSrsSource])
 
   const srsMasteryByGoal = useSrsMastery(srsGoals, skillpilotId, srsMasteryTick, language)
-
-  // --- Modal helper ---
-  const showModal = useCallback((title: string, message: string, type: 'info' | 'error' | 'success') => {
-    setModalTitle(title)
-    setModalMessage(message)
-    setModalType(type)
-    setIsModalOpen(true)
-  }, [])
-
-  // --- Extracted hooks ---
-  const { isMobile, sidebarWidth, isSidebarOpen, setIsSidebarOpen, startResizing } = useResizableSidebar(320)
-  const { fileInputRef, handleImportClick, handleFileChange } = useLearnerIO({
-    skillpilotId,
-    language,
-    srsGoals,
-    onNotify,
-    t,
-    onShowModal: showModal,
-  })
 
   useEffect(() => {
     setOptimisticSrsMasteryByGoal((current) => {
@@ -469,14 +544,14 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   }, [currentGoal, visibleGoals, effectiveActiveGoalId, plannedGoals, visibleRootGoals, onSelectGoal])
 
   const getFilteredMastery = useCallback(
-    (goalId: string): number => {
-      masteryCacheRef.current.clear()
+    (goalId: string) => {
+      const masteryCache = new Map<string, { masterySum: number; weightSum: number }>()
 
       const compute = (
         gId: string,
         visited: Set<string> = new Set(),
       ): { masterySum: number; weightSum: number } => {
-        if (masteryCacheRef.current.has(gId)) return masteryCacheRef.current.get(gId)!
+        if (masteryCache.has(gId)) return masteryCache.get(gId)!
         if (visited.has(gId)) return { masterySum: 0, weightSum: 0 }
 
         visited.add(gId)
@@ -501,7 +576,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
         }
 
         visited.delete(gId)
-        masteryCacheRef.current.set(gId, { masterySum, weightSum })
+        masteryCache.set(gId, { masterySum, weightSum })
         return { masterySum, weightSum }
       }
 
@@ -733,7 +808,8 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   const refreshLearnerData = useCallback(async () => {
     if (!skillpilotId) return
     try {
-      const url = toApi(`/api/ui/learners/${skillpilotId}`)
+      const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
+      const url = apiBase ? `${apiBase}/api/ui/learners/${skillpilotId}` : `/api/ui/learners/${skillpilotId}`
       const res = await fetch(url)
       if (res.ok) {
         const data = await res.json()
@@ -752,13 +828,133 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     const selectedCurriculum = learnerData?.selectedCurriculum
     return !!selectedCurriculum && LEGACY_HESSEN_GYMNASIUM_UPPER_IDS.has(selectedCurriculum)
   }, [learnerData?.selectedCurriculum])
-  const bavariaLegacySubject = useMemo(() => {
+  const bavariaLegacyRetirementSubject = useMemo(() => {
     const selectedCurriculum = learnerData?.selectedCurriculum
-    if (!selectedCurriculum) return null
-    return lookupBavariaSubject(selectedCurriculum)
+    if (selectedCurriculum === BAVARIA_GYMNASIUM_MATH_ID) {
+      return 'Mathematik'
+    }
+    if (selectedCurriculum === BAVARIA_GYMNASIUM_PHYSICS_ID) {
+      return 'Physik'
+    }
+    if (selectedCurriculum === BAVARIA_GYMNASIUM_CHEMISTRY_ID) {
+      return 'Chemie'
+    }
+    if (selectedCurriculum === BAVARIA_GYMNASIUM_BIOLOGY_ID) {
+      return 'Biologie'
+    }
+    if (selectedCurriculum === BAVARIA_GYMNASIUM_CHINESE_ID) {
+      return 'Chinesisch'
+    }
+    if (selectedCurriculum === BAVARIA_GYMNASIUM_INFORMATICS_ID) {
+      return 'Informatik'
+    }
+    if (selectedCurriculum === BAVARIA_GYMNASIUM_HISTORY_ID) {
+      return 'Geschichte'
+    }
+    if (selectedCurriculum === BAVARIA_GYMNASIUM_GERMAN_ID) {
+      return 'Deutsch'
+    }
+    if (selectedCurriculum === BAVARIA_GYMNASIUM_ENGLISH_ID) {
+      return 'Englisch'
+    }
+    if (selectedCurriculum === BAVARIA_GYMNASIUM_GREEK_ID) {
+      return 'Griechisch'
+    }
+    if (selectedCurriculum === BAVARIA_GYMNASIUM_ECONOMICS_ID) {
+      return 'Wirtschaft und Recht'
+    }
+    if (selectedCurriculum === BAVARIA_GYMNASIUM_POLITICS_SOCIETY_ID) {
+      return 'Politik und Gesellschaft'
+    }
+    if (selectedCurriculum === BAVARIA_GYMNASIUM_LATIN_ID) {
+      return 'Latein'
+    }
+    if (selectedCurriculum === BAVARIA_GYMNASIUM_MUSIC_ID) {
+      return 'Musik'
+    }
+    if (selectedCurriculum === BAVARIA_GYMNASIUM_FRENCH_ID) {
+      return 'Französisch'
+    }
+    if (selectedCurriculum === BAVARIA_GYMNASIUM_SPANISH_ID) {
+      return 'Spanisch'
+    }
+    if (selectedCurriculum === BAVARIA_GYMNASIUM_ITALIAN_ID) {
+      return 'Italienisch'
+    }
+    if (selectedCurriculum === BAVARIA_GYMNASIUM_RUSSIAN_ID) {
+      return 'Russisch'
+    }
+    if (selectedCurriculum === BAVARIA_GYMNASIUM_POLISH_ID) {
+      return 'Polnisch'
+    }
+    if (selectedCurriculum === BAVARIA_GYMNASIUM_CZECH_ID) {
+      return 'Tschechisch'
+    }
+    return null
   }, [learnerData?.selectedCurriculum])
-  const bavariaLegacyRetirementSubject = bavariaLegacySubject?.de ?? null
-  const bavariaLegacyRetirementSubjectEn = bavariaLegacySubject?.en ?? null
+  const bavariaLegacyRetirementSubjectEn = useMemo(() => {
+    if (bavariaLegacyRetirementSubject === 'Mathematik') {
+      return 'mathematics'
+    }
+    if (bavariaLegacyRetirementSubject === 'Physik') {
+      return 'physics'
+    }
+    if (bavariaLegacyRetirementSubject === 'Chemie') {
+      return 'chemistry'
+    }
+    if (bavariaLegacyRetirementSubject === 'Biologie') {
+      return 'biology'
+    }
+    if (bavariaLegacyRetirementSubject === 'Chinesisch') {
+      return 'chinese'
+    }
+    if (bavariaLegacyRetirementSubject === 'Informatik') {
+      return 'computer science'
+    }
+    if (bavariaLegacyRetirementSubject === 'Geschichte') {
+      return 'history'
+    }
+    if (bavariaLegacyRetirementSubject === 'Deutsch') {
+      return 'german'
+    }
+    if (bavariaLegacyRetirementSubject === 'Englisch') {
+      return 'english'
+    }
+    if (bavariaLegacyRetirementSubject === 'Griechisch') {
+      return 'greek'
+    }
+    if (bavariaLegacyRetirementSubject === 'Wirtschaft und Recht') {
+      return 'economics and law'
+    }
+    if (bavariaLegacyRetirementSubject === 'Politik und Gesellschaft') {
+      return 'politics and society'
+    }
+    if (bavariaLegacyRetirementSubject === 'Latein') {
+      return 'latin'
+    }
+    if (bavariaLegacyRetirementSubject === 'Musik') {
+      return 'music'
+    }
+    if (bavariaLegacyRetirementSubject === 'Französisch') {
+      return 'french'
+    }
+    if (bavariaLegacyRetirementSubject === 'Spanisch') {
+      return 'spanish'
+    }
+    if (bavariaLegacyRetirementSubject === 'Italienisch') {
+      return 'italian'
+    }
+    if (bavariaLegacyRetirementSubject === 'Russisch') {
+      return 'russian'
+    }
+    if (bavariaLegacyRetirementSubject === 'Polnisch') {
+      return 'polish'
+    }
+    if (bavariaLegacyRetirementSubject === 'Tschechisch') {
+      return 'czech'
+    }
+    return null
+  }, [bavariaLegacyRetirementSubject])
   const isBavariaLegacyRetirementOnly = bavariaLegacyRetirementSubject !== null
   const lowerLegacySelection = useMemo(() => inferLegacyHessenLowerSelection(
     learnerData?.selectedCurriculum,
@@ -782,7 +978,24 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
       return []
     }
 
-    if (isBavariaLegacyRetirementOnly) {
+    if (
+      selectedCurriculum === BAVARIA_GYMNASIUM_MATH_ID
+      || selectedCurriculum === BAVARIA_GYMNASIUM_PHYSICS_ID
+      || selectedCurriculum === BAVARIA_GYMNASIUM_CHEMISTRY_ID
+      || selectedCurriculum === BAVARIA_GYMNASIUM_BIOLOGY_ID
+      || selectedCurriculum === BAVARIA_GYMNASIUM_CHINESE_ID
+      || selectedCurriculum === BAVARIA_GYMNASIUM_INFORMATICS_ID
+      || selectedCurriculum === BAVARIA_GYMNASIUM_HISTORY_ID
+      || selectedCurriculum === BAVARIA_GYMNASIUM_GERMAN_ID
+      || selectedCurriculum === BAVARIA_GYMNASIUM_ENGLISH_ID
+      || selectedCurriculum === BAVARIA_GYMNASIUM_GREEK_ID
+      || selectedCurriculum === BAVARIA_GYMNASIUM_ECONOMICS_ID
+      || selectedCurriculum === BAVARIA_GYMNASIUM_POLITICS_SOCIETY_ID
+      || selectedCurriculum === BAVARIA_GYMNASIUM_LATIN_ID
+      || selectedCurriculum === BAVARIA_GYMNASIUM_MUSIC_ID
+      || selectedCurriculum === BAVARIA_GYMNASIUM_FRENCH_ID
+      || selectedCurriculum === BAVARIA_GYMNASIUM_SPANISH_ID
+    ) {
       return [
         { label: 'Quelle', value: `Bayern Gymnasium ${bavariaLegacyRetirementSubject}` },
         { label: 'Ziel', value: 'Gymnasium (DE)' },
@@ -1019,7 +1232,6 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     return items
   }, [
     bavariaLegacyRetirementSubject,
-    isBavariaLegacyRetirementOnly,
     learnerData?.selectedCurriculum,
     personalConfig,
     isLowerLegacyRetirementOnly,
@@ -1031,8 +1243,11 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     async (cacheBust = false) => {
       if (!skillpilotId) return
       try {
+        const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
         const suffix = cacheBust ? `?_t=${Date.now()}` : ''
-        const url = toApi(`/api/ui/learners/${skillpilotId}/state${suffix}`)
+        const url = apiBase
+          ? `${apiBase}/api/ui/learners/${skillpilotId}/state${suffix}`
+          : `/api/ui/learners/${skillpilotId}/state${suffix}`
         const res = await fetch(url)
         if (res.ok) {
           setCompatibilityRouteRetired(false)
@@ -1080,7 +1295,8 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   const refreshPlanned = useCallback(async () => {
     if (!skillpilotId) return
     try {
-      const url = toApi(`/api/ui/learners/${skillpilotId}/planned`)
+      const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
+      const url = apiBase ? `${apiBase}/api/ui/learners/${skillpilotId}/planned` : `/api/ui/learners/${skillpilotId}/planned`
       const res = await fetch(url)
       if (res.ok) {
         const data = await res.json()
@@ -1195,7 +1411,8 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     }
     if (!skillpilotId) return;
     try {
-      const url = toApi(`/api/ui/learners/${skillpilotId}/active-goal`)
+      const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
+      const url = apiBase ? `${apiBase}/api/ui/learners/${skillpilotId}/active-goal` : `/api/ui/learners/${skillpilotId}/active-goal`
 
       const res = await fetch(url, {
         method: 'POST',
@@ -1294,7 +1511,8 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
 
     if (!skillpilotId) return
     try {
-      const url = toApi(`/api/ui/learners/${skillpilotId}/planned`)
+      const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
+      const url = apiBase ? `${apiBase}/api/ui/learners/${skillpilotId}/planned` : `/api/ui/learners/${skillpilotId}/planned`
       const res = await fetch(url, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
@@ -1330,7 +1548,8 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     setIsPersonalConfigHydrating(true)
     const fetchConfig = async () => {
       try {
-        const url = toApi(`/api/ui/learners/${skillpilotId}`)
+        const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
+        const url = apiBase ? `${apiBase}/api/ui/learners/${skillpilotId}` : `/api/ui/learners/${skillpilotId}`
         const res = await fetch(url)
         if (res.ok) {
           const data = await res.json()
@@ -1380,13 +1599,50 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     t.notifications.learnerInitialLoadFailed,
   ])
 
+  // Check mobile state
+  const [isMobile, setIsMobile] = useState(false)
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768)
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
+    return () => window.removeEventListener('resize', checkMobile)
+  }, [])
+
+  // Sidebar state
+  const [sidebarWidth, setSidebarWidth] = useState(320)
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false)
+  const isResizing = useRef(false)
+
+  const resize = useCallback((e: MouseEvent) => {
+    if (isResizing.current) {
+      setSidebarWidth(Math.max(240, Math.min(800, e.clientX)))
+    }
+  }, [])
+
+  const stopResizing = useCallback(() => {
+    isResizing.current = false
+    document.removeEventListener('mousemove', resize)
+    document.removeEventListener('mouseup', stopResizing)
+    document.body.style.cursor = ''
+    document.body.style.userSelect = ''
+  }, [resize])
+
+  const startResizing = useCallback(() => {
+    isResizing.current = true
+    document.addEventListener('mousemove', resize)
+    document.addEventListener('mouseup', stopResizing)
+    document.body.style.cursor = 'col-resize'
+    document.body.style.userSelect = 'none'
+  }, [resize, stopResizing])
+
   // Save personal config to backend
   const handleConfigChange = useCallback(async (newConfig: PersonalCurriculumConfig) => {
     const previousConfig = personalConfig
     setPersonalConfig(newConfig)
     if (!skillpilotId) return
     try {
-      const url = toApi(`/api/ui/learners/${skillpilotId}/personal-curriculum`)
+      const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
+      const url = apiBase ? `${apiBase}/api/ui/learners/${skillpilotId}/personal-curriculum` : `/api/ui/learners/${skillpilotId}/personal-curriculum`
       const res = await fetch(url, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
@@ -1894,6 +2150,188 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     })()
   }, [currentGoal?.id, currentGoal?.tags, srsMasteryByGoal, refreshState, onRefresh, syncClientData])
 
+  const handleImportClick = () => {
+    fileInputRef.current?.click();
+  }
+
+  const handleFileChange = useCallback(async (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (!file || !skillpilotId) return;
+
+    const reader = new FileReader();
+    reader.onload = async (e) => {
+      try {
+        const json = JSON.parse(e.target?.result as string);
+
+        // V2 Import: Unwrap if Wrapper exists
+        let payloadToSend: unknown = json;
+        let clientDataToRestore: unknown = null;
+
+        if (json.serverExport && json.clientData) {
+          console.log("Detected V2 Export Wrapper")
+          payloadToSend = json.serverExport;
+          clientDataToRestore = json.clientData as Record<string, unknown>;
+        }
+
+        const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
+        const url = apiBase ? `${apiBase}/api/ui/learners/${skillpilotId}/import` : `/api/ui/learners/${skillpilotId}/import`
+
+        const res = await fetch(url, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payloadToSend)
+        });
+
+        if (res.ok) {
+          // Restore Local Data (SRS State) if present
+          if (clientDataToRestore && (clientDataToRestore as Record<string, unknown>).srsState) {
+            try {
+              console.log("Restoring SRS State...")
+              const srsState = (clientDataToRestore as Record<string, unknown>).srsState as Record<string, unknown>
+              let restoreCount = 0;
+              const goalStateMap = new Map<string, Record<string, unknown>>();
+
+              // Regex to parse old keys: srs_state_{OLD_ID}_{GOAL_ID}
+              // We assume ID does not contain underscores (UUIDs are hyphens).
+              // But just in case, we split by first 3 parts: srs, state, id.
+              // safer: match /^srs_state_([^_]+)_(.+)$/
+              const keyPattern = /^srs_state_([^_]+)_(.+)$/
+
+              Object.entries(srsState).forEach(([oldKey, value]) => {
+                const match = oldKey.match(keyPattern)
+                if (match) {
+                  // match[1] is old ID (ignored, we use current `skillpilotId`)
+                  const goalId = match[2]
+
+                  // Construct new key for CURRENT user
+                  const newKey = `srs_state_${skillpilotId}_${goalId}`
+
+                  localStorage.setItem(newKey, JSON.stringify(value))
+                  if (value && typeof value === 'object') {
+                    goalStateMap.set(goalId, value as Record<string, unknown>)
+                  }
+                  restoreCount++;
+                }
+              })
+              console.log(`Restored ${restoreCount} SRS state entries.`)
+
+              // Persist restored SRS state to backend for memory nodes
+              const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
+              await Promise.all(
+                Array.from(goalStateMap.entries()).map(async ([goalId, state]) => {
+                  const syncUrl = apiBase
+                    ? `${apiBase}/api/ui/learners/${skillpilotId}/client-state/${goalId}`
+                    : `/api/ui/learners/${skillpilotId}/client-state/${goalId}`
+                  try {
+                    const res = await fetch(syncUrl, {
+                      method: 'PUT',
+                      headers: { 'Content-Type': 'application/json' },
+                      body: JSON.stringify({
+                        updatedAt: new Date().toISOString(),
+                        srsState: state
+                      })
+                    })
+                    if (res.ok) {
+                      const lastSyncKey = `srs_state_last_sync_${skillpilotId}_${goalId}`
+                      localStorage.setItem(lastSyncKey, new Date().toISOString())
+                    }
+                  } catch (err) {
+                    console.warn('Failed to persist imported SRS state', err)
+                  }
+                })
+              )
+            } catch (err) {
+              console.error("Error restoring local state", err)
+            }
+          }
+
+          queueToastForNextLoad('success', t.notifications.learnerImported)
+          // Keep the reload for now because import may replace learner context,
+          // selected curriculum, and local mirrored state across the app.
+          window.location.reload();
+        } else {
+          console.error("Import failed", res.status);
+
+          let serverMsg = "";
+          try {
+            const errData = await res.json();
+            if (errData && errData.message) serverMsg = errData.message;
+          } catch { /* ignore */ }
+
+          const notifyImportError = (message: string, title: string) => {
+            if (onNotify) {
+              onNotify('error', message)
+              return
+            }
+            setModalMessage(message)
+            setModalTitle(title)
+            setModalType('error')
+            setIsModalOpen(true)
+          }
+
+          // Use helpful message if signature error suspected (400 Bad Request) or generic otherwise
+          if (res.status === 400) {
+            if (language === 'de') {
+              notifyImportError(
+                t.notifications.learnerImportValidationFailed,
+                "Import-Validierung fehlgeschlagen",
+              )
+            } else {
+              notifyImportError(
+                t.notifications.learnerImportValidationFailed,
+                "Import Validation Failed",
+              )
+            }
+          } else {
+            if (language === 'de') {
+              notifyImportError(
+                serverMsg || t.notifications.learnerImportFailed,
+                "Import fehlgeschlagen",
+              )
+            } else {
+              notifyImportError(
+                serverMsg || t.notifications.learnerImportFailed,
+                "Import Failed",
+              )
+            }
+          }
+        }
+      } catch (err) {
+        console.error("Import error", err);
+        if (language === 'de') {
+          if (onNotify) {
+            onNotify('error', t.notifications.learnerImportSystemFailed)
+          } else {
+            setModalMessage("Ein Netzwerk- oder Systemfehler ist während des Imports aufgetreten.");
+            setModalTitle("Import-Fehler");
+            setModalType('error');
+            setIsModalOpen(true);
+          }
+        } else {
+          if (onNotify) {
+            onNotify('error', t.notifications.learnerImportSystemFailed)
+          } else {
+            setModalMessage("A network or system error occurred during import.");
+            setModalTitle("Import Error");
+            setModalType('error');
+            setIsModalOpen(true);
+          }
+        }
+      }
+    };
+    reader.readAsText(file);
+    // Reset input so same file can be selected again if needed
+    if (fileInputRef.current) fileInputRef.current.value = '';
+  }, [
+    skillpilotId,
+    language,
+    onNotify,
+    t.notifications.learnerImported,
+    t.notifications.learnerImportFailed,
+    t.notifications.learnerImportSystemFailed,
+    t.notifications.learnerImportValidationFailed,
+  ]);
+
   return (
     <div className="flex h-screen bg-chat-bg text-text-primary overflow-hidden transition-colors">
 
@@ -1987,7 +2425,6 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
               selectedId={selectedId}
               activeFilter={effectiveActiveFilter}
               structureMode={learnerStructureMode}
-              hideTechnicalStructureUi
               personalConfig={personalConfig}
               activeGoalId={effectiveActiveGoalId ?? undefined}
               forcedExpandedIds={forcedExpandedIds}
@@ -2197,7 +2634,6 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
                       : getEffectiveMastery(currentGoal.id)
                   }
                   showLearnerTools={true}
-                  hideTechnicalStructureUi
                   readOnly={isCompatibilityAuditOnly}
                   isPlanned={plannedGoals.has(currentGoal.id)}
                   isActive={effectiveActiveGoalId === currentGoal.id}

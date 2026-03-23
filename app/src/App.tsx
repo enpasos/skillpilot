@@ -479,7 +479,7 @@ const App: React.FC = () => {
 
   // If we have a session but no landscape selected (and not pending), show SessionSetup to let user pick one.
   // This effectively acts as the "Login/Start" screen when context is missing.
-  if (!core.selectedLandscapeId && !core.loadingLandscapes && !pendingLandscapeId && role !== 'trainer') {
+  if (!core.selectedLandscapeId && !core.loadingLandscapes && !pendingLandscapeId) {
     console.log('[App] → Showing SessionSetup (second block: no landscape selected)')
     return (
       <SessionSetup
@@ -521,7 +521,7 @@ const App: React.FC = () => {
     )
   }
 
-  if (core.loadingLandscapes && role !== 'trainer') {
+  if (core.loadingLandscapes) {
     return (
       <div className="min-h-screen bg-app-gradient text-slate-100 p-6">
         Landscapes laden ...
@@ -529,7 +529,7 @@ const App: React.FC = () => {
     )
   }
 
-  if (core.landscapeError && role !== 'trainer') {
+  if (core.landscapeError) {
     return (
       <div className="min-h-screen bg-app-gradient text-slate-100 p-6">
         Fehler beim Laden der Lernlandschaften: {core.landscapeError.message}
@@ -589,8 +589,10 @@ const App: React.FC = () => {
             <TrainerView
               landscapeEntries={core.landscapeEntries}
               classSetupLandscapes={trainerClassSetupLandscapes}
+              onContextChange={core.handleTrainerContextChange}
               currentLearnerId={trainerLearnerId}
               onSelectLearner={setTrainerLearnerId}
+              goalShortKeyMap={core.goalShortKeyMap}
               onNotify={handleNotify}
               onLogout={handleLogout}
             />

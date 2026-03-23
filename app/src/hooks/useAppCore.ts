@@ -106,7 +106,6 @@ export function useAppCore({ role, setLearnerMeta, skillpilotId }: AppCoreOption
     learnerScopedLandscapeEntries,
     loadingLearnerScopedLandscapes,
     learnerScopedLandscapeError,
-    learnerScopedLandscapeResolved,
   } = useLearnerScopedLandscapes(
     selectedLandscapeId,
     language,
@@ -128,7 +127,7 @@ export function useAppCore({ role, setLearnerMeta, skillpilotId }: AppCoreOption
     if (role !== 'learner') {
       return landscapeEntries
     }
-    if (!learnerScopedLandscapeResolved || loadingLearnerScopedLandscapes) {
+    if (loadingLearnerScopedLandscapes) {
       return []
     }
     if (learnerScopedLandscapeEntries.length > 0) {
@@ -142,7 +141,6 @@ export function useAppCore({ role, setLearnerMeta, skillpilotId }: AppCoreOption
     landscapeEntries,
     learnerScopedLandscapeEntries,
     learnerScopedLandscapeError,
-    learnerScopedLandscapeResolved,
     loadingLearnerScopedLandscapes,
     role,
   ])
@@ -152,16 +150,14 @@ export function useAppCore({ role, setLearnerMeta, skillpilotId }: AppCoreOption
   }, [])
 
   useEffect(() => {
-    if (role === 'trainer') return
     if (!currentLandscapeEntry) return
     const nextFilter = normalizeActiveFilter(searchParams.get('f'), currentLandscapeEntry.meta.filters ?? [])
     if (nextFilter !== activeFilter) {
       setActiveFilter(nextFilter)
     }
-  }, [activeFilter, currentLandscapeEntry, role, searchParams, setActiveFilter])
+  }, [activeFilter, currentLandscapeEntry, searchParams, setActiveFilter])
 
   useEffect(() => {
-    if (role === 'trainer') return
     if (!currentLandscapeEntry) return
     const availableFilters = currentLandscapeEntry.meta.filters ?? []
     const normalizedFilter = normalizeActiveFilter(activeFilter, availableFilters)
@@ -180,7 +176,7 @@ export function useAppCore({ role, setLearnerMeta, skillpilotId }: AppCoreOption
       next.set('f', normalizedFilter)
     }
     replaceSearchParamsIfNeeded(next)
-  }, [activeFilter, currentLandscapeEntry, replaceSearchParamsIfNeeded, role, searchParams, setActiveFilter])
+  }, [activeFilter, currentLandscapeEntry, replaceSearchParamsIfNeeded, searchParams, setActiveFilter])
 
   const projectedLandscapeEntries = useMemo(
     () => applyGoalPlacementProjection(graphSourceLandscapeEntries, activeFilter),
@@ -318,7 +314,26 @@ export function useAppCore({ role, setLearnerMeta, skillpilotId }: AppCoreOption
     setLearnerMeta({ lastUpdated: new Date().toISOString() })
   }
 
-
+  const handleTrainerContextChange = React.useCallback(
+    (lid: string, filter: string, goalId?: string) => {
+      const normalizedLandscapeId = normalizeLandscapeIdForRole(lid, role)
+      if (normalizedLandscapeId !== selectedLandscapeId) {
+        setSelectedLandscapeId(normalizedLandscapeId)
+      }
+      if (filter && filter !== activeFilter) {
+        setActiveFilter(filter)
+      }
+      const newSearchParams = new URLSearchParams(searchParams)
+      if (normalizedLandscapeId) newSearchParams.set('l', normalizedLandscapeId)
+      else newSearchParams.delete('l')
+      if (filter) newSearchParams.set('f', filter)
+      replaceSearchParamsIfNeeded(newSearchParams)
+      if (goalId) {
+        navigate(`/trainer/${goalId}?${newSearchParams.toString()}`)
+      }
+    },
+    [activeFilter, navigate, replaceSearchParamsIfNeeded, role, searchParams, selectedLandscapeId, setActiveFilter],
+  )
 
   const handleShareContext = useCallback(async (): Promise<'success' | 'error'> => {
     try {
@@ -359,13 +374,7 @@ export function useAppCore({ role, setLearnerMeta, skillpilotId }: AppCoreOption
 
   return {
     landscapeEntries,
-    loadingLandscapes:
-      loadingLandscapes
-      || (
-        role === 'learner'
-        && !!selectedLandscapeId
-        && (!learnerScopedLandscapeResolved || loadingLearnerScopedLandscapes)
-      ),
+    loadingLandscapes: loadingLandscapes || (role === 'learner' && !!selectedLandscapeId && loadingLearnerScopedLandscapes),
     landscapeError,
     showLearnerTools,
     selectedLandscapeId,
@@ -376,6 +385,7 @@ export function useAppCore({ role, setLearnerMeta, skillpilotId }: AppCoreOption
     goalIndexAll,
     getMasteryValue,
     handleSelectAbsolute,
+    handleTrainerContextChange,
     handleMasteryChange,
     breadcrumbRootGoals,
     breadcrumbCrumbs,

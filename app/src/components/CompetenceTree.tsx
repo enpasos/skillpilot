@@ -12,27 +12,12 @@ export type TreeStructureMode = 'all' | 'content' | 'competency'
 
 const COMPETENCY_DIMENSION_ROOT_TAG = 'competency-axis:dimension-root'
 const SYNTHETIC_PROGRAM_UNIT_TAG = 'synthetic:program-unit'
-const PROJECTED_CONTEXT_UNIT_IDS_KEY = 'projectedContextUnitIds'
 
 const isCompetencyDimensionRoot = (goal: UiGoal) =>
   (goal.tags ?? []).includes(COMPETENCY_DIMENSION_ROOT_TAG)
 
 const isSyntheticProgramUnit = (goal: UiGoal) =>
   (goal.tags ?? []).includes(SYNTHETIC_PROGRAM_UNIT_TAG)
-
-const getProgramUnitId = (goal: UiGoal): string | undefined => {
-  const value = goal.extendedData?.programUnitId
-  return typeof value === 'string' && value.trim().length > 0 ? value : undefined
-}
-
-const getProjectedContextUnitIds = (goal: UiGoal): string[] => {
-  const rawValue = goal.extendedData?.[PROJECTED_CONTEXT_UNIT_IDS_KEY]
-  if (!Array.isArray(rawValue)) return []
-  return rawValue.filter((value): value is string => typeof value === 'string' && value.trim().length > 0)
-}
-
-const makeContextualNodeKey = (goalId: string, contextUnitId?: string) =>
-  `${goalId}@@${contextUnitId ?? 'ROOT'}`
 
 const getContextualTreeTitle = (goal: UiGoal, parentGoal?: UiGoal): string => {
   if (!parentGoal || !isSyntheticProgramUnit(parentGoal)) return goal.title
@@ -57,7 +42,6 @@ const buildVisibleChildrenMap = (
   const visibleChildrenByParent = new Map<string, string[]>()
   const hasConfig = !!personalConfig && Object.keys(personalConfig).length > 0
   const nestedUnderSyntheticProgramUnit = new Set<string>()
-  const contextUnitIds = new Set<string | undefined>([undefined])
 
   allGoals.forEach((parent) => {
     if (!isSyntheticProgramUnit(parent)) return
@@ -66,19 +50,9 @@ const buildVisibleChildrenMap = (
     })
   })
 
-  allGoals.forEach((goal) => {
-    const programUnitId = getProgramUnitId(goal)
-    if (programUnitId) {
-      contextUnitIds.add(programUnitId)
-    }
-    getProjectedContextUnitIds(goal).forEach((unitId) => {
-      contextUnitIds.add(unitId)
-    })
-  })
-
-  const buildVisibleChildrenForContext = (parent: UiGoal, contextUnitId?: string): string[] => {
+  allGoals.forEach((parent) => {
     const childIds = parent.contains ?? []
-    if (childIds.length === 0) return []
+    if (childIds.length === 0) return
 
     const hasPositiveSibling = hasConfig && childIds.some((childId) => {
       const child = allGoals.get(childId)
@@ -87,7 +61,7 @@ const buildVisibleChildrenMap = (
       return config?.selected === true
     })
 
-    return childIds.filter((childId) => {
+    const visibleChildren = childIds.filter((childId) => {
       const child = allGoals.get(childId)
       if (!child) return false
 
@@ -96,15 +70,6 @@ const buildVisibleChildrenMap = (
       }
 
       if (!goalMatchesFilter(child, activeFilter)) {
-        return false
-      }
-
-      const projectedContextUnitIds = getProjectedContextUnitIds(child)
-      if (
-        contextUnitId
-        && projectedContextUnitIds.length > 0
-        && !projectedContextUnitIds.includes(contextUnitId)
-      ) {
         return false
       }
 
@@ -143,15 +108,8 @@ const buildVisibleChildrenMap = (
 
       return true
     })
-  }
 
-  allGoals.forEach((parent) => {
-    contextUnitIds.forEach((contextUnitId) => {
-      visibleChildrenByParent.set(
-        makeContextualNodeKey(parent.id, contextUnitId),
-        buildVisibleChildrenForContext(parent, contextUnitId),
-      )
-    })
+    visibleChildrenByParent.set(parent.id, visibleChildren)
   })
 
   return visibleChildrenByParent
@@ -181,22 +139,20 @@ const buildAggregatedMasteryMap = (
 ) => {
   const totalsByGoalId = new Map<string, { masterySum: number; weightSum: number }>()
   const masteryByGoalId = new Map<string, number>()
-  const contextualNodeKeys = new Set(visibleChildrenByParent.keys())
 
-  const computeTotals = (goalId: string, contextUnitId?: string, visiting: Set<string> = new Set()) => {
-    const contextualNodeKey = makeContextualNodeKey(goalId, contextUnitId)
-    const cached = totalsByGoalId.get(contextualNodeKey)
+  const computeTotals = (goalId: string, visiting: Set<string> = new Set()) => {
+    const cached = totalsByGoalId.get(goalId)
     if (cached) return cached
-    if (visiting.has(contextualNodeKey)) return { masterySum: 0, weightSum: 0 }
+    if (visiting.has(goalId)) return { masterySum: 0, weightSum: 0 }
 
-    visiting.add(contextualNodeKey)
+    visiting.add(goalId)
     const goal = allGoals.get(goalId)
     if (!goal) return { masterySum: 0, weightSum: 0 }
 
     let masterySum = 0
     let weightSum = 0
     const hasStructuralChildren = (goal.contains ?? []).length > 0
-    const visibleChildren = visibleChildrenByParent.get(contextualNodeKey) ?? []
+    const visibleChildren = visibleChildrenByParent.get(goalId) ?? []
 
     if (!hasStructuralChildren) {
       const masteryValue = getMastery(goalId)
@@ -205,25 +161,21 @@ const buildAggregatedMasteryMap = (
       weightSum = weight
     } else {
       visibleChildren.forEach((childId) => {
-        const childGoal = allGoals.get(childId)
-        const childContextUnitId = childGoal ? (getProgramUnitId(childGoal) ?? contextUnitId) : contextUnitId
-        const childTotals = computeTotals(childId, childContextUnitId, new Set(visiting))
+        const childTotals = computeTotals(childId, new Set(visiting))
         masterySum += childTotals.masterySum
         weightSum += childTotals.weightSum
       })
     }
 
-    visiting.delete(contextualNodeKey)
+    visiting.delete(goalId)
     const totals = { masterySum, weightSum }
-    totalsByGoalId.set(contextualNodeKey, totals)
-    masteryByGoalId.set(contextualNodeKey, weightSum > 0 ? masterySum / weightSum : 0)
+    totalsByGoalId.set(goalId, totals)
+    masteryByGoalId.set(goalId, weightSum > 0 ? masterySum / weightSum : 0)
     return totals
   }
 
-  contextualNodeKeys.forEach((nodeKey) => {
-    const [goalId, rawContextUnitId = 'ROOT'] = nodeKey.split('@@')
-    const contextUnitId = rawContextUnitId === 'ROOT' ? undefined : rawContextUnitId
-    computeTotals(goalId, contextUnitId)
+  allGoals.forEach((_, goalId) => {
+    computeTotals(goalId)
   })
 
   return masteryByGoalId
@@ -231,7 +183,6 @@ const buildAggregatedMasteryMap = (
 
 interface TreeNodeProps {
   goalId: string
-  contextUnitId?: string
   allGoals: Map<string, UiGoal>
   getMastery: (goalId: string) => number
   visibleChildrenByParent: Map<string, string[]>
@@ -245,8 +196,6 @@ interface TreeNodeProps {
   depth?: number
   activeFilter?: string
   structureMode?: TreeStructureMode
-  hideTechnicalStructureUi?: boolean
-  allowClusterPlanning?: boolean
 
   aggregatedPlannedGoals?: Map<string, number>
   totalStudents?: number
@@ -269,7 +218,6 @@ const formatFilterLabel = (filterId?: string) => {
 
 const TreeNode: React.FC<TreeNodeProps> = ({
   goalId,
-  contextUnitId,
   allGoals,
   getMastery,
   visibleChildrenByParent,
@@ -283,8 +231,6 @@ const TreeNode: React.FC<TreeNodeProps> = ({
   depth = 0,
   activeFilter,
   structureMode = 'all',
-  hideTechnicalStructureUi = false,
-  allowClusterPlanning = true,
   aggregatedPlannedGoals,
   totalStudents,
   personalConfig,
@@ -307,19 +253,15 @@ const TreeNode: React.FC<TreeNodeProps> = ({
     }
   }, [forcedExpandedIds, goalId])
 
+  const sortedChildren = sortedChildrenByParent.get(goalId) ?? []
+  const mastery = masteryByGoalId.get(goalId) ?? 0
   if (!goal) return null
-
-  const currentContextUnitId = getProgramUnitId(goal) ?? contextUnitId
-  const contextualNodeKey = makeContextualNodeKey(goalId, currentContextUnitId)
-  const sortedChildren = sortedChildrenByParent.get(contextualNodeKey) ?? []
-  const mastery = masteryByGoalId.get(contextualNodeKey) ?? 0
 
   const hasChildren = sortedChildren.length > 0
   const mastered = isMastered(mastery)
   const isPlanned = plannedGoals.has(goal.id)
   const isSelected = selectedId === goal.id
   const isSyntheticStructureNode = isSyntheticProgramUnit(goal)
-  const hidePlanControlForCluster = !allowClusterPlanning && hasChildren && !isPlanned
   // Frontier highlighting is intentionally disabled (we only mark active goal + mastery).
 
   // Propagate: If I am in the subtree (passed from parent) OR I am the start of the plan
@@ -422,7 +364,7 @@ const TreeNode: React.FC<TreeNodeProps> = ({
             }`}
         />
 
-        {isSyntheticStructureNode && !hideTechnicalStructureUi && (
+        {isSyntheticStructureNode && (
           <span
             className="px-1.5 py-0.5 rounded-full border border-slate-300 dark:border-slate-600 text-[10px] font-medium uppercase tracking-wide text-slate-500 dark:text-slate-400"
             title={t.tooltips.projectedStructureReadOnly}
@@ -440,10 +382,8 @@ const TreeNode: React.FC<TreeNodeProps> = ({
               </>
             )}
           </div>
-        ) : hidePlanControlForCluster ? (
-          <div className="w-6 h-6 shrink-0" aria-hidden="true" />
         ) : (
-          readOnly || (isSyntheticStructureNode && !hideTechnicalStructureUi && !isPlanned) ? (
+          readOnly || (isSyntheticStructureNode && !isPlanned) ? (
             <div
               className={`p-1 ${isPlanned ? 'text-red-400' : 'text-slate-300 dark:text-slate-600'}`}
               title={readOnly ? t.tooltips.legacyReadOnly : t.tooltips.projectedStructureReadOnly}
@@ -486,8 +426,6 @@ const TreeNode: React.FC<TreeNodeProps> = ({
                 depth={depth + 1}
                 activeFilter={activeFilter}
                 structureMode={structureMode}
-                hideTechnicalStructureUi={hideTechnicalStructureUi}
-                allowClusterPlanning={allowClusterPlanning}
                 aggregatedPlannedGoals={aggregatedPlannedGoals}
                 totalStudents={totalStudents}
                 personalConfig={personalConfig}
@@ -497,7 +435,6 @@ const TreeNode: React.FC<TreeNodeProps> = ({
                 forcedExpandedIds={forcedExpandedIds}
                 frontierIds={frontierIds}
                 parentGoalId={goal.id}
-                contextUnitId={currentContextUnitId}
               />
             ))}
           </div>
@@ -518,8 +455,6 @@ interface CompetenceTreeProps {
   selectedId: string
   activeFilter?: string
   structureMode?: TreeStructureMode
-  hideTechnicalStructureUi?: boolean
-  allowClusterPlanning?: boolean
 
   aggregatedPlannedGoals?: Map<string, number>
   totalStudents?: number
@@ -534,8 +469,6 @@ export const CompetenceTree: React.FC<CompetenceTreeProps> = ({
   activeFilter,
   personalConfig,
   structureMode = 'all',
-  hideTechnicalStructureUi = false,
-  allowClusterPlanning = true,
   ...props
 }) => {
   // We don't strictly filter root goals by activeFilter, because root goals usually represent 'Structure' (e.g. 'Fächer')
@@ -562,14 +495,11 @@ export const CompetenceTree: React.FC<CompetenceTreeProps> = ({
         <TreeNode
           key={g.id}
           goalId={g.id}
-          contextUnitId={getProgramUnitId(g)}
           visibleChildrenByParent={visibleChildrenByParent}
           sortedChildrenByParent={sortedChildrenByParent}
           masteryByGoalId={masteryByGoalId}
           activeFilter={activeFilter}
           structureMode={structureMode}
-          hideTechnicalStructureUi={hideTechnicalStructureUi}
-          allowClusterPlanning={allowClusterPlanning}
           personalConfig={personalConfig}
           hasActivePlan={hasActivePlan}
           isInPlannedSubtree={false}
