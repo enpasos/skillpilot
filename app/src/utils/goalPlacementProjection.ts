@@ -102,6 +102,31 @@ const resolveProgramUnitAnchorGoalId = (
   return bestGoalId
 }
 
+const containsTransitively = (
+  goalById: Map<string, UiGoal>,
+  ancestorGoalId: string,
+  targetGoalId: string,
+  visiting: Set<string> = new Set(),
+): boolean => {
+  if (ancestorGoalId === targetGoalId) return true
+  if (visiting.has(ancestorGoalId)) return false
+
+  visiting.add(ancestorGoalId)
+  const goal = goalById.get(ancestorGoalId)
+  if (!goal) return false
+
+  for (const childId of goal.contains ?? []) {
+    if (childId === targetGoalId) {
+      return true
+    }
+    if (containsTransitively(goalById, childId, targetGoalId, new Set(visiting))) {
+      return true
+    }
+  }
+
+  return false
+}
+
 const inferPlacementFilterDimension = (filterId?: string): keyof GoalPlacementContext | undefined => {
   if (!filterId) return undefined
   const normalized = filterId.trim()
@@ -212,6 +237,7 @@ export function applyGoalPlacementProjection<T extends ProjectableLandscapeEntry
     const rootGoal = clonedGoals.find((goal) => goal.tags?.includes('root'))
     const originalRootContains = rootGoal ? [...rootGoal.contains] : []
     const unitsById = new Map(entry.meta.programUnits.map((unit) => [unit.id, unit]))
+    const goalPlacements = entry.meta.goalPlacements ?? []
     const anchorByUnitId = new Map<string, string>()
     const primaryPlacementAnchorByGoalId = new Map<string, string>()
 
@@ -219,6 +245,26 @@ export function applyGoalPlacementProjection<T extends ProjectableLandscapeEntry
       const anchorGoalId = resolveProgramUnitAnchorGoalId(unit, clonedGoals)
       if (anchorGoalId) {
         anchorByUnitId.set(unit.id, anchorGoalId)
+      }
+    })
+
+    entry.meta.programUnits.forEach((unit) => {
+      const anchorGoalId = anchorByUnitId.get(unit.id)
+      if (!anchorGoalId) return
+
+      const hasUnsafePlacement = goalPlacements.some((placement) => {
+        const eligible = normalizeFilterIds(activeFilter).length === 0
+          ? placementIsDefaultSafe(placement)
+          : placementMatchesFilters(placement, activeFilter)
+        if (!eligible) return false
+        if (placement.unitId !== unit.id) return false
+        if (placement.goalId === anchorGoalId) return false
+
+        return containsTransitively(goalById, placement.goalId, anchorGoalId)
+      })
+
+      if (hasUnsafePlacement) {
+        anchorByUnitId.delete(unit.id)
       }
     })
 
@@ -253,7 +299,7 @@ export function applyGoalPlacementProjection<T extends ProjectableLandscapeEntry
       return syntheticAnchor.id
     }
 
-    entry.meta.goalPlacements.forEach((placement) => {
+    goalPlacements.forEach((placement) => {
       const eligible = normalizeFilterIds(activeFilter).length === 0
         ? placementIsDefaultSafe(placement)
         : placementMatchesFilters(placement, activeFilter)
