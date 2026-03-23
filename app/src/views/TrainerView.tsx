@@ -8,10 +8,12 @@ import { InlineMathText } from '../components/InlineMathText'
 import { LogoutButton } from '../components/LogoutButton'
 import { useCompetenceGraph } from '../hooks/useCompetenceGraph'
 import { useGoalIndex } from '../hooks/useGoalIndex'
+import { useLandscapes } from '../hooks/useLandscapes'
 import type { LandscapeEntry } from '../hooks/useLandscapes'
 import type { UiGoal } from '../goalTypes'
 import type { ClassSession } from '../trainerTypes'
 import type { MasteryMap } from '../learnerTypes'
+import { shortKeyFromId } from '../shortKey'
 
 import { Save, Trash2 } from 'lucide-react'
 import { useLanguage } from '../contexts/LanguageContext'
@@ -30,10 +32,8 @@ const toApi = (path: string) => (apiBase ? `${apiBase}${path}` : path)
 interface TrainerViewProps {
   landscapeEntries: LandscapeEntry[]
   classSetupLandscapes?: LandscapeEntry[]
-  onContextChange: (landscapeId: string, filter: string, goalId?: string) => void
   currentLearnerId: string
   onSelectLearner: (id: string) => void
-  goalShortKeyMap: Map<string, string>
   onLogout?: () => void
   onNotify?: (kind: ToastKind, message: string) => void
 }
@@ -71,10 +71,8 @@ const loadStoredActiveClassId = (): string | null => {
 export const TrainerView: React.FC<TrainerViewProps> = ({
   landscapeEntries,
   classSetupLandscapes,
-  onContextChange,
   currentLearnerId,
   onSelectLearner,
-  goalShortKeyMap,
   onLogout,
   onNotify,
 }) => {
@@ -87,6 +85,7 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
   const [isCreating, setIsCreating] = useState(false)
   const [isAssigning, setIsAssigning] = useState(false)
   const [selectedGoalId, setSelectedGoalId] = useState<string>('')
+  const mountedRef = useRef(false)
   const [plannedGoals, setPlannedGoals] = useState<Set<string>>(new Set())
   const [masteryByStudent, setMasteryByStudent] = useState<Map<string, MasteryMap>>(new Map())
   const [plannedGoalsByStudent, setPlannedGoalsByStudent] = useState<Map<string, Set<string>>>(new Map())
@@ -129,6 +128,13 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
   }, [currentLearnerId, plannedGoalsByStudent])
 
   const activeClass = useMemo(() => classes.find((c) => c.id === activeClassId) ?? null, [activeClassId, classes])
+
+  // --- TRAINER-OWNED LANDSCAPE LOADING ---
+  const { landscapeEntries: trainerLandscapeEntries } = useLandscapes(
+    activeClass?.landscapeId ?? '',
+    language,
+  )
+
   const activeClassRootFilterId = useMemo(() => {
     if (!activeClass?.rootLandscapeId) return undefined
     return activeClass.personalConfig?.[activeClass.rootLandscapeId]?.filterId
@@ -164,8 +170,8 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
     return Array.from(next)
   }, [activeClass, activeClassLandscapeFilterId, activeClassRootFilterId])
   const projectedTrainerLandscapeEntries = useMemo(
-    () => applyGoalPlacementProjection(landscapeEntries, activeClassFilterIds),
-    [activeClassFilterIds, landscapeEntries],
+    () => applyGoalPlacementProjection(trainerLandscapeEntries, activeClassFilterIds),
+    [activeClassFilterIds, trainerLandscapeEntries],
   )
   const activeLandscapeEntry = useMemo(
     () => projectedTrainerLandscapeEntries.find((entry) => entry.meta.landscapeId === activeClass?.landscapeId) ?? null,
@@ -176,6 +182,11 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
     [projectedTrainerLandscapeEntries],
   )
   const { goalIndexAll: classGoalIndexAll } = useGoalIndex(classAllGoals)
+  const goalShortKeyMap = useMemo(() => {
+    const map = new Map<string, string>()
+    classAllGoals.forEach((goal) => map.set(goal.id, shortKeyFromId(goal.id)))
+    return map
+  }, [classAllGoals])
   const goalMatchesActiveClassConfig = useCallback((goal: UiGoal | null | undefined) => {
     if (!goal) return false
     if (!activeClass) return true
@@ -232,7 +243,10 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
   )
 
   // --- MASTERY CALCULATION ---
-  const masteryCache = useMemo(() => new Map<string, { masterySum: number; weightSum: number }>(), [])
+  const masteryCacheRef = useRef(new Map<string, { masterySum: number; weightSum: number }>())
+  useEffect(() => {
+    masteryCacheRef.current.clear()
+  }, [masteryByStudent, currentLearnerId])
   const getStudentMastery = useCallback(
     (goalId: string): number => {
       // For __ALL__ students view, studentMasteryMap will not be directly used at this top level
@@ -241,7 +255,7 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
       if (currentLearnerId !== '__ALL__' && !studentMasteryMap) return 0
 
       const getMasteryRecursive = (gId: string, visited: Set<string> = new Set()): { masterySum: number; weightSum: number } => {
-        if (masteryCache.has(gId)) return masteryCache.get(gId)!
+        if (masteryCacheRef.current.has(gId)) return masteryCacheRef.current.get(gId)!
         if (visited.has(gId)) return { masterySum: 0, weightSum: 0 } // Circular dependency
 
         visited.add(gId)
@@ -282,13 +296,13 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
             }
           })
         }
-        masteryCache.set(gId, { masterySum, weightSum })
+        masteryCacheRef.current.set(gId, { masterySum, weightSum })
         return { masterySum, weightSum }
       }
       const totals = getMasteryRecursive(goalId)
       return totals.weightSum > 0 ? totals.masterySum / totals.weightSum : 0
     },
-    [classGoalIndexAll, currentLearnerId, masteryByStudent, goalShortKeyMap, masteryCache],
+    [classGoalIndexAll, currentLearnerId, masteryByStudent, goalShortKeyMap],
   )
 
 
@@ -313,14 +327,13 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
   }, [classes.length, clearReportedLoadError])
 
   useEffect(() => {
-    if (!activeClassId) {
-      return
-    }
-    if (classes.some((session) => session.id === activeClassId)) {
-      return
-    }
+    if (mountedRef.current) return
+    mountedRef.current = true
+    if (!activeClassId) return
+    if (classes.some((session) => session.id === activeClassId)) return
     setActiveClassId(classes[0]?.id ?? null)
-  }, [activeClassId, classes])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   useEffect(() => {
     try {
@@ -339,27 +352,19 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
     clearReportedLoadError('trainer-class-data-load')
   }, [activeClassId, clearReportedLoadError])
 
-  const lastContextRef = useRef<{ lid: string; filter: string; goalId?: string }>({ lid: '', filter: '', goalId: undefined })
+  // Restore goal from class session and reset learner if not in class
   useEffect(() => {
     if (!activeClass) return
-    const isSameLandscape = lastContextRef.current.lid === activeClass.landscapeId
-    const targetGoalId = activeClass.currentGoalId || (isSameLandscape ? selectedGoalId : undefined) || classRootGoals[0]?.id
-
-    const next = { lid: activeClass.landscapeId, filter: trainerContextFilter, goalId: targetGoalId }
-    const prev = lastContextRef.current
-    if (
-      prev.lid !== next.lid ||
-      prev.filter !== next.filter ||
-      prev.goalId !== next.goalId
-    ) {
-      lastContextRef.current = next
-      onContextChange(next.lid, next.filter, next.goalId)
-      if (next.goalId) setSelectedGoalId(next.goalId)
+    if (activeClass.currentGoalId && !selectedGoalId) {
+      setSelectedGoalId(activeClass.currentGoalId)
+    } else if (!selectedGoalId && classRootGoals[0]?.id) {
+      setSelectedGoalId(classRootGoals[0].id)
     }
     if (!activeClass.students.find((s) => s.id === currentLearnerId) && currentLearnerId !== '__ALL__') {
       onSelectLearner('__ALL__')
     }
-  }, [activeClass, classRootGoals, currentLearnerId, onSelectLearner, selectedGoalId, onContextChange, trainerContextFilter])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [activeClass?.id])
 
   useEffect(() => {
     if (!activeClass) return
@@ -437,7 +442,6 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
       const updated = classes.map((c) => (c.id === activeClass.id ? { ...c, currentGoalId: id } : c))
       persistClasses(updated)
     }
-    onContextChange(activeClass?.landscapeId ?? '', trainerContextFilter, id)
   }
 
   const handleTogglePlan = async (goalId: string) => {

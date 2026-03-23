@@ -479,7 +479,7 @@ const App: React.FC = () => {
 
   // If we have a session but no landscape selected (and not pending), show SessionSetup to let user pick one.
   // This effectively acts as the "Login/Start" screen when context is missing.
-  if (!core.selectedLandscapeId && !core.loadingLandscapes && !pendingLandscapeId) {
+  if (!core.selectedLandscapeId && !core.loadingLandscapes && !pendingLandscapeId && role !== 'trainer') {
     console.log('[App] → Showing SessionSetup (second block: no landscape selected)')
     return (
       <SessionSetup
@@ -589,10 +589,8 @@ const App: React.FC = () => {
             <TrainerView
               landscapeEntries={core.landscapeEntries}
               classSetupLandscapes={trainerClassSetupLandscapes}
-              onContextChange={core.handleTrainerContextChange}
               currentLearnerId={trainerLearnerId}
               onSelectLearner={setTrainerLearnerId}
-              goalShortKeyMap={core.goalShortKeyMap}
               onNotify={handleNotify}
               onLogout={handleLogout}
             />
