@@ -1,6 +1,5 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { CompetenceTree } from '../components/CompetenceTree'
-import type { TreeStructureMode } from '../components/CompetenceTree'
 import { GoalCard } from '../components/GoalCard'
 import { NeighborSection } from '../components/NeighborSection'
 import { ClassSetup } from '../components/ClassSetup'
@@ -35,8 +34,6 @@ interface TrainerViewProps {
   currentLearnerId: string
   onSelectLearner: (id: string) => void
   goalShortKeyMap: Map<string, string>
-  structureMode?: TreeStructureMode
-  onStructureModeChange?: (mode: TreeStructureMode) => void
   onLogout?: () => void
   onNotify?: (kind: ToastKind, message: string) => void
 }
@@ -80,8 +77,6 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
   currentLearnerId,
   onSelectLearner,
   goalShortKeyMap,
-  structureMode = 'all',
-  onStructureModeChange = () => {},
   onLogout,
   onNotify,
 }) => {
@@ -97,6 +92,7 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
   const [plannedGoals, setPlannedGoals] = useState<Set<string>>(new Set())
   const [masteryByStudent, setMasteryByStudent] = useState<Map<string, MasteryMap>>(new Map())
   const [plannedGoalsByStudent, setPlannedGoalsByStudent] = useState<Map<string, Set<string>>>(new Map())
+  const [trainerStructureMode, setTrainerStructureMode] = useState<'content' | 'competency'>('content')
   const [confirmation, setConfirmation] = useState<{
     isOpen: boolean
     title: string
@@ -166,14 +162,12 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
     () => hasReachableCompetencyDimensionRoot(classRootGoals, goalIndexAll),
     [classRootGoals, goalIndexAll],
   )
-  const trainerStructureMode: TreeStructureMode =
-    structureMode === 'competency' ? 'competency' : 'content'
   useEffect(() => {
     if (trainerStructureMode !== 'competency' || hasCompetencyStructure) {
       return
     }
-    onStructureModeChange('content')
-  }, [hasCompetencyStructure, onStructureModeChange, trainerStructureMode])
+    setTrainerStructureMode('content')
+  }, [hasCompetencyStructure, trainerStructureMode])
   const landscapeGoals = useMemo(
     () => Array.from(goalIndexAll.values()).filter((g) => !activeClass || g.landscapeId === activeClass.landscapeId),
     [activeClass, goalIndexAll],
@@ -707,7 +701,7 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
                     <button
                       key={mode}
                       type="button"
-                      onClick={() => onStructureModeChange(mode)}
+                      onClick={() => setTrainerStructureMode(mode)}
                       className={`px-3 py-1.5 text-xs font-medium transition-colors ${
                         isActive
                           ? 'bg-sky-600 text-white'

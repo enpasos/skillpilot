@@ -551,8 +551,6 @@ const App: React.FC = () => {
               skillpilotId={skillpilotId}
               landscapeId={core.selectedLandscapeId}
               activeFilter={core.activeFilter}
-              structureMode={core.treeStructureMode}
-              onStructureModeChange={core.setTreeStructureMode}
               onNotify={handleNotify}
               onLogout={handleLogout}
               availableLandscapes={availableLandscapes}
@@ -577,8 +575,6 @@ const App: React.FC = () => {
               currentLearnerId={trainerLearnerId}
               onSelectLearner={setTrainerLearnerId}
               goalShortKeyMap={core.goalShortKeyMap}
-              structureMode={core.treeStructureMode}
-              onStructureModeChange={core.setTreeStructureMode}
               onNotify={handleNotify}
               onLogout={handleLogout}
               getMastery={core.getMasteryValue}

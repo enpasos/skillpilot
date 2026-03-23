@@ -16,11 +16,7 @@ import { applyCompetencyAxisProjection } from '../utils/goalCompetencyProjection
 import { normalizeTrainerLandscapeId } from '../utils/trainerLandscapeContext'
 
 type Role = 'learner' | 'trainer' | 'explorer'
-type TreeStructureMode = 'all' | 'content' | 'competency'
-const DEFAULT_TREE_STRUCTURE_MODE: TreeStructureMode = 'all'
 const DEFAULT_ACTIVE_FILTER = 'all'
-const isTreeStructureMode = (value: string | null): value is TreeStructureMode =>
-  value === 'all' || value === 'content' || value === 'competency'
 const normalizeActiveFilter = (
   value: string | null | undefined,
   availableFilters: { id: string }[],
@@ -72,10 +68,6 @@ export function useAppCore({ role, setLearnerMeta, skillpilotId }: AppCoreOption
   const [selectedLandscapeId, setSelectedLandscapeId] = React.useState<string>(() => {
     return normalizeLandscapeIdForRole(searchParams.get('l'), role)
   })
-  const [treeStructureMode, setTreeStructureMode] = React.useState<TreeStructureMode>(() => {
-    const fromUrl = searchParams.get('sm')
-    return isTreeStructureMode(fromUrl) ? fromUrl : DEFAULT_TREE_STRUCTURE_MODE
-  })
 
   useEffect(() => {
     if (pendingSearchRef.current === currentSearchString) {
@@ -107,30 +99,6 @@ export function useAppCore({ role, setLearnerMeta, skillpilotId }: AppCoreOption
     replaceSearchParamsIfNeeded(next)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [replaceSearchParamsIfNeeded, searchParams, selectedLandscapeId])
-
-  useEffect(() => {
-    const fromUrl = searchParams.get('sm')
-    const nextMode = isTreeStructureMode(fromUrl) ? fromUrl : DEFAULT_TREE_STRUCTURE_MODE
-    if (nextMode !== treeStructureMode) {
-      setTreeStructureMode(nextMode)
-    }
-  }, [location.search, searchParams, treeStructureMode])
-
-  useEffect(() => {
-    const current = searchParams.get('sm')
-    const normalizedCurrent = isTreeStructureMode(current) ? current : DEFAULT_TREE_STRUCTURE_MODE
-    if (normalizedCurrent === treeStructureMode) return
-    const next = new URLSearchParams(searchParams)
-    if (treeStructureMode === DEFAULT_TREE_STRUCTURE_MODE) {
-      next.delete('sm')
-    } else {
-      next.set('sm', treeStructureMode)
-    }
-    replaceSearchParamsIfNeeded(next)
-  }, [replaceSearchParamsIfNeeded, searchParams, treeStructureMode])
-
-
-
 
   const { language } = useLanguage()
 
@@ -418,8 +386,6 @@ export function useAppCore({ role, setLearnerMeta, skillpilotId }: AppCoreOption
     currentLandscapeEntry,
     activeFilter,
     setActiveFilter,
-    treeStructureMode,
-    setTreeStructureMode,
     currentGoal,
     goalIndexAll,
     getMasteryValue,

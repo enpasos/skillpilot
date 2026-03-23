@@ -46,8 +46,6 @@ interface LearnerViewProps {
   skillpilotId: string
   landscapeId: string
   activeFilter?: string
-  structureMode?: TreeStructureMode
-  onStructureModeChange?: (mode: TreeStructureMode) => void
   onLogout?: () => void
   onNotify?: (kind: ToastKind, message: string) => void
   availableLandscapes?: { landscapeId: string; title: string; filters?: { id: string; label: string }[]; compatibilityOnly?: boolean }[]
