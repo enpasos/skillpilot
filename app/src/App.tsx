@@ -198,33 +198,53 @@ const App: React.FC = () => {
     }
 
     const entriesById = new Map(landscapeEntries.map((entry) => [entry.meta.landscapeId, entry]))
-    const currentRoot =
-      currentLandscapeEntry.goals.find((goal) => goal.tags?.includes('root')) ?? currentLandscapeEntry.goals[0]
+    const getLandscapeRoot = (entry: typeof currentLandscapeEntry) =>
+      entry.goals.find((goal) => goal.tags?.includes('root')) ?? entry.goals[0]
 
-    const childLandscapeEntries: typeof landscapeEntries = []
-    const seenLandscapeIds = new Set<string>()
-    for (const childId of currentRoot?.contains ?? []) {
-      const childGoal = selectionGoalIndexAll.get(childId)
-      const childLandscapeId = childGoal?.landscapeId
-      if (
-        !childLandscapeId ||
-        childLandscapeId === currentLandscapeEntry.meta.landscapeId ||
-        seenLandscapeIds.has(childLandscapeId)
-      ) {
-        continue
+    const collectChildLandscapeEntries = (rootEntry: typeof currentLandscapeEntry) => {
+      const rootGoal = getLandscapeRoot(rootEntry)
+      const nextChildren: typeof landscapeEntries = []
+      const seenLandscapeIds = new Set<string>()
+
+      for (const childId of rootGoal?.contains ?? []) {
+        const childGoal = selectionGoalIndexAll.get(childId)
+        const childLandscapeId = childGoal?.landscapeId
+        if (
+          !childLandscapeId ||
+          childLandscapeId === rootEntry.meta.landscapeId ||
+          seenLandscapeIds.has(childLandscapeId)
+        ) {
+          continue
+        }
+
+        const childEntry = entriesById.get(childLandscapeId)
+        if (!childEntry) {
+          continue
+        }
+
+        nextChildren.push(childEntry)
+        seenLandscapeIds.add(childLandscapeId)
       }
 
-      const childEntry = entriesById.get(childLandscapeId)
-      if (!childEntry) {
-        continue
-      }
-
-      childLandscapeEntries.push(childEntry)
-      seenLandscapeIds.add(childLandscapeId)
+      return nextChildren
     }
 
-    if (childLandscapeEntries.length > 0) {
-      return childLandscapeEntries
+    const directChildren = collectChildLandscapeEntries(currentLandscapeEntry)
+    if (directChildren.length > 0) {
+      return [currentLandscapeEntry, ...directChildren]
+    }
+
+    const parentEntry = landscapeEntries.find((entry) => {
+      if (entry.meta.landscapeId === currentLandscapeEntry.meta.landscapeId) {
+        return false
+      }
+      return collectChildLandscapeEntries(entry).some(
+        (childEntry) => childEntry.meta.landscapeId === currentLandscapeEntry.meta.landscapeId,
+      )
+    })
+
+    if (parentEntry) {
+      return [parentEntry, ...collectChildLandscapeEntries(parentEntry)]
     }
 
     return [currentLandscapeEntry]
@@ -570,14 +590,11 @@ const App: React.FC = () => {
               landscapeEntries={core.landscapeEntries}
               classSetupLandscapes={trainerClassSetupLandscapes}
               onContextChange={core.handleTrainerContextChange}
-              rootGoals={core.breadcrumbRootGoals}
-              goalIndexAll={core.goalIndexAll}
               currentLearnerId={trainerLearnerId}
               onSelectLearner={setTrainerLearnerId}
               goalShortKeyMap={core.goalShortKeyMap}
               onNotify={handleNotify}
               onLogout={handleLogout}
-              getMastery={core.getMasteryValue}
             />
           }
         />

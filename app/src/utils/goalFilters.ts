@@ -117,3 +117,18 @@ export const goalMatchesFilter = (goal: FilterableGoal, filterId?: string): bool
 
   return genericValues.size === 0
 }
+
+export const goalMatchesFilters = (
+  goal: FilterableGoal,
+  filterIds?: string | string[],
+): boolean => {
+  const effectiveFilters = (Array.isArray(filterIds) ? filterIds : [filterIds])
+    .filter((value): value is string => typeof value === 'string' && value.trim().length > 0)
+    .filter((value) => !isWildcardFilter(value))
+
+  if (effectiveFilters.length === 0) {
+    return true
+  }
+
+  return effectiveFilters.every((filterId) => goalMatchesFilter(goal, filterId))
+}

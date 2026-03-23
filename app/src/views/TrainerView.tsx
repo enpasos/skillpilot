@@ -7,6 +7,7 @@ import { ConfirmModal } from '../components/ConfirmModal'
 import { InlineMathText } from '../components/InlineMathText'
 import { LogoutButton } from '../components/LogoutButton'
 import { useCompetenceGraph } from '../hooks/useCompetenceGraph'
+import { useGoalIndex } from '../hooks/useGoalIndex'
 import type { LandscapeEntry } from '../hooks/useLandscapes'
 import type { UiGoal } from '../goalTypes'
 import type { ClassSession } from '../trainerTypes'
@@ -19,6 +20,9 @@ import { de } from '../locales/de'
 import type { ToastKind } from '../hooks/useToast'
 import { interpolateTemplate } from '../utils/interpolateTemplate'
 import { migrateTrainerClassSession } from '../utils/trainerLandscapeContext'
+import { applyGoalPlacementProjection } from '../utils/goalPlacementProjection'
+import { goalMatchesFilters, isWildcardFilter } from '../utils/goalFilters'
+import { goalMatchesGlobalStageScope } from '../utils/personalCurriculumStageScope'
 
 const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
 const toApi = (path: string) => (apiBase ? `${apiBase}${path}` : path)
@@ -27,9 +31,6 @@ interface TrainerViewProps {
   landscapeEntries: LandscapeEntry[]
   classSetupLandscapes?: LandscapeEntry[]
   onContextChange: (landscapeId: string, filter: string, goalId?: string) => void
-  rootGoals: UiGoal[]
-  goalIndexAll: Map<string, UiGoal>
-  getMastery: (goalId: string) => number
   currentLearnerId: string
   onSelectLearner: (id: string) => void
   goalShortKeyMap: Map<string, string>
@@ -71,8 +72,6 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
   landscapeEntries,
   classSetupLandscapes,
   onContextChange,
-  rootGoals,
-  goalIndexAll,
   currentLearnerId,
   onSelectLearner,
   goalShortKeyMap,
@@ -87,7 +86,7 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
   const [activeClassId, setActiveClassId] = useState<string | null>(loadStoredActiveClassId)
   const [isCreating, setIsCreating] = useState(false)
   const [isAssigning, setIsAssigning] = useState(false)
-  const [selectedGoalId, setSelectedGoalId] = useState<string>(rootGoals[0]?.id ?? '')
+  const [selectedGoalId, setSelectedGoalId] = useState<string>('')
   const [plannedGoals, setPlannedGoals] = useState<Set<string>>(new Set())
   const [masteryByStudent, setMasteryByStudent] = useState<Map<string, MasteryMap>>(new Map())
   const [plannedGoalsByStudent, setPlannedGoalsByStudent] = useState<Map<string, Set<string>>>(new Map())
@@ -130,13 +129,64 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
   }, [currentLearnerId, plannedGoalsByStudent])
 
   const activeClass = useMemo(() => classes.find((c) => c.id === activeClassId) ?? null, [activeClassId, classes])
-  const activeLandscapeEntry = useMemo(
-    () => landscapeEntries.find((entry) => entry.meta.landscapeId === activeClass?.landscapeId) ?? null,
-    [activeClass, landscapeEntries],
+  const activeClassRootFilterId = useMemo(() => {
+    if (!activeClass?.rootLandscapeId) return undefined
+    return activeClass.personalConfig?.[activeClass.rootLandscapeId]?.filterId
+  }, [activeClass])
+  const activeClassLandscapeFilterId = useMemo(() => {
+    if (!activeClass) return undefined
+    return activeClass.personalConfig?.[activeClass.landscapeId]?.filterId
+  }, [activeClass])
+  const trainerContextFilter = useMemo(() => {
+    if (activeClassRootFilterId && !isWildcardFilter(activeClassRootFilterId)) {
+      return activeClassRootFilterId
+    }
+    if (activeClassLandscapeFilterId && !isWildcardFilter(activeClassLandscapeFilterId)) {
+      return activeClassLandscapeFilterId
+    }
+    if (activeClass?.activeFilter && !isWildcardFilter(activeClass.activeFilter)) {
+      return activeClass.activeFilter
+    }
+    return 'all'
+  }, [activeClass, activeClassLandscapeFilterId, activeClassRootFilterId])
+  const activeClassFilterIds = useMemo(() => {
+    if (!activeClass) return [] as string[]
+    const next = new Set<string>()
+    if (activeClassRootFilterId && !isWildcardFilter(activeClassRootFilterId)) {
+      next.add(activeClassRootFilterId)
+    }
+    if (activeClassLandscapeFilterId && !isWildcardFilter(activeClassLandscapeFilterId)) {
+      next.add(activeClassLandscapeFilterId)
+    }
+    if (next.size === 0 && activeClass.activeFilter && !isWildcardFilter(activeClass.activeFilter)) {
+      next.add(activeClass.activeFilter)
+    }
+    return Array.from(next)
+  }, [activeClass, activeClassLandscapeFilterId, activeClassRootFilterId])
+  const projectedTrainerLandscapeEntries = useMemo(
+    () => applyGoalPlacementProjection(landscapeEntries, activeClassFilterIds),
+    [activeClassFilterIds, landscapeEntries],
   )
+  const activeLandscapeEntry = useMemo(
+    () => projectedTrainerLandscapeEntries.find((entry) => entry.meta.landscapeId === activeClass?.landscapeId) ?? null,
+    [activeClass, projectedTrainerLandscapeEntries],
+  )
+  const classAllGoals = useMemo(
+    () => projectedTrainerLandscapeEntries.flatMap((entry) => entry.goals),
+    [projectedTrainerLandscapeEntries],
+  )
+  const { goalIndexAll: classGoalIndexAll } = useGoalIndex(classAllGoals)
+  const goalMatchesActiveClassConfig = useCallback((goal: UiGoal | null | undefined) => {
+    if (!goal) return false
+    if (!activeClass) return true
+    if (!goalMatchesGlobalStageScope(goal, activeClass.personalConfig ?? {})) {
+      return false
+    }
+    return goalMatchesFilters(goal, activeClassFilterIds)
+  }, [activeClass, activeClassFilterIds])
   const classRootGoals = useMemo(() => {
     if (!activeClass) {
-      return rootGoals
+      return [] as UiGoal[]
     }
 
     const entryRoots = (activeLandscapeEntry?.goals ?? []).filter((goal) => (goal.tags ?? []).includes('root'))
@@ -144,7 +194,7 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
       return entryRoots
     }
 
-    const directLandscapeRoots = Array.from(goalIndexAll.values()).filter(
+    const directLandscapeRoots = Array.from(classGoalIndexAll.values()).filter(
       (goal) =>
         goal.landscapeId === activeClass.landscapeId &&
         (goal.tags ?? []).includes('root'),
@@ -154,19 +204,32 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
       return directLandscapeRoots
     }
 
-    return rootGoals.filter((g) => g.landscapeId === activeClass.landscapeId)
-  }, [activeClass, activeLandscapeEntry, goalIndexAll, rootGoals])
+    return (activeLandscapeEntry?.goals ?? []).filter((goal) => goal.landscapeId === activeClass.landscapeId && goal.contains.length > 0)
+  }, [activeClass, activeLandscapeEntry, classGoalIndexAll])
   const landscapeGoals = useMemo(
-    () => Array.from(goalIndexAll.values()).filter((g) => !activeClass || g.landscapeId === activeClass.landscapeId),
-    [activeClass, goalIndexAll],
+    () => Array.from(classGoalIndexAll.values()).filter((g) => !activeClass || g.landscapeId === activeClass.landscapeId),
+    [activeClass, classGoalIndexAll],
   )
   const currentGoal = useMemo(() => {
-    const g = selectedGoalId ? goalIndexAll.get(selectedGoalId) : undefined
-    if (g && (!activeClass || g.landscapeId === activeClass.landscapeId)) return g
-    return goalIndexAll.get(classRootGoals[0]?.id ?? '') ?? null
-  }, [activeClass, classRootGoals, goalIndexAll, selectedGoalId])
+    const goal = selectedGoalId ? classGoalIndexAll.get(selectedGoalId) : undefined
+    if (goal && (!activeClass || goal.landscapeId === activeClass.landscapeId) && goalMatchesActiveClassConfig(goal)) return goal
+    return classGoalIndexAll.get(classRootGoals[0]?.id ?? '') ?? null
+  }, [activeClass, classGoalIndexAll, classRootGoals, goalMatchesActiveClassConfig, selectedGoalId])
 
   const { neighbors } = useCompetenceGraph(currentGoal, landscapeGoals)
+  const filteredNeighbors = useMemo(
+    () => ({
+      containers: neighbors.containers.filter(goalMatchesActiveClassConfig),
+      children: neighbors.children.filter(goalMatchesActiveClassConfig),
+      requires: neighbors.requires.filter(goalMatchesActiveClassConfig),
+      inheritedRequires: neighbors.inheritedRequires.filter(goalMatchesActiveClassConfig),
+      effectiveRequires: neighbors.effectiveRequires.filter(goalMatchesActiveClassConfig),
+      directForward: neighbors.directForward.filter(goalMatchesActiveClassConfig),
+      inheritedForward: neighbors.inheritedForward.filter(goalMatchesActiveClassConfig),
+      forward: neighbors.forward.filter(goalMatchesActiveClassConfig),
+    }),
+    [goalMatchesActiveClassConfig, neighbors],
+  )
 
   // --- MASTERY CALCULATION ---
   const masteryCache = useMemo(() => new Map<string, { masterySum: number; weightSum: number }>(), [])
@@ -182,7 +245,7 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
         if (visited.has(gId)) return { masterySum: 0, weightSum: 0 } // Circular dependency
 
         visited.add(gId)
-        const goal = goalIndexAll.get(gId)
+        const goal = classGoalIndexAll.get(gId)
         if (!goal) return { masterySum: 0, weightSum: 0 }
 
         let masterySum = 0
@@ -211,7 +274,7 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
           weightSum = weight
         } else {
           goal.contains.forEach((childId) => {
-            const childGoal = goalIndexAll.get(childId)
+            const childGoal = classGoalIndexAll.get(childId)
             if (childGoal) {
               const childTotals = getMasteryRecursive(childId, new Set(visited))
               masterySum += childTotals.masterySum
@@ -225,7 +288,7 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
       const totals = getMasteryRecursive(goalId)
       return totals.weightSum > 0 ? totals.masterySum / totals.weightSum : 0
     },
-    [currentLearnerId, masteryByStudent, goalIndexAll, goalShortKeyMap, masteryCache],
+    [classGoalIndexAll, currentLearnerId, masteryByStudent, goalShortKeyMap, masteryCache],
   )
 
 
@@ -234,12 +297,13 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
   useEffect(() => {
     const isValid =
       selectedGoalId &&
-      goalIndexAll.has(selectedGoalId) &&
-      (!activeClass || goalIndexAll.get(selectedGoalId)?.landscapeId === activeClass.landscapeId)
+      classGoalIndexAll.has(selectedGoalId) &&
+      (!activeClass || classGoalIndexAll.get(selectedGoalId)?.landscapeId === activeClass.landscapeId) &&
+      goalMatchesActiveClassConfig(classGoalIndexAll.get(selectedGoalId))
     if (!isValid) {
       setSelectedGoalId(classRootGoals[0]?.id ?? '')
     }
-  }, [activeClass, classRootGoals, goalIndexAll, selectedGoalId])
+  }, [activeClass, classGoalIndexAll, classRootGoals, goalMatchesActiveClassConfig, selectedGoalId])
 
   useEffect(() => {
     if (classes.length === 0) {
@@ -281,7 +345,7 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
     const isSameLandscape = lastContextRef.current.lid === activeClass.landscapeId
     const targetGoalId = activeClass.currentGoalId || (isSameLandscape ? selectedGoalId : undefined) || classRootGoals[0]?.id
 
-    const next = { lid: activeClass.landscapeId, filter: activeClass.activeFilter, goalId: targetGoalId }
+    const next = { lid: activeClass.landscapeId, filter: trainerContextFilter, goalId: targetGoalId }
     const prev = lastContextRef.current
     if (
       prev.lid !== next.lid ||
@@ -295,7 +359,7 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
     if (!activeClass.students.find((s) => s.id === currentLearnerId) && currentLearnerId !== '__ALL__') {
       onSelectLearner('__ALL__')
     }
-  }, [activeClass, classRootGoals, currentLearnerId, onSelectLearner, selectedGoalId, onContextChange])
+  }, [activeClass, classRootGoals, currentLearnerId, onSelectLearner, selectedGoalId, onContextChange, trainerContextFilter])
 
   useEffect(() => {
     if (!activeClass) return
@@ -373,7 +437,7 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
       const updated = classes.map((c) => (c.id === activeClass.id ? { ...c, currentGoalId: id } : c))
       persistClasses(updated)
     }
-    onContextChange(activeClass?.landscapeId ?? '', activeClass?.activeFilter ?? 'all', id)
+    onContextChange(activeClass?.landscapeId ?? '', trainerContextFilter, id)
   }
 
   const handleTogglePlan = async (goalId: string) => {
@@ -404,7 +468,7 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
 
   const handleTogglePlanForAll = async (goalId: string) => {
     if (!activeClass) return
-    const goal = goalIndexAll.get(goalId)
+    const goal = classGoalIndexAll.get(goalId)
     if (!goal) return
 
     const plannedCount = aggregatedPlannedGoals?.get(goalId) ?? 0
@@ -566,12 +630,17 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
   if (isCreating) {
     return (
       <div className="min-h-screen bg-gray-50 dark:bg-slate-950 p-8 flex items-center justify-center">
-        <ClassSetup landscapes={classSetupLandscapes ?? landscapeEntries} onCancel={() => setIsCreating(false)} onSave={(session) => {
+        <ClassSetup
+          landscapes={classSetupLandscapes ?? landscapeEntries}
+          rootLandscapeId={classSetupLandscapes && classSetupLandscapes.length > 1 ? classSetupLandscapes[0]?.meta.landscapeId : undefined}
+          onCancel={() => setIsCreating(false)}
+          onSave={(session) => {
           const next = [...classes, session]
           persistClasses(next)
           setActiveClassId(session.id)
           setIsCreating(false)
-        }} />
+          }}
+        />
       </div>
     )
   }
@@ -622,7 +691,12 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
               <div className="text-sm text-text-secondary mb-4">{c.students.length} {t.students}</div>
               <div className="mt-auto flex gap-2 text-[10px] uppercase tracking-wider text-text-secondary">
                 <span className="bg-gray-100 dark:bg-slate-800 px-2 py-1 rounded border border-border-color">{c.landscapeId}</span>
-                <span className="bg-gray-100 dark:bg-slate-800 px-2 py-1 rounded border border-border-color">{c.activeFilter || 'all'}</span>
+                <span className="bg-gray-100 dark:bg-slate-800 px-2 py-1 rounded border border-border-color">
+                  {c.rootLandscapeId ? (c.personalConfig?.[c.rootLandscapeId]?.filterId ?? 'ALL') : (c.activeFilter || 'all')}
+                </span>
+                {c.personalConfig?.[c.landscapeId]?.filterId && c.personalConfig[c.landscapeId]?.filterId !== 'ALL' && (
+                  <span className="bg-gray-100 dark:bg-slate-800 px-2 py-1 rounded border border-border-color">{c.personalConfig[c.landscapeId]?.filterId}</span>
+                )}
               </div>
             </div>
           ))}
@@ -679,16 +753,17 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
           <CompetenceTree
             key={`trainer-competence-tree-${activeClass?.id ?? 'none'}`}
             rootGoals={classRootGoals}
-            allGoals={goalIndexAll}
+            allGoals={classGoalIndexAll}
             getMastery={getStudentMastery}
             plannedGoals={plannedGoals}
             onTogglePlan={currentLearnerId === '__ALL__' ? handleTogglePlanForAll : handleTogglePlan}
             onSelect={handleSelectGoal}
             selectedId={selectedGoalId}
-            activeFilter={currentLearnerId === '__ALL__' ? 'all' : activeClass.activeFilter}
+            activeFilter={trainerContextFilter}
             structureMode="content"
             aggregatedPlannedGoals={aggregatedPlannedGoals}
             totalStudents={activeClass.students.length}
+            personalConfig={activeClass.personalConfig}
           />
         </div>
       </aside>
@@ -703,7 +778,7 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
                   <NeighborSection
                     title={tExp.requires}
                     emptyLabel={tExp.emptyRequires}
-                    goals={neighbors.requires}
+                    goals={filteredNeighbors.requires}
                     getMastery={getStudentMastery}
                     onClick={handleSelectGoal}
                     showMastery
@@ -711,7 +786,7 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
                   <NeighborSection
                     title={tExp.inheritedRequires}
                     emptyLabel={tExp.emptyInherited}
-                    goals={neighbors.inheritedRequires}
+                    goals={filteredNeighbors.inheritedRequires}
                     getMastery={getStudentMastery}
                     onClick={handleSelectGoal}
                     showMastery
@@ -722,7 +797,7 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
                   <NeighborSection
                     title={tExp.contains}
                     emptyLabel={tExp.emptyContains}
-                    goals={neighbors.children}
+                    goals={filteredNeighbors.children}
                     getMastery={getStudentMastery}
                     onClick={handleSelectGoal}
                     showMastery
@@ -731,7 +806,7 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
                   <NeighborSection
                     title={tExp.nextStepsDirect ?? tExp.nextSteps}
                     emptyLabel={tExp.emptyNextSteps}
-                    goals={neighbors.directForward}
+                    goals={filteredNeighbors.directForward}
                     getMastery={getStudentMastery}
                     onClick={handleSelectGoal}
                     highlightForward
@@ -740,7 +815,7 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
                   <NeighborSection
                     title={tExp.nextStepsInherited ?? tExp.nextSteps}
                     emptyLabel={tExp.emptyNextStepsInherited ?? tExp.emptyNextSteps}
-                    goals={neighbors.inheritedForward}
+                    goals={filteredNeighbors.inheritedForward}
                     getMastery={getStudentMastery}
                     onClick={handleSelectGoal}
                     highlightForward
@@ -761,7 +836,7 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
               <NeighborSection
                 title={tExp.requires}
                 emptyLabel={tExp.emptyRequires}
-                goals={neighbors.requires}
+                goals={filteredNeighbors.requires}
                 getMastery={getStudentMastery}
                 onClick={handleSelectGoal}
                 showMastery
@@ -769,7 +844,7 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
               <NeighborSection
                 title={tExp.inheritedRequires}
                 emptyLabel={tExp.emptyInherited}
-                goals={neighbors.inheritedRequires}
+                goals={filteredNeighbors.inheritedRequires}
                 getMastery={getStudentMastery}
                 onClick={handleSelectGoal}
                 showMastery
@@ -780,7 +855,7 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
               <NeighborSection
                 title={tExp.contains}
                 emptyLabel={tExp.emptyContains}
-                goals={neighbors.children}
+                goals={filteredNeighbors.children}
                 getMastery={getStudentMastery}
                 onClick={handleSelectGoal}
                 showMastery
@@ -789,7 +864,7 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
               <NeighborSection
                 title={tExp.nextStepsDirect ?? tExp.nextSteps}
                 emptyLabel={tExp.emptyNextSteps}
-                goals={neighbors.directForward}
+                goals={filteredNeighbors.directForward}
                 getMastery={getStudentMastery}
                 onClick={handleSelectGoal}
                 highlightForward
@@ -798,7 +873,7 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
               <NeighborSection
                 title={tExp.nextStepsInherited ?? tExp.nextSteps}
                 emptyLabel={tExp.emptyNextStepsInherited ?? tExp.emptyNextSteps}
-                goals={neighbors.inheritedForward}
+                goals={filteredNeighbors.inheritedForward}
                 getMastery={getStudentMastery}
                 onClick={handleSelectGoal}
                 highlightForward

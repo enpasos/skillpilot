@@ -1,5 +1,9 @@
 import type { ClassSession } from '../trainerTypes'
 import { CANONICAL_GYMNASIUM_ROOT_ID, isCompatibilityOnlyCurriculum } from './curriculumDisplay'
+import {
+  applyDefaultGlobalStageScope,
+  GLOBAL_STAGE_SCOPE_CONFIG_IDS,
+} from './personalCurriculumStageScope'
 
 const CANONICAL_GYMNASIUM_MATH_ID = '68a8ac50-f5f5-4e24-8aa9-5e408ca01ced'
 const CANONICAL_GYMNASIUM_PHYSICS_ID = '7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a'
@@ -117,16 +121,110 @@ const inferCanonicalLandscapeIdFromClassName = (className?: string | null) => {
   return ''
 }
 
-export const migrateTrainerClassSession = (session: ClassSession): ClassSession => {
-  const normalizedLandscapeId = normalizeTrainerLandscapeId(session.landscapeId)
-  const inferredLandscapeId = normalizedLandscapeId || inferCanonicalLandscapeIdFromClassName(session.name)
-  if (!inferredLandscapeId || (inferredLandscapeId === session.landscapeId && session.currentGoalId === undefined)) {
-    return session
+const normalizeFilterId = (value?: string | null) => {
+  const normalized = (value ?? '').trim().toUpperCase()
+  return normalized.length > 0 ? normalized : undefined
+}
+
+const inferCourseProfileFilterIdFromClassName = (className?: string | null) => {
+  const normalizedName = normalizeClassName(className)
+  if (!normalizedName) return undefined
+  if (/\b(lk|leistungskurs)\b/.test(normalizedName)) return 'LK'
+  if (/\b(gk|grundkurs)\b/.test(normalizedName)) return 'GK'
+  return undefined
+}
+
+const inferJurisdictionFilterId = (filterId?: string | null) => {
+  const normalized = normalizeFilterId(filterId)
+  if (!normalized || normalized === 'ALL') return 'ALL'
+  return /^DE-[A-Z]{2}$/.test(normalized) ? normalized : 'ALL'
+}
+
+const isCanonicalGymnasiumLandscapeId = (landscapeId?: string | null) =>
+  !!landscapeId && (
+    landscapeId === CANONICAL_GYMNASIUM_ROOT_ID
+    || landscapeId === CANONICAL_GYMNASIUM_MATH_ID
+    || landscapeId === CANONICAL_GYMNASIUM_PHYSICS_ID
+    || landscapeId === CANONICAL_GYMNASIUM_CHEMISTRY_ID
+    || landscapeId === CANONICAL_GYMNASIUM_BIOLOGY_ID
+    || landscapeId === CANONICAL_GYMNASIUM_INFORMATICS_ID
+    || landscapeId === CANONICAL_GYMNASIUM_HISTORY_ID
+    || landscapeId === CANONICAL_GYMNASIUM_GERMAN_ID
+    || landscapeId === CANONICAL_GYMNASIUM_POLITICS_ECONOMICS_ID
+    || landscapeId === CANONICAL_GYMNASIUM_ENGLISH_ID
+    || landscapeId === CANONICAL_GYMNASIUM_FRENCH_ID
+    || landscapeId === CANONICAL_GYMNASIUM_LATIN_ID
+    || landscapeId === CANONICAL_GYMNASIUM_SPANISH_ID
+    || landscapeId === CANONICAL_GYMNASIUM_ITALIAN_ID
+    || landscapeId === CANONICAL_GYMNASIUM_RUSSIAN_ID
+    || landscapeId === CANONICAL_GYMNASIUM_POLISH_ID
+    || landscapeId === CANONICAL_GYMNASIUM_CZECH_ID
+    || landscapeId === CANONICAL_GYMNASIUM_GREEK_ID
+    || landscapeId === CANONICAL_GYMNASIUM_CHINESE_ID
+    || landscapeId === CANONICAL_GYMNASIUM_MUSIC_ID
+    || landscapeId === CANONICAL_GYMNASIUM_ECONOMICS_ID
+  )
+
+const buildCanonicalGymnasiumPersonalConfig = (
+  landscapeId: string,
+  className?: string | null,
+  activeFilter?: string | null,
+) => {
+  const inferredCourseProfile = (() => {
+    const normalizedActiveFilter = normalizeFilterId(activeFilter)
+    if (normalizedActiveFilter === 'GK' || normalizedActiveFilter === 'LK' || normalizedActiveFilter === 'ALL') {
+      return normalizedActiveFilter
+    }
+    return inferCourseProfileFilterIdFromClassName(className)
+  })()
+  const rootFilterId = inferJurisdictionFilterId(activeFilter)
+  const initialConfig = {
+    [CANONICAL_GYMNASIUM_ROOT_ID]: {
+      selected: true,
+      filterId: rootFilterId,
+    },
+    [landscapeId]: {
+      selected: true,
+      ...(inferredCourseProfile ? { filterId: inferredCourseProfile } : {}),
+    },
+  } satisfies NonNullable<ClassSession['personalConfig']>
+  const scoped = applyDefaultGlobalStageScope(initialConfig).config
+
+  if (inferredCourseProfile === 'GK' || inferredCourseProfile === 'LK' || inferredCourseProfile === 'ALL') {
+    scoped[GLOBAL_STAGE_SCOPE_CONFIG_IDS.sek1] = { selected: false }
+    scoped[GLOBAL_STAGE_SCOPE_CONFIG_IDS.sek2] = { selected: true }
   }
 
   return {
+    personalConfig: scoped,
+    rootLandscapeId: CANONICAL_GYMNASIUM_ROOT_ID,
+  }
+}
+
+export const migrateTrainerClassSession = (session: ClassSession): ClassSession => {
+  const normalizedLandscapeId = normalizeTrainerLandscapeId(session.landscapeId)
+  const inferredLandscapeId = normalizedLandscapeId || inferCanonicalLandscapeIdFromClassName(session.name)
+  if (!inferredLandscapeId) {
+    return session
+  }
+
+  const next: ClassSession = {
     ...session,
     landscapeId: inferredLandscapeId,
     currentGoalId: undefined,
   }
+
+  if (isCanonicalGymnasiumLandscapeId(inferredLandscapeId)) {
+    const canonicalConfig = buildCanonicalGymnasiumPersonalConfig(
+      inferredLandscapeId,
+      session.name,
+      session.activeFilter,
+    )
+    if (!session.personalConfig || !session.rootLandscapeId) {
+      next.personalConfig = canonicalConfig.personalConfig
+      next.rootLandscapeId = canonicalConfig.rootLandscapeId
+    }
+  }
+
+  return next
 }

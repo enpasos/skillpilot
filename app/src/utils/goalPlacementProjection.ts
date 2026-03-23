@@ -18,6 +18,11 @@ const normalizeComparableText = (value: string | undefined): string =>
 
 const isWildcardFilter = (value?: string) => !value || value.toLocaleLowerCase() === 'all'
 
+const normalizeFilterIds = (filters?: string | string[]) =>
+  (Array.isArray(filters) ? filters : [filters])
+    .filter((value): value is string => typeof value === 'string' && value.trim().length > 0)
+    .filter((value) => !isWildcardFilter(value))
+
 const getProgramUnitPhaseTokens = (unit: ProgramUnit): string[] => {
   const tokens = new Set<string>()
   const shortLabel = normalizeComparableText(unit.shortLabel)
@@ -128,19 +133,22 @@ const contextValueMatchesFilter = (
   return contextValue.trim().toLocaleLowerCase('de-DE') === filterId.trim().toLocaleLowerCase('de-DE')
 }
 
-const placementMatchesActiveFilter = (
+const placementMatchesFilters = (
   placement: GoalPlacement,
-  activeFilter?: string,
+  activeFilters?: string | string[],
 ): boolean => {
-  if (isWildcardFilter(activeFilter)) return false
+  const filterIds = normalizeFilterIds(activeFilters)
+  if (filterIds.length === 0) return false
 
-  const dimension = inferPlacementFilterDimension(activeFilter)
-  if (!dimension) return false
+  return filterIds.every((filterId) => {
+    const dimension = inferPlacementFilterDimension(filterId)
+    if (!dimension) return false
 
-  const contextValue = placement.context?.[dimension]
-  if (!contextValue) return true
+    const contextValue = placement.context?.[dimension]
+    if (!contextValue) return true
 
-  return contextValueMatchesFilter(contextValue, activeFilter!, dimension)
+    return contextValueMatchesFilter(contextValue, filterId, dimension)
+  })
 }
 
 const placementIsDefaultSafe = (placement: GoalPlacement): boolean => {
@@ -188,7 +196,7 @@ const createSyntheticProgramUnitAnchor = (
 
 export function applyGoalPlacementProjection<T extends ProjectableLandscapeEntry>(
   entries: T[],
-  activeFilter?: string,
+  activeFilter?: string | string[],
 ): T[] {
   return entries.map((entry) => {
     if (!Array.isArray(entry.goals) || entry.goals.length === 0) return entry
@@ -246,9 +254,9 @@ export function applyGoalPlacementProjection<T extends ProjectableLandscapeEntry
     }
 
     entry.meta.goalPlacements.forEach((placement) => {
-      const eligible = isWildcardFilter(activeFilter)
+      const eligible = normalizeFilterIds(activeFilter).length === 0
         ? placementIsDefaultSafe(placement)
-        : placementMatchesActiveFilter(placement, activeFilter)
+        : placementMatchesFilters(placement, activeFilter)
       if (!eligible) return
 
       const unit = unitsById.get(placement.unitId)
