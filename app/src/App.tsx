@@ -192,6 +192,44 @@ const App: React.FC = () => {
     [currentLandscapeEntry, landscapeEntries, selectionGoalIndexAll],
   )
 
+  const trainerClassSetupLandscapes = useMemo(() => {
+    if (!currentLandscapeEntry) {
+      return landscapeEntries
+    }
+
+    const entriesById = new Map(landscapeEntries.map((entry) => [entry.meta.landscapeId, entry]))
+    const currentRoot =
+      currentLandscapeEntry.goals.find((goal) => goal.tags?.includes('root')) ?? currentLandscapeEntry.goals[0]
+
+    const childLandscapeEntries: typeof landscapeEntries = []
+    const seenLandscapeIds = new Set<string>()
+    for (const childId of currentRoot?.contains ?? []) {
+      const childGoal = selectionGoalIndexAll.get(childId)
+      const childLandscapeId = childGoal?.landscapeId
+      if (
+        !childLandscapeId ||
+        childLandscapeId === currentLandscapeEntry.meta.landscapeId ||
+        seenLandscapeIds.has(childLandscapeId)
+      ) {
+        continue
+      }
+
+      const childEntry = entriesById.get(childLandscapeId)
+      if (!childEntry) {
+        continue
+      }
+
+      childLandscapeEntries.push(childEntry)
+      seenLandscapeIds.add(childLandscapeId)
+    }
+
+    if (childLandscapeEntries.length > 0) {
+      return childLandscapeEntries
+    }
+
+    return [currentLandscapeEntry]
+  }, [currentLandscapeEntry, landscapeEntries, selectionGoalIndexAll])
+
   useEffect(() => {
     const rawPath = location.pathname || '/'
     const path = rawPath === '/' ? '/' : rawPath.replace(/\/+$/, '')
@@ -532,6 +570,7 @@ const App: React.FC = () => {
           element={
             <TrainerView
               landscapeEntries={core.landscapeEntries}
+              classSetupLandscapes={trainerClassSetupLandscapes}
               onContextChange={core.handleTrainerContextChange}
               rootGoals={core.breadcrumbRootGoals}
               goalIndexAll={core.goalIndexAll}

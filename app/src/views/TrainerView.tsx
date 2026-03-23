@@ -27,6 +27,7 @@ const toApi = (path: string) => (apiBase ? `${apiBase}${path}` : path)
 
 interface TrainerViewProps {
   landscapeEntries: LandscapeEntry[]
+  classSetupLandscapes?: LandscapeEntry[]
   onContextChange: (landscapeId: string, filter: string, goalId?: string) => void
   rootGoals: UiGoal[]
   goalIndexAll: Map<string, UiGoal>
@@ -42,6 +43,7 @@ interface TrainerViewProps {
 
 export const TrainerView: React.FC<TrainerViewProps> = ({
   landscapeEntries,
+  classSetupLandscapes,
   onContextChange,
   rootGoals,
   goalIndexAll,
@@ -557,7 +559,7 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
   if (isCreating) {
     return (
       <div className="min-h-screen bg-gray-50 dark:bg-slate-950 p-8 flex items-center justify-center">
-        <ClassSetup landscapes={landscapeEntries} onCancel={() => setIsCreating(false)} onSave={(session) => {
+        <ClassSetup landscapes={classSetupLandscapes ?? landscapeEntries} onCancel={() => setIsCreating(false)} onSave={(session) => {
           const next = [...classes, session]
           persistClasses(next)
           setActiveClassId(session.id)
