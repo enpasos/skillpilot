@@ -41,6 +41,36 @@ interface TrainerViewProps {
   onNotify?: (kind: ToastKind, message: string) => void
 }
 
+const loadStoredTrainerClasses = (): ClassSession[] => {
+  try {
+    const raw = localStorage.getItem('skillpilot_classes')
+    if (!raw) {
+      return []
+    }
+    const parsed = JSON.parse(raw)
+    if (!Array.isArray(parsed)) {
+      return []
+    }
+    const migrated = parsed.map((session) => migrateTrainerClassSession(session))
+    if (JSON.stringify(migrated) !== JSON.stringify(parsed)) {
+      localStorage.setItem('skillpilot_classes', JSON.stringify(migrated))
+    }
+    return migrated
+  } catch (err) {
+    console.warn('Could not load classes', err)
+    return []
+  }
+}
+
+const loadStoredActiveClassId = (): string | null => {
+  try {
+    return localStorage.getItem('skillpilot_active_class')
+  } catch (err) {
+    console.warn('Could not load active class', err)
+    return null
+  }
+}
+
 export const TrainerView: React.FC<TrainerViewProps> = ({
   landscapeEntries,
   classSetupLandscapes,
@@ -59,8 +89,8 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
   const t = language === 'en' ? en.trainer : de.trainer
   const tExp = language === 'en' ? en.explorer : de.explorer
   const notifications = language === 'en' ? en.notifications : de.notifications
-  const [classes, setClasses] = useState<ClassSession[]>([])
-  const [activeClassId, setActiveClassId] = useState<string | null>(null)
+  const [classes, setClasses] = useState<ClassSession[]>(loadStoredTrainerClasses)
+  const [activeClassId, setActiveClassId] = useState<string | null>(loadStoredActiveClassId)
   const [isCreating, setIsCreating] = useState(false)
   const [isAssigning, setIsAssigning] = useState(false)
   const [selectedGoalId, setSelectedGoalId] = useState<string>(rootGoals[0]?.id ?? '')
@@ -230,26 +260,21 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
   }, [activeClass, classRootGoals, goalIndexAll, selectedGoalId])
 
   useEffect(() => {
-    try {
-      const raw = localStorage.getItem('skillpilot_classes')
-      if (raw) {
-        const parsed = JSON.parse(raw)
-        if (Array.isArray(parsed)) {
-          const migrated = parsed.map((session) => migrateTrainerClassSession(session))
-          setClasses(migrated)
-          if (JSON.stringify(migrated) !== JSON.stringify(parsed)) {
-            localStorage.setItem('skillpilot_classes', JSON.stringify(migrated))
-          }
-        }
-      }
-      const lastActive = localStorage.getItem('skillpilot_active_class')
-      if (lastActive) setActiveClassId(lastActive)
-      clearReportedLoadError('trainer-class-list-load')
-    } catch (err) {
-      console.warn('Could not load classes', err)
-      notifyLoadErrorOnce('trainer-class-list-load', notifications.trainerInitialLoadFailed)
+    if (classes.length === 0) {
+      return
     }
-  }, [clearReportedLoadError, notifications.trainerInitialLoadFailed, notifyLoadErrorOnce])
+    clearReportedLoadError('trainer-class-list-load')
+  }, [classes.length, clearReportedLoadError])
+
+  useEffect(() => {
+    if (!activeClassId) {
+      return
+    }
+    if (classes.some((session) => session.id === activeClassId)) {
+      return
+    }
+    setActiveClassId(classes[0]?.id ?? null)
+  }, [activeClassId, classes])
 
   useEffect(() => {
     try {
