@@ -196,6 +196,8 @@ interface TreeNodeProps {
   depth?: number
   activeFilter?: string
   structureMode?: TreeStructureMode
+  hideTechnicalStructureUi?: boolean
+  allowClusterPlanning?: boolean
 
   aggregatedPlannedGoals?: Map<string, number>
   totalStudents?: number
@@ -231,6 +233,8 @@ const TreeNode: React.FC<TreeNodeProps> = ({
   depth = 0,
   activeFilter,
   structureMode = 'all',
+  hideTechnicalStructureUi = false,
+  allowClusterPlanning = true,
   aggregatedPlannedGoals,
   totalStudents,
   personalConfig,
@@ -262,6 +266,7 @@ const TreeNode: React.FC<TreeNodeProps> = ({
   const isPlanned = plannedGoals.has(goal.id)
   const isSelected = selectedId === goal.id
   const isSyntheticStructureNode = isSyntheticProgramUnit(goal)
+  const hidePlanControlForCluster = !allowClusterPlanning && hasChildren && !isPlanned
   // Frontier highlighting is intentionally disabled (we only mark active goal + mastery).
 
   // Propagate: If I am in the subtree (passed from parent) OR I am the start of the plan
@@ -364,7 +369,7 @@ const TreeNode: React.FC<TreeNodeProps> = ({
             }`}
         />
 
-        {isSyntheticStructureNode && (
+        {isSyntheticStructureNode && !hideTechnicalStructureUi && (
           <span
             className="px-1.5 py-0.5 rounded-full border border-slate-300 dark:border-slate-600 text-[10px] font-medium uppercase tracking-wide text-slate-500 dark:text-slate-400"
             title={t.tooltips.projectedStructureReadOnly}
@@ -382,8 +387,10 @@ const TreeNode: React.FC<TreeNodeProps> = ({
               </>
             )}
           </div>
+        ) : hidePlanControlForCluster ? (
+          <div className="w-6 h-6 shrink-0" aria-hidden="true" />
         ) : (
-          readOnly || (isSyntheticStructureNode && !isPlanned) ? (
+          readOnly || (isSyntheticStructureNode && !hideTechnicalStructureUi && !isPlanned) ? (
             <div
               className={`p-1 ${isPlanned ? 'text-red-400' : 'text-slate-300 dark:text-slate-600'}`}
               title={readOnly ? t.tooltips.legacyReadOnly : t.tooltips.projectedStructureReadOnly}
@@ -426,6 +433,8 @@ const TreeNode: React.FC<TreeNodeProps> = ({
                 depth={depth + 1}
                 activeFilter={activeFilter}
                 structureMode={structureMode}
+                hideTechnicalStructureUi={hideTechnicalStructureUi}
+                allowClusterPlanning={allowClusterPlanning}
                 aggregatedPlannedGoals={aggregatedPlannedGoals}
                 totalStudents={totalStudents}
                 personalConfig={personalConfig}
@@ -455,6 +464,8 @@ interface CompetenceTreeProps {
   selectedId: string
   activeFilter?: string
   structureMode?: TreeStructureMode
+  hideTechnicalStructureUi?: boolean
+  allowClusterPlanning?: boolean
 
   aggregatedPlannedGoals?: Map<string, number>
   totalStudents?: number
@@ -469,6 +480,8 @@ export const CompetenceTree: React.FC<CompetenceTreeProps> = ({
   activeFilter,
   personalConfig,
   structureMode = 'all',
+  hideTechnicalStructureUi = false,
+  allowClusterPlanning = true,
   ...props
 }) => {
   // We don't strictly filter root goals by activeFilter, because root goals usually represent 'Structure' (e.g. 'Fächer')
@@ -500,6 +513,8 @@ export const CompetenceTree: React.FC<CompetenceTreeProps> = ({
           masteryByGoalId={masteryByGoalId}
           activeFilter={activeFilter}
           structureMode={structureMode}
+          hideTechnicalStructureUi={hideTechnicalStructureUi}
+          allowClusterPlanning={allowClusterPlanning}
           personalConfig={personalConfig}
           hasActivePlan={hasActivePlan}
           isInPlannedSubtree={false}

@@ -1987,6 +1987,8 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
               selectedId={selectedId}
               activeFilter={effectiveActiveFilter}
               structureMode={learnerStructureMode}
+              hideTechnicalStructureUi
+              allowClusterPlanning={false}
               personalConfig={personalConfig}
               activeGoalId={effectiveActiveGoalId ?? undefined}
               forcedExpandedIds={forcedExpandedIds}
@@ -2196,6 +2198,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
                       : getEffectiveMastery(currentGoal.id)
                   }
                   showLearnerTools={true}
+                  hideTechnicalStructureUi
                   readOnly={isCompatibilityAuditOnly}
                   isPlanned={plannedGoals.has(currentGoal.id)}
                   isActive={effectiveActiveGoalId === currentGoal.id}
