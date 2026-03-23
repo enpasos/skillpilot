@@ -9,6 +9,7 @@ import { goalMatchesFilter, isWildcardFilter } from '../utils/goalFilters'
 import { goalMatchesGlobalStageScope, isCourseProfileFilterId } from '../utils/personalCurriculumStageScope'
 
 export type TreeStructureMode = 'all' | 'content' | 'competency'
+export type TreeAudience = 'learner' | 'trainer'
 
 const COMPETENCY_DIMENSION_ROOT_TAG = 'competency-axis:dimension-root'
 const SYNTHETIC_PROGRAM_UNIT_TAG = 'synthetic:program-unit'
@@ -18,6 +19,38 @@ const isCompetencyDimensionRoot = (goal: UiGoal) =>
 
 const isSyntheticProgramUnit = (goal: UiGoal) =>
   (goal.tags ?? []).includes(SYNTHETIC_PROGRAM_UNIT_TAG)
+
+const normalizeTreeComparableText = (value: string | undefined) =>
+  (value ?? '')
+    .normalize('NFKC')
+    .toLocaleLowerCase('de-DE')
+    .replace(/\s+/g, ' ')
+    .trim()
+
+const hasEquivalentConcreteSibling = (
+  syntheticGoal: UiGoal,
+  siblingIds: string[],
+  allGoals: Map<string, UiGoal>,
+) => {
+  const syntheticTitle = normalizeTreeComparableText(syntheticGoal.title)
+  if (!syntheticTitle) return false
+
+  return siblingIds.some((siblingId) => {
+    const sibling = allGoals.get(siblingId)
+    if (!sibling || sibling.id === syntheticGoal.id || isSyntheticProgramUnit(sibling)) return false
+
+    const siblingTitle = normalizeTreeComparableText(sibling.title)
+    return (
+      siblingTitle === syntheticTitle
+      || siblingTitle.startsWith(`${syntheticTitle} `)
+      || siblingTitle.startsWith(`${syntheticTitle} -`)
+      || siblingTitle.startsWith(`${syntheticTitle} –`)
+      || siblingTitle.startsWith(`${syntheticTitle}:`)
+      || siblingTitle.startsWith(`${syntheticTitle} ·`)
+      || siblingTitle.startsWith(`${syntheticTitle} (`)
+    )
+  })
+}
 
 const getContextualTreeTitle = (goal: UiGoal, parentGoal?: UiGoal): string => {
   if (!parentGoal || !isSyntheticProgramUnit(parentGoal)) return goal.title
@@ -38,6 +71,7 @@ const buildVisibleChildrenMap = (
   activeFilter?: string,
   personalConfig?: Record<string, { selected: boolean; filterId?: string }>,
   structureMode: TreeStructureMode = 'all',
+  audience: TreeAudience = 'trainer',
 ) => {
   const visibleChildrenByParent = new Map<string, string[]>()
   const hasConfig = !!personalConfig && Object.keys(personalConfig).length > 0
@@ -64,6 +98,10 @@ const buildVisibleChildrenMap = (
     const visibleChildren = childIds.filter((childId) => {
       const child = allGoals.get(childId)
       if (!child) return false
+
+      if (audience === 'learner' && isSyntheticProgramUnit(child) && hasEquivalentConcreteSibling(child, childIds, allGoals)) {
+        return false
+      }
 
       if (!goalMatchesGlobalStageScope(child, personalConfig ?? {})) {
         return false
@@ -206,6 +244,7 @@ interface TreeNodeProps {
   forcedExpandedIds?: Set<string>
   frontierIds?: Set<string>
   parentGoalId?: string
+  audience?: TreeAudience
 }
 
 const formatFilterLabel = (filterId?: string) => {
@@ -240,6 +279,7 @@ const TreeNode: React.FC<TreeNodeProps> = ({
   forcedExpandedIds,
   frontierIds,
   parentGoalId,
+  audience = 'trainer',
 }) => {
   const t = useTranslation()
   const goal = allGoals.get(goalId)
@@ -364,7 +404,7 @@ const TreeNode: React.FC<TreeNodeProps> = ({
             }`}
         />
 
-        {isSyntheticStructureNode && (
+        {audience !== 'learner' && isSyntheticStructureNode && (
           <span
             className="px-1.5 py-0.5 rounded-full border border-slate-300 dark:border-slate-600 text-[10px] font-medium uppercase tracking-wide text-slate-500 dark:text-slate-400"
             title={t.tooltips.projectedStructureReadOnly}
@@ -383,10 +423,10 @@ const TreeNode: React.FC<TreeNodeProps> = ({
             )}
           </div>
         ) : (
-          readOnly || (isSyntheticStructureNode && !isPlanned) ? (
+          readOnly ? (
             <div
               className={`p-1 ${isPlanned ? 'text-red-400' : 'text-slate-300 dark:text-slate-600'}`}
-              title={readOnly ? t.tooltips.legacyReadOnly : t.tooltips.projectedStructureReadOnly}
+              title={t.tooltips.legacyReadOnly}
             >
               {isPlanned ? <SquareX size={16} className="text-red-400" /> : <Square size={16} className="text-slate-300" />}
             </div>
@@ -435,6 +475,7 @@ const TreeNode: React.FC<TreeNodeProps> = ({
                 forcedExpandedIds={forcedExpandedIds}
                 frontierIds={frontierIds}
                 parentGoalId={goal.id}
+                audience={audience}
               />
             ))}
           </div>
@@ -462,6 +503,7 @@ interface CompetenceTreeProps {
   activeGoalId?: string
   forcedExpandedIds?: Set<string>
   frontierIds?: Set<string>
+  audience?: TreeAudience
 }
 
 export const CompetenceTree: React.FC<CompetenceTreeProps> = ({
@@ -469,6 +511,7 @@ export const CompetenceTree: React.FC<CompetenceTreeProps> = ({
   activeFilter,
   personalConfig,
   structureMode = 'all',
+  audience = 'trainer',
   ...props
 }) => {
   // We don't strictly filter root goals by activeFilter, because root goals usually represent 'Structure' (e.g. 'Fächer')
@@ -477,8 +520,8 @@ export const CompetenceTree: React.FC<CompetenceTreeProps> = ({
   const visibleRoots = rootGoals
   const hasActivePlan = props.plannedGoals.size > 0
   const visibleChildrenByParent = React.useMemo(
-    () => buildVisibleChildrenMap(props.allGoals, activeFilter, personalConfig, structureMode),
-    [activeFilter, personalConfig, props.allGoals, structureMode],
+    () => buildVisibleChildrenMap(props.allGoals, activeFilter, personalConfig, structureMode, audience),
+    [activeFilter, audience, personalConfig, props.allGoals, structureMode],
   )
   const sortedChildrenByParent = React.useMemo(
     () => buildSortedChildrenMap(visibleChildrenByParent, props.allGoals),
@@ -503,6 +546,7 @@ export const CompetenceTree: React.FC<CompetenceTreeProps> = ({
           personalConfig={personalConfig}
           hasActivePlan={hasActivePlan}
           isInPlannedSubtree={false}
+          audience={audience}
           {...props}
         />
       ))}

@@ -2433,6 +2433,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
               activeGoalId={effectiveActiveGoalId ?? undefined}
               forcedExpandedIds={forcedExpandedIds}
               frontierIds={frontierIds}
+              audience="learner"
             />
           )}
         </div>
