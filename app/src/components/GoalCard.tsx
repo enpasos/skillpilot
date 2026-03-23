@@ -12,6 +12,7 @@ interface GoalCardProps {
   masteryValue: number
   onMasteryChange?: (id: string, value: number) => void
   showLearnerTools: boolean
+  hideTechnicalStructureUi?: boolean
   readOnly?: boolean
   showDetails?: boolean
   isPlanned?: boolean
@@ -203,6 +204,7 @@ export const GoalCard: React.FC<GoalCardProps> = ({
   masteryValue,
   onMasteryChange,
   showLearnerTools,
+  hideTechnicalStructureUi = false,
   readOnly = false,
   showDetails = false,
   isPlanned = false,
@@ -310,7 +312,7 @@ export const GoalCard: React.FC<GoalCardProps> = ({
           <h2 className="text-2xl font-semibold text-text-primary leading-tight">
             <InlineMathText text={goal.title} />
           </h2>
-          {!isLearnerAudience && isProjectedStructureNode && (
+          {!isLearnerAudience && isProjectedStructureNode && !hideTechnicalStructureUi && (
             <div className="mt-2 flex flex-wrap gap-2">
               <span className="inline-flex items-center rounded-full border border-slate-300 dark:border-slate-600 px-2 py-0.5 text-[11px] font-medium uppercase tracking-wide text-slate-600 dark:text-slate-300">
                 {projectedStructureBadge}
@@ -344,7 +346,7 @@ export const GoalCard: React.FC<GoalCardProps> = ({
         </div>
       </div>
 
-      {!isLearnerAudience && isProjectedStructureNode && (
+      {!isLearnerAudience && isProjectedStructureNode && !hideTechnicalStructureUi && (
         <div className="mb-4 rounded-2xl border border-slate-200 bg-slate-50/80 p-4 text-sm text-text-secondary dark:border-slate-700 dark:bg-slate-800/40">
           <div className="font-semibold text-text-primary">{projectedStructureTitle}</div>
           <p className="mt-1">{projectedStructureDescription}</p>
@@ -617,7 +619,7 @@ export const GoalCard: React.FC<GoalCardProps> = ({
             </div>
           )}
 
-          {!isLearnerAudience && isProjectedStructureNode && (
+          {!isLearnerAudience && isProjectedStructureNode && !hideTechnicalStructureUi && (
             <div className="rounded-xl border border-slate-200 bg-slate-50/40 p-4 text-sm text-text-secondary dark:border-slate-700 dark:bg-slate-800/30">
               {projectedStructureHint}
             </div>
@@ -665,9 +667,11 @@ export const GoalCard: React.FC<GoalCardProps> = ({
             <div className="flex items-center justify-between text-xs text-text-secondary">
               <span className="font-medium">
                 {isProjectedStructureNode
-                  ? (language === 'en'
-                    ? (isLearnerAudience ? 'Progress in this section' : 'Progress in this structure section')
-                    : (isLearnerAudience ? 'Fortschritt in diesem Abschnitt' : 'Fortschritt in diesem Strukturabschnitt'))
+                  ? (
+                    isLearnerAudience || hideTechnicalStructureUi
+                      ? (language === 'en' ? 'Progress in this section' : 'Fortschritt in diesem Abschnitt')
+                      : (language === 'en' ? 'Progress in this structure section' : 'Fortschritt in diesem Strukturabschnitt')
+                  )
                   : 'Kompetenzstand für dieses Lernziel'}
               </span>
               <span className="tabular-nums">{Math.round(masteryValue * 100)}%</span>
