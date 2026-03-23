@@ -723,9 +723,13 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   const frontierIds = useMemo(() => {
     const ids = new Set<string>()
 
-    const check = (id: string): boolean => {
+    const check = (id: string, visiting: Set<string> = new Set()): boolean => {
       // Respect Global Visibility Config (e.g. Personal Curriculum)
       if (!visibleGoals.has(id)) return false
+      if (visiting.has(id)) return false
+
+      const nextVisiting = new Set(visiting)
+      nextVisiting.add(id)
 
       const g = goalIndexAll.get(id)
       if (!g) return false
@@ -763,7 +767,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
       for (const childId of g.contains) {
         // If we found the frontier in this child, we STOP checking subsequent children (Sequential assumption).
         // This ensures typically only 1 frontier goal per container.
-        const childActive = check(childId)
+        const childActive = check(childId, nextVisiting)
         if (childActive) {
           containerActive = true
           break
