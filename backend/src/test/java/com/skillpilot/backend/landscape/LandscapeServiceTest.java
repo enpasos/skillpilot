@@ -662,7 +662,8 @@ class LandscapeServiceTest {
                                                 "Lineare Funktionen rechnerisch untersuchen",
                                                 "Scheitelpunkte quadratischer Funktionen bestimmen",
                                                 "Q3 Stochastik",
-                                                "Prozessbezogene Kompetenzen (K)");
+                                                "Q4.2 Problemlösen und Argumentieren",
+                                                "Übungen Prozesskompetenzen");
                 assertThat(landscape.getFilters())
                                 .extracting(LandscapeFilter::getId)
                                 .containsExactly("GK", "LK");
