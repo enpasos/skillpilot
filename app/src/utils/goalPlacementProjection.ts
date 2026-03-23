@@ -239,12 +239,14 @@ export function applyGoalPlacementProjection<T extends ProjectableLandscapeEntry
     const unitsById = new Map(entry.meta.programUnits.map((unit) => [unit.id, unit]))
     const goalPlacements = entry.meta.goalPlacements ?? []
     const anchorByUnitId = new Map<string, string>()
+    const unitIdByAnchorGoalId = new Map<string, string>()
     const primaryPlacementAnchorByGoalId = new Map<string, string>()
 
     entry.meta.programUnits.forEach((unit) => {
       const anchorGoalId = resolveProgramUnitAnchorGoalId(unit, clonedGoals)
       if (anchorGoalId) {
         anchorByUnitId.set(unit.id, anchorGoalId)
+        unitIdByAnchorGoalId.set(anchorGoalId, unit.id)
       }
     })
 
@@ -281,6 +283,7 @@ export function applyGoalPlacementProjection<T extends ProjectableLandscapeEntry
       clonedGoals.push(syntheticAnchor)
       goalById.set(syntheticAnchor.id, syntheticAnchor)
       anchorByUnitId.set(unit.id, syntheticAnchor.id)
+      unitIdByAnchorGoalId.set(syntheticAnchor.id, unit.id)
 
       const parentAnchorId = unit.parentUnitId
         ? (
@@ -330,11 +333,32 @@ export function applyGoalPlacementProjection<T extends ProjectableLandscapeEntry
       if (clonedRoot) {
         const resolveTopLevelAnchor = (goalId: string): string | undefined => {
           let anchorId = primaryPlacementAnchorByGoalId.get(goalId)
-          const seen = new Set<string>()
+          const seenAnchors = new Set<string>()
 
-          while (anchorId && rootDetachedGoalIds.has(anchorId) && !seen.has(anchorId)) {
-            seen.add(anchorId)
-            anchorId = primaryPlacementAnchorByGoalId.get(anchorId)
+          while (anchorId && !seenAnchors.has(anchorId)) {
+            seenAnchors.add(anchorId)
+            const unitId = unitIdByAnchorGoalId.get(anchorId)
+            if (!unitId) {
+              break
+            }
+
+            const unit = unitsById.get(unitId)
+            const parentUnitId = unit?.parentUnitId
+            if (!parentUnitId) {
+              break
+            }
+
+            const parentUnit = unitsById.get(parentUnitId)
+            if (!parentUnit || parentUnit.kind === 'program') {
+              break
+            }
+
+            const parentAnchorId = ensureAnchorForUnit(parentUnitId)
+            if (!parentAnchorId || parentAnchorId === anchorId) {
+              break
+            }
+
+            anchorId = parentAnchorId
           }
 
           return anchorId
