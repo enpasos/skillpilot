@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react'
+import { Link } from 'react-router-dom'
 import { LanguageToggle } from '../components/LanguageToggle'
 import { InlineMathText } from '../components/InlineMathText'
 import { requestJson } from '../utils/authoring/authoringClient'
@@ -612,10 +613,18 @@ export const CompositionViewEditorView: React.FC = () => {
             <div>
               <h1 className="text-2xl font-bold text-sky-600 dark:text-sky-400">Composition View Editor</h1>
               <p className="text-sm text-text-secondary">
-                Lokaler Editor fuer scope-spezifische Learner-Trees auf Basis kanonischer Teilbaeume.
+                Lokaler Editor für scope-spezifische Learner-Trees auf Basis kanonischer Teilbäume.
               </p>
             </div>
-            <LanguageToggle />
+            <div className="flex items-center gap-2 self-start">
+              <Link
+                to="/workbench"
+                className="rounded-lg border border-border-color px-3 py-2 text-sm font-semibold hover:bg-slate-100 dark:hover:bg-slate-800"
+              >
+                Workbench
+              </Link>
+              <LanguageToggle />
+            </div>
           </div>
 
           <div className="mt-4 grid grid-cols-1 gap-3 xl:grid-cols-[1fr_1fr_1fr_auto_auto]">
@@ -652,7 +661,7 @@ export const CompositionViewEditorView: React.FC = () => {
                 onChange={(event) => handleSelectCanonicalLandscape(event.target.value)}
                 className="rounded-lg border border-border-color bg-chat-bg px-3 py-2"
               >
-                <option value="">Bitte waehlen</option>
+                <option value="">Bitte wählen</option>
                 {canonicalSummaries.map((summary) => (
                   <option key={summary.path} value={summary.path}>
                     {summary.title} [{summary.landscapeId}]
@@ -680,7 +689,7 @@ export const CompositionViewEditorView: React.FC = () => {
           </div>
 
           <div className="mt-3 flex flex-wrap items-center gap-3 text-xs text-text-secondary">
-            <span>{dirty ? 'Ungespeicherte Aenderungen vorhanden.' : 'Keine ausstehenden Aenderungen.'}</span>
+            <span>{dirty ? 'Ungespeicherte Änderungen vorhanden.' : 'Keine ausstehenden Änderungen.'}</span>
             <span>Root-Nodes: <strong>{view?.rootNodes.length ?? 0}</strong></span>
             <span>Fehler: <strong>{blockingErrors.length}</strong></span>
             <span>Warnungen: <strong>{warningCount}</strong></span>
@@ -743,7 +752,7 @@ export const CompositionViewEditorView: React.FC = () => {
               <div className="flex flex-col gap-4">
                 <div>
                   <h2 className="text-lg font-semibold">View Details</h2>
-                  <p className="text-sm text-text-secondary">Bearbeitung von View-Metadaten und dem aktuell gewaehlten Knoten.</p>
+                  <p className="text-sm text-text-secondary">Bearbeitung von View-Metadaten und dem aktuell gewählten Knoten.</p>
                 </div>
 
                 <div className="grid grid-cols-1 gap-3">
@@ -802,7 +811,7 @@ export const CompositionViewEditorView: React.FC = () => {
 
                 {!selectedNode ? (
                   <div className="rounded-xl border border-border-color bg-chat-bg/40 p-3 text-sm text-text-secondary">
-                    Kein Knoten gewaehlt. Root-Nodes kannst du links anlegen oder anklicken.
+                    Kein Knoten gewählt. Root-Nodes kannst du links anlegen oder anklicken.
                   </div>
                 ) : selectedNode.kind === 'structure' ? (
                   <div className="flex flex-col gap-3 rounded-xl border border-border-color bg-chat-bg/40 p-3">

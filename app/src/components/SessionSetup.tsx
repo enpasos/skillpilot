@@ -3,7 +3,7 @@ import { Link, useLocation } from 'react-router-dom'
 import { CurriculumDropdown } from './CurriculumDropdown'
 import { ThemeToggle } from './ThemeToggle'
 import type { LandscapeSummary } from './CurriculumDropdown'
-import { Save, ArrowRight, Github, Trophy, ShieldCheck, Send, MessageCircle, Compass } from 'lucide-react'
+import { Save, ArrowRight, Github, Trophy, ShieldCheck, Send, MessageCircle, Compass, Wrench } from 'lucide-react'
 
 
 type Role = 'learner' | 'trainer' | 'explorer'
@@ -321,6 +321,10 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
               <div className="flex justify-center gap-6 pt-4 text-xs text-text-secondary items-center flex-wrap">
                 <Link to="/stats" className="hover:text-sky-500 hover:underline transition-colors">
                   {t.startPage.links.statistics}
+                </Link>
+                <Link to="/workbench" className="hover:text-sky-500 hover:underline transition-colors inline-flex items-center gap-1">
+                  <Wrench size={12} />
+                  <span>{t.startPage.links.workbench}</span>
                 </Link>
                 <Link
                   to={`/whitepaper/${language === 'de' ? 'de' : 'en'}`}

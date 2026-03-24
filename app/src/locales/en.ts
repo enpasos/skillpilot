@@ -47,6 +47,7 @@ export const en = {
         },
         links: {
             statistics: "Statistics",
+            workbench: "Workbench",
             whitepaper: "Whitepaper"
         },
         footer: {

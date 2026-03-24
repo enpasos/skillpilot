@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import { Link } from 'react-router-dom'
 import { FlashcardFlipCard } from '../components/srs/FlashcardFlipCard'
 import { LanguageToggle } from '../components/LanguageToggle'
 
@@ -699,7 +700,15 @@ export const FlashcardEditorView: React.FC = () => {
                 Lokale Editor-GUI für ein ausgewähltes Deck mit identischem Front-/Back-Rendering wie im Lernmodus.
               </p>
             </div>
-            <LanguageToggle />
+            <div className="flex items-center gap-2 self-start">
+              <Link
+                to="/workbench"
+                className="rounded-lg border border-border-color px-3 py-2 text-sm font-semibold hover:bg-slate-100 dark:hover:bg-slate-800"
+              >
+                Workbench
+              </Link>
+              <LanguageToggle />
+            </div>
           </div>
 
           <div className="grid grid-cols-1 gap-3 md:grid-cols-2 mt-4">

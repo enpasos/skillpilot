@@ -21,6 +21,7 @@ const PUBLIC_PATHS = new Set([
   '/stats',
   '/successes',
   '/start',
+  '/workbench',
   '/flashcard-editor',
   '/graph-editor',
   '/canonical-cluster-editor',
@@ -42,6 +43,7 @@ const UsersView = lazy(() => import('./views/UsersView').then((module) => ({ def
 const StatsView = lazy(() => import('./views/StatsView').then((module) => ({ default: module.StatsView })))
 const SuccessView = lazy(() => import('./views/SuccessView').then((module) => ({ default: module.SuccessView })))
 const Abi26MatheStartView = lazy(() => import('./views/Abi26MatheStartView').then((module) => ({ default: module.Abi26MatheStartView })))
+const WorkbenchView = lazy(() => import('./views/WorkbenchView').then((module) => ({ default: module.WorkbenchView })))
 const FlashcardEditorView = lazy(() => import('./views/FlashcardEditorView').then((module) => ({ default: module.FlashcardEditorView })))
 const GraphEditorView = lazy(() => import('./views/GraphEditorView').then((module) => ({ default: module.GraphEditorView })))
 const CanonicalClusterEditorView = lazy(() => import('./views/CanonicalClusterEditorView').then((module) => ({ default: module.CanonicalClusterEditorView })))
@@ -277,11 +279,11 @@ const App: React.FC = () => {
     const imprintDescription =
       language === 'en'
         ? 'Legal imprint and contact information for SkillPilot.'
-        : 'Impressum und Kontaktinformationen fuer SkillPilot.'
+        : 'Impressum und Kontaktinformationen für SkillPilot.'
     const legalDescription =
       language === 'en'
         ? 'Legal notice, licensing, and usage disclaimer for SkillPilot.'
-        : 'Rechtliche Hinweise, Lizenz und Haftung fuer SkillPilot.'
+        : 'Rechtliche Hinweise, Lizenz und Haftung für SkillPilot.'
 
     let title = baseTitle
     let description = defaultDescription
@@ -305,6 +307,11 @@ const App: React.FC = () => {
       } else if (path === '/successes') {
         title = `Successes | ${baseTitle}`
         description = 'Total number of mastered learning goals.'
+      } else if (path === '/workbench') {
+        title = `Workbench | ${baseTitle}`
+        description = language === 'en'
+          ? 'Central overview of local authoring and maintenance tools.'
+          : 'Zentrale Übersicht lokaler Authoring- und Wartungstools.'
       } else if (path === '/flashcard-editor') {
         title = `Flashcard Editor | ${baseTitle}`
         description = language === 'en'
@@ -324,7 +331,7 @@ const App: React.FC = () => {
         title = `Composition View Editor | ${baseTitle}`
         description = language === 'en'
           ? 'Local editor for scope-specific learner-facing composition views.'
-          : 'Lokaler Editor fuer scope-spezifische learner-facing Composition Views.'
+          : 'Lokaler Editor für scope-spezifische learner-facing Composition Views.'
       } else if (path === '/start' || path.startsWith('/start/')) {
         title = `Abi 2026 Mathe Hessen | ${baseTitle}`
         description = language === 'en'
@@ -432,6 +439,7 @@ const App: React.FC = () => {
           <Route path="/users" element={<UsersView />} />
           <Route path="/successes" element={<SuccessView />} />
           <Route path="/quickstart/:lang?" element={<StoryView />} />
+          <Route path="/workbench" element={<WorkbenchView />} />
           <Route path="/flashcard-editor" element={<FlashcardEditorView />} />
           <Route path="/graph-editor" element={<GraphEditorView />} />
           <Route path="/canonical-cluster-editor" element={<CanonicalClusterEditorView />} />

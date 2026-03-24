@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react'
+import { Link } from 'react-router-dom'
 import { LanguageToggle } from '../components/LanguageToggle'
 import { InlineMathText } from '../components/InlineMathText'
 
@@ -936,7 +937,15 @@ export const GraphEditorView: React.FC = () => {
                 Lokaler Editor, um `requires` gezielt auf atomare Ziele umzubauen.
               </p>
             </div>
-            <LanguageToggle />
+            <div className="flex items-center gap-2 self-start">
+              <Link
+                to="/workbench"
+                className="rounded-lg border border-border-color px-3 py-2 text-sm font-semibold hover:bg-slate-100 dark:hover:bg-slate-800"
+              >
+                Workbench
+              </Link>
+              <LanguageToggle />
+            </div>
           </div>
 
           <div className="mt-4 grid grid-cols-1 gap-3 lg:grid-cols-[1fr_auto_auto]">
