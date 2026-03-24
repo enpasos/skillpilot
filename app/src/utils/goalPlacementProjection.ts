@@ -236,6 +236,14 @@ export function applyGoalPlacementProjection<T extends ProjectableLandscapeEntry
     const goalById = new Map<string, UiGoal>(clonedGoals.map((goal) => [goal.id, goal]))
     const rootGoal = clonedGoals.find((goal) => goal.tags?.includes('root'))
     const originalRootContains = rootGoal ? [...rootGoal.contains] : []
+    const authoredParentIdsByGoalId = new Map<string, string[]>()
+    clonedGoals.forEach((goal) => {
+      ;(goal.contains ?? []).forEach((childId) => {
+        const parents = authoredParentIdsByGoalId.get(childId) ?? []
+        parents.push(goal.id)
+        authoredParentIdsByGoalId.set(childId, parents)
+      })
+    })
     const unitsById = new Map(entry.meta.programUnits.map((unit) => [unit.id, unit]))
     const goalPlacements = entry.meta.goalPlacements ?? []
     const anchorByUnitId = new Map<string, string>()
@@ -307,6 +315,7 @@ export function applyGoalPlacementProjection<T extends ProjectableLandscapeEntry
         ? placementIsDefaultSafe(placement)
         : placementMatchesFilters(placement, activeFilter)
       if (!eligible) return
+      if (placement.relation !== 'primary') return
 
       const unit = unitsById.get(placement.unitId)
       if (!unit) return
@@ -317,15 +326,16 @@ export function applyGoalPlacementProjection<T extends ProjectableLandscapeEntry
       const anchorGoal = goalById.get(anchorGoalId)
       const placedGoal = goalById.get(placement.goalId)
       if (!anchorGoal || !placedGoal) return
+      const authoredParentIds = authoredParentIdsByGoalId.get(placedGoal.id) ?? []
+      const hasExplicitNonRootAuthorParent = authoredParentIds.some((parentId) => parentId !== rootGoal?.id)
+      if (hasExplicitNonRootAuthorParent) return
 
       if (!anchorGoal.contains.includes(placedGoal.id)) {
         anchorGoal.contains.push(placedGoal.id)
       }
 
-      if (placement.relation === 'primary') {
-        rootDetachedGoalIds.add(placedGoal.id)
-        primaryPlacementAnchorByGoalId.set(placedGoal.id, anchorGoal.id)
-      }
+      rootDetachedGoalIds.add(placedGoal.id)
+      primaryPlacementAnchorByGoalId.set(placedGoal.id, anchorGoal.id)
     })
 
     if (rootGoal && rootDetachedGoalIds.size > 0) {

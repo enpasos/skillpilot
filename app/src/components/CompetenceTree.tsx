@@ -5,127 +5,16 @@ import type { UiGoal } from '../goalTypes'
 import { sortGoalsTopologically } from '../utils/goalSorter'
 import { isMastered } from '../goalUiUtils'
 import { InlineMathText } from './InlineMathText'
-import { goalMatchesFilter, isWildcardFilter } from '../utils/goalFilters'
-import { goalMatchesGlobalStageScope, isCourseProfileFilterId } from '../utils/personalCurriculumStageScope'
-
-export type TreeStructureMode = 'all' | 'content' | 'competency'
-export type TreeAudience = 'learner' | 'trainer'
-type TreePhaseContext = 'E' | 'Q1' | 'Q2' | 'Q3' | 'Q4'
-
-const COMPETENCY_DIMENSION_ROOT_TAG = 'competency-axis:dimension-root'
-const SYNTHETIC_PROGRAM_UNIT_TAG = 'synthetic:program-unit'
-
-const isCompetencyDimensionRoot = (goal: UiGoal) =>
-  (goal.tags ?? []).includes(COMPETENCY_DIMENSION_ROOT_TAG)
-
-const isSyntheticProgramUnit = (goal: UiGoal) =>
-  (goal.tags ?? []).includes(SYNTHETIC_PROGRAM_UNIT_TAG)
-
-const normalizeTreeComparableText = (value: string | undefined) =>
-  (value ?? '')
-    .normalize('NFKC')
-    .toLocaleLowerCase('de-DE')
-    .replace(/\s+/g, ' ')
-    .trim()
-
-const detectExplicitPhaseContext = (goal: UiGoal): TreePhaseContext | undefined => {
-  const normalizedPhase = normalizeTreeComparableText(goal.phase)
-  if (normalizedPhase === 'e') return 'E'
-  if (normalizedPhase === 'q1') return 'Q1'
-  if (normalizedPhase === 'q2') return 'Q2'
-  if (normalizedPhase === 'q3') return 'Q3'
-  if (normalizedPhase === 'q4') return 'Q4'
-
-  const title = normalizeTreeComparableText(goal.title)
-  if (!title) return undefined
-
-  if (
-    title.startsWith('e-phase')
-    || /^e\.\d/.test(title)
-    || title.endsWith('(e)')
-    || title.includes(' e-phase')
-  ) {
-    return 'E'
-  }
-
-  const qMatch = /^q([1-4])(?:\b|[.\s:\-–(])/.exec(title)
-  if (qMatch) {
-    return `Q${qMatch[1]}` as TreePhaseContext
-  }
-
-  const trailingQMatch = /\(q([1-4])\)$/.exec(title)
-  if (trailingQMatch) {
-    return `Q${trailingQMatch[1]}` as TreePhaseContext
-  }
-
-  return undefined
-}
-
-const isGoalRelevantInPhaseContext = (
-  goalId: string,
-  phaseContext: TreePhaseContext | undefined,
-  allGoals: Map<string, UiGoal>,
-  cache: Map<string, boolean>,
-  visiting: Set<string> = new Set(),
-): boolean => {
-  if (!phaseContext) return true
-
-  const cacheKey = `${phaseContext}:${goalId}`
-  const cached = cache.get(cacheKey)
-  if (cached !== undefined) return cached
-  if (visiting.has(cacheKey)) return false
-
-  visiting.add(cacheKey)
-  const goal = allGoals.get(goalId)
-  if (!goal) {
-    cache.set(cacheKey, false)
-    return false
-  }
-
-  const explicitPhaseContext = detectExplicitPhaseContext(goal)
-  if (explicitPhaseContext) {
-    const matches = explicitPhaseContext === phaseContext
-    cache.set(cacheKey, matches)
-    return matches
-  }
-
-  const childIds = goal.contains ?? []
-  if (childIds.length === 0) {
-    cache.set(cacheKey, true)
-    return true
-  }
-
-  const matches = childIds.some((childId) =>
-    isGoalRelevantInPhaseContext(childId, phaseContext, allGoals, cache, new Set(visiting)),
-  )
-  cache.set(cacheKey, matches)
-  return matches
-}
-
-const hasEquivalentConcreteSibling = (
-  syntheticGoal: UiGoal,
-  siblingIds: string[],
-  allGoals: Map<string, UiGoal>,
-) => {
-  const syntheticTitle = normalizeTreeComparableText(syntheticGoal.title)
-  if (!syntheticTitle) return false
-
-  return siblingIds.some((siblingId) => {
-    const sibling = allGoals.get(siblingId)
-    if (!sibling || sibling.id === syntheticGoal.id || isSyntheticProgramUnit(sibling)) return false
-
-    const siblingTitle = normalizeTreeComparableText(sibling.title)
-    return (
-      siblingTitle === syntheticTitle
-      || siblingTitle.startsWith(`${syntheticTitle} `)
-      || siblingTitle.startsWith(`${syntheticTitle} -`)
-      || siblingTitle.startsWith(`${syntheticTitle} –`)
-      || siblingTitle.startsWith(`${syntheticTitle}:`)
-      || siblingTitle.startsWith(`${syntheticTitle} ·`)
-      || siblingTitle.startsWith(`${syntheticTitle} (`)
-    )
-  })
-}
+import { isWildcardFilter } from '../utils/goalFilters'
+import { isCourseProfileFilterId } from '../utils/personalCurriculumStageScope'
+import {
+  buildVisibleChildrenMap,
+  getRenderedChildIds,
+  isSyntheticProgramUnit,
+  type TreeAudience,
+  type TreePhaseContext,
+  type TreeStructureMode,
+} from '../utils/treeProjectionRuntime'
 
 const getContextualTreeTitle = (goal: UiGoal, parentGoal?: UiGoal): string => {
   if (!parentGoal || !isSyntheticProgramUnit(parentGoal)) return goal.title
@@ -139,93 +28,6 @@ const getContextualTreeTitle = (goal: UiGoal, parentGoal?: UiGoal): string => {
   }
 
   return goal.title
-}
-
-const buildVisibleChildrenMap = (
-  allGoals: Map<string, UiGoal>,
-  activeFilter?: string,
-  personalConfig?: Record<string, { selected: boolean; filterId?: string }>,
-  structureMode: TreeStructureMode = 'all',
-  audience: TreeAudience = 'trainer',
-) => {
-  const visibleChildrenByParent = new Map<string, string[]>()
-  const hasConfig = !!personalConfig && Object.keys(personalConfig).length > 0
-  const nestedUnderSyntheticProgramUnit = new Set<string>()
-
-  allGoals.forEach((parent) => {
-    if (!isSyntheticProgramUnit(parent)) return
-    ;(parent.contains ?? []).forEach((childId) => {
-      nestedUnderSyntheticProgramUnit.add(childId)
-    })
-  })
-
-  allGoals.forEach((parent) => {
-    const childIds = parent.contains ?? []
-    if (childIds.length === 0) return
-
-    const hasPositiveSibling = hasConfig && childIds.some((childId) => {
-      const child = allGoals.get(childId)
-      if (!child) return false
-      const config = (child.landscapeId ? personalConfig?.[child.landscapeId] : undefined) ?? personalConfig?.[child.id]
-      return config?.selected === true
-    })
-
-    const visibleChildren = childIds.filter((childId) => {
-      const child = allGoals.get(childId)
-      if (!child) return false
-
-      if (audience === 'learner' && isSyntheticProgramUnit(child) && hasEquivalentConcreteSibling(child, childIds, allGoals)) {
-        return false
-      }
-
-      if (!goalMatchesGlobalStageScope(child, personalConfig ?? {})) {
-        return false
-      }
-
-      if (!goalMatchesFilter(child, activeFilter)) {
-        return false
-      }
-
-      const isCompetencyRoot = isCompetencyDimensionRoot(child)
-      const isRootParent = parent.tags?.includes('root')
-
-      if (isCompetencyRoot) {
-        if (structureMode !== 'competency') {
-          return false
-        }
-        if (!isRootParent) {
-          return false
-        }
-      }
-
-      if (isRootParent) {
-        if (structureMode === 'competency' && !isCompetencyRoot) {
-          return false
-        }
-        if (structureMode === 'all' && isCompetencyRoot && nestedUnderSyntheticProgramUnit.has(child.id)) {
-          return false
-        }
-      }
-
-      if (hasConfig) {
-        const config = (child.landscapeId ? personalConfig?.[child.landscapeId] : undefined) ?? personalConfig?.[child.id]
-        if (config) {
-          if (config.selected !== true) return false
-          if (!goalMatchesFilter(child, config.filterId)) {
-            return false
-          }
-        } else if (hasPositiveSibling) {
-          return false
-        }
-      }
-
-      return true
-    })
-
-    visibleChildrenByParent.set(parent.id, visibleChildren)
-  })
-
-  return visibleChildrenByParent
 }
 
 const buildSortedChildrenMap = (
@@ -374,16 +176,15 @@ const TreeNode: React.FC<TreeNodeProps> = ({
     }
   }, [forcedExpandedIds, goalId])
 
-  const sortedChildren = sortedChildrenByParent.get(goalId) ?? []
   if (!goal) return null
 
-  const phaseContext = detectExplicitPhaseContext(goal) ?? inheritedPhaseContext
-  const phaseContextCache = new Map<string, boolean>()
-  const renderedChildren = audience !== 'learner' || !phaseContext
-    ? sortedChildren
-    : sortedChildren.filter((childId) =>
-      isGoalRelevantInPhaseContext(childId, phaseContext, allGoals, phaseContextCache),
-    )
+  const { childIds: renderedChildren, phaseContext } = getRenderedChildIds(
+    goalId,
+    allGoals,
+    sortedChildrenByParent,
+    audience,
+    inheritedPhaseContext,
+  )
   const mastery = masteryByGoalId.get(goalId) ?? 0
 
   const hasChildren = renderedChildren.length > 0
@@ -654,3 +455,5 @@ export const CompetenceTree: React.FC<CompetenceTreeProps> = ({
     </div>
   )
 }
+
+export type { TreeAudience, TreePhaseContext, TreeStructureMode } from '../utils/treeProjectionRuntime'

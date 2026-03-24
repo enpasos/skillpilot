@@ -3,6 +3,8 @@ import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import type { ApplicabilityFinding } from './applicabilityCompiler'
 import { buildApplicabilityCompilation, getApplicabilityReportDir, writeApplicabilityReports } from './applicabilityCompiler'
+import type { TreeProjectionFinding } from './treeProjectionValidator'
+import { buildTreeProjectionValidationFindings } from './treeProjectionValidator'
 
 interface AcceptedWarningEntry {
   code: string
@@ -46,6 +48,7 @@ function loadAcceptedWarnings(): Map<string, AcceptedWarningEntry> {
 const result = buildApplicabilityCompilation()
 writeApplicabilityReports(result)
 const acceptedWarnings = loadAcceptedWarnings()
+const treeProjectionFindings = buildTreeProjectionValidationFindings()
 
 const reviewedCanonicalLandscapeIds = new Set([
   '68a8ac50-f5f5-4e24-8aa9-5e408ca01ced', // Mathematics
@@ -75,10 +78,14 @@ const selectedReports = process.env.APPLICABILITY_VALIDATION_SCOPE === 'all'
   ? result.reports
   : result.reports.filter((report) => reviewedCanonicalLandscapeIds.has(report.landscapeId))
 
+type ViewValidationFinding = ApplicabilityFinding | TreeProjectionFinding
+
 const findings = Array.from(
   new Map(
-    selectedReports
-      .flatMap((report) => report.findings)
+    ([
+      ...selectedReports.flatMap((report) => report.findings),
+      ...treeProjectionFindings,
+    ] as ViewValidationFinding[])
       .filter((finding) => process.env.APPLICABILITY_VALIDATION_SCOPE === 'all' || reviewedCanonicalLandscapeIds.has(finding.landscapeId))
       .map((finding) => [
         `${finding.severity}|${finding.code}|${finding.landscapeId}|${finding.goalId ?? ''}|${finding.dimension ?? ''}|${finding.value ?? ''}|${finding.message}`,
