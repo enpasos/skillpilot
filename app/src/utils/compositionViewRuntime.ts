@@ -170,16 +170,29 @@ const collectReferencedGoalIds = (node: CompositionViewNode, goalIds: Set<string
   node.children.forEach((child) => collectReferencedGoalIds(child, goalIds))
 }
 
-const collectDisplayLabels = (node: CompositionViewNode, labelsByGoalId: Map<string, string>) => {
-  if (node.kind === 'canonicalSubtree') {
-    const displayLabel = node.displayLabel?.trim()
-    if (displayLabel) {
-      labelsByGoalId.set(node.goalId, displayLabel)
-    }
-    return
-  }
+interface CanonicalSubtreePresentation {
+  displayLabel?: string
+  treeOrder?: number
+}
 
-  node.children.forEach((child) => collectDisplayLabels(child, labelsByGoalId))
+const collectCanonicalSubtreePresentation = (
+  nodes: CompositionViewNode[],
+  presentationByGoalId: Map<string, CanonicalSubtreePresentation>,
+) => {
+  nodes.forEach((node, index) => {
+    if (node.kind === 'canonicalSubtree') {
+      const existing = presentationByGoalId.get(node.goalId) ?? {}
+      const displayLabel = node.displayLabel?.trim()
+      presentationByGoalId.set(node.goalId, {
+        ...existing,
+        ...(displayLabel ? { displayLabel } : {}),
+        treeOrder: index,
+      })
+      return
+    }
+
+    collectCanonicalSubtreePresentation(node.children, presentationByGoalId)
+  })
 }
 
 const buildSyntheticGoals = (
@@ -277,9 +290,9 @@ export const applyCompositionViewProjection = (
     }
 
     const referencedGoalIds = new Set<string>()
-    const displayLabelsByGoalId = new Map<string, string>()
+    const presentationByGoalId = new Map<string, CanonicalSubtreePresentation>()
     view.rootNodes.forEach((node) => collectReferencedGoalIds(node, referencedGoalIds))
-    view.rootNodes.forEach((node) => collectDisplayLabels(node, displayLabelsByGoalId))
+    collectCanonicalSubtreePresentation(view.rootNodes, presentationByGoalId)
 
     const goalById = new Map(entry.goals.map((goal) => [goal.id, goal]))
     const hasAllReferencedGoals = Array.from(referencedGoalIds).every((goalId) => goalById.has(goalId))
@@ -289,14 +302,15 @@ export const applyCompositionViewProjection = (
 
     const strippedGoals = entry.goals.map((goal) => {
       const strippedGoal = stripRootTag(goal)
-      const displayLabel = displayLabelsByGoalId.get(strippedGoal.id)
-      if (!displayLabel) return strippedGoal
+      const presentation = presentationByGoalId.get(strippedGoal.id)
+      if (!presentation) return strippedGoal
       return {
         ...strippedGoal,
-        title: displayLabel,
+        title: presentation.displayLabel ?? strippedGoal.title,
         extendedData: {
           ...(strippedGoal.extendedData ?? {}),
-          compositionDisplayLabel: displayLabel,
+          ...(presentation.displayLabel ? { compositionDisplayLabel: presentation.displayLabel } : {}),
+          ...(typeof presentation.treeOrder === 'number' ? { treeOrder: presentation.treeOrder } : {}),
           compositionViewId: view.viewId,
         },
       }
