@@ -105,7 +105,7 @@ export function useAppCore({ role, setLearnerMeta, skillpilotId }: AppCoreOption
 
   const { language } = useLanguage()
   const [learnerPersonalCurriculum, setLearnerPersonalCurriculum] = React.useState<string | null>(null)
-  const [matchedCompositionView, setMatchedCompositionView] = React.useState<Record<string, unknown> | null>(null)
+  const [matchedCompositionViewsByLandscapeId, setMatchedCompositionViewsByLandscapeId] = React.useState<Record<string, Record<string, unknown>>>({})
 
   const [learnerGraphRefreshToken, setLearnerGraphRefreshToken] = React.useState(0)
   const { landscapeEntries, loadingLandscapes, landscapeError } = useLandscapes(selectedLandscapeId, language)
@@ -215,70 +215,82 @@ export function useAppCore({ role, setLearnerMeta, skillpilotId }: AppCoreOption
     return () => controller.abort()
   }, [role, skillpilotId])
 
-  const runtimeCompositionScope = useMemo(() => deriveRuntimeCompositionScope({
-    landscapeId: currentLandscapeEntry?.meta.landscapeId ?? selectedLandscapeId,
-    landscapeMeta: currentLandscapeEntry?.meta ?? null,
-    activeFilter,
-    learnerPersonalCurriculum,
-  }), [
-    activeFilter,
-    currentLandscapeEntry,
-    learnerPersonalCurriculum,
-    selectedLandscapeId,
-  ])
+  const runtimeCompositionScopes = useMemo(() => {
+    const scopes = new Map<string, ReturnType<typeof deriveRuntimeCompositionScope>>()
+    graphSourceLandscapeEntries.forEach((entry) => {
+      const scope = deriveRuntimeCompositionScope({
+        landscapeId: entry.meta.landscapeId,
+        landscapeMeta: entry.meta,
+        activeFilter,
+        learnerPersonalCurriculum,
+      })
+      if (scope) {
+        scopes.set(entry.meta.landscapeId, scope)
+      }
+    })
+    return scopes
+  }, [activeFilter, graphSourceLandscapeEntries, learnerPersonalCurriculum])
 
   useEffect(() => {
-    if (role !== 'learner' || !runtimeCompositionScope) {
-      setMatchedCompositionView(null)
+    if (role !== 'learner' || runtimeCompositionScopes.size === 0) {
+      setMatchedCompositionViewsByLandscapeId({})
       return
     }
 
     const controller = new AbortController()
     const signal = controller.signal
     const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
-    const params = new URLSearchParams({
-      landscapeId: runtimeCompositionScope.landscapeId,
-      schoolForm: runtimeCompositionScope.schoolForm ?? '',
-      jurisdiction: runtimeCompositionScope.jurisdiction ?? '',
-      stage: runtimeCompositionScope.stage ?? '',
-      courseProfile: runtimeCompositionScope.courseProfile ?? '',
-    })
-    const url = apiBase
-      ? `${apiBase}/api/ui/composition-views/match?${params.toString()}`
-      : `/api/ui/composition-views/match?${params.toString()}`
 
-    fetch(url, { signal })
-      .then(async (res) => {
+    void Promise.all(
+      Array.from(runtimeCompositionScopes.entries()).map(async ([landscapeId, scope]) => {
+        if (!scope) return null
+        const params = new URLSearchParams({
+          landscapeId: scope.landscapeId,
+          schoolForm: scope.schoolForm ?? '',
+          jurisdiction: scope.jurisdiction ?? '',
+          stage: scope.stage ?? '',
+          courseProfile: scope.courseProfile ?? '',
+        })
+        const url = apiBase
+          ? `${apiBase}/api/ui/composition-views/match?${params.toString()}`
+          : `/api/ui/composition-views/match?${params.toString()}`
+
+        const res = await fetch(url, { signal })
         if (res.status === 204) {
-          if (!signal.aborted) {
-            setMatchedCompositionView(null)
-          }
-          return
+          return null
         }
         if (!res.ok) {
-          throw new Error(`Failed to load composition view (${res.status})`)
+          throw new Error(`Failed to load composition view for ${landscapeId} (${res.status})`)
         }
         const data = await res.json()
-        if (!signal.aborted) {
-          setMatchedCompositionView(normalizeCompositionView(data))
-        }
+        return [landscapeId, normalizeCompositionView(data)] as const
+      }),
+    )
+      .then((matches) => {
+        if (signal.aborted) return
+        const next: Record<string, Record<string, unknown>> = {}
+        matches.forEach((entry) => {
+          if (!entry) return
+          next[entry[0]] = entry[1]
+        })
+        setMatchedCompositionViewsByLandscapeId(next)
       })
       .catch((error) => {
         if (signal.aborted) return
-        console.warn('[useAppCore] Failed to load matching composition view', error)
-        setMatchedCompositionView(null)
+        console.warn('[useAppCore] Failed to load matching composition views', error)
+        setMatchedCompositionViewsByLandscapeId({})
       })
 
     return () => controller.abort()
-  }, [role, runtimeCompositionScope])
+  }, [role, runtimeCompositionScopes])
 
   const projectedLandscapeEntries = useMemo(() => {
     const placementProjected = applyGoalPlacementProjection(graphSourceLandscapeEntries, activeFilter)
-    if (!matchedCompositionView) {
-      return placementProjected
-    }
-    return applyCompositionViewProjection(placementProjected, matchedCompositionView)
-  }, [activeFilter, graphSourceLandscapeEntries, matchedCompositionView])
+    return Object.values(matchedCompositionViewsByLandscapeId).reduce(
+      (currentEntries, view) => applyCompositionViewProjection(currentEntries, view),
+      placementProjected,
+    )
+  }, [activeFilter, graphSourceLandscapeEntries, matchedCompositionViewsByLandscapeId])
 
   const projectedCurrentLandscapeEntry = useMemo(() => {
     const targetLandscapeId = currentLandscapeEntry?.meta.landscapeId ?? selectedLandscapeId
