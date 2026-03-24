@@ -11,6 +11,8 @@ const LANDSCAPE_JSON_FILE_PATTERN = /\.json$/i
 const APP_ROOT = process.cwd()
 const REPO_ROOT = path.resolve(APP_ROOT, '..')
 const CURRICULA_ROOT = path.resolve(REPO_ROOT, 'curricula')
+const CANONICAL_GYMNASIUM_ROOT = path.resolve(CURRICULA_ROOT, 'DE', 'Gymnasium', 'canonical')
+const COMPOSITION_VIEW_ROOT = path.resolve(CURRICULA_ROOT, 'DE', 'Gymnasium', 'composition-views')
 const PUBLIC_DATA_ROOT = path.resolve(APP_ROOT, 'public', 'data')
 
 const toPosixPath = (value: string): string => value.split(path.sep).join('/')
@@ -54,6 +56,31 @@ const resolveLandscapeAbsolutePath = (candidatePath: string): string | null => {
   return absolutePath
 }
 
+const resolveCanonicalLandscapeAbsolutePath = (candidatePath: string): string | null => {
+  const sanitizedPath = candidatePath.trim().replace(/\\/g, '/').replace(/^\/+/, '')
+  if (!sanitizedPath.startsWith('curricula/DE/Gymnasium/canonical/')) return null
+
+  const absolutePath = path.resolve(REPO_ROOT, sanitizedPath)
+  if (!isPathInside(absolutePath, CANONICAL_GYMNASIUM_ROOT)) return null
+
+  const fileName = path.basename(absolutePath)
+  if (!LANDSCAPE_JSON_FILE_PATTERN.test(fileName)) return null
+  if (DECK_FILE_PATTERN.test(fileName)) return null
+
+  return absolutePath
+}
+
+const resolveCompositionViewAbsolutePath = (candidatePath: string): string | null => {
+  const sanitizedPath = candidatePath.trim().replace(/\\/g, '/').replace(/^\/+/, '')
+  if (!sanitizedPath.startsWith('curricula/DE/Gymnasium/composition-views/')) return null
+
+  const absolutePath = path.resolve(REPO_ROOT, sanitizedPath)
+  if (!isPathInside(absolutePath, COMPOSITION_VIEW_ROOT)) return null
+  if (!/\.view\.json$/i.test(path.basename(absolutePath))) return null
+
+  return absolutePath
+}
+
 const collectDeckFiles = async (directory: string, result: string[]): Promise<void> => {
   const entries = await fs.readdir(directory, { withFileTypes: true })
 
@@ -78,6 +105,11 @@ const collectDeckFiles = async (directory: string, result: string[]): Promise<vo
 const isLandscapePayload = (value: unknown): boolean => {
   const record = asRecord(value)
   return typeof record.landscapeId === 'string' && Array.isArray(record.goals)
+}
+
+const isCompositionViewPayload = (value: unknown): boolean => {
+  const record = asRecord(value)
+  return typeof record.viewId === 'string' && typeof record.landscapeId === 'string' && Array.isArray(record.rootNodes)
 }
 
 const collectLandscapeFiles = async (directory: string, result: string[]): Promise<void> => {
@@ -110,6 +142,75 @@ const collectLandscapeFiles = async (directory: string, result: string[]): Promi
   }
 }
 
+const collectCanonicalLandscapeFiles = async (directory: string, result: string[]): Promise<void> => {
+  const entries = await fs.readdir(directory, { withFileTypes: true })
+
+  for (const entry of entries) {
+    const absolutePath = path.join(directory, entry.name)
+
+    if (entry.isDirectory()) {
+      await collectCanonicalLandscapeFiles(absolutePath, result)
+      continue
+    }
+
+    if (!entry.isFile()) continue
+    if (!LANDSCAPE_JSON_FILE_PATTERN.test(entry.name)) continue
+    if (DECK_FILE_PATTERN.test(entry.name)) continue
+    if (!isPathInside(absolutePath, CANONICAL_GYMNASIUM_ROOT)) continue
+
+    try {
+      const content = await fs.readFile(absolutePath, 'utf8')
+      const parsed = JSON.parse(content)
+      if (!isLandscapePayload(parsed)) continue
+    } catch {
+      continue
+    }
+
+    const relativeToRepo = path.relative(REPO_ROOT, absolutePath)
+    result.push(toPosixPath(relativeToRepo))
+  }
+}
+
+const collectCompositionViewFiles = async (directory: string, result: string[]): Promise<void> => {
+  const entries = await fs.readdir(directory, { withFileTypes: true })
+
+  for (const entry of entries) {
+    const absolutePath = path.join(directory, entry.name)
+
+    if (entry.isDirectory()) {
+      await collectCompositionViewFiles(absolutePath, result)
+      continue
+    }
+
+    if (!entry.isFile()) continue
+    if (!/\.view\.json$/i.test(entry.name)) continue
+    if (!isPathInside(absolutePath, COMPOSITION_VIEW_ROOT)) continue
+
+    const relativeToRepo = path.relative(REPO_ROOT, absolutePath)
+    result.push(toPosixPath(relativeToRepo))
+  }
+}
+
+const readCanonicalLandscapeSummaries = async (): Promise<Array<{ path: string, landscapeId: string, title: string }>> => {
+  const files: string[] = []
+  await collectCanonicalLandscapeFiles(CANONICAL_GYMNASIUM_ROOT, files)
+  files.sort((left, right) => left.localeCompare(right))
+
+  const summaries = await Promise.all(files.map(async (relativePath) => {
+    const absolutePath = path.resolve(REPO_ROOT, relativePath)
+    const content = await fs.readFile(absolutePath, 'utf8')
+    const parsed = JSON.parse(content)
+    if (!isLandscapePayload(parsed)) return null
+    return {
+      path: relativePath,
+      landscapeId: typeof parsed.landscapeId === 'string' ? parsed.landscapeId : '',
+      title: typeof parsed.title === 'string' ? parsed.title : relativePath,
+    }
+  }))
+
+  return summaries.filter((entry): entry is { path: string, landscapeId: string, title: string } => entry !== null)
+}
+
 const sendJson = (res: ServerResponse, statusCode: number, payload: unknown): void => {
   res.statusCode = statusCode
   res.setHeader('Content-Type', 'application/json; charset=utf-8')
@@ -137,12 +238,183 @@ const deckEditorDevPlugin = {
   configureServer(server: ViteDevServer) {
     server.middlewares.use((req: IncomingMessage, res: ServerResponse, next: (err?: unknown) => void) => {
       const requestUrl = new URL(req.url ?? '/', 'http://localhost')
-      if (!requestUrl.pathname.startsWith('/__deck-editor') && !requestUrl.pathname.startsWith('/__graph-editor')) {
+      if (
+        !requestUrl.pathname.startsWith('/__deck-editor')
+        && !requestUrl.pathname.startsWith('/__graph-editor')
+        && !requestUrl.pathname.startsWith('/__canonical-cluster-editor')
+        && !requestUrl.pathname.startsWith('/__composition-view-editor')
+        && !requestUrl.pathname.startsWith('/__authoring')
+      ) {
         next()
         return
       }
 
       void (async () => {
+        if (requestUrl.pathname === '/__canonical-cluster-editor/list') {
+          if (req.method !== 'GET') {
+            sendJson(res, 405, { error: 'Method not allowed' })
+            return
+          }
+
+          const files: string[] = []
+          await collectCanonicalLandscapeFiles(CANONICAL_GYMNASIUM_ROOT, files)
+          files.sort((left, right) => left.localeCompare(right))
+          sendJson(res, 200, { files })
+          return
+        }
+
+        if (requestUrl.pathname === '/__authoring/canonical-landscapes') {
+          if (req.method !== 'GET') {
+            sendJson(res, 405, { error: 'Method not allowed' })
+            return
+          }
+
+          const landscapes = await readCanonicalLandscapeSummaries()
+          sendJson(res, 200, { landscapes })
+          return
+        }
+
+        if (requestUrl.pathname === '/__canonical-cluster-editor/load') {
+          if (req.method !== 'GET') {
+            sendJson(res, 405, { error: 'Method not allowed' })
+            return
+          }
+
+          const pathParam = requestUrl.searchParams.get('path') ?? ''
+          const absolutePath = resolveCanonicalLandscapeAbsolutePath(pathParam)
+          if (!absolutePath) {
+            sendJson(res, 400, { error: 'Invalid canonical landscape path.' })
+            return
+          }
+
+          const fileContent = await fs.readFile(absolutePath, 'utf8')
+          const landscape = JSON.parse(fileContent)
+          if (!isLandscapePayload(landscape)) {
+            sendJson(res, 400, { error: 'File is not a valid landscape JSON.' })
+            return
+          }
+
+          sendJson(res, 200, {
+            path: toPosixPath(path.relative(REPO_ROOT, absolutePath)),
+            landscape,
+          })
+          return
+        }
+
+        if (requestUrl.pathname === '/__canonical-cluster-editor/save') {
+          if (req.method !== 'PUT') {
+            sendJson(res, 405, { error: 'Method not allowed' })
+            return
+          }
+
+          const payload = asRecord(await readJsonBody(req))
+          const pathParam = typeof payload.path === 'string' ? payload.path : ''
+          const absolutePath = resolveCanonicalLandscapeAbsolutePath(pathParam)
+          if (!absolutePath) {
+            sendJson(res, 400, { error: 'Invalid canonical landscape path.' })
+            return
+          }
+
+          if (!Object.prototype.hasOwnProperty.call(payload, 'landscape')) {
+            sendJson(res, 400, { error: 'Missing landscape payload.' })
+            return
+          }
+
+          const landscapePayload = payload.landscape
+          if (!isLandscapePayload(landscapePayload)) {
+            sendJson(res, 400, { error: 'Invalid landscape payload.' })
+            return
+          }
+
+          const serializedLandscape = `${JSON.stringify(landscapePayload, null, 2)}\n`
+          await fs.writeFile(absolutePath, serializedLandscape, 'utf8')
+
+          sendJson(res, 200, {
+            path: toPosixPath(path.relative(REPO_ROOT, absolutePath)),
+          })
+          return
+        }
+
+        if (requestUrl.pathname === '/__composition-view-editor/list') {
+          if (req.method !== 'GET') {
+            sendJson(res, 405, { error: 'Method not allowed' })
+            return
+          }
+
+          const files: string[] = []
+          try {
+            await collectCompositionViewFiles(COMPOSITION_VIEW_ROOT, files)
+          } catch (error) {
+            const message = error instanceof Error ? error.message : ''
+            if (!message.includes('ENOENT')) throw error
+          }
+          files.sort((left, right) => left.localeCompare(right))
+          sendJson(res, 200, { files })
+          return
+        }
+
+        if (requestUrl.pathname === '/__composition-view-editor/load') {
+          if (req.method !== 'GET') {
+            sendJson(res, 405, { error: 'Method not allowed' })
+            return
+          }
+
+          const pathParam = requestUrl.searchParams.get('path') ?? ''
+          const absolutePath = resolveCompositionViewAbsolutePath(pathParam)
+          if (!absolutePath) {
+            sendJson(res, 400, { error: 'Invalid composition view path.' })
+            return
+          }
+
+          const fileContent = await fs.readFile(absolutePath, 'utf8')
+          const view = JSON.parse(fileContent)
+          if (!isCompositionViewPayload(view)) {
+            sendJson(res, 400, { error: 'File is not a valid composition view JSON.' })
+            return
+          }
+
+          sendJson(res, 200, {
+            path: toPosixPath(path.relative(REPO_ROOT, absolutePath)),
+            view,
+          })
+          return
+        }
+
+        if (requestUrl.pathname === '/__composition-view-editor/save') {
+          if (req.method !== 'PUT') {
+            sendJson(res, 405, { error: 'Method not allowed' })
+            return
+          }
+
+          const payload = asRecord(await readJsonBody(req))
+          const pathParam = typeof payload.path === 'string' ? payload.path : ''
+          const absolutePath = resolveCompositionViewAbsolutePath(pathParam)
+          if (!absolutePath) {
+            sendJson(res, 400, { error: 'Invalid composition view path.' })
+            return
+          }
+
+          if (!Object.prototype.hasOwnProperty.call(payload, 'view')) {
+            sendJson(res, 400, { error: 'Missing composition view payload.' })
+            return
+          }
+
+          const viewPayload = payload.view
+          if (!isCompositionViewPayload(viewPayload)) {
+            sendJson(res, 400, { error: 'Invalid composition view payload.' })
+            return
+          }
+
+          await fs.mkdir(path.dirname(absolutePath), { recursive: true })
+          const serializedView = `${JSON.stringify(viewPayload, null, 2)}\n`
+          await fs.writeFile(absolutePath, serializedView, 'utf8')
+
+          sendJson(res, 200, {
+            path: toPosixPath(path.relative(REPO_ROOT, absolutePath)),
+          })
+          return
+        }
+
         if (requestUrl.pathname === '/__graph-editor/list') {
           if (req.method !== 'GET') {
             sendJson(res, 405, { error: 'Method not allowed' })

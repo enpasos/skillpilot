@@ -661,7 +661,7 @@ class LandscapeServiceTest {
                                                 "Funktionsgrundlagen (Sek I)",
                                                 "Lineare Funktionen rechnerisch untersuchen",
                                                 "Scheitelpunkte quadratischer Funktionen bestimmen",
-                                                "Q3 Stochastik",
+                                                "Wahrscheinlichkeitsverteilungen, Hypothesentests und Statistik",
                                                 "Q4.2 Problemlösen und Argumentieren",
                                                 "Übungen Prozesskompetenzen");
                 assertThat(landscape.getFilters())

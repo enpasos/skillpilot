@@ -6,6 +6,8 @@ This is the single source of truth for algorithmic graph validation in CI.
 - CI entrypoint: `npm run validate:graph` in `.github/workflows/ci.yml` (`graph-validation` job)
 - Filter-projection validator: `app/scripts/validateViewFilters.ts`
 - Filter-projection CI entrypoint: `npm run validate:view-filters` in `.github/workflows/ci.yml` (`graph-validation` job)
+- Composition-view validator: `app/scripts/validateCompositionViews.ts`
+- Composition-view CI entrypoint: `npm run validate:composition-views` in `.github/workflows/ci.yml` (`graph-validation` job)
 - Hessen Oberstufe archive-boundary validator: `scripts/validate_hessen_upper_secondary_archive_paths.py`
 - Archive-boundary CI entrypoint: `python scripts/validate_hessen_upper_secondary_archive_paths.py` in `.github/workflows/ci.yml` (`graph-validation` job)
 - Hessen Oberstufe legacy-reference validator: `scripts/validate_hessen_upper_secondary_legacy_refs.py`
@@ -78,6 +80,7 @@ These checks are already implemented and treated as `error`:
 - Didactic quality checks (sequencing quality, granularity, redundancy of meanings, etc.) remain part of manual QA (`curricula/QA/*`).
 - Learner-state semantics from the concept spec such as atomic mastery, frontier computation, and optimistic/pessimistic filter evaluation are currently **not** validated in CI.
 - Projected filtered learner graphs derived from compiled `applicability` are now validated by the separate `validate:view-filters` path.
+- Explicit learner-facing composition views under `curricula/DE/Gymnasium/composition-views/` are validated by the separate `validate:composition-views` path.
 - The current CI enforcement scope for `validate:view-filters` covers the reviewed canonical DE Gymnasium set (`Mathematik`, `Physik`, `Chemie`, `Biologie`, `Informatik`, `Deutsch`, `Englisch`, `Französisch`, `Griechisch`, `Chinesisch`, `Geschichte`, `Politik und Wirtschaft`, `Musik`, `Latein`, `Spanisch`, `Wirtschaft`, `Overview`).
 - Reviewed applicability warnings can be recorded in `docs/qa-ci/applicability-accepted-warnings.json`; the validator still prints them, but classifies them as accepted review debt instead of active warnings.
 - Additional structural rules should be added here first, then implemented in `validateGraph.ts`, then rolled out in CI.
@@ -122,6 +125,31 @@ Accepted-warning handling:
 - `APV-201` and `APV-202` may remain in reviewed pilots when no cleaner exact source alignment exists yet.
 - Such cases must be explicitly listed in `docs/qa-ci/applicability-accepted-warnings.json` with a short rationale.
 - `validate:view-filters` continues to print these findings for auditability, but separates them from active warnings in its summary output.
+
+## Composition-view validator (`validate:composition-views`)
+
+This validator is separate from both `validate:graph` and `validate:view-filters`.
+
+It operates on explicit learner-facing composition-view files and validates that they compile deterministically against the referenced canonical graph.
+
+Current scope:
+
+- all `.view.json` files under `curricula/DE/Gymnasium/composition-views/`
+
+Current stable finding families:
+
+| Rule ID | Description | Default |
+| --- | --- | --- |
+| `CPV-000` | The composition-view file could not be loaded or parsed. | `error` |
+| `CPV-001` | Required composition-view metadata or node metadata is invalid or missing. | `error` |
+| `CPV-002` | A referenced canonical subtree root does not exist in the referenced canonical graph. | `error` |
+| `CPV-003` | A referenced canonical subtree root is atomic instead of cluster-shaped. | `error` |
+| `CPV-004` | Two referenced canonical subtree roots overlap or the same canonical root is referenced more than once. | `error` |
+| `CPV-005` | The compiled default tree contains the same canonical goal more than once. | `error` |
+| `CPV-006` | The compiled default tree gives one canonical goal more than one visible parent. | `error` |
+| `CPV-007` | A structure node is left empty although it is still present in the view tree. | `error` |
+| `CPV-101` | A structure node label is still too generic to be review-safe. | `warning` |
+| `CPV-102` | A referenced canonical subtree root still looks phase- or state-specific by title. | `warning` |
 
 ## Current compatibility model vs. target model
 

@@ -32,14 +32,15 @@ Steps:
 1. `npm ci` (in `app/`)
 2. `npm run validate:graph`
 3. `npm run validate:view-filters`
-4. `python scripts/validate_schemas.py`
-5. `python scripts/validate_goal_ids_uuid.py`
-6. `python scripts/validate_hessen_upper_secondary_archive_paths.py`
-7. `python scripts/validate_hessen_upper_secondary_legacy_refs.py`
-8. `python scripts/validate_hessen_lower_secondary_archive_paths.py`
-9. `python scripts/validate_hessen_lower_secondary_legacy_refs.py`
-10. `python scripts/validate_bavaria_gymnasium_archive_paths.py`
-11. `python scripts/validate_bavaria_gymnasium_legacy_refs.py`
+4. `npm run validate:composition-views`
+5. `python scripts/validate_schemas.py`
+6. `python scripts/validate_goal_ids_uuid.py`
+7. `python scripts/validate_hessen_upper_secondary_archive_paths.py`
+8. `python scripts/validate_hessen_upper_secondary_legacy_refs.py`
+9. `python scripts/validate_hessen_lower_secondary_archive_paths.py`
+10. `python scripts/validate_hessen_lower_secondary_legacy_refs.py`
+11. `python scripts/validate_bavaria_gymnasium_archive_paths.py`
+12. `python scripts/validate_bavaria_gymnasium_legacy_refs.py`
 
 The graph rule catalog is documented in:
 
@@ -54,6 +55,7 @@ Current scope note:
 
 - this job validates the full authored landscapes as committed
 - it additionally validates projected filtered learner graphs via `validate:view-filters`
+- it additionally validates explicit learner-facing composition-view files via `validate:composition-views`
 - it additionally enforces the Hessen Oberstufe retained-asset boundary: under `curricula/DE/Gymnasium/input/DE-HE/abi`, legacy `Gymnasiale_Oberstufe` path strings may only remain inside allowlisted raw archival provenance files from `curricula/DE/Gymnasium/input/DE-HE/retained-asset-registry.json`
 - it also enforces the Hessen Oberstufe repo-handoff boundary: the retired legacy tree must stay absent from the active repo, and active tooling/runtime/test surfaces may mention it only from the explicit allowlist in `curricula/DE/Gymnasium/provenance/hessen-upper-secondary-retirement-registry.json`
 - it now also enforces the Hessen Sek-I retained-asset boundary: under `curricula/DE/Gymnasium/input/DE-HE/lower-secondary`, legacy `Gymnasium_9_Mittelstufe` path strings are forbidden in retained operational archive content
@@ -84,6 +86,6 @@ bash run_ci.sh
 
 This runs:
 
-1. app checks (`validate:graph`, `validate:view-filters`, `lint`, `build`)
+1. app checks (`validate:graph`, `validate:view-filters`, `validate:composition-views`, `lint`, `build`)
 2. repo-level data checks (`validate_schemas.py`, `validate_goal_ids_uuid.py`, `validate_hessen_upper_secondary_archive_paths.py`, `validate_hessen_upper_secondary_legacy_refs.py`, `validate_hessen_lower_secondary_archive_paths.py`, `validate_hessen_lower_secondary_legacy_refs.py`, `validate_bavaria_gymnasium_archive_paths.py`, `validate_bavaria_gymnasium_legacy_refs.py`)
 3. backend checks (`./gradlew clean check --no-daemon`)

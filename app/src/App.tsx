@@ -23,6 +23,8 @@ const PUBLIC_PATHS = new Set([
   '/start',
   '/flashcard-editor',
   '/graph-editor',
+  '/canonical-cluster-editor',
+  '/composition-view-editor',
 ])
 const GOAL_VIEWS = new Set(['learner', 'trainer', 'explorer'])
 const MAX_DESCRIPTION_LENGTH = 160
@@ -42,6 +44,8 @@ const SuccessView = lazy(() => import('./views/SuccessView').then((module) => ({
 const Abi26MatheStartView = lazy(() => import('./views/Abi26MatheStartView').then((module) => ({ default: module.Abi26MatheStartView })))
 const FlashcardEditorView = lazy(() => import('./views/FlashcardEditorView').then((module) => ({ default: module.FlashcardEditorView })))
 const GraphEditorView = lazy(() => import('./views/GraphEditorView').then((module) => ({ default: module.GraphEditorView })))
+const CanonicalClusterEditorView = lazy(() => import('./views/CanonicalClusterEditorView').then((module) => ({ default: module.CanonicalClusterEditorView })))
+const CompositionViewEditorView = lazy(() => import('./views/CompositionViewEditorView').then((module) => ({ default: module.CompositionViewEditorView })))
 
 const normalizeText = (text: string) => text.replace(/\s+/g, ' ').trim()
 
@@ -311,6 +315,16 @@ const App: React.FC = () => {
         description = language === 'en'
           ? 'Local graph editor to refactor requires relations to atomic goals.'
           : 'Lokaler Graph-Editor zum Umbau von requires-Relationen auf atomare Ziele.'
+      } else if (path === '/canonical-cluster-editor') {
+        title = `Canonical Cluster Editor | ${baseTitle}`
+        description = language === 'en'
+          ? 'Local editor for canonical clusters, contains structure, and child order.'
+          : 'Lokaler Editor für kanonische Cluster, contains-Struktur und Kindreihenfolge.'
+      } else if (path === '/composition-view-editor') {
+        title = `Composition View Editor | ${baseTitle}`
+        description = language === 'en'
+          ? 'Local editor for scope-specific learner-facing composition views.'
+          : 'Lokaler Editor fuer scope-spezifische learner-facing Composition Views.'
       } else if (path === '/start' || path.startsWith('/start/')) {
         title = `Abi 2026 Mathe Hessen | ${baseTitle}`
         description = language === 'en'
@@ -420,6 +434,8 @@ const App: React.FC = () => {
           <Route path="/quickstart/:lang?" element={<StoryView />} />
           <Route path="/flashcard-editor" element={<FlashcardEditorView />} />
           <Route path="/graph-editor" element={<GraphEditorView />} />
+          <Route path="/canonical-cluster-editor" element={<CanonicalClusterEditorView />} />
+          <Route path="/composition-view-editor" element={<CompositionViewEditorView />} />
           <Route path="/start/abi26-he-mathe-k1" element={<Abi26MatheStartView />} />
           <Route path="/start/:campaignId" element={<Abi26MatheStartView />} />
         </Routes>

@@ -13,6 +13,11 @@ import { useLanguage } from '../contexts/LanguageContext'
 import { goalMatchesFilter, isWildcardFilter } from '../utils/goalFilters'
 import { applyGoalPlacementProjection } from '../utils/goalPlacementProjection'
 import { normalizeTrainerLandscapeId } from '../utils/trainerLandscapeContext'
+import {
+  applyCompositionViewProjection,
+  deriveRuntimeCompositionScope,
+} from '../utils/compositionViewRuntime'
+import { normalizeCompositionView } from '../utils/authoring/compositionViewAuthoring'
 
 type Role = 'learner' | 'trainer' | 'explorer'
 const DEFAULT_ACTIVE_FILTER = 'all'
@@ -99,6 +104,8 @@ export function useAppCore({ role, setLearnerMeta, skillpilotId }: AppCoreOption
   }, [replaceSearchParamsIfNeeded, searchParams, selectedLandscapeId])
 
   const { language } = useLanguage()
+  const [learnerPersonalCurriculum, setLearnerPersonalCurriculum] = React.useState<string | null>(null)
+  const [matchedCompositionView, setMatchedCompositionView] = React.useState<Record<string, unknown> | null>(null)
 
   const [learnerGraphRefreshToken, setLearnerGraphRefreshToken] = React.useState(0)
   const { landscapeEntries, loadingLandscapes, landscapeError } = useLandscapes(selectedLandscapeId, language)
@@ -178,10 +185,100 @@ export function useAppCore({ role, setLearnerMeta, skillpilotId }: AppCoreOption
     replaceSearchParamsIfNeeded(next)
   }, [activeFilter, currentLandscapeEntry, replaceSearchParamsIfNeeded, searchParams, setActiveFilter])
 
-  const projectedLandscapeEntries = useMemo(
-    () => applyGoalPlacementProjection(graphSourceLandscapeEntries, activeFilter),
-    [graphSourceLandscapeEntries, activeFilter],
-  )
+  useEffect(() => {
+    if (role !== 'learner' || !skillpilotId) {
+      setLearnerPersonalCurriculum(null)
+      return
+    }
+
+    const controller = new AbortController()
+    const signal = controller.signal
+    const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
+    const url = apiBase ? `${apiBase}/api/ui/learners/${skillpilotId}` : `/api/ui/learners/${skillpilotId}`
+
+    fetch(url, { signal })
+      .then(async (res) => {
+        if (!res.ok) {
+          throw new Error(`Failed to load learner profile (${res.status})`)
+        }
+        const data = await res.json()
+        if (!signal.aborted) {
+          setLearnerPersonalCurriculum(typeof data.personalCurriculum === 'string' ? data.personalCurriculum : null)
+        }
+      })
+      .catch((error) => {
+        if (signal.aborted) return
+        console.warn('[useAppCore] Failed to load learner personal curriculum for composition views', error)
+        setLearnerPersonalCurriculum(null)
+      })
+
+    return () => controller.abort()
+  }, [role, skillpilotId])
+
+  const runtimeCompositionScope = useMemo(() => deriveRuntimeCompositionScope({
+    landscapeId: currentLandscapeEntry?.meta.landscapeId ?? selectedLandscapeId,
+    landscapeMeta: currentLandscapeEntry?.meta ?? null,
+    activeFilter,
+    learnerPersonalCurriculum,
+  }), [
+    activeFilter,
+    currentLandscapeEntry,
+    learnerPersonalCurriculum,
+    selectedLandscapeId,
+  ])
+
+  useEffect(() => {
+    if (role !== 'learner' || !runtimeCompositionScope) {
+      setMatchedCompositionView(null)
+      return
+    }
+
+    const controller = new AbortController()
+    const signal = controller.signal
+    const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
+    const params = new URLSearchParams({
+      landscapeId: runtimeCompositionScope.landscapeId,
+      schoolForm: runtimeCompositionScope.schoolForm ?? '',
+      jurisdiction: runtimeCompositionScope.jurisdiction ?? '',
+      stage: runtimeCompositionScope.stage ?? '',
+      courseProfile: runtimeCompositionScope.courseProfile ?? '',
+    })
+    const url = apiBase
+      ? `${apiBase}/api/ui/composition-views/match?${params.toString()}`
+      : `/api/ui/composition-views/match?${params.toString()}`
+
+    fetch(url, { signal })
+      .then(async (res) => {
+        if (res.status === 204) {
+          if (!signal.aborted) {
+            setMatchedCompositionView(null)
+          }
+          return
+        }
+        if (!res.ok) {
+          throw new Error(`Failed to load composition view (${res.status})`)
+        }
+        const data = await res.json()
+        if (!signal.aborted) {
+          setMatchedCompositionView(normalizeCompositionView(data))
+        }
+      })
+      .catch((error) => {
+        if (signal.aborted) return
+        console.warn('[useAppCore] Failed to load matching composition view', error)
+        setMatchedCompositionView(null)
+      })
+
+    return () => controller.abort()
+  }, [role, runtimeCompositionScope])
+
+  const projectedLandscapeEntries = useMemo(() => {
+    const placementProjected = applyGoalPlacementProjection(graphSourceLandscapeEntries, activeFilter)
+    if (!matchedCompositionView) {
+      return placementProjected
+    }
+    return applyCompositionViewProjection(placementProjected, matchedCompositionView)
+  }, [activeFilter, graphSourceLandscapeEntries, matchedCompositionView])
 
   const projectedCurrentLandscapeEntry = useMemo(() => {
     const targetLandscapeId = currentLandscapeEntry?.meta.landscapeId ?? selectedLandscapeId

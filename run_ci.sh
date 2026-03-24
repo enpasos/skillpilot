@@ -13,6 +13,9 @@ npm run validate:graph
 echo "--> Running View-Filter Validation"
 npm run validate:view-filters
 
+echo "--> Running Composition-View Validation"
+npm run validate:composition-views
+
 
 
 echo "--> Running Lint & Build"
