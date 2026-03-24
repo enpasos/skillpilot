@@ -320,8 +320,6 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   const [modalTitle, setModalTitle] = useState("");
   const [modalType, setModalType] = useState<'info' | 'error' | 'success'>('info');
 
-  // Refresh counter to force CompetenceTree re-render on SSE updates
-  const [refreshCounter, setRefreshCounter] = useState(0);
   const [velocityRefreshCounter, setVelocityRefreshCounter] = useState(0);
   const [srsMasteryTick, setSrsMasteryTick] = useState(0);
   const [optimisticSrsMasteryByGoal, setOptimisticSrsMasteryByGoal] = useState<Record<string, number>>({});
@@ -1322,7 +1320,6 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   const handleSseUpdate = useCallback(async (payload?: { type?: string; nodeId?: string }) => {
     if (payload?.type === 'CLIENT_STATE_UPDATED' && payload?.nodeId) {
       setSrsMasteryTick(c => c + 1)
-      setRefreshCounter(c => c + 1)
       setVelocityRefreshCounter(c => c + 1)
       if (currentGoal?.id === payload.nodeId) {
         setSrsReloadCounter(c => c + 1)
@@ -1344,8 +1341,6 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
         refreshPlanned(),
         onRefresh?.()
       ])
-      // Increment counter to force CompetenceTree re-render
-      setRefreshCounter(c => c + 1)
       setVelocityRefreshCounter(c => c + 1)
       console.log('[SSE] ✅ Refresh complete')
     } finally {
@@ -1733,7 +1728,6 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
         onRefresh?.(),
       ])
       setCompatibilityRouteRetired(false)
-      setRefreshCounter((count) => count + 1)
       setVelocityRefreshCounter((count) => count + 1)
       setIsSetupOpen(false)
       setModalTitle(language === 'de' ? 'Umstellung abgeschlossen' : 'Migration complete')
@@ -2147,7 +2141,6 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
         await syncClientData(goalId)
         await refreshState(true)
         onRefresh?.()
-        setRefreshCounter((count) => count + 1)
       } finally {
         srsCompletionInFlightRef.current.delete(goalId)
       }
@@ -2418,7 +2411,6 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
             </div>
           ) : (
             <CompetenceTree
-              key={`competence-tree-${refreshCounter}-${learnerStructureMode}`}
               rootGoals={visibleRootGoals}
               allGoals={goalIndexAll}
               getMastery={getEffectiveMastery}
@@ -2628,7 +2620,6 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
                         return { ...current, [goalId]: mastery }
                       })
                       setSrsMasteryTick(c => c + 1)
-                      setRefreshCounter(c => c + 1)
                     }}
                   />
                 </div>
