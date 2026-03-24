@@ -98,6 +98,11 @@ So the long-term user flow is:
 
 This keeps the system practical for real users without overloading the goal ontology.
 
+For such a resolved learner-facing scope, the default tree should be a single-occurrence projection:
+
+- the same canonical goal may appear under a different path in Hessen than in Bayern
+- but within one resolved scope, it should appear only once and under at most one visible parent
+
 ## Core principle
 
 The central modeling rule is:

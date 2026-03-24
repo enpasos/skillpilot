@@ -664,6 +664,16 @@ is the **projected filtered graph** for that view.
 
 If an implementation claims that a filtered learner view is structurally valid, then that claim MUST be evaluated on the projected filtered graph, not merely on raw metadata fields attached to nodes.
 
+If an implementation additionally claims a **default learner-facing tree** for a resolved scope, that is a stronger projection claim than filtered-graph validity alone.
+
+Such a default tree MUST ensure:
+
+- each visible goal occurs at most once
+- each visible goal has at most one visible parent in that tree
+- additional references such as `secondary` placements or overlays do not create additional node occurrences
+
+This single-occurrence tree property is a scoped-view projection validity condition, not a base validity condition of the authored full graph.
+
 ### 11.3 Optimistic mode
 
 In **optimistic mode**, we first apply the filter and then compute availability inside the filtered graph only.  

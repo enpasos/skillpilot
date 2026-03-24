@@ -20,13 +20,14 @@ These related documents explain the layered model, the transition strategy, and 
 
 ## Design objective
 
-The projection model should satisfy five requirements:
+The projection model should satisfy six requirements:
 
 1. It must be understandable from the data alone.
 2. It must keep content structure separate from program structure.
 3. It must support multiple placements of the same goal without duplicating goal identity.
 4. It must be deterministic across implementations.
 5. It must avoid hidden reparenting heuristics.
+6. For any resolved learner-facing scope, the default tree must show each goal at most once.
 
 In practical terms:
 
@@ -143,6 +144,25 @@ Default views should use one primary relation family:
 
 A view may enrich rendering with badges or filters from other layers, but it should not silently replace its structural source of truth.
 
+### Rule 4: A default tree is a single-occurrence projection in a resolved scope
+
+A default learner-facing tree is always evaluated relative to a resolved scope such as:
+
+- `jurisdiction = DE-HE`
+- `schoolForm = Gymnasium`
+- `stage = SekII`
+- `courseProfile = LK`
+
+Within that resolved scope:
+
+- each visible goal must occur at most once in the default tree
+- each visible goal must have at most one visible parent in the default tree
+- `secondary` placements, `assessed` placements, badges, overlays, or diagnostics must not create additional node instances
+
+Changing the resolved scope may legitimately yield a different visible path to the same atomic goal.
+
+But within one resolved scope, the default tree must remain a single-occurrence tree projection rather than a raw graph rendering.
+
 ## Default content tree contract
 
 The default content tree is the simplest and most important tree.
@@ -153,10 +173,9 @@ The default content tree is the simplest and most important tree.
 - content edges are exactly the explicit `contains` edges between goals
 - roots are goals that are intentionally designated as content roots or have no content parent in the selected landscape
 
-A landscape that claims a default content tree MUST either:
+A landscape that claims a default content tree MUST ensure that every visible goal has at most one visible content parent in the resolved scope.
 
-- satisfy at most one direct content parent per goal in the resolved scope
-- or document an explicit multi-parent rendering strategy
+If the authored graph gives a goal multiple direct content parents globally, the repository must document a deterministic parent-resolution rule for the default content tree.
 
 ### Ordering
 
@@ -217,6 +236,7 @@ In the default program tree:
 - a goal is attached below the program unit(s) for which it has a matching `primary` placement
 - `secondary` and `assessed` placements are shown as secondary references, badges, or optional overlays
 - they do not silently create additional default parent edges
+- they do not create additional visible occurrences of the goal in the default tree
 
 Resolution rules:
 
@@ -313,49 +333,16 @@ If such nesting is wanted in a content tree, it must be explicit in `contains`.
 
 If such nesting is wanted in a program tree, it must be explicit in `programUnits` plus `goalPlacements`.
 
-## Worked example: `Analysis und Wachstum (Sek II)`
+## Consequence for placements across multiple program units
 
-Assume the curriculum JSON says:
+If a goal is placed in multiple program units, the default program tree for a resolved scope still shows that goal at most once.
 
-- the goal `Analysis und Wachstum (Sek II)` contains `E.2`, `E.3`, `E.4`, `Q1 Analysis`, and `Q2.1 Vertiefung der Analysis`
-- the goal has placements:
-  - `E` as `primary`
-  - `Q1` as `secondary`
-  - `Q2` as `secondary`
+For example:
 
-Then the content tree is:
+- one matching `primary` placement may make the goal visible under `E`
+- additional `secondary` or `assessed` placements for `Q1` or `Q2` may still be surfaced as metadata, badges, or optional overlays
 
-```text
-Analysis und Wachstum (Sek II)
-  E.2 Einfuehrung des Ableitungsbegriffs
-  E.3 Anwendungen des Ableitungsbegriffs
-  E.4 Exponentialfunktionen
-  Q1 Analysis - Integralrechnung und Differenzialgleichungen
-  Q2.1 Vertiefung der Analysis
-```
-
-And the program tree is:
-
-```text
-Sekundarstufe II
-  E-Phase
-    Analysis und Wachstum (Sek II)
-  Q1
-    [secondary reference] Analysis und Wachstum (Sek II)
-  Q2
-    [secondary reference] Analysis und Wachstum (Sek II)
-```
-
-What does **not** follow from that JSON:
-
-```text
-E-Phase - Analysis-Cluster
-  Analysis und Wachstum (Sek II)
-```
-
-That nesting is valid only if the JSON explicitly says so through `contains`.
-
-It must not arise because runtime code matched the word `E` in one place and the words `E-Phase` in another.
+But they must not create additional occurrences of the same goal inside the default learner-facing tree.
 
 ## Authoring rules
 
