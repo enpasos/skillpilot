@@ -62,12 +62,13 @@ The overall structure is a **DAG (Directed Acyclic Graph)**:
 
 ### 2.3 Separate goals from structure and taxonomy
 
-The long-term target model should distinguish four concepts that are currently still partly mixed in some landscapes:
+The long-term target model should distinguish four semantic concepts plus one learner-facing composition layer that are currently still partly mixed in some landscapes:
 
 - **Goal layer**: actual assessable learning goals and fachliche clusters
 - **Program layer**: structural units such as year, semester, module, phase, track, or exam
 - **Placement layer**: links from goals into program units
 - **Competency-axis layer**: taxonomy entries such as process competencies (`K1`-`K6`)
+- **Composition-view layer**: explicit scope-specific learner-facing tree definitions that reference reviewed canonical subtrees
 
 Interpretation rules:
 
@@ -76,6 +77,9 @@ Interpretation rules:
 - only concrete, assessable process skills become actual goals
 - current `phase` values should increasingly be treated as compatibility/view metadata rather than as the canonical semantic anchor
 - user-facing initial narrowing by school form, stage, jurisdiction, duration model, course profile, and current year/phase should be treated as **entry scope** over program units, placements, and applicability, not as duplicated goal semantics
+- learner-facing default trees for resolved scopes should preferably be compiled from reviewed composition views early enough that validation can run before UI rendering
+- composition views should reference canonical subtree roots and should not inline authored atomic goals
+- within one resolved learner-facing scope, the default tree should show each goal at most once and under at most one visible parent
 - preferred design maxim: **as much semantics as necessary, as little ontology as possible**
 - add semantic distinctions only when they solve a concrete authoring, migration, validation, projection, or runtime problem
 
@@ -529,6 +533,7 @@ Practical rollout rules:
 - Use a **small mapping layer** from legacy goal IDs to canonical goal IDs instead of introducing a large new abstraction stack too early.
 - When a Bundesland must be represented explicitly in metadata, filters, overlays, or APIs, use ISO 3166-2 codes such as `DE-HE` and `DE-BY`.
 - Place canonical Gymnasium subject landscapes on a Germany-level path, not under a single Bundesland subtree; source ownership and canonical ownership should stay visibly separate in the repository layout.
+- When different Bundeslaender need different learner-facing upper tree shapes for the same canonical subject graph, prefer separate scope-specific composition-view files over runtime reparenting or duplicated atomic goals.
 - Use a didactically closed **subtree** as the primary migration unit; operational states are `legacy_frozen`, `subtree_adopted`, `cutover_ready`, and `legacy_view_retained`.
 - The existing repository directory layout such as `curricula/DE/HE/...` may remain unchanged during transition; path segments are not the canonical public identifier contract.
 - Keep Custom GPT / MCP / API contracts as stable as possible; translation between legacy and canonical layers should happen in backend/runtime logic, not in prompt logic.
@@ -537,6 +542,7 @@ Practical rollout rules:
 - Keep course-level filters such as `GK` / `LK` on the child subject landscapes.
 - Put Bundesland filters such as `DE-HE`, `DE-BY`, and `ALL` on the shared DE-level root and propagate them runtime-side into the selected canonical child landscapes.
 - Target runtime filtering for canonical Gymnasium should converge toward compiled node-level `applicability` metadata derived from mappings, provenance, and validated filtered-graph rules, rather than depending permanently on recursive runtime inference.
+- For a resolved Gymnasium learner-facing scope, the preferred steady-state artifact is a compiled single-occurrence tree projection derived from a reviewed composition view plus canonical subtree expansion.
 
 Operational consequence for Sek I:
 

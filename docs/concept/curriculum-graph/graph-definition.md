@@ -14,7 +14,7 @@ Layering, migration strategy, and canonical rollout policy are specified separat
 > Normative vs implementation: this document is the conceptual/normative definition.  
 > The currently enforced CI validator profile (including rollout severities and runtime rule IDs) is documented in `docs/qa-ci/graph-validation-rules.md`.
 > Legacy serialized metadata such as `phase` may still exist in concrete repositories, but such fields are not part of the canonical graph semantics unless explicitly stated below.
-> This specification also does not define cross-landscape `requires` contracts or learner-facing curriculum bundles; those belong to higher-level composition contracts outside the single-landscape goal graph.
+> This specification also does not define cross-landscape `requires` contracts, learner-facing curriculum bundles, or scope-specific composition-view files; those belong to higher-level composition contracts outside the single-landscape goal graph.
 
 ---
 
@@ -673,6 +673,10 @@ Such a default tree MUST ensure:
 - additional references such as `secondary` placements or overlays do not create additional node occurrences
 
 This single-occurrence tree property is a scoped-view projection validity condition, not a base validity condition of the authored full graph.
+
+One reviewed way to satisfy this stronger claim is to compile the default tree from a separate scope-specific composition view whose structure nodes reference canonical subtree roots of the authored goal graph.
+
+Such composition-view artifacts remain outside the formal graph object defined in this specification.
 
 ### 11.3 Optimistic mode
 

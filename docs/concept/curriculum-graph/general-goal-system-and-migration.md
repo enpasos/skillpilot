@@ -93,7 +93,7 @@ Interpretation:
 So the long-term user flow is:
 
 1. choose an entry scope such as `Gymnasium -> Sek II -> DE-BY -> GK -> Q2`
-2. project the relevant structural view from program units and placements
+2. compile the relevant learner-facing tree from a reviewed composition view if one exists for that scope, otherwise fall back to the reviewed projection contract over program units and placements
 3. then navigate primarily through the content topics and frontier within that scoped view
 
 This keeps the system practical for real users without overloading the goal ontology.
@@ -126,7 +126,7 @@ So:
 
 ## The target model
 
-The general target model has four conceptual layers.
+The general target model has four semantic layers plus one learner-facing composition layer.
 
 ### 1. Goal layer
 
@@ -218,6 +218,36 @@ Examples:
 - `K1 Mathematisch argumentieren` is a competency-axis entry
 - `Mathematische Argumentationen auf Schlüssigkeit prüfen` can be a goal that references `K1`
 
+### 5. Composition-view layer
+
+This layer defines learner-facing default trees for resolved scopes such as:
+
+- `DE-HE / Gymnasium / SekII / Mathematik / LK`
+- `DE-BY / Gymnasium / SekII / Mathematik / LK`
+
+It is not part of the canonical goal graph itself.
+
+It is a separate view artifact that answers:
+
+- how should one resolved scope see the subject as a single learner-facing tree?
+- which reviewed upper structure should be shown first?
+- which canonical subtrees should be expanded under that structure?
+
+Recommended interpretation:
+
+- a composition view is a separate JSON file or equivalent artifact
+- it may define view-only structure nodes, labels, and order
+- it references reviewed canonical subtree roots from the goal graph
+- it must not inline authored atomic goals
+- it must not redefine canonical `requires`
+- it must compile to a single-occurrence tree in the resolved scope
+
+This means:
+
+- the canonical graph remains the shared content source of truth
+- the composition view becomes the explicit authoring surface for a learner-facing Bundesland or curriculum tree
+- validation can run on the compiled tree before any UI logic is involved
+
 ## Minimal target data structures
 
 The target model should be introduced additively, not by replacing `LearningLandscape` and `LearningGoal`.
@@ -234,6 +264,10 @@ These additions describe the general target model.
 In the first Gymnasium convergence step, repositories MAY defer some of them and start with canonical landscapes plus goal mappings only.
 
 That narrower restriction is a rollout decision, not a contradiction of the broader additive target model.
+
+Repositories MAY additionally define separate scope-specific composition-view files for learner-facing default trees.
+
+These are separate view artifacts rather than mandatory additions to every `LearningLandscape` object, so they are not listed here as core schema additions.
 
 ### Program units
 
@@ -461,11 +495,13 @@ Interpretation:
 
 - `goalPlacements` model structural contextual placement
 - `applicability` models filtered visibility in learner-facing runtime views
+- reviewed composition views may define the default learner-facing tree for one resolved scope
 
 So:
 
 - placement says where a goal belongs in a program view
 - applicability says in which filtered runtime views a goal is visible
+- composition view says how one resolved scope should see one default learner-facing tree
 
 Long-term, compiled `applicability` can be derived from:
 
@@ -482,7 +518,8 @@ The user-facing narrowing step should be modeled as a runtime scope, not as a ne
 
 Recommended interpretation:
 
-- `programUnits` provide the structural tree that users can browse
+- reviewed composition views provide the preferred learner-facing default tree when a scope-specific tree must be explicit
+- `programUnits` provide the program structure that users can browse and that composition/runtime logic can reference
 - `goalPlacements.context` carries distinctions such as jurisdiction, duration model, and course profile
 - `applicability` controls reviewed visibility in filtered runtime views
 - the selected entry scope tells the runtime which projected subset to show first
@@ -642,6 +679,7 @@ This creates a dual representation during transition.
 
 Update frontend/backend logic step by step so it can derive views from:
 
+- reviewed composition views for learner-facing default trees
 - `goalPlacements` for program trees
 - `competencyRefs` for competency trees
 
@@ -659,6 +697,7 @@ Once runtime projection exists:
 - new content goals should no longer be forced under year or semester parents
 - new year/semester/module structure should be expressed in `programUnits`
 - process families like `K1-K6` should be expressed in `competencyCatalog`
+- learner-facing Bundesland or curriculum default trees should be authored as separate reviewed composition views when explicit upper structure is needed
 
 This stops the semantic debt from growing.
 
@@ -723,12 +762,13 @@ Long term:
 
 ## Summary
 
-The target system should separate four things that are currently partially mixed:
+The target system should separate five things that are currently partially mixed:
 
 - **goals** = what is learned
 - **program units** = where a goal is located in a curriculum or degree structure
 - **placements** = how a goal is attached to that structure
 - **competency axes** = orthogonal taxonomies like process competencies
+- **composition views** = how one resolved scope sees one learner-facing default tree
 
 This is general enough for both Gymnasium and university programs.
 

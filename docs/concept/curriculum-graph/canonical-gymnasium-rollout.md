@@ -44,6 +44,7 @@ The strategic objective is not to preserve state-specific duplication forever, b
 
 - Model Sekundarstufe I and Sekundarstufe II as one continuous Gymnasium competence space.
 - Support bundesland-specific Abitur preparation via filters and views.
+- Allow bundesland-specific learner-facing upper tree shapes without duplicating canonical atomic goals.
 - Support study-oriented preparation without state filters when the target is university readiness rather than a specific exam.
 - Preserve combined multi-subject views because subjects such as Physik depend on competencies from Mathematik.
 - Keep the Custom GPT and MCP/API usage model as simple as it is today.
@@ -152,6 +153,21 @@ For canonical Gymnasium, the initial reviewed scope vocabulary should be:
 
 `ALL` is a query sentinel only. It MUST NOT be serialized as a placement or applicability value.
 
+### 7.2 Prefer explicit state-scoped composition views for learner-facing default trees
+
+If Hessen, Bayern, or another jurisdiction needs a different learner-facing upper tree for the same canonical subject graph, that difference should be authored explicitly as a separate scope-specific composition view.
+
+Recommended policy:
+
+- keep one shared canonical subject graph as the content source of truth
+- let state-scoped composition views define the learner-facing upper structure for resolved scopes
+- let these views be maintained jointly with or by the relevant jurisdiction if needed
+- reference reviewed canonical subtree roots rather than duplicating goal payload
+- never inline authored atomic goals into the composition view
+- require that the compiled resolved-scope tree satisfies single-occurrence validation
+
+This avoids hidden runtime reparenting and makes bundesland-specific tree shapes inspectable directly from authored view files.
+
 ### 8. Normalize Sek I to a G9 year-level grid first
 
 For Sekundarstufe I, the first canonical reference grid should be the G9 year-level sequence:
@@ -194,6 +210,8 @@ The rollout should start with only two additions.
 This restriction applies to the first Gymnasium convergence step only.
 
 The broader additive target model from `general-goal-system-and-migration.md` remains valid, but may be introduced later once projection and runtime support are ready.
+
+Explicit scope-specific composition views are also valid later steady-state artifacts, but they are not required in this first convergence step.
 
 ### Canonical landscapes
 
@@ -355,7 +373,9 @@ Examples:
 - `study readiness view`
 - `Mathematics + Physics combined view`
 
-These views should differ by filters, placement, and weighting, not by duplicated canonical content.
+For learner-facing default trees, the preferred long-term form is an explicit scope-specific composition view that references canonical subtree roots and compiles to one single-occurrence tree per resolved scope.
+
+These views should differ by reviewed composition structure, filters, placement, and weighting, not by duplicated canonical content.
 
 ## Constraints For Future Work
 
@@ -373,5 +393,6 @@ The rollout is on track if the following become true:
 - Hessen users can continue working without disruption.
 - The same learner progress can be viewed through a legacy Hessen view and through a canonical subject view.
 - Bavaria can be represented without duplicating the same mathematics competencies.
+- A resolved Hessen or Bayern default tree can be compiled from explicit reviewed view files without duplicate goal occurrences.
 - Study-oriented views can hide state-specific exam distinctions without losing the underlying mastery history.
 - Physik can reference Mathematik prerequisites in a controlled, explicit way.

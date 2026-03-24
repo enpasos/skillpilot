@@ -5,7 +5,7 @@ This document defines the conceptual contract for deriving user-facing trees and
 Use this document for:
 
 - the contract for visible trees and projected views
-- the role of `programUnits`, `goalPlacements`, and competency projections
+- the role of `programUnits`, `goalPlacements`, scope-specific composition views, and competency projections
 - the rule that a reader should be able to reconstruct the default tree from documented JSON fields
 
 Use related documents for adjacent concerns:
@@ -35,9 +35,9 @@ In practical terms:
 - then derive the default tree shape with local, explicit rules
 - without relying on title matching, `phase` guesses, or runtime-specific anchor inference
 
-## Core distinction: three different view families
+## Core distinction: four different view families
 
-SkillPilot should distinguish three different view families.
+SkillPilot should distinguish four different view families.
 
 ### 1. Content tree
 
@@ -78,6 +78,26 @@ Source of truth:
 
 This is an orthogonal taxonomy view, not the main content parent tree.
 
+### 4. Scope-specific composition tree
+
+Question answered:
+
+- "How should one resolved scope see this subject as one learner-facing default tree?"
+
+Source of truth:
+
+- a scope-specific composition view file
+- the canonical goal graph
+
+This is the preferred learner-facing default tree for views such as:
+
+- `DE-HE / Gymnasium / SekII / Mathematik / LK`
+- `DE-BY / Gymnasium / SekII / Mathematik / LK`
+
+It is not a raw rendering of the goal graph.
+
+It is a compiled tree projection built from explicit composition structure plus canonical subtree expansion.
+
 ## What `goalPlacement` is for
 
 `goalPlacement` exists to attach an unchanged goal to explicit program structure.
@@ -94,6 +114,8 @@ Conceptually, `goalPlacement` answers:
 - where is this goal primarily anchored in the program?
 - where else is it structurally relevant?
 - under which reviewed context does that placement apply?
+
+When a reviewed scope-specific composition view exists, `goalPlacement` is no longer the primary authoring surface for the learner-facing default tree of that scope.
 
 ## What `goalPlacement` is not for
 
@@ -141,10 +163,23 @@ Default views should use one primary relation family:
 - content tree: `contains`
 - program tree: `programUnits` plus `goalPlacements`
 - competency tree: `competencyCatalog` plus `competencyRefs`
+- scope-specific composition tree: composition view file plus canonical subtree expansion
 
 A view may enrich rendering with badges or filters from other layers, but it should not silently replace its structural source of truth.
 
-### Rule 4: A default tree is a single-occurrence projection in a resolved scope
+### Rule 4: A reviewed composition view is the preferred source of truth for a learner-facing default tree
+
+If a repository defines an explicit composition view for a resolved scope, the learner-facing default tree for that scope should be compiled from:
+
+- the composition view file
+- the canonical goal graph
+
+In that case:
+
+- `programUnits` and `goalPlacements` still remain valid for program views, reporting, filters, and diagnostics
+- but they must not silently override the reviewed composition view when building the default learner-facing tree
+
+### Rule 5: A default tree is a single-occurrence projection in a resolved scope
 
 A default learner-facing tree is always evaluated relative to a resolved scope such as:
 
@@ -163,9 +198,61 @@ Changing the resolved scope may legitimately yield a different visible path to t
 
 But within one resolved scope, the default tree must remain a single-occurrence tree projection rather than a raw graph rendering.
 
+## Scope-specific composition view contract
+
+The preferred way to define a learner-facing Bundesland or curriculum tree is an explicit composition view file.
+
+Such a file may be maintained jointly with, or even by, the responsible jurisdiction, because it defines only the scope-specific top structure and the chosen attachment points into the canonical graph.
+
+### What a composition view may contain
+
+- structure nodes for the learner-facing upper tree
+- labels and explicit child order for those structure nodes
+- references to canonical subtree roots
+- explicit scope metadata describing when the view applies
+
+### What a composition view must not contain
+
+- no authored atomic goals
+- no new canonical goal payload
+- no new `requires` edges
+- no hidden inference based on title or `phase`
+
+### Canonical subtree references
+
+A composition view should reference reviewed canonical subtree roots.
+
+Preferred rule:
+
+- referenced roots are canonical cluster goals, not atomic goals
+
+This keeps the composition file small and keeps the canonical content model authoritative for the subtree contents.
+
+### Non-overlap rule
+
+Within one compiled default tree, expanded canonical subtree references must be pairwise disjoint with respect to visible goals.
+
+If two referenced subtree roots would expand to overlapping visible canonical goals, the composition view is invalid for default-tree compilation unless an explicit reviewed resolution contract exists.
+
+The preferred initial rule is simpler:
+
+- overlapping subtree references are a compile-time validation error
+
+### Early compile rule
+
+The default learner-facing tree should be produced by an early deterministic compile step:
+
+1. resolve the scope
+2. select the matching composition view, if one exists
+3. expand canonical subtree references
+4. validate single occurrence, non-overlap, and parent uniqueness
+5. emit a compiled tree artifact for the runtime
+
+This compile step must happen early enough that programmatic validation rules can run on the compiled tree before any UI rendering logic.
+
 ## Default content tree contract
 
-The default content tree is the simplest and most important tree.
+The default content tree is the canonical content-only view.
 
 ### Definition
 
@@ -244,7 +331,7 @@ Resolution rules:
 - zero matching `primary` placements => do not invent a parent; hide the goal from the default program tree or surface an `unplacedInScope` diagnostic
 - more than one matching `primary` placement => invalid default projection unless a documented tie-break or reviewed cross-jurisdiction placement profile resolves it
 
-This keeps the primary tree readable and prevents uncontrolled duplication.
+This keeps the primary tree readable and prevents uncontrolled duplication inside the program view.
 
 ### Matching context
 
@@ -344,6 +431,44 @@ For example:
 
 But they must not create additional occurrences of the same goal inside the default learner-facing tree.
 
+## Sketch of a composition view
+
+Illustrative shape:
+
+```json
+{
+  "viewId": "de-he-gym-sekii-math-lk",
+  "landscapeId": "canonical-math-de",
+  "scope": {
+    "jurisdiction": "DE-HE",
+    "schoolForm": "Gymnasium",
+    "stage": "SekII",
+    "courseProfile": "LK"
+  },
+  "rootNodes": [
+    {
+      "id": "sek2",
+      "label": "Sekundarstufe II",
+      "children": [
+        {
+          "id": "e-phase",
+          "label": "E-Phase",
+          "children": [
+            { "kind": "canonicalSubtree", "goalId": "550e8400-e29b-41d4-a716-446655440100" }
+          ]
+        }
+      ]
+    }
+  ]
+}
+```
+
+Interpretation:
+
+- the composition file defines only the learner-facing structure nodes
+- subtree contents still come from the canonical graph
+- the compiled result must still satisfy single-occurrence validation
+
 ## Authoring rules
 
 To keep the model understandable, authors should follow these rules.
@@ -404,6 +529,7 @@ The target runtime should therefore avoid:
 - attaching program placements to content clusters through title matching
 - using `phase` as implicit parent inference
 - mixing `contains` and placement edges into one unexplained default tree
+- treating a compiled default tree as something that is discovered late inside the UI
 
 Transitional compatibility logic may still exist during migration.
 
@@ -416,6 +542,7 @@ The key conceptual rule is simple:
 - the content tree comes from `contains`
 - the program tree comes from `programUnits` plus `goalPlacements`
 - the competency view comes from competency references
+- the learner-facing default scope tree should come from a reviewed composition view plus canonical subtree expansion
 
 And therefore:
 
