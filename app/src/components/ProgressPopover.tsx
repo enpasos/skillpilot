@@ -4,6 +4,10 @@ import { Check, Activity, X } from 'lucide-react'
 import type { UiGoal } from '../goalTypes'
 import { useTranslation } from '../hooks/useTranslation'
 import { InlineMathText } from './InlineMathText'
+import {
+    LEARNER_UI_REFRESH_EVENT,
+    type LearnerUiRefreshDetail,
+} from '../utils/learnerUiEvents'
 
 interface MasteryHistoryEntry {
     goalId: string
@@ -15,14 +19,12 @@ interface ProgressPopoverProps {
     skillpilotId: string
     children: React.ReactNode
     goalIndexAll: Map<string, UiGoal> // To look up titles
-    refreshSignal?: number
 }
 
 export const ProgressPopover: React.FC<ProgressPopoverProps> = ({
     skillpilotId,
     children,
-    goalIndexAll,
-    refreshSignal = 0
+    goalIndexAll
 }) => {
     // Explicitly casting to any to bypass potential TS issues with the hook signature during build if not updated
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -86,7 +88,22 @@ export const ProgressPopover: React.FC<ProgressPopoverProps> = ({
     useEffect(() => {
         if (!isOpen) return
         void fetchHistory()
-    }, [isOpen, refreshSignal, fetchHistory])
+    }, [isOpen, fetchHistory])
+
+    useEffect(() => {
+        const handleLearnerRefresh = (event: Event) => {
+            if (!isOpen) return
+            const detail = (event as CustomEvent<LearnerUiRefreshDetail>).detail
+            if (!detail || detail.skillpilotId !== skillpilotId) return
+            if (detail.targets && !detail.targets.includes('all') && !detail.targets.includes('history')) return
+            void fetchHistory()
+        }
+
+        window.addEventListener(LEARNER_UI_REFRESH_EVENT, handleLearnerRefresh)
+        return () => {
+            window.removeEventListener(LEARNER_UI_REFRESH_EVENT, handleLearnerRefresh)
+        }
+    }, [fetchHistory, isOpen, skillpilotId])
 
     const toggleOpen = () => {
         if (!isOpen) {

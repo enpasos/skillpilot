@@ -33,6 +33,7 @@ import { applyDefaultGlobalStageScope, goalMatchesGlobalStageScope } from '../ut
 import { trackCampaignEvent } from '../utils/campaignTracking'
 import type { ToastKind } from '../hooks/useToast'
 import { queueToastForNextLoad } from '../hooks/useToast'
+import { dispatchLearnerUiRefresh } from '../utils/learnerUiEvents'
 
 import type { UiGoal } from '../goalTypes'
 import type { Learner, FrontierGoal } from '../learnerTypes'
@@ -320,7 +321,6 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   const [modalTitle, setModalTitle] = useState("");
   const [modalType, setModalType] = useState<'info' | 'error' | 'success'>('info');
 
-  const [velocityRefreshCounter, setVelocityRefreshCounter] = useState(0);
   const [srsMasteryTick, setSrsMasteryTick] = useState(0);
   const [optimisticSrsMasteryByGoal, setOptimisticSrsMasteryByGoal] = useState<Record<string, number>>({});
 
@@ -1320,7 +1320,11 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   const handleSseUpdate = useCallback(async (payload?: { type?: string; nodeId?: string }) => {
     if (payload?.type === 'CLIENT_STATE_UPDATED' && payload?.nodeId) {
       setSrsMasteryTick(c => c + 1)
-      setVelocityRefreshCounter(c => c + 1)
+      dispatchLearnerUiRefresh({
+        skillpilotId,
+        reason: payload.type,
+        targets: ['history'],
+      })
       if (currentGoal?.id === payload.nodeId) {
         setSrsReloadCounter(c => c + 1)
       }
@@ -1341,12 +1345,16 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
         refreshPlanned(),
         onRefresh?.()
       ])
-      setVelocityRefreshCounter(c => c + 1)
+      dispatchLearnerUiRefresh({
+        skillpilotId,
+        reason: payload?.type ?? 'FULL_REFRESH',
+        targets: ['all'],
+      })
       console.log('[SSE] ✅ Refresh complete')
     } finally {
       fullRefreshInFlightRef.current = false
     }
-  }, [refreshState, refreshPlanned, onRefresh, currentGoal?.id])
+  }, [refreshState, refreshPlanned, onRefresh, currentGoal?.id, skillpilotId])
 
   useEffect(() => {
     if (!campaignContext) return
@@ -1728,7 +1736,11 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
         onRefresh?.(),
       ])
       setCompatibilityRouteRetired(false)
-      setVelocityRefreshCounter((count) => count + 1)
+      dispatchLearnerUiRefresh({
+        skillpilotId,
+        reason: 'CANONICAL_CUTOVER',
+        targets: ['all'],
+      })
       setIsSetupOpen(false)
       setModalTitle(language === 'de' ? 'Umstellung abgeschlossen' : 'Migration complete')
       setModalMessage(
@@ -2141,11 +2153,16 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
         await syncClientData(goalId)
         await refreshState(true)
         onRefresh?.()
+        dispatchLearnerUiRefresh({
+          skillpilotId,
+          reason: 'SRS_SYNC',
+          targets: ['all'],
+        })
       } finally {
         srsCompletionInFlightRef.current.delete(goalId)
       }
     })()
-  }, [currentGoal?.id, currentGoal?.tags, srsMasteryByGoal, refreshState, onRefresh, syncClientData])
+  }, [currentGoal?.id, currentGoal?.tags, skillpilotId, srsMasteryByGoal, refreshState, onRefresh, syncClientData])
 
   const handleImportClick = () => {
     fileInputRef.current?.click();
@@ -2378,7 +2395,6 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
               <ProgressPopover
                 skillpilotId={skillpilotId}
                 goalIndexAll={goalIndexAll}
-                refreshSignal={velocityRefreshCounter}
               >
                 <button
                   className="flex items-center gap-1 font-bold text-emerald-500 hover:text-emerald-400 transition-colors"

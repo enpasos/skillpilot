@@ -273,6 +273,37 @@ const buildSyntheticGoalsForNodes = (
   return { syntheticGoals, childIds }
 }
 
+const subtreeReferencesAnyGoal = (
+  goalId: string,
+  goalById: Map<string, UiGoal>,
+  referencedGoalIds: Set<string>,
+  cache: Map<string, boolean>,
+  visiting: Set<string> = new Set(),
+): boolean => {
+  const cached = cache.get(goalId)
+  if (cached !== undefined) return cached
+  if (visiting.has(goalId)) return false
+
+  const goal = goalById.get(goalId)
+  if (!goal) {
+    cache.set(goalId, false)
+    return false
+  }
+
+  if (referencedGoalIds.has(goalId)) {
+    cache.set(goalId, true)
+    return true
+  }
+
+  const nextVisiting = new Set(visiting)
+  nextVisiting.add(goalId)
+  const hasReferencedDescendant = (goal.contains ?? []).some((childId) =>
+    subtreeReferencesAnyGoal(childId, goalById, referencedGoalIds, cache, nextVisiting),
+  )
+  cache.set(goalId, hasReferencedDescendant)
+  return hasReferencedDescendant
+}
+
 export const applyCompositionViewProjection = (
   entries: LandscapeEntry[],
   rawView: unknown,
@@ -332,11 +363,15 @@ export const applyCompositionViewProjection = (
         strippedGoalById,
         rootStructure.children,
       )
+      const referencedSubtreeCache = new Map<string, boolean>()
       const preservedStageChildren = (stageAnchorGoal.contains ?? []).filter((childId) => {
         const child = strippedGoalById.get(childId)
         if (!child) return false
         if ((child.tags ?? []).includes(SYNTHETIC_PROGRAM_UNIT_TAG)) return false
         if (referencedGoalIds.has(childId)) return false
+        if (subtreeReferencesAnyGoal(childId, strippedGoalById, referencedGoalIds, referencedSubtreeCache)) {
+          return false
+        }
         return true
       })
 
