@@ -2,9 +2,17 @@
 
 This document defines a more general target model for SkillPilot landscapes.
 
-Implementation-oriented follow-up:
+Use this document for:
 
-- `docs/concept/curriculum-graph/general-goal-system-minimal-schema-runtime-fallback-and-math-pilot.md`
+- the layered target model
+- the semantic separation between goals, program units, placements, and competency axes
+- the migration direction from legacy mixed trees toward that target model
+
+Use related documents for narrower questions:
+
+- `docs/dev/curriculum-graph-minimal-schema-runtime-fallback-and-math-pilot.md`
+- `docs/concept/curriculum-graph/view-projection-and-goal-placement.md`
+- `docs/concept/curriculum-graph/graph-definition.md`
 
 It is motivated by one concrete pressure point in the current canonical Gymnasium work:
 
@@ -654,7 +662,7 @@ Only after the placement-based runtime is stable:
 Until then:
 
 - `phase` remains allowed
-- but it is understood as a compatibility and ordering hint, not the canonical semantic anchor
+- but it is understood as compatibility/view metadata, not the canonical semantic anchor
 
 ## Recommended first implementation rules
 

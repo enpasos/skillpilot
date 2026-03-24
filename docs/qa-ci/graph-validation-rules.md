@@ -35,7 +35,7 @@ This is the single source of truth for algorithmic graph validation in CI.
 | Rule ID | Description | Scope | Default |
 | --- | --- | --- | --- |
 | `GVR-001` | A goal must not directly require one of its `contains` ancestors. | Local landscape | `error` |
-| `GVR-002` | Phase monotonicity: effective prerequisites must not point to later phases for comparable phase systems (`E`, `Q1..Q4`, `Abitur`, `S*`, `J*`). | Local landscape | `error` |
+| `GVR-002` | Legacy phase-compatibility lint: for repositories that still use comparable `phase` labels, effective prerequisites should not point to later phases (`E`, `Q1..Q4`, `Abitur`, `S*`, `J*`). This is a validator-profile rule, not part of the canonical graph validity definition. | Local landscape | `error` |
 | `GVR-003` | A goal must not directly require its direct `contains` parent (most frequent deadlock source). | Local landscape | `error` |
 | `GVR-004` | First atomic node must be a motivation anchor (`Warum`/`Why`). | Rollout subset (`DE_HES_S_GYM_2_*`, excluding `OVERVIEW`) | `error` |
 | `GVR-005` | Every atomic node must have a transitive path to the motivation anchor via effective `requires`. | Rollout subset (`DE_HES_S_GYM_2_*`, excluding `OVERVIEW`) | `error` |

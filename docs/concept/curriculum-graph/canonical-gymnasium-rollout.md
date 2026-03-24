@@ -1,8 +1,21 @@
-# Canonical Gymnasium Rollout Plan
+# Canonical Gymnasium Rollout Policy
 
-This document captures the rollout strategy for converging the existing German Gymnasium curricula into a shared competence layer without duplicating content per Bundesland.
+This document defines the stable rollout policy for converging the existing German Gymnasium curricula into a shared competence layer without duplicating content per Bundesland.
 
-The plan is intentionally conservative:
+Use this document for Gymnasium-specific target-architecture and rollout-policy decisions.  
+General goal-system semantics and projection contracts are specified separately in:
+
+- `docs/concept/curriculum-graph/general-goal-system-and-migration.md`
+- `docs/concept/curriculum-graph/view-projection-and-goal-placement.md`
+
+Execution planning and current migration status belong separately in:
+
+- `docs/dev/canonical-gymnasium-implementation-plan.md`
+- `docs/dev/canonical-gymnasium-migration-status.md`
+
+This document keeps only the stable rollout policy and the intended target direction. Work packages, readiness scoring, and current execution status belong elsewhere.
+
+The policy is intentionally conservative:
 
 - keep the current Hessen landscapes working,
 - avoid a big-bang rewrite,
@@ -11,13 +24,15 @@ The plan is intentionally conservative:
 
 ## Context
 
-Current repository status:
+The rollout starts from a conservative Hessen-first and DE-level-canonical stance.
+
+Source priority assumptions:
 
 - `curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe` is the most mature Gymnasium curriculum area and defines the rollout starting point.
 - `curricula/DE/HE/Kultusministerium/Gymnasium_9_Mittelstufe` already covers Hessen Sekundarstufe I in the same general direction.
 - `curricula/DE/BY/Gymnasium` already provides broad Bavaria subject coverage, but in a less normalized structure than the Hessen upper-secondary JSON landscapes.
 
-Repository layout rule for the rollout:
+Repository layout policy:
 
 - existing source curricula under state-owned paths such as `curricula/DE/HE/.../json/` remain legacy source material and should not be rewritten just to host canonical convergence
 - canonical Gymnasium subject landscapes should live on a Germany-level path, not inside a single Bundesland subtree
@@ -58,12 +73,12 @@ During that period, old landscapes are treated as supported legacy views, not as
 
 The minimal new structural element is a mapping from legacy goals to canonical goals.
 
-At the beginning, the project should add only:
+In the first convergence step, the project should add only:
 
-- canonical landscape files for pilot subjects,
+- canonical landscape files for initial subjects,
 - mapping files from legacy goals to canonical goals.
 
-The project should avoid introducing additional abstract layers unless the pilot proves they are necessary.
+The project should avoid introducing additional abstract layers unless the first convergence step proves they are necessary.
 
 ### 4. Standardize Bundesland identifiers in metadata, not in directory layout
 
@@ -76,7 +91,7 @@ Examples:
 
 This should become the canonical identifier format whenever the data model needs to refer to a Bundesland explicitly.
 
-At the same time, the existing repository path layout such as `curricula/DE/HE/...` does not need to be renamed during the pilot. Those directory segments are storage organization, not the long-term public identifier contract.
+At the same time, the existing repository path layout such as `curricula/DE/HE/...` does not need to be renamed during convergence. Those directory segments are storage organization, not the long-term public identifier contract.
 
 ### 5. Keep GPT-facing APIs stable
 
@@ -103,19 +118,19 @@ These cross-subject edges should be added sparingly and only where they improve 
 
 ### 7. Prefer one DE-level school root in learner-facing configuration
 
-The learner-facing school UX should converge towards one DE-level root such as `Gymnasium (DE)` instead of exposing every pilot subject as an independent top-level curriculum forever.
+The learner-facing school UX should converge towards one DE-level root such as `Gymnasium (DE)` instead of exposing every subject as an independent top-level curriculum forever.
 
 Preferred shape:
 
 - one shared DE-level root
-- subject landscapes such as Mathematik, Physik, Chemie, Biologie, Informatik, Geschichte, Deutsch, Politik und Wirtschaft, Englisch, Französisch, Latein, Spanisch, Griechisch, Chinesisch, Musik, and Wirtschaftswissenschaften as child landscapes under that root
+- subject landscapes such as Mathematik, Naturwissenschaften, Sprachen, Geschichte, Deutsch, and social-science subjects as child landscapes under that root
 - subject-local filters such as `GK` / `LK` on the child landscapes
 - one global root filter such as `DE-HE` / `DE-BY` / `ALL`
 
-Implementation rule:
+Runtime policy:
 
 - do not clone canonical subject files per Bundesland
-- current bridge behavior may derive state-specific visibility from mappings and provenance
+- bridge behavior may derive state-specific visibility from mappings and provenance
 - target runtime behavior should use compiled node-level `applicability` metadata derived and validated ahead of time
 - propagate the selected root Bundesland filter runtime-side into the selected child landscapes
 
@@ -136,7 +151,7 @@ Rationale:
 - Hessen Sek I already exists in a mature G9-oriented structure,
 - Bavaria source material can contain G8 and G9 labels, but its content can still be mapped into year-level buckets without cloning the canonical graph.
 
-Operational rule:
+Authoring and migration rule:
 
 - preserve source truth such as `G8` / `G9` in provenance and archived inputs,
 - but author and migrate the first canonical Sek-I layer against the shared G9-aligned year-level grid,
@@ -160,9 +175,9 @@ The rollout should start with only two additions.
 
 ### Canonical landscapes
 
-New canonical landscapes continue to use the existing runtime-compatible structure.
+New canonical landscapes should stay inside the existing `LearningLandscape` / `LearningGoal` family.
 
-This keeps loaders, validation rules, mastery aggregation, and GPT-facing state handling close to the current design.
+This preserves continuity across validation, runtime consumption, and learner-state semantics.
 
 ### Goal mappings
 
@@ -185,22 +200,22 @@ Suggested shape:
 }
 ```
 
-Recommended `matchType` values for the pilot:
+Recommended initial `matchType` values:
 
 - `exact`
 - `partial`
 
-Do not introduce a larger taxonomy unless the pilot needs it.
+Do not introduce a larger taxonomy unless actual migration cases require it.
 
-## Learner-State Migration Strategy
+## Learner-State Migration Policy
 
 The migration should be incremental and reversible.
 
 ### Transition phase
 
 - Existing learners continue to work with the current legacy landscapes.
-- Mastery updates on mapped legacy goals are projected onto canonical goals.
-- Canonical views can already use that projected mastery.
+- Mastery on mapped legacy goals contributes to the corresponding canonical goals.
+- Canonical views may already rely on that transferred mastery.
 - If a canonical goal has no reliable mapping coverage yet, the legacy view remains authoritative for that area.
 
 ### Later phase
@@ -208,14 +223,14 @@ The migration should be incremental and reversible.
 Once mapping coverage is stable for a subject:
 
 - canonical mastery becomes the primary durable representation,
-- legacy mastery values are derived from canonical mastery where possible,
+- legacy mastery is derived from canonical mastery where possible,
 - legacy landscapes remain as views until they are no longer needed.
 
 The migration should prioritize continuity of learner progress over purity of data architecture.
 
-## Operational Migration Model
+## Migration State Model
 
-The operational migration unit is not a whole subject or a whole Bundesland rollout at once.
+The migration unit is not a whole subject or a whole Bundesland rollout at once.
 
 The migration unit is a **didactically closed subtree**.
 
@@ -225,9 +240,11 @@ Examples:
 - one coherent introductory upper-secondary topic field
 - one Physics subtree that depends on a small, explicit Mathematics prerequisite set
 
-This keeps cutovers small enough that a subtree can later be switched over within a few days instead of requiring a long big-bang migration window.
+This keeps adoption small enough that convergence can happen incrementally instead of requiring a big-bang migration window.
 
 For Sek I subtrees, "didactically closed" should currently be interpreted on the shared G9-aligned year-level grid, not on separate G8/G9 canonical branches.
+
+Concrete readiness checklists, regression gates, and status scoring belong in the dev implementation and migration-status documents, not in this concept document.
 
 ### State 1: `legacy_frozen`
 
@@ -236,7 +253,7 @@ Meaning:
 - an existing state-specific school curriculum remains the authoritative legacy source
 - its JSON under `curricula/.../json/` is treated as read-only source material for convergence work
 
-Implications:
+Policy consequences:
 
 - bug fixes in runtime, metadata interpretation, or mappings are still allowed
 - canonical work must not rewrite the legacy source tree just to host new canonical content
@@ -249,33 +266,33 @@ Meaning:
 - explicit mappings from legacy goals into canonical goals exist
 - the subtree is already visible through canonical views
 
-Acceptance conditions:
+Required properties:
 
 - the subtree is sufficiently closed with respect to `contains`
-- prerequisite edges are either carried over or explicitly rebound
-- no goal-identity collision with legacy goals exists
+- prerequisite continuity is either carried over or explicitly rebound
+- canonical and legacy goal identities remain distinguishable
 
 ### State 3: `cutover_ready`
 
 Meaning:
 
-- the adopted subtree is stable enough that ordinary learner navigation can switch to the canonical version with low operational risk
+- the adopted subtree is coherent enough that ordinary learner navigation may switch to the canonical version as the default route
 
-Acceptance conditions:
+Required properties:
 
-- canonical learner-state projection behaves deterministically
-- frontier behavior is acceptable in regression tests
-- the mapping coverage is good enough that learner progress does not fragment
-- a rollback path through the legacy view still exists
+- learner-state continuity between legacy and canonical views is preserved
+- frontier and navigation semantics remain coherent
+- mapping coverage is sufficient that learner progress does not fragment
+- the legacy view can still act as a temporary compatibility fallback
 
 ### State 4: `legacy_view_retained`
 
 Meaning:
 
-- the canonical subtree is the preferred operational path
+- the canonical subtree is the preferred learner-facing path
 - the old state-specific subtree remains available temporarily as a compatibility or audit view
 
-This is the expected near-term state after a successful cutover.
+This is the normal intermediate steady state before a retained legacy view may eventually be retired.
 
 ### Transition rule
 
@@ -285,48 +302,29 @@ The intended transition path is:
 
 The project should avoid skipping directly from legacy authoring to full cutover without an explicit subtree adoption step.
 
-## Rollout Order
+## Preferred Adoption Sequence
 
-### Phase 0: protect the current Hessen value
+The preferred strategic order is:
 
-- Treat `curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe` as the starting point.
-- Do not destabilize current Hessen learner or GPT flows.
+1. preserve current Hessen learner-facing continuity while canonical structure is added behind it
+2. use Mathematics as the first canonical subject spine
+3. extend Mathematics across Sek I and Sek II before broadening the cross-state surface
+4. fold Bavaria into that canonical Mathematics layer through mappings and view metadata rather than duplicated content
+5. only then widen multi-subject canonical navigation and selected cross-subject prerequisites
 
-### Phase 1: pilot subject = Mathematik
+Rationale for starting with Mathematics:
 
-- Derive a first canonical Mathematics graph from the mature Hessen upper-secondary implementation.
-- Extend that canonical graph downward by attaching Hessen Sekundarstufe I mathematics.
-- Add the first legacy-to-canonical mappings for Hessen mathematics.
+- it is already mature in Hessen
+- it is prerequisite-heavy
+- it is the most important cross-subject dependency source for later work
 
-Why mathematics first:
-
-- it is already mature in Hessen,
-- it is prerequisite-heavy,
-- it is the most important cross-subject dependency source for later work.
-
-### Phase 2: map Bavaria Mathematics
-
-- Map `curricula/DE/BY/Gymnasium/Mathematik.json` into the canonical mathematics layer.
-- Preserve Bavarian placement, sequencing, and level distinctions as view/filter metadata, not as duplicated content.
-
-### Phase 3: add dual mastery handling
-
-- Support projected canonical mastery while keeping legacy learner paths intact.
-- Keep API responses unified so the GPT remains unaffected.
-
-### Phase 4: introduce multi-subject canonical views
-
-- Allow combined learner navigation across subjects.
-- Start with Mathematics + Physics because this pair has the clearest didactic dependency pattern.
-
-### Phase 5: selected cross-subject prerequisites
-
-- Add only the most defensible Mathe -> Physik prerequisite edges first.
-- Avoid broad cross-linking until real learner-navigation benefits are demonstrated.
+This is a policy order, not a fixed sprint plan. Concrete work packages, phase plans, and sequencing updates belong in the implementation-plan document, not here.
 
 ## View Model
 
 The intended end state is not one giant undifferentiated graph, but one canonical competence base with multiple views.
+
+The exact projection contract for such views is defined in `docs/concept/curriculum-graph/view-projection-and-goal-placement.md`.
 
 Examples:
 
@@ -344,6 +342,7 @@ These views should differ by filters, placement, and weighting, not by duplicate
 - Favor small, explicit mapping files over clever implicit reconciliation logic.
 - Only add cross-subject dependencies that are explainable to teachers and learners.
 - When in doubt, choose a design that preserves current Hessen workflows.
+- Keep concept documents focused on durable rules and move execution-specific checklists or status reporting into `docs/dev`.
 
 ## Success Criteria
 

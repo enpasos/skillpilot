@@ -2,6 +2,12 @@
 
 This document defines the canonical goal-level link model for SkillPilot.
 
+Use this document for provenance and learning-resource links only.  
+Graph semantics, placements, and projected views are specified separately in:
+
+- `docs/concept/curriculum-graph/graph-definition.md`
+- `docs/concept/curriculum-graph/view-projection-and-goal-placement.md`
+
 The design goal is simple:
 
 - one field for **provenance**

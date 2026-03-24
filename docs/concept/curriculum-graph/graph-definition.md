@@ -4,8 +4,16 @@ This document defines the SkillPilot curriculum graph as a mathematical structur
 
 The intent is that independent implementations interpret and validate graphs in the same way.
 
+This specification covers the goal graph itself.  
+Projection contracts for user-facing trees that additionally involve `programUnits`, `goalPlacements`, or competency catalogs are specified separately in `docs/concept/curriculum-graph/view-projection-and-goal-placement.md`.
+Layering, migration strategy, and canonical rollout policy are specified separately in:
+
+- `docs/concept/curriculum-graph/general-goal-system-and-migration.md`
+- `docs/concept/curriculum-graph/canonical-gymnasium-rollout.md`
+
 > Normative vs implementation: this document is the conceptual/normative definition.  
 > The currently enforced CI validator profile (including rollout severities and runtime rule IDs) is documented in `docs/qa-ci/graph-validation-rules.md`.
+> Legacy serialized metadata such as `phase` may still exist in concrete repositories, but such fields are not part of the canonical graph semantics unless explicitly stated below.
 
 ---
 
@@ -28,9 +36,7 @@ Each goal $g \in G$ is a distinct entity.
 - $\text{UUID}$: the set of UUID values.
 - $\Sigma^*$: the set of finite strings over an alphabet $\Sigma$.
 - $\mathbb{R}_{>0}$: strictly positive real numbers.
-- $P$: a set of phases.  
-  A curriculum MAY additionally declare a totally ordered comparable subset $(P_{ord},\le)$ with $P_{ord}\subseteq P$.  
-  Phase-monotonicity rules in this specification apply only on that declared ordered subset.
+- $P_{compat}$: a set of legacy compatibility labels that may be serialized in repository-specific metadata fields such as `phase`.
 
 ### 2.2 Attribute mappings
 
@@ -38,7 +44,6 @@ Each goal $g\in G$ has the following attributes:
 
 - $Id: G \to \text{UUID}$
 - $Title: G \to \Sigma^*$
-- $Phase: G \to P$
 - $Weight: G \to \mathbb{R}_{>0}$
 
 Implementations MAY additionally expose an optional stable cross-layer reference:
@@ -49,6 +54,19 @@ Interpretation:
 
 - `ShortKey` is an optional stable ASCII-style identifier for cross-layer references, exports, APIs, and similar non-graph-facing integration points
 - `ShortKey` does not replace `Id`; `Id` remains the canonical identity of a goal
+
+Implementations MAY additionally expose optional compatibility/view metadata:
+
+- $PhaseCompat: G \rightharpoonup P_{compat}$
+
+Interpretation:
+
+- current repositories may still serialize this metadata under the field name `phase`
+- this metadata is optional and semantically unstable across domains
+- it may support display badges, coarse filtering, migration compatibility, or legacy tooling
+- it is not part of the canonical goal-graph semantics
+- it does not participate in the required validity conditions of this specification
+- phase-based validator checks, if a repository still uses them, belong to the validator profile and not to the normative graph definition
 
 Implementations MAY additionally expose optional cross-cutting metadata for scoped learner views.
 
@@ -65,7 +83,7 @@ Interpretation:
 - $V_d$ is the value vocabulary for dimension $d$
 - this mapping is intended for node-local view projection and view validation, not as the primary authored source of truth
 
-The normative filter semantics for such scoped views are defined in §12.
+The normative filter semantics for such scoped views are defined in §11.
 
 ### 2.3 Identifier uniqueness
 
@@ -503,27 +521,7 @@ In a mature atomic-authored landscape, frontier decisions for atomic goals shoul
 
 ---
 
-## 10. Phase ordering
-
-This section applies only to curricula that declare an ordered comparable phase subset $(P_{ord},\le)$ as described in §2.1.
-
-### 10.1 Monotone prerequisite flow
-
-In typical curricula, prerequisites SHOULD point backward in time or remain within the same phase:
-
-$$
-(u,v)\in R_{eff}\ \land\ Phase(u)\in P_{ord}\ \land\ Phase(v)\in P_{ord}
-\Rightarrow Phase(u)\le Phase(v)
-$$
-
-Goals whose phases are not in the declared ordered subset are outside the scope of this rule.  
-If the system supports remedial or non-linear paths, violations of this rule may be allowed as explicit exceptions.
-
-In the current validator profile, this check is implemented as rule `GVR-002` (strict by default; temporary warn mode via `VALIDATE_GRAPH_STRICT_RULES=0`).
-
----
-
-## 11. Summary of required validity conditions
+## 10. Summary of required validity conditions
 
 A curriculum graph $(G,C,R_d)$ is valid iff:
 
@@ -539,16 +537,16 @@ Everything else in this specification is either derived (definitions) or recomme
 Important scope note:
 
 - these are the validity conditions of the **full authored graph**
-- scoped learner views may impose additional validity expectations on projected filtered graphs as defined in §12
+- scoped learner views may impose additional validity expectations on projected filtered graphs as defined in §11
 - such projected-view validity is an additional property of a chosen filter realization, not part of base full-graph validity by default
 
 ---
 
-## 12. Filters and scoped evaluation (Optimistic vs. Pessimistic)
+## 11. Filters and scoped evaluation (Optimistic vs. Pessimistic)
 
 A **filter** restricts the global curriculum graph to a subset of nodes (e.g., *Grade 12* AND *Subject: Mathematics* AND *Track: Advanced*).
 
-### 12.1 Filter representation and applicability-backed projection
+### 11.1 Filter representation and applicability-backed projection
 
 Normatively, a filter is still just a predicate on goals.
 
@@ -581,7 +579,7 @@ $$
 
 This is only one possible realization of a filter, but it is the preferred one for derived, prevalidated scoped views.
 
-### 12.1.1 Repository convention: explicit applicability overrides
+### 11.1.1 Repository convention: explicit applicability overrides
 
 The normative filter semantics in this document depend on the effective applicability predicate only.  
 Some repositories MAY additionally maintain an explicit auxiliary metadata field such as:
@@ -617,7 +615,7 @@ Practical guidance:
 
 In the current repository validator profile, explicit use of such an override path is tracked by rule `APV-201`.
 
-### 12.2 Filter predicate and induced subgraph
+### 11.2 Filter predicate and induced subgraph
 
 A filter is modeled as a predicate:
 
@@ -663,7 +661,7 @@ is the **projected filtered graph** for that view.
 
 If an implementation claims that a filtered learner view is structurally valid, then that claim MUST be evaluated on the projected filtered graph, not merely on raw metadata fields attached to nodes.
 
-### 12.3 Optimistic mode
+### 11.3 Optimistic mode
 
 In **optimistic mode**, we first apply the filter and then compute availability inside the filtered graph only.  
 Intuition: when a learner is in the filtered scope (e.g., Grade 12), we temporarily assume that missing prerequisites from outside the scope do not block progress.
@@ -698,7 +696,7 @@ a \in A_F \setminus M_A \ \middle|\
 \right\}.
 $$
 
-### 12.4 Pessimistic mode or strict mode
+### 11.4 Pessimistic mode or strict mode
 
 In **pessimistic mode** or **strict mode**, candidate goals are still restricted to the filtered set, but prerequisites are enforced **globally** (including nodes outside the filter).
 
@@ -712,7 +710,7 @@ a \in A_F \setminus M_A \ \middle|\
 \right\}.
 $$
 
-### 12.5 Diagnostic: missing prerequisites
+### 11.5 Diagnostic: missing prerequisites
 
 For diagnosis, define the set of missing prerequisites of a goal $g$:
 
@@ -733,7 +731,7 @@ $$
 
 Operationally, one can start with optimistic mode for efficiency and exploration; if a learner struggles with a goal, switch to pessimistic mode (or compute $Missing_{out}$) to identify prerequisite gaps outside the current filter.
 
-### 12.6 Optional: relaxed pessimism via a prerequisite scope
+### 11.6 Optional: relaxed pessimism via a prerequisite scope
 
 A “weakened” pessimistic approach can be modeled by choosing a **scope** set $S \subseteq G$ of prerequisites that must be enforced (e.g., only prerequisites from the last one or two phases, or only prerequisites up to a bounded depth).
 

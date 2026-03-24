@@ -3,6 +3,16 @@
 This document is the implementation-oriented follow-up to:
 
 - `docs/concept/curriculum-graph/general-goal-system-and-migration.md`
+- `docs/concept/curriculum-graph/view-projection-and-goal-placement.md`
+
+Use this document for:
+
+- the smallest additive schema extension worth introducing now
+- transition-time fallback precedence
+- the first canonical mathematics pilot slice
+
+It does not redefine the long-term projection contract for visible trees.  
+That target contract lives in `docs/concept/curriculum-graph/view-projection-and-goal-placement.md`.
 
 It answers three narrower questions:
 
@@ -218,6 +228,9 @@ The transition runtime should be read-compatible first.
 The key rule is:
 
 **projection is preferred when present, legacy structure is the fallback when absent.**
+
+This section defines transition precedence only.  
+The target contract for content trees, program trees, and competency views is specified separately in `docs/concept/curriculum-graph/view-projection-and-goal-placement.md`.
 
 ## 1. Structural program view
 

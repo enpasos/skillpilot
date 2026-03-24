@@ -82,7 +82,7 @@ Interpretation rules:
 Reference:
 
 - `docs/concept/curriculum-graph/general-goal-system-and-migration.md`
-- `docs/concept/curriculum-graph/general-goal-system-minimal-schema-runtime-fallback-and-math-pilot.md`
+- `docs/dev/curriculum-graph-minimal-schema-runtime-fallback-and-math-pilot.md`
 
 ---
 
