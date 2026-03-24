@@ -30,7 +30,7 @@ Current use:
 - Baden-Wuerttemberg Kursstufe anchor alignment onto the canonical `E` / `Q` spine
 - the first reviewed Baden-Wuerttemberg mathematics corridor mappings are now active on:
   - `Warum Mathematik? – Denken, Muster & Zukunft`
-  - `E.4 Exponentialfunktionen`
+  - `Exponentialfunktionen`
   - `Einfache Integrale berechnen`
   - `Verknüpfungen von Exponential- und ganzrationalen Funktionen untersuchen`
   - `Einfache Extremwertprobleme lösen`

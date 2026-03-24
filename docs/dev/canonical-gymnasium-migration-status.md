@@ -3277,7 +3277,7 @@ What changed:
   - `e0769810-ba73-4a52-8e9c-660d1fb9d6e6` (`Die natuerliche Exponentialfunktion mit Basis e beschreiben und ihre Ableitung angeben`)
   - `7bf62048-84ba-467f-ba23-f053c4e2989f` (`Die Stammfunktion der natuerlichen Exponentialfunktion angeben`)
 - the first new Basisfach child now maps `partial` to:
-  - `4047af71-de53-5dc3-80c6-a7c78fb4bfe4` (`E.4 Exponentialfunktionen`)
+  - `4047af71-de53-5dc3-80c6-a7c78fb4bfe4` (`Exponentialfunktionen`)
 - the second new Basisfach child now maps `partial` to:
   - `a9ed219d-d497-55e5-a4e0-4d45d2554f6b` (`Einfache Integrale berechnen`)
 - the BW upper-secondary source snapshot, provenance registries, mapping README, structure note, repository fixture, and real-registry BW closure regression were aligned to the retained split
@@ -3286,7 +3286,7 @@ What changed:
 
 Why this cut:
 
-- one legacy source goal can currently resolve to only one canonical goal in the backend mapping service, so the broad Basisfach atom had to be split before it could land on the shared E.4 exponential cluster and the shared simple-integral leaf honestly
+- one legacy source goal can currently resolve to only one canonical goal in the backend mapping service, so the broad Basisfach atom had to be split before it could land on the shared exponential-functions cluster and the shared simple-integral leaf honestly
 - the BW source wording already separates an e-function / Ableitungs clause from the narrower Stammfunktionsaussage well enough for a small retained source split
 - both resulting bridges remain `partial`, because neither child isolates the full canonical wording exactly:
   - the e-function child does not carry the canonical continuous-process modelling surface
