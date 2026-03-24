@@ -54,6 +54,7 @@ type ApplicabilityGroup = {
 
 const SYNTHETIC_PROGRAM_UNIT_TAG = 'synthetic:program-unit'
 const PROGRAM_UNIT_KIND_TAG_PREFIX = 'program-unit:'
+const PROGRAM_UNIT_ANCHOR_TAG = 'program-unit:anchor'
 
 const LEGACY_ATTRIBUTION_LINE_PATTERNS = [
   /^\s*\[(course url|kurs-url)\]\(.*\)\s*$/i,
@@ -217,8 +218,9 @@ export const GoalCard: React.FC<GoalCardProps> = ({
   const solutionLabel = language === 'en' ? 'Sample Solution' : 'Musterlösung'
   const handleChange = onMasteryChange ?? (() => { })
   const isProjectedStructureNode = (goal.tags ?? []).includes(SYNTHETIC_PROGRAM_UNIT_TAG)
+  const isLearnerAudience = showLearnerTools
   const projectedProgramUnitKind = (goal.tags ?? [])
-    .find((tag) => tag.startsWith(PROGRAM_UNIT_KIND_TAG_PREFIX))
+    .find((tag) => tag.startsWith(PROGRAM_UNIT_KIND_TAG_PREFIX) && tag !== PROGRAM_UNIT_ANCHOR_TAG)
     ?.slice(PROGRAM_UNIT_KIND_TAG_PREFIX.length)
   const projectedStructureBadge = language === 'en' ? 'Structure' : 'Struktur'
   const projectedStructureTitle = language === 'en' ? 'Projected structure node' : 'Projizierter Strukturknoten'
@@ -308,7 +310,7 @@ export const GoalCard: React.FC<GoalCardProps> = ({
           <h2 className="text-2xl font-semibold text-text-primary leading-tight">
             <InlineMathText text={goal.title} />
           </h2>
-          {isProjectedStructureNode && (
+          {!isLearnerAudience && isProjectedStructureNode && (
             <div className="mt-2 flex flex-wrap gap-2">
               <span className="inline-flex items-center rounded-full border border-slate-300 dark:border-slate-600 px-2 py-0.5 text-[11px] font-medium uppercase tracking-wide text-slate-600 dark:text-slate-300">
                 {projectedStructureBadge}
@@ -342,7 +344,7 @@ export const GoalCard: React.FC<GoalCardProps> = ({
         </div>
       </div>
 
-      {isProjectedStructureNode && (
+      {!isLearnerAudience && isProjectedStructureNode && (
         <div className="mb-4 rounded-2xl border border-slate-200 bg-slate-50/80 p-4 text-sm text-text-secondary dark:border-slate-700 dark:bg-slate-800/40">
           <div className="font-semibold text-text-primary">{projectedStructureTitle}</div>
           <p className="mt-1">{projectedStructureDescription}</p>
@@ -615,7 +617,7 @@ export const GoalCard: React.FC<GoalCardProps> = ({
             </div>
           )}
 
-          {isProjectedStructureNode && (
+          {!isLearnerAudience && isProjectedStructureNode && (
             <div className="rounded-xl border border-slate-200 bg-slate-50/40 p-4 text-sm text-text-secondary dark:border-slate-700 dark:bg-slate-800/30">
               {projectedStructureHint}
             </div>
@@ -663,7 +665,9 @@ export const GoalCard: React.FC<GoalCardProps> = ({
             <div className="flex items-center justify-between text-xs text-text-secondary">
               <span className="font-medium">
                 {isProjectedStructureNode
-                  ? (language === 'en' ? 'Progress in this structure section' : 'Fortschritt in diesem Strukturabschnitt')
+                  ? (language === 'en'
+                    ? (isLearnerAudience ? 'Progress in this section' : 'Progress in this structure section')
+                    : (isLearnerAudience ? 'Fortschritt in diesem Abschnitt' : 'Fortschritt in diesem Strukturabschnitt'))
                   : 'Kompetenzstand für dieses Lernziel'}
               </span>
               <span className="tabular-nums">{Math.round(masteryValue * 100)}%</span>

@@ -10,6 +10,7 @@ import { goalMatchesGlobalStageScope, isCourseProfileFilterId } from '../utils/p
 
 export type TreeStructureMode = 'all' | 'content' | 'competency'
 export type TreeAudience = 'learner' | 'trainer'
+type TreePhaseContext = 'E' | 'Q1' | 'Q2' | 'Q3' | 'Q4'
 
 const COMPETENCY_DIMENSION_ROOT_TAG = 'competency-axis:dimension-root'
 const SYNTHETIC_PROGRAM_UNIT_TAG = 'synthetic:program-unit'
@@ -26,6 +27,80 @@ const normalizeTreeComparableText = (value: string | undefined) =>
     .toLocaleLowerCase('de-DE')
     .replace(/\s+/g, ' ')
     .trim()
+
+const detectExplicitPhaseContext = (goal: UiGoal): TreePhaseContext | undefined => {
+  const normalizedPhase = normalizeTreeComparableText(goal.phase)
+  if (normalizedPhase === 'e') return 'E'
+  if (normalizedPhase === 'q1') return 'Q1'
+  if (normalizedPhase === 'q2') return 'Q2'
+  if (normalizedPhase === 'q3') return 'Q3'
+  if (normalizedPhase === 'q4') return 'Q4'
+
+  const title = normalizeTreeComparableText(goal.title)
+  if (!title) return undefined
+
+  if (
+    title.startsWith('e-phase')
+    || /^e\.\d/.test(title)
+    || title.endsWith('(e)')
+    || title.includes(' e-phase')
+  ) {
+    return 'E'
+  }
+
+  const qMatch = /^q([1-4])(?:\b|[.\s:\-–(])/.exec(title)
+  if (qMatch) {
+    return `Q${qMatch[1]}` as TreePhaseContext
+  }
+
+  const trailingQMatch = /\(q([1-4])\)$/.exec(title)
+  if (trailingQMatch) {
+    return `Q${trailingQMatch[1]}` as TreePhaseContext
+  }
+
+  return undefined
+}
+
+const isGoalRelevantInPhaseContext = (
+  goalId: string,
+  phaseContext: TreePhaseContext | undefined,
+  allGoals: Map<string, UiGoal>,
+  cache: Map<string, boolean>,
+  visiting: Set<string> = new Set(),
+): boolean => {
+  if (!phaseContext) return true
+
+  const cacheKey = `${phaseContext}:${goalId}`
+  const cached = cache.get(cacheKey)
+  if (cached !== undefined) return cached
+  if (visiting.has(cacheKey)) return false
+
+  visiting.add(cacheKey)
+  const goal = allGoals.get(goalId)
+  if (!goal) {
+    cache.set(cacheKey, false)
+    return false
+  }
+
+  const explicitPhaseContext = detectExplicitPhaseContext(goal)
+  if (explicitPhaseContext) {
+    const matches = explicitPhaseContext === phaseContext
+    cache.set(cacheKey, matches)
+    return matches
+  }
+
+  const childIds = goal.contains ?? []
+  if (childIds.length === 0) {
+    cache.set(cacheKey, true)
+    return true
+  }
+
+  const matches = childIds.some((childId) =>
+    isGoalRelevantInPhaseContext(childId, phaseContext, allGoals, cache, new Set(visiting)),
+  )
+  cache.set(cacheKey, matches)
+  return matches
+}
 
 const hasEquivalentConcreteSibling = (
   syntheticGoal: UiGoal,
@@ -245,6 +320,7 @@ interface TreeNodeProps {
   frontierIds?: Set<string>
   parentGoalId?: string
   audience?: TreeAudience
+  inheritedPhaseContext?: TreePhaseContext
 }
 
 const formatFilterLabel = (filterId?: string) => {
@@ -280,6 +356,7 @@ const TreeNode: React.FC<TreeNodeProps> = ({
   frontierIds,
   parentGoalId,
   audience = 'trainer',
+  inheritedPhaseContext,
 }) => {
   const t = useTranslation()
   const goal = allGoals.get(goalId)
@@ -294,10 +371,18 @@ const TreeNode: React.FC<TreeNodeProps> = ({
   }, [forcedExpandedIds, goalId])
 
   const sortedChildren = sortedChildrenByParent.get(goalId) ?? []
-  const mastery = masteryByGoalId.get(goalId) ?? 0
   if (!goal) return null
 
-  const hasChildren = sortedChildren.length > 0
+  const phaseContext = detectExplicitPhaseContext(goal) ?? inheritedPhaseContext
+  const phaseContextCache = new Map<string, boolean>()
+  const renderedChildren = audience !== 'learner' || !phaseContext
+    ? sortedChildren
+    : sortedChildren.filter((childId) =>
+      isGoalRelevantInPhaseContext(childId, phaseContext, allGoals, phaseContextCache),
+    )
+  const mastery = masteryByGoalId.get(goalId) ?? 0
+
+  const hasChildren = renderedChildren.length > 0
   const mastered = isMastered(mastery)
   const isPlanned = plannedGoals.has(goal.id)
   const isSelected = selectedId === goal.id
@@ -449,7 +534,7 @@ const TreeNode: React.FC<TreeNodeProps> = ({
       {
         isExpanded && hasChildren && (
           <div>
-            {sortedChildren.map((childId) => (
+            {renderedChildren.map((childId) => (
               <TreeNode
                 key={childId}
                 goalId={childId}
@@ -476,6 +561,7 @@ const TreeNode: React.FC<TreeNodeProps> = ({
                 frontierIds={frontierIds}
                 parentGoalId={goal.id}
                 audience={audience}
+                inheritedPhaseContext={phaseContext}
               />
             ))}
           </div>
