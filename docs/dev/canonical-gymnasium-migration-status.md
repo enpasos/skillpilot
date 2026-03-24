@@ -2327,7 +2327,7 @@ What changed:
 - the NRW upper-secondary math mapping lane now carries `2` rows instead of `1`
 - the first real NRW upper-secondary analysis bridge is not yet the broad derivative bundle, but the more conservative E-phase source atom `0c1195ec-efe3-4d68-9219-e46a807c802d` (`Mittlere und lokale Aenderungsraten berechnen und deuten`)
 - that NRW source atom now maps as a reviewed `partial` bridge to `ae20183e-92b5-5521-b8e0-9a8662cf51f5` (`Mittlere Änderungsrate berechnen und deuten`)
-- this activates the first NRW-visible upper-secondary analysis leaf and pulls the shared canonical E.2 cluster `a115f984-2628-54fb-9702-9511e460d684` (`E.2 Einführung des Ableitungsbegriffs`) into `DE-NW`
+- this activates the first NRW-visible upper-secondary analysis leaf and pulls the shared canonical derivative-entry cluster `a115f984-2628-54fb-9702-9511e460d684` (`Einführung in den Ableitungsbegriff`) into `DE-NW`
 - the accepted-warning registry now records the new DE-NW-specific `APV-202` for `ae20183e-92b5-5521-b8e0-9a8662cf51f5`
 
 Validation used:
@@ -2358,7 +2358,7 @@ What changed:
 
 - the NRW upper-secondary math mapping lane now carries `3` rows instead of `2`
 - the previously deferred broad NRW source atom `3d1a8d83-27a4-4a0d-b8e0-c738f274d4bd` (`Ableitung als Tangentensteigung und Monotonieinstrument deuten`) is now reused once as a reviewed `partial` bridge to `2143e9e8-b176-545b-b2fa-91bbb6c8cf5c` (`Momentane Änderungsrate qualitativ verstehen`)
-- this exposed a real hidden-prerequisite edge in the shared canonical E.2 route: `2143e9e8-b176-545b-b2fa-91bbb6c8cf5c` requires `b42bdfcc-3db7-5697-8b3e-69e50962ca86` (`Grenzwerte des Differenzenquotienten bestimmen`)
+- this exposed a real hidden-prerequisite edge in the shared canonical derivative-entry route: `2143e9e8-b176-545b-b2fa-91bbb6c8cf5c` requires `b42bdfcc-3db7-5697-8b3e-69e50962ca86` (`Grenzwerte des Differenzenquotienten bestimmen`)
 - instead of forcing a weaker second mapping immediately, the prerequisite atom now carries a reviewed retained `DE-NW` applicability override in the canonical math graph
 - the accepted-warning registry now records the NRW-specific follow-on decisions explicitly:
   - `APV-202` for `2143e9e8-b176-545b-b2fa-91bbb6c8cf5c`
@@ -3966,7 +3966,7 @@ Validation result:
 
 Interpretation:
 
-- Niedersachsen upper-secondary math now reaches the first two shared canonical E.2 leaves through a bounded retained route
+- Niedersachsen upper-secondary math now reaches the first two shared canonical derivative-entry leaves through a bounded retained route
 - the next Niedersachsen step should stay in the same upper-secondary corridor:
   - either `6c021ee2-f600-4977-a4a8-877ece6c8c3b` against the pointwise derivative-interpretation leaf
   - or a small retained NI source split if that follow-on alignment turns out too broad
@@ -4010,7 +4010,7 @@ Validation result:
 
 Interpretation:
 
-- Niedersachsen upper-secondary math now reaches the first three shared canonical E.2 leaves through one bounded retained route
+- Niedersachsen upper-secondary math now reaches the first three shared canonical derivative-entry leaves through one bounded retained route
 - the next Niedersachsen step should stay in the same upper-secondary corridor:
   - either `d1ca482c-4184-464f-a057-2d61ba077803` against the derivative-graph leaf
   - or `5b284b66-f417-4366-8685-012ae000b3b1` against the elementary-derivative-rules leaf
@@ -4053,7 +4053,7 @@ Validation result:
 
 Interpretation:
 
-- Niedersachsen upper-secondary math now reaches the first four shared canonical E.2 leaves through one bounded retained route
+- Niedersachsen upper-secondary math now reaches the first four shared canonical derivative-entry leaves through one bounded retained route
 - the next Niedersachsen step should stay in the same upper-secondary corridor:
   - either `5b284b66-f417-4366-8685-012ae000b3b1` against the elementary-derivative-rules leaf
   - or a small NI follow-on on the graph/curve-discussion side if a cleaner source-atomic clause emerges
@@ -4096,26 +4096,26 @@ Validation result:
 
 Interpretation:
 
-- Niedersachsen upper-secondary math now reaches the first five shared canonical E.2 leaves through one bounded retained route
+- Niedersachsen upper-secondary math now reaches the first five shared canonical derivative-entry leaves through one bounded retained route
 - the next Niedersachsen step should now move to the next downstream NI analysis lane beyond this starter corridor rather than reopening lower-secondary work
 
 ### 2026-03-20: Niedersachsen upper-secondary reaches the first downstream extremal-problem leaf
 
 What changed:
 
-- the Niedersachsen Sek-II mapping lane now carries a sixth reviewed row beyond the retained E.2 starter corridor:
+- the Niedersachsen Sek-II mapping lane now carries a sixth reviewed row beyond the retained derivative-entry starter corridor:
   - `d08d5280-3561-4d02-91f0-5f7465dd88a7`
     -> `1511b39a-4094-5450-a755-4a3ad3339733`
     as `partial`
 - the broad NI source atom `Tangenten, Normalen, Monotonie, Extrem- und Wendestellen untersuchen und Sachprobleme loesen`
   - is now reused once for the narrower shared canonical leaf `Einfache Extremwertprobleme lösen`
-- after applicability compilation, `DE-NI` is now also visible on the shared canonical `E.3 Anwendungen des Ableitungsbegriffs` cluster
+- after applicability compilation, `DE-NI` is now also visible on the shared canonical `Anwendungen des Ableitungsbegriffs` cluster
 - the repository-backed Niedersachsen Sek-II fixture and upper-secondary mapping README were aligned to the new six-row state
 - the accepted-warning registry now records the Niedersachsen-specific `APV-202` for `1511b39a-4094-5450-a755-4a3ad3339733`
 
 Why this cut:
 
-- this is the cleanest first downstream NI follow-on beyond the current E.2 starter route:
+- this is the cleanest first downstream NI follow-on beyond the current derivative-entry starter route:
   - the source atom explicitly includes optimization use
   - and the canonical target narrows that same surface to simple extremal problems solved and interpreted in context
 - the bridge remains reviewed `partial` because the NI wording is broader and still bundles tangent / normal equations, monotonicity, and special-point analysis into the same clause
@@ -4478,7 +4478,7 @@ What changed:
 - this is the same conservative first upper-secondary Analysis cut previously proven in NRW:
   - the NI source atom `Mittlere und lokale Aenderungsraten sowie Sekanten- und Tangentensteigungen bestimmen`
   - is reused once for the narrower shared canonical leaf `Mittlere Änderungsrate berechnen und deuten`
-- after applicability compilation, `DE-NI` is now visible on the first shared upper-secondary derivative-entry leaf and pulls the shared canonical E.2 cluster into Niedersachsen as well
+- after applicability compilation, `DE-NI` is now visible on the first shared upper-secondary derivative-entry leaf and pulls the shared canonical derivative-entry cluster into Niedersachsen as well
 - the repository-backed Niedersachsen Sek-II fixture and upper-secondary mapping README were aligned to the new one-row state
 - the accepted-warning registry now records:
   - the Niedersachsen-specific `APV-202` for `ae20183e-92b5-5521-b8e0-9a8662cf51f5`

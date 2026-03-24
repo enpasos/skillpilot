@@ -80,6 +80,7 @@ Interpretation rules:
 - learner-facing default trees for resolved scopes should preferably be compiled from reviewed composition views early enough that validation can run before UI rendering
 - composition views should reference canonical subtree roots and should not inline authored atomic goals
 - within one resolved learner-facing scope, the default tree should show each goal at most once and under at most one visible parent
+- local authoring tools should mirror this split: one tool for canonical cluster authoring, one tool for composition-view authoring
 - preferred design maxim: **as much semantics as necessary, as little ontology as possible**
 - add semantic distinctions only when they solve a concrete authoring, migration, validation, projection, or runtime problem
 

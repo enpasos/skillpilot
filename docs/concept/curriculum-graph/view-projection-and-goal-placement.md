@@ -204,6 +204,14 @@ The preferred way to define a learner-facing Bundesland or curriculum tree is an
 
 Such a file may be maintained jointly with, or even by, the responsible jurisdiction, because it defines only the scope-specific top structure and the chosen attachment points into the canonical graph.
 
+Recommended tooling consequence:
+
+- local authoring should ideally expose one editor for canonical clusters and a separate editor for composition views, rather than one mixed editor that edits both layers at once
+
+Implementation-oriented details for that tooling split belong in:
+
+- `docs/dev/curriculum-authoring-editors.md`
+
 ### What a composition view may contain
 
 - structure nodes for the learner-facing upper tree
@@ -447,10 +455,12 @@ Illustrative shape:
   },
   "rootNodes": [
     {
+      "kind": "structure",
       "id": "sek2",
       "label": "Sekundarstufe II",
       "children": [
         {
+          "kind": "structure",
           "id": "e-phase",
           "label": "E-Phase",
           "children": [

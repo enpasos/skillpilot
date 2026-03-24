@@ -10,6 +10,18 @@ It runs inside the existing React app and uses local dev-only endpoints.
 - replace cluster-level `requires` with atomic descendants in a controlled way
 - save the updated landscape JSON back to the source file
 
+This tool is intentionally narrow.
+
+It is **not** the planned authoring surface for:
+
+- canonical cluster modeling
+- scope-specific composition-view authoring
+- learner-facing tree assembly
+
+For that broader local authoring-tool split, see:
+
+- `docs/dev/curriculum-authoring-editors.md`
+
 ## Start
 
 ```bash

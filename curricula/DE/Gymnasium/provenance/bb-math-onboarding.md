@@ -50,8 +50,8 @@ Activation state:
 - the upper-secondary mapping lane now carries the first structural anchor mappings:
   - `E`, `Q1`, `Q2`, `Q3`, `Q4`
 - the upper-secondary mapping lane now also carries the first reviewed corridor mappings:
-  - E.2 Einfuehrung des Ableitungsbegriffs
-  - E.3 Anwendungen des Ableitungsbegriffs
+  - Einfuehrung in den Ableitungsbegriff
+  - Anwendungen des Ableitungsbegriffs
   - mittlere und momentane Aenderungsraten
   - Ableitung als Steigung und lokale Aenderungsrate
   - Ableitungsgraph, Ableitungsregeln, Tangenten und Normalen
