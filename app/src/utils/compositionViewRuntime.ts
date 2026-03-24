@@ -340,10 +340,25 @@ export const applyCompositionViewProjection = (
         return true
       })
 
-      stageAnchorGoal.contains = [...preservedStageChildren, ...childIds]
+      const finalStageChildIds = [...preservedStageChildren, ...childIds]
+      stageAnchorGoal.contains = finalStageChildIds
+
+      const stageTreeOrderById = new Map(finalStageChildIds.map((childId, index) => [childId, index]))
+      const applyStageTreeOrder = (goal: UiGoal): UiGoal => {
+        const stageTreeOrder = stageTreeOrderById.get(goal.id)
+        if (stageTreeOrder === undefined) return goal
+        return {
+          ...goal,
+          extendedData: {
+            ...(goal.extendedData ?? {}),
+            treeOrder: stageTreeOrder,
+          },
+        }
+      }
+
       return {
         ...entry,
-        goals: [...syntheticGoals, ...strippedGoals],
+        goals: [...syntheticGoals.map(applyStageTreeOrder), ...strippedGoals.map(applyStageTreeOrder)],
       }
     }
 
