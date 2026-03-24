@@ -24,6 +24,13 @@ const normalizeComparableToken = (value?: string) => value?.trim().toUpperCase()
 
 const isJurisdictionFilterId = (value?: string) => JURISDICTION_PATTERN.test(value?.trim() ?? '')
 
+const normalizeStageLabel = (stage?: string) => {
+  const normalized = normalizeComparableToken(stage)
+  if (normalized === 'SEKII') return 'Sekundarstufe II'
+  if (normalized === 'SEKI') return 'Sekundarstufe I'
+  return undefined
+}
+
 const stripRootTag = (goal: UiGoal): UiGoal => ({
   ...goal,
   tags: (goal.tags ?? []).filter((tag) => tag !== ROOT_TAG),
@@ -202,6 +209,45 @@ const buildSyntheticGoals = (
   return syntheticGoals
 }
 
+const buildSyntheticGoalsForNodes = (
+  entry: LandscapeEntry,
+  view: CompositionView,
+  goalById: Map<string, UiGoal>,
+  nodes: CompositionViewNode[],
+) => {
+  const syntheticGoals: UiGoal[] = []
+
+  const materializeNode = (
+    node: CompositionViewNode,
+    siblingOrder: number,
+  ): string | null => {
+    if (node.kind === 'canonicalSubtree') {
+      return goalById.has(node.goalId) ? node.goalId : null
+    }
+
+    const childIds = node.children
+      .map((child, childIndex) => materializeNode(child, childIndex))
+      .filter((childId): childId is string => typeof childId === 'string')
+
+    const syntheticGoal = createSyntheticStructureGoal({
+      entry,
+      view,
+      node,
+      contains: childIds,
+      treeOrder: siblingOrder,
+      isRoot: false,
+    })
+    syntheticGoals.push(syntheticGoal)
+    return syntheticGoal.id
+  }
+
+  const childIds = nodes
+    .map((node, index) => materializeNode(node, index))
+    .filter((childId): childId is string => typeof childId === 'string')
+
+  return { syntheticGoals, childIds }
+}
+
 export const applyCompositionViewProjection = (
   entries: LandscapeEntry[],
   rawView: unknown,
@@ -229,6 +275,37 @@ export const applyCompositionViewProjection = (
 
     const strippedGoals = entry.goals.map(stripRootTag)
     const strippedGoalById = new Map(strippedGoals.map((goal) => [goal.id, goal]))
+
+    const stageLabel = normalizeStageLabel(view.scope.stage)
+    const stageAnchorGoal = stageLabel
+      ? strippedGoals.find((goal) =>
+        (goal.tags ?? []).includes(SYNTHETIC_PROGRAM_UNIT_TAG) && goal.title === stageLabel,
+      )
+      : undefined
+
+    if (stageAnchorGoal && view.rootNodes.length === 1 && view.rootNodes[0]?.kind === 'structure') {
+      const rootStructure = view.rootNodes[0]
+      const { syntheticGoals, childIds } = buildSyntheticGoalsForNodes(
+        entry,
+        view,
+        strippedGoalById,
+        rootStructure.children,
+      )
+      const preservedStageChildren = (stageAnchorGoal.contains ?? []).filter((childId) => {
+        const child = strippedGoalById.get(childId)
+        if (!child) return false
+        if ((child.tags ?? []).includes(SYNTHETIC_PROGRAM_UNIT_TAG)) return false
+        if (referencedGoalIds.has(childId)) return false
+        return true
+      })
+
+      stageAnchorGoal.contains = [...preservedStageChildren, ...childIds]
+      return {
+        ...entry,
+        goals: [...syntheticGoals, ...strippedGoals],
+      }
+    }
+
     const syntheticGoals = buildSyntheticGoals(entry, view, strippedGoalById)
 
     return {

@@ -2430,7 +2430,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
               activeFilter={effectiveActiveFilter}
               structureMode={learnerStructureMode}
               hideTechnicalStructureUi
-              allowClusterPlanning={false}
+              allowClusterPlanning
               personalConfig={personalConfig}
               activeGoalId={effectiveActiveGoalId ?? undefined}
               forcedExpandedIds={forcedExpandedIds}
