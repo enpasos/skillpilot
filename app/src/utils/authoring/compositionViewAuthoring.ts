@@ -21,6 +21,7 @@ export interface CompositionStructureNode extends Record<string, unknown> {
 export interface CompositionCanonicalSubtreeNode extends Record<string, unknown> {
   kind: 'canonicalSubtree'
   goalId: string
+  displayLabel?: string
 }
 
 export interface CompositionView extends Record<string, unknown> {
@@ -65,10 +66,12 @@ const normalizeScope = (value: unknown): GoalPlacementContext => {
 const normalizeCompositionNode = (value: unknown, pathLabel: string): CompositionViewNode => {
   const record = asRecord(value)
   if (record.kind === 'canonicalSubtree') {
+    const displayLabel = asString(record.displayLabel)
     return {
       ...record,
       kind: 'canonicalSubtree',
       goalId: asString(record.goalId),
+      ...(displayLabel.trim() ? { displayLabel } : {}),
     }
   }
 
@@ -268,6 +271,7 @@ export const compileCompositionView = (
     goalId: string,
     parentKey: string | null,
     pathKey: string,
+    displayLabel?: string,
   ): CompiledCompositionPreviewNode | null => {
     const goal = index.goalById.get(goalId)
     if (!goal) return null
@@ -276,7 +280,7 @@ export const compileCompositionView = (
     return {
       runtimeId,
       kind: 'goal',
-      label: goal.title,
+      label: displayLabel?.trim() || goal.title,
       sourceGoalId: goal.id,
       children: (index.childrenById.get(goal.id) ?? [])
         .map((childId) => compileGoalSubtree(childId, goal.id, `${runtimeId}/${childId}`))
@@ -302,7 +306,7 @@ export const compileCompositionView = (
       }
     }
 
-    return compileGoalSubtree(node.goalId, parentKey, pathKey)
+    return compileGoalSubtree(node.goalId, parentKey, pathKey, node.displayLabel)
   }
 
   const compiledRootNodes = view.rootNodes

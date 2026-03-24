@@ -170,6 +170,18 @@ const collectReferencedGoalIds = (node: CompositionViewNode, goalIds: Set<string
   node.children.forEach((child) => collectReferencedGoalIds(child, goalIds))
 }
 
+const collectDisplayLabels = (node: CompositionViewNode, labelsByGoalId: Map<string, string>) => {
+  if (node.kind === 'canonicalSubtree') {
+    const displayLabel = node.displayLabel?.trim()
+    if (displayLabel) {
+      labelsByGoalId.set(node.goalId, displayLabel)
+    }
+    return
+  }
+
+  node.children.forEach((child) => collectDisplayLabels(child, labelsByGoalId))
+}
+
 const buildSyntheticGoals = (
   entry: LandscapeEntry,
   view: CompositionView,
@@ -265,7 +277,9 @@ export const applyCompositionViewProjection = (
     }
 
     const referencedGoalIds = new Set<string>()
+    const displayLabelsByGoalId = new Map<string, string>()
     view.rootNodes.forEach((node) => collectReferencedGoalIds(node, referencedGoalIds))
+    view.rootNodes.forEach((node) => collectDisplayLabels(node, displayLabelsByGoalId))
 
     const goalById = new Map(entry.goals.map((goal) => [goal.id, goal]))
     const hasAllReferencedGoals = Array.from(referencedGoalIds).every((goalId) => goalById.has(goalId))
@@ -273,7 +287,20 @@ export const applyCompositionViewProjection = (
       return entry
     }
 
-    const strippedGoals = entry.goals.map(stripRootTag)
+    const strippedGoals = entry.goals.map((goal) => {
+      const strippedGoal = stripRootTag(goal)
+      const displayLabel = displayLabelsByGoalId.get(strippedGoal.id)
+      if (!displayLabel) return strippedGoal
+      return {
+        ...strippedGoal,
+        title: displayLabel,
+        extendedData: {
+          ...(strippedGoal.extendedData ?? {}),
+          compositionDisplayLabel: displayLabel,
+          compositionViewId: view.viewId,
+        },
+      }
+    })
     const strippedGoalById = new Map(strippedGoals.map((goal) => [goal.id, goal]))
 
     const stageLabel = normalizeStageLabel(view.scope.stage)

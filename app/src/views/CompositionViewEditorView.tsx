@@ -62,6 +62,7 @@ const createStructureNode = (): CompositionStructureNode => ({
 const createCanonicalSubtreeNode = (): CompositionCanonicalSubtreeNode => ({
   kind: 'canonicalSubtree',
   goalId: '',
+  displayLabel: '',
 })
 
 const makeDefaultViewPath = (viewId: string): string => {
@@ -499,6 +500,24 @@ export const CompositionViewEditorView: React.FC = () => {
     }))
   }, [selectedNodePath, updateView])
 
+  const handleSetCanonicalDisplayLabel = useCallback((displayLabel: string) => {
+    if (!selectedNodePath) return
+    const path = indicesFromPathKey(selectedNodePath)
+    updateView((current) => ({
+      ...current,
+      rootNodes: updateNodeAtPath(current.rootNodes, path, (node) => {
+        if (node.kind !== 'canonicalSubtree') return node
+        const trimmed = displayLabel.trim()
+        if (!trimmed) {
+          const nextNode = { ...node }
+          delete nextNode.displayLabel
+          return nextNode
+        }
+        return { ...node, displayLabel }
+      }),
+    }))
+  }, [selectedNodePath, updateView])
+
   const handleSave = useCallback(async () => {
     if (!view) return
     if (!draftPath.trim()) {
@@ -561,12 +580,19 @@ export const CompositionViewEditorView: React.FC = () => {
           </span>
           <div className="min-w-0 flex-1">
             <InlineMathText
-              text={node.kind === 'structure' ? node.label : (referencedGoal?.title || node.goalId || 'Unassigned canonical subtree')}
+              text={node.kind === 'structure'
+                ? node.label
+                : (node.displayLabel?.trim() || referencedGoal?.title || node.goalId || 'Unassigned canonical subtree')}
               className="truncate font-medium text-text-primary"
             />
             <div className="truncate text-[11px] font-mono text-text-secondary">
               {node.kind === 'structure' ? node.id : (referencedGoal?.id || 'goalId missing')}
             </div>
+            {node.kind === 'canonicalSubtree' && node.displayLabel?.trim() ? (
+              <div className="truncate text-[11px] text-text-secondary">
+                canonical title: {referencedGoal?.title || 'unresolved'}
+              </div>
+            ) : null}
           </div>
         </button>
         {node.kind === 'structure' && node.children.length > 0 ? (
@@ -847,6 +873,16 @@ export const CompositionViewEditorView: React.FC = () => {
                         value={selectedNode.goalId}
                         onChange={(event) => handleSetCanonicalGoalId(event.target.value)}
                         className="rounded-lg border border-border-color bg-chat-bg px-3 py-2 font-mono"
+                      />
+                    </label>
+
+                    <label className="flex flex-col gap-1 text-sm">
+                      <span className="font-semibold">displayLabel (optional)</span>
+                      <input
+                        value={selectedNode.displayLabel ?? ''}
+                        onChange={(event) => handleSetCanonicalDisplayLabel(event.target.value)}
+                        className="rounded-lg border border-border-color bg-chat-bg px-3 py-2"
+                        placeholder="z. B. Q1: Integralrechnung und Differenzialgleichungen"
                       />
                     </label>
 

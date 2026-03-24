@@ -7,6 +7,7 @@ Conventions:
 - keep composition views separate from canonical subject graphs
 - use one `.view.json` file per reviewed resolved scope
 - reference canonical subtree roots instead of inlining authored atomic goals
+- `canonicalSubtree` nodes may carry an optional `displayLabel` when the learner-facing tree should rename or prefix the visible root title without changing the canonical graph
 - validate the compiled default tree before saving or using a view in runtime
 
 Recommended layout:
