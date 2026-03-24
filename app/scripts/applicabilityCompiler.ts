@@ -8,6 +8,8 @@ const repoRoot = resolve(scriptDir, '../..')
 const curriculaDir = join(repoRoot, 'curricula')
 const canonicalDir = join(curriculaDir, 'DE', 'Gymnasium', 'canonical')
 const sourceLandscapeRegistryFile = join(curriculaDir, 'DE', 'Gymnasium', 'provenance', 'source-landscape-registry.json')
+const canonicalGoalProvenanceRegistryFile = join(curriculaDir, 'DE', 'Gymnasium', 'provenance', 'canonical-goal-provenance-registry.json')
+const canonicalGoalApplicabilityOverrideRegistryFile = join(curriculaDir, 'DE', 'Gymnasium', 'provenance', 'canonical-goal-applicability-override-registry.json')
 const reportDir = join(repoRoot, 'tmp', 'applicability')
 
 const SUPPORTED_DIMENSION = 'jurisdiction' as const
@@ -79,6 +81,32 @@ interface LoadedSourceLandscapeRegistryEntry {
 interface LoadedSourceLandscapeRegistry {
   file: string
   entriesByLandscapeId: Map<string, LoadedSourceLandscapeRegistryEntry>
+}
+
+interface CanonicalGoalProvenanceRegistryFile {
+  version?: number
+  landscapes?: Array<{
+    landscapeId?: string
+    goalProvenance?: Record<string, unknown>
+  }>
+}
+
+interface CanonicalGoalApplicabilityOverrideRegistryFile {
+  version?: number
+  landscapes?: Array<{
+    landscapeId?: string
+    goalApplicabilityOverrides?: Record<string, unknown>
+  }>
+}
+
+interface LoadedCanonicalGoalProvenanceRegistry {
+  file: string
+  entriesByGoalId: Map<string, Record<string, unknown>>
+}
+
+interface LoadedCanonicalGoalApplicabilityOverrideRegistry {
+  file: string
+  entriesByGoalId: Map<string, Record<string, unknown>>
 }
 
 interface GoalRef {
@@ -323,6 +351,66 @@ function formatRegistryEvidenceSource(
   return registryRef
 }
 
+function loadCanonicalGoalProvenanceRegistry(): LoadedCanonicalGoalProvenanceRegistry {
+  const entriesByGoalId = new Map<string, Record<string, unknown>>()
+
+  try {
+    const raw = JSON.parse(readFileSync(canonicalGoalProvenanceRegistryFile, 'utf8')) as CanonicalGoalProvenanceRegistryFile
+    if (raw.version !== 1) {
+      throw new Error(`Unsupported canonical goal provenance registry version in ${repoRelative(canonicalGoalProvenanceRegistryFile)}.`)
+    }
+
+    for (const landscapeEntry of raw.landscapes ?? []) {
+      if (!landscapeEntry || typeof landscapeEntry.goalProvenance !== 'object' || !landscapeEntry.goalProvenance) {
+        continue
+      }
+      for (const [goalId, provenance] of Object.entries(landscapeEntry.goalProvenance)) {
+        if (!goalId.trim() || !provenance || typeof provenance !== 'object' || Array.isArray(provenance)) continue
+        entriesByGoalId.set(goalId.trim(), provenance as Record<string, unknown>)
+      }
+    }
+  } catch (error) {
+    if ((error as NodeJS.ErrnoException).code !== 'ENOENT') {
+      throw error
+    }
+  }
+
+  return {
+    file: canonicalGoalProvenanceRegistryFile,
+    entriesByGoalId,
+  }
+}
+
+function loadCanonicalGoalApplicabilityOverrideRegistry(): LoadedCanonicalGoalApplicabilityOverrideRegistry {
+  const entriesByGoalId = new Map<string, Record<string, unknown>>()
+
+  try {
+    const raw = JSON.parse(readFileSync(canonicalGoalApplicabilityOverrideRegistryFile, 'utf8')) as CanonicalGoalApplicabilityOverrideRegistryFile
+    if (raw.version !== 1) {
+      throw new Error(`Unsupported canonical goal applicability override registry version in ${repoRelative(canonicalGoalApplicabilityOverrideRegistryFile)}.`)
+    }
+
+    for (const landscapeEntry of raw.landscapes ?? []) {
+      if (!landscapeEntry || typeof landscapeEntry.goalApplicabilityOverrides !== 'object' || !landscapeEntry.goalApplicabilityOverrides) {
+        continue
+      }
+      for (const [goalId, overrides] of Object.entries(landscapeEntry.goalApplicabilityOverrides)) {
+        if (!goalId.trim() || !overrides || typeof overrides !== 'object' || Array.isArray(overrides)) continue
+        entriesByGoalId.set(goalId.trim(), overrides as Record<string, unknown>)
+      }
+    }
+  } catch (error) {
+    if ((error as NodeJS.ErrnoException).code !== 'ENOENT') {
+      throw error
+    }
+  }
+
+  return {
+    file: canonicalGoalApplicabilityOverrideRegistryFile,
+    entriesByGoalId,
+  }
+}
+
 function loadCanonicalLandscapes(): LoadedCanonicalLandscape[] {
   return getAllJsonFiles(canonicalDir)
     .sort((a, b) => a.localeCompare(b))
@@ -356,46 +444,60 @@ function loadMappingFiles(): LoadedMappingFile[] {
     })
 }
 
-function getProvenanceLandscapeIds(goal: LearningGoal): string[] {
-  if (!goal.extendedData || typeof goal.extendedData !== 'object') return []
-  const provenance = (goal.extendedData as Record<string, unknown>).provenance
-  if (!provenance || typeof provenance !== 'object') return []
-  const data = provenance as Record<string, unknown>
-  const ids = new Set<string>()
-
-  for (const key of ['sourceLandscapeId'] as const) {
-    const value = data[key]
-    if (typeof value === 'string' && value.trim()) {
-      ids.add(value.trim())
+function getProvenanceLandscapeIds(
+  goal: LearningGoal,
+  canonicalGoalProvenanceRegistry: LoadedCanonicalGoalProvenanceRegistry,
+): string[] {
+  const sources: Record<string, unknown>[] = []
+  const registryEntry = canonicalGoalProvenanceRegistry.entriesByGoalId.get(goal.id)
+  if (registryEntry) {
+    sources.push(registryEntry)
+  }
+  if (goal.extendedData && typeof goal.extendedData === 'object') {
+    const provenance = (goal.extendedData as Record<string, unknown>).provenance
+    if (provenance && typeof provenance === 'object' && !Array.isArray(provenance)) {
+      sources.push(provenance as Record<string, unknown>)
     }
   }
 
-  for (const key of ['additionalSourceLandscapeIds', 'crossSubjectPrerequisiteLandscapeIds'] as const) {
-    const value = data[key]
-    if (!Array.isArray(value)) continue
-    value.forEach((entry) => {
-      if (typeof entry === 'string' && entry.trim()) {
-        ids.add(entry.trim())
+  const ids = new Set<string>()
+
+  for (const data of sources) {
+    for (const key of ['sourceLandscapeId'] as const) {
+      const value = data[key]
+      if (typeof value === 'string' && value.trim()) {
+        ids.add(value.trim())
       }
-    })
+    }
+
+    for (const key of ['additionalSourceLandscapeIds', 'crossSubjectPrerequisiteLandscapeIds'] as const) {
+      const value = data[key]
+      if (!Array.isArray(value)) continue
+      value.forEach((entry) => {
+        if (typeof entry === 'string' && entry.trim()) {
+          ids.add(entry.trim())
+        }
+      })
+    }
   }
 
   return Array.from(ids)
 }
 
-function getApplicabilityOverrideValues(
-  goal: LearningGoal,
+interface ApplicabilityOverrideValue {
+  value: SupportedJurisdiction
+  source: string
+}
+
+function collectApplicabilityOverrideValues(
+  overrideRecord: Record<string, unknown>,
   landscapeId: string,
+  goal: LearningGoal,
   findings: ApplicabilityFinding[],
-): SupportedJurisdiction[] {
-  if (!goal.extendedData || typeof goal.extendedData !== 'object') return []
-
-  const overrides = (goal.extendedData as Record<string, unknown>).applicabilityOverrides
-  if (!overrides || typeof overrides !== 'object') return []
-
-  const overrideRecord = overrides as Record<string, unknown>
+  source: string,
+): ApplicabilityOverrideValue[] {
   const overrideKeys = Object.keys(overrideRecord).sort()
-  const supportedValues: SupportedJurisdiction[] = []
+  const supportedValues: ApplicabilityOverrideValue[] = []
 
   for (const key of overrideKeys) {
     if (key !== SUPPORTED_DIMENSION) {
@@ -426,7 +528,6 @@ function getApplicabilityOverrideValues(
     }
 
     const seen = new Set<string>()
-    const normalizedValues: SupportedJurisdiction[] = []
     let hasDuplicate = false
     let hasOutOfOrder = false
     let previous = ''
@@ -467,7 +568,7 @@ function getApplicabilityOverrideValues(
       }
       previous = normalized
       seen.add(normalized)
-      normalizedValues.push(normalized)
+      supportedValues.push({ value: normalized, source })
     }
 
     if (hasDuplicate || hasOutOfOrder) {
@@ -481,11 +582,50 @@ function getApplicabilityOverrideValues(
         message: 'Applicability override values must be unique and sorted.',
       })
     }
-
-    supportedValues.push(...normalizedValues)
   }
 
-  return Array.from(new Set(supportedValues)).sort() as SupportedJurisdiction[]
+  return supportedValues
+}
+
+function getApplicabilityOverrideValues(
+  goal: LearningGoal,
+  landscapeId: string,
+  findings: ApplicabilityFinding[],
+  canonicalGoalApplicabilityOverrideRegistry: LoadedCanonicalGoalApplicabilityOverrideRegistry,
+): ApplicabilityOverrideValue[] {
+  const collected: ApplicabilityOverrideValue[] = []
+  const registryEntry = canonicalGoalApplicabilityOverrideRegistry.entriesByGoalId.get(goal.id)
+  if (registryEntry) {
+    collected.push(...collectApplicabilityOverrideValues(
+      registryEntry,
+      landscapeId,
+      goal,
+      findings,
+      `${repoRelative(canonicalGoalApplicabilityOverrideRegistry.file)}#${goal.id}`,
+    ))
+  }
+
+  if (goal.extendedData && typeof goal.extendedData === 'object') {
+    const overrides = (goal.extendedData as Record<string, unknown>).applicabilityOverrides
+    if (overrides && typeof overrides === 'object' && !Array.isArray(overrides)) {
+      collected.push(...collectApplicabilityOverrideValues(
+        overrides as Record<string, unknown>,
+        landscapeId,
+        goal,
+        findings,
+        'extendedData.applicabilityOverrides',
+      ))
+    }
+  }
+
+  const deduped = new Map<string, ApplicabilityOverrideValue>()
+  for (const entry of collected) {
+    const key = `${entry.value}|${entry.source}`
+    if (!deduped.has(key)) {
+      deduped.set(key, entry)
+    }
+  }
+  return Array.from(deduped.values()).sort((a, b) => a.value.localeCompare(b.value) || a.source.localeCompare(b.source))
 }
 
 function normalizeCompiledApplicability(values: Iterable<SupportedJurisdiction>): ApplicabilityMap {
@@ -512,6 +652,8 @@ export function buildApplicabilityCompilation(): ApplicabilityCompilationResult 
   const mappingFiles = loadMappingFiles()
   const landscapePathById = loadLandscapePathIndex()
   const sourceLandscapeRegistry = loadSourceLandscapeRegistry()
+  const canonicalGoalProvenanceRegistry = loadCanonicalGoalProvenanceRegistry()
+  const canonicalGoalApplicabilityOverrideRegistry = loadCanonicalGoalApplicabilityOverrideRegistry()
   const mappingEvidenceByTarget = new Map<string, Map<string, LoadedMappingFile[]>>()
   const canonicalGoalToLandscapeId = new Map<string, string>()
   const ambiguousCanonicalGoalIds = new Set<string>()
@@ -642,7 +784,7 @@ export function buildApplicabilityCompilation(): ApplicabilityCompilationResult 
       const jurisdictions = new Set<SupportedJurisdiction>()
       const evidence: ApplicabilityEvidence[] = []
 
-      for (const sourceLandscapeId of getProvenanceLandscapeIds(goal)) {
+      for (const sourceLandscapeId of getProvenanceLandscapeIds(goal, canonicalGoalProvenanceRegistry)) {
         const registryEntry = sourceLandscapeRegistry.entriesByLandscapeId.get(sourceLandscapeId)
         if (registryEntry) {
           if (!registryEntry.jurisdiction) {
@@ -741,7 +883,13 @@ export function buildApplicabilityCompilation(): ApplicabilityCompilationResult 
         })
       }
 
-      const overrideValues = getApplicabilityOverrideValues(goal, landscapeId, findings)
+      const overrideEntries = getApplicabilityOverrideValues(
+        goal,
+        landscapeId,
+        findings,
+        canonicalGoalApplicabilityOverrideRegistry,
+      )
+      const overrideValues = Array.from(new Set(overrideEntries.map((entry) => entry.value))).sort() as SupportedJurisdiction[]
       if (overrideValues.length > 0) {
         findings.push({
           code: 'APV-201',
@@ -753,13 +901,13 @@ export function buildApplicabilityCompilation(): ApplicabilityCompilationResult 
           message: `Goal uses applicability override for ${overrideValues.join(', ')}.`,
         })
       }
-      for (const overrideValue of overrideValues) {
-        jurisdictions.add(overrideValue)
+      for (const overrideEntry of overrideEntries) {
+        jurisdictions.add(overrideEntry.value)
         evidence.push({
           dimension: SUPPORTED_DIMENSION,
-          value: overrideValue,
+          value: overrideEntry.value,
           kind: 'override',
-          source: 'extendedData.applicabilityOverrides',
+          source: overrideEntry.source,
         })
       }
 

@@ -10,7 +10,7 @@ This file is generated from:
 ## Headline
 
 - Tracked states: `16`
-- Canonical applicability present: `5/16`
+- Canonical source coverage present: `5/16`
 - State-weighted rollout score: `30.9%`
 - States with active snapshots (`P2+`): `7/16`
 - States with structural anchors mapped (`P3+`): `7/16`

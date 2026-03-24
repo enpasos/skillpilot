@@ -8,6 +8,13 @@ from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 TRACKER_PATH = REPO_ROOT / "curricula/DE/Gymnasium/provenance/math-bundesland-rollout-tracker.json"
+SOURCE_LANDSCAPE_REGISTRY_PATH = REPO_ROOT / "curricula/DE/Gymnasium/provenance/source-landscape-registry.json"
+CANONICAL_GOAL_PROVENANCE_REGISTRY_PATH = (
+    REPO_ROOT / "curricula/DE/Gymnasium/provenance/canonical-goal-provenance-registry.json"
+)
+CANONICAL_GOAL_APPLICABILITY_OVERRIDE_REGISTRY_PATH = (
+    REPO_ROOT / "curricula/DE/Gymnasium/provenance/canonical-goal-applicability-override-registry.json"
+)
 
 
 def load_json(path: Path) -> dict:
@@ -26,13 +33,102 @@ def mapping_count(repo_root: Path, mapping_files: list[str]) -> int:
     return total
 
 
+def build_source_jurisdiction_index() -> dict[str, str]:
+    data = load_json(SOURCE_LANDSCAPE_REGISTRY_PATH)
+    index: dict[str, str] = {}
+    for entry in data.get("entries", []):
+        landscape_id = entry.get("landscapeId")
+        jurisdiction = entry.get("jurisdiction")
+        if isinstance(landscape_id, str) and isinstance(jurisdiction, str):
+            index[landscape_id] = jurisdiction
+    return index
+
+
+def build_canonical_goal_provenance_index(landscape_id: str) -> dict[str, dict]:
+    if not CANONICAL_GOAL_PROVENANCE_REGISTRY_PATH.exists():
+        return {}
+    data = load_json(CANONICAL_GOAL_PROVENANCE_REGISTRY_PATH)
+    for entry in data.get("landscapes", []):
+        if entry.get("landscapeId") != landscape_id:
+            continue
+        goal_provenance = entry.get("goalProvenance")
+        if isinstance(goal_provenance, dict):
+            return goal_provenance
+    return {}
+
+
+def build_canonical_goal_applicability_override_index(landscape_id: str) -> dict[str, dict]:
+    if not CANONICAL_GOAL_APPLICABILITY_OVERRIDE_REGISTRY_PATH.exists():
+        return {}
+    data = load_json(CANONICAL_GOAL_APPLICABILITY_OVERRIDE_REGISTRY_PATH)
+    for entry in data.get("landscapes", []):
+        if entry.get("landscapeId") != landscape_id:
+            continue
+        goal_applicability_overrides = entry.get("goalApplicabilityOverrides")
+        if isinstance(goal_applicability_overrides, dict):
+            return goal_applicability_overrides
+    return {}
+
+
+def normalize_goal_ref(ref: str) -> str:
+    if ":" not in ref:
+        return ref
+    return ref.split(":", 1)[1]
+
+
 def canonical_jurisdictions(repo_root: Path, landscape_rel_path: str) -> set[str]:
     data = load_json(repo_root / landscape_rel_path)
+    landscape_id = data.get("landscapeId")
+    goals = {
+        goal["id"]: goal
+        for goal in data.get("goals", [])
+        if isinstance(goal, dict) and isinstance(goal.get("id"), str)
+    }
+    source_jurisdictions = build_source_jurisdiction_index()
+    goal_provenance_index = build_canonical_goal_provenance_index(landscape_id) if isinstance(landscape_id, str) else {}
+    goal_applicability_override_index = (
+        build_canonical_goal_applicability_override_index(landscape_id) if isinstance(landscape_id, str) else {}
+    )
+    memo: dict[str, set[str]] = {}
+
+    def goal_coverage(goal_id: str, visiting: set[str]) -> set[str]:
+        if goal_id in memo:
+            return memo[goal_id]
+        if goal_id in visiting:
+            return set()
+        visiting.add(goal_id)
+        goal = goals.get(goal_id, {})
+        coverage: set[str] = set()
+        provenance = goal_provenance_index.get(goal_id)
+        if not isinstance(provenance, dict):
+            provenance = goal.get("extendedData", {}).get("provenance", {})
+        references = []
+        source_landscape_id = provenance.get("sourceLandscapeId")
+        if isinstance(source_landscape_id, str):
+            references.append(source_landscape_id)
+        additional = provenance.get("additionalSourceLandscapeIds")
+        if isinstance(additional, list):
+            references.extend(item for item in additional if isinstance(item, str))
+        for reference in references:
+            jurisdiction = source_jurisdictions.get(reference)
+            if jurisdiction:
+                coverage.add(jurisdiction)
+        overrides = goal_applicability_override_index.get(goal_id)
+        if not isinstance(overrides, dict):
+            overrides = goal.get("extendedData", {}).get("applicabilityOverrides", {})
+        override_jurisdictions = overrides.get("jurisdiction") if isinstance(overrides, dict) else None
+        if isinstance(override_jurisdictions, list):
+            coverage.update(item for item in override_jurisdictions if isinstance(item, str))
+        for child_ref in goal.get("contains", []) or []:
+            if isinstance(child_ref, str):
+                coverage.update(goal_coverage(normalize_goal_ref(child_ref), visiting))
+        visiting.remove(goal_id)
+        memo[goal_id] = coverage
+        return coverage
+
     jurisdictions: set[str] = set()
-    for goal in data.get("goals", []):
-        applicability = goal.get("applicability", {})
-        for jurisdiction in applicability.get("jurisdiction", []):
-            jurisdictions.add(jurisdiction)
+    for goal_id in goals:
+        jurisdictions.update(goal_coverage(goal_id, set()))
     return jurisdictions
 
 
@@ -72,7 +168,7 @@ def render() -> str:
         )
 
     average_score = round(total_score / len(states), 1) if states else 0.0
-    applicability_count = sum(1 for state in states if state["jurisdiction"] in canonical_states)
+    coverage_count = sum(1 for state in states if state["jurisdiction"] in canonical_states)
     p2_score = phase_scale["P2"]["score"]
     p4_score = phase_scale["P4"]["score"]
     p5_score = phase_scale["P5"]["score"]
@@ -105,7 +201,7 @@ def render() -> str:
     lines.append("## Headline")
     lines.append("")
     lines.append(f"- Tracked states: `{len(states)}`")
-    lines.append(f"- Canonical applicability present: `{applicability_count}/{len(states)}`")
+    lines.append(f"- Canonical source coverage present: `{coverage_count}/{len(states)}`")
     lines.append(f"- State-weighted rollout score: `{average_score}%`")
     lines.append(f"- States with active snapshots (`P2+`): `{snapshot_active_count}/{len(states)}`")
     lines.append(f"- States with structural anchors mapped (`P3+`): `{anchor_mapped_count}/{len(states)}`")

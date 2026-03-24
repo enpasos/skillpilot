@@ -2,6 +2,7 @@ package com.skillpilot.backend.landscape;
 
 import com.skillpilot.backend.api.LandscapeOverviewResponse;
 import com.skillpilot.backend.api.TopicSummary;
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.JsonNode;
 import java.io.IOException;
@@ -36,6 +37,12 @@ public class LandscapeService {
     private static final int SUPPORTED_SOURCE_GOAL_MEMBERSHIP_REGISTRY_VERSION = 1;
     private static final Path SOURCE_GOAL_MEMBERSHIP_REGISTRY_PATH = Path.of(
             "DE", "Gymnasium", "provenance", "source-goal-membership-registry.json");
+    private static final int SUPPORTED_CANONICAL_GOAL_PROVENANCE_REGISTRY_VERSION = 1;
+    private static final Path CANONICAL_GOAL_PROVENANCE_REGISTRY_PATH = Path.of(
+            "DE", "Gymnasium", "provenance", "canonical-goal-provenance-registry.json");
+    private static final int SUPPORTED_CANONICAL_GOAL_APPLICABILITY_OVERRIDE_REGISTRY_VERSION = 1;
+    private static final Path CANONICAL_GOAL_APPLICABILITY_OVERRIDE_REGISTRY_PATH = Path.of(
+            "DE", "Gymnasium", "provenance", "canonical-goal-applicability-override-registry.json");
     private static final int SUPPORTED_COMPATIBILITY_ARCHIVE_REGISTRY_VERSION = 1;
     private static final Path COMPATIBILITY_ARCHIVE_REGISTRY_PATH = Path.of(
             "DE", "Gymnasium", "archive", "compatibility-landscape-registry.json");
@@ -97,6 +104,8 @@ public class LandscapeService {
     private volatile Map<String, String> sourceLandscapeJurisdictionById = Collections.emptyMap();
     private volatile Map<String, Map<String, Set<String>>> sourceAtomicGoalIdsByLandscapeAndGoal = Collections.emptyMap();
     private volatile Map<String, String> sourceLandscapeIdByGoalId = Collections.emptyMap();
+    private volatile Map<String, Map<String, Object>> canonicalGoalProvenanceByGoalId = Collections.emptyMap();
+    private volatile Map<String, Map<String, List<String>>> canonicalGoalApplicabilityOverridesByGoalId = Collections.emptyMap();
     private volatile Map<String, LandscapeSummary> compatibilityArchiveSummariesById = Collections.emptyMap();
     private volatile Map<String, List<TopicSummary>> compatibilityArchiveTopicsById = Collections.emptyMap();
     private volatile Set<String> curriculumManifest = Collections.emptySet();
@@ -136,6 +145,22 @@ public class LandscapeService {
             return loadedLandscapeId;
         }
         return sourceLandscapeIdByGoalId.get(goalId);
+    }
+
+    public Map<String, Object> resolveGoalProvenance(LearningGoal goal) {
+        ensureFresh();
+        if (goal == null) {
+            return Collections.emptyMap();
+        }
+        return resolveGoalProvenanceInternal(goal.getId(), goal.getExtendedData());
+    }
+
+    public String resolveGoalProvenanceValue(LearningGoal goal, String key) {
+        if (!StringUtils.hasText(key)) {
+            return null;
+        }
+        Object value = resolveGoalProvenance(goal).get(key);
+        return value instanceof String text && StringUtils.hasText(text) ? text : null;
     }
 
     public com.skillpilot.backend.landscape.LearningGoal getGoalDefinition(String goalId) {
@@ -178,12 +203,14 @@ public class LandscapeService {
     private LearningLandscape localize(LearningLandscape original, String lang) {
         if (original == null)
             return null;
-        if (!"en".equals(lang))
-            return original; // Default is German/original
+        boolean english = "en".equals(lang);
 
         LearningLandscape copy = new LearningLandscape();
         copy.setLandscapeId(original.getLandscapeId());
         copy.setLocale(original.getLocale());
+        copy.setCountry(original.getCountry());
+        copy.setRegion(original.getRegion());
+        copy.setSchoolType(original.getSchoolType());
         copy.setSubject(original.getSubject());
         copy.setFrameworkId(original.getFrameworkId());
         copy.setFilters(original.getFilters());
@@ -192,11 +219,16 @@ public class LandscapeService {
         copy.setCompetencyCatalog(original.getCompetencyCatalog());
 
         // Localize Landscape Title/Desc
-        copy.setTitle(StringUtils.hasText(original.getTitleEn()) ? original.getTitleEn() : original.getTitle());
-        copy.setDescription(StringUtils.hasText(original.getDescriptionEn()) ? original.getDescriptionEn()
-                : original.getDescription());
+        copy.setTitle(english && StringUtils.hasText(original.getTitleEn()) ? original.getTitleEn() : original.getTitle());
+        copy.setDescription(
+                english && StringUtils.hasText(original.getDescriptionEn()) ? original.getDescriptionEn()
+                        : original.getDescription());
         copy.setTitleEn(original.getTitleEn());
         copy.setDescriptionEn(original.getDescriptionEn());
+
+        Map<String, List<String>> derivedJurisdictionsByGoalId = isCanonicalGymnasiumLandscape(original)
+                ? buildCanonicalJurisdictionApplicability(original.getGoals())
+                : Collections.emptyMap();
 
         // Localize Goals
         if (original.getGoals() != null) {
@@ -211,8 +243,9 @@ public class LandscapeService {
                 gc.setRequires(g.getRequires());
                 gc.setContains(g.getContains());
                 gc.setExamples(g.getExamples());
-                gc.setApplicability(g.getApplicability());
+                gc.setApplicability(mergeApplicability(resolveGoalApplicability(g), derivedJurisdictionsByGoalId.get(g.getId())));
                 gc.setSourceRef(g.getSourceRef());
+                gc.setResourceLinks(g.getResourceLinks());
                 gc.setCompetencyRefs(g.getCompetencyRefs());
                 gc.setExtendedData(g.getExtendedData());
                 gc.setRelease(g.getRelease());
@@ -221,9 +254,9 @@ public class LandscapeService {
                 gc.setExamData(localizeExamData(g.getExamData(), lang));
 
                 // Localize Goal Title/Desc
-                gc.setTitle(StringUtils.hasText(g.getTitleEn()) ? g.getTitleEn() : g.getTitle());
+                gc.setTitle(english && StringUtils.hasText(g.getTitleEn()) ? g.getTitleEn() : g.getTitle());
                 gc.setDescription(
-                        StringUtils.hasText(g.getDescriptionEn()) ? g.getDescriptionEn() : g.getDescription());
+                        english && StringUtils.hasText(g.getDescriptionEn()) ? g.getDescriptionEn() : g.getDescription());
                 gc.setTitleEn(g.getTitleEn());
                 gc.setDescriptionEn(g.getDescriptionEn());
 
@@ -233,6 +266,280 @@ public class LandscapeService {
         }
 
         return copy;
+    }
+
+    private boolean isCanonicalGymnasiumLandscape(LearningLandscape landscape) {
+        if (landscape == null) {
+            return false;
+        }
+        return "DE".equalsIgnoreCase(landscape.getCountry())
+                && "DEU".equalsIgnoreCase(landscape.getRegion())
+                && "Gymnasium".equalsIgnoreCase(landscape.getSchoolType())
+                && StringUtils.hasText(landscape.getFrameworkId())
+                && landscape.getFrameworkId().startsWith("canonical-gymnasium");
+    }
+
+    private Map<String, List<String>> buildCanonicalJurisdictionApplicability(List<LearningGoal> goals) {
+        if (goals == null || goals.isEmpty()) {
+            return Collections.emptyMap();
+        }
+        Map<String, LearningGoal> goalsById = new LinkedHashMap<>();
+        for (LearningGoal goal : goals) {
+            if (goal != null && StringUtils.hasText(goal.getId())) {
+                goalsById.put(goal.getId(), goal);
+            }
+        }
+        if (goalsById.isEmpty()) {
+            return Collections.emptyMap();
+        }
+
+        Map<String, Set<String>> coverageMemo = new HashMap<>();
+        Map<String, List<String>> result = new LinkedHashMap<>();
+        for (String goalId : goalsById.keySet()) {
+            Set<String> jurisdictions = computeCanonicalJurisdictionCoverage(goalId, goalsById, coverageMemo,
+                    new HashSet<>());
+            if (!jurisdictions.isEmpty()) {
+                result.put(goalId, new ArrayList<>(jurisdictions));
+            }
+        }
+        return result;
+    }
+
+    private Set<String> computeCanonicalJurisdictionCoverage(
+            String goalId,
+            Map<String, LearningGoal> goalsById,
+            Map<String, Set<String>> coverageMemo,
+            Set<String> visiting) {
+        Set<String> cached = coverageMemo.get(goalId);
+        if (cached != null) {
+            return cached;
+        }
+        if (!StringUtils.hasText(goalId) || !visiting.add(goalId)) {
+            return Collections.emptySet();
+        }
+
+        LearningGoal goal = goalsById.get(goalId);
+        if (goal == null) {
+            visiting.remove(goalId);
+            return Collections.emptySet();
+        }
+
+        LinkedHashSet<String> coverage = new LinkedHashSet<>();
+        addJurisdictionsFromApplicability(resolveGoalApplicability(goal), coverage);
+        addJurisdictionsFromProvenance(goal, coverage);
+
+        if (goal.getContains() != null) {
+            for (String childRef : goal.getContains()) {
+                String childId = normalizeGoalRef(childRef);
+                if (goalsById.containsKey(childId)) {
+                    coverage.addAll(computeCanonicalJurisdictionCoverage(childId, goalsById, coverageMemo, visiting));
+                }
+            }
+        }
+
+        visiting.remove(goalId);
+        Set<String> result = Collections.unmodifiableSet(coverage);
+        coverageMemo.put(goalId, result);
+        return result;
+    }
+
+    private void addJurisdictionsFromApplicability(Map<String, List<String>> applicability, Set<String> target) {
+        if (applicability == null || applicability.isEmpty()) {
+            return;
+        }
+        List<String> jurisdictions = applicability.get("jurisdiction");
+        if (jurisdictions == null) {
+            return;
+        }
+        for (String jurisdiction : jurisdictions) {
+            String normalized = normalizeBundeslandCode(jurisdiction);
+            if (normalized != null) {
+                target.add(normalized);
+            }
+        }
+    }
+
+    private void addJurisdictionsFromProvenance(LearningGoal goal, Set<String> target) {
+        Map<String, Object> provenance = resolveGoalProvenanceInternal(
+                goal == null ? null : goal.getId(),
+                goal == null ? null : goal.getExtendedData());
+        if (provenance.isEmpty()) {
+            return;
+        }
+        addJurisdictionFromLandscapeReference(provenance.get("sourceLandscapeId"), target);
+        addJurisdictionFromLandscapeReference(provenance.get("additionalSourceLandscapeIds"), target);
+        addJurisdictionFromLandscapeReference(provenance.get("crossSubjectPrerequisiteLandscapeIds"), target);
+    }
+
+    private Map<String, List<String>> resolveGoalApplicability(LearningGoal goal) {
+        if (goal == null) {
+            return null;
+        }
+        LinkedHashMap<String, List<String>> merged = new LinkedHashMap<>();
+        mergeApplicabilityDimensions(merged, goal.getApplicability());
+        mergeApplicabilityDimensions(
+                merged,
+                resolveGoalApplicabilityOverridesInternal(goal.getId(), goal.getExtendedData()));
+        return finalizeApplicabilityMap(merged);
+    }
+
+    private Map<String, List<String>> resolveGoalApplicabilityOverridesInternal(String goalId, Map<String, Object> extendedData) {
+        Map<String, List<String>> registry = StringUtils.hasText(goalId)
+                ? canonicalGoalApplicabilityOverridesByGoalId.get(goalId)
+                : null;
+        Map<String, List<String>> embedded = extractEmbeddedApplicabilityOverrides(extendedData);
+        if ((registry == null || registry.isEmpty()) && (embedded == null || embedded.isEmpty())) {
+            return null;
+        }
+        LinkedHashMap<String, List<String>> merged = new LinkedHashMap<>();
+        mergeApplicabilityDimensions(merged, registry);
+        mergeApplicabilityDimensions(merged, embedded);
+        return finalizeApplicabilityMap(merged);
+    }
+
+    private void mergeApplicabilityDimensions(
+            Map<String, List<String>> target,
+            Map<String, List<String>> source) {
+        if (source == null || source.isEmpty()) {
+            return;
+        }
+        for (Map.Entry<String, List<String>> entry : source.entrySet()) {
+            if (!StringUtils.hasText(entry.getKey())) {
+                continue;
+            }
+            LinkedHashSet<String> values = new LinkedHashSet<>(target.getOrDefault(entry.getKey(), Collections.emptyList()));
+            if (entry.getValue() != null) {
+                for (String value : entry.getValue()) {
+                    if (StringUtils.hasText(value)) {
+                        values.add(value);
+                    }
+                }
+            }
+            target.put(entry.getKey(), new ArrayList<>(values));
+        }
+    }
+
+    private Map<String, List<String>> finalizeApplicabilityMap(Map<String, List<String>> applicability) {
+        if (applicability == null || applicability.isEmpty()) {
+            return null;
+        }
+        LinkedHashMap<String, List<String>> result = new LinkedHashMap<>();
+        for (Map.Entry<String, List<String>> entry : applicability.entrySet()) {
+            result.put(
+                    entry.getKey(),
+                    entry.getValue() == null ? Collections.emptyList() : Collections.unmodifiableList(new ArrayList<>(entry.getValue())));
+        }
+        return Collections.unmodifiableMap(result);
+    }
+
+    @SuppressWarnings("unchecked")
+    private Map<String, List<String>> extractEmbeddedApplicabilityOverrides(Map<String, Object> extendedData) {
+        if (extendedData == null || extendedData.isEmpty()) {
+            return null;
+        }
+        Object raw = extendedData.get("applicabilityOverrides");
+        if (!(raw instanceof Map<?, ?> overrides)) {
+            return null;
+        }
+        LinkedHashMap<String, List<String>> result = new LinkedHashMap<>();
+        overrides.forEach((key, value) -> {
+            if (!(key instanceof String textKey) || !(value instanceof List<?> rawValues)) {
+                return;
+            }
+            List<String> values = rawValues.stream()
+                    .filter(String.class::isInstance)
+                    .map(String.class::cast)
+                    .filter(StringUtils::hasText)
+                    .collect(Collectors.toCollection(ArrayList::new));
+            if (!values.isEmpty()) {
+                result.put(textKey, values);
+            }
+        });
+        return result.isEmpty() ? null : finalizeApplicabilityMap(result);
+    }
+
+    private Map<String, Object> resolveGoalProvenanceInternal(String goalId, Map<String, Object> extendedData) {
+        Map<String, Object> embedded = extractEmbeddedProvenance(extendedData);
+        Map<String, Object> registry = StringUtils.hasText(goalId) ? canonicalGoalProvenanceByGoalId.get(goalId) : null;
+        if ((embedded == null || embedded.isEmpty()) && (registry == null || registry.isEmpty())) {
+            return Collections.emptyMap();
+        }
+        LinkedHashMap<String, Object> merged = new LinkedHashMap<>();
+        if (registry != null && !registry.isEmpty()) {
+            merged.putAll(registry);
+        }
+        if (embedded != null && !embedded.isEmpty()) {
+            merged.putAll(embedded);
+        }
+        return Collections.unmodifiableMap(merged);
+    }
+
+    @SuppressWarnings("unchecked")
+    private Map<String, Object> extractEmbeddedProvenance(Map<String, Object> extendedData) {
+        if (extendedData == null || extendedData.isEmpty()) {
+            return null;
+        }
+        Object provenanceRaw = extendedData.get("provenance");
+        if (!(provenanceRaw instanceof Map<?, ?> provenance)) {
+            return null;
+        }
+        LinkedHashMap<String, Object> result = new LinkedHashMap<>();
+        provenance.forEach((key, value) -> {
+            if (key instanceof String textKey && value != null) {
+                result.put(textKey, value);
+            }
+        });
+        return result.isEmpty() ? null : Collections.unmodifiableMap(result);
+    }
+
+    private void addJurisdictionFromLandscapeReference(Object value, Set<String> target) {
+        if (value instanceof String text) {
+            String jurisdiction = resolveSourceLandscapeJurisdiction(text);
+            if (jurisdiction != null) {
+                target.add(jurisdiction);
+            }
+            return;
+        }
+        if (value instanceof List<?> list) {
+            for (Object item : list) {
+                addJurisdictionFromLandscapeReference(item, target);
+            }
+        }
+    }
+
+    private Map<String, List<String>> mergeApplicability(
+            Map<String, List<String>> applicability,
+            List<String> derivedJurisdictions) {
+        boolean hasApplicability = applicability != null && !applicability.isEmpty();
+        boolean hasDerivedJurisdictions = derivedJurisdictions != null && !derivedJurisdictions.isEmpty();
+        if (!hasApplicability && !hasDerivedJurisdictions) {
+            return null;
+        }
+
+        LinkedHashMap<String, List<String>> merged = new LinkedHashMap<>();
+        if (hasApplicability) {
+            for (Map.Entry<String, List<String>> entry : applicability.entrySet()) {
+                List<String> values = entry.getValue();
+                merged.put(entry.getKey(), values == null ? Collections.emptyList() : new ArrayList<>(values));
+            }
+        }
+        if (hasDerivedJurisdictions) {
+            LinkedHashSet<String> jurisdictions = new LinkedHashSet<>(merged.getOrDefault("jurisdiction", Collections.emptyList()));
+            jurisdictions.addAll(derivedJurisdictions);
+            merged.put("jurisdiction", new ArrayList<>(jurisdictions));
+        }
+        return merged;
+    }
+
+    private String normalizeGoalRef(String ref) {
+        if (!StringUtils.hasText(ref)) {
+            return ref;
+        }
+        int separatorIndex = ref.indexOf(':');
+        if (separatorIndex >= 0 && separatorIndex < ref.length() - 1) {
+            return ref.substring(separatorIndex + 1);
+        }
+        return ref;
     }
 
     private ExamData localizeExamData(ExamData original, String lang) {
@@ -293,6 +600,8 @@ public class LandscapeService {
             sourceLandscapeJurisdictionById = Collections.emptyMap();
             sourceAtomicGoalIdsByLandscapeAndGoal = Collections.emptyMap();
             sourceLandscapeIdByGoalId = Collections.emptyMap();
+            canonicalGoalProvenanceByGoalId = Collections.emptyMap();
+            canonicalGoalApplicabilityOverridesByGoalId = Collections.emptyMap();
             compatibilityArchiveSummariesById = Collections.emptyMap();
             compatibilityArchiveTopicsById = Collections.emptyMap();
             curriculumManifest = Collections.emptySet();
@@ -422,6 +731,9 @@ public class LandscapeService {
         sourceLandscapeJurisdictionById = Collections.unmodifiableMap(loadSourceLandscapeRegistry(dir));
         sourceAtomicGoalIdsByLandscapeAndGoal = Collections.unmodifiableMap(loadSourceGoalClosureRegistry(dir));
         sourceLandscapeIdByGoalId = Collections.unmodifiableMap(loadSourceGoalMembershipRegistry(dir));
+        canonicalGoalProvenanceByGoalId = Collections.unmodifiableMap(loadCanonicalGoalProvenanceRegistry(dir));
+        canonicalGoalApplicabilityOverridesByGoalId = Collections.unmodifiableMap(
+                loadCanonicalGoalApplicabilityOverrideRegistry(dir));
         compatibilityArchiveSummariesById = Collections.unmodifiableMap(loadCompatibilityArchiveRegistry(dir));
         compatibilityArchiveTopicsById = Collections.unmodifiableMap(loadCompatibilityTopicRegistry(dir));
         Set<String> knownRootIds = new LinkedHashSet<>(cachedById.keySet());
@@ -969,6 +1281,141 @@ public class LandscapeService {
             return result;
         } catch (IOException e) {
             throw new IllegalStateException("Failed to load source goal membership registry from " + registryFile, e);
+        }
+    }
+
+    private Map<String, Map<String, Object>> loadCanonicalGoalProvenanceRegistry(Path dir) {
+        Path registryFile = dir.resolve(CANONICAL_GOAL_PROVENANCE_REGISTRY_PATH);
+        if (!Files.isRegularFile(registryFile)) {
+            return Collections.emptyMap();
+        }
+        try {
+            JsonNode root = objectMapper.readTree(registryFile.toFile());
+            if (root == null || !root.isObject()) {
+                throw new IllegalStateException("Invalid canonical goal provenance registry root: " + registryFile);
+            }
+            JsonNode versionNode = root.get("version");
+            if (versionNode == null || !versionNode.canConvertToInt()
+                    || versionNode.intValue() != SUPPORTED_CANONICAL_GOAL_PROVENANCE_REGISTRY_VERSION) {
+                throw new IllegalStateException("Unsupported canonical goal provenance registry version in "
+                        + registryFile);
+            }
+            JsonNode landscapesNode = root.get("landscapes");
+            if (landscapesNode == null || !landscapesNode.isArray()) {
+                throw new IllegalStateException(
+                        "Canonical goal provenance registry has no landscapes array: " + registryFile);
+            }
+
+            Map<String, Map<String, Object>> result = new LinkedHashMap<>();
+            for (JsonNode landscapeNode : landscapesNode) {
+                if (landscapeNode == null || !landscapeNode.isObject()) {
+                    continue;
+                }
+                String landscapeId = readRegistryText(landscapeNode, "landscapeId");
+                JsonNode goalProvenanceNode = landscapeNode.get("goalProvenance");
+                if (!StringUtils.hasText(landscapeId) || goalProvenanceNode == null || !goalProvenanceNode.isObject()) {
+                    throw new IllegalStateException(
+                            "Invalid canonical goal provenance registry entry in " + registryFile);
+                }
+                goalProvenanceNode.fields().forEachRemaining(entry -> {
+                    String goalId = entry.getKey();
+                    JsonNode provenanceNode = entry.getValue();
+                    if (!StringUtils.hasText(goalId) || provenanceNode == null || !provenanceNode.isObject()) {
+                        throw new IllegalStateException(
+                                "Invalid canonical goal provenance goal entry in " + registryFile);
+                    }
+                    Map<String, Object> provenance = objectMapper.convertValue(
+                            provenanceNode,
+                            new TypeReference<LinkedHashMap<String, Object>>() {
+                            });
+                    String existingLandscapeId = goalIdToLandscapeId.get(goalId);
+                    if (existingLandscapeId != null && !existingLandscapeId.equals(landscapeId)) {
+                        throw new IllegalStateException(
+                                "Canonical goal provenance goal '%s' belongs to landscape '%s' but registry says '%s' in %s"
+                                        .formatted(goalId, existingLandscapeId, landscapeId, registryFile));
+                    }
+                    Map<String, Object> existing = result.putIfAbsent(goalId, Collections.unmodifiableMap(provenance));
+                    if (existing != null && !existing.equals(provenance)) {
+                        throw new IllegalStateException(
+                                "Conflicting canonical goal provenance registry goal id '%s' in %s"
+                                        .formatted(goalId, registryFile));
+                    }
+                });
+            }
+            return result;
+        } catch (IOException e) {
+            throw new IllegalStateException(
+                    "Failed to load canonical goal provenance registry from " + registryFile,
+                    e);
+        }
+    }
+
+    private Map<String, Map<String, List<String>>> loadCanonicalGoalApplicabilityOverrideRegistry(Path dir) {
+        Path registryFile = dir.resolve(CANONICAL_GOAL_APPLICABILITY_OVERRIDE_REGISTRY_PATH);
+        if (!Files.isRegularFile(registryFile)) {
+            return Collections.emptyMap();
+        }
+        try {
+            JsonNode root = objectMapper.readTree(registryFile.toFile());
+            if (root == null || !root.isObject()) {
+                throw new IllegalStateException(
+                        "Invalid canonical goal applicability override registry root: " + registryFile);
+            }
+            JsonNode versionNode = root.get("version");
+            if (versionNode == null || !versionNode.canConvertToInt()
+                    || versionNode.intValue() != SUPPORTED_CANONICAL_GOAL_APPLICABILITY_OVERRIDE_REGISTRY_VERSION) {
+                throw new IllegalStateException(
+                        "Unsupported canonical goal applicability override registry version in "
+                                + registryFile);
+            }
+            JsonNode landscapesNode = root.get("landscapes");
+            if (landscapesNode == null || !landscapesNode.isArray()) {
+                throw new IllegalStateException(
+                        "Canonical goal applicability override registry has no landscapes array: " + registryFile);
+            }
+
+            Map<String, Map<String, List<String>>> result = new LinkedHashMap<>();
+            for (JsonNode landscapeNode : landscapesNode) {
+                if (landscapeNode == null || !landscapeNode.isObject()) {
+                    continue;
+                }
+                String landscapeId = readRegistryText(landscapeNode, "landscapeId");
+                JsonNode overridesNode = landscapeNode.get("goalApplicabilityOverrides");
+                if (!StringUtils.hasText(landscapeId) || overridesNode == null || !overridesNode.isObject()) {
+                    throw new IllegalStateException(
+                            "Invalid canonical goal applicability override registry entry in " + registryFile);
+                }
+                overridesNode.fields().forEachRemaining(entry -> {
+                    String goalId = entry.getKey();
+                    JsonNode overrideNode = entry.getValue();
+                    if (!StringUtils.hasText(goalId) || overrideNode == null || !overrideNode.isObject()) {
+                        throw new IllegalStateException(
+                                "Invalid canonical goal applicability override goal entry in " + registryFile);
+                    }
+                    Map<String, List<String>> overrides = objectMapper.convertValue(
+                            overrideNode,
+                            new TypeReference<LinkedHashMap<String, List<String>>>() {
+                            });
+                    String existingLandscapeId = goalIdToLandscapeId.get(goalId);
+                    if (existingLandscapeId != null && !existingLandscapeId.equals(landscapeId)) {
+                        throw new IllegalStateException(
+                                "Canonical goal applicability override goal '%s' belongs to landscape '%s' but registry says '%s' in %s"
+                                        .formatted(goalId, existingLandscapeId, landscapeId, registryFile));
+                    }
+                    Map<String, List<String>> frozenOverrides = finalizeApplicabilityMap(overrides);
+                    Map<String, List<String>> existing = result.putIfAbsent(goalId, frozenOverrides);
+                    if (existing != null && !existing.equals(frozenOverrides)) {
+                        throw new IllegalStateException(
+                                "Conflicting canonical goal applicability override registry goal id '%s' in %s"
+                                        .formatted(goalId, registryFile));
+                    }
+                });
+            }
+            return result;
+        } catch (IOException e) {
+            throw new IllegalStateException(
+                    "Failed to load canonical goal applicability override registry from " + registryFile,
+                    e);
         }
     }
 

@@ -550,15 +550,7 @@ public class CurriculaService {
     }
 
     private String extractProvenanceValue(LearningGoal goal, String key) {
-        if (goal == null || goal.getExtendedData() == null) {
-            return null;
-        }
-        Object provenanceObj = goal.getExtendedData().get("provenance");
-        if (!(provenanceObj instanceof Map<?, ?> provenance)) {
-            return null;
-        }
-        Object value = provenance.get(key);
-        return value instanceof String stringValue && !stringValue.isBlank() ? stringValue : null;
+        return landscapeService.resolveGoalProvenanceValue(goal, key);
     }
 
     private long countMasteredAtomicIds(Set<String> atomicIds, Map<String, MasteryEntryDTO> masteryEntries) {

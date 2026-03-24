@@ -950,15 +950,8 @@ public class LearnerService {
             return null;
         }
         for (LearningGoal goal : visibleGoals.values()) {
-            if (goal == null || goal.getExtendedData() == null) {
-                continue;
-            }
-            Object provenanceRaw = goal.getExtendedData().get("provenance");
-            if (!(provenanceRaw instanceof Map<?, ?> provenance)) {
-                continue;
-            }
-            Object sourceGoalIdRaw = provenance.get("sourceGoalId");
-            if (sourceGoalIdRaw instanceof String sourceGoalId && legacyGoalId.equals(sourceGoalId)) {
+            String sourceGoalId = landscapeService.resolveGoalProvenanceValue(goal, "sourceGoalId");
+            if (legacyGoalId.equals(sourceGoalId)) {
                 return goal.getId();
             }
         }
@@ -2261,15 +2254,8 @@ public class LearnerService {
             return canonicalIdsByLegacySourceId;
         }
         for (LearningGoal goal : visibleGoals.values()) {
-            if (goal == null || goal.getExtendedData() == null) {
-                continue;
-            }
-            Object provenanceRaw = goal.getExtendedData().get("provenance");
-            if (!(provenanceRaw instanceof Map<?, ?> provenance)) {
-                continue;
-            }
-            Object sourceGoalIdRaw = provenance.get("sourceGoalId");
-            if (!(sourceGoalIdRaw instanceof String sourceGoalId) || sourceGoalId.isBlank()) {
+            String sourceGoalId = landscapeService.resolveGoalProvenanceValue(goal, "sourceGoalId");
+            if (sourceGoalId == null || sourceGoalId.isBlank()) {
                 continue;
             }
             canonicalIdsByLegacySourceId.putIfAbsent(sourceGoalId, goal.getId());
@@ -3691,12 +3677,8 @@ public class LearnerService {
     }
 
     private boolean hasStateProvenance(LearningGoal goal, String stateFilterId) {
-        Map<String, Object> extendedData = goal.getExtendedData();
-        if (extendedData == null || extendedData.isEmpty()) {
-            return false;
-        }
-        Object provenanceObj = extendedData.get("provenance");
-        if (!(provenanceObj instanceof Map<?, ?> provenance)) {
+        Map<String, Object> provenance = landscapeService.resolveGoalProvenance(goal);
+        if (provenance.isEmpty()) {
             return false;
         }
 

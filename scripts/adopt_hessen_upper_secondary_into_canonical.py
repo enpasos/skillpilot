@@ -15,6 +15,12 @@ from hessen_upper_secondary_paths import (
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 UUID_NAMESPACE = uuid.UUID("fd8eb76f-7f91-4e69-8fb9-7a1647d4b0bb")
+CANONICAL_GOAL_PROVENANCE_REGISTRY_PATH = (
+    REPO_ROOT / "curricula/DE/Gymnasium/provenance/canonical-goal-provenance-registry.json"
+)
+CANONICAL_GOAL_APPLICABILITY_OVERRIDE_REGISTRY_PATH = (
+    REPO_ROOT / "curricula/DE/Gymnasium/provenance/canonical-goal-applicability-override-registry.json"
+)
 
 
 def load_json(path: Path) -> dict[str, Any]:
@@ -23,6 +29,165 @@ def load_json(path: Path) -> dict[str, Any]:
 
 def write_json(path: Path, data: dict[str, Any]) -> None:
     path.write_text(json.dumps(data, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+
+
+def load_canonical_goal_provenance_registry() -> dict[str, Any]:
+    if not CANONICAL_GOAL_PROVENANCE_REGISTRY_PATH.exists():
+        return {"version": 1, "landscapes": []}
+    return load_json(CANONICAL_GOAL_PROVENANCE_REGISTRY_PATH)
+
+
+def load_canonical_goal_applicability_override_registry() -> dict[str, Any]:
+    if not CANONICAL_GOAL_APPLICABILITY_OVERRIDE_REGISTRY_PATH.exists():
+        return {"version": 1, "landscapes": []}
+    return load_json(CANONICAL_GOAL_APPLICABILITY_OVERRIDE_REGISTRY_PATH)
+
+
+def load_goal_provenance_for_landscape(landscape_id: str) -> dict[str, dict[str, Any]]:
+    registry = load_canonical_goal_provenance_registry()
+    for entry in registry.get("landscapes", []):
+        if entry.get("landscapeId") != landscape_id:
+            continue
+        goal_provenance = entry.get("goalProvenance")
+        if isinstance(goal_provenance, dict):
+            return copy.deepcopy(goal_provenance)
+    return {}
+
+
+def load_goal_applicability_overrides_for_landscape(landscape_id: str) -> dict[str, dict[str, list[str]]]:
+    registry = load_canonical_goal_applicability_override_registry()
+    for entry in registry.get("landscapes", []):
+        if entry.get("landscapeId") != landscape_id:
+            continue
+        goal_applicability_overrides = entry.get("goalApplicabilityOverrides")
+        if isinstance(goal_applicability_overrides, dict):
+            return copy.deepcopy(goal_applicability_overrides)
+    return {}
+
+
+def write_goal_provenance_for_landscape(landscape_id: str, goal_provenance: dict[str, dict[str, Any]]) -> None:
+    registry = load_canonical_goal_provenance_registry()
+    landscapes = registry.get("landscapes")
+    if not isinstance(landscapes, list):
+        landscapes = []
+
+    serialized_entry = {
+        "landscapeId": landscape_id,
+        "goalProvenance": goal_provenance,
+    }
+
+    replaced = False
+    new_landscapes: list[dict[str, Any]] = []
+    for entry in landscapes:
+        if isinstance(entry, dict) and entry.get("landscapeId") == landscape_id:
+            new_landscapes.append(serialized_entry)
+            replaced = True
+        else:
+            new_landscapes.append(entry)
+    if not replaced:
+        new_landscapes.append(serialized_entry)
+
+    registry["version"] = 1
+    registry["landscapes"] = new_landscapes
+    write_json(CANONICAL_GOAL_PROVENANCE_REGISTRY_PATH, registry)
+
+
+def write_goal_applicability_overrides_for_landscape(
+    landscape_id: str,
+    goal_applicability_overrides: dict[str, dict[str, list[str]]],
+) -> None:
+    registry = load_canonical_goal_applicability_override_registry()
+    landscapes = registry.get("landscapes")
+    if not isinstance(landscapes, list):
+        landscapes = []
+
+    serialized_entry = {
+        "landscapeId": landscape_id,
+        "goalApplicabilityOverrides": goal_applicability_overrides,
+    }
+
+    replaced = False
+    new_landscapes: list[dict[str, Any]] = []
+    for entry in landscapes:
+        if isinstance(entry, dict) and entry.get("landscapeId") == landscape_id:
+            new_landscapes.append(serialized_entry)
+            replaced = True
+        else:
+            new_landscapes.append(entry)
+    if not replaced:
+        new_landscapes.append(serialized_entry)
+
+    registry["version"] = 1
+    registry["landscapes"] = new_landscapes
+    write_json(CANONICAL_GOAL_APPLICABILITY_OVERRIDE_REGISTRY_PATH, registry)
+
+
+def resolve_goal_provenance(goal: dict[str, Any], registry_by_goal_id: dict[str, dict[str, Any]]) -> dict[str, Any]:
+    goal_id = goal.get("id")
+    if isinstance(goal_id, str) and goal_id in registry_by_goal_id:
+        return copy.deepcopy(registry_by_goal_id[goal_id])
+    provenance = ((goal.get("extendedData") or {}).get("provenance") or {})
+    return copy.deepcopy(provenance) if isinstance(provenance, dict) else {}
+
+
+def resolve_goal_applicability_overrides(
+    goal: dict[str, Any],
+    registry_by_goal_id: dict[str, dict[str, list[str]]],
+) -> dict[str, list[str]]:
+    goal_id = goal.get("id")
+    if isinstance(goal_id, str) and goal_id in registry_by_goal_id:
+        return copy.deepcopy(registry_by_goal_id[goal_id])
+    overrides = ((goal.get("extendedData") or {}).get("applicabilityOverrides") or {})
+    return copy.deepcopy(overrides) if isinstance(overrides, dict) else {}
+
+
+def extract_goal_provenance(goals: list[dict[str, Any]]) -> dict[str, dict[str, Any]]:
+    result: dict[str, dict[str, Any]] = {}
+    for goal in goals:
+        goal_id = goal.get("id")
+        provenance = ((goal.get("extendedData") or {}).get("provenance") or {})
+        if isinstance(goal_id, str) and isinstance(provenance, dict) and provenance:
+            result[goal_id] = copy.deepcopy(provenance)
+    return result
+
+
+def extract_goal_applicability_overrides(
+    goals: list[dict[str, Any]],
+    registry_by_goal_id: dict[str, dict[str, list[str]]],
+) -> dict[str, dict[str, list[str]]]:
+    result: dict[str, dict[str, list[str]]] = {}
+    for goal in goals:
+        goal_id = goal.get("id")
+        overrides = resolve_goal_applicability_overrides(goal, registry_by_goal_id)
+        if isinstance(goal_id, str) and overrides:
+            result[goal_id] = copy.deepcopy(overrides)
+    return result
+
+
+def strip_goal_provenance(goals: list[dict[str, Any]]) -> None:
+    for goal in goals:
+        extended_data = goal.get("extendedData")
+        if not isinstance(extended_data, dict):
+            continue
+        extended_data = copy.deepcopy(extended_data)
+        extended_data.pop("provenance", None)
+        if extended_data:
+            goal["extendedData"] = extended_data
+        else:
+            goal.pop("extendedData", None)
+
+
+def strip_goal_applicability_overrides(goals: list[dict[str, Any]]) -> None:
+    for goal in goals:
+        extended_data = goal.get("extendedData")
+        if not isinstance(extended_data, dict):
+            continue
+        extended_data = copy.deepcopy(extended_data)
+        extended_data.pop("applicabilityOverrides", None)
+        if extended_data:
+            goal["extendedData"] = extended_data
+        else:
+            goal.pop("extendedData", None)
 
 
 def dedupe(values: list[str]) -> list[str]:
@@ -170,25 +335,25 @@ MATH = SubjectConfig(
     root_title_en="Mathematics",
     root_description=(
         "Gemeinsame Wurzel für Mathematik am Gymnasium in Deutschland. "
-        "Die aktuelle Baseline übernimmt die hessische Oberstufe vollständig und behält "
-        "den bereits aufgebauten Sek-I-Funktionsanschluss für die spätere bundesländerübergreifende Konvergenz."
+        "Die Baseline bündelt einen kanonischen Mathematik-Graphen über Sekundarstufe I und II "
+        "mit Jahrgangsankern, fachlichen Korridoren und anschlussfähigen Oberstufenzielen."
     ),
     root_description_en=(
         "Shared root for mathematics at Gymnasium in Germany. "
-        "The current baseline fully adopts the Hessian upper-secondary curriculum and keeps "
-        "the previously established lower-secondary function bridge for later cross-state convergence."
+        "The baseline bundles one canonical mathematics graph across lower and upper secondary "
+        "with year anchors, content corridors, and upper-secondary continuation goals."
     ),
     landscape_title="Mathematik (Gymnasium, DE)",
     landscape_title_en="Mathematics (Gymnasium, DE)",
     landscape_description=(
         "Mathematik für das Gymnasium in Deutschland. "
-        "Die aktuelle Baseline sichert die hessische Oberstufe vollständig und behält "
-        "den vorhandenen Sek-I-Funktionsanschluss als Ausgangspunkt für spätere bundesländerübergreifende Angleichung."
+        "Die Landschaft bündelt einen kanonischen Mathematik-Graphen über Sekundarstufe I und II "
+        "mit Jahrgangsankern J5 bis J10, fachlichen Korridoren und anschlussfähigen Oberstufenzielen."
     ),
     landscape_description_en=(
         "Mathematics for Gymnasium in Germany. "
-        "The current baseline fully secures the Hessian upper-secondary curriculum and keeps "
-        "the existing lower-secondary function bridge as the starting point for later cross-state alignment."
+        "This landscape bundles one canonical mathematics graph across lower and upper secondary "
+        "with year anchors J5 to J10, content corridors, and upper-secondary continuation goals."
     ),
     framework_id="canonical-gymnasium-math",
     additional_root_contains=["5c6b7342-0f67-4b4c-894d-fd83a6df64b3"],
@@ -804,6 +969,8 @@ def bootstrap_target(config: SubjectConfig, legacy: dict[str, Any]) -> dict[str,
 def adopt_subject(config: SubjectConfig) -> tuple[int, int]:
     legacy = load_json(config.source_landscape_path)
     current = load_json(config.target_landscape_path) if config.target_landscape_path.exists() else bootstrap_target(config, legacy)
+    current_goal_provenance = load_goal_provenance_for_landscape(config.target_landscape_id)
+    current_goal_applicability_overrides = load_goal_applicability_overrides_for_landscape(config.target_landscape_id)
 
     legacy_goals_by_id = {goal["id"]: goal for goal in legacy["goals"]}
     current_goals_by_id = {goal["id"]: goal for goal in current["goals"]}
@@ -812,7 +979,7 @@ def adopt_subject(config: SubjectConfig) -> tuple[int, int]:
 
     override_ids: dict[str, str] = {}
     for goal in current["goals"]:
-        provenance = ((goal.get("extendedData") or {}).get("provenance") or {})
+        provenance = resolve_goal_provenance(goal, current_goal_provenance)
         if provenance.get("sourceLandscapeId") != config.source_landscape_id:
             continue
         source_goal_id = provenance.get("sourceGoalId")
@@ -883,7 +1050,6 @@ def adopt_subject(config: SubjectConfig) -> tuple[int, int]:
             transformed["requires"] = dedupe(transformed["requires"] + list(existing_goal.get("requires") or []))
         provenance = {
             "sourceLandscapeId": config.source_landscape_id,
-            "sourceLandscapeTitle": config.source_landscape_title,
             "sourceGoalId": legacy_goal["id"],
         }
         transformed["extendedData"] = merge_extended_data(
@@ -931,7 +1097,6 @@ def adopt_subject(config: SubjectConfig) -> tuple[int, int]:
         root_goal["weight"] = float((legacy_root.get("weight") or 0) + sum(goal.get("weight", 0) for goal in retained_current_goals if goal["id"] == "5c6b7342-0f67-4b4c-894d-fd83a6df64b3"))
         provenance = {
             "sourceLandscapeId": config.source_landscape_id,
-            "sourceLandscapeTitle": config.source_landscape_title,
             "sourceGoalId": legacy_root["id"],
             "additionalSourceLandscapeIds": ["b167b4cd-4b78-4c84-a721-6b2adbbcab3c", "c1600692-e543-5cf2-a399-6bd96e6b817f"],
         }
@@ -954,7 +1119,6 @@ def adopt_subject(config: SubjectConfig) -> tuple[int, int]:
             legacy_root.get("extendedData"),
             {
                 "sourceLandscapeId": config.source_landscape_id,
-                "sourceLandscapeTitle": config.source_landscape_title,
                 "sourceGoalId": legacy_root["id"],
             },
         )
@@ -965,6 +1129,15 @@ def adopt_subject(config: SubjectConfig) -> tuple[int, int]:
     current["description"] = config.landscape_description
     current["descriptionEn"] = config.landscape_description_en
     current["goals"] = [root_goal] + retained_current_goals + preserved_current_goals + adopted_goals
+
+    if config.subject_key == "math":
+        write_goal_provenance_for_landscape(config.target_landscape_id, extract_goal_provenance(current["goals"]))
+        write_goal_applicability_overrides_for_landscape(
+            config.target_landscape_id,
+            extract_goal_applicability_overrides(current["goals"], current_goal_applicability_overrides),
+        )
+        strip_goal_applicability_overrides(current["goals"])
+        strip_goal_provenance(current["goals"])
 
     mapping = {
         "version": 1,

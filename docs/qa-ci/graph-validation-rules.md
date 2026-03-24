@@ -113,7 +113,7 @@ Current stable finding families:
 | --- | --- | --- |
 | `APV-102` | A visible goal requires a prerequisite that is invisible in the projected filtered graph. | `error` |
 | `APV-103` | A visible goal is not reachable from the projected root. | `error` |
-| `APV-201` | An explicit `extendedData.applicabilityOverrides` path is used. | `warning` |
+| `APV-201` | An explicit applicability-override path is used, either embedded or via the canonical override registry. | `warning` |
 | `APV-202` | Applicability is backed only by `partial` mappings. | `warning` |
 | `APV-203` | Compiled applicability differs from currently committed applicability metadata. | `warning` |
 
