@@ -70,6 +70,16 @@ const cleanLandscapeDisplayTitle = (title: string) => {
         .trim()
 }
 
+const JURISDICTION_FILTER_PATTERN = /^DE-[A-Z]{2}$/u
+
+const formatJurisdictionRootTitle = (title: string, filterId?: string) => {
+    if (!filterId || !JURISDICTION_FILTER_PATTERN.test(filterId)) return title
+    if (/\(DE\)$/u.test(title)) {
+        return title.replace(/\(DE\)$/u, `(${filterId})`)
+    }
+    return `${title} (${filterId})`
+}
+
 
 
 interface PersonalCurriculumSetupProps {
@@ -301,7 +311,9 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
         const showFilterControls = Boolean(hasFilters) && showCourseProfileControls && (isRoot || isSelected)
         const isExpandable = isRoot || showFilterControls
         const isExpanded = expanded.has(landscape.landscapeId)
-        const rawDisplayLabel = isRoot ? landscape.title : (landscape.subject?.trim() || landscape.title)
+        const rawDisplayLabel = isRoot
+            ? formatJurisdictionRootTitle(landscape.title, currentFilter)
+            : (landscape.subject?.trim() || landscape.title)
         const displayLabel = isRoot ? rawDisplayLabel : cleanLandscapeDisplayTitle(rawDisplayLabel)
         const modeLabel = !isRoot && isCompatibilityOnlyLandscape(landscape)
             ? `${displayLabel} (Kompatibilitaetsansicht)`

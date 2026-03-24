@@ -30,6 +30,16 @@ const getContextualTreeTitle = (goal: UiGoal, parentGoal?: UiGoal): string => {
   return goal.title
 }
 
+const JURISDICTION_FILTER_PATTERN = /^DE-[A-Z]{2}$/u
+
+const formatJurisdictionRootTitle = (title: string, filterId?: string) => {
+  if (!filterId || !JURISDICTION_FILTER_PATTERN.test(filterId)) return title
+  if (/\(DE\)$/u.test(title)) {
+    return title.replace(/\(DE\)$/u, `(${filterId})`)
+  }
+  return `${title} (${filterId})`
+}
+
 const buildSortedChildrenMap = (
   visibleChildrenByParent: Map<string, string[]>,
   allGoals: Map<string, UiGoal>,
@@ -211,6 +221,12 @@ const TreeNode: React.FC<TreeNodeProps> = ({
       ? personalFilterId
       : (activeFilter && activeFilter !== 'all' ? activeFilter : undefined),
   )
+  const jurisdictionRootFilterId =
+    personalFilterId && JURISDICTION_FILTER_PATTERN.test(personalFilterId)
+      ? personalFilterId
+      : activeFilter && JURISDICTION_FILTER_PATTERN.test(activeFilter)
+        ? activeFilter
+        : undefined
   const hasSyntheticSek2Child = (goal.contains ?? []).some((childId) => {
     const child = allGoals.get(childId)
     return !!child && isSyntheticProgramUnit(child) && child.title === 'Sekundarstufe II'
@@ -225,7 +241,10 @@ const TreeNode: React.FC<TreeNodeProps> = ({
       ? formatFilterLabel(parentLandscapeFilterId)
       : undefined
   const shouldShowFilterBadge = depth === 1 && !!effectiveFilterLabel && !shouldMoveCourseProfileToSek2
-  const contextualTitle = getContextualTreeTitle(goal, parentGoal)
+  const contextualTitle = formatJurisdictionRootTitle(
+    getContextualTreeTitle(goal, parentGoal),
+    depth === 0 && goal.tags?.includes('root') ? jurisdictionRootFilterId : undefined,
+  )
   const displayTitle = shouldShowFilterBadge
     ? `${contextualTitle} (${effectiveFilterLabel})`
     : inheritedSek2FilterLabel
