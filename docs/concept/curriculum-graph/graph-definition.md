@@ -14,6 +14,7 @@ Layering, migration strategy, and canonical rollout policy are specified separat
 > Normative vs implementation: this document is the conceptual/normative definition.  
 > The currently enforced CI validator profile (including rollout severities and runtime rule IDs) is documented in `docs/qa-ci/graph-validation-rules.md`.
 > Legacy serialized metadata such as `phase` may still exist in concrete repositories, but such fields are not part of the canonical graph semantics unless explicitly stated below.
+> This specification also does not define cross-landscape `requires` contracts or learner-facing curriculum bundles; those belong to higher-level composition contracts outside the single-landscape goal graph.
 
 ---
 
@@ -73,7 +74,7 @@ Implementations MAY additionally expose optional cross-cutting metadata for scop
 One preferred structured form is a partial applicability mapping:
 
 $$
-Applicability: G \rightharpoonup \bigl(D \to \mathcal{P}(V_d)\bigr)
+Applicability: G \rightharpoonup \bigl(D \rightharpoonup \mathcal{P}(V_d)\bigr)
 $$
 
 Interpretation:
@@ -126,7 +127,7 @@ Interpretation:
 - $K$: the set of **cluster goals**  
   Structural aggregation goals with at least one direct `contains` child.
 
-Implementations MAY store explicit node-type metadata, but if they do, it MUST agree with this derived classification.  
+Implementations MAY store explicit atomic/cluster classification metadata, but if they do, it MUST agree with this derived classification.  
 This makes all later references to “atomic” and “cluster” portable across implementations.
 
 ---
@@ -155,7 +156,7 @@ $(p,c)\in C$ means **parent** $p$ contains **child** $c$.
 **Note:** $C$ is the *direct* containment relation (“direct contains”).  
 Indirect containment (ancestor/descendant) is derived via the transitive closure $C^+$.
 
-Edges in $C$ are interpreted as hierarchical grouping (e.g., Module contains Topic).
+Edges in $C$ are interpreted as hierarchical grouping (e.g., topic cluster contains atomic goal).
 
 ### 4.2 Containment constraint (polyhierarchy)
 
@@ -553,19 +554,21 @@ Normatively, a filter is still just a predicate on goals.
 However, implementations MAY realize parts of that predicate via structured, goal-local metadata such as a generic compiled applicability field:
 
 $$
-Applicability: G \to \bigl(D \to \mathcal{P}(V_d)\bigr)
+Applicability: G \rightharpoonup \bigl(D \rightharpoonup \mathcal{P}(V_d)\bigr)
 $$
 
 where:
 
-- $D$ is a set of filter dimensions (for example `jurisdiction`, `courseLevel`, `gradeBand`, ...)
+- $D$ is a set of filter dimensions (for example `jurisdiction`, `schoolForm`, `stage`, `durationModel`, `courseProfile`, ...)
 - $V_d$ is the value vocabulary for dimension $d$
 - $\mathcal{P}(V_d)$ is the set of allowed value sets for that dimension
 
 Interpretation:
 
 - the graph definition does **not** hardcode any one application-specific dimension such as German Bundeslaender
-- the same mechanism can be used for jurisdiction, course level, track, year band, or similar scoped views
+- the same mechanism can be used for jurisdiction, school form, stage, duration model, course profile, or similar scoped views
+- if `Applicability` is absent on a goal, or a dimension is absent within `Applicability(g)`, the goal is treated as unrestricted on that dimension
+- `ALL` is a query sentinel only; it MUST NOT be serialized as an applicability or placement value
 - `tags` remain semantically weaker and less structured than compiled applicability metadata
 
 For an active filter selection $Q$ over such dimensions, a goal-local applicability-backed predicate can be written as:
@@ -574,7 +577,7 @@ $$
 F_Q(g)=1
 \iff
 \forall d\in D_{active}:
-\bigl(Q(d)=ALL\bigr)\ \lor\ \bigl(Q(d)\in Applicability(g)(d)\bigr)
+\bigl(Q(d)=ALL\bigr)\ \lor\ \bigl(g\notin dom(Applicability)\bigr)\ \lor\ \bigl(g\in dom(Applicability)\land d\notin dom(Applicability(g))\bigr)\ \lor\ \bigl(g\in dom(Applicability)\land d\in dom(Applicability(g))\land Q(d)\in Applicability(g)(d)\bigr)
 $$
 
 This is only one possible realization of a filter, but it is the preferred one for derived, prevalidated scoped views.
@@ -585,7 +588,7 @@ The normative filter semantics in this document depend on the effective applicab
 Some repositories MAY additionally maintain an explicit auxiliary metadata field such as:
 
 $$
-ApplicabilityOverrides: G \rightharpoonup \bigl(D \to \mathcal{P}(V_d)\bigr)
+ApplicabilityOverrides: G \rightharpoonup \bigl(D \rightharpoonup \mathcal{P}(V_d)\bigr)
 $$
 
 Interpretation:

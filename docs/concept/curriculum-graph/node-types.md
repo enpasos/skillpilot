@@ -8,6 +8,10 @@ Graph relations, placements, and projected view contracts are specified separate
 - `docs/concept/curriculum-graph/graph-definition.md`
 - `docs/concept/curriculum-graph/view-projection-and-goal-placement.md`
 
+The categories in this document are pedagogical goal kinds.
+
+They are orthogonal to the structural atomic/cluster classification from `graph-definition.md` and orthogonal to program-unit kinds such as `exam`.
+
 ## Summary
 
 | Type | Purpose | Typical content |
@@ -15,6 +19,8 @@ Graph relations, placements, and projected view contracts are specified separate
 | Understanding | Conceptual or procedural understanding | "The learner can ..." goals |
 | Memorize | Spaced repetition recall | Facts, vocabulary, formulas |
 | Exam | Assessment tasks with scoring | Exam problems, Abitur tasks |
+
+Node-type-specific runtime state ultimately resolves to mastered/not-mastered status consumed by graph-level frontier semantics.
 
 ## Cross-cutting metadata: applicability
 
@@ -46,9 +52,9 @@ For canonical Gymnasium, the first planned dimension is:
 
 Possible later dimensions could include:
 
-- `courseLevel`
-- `track`
-- `gradeBand`
+- `courseProfile`
+- `stage`
+- `durationModel`
 
 Authoring note:
 
@@ -141,13 +147,14 @@ They add an optional `examData` field to the existing schema.
 
 ```json
 {
-  "id": "uuid-for-exam-variant",
+  "id": "550e8400-e29b-41d4-a716-446655440000",
+  "shortKey": "exam-analysis-a1-2026-sample",
   "title": "A1 (Analysis)",
   "description": "Exam task from 2026 sample.",
   "weight": 1.0,
   "tags": ["GK", "Exam"],
   "dimensionTags": { "phase": "Q3", "demandLevel": "AB1" },
-  "requires": ["skill-id-1"],
+  "requires": ["550e8400-e29b-41d4-a716-446655440010"],
   "contains": [],
   "examData": {
     "taskContent": "Compute the roots of f(x)...",

@@ -17,7 +17,7 @@ Use related documents for narrower questions:
 It is motivated by one concrete pressure point in the current canonical Gymnasium work:
 
 - the runtime currently overloads `phase` with very different semantics such as `J8`, `Q2`, `S3`, `Modul`, and `Bachelorarbeit`
-- the current math trees still mix **fachliche Ziele** and **Programmstruktur** in the same node space
+- the current math trees still mix **content goals** and **program structure** in the same node space
 - that works for school pilots, but it does not generalize cleanly to Hochschulkontexte, mixed programs, or multiple concurrent views of the same domain
 
 The goal of this document is therefore twofold:
@@ -31,7 +31,7 @@ SkillPilot should support at least these cases with one conceptual model:
 
 - school curricula with year-level and phase views
 - university programs with semesters, modules, tracks, and exams
-- cross-program domains where the same fachliche competence appears in different structural contexts
+- cross-program domains where the same content-level competence appears in different structural contexts
 - multiple derived views on the same canonical goals, for example:
   - by year
   - by semester
@@ -88,13 +88,13 @@ Interpretation:
 - these choices form a **user-facing entry scope**
 - entry scope is a query and navigation context
 - it is applied to program units, placements, and applicability
-- it should not force duplication of the underlying fachliche goals
+- it should not force duplication of the underlying content goals
 
 So the long-term user flow is:
 
 1. choose an entry scope such as `Gymnasium -> Sek II -> DE-BY -> GK -> Q2`
 2. project the relevant structural view from program units and placements
-3. then navigate primarily through the fachliche topics and frontier within that scoped view
+3. then navigate primarily through the content topics and frontier within that scoped view
 
 This keeps the system practical for real users without overloading the goal ontology.
 
@@ -130,16 +130,16 @@ This layer contains the actual learning graph.
 It includes:
 
 - atomic goals
-- fachliche cluster goals
+- content cluster goals
 - didactic prerequisite edges via `requires`
-- fachliche aggregation edges via `contains`
+- content aggregation edges via `contains`
 
 Rules:
 
 - only goals live in the mastery model
 - only goals participate in the frontier
 - only goals may appear in `requires`
-- `contains` on goals means fachliche composition, not year/semester placement
+- `contains` on goals means content composition, not year/semester placement
 
 Examples:
 
@@ -224,6 +224,12 @@ The minimal additions are:
 - `competencyCatalog`
 - `competencyRefs` on goals
 
+These additions describe the general target model.
+
+In the first Gymnasium convergence step, repositories MAY defer some of them and start with canonical landscapes plus goal mappings only.
+
+That narrower restriction is a rollout decision, not a contradiction of the broader additive target model.
+
 ### Program units
 
 Suggested shape:
@@ -282,6 +288,8 @@ It is enough to:
 The `context` object on placements should also be understood as the natural home for entry-scope-sensitive distinctions such as:
 
 - `jurisdiction`
+- `schoolForm`
+- `stage`
 - `durationModel`
 - `courseProfile`
 - other reviewed program flavors that affect placement without changing the underlying goal
@@ -326,7 +334,7 @@ This should eventually become the general form of what current landscapes expres
 - assessable conceptual competences
 - assessable procedural competences
 - assessable process-specific competences
-- fachliche clusters that bundle these goals
+- content clusters that bundle these goals
 
 Examples:
 
@@ -413,7 +421,7 @@ They should gradually become:
 
 instead of remaining the canonical semantic container for goals.
 
-### 3. Existing fachliche corridors are the better long-term backbone
+### 3. Existing content corridors are the better long-term backbone
 
 Nodes such as:
 
@@ -481,9 +489,9 @@ For the current Gymnasium use case, this means:
 - `Bundesland` is primarily a placement and applicability context
 - `G8` versus `G9` is primarily a duration-model context
 - `GK` versus `LK` is primarily a course-profile context
-- `J5-J13`, `E`, `Q1-Q4` are user-facing structural anchors, not the canonical meaning of the fachliche goals
+- `J5-J13`, `E`, `Q1-Q4` are user-facing structural anchors, not the canonical meaning of the content goals
 
-This is exactly the kind of initial narrowing that should happen before the user dives into fachliche topics.
+This is exactly the kind of initial narrowing that should happen before the user dives into content topics.
 
 ## Interaction with process competencies
 
@@ -505,6 +513,8 @@ Examples:
 ## Example target shape
 
 The following example is intentionally small.
+
+For readability, this example uses symbolic IDs. Production landscapes still use UUID `id` values and may additionally expose readable `shortKey` values.
 
 ```json
 {
@@ -537,6 +547,13 @@ The following example is intentionally small.
       "kind": "year",
       "label": "Jahrgang 8",
       "order": 8,
+      "parentUnitId": "de-gym-math-sek1"
+    },
+    {
+      "id": "de-gym-math-j9",
+      "kind": "year",
+      "label": "Jahrgang 9",
+      "order": 9,
       "parentUnitId": "de-gym-math-sek1"
     }
   ],
@@ -588,7 +605,7 @@ The migration should be additive and reversible.
 Before changing structure, make one modeling rule explicit:
 
 - year, semester, module, and phase nodes are treated as structural compatibility nodes
-- new fachliche modeling should prefer fachliche clusters and goals
+- new content modeling should prefer content clusters and goals
 
 This phase is conceptual, not technical.
 
@@ -634,7 +651,7 @@ This is the key compatibility step.
 
 Once runtime projection exists:
 
-- new fachliche goals should no longer be forced under year or semester parents
+- new content goals should no longer be forced under year or semester parents
 - new year/semester/module structure should be expressed in `programUnits`
 - process families like `K1-K6` should be expressed in `competencyCatalog`
 
@@ -644,7 +661,7 @@ This stops the semantic debt from growing.
 
 For canonical mathematics:
 
-- keep fachliche corridors as real goal clusters
+- keep content corridors as real goal clusters
 - gradually stop treating `J5-J10`, `E`, `Q1-Q4` as the primary semantic containers
 - move their long-term role into placements and projected views
 
@@ -679,7 +696,7 @@ For learner-facing scoping:
 
 - model initial narrowing as runtime scope and placement context
 - do not encode school form, stage, jurisdiction, duration model, or course profile by duplicating goals
-- let users enter through structural views such as `Sek I`, `Q2`, or `Jahrgang 8`, then transition into fachliche navigation
+- let users enter through structural views such as `Sek I`, `Q2`, or `Jahrgang 8`, then transition into content navigation
 
 ## What this means for the canonical Gymnasium math rollout
 
@@ -690,12 +707,12 @@ Short term:
 
 Medium term:
 
-- new canonical math work should increasingly favor fachliche corridors plus placements
+- new canonical math work should increasingly favor content corridors plus placements
 - not ever larger year-centered canonical trees
 
 Long term:
 
-- the canonical math graph becomes fachlich centered
+- the canonical math graph becomes content-centered
 - year and phase trees become projected learner-facing views
 - the same mechanism can later support university programs without changing the underlying conceptual system
 

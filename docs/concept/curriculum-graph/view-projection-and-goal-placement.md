@@ -23,7 +23,7 @@ These related documents explain the layered model, the transition strategy, and 
 The projection model should satisfy five requirements:
 
 1. It must be understandable from the data alone.
-2. It must keep fachliche structure separate from program structure.
+2. It must keep content structure separate from program structure.
 3. It must support multiple placements of the same goal without duplicating goal identity.
 4. It must be deterministic across implementations.
 5. It must avoid hidden reparenting heuristics.
@@ -42,14 +42,14 @@ SkillPilot should distinguish three different view families.
 
 Question answered:
 
-- "What belongs to what fachlich?"
+- "What belongs under what in content terms?"
 
 Source of truth:
 
 - goals
 - `contains`
 
-This is the learner-facing fachliche hierarchy.
+This is the learner-facing content hierarchy.
 
 ### 2. Program tree
 
@@ -75,7 +75,7 @@ Source of truth:
 - `competencyCatalog`
 - `competencyRefs`
 
-This is an orthogonal taxonomy view, not the main fachliche parent tree.
+This is an orthogonal taxonomy view, not the main content parent tree.
 
 ## What `goalPlacement` is for
 
@@ -104,7 +104,7 @@ Conceptually, `goalPlacement` answers:
 - a repair mechanism for an unclear content tree
 - a reason to infer parentage from titles such as `E-Phase ...` or `Q1 ...`
 
-If a reader should understand from the JSON that goal `A` is fachlich under cluster `B`, then `B.contains` must explicitly contain `A`.
+If a reader should understand from the JSON that goal `A` belongs under content cluster `B`, then `B.contains` must explicitly contain `A`.
 
 ## Non-negotiable projection rules
 
@@ -152,6 +152,11 @@ The default content tree is the simplest and most important tree.
 - nodes are goals
 - content edges are exactly the explicit `contains` edges between goals
 - roots are goals that are intentionally designated as content roots or have no content parent in the selected landscape
+
+A landscape that claims a default content tree MUST either:
+
+- satisfy at most one direct content parent per goal in the resolved scope
+- or document an explicit multi-parent rendering strategy
 
 ### Ordering
 
@@ -213,6 +218,12 @@ In the default program tree:
 - `secondary` and `assessed` placements are shown as secondary references, badges, or optional overlays
 - they do not silently create additional default parent edges
 
+Resolution rules:
+
+- exactly one matching `primary` placement => attach there
+- zero matching `primary` placements => do not invent a parent; hide the goal from the default program tree or surface an `unplacedInScope` diagnostic
+- more than one matching `primary` placement => invalid default projection unless a documented tie-break or reviewed cross-jurisdiction placement profile resolves it
+
 This keeps the primary tree readable and prevents uncontrolled duplication.
 
 ### Matching context
@@ -228,6 +239,8 @@ Placement matching may depend on reviewed context fields such as:
 Context narrows whether a placement is active.
 
 Context does not change the identity of the goal.
+
+`ALL` may be used only as a query sentinel while resolving a scope. It must not be serialized inside a placement entry.
 
 ### Ordering of placed goals
 
@@ -348,12 +361,12 @@ It must not arise because runtime code matched the word `E` in one place and the
 
 To keep the model understandable, authors should follow these rules.
 
-### Rule A: Use `contains` only for fachliche composition
+### Rule A: Use `contains` only for content composition
 
 Use `contains` when the parent is a real content bundle such as:
 
 - topic cluster
-- fachliche corridor
+- content corridor
 - exercise cluster
 - motivation cluster
 
@@ -421,4 +434,4 @@ And therefore:
 
 - `goalPlacement` is useful
 - but only when it stays explicit and view-specific
-- not when it silently rewrites the fachliche tree
+- not when it silently rewrites the content tree

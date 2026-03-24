@@ -116,16 +116,22 @@ Examples:
 
 These cross-subject edges should be added sparingly and only where they improve learner navigation in a concrete way.
 
+Until a reviewed cross-landscape reference contract exists, authored `requires` edges in base subject landscapes MUST remain intra-landscape.
+
+Cross-subject prerequisites MAY be introduced only in compiled multi-subject views or via a separate bundle-level reference format.
+
 ### 7. Prefer one DE-level school root in learner-facing configuration
 
 The learner-facing school UX should converge towards one DE-level root such as `Gymnasium (DE)` instead of exposing every subject as an independent top-level curriculum forever.
+
+`Gymnasium (DE)` is a learner-facing curriculum bundle / composition root, not a `LearningGoal` and not a `programUnit`.
 
 Preferred shape:
 
 - one shared DE-level root
 - subject landscapes such as Mathematik, Naturwissenschaften, Sprachen, Geschichte, Deutsch, and social-science subjects as child landscapes under that root
 - subject-local filters such as `GK` / `LK` on the child landscapes
-- one global root filter such as `DE-HE` / `DE-BY` / `ALL`
+- one global root filter such as `DE-HE` / `DE-BY`, with `ALL` as the query sentinel for "no jurisdiction narrowing"
 
 Runtime policy:
 
@@ -133,6 +139,18 @@ Runtime policy:
 - bridge behavior may derive state-specific visibility from mappings and provenance
 - target runtime behavior should use compiled node-level `applicability` metadata derived and validated ahead of time
 - propagate the selected root Bundesland filter runtime-side into the selected child landscapes
+
+### 7.1 Gymnasium scope registry
+
+For canonical Gymnasium, the initial reviewed scope vocabulary should be:
+
+- `jurisdiction`: values such as `DE-HE`, `DE-BY`, ...
+- `schoolForm`: `Gymnasium`
+- `stage`: `SekI`, `SekII`
+- `durationModel`: `G8`, `G9`
+- `courseProfile`: `GK`, `LK`
+
+`ALL` is a query sentinel only. It MUST NOT be serialized as a placement or applicability value.
 
 ### 8. Normalize Sek I to a G9 year-level grid first
 
@@ -172,6 +190,10 @@ This means:
 ## Minimal Data Additions
 
 The rollout should start with only two additions.
+
+This restriction applies to the first Gymnasium convergence step only.
+
+The broader additive target model from `general-goal-system-and-migration.md` remains valid, but may be introduced later once projection and runtime support are ready.
 
 ### Canonical landscapes
 
