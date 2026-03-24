@@ -5,7 +5,6 @@ import {
   asString,
   buildCanonicalGraphIndex,
   normalizeCanonicalLandscape,
-  resolveCanonicalNodeType,
   type CanonicalAuthoringLandscape,
 } from './canonicalAuthoring'
 
@@ -218,11 +217,6 @@ export const compileCompositionView = (
     const referencedGoal = index.goalById.get(node.goalId)
     if (!referencedGoal) {
       findings.push({ code: 'CPV-002', severity: 'error', nodePath: pathKey, goalId: node.goalId, message: `Fehlender kanonischer Root: ${node.goalId}` })
-      return
-    }
-
-    if (resolveCanonicalNodeType(referencedGoal) !== 'cluster') {
-      findings.push({ code: 'CPV-003', severity: 'error', nodePath: pathKey, goalId: node.goalId, message: 'Referenzierter Root ist kein Cluster.' })
       return
     }
 

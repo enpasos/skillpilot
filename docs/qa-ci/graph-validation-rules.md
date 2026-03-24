@@ -143,7 +143,6 @@ Current stable finding families:
 | `CPV-000` | The composition-view file could not be loaded or parsed. | `error` |
 | `CPV-001` | Required composition-view metadata or node metadata is invalid or missing. | `error` |
 | `CPV-002` | A referenced canonical subtree root does not exist in the referenced canonical graph. | `error` |
-| `CPV-003` | A referenced canonical subtree root is atomic instead of cluster-shaped. | `error` |
 | `CPV-004` | Two referenced canonical subtree roots overlap or the same canonical root is referenced more than once. | `error` |
 | `CPV-005` | The compiled default tree contains the same canonical goal more than once. | `error` |
 | `CPV-006` | The compiled default tree gives one canonical goal more than one visible parent. | `error` |
