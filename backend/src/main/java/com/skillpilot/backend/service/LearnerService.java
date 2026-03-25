@@ -1486,7 +1486,7 @@ public class LearnerService {
             List<String> filters) {
         Learner learner = getLearner(skillpilotId);
 
-        Map<String, Object> finalConfig = config != null ? new HashMap<>(config) : new HashMap<>();
+        Map<String, Object> finalConfig = normalizePersonalCurriculumPayload(config);
 
         java.util.Set<String> targetLandscapes = new java.util.HashSet<>();
         java.util.List<String> effectiveFilters = new java.util.ArrayList<>();
@@ -2143,14 +2143,60 @@ public class LearnerService {
             return new HashMap<>();
         }
         try {
-            Map<String, Map<String, Object>> parsed = objectMapper.readValue(
-                    personalCurriculumJson,
-                    new TypeReference<Map<String, Map<String, Object>>>() {
-                    });
-            return parsed != null ? new HashMap<>(parsed) : new HashMap<>();
+            Object parsed = objectMapper.readValue(personalCurriculumJson, Object.class);
+            return coercePersonalCurriculumConfig(parsed);
         } catch (Exception ignored) {
             return new HashMap<>();
         }
+    }
+
+    private Map<String, Object> normalizePersonalCurriculumPayload(Map<String, Object> config) {
+        if (config == null || config.isEmpty()) {
+            return new LinkedHashMap<>();
+        }
+
+        Object nestedConfig = config.get("personalCurriculum");
+        if (config.size() == 1 && nestedConfig instanceof Map<?, ?> nestedMap) {
+            Map<String, Object> normalized = new LinkedHashMap<>();
+            for (Map.Entry<?, ?> entry : nestedMap.entrySet()) {
+                if (entry.getKey() instanceof String key) {
+                    normalized.put(key, entry.getValue());
+                }
+            }
+            return normalized;
+        }
+
+        return new LinkedHashMap<>(config);
+    }
+
+    private Map<String, Map<String, Object>> coercePersonalCurriculumConfig(Object parsed) {
+        if (!(parsed instanceof Map<?, ?> rawConfig)) {
+            return new HashMap<>();
+        }
+
+        Object configCandidate = rawConfig;
+        if (rawConfig.size() == 1 && rawConfig.get("personalCurriculum") instanceof Map<?, ?> nestedConfig) {
+            configCandidate = nestedConfig;
+        }
+
+        if (!(configCandidate instanceof Map<?, ?> configMap)) {
+            return new HashMap<>();
+        }
+
+        Map<String, Map<String, Object>> normalized = new LinkedHashMap<>();
+        for (Map.Entry<?, ?> entry : configMap.entrySet()) {
+            if (!(entry.getKey() instanceof String key) || !(entry.getValue() instanceof Map<?, ?> valueMap)) {
+                continue;
+            }
+            Map<String, Object> normalizedEntry = new LinkedHashMap<>();
+            for (Map.Entry<?, ?> valueEntry : valueMap.entrySet()) {
+                if (valueEntry.getKey() instanceof String valueKey) {
+                    normalizedEntry.put(valueKey, valueEntry.getValue());
+                }
+            }
+            normalized.put(key, normalizedEntry);
+        }
+        return normalized;
     }
 
     private boolean readSelectedFlag(Map<String, Map<String, Object>> config, String landscapeId) {
@@ -2681,9 +2727,7 @@ public class LearnerService {
             try {
                 String json = learner.getPersonalCurriculum();
                 if (json != null && !json.isBlank()) {
-                    Map<String, Map<String, Object>> config = objectMapper.readValue(json,
-                            new com.fasterxml.jackson.core.type.TypeReference<>() {
-                            });
+                    Map<String, Map<String, Object>> config = parsePersonalCurriculumConfig(json);
 
                     for (Map<String, Object> landscapeConfig : config.values()) {
                         Object filterObj = landscapeConfig.get("filterId");
@@ -3416,20 +3460,7 @@ public class LearnerService {
             closure.add(root);
         }
 
-        Map<String, Map<String, Object>> config = new HashMap<>();
-        if (personalCurriculumJson != null && !personalCurriculumJson.isBlank()) {
-            try {
-                config = objectMapper.readValue(personalCurriculumJson,
-                        new com.fasterxml.jackson.core.type.TypeReference<>() {
-                        });
-                if (config == null) {
-                    config = new HashMap<>();
-                }
-            } catch (Exception e) {
-                // Ignore invalid config
-                config = new HashMap<>();
-            }
-        }
+        Map<String, Map<String, Object>> config = parsePersonalCurriculumConfig(personalCurriculumJson);
 
         String rootFilterId = null;
         if (!config.isEmpty()) {

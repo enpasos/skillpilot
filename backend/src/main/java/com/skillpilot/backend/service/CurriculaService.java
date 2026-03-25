@@ -1,6 +1,5 @@
 package com.skillpilot.backend.service;
 
-import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.skillpilot.backend.api.ChampionRegistrationRequest;
 import com.skillpilot.backend.api.ChampionRegistrationResponse;
@@ -499,8 +498,8 @@ public class CurriculaService {
             return null;
         }
         try {
-            Map<String, Map<String, Object>> config = objectMapper.readValue(personalCurriculumJson, new TypeReference<>() {
-            });
+            Object parsed = objectMapper.readValue(personalCurriculumJson, Object.class);
+            Map<String, Map<String, Object>> config = coercePersonalCurriculumConfig(parsed);
             if (config == null) {
                 return null;
             }
@@ -513,6 +512,36 @@ public class CurriculaService {
         } catch (Exception e) {
             return null;
         }
+    }
+
+    private Map<String, Map<String, Object>> coercePersonalCurriculumConfig(Object parsed) {
+        if (!(parsed instanceof Map<?, ?> rawConfig)) {
+            return null;
+        }
+
+        Object configCandidate = rawConfig;
+        if (rawConfig.size() == 1 && rawConfig.get("personalCurriculum") instanceof Map<?, ?> nestedConfig) {
+            configCandidate = nestedConfig;
+        }
+
+        if (!(configCandidate instanceof Map<?, ?> configMap)) {
+            return null;
+        }
+
+        Map<String, Map<String, Object>> normalized = new HashMap<>();
+        for (Map.Entry<?, ?> entry : configMap.entrySet()) {
+            if (!(entry.getKey() instanceof String key) || !(entry.getValue() instanceof Map<?, ?> valueMap)) {
+                continue;
+            }
+            Map<String, Object> normalizedEntry = new HashMap<>();
+            for (Map.Entry<?, ?> valueEntry : valueMap.entrySet()) {
+                if (valueEntry.getKey() instanceof String valueKey) {
+                    normalizedEntry.put(valueKey, valueEntry.getValue());
+                }
+            }
+            normalized.put(key, normalizedEntry);
+        }
+        return normalized;
     }
 
     private Set<String> resolveHessenEquivalentCanonicalAtomicIds(String topicId, Set<String> filteredAtomicIds) {

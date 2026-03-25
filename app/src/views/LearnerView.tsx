@@ -174,6 +174,14 @@ const normalizePersonalConfig = (
   availableLandscapes: { landscapeId: string; filters?: { id: string; label: string }[]; compatibilityOnly?: boolean }[],
   rootLandscapeId?: string,
 ): { config: PersonalCurriculumConfig; corrected: boolean } => {
+  const unwrapNestedConfig = (value: PersonalCurriculumConfig): { config: PersonalCurriculumConfig; corrected: boolean } => {
+    const nested = (value as Record<string, unknown>)?.personalCurriculum
+    if (!nested || typeof nested !== 'object' || Array.isArray(nested)) {
+      return { config: value, corrected: false }
+    }
+    return { config: nested as PersonalCurriculumConfig, corrected: true }
+  }
+
   const buildDefaultConfig = (): PersonalCurriculumConfig => {
     const next: PersonalCurriculumConfig = {}
     availableLandscapes.forEach((landscape) => {
@@ -195,16 +203,18 @@ const normalizePersonalConfig = (
     return { config: buildDefaultConfig(), corrected: true }
   }
 
+  const unwrapped = unwrapNestedConfig(input)
+
   const childLandscapeIds = availableLandscapes
     .map((l) => l.landscapeId)
     .filter((id) => id !== rootLandscapeId)
 
   if (childLandscapeIds.length === 0) {
-    return { config: input, corrected: false }
+    return { config: unwrapped.config, corrected: unwrapped.corrected }
   }
 
-  let corrected = false
-  let normalized: PersonalCurriculumConfig = { ...input }
+  let corrected = unwrapped.corrected
+  let normalized: PersonalCurriculumConfig = { ...unwrapped.config }
   const availableLandscapeIds = new Set(availableLandscapes.map((landscape) => landscape.landscapeId))
 
   if (rootLandscapeId === CANONICAL_GYMNASIUM_ROOT_ID) {
@@ -235,8 +245,8 @@ const normalizePersonalConfig = (
     })
   }
 
-  const hasChildEntries = childLandscapeIds.some((id) => input[id] !== undefined)
-  const hasSelectedChild = childLandscapeIds.some((id) => input[id]?.selected === true)
+  const hasChildEntries = childLandscapeIds.some((id) => normalized[id] !== undefined)
+  const hasSelectedChild = childLandscapeIds.some((id) => normalized[id]?.selected === true)
 
   // Recovery case: profile explicitly stores child settings, but all children are deselected.
   // This leads to an empty tree in learner cockpit and is almost always accidental.

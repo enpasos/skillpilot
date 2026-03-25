@@ -67,8 +67,16 @@ const parsePersonalCurriculum = (value?: string | null): PersonalCurriculumConfi
       return {}
     }
 
+    const rawConfig = (() => {
+      const nested = (parsed as Record<string, unknown>).personalCurriculum
+      if (nested && typeof nested === 'object' && !Array.isArray(nested)) {
+        return nested as Record<string, unknown>
+      }
+      return parsed as Record<string, unknown>
+    })()
+
     const config: PersonalCurriculumConfig = {}
-    Object.entries(parsed as Record<string, unknown>).forEach(([key, entry]) => {
+    Object.entries(rawConfig).forEach(([key, entry]) => {
       if (!entry || typeof entry !== 'object' || Array.isArray(entry)) return
       const record = entry as Record<string, unknown>
       config[key] = {
