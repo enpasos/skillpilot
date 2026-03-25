@@ -15,11 +15,22 @@ export const isCompetencyDimensionRoot = (goal: UiGoal) =>
 export const isSyntheticProgramUnit = (goal: UiGoal) =>
   (goal.tags ?? []).includes(SYNTHETIC_PROGRAM_UNIT_TAG)
 
+const isCompositionStructureNode = (goal: UiGoal) =>
+  isSyntheticProgramUnit(goal) && goal.extendedData?.syntheticStructureKind === 'compositionView'
+
 const normalizeTreeComparableText = (value: string | undefined) =>
   (value ?? '')
     .normalize('NFKC')
     .toLocaleLowerCase('de-DE')
     .replace(/\s+/g, ' ')
+    .trim()
+
+const normalizeRedundantStructureTitle = (value: string | undefined) =>
+  normalizeTreeComparableText(value)
+    .replace(/^q[1-4][.:]\s*/u, '')
+    .replace(/^e-phase:\s*/u, '')
+    .replace(/\s+\(sek(?:undarstufe)?\s*i{1,2}\)$/u, '')
+    .replace(/\s+\((gk|lk)\)$/u, '')
     .trim()
 
 export const detectExplicitPhaseContext = (goal: UiGoal): TreePhaseContext | undefined => {
@@ -383,11 +394,37 @@ export const getRenderedChildIds = (
   const sortedChildren = visibleChildrenByParent.get(goalId) ?? []
   const phaseContext = detectExplicitPhaseContext(goal) ?? inheritedPhaseContext
   const phaseContextCache = new Map<string, boolean>()
-  const childIds = audience !== 'learner' || !phaseContext
+  const phaseFilteredChildIds = audience !== 'learner' || !phaseContext
     ? sortedChildren
     : sortedChildren.filter((childId) =>
       isGoalRelevantInPhaseContext(childId, phaseContext, allGoals, phaseContextCache),
     )
+
+  const childIds = audience !== 'learner'
+    ? phaseFilteredChildIds
+    : phaseFilteredChildIds.flatMap((childId) => {
+      const child = allGoals.get(childId)
+      if (!child || !isCompositionStructureNode(goal)) {
+        return [childId]
+      }
+
+      const parentTitle = normalizeRedundantStructureTitle(goal.title)
+      const childTitle = normalizeRedundantStructureTitle(child.title)
+      if (!parentTitle || parentTitle !== childTitle) {
+        return [childId]
+      }
+
+      const grandChildIds = visibleChildrenByParent.get(childId) ?? []
+      if (grandChildIds.length === 0) {
+        return [childId]
+      }
+
+      return phaseContext
+        ? grandChildIds.filter((grandChildId) =>
+          isGoalRelevantInPhaseContext(grandChildId, phaseContext, allGoals, phaseContextCache),
+        )
+        : grandChildIds
+    })
 
   return { childIds, phaseContext }
 }
