@@ -31,6 +31,17 @@ const getContextualTreeTitle = (goal: UiGoal, parentGoal?: UiGoal): string => {
 }
 
 const JURISDICTION_FILTER_PATTERN = /^DE-[A-Z]{2}$/u
+const COURSE_PROFILE_SUFFIX_PATTERN = /\s+\((GK|LK|GK\+LK)\)$/u
+
+const isSek2ProgramUnitTitle = (title: string) => {
+  const normalizedTitle = title.trim()
+  return normalizedTitle === 'Sekundarstufe II'
+    || normalizedTitle.startsWith('Sekundarstufe II ')
+    || normalizedTitle.startsWith('Kursstufe')
+}
+
+const isSek2ProgramUnit = (goal?: UiGoal) =>
+  !!goal && isSyntheticProgramUnit(goal) && isSek2ProgramUnitTitle(goal.title)
 
 const formatJurisdictionRootTitle = (title: string, filterId?: string) => {
   if (!filterId || !JURISDICTION_FILTER_PATTERN.test(filterId)) return title
@@ -238,17 +249,17 @@ const TreeNode: React.FC<TreeNodeProps> = ({
       : activeFilter && JURISDICTION_FILTER_PATTERN.test(activeFilter)
         ? activeFilter
         : undefined
-  const hasSyntheticSek2Child = (goal.contains ?? []).some((childId) => {
-    const child = allGoals.get(childId)
-    return !!child && isSyntheticProgramUnit(child) && child.title === 'Sekundarstufe II'
-  })
+  const hasSyntheticSek2Child = (goal.contains ?? []).some((childId) => isSek2ProgramUnit(allGoals.get(childId)))
   const shouldMoveCourseProfileToSek2 =
     depth === 1
     && !!effectiveFilterLabel
     && isCourseProfileFilterId(personalFilterId ?? activeFilter)
     && hasSyntheticSek2Child
   const inheritedSek2FilterLabel =
-    goal.title === 'Sekundarstufe II' && isSyntheticStructureNode && isCourseProfileFilterId(parentLandscapeFilterId)
+    isSek2ProgramUnit(goal)
+      && isSyntheticStructureNode
+      && !COURSE_PROFILE_SUFFIX_PATTERN.test(goal.title)
+      && isCourseProfileFilterId(parentLandscapeFilterId)
       ? formatFilterLabel(parentLandscapeFilterId)
       : undefined
   const shouldShowFilterBadge = depth === 1 && !!effectiveFilterLabel && !shouldMoveCourseProfileToSek2
