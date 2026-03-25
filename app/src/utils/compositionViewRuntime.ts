@@ -287,6 +287,77 @@ const buildSyntheticGoalsForNodes = (
   return { syntheticGoals, childIds }
 }
 
+const applyAnchoredProjection = ({
+  entry,
+  view,
+  strippedGoals,
+  strippedGoalById,
+  anchorGoalId,
+  nodes,
+  referencedGoalIds,
+  ensureRootTag = false,
+  preserveExistingChildren = true,
+}: {
+  entry: LandscapeEntry
+  view: CompositionView
+  strippedGoals: UiGoal[]
+  strippedGoalById: Map<string, UiGoal>
+  anchorGoalId: string
+  nodes: CompositionViewNode[]
+  referencedGoalIds: Set<string>
+  ensureRootTag?: boolean
+  preserveExistingChildren?: boolean
+}) => {
+  const anchorGoal = strippedGoalById.get(anchorGoalId)
+  if (!anchorGoal) {
+    return null
+  }
+
+  const { syntheticGoals, childIds } = buildSyntheticGoalsForNodes(
+    entry,
+    view,
+    strippedGoalById,
+    nodes,
+  )
+  const preservedAnchorChildren = preserveExistingChildren
+    ? (anchorGoal.contains ?? []).filter((childId) => {
+      const child = strippedGoalById.get(childId)
+      if (!child) return false
+      if ((child.tags ?? []).includes(SYNTHETIC_PROGRAM_UNIT_TAG)) return false
+      if (referencedGoalIds.has(childId)) return false
+      const referencedSubtreeCache = new Map<string, boolean>()
+      if (subtreeReferencesAnyGoal(childId, strippedGoalById, referencedGoalIds, referencedSubtreeCache)) {
+        return false
+      }
+      return true
+    })
+    : []
+
+  const finalAnchorChildIds = [...preservedAnchorChildren, ...childIds]
+  anchorGoal.contains = finalAnchorChildIds
+  if (ensureRootTag && !(anchorGoal.tags ?? []).includes(ROOT_TAG)) {
+    anchorGoal.tags = [...(anchorGoal.tags ?? []), ROOT_TAG]
+  }
+
+  const treeOrderById = new Map(finalAnchorChildIds.map((childId, index) => [childId, index]))
+  const applyTreeOrder = (goal: UiGoal): UiGoal => {
+    const treeOrder = treeOrderById.get(goal.id)
+    if (treeOrder === undefined) return goal
+    return {
+      ...goal,
+      extendedData: {
+        ...(goal.extendedData ?? {}),
+        treeOrder,
+      },
+    }
+  }
+
+  return {
+    ...entry,
+    goals: [...syntheticGoals.map(applyTreeOrder), ...strippedGoals.map(applyTreeOrder)],
+  }
+}
+
 const subtreeReferencesAnyGoal = (
   goalId: string,
   goalById: Map<string, UiGoal>,
@@ -361,6 +432,31 @@ export const applyCompositionViewProjection = (
       }
     })
     const strippedGoalById = new Map(strippedGoals.map((goal) => [goal.id, goal]))
+    const authoredRootGoal = entry.goals.find((goal) =>
+      (goal.tags ?? []).includes(ROOT_TAG) && goal.contains.length > 0,
+    )
+
+    if (authoredRootGoal) {
+      const rootProjectionNodes = view.rootNodes.length === 1
+        && view.rootNodes[0]?.kind === 'structure'
+        && normalizeComparableToken(view.rootNodes[0].label) === normalizeComparableToken(authoredRootGoal.title)
+        ? view.rootNodes[0].children
+        : view.rootNodes
+      const anchoredRootEntry = applyAnchoredProjection({
+        entry,
+        view,
+        strippedGoals,
+        strippedGoalById,
+        anchorGoalId: authoredRootGoal.id,
+        nodes: rootProjectionNodes,
+        referencedGoalIds,
+        ensureRootTag: true,
+        preserveExistingChildren: false,
+      })
+      if (anchoredRootEntry) {
+        return anchoredRootEntry
+      }
+    }
 
     const stageLabel = normalizeStageLabel(view.scope.stage)
     const stageAnchorGoal = stageLabel
@@ -371,43 +467,17 @@ export const applyCompositionViewProjection = (
 
     if (stageAnchorGoal && view.rootNodes.length === 1 && view.rootNodes[0]?.kind === 'structure') {
       const rootStructure = view.rootNodes[0]
-      const { syntheticGoals, childIds } = buildSyntheticGoalsForNodes(
+      const anchoredStageEntry = applyAnchoredProjection({
         entry,
         view,
+        strippedGoals,
         strippedGoalById,
-        rootStructure.children,
-      )
-      const referencedSubtreeCache = new Map<string, boolean>()
-      const preservedStageChildren = (stageAnchorGoal.contains ?? []).filter((childId) => {
-        const child = strippedGoalById.get(childId)
-        if (!child) return false
-        if ((child.tags ?? []).includes(SYNTHETIC_PROGRAM_UNIT_TAG)) return false
-        if (referencedGoalIds.has(childId)) return false
-        if (subtreeReferencesAnyGoal(childId, strippedGoalById, referencedGoalIds, referencedSubtreeCache)) {
-          return false
-        }
-        return true
+        anchorGoalId: stageAnchorGoal.id,
+        nodes: rootStructure.children,
+        referencedGoalIds,
       })
-
-      const finalStageChildIds = [...preservedStageChildren, ...childIds]
-      stageAnchorGoal.contains = finalStageChildIds
-
-      const stageTreeOrderById = new Map(finalStageChildIds.map((childId, index) => [childId, index]))
-      const applyStageTreeOrder = (goal: UiGoal): UiGoal => {
-        const stageTreeOrder = stageTreeOrderById.get(goal.id)
-        if (stageTreeOrder === undefined) return goal
-        return {
-          ...goal,
-          extendedData: {
-            ...(goal.extendedData ?? {}),
-            treeOrder: stageTreeOrder,
-          },
-        }
-      }
-
-      return {
-        ...entry,
-        goals: [...syntheticGoals.map(applyStageTreeOrder), ...strippedGoals.map(applyStageTreeOrder)],
+      if (anchoredStageEntry) {
+        return anchoredStageEntry
       }
     }
 
