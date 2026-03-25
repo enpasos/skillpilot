@@ -177,7 +177,18 @@ const TreeNode: React.FC<TreeNodeProps> = ({
   const t = useTranslation()
   const goal = allGoals.get(goalId)
   const parentGoal = parentGoalId ? allGoals.get(parentGoalId) : undefined
-  const [isExpanded, setIsExpanded] = useState(depth < 1)
+  const learnerInitialExpandDepth = 5
+  const shouldInitiallyExpand =
+    audience === 'learner' && structureMode === 'content'
+      ? depth < learnerInitialExpandDepth
+      : depth < 1
+  const [isExpanded, setIsExpanded] = useState(shouldInitiallyExpand)
+
+  React.useEffect(() => {
+    if (shouldInitiallyExpand) {
+      setIsExpanded((current) => (current ? current : true))
+    }
+  }, [shouldInitiallyExpand])
 
   // Force expansion if this ID is in the forced set
   React.useEffect(() => {

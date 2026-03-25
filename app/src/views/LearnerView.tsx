@@ -459,6 +459,21 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     return supportedFilterIds.has(activeFilter) ? activeFilter : undefined
   }, [landscapeId, personalConfig, activeFilter, supportedFilterIds])
 
+  const learnerTreeScopeKey = useMemo(() => {
+    const selectedScopeEntries = Object.entries(personalConfig)
+      .filter(([, config]) => config.selected || config.filterId)
+      .sort(([left], [right]) => left.localeCompare(right))
+      .map(([scopeId, config]) => `${scopeId}:${config.selected ? '1' : '0'}:${config.filterId ?? ''}`)
+
+    return [
+      landscapeId,
+      effectiveActiveFilter ?? 'all',
+      learnerStructureMode,
+      ...visibleRootGoals.map((goal) => goal.id),
+      ...selectedScopeEntries,
+    ].join('|')
+  }, [effectiveActiveFilter, landscapeId, learnerStructureMode, personalConfig, visibleRootGoals])
+
   const getVisibleChildIds = useCallback((parentId: string) => {
     if (isPersonalConfigHydrating) return []
 
@@ -2437,6 +2452,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
             </div>
           ) : (
             <CompetenceTree
+              key={learnerTreeScopeKey}
               rootGoals={visibleRootGoals}
               allGoals={goalIndexAll}
               getMastery={getEffectiveMastery}
