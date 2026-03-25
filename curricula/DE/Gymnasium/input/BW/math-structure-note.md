@@ -171,5 +171,6 @@ Operational interpretation:
   - within the shared integral block, both Basisfach and Leistungsfach now also see the reviewed BW strip on limiting processes and areas between graphs from `3.5.2` / `3.4.2`
   - within the Leistungsfach-Vertiefung, BW now also surfaces `Mittelwerte und Rotationskoerper`
   - within the shared geometry block, BW now also reaches the retain-split application semantics for reflections, motions, and area/volume work from `3.5.3` / `3.4.3`
-- the active BW learner-facing Sek-I views now expose the retained corridor parents `Klassen 5/6: einfache funktionale Zusammenhänge` and `Klassen 7/8: funktionale Darstellungen und lineare Funktionen` as explicit structure labels above the year buckets
-- inside `Jahrgangsstufe 7`, the retained BW representation split is now also surfaced as the learner-facing structure label `Darstellungen und Darstellungswechsel`
+- the active BW learner-facing Sek-I views now expose the reviewed lower-secondary pilot corridor directly instead of surfacing upper-secondary prerequisite anchors as pseudo year buckets
+- inside that Sek-I view, `Klassen 5/6: einfache funktionale Zusammenhänge` now carries explicit `Jahrgangsstufe 5` and `Jahrgangsstufe 6` buckets for the reviewed Dreisatz-, Koordinatensystem-, and Zuordnungsanker
+- inside `Klassen 7/8: funktionale Darstellungen und lineare Funktionen`, `Jahrgangsstufe 7` now surfaces the retained BW representation split as the learner-facing structure label `Darstellungen und Darstellungswechsel`, while `Jahrgangsstufe 8` carries the reviewed linear-functions strip
