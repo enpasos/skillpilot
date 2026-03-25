@@ -227,9 +227,9 @@ class GoalMappingRepositoryFixtureTest {
         assertThat(file.getVersion()).isEqualTo(1);
         assertThat(file.getSourceLandscapeId()).isEqualTo(BADEN_WUERTTEMBERG_MATH_SEK1_LANDSCAPE_ID);
         assertThat(file.getTargetLandscapeId()).isEqualTo(CANONICAL_MATH_ID);
-        assertThat(file.getMappings()).hasSize(13);
+        assertThat(file.getMappings()).hasSize(18);
         assertThat(file.getMappings()).filteredOn(entry -> "exact".equals(entry.getMatchType())).hasSize(1);
-        assertThat(file.getMappings()).filteredOn(entry -> "partial".equals(entry.getMatchType())).hasSize(12);
+        assertThat(file.getMappings()).filteredOn(entry -> "partial".equals(entry.getMatchType())).hasSize(17);
         assertThat(file.getMappings())
                 .extracting(GoalMappingEntry::getLegacyGoalId, GoalMappingEntry::getCanonicalGoalId, GoalMappingEntry::getMatchType)
                 .contains(
@@ -240,7 +240,12 @@ class GoalMappingRepositoryFixtureTest {
                         Tuple.tuple("95bee2cc-cdb0-4611-8bc9-36f6263ea417", "a8c42ee9-2898-4247-819f-c235032ac78a", "partial"),
                         Tuple.tuple("eca22013-61e3-4fad-a771-fa4e224fe1d5", "af3d6bff-c5fb-4ec6-a9f0-c0be09fc9186", "partial"),
                         Tuple.tuple("72041e85-2d03-4a3c-862c-57ebc79e9dbb", "ae772695-d55e-4cc5-81bc-6605272759b4", "partial"),
-                        Tuple.tuple("9cb473f6-06f0-4fa3-9bf1-34445aa58551", "2d75fd3f-c68b-4a11-89ae-19a30fefc47a", "partial"));
+                        Tuple.tuple("9cb473f6-06f0-4fa3-9bf1-34445aa58551", "2d75fd3f-c68b-4a11-89ae-19a30fefc47a", "partial"),
+                        Tuple.tuple("286a5ac0-d9ed-4d64-8ddd-51fb2238e35d", "fd860da9-73ba-47cd-a1a8-452424915a80", "partial"),
+                        Tuple.tuple("ce637779-a106-49ab-b073-829796a45de0", "6596405a-9728-41df-9163-53670ec2a937", "partial"),
+                        Tuple.tuple("1540732d-b74e-4762-b474-692fd45f3247", "66077296-a8f8-4645-938b-7c3424cb2f14", "partial"),
+                        Tuple.tuple("9f559636-9383-4ffe-87e6-7dac403ba27e", "d8c9eb57-1614-4c1d-829a-618134def352", "partial"),
+                        Tuple.tuple("ac0cd912-4b08-4e94-83e5-92d6ce122c05", "42e19186-6769-41ac-a7bf-ab39bdb50661", "partial"));
     }
 
     @Test

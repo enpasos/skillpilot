@@ -8,8 +8,8 @@
   "frameworkId": "bw-bp2016-gym-math",
   "title": "Mathematik Sekundarstufe I (Baden-Wuerttemberg, Pilot-Quellsnapshot)",
   "titleEn": "Mathematics Secondary Level I (Baden-Wuerttemberg, Pilot Source Snapshot)",
-  "description": "Erster archivierter Baden-Wuerttemberg-Quellsnapshot fuer den Mathematik-Pilotkorridor der Sekundarstufe I. Der Snapshot umfasst den ersten gemeinsamen Funktionszug aus der Leitidee Funktionaler Zusammenhang in den Klassen 5/6 und 7/8 des Bildungsplans Gymnasium.",
-  "descriptionEn": "First archived Baden-Wuerttemberg source snapshot for the lower-secondary mathematics pilot corridor. The snapshot covers the first shared functions corridor from the functional-relations strand in grades 5/6 and 7/8 of the Gymnasium curriculum.",
+  "description": "Erster archivierter Baden-Wuerttemberg-Quellsnapshot fuer den Mathematik-Pilotkorridor der Sekundarstufe I. Der Snapshot umfasst den ersten gemeinsamen Funktionszug aus der Leitidee Funktionaler Zusammenhang in den Klassen 5/6 und 7/8 sowie den ersten algebraisch-funktionalen 9/10-Anschluss zu Potenzen, Exponentialfunktionen und Symmetrie des Bildungsplans Gymnasium.",
+  "descriptionEn": "First archived Baden-Wuerttemberg source snapshot for the lower-secondary mathematics pilot corridor. The snapshot covers the first shared functions corridor from the functional-relations strand in grades 5/6 and 7/8 as well as the first algebraic-functional grades-9/10 follow-on on powers, exponential functions, and symmetry from the Gymnasium curriculum.",
   "compatibilityOnly": true,
   "legacyHiddenByDefault": true,
   "goals": [
@@ -17,9 +17,9 @@
       "id": "1bec2c6e-b631-433f-b25d-7ea4db6ef68c",
       "title": "Mathematik Sekundarstufe I",
       "titleEn": "Mathematics Secondary Level I",
-      "description": "Pilot-Subset der baden-wuerttembergischen Mathematik-Kompetenzen der Sekundarstufe I mit Fokus auf dem ersten gemeinsamen Funktionskorridor.",
-      "descriptionEn": "Pilot subset of Baden-Wuerttemberg lower-secondary mathematics competencies with a focus on the first shared functions corridor.",
-      "weight": 12,
+      "description": "Pilot-Subset der baden-wuerttembergischen Mathematik-Kompetenzen der Sekundarstufe I mit Fokus auf dem ersten gemeinsamen Funktionskorridor und dem daran anschliessenden 9/10-Funktionszug.",
+      "descriptionEn": "Pilot subset of Baden-Wuerttemberg lower-secondary mathematics competencies with a focus on the first shared functions corridor and the attached grades-9/10 functions follow-on.",
+      "weight": 17,
       "tags": [
         "Sek1",
         "PilotSubset",
@@ -27,12 +27,13 @@
       ],
       "contains": [
         "572f46ab-e5a7-471d-955e-a07aa7ae6a72",
-        "fda87c17-1522-4764-b3ac-743c5331c03d"
+        "fda87c17-1522-4764-b3ac-743c5331c03d",
+        "ad1ed851-c2bf-4350-82de-d4664eade277"
       ],
       "requires": [
         "572f46ab-e5a7-471d-955e-a07aa7ae6a72"
       ],
-      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 1.1 sowie 3.1.4 und 3.2.4, S. 3-4, 22 und 28.",
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 1.1 sowie 3.1.4, 3.2.1, 3.3.1 und 3.3.4, S. 3-4, 22, 27, 31 und 35-36.",
       "dimensionTags": {
         "framework": "bw-bp2016-gym-math",
         "demandLevel": "AB1",
@@ -529,6 +530,300 @@
         "guidingIdeas": [],
         "phase": "JG7_8",
         "area": "Funktionaler Zusammenhang"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "ad1ed851-c2bf-4350-82de-d4664eade277",
+      "title": "Algebraischer und funktionaler 9/10-Anschluss",
+      "titleEn": "Algebraic and Functional Grades-9/10 Follow-on",
+      "description": "Follow-on-Cluster fuer den anschliessenden Baden-Wuerttemberg-Korridor von Variablentermen ueber Potenzen und Symmetrien bis zu exponentiellem Wachstum in den Klassen 9/10.",
+      "descriptionEn": "Follow-on cluster for the subsequent Baden-Wuerttemberg corridor from variable expressions through powers and symmetries to exponential growth in grades 9/10.",
+      "weight": 5,
+      "tags": [
+        "Sek1",
+        "PilotSubset",
+        "Algebra",
+        "Funktionen",
+        "JG9_10"
+      ],
+      "contains": [
+        "6c3ec1db-059e-452c-9829-fb0ba6b968ec",
+        "609b2753-d996-4314-a77b-0c16acd3260d"
+      ],
+      "requires": [
+        "0f0ce9be-b4fb-4ff8-9c00-8fceec417444"
+      ],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.2.1, 3.3.1 und 3.3.4, S. 27, 31 und 35-36.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG7_10",
+        "area": "Zahl - Variable - Operation / Funktionaler Zusammenhang"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "6c3ec1db-059e-452c-9829-fb0ba6b968ec",
+      "title": "Jahrgangsstufe 7: Terme mit Variablen vorbereitend nutzen",
+      "titleEn": "Year 7: Preparatory Use of Expressions with Variables",
+      "description": "Vorbereitender algebraischer Anschluss fuer die spaeteren 9/10-Funktionszuege zu Variablen, Termen und aequivalenten Umformungen.",
+      "descriptionEn": "Preparatory algebraic bridge for the later grades-9/10 function corridors on variables, expressions, and equivalent transformations.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "JG7",
+        "Algebra",
+        "Variablen"
+      ],
+      "contains": [
+        "286a5ac0-d9ed-4d64-8ddd-51fb2238e35d"
+      ],
+      "requires": [],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.2.1 Leitidee Zahl - Variable - Operation (5)-(8), S. 27.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG7",
+        "area": "Zahl - Variable - Operation"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "609b2753-d996-4314-a77b-0c16acd3260d",
+      "title": "Klassen 9/10: Potenzen, Exponentialfunktionen und Funktionsuntersuchungen",
+      "titleEn": "Grades 9/10: Powers, Exponential Functions, and Function Investigations",
+      "description": "Erster 9/10-Follow-on aus Baden-Wuerttemberg zu Potenzgesetzen, Potenz- und Wurzelfunktionen, Symmetrien sowie exponentiellem Wachstum und Logarithmen.",
+      "descriptionEn": "First grades-9/10 follow-on from Baden-Wuerttemberg on exponent rules, power and root functions, symmetries, and exponential growth with logarithms.",
+      "weight": 4,
+      "tags": [
+        "Sek1",
+        "JG9_10",
+        "Algebra",
+        "Funktionen"
+      ],
+      "contains": [
+        "5f5499eb-d53b-4348-b0c1-0ccca4642207",
+        "d437c65f-902a-4138-9b3c-b7e3d66d8c70"
+      ],
+      "requires": [
+        "6c3ec1db-059e-452c-9829-fb0ba6b968ec",
+        "0f0ce9be-b4fb-4ff8-9c00-8fceec417444"
+      ],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.3.1 und 3.3.4, S. 31 und 35-36.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG9_10",
+        "area": "Zahl - Variable - Operation / Funktionaler Zusammenhang"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "5f5499eb-d53b-4348-b0c1-0ccca4642207",
+      "title": "Jahrgangsstufe 9: Potenzen und charakteristische Funktionseigenschaften",
+      "titleEn": "Year 9: Powers and Characteristic Function Properties",
+      "description": "Klasse-9-Teil des Baden-Wuerttemberg-Follow-ons zu Potenzgesetzen, Potenz- und Wurzelfunktionen sowie Symmetriebetrachtungen an Funktionsgraphen.",
+      "descriptionEn": "Year-9 part of the Baden-Wuerttemberg follow-on on exponent rules, power and root functions, and symmetry investigations of function graphs.",
+      "weight": 3,
+      "tags": [
+        "Sek1",
+        "JG9",
+        "Algebra",
+        "Funktionen"
+      ],
+      "contains": [
+        "ce637779-a106-49ab-b073-829796a45de0",
+        "1540732d-b74e-4762-b474-692fd45f3247",
+        "9f559636-9383-4ffe-87e6-7dac403ba27e"
+      ],
+      "requires": [
+        "286a5ac0-d9ed-4d64-8ddd-51fb2238e35d"
+      ],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.3.1 Leitidee Zahl - Variable - Operation (3) sowie 3.3.4 Leitidee Funktionaler Zusammenhang (1), (5), (10), S. 31 und 35.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG9",
+        "area": "Zahl - Variable - Operation / Funktionaler Zusammenhang"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "d437c65f-902a-4138-9b3c-b7e3d66d8c70",
+      "title": "Jahrgangsstufe 10: Exponentielles Wachstum und Logarithmen",
+      "titleEn": "Year 10: Exponential Growth and Logarithms",
+      "description": "Klasse-10-Teil des Baden-Wuerttemberg-Follow-ons zu Exponentialfunktionen, Wachstumsprozessen und dem Loesen einfacher Exponentialgleichungen mit Logarithmen.",
+      "descriptionEn": "Year-10 part of the Baden-Wuerttemberg follow-on on exponential functions, growth processes, and solving simple exponential equations with logarithms.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "JG10",
+        "Funktionen",
+        "Exponential"
+      ],
+      "contains": [
+        "ac0cd912-4b08-4e94-83e5-92d6ce122c05"
+      ],
+      "requires": [
+        "5f5499eb-d53b-4348-b0c1-0ccca4642207"
+      ],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.3.1 Leitidee Zahl - Variable - Operation (6), (7), (11) sowie 3.3.4 Leitidee Funktionaler Zusammenhang (3), (4), S. 31 und 35.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG10",
+        "area": "Zahl - Variable - Operation / Funktionaler Zusammenhang"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "286a5ac0-d9ed-4d64-8ddd-51fb2238e35d",
+      "title": "Situationen mit Variablen beschreiben und Terme aequivalent umformen",
+      "titleEn": "Describe Situations with Variables and Transform Expressions Equivalently",
+      "description": "Die Schuelerinnen und Schueler beschreiben Situationen mit Variablen und Termen, berechnen Termwerte durch Einsetzen und nutzen grundlegende Rechengesetze fuer aequivalente Umformungen.",
+      "descriptionEn": "Students describe situations using variables and expressions, calculate expression values by substitution, and use basic algebraic laws for equivalent transformations.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "JG7",
+        "Algebra",
+        "Variablen"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.2.1 Leitidee Zahl - Variable - Operation (5)-(8), S. 27.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG7",
+        "area": "Zahl - Variable - Operation"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "ce637779-a106-49ab-b073-829796a45de0",
+      "title": "Potenzgesetze begruenden und anwenden",
+      "titleEn": "Justify and Apply Exponent Rules",
+      "description": "Die Schuelerinnen und Schueler begruenden und nutzen Rechengesetze fuer das Multiplizieren, Dividieren und Potenzieren von Potenzen in einfachen algebraischen Situationen.",
+      "descriptionEn": "Students justify and use calculation rules for multiplying, dividing, and exponentiating powers in simple algebraic situations.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "JG9",
+        "Algebra",
+        "Potenzen"
+      ],
+      "contains": [],
+      "requires": [
+        "286a5ac0-d9ed-4d64-8ddd-51fb2238e35d"
+      ],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.3.1 Leitidee Zahl - Variable - Operation (3), S. 31.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG9",
+        "area": "Zahl - Variable - Operation"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "1540732d-b74e-4762-b474-692fd45f3247",
+      "title": "Potenz- und Wurzelfunktionen skizzieren und Parameterwirkungen beschreiben",
+      "titleEn": "Sketch Power and Root Functions and Describe Parameter Effects",
+      "description": "Die Schuelerinnen und Schueler skizzieren Graphen typischer Potenz- und Wurzelfunktionen, vergleichen charakteristische Eigenschaften und deuten Parameterwirkungen als Streckung, Spiegelung oder Verschiebung.",
+      "descriptionEn": "Students sketch graphs of typical power and root functions, compare characteristic properties, and interpret parameter effects as stretches, reflections, or translations.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "JG9",
+        "Funktionen",
+        "Potenz",
+        "Wurzel"
+      ],
+      "contains": [],
+      "requires": [
+        "ce637779-a106-49ab-b073-829796a45de0"
+      ],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.3.4 Leitidee Funktionaler Zusammenhang (1), (5), S. 35.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG9",
+        "area": "Funktionaler Zusammenhang"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "9f559636-9383-4ffe-87e6-7dac403ba27e",
+      "title": "Funktionsgraphen auf Symmetrie und Verhalten fuer grosse x-Werte untersuchen",
+      "titleEn": "Investigate Function Graphs for Symmetry and End Behaviour",
+      "description": "Die Schuelerinnen und Schueler untersuchen Funktionen auf Symmetrie zum Ursprung oder zur y-Achse und beschreiben das Verhalten von Funktionen fuer grosse positive oder negative x-Werte.",
+      "descriptionEn": "Students investigate functions for symmetry about the origin or the y-axis and describe the behaviour of functions for large positive or negative x values.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "JG9",
+        "Funktionen",
+        "Symmetrie"
+      ],
+      "contains": [],
+      "requires": [
+        "52b15961-33be-4ee9-97ec-1911dc982910"
+      ],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.3.4 Leitidee Funktionaler Zusammenhang (10), S. 35.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG9",
+        "area": "Funktionaler Zusammenhang"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "ac0cd912-4b08-4e94-83e5-92d6ce122c05",
+      "title": "Exponentialfunktionen nutzen, Wachstum deuten und einfache Exponentialgleichungen mit Logarithmen loesen",
+      "titleEn": "Use Exponential Functions, Interpret Growth, and Solve Simple Exponential Equations with Logarithms",
+      "description": "Die Schuelerinnen und Schueler skizzieren Exponentialfunktionen, beschreiben Wachstumsprozesse mit Verdopplungs- oder Halbwertszeiten und loesen einfache Exponentialgleichungen unter Verwendung des Logarithmus.",
+      "descriptionEn": "Students sketch exponential functions, describe growth processes using doubling or half-lives, and solve simple exponential equations using logarithms.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "JG10",
+        "Funktionen",
+        "Exponential",
+        "Logarithmus"
+      ],
+      "contains": [],
+      "requires": [
+        "1540732d-b74e-4762-b474-692fd45f3247"
+      ],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.3.1 Leitidee Zahl - Variable - Operation (6), (7), (11) sowie 3.3.4 Leitidee Funktionaler Zusammenhang (3), (4), S. 31 und 35.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG10",
+        "area": "Zahl - Variable - Operation / Funktionaler Zusammenhang"
       },
       "type": "atomic"
     }

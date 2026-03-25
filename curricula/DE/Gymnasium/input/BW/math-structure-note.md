@@ -24,6 +24,7 @@ Current import boundary:
   - the curriculum-wide orientation layer from `1.1 Bildungswert des Faches Mathematik`
   - `3.1.4 Leitidee Funktionaler Zusammenhang` in `Klassen 5/6`
   - `3.2.4 Leitidee Funktionaler Zusammenhang` in `Klassen 7/8`
+  - the first `3.2.1 / 3.3.1 / 3.3.4` follow-on around variable terms, powers, exponentials, and symmetry in `Klassen 9/10`
 - the imported Kursstufe / Sek-II slice currently covers:
   - the shared orientation layer from `1.4 Basisfach und Leistungsfach in der Oberstufe`
   - `3.5.1 Leitidee Zahl - Variable - Operation` in `Basisfach`
@@ -50,6 +51,12 @@ Operational interpretation:
   - the simple-relationship entry row `83041ef8-6480-435c-aeb6-a09cb4af5ec2 -> 2bb4bb91-7929-483a-b735-44275f6b5cdc`
   - the retained representation-output child is tightened onto the shared representation-choice leaf `5e889254-5088-4c9f-ac62-e94d95113644 -> 34047d7c-3a92-59fa-91b4-354211ff36e1`
   - the retained representation-switch child is tightened onto the shared representation-switch leaf `56842db6-253b-4fea-b50c-2940db2fd174 -> e41a9eb4-8d3f-5f45-b3f3-5a88072e6f4e`
+- the next BW Sek-I widening step now also opens the first real `Klassen 9/10` strip and the algebraic prerequisite it depends on:
+  - `286a5ac0-d9ed-4d64-8ddd-51fb2238e35d -> fd860da9-73ba-47cd-a1a8-452424915a80` for the J7 variable-term bridge needed by the late-Sek-I power/exponential corridor
+  - `ce637779-a106-49ab-b073-829796a45de0 -> 6596405a-9728-41df-9163-53670ec2a937` for the BW power-law row
+  - `1540732d-b74e-4762-b474-692fd45f3247 -> 66077296-a8f8-4645-938b-7c3424cb2f14` for the BW power/root-function and parameter-effects row
+  - `9f559636-9383-4ffe-87e6-7dac403ba27e -> d8c9eb57-1614-4c1d-829a-618134def352` for the BW symmetry / end-behaviour row
+  - `ac0cd912-4b08-4e94-83e5-92d6ce122c05 -> 42e19186-6769-41ac-a7bf-ab39bdb50661` for the BW exponential-growth / logarithm row in class 10
 - the first reviewed Baden-Wuerttemberg upper-secondary analysis mapping pass is now active on twelve rows:
   - the exact course-stage motivation anchor `f84004f9-0987-40f4-88dd-830c039b7bf6 -> 71cec9fb-3751-4d61-8b34-c5adbbf6e5f2`
   - the retained-split Basisfach e-function-properties bridge `e0769810-ba73-4a52-8e9c-660d1fb9d6e6 -> 4047af71-de53-5dc3-80c6-a7c78fb4bfe4`

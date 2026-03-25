@@ -2,13 +2,13 @@
 
 This lane is reserved for future Baden-Wuerttemberg lower-secondary Gymnasium mappings into the shared DE-level canonical landscapes.
 
-Current status on `2026-03-21`:
+Current status on `2026-03-25`:
 
 - repository-backed mapping fixture now exists:
   `bw_math_lower_secondary_to_canonical_math.json`
 - reserved `sourceLandscapeId`:
   `6232b783-199c-4c50-92f2-9fb31277e619`
-- current mapping count: `13`
+- current mapping count: `18`
 - the first archived Baden-Wuerttemberg lower-secondary source snapshot is now active in the shared provenance registries:
   `curricula/DE/Gymnasium/input/BW/lower-secondary/source-json/DE_BAW_S_GYM_1_MATHEMATIK.de.json.snapshot`
 - the first reviewed Baden-Wuerttemberg lower-secondary mapping cut is now active:
@@ -25,10 +25,16 @@ Current status on `2026-03-21`:
   - coordinate-system entry -> shared `Punkte, Strecken, Geraden und Kreise im Koordinatensystem darstellen` leaf (`partial`)
 - the remaining lower-secondary atomic entry row is now also closed:
   - simple relations between numbers and quantities -> shared `Zuordnungen analysieren` leaf (`partial`)
+- the next reviewed BW Sek-I widening step is now also active:
+  - `Jahrgangsstufe 7: Terme mit Variablen vorbereitend nutzen` -> shared `Terme mit Variablen aufstellen und umformen` leaf (`partial`)
+  - `Jahrgangsstufe 9: Potenzgesetze begruenden und anwenden` -> shared `Potenzgesetze mit ganzzahligen Exponenten anwenden` leaf (`partial`)
+  - `Jahrgangsstufe 9: Potenz- und Wurzelfunktionen ...` -> shared `Potenz- und Wurzelfunktionen graphisch untersuchen` leaf (`partial`)
+  - `Jahrgangsstufe 9: Symmetrie ...` -> shared `Symmetrie von Funktionsgraphen nachweisen` leaf (`partial`)
+  - `Jahrgangsstufe 10: Exponentialfunktionen ...` -> shared `Exponentielles Wachstum modellieren und Logarithmen nutzen` leaf (`partial`)
 
 Expected first use:
 
 - canonical Gymnasium `Mathematik`
 - shared `J5-J10` anchor alignment
-- the retained BW Sek-I corridor parents are now also surfaced as learner-facing structure labels in the active composition views
-- next clean follow-on cut is therefore no longer another Sek-I structure pass on the active BW slice, but the next widening step beyond the current lower-secondary pilot corridor or the next Kursstufe follow-on
+- the retained BW Sek-I corridor parents are now also surfaced as learner-facing structure labels in the active composition views, including the first explicit `Jahrgangsstufe 9` and `Jahrgangsstufe 10` follow-on
+- next clean follow-on cut is the remaining BW `Klassen 9/10` function strip around ganzrationale Funktionen and the first differential-entry rows, or a further lower-secondary widening step beyond the active pilot slice
