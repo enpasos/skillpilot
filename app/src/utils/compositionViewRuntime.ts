@@ -229,6 +229,10 @@ const buildSyntheticGoals = (
       .map((child, childIndex) => materializeNode(child, childIndex, false))
       .filter((childId): childId is string => typeof childId === 'string')
 
+    if (childIds.length === 0) {
+      return null
+    }
+
     const syntheticGoal = createSyntheticStructureGoal({
       entry,
       view,
@@ -267,6 +271,10 @@ const buildSyntheticGoalsForNodes = (
     const childIds = node.children
       .map((child, childIndex) => materializeNode(child, childIndex))
       .filter((childId): childId is string => typeof childId === 'string')
+
+    if (childIds.length === 0) {
+      return null
+    }
 
     const syntheticGoal = createSyntheticStructureGoal({
       entry,
@@ -411,8 +419,8 @@ export const applyCompositionViewProjection = (
     collectCanonicalSubtreePresentation(view.rootNodes, presentationByGoalId)
 
     const goalById = new Map(entry.goals.map((goal) => [goal.id, goal]))
-    const hasAllReferencedGoals = Array.from(referencedGoalIds).every((goalId) => goalById.has(goalId))
-    if (!hasAllReferencedGoals) {
+    const presentReferencedGoalIds = Array.from(referencedGoalIds).filter((goalId) => goalById.has(goalId))
+    if (presentReferencedGoalIds.length === 0) {
       return entry
     }
 
