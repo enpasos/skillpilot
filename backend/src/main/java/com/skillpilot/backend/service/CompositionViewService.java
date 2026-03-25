@@ -22,6 +22,8 @@ public class CompositionViewService {
     private static final Path COMPOSITION_VIEW_ROOT = Path.of("DE", "Gymnasium", "composition-views");
     private static final TypeReference<Map<String, Object>> MAP_TYPE = new TypeReference<>() {
     };
+    private static final String STAGE_KEY = "stage";
+    private static final String STAGE_CROSS = "CROSSSTAGE";
 
     private final LandscapeProperties properties;
     private final ObjectMapper objectMapper;
@@ -51,17 +53,27 @@ public class CompositionViewService {
                     .filter(Objects::nonNull)
                     .filter(view -> normalizeValue(asString(view.get("landscapeId")))
                             .equals(normalizeValue(landscapeId)))
-                    .filter(view -> scopeMatches(normalizeScope(asMap(view.get("scope"))), normalizedRequestedScope))
+                    .map(view -> new ViewMatch(
+                            view,
+                            scoreScopeMatch(normalizeScope(asMap(view.get("scope"))), normalizedRequestedScope)))
+                    .filter(match -> match.score() != null)
                     .sorted(Comparator
-                            .<Map<String, Object>>comparingInt(view -> normalizeScope(asMap(view.get("scope"))).size())
+                            .<ViewMatch>comparingInt(match -> match.score().scopeSize())
                             .reversed()
-                            .thenComparing(view -> asString(view.get("viewId"))))
+                            .thenComparingInt(match -> match.score().stageFallbackCount())
+                            .thenComparing(match -> asString(match.view().get("viewId"))))
                     .findFirst()
-                    .map(view -> Collections.unmodifiableMap(new LinkedHashMap<>(view)))
+                    .map(match -> Collections.unmodifiableMap(new LinkedHashMap<>(match.view())))
                     .orElse(null);
         } catch (IOException e) {
             throw new IllegalStateException("Failed to load composition views from " + baseDir, e);
         }
+    }
+
+    private record MatchScore(int scopeSize, int stageFallbackCount) {
+    }
+
+    private record ViewMatch(Map<String, Object> view, MatchScore score) {
     }
 
     private Map<String, Object> readViewFile(Path path) {
@@ -106,21 +118,56 @@ public class CompositionViewService {
         return normalized;
     }
 
-    private static boolean scopeMatches(Map<String, String> viewScope, Map<String, String> requestedScope) {
+    private static MatchScore scoreScopeMatch(Map<String, String> viewScope, Map<String, String> requestedScope) {
         if (viewScope.isEmpty()) {
-            return requestedScope.isEmpty();
+            return requestedScope.isEmpty() ? new MatchScore(0, 0) : null;
         }
 
+        int stageFallbackCount = 0;
         for (Map.Entry<String, String> entry : viewScope.entrySet()) {
             String requestedValue = requestedScope.get(entry.getKey());
             if (!StringUtils.hasText(requestedValue)) {
-                return false;
+                return null;
             }
+
+            if (STAGE_KEY.equals(entry.getKey())) {
+                StageMatch stageMatch = matchStageScope(entry.getValue(), requestedValue);
+                if (stageMatch == StageMatch.NONE) {
+                    return null;
+                }
+                if (stageMatch == StageMatch.FALLBACK) {
+                    stageFallbackCount += 1;
+                }
+                continue;
+            }
+
             if (!normalizeValue(requestedValue).equals(normalizeValue(entry.getValue()))) {
-                return false;
+                return null;
             }
         }
 
-        return true;
+        return new MatchScore(viewScope.size(), stageFallbackCount);
+    }
+
+    private enum StageMatch {
+        EXACT,
+        FALLBACK,
+        NONE
+    }
+
+    private static StageMatch matchStageScope(String viewStage, String requestedStage) {
+        String normalizedViewStage = normalizeValue(viewStage);
+        String normalizedRequestedStage = normalizeValue(requestedStage);
+        if (!StringUtils.hasText(normalizedViewStage) || !StringUtils.hasText(normalizedRequestedStage)) {
+            return StageMatch.NONE;
+        }
+        if (normalizedViewStage.equals(normalizedRequestedStage)) {
+            return StageMatch.EXACT;
+        }
+        if (STAGE_CROSS.equals(normalizedRequestedStage)
+                && ("SEKI".equals(normalizedViewStage) || "SEKII".equals(normalizedViewStage))) {
+            return StageMatch.FALLBACK;
+        }
+        return StageMatch.NONE;
     }
 }

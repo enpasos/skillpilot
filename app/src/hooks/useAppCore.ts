@@ -195,6 +195,7 @@ export function useAppCore({ role, setLearnerMeta, skillpilotId }: AppCoreOption
     const signal = controller.signal
     const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
     const url = apiBase ? `${apiBase}/api/ui/learners/${skillpilotId}` : `/api/ui/learners/${skillpilotId}`
+    setLearnerPersonalCurriculum(null)
 
     fetch(url, { signal })
       .then(async (res) => {
@@ -213,7 +214,7 @@ export function useAppCore({ role, setLearnerMeta, skillpilotId }: AppCoreOption
       })
 
     return () => controller.abort()
-  }, [role, skillpilotId])
+  }, [learnerGraphRefreshToken, role, skillpilotId])
 
   const runtimeCompositionScopes = useMemo(() => {
     const scopes = new Map<string, ReturnType<typeof deriveRuntimeCompositionScope>>()

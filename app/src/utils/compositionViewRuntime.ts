@@ -24,11 +24,29 @@ const normalizeComparableToken = (value?: string) => value?.trim().toUpperCase()
 
 const isJurisdictionFilterId = (value?: string) => JURISDICTION_PATTERN.test(value?.trim() ?? '')
 
-const normalizeStageLabel = (stage?: string) => {
-  const normalized = normalizeComparableToken(stage)
-  if (normalized === 'SEKII') return 'Sekundarstufe II'
-  if (normalized === 'SEKI') return 'Sekundarstufe I'
-  return undefined
+const isStageAnchorGoal = (goal: UiGoal, stage?: string) => {
+  if (!(goal.tags ?? []).includes(SYNTHETIC_PROGRAM_UNIT_TAG)) {
+    return false
+  }
+
+  const normalizedStage = normalizeComparableToken(stage)
+  const normalizedTitle = normalizeComparableToken(goal.title)
+
+  if (normalizedStage === 'SEKI') {
+    return normalizedTitle === 'SEKUNDARSTUFE I'
+      || normalizedTitle.startsWith('SEKUNDARSTUFE I ')
+      || normalizedTitle.endsWith('(SEK I)')
+  }
+
+  if (normalizedStage === 'SEKII') {
+    return normalizedTitle === 'SEKUNDARSTUFE II'
+      || normalizedTitle.startsWith('SEKUNDARSTUFE II ')
+      || normalizedTitle.endsWith('(SEK II)')
+      || normalizedTitle === 'KURSSTUFE'
+      || normalizedTitle.startsWith('KURSSTUFE ')
+  }
+
+  return false
 }
 
 const stripRootTag = (goal: UiGoal): UiGoal => ({
@@ -424,15 +442,25 @@ export const applyCompositionViewProjection = (
       return entry
     }
 
+    const authoredRootGoal = entry.goals.find((goal) =>
+      (goal.tags ?? []).includes(ROOT_TAG) && goal.contains.length > 0,
+    )
+
     const strippedGoals = entry.goals.map((goal) => {
       const strippedGoal = stripRootTag(goal)
       const presentation = presentationByGoalId.get(strippedGoal.id)
-      if (!presentation) return strippedGoal
+      const withRootTag = authoredRootGoal?.id === strippedGoal.id && !(strippedGoal.tags ?? []).includes(ROOT_TAG)
+        ? {
+          ...strippedGoal,
+          tags: [...(strippedGoal.tags ?? []), ROOT_TAG],
+        }
+        : strippedGoal
+      if (!presentation) return withRootTag
       return {
-        ...strippedGoal,
-        title: presentation.displayLabel ?? strippedGoal.title,
+        ...withRootTag,
+        title: presentation.displayLabel ?? withRootTag.title,
         extendedData: {
-          ...(strippedGoal.extendedData ?? {}),
+          ...(withRootTag.extendedData ?? {}),
           ...(presentation.displayLabel ? { compositionDisplayLabel: presentation.displayLabel } : {}),
           ...(typeof presentation.treeOrder === 'number' ? { treeOrder: presentation.treeOrder } : {}),
           compositionViewId: view.viewId,
@@ -440,9 +468,24 @@ export const applyCompositionViewProjection = (
       }
     })
     const strippedGoalById = new Map(strippedGoals.map((goal) => [goal.id, goal]))
-    const authoredRootGoal = entry.goals.find((goal) =>
-      (goal.tags ?? []).includes(ROOT_TAG) && goal.contains.length > 0,
-    )
+
+    const stageAnchorGoal = strippedGoals.find((goal) => isStageAnchorGoal(goal, view.scope.stage))
+
+    if (stageAnchorGoal && view.rootNodes.length === 1 && view.rootNodes[0]?.kind === 'structure') {
+      const rootStructure = view.rootNodes[0]
+      const anchoredStageEntry = applyAnchoredProjection({
+        entry,
+        view,
+        strippedGoals,
+        strippedGoalById,
+        anchorGoalId: stageAnchorGoal.id,
+        nodes: rootStructure.children,
+        referencedGoalIds,
+      })
+      if (anchoredStageEntry) {
+        return anchoredStageEntry
+      }
+    }
 
     if (authoredRootGoal) {
       const rootProjectionNodes = view.rootNodes.length === 1
@@ -463,29 +506,6 @@ export const applyCompositionViewProjection = (
       })
       if (anchoredRootEntry) {
         return anchoredRootEntry
-      }
-    }
-
-    const stageLabel = normalizeStageLabel(view.scope.stage)
-    const stageAnchorGoal = stageLabel
-      ? strippedGoals.find((goal) =>
-        (goal.tags ?? []).includes(SYNTHETIC_PROGRAM_UNIT_TAG) && goal.title === stageLabel,
-      )
-      : undefined
-
-    if (stageAnchorGoal && view.rootNodes.length === 1 && view.rootNodes[0]?.kind === 'structure') {
-      const rootStructure = view.rootNodes[0]
-      const anchoredStageEntry = applyAnchoredProjection({
-        entry,
-        view,
-        strippedGoals,
-        strippedGoalById,
-        anchorGoalId: stageAnchorGoal.id,
-        nodes: rootStructure.children,
-        referencedGoalIds,
-      })
-      if (anchoredStageEntry) {
-        return anchoredStageEntry
       }
     }
 

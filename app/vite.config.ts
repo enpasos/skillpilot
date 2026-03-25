@@ -126,18 +126,56 @@ const normalizeCompositionScope = (rawScope: unknown): Record<string, string> =>
   return normalized
 }
 
-const compositionScopeMatches = (
-  viewScope: Record<string, string>,
-  requestedScope: Record<string, string>,
-): boolean => {
-  if (Object.keys(viewScope).length === 0) {
-    return Object.keys(requestedScope).length === 0
+const STAGE_SCOPE_KEY = 'stage'
+const CROSS_STAGE_SCOPE = 'CROSSSTAGE'
+
+const matchCompositionStageScope = (viewStage: string, requestedStage: string): 'exact' | 'fallback' | 'none' => {
+  const normalizedViewStage = normalizeScopeValue(viewStage).toUpperCase()
+  const normalizedRequestedStage = normalizeScopeValue(requestedStage).toUpperCase()
+
+  if (!normalizedViewStage || !normalizedRequestedStage) {
+    return 'none'
   }
 
-  return Object.entries(viewScope).every(([key, value]) => {
+  if (normalizedViewStage === normalizedRequestedStage) {
+    return 'exact'
+  }
+
+  if (
+    normalizedRequestedStage === CROSS_STAGE_SCOPE
+    && (normalizedViewStage === 'SEKI' || normalizedViewStage === 'SEKII')
+  ) {
+    return 'fallback'
+  }
+
+  return 'none'
+}
+
+const scoreCompositionScopeMatch = (
+  viewScope: Record<string, string>,
+  requestedScope: Record<string, string>,
+): { scopeSize: number; stageFallbackCount: number } | null => {
+  if (Object.keys(viewScope).length === 0) {
+    return Object.keys(requestedScope).length === 0 ? { scopeSize: 0, stageFallbackCount: 0 } : null
+  }
+
+  let stageFallbackCount = 0
+  for (const [key, value] of Object.entries(viewScope)) {
     const requestedValue = requestedScope[key]
-    return requestedValue && requestedValue.toUpperCase() === value.toUpperCase()
-  })
+    if (!requestedValue) return null
+    if (key === STAGE_SCOPE_KEY) {
+      const stageMatch = matchCompositionStageScope(value, requestedValue)
+      if (stageMatch === 'none') return null
+      if (stageMatch === 'fallback') stageFallbackCount += 1
+      continue
+    }
+    if (requestedValue.toUpperCase() !== value.toUpperCase()) return null
+  }
+
+  return {
+    scopeSize: Object.keys(viewScope).length,
+    stageFallbackCount,
+  }
 }
 
 const findMatchingCompositionView = async (
@@ -152,7 +190,12 @@ const findMatchingCompositionView = async (
     if (!message.includes('ENOENT')) throw error
   }
 
-  const matches: Array<{ view: Record<string, unknown>; scopeSize: number; viewId: string }> = []
+  const matches: Array<{
+    view: Record<string, unknown>
+    scopeSize: number
+    stageFallbackCount: number
+    viewId: string
+  }> = []
 
   for (const relativePath of files) {
     const absolutePath = path.resolve(REPO_ROOT, relativePath)
@@ -162,11 +205,13 @@ const findMatchingCompositionView = async (
     if (normalizeScopeValue(parsed.landscapeId).toUpperCase() !== normalizeScopeValue(landscapeId).toUpperCase()) continue
 
     const scope = normalizeCompositionScope(parsed.scope)
-    if (!compositionScopeMatches(scope, requestedScope)) continue
+    const score = scoreCompositionScopeMatch(scope, requestedScope)
+    if (!score) continue
 
     matches.push({
       view: parsed,
-      scopeSize: Object.keys(scope).length,
+      scopeSize: score.scopeSize,
+      stageFallbackCount: score.stageFallbackCount,
       viewId: normalizeScopeValue(parsed.viewId),
     })
   }
@@ -174,6 +219,9 @@ const findMatchingCompositionView = async (
   matches.sort((left, right) => {
     if (right.scopeSize !== left.scopeSize) {
       return right.scopeSize - left.scopeSize
+    }
+    if (left.stageFallbackCount !== right.stageFallbackCount) {
+      return left.stageFallbackCount - right.stageFallbackCount
     }
     return left.viewId.localeCompare(right.viewId)
   })
