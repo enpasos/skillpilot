@@ -239,8 +239,6 @@ export function useAppCore({ role, setLearnerMeta, skillpilotId }: AppCoreOption
 
     const controller = new AbortController()
     const signal = controller.signal
-    const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
-
     void Promise.all(
       Array.from(runtimeCompositionScopes.entries()).map(async ([landscapeId, scope]) => {
         if (!scope) return null
@@ -251,9 +249,9 @@ export function useAppCore({ role, setLearnerMeta, skillpilotId }: AppCoreOption
           stage: scope.stage ?? '',
           courseProfile: scope.courseProfile ?? '',
         })
-        const url = apiBase
-          ? `${apiBase}/api/ui/composition-views/match?${params.toString()}`
-          : `/api/ui/composition-views/match?${params.toString()}`
+        // Keep composition-view matching same-origin so local dev middleware and proxying
+        // can serve the current repo state instead of bypassing it via an absolute API base.
+        const url = `/api/ui/composition-views/match?${params.toString()}`
 
         const res = await fetch(url, { signal })
         if (res.status === 204) {

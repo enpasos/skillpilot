@@ -112,6 +112,75 @@ const isCompositionViewPayload = (value: unknown): boolean => {
   return typeof record.viewId === 'string' && typeof record.landscapeId === 'string' && Array.isArray(record.rootNodes)
 }
 
+const normalizeScopeValue = (value: unknown): string =>
+  typeof value === 'string' ? value.trim() : ''
+
+const normalizeCompositionScope = (rawScope: unknown): Record<string, string> => {
+  const record = asRecord(rawScope)
+  const normalized: Record<string, string> = {}
+  Object.entries(record).forEach(([key, value]) => {
+    const text = normalizeScopeValue(value)
+    if (!text) return
+    normalized[key] = text
+  })
+  return normalized
+}
+
+const compositionScopeMatches = (
+  viewScope: Record<string, string>,
+  requestedScope: Record<string, string>,
+): boolean => {
+  if (Object.keys(viewScope).length === 0) {
+    return Object.keys(requestedScope).length === 0
+  }
+
+  return Object.entries(viewScope).every(([key, value]) => {
+    const requestedValue = requestedScope[key]
+    return requestedValue && requestedValue.toUpperCase() === value.toUpperCase()
+  })
+}
+
+const findMatchingCompositionView = async (
+  landscapeId: string,
+  requestedScope: Record<string, string>,
+): Promise<Record<string, unknown> | null> => {
+  const files: string[] = []
+  try {
+    await collectCompositionViewFiles(COMPOSITION_VIEW_ROOT, files)
+  } catch (error) {
+    const message = error instanceof Error ? error.message : ''
+    if (!message.includes('ENOENT')) throw error
+  }
+
+  const matches: Array<{ view: Record<string, unknown>; scopeSize: number; viewId: string }> = []
+
+  for (const relativePath of files) {
+    const absolutePath = path.resolve(REPO_ROOT, relativePath)
+    const fileContent = await fs.readFile(absolutePath, 'utf8')
+    const parsed = JSON.parse(fileContent)
+    if (!isCompositionViewPayload(parsed)) continue
+    if (normalizeScopeValue(parsed.landscapeId).toUpperCase() !== normalizeScopeValue(landscapeId).toUpperCase()) continue
+
+    const scope = normalizeCompositionScope(parsed.scope)
+    if (!compositionScopeMatches(scope, requestedScope)) continue
+
+    matches.push({
+      view: parsed,
+      scopeSize: Object.keys(scope).length,
+      viewId: normalizeScopeValue(parsed.viewId),
+    })
+  }
+
+  matches.sort((left, right) => {
+    if (right.scopeSize !== left.scopeSize) {
+      return right.scopeSize - left.scopeSize
+    }
+    return left.viewId.localeCompare(right.viewId)
+  })
+
+  return matches[0]?.view ?? null
+}
+
 const collectLandscapeFiles = async (directory: string, result: string[]): Promise<void> => {
   const entries = await fs.readdir(directory, { withFileTypes: true })
 
@@ -244,6 +313,7 @@ const deckEditorDevPlugin = {
         && !requestUrl.pathname.startsWith('/__canonical-cluster-editor')
         && !requestUrl.pathname.startsWith('/__composition-view-editor')
         && !requestUrl.pathname.startsWith('/__authoring')
+        && requestUrl.pathname !== '/api/ui/composition-views/match'
       ) {
         next()
         return
@@ -412,6 +482,30 @@ const deckEditorDevPlugin = {
           sendJson(res, 200, {
             path: toPosixPath(path.relative(REPO_ROOT, absolutePath)),
           })
+          return
+        }
+
+        if (requestUrl.pathname === '/api/ui/composition-views/match') {
+          if (req.method !== 'GET') {
+            sendJson(res, 405, { error: 'Method not allowed' })
+            return
+          }
+
+          const landscapeId = requestUrl.searchParams.get('landscapeId') ?? ''
+          const requestedScope = normalizeCompositionScope({
+            schoolForm: requestUrl.searchParams.get('schoolForm'),
+            jurisdiction: requestUrl.searchParams.get('jurisdiction'),
+            stage: requestUrl.searchParams.get('stage'),
+            courseProfile: requestUrl.searchParams.get('courseProfile'),
+          })
+          const match = await findMatchingCompositionView(landscapeId, requestedScope)
+          if (!match) {
+            res.statusCode = 204
+            res.end()
+            return
+          }
+
+          sendJson(res, 200, match)
           return
         }
 
