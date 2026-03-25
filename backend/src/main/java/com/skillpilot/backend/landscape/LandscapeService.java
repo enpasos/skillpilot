@@ -555,8 +555,8 @@ public class LandscapeService {
                 merged.put(entry.getKey(), values == null ? Collections.emptyList() : new ArrayList<>(values));
             }
         }
-        if (hasDerivedJurisdictions && !merged.containsKey("jurisdiction")) {
-            LinkedHashSet<String> jurisdictions = new LinkedHashSet<>();
+        if (hasDerivedJurisdictions) {
+            LinkedHashSet<String> jurisdictions = new LinkedHashSet<>(merged.getOrDefault("jurisdiction", Collections.emptyList()));
             jurisdictions.addAll(derivedJurisdictions);
             merged.put("jurisdiction", new ArrayList<>(jurisdictions));
         }

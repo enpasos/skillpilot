@@ -34,6 +34,8 @@ class LandscapeServiceTest {
         private static final String CANONICAL_CHINESE_ID = "8fdb83f5-b42a-5b36-ab5d-64edd4b2ab80";
         private static final String CANONICAL_MUSIC_ID = "f620c251-c1e1-41c1-b4e1-b10950b43608";
         private static final String CANONICAL_ECONOMICS_ID = "605bdaf6-32d5-56fd-8d92-5a80c2fd2901";
+        private static final String CANONICAL_BW_RULE_OF_THREE_ID = "ca9093cd-9ccf-5fb4-9dd8-bf4f92af4e70";
+        private static final String CANONICAL_BW_COORDINATE_SYSTEM_ID = "25593605-5e13-55cc-9a05-8f3d737e15e9";
         private static final String HESSEN_UPPER_MATH_ID = "2796fc7b-ba9d-446f-8f26-711dd6d8a9a3";
         private static final String BAVARIA_GYMNASIUM_ROOT_ID = "12322e3f-f351-5d40-b4ea-4a13d7e15854";
         private static final String HESSEN_LOWER_OVERVIEW_ID = "f050ee48-6891-4f83-995f-0f8be5e31b7f";
@@ -667,6 +669,35 @@ class LandscapeServiceTest {
                 assertThat(landscape.getFilters())
                                 .extracting(LandscapeFilter::getId)
                                 .containsExactly("GK", "LK");
+        }
+
+        @Test
+        void localizedCanonicalMathUnionsExplicitAndDerivedApplicabilityForBwSekOneGoals() {
+                LandscapeProperties properties = new LandscapeProperties();
+                properties.setDirectory("../curricula");
+                ObjectMapper objectMapper = new ObjectMapper();
+                LandscapeService landscapeService = new LandscapeService(properties, objectMapper);
+
+                LearningLandscape canonicalMath = landscapeService.getClosure(CANONICAL_GYMNASIUM_ROOT_ID).stream()
+                                .filter(landscape -> CANONICAL_MATH_ID.equals(landscape.getLandscapeId()))
+                                .findFirst()
+                                .orElseThrow();
+
+                LearningGoal ruleOfThreeGoal = canonicalMath.getGoals().stream()
+                                .filter(goal -> CANONICAL_BW_RULE_OF_THREE_ID.equals(goal.getId()))
+                                .findFirst()
+                                .orElseThrow();
+                LearningGoal coordinateSystemGoal = canonicalMath.getGoals().stream()
+                                .filter(goal -> CANONICAL_BW_COORDINATE_SYSTEM_ID.equals(goal.getId()))
+                                .findFirst()
+                                .orElseThrow();
+
+                assertThat(ruleOfThreeGoal.getApplicability()).containsKey("jurisdiction");
+                assertThat(ruleOfThreeGoal.getApplicability().get("jurisdiction"))
+                                .contains("DE-BW", "DE-HE");
+                assertThat(coordinateSystemGoal.getApplicability()).containsKey("jurisdiction");
+                assertThat(coordinateSystemGoal.getApplicability().get("jurisdiction"))
+                                .contains("DE-BW", "DE-HE");
         }
 
         @Test
