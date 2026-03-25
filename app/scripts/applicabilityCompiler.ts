@@ -30,7 +30,7 @@ type FindingCode =
   | 'APV-202'
   | 'APV-203'
 
-type EvidenceKind = 'provenance' | 'mapping' | 'override' | 'child-union'
+type EvidenceKind = 'provenance' | 'mapping' | 'override' | 'child-union' | 'requires-closure'
 
 interface GoalMappingEntry {
   legacyGoalId?: string
@@ -694,12 +694,13 @@ export function buildApplicabilityCompilation(): ApplicabilityCompilationResult 
     const goalTypeById = new Map<string, 'atomic' | 'cluster'>()
     const childRefsByGoalId = new Map<string, GoalRef[]>()
 
-    const resolveCanonicalReference = (raw: string): GoalRef => {
-      const parsed = parseReference(raw, canonical.landscape.landscapeId)
-      if (parsed.landscapeId !== canonical.landscape.landscapeId) {
+    const resolveCanonicalReference = (raw: string, baseLandscapeId = canonical.landscape.landscapeId): GoalRef => {
+      const parsed = parseReference(raw, baseLandscapeId)
+      if (parsed.landscapeId !== baseLandscapeId) {
         return parsed
       }
-      if (canonical.goalById.has(parsed.goalId)) {
+      const baseLandscape = canonicalLandscapeById.get(baseLandscapeId)
+      if (baseLandscape?.goalById.has(parsed.goalId)) {
         return parsed
       }
       if (ambiguousCanonicalGoalIds.has(parsed.goalId)) {
@@ -718,6 +719,56 @@ export function buildApplicabilityCompilation(): ApplicabilityCompilationResult 
         .filter((ref) => canonicalLandscapeById.get(ref.landscapeId)?.goalById.has(ref.goalId) ?? false)
       childRefsByGoalId.set(goal.id, childRefs)
       goalTypeById.set(goal.id, isAtomicGoal(goal) ? 'atomic' : 'cluster')
+    }
+
+    const sortEvidence = (entries: ApplicabilityEvidence[]): ApplicabilityEvidence[] => entries.sort((a, b) => {
+      return a.value.localeCompare(b.value)
+        || a.kind.localeCompare(b.kind)
+        || a.source.localeCompare(b.source)
+    })
+
+    const getGoalChildRefs = (
+      sourceLandscape: LoadedCanonicalLandscape | undefined,
+      landscapeId: string,
+      goal: LearningGoal,
+    ): GoalRef[] => {
+      if (!sourceLandscape) return []
+      if (sourceLandscape.landscape.landscapeId === canonical.landscape.landscapeId) {
+        return childRefsByGoalId.get(goal.id) ?? []
+      }
+      return (goal.contains ?? [])
+        .map((ref) => resolveCanonicalReference(ref, landscapeId))
+        .filter((ref) => canonicalLandscapeById.get(ref.landscapeId)?.goalById.has(ref.goalId) ?? false)
+    }
+
+    const addJurisdictionApplicability = (
+      landscapeId: string,
+      goalId: string,
+      value: SupportedJurisdiction,
+      evidenceEntry: ApplicabilityEvidence,
+    ): boolean => {
+      const key = goalKey(landscapeId, goalId)
+      const current = compiledByGoalId.get(key) ?? {}
+      const jurisdictions = new Set(current[SUPPORTED_DIMENSION] ?? [])
+      const hadJurisdiction = jurisdictions.has(value)
+      if (!hadJurisdiction) {
+        jurisdictions.add(value)
+        compiledByGoalId.set(key, normalizeCompiledApplicability(jurisdictions))
+      }
+
+      const evidence = evidenceByGoalId.get(key) ?? []
+      const hasEvidence = evidence.some((entry) =>
+        entry.dimension === evidenceEntry.dimension
+        && entry.value === evidenceEntry.value
+        && entry.kind === evidenceEntry.kind
+        && entry.source === evidenceEntry.source,
+      )
+      if (!hasEvidence) {
+        evidence.push(evidenceEntry)
+        evidenceByGoalId.set(key, sortEvidence(evidence))
+      }
+
+      return !hadJurisdiction || !hasEvidence
     }
 
     const compileGoal = (landscapeId: string, goalId: string, visiting = new Set<string>()): ApplicabilityMap => {
@@ -742,20 +793,7 @@ export function buildApplicabilityCompilation(): ApplicabilityCompilationResult 
       if (!isAtomicGoal(goal)) {
         const jurisdictions = new Set<SupportedJurisdiction>()
         const evidence: ApplicabilityEvidence[] = []
-        const childRefs = sourceLandscape
-          ? (sourceLandscape.landscape.landscapeId === canonical.landscape.landscapeId
-            ? childRefsByGoalId.get(goal.id) ?? []
-            : (goal.contains ?? [])
-              .map((ref) => {
-                const parsed = parseReference(ref, landscapeId)
-                if (parsed.landscapeId !== landscapeId) return parsed
-                if (sourceLandscape.goalById.has(parsed.goalId)) return parsed
-                if (ambiguousCanonicalGoalIds.has(parsed.goalId)) return parsed
-                const targetLandscapeId = canonicalGoalToLandscapeId.get(parsed.goalId)
-                return targetLandscapeId ? { landscapeId: targetLandscapeId, goalId: parsed.goalId } : parsed
-              })
-              .filter((ref) => canonicalLandscapeById.get(ref.landscapeId)?.goalById.has(ref.goalId) ?? false))
-          : []
+        const childRefs = getGoalChildRefs(sourceLandscape, landscapeId, goal)
         for (const childRef of childRefs) {
           const childApplicability = compileGoal(childRef.landscapeId, childRef.goalId, visiting)
           for (const value of childApplicability[SUPPORTED_DIMENSION] ?? []) {
@@ -776,7 +814,7 @@ export function buildApplicabilityCompilation(): ApplicabilityCompilationResult 
 
         const compiled = normalizeCompiledApplicability(jurisdictions)
         compiledByGoalId.set(key, compiled)
-        evidenceByGoalId.set(key, evidence)
+        evidenceByGoalId.set(key, sortEvidence(evidence))
         visiting.delete(key)
         return compiled
       }
@@ -957,18 +995,103 @@ export function buildApplicabilityCompilation(): ApplicabilityCompilationResult 
       }
 
       compiledByGoalId.set(key, compiled)
-      evidenceByGoalId.set(key, evidence.sort((a, b) => {
-        return a.value.localeCompare(b.value)
-          || a.kind.localeCompare(b.kind)
-          || a.source.localeCompare(b.source)
-      }))
+      evidenceByGoalId.set(key, sortEvidence(evidence))
       visiting.delete(key)
       return compiled
+    }
+
+    const ensureRequiredGoalVisible = (
+      landscapeId: string,
+      goalId: string,
+      value: SupportedJurisdiction,
+      sourceGoalId: string,
+      visiting = new Set<string>(),
+    ): boolean => {
+      const key = goalKey(landscapeId, goalId)
+      if (visiting.has(key)) return false
+      visiting.add(key)
+
+      compileGoal(landscapeId, goalId)
+      const sourceLandscape = canonicalLandscapeById.get(landscapeId)
+      const goal = sourceLandscape?.goalById.get(goalId)
+      if (!goal) return false
+
+      let changed = addJurisdictionApplicability(landscapeId, goalId, value, {
+        dimension: SUPPORTED_DIMENSION,
+        value,
+        kind: 'requires-closure',
+        source: `required by ${sourceGoalId}`,
+      })
+
+      if (!isAtomicGoal(goal)) {
+        for (const childRef of getGoalChildRefs(sourceLandscape, landscapeId, goal)) {
+          changed = ensureRequiredGoalVisible(childRef.landscapeId, childRef.goalId, value, goalId, visiting) || changed
+        }
+      }
+
+      return changed
+    }
+
+    const propagateChildUnionApplicability = (): boolean => {
+      let changed = false
+      for (const goal of canonical.landscape.goals) {
+        if (isAtomicGoal(goal)) continue
+        const childRefs = childRefsByGoalId.get(goal.id) ?? []
+        const visibleChildrenCountByJurisdiction = new Map<SupportedJurisdiction, number>()
+
+        for (const childRef of childRefs) {
+          compileGoal(childRef.landscapeId, childRef.goalId)
+          const childApplicability = compiledByGoalId.get(goalKey(childRef.landscapeId, childRef.goalId))
+          for (const value of childApplicability?.[SUPPORTED_DIMENSION] ?? []) {
+            const jurisdiction = value as SupportedJurisdiction
+            visibleChildrenCountByJurisdiction.set(
+              jurisdiction,
+              (visibleChildrenCountByJurisdiction.get(jurisdiction) ?? 0) + 1,
+            )
+          }
+        }
+
+        for (const [value, visibleChildren] of visibleChildrenCountByJurisdiction.entries()) {
+          changed = addJurisdictionApplicability(canonical.landscape.landscapeId, goal.id, value, {
+            dimension: SUPPORTED_DIMENSION,
+            value,
+            kind: 'child-union',
+            source: `${visibleChildren} visible child goal(s)`,
+          }) || changed
+        }
+      }
+
+      return changed
     }
 
     canonical.landscape.goals.forEach((goal) => {
       compileGoal(canonical.landscape.landscapeId, goal.id)
     })
+
+    let applicabilityChanged = true
+    while (applicabilityChanged) {
+      applicabilityChanged = false
+
+      for (const goal of canonical.landscape.goals) {
+        const currentApplicability = compiledByGoalId.get(goalKey(canonical.landscape.landscapeId, goal.id))
+        const jurisdictions = currentApplicability?.[SUPPORTED_DIMENSION] ?? []
+        if (jurisdictions.length === 0) continue
+
+        for (const value of jurisdictions) {
+          for (const rawReq of goal.requires ?? []) {
+            const req = resolveCanonicalReference(rawReq, canonical.landscape.landscapeId)
+            applicabilityChanged = ensureRequiredGoalVisible(
+              req.landscapeId,
+              req.goalId,
+              value as SupportedJurisdiction,
+              goal.id,
+            ) || applicabilityChanged
+          }
+        }
+      }
+
+      applicabilityChanged = propagateChildUnionApplicability() || applicabilityChanged
+    }
 
     for (const value of SUPPORTED_JURISDICTIONS) {
       const visibleGoalIds = new Set(
