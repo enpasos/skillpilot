@@ -1,6 +1,6 @@
 # Canonical Gymnasium Mathematics Bundeslaender Status
 
-Snapshot: `2026-03-21`
+Snapshot: `2026-03-25`
 
 This file is generated from:
 
@@ -50,8 +50,8 @@ This file is generated from:
 | --- | --- | ---: | --- | ---: | --- | --- |
 | `DE-BY` Bayern | `P5` Broad state coverage | `85%` | `yes` | `267` | `archived_inputs` | `active` |
 | `DE-HE` Hessen | `P5` Broad state coverage | `85%` | `yes` | `484` | `snapshots_active` | `active` |
-| `DE-BW` Baden-Wuerttemberg | `P4` First corridor reviewed | `65%` | `yes` | `19` | `snapshots_active` | `active` |
-| `DE-NI` Niedersachsen | `P4` First corridor reviewed | `65%` | `yes` | `17` | `snapshots_active` | `active` |
+| `DE-BW` Baden-Wuerttemberg | `P4` First corridor reviewed | `65%` | `yes` | `77` | `snapshots_active` | `active` |
+| `DE-NI` Niedersachsen | `P4` First corridor reviewed | `65%` | `yes` | `149` | `snapshots_active` | `active` |
 | `DE-NW` Nordrhein-Westfalen | `P4` First corridor reviewed | `65%` | `yes` | `42` | `snapshots_active` | `active` |
 | `DE-BB` Brandenburg | `P4` First corridor reviewed | `65%` | `no` | `76` | `snapshots_active` | `next_wave` |
 | `DE-BE` Berlin | `P4` First corridor reviewed | `65%` | `no` | `64` | `snapshots_active` | `next_wave` |
@@ -69,8 +69,8 @@ This file is generated from:
 
 - `DE-BY` (`P5`, `active`): Use Bavaria as the second broad comparison lane and keep gap-closing work corridor-specific.
 - `DE-HE` (`P5`, `active`): Keep Hessen as the stable reference baseline while other states broaden.
-- `DE-BW` (`P4`, `active`): Close the remaining BW representation debt before broadening the next corridor.
-- `DE-NI` (`P4`, `active`): Retry the next Niedersachsen lower-secondary and derivative-entry follow-on corridors on the active base.
+- `DE-BW` (`P4`, `active`): Advance the next active Bundesland lane while the Baden-Wuerttemberg Kursstufe pilot snapshot now sits on a fully reviewed retain-split surface.
+- `DE-NI` (`P4`, `active`): Move the Niedersachsen widening to the next Sek-I geometry / algebra corridor unless a separate Berufliches-Gymnasium lane is opened intentionally, because the first shared general-Gymnasium upper-secondary pilot surface is now exhausted.
 - `DE-NW` (`P4`, `active`): Broaden from corridor coverage toward broad state coverage.
 - `DE-BB` (`P4`, `next_wave`): Widen the Brandenburg lower-secondary lane beyond the first functions corridor while the shared BE/BB overlap stays tight.
 - `DE-BE` (`P4`, `next_wave`): Widen the Berlin upper-secondary lane from the active Q4 distribution-and-binomial corridor toward the first Q4 inference, tests, and normal-approximation follow-on corridor.
@@ -79,8 +79,8 @@ This file is generated from:
 
 - `DE-BY`: Use Bavaria as the second broad comparison lane and keep gap-closing work corridor-specific.
 - `DE-HE`: Keep Hessen as the stable reference baseline while other states broaden.
-- `DE-BW`: Close the remaining BW representation debt before broadening the next corridor.
-- `DE-NI`: Retry the next Niedersachsen lower-secondary and derivative-entry follow-on corridors on the active base.
+- `DE-BW`: Advance the next active Bundesland lane while the Baden-Wuerttemberg Kursstufe pilot snapshot now sits on a fully reviewed retain-split surface.
+- `DE-NI`: Move the Niedersachsen widening to the next Sek-I geometry / algebra corridor unless a separate Berufliches-Gymnasium lane is opened intentionally, because the first shared general-Gymnasium upper-secondary pilot surface is now exhausted.
 - `DE-NW`: Broaden from corridor coverage toward broad state coverage.
 - `DE-BB`: Widen the Brandenburg lower-secondary lane beyond the first functions corridor while the shared BE/BB overlap stays tight.
 - `DE-BE`: Widen the Berlin upper-secondary lane from the active Q4 distribution-and-binomial corridor toward the first Q4 inference, tests, and normal-approximation follow-on corridor.

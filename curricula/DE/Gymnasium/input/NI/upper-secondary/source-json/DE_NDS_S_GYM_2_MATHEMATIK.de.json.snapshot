@@ -8,8 +8,8 @@
   "frameworkId": "ni-kc-gost-math",
   "title": "Mathematik Oberstufe (Niedersachsen, Pilot-Quellsnapshot)",
   "titleEn": "Mathematics Upper Secondary (Lower Saxony, Pilot Source Snapshot)",
-  "description": "Erster archivierter Niedersachsen-Quellsnapshot fuer den Oberstufen-Pilotkorridor Mathematik. Der Snapshot umfasst in der Einfuehrungsphase zunaechst nur die priorisierte Analysis-Oberflaeche aus elementarer Funktionenlehre und Ableitungen.",
-  "descriptionEn": "First archived Lower Saxony source snapshot for the upper-secondary mathematics pilot corridor. The snapshot initially covers only the prioritized analysis surface from the introductory phase learning areas on elementary functions and derivatives.",
+  "description": "Erster archivierter Niedersachsen-Quellsnapshot fuer den Oberstufen-Pilotkorridor Mathematik. Der Snapshot umfasst die priorisierte Oberflaeche der Einfuehrungsphase aus elementarer Funktionenlehre und Ableitungen sowie die ersten vollstaendig importierten gA-Lernbereiche der Qualifikationsphase zu Integralrechnung, e-Funktion, Raumanschauung/Koordinatisierung und Daten/Zufall plus die ersten fuenf vollstaendig importierten eA-Lernbereiche zu Integralrechnung, Wachstumsmodellen/Exponentialfunktion, Raumanschauung/Koordinatisierung, Kurvenanpassung/Funktionenscharen und Daten/Zufall.",
+  "descriptionEn": "First archived Lower Saxony source snapshot for the upper-secondary mathematics pilot corridor. The snapshot covers the prioritised introductory-phase surface from elementary functions and derivatives plus the first fully imported basic-level qualification-phase learning areas on integral calculus, the e function, spatial reasoning/coordinates, and data/chance, as well as the first five fully imported advanced-level learning areas on integral calculus, growth models / the exponential function, spatial reasoning / coordinate work, curve fitting / function families, and data / chance.",
   "compatibilityOnly": true,
   "legacyHiddenByDefault": true,
   "goals": [
@@ -17,29 +17,41 @@
       "id": "dc0170c6-bbe8-48e4-98da-1f609023d216",
       "title": "Mathematik Oberstufe",
       "titleEn": "Mathematics Upper Secondary",
-      "description": "Pilot-Subset der niedersaechsischen Mathematik-Kompetenzen der Oberstufe mit Fokus auf elementare Funktionenlehre und Ableitungen in der Einfuehrungsphase.",
-      "descriptionEn": "Pilot subset of Lower Saxony upper-secondary mathematics competencies with a focus on elementary functions and derivatives in the introductory phase.",
-      "weight": 10,
+      "description": "Pilot-Subset der niedersaechsischen Mathematik-Kompetenzen der Oberstufe mit Fokus auf elementare Funktionenlehre und Ableitungen in der Einfuehrungsphase sowie auf den ersten vollstaendig importierten gA-Lernbereichen der Qualifikationsphase zu Integralrechnung, e-Funktion, analytisch-geometrischer Koordinatisierung und Stochastik plus den ersten fuenf vollstaendig importierten eA-Bereichen zu Integralrechnung, Wachstumsmodellen/Exponentialfunktion, Raumanschauung/Koordinatisierung, Kurvenanpassung/Funktionenscharen und Daten/Zufall.",
+      "descriptionEn": "Pilot subset of Lower Saxony upper-secondary mathematics competencies with a focus on elementary functions and derivatives in the introductory phase as well as on the first fully imported basic-level qualification-phase learning areas on integral calculus, the e function, analytic-geometry coordinate work, and stochastics plus the first five fully imported advanced-level areas on integral calculus, growth models / the exponential function, spatial reasoning / coordinates, curve fitting / function families, and data / chance.",
+      "weight": 126,
       "tags": [
         "E",
+        "Q",
         "PilotSubset",
-        "Analysis"
+        "Analysis",
+        "Geometry",
+        "Stochastik"
       ],
       "contains": [
         "867f28ba-1d9d-4d2d-8cf4-0f175c3d4d5b",
-        "6aa63fbe-6b48-41ae-a650-7d80074c5a94"
+        "6aa63fbe-6b48-41ae-a650-7d80074c5a94",
+        "dc54c62a-2537-4b5f-98ab-84b33a2cffd0",
+        "c5ada0d0-1dda-4606-bcd6-75256a4e663e",
+        "d7d7969f-4adf-493d-87dd-516ef01ea7e3",
+        "793520e1-48e4-433b-8552-6b3e92aabd70",
+        "d5c7783c-3f21-4cdc-bd1a-96f82935226b",
+        "b02168d7-690e-4aae-852c-48774e829fe5",
+        "a668d4d4-69ab-4317-82f8-9aa28153ccd1",
+        "c5631617-ff7d-49ac-bb8a-94f295039915",
+        "1a1a1fac-b3ac-4a30-89cc-6ee283c87cbe"
       ],
       "requires": [
         "867f28ba-1d9d-4d2d-8cf4-0f175c3d4d5b"
       ],
-      "sourceRef": "KC Niedersachsen Mathematik Sek II, 2.2 Einfuehrungs- und Qualifikationsphase sowie Lernbereiche 'Elementare Funktionenlehre' und 'Ableitungen', S. 8 sowie 38-41.",
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, 2.2 Einfuehrungs- und Qualifikationsphase sowie Lernbereiche 'Elementare Funktionenlehre', 'Ableitungen', 'Von der Aenderung zum Bestand - Integralrechnung', 'Die e-Funktion', 'Raumanschauung und Koordinatisierung', 'Daten und Zufall', 'Von der Aenderung zum Bestand - Integralrechnung' (eA), 'Wachstumsmodelle - Exponentialfunktion' (eA), 'Raumanschauung und Koordinatisierung' (eA), 'Kurvenanpassung und Funktionenscharen' (eA) sowie 'Daten und Zufall' (eA), S. 8 sowie 38-54.",
       "dimensionTags": {
         "framework": "ni-kc-gost-math",
         "demandLevel": "AB2",
         "processCompetencies": [],
         "guidingIdeas": [],
         "phase": "GLOBAL",
-        "area": "Funktionen und Analysis"
+        "area": "Funktionen, Analysis, Analytische Geometrie und Stochastik"
       },
       "type": "cluster"
     },
@@ -95,6 +107,300 @@
         "guidingIdeas": [],
         "phase": "E",
         "area": "Funktionen und Analysis"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "dc54c62a-2537-4b5f-98ab-84b33a2cffd0",
+      "title": "Qualifikationsphase gA: Von der Aenderung zum Bestand - Integralrechnung",
+      "titleEn": "Qualification Phase Basic Level: From Change to Quantity - Integral Calculus",
+      "description": "Pilot-Cluster fuer den ersten vollstaendig importierten niedersaechsischen gA-Lernbereich der Qualifikationsphase zur Integralrechnung mit Bestandsrekonstruktion, Produktsummen, Hauptsatz, Stammfunktionen und Flaechenanwendungen.",
+      "descriptionEn": "Pilot cluster for the first fully imported Lower Saxony basic-level qualification-phase learning area on integral calculus with stock reconstruction, product sums, the fundamental theorem, antiderivatives, and area applications.",
+      "weight": 6,
+      "tags": [
+        "Q",
+        "gA",
+        "Analysis",
+        "Integralrechnung"
+      ],
+      "contains": [
+        "fc451207-1006-4d97-9e5e-47d6f6d487ef",
+        "f86793a9-2ca3-4af1-ae01-aed8523b7f4c",
+        "2904520a-dde9-4851-b27b-6d0ded68c40d",
+        "82d6cb83-3674-4ada-8cd6-75d66b317929",
+        "c4105c64-3454-4375-bfab-e3d703d7295b",
+        "c9849e30-6d20-4580-a14e-79a323dd0368"
+      ],
+      "requires": [
+        "6aa63fbe-6b48-41ae-a650-7d80074c5a94"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Von der Aenderung zum Bestand - Integralrechnung' (gA), S. 44.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Integralrechnung"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "c5ada0d0-1dda-4606-bcd6-75256a4e663e",
+      "title": "Qualifikationsphase gA: Die e-Funktion",
+      "titleEn": "Qualification Phase Basic Level: The e Function",
+      "description": "Pilot-Cluster fuer den ersten vollstaendig importierten niedersaechsischen gA-Lernbereich der Qualifikationsphase zur e-Funktion, zu Verknuepfungen, Exponentialgleichungen und ersten Modellierungsanwendungen.",
+      "descriptionEn": "Pilot cluster for the first fully imported Lower Saxony basic-level qualification-phase learning area on the e function, combinations, exponential equations, and first modelling applications.",
+      "weight": 9,
+      "tags": [
+        "Q",
+        "gA",
+        "Analysis",
+        "Exponentialfunktionen"
+      ],
+      "contains": [
+        "2ddfc939-92cf-4408-bd95-560eb07ed5aa",
+        "e28ce2d2-2853-4c90-b827-956878f46f79",
+        "ebe6fbe1-3a31-4b9b-a08f-6cfc2df4506f",
+        "44c6155b-0182-465b-96ea-72bed6a4aa18",
+        "40d5b2bd-1e2c-4c9d-9b43-5a73110e13a5",
+        "8f345568-a502-4acb-9618-2ba42a939212",
+        "6fc360b2-8b1a-40da-815c-46fd0ac29c17"
+      ],
+      "requires": [
+        "6aa63fbe-6b48-41ae-a650-7d80074c5a94"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Die e-Funktion' (gA), S. 45.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Exponentialfunktionen"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "d7d7969f-4adf-493d-87dd-516ef01ea7e3",
+      "title": "Qualifikationsphase gA: Raumanschauung und Koordinatisierung",
+      "titleEn": "Qualification Phase Basic Level: Spatial Reasoning and Coordinates",
+      "description": "Pilot-Cluster fuer den ersten vollstaendig importierten niedersaechsischen gA-Lernbereich der Qualifikationsphase zu Vektoren im Raum, Geraden- und Ebenendarstellungen, Skalarprodukt, Abstaenden, Winkeln sowie Lagebeziehungen von Geraden.",
+      "descriptionEn": "Pilot cluster for the first fully imported Lower Saxony basic-level qualification-phase learning area on vectors in space, line and plane representations, scalar product, distances, angles, and positional relations of lines.",
+      "weight": 12,
+      "tags": [
+        "Q",
+        "gA",
+        "Geometry",
+        "AnalytischeGeometrie"
+      ],
+      "contains": [
+        "c995589b-bc17-4c71-9d4d-5db7afac0acc",
+        "9e83365d-01e0-4067-9d38-79e7b1b74609"
+      ],
+      "requires": [
+        "6aa63fbe-6b48-41ae-a650-7d80074c5a94"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Raumanschauung und Koordinatisierung' (gA), S. 46.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Analytische Geometrie"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "793520e1-48e4-433b-8552-6b3e92aabd70",
+      "title": "Qualifikationsphase gA: Daten und Zufall",
+      "titleEn": "Qualification Phase Basic Level: Data and Chance",
+      "description": "Pilot-Cluster fuer den naechsten vollstaendig importierten niedersaechsischen gA-Lernbereich der Qualifikationsphase zu bedingten Wahrscheinlichkeiten, diskreten Zufallsgroessen, Binomialverteilungen, Prognoseintervallen und ersten Vertraeglichkeitspruefungen von Stichproben.",
+      "descriptionEn": "Pilot cluster for the next fully imported Lower Saxony basic-level qualification-phase learning area on conditional probabilities, discrete random variables, binomial distributions, prediction intervals, and first compatibility checks for samples.",
+      "weight": 15,
+      "tags": [
+        "Q",
+        "gA",
+        "Stochastik",
+        "DatenUndZufall"
+      ],
+      "contains": [
+        "a982c8bf-c3cd-41ae-8c6b-e5dca0ceb808",
+        "1ab5aa53-ec44-4cfe-a1c1-9a1c91e07677",
+        "0a73cb8c-2e34-442f-8dc0-016847f4d724"
+      ],
+      "requires": [
+        "6aa63fbe-6b48-41ae-a650-7d80074c5a94"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Daten und Zufall' (gA), S. 47.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Daten und Zufall"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "d5c7783c-3f21-4cdc-bd1a-96f82935226b",
+      "title": "Qualifikationsphase eA: Von der Aenderung zum Bestand - Integralrechnung",
+      "titleEn": "Qualification Phase Advanced Level: From Change to Quantity - Integral Calculus",
+      "description": "Pilot-Cluster fuer den ersten vollstaendig importierten niedersaechsischen eA-Lernbereich der Qualifikationsphase zur Integralrechnung mit Integralfunktionen, Stammfunktionen, Rotationskoerpern und uneigentlichen Integralen.",
+      "descriptionEn": "Pilot cluster for the first fully imported Lower Saxony advanced-level qualification-phase learning area on integral calculus with integral functions, antiderivatives, solids of revolution, and improper integrals.",
+      "weight": 14,
+      "tags": [
+        "Q",
+        "eA",
+        "Analysis",
+        "Integralrechnung"
+      ],
+      "contains": [
+        "c3ab2545-c054-40c5-91be-b122a2d6d69f",
+        "b19dbf31-dab8-43b3-8ee5-29c1e3c3b0a1",
+        "349755d3-03b8-4125-9416-a245d60ba61e"
+      ],
+      "requires": [
+        "6aa63fbe-6b48-41ae-a650-7d80074c5a94"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Von der Aenderung zum Bestand - Integralrechnung' (eA), S. 48.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Integralrechnung"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "b02168d7-690e-4aae-852c-48774e829fe5",
+      "title": "Qualifikationsphase eA: Wachstumsmodelle - Exponentialfunktion",
+      "titleEn": "Qualification Phase Advanced Level: Growth Models - Exponential Function",
+      "description": "Pilot-Cluster fuer den naechsten vollstaendig importierten niedersaechsischen eA-Lernbereich der Qualifikationsphase zu begrenztem und logistischem Wachstum, zur e-Funktion, zu Verknuepfungen mit ganzrationalen Funktionen, Parameteranpassungen und Differentialgleichungen.",
+      "descriptionEn": "Pilot cluster for the next fully imported Lower Saxony advanced-level qualification-phase learning area on bounded and logistic growth, the e function, links with polynomial functions, parameter fitting, and differential equations.",
+      "weight": 12,
+      "tags": [
+        "Q",
+        "eA",
+        "Analysis",
+        "Exponentialfunktionen",
+        "Wachstumsmodelle"
+      ],
+      "contains": [
+        "4672d009-7864-43c3-8f3a-b8a80cc428d0",
+        "20496670-2671-4451-a87e-d018a392eb28"
+      ],
+      "requires": [
+        "6aa63fbe-6b48-41ae-a650-7d80074c5a94"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Wachstumsmodelle - Exponentialfunktion' (eA), S. 49.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Exponentialfunktionen"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "a668d4d4-69ab-4317-82f8-9aa28153ccd1",
+      "title": "Qualifikationsphase eA: Raumanschauung und Koordinatisierung",
+      "titleEn": "Qualification Phase Advanced Level: Spatial Reasoning and Coordinate Work",
+      "description": "Pilot-Cluster fuer den naechsten vollstaendig importierten niedersaechsischen eA-Lernbereich der Qualifikationsphase zu Raumanschauung, Projektionen, Darstellungsformen von Geraden und Ebenen, Abstaenden, Lagebeziehungen und dem Gauss-Algorithmus.",
+      "descriptionEn": "Pilot cluster for the next fully imported Lower Saxony advanced-level qualification-phase learning area on spatial reasoning, projections, representations of lines and planes, distances, positional relationships, and Gaussian elimination.",
+      "weight": 16,
+      "tags": [
+        "Q",
+        "eA",
+        "Geometry",
+        "AnalytischeGeometrie"
+      ],
+      "contains": [
+        "63015895-1473-49fe-bc2a-6f7525111d90",
+        "a84e6bc9-f1da-4b3d-ab73-ffd9a702ab33",
+        "e7e97cd3-d923-404f-ae4d-996e3cdad3c2"
+      ],
+      "requires": [
+        "6aa63fbe-6b48-41ae-a650-7d80074c5a94"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Raumanschauung und Koordinatisierung' (eA), S. 51.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Analytische Geometrie"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "c5631617-ff7d-49ac-bb8a-94f295039915",
+      "title": "Qualifikationsphase eA: Kurvenanpassung und Funktionenscharen",
+      "titleEn": "Qualification Phase Advanced Level: Curve Fitting and Function Families",
+      "description": "Pilot-Cluster fuer den naechsten vollstaendig importierten niedersaechsischen eA-Lernbereich der Qualifikationsphase zu globalen Funktionseigenschaften, Kurvenanpassung, abschnittsweise definierten Funktionen und parameterabhaengigen Funktionenscharen.",
+      "descriptionEn": "Pilot cluster for the next fully imported Lower Saxony advanced-level qualification-phase learning area on global function properties, curve fitting, piecewise-defined functions, and parameter-dependent function families.",
+      "weight": 6,
+      "tags": [
+        "Q",
+        "eA",
+        "Analysis",
+        "Funktionenscharen",
+        "Modellierung"
+      ],
+      "contains": [
+        "03e55d0b-24a6-483c-b38a-a6438ff02106",
+        "6a7ec1c1-f295-465c-b50e-c386afc7fe99"
+      ],
+      "requires": [
+        "6aa63fbe-6b48-41ae-a650-7d80074c5a94"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Kurvenanpassung und Funktionenscharen' (eA), S. 52.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Funktionenscharen und Modellierung"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "6fc360b2-8b1a-40da-815c-46fd0ac29c17",
+      "title": "Verknuepfungen und Ableitungsregeln zur e-Funktion",
+      "titleEn": "Combinations and Differentiation Rules for the e Function",
+      "description": "Retained Split-Cluster fuer den zweiten importierten niedersaechsischen gA-Streifen zur e-Funktion mit Verknuepfungen, Verkettungen und den dafuer benoetigten Ableitungsregeln.",
+      "descriptionEn": "Retained split cluster for the second imported Lower Saxony basic-level e-function strip covering linked functions, compositions, and the differentiation rules needed for them.",
+      "weight": 3,
+      "tags": [
+        "Q",
+        "gA",
+        "Analysis",
+        "Verknuepfungen"
+      ],
+      "contains": [
+        "066c76e8-97b9-4c4e-ba97-921cb937d876",
+        "b88f8272-42a7-430e-839d-787fa3883991",
+        "59528e7a-6267-45fb-8a65-2abeb14f5253"
+      ],
+      "requires": [
+        "ebe6fbe1-3a31-4b9b-a08f-6cfc2df4506f"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Die e-Funktion' (gA), Kern, Verknuepfungen, Verkettung sowie Produkt- und Kettenregel, S. 45.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Exponentialfunktionen"
       },
       "type": "cluster"
     },
@@ -548,6 +854,3983 @@
         "guidingIdeas": [],
         "phase": "E",
         "area": "Ableitungen"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "2ddfc939-92cf-4408-bd95-560eb07ed5aa",
+      "title": "Exponentielle Wachstumsgeschwindigkeit als proportional zum Bestand beschreiben",
+      "titleEn": "Describe Exponential Growth Rate as Proportional to the Current Stock",
+      "description": "Die Schuelerinnen und Schueler beschreiben bei exponentiellem Wachstum die Wachstumsgeschwindigkeit als proportional zum aktuellen Bestand.",
+      "descriptionEn": "Students describe the growth rate in exponential growth as proportional to the current stock.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "gA",
+        "Analysis",
+        "Exponentialfunktionen"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Die e-Funktion' (gA), Kern, 'Wachstumsgeschwindigkeit ... proportional zum Bestand', S. 45.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Exponentialfunktionen"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "e28ce2d2-2853-4c90-b827-956878f46f79",
+      "title": "Die Basis e durch die Eigenschaft (e^x)' = e^x charakterisieren",
+      "titleEn": "Characterise the Base e by the Property (e^x)' = e^x",
+      "description": "Die Schuelerinnen und Schueler charakterisieren die Basis e durch die Eigenschaft, dass fuer die Exponentialfunktion e^x die Ableitungsfunktion mit der Funktion selbst uebereinstimmt.",
+      "descriptionEn": "Students characterise the base e by the property that for the exponential function e^x the derivative function coincides with the function itself.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "gA",
+        "Analysis",
+        "EFunktion"
+      ],
+      "contains": [],
+      "requires": [
+        "2ddfc939-92cf-4408-bd95-560eb07ed5aa"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Die e-Funktion' (gA), Kern, 'die Basis e ... charakterisieren', S. 45.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Exponentialfunktionen"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "ebe6fbe1-3a31-4b9b-a08f-6cfc2df4506f",
+      "title": "Ableitungen von e^x und a^x verwenden",
+      "titleEn": "Use Derivatives of e^x and a^x",
+      "description": "Die Schuelerinnen und Schueler verwenden die Ableitungsfunktion der Funktion f mit f(x) = e^x sowie der Exponentialfunktionen g mit g(x) = a^x.",
+      "descriptionEn": "Students use the derivative function of f with f(x) = e^x as well as of exponential functions g with g(x) = a^x.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "gA",
+        "Analysis",
+        "Ableitungen"
+      ],
+      "contains": [],
+      "requires": [
+        "e28ce2d2-2853-4c90-b827-956878f46f79"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Die e-Funktion' (gA), Kern, 'die Ableitungsfunktion ... verwenden', S. 45.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Exponentialfunktionen"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "44c6155b-0182-465b-96ea-72bed6a4aa18",
+      "title": "Parameterbestimmungen zur Angleichung an Daten durchfuehren",
+      "titleEn": "Determine Parameters to Fit Models to Data",
+      "description": "Die Schuelerinnen und Schueler bestimmen Parameter exponentieller Modelle durch Einsetzen konkreter Werte und gleichen Modelle an Daten an.",
+      "descriptionEn": "Students determine parameters of exponential models by inserting concrete values and fitting models to data.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "gA",
+        "Analysis",
+        "Modellierung"
+      ],
+      "contains": [],
+      "requires": [
+        "2ddfc939-92cf-4408-bd95-560eb07ed5aa"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Die e-Funktion' (gA), Kern, 'Parameterbestimmungen ... an Daten', S. 45.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Exponentialfunktionen"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "40d5b2bd-1e2c-4c9d-9b43-5a73110e13a5",
+      "title": "Exponentialgleichungen loesen",
+      "titleEn": "Solve Exponential Equations",
+      "description": "Die Schuelerinnen und Schueler loesen einfache Exponentialgleichungen.",
+      "descriptionEn": "Students solve simple exponential equations.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "gA",
+        "Analysis",
+        "Exponentialgleichungen"
+      ],
+      "contains": [],
+      "requires": [
+        "e28ce2d2-2853-4c90-b827-956878f46f79"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Die e-Funktion' (gA), Kern, 'Exponentialgleichungen loesen', S. 45.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Exponentialfunktionen"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "8f345568-a502-4acb-9618-2ba42a939212",
+      "title": "Asymptotisches Verhalten begrenzten Wachstums beschreiben",
+      "titleEn": "Describe the Asymptotic Behaviour of Limited Growth",
+      "description": "Die Schuelerinnen und Schueler beschreiben das asymptotische Verhalten des begrenzten Wachstums.",
+      "descriptionEn": "Students describe the asymptotic behaviour of limited growth.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "gA",
+        "Analysis",
+        "BegrenztesWachstum"
+      ],
+      "contains": [],
+      "requires": [
+        "44c6155b-0182-465b-96ea-72bed6a4aa18",
+        "40d5b2bd-1e2c-4c9d-9b43-5a73110e13a5"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Die e-Funktion' (gA), Kern, 'asymptotisches Verhalten des begrenzten Wachstums beschreiben', S. 45.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Exponentialfunktionen"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "066c76e8-97b9-4c4e-ba97-921cb937d876",
+      "title": "Additive und multiplikative Verknuepfungen der e-Funktion mit ganzrationalen Funktionen untersuchen",
+      "titleEn": "Investigate Additive and Multiplicative Combinations of the e Function with Polynomial Functions",
+      "description": "Die Schuelerinnen und Schueler beschreiben, untersuchen und nutzen in einfachen Faellen additive und multiplikative Verknuepfungen der e-Funktion mit ganzrationalen Funktionen auch in Sachproblemen.",
+      "descriptionEn": "Students describe, investigate, and use additive and multiplicative combinations of the e function with polynomial functions in simple cases, also in contextual problems.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "gA",
+        "Analysis",
+        "Verknuepfungen"
+      ],
+      "contains": [],
+      "requires": [
+        "ebe6fbe1-3a31-4b9b-a08f-6cfc2df4506f"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Die e-Funktion' (gA), Kern, 'additive und multiplikative Verknuepfungen ...', S. 45.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Exponentialfunktionen"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "b88f8272-42a7-430e-839d-787fa3883991",
+      "title": "Verkettung der e-Funktion mit linearen Funktionen beschreiben und anwenden",
+      "titleEn": "Describe and Apply Compositions of the e Function with Linear Functions",
+      "description": "Die Schuelerinnen und Schueler beschreiben, untersuchen und nutzen Verkettungen der e-Funktion mit linearen Funktionen in einfachen Faellen und in Sachproblemen.",
+      "descriptionEn": "Students describe, investigate, and use compositions of the e function with linear functions in simple cases and contextual problems.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "gA",
+        "Analysis",
+        "Verkettung"
+      ],
+      "contains": [],
+      "requires": [
+        "ebe6fbe1-3a31-4b9b-a08f-6cfc2df4506f"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Die e-Funktion' (gA), Kern, 'Verkettung mit linearen Funktionen ...', S. 45.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Exponentialfunktionen"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "59528e7a-6267-45fb-8a65-2abeb14f5253",
+      "title": "Produktregel und Kettenregel bei linearer innerer Funktion anwenden",
+      "titleEn": "Apply Product Rule and Chain Rule with a Linear Inner Function",
+      "description": "Die Schuelerinnen und Schueler wenden Produktregel und Kettenregel bei linearer innerer Funktion zur Ableitung geeigneter Funktionsterme an.",
+      "descriptionEn": "Students apply the product rule and the chain rule with a linear inner function to differentiate suitable function terms.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "gA",
+        "Analysis",
+        "Ableitungsregeln"
+      ],
+      "contains": [],
+      "requires": [
+        "066c76e8-97b9-4c4e-ba97-921cb937d876",
+        "b88f8272-42a7-430e-839d-787fa3883991"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Die e-Funktion' (gA), Kern, 'Produktregel und Kettenregel ...', S. 45.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Exponentialfunktionen"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "fc451207-1006-4d97-9e5e-47d6f6d487ef",
+      "title": "Bestaende aus Aenderungsraten und Anfangsbestand rekonstruieren und das Integral als Bestand sowie Flaecheninhalt deuten",
+      "titleEn": "Reconstruct Quantities from Rates and Initial Values and Interpret the Integral as Quantity and Area",
+      "description": "Die Schuelerinnen und Schueler rekonstruieren Bestaende aus Aenderungsraten und Anfangsbestand und deuten das bestimmte Integral als Bestand sowie unter geeigneten Bedingungen als Flaecheninhalt.",
+      "descriptionEn": "Students reconstruct quantities from rates of change and initial values and interpret the definite integral as a quantity and, under suitable conditions, as an area.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "gA",
+        "Analysis",
+        "Integralbegriff"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Von der Aenderung zum Bestand - Integralrechnung' (gA), Kern, 'Bestaende aus Aenderungsraten und Anfangsbestand (re-)konstruieren', S. 44.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Integralrechnung"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "f86793a9-2ca3-4af1-ae01-aed8523b7f4c",
+      "title": "Das Integral als Grenzwert von Produktsummen beschreiben",
+      "titleEn": "Describe the Integral as the Limit of Product Sums",
+      "description": "Die Schuelerinnen und Schueler beschreiben das Integral als Grenzwert von Produktsummen und nutzen diese Vorstellung zur Erklaerung von Gesamtwirkungen.",
+      "descriptionEn": "Students describe the integral as the limit of product sums and use this idea to explain total effects.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "gA",
+        "Analysis",
+        "Produktsummen"
+      ],
+      "contains": [],
+      "requires": [
+        "fc451207-1006-4d97-9e5e-47d6f6d487ef"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Von der Aenderung zum Bestand - Integralrechnung' (gA), Kern, 'das Integral als Grenzwert von Produktsummen beschreiben', S. 44.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Integralrechnung"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "2904520a-dde9-4851-b27b-6d0ded68c40d",
+      "title": "Den Hauptsatz der Differential- und Integralrechnung geometrisch-anschaulich begruenden",
+      "titleEn": "Justify the Fundamental Theorem of Calculus Geometrically and Intuitively",
+      "description": "Die Schuelerinnen und Schueler begruenden den Hauptsatz der Differential- und Integralrechnung geometrisch-anschaulich und erklaeren den Zusammenhang von Aenderung, Bestand und Stammfunktion.",
+      "descriptionEn": "Students justify the Fundamental Theorem of Calculus geometrically and intuitively and explain the relationship between change, quantity, and antiderivative.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "gA",
+        "Analysis",
+        "Hauptsatz"
+      ],
+      "contains": [],
+      "requires": [
+        "f86793a9-2ca3-4af1-ae01-aed8523b7f4c"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Von der Aenderung zum Bestand - Integralrechnung' (gA), Kern, 'den Hauptsatz der Differential- und Integralrechnung geometrisch-anschaulich begruenden', S. 44.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Integralrechnung"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "82d6cb83-3674-4ada-8cd6-75d66b317929",
+      "title": "Bestimmte Integrale berechnen und im Sachzusammenhang deuten",
+      "titleEn": "Calculate Definite Integrals and Interpret Them in Context",
+      "description": "Die Schuelerinnen und Schueler berechnen bestimmte Integrale und deuten diese auch im Sachzusammenhang, insbesondere als rekonstruierte Bestaende.",
+      "descriptionEn": "Students calculate definite integrals and interpret them in context, in particular as reconstructed quantities.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "gA",
+        "Analysis",
+        "BestimmtesIntegral"
+      ],
+      "contains": [],
+      "requires": [
+        "2904520a-dde9-4851-b27b-6d0ded68c40d"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Von der Aenderung zum Bestand - Integralrechnung' (gA), Kern, 'bestimmte Integrale berechnen' sowie 'bestimmte Integrale auch im Sachzusammenhang deuten', S. 44.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Integralrechnung"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "c4105c64-3454-4375-bfab-e3d703d7295b",
+      "title": "Stammfunktionen mithilfe der Ableitungsregeln ueberpruefen und in einfachen Faellen entwickeln",
+      "titleEn": "Check Antiderivatives Using Differentiation Rules and Develop Them in Simple Cases",
+      "description": "Die Schuelerinnen und Schueler ueberpruefen Stammfunktionen mit bekannten Ableitungsregeln und entwickeln in einfachen Faellen Stammfunktionen zu Potenz-, Exponential- und trigonometrischen Grundfunktionen sowie bei linearer innerer Funktion.",
+      "descriptionEn": "Students check antiderivatives using known differentiation rules and develop antiderivatives in simple cases for power, exponential, and trigonometric basic functions as well as for linear inner functions.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "gA",
+        "Analysis",
+        "Stammfunktionen"
+      ],
+      "contains": [],
+      "requires": [
+        "2904520a-dde9-4851-b27b-6d0ded68c40d"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Von der Aenderung zum Bestand - Integralrechnung' (gA), Kern, 'Stammfunktionen mithilfe der Ableitungsregeln ueberpruefen' und 'Stammfunktionen ... entwickeln', S. 44.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Integralrechnung"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "c9849e30-6d20-4580-a14e-79a323dd0368",
+      "title": "Inhalte von Flaechen bestimmen, die durch Funktionsgraphen begrenzt sind",
+      "titleEn": "Determine Areas Bounded by Function Graphs",
+      "description": "Die Schuelerinnen und Schueler bestimmen Inhalte von Flaechen, die durch Funktionsgraphen begrenzt sind, und stellen dazu passende Integrale auf.",
+      "descriptionEn": "Students determine areas bounded by function graphs and set up suitable integrals for them.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "gA",
+        "Analysis",
+        "Flaechen"
+      ],
+      "contains": [],
+      "requires": [
+        "82d6cb83-3674-4ada-8cd6-75d66b317929"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Von der Aenderung zum Bestand - Integralrechnung' (gA), Kern, 'Inhalte von Flaechen, die durch Funktionsgraphen begrenzt sind, bestimmen', S. 44.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Integralrechnung"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "c995589b-bc17-4c71-9d4d-5db7afac0acc",
+      "title": "Raumanschauung und Koordinatisierung",
+      "titleEn": "Spatial Reasoning and Coordinate Description",
+      "description": "Retained Split-Cluster fuer den importierten niedersaechsischen gA-Streifen zu Punkten und Vektoren im Raum, bildlicher Darstellung, Vektoroperationen, Kollinearitaet sowie Geraden- und Ebenengleichungen in Parameterform.",
+      "descriptionEn": "Retained split cluster for the imported Lower Saxony basic-level strip on points and vectors in space, pictorial representation, vector operations, collinearity, and line and plane equations in parametric form.",
+      "weight": 6,
+      "tags": [
+        "Q",
+        "gA",
+        "Geometry",
+        "Koordinatisierung"
+      ],
+      "contains": [
+        "9321f059-45f6-467e-871c-b4f86cbda3d9",
+        "ac25a479-1606-4593-aaa2-ee4bfd68177e",
+        "1e6da79d-b1f2-4417-b315-16eba289e856",
+        "39124f0a-1a1d-407e-9982-e2c05748536c",
+        "b014df86-bdf0-47fe-974e-d01b80062fa9",
+        "918a7283-805f-4cbd-bccf-5d336715a4c1"
+      ],
+      "requires": [
+        "6aa63fbe-6b48-41ae-a650-7d80074c5a94"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Raumanschauung und Koordinatisierung' (gA), Kern, Abschnitt 'Raumanschauung und Koordinatisierung', S. 46.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Analytische Geometrie"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "9e83365d-01e0-4067-9d38-79e7b1b74609",
+      "title": "Masse und Lagen",
+      "titleEn": "Measures and Positions",
+      "description": "Retained Split-Cluster fuer den importierten niedersaechsischen gA-Streifen zu Abstaenden, Skalarprodukt, Orthogonalitaet, Winkeln sowie Lagebeziehungen und Schnittpunkten von Geraden.",
+      "descriptionEn": "Retained split cluster for the imported Lower Saxony basic-level strip on distances, scalar product, orthogonality, angles, as well as positional relations and intersections of lines.",
+      "weight": 6,
+      "tags": [
+        "Q",
+        "gA",
+        "Geometry",
+        "Lagebeziehungen"
+      ],
+      "contains": [
+        "66327341-a80d-4c92-a273-b4b9c99f7935",
+        "61e59050-2d32-4fca-afd2-97b84d72306c",
+        "77344dae-07ce-4f72-bdf4-587849037c76",
+        "4601c122-bff3-4f34-9eed-040e7060debf",
+        "06219296-24c0-40d3-a037-d2aab471da52",
+        "f05561f4-4821-4eb4-b1ac-7270b4a9b898"
+      ],
+      "requires": [
+        "c995589b-bc17-4c71-9d4d-5db7afac0acc"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Raumanschauung und Koordinatisierung' (gA), Kern, Abschnitt 'Masse und Lagen', S. 46.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Analytische Geometrie"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "9321f059-45f6-467e-871c-b4f86cbda3d9",
+      "title": "Punkte und Vektoren in Ebene und Raum durch Tupel beschreiben",
+      "titleEn": "Describe Points and Vectors in the Plane and in Space Using Tuples",
+      "description": "Die Schuelerinnen und Schueler beschreiben Punkte und Vektoren in Ebene und Raum mithilfe von Tupeln und nutzen diese Darstellung zur Orientierung im kartesischen Koordinatensystem.",
+      "descriptionEn": "Students describe points and vectors in the plane and in space using tuples and use this representation for orientation in the Cartesian coordinate system.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "gA",
+        "Geometry",
+        "Vektoren"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Raumanschauung und Koordinatisierung' (gA), Kern, 'Punkte und Vektoren in Ebene und Raum durch Tupel beschreiben', S. 46.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Analytische Geometrie"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "ac25a479-1606-4593-aaa2-ee4bfd68177e",
+      "title": "Bildliche Darstellung und Koordinatisierung zur Beschreibung von Punkten, Strecken, ebenen Flaechen und einfachen Koerpern nutzen",
+      "titleEn": "Use Visual Representation and Coordinates to Describe Points, Segments, Plane Regions, and Simple Solids",
+      "description": "Die Schuelerinnen und Schueler nutzen bildliche Darstellungen und Koordinatisierung, um Punkte, Strecken, ebene Flaechen und einfache Koerper im Raum zu beschreiben und zu veranschaulichen.",
+      "descriptionEn": "Students use visual representation and coordinates to describe and illustrate points, segments, plane regions, and simple solids in space.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "gA",
+        "Geometry",
+        "Darstellungen"
+      ],
+      "contains": [],
+      "requires": [
+        "9321f059-45f6-467e-871c-b4f86cbda3d9"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Raumanschauung und Koordinatisierung' (gA), Kern, 'die bildliche Darstellung und Koordinatisierung ... nutzen', S. 46.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Analytische Geometrie"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "1e6da79d-b1f2-4417-b315-16eba289e856",
+      "title": "Addition, Subtraktion und skalare Multiplikation von Vektoren anwenden und geometrisch veranschaulichen",
+      "titleEn": "Apply Addition, Subtraction, and Scalar Multiplication of Vectors and Illustrate Them Geometrically",
+      "description": "Die Schuelerinnen und Schueler wenden Addition, Subtraktion und skalare Multiplikation von Vektoren an und veranschaulichen diese Operationen geometrisch in Ebene und Raum.",
+      "descriptionEn": "Students apply addition, subtraction, and scalar multiplication of vectors and illustrate these operations geometrically in the plane and in space.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "gA",
+        "Geometry",
+        "Vektoroperationen"
+      ],
+      "contains": [],
+      "requires": [
+        "9321f059-45f6-467e-871c-b4f86cbda3d9"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Raumanschauung und Koordinatisierung' (gA), Kern, 'Addition, Subtraktion und skalare Multiplikation von Vektoren anwenden', S. 46.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Analytische Geometrie"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "39124f0a-1a1d-407e-9982-e2c05748536c",
+      "title": "Kollinearitaet zweier Vektoren ueberpruefen",
+      "titleEn": "Check the Collinearity of Two Vectors",
+      "description": "Die Schuelerinnen und Schueler ueberpruefen die Kollinearitaet zweier Vektoren rechnerisch und deuten das Ergebnis geometrisch.",
+      "descriptionEn": "Students check the collinearity of two vectors computationally and interpret the result geometrically.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "gA",
+        "Geometry",
+        "Kollinearitaet"
+      ],
+      "contains": [],
+      "requires": [
+        "1e6da79d-b1f2-4417-b315-16eba289e856"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Raumanschauung und Koordinatisierung' (gA), Kern, 'Kollinearitaet zweier Vektoren ueberpruefen', S. 46.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Analytische Geometrie"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "b014df86-bdf0-47fe-974e-d01b80062fa9",
+      "title": "Geradengleichungen in Parameterform verwenden",
+      "titleEn": "Use Line Equations in Parametric Form",
+      "description": "Die Schuelerinnen und Schueler verwenden Geradengleichungen in Parameterform, um Geraden im Raum zu beschreiben und Punkte auf ihnen zu pruefen.",
+      "descriptionEn": "Students use line equations in parametric form to describe lines in space and to test points on them.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "gA",
+        "Geometry",
+        "Geraden"
+      ],
+      "contains": [],
+      "requires": [
+        "1e6da79d-b1f2-4417-b315-16eba289e856"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Raumanschauung und Koordinatisierung' (gA), Kern, 'Geraden ... in Parameterform verwenden', S. 46.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Analytische Geometrie"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "918a7283-805f-4cbd-bccf-5d336715a4c1",
+      "title": "Ebenengleichungen in Parameterform verwenden",
+      "titleEn": "Use Plane Equations in Parametric Form",
+      "description": "Die Schuelerinnen und Schueler verwenden Ebenengleichungen in Parameterform, um Ebenen im Raum zu beschreiben und Punkte sowie Richtungen zu interpretieren.",
+      "descriptionEn": "Students use plane equations in parametric form to describe planes in space and interpret points and directions.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "gA",
+        "Geometry",
+        "Ebenen"
+      ],
+      "contains": [],
+      "requires": [
+        "1e6da79d-b1f2-4417-b315-16eba289e856"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Raumanschauung und Koordinatisierung' (gA), Kern, 'Ebenengleichungen in Parameterform verwenden', S. 46.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Analytische Geometrie"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "66327341-a80d-4c92-a273-b4b9c99f7935",
+      "title": "Abstaende zwischen Punkten bestimmen",
+      "titleEn": "Determine Distances Between Points",
+      "description": "Die Schuelerinnen und Schueler bestimmen Abstaende zwischen Punkten im Raum mithilfe von Koordinaten und interpretieren die Ergebnisse geometrisch.",
+      "descriptionEn": "Students determine distances between points in space using coordinates and interpret the results geometrically.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "gA",
+        "Geometry",
+        "Abstaende"
+      ],
+      "contains": [],
+      "requires": [
+        "9321f059-45f6-467e-871c-b4f86cbda3d9"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Raumanschauung und Koordinatisierung' (gA), Kern, 'Abstaende zwischen Punkten bestimmen', S. 46.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Analytische Geometrie"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "61e59050-2d32-4fca-afd2-97b84d72306c",
+      "title": "Skalarprodukt geometrisch als Ergebnis einer Projektion deuten und verwenden",
+      "titleEn": "Interpret and Use the Scalar Product Geometrically as a Projection Result",
+      "description": "Die Schuelerinnen und Schueler deuten das Skalarprodukt geometrisch als Ergebnis einer Projektion und verwenden es fuer Berechnungen in Ebene und Raum.",
+      "descriptionEn": "Students interpret the scalar product geometrically as the result of a projection and use it for calculations in the plane and in space.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "gA",
+        "Geometry",
+        "Skalarprodukt"
+      ],
+      "contains": [],
+      "requires": [
+        "1e6da79d-b1f2-4417-b315-16eba289e856"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Raumanschauung und Koordinatisierung' (gA), Kern, 'Skalarprodukt geometrisch als Ergebnis einer Projektion deuten und verwenden', S. 46.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Analytische Geometrie"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "77344dae-07ce-4f72-bdf4-587849037c76",
+      "title": "Orthogonalitaet zweier Vektoren ueberpruefen",
+      "titleEn": "Check the Orthogonality of Two Vectors",
+      "description": "Die Schuelerinnen und Schueler ueberpruefen mithilfe des Skalarprodukts die Orthogonalitaet zweier Vektoren und begruenden das Ergebnis geometrisch.",
+      "descriptionEn": "Students use the scalar product to check the orthogonality of two vectors and justify the result geometrically.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "gA",
+        "Geometry",
+        "Orthogonalitaet"
+      ],
+      "contains": [],
+      "requires": [
+        "61e59050-2d32-4fca-afd2-97b84d72306c"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Raumanschauung und Koordinatisierung' (gA), Kern, 'Orthogonalitaet zweier Vektoren ueberpruefen', S. 46.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Analytische Geometrie"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "4601c122-bff3-4f34-9eed-040e7060debf",
+      "title": "Winkelgroessen zwischen Strecken und Geraden bestimmen",
+      "titleEn": "Determine Angles Between Segments and Lines",
+      "description": "Die Schuelerinnen und Schueler bestimmen Winkelgroessen zwischen Strecken und Geraden mithilfe von Richtungsvektoren und Skalarprodukt.",
+      "descriptionEn": "Students determine angles between segments and lines using direction vectors and the scalar product.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "gA",
+        "Geometry",
+        "Winkel"
+      ],
+      "contains": [],
+      "requires": [
+        "61e59050-2d32-4fca-afd2-97b84d72306c",
+        "b014df86-bdf0-47fe-974e-d01b80062fa9"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Raumanschauung und Koordinatisierung' (gA), Kern, 'Winkelgroessen zwischen Strecken und Geraden bestimmen', S. 46.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Analytische Geometrie"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "06219296-24c0-40d3-a037-d2aab471da52",
+      "title": "Lagebeziehungen von Geraden untersuchen",
+      "titleEn": "Investigate Positional Relationships of Lines",
+      "description": "Die Schuelerinnen und Schueler untersuchen Lagebeziehungen von Geraden im Raum und klassifizieren sie begruendet, zum Beispiel als schneidend oder parallel.",
+      "descriptionEn": "Students investigate positional relationships of lines in space and classify them with justification, for example as intersecting or parallel.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "gA",
+        "Geometry",
+        "Lagebeziehungen"
+      ],
+      "contains": [],
+      "requires": [
+        "b014df86-bdf0-47fe-974e-d01b80062fa9",
+        "77344dae-07ce-4f72-bdf4-587849037c76"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Raumanschauung und Koordinatisierung' (gA), Kern, 'Lagebeziehungen von Geraden untersuchen', S. 46.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Analytische Geometrie"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "f05561f4-4821-4eb4-b1ac-7270b4a9b898",
+      "title": "Schnittpunkte von Geraden bestimmen",
+      "titleEn": "Determine Intersection Points of Lines",
+      "description": "Die Schuelerinnen und Schueler bestimmen Schnittpunkte von Geraden rechnerisch und deuten die Ergebnisse geometrisch im Raum.",
+      "descriptionEn": "Students determine intersection points of lines computationally and interpret the results geometrically in space.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "gA",
+        "Geometry",
+        "Schnittpunkte"
+      ],
+      "contains": [],
+      "requires": [
+        "06219296-24c0-40d3-a037-d2aab471da52"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Raumanschauung und Koordinatisierung' (gA), Kern, '... und Schnittpunkte bestimmen', S. 46.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Analytische Geometrie"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "a982c8bf-c3cd-41ae-8c6b-e5dca0ceb808",
+      "title": "Bedingte Wahrscheinlichkeit und stochastische Unabhaengigkeit",
+      "titleEn": "Conditional Probability and Stochastic Independence",
+      "description": "Retained Split-Cluster fuer den importierten niedersaechsischen gA-Streifen zu bedingten Wahrscheinlichkeiten in Baumdiagrammen und Vierfeldertafeln sowie zur Untersuchung stochastischer Unabhaengigkeit.",
+      "descriptionEn": "Retained split cluster for the imported Lower Saxony basic-level strip on conditional probabilities in tree diagrams and four-field tables as well as the investigation of stochastic independence.",
+      "weight": 2,
+      "tags": [
+        "Q",
+        "gA",
+        "Stochastik",
+        "BedingteWahrscheinlichkeit"
+      ],
+      "contains": [
+        "b5b5a7a5-aa50-4a19-987f-fbd98b1b98cc",
+        "80a23dda-0e8d-4f95-b86c-2d74a545cdd0"
+      ],
+      "requires": [
+        "6aa63fbe-6b48-41ae-a650-7d80074c5a94"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Daten und Zufall' (gA), Kern, Abschnitt 'Bedingte Wahrscheinlichkeit und stochastische Unabhaengigkeit', S. 47.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Daten und Zufall"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "1ab5aa53-ec44-4cfe-a1c1-9a1c91e07677",
+      "title": "Erwartungswert und Standardabweichung diskreter Zufallsgroessen",
+      "titleEn": "Expected Value and Standard Deviation of Discrete Random Variables",
+      "description": "Retained Split-Cluster fuer den importierten niedersaechsischen gA-Streifen zum Uebergang von Haeufigkeitsverteilungen zu diskreten Wahrscheinlichkeitsverteilungen sowie zu Erwartungswert, Varianz und Standardabweichung.",
+      "descriptionEn": "Retained split cluster for the imported Lower Saxony basic-level strip on moving from frequency distributions to discrete probability distributions as well as expected value, variance, and standard deviation.",
+      "weight": 3,
+      "tags": [
+        "Q",
+        "gA",
+        "Stochastik",
+        "Zufallsgroessen"
+      ],
+      "contains": [
+        "2e8af0e2-421e-4212-8dd9-7e701c272277",
+        "956ca330-e09e-4810-ab36-b037121491c7",
+        "1c6da7a3-7f62-44ab-95fb-16dbe8b7d5d0"
+      ],
+      "requires": [
+        "6aa63fbe-6b48-41ae-a650-7d80074c5a94"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Daten und Zufall' (gA), Kern, Abschnitt 'Erwartungswert und Standardabweichung diskreter Zufallsgroessen', S. 47.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Daten und Zufall"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "0a73cb8c-2e34-442f-8dc0-016847f4d724",
+      "title": "Binomialverteilung",
+      "titleEn": "Binomial Distribution",
+      "description": "Retained Split-Cluster fuer den importierten niedersaechsischen gA-Streifen zum Binomialmodell, zu zugehoerigen Parametern und Kenngroessen, zu grafischen Deutungen, Prognoseintervallen, Vertraeglichkeitspruefungen und Simulationen.",
+      "descriptionEn": "Retained split cluster for the imported Lower Saxony basic-level strip on the binomial model, its parameters and key measures, graphical interpretations, prediction intervals, compatibility checks, and simulations.",
+      "weight": 10,
+      "tags": [
+        "Q",
+        "gA",
+        "Stochastik",
+        "Binomialverteilung"
+      ],
+      "contains": [
+        "a1acddb1-cfa0-4e2a-8cda-e8d73a83a0a4",
+        "b00989c9-bcce-4420-b3d0-42d9f2012c1b",
+        "14e48e62-4253-42ca-b9e4-61db989d79cb",
+        "19a41a4e-f9d1-4db7-8efd-825bb230ccc8",
+        "e0fdd179-3946-4799-ab62-de5200c71c31",
+        "0feff5de-869d-4cb2-910f-3690832438e3",
+        "55a46ec1-64aa-46ba-8f72-26e4e847bf6a",
+        "8af513ca-63a4-4dc6-bfa2-e8e661062278",
+        "9eeb42ce-7927-4a6f-8490-66825b3b10a4",
+        "2aa45c54-e884-4a59-8731-8cb171ca7581"
+      ],
+      "requires": [
+        "a982c8bf-c3cd-41ae-8c6b-e5dca0ceb808",
+        "1ab5aa53-ec44-4cfe-a1c1-9a1c91e07677"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Daten und Zufall' (gA), Kern, Abschnitt 'Binomialverteilung', S. 47.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Daten und Zufall"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "b5b5a7a5-aa50-4a19-987f-fbd98b1b98cc",
+      "title": "Bedingte Wahrscheinlichkeiten mit Baumdiagrammen und Vierfeldertafeln erarbeiten",
+      "titleEn": "Develop Conditional Probabilities with Tree Diagrams and Four-Field Tables",
+      "description": "Die Schuelerinnen und Schueler nutzen Eintraege in Baumdiagrammen und Vierfeldertafeln, um den Begriff der bedingten Wahrscheinlichkeit zu erarbeiten und zwischen bedingendem und bedingtem Ereignis zu unterscheiden.",
+      "descriptionEn": "Students use entries in tree diagrams and four-field tables to develop the concept of conditional probability and distinguish between conditioning and conditioned events.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "gA",
+        "Stochastik",
+        "BedingteWahrscheinlichkeit"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Daten und Zufall' (gA), Kern, 'Eintraege in Baumdiagrammen und Vierfeldertafeln nutzen ...', S. 47.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Daten und Zufall"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "80a23dda-0e8d-4f95-b86c-2d74a545cdd0",
+      "title": "Teilvorgaenge mehrstufiger Zufallsexperimente auf stochastische Unabhaengigkeit untersuchen",
+      "titleEn": "Investigate Subprocesses of Multi-Step Random Experiments for Stochastic Independence",
+      "description": "Die Schuelerinnen und Schueler untersuchen Teilvorgaenge bei mehrstufigen Zufallsexperimenten auf stochastische Unabhaengigkeit und begruenden ihre Bewertung mit passenden Darstellungen.",
+      "descriptionEn": "Students investigate subprocesses in multi-step random experiments for stochastic independence and justify their evaluation with suitable representations.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "gA",
+        "Stochastik",
+        "Unabhaengigkeit"
+      ],
+      "contains": [],
+      "requires": [
+        "b5b5a7a5-aa50-4a19-987f-fbd98b1b98cc"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Daten und Zufall' (gA), Kern, 'Teilvorgaenge bei mehrstufigen Zufallsexperimenten ...', S. 47.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Daten und Zufall"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "2e8af0e2-421e-4212-8dd9-7e701c272277",
+      "title": "Kenngroessen von Haeufigkeits- und Wahrscheinlichkeitsverteilungen aufeinander beziehen",
+      "titleEn": "Relate Characteristics of Frequency and Probability Distributions",
+      "description": "Die Schuelerinnen und Schueler stellen den Zusammenhang zwischen Kenngroessen empirischer Haeufigkeitsverteilungen und Kenngroessen diskreter Wahrscheinlichkeitsverteilungen her.",
+      "descriptionEn": "Students establish the relationship between characteristics of empirical frequency distributions and characteristics of discrete probability distributions.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "gA",
+        "Stochastik",
+        "Zufallsgroessen"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Daten und Zufall' (gA), Kern, 'Zusammenhang zwischen Kenngroessen ... herstellen', S. 47.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Daten und Zufall"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "956ca330-e09e-4810-ab36-b037121491c7",
+      "title": "Erwartungswert, Varianz und Standardabweichung berechnen und interpretieren",
+      "titleEn": "Calculate and Interpret Expected Value, Variance and Standard Deviation",
+      "description": "Die Schuelerinnen und Schueler berechnen Erwartungswert, Varianz und Standardabweichung diskreter Zufallsgroessen und interpretieren die Ergebnisse im Kontext.",
+      "descriptionEn": "Students calculate expected value, variance, and standard deviation of discrete random variables and interpret the results in context.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "gA",
+        "Stochastik",
+        "Kenngroessen"
+      ],
+      "contains": [],
+      "requires": [
+        "2e8af0e2-421e-4212-8dd9-7e701c272277"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Daten und Zufall' (gA), Kern, 'Erwartungswert, Varianz und Standardabweichung berechnen und interpretieren', S. 47.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Daten und Zufall"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "1c6da7a3-7f62-44ab-95fb-16dbe8b7d5d0",
+      "title": "Faire Spiele mithilfe des Erwartungswerts kennzeichnen",
+      "titleEn": "Characterise Fair Games Using Expected Value",
+      "description": "Die Schuelerinnen und Schueler kennzeichnen faire Spiele mithilfe des Erwartungswerts und deuten die Fairness im jeweiligen Kontext.",
+      "descriptionEn": "Students characterise fair games using expected value and interpret fairness in the respective context.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "gA",
+        "Stochastik",
+        "Erwartungswert"
+      ],
+      "contains": [],
+      "requires": [
+        "956ca330-e09e-4810-ab36-b037121491c7"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Daten und Zufall' (gA), Kern, 'Faire Spiele mithilfe des Erwartungswerts kennzeichnen', S. 47.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Daten und Zufall"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "a1acddb1-cfa0-4e2a-8cda-e8d73a83a0a4",
+      "title": "Eignung des Binomialmodells beurteilen",
+      "titleEn": "Assess the Suitability of the Binomial Model",
+      "description": "Die Schuelerinnen und Schueler beurteilen in Sachkontexten, ob ein Binomialmodell fuer eine gegebene stochastische Situation angemessen ist.",
+      "descriptionEn": "Students assess in contextual situations whether a binomial model is appropriate for a given stochastic situation.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "gA",
+        "Stochastik",
+        "Binomialverteilung"
+      ],
+      "contains": [],
+      "requires": [
+        "80a23dda-0e8d-4f95-b86c-2d74a545cdd0"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Daten und Zufall' (gA), Kern, 'Eignung des Modells beurteilen', S. 47.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Daten und Zufall"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "b00989c9-bcce-4420-b3d0-42d9f2012c1b",
+      "title": "Beziehung zwischen Haeufigkeitsverteilungen und Binomialverteilungen erlaeutern",
+      "titleEn": "Explain the Relationship Between Frequency Distributions and Binomial Distributions",
+      "description": "Die Schuelerinnen und Schueler erlaeutern die Beziehung zwischen beobachteten Haeufigkeitsverteilungen und dem theoretischen Binomialmodell.",
+      "descriptionEn": "Students explain the relationship between observed frequency distributions and the theoretical binomial model.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "gA",
+        "Stochastik",
+        "Binomialverteilung"
+      ],
+      "contains": [],
+      "requires": [
+        "a1acddb1-cfa0-4e2a-8cda-e8d73a83a0a4"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Daten und Zufall' (gA), Kern, 'Beziehung zwischen Haeufigkeitsverteilungen und Binomialverteilungen erlaeutern', S. 47.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Daten und Zufall"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "14e48e62-4253-42ca-b9e4-61db989d79cb",
+      "title": "Zufallsgroesse sowie Parameter n und p einer Binomialverteilung im Sachkontext angeben",
+      "titleEn": "Specify the Random Variable and Parameters n and p of a Binomial Distribution in Context",
+      "description": "Die Schuelerinnen und Schueler geben in Sachsituationen die passende Zufallsgroesse sowie die Parameter n und p einer Binomialverteilung an.",
+      "descriptionEn": "Students specify in contextual situations the appropriate random variable as well as the parameters n and p of a binomial distribution.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "gA",
+        "Stochastik",
+        "Parameter"
+      ],
+      "contains": [],
+      "requires": [
+        "a1acddb1-cfa0-4e2a-8cda-e8d73a83a0a4"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Daten und Zufall' (gA), Kern, 'Zufallsgroesse sowie Parameter n und p ... angeben', S. 47.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Daten und Zufall"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "19a41a4e-f9d1-4db7-8efd-825bb230ccc8",
+      "title": "Bedeutung der Faktoren der Binomialformel erlaeutern",
+      "titleEn": "Explain the Meaning of the Factors in the Binomial Formula",
+      "description": "Die Schuelerinnen und Schueler erlaeutern die Bedeutung der Faktoren im Term der Binomialverteilung und verbinden diese mit dem zugrunde liegenden Sachkontext.",
+      "descriptionEn": "Students explain the meaning of the factors in the term of the binomial distribution and connect them to the underlying context.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "gA",
+        "Stochastik",
+        "Binomialformel"
+      ],
+      "contains": [],
+      "requires": [
+        "14e48e62-4253-42ca-b9e4-61db989d79cb"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Daten und Zufall' (gA), Kern, 'die Bedeutung der Faktoren im Term ... erlaeutern', S. 47.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Daten und Zufall"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "e0fdd179-3946-4799-ab62-de5200c71c31",
+      "title": "Wahrscheinlichkeiten fuer binomialverteilte Zufallsgroessen berechnen",
+      "titleEn": "Calculate Probabilities for Binomially Distributed Random Variables",
+      "description": "Die Schuelerinnen und Schueler berechnen Wahrscheinlichkeiten fuer binomialverteilte Zufallsgroessen und deuten die Ergebnisse im Kontext.",
+      "descriptionEn": "Students calculate probabilities for binomially distributed random variables and interpret the results in context.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "gA",
+        "Stochastik",
+        "Binomialverteilung"
+      ],
+      "contains": [],
+      "requires": [
+        "19a41a4e-f9d1-4db7-8efd-825bb230ccc8"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Daten und Zufall' (gA), Kern, 'Wahrscheinlichkeiten fuer binomialverteilte Zufallsgroessen berechnen', S. 47.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Daten und Zufall"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "0feff5de-869d-4cb2-910f-3690832438e3",
+      "title": "Kenngroessen binomialverteilter Zufallsgroessen berechnen",
+      "titleEn": "Calculate Characteristics of Binomially Distributed Random Variables",
+      "description": "Die Schuelerinnen und Schueler berechnen Erwartungswert und Standardabweichung binomialverteilter Zufallsgroessen und beziehen diese auf die zugrunde liegende Situation.",
+      "descriptionEn": "Students calculate the expected value and standard deviation of binomially distributed random variables and relate them to the underlying situation.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "gA",
+        "Stochastik",
+        "Kenngroessen"
+      ],
+      "contains": [],
+      "requires": [
+        "14e48e62-4253-42ca-b9e4-61db989d79cb",
+        "956ca330-e09e-4810-ab36-b037121491c7"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Daten und Zufall' (gA), Kern, 'die Kenngroessen Erwartungswert und Standardabweichung berechnen', S. 47.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Daten und Zufall"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "55a46ec1-64aa-46ba-8f72-26e4e847bf6a",
+      "title": "Grafische Darstellungen von Binomialverteilungen deuten",
+      "titleEn": "Interpret Graphical Representations of Binomial Distributions",
+      "description": "Die Schuelerinnen und Schueler deuten grafische Darstellungen von Binomialverteilungen im Hinblick auf Parameter und Kenngroessen.",
+      "descriptionEn": "Students interpret graphical representations of binomial distributions with respect to parameters and key measures.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "gA",
+        "Stochastik",
+        "Histogramme"
+      ],
+      "contains": [],
+      "requires": [
+        "b00989c9-bcce-4420-b3d0-42d9f2012c1b",
+        "0feff5de-869d-4cb2-910f-3690832438e3"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Daten und Zufall' (gA), Kern, 'die grafischen Darstellungen von Binomialverteilungen ... deuten', S. 47.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Daten und Zufall"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "8af513ca-63a4-4dc6-bfa2-e8e661062278",
+      "title": "Prognoseintervalle fuer Binomialverteilungen grafisch oder tabellarisch ermitteln",
+      "titleEn": "Determine Prediction Intervals for Binomial Distributions Graphically or Tabularly",
+      "description": "Die Schuelerinnen und Schueler ermitteln Prognoseintervalle fuer Binomialverteilungen grafisch oder tabellarisch und interpretieren die Ergebnisse im Kontext.",
+      "descriptionEn": "Students determine prediction intervals for binomial distributions graphically or in tabular form and interpret the results in context.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "gA",
+        "Stochastik",
+        "Prognoseintervalle"
+      ],
+      "contains": [],
+      "requires": [
+        "55a46ec1-64aa-46ba-8f72-26e4e847bf6a",
+        "0feff5de-869d-4cb2-910f-3690832438e3"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Daten und Zufall' (gA), Kern, 'Prognoseintervalle grafisch oder tabellarisch ermitteln und interpretieren', S. 47.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Daten und Zufall"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "9eeb42ce-7927-4a6f-8490-66825b3b10a4",
+      "title": "Vertraeglichkeit eines Anteils oder Parameters mit einer Stichprobe beurteilen",
+      "titleEn": "Assess the Compatibility of a Proportion or Parameter with a Sample",
+      "description": "Die Schuelerinnen und Schueler beurteilen, ob ein vorgegebener Anteil der Grundgesamtheit oder ein vorgegebener Parameterwert mit einer gegebenen Stichprobe vertraeglich ist.",
+      "descriptionEn": "Students assess whether a given population proportion or parameter value is compatible with a given sample.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "gA",
+        "Stochastik",
+        "Stichprobe"
+      ],
+      "contains": [],
+      "requires": [
+        "8af513ca-63a4-4dc6-bfa2-e8e661062278"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Daten und Zufall' (gA), Kern, 'beurteilen, ob ein vorgegebener Anteil ... vertraeglich ist', S. 47.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Daten und Zufall"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "2aa45c54-e884-4a59-8731-8cb171ca7581",
+      "title": "Simulationen zur Untersuchung stochastischer Situationen verwenden",
+      "titleEn": "Use Simulations to Investigate Stochastic Situations",
+      "description": "Die Schuelerinnen und Schueler verwenden Simulationen, um stochastische Situationen zu untersuchen und Ergebnisse mit theoretischen Modellen zu vergleichen.",
+      "descriptionEn": "Students use simulations to investigate stochastic situations and compare the results with theoretical models.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "gA",
+        "Stochastik",
+        "Simulation"
+      ],
+      "contains": [],
+      "requires": [
+        "a1acddb1-cfa0-4e2a-8cda-e8d73a83a0a4"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Daten und Zufall' (gA), Kern, 'Simulationen zur Untersuchung stochastischer Situationen verwenden', S. 47.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Daten und Zufall"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "c3ab2545-c054-40c5-91be-b122a2d6d69f",
+      "title": "Bestimmtes Integral",
+      "titleEn": "Definite Integral",
+      "description": "Retained Split-Cluster fuer den importierten niedersaechsischen eA-Streifen zum bestimmten Integral mit Bestandsrekonstruktion, Produktsummen, Hauptsatz, Berechnung und Kontextdeutung bestimmter Integrale sowie Flaecheninhalten.",
+      "descriptionEn": "Retained split cluster for the imported Lower Saxony advanced-level strip on the definite integral with stock reconstruction, product sums, the fundamental theorem, computation and contextual interpretation of definite integrals, and area determination.",
+      "weight": 6,
+      "tags": [
+        "Q",
+        "eA",
+        "Analysis",
+        "Integralrechnung"
+      ],
+      "contains": [
+        "5a9af247-1237-4745-b9e9-fff05a00177a",
+        "2815d21c-12ca-48ef-8ce0-4a602ca26467",
+        "020870d8-912e-4cb6-933b-29e66173c60c",
+        "2f599e4e-c245-447b-9254-83bd74b74fd6",
+        "bb408821-6080-4eaa-87ae-ed3b2a7c97fc",
+        "10c2c4f2-bb83-4c75-afa3-dfa5b88b956b"
+      ],
+      "requires": [
+        "6aa63fbe-6b48-41ae-a650-7d80074c5a94"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Von der Aenderung zum Bestand - Integralrechnung' (eA), Kern, Abschnitt 'Bestimmtes Integral', S. 48.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Integralrechnung"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "b19dbf31-dab8-43b3-8ee5-29c1e3c3b0a1",
+      "title": "Integral- und Stammfunktion",
+      "titleEn": "Integral and Antiderivative Function",
+      "description": "Retained Split-Cluster fuer den importierten niedersaechsischen eA-Streifen zu Integralfunktionen, zur Unterscheidung von Integral- und Stammfunktion sowie zu erweiterten Stammfunktionsregeln inklusive ln-Funktion.",
+      "descriptionEn": "Retained split cluster for the imported Lower Saxony advanced-level strip on integral functions, the distinction between integral and antiderivative functions, and extended antiderivative rules including the natural logarithm.",
+      "weight": 6,
+      "tags": [
+        "Q",
+        "eA",
+        "Analysis",
+        "Stammfunktionen"
+      ],
+      "contains": [
+        "3d1b0ae4-ed3b-4540-a008-6cf0f4e0b5a9",
+        "b7da0d14-fe5d-477b-a6c8-8eab2c5fce3b",
+        "4d3e308f-877e-45db-9a5f-ab23ce754d0a",
+        "ae3d0ae9-438a-4681-aa8a-e479d7486a14",
+        "6f19e7b8-416b-47b4-ac8e-f7038c25efd9",
+        "f95f2aa9-91ff-4622-a62d-680132595b11"
+      ],
+      "requires": [
+        "c3ab2545-c054-40c5-91be-b122a2d6d69f"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Von der Aenderung zum Bestand - Integralrechnung' (eA), Kern, Abschnitt 'Integral- und Stammfunktion', S. 48.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Integralrechnung"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "349755d3-03b8-4125-9416-a245d60ba61e",
+      "title": "Vertiefungen",
+      "titleEn": "Extensions",
+      "description": "Retained Split-Cluster fuer den importierten niedersaechsischen eA-Streifen zu Rotationskoerpern und uneigentlichen Integralen als Vertiefungen des Integralbegriffs.",
+      "descriptionEn": "Retained split cluster for the imported Lower Saxony advanced-level strip on solids of revolution and improper integrals as deepenings of the integral concept.",
+      "weight": 2,
+      "tags": [
+        "Q",
+        "eA",
+        "Analysis",
+        "Vertiefung"
+      ],
+      "contains": [
+        "977412d4-0a99-4b73-9eb2-ecdb3e09e041",
+        "83cfe09b-f2d6-46a5-bb8a-d68636b27b50"
+      ],
+      "requires": [
+        "b19dbf31-dab8-43b3-8ee5-29c1e3c3b0a1"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Von der Aenderung zum Bestand - Integralrechnung' (eA), Kern, Abschnitt 'Vertiefungen', S. 48.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Integralrechnung"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "5a9af247-1237-4745-b9e9-fff05a00177a",
+      "title": "Bestaende aus Aenderungsraten und Anfangsbestand rekonstruieren",
+      "titleEn": "Reconstruct Quantities from Rates of Change and Initial Value",
+      "description": "Die Schuelerinnen und Schueler rekonstruieren Bestaende aus Aenderungsraten und Anfangsbestand und deuten das Integral als aus der Aenderung gewonnene Gesamtgroesse.",
+      "descriptionEn": "Students reconstruct quantities from rates of change and an initial value and interpret the integral as the total quantity obtained from the rate.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "eA",
+        "Analysis",
+        "Integralrechnung"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Von der Aenderung zum Bestand - Integralrechnung' (eA), Kern, 'Bestaende aus Aenderungsraten und Anfangsbestand (re-)konstruieren', S. 48.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Integralrechnung"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "2815d21c-12ca-48ef-8ce0-4a602ca26467",
+      "title": "Integral als Grenzwert von Produktsummen beschreiben",
+      "titleEn": "Describe the Integral as the Limit of Product Sums",
+      "description": "Die Schuelerinnen und Schueler beschreiben das Integral als Grenzwert von Produktsummen und verknuepfen diese Sicht mit Gesamtwirkungen im Kontext.",
+      "descriptionEn": "Students describe the integral as the limit of product sums and connect this view to total effects in context.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "eA",
+        "Analysis",
+        "Produktsummen"
+      ],
+      "contains": [],
+      "requires": [
+        "5a9af247-1237-4745-b9e9-fff05a00177a"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Von der Aenderung zum Bestand - Integralrechnung' (eA), Kern, 'das Integral als Grenzwert von Produktsummen beschreiben', S. 48.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Integralrechnung"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "020870d8-912e-4cb6-933b-29e66173c60c",
+      "title": "Hauptsatz der Differential- und Integralrechnung geometrisch-anschaulich begruenden",
+      "titleEn": "Justify the Fundamental Theorem of Calculus Geometrically and Intuitively",
+      "description": "Die Schuelerinnen und Schueler begruenden den Hauptsatz der Differential- und Integralrechnung geometrisch-anschaulich und erklaeren den Zusammenhang von Ableitung und Integral.",
+      "descriptionEn": "Students justify the fundamental theorem of calculus geometrically and intuitively and explain the relationship between derivative and integral.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "eA",
+        "Analysis",
+        "Hauptsatz"
+      ],
+      "contains": [],
+      "requires": [
+        "2815d21c-12ca-48ef-8ce0-4a602ca26467"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Von der Aenderung zum Bestand - Integralrechnung' (eA), Kern, 'den Hauptsatz ... geometrisch-anschaulich begruenden', S. 48.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Integralrechnung"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "2f599e4e-c245-447b-9254-83bd74b74fd6",
+      "title": "Bestimmte Integrale berechnen",
+      "titleEn": "Calculate Definite Integrals",
+      "description": "Die Schuelerinnen und Schueler berechnen bestimmte Integrale sicher und nutzen dabei passende Stammfunktionen sowie den Hauptsatz.",
+      "descriptionEn": "Students confidently calculate definite integrals and use suitable antiderivatives as well as the fundamental theorem.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "eA",
+        "Analysis",
+        "Integralrechnung"
+      ],
+      "contains": [],
+      "requires": [
+        "020870d8-912e-4cb6-933b-29e66173c60c"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Von der Aenderung zum Bestand - Integralrechnung' (eA), Kern, 'bestimmte Integrale berechnen', S. 48.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Integralrechnung"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "bb408821-6080-4eaa-87ae-ed3b2a7c97fc",
+      "title": "Bestimmte Integrale im Sachzusammenhang deuten",
+      "titleEn": "Interpret Definite Integrals in Context",
+      "description": "Die Schuelerinnen und Schueler deuten bestimmte Integrale im Sachzusammenhang, insbesondere als rekonstruierte Bestaende und Gesamtwirkungen.",
+      "descriptionEn": "Students interpret definite integrals in context, especially as reconstructed quantities and total effects.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "eA",
+        "Analysis",
+        "Sachkontext"
+      ],
+      "contains": [],
+      "requires": [
+        "2f599e4e-c245-447b-9254-83bd74b74fd6"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Von der Aenderung zum Bestand - Integralrechnung' (eA), Kern, 'bestimmte Integrale auch im Sachzusammenhang deuten ...', S. 48.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Integralrechnung"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "10c2c4f2-bb83-4c75-afa3-dfa5b88b956b",
+      "title": "Flaecheninhalte zwischen Funktionsgraphen bestimmen",
+      "titleEn": "Determine Areas Between Function Graphs",
+      "description": "Die Schuelerinnen und Schueler bestimmen Inhalte von Flaechen, die durch Funktionsgraphen begrenzt sind, und stellen dazu passende Integrale auf.",
+      "descriptionEn": "Students determine areas bounded by function graphs and set up suitable integrals for them.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "eA",
+        "Analysis",
+        "Flaechen"
+      ],
+      "contains": [],
+      "requires": [
+        "2f599e4e-c245-447b-9254-83bd74b74fd6"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Von der Aenderung zum Bestand - Integralrechnung' (eA), Kern, 'Inhalte von Flaechen ... bestimmen', S. 48.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Integralrechnung"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "3d1b0ae4-ed3b-4540-a008-6cf0f4e0b5a9",
+      "title": "Integralfunktionen als Bestands- oder Flaecheninhaltsfunktion interpretieren",
+      "titleEn": "Interpret Integral Functions as Quantity or Area Functions",
+      "description": "Die Schuelerinnen und Schueler interpretieren Integralfunktionen als Bestands- oder Flaecheninhaltsfunktion und beschreiben ihren Zusammenhang mit der Randfunktion.",
+      "descriptionEn": "Students interpret integral functions as quantity or area functions and describe their relationship to the boundary function.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "eA",
+        "Analysis",
+        "Integralfunktion"
+      ],
+      "contains": [],
+      "requires": [
+        "c3ab2545-c054-40c5-91be-b122a2d6d69f"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Von der Aenderung zum Bestand - Integralrechnung' (eA), Kern, 'Integralfunktionen auch als Bestands- oder Flaecheninhaltsfunktion interpretieren', S. 48.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Integralrechnung"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "b7da0d14-fe5d-477b-a6c8-8eab2c5fce3b",
+      "title": "Integral- und Stammfunktion unterscheiden",
+      "titleEn": "Distinguish Between Integral and Antiderivative Functions",
+      "description": "Die Schuelerinnen und Schueler unterscheiden Integral- und Stammfunktion begrifflich und erklaeren ihre jeweilige Rolle beim Modellieren und Berechnen.",
+      "descriptionEn": "Students conceptually distinguish between integral and antiderivative functions and explain their respective role in modelling and computation.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "eA",
+        "Analysis",
+        "Stammfunktion"
+      ],
+      "contains": [],
+      "requires": [
+        "3d1b0ae4-ed3b-4540-a008-6cf0f4e0b5a9"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Von der Aenderung zum Bestand - Integralrechnung' (eA), Kern, 'Integral- und Stammfunktion unterscheiden', S. 48.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Integralrechnung"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "4d3e308f-877e-45db-9a5f-ab23ce754d0a",
+      "title": "Stammfunktionen zu xn, e^x, sin(x) und cos(x) angeben",
+      "titleEn": "State Antiderivatives for xn, e^x, sin(x) and cos(x)",
+      "description": "Die Schuelerinnen und Schueler geben Stammfunktionen zu Potenzfunktionen, e-Funktion, Sinus und Kosinus an und nutzen diese zur Berechnung bestimmter Integrale.",
+      "descriptionEn": "Students state antiderivatives for power functions, the e function, sine, and cosine and use them to calculate definite integrals.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "eA",
+        "Analysis",
+        "Stammfunktion"
+      ],
+      "contains": [],
+      "requires": [
+        "b7da0d14-fe5d-477b-a6c8-8eab2c5fce3b"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Von der Aenderung zum Bestand - Integralrechnung' (eA), Kern, 'Stammfunktionen zu Funktionen ... angeben', S. 48.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Integralrechnung"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "ae3d0ae9-438a-4681-aa8a-e479d7486a14",
+      "title": "ln als Stammfunktion von 1/x verwenden",
+      "titleEn": "Use ln as an Antiderivative of 1/x",
+      "description": "Die Schuelerinnen und Schueler verwenden die ln-Funktion als eine Stammfunktion von 1/x fuer x > 0 und begruenden ihren Einsatz in Integralen.",
+      "descriptionEn": "Students use the natural logarithm as an antiderivative of 1/x for x > 0 and justify its use in integrals.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "eA",
+        "Analysis",
+        "Logarithmus"
+      ],
+      "contains": [],
+      "requires": [
+        "4d3e308f-877e-45db-9a5f-ab23ce754d0a"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Von der Aenderung zum Bestand - Integralrechnung' (eA), Kern, 'die ln-Funktion als eine Stammfunktion ... verwenden', S. 48.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Integralrechnung"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "6f19e7b8-416b-47b4-ac8e-f7038c25efd9",
+      "title": "Stammfunktionen mit Kettenregel, Summen- und Faktorregel entwickeln",
+      "titleEn": "Develop Antiderivatives Using Chain, Sum and Scalar Rules",
+      "description": "Die Schuelerinnen und Schueler entwickeln Stammfunktionen mit der Kettenregel bei linearer innerer Funktion sowie mit Summen- und Faktorregel.",
+      "descriptionEn": "Students develop antiderivatives using the chain rule with a linear inner function as well as the sum and scalar rules.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "eA",
+        "Analysis",
+        "Integrationsmethoden"
+      ],
+      "contains": [],
+      "requires": [
+        "4d3e308f-877e-45db-9a5f-ab23ce754d0a"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Von der Aenderung zum Bestand - Integralrechnung' (eA), Kern, 'Stammfunktionen mit der Kettenregel ... entwickeln', S. 48.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Integralrechnung"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "f95f2aa9-91ff-4622-a62d-680132595b11",
+      "title": "Stammfunktionen mithilfe der Ableitungsregeln ueberpruefen",
+      "titleEn": "Check Antiderivatives Using Differentiation Rules",
+      "description": "Die Schuelerinnen und Schueler ueberpruefen gefundene Stammfunktionen mithilfe der Ableitungsregeln und begruenden ihre Kontrolle nachvollziehbar.",
+      "descriptionEn": "Students check found antiderivatives using differentiation rules and justify their verification clearly.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "eA",
+        "Analysis",
+        "Stammfunktion"
+      ],
+      "contains": [],
+      "requires": [
+        "6f19e7b8-416b-47b4-ac8e-f7038c25efd9",
+        "ae3d0ae9-438a-4681-aa8a-e479d7486a14"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Von der Aenderung zum Bestand - Integralrechnung' (eA), Kern, 'Stammfunktionen mithilfe der Ableitungsregeln ueberpruefen', S. 48.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Integralrechnung"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "977412d4-0a99-4b73-9eb2-ecdb3e09e041",
+      "title": "Volumenformel fuer Rotationskoerper herleiten und anwenden",
+      "titleEn": "Derive and Apply the Volume Formula for Solids of Revolution",
+      "description": "Die Schuelerinnen und Schueler leiten die Volumenformel fuer Koerper her, die durch Rotation eines Graphen um die x-Achse entstehen, und wenden sie auf passende Aufgaben an.",
+      "descriptionEn": "Students derive the volume formula for bodies generated by rotating a graph around the x-axis and apply it to suitable tasks.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "eA",
+        "Analysis",
+        "Rotationskoerper"
+      ],
+      "contains": [],
+      "requires": [
+        "b19dbf31-dab8-43b3-8ee5-29c1e3c3b0a1"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Von der Aenderung zum Bestand - Integralrechnung' (eA), Kern, 'Volumenformel fuer Koerper ... herleiten und anwenden', S. 48.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Integralrechnung"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "83cfe09b-f2d6-46a5-bb8a-d68636b27b50",
+      "title": "Uneigentliche Integrale als Grenzwerte interpretieren und bestimmen",
+      "titleEn": "Interpret and Determine Improper Integrals as Limits",
+      "description": "Die Schuelerinnen und Schueler interpretieren uneigentliche Integrale als Grenzwerte von Bestaenden oder Flaecheninhalten und bestimmen diese in geeigneten Situationen.",
+      "descriptionEn": "Students interpret improper integrals as limits of quantities or areas and determine them in suitable situations.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "eA",
+        "Analysis",
+        "UneigentlicheIntegrale"
+      ],
+      "contains": [],
+      "requires": [
+        "977412d4-0a99-4b73-9eb2-ecdb3e09e041"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Von der Aenderung zum Bestand - Integralrechnung' (eA), Kern, 'uneigentliche Integrale als Grenzwerte ... interpretieren und bestimmen', S. 48.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Integralrechnung"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "4672d009-7864-43c3-8f3a-b8a80cc428d0",
+      "title": "Untersuchung von Wachstumsprozessen",
+      "titleEn": "Investigating Growth Processes",
+      "description": "Retained Split-Cluster fuer den importierten niedersaechsischen eA-Streifen zu begrenztem und logistischem Wachstum, zum Vergleich von Wachstumsmodellen, zu asymptotischem Verhalten und zu Differentialgleichungen als Wachstumsmodellen.",
+      "descriptionEn": "Retained split cluster for the imported Lower Saxony advanced-level strip on bounded and logistic growth, model comparison, asymptotic behaviour, and differential equations as growth models.",
+      "weight": 4,
+      "tags": [
+        "Q",
+        "eA",
+        "Analysis",
+        "Wachstumsmodelle"
+      ],
+      "contains": [
+        "c08434eb-2e55-49f1-914d-cac103eafaee",
+        "21411df3-4671-4ab9-b03d-f7790ecc9e4a",
+        "d3ea1cd8-6e70-4d85-88ad-0fe17f0b23bf",
+        "2bfa7bb5-9db9-4b87-99fd-8bc7a48ca19d"
+      ],
+      "requires": [
+        "6aa63fbe-6b48-41ae-a650-7d80074c5a94"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Wachstumsmodelle - Exponentialfunktion' (eA), Kern, Abschnitt 'Untersuchung von Wachstumsprozessen', S. 49.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Exponentialfunktionen"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "20496670-2671-4451-a87e-d018a392eb28",
+      "title": "e-Funktion",
+      "titleEn": "e Function",
+      "description": "Retained Split-Cluster fuer den importierten niedersaechsischen eA-Streifen zur Basis e, zu Ableitungen von e-Funktionen, zu Verknuepfungen mit ganzrationalen Funktionen, Exponentialgleichungen, Ableitungsregeln, Parametern und Differentialgleichungen.",
+      "descriptionEn": "Retained split cluster for the imported Lower Saxony advanced-level strip on the base e, derivatives of e functions, links with polynomial functions, exponential equations, differentiation rules, parameters, and differential equations.",
+      "weight": 8,
+      "tags": [
+        "Q",
+        "eA",
+        "Analysis",
+        "Exponentialfunktionen"
+      ],
+      "contains": [
+        "5f0418a4-b162-4811-8b2c-5c71c1935866",
+        "5a1b268d-bc78-457e-9948-c4e5fea55b67",
+        "7a6bbc7f-f610-4748-93f5-b71b1550542d",
+        "50f3a19c-128a-4928-ba35-2878a46b1a0a",
+        "e0564151-b163-45d4-bfd4-45cc099ad950",
+        "3425668f-2616-42b7-9e3b-af2ac8f525ec",
+        "020f5ece-24ba-4af7-b936-fb66b4ea4842",
+        "ce475fa6-8237-4e3b-aa9c-d61e147fe845"
+      ],
+      "requires": [
+        "4672d009-7864-43c3-8f3a-b8a80cc428d0"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Wachstumsmodelle - Exponentialfunktion' (eA), Kern, Abschnitt 'e-Funktion', S. 49.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Exponentialfunktionen"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "c08434eb-2e55-49f1-914d-cac103eafaee",
+      "title": "Begrenztes und logistisches Wachstum als Funktionen beschreiben",
+      "titleEn": "Describe bounded and logistic growth as functions",
+      "description": "Die Schuelerinnen und Schueler beschreiben begrenztes und logistisches Wachstum mithilfe geeigneter Funktionen, auch in Form von Verknuepfungen und Verkettungen.",
+      "descriptionEn": "Students describe bounded and logistic growth using suitable functions, including as links and compositions of functions.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "eA",
+        "Analysis",
+        "Wachstumsmodelle"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Wachstumsmodelle - Exponentialfunktion' (eA), Kern, 'begrenztes und logistisches Wachstum beschreiben ...', S. 49.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Exponentialfunktionen"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "21411df3-4671-4ab9-b03d-f7790ecc9e4a",
+      "title": "Verschiedene Wachstumsmodelle vergleichen",
+      "titleEn": "Compare different growth models",
+      "description": "Die Schuelerinnen und Schueler vergleichen exponentielle, begrenzte und logistische Wachstumsmodelle und arbeiten Unterschiede im Verlauf und in den Modellannahmen heraus.",
+      "descriptionEn": "Students compare exponential, bounded, and logistic growth models and work out differences in their behaviour and modelling assumptions.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "eA",
+        "Analysis",
+        "Wachstumsmodelle"
+      ],
+      "contains": [],
+      "requires": [
+        "c08434eb-2e55-49f1-914d-cac103eafaee"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Wachstumsmodelle - Exponentialfunktion' (eA), Kern, 'verschiedene Wachstumsmodelle vergleichen', S. 49.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Exponentialfunktionen"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "d3ea1cd8-6e70-4d85-88ad-0fe17f0b23bf",
+      "title": "Asymptotisches Verhalten von Wachstumsmodellen im Sachzusammenhang beschreiben",
+      "titleEn": "Describe asymptotic behaviour of growth models in context",
+      "description": "Die Schuelerinnen und Schueler beschreiben asymptotisches Verhalten von Wachstumsmodellen im jeweiligen Sachzusammenhang und deuten Grenzwerte plausibel.",
+      "descriptionEn": "Students describe the asymptotic behaviour of growth models in their context and interpret limit values plausibly.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "eA",
+        "Analysis",
+        "Wachstumsmodelle"
+      ],
+      "contains": [],
+      "requires": [
+        "21411df3-4671-4ab9-b03d-f7790ecc9e4a"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Wachstumsmodelle - Exponentialfunktion' (eA), Kern, 'asymptotisches Verhalten im Sachzusammenhang beschreiben', S. 49.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Exponentialfunktionen"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "2bfa7bb5-9db9-4b87-99fd-8bc7a48ca19d",
+      "title": "Wachstumsmodelle mit Differentialgleichungen beschreiben und Loesungsfunktionen pruefen",
+      "titleEn": "Describe growth models with differential equations and test solution functions",
+      "description": "Die Schuelerinnen und Schueler beschreiben Wachstumsmodelle mithilfe zugehoeriger Differentialgleichungen und ueberpruefen moegliche Loesungsfunktionen durch Einsetzen.",
+      "descriptionEn": "Students describe growth models using corresponding differential equations and check possible solution functions by substitution.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "eA",
+        "Analysis",
+        "Differentialgleichungen"
+      ],
+      "contains": [],
+      "requires": [
+        "21411df3-4671-4ab9-b03d-f7790ecc9e4a",
+        "d3ea1cd8-6e70-4d85-88ad-0fe17f0b23bf"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Wachstumsmodelle - Exponentialfunktion' (eA), Kern, 'Modelle mithilfe zugehoeriger Differentialgleichungen beschreiben und moegliche Loesungsfunktionen ueberpruefen', S. 49.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Exponentialfunktionen"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "5f0418a4-b162-4811-8b2c-5c71c1935866",
+      "title": "Die Basis e durch (e^x)' = e^x charakterisieren",
+      "titleEn": "Characterise the base e by (e^x)' = e^x",
+      "description": "Die Schuelerinnen und Schueler charakterisieren die Basis e durch die Eigenschaft, dass bei e^x Ableitungsfunktion und Funktion uebereinstimmen.",
+      "descriptionEn": "Students characterise the base e by the property that for e^x the derivative function and the function itself coincide.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "eA",
+        "Analysis",
+        "Exponentialfunktionen"
+      ],
+      "contains": [],
+      "requires": [
+        "c08434eb-2e55-49f1-914d-cac103eafaee"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Wachstumsmodelle - Exponentialfunktion' (eA), Kern, 'die Basis e durch (e^x)' = e^x charakterisieren', S. 49.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Exponentialfunktionen"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "5a1b268d-bc78-457e-9948-c4e5fea55b67",
+      "title": "Ableitungsfunktionen von e^x und a^x verwenden",
+      "titleEn": "Use derivative functions of e^x and a^x",
+      "description": "Die Schuelerinnen und Schueler verwenden die Ableitungsfunktion von e^x sowie von Exponentialfunktionen der Form a^x in passenden Aufgaben und Modellen.",
+      "descriptionEn": "Students use the derivative function of e^x and of exponential functions of the form a^x in suitable problems and models.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "eA",
+        "Analysis",
+        "Exponentialfunktionen"
+      ],
+      "contains": [],
+      "requires": [
+        "5f0418a4-b162-4811-8b2c-5c71c1935866"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Wachstumsmodelle - Exponentialfunktion' (eA), Kern, 'die Ableitungsfunktion ... von e^x und a^x verwenden', S. 49.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Exponentialfunktionen"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "7a6bbc7f-f610-4748-93f5-b71b1550542d",
+      "title": "Verkettung und Verknuepfung mit ganzrationalen Funktionen beschreiben und untersuchen",
+      "titleEn": "Describe and investigate composition and combination with polynomial functions",
+      "description": "Die Schuelerinnen und Schueler beschreiben und untersuchen Verkettungen und Verknuepfungen der e-Funktion mit ganzrationalen Funktionen auch in Sachsituationen.",
+      "descriptionEn": "Students describe and investigate compositions and combinations of the e function with polynomial functions, also in real-world contexts.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "eA",
+        "Analysis",
+        "Exponentialfunktionen"
+      ],
+      "contains": [],
+      "requires": [
+        "5a1b268d-bc78-457e-9948-c4e5fea55b67"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Wachstumsmodelle - Exponentialfunktion' (eA), Kern, 'Verkettung und Verknuepfung mit ganzrationalen Funktionen ... beschreiben und untersuchen', S. 49.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Exponentialfunktionen"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "50f3a19c-128a-4928-ba35-2878a46b1a0a",
+      "title": "Asymptotisches Verhalten additiver Verknuepfungen linearer Funktionen mit e-Funktionen beschreiben",
+      "titleEn": "Describe asymptotic behaviour of additive combinations of linear functions with e functions",
+      "description": "Die Schuelerinnen und Schueler beschreiben das asymptotische Verhalten additiver Verknuepfungen linearer Funktionen mit e-Funktionen und deuten dieses im Kontext.",
+      "descriptionEn": "Students describe the asymptotic behaviour of additive combinations of linear functions with e functions and interpret it in context.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "eA",
+        "Analysis",
+        "Asymptotik"
+      ],
+      "contains": [],
+      "requires": [
+        "7a6bbc7f-f610-4748-93f5-b71b1550542d"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Wachstumsmodelle - Exponentialfunktion' (eA), Kern, 'asymptotisches Verhalten bei additiver Verknuepfung linearer Funktionen mit e-Funktionen beschreiben', S. 49.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Exponentialfunktionen"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "e0564151-b163-45d4-bfd4-45cc099ad950",
+      "title": "Exponentialgleichungen zur Basis e loesen",
+      "titleEn": "Solve exponential equations with base e",
+      "description": "Die Schuelerinnen und Schueler loesen Exponentialgleichungen zur Basis e und deuten die Ergebnisse in passenden Kontexten.",
+      "descriptionEn": "Students solve exponential equations with base e and interpret the results in suitable contexts.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "eA",
+        "Analysis",
+        "Exponentialgleichungen"
+      ],
+      "contains": [],
+      "requires": [
+        "5f0418a4-b162-4811-8b2c-5c71c1935866"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Wachstumsmodelle - Exponentialfunktion' (eA), Kern, 'Exponentialgleichungen loesen', S. 49.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Exponentialfunktionen"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "3425668f-2616-42b7-9e3b-af2ac8f525ec",
+      "title": "Produkt- und Kettenregel in e-Funktionsmodellen anwenden",
+      "titleEn": "Apply product and chain rule in e-function models",
+      "description": "Die Schuelerinnen und Schueler wenden Produkt- und Kettenregel in Funktionstermen mit e-Funktionen und ganzrationalen Anteilen an.",
+      "descriptionEn": "Students apply the product and chain rule in function terms involving e functions and polynomial components.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "eA",
+        "Analysis",
+        "Ableitungsregeln"
+      ],
+      "contains": [],
+      "requires": [
+        "7a6bbc7f-f610-4748-93f5-b71b1550542d"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Wachstumsmodelle - Exponentialfunktion' (eA), Kern, 'Produkt- und Kettenregel anwenden', S. 49.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Exponentialfunktionen"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "020f5ece-24ba-4af7-b936-fb66b4ea4842",
+      "title": "Scharparameter auch zur Angleichung an Daten ermitteln",
+      "titleEn": "Determine family parameters, also for fitting data",
+      "description": "Die Schuelerinnen und Schueler ermitteln Scharparameter, auch zur Angleichung an Daten, und begruenden ihre Parameterwahl nachvollziehbar.",
+      "descriptionEn": "Students determine family parameters, also for fitting data, and justify their parameter choices clearly.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "eA",
+        "Analysis",
+        "Parameter"
+      ],
+      "contains": [],
+      "requires": [
+        "7a6bbc7f-f610-4748-93f5-b71b1550542d",
+        "e0564151-b163-45d4-bfd4-45cc099ad950"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Wachstumsmodelle - Exponentialfunktion' (eA), Kern, 'Scharparameter, auch zur Angleichung an Daten, ermitteln', S. 49.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Exponentialfunktionen"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "ce475fa6-8237-4e3b-aa9c-d61e147fe845",
+      "title": "Loesungsfunktionen von Differentialgleichungen durch Einsetzen ueberpruefen",
+      "titleEn": "Check solution functions of differential equations by substitution",
+      "description": "Die Schuelerinnen und Schueler ueberpruefen Loesungsfunktionen von Differentialgleichungen durch Einsetzen und beurteilen ihre Eignung fuer das Modell.",
+      "descriptionEn": "Students check solution functions of differential equations by substitution and assess their suitability for the model.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "eA",
+        "Analysis",
+        "Differentialgleichungen"
+      ],
+      "contains": [],
+      "requires": [
+        "2bfa7bb5-9db9-4b87-99fd-8bc7a48ca19d",
+        "3425668f-2616-42b7-9e3b-af2ac8f525ec"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Wachstumsmodelle - Exponentialfunktion' (eA), Kern, 'Loesungsfunktionen von Differentialgleichungen durch Einsetzen ueberpruefen', S. 49.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Exponentialfunktionen"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "63015895-1473-49fe-bc2a-6f7525111d90",
+      "title": "Raumanschauung und Koordinatisierung",
+      "titleEn": "Spatial Reasoning and Coordinate Work",
+      "description": "Retained Split-Cluster fuer den importierten niedersaechsischen eA-Streifen zu Punkten und Vektoren im Raum, bildlicher Darstellung, Vektoroperationen, Kollinearitaet sowie Projektionen vom Raum in die Ebene mit Matrizen.",
+      "descriptionEn": "Retained split cluster for the imported Lower Saxony advanced-level strip on points and vectors in space, pictorial representation, vector operations, collinearity, and projections from space to the plane using matrices.",
+      "weight": 5,
+      "tags": [
+        "Q",
+        "eA",
+        "Geometry",
+        "Koordinatisierung"
+      ],
+      "contains": [
+        "de760936-0c99-4680-a3f0-152d22f44fbf",
+        "9d124898-e71f-4f3f-a97e-d3158a4b2f7f",
+        "fff9a36a-bab3-48ff-b397-b461b0cf33f8",
+        "b606732f-e2b1-4bb7-abde-84c47feba442",
+        "67bd9b91-3c08-4d20-9200-8241d66cb2c1"
+      ],
+      "requires": [
+        "6aa63fbe-6b48-41ae-a650-7d80074c5a94"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Raumanschauung und Koordinatisierung' (eA), Kern, Abschnitt 'Raumanschauung und Koordinatisierung', S. 51.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Analytische Geometrie"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "a84e6bc9-f1da-4b3d-ab73-ffd9a702ab33",
+      "title": "Darstellungsformen",
+      "titleEn": "Representations",
+      "description": "Retained Split-Cluster fuer den importierten niedersaechsischen eA-Streifen zu Geraden- und Ebenengleichungen in verschiedenen Formen sowie zum Wechsel zwischen Darstellungsformen.",
+      "descriptionEn": "Retained split cluster for the imported Lower Saxony advanced-level strip on line and plane equations in different forms and on changing between representations.",
+      "weight": 4,
+      "tags": [
+        "Q",
+        "eA",
+        "Geometry",
+        "Darstellungsformen"
+      ],
+      "contains": [
+        "1ea1a45a-5446-4f14-a249-79aec83248f8",
+        "99bfe5d2-e32b-4ccf-b756-dbf654185d64",
+        "350d03c7-9968-4952-9fe6-0482d8edd6fd",
+        "6aa34379-00b7-4932-bac0-e40845fbda72"
+      ],
+      "requires": [
+        "63015895-1473-49fe-bc2a-6f7525111d90"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Raumanschauung und Koordinatisierung' (eA), Kern, Abschnitt 'Darstellungsformen', S. 51.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Analytische Geometrie"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "e7e97cd3-d923-404f-ae4d-996e3cdad3c2",
+      "title": "Masse und Lagen",
+      "titleEn": "Measures and Positions",
+      "description": "Retained Split-Cluster fuer den importierten niedersaechsischen eA-Streifen zu Abstaenden, Skalarprodukt, Orthogonalitaet, Winkeln, Lagebeziehungen, Schnittproblemen und dem Gauss-Algorithmus.",
+      "descriptionEn": "Retained split cluster for the imported Lower Saxony advanced-level strip on distances, scalar product, orthogonality, angles, positional relationships, intersection problems, and Gaussian elimination.",
+      "weight": 7,
+      "tags": [
+        "Q",
+        "eA",
+        "Geometry",
+        "Lagebeziehungen"
+      ],
+      "contains": [
+        "d072aa4d-5877-4c33-ba7b-8576d21a2d67",
+        "acc5034d-5fc6-42a4-adf8-b2c4ee90534a",
+        "777734c7-ad81-48db-a3f8-400dcabcc39e",
+        "e05ed268-965e-4cee-95d8-1988cb0cd273",
+        "6f2de99b-ce71-4238-94a5-e9741e05d5b0",
+        "239d4a34-582f-4528-a140-b966a82450d6",
+        "a4bb573e-a866-40ac-9056-a30a7aeaba48"
+      ],
+      "requires": [
+        "a84e6bc9-f1da-4b3d-ab73-ffd9a702ab33"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Raumanschauung und Koordinatisierung' (eA), Kern, Abschnitt 'Masse und Lagen', S. 51.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Analytische Geometrie"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "de760936-0c99-4680-a3f0-152d22f44fbf",
+      "title": "Punkte und Vektoren in Ebene und Raum durch Tupel beschreiben",
+      "titleEn": "Describe Points and Vectors in the Plane and in Space Using Tuples",
+      "description": "Die Schuelerinnen und Schueler beschreiben Punkte und Vektoren in Ebene und Raum durch Tupel und nutzen diese Darstellung zur Orientierung im dreidimensionalen kartesischen Koordinatensystem.",
+      "descriptionEn": "Students describe points and vectors in the plane and in space using tuples and use this representation for orientation in the three-dimensional Cartesian coordinate system.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "eA",
+        "Geometry",
+        "Vektoren"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Raumanschauung und Koordinatisierung' (eA), Kern, 'Punkte und Vektoren in Ebene und Raum durch Tupel beschreiben', S. 51.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Analytische Geometrie"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "9d124898-e71f-4f3f-a97e-d3158a4b2f7f",
+      "title": "Bildliche Darstellung und Koordinatisierung zur Beschreibung von Punkten, Strecken, ebenen Flaechen und einfachen Koerpern nutzen",
+      "titleEn": "Use Visual Representation and Coordinates to Describe Points, Segments, Plane Regions, and Simple Solids",
+      "description": "Die Schuelerinnen und Schueler nutzen bildliche Darstellung und Koordinatisierung, um Punkte, Strecken, ebene Flaechen und einfache Koerper zu beschreiben und zu veranschaulichen.",
+      "descriptionEn": "Students use visual representation and coordinates to describe and illustrate points, segments, plane regions, and simple solids.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "eA",
+        "Geometry",
+        "Darstellungen"
+      ],
+      "contains": [],
+      "requires": [
+        "de760936-0c99-4680-a3f0-152d22f44fbf"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Raumanschauung und Koordinatisierung' (eA), Kern, 'die bildliche Darstellung und Koordinatisierung ... nutzen', S. 51.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Analytische Geometrie"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "fff9a36a-bab3-48ff-b397-b461b0cf33f8",
+      "title": "Addition, Subtraktion und skalare Multiplikation von Vektoren anwenden und geometrisch veranschaulichen",
+      "titleEn": "Apply Addition, Subtraction, and Scalar Multiplication of Vectors and Illustrate Them Geometrically",
+      "description": "Die Schuelerinnen und Schueler wenden Addition, Subtraktion und skalare Multiplikation von Vektoren an und veranschaulichen diese Operationen geometrisch in Ebene und Raum.",
+      "descriptionEn": "Students apply addition, subtraction, and scalar multiplication of vectors and illustrate these operations geometrically in the plane and in space.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "eA",
+        "Geometry",
+        "Vektoroperationen"
+      ],
+      "contains": [],
+      "requires": [
+        "de760936-0c99-4680-a3f0-152d22f44fbf"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Raumanschauung und Koordinatisierung' (eA), Kern, 'Addition, Subtraktion und skalare Multiplikation von Vektoren anwenden', S. 51.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Analytische Geometrie"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "b606732f-e2b1-4bb7-abde-84c47feba442",
+      "title": "Kollinearitaet zweier Vektoren ueberpruefen",
+      "titleEn": "Check the Collinearity of Two Vectors",
+      "description": "Die Schuelerinnen und Schueler ueberpruefen die Kollinearitaet zweier Vektoren rechnerisch und deuten das Ergebnis geometrisch.",
+      "descriptionEn": "Students check the collinearity of two vectors computationally and interpret the result geometrically.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "eA",
+        "Geometry",
+        "Kollinearitaet"
+      ],
+      "contains": [],
+      "requires": [
+        "fff9a36a-bab3-48ff-b397-b461b0cf33f8"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Raumanschauung und Koordinatisierung' (eA), Kern, 'Kollinearitaet zweier Vektoren ueberpruefen', S. 51.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Analytische Geometrie"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "67bd9b91-3c08-4d20-9200-8241d66cb2c1",
+      "title": "Projektionen vom Raum in die Ebene mit Matrizen beschreiben und Punktkoordinaten fuer Schraegbilder berechnen",
+      "titleEn": "Describe Projections from Space to the Plane with Matrices and Calculate Point Coordinates for Oblique Drawings",
+      "description": "Die Schuelerinnen und Schueler beschreiben Projektionen vom Raum in die Ebene mithilfe geeigneter Matrizen und berechnen Punktkoordinaten fuer Schraegbilder.",
+      "descriptionEn": "Students describe projections from space to the plane using suitable matrices and calculate point coordinates for oblique drawings.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "eA",
+        "Geometry",
+        "Projektionen"
+      ],
+      "contains": [],
+      "requires": [
+        "9d124898-e71f-4f3f-a97e-d3158a4b2f7f"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Raumanschauung und Koordinatisierung' (eA), Kern, 'die Projektion vom Raum in die Ebene ... beschreiben und Punktkoordinaten fuer Schraegbilder berechnen', S. 51.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Analytische Geometrie"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "1ea1a45a-5446-4f14-a249-79aec83248f8",
+      "title": "Geradengleichungen in Parameterform verwenden",
+      "titleEn": "Use Line Equations in Parametric Form",
+      "description": "Die Schuelerinnen und Schueler verwenden Geradengleichungen in Parameterform, um Geraden im Raum zu beschreiben und geometrisch zu deuten.",
+      "descriptionEn": "Students use line equations in parametric form to describe lines in space and interpret them geometrically.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "eA",
+        "Geometry",
+        "Geraden"
+      ],
+      "contains": [],
+      "requires": [
+        "fff9a36a-bab3-48ff-b397-b461b0cf33f8"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Raumanschauung und Koordinatisierung' (eA), Kern, 'Geraden ... in Parameterform verwenden', S. 51.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Analytische Geometrie"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "99bfe5d2-e32b-4ccf-b756-dbf654185d64",
+      "title": "Ebenengleichungen in Parameterform verwenden",
+      "titleEn": "Use Plane Equations in Parametric Form",
+      "description": "Die Schuelerinnen und Schueler verwenden Ebenengleichungen in Parameterform, um Ebenen im Raum zu beschreiben und Punkte sowie Richtungen zu interpretieren.",
+      "descriptionEn": "Students use plane equations in parametric form to describe planes in space and interpret points and directions.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "eA",
+        "Geometry",
+        "Ebenen"
+      ],
+      "contains": [],
+      "requires": [
+        "fff9a36a-bab3-48ff-b397-b461b0cf33f8"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Raumanschauung und Koordinatisierung' (eA), Kern, 'Ebenengleichungen in Parameterform verwenden', S. 51.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Analytische Geometrie"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "350d03c7-9968-4952-9fe6-0482d8edd6fd",
+      "title": "Ebenengleichungen in Normalen- und Koordinatenform verwenden",
+      "titleEn": "Use Plane Equations in Normal and Coordinate Form",
+      "description": "Die Schuelerinnen und Schueler verwenden Ebenengleichungen in Normalen- und Koordinatenform und deuten die zugehoerigen geometrischen Informationen.",
+      "descriptionEn": "Students use plane equations in normal and coordinate form and interpret the associated geometric information.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "eA",
+        "Geometry",
+        "Ebenen"
+      ],
+      "contains": [],
+      "requires": [
+        "99bfe5d2-e32b-4ccf-b756-dbf654185d64"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Raumanschauung und Koordinatisierung' (eA), Kern, 'Ebenengleichungen in Normalen- und Koordinatenform verwenden', S. 51.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Analytische Geometrie"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "6aa34379-00b7-4932-bac0-e40845fbda72",
+      "title": "Zwischen Darstellungsformen von Geraden und Ebenen wechseln",
+      "titleEn": "Switch Between Representations of Lines and Planes",
+      "description": "Die Schuelerinnen und Schueler wechseln zwischen geeigneten Darstellungsformen von Geraden und Ebenen, um Lage- und Schnittfragen flexibel zu untersuchen.",
+      "descriptionEn": "Students switch between suitable representations of lines and planes in order to investigate positional and intersection questions flexibly.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "eA",
+        "Geometry",
+        "Darstellungsformen"
+      ],
+      "contains": [],
+      "requires": [
+        "1ea1a45a-5446-4f14-a249-79aec83248f8",
+        "350d03c7-9968-4952-9fe6-0482d8edd6fd"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Raumanschauung und Koordinatisierung' (eA), Kern, 'zwischen den Darstellungsformen wechseln', S. 51.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Analytische Geometrie"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "d072aa4d-5877-4c33-ba7b-8576d21a2d67",
+      "title": "Abstaende zwischen Punkten, Geraden und Ebenen bestimmen",
+      "titleEn": "Determine Distances Between Points, Lines, and Planes",
+      "description": "Die Schuelerinnen und Schueler bestimmen Abstaende zwischen Punkten, Geraden und Ebenen und deuten die Ergebnisse geometrisch.",
+      "descriptionEn": "Students determine distances between points, lines, and planes and interpret the results geometrically.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "eA",
+        "Geometry",
+        "Abstaende"
+      ],
+      "contains": [],
+      "requires": [
+        "1ea1a45a-5446-4f14-a249-79aec83248f8",
+        "350d03c7-9968-4952-9fe6-0482d8edd6fd",
+        "acc5034d-5fc6-42a4-adf8-b2c4ee90534a"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Raumanschauung und Koordinatisierung' (eA), Kern, 'Abstaende zwischen Punkten, Geraden und Ebenen bestimmen', S. 51.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Analytische Geometrie"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "acc5034d-5fc6-42a4-adf8-b2c4ee90534a",
+      "title": "Skalarprodukt geometrisch als Ergebnis einer Projektion deuten und verwenden",
+      "titleEn": "Interpret and Use the Scalar Product Geometrically as a Projection Result",
+      "description": "Die Schuelerinnen und Schueler deuten das Skalarprodukt geometrisch als Ergebnis einer Projektion und verwenden es fuer Berechnungen in Ebene und Raum.",
+      "descriptionEn": "Students interpret the scalar product geometrically as the result of a projection and use it for calculations in the plane and in space.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "eA",
+        "Geometry",
+        "Skalarprodukt"
+      ],
+      "contains": [],
+      "requires": [
+        "fff9a36a-bab3-48ff-b397-b461b0cf33f8"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Raumanschauung und Koordinatisierung' (eA), Kern, 'Skalarprodukt geometrisch als Ergebnis einer Projektion deuten und verwenden', S. 51.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Analytische Geometrie"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "777734c7-ad81-48db-a3f8-400dcabcc39e",
+      "title": "Orthogonalitaet zweier Vektoren ueberpruefen",
+      "titleEn": "Check the Orthogonality of Two Vectors",
+      "description": "Die Schuelerinnen und Schueler ueberpruefen mithilfe des Skalarprodukts die Orthogonalitaet zweier Vektoren und begruenden das Ergebnis geometrisch.",
+      "descriptionEn": "Students use the scalar product to check the orthogonality of two vectors and justify the result geometrically.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "eA",
+        "Geometry",
+        "Orthogonalitaet"
+      ],
+      "contains": [],
+      "requires": [
+        "acc5034d-5fc6-42a4-adf8-b2c4ee90534a"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Raumanschauung und Koordinatisierung' (eA), Kern, 'Orthogonalitaet zweier Vektoren ueberpruefen', S. 51.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Analytische Geometrie"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "e05ed268-965e-4cee-95d8-1988cb0cd273",
+      "title": "Winkelgroessen zwischen Geraden und Ebenen bestimmen",
+      "titleEn": "Determine Angles Between Lines and Planes",
+      "description": "Die Schuelerinnen und Schueler bestimmen Winkelgroessen zwischen Geraden und Ebenen mithilfe von Richtungs- bzw. Normalenvektoren und Skalarprodukt.",
+      "descriptionEn": "Students determine angle measures between lines and planes using direction or normal vectors and the scalar product.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "eA",
+        "Geometry",
+        "Winkel"
+      ],
+      "contains": [],
+      "requires": [
+        "acc5034d-5fc6-42a4-adf8-b2c4ee90534a",
+        "1ea1a45a-5446-4f14-a249-79aec83248f8",
+        "350d03c7-9968-4952-9fe6-0482d8edd6fd"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Raumanschauung und Koordinatisierung' (eA), Kern, 'Winkelgroessen bestimmen', S. 51.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Analytische Geometrie"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "6f2de99b-ce71-4238-94a5-e9741e05d5b0",
+      "title": "Lagebeziehungen von Geraden und Ebenen untersuchen",
+      "titleEn": "Investigate Positional Relationships of Lines and Planes",
+      "description": "Die Schuelerinnen und Schueler untersuchen Lagebeziehungen von Geraden, Geraden und Ebenen sowie von Ebenen und klassifizieren sie begruendet.",
+      "descriptionEn": "Students investigate positional relationships of lines, of lines and planes, and of planes, and classify them with justification.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "eA",
+        "Geometry",
+        "Lagebeziehungen"
+      ],
+      "contains": [],
+      "requires": [
+        "1ea1a45a-5446-4f14-a249-79aec83248f8",
+        "350d03c7-9968-4952-9fe6-0482d8edd6fd"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Raumanschauung und Koordinatisierung' (eA), Kern, 'Lagebeziehungen von Geraden, Geraden und Ebenen sowie von Ebenen untersuchen', S. 51.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Analytische Geometrie"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "239d4a34-582f-4528-a140-b966a82450d6",
+      "title": "Schnittprobleme im Raum loesen",
+      "titleEn": "Solve Intersection Problems in Space",
+      "description": "Die Schuelerinnen und Schueler loesen Schnittprobleme mit Geraden und Ebenen im Raum rechnerisch und deuten die Ergebnisse geometrisch.",
+      "descriptionEn": "Students solve intersection problems with lines and planes in space computationally and interpret the results geometrically.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "eA",
+        "Geometry",
+        "Schnittprobleme"
+      ],
+      "contains": [],
+      "requires": [
+        "6f2de99b-ce71-4238-94a5-e9741e05d5b0"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Raumanschauung und Koordinatisierung' (eA), Kern, '... und Schnittprobleme loesen', S. 51.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Analytische Geometrie"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "a4bb573e-a866-40ac-9056-a30a7aeaba48",
+      "title": "Gauss-Algorithmus zur Loesung linearer Gleichungssysteme erlaeutern und anwenden",
+      "titleEn": "Explain and Apply Gaussian Elimination to Solve Systems of Linear Equations",
+      "description": "Die Schuelerinnen und Schueler erlaeutern den Gauss-Algorithmus zur Loesung linearer Gleichungssysteme und wenden ihn in geeigneten geometrischen Situationen an.",
+      "descriptionEn": "Students explain Gaussian elimination for solving systems of linear equations and apply it in suitable geometric situations.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "eA",
+        "Geometry",
+        "LineareGleichungssysteme"
+      ],
+      "contains": [],
+      "requires": [
+        "239d4a34-582f-4528-a140-b966a82450d6"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Raumanschauung und Koordinatisierung' (eA), Kern, 'den Gauss-Algorithmus ... erlaeutern und in geeigneten Faellen anwenden', S. 51.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Analytische Geometrie"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "03e55d0b-24a6-483c-b38a-a6438ff02106",
+      "title": "Kurvenanpassung",
+      "titleEn": "Curve Fitting",
+      "description": "Retained Split-Cluster fuer den importierten niedersaechsischen eA-Streifen zu globalen Funktionseigenschaften, zur Anpassung von Funktionstermen an Daten, zu lokalen Graphbedingungen sowie zu abschnittsweise definierten Funktionen.",
+      "descriptionEn": "Retained split cluster for the imported Lower Saxony advanced-level strip on global function properties, fitting function terms to data, local graph conditions, and piecewise-defined functions.",
+      "weight": 4,
+      "tags": [
+        "Q",
+        "eA",
+        "Analysis",
+        "Kurvenanpassung",
+        "Modellierung"
+      ],
+      "contains": [
+        "d1f634e1-ce8f-479b-8934-ea37d4284f75",
+        "7113ab27-d9ab-48eb-b9e0-0e746ee2c3da",
+        "03231423-83d0-47a5-bf80-9aaab4fd961e",
+        "88a0b1c2-d11d-45c2-9b5d-ea6f538abcce"
+      ],
+      "requires": [
+        "6aa63fbe-6b48-41ae-a650-7d80074c5a94"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Kurvenanpassung und Funktionenscharen' (eA), Kern, Abschnitt 'Kurvenanpassung', S. 52.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Kurvenanpassung"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "6a7ec1c1-f295-465c-b50e-c386afc7fe99",
+      "title": "Funktionenscharen",
+      "titleEn": "Function Families",
+      "description": "Retained Split-Cluster fuer den importierten niedersaechsischen eA-Streifen zu Gemeinsamkeiten, Unterschieden und gezielten Variationen parameterabhaengiger Funktionenscharen.",
+      "descriptionEn": "Retained split cluster for the imported Lower Saxony advanced-level strip on similarities, differences, and targeted variation in parameter-dependent function families.",
+      "weight": 2,
+      "tags": [
+        "Q",
+        "eA",
+        "Analysis",
+        "Funktionenscharen",
+        "Parameter"
+      ],
+      "contains": [
+        "0f456d45-e73a-4ff7-a081-47d151c98c4b",
+        "f3629a6e-bedc-4bd5-b946-d4ea9f4f51ce"
+      ],
+      "requires": [
+        "03e55d0b-24a6-483c-b38a-a6438ff02106"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Kurvenanpassung und Funktionenscharen' (eA), Kern, Abschnitt 'Funktionenscharen', S. 52.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Funktionenscharen"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "d1f634e1-ce8f-479b-8934-ea37d4284f75",
+      "title": "Funktionen nach globalen Eigenschaften klassifizieren",
+      "titleEn": "Classify Functions by Global Properties",
+      "description": "Die Schuelerinnen und Schueler klassifizieren Funktionen anhand globaler Eigenschaften wie Symmetrie, Verhalten fuer |x| gegen unendlich, asymptotischem Verhalten oder Periodizitaet und begruenden ihre Zuordnung.",
+      "descriptionEn": "Students classify functions using global properties such as symmetry, behaviour as |x| tends to infinity, asymptotic behaviour, or periodicity and justify their classification.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "eA",
+        "Analysis",
+        "Kurvenanpassung",
+        "Globalverhalten"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Kurvenanpassung und Funktionenscharen' (eA), Kern, 'Funktionen nach globalen Eigenschaften ... klassifizieren', S. 52.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Kurvenanpassung"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "7113ab27-d9ab-48eb-b9e0-0e746ee2c3da",
+      "title": "Geeignete Funktionsterme zur Anpassung an Daten ermitteln",
+      "titleEn": "Determine Suitable Function Terms for Fitting Data",
+      "description": "Die Schuelerinnen und Schueler nutzen neben globalen Eigenschaften weitere charakteristische Merkmale von Funktionen, um zu vorgegebenen Daten einen geeigneten Funktionsterm auszuwaehlen oder zu bestimmen.",
+      "descriptionEn": "Students use additional characteristic properties beyond global features to select or determine a suitable function term for given data.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "eA",
+        "Analysis",
+        "Kurvenanpassung",
+        "Datenanpassung"
+      ],
+      "contains": [],
+      "requires": [
+        "d1f634e1-ce8f-479b-8934-ea37d4284f75"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Kurvenanpassung und Funktionenscharen' (eA), Kern, 'bei der Anpassung an Daten ... einen geeigneten Funktionsterm nutzen', S. 52.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Kurvenanpassung"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "03231423-83d0-47a5-bf80-9aaab4fd961e",
+      "title": "Lokale Grapheneigenschaften in Bedingungen an Funktionsterme uebersetzen",
+      "titleEn": "Translate Local Graph Properties into Conditions on Function Terms",
+      "description": "Die Schuelerinnen und Schueler uebersetzen vorgegebene lokale Eigenschaften eines Graphen in Bedingungen an einen Funktionsterm und bestimmen passende Terme rechnerisch.",
+      "descriptionEn": "Students translate given local properties of a graph into conditions on a function term and determine suitable terms computationally.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "eA",
+        "Analysis",
+        "Kurvenanpassung",
+        "Bedingungen"
+      ],
+      "contains": [],
+      "requires": [
+        "7113ab27-d9ab-48eb-b9e0-0e746ee2c3da"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Kurvenanpassung und Funktionenscharen' (eA), Kern, 'vorgegebene lokale Eigenschaften ... in Bedingungen ... uebersetzen', S. 52.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Kurvenanpassung"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "88a0b1c2-d11d-45c2-9b5d-ea6f538abcce",
+      "title": "Stetigkeit und Differenzierbarkeit bei abschnittsweise definierten Funktionen nutzen",
+      "titleEn": "Use Continuity and Differentiability for Piecewise-Defined Functions",
+      "description": "Die Schuelerinnen und Schueler nutzen Stetigkeit und Differenzierbarkeit, um abschnittsweise definierte Funktionen zu analysieren oder so zu konstruieren, dass Uebergaenge fachlich passend modelliert sind.",
+      "descriptionEn": "Students use continuity and differentiability to analyse piecewise-defined functions or construct them so that transitions model the situation appropriately.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "eA",
+        "Analysis",
+        "Kurvenanpassung",
+        "Stetigkeit"
+      ],
+      "contains": [],
+      "requires": [
+        "03231423-83d0-47a5-bf80-9aaab4fd961e"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Kurvenanpassung und Funktionenscharen' (eA), Kern, 'Stetigkeit und Differenzierbarkeit ... abschnittsweise definierter Funktionen nutzen', S. 52.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Kurvenanpassung"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "0f456d45-e73a-4ff7-a081-47d151c98c4b",
+      "title": "Funktionenscharen mit ganzrationalen und e-verknuepften Termen vergleichen",
+      "titleEn": "Compare Function Families with Polynomial and e-Linked Terms",
+      "description": "Die Schuelerinnen und Schueler benennen und begruenden Gemeinsamkeiten und Unterschiede zwischen Scharen ganzrationaler Funktionen und Scharen aus Verknuepfungen oder Verkettungen der e-Funktion mit ganzrationalen Funktionen in Abhaengigkeit vom Parameter.",
+      "descriptionEn": "Students identify and justify similarities and differences between families of polynomial functions and families built from combinations or compositions of the e function with polynomial functions depending on the parameter.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "eA",
+        "Analysis",
+        "Funktionenscharen",
+        "Parameter"
+      ],
+      "contains": [],
+      "requires": [
+        "d1f634e1-ce8f-479b-8934-ea37d4284f75"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Kurvenanpassung und Funktionenscharen' (eA), Kern, 'Gemeinsamkeiten und Unterschiede bei Scharen ... benennen und begruenden', S. 52.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Funktionenscharen"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "f3629a6e-bedc-4bd5-b946-d4ea9f4f51ce",
+      "title": "Scharparameter zur Anpassung an vorgegebene Eigenschaften variieren",
+      "titleEn": "Vary Family Parameters to Match Prescribed Properties",
+      "description": "Die Schuelerinnen und Schueler variieren Scharparameter, um vorgegebene Eigenschaften zu erreichen, und begruenden ihre Wahl im mathematischen oder sachbezogenen Kontext.",
+      "descriptionEn": "Students vary family parameters to achieve prescribed properties and justify their choice in a mathematical or real-world context.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "eA",
+        "Analysis",
+        "Funktionenscharen",
+        "Parameter"
+      ],
+      "contains": [],
+      "requires": [
+        "0f456d45-e73a-4ff7-a081-47d151c98c4b",
+        "03231423-83d0-47a5-bf80-9aaab4fd961e"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Kurvenanpassung und Funktionenscharen' (eA), Kern, 'Variationen des Scharparameters ... durchfuehren', S. 52.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Funktionenscharen"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "1a1a1fac-b3ac-4a30-89cc-6ee283c87cbe",
+      "title": "Qualifikationsphase eA: Daten und Zufall",
+      "titleEn": "Qualification Phase Advanced Level: Data and Chance",
+      "description": "Pilot-Cluster fuer den naechsten vollstaendig importierten niedersaechsischen eA-Lernbereich der Qualifikationsphase zu bedingten Wahrscheinlichkeiten, diskreten und stetigen Zufallsgroessen, Binomial- und Normalverteilung, Prognose- und Konfidenzintervallen sowie Simulationen.",
+      "descriptionEn": "Pilot cluster for the next fully imported Lower Saxony advanced-level qualification-phase learning area on conditional probabilities, discrete and continuous random variables, binomial and normal distributions, prediction and confidence intervals, and simulations.",
+      "weight": 26,
+      "tags": [
+        "Q",
+        "eA",
+        "Stochastik",
+        "DatenUndZufall"
+      ],
+      "contains": [
+        "ffd46419-e496-4f06-a6f0-70ab37aee958",
+        "0901faa2-94b8-4701-a4c8-e48cea011a50",
+        "d6f34105-f627-43cc-a944-c6dc74ceb51b",
+        "ac68fb30-e742-4ac8-8073-42de9e8bf5f0",
+        "0d271a5b-5f2e-4080-8783-1f9952279637"
+      ],
+      "requires": [
+        "6aa63fbe-6b48-41ae-a650-7d80074c5a94"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Daten und Zufall' (eA), S. 53-54.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Daten und Zufall"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "ffd46419-e496-4f06-a6f0-70ab37aee958",
+      "title": "Bedingte Wahrscheinlichkeit und stochastische Unabhaengigkeit",
+      "titleEn": "Conditional Probability and Stochastic Independence",
+      "description": "Retained Split-Cluster fuer den importierten niedersaechsischen eA-Streifen zu bedingten Wahrscheinlichkeiten in Baumdiagrammen und Vierfeldertafeln, zum Zusammenhang mit stochastischer Unabhaengigkeit und zur Abgrenzung gegenueber Kausalitaet.",
+      "descriptionEn": "Retained split cluster for the imported Lower Saxony advanced-level strip on conditional probabilities in tree diagrams and four-field tables, their link to stochastic independence, and the distinction from causality.",
+      "weight": 3,
+      "tags": [
+        "Q",
+        "eA",
+        "Stochastik",
+        "BedingteWahrscheinlichkeit"
+      ],
+      "contains": [
+        "6378be93-223e-4357-a17b-924965f0ebec",
+        "5ea70dac-c766-4d8a-a531-db7d560a4700",
+        "e60e47f2-68c4-485a-9b08-aa22561e5176"
+      ],
+      "requires": [
+        "6aa63fbe-6b48-41ae-a650-7d80074c5a94"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Daten und Zufall' (eA), Kern, Abschnitt 'Bedingte Wahrscheinlichkeit und stochastische Unabhaengigkeit', S. 53.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Daten und Zufall"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "0901faa2-94b8-4701-a4c8-e48cea011a50",
+      "title": "Erwartungswert und Standardabweichung diskreter Zufallsgroessen",
+      "titleEn": "Expected Value and Standard Deviation of Discrete Random Variables",
+      "description": "Retained Split-Cluster fuer den importierten niedersaechsischen eA-Streifen zum Uebergang von Haeufigkeitsverteilungen zu Wahrscheinlichkeitsverteilungen sowie zu Erwartungswert, Varianz und Standardabweichung diskreter Zufallsgroessen.",
+      "descriptionEn": "Retained split cluster for the imported Lower Saxony advanced-level strip on moving from frequency distributions to probability distributions as well as expected value, variance, and standard deviation of discrete random variables.",
+      "weight": 3,
+      "tags": [
+        "Q",
+        "eA",
+        "Stochastik",
+        "Zufallsgroessen"
+      ],
+      "contains": [
+        "9d46781b-a217-4570-8a46-333dd71b1288",
+        "e76d7064-5129-4d38-8b32-e1c085a4535f",
+        "92046cde-f83d-49ec-ad8e-0eab33165f34"
+      ],
+      "requires": [
+        "6aa63fbe-6b48-41ae-a650-7d80074c5a94"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Daten und Zufall' (eA), Kern, Abschnitt 'Erwartungswert und Standardabweichung diskreter Zufallsgroessen', S. 53.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Daten und Zufall"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "d6f34105-f627-43cc-a944-c6dc74ceb51b",
+      "title": "Binomialverteilung",
+      "titleEn": "Binomial Distribution",
+      "description": "Retained Split-Cluster fuer den importierten niedersaechsischen eA-Streifen zum Binomialmodell, zu Parametern und Kenngroessen, grafischen Deutungen, Prognoseintervallen, Vertraeglichkeitspruefungen, Simulationen und weiteren Naeherungsanwendungen.",
+      "descriptionEn": "Retained split cluster for the imported Lower Saxony advanced-level strip on the binomial model, its parameters and characteristics, graphical interpretations, prediction intervals, compatibility checks, simulations, and further approximation uses.",
+      "weight": 11,
+      "tags": [
+        "Q",
+        "eA",
+        "Stochastik",
+        "Binomialverteilung"
+      ],
+      "contains": [
+        "5350da7c-fd4c-4a73-a31c-7d37acc81e59",
+        "7906fbb6-220b-4c05-8544-a97c213c66a0",
+        "db02e65f-2c6a-46d1-bd8d-746f566db99b",
+        "27870f94-2eeb-42bd-9083-b454c9c967c4",
+        "cb653e48-36da-409a-9eb1-5b70cb910359",
+        "51f09a71-43f7-4e1e-8e30-644d013a76da",
+        "9a900ac9-71cc-4cab-b374-44b75e521829",
+        "b205700d-3421-4a67-a716-b3410d3004df",
+        "397f2e64-603c-4b1a-a401-867de21f48ec",
+        "6c9f818b-cce3-47a6-9f16-df5dfd240a54",
+        "1fba8d1e-fec3-4636-be89-f3e53d1d298f"
+      ],
+      "requires": [
+        "ffd46419-e496-4f06-a6f0-70ab37aee958",
+        "0901faa2-94b8-4701-a4c8-e48cea011a50"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Daten und Zufall' (eA), Kern, Abschnitt 'Binomialverteilung', S. 53.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Daten und Zufall"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "ac68fb30-e742-4ac8-8073-42de9e8bf5f0",
+      "title": "Normalverteilung",
+      "titleEn": "Normal Distribution",
+      "description": "Retained Split-Cluster fuer den importierten niedersaechsischen eA-Streifen zu diskreten und stetigen Zufallsgroessen, zu Histogrammen und zu Parametern der Normalverteilung im Sachkontext.",
+      "descriptionEn": "Retained split cluster for the imported Lower Saxony advanced-level strip on discrete and continuous random variables, histograms, and parameters of the normal distribution in context.",
+      "weight": 3,
+      "tags": [
+        "Q",
+        "eA",
+        "Stochastik",
+        "Normalverteilung"
+      ],
+      "contains": [
+        "5afc63b8-af7d-43e7-aa32-488ad72ad6c9",
+        "c99a1f8a-e266-48bb-b177-7f8644f0d6ad",
+        "9c52c9ef-fc56-487f-98d2-9c2e303344d9"
+      ],
+      "requires": [
+        "0901faa2-94b8-4701-a4c8-e48cea011a50"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Daten und Zufall' (eA), Kern, Abschnitt 'Normalverteilung', S. 53-54.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Daten und Zufall"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "0d271a5b-5f2e-4080-8783-1f9952279637",
+      "title": "Binomial- und Normalverteilung",
+      "titleEn": "Binomial and Normal Distribution",
+      "description": "Retained Split-Cluster fuer den importierten niedersaechsischen eA-Streifen zur Normalapproximation der Binomialverteilung, zu sigma-basierten Prognoseintervallen, zu Konfidenzintervallen und zu Simulationen mit annaehernd normalverteilten Zufallsgroessen.",
+      "descriptionEn": "Retained split cluster for the imported Lower Saxony advanced-level strip on the normal approximation of the binomial distribution, sigma-based prediction intervals, confidence intervals, and simulations with approximately normally distributed random variables.",
+      "weight": 6,
+      "tags": [
+        "Q",
+        "eA",
+        "Stochastik",
+        "Normalapproximation"
+      ],
+      "contains": [
+        "2aeda51d-d37a-470c-b875-d5b2aa7f971a",
+        "29a281bf-4922-45b7-9e9d-a09e810e393e",
+        "af2f3cb3-4857-4238-9153-51733dcee965",
+        "cd60bbc9-0a0b-41ba-8a6c-db84ce3655b9",
+        "dfcbe036-3e3c-4b77-8425-c7f57c411a79",
+        "f3567c1c-42e9-402f-9116-ad73d83521ae"
+      ],
+      "requires": [
+        "d6f34105-f627-43cc-a944-c6dc74ceb51b",
+        "ac68fb30-e742-4ac8-8073-42de9e8bf5f0"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Daten und Zufall' (eA), Kern, Abschnitt 'Binomial- und Normalverteilung', S. 54.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Daten und Zufall"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "6378be93-223e-4357-a17b-924965f0ebec",
+      "title": "Bedingte Wahrscheinlichkeiten mit Baumdiagrammen und Vierfeldertafeln erarbeiten",
+      "titleEn": "Develop Conditional Probabilities with Tree Diagrams and Four-Field Tables",
+      "description": "Die Schuelerinnen und Schueler nutzen Eintraege in Baumdiagrammen und Vierfeldertafeln, um den Begriff der bedingten Wahrscheinlichkeit zu erarbeiten und zwischen bedingendem und bedingtem Ereignis zu unterscheiden.",
+      "descriptionEn": "Students use entries in tree diagrams and four-field tables to develop the concept of conditional probability and distinguish between conditioning and conditioned events.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "eA",
+        "Stochastik",
+        "BedingteWahrscheinlichkeit"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Daten und Zufall' (eA), Kern, 'Eintraege in Baumdiagrammen und Vierfeldertafeln nutzen ...', S. 53.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Daten und Zufall"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "5ea70dac-c766-4d8a-a531-db7d560a4700",
+      "title": "Zusammenhang zwischen Unabhaengigkeit und bedingten Wahrscheinlichkeiten herstellen",
+      "titleEn": "Relate Independence to Conditional Probabilities",
+      "description": "Die Schuelerinnen und Schueler stellen den Zusammenhang zwischen stochastischer Unabhaengigkeit und bedingten Wahrscheinlichkeiten her und begruenden ihre Schluesse mit geeigneten Darstellungen.",
+      "descriptionEn": "Students establish the relationship between stochastic independence and conditional probabilities and justify their conclusions with suitable representations.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "eA",
+        "Stochastik",
+        "Unabhaengigkeit"
+      ],
+      "contains": [],
+      "requires": [
+        "6378be93-223e-4357-a17b-924965f0ebec"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Daten und Zufall' (eA), Kern, 'Zusammenhang zwischen Unabhaengigkeit und bedingten Wahrscheinlichkeiten herstellen', S. 53.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Daten und Zufall"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "e60e47f2-68c4-485a-9b08-aa22561e5176",
+      "title": "Kausale und stochastische Unabhaengigkeit voneinander abgrenzen",
+      "titleEn": "Distinguish Causal and Stochastic Independence",
+      "description": "Die Schuelerinnen und Schueler grenzen kausale und stochastische Unabhaengigkeit voneinander ab und reflektieren typische Fehlschluesse in datenbezogenen Aussagen.",
+      "descriptionEn": "Students distinguish causal from stochastic independence and reflect on typical fallacies in data-based statements.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "eA",
+        "Stochastik",
+        "Unabhaengigkeit"
+      ],
+      "contains": [],
+      "requires": [
+        "5ea70dac-c766-4d8a-a531-db7d560a4700"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Daten und Zufall' (eA), Kern, 'Kausale und stochastische Unabhaengigkeit voneinander abgrenzen', S. 53.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Daten und Zufall"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "9d46781b-a217-4570-8a46-333dd71b1288",
+      "title": "Kenngroessen von Haeufigkeits- und Wahrscheinlichkeitsverteilungen aufeinander beziehen",
+      "titleEn": "Relate Characteristics of Frequency and Probability Distributions",
+      "description": "Die Schuelerinnen und Schueler stellen den Zusammenhang zwischen Kenngroessen empirischer Haeufigkeitsverteilungen und Kenngroessen theoretischer Wahrscheinlichkeitsverteilungen her.",
+      "descriptionEn": "Students establish the relationship between characteristics of empirical frequency distributions and characteristics of theoretical probability distributions.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "eA",
+        "Stochastik",
+        "Zufallsgroessen"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Daten und Zufall' (eA), Kern, 'Zusammenhang zwischen Kenngroessen ... herstellen', S. 53.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Daten und Zufall"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "e76d7064-5129-4d38-8b32-e1c085a4535f",
+      "title": "Erwartungswert, Varianz und Standardabweichung berechnen und interpretieren",
+      "titleEn": "Calculate and Interpret Expected Value, Variance and Standard Deviation",
+      "description": "Die Schuelerinnen und Schueler berechnen Erwartungswert, Varianz und Standardabweichung diskreter Zufallsgroessen und interpretieren die Ergebnisse im jeweiligen Kontext.",
+      "descriptionEn": "Students calculate expected value, variance, and standard deviation of discrete random variables and interpret the results in context.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "eA",
+        "Stochastik",
+        "Kenngroessen"
+      ],
+      "contains": [],
+      "requires": [
+        "9d46781b-a217-4570-8a46-333dd71b1288"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Daten und Zufall' (eA), Kern, 'Erwartungswert, Varianz und Standardabweichung berechnen und interpretieren', S. 53.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Daten und Zufall"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "92046cde-f83d-49ec-ad8e-0eab33165f34",
+      "title": "Faire Spiele mithilfe des Erwartungswerts kennzeichnen",
+      "titleEn": "Characterise Fair Games Using Expected Value",
+      "description": "Die Schuelerinnen und Schueler kennzeichnen faire Spiele mithilfe des Erwartungswerts und deuten die Fairness im jeweiligen Kontext.",
+      "descriptionEn": "Students characterise fair games using expected value and interpret fairness in the respective context.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "eA",
+        "Stochastik",
+        "Erwartungswert"
+      ],
+      "contains": [],
+      "requires": [
+        "e76d7064-5129-4d38-8b32-e1c085a4535f"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Daten und Zufall' (eA), Kern, 'faire Spiele mithilfe des Erwartungswerts kennzeichnen', S. 53.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Daten und Zufall"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "5350da7c-fd4c-4a73-a31c-7d37acc81e59",
+      "title": "Eignung des Binomialmodells beurteilen",
+      "titleEn": "Assess the Suitability of the Binomial Model",
+      "description": "Die Schuelerinnen und Schueler beurteilen in Sachkontexten, ob ein Binomialmodell fuer eine gegebene stochastische Situation angemessen ist.",
+      "descriptionEn": "Students assess in contextual situations whether a binomial model is appropriate for a given stochastic situation.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "eA",
+        "Stochastik",
+        "Binomialverteilung"
+      ],
+      "contains": [],
+      "requires": [
+        "5ea70dac-c766-4d8a-a531-db7d560a4700"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Daten und Zufall' (eA), Kern, 'Eignung des Modells beurteilen', S. 53.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Daten und Zufall"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "7906fbb6-220b-4c05-8544-a97c213c66a0",
+      "title": "Beziehung zwischen Haeufigkeitsverteilungen und Binomialverteilungen erlaeutern",
+      "titleEn": "Explain the Relationship Between Frequency and Binomial Distributions",
+      "description": "Die Schuelerinnen und Schueler erlaeutern die Beziehung zwischen beobachteten Haeufigkeitsverteilungen und dem theoretischen Binomialmodell.",
+      "descriptionEn": "Students explain the relationship between observed frequency distributions and the theoretical binomial model.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "eA",
+        "Stochastik",
+        "Binomialverteilung"
+      ],
+      "contains": [],
+      "requires": [
+        "5350da7c-fd4c-4a73-a31c-7d37acc81e59"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Daten und Zufall' (eA), Kern, 'Beziehung zwischen Haeufigkeitsverteilungen und Binomialverteilungen erlaeutern', S. 53.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Daten und Zufall"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "db02e65f-2c6a-46d1-bd8d-746f566db99b",
+      "title": "Simulationen zur Untersuchung stochastischer Situationen verwenden",
+      "titleEn": "Use Simulations to Investigate Stochastic Situations",
+      "description": "Die Schuelerinnen und Schueler verwenden Simulationen, um stochastische Situationen zu untersuchen und Ergebnisse mit theoretischen Modellen zu vergleichen.",
+      "descriptionEn": "Students use simulations to investigate stochastic situations and compare the results with theoretical models.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "eA",
+        "Stochastik",
+        "Simulation"
+      ],
+      "contains": [],
+      "requires": [
+        "5350da7c-fd4c-4a73-a31c-7d37acc81e59"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Daten und Zufall' (eA), Kern, 'Simulationen zur Untersuchung stochastischer Situationen verwenden', S. 53.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Daten und Zufall"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "27870f94-2eeb-42bd-9083-b454c9c967c4",
+      "title": "Zufallsgroesse sowie Parameter n und p der Binomialverteilung im Sachkontext angeben",
+      "titleEn": "Specify Random Variable and Parameters n and p of a Binomial Distribution in Context",
+      "description": "Die Schuelerinnen und Schueler geben in Sachsituationen die passende Zufallsgroesse sowie die Parameter n und p einer Binomialverteilung an.",
+      "descriptionEn": "Students specify in contextual situations the appropriate random variable as well as the parameters n and p of a binomial distribution.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "eA",
+        "Stochastik",
+        "Parameter"
+      ],
+      "contains": [],
+      "requires": [
+        "5350da7c-fd4c-4a73-a31c-7d37acc81e59"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Daten und Zufall' (eA), Kern, 'Zufallsgroesse sowie Parameter n und p ... angeben', S. 53.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Daten und Zufall"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "cb653e48-36da-409a-9eb1-5b70cb910359",
+      "title": "Bedeutung der Faktoren im Term der Binomialverteilung erlaeutern",
+      "titleEn": "Explain the Meaning of the Factors in the Binomial Distribution Term",
+      "description": "Die Schuelerinnen und Schueler erlaeutern die Bedeutung der Faktoren im Term der Binomialverteilung und verbinden diese mit dem zugrunde liegenden Sachkontext.",
+      "descriptionEn": "Students explain the meaning of the factors in the term of the binomial distribution and connect them to the underlying context.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "eA",
+        "Stochastik",
+        "Binomialformel"
+      ],
+      "contains": [],
+      "requires": [
+        "27870f94-2eeb-42bd-9083-b454c9c967c4"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Daten und Zufall' (eA), Kern, 'die Bedeutung der Faktoren im Term ... erlaeutern', S. 53.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Daten und Zufall"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "51f09a71-43f7-4e1e-8e30-644d013a76da",
+      "title": "Wahrscheinlichkeiten fuer binomialverteilte Zufallsgroessen berechnen",
+      "titleEn": "Calculate Probabilities for Binomially Distributed Random Variables",
+      "description": "Die Schuelerinnen und Schueler berechnen Wahrscheinlichkeiten fuer binomialverteilte Zufallsgroessen und deuten die Ergebnisse im jeweiligen Kontext.",
+      "descriptionEn": "Students calculate probabilities for binomially distributed random variables and interpret the results in context.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "eA",
+        "Stochastik",
+        "Binomialverteilung"
+      ],
+      "contains": [],
+      "requires": [
+        "cb653e48-36da-409a-9eb1-5b70cb910359"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Daten und Zufall' (eA), Kern, 'Wahrscheinlichkeiten fuer binomialverteilte Zufallsgroessen berechnen', S. 53.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Daten und Zufall"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "9a900ac9-71cc-4cab-b374-44b75e521829",
+      "title": "Kenngroessen Erwartungswert und Standardabweichung binomialverteilter Zufallsgroessen berechnen",
+      "titleEn": "Calculate Expected Value and Standard Deviation of Binomial Random Variables",
+      "description": "Die Schuelerinnen und Schueler berechnen Erwartungswert und Standardabweichung binomialverteilter Zufallsgroessen und beziehen diese auf die zugrunde liegende Situation.",
+      "descriptionEn": "Students calculate the expected value and standard deviation of binomial random variables and relate them to the underlying situation.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "eA",
+        "Stochastik",
+        "Kenngroessen"
+      ],
+      "contains": [],
+      "requires": [
+        "27870f94-2eeb-42bd-9083-b454c9c967c4",
+        "e76d7064-5129-4d38-8b32-e1c085a4535f"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Daten und Zufall' (eA), Kern, 'die Kenngroessen Erwartungswert und Standardabweichung berechnen', S. 53.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Daten und Zufall"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "b205700d-3421-4a67-a716-b3410d3004df",
+      "title": "Grafische Darstellungen von Binomialverteilungen deuten",
+      "titleEn": "Interpret Graphical Representations of Binomial Distributions",
+      "description": "Die Schuelerinnen und Schueler deuten grafische Darstellungen von Binomialverteilungen im Hinblick auf Parameter und Kenngroessen.",
+      "descriptionEn": "Students interpret graphical representations of binomial distributions with respect to parameters and key measures.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "eA",
+        "Stochastik",
+        "Histogramme"
+      ],
+      "contains": [],
+      "requires": [
+        "7906fbb6-220b-4c05-8544-a97c213c66a0",
+        "9a900ac9-71cc-4cab-b374-44b75e521829"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Daten und Zufall' (eA), Kern, 'die grafischen Darstellungen von Binomialverteilungen ... deuten', S. 53.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Daten und Zufall"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "397f2e64-603c-4b1a-a401-867de21f48ec",
+      "title": "Prognoseintervalle fuer Binomialverteilungen grafisch oder tabellarisch ermitteln und interpretieren",
+      "titleEn": "Determine and Interpret Prediction Intervals for Binomial Distributions Graphically or Tabularly",
+      "description": "Die Schuelerinnen und Schueler ermitteln Prognoseintervalle fuer Binomialverteilungen grafisch oder tabellarisch und interpretieren die Ergebnisse im Kontext.",
+      "descriptionEn": "Students determine prediction intervals for binomial distributions graphically or in tabular form and interpret the results in context.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "eA",
+        "Stochastik",
+        "Prognoseintervalle"
+      ],
+      "contains": [],
+      "requires": [
+        "b205700d-3421-4a67-a716-b3410d3004df",
+        "9a900ac9-71cc-4cab-b374-44b75e521829"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Daten und Zufall' (eA), Kern, 'Prognoseintervalle grafisch oder tabellarisch ermitteln und interpretieren', S. 53.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Daten und Zufall"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "6c9f818b-cce3-47a6-9f16-df5dfd240a54",
+      "title": "Vertraeglichkeit eines Anteils oder Parameters mit einer Stichprobe beurteilen",
+      "titleEn": "Assess Compatibility of a Proportion or Parameter with a Sample",
+      "description": "Die Schuelerinnen und Schueler beurteilen, ob ein vorgegebener Anteil der Grundgesamtheit oder ein vorgegebener Parameterwert mit einer gegebenen Stichprobe vertraeglich ist.",
+      "descriptionEn": "Students assess whether a given population proportion or parameter value is compatible with a given sample.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "eA",
+        "Stochastik",
+        "Stichprobe"
+      ],
+      "contains": [],
+      "requires": [
+        "397f2e64-603c-4b1a-a401-867de21f48ec"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Daten und Zufall' (eA), Kern, 'beurteilen, ob ein vorgegebener Anteil ... vertraeglich ist', S. 53.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Daten und Zufall"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "1fba8d1e-fec3-4636-be89-f3e53d1d298f",
+      "title": "Die Binomialverteilung als naeherungsweises Modell fuer weitere stochastische Situationen verwenden",
+      "titleEn": "Use the Binomial Distribution as an Approximate Model for Further Stochastic Situations",
+      "description": "Die Schuelerinnen und Schueler verwenden die Binomialverteilung als naeherungsweises Modell fuer weitere stochastische Situationen und begruenden die Angemessenheit der Naeherung.",
+      "descriptionEn": "Students use the binomial distribution as an approximate model for further stochastic situations and justify the suitability of the approximation.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "eA",
+        "Stochastik",
+        "Binomialverteilung"
+      ],
+      "contains": [],
+      "requires": [
+        "51f09a71-43f7-4e1e-8e30-644d013a76da",
+        "db02e65f-2c6a-46d1-bd8d-746f566db99b"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Daten und Zufall' (eA), Kern, 'die Binomialverteilung als naeherungsweises Modell ... verwenden', S. 53.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Daten und Zufall"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "5afc63b8-af7d-43e7-aa32-488ad72ad6c9",
+      "title": "Diskrete und stetige Zufallsgroessen unterscheiden",
+      "titleEn": "Distinguish Discrete and Continuous Random Variables",
+      "description": "Die Schuelerinnen und Schueler unterscheiden diskrete und stetige Zufallsgroessen und verorten die Normalverteilung als Beispiel einer stetigen Verteilung.",
+      "descriptionEn": "Students distinguish discrete and continuous random variables and position the normal distribution as an example of a continuous distribution.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "eA",
+        "Stochastik",
+        "Normalverteilung"
+      ],
+      "contains": [],
+      "requires": [
+        "9d46781b-a217-4570-8a46-333dd71b1288"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Daten und Zufall' (eA), Kern, 'Diskrete und stetige Zufallsgroessen unterscheiden', S. 53.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Daten und Zufall"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "c99a1f8a-e266-48bb-b177-7f8644f0d6ad",
+      "title": "Notwendigkeit von Histogrammen erlaeutern",
+      "titleEn": "Explain the Need for Histograms",
+      "description": "Die Schuelerinnen und Schueler erlaeutern die Notwendigkeit von Histogrammen zur Darstellung und Deutung von Verteilungen stetiger Zufallsgroessen.",
+      "descriptionEn": "Students explain the need for histograms to represent and interpret distributions of continuous random variables.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "eA",
+        "Stochastik",
+        "Histogramme"
+      ],
+      "contains": [],
+      "requires": [
+        "5afc63b8-af7d-43e7-aa32-488ad72ad6c9"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Daten und Zufall' (eA), Kern, 'Notwendigkeit von Histogrammen erlaeutern', S. 54.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Daten und Zufall"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "9c52c9ef-fc56-487f-98d2-9c2e303344d9",
+      "title": "Parameter der Normalverteilung erlaeutern und in Sachkontexten nutzen",
+      "titleEn": "Explain Parameters of the Normal Distribution and Use Them in Context",
+      "description": "Die Schuelerinnen und Schueler erlaeutern die Bedeutung der Parameter der Normalverteilung und nutzen diese in Sachkontexten zur Beschreibung und Interpretation von Verteilungen.",
+      "descriptionEn": "Students explain the meaning of the parameters of the normal distribution and use them in contexts to describe and interpret distributions.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "eA",
+        "Stochastik",
+        "Normalverteilung"
+      ],
+      "contains": [],
+      "requires": [
+        "5afc63b8-af7d-43e7-aa32-488ad72ad6c9"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Daten und Zufall' (eA), Kern, 'Parameter der Normalverteilung erlaeutern und in Sachkontexten nutzen', S. 54.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Daten und Zufall"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "2aeda51d-d37a-470c-b875-d5b2aa7f971a",
+      "title": "Angemessenheit der Approximation der Binomialverteilung durch die Normalverteilung beurteilen",
+      "titleEn": "Assess the Appropriateness of Approximating the Binomial Distribution by the Normal Distribution",
+      "description": "Die Schuelerinnen und Schueler beurteilen die Angemessenheit der Approximation einer Binomialverteilung durch die Normalverteilung und begruenden ihre Entscheidung mit Parametern und grafischen Darstellungen.",
+      "descriptionEn": "Students assess the appropriateness of approximating a binomial distribution by the normal distribution and justify their decision using parameters and graphical representations.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "eA",
+        "Stochastik",
+        "Normalapproximation"
+      ],
+      "contains": [],
+      "requires": [
+        "1fba8d1e-fec3-4636-be89-f3e53d1d298f",
+        "9c52c9ef-fc56-487f-98d2-9c2e303344d9"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Daten und Zufall' (eA), Kern, 'Angemessenheit der Approximation der Binomialverteilung durch die Normalverteilung beurteilen', S. 54.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Daten und Zufall"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "29a281bf-4922-45b7-9e9d-a09e810e393e",
+      "title": "Prognoseintervalle auch mithilfe von Sigma-Umgebungen fuer Anteile berechnen und interpretieren",
+      "titleEn": "Calculate and Interpret Prediction Intervals for Proportions Using Sigma Neighborhoods",
+      "description": "Die Schuelerinnen und Schueler berechnen Prognoseintervalle fuer Anteile auch mithilfe von Sigma-Umgebungen und interpretieren deren Aussagekraft im Kontext.",
+      "descriptionEn": "Students calculate prediction intervals for proportions also using sigma neighborhoods and interpret their significance in context.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "eA",
+        "Stochastik",
+        "Prognoseintervalle"
+      ],
+      "contains": [],
+      "requires": [
+        "2aeda51d-d37a-470c-b875-d5b2aa7f971a",
+        "397f2e64-603c-4b1a-a401-867de21f48ec"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Daten und Zufall' (eA), Kern, 'Prognoseintervalle auch mithilfe von Sigma-Umgebungen ... berechnen und interpretieren', S. 54.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Daten und Zufall"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "af2f3cb3-4857-4238-9153-51733dcee965",
+      "title": "Konfidenzintervalle fuer den Parameter p der Binomialverteilung ermitteln und interpretieren",
+      "titleEn": "Determine and Interpret Confidence Intervals for the Parameter p of the Binomial Distribution",
+      "description": "Die Schuelerinnen und Schueler ermitteln Konfidenzintervalle fuer den Parameter p der Binomialverteilung und interpretieren die Ergebnisse im Kontext.",
+      "descriptionEn": "Students determine confidence intervals for the parameter p of the binomial distribution and interpret the results in context.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "eA",
+        "Stochastik",
+        "Konfidenzintervalle"
+      ],
+      "contains": [],
+      "requires": [
+        "29a281bf-4922-45b7-9e9d-a09e810e393e"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Daten und Zufall' (eA), Kern, 'Konfidenzintervalle fuer den Parameter p ... ermitteln und interpretieren', S. 54.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Daten und Zufall"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "cd60bbc9-0a0b-41ba-8a6c-db84ce3655b9",
+      "title": "Intervallgrenzen von Konfidenzintervallen als zufaellige Groessen erlaeutern",
+      "titleEn": "Explain Interval Bounds of Confidence Intervals as Random Quantities",
+      "description": "Die Schuelerinnen und Schueler erlaeutern die Intervallgrenzen von Konfidenzintervallen als zufaellige Groessen und reflektieren die daraus entstehende Unsicherheit.",
+      "descriptionEn": "Students explain the interval bounds of confidence intervals as random quantities and reflect on the resulting uncertainty.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "eA",
+        "Stochastik",
+        "Konfidenzintervalle"
+      ],
+      "contains": [],
+      "requires": [
+        "af2f3cb3-4857-4238-9153-51733dcee965"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Daten und Zufall' (eA), Kern, 'die Intervallgrenzen von Konfidenzintervallen als zufaellige Groessen erlaeutern', S. 54.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Daten und Zufall"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "dfcbe036-3e3c-4b77-8425-c7f57c411a79",
+      "title": "Sicherheitswahrscheinlichkeit als relative Haeufigkeit der Ueberdeckung deuten",
+      "titleEn": "Interpret Confidence Level as Relative Frequency of Coverage",
+      "description": "Die Schuelerinnen und Schueler deuten die Sicherheitswahrscheinlichkeit als relative Haeufigkeit, mit der Konfidenzintervalle bei Verwendung der Normalverteilung den wahren Wert ueberdecken.",
+      "descriptionEn": "Students interpret the confidence level as the relative frequency with which confidence intervals based on the normal distribution cover the true value.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "eA",
+        "Stochastik",
+        "Konfidenzintervalle"
+      ],
+      "contains": [],
+      "requires": [
+        "cd60bbc9-0a0b-41ba-8a6c-db84ce3655b9"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Daten und Zufall' (eA), Kern, 'die Sicherheitswahrscheinlichkeit als relative Haeufigkeit deuten ...', S. 54.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Daten und Zufall"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "f3567c1c-42e9-402f-9116-ad73d83521ae",
+      "title": "Stochastische Situationen simulieren, die zu annaehernd normalverteilten Zufallsgroessen fuehren",
+      "titleEn": "Simulate Stochastic Situations Leading to Approximately Normal Random Variables",
+      "description": "Die Schuelerinnen und Schueler simulieren exemplarisch stochastische Situationen, die zu annaehernd normalverteilten Zufallsgroessen fuehren, um Naeherungsloesungen in komplexeren Situationen zu erhalten.",
+      "descriptionEn": "Students simulate exemplary stochastic situations that lead to approximately normally distributed random variables in order to obtain approximate solutions in more complex situations.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "eA",
+        "Stochastik",
+        "Simulation"
+      ],
+      "contains": [],
+      "requires": [
+        "2aeda51d-d37a-470c-b875-d5b2aa7f971a",
+        "db02e65f-2c6a-46d1-bd8d-746f566db99b"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Sek II, Lernbereich 'Daten und Zufall' (eA), Kern, 'exemplarisch stochastische Situationen simulieren ...', S. 54.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Daten und Zufall"
       },
       "type": "atomic"
     }

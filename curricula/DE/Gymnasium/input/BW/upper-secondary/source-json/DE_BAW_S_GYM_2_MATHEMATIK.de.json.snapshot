@@ -8,8 +8,8 @@
   "frameworkId": "bw-bp2016-gym-math",
   "title": "Mathematik Kursstufe (Baden-Wuerttemberg, Pilot-Quellsnapshot)",
   "titleEn": "Mathematics Upper Secondary Course Stage (Baden-Wuerttemberg, Pilot Source Snapshot)",
-  "description": "Erster archivierter Baden-Wuerttemberg-Quellsnapshot fuer den Mathematik-Pilotkorridor der Kursstufe. Der Snapshot umfasst zunaechst nur den gemeinsamen Orientierungsanker sowie die erste Analysis-Oberflaeche der Leitidee Funktionaler Zusammenhang in Basisfach und Leistungsfach.",
-  "descriptionEn": "First archived Baden-Wuerttemberg source snapshot for the course-stage mathematics pilot corridor. The snapshot initially covers only the shared orientation anchor and the first analysis surface of the functions strand in basic and advanced course.",
+  "description": "Erster archivierter Baden-Wuerttemberg-Quellsnapshot fuer den Mathematik-Pilotkorridor der Kursstufe. Der Snapshot umfasst den gemeinsamen Orientierungsanker, die erste Analysis-Oberflaeche der Leitidee Funktionaler Zusammenhang in Basisfach und Leistungsfach, den angrenzenden Rechenregel- und Integrationsstreifen aus Zahl-Variable-Operation, den ersten Stochastik-Follow-on zu Hypothesentests und Normalverteilung aus Daten und Zufall, den ersten Geometrie-Follow-on zu Ebenen, Lagebeziehungen, Winkeln und Raummodellen, den ersten Gauß-Follow-on zu linearen Gleichungssystemen sowie den verbleibenden Integral-Anwendungsstreifen aus Leitidee Messen.",
+  "descriptionEn": "First archived Baden-Wuerttemberg source snapshot for the course-stage mathematics pilot corridor. The snapshot covers the shared orientation anchor, the first analysis surface of the functions strand in basic and advanced course, the adjacent strip of calculation rules and integration procedures from number-variable-operation, the first stochastics follow-on on hypothesis tests and the normal distribution from data and chance, the first geometry follow-on on planes, positional relationships, angles, and spatial models, the first Gaussian-elimination follow-on on systems of linear equations, and the remaining integral-application strip from the measurement strand.",
   "compatibilityOnly": true,
   "legacyHiddenByDefault": true,
   "filters": [
@@ -27,30 +27,38 @@
       "id": "c2e465de-9a79-40ea-bc07-e004e7aec70f",
       "title": "Mathematik Kursstufe",
       "titleEn": "Mathematics Course Stage",
-      "description": "Pilot-Subset der baden-wuerttembergischen Mathematik-Kompetenzen der Kursstufe mit Fokus auf dem ersten gemeinsamen Analysis-Korridor in Basisfach und Leistungsfach.",
-      "descriptionEn": "Pilot subset of Baden-Wuerttemberg course-stage mathematics competencies with a focus on the first shared analysis corridor in basic and advanced course.",
-      "weight": 12,
+      "description": "Pilot-Subset der baden-wuerttembergischen Mathematik-Kompetenzen der Kursstufe mit Fokus auf dem ersten gemeinsamen Analysis-Korridor in Basisfach und Leistungsfach, dem angrenzenden Rechenregel- und Integrationsstreifen, dem verbleibenden Integral-Anwendungsstreifen aus Leitidee Messen, dem ersten Stochastik-Follow-on, dem ersten Raum-und-Form-Follow-on sowie dem ersten Gauß-Follow-on.",
+      "descriptionEn": "Pilot subset of Baden-Wuerttemberg course-stage mathematics competencies with a focus on the first shared analysis corridor in basic and advanced course, the adjacent strip of calculation rules and integration procedures, the remaining integral-application strip from the measurement strand, the first stochastics follow-on, the first space-and-shape follow-on, and the first Gaussian-elimination follow-on.",
+      "weight": 64,
       "tags": [
         "BF",
         "LF",
         "PilotSubset",
-        "Analysis"
+        "Algebra",
+        "Analysis",
+        "Geometry",
+        "Stochastics"
       ],
       "contains": [
         "f84004f9-0987-40f4-88dd-830c039b7bf6",
-        "c8fc1595-a76c-4858-bbd4-411ceed59c71"
+        "c8fc1595-a76c-4858-bbd4-411ceed59c71",
+        "6e496745-1b62-4fbe-b39f-7942e16bfcfc",
+        "6f67816e-dac9-4d3d-a8b9-ff5ac0f88ace",
+        "0ad547f1-bb30-4abc-9fb5-6621800de00a",
+        "b241e5a6-905e-4792-8b39-a3d57d17d782",
+        "8b6ede65-e201-4c03-91c1-97871d6e3314"
       ],
       "requires": [
         "f84004f9-0987-40f4-88dd-830c039b7bf6"
       ],
-      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 1.4 sowie 3.4.4 und 3.5.4, S. 11, 42-43 und 48.",
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 1.4 sowie 3.4.1, 3.4.2, 3.4.3, 3.4.4, 3.4.5, 3.5.1, 3.5.2, 3.5.3, 3.5.4 und 3.5.5, S. 11 und 39-49.",
       "dimensionTags": {
         "framework": "bw-bp2016-gym-math",
         "demandLevel": "AB2",
         "processCompetencies": [],
         "guidingIdeas": [],
         "phase": "GLOBAL",
-        "area": "Funktionen und Analysis"
+        "area": "Funktionen, Analysis, Geometrie, Algebra, Messen und Stochastik"
       },
       "type": "cluster"
     },
@@ -110,6 +118,810 @@
         "area": "Funktionen und Analysis"
       },
       "type": "cluster"
+    },
+    {
+      "id": "6e496745-1b62-4fbe-b39f-7942e16bfcfc",
+      "title": "Zweiter Kursstufen-Korridor: Logarithmus, Ableitungs- und Integrationsregeln",
+      "titleEn": "Second Course-Stage Corridor: Logarithms, Differentiation Rules and Integration Procedures",
+      "description": "Angrenzender BW-Kursstufen-Korridor zu natuerlichem Logarithmus, weiteren Ableitungsregeln, Integrationsverfahren und vertieften Integralfragen in Basisfach und Leistungsfach.",
+      "descriptionEn": "Adjacent Baden-Wuerttemberg course-stage corridor on the natural logarithm, further differentiation rules, integration procedures, and advanced integral questions in the basic and advanced course.",
+      "weight": 10,
+      "tags": [
+        "BF",
+        "LF",
+        "PilotSubset",
+        "Analysis",
+        "ZahlVariableOperation"
+      ],
+      "contains": [
+        "a3aa108b-238b-4768-b823-923868e76fac",
+        "356c9806-2848-4bfd-873f-3209efe18532"
+      ],
+      "requires": [
+        "f84004f9-0987-40f4-88dd-830c039b7bf6"
+      ],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.4.1 und 3.5.1 Leitidee Zahl - Variable - Operation, S. 39 und 45.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Zahl - Variable - Operation"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "6f67816e-dac9-4d3d-a8b9-ff5ac0f88ace",
+      "title": "Dritter Kursstufen-Korridor: Daten und Zufall, Hypothesentests und Normalverteilung",
+      "titleEn": "Third Course-Stage Corridor: Data and Chance, Hypothesis Tests and Normal Distribution",
+      "description": "Angrenzender BW-Kursstufen-Korridor zu Normalverteilung, diskreten und stetigen Zufallsgroessen sowie Hypothesentests in Basisfach und Leistungsfach.",
+      "descriptionEn": "Adjacent Baden-Wuerttemberg course-stage corridor on the normal distribution, discrete and continuous random variables, and hypothesis tests in the basic and advanced course.",
+      "weight": 13,
+      "tags": [
+        "BF",
+        "LF",
+        "PilotSubset",
+        "Stochastics",
+        "DatenUndZufall"
+      ],
+      "contains": [
+        "dcb89bc8-fcd8-4a72-b50c-c7ac24aa770b",
+        "e46bc759-93ab-441c-a316-c349897233d9"
+      ],
+      "requires": [
+        "f84004f9-0987-40f4-88dd-830c039b7bf6"
+      ],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.4.5 und 3.5.5 Leitidee Daten und Zufall, S. 44 und 49.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Daten und Zufall"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "a3aa108b-238b-4768-b823-923868e76fac",
+      "title": "Basisfach: Logarithmus, Ableitungs- und Integrationsregeln",
+      "titleEn": "Basic Course: Logarithm, Differentiation Rules and Integration Procedures",
+      "description": "BW-Basisfach-Follow-on zum natuerlichen Logarithmus, zu weiteren Ableitungsregeln sowie zu grundlegenden Integrationsregeln und dem Hauptsatz.",
+      "descriptionEn": "Baden-Wuerttemberg basic-course follow-on on the natural logarithm, further differentiation rules, and foundational integration procedures including the Fundamental Theorem.",
+      "weight": 4,
+      "tags": [
+        "BF",
+        "Analysis",
+        "PilotSubset",
+        "ZahlVariableOperation"
+      ],
+      "contains": [
+        "8c12f6ea-154d-44ab-af4d-4de8c5c325c7",
+        "a8049427-1331-41ec-9791-e50ffeefa2b7",
+        "cb8562b5-05c2-4daf-8471-cdf6231e8a14",
+        "2a7402b9-ef3a-4f3c-8769-d824f703470a"
+      ],
+      "requires": [
+        "f84004f9-0987-40f4-88dd-830c039b7bf6"
+      ],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.5.1 Leitidee Zahl - Variable - Operation, S. 45.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Zahl - Variable - Operation"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "8c12f6ea-154d-44ab-af4d-4de8c5c325c7",
+      "title": "Den natuerlichen Logarithmus zur Loesung von Exponentialgleichungen verwenden",
+      "titleEn": "Use the Natural Logarithm to Solve Exponential Equations",
+      "description": "Die Schuelerinnen und Schueler verwenden den natuerlichen Logarithmus einer Zahl als Loesung einer Exponentialgleichung und deuten die Umformung in einfachen Kontexten.",
+      "descriptionEn": "Students use the natural logarithm of a number as the solution of an exponential equation and interpret the transformation in simple contexts.",
+      "weight": 1,
+      "tags": [
+        "BF",
+        "Analysis",
+        "Logarithmus"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.5.1 Leitidee Zahl - Variable - Operation (1), S. 45.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Zahl - Variable - Operation"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "a8049427-1331-41ec-9791-e50ffeefa2b7",
+      "title": "Produktregel und Kettenregel mit linearer innerer Funktion anwenden",
+      "titleEn": "Apply the Product Rule and the Chain Rule with a Linear Inner Function",
+      "description": "Die Schuelerinnen und Schueler verwenden die Produktregel und die Kettenregel zum Ableiten von Funktionstermen, bei denen die innere Funktion linear ist.",
+      "descriptionEn": "Students apply the product rule and the chain rule when differentiating function terms whose inner function is linear.",
+      "weight": 1,
+      "tags": [
+        "BF",
+        "Analysis",
+        "Ableitungsregeln"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.5.1 Leitidee Zahl - Variable - Operation (2)-(3), S. 45.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Zahl - Variable - Operation"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "cb8562b5-05c2-4daf-8471-cdf6231e8a14",
+      "title": "Stammfunktionen mit Integrationsregeln und linearer Substitution bestimmen",
+      "titleEn": "Determine Antiderivatives Using Integration Rules and Linear Substitution",
+      "description": "Die Schuelerinnen und Schueler verwenden Potenzregel, Regel fuer konstanten Faktor, Summenregel und lineare Substitution zur Bestimmung von Stammfunktionen und geben passende Stammfunktionsterme an.",
+      "descriptionEn": "Students use the power rule, constant-factor rule, sum rule, and linear substitution to determine antiderivatives and state suitable antiderivative terms.",
+      "weight": 1,
+      "tags": [
+        "BF",
+        "Analysis",
+        "Integral"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.5.1 Leitidee Zahl - Variable - Operation (4)-(5), S. 45.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Zahl - Variable - Operation"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "2a7402b9-ef3a-4f3c-8769-d824f703470a",
+      "title": "Den Hauptsatz zur Berechnung bestimmter Integrale nutzen",
+      "titleEn": "Use the Fundamental Theorem to Compute Definite Integrals",
+      "description": "Die Schuelerinnen und Schueler nutzen den Hauptsatz der Differential- und Integralrechnung zur Berechnung bestimmter Integrale.",
+      "descriptionEn": "Students use the Fundamental Theorem of calculus to compute definite integrals.",
+      "weight": 1,
+      "tags": [
+        "BF",
+        "Analysis",
+        "Integral"
+      ],
+      "contains": [],
+      "requires": [
+        "cb8562b5-05c2-4daf-8471-cdf6231e8a14"
+      ],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.5.1 Leitidee Zahl - Variable - Operation (6), S. 45.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Zahl - Variable - Operation"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "356c9806-2848-4bfd-873f-3209efe18532",
+      "title": "Leistungsfach: numerische Verfahren, Ableitungs- und Integrationsregeln",
+      "titleEn": "Advanced Course: Numerical Procedures, Differentiation Rules and Integration Procedures",
+      "description": "BW-Leistungsfach-Follow-on zu numerischen Naeherungsverfahren, weiteren Ableitungsregeln, vertieften Integrationsverfahren und uneigentlichen Integralen.",
+      "descriptionEn": "Baden-Wuerttemberg advanced-course follow-on on numerical approximation procedures, further differentiation rules, advanced integration procedures, and improper integrals.",
+      "weight": 6,
+      "tags": [
+        "LF",
+        "Analysis",
+        "PilotSubset",
+        "ZahlVariableOperation"
+      ],
+      "contains": [
+        "65117831-b95b-4f8a-b1af-606785b92b5c",
+        "587ea551-b69d-4820-8ff5-e161b49adbd4",
+        "988e4e6e-6b8c-41b5-84f0-c34ec4d82b74",
+        "ff6922a2-2acc-4c59-a896-8e8c4f14a9ab",
+        "180eb105-e4cd-4741-af2d-d0b1f0ed2ff1",
+        "d3df03bc-ded3-4e00-9820-778c094a4043"
+      ],
+      "requires": [
+        "f84004f9-0987-40f4-88dd-830c039b7bf6"
+      ],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.4.1 Leitidee Zahl - Variable - Operation, S. 39.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Zahl - Variable - Operation"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "65117831-b95b-4f8a-b1af-606785b92b5c",
+      "title": "Die eulersche Zahl e naeherungsweise bestimmen",
+      "titleEn": "Approximate Euler's Number e",
+      "description": "Die Schuelerinnen und Schueler bestimmen die eulersche Zahl e naeherungsweise.",
+      "descriptionEn": "Students approximate Euler's number e.",
+      "weight": 1,
+      "tags": [
+        "LF",
+        "Analysis",
+        "Exponentialfunktion"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.4.1 Leitidee Zahl - Variable - Operation (1), S. 39.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Zahl - Variable - Operation"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "587ea551-b69d-4820-8ff5-e161b49adbd4",
+      "title": "Ein iteratives Verfahren zur naeherungsweisen Bestimmung von Nullstellen begruenden und durchfuehren",
+      "titleEn": "Justify and Carry Out an Iterative Procedure for Approximating Zeros",
+      "description": "Die Schuelerinnen und Schueler begruenden und durchlaufen ein iteratives Verfahren zur naeherungsweisen Bestimmung von Nullstellen.",
+      "descriptionEn": "Students justify and carry out an iterative procedure for approximating zeros.",
+      "weight": 1,
+      "tags": [
+        "LF",
+        "Analysis",
+        "Nullstellen"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.4.1 Leitidee Zahl - Variable - Operation (2), S. 39.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Zahl - Variable - Operation"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "988e4e6e-6b8c-41b5-84f0-c34ec4d82b74",
+      "title": "Produkt- und Kettenregel anwenden und zusammengesetzte Funktionen ableiten",
+      "titleEn": "Apply the Product and Chain Rule and Differentiate Composed Functions",
+      "description": "Die Schuelerinnen und Schueler verwenden die Produkt- und Kettenregel zum Ableiten von Funktionstermen und nutzen die Regeln in einfachen zusammengesetzten Faellen.",
+      "descriptionEn": "Students apply the product and chain rule when differentiating function terms and use the rules in simple composed cases.",
+      "weight": 1,
+      "tags": [
+        "LF",
+        "Analysis",
+        "Ableitungsregeln"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.4.1 Leitidee Zahl - Variable - Operation (3), S. 39.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Zahl - Variable - Operation"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "ff6922a2-2acc-4c59-a896-8e8c4f14a9ab",
+      "title": "Einfache gebrochenrationale Funktionen ableiten",
+      "titleEn": "Differentiate Simple Rational Functions",
+      "description": "Die Schuelerinnen und Schueler leiten gebrochenrationale Funktionen in einfachen Faellen durch Verbindung der Ableitungsregeln ab.",
+      "descriptionEn": "Students differentiate rational functions in simple cases by combining differentiation rules.",
+      "weight": 1,
+      "tags": [
+        "LF",
+        "Analysis",
+        "Gebrochenrational"
+      ],
+      "contains": [],
+      "requires": [
+        "988e4e6e-6b8c-41b5-84f0-c34ec4d82b74"
+      ],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.4.1 Leitidee Zahl - Variable - Operation (4), S. 39.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Zahl - Variable - Operation"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "180eb105-e4cd-4741-af2d-d0b1f0ed2ff1",
+      "title": "Stammfunktionen mit Integrationsregeln, Hauptsatz und linearer Substitution bestimmen",
+      "titleEn": "Determine Antiderivatives Using Integration Rules, the Fundamental Theorem, and Linear Substitution",
+      "description": "Die Schuelerinnen und Schueler verwenden Potenzregel, Regel fuer konstanten Faktor, Summenregel und lineare Substitution fuer die Bestimmung von Stammfunktionen, geben Stammfunktionsterme an und nutzen den Hauptsatz zur Berechnung bestimmter Integrale.",
+      "descriptionEn": "Students use the power rule, constant-factor rule, sum rule, and linear substitution to determine antiderivatives, state antiderivative terms, and use the Fundamental Theorem to compute definite integrals.",
+      "weight": 1,
+      "tags": [
+        "LF",
+        "Analysis",
+        "Integral"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.4.1 Leitidee Zahl - Variable - Operation (5)-(7), S. 39.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Zahl - Variable - Operation"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "d3df03bc-ded3-4e00-9820-778c094a4043",
+      "title": "Uneigentliche Integrale untersuchen",
+      "titleEn": "Investigate Improper Integrals",
+      "description": "Die Schuelerinnen und Schueler untersuchen uneigentliche Integrale.",
+      "descriptionEn": "Students investigate improper integrals.",
+      "weight": 1,
+      "tags": [
+        "LF",
+        "Analysis",
+        "Integral"
+      ],
+      "contains": [],
+      "requires": [
+        "180eb105-e4cd-4741-af2d-d0b1f0ed2ff1"
+      ],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.4.1 Leitidee Zahl - Variable - Operation (8), S. 39.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Zahl - Variable - Operation"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "dcb89bc8-fcd8-4a72-b50c-c7ac24aa770b",
+      "title": "Basisfach: Normalverteilung und Zufallsgroessen",
+      "titleEn": "Basic Course: Normal Distribution and Random Variables",
+      "description": "BW-Basisfach-Follow-on zu diskreten und stetigen Zufallsgroessen sowie zu ersten Normalverteilungsdeutungen und Wahrscheinlichkeiten.",
+      "descriptionEn": "Baden-Wuerttemberg basic-course follow-on on discrete and continuous random variables and first interpretations and probabilities for the normal distribution.",
+      "weight": 3,
+      "tags": [
+        "BF",
+        "Stochastics",
+        "PilotSubset",
+        "DatenUndZufall"
+      ],
+      "contains": [
+        "4c3840b0-c9b7-4199-b977-c23521877c83",
+        "d344ae76-c06b-4ad2-93eb-d287a4fdec36",
+        "87bce2ea-e022-4225-903a-3c91160c35f2"
+      ],
+      "requires": [
+        "f84004f9-0987-40f4-88dd-830c039b7bf6"
+      ],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.5.5 Leitidee Daten und Zufall, S. 49.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Daten und Zufall"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "4c3840b0-c9b7-4199-b977-c23521877c83",
+      "title": "Diskrete und stetige Zufallsgroessen unterscheiden",
+      "titleEn": "Distinguish Discrete and Continuous Random Variables",
+      "description": "Die Schuelerinnen und Schueler beschreiben den Unterschied zwischen diskreten und stetigen Zufallsgroessen am Beispiel binomial- und normalverteilter Zufallsgroessen.",
+      "descriptionEn": "Students describe the difference between discrete and continuous random variables using binomially and normally distributed random variables as examples.",
+      "weight": 1,
+      "tags": [
+        "BF",
+        "Stochastics",
+        "Normalverteilung"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.5.5 Leitidee Daten und Zufall (1), S. 49.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Daten und Zufall"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "d344ae76-c06b-4ad2-93eb-d287a4fdec36",
+      "title": "Glockenkurve durch Erwartungswert und Standardabweichung beschreiben",
+      "titleEn": "Describe the Bell Curve by Mean and Standard Deviation",
+      "description": "Die Schuelerinnen und Schueler beschreiben den Zusammenhang der Kenngroessen Erwartungswert und Standardabweichung einer Normalverteilung mit der zugehoerigen Glockenkurve.",
+      "descriptionEn": "Students describe the relationship between the parameters mean and standard deviation of a normal distribution and the associated bell curve.",
+      "weight": 1,
+      "tags": [
+        "BF",
+        "Stochastics",
+        "Normalverteilung"
+      ],
+      "contains": [],
+      "requires": [
+        "4c3840b0-c9b7-4199-b977-c23521877c83"
+      ],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.5.5 Leitidee Daten und Zufall (2), S. 49.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Daten und Zufall"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "87bce2ea-e022-4225-903a-3c91160c35f2",
+      "title": "Annaehernd normalverteilte Situationen untersuchen",
+      "titleEn": "Investigate Approximately Normally Distributed Situations",
+      "description": "Die Schuelerinnen und Schueler untersuchen stochastische Situationen, die zu annaehernd normalverteilten Zufallsgroessen gehoeren, und berechnen Wahrscheinlichkeiten mit digitalen Hilfsmitteln.",
+      "descriptionEn": "Students investigate stochastic situations that lead to approximately normally distributed random variables and compute probabilities using digital tools.",
+      "weight": 1,
+      "tags": [
+        "BF",
+        "Stochastics",
+        "Normalverteilung"
+      ],
+      "contains": [],
+      "requires": [
+        "d344ae76-c06b-4ad2-93eb-d287a4fdec36"
+      ],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.5.5 Leitidee Daten und Zufall (3), S. 49.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Daten und Zufall"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "e46bc759-93ab-441c-a316-c349897233d9",
+      "title": "Leistungsfach: Hypothesentests und Normalverteilung",
+      "titleEn": "Advanced Course: Hypothesis Tests and Normal Distribution",
+      "description": "BW-Leistungsfach-Follow-on zu Hypothesentests bei binomialverteilten Zufallsgroessen sowie zu stetigen Zufallsgroessen und Normalverteilungen.",
+      "descriptionEn": "Baden-Wuerttemberg advanced-course follow-on on hypothesis tests for binomially distributed random variables as well as continuous random variables and normal distributions.",
+      "weight": 10,
+      "tags": [
+        "LF",
+        "Stochastics",
+        "PilotSubset",
+        "DatenUndZufall"
+      ],
+      "contains": [
+        "df32db8a-406b-4d08-9439-cf920a0bc9f9",
+        "c49bfd51-4872-4261-98e5-96db79413101",
+        "7bd4d004-534e-4476-b9f7-56245285d47f",
+        "97264523-00a6-413d-a1dc-f472f9f596fd",
+        "4b1b0f76-b6e6-406b-9728-5939d94b0f41",
+        "632b33b2-c8ef-4c98-a899-4780ca420c94",
+        "34b3c946-a14e-4120-8af4-a1242f7871eb",
+        "49fcf825-0929-4a25-bceb-5947cf6d9b04",
+        "7289bdba-0913-4a64-b46f-a58c3c431c42",
+        "33e40b11-1bed-4912-8666-bb43285085ef"
+      ],
+      "requires": [
+        "f84004f9-0987-40f4-88dd-830c039b7bf6"
+      ],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.4.5 Leitidee Daten und Zufall, S. 44.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Daten und Zufall"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "df32db8a-406b-4d08-9439-cf920a0bc9f9",
+      "title": "Argumentationsmuster von Hypothesentests erlaeutern",
+      "titleEn": "Explain the Reasoning Pattern of Hypothesis Tests",
+      "description": "Die Schuelerinnen und Schueler erlaeutern das Argumentationsmuster, das dem Testen von Hypothesen zugrunde liegt.",
+      "descriptionEn": "Students explain the reasoning pattern underlying the testing of hypotheses.",
+      "weight": 1,
+      "tags": [
+        "LF",
+        "Stochastics",
+        "Hypothesentest"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.4.5 Leitidee Daten und Zufall (1), S. 44.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Daten und Zufall"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "c49bfd51-4872-4261-98e5-96db79413101",
+      "title": "Passende Nullhypothesen formulieren",
+      "titleEn": "Formulate Suitable Null Hypotheses",
+      "description": "Die Schuelerinnen und Schueler formulieren eine Nullhypothese so, dass sie der Zielsetzung des Tests entspricht.",
+      "descriptionEn": "Students formulate a null hypothesis so that it matches the purpose of the test.",
+      "weight": 1,
+      "tags": [
+        "LF",
+        "Stochastics",
+        "Hypothesentest"
+      ],
+      "contains": [],
+      "requires": [
+        "df32db8a-406b-4d08-9439-cf920a0bc9f9"
+      ],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.4.5 Leitidee Daten und Zufall (2), S. 44.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Daten und Zufall"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "7bd4d004-534e-4476-b9f7-56245285d47f",
+      "title": "Ablehnungsbereich und Irrtumswahrscheinlichkeit am Histogramm erklaeren",
+      "titleEn": "Explain Rejection Region and Error Probability on a Histogram",
+      "description": "Die Schuelerinnen und Schueler erlaeutern Ablehnungsbereich und Irrtumswahrscheinlichkeit an einem Histogramm.",
+      "descriptionEn": "Students explain the rejection region and error probability on a histogram.",
+      "weight": 1,
+      "tags": [
+        "LF",
+        "Stochastics",
+        "Hypothesentest"
+      ],
+      "contains": [],
+      "requires": [
+        "c49bfd51-4872-4261-98e5-96db79413101"
+      ],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.4.5 Leitidee Daten und Zufall (3), S. 44.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Daten und Zufall"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "97264523-00a6-413d-a1dc-f472f9f596fd",
+      "title": "Ein- und zweiseitige Hypothesentests durchfuehren",
+      "titleEn": "Carry Out One-Sided and Two-Sided Hypothesis Tests",
+      "description": "Die Schuelerinnen und Schueler fuehren ein- und zweiseitige Hypothesentests durch und geben Ablehnungsbereich, Entscheidungsregel und Irrtumswahrscheinlichkeit an.",
+      "descriptionEn": "Students carry out one-sided and two-sided hypothesis tests and state the rejection region, decision rule, and error probability.",
+      "weight": 1,
+      "tags": [
+        "LF",
+        "Stochastics",
+        "Hypothesentest"
+      ],
+      "contains": [],
+      "requires": [
+        "7bd4d004-534e-4476-b9f7-56245285d47f"
+      ],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.4.5 Leitidee Daten und Zufall (4), S. 44.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Daten und Zufall"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "4b1b0f76-b6e6-406b-9728-5939d94b0f41",
+      "title": "Signifikanzniveau und Irrtumswahrscheinlichkeit abgrenzen",
+      "titleEn": "Distinguish Significance Level and Error Probability",
+      "description": "Die Schuelerinnen und Schueler grenzen Signifikanzniveau und Irrtumswahrscheinlichkeit gegeneinander ab.",
+      "descriptionEn": "Students distinguish the significance level from the error probability.",
+      "weight": 1,
+      "tags": [
+        "LF",
+        "Stochastics",
+        "Hypothesentest"
+      ],
+      "contains": [],
+      "requires": [
+        "97264523-00a6-413d-a1dc-f472f9f596fd"
+      ],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.4.5 Leitidee Daten und Zufall (5), S. 44.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Daten und Zufall"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "632b33b2-c8ef-4c98-a899-4780ca420c94",
+      "title": "Fehler erster und zweiter Art im Kontext erklaeren",
+      "titleEn": "Explain Type I and Type II Errors in Context",
+      "description": "Die Schuelerinnen und Schueler erlaeutern Fehler erster und zweiter Art im Kontext eines Hypothesentests.",
+      "descriptionEn": "Students explain type I and type II errors in the context of a hypothesis test.",
+      "weight": 1,
+      "tags": [
+        "LF",
+        "Stochastics",
+        "Hypothesentest"
+      ],
+      "contains": [],
+      "requires": [
+        "4b1b0f76-b6e6-406b-9728-5939d94b0f41"
+      ],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.4.5 Leitidee Daten und Zufall (6), S. 44.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Daten und Zufall"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "34b3c946-a14e-4120-8af4-a1242f7871eb",
+      "title": "Einfluss des Stichprobenumfangs auf Testfehler angeben",
+      "titleEn": "State the Influence of Sample Size on Test Errors",
+      "description": "Die Schuelerinnen und Schueler geben den Einfluss des Stichprobenumfangs auf die Wahrscheinlichkeiten fuer den Fehler erster und zweiter Art an.",
+      "descriptionEn": "Students state the influence of sample size on the probabilities of type I and type II errors.",
+      "weight": 1,
+      "tags": [
+        "LF",
+        "Stochastics",
+        "Hypothesentest"
+      ],
+      "contains": [],
+      "requires": [
+        "632b33b2-c8ef-4c98-a899-4780ca420c94"
+      ],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.4.5 Leitidee Daten und Zufall (7), S. 44.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Daten und Zufall"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "49fcf825-0929-4a25-bceb-5947cf6d9b04",
+      "title": "Diskrete und stetige Zufallsgroessen unterscheiden (LF)",
+      "titleEn": "Distinguish Discrete and Continuous Random Variables (Advanced Course)",
+      "description": "Die Schuelerinnen und Schueler erlaeutern den Unterschied zwischen diskreten und stetigen Zufallsgroessen.",
+      "descriptionEn": "Students explain the difference between discrete and continuous random variables.",
+      "weight": 1,
+      "tags": [
+        "LF",
+        "Stochastics",
+        "Normalverteilung"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.4.5 Leitidee Daten und Zufall (8), S. 44.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Daten und Zufall"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "7289bdba-0913-4a64-b46f-a58c3c431c42",
+      "title": "Dichtefunktion der Normalverteilung ueber Parameter angeben",
+      "titleEn": "State the Density Function of the Normal Distribution via Its Parameters",
+      "description": "Die Schuelerinnen und Schueler geben die Dichtefunktion einer normalverteilten Zufallsgroesse mithilfe von Erwartungswert und Standardabweichung an und skizzieren die zugehoerige Glockenkurve.",
+      "descriptionEn": "Students state the density function of a normally distributed random variable using mean and standard deviation and sketch the associated bell curve.",
+      "weight": 1,
+      "tags": [
+        "LF",
+        "Stochastics",
+        "Normalverteilung"
+      ],
+      "contains": [],
+      "requires": [
+        "49fcf825-0929-4a25-bceb-5947cf6d9b04"
+      ],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.4.5 Leitidee Daten und Zufall (9), S. 44.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Daten und Zufall"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "33e40b11-1bed-4912-8666-bb43285085ef",
+      "title": "Normalverteilte Situationen untersuchen und Wahrscheinlichkeiten berechnen (LF)",
+      "titleEn": "Investigate Normally Distributed Situations and Compute Probabilities (Advanced Course)",
+      "description": "Die Schuelerinnen und Schueler untersuchen stochastische Situationen, die zu annaehernd normalverteilten Zufallsgroessen gehoeren, und berechnen Wahrscheinlichkeiten.",
+      "descriptionEn": "Students investigate stochastic situations that lead to approximately normally distributed random variables and compute probabilities.",
+      "weight": 1,
+      "tags": [
+        "LF",
+        "Stochastics",
+        "Normalverteilung"
+      ],
+      "contains": [],
+      "requires": [
+        "7289bdba-0913-4a64-b46f-a58c3c431c42"
+      ],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.4.5 Leitidee Daten und Zufall (10), S. 44.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Daten und Zufall"
+      },
+      "type": "atomic"
     },
     {
       "id": "d91c8d4f-0515-45d4-9785-df633a1deba4",
@@ -555,6 +1367,1189 @@
         "guidingIdeas": [],
         "phase": "Q",
         "area": "Funktionaler Zusammenhang"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "0ad547f1-bb30-4abc-9fb5-6621800de00a",
+      "title": "Vierter Kursstufen-Korridor: Analytische Geometrie und Raummodelle",
+      "titleEn": "Fourth Course-Stage Corridor: Analytic Geometry and Spatial Models",
+      "description": "Angrenzender BW-Kursstufen-Korridor zu Vektorprodukten, Winkeln, Ebenen, Lagebeziehungen, Abstaenden und raumbezogenen Problemstellungen in Basisfach und Leistungsfach.",
+      "descriptionEn": "Adjacent Baden-Wuerttemberg course-stage corridor on vector products, angles, planes, positional relationships, distances, and spatial applications in the basic and advanced course.",
+      "weight": 18,
+      "tags": [
+        "BF",
+        "LF",
+        "PilotSubset",
+        "Geometry",
+        "RaumUndForm"
+      ],
+      "contains": [
+        "92f87383-95fb-4165-810c-77fea21833cf",
+        "d983e890-c5ff-42f8-9c2a-69ec5a905fe2",
+        "f83921ea-d517-4585-b22b-245e87c8b4ff"
+      ],
+      "requires": [
+        "f84004f9-0987-40f4-88dd-830c039b7bf6"
+      ],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.4.2, 3.4.3, 3.5.2 und 3.5.3 Leitidee Messen und Raum und Form, S. 40-41 und 46-47.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Messen und Raum und Form"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "92f87383-95fb-4165-810c-77fea21833cf",
+      "title": "Basisfach: Vektoren, Ebenen und Lagebeziehungen",
+      "titleEn": "Basic Course: Vectors, Planes, and Positional Relationships",
+      "description": "BW-Basisfach-Follow-on zu geometrischen Deutungen von Vektorprodukten, zur Beschreibung von Ebenen und zu ersten Lagebeziehungen im Raum.",
+      "descriptionEn": "Baden-Wuerttemberg basic-course follow-on on geometric interpretations of vector products, the description of planes, and first positional relationships in space.",
+      "weight": 5,
+      "tags": [
+        "BF",
+        "Geometry",
+        "PilotSubset",
+        "RaumUndForm"
+      ],
+      "contains": [
+        "c6c5365d-2e1f-4fcf-9641-5c5e794c6b6e",
+        "325ca2a0-1f7b-4dc7-9f1b-0fcbdb1a56a1",
+        "8d7a8269-f56d-483a-b733-a0f50e257b49",
+        "94f159b3-e033-45a2-901b-40def8b61ec2"
+      ],
+      "requires": [
+        "f84004f9-0987-40f4-88dd-830c039b7bf6"
+      ],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.5.3 Leitidee Raum und Form, S. 47.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Raum und Form"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "c6c5365d-2e1f-4fcf-9641-5c5e794c6b6e",
+      "title": "Skalar- und Vektorprodukt geometrisch deuten und einen orthogonalen Vektor bestimmen",
+      "titleEn": "Interpret Scalar and Vector Products Geometrically and Determine an Orthogonal Vector",
+      "description": "Die Schuelerinnen und Schueler deuten Skalarprodukt und Vektorprodukt geometrisch und bestimmen zu zwei Vektoren einen gemeinsamen orthogonalen Vektor.",
+      "descriptionEn": "Students interpret scalar and vector products geometrically and determine a common orthogonal vector to two vectors.",
+      "weight": 1,
+      "tags": [
+        "BF",
+        "Geometry",
+        "RaumUndForm"
+      ],
+      "contains": [],
+      "requires": [
+        "f84004f9-0987-40f4-88dd-830c039b7bf6"
+      ],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.5.3 Leitidee Raum und Form (1)-(2), S. 47.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Raum und Form"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "325ca2a0-1f7b-4dc7-9f1b-0fcbdb1a56a1",
+      "title": "Ebenen im Schraegbild sowie in Parameter- und Koordinatenform beschreiben",
+      "titleEn": "Describe Planes in Oblique Sketches and in Parametric and Coordinate Form",
+      "description": "Die Schuelerinnen und Schueler veranschaulichen Ebenen mit Spurpunkten und Spurgeraden und beschreiben Ebenen analytisch in Parameter- und Koordinatenform.",
+      "descriptionEn": "Students visualize planes using intercepts and trace lines and describe planes analytically in parametric and coordinate form.",
+      "weight": 1,
+      "tags": [
+        "BF",
+        "Geometry",
+        "RaumUndForm"
+      ],
+      "contains": [],
+      "requires": [
+        "c6c5365d-2e1f-4fcf-9641-5c5e794c6b6e"
+      ],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.5.3 Leitidee Raum und Form (3)-(5), S. 47.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Raum und Form"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "8d7a8269-f56d-483a-b733-a0f50e257b49",
+      "title": "Lagebeziehungen zwischen Gerade und Ebene sowie zwischen zwei Ebenen untersuchen",
+      "titleEn": "Investigate Positional Relationships Between Line and Plane as well as Between Two Planes",
+      "description": "Die Schuelerinnen und Schueler untersuchen Lagebeziehungen zwischen Gerade und Ebene sowie zwischen zwei Ebenen und bestimmen gegebenenfalls Schnittpunkte rechnerisch.",
+      "descriptionEn": "Students investigate positional relationships between a line and a plane as well as between two planes and determine intersection points computationally where appropriate.",
+      "weight": 1,
+      "tags": [
+        "BF",
+        "Geometry",
+        "RaumUndForm"
+      ],
+      "contains": [],
+      "requires": [
+        "325ca2a0-1f7b-4dc7-9f1b-0fcbdb1a56a1"
+      ],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.5.3 Leitidee Raum und Form (6)-(7), S. 47.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Raum und Form"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "94f159b3-e033-45a2-901b-40def8b61ec2",
+      "title": "Raumbezogene Problemstellungen mit Ebenen, Spiegelungen und Volumen bearbeiten",
+      "titleEn": "Work on Spatial Problems with Planes, Reflections, and Volumes",
+      "description": "Retained Split-Cluster fuer die baden-wuerttembergische Basisfach-Anwendungszeile zu Spiegelungen sowie zu Flaechen- und Volumenberechnungen im Raum.",
+      "descriptionEn": "Retained split cluster for the Baden-Wuerttemberg basic-course application row on reflections as well as area and volume calculations in space.",
+      "weight": 2,
+      "tags": [
+        "BF",
+        "Geometry",
+        "RaumUndForm"
+      ],
+      "contains": [
+        "dcfe1605-24fb-4ea7-894f-9626907af5ae",
+        "630651d7-2af3-41d5-85d9-ea7c20346a5e"
+      ],
+      "requires": [
+        "8d7a8269-f56d-483a-b733-a0f50e257b49"
+      ],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.5.3 Leitidee Raum und Form (8), S. 47.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Raum und Form"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "dcfe1605-24fb-4ea7-894f-9626907af5ae",
+      "title": "Spiegelung eines Punktes an einer Ebene im Basisfach bearbeiten",
+      "titleEn": "Work on the Reflection of a Point Across a Plane in the Basic Course",
+      "description": "Die Schuelerinnen und Schueler bearbeiten im Basisfach Spiegelungen eines Punktes an einer Ebene und deuten die Ergebnisse geometrisch.",
+      "descriptionEn": "Students in the basic course work on reflections of a point across a plane and interpret the results geometrically.",
+      "weight": 1,
+      "tags": [
+        "BF",
+        "Geometry",
+        "RaumUndForm"
+      ],
+      "contains": [],
+      "requires": [
+        "8d7a8269-f56d-483a-b733-a0f50e257b49"
+      ],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.5.3 Leitidee Raum und Form (8), S. 47.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Raum und Form"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "630651d7-2af3-41d5-85d9-ea7c20346a5e",
+      "title": "Flaechen- und Volumenberechnungen im Raum im Basisfach bearbeiten",
+      "titleEn": "Work on Area and Volume Calculations in Space in the Basic Course",
+      "description": "Die Schuelerinnen und Schueler bearbeiten im Basisfach raumbezogene Flaecheninhalts- und Volumenberechnungen.",
+      "descriptionEn": "Students in the basic course work on area and volume calculations in space.",
+      "weight": 1,
+      "tags": [
+        "BF",
+        "Geometry",
+        "RaumUndForm"
+      ],
+      "contains": [],
+      "requires": [
+        "8d7a8269-f56d-483a-b733-a0f50e257b49"
+      ],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.5.3 Leitidee Raum und Form (8), S. 47.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Raum und Form"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "d983e890-c5ff-42f8-9c2a-69ec5a905fe2",
+      "title": "Basisfach: Winkel, Abstaende und Flaechen im Raum",
+      "titleEn": "Basic Course: Angles, Distances, and Areas in Space",
+      "description": "BW-Basisfach-Follow-on zu Winkelweiten, Abstaenden zwischen Punkt und Ebene sowie Flaecheninhalten im Raum.",
+      "descriptionEn": "Baden-Wuerttemberg basic-course follow-on on angle measures, distances between point and plane, and areas in space.",
+      "weight": 3,
+      "tags": [
+        "BF",
+        "Geometry",
+        "PilotSubset",
+        "Messen"
+      ],
+      "contains": [
+        "0cb9b5c8-c179-4ca0-b840-56d97e7f100d",
+        "ce1e9a42-2853-4970-8b1c-27d2749f0e48",
+        "032c331e-bcef-441d-8fe5-376bcd198760"
+      ],
+      "requires": [
+        "f84004f9-0987-40f4-88dd-830c039b7bf6"
+      ],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.5.2 Leitidee Messen, S. 46.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Messen"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "0cb9b5c8-c179-4ca0-b840-56d97e7f100d",
+      "title": "Orthogonalitaet, Winkel und Schnittwinkel mit dem Skalarprodukt bestimmen",
+      "titleEn": "Determine Orthogonality, Angles, and Intersection Angles with the Scalar Product",
+      "description": "Die Schuelerinnen und Schueler pruefen Orthogonalitaet, bestimmen Winkelweiten und berechnen Schnittwinkel zwischen geometrischen Objekten mit dem Skalarprodukt.",
+      "descriptionEn": "Students check orthogonality, determine angle measures, and calculate intersection angles between geometric objects using the scalar product.",
+      "weight": 1,
+      "tags": [
+        "BF",
+        "Geometry",
+        "Messen"
+      ],
+      "contains": [],
+      "requires": [
+        "c6c5365d-2e1f-4fcf-9641-5c5e794c6b6e"
+      ],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.5.2 Leitidee Messen (1)-(3), S. 46.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Messen"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "ce1e9a42-2853-4970-8b1c-27d2749f0e48",
+      "title": "Abstand zwischen Punkt und Ebene im Raum ermitteln",
+      "titleEn": "Determine the Distance Between a Point and a Plane in Space",
+      "description": "Die Schuelerinnen und Schueler ermitteln den Abstand zwischen einem Punkt und einer Ebene im Raum und deuten das Ergebnis geometrisch.",
+      "descriptionEn": "Students determine the distance between a point and a plane in space and interpret the result geometrically.",
+      "weight": 1,
+      "tags": [
+        "BF",
+        "Geometry",
+        "Messen"
+      ],
+      "contains": [],
+      "requires": [
+        "325ca2a0-1f7b-4dc7-9f1b-0fcbdb1a56a1",
+        "0cb9b5c8-c179-4ca0-b840-56d97e7f100d"
+      ],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.5.2 Leitidee Messen (4), S. 46.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Messen"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "032c331e-bcef-441d-8fe5-376bcd198760",
+      "title": "Vektorprodukt zum Ermitteln von Flaecheninhalten im Basisfach anwenden",
+      "titleEn": "Apply the Vector Product to Determine Areas in the Basic Course",
+      "description": "Die Schuelerinnen und Schueler nutzen das Vektorprodukt zum Ermitteln von Flaecheninhalten in raeumlichen Situationen.",
+      "descriptionEn": "Students use the vector product to determine areas in spatial situations.",
+      "weight": 1,
+      "tags": [
+        "BF",
+        "Geometry",
+        "Messen"
+      ],
+      "contains": [],
+      "requires": [
+        "c6c5365d-2e1f-4fcf-9641-5c5e794c6b6e"
+      ],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.5.2 Leitidee Messen (5), S. 46.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Messen"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "f83921ea-d517-4585-b22b-245e87c8b4ff",
+      "title": "Leistungsfach: Raumgeometrie, Abstaende und Beweise",
+      "titleEn": "Advanced Course: Spatial Geometry, Distances, and Proofs",
+      "description": "BW-Leistungsfach-Follow-on zu Winkeln und Abstaenden im Raum, zu Ebenenbeschreibungen und Lagebeziehungen sowie zu Anwendungen und Beweisen mit Vektoren.",
+      "descriptionEn": "Baden-Wuerttemberg advanced-course follow-on on angles and distances in space, descriptions of planes and positional relationships, as well as applications and proofs with vectors.",
+      "weight": 10,
+      "tags": [
+        "LF",
+        "Geometry",
+        "PilotSubset",
+        "RaumUndForm",
+        "Messen"
+      ],
+      "contains": [
+        "1c4a6648-13a3-4590-ab58-7b217d5a6586",
+        "4969cc88-f129-49e1-9d19-e87c87cde218",
+        "3c7111fe-86be-4246-af82-319ecd0f48d5",
+        "dc305063-b12f-443e-9ce8-19c2d171d20d",
+        "1b46a3cb-f09f-4bc6-8142-8c9b72646f6c",
+        "34ee3898-2b07-4096-adbb-9cc4bd6db065",
+        "2b910726-5f69-4977-a337-5093a4e0786a",
+        "234731e0-e35e-41ba-b976-363d916a1d5c"
+      ],
+      "requires": [
+        "f84004f9-0987-40f4-88dd-830c039b7bf6"
+      ],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.4.2 und 3.4.3 Leitidee Messen und Raum und Form, S. 40-41.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Messen und Raum und Form"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "1c4a6648-13a3-4590-ab58-7b217d5a6586",
+      "title": "Skalarprodukt und Vektorprodukt geometrisch deuten sowie orthogonale Vektoren bestimmen",
+      "titleEn": "Interpret Scalar and Vector Products Geometrically and Determine Orthogonal Vectors",
+      "description": "Die Schuelerinnen und Schueler deuten Skalarprodukt und Vektorprodukt geometrisch und bestimmen einen gemeinsamen orthogonalen Vektor zu zwei Vektoren.",
+      "descriptionEn": "Students interpret scalar and vector products geometrically and determine a common orthogonal vector to two vectors.",
+      "weight": 1,
+      "tags": [
+        "LF",
+        "Geometry",
+        "RaumUndForm"
+      ],
+      "contains": [],
+      "requires": [
+        "f84004f9-0987-40f4-88dd-830c039b7bf6"
+      ],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.4.3 Leitidee Raum und Form (1)-(2), S. 41.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Raum und Form"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "4969cc88-f129-49e1-9d19-e87c87cde218",
+      "title": "Vektorprodukt zum Ermitteln von Flaecheninhalten anwenden",
+      "titleEn": "Apply the Vector Product to Determine Areas",
+      "description": "Die Schuelerinnen und Schueler nutzen das Vektorprodukt zur Berechnung von Flaecheninhalten in kartesischen Koordinatensystemen.",
+      "descriptionEn": "Students use the vector product to calculate areas in Cartesian coordinate systems.",
+      "weight": 1,
+      "tags": [
+        "LF",
+        "Geometry",
+        "Messen"
+      ],
+      "contains": [],
+      "requires": [
+        "1c4a6648-13a3-4590-ab58-7b217d5a6586"
+      ],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.4.2 Leitidee Messen (6), S. 40.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Messen"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "3c7111fe-86be-4246-af82-319ecd0f48d5",
+      "title": "Ebenen mit Spurpunkten, Spurgeraden und Gleichungsformen beschreiben",
+      "titleEn": "Describe Planes Using Intercepts, Trace Lines, and Equation Forms",
+      "description": "Die Schuelerinnen und Schueler veranschaulichen Ebenen im Schraegbild und beschreiben sie analytisch mit Parameter-, Koordinaten- und Normalengleichung.",
+      "descriptionEn": "Students visualize planes in oblique sketches and describe them analytically using parametric, coordinate, and normal equations.",
+      "weight": 1,
+      "tags": [
+        "LF",
+        "Geometry",
+        "RaumUndForm"
+      ],
+      "contains": [],
+      "requires": [
+        "1c4a6648-13a3-4590-ab58-7b217d5a6586"
+      ],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.4.3 Leitidee Raum und Form (3)-(5), S. 41.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Raum und Form"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "dc305063-b12f-443e-9ce8-19c2d171d20d",
+      "title": "Orthogonalitaet, Winkel und Schnittwinkel mit dem Skalarprodukt bestimmen",
+      "titleEn": "Determine Orthogonality, Angles, and Intersection Angles with the Scalar Product",
+      "description": "Die Schuelerinnen und Schueler pruefen Orthogonalitaet, bestimmen Winkelweiten und berechnen Schnittwinkel zwischen Geraden und Ebenen mit dem Skalarprodukt.",
+      "descriptionEn": "Students check orthogonality, determine angle measures, and calculate intersection angles between lines and planes using the scalar product.",
+      "weight": 1,
+      "tags": [
+        "LF",
+        "Geometry",
+        "Messen"
+      ],
+      "contains": [],
+      "requires": [
+        "1c4a6648-13a3-4590-ab58-7b217d5a6586"
+      ],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.4.2 Leitidee Messen (1)-(3), S. 40.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Messen"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "1b46a3cb-f09f-4bc6-8142-8c9b72646f6c",
+      "title": "Hessesche Normalenform und Abstaende im Raum anwenden",
+      "titleEn": "Apply the Hesse Normal Form and Distances in Space",
+      "description": "Die Schuelerinnen und Schueler nutzen die Hessesche Normalenform zur Abstandsberechnung und ermitteln Abstaende zwischen Punkt, Gerade und Ebene im Raum.",
+      "descriptionEn": "Students use the Hesse normal form for distance calculations and determine distances between point, line, and plane in space.",
+      "weight": 1,
+      "tags": [
+        "LF",
+        "Geometry",
+        "Messen"
+      ],
+      "contains": [],
+      "requires": [
+        "3c7111fe-86be-4246-af82-319ecd0f48d5",
+        "dc305063-b12f-443e-9ce8-19c2d171d20d"
+      ],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.4.2 Leitidee Messen (4)-(5), S. 40.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Messen"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "34ee3898-2b07-4096-adbb-9cc4bd6db065",
+      "title": "Lagebeziehungen und Schnittgebilde von Gerade-Ebene und Ebene-Ebene untersuchen",
+      "titleEn": "Investigate Positional Relationships and Intersections of Line-Plane and Plane-Plane Configurations",
+      "description": "Die Schuelerinnen und Schueler untersuchen Lagebeziehungen zwischen Gerade und Ebene sowie zwischen zwei Ebenen und bestimmen gegebenenfalls Schnittgebilde rechnerisch.",
+      "descriptionEn": "Students investigate positional relationships between a line and a plane as well as between two planes and determine intersection figures computationally where appropriate.",
+      "weight": 1,
+      "tags": [
+        "LF",
+        "Geometry",
+        "RaumUndForm"
+      ],
+      "contains": [],
+      "requires": [
+        "3c7111fe-86be-4246-af82-319ecd0f48d5"
+      ],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.4.3 Leitidee Raum und Form (6), S. 41.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Raum und Form"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "2b910726-5f69-4977-a337-5093a4e0786a",
+      "title": "Raumbezogene Problemstellungen mit Spiegelungen, Bewegungen und Volumina bearbeiten",
+      "titleEn": "Work on Spatial Problems Involving Reflections, Motions, and Volumes",
+      "description": "Retained Split-Cluster fuer die baden-wuerttembergische Leistungsfach-Anwendungszeile zu Spiegelungen, geradlinigen Bewegungen sowie Flaechen- und Volumenberechnungen im Raum.",
+      "descriptionEn": "Retained split cluster for the Baden-Wuerttemberg advanced-course application row on reflections, rectilinear motions, and area and volume calculations in space.",
+      "weight": 3,
+      "tags": [
+        "LF",
+        "Geometry",
+        "RaumUndForm"
+      ],
+      "contains": [
+        "a388e936-66d2-4d4b-a6b7-7ebd3ecba293",
+        "dea61d00-4b79-487d-bdd4-53473703dfff",
+        "10207b3a-0b6f-416c-8fbf-ac8c4c6ac8de"
+      ],
+      "requires": [
+        "34ee3898-2b07-4096-adbb-9cc4bd6db065"
+      ],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.4.3 Leitidee Raum und Form (7), S. 41.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Raum und Form"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "a388e936-66d2-4d4b-a6b7-7ebd3ecba293",
+      "title": "Spiegelungen im Raum im Leistungsfach bearbeiten",
+      "titleEn": "Work on Reflections in Space in the Advanced Course",
+      "description": "Die Schuelerinnen und Schueler bearbeiten im Leistungsfach Spiegelungen eines Punktes an einer Ebene sowie Spiegelungen einer Geraden an einem Punkt im Raum.",
+      "descriptionEn": "Students in the advanced course work on reflections of a point across a plane as well as reflections of a line across a point in space.",
+      "weight": 1,
+      "tags": [
+        "LF",
+        "Geometry",
+        "RaumUndForm"
+      ],
+      "contains": [],
+      "requires": [
+        "34ee3898-2b07-4096-adbb-9cc4bd6db065"
+      ],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.4.3 Leitidee Raum und Form (7), S. 41.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Raum und Form"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "dea61d00-4b79-487d-bdd4-53473703dfff",
+      "title": "Geradlinige Bewegungen im Raum untersuchen",
+      "titleEn": "Investigate Rectilinear Motions in Space",
+      "description": "Die Schuelerinnen und Schueler untersuchen im Leistungsfach geradlinige Bewegungen im Raum mithilfe vektorieller Beschreibungen.",
+      "descriptionEn": "Students in the advanced course investigate rectilinear motions in space using vector descriptions.",
+      "weight": 1,
+      "tags": [
+        "LF",
+        "Geometry",
+        "RaumUndForm"
+      ],
+      "contains": [],
+      "requires": [
+        "34ee3898-2b07-4096-adbb-9cc4bd6db065"
+      ],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.4.3 Leitidee Raum und Form (7), S. 41.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Raum und Form"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "10207b3a-0b6f-416c-8fbf-ac8c4c6ac8de",
+      "title": "Flaechen- und Volumenberechnungen im Raum im Leistungsfach bearbeiten",
+      "titleEn": "Work on Area and Volume Calculations in Space in the Advanced Course",
+      "description": "Die Schuelerinnen und Schueler bearbeiten im Leistungsfach raumbezogene Flaecheninhalts- und Volumenberechnungen.",
+      "descriptionEn": "Students in the advanced course work on area and volume calculations in space.",
+      "weight": 1,
+      "tags": [
+        "LF",
+        "Geometry",
+        "RaumUndForm"
+      ],
+      "contains": [],
+      "requires": [
+        "34ee3898-2b07-4096-adbb-9cc4bd6db065"
+      ],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.4.3 Leitidee Raum und Form (7), S. 41.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Raum und Form"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "234731e0-e35e-41ba-b976-363d916a1d5c",
+      "title": "Vektorielle Beweise im Raum fuehren",
+      "titleEn": "Carry Out Vector-Based Proofs in Space",
+      "description": "Die Schuelerinnen und Schueler fuehren einfache vektorielle Beweise zu geometrischen Aussagen im Raum und in der Ebene.",
+      "descriptionEn": "Students carry out simple vector-based proofs for geometric statements in space and in the plane.",
+      "weight": 1,
+      "tags": [
+        "LF",
+        "Geometry",
+        "RaumUndForm"
+      ],
+      "contains": [],
+      "requires": [
+        "34ee3898-2b07-4096-adbb-9cc4bd6db065"
+      ],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.4.3 Leitidee Raum und Form (8), S. 41.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Raum und Form"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "b241e5a6-905e-4792-8b39-a3d57d17d782",
+      "title": "Fuenfter Kursstufen-Korridor: Lineare Gleichungssysteme und Gaußverfahren",
+      "titleEn": "Fifth Course-Stage Corridor: Systems of Linear Equations and Gaussian Elimination",
+      "description": "Angrenzender BW-Kursstufen-Korridor zu linearen Gleichungssystemen, Stufenform, Matrixschreibweise und geometrischer Interpretation von Loesungsmengen.",
+      "descriptionEn": "Adjacent Baden-Wuerttemberg course-stage corridor on systems of linear equations, echelon form, matrix notation, and the geometric interpretation of solution sets.",
+      "weight": 5,
+      "tags": [
+        "BF",
+        "LF",
+        "PilotSubset",
+        "Algebra",
+        "ZahlVariableOperation"
+      ],
+      "contains": [
+        "4818e22e-22bb-4fbc-8c94-01687bdc1a97",
+        "165b0836-7815-413c-870f-c5d0fe2c8ff5"
+      ],
+      "requires": [
+        "f84004f9-0987-40f4-88dd-830c039b7bf6"
+      ],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.4.1 und 3.5.1 Leitidee Zahl - Variable - Operation, S. 39 und 45.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Zahl - Variable - Operation"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "4818e22e-22bb-4fbc-8c94-01687bdc1a97",
+      "title": "Basisfach: Lineare Gleichungssysteme und Stufenform",
+      "titleEn": "Basic Course: Systems of Linear Equations and Echelon Form",
+      "description": "BW-Basisfach-Follow-on zu Gaußverfahren, Stufenform und Loesungsvielfalt linearer Gleichungssysteme ohne Parameter.",
+      "descriptionEn": "Baden-Wuerttemberg basic-course follow-on on Gaussian elimination, echelon form, and the variety of solution types for systems of linear equations without parameters.",
+      "weight": 2,
+      "tags": [
+        "BF",
+        "Algebra",
+        "PilotSubset",
+        "ZahlVariableOperation"
+      ],
+      "contains": [
+        "178afbcd-9094-4606-a8f4-017aee035fb6",
+        "54a75611-1913-43b5-8203-dfb33820bbe3"
+      ],
+      "requires": [
+        "f84004f9-0987-40f4-88dd-830c039b7bf6"
+      ],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.5.1 Leitidee Zahl - Variable - Operation (9)-(10), S. 45-46.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Zahl - Variable - Operation"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "178afbcd-9094-4606-a8f4-017aee035fb6",
+      "title": "Gaußverfahren bis zur Stufenform auf lineare Gleichungssysteme ohne Parameter anwenden",
+      "titleEn": "Apply Gaussian Elimination up to Echelon Form to Systems of Linear Equations Without Parameters",
+      "description": "Die Schuelerinnen und Schueler wenden das Gaußverfahren, auch in Matrixschreibweise, auf lineare Gleichungssysteme ohne Parameter bis zur Stufenform an.",
+      "descriptionEn": "Students apply Gaussian elimination, also in matrix notation, to systems of linear equations without parameters up to echelon form.",
+      "weight": 1,
+      "tags": [
+        "BF",
+        "Algebra",
+        "ZahlVariableOperation"
+      ],
+      "contains": [],
+      "requires": [
+        "f84004f9-0987-40f4-88dd-830c039b7bf6"
+      ],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.5.1 Leitidee Zahl - Variable - Operation (9), S. 45.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Zahl - Variable - Operation"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "54a75611-1913-43b5-8203-dfb33820bbe3",
+      "title": "Loesungsvielfalt linearer Gleichungssysteme ohne Parameter angeben und eindeutige Loesungen bestimmen",
+      "titleEn": "State Solution Types of Parameter-Free Systems of Linear Equations and Determine Unique Solutions",
+      "description": "Die Schuelerinnen und Schueler geben die Loesungsvielfalt linearer Gleichungssysteme ohne Parameter an und bestimmen im Falle eindeutiger Loesbarkeit die konkrete Loesung.",
+      "descriptionEn": "Students state the possible solution types of systems of linear equations without parameters and determine the specific solution in the case of unique solvability.",
+      "weight": 1,
+      "tags": [
+        "BF",
+        "Algebra",
+        "ZahlVariableOperation"
+      ],
+      "contains": [],
+      "requires": [
+        "178afbcd-9094-4606-a8f4-017aee035fb6"
+      ],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.5.1 Leitidee Zahl - Variable - Operation (10), S. 46.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Zahl - Variable - Operation"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "165b0836-7815-413c-870f-c5d0fe2c8ff5",
+      "title": "Leistungsfach: Gaußverfahren, Matrixschreibweise und geometrische Deutung",
+      "titleEn": "Advanced Course: Gaussian Elimination, Matrix Notation, and Geometric Interpretation",
+      "description": "BW-Leistungsfach-Follow-on zu algorithmischer Deutung des Gaußverfahrens, zur Matrixschreibweise und zur geometrischen Interpretation von Loesungsmengen linearer 3x3-Gleichungssysteme.",
+      "descriptionEn": "Baden-Wuerttemberg advanced-course follow-on on the algorithmic interpretation of Gaussian elimination, matrix notation, and the geometric interpretation of solution sets of 3x3 systems of linear equations.",
+      "weight": 3,
+      "tags": [
+        "LF",
+        "Algebra",
+        "PilotSubset",
+        "ZahlVariableOperation"
+      ],
+      "contains": [
+        "91725a1a-b336-4866-be48-bb5b3831ddce",
+        "89ca6408-c991-4aa1-8748-399e8d01be4c",
+        "f4500069-3499-477a-bc3f-3369ece8f8c1"
+      ],
+      "requires": [
+        "f84004f9-0987-40f4-88dd-830c039b7bf6"
+      ],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.4.1 Leitidee Zahl - Variable - Operation (11)-(13), S. 40.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Zahl - Variable - Operation"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "91725a1a-b336-4866-be48-bb5b3831ddce",
+      "title": "Gaußverfahren als algorithmisches Verfahren zum Loesen linearer Gleichungssysteme erlaeutern",
+      "titleEn": "Explain Gaussian Elimination as an Algorithmic Procedure for Solving Systems of Linear Equations",
+      "description": "Die Schuelerinnen und Schueler erlaeutern das Gaußverfahren zum Loesen eines linearen Gleichungssystems als Beispiel fuer ein algorithmisches Verfahren.",
+      "descriptionEn": "Students explain Gaussian elimination as an example of an algorithmic procedure for solving a system of linear equations.",
+      "weight": 1,
+      "tags": [
+        "LF",
+        "Algebra",
+        "ZahlVariableOperation"
+      ],
+      "contains": [],
+      "requires": [
+        "f84004f9-0987-40f4-88dd-830c039b7bf6"
+      ],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.4.1 Leitidee Zahl - Variable - Operation (11), S. 40.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Zahl - Variable - Operation"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "89ca6408-c991-4aa1-8748-399e8d01be4c",
+      "title": "Gaußverfahren in Matrixschreibweise zum Loesen linearer Gleichungssysteme durchfuehren",
+      "titleEn": "Carry Out Gaussian Elimination in Matrix Notation to Solve Systems of Linear Equations",
+      "description": "Die Schuelerinnen und Schueler fuehren das Gaußverfahren, auch in Matrixschreibweise, zum Loesen linearer Gleichungssysteme durch.",
+      "descriptionEn": "Students carry out Gaussian elimination, also in matrix notation, to solve systems of linear equations.",
+      "weight": 1,
+      "tags": [
+        "LF",
+        "Algebra",
+        "ZahlVariableOperation"
+      ],
+      "contains": [],
+      "requires": [
+        "91725a1a-b336-4866-be48-bb5b3831ddce"
+      ],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.4.1 Leitidee Zahl - Variable - Operation (12), S. 40.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Zahl - Variable - Operation"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "f4500069-3499-477a-bc3f-3369ece8f8c1",
+      "title": "Loesungsmengen linearer 3x3-Gleichungssysteme geometrisch interpretieren",
+      "titleEn": "Interpret Solution Sets of 3x3 Systems of Linear Equations Geometrically",
+      "description": "Die Schuelerinnen und Schueler interpretieren die Loesungsmenge eines linearen 3x3-Gleichungssystems geometrisch.",
+      "descriptionEn": "Students interpret the solution set of a 3x3 system of linear equations geometrically.",
+      "weight": 1,
+      "tags": [
+        "LF",
+        "Algebra",
+        "Geometry",
+        "ZahlVariableOperation"
+      ],
+      "contains": [],
+      "requires": [
+        "89ca6408-c991-4aa1-8748-399e8d01be4c"
+      ],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.4.1 Leitidee Zahl - Variable - Operation (13), S. 40.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Zahl - Variable - Operation"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "8b6ede65-e201-4c03-91c1-97871d6e3314",
+      "title": "Sechster Kursstufen-Korridor: Integralgrenzwert, Flaechen und Rotationskoerper",
+      "titleEn": "Sixth Course-Stage Corridor: Integral Limits, Areas, and Solids of Revolution",
+      "description": "Verbleibender BW-Kursstufen-Korridor aus Leitidee Messen zu anschaulichem Integralgrenzwert, Flaechen zwischen Graphen, Mittelwerten und Rotationskoerpern in Basisfach und Leistungsfach.",
+      "descriptionEn": "Remaining Baden-Wuerttemberg course-stage corridor from the measurement strand on intuitive integral limits, areas between graphs, mean values, and solids of revolution in the basic and advanced course.",
+      "weight": 6,
+      "tags": [
+        "BF",
+        "LF",
+        "PilotSubset",
+        "Analysis",
+        "Integral",
+        "Messen"
+      ],
+      "contains": [
+        "b8f35279-3834-4f1c-9d5e-d29702c0050e",
+        "50bff23d-95e2-431a-8cfc-2d22a1a2d4d6"
+      ],
+      "requires": [
+        "f84004f9-0987-40f4-88dd-830c039b7bf6"
+      ],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.4.2 und 3.5.2 Leitidee Messen (6)-(10), S. 40 und 46.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Messen"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "b8f35279-3834-4f1c-9d5e-d29702c0050e",
+      "title": "Basisfach: Integralgrenzwert und Flaechen zwischen Graphen",
+      "titleEn": "Basic Course: Integral Limits and Areas Between Graphs",
+      "description": "BW-Basisfach-Follow-on zu anschaulichem Integralgrenzwert und zu Flaecheninhalten zwischen Graphen.",
+      "descriptionEn": "Baden-Wuerttemberg basic-course follow-on on intuitive integral limits and areas between graphs.",
+      "weight": 2,
+      "tags": [
+        "BF",
+        "Analysis",
+        "Integral",
+        "PilotSubset",
+        "Messen"
+      ],
+      "contains": [
+        "2d8f4fdc-51cd-4c21-a810-d43a62130970",
+        "ebd8feb3-49f6-47d1-90ab-e1b149938ce8"
+      ],
+      "requires": [
+        "2a7402b9-ef3a-4f3c-8769-d824f703470a"
+      ],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.5.2 Leitidee Messen (6)-(7), S. 46.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Messen"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "2d8f4fdc-51cd-4c21-a810-d43a62130970",
+      "title": "Bestimmtes Integral im Basisfach anschaulich als Grenzprozess beschreiben und geometrisch deuten",
+      "titleEn": "Describe the Definite Integral in the Basic Course Intuitively as a Limiting Process and Interpret It Geometrically",
+      "description": "Die Schuelerinnen und Schueler beschreiben das bestimmte Integral im Basisfach mithilfe eines Grenzprozesses anschaulich und deuten es geometrisch.",
+      "descriptionEn": "Students in the basic course describe the definite integral intuitively using a limiting process and interpret it geometrically.",
+      "weight": 1,
+      "tags": [
+        "BF",
+        "Analysis",
+        "Integral",
+        "Messen"
+      ],
+      "contains": [],
+      "requires": [
+        "2a7402b9-ef3a-4f3c-8769-d824f703470a"
+      ],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.5.2 Leitidee Messen (6), S. 46.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Messen"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "ebd8feb3-49f6-47d1-90ab-e1b149938ce8",
+      "title": "Flaecheninhalte zwischen Graph und x-Achse sowie zwischen zwei Graphen im Basisfach bestimmen",
+      "titleEn": "Determine Areas Between a Graph and the x-Axis as well as Between Two Graphs in the Basic Course",
+      "description": "Die Schuelerinnen und Schueler bestimmen im Basisfach Flaecheninhalte zwischen Graph und x-Achse sowie zwischen zwei Graphen.",
+      "descriptionEn": "Students in the basic course determine areas between a graph and the x-axis as well as between two graphs.",
+      "weight": 1,
+      "tags": [
+        "BF",
+        "Analysis",
+        "Integral",
+        "Messen"
+      ],
+      "contains": [],
+      "requires": [
+        "2d8f4fdc-51cd-4c21-a810-d43a62130970"
+      ],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.5.2 Leitidee Messen (7), S. 46.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Messen"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "50bff23d-95e2-431a-8cfc-2d22a1a2d4d6",
+      "title": "Leistungsfach: Integralgrenzwert, Mittelwerte und Rotationskoerper",
+      "titleEn": "Advanced Course: Integral Limits, Mean Values, and Solids of Revolution",
+      "description": "BW-Leistungsfach-Follow-on zu Integralgrenzwert, Mittelwerten einer Funktion, Flaechen zwischen Graphen und Rotationskoerpern.",
+      "descriptionEn": "Baden-Wuerttemberg advanced-course follow-on on integral limits, mean values of a function, areas between graphs, and solids of revolution.",
+      "weight": 4,
+      "tags": [
+        "LF",
+        "Analysis",
+        "Integral",
+        "PilotSubset",
+        "Messen"
+      ],
+      "contains": [
+        "f1fb0439-a52b-4367-86e4-9a8b7c7ae2c6",
+        "e396ffe4-2039-440a-bde2-83670c093bfd",
+        "978db3f1-495f-47c1-9bb7-a7f273771c9c",
+        "4f515334-4c27-41e3-b44f-e6743f7093ac"
+      ],
+      "requires": [
+        "fb742d93-6c9b-487a-bc7c-f54b363c0c01"
+      ],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.4.2 Leitidee Messen (7)-(10), S. 40.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Messen"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "f1fb0439-a52b-4367-86e4-9a8b7c7ae2c6",
+      "title": "Bestimmtes Integral als Grenzwert einer Summe erlaeutern und geometrisch deuten",
+      "titleEn": "Explain the Definite Integral as the Limit of a Sum and Interpret It Geometrically",
+      "description": "Die Schuelerinnen und Schueler erlaeutern das bestimmte Integral als Grenzwert einer Summe und deuten es geometrisch.",
+      "descriptionEn": "Students explain the definite integral as the limit of a sum and interpret it geometrically.",
+      "weight": 1,
+      "tags": [
+        "LF",
+        "Analysis",
+        "Integral",
+        "Messen"
+      ],
+      "contains": [],
+      "requires": [
+        "fb742d93-6c9b-487a-bc7c-f54b363c0c01"
+      ],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.4.2 Leitidee Messen (7), S. 40.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Messen"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "e396ffe4-2039-440a-bde2-83670c093bfd",
+      "title": "Mittelwert einer Funktion auf einem Intervall berechnen",
+      "titleEn": "Calculate the Mean Value of a Function on an Interval",
+      "description": "Die Schuelerinnen und Schueler berechnen den Mittelwert einer Funktion auf einem Intervall und deuten das Ergebnis im Kontext.",
+      "descriptionEn": "Students calculate the mean value of a function on an interval and interpret the result in context.",
+      "weight": 1,
+      "tags": [
+        "LF",
+        "Analysis",
+        "Integral",
+        "Messen"
+      ],
+      "contains": [],
+      "requires": [
+        "f1fb0439-a52b-4367-86e4-9a8b7c7ae2c6"
+      ],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.4.2 Leitidee Messen (8), S. 40.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Messen"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "978db3f1-495f-47c1-9bb7-a7f273771c9c",
+      "title": "Flaecheninhalte zwischen Graph und x-Achse sowie zwischen zwei Graphen im Leistungsfach bestimmen",
+      "titleEn": "Determine Areas Between a Graph and the x-Axis as well as Between Two Graphs in the Advanced Course",
+      "description": "Die Schuelerinnen und Schueler bestimmen im Leistungsfach Flaecheninhalte zwischen Graph und x-Achse sowie zwischen zwei Graphen.",
+      "descriptionEn": "Students in the advanced course determine areas between a graph and the x-axis as well as between two graphs.",
+      "weight": 1,
+      "tags": [
+        "LF",
+        "Analysis",
+        "Integral",
+        "Messen"
+      ],
+      "contains": [],
+      "requires": [
+        "f1fb0439-a52b-4367-86e4-9a8b7c7ae2c6"
+      ],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.4.2 Leitidee Messen (9), S. 40.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Messen"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "4f515334-4c27-41e3-b44f-e6743f7093ac",
+      "title": "Volumen von Rotationskoerpern um die x-Achse berechnen",
+      "titleEn": "Calculate the Volume of Solids of Revolution Around the x-Axis",
+      "description": "Die Schuelerinnen und Schueler berechnen Volumina von Koerpern, die durch Rotation von Flaechen um die x-Achse entstehen.",
+      "descriptionEn": "Students calculate volumes of bodies formed by rotating areas around the x-axis.",
+      "weight": 1,
+      "tags": [
+        "LF",
+        "Analysis",
+        "Integral",
+        "Messen"
+      ],
+      "contains": [],
+      "requires": [
+        "978db3f1-495f-47c1-9bb7-a7f273771c9c"
+      ],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.4.2 Leitidee Messen (10), S. 40.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Messen"
       },
       "type": "atomic"
     }

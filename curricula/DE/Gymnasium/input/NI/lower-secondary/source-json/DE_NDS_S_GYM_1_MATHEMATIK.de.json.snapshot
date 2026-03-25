@@ -8,8 +8,8 @@
   "frameworkId": "ni-kc-gym-si-math",
   "title": "Mathematik Sekundarstufe I (Niedersachsen, Pilot-Quellsnapshot)",
   "titleEn": "Mathematics Secondary Level I (Lower Saxony, Pilot Source Snapshot)",
-  "description": "Erster archivierter Niedersachsen-Quellsnapshot fuer den Mathematik-Pilotkorridor der Sekundarstufe I. Der Snapshot umfasst den ersten gemeinsamen Funktionszug aus den Lernbereichen zu proportionalen, antiproportionalen und linearen Zusammenhaengen des Kerncurriculums Gymnasium Sek I.",
-  "descriptionEn": "First archived Lower Saxony source snapshot for the lower-secondary mathematics pilot corridor. The snapshot covers the first shared functions corridor from the curriculum learning areas on proportional, inversely proportional, and linear relations.",
+  "description": "Erster archivierter Niedersachsen-Quellsnapshot fuer den Mathematik-Pilotkorridor der Sekundarstufe I. Der Snapshot umfasst den ersten gemeinsamen Funktionszug aus den Lernbereichen zu proportionalen, antiproportionalen und linearen Zusammenhaengen sowie die ersten vollstaendig importierten Follow-ons aus den Lernbereichen zu elementaren Termumformungen und zu Laengen, Flaechen- und Rauminhalten des Kerncurriculums Gymnasium Sek I.",
+  "descriptionEn": "First archived Lower Saxony source snapshot for the lower-secondary mathematics pilot corridor. The snapshot covers the first shared functions corridor from the curriculum learning areas on proportional, inversely proportional, and linear relations plus the first fully imported follow-ons from the learning areas on elementary algebraic transformations and on lengths, areas, and spatial measures.",
   "compatibilityOnly": true,
   "legacyHiddenByDefault": true,
   "goals": [
@@ -17,30 +17,33 @@
       "id": "9856310a-23c9-4237-8243-0e19c6ede3d1",
       "title": "Mathematik Sekundarstufe I",
       "titleEn": "Mathematics Secondary Level I",
-      "description": "Pilot-Subset der niedersaechsischen Mathematik-Kompetenzen der Sekundarstufe I mit Fokus auf dem ersten gemeinsamen Funktionskorridor und seinem arithmetischen Praerequisite-Strip.",
-      "descriptionEn": "Pilot subset of Lower Saxony lower-secondary mathematics competencies with a focus on the first shared functions corridor and its arithmetic prerequisite strip.",
-      "weight": 12,
+      "description": "Pilot-Subset der niedersaechsischen Mathematik-Kompetenzen der Sekundarstufe I mit Fokus auf dem ersten gemeinsamen Funktionskorridor, seinem arithmetischen Praerequisite-Strip und den ersten vollstaendig importierten Follow-ons zu elementaren Termumformungen sowie zu Laengen, Flaechen- und Rauminhalten.",
+      "descriptionEn": "Pilot subset of Lower Saxony lower-secondary mathematics competencies with a focus on the first shared functions corridor, its arithmetic prerequisite strip, and the first fully imported follow-ons on elementary algebraic transformations as well as on lengths, areas, and spatial measures.",
+      "weight": 20,
       "tags": [
         "Sek1",
         "PilotSubset",
-        "Funktionen"
+        "Funktionen",
+        "Algebra"
       ],
       "contains": [
         "e1942eb6-f1a5-45a7-b160-c7be0b5e30fa",
         "d3c99e6b-0e90-4b30-976e-0c037032e349",
+        "cd5e0341-1b6a-4e75-aadc-a11c1272d1e4",
+        "7d5a10af-ac76-4ebc-8d34-fb5358dfb3f6",
         "9dcde142-1bae-417b-b08c-999ce0a3e963"
       ],
       "requires": [
         "e1942eb6-f1a5-45a7-b160-c7be0b5e30fa"
       ],
-      "sourceRef": "KC Niedersachsen Mathematik Gymnasium Sek I, Kap. 2.1-2.2 sowie Lernbereiche auf S. 45 und 50.",
+      "sourceRef": "KC Niedersachsen Mathematik Gymnasium Sek I, Kap. 2.1-2.2 sowie Lernbereiche auf S. 45, 47, 48 und 50.",
       "dimensionTags": {
         "framework": "ni-kc-gym-si-math",
         "demandLevel": "AB1",
         "processCompetencies": [],
         "guidingIdeas": [],
         "phase": "GLOBAL",
-        "area": "Funktionaler Zusammenhang"
+        "area": "Algebra und Funktionaler Zusammenhang"
       },
       "type": "cluster"
     },
@@ -177,6 +180,72 @@
         "area": "Arithmetik"
       },
       "type": "atomic"
+    },
+    {
+      "id": "cd5e0341-1b6a-4e75-aadc-a11c1272d1e4",
+      "title": "Laengen, Flaechen- und Rauminhalte und deren Terme",
+      "titleEn": "Lengths, Areas, Spatial Measures, and Their Expressions",
+      "description": "Lernbereich-Cluster fuer den ersten vollstaendig importierten niedersaechsischen Follow-on zu Flaechen- und Rauminhalten, Formeln fuer ebene Figuren und zum Umgang mit Schraegbildern und Netzen.",
+      "descriptionEn": "Learning-area cluster for the first fully imported Lower Saxony follow-on on area and volume measures, formulas for plane figures, and the use of oblique drawings and nets.",
+      "weight": 4,
+      "tags": [
+        "Sek1",
+        "Jg7_8",
+        "Geometry",
+        "Measurement"
+      ],
+      "contains": [
+        "cd1646e8-7ed9-45bc-bdd4-2c150dbeb26b",
+        "79310323-7e9c-4a4f-8cf1-66d2fdec00ec",
+        "8e16f019-496f-42ea-9c99-5a57a8d104e4",
+        "d52db214-0dd4-455d-bff0-497f849fcc77"
+      ],
+      "requires": [
+        "d3c99e6b-0e90-4b30-976e-0c037032e349"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Gymnasium Sek I, Lernbereich 'Laengen, Flaechen- und Rauminhalte und deren Terme', S. 47.",
+      "dimensionTags": {
+        "framework": "ni-kc-gym-si-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG7_8",
+        "area": "Groessen und Messen"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "7d5a10af-ac76-4ebc-8d34-fb5358dfb3f6",
+      "title": "Elementare Termumformungen",
+      "titleEn": "Elementary Algebraic Transformations",
+      "description": "Lernbereich-Cluster fuer den ersten vollstaendig importierten Niedersachsen-Streifen zu elementaren Termumformungen, binomischen Formeln sowie einfachen linearen und Verhaeltnisgleichungen.",
+      "descriptionEn": "Learning-area cluster for the first fully imported Lower Saxony strip on elementary algebraic transformations, binomial formulas, and simple linear and ratio equations.",
+      "weight": 4,
+      "tags": [
+        "Sek1",
+        "Jg7_8",
+        "Algebra",
+        "Terme"
+      ],
+      "contains": [
+        "47bf6a6d-11e8-4cdd-bb15-0b14ece7962a",
+        "c81802e6-1085-41f4-984c-2ff362fee3c5",
+        "b8112194-26d4-468f-8f32-e4eec846546f",
+        "bfdbc6ba-663b-4f0e-b8f9-589cbdf02bc4"
+      ],
+      "requires": [
+        "d3c99e6b-0e90-4b30-976e-0c037032e349"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Gymnasium Sek I, Lernbereich 'Elementare Termumformungen', S. 48.",
+      "dimensionTags": {
+        "framework": "ni-kc-gym-si-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG7_8",
+        "area": "Algebra"
+      },
+      "type": "cluster"
     },
     {
       "id": "9dcde142-1bae-417b-b08c-999ce0a3e963",
@@ -491,6 +560,225 @@
         "guidingIdeas": [],
         "phase": "JG7_8",
         "area": "Lineare Zusammenhaenge"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "47bf6a6d-11e8-4cdd-bb15-0b14ece7962a",
+      "title": "Gleichartige Terme zusammenfassen sowie ausmultiplizieren und ausklammern",
+      "titleEn": "Collect Like Terms as well as Expand and Factor Out",
+      "description": "Die Schuelerinnen und Schueler fuehren einfache Termumformungen durch, indem sie gleichartige Terme zusammenfassen, ausmultiplizieren und ausklammern.",
+      "descriptionEn": "Students perform simple algebraic transformations by collecting like terms, expanding products, and factoring out common factors.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "Jg7_8",
+        "Algebra",
+        "Termumformungen"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "KC Niedersachsen Mathematik Gymnasium Sek I, Lernbereich 'Elementare Termumformungen', Kern, 'einfache Termumformungen durchfuehren', S. 48.",
+      "dimensionTags": {
+        "framework": "ni-kc-gym-si-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG7_8",
+        "area": "Algebra"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "c81802e6-1085-41f4-984c-2ff362fee3c5",
+      "title": "Summen multiplizieren und binomische Formeln in einfachen Faellen anwenden",
+      "titleEn": "Multiply Sums and Apply Binomial Formulas in Simple Cases",
+      "description": "Die Schuelerinnen und Schueler multiplizieren unterschiedliche Summen aus und wenden binomische Formeln als Spezialfall in einfachen Situationen an.",
+      "descriptionEn": "Students expand different sums and apply binomial formulas as a special case in simple situations.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "Jg7_8",
+        "Algebra",
+        "BinomischeFormeln"
+      ],
+      "contains": [],
+      "requires": [
+        "47bf6a6d-11e8-4cdd-bb15-0b14ece7962a"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Gymnasium Sek I, Lernbereich 'Elementare Termumformungen', Kern, 'Summen multiplizieren', S. 48.",
+      "dimensionTags": {
+        "framework": "ni-kc-gym-si-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG7_8",
+        "area": "Algebra"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "b8112194-26d4-468f-8f32-e4eec846546f",
+      "title": "Einfache lineare Gleichungen durch Umformen loesen",
+      "titleEn": "Solve Simple Linear Equations by Transforming Them",
+      "description": "Die Schuelerinnen und Schueler loesen einfache lineare Gleichungen mithilfe algebraischer Umformungen.",
+      "descriptionEn": "Students solve simple linear equations using algebraic transformations.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "Jg7_8",
+        "Algebra",
+        "LineareGleichungen"
+      ],
+      "contains": [],
+      "requires": [
+        "47bf6a6d-11e8-4cdd-bb15-0b14ece7962a"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Gymnasium Sek I, Lernbereich 'Elementare Termumformungen', Kern, 'einfache lineare Gleichungen loesen', S. 48.",
+      "dimensionTags": {
+        "framework": "ni-kc-gym-si-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG7_8",
+        "area": "Algebra"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "bfdbc6ba-663b-4f0e-b8f9-589cbdf02bc4",
+      "title": "Einfache Verhaeltnisgleichungen loesen",
+      "titleEn": "Solve Simple Ratio Equations",
+      "description": "Die Schuelerinnen und Schueler loesen einfache Verhaeltnisgleichungen mithilfe geeigneter algebraischer Umformungen und Proportionsueberlegungen.",
+      "descriptionEn": "Students solve simple ratio equations using suitable algebraic transformations and proportionality reasoning.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "Jg7_8",
+        "Algebra",
+        "Verhaeltnisgleichungen"
+      ],
+      "contains": [],
+      "requires": [
+        "47bf6a6d-11e8-4cdd-bb15-0b14ece7962a",
+        "b8112194-26d4-468f-8f32-e4eec846546f"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Gymnasium Sek I, Lernbereich 'Elementare Termumformungen', Kern, 'einfache Verhaeltnisgleichungen loesen', S. 48.",
+      "dimensionTags": {
+        "framework": "ni-kc-gym-si-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG7_8",
+        "area": "Algebra"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "cd1646e8-7ed9-45bc-bdd4-2c150dbeb26b",
+      "title": "Umfang und Flaecheninhalt von Dreieck, Parallelogramm und Trapez vergleichen, schaetzen und berechnen",
+      "titleEn": "Compare, Estimate, and Calculate Perimeters and Areas of Triangles, Parallelograms, and Trapezoids",
+      "description": "Die Schuelerinnen und Schueler vergleichen, schaetzen und berechnen Umfang und Flaecheninhalt von Dreieck, Parallelogramm und Trapez und deuten Ergebnisse mit passenden Einheiten.",
+      "descriptionEn": "Students compare, estimate, and calculate the perimeter and area of triangles, parallelograms, and trapezoids and interpret results with suitable units.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "Jg7_8",
+        "Geometry",
+        "Measurement"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "KC Niedersachsen Mathematik Gymnasium Sek I, Lernbereich 'Laengen, Flaechen- und Rauminhalte und deren Terme', Kern, 'Umfang und Flaecheninhalt von Dreieck, Parallelogramm, Trapez vergleichen, schaetzen, berechnen', S. 47.",
+      "dimensionTags": {
+        "framework": "ni-kc-gym-si-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG7_8",
+        "area": "Groessen und Messen"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "79310323-7e9c-4a4f-8cf1-66d2fdec00ec",
+      "title": "Formeln fuer Flaecheninhalte von Dreieck, Parallelogramm und Trapez begruenden, anwenden und interpretieren",
+      "titleEn": "Justify, Apply, and Interpret Formulas for Areas of Triangles, Parallelograms, and Trapezoids",
+      "description": "Die Schuelerinnen und Schueler begruenden, verwenden und interpretieren Flaechenformeln fuer Dreieck, Parallelogramm und Trapez und stellen Gleichheit unterschiedlicher Terme nachvollziehbar dar.",
+      "descriptionEn": "Students justify, use, and interpret area formulas for triangles, parallelograms, and trapezoids and transparently show the equivalence of different expressions.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "Jg7_8",
+        "Geometry",
+        "Formeln"
+      ],
+      "contains": [],
+      "requires": [
+        "cd1646e8-7ed9-45bc-bdd4-2c150dbeb26b"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Gymnasium Sek I, Lernbereich 'Laengen, Flaechen- und Rauminhalte und deren Terme', Kern, 'Formeln begruenden, anwenden und interpretieren' zu Dreieck, Parallelogramm und Trapez, S. 47.",
+      "dimensionTags": {
+        "framework": "ni-kc-gym-si-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG7_8",
+        "area": "Groessen und Messen"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "8e16f019-496f-42ea-9c99-5a57a8d104e4",
+      "title": "Oberflaechen- und Rauminhalt des Prismas vergleichen, schaetzen, berechnen und Formeln begruenden",
+      "titleEn": "Compare, Estimate, and Calculate Surface Area and Volume of Prisms and Justify the Formulas",
+      "description": "Die Schuelerinnen und Schueler vergleichen, schaetzen und berechnen Oberflaechen- und Rauminhalte von Prismen, begruenden die verwendeten Formeln und interpretieren die Ergebnisse in passenden Situationen.",
+      "descriptionEn": "Students compare, estimate, and calculate surface areas and volumes of prisms, justify the formulas used, and interpret the results in suitable situations.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "Jg7_8",
+        "Geometry",
+        "Prismen"
+      ],
+      "contains": [],
+      "requires": [
+        "d52db214-0dd4-455d-bff0-497f849fcc77"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Gymnasium Sek I, Lernbereich 'Laengen, Flaechen- und Rauminhalte und deren Terme', Kern, 'Oberflaechen- und Rauminhalt des Prismas vergleichen, schaetzen, berechnen' und 'Formeln begruenden, anwenden und interpretieren', S. 47.",
+      "dimensionTags": {
+        "framework": "ni-kc-gym-si-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG7_8",
+        "area": "Groessen und Messen"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "d52db214-0dd4-455d-bff0-497f849fcc77",
+      "title": "Mit Schraegbildern und Netzen umgehen, Darstellungen vergleichen, interpretieren und wechseln",
+      "titleEn": "Use Oblique Drawings and Nets, Compare Representations, Interpret Them, and Switch Between Them",
+      "description": "Die Schuelerinnen und Schueler gehen mit Schraegbildern und Netzen um, vergleichen und interpretieren diese Darstellungen und wechseln begruendet zwischen verschiedenen Darstellungsformen von Koerpern.",
+      "descriptionEn": "Students work with oblique drawings and nets, compare and interpret these representations, and switch between different representations of solids with justification.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "Jg7_8",
+        "Geometry",
+        "Darstellungen"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "KC Niedersachsen Mathematik Gymnasium Sek I, Lernbereich 'Laengen, Flaechen- und Rauminhalte und deren Terme', Kern, 'mit Schraegbildern und Netzen umgehen', S. 47.",
+      "dimensionTags": {
+        "framework": "ni-kc-gym-si-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG7_8",
+        "area": "Raum und Form"
       },
       "type": "atomic"
     }

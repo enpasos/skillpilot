@@ -24,50 +24,94 @@
             },
             {
               "kind": "structure",
-              "id": "j6",
-              "label": "Jahrgangsstufe 6",
+              "id": "bw-klassen-5-6",
+              "label": "Klassen 5/6: einfache funktionale Zusammenhänge",
               "children": [
                 {
-                  "kind": "canonicalSubtree",
-                  "goalId": "09f47964-2cd0-410e-93ee-9632b582fc91"
+                  "kind": "structure",
+                  "id": "j5",
+                  "label": "Jahrgangsstufe 5",
+                  "children": [
+                    {
+                      "kind": "canonicalSubtree",
+                      "goalId": "ca9093cd-9ccf-5fb4-9dd8-bf4f92af4e70"
+                    },
+                    {
+                      "kind": "canonicalSubtree",
+                      "goalId": "25593605-5e13-55cc-9a05-8f3d737e15e9"
+                    }
+                  ]
                 },
                 {
-                  "kind": "canonicalSubtree",
-                  "goalId": "a8c42ee9-2898-4247-819f-c235032ac78a"
+                  "kind": "structure",
+                  "id": "j6",
+                  "label": "Jahrgangsstufe 6",
+                  "children": [
+                    {
+                      "kind": "canonicalSubtree",
+                      "goalId": "2bb4bb91-7929-483a-b735-44275f6b5cdc"
+                    }
+                  ]
                 }
               ]
             },
             {
               "kind": "structure",
-              "id": "j7",
-              "label": "Jahrgangsstufe 7",
+              "id": "bw-klassen-7-8",
+              "label": "Klassen 7/8: funktionale Darstellungen und lineare Funktionen",
               "children": [
                 {
-                  "kind": "canonicalSubtree",
-                  "goalId": "2bb4bb91-7929-483a-b735-44275f6b5cdc"
+                  "kind": "structure",
+                  "id": "j7",
+                  "label": "Jahrgangsstufe 7",
+                  "children": [
+                    {
+                      "kind": "structure",
+                      "id": "j7-darstellungen",
+                      "label": "Darstellungen und Darstellungswechsel",
+                      "children": [
+                        {
+                          "kind": "canonicalSubtree",
+                          "goalId": "34047d7c-3a92-59fa-91b4-354211ff36e1"
+                        },
+                        {
+                          "kind": "canonicalSubtree",
+                          "goalId": "e41a9eb4-8d3f-5f45-b3f3-5a88072e6f4e"
+                        }
+                      ]
+                    },
+                    {
+                      "kind": "canonicalSubtree",
+                      "goalId": "09f47964-2cd0-410e-93ee-9632b582fc91"
+                    },
+                    {
+                      "kind": "canonicalSubtree",
+                      "goalId": "a8c42ee9-2898-4247-819f-c235032ac78a"
+                    },
+                    {
+                      "kind": "canonicalSubtree",
+                      "goalId": "c1f50bcc-7848-4e49-b9de-0ec030cc6bca"
+                    }
+                  ]
                 },
                 {
-                  "kind": "canonicalSubtree",
-                  "goalId": "c1f50bcc-7848-4e49-b9de-0ec030cc6bca"
-                }
-              ]
-            },
-            {
-              "kind": "structure",
-              "id": "j8",
-              "label": "Jahrgangsstufe 8",
-              "children": [
-                {
-                  "kind": "canonicalSubtree",
-                  "goalId": "af3d6bff-c5fb-4ec6-a9f0-c0be09fc9186"
-                },
-                {
-                  "kind": "canonicalSubtree",
-                  "goalId": "ae772695-d55e-4cc5-81bc-6605272759b4"
-                },
-                {
-                  "kind": "canonicalSubtree",
-                  "goalId": "2d75fd3f-c68b-4a11-89ae-19a30fefc47a"
+                  "kind": "structure",
+                  "id": "j8",
+                  "label": "Jahrgangsstufe 8",
+                  "children": [
+                    {
+                      "kind": "canonicalSubtree",
+                      "goalId": "af3d6bff-c5fb-4ec6-a9f0-c0be09fc9186"
+                    },
+                    {
+                      "kind": "canonicalSubtree",
+                      "goalId": "ae772695-d55e-4cc5-81bc-6605272759b4"
+                    },
+                    {
+                      "kind": "canonicalSubtree",
+                      "goalId": "2d75fd3f-c68b-4a11-89ae-19a30fefc47a"
+                    }
+                  ]
                 }
               ]
             }
@@ -85,23 +129,212 @@
             {
               "kind": "structure",
               "id": "leistungsfach-corridor",
-              "label": "Leistungsfach: Funktionen, Anwendungen und Integralideen",
+              "label": "Leistungsfach: Analysis, Geometrie, lineare Systeme und Stochastik",
               "children": [
                 {
-                  "kind": "canonicalSubtree",
-                  "goalId": "e9ad45b9-c0d2-5804-b6bf-79e5ce041d2c"
+                  "kind": "structure",
+                  "id": "basisfach-grundlage",
+                  "label": "Gemeinsame Grundlage",
+                  "children": [
+                    {
+                      "kind": "structure",
+                      "id": "basisfach-exp",
+                      "label": "Exponentialfunktion, Logarithmus und Stammfunktion",
+                      "children": [
+                        {
+                          "kind": "canonicalSubtree",
+                          "goalId": "4047af71-de53-5dc3-80c6-a7c78fb4bfe4"
+                        },
+                        {
+                          "kind": "canonicalSubtree",
+                          "goalId": "a9ed219d-d497-55e5-a4e0-4d45d2554f6b"
+                        }
+                      ]
+                    },
+                    {
+                      "kind": "structure",
+                      "id": "basisfach-regeln",
+                      "label": "Ableitungsregeln",
+                      "children": [
+                        {
+                          "kind": "canonicalSubtree",
+                          "goalId": "858113c5-e53b-57bb-b01f-ba95c3ddcb6f"
+                        }
+                      ]
+                    },
+                    {
+                      "kind": "structure",
+                      "id": "basisfach-verkettung",
+                      "label": "Verknüpfungen und Anwendungen",
+                      "children": [
+                        {
+                          "kind": "canonicalSubtree",
+                          "goalId": "e9ad45b9-c0d2-5804-b6bf-79e5ce041d2c"
+                        },
+                        {
+                          "kind": "canonicalSubtree",
+                          "goalId": "1511b39a-4094-5450-a755-4a3ad3339733"
+                        }
+                      ]
+                    },
+                {
+                  "kind": "structure",
+                  "id": "basisfach-integral",
+                      "label": "Integralideen und Anwendungen",
+                      "children": [
+                        {
+                          "kind": "canonicalSubtree",
+                          "goalId": "2afba4a2-287d-5e8f-aeee-a3bcf8652236"
+                        },
+                        {
+                          "kind": "canonicalSubtree",
+                          "goalId": "94d63ad9-ae1c-5ff2-b05e-188a0f5ebec6"
+                        },
+                        {
+                          "kind": "canonicalSubtree",
+                          "goalId": "b9bbd2a8-1379-5ffb-817f-41467d48abef"
+                        },
+                        {
+                          "kind": "canonicalSubtree",
+                          "goalId": "e9114fc2-1a87-5ef5-8fa3-7ee4c9bbe0dd"
+                        }
+                      ]
+                    },
+                {
+                  "kind": "structure",
+                  "id": "basisfach-geometrie",
+                  "label": "Analytische Geometrie und Raum",
+                  "children": [
+                    {
+                      "kind": "canonicalSubtree",
+                      "goalId": "6b3e75b2-fbfd-51c1-9e02-e9b9f7080d44"
+                    },
+                    {
+                      "kind": "canonicalSubtree",
+                      "goalId": "f6232b63-8a2a-5041-817b-f13cab43523d"
+                    }
+                  ]
                 },
                 {
-                  "kind": "canonicalSubtree",
-                  "goalId": "1511b39a-4094-5450-a755-4a3ad3339733"
+                  "kind": "structure",
+                  "id": "basisfach-gauss",
+                  "label": "Lineare Gleichungssysteme und Gauß",
+                  "children": [
+                    {
+                      "kind": "canonicalSubtree",
+                      "goalId": "546bf0b3-6921-416b-a2ef-8fd37d429dc7"
+                    },
+                    {
+                      "kind": "canonicalSubtree",
+                      "goalId": "2826e0b6-84d3-5abb-85bd-da8db77cc17a"
+                    }
+                  ]
                 },
                 {
-                  "kind": "canonicalSubtree",
-                  "goalId": "2afba4a2-287d-5e8f-aeee-a3bcf8652236"
+                  "kind": "structure",
+                  "id": "basisfach-stochastik",
+                  "label": "Stochastik und Normalverteilung",
+                      "children": [
+                        {
+                          "kind": "canonicalSubtree",
+                          "goalId": "67ef9787-d540-5f30-9995-f1f9c39a1a45"
+                        }
+                      ]
+                    }
+                  ]
                 },
                 {
-                  "kind": "canonicalSubtree",
-                  "goalId": "b9bbd2a8-1379-5ffb-817f-41467d48abef"
+                  "kind": "structure",
+                  "id": "leistungsfach-vertiefung",
+                  "label": "Leistungsfach-Vertiefung",
+                  "children": [
+                    {
+                      "kind": "structure",
+                      "id": "leistungsfach-log",
+                      "label": "Exponential- und Logarithmusfunktion",
+                      "children": [
+                        {
+                          "kind": "canonicalSubtree",
+                          "goalId": "1e26404a-93ef-45f3-a28c-15679fbae96b"
+                        }
+                      ]
+                    },
+                    {
+                      "kind": "structure",
+                      "id": "leistungsfach-verkettung",
+                      "label": "Verknüpfungen und Parameter",
+                      "children": [
+                        {
+                          "kind": "canonicalSubtree",
+                          "goalId": "c72a8032-71f6-56ed-a896-06ae435ff2ec"
+                        },
+                        {
+                          "kind": "canonicalSubtree",
+                          "goalId": "e7350739-c89f-5c7b-b4d1-717d6a767298"
+                        }
+                      ]
+                    },
+                    {
+                      "kind": "structure",
+                      "id": "leistungsfach-regeln",
+                      "label": "Regeln und Verfahren",
+                      "children": [
+                        {
+                          "kind": "canonicalSubtree",
+                          "goalId": "0c7bbd3f-0a04-4f0e-888b-40ab7841fb76"
+                        },
+                        {
+                          "kind": "canonicalSubtree",
+                          "goalId": "899ed286-0cc2-4d6d-ba46-7d4e40a11f41"
+                        },
+                        {
+                          "kind": "canonicalSubtree",
+                          "goalId": "12f4b957-da3d-53d5-a924-45a634ab8d44"
+                        },
+                        {
+                          "kind": "canonicalSubtree",
+                          "goalId": "f4935b24-d8a9-5eb7-a5eb-6d34a9e09b2d"
+                        }
+                      ]
+                    },
+                    {
+                      "kind": "structure",
+                      "id": "leistungsfach-integral-anwendung",
+                      "label": "Mittelwerte und Rotationskörper",
+                      "children": [
+                        {
+                          "kind": "canonicalSubtree",
+                          "goalId": "809ef78a-f282-5593-89be-0f2cb95570ac"
+                        },
+                        {
+                          "kind": "canonicalSubtree",
+                          "goalId": "0f180645-37ce-5b6b-8a36-ad7b31168b1a"
+                        }
+                      ]
+                    },
+                    {
+                      "kind": "structure",
+                      "id": "leistungsfach-rational",
+                      "label": "Gebrochenrationale Funktionen",
+                      "children": [
+                        {
+                          "kind": "canonicalSubtree",
+                          "goalId": "61686d85-0301-550e-bab9-bd9411c3e7ce"
+                        }
+                      ]
+                    },
+                    {
+                      "kind": "structure",
+                      "id": "leistungsfach-stochastik",
+                      "label": "Hypothesentests",
+                      "children": [
+                        {
+                          "kind": "canonicalSubtree",
+                          "goalId": "a5ead83b-4893-5076-be1d-ded8de4ef2a7"
+                        }
+                      ]
+                    }
+                  ]
                 }
               ]
             }

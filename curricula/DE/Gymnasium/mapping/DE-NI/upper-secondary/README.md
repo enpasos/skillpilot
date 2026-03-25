@@ -2,16 +2,20 @@
 
 This lane is reserved for future Niedersachsen upper-secondary Gymnasium mappings into the shared DE-level canonical landscapes.
 
-Current status on `2026-03-21`:
+Current status on `2026-03-25`:
 
 - repository-backed mapping fixture now exists:
   `ni_math_upper_secondary_to_canonical_math.json`
 - reserved `sourceLandscapeId`:
   `fcb04661-6ea2-4030-a9b2-97e6cc03daf8`
-- current mapping count: `9`
+- current mapping count: `129`
 - the first archived Niedersachsen upper-secondary source snapshot is now active in the shared provenance registries:
   `curricula/DE/Gymnasium/input/NI/upper-secondary/source-json/DE_NDS_S_GYM_2_MATHEMATIK.de.json.snapshot`
-- the first reviewed Niedersachsen upper-secondary analysis bridges are now active:
+- the first reviewed Niedersachsen upper-secondary E-phase entry bridges are now active:
+  - `Warum Mathematik in der Einfuehrungsphase? - gemeinsame Basis fuer die Qualifikationsphase` (`exact`)
+  - `Potenz- und Wurzelfunktionen skizzieren, Symmetrie und Globalverhalten beschreiben` (`partial`)
+  - `Funktionsklassen vergleichen und Parametervariationen deuten` (`partial`)
+  - `Ganzrationale Funktionen deuten, modellieren und ueber ihre Termdarstellung beschreiben` (`partial`)
   - `Mittlere und lokale Aenderungsraten sowie Sekanten- und Tangentensteigungen bestimmen` (`partial`)
   - `Lokale Aenderungsrate und Tangentensteigung mit propaedeutischem Grenzwertbegriff entwickeln` (`partial`)
   - `Ableitung als lokale Aenderungsrate und Tangentensteigung deuten` (`partial`)
@@ -21,9 +25,135 @@ Current status on `2026-03-21`:
   - `Funktionen auf Monotonie und Extremstellen untersuchen` (`partial`)
   - `Funktionen auf Wendestellen untersuchen` (`partial`)
   - `Optimierungsprobleme mit Ableitungen loesen` (`partial`)
+- the first reviewed Niedersachsen upper-secondary gA `Die e-Funktion` starter bridges are now also active:
+  - `Exponentielle Wachstumsgeschwindigkeit als proportional zum Bestand beschreiben` (`partial`)
+  - `Die Basis e durch die Eigenschaft (e^x)' = e^x charakterisieren` (`partial`)
+  - `Ableitungen von e^x und a^x verwenden` (`partial`)
+  - `Parameterbestimmungen zur Angleichung an Daten durchfuehren` (`partial`)
+  - `Exponentialgleichungen loesen` (`partial`)
+  - `Asymptotisches Verhalten begrenzten Wachstums beschreiben` (`partial`)
+  - `Additive und multiplikative Verknuepfungen der e-Funktion mit ganzrationalen Funktionen untersuchen` (`partial`)
+  - `Verkettung der e-Funktion mit linearen Funktionen beschreiben und anwenden` (`partial`)
+  - `Produktregel und Kettenregel bei linearer innerer Funktion anwenden` (`partial`)
+- the first reviewed Niedersachsen upper-secondary gA `Von der Aenderung zum Bestand - Integralrechnung` bridges are now also active:
+  - `Bestaende aus Aenderungsraten und Anfangsbestand rekonstruieren und das Integral als Bestand sowie Flaecheninhalt deuten` (`partial`)
+  - `Das Integral als Grenzwert von Produktsummen beschreiben` (`partial`)
+  - `Den Hauptsatz der Differential- und Integralrechnung geometrisch-anschaulich begruenden` (`partial`)
+  - `Bestimmte Integrale berechnen und im Sachzusammenhang deuten` (`partial`)
+  - `Stammfunktionen mithilfe der Ableitungsregeln ueberpruefen und in einfachen Faellen entwickeln` (`partial`)
+  - `Inhalte von Flaechen bestimmen, die durch Funktionsgraphen begrenzt sind` (`partial`)
+- the first reviewed Niedersachsen upper-secondary gA `Raumanschauung und Koordinatisierung` bridges are now also active:
+  - `Punkte und Vektoren in Ebene und Raum durch Tupel beschreiben` (`partial`)
+  - `Bildliche Darstellung und Koordinatisierung zur Beschreibung von Punkten, Strecken, ebenen Flaechen und einfachen Koerpern nutzen` (`partial`)
+  - `Addition, Subtraktion und skalare Multiplikation von Vektoren anwenden und geometrisch veranschaulichen` (`partial`)
+  - `Kollinearitaet zweier Vektoren ueberpruefen` (`partial`)
+  - `Geradengleichungen in Parameterform verwenden` (`partial`)
+  - `Ebenengleichungen in Parameterform verwenden` (`partial`)
+  - `Abstaende zwischen Punkten bestimmen` (`partial`)
+  - `Skalarprodukt geometrisch als Ergebnis einer Projektion deuten und verwenden` (`partial`)
+  - `Orthogonalitaet zweier Vektoren ueberpruefen` (`partial`)
+  - `Winkelgroessen zwischen Strecken und Geraden bestimmen` (`partial`)
+  - `Lagebeziehungen von Geraden untersuchen` (`partial`)
+  - `Schnittpunkte von Geraden bestimmen` (`partial`)
+- the first reviewed Niedersachsen upper-secondary gA `Daten und Zufall` bridges are now also active:
+  - `Bedingte Wahrscheinlichkeiten mit Baumdiagrammen und Vierfeldertafeln erarbeiten` (`partial`)
+  - `Teilvorgaenge mehrstufiger Zufallsexperimente auf stochastische Unabhaengigkeit untersuchen` (`partial`)
+  - `Kenngroessen von Haeufigkeits- und Wahrscheinlichkeitsverteilungen aufeinander beziehen` (`partial`)
+  - `Erwartungswert, Varianz und Standardabweichung berechnen und interpretieren` (`partial`)
+  - `Faire Spiele mithilfe des Erwartungswerts kennzeichnen` (`partial`)
+  - `Eignung des Binomialmodells beurteilen` (`partial`)
+  - `Beziehung zwischen Haeufigkeitsverteilungen und Binomialverteilungen erlaeutern` (`partial`)
+  - `Zufallsgroesse sowie Parameter n und p einer Binomialverteilung im Sachkontext angeben` (`partial`)
+  - `Bedeutung der Faktoren der Binomialformel erlaeutern` (`partial`)
+  - `Wahrscheinlichkeiten fuer binomialverteilte Zufallsgroessen berechnen` (`partial`)
+  - `Kenngroessen binomialverteilter Zufallsgroessen berechnen` (`partial`)
+  - `Grafische Darstellungen von Binomialverteilungen deuten` (`partial`)
+  - `Prognoseintervalle fuer Binomialverteilungen grafisch oder tabellarisch ermitteln` (`partial`)
+  - `Vertraeglichkeit eines Anteils oder Parameters mit einer Stichprobe beurteilen` (`partial`)
+  - `Simulationen zur Untersuchung stochastischer Situationen verwenden` (`partial`)
+- the first reviewed Niedersachsen upper-secondary eA `Von der Aenderung zum Bestand - Integralrechnung` bridges are now also active:
+  - `Bestaende aus Aenderungsraten und Anfangsbestand rekonstruieren` (`partial`)
+  - `Integral als Grenzwert von Produktsummen beschreiben` (`partial`)
+  - `Hauptsatz der Differential- und Integralrechnung geometrisch-anschaulich begruenden` (`partial`)
+  - `Bestimmte Integrale berechnen` (`partial`)
+  - `Bestimmte Integrale im Sachzusammenhang deuten` (`partial`)
+  - `Flaecheninhalte zwischen Funktionsgraphen bestimmen` (`partial`)
+  - `Integralfunktionen als Bestands- oder Flaecheninhaltsfunktion interpretieren` (`partial`)
+  - `Integral- und Stammfunktion unterscheiden` (`partial`)
+  - `Stammfunktionen zu xn, e^x, sin(x) und cos(x) angeben` (`partial`)
+  - `ln als Stammfunktion von 1/x verwenden` (`partial`)
+  - `Stammfunktionen mit Kettenregel, Summen- und Faktorregel entwickeln` (`partial`)
+  - `Stammfunktionen mithilfe der Ableitungsregeln ueberpruefen` (`partial`)
+  - `Volumenformel fuer Rotationskoerper herleiten und anwenden` (`partial`)
+  - `Uneigentliche Integrale als Grenzwerte interpretieren und bestimmen` (`partial`)
+- the first reviewed Niedersachsen upper-secondary eA `Wachstumsmodelle - Exponentialfunktion` bridges are now also active:
+  - `Begrenztes und logistisches Wachstum als Funktionen beschreiben` (`partial`)
+  - `Verschiedene Wachstumsmodelle vergleichen` (`partial`)
+  - `Asymptotisches Verhalten von Wachstumsmodellen im Sachzusammenhang beschreiben` (`partial`)
+  - `Wachstumsmodelle mit Differentialgleichungen beschreiben und Loesungsfunktionen pruefen` (`partial`)
+  - `Die Basis e durch (e^x)' = e^x charakterisieren` (`partial`)
+  - `Ableitungsfunktionen von e^x und a^x verwenden` (`partial`)
+  - `Verkettung und Verknuepfung mit ganzrationalen Funktionen beschreiben und untersuchen` (`partial`)
+  - `Asymptotisches Verhalten additiver Verknuepfungen linearer Funktionen mit e-Funktionen beschreiben` (`partial`)
+  - `Exponentialgleichungen zur Basis e loesen` (`partial`)
+  - `Produkt- und Kettenregel in e-Funktionsmodellen anwenden` (`partial`)
+  - `Scharparameter auch zur Angleichung an Daten ermitteln` (`partial`)
+  - `Loesungsfunktionen von Differentialgleichungen durch Einsetzen ueberpruefen` (`partial`)
+- the first reviewed Niedersachsen upper-secondary eA `Raumanschauung und Koordinatisierung` bridges are now also active:
+  - `Punkte und Vektoren in Ebene und Raum durch Tupel beschreiben` (`partial`)
+  - `Bildliche Darstellung und Koordinatisierung zur Beschreibung von Punkten, Strecken, ebenen Flaechen und einfachen Koerpern nutzen` (`partial`)
+  - `Addition, Subtraktion und skalare Multiplikation von Vektoren anwenden und geometrisch veranschaulichen` (`partial`)
+  - `Kollinearitaet zweier Vektoren ueberpruefen` (`partial`)
+  - `Projektionen vom Raum in die Ebene mit Matrizen beschreiben und Punktkoordinaten fuer Schraegbilder berechnen` (`partial`)
+  - `Geradengleichungen in Parameterform verwenden` (`partial`)
+  - `Ebenengleichungen in Parameterform verwenden` (`partial`)
+  - `Ebenengleichungen in Normalen- und Koordinatenform verwenden` (`partial`)
+  - `Zwischen Darstellungsformen von Geraden und Ebenen wechseln` (`partial`)
+  - `Abstaende zwischen Punkten, Geraden und Ebenen bestimmen` (`partial`)
+  - `Skalarprodukt geometrisch als Ergebnis einer Projektion deuten und verwenden` (`partial`)
+  - `Orthogonalitaet zweier Vektoren ueberpruefen` (`partial`)
+  - `Winkelgroessen zwischen Geraden und Ebenen bestimmen` (`partial`)
+  - `Lagebeziehungen von Geraden und Ebenen untersuchen` (`partial`)
+  - `Schnittprobleme im Raum loesen` (`partial`)
+  - `Gauss-Algorithmus zur Loesung linearer Gleichungssysteme erlaeutern und anwenden` (`partial`)
+- the first reviewed Niedersachsen upper-secondary eA `Kurvenanpassung und Funktionenscharen` bridges are now also active:
+  - `Funktionen nach globalen Eigenschaften klassifizieren` (`partial`)
+  - `Geeignete Funktionsterme zur Anpassung an Daten ermitteln` (`partial`)
+  - `Lokale Grapheneigenschaften in Bedingungen an Funktionsterme uebersetzen` (`partial`)
+  - `Stetigkeit und Differenzierbarkeit bei abschnittsweise definierten Funktionen nutzen` (`partial`)
+  - `Funktionenscharen mit ganzrationalen und e-verknuepften Termen vergleichen` (`partial`)
+  - `Scharparameter zur Anpassung an vorgegebene Eigenschaften variieren` (`partial`)
+- the first reviewed Niedersachsen upper-secondary eA `Daten und Zufall` bridges are now also active:
+  - `Bedingte Wahrscheinlichkeiten mit Baumdiagrammen und Vierfeldertafeln bestimmen` (`partial`)
+  - `Stochastische Unabhaengigkeit ueber bedingte Wahrscheinlichkeiten pruefen` (`partial`)
+  - `Kausale und stochastische Unabhaengigkeit kritisch unterscheiden` (`partial`)
+  - `Kenngroessen von Haeufigkeits- und Wahrscheinlichkeitsverteilungen aufeinander beziehen` (`partial`)
+  - `Erwartungswert diskreter Zufallsgroessen berechnen und interpretieren` (`partial`)
+  - `Varianz und Standardabweichung diskreter Zufallsgroessen berechnen und interpretieren` (`partial`)
+  - `Faire Spiele mithilfe des Erwartungswerts kennzeichnen` (`partial`)
+  - `Eignung von Binomialmodellen in Kontexten beurteilen` (`partial`)
+  - `Simulationen zu Binomialmodellen und weiteren stochastischen Situationen nutzen` (`partial`)
+  - `Bernoulli-Ketten im Sachkontext spezifizieren` (`partial`)
+  - `Bedeutung der Faktoren eines Binomialterms deuten` (`partial`)
+  - `Wahrscheinlichkeiten in Bernoulli-Ketten berechnen` (`partial`)
+  - `Erwartungswert und Standardabweichung binomialverteilter Zufallsgroessen bestimmen` (`partial`)
+  - `Einfluss von n und p auf Binomialverteilungen analysieren` (`partial`)
+  - `Prognoseintervalle fuer relative Haeufigkeiten bestimmen` (`partial`)
+  - `Prognoseintervalle im Kontext interpretieren` (`partial`)
+  - `Binomialverteilungen auch als Approximation in weiteren Situationen verwenden` (`partial`)
+  - `Dichtefunktion der Normalverteilung angeben und deuten` (`partial`)
+  - `Histogramme fuer stetige Modellierung lesen und erstellen` (`partial`)
+  - `Parameter von Normalverteilungen im Kontext deuten und nutzen` (`partial`)
+  - `Normalverteilung als Approximation der Binomialverteilung beurteilen` (`partial`)
+  - `Prognoseintervalle mit Sigma-Umgebungen bestimmen und deuten` (`partial`)
+  - `Konfidenzintervalle fuer einen unbekannten Anteil bestimmen` (`partial`)
+  - `Konfidenzintervalle im Kontext interpretieren` (`partial`)
+  - `Konfidenzniveau als relative Trefferhaeufigkeit deuten` (`partial`)
+  - `Simulationen fuer naeherungsweise normalverteilte Situationen nutzen` (`partial`)
 
 Expected first use:
 
 - canonical Gymnasium `Mathematik`
 - Niedersachsen upper-secondary anchor alignment onto the canonical `E` / `Q` spine
-- next reviewed mathematics corridor mappings beyond the now-active Einfuehrungsphase derivative-usage starter subset
+- the archived Niedersachsen upper-secondary pilot snapshot is now fully atomically bridged on its active E-phase base, on the fully imported gA learning areas `Von der Aenderung zum Bestand - Integralrechnung`, `Die e-Funktion`, `Raumanschauung und Koordinatisierung`, and `Daten und Zufall`, and on the first five fully imported eA learning areas `Von der Aenderung zum Bestand - Integralrechnung`, `Wachstumsmodelle - Exponentialfunktion`, `Raumanschauung und Koordinatisierung`, `Kurvenanpassung und Funktionenscharen`, and `Daten und Zufall`
+- next reviewed widening should move to the next Niedersachsen lower-secondary geometry / algebra corridor unless a separate Berufliches-Gymnasium lane is opened intentionally, because the first shared general-Gymnasium upper-secondary pilot surface is now exhausted
