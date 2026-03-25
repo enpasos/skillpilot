@@ -45,6 +45,10 @@ class LearnerServiceCanonicalProjectionTest {
     private static final String BAYERN_MATH_LANDSCAPE_ID = "c1600692-e543-5cf2-a399-6bd96e6b817f";
     private static final String CANONICAL_MATH_ID = "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced";
     private static final String CANONICAL_MATH_ROOT_ID = "c01b1ce9-a667-4a46-b251-ec33ae602b15";
+    private static final String CANONICAL_BW_EXPONENTIAL_CLUSTER_ID = "4047af71-de53-5dc3-80c6-a7c78fb4bfe4";
+    private static final String CANONICAL_BW_EXPONENTIAL_COMBINATIONS_ID = "e9ad45b9-c0d2-5804-b6bf-79e5ce041d2c";
+    private static final String CANONICAL_BW_GEOMETRY_CLUSTER_ID = "6b3e75b2-fbfd-51c1-9e02-e9b9f7080d44";
+    private static final String CANONICAL_BW_STOCHASTICS_CLUSTER_ID = "67ef9787-d540-5f30-9995-f1f9c39a1a45";
     private static final String CANONICAL_CHEMISTRY_ID = "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0";
     private static final String CANONICAL_BIOLOGY_ID = "08a43a1b-d97e-522c-9dfa-c950a493364e";
     private static final String CANONICAL_MATH_GK_PERSONAL_CONFIG = """
@@ -710,7 +714,30 @@ class LearnerServiceCanonicalProjectionTest {
     }
 
     @Test
-    void canonicalGymnasiumRootStateFilterPrefersExplicitJurisdictionApplicability() throws Exception {
+    void canonicalGymnasiumRootBwLkIncludesReviewedBwMathCorridors() throws Exception {
+        learner.setSelectedCurriculum(CANONICAL_GYMNASIUM_ROOT_ID);
+        String personalCurriculum = """
+                {
+                  "a0e13c56-c25f-4742-9272-3a1a603ee52e": {"selected": true, "filterId": "DE-BW"},
+                  "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced": {"selected": true, "filterId": "LK"}
+                }
+                """;
+        learner.setPersonalCurriculum(personalCurriculum);
+
+        Map<String, LearningGoal> filteredGoals = invokeGetFilteredGoals(CANONICAL_GYMNASIUM_ROOT_ID, personalCurriculum);
+
+        assertThat(filteredGoals)
+                .containsKeys(
+                        CANONICAL_MATH_ROOT_ID,
+                        CANONICAL_BW_EXPONENTIAL_CLUSTER_ID,
+                        CANONICAL_BW_EXPONENTIAL_COMBINATIONS_ID,
+                        CANONICAL_BW_GEOMETRY_CLUSTER_ID,
+                        CANONICAL_BW_STOCHASTICS_CLUSTER_ID);
+    }
+
+    @Test
+    void canonicalGymnasiumRootStateFilterFallsBackToCanonicalCoverageWhenRawApplicabilityIsNarrower()
+            throws Exception {
         LearningGoal goal = landscapeService.getGoalDefinition(CANONICAL_FUNCTION_CONCEPT_ID);
         assertThat(goal).isNotNull();
 
@@ -728,7 +755,7 @@ class LearnerServiceCanonicalProjectionTest {
                             """);
 
             assertThat(filteredGoals).containsKey(CANONICAL_MATH_ROOT_ID);
-            assertThat(filteredGoals).doesNotContainKey(CANONICAL_FUNCTION_CONCEPT_ID);
+            assertThat(filteredGoals).containsKey(CANONICAL_FUNCTION_CONCEPT_ID);
         } finally {
             goal.setApplicability(originalApplicability);
         }
@@ -994,4 +1021,5 @@ class LearnerServiceCanonicalProjectionTest {
         method.setAccessible(true);
         return (Map<String, LearningGoal>) method.invoke(learnerService, curriculumId, personalCurriculumJson);
     }
+
 }

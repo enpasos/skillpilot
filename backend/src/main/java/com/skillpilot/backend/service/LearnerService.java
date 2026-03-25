@@ -3637,7 +3637,9 @@ public class LearnerService {
             Boolean explicitApplicabilityMatch = matchesApplicabilityDimension(goal, APPLICABILITY_DIMENSION_JURISDICTION,
                     filterId);
             if (explicitApplicabilityMatch != null) {
-                return explicitApplicabilityMatch;
+                if (explicitApplicabilityMatch.booleanValue()) {
+                    return true;
+                }
             }
             return hasCanonicalStateCoverage(goal.getId(), filterId, mappedCanonicalGoalIdsByState,
                     canonicalStateCoverageCache, new HashSet<>());
@@ -3674,37 +3676,44 @@ public class LearnerService {
             Map<String, Set<String>> mappedCanonicalGoalIdsByState,
             Map<String, Boolean> canonicalStateCoverageCache,
             Set<String> visitedGoalIds) {
-        if (goalId == null || goalId.isBlank() || !visitedGoalIds.add(goalId)) {
+        if (goalId == null || goalId.isBlank()) {
+            return false;
+        }
+        if (!visitedGoalIds.add(goalId)) {
             return false;
         }
 
-        String cacheKey = stateFilterId + "::" + goalId;
-        Boolean cached = canonicalStateCoverageCache.get(cacheKey);
-        if (cached != null) {
-            return cached;
-        }
+        try {
+            String cacheKey = stateFilterId + "::" + goalId;
+            Boolean cached = canonicalStateCoverageCache.get(cacheKey);
+            if (cached != null) {
+                return cached;
+            }
 
-        LearningGoal goal = landscapeService.getGoalDefinition(goalId);
-        if (goal == null) {
-            canonicalStateCoverageCache.put(cacheKey, false);
-            return false;
-        }
+            LearningGoal goal = landscapeService.getGoalDefinition(goalId);
+            if (goal == null) {
+                canonicalStateCoverageCache.put(cacheKey, false);
+                return false;
+            }
 
-        boolean covered = hasStateProvenance(goal, stateFilterId)
-                || getMappedCanonicalGoalIdsForState(stateFilterId, mappedCanonicalGoalIdsByState).contains(goalId);
+            boolean covered = hasStateProvenance(goal, stateFilterId)
+                    || getMappedCanonicalGoalIdsForState(stateFilterId, mappedCanonicalGoalIdsByState).contains(goalId);
 
-        if (!covered && goal.getContains() != null) {
-            for (String childId : goal.getContains()) {
-                if (hasCanonicalStateCoverage(childId, stateFilterId, mappedCanonicalGoalIdsByState,
-                        canonicalStateCoverageCache, visitedGoalIds)) {
-                    covered = true;
-                    break;
+            if (!covered && goal.getContains() != null) {
+                for (String childId : goal.getContains()) {
+                    if (hasCanonicalStateCoverage(childId, stateFilterId, mappedCanonicalGoalIdsByState,
+                            canonicalStateCoverageCache, visitedGoalIds)) {
+                        covered = true;
+                        break;
+                    }
                 }
             }
-        }
 
-        canonicalStateCoverageCache.put(cacheKey, covered);
-        return covered;
+            canonicalStateCoverageCache.put(cacheKey, covered);
+            return covered;
+        } finally {
+            visitedGoalIds.remove(goalId);
+        }
     }
 
     private boolean hasStateProvenance(LearningGoal goal, String stateFilterId) {

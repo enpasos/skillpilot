@@ -19,6 +19,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.Locale;
 import java.util.stream.Collectors;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -93,6 +94,7 @@ public class LandscapeService {
 
     private final LandscapeProperties properties;
     private final ObjectMapper objectMapper;
+    private final GoalMappingService goalMappingService;
 
     private static final java.util.regex.Pattern FILENAME_PATTERN = java.util.regex.Pattern.compile(
             "^([A-Z]{2})_([A-Z]{3})_([A-Z])_([A-Z0-9]+)_([A-Z0-9]+)(?:_([A-Z0-9]+))?\\.([a-z]{2})\\.json$");
@@ -115,8 +117,14 @@ public class LandscapeService {
     private static final long RELOAD_CHECK_INTERVAL_MS = 2000L;
 
     public LandscapeService(LandscapeProperties properties, ObjectMapper objectMapper) {
+        this(properties, objectMapper, new GoalMappingService(properties, objectMapper));
+    }
+
+    @Autowired
+    public LandscapeService(LandscapeProperties properties, ObjectMapper objectMapper, GoalMappingService goalMappingService) {
         this.properties = properties;
         this.objectMapper = objectMapper;
+        this.goalMappingService = goalMappingService;
         loadLandscapes();
     }
 
@@ -293,10 +301,12 @@ public class LandscapeService {
             return Collections.emptyMap();
         }
 
+        Map<String, Set<String>> directMappingCoverageByGoalId = buildCanonicalJurisdictionCoverageFromMappings(goalsById.keySet());
         Map<String, Set<String>> coverageMemo = new HashMap<>();
         Map<String, List<String>> result = new LinkedHashMap<>();
         for (String goalId : goalsById.keySet()) {
-            Set<String> jurisdictions = computeCanonicalJurisdictionCoverage(goalId, goalsById, coverageMemo,
+            Set<String> jurisdictions = computeCanonicalJurisdictionCoverage(goalId, goalsById, directMappingCoverageByGoalId,
+                    coverageMemo,
                     new HashSet<>());
             if (!jurisdictions.isEmpty()) {
                 result.put(goalId, new ArrayList<>(jurisdictions));
@@ -305,9 +315,29 @@ public class LandscapeService {
         return result;
     }
 
+    private Map<String, Set<String>> buildCanonicalJurisdictionCoverageFromMappings(Set<String> goalIds) {
+        if (goalIds == null || goalIds.isEmpty()) {
+            return Collections.emptyMap();
+        }
+        Map<String, Set<String>> result = new LinkedHashMap<>();
+        for (ResolvedGoalMapping mapping : goalMappingService.getAllMappings()) {
+            String canonicalGoalId = mapping.canonicalGoalId();
+            if (!goalIds.contains(canonicalGoalId)) {
+                continue;
+            }
+            String jurisdiction = resolveSourceLandscapeJurisdiction(mapping.sourceLandscapeId());
+            if (!StringUtils.hasText(jurisdiction)) {
+                continue;
+            }
+            result.computeIfAbsent(canonicalGoalId, ignored -> new LinkedHashSet<>()).add(jurisdiction);
+        }
+        return result;
+    }
+
     private Set<String> computeCanonicalJurisdictionCoverage(
             String goalId,
             Map<String, LearningGoal> goalsById,
+            Map<String, Set<String>> directMappingCoverageByGoalId,
             Map<String, Set<String>> coverageMemo,
             Set<String> visiting) {
         Set<String> cached = coverageMemo.get(goalId);
@@ -327,12 +357,14 @@ public class LandscapeService {
         LinkedHashSet<String> coverage = new LinkedHashSet<>();
         addJurisdictionsFromApplicability(resolveGoalApplicability(goal), coverage);
         addJurisdictionsFromProvenance(goal, coverage);
+        coverage.addAll(directMappingCoverageByGoalId.getOrDefault(goalId, Collections.emptySet()));
 
         if (goal.getContains() != null) {
             for (String childRef : goal.getContains()) {
                 String childId = normalizeGoalRef(childRef);
                 if (goalsById.containsKey(childId)) {
-                    coverage.addAll(computeCanonicalJurisdictionCoverage(childId, goalsById, coverageMemo, visiting));
+                    coverage.addAll(computeCanonicalJurisdictionCoverage(childId, goalsById, directMappingCoverageByGoalId,
+                            coverageMemo, visiting));
                 }
             }
         }
@@ -523,8 +555,8 @@ public class LandscapeService {
                 merged.put(entry.getKey(), values == null ? Collections.emptyList() : new ArrayList<>(values));
             }
         }
-        if (hasDerivedJurisdictions) {
-            LinkedHashSet<String> jurisdictions = new LinkedHashSet<>(merged.getOrDefault("jurisdiction", Collections.emptyList()));
+        if (hasDerivedJurisdictions && !merged.containsKey("jurisdiction")) {
+            LinkedHashSet<String> jurisdictions = new LinkedHashSet<>();
             jurisdictions.addAll(derivedJurisdictions);
             merged.put("jurisdiction", new ArrayList<>(jurisdictions));
         }
