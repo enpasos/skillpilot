@@ -38,8 +38,8 @@ interface MigrationPreviewItem {
 }
 
 const DEFAULT_GYMNASIUM_DE_ROOT_FILTERS = [
-    { id: 'ALL', label: 'Alle Bundeslaender' },
-    { id: 'DE-BW', label: 'Baden-Wuerttemberg' },
+    { id: 'ALL', label: 'Kanonische DE-Sicht' },
+    { id: 'DE-BW', label: 'Baden-Württemberg' },
     { id: 'DE-HE', label: 'Hessen' },
     { id: 'DE-BY', label: 'Bayern' },
     { id: 'DE-NI', label: 'Niedersachsen' },
@@ -351,7 +351,7 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
                     <div className={`${isRoot ? 'ml-11 mt-2 mb-3 flex flex-col gap-1 rounded-lg border border-border-color bg-input-bg/40 p-3' : 'ml-11 flex flex-col gap-1 mt-1 mb-2 border-l-2 border-border-color pl-2'}`}>
                         {isRoot && (
                             <div className="mb-2 text-xs font-semibold uppercase tracking-wide text-text-secondary">
-                                Bundesland
+                                Sicht / Bundesland
                             </div>
                         )}
                         {effectiveFilters.map(f => (

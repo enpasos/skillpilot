@@ -16,8 +16,8 @@ interface ClassSetupProps {
 }
 
 const DEFAULT_GYMNASIUM_DE_ROOT_FILTERS = [
-  { id: 'ALL', label: 'Alle Bundeslaender' },
-  { id: 'DE-BW', label: 'Baden-Wuerttemberg' },
+  { id: 'ALL', label: 'Kanonische DE-Sicht' },
+  { id: 'DE-BW', label: 'Baden-Württemberg' },
   { id: 'DE-HE', label: 'Hessen' },
   { id: 'DE-BY', label: 'Bayern' },
   { id: 'DE-NI', label: 'Niedersachsen' },
@@ -211,7 +211,7 @@ export const ClassSetup: React.FC<ClassSetupProps> = ({ landscapes, rootLandscap
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {effectiveRootFilters.length > 0 && (
               <div>
-                <label className="block text-xs uppercase text-text-secondary font-bold mb-1">Bundesland</label>
+                <label className="block text-xs uppercase text-text-secondary font-bold mb-1">Sicht / Bundesland</label>
                 <select
                   value={selectedRootFilter}
                   onChange={(e) => setSelectedRootFilter(e.target.value)}
