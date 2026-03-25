@@ -23,11 +23,17 @@ const inferGoalStageScope = (
   const title = normalizeComparableText(goal.title)
   const phase = normalizeComparableText(goal.phase)
 
-  if (title === 'SEKUNDARSTUFE I' || title.endsWith('(SEK I)')) {
+  if (title === 'SEKUNDARSTUFE I' || title.startsWith('SEKUNDARSTUFE I ') || title.endsWith('(SEK I)')) {
     return 'sek1'
   }
 
-  if (title === 'SEKUNDARSTUFE II' || title.endsWith('(SEK II)')) {
+  if (
+    title === 'SEKUNDARSTUFE II'
+    || title.startsWith('SEKUNDARSTUFE II ')
+    || title.endsWith('(SEK II)')
+    || title === 'KURSSTUFE'
+    || title.startsWith('KURSSTUFE ')
+  ) {
     return 'sek2'
   }
 

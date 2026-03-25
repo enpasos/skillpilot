@@ -70,6 +70,7 @@ const inferStageFromPersonalCurriculum = (config: PersonalCurriculumConfig): str
 
   if (sek2Selected && !sek1Selected) return 'SekII'
   if (sek1Selected && !sek2Selected) return 'SekI'
+  if (sek1Selected && sek2Selected) return 'CrossStage'
   return undefined
 }
 
@@ -103,7 +104,20 @@ export const deriveRuntimeCompositionScope = ({
     ? normalizeComparableToken(courseProfileCandidate)
     : undefined
 
-  if (!jurisdiction || !stage || !courseProfile) {
+  if (!jurisdiction) {
+    return null
+  }
+
+  if (stage === 'SekI') {
+    return {
+      landscapeId,
+      schoolForm: 'Gymnasium',
+      jurisdiction,
+      stage,
+    }
+  }
+
+  if (!stage && !courseProfile) {
     return null
   }
 
@@ -111,8 +125,8 @@ export const deriveRuntimeCompositionScope = ({
     landscapeId,
     schoolForm: 'Gymnasium',
     jurisdiction,
-    stage,
-    courseProfile,
+    ...(stage ? { stage } : {}),
+    ...(courseProfile ? { courseProfile } : {}),
   }
 }
 
