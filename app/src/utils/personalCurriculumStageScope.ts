@@ -39,7 +39,7 @@ const inferGoalStageScope = (
     return 'sek2'
   }
 
-  if (/^JAHRGANG\s+([5-9]|10)\b/.test(title)) {
+  if (/^JAHRGANG(?:SSTUFE)?\s+([5-9]|10)\b/.test(title)) {
     return 'sek1'
   }
 

@@ -139,6 +139,35 @@ interface RootBranchInfo {
   rootChildOrder: number
 }
 
+const extractScopeToken = (goal: Pick<UiGoal, 'title' | 'phase'> | undefined): string | undefined => {
+  if (!goal) return undefined
+
+  const normalizedPhase = normalizeTreeComparableText(goal.phase)
+  if (/^j([5-9]|10)$/u.test(normalizedPhase)) {
+    return normalizedPhase.toUpperCase()
+  }
+  if (/^(e|q[1-4])$/u.test(normalizedPhase)) {
+    return normalizedPhase.toUpperCase()
+  }
+
+  const normalizedTitle = normalizeTreeComparableText(goal.title)
+  const yearMatch = /^jahrgang(?:sstufe)?\s+([5-9]|10)\b/u.exec(normalizedTitle)
+  if (yearMatch) {
+    return `J${yearMatch[1]}`
+  }
+
+  if (normalizedTitle.startsWith('e-phase')) {
+    return 'E'
+  }
+
+  const qMatch = /^q([1-4])(?:\b|[.\s:\-–(])/u.exec(normalizedTitle)
+  if (qMatch) {
+    return `Q${qMatch[1]}`
+  }
+
+  return undefined
+}
+
 const getStructuralTreeOrder = (goal: UiGoal) =>
   typeof goal.extendedData?.treeOrder === 'number'
     ? goal.extendedData.treeOrder
@@ -211,14 +240,25 @@ const buildSingleOccurrenceLearnerChildrenMap = (
 
   visibleParentIdsByChild.forEach((parentIds, childId) => {
     const preferredParentId = [...parentIds].sort((leftParentId, rightParentId) => {
+      const childGoal = allGoals.get(childId)
+      const childScopeToken = extractScopeToken(childGoal)
+      const leftGoal = allGoals.get(leftParentId)
+      const rightGoal = allGoals.get(rightParentId)
+
+      if (childScopeToken) {
+        const leftScopeMatches = extractScopeToken(leftGoal) === childScopeToken
+        const rightScopeMatches = extractScopeToken(rightGoal) === childScopeToken
+        if (leftScopeMatches !== rightScopeMatches) {
+          return leftScopeMatches ? -1 : 1
+        }
+      }
+
       const branchCompare = compareRootBranchInfo(
         rootBranchInfoByGoalId.get(leftParentId),
         rootBranchInfoByGoalId.get(rightParentId),
       )
       if (branchCompare !== 0) return branchCompare
 
-      const leftGoal = allGoals.get(leftParentId)
-      const rightGoal = allGoals.get(rightParentId)
       const leftTreeOrder = leftGoal ? getStructuralTreeOrder(leftGoal) : Number.MAX_SAFE_INTEGER
       const rightTreeOrder = rightGoal ? getStructuralTreeOrder(rightGoal) : Number.MAX_SAFE_INTEGER
       if (leftTreeOrder !== rightTreeOrder) return leftTreeOrder - rightTreeOrder

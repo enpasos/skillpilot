@@ -31,7 +31,7 @@ const getProgramUnitPhaseTokens = (unit: ProgramUnit): string[] => {
   if (shortLabel) tokens.add(shortLabel)
   if (label) tokens.add(label)
 
-  const yearMatch = /jahrgang\s+(\d{1,2})/.exec(label)
+  const yearMatch = /jahrgang(?:sstufe)?\s+(\d{1,2})/.exec(label)
   if (yearMatch) {
     tokens.add(`j${yearMatch[1]}`)
   }
