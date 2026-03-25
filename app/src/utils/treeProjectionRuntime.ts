@@ -245,6 +245,12 @@ const buildSingleOccurrenceLearnerChildrenMap = (
       const leftGoal = allGoals.get(leftParentId)
       const rightGoal = allGoals.get(rightParentId)
 
+      const leftIsCompositionStructure = leftGoal ? isCompositionStructureNode(leftGoal) : false
+      const rightIsCompositionStructure = rightGoal ? isCompositionStructureNode(rightGoal) : false
+      if (leftIsCompositionStructure !== rightIsCompositionStructure) {
+        return leftIsCompositionStructure ? -1 : 1
+      }
+
       if (childScopeToken) {
         const leftScopeMatches = extractScopeToken(leftGoal) === childScopeToken
         const rightScopeMatches = extractScopeToken(rightGoal) === childScopeToken
