@@ -11,11 +11,11 @@ This file is generated from:
 
 - Tracked states: `16`
 - Canonical source coverage present: `5/16`
-- State-weighted rollout score: `30.9%`
+- State-weighted rollout score: `32.2%`
 - States with active snapshots (`P2+`): `7/16`
 - States with structural anchors mapped (`P3+`): `7/16`
 - States with reviewed corridor (`P4+`): `7/16`
-- States with broad coverage (`P5+`): `2/16`
+- States with broad coverage (`P5+`): `3/16`
 - Priority `active`: `5`
 - Priority `next_wave`: `2`
 - Priority `backlog`: `9`
@@ -50,9 +50,9 @@ This file is generated from:
 | --- | --- | ---: | --- | ---: | --- | --- |
 | `DE-BY` Bayern | `P5` Broad state coverage | `85%` | `yes` | `267` | `archived_inputs` | `active` |
 | `DE-HE` Hessen | `P5` Broad state coverage | `85%` | `yes` | `484` | `snapshots_active` | `active` |
-| `DE-BW` Baden-Wuerttemberg | `P4` First corridor reviewed | `65%` | `yes` | `82` | `snapshots_active` | `active` |
+| `DE-NW` Nordrhein-Westfalen | `P5` Broad state coverage | `85%` | `yes` | `42` | `snapshots_active` | `active` |
+| `DE-BW` Baden-Wuerttemberg | `P4` First corridor reviewed | `65%` | `yes` | `127` | `snapshots_active` | `active` |
 | `DE-NI` Niedersachsen | `P4` First corridor reviewed | `65%` | `yes` | `149` | `snapshots_active` | `active` |
-| `DE-NW` Nordrhein-Westfalen | `P4` First corridor reviewed | `65%` | `yes` | `42` | `snapshots_active` | `active` |
 | `DE-BB` Brandenburg | `P4` First corridor reviewed | `65%` | `no` | `76` | `snapshots_active` | `next_wave` |
 | `DE-BE` Berlin | `P4` First corridor reviewed | `65%` | `no` | `64` | `snapshots_active` | `next_wave` |
 | `DE-HB` Bremen | `P0` Placeholder | `0%` | `no` | `0` | `placeholder_only` | `backlog` |
@@ -69,9 +69,9 @@ This file is generated from:
 
 - `DE-BY` (`P5`, `active`): Use Bavaria as the second broad comparison lane and keep gap-closing work corridor-specific.
 - `DE-HE` (`P5`, `active`): Keep Hessen as the stable reference baseline while other states broaden.
-- `DE-BW` (`P4`, `active`): Widen the BW lower-secondary lane further across the remaining Klassen-9/10 function corridor around polynomial functions and differential entry while the Kursstufe pilot snapshot remains fully reviewed.
+- `DE-NW` (`P5`, `active`): Broaden from corridor coverage toward broad state coverage.
+- `DE-BW` (`P4`, `active`): Close the remaining BW lower-secondary row-granularity residue in Klassen 9/10 around derivative / coordinate geometry and the still-open fine-grained debt outside the already active power, exponential, geometry, and stochastics strips while the Kursstufe pilot snapshot remains fully reviewed.
 - `DE-NI` (`P4`, `active`): Move the Niedersachsen widening to the next Sek-I geometry / algebra corridor unless a separate Berufliches-Gymnasium lane is opened intentionally, because the first shared general-Gymnasium upper-secondary pilot surface is now exhausted.
-- `DE-NW` (`P4`, `active`): Broaden from corridor coverage toward broad state coverage.
 - `DE-BB` (`P4`, `next_wave`): Widen the Brandenburg lower-secondary lane beyond the first functions corridor while the shared BE/BB overlap stays tight.
 - `DE-BE` (`P4`, `next_wave`): Widen the Berlin upper-secondary lane from the active Q4 distribution-and-binomial corridor toward the first Q4 inference, tests, and normal-approximation follow-on corridor.
 
@@ -79,9 +79,9 @@ This file is generated from:
 
 - `DE-BY`: Use Bavaria as the second broad comparison lane and keep gap-closing work corridor-specific.
 - `DE-HE`: Keep Hessen as the stable reference baseline while other states broaden.
-- `DE-BW`: Widen the BW lower-secondary lane further across the remaining Klassen-9/10 function corridor around polynomial functions and differential entry while the Kursstufe pilot snapshot remains fully reviewed.
-- `DE-NI`: Move the Niedersachsen widening to the next Sek-I geometry / algebra corridor unless a separate Berufliches-Gymnasium lane is opened intentionally, because the first shared general-Gymnasium upper-secondary pilot surface is now exhausted.
 - `DE-NW`: Broaden from corridor coverage toward broad state coverage.
+- `DE-BW`: Close the remaining BW lower-secondary row-granularity residue in Klassen 9/10 around derivative / coordinate geometry and the still-open fine-grained debt outside the already active power, exponential, geometry, and stochastics strips while the Kursstufe pilot snapshot remains fully reviewed.
+- `DE-NI`: Move the Niedersachsen widening to the next Sek-I geometry / algebra corridor unless a separate Berufliches-Gymnasium lane is opened intentionally, because the first shared general-Gymnasium upper-secondary pilot surface is now exhausted.
 - `DE-BB`: Widen the Brandenburg lower-secondary lane beyond the first functions corridor while the shared BE/BB overlap stays tight.
 - `DE-BE`: Widen the Berlin upper-secondary lane from the active Q4 distribution-and-binomial corridor toward the first Q4 inference, tests, and normal-approximation follow-on corridor.
 - `DE-HB`: Archive the official math source bundle and create the first state mapping lane scaffold.

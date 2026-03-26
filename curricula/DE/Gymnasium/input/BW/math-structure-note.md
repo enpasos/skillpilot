@@ -19,12 +19,17 @@ Initial source snapshots:
 Current import boundary:
 
 - the archived Baden-Wuerttemberg source snapshots are intentionally partial pilot subsets, not full subject imports
-- the first active source snapshots currently cover the lower-secondary shared functions corridor, the first upper-secondary analysis corridor, the adjacent upper-secondary calculation-rules follow-on, the first upper-secondary stochastics follow-on, the first upper-secondary geometry follow-on, the first upper-secondary Gauß follow-on, and the remaining upper-secondary integral-application follow-on from `Messen`
+- the first active source snapshots currently cover the lower-secondary Klassen-5/6 foundation strip, the shared lower-secondary functions corridor, the first broad Klassen-7/8 widening across algebra, geometry, and data, the first Klassen-9/10 algebra / function follow-on, the first broad late-Sek-I geometry follow-on on trigonometry, circle figures, and solids, and the first broad late-Sek-I stochastics follow-on on conditional probabilities, random variables, and binomial distributions, as well as the first upper-secondary analysis corridor, the adjacent upper-secondary calculation-rules follow-on, the first upper-secondary stochastics follow-on, the first upper-secondary geometry follow-on, the first upper-secondary Gauß follow-on, and the remaining upper-secondary integral-application follow-on from `Messen`
 - the imported Sek-I slice currently covers:
   - the curriculum-wide orientation layer from `1.1 Bildungswert des Faches Mathematik`
-  - `3.1.4 Leitidee Funktionaler Zusammenhang` in `Klassen 5/6`
+  - the full `Klassen 5/6` strip across `3.1.1 Leitidee Zahl - Variable - Operation`, `3.1.2 Leitidee Messen`, `3.1.3 Leitidee Raum und Form`, `3.1.4 Leitidee Funktionaler Zusammenhang`, and `3.1.5 Leitidee Daten und Zufall`
   - `3.2.4 Leitidee Funktionaler Zusammenhang` in `Klassen 7/8`
-  - the first `3.2.1 / 3.3.1 / 3.3.4` follow-on around variable terms, powers, exponentials, and symmetry in `Klassen 9/10`
+  - the first broad `3.2.1` widening in `Klassen 7/8` around percent and interest work, formula rearrangement, roots, quadratic equations, lineare Gleichungssysteme, and graphically interpreted equations and inequalities
+  - the full `3.2.3 Leitidee Raum und Form` in `Klassen 7/8`
+  - the full `3.2.5 Leitidee Daten und Zufall` in `Klassen 7/8`
+  - the first `3.3.1 / 3.3.4` follow-on around variable terms, powers, exponentials, and symmetry in `Klassen 9/10`
+  - the first broad `3.3.2 / 3.3.3` follow-on around Trigonometrie, Kreisfiguren, Schraegbilder, Netze sowie Flaechen- und Volumenideen in `Klassen 9/10`
+  - the first broad `3.3.5` follow-on around bedingten Wahrscheinlichkeiten, Zufallsgroessen, Bernoulli-Ketten, Binomialverteilungen, Histogrammen, Erwartungswerten und Standardabweichungen in `Klassen 9/10`
 - the imported Kursstufe / Sek-II slice currently covers:
   - the shared orientation layer from `1.4 Basisfach und Leistungsfach in der Oberstufe`
   - `3.5.1 Leitidee Zahl - Variable - Operation` in `Basisfach`
@@ -57,6 +62,30 @@ Operational interpretation:
   - `1540732d-b74e-4762-b474-692fd45f3247 -> 66077296-a8f8-4645-938b-7c3424cb2f14` for the BW power/root-function and parameter-effects row
   - `9f559636-9383-4ffe-87e6-7dac403ba27e -> d8c9eb57-1614-4c1d-829a-618134def352` for the BW symmetry / end-behaviour row
   - `ac0cd912-4b08-4e94-83e5-92d6ce122c05 -> 42e19186-6769-41ac-a7bf-ab39bdb50661` for the BW exponential-growth / logarithm row in class 10
+- the next BW Sek-I closure cut now also imports the remaining `Klassen 5/6` foundation strip around numbers, measures, geometry, and data:
+  - `3.1.1 Leitidee Zahl - Variable - Operation` now bridges shared canonical leaves for place-value understanding, basic operations, rounding, divisibility, fractions / decimal numbers, bracket terms, and first equations
+  - `3.1.2 Leitidee Messen` now bridges shared canonical leaves for units and quantities, quantity calculation, perimeter / area distinction, plane areas, and cuboid surface / volume work
+  - `3.1.3 Leitidee Raum und Form` now bridges shared canonical leaves for spatial relations, angle work, polygons, coordinate-system drawing work, and symmetry / angle reasoning
+  - `3.1.5 Leitidee Daten und Zufall` now bridges shared canonical leaves for frequencies, arithmetic mean, and critical diagram reading
+- the next BW Sek-I widening step now also closes the broad middle `Klassen 7/8` band outside the already active functions strip:
+  - `3.2.1 Leitidee Zahl - Variable - Operation` now additionally bridges shared canonical leaves for percent and interest work, formula rearrangement, roots and real numbers, quadratic equations, linear systems, and graphically interpreted equations and inequalities
+  - `3.2.3 Leitidee Raum und Form` now bridges shared canonical leaves for angle reasoning, congruence / triangle constructions, and similarity / intercept-theorem work
+  - `3.2.5 Leitidee Daten und Zufall` now bridges shared canonical leaves for quartiles / boxplots and Laplace-based probability work
+- the next BW Sek-I widening step now also opens the broad late-Sek-I geometry strip in `Klassen 9/10`:
+  - `8bb23e8e-0bdb-48d5-8036-04871cbb8f05 -> 71a483ba-9680-4654-bb5e-5ab5427f0919` for the BW trigonometry row on Sinus, Kosinus, and Tangens in planar figures
+  - `7f0c399e-eed6-468d-bc31-d08624e5cb69 -> 415bd48b-8a76-4d4f-bfdd-d085573e7ac3` for the BW circle-figure row on Bogenmass, Kreisbogen, and Kreisausschnitt
+  - `1c95ad04-87d5-45c7-ba38-6945e943fb2a -> 74d29d0c-80b3-4d46-a5f5-3c2f609e8483` for Schraegbilder and Netze of prisms, pyramids, cylinders, and cones
+  - `f122ce22-a84c-406b-bbd0-5435154510cb -> a4f6f5e4-f790-48d1-8b49-c9dc048c9d83` for lateral-surface work on cones and cylinders
+  - `8e08950a-bc78-4dc2-947d-7aa575076655 -> 9d497a0c-f48d-4a90-8ec8-aeb89ca6d0c5` for volume ideas on pyramids, cones, and oblique solids
+  - `7c5598d1-7282-4922-a9ae-2c3f552e8d99 -> 1ea06c0c-5c60-45cd-8f31-638de98820b4` for sphere-formula interpretation and application
+- the next BW Sek-I widening step now also opens the broad late-Sek-I stochastics strip in `Klassen 9/10`:
+  - `de7051a6-6401-4c04-b588-f7f2f69a8478 -> 508292f2-671b-4fd3-acbf-53d705e44693` for Vierfeldertafeln and bedingte Wahrscheinlichkeiten
+  - `25bc86dc-6329-40a0-9c1d-ec846d6fd929 -> dabff49b-d40a-4c81-a584-21408b2d4219` for stochastic independence in four-field and tree representations
+  - `abe38788-1e88-4f17-bb31-e4564ebc285f -> da95ab35-bac2-54f2-b38f-8b612cde8b54` for random variables and probability distributions in context
+  - `de3016f9-490c-45e1-b9a7-0d3b37a373b4 -> 34735a1a-c9d9-5378-805e-b48f9c2d947f` for Bernoulli experiments and Bernoulli chains
+  - `720a367c-0e5e-47cd-b4ec-808e07f765f4 -> 837b015a-c2a2-5f31-831c-ae16ee2ee6ce` for probabilities in Bernoulli chains
+  - `1d3affbe-5453-4188-9a61-28446b64da17 -> 42d300e3-e982-5889-98d7-fc297f10eff1` for parameter effects in binomial histograms
+  - `8ba195f9-76ba-4e50-8c87-b0fb9d5ec7fa -> 7d41b805-0fd8-5ac3-980d-79112a27c1b4` for expectation value and standard deviation of binomial random variables
 - the first reviewed Baden-Wuerttemberg upper-secondary analysis mapping pass is now active on twelve rows:
   - the exact course-stage motivation anchor `f84004f9-0987-40f4-88dd-830c039b7bf6 -> 71cec9fb-3751-4d61-8b34-c5adbbf6e5f2`
   - the retained-split Basisfach e-function-properties bridge `e0769810-ba73-4a52-8e9c-660d1fb9d6e6 -> 4047af71-de53-5dc3-80c6-a7c78fb4bfe4`
@@ -179,5 +208,6 @@ Operational interpretation:
   - within the Leistungsfach-Vertiefung, BW now also surfaces `Mittelwerte und Rotationskoerper`
   - within the shared geometry block, BW now also reaches the retain-split application semantics for reflections, motions, and area/volume work from `3.5.3` / `3.4.3`
 - the active BW learner-facing Sek-I views now expose the reviewed lower-secondary pilot corridor directly instead of surfacing upper-secondary prerequisite anchors as pseudo year buckets
-- inside that Sek-I view, `Klassen 5/6: einfache funktionale Zusammenhänge` now carries explicit `Jahrgangsstufe 5` and `Jahrgangsstufe 6` buckets for the reviewed Dreisatz-, Koordinatensystem-, and Zuordnungsanker
-- inside `Klassen 7/8: funktionale Darstellungen und lineare Funktionen`, `Jahrgangsstufe 7` now surfaces the retained BW representation split as the learner-facing structure label `Darstellungen und Darstellungswechsel`, while `Jahrgangsstufe 8` carries the reviewed linear-functions strip
+- inside that Sek-I view, `Klassen 5/6` now appears as a broad learner-facing foundation block with explicit substructure for `Zahl - Variable - Operation`, `Messen`, `Raum und Form`, `Funktionaler Zusammenhang`, and `Daten und Zufall`
+- inside that Sek-I view, `Klassen 7/8` now appears as a broad learner-facing middle block with explicit substructure for `Algebra und Gleichungen`, `Geometrie`, `Funktionaler Zusammenhang`, and `Daten und Zufall`
+- inside that Sek-I view, `Klassen 9/10` now appears as a broader late-Sek-I block across Daten und Zufall, Geometrie, Trigonometrie, and Funktionsuntersuchungen

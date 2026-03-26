@@ -8,8 +8,8 @@
   "frameworkId": "bw-bp2016-gym-math",
   "title": "Mathematik Sekundarstufe I (Baden-Wuerttemberg, Pilot-Quellsnapshot)",
   "titleEn": "Mathematics Secondary Level I (Baden-Wuerttemberg, Pilot Source Snapshot)",
-  "description": "Erster archivierter Baden-Wuerttemberg-Quellsnapshot fuer den Mathematik-Pilotkorridor der Sekundarstufe I. Der Snapshot umfasst den ersten gemeinsamen Funktionszug aus der Leitidee Funktionaler Zusammenhang in den Klassen 5/6 und 7/8 sowie den ersten algebraisch-funktionalen 9/10-Anschluss zu Potenzen, Exponentialfunktionen und Symmetrie des Bildungsplans Gymnasium.",
-  "descriptionEn": "First archived Baden-Wuerttemberg source snapshot for the lower-secondary mathematics pilot corridor. The snapshot covers the first shared functions corridor from the functional-relations strand in grades 5/6 and 7/8 as well as the first algebraic-functional grades-9/10 follow-on on powers, exponential functions, and symmetry from the Gymnasium curriculum.",
+  "description": "Erster archivierter Baden-Wuerttemberg-Quellsnapshot fuer den Mathematik-Pilotkorridor der Sekundarstufe I. Der Snapshot umfasst jetzt den vollstaendigen Klassen-5/6-Grundstreifen aus Zahl - Variable - Operation, Messen, Raum und Form sowie Daten und Zufall, den ersten gemeinsamen Funktionszug aus der Leitidee Funktionaler Zusammenhang in den Klassen 5/6 und 7/8, die erste breite Klassen-7/8-Verbreiterung zu Algebra, Geometrie sowie Daten und Zufall, den ersten algebraisch-funktionalen 9/10-Anschluss zu Potenzen, Exponentialfunktionen und Symmetrie, den ersten breiten spaeten-Sek-I-Geometriekorridor zu Trigonometrie, Kreisfiguren und Koerpern sowie nun auch den ersten breiten spaeten-Sek-I-Stochastikkorridor zu bedingten Wahrscheinlichkeiten, Zufallsgroessen und Binomialverteilungen des Bildungsplans Gymnasium.",
+  "descriptionEn": "First archived Baden-Wuerttemberg source snapshot for the lower-secondary mathematics pilot corridor. The snapshot now covers the full grades-5/6 foundation strip across number and operations, measurement, geometry, and data, the first shared functions corridor from the functional-relations strand in grades 5/6 and 7/8, the first broad grades-7/8 widening across algebra, geometry, and data, the first algebraic-functional grades-9/10 follow-on on powers, exponential functions, and symmetry, the first broad late-lower-secondary geometry corridor on trigonometry, circle figures, and solids, and now also the first broad late-lower-secondary stochastics corridor on conditional probabilities, random variables, and binomial distributions from the Gymnasium curriculum.",
   "compatibilityOnly": true,
   "legacyHiddenByDefault": true,
   "goals": [
@@ -17,23 +17,32 @@
       "id": "1bec2c6e-b631-433f-b25d-7ea4db6ef68c",
       "title": "Mathematik Sekundarstufe I",
       "titleEn": "Mathematics Secondary Level I",
-      "description": "Pilot-Subset der baden-wuerttembergischen Mathematik-Kompetenzen der Sekundarstufe I mit Fokus auf dem ersten gemeinsamen Funktionskorridor und dem daran anschliessenden 9/10-Funktionszug.",
-      "descriptionEn": "Pilot subset of Baden-Wuerttemberg lower-secondary mathematics competencies with a focus on the first shared functions corridor and the attached grades-9/10 functions follow-on.",
-      "weight": 17,
+      "description": "Pilot-Subset der baden-wuerttembergischen Mathematik-Kompetenzen der Sekundarstufe I mit Fokus auf dem breiten Klassen-5/6-Grundstreifen, dem ersten gemeinsamen Funktionskorridor, der ersten breiten Klassen-7/8-Verbreiterung zu Algebra, Geometrie sowie Daten und Zufall, dem daran anschliessenden 9/10-Funktionszug, dem breiten spaeten-Sek-I-Geometriekorridor zu Trigonometrie, Kreisfiguren und Koerpern sowie dem ersten spaeten-Sek-I-Stochastikkorridor zu bedingten Wahrscheinlichkeiten, Zufallsgroessen und Binomialverteilungen.",
+      "descriptionEn": "Pilot subset of Baden-Wuerttemberg lower-secondary mathematics competencies with a focus on the broad grades-5/6 foundation strip, the first shared functions corridor, the first broad grades-7/8 widening across algebra, geometry, and data, the attached grades-9/10 functions follow-on, the broad late-lower-secondary geometry corridor on trigonometry, circle figures, and solids, and the first late-lower-secondary stochastics corridor on conditional probabilities, random variables, and binomial distributions.",
+      "weight": 62,
       "tags": [
         "Sek1",
         "PilotSubset",
-        "Funktionen"
+        "Zahl",
+        "Messen",
+        "Geometrie",
+        "Daten",
+        "Funktionen",
+        "Algebra"
       ],
       "contains": [
         "572f46ab-e5a7-471d-955e-a07aa7ae6a72",
+        "b92035f8-8791-4c99-a878-9f93a87e85f7",
         "fda87c17-1522-4764-b3ac-743c5331c03d",
-        "ad1ed851-c2bf-4350-82de-d4664eade277"
+        "5b8ce056-99af-4bc1-87bb-481a09bef876",
+        "ad1ed851-c2bf-4350-82de-d4664eade277",
+        "5ff24726-957b-4bd1-95ac-c05f2cd7fa5a",
+        "91142067-0be0-4bd3-951a-0610f67207d9"
       ],
       "requires": [
         "572f46ab-e5a7-471d-955e-a07aa7ae6a72"
       ],
-      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 1.1 sowie 3.1.4, 3.2.1, 3.3.1 und 3.3.4, S. 3-4, 22, 27, 31 und 35-36.",
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 1.1 sowie 3.1.1 bis 3.1.5, 3.2.1, 3.2.3, 3.2.4, 3.2.5, 3.3.1, 3.3.2, 3.3.3, 3.3.4 und 3.3.5, S. 3-4, 17-23, 24-38.",
       "dimensionTags": {
         "framework": "bw-bp2016-gym-math",
         "demandLevel": "AB1",
@@ -66,6 +75,752 @@
         "guidingIdeas": [],
         "phase": "GLOBAL",
         "area": "Orientierung"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "b92035f8-8791-4c99-a878-9f93a87e85f7",
+      "title": "Klassen 5/6: Zahl, Messen, Raum und Daten",
+      "titleEn": "Grades 5/6: Number, Measurement, Geometry, and Data",
+      "description": "Breiter Baden-Wuerttemberg-Cluster fuer den ersten vollstaendig archivierten 5/6-Grundstreifen zu Zahl - Variable - Operation, Messen, Raum und Form sowie Daten und Zufall.",
+      "descriptionEn": "Broad Baden-Wuerttemberg cluster for the first fully archived grades-5/6 foundation strip across number and operations, measurement, geometry, and data.",
+      "weight": 21,
+      "tags": [
+        "Sek1",
+        "JG5_6",
+        "PilotSubset",
+        "Grundlagen"
+      ],
+      "contains": [
+        "c2cb2ba0-f7c0-4a2c-b45b-2b99da1d85ab",
+        "583d3503-4a0b-48da-815c-d00bc0152fff",
+        "eab578ea-8d2f-4a34-89ac-2a409cdf8226",
+        "78c4ce93-d8bb-4a8b-901f-c9906485f60f"
+      ],
+      "requires": [
+        "572f46ab-e5a7-471d-955e-a07aa7ae6a72"
+      ],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.1.1 bis 3.1.3 sowie 3.1.5, S. 17-23.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG5_6",
+        "area": "Grundlagen"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "c2cb2ba0-f7c0-4a2c-b45b-2b99da1d85ab",
+      "title": "Leitidee Zahl - Variable - Operation (Klassen 5/6)",
+      "titleEn": "Strand Number, Variable, and Operations (Grades 5/6)",
+      "description": "Grundstreifen fuer tragfaehige Zahlvorstellungen, sichere Rechenroutinen, Zahlterme und erste Aufgaben mit Unbekannten in den Klassen 5/6.",
+      "descriptionEn": "Foundation strip for robust number concepts, secure calculation routines, numeric expressions, and first tasks with unknowns in grades 5/6.",
+      "weight": 8,
+      "tags": [
+        "Sek1",
+        "JG5_6",
+        "Zahl"
+      ],
+      "contains": [
+        "3ad03fd2-d542-4e0b-9c7a-6ca30dd7afad",
+        "95fd94a8-d86e-42ff-b2b9-4b7fdffe5fc7",
+        "f12f1550-76ef-43e9-b8de-ff3949445af1",
+        "102da9d0-c2d9-476d-9529-2d88d23b0d9b",
+        "6fe045f9-edf6-4c4c-8962-2c47de192a15",
+        "53620c4f-af82-4ac6-bc89-529bec03ad26",
+        "a9d9b8d6-5dd3-47a8-b280-3292995cc576",
+        "0fac3a1d-1686-4173-9d1f-d96ea527007e"
+      ],
+      "requires": [],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.1.1 Leitidee Zahl - Variable - Operation, S. 17-18.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG5_6",
+        "area": "Zahl - Variable - Operation"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "3ad03fd2-d542-4e0b-9c7a-6ca30dd7afad",
+      "title": "Stellenwertsysteme erklaeren und grosse natuerliche Zahlen sicher lesen",
+      "titleEn": "Explain place-value systems and read large natural numbers reliably",
+      "description": "Die Schuelerinnen und Schueler erklaeren das dezimale Stellenwertsystem, vergleichen es mit einem anderen Zahlensystem und lesen grosse natuerliche Zahlen sicher.",
+      "descriptionEn": "Students explain the decimal place-value system, compare it with another number system, and reliably read large natural numbers.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "JG5_6",
+        "Zahl",
+        "Stellenwert"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.1.1 Leitidee Zahl - Variable - Operation (1)-(2), S. 17.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG5_6",
+        "area": "Zahl - Variable - Operation"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "95fd94a8-d86e-42ff-b2b9-4b7fdffe5fc7",
+      "title": "Natuerliche und ganze Zahlen addieren und subtrahieren",
+      "titleEn": "Add and subtract natural and whole numbers",
+      "description": "Die Schuelerinnen und Schueler addieren und subtrahieren natuerliche und ganze Zahlen sicher und deuten die Ergebnisse in einfachen Realsituationen.",
+      "descriptionEn": "Students add and subtract natural and whole numbers reliably and interpret the results in simple real-world situations.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "JG5_6",
+        "Zahl",
+        "Rechnen"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.1.1 Leitidee Zahl - Variable - Operation (4), (11)-(12), S. 17-18.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG5_6",
+        "area": "Zahl - Variable - Operation"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "f12f1550-76ef-43e9-b8de-ff3949445af1",
+      "title": "Natuerliche Zahlen multiplizieren und dividieren",
+      "titleEn": "Multiply and divide natural numbers",
+      "description": "Die Schuelerinnen und Schueler multiplizieren und dividieren natuerliche Zahlen sicher, nutzen schriftliche Verfahren und ueberpruefen Ergebnisse mit Ueberschlaegen oder Umkehroperationen.",
+      "descriptionEn": "Students multiply and divide natural numbers reliably, use written procedures, and check results using estimates or inverse operations.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "JG5_6",
+        "Zahl",
+        "Rechnen"
+      ],
+      "contains": [],
+      "requires": [
+        "95fd94a8-d86e-42ff-b2b9-4b7fdffe5fc7"
+      ],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.1.1 Leitidee Zahl - Variable - Operation (11)-(13), (21), S. 17-18.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG5_6",
+        "area": "Zahl - Variable - Operation"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "102da9d0-c2d9-476d-9529-2d88d23b0d9b",
+      "title": "Natuerliche Zahlen sinnvoll runden und gerundete Angaben deuten",
+      "titleEn": "Round natural numbers meaningfully and interpret rounded values",
+      "description": "Die Schuelerinnen und Schueler runden Zahlenwerte situationsgerecht und deuten gerundete Angaben mit einer sinnvollen Genauigkeit.",
+      "descriptionEn": "Students round numerical values appropriately for the situation and interpret rounded values with sensible precision.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "JG5_6",
+        "Zahl",
+        "Runden"
+      ],
+      "contains": [],
+      "requires": [
+        "3ad03fd2-d542-4e0b-9c7a-6ca30dd7afad"
+      ],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.1.1 Leitidee Zahl - Variable - Operation (18)-(19), S. 18.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG5_6",
+        "area": "Zahl - Variable - Operation"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "6fe045f9-edf6-4c4c-8962-2c47de192a15",
+      "title": "Teilbarkeitsregeln anwenden und Primfaktorzerlegungen bestimmen",
+      "titleEn": "Apply divisibility rules and determine prime factorizations",
+      "description": "Die Schuelerinnen und Schueler wenden Teilbarkeitsregeln an und bestimmen einfache Primfaktorzerlegungen natuerlicher Zahlen.",
+      "descriptionEn": "Students apply divisibility rules and determine simple prime factorizations of natural numbers.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "JG5_6",
+        "Zahl",
+        "Teilbarkeit"
+      ],
+      "contains": [],
+      "requires": [
+        "f12f1550-76ef-43e9-b8de-ff3949445af1"
+      ],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.1.1 Leitidee Zahl - Variable - Operation (3), S. 17.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG5_6",
+        "area": "Zahl - Variable - Operation"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "53620c4f-af82-4ac6-bc89-529bec03ad26",
+      "title": "Brueche, Dezimalzahlen und Prozentangaben ineinander umwandeln",
+      "titleEn": "Convert fractions, decimal numbers, and percentages into one another",
+      "description": "Die Schuelerinnen und Schueler wandeln Brueche, Dezimalzahlen und Prozentangaben situationsgerecht ineinander um und begruenden geeignete Darstellungswechsel.",
+      "descriptionEn": "Students convert fractions, decimal numbers, and percentages into one another appropriately for the situation and justify suitable representation changes.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "JG5_6",
+        "Zahl",
+        "Brueche"
+      ],
+      "contains": [],
+      "requires": [
+        "102da9d0-c2d9-476d-9529-2d88d23b0d9b",
+        "6fe045f9-edf6-4c4c-8962-2c47de192a15"
+      ],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.1.1 Leitidee Zahl - Variable - Operation (9)-(10), (15), S. 17-18.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG5_6",
+        "area": "Zahl - Variable - Operation"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "a9d9b8d6-5dd3-47a8-b280-3292995cc576",
+      "title": "Zahlterme mit Klammern berechnen und Rechenvorteile nutzen",
+      "titleEn": "Calculate numerical expressions with brackets and use calculation advantages",
+      "description": "Die Schuelerinnen und Schueler beschreiben Zahlterme fachsprachlich, berechnen Zahlterme mit Klammern und nutzen Rechengesetze fuer Rechenvorteile.",
+      "descriptionEn": "Students describe numerical expressions using technical language, calculate expressions with brackets, and use arithmetic laws for calculation advantages.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "JG5_6",
+        "Zahl",
+        "Terme"
+      ],
+      "contains": [],
+      "requires": [
+        "95fd94a8-d86e-42ff-b2b9-4b7fdffe5fc7",
+        "f12f1550-76ef-43e9-b8de-ff3949445af1"
+      ],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.1.1 Leitidee Zahl - Variable - Operation (22)-(26), S. 18.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG5_6",
+        "area": "Zahl - Variable - Operation"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "0fac3a1d-1686-4173-9d1f-d96ea527007e",
+      "title": "Einfache Aufgaben mit Unbekannten durch Probieren oder Rueckwaertsrechnen loesen",
+      "titleEn": "Solve simple tasks with unknowns by trial or backward reasoning",
+      "description": "Die Schuelerinnen und Schueler loesen einfache Aufgaben mit Unbekannten durch Ausprobieren, Rueckwaertsrechnen oder einfache Umkehraufgaben.",
+      "descriptionEn": "Students solve simple tasks with unknowns by trying values, backward reasoning, or simple inverse operations.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "JG5_6",
+        "Zahl",
+        "Unbekannte"
+      ],
+      "contains": [],
+      "requires": [
+        "95fd94a8-d86e-42ff-b2b9-4b7fdffe5fc7",
+        "a9d9b8d6-5dd3-47a8-b280-3292995cc576"
+      ],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.1.1 Leitidee Zahl - Variable - Operation (27), S. 18.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG5_6",
+        "area": "Zahl - Variable - Operation"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "583d3503-4a0b-48da-815c-d00bc0152fff",
+      "title": "Leitidee Messen (Klassen 5/6)",
+      "titleEn": "Strand Measurement (Grades 5/6)",
+      "description": "Grundstreifen fuer Messvorstellungen, Einheiten, Flaechen- und Volumenideen sowie das Rechnen mit Groessen in den Klassen 5/6.",
+      "descriptionEn": "Foundation strip for measurement concepts, units, area and volume ideas, and calculation with quantities in grades 5/6.",
+      "weight": 5,
+      "tags": [
+        "Sek1",
+        "JG5_6",
+        "Messen"
+      ],
+      "contains": [
+        "bd59aec0-5af5-49b2-bcce-6ebe98e25c86",
+        "efd86d0c-ad09-4917-84e2-6db13e65aed5",
+        "453cd098-302f-44b0-bbcd-ce6e51b39af8",
+        "978b36e1-c6c3-465f-b905-3d42b4a0af5d",
+        "8af615a2-df8b-4446-af06-b289ba97a111"
+      ],
+      "requires": [],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.1.2 Leitidee Messen, S. 19-20.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG5_6",
+        "area": "Messen"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "bd59aec0-5af5-49b2-bcce-6ebe98e25c86",
+      "title": "Groessen messen, Einheiten verwenden und umwandeln",
+      "titleEn": "Measure quantities, use units, and convert between them",
+      "description": "Die Schuelerinnen und Schueler erlaeutern Messvorgaenge, messen alltagsnahe Groessen, verwenden passende Einheiten und wandeln diese sicher um.",
+      "descriptionEn": "Students explain measurement processes, measure everyday quantities, use appropriate units, and convert them reliably.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "JG5_6",
+        "Messen",
+        "Einheiten"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.1.2 Leitidee Messen (1)-(6), S. 19.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG5_6",
+        "area": "Messen"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "efd86d0c-ad09-4917-84e2-6db13e65aed5",
+      "title": "Mit Groessen rechnen und Winkelweiten messen",
+      "titleEn": "Calculate with quantities and measure angles",
+      "description": "Die Schuelerinnen und Schueler rechnen mit Groessenangaben und messen oder schaetzen Winkelweiten fachgerecht.",
+      "descriptionEn": "Students calculate with quantified values and measure or estimate angles appropriately.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "JG5_6",
+        "Messen",
+        "Winkel"
+      ],
+      "contains": [],
+      "requires": [
+        "bd59aec0-5af5-49b2-bcce-6ebe98e25c86"
+      ],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.1.2 Leitidee Messen (7)-(8), S. 19.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG5_6",
+        "area": "Messen"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "453cd098-302f-44b0-bbcd-ce6e51b39af8",
+      "title": "Umfang und Flaecheninhalt unterscheiden und in Figuren anwenden",
+      "titleEn": "Distinguish perimeter and area and apply them to figures",
+      "description": "Die Schuelerinnen und Schueler unterscheiden Umfang und Flaecheninhalt sicher, bestimmen Umfaenge ebener Figuren und deuten die Ergebnisse im Kontext.",
+      "descriptionEn": "Students reliably distinguish perimeter and area, determine perimeters of plane figures, and interpret the results in context.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "JG5_6",
+        "Messen",
+        "Umfang"
+      ],
+      "contains": [],
+      "requires": [
+        "efd86d0c-ad09-4917-84e2-6db13e65aed5"
+      ],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.1.2 Leitidee Messen (9)-(10), S. 19-20.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG5_6",
+        "area": "Messen"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "978b36e1-c6c3-465f-b905-3d42b4a0af5d",
+      "title": "Flaecheninhalte ebener Figuren berechnen und anschaulich begruenden",
+      "titleEn": "Calculate areas of plane figures and justify them intuitively",
+      "description": "Die Schuelerinnen und Schueler erklaeren einfache Flaechenformeln anschaulich und berechnen Flaecheninhalte ebener und zusammengesetzter Figuren.",
+      "descriptionEn": "Students explain simple area formulas intuitively and calculate areas of plane and composite figures.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "JG5_6",
+        "Messen",
+        "Flaechen"
+      ],
+      "contains": [],
+      "requires": [
+        "bd59aec0-5af5-49b2-bcce-6ebe98e25c86",
+        "453cd098-302f-44b0-bbcd-ce6e51b39af8"
+      ],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.1.2 Leitidee Messen (11)-(13), S. 20.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG5_6",
+        "area": "Messen"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "8af615a2-df8b-4446-af06-b289ba97a111",
+      "title": "Volumen und Oberflaechen von Quadern und zusammengesetzten Koerpern bestimmen",
+      "titleEn": "Determine volumes and surfaces of cuboids and composite solids",
+      "description": "Die Schuelerinnen und Schueler erklaeren die Volumenformel des Quaders aus Messvorstellungen und bestimmen Volumen und Oberflaechen von Quadern sowie zusammengesetzten Koerpern.",
+      "descriptionEn": "Students explain the cuboid volume formula based on measurement ideas and determine volumes and surfaces of cuboids and composite solids.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "JG5_6",
+        "Messen",
+        "Volumen"
+      ],
+      "contains": [],
+      "requires": [
+        "bd59aec0-5af5-49b2-bcce-6ebe98e25c86",
+        "efd86d0c-ad09-4917-84e2-6db13e65aed5"
+      ],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.1.2 Leitidee Messen (14)-(15), S. 20.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG5_6",
+        "area": "Messen"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "eab578ea-8d2f-4a34-89ac-2a409cdf8226",
+      "title": "Leitidee Raum und Form (Klassen 5/6)",
+      "titleEn": "Strand Space and Shape (Grades 5/6)",
+      "description": "Grundstreifen fuer Lagebeziehungen, Figuren und Koerper, Konstruktionen, Koordinatendarstellungen und Symmetrien in den Klassen 5/6.",
+      "descriptionEn": "Foundation strip for positional relations, figures and solids, constructions, coordinate representations, and symmetries in grades 5/6.",
+      "weight": 5,
+      "tags": [
+        "Sek1",
+        "JG5_6",
+        "Geometrie"
+      ],
+      "contains": [
+        "9120bf50-7a3c-4ea9-9f60-55f971a52cae",
+        "c206ae48-39ae-4f9d-adcd-00d75e2129a3",
+        "739b783e-a763-4a02-a958-b959898f5d96",
+        "1f24c990-6557-4f5b-a7ad-3b16f0f6b6a2",
+        "1a4bd70d-b08e-4509-9627-e04af07199ad"
+      ],
+      "requires": [],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.1.3 Leitidee Raum und Form, S. 20-21.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG5_6",
+        "area": "Raum und Form"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "9120bf50-7a3c-4ea9-9f60-55f971a52cae",
+      "title": "Lagebeziehungen geometrischer Objekte fachsprachlich beschreiben",
+      "titleEn": "Describe positional relations of geometric objects using technical language",
+      "description": "Die Schuelerinnen und Schueler beschreiben parallele und senkrechte Lagebeziehungen von Strecken und Geraden fachsprachlich korrekt.",
+      "descriptionEn": "Students describe parallel and perpendicular relations of segments and lines correctly using technical language.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "JG5_6",
+        "Geometrie",
+        "Lagebeziehungen"
+      ],
+      "contains": [],
+      "requires": [
+        "0282af40-1f9f-4f74-a3ac-d9fe29796068"
+      ],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.1.3 Leitidee Raum und Form (1), S. 20.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG5_6",
+        "area": "Raum und Form"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "c206ae48-39ae-4f9d-adcd-00d75e2129a3",
+      "title": "Winkel messen, zeichnen und fachsprachlich beschreiben",
+      "titleEn": "Measure, draw, and describe angles using technical language",
+      "description": "Die Schuelerinnen und Schueler identifizieren Winkelarten und beschreiben Winkel fachsprachlich korrekt.",
+      "descriptionEn": "Students identify angle types and describe angles correctly using technical language.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "JG5_6",
+        "Geometrie",
+        "Winkel"
+      ],
+      "contains": [],
+      "requires": [
+        "0282af40-1f9f-4f74-a3ac-d9fe29796068"
+      ],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.1.3 Leitidee Raum und Form (2)-(3), S. 20.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG5_6",
+        "area": "Raum und Form"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "739b783e-a763-4a02-a958-b959898f5d96",
+      "title": "Dreiecke und Vierecke erkennen und Eigenschaften beschreiben",
+      "titleEn": "Recognise triangles and quadrilaterals and describe their properties",
+      "description": "Die Schuelerinnen und Schueler identifizieren besondere Dreiecke und Vierecke und beschreiben deren grundlegende Eigenschaften fachsprachlich.",
+      "descriptionEn": "Students identify special triangles and quadrilaterals and describe their basic properties using technical language.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "JG5_6",
+        "Geometrie",
+        "Figuren"
+      ],
+      "contains": [],
+      "requires": [
+        "9120bf50-7a3c-4ea9-9f60-55f971a52cae",
+        "c206ae48-39ae-4f9d-adcd-00d75e2129a3"
+      ],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.1.3 Leitidee Raum und Form (5)-(6), S. 20.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG5_6",
+        "area": "Raum und Form"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "1f24c990-6557-4f5b-a7ad-3b16f0f6b6a2",
+      "title": "Geometrische Objekte zeichnen, spiegeln und im Koordinatensystem darstellen",
+      "titleEn": "Draw geometric objects, reflect them, and represent them in the coordinate system",
+      "description": "Die Schuelerinnen und Schueler zeichnen geometrische Objekte mit Geodreieck, Lineal und Zirkel, fuehren Spiegelungen durch und stellen Objekte im Koordinatensystem dar.",
+      "descriptionEn": "Students draw geometric objects using a set square, ruler, and compass, perform reflections, and represent objects in the coordinate system.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "JG5_6",
+        "Geometrie",
+        "Darstellung"
+      ],
+      "contains": [],
+      "requires": [
+        "0282af40-1f9f-4f74-a3ac-d9fe29796068"
+      ],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.1.3 Leitidee Raum und Form (8)-(14), S. 20-21.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG5_6",
+        "area": "Raum und Form"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "1a4bd70d-b08e-4509-9627-e04af07199ad",
+      "title": "Symmetrien und Winkelbeziehungen mit Skizzen und Konstruktionen begruenden",
+      "titleEn": "Justify symmetries and angle relations using sketches and constructions",
+      "description": "Die Schuelerinnen und Schueler erkennen Achsen- und Punktsymmetrien, begruenden einfache Winkelbeziehungen und stellen Zusammenhaenge zwischen Netz, Schraegbild und Modell her.",
+      "descriptionEn": "Students identify axial and point symmetry, justify simple angle relations, and establish connections between nets, oblique drawings, and models.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "JG5_6",
+        "Geometrie",
+        "Symmetrie"
+      ],
+      "contains": [],
+      "requires": [
+        "332b3bd1-afc0-4266-a977-49ef0843e5b1"
+      ],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.1.3 Leitidee Raum und Form (4), (15), S. 20-21.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG5_6",
+        "area": "Raum und Form"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "78c4ce93-d8bb-4a8b-901f-c9906485f60f",
+      "title": "Leitidee Daten und Zufall (Klassen 5/6)",
+      "titleEn": "Strand Data and Chance (Grades 5/6)",
+      "description": "Grundstreifen fuer Datenerhebungen, Haeufigkeiten, Mittelwerte und die kritische Beurteilung statistischer Darstellungen in den Klassen 5/6.",
+      "descriptionEn": "Foundation strip for data collection, frequencies, means, and the critical evaluation of statistical representations in grades 5/6.",
+      "weight": 3,
+      "tags": [
+        "Sek1",
+        "JG5_6",
+        "Daten"
+      ],
+      "contains": [
+        "2eeaf455-e449-4f1b-8859-2d55b315d038",
+        "91829ea2-84a2-43bc-b8fe-b445e92593ea",
+        "fceb1a7b-6d62-4d9c-8c97-a2db04eae59b"
+      ],
+      "requires": [],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.1.5 Leitidee Daten und Zufall, S. 22-23.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG5_6",
+        "area": "Daten und Zufall"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "2eeaf455-e449-4f1b-8859-2d55b315d038",
+      "title": "Absolute und relative Haeufigkeiten bestimmen und darstellen",
+      "titleEn": "Determine and represent absolute and relative frequencies",
+      "description": "Die Schuelerinnen und Schueler planen Datenerhebungen, sammeln Daten systematisch und stellen absolute sowie relative Haeufigkeiten tabellarisch oder graphisch dar.",
+      "descriptionEn": "Students plan data collections, gather data systematically, and represent absolute and relative frequencies in tables or graphs.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "JG5_6",
+        "Daten",
+        "Haeufigkeiten"
+      ],
+      "contains": [],
+      "requires": [
+        "53620c4f-af82-4ac6-bc89-529bec03ad26"
+      ],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.1.5 Leitidee Daten und Zufall (1)-(3), S. 22-23.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG5_6",
+        "area": "Daten und Zufall"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "91829ea2-84a2-43bc-b8fe-b445e92593ea",
+      "title": "Arithmetisches Mittel bestimmen und statistische Aussagen formulieren",
+      "titleEn": "Determine the arithmetic mean and formulate statistical statements",
+      "description": "Die Schuelerinnen und Schueler bestimmen das arithmetische Mittel, formulieren statistische Aussagen und deuten Daten aus ihrer Erfahrungswelt.",
+      "descriptionEn": "Students determine the arithmetic mean, formulate statistical statements, and interpret data from their own experience.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "JG5_6",
+        "Daten",
+        "Mittelwert"
+      ],
+      "contains": [],
+      "requires": [
+        "2eeaf455-e449-4f1b-8859-2d55b315d038"
+      ],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.1.5 Leitidee Daten und Zufall (4), (6)-(7), S. 23.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG5_6",
+        "area": "Daten und Zufall"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "fceb1a7b-6d62-4d9c-8c97-a2db04eae59b",
+      "title": "Diagramme vergleichen, deuten und auf Irrefuehrung beurteilen",
+      "titleEn": "Compare diagrams, interpret them, and judge whether they are misleading",
+      "description": "Die Schuelerinnen und Schueler entnehmen Daten aus Diagrammen, vergleichen unterschiedliche Darstellungen und beurteilen deren Eignung oder moegliche Irrefuehrung.",
+      "descriptionEn": "Students extract data from diagrams, compare different representations, and judge their suitability or potential to mislead.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "JG5_6",
+        "Daten",
+        "Diagramme"
+      ],
+      "contains": [],
+      "requires": [
+        "2eeaf455-e449-4f1b-8859-2d55b315d038"
+      ],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.1.5 Leitidee Daten und Zufall (5), (8), S. 23.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG5_6",
+        "area": "Daten und Zufall"
       },
       "type": "atomic"
     },
@@ -534,6 +1289,270 @@
       "type": "atomic"
     },
     {
+      "id": "5ff24726-957b-4bd1-95ac-c05f2cd7fa5a",
+      "title": "Klassen 9/10: Trigonometrie, Kreisfiguren und Koerper",
+      "titleEn": "Grades 9/10: Trigonometry, Circle Figures, and Solids",
+      "description": "Breiter Baden-Wuerttemberg-Follow-on fuer die spaete Sek-I-Geometrie aus Messen und Raum und Form mit Trigonometrie, Kreisfiguren, Schraegbildern, Netzen und Koerperberechnungen in den Klassen 9/10.",
+      "descriptionEn": "Broad Baden-Wuerttemberg follow-on for late lower-secondary geometry from measurement and geometry with trigonometry, circle figures, oblique drawings, nets, and solid calculations in grades 9/10.",
+      "weight": 6,
+      "tags": [
+        "Sek1",
+        "JG9_10",
+        "Geometrie",
+        "Messen",
+        "Trigonometrie"
+      ],
+      "contains": [
+        "98d778f1-0e0b-4d88-a031-29019d8b34e7",
+        "fd397325-2a81-4663-8436-d111decc717b"
+      ],
+      "requires": [
+        "5b8ce056-99af-4bc1-87bb-481a09bef876"
+      ],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.3.2 und 3.3.3, S. 32-34.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG9_10",
+        "area": "Messen / Raum und Form"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "98d778f1-0e0b-4d88-a031-29019d8b34e7",
+      "title": "Jahrgangsstufe 9: Trigonometrie und geometrische Beziehungen",
+      "titleEn": "Year 9: Trigonometry and Geometric Relations",
+      "description": "Klasse-9-Teil des Baden-Wuerttemberg-Follow-ons zu trigonometrischen Beziehungen in ebenen Figuren und ihrer Begruendung ueber geometrische Zusammenhaenge.",
+      "descriptionEn": "Year-9 part of the Baden-Wuerttemberg follow-on on trigonometric relations in planar figures and their geometric justification.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "JG9",
+        "Geometrie",
+        "Trigonometrie"
+      ],
+      "contains": [
+        "8bb23e8e-0bdb-48d5-8036-04871cbb8f05"
+      ],
+      "requires": [
+        "3df78b4c-c23a-46fd-8046-753fd9a0926c"
+      ],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.3.3 Leitidee Raum und Form (2)-(7), S. 33-34.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG9",
+        "area": "Raum und Form"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "fd397325-2a81-4663-8436-d111decc717b",
+      "title": "Jahrgangsstufe 10: Kreisfiguren und Koerper",
+      "titleEn": "Year 10: Circle Figures and Solids",
+      "description": "Klasse-10-Teil des Baden-Wuerttemberg-Follow-ons zu Kreisfiguren, Koerperdarstellungen, Mantelflaechen und Volumina bei Pyramiden, Kegeln und Kugeln.",
+      "descriptionEn": "Year-10 part of the Baden-Wuerttemberg follow-on on circle figures, solid representations, lateral areas, and volumes of pyramids, cones, and spheres.",
+      "weight": 5,
+      "tags": [
+        "Sek1",
+        "JG10",
+        "Geometrie",
+        "Messen"
+      ],
+      "contains": [
+        "7f0c399e-eed6-468d-bc31-d08624e5cb69",
+        "1c95ad04-87d5-45c7-ba38-6945e943fb2a",
+        "f122ce22-a84c-406b-bbd0-5435154510cb",
+        "8e08950a-bc78-4dc2-947d-7aa575076655",
+        "7c5598d1-7282-4922-a9ae-2c3f552e8d99"
+      ],
+      "requires": [
+        "98d778f1-0e0b-4d88-a031-29019d8b34e7"
+      ],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.3.2 und 3.3.3, S. 32-34.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG10",
+        "area": "Messen / Raum und Form"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "8bb23e8e-0bdb-48d5-8036-04871cbb8f05",
+      "title": "Trigonometrische Beziehungen in ebenen Figuren nutzen",
+      "titleEn": "Use Trigonometric Relations in Planar Figures",
+      "description": "Die Schuelerinnen und Schueler nutzen Sinus, Kosinus und Tangens zur Bestimmung von Streckenlaengen und Winkelweiten in ebenen Figuren, begruenden geometrische Zusammenhaenge mit Aehnlichkeit und Pythagoras und stellen die Beziehungen in geeigneten Skizzen dar.",
+      "descriptionEn": "Students use sine, cosine, and tangent to determine lengths and angles in planar figures, justify geometric relations with similarity and the Pythagorean theorem, and represent the relations in suitable sketches.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "JG9",
+        "Geometrie",
+        "Trigonometrie"
+      ],
+      "contains": [],
+      "requires": [
+        "3df78b4c-c23a-46fd-8046-753fd9a0926c"
+      ],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.3.3 Leitidee Raum und Form (2)-(7), S. 33-34.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG9",
+        "area": "Raum und Form"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "7f0c399e-eed6-468d-bc31-d08624e5cb69",
+      "title": "Kreisfiguren mit Bogenmass, Kreisbogen und Kreisausschnitt untersuchen",
+      "titleEn": "Investigate Circle Figures with Radian Measure, Arc, and Sector",
+      "description": "Die Schuelerinnen und Schueler nutzen Grad- und Bogenmass, bestimmen Laengen von Kreisboegen und Flaecheninhalte von Kreisausschnitten und deuten diese Groessen an Kreisfiguren.",
+      "descriptionEn": "Students use degree and radian measure, determine lengths of circular arcs and areas of sectors, and interpret these quantities on circle figures.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "JG10",
+        "Geometrie",
+        "Messen",
+        "Kreis"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.3.2 Leitidee Messen (1)-(3), S. 32.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG10",
+        "area": "Messen"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "1c95ad04-87d5-45c7-ba38-6945e943fb2a",
+      "title": "Schraegbilder und Netze von Koerpern nutzen",
+      "titleEn": "Use Oblique Drawings and Nets of Solids",
+      "description": "Die Schuelerinnen und Schueler skizzieren Schraegbilder und Netze von Prismen, Pyramiden, Zylindern und Kegeln, ueberfuehren Darstellungsformen ineinander und nutzen die Fachsprache fuer Grund- und Mantelflaechen sicher.",
+      "descriptionEn": "Students sketch oblique drawings and nets of prisms, pyramids, cylinders, and cones, convert between representations, and use the terminology for base and lateral faces reliably.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "JG10",
+        "Geometrie",
+        "Koerper"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.3.3 Leitidee Raum und Form (1), S. 33.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG10",
+        "area": "Raum und Form"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "f122ce22-a84c-406b-bbd0-5435154510cb",
+      "title": "Mantelflaechen von Kegeln und Zylindern deuten und berechnen",
+      "titleEn": "Interpret and Calculate Lateral Areas of Cones and Cylinders",
+      "description": "Die Schuelerinnen und Schueler deuten Mantelflaechen von Kegeln und Zylindern in Netzen, begruenden passende Formeln und wenden sie in Berechnungen sicher an.",
+      "descriptionEn": "Students interpret lateral areas of cones and cylinders using nets, justify suitable formulas, and apply them reliably in calculations.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "JG10",
+        "Geometrie",
+        "Messen",
+        "Koerper"
+      ],
+      "contains": [],
+      "requires": [
+        "1c95ad04-87d5-45c7-ba38-6945e943fb2a"
+      ],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.3.2 Leitidee Messen (4), S. 32.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG10",
+        "area": "Messen"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "8e08950a-bc78-4dc2-947d-7aa575076655",
+      "title": "Volumina von Pyramiden, Kegeln und schiefen Koerpern plausibilisieren und berechnen",
+      "titleEn": "Justify and Calculate Volumes of Pyramids, Cones, and Oblique Solids",
+      "description": "Die Schuelerinnen und Schueler plausibilisieren Volumenformeln fuer Pyramiden, Kegel und schiefe Koerper mit Grenzfall- oder Cavalieri-Ideen und wenden sie auch auf zusammengesetzte Koerper sicher an.",
+      "descriptionEn": "Students justify volume formulas for pyramids, cones, and oblique solids using limiting-case or Cavalieri ideas and apply them reliably, also for composite solids.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "JG10",
+        "Geometrie",
+        "Messen",
+        "Koerper"
+      ],
+      "contains": [],
+      "requires": [
+        "1c95ad04-87d5-45c7-ba38-6945e943fb2a"
+      ],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.3.2 Leitidee Messen (5)-(8), S. 32-33.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG10",
+        "area": "Messen"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "7c5598d1-7282-4922-a9ae-2c3f552e8d99",
+      "title": "Kugelformeln geometrisch deuten und anwenden",
+      "titleEn": "Interpret and Apply Sphere Formulas Geometrically",
+      "description": "Die Schuelerinnen und Schueler deuten Formeln fuer Oberflaecheninhalt und Volumen von Kugeln geometrisch, plausibilisieren sie und nutzen sie in einfachen Anwendungen.",
+      "descriptionEn": "Students interpret formulas for the surface area and volume of spheres geometrically, justify them, and use them in simple applications.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "JG10",
+        "Geometrie",
+        "Messen",
+        "Kugel"
+      ],
+      "contains": [],
+      "requires": [
+        "8e08950a-bc78-4dc2-947d-7aa575076655"
+      ],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.3.2 Leitidee Messen (5), (7), S. 32-33.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG10",
+        "area": "Messen"
+      },
+      "type": "atomic"
+    },
+    {
       "id": "ad1ed851-c2bf-4350-82de-d4664eade277",
       "title": "Algebraischer und funktionaler 9/10-Anschluss",
       "titleEn": "Algebraic and Functional Grades-9/10 Follow-on",
@@ -564,6 +1583,446 @@
         "area": "Zahl - Variable - Operation / Funktionaler Zusammenhang"
       },
       "type": "cluster"
+    },
+    {
+      "id": "5b8ce056-99af-4bc1-87bb-481a09bef876",
+      "title": "Klassen 7/8: Algebra, Geometrie und Daten",
+      "titleEn": "Grades 7/8: Algebra, Geometry, and Data",
+      "description": "Breiter Baden-Wuerttemberg-Cluster fuer die erste 7/8-Verbreiterung jenseits des aktiven Funktionskorridors mit Algebra und Gleichungen, Geometrie sowie Daten und Zufall.",
+      "descriptionEn": "Broad Baden-Wuerttemberg cluster for the first grades-7/8 widening beyond the active functions corridor across algebra and equations, geometry, and data and chance.",
+      "weight": 11,
+      "tags": [
+        "Sek1",
+        "JG7_8",
+        "Algebra",
+        "Geometrie",
+        "Daten"
+      ],
+      "contains": [
+        "ee9c8840-2e44-4c1e-80dd-4e70ae77f104",
+        "c4cdc49c-8b49-4a82-9bb4-abae85d08cf9",
+        "85d737c1-3edd-4525-baf8-b81be9bacc2b"
+      ],
+      "requires": [
+        "b92035f8-8791-4c99-a878-9f93a87e85f7"
+      ],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.2.1, 3.2.3 und 3.2.5, S. 24-30.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG7_8",
+        "area": "Zahl - Variable - Operation / Raum und Form / Daten und Zufall"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "ee9c8840-2e44-4c1e-80dd-4e70ae77f104",
+      "title": "Leitidee Zahl - Variable - Operation (Klassen 7/8, Verbreiterung)",
+      "titleEn": "Strand Number, Variable, and Operations (Grades 7/8, Widening)",
+      "description": "Breiter 7/8-Streifen fuer Prozent- und Zinsrechnung, Formelumstellungen, Wurzeln, quadratische Gleichungen, lineare Gleichungssysteme und graphisch gedeutete Gleichungen und Ungleichungen.",
+      "descriptionEn": "Broad grades-7/8 strip for percentage and interest calculations, formula rearrangements, roots, quadratic equations, linear systems, and graph-based interpretations of equations and inequalities.",
+      "weight": 6,
+      "tags": [
+        "Sek1",
+        "JG7_8",
+        "Algebra"
+      ],
+      "contains": [
+        "57e5d7b8-eac3-4ee3-a496-c61e0c2667b7",
+        "665d6a1a-a732-43cd-80fb-b60cfbad1e89",
+        "8a5098e9-4455-4ee7-be6c-0a08668b5ea7",
+        "74e28638-39fb-47e3-a447-3c37d66f436d",
+        "6a81140f-55fb-49ba-a277-df4d4bd4e074",
+        "b0f8a598-5858-40d7-8c5d-270426de9a74"
+      ],
+      "requires": [
+        "6c3ec1db-059e-452c-9829-fb0ba6b968ec"
+      ],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.2.1 Leitidee Zahl - Variable - Operation, S. 24-27.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG7_8",
+        "area": "Zahl - Variable - Operation"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "57e5d7b8-eac3-4ee3-a496-c61e0c2667b7",
+      "title": "Mit Prozenten, Zinsen und linearen Gleichungen umgehen",
+      "titleEn": "Work with percentages, interest, and linear equations",
+      "description": "Die Schuelerinnen und Schueler identifizieren Prozentwert, Grundwert und Prozentsatz, berechnen Zinsen und Zinseszinsen und loesen lineare Gleichungen systematisch durch Aequivalenzumformungen.",
+      "descriptionEn": "Students identify percentage values, base values, and rates, calculate interest and compound interest, and solve linear equations systematically using equivalent transformations.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "JG7_8",
+        "Algebra",
+        "Prozent"
+      ],
+      "contains": [],
+      "requires": [
+        "286a5ac0-d9ed-4d64-8ddd-51fb2238e35d"
+      ],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.2.1 Leitidee Zahl - Variable - Operation (2)-(4), (19), S. 24-25.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG7_8",
+        "area": "Zahl - Variable - Operation"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "665d6a1a-a732-43cd-80fb-b60cfbad1e89",
+      "title": "Formeln nach Variablen umstellen",
+      "titleEn": "Rearrange formulas for variables",
+      "description": "Die Schuelerinnen und Schueler loesen einfache Formeln, unter anderem v = s / t, nach jeder Variablen auf und begruenden ihre Umformungen fachsprachlich.",
+      "descriptionEn": "Students rearrange simple formulas, including v = s / t, for each variable and justify the transformations using mathematical language.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "JG7_8",
+        "Algebra",
+        "Formeln"
+      ],
+      "contains": [],
+      "requires": [
+        "57e5d7b8-eac3-4ee3-a496-c61e0c2667b7"
+      ],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.2.1 Leitidee Zahl - Variable - Operation (10), S. 24.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG7_8",
+        "area": "Zahl - Variable - Operation"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "8a5098e9-4455-4ee7-be6c-0a08668b5ea7",
+      "title": "Mit Wurzeln, irrationalen Zahlen und reellen Zahlen umgehen",
+      "titleEn": "Work with roots, irrational numbers, and real numbers",
+      "description": "Die Schuelerinnen und Schueler erklaeren Quadrat- und Kubikwurzeln, vereinfachen einfache Wurzelterme, beschreiben die Notwendigkeit reeller Zahlen und bestimmen Wurzeln auch naeherungsweise iterativ.",
+      "descriptionEn": "Students explain square and cube roots, simplify elementary radical expressions, describe the need for real numbers, and also determine roots approximately using iterative procedures.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "JG7_8",
+        "Algebra",
+        "Wurzeln"
+      ],
+      "contains": [],
+      "requires": [
+        "286a5ac0-d9ed-4d64-8ddd-51fb2238e35d"
+      ],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.2.1 Leitidee Zahl - Variable - Operation (11)-(18), S. 24-25.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG7_8",
+        "area": "Zahl - Variable - Operation"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "74e28638-39fb-47e3-a447-3c37d66f436d",
+      "title": "Quadratische Gleichungen mit Formel und Nullprodukt loesen",
+      "titleEn": "Solve quadratic equations using a formula and the zero-product property",
+      "description": "Die Schuelerinnen und Schueler bestimmen Loesungen quadratischer Gleichungen mit einer Formel, verwenden den Satz vom Nullprodukt und stellen zu vorgegebenen Loesungen passende quadratische Gleichungen auf.",
+      "descriptionEn": "Students determine solutions of quadratic equations using a formula, apply the zero-product property, and construct suitable quadratic equations for given solutions.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "JG7_8",
+        "Algebra",
+        "QuadratischeGleichungen"
+      ],
+      "contains": [],
+      "requires": [
+        "57e5d7b8-eac3-4ee3-a496-c61e0c2667b7",
+        "8a5098e9-4455-4ee7-be6c-0a08668b5ea7"
+      ],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.2.1 Leitidee Zahl - Variable - Operation (21)-(23), S. 25.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG7_8",
+        "area": "Zahl - Variable - Operation"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "6a81140f-55fb-49ba-a277-df4d4bd4e074",
+      "title": "Lineare Gleichungssysteme mit zwei Variablen loesen und deuten",
+      "titleEn": "Solve and interpret systems of linear equations in two variables",
+      "description": "Die Schuelerinnen und Schueler bestimmen die Loesung linearer Gleichungssysteme mit zwei Variablen mithilfe des Einsetzungsverfahrens und deuten die gefundene Loesung im Kontext.",
+      "descriptionEn": "Students determine the solution of systems of linear equations in two variables using substitution and interpret the result in context.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "JG7_8",
+        "Algebra",
+        "Gleichungssysteme"
+      ],
+      "contains": [],
+      "requires": [
+        "57e5d7b8-eac3-4ee3-a496-c61e0c2667b7"
+      ],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.2.1 Leitidee Zahl - Variable - Operation (20), S. 25.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG7_8",
+        "area": "Zahl - Variable - Operation"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "b0f8a598-5858-40d7-8c5d-270426de9a74",
+      "title": "Gleichungen als Schnittprobleme deuten und Ungleichungen loesen",
+      "titleEn": "Interpret equations as intersection problems and solve inequalities",
+      "description": "Die Schuelerinnen und Schueler untersuchen die Loesbarkeit und Loesungsvielfalt von Gleichungen, deuten lineare und quadratische Gleichungen als Schnittprobleme von Graphen und loesen einfache Ungleichungen mithilfe funktionaler Ueberlegungen.",
+      "descriptionEn": "Students investigate solvability and varieties of solutions, interpret linear and quadratic equations as graph intersections, and solve simple inequalities using functional reasoning.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "JG7_8",
+        "Algebra",
+        "Ungleichungen"
+      ],
+      "contains": [],
+      "requires": [
+        "57e5d7b8-eac3-4ee3-a496-c61e0c2667b7",
+        "74e28638-39fb-47e3-a447-3c37d66f436d"
+      ],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.2.1 Leitidee Zahl - Variable - Operation (25)-(27), S. 25.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG7_8",
+        "area": "Zahl - Variable - Operation"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "c4cdc49c-8b49-4a82-9bb4-abae85d08cf9",
+      "title": "Leitidee Raum und Form (Klassen 7/8)",
+      "titleEn": "Strand Space and Shape (Grades 7/8)",
+      "description": "Breiter 7/8-Streifen fuer Winkel- und Dreiecksgeometrie, Ortslinien, zentrische Streckung und Strahlensaetze.",
+      "descriptionEn": "Broad grades-7/8 strip for angle and triangle geometry, loci, central dilations, and the intercept theorem.",
+      "weight": 3,
+      "tags": [
+        "Sek1",
+        "JG7_8",
+        "Geometrie"
+      ],
+      "contains": [
+        "1eeb1ea0-cd04-488f-82f3-cefadff5b53c",
+        "d09486f6-f097-4582-ad99-e82e37b9afe6",
+        "3df78b4c-c23a-46fd-8046-753fd9a0926c"
+      ],
+      "requires": [
+        "eab578ea-8d2f-4a34-89ac-2a409cdf8226"
+      ],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.2.3 Leitidee Raum und Form, S. 26-27.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG7_8",
+        "area": "Raum und Form"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "1eeb1ea0-cd04-488f-82f3-cefadff5b53c",
+      "title": "Winkelbeziehungen erschliessen und den Satz des Thales anwenden",
+      "titleEn": "Infer angle relationships and apply Thales' theorem",
+      "description": "Die Schuelerinnen und Schueler erschliessen Winkelweiten mit Scheitel-, Neben-, Stufen- und Wechselwinkeln, begruenden den Winkelsummensatz im Dreieck und wenden den Satz des Thales an.",
+      "descriptionEn": "Students infer angle measures using vertical, adjacent, corresponding, and alternate angles, justify the triangle angle sum, and apply Thales' theorem.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "JG7_8",
+        "Geometrie",
+        "Winkel"
+      ],
+      "contains": [],
+      "requires": [
+        "1a4bd70d-b08e-4509-9627-e04af07199ad"
+      ],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.2.3 Leitidee Raum und Form (1)-(4), S. 26.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG7_8",
+        "area": "Raum und Form"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "d09486f6-f097-4582-ad99-e82e37b9afe6",
+      "title": "Dreiecke konstruieren und Ortslinien zeichnerisch nutzen",
+      "titleEn": "Construct triangles and use loci graphically",
+      "description": "Die Schuelerinnen und Schueler beurteilen die Konstruierbarkeit von Dreiecken, nutzen Ortslinien bei zeichnerischen Problemloesungen und konstruieren Umkreis- und Inkreismittelpunkte sowie Tangenten.",
+      "descriptionEn": "Students judge the constructibility of triangles, use loci in graphical problem solving, and construct circumcentres, incentres, and tangents.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "JG7_8",
+        "Geometrie",
+        "Konstruktion"
+      ],
+      "contains": [],
+      "requires": [
+        "1eeb1ea0-cd04-488f-82f3-cefadff5b53c"
+      ],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.2.3 Leitidee Raum und Form (5)-(10), S. 26-27.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG7_8",
+        "area": "Raum und Form"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "3df78b4c-c23a-46fd-8046-753fd9a0926c",
+      "title": "Zentrische Streckung und Strahlensaetze anwenden",
+      "titleEn": "Apply central dilations and the intercept theorem",
+      "description": "Die Schuelerinnen und Schueler vergroessern und verkleinern Figuren mithilfe zentrischer Streckungen, bestimmen Streckenlaengen mit den Strahlensaetzen und begruenden Gegenbeispiele zur Nichtumkehrbarkeit des zweiten Strahlensatzes.",
+      "descriptionEn": "Students enlarge and reduce figures using central dilations, determine segment lengths with the intercept theorem, and justify counterexamples for the non-reversibility of the second intercept theorem.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "JG7_8",
+        "Geometrie",
+        "Aehnlichkeit"
+      ],
+      "contains": [],
+      "requires": [
+        "d09486f6-f097-4582-ad99-e82e37b9afe6"
+      ],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.2.3 Leitidee Raum und Form (11)-(13), S. 27.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG7_8",
+        "area": "Raum und Form"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "85d737c1-3edd-4525-baf8-b81be9bacc2b",
+      "title": "Leitidee Daten und Zufall (Klassen 7/8)",
+      "titleEn": "Strand Data and Chance (Grades 7/8)",
+      "description": "Breiter 7/8-Streifen fuer Quartile und Boxplots sowie fuer alltagsnahe Wahrscheinlichkeit, Laplace-Experimente und Baumdiagramme.",
+      "descriptionEn": "Broad grades-7/8 strip for quartiles and box plots as well as everyday probability, Laplace experiments, and tree diagrams.",
+      "weight": 2,
+      "tags": [
+        "Sek1",
+        "JG7_8",
+        "Daten",
+        "Zufall"
+      ],
+      "contains": [
+        "43bcccb1-27f7-4779-9b28-de1a02d17d01",
+        "54ade724-7473-49e2-9a39-0405be6e8a68"
+      ],
+      "requires": [
+        "78c4ce93-d8bb-4a8b-901f-c9906485f60f"
+      ],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.2.5 Leitidee Daten und Zufall, S. 29-30.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG7_8",
+        "area": "Daten und Zufall"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "43bcccb1-27f7-4779-9b28-de1a02d17d01",
+      "title": "Quartile bestimmen, Boxplots erstellen und Daten kritisch auswerten",
+      "titleEn": "Determine quartiles, create box plots, and critically analyze data",
+      "description": "Die Schuelerinnen und Schueler bestimmen unteres und oberes Quartil sowie den Median, erstellen Boxplots, vergleichen Verteilungen damit und bewerten datenbasierte Aussagen kritisch.",
+      "descriptionEn": "Students determine lower and upper quartiles and the median, create box plots, compare distributions with them, and critically evaluate data-based claims.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "JG7_8",
+        "Daten",
+        "Boxplot"
+      ],
+      "contains": [],
+      "requires": [
+        "91829ea2-84a2-43bc-b8fe-b445e92593ea",
+        "fceb1a7b-6d62-4d9c-8c97-a2db04eae59b"
+      ],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.2.5 Leitidee Daten und Zufall (1)-(4), S. 29.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG7_8",
+        "area": "Daten und Zufall"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "54ade724-7473-49e2-9a39-0405be6e8a68",
+      "title": "Zufallsexperimente beschreiben, Laplace-Wahrscheinlichkeiten bestimmen und Baumdiagramme nutzen",
+      "titleEn": "Describe random experiments, determine Laplace probabilities, and use tree diagrams",
+      "description": "Die Schuelerinnen und Schueler erklaeren alltagsnahe Wahrscheinlichkeitsaussagen, beschreiben Ergebnisse und Ereignisse, werten Zufallsexperimente aus, bestimmen Wahrscheinlichkeiten in Laplace-Situationen und nutzen Baumdiagramme sowie Pfadregeln bei mehrstufigen Experimenten.",
+      "descriptionEn": "Students explain everyday probability statements, describe outcomes and events, analyze random experiments, determine probabilities in Laplace situations, and use tree diagrams and path rules for multi-stage experiments.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "JG7_8",
+        "Zufall",
+        "Wahrscheinlichkeit"
+      ],
+      "contains": [],
+      "requires": [
+        "43bcccb1-27f7-4779-9b28-de1a02d17d01"
+      ],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.2.5 Leitidee Daten und Zufall (5)-(14), S. 29-30.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG7_8",
+        "area": "Daten und Zufall"
+      },
+      "type": "atomic"
     },
     {
       "id": "6c3ec1db-059e-452c-9829-fb0ba6b968ec",
@@ -824,6 +2283,308 @@
         "guidingIdeas": [],
         "phase": "JG10",
         "area": "Zahl - Variable - Operation / Funktionaler Zusammenhang"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "91142067-0be0-4bd3-951a-0610f67207d9",
+      "title": "Klassen 9/10: Bedingte Wahrscheinlichkeiten und Binomialverteilungen",
+      "titleEn": "Grades 9/10: Conditional Probabilities and Binomial Distributions",
+      "description": "Breiter spaeter Sek-I-Streifen zu Vierfeldertafeln, bedingten Wahrscheinlichkeiten, Zufallsgroessen sowie Bernoulli-Ketten und Binomialverteilungen.",
+      "descriptionEn": "Broad late-lower-secondary strip on four-field tables, conditional probabilities, random variables, and Bernoulli chains and binomial distributions.",
+      "weight": 7,
+      "tags": [
+        "Sek1",
+        "JG9_10",
+        "Daten",
+        "Zufall",
+        "Stochastik"
+      ],
+      "contains": [
+        "aa406778-ec53-47c1-9437-404a669ae63f",
+        "8de4eafd-63d4-403b-8e47-46b9ad0ce2d1"
+      ],
+      "requires": [
+        "54ade724-7473-49e2-9a39-0405be6e8a68"
+      ],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.3.5 Leitidee Daten und Zufall, S. 37-38.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG9_10",
+        "area": "Daten und Zufall"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "aa406778-ec53-47c1-9437-404a669ae63f",
+      "title": "Jahrgangsstufe 9: Vierfeldertafeln und bedingte Wahrscheinlichkeiten",
+      "titleEn": "Year 9: Four-Field Tables and Conditional Probabilities",
+      "description": "Klasse-9-Teil des BW-Stochastikkorridors zu bedingten Wahrscheinlichkeiten, Vierfeldertafeln und stochastischer Unabhaengigkeit.",
+      "descriptionEn": "Year-9 part of the BW stochastics corridor on conditional probabilities, four-field tables, and stochastic independence.",
+      "weight": 2,
+      "tags": [
+        "Sek1",
+        "JG9",
+        "Daten",
+        "Zufall",
+        "Stochastik"
+      ],
+      "contains": [
+        "de7051a6-6401-4c04-b588-f7f2f69a8478",
+        "25bc86dc-6329-40a0-9c1d-ec846d6fd929"
+      ],
+      "requires": [
+        "54ade724-7473-49e2-9a39-0405be6e8a68"
+      ],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.3.5 Leitidee Daten und Zufall (1)-(3), S. 37.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG9",
+        "area": "Daten und Zufall"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "8de4eafd-63d4-403b-8e47-46b9ad0ce2d1",
+      "title": "Jahrgangsstufe 10: Zufallsgroessen und Binomialverteilungen",
+      "titleEn": "Year 10: Random Variables and Binomial Distributions",
+      "description": "Klasse-10-Teil des BW-Stochastikkorridors zu Zufallsgroessen, Bernoulli-Ketten, Binomialverteilungen und ihren Kenngroessen.",
+      "descriptionEn": "Year-10 part of the BW stochastics corridor on random variables, Bernoulli chains, binomial distributions, and their key measures.",
+      "weight": 5,
+      "tags": [
+        "Sek1",
+        "JG10",
+        "Daten",
+        "Zufall",
+        "Stochastik"
+      ],
+      "contains": [
+        "abe38788-1e88-4f17-bb31-e4564ebc285f",
+        "de3016f9-490c-45e1-b9a7-0d3b37a373b4",
+        "720a367c-0e5e-47cd-b4ec-808e07f765f4",
+        "1d3affbe-5453-4188-9a61-28446b64da17",
+        "8ba195f9-76ba-4e50-8c87-b0fb9d5ec7fa"
+      ],
+      "requires": [
+        "aa406778-ec53-47c1-9437-404a669ae63f"
+      ],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.3.5 Leitidee Daten und Zufall (4)-(13), S. 37-38.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG10",
+        "area": "Daten und Zufall"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "de7051a6-6401-4c04-b588-f7f2f69a8478",
+      "title": "Vierfeldertafeln nutzen und bedingte Wahrscheinlichkeiten bestimmen",
+      "titleEn": "Use Four-Field Tables and Determine Conditional Probabilities",
+      "description": "Die Schuelerinnen und Schueler erlaeutern bedingte Wahrscheinlichkeit an Beispielen, erstellen Vierfeldertafeln und nutzen diese zur Bestimmung bedingter Wahrscheinlichkeiten.",
+      "descriptionEn": "Students explain conditional probability using examples, create four-field tables, and use them to determine conditional probabilities.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "JG9",
+        "Zufall",
+        "Vierfeldertafel",
+        "BedingteWahrscheinlichkeit"
+      ],
+      "contains": [],
+      "requires": [
+        "54ade724-7473-49e2-9a39-0405be6e8a68"
+      ],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.3.5 Leitidee Daten und Zufall (1)-(2), S. 37.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG9",
+        "area": "Daten und Zufall"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "25bc86dc-6329-40a0-9c1d-ec846d6fd929",
+      "title": "Stochastische Unabhaengigkeit an Vierfeldertafeln und Baumdiagrammen pruefen",
+      "titleEn": "Check Stochastic Independence in Four-Field Tables and Tree Diagrams",
+      "description": "Die Schuelerinnen und Schueler untersuchen Ereignisse in Vierfeldertafeln und Baumdiagrammen auf stochastische Unabhaengigkeit.",
+      "descriptionEn": "Students examine events in four-field tables and tree diagrams for stochastic independence.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "JG9",
+        "Zufall",
+        "Unabhaengigkeit"
+      ],
+      "contains": [],
+      "requires": [
+        "de7051a6-6401-4c04-b588-f7f2f69a8478"
+      ],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.3.5 Leitidee Daten und Zufall (3), S. 37.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG9",
+        "area": "Daten und Zufall"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "abe38788-1e88-4f17-bb31-e4564ebc285f",
+      "title": "Zufallsgroessen beschreiben und Wahrscheinlichkeitsverteilungen im Kontext deuten",
+      "titleEn": "Describe Random Variables and Interpret Probability Distributions in Context",
+      "description": "Die Schuelerinnen und Schueler beschreiben Ereignisse mithilfe von Zufallsgroessen, geben Wahrscheinlichkeitsverteilungen an und deuten Erwartungswerte und Verteilungen im Sachzusammenhang.",
+      "descriptionEn": "Students describe events using random variables, state probability distributions, and interpret expected values and distributions in context.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "JG10",
+        "Zufall",
+        "Zufallsgroesse",
+        "Verteilung"
+      ],
+      "contains": [],
+      "requires": [
+        "de7051a6-6401-4c04-b588-f7f2f69a8478"
+      ],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.3.5 Leitidee Daten und Zufall (4)-(6), S. 37.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG10",
+        "area": "Daten und Zufall"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "de3016f9-490c-45e1-b9a7-0d3b37a373b4",
+      "title": "Bernoulli-Experimente und Bernoulli-Ketten beschreiben",
+      "titleEn": "Describe Bernoulli Experiments and Bernoulli Chains",
+      "description": "Die Schuelerinnen und Schueler erlaeutern Bernoulli-Experimente und Bernoulli-Ketten, unterscheiden sie von anderen Zufallsexperimenten und deuten die Formel von Bernoulli in passenden Beispielen.",
+      "descriptionEn": "Students explain Bernoulli experiments and Bernoulli chains, distinguish them from other random experiments, and interpret the Bernoulli formula in suitable examples.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "JG10",
+        "Zufall",
+        "Bernoulli"
+      ],
+      "contains": [],
+      "requires": [
+        "abe38788-1e88-4f17-bb31-e4564ebc285f"
+      ],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.3.5 Leitidee Daten und Zufall (7)-(8), S. 37.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG10",
+        "area": "Daten und Zufall"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "720a367c-0e5e-47cd-b4ec-808e07f765f4",
+      "title": "Wahrscheinlichkeiten in Bernoulli-Ketten berechnen",
+      "titleEn": "Calculate Probabilities in Bernoulli Chains",
+      "description": "Die Schuelerinnen und Schueler berechnen Wahrscheinlichkeiten binomialverteilter Zufallsgroessen in Bernoulli-Ketten.",
+      "descriptionEn": "Students calculate probabilities of binomially distributed random variables in Bernoulli chains.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "JG10",
+        "Zufall",
+        "Bernoulli",
+        "Binomial"
+      ],
+      "contains": [],
+      "requires": [
+        "de3016f9-490c-45e1-b9a7-0d3b37a373b4"
+      ],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.3.5 Leitidee Daten und Zufall (9), S. 37.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG10",
+        "area": "Daten und Zufall"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "1d3affbe-5453-4188-9a61-28446b64da17",
+      "title": "Binomialverteilungen in Histogrammen darstellen und Parameterwirkungen beschreiben",
+      "titleEn": "Represent Binomial Distributions in Histograms and Describe Parameter Effects",
+      "description": "Die Schuelerinnen und Schueler stellen Binomialverteilungen in Histogrammen dar, interpretieren diese und beschreiben die Wirkung der Parameter n, p und k.",
+      "descriptionEn": "Students represent binomial distributions in histograms, interpret them, and describe the effect of the parameters n, p, and k.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "JG10",
+        "Zufall",
+        "Histogramm",
+        "Binomial"
+      ],
+      "contains": [],
+      "requires": [
+        "720a367c-0e5e-47cd-b4ec-808e07f765f4"
+      ],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.3.5 Leitidee Daten und Zufall (10)-(12), S. 37-38.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG10",
+        "area": "Daten und Zufall"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "8ba195f9-76ba-4e50-8c87-b0fb9d5ec7fa",
+      "title": "Kenngroessen binomialverteilter Zufallsgroessen berechnen und deuten",
+      "titleEn": "Calculate and Interpret Key Measures of Binomial Random Variables",
+      "description": "Die Schuelerinnen und Schueler berechnen Erwartungswert und Standardabweichung binomialverteilter Zufallsgroessen und erlaeutern deren Zusammenhang mit Histogrammen.",
+      "descriptionEn": "Students calculate the expected value and standard deviation of binomial random variables and explain their connection to histograms.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "JG10",
+        "Zufall",
+        "Erwartungswert",
+        "Standardabweichung",
+        "Binomial"
+      ],
+      "contains": [],
+      "requires": [
+        "abe38788-1e88-4f17-bb31-e4564ebc285f",
+        "1d3affbe-5453-4188-9a61-28446b64da17"
+      ],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.3.5 Leitidee Daten und Zufall (13), S. 38.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG10",
+        "area": "Daten und Zufall"
       },
       "type": "atomic"
     }
