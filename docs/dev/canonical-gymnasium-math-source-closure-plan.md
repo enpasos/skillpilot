@@ -1,6 +1,6 @@
 # Canonical Gymnasium Mathematics Source-Closure Plan
 
-Snapshot: `2026-03-25`
+Snapshot: `2026-03-26`
 
 This document complements the existing rollout artifacts:
 
@@ -56,11 +56,11 @@ Important interpretation:
 
 ## Nationwide snapshot
 
-Initial working estimate on `2026-03-25`:
+Initial working estimate on `2026-03-26`:
 
-- nationwide source-closure headline: `28%`
-- states at `83%`: `2`
-- states at `67%`: `2`
+- nationwide source-closure headline: `29%`
+- states at `83%`: `3`
+- states at `67%`: `1`
 - states at `50%`: `3`
 - states at `0%`: `9`
 
@@ -72,7 +72,7 @@ This is intentionally coarse. It is good enough for steering and ordering work; 
 | --- | ---: | --- | --- | --- |
 | `DE-HE` Hessen | `83%` | broad lower/upper canonical donor lane | explicit disposition for residual non-core source sections | document and freeze residual source-policy boundary |
 | `DE-BY` Bayern | `83%` | broad retained source lane on shared spine | explicit disposition for residual non-core source sections | document and freeze residual source-policy boundary |
-| `DE-BW` Baden-Wuerttemberg | `83%` | source archived, lower + upper source lanes active, upper `3.4` / `3.5` broadly closed, lower `3.1`, `3.2.3`, `3.2.5`, the first broad `3.3.2 / 3.3.3` geometry strip, the late-Sek-I coordinate/vector follow-on, the first broad `3.3.4` differential strip, and the first broad `3.3.5` stochastics strip are now reviewed on the shared spine | late Sek I is no longer broadly open, but residual row-granularity debt remains; residual non-core sections still undocumented as closure decision | close the remaining BW Sek-I residual `3.2.1 / 3.3.1 / 3.3.4 / 3.3.5` fine-grained debt, then disposition `1.2` / `1.3` / `2.x` / `4` / `5` |
+| `DE-BW` Baden-Wuerttemberg | `83%` | source archived, lower + upper source lanes active, upper `3.4` / `3.5` broadly closed, lower `3.1`, `3.2.3`, `3.2.5`, the first broad `3.3.2 / 3.3.3` geometry strip, the late-Sek-I coordinate/vector follow-on, the broadened `3.3.4` differential-technique strip, and the first broad `3.3.5` stochastics strip are now reviewed on the shared spine | late Sek I is no longer broadly open, but residual row-granularity debt remains; residual non-core sections still undocumented as closure decision | close the remaining BW Sek-I residual `3.2.1 / 3.3.1` debt plus source-perfect cleanup inside the already active `3.3.2 / 3.3.3 / 3.3.4 / 3.3.5` strips, then disposition `1.2` / `1.3` / `2.x` / `4` / `5` |
 | `DE-NI` Niedersachsen | `67%` | source archived, lower + upper source lanes active, upper active pilot surface broadly closed | lower-secondary still not broadly closed end-to-end; residual non-core sections still undocumented as closure decision | widen Sek I next |
 | `DE-NW` Nordrhein-Westfalen | `50%` | lower + upper active corridors, useful canonical bridge | both stages still corridor-first rather than broad source closure | widen from first corridors toward broad lower/upper closure |
 | `DE-BB` Brandenburg | `50%` | source archived, lower + upper lanes active, first reviewed corridors live | lower and upper still corridor-first; no broad source closure yet | widen lower-secondary first, then keep upper broadening |
@@ -159,8 +159,8 @@ Still open against the full source package:
 
 1. lower-secondary content closure
 - broadly closed on the active pilot lane: `3.1.1`, `3.1.2`, `3.1.3`, `3.1.5`, `3.2.3`, `3.2.5`
-- materially widened but still not source-perfect: `3.3.2`, `3.3.3`, `3.3.5`
-- still partial: `3.2.1`, `3.3.1`, `3.3.4`
+- materially widened but still not source-perfect: `3.3.2`, `3.3.3`, `3.3.4`, `3.3.5`
+- still partial: `3.2.1`, `3.3.1`
 - fully open on the active lower-secondary content lane: none
 - not a real gap: `3.2.2`, because the source itself says `keine Inhalte in den Klassen 7/8`
 
@@ -191,7 +191,7 @@ The recommended BW close-out order is:
 - status: materially done, but not yet source-perfect at row granularity
 - reason: closes the last still-broadly-open late-Sek-I content lane before the remaining fine-grained cleanup
 
-5. remaining debt in `3.2.1`, `3.3.1`, `3.3.4`, `3.3.5`, and any still-open fine-grained residual rows outside the active power, geometry, vector, differential, and stochastics strips
+5. remaining debt in `3.2.1`, `3.3.1`, and the still-open fine-grained residual rows inside the already active `3.3.2 / 3.3.3 / 3.3.4 / 3.3.5` strips
 - reason: finishes late Sek I end-to-end without forcing fragile duplicate routes into the learner-facing BW tree
 
 6. explicit residual-section disposition note for:

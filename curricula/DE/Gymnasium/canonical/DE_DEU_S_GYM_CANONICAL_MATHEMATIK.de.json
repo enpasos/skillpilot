@@ -3116,10 +3116,10 @@
       "shortKey": "canonical_math_sek1_j10_anchor",
       "title": "Jahrgangsstufe 10 (Sek I)",
       "titleEn": "Year 10 (Lower Secondary)",
-      "description": "Kanonischer Jahrgangsstufenanker fuer J10 der gymnasialen Sekundarstufe I in Mathematik. Hier haengen exponentielle, stochastische, trigonometrische, polynomiale, vektorbezogene und raumgeometrische Anschlussziele an.",
-      "descriptionEn": "Canonical year anchor for year 10 in lower-secondary Gymnasium mathematics. Exponential, stochastic, trigonometric, polynomial, vector-based, and spatial-geometry continuation goals attach here.",
+      "description": "Kanonischer Jahrgangsstufenanker fuer J10 der gymnasialen Sekundarstufe I in Mathematik. Hier haengen exponentielle, stochastische, trigonometrische, polynomiale, differentialrechnerische, vektorbezogene und raumgeometrische Anschlussziele an.",
+      "descriptionEn": "Canonical year anchor for year 10 in lower-secondary Gymnasium mathematics. Exponential, stochastic, trigonometric, polynomial, differential-calculus-related, vector-based, and spatial-geometry continuation goals attach here.",
       "core": true,
-      "weight": 14,
+      "weight": 19,
       "tags": [
         "canonical",
         "phase:SekI",
@@ -3144,7 +3144,8 @@
         "5d17ebb4-4e27-4f9c-8d0b-3520f34b2e11",
         "1ce8af38-082a-477b-af48-b924c92761bf",
         "6248bbd7-c7e8-4f91-b3dc-de885cf5abce",
-        "978d6880-006e-4595-b260-461d9d2c4717"
+        "978d6880-006e-4595-b260-461d9d2c4717",
+        "0fd96c54-c629-45aa-a640-e2718890ddf9"
       ],
       "requires": [],
       "extendedData": {
@@ -3437,6 +3438,218 @@
         "78bcc25b-e48c-471b-9236-6c3b23d48a8b"
       ],
       "type": "cluster"
+    },
+    {
+      "id": "0fd96c54-c629-45aa-a640-e2718890ddf9",
+      "shortKey": "canonical_math_sek1_j10_differential_techniques",
+      "title": "Ableitungsbegriff und elementare Ableitungsregeln in J10 nutzen",
+      "titleEn": "Use derivative concepts and elementary differentiation rules in year 10",
+      "description": "Kanonischer Cluster fuer den spaeten Sek-I-Folgekorridor zur Differentialrechnung in J10. Der Cluster buendelt den Uebergang von mittleren zu momentanen Aenderungsraten, formale Ableitungsregeln, erste Untersuchungen mit der ersten Ableitung, Tangenten- und Wendestellendeutungen sowie einfache Ableitungen trigonometrischer Funktionen.",
+      "descriptionEn": "Canonical cluster for the late lower-secondary differential-calculus follow-on corridor in year 10. It bundles the transition from average to instantaneous rates of change, formal differentiation rules, first investigations using the first derivative, interpretations of tangents and inflection points, and simple derivatives of trigonometric functions.",
+      "core": true,
+      "weight": 5,
+      "tags": [
+        "canonical"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K1.1",
+          "K2.1",
+          "K3.1",
+          "K4.1"
+        ],
+        "guidingIdeas": [
+          "L1",
+          "L4"
+        ],
+        "phase": "J10",
+        "area": "Analysis",
+        "topicCode": "CANONICAL.MATH.SEK1.J10.7"
+      },
+      "contains": [
+        "7156558c-57f1-4372-9ba7-0640c3f7cb3a",
+        "9f2fc0d1-e1e7-4051-ba70-87ba1dd8dd1c",
+        "1a18dbb3-f350-4766-9c8b-20ca018ccef1",
+        "b43a1e45-f05c-4d78-8453-f6fa677dc24c",
+        "f9fdb733-5838-4983-888a-05624eabbe17"
+      ],
+      "requires": [],
+      "type": "cluster"
+    },
+    {
+      "id": "7156558c-57f1-4372-9ba7-0640c3f7cb3a",
+      "shortKey": "canonical_math_sek1_j10_derivative_entry",
+      "title": "Ableitungsbegriff aus mittleren und momentanen Aenderungsraten entwickeln",
+      "titleEn": "Develop the derivative concept from average and instantaneous rates of change",
+      "description": "Die lernende Person kann mittlere Aenderungsraten als Differenzenquotienten bestimmen, als Sekantensteigungen deuten und daraus den Uebergang zur momentanen Aenderungsrate als Tangentensteigung motivieren.",
+      "descriptionEn": "The learner can determine average rates of change as difference quotients, interpret them as secant slopes, and use them to motivate the transition to instantaneous rates of change as tangent slopes.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K1.1",
+          "K3.1",
+          "K4.1"
+        ],
+        "guidingIdeas": [
+          "L1",
+          "L4"
+        ],
+        "phase": "J10",
+        "area": "Analysis",
+        "topicCode": "CANONICAL.MATH.SEK1.J10.7A"
+      },
+      "contains": [],
+      "requires": [
+        "a8c42ee9-2898-4247-819f-c235032ac78a",
+        "09f47964-2cd0-410e-93ee-9632b582fc91",
+        "af3d6bff-c5fb-4ec6-a9f0-c0be09fc9186"
+      ],
+      "type": "atomic"
+    },
+    {
+      "id": "9f2fc0d1-e1e7-4051-ba70-87ba1dd8dd1c",
+      "shortKey": "canonical_math_sek1_j10_basic_derivative_rules",
+      "title": "Grundlegende Ableitungsregeln auf elementare Funktionsterme anwenden",
+      "titleEn": "Apply basic differentiation rules to elementary function terms",
+      "description": "Die lernende Person kann Faktorregel, Summenregel und Potenzregel auf einfache Funktionsterme anwenden und die einzelnen Ableitungsschritte fachsprachlich nachvollziehbar darstellen.",
+      "descriptionEn": "The learner can apply the constant-factor rule, sum rule, and power rule to simple function terms and present the differentiation steps clearly using mathematical language.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K1.1",
+          "K4.1"
+        ],
+        "guidingIdeas": [
+          "L1",
+          "L4"
+        ],
+        "phase": "J10",
+        "area": "Analysis",
+        "topicCode": "CANONICAL.MATH.SEK1.J10.7B"
+      },
+      "contains": [],
+      "requires": [
+        "7156558c-57f1-4372-9ba7-0640c3f7cb3a",
+        "6596405a-9728-41df-9163-53670ec2a937"
+      ],
+      "type": "atomic"
+    },
+    {
+      "id": "1a18dbb3-f350-4766-9c8b-20ca018ccef1",
+      "shortKey": "canonical_math_sek1_j10_first_derivative_analysis",
+      "title": "Monotonie, Extremstellen und Funktion-Ableitungs-Beziehungen untersuchen",
+      "titleEn": "Investigate monotonicity, extrema, and function-derivative relationships",
+      "description": "Die lernende Person kann den Zusammenhang zwischen Funktion und Ableitungsfunktion in einfachen Faellen graphisch erklaeren und Funktionen mit der ersten Ableitung auf Monotonie sowie lokale und globale Extremstellen untersuchen.",
+      "descriptionEn": "The learner can explain the relationship between a function and its derivative graphically in simple cases and use the first derivative to investigate monotonicity as well as local and global extrema.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K1.1",
+          "K3.1",
+          "K4.1"
+        ],
+        "guidingIdeas": [
+          "L1",
+          "L4"
+        ],
+        "phase": "J10",
+        "area": "Analysis",
+        "topicCode": "CANONICAL.MATH.SEK1.J10.7C"
+      },
+      "contains": [],
+      "requires": [
+        "7156558c-57f1-4372-9ba7-0640c3f7cb3a",
+        "9f2fc0d1-e1e7-4051-ba70-87ba1dd8dd1c"
+      ],
+      "type": "atomic"
+    },
+    {
+      "id": "b43a1e45-f05c-4d78-8453-f6fa677dc24c",
+      "shortKey": "canonical_math_sek1_j10_tangents_normals_inflection",
+      "title": "Tangenten, Normalen, lineare Approximationen und Wendestellen deuten",
+      "titleEn": "Interpret tangents, normals, linear approximations, and inflection points",
+      "description": "Die lernende Person kann Tangenten- und Normalengleichungen in einfachen Faellen aufstellen, Tangenten als lineare Approximation nutzen, Steigungswinkel deuten und Wendestellen bzw. Kruemmungsverhalten mit Ableitungen beschreiben.",
+      "descriptionEn": "The learner can determine tangent and normal equations in simple cases, use tangents as linear approximations, interpret slope angles, and describe inflection points and curvature using derivatives.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K2.1",
+          "K3.1",
+          "K4.1"
+        ],
+        "guidingIdeas": [
+          "L1",
+          "L4"
+        ],
+        "phase": "J10",
+        "area": "Analysis",
+        "topicCode": "CANONICAL.MATH.SEK1.J10.7D"
+      },
+      "contains": [],
+      "requires": [
+        "1a18dbb3-f350-4766-9c8b-20ca018ccef1"
+      ],
+      "type": "atomic"
+    },
+    {
+      "id": "f9fdb733-5838-4983-888a-05624eabbe17",
+      "shortKey": "canonical_math_sek1_j10_trig_derivatives",
+      "title": "Ableitungen von Sinus- und Kosinusfunktionen in einfachen Faellen nutzen",
+      "titleEn": "Use derivatives of sine and cosine functions in simple cases",
+      "description": "Die lernende Person kann die Ableitungen von Sinus- und Kosinusfunktionen in einfachen Termen angeben, einsetzen und den Zusammenhang zwischen Funktion und Ableitung graphisch deuten.",
+      "descriptionEn": "The learner can state and use the derivatives of sine and cosine functions in simple expressions and interpret the relationship between the function and its derivative graphically.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K1.1",
+          "K4.1"
+        ],
+        "guidingIdeas": [
+          "L1",
+          "L4"
+        ],
+        "phase": "J10",
+        "area": "Analysis",
+        "topicCode": "CANONICAL.MATH.SEK1.J10.7E"
+      },
+      "contains": [],
+      "requires": [
+        "9f2fc0d1-e1e7-4051-ba70-87ba1dd8dd1c",
+        "5d17ebb4-4e27-4f9c-8d0b-3520f34b2e11"
+      ],
+      "type": "atomic"
     },
     {
       "id": "235ae698-369f-4dbe-b46f-87e8b65bb03d",

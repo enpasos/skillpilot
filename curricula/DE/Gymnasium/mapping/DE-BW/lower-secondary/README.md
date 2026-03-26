@@ -8,7 +8,7 @@ Current status on `2026-03-26`:
   `bw_math_lower_secondary_to_canonical_math.json`
 - reserved `sourceLandscapeId`:
   `6232b783-199c-4c50-92f2-9fb31277e619`
-- current mapping count: `73`
+- current mapping count: `75`
 - the first archived Baden-Wuerttemberg lower-secondary source snapshot is now active in the shared provenance registries:
   `curricula/DE/Gymnasium/input/BW/lower-secondary/source-json/DE_BAW_S_GYM_1_MATHEMATIK.de.json.snapshot`
 - the first reviewed Baden-Wuerttemberg lower-secondary mapping cut is now active:
@@ -46,9 +46,9 @@ Current status on `2026-03-26`:
 - the first broad late-Sek-I `Klassen 9/10` stochastics widening step is now also active:
   - `3.3.5 Daten und Zufall` now bridges shared canonical leaves for conditional probabilities and four-field work (`partial`)
   - `3.3.5 Daten und Zufall` now also reaches shared canonical leaves for stochastic independence, random variables, Bernoulli chains, binomial histograms, and binomial key measures (`partial`)
-- the first broad late-Sek-I `Klassen 9/10` differential widening step is now also active:
-  - `3.3.4 Funktionaler Zusammenhang` now bridges shared canonical leaves for trigonometrische Funktionen, periodische Modellierung, and first derivative-based graph work (`partial`)
-  - `3.3.4 Funktionaler Zusammenhang` now also reaches shared canonical leaves for derivative entry from average rates of change, monotonicity / extrema with the first derivative, and tangent / normal / inflection interpretation (`partial`)
+- the broadened late-Sek-I `Klassen 9/10` differential widening step is now also active:
+  - `3.3.4 Funktionaler Zusammenhang` now bridges shared canonical leaves for trigonometrische Funktionen, periodische Modellierung, derivative entry from average rates of change, and first derivative-based graph work (`partial`)
+  - `3.3.4 Funktionaler Zusammenhang` now also reaches dedicated canonical J10 leaves for basic derivative rules, monotonicity / extrema with the first derivative, tangent / normal / inflection interpretation, and simple derivative use on sinus and cosine functions (`exact` / `partial`)
 - the retained late-Sek-I coordinate/vector residue is now also cleanly reviewed on a dedicated Sek-I vector corridor:
   - vector basics, spatial coordinate drawings, distances / magnitudes / midpoints, parametric lines, line relations, and rectilinear motions now bridge to dedicated canonical J9/J10 vector leaves (`exact`)
 
@@ -57,4 +57,4 @@ Expected first use:
 - canonical Gymnasium `Mathematik`
 - shared `J5-J10` anchor alignment
 - the retained BW Sek-I corridor parents are now also surfaced as learner-facing structure labels in the active composition views, and `Klassen 5/6` now appears as a broad learner-facing foundation block across numbers, measures, geometry, data, and first functional relations
-- next clean follow-on cut is the remaining BW lower-secondary row-granularity debt outside the now active power, geometry, vector, differential, and stochastics strips plus the explicit disposition of the still-open non-core source sections
+- next clean follow-on cut is the remaining BW lower-secondary row-granularity debt outside the now active power, geometry, vector, differential-technique, and stochastics strips, especially the still-open algebra/equation residue in `3.2.1 / 3.3.1`, plus the explicit disposition of the still-open non-core source sections
