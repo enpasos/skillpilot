@@ -3116,10 +3116,10 @@
       "shortKey": "canonical_math_sek1_j10_anchor",
       "title": "Jahrgangsstufe 10 (Sek I)",
       "titleEn": "Year 10 (Lower Secondary)",
-      "description": "Kanonischer Jahrgangsstufenanker für J10 der gymnasialen Sekundarstufe I in Mathematik. Hier hängen exponentielle, stochastische, trigonometrische, polynomiale und raumgeometrische Anschlussziele an.",
-      "descriptionEn": "Canonical year anchor for year 10 in lower-secondary Gymnasium mathematics. Exponential, stochastic, trigonometric, polynomial, and spatial-geometry continuation goals attach here.",
+      "description": "Kanonischer Jahrgangsstufenanker fuer J10 der gymnasialen Sekundarstufe I in Mathematik. Hier haengen exponentielle, stochastische, trigonometrische, polynomiale, vektorbezogene und raumgeometrische Anschlussziele an.",
+      "descriptionEn": "Canonical year anchor for year 10 in lower-secondary Gymnasium mathematics. Exponential, stochastic, trigonometric, polynomial, vector-based, and spatial-geometry continuation goals attach here.",
       "core": true,
-      "weight": 11,
+      "weight": 14,
       "tags": [
         "canonical",
         "phase:SekI",
@@ -3143,7 +3143,8 @@
         "c7911f0f-83d4-44ba-9f28-bdc1a5e8cb4a",
         "5d17ebb4-4e27-4f9c-8d0b-3520f34b2e11",
         "1ce8af38-082a-477b-af48-b924c92761bf",
-        "6248bbd7-c7e8-4f91-b3dc-de885cf5abce"
+        "6248bbd7-c7e8-4f91-b3dc-de885cf5abce",
+        "978d6880-006e-4595-b260-461d9d2c4717"
       ],
       "requires": [],
       "extendedData": {
@@ -3400,6 +3401,148 @@
       "type": "cluster"
     },
     {
+      "id": "978d6880-006e-4595-b260-461d9d2c4717",
+      "shortKey": "canonical_math_sek1_j10_vector_lines_motion",
+      "title": "Geraden und Bewegungen mit Vektoren beschreiben",
+      "titleEn": "Describe lines and motions using vectors",
+      "description": "Kanonischer Cluster fuer den spaeten Sek-I-Folgekorridor zu Geraden und Bewegungen mit Vektoren. Der Cluster buendelt einfache Parametergleichungen fuer Geraden und Strecken, Lagebeziehungen im Raum sowie geradlinige Bewegungsmodelle.",
+      "descriptionEn": "Canonical cluster for the late lower-secondary follow-on corridor on lines and motions using vectors. It bundles simple parametric equations for lines and segments, positional relations in space, and rectilinear motion models.",
+      "core": true,
+      "weight": 3,
+      "tags": [
+        "canonical"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K1.1",
+          "K2.1",
+          "K4.1"
+        ],
+        "guidingIdeas": [
+          "L2",
+          "L3"
+        ],
+        "phase": "J10",
+        "area": "Geometry",
+        "topicCode": "CANONICAL.MATH.SEK1.J10.6"
+      },
+      "contains": [
+        "235ae698-369f-4dbe-b46f-87e8b65bb03d",
+        "b025df0c-994c-4807-9c5f-2d548905b73f",
+        "ba343971-10e5-4b05-b005-405b9c1ce447"
+      ],
+      "requires": [
+        "78bcc25b-e48c-471b-9236-6c3b23d48a8b"
+      ],
+      "type": "cluster"
+    },
+    {
+      "id": "235ae698-369f-4dbe-b46f-87e8b65bb03d",
+      "shortKey": "canonical_math_sek1_j10_parametric_lines_segments",
+      "title": "Geraden und Strecken im Raum parametrisch beschreiben",
+      "titleEn": "Describe lines and segments in space parametrically",
+      "description": "Die lernende Person kann Geraden und begrenzte Strecken im Raum in einfachen Faellen mit Stuetz- und Richtungsvektor parametrisch angeben und aus Punktangaben aufstellen.",
+      "descriptionEn": "The learner can state lines and finite segments in space in simple cases using a support vector and a direction vector and construct them from point descriptions.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K1.1",
+          "K2.1",
+          "K4.1"
+        ],
+        "guidingIdeas": [
+          "L2",
+          "L3"
+        ],
+        "phase": "J10",
+        "area": "Geometry",
+        "topicCode": "CANONICAL.MATH.SEK1.J10.6A"
+      },
+      "contains": [],
+      "requires": [
+        "94b48b93-473f-4bc5-8c93-8c1a5e2cd1a6",
+        "57f6d5e4-7c24-4e70-9cf6-737f01d79914"
+      ],
+      "type": "atomic"
+    },
+    {
+      "id": "b025df0c-994c-4807-9c5f-2d548905b73f",
+      "shortKey": "canonical_math_sek1_j10_vector_line_relations",
+      "title": "Lagebeziehungen und Schnittpunkte von Geraden im Raum untersuchen",
+      "titleEn": "Investigate positional relations and intersections of lines in space",
+      "description": "Die lernende Person kann die Lage zweier Geraden im Raum in einfachen Faellen untersuchen und moegliche Schnittpunkte rechnerisch bestimmen.",
+      "descriptionEn": "The learner can investigate the relative position of two lines in space in simple cases and determine possible intersections algebraically.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K1.1",
+          "K2.1",
+          "K4.1"
+        ],
+        "guidingIdeas": [
+          "L2",
+          "L3"
+        ],
+        "phase": "J10",
+        "area": "Geometry",
+        "topicCode": "CANONICAL.MATH.SEK1.J10.6B"
+      },
+      "contains": [],
+      "requires": [
+        "235ae698-369f-4dbe-b46f-87e8b65bb03d",
+        "a8ff2666-8df3-4253-8021-3efe42114e40"
+      ],
+      "type": "atomic"
+    },
+    {
+      "id": "ba343971-10e5-4b05-b005-405b9c1ce447",
+      "shortKey": "canonical_math_sek1_j10_vector_motion_models",
+      "title": "Geradlinige Bewegungen mit Vektoren modellieren",
+      "titleEn": "Model rectilinear motions with vectors",
+      "description": "Die lernende Person kann gleichfoermige geradlinige Bewegungen in Ebene und Raum mit Orts- und Richtungsvektoren beschreiben und Ergebnisse im Anwendungskontext deuten.",
+      "descriptionEn": "The learner can describe uniform rectilinear motions in the plane and in space using position and direction vectors and interpret results in context.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K2.1",
+          "K4.1",
+          "K5.1"
+        ],
+        "guidingIdeas": [
+          "L3",
+          "L4"
+        ],
+        "phase": "J10",
+        "area": "Geometry",
+        "topicCode": "CANONICAL.MATH.SEK1.J10.6C"
+      },
+      "contains": [],
+      "requires": [
+        "235ae698-369f-4dbe-b46f-87e8b65bb03d"
+      ],
+      "type": "atomic"
+    },
+    {
       "id": "5a7095a2-2b3a-48bf-9536-eca79ee5ff8c",
       "shortKey": "canonical_math_sek1_j7_anchor",
       "title": "Jahrgangsstufe 7 (Sek I)",
@@ -3488,10 +3631,10 @@
       "shortKey": "canonical_math_sek1_j9_anchor",
       "title": "Jahrgangsstufe 9 (Sek I)",
       "titleEn": "Year 9 (Lower Secondary)",
-      "description": "Kanonischer Jahrgangsstufenanker für J9 der gymnasialen Sekundarstufe I in Mathematik. Er bindet hier quadratische, stochastische, ähnlichkeitstheoretische, potenzbezogene und trigonometrische Anschlussziele an.",
-      "descriptionEn": "Canonical year anchor for year 9 in lower-secondary Gymnasium mathematics. It attaches quadratic, stochastic, similarity-based, power-related, and trigonometric bridge goals here.",
+      "description": "Kanonischer Jahrgangsstufenanker fuer J9 der gymnasialen Sekundarstufe I in Mathematik. Er bindet hier quadratische, stochastische, aehnlichkeitstheoretische, potenzbezogene, trigonometrische und koordinatengeometrische Anschlussziele an.",
+      "descriptionEn": "Canonical year anchor for year 9 in lower-secondary Gymnasium mathematics. It attaches quadratic, stochastic, similarity-based, power-related, trigonometric, and coordinate-geometry bridge goals here.",
       "core": true,
-      "weight": 24,
+      "weight": 27,
       "tags": [
         "canonical",
         "phase:SekI",
@@ -3517,7 +3660,8 @@
         "289db903-2831-45ef-afc2-c0619c91d680",
         "4d78bbcc-89b8-47f0-aa45-516199e4da5d",
         "219ce079-6bfd-4827-8b66-5dd199e44686",
-        "5a9702f4-7e4d-457d-b98c-f0bafcd1e386"
+        "5a9702f4-7e4d-457d-b98c-f0bafcd1e386",
+        "78bcc25b-e48c-471b-9236-6c3b23d48a8b"
       ],
       "requires": [],
       "extendedData": {
@@ -5274,6 +5418,144 @@
       ],
       "requires": [],
       "type": "cluster"
+    },
+    {
+      "id": "78bcc25b-e48c-471b-9236-6c3b23d48a8b",
+      "shortKey": "canonical_math_sek1_j9_coordinate_geometry_vectors",
+      "title": "Koordinatengeometrie und Vektoren grundlegend nutzen",
+      "titleEn": "Use coordinate geometry and vectors in a foundational way",
+      "description": "Kanonischer Cluster fuer einen spaeten Sek-I-Einstieg in raeumliche Koordinaten und Vektoren. Der Cluster trennt zwischen Grundvorstellungen zu Vektoren, Darstellungen im raeumlichen Koordinatensystem sowie Betrags-, Abstands- und Mittelpunktideen.",
+      "descriptionEn": "Canonical cluster for a late lower-secondary entry into spatial coordinates and vectors. It separates basic vector concepts, representations in the spatial coordinate system, and ideas of magnitude, distance, and midpoints.",
+      "core": true,
+      "weight": 3,
+      "tags": [
+        "canonical"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K1.1",
+          "K3.1",
+          "K4.1"
+        ],
+        "guidingIdeas": [
+          "L2",
+          "L3"
+        ],
+        "phase": "J9",
+        "area": "Geometry",
+        "topicCode": "CANONICAL.MATH.SEK1.J9.8"
+      },
+      "contains": [
+        "94b48b93-473f-4bc5-8c93-8c1a5e2cd1a6",
+        "57f6d5e4-7c24-4e70-9cf6-737f01d79914",
+        "a8ff2666-8df3-4253-8021-3efe42114e40"
+      ],
+      "requires": [],
+      "type": "cluster"
+    },
+    {
+      "id": "94b48b93-473f-4bc5-8c93-8c1a5e2cd1a6",
+      "shortKey": "canonical_math_sek1_j9_vector_basics",
+      "title": "Vektoren geometrisch deuten und komponentenweise operieren",
+      "titleEn": "Interpret vectors geometrically and operate component-wise",
+      "description": "Die lernende Person kann Vektoren in Tupeldarstellung als Orts- oder Verschiebungsvektoren deuten, Komponenten vergleichen, Vektoren addieren, skalieren und Kollinearitaet in einfachen Faellen pruefen.",
+      "descriptionEn": "The learner can interpret vectors in tuple form as position or displacement vectors, compare components, add and scale vectors, and test collinearity in simple cases.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K1.1",
+          "K3.1",
+          "K4.1"
+        ],
+        "guidingIdeas": [
+          "L2",
+          "L3"
+        ],
+        "phase": "J9",
+        "area": "Geometry",
+        "topicCode": "CANONICAL.MATH.SEK1.J9.8A"
+      },
+      "contains": [],
+      "requires": [
+        "25593605-5e13-55cc-9a05-8f3d737e15e9"
+      ],
+      "type": "atomic"
+    },
+    {
+      "id": "57f6d5e4-7c24-4e70-9cf6-737f01d79914",
+      "shortKey": "canonical_math_sek1_j9_spatial_coordinate_drawings",
+      "title": "Punkte und Geraden im raeumlichen Koordinatensystem darstellen",
+      "titleEn": "Represent points and lines in the spatial coordinate system",
+      "description": "Die lernende Person kann Punkte und einfache Geraden in einem raeumlichen kartesischen Koordinatensystem oder in passenden Schraegbildern darstellen und die Darstellung fachsprachlich erklaeren.",
+      "descriptionEn": "The learner can represent points and simple lines in a spatial Cartesian coordinate system or in suitable oblique drawings and explain the representation using correct terminology.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K3.1",
+          "K4.1"
+        ],
+        "guidingIdeas": [
+          "L2",
+          "L3"
+        ],
+        "phase": "J9",
+        "area": "Geometry",
+        "topicCode": "CANONICAL.MATH.SEK1.J9.8B"
+      },
+      "contains": [],
+      "requires": [
+        "25593605-5e13-55cc-9a05-8f3d737e15e9"
+      ],
+      "type": "atomic"
+    },
+    {
+      "id": "a8ff2666-8df3-4253-8021-3efe42114e40",
+      "shortKey": "canonical_math_sek1_j9_vector_distances_midpoints",
+      "title": "Abstaende, Betraege und Mittelpunkte im Raum berechnen",
+      "titleEn": "Calculate distances, magnitudes, and midpoints in space",
+      "description": "Die lernende Person kann den Betrag eines Vektors, den Abstand zweier Punkte und den Mittelpunkt einer Strecke im Raum koordinatenbasiert berechnen und geometrisch deuten.",
+      "descriptionEn": "The learner can calculate the magnitude of a vector, the distance between two points, and the midpoint of a segment in space using coordinates and interpret the results geometrically.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K1.1",
+          "K2.1",
+          "K4.1"
+        ],
+        "guidingIdeas": [
+          "L2",
+          "L3"
+        ],
+        "phase": "J9",
+        "area": "Geometry",
+        "topicCode": "CANONICAL.MATH.SEK1.J9.8C"
+      },
+      "contains": [],
+      "requires": [
+        "94b48b93-473f-4bc5-8c93-8c1a5e2cd1a6",
+        "57f6d5e4-7c24-4e70-9cf6-737f01d79914"
+      ],
+      "type": "atomic"
     },
     {
       "id": "d4a9fc20-d1be-46e7-86e9-2bf8d7a9cc40",

@@ -72,7 +72,7 @@ This is intentionally coarse. It is good enough for steering and ordering work; 
 | --- | ---: | --- | --- | --- |
 | `DE-HE` Hessen | `83%` | broad lower/upper canonical donor lane | explicit disposition for residual non-core source sections | document and freeze residual source-policy boundary |
 | `DE-BY` Bayern | `83%` | broad retained source lane on shared spine | explicit disposition for residual non-core source sections | document and freeze residual source-policy boundary |
-| `DE-BW` Baden-Wuerttemberg | `83%` | source archived, lower + upper source lanes active, upper `3.4` / `3.5` broadly closed, lower `3.1`, `3.2.3`, `3.2.5`, the first broad `3.3.2 / 3.3.3` geometry strip, the first broad `3.3.4` differential strip, and the first broad `3.3.5` stochastics strip are now reviewed on the shared spine | late Sek I is no longer broadly open, but residual coordinate/vector and row-granularity debt remain; residual non-core sections still undocumented as closure decision | close the remaining BW Sek-I residual `3.3.1 / 3.3.3 / 3.3.4 / 3.3.5` row debt with the coordinate/vector follow-on first, then disposition `1.2` / `1.3` / `2.x` / `4` / `5` |
+| `DE-BW` Baden-Wuerttemberg | `83%` | source archived, lower + upper source lanes active, upper `3.4` / `3.5` broadly closed, lower `3.1`, `3.2.3`, `3.2.5`, the first broad `3.3.2 / 3.3.3` geometry strip, the late-Sek-I coordinate/vector follow-on, the first broad `3.3.4` differential strip, and the first broad `3.3.5` stochastics strip are now reviewed on the shared spine | late Sek I is no longer broadly open, but residual row-granularity debt remains; residual non-core sections still undocumented as closure decision | close the remaining BW Sek-I residual `3.2.1 / 3.3.1 / 3.3.4 / 3.3.5` fine-grained debt, then disposition `1.2` / `1.3` / `2.x` / `4` / `5` |
 | `DE-NI` Niedersachsen | `67%` | source archived, lower + upper source lanes active, upper active pilot surface broadly closed | lower-secondary still not broadly closed end-to-end; residual non-core sections still undocumented as closure decision | widen Sek I next |
 | `DE-NW` Nordrhein-Westfalen | `50%` | lower + upper active corridors, useful canonical bridge | both stages still corridor-first rather than broad source closure | widen from first corridors toward broad lower/upper closure |
 | `DE-BB` Brandenburg | `50%` | source archived, lower + upper lanes active, first reviewed corridors live | lower and upper still corridor-first; no broad source closure yet | widen lower-secondary first, then keep upper broadening |
@@ -127,18 +127,18 @@ Its relevant top-level structure is:
 
 ### Current BW closure score
 
-Current working score: `67%` = `4/6` gates
+Current working score: `83%` = `5/6` gates
 
 Completed:
 
 - `G1` source archived
 - `G2` lower-secondary source lane active
 - `G3` upper-secondary source lane active
+- `G4` lower-secondary `3.x` broadly closed
 - `G5` upper-secondary `3.x` broadly closed
 
 Open:
 
-- `G4` lower-secondary `3.x` broadly closed
 - `G6` residual non-core sections explicitly dispositioned
 
 ### What is already broadly closed in BW
@@ -184,24 +184,24 @@ The recommended BW close-out order is:
 - reason: finishes the middle Sek-I band cleanly before adding more advanced `9/10` debt
 
 3. `3.3.2 + 3.3.3` broad geometry / measurement widening in `Klassen 9/10`
-- status: materially done, but not yet source-perfect at row granularity
-- reason: closes the cleanest non-duplicative late-Sek-I surface first and makes BW learner-facing Sek I noticeably broader
+- status: materially done, and the remaining coordinate/vector residue is now also closed on a dedicated Sek-I vector corridor
+- reason: closes the cleanest non-duplicative late-Sek-I surface first and keeps BW learner-facing Sek I broad without leaking into Sek II
 
 4. `3.3.5` broad data / probability widening in `Klassen 9/10`
 - status: materially done, but not yet source-perfect at row granularity
 - reason: closes the last still-broadly-open late-Sek-I content lane before the remaining fine-grained cleanup
 
-5. remaining debt in `3.3.1`, `3.3.3`, `3.3.4`, `3.3.5`, and any still-open fine-grained `3.2.1` residue
+5. remaining debt in `3.2.1`, `3.3.1`, `3.3.4`, `3.3.5`, and any still-open fine-grained residual rows outside the active power, geometry, vector, differential, and stochastics strips
 - reason: finishes late Sek I end-to-end without forcing fragile duplicate routes into the learner-facing BW tree
 
-5. explicit residual-section disposition note for:
+6. explicit residual-section disposition note for:
 - `1.2`
 - `1.3`
 - `2.x`
 - `4`
 - `5`
 
-5. after that, raise BW from `67%` to `100%`
+7. after that, raise BW from `83%` to `100%`
 
 ### BW exit criteria
 

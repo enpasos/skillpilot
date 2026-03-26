@@ -19,7 +19,7 @@ Initial source snapshots:
 Current import boundary:
 
 - the archived Baden-Wuerttemberg source snapshots are intentionally partial pilot subsets, not full subject imports
-- the first active source snapshots currently cover the lower-secondary Klassen-5/6 foundation strip, the shared lower-secondary functions corridor, the first broad Klassen-7/8 widening across algebra, geometry, and data, the first Klassen-9/10 algebra / function follow-on, the first broad late-Sek-I geometry follow-on on trigonometry, circle figures, and solids, the first broad late-Sek-I function / differential follow-on on trigonometrische Funktionen, derivative entry, and first derivative-based graph analysis, and the first broad late-Sek-I stochastics follow-on on conditional probabilities, random variables, and binomial distributions, as well as the first upper-secondary analysis corridor, the adjacent upper-secondary calculation-rules follow-on, the first upper-secondary stochastics follow-on, the first upper-secondary geometry follow-on, the first upper-secondary Gauß follow-on, and the remaining upper-secondary integral-application follow-on from `Messen`
+- the first active source snapshots currently cover the lower-secondary Klassen-5/6 foundation strip, the shared lower-secondary functions corridor, the first broad Klassen-7/8 widening across algebra, geometry, and data, the first Klassen-9/10 algebra / function follow-on, the first broad late-Sek-I geometry follow-on on trigonometry, circle figures, and solids, the clean late-Sek-I coordinate/vector follow-on on spatial coordinates, vector basics, line relations, and rectilinear motion models, the first broad late-Sek-I function / differential follow-on on trigonometrische Funktionen, derivative entry, and first derivative-based graph analysis, and the first broad late-Sek-I stochastics follow-on on conditional probabilities, random variables, and binomial distributions, as well as the first upper-secondary analysis corridor, the adjacent upper-secondary calculation-rules follow-on, the first upper-secondary stochastics follow-on, the first upper-secondary geometry follow-on, the first upper-secondary Gauß follow-on, and the remaining upper-secondary integral-application follow-on from `Messen`
 - the imported Sek-I slice currently covers:
   - the curriculum-wide orientation layer from `1.1 Bildungswert des Faches Mathematik`
   - the full `Klassen 5/6` strip across `3.1.1 Leitidee Zahl - Variable - Operation`, `3.1.2 Leitidee Messen`, `3.1.3 Leitidee Raum und Form`, `3.1.4 Leitidee Funktionaler Zusammenhang`, and `3.1.5 Leitidee Daten und Zufall`
@@ -29,6 +29,7 @@ Current import boundary:
   - the full `3.2.5 Leitidee Daten und Zufall` in `Klassen 7/8`
   - the first `3.3.1 / 3.3.4` follow-on around variable terms, powers, exponentials, and symmetry in `Klassen 9/10`
   - the first broad `3.3.2 / 3.3.3` follow-on around Trigonometrie, Kreisfiguren, Schraegbilder, Netze sowie Flaechen- und Volumenideen in `Klassen 9/10`
+  - the clean late-Sek-I coordinate/vector follow-on around Vektorbegriff, raeumlichen Koordinatensystemen, Abstaenden und Mittelpunkten, Parametergleichungen, Geradenlagen, und geradlinigen Bewegungen in `Klassen 9/10`
   - the first broad late-Sek-I `3.3.4` follow-on around trigonometrische Funktionen, periodische Modellierung, Ableitungsbegriff, Monotonie-/Extremwertuntersuchungen sowie Tangenten-, Normalen-, und Wendepunktdeutung in `Klassen 9/10`
   - the first broad `3.3.5` follow-on around bedingten Wahrscheinlichkeiten, Zufallsgroessen, Bernoulli-Ketten, Binomialverteilungen, Histogrammen, Erwartungswerten und Standardabweichungen in `Klassen 9/10`
 - the imported Kursstufe / Sek-II slice currently covers:
@@ -92,6 +93,13 @@ Operational interpretation:
   - `720a367c-0e5e-47cd-b4ec-808e07f765f4 -> 837b015a-c2a2-5f31-831c-ae16ee2ee6ce` for probabilities in Bernoulli chains
   - `1d3affbe-5453-4188-9a61-28446b64da17 -> 42d300e3-e982-5889-98d7-fc297f10eff1` for parameter effects in binomial histograms
   - `8ba195f9-76ba-4e50-8c87-b0fb9d5ec7fa -> 7d41b805-0fd8-5ac3-980d-79112a27c1b4` for expectation value and standard deviation of binomial random variables
+- the next BW Sek-I widening step now also closes the retained late-Sek-I coordinate/vector residue on a dedicated Sek-I vector corridor instead of leaking into Q2 geometry:
+  - `97bc16bc-bc64-48b8-8217-8a74c8bcc296 -> 94b48b93-473f-4bc5-8c93-8c1a5e2cd1a6` for vector basics in tuple form, scaling, and collinearity in simple cases
+  - `4122e400-b048-4a10-a396-08ff5348b610 -> 57f6d5e4-7c24-4e70-9cf6-737f01d79914` for points and simple lines in spatial coordinate systems and oblique drawings
+  - `f04a65b1-915d-4842-b938-9c8b2d049b60 -> a8ff2666-8df3-4253-8021-3efe42114e40` for vector magnitudes, point distances, and midpoints in space
+  - `10ddff91-ce1f-4d50-ba3b-e8682632f4db -> 235ae698-369f-4dbe-b46f-87e8b65bb03d` for simple parametric descriptions of lines and segments in space
+  - `2673c5be-0d1b-4821-8b7f-54053d62be82 -> b025df0c-994c-4807-9c5f-2d548905b73f` for line relations and intersections in simple spatial cases
+  - `f38a028f-ff36-40a9-88ea-7381fecebd90 -> ba343971-10e5-4b05-b005-405b9c1ce447` for rectilinear motion models with vectors
 - the first reviewed Baden-Wuerttemberg upper-secondary analysis mapping pass is now active on twelve rows:
   - the exact course-stage motivation anchor `f84004f9-0987-40f4-88dd-830c039b7bf6 -> 71cec9fb-3751-4d61-8b34-c5adbbf6e5f2`
   - the retained-split Basisfach e-function-properties bridge `e0769810-ba73-4a52-8e9c-660d1fb9d6e6 -> 4047af71-de53-5dc3-80c6-a7c78fb4bfe4`
@@ -216,4 +224,4 @@ Operational interpretation:
 - the active BW learner-facing Sek-I views now expose the reviewed lower-secondary pilot corridor directly instead of surfacing upper-secondary prerequisite anchors as pseudo year buckets
 - inside that Sek-I view, `Klassen 5/6` now appears as a broad learner-facing foundation block with explicit substructure for `Zahl - Variable - Operation`, `Messen`, `Raum und Form`, `Funktionaler Zusammenhang`, and `Daten und Zufall`
 - inside that Sek-I view, `Klassen 7/8` now appears as a broad learner-facing middle block with explicit substructure for `Algebra und Gleichungen`, `Geometrie`, `Funktionaler Zusammenhang`, and `Daten und Zufall`
-- inside that Sek-I view, `Klassen 9/10` now appears as a broader late-Sek-I block across Daten und Zufall, Geometrie, Trigonometrie, and Funktionsuntersuchungen
+- inside that Sek-I view, `Klassen 9/10` now appears as a broader late-Sek-I block across Daten und Zufall, Geometrie, Trigonometrie, Koordinatengeometrie / Vektoren, and Funktionsuntersuchungen
