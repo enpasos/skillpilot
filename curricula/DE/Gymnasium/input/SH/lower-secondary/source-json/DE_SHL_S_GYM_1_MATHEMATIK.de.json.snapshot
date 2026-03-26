@@ -8,8 +8,8 @@
   "frameworkId": "sh-fa-math-2024-sek1",
   "title": "Mathematik Sekundarstufe I (Schleswig-Holstein, Pilot-Quellsnapshot)",
   "titleEn": "Mathematics Secondary Level I (Schleswig-Holstein, Pilot Source Snapshot)",
-  "description": "Erster archivierter SH-Quellsnapshot fuer die Mathematik der Sekundarstufe I aus den Fachanforderungen 2024. Der Snapshot bildet die offizielle Jahrgangsband-Tabelle 5/6, 7/8/9 und 10 mit ihren Leitideen-Zellen als stabile source-first Struktur ab und verfeinert derzeit die 5/6-Zellen `Strukturen und funktionaler Zusammenhang` in die Teilaspekte Tabellen und Diagramme sowie `Groessen und Messen` in Grundgroessen, Flaechenberechnung an Rechtecken und Volumenberechnung an Quadern.",
-  "descriptionEn": "First archived Schleswig-Holstein source snapshot for lower-secondary mathematics from the 2024 subject requirements. The snapshot models the official year-band table 5/6, 7/8/9, and 10 with its guiding-idea cells as a stable source-first structure and currently refines the 5/6 cells `structures and functional relationships` into the aspects tables and diagrams and `measurement` into basic quantities, rectangle area calculation, and cuboid volume calculation.",
+  "description": "Erster archivierter SH-Quellsnapshot fuer die Mathematik der Sekundarstufe I aus den Fachanforderungen 2024. Der Snapshot bildet die offizielle Jahrgangsband-Tabelle 5/6, 7/8/9 und 10 mit ihren Leitideen-Zellen als stabile source-first Struktur ab und verfeinert derzeit die 5/6-Zellen `Strukturen und funktionaler Zusammenhang` in die Teilaspekte Tabellen und Diagramme, `Groessen und Messen` in Grundgroessen, Flaechenberechnung an Rechtecken und Volumenberechnung an Quadern sowie `Daten und Zufall` in statistische Erhebungen, kombinatorische Fragestellungen und einstufige Zufallsexperimente.",
+  "descriptionEn": "First archived Schleswig-Holstein source snapshot for lower-secondary mathematics from the 2024 subject requirements. The snapshot models the official year-band table 5/6, 7/8/9, and 10 with its guiding-idea cells as a stable source-first structure and currently refines the 5/6 cells `structures and functional relationships` into tables and diagrams, `measurement` into basic quantities, rectangle area calculation, and cuboid volume calculation, and `data and chance` into statistical surveys, combinatorial questions, and single-stage random experiments.",
   "compatibilityOnly": true,
   "legacyHiddenByDefault": true,
   "goals": [
@@ -19,7 +19,7 @@
       "titleEn": "Mathematics Secondary Level I",
       "description": "Pilot-Quellsnapshot der schleswig-holsteinischen Fachanforderungen Mathematik Sekundarstufe I mit der offiziellen Jahrgangsband-Struktur 5/6, 7/8/9 und 10.",
       "descriptionEn": "Pilot source snapshot of the Schleswig-Holstein lower-secondary mathematics requirements with the official year-band structure 5/6, 7/8/9, and 10.",
-      "weight": 16,
+      "weight": 18,
       "tags": [
         "Sek1",
         "PilotSubset",
@@ -48,7 +48,7 @@
       "titleEn": "Year Band 5/6",
       "description": "Offizielle SH-Struktur fuer Mathematik im Jahrgangsband 5/6 ueber die Leitideen Zahl und Operation, Groessen und Messen, Strukturen und funktionaler Zusammenhang, Raum und Form sowie Daten und Zufall.",
       "descriptionEn": "Official Schleswig-Holstein mathematics structure for year band 5/6 across the guiding ideas number and operations, measurement, structures and functional relationships, space and shape, and data and chance.",
-      "weight": 8,
+      "weight": 10,
       "tags": [
         "Sek1",
         "Jg5-6",
@@ -375,12 +375,94 @@
       "title": "Jahrgangsband 5/6: Daten und Zufall",
       "titleEn": "Jahrgangsband 5/6: Daten und Zufall",
       "description": "Die Schuelerinnen und Schueler bearbeiten im Jahrgangsband 5/6 einfache statistische Erhebungen, einfache kombinatorische Fragestellungen und einstufige Zufallsexperimente.",
-      "descriptionEn": "Die Schuelerinnen und Schueler bearbeiten im Jahrgangsband 5/6 einfache statistische Erhebungen, einfache kombinatorische Fragestellungen und einstufige Zufallsexperimente.",
-      "weight": 1,
+      "descriptionEn": "Students work on simple statistical surveys, simple combinatorial questions, and single-stage random experiments in year band 5/6.",
+      "weight": 3,
       "tags": [
         "Sek1",
         "Jg5-6",
         "DatenUndZufall"
+      ],
+      "dimensionTags": {
+        "framework": "sh-fa-math-2024-sek1",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG5_6",
+        "area": "Daten und Zufall"
+      },
+      "requires": [],
+      "contains": [
+        "sh-sek1-jg5-6-daten-zufall-statistische-erhebungen",
+        "sh-sek1-jg5-6-daten-zufall-kombinatorische-fragestellungen",
+        "sh-sek1-jg5-6-daten-zufall-einstufige-zufallsexperimente"
+      ],
+      "sourceRef": "Fachanforderungen Mathematik SH (2024), Sekundarstufe I, 3 Themen und Inhalte des Unterrichts, Tabelle zur Verteilung der Inhalte auf die Jahrgangsstufen, S. 45.",
+      "type": "cluster"
+    },
+    {
+      "id": "sh-sek1-jg5-6-daten-zufall-statistische-erhebungen",
+      "title": "Jahrgangsband 5/6: Daten und Zufall - Statistische Erhebungen",
+      "titleEn": "Year Band 5/6: Data and Chance - Statistical Surveys",
+      "description": "Die Schuelerinnen und Schueler bearbeiten im Jahrgangsband 5/6 einfache statistische Erhebungen.",
+      "descriptionEn": "Students work on simple statistical surveys in year band 5/6.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "Jg5-6",
+        "DatenUndZufall",
+        "StatistischeErhebungen"
+      ],
+      "dimensionTags": {
+        "framework": "sh-fa-math-2024-sek1",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG5_6",
+        "area": "Daten und Zufall"
+      },
+      "requires": [],
+      "contains": [],
+      "sourceRef": "Fachanforderungen Mathematik SH (2024), Sekundarstufe I, 3 Themen und Inhalte des Unterrichts, Tabelle zur Verteilung der Inhalte auf die Jahrgangsstufen, S. 45.",
+      "type": "atomic"
+    },
+    {
+      "id": "sh-sek1-jg5-6-daten-zufall-kombinatorische-fragestellungen",
+      "title": "Jahrgangsband 5/6: Daten und Zufall - Kombinatorische Fragestellungen",
+      "titleEn": "Year Band 5/6: Data and Chance - Combinatorial Questions",
+      "description": "Die Schuelerinnen und Schueler bearbeiten im Jahrgangsband 5/6 einfache kombinatorische Fragestellungen.",
+      "descriptionEn": "Students work on simple combinatorial questions in year band 5/6.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "Jg5-6",
+        "DatenUndZufall",
+        "KombinatorischeFragestellungen"
+      ],
+      "dimensionTags": {
+        "framework": "sh-fa-math-2024-sek1",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG5_6",
+        "area": "Daten und Zufall"
+      },
+      "requires": [],
+      "contains": [],
+      "sourceRef": "Fachanforderungen Mathematik SH (2024), Sekundarstufe I, 3 Themen und Inhalte des Unterrichts, Tabelle zur Verteilung der Inhalte auf die Jahrgangsstufen, S. 45.",
+      "type": "atomic"
+    },
+    {
+      "id": "sh-sek1-jg5-6-daten-zufall-einstufige-zufallsexperimente",
+      "title": "Jahrgangsband 5/6: Daten und Zufall - Einstufige Zufallsexperimente",
+      "titleEn": "Year Band 5/6: Data and Chance - Single-Stage Random Experiments",
+      "description": "Die Schuelerinnen und Schueler bearbeiten im Jahrgangsband 5/6 einstufige Zufallsexperimente.",
+      "descriptionEn": "Students work on single-stage random experiments in year band 5/6.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "Jg5-6",
+        "DatenUndZufall",
+        "EinstufigeZufallsexperimente"
       ],
       "dimensionTags": {
         "framework": "sh-fa-math-2024-sek1",

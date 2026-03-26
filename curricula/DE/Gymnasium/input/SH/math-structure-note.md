@@ -19,6 +19,7 @@ Current source boundary:
 - the lower-secondary snapshot currently preserves the source-native SH year bands `5/6`, `7/8/9`, and `10`
 - inside the lower-secondary snapshot, the official `5/6` cell `Strukturen und funktionaler Zusammenhang` is now refined into the two retained source atoms `Tabellen` and `Diagramme`
 - inside the lower-secondary snapshot, the official `5/6` cell `Groessen und Messen` is now refined into the three retained source atoms `Grundgroessen`, `Flaechenberechnung an Rechtecken`, and `Volumenberechnung an Quadern`
+- inside the lower-secondary snapshot, the official `5/6` cell `Daten und Zufall` is now refined into the three retained source atoms `Statistische Erhebungen`, `Kombinatorische Fragestellungen`, and `Einstufige Zufallsexperimente`
 - the upper-secondary snapshot currently preserves the source-native SH phase table `Einfuehrungsjahr`, `1. Jahr der Qualifikationsphase`, and `2. Jahr der Qualifikationsphase`
 
 Operational interpretation:
@@ -27,7 +28,7 @@ Operational interpretation:
 - both SH `sourceLandscapeId` values are now active in the shared provenance registries together with their source-goal membership and closure metadata
 - the current SH lane still keeps source-native coarse granularity, but it now carries:
   - structural entry-anchor bridges on top of the official year bands and upper-secondary phases
-  - two explicit source refinements inside Sek I on `5/6: Strukturen und funktionaler Zusammenhang` and `5/6: Groessen und Messen`
+  - three explicit source refinements inside Sek I on `5/6: Strukturen und funktionaler Zusammenhang`, `5/6: Groessen und Messen`, and `5/6: Daten und Zufall`
   - a coarse reviewed later-Sek-I functions strip on `Strukturen und funktionaler Zusammenhang`
   - coarse reviewed broad Sek-I surface mappings on most remaining official lower-secondary cells
   - a coarse reviewed upper-secondary analysis strip on the official `Analysis` phase cells
@@ -35,6 +36,6 @@ Operational interpretation:
 
 Next step:
 
-- decide which remaining coarse SH lower-secondary cells should be source-refined next beyond the now split `5/6: Strukturen und funktionaler Zusammenhang` and `5/6: Groessen und Messen`
+- decide which remaining coarse SH lower-secondary cells should be source-refined next beyond the now split `5/6: Strukturen und funktionaler Zusammenhang`, `5/6: Groessen und Messen`, and `5/6: Daten und Zufall`
 - if narrower canonical corridor coverage becomes necessary, continue refining the SH source lane beyond the current mostly one-cell-per-official-table-cell granularity
 - only after that should SH move from coarse cell-level reviewed surface toward materially broader fine-grained reviewed coverage

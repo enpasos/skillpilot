@@ -8,7 +8,7 @@ Current status on `2026-03-26`:
   `sh_math_lower_secondary_to_canonical_math.json`
 - active `sourceLandscapeId`:
   `271b385b-04c7-4205-8202-b2dc918f5782`
-- current mapping count: `21`
+- current mapping count: `23`
 - the first Schleswig-Holstein mathematics source PDF is now archived locally:
   `curricula/DE/Gymnasium/input/SH/Fachanforderungen_Mathematik_Sekundarstufe_2024_barrierearm.pdf`
 - the 2024 Allgemeiner Teil is now archived locally:
@@ -37,6 +37,10 @@ Current use:
   `Grundgroessen -> Groessen und Einheiten vergleichen und umrechnen`
   `Flaechenberechnung an Rechtecken -> Flaecheninhalte ebener Figuren berechnen`
   `Volumenberechnung an Quadern -> Volumina und Oberflaechen einfacher Koerper berechnen`
+- the `Jahrgangsband 5/6: Daten und Zufall` cell is now also source-refined into:
+  `Statistische Erhebungen -> Absolute und relative Haeufigkeiten bestimmen und darstellen`
+  `Einstufige Zufallsexperimente -> Laplace-Experimente auswerten`
+  `Kombinatorische Fragestellungen` currently remain as a retained source atom without a narrower reviewed canonical bridge
 - this reviewed pass is intentionally coarse because the current SH source snapshot keeps one retained source goal per official year-band table cell
-- except for the refined `5/6` structures and measurement cells, the remaining SH lower-secondary reviewed surface is still mostly one official table cell per coarse canonical bridge
-- next step: refine the remaining coarse SH `5/6` cells, most likely `Zahl und Operation` or `Daten und Zufall`, before any broader reviewed-coverage or `P5` claim
+- except for the refined `5/6` structures, measurement, and data/chance cells, the remaining SH lower-secondary reviewed surface is still mostly one official table cell per coarse canonical bridge
+- next step: refine the remaining coarse SH `5/6` cells, most likely `Zahl und Operation` or `Raum und Form`, before any broader reviewed-coverage or `P5` claim

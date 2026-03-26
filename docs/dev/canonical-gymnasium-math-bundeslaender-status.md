@@ -55,7 +55,7 @@ This file is generated from:
 | `DE-NI` Niedersachsen | `P4` First corridor reviewed | `65%` | `yes` | `149` | `snapshots_active` | `active` |
 | `DE-BB` Brandenburg | `P4` First corridor reviewed | `65%` | `no` | `76` | `snapshots_active` | `next_wave` |
 | `DE-BE` Berlin | `P4` First corridor reviewed | `65%` | `no` | `64` | `snapshots_active` | `next_wave` |
-| `DE-SH` Schleswig-Holstein | `P4` First corridor reviewed | `65%` | `no` | `34` | `snapshots_active` | `next_wave` |
+| `DE-SH` Schleswig-Holstein | `P4` First corridor reviewed | `65%` | `no` | `36` | `snapshots_active` | `next_wave` |
 | `DE-HB` Bremen | `P0` Placeholder | `0%` | `no` | `0` | `placeholder_only` | `backlog` |
 | `DE-HH` Hamburg | `P0` Placeholder | `0%` | `no` | `0` | `placeholder_only` | `backlog` |
 | `DE-MV` Mecklenburg-Vorpommern | `P0` Placeholder | `0%` | `no` | `0` | `placeholder_only` | `backlog` |
@@ -74,7 +74,7 @@ This file is generated from:
 - `DE-NI` (`P4`, `active`): Move the Niedersachsen widening to the next Sek-I geometry / algebra corridor unless a separate Berufliches-Gymnasium lane is opened intentionally, because the first shared general-Gymnasium upper-secondary pilot surface is now exhausted.
 - `DE-BB` (`P4`, `next_wave`): Widen the Brandenburg lower-secondary lane beyond the first functions corridor while the shared BE/BB overlap stays tight.
 - `DE-BE` (`P4`, `next_wave`): Widen the Berlin upper-secondary lane from the active Q4 distribution-and-binomial corridor toward the first Q4 inference, tests, and normal-approximation follow-on corridor.
-- `DE-SH` (`P4`, `next_wave`): Refine the remaining coarse SH `5/6` source cells, most likely `Zahl und Operation` or `Daten und Zufall`, before any broader reviewed-coverage or P5 claim.
+- `DE-SH` (`P4`, `next_wave`): Refine the remaining coarse SH `5/6` source cells, most likely `Zahl und Operation` or `Raum und Form`, before any broader reviewed-coverage or P5 claim.
 
 ## Next steps
 
@@ -85,7 +85,7 @@ This file is generated from:
 - `DE-NI`: Move the Niedersachsen widening to the next Sek-I geometry / algebra corridor unless a separate Berufliches-Gymnasium lane is opened intentionally, because the first shared general-Gymnasium upper-secondary pilot surface is now exhausted.
 - `DE-BB`: Widen the Brandenburg lower-secondary lane beyond the first functions corridor while the shared BE/BB overlap stays tight.
 - `DE-BE`: Widen the Berlin upper-secondary lane from the active Q4 distribution-and-binomial corridor toward the first Q4 inference, tests, and normal-approximation follow-on corridor.
-- `DE-SH`: Refine the remaining coarse SH `5/6` source cells, most likely `Zahl und Operation` or `Daten und Zufall`, before any broader reviewed-coverage or P5 claim.
+- `DE-SH`: Refine the remaining coarse SH `5/6` source cells, most likely `Zahl und Operation` or `Raum und Form`, before any broader reviewed-coverage or P5 claim.
 - `DE-HB`: Archive the official math source bundle and create the first state mapping lane scaffold.
 - `DE-HH`: Archive the official math source bundle and create the first state mapping lane scaffold.
 - `DE-MV`: Archive the official math source bundle and create the first state mapping lane scaffold.

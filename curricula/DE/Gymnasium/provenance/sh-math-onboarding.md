@@ -35,8 +35,9 @@ Activation result:
   - `2. Jahr der Qualifikationsphase`
 - the lower-secondary source snapshot still keeps a source-native official-cell structure, but now refines the `5/6` cell `Strukturen und funktionaler Zusammenhang` into the retained source atoms `Tabellen` and `Diagramme`
 - the lower-secondary source snapshot now also refines the `5/6` cell `Groessen und Messen` into the retained source atoms `Grundgroessen`, `Flaechenberechnung an Rechtecken`, and `Volumenberechnung an Quadern`
+- the lower-secondary source snapshot now also refines the `5/6` cell `Daten und Zufall` into the retained source atoms `Statistische Erhebungen`, `Kombinatorische Fragestellungen`, and `Einstufige Zufallsexperimente`
 - the upper-secondary source snapshot currently keeps one retained source atom per official phase-and-area cell from the phase table
-- the lower-secondary mapping lane now carries `21` mappings:
+- the lower-secondary mapping lane now carries `23` mappings:
   - exact source-root bridge to the canonical math root
   - `Jahrgangsband 5/6 -> J5`
   - `Jahrgangsband 7/8/9 -> J7`
@@ -56,6 +57,10 @@ Activation result:
     `Grundgroessen -> Groessen und Einheiten vergleichen und umrechnen`
     `Flaechenberechnung an Rechtecken -> Flaecheninhalte ebener Figuren berechnen`
     `Volumenberechnung an Quadern -> Volumina und Oberflaechen einfacher Koerper berechnen`
+  - refined `5/6` data/chance split with first statistics/probability bridges:
+    `Statistische Erhebungen -> Absolute und relative Haeufigkeiten bestimmen und darstellen`
+    `Einstufige Zufallsexperimente -> Laplace-Experimente auswerten`
+    `Kombinatorische Fragestellungen` currently remain a retained source atom without a narrower reviewed canonical bridge
 - the upper-secondary mapping lane now carries `13` mappings:
   - exact source-root bridge to the canonical math root
   - `Einfuehrungsjahr -> E`
@@ -70,7 +75,7 @@ Activation result:
     `Stochastik -> Stochastik, Tests und Statistik (Sek II)`
 - Schleswig-Holstein structural entry-anchor mappings are now active on the shared spine
 - Schleswig-Holstein now also carries a widened coarse reviewed canonical surface on top of the source-native year-band / phase cells
-- these reviewed corridors remain intentionally coarse because the current SH source lane is still mostly one retained source goal per official table cell except for the refined `5/6` structures and measurement splits
+- these reviewed corridors remain intentionally coarse because the current SH source lane is still mostly one retained source goal per official table cell except for the refined `5/6` structures, measurement, and data/chance splits
 
 Operational rule from here:
 
@@ -78,5 +83,5 @@ Operational rule from here:
 - keep the archived SH snapshots source-native first, i.e. preserve official year bands and official upper-secondary phase buckets instead of normalizing them inside the source lane
 - keep the shared lower-secondary entry-anchor bridge stable on top of the SH year-band snapshot
 - keep the shared upper-secondary entry-anchor bridge stable on top of the SH phase snapshot
-- keep the widened coarse reviewed SH surface stable while deciding which remaining coarse SH cells need source refinement next, most likely `5/6: Zahl und Operation` or `5/6: Daten und Zufall`
+- keep the widened coarse reviewed SH surface stable while deciding which remaining coarse SH cells need source refinement next, most likely `5/6: Zahl und Operation` or `5/6: Raum und Form`
 - if reviewed work needs narrower source-to-canonical evidence, continue refining the SH source lane beyond the current mostly one-cell-per-table-cell granularity before forcing finer canonical claims
