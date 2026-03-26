@@ -1,6 +1,6 @@
 # Baden-Wuerttemberg Mathematics Structure Note
 
-State: `2026-03-25`
+State: `2026-03-26`
 
 This note records the first source-snapshot scope for the mathematics-first DE expansion track in Baden-Wuerttemberg.
 
@@ -19,7 +19,7 @@ Initial source snapshots:
 Current import boundary:
 
 - the archived Baden-Wuerttemberg source snapshots are intentionally partial pilot subsets, not full subject imports
-- the first active source snapshots currently cover the lower-secondary Klassen-5/6 foundation strip, the shared lower-secondary functions corridor, the first broad Klassen-7/8 widening across algebra, geometry, and data, the first Klassen-9/10 algebra / function follow-on, the first broad late-Sek-I geometry follow-on on trigonometry, circle figures, and solids, and the first broad late-Sek-I stochastics follow-on on conditional probabilities, random variables, and binomial distributions, as well as the first upper-secondary analysis corridor, the adjacent upper-secondary calculation-rules follow-on, the first upper-secondary stochastics follow-on, the first upper-secondary geometry follow-on, the first upper-secondary Gauß follow-on, and the remaining upper-secondary integral-application follow-on from `Messen`
+- the first active source snapshots currently cover the lower-secondary Klassen-5/6 foundation strip, the shared lower-secondary functions corridor, the first broad Klassen-7/8 widening across algebra, geometry, and data, the first Klassen-9/10 algebra / function follow-on, the first broad late-Sek-I geometry follow-on on trigonometry, circle figures, and solids, the first broad late-Sek-I function / differential follow-on on trigonometrische Funktionen, derivative entry, and first derivative-based graph analysis, and the first broad late-Sek-I stochastics follow-on on conditional probabilities, random variables, and binomial distributions, as well as the first upper-secondary analysis corridor, the adjacent upper-secondary calculation-rules follow-on, the first upper-secondary stochastics follow-on, the first upper-secondary geometry follow-on, the first upper-secondary Gauß follow-on, and the remaining upper-secondary integral-application follow-on from `Messen`
 - the imported Sek-I slice currently covers:
   - the curriculum-wide orientation layer from `1.1 Bildungswert des Faches Mathematik`
   - the full `Klassen 5/6` strip across `3.1.1 Leitidee Zahl - Variable - Operation`, `3.1.2 Leitidee Messen`, `3.1.3 Leitidee Raum und Form`, `3.1.4 Leitidee Funktionaler Zusammenhang`, and `3.1.5 Leitidee Daten und Zufall`
@@ -29,6 +29,7 @@ Current import boundary:
   - the full `3.2.5 Leitidee Daten und Zufall` in `Klassen 7/8`
   - the first `3.3.1 / 3.3.4` follow-on around variable terms, powers, exponentials, and symmetry in `Klassen 9/10`
   - the first broad `3.3.2 / 3.3.3` follow-on around Trigonometrie, Kreisfiguren, Schraegbilder, Netze sowie Flaechen- und Volumenideen in `Klassen 9/10`
+  - the first broad late-Sek-I `3.3.4` follow-on around trigonometrische Funktionen, periodische Modellierung, Ableitungsbegriff, Monotonie-/Extremwertuntersuchungen sowie Tangenten-, Normalen-, und Wendepunktdeutung in `Klassen 9/10`
   - the first broad `3.3.5` follow-on around bedingten Wahrscheinlichkeiten, Zufallsgroessen, Bernoulli-Ketten, Binomialverteilungen, Histogrammen, Erwartungswerten und Standardabweichungen in `Klassen 9/10`
 - the imported Kursstufe / Sek-II slice currently covers:
   - the shared orientation layer from `1.4 Basisfach und Leistungsfach in der Oberstufe`
@@ -78,6 +79,11 @@ Operational interpretation:
   - `f122ce22-a84c-406b-bbd0-5435154510cb -> a4f6f5e4-f790-48d1-8b49-c9dc048c9d83` for lateral-surface work on cones and cylinders
   - `8e08950a-bc78-4dc2-947d-7aa575076655 -> 9d497a0c-f48d-4a90-8ec8-aeb89ca6d0c5` for volume ideas on pyramids, cones, and oblique solids
   - `7c5598d1-7282-4922-a9ae-2c3f552e8d99 -> 1ea06c0c-5c60-45cd-8f31-638de98820b4` for sphere-formula interpretation and application
+- the next BW Sek-I widening step now also opens the first broad late-Sek-I `3.3.4` function / differential strip in `Klassen 9/10`:
+  - `253a59c7-ebf0-45a7-85c4-a62547ab1e5a -> 5d17ebb4-4e27-4f9c-8d0b-3520f34b2e11` for trigonometrische Funktionen, parameter interpretation, and first periodic modelling
+  - `47e1e733-de23-4120-bcab-cabc1427ff79 -> a115f984-2628-54fb-9702-9511e460d684` for the derivative concept developed from secants and average rates of change
+  - `3eb6b0db-af4b-4072-991f-81c9e7644257 -> 350fc8b1-ead0-4239-b28a-217cbd3bd1c3` for monotonicity, extrema, and first derivative-based graph investigation
+  - `875691d3-8df2-4980-9694-760b7fb69c4a -> b3604df4-15a8-41c8-a8b0-50dadd698bd3` for tangents, normals, linear approximation, and inflection interpretation
 - the next BW Sek-I widening step now also opens the broad late-Sek-I stochastics strip in `Klassen 9/10`:
   - `de7051a6-6401-4c04-b588-f7f2f69a8478 -> 508292f2-671b-4fd3-acbf-53d705e44693` for Vierfeldertafeln and bedingte Wahrscheinlichkeiten
   - `25bc86dc-6329-40a0-9c1d-ec846d6fd929 -> dabff49b-d40a-4c81-a584-21408b2d4219` for stochastic independence in four-field and tree representations
