@@ -16,7 +16,19 @@ const SUPPORTED_DIMENSION = 'jurisdiction' as const
 const SUPPORTED_JURISDICTIONS = ['DE-BW', 'DE-BY', 'DE-HE', 'DE-NI', 'DE-NW'] as const
 
 type SupportedJurisdiction = (typeof SUPPORTED_JURISDICTIONS)[number]
-type KnownJurisdiction = SupportedJurisdiction | 'DE-BB' | 'DE-BE'
+type KnownJurisdiction =
+  | SupportedJurisdiction
+  | 'DE-BB'
+  | 'DE-BE'
+  | 'DE-HB'
+  | 'DE-HH'
+  | 'DE-MV'
+  | 'DE-RP'
+  | 'DE-SH'
+  | 'DE-SL'
+  | 'DE-SN'
+  | 'DE-ST'
+  | 'DE-TH'
 type FindingSeverity = 'error' | 'warning'
 type FindingCode =
   | 'APV-001'
@@ -250,6 +262,33 @@ function normalizeJurisdictionValue(raw: string): KnownJurisdiction | null {
   }
   if (normalized === 'DE-NI' || normalized === 'NI' || normalized === 'NDS' || normalized === 'DE-NDS') {
     return 'DE-NI'
+  }
+  if (normalized === 'DE-HB' || normalized === 'HB' || normalized === 'BRE' || normalized === 'DE-BRE') {
+    return 'DE-HB'
+  }
+  if (normalized === 'DE-HH' || normalized === 'HH' || normalized === 'HAM' || normalized === 'DE-HAM') {
+    return 'DE-HH'
+  }
+  if (normalized === 'DE-MV' || normalized === 'MV') {
+    return 'DE-MV'
+  }
+  if (normalized === 'DE-RP' || normalized === 'RP' || normalized === 'RLP' || normalized === 'DE-RLP') {
+    return 'DE-RP'
+  }
+  if (normalized === 'DE-SH' || normalized === 'SH' || normalized === 'SHL' || normalized === 'DE-SHL') {
+    return 'DE-SH'
+  }
+  if (normalized === 'DE-SL' || normalized === 'SL' || normalized === 'SAR' || normalized === 'DE-SAR') {
+    return 'DE-SL'
+  }
+  if (normalized === 'DE-SN' || normalized === 'SN' || normalized === 'SAX' || normalized === 'DE-SAX') {
+    return 'DE-SN'
+  }
+  if (normalized === 'DE-ST' || normalized === 'ST' || normalized === 'SAN' || normalized === 'DE-SAN') {
+    return 'DE-ST'
+  }
+  if (normalized === 'DE-TH' || normalized === 'TH' || normalized === 'THU' || normalized === 'DE-THU') {
+    return 'DE-TH'
   }
   return null
 }

@@ -58,11 +58,11 @@ Important interpretation:
 
 Initial working estimate on `2026-03-26`:
 
-- nationwide source-closure headline: `29%`
+- nationwide source-closure headline: `32%`
 - states at `83%`: `3`
 - states at `67%`: `1`
-- states at `50%`: `3`
-- states at `0%`: `9`
+- states at `50%`: `4`
+- states at `0%`: `8`
 
 This is intentionally coarse. It is good enough for steering and ordering work; it is not intended as a legal or curricular certification number.
 
@@ -81,7 +81,7 @@ This is intentionally coarse. It is good enough for steering and ordering work; 
 | `DE-HH` Hamburg | `0%` | placeholder only | no active source lane | archive official source bundle and scaffold lanes |
 | `DE-MV` Mecklenburg-Vorpommern | `0%` | placeholder only | no active source lane | archive official source bundle and scaffold lanes |
 | `DE-RP` Rheinland-Pfalz | `0%` | placeholder only | no active source lane | archive official source bundle and scaffold lanes |
-| `DE-SH` Schleswig-Holstein | `0%` | placeholder only | no active source lane | archive official source bundle and scaffold lanes |
+| `DE-SH` Schleswig-Holstein | `50%` | source archived, lower + upper source lanes active, first source-native year-band / phase snapshots live, structural entry anchors bridged, widened coarse reviewed lower/upper surface live, and the former open `5/6` structures and measurement cells refined into smaller source atoms | no broad `3.x` closure yet; reviewed surface is still mostly coarse and cell-level | refine the remaining coarse SH `5/6` cells before any broader reviewed-coverage claim |
 | `DE-SL` Saarland | `0%` | placeholder only | no active source lane | archive official source bundle and scaffold lanes |
 | `DE-SN` Sachsen | `0%` | placeholder only | no active source lane | archive official source bundle and scaffold lanes |
 | `DE-ST` Sachsen-Anhalt | `0%` | placeholder only | no active source lane | archive official source bundle and scaffold lanes |

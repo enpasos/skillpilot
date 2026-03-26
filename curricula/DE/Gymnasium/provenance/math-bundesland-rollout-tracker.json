@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-03-25",
+  "updatedAt": "2026-03-26",
   "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
   "quickViewPath": "docs/dev/canonical-gymnasium-math-bundeslaender-status.md",
   "renderCommand": "python3 scripts/render_canonical_math_bundesland_status.py",
@@ -231,12 +231,15 @@
       "jurisdiction": "DE-SH",
       "repoStateKey": "SH",
       "displayName": "Schleswig-Holstein",
-      "phase": "P0",
-      "priority": "backlog",
-      "sourceStage": "placeholder_only",
-      "mappingFiles": [],
-      "notes": "Placeholder lane only.",
-      "nextStep": "Archive the official math source bundle and create the first state mapping lane scaffold."
+      "phase": "P4",
+      "priority": "next_wave",
+      "sourceStage": "snapshots_active",
+      "mappingFiles": [
+        "curricula/DE/Gymnasium/mapping/DE-SH/lower-secondary/sh_math_lower_secondary_to_canonical_math.json",
+        "curricula/DE/Gymnasium/mapping/DE-SH/upper-secondary/sh_math_upper_secondary_to_canonical_math.json"
+      ],
+      "notes": "The official 2024 Schleswig-Holstein mathematics source bundle is archived in the DE-level input lane, first stage-local lower-secondary and upper-secondary source-json snapshots are active in the shared provenance registries, the structural root/year-band/phase entry bridges are mapped onto the shared canonical spine, the lane carries a widened coarse reviewed surface across most retained Sek-I cells plus all retained Sek-II area cells, and the previously open `5/6` source cells `Strukturen und funktionaler Zusammenhang` and `Groessen und Messen` are now refined into smaller source atoms with first representation-, measurement-, and geometry-level bridges. Remaining limitations are now mainly the still-coarse source-native cell granularity on the rest of the SH lane.",
+      "nextStep": "Refine the remaining coarse SH `5/6` source cells, most likely `Zahl und Operation` or `Daten und Zufall`, before any broader reviewed-coverage or P5 claim."
     },
     {
       "jurisdiction": "DE-SL",

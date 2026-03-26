@@ -1613,6 +1613,41 @@ public class LandscapeService {
         if (normalized.equals("BW") || normalized.equals("BAW") || normalized.equals("DE-BW")) {
             return "DE-BW";
         }
+        if (normalized.equals("HB") || normalized.equals("BRE") || normalized.equals("DE-HB")
+                || normalized.equals("DE-BRE")) {
+            return "DE-HB";
+        }
+        if (normalized.equals("HH") || normalized.equals("HAM") || normalized.equals("DE-HH")
+                || normalized.equals("DE-HAM")) {
+            return "DE-HH";
+        }
+        if (normalized.equals("MV") || normalized.equals("DE-MV")) {
+            return "DE-MV";
+        }
+        if (normalized.equals("RP") || normalized.equals("RLP") || normalized.equals("DE-RP")
+                || normalized.equals("DE-RLP")) {
+            return "DE-RP";
+        }
+        if (normalized.equals("SH") || normalized.equals("SHL") || normalized.equals("DE-SH")
+                || normalized.equals("DE-SHL")) {
+            return "DE-SH";
+        }
+        if (normalized.equals("SL") || normalized.equals("SAR") || normalized.equals("DE-SL")
+                || normalized.equals("DE-SAR")) {
+            return "DE-SL";
+        }
+        if (normalized.equals("SN") || normalized.equals("SAX") || normalized.equals("DE-SN")
+                || normalized.equals("DE-SAX")) {
+            return "DE-SN";
+        }
+        if (normalized.equals("ST") || normalized.equals("SAN") || normalized.equals("DE-ST")
+                || normalized.equals("DE-SAN")) {
+            return "DE-ST";
+        }
+        if (normalized.equals("TH") || normalized.equals("THU") || normalized.equals("DE-TH")
+                || normalized.equals("DE-THU")) {
+            return "DE-TH";
+        }
         return null;
     }
 
