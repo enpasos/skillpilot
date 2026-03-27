@@ -19,7 +19,7 @@
       "titleEn": "Mathematics Secondary Level I",
       "description": "Pilot-Quellsnapshot der schleswig-holsteinischen Fachanforderungen Mathematik Sekundarstufe I mit der offiziellen Jahrgangsband-Struktur 5/6, 7/8/9 und 10.",
       "descriptionEn": "Pilot source snapshot of the Schleswig-Holstein lower-secondary mathematics requirements with the official year-band structure 5/6, 7/8/9, and 10.",
-      "weight": 60,
+      "weight": 72,
       "tags": [
         "Sek1",
         "PilotSubset",
@@ -79,7 +79,7 @@
       "titleEn": "Year Band 7/8/9",
       "description": "Offizielle SH-Struktur fuer Mathematik im Jahrgangsband 7/8/9 ueber die Leitideen Zahl und Operation, Groessen und Messen, Strukturen und funktionaler Zusammenhang, Raum und Form sowie Daten und Zufall.",
       "descriptionEn": "Official Schleswig-Holstein mathematics structure for year band 7/8/9 across the guiding ideas number and operations, measurement, structures and functional relationships, space and shape, and data and chance.",
-      "weight": 33,
+      "weight": 38,
       "tags": [
         "Sek1",
         "Jg7-9",
@@ -110,7 +110,7 @@
       "titleEn": "Year 10",
       "description": "Offizielle SH-Struktur fuer Mathematik in Jahrgangsstufe 10 ueber die Leitideen Groessen und Messen, Strukturen und funktionaler Zusammenhang sowie Raum und Form.",
       "descriptionEn": "Official Schleswig-Holstein mathematics structure for year 10 across the guiding ideas measurement, structures and functional relationships, and space and shape.",
-      "weight": 10,
+      "weight": 17,
       "tags": [
         "Sek1",
         "Jg10",
@@ -405,7 +405,7 @@
       "titleEn": "Jahrgangsband 5/6: Strukturen und funktionaler Zusammenhang",
       "description": "Die Schuelerinnen und Schueler beschreiben im Jahrgangsband 5/6 einfache Zuordnungen in Tabellen und Diagrammen.",
       "descriptionEn": "Die Schuelerinnen und Schueler beschreiben im Jahrgangsband 5/6 einfache Zuordnungen in Tabellen und Diagrammen.",
-      "weight": 5,
+      "weight": 8,
       "tags": [
         "Sek1",
         "Jg5-6",
@@ -433,7 +433,7 @@
       "titleEn": "Year Band 5/6: Structures and Functional Relationships - Tables",
       "description": "Die Schuelerinnen und Schueler beschreiben im Jahrgangsband 5/6 einfache Zuordnungen in Tabellen.",
       "descriptionEn": "Students describe simple relationships in tables in year band 5/6.",
-      "weight": 2,
+      "weight": 1,
       "tags": [
         "Sek1",
         "Jg5-6",
@@ -514,7 +514,7 @@
       "titleEn": "Year Band 5/6: Structures and Functional Relationships - Diagrams",
       "description": "Die Schuelerinnen und Schueler beschreiben im Jahrgangsband 5/6 einfache Zuordnungen in Diagrammen.",
       "descriptionEn": "Students describe simple relationships in diagrams in year band 5/6.",
-      "weight": 2,
+      "weight": 1,
       "tags": [
         "Sek1",
         "Jg5-6",
@@ -595,7 +595,7 @@
       "titleEn": "Jahrgangsband 5/6: Raum und Form",
       "description": "Die Schuelerinnen und Schueler bearbeiten im Jahrgangsband 5/6 einfache geometrische Figuren und Koerper, Symmetrie und geometrische Konstruktionen.",
       "descriptionEn": "Students work on simple geometric figures and solids, symmetry, and geometric constructions in year band 5/6.",
-      "weight": 4,
+      "weight": 6,
       "tags": [
         "Sek1",
         "Jg5-6",
@@ -705,7 +705,7 @@
       "titleEn": "Jahrgangsband 5/6: Daten und Zufall",
       "description": "Die Schuelerinnen und Schueler bearbeiten im Jahrgangsband 5/6 einfache statistische Erhebungen, einfache kombinatorische Fragestellungen und einstufige Zufallsexperimente.",
       "descriptionEn": "Students work on simple statistical surveys, simple combinatorial questions, and single-stage random experiments in year band 5/6.",
-      "weight": 4,
+      "weight": 6,
       "tags": [
         "Sek1",
         "Jg5-6",
@@ -1137,9 +1137,9 @@
       "id": "sh-sek1-jg7-9-groessen-messen-kreis",
       "title": "Jahrgangsband 7/8/9: Groessen und Messen - Einfache Berechnungen am Kreis",
       "titleEn": "Year Band 7/8/9: Measurement - Basic Circle Calculations",
-      "description": "Die Schuelerinnen und Schueler bearbeiten im Jahrgangsband 7/8/9 einfache Berechnungen am Kreis.",
-      "descriptionEn": "Students work on basic circle calculations in year band 7/8/9.",
-      "weight": 1,
+      "description": "Die Schuelerinnen und Schueler bearbeiten im Jahrgangsband 7/8/9 einfache Berechnungen am Kreis, insbesondere die Kreiszahl pi sowie Kreisumfang und Kreisflaeche.",
+      "descriptionEn": "Students work on basic circle calculations in year band 7/8/9, especially pi as well as circumference and area of circles.",
+      "weight": 2,
       "tags": [
         "Sek1",
         "Jg7-9",
@@ -1155,8 +1155,63 @@
         "area": "Groessen und Messen"
       },
       "requires": [],
-      "contains": [],
+      "contains": [
+        "sh-sek1-jg7-9-groessen-messen-kreis-pi",
+        "sh-sek1-jg7-9-groessen-messen-kreis-umfang-flaeche"
+      ],
       "sourceRef": "Fachanforderungen Mathematik SH (2024), Sekundarstufe I, 3 Themen und Inhalte des Unterrichts, Tabelle zur Verteilung der Inhalte auf die Jahrgangsstufen, S. 45.",
+      "type": "cluster"
+    },
+    {
+      "id": "sh-sek1-jg7-9-groessen-messen-kreis-pi",
+      "title": "Jahrgangsband 7/8/9: Groessen und Messen - Kreiszahl pi",
+      "titleEn": "Year Band 7/8/9: Measurement - Pi",
+      "description": "Die Schuelerinnen und Schueler bearbeiten im Jahrgangsband 7/8/9 die Kreiszahl pi.",
+      "descriptionEn": "Students work on pi in year band 7/8/9.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "Jg7-9",
+        "GroessenUndMessen",
+        "KreiszahlPi"
+      ],
+      "dimensionTags": {
+        "framework": "sh-fa-math-2024-sek1",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG7_9",
+        "area": "Groessen und Messen"
+      },
+      "requires": [],
+      "contains": [],
+      "sourceRef": "Fachanforderungen Mathematik SH (2024), Sekundarstufe I, 2 Kompetenzbereiche, Inhaltsbezogene Kompetenzen, Kreisabschnitt mit `Kreiszahl pi` und Tabelle zur Verteilung der Inhalte auf die Jahrgangsstufen, S. 26 und S. 45.",
+      "type": "atomic"
+    },
+    {
+      "id": "sh-sek1-jg7-9-groessen-messen-kreis-umfang-flaeche",
+      "title": "Jahrgangsband 7/8/9: Groessen und Messen - Kreisumfang und Kreisflaeche",
+      "titleEn": "Year Band 7/8/9: Measurement - Circle Circumference and Area",
+      "description": "Die Schuelerinnen und Schueler bearbeiten im Jahrgangsband 7/8/9 Kreisumfang und Kreisflaeche.",
+      "descriptionEn": "Students work on circle circumference and area in year band 7/8/9.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "Jg7-9",
+        "GroessenUndMessen",
+        "KreisumfangUndKreisflaeche"
+      ],
+      "dimensionTags": {
+        "framework": "sh-fa-math-2024-sek1",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG7_9",
+        "area": "Groessen und Messen"
+      },
+      "requires": [],
+      "contains": [],
+      "sourceRef": "Fachanforderungen Mathematik SH (2024), Sekundarstufe I, 2 Kompetenzbereiche, Inhaltsbezogene Kompetenzen, Kreisabschnitt mit `Kreisumfang, Kreisflaeche` und Tabelle zur Verteilung der Inhalte auf die Jahrgangsstufen, S. 26 und S. 45.",
       "type": "atomic"
     },
     {
@@ -1217,7 +1272,7 @@
       "titleEn": "Jahrgangsband 7/8/9: Strukturen und funktionaler Zusammenhang",
       "description": "Die Schuelerinnen und Schueler bearbeiten im Jahrgangsband 7/8/9 Variablen und Terme, Funktionen und ihre Darstellungsformen, proportionale und antiproportionale Funktionen, Dreisatz, lineare Gleichungen und Gleichungssysteme sowie lineare und quadratische Funktionen und Gleichungen.",
       "descriptionEn": "Die Schuelerinnen und Schueler bearbeiten im Jahrgangsband 7/8/9 Variablen und Terme, Funktionen und ihre Darstellungsformen, proportionale und antiproportionale Funktionen, Dreisatz, lineare Gleichungen und Gleichungssysteme sowie lineare und quadratische Funktionen und Gleichungen.",
-      "weight": 11,
+      "weight": 14,
       "tags": [
         "Sek1",
         "Jg7-9",
@@ -1251,12 +1306,171 @@
       "titleEn": "Year Band 7/8/9: Structures and Functional Relationships - Variables and Expressions",
       "description": "Die Schuelerinnen und Schueler bearbeiten im Jahrgangsband 7/8/9 Variablen und Terme.",
       "descriptionEn": "Students work on variables and expressions in year band 7/8/9.",
-      "weight": 1,
+      "weight": 2,
       "tags": [
         "Sek1",
         "Jg7-9",
         "StrukturenUndFunktionalerZusammenhang",
         "VariablenUndTerme"
+      ],
+      "dimensionTags": {
+        "framework": "sh-fa-math-2024-sek1",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG7_9",
+        "area": "Strukturen und funktionaler Zusammenhang"
+      },
+      "requires": [],
+      "contains": [
+        "sh-sek1-jg7-9-strukturen-funktional-variablen",
+        "sh-sek1-jg7-9-strukturen-funktional-terme"
+      ],
+      "sourceRef": "Fachanforderungen Mathematik SH (2024), Sekundarstufe I, 3 Themen und Inhalte des Unterrichts, Tabelle zur Verteilung der Inhalte auf die Jahrgangsstufen, S. 45.",
+      "type": "cluster"
+    },
+    {
+      "id": "sh-sek1-jg7-9-strukturen-funktional-variablen",
+      "title": "Jahrgangsband 7/8/9: Strukturen und funktionaler Zusammenhang - Variablen",
+      "titleEn": "Year Band 7/8/9: Structures and Functional Relationships - Variables",
+      "description": "Die Schuelerinnen und Schueler bearbeiten im Jahrgangsband 7/8/9 Variablen.",
+      "descriptionEn": "Students work on variables in year band 7/8/9.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "Jg7-9",
+        "StrukturenUndFunktionalerZusammenhang",
+        "Variablen"
+      ],
+      "dimensionTags": {
+        "framework": "sh-fa-math-2024-sek1",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG7_9",
+        "area": "Strukturen und funktionaler Zusammenhang"
+      },
+      "requires": [],
+      "contains": [],
+      "sourceRef": "Fachanforderungen Mathematik SH (2024), Sekundarstufe I, 3 Themen und Inhalte des Unterrichts, Tabelle zur Verteilung der Inhalte auf die Jahrgangsstufen, S. 45.",
+      "type": "atomic"
+    },
+    {
+      "id": "sh-sek1-jg7-9-strukturen-funktional-proportionale-funktionen",
+      "title": "Jahrgangsband 7/8/9: Strukturen und funktionaler Zusammenhang - Proportionale Funktionen",
+      "titleEn": "Year Band 7/8/9: Structures and Functional Relationships - Proportional Functions",
+      "description": "Die Schuelerinnen und Schueler bearbeiten im Jahrgangsband 7/8/9 proportionale Funktionen.",
+      "descriptionEn": "Students work on proportional functions in year band 7/8/9.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "Jg7-9",
+        "StrukturenUndFunktionalerZusammenhang",
+        "ProportionaleFunktionen"
+      ],
+      "dimensionTags": {
+        "framework": "sh-fa-math-2024-sek1",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG7_9",
+        "area": "Strukturen und funktionaler Zusammenhang"
+      },
+      "requires": [],
+      "contains": [],
+      "sourceRef": "Fachanforderungen Mathematik SH (2024), Sekundarstufe I, 3 Themen und Inhalte des Unterrichts, Tabelle zur Verteilung der Inhalte auf die Jahrgangsstufen, S. 45.",
+      "type": "atomic"
+    },
+    {
+      "id": "sh-sek1-jg7-9-strukturen-funktional-dreisatz",
+      "title": "Jahrgangsband 7/8/9: Strukturen und funktionaler Zusammenhang - Dreisatz",
+      "titleEn": "Year Band 7/8/9: Structures and Functional Relationships - Rule of Three",
+      "description": "Die Schuelerinnen und Schueler bearbeiten im Jahrgangsband 7/8/9 Dreisatz.",
+      "descriptionEn": "Students work on the rule of three in year band 7/8/9.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "Jg7-9",
+        "StrukturenUndFunktionalerZusammenhang",
+        "Dreisatz"
+      ],
+      "dimensionTags": {
+        "framework": "sh-fa-math-2024-sek1",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG7_9",
+        "area": "Strukturen und funktionaler Zusammenhang"
+      },
+      "requires": [],
+      "contains": [],
+      "sourceRef": "Fachanforderungen Mathematik SH (2024), Sekundarstufe I, 3 Themen und Inhalte des Unterrichts, Tabelle zur Verteilung der Inhalte auf die Jahrgangsstufen, S. 45.",
+      "type": "atomic"
+    },
+    {
+      "id": "sh-sek1-jg7-9-strukturen-funktional-funktionen",
+      "title": "Jahrgangsband 7/8/9: Strukturen und funktionaler Zusammenhang - Funktionen",
+      "titleEn": "Year Band 7/8/9: Structures and Functional Relationships - Functions",
+      "description": "Die Schuelerinnen und Schueler bearbeiten im Jahrgangsband 7/8/9 Funktionen.",
+      "descriptionEn": "Students work on functions in year band 7/8/9.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "Jg7-9",
+        "StrukturenUndFunktionalerZusammenhang",
+        "Funktionen"
+      ],
+      "dimensionTags": {
+        "framework": "sh-fa-math-2024-sek1",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG7_9",
+        "area": "Strukturen und funktionaler Zusammenhang"
+      },
+      "requires": [],
+      "contains": [],
+      "sourceRef": "Fachanforderungen Mathematik SH (2024), Sekundarstufe I, 3 Themen und Inhalte des Unterrichts, Tabelle zur Verteilung der Inhalte auf die Jahrgangsstufen, S. 45.",
+      "type": "atomic"
+    },
+    {
+      "id": "sh-sek1-jg7-9-strukturen-funktional-darstellungsformen",
+      "title": "Jahrgangsband 7/8/9: Strukturen und funktionaler Zusammenhang - Darstellungsformen",
+      "titleEn": "Year Band 7/8/9: Structures and Functional Relationships - Representations",
+      "description": "Die Schuelerinnen und Schueler bearbeiten im Jahrgangsband 7/8/9 Darstellungsformen von Funktionen.",
+      "descriptionEn": "Students work on function representations in year band 7/8/9.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "Jg7-9",
+        "StrukturenUndFunktionalerZusammenhang",
+        "Darstellungsformen"
+      ],
+      "dimensionTags": {
+        "framework": "sh-fa-math-2024-sek1",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG7_9",
+        "area": "Strukturen und funktionaler Zusammenhang"
+      },
+      "requires": [],
+      "contains": [],
+      "sourceRef": "Fachanforderungen Mathematik SH (2024), Sekundarstufe I, 3 Themen und Inhalte des Unterrichts, Tabelle zur Verteilung der Inhalte auf die Jahrgangsstufen, S. 45.",
+      "type": "atomic"
+    },
+    {
+      "id": "sh-sek1-jg7-9-strukturen-funktional-terme",
+      "title": "Jahrgangsband 7/8/9: Strukturen und funktionaler Zusammenhang - Terme",
+      "titleEn": "Year Band 7/8/9: Structures and Functional Relationships - Expressions",
+      "description": "Die Schuelerinnen und Schueler bearbeiten im Jahrgangsband 7/8/9 Terme.",
+      "descriptionEn": "Students work on expressions in year band 7/8/9.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "Jg7-9",
+        "StrukturenUndFunktionalerZusammenhang",
+        "Terme"
       ],
       "dimensionTags": {
         "framework": "sh-fa-math-2024-sek1",
@@ -1277,7 +1491,7 @@
       "titleEn": "Year Band 7/8/9: Structures and Functional Relationships - Functions and Their Representations",
       "description": "Die Schuelerinnen und Schueler bearbeiten im Jahrgangsband 7/8/9 Funktionen und ihre Darstellungsformen.",
       "descriptionEn": "Students work on functions and their representations in year band 7/8/9.",
-      "weight": 1,
+      "weight": 2,
       "tags": [
         "Sek1",
         "Jg7-9",
@@ -1293,9 +1507,12 @@
         "area": "Strukturen und funktionaler Zusammenhang"
       },
       "requires": [],
-      "contains": [],
+      "contains": [
+        "sh-sek1-jg7-9-strukturen-funktional-funktionen",
+        "sh-sek1-jg7-9-strukturen-funktional-darstellungsformen"
+      ],
       "sourceRef": "Fachanforderungen Mathematik SH (2024), Sekundarstufe I, 3 Themen und Inhalte des Unterrichts, Tabelle zur Verteilung der Inhalte auf die Jahrgangsstufen, S. 45.",
-      "type": "atomic"
+      "type": "cluster"
     },
     {
       "id": "sh-sek1-jg7-9-strukturen-funktional-proportionale-funktionen-dreisatz",
@@ -1303,7 +1520,7 @@
       "titleEn": "Year Band 7/8/9: Structures and Functional Relationships - Proportional Functions and Rule of Three",
       "description": "Die Schuelerinnen und Schueler bearbeiten im Jahrgangsband 7/8/9 proportionale Funktionen und Dreisatz.",
       "descriptionEn": "Students work on proportional functions and the rule of three in year band 7/8/9.",
-      "weight": 1,
+      "weight": 2,
       "tags": [
         "Sek1",
         "Jg7-9",
@@ -1319,9 +1536,12 @@
         "area": "Strukturen und funktionaler Zusammenhang"
       },
       "requires": [],
-      "contains": [],
+      "contains": [
+        "sh-sek1-jg7-9-strukturen-funktional-proportionale-funktionen",
+        "sh-sek1-jg7-9-strukturen-funktional-dreisatz"
+      ],
       "sourceRef": "Fachanforderungen Mathematik SH (2024), Sekundarstufe I, 3 Themen und Inhalte des Unterrichts, Tabelle zur Verteilung der Inhalte auf die Jahrgangsstufen, S. 45.",
-      "type": "atomic"
+      "type": "cluster"
     },
     {
       "id": "sh-sek1-jg7-9-strukturen-funktional-antiproportionale-funktionen",
@@ -1596,7 +1816,7 @@
       "titleEn": "Jahrgangsband 7/8/9: Raum und Form",
       "description": "Die Schuelerinnen und Schueler bearbeiten im Jahrgangsband 7/8/9 Geometrie an Dreiecken, Vierecken und am Kreis, Kongruenzsaetze, Abbildungsgeometrie, Flaechensaetze am rechtwinkligen Dreieck und Koerper.",
       "descriptionEn": "Die Schuelerinnen und Schueler bearbeiten im Jahrgangsband 7/8/9 Geometrie an Dreiecken, Vierecken und am Kreis, Kongruenzsaetze, Abbildungsgeometrie, Flaechensaetze am rechtwinkligen Dreieck und Koerper.",
-      "weight": 5,
+      "weight": 7,
       "tags": [
         "Sek1",
         "Jg7-9",
@@ -1706,9 +1926,9 @@
       "id": "sh-sek1-jg7-9-raum-form-kreis",
       "title": "Jahrgangsband 7/8/9: Raum und Form - Geometrie am Kreis",
       "titleEn": "Year Band 7/8/9: Space and Shape - Circle Geometry",
-      "description": "Die Schuelerinnen und Schueler bearbeiten im Jahrgangsband 7/8/9 Geometrie am Kreis.",
-      "descriptionEn": "Students work on circle geometry in year band 7/8/9.",
-      "weight": 1,
+      "description": "Die Schuelerinnen und Schueler bearbeiten im Jahrgangsband 7/8/9 Geometrie am Kreis, insbesondere Kreisbeziehungen und den Satz des Thales.",
+      "descriptionEn": "Students work on circle geometry in year band 7/8/9, especially circle relationships and the theorem of Thales.",
+      "weight": 2,
       "tags": [
         "Sek1",
         "Jg7-9",
@@ -1724,8 +1944,63 @@
         "area": "Raum und Form"
       },
       "requires": [],
-      "contains": [],
+      "contains": [
+        "sh-sek1-jg7-9-raum-form-kreisbeziehungen",
+        "sh-sek1-jg7-9-raum-form-thales"
+      ],
       "sourceRef": "Fachanforderungen Mathematik SH (2024), Sekundarstufe I, 3 Themen und Inhalte des Unterrichts, Tabelle zur Verteilung der Inhalte auf die Jahrgangsstufen, S. 45.",
+      "type": "cluster"
+    },
+    {
+      "id": "sh-sek1-jg7-9-raum-form-kreisbeziehungen",
+      "title": "Jahrgangsband 7/8/9: Raum und Form - Kreisbeziehungen",
+      "titleEn": "Year Band 7/8/9: Space and Shape - Circle Relationships",
+      "description": "Die Schuelerinnen und Schueler bearbeiten im Jahrgangsband 7/8/9 geometrische Beziehungen am Kreis.",
+      "descriptionEn": "Students work on geometric relationships on the circle in year band 7/8/9.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "Jg7-9",
+        "RaumUndForm",
+        "Kreisbeziehungen"
+      ],
+      "dimensionTags": {
+        "framework": "sh-fa-math-2024-sek1",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG7_9",
+        "area": "Raum und Form"
+      },
+      "requires": [],
+      "contains": [],
+      "sourceRef": "Fachanforderungen Mathematik SH (2024), Sekundarstufe I, 2 Kompetenzbereiche, Inhaltsbezogene Kompetenzen, Geometrie-Abschnitt mit Kreisbezug und Tabelle zur Verteilung der Inhalte auf die Jahrgangsstufen, S. 32 und S. 45.",
+      "type": "atomic"
+    },
+    {
+      "id": "sh-sek1-jg7-9-raum-form-thales",
+      "title": "Jahrgangsband 7/8/9: Raum und Form - Satz des Thales",
+      "titleEn": "Year Band 7/8/9: Space and Shape - Theorem of Thales",
+      "description": "Die Schuelerinnen und Schueler bearbeiten im Jahrgangsband 7/8/9 den Satz des Thales.",
+      "descriptionEn": "Students work on the theorem of Thales in year band 7/8/9.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "Jg7-9",
+        "RaumUndForm",
+        "SatzDesThales"
+      ],
+      "dimensionTags": {
+        "framework": "sh-fa-math-2024-sek1",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG7_9",
+        "area": "Raum und Form"
+      },
+      "requires": [],
+      "contains": [],
+      "sourceRef": "Fachanforderungen Mathematik SH (2024), Sekundarstufe I, 2 Kompetenzbereiche, Inhaltsbezogene Kompetenzen, Geometrie-Abschnitt mit `Satz des Thales` und Tabelle zur Verteilung der Inhalte auf die Jahrgangsstufen, S. 33 und S. 45.",
       "type": "atomic"
     },
     {
@@ -2030,9 +2305,9 @@
       "id": "sh-sek1-jg10-groessen-messen-trigonometrie",
       "title": "Jahrgangsstufe 10: Groessen und Messen - Trigonometrie",
       "titleEn": "Year 10: Measurement - Trigonometry",
-      "description": "Die Schuelerinnen und Schueler bearbeiten in Jahrgangsstufe 10 Trigonometrie.",
-      "descriptionEn": "Students work on trigonometry in year 10.",
-      "weight": 1,
+      "description": "Die Schuelerinnen und Schueler bearbeiten in Jahrgangsstufe 10 Trigonometrie, insbesondere Sinus, Kosinus und Tangens im rechtwinkligen Dreieck, Sinus- und Kosinuswerte am Einheitskreis sowie Sinussatz und Kosinussatz.",
+      "descriptionEn": "Students work on trigonometry in year 10, especially sine, cosine, and tangent in right triangles, sine and cosine values on the unit circle, and the sine and cosine laws.",
+      "weight": 3,
       "tags": [
         "Sek1",
         "Jg10",
@@ -2048,17 +2323,102 @@
         "area": "Groessen und Messen"
       },
       "requires": [],
+      "contains": [
+        "sh-sek1-jg10-groessen-messen-trigonometrie-rechtwinkliges-dreieck",
+        "sh-sek1-jg10-groessen-messen-trigonometrie-einheitskreis",
+        "sh-sek1-jg10-groessen-messen-trigonometrie-sinussatz-kosinussatz"
+      ],
+      "sourceRef": "Fachanforderungen Mathematik SH (2024), Sekundarstufe I, Verbindliche Themen und Inhalte / Vorgaben und Hinweise zu Jahrgangsstufe 10 Groessen und Messen, S. 34; Tabelle zur Verteilung der Inhalte auf die Jahrgangsstufen, S. 45.",
+      "type": "cluster"
+    },
+    {
+      "id": "sh-sek1-jg10-groessen-messen-trigonometrie-rechtwinkliges-dreieck",
+      "title": "Jahrgangsstufe 10: Groessen und Messen - Trigonometrie im rechtwinkligen Dreieck",
+      "titleEn": "Year 10: Measurement - Trigonometry in Right Triangles",
+      "description": "Die Schuelerinnen und Schueler nutzen in Jahrgangsstufe 10 Sinus, Kosinus und Tangens als Laengenverhaeltnisse im rechtwinkligen Dreieck.",
+      "descriptionEn": "Students use sine, cosine, and tangent as side-length ratios in right triangles in year 10.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "Jg10",
+        "GroessenUndMessen",
+        "Trigonometrie",
+        "RechtwinkligesDreieck"
+      ],
+      "dimensionTags": {
+        "framework": "sh-fa-math-2024-sek1",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG10",
+        "area": "Groessen und Messen"
+      },
+      "requires": [],
       "contains": [],
-      "sourceRef": "Fachanforderungen Mathematik SH (2024), Sekundarstufe I, 3 Themen und Inhalte des Unterrichts, Tabelle zur Verteilung der Inhalte auf die Jahrgangsstufen, S. 45.",
+      "sourceRef": "Fachanforderungen Mathematik SH (2024), Sekundarstufe I, Verbindliche Themen und Inhalte / Vorgaben und Hinweise zu Jahrgangsstufe 10 Groessen und Messen, S. 34; Tabelle zur Verteilung der Inhalte auf die Jahrgangsstufen, S. 45.",
+      "type": "atomic"
+    },
+    {
+      "id": "sh-sek1-jg10-groessen-messen-trigonometrie-einheitskreis",
+      "title": "Jahrgangsstufe 10: Groessen und Messen - Sinus und Kosinus am Einheitskreis",
+      "titleEn": "Year 10: Measurement - Sine and Cosine on the Unit Circle",
+      "description": "Die Schuelerinnen und Schueler deuten in Jahrgangsstufe 10 Sinus- und Kosinuswerte am Einheitskreis.",
+      "descriptionEn": "Students interpret sine and cosine values on the unit circle in year 10.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "Jg10",
+        "GroessenUndMessen",
+        "Trigonometrie",
+        "Einheitskreis"
+      ],
+      "dimensionTags": {
+        "framework": "sh-fa-math-2024-sek1",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG10",
+        "area": "Groessen und Messen"
+      },
+      "requires": [],
+      "contains": [],
+      "sourceRef": "Fachanforderungen Mathematik SH (2024), Sekundarstufe I, Verbindliche Themen und Inhalte / Vorgaben und Hinweise zu Jahrgangsstufe 10 Groessen und Messen, S. 34; Tabelle zur Verteilung der Inhalte auf die Jahrgangsstufen, S. 45.",
+      "type": "atomic"
+    },
+    {
+      "id": "sh-sek1-jg10-groessen-messen-trigonometrie-sinussatz-kosinussatz",
+      "title": "Jahrgangsstufe 10: Groessen und Messen - Sinussatz und Kosinussatz",
+      "titleEn": "Year 10: Measurement - Sine and Cosine Laws",
+      "description": "Die Schuelerinnen und Schueler nutzen in Jahrgangsstufe 10 Sinussatz und Kosinussatz zur Berechnung von Laengen und Winkelgroessen.",
+      "descriptionEn": "Students use the sine and cosine laws to calculate lengths and angle measures in year 10.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "Jg10",
+        "GroessenUndMessen",
+        "Trigonometrie",
+        "SinussatzKosinussatz"
+      ],
+      "dimensionTags": {
+        "framework": "sh-fa-math-2024-sek1",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG10",
+        "area": "Groessen und Messen"
+      },
+      "requires": [],
+      "contains": [],
+      "sourceRef": "Fachanforderungen Mathematik SH (2024), Sekundarstufe I, Verbindliche Themen und Inhalte / Vorgaben und Hinweise zu Jahrgangsstufe 10 Groessen und Messen, S. 34; Tabelle zur Verteilung der Inhalte auf die Jahrgangsstufen, S. 45.",
       "type": "atomic"
     },
     {
       "id": "sh-sek1-jg10-groessen-messen-kreise-kreissektoren",
       "title": "Jahrgangsstufe 10: Groessen und Messen - Berechnungen an Kreisen und Kreissektoren",
       "titleEn": "Year 10: Measurement - Calculations with Circles and Sectors",
-      "description": "Die Schuelerinnen und Schueler bearbeiten in Jahrgangsstufe 10 Berechnungen an Kreisen und Kreissektoren.",
-      "descriptionEn": "Students work on calculations with circles and sectors in year 10.",
-      "weight": 1,
+      "description": "Die Schuelerinnen und Schueler bearbeiten in Jahrgangsstufe 10 Berechnungen an Kreisen und Kreissektoren, insbesondere Kreissektoren und das Bogenmass von Winkeln.",
+      "descriptionEn": "Students work on calculations with circles and sectors in year 10, especially sectors and the radian measure of angles.",
+      "weight": 2,
       "tags": [
         "Sek1",
         "Jg10",
@@ -2074,8 +2434,63 @@
         "area": "Groessen und Messen"
       },
       "requires": [],
-      "contains": [],
+      "contains": [
+        "sh-sek1-jg10-groessen-messen-kreissektoren",
+        "sh-sek1-jg10-groessen-messen-bogenmass"
+      ],
       "sourceRef": "Fachanforderungen Mathematik SH (2024), Sekundarstufe I, 3 Themen und Inhalte des Unterrichts, Tabelle zur Verteilung der Inhalte auf die Jahrgangsstufen, S. 45.",
+      "type": "cluster"
+    },
+    {
+      "id": "sh-sek1-jg10-groessen-messen-kreissektoren",
+      "title": "Jahrgangsstufe 10: Groessen und Messen - Kreissektoren",
+      "titleEn": "Year 10: Measurement - Sectors",
+      "description": "Die Schuelerinnen und Schueler bearbeiten in Jahrgangsstufe 10 Flaecheninhalt und Umfang von Kreissektoren.",
+      "descriptionEn": "Students work on area and perimeter of sectors in year 10.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "Jg10",
+        "GroessenUndMessen",
+        "Kreissektoren"
+      ],
+      "dimensionTags": {
+        "framework": "sh-fa-math-2024-sek1",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG10",
+        "area": "Groessen und Messen"
+      },
+      "requires": [],
+      "contains": [],
+      "sourceRef": "Fachanforderungen Mathematik SH (2024), Sekundarstufe I, 2 Kompetenzbereiche, Inhaltsbezogene Kompetenzen, Kreisabschnitt mit `Flaecheninhalt und Umfang von Kreissektoren` und Tabelle zur Verteilung der Inhalte auf die Jahrgangsstufen, S. 26 und S. 45.",
+      "type": "atomic"
+    },
+    {
+      "id": "sh-sek1-jg10-groessen-messen-bogenmass",
+      "title": "Jahrgangsstufe 10: Groessen und Messen - Bogenmass von Winkeln",
+      "titleEn": "Year 10: Measurement - Radian Measure of Angles",
+      "description": "Die Schuelerinnen und Schueler bearbeiten in Jahrgangsstufe 10 das Bogenmass von Winkeln.",
+      "descriptionEn": "Students work on the radian measure of angles in year 10.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "Jg10",
+        "GroessenUndMessen",
+        "Bogenmass"
+      ],
+      "dimensionTags": {
+        "framework": "sh-fa-math-2024-sek1",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG10",
+        "area": "Groessen und Messen"
+      },
+      "requires": [],
+      "contains": [],
+      "sourceRef": "Fachanforderungen Mathematik SH (2024), Sekundarstufe I, 2 Kompetenzbereiche, Inhaltsbezogene Kompetenzen, Kreisabschnitt mit `Bogenmass von Winkeln` und Tabelle zur Verteilung der Inhalte auf die Jahrgangsstufen, S. 26 und S. 45.",
       "type": "atomic"
     },
     {
@@ -2220,9 +2635,9 @@
       "id": "sh-sek1-jg10-strukturen-funktional-trigonometrische-funktionen",
       "title": "Jahrgangsstufe 10: Strukturen und funktionaler Zusammenhang - Trigonometrische Funktionen",
       "titleEn": "Year 10: Structures and Functional Relationships - Trigonometric Functions",
-      "description": "Die Schuelerinnen und Schueler bearbeiten in Jahrgangsstufe 10 trigonometrische Funktionen.",
-      "descriptionEn": "Students work on trigonometric functions in year 10.",
-      "weight": 1,
+      "description": "Die Schuelerinnen und Schueler bearbeiten in Jahrgangsstufe 10 trigonometrische Funktionen, insbesondere Graphen und periodische Vorgaenge, Projektionen am Einheitskreis und das Bogenmass sowie Parameter in Termen der Form a*sin(b*x+c)+d.",
+      "descriptionEn": "Students work on trigonometric functions in year 10, especially graphs and periodic phenomena, unit-circle projections and radian measure, as well as parameters in terms of the form a*sin(b*x+c)+d.",
+      "weight": 3,
       "tags": [
         "Sek1",
         "Jg10",
@@ -2238,17 +2653,102 @@
         "area": "Strukturen und funktionaler Zusammenhang"
       },
       "requires": [],
+      "contains": [
+        "sh-sek1-jg10-strukturen-funktional-trigonometrische-funktionen-graphen-periodische-vorgaenge",
+        "sh-sek1-jg10-strukturen-funktional-trigonometrische-funktionen-einheitskreis-bogenmass",
+        "sh-sek1-jg10-strukturen-funktional-trigonometrische-funktionen-parameter"
+      ],
+      "sourceRef": "Fachanforderungen Mathematik SH (2024), Sekundarstufe I, 2 Kompetenzbereiche, Sinus-Funktionen, S. 37; Tabelle zur Verteilung der Inhalte auf die Jahrgangsstufen, S. 45.",
+      "type": "cluster"
+    },
+    {
+      "id": "sh-sek1-jg10-strukturen-funktional-trigonometrische-funktionen-graphen-periodische-vorgaenge",
+      "title": "Jahrgangsstufe 10: Strukturen und funktionaler Zusammenhang - Graphen und periodische Vorgaenge trigonometrischer Funktionen",
+      "titleEn": "Year 10: Structures and Functional Relationships - Graphs and Periodic Phenomena of Trigonometric Functions",
+      "description": "Die Schuelerinnen und Schueler beschreiben in Jahrgangsstufe 10 Graphen trigonometrischer Funktionen und deuten periodische Vorgaenge.",
+      "descriptionEn": "Students describe graphs of trigonometric functions and interpret periodic phenomena in year 10.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "Jg10",
+        "StrukturenUndFunktionalerZusammenhang",
+        "TrigonometrischeFunktionen",
+        "GraphenPeriodischeVorgaenge"
+      ],
+      "dimensionTags": {
+        "framework": "sh-fa-math-2024-sek1",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG10",
+        "area": "Strukturen und funktionaler Zusammenhang"
+      },
+      "requires": [],
       "contains": [],
-      "sourceRef": "Fachanforderungen Mathematik SH (2024), Sekundarstufe I, 3 Themen und Inhalte des Unterrichts, Tabelle zur Verteilung der Inhalte auf die Jahrgangsstufen, S. 45.",
+      "sourceRef": "Fachanforderungen Mathematik SH (2024), Sekundarstufe I, 2 Kompetenzbereiche, Sinus-Funktionen, S. 37; Tabelle zur Verteilung der Inhalte auf die Jahrgangsstufen, S. 45.",
+      "type": "atomic"
+    },
+    {
+      "id": "sh-sek1-jg10-strukturen-funktional-trigonometrische-funktionen-einheitskreis-bogenmass",
+      "title": "Jahrgangsstufe 10: Strukturen und funktionaler Zusammenhang - Einheitskreis und Bogenmass",
+      "titleEn": "Year 10: Structures and Functional Relationships - Unit Circle and Radian Measure",
+      "description": "Die Schuelerinnen und Schueler nutzen in Jahrgangsstufe 10 Projektionen am Einheitskreis und das Bogenmass zur Beschreibung trigonometrischer Funktionen.",
+      "descriptionEn": "Students use unit-circle projections and radian measure to describe trigonometric functions in year 10.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "Jg10",
+        "StrukturenUndFunktionalerZusammenhang",
+        "TrigonometrischeFunktionen",
+        "EinheitskreisBogenmass"
+      ],
+      "dimensionTags": {
+        "framework": "sh-fa-math-2024-sek1",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG10",
+        "area": "Strukturen und funktionaler Zusammenhang"
+      },
+      "requires": [],
+      "contains": [],
+      "sourceRef": "Fachanforderungen Mathematik SH (2024), Sekundarstufe I, 2 Kompetenzbereiche, Sinus-Funktionen, S. 37; Tabelle zur Verteilung der Inhalte auf die Jahrgangsstufen, S. 45.",
+      "type": "atomic"
+    },
+    {
+      "id": "sh-sek1-jg10-strukturen-funktional-trigonometrische-funktionen-parameter",
+      "title": "Jahrgangsstufe 10: Strukturen und funktionaler Zusammenhang - Parameter trigonometrischer Funktionen",
+      "titleEn": "Year 10: Structures and Functional Relationships - Parameters of Trigonometric Functions",
+      "description": "Die Schuelerinnen und Schueler deuten in Jahrgangsstufe 10 die Parameter a, b, c und d in Termen der Form a*sin(b*x+c)+d.",
+      "descriptionEn": "Students interpret the parameters a, b, c, and d in terms of the form a*sin(b*x+c)+d in year 10.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "Jg10",
+        "StrukturenUndFunktionalerZusammenhang",
+        "TrigonometrischeFunktionen",
+        "Parameter"
+      ],
+      "dimensionTags": {
+        "framework": "sh-fa-math-2024-sek1",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG10",
+        "area": "Strukturen und funktionaler Zusammenhang"
+      },
+      "requires": [],
+      "contains": [],
+      "sourceRef": "Fachanforderungen Mathematik SH (2024), Sekundarstufe I, 2 Kompetenzbereiche, Sinus-Funktionen, S. 37; Tabelle zur Verteilung der Inhalte auf die Jahrgangsstufen, S. 45.",
       "type": "atomic"
     },
     {
       "id": "sh-sek1-jg10-strukturen-funktional-exponentialfunktionen",
       "title": "Jahrgangsstufe 10: Strukturen und funktionaler Zusammenhang - Exponentialfunktionen",
       "titleEn": "Year 10: Structures and Functional Relationships - Exponential Functions",
-      "description": "Die Schuelerinnen und Schueler bearbeiten in Jahrgangsstufe 10 Exponentialfunktionen.",
-      "descriptionEn": "Students work on exponential functions in year 10.",
-      "weight": 1,
+      "description": "Die Schuelerinnen und Schueler bearbeiten in Jahrgangsstufe 10 Exponentialfunktionen, insbesondere Graphen und exponentielles Wachstum, Funktionalgleichungen und Parameter sowie Verdoppelungszeit, Halbwertszeit und asymptotisches Verhalten.",
+      "descriptionEn": "Students work on exponential functions in year 10, especially graphs and exponential growth, functional equations and parameters, as well as doubling time, half-life, and asymptotic behavior.",
+      "weight": 3,
       "tags": [
         "Sek1",
         "Jg10",
@@ -2264,8 +2764,93 @@
         "area": "Strukturen und funktionaler Zusammenhang"
       },
       "requires": [],
+      "contains": [
+        "sh-sek1-jg10-strukturen-funktional-exponentialfunktionen-graphen-wachstum",
+        "sh-sek1-jg10-strukturen-funktional-exponentialfunktionen-funktionalgleichung-parameter",
+        "sh-sek1-jg10-strukturen-funktional-exponentialfunktionen-verdoppelungszeit-asymptotik"
+      ],
+      "sourceRef": "Fachanforderungen Mathematik SH (2024), Sekundarstufe I, 2 Kompetenzbereiche, Exponentialfunktion, S. 36-37; Tabelle zur Verteilung der Inhalte auf die Jahrgangsstufen, S. 45.",
+      "type": "cluster"
+    },
+    {
+      "id": "sh-sek1-jg10-strukturen-funktional-exponentialfunktionen-graphen-wachstum",
+      "title": "Jahrgangsstufe 10: Strukturen und funktionaler Zusammenhang - Graphen und exponentielles Wachstum",
+      "titleEn": "Year 10: Structures and Functional Relationships - Graphs and Exponential Growth",
+      "description": "Die Schuelerinnen und Schueler beschreiben in Jahrgangsstufe 10 Graphen von Exponentialfunktionen und deuten exponentielles Wachstum.",
+      "descriptionEn": "Students describe graphs of exponential functions and interpret exponential growth in year 10.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "Jg10",
+        "StrukturenUndFunktionalerZusammenhang",
+        "Exponentialfunktionen",
+        "GraphenWachstum"
+      ],
+      "dimensionTags": {
+        "framework": "sh-fa-math-2024-sek1",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG10",
+        "area": "Strukturen und funktionaler Zusammenhang"
+      },
+      "requires": [],
       "contains": [],
-      "sourceRef": "Fachanforderungen Mathematik SH (2024), Sekundarstufe I, 3 Themen und Inhalte des Unterrichts, Tabelle zur Verteilung der Inhalte auf die Jahrgangsstufen, S. 45.",
+      "sourceRef": "Fachanforderungen Mathematik SH (2024), Sekundarstufe I, 2 Kompetenzbereiche, Exponentialfunktion, S. 36-37; Tabelle zur Verteilung der Inhalte auf die Jahrgangsstufen, S. 45.",
+      "type": "atomic"
+    },
+    {
+      "id": "sh-sek1-jg10-strukturen-funktional-exponentialfunktionen-funktionalgleichung-parameter",
+      "title": "Jahrgangsstufe 10: Strukturen und funktionaler Zusammenhang - Funktionalgleichung und Parameter von Exponentialfunktionen",
+      "titleEn": "Year 10: Structures and Functional Relationships - Functional Equation and Parameters of Exponential Functions",
+      "description": "Die Schuelerinnen und Schueler nutzen in Jahrgangsstufe 10 die Funktionalgleichung von Exponentialfunktionen und deuten die verschiedenen Parameter in der Funktionsgleichung.",
+      "descriptionEn": "Students use the functional equation of exponential functions and interpret the different parameters in the function equation in year 10.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "Jg10",
+        "StrukturenUndFunktionalerZusammenhang",
+        "Exponentialfunktionen",
+        "FunktionalgleichungParameter"
+      ],
+      "dimensionTags": {
+        "framework": "sh-fa-math-2024-sek1",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG10",
+        "area": "Strukturen und funktionaler Zusammenhang"
+      },
+      "requires": [],
+      "contains": [],
+      "sourceRef": "Fachanforderungen Mathematik SH (2024), Sekundarstufe I, 2 Kompetenzbereiche, Exponentialfunktion, S. 36-37; Tabelle zur Verteilung der Inhalte auf die Jahrgangsstufen, S. 45.",
+      "type": "atomic"
+    },
+    {
+      "id": "sh-sek1-jg10-strukturen-funktional-exponentialfunktionen-verdoppelungszeit-asymptotik",
+      "title": "Jahrgangsstufe 10: Strukturen und funktionaler Zusammenhang - Verdoppelungszeit, Halbwertszeit und asymptotisches Verhalten",
+      "titleEn": "Year 10: Structures and Functional Relationships - Doubling Time, Half-Life, and Asymptotic Behavior",
+      "description": "Die Schuelerinnen und Schueler deuten in Jahrgangsstufe 10 Verdoppelungszeit, Halbwertszeit, Monotonie, Achsenschnittpunkt und asymptotisches Verhalten von Exponentialfunktionen.",
+      "descriptionEn": "Students interpret doubling time, half-life, monotonicity, intercept, and asymptotic behavior of exponential functions in year 10.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "Jg10",
+        "StrukturenUndFunktionalerZusammenhang",
+        "Exponentialfunktionen",
+        "VerdoppelungszeitAsymptotik"
+      ],
+      "dimensionTags": {
+        "framework": "sh-fa-math-2024-sek1",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG10",
+        "area": "Strukturen und funktionaler Zusammenhang"
+      },
+      "requires": [],
+      "contains": [],
+      "sourceRef": "Fachanforderungen Mathematik SH (2024), Sekundarstufe I, 2 Kompetenzbereiche, Exponentialfunktion, S. 36-37; Tabelle zur Verteilung der Inhalte auf die Jahrgangsstufen, S. 45.",
       "type": "atomic"
     },
     {
