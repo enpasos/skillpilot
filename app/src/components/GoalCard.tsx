@@ -7,6 +7,7 @@ import { isMastered } from '../goalUiUtils'
 import { InlineMathText } from './InlineMathText'
 import { useLanguage } from '../contexts/LanguageContext'
 import { formatApplicabilityDimensionLabel, formatFilterValueLabel } from '../utils/filterLabels'
+import { getGoalCardCopy } from '../utils/goalCardCopy'
 
 interface GoalCardProps {
   goal: Goal
@@ -178,36 +179,17 @@ export const GoalCard: React.FC<GoalCardProps> = ({
   isFrontier = false
 }) => {
   const { language } = useLanguage()
-  const examTaskLabel = language === 'en' ? 'Exam Task' : 'Prüfungsaufgabe'
-  const solutionLabel = language === 'en' ? 'Sample Solution' : 'Musterlösung'
+  const localizedLanguage = language === 'en' ? 'en' : 'de'
+  const copy = getGoalCardCopy(localizedLanguage)
   const handleChange = onMasteryChange ?? (() => { })
   const isProjectedStructureNode = (goal.tags ?? []).includes(SYNTHETIC_PROGRAM_UNIT_TAG)
   const isLearnerAudience = showLearnerTools
   const projectedProgramUnitKind = (goal.tags ?? [])
     .find((tag) => tag.startsWith(PROGRAM_UNIT_KIND_TAG_PREFIX) && tag !== PROGRAM_UNIT_ANCHOR_TAG)
     ?.slice(PROGRAM_UNIT_KIND_TAG_PREFIX.length)
-  const projectedStructureBadge = language === 'en' ? 'Structure' : 'Struktur'
-  const projectedStructureTitle = language === 'en' ? 'Projected structure node' : 'Projizierter Strukturknoten'
-  const projectedStructureDescription = language === 'en'
-    ? 'This node is generated at runtime from program units and goal placements. It groups content for navigation and progress, but it is not a standalone learning goal.'
-    : 'Dieser Knoten wird zur Laufzeit aus programUnits und goalPlacements projiziert. Er gruppiert Inhalte fuer Navigation und Fortschritt, ist aber kein eigenstaendiges fachliches Lernziel.'
-  const projectedStructureHint = language === 'en'
-    ? 'You can use this node to navigate into the corresponding section, but not treat it like a directly plannable learning goal.'
-    : 'Du kannst diesen Knoten zum Navigieren in den entsprechenden Abschnitt nutzen, ihn aber nicht wie ein direkt planbares Lernziel behandeln.'
   const projectedStructureKindLabel = (() => {
     if (!projectedProgramUnitKind) return undefined
-    if (language === 'en') {
-      if (projectedProgramUnitKind === 'stage') return 'Stage'
-      if (projectedProgramUnitKind === 'year') return 'Year'
-      if (projectedProgramUnitKind === 'phase') return 'Phase'
-      if (projectedProgramUnitKind === 'program') return 'Program'
-      return projectedProgramUnitKind
-    }
-    if (projectedProgramUnitKind === 'stage') return 'Stufe'
-    if (projectedProgramUnitKind === 'year') return 'Jahrgang'
-    if (projectedProgramUnitKind === 'phase') return 'Phase'
-    if (projectedProgramUnitKind === 'program') return 'Programm'
-    return projectedProgramUnitKind
+    return copy.projectedProgramUnitKinds[projectedProgramUnitKind] ?? projectedProgramUnitKind
   })()
 
   // Detect if Atomic Goal (no children)
@@ -215,11 +197,11 @@ export const GoalCard: React.FC<GoalCardProps> = ({
   const mastered = isMastered(masteryValue)
   const canSetActive = Boolean(!readOnly && onSetActive && isAtomic && !mastered && (isFrontier || isActive))
   const activeActionLabel = isActive
-    ? 'Zum aktiven Lernziel springen'
-    : 'Als aktuelles Lernziel auswählen'
+    ? copy.activeActionReveal
+    : copy.activeActionSelect
   const { provenance, helpfulLinks } = extractSourceMetadata(goal)
   const learningMaterialLinks = helpfulLinks.filter(isLearningMaterialLink).slice(0, 3)
-  const sourceLinkLabel = provenance.sourceTitle || (language === 'en' ? 'Course page' : 'Kursseite')
+  const sourceLinkLabel = provenance.sourceTitle || copy.coursePageFallback
   const displayDescription = stripLegacyAttributionLines(goal.description, Boolean(provenance.sourceUrl))
   const visibleTags = React.useMemo(
     () => (goal.tags ?? []).filter((tag) => !tag.startsWith('synthetic:') && !tag.startsWith(PROGRAM_UNIT_KIND_TAG_PREFIX)),
@@ -277,7 +259,7 @@ export const GoalCard: React.FC<GoalCardProps> = ({
           {!isLearnerAudience && isProjectedStructureNode && !hideTechnicalStructureUi && (
             <div className="mt-2 flex flex-wrap gap-2">
               <span className="inline-flex items-center rounded-full border border-slate-300 dark:border-slate-600 px-2 py-0.5 text-[11px] font-medium uppercase tracking-wide text-slate-600 dark:text-slate-300">
-                {projectedStructureBadge}
+                {copy.projectedStructureBadge}
               </span>
               {projectedStructureKindLabel && (
                 <span className="inline-flex items-center rounded-full border border-sky-200 dark:border-sky-800 px-2 py-0.5 text-[11px] font-medium text-sky-700 dark:text-sky-300">
@@ -310,9 +292,9 @@ export const GoalCard: React.FC<GoalCardProps> = ({
 
       {!isLearnerAudience && isProjectedStructureNode && !hideTechnicalStructureUi && (
         <div className="mb-4 rounded-2xl border border-slate-200 bg-slate-50/80 p-4 text-sm text-text-secondary dark:border-slate-700 dark:bg-slate-800/40">
-          <div className="font-semibold text-text-primary">{projectedStructureTitle}</div>
-          <p className="mt-1">{projectedStructureDescription}</p>
-          <p className="mt-2 text-xs">{projectedStructureHint}</p>
+          <div className="font-semibold text-text-primary">{copy.projectedStructureTitle}</div>
+          <p className="mt-1">{copy.projectedStructureDescription}</p>
+          <p className="mt-2 text-xs">{copy.projectedStructureHint}</p>
         </div>
       )}
 
@@ -326,7 +308,7 @@ export const GoalCard: React.FC<GoalCardProps> = ({
             <div className="bg-blue-50 dark:bg-blue-900/10 p-4 rounded-xl border border-blue-100 dark:border-blue-900/30">
               <h3 className="text-sm font-bold text-blue-700 dark:text-blue-400 uppercase tracking-wide mb-2 flex items-center gap-2">
                 <Target size={16} />
-                {examTaskLabel}
+                {copy.examTaskLabel}
               </h3>
               <ReactMarkdown
                 remarkPlugins={[remarkGfm, remarkMath]}
@@ -341,7 +323,7 @@ export const GoalCard: React.FC<GoalCardProps> = ({
           <div className="bg-emerald-50 dark:bg-emerald-900/10 p-4 rounded-xl border border-emerald-100 dark:border-emerald-900/30">
             <h3 className="text-sm font-bold text-emerald-700 dark:text-emerald-400 uppercase tracking-wide mb-2 flex items-center gap-2">
               <Check size={16} />
-              {solutionLabel}
+	              {copy.solutionLabel}
                 </h3>
                 <ReactMarkdown
                   remarkPlugins={[remarkGfm, remarkMath]}
@@ -369,7 +351,7 @@ export const GoalCard: React.FC<GoalCardProps> = ({
         <div className="mt-3 text-xs text-text-secondary">
           {provenance.sourceUrl && (
             <div>
-              <span className="font-medium text-text-primary">{language === 'en' ? 'Curriculum source: ' : 'Curriculum-Quelle: '}</span>
+              <span className="font-medium text-text-primary">{copy.curriculumSourceLabel}</span>
               <a
                 href={provenance.sourceUrl}
                 target="_blank"
@@ -382,7 +364,7 @@ export const GoalCard: React.FC<GoalCardProps> = ({
           )}
           {learningMaterialLinks.length > 0 && (
             <div className={provenance.sourceUrl ? 'mt-1' : ''}>
-              <span className="font-medium text-text-primary">{language === 'en' ? 'Learning material: ' : 'Lernmaterial: '}</span>
+              <span className="font-medium text-text-primary">{copy.learningMaterialLabel}</span>
               {learningMaterialLinks.map((link, index) => (
                 <React.Fragment key={`${link.type ?? 'resource'}:${link.url}`}>
                   {index > 0 && <span className="mx-1">·</span>}
@@ -392,7 +374,7 @@ export const GoalCard: React.FC<GoalCardProps> = ({
                     rel="noopener noreferrer"
                     className="underline decoration-dotted hover:decoration-solid"
                   >
-                    {link.title ?? link.resourceType ?? (language === 'en' ? 'Resource' : 'Quelle')}
+                    {link.title ?? link.resourceType ?? copy.resourceFallback}
                   </a>
                 </React.Fragment>
               ))}
@@ -400,7 +382,7 @@ export const GoalCard: React.FC<GoalCardProps> = ({
           )}
           {provenance.sourceUrl && provenance.sourceLicense && (
             <span className={provenance.sourceUrl || learningMaterialLinks.length > 0 ? 'ml-3' : ''}>
-              <span className="font-medium text-text-primary">{language === 'en' ? 'License: ' : 'Lizenz: '}</span>
+              <span className="font-medium text-text-primary">{copy.licenseLabel}</span>
               {provenance.sourceLicenseUrl ? (
                 <a
                   href={provenance.sourceLicenseUrl}
@@ -424,7 +406,7 @@ export const GoalCard: React.FC<GoalCardProps> = ({
           {/* Applicability */}
           {applicabilityGroups.length > 0 && (
             <div>
-              <span className="font-semibold text-text-primary">{language === 'en' ? 'Applies to:' : 'Gilt fuer:'}</span>
+              <span className="font-semibold text-text-primary">{copy.appliesToLabel}</span>
               {applicabilityGroups.length === 1 ? (
                 <div className="mt-1 flex flex-wrap gap-1.5">
                   {applicabilityGroups[0].values.map((value) => (
@@ -432,7 +414,7 @@ export const GoalCard: React.FC<GoalCardProps> = ({
                       key={`${applicabilityGroups[0].dimension}:${value}`}
                       className="px-2 py-0.5 rounded-full bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-300"
                     >
-                      {formatFilterValueLabel(value, language === 'en' ? 'en' : 'de')}
+                      {formatFilterValueLabel(value, localizedLanguage)}
                     </span>
                   ))}
                 </div>
@@ -441,14 +423,14 @@ export const GoalCard: React.FC<GoalCardProps> = ({
                   {applicabilityGroups.map(({ dimension, values }) => (
                     <div key={dimension} className="flex flex-wrap items-center gap-1.5">
                       <span className="font-semibold text-text-primary">
-                        {formatApplicabilityDimensionLabel(dimension, language === 'en' ? 'en' : 'de')}:
+                        {formatApplicabilityDimensionLabel(dimension, localizedLanguage)}:
                       </span>
                       {values.map((value) => (
                         <span
                           key={`${dimension}:${value}`}
                           className="px-2 py-0.5 rounded-full bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-300"
                         >
-                          {formatFilterValueLabel(value, language === 'en' ? 'en' : 'de')}
+                          {formatFilterValueLabel(value, localizedLanguage)}
                         </span>
                       ))}
                     </div>
@@ -461,7 +443,7 @@ export const GoalCard: React.FC<GoalCardProps> = ({
           {/* Tags */}
           {visibleTags.length > 0 && (
             <div className="flex flex-wrap gap-1.5">
-              <span className="font-semibold text-text-primary">Tags:</span>
+              <span className="font-semibold text-text-primary">{copy.tagsLabel}</span>
               {visibleTags.map((tag) => (
                 <span
                   key={tag}
@@ -476,7 +458,7 @@ export const GoalCard: React.FC<GoalCardProps> = ({
           {/* Provenance */}
           {provenance.sourceUrl && (
             <div>
-              <span className="font-semibold text-text-primary">{language === 'en' ? 'Curriculum source: ' : 'Curriculum-Quelle: '}</span>
+              <span className="font-semibold text-text-primary">{copy.curriculumSourceLabel}</span>
               {provenance.sourceUrl ? (
                 <a
                   href={provenance.sourceUrl}
@@ -491,7 +473,7 @@ export const GoalCard: React.FC<GoalCardProps> = ({
               )}
               {provenance.sourceLicense && (
                 <div className="mt-1">
-                  <span className="font-semibold text-text-primary">{language === 'en' ? 'License: ' : 'Lizenz: '}</span>
+                  <span className="font-semibold text-text-primary">{copy.licenseLabel}</span>
                   {provenance.sourceLicenseUrl ? (
                     <a
                       href={provenance.sourceLicenseUrl}
@@ -512,7 +494,7 @@ export const GoalCard: React.FC<GoalCardProps> = ({
           {/* Helpful resource links */}
           {helpfulLinks.length > 0 && (
             <div>
-              <span className="font-semibold text-text-primary">{language === 'en' ? 'Helpful resources:' : 'Hilfreiche Quellen:'}</span>
+              <span className="font-semibold text-text-primary">{copy.helpfulResourcesLabel}</span>
               <div className="mt-1 flex flex-wrap gap-1.5">
                 {helpfulLinks.slice(0, 6).map((link) => (
                   <a
@@ -522,7 +504,7 @@ export const GoalCard: React.FC<GoalCardProps> = ({
                     rel="noopener noreferrer"
                     className="px-2 py-0.5 rounded-full bg-sky-100 dark:bg-sky-900/30 text-sky-700 dark:text-sky-300 hover:underline"
                   >
-                    {link.title ?? link.resourceType ?? link.type ?? (language === 'en' ? 'Resource' : 'Quelle')}
+                    {link.title ?? link.resourceType ?? link.type ?? copy.resourceFallback}
                   </a>
                 ))}
               </div>
@@ -532,7 +514,7 @@ export const GoalCard: React.FC<GoalCardProps> = ({
           {/* Leitideen */}
           {goal.leitideen && goal.leitideen.length > 0 && (
             <div className="flex flex-wrap gap-1.5">
-              <span className="font-semibold text-text-primary">Leitideen:</span>
+              <span className="font-semibold text-text-primary">{copy.leitideenLabel}</span>
               {goal.leitideen.map((li) => (
                 <span
                   key={li}
@@ -547,7 +529,7 @@ export const GoalCard: React.FC<GoalCardProps> = ({
           {/* Kompetenzen */}
           {goal.kompetenzen && goal.kompetenzen.length > 0 && (
             <div className="flex flex-wrap gap-1.5">
-              <span className="font-semibold text-text-primary">Kompetenzen:</span>
+              <span className="font-semibold text-text-primary">{copy.kompetenzenLabel}</span>
               {goal.kompetenzen.map((k) => (
                 <span
                   key={k}
@@ -562,7 +544,7 @@ export const GoalCard: React.FC<GoalCardProps> = ({
           {/* Examples */}
           {goal.examples && goal.examples.length > 0 && (
             <div>
-              <span className="font-semibold text-text-primary">Beispiele:</span>
+              <span className="font-semibold text-text-primary">{copy.examplesLabel}</span>
               <ul className="mt-1 ml-4 list-disc space-y-0.5">
                 {goal.examples.map((ex, idx) => (
                   <li key={idx}>{ex}</li>
@@ -577,13 +559,13 @@ export const GoalCard: React.FC<GoalCardProps> = ({
         <div className="mt-4 space-y-4">
           {readOnly && (
             <div className="rounded-xl border border-amber-200 bg-amber-50/40 p-4 text-sm text-text-secondary dark:border-amber-900/40 dark:bg-amber-900/10">
-              Diese Legacy-Ansicht ist schreibgeschuetzt. Fuer aktives Lernen und Statusaenderungen bitte auf Gymnasium (DE) umstellen.
+              {copy.legacyReadOnlyNotice}
             </div>
           )}
 
           {!isLearnerAudience && isProjectedStructureNode && !hideTechnicalStructureUi && (
             <div className="rounded-xl border border-slate-200 bg-slate-50/40 p-4 text-sm text-text-secondary dark:border-slate-700 dark:bg-slate-800/30">
-              {projectedStructureHint}
+              {copy.projectedStructureHint}
             </div>
           )}
 
@@ -591,7 +573,7 @@ export const GoalCard: React.FC<GoalCardProps> = ({
           {!readOnly && mastered && nextCandidates.length > 0 && onSetActive && (
             <div className="bg-amber-50 dark:bg-amber-900/10 rounded-xl p-4 border border-amber-100 dark:border-amber-900/30">
               <h3 className="text-xs font-bold text-amber-700 dark:text-amber-500 uppercase tracking-wide mb-3">
-                Nächste Schritte
+                {copy.nextStepsLabel}
               </h3>
               <div className="flex flex-col gap-2">
                 {nextCandidates.slice(0, 3).map(candidate => (
@@ -620,7 +602,7 @@ export const GoalCard: React.FC<GoalCardProps> = ({
                 className="flex items-center gap-2 px-4 py-2 bg-amber-500/10 text-amber-600 dark:text-amber-500 hover:bg-amber-500/20 rounded-lg text-sm font-medium transition-colors border border-amber-500/20"
               >
                 <Send size={16} />
-                <span>Als aktuelles Ziel auswählen</span>
+                <span>{copy.selectAsActiveGoalLabel}</span>
               </button>
             </div>
           )}
@@ -631,10 +613,10 @@ export const GoalCard: React.FC<GoalCardProps> = ({
                 {isProjectedStructureNode
                   ? (
                     isLearnerAudience || hideTechnicalStructureUi
-                      ? (language === 'en' ? 'Progress in this section' : 'Fortschritt in diesem Abschnitt')
-                      : (language === 'en' ? 'Progress in this structure section' : 'Fortschritt in diesem Strukturabschnitt')
+                      ? copy.progressInSectionLabel
+                      : copy.progressInStructureSectionLabel
                   )
-                  : 'Kompetenzstand für dieses Lernziel'}
+                  : copy.progressForGoalLabel}
               </span>
               <span className="tabular-nums">{Math.round(masteryValue * 100)}%</span>
             </div>

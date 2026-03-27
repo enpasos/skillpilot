@@ -8,6 +8,8 @@ import { useLanguage } from '../contexts/LanguageContext'
 import { ConfirmModal } from '../components/ConfirmModal'
 import { BadgeCheck, Trophy } from 'lucide-react'
 import { getCurriculumDisplayTitle } from '../utils/curriculumDisplay'
+import { getCurriculaChampionCopy } from '../utils/curriculaChampionCopy'
+import { getCurriculaViewCopy } from '../utils/curriculaViewCopy'
 
 interface ChampionEntry {
   curriculumId: string
@@ -89,6 +91,9 @@ export const CurriculaView: React.FC = () => {
   const [topics, setTopics] = useState<TopicSummary[]>([])
   const t = useTranslation()
   const { language } = useLanguage()
+  const localizedLanguage = language === 'en' ? 'en' : 'de'
+  const championCopy = getCurriculaChampionCopy(localizedLanguage)
+  const curriculaViewCopy = getCurriculaViewCopy(localizedLanguage)
   const getCurriculumTitle = useCallback((curriculum: CurriculumEntry) => {
     return language === 'en'
       ? (curriculum.titleEn || curriculum.title)
@@ -179,14 +184,10 @@ export const CurriculaView: React.FC = () => {
   }, [language])
   const getDeregisterGroupBadge = useCallback((group: DeregisterCurriculumGroup) => {
     if (group.entryCount > 1) {
-      return language === 'de'
-        ? `${group.entryCount} Eintraege`
-        : `${group.entryCount} entries`
+      return curriculaViewCopy.deregisterEntriesBadge(group.entryCount)
     }
-    return language === 'de'
-      ? `${group.masteredCount} Ziele`
-      : `${group.masteredCount} goals`
-  }, [language])
+    return curriculaViewCopy.deregisterGoalsBadge(group.masteredCount)
+  }, [curriculaViewCopy])
 
   const fetchUser = useCallback(async () => {
     try {
@@ -593,7 +594,7 @@ export const CurriculaView: React.FC = () => {
                   </div>
                   <div>
                     <p className="text-sm font-medium text-sky-900 dark:text-sky-200">
-                      You are a champion for {user.champions.length} curriculum{user.champions.length !== 1 ? 's' : ''}
+                      {championCopy.championSummary(user.champions.length)}
                     </p>
                   </div>
                 </div>
@@ -602,7 +603,7 @@ export const CurriculaView: React.FC = () => {
                   onClick={() => setShowDeregisterModal(true)}
                   className="text-sm font-medium text-red-600 dark:text-red-400 hover:text-red-700 hover:underline"
                 >
-                  Stop Championship
+                  {championCopy.stopChampionship}
                 </button>
               </div>
             )}
@@ -646,9 +647,9 @@ export const CurriculaView: React.FC = () => {
                         <div className="mb-6 p-4 rounded-2xl bg-sky-50 dark:bg-sky-900/20 border border-sky-100 dark:border-sky-800">
                           <div className="flex items-center justify-between">
                             <div>
-                              <h3 className="font-semibold text-sky-900 dark:text-sky-300">Active Championships</h3>
+                              <h3 className="font-semibold text-sky-900 dark:text-sky-300">{championCopy.activeChampionshipsTitle}</h3>
                               <p className="text-sm text-sky-700 dark:text-sky-400">
-                                You are a champion for {user.champions.length} curriculum{user.champions.length !== 1 ? 's' : ''}.
+                                {championCopy.championSummary(user.champions.length)}.
                               </p>
                             </div>
                             <button
@@ -656,7 +657,7 @@ export const CurriculaView: React.FC = () => {
                               onClick={() => setShowDeregisterModal(true)}
                               className="px-4 py-2 rounded-full bg-white dark:bg-slate-800 text-red-600 dark:text-red-400 text-sm font-medium shadow-sm hover:shadow transition-all border border-transparent hover:border-red-200"
                             >
-                              Stop Championship
+                              {championCopy.stopChampionship}
                             </button>
                           </div>
                         </div>
@@ -713,7 +714,7 @@ export const CurriculaView: React.FC = () => {
                           </div>
                         </div>
                         <div className="flex flex-col gap-2 justify-center">
-                          <span className="text-sm text-text-secondary">Logged in as GitHub user</span>
+                          <span className="text-sm text-text-secondary">{curriculaViewCopy.loggedInAsGithubUser}</span>
                         </div>
                       </div>
                       {submitError && (
@@ -736,7 +737,7 @@ export const CurriculaView: React.FC = () => {
                           onClick={() => setShowDeregisterModal(true)}
                           className="px-5 py-2.5 rounded-full bg-red-500/10 text-red-700 dark:text-red-400 border border-red-500/20 hover:bg-red-500/20 transition-colors text-sm"
                         >
-                          Stop Championship
+                          {championCopy.stopChampionship}
                         </button>
                       </div>
                     </>
@@ -750,7 +751,7 @@ export const CurriculaView: React.FC = () => {
                         onClick={handleConnect}
                         className="inline-flex items-center justify-center px-6 py-3 rounded-full bg-[#24292F] text-white hover:bg-[#24292F]/90 transition-colors font-medium"
                       >
-                        Connect with GitHub
+                        {championCopy.connectWithGithub}
                       </button>
                       <a
                         href="https://github.com/signup"
@@ -771,14 +772,14 @@ export const CurriculaView: React.FC = () => {
               isOpen={showDeregisterModal}
               onClose={() => setShowDeregisterModal(false)}
               onConfirm={handleDeregister}
-              title="Stop Championship"
-              confirmText="Bestätigen"
+              title={championCopy.deregisterModalTitle}
+              confirmText={championCopy.deregisterModalConfirm}
               confirmClassName="bg-red-600 hover:bg-red-700"
             >
               <div className="space-y-4">
-                <p>Select the championships you want to end:</p>
+                <p>{championCopy.deregisterPrompt}</p>
                 {deregisterGroups.length === 0 ? (
-                  <p className="text-gray-500 italic">No active championships found.</p>
+                  <p className="text-gray-500 italic">{championCopy.noActiveChampionships}</p>
                 ) : (
                   <div className="space-y-2 max-h-60 overflow-y-auto">
                     {deregisterGroups.map(group => {
@@ -922,7 +923,7 @@ export const CurriculaView: React.FC = () => {
                   {/* Topics Preview */}
                   <div className="mt-4 border-t border-border-color pt-3">
                     <div className="text-xs uppercase tracking-wider text-text-secondary mb-2">
-                      {t.curriculaPage.directory.filters.scopeLabel || 'Topics'}
+                      {t.curriculaPage.directory.filters.scopeLabel || curriculaViewCopy.topicsLabel}
                     </div>
                     {(() => {
                       const topics = language === 'en'
@@ -955,7 +956,7 @@ export const CurriculaView: React.FC = () => {
                       </div>
                     ) : (
                       <div className="text-xs text-text-secondary italic">
-                        No topics available.
+                        {curriculaViewCopy.noTopicsAvailable}
                       </div>
                     )
                     })()}
@@ -1009,7 +1010,7 @@ export const CurriculaView: React.FC = () => {
                             </div>
                             <div className="flex flex-wrap gap-4 text-xs text-text-secondary">
                               <div className="flex flex-col">
-                                <span className="uppercase tracking-wider" title={language === 'de' ? 'In der Rolle Lernender Lernziele nachvollzogen' : 'Learning goals completed as a learner'}>
+                                <span className="uppercase tracking-wider" title={championCopy.achievementsTooltip}>
                                   {t.curriculaPage.table.achievements}
                                 </span>
                                 <span className="text-sm font-semibold text-text-primary">
@@ -1018,7 +1019,7 @@ export const CurriculaView: React.FC = () => {
                                 </span>
                               </div>
                               <div className="flex flex-col">
-                                <span className="uppercase tracking-wider" title={language === 'de' ? 'GitHub Issues mit Hinweisen auf Fehler/Schwächen erstellt' : 'GitHub issues created to report errors or weaknesses'}>
+                                <span className="uppercase tracking-wider" title={championCopy.issuesTooltip}>
                                   {t.curriculaPage.table.issues}
                                 </span>
                                 <span className="text-sm font-semibold text-text-primary">
@@ -1026,7 +1027,7 @@ export const CurriculaView: React.FC = () => {
                                 </span>
                               </div>
                               <div className="flex flex-col">
-                                <span className="uppercase tracking-wider" title={language === 'de' ? 'GitHub Pull-Requests mit Lösungsvorschlägen erstellt' : 'GitHub pull requests created with proposed solutions'}>
+                                <span className="uppercase tracking-wider" title={championCopy.pullRequestsTooltip}>
                                   {t.curriculaPage.table.prs}
                                 </span>
                                 <span className="text-sm font-semibold text-text-primary">

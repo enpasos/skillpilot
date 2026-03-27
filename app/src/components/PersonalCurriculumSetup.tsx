@@ -7,9 +7,14 @@ import {
     applyDefaultGlobalStageScope,
     getGlobalStageScopeSelection,
     GLOBAL_STAGE_SCOPE_CONFIG_IDS,
-    GLOBAL_STAGE_SCOPE_OPTIONS,
+    getGlobalStageScopeOptions,
 } from '../utils/personalCurriculumStageScope'
-import { formatJurisdictionScopedTitle } from '../utils/filterLabels'
+import {
+    formatJurisdictionScopedTitle,
+    getDisplayCourseProfileFilters,
+    getDisplayFiltersForSelection,
+} from '../utils/filterLabels'
+import { getPersonalCurriculumSetupCopy } from '../utils/curriculumSetupCopy'
 
 interface LandscapeSummary {
     landscapeId: string
@@ -42,21 +47,6 @@ interface SetupMigrationConfig {
     actionPending?: boolean
     onAction: () => void
     previewItems?: LegacyCutoverPreviewItem[]
-}
-
-const COMBINED_COURSE_FILTER = { id: 'ALL', label: 'Grund- und Leistungskurs' }
-
-const withCombinedCourseFilter = (filters?: { id: string; label: string }[]) => {
-    const effectiveFilters = filters ?? []
-    const hasGk = effectiveFilters.some(filter => filter.id === 'GK')
-    const hasLk = effectiveFilters.some(filter => filter.id === 'LK')
-    const hasAll = effectiveFilters.some(filter => filter.id === 'ALL')
-
-    if (hasGk && hasLk && !hasAll) {
-        return [...effectiveFilters, COMBINED_COURSE_FILTER]
-    }
-
-    return effectiveFilters
 }
 
 const cleanLandscapeDisplayTitle = (title: string) => {
@@ -99,36 +89,9 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
 }) => {
     const { language } = useLanguage()
     const localizedLanguage = language === 'en' ? 'en' : 'de'
-    const retirementCopy = localizedLanguage === 'de'
-        ? {
-            title: 'Legacy-Ansicht',
-            subtitle: 'Diese Legacy-Ansicht bleibt nur noch fuer Migration, Vergleich und Audit verfuegbar.',
-            noticeTitle: 'Nur noch fuer Umstellung und Audit',
-            noticeBodyPrimary: 'Fach- und Filteraenderungen werden in dieser eingefrorenen Legacy-Ansicht nicht mehr gepflegt. Fuer die weitere Arbeit soll der Lernstand auf Gymnasium (DE) umgestellt werden.',
-            noticeBodySecondary: 'Die aktuelle Legacy-Ansicht bleibt vorerst als Vergleichspfad sichtbar, ist aber kein normaler Konfigurationspfad mehr.',
-        }
-        : {
-            title: 'Legacy View',
-            subtitle: 'This legacy view remains available only for migration, comparison, and audit.',
-            noticeTitle: 'Available only for migration and audit',
-            noticeBodyPrimary: 'Subject and filter changes are no longer maintained in this frozen legacy view. Ongoing work should move the learner state to Gymnasium (DE).',
-            noticeBodySecondary: 'The current legacy view remains visible for comparison for now, but it is no longer a regular configuration path.',
-        }
-    const compatibilityCopy = localizedLanguage === 'de'
-        ? {
-            title: 'Kompatibilitaetsansichten',
-            subtitle: 'Diese eingefrorenen Legacy-Ansichten bleiben nur fuer Migration, Vergleich und Audit verfuegbar.',
-            hiddenSummary: (count: number) => `${count} Ansicht${count === 1 ? '' : 'en'} ausgeblendet.`,
-            showAction: 'Einblenden',
-            hideAction: 'Ausblenden',
-        }
-        : {
-            title: 'Compatibility Views',
-            subtitle: 'These frozen legacy views remain available only for migration, comparison, and audit.',
-            hiddenSummary: (count: number) => `${count} view${count === 1 ? '' : 's'} hidden.`,
-            showAction: 'Show',
-            hideAction: 'Hide',
-        }
+    const setupCopy = getPersonalCurriculumSetupCopy(localizedLanguage)
+    const retirementCopy = setupCopy.retirement
+    const compatibilityCopy = setupCopy.compatibility
     const computedInitial = React.useMemo(() => {
         const initial: PersonalCurriculumConfig = {}
         availableLandscapes.forEach((l) => {
@@ -170,6 +133,10 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
     const [strictMode, setStrictMode] = useState<boolean>(initialStrictMode)
     const [expanded, setExpanded] = useState<Set<string>>(new Set(initialExpanded))
     const [isApplying, setIsApplying] = useState(false)
+    const stageScopeOptions = React.useMemo(
+        () => getGlobalStageScopeOptions(localizedLanguage),
+        [localizedLanguage],
+    )
     const currentLandscape = availableLandscapes.find((landscape) => landscape.landscapeId === currentLandscapeId)
     const currentLandscapeIsCompatibilityOnly = isCompatibilityOnlyLandscape(
         currentLandscape ?? { landscapeId: currentLandscapeId ?? '', title: '' },
@@ -310,7 +277,10 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
         const currentFilter = config[landscape.landscapeId]?.filterId ?? ''
         const globalStageSelection = getGlobalStageScopeSelection(config)
         const shouldShowGlobalStageScope = isRoot && rootLandscapeId === CANONICAL_GYMNASIUM_ROOT_ID
-        const effectiveFilters = withCombinedCourseFilter(landscape.filters)
+        const effectiveFilters = getDisplayCourseProfileFilters(landscape.filters, localizedLanguage)
+        const displayFilters = isRoot
+            ? getDisplayFiltersForSelection(effectiveFilters, localizedLanguage)
+            : effectiveFilters
         const hasFilters = effectiveFilters.length > 0
         const showCourseProfileControls = isRoot ? true : globalStageSelection.sek2Selected
         const showFilterControls = Boolean(hasFilters) && showCourseProfileControls && (isRoot || isSelected)
@@ -321,7 +291,7 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
             : (landscape.subject?.trim() || landscape.title)
         const displayLabel = isRoot ? rawDisplayLabel : cleanLandscapeDisplayTitle(rawDisplayLabel)
         const modeLabel = !isRoot && isCompatibilityOnlyLandscape(landscape)
-            ? `${displayLabel} (Kompatibilitaetsansicht)`
+            ? `${displayLabel} (${compatibilityCopy.suffix})`
             : displayLabel
 
         return (
@@ -356,10 +326,10 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
                     <div className={`${isRoot ? 'ml-11 mt-2 mb-3 flex flex-col gap-1 rounded-lg border border-border-color bg-input-bg/40 p-3' : 'ml-11 flex flex-col gap-1 mt-1 mb-2 border-l-2 border-border-color pl-2'}`}>
                         {isRoot && (
                             <div className="mb-2 text-xs font-semibold uppercase tracking-wide text-text-secondary">
-                                Sicht / Bundesland
+                                {setupCopy.rootFilterLabel}
                             </div>
                         )}
-                        {effectiveFilters.map(f => (
+                        {displayFilters.map(f => (
                             <label
                                 key={f.id}
                                 className={`flex items-center gap-2 p-1.5 rounded cursor-pointer hover:bg-input-bg/50 transition-colors ${currentFilter === f.id ? 'text-sky-600 dark:text-sky-300' : 'text-text-secondary'
@@ -379,9 +349,9 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
                         {shouldShowGlobalStageScope && (
                             <>
                                 <div className="mt-4 mb-2 text-xs font-semibold uppercase tracking-wide text-text-secondary">
-                                    Sekundarstufe
+                                    {setupCopy.stageLabel}
                                 </div>
-                                {GLOBAL_STAGE_SCOPE_OPTIONS.map(option => {
+                                {stageScopeOptions.map(option => {
                                     const checked = config[option.id]?.selected ?? true
                                     return (
                                         <label
@@ -455,12 +425,12 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
                 <div className="p-6 border-b border-border-color flex items-center justify-between">
                     <div>
                         <h2 className="text-xl font-bold text-text-primary">
-                            {retirementOnly ? retirementCopy.title : 'Mein Lehrplan'}
+                            {retirementOnly ? retirementCopy.title : setupCopy.title}
                         </h2>
                         <p className="text-text-secondary text-sm mt-1">
                             {retirementOnly
                                 ? retirementCopy.subtitle
-                                : 'Wähle zuerst Sekundarstufen, dann Fächer und für Sekundarstufe II die Kursniveaus.'}
+                                : setupCopy.subtitle}
                         </p>
                     </div>
                     <button
@@ -523,7 +493,7 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
                     {/* Preferences Section */}
                     {!retirementOnly && (
                         <div className="mb-6 bg-blue-50 dark:bg-blue-900/10 p-4 rounded-xl border border-blue-100 dark:border-blue-900/30">
-                            <h3 className="text-sm font-semibold text-text-primary mb-3">Auswahlpriorisierung</h3>
+                            <h3 className="text-sm font-semibold text-text-primary mb-3">{setupCopy.preferencesTitle}</h3>
                             <div className="flex flex-col gap-3">
                                 <div className="flex items-center gap-6">
                                     <label className="flex items-center gap-2 cursor-pointer">
@@ -534,7 +504,7 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
                                             onChange={() => handleStrategyChange('RANDOM')}
                                             className="w-4 h-4 text-sky-600 focus:ring-sky-500 border-gray-300 bg-white dark:bg-slate-800 dark:border-slate-600"
                                         />
-                                        <span className="text-sm text-text-primary">Zufällig (Abwechslung)</span>
+                                        <span className="text-sm text-text-primary">{setupCopy.randomStrategy}</span>
                                     </label>
                                     <label className="flex items-center gap-2 cursor-pointer">
                                         <input
@@ -544,7 +514,7 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
                                             onChange={() => handleStrategyChange('SEQUENTIAL')}
                                             className="w-4 h-4 text-sky-600 focus:ring-sky-500 border-gray-300 bg-white dark:bg-slate-800 dark:border-slate-600"
                                         />
-                                        <span className="text-sm text-text-primary">Schritt für Schritt</span>
+                                        <span className="text-sm text-text-primary">{setupCopy.sequentialStrategy}</span>
                                     </label>
                                 </div>
 
@@ -558,8 +528,8 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
                                         className="w-4 h-4 rounded text-sky-600 focus:ring-sky-500 border-gray-300 bg-white dark:bg-slate-800 dark:border-slate-600"
                                     />
                                     <div>
-                                        <span className="text-sm font-medium text-text-primary">Autopilot aktivieren</span>
-                                        <p className="text-xs text-text-secondary">Startet automatisch das nächste Ziel nach Abschluss.</p>
+                                        <span className="text-sm font-medium text-text-primary">{setupCopy.autoPilotTitle}</span>
+                                        <p className="text-xs text-text-secondary">{setupCopy.autoPilotDescription}</p>
                                     </div>
                                 </label>
 
@@ -571,8 +541,8 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
                                         className="w-4 h-4 rounded text-amber-600 focus:ring-amber-500 border-gray-300 bg-white dark:bg-slate-800 dark:border-slate-600"
                                     />
                                     <div>
-                                        <span className="text-sm font-medium text-text-primary">Strict Mode aktivieren</span>
-                                        <p className="text-xs text-text-secondary">Prüft alle Voraussetzungen global, auch außerhalb deines aktuellen Fokus.</p>
+                                        <span className="text-sm font-medium text-text-primary">{setupCopy.strictModeTitle}</span>
+                                        <p className="text-xs text-text-secondary">{setupCopy.strictModeDescription}</p>
                                     </div>
                                 </label>
                             </div>
@@ -594,7 +564,7 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
                         disabled={isApplying}
                         className="px-6 py-2.5 bg-sky-600 hover:bg-sky-500 text-white rounded-lg font-medium transition-colors shadow-lg shadow-sky-900/20"
                     >
-                        {retirementOnly ? 'Schliessen' : isApplying ? 'Speichert...' : 'Fertig'}
+                        {retirementOnly ? setupCopy.closeAction : isApplying ? setupCopy.savePending : setupCopy.doneAction}
                     </button>
                 </div>
             </div>

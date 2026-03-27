@@ -1,6 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react'
 import { Play, Pause, Volume2 } from 'lucide-react'
 import { useLanguage } from '../contexts/LanguageContext'
+import { getAudioPlayerCopy } from '../utils/audioPlayerCopy'
 
 // Define the available audio sources
 const AUDIO_SOURCES = {
@@ -8,19 +9,10 @@ const AUDIO_SOURCES = {
   en: '/audio/intro-en.m4a',
 }
 
-const NOTEBOOKLM_LABEL = {
-  de: 'Deep Dive: SkillPilot erklärt',
-  en: 'Deep Dive: SkillPilot Explained',
-}
-
-const SUBTITLE = {
-  de: 'Generiert mit NotebookLM',
-  en: 'Generated with NotebookLM',
-}
-
 export const AudioPlayer: React.FC = () => {
   const audioRef = useRef<HTMLAudioElement>(null)
   const { language } = useLanguage()
+  const copy = getAudioPlayerCopy(language === 'en' ? 'en' : 'de')
 
   // State
   const [isPlaying, setIsPlaying] = useState(false)
@@ -83,7 +75,7 @@ export const AudioPlayer: React.FC = () => {
         <button
           onClick={togglePlay}
           className="flex-shrink-0 w-12 h-12 flex items-center justify-center rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 text-white shadow-md hover:scale-105 transition-transform active:scale-95"
-          aria-label={isPlaying ? "Pause" : "Play"}
+          aria-label={isPlaying ? copy.pauseLabel : copy.playLabel}
         >
           {isPlaying ? <Pause size={20} fill="currentColor" /> : <Play size={20} fill="currentColor" className="ml-1" />}
         </button>
@@ -92,11 +84,11 @@ export const AudioPlayer: React.FC = () => {
         <div className="flex-grow min-w-0">
           <div className="flex justify-between items-center mb-1">
             <h4 className="text-sm font-semibold text-slate-800 dark:text-slate-100 truncate">
-              {NOTEBOOKLM_LABEL[language]}
+              {copy.notebookLabel}
             </h4>
           </div>
           <p className="text-xs text-slate-500 dark:text-slate-400 mb-3 block">
-            {SUBTITLE[language]}
+            {copy.subtitle}
           </p>
 
           {/* Progress Bar */}

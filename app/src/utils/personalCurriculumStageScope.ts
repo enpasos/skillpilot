@@ -6,9 +6,29 @@ export const GLOBAL_STAGE_SCOPE_CONFIG_IDS = {
 } as const
 
 export const GLOBAL_STAGE_SCOPE_OPTIONS = [
-  { id: GLOBAL_STAGE_SCOPE_CONFIG_IDS.sek1, label: 'Sekundarstufe I' },
-  { id: GLOBAL_STAGE_SCOPE_CONFIG_IDS.sek2, label: 'Sekundarstufe II' },
+  { id: GLOBAL_STAGE_SCOPE_CONFIG_IDS.sek1 },
+  { id: GLOBAL_STAGE_SCOPE_CONFIG_IDS.sek2 },
 ] as const
+
+export const formatGlobalStageScopeLabel = (
+  stageScopeId: string,
+  language: 'de' | 'en',
+): string => {
+  switch (stageScopeId) {
+    case GLOBAL_STAGE_SCOPE_CONFIG_IDS.sek1:
+      return language === 'de' ? 'Sekundarstufe I' : 'Lower secondary'
+    case GLOBAL_STAGE_SCOPE_CONFIG_IDS.sek2:
+      return language === 'de' ? 'Sekundarstufe II' : 'Upper secondary'
+    default:
+      return stageScopeId
+  }
+}
+
+export const getGlobalStageScopeOptions = (language: 'de' | 'en') =>
+  GLOBAL_STAGE_SCOPE_OPTIONS.map((option) => ({
+    ...option,
+    label: formatGlobalStageScopeLabel(option.id, language),
+  }))
 
 type PersonalCurriculumConfigLike = Record<string, { selected: boolean; filterId?: string }>
 

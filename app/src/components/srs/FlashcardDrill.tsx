@@ -4,6 +4,7 @@ import { useLanguage } from '../../contexts/LanguageContext'
 import { calculateReview, INITIAL_DECK_STATE, type ReviewItem } from './srsLogic'
 import { FlashcardFlipCard } from './FlashcardFlipCard'
 import { interpolateTemplate } from '../../utils/interpolateTemplate'
+import { getFlashcardDrillCopy } from '../../utils/flashcardDrillCopy'
 
 interface FlashcardDrillProps {
     dataSourceUrl?: string
@@ -32,91 +33,6 @@ interface VocabData {
         category: string
         tags?: string[]
     }>
-}
-
-const UI_TEXT = {
-    en: {
-        configError: "Configuration Error: Missing Vocabulary Source.",
-        loading: "Loading Data...",
-        allCaughtUp: "All Caught Up!",
-        noCardsForFilter: "No flashcards found for the current filter.",
-        new: "New",
-        learn: "Learn",
-        review: "Review",
-        master: "Master",
-        noneDue: "No cards due for review right now.",
-        back: "Back to Curriculum",
-        sessionComplete: "Session Complete!",
-        reviewed: "You reviewed {0} cards.",
-        continue: "Continue Learning",
-        readOnlyTitle: "Legacy View",
-        readOnlyBody: "Flashcard practice is disabled in this legacy view. Please move to Gymnasium (DE) to continue learning here.",
-        progress: "Your Progress",
-        localData: "Local Data", // Not used explicitly anymore as we always force local
-        localDataTooltip: "Saved in this browser.",
-        sync: "Save",
-        syncing: "Saving...",
-        syncSuccess: "Saved",
-        syncFailed: "Save failed",
-        box0Tooltip: "New cards. Start here.",
-        box1Tooltip: "Learning. Repeat < 3 days.",
-        box2Tooltip: "Consolidating. Repeat 3-10 days.",
-        box3Tooltip: "Mastered. Repeat > 10 days.",
-        speedMemorization: "Speed Memorization – Be honest with yourself!",
-        progressTooltip: "Session Progress: {0}/{1}",
-        readyForReview: "Cards for today: {0}. Doing 20 of them is great!",
-        tapToFlip: "Tap to flip",
-        showAnswer: "Show Answer",
-        again: "Again",
-        hard: "Hard",
-        good: "Good",
-        easy: "Easy",
-        againTooltip: "Did not know it. Review < 1 min.",
-        hardTooltip: "Correct but slow/unsure.",
-        goodTooltip: "Correct with some effort.",
-        easyTooltip: "Instant recall. Perfect."
-    },
-    de: {
-        configError: "Konfigurationsfehler: Fehlende Vokabelquelle.",
-        loading: "Lade Daten...",
-        allCaughtUp: "Alles erledigt!",
-        noCardsForFilter: "Keine Karteikarten für den aktuellen Filter gefunden.",
-        new: "Neu",
-        learn: "Lernen",
-        review: "Wdh.",
-        master: "Meister",
-        noneDue: "Derzeit keine Karten zur Wiederholung fällig.",
-        back: "Zurück zum Lehrplan",
-        sessionComplete: "Sitzung beendet!",
-        reviewed: "Du hast {0} Karten wiederholt.",
-        continue: "Weiterlernen",
-        readOnlyTitle: "Legacy-Ansicht",
-        readOnlyBody: "Der Karteikarten-Drill ist in dieser Legacy-Ansicht deaktiviert. Bitte auf Gymnasium (DE) umstellen, um hier weiterzulernen.",
-        progress: "Dein Fortschritt",
-        localData: "Lokale Daten",
-        localDataTooltip: "In diesem Browser gespeichert.",
-        sync: "Speichern",
-        syncing: "Speichere...",
-        syncSuccess: "Gespeichert",
-        syncFailed: "Speichern fehlgeschlagen",
-        box0Tooltip: "Neue Karten. Startpunkt.",
-        box1Tooltip: "Lernen. Wdh. < 3 Tage.",
-        box2Tooltip: "Festigen. Wdh. 3-10 Tage.",
-        box3Tooltip: "Gemeistert. Wdh. > 10 Tage.",
-        speedMemorization: "Speed Memorization – Sei ehrlich zu Dir selbst!",
-        progressTooltip: "Sitzungsfortschritt: {0}/{1}",
-        readyForReview: "Bereit für heute: {0}.",
-        tapToFlip: "Zum Umdrehen tippen",
-        showAnswer: "Antwort zeigen",
-        again: "Nochmal",
-        hard: "Schwer",
-        good: "Gut",
-        easy: "Einfach",
-        againTooltip: "Nicht gewusst. Wdh < 1 Min.",
-        hardTooltip: "Richtig, aber langsam/unsicher.",
-        goodTooltip: "Richtig mit etwas Mühe.",
-        easyTooltip: "Sofort gewusst. Perfekt."
-    }
 }
 
 const parseNextReview = (value: unknown): number => {
@@ -153,7 +69,7 @@ export function FlashcardDrill({
     onStateChange
 }: FlashcardDrillProps) {
     const { language } = useLanguage()
-    const t = language === 'de' ? UI_TEXT.de : UI_TEXT.en
+    const t = getFlashcardDrillCopy(language === 'en' ? 'en' : 'de')
 
     // State for SRS
     // Initial load happens in useEffect to ensure we use the correct keys

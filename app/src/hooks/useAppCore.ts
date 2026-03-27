@@ -12,6 +12,7 @@ import { useMasteryCalculation } from './useMasteryCalculation'
 import { useLanguage } from '../contexts/LanguageContext'
 import { goalMatchesFilter, isWildcardFilter } from '../utils/goalFilters'
 import { applyGoalPlacementProjection } from '../utils/goalPlacementProjection'
+import { getDisplayFiltersForSelection } from '../utils/filterLabels'
 import { normalizeTrainerLandscapeId } from '../utils/trainerLandscapeContext'
 import {
   applyCompositionViewProjection,
@@ -104,6 +105,7 @@ export function useAppCore({ role, setLearnerMeta, skillpilotId }: AppCoreOption
   }, [replaceSearchParamsIfNeeded, searchParams, selectedLandscapeId])
 
   const { language } = useLanguage()
+  const localizedLanguage = language === 'en' ? 'en' : 'de'
   const [learnerPersonalCurriculum, setLearnerPersonalCurriculum] = React.useState<string | null>(null)
   const [matchedCompositionViewsByLandscapeId, setMatchedCompositionViewsByLandscapeId] = React.useState<Record<string, Record<string, unknown>>>({})
 
@@ -459,7 +461,10 @@ export function useAppCore({ role, setLearnerMeta, skillpilotId }: AppCoreOption
     const relevantRoots = globalRootGoals
     return relevantRoots.filter(matchesActiveFilter)
   }, [globalRootGoals, matchesActiveFilter])
-  const availableFilters = currentLandscapeEntry?.meta.filters ?? []
+  const availableFilters = useMemo(
+    () => getDisplayFiltersForSelection(currentLandscapeEntry?.meta.filters ?? [], localizedLanguage),
+    [currentLandscapeEntry?.meta.filters, localizedLanguage],
+  )
   const breadcrumbRootGoals = filteredRootGoals.length > 0 ? filteredRootGoals : globalRootGoals
 
   const breadcrumbCrumbs = useBreadcrumbs({

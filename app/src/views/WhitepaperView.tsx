@@ -3,6 +3,7 @@ import ReactMarkdown from 'react-markdown'
 import { Link, useParams } from 'react-router-dom'
 import { ArrowLeft } from 'lucide-react'
 import { useLanguage } from '../contexts/LanguageContext'
+import { getMarkdownDocumentViewCopy } from '../utils/markdownDocumentViewCopy'
 
 type LoadState = 'loading' | 'ready' | 'error'
 
@@ -67,19 +68,7 @@ export const WhitepaperView: React.FC = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activeLanguage])
 
-  const labels = activeLanguage === 'en'
-    ? {
-      back: 'Back to App',
-      switchLabel: 'Deutsch',
-      loading: 'Loading whitepaper...',
-      error: 'Whitepaper could not be loaded.',
-    }
-    : {
-      back: 'Zurück zur App',
-      switchLabel: 'English',
-      loading: 'Whitepaper wird geladen...',
-      error: 'Whitepaper konnte nicht geladen werden.',
-    }
+  const labels = getMarkdownDocumentViewCopy(activeLanguage, 'whitepaper')
 
   const switchLanguage = activeLanguage === 'en' ? 'de' : 'en'
 

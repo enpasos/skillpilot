@@ -2,6 +2,7 @@ import React, { Suspense, lazy, useEffect, useId, useMemo, useRef, useState } fr
 import type { UiGoal as Goal } from '../goalTypes'
 import { InlineMathText } from './InlineMathText'
 import { interpolateTemplate } from '../utils/interpolateTemplate'
+import { getRequiresFlowMapCopy } from '../utils/requiresFlowMapCopy'
 
 type PrereqKind = 'direct' | 'inherited'
 
@@ -472,57 +473,7 @@ export const RequiresFlowMap: React.FC<RequiresFlowMapProps> = ({
     }
   }, [showConnectors, leftVisible, rightVisible, getMastery, masteredThreshold, currentGoal.id])
 
-  const labels = language === 'en'
-    ? {
-      title: 'Requires Flow',
-      subtitle: 'Direct prerequisites and unlocked next goals around the current node.',
-      direct: 'direct',
-      inherited: 'inherited',
-      current: 'current goal',
-      unmet: 'open',
-      met: 'met',
-      unlocks: 'unlocks',
-      unlocksInherited: 'unlocks (inherited)',
-      noIncoming: 'No prerequisites in view',
-      noOutgoing: 'No follow-up goals in view',
-      plusMore: '+{{count}} more',
-      nodeFilterLabel: 'node filter',
-      filterAll: 'all',
-      filterAtomic: 'atomic',
-      transitive: 'transitive',
-      fullFlowTitle: 'Full Prerequisite Flow',
-      fullFlowSubtitle: 'All direct, inherited, and transitive prerequisites of the current goal as one flow.',
-      fullFlowSummary: '{{nodes}} prerequisites · {{edges}} links',
-      fullFlowSummaryOpen: '{{count}} prerequisites still open',
-      fullFlowSummaryDone: 'all prerequisites are met',
-      fullFlowNoPrereqs: 'No prerequisites in this flow',
-      fullFlowLevel: 'Level {{level}}',
-    }
-    : {
-      title: 'Requires-Flow',
-      subtitle: 'Direkte/vererbte Voraussetzungen und nächste freischaltbare Ziele.',
-      direct: 'direkt',
-      inherited: 'vererbt',
-      current: 'aktuelles Ziel',
-      unmet: 'offen',
-      met: 'erfüllt',
-      unlocks: 'schaltet frei',
-      unlocksInherited: 'schaltet frei (vererbt)',
-      noIncoming: 'Keine Voraussetzungen im Fokus',
-      noOutgoing: 'Keine Folgeziele im Fokus',
-      plusMore: '+{{count}} weitere',
-      nodeFilterLabel: 'Zielfilter',
-      filterAll: 'alle',
-      filterAtomic: 'nur atomare',
-      transitive: 'transitiv',
-      fullFlowTitle: 'Gesamtflow der Vorbedingungen',
-      fullFlowSubtitle: 'Alle direkten, vererbten und transitiven Vorbedingungen des aktuellen Ziels als ein Flow.',
-      fullFlowSummary: '{{nodes}} Vorbedingungen · {{edges}} Verknüpfungen',
-      fullFlowSummaryOpen: '{{count}} Vorbedingungen noch offen',
-      fullFlowSummaryDone: 'alle Vorbedingungen erfüllt',
-      fullFlowNoPrereqs: 'Keine Vorbedingungen in diesem Flow',
-      fullFlowLevel: 'Stufe {{level}}',
-    }
+  const labels = getRequiresFlowMapCopy(language)
 
   return (
     <section className="glass-panel border-sky-500/30 bg-sidebar-bg/80 p-4">
@@ -638,7 +589,7 @@ export const RequiresFlowMap: React.FC<RequiresFlowMapProps> = ({
           className={`relative z-10 grid grid-cols-1 gap-3 ${compact ? '' : 'lg:grid-cols-[minmax(0,1fr)_minmax(340px,460px)_minmax(0,1fr)] lg:items-center lg:gap-x-10'
             }`}
         >
-          <FlowColumn title={language === 'en' ? 'Requires' : 'Voraussetzungen'}>
+          <FlowColumn title={labels.requiresColumnTitle}>
             {leftVisible.length === 0 && (
               <EmptyFlowLabel label={labels.noIncoming} />
             )}
@@ -681,7 +632,7 @@ export const RequiresFlowMap: React.FC<RequiresFlowMapProps> = ({
             )}
           </div>
 
-          <FlowColumn title={language === 'en' ? 'Next Steps' : 'Nächste Schritte'}>
+          <FlowColumn title={labels.nextStepsColumnTitle}>
             {rightVisible.length === 0 && (
               <EmptyFlowLabel label={labels.noOutgoing} />
             )}

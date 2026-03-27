@@ -4,6 +4,7 @@ import remarkGfm from 'remark-gfm'
 import { Link, useParams } from 'react-router-dom'
 import { ArrowLeft } from 'lucide-react'
 import { useLanguage } from '../contexts/LanguageContext'
+import { getMarkdownDocumentViewCopy } from '../utils/markdownDocumentViewCopy'
 
 type LoadState = 'loading' | 'ready' | 'error'
 
@@ -66,19 +67,7 @@ export const StoryView: React.FC = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [activeLanguage])
 
-    const labels = activeLanguage === 'en'
-        ? {
-            back: 'Back to App',
-            switchLabel: 'Deutsch',
-            loading: 'Loading story...',
-            error: 'Story could not be loaded.',
-        }
-        : {
-            back: 'Zurück zur App',
-            switchLabel: 'English',
-            loading: 'Story wird geladen...',
-            error: 'Story konnte nicht geladen werden.',
-        }
+    const labels = getMarkdownDocumentViewCopy(activeLanguage, 'story')
 
     const switchLanguage = activeLanguage === 'en' ? 'de' : 'en'
     const basePath = '/quickstart'

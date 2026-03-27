@@ -38,6 +38,7 @@ import type { ToastKind } from '../hooks/useToast'
 import { queueToastForNextLoad } from '../hooks/useToast'
 import { dispatchLearnerUiRefresh } from '../utils/learnerUiEvents'
 import { formatFilterDisplayLabel } from '../utils/filterLabels'
+import { getLearnerViewCopy } from '../utils/learnerViewCopy'
 
 import type { UiGoal } from '../goalTypes'
 import type { Learner, FrontierGoal } from '../learnerTypes'
@@ -246,6 +247,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   const t = useTranslation();
   const location = useLocation()
   const localizedLanguage = language === 'en' ? 'en' : 'de'
+  const learnerViewCopy = getLearnerViewCopy(localizedLanguage)
   const bavariaFilterDisplay = formatFilterDisplayLabel('DE-BY', localizedLanguage)
   const hessenFilterDisplay = formatFilterDisplayLabel('DE-HE', localizedLanguage)
 
@@ -782,6 +784,9 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   const supportsCompatibilityArchive = legacyCutoverUiState.supportsCompatibilityArchive
   const isCompatibilityAuditOnly = legacyCutoverUiState.isCompatibilityAuditOnly
   const shouldShowCompatibilityRetirementGate = legacyCutoverUiState.shouldShowCompatibilityRetirementGate
+  const legacyReadOnlyCopy = legacyCutoverUiState.readOnlyCopy
+  const legacyErrorCopy = legacyCutoverUiState.errorCopy
+  const legacyUiCopy = legacyCutoverUiState.uiCopy
 
 
   const refreshState = useCallback(
@@ -949,13 +954,8 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
 
   const handleSetActiveGoal = useCallback(async (goalId: string) => {
     if (isCompatibilityAuditOnly) {
-      setModalTitle(legacyCutoverUiState.readOnlyCopy?.title ?? (language === 'de' ? 'Nur Lesemodus' : 'Read-only mode'))
-      setModalMessage(
-        legacyCutoverUiState.readOnlyCopy?.activeGoalMessage
-          ?? (language === 'de'
-            ? 'In dieser Legacy-Ansicht koennen keine neuen aktiven Lernziele gesetzt werden. Bitte auf Gymnasium (DE) umstellen.'
-            : 'You cannot set new active goals in this legacy view. Please migrate to Gymnasium (DE).'),
-      )
+      setModalTitle(legacyReadOnlyCopy.title)
+      setModalMessage(legacyReadOnlyCopy.activeGoalMessage)
       setModalType('info')
       setIsModalOpen(true)
       return
@@ -1009,10 +1009,8 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
         if (onNotify) {
           onNotify('error', message || t.notifications.activeGoalSetFailed)
         } else {
-          setModalTitle(language === 'de' ? 'Aktion nicht möglich' : 'Action not allowed')
-          setModalMessage(message || (language === 'de'
-            ? 'Dieses Ziel ist nicht im aktuellen Frontier.'
-            : 'This goal is not in the current frontier.'))
+          setModalTitle(learnerViewCopy.activeGoalNotAllowedTitle)
+          setModalMessage(message || learnerViewCopy.activeGoalNotInFrontierMessage)
           setModalType('error')
           setIsModalOpen(true)
         }
@@ -1023,8 +1021,9 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     }
   }, [
     isCompatibilityAuditOnly,
-    language,
-    legacyCutoverUiState.readOnlyCopy,
+    legacyReadOnlyCopy,
+    learnerViewCopy.activeGoalNotAllowedTitle,
+    learnerViewCopy.activeGoalNotInFrontierMessage,
     onNotify,
     onRefresh,
     onSelectGoal,
@@ -1037,13 +1036,8 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
 
   const togglePlan = useCallback(async (id: string) => {
     if (isCompatibilityAuditOnly) {
-      setModalTitle(legacyCutoverUiState.readOnlyCopy?.title ?? (language === 'de' ? 'Nur Lesemodus' : 'Read-only mode'))
-      setModalMessage(
-        legacyCutoverUiState.readOnlyCopy?.planMessage
-          ?? (language === 'de'
-            ? 'Der Lernfokus kann in dieser Legacy-Ansicht nicht mehr veraendert werden. Bitte auf Gymnasium (DE) umstellen.'
-            : 'Planned-goal changes are disabled in this legacy view. Please migrate to Gymnasium (DE).'),
-      )
+      setModalTitle(legacyReadOnlyCopy.title)
+      setModalMessage(legacyReadOnlyCopy.planMessage)
       setModalType('info')
       setIsModalOpen(true)
       return
@@ -1082,8 +1076,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     }
   }, [
     isCompatibilityAuditOnly,
-    language,
-    legacyCutoverUiState.readOnlyCopy,
+    legacyReadOnlyCopy,
     onNotify,
     plannedGoals,
     refreshState,
@@ -1232,13 +1225,9 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
       const res = await fetch(url, { method: 'POST' })
       if (!res.ok) {
         const message = await res.text()
-        setModalTitle(legacyCutoverUiState.errorCopy?.cutoverTitle ?? (language === 'de' ? 'Umstellung fehlgeschlagen' : 'Migration failed'))
+        setModalTitle(legacyErrorCopy.cutoverTitle)
         setModalMessage(
-          message || legacyCutoverUiState.errorCopy?.cutoverMessage || (
-            language === 'de'
-              ? 'Die Umstellung auf Gymnasium (DE) konnte nicht durchgeführt werden.'
-              : 'Could not migrate to Gymnasium (DE).'
-          ),
+          message || legacyErrorCopy.cutoverCreateMessage,
         )
         setModalType('error')
         setIsModalOpen(true)
@@ -1289,30 +1278,25 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
         targets: ['all'],
       })
       setIsSetupOpen(false)
-      setModalTitle(language === 'de' ? 'Umstellung abgeschlossen' : 'Migration complete')
+      setModalTitle(legacyUiCopy.cutoverSuccessTitle)
       setModalMessage(
         legacyCutoverUiState.cutoverSuccessMessage
-          ?? (language === 'de'
-            ? 'Dein Lernstand wurde auf Gymnasium (DE) umgestellt.'
-            : 'Your learner state has been migrated to Gymnasium (DE).'),
+          ?? legacyUiCopy.cutoverFallbackMessage,
       )
       setModalType('success')
       setIsModalOpen(true)
     } catch (e) {
       console.warn('Failed to cut over learner to canonical Gymnasium', e)
-      setModalTitle(legacyCutoverUiState.errorCopy?.cutoverTitle ?? (language === 'de' ? 'Umstellung fehlgeschlagen' : 'Migration failed'))
+      setModalTitle(legacyErrorCopy.cutoverTitle)
       setModalMessage(
-        legacyCutoverUiState.errorCopy?.cutoverMessage
-          ?? (language === 'de'
-            ? 'Während der Umstellung ist ein Netzwerk- oder Systemfehler aufgetreten.'
-            : 'A network or system error occurred during migration.'),
+        legacyErrorCopy.cutoverSystemMessage,
       )
       setModalType('error')
       setIsModalOpen(true)
     } finally {
       setIsCutoverPending(false)
     }
-  }, [skillpilotId, isCutoverPending, language, onLandscapeChange, onLandscapeGoalChange, refreshLearnerData, onRefresh, legacyCutoverUiState.cutoverSuccessMessage, legacyCutoverUiState.errorCopy])
+  }, [skillpilotId, isCutoverPending, onLandscapeChange, onLandscapeGoalChange, refreshLearnerData, onRefresh, legacyCutoverUiState.cutoverSuccessMessage, legacyErrorCopy, legacyUiCopy])
 
   useEffect(() => {
     if (!isAbi26CampaignSession || !campaignContext || !rootLandscapeId) return
@@ -1466,13 +1450,9 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
         if (onNotify) {
           onNotify('error', message || t.notifications.compatibilityArchiveExportFailed)
         } else {
-          setModalTitle(legacyCutoverUiState.errorCopy?.archiveTitle ?? (language === 'de' ? 'Archivexport fehlgeschlagen' : 'Archive export failed'))
+          setModalTitle(legacyErrorCopy.archiveTitle)
           setModalMessage(
-            message || legacyCutoverUiState.errorCopy?.archiveCreateMessage || (
-              language === 'de'
-                ? 'Das Kompatibilitaetsarchiv konnte nicht erstellt werden.'
-                : 'Could not create the compatibility archive.'
-            ),
+            message || legacyErrorCopy.archiveCreateMessage,
           )
           setModalType('error')
           setIsModalOpen(true)
@@ -1507,12 +1487,10 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
       if (onNotify) {
         onNotify('success', t.notifications.compatibilityArchiveExported)
       } else {
-        setModalTitle(language === 'de' ? 'Archiv erstellt' : 'Archive created')
+        setModalTitle(legacyUiCopy.archiveSuccessTitle)
         setModalMessage(
           legacyCutoverUiState.compatibilityArchiveSuccessMessage
-            ?? (language === 'de'
-              ? 'Das Legacy-Archiv wurde exportiert.'
-              : 'The legacy archive was exported.'),
+            ?? legacyUiCopy.archiveFallbackMessage,
         )
         setModalType('success')
         setIsModalOpen(true)
@@ -1522,12 +1500,9 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
       if (onNotify) {
         onNotify('error', t.notifications.compatibilityArchiveExportFailed)
       } else {
-        setModalTitle(legacyCutoverUiState.errorCopy?.archiveTitle ?? (language === 'de' ? 'Archivexport fehlgeschlagen' : 'Archive export failed'))
+        setModalTitle(legacyErrorCopy.archiveTitle)
         setModalMessage(
-          legacyCutoverUiState.errorCopy?.archiveSystemMessage
-            ?? (language === 'de'
-              ? 'Waehrend des Archivexports ist ein Netzwerk- oder Systemfehler aufgetreten.'
-              : 'A network or system error occurred during archive export.'),
+          legacyErrorCopy.archiveSystemMessage,
         )
         setModalType('error')
         setIsModalOpen(true)
@@ -1538,9 +1513,9 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   }, [
     downloadJsonPayload,
     isCompatibilityArchivePending,
-    language,
-    legacyCutoverUiState.errorCopy,
+    legacyErrorCopy,
     legacyCutoverUiState.compatibilityArchiveSuccessMessage,
+    legacyUiCopy,
     onNotify,
     skillpilotId,
     t.notifications.compatibilityArchiveExportFailed,
@@ -1836,62 +1811,40 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
             setIsModalOpen(true)
           }
 
-          // Use helpful message if signature error suspected (400 Bad Request) or generic otherwise
-          if (res.status === 400) {
-            if (language === 'de') {
-              notifyImportError(
-                t.notifications.learnerImportValidationFailed,
-                "Import-Validierung fehlgeschlagen",
-              )
-            } else {
-              notifyImportError(
-                t.notifications.learnerImportValidationFailed,
-                "Import Validation Failed",
-              )
-            }
-          } else {
-            if (language === 'de') {
-              notifyImportError(
-                serverMsg || t.notifications.learnerImportFailed,
-                "Import fehlgeschlagen",
-              )
-            } else {
-              notifyImportError(
-                serverMsg || t.notifications.learnerImportFailed,
-                "Import Failed",
-              )
-            }
-          }
-        }
-      } catch (err) {
-        console.error("Import error", err);
-        if (language === 'de') {
-          if (onNotify) {
-            onNotify('error', t.notifications.learnerImportSystemFailed)
-          } else {
-            setModalMessage("Ein Netzwerk- oder Systemfehler ist während des Imports aufgetreten.");
-            setModalTitle("Import-Fehler");
-            setModalType('error');
-            setIsModalOpen(true);
-          }
-        } else {
-          if (onNotify) {
-            onNotify('error', t.notifications.learnerImportSystemFailed)
-          } else {
-            setModalMessage("A network or system error occurred during import.");
-            setModalTitle("Import Error");
-            setModalType('error');
-            setIsModalOpen(true);
-          }
-        }
-      }
-    };
+	          // Use helpful message if signature error suspected (400 Bad Request) or generic otherwise
+	          if (res.status === 400) {
+	            notifyImportError(
+	              t.notifications.learnerImportValidationFailed,
+	              learnerViewCopy.importValidationFailedTitle,
+	            )
+	          } else {
+	            notifyImportError(
+	              serverMsg || t.notifications.learnerImportFailed,
+	              learnerViewCopy.importFailedTitle,
+	            )
+	          }
+	        }
+	      } catch (err) {
+	        console.error("Import error", err);
+	        if (onNotify) {
+	          onNotify('error', t.notifications.learnerImportSystemFailed)
+	        } else {
+	          setModalMessage(learnerViewCopy.importSystemMessage);
+	          setModalTitle(learnerViewCopy.importErrorTitle);
+	          setModalType('error');
+	          setIsModalOpen(true);
+	        }
+	      }
+	    };
     reader.readAsText(file);
     // Reset input so same file can be selected again if needed
     if (fileInputRef.current) fileInputRef.current.value = '';
   }, [
     skillpilotId,
-    language,
+    learnerViewCopy.importErrorTitle,
+    learnerViewCopy.importFailedTitle,
+    learnerViewCopy.importSystemMessage,
+    learnerViewCopy.importValidationFailedTitle,
     onNotify,
     t.notifications.learnerImported,
     t.notifications.learnerImportFailed,
@@ -1927,13 +1880,13 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
             <div className="text-xs flex items-center gap-2 mt-1">
               <button
                 className="flex items-center gap-1 font-bold text-red-500 hover:text-red-400 transition-colors"
-                onClick={revealScope}
-                disabled={plannedGoals.size === 0}
-                title={plannedGoals.size > 0
-                  ? (language === 'de' ? 'Gehe zum markierten Scope' : 'Go to marked scope')
-                  : t.learner.totalInContext
-                }
-              >
+	                onClick={revealScope}
+	                disabled={plannedGoals.size === 0}
+	                title={plannedGoals.size > 0
+	                  ? learnerViewCopy.revealMarkedScopeTitle
+	                  : t.learner.totalInContext
+	                }
+	              >
                 {stats.totalAtomic} <Target size={16} />
               </button>
               <MoveRight size={12} className="text-slate-400" />
@@ -2079,13 +2032,13 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
                           : legacyCutoverUiState.compatibilityArchiveActionLabel}
                       </button>
                     )}
-                    <button
-                      type="button"
-                      onClick={() => setIsSetupOpen(true)}
-                      className="rounded-lg border border-amber-300 bg-white px-3 py-2 text-sm font-medium text-amber-900 transition-colors hover:bg-amber-100 dark:border-amber-700 dark:bg-amber-950/40 dark:text-amber-100 dark:hover:bg-amber-900/50"
-                    >
-                      {language === 'de' ? 'Migration' : 'Migration'}
-                    </button>
+	                    <button
+	                      type="button"
+	                      onClick={() => setIsSetupOpen(true)}
+	                      className="rounded-lg border border-amber-300 bg-white px-3 py-2 text-sm font-medium text-amber-900 transition-colors hover:bg-amber-100 dark:border-amber-700 dark:bg-amber-950/40 dark:text-amber-100 dark:hover:bg-amber-900/50"
+	                    >
+	                      {legacyUiCopy.setupButtonLabel}
+	                    </button>
                     <button
                       type="button"
                       onClick={handleCutoverCanonicalGymnasium}

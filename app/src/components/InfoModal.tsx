@@ -1,4 +1,6 @@
 import React from 'react';
+import { useLanguage } from '../contexts/LanguageContext';
+import { getInfoModalCopy } from '../utils/infoModalCopy';
 
 interface InfoModalProps {
     isOpen: boolean;
@@ -14,9 +16,12 @@ export const InfoModal: React.FC<InfoModalProps> = ({
     onClose,
     title,
     children,
-    buttonText = 'OK',
+    buttonText,
     type = 'info',
 }) => {
+    const { language } = useLanguage();
+    const copy = getInfoModalCopy(language === 'en' ? 'en' : 'de');
+
     if (!isOpen) return null;
 
     const headerColor = type === 'error' ? 'text-red-500' : 'text-text-primary';
@@ -39,7 +44,7 @@ export const InfoModal: React.FC<InfoModalProps> = ({
                         onClick={onClose}
                         className="px-6 py-2 rounded-lg bg-sky-600 hover:bg-sky-500 text-white font-medium transition-colors"
                     >
-                        {buttonText}
+                        {buttonText ?? copy.confirmButton}
                     </button>
                 </div>
             </div>

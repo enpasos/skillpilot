@@ -1,10 +1,15 @@
 import React from 'react'
 import { Sun, Moon } from 'lucide-react'
 import { useTheme } from '../contexts/ThemeContext'
+import { useLanguage } from '../contexts/LanguageContext'
+import { getThemeToggleCopy } from '../utils/themeToggleCopy'
 
 export const ThemeToggle: React.FC = () => {
     const { theme, toggleTheme } = useTheme()
+    const { language } = useLanguage()
     const isDark = theme === 'dark'
+    const copy = getThemeToggleCopy(language === 'en' ? 'en' : 'de')
+    const toggleLabel = isDark ? copy.switchToLightMode : copy.switchToDarkMode
 
     return (
         <div className="relative inline-block">
@@ -20,7 +25,8 @@ export const ThemeToggle: React.FC = () => {
                 className={`
           relative flex items-center justify-center w-10 h-10 rounded-full cursor-pointer overflow-hidden transition-all duration-300
         `}
-                title={isDark ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
+                title={toggleLabel}
+                aria-label={toggleLabel}
             >
                 <span
                     className={`relative w-full h-full transition-transform duration-500 ease-[cubic-bezier(0.68,-0.55,0.27,1.55)] ${isDark ? 'rotate-180' : 'rotate-0'

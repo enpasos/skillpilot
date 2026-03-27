@@ -7,6 +7,10 @@ import {
     isCompatibilityOnlyCurriculum,
     isLegacyHiddenByDefaultCurriculum,
 } from '../utils/curriculumDisplay'
+import {
+    getCurriculumDropdownCopy,
+    type CurriculumDropdownCategory as Category,
+} from '../utils/curriculumDropdownCopy'
 
 export interface LandscapeSummary {
     curriculumId: string
@@ -34,8 +38,6 @@ interface CurriculumDropdownProps {
     showCompatibilityViews?: boolean
 }
 
-type Category = 'SCHOOL' | 'UNI' | 'OTHER'
-
 export const CurriculumDropdown: React.FC<CurriculumDropdownProps> = ({
     currentLandscapeId,
     onSelect,
@@ -46,6 +48,7 @@ export const CurriculumDropdown: React.FC<CurriculumDropdownProps> = ({
 }) => {
     const t = useTranslation()
     const { language } = useLanguage()
+    const dropdownCopy = getCurriculumDropdownCopy(language)
     const [landscapes, setLandscapes] = useState<LandscapeSummary[]>([])
     const [loading, setLoading] = useState(false)
     const [category, setCategory] = useState<Category>('SCHOOL')
@@ -172,12 +175,6 @@ export const CurriculumDropdown: React.FC<CurriculumDropdownProps> = ({
         ? legacyLandscapes
         : legacyLandscapes.filter((landscape) => landscape.curriculumId === currentLandscapeId)
 
-    const categoryLabels: Record<Category, string> = {
-        'SCHOOL': language === 'de' ? 'Schule' : 'School',
-        'UNI': language === 'de' ? 'Universität & Hochschule' : 'University & Higher Ed',
-        'OTHER': language === 'de' ? 'Sprachen & Weiterbildung' : 'Languages & Other'
-    }
-
     return (
         <div className="flex flex-col gap-3">
             {/* Category Selector */}
@@ -192,7 +189,7 @@ export const CurriculumDropdown: React.FC<CurriculumDropdownProps> = ({
                             : 'text-text-secondary hover:bg-black/5 dark:hover:bg-white/5'
                             }`}
                     >
-                        {categoryLabels[cat]}
+                        {dropdownCopy.categoryLabels[cat]}
                     </button>
                 ))}
             </div>
@@ -206,7 +203,7 @@ export const CurriculumDropdown: React.FC<CurriculumDropdownProps> = ({
                     {t.startPage.login.curriculumLabel.select}
                 </option>
                 {primaryLandscapes.length > 0 && (
-                    <optgroup label={language === 'de' ? 'Empfohlene Curricula' : 'Recommended curricula'}>
+                    <optgroup label={dropdownCopy.recommendedGroupLabel}>
                         {primaryLandscapes.map((l) => (
                             <option key={l.curriculumId} value={l.curriculumId} className="bg-input-bg text-text-primary">
                                 {getDisplayTitle(l)}
@@ -215,7 +212,7 @@ export const CurriculumDropdown: React.FC<CurriculumDropdownProps> = ({
                     </optgroup>
                 )}
                 {visibleCompatibilityLandscapes.length > 0 && (
-                    <optgroup label={language === 'de' ? 'Kompatibilitaetsansichten' : 'Compatibility views'}>
+                    <optgroup label={dropdownCopy.compatibilityGroupLabel}>
                         {visibleCompatibilityLandscapes.map((l) => (
                             <option key={l.curriculumId} value={l.curriculumId} className="bg-input-bg text-text-primary">
                                 {getDisplayTitle(l)}
@@ -224,7 +221,7 @@ export const CurriculumDropdown: React.FC<CurriculumDropdownProps> = ({
                     </optgroup>
                 )}
                 {visibleLegacyLandscapes.length > 0 && (
-                    <optgroup label={language === 'de' ? 'Legacy-Ansichten' : 'Legacy views'}>
+                    <optgroup label={dropdownCopy.legacyGroupLabel}>
                         {visibleLegacyLandscapes.map((l) => (
                             <option key={l.curriculumId} value={l.curriculumId} className="bg-input-bg text-text-primary">
                                 {getDisplayTitle(l)}

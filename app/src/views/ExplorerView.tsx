@@ -62,9 +62,9 @@ export const ExplorerView: React.FC<ExplorerViewProps> = ({
     if (!value) return false
     return value.toLowerCase() === 'all'
   }
+  const { language } = useLanguage()
   const wildcardFilterOption = availableFilters.find((option) => isWildcardFilter(option.id))
   const selectableFilters = availableFilters.filter((option) => !isWildcardFilter(option.id))
-  const { language } = useLanguage()
   const t = language === 'en' ? en.explorer : de.explorer
   const [showRequiresFlow, setShowRequiresFlow] = useState(false)
   const containsOptions = [...neighbors.children].sort((a, b) => a.title.localeCompare(b.title))

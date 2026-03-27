@@ -17,6 +17,8 @@ import '@xyflow/react/dist/style.css'
 import elkWorkerUrl from 'elkjs/lib/elk-worker.min.js?url'
 import type { UiGoal as Goal } from '../goalTypes'
 import { InlineMathText } from './InlineMathText'
+import { useLanguage } from '../contexts/LanguageContext'
+import { getRequiresReactFlowBoardCopy } from '../utils/requiresReactFlowBoardCopy'
 
 // ------------------------------------------------------------------
 // Types
@@ -268,6 +270,8 @@ const InnerRequiresFlow: React.FC<RequiresReactFlowBoardProps> = ({
     labels,
     showMastery = true,
 }) => {
+    const { language } = useLanguage()
+    const copy = getRequiresReactFlowBoardCopy(language === 'en' ? 'en' : 'de')
     const { getNodes, getEdges } = useReactFlow()
     const [direction, setDirection] = useState<'TB' | 'LR'>('TB')
     const [layoutedNodes, setLayoutedNodes] = useState<Node[] | null>(null)
@@ -556,7 +560,7 @@ const InnerRequiresFlow: React.FC<RequiresReactFlowBoardProps> = ({
     if (!layoutedNodes || !layoutedEdges) {
         return (
             <div className="flex h-[500px] w-full items-center justify-center rounded-2xl border border-border-color bg-sidebar-bg/50">
-                <span className="text-sm text-text-secondary">Layout wird berechnet…</span>
+                <span className="text-sm text-text-secondary">{copy.computingLayout}</span>
             </div>
         )
     }
@@ -569,14 +573,14 @@ const InnerRequiresFlow: React.FC<RequiresReactFlowBoardProps> = ({
                     onClick={() => setDirection(d => d === 'TB' ? 'LR' : 'TB')}
                     className="flex items-center gap-1.5 rounded-lg border border-border-color bg-chat-bg px-3 py-1.5 text-[11px] font-semibold tracking-wide text-text-secondary transition-colors hover:border-sky-400/80 hover:text-text-primary"
                 >
-                    Layout: {direction === 'TB' ? 'Von oben nach unten' : 'Von links nach rechts'}
+                    {copy.layoutLabel}: {direction === 'TB' ? copy.topToBottom : copy.leftToRight}
                 </button>
                 <button
                     type="button"
                     onClick={handleExportPdf}
                     className="flex items-center gap-1.5 rounded-lg border border-border-color bg-chat-bg px-3 py-1.5 text-[11px] font-semibold tracking-wide text-text-secondary transition-colors hover:border-sky-400/80 hover:text-text-primary"
                 >
-                    PDF Export
+                    {copy.pdfExport}
                 </button>
             </div>
             <ReactFlow

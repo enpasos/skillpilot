@@ -38,10 +38,19 @@ export interface LegacyReadOnlyCopy {
 
 export interface LegacyErrorCopy {
   cutoverTitle: string
-  cutoverMessage: string
+  cutoverCreateMessage: string
+  cutoverSystemMessage: string
   archiveTitle: string
   archiveCreateMessage: string
   archiveSystemMessage: string
+}
+
+export interface LegacyUiCopy {
+  setupButtonLabel: string
+  cutoverSuccessTitle: string
+  cutoverFallbackMessage: string
+  archiveSuccessTitle: string
+  archiveFallbackMessage: string
 }
 
 export type PersonalCurriculumSelectionConfig = Record<string, { selected: boolean; filterId?: string }>
@@ -66,8 +75,9 @@ export interface LegacyCutoverUiState {
   compatibilityArchivePendingLabel: string | null
   compatibilityArchiveSuccessMessage: string | null
   retirementGateCopy: LegacyRetirementGateCopy | null
-  readOnlyCopy: LegacyReadOnlyCopy | null
-  errorCopy: LegacyErrorCopy | null
+  readOnlyCopy: LegacyReadOnlyCopy
+  errorCopy: LegacyErrorCopy
+  uiCopy: LegacyUiCopy
   migrationTitle: string | null
   migrationDescription: string | null
   migrationActionLabel: string | null
@@ -393,12 +403,8 @@ export const getLegacyRetirementGateCopy = ({
 }
 
 export const getLegacyReadOnlyCopy = ({
-  kind,
   language,
-}: LegacyCutoverCopyInput): LegacyReadOnlyCopy | null => {
-  if (kind === 'none') {
-    return null
-  }
+}: LegacyCutoverCopyInput): LegacyReadOnlyCopy => {
   return language === 'de'
     ? {
       title: 'Nur Lesemodus',
@@ -413,26 +419,44 @@ export const getLegacyReadOnlyCopy = ({
 }
 
 export const getLegacyErrorCopy = ({
-  kind,
   language,
-}: LegacyCutoverCopyInput): LegacyErrorCopy | null => {
-  if (kind === 'none') {
-    return null
-  }
+}: LegacyCutoverCopyInput): LegacyErrorCopy => {
   return language === 'de'
     ? {
       cutoverTitle: 'Umstellung fehlgeschlagen',
-      cutoverMessage: 'Die Umstellung auf Gymnasium (DE) konnte nicht durchgeführt werden.',
+      cutoverCreateMessage: 'Die Umstellung auf Gymnasium (DE) konnte nicht durchgeführt werden.',
+      cutoverSystemMessage: 'Während der Umstellung ist ein Netzwerk- oder Systemfehler aufgetreten.',
       archiveTitle: 'Archivexport fehlgeschlagen',
       archiveCreateMessage: 'Das Kompatibilitaetsarchiv konnte nicht erstellt werden.',
       archiveSystemMessage: 'Waehrend des Archivexports ist ein Netzwerk- oder Systemfehler aufgetreten.',
     }
     : {
       cutoverTitle: 'Migration failed',
-      cutoverMessage: 'Could not migrate to Gymnasium (DE).',
+      cutoverCreateMessage: 'Could not migrate to Gymnasium (DE).',
+      cutoverSystemMessage: 'A network or system error occurred during migration.',
       archiveTitle: 'Archive export failed',
       archiveCreateMessage: 'Could not create the compatibility archive.',
       archiveSystemMessage: 'A network or system error occurred during archive export.',
+    }
+}
+
+export const getLegacyUiCopy = ({
+  language,
+}: LegacyCutoverCopyInput): LegacyUiCopy => {
+  return language === 'de'
+    ? {
+      setupButtonLabel: 'Migration',
+      cutoverSuccessTitle: 'Umstellung abgeschlossen',
+      cutoverFallbackMessage: 'Dein Lernstand wurde auf Gymnasium (DE) umgestellt.',
+      archiveSuccessTitle: 'Archiv erstellt',
+      archiveFallbackMessage: 'Das Legacy-Archiv wurde exportiert.',
+    }
+    : {
+      setupButtonLabel: 'Migration',
+      cutoverSuccessTitle: 'Migration complete',
+      cutoverFallbackMessage: 'Your learner state has been migrated to Gymnasium (DE).',
+      archiveSuccessTitle: 'Archive created',
+      archiveFallbackMessage: 'The legacy archive was exported.',
     }
 }
 
@@ -582,6 +606,11 @@ export const buildLegacyCutoverUiState = ({
       bavariaFilterDisplay,
     }),
     errorCopy: getLegacyErrorCopy({
+      kind,
+      language,
+      bavariaFilterDisplay,
+    }),
+    uiCopy: getLegacyUiCopy({
       kind,
       language,
       bavariaFilterDisplay,
