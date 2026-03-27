@@ -18,6 +18,7 @@ import {
 } from '../utils/abi26MatheCampaign'
 import { trackCampaignEvent } from '../utils/campaignTracking'
 import { useLanguage } from '../contexts/LanguageContext'
+import { formatFilterDisplayLabel } from '../utils/filterLabels'
 
 const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
 const toApi = (path: string) => (apiBase ? `${apiBase}${path}` : path)
@@ -245,7 +246,7 @@ export const Abi26MatheStartView: React.FC = () => {
         <div className="rounded-2xl border border-border-color bg-white/80 dark:bg-slate-900/70 p-6 shadow-sm">
           <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100">Schnellpersonalisierung für Dich</h2>
           <div className="flex flex-wrap items-center gap-2 text-xs text-text-secondary">
-            <span className="rounded-full border border-border-color px-2 py-1">Bundesland: Hessen</span>
+            <span className="rounded-full border border-border-color px-2 py-1">Bundesland: {formatFilterDisplayLabel(ABI26_ROOT_FILTER_ID, 'de')}</span>
             <span className="rounded-full border border-border-color px-2 py-1">Bereich: Gymnasiale Oberstufe</span>
             <span className="rounded-full border border-border-color px-2 py-1">Fach: Mathematik</span>
             <span className="rounded-full border border-border-color px-2 py-1">Fokus: Abi 2026 / Klausurbeispiel 1</span>

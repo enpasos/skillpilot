@@ -621,7 +621,8 @@ class LandscapeServiceTest {
                 assertThat(root.getTitle()).isEqualTo("Gymnasium (DE)");
                 assertThat(root.getFilters())
                                 .extracting(LandscapeFilter::getId)
-                                .containsExactly("ALL", "DE-BW", "DE-HE", "DE-BY", "DE-NI", "DE-NW");
+                                .containsExactly("ALL", "DE-BW", "DE-HE", "DE-BY", "DE-BB", "DE-BE", "DE-NI", "DE-NW",
+                                                "DE-SH");
                 assertThat(root.getGoals())
                                 .extracting(LearningGoal::getTitle)
                                 .contains("Warum Gymnasium gemeinsam denken? - Fächer, Voraussetzungen & Wege");

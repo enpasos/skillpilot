@@ -1,5 +1,6 @@
 import type { UiGoal } from '../goalTypes'
 import type { GoalPlacement, GoalPlacementContext, LearningLandscape, ProgramUnit } from '../landscapeTypes'
+import { normalizeJurisdictionCode } from './jurisdictionMetadata'
 
 export interface ProjectableLandscapeEntry {
   meta: LearningLandscape
@@ -132,7 +133,7 @@ const inferPlacementFilterDimension = (filterId?: string): keyof GoalPlacementCo
   const normalized = filterId.trim()
   if (!normalized) return undefined
 
-  if (/^DE-[A-Z]{2}$/.test(normalized)) return 'jurisdiction'
+  if (normalizeJurisdictionCode(normalized)) return 'jurisdiction'
   if (/^(GK|LK|GK\+LK)$/i.test(normalized)) return 'courseProfile'
   if (/^G[89]$/i.test(normalized)) return 'durationModel'
   if (/^Sek ?I{1,2}$/i.test(normalized)) return 'stage'
@@ -154,6 +155,11 @@ const contextValueMatchesFilter = (
   if (dimension === 'courseProfile') {
     const filterToken = filterId.trim().toUpperCase()
     return splitCourseProfile(contextValue).includes(filterToken)
+  }
+  if (dimension === 'jurisdiction') {
+    const normalizedContextValue = normalizeJurisdictionCode(contextValue)
+    const normalizedFilterId = normalizeJurisdictionCode(filterId)
+    return normalizedContextValue !== null && normalizedContextValue === normalizedFilterId
   }
   return contextValue.trim().toLocaleLowerCase('de-DE') === filterId.trim().toLocaleLowerCase('de-DE')
 }

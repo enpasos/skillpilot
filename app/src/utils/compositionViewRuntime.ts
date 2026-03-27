@@ -8,11 +8,11 @@ import {
   type CompositionViewNode,
 } from './authoring/compositionViewAuthoring'
 import { CANONICAL_GYMNASIUM_ROOT_ID } from './curriculumDisplay'
+import { normalizeJurisdictionCode } from './jurisdictionMetadata'
 import { GLOBAL_STAGE_SCOPE_CONFIG_IDS, isCourseProfileFilterId } from './personalCurriculumStageScope'
 
 const ROOT_TAG = 'root'
 const SYNTHETIC_PROGRAM_UNIT_TAG = 'synthetic:program-unit'
-const JURISDICTION_PATTERN = /^DE-[A-Z]{2}$/i
 
 type PersonalCurriculumConfig = Record<string, { selected?: boolean; filterId?: string }>
 
@@ -21,8 +21,6 @@ export interface RuntimeCompositionScope extends GoalPlacementContext {
 }
 
 const normalizeComparableToken = (value?: string) => value?.trim().toUpperCase() ?? ''
-
-const isJurisdictionFilterId = (value?: string) => JURISDICTION_PATTERN.test(value?.trim() ?? '')
 
 const isStageAnchorGoal = (goal: UiGoal, stage?: string) => {
   if (!(goal.tags ?? []).includes(SYNTHETIC_PROGRAM_UNIT_TAG)) {
@@ -118,12 +116,9 @@ export const deriveRuntimeCompositionScope = ({
   const personalCurriculum = parsePersonalCurriculum(learnerPersonalCurriculum)
   const rootFilterId = personalCurriculum[CANONICAL_GYMNASIUM_ROOT_ID]?.filterId
   const landscapeFilterId = personalCurriculum[landscapeId]?.filterId
-  const normalizedActiveFilter = normalizeComparableToken(activeFilter)
-  const normalizedLandscapeFilterId = normalizeComparableToken(landscapeFilterId)
-  const normalizedRootFilterId = normalizeComparableToken(rootFilterId)
-
-  const jurisdiction = [normalizedRootFilterId, normalizedLandscapeFilterId, normalizedActiveFilter]
-    .find((value) => isJurisdictionFilterId(value))
+  const jurisdiction = [rootFilterId, landscapeFilterId, activeFilter]
+    .map((value) => normalizeJurisdictionCode(value))
+    .find((value): value is NonNullable<typeof value> => !!value)
   const stage = inferStageFromPersonalCurriculum(personalCurriculum)
   const courseProfileCandidate = [landscapeFilterId, activeFilter].find((value) => isCourseProfileFilterId(value))
   const courseProfile = courseProfileCandidate && normalizeComparableToken(courseProfileCandidate) !== 'ALL'

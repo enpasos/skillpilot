@@ -1,9 +1,9 @@
 import type { UiGoal } from '../goalTypes'
+import { normalizeJurisdictionCode } from './jurisdictionMetadata'
 
 type FilterableGoal = Pick<UiGoal, 'tags' | 'applicability'>
 type FilterDimension = 'courseProfile' | 'jurisdiction' | 'generic'
 
-const JURISDICTION_PATTERN = /^DE-[A-Z]{2}$/
 const COURSE_FILTER_VALUES = new Set(['GK', 'LK', 'GK+LK'])
 
 export const isWildcardFilter = (filterId?: string) => {
@@ -16,7 +16,7 @@ const normalizeFilterToken = (value?: string) => value?.trim().toUpperCase() ?? 
 const inferFilterDimension = (filterId: string): FilterDimension => {
   const normalized = normalizeFilterToken(filterId)
   if (COURSE_FILTER_VALUES.has(normalized)) return 'courseProfile'
-  if (JURISDICTION_PATTERN.test(normalized)) return 'jurisdiction'
+  if (normalizeJurisdictionCode(normalized)) return 'jurisdiction'
   return 'generic'
 }
 
@@ -73,15 +73,13 @@ const getExplicitJurisdictionValues = (goal: FilterableGoal) => {
   const normalizedApplicabilityValues = getNormalizedApplicabilityValues(goal)
 
   normalizedTags.forEach((value) => {
-    if (JURISDICTION_PATTERN.test(value)) {
-      values.add(value)
-    }
+    const jurisdiction = normalizeJurisdictionCode(value)
+    if (jurisdiction) values.add(jurisdiction)
   })
 
   normalizedApplicabilityValues.forEach((value) => {
-    if (JURISDICTION_PATTERN.test(value)) {
-      values.add(value)
-    }
+    const jurisdiction = normalizeJurisdictionCode(value)
+    if (jurisdiction) values.add(jurisdiction)
   })
 
   return values
@@ -107,9 +105,11 @@ export const goalMatchesFilter = (goal: FilterableGoal, filterId?: string): bool
   }
 
   if (dimension === 'jurisdiction') {
+    const normalizedJurisdiction = normalizeJurisdictionCode(normalizedFilterId)
+    if (!normalizedJurisdiction) return true
     const explicitJurisdictionValues = getExplicitJurisdictionValues(goal)
     if (explicitJurisdictionValues.size === 0) return true
-    return explicitJurisdictionValues.has(normalizedFilterId)
+    return explicitJurisdictionValues.has(normalizedJurisdiction)
   }
 
   const genericValues = getGenericFilterValues(goal)

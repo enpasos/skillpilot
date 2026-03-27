@@ -18,6 +18,7 @@ import com.skillpilot.backend.landscape.LandscapeSummary;
 import com.skillpilot.backend.repository.CurriculumChampionRepository;
 import com.skillpilot.backend.repository.LearnerRepository;
 import com.skillpilot.backend.repository.MasteryRepository;
+import com.skillpilot.backend.util.BundeslandCodeNormalizer;
 import jakarta.annotation.PostConstruct;
 import java.time.Instant;
 import java.util.ArrayList;
@@ -43,7 +44,7 @@ public class CurriculaService {
 
     private static final Logger log = LoggerFactory.getLogger(CurriculaService.class);
     private static final double MASTERY_THRESHOLD = 0.9;
-    private static final String DE_HE_FILTER_ID = "DE-HE";
+    private static final String HESSEN_FILTER_ID = "DE-HE";
     private static final Pattern GITHUB_ID_PATTERN = Pattern.compile("^[A-Za-z0-9-]{1,39}$");
     private static final Pattern WHY_TOPIC_PATTERN = Pattern.compile("^\\s*(warum|why)\\b.*",
             Pattern.CASE_INSENSITIVE | Pattern.UNICODE_CASE);
@@ -444,7 +445,7 @@ public class CurriculaService {
                     topicId,
                     true);
             if (topicId != null
-                    && DE_HE_FILTER_ID.equals(rootFilterId)
+                    && HESSEN_FILTER_ID.equals(rootFilterId)
                     && isCanonicalGymnasiumLandscape(curriculumId)) {
                 Set<String> legacyEquivalentAtomicIds = resolveHessenEquivalentCanonicalAtomicIds(topicId, filteredAtomicIds);
                 if (!legacyEquivalentAtomicIds.isEmpty()) {
@@ -508,7 +509,12 @@ public class CurriculaService {
                 return null;
             }
             Object filterId = rootConfig.get("filterId");
-            return filterId instanceof String ? normalize((String) filterId) : null;
+            if (!(filterId instanceof String textFilterId)) {
+                return null;
+            }
+            String normalizedFilterId = normalize(textFilterId);
+            String normalizedBundesland = BundeslandCodeNormalizer.normalize(normalizedFilterId);
+            return normalizedBundesland != null ? normalizedBundesland : normalizedFilterId;
         } catch (Exception e) {
             return null;
         }

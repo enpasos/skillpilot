@@ -6,6 +6,7 @@ import { MasteryBar } from './MasteryBar'
 import { isMastered } from '../goalUiUtils'
 import { InlineMathText } from './InlineMathText'
 import { useLanguage } from '../contexts/LanguageContext'
+import { formatApplicabilityDimensionLabel, formatFilterValueLabel } from '../utils/filterLabels'
 
 interface GoalCardProps {
   goal: Goal
@@ -84,45 +85,6 @@ const extractLicenseFromTags = (tags?: string[]): string | undefined => {
 }
 
 const normalize = (value?: string): string => (value ?? '').trim().toLowerCase()
-
-const APPLICABILITY_DIMENSION_LABELS: Record<string, { de: string; en: string }> = {
-  jurisdiction: { de: 'Bundesland', en: 'Jurisdiction' },
-  courseLevel: { de: 'Kursniveau', en: 'Course level' },
-  gradeBand: { de: 'Jahrgangsband', en: 'Grade band' },
-  track: { de: 'Zweig', en: 'Track' },
-  language: { de: 'Sprache', en: 'Language' },
-}
-
-const APPLICABILITY_VALUE_LABELS: Record<string, { de: string; en: string }> = {
-  'DE-BW': { de: 'Baden-Württemberg', en: 'Baden-Wuerttemberg' },
-  'DE-BY': { de: 'Bayern', en: 'Bavaria' },
-  'DE-HE': { de: 'Hessen', en: 'Hesse' },
-  'DE-NI': { de: 'Niedersachsen', en: 'Lower Saxony' },
-  'DE-NW': { de: 'Nordrhein-Westfalen', en: 'North Rhine-Westphalia' },
-  GK: { de: 'GK', en: 'GK' },
-  LK: { de: 'LK', en: 'LK' },
-}
-
-const humanizeKey = (value: string): string => {
-  const spaced = value
-    .replace(/([a-z0-9])([A-Z])/g, '$1 $2')
-    .replace(/[_-]+/g, ' ')
-    .trim()
-  if (!spaced) return value
-  return spaced.charAt(0).toUpperCase() + spaced.slice(1)
-}
-
-const formatApplicabilityDimension = (dimension: string, language: 'de' | 'en'): string => {
-  const mapped = APPLICABILITY_DIMENSION_LABELS[dimension]
-  if (mapped) return mapped[language]
-  return humanizeKey(dimension)
-}
-
-const formatApplicabilityValue = (value: string, language: 'de' | 'en'): string => {
-  const mapped = APPLICABILITY_VALUE_LABELS[value]
-  if (mapped) return mapped[language]
-  return value
-}
 
 const mapRawLink = (entry: Record<string, unknown>): GoalSourceLink | null => {
   const url = readString(entry.url)
@@ -470,7 +432,7 @@ export const GoalCard: React.FC<GoalCardProps> = ({
                       key={`${applicabilityGroups[0].dimension}:${value}`}
                       className="px-2 py-0.5 rounded-full bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-300"
                     >
-                      {formatApplicabilityValue(value, language === 'en' ? 'en' : 'de')}
+                      {formatFilterValueLabel(value, language === 'en' ? 'en' : 'de')}
                     </span>
                   ))}
                 </div>
@@ -479,14 +441,14 @@ export const GoalCard: React.FC<GoalCardProps> = ({
                   {applicabilityGroups.map(({ dimension, values }) => (
                     <div key={dimension} className="flex flex-wrap items-center gap-1.5">
                       <span className="font-semibold text-text-primary">
-                        {formatApplicabilityDimension(dimension, language === 'en' ? 'en' : 'de')}:
+                        {formatApplicabilityDimensionLabel(dimension, language === 'en' ? 'en' : 'de')}:
                       </span>
                       {values.map((value) => (
                         <span
                           key={`${dimension}:${value}`}
                           className="px-2 py-0.5 rounded-full bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-300"
                         >
-                          {formatApplicabilityValue(value, language === 'en' ? 'en' : 'de')}
+                          {formatFilterValueLabel(value, language === 'en' ? 'en' : 'de')}
                         </span>
                       ))}
                     </div>

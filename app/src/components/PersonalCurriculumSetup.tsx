@@ -1,12 +1,15 @@
 import React, { useState } from 'react'
 import { X, ChevronDown, ChevronRight } from 'lucide-react'
+import { useLanguage } from '../contexts/LanguageContext'
 import { CANONICAL_GYMNASIUM_ROOT_ID, isCompatibilityOnlyCurriculum } from '../utils/curriculumDisplay'
+import type { LegacyCutoverPreviewItem } from '../utils/legacyCutover'
 import {
     applyDefaultGlobalStageScope,
     getGlobalStageScopeSelection,
     GLOBAL_STAGE_SCOPE_CONFIG_IDS,
     GLOBAL_STAGE_SCOPE_OPTIONS,
 } from '../utils/personalCurriculumStageScope'
+import { formatJurisdictionScopedTitle } from '../utils/filterLabels'
 
 interface LandscapeSummary {
     landscapeId: string
@@ -32,19 +35,14 @@ interface PersonalCurriculumPreferences {
 const isCompatibilityOnlyLandscape = (landscape: LandscapeSummary) =>
     isCompatibilityOnlyCurriculum(landscape.landscapeId, landscape.compatibilityOnly)
 
-interface MigrationPreviewItem {
-    label: string
-    value: string
+interface SetupMigrationConfig {
+    title: string
+    description: string
+    actionLabel: string
+    actionPending?: boolean
+    onAction: () => void
+    previewItems?: LegacyCutoverPreviewItem[]
 }
-
-const DEFAULT_GYMNASIUM_DE_ROOT_FILTERS = [
-    { id: 'ALL', label: 'Kanonische DE-Sicht' },
-    { id: 'DE-BW', label: 'Baden-Württemberg' },
-    { id: 'DE-HE', label: 'Hessen' },
-    { id: 'DE-BY', label: 'Bayern' },
-    { id: 'DE-NI', label: 'Niedersachsen' },
-    { id: 'DE-NW', label: 'Nordrhein-Westfalen' },
-]
 
 const COMBINED_COURSE_FILTER = { id: 'ALL', label: 'Grund- und Leistungskurs' }
 
@@ -70,18 +68,6 @@ const cleanLandscapeDisplayTitle = (title: string) => {
         .trim()
 }
 
-const JURISDICTION_FILTER_PATTERN = /^DE-[A-Z]{2}$/u
-
-const formatJurisdictionRootTitle = (title: string, filterId?: string) => {
-    if (!filterId || !JURISDICTION_FILTER_PATTERN.test(filterId)) return title
-    if (/\(DE\)$/u.test(title)) {
-        return title.replace(/\(DE\)$/u, `(${filterId})`)
-    }
-    return `${title} (${filterId})`
-}
-
-
-
 interface PersonalCurriculumSetupProps {
     isOpen: boolean
     onClose: () => void
@@ -94,12 +80,7 @@ interface PersonalCurriculumSetupProps {
     initialStrategy?: 'RANDOM' | 'SEQUENTIAL'
     initialAutoPilot?: boolean
     initialStrictMode?: boolean
-    migrationTitle?: string
-    migrationDescription?: string
-    migrationActionLabel?: string
-    migrationActionPending?: boolean
-    onMigrationAction?: () => void
-    migrationPreviewItems?: MigrationPreviewItem[]
+    migration?: SetupMigrationConfig
 }
 
 export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = ({
@@ -114,13 +95,40 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
     initialStrategy = 'RANDOM',
     initialAutoPilot = false,
     initialStrictMode = false,
-    migrationTitle,
-    migrationDescription,
-    migrationActionLabel,
-    migrationActionPending = false,
-    onMigrationAction,
-    migrationPreviewItems = [],
+    migration,
 }) => {
+    const { language } = useLanguage()
+    const localizedLanguage = language === 'en' ? 'en' : 'de'
+    const retirementCopy = localizedLanguage === 'de'
+        ? {
+            title: 'Legacy-Ansicht',
+            subtitle: 'Diese Legacy-Ansicht bleibt nur noch fuer Migration, Vergleich und Audit verfuegbar.',
+            noticeTitle: 'Nur noch fuer Umstellung und Audit',
+            noticeBodyPrimary: 'Fach- und Filteraenderungen werden in dieser eingefrorenen Legacy-Ansicht nicht mehr gepflegt. Fuer die weitere Arbeit soll der Lernstand auf Gymnasium (DE) umgestellt werden.',
+            noticeBodySecondary: 'Die aktuelle Legacy-Ansicht bleibt vorerst als Vergleichspfad sichtbar, ist aber kein normaler Konfigurationspfad mehr.',
+        }
+        : {
+            title: 'Legacy View',
+            subtitle: 'This legacy view remains available only for migration, comparison, and audit.',
+            noticeTitle: 'Available only for migration and audit',
+            noticeBodyPrimary: 'Subject and filter changes are no longer maintained in this frozen legacy view. Ongoing work should move the learner state to Gymnasium (DE).',
+            noticeBodySecondary: 'The current legacy view remains visible for comparison for now, but it is no longer a regular configuration path.',
+        }
+    const compatibilityCopy = localizedLanguage === 'de'
+        ? {
+            title: 'Kompatibilitaetsansichten',
+            subtitle: 'Diese eingefrorenen Legacy-Ansichten bleiben nur fuer Migration, Vergleich und Audit verfuegbar.',
+            hiddenSummary: (count: number) => `${count} Ansicht${count === 1 ? '' : 'en'} ausgeblendet.`,
+            showAction: 'Einblenden',
+            hideAction: 'Ausblenden',
+        }
+        : {
+            title: 'Compatibility Views',
+            subtitle: 'These frozen legacy views remain available only for migration, comparison, and audit.',
+            hiddenSummary: (count: number) => `${count} view${count === 1 ? '' : 's'} hidden.`,
+            showAction: 'Show',
+            hideAction: 'Hide',
+        }
     const computedInitial = React.useMemo(() => {
         const initial: PersonalCurriculumConfig = {}
         availableLandscapes.forEach((l) => {
@@ -302,17 +310,14 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
         const currentFilter = config[landscape.landscapeId]?.filterId ?? ''
         const globalStageSelection = getGlobalStageScopeSelection(config)
         const shouldShowGlobalStageScope = isRoot && rootLandscapeId === CANONICAL_GYMNASIUM_ROOT_ID
-        const effectiveFilters =
-            isRoot && landscape.title === 'Gymnasium (DE)' && (!landscape.filters || landscape.filters.length === 0)
-                ? DEFAULT_GYMNASIUM_DE_ROOT_FILTERS
-                : withCombinedCourseFilter(landscape.filters)
+        const effectiveFilters = withCombinedCourseFilter(landscape.filters)
         const hasFilters = effectiveFilters.length > 0
         const showCourseProfileControls = isRoot ? true : globalStageSelection.sek2Selected
         const showFilterControls = Boolean(hasFilters) && showCourseProfileControls && (isRoot || isSelected)
         const isExpandable = isRoot || showFilterControls
         const isExpanded = expanded.has(landscape.landscapeId)
         const rawDisplayLabel = isRoot
-            ? formatJurisdictionRootTitle(landscape.title, currentFilter)
+            ? formatJurisdictionScopedTitle(landscape.title, currentFilter, localizedLanguage)
             : (landscape.subject?.trim() || landscape.title)
         const displayLabel = isRoot ? rawDisplayLabel : cleanLandscapeDisplayTitle(rawDisplayLabel)
         const modeLabel = !isRoot && isCompatibilityOnlyLandscape(landscape)
@@ -411,13 +416,13 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
                             <div className="rounded-xl border border-amber-200 bg-amber-50/40 p-4 dark:border-amber-900/40 dark:bg-amber-900/10">
                                 <div className="mb-3 flex items-start justify-between gap-3">
                                     <div>
-                                        <h3 className="text-sm font-semibold text-text-primary">Kompatibilitaetsansichten</h3>
+                                        <h3 className="text-sm font-semibold text-text-primary">{compatibilityCopy.title}</h3>
                                         <p className="mt-1 text-sm text-text-secondary">
-                                            Diese eingefrorenen Hessen-Oberstufenansichten bleiben nur fuer Migration, Vergleich und Audit verfuegbar.
+                                            {compatibilityCopy.subtitle}
                                         </p>
                                         {!showCompatibilityChildren && (
                                             <p className="mt-2 text-xs text-text-secondary">
-                                                {compatibilityChildrenLandscapes.length} Ansicht{compatibilityChildrenLandscapes.length === 1 ? '' : 'en'} ausgeblendet.
+                                                {compatibilityCopy.hiddenSummary(compatibilityChildrenLandscapes.length)}
                                             </p>
                                         )}
                                     </div>
@@ -427,7 +432,7 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
                                             onClick={() => setShowCompatibilityChildren((current) => !current)}
                                             className="shrink-0 rounded-lg border border-amber-300 bg-white px-3 py-2 text-sm font-medium text-amber-900 transition-colors hover:bg-amber-100 dark:border-amber-700 dark:bg-amber-950/40 dark:text-amber-100 dark:hover:bg-amber-900/50"
                                         >
-                                            {showCompatibilityChildren ? 'Ausblenden' : 'Einblenden'}
+                                            {showCompatibilityChildren ? compatibilityCopy.hideAction : compatibilityCopy.showAction}
                                         </button>
                                     )}
                                 </div>
@@ -450,11 +455,11 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
                 <div className="p-6 border-b border-border-color flex items-center justify-between">
                     <div>
                         <h2 className="text-xl font-bold text-text-primary">
-                            {retirementOnly ? 'Legacy-Ansicht' : 'Mein Lehrplan'}
+                            {retirementOnly ? retirementCopy.title : 'Mein Lehrplan'}
                         </h2>
                         <p className="text-text-secondary text-sm mt-1">
                             {retirementOnly
-                                ? 'Diese Hessen-Ansicht bleibt nur noch fuer Migration, Vergleich und Audit verfuegbar.'
+                                ? retirementCopy.subtitle
                                 : 'Wähle zuerst Sekundarstufen, dann Fächer und für Sekundarstufe II die Kursniveaus.'}
                         </p>
                     </div>
@@ -468,15 +473,15 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
                 </div>
 
                 <div className="flex-1 overflow-y-auto p-4">
-                    {onMigrationAction && migrationTitle && migrationDescription && migrationActionLabel && (
+                    {migration && (
                         <div className="mb-6 rounded-xl border border-amber-200 bg-amber-50 p-4 dark:border-amber-900/40 dark:bg-amber-900/10">
                             <div className="flex flex-col gap-3 md:flex-row md:items-start md:justify-between">
                                 <div>
-                                    <h3 className="text-sm font-semibold text-text-primary">{migrationTitle}</h3>
-                                    <p className="mt-1 text-sm text-text-secondary">{migrationDescription}</p>
-                                    {migrationPreviewItems.length > 0 && (
+                                    <h3 className="text-sm font-semibold text-text-primary">{migration.title}</h3>
+                                    <p className="mt-1 text-sm text-text-secondary">{migration.description}</p>
+                                    {(migration.previewItems ?? []).length > 0 && (
                                         <div className="mt-3 grid gap-2 sm:grid-cols-2">
-                                            {migrationPreviewItems.map((item) => (
+                                            {(migration.previewItems ?? []).map((item) => (
                                                 <div
                                                     key={`${item.label}:${item.value}`}
                                                     className="rounded-lg border border-amber-200/70 bg-white/70 px-3 py-2 dark:border-amber-900/30 dark:bg-slate-950/30"
@@ -493,11 +498,11 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
                                     )}
                                 </div>
                                 <button
-                                    onClick={onMigrationAction}
-                                    disabled={migrationActionPending}
+                                    onClick={migration.onAction}
+                                    disabled={migration.actionPending}
                                     className="shrink-0 rounded-lg bg-amber-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-amber-500 disabled:cursor-not-allowed disabled:opacity-60"
                                 >
-                                    {migrationActionPending ? '...' : migrationActionLabel}
+                                    {migration.actionPending ? '...' : migration.actionLabel}
                                 </button>
                             </div>
                         </div>
@@ -505,13 +510,12 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
 
                     {retirementOnly && (
                         <div className="mb-6 rounded-xl border border-amber-200 bg-amber-50/40 p-4 dark:border-amber-900/40 dark:bg-amber-900/10">
-                            <h3 className="text-sm font-semibold text-text-primary">Nur noch fuer Umstellung und Audit</h3>
+                            <h3 className="text-sm font-semibold text-text-primary">{retirementCopy.noticeTitle}</h3>
                             <p className="mt-2 text-sm text-text-secondary">
-                                Fach- und Filteraenderungen werden in dieser eingefrorenen Hessen-Ansicht nicht mehr gepflegt.
-                                Fuer die weitere Arbeit soll der Lernstand auf Gymnasium (DE) umgestellt werden.
+                                {retirementCopy.noticeBodyPrimary}
                             </p>
                             <p className="mt-2 text-sm text-text-secondary">
-                                Die aktuelle Legacy-Ansicht bleibt vorerst als Vergleichspfad sichtbar, ist aber kein normaler Konfigurationspfad mehr.
+                                {retirementCopy.noticeBodySecondary}
                             </p>
                         </div>
                     )}

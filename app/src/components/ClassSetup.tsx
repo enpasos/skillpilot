@@ -15,15 +15,6 @@ interface ClassSetupProps {
   onCancel: () => void
 }
 
-const DEFAULT_GYMNASIUM_DE_ROOT_FILTERS = [
-  { id: 'ALL', label: 'Kanonische DE-Sicht' },
-  { id: 'DE-BW', label: 'Baden-Württemberg' },
-  { id: 'DE-HE', label: 'Hessen' },
-  { id: 'DE-BY', label: 'Bayern' },
-  { id: 'DE-NI', label: 'Niedersachsen' },
-  { id: 'DE-NW', label: 'Nordrhein-Westfalen' },
-]
-
 const COMBINED_COURSE_FILTER = { id: 'ALL', label: 'Grund- und Leistungskurs' }
 
 const withCombinedCourseFilter = (filters?: { id: string; label: string }[]) => {
@@ -58,13 +49,7 @@ export const ClassSetup: React.FC<ClassSetupProps> = ({ landscapes, rootLandscap
       ? saved
       : (subjectLandscapes[0]?.meta.landscapeId ?? landscapes[0]?.meta.landscapeId ?? '')
   })
-  const effectiveRootFilters = useMemo(() => {
-    if (!rootLandscape) return []
-    if (rootLandscape.meta.title === 'Gymnasium (DE)' && (!rootLandscape.meta.filters || rootLandscape.meta.filters.length === 0)) {
-      return DEFAULT_GYMNASIUM_DE_ROOT_FILTERS
-    }
-    return rootLandscape.meta.filters ?? []
-  }, [rootLandscape])
+  const effectiveRootFilters = useMemo(() => rootLandscape?.meta.filters ?? [], [rootLandscape])
   const [selectedRootFilter, setSelectedRootFilter] = useState(() => effectiveRootFilters[0]?.id ?? 'ALL')
   const [curriculumConfig, setCurriculumConfig] = useState<TrainerClassCurriculumConfig>(() => applyDefaultGlobalStageScope({}).config)
   const [selectedSubjectFilter, setSelectedSubjectFilter] = useState('ALL')

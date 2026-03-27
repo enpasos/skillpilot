@@ -21,8 +21,11 @@ import { goalMatchesFilter, isWildcardFilter } from '../utils/goalFilters'
 import {
   CANONICAL_GYMNASIUM_ROOT_ID,
   LEGACY_HESSEN_GYMNASIUM_UPPER_IDS,
-  LEGACY_HESSEN_GYMNASIUM_LOWER_IDS,
 } from '../utils/curriculumDisplay'
+import {
+  buildLegacyCutoverUiState,
+  inferLegacyHessenLowerSelection,
+} from '../utils/legacyCutover'
 import {
   ABI26_CAMPAIGN_SLUG,
   extractAbi26CampaignContext,
@@ -34,6 +37,7 @@ import { trackCampaignEvent } from '../utils/campaignTracking'
 import type { ToastKind } from '../hooks/useToast'
 import { queueToastForNextLoad } from '../hooks/useToast'
 import { dispatchLearnerUiRefresh } from '../utils/learnerUiEvents'
+import { formatFilterDisplayLabel } from '../utils/filterLabels'
 
 import type { UiGoal } from '../goalTypes'
 import type { Learner, FrontierGoal } from '../learnerTypes'
@@ -63,110 +67,6 @@ type PersonalCurriculumPreferences = {
   strategy: 'RANDOM' | 'SEQUENTIAL'
   autoPilot: boolean
   strictMode: boolean
-}
-
-const HESSEN_GYMNASIUM_LOWER_ROOT_ID = 'f050ee48-6891-4f83-995f-0f8be5e31b7f'
-const HESSEN_GYMNASIUM_LOWER_MATH_ID = 'b167b4cd-4b78-4c84-a721-6b2adbbcab3c'
-const HESSEN_GYMNASIUM_LOWER_PHYSICS_ID = '996d097a-cac2-4b5f-979a-b3a0b9803265'
-const HESSEN_GYMNASIUM_LOWER_CHEMISTRY_ID = 'bea90c22-b9c5-4c0c-9b10-89d875f50772'
-const HESSEN_GYMNASIUM_LOWER_BIOLOGY_ID = '71438941-0ceb-46ee-ad31-773cee700779'
-const HESSEN_GYMNASIUM_LOWER_FRENCH_ID = '762de708-85fa-4324-958e-56002a318f7f'
-const BAVARIA_GYMNASIUM_MATH_ID = 'c1600692-e543-5cf2-a399-6bd96e6b817f'
-const BAVARIA_GYMNASIUM_PHYSICS_ID = '42c2f7e3-91b4-5de8-bef0-d563440e9d52'
-const BAVARIA_GYMNASIUM_CHEMISTRY_ID = 'ff1ca997-b6cc-5ece-8e13-5498b4bbf808'
-const BAVARIA_GYMNASIUM_BIOLOGY_ID = '357a7003-b636-570e-a0bd-6bb63518d2f6'
-const BAVARIA_GYMNASIUM_CHINESE_ID = '40744ec5-7de1-5e41-9fc2-a1e774721644'
-const BAVARIA_GYMNASIUM_INFORMATICS_ID = '1af3eba8-749f-5359-8f12-18f87b13616c'
-const BAVARIA_GYMNASIUM_HISTORY_ID = '01c2ba7a-ebd4-5840-bc09-123d7b31c914'
-const BAVARIA_GYMNASIUM_GERMAN_ID = '05f1cd27-5a58-5415-8fda-d4807067f70a'
-const BAVARIA_GYMNASIUM_ENGLISH_ID = '9da8e86b-92dc-5ba0-827e-339400af2b38'
-const BAVARIA_GYMNASIUM_GREEK_ID = '22703293-7307-5ad2-b158-efe6ae28c7c3'
-const BAVARIA_GYMNASIUM_ECONOMICS_ID = '4959d7df-e430-5c1d-bb7b-873d6252a27f'
-const BAVARIA_GYMNASIUM_POLITICS_SOCIETY_ID = '486a8278-39b2-5450-96f8-1076a47b655b'
-const BAVARIA_GYMNASIUM_LATIN_ID = 'c7eeaaa4-7c23-5ab7-8643-b7a03760cd6b'
-const BAVARIA_GYMNASIUM_MUSIC_ID = 'a00d70bf-3d3c-58fc-af4f-881b29635c2e'
-const BAVARIA_GYMNASIUM_FRENCH_ID = '49aefe0c-f365-5f30-b84f-b9a7699e4f2c'
-const BAVARIA_GYMNASIUM_SPANISH_ID = '8dba4715-f75e-5339-9e99-02236e4b80dd'
-const BAVARIA_GYMNASIUM_ITALIAN_ID = 'c7643536-1163-50d8-86a6-9645c8fd3e25'
-const BAVARIA_GYMNASIUM_RUSSIAN_ID = '2b6e79f6-5130-56cb-9a2f-d08e6dc4b4d7'
-const BAVARIA_GYMNASIUM_POLISH_ID = '21148204-794c-515d-ae20-c4d5cd4e56d8'
-const BAVARIA_GYMNASIUM_CZECH_ID = '097f3667-2488-57b2-a3e0-2cb334e422a2'
-
-type HessenLowerSelection = {
-  mathSelected: boolean
-  physicsSelected: boolean
-  chemistrySelected: boolean
-  biologySelected: boolean
-  frenchSelected: boolean
-  retirementEligible: boolean
-}
-
-const inferLegacyHessenLowerSelection = (
-  selectedCurriculum: string | null | undefined,
-  personalConfig: PersonalCurriculumConfig,
-  plannedGoals: Set<string>,
-  activeGoalId: string | null,
-  goalIndexAll: Map<string, UiGoal>,
-): HessenLowerSelection => {
-  if (!selectedCurriculum || !LEGACY_HESSEN_GYMNASIUM_LOWER_IDS.has(selectedCurriculum)) {
-    return {
-      mathSelected: false,
-      physicsSelected: false,
-      chemistrySelected: false,
-      biologySelected: false,
-      frenchSelected: false,
-      retirementEligible: false,
-    }
-  }
-
-  const goalBelongsToLandscape = (goalId: string | null | undefined, landscapeId: string) =>
-    !!goalId && goalIndexAll.get(goalId)?.landscapeId === landscapeId
-
-  let mathSelected = selectedCurriculum === HESSEN_GYMNASIUM_LOWER_MATH_ID
-  let physicsSelected = selectedCurriculum === HESSEN_GYMNASIUM_LOWER_PHYSICS_ID
-  let chemistrySelected = selectedCurriculum === HESSEN_GYMNASIUM_LOWER_CHEMISTRY_ID
-  let biologySelected = selectedCurriculum === HESSEN_GYMNASIUM_LOWER_BIOLOGY_ID
-  let frenchSelected = selectedCurriculum === HESSEN_GYMNASIUM_LOWER_FRENCH_ID
-
-  if (selectedCurriculum === HESSEN_GYMNASIUM_LOWER_ROOT_ID) {
-    const plannedGoalIds = Array.from(plannedGoals)
-    mathSelected = personalConfig[HESSEN_GYMNASIUM_LOWER_MATH_ID]?.selected === true
-      || plannedGoalIds.some((goalId) => goalBelongsToLandscape(goalId, HESSEN_GYMNASIUM_LOWER_MATH_ID))
-      || goalBelongsToLandscape(activeGoalId, HESSEN_GYMNASIUM_LOWER_MATH_ID)
-    physicsSelected = personalConfig[HESSEN_GYMNASIUM_LOWER_PHYSICS_ID]?.selected === true
-      || plannedGoalIds.some((goalId) => goalBelongsToLandscape(goalId, HESSEN_GYMNASIUM_LOWER_PHYSICS_ID))
-      || goalBelongsToLandscape(activeGoalId, HESSEN_GYMNASIUM_LOWER_PHYSICS_ID)
-    chemistrySelected = personalConfig[HESSEN_GYMNASIUM_LOWER_CHEMISTRY_ID]?.selected === true
-      || plannedGoalIds.some((goalId) => goalBelongsToLandscape(goalId, HESSEN_GYMNASIUM_LOWER_CHEMISTRY_ID))
-      || goalBelongsToLandscape(activeGoalId, HESSEN_GYMNASIUM_LOWER_CHEMISTRY_ID)
-    biologySelected = personalConfig[HESSEN_GYMNASIUM_LOWER_BIOLOGY_ID]?.selected === true
-      || plannedGoalIds.some((goalId) => goalBelongsToLandscape(goalId, HESSEN_GYMNASIUM_LOWER_BIOLOGY_ID))
-      || goalBelongsToLandscape(activeGoalId, HESSEN_GYMNASIUM_LOWER_BIOLOGY_ID)
-    frenchSelected = personalConfig[HESSEN_GYMNASIUM_LOWER_FRENCH_ID]?.selected === true
-      || plannedGoalIds.some((goalId) => goalBelongsToLandscape(goalId, HESSEN_GYMNASIUM_LOWER_FRENCH_ID))
-      || goalBelongsToLandscape(activeGoalId, HESSEN_GYMNASIUM_LOWER_FRENCH_ID)
-  }
-
-  if (!mathSelected && !physicsSelected && !chemistrySelected && !biologySelected && !frenchSelected) {
-    mathSelected = true
-    physicsSelected = true
-    chemistrySelected = true
-    biologySelected = true
-    frenchSelected = true
-  }
-
-  if (physicsSelected) {
-    mathSelected = true
-  }
-
-  return {
-    mathSelected,
-    physicsSelected,
-    chemistrySelected,
-    biologySelected,
-    frenchSelected,
-    retirementEligible: mathSelected || physicsSelected || chemistrySelected || biologySelected || frenchSelected,
-  }
 }
 
 const normalizePersonalConfig = (
@@ -345,6 +245,9 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   const { language, setLanguage } = useLanguage();
   const t = useTranslation();
   const location = useLocation()
+  const localizedLanguage = language === 'en' ? 'en' : 'de'
+  const bavariaFilterDisplay = formatFilterDisplayLabel('DE-BY', localizedLanguage)
+  const hessenFilterDisplay = formatFilterDisplayLabel('DE-HE', localizedLanguage)
 
   const queryParams = useMemo(() => new URLSearchParams(location.search), [location.search])
   const persistedCampaignContext = useMemo(() => loadAbi26CampaignContext(), [])
@@ -851,419 +754,34 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     }
   }, [clearReportedLoadError, notifyLoadErrorOnce, skillpilotId, t.notifications.learnerInitialLoadFailed])
 
-  const isUpperLegacyHessenSession = useMemo(() => {
-    const selectedCurriculum = learnerData?.selectedCurriculum
-    return !!selectedCurriculum && LEGACY_HESSEN_GYMNASIUM_UPPER_IDS.has(selectedCurriculum)
-  }, [learnerData?.selectedCurriculum])
-  const bavariaLegacyRetirementSubject = useMemo(() => {
-    const selectedCurriculum = learnerData?.selectedCurriculum
-    if (selectedCurriculum === BAVARIA_GYMNASIUM_MATH_ID) {
-      return 'Mathematik'
-    }
-    if (selectedCurriculum === BAVARIA_GYMNASIUM_PHYSICS_ID) {
-      return 'Physik'
-    }
-    if (selectedCurriculum === BAVARIA_GYMNASIUM_CHEMISTRY_ID) {
-      return 'Chemie'
-    }
-    if (selectedCurriculum === BAVARIA_GYMNASIUM_BIOLOGY_ID) {
-      return 'Biologie'
-    }
-    if (selectedCurriculum === BAVARIA_GYMNASIUM_CHINESE_ID) {
-      return 'Chinesisch'
-    }
-    if (selectedCurriculum === BAVARIA_GYMNASIUM_INFORMATICS_ID) {
-      return 'Informatik'
-    }
-    if (selectedCurriculum === BAVARIA_GYMNASIUM_HISTORY_ID) {
-      return 'Geschichte'
-    }
-    if (selectedCurriculum === BAVARIA_GYMNASIUM_GERMAN_ID) {
-      return 'Deutsch'
-    }
-    if (selectedCurriculum === BAVARIA_GYMNASIUM_ENGLISH_ID) {
-      return 'Englisch'
-    }
-    if (selectedCurriculum === BAVARIA_GYMNASIUM_GREEK_ID) {
-      return 'Griechisch'
-    }
-    if (selectedCurriculum === BAVARIA_GYMNASIUM_ECONOMICS_ID) {
-      return 'Wirtschaft und Recht'
-    }
-    if (selectedCurriculum === BAVARIA_GYMNASIUM_POLITICS_SOCIETY_ID) {
-      return 'Politik und Gesellschaft'
-    }
-    if (selectedCurriculum === BAVARIA_GYMNASIUM_LATIN_ID) {
-      return 'Latein'
-    }
-    if (selectedCurriculum === BAVARIA_GYMNASIUM_MUSIC_ID) {
-      return 'Musik'
-    }
-    if (selectedCurriculum === BAVARIA_GYMNASIUM_FRENCH_ID) {
-      return 'Französisch'
-    }
-    if (selectedCurriculum === BAVARIA_GYMNASIUM_SPANISH_ID) {
-      return 'Spanisch'
-    }
-    if (selectedCurriculum === BAVARIA_GYMNASIUM_ITALIAN_ID) {
-      return 'Italienisch'
-    }
-    if (selectedCurriculum === BAVARIA_GYMNASIUM_RUSSIAN_ID) {
-      return 'Russisch'
-    }
-    if (selectedCurriculum === BAVARIA_GYMNASIUM_POLISH_ID) {
-      return 'Polnisch'
-    }
-    if (selectedCurriculum === BAVARIA_GYMNASIUM_CZECH_ID) {
-      return 'Tschechisch'
-    }
-    return null
-  }, [learnerData?.selectedCurriculum])
-  const bavariaLegacyRetirementSubjectEn = useMemo(() => {
-    if (bavariaLegacyRetirementSubject === 'Mathematik') {
-      return 'mathematics'
-    }
-    if (bavariaLegacyRetirementSubject === 'Physik') {
-      return 'physics'
-    }
-    if (bavariaLegacyRetirementSubject === 'Chemie') {
-      return 'chemistry'
-    }
-    if (bavariaLegacyRetirementSubject === 'Biologie') {
-      return 'biology'
-    }
-    if (bavariaLegacyRetirementSubject === 'Chinesisch') {
-      return 'chinese'
-    }
-    if (bavariaLegacyRetirementSubject === 'Informatik') {
-      return 'computer science'
-    }
-    if (bavariaLegacyRetirementSubject === 'Geschichte') {
-      return 'history'
-    }
-    if (bavariaLegacyRetirementSubject === 'Deutsch') {
-      return 'german'
-    }
-    if (bavariaLegacyRetirementSubject === 'Englisch') {
-      return 'english'
-    }
-    if (bavariaLegacyRetirementSubject === 'Griechisch') {
-      return 'greek'
-    }
-    if (bavariaLegacyRetirementSubject === 'Wirtschaft und Recht') {
-      return 'economics and law'
-    }
-    if (bavariaLegacyRetirementSubject === 'Politik und Gesellschaft') {
-      return 'politics and society'
-    }
-    if (bavariaLegacyRetirementSubject === 'Latein') {
-      return 'latin'
-    }
-    if (bavariaLegacyRetirementSubject === 'Musik') {
-      return 'music'
-    }
-    if (bavariaLegacyRetirementSubject === 'Französisch') {
-      return 'french'
-    }
-    if (bavariaLegacyRetirementSubject === 'Spanisch') {
-      return 'spanish'
-    }
-    if (bavariaLegacyRetirementSubject === 'Italienisch') {
-      return 'italian'
-    }
-    if (bavariaLegacyRetirementSubject === 'Russisch') {
-      return 'russian'
-    }
-    if (bavariaLegacyRetirementSubject === 'Polnisch') {
-      return 'polish'
-    }
-    if (bavariaLegacyRetirementSubject === 'Tschechisch') {
-      return 'czech'
-    }
-    return null
-  }, [bavariaLegacyRetirementSubject])
-  const isBavariaLegacyRetirementOnly = bavariaLegacyRetirementSubject !== null
-  const lowerLegacySelection = useMemo(() => inferLegacyHessenLowerSelection(
-    learnerData?.selectedCurriculum,
+  const lowerLegacySelection = useMemo(() => inferLegacyHessenLowerSelection({
+    selectedCurriculum: learnerData?.selectedCurriculum,
     personalConfig,
-    plannedGoals,
-    effectiveActiveGoalId,
-    goalIndexAll,
-  ), [learnerData?.selectedCurriculum, personalConfig, plannedGoals, effectiveActiveGoalId, goalIndexAll])
-  const isLowerLegacyRetirementOnly = lowerLegacySelection.retirementEligible
-  const canCutoverLegacyGymnasium =
-    isUpperLegacyHessenSession || isLowerLegacyRetirementOnly || isBavariaLegacyRetirementOnly
-  const supportsCompatibilityArchive = isUpperLegacyHessenSession
-  const isCompatibilityAuditOnly = canCutoverLegacyGymnasium
-  const shouldShowCompatibilityRetirementGate =
-    compatibilityRouteRetired &&
-    isUpperLegacyHessenSession
-
-  const legacyCutoverPreviewItems = useMemo(() => {
-    const selectedCurriculum = learnerData?.selectedCurriculum
-    if (!selectedCurriculum) {
-      return []
-    }
-
-    if (
-      selectedCurriculum === BAVARIA_GYMNASIUM_MATH_ID
-      || selectedCurriculum === BAVARIA_GYMNASIUM_PHYSICS_ID
-      || selectedCurriculum === BAVARIA_GYMNASIUM_CHEMISTRY_ID
-      || selectedCurriculum === BAVARIA_GYMNASIUM_BIOLOGY_ID
-      || selectedCurriculum === BAVARIA_GYMNASIUM_CHINESE_ID
-      || selectedCurriculum === BAVARIA_GYMNASIUM_INFORMATICS_ID
-      || selectedCurriculum === BAVARIA_GYMNASIUM_HISTORY_ID
-      || selectedCurriculum === BAVARIA_GYMNASIUM_GERMAN_ID
-      || selectedCurriculum === BAVARIA_GYMNASIUM_ENGLISH_ID
-      || selectedCurriculum === BAVARIA_GYMNASIUM_GREEK_ID
-      || selectedCurriculum === BAVARIA_GYMNASIUM_ECONOMICS_ID
-      || selectedCurriculum === BAVARIA_GYMNASIUM_POLITICS_SOCIETY_ID
-      || selectedCurriculum === BAVARIA_GYMNASIUM_LATIN_ID
-      || selectedCurriculum === BAVARIA_GYMNASIUM_MUSIC_ID
-      || selectedCurriculum === BAVARIA_GYMNASIUM_FRENCH_ID
-      || selectedCurriculum === BAVARIA_GYMNASIUM_SPANISH_ID
-    ) {
-      return [
-        { label: 'Quelle', value: `Bayern Gymnasium ${bavariaLegacyRetirementSubject}` },
-        { label: 'Ziel', value: 'Gymnasium (DE)' },
-        { label: 'Filter', value: 'DE-BY' },
-        { label: 'Fach', value: bavariaLegacyRetirementSubject ?? 'Mathematik' },
-      ]
-    }
-
-    if (isLowerLegacyRetirementOnly) {
-      const selectedSubjects = [
-        lowerLegacySelection.mathSelected ? 'Mathematik' : null,
-        lowerLegacySelection.physicsSelected ? 'Physik' : null,
-        lowerLegacySelection.chemistrySelected ? 'Chemie' : null,
-        lowerLegacySelection.biologySelected ? 'Biologie' : null,
-        lowerLegacySelection.frenchSelected ? 'Französisch' : null,
-      ].filter(Boolean).join(', ')
-
-      return [
-        { label: 'Quelle', value: 'Hessen Sek I' },
-        { label: 'Ziel', value: 'Gymnasium (DE)' },
-        { label: 'Faecher', value: selectedSubjects || 'Mathematik, Physik, Chemie, Biologie, Französisch' },
-      ]
-    }
-
-    if (!LEGACY_HESSEN_GYMNASIUM_UPPER_IDS.has(selectedCurriculum)) {
-      return []
-    }
-
-    const inferCourseFilter = (landscapeId: string) => {
-      const filterId = personalConfig[landscapeId]?.filterId
-      if (filterId === 'LK') {
-        return 'Leistungskurs'
-      }
-      if (filterId === 'ALL') {
-        return 'Grund- und Leistungskurs'
-      }
-      return 'Grundkurs'
-    }
-
-    let mathSelected = selectedCurriculum === '2796fc7b-ba9d-446f-8f26-711dd6d8a9a3'
-    let physicsSelected = selectedCurriculum === '24f2ca0f-b94a-444e-bb70-677cb6f85c02'
-    let chemistrySelected = selectedCurriculum === '2f391ba2-ba1e-40e4-a8d2-dff049516c13'
-    let biologySelected = selectedCurriculum === '3e56aa75-c76c-4de5-883b-0aac98297846'
-    let informaticsSelected = selectedCurriculum === 'c1a02ddd-736d-4975-920b-18b03aff147f'
-    let historySelected = selectedCurriculum === 'bdc89685-73d3-446c-af5a-eaf642c07463'
-    let germanSelected = selectedCurriculum === 'f1ba2118-853f-4aa0-bef5-4f749bc621ed'
-    let politicsEconomicsSelected = selectedCurriculum === '1d0e9f8f-0087-49e4-8ea2-976e5a89b165'
-    let englishSelected = selectedCurriculum === 'bc2124fa-2974-46cc-85e7-2392e61250e1'
-    let frenchSelected = selectedCurriculum === '30acd190-609c-4109-8ee7-06fc5594af19'
-    let latinSelected = selectedCurriculum === 'fe28bda8-03f3-4c4a-8286-7fcfce4eeac1'
-    let spanishSelected = selectedCurriculum === '936efc61-a4d5-49fd-8694-085d1347db80'
-    let greekSelected = selectedCurriculum === 'c7209caa-18e5-4dd8-b68f-dd86e228d045'
-    let chineseSelected = selectedCurriculum === '7651cbe2-5fb8-464d-b0c4-3e830cda41dd'
-    let musicSelected = selectedCurriculum === 'a8c23058-6998-49f2-9f3b-a85e951d5ab0'
-    let economicsSelected = selectedCurriculum === 'a334a745-1d67-4e1d-86a5-dadc04f144d2'
-
-    if (selectedCurriculum === 'bbbf39f3-4a5b-46cf-9edd-48f2c54ae0da') {
-      mathSelected = personalConfig['2796fc7b-ba9d-446f-8f26-711dd6d8a9a3']?.selected === true
-      physicsSelected = personalConfig['24f2ca0f-b94a-444e-bb70-677cb6f85c02']?.selected === true
-      chemistrySelected = personalConfig['2f391ba2-ba1e-40e4-a8d2-dff049516c13']?.selected === true
-      biologySelected = personalConfig['3e56aa75-c76c-4de5-883b-0aac98297846']?.selected === true
-      informaticsSelected = personalConfig['c1a02ddd-736d-4975-920b-18b03aff147f']?.selected === true
-      historySelected = personalConfig['bdc89685-73d3-446c-af5a-eaf642c07463']?.selected === true
-      germanSelected = personalConfig['f1ba2118-853f-4aa0-bef5-4f749bc621ed']?.selected === true
-      politicsEconomicsSelected = personalConfig['1d0e9f8f-0087-49e4-8ea2-976e5a89b165']?.selected === true
-      englishSelected = personalConfig['bc2124fa-2974-46cc-85e7-2392e61250e1']?.selected === true
-      frenchSelected = personalConfig['30acd190-609c-4109-8ee7-06fc5594af19']?.selected === true
-      latinSelected = personalConfig['fe28bda8-03f3-4c4a-8286-7fcfce4eeac1']?.selected === true
-      spanishSelected = personalConfig['936efc61-a4d5-49fd-8694-085d1347db80']?.selected === true
-      greekSelected = personalConfig['c7209caa-18e5-4dd8-b68f-dd86e228d045']?.selected === true
-      chineseSelected = personalConfig['7651cbe2-5fb8-464d-b0c4-3e830cda41dd']?.selected === true
-      musicSelected = personalConfig['a8c23058-6998-49f2-9f3b-a85e951d5ab0']?.selected === true
-      economicsSelected = personalConfig['a334a745-1d67-4e1d-86a5-dadc04f144d2']?.selected === true
-      if (!mathSelected && !physicsSelected && !chemistrySelected && !biologySelected && !informaticsSelected && !historySelected && !germanSelected && !politicsEconomicsSelected && !englishSelected && !frenchSelected && !latinSelected && !spanishSelected && !greekSelected && !chineseSelected && !musicSelected && !economicsSelected) {
-        mathSelected = true
-        physicsSelected = true
-        chemistrySelected = true
-        biologySelected = true
-        informaticsSelected = true
-        historySelected = true
-        germanSelected = true
-        politicsEconomicsSelected = true
-        englishSelected = true
-        frenchSelected = true
-        latinSelected = true
-        spanishSelected = true
-        greekSelected = true
-        chineseSelected = true
-        musicSelected = true
-        economicsSelected = true
-      }
-    }
-
-    const mathWasImplicitlyAdded = physicsSelected && !mathSelected
-    if (physicsSelected) {
-      mathSelected = true
-    }
-    if (!mathSelected && !physicsSelected && !chemistrySelected && !biologySelected && !informaticsSelected && !historySelected && !germanSelected && !politicsEconomicsSelected && !englishSelected && !frenchSelected && !latinSelected && !spanishSelected && !greekSelected && !chineseSelected && !musicSelected && !economicsSelected) {
-      mathSelected = true
-      chemistrySelected = true
-      biologySelected = true
-      informaticsSelected = true
-      historySelected = true
-      germanSelected = true
-      politicsEconomicsSelected = true
-      englishSelected = true
-      frenchSelected = true
-      latinSelected = true
-      spanishSelected = true
-      greekSelected = true
-      chineseSelected = true
-      musicSelected = true
-      economicsSelected = true
-    }
-
-    const items: Array<{ label: string; value: string }> = [
-      { label: 'Bundesland', value: 'Hessen -> Gymnasium (DE)' },
-    ]
-
-    if (mathSelected) {
-      items.push({
-        label: 'Mathematik',
-        value: mathWasImplicitlyAdded
-          ? `${inferCourseFilter('2796fc7b-ba9d-446f-8f26-711dd6d8a9a3')} (als Voraussetzung)`
-          : inferCourseFilter('2796fc7b-ba9d-446f-8f26-711dd6d8a9a3'),
-      })
-    }
-
-    if (physicsSelected) {
-      items.push({
-        label: 'Physik',
-        value: inferCourseFilter('24f2ca0f-b94a-444e-bb70-677cb6f85c02'),
-      })
-    }
-
-    if (chemistrySelected) {
-      items.push({
-        label: 'Chemie',
-        value: inferCourseFilter('2f391ba2-ba1e-40e4-a8d2-dff049516c13'),
-      })
-    }
-
-    if (biologySelected) {
-      items.push({
-        label: 'Biologie',
-        value: inferCourseFilter('3e56aa75-c76c-4de5-883b-0aac98297846'),
-      })
-    }
-
-    if (informaticsSelected) {
-      items.push({
-        label: 'Informatik',
-        value: inferCourseFilter('c1a02ddd-736d-4975-920b-18b03aff147f'),
-      })
-    }
-
-    if (historySelected) {
-      items.push({
-        label: 'Geschichte',
-        value: inferCourseFilter('bdc89685-73d3-446c-af5a-eaf642c07463'),
-      })
-    }
-
-    if (germanSelected) {
-      items.push({
-        label: 'Deutsch',
-        value: inferCourseFilter('f1ba2118-853f-4aa0-bef5-4f749bc621ed'),
-      })
-    }
-
-    if (politicsEconomicsSelected) {
-      items.push({
-        label: 'Politik und Wirtschaft',
-        value: inferCourseFilter('1d0e9f8f-0087-49e4-8ea2-976e5a89b165'),
-      })
-    }
-
-    if (englishSelected) {
-      items.push({
-        label: 'Englisch',
-        value: inferCourseFilter('bc2124fa-2974-46cc-85e7-2392e61250e1'),
-      })
-    }
-
-    if (frenchSelected) {
-      items.push({
-        label: 'Französisch',
-        value: inferCourseFilter('30acd190-609c-4109-8ee7-06fc5594af19'),
-      })
-    }
-
-    if (latinSelected) {
-      items.push({
-        label: 'Latein',
-        value: inferCourseFilter('fe28bda8-03f3-4c4a-8286-7fcfce4eeac1'),
-      })
-    }
-
-    if (spanishSelected) {
-      items.push({
-        label: 'Spanisch',
-        value: inferCourseFilter('936efc61-a4d5-49fd-8694-085d1347db80'),
-      })
-    }
-
-    if (greekSelected) {
-      items.push({
-        label: 'Griechisch',
-        value: inferCourseFilter('c7209caa-18e5-4dd8-b68f-dd86e228d045'),
-      })
-    }
-
-    if (chineseSelected) {
-      items.push({
-        label: 'Chinesisch',
-        value: inferCourseFilter('7651cbe2-5fb8-464d-b0c4-3e830cda41dd'),
-      })
-    }
-
-    if (musicSelected) {
-      items.push({
-        label: 'Musik',
-        value: inferCourseFilter('a8c23058-6998-49f2-9f3b-a85e951d5ab0'),
-      })
-    }
-
-    if (economicsSelected) {
-      items.push({
-        label: 'Wirtschaftswissenschaften',
-        value: inferCourseFilter('a334a745-1d67-4e1d-86a5-dadc04f144d2'),
-      })
-    }
-
-    return items
-  }, [
-    bavariaLegacyRetirementSubject,
-    learnerData?.selectedCurriculum,
+    plannedGoalIds: Array.from(plannedGoals),
+    activeGoalId: effectiveActiveGoalId,
+    resolveGoalLandscapeId: (goalId) => goalIndexAll.get(goalId)?.landscapeId,
+  }), [learnerData?.selectedCurriculum, personalConfig, plannedGoals, effectiveActiveGoalId, goalIndexAll])
+  const legacyCutoverUiState = useMemo(() => buildLegacyCutoverUiState({
+    selectedCurriculum: learnerData?.selectedCurriculum,
+    language,
+    compatibilityRouteRetired,
     personalConfig,
-    isLowerLegacyRetirementOnly,
+    lowerSelection: lowerLegacySelection,
+    bavariaFilterDisplay,
+    hessenFilterDisplay,
+  }), [
+    learnerData?.selectedCurriculum,
+    language,
+    compatibilityRouteRetired,
+    personalConfig,
     lowerLegacySelection,
+    bavariaFilterDisplay,
+    hessenFilterDisplay,
   ])
+  const canCutoverLegacyGymnasium = legacyCutoverUiState.canCutover
+  const supportsCompatibilityArchive = legacyCutoverUiState.supportsCompatibilityArchive
+  const isCompatibilityAuditOnly = legacyCutoverUiState.isCompatibilityAuditOnly
+  const shouldShowCompatibilityRetirementGate = legacyCutoverUiState.shouldShowCompatibilityRetirementGate
 
 
   const refreshState = useCallback(
@@ -1431,11 +949,12 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
 
   const handleSetActiveGoal = useCallback(async (goalId: string) => {
     if (isCompatibilityAuditOnly) {
-      setModalTitle(language === 'de' ? 'Nur Lesemodus' : 'Read-only mode')
+      setModalTitle(legacyCutoverUiState.readOnlyCopy?.title ?? (language === 'de' ? 'Nur Lesemodus' : 'Read-only mode'))
       setModalMessage(
-        language === 'de'
-          ? 'In dieser Legacy-Ansicht koennen keine neuen aktiven Lernziele gesetzt werden. Bitte auf Gymnasium (DE) umstellen.'
-          : 'You cannot set new active goals in this legacy view. Please migrate to Gymnasium (DE).',
+        legacyCutoverUiState.readOnlyCopy?.activeGoalMessage
+          ?? (language === 'de'
+            ? 'In dieser Legacy-Ansicht koennen keine neuen aktiven Lernziele gesetzt werden. Bitte auf Gymnasium (DE) umstellen.'
+            : 'You cannot set new active goals in this legacy view. Please migrate to Gymnasium (DE).'),
       )
       setModalType('info')
       setIsModalOpen(true)
@@ -1505,6 +1024,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   }, [
     isCompatibilityAuditOnly,
     language,
+    legacyCutoverUiState.readOnlyCopy,
     onNotify,
     onRefresh,
     onSelectGoal,
@@ -1517,11 +1037,12 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
 
   const togglePlan = useCallback(async (id: string) => {
     if (isCompatibilityAuditOnly) {
-      setModalTitle(language === 'de' ? 'Nur Lesemodus' : 'Read-only mode')
+      setModalTitle(legacyCutoverUiState.readOnlyCopy?.title ?? (language === 'de' ? 'Nur Lesemodus' : 'Read-only mode'))
       setModalMessage(
-        language === 'de'
-          ? 'Der Lernfokus kann in dieser Legacy-Ansicht nicht mehr veraendert werden. Bitte auf Gymnasium (DE) umstellen.'
-          : 'Planned-goal changes are disabled in this legacy view. Please migrate to Gymnasium (DE).',
+        legacyCutoverUiState.readOnlyCopy?.planMessage
+          ?? (language === 'de'
+            ? 'Der Lernfokus kann in dieser Legacy-Ansicht nicht mehr veraendert werden. Bitte auf Gymnasium (DE) umstellen.'
+            : 'Planned-goal changes are disabled in this legacy view. Please migrate to Gymnasium (DE).'),
       )
       setModalType('info')
       setIsModalOpen(true)
@@ -1562,6 +1083,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   }, [
     isCompatibilityAuditOnly,
     language,
+    legacyCutoverUiState.readOnlyCopy,
     onNotify,
     plannedGoals,
     refreshState,
@@ -1710,9 +1232,9 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
       const res = await fetch(url, { method: 'POST' })
       if (!res.ok) {
         const message = await res.text()
-        setModalTitle(language === 'de' ? 'Umstellung fehlgeschlagen' : 'Migration failed')
+        setModalTitle(legacyCutoverUiState.errorCopy?.cutoverTitle ?? (language === 'de' ? 'Umstellung fehlgeschlagen' : 'Migration failed'))
         setModalMessage(
-          message || (
+          message || legacyCutoverUiState.errorCopy?.cutoverMessage || (
             language === 'de'
               ? 'Die Umstellung auf Gymnasium (DE) konnte nicht durchgeführt werden.'
               : 'Could not migrate to Gymnasium (DE).'
@@ -1769,26 +1291,28 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
       setIsSetupOpen(false)
       setModalTitle(language === 'de' ? 'Umstellung abgeschlossen' : 'Migration complete')
       setModalMessage(
-        language === 'de'
-          ? 'Dein Lernstand wurde auf Gymnasium (DE) umgestellt. Hessen bleibt als Kompatibilitaetsansicht erhalten, dein Mastery-Verlauf wird aber jetzt auf der gemeinsamen DE-Struktur weiter genutzt.'
-          : 'Your learner state has been migrated to Gymnasium (DE). Hesse remains available as a compatibility view while your mastery history continues on the shared DE structure.',
+        legacyCutoverUiState.cutoverSuccessMessage
+          ?? (language === 'de'
+            ? 'Dein Lernstand wurde auf Gymnasium (DE) umgestellt.'
+            : 'Your learner state has been migrated to Gymnasium (DE).'),
       )
       setModalType('success')
       setIsModalOpen(true)
     } catch (e) {
       console.warn('Failed to cut over learner to canonical Gymnasium', e)
-      setModalTitle(language === 'de' ? 'Umstellung fehlgeschlagen' : 'Migration failed')
+      setModalTitle(legacyCutoverUiState.errorCopy?.cutoverTitle ?? (language === 'de' ? 'Umstellung fehlgeschlagen' : 'Migration failed'))
       setModalMessage(
-        language === 'de'
-          ? 'Während der Umstellung ist ein Netzwerk- oder Systemfehler aufgetreten.'
-          : 'A network or system error occurred during migration.',
+        legacyCutoverUiState.errorCopy?.cutoverMessage
+          ?? (language === 'de'
+            ? 'Während der Umstellung ist ein Netzwerk- oder Systemfehler aufgetreten.'
+            : 'A network or system error occurred during migration.'),
       )
       setModalType('error')
       setIsModalOpen(true)
     } finally {
       setIsCutoverPending(false)
     }
-  }, [skillpilotId, isCutoverPending, language, onLandscapeChange, onLandscapeGoalChange, refreshLearnerData, onRefresh])
+  }, [skillpilotId, isCutoverPending, language, onLandscapeChange, onLandscapeGoalChange, refreshLearnerData, onRefresh, legacyCutoverUiState.cutoverSuccessMessage, legacyCutoverUiState.errorCopy])
 
   useEffect(() => {
     if (!isAbi26CampaignSession || !campaignContext || !rootLandscapeId) return
@@ -1942,9 +1466,9 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
         if (onNotify) {
           onNotify('error', message || t.notifications.compatibilityArchiveExportFailed)
         } else {
-          setModalTitle(language === 'de' ? 'Archivexport fehlgeschlagen' : 'Archive export failed')
+          setModalTitle(legacyCutoverUiState.errorCopy?.archiveTitle ?? (language === 'de' ? 'Archivexport fehlgeschlagen' : 'Archive export failed'))
           setModalMessage(
-            message || (
+            message || legacyCutoverUiState.errorCopy?.archiveCreateMessage || (
               language === 'de'
                 ? 'Das Kompatibilitaetsarchiv konnte nicht erstellt werden.'
                 : 'Could not create the compatibility archive.'
@@ -1985,9 +1509,10 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
       } else {
         setModalTitle(language === 'de' ? 'Archiv erstellt' : 'Archive created')
         setModalMessage(
-          language === 'de'
-            ? 'Die eingefrorene Hessen-Kompatibilitaetsansicht wurde als Archiv exportiert.'
-            : 'The frozen Hesse compatibility view was exported as an archive.',
+          legacyCutoverUiState.compatibilityArchiveSuccessMessage
+            ?? (language === 'de'
+              ? 'Das Legacy-Archiv wurde exportiert.'
+              : 'The legacy archive was exported.'),
         )
         setModalType('success')
         setIsModalOpen(true)
@@ -1997,11 +1522,12 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
       if (onNotify) {
         onNotify('error', t.notifications.compatibilityArchiveExportFailed)
       } else {
-        setModalTitle(language === 'de' ? 'Archivexport fehlgeschlagen' : 'Archive export failed')
+        setModalTitle(legacyCutoverUiState.errorCopy?.archiveTitle ?? (language === 'de' ? 'Archivexport fehlgeschlagen' : 'Archive export failed'))
         setModalMessage(
-          language === 'de'
-            ? 'Waehrend des Archivexports ist ein Netzwerk- oder Systemfehler aufgetreten.'
-            : 'A network or system error occurred during archive export.',
+          legacyCutoverUiState.errorCopy?.archiveSystemMessage
+            ?? (language === 'de'
+              ? 'Waehrend des Archivexports ist ein Netzwerk- oder Systemfehler aufgetreten.'
+              : 'A network or system error occurred during archive export.'),
         )
         setModalType('error')
         setIsModalOpen(true)
@@ -2013,6 +1539,8 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     downloadJsonPayload,
     isCompatibilityArchivePending,
     language,
+    legacyCutoverUiState.errorCopy,
+    legacyCutoverUiState.compatibilityArchiveSuccessMessage,
     onNotify,
     skillpilotId,
     t.notifications.compatibilityArchiveExportFailed,
@@ -2532,22 +2060,10 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
                 <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
                   <div>
                     <div className="text-sm font-semibold text-amber-800 dark:text-amber-300">
-                      {isBavariaLegacyRetirementOnly
-                        ? (language === 'de' ? 'Bayern-Lernstand erkannt' : 'Bavaria learner state detected')
-                        : (language === 'de' ? 'Hessen-Lernstand erkannt' : 'Hesse learner state detected')}
+                      {legacyCutoverUiState.bannerLabel}
                     </div>
                     <p className="mt-1 text-sm text-amber-900/90 dark:text-amber-100/90">
-                      {isUpperLegacyHessenSession
-                        ? (language === 'de'
-                          ? 'Diese Hessen-Lernspur bleibt als eingefrorenes Kompatibilitaetsarchiv exportierbar. Fuer die gemeinsame DE-Struktur kannst du jetzt direkt auf Gymnasium (DE) umstellen, ohne deinen bisherigen Mastery-Verlauf zu verlieren.'
-                          : 'This Hesse learner trail remains exportable as a frozen compatibility archive. You can now move directly to Gymnasium (DE) without losing your existing mastery history.')
-                        : isBavariaLegacyRetirementOnly
-                          ? (language === 'de'
-                            ? `Diese Bayern-${bavariaLegacyRetirementSubject}-Lernspur laeuft jetzt als schreibgeschuetzte Legacy-Ansicht. Fuer die gemeinsame DE-Struktur kannst du direkt auf Gymnasium (DE) mit Filter DE-BY umstellen, ohne deinen bisherigen Mastery-Verlauf zu verlieren.`
-                            : `This Bavaria ${bavariaLegacyRetirementSubjectEn ?? 'chemistry'} learner trail now runs as a read-only legacy view. You can move directly to Gymnasium (DE) with filter DE-BY without losing your existing mastery history.`)
-                        : (language === 'de'
-                          ? 'Diese Hessen-Sek-I-Lernspur laeuft jetzt als schreibgeschuetzte Legacy-Ansicht. Fuer die gemeinsame DE-Struktur kannst du direkt auf Gymnasium (DE) umstellen, ohne deinen bisherigen Mastery-Verlauf zu verlieren.'
-                          : 'This Hesse lower-secondary learner trail now runs as a read-only legacy view. You can move directly to Gymnasium (DE) without losing your existing mastery history.')}
+                      {legacyCutoverUiState.bannerDescription}
                     </p>
                   </div>
                   <div className="flex shrink-0 gap-2">
@@ -2559,8 +2075,8 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
                         className="rounded-lg border border-amber-300 bg-white px-3 py-2 text-sm font-medium text-amber-900 transition-colors hover:bg-amber-100 disabled:cursor-not-allowed disabled:opacity-60 dark:border-amber-700 dark:bg-amber-950/40 dark:text-amber-100 dark:hover:bg-amber-900/50"
                       >
                         {isCompatibilityArchivePending
-                          ? (language === 'de' ? 'Erstelle Archiv...' : 'Creating archive...')
-                          : (language === 'de' ? 'Archiv herunterladen' : 'Download archive')}
+                          ? legacyCutoverUiState.compatibilityArchivePendingLabel
+                          : legacyCutoverUiState.compatibilityArchiveActionLabel}
                       </button>
                     )}
                     <button
@@ -2579,14 +2095,8 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
                       <MoveRight size={16} />
                       <span>
                         {isCutoverPending
-                          ? (language === 'de' ? 'Stelle um...' : 'Migrating...')
-                          : (language === 'de'
-                            ? (isBavariaLegacyRetirementOnly
-                              ? 'Auf Gymnasium (DE) mit DE-BY umstellen'
-                              : 'Auf Gymnasium (DE) umstellen')
-                            : (isBavariaLegacyRetirementOnly
-                              ? 'Migrate to Gymnasium (DE) with DE-BY'
-                              : 'Migrate to Gymnasium (DE)'))}
+                          ? legacyCutoverUiState.actionPendingLabel
+                          : legacyCutoverUiState.actionLabel}
                       </span>
                     </button>
                   </div>
@@ -2598,12 +2108,10 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
                 <div className="flex flex-col gap-4">
                   <div>
                     <div className="text-sm font-semibold text-sky-800 dark:text-sky-300">
-                      {language === 'de' ? 'Normale Hessen-Route beendet' : 'Normal Hesse route retired'}
+                      {legacyCutoverUiState.retirementGateCopy?.title}
                     </div>
                     <p className="mt-2 text-sm text-sky-900/90 dark:text-sky-100/90">
-                      {language === 'de'
-                        ? 'Diese Learner-Session wird nicht mehr als normale Arbeitsansicht ausgeliefert. Bitte stelle jetzt auf Gymnasium (DE) um oder lade das eingefrorene Hessen-Archiv fuer Audit- und Nachweiszwecke herunter.'
-                        : 'This learner session is no longer served as a normal working route. Please migrate to Gymnasium (DE) now or download the frozen Hesse archive for audit and record-keeping.'}
+                      {legacyCutoverUiState.retirementGateCopy?.description}
                     </p>
                   </div>
                   <div className="flex flex-col gap-2 sm:flex-row">
@@ -2616,8 +2124,8 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
                       <MoveRight size={16} />
                       <span>
                         {isCutoverPending
-                          ? (language === 'de' ? 'Stelle um...' : 'Migrating...')
-                          : (language === 'de' ? 'Jetzt auf Gymnasium (DE) umstellen' : 'Migrate to Gymnasium (DE) now')}
+                          ? legacyCutoverUiState.retirementGateCopy?.cutoverPendingLabel
+                          : legacyCutoverUiState.retirementGateCopy?.cutoverLabel}
                       </span>
                     </button>
                     <button
@@ -2627,8 +2135,8 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
                       className="rounded-lg border border-sky-300 bg-white px-4 py-2 text-sm font-medium text-sky-900 transition-colors hover:bg-sky-100 disabled:cursor-not-allowed disabled:opacity-60 dark:border-sky-700 dark:bg-sky-950/40 dark:text-sky-100 dark:hover:bg-sky-900/50"
                     >
                       {isCompatibilityArchivePending
-                        ? (language === 'de' ? 'Erstelle Archiv...' : 'Creating archive...')
-                        : (language === 'de' ? 'Archiv herunterladen' : 'Download archive')}
+                        ? legacyCutoverUiState.retirementGateCopy?.archivePendingLabel
+                        : legacyCutoverUiState.retirementGateCopy?.archiveLabel}
                     </button>
                   </div>
                 </div>
@@ -2745,18 +2253,16 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
         initialStrategy={learnerData?.learningStrategy}
         initialAutoPilot={learnerData?.autoPilot}
         initialStrictMode={learnerData?.strictMode}
-        migrationTitle={canCutoverLegacyGymnasium ? 'Auf Gymnasium (DE) umstellen' : undefined}
-        migrationDescription={canCutoverLegacyGymnasium
-          ? (isUpperLegacyHessenSession
-            ? 'Dein bisheriger Hessen-Lernstand bleibt erhalten und wird auf die gemeinsame DE-Struktur übernommen. Mathe, Physik, Chemie, Biologie, Informatik, Geschichte, Deutsch, Politik und Wirtschaft, Englisch, Französisch, Latein, Spanisch, Italienisch, Russisch, Polnisch, Tschechisch, Griechisch, Chinesisch, Musik und Wirtschaftswissenschaften laufen danach unter einem gemeinsamen Gymnasium-Root weiter.'
-            : isBavariaLegacyRetirementOnly
-              ? `Dein bisheriger Bayern-${bavariaLegacyRetirementSubject}-Lernstand bleibt erhalten und wird auf die gemeinsame DE-Struktur übernommen. ${bavariaLegacyRetirementSubject === 'Physik' ? 'Physik und die benoetigte Mathe-Bruecke' : bavariaLegacyRetirementSubject === 'Chemie' ? 'Chemie' : bavariaLegacyRetirementSubject === 'Biologie' ? 'Biologie' : bavariaLegacyRetirementSubject === 'Chinesisch' ? 'Chinesisch' : bavariaLegacyRetirementSubject === 'Informatik' ? 'Informatik' : bavariaLegacyRetirementSubject === 'Geschichte' ? 'Geschichte' : bavariaLegacyRetirementSubject === 'Deutsch' ? 'Deutsch' : bavariaLegacyRetirementSubject === 'Englisch' ? 'Englisch' : bavariaLegacyRetirementSubject === 'Französisch' ? 'Französisch' : bavariaLegacyRetirementSubject === 'Spanisch' ? 'Spanisch' : bavariaLegacyRetirementSubject === 'Italienisch' ? 'Italienisch' : bavariaLegacyRetirementSubject === 'Russisch' ? 'Russisch' : bavariaLegacyRetirementSubject === 'Polnisch' ? 'Polnisch' : bavariaLegacyRetirementSubject === 'Tschechisch' ? 'Tschechisch' : bavariaLegacyRetirementSubject === 'Griechisch' ? 'Griechisch' : bavariaLegacyRetirementSubject === 'Wirtschaft und Recht' ? 'Wirtschaftswissenschaften' : bavariaLegacyRetirementSubject === 'Politik und Gesellschaft' ? 'Politik und Wirtschaft' : bavariaLegacyRetirementSubject === 'Latein' ? 'Latein' : bavariaLegacyRetirementSubject === 'Musik' ? 'Musik' : 'Mathematik'} laufen danach unter dem gemeinsamen Gymnasium-Root mit Filter DE-BY weiter.`
-              : 'Dein bisheriger Hessen-Sek-I-Lernstand bleibt erhalten und wird auf die gemeinsame DE-Struktur übernommen. Mathe, Physik, Chemie, Biologie und Französisch laufen danach unter einem gemeinsamen Gymnasium-Root weiter.')
+        migration={canCutoverLegacyGymnasium
+          ? {
+            title: legacyCutoverUiState.migrationTitle ?? '',
+            description: legacyCutoverUiState.migrationDescription ?? '',
+            actionLabel: legacyCutoverUiState.migrationActionLabel ?? '',
+            actionPending: isCutoverPending,
+            onAction: handleCutoverCanonicalGymnasium,
+            previewItems: legacyCutoverUiState.previewItems,
+          }
           : undefined}
-        migrationActionLabel={canCutoverLegacyGymnasium ? 'Jetzt umstellen' : undefined}
-        migrationActionPending={isCutoverPending}
-        onMigrationAction={canCutoverLegacyGymnasium ? handleCutoverCanonicalGymnasium : undefined}
-        migrationPreviewItems={canCutoverLegacyGymnasium ? legacyCutoverPreviewItems : undefined}
       />
 
       <InfoModal

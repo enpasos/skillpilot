@@ -1,5 +1,6 @@
 import type { ClassSession } from '../trainerTypes'
 import { CANONICAL_GYMNASIUM_ROOT_ID, isCompatibilityOnlyCurriculum } from './curriculumDisplay'
+import { normalizeJurisdictionCode } from './jurisdictionMetadata'
 import {
   applyDefaultGlobalStageScope,
   GLOBAL_STAGE_SCOPE_CONFIG_IDS,
@@ -137,7 +138,7 @@ const inferCourseProfileFilterIdFromClassName = (className?: string | null) => {
 const inferJurisdictionFilterId = (filterId?: string | null) => {
   const normalized = normalizeFilterId(filterId)
   if (!normalized || normalized === 'ALL') return 'ALL'
-  return /^DE-[A-Z]{2}$/.test(normalized) ? normalized : 'ALL'
+  return normalizeJurisdictionCode(normalized) ?? 'ALL'
 }
 
 const isCanonicalGymnasiumLandscapeId = (landscapeId?: string | null) =>

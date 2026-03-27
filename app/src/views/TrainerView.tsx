@@ -23,6 +23,7 @@ import { migrateTrainerClassSession } from '../utils/trainerLandscapeContext'
 import { applyGoalPlacementProjection } from '../utils/goalPlacementProjection'
 import { goalMatchesFilters, isWildcardFilter } from '../utils/goalFilters'
 import { goalMatchesGlobalStageScope } from '../utils/personalCurriculumStageScope'
+import { formatFilterDisplayLabel } from '../utils/filterLabels'
 
 const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
 const toApi = (path: string) => (apiBase ? `${apiBase}${path}` : path)
@@ -79,6 +80,7 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
   onNotify,
 }) => {
   const { language } = useLanguage()
+  const localizedLanguage = language === 'en' ? 'en' : 'de'
   const t = language === 'en' ? en.trainer : de.trainer
   const tExp = language === 'en' ? en.explorer : de.explorer
   const notifications = language === 'en' ? en.notifications : de.notifications
@@ -691,11 +693,18 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
               <div className="text-sm text-text-secondary mb-4">{c.students.length} {t.students}</div>
               <div className="mt-auto flex gap-2 text-[10px] uppercase tracking-wider text-text-secondary">
                 <span className="bg-gray-100 dark:bg-slate-800 px-2 py-1 rounded border border-border-color">{c.landscapeId}</span>
-                <span className="bg-gray-100 dark:bg-slate-800 px-2 py-1 rounded border border-border-color">
-                  {c.rootLandscapeId ? (c.personalConfig?.[c.rootLandscapeId]?.filterId ?? 'ALL') : (c.activeFilter || 'all')}
+                  <span className="bg-gray-100 dark:bg-slate-800 px-2 py-1 rounded border border-border-color">
+                  {formatFilterDisplayLabel(
+                    c.rootLandscapeId
+                      ? (c.personalConfig?.[c.rootLandscapeId]?.filterId ?? 'ALL')
+                      : ((c.activeFilter || 'all').toUpperCase() === 'ALL' ? 'ALL' : (c.activeFilter || 'all')),
+                    localizedLanguage,
+                  )}
                 </span>
                 {c.personalConfig?.[c.landscapeId]?.filterId && c.personalConfig[c.landscapeId]?.filterId !== 'ALL' && (
-                  <span className="bg-gray-100 dark:bg-slate-800 px-2 py-1 rounded border border-border-color">{c.personalConfig[c.landscapeId]?.filterId}</span>
+                  <span className="bg-gray-100 dark:bg-slate-800 px-2 py-1 rounded border border-border-color">
+                    {formatFilterDisplayLabel(c.personalConfig[c.landscapeId]!.filterId!, localizedLanguage)}
+                  </span>
                 )}
               </div>
             </div>

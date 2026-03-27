@@ -1,12 +1,15 @@
 import React, { useState } from 'react'
 import { Target, Send, Check, Square, SquareX } from 'lucide-react'
 import { useTranslation } from '../hooks/useTranslation'
+import { useLanguage } from '../contexts/LanguageContext'
 import type { UiGoal } from '../goalTypes'
 import { sortGoalsTopologically } from '../utils/goalSorter'
 import { isMastered } from '../goalUiUtils'
 import { InlineMathText } from './InlineMathText'
 import { isWildcardFilter } from '../utils/goalFilters'
 import { isCourseProfileFilterId } from '../utils/personalCurriculumStageScope'
+import { formatFilterDisplayLabel, formatJurisdictionScopedTitle, type LabelLanguage } from '../utils/filterLabels'
+import { normalizeJurisdictionCode } from '../utils/jurisdictionMetadata'
 import {
   buildVisibleChildrenMap,
   getRenderedChildIds,
@@ -30,7 +33,6 @@ const getContextualTreeTitle = (goal: UiGoal, parentGoal?: UiGoal): string => {
   return goal.title
 }
 
-const JURISDICTION_FILTER_PATTERN = /^DE-[A-Z]{2}$/u
 const COURSE_PROFILE_SUFFIX_PATTERN = /\s+\((GK|LK|GK\+LK)\)$/u
 
 const isSek2ProgramUnitTitle = (title: string) => {
@@ -42,14 +44,6 @@ const isSek2ProgramUnitTitle = (title: string) => {
 
 const isSek2ProgramUnit = (goal?: UiGoal) =>
   !!goal && isSyntheticProgramUnit(goal) && isSek2ProgramUnitTitle(goal.title)
-
-const formatJurisdictionRootTitle = (title: string, filterId?: string) => {
-  if (!filterId || !JURISDICTION_FILTER_PATTERN.test(filterId)) return title
-  if (/\(DE\)$/u.test(title)) {
-    return title.replace(/\(DE\)$/u, `(${filterId})`)
-  }
-  return `${title} (${filterId})`
-}
 
 const buildSortedChildrenMap = (
   visibleChildrenByParent: Map<string, string[]>,
@@ -148,11 +142,14 @@ interface TreeNodeProps {
   inheritedPhaseContext?: TreePhaseContext
 }
 
-const formatFilterLabel = (filterId?: string) => {
+const formatFilterLabel = (filterId: string | undefined, language: LabelLanguage) => {
   if (!filterId) return undefined
   if (filterId === 'GK') return 'GK'
   if (filterId === 'LK') return 'LK'
   if (isWildcardFilter(filterId)) return 'GK+LK'
+  if (normalizeJurisdictionCode(filterId)) {
+    return formatFilterDisplayLabel(filterId, language)
+  }
   return filterId
 }
 
@@ -186,6 +183,8 @@ const TreeNode: React.FC<TreeNodeProps> = ({
   inheritedPhaseContext,
 }) => {
   const t = useTranslation()
+  const { language } = useLanguage()
+  const localizedLanguage = language === 'en' ? 'en' : 'de'
   const goal = allGoals.get(goalId)
   const parentGoal = parentGoalId ? allGoals.get(parentGoalId) : undefined
   const learnerInitialExpandDepth = 5
@@ -242,11 +241,12 @@ const TreeNode: React.FC<TreeNodeProps> = ({
     personalFilterId && personalFilterId !== 'all'
       ? personalFilterId
       : (activeFilter && activeFilter !== 'all' ? activeFilter : undefined),
+    localizedLanguage,
   )
   const jurisdictionRootFilterId =
-    personalFilterId && JURISDICTION_FILTER_PATTERN.test(personalFilterId)
+    personalFilterId && normalizeJurisdictionCode(personalFilterId)
       ? personalFilterId
-      : activeFilter && JURISDICTION_FILTER_PATTERN.test(activeFilter)
+      : activeFilter && normalizeJurisdictionCode(activeFilter)
         ? activeFilter
         : undefined
   const hasSyntheticSek2Child = (goal.contains ?? []).some((childId) => isSek2ProgramUnit(allGoals.get(childId)))
@@ -260,12 +260,13 @@ const TreeNode: React.FC<TreeNodeProps> = ({
       && isSyntheticStructureNode
       && !COURSE_PROFILE_SUFFIX_PATTERN.test(goal.title)
       && isCourseProfileFilterId(parentLandscapeFilterId)
-      ? formatFilterLabel(parentLandscapeFilterId)
+      ? formatFilterLabel(parentLandscapeFilterId, localizedLanguage)
       : undefined
   const shouldShowFilterBadge = depth === 1 && !!effectiveFilterLabel && !shouldMoveCourseProfileToSek2
-  const contextualTitle = formatJurisdictionRootTitle(
+  const contextualTitle = formatJurisdictionScopedTitle(
     getContextualTreeTitle(goal, parentGoal),
     depth === 0 && goal.tags?.includes('root') ? jurisdictionRootFilterId : undefined,
+    localizedLanguage,
   )
   const displayTitle = shouldShowFilterBadge
     ? `${contextualTitle} (${effectiveFilterLabel})`

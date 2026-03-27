@@ -2,33 +2,20 @@ import { mkdirSync, readdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { dirname, join, relative, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import type { ApplicabilityMap, LearningGoal, LearningLandscape } from '../src/landscapeTypes'
+import { normalizeJurisdictionCode, type KnownJurisdiction } from '../src/utils/jurisdictionMetadata'
 
 const scriptDir = dirname(fileURLToPath(import.meta.url))
 const repoRoot = resolve(scriptDir, '../..')
 const curriculaDir = join(repoRoot, 'curricula')
 const canonicalDir = join(curriculaDir, 'DE', 'Gymnasium', 'canonical')
+const canonicalOverviewFile = join(canonicalDir, 'DE_DEU_S_GYM_CANONICAL_OVERVIEW.de.json')
 const sourceLandscapeRegistryFile = join(curriculaDir, 'DE', 'Gymnasium', 'provenance', 'source-landscape-registry.json')
 const canonicalGoalProvenanceRegistryFile = join(curriculaDir, 'DE', 'Gymnasium', 'provenance', 'canonical-goal-provenance-registry.json')
 const canonicalGoalApplicabilityOverrideRegistryFile = join(curriculaDir, 'DE', 'Gymnasium', 'provenance', 'canonical-goal-applicability-override-registry.json')
 const reportDir = join(repoRoot, 'tmp', 'applicability')
 
 const SUPPORTED_DIMENSION = 'jurisdiction' as const
-const SUPPORTED_JURISDICTIONS = ['DE-BW', 'DE-BY', 'DE-HE', 'DE-NI', 'DE-NW'] as const
-
-type SupportedJurisdiction = (typeof SUPPORTED_JURISDICTIONS)[number]
-type KnownJurisdiction =
-  | SupportedJurisdiction
-  | 'DE-BB'
-  | 'DE-BE'
-  | 'DE-HB'
-  | 'DE-HH'
-  | 'DE-MV'
-  | 'DE-RP'
-  | 'DE-SH'
-  | 'DE-SL'
-  | 'DE-SN'
-  | 'DE-ST'
-  | 'DE-TH'
+type SupportedJurisdiction = KnownJurisdiction
 type FindingSeverity = 'error' | 'warning'
 type FindingCode =
   | 'APV-001'
@@ -197,6 +184,30 @@ export interface ApplicabilityCompilationResult {
   }
 }
 
+function loadSupportedJurisdictions(): SupportedJurisdiction[] {
+  const json = JSON.parse(readFileSync(canonicalOverviewFile, 'utf8')) as unknown
+  if (!isLearningLandscapeJson(json)) {
+    throw new Error(`Cannot load canonical overview landscape from ${canonicalOverviewFile}.`)
+  }
+
+  const supported = new Set<SupportedJurisdiction>()
+  for (const filter of json.filters ?? []) {
+    const jurisdiction = normalizeJurisdictionCode(filter.id)
+    if (jurisdiction) {
+      supported.add(jurisdiction)
+    }
+  }
+
+  if (supported.size === 0) {
+    throw new Error(`Canonical overview ${canonicalOverviewFile} does not declare any jurisdiction filters.`)
+  }
+
+  return Array.from(supported)
+}
+
+const SUPPORTED_JURISDICTIONS = loadSupportedJurisdictions()
+const SUPPORTED_JURISDICTION_SET = new Set<SupportedJurisdiction>(SUPPORTED_JURISDICTIONS)
+
 function getAllJsonFiles(dir: string, files: string[] = []): string[] {
   const entries = readdirSync(dir, { withFileTypes: true })
     .sort((a, b) => a.name.localeCompare(b.name))
@@ -240,67 +251,14 @@ function isAtomicGoal(goal: LearningGoal): boolean {
   return !Array.isArray(goal.contains) || goal.contains.length === 0
 }
 
-function normalizeJurisdictionValue(raw: string): KnownJurisdiction | null {
-  const normalized = raw.trim().toUpperCase()
-  if (normalized === 'DE-HE' || normalized === 'HE' || normalized === 'HES' || normalized === 'DE-HES') {
-    return 'DE-HE'
-  }
-  if (normalized === 'DE-BY' || normalized === 'BY' || normalized === 'BAY' || normalized === 'DE-BAY') {
-    return 'DE-BY'
-  }
-  if (normalized === 'DE-BW' || normalized === 'BW' || normalized === 'BAW' || normalized === 'DE-BAW') {
-    return 'DE-BW'
-  }
-  if (normalized === 'DE-BB' || normalized === 'BB' || normalized === 'BRA' || normalized === 'DE-BRA') {
-    return 'DE-BB'
-  }
-  if (normalized === 'DE-BE' || normalized === 'BE' || normalized === 'BER' || normalized === 'DE-BER') {
-    return 'DE-BE'
-  }
-  if (normalized === 'DE-NW' || normalized === 'NW' || normalized === 'NRW' || normalized === 'DE-NRW') {
-    return 'DE-NW'
-  }
-  if (normalized === 'DE-NI' || normalized === 'NI' || normalized === 'NDS' || normalized === 'DE-NDS') {
-    return 'DE-NI'
-  }
-  if (normalized === 'DE-HB' || normalized === 'HB' || normalized === 'BRE' || normalized === 'DE-BRE') {
-    return 'DE-HB'
-  }
-  if (normalized === 'DE-HH' || normalized === 'HH' || normalized === 'HAM' || normalized === 'DE-HAM') {
-    return 'DE-HH'
-  }
-  if (normalized === 'DE-MV' || normalized === 'MV') {
-    return 'DE-MV'
-  }
-  if (normalized === 'DE-RP' || normalized === 'RP' || normalized === 'RLP' || normalized === 'DE-RLP') {
-    return 'DE-RP'
-  }
-  if (normalized === 'DE-SH' || normalized === 'SH' || normalized === 'SHL' || normalized === 'DE-SHL') {
-    return 'DE-SH'
-  }
-  if (normalized === 'DE-SL' || normalized === 'SL' || normalized === 'SAR' || normalized === 'DE-SAR') {
-    return 'DE-SL'
-  }
-  if (normalized === 'DE-SN' || normalized === 'SN' || normalized === 'SAX' || normalized === 'DE-SAX') {
-    return 'DE-SN'
-  }
-  if (normalized === 'DE-ST' || normalized === 'ST' || normalized === 'SAN' || normalized === 'DE-SAN') {
-    return 'DE-ST'
-  }
-  if (normalized === 'DE-TH' || normalized === 'TH' || normalized === 'THU' || normalized === 'DE-THU') {
-    return 'DE-TH'
-  }
-  return null
-}
-
 function isSupportedJurisdiction(value: KnownJurisdiction | null): value is SupportedJurisdiction {
-  return value !== null && (SUPPORTED_JURISDICTIONS as readonly string[]).includes(value)
+  return value !== null && SUPPORTED_JURISDICTION_SET.has(value)
 }
 
 function jurisdictionFromPath(file: string): KnownJurisdiction | null {
   const normalized = file.replace(/\\/g, '/').toUpperCase()
   for (const segment of normalized.split('/')) {
-    const jurisdiction = normalizeJurisdictionValue(segment)
+    const jurisdiction = normalizeJurisdictionCode(segment)
     if (jurisdiction) {
       return jurisdiction
     }
@@ -359,7 +317,7 @@ function loadSourceLandscapeRegistry(): LoadedSourceLandscapeRegistry {
 
       entriesByLandscapeId.set(landscapeId, {
         landscapeId,
-        jurisdiction: typeof entry.jurisdiction === 'string' ? normalizeJurisdictionValue(entry.jurisdiction) : null,
+        jurisdiction: typeof entry.jurisdiction === 'string' ? normalizeJurisdictionCode(entry.jurisdiction) : null,
         sourcePath,
         archivePath,
       })
@@ -584,7 +542,7 @@ function collectApplicabilityOverrideValues(
         })
         continue
       }
-      const normalized = normalizeJurisdictionValue(rawValue)
+      const normalized = normalizeJurisdictionCode(rawValue)
       if (!normalized || !isSupportedJurisdiction(normalized)) {
         findings.push({
           code: 'APV-001',
@@ -678,7 +636,7 @@ function currentApplicabilityForGoal(goal: LearningGoal): ApplicabilityMap {
   const jurisdictions = Array.isArray(current[SUPPORTED_DIMENSION]) ? current[SUPPORTED_DIMENSION] : []
   const normalized = jurisdictions
     .filter((value): value is string => typeof value === 'string')
-    .map((value) => normalizeJurisdictionValue(value))
+    .map((value) => normalizeJurisdictionCode(value))
     .filter(isSupportedJurisdiction)
   return normalizeCompiledApplicability(normalized)
 }

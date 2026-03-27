@@ -19,6 +19,7 @@ import com.skillpilot.backend.landscape.LandscapeService;
 import com.skillpilot.backend.landscape.LearningGoal;
 import com.skillpilot.backend.landscape.ResolvedGoalMapping;
 import com.skillpilot.backend.events.LearnerStateChangedEvent;
+import com.skillpilot.backend.util.BundeslandCodeNormalizer;
 import org.springframework.context.ApplicationEventPublisher;
 import com.skillpilot.backend.landscape.LearningLandscape;
 import java.util.ArrayList;
@@ -103,8 +104,9 @@ public class LearnerService {
             "C2");
 
     private static final Set<String> COURSE_FILTER_IDS = Set.of("GK", "LK");
-    private static final Set<String> STATE_FILTER_IDS = Set.of("ALL", "DE-BW", "DE-HE", "DE-BY", "DE-NI", "DE-NW");
     private static final String APPLICABILITY_DIMENSION_JURISDICTION = "jurisdiction";
+    private static final String HESSEN_JURISDICTION_FILTER_ID = "DE-HE";
+    private static final String BAVARIA_JURISDICTION_FILTER_ID = "DE-BY";
     private static final String CANONICAL_GYMNASIUM_ROOT_ID = "a0e13c56-c25f-4742-9272-3a1a603ee52e";
     private static final String CANONICAL_GYMNASIUM_MATH_ID = "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced";
     private static final String CANONICAL_GYMNASIUM_PHYSICS_ID = "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a";
@@ -1790,8 +1792,11 @@ public class LearnerService {
                 HESSEN_GYMNASIUM_UPPER_ECONOMICS_ID,
                 HESSEN_GYMNASIUM_UPPER_ECONOMICS_ID.equals(currentCurriculumId));
 
+        String rootFilterId = resolveCanonicalGymnasiumRootFilterId(
+                learner.getSelectedCurriculum(),
+                HESSEN_JURISDICTION_FILTER_ID);
         Map<String, Object> personalCurriculumConfig = new LinkedHashMap<>();
-        personalCurriculumConfig.put(CANONICAL_GYMNASIUM_ROOT_ID, createSelectionConfig(true, "DE-HE"));
+        personalCurriculumConfig.put(CANONICAL_GYMNASIUM_ROOT_ID, createSelectionConfig(true, rootFilterId));
         personalCurriculumConfig.put(CANONICAL_GYMNASIUM_MATH_ID, createSelectionConfig(mathSelected, mathCourseFilterId));
         personalCurriculumConfig.put(CANONICAL_GYMNASIUM_PHYSICS_ID,
                 createSelectionConfig(physicsSelected, physicsCourseFilterId));
@@ -1969,8 +1974,11 @@ public class LearnerService {
         boolean biologySelected = selection.biologySelected();
         boolean frenchSelected = selection.frenchSelected();
 
+        String rootFilterId = resolveCanonicalGymnasiumRootFilterId(
+                learner.getSelectedCurriculum(),
+                HESSEN_JURISDICTION_FILTER_ID);
         Map<String, Object> personalCurriculumConfig = new LinkedHashMap<>();
-        personalCurriculumConfig.put(CANONICAL_GYMNASIUM_ROOT_ID, createSelectionConfig(true, "DE-HE"));
+        personalCurriculumConfig.put(CANONICAL_GYMNASIUM_ROOT_ID, createSelectionConfig(true, rootFilterId));
         personalCurriculumConfig.put(CANONICAL_GYMNASIUM_MATH_ID, createSelectionConfig(mathSelected, null));
         personalCurriculumConfig.put(CANONICAL_GYMNASIUM_PHYSICS_ID, createSelectionConfig(physicsSelected, null));
         personalCurriculumConfig.put(CANONICAL_GYMNASIUM_CHEMISTRY_ID, createSelectionConfig(chemistrySelected, null));
@@ -2032,8 +2040,11 @@ public class LearnerService {
             mathSelected = true;
         }
 
+        String rootFilterId = resolveCanonicalGymnasiumRootFilterId(
+                learner.getSelectedCurriculum(),
+                BAVARIA_JURISDICTION_FILTER_ID);
         Map<String, Object> personalCurriculumConfig = new LinkedHashMap<>();
-        personalCurriculumConfig.put(CANONICAL_GYMNASIUM_ROOT_ID, createSelectionConfig(true, "DE-BY"));
+        personalCurriculumConfig.put(CANONICAL_GYMNASIUM_ROOT_ID, createSelectionConfig(true, rootFilterId));
         personalCurriculumConfig.put(CANONICAL_GYMNASIUM_MATH_ID, createSelectionConfig(mathSelected, null));
         personalCurriculumConfig.put(CANONICAL_GYMNASIUM_PHYSICS_ID, createSelectionConfig(physicsSelected, null));
         personalCurriculumConfig.put(CANONICAL_GYMNASIUM_CHEMISTRY_ID, createSelectionConfig(chemistrySelected, null));
@@ -2129,13 +2140,22 @@ public class LearnerService {
 
     private String buildCompatibilityOnlyRetirementMessage(String curriculumId) {
         String jurisdiction = landscapeService.resolveSourceLandscapeJurisdiction(curriculumId);
-        if ("DE-BY".equals(jurisdiction)) {
-            return "This compatibility-only curriculum is retired. Select Gymnasium (DE) and use the canonical DE-BY filter instead.";
-        }
-        if ("DE-HE".equals(jurisdiction)) {
-            return "This compatibility-only curriculum is retired. Select Gymnasium (DE) and use the canonical DE-HE filter instead.";
+        String canonicalFilterLabel = BundeslandCodeNormalizer.formatDisplayLabelEn(jurisdiction);
+        if (canonicalFilterLabel != null) {
+            return "This compatibility-only curriculum is retired. Select Gymnasium (DE) and use the canonical "
+                    + canonicalFilterLabel + " filter instead.";
         }
         return "This compatibility-only curriculum is retired. Select Gymnasium (DE) instead.";
+    }
+
+    private String resolveCanonicalGymnasiumRootFilterId(String legacyCurriculumId, String fallbackFilterId) {
+        String normalizedJurisdiction = BundeslandCodeNormalizer.normalize(
+                landscapeService.resolveSourceLandscapeJurisdiction(legacyCurriculumId));
+        if (normalizedJurisdiction != null) {
+            return normalizedJurisdiction;
+        }
+        String normalizedFallback = BundeslandCodeNormalizer.normalize(fallbackFilterId);
+        return normalizedFallback != null ? normalizedFallback : fallbackFilterId;
     }
 
     private Map<String, Map<String, Object>> parsePersonalCurriculumConfig(String personalCurriculumJson) {
@@ -3567,11 +3587,15 @@ public class LearnerService {
             }
             return matchesCourseFilter(goal, normalizedFilterId);
         }
-        if (STATE_FILTER_IDS.contains(normalizedFilterId)) {
+        if (isStateFilterId(normalizedFilterId)) {
             return matchesStateFilter(goal, landscape, normalizedFilterId, mappedCanonicalGoalIdsByState,
                     canonicalStateCoverageCache);
         }
         return matchesTagFilter(goal, normalizedFilterId);
+    }
+
+    private boolean isStateFilterId(String filterId) {
+        return BundeslandCodeNormalizer.isStateFilterId(filterId);
     }
 
     private void collectVisibleAtomicGoalIds(
@@ -3781,18 +3805,7 @@ public class LearnerService {
     }
 
     private String normalizeBundeslandCode(String region) {
-        if (region == null || region.isBlank()) {
-            return null;
-        }
-        String normalized = region.trim().toUpperCase(Locale.ROOT);
-        return switch (normalized) {
-            case "HE", "HES" -> "DE-HE";
-            case "BY", "BAY" -> "DE-BY";
-            case "BW", "BAW" -> "DE-BW";
-            case "NI", "NDS" -> "DE-NI";
-            case "NW", "NRW" -> "DE-NW";
-            default -> null;
-        };
+        return BundeslandCodeNormalizer.normalize(region);
     }
 
     private String normalizeFilterId(String filterId) {
@@ -3800,14 +3813,8 @@ public class LearnerService {
             return null;
         }
         String normalized = filterId.trim().toUpperCase(Locale.ROOT);
-        return switch (normalized) {
-            case "HE", "HES", "DE-HES" -> "DE-HE";
-            case "BY", "BAY", "DE-BAY" -> "DE-BY";
-            case "BW", "BAW", "DE-BAW" -> "DE-BW";
-            case "NI", "NDS", "DE-NDS" -> "DE-NI";
-            case "NW", "NRW", "DE-NRW" -> "DE-NW";
-            default -> normalized;
-        };
+        String normalizedBundesland = BundeslandCodeNormalizer.normalize(normalized);
+        return normalizedBundesland != null ? normalizedBundesland : normalized;
     }
 
     // Package-private for testing
