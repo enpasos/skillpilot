@@ -372,6 +372,28 @@ Resulting rollout effect:
 - the Brandenburg total mapping surface rises from `71` to `76` mappings
 - the next derivable tasks are now the Berlin `Q4` inference, tests, and normal-approximation follow-on corridor and the first Brandenburg lower-secondary follow-on corridor, while broader lower-secondary widening can stay behind those two clearly bounded moves
 
+### 2026-03-27 / Step 16 completed
+
+Executed work:
+
+- expanded the Berlin upper-secondary source snapshot from the active `Q4` distribution-and-binomial strip into the first reviewed `Q4` inference/test/normal-approximation follow-on corridor
+- activated the new Berlin `Q4` follow-on goals in:
+  - `source-goal-membership-registry.json`
+  - `source-goal-closure-registry.json`
+- mapped the Berlin `Q4` inference/test follow-on strip onto the canonical upper-secondary math spine:
+  - `Q3.3 Hypothesentests`
+  - `Q3.4 Prognose- und Konfidenzintervalle`
+  - `Normalverteilung als Approximation der Binomialverteilung (LK)`
+  - reviewed leaf bridges for sigma rules, sample-to-population interval inference, significance/test interpretation, Type I/II error language, and the first bell-shape normal-approximation idea
+- updated the Berlin upper-secondary lane notes so the next follow-on work now shifts from this `Q4` widening step toward the first tightly shared Brandenburg/Berlin lower-secondary follow-on corridor
+
+Resulting rollout effect:
+
+- Berlin now has reviewed corridor coverage on both the lower-secondary shared functions lane and six reviewed upper-secondary corridors on the active differential/stochastics/statistics spine
+- the nationwide score stays at `30.9%` because no state phase transition changed
+- the Berlin total mapping surface rises from `64` to `69` mappings
+- the next derivable task is now the first tightly shared Brandenburg/Berlin lower-secondary follow-on corridor, after which the active-lane widening order can be chosen again with the Berlin `Q4` follow-on secured
+
 ## Coverage target
 
 For this rollout, a Bundesland counts as operationally covered only when all of the following are true:
@@ -538,7 +560,7 @@ Interpretation:
 - Keep Sek I normalized to the shared `J5-J10` grid even if a source curriculum uses `G8` / `G9` labels differently.
 - Use the same tracker fields for every state, even if one state currently has only placeholder status.
 
-## Current baseline on 2026-03-21
+## Current baseline on 2026-03-27
 
 Observed reviewed states already present in canonical math applicability:
 
@@ -577,7 +599,8 @@ Program interpretation:
 - the repo is beyond pure pilot mode for math
 - but nationwide state coverage is still in an early stage
 - the first backlog wave `DE-BB` / `DE-BE` has now reached reviewed multi-corridor upper-secondary state on both active lanes
-- the Brandenburg lane now also carries its first reviewed `Q2` survey-and-critique corridor, so the next focus shifts to the Berlin `Q4` inference/test/normal-approximation widening step, then the first tightly shared lower-secondary follow-on corridors for Brandenburg and Berlin, then corridor-by-corridor widening on the active shared spine
+- the shared Brandenburg/Berlin lower-secondary lane now also carries its first tightly shared algebra/equation follow-on corridor on top of the earlier functions corridor
+- the next focus shifts to choosing the next tightly shared lower-secondary follow-on corridor for Brandenburg and Berlin, then deciding whether the following reviewed move stays on that shared Sek-I spine or returns to an active upper-secondary widening lane
 
 ## Update workflow
 
@@ -591,8 +614,8 @@ Program interpretation:
 
 Keep the tracker stable and use it to drive math work in this order:
 
-1. widen `DE-BE` from the active `Q4` distribution-and-binomial strip toward the first `Q4` inference/test/normal-approximation follow-on corridor
-2. widen `DE-BB` / `DE-BE` beyond the first lower-secondary functions corridor where the canonical overlap stays tight
-3. only then decide whether the next move is another new-state onboarding wave or more upper-secondary depth on the active BB/BE lanes
+1. widen `DE-BB` / `DE-BE` beyond the now active lower-secondary functions and algebra/equation corridors where the canonical overlap stays tight
+2. then decide whether the next move is another shared lower-secondary follow-on corridor, an active-lane upper-secondary widening step, or a new-state onboarding wave
+3. keep the tracker stable while those corridor decisions remain state-local and do not change the nationwide phase picture
 
 That makes nationwide progress visible without overloading the canonical landscape file with project-management metadata.

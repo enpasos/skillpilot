@@ -978,19 +978,6 @@ export function buildApplicabilityCompilation(): ApplicabilityCompilationResult 
         })
       }
 
-      const currentApplicability = currentApplicabilityForGoal(goal)
-      if (Object.prototype.hasOwnProperty.call(goal, 'applicability') && JSON.stringify(currentApplicability) !== JSON.stringify(compiled)) {
-        findings.push({
-          code: 'APV-203',
-          severity: 'warning',
-          landscapeId,
-          goalId: goal.id,
-          title: goal.title,
-          dimension: SUPPORTED_DIMENSION,
-          message: 'Compiled applicability differs from the currently committed applicability field.',
-        })
-      }
-
       compiledByGoalId.set(key, compiled)
       evidenceByGoalId.set(key, sortEvidence(evidence))
       visiting.delete(key)
@@ -1088,6 +1075,25 @@ export function buildApplicabilityCompilation(): ApplicabilityCompilationResult 
       }
 
       applicabilityChanged = propagateChildUnionApplicability() || applicabilityChanged
+    }
+
+    for (const goal of canonical.landscape.goals) {
+      const currentApplicability = currentApplicabilityForGoal(goal)
+      const compiledApplicability = compiledByGoalId.get(goalKey(canonical.landscape.landscapeId, goal.id)) ?? {}
+      if (
+        Object.prototype.hasOwnProperty.call(goal, 'applicability')
+        && JSON.stringify(currentApplicability) !== JSON.stringify(compiledApplicability)
+      ) {
+        findings.push({
+          code: 'APV-203',
+          severity: 'warning',
+          landscapeId: canonical.landscape.landscapeId,
+          goalId: goal.id,
+          title: goal.title,
+          dimension: SUPPORTED_DIMENSION,
+          message: 'Compiled applicability differs from the currently committed applicability field.',
+        })
+      }
     }
 
     for (const value of SUPPORTED_JURISDICTIONS) {

@@ -1,6 +1,6 @@
 # Canonical Gymnasium Mathematics Bundeslaender Status
 
-Snapshot: `2026-03-26`
+Snapshot: `2026-03-27`
 
 This file is generated from:
 
@@ -53,8 +53,8 @@ This file is generated from:
 | `DE-NW` Nordrhein-Westfalen | `P5` Broad state coverage | `85%` | `yes` | `42` | `snapshots_active` | `active` |
 | `DE-BW` Baden-Wuerttemberg | `P4` First corridor reviewed | `65%` | `yes` | `139` | `snapshots_active` | `active` |
 | `DE-NI` Niedersachsen | `P4` First corridor reviewed | `65%` | `yes` | `149` | `snapshots_active` | `active` |
-| `DE-BB` Brandenburg | `P4` First corridor reviewed | `65%` | `no` | `76` | `snapshots_active` | `next_wave` |
-| `DE-BE` Berlin | `P4` First corridor reviewed | `65%` | `no` | `64` | `snapshots_active` | `next_wave` |
+| `DE-BB` Brandenburg | `P4` First corridor reviewed | `65%` | `no` | `83` | `snapshots_active` | `next_wave` |
+| `DE-BE` Berlin | `P4` First corridor reviewed | `65%` | `no` | `76` | `snapshots_active` | `next_wave` |
 | `DE-SH` Schleswig-Holstein | `P4` First corridor reviewed | `65%` | `no` | `121` | `snapshots_active` | `next_wave` |
 | `DE-HB` Bremen | `P0` Placeholder | `0%` | `no` | `0` | `placeholder_only` | `backlog` |
 | `DE-HH` Hamburg | `P0` Placeholder | `0%` | `no` | `0` | `placeholder_only` | `backlog` |
@@ -72,8 +72,8 @@ This file is generated from:
 - `DE-NW` (`P5`, `active`): Broaden from corridor coverage toward broad state coverage.
 - `DE-BW` (`P4`, `active`): Close the remaining BW lower-secondary fine-grained residue outside the now active power, geometry, vector, differential-technique, and stochastics strips, especially the still-open algebra/equation rows in 3.2.1 / 3.3.1, then disposition the still-open non-core source sections while the Kursstufe pilot snapshot remains fully reviewed.
 - `DE-NI` (`P4`, `active`): Move the Niedersachsen widening to the next Sek-I geometry / algebra corridor unless a separate Berufliches-Gymnasium lane is opened intentionally, because the first shared general-Gymnasium upper-secondary pilot surface is now exhausted.
-- `DE-BB` (`P4`, `next_wave`): Widen the Brandenburg lower-secondary lane beyond the first functions corridor while the shared BE/BB overlap stays tight.
-- `DE-BE` (`P4`, `next_wave`): Widen the Berlin upper-secondary lane from the active Q4 distribution-and-binomial corridor toward the first Q4 inference, tests, and normal-approximation follow-on corridor.
+- `DE-BB` (`P4`, `next_wave`): Keep widening the shared Brandenburg/Berlin lower-secondary lane beyond the now active functions and algebra/equation corridors, then choose whether the next reviewed move stays on that shared Sek-I spine or returns to another active upper-secondary follow-on lane.
+- `DE-BE` (`P4`, `next_wave`): Keep widening the shared Brandenburg/Berlin lower-secondary lane beyond the now active functions and algebra/equation corridors, then choose whether the next reviewed move stays on that shared Sek-I spine or returns to another active upper-secondary follow-on lane.
 - `DE-SH` (`P4`, `next_wave`): Use the now fully refined SH Sek-I lane to keep widening reviewed canonical coverage beyond the current corridor-level bridges, next likely by revisiting remaining broad atom bridges such as `Funktionen`.
 
 ## Next steps
@@ -83,8 +83,8 @@ This file is generated from:
 - `DE-NW`: Broaden from corridor coverage toward broad state coverage.
 - `DE-BW`: Close the remaining BW lower-secondary fine-grained residue outside the now active power, geometry, vector, differential-technique, and stochastics strips, especially the still-open algebra/equation rows in 3.2.1 / 3.3.1, then disposition the still-open non-core source sections while the Kursstufe pilot snapshot remains fully reviewed.
 - `DE-NI`: Move the Niedersachsen widening to the next Sek-I geometry / algebra corridor unless a separate Berufliches-Gymnasium lane is opened intentionally, because the first shared general-Gymnasium upper-secondary pilot surface is now exhausted.
-- `DE-BB`: Widen the Brandenburg lower-secondary lane beyond the first functions corridor while the shared BE/BB overlap stays tight.
-- `DE-BE`: Widen the Berlin upper-secondary lane from the active Q4 distribution-and-binomial corridor toward the first Q4 inference, tests, and normal-approximation follow-on corridor.
+- `DE-BB`: Keep widening the shared Brandenburg/Berlin lower-secondary lane beyond the now active functions and algebra/equation corridors, then choose whether the next reviewed move stays on that shared Sek-I spine or returns to another active upper-secondary follow-on lane.
+- `DE-BE`: Keep widening the shared Brandenburg/Berlin lower-secondary lane beyond the now active functions and algebra/equation corridors, then choose whether the next reviewed move stays on that shared Sek-I spine or returns to another active upper-secondary follow-on lane.
 - `DE-SH`: Use the now fully refined SH Sek-I lane to keep widening reviewed canonical coverage beyond the current corridor-level bridges, next likely by revisiting remaining broad atom bridges such as `Funktionen`.
 - `DE-HB`: Archive the official math source bundle and create the first state mapping lane scaffold.
 - `DE-HH`: Archive the official math source bundle and create the first state mapping lane scaffold.

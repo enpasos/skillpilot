@@ -8,8 +8,8 @@
   "frameworkId": "be-go-math",
   "title": "Mathematik Oberstufe (Berlin, Pilot-Quellsnapshot)",
   "titleEn": "Mathematics Upper Secondary (Berlin, Pilot Source Snapshot)",
-  "description": "Erster archivierter Berlin-Quellsnapshot fuer die gymnasiale Oberstufe Mathematik. Der Snapshot aktiviert die Phasenanker von Einfuehrungsphase und Qualifikationsphase mit den vier Kurshalbjahren sowie den ersten reviewed Q1-Differentialrechnungskorridor, den ersten reviewed Q2-Integralrechnungskorridor, den ersten reviewed Q2-Stochastikkorridor, den ersten reviewed Q2-Daten-und-Erhebungskorridor und den ersten reviewed Q4-Verteilungs-und-Binomialkorridor.",
-  "descriptionEn": "First archived Berlin source snapshot for upper-secondary mathematics. The snapshot activates the phase anchors of the introductory and qualification phases together with the four course semesters and the first reviewed Q1 differentiation corridor as well as the first reviewed Q2 integral-calculus corridor, the first reviewed Q2 stochastics corridor, the first reviewed Q2 data-and-survey corridor, and the first reviewed Q4 distribution-and-binomial corridor.",
+  "description": "Erster archivierter Berlin-Quellsnapshot fuer die gymnasiale Oberstufe Mathematik. Der Snapshot aktiviert die Phasenanker von Einfuehrungsphase und Qualifikationsphase mit den vier Kurshalbjahren sowie den ersten reviewed Q1-Differentialrechnungskorridor, den ersten reviewed Q2-Integralrechnungskorridor, den ersten reviewed Q2-Stochastikkorridor, den ersten reviewed Q2-Daten-und-Erhebungskorridor, den ersten reviewed Q4-Verteilungs-und-Binomialkorridor und den ersten reviewed Q4-Inferenz-und-Test-Follow-on mit k-sigma-Intervallen, Hypothesentestdeutung und erster Normalapproximation.",
+  "descriptionEn": "First archived Berlin source snapshot for upper-secondary mathematics. The snapshot activates the phase anchors of the introductory and qualification phases together with the four course semesters and the first reviewed Q1 differentiation corridor as well as the first reviewed Q2 integral-calculus corridor, the first reviewed Q2 stochastics corridor, the first reviewed Q2 data-and-survey corridor, the first reviewed Q4 distribution-and-binomial corridor, and the first reviewed Q4 inference-and-test follow-on with k-sigma intervals, hypothesis-test interpretation, and an initial normal-approximation bridge.",
   "compatibilityOnly": true,
   "legacyHiddenByDefault": true,
   "goals": [
@@ -17,9 +17,9 @@
       "id": "c64aaab7-a7a3-4f4b-a92c-f87b4725c7cd",
       "title": "Mathematik Oberstufe",
       "titleEn": "Mathematics Upper Secondary",
-      "description": "Pilot-Subset der Berliner Mathematik-Oberstufe mit Fokus auf dem strukturellen Uebergang von der Einfuehrungsphase in die vier Kurshalbjahre der Qualifikationsphase, dem ersten reviewed Q1-Differentialrechnungskorridor, dem ersten reviewed Q2-Integralrechnungskorridor, dem ersten reviewed Q2-Stochastikkorridor, dem ersten reviewed Q2-Daten-und-Erhebungskorridor und dem ersten reviewed Q4-Verteilungs-und-Binomialkorridor.",
-      "descriptionEn": "Pilot subset of Berlin upper-secondary mathematics focusing on the structural transition from the introductory phase into the four course semesters of the qualification phase, the first reviewed Q1 differentiation corridor, the first reviewed Q2 integral-calculus corridor, the first reviewed Q2 stochastics corridor, the first reviewed Q2 data-and-survey corridor, and the first reviewed Q4 distribution-and-binomial corridor.",
-      "weight": 40,
+      "description": "Pilot-Subset der Berliner Mathematik-Oberstufe mit Fokus auf dem strukturellen Uebergang von der Einfuehrungsphase in die vier Kurshalbjahre der Qualifikationsphase, dem ersten reviewed Q1-Differentialrechnungskorridor, dem ersten reviewed Q2-Integralrechnungskorridor, dem ersten reviewed Q2-Stochastikkorridor, dem ersten reviewed Q2-Daten-und-Erhebungskorridor, dem ersten reviewed Q4-Verteilungs-und-Binomialkorridor und dem ersten reviewed Q4-Inferenz-und-Test-Follow-on mit k-sigma-Intervallen, Hypothesentestdeutung und erster Normalapproximation.",
+      "descriptionEn": "Pilot subset of Berlin upper-secondary mathematics focusing on the structural transition from the introductory phase into the four course semesters of the qualification phase, the first reviewed Q1 differentiation corridor, the first reviewed Q2 integral-calculus corridor, the first reviewed Q2 stochastics corridor, the first reviewed Q2 data-and-survey corridor, the first reviewed Q4 distribution-and-binomial corridor, and the first reviewed Q4 inference-and-test follow-on with k-sigma intervals, hypothesis-test interpretation, and an initial normal-approximation bridge.",
+      "weight": 45,
       "tags": [
         "Sek2",
         "Gymnasium",
@@ -29,7 +29,8 @@
         "Q2IntegralCorridor",
         "Q2StochasticsCorridor",
         "Q2DataSurveyCorridor",
-        "Q4DistributionBinomialCorridor"
+        "Q4DistributionBinomialCorridor",
+        "Q4InferenceTestNormalApproximationCorridor"
       ],
       "contains": [
         "4048058b-be4f-4afd-990e-9fa086d60c8b",
@@ -42,7 +43,8 @@
         "3c239377-1ece-4c8f-ba2b-742c5a9a33cb",
         "185c05c4-b1c9-41a4-aa30-800ada11454d",
         "fcc017f5-de76-40f3-8dbf-4b66422098c1",
-        "d18b75c2-fad4-446e-9c63-a73978d2c7dc"
+        "d18b75c2-fad4-446e-9c63-a73978d2c7dc",
+        "68dfcfd0-7de2-43c7-9db0-0acf78cc2905"
       ],
       "requires": [
         "4048058b-be4f-4afd-990e-9fa086d60c8b"
@@ -1616,6 +1618,187 @@
         "a233d92e-d278-445a-8540-9a67c6dc3fa5"
       ],
       "sourceRef": "RLP Berlin Mathematik GO Teil C, Daten und Zufall [L5], 'die Binomialverteilung zur Beschreibung stochastischer Situationen nutzen', S. 28.",
+      "dimensionTags": {
+        "framework": "be-go-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q4",
+        "area": "Stochastik"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "68dfcfd0-7de2-43c7-9db0-0acf78cc2905",
+      "title": "Erster Q4-Inferenz-und-Test-Follow-on-Korridor",
+      "titleEn": "First Q4 Inference-and-Test Follow-on Corridor",
+      "description": "Erster reviewed Berlin-Follow-on-Korridor zu k-sigma-Intervallen, Stichprobenschluss auf die Gesamtheit, Signifikanzbegriff, Hypothesentestdeutung, Fehler 1. und 2. Art sowie erster glockenfoermiger Normalapproximation in Q4.",
+      "descriptionEn": "First reviewed Berlin follow-on corridor on k-sigma intervals, inference from samples to the population, the notion of significance, hypothesis-test interpretation, Type I and Type II errors, and a first bell-shaped normal-approximation bridge in Q4.",
+      "weight": 5,
+      "tags": [
+        "Sek2",
+        "Q4",
+        "PilotSubset",
+        "Q4InferenceTestNormalApproximationCorridor"
+      ],
+      "contains": [
+        "61a4b075-43de-411e-87c0-cecb2922d40c",
+        "6e9e088b-85a8-4ef9-8c72-a2cc09366e16",
+        "83a2670a-bfea-4ec2-9fec-875b5a19c1f9",
+        "6434539b-ce4d-4096-b82d-143dcaca16b4",
+        "c6caaca1-711d-416a-babd-4b782f2f62ea"
+      ],
+      "requires": [
+        "d18b75c2-fad4-446e-9c63-a73978d2c7dc"
+      ],
+      "sourceRef": "RLP Berlin Mathematik GO Teil C, Daten und Zufall [L5], 'in einfachen Faellen aufgrund von Stichproben auf die Gesamtheit schliessen (k-sigma-Intervalle, Signifikanzbegriff)', 'Hypothesentests bei Binomialverteilungen interpretieren und die Unsicherheit (Fehler 1. und 2. Art) der Ergebnisse begruenden' sowie 'exemplarisch diskrete und stetige Zufallsgroessen unterscheiden und die Glockenform als Grundvorstellung von normalverteilten Zufallsgroessen nutzen', S. 28; Kurshalbjahre Q4, S. 31.",
+      "dimensionTags": {
+        "framework": "be-go-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q4",
+        "area": "Stochastik"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "61a4b075-43de-411e-87c0-cecb2922d40c",
+      "title": "Sigma-Regeln und k-sigma-Intervalle in Stichproben deuten",
+      "titleEn": "Interpret Sigma Rules and k-Sigma Intervals in Sampling Contexts",
+      "description": "Die lernende Person kann an Verteilungen und Histogrammen k-sigma-Intervalle deuten, typische Streuungen in Stichproben beschreiben und die Rolle der Standardabweichung qualitativ erklaeren.",
+      "descriptionEn": "The learner can interpret k-sigma intervals in distributions and histograms, describe typical variation in samples, and explain the role of the standard deviation qualitatively.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "Q4",
+        "Stochastik",
+        "SigmaRegeln"
+      ],
+      "contains": [],
+      "requires": [
+        "a233d92e-d278-445a-8540-9a67c6dc3fa5"
+      ],
+      "sourceRef": "RLP Berlin Mathematik GO Teil C, Daten und Zufall [L5], 'in einfachen Faellen aufgrund von Stichproben auf die Gesamtheit schliessen (k-sigma-Intervalle, Signifikanzbegriff)', S. 28.",
+      "dimensionTags": {
+        "framework": "be-go-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q4",
+        "area": "Stochastik"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "6e9e088b-85a8-4ef9-8c72-a2cc09366e16",
+      "title": "Aufgrund von Stichproben mit k-sigma-Intervallen auf die Gesamtheit schliessen",
+      "titleEn": "Infer Population Ranges from Samples Using k-Sigma Intervals",
+      "description": "Die lernende Person kann in einfachen Faellen aus einer Stichprobe mithilfe von k-sigma-Intervallen moegliche Werte fuer die Gesamtheit angeben und die Unsicherheit dieser Schlussweise angemessen benennen.",
+      "descriptionEn": "The learner can use k-sigma intervals in simple cases to state plausible population ranges from a sample and name the uncertainty of that inference appropriately.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "Q4",
+        "Stochastik",
+        "Stichprobe",
+        "Inference"
+      ],
+      "contains": [],
+      "requires": [
+        "61a4b075-43de-411e-87c0-cecb2922d40c",
+        "960b4ea6-5991-4b58-b55d-af2bd423796e"
+      ],
+      "sourceRef": "RLP Berlin Mathematik GO Teil C, Daten und Zufall [L5], 'in einfachen Faellen aufgrund von Stichproben auf die Gesamtheit schliessen (k-sigma-Intervalle, Signifikanzbegriff)', S. 28.",
+      "dimensionTags": {
+        "framework": "be-go-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q4",
+        "area": "Stochastik"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "83a2670a-bfea-4ec2-9fec-875b5a19c1f9",
+      "title": "Signifikanzbegriff und Hypothesentests bei Binomialverteilungen im Kontext interpretieren",
+      "titleEn": "Interpret Significance and Binomial Hypothesis Tests in Context",
+      "description": "Die lernende Person kann bei binomialverteilten Stichproben erklaeren, wann ein Ergebnis als signifikant gilt, und eine vorgegebene Testentscheidung im Kontext sachgerecht deuten.",
+      "descriptionEn": "The learner can explain when a result counts as significant in binomial sampling situations and interpret a given test decision appropriately in context.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "Q4",
+        "Stochastik",
+        "Hypothesentest",
+        "Signifikanz"
+      ],
+      "contains": [],
+      "requires": [
+        "6e9e088b-85a8-4ef9-8c72-a2cc09366e16",
+        "d4656f06-c9fb-4993-bbb8-30d199ec9b45"
+      ],
+      "sourceRef": "RLP Berlin Mathematik GO Teil C, Daten und Zufall [L5], 'in einfachen Faellen aufgrund von Stichproben auf die Gesamtheit schliessen (k-sigma-Intervalle, Signifikanzbegriff)' sowie 'Hypothesentests bei Binomialverteilungen interpretieren', S. 28.",
+      "dimensionTags": {
+        "framework": "be-go-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q4",
+        "area": "Stochastik"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "6434539b-ce4d-4096-b82d-143dcaca16b4",
+      "title": "Fehler 1. und 2. Art bei Hypothesentests im Kontext begruenden",
+      "titleEn": "Justify Type I and Type II Errors in Context",
+      "description": "Die lernende Person kann bei interpretierten Hypothesentests Fehler 1. und 2. Art unterscheiden, ihre Unsicherheit fachsprachlich begruenden und die Folgen im Kontext beschreiben.",
+      "descriptionEn": "The learner can distinguish Type I and Type II errors in interpreted hypothesis tests, justify the uncertainty precisely, and describe the consequences in context.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "Q4",
+        "Stochastik",
+        "Hypothesentest",
+        "Fehlerarten"
+      ],
+      "contains": [],
+      "requires": [
+        "83a2670a-bfea-4ec2-9fec-875b5a19c1f9"
+      ],
+      "sourceRef": "RLP Berlin Mathematik GO Teil C, Daten und Zufall [L5], 'Hypothesentests bei Binomialverteilungen interpretieren und die Unsicherheit (Fehler 1. und 2. Art) der Ergebnisse begruenden', S. 28.",
+      "dimensionTags": {
+        "framework": "be-go-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q4",
+        "area": "Stochastik"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "c6caaca1-711d-416a-babd-4b782f2f62ea",
+      "title": "Glockenform normalverteilter Zufallsgroessen als Grundvorstellung fuer Binomialapproximationen nutzen",
+      "titleEn": "Use the Bell Shape of Normal Distributions as an Intuition for Binomial Approximations",
+      "description": "Die lernende Person kann diskrete und stetige Zufallsgroessen exemplarisch unterscheiden, die Glockenform als Grundvorstellung normalverteilter Zufallsgroessen nutzen und in passenden binomialen Situationen eine anschauliche Approximation einordnen.",
+      "descriptionEn": "The learner can distinguish discrete and continuous random variables in examples, use the bell shape as a basic mental model of normal distributions, and place a visual approximation in suitable binomial situations.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "Q4",
+        "Stochastik",
+        "Normalverteilung",
+        "Approximation"
+      ],
+      "contains": [],
+      "requires": [
+        "61a4b075-43de-411e-87c0-cecb2922d40c",
+        "960b4ea6-5991-4b58-b55d-af2bd423796e"
+      ],
+      "sourceRef": "RLP Berlin Mathematik GO Teil C, Daten und Zufall [L5], 'exemplarisch diskrete und stetige Zufallsgroessen unterscheiden und die Glockenform als Grundvorstellung von normalverteilten Zufallsgroessen nutzen', S. 28.",
       "dimensionTags": {
         "framework": "be-go-math",
         "demandLevel": "AB3",

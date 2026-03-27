@@ -8,8 +8,8 @@
   "frameworkId": "be-bb-rlp-sek1-math",
   "title": "Mathematik Sekundarstufe I (Brandenburg, Pilot-Quellsnapshot)",
   "titleEn": "Mathematics Secondary Level I (Brandenburg, Pilot Source Snapshot)",
-  "description": "Erster archivierter Brandenburg-Quellsnapshot fuer die Mathematik der Sekundarstufe I. Der Snapshot aktiviert die strukturellen Gymnasium-Anker der Jahrgangsstufen 7 bis 10 sowie den ersten reviewed Funktionskorridor aus Zuordnungen und linearen Funktionen auf dem gemeinsamen Berlin/Brandenburg-Rahmenlehrplan.",
-  "descriptionEn": "First archived Brandenburg source snapshot for lower-secondary mathematics. The snapshot activates the structural Gymnasium anchors for grades 7 to 10 together with the first reviewed functions corridor on mappings and linear functions from the shared Berlin/Brandenburg curriculum.",
+  "description": "Erster archivierter Brandenburg-Quellsnapshot fuer die Mathematik der Sekundarstufe I. Der Snapshot aktiviert die strukturellen Gymnasium-Anker der Jahrgangsstufen 7 bis 10 sowie den ersten reviewed Funktionskorridor aus Zuordnungen und linearen Funktionen und den ersten reviewed Algebra-und-Gleichungskorridor auf dem gemeinsamen Berlin/Brandenburg-Rahmenlehrplan.",
+  "descriptionEn": "First archived Brandenburg source snapshot for lower-secondary mathematics. The snapshot activates the structural Gymnasium anchors for grades 7 to 10 together with the first reviewed functions corridor on mappings and linear functions and the first reviewed algebra-and-equations corridor from the shared Berlin/Brandenburg curriculum.",
   "compatibilityOnly": true,
   "legacyHiddenByDefault": true,
   "goals": [
@@ -17,15 +17,16 @@
       "id": "86d256a7-57da-4a68-93ae-a38203b15ec8",
       "title": "Mathematik Sekundarstufe I",
       "titleEn": "Mathematics Secondary Level I",
-      "description": "Pilot-Subset der Brandenburg-Lane des gemeinsamen BE/BB-Rahmenlehrplans Mathematik mit Fokus auf der Gymnasium-Fortschrittsstruktur der Jahrgangsstufen 7 bis 10 und dem ersten reviewed Funktionskorridor.",
-      "descriptionEn": "Pilot subset of the Brandenburg lane of the shared Berlin/Brandenburg mathematics curriculum with a focus on the Gymnasium progression structure for grades 7 to 10 and the first reviewed functions corridor.",
-      "weight": 11,
+      "description": "Pilot-Subset der Brandenburg-Lane des gemeinsamen BE/BB-Rahmenlehrplans Mathematik mit Fokus auf der Gymnasium-Fortschrittsstruktur der Jahrgangsstufen 7 bis 10, dem ersten reviewed Funktionskorridor und dem ersten reviewed Algebra-und-Gleichungskorridor.",
+      "descriptionEn": "Pilot subset of the Brandenburg lane of the shared Berlin/Brandenburg mathematics curriculum with a focus on the Gymnasium progression structure for grades 7 to 10, the first reviewed functions corridor, and the first reviewed algebra-and-equations corridor.",
+      "weight": 18,
       "tags": [
         "Sek1",
         "Gymnasium",
         "PilotSubset",
         "StructuralAnchors",
-        "FunctionsCorridor"
+        "FunctionsCorridor",
+        "AlgebraEquationsCorridor"
       ],
       "contains": [
         "3a57ac61-eb4f-4731-9695-9c966cec7840",
@@ -33,7 +34,8 @@
         "e4f9480f-b8da-425c-af78-6f34beddd8d1",
         "19aff4cc-fa69-454f-805c-35b0486c17c1",
         "8f5df7c9-d20c-4bc1-b6ce-bcd44188deee",
-        "5b1d5ff7-15fb-46c5-bbf1-1cea5c386926"
+        "5b1d5ff7-15fb-46c5-bbf1-1cea5c386926",
+        "29b2bf27-4536-49b7-80e9-44167809534e"
       ],
       "requires": [
         "3a57ac61-eb4f-4731-9695-9c966cec7840"
@@ -458,6 +460,306 @@
         "guidingIdeas": [],
         "phase": "J8",
         "area": "Zuordnungen und Funktionen"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "29b2bf27-4536-49b7-80e9-44167809534e",
+      "title": "Erster Algebra-und-Gleichungskorridor",
+      "titleEn": "First Algebra-and-Equations Corridor",
+      "description": "Erster reviewed Korridor der Brandenburg-Lane zu Variablen, Termen, linearen Gleichungen und linearen Gleichungssystemen auf den Niveaustufen E und F.",
+      "descriptionEn": "First reviewed corridor of the Brandenburg lane on variables, expressions, linear equations, and systems of linear equations across competency levels E and F.",
+      "weight": 7,
+      "tags": [
+        "Sek1",
+        "Gymnasium",
+        "PilotSubset",
+        "AlgebraEquationsCorridor"
+      ],
+      "contains": [
+        "19ff803d-ceaf-4265-81ce-7396d7b42830",
+        "b6d65f3c-65fc-4d43-8884-427afb8a5dfe"
+      ],
+      "requires": [
+        "6d35465d-6d48-4d13-bc0f-a82a1e7e778b"
+      ],
+      "sourceRef": "RLP BE/BB Mathematik 1-10, Themenbereich 'Gleichungen und Funktionen' - Niveaustufen D, E, F, S. 58.",
+      "dimensionTags": {
+        "framework": "be-bb-rlp-sek1-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "GLOBAL",
+        "area": "Gleichungen und Funktionen"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "19ff803d-ceaf-4265-81ce-7396d7b42830",
+      "title": "Niveaustufe E: Variablen, Terme und lineare Gleichungen",
+      "titleEn": "Competency Level E: Variables, Expressions, and Linear Equations",
+      "description": "Korridorcluster fuer die Niveaustufe E zu Variablen als Platzhalter oder Parameter, zu aequivalenten Termumformungen und zu linearen Gleichungen sowie Verhaeltnisgleichungen.",
+      "descriptionEn": "Corridor cluster for competency level E on variables as placeholders or parameters, equivalent expression transformations, and linear as well as ratio equations.",
+      "weight": 3,
+      "tags": [
+        "Sek1",
+        "Gymnasium",
+        "J7",
+        "AlgebraEquationsCorridor"
+      ],
+      "contains": [
+        "862100b0-b1d7-4b63-8954-b81cd3c9d105",
+        "5d93cef4-a2fa-4103-8c1b-625fe58869e5",
+        "01122671-ccc3-41a6-ac57-8b6ab736cbea"
+      ],
+      "requires": [
+        "6d35465d-6d48-4d13-bc0f-a82a1e7e778b"
+      ],
+      "sourceRef": "RLP BE/BB Mathematik 1-10, Themenbereich 'Gleichungen und Funktionen' - Niveaustufen D, E, F, Niveaustufe E, S. 58.",
+      "dimensionTags": {
+        "framework": "be-bb-rlp-sek1-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J7",
+        "area": "Gleichungen und Funktionen"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "862100b0-b1d7-4b63-8954-b81cd3c9d105",
+      "title": "Variablen in Termen, Gleichungen und Formeln verwenden und deuten",
+      "titleEn": "Use and Interpret Variables in Expressions, Equations, and Formulae",
+      "description": "Die Schuelerinnen und Schueler verwenden Variablen auch als Parameter in Termen, Gleichungen und Formeln, erklaeren deren Bedeutung und ordnen vorgegebenen Darstellungen passende Situationen zu.",
+      "descriptionEn": "Students use variables, including as parameters, in expressions, equations, and formulae, explain their meaning, and match suitable situations to given representations.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "Gymnasium",
+        "J7",
+        "AlgebraEquationsCorridor",
+        "Variablen"
+      ],
+      "contains": [],
+      "requires": [
+        "6d35465d-6d48-4d13-bc0f-a82a1e7e778b"
+      ],
+      "sourceRef": "RLP BE/BB Mathematik 1-10, Themenbereich 'Gleichungen und Funktionen' - Niveaustufen D, E, F, Niveaustufe E, 'Variablen (auch als Parameter) verwenden und deren Bedeutung erklaeren' sowie 'Angeben von passenden Situationen ... zu vorgegebenen Termen und Gleichungen', S. 58.",
+      "dimensionTags": {
+        "framework": "be-bb-rlp-sek1-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J7",
+        "area": "Gleichungen und Funktionen"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "5d93cef4-a2fa-4103-8c1b-625fe58869e5",
+      "title": "Terme im Bereich rationaler Zahlen aequivalent umformen",
+      "titleEn": "Transform Expressions with Rational Numbers Equivalently",
+      "description": "Die Schuelerinnen und Schueler nutzen Kommutativ- und Assoziativgesetz zum aequivalenten Umformen von Termen im Bereich rationaler Zahlen und begruenden ihre Umformungen nachvollziehbar.",
+      "descriptionEn": "Students use the commutative and associative laws to transform expressions with rational numbers equivalently and justify their transformations transparently.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "Gymnasium",
+        "J7",
+        "AlgebraEquationsCorridor",
+        "Terme"
+      ],
+      "contains": [],
+      "requires": [
+        "862100b0-b1d7-4b63-8954-b81cd3c9d105"
+      ],
+      "sourceRef": "RLP BE/BB Mathematik 1-10, Themenbereich 'Gleichungen und Funktionen' - Niveaustufen D, E, F, Niveaustufe E, 'Nutzen von Kommutativ- und Assoziativgesetz zum aequivalenten Umformen von Termen', S. 58.",
+      "dimensionTags": {
+        "framework": "be-bb-rlp-sek1-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J7",
+        "area": "Gleichungen und Funktionen"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "01122671-ccc3-41a6-ac57-8b6ab736cbea",
+      "title": "Lineare Gleichungen und Verhaeltnisgleichungen loesen, pruefen und Loesbarkeit beschreiben",
+      "titleEn": "Solve, Check, and Discuss Solvability of Linear and Ratio Equations",
+      "description": "Die Schuelerinnen und Schueler loesen lineare Gleichungen und Verhaeltnisgleichungen durch systematisches Probieren, grafisch oder durch Aequivalenzumformungen, pruefen Loesungen durch Einsetzen und beschreiben Fragen der Loesbarkeit und Loesungsvielfalt.",
+      "descriptionEn": "Students solve linear and ratio equations by systematic trial, graphically, or by equivalent transformations, check solutions by substitution, and discuss solvability and multiplicity of solutions.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "Gymnasium",
+        "J7",
+        "AlgebraEquationsCorridor",
+        "LineareGleichungen"
+      ],
+      "contains": [],
+      "requires": [
+        "5d93cef4-a2fa-4103-8c1b-625fe58869e5"
+      ],
+      "sourceRef": "RLP BE/BB Mathematik 1-10, Themenbereich 'Gleichungen und Funktionen' - Niveaustufen D, E, F, Niveaustufe E, 'Loesen linearer Gleichungen ...', 'Loesen von Verhaeltnisgleichungen', 'Pruefen einer Loesung' und 'Untersuchen von Fragen der Loesbarkeit und der Loesungsvielfalt', S. 58.",
+      "dimensionTags": {
+        "framework": "be-bb-rlp-sek1-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J7",
+        "area": "Gleichungen und Funktionen"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "b6d65f3c-65fc-4d43-8884-427afb8a5dfe",
+      "title": "Niveaustufe F: Lineare Gleichungen und lineare Gleichungssysteme",
+      "titleEn": "Competency Level F: Linear Equations and Systems of Linear Equations",
+      "description": "Korridorcluster fuer die Niveaustufe F zu Darstellungen mit zwei Variablen, zu aequivalenten Termumformungen mit Distributivgesetz, zu linearen Gleichungen und zu linearen Gleichungssystemen.",
+      "descriptionEn": "Corridor cluster for competency level F on representations with two variables, equivalent expression transformations using the distributive law, linear equations, and systems of linear equations.",
+      "weight": 4,
+      "tags": [
+        "Sek1",
+        "Gymnasium",
+        "J8",
+        "AlgebraEquationsCorridor"
+      ],
+      "contains": [
+        "f38759d4-ae1c-44e0-b5af-dfacb8ff588d",
+        "8b7078de-d761-42e4-9e6e-f0fb9d48b68e",
+        "8ef73e97-5849-48fb-a23a-0f977247d169",
+        "b7127aaf-dbba-4c4f-929e-80d52bd811d7"
+      ],
+      "requires": [
+        "e4f9480f-b8da-425c-af78-6f34beddd8d1",
+        "19ff803d-ceaf-4265-81ce-7396d7b42830"
+      ],
+      "sourceRef": "RLP BE/BB Mathematik 1-10, Themenbereich 'Gleichungen und Funktionen' - Niveaustufen D, E, F, Niveaustufe F, S. 58.",
+      "dimensionTags": {
+        "framework": "be-bb-rlp-sek1-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J8",
+        "area": "Gleichungen und Funktionen"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "f38759d4-ae1c-44e0-b5af-dfacb8ff588d",
+      "title": "Sachverhalte mit zwei Variablen durch Terme, Gleichungen und Gleichungssysteme darstellen",
+      "titleEn": "Represent Situations with Two Variables Using Expressions, Equations, and Systems",
+      "description": "Die Schuelerinnen und Schueler stellen ausser- und innermathematische Sachverhalte mit zwei Variablen durch Terme, Gleichungen und lineare Gleichungssysteme dar und ordnen vorgegebenen Darstellungen passende Situationen zu.",
+      "descriptionEn": "Students represent mathematical and real-world situations with two variables using expressions, equations, and systems of linear equations and match suitable situations to given representations.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "Gymnasium",
+        "J8",
+        "AlgebraEquationsCorridor",
+        "Variablen"
+      ],
+      "contains": [],
+      "requires": [
+        "01122671-ccc3-41a6-ac57-8b6ab736cbea"
+      ],
+      "sourceRef": "RLP BE/BB Mathematik 1-10, Themenbereich 'Gleichungen und Funktionen' - Niveaustufen D, E, F, Niveaustufe F, 'Darstellen von ... Sachverhalten durch Terme, Gleichungen und lineare Gleichungssysteme mit zwei Variablen' sowie 'Angeben von passenden Situationen ...', S. 58.",
+      "dimensionTags": {
+        "framework": "be-bb-rlp-sek1-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J8",
+        "area": "Gleichungen und Funktionen"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "8b7078de-d761-42e4-9e6e-f0fb9d48b68e",
+      "title": "Terme mit Rechengesetzen und Distributivgesetz aequivalent umformen",
+      "titleEn": "Transform Expressions Equivalently Using Arithmetic Laws and the Distributive Law",
+      "description": "Die Schuelerinnen und Schueler nutzen Rechengesetze, insbesondere das Distributivgesetz zum Ausmultiplizieren von Summen, zum aequivalenten Umformen von Termen.",
+      "descriptionEn": "Students use arithmetic laws, in particular the distributive law for expanding sums, to transform expressions equivalently.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "Gymnasium",
+        "J8",
+        "AlgebraEquationsCorridor",
+        "Terme"
+      ],
+      "contains": [],
+      "requires": [
+        "f38759d4-ae1c-44e0-b5af-dfacb8ff588d"
+      ],
+      "sourceRef": "RLP BE/BB Mathematik 1-10, Themenbereich 'Gleichungen und Funktionen' - Niveaustufen D, E, F, Niveaustufe F, 'Nutzen von Rechengesetzen zum aequivalenten Umformen von Termen (auch Distributivgesetz ...)', S. 58.",
+      "dimensionTags": {
+        "framework": "be-bb-rlp-sek1-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J8",
+        "area": "Gleichungen und Funktionen"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "8ef73e97-5849-48fb-a23a-0f977247d169",
+      "title": "Lineare Gleichungen mit Klammern und Verhaeltnisgleichungen loesen",
+      "titleEn": "Solve Linear Equations with Brackets and Ratio Equations",
+      "description": "Die Schuelerinnen und Schueler loesen lineare Gleichungen auch mit Klammern sowie Verhaeltnisgleichungen, nutzen unterschiedliche Verfahren nachvollziehbar und begruenden ihre Ergebnisse.",
+      "descriptionEn": "Students solve linear equations, including equations with brackets, as well as ratio equations, use different methods transparently, and justify their results.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "Gymnasium",
+        "J8",
+        "AlgebraEquationsCorridor",
+        "LineareGleichungen"
+      ],
+      "contains": [],
+      "requires": [
+        "8b7078de-d761-42e4-9e6e-f0fb9d48b68e"
+      ],
+      "sourceRef": "RLP BE/BB Mathematik 1-10, Themenbereich 'Gleichungen und Funktionen' - Niveaustufen D, E, F, Niveaustufe F, 'Loesen von linearen Gleichungen (auch mit Klammern) und Verhaeltnisgleichungen', S. 58.",
+      "dimensionTags": {
+        "framework": "be-bb-rlp-sek1-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J8",
+        "area": "Gleichungen und Funktionen"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "b7127aaf-dbba-4c4f-929e-80d52bd811d7",
+      "title": "Lineare Gleichungssysteme mit zwei Variablen loesen und Loesungsvielfalt untersuchen",
+      "titleEn": "Solve Systems of Linear Equations with Two Variables and Study Solution Multiplicity",
+      "description": "Die Schuelerinnen und Schueler loesen lineare Gleichungssysteme mit zwei Variablen grafisch und rechnerisch, untersuchen Fragen der Loesbarkeit und Loesungsvielfalt und formulieren dazu passende Aussagen und Begruendungen.",
+      "descriptionEn": "Students solve systems of linear equations with two variables graphically and algebraically, study solvability and multiplicity of solutions, and formulate suitable statements and justifications.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "Gymnasium",
+        "J8",
+        "AlgebraEquationsCorridor",
+        "LineareGleichungssysteme"
+      ],
+      "contains": [],
+      "requires": [
+        "8ef73e97-5849-48fb-a23a-0f977247d169"
+      ],
+      "sourceRef": "RLP BE/BB Mathematik 1-10, Themenbereich 'Gleichungen und Funktionen' - Niveaustufen D, E, F, Niveaustufe F, 'Loesen linearer Gleichungssysteme mit zwei Variablen' sowie 'Untersuchen der Loesbarkeit und der Loesungsvielfalt ...', S. 58.",
+      "dimensionTags": {
+        "framework": "be-bb-rlp-sek1-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J8",
+        "area": "Gleichungen und Funktionen"
       },
       "type": "atomic"
     }
