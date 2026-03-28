@@ -246,7 +246,7 @@ export const GoalCard: React.FC<GoalCardProps> = ({
     StatusIcon = Send
     iconColor = "text-amber-500"
   } else if (isPlanned) {
-    // Planned logic placeholder
+    iconColor = "text-amber-400"
   }
 
   return (
