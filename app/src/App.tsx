@@ -254,6 +254,12 @@ const App: React.FC = () => {
   }, [currentLandscapeEntry, landscapeEntries, selectionGoalIndexAll])
 
   useEffect(() => {
+    if (!pendingLandscapeId) return
+    if (core.selectedLandscapeId !== pendingLandscapeId) return
+    setPendingLandscapeId(null)
+  }, [core.selectedLandscapeId, pendingLandscapeId])
+
+  useEffect(() => {
     const rawPath = location.pathname || '/'
     const path = rawPath === '/' ? '/' : rawPath.replace(/\/+$/, '')
     const view = path.split('/')[1] || ''
@@ -380,6 +386,7 @@ const App: React.FC = () => {
     localStorage.removeItem('skillpilot_role')
     setHasSession(false)
     setSkillpilotId('')
+    setPendingLandscapeId(null)
     setRole(null)
     core.setSelectedLandscapeId('')
     navigate('/')
