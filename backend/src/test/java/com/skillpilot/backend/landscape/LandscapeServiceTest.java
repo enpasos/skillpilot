@@ -665,7 +665,7 @@ class LandscapeServiceTest {
                                                 "Lineare Funktionen rechnerisch untersuchen",
                                                 "Scheitelpunkte quadratischer Funktionen bestimmen",
                                                 "Wahrscheinlichkeitsverteilungen, Hypothesentests und Statistik",
-                                                "Q4.2 Problemlösen und Argumentieren",
+                                                "Problemlösen und Argumentieren",
                                                 "Übungen Prozesskompetenzen");
                 assertThat(landscape.getFilters())
                                 .extracting(LandscapeFilter::getId)
