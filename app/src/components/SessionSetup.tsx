@@ -170,7 +170,7 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
     onStart(effectiveId, selectedLandscapeId, role || undefined)
   }
 
-  // Effect to restore trainer selection when role changes
+  // Restore persisted selection when the role changes.
   React.useEffect(() => {
     if (role === 'trainer') {
       const saved = normalizeTrainerLandscapeId(localStorage.getItem('skillpilot_trainer_landscape'))
@@ -180,10 +180,11 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
         localStorage.removeItem('skillpilot_trainer_landscape')
         setSelectedLandscapeId('')
       }
+    } else if (role === 'learner') {
+      setSelectedLandscapeId(localStorage.getItem('skillpilot_learner_landscape') || '')
     } else if (role === 'explorer') {
       setSelectedLandscapeId('')
     }
-    // For learner, we wait for ID check
   }, [role])
 
   return (
