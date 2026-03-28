@@ -155,7 +155,7 @@ export const de = {
         }
     },
     trainer: {
-        dashboard: "Trainer Dashboard",
+        dashboard: "Trainer-Dashboard",
         structureMode: "Struktur",
         structureAll: "Alle",
         structureContent: "Inhalte",
@@ -220,7 +220,7 @@ export const de = {
                 },
                 {
                     title: "Vernetzen",
-                    text: "Verbinde Lehrende, Lernende und Curriculum-Owner."
+                    text: "Verbinde Lehrende, Lernende und Curriculum-Verantwortliche."
                 }
             ]
         },
@@ -349,7 +349,7 @@ export const de = {
             noCurriculum: "Ohne Curriculum",
             notFound: "Nicht gefunden",
             errors: "Fehler",
-            resultsPreview: "Dry-run-Ergebnisse",
+            resultsPreview: "Testlauf-Ergebnisse",
             resultsExecution: "Migrationsergebnisse",
             useEligibleIds: "Nur migrierbare IDs übernehmen",
             exportCsv: "CSV herunterladen",
