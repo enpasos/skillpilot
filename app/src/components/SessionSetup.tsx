@@ -387,7 +387,7 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
                       type="text"
                       value={skillpilotId}
                       onChange={(event) => {
-                        setSkillpilotId(event.target.value.trim())
+                        setSkillpilotId(event.target.value)
                         setHasCheckedId(false) // Hide dropdown while typing
                       }}
                       onBlur={() => {
