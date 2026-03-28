@@ -48,6 +48,7 @@ Current import boundary:
 Operational interpretation:
 
 - the first Baden-Wuerttemberg canonical mapping work should start from these archived source goal IDs, not directly from the PDF
+- there are now no remaining unmapped goals inside the active BW Sek-I pilot snapshot; any further lower-secondary widening means intentionally importing additional retained non-core source sections beyond the current pilot subset
 - the archived Sek-I function corridor has now already been refined once with a retained split on the former broad `JG7/8` representation atom `d45b4ec2-8604-490e-9c11-d3b8fc54251b`
 - the first BW Sek-I follow-on cut now also closes four additional lower-secondary rows:
   - the retained `JG7/8` representation-output child `5e889254-5088-4c9f-ac62-e94d95113644 -> 2bb4bb91-7929-483a-b735-44275f6b5cdc`

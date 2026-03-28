@@ -256,7 +256,10 @@ const App: React.FC = () => {
   useEffect(() => {
     if (!pendingLandscapeId) return
     if (core.selectedLandscapeId !== pendingLandscapeId) return
-    setPendingLandscapeId(null)
+    const timeoutId = window.setTimeout(() => {
+      setPendingLandscapeId((current) => (current === core.selectedLandscapeId ? null : current))
+    }, 0)
+    return () => window.clearTimeout(timeoutId)
   }, [core.selectedLandscapeId, pendingLandscapeId])
 
   useEffect(() => {

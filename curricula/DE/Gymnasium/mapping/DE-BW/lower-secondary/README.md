@@ -57,4 +57,4 @@ Expected first use:
 - canonical Gymnasium `Mathematik`
 - shared `J5-J10` anchor alignment
 - the retained BW Sek-I corridor parents are now also surfaced as learner-facing structure labels in the active composition views, and `Klassen 5/6` now appears as a broad learner-facing foundation block across numbers, measures, geometry, data, and first functional relations
-- next clean follow-on cut is the remaining BW lower-secondary row-granularity debt outside the now active power, geometry, vector, differential-technique, and stochastics strips, especially the still-open algebra/equation residue in `3.2.1 / 3.3.1`, plus the explicit disposition of the still-open non-core source sections
+- the active BW lower-secondary pilot snapshot now has no unmapped source goals left; the next clean follow-on cut is therefore no longer row-granularity debt inside this snapshot, but an intentional import of additional retained non-core source sections or another BW lane

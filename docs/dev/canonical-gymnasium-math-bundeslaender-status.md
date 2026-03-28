@@ -50,28 +50,28 @@ This file is generated from:
 | --- | --- | ---: | --- | ---: | --- | --- |
 | `DE-BY` Bayern | `P5` Broad state coverage | `85%` | `yes` | `267` | `archived_inputs` | `active` |
 | `DE-HE` Hessen | `P5` Broad state coverage | `85%` | `yes` | `484` | `snapshots_active` | `active` |
-| `DE-NW` Nordrhein-Westfalen | `P5` Broad state coverage | `85%` | `yes` | `42` | `snapshots_active` | `active` |
-| `DE-BW` Baden-Wuerttemberg | `P4` First corridor reviewed | `65%` | `yes` | `139` | `snapshots_active` | `active` |
-| `DE-NI` Niedersachsen | `P4` First corridor reviewed | `65%` | `yes` | `149` | `snapshots_active` | `active` |
+| `DE-NW` Nordrhein-Westfalen | `P5` Broad state coverage | `85%` | `yes` | `56` | `snapshots_active` | `active` |
+| `DE-BW` Baden-Wuerttemberg | `P4` First corridor reviewed | `65%` | `yes` | `165` | `snapshots_active` | `active` |
+| `DE-NI` Niedersachsen | `P4` First corridor reviewed | `65%` | `yes` | `158` | `snapshots_active` | `active` |
 | `DE-BB` Brandenburg | `P4` First corridor reviewed | `65%` | `no` | `120` | `snapshots_active` | `next_wave` |
 | `DE-BE` Berlin | `P4` First corridor reviewed | `65%` | `no` | `148` | `snapshots_active` | `next_wave` |
 | `DE-SH` Schleswig-Holstein | `P4` First corridor reviewed | `65%` | `no` | `147` | `snapshots_active` | `next_wave` |
-| `DE-HB` Bremen | `P0` Placeholder | `0%` | `no` | `0` | `placeholder_only` | `backlog` |
-| `DE-HH` Hamburg | `P0` Placeholder | `0%` | `no` | `0` | `placeholder_only` | `backlog` |
-| `DE-MV` Mecklenburg-Vorpommern | `P0` Placeholder | `0%` | `no` | `0` | `placeholder_only` | `backlog` |
-| `DE-RP` Rheinland-Pfalz | `P0` Placeholder | `0%` | `no` | `0` | `placeholder_only` | `backlog` |
-| `DE-SL` Saarland | `P0` Placeholder | `0%` | `no` | `0` | `placeholder_only` | `backlog` |
-| `DE-SN` Sachsen | `P0` Placeholder | `0%` | `no` | `0` | `placeholder_only` | `backlog` |
-| `DE-ST` Sachsen-Anhalt | `P0` Placeholder | `0%` | `no` | `0` | `placeholder_only` | `backlog` |
-| `DE-TH` Thueringen | `P0` Placeholder | `0%` | `no` | `0` | `placeholder_only` | `backlog` |
+| `DE-HB` Bremen | `P0` Placeholder | `0%` | `no` | `0` | `mapping_scaffolded` | `backlog` |
+| `DE-HH` Hamburg | `P0` Placeholder | `0%` | `no` | `0` | `mapping_scaffolded` | `backlog` |
+| `DE-MV` Mecklenburg-Vorpommern | `P0` Placeholder | `0%` | `no` | `0` | `mapping_scaffolded` | `backlog` |
+| `DE-RP` Rheinland-Pfalz | `P0` Placeholder | `0%` | `no` | `0` | `mapping_scaffolded` | `backlog` |
+| `DE-SL` Saarland | `P0` Placeholder | `0%` | `no` | `0` | `mapping_scaffolded` | `backlog` |
+| `DE-SN` Sachsen | `P0` Placeholder | `0%` | `no` | `0` | `mapping_scaffolded` | `backlog` |
+| `DE-ST` Sachsen-Anhalt | `P0` Placeholder | `0%` | `no` | `0` | `mapping_scaffolded` | `backlog` |
+| `DE-TH` Thueringen | `P0` Placeholder | `0%` | `no` | `0` | `mapping_scaffolded` | `backlog` |
 
 ## Immediate queue
 
 - `DE-BY` (`P5`, `active`): Use Bavaria as the second broad comparison lane and keep gap-closing work corridor-specific.
 - `DE-HE` (`P5`, `active`): Keep Hessen as the stable reference baseline while other states broaden.
-- `DE-NW` (`P5`, `active`): Broaden from corridor coverage toward broad state coverage.
-- `DE-BW` (`P4`, `active`): Close the remaining BW lower-secondary fine-grained residue outside the now active power, geometry, vector, differential-technique, and stochastics strips, especially the still-open algebra/equation rows in 3.2.1 / 3.3.1, then disposition the still-open non-core source sections while the Kursstufe pilot snapshot remains fully reviewed.
-- `DE-NI` (`P4`, `active`): Move the Niedersachsen widening to the next Sek-I geometry / algebra corridor unless a separate Berufliches-Gymnasium lane is opened intentionally, because the first shared general-Gymnasium upper-secondary pilot surface is now exhausted.
+- `DE-NW` (`P5`, `active`): Broaden Nordrhein-Westfalen from its now atom-anchored lower-secondary prerequisite/functions and upper-secondary analysis pilot coverage toward broader state coverage through another equally explicit NRW source corridor rather than reopening structural parent cleanup inside the current NRW snapshots.
+- `DE-BW` (`P4`, `active`): Treat the active BW lower-secondary pilot snapshot as exhausted at explicit source-residue level: there are no unmapped goals left inside the imported Sek-I snapshot, so further widening should happen only by intentionally importing additional retained non-core source sections or another BW source lane, while the reviewed Kursstufe pilot snapshot remains fully stable.
+- `DE-NI` (`P4`, `active`): Treat the currently opened Niedersachsen Sek-I right-triangle / similarity and quadratics follow-ons as exhausted at explicit source-residue level; widen Niedersachsen further only if the next lower-secondary source corridor is imported cleanly or a separate Berufliches-Gymnasium lane is opened intentionally.
 - `DE-BB` (`P4`, `next_wave`): Treat Brandenburg's current linear-representation/projection side lane as exhausted at the explicitly source-exposed residue level; only widen it further if a clearly exposed matrix / linear-model follow-on appears, otherwise return to Berlin optional-course residue or another Brandenburg strip with equally explicit source-to-canonical alignment.
 - `DE-BE` (`P4`, `next_wave`): Treat the Berlin matrix/transition, sequences/series, differential-equations, complex-numbers, logic, and reasoning/proof side lanes as now also parent-anchored on the corresponding shared canonical clusters; widen Berlin further only where the remaining analysis-deepening or numerical-mathematics residues stay equally explicit, otherwise decide whether Brandenburg's new linear-representation/projection side lane should widen next.
 - `DE-SH` (`P4`, `next_wave`): Treat the current SH upper-secondary follow-on lane as exhausted at the explicitly source-exposed residue level: after the E-geometry, Q1-geometry, E-analysis, Q1-analysis, the E- and Q1-stochastics splits, the narrowed Q2-stochastics follow-ons, the first explicit Q2-analysis parameter step, the narrow Q1 normal-distribution follow-on, the Q1 vector-product provenance step, and now also the retained Q2-analysis deepening residue being anchored on the shared deepening cluster, broaden SH further only if a genuinely new source-exposed Sek-II cell is split out; otherwise move the next wave to another jurisdiction.
@@ -80,20 +80,20 @@ This file is generated from:
 
 - `DE-BY`: Use Bavaria as the second broad comparison lane and keep gap-closing work corridor-specific.
 - `DE-HE`: Keep Hessen as the stable reference baseline while other states broaden.
-- `DE-NW`: Broaden from corridor coverage toward broad state coverage.
-- `DE-BW`: Close the remaining BW lower-secondary fine-grained residue outside the now active power, geometry, vector, differential-technique, and stochastics strips, especially the still-open algebra/equation rows in 3.2.1 / 3.3.1, then disposition the still-open non-core source sections while the Kursstufe pilot snapshot remains fully reviewed.
-- `DE-NI`: Move the Niedersachsen widening to the next Sek-I geometry / algebra corridor unless a separate Berufliches-Gymnasium lane is opened intentionally, because the first shared general-Gymnasium upper-secondary pilot surface is now exhausted.
+- `DE-NW`: Broaden Nordrhein-Westfalen from its now atom-anchored lower-secondary prerequisite/functions and upper-secondary analysis pilot coverage toward broader state coverage through another equally explicit NRW source corridor rather than reopening structural parent cleanup inside the current NRW snapshots.
+- `DE-BW`: Treat the active BW lower-secondary pilot snapshot as exhausted at explicit source-residue level: there are no unmapped goals left inside the imported Sek-I snapshot, so further widening should happen only by intentionally importing additional retained non-core source sections or another BW source lane, while the reviewed Kursstufe pilot snapshot remains fully stable.
+- `DE-NI`: Treat the currently opened Niedersachsen Sek-I right-triangle / similarity and quadratics follow-ons as exhausted at explicit source-residue level; widen Niedersachsen further only if the next lower-secondary source corridor is imported cleanly or a separate Berufliches-Gymnasium lane is opened intentionally.
 - `DE-BB`: Treat Brandenburg's current linear-representation/projection side lane as exhausted at the explicitly source-exposed residue level; only widen it further if a clearly exposed matrix / linear-model follow-on appears, otherwise return to Berlin optional-course residue or another Brandenburg strip with equally explicit source-to-canonical alignment.
 - `DE-BE`: Treat the Berlin matrix/transition, sequences/series, differential-equations, complex-numbers, logic, and reasoning/proof side lanes as now also parent-anchored on the corresponding shared canonical clusters; widen Berlin further only where the remaining analysis-deepening or numerical-mathematics residues stay equally explicit, otherwise decide whether Brandenburg's new linear-representation/projection side lane should widen next.
 - `DE-SH`: Treat the current SH upper-secondary follow-on lane as exhausted at the explicitly source-exposed residue level: after the E-geometry, Q1-geometry, E-analysis, Q1-analysis, the E- and Q1-stochastics splits, the narrowed Q2-stochastics follow-ons, the first explicit Q2-analysis parameter step, the narrow Q1 normal-distribution follow-on, the Q1 vector-product provenance step, and now also the retained Q2-analysis deepening residue being anchored on the shared deepening cluster, broaden SH further only if a genuinely new source-exposed Sek-II cell is split out; otherwise move the next wave to another jurisdiction.
-- `DE-HB`: Archive the official math source bundle and create the first state mapping lane scaffold.
-- `DE-HH`: Archive the official math source bundle and create the first state mapping lane scaffold.
-- `DE-MV`: Archive the official math source bundle and create the first state mapping lane scaffold.
-- `DE-RP`: Archive the official math source bundle and create the first state mapping lane scaffold.
-- `DE-SL`: Archive the official math source bundle and create the first state mapping lane scaffold.
-- `DE-SN`: Archive the official math source bundle and create the first state mapping lane scaffold.
-- `DE-ST`: Archive the official math source bundle and create the first state mapping lane scaffold.
-- `DE-TH`: Archive the official math source bundle and create the first state mapping lane scaffold.
+- `DE-HB`: Archive the official Bremen mathematics source bundle under `curricula/DE/Gymnasium/input/HB/`, then derive the first lower-secondary and upper-secondary source snapshots before activating shared provenance.
+- `DE-HH`: Archive the official Hamburg mathematics source bundle under `curricula/DE/Gymnasium/input/HH/`, then derive the first lower-secondary and upper-secondary source snapshots before activating shared provenance.
+- `DE-MV`: Archive the official Mecklenburg-Vorpommern mathematics source bundle under `curricula/DE/Gymnasium/input/MV/`, then derive the first lower-secondary and upper-secondary source snapshots before activating shared provenance.
+- `DE-RP`: Archive the official Rheinland-Pfalz mathematics source bundle under `curricula/DE/Gymnasium/input/RP/`, then derive the first lower-secondary and upper-secondary source snapshots before activating shared provenance.
+- `DE-SL`: Archive the official Saarland mathematics source bundle under `curricula/DE/Gymnasium/input/SL/`, then derive the first lower-secondary and upper-secondary source snapshots before activating shared provenance.
+- `DE-SN`: Archive the official Sachsen mathematics source bundle under `curricula/DE/Gymnasium/input/SN/`, then derive the first lower-secondary and upper-secondary source snapshots before activating shared provenance.
+- `DE-ST`: Archive the official Sachsen-Anhalt mathematics source bundle under `curricula/DE/Gymnasium/input/ST/`, then derive the first lower-secondary and upper-secondary source snapshots before activating shared provenance.
+- `DE-TH`: Archive the official Thueringen mathematics source bundle under `curricula/DE/Gymnasium/input/TH/`, then derive the first lower-secondary and upper-secondary source snapshots before activating shared provenance.
 
 ## Regeneration
 

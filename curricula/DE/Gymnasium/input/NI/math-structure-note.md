@@ -34,6 +34,19 @@ Current import boundary:
     - Flaechenformeln fuer Dreieck, Parallelogramm und Trapez begruenden, anwenden und interpretieren
     - Oberflaechen- und Rauminhalte von Prismen vergleichen, schaetzen, berechnen und Formeln begruenden
     - Schraegbilder und Netze vergleichen, interpretieren und zwischen Darstellungen wechseln
+  - the first explicit later-Sek-I geometry/trigonometry follow-on `Entdeckungen an rechtwinkligen Dreiecken und Aehnlichkeit`:
+    - Aehnlichkeit in Dreiecken beschreiben und fuer Streckenberechnungen nutzen
+    - Satzgruppe des Pythagoras begruenden und anwenden
+    - mit Wurzeln zur Streckenberechnung umgehen
+    - trigonometrische Beziehungen am rechtwinkligen Dreieck identifizieren und nutzen
+    - Berechnungen an allgemeinen Dreiecken mit Sinus- und Kosinussatz
+    - the Pythagoras and right-triangle trigonometry atoms now map exactly, and the similarity, root-based length-calculation, plus general-triangle calculation atoms now hang as reviewed partial bridges on the shared canonical similarity, square-root-basics, and sine/cosine-law goals
+  - the adjacent explicit later-Sek-I quadratics follow-on `Quadratische Zusammenhaenge`:
+    - quadratische Funktionen ueber Parameter, Darstellungsformen und Parabelskizzen untersuchen
+    - quadratische Gleichungen mit Graphbezug und passenden Verfahren loesen
+    - quadratische Zusammenhaenge modellieren sowie Optimierungs- und Ausgleichsprobleme bearbeiten
+    - Parabeln als Ortslinien beschreiben und erzeugen
+    - the first three atoms now hang as reviewed partial bridges on the shared canonical lower-secondary quadratics goals, and the parabola-as-locus atom now maps exactly to a dedicated canonical lower-secondary atom
 - the imported Sek-II slice now covers the first shared upper-secondary surface in the Einfuehrungsphase, the first fully imported gA learning areas in der Qualifikationsphase, and now also the first five fully imported eA learning-area follow-ons:
   - the phase-wide orientation layer for the gemeinsame Basis der Qualifikationsphase
   - `Elementare Funktionenlehre`
@@ -53,7 +66,9 @@ Operational interpretation:
 
 - the first Niedersachsen canonical mapping work should start from these source goal IDs, not directly from the PDFs
 - the active reviewed Niedersachsen bridges now cover every atomic goal inside the archived Sek-I and Sek-II pilot snapshots
-- the first reviewed Niedersachsen bridges stayed inside the imported Sek-I functions corridor and this imported Sek-II derivative-entry corridor before broader state widening starts
+- the first reviewed Niedersachsen bridges started inside the imported Sek-I functions corridor and the imported Sek-II derivative-entry corridor, and the next lower-secondary widening now also opens the explicit right-triangle / similarity follow-on with exact canonical bridges for Pythagoras and right-triangle trigonometry while broader similarity / root / general-triangle residues initially stayed visible in source
+- the right-triangle / similarity follow-on now also carries reviewed partial provenance bridges for triangle similarity, root-based square-root basics, and general-triangle sine/cosine-law work, so this opened NI strip is now closed at explicit source-residue level
+- the adjacent quadratics follow-on now also carries reviewed partial provenance bridges for quadratic-function, quadratic-equation, and quadratic-modelling work plus a dedicated exact parabola-as-locus bridge, so this opened NI strip is now closed at explicit source-residue level
 - inside the imported Sek-II surface, retained source splits are preferable to stacking repeated broad partial bridges from the same AB3 clause, including second-stage splits when a first retained child is still too broad for the next canonical follow-on
 - later Niedersachsen broadening should extend these same landscape IDs in place instead of creating replacement pilot landscapes
-- with `Daten und Zufall` (eA), the first shared general-Gymnasium upper-secondary Niedersachsen source surface imported from the active PDF is exhausted; the next clean widening should therefore move to the next lower-secondary geometry / algebra corridor unless a separate Berufliches-Gymnasium lane is opened intentionally
+- with `Daten und Zufall` (eA), the first shared general-Gymnasium upper-secondary Niedersachsen source surface imported from the active PDF is exhausted; further Niedersachsen widening should therefore now wait for the next clean lower-secondary source corridor or a separate Berufliches-Gymnasium lane instead of forcing broader partial bridges from the already closed explicit strips

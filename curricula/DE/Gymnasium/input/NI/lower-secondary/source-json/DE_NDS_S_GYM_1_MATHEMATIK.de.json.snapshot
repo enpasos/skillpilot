@@ -8,8 +8,8 @@
   "frameworkId": "ni-kc-gym-si-math",
   "title": "Mathematik Sekundarstufe I (Niedersachsen, Pilot-Quellsnapshot)",
   "titleEn": "Mathematics Secondary Level I (Lower Saxony, Pilot Source Snapshot)",
-  "description": "Erster archivierter Niedersachsen-Quellsnapshot fuer den Mathematik-Pilotkorridor der Sekundarstufe I. Der Snapshot umfasst den ersten gemeinsamen Funktionszug aus den Lernbereichen zu proportionalen, antiproportionalen und linearen Zusammenhaengen sowie die ersten vollstaendig importierten Follow-ons aus den Lernbereichen zu elementaren Termumformungen und zu Laengen, Flaechen- und Rauminhalten des Kerncurriculums Gymnasium Sek I.",
-  "descriptionEn": "First archived Lower Saxony source snapshot for the lower-secondary mathematics pilot corridor. The snapshot covers the first shared functions corridor from the curriculum learning areas on proportional, inversely proportional, and linear relations plus the first fully imported follow-ons from the learning areas on elementary algebraic transformations and on lengths, areas, and spatial measures.",
+  "description": "Erster archivierter Niedersachsen-Quellsnapshot fuer den Mathematik-Pilotkorridor der Sekundarstufe I. Der Snapshot umfasst den ersten gemeinsamen Funktionszug aus den Lernbereichen zu proportionalen, antiproportionalen und linearen Zusammenhaengen, die ersten vollstaendig importierten Follow-ons aus den Lernbereichen zu elementaren Termumformungen und zu Laengen, Flaechen- und Rauminhalten sowie die ersten expliziten spaeteren Geometrie-/Trigonometrie- und Quadratik-Follow-ons zu rechtwinkligen Dreiecken, Aehnlichkeit und quadratischen Zusammenhaengen aus dem Kerncurriculum Gymnasium Sek I.",
+  "descriptionEn": "First archived Lower Saxony source snapshot for the lower-secondary mathematics pilot corridor. The snapshot covers the first shared functions corridor from the curriculum learning areas on proportional, inversely proportional, and linear relations, the first fully imported follow-ons from the learning areas on elementary algebraic transformations and on lengths, areas, and spatial measures, and the first explicit later geometry/trigonometry and quadratics follow-ons on right triangles, similarity, and quadratic relations from the lower-secondary Gymnasium curriculum.",
   "compatibilityOnly": true,
   "legacyHiddenByDefault": true,
   "goals": [
@@ -17,26 +17,29 @@
       "id": "9856310a-23c9-4237-8243-0e19c6ede3d1",
       "title": "Mathematik Sekundarstufe I",
       "titleEn": "Mathematics Secondary Level I",
-      "description": "Pilot-Subset der niedersaechsischen Mathematik-Kompetenzen der Sekundarstufe I mit Fokus auf dem ersten gemeinsamen Funktionskorridor, seinem arithmetischen Praerequisite-Strip und den ersten vollstaendig importierten Follow-ons zu elementaren Termumformungen sowie zu Laengen, Flaechen- und Rauminhalten.",
-      "descriptionEn": "Pilot subset of Lower Saxony lower-secondary mathematics competencies with a focus on the first shared functions corridor, its arithmetic prerequisite strip, and the first fully imported follow-ons on elementary algebraic transformations as well as on lengths, areas, and spatial measures.",
-      "weight": 20,
+      "description": "Pilot-Subset der niedersaechsischen Mathematik-Kompetenzen der Sekundarstufe I mit Fokus auf dem ersten gemeinsamen Funktionskorridor, seinem arithmetischen Praerequisite-Strip, den ersten vollstaendig importierten Follow-ons zu elementaren Termumformungen sowie zu Laengen, Flaechen- und Rauminhalten und den ersten expliziten spaeteren Geometrie-/Trigonometrie- und Quadratik-Follow-ons zu rechtwinkligen Dreiecken, Aehnlichkeit und quadratischen Zusammenhaengen.",
+      "descriptionEn": "Pilot subset of Lower Saxony lower-secondary mathematics competencies with a focus on the first shared functions corridor, its arithmetic prerequisite strip, the first fully imported follow-ons on elementary algebraic transformations as well as on lengths, areas, and spatial measures, and the first explicit later geometry/trigonometry and quadratics follow-ons on right triangles, similarity, and quadratic relations.",
+      "weight": 29,
       "tags": [
         "Sek1",
         "PilotSubset",
         "Funktionen",
-        "Algebra"
+        "Algebra",
+        "Geometry"
       ],
       "contains": [
         "e1942eb6-f1a5-45a7-b160-c7be0b5e30fa",
         "d3c99e6b-0e90-4b30-976e-0c037032e349",
         "cd5e0341-1b6a-4e75-aadc-a11c1272d1e4",
         "7d5a10af-ac76-4ebc-8d34-fb5358dfb3f6",
-        "9dcde142-1bae-417b-b08c-999ce0a3e963"
+        "9dcde142-1bae-417b-b08c-999ce0a3e963",
+        "1c0b4160-1269-4740-8f61-7130d0601618",
+        "1bf645cf-7244-4182-8f0e-4d5603163c4f"
       ],
       "requires": [
         "e1942eb6-f1a5-45a7-b160-c7be0b5e30fa"
       ],
-      "sourceRef": "KC Niedersachsen Mathematik Gymnasium Sek I, Kap. 2.1-2.2 sowie Lernbereiche auf S. 45, 47, 48 und 50.",
+      "sourceRef": "KC Niedersachsen Mathematik Gymnasium Sek I, Kap. 2.1-2.2 sowie Lernbereiche auf S. 45, 47, 48, 50 und 53-54.",
       "dimensionTags": {
         "framework": "ni-kc-gym-si-math",
         "demandLevel": "AB1",
@@ -778,6 +781,327 @@
         "processCompetencies": [],
         "guidingIdeas": [],
         "phase": "JG7_8",
+        "area": "Raum und Form"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "1c0b4160-1269-4740-8f61-7130d0601618",
+      "title": "Entdeckungen an rechtwinkligen Dreiecken und Aehnlichkeit",
+      "titleEn": "Explorations with Right Triangles and Similarity",
+      "description": "Lernbereich-Cluster fuer den ersten expliziten niedersaechsischen Geometrie-/Trigonometrie-Follow-on zu Aehnlichkeit, Satz des Pythagoras, Wurzeln, rechtwinkliger Dreieckstrigonometrie und Berechnungen an allgemeinen Dreiecken.",
+      "descriptionEn": "Learning-area cluster for the first explicit Lower Saxony geometry/trigonometry follow-on on similarity, the Pythagorean theorem, roots, right-triangle trigonometry, and calculations in general triangles.",
+      "weight": 5,
+      "tags": [
+        "Sek1",
+        "Jg9_10",
+        "Geometry",
+        "Trigonometry"
+      ],
+      "contains": [
+        "3e8f4903-88f5-47f2-a4a3-4de43bc61f56",
+        "90e973e4-0641-4a51-86dd-93aeaa351fc5",
+        "c14c321b-16fa-450b-ba7c-f5ec36f39e46",
+        "b5a7205b-0670-4511-8ba7-fd480da448be",
+        "3ef0f5d5-6212-439c-9bdf-e9800d51c09b"
+      ],
+      "requires": [
+        "cd5e0341-1b6a-4e75-aadc-a11c1272d1e4"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Gymnasium Sek I, Lernbereich 'Entdeckungen an rechtwinkligen Dreiecken und Aehnlichkeit', S. 53.",
+      "dimensionTags": {
+        "framework": "ni-kc-gym-si-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG9_10",
+        "area": "Raum und Form"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "3e8f4903-88f5-47f2-a4a3-4de43bc61f56",
+      "title": "Aehnlichkeit in Dreiecken beschreiben und fuer Streckenberechnungen nutzen",
+      "titleEn": "Describe Similarity in Triangles and Use It for Length Calculations",
+      "description": "Die Schuelerinnen und Schueler identifizieren zueinander aehnliche Dreiecke, nutzen Aehnlichkeitssaetze fuer Dreiecke und berechnen Streckenlaengen in passenden geometrischen Situationen.",
+      "descriptionEn": "Students identify similar triangles, use similarity theorems for triangles, and calculate lengths in suitable geometric situations.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "Jg9_10",
+        "Geometry",
+        "Aehnlichkeit"
+      ],
+      "contains": [],
+      "requires": [
+        "cd5e0341-1b6a-4e75-aadc-a11c1272d1e4"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Gymnasium Sek I, Lernbereich 'Entdeckungen an rechtwinkligen Dreiecken und Aehnlichkeit', Kern, 'Aehnlichkeit beschreiben und nutzen', S. 53.",
+      "dimensionTags": {
+        "framework": "ni-kc-gym-si-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG9_10",
+        "area": "Raum und Form"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "90e973e4-0641-4a51-86dd-93aeaa351fc5",
+      "title": "Satzgruppe des Pythagoras begruenden und anwenden",
+      "titleEn": "Justify and Apply the Pythagorean Theorem",
+      "description": "Die Schuelerinnen und Schueler begruenden und nutzen die Satzgruppe des Pythagoras, um unbekannte Streckenlaengen in rechtwinkligen Dreiecken zu bestimmen.",
+      "descriptionEn": "Students justify and use the Pythagorean theorem to determine unknown lengths in right triangles.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "Jg9_10",
+        "Geometry",
+        "Pythagoras"
+      ],
+      "contains": [],
+      "requires": [
+        "3e8f4903-88f5-47f2-a4a3-4de43bc61f56"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Gymnasium Sek I, Lernbereich 'Entdeckungen an rechtwinkligen Dreiecken und Aehnlichkeit', Kern, 'Satzgruppe des Pythagoras begruenden und anwenden', S. 53.",
+      "dimensionTags": {
+        "framework": "ni-kc-gym-si-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG9_10",
+        "area": "Raum und Form"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "c14c321b-16fa-450b-ba7c-f5ec36f39e46",
+      "title": "Mit Wurzeln zur Streckenberechnung umgehen",
+      "titleEn": "Use Roots for Length Calculations",
+      "description": "Die Schuelerinnen und Schueler nutzen das Wurzelziehen als Umkehroperation des Quadrierens, begruenden einfache Wurzelgesetze exemplarisch und verwenden Wurzeln bei Streckenberechnungen.",
+      "descriptionEn": "Students use extracting roots as the inverse of squaring, justify simple root laws exemplarily, and apply roots in length calculations.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "Jg9_10",
+        "Algebra",
+        "Wurzeln"
+      ],
+      "contains": [],
+      "requires": [
+        "90e973e4-0641-4a51-86dd-93aeaa351fc5"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Gymnasium Sek I, Lernbereich 'Entdeckungen an rechtwinkligen Dreiecken und Aehnlichkeit', Kern, 'mit Wurzeln umgehen', S. 53.",
+      "dimensionTags": {
+        "framework": "ni-kc-gym-si-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG9_10",
+        "area": "Zahlen und Operationen"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "b5a7205b-0670-4511-8ba7-fd480da448be",
+      "title": "Trigonometrische Beziehungen am rechtwinkligen Dreieck identifizieren und nutzen",
+      "titleEn": "Identify and Use Trigonometric Relations in Right Triangles",
+      "description": "Die Schuelerinnen und Schueler identifizieren Sinus, Kosinus und Tangens am rechtwinkligen Dreieck, bestimmen fehlende Seiten oder Winkel und deuten Tangens als Steigungsmass.",
+      "descriptionEn": "Students identify sine, cosine, and tangent in right triangles, determine missing sides or angles, and interpret tangent as a measure of slope.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "Jg9_10",
+        "Geometry",
+        "Trigonometrie"
+      ],
+      "contains": [],
+      "requires": [
+        "90e973e4-0641-4a51-86dd-93aeaa351fc5",
+        "c14c321b-16fa-450b-ba7c-f5ec36f39e46"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Gymnasium Sek I, Lernbereich 'Entdeckungen an rechtwinkligen Dreiecken und Aehnlichkeit', Kern, 'trigonometrische Beziehungen identifizieren und nutzen', S. 53.",
+      "dimensionTags": {
+        "framework": "ni-kc-gym-si-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG9_10",
+        "area": "Raum und Form"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "3ef0f5d5-6212-439c-9bdf-e9800d51c09b",
+      "title": "Berechnungen an allgemeinen Dreiecken mit Sinus- und Kosinussatz nutzen",
+      "titleEn": "Use the Sine and Cosine Laws for Calculations in General Triangles",
+      "description": "Die Schuelerinnen und Schueler nutzen Sinussatz und Kosinussatz, um Seiten und Winkel in allgemeinen Dreiecken zu berechnen und Ergebnisse in geometrischen Kontexten zu deuten.",
+      "descriptionEn": "Students use the sine and cosine laws to calculate sides and angles in general triangles and interpret results in geometric contexts.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "Jg9_10",
+        "Geometry",
+        "Trigonometrie"
+      ],
+      "contains": [],
+      "requires": [
+        "b5a7205b-0670-4511-8ba7-fd480da448be"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Gymnasium Sek I, Lernbereich 'Entdeckungen an rechtwinkligen Dreiecken und Aehnlichkeit', Kern, 'Berechnungen an allgemeinen Dreiecken', S. 53.",
+      "dimensionTags": {
+        "framework": "ni-kc-gym-si-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG9_10",
+        "area": "Raum und Form"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "1bf645cf-7244-4182-8f0e-4d5603163c4f",
+      "title": "Quadratische Zusammenhaenge",
+      "titleEn": "Quadratic Relations",
+      "description": "Lernbereich-Cluster fuer den ersten expliziten niedersaechsischen Quadratik-Follow-on zu Parabeln, quadratischen Gleichungen, quadratischen Modellierungen und der Parabel als Ortslinie.",
+      "descriptionEn": "Learning-area cluster for the first explicit Lower Saxony quadratics follow-on on parabolas, quadratic equations, quadratic modelling, and the parabola as a locus.",
+      "weight": 4,
+      "tags": [
+        "Sek1",
+        "Jg9_10",
+        "Analysis",
+        "Quadratik"
+      ],
+      "contains": [
+        "9d07bd0c-f19c-4c69-a480-c7b2a9a28779",
+        "ccb0bdf5-58e5-42d6-8dcd-2f71799ff9b8",
+        "74f3c191-d350-4080-9610-93c6fbbdd7d6",
+        "04c1b6bf-bb7c-4318-a982-41814693081d"
+      ],
+      "requires": [
+        "9dcde142-1bae-417b-b08c-999ce0a3e963",
+        "7d5a10af-ac76-4ebc-8d34-fb5358dfb3f6"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Gymnasium Sek I, Lernbereich 'Quadratische Zusammenhaenge', S. 54.",
+      "dimensionTags": {
+        "framework": "ni-kc-gym-si-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG9_10",
+        "area": "Funktionaler Zusammenhang"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "9d07bd0c-f19c-4c69-a480-c7b2a9a28779",
+      "title": "Quadratische Funktionen ueber Parameter, Darstellungsformen und Parabelskizzen untersuchen",
+      "titleEn": "Investigate Quadratic Functions via Parameters, Representations, and Parabola Sketches",
+      "description": "Die Schuelerinnen und Schueler untersuchen den Zusammenhang von Funktionsgleichung und Graph quadratischer Funktionen in allgemeiner, faktorisierter und Scheitelpunktform, wechseln zwischen den Formen und skizzieren Parabeln in einfachen Faellen hilfsmittelfrei.",
+      "descriptionEn": "Students investigate the relationship between equation and graph of quadratic functions in standard, factorized, and vertex form, switch between the forms, and sketch parabolas in simple cases without tools.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "Jg9_10",
+        "Analysis",
+        "Quadratik"
+      ],
+      "contains": [],
+      "requires": [
+        "7ad51e84-1b5b-41e9-a0ec-854c11b45fee"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Gymnasium Sek I, Lernbereich 'Quadratische Zusammenhaenge', Kern, 'quadratische Funktionen untersuchen - Parametervariation', S. 54.",
+      "dimensionTags": {
+        "framework": "ni-kc-gym-si-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG9_10",
+        "area": "Funktionaler Zusammenhang"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "ccb0bdf5-58e5-42d6-8dcd-2f71799ff9b8",
+      "title": "Quadratische Gleichungen mit Graphbezug und passenden Verfahren loesen",
+      "titleEn": "Solve Quadratic Equations with Graph-Based Reasoning and Appropriate Methods",
+      "description": "Die Schuelerinnen und Schueler verknuepfen Loesungen quadratischer Gleichungen mit Graphmerkmalen und Termstruktur und loesen typische quadratische Gleichungen, in einfachen Faellen auch hilfsmittelfrei.",
+      "descriptionEn": "Students connect solutions of quadratic equations with graph features and term structure and solve typical quadratic equations, in simple cases also without tools.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "Jg9_10",
+        "Analysis",
+        "QuadratischeGleichungen"
+      ],
+      "contains": [],
+      "requires": [
+        "9d07bd0c-f19c-4c69-a480-c7b2a9a28779"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Gymnasium Sek I, Lernbereich 'Quadratische Zusammenhaenge', Kern, 'quadratische Gleichungen', S. 54.",
+      "dimensionTags": {
+        "framework": "ni-kc-gym-si-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG9_10",
+        "area": "Funktionaler Zusammenhang"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "74f3c191-d350-4080-9610-93c6fbbdd7d6",
+      "title": "Quadratische Zusammenhaenge modellieren sowie Optimierungs- und Ausgleichsprobleme bearbeiten",
+      "titleEn": "Model Quadratic Relations and Work on Optimization and Regression Problems",
+      "description": "Die Schuelerinnen und Schueler nutzen quadratische Funktionen zur Modellierung in Sachkontexten, bearbeiten Optimierungsprobleme und Nullstellensuchen und bestimmen Ausgleichsparabeln mithilfe von Parametervariation oder des Regressionsmoduls.",
+      "descriptionEn": "Students use quadratic functions for modelling in real-world contexts, work on optimization and root-finding problems, and determine regression parabolas using parameter variation or the regression module.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "Jg9_10",
+        "Analysis",
+        "Modellierung"
+      ],
+      "contains": [],
+      "requires": [
+        "ccb0bdf5-58e5-42d6-8dcd-2f71799ff9b8"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Gymnasium Sek I, Lernbereich 'Quadratische Zusammenhaenge', Kern, 'quadratische Zusammenhaenge modellieren', S. 54.",
+      "dimensionTags": {
+        "framework": "ni-kc-gym-si-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG9_10",
+        "area": "Funktionaler Zusammenhang"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "04c1b6bf-bb7c-4318-a982-41814693081d",
+      "title": "Parabeln als Ortslinien beschreiben und erzeugen",
+      "titleEn": "Describe and Construct Parabolas as Loci",
+      "description": "Die Schuelerinnen und Schueler beschreiben und erzeugen Parabeln als Ort aller Punkte, die zu einem Punkt und zu einer Geraden gleichen Abstand haben.",
+      "descriptionEn": "Students describe and construct parabolas as the locus of all points that have equal distance from a point and a line.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "Jg9_10",
+        "Geometry",
+        "Ortslinien"
+      ],
+      "contains": [],
+      "requires": [
+        "9d07bd0c-f19c-4c69-a480-c7b2a9a28779"
+      ],
+      "sourceRef": "KC Niedersachsen Mathematik Gymnasium Sek I, Lernbereich 'Quadratische Zusammenhaenge', Kern, 'Parabel als Ort aller Punkte, die zu einem Punkt und zu einer Geraden gleichen Abstand haben', S. 54.",
+      "dimensionTags": {
+        "framework": "ni-kc-gym-si-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG9_10",
         "area": "Raum und Form"
       },
       "type": "atomic"
