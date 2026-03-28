@@ -78,7 +78,7 @@ export const getRequiresFlowMapCopy = (language: LabelLanguage): RequiresFlowMap
         nextStepsColumnTitle: 'Nächste Schritte',
         fullFlowTitle: 'Gesamtflow der Vorbedingungen',
         fullFlowSubtitle: 'Alle direkten, vererbten und transitiven Vorbedingungen des aktuellen Ziels als ein Flow.',
-        fullFlowSummary: '{{nodes}} Vorbedingungen · {{edges}} Verknuepfungen',
+        fullFlowSummary: '{{nodes}} Vorbedingungen · {{edges}} Verknüpfungen',
         fullFlowSummaryOpen: '{{count}} Vorbedingungen noch offen',
         fullFlowSummaryDone: 'alle Vorbedingungen erfüllt',
         fullFlowNoPrereqs: 'Keine Vorbedingungen in diesem Flow',
