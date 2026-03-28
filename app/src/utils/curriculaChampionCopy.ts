@@ -32,7 +32,7 @@ export const getCurriculaChampionCopy = (language: LabelLanguage): CurriculaCham
     : {
         achievementsTooltip: 'In der Rolle Lernender Lernziele nachvollzogen',
         issuesTooltip: 'GitHub Issues mit Hinweisen auf Fehler/Schwaechen erstellt',
-        pullRequestsTooltip: 'GitHub Pull-Requests mit Loesungsvorschlaegen erstellt',
+  pullRequestsTooltip: 'GitHub Pull-Requests mit Lösungsvorschlägen erstellt',
         activeChampionshipsTitle: 'Aktive Championships',
         stopChampionship: 'Championship beenden',
         connectWithGithub: 'Mit GitHub verbinden',

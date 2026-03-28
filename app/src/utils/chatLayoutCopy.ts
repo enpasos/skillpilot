@@ -28,6 +28,6 @@ export const getChatLayoutCopy = (language: LabelLanguage): ChatLayoutCopy => (
         sampleQuestion: 'Wie baue ich eine App wie diese?',
         sampleAnswer: 'Indem du Tailwind und semantische Farben nutzt!',
         messagePlaceholder: 'Nachricht senden...',
-        footer: 'Kostenlose Forschungsvorschau. ChatGPT-aehnlicher Prototyp.',
+  footer: 'Kostenlose Forschungsvorschau. ChatGPT-ähnlicher Prototyp.',
       }
 )

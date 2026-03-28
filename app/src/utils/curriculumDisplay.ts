@@ -106,7 +106,7 @@ export const LEGACY_BAVARIA_GYMNASIUM_IDS = new Set([
 
 const BAVARIA_LEGACY_SUBJECT_METADATA: Record<string, { en: string; canonicalDe: string }> = {
   Mathematik: { en: 'mathematics', canonicalDe: 'Mathematik' },
-  Physik: { en: 'physics', canonicalDe: 'Physik und die benoetigte Mathe-Bruecke' },
+  Physik: { en: 'physics', canonicalDe: 'Physik und die benötigte Mathe-Brücke' },
   Chemie: { en: 'chemistry', canonicalDe: 'Chemie' },
   Biologie: { en: 'biology', canonicalDe: 'Biologie' },
   Chinesisch: { en: 'chinese', canonicalDe: 'Chinesisch' },
