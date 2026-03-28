@@ -30,6 +30,7 @@ import java.util.Collections;
 import java.util.Deque;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
@@ -357,10 +358,13 @@ public class LearnerFrontierInvariantTest {
                         LearningGoal goal = filteredGoals.get(id);
                         return goal != null && (goal.getContains() == null || goal.getContains().isEmpty());
                     })
-                    .limit(20)
                     .toList();
             if (!atomic.isEmpty()) {
-                return new LinkedHashSet<>(atomic);
+                List<String> compactedAtomic = compactAtomicFrontierAcrossPlannedScopes(atomic, plannedIds, structuralGoals);
+                if (!compactedAtomic.isEmpty()) {
+                    return new LinkedHashSet<>(compactedAtomic);
+                }
+                return new LinkedHashSet<>(atomic.subList(0, Math.min(atomic.size(), 20)));
             }
 
             List<String> clusters = frontier.stream()
@@ -378,6 +382,288 @@ public class LearnerFrontierInvariantTest {
         }
 
         return new LinkedHashSet<>(frontier);
+    }
+
+    private static List<String> compactAtomicFrontierAcrossPlannedScopes(
+            List<String> atomicFrontier,
+            List<String> plannedIds,
+            Map<String, LearningGoal> structuralGoals) {
+        if (atomicFrontier == null || atomicFrontier.isEmpty()) {
+            return Collections.emptyList();
+        }
+        if (plannedIds == null || plannedIds.size() <= 1 || structuralGoals == null || structuralGoals.isEmpty()) {
+            return Collections.emptyList();
+        }
+
+        List<Deque<String>> buckets = new ArrayList<>();
+        for (String plannedId : plannedIds) {
+            if (plannedId == null || plannedId.isBlank() || !structuralGoals.containsKey(plannedId)) {
+                continue;
+            }
+            Deque<String> bucket = buildSeededAtomicBucketForPlannedId(plannedId, atomicFrontier, structuralGoals);
+            if (!bucket.isEmpty()) {
+                buckets.add(bucket);
+            }
+        }
+
+        if (buckets.size() <= 1) {
+            return Collections.emptyList();
+        }
+
+        int[] quotas = allocateAtomicCompactionQuotas(buckets, 20);
+        int[] consumedPerBucket = new int[buckets.size()];
+        List<String> compacted = new ArrayList<>(20);
+        Set<String> seen = new LinkedHashSet<>();
+
+        while (compacted.size() < 20) {
+            boolean addedInRound = false;
+            for (int bucketIndex = 0; bucketIndex < buckets.size(); bucketIndex++) {
+                if (consumedPerBucket[bucketIndex] >= quotas[bucketIndex]) {
+                    continue;
+                }
+                Deque<String> bucket = buckets.get(bucketIndex);
+                while (!bucket.isEmpty()) {
+                    String next = bucket.removeFirst();
+                    if (!seen.add(next)) {
+                        continue;
+                    }
+                    compacted.add(next);
+                    consumedPerBucket[bucketIndex]++;
+                    addedInRound = true;
+                    break;
+                }
+                if (compacted.size() >= 20) {
+                    break;
+                }
+            }
+            if (!addedInRound) {
+                break;
+            }
+        }
+
+        if (compacted.size() >= 20) {
+            return compacted;
+        }
+
+        for (String id : atomicFrontier) {
+            if (!seen.add(id)) {
+                continue;
+            }
+            compacted.add(id);
+            if (compacted.size() >= 20) {
+                break;
+            }
+        }
+
+        return compacted;
+    }
+
+    private static Deque<String> buildSeededAtomicBucketForPlannedId(
+            String plannedId,
+            List<String> atomicFrontier,
+            Map<String, LearningGoal> structuralGoals) {
+        Set<String> localScope = computeScope(List.of(plannedId), structuralGoals);
+        Deque<String> rawBucket = buildAtomicBucketForScope(localScope, atomicFrontier);
+        if (rawBucket.isEmpty()) {
+            return rawBucket;
+        }
+
+        LearningGoal plannedGoal = structuralGoals.get(plannedId);
+        if (plannedGoal == null || plannedGoal.getContains() == null || plannedGoal.getContains().isEmpty()) {
+            return rawBucket;
+        }
+
+        List<String> rawOrder = new ArrayList<>(rawBucket);
+        LinkedHashSet<String> seededIds = new LinkedHashSet<>();
+        for (String childRef : plannedGoal.getContains()) {
+            String childId = resolveGoalRef(childRef, structuralGoals);
+            if (childId == null) {
+                continue;
+            }
+            Set<String> childScope = computeScope(List.of(childId), structuralGoals);
+            for (String id : rawOrder) {
+                if (childScope.contains(id)) {
+                    seededIds.add(id);
+                    break;
+                }
+            }
+        }
+
+        for (String childRef : plannedGoal.getContains()) {
+            String childId = resolveGoalRef(childRef, structuralGoals);
+            if (childId == null) {
+                continue;
+            }
+            Set<String> childScope = computeScope(List.of(childId), structuralGoals);
+            seedPrioritySkillGoal(rawOrder, childScope, structuralGoals, seededIds, true);
+            seedPrioritySkillGoal(rawOrder, childScope, structuralGoals, seededIds, false);
+        }
+
+        if (seededIds.isEmpty()) {
+            return rawBucket;
+        }
+
+        Deque<String> seededBucket = new ArrayDeque<>();
+        Set<String> seen = new LinkedHashSet<>();
+        for (String id : seededIds) {
+            if (seen.add(id)) {
+                seededBucket.addLast(id);
+            }
+        }
+        for (String id : rawOrder) {
+            if (seen.add(id)) {
+                seededBucket.addLast(id);
+            }
+        }
+        return seededBucket;
+    }
+
+    private static void seedPrioritySkillGoal(
+            List<String> rawOrder,
+            Set<String> childScope,
+            Map<String, LearningGoal> structuralGoals,
+            LinkedHashSet<String> seededIds,
+            boolean productiveFirst) {
+        for (String id : rawOrder) {
+            if (!childScope.contains(id)) {
+                continue;
+            }
+            LearningGoal goal = structuralGoals.get(id);
+            if (matchesPrioritySkillSeed(goal, productiveFirst)) {
+                seededIds.add(id);
+                return;
+            }
+        }
+    }
+
+    private static boolean matchesPrioritySkillSeed(LearningGoal goal, boolean productiveFirst) {
+        if (goal == null || goal.getTags() == null || goal.getTags().isEmpty()) {
+            return false;
+        }
+        if (productiveFirst) {
+            return goal.getTags().contains("skill:mediation")
+                    || goal.getTags().contains("skill:writing")
+                    || goal.getTags().contains("skill:schreiben");
+        }
+        return goal.getTags().contains("skill:intercultural");
+    }
+
+    private static Deque<String> buildAtomicBucketForScope(Set<String> scope, List<String> atomicFrontier) {
+        Deque<String> bucket = new ArrayDeque<>();
+        if (scope == null || scope.isEmpty() || atomicFrontier == null || atomicFrontier.isEmpty()) {
+            return bucket;
+        }
+        for (String id : atomicFrontier) {
+            if (scope.contains(id)) {
+                bucket.addLast(id);
+            }
+        }
+        return bucket;
+    }
+
+    private static int[] allocateAtomicCompactionQuotas(List<Deque<String>> buckets, int limit) {
+        int[] quotas = new int[buckets.size()];
+        if (buckets.isEmpty() || limit <= 0) {
+            return quotas;
+        }
+
+        int totalSize = buckets.stream().mapToInt(Deque::size).sum();
+        if (totalSize <= limit) {
+            for (int i = 0; i < buckets.size(); i++) {
+                quotas[i] = buckets.get(i).size();
+            }
+            return quotas;
+        }
+
+        int preferredBasePerBucket = buckets.size() <= 2 ? 5 : 4;
+        int basePerBucket = Math.max(1, Math.min(preferredBasePerBucket, limit / buckets.size()));
+        double[] remainders = new double[buckets.size()];
+        int assigned = 0;
+        int totalRemainingCapacity = 0;
+        for (int i = 0; i < buckets.size(); i++) {
+            int bucketSize = buckets.get(i).size();
+            if (bucketSize <= 0) {
+                continue;
+            }
+            int quota = Math.min(basePerBucket, bucketSize);
+            quotas[i] = quota;
+            assigned += quota;
+            totalRemainingCapacity += Math.max(0, bucketSize - quota);
+        }
+
+        if (assigned >= limit || totalRemainingCapacity <= 0) {
+            while (assigned > limit) {
+                int bestIndex = -1;
+                for (int i = 0; i < quotas.length; i++) {
+                    if (quotas[i] <= 1) {
+                        continue;
+                    }
+                    if (bestIndex < 0 || quotas[i] > quotas[bestIndex]) {
+                        bestIndex = i;
+                    }
+                }
+                if (bestIndex < 0) {
+                    break;
+                }
+                quotas[bestIndex]--;
+                assigned--;
+            }
+            return quotas;
+        }
+
+        for (int i = 0; i < buckets.size(); i++) {
+            int bucketSize = buckets.get(i).size();
+            int remainingCapacity = Math.max(0, bucketSize - quotas[i]);
+            if (remainingCapacity <= 0) {
+                continue;
+            }
+            double exactAdditionalQuota = ((limit - assigned) * (double) remainingCapacity) / totalRemainingCapacity;
+            int additionalQuota = (int) Math.floor(exactAdditionalQuota);
+            additionalQuota = Math.min(additionalQuota, remainingCapacity);
+            quotas[i] += additionalQuota;
+            remainders[i] = exactAdditionalQuota - Math.floor(exactAdditionalQuota);
+        }
+
+        assigned = Arrays.stream(quotas).sum();
+
+        while (assigned > limit) {
+            int bestIndex = -1;
+            for (int i = 0; i < quotas.length; i++) {
+                if (quotas[i] <= 1) {
+                    continue;
+                }
+                if (bestIndex < 0 || remainders[i] < remainders[bestIndex]) {
+                    bestIndex = i;
+                }
+            }
+            if (bestIndex < 0) {
+                break;
+            }
+            quotas[bestIndex]--;
+            assigned--;
+        }
+
+        while (assigned < limit) {
+            int bestIndex = -1;
+            for (int i = 0; i < quotas.length; i++) {
+                if (quotas[i] >= buckets.get(i).size()) {
+                    continue;
+                }
+                if (bestIndex < 0
+                        || remainders[i] > remainders[bestIndex]
+                        || (Double.compare(remainders[i], remainders[bestIndex]) == 0
+                                && buckets.get(i).size() > buckets.get(bestIndex).size())) {
+                    bestIndex = i;
+                }
+            }
+            if (bestIndex < 0) {
+                break;
+            }
+            quotas[bestIndex]++;
+            assigned++;
+        }
+
+        return quotas;
     }
 
     private static Snapshot loadSnapshot(String resourcePath) throws Exception {
@@ -429,7 +715,7 @@ public class LearnerFrontierInvariantTest {
             }
         }
 
-        Map<String, LearningGoal> allGoals = new HashMap<>();
+        Map<String, LearningGoal> allGoals = new LinkedHashMap<>();
         for (LearningLandscape landscape : closure) {
             boolean isSelected = true;
             String filterId = null;

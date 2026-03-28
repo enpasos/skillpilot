@@ -8,8 +8,8 @@
   "frameworkId": "be-bb-rlp-sek1-math",
   "title": "Mathematik Sekundarstufe I (Berlin, Pilot-Quellsnapshot)",
   "titleEn": "Mathematics Secondary Level I (Berlin, Pilot Source Snapshot)",
-  "description": "Erster archivierter Berlin-Quellsnapshot fuer die Mathematik der Sekundarstufe I. Der Snapshot aktiviert die strukturellen Gymnasium-Anker der Jahrgangsstufen 7 bis 10 sowie den ersten reviewed Funktionskorridor aus Zuordnungen und linearen Funktionen und den ersten reviewed Algebra-und-Gleichungskorridor auf dem gemeinsamen Berlin/Brandenburg-Rahmenlehrplan.",
-  "descriptionEn": "First archived Berlin source snapshot for lower-secondary mathematics. The snapshot activates the structural Gymnasium anchors for grades 7 to 10 together with the first reviewed functions corridor on mappings and linear functions and the first reviewed algebra-and-equations corridor from the shared Berlin/Brandenburg curriculum.",
+  "description": "Erster archivierter Berlin-Quellsnapshot fuer die Mathematik der Sekundarstufe I. Der Snapshot aktiviert die strukturellen Gymnasium-Anker der Jahrgangsstufen 7 bis 10 sowie den ersten reviewed Funktionskorridor aus Zuordnungen und linearen Funktionen, den ersten reviewed Algebra-und-Gleichungskorridor, den erweiterten reviewed Geometrie-und-Konstruktionskorridor mit einem ersten Abbildungs-und-Aehnlichkeits-Follow-on und den verbreiterten reviewed Measurement-Korridor zu Flaechen, Kreisen sowie Prisma- und Zylinderrechnungen mit spaeteren Pyramiden-/Kegel-/Koerper- und Dreieckstrigonometrie-Follow-ons auf dem gemeinsamen Berlin/Brandenburg-Rahmenlehrplan.",
+  "descriptionEn": "First archived Berlin source snapshot for lower-secondary mathematics. The snapshot activates the structural Gymnasium anchors for grades 7 to 10 together with the first reviewed functions corridor on mappings and linear functions, the first reviewed algebra-and-equations corridor, the widened reviewed geometry-and-constructions corridor with a first transformations-and-similarity follow-on, and the widened reviewed measurement corridor on areas, circles, and prism/cylinder calculations with later pyramids/cones/solids and triangle-trigonometry follow-ons from the shared Berlin/Brandenburg curriculum.",
   "compatibilityOnly": true,
   "legacyHiddenByDefault": true,
   "goals": [
@@ -17,16 +17,19 @@
       "id": "f5c4226b-8620-4db9-8686-3a8ca7f0e1f9",
       "title": "Mathematik Sekundarstufe I",
       "titleEn": "Mathematics Secondary Level I",
-      "description": "Pilot-Subset der Berlin-Lane des gemeinsamen BE/BB-Rahmenlehrplans Mathematik mit Fokus auf der Gymnasium-Fortschrittsstruktur der Jahrgangsstufen 7 bis 10, dem ersten reviewed Funktionskorridor und dem ersten reviewed Algebra-und-Gleichungskorridor.",
-      "descriptionEn": "Pilot subset of the Berlin lane of the shared Berlin/Brandenburg mathematics curriculum with a focus on the Gymnasium progression structure for grades 7 to 10, the first reviewed functions corridor, and the first reviewed algebra-and-equations corridor.",
-      "weight": 18,
+      "description": "Pilot-Subset der Berlin-Lane des gemeinsamen BE/BB-Rahmenlehrplans Mathematik mit Fokus auf der Gymnasium-Fortschrittsstruktur der Jahrgangsstufen 7 bis 10, dem ersten reviewed Funktionskorridor, dem ersten reviewed Algebra-und-Gleichungskorridor, dem erweiterten reviewed Geometrie-und-Konstruktionskorridor mit erstem Abbildungs-und-Aehnlichkeits-Follow-on und dem verbreiterten reviewed Measurement-Korridor zu Flaechen, Kreisen, Prismen, Zylindern sowie spaeteren Pyramiden-/Kegel-/Koerper- und Dreieckstrigonometrievertiefungen.",
+      "descriptionEn": "Pilot subset of the Berlin lane of the shared Berlin/Brandenburg mathematics curriculum with a focus on the Gymnasium progression structure for grades 7 to 10, the first reviewed functions corridor, the first reviewed algebra-and-equations corridor, the widened reviewed geometry-and-constructions corridor with a first transformations-and-similarity follow-on, and the widened reviewed measurement corridor on areas, circles, prisms, cylinders, and later pyramids/cones/solids and triangle-trigonometry extensions.",
+      "weight": 38,
       "tags": [
         "Sek1",
         "Gymnasium",
         "PilotSubset",
         "StructuralAnchors",
         "FunctionsCorridor",
-        "AlgebraEquationsCorridor"
+        "AlgebraEquationsCorridor",
+        "GeometryConstructionCorridor",
+        "TransformationSimilarityCorridor",
+        "MeasurementCorridor"
       ],
       "contains": [
         "8944c128-4564-44f6-a9cc-5545b5b37397",
@@ -35,7 +38,9 @@
         "5e106650-6a02-422c-aa6d-522d6627b7dc",
         "daa2f186-7939-4379-a7d1-31b5ebd2395e",
         "f33315a1-c13a-428b-98f9-ea1578b05e7f",
-        "e100275c-b1fe-4cba-a667-81ff7ca03513"
+        "e100275c-b1fe-4cba-a667-81ff7ca03513",
+        "ea62adff-287b-4c9f-881d-86a105ef8db4",
+        "41a525e3-fe61-41b8-9d27-f1154f236ad2"
       ],
       "requires": [
         "8944c128-4564-44f6-a9cc-5545b5b37397"
@@ -760,6 +765,857 @@
         "guidingIdeas": [],
         "phase": "J8",
         "area": "Gleichungen und Funktionen"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "ea62adff-287b-4c9f-881d-86a105ef8db4",
+      "title": "Erster Geometrie-und-Konstruktionskorridor",
+      "titleEn": "First Geometry-and-Constructions Corridor",
+      "description": "Erster reviewed Geometrie-Follow-on der Berlin-Lane zu Koordinatendarstellungen, Lage- und Winkelbeziehungen, Kongruenz, einem ersten Abbildungs-und-Aehnlichkeits-Follow-on und einem spaeteren Pythagoras-Zug auf dem gemeinsamen BE/BB-Rahmenlehrplan.",
+      "descriptionEn": "First reviewed geometry follow-on of the Berlin lane on coordinate representations, positional and angle relations, congruence, a first transformations-and-similarity follow-on, and a later Pythagorean strand on the shared Berlin/Brandenburg curriculum.",
+      "weight": 12,
+      "tags": [
+        "Sek1",
+        "Gymnasium",
+        "PilotSubset",
+        "GeometryConstructionCorridor",
+        "TransformationSimilarityCorridor"
+      ],
+      "contains": [
+        "81b05aef-d4aa-4c49-a951-baea7473bc9e",
+        "ec896b7e-ae75-4a57-b888-4459de5f8518",
+        "646b73f6-48b7-4055-8556-4af1ae115f0d"
+      ],
+      "requires": [
+        "917e14e1-4dfa-4450-826b-7e194513ddb1"
+      ],
+      "sourceRef": "RLP BE/BB Mathematik 1-10, Themenbereich 'Raum und Form' - Niveaustufe E sowie Niveaustufen G/H, S. 52-53.",
+      "dimensionTags": {
+        "framework": "be-bb-rlp-sek1-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "GLOBAL",
+        "area": "Raum und Form"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "81b05aef-d4aa-4c49-a951-baea7473bc9e",
+      "title": "Niveaustufe E: Koordinaten, Winkel und Dreieckskonstruktionen",
+      "titleEn": "Competency Level E: Coordinates, Angles, and Triangle Constructions",
+      "description": "Korridorcluster fuer die Niveaustufe E zu Figurendarstellungen im Koordinatensystem, zu Lage- und Winkelbeziehungen, zu besonderen Linien im Dreieck und zu Kongruenzkonstruktionen.",
+      "descriptionEn": "Corridor cluster for competency level E on coordinate-based figure representations, positional and angle relations, special lines in triangles, and congruence constructions.",
+      "weight": 5,
+      "tags": [
+        "Sek1",
+        "Gymnasium",
+        "J7",
+        "GeometryConstructionCorridor"
+      ],
+      "contains": [
+        "8975e11b-8419-49cc-b77a-229816eb68ed",
+        "63a83ff1-575d-4683-b9fe-32706fc89e5e",
+        "7ccc74e3-1508-4f84-bdf4-0b4d05daa3fb",
+        "90fbea54-dc72-4c0b-ad95-157450f772dd",
+        "dc85986b-a86c-43cb-8485-0e258d5d17ec"
+      ],
+      "requires": [
+        "917e14e1-4dfa-4450-826b-7e194513ddb1"
+      ],
+      "sourceRef": "RLP BE/BB Mathematik 1-10, Themenbereich 'Raum und Form' - Niveaustufe E, S. 52.",
+      "dimensionTags": {
+        "framework": "be-bb-rlp-sek1-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J7",
+        "area": "Raum und Form"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "8975e11b-8419-49cc-b77a-229816eb68ed",
+      "title": "Figuren im Koordinatensystem darstellen",
+      "titleEn": "Represent Figures in the Coordinate Plane",
+      "description": "Die Schuelerinnen und Schueler zeichnen Figuren im Koordinatensystem mit vier Quadranten, nutzen dabei auch digitale Werkzeuge und ordnen Koordinatendarstellungen geometrischen Situationen zu.",
+      "descriptionEn": "Students draw figures in the coordinate plane across all four quadrants, also using digital tools, and connect coordinate representations to geometric situations.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "Gymnasium",
+        "J7",
+        "GeometryConstructionCorridor",
+        "Koordinaten"
+      ],
+      "contains": [],
+      "requires": [
+        "917e14e1-4dfa-4450-826b-7e194513ddb1"
+      ],
+      "sourceRef": "RLP BE/BB Mathematik 1-10, Themenbereich 'Raum und Form' - Niveaustufe E, 'Zeichnen von Figuren im Koordinatensystem (vier Quadranten, auch mithilfe von dynamischer Geometriesoftware)', S. 52.",
+      "dimensionTags": {
+        "framework": "be-bb-rlp-sek1-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J7",
+        "area": "Raum und Form"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "63a83ff1-575d-4683-b9fe-32706fc89e5e",
+      "title": "Lagebeziehungen geometrischer Objekte beschreiben und konstruieren",
+      "titleEn": "Describe and Construct Positional Relations of Geometric Objects",
+      "description": "Die Schuelerinnen und Schueler beschreiben Lagebeziehungen geometrischer Objekte fachsprachlich und konstruieren parallele, senkrechte und halbierende Geraden mit Geodreieck und Zirkel.",
+      "descriptionEn": "Students describe positional relations of geometric objects using precise terminology and construct parallel, perpendicular, and bisecting lines with set square and compass.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "Gymnasium",
+        "J7",
+        "GeometryConstructionCorridor",
+        "Lagebeziehungen"
+      ],
+      "contains": [],
+      "requires": [
+        "8975e11b-8419-49cc-b77a-229816eb68ed"
+      ],
+      "sourceRef": "RLP BE/BB Mathematik 1-10, Themenbereich 'Raum und Form' - Niveaustufe E, 'Beschreiben von Lage- und Groessenbeziehungen geometrischer Objekte' sowie 'Konstruieren zueinander paralleler bzw. senkrechter Geraden, von Mittelsenkrechten unter Verwendung von Geodreieck und Zirkel', S. 52.",
+      "dimensionTags": {
+        "framework": "be-bb-rlp-sek1-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J7",
+        "area": "Raum und Form"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "7ccc74e3-1508-4f84-bdf4-0b4d05daa3fb",
+      "title": "Winkelbeziehungen in Figuren beschreiben und fuer Argumentationen nutzen",
+      "titleEn": "Describe Angle Relations in Figures and Use Them for Arguments",
+      "description": "Die Schuelerinnen und Schueler beschreiben Winkelbeziehungen an Parallelen, in Dreiecken und in Vielecken fachsprachlich und nutzen diese Beziehungen fuer einfache geometrische Argumentationen.",
+      "descriptionEn": "Students describe angle relations at parallel lines, in triangles, and in polygons using technical language and use these relations for simple geometric arguments.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "Gymnasium",
+        "J7",
+        "GeometryConstructionCorridor",
+        "Winkel"
+      ],
+      "contains": [],
+      "requires": [
+        "63a83ff1-575d-4683-b9fe-32706fc89e5e"
+      ],
+      "sourceRef": "RLP BE/BB Mathematik 1-10, Themenbereich 'Raum und Form' - Niveaustufen D/E, 'Beschreiben von Winkelbeziehungen an geschnittenen Geraden bzw. Parallelen sowie in Dreiecken ... und Nutzen fuer Argumentationen' sowie 'Untersuchen und Beschreiben der Groessenbeziehungen in ebenen geometrischen Figuren (auch Innenwinkelsumme von Vielecken)', S. 52.",
+      "dimensionTags": {
+        "framework": "be-bb-rlp-sek1-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J7",
+        "area": "Raum und Form"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "90fbea54-dc72-4c0b-ad95-157450f772dd",
+      "title": "Besondere Linien, Symmetrien und Winkelbeziehungen im Dreieck begruenden",
+      "titleEn": "Justify Special Lines, Symmetries, and Angle Relations in Triangles",
+      "description": "Die Schuelerinnen und Schueler beschreiben besondere Linien in Dreiecken, erkennen Symmetrien und begruenden Winkel- und Groessenbeziehungen in ebenen Figuren nachvollziehbar.",
+      "descriptionEn": "Students describe special lines in triangles, identify symmetries, and justify angle and size relations in plane figures in a comprehensible way.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "Gymnasium",
+        "J7",
+        "GeometryConstructionCorridor",
+        "Dreieck",
+        "Symmetrie"
+      ],
+      "contains": [],
+      "requires": [
+        "7ccc74e3-1508-4f84-bdf4-0b4d05daa3fb"
+      ],
+      "sourceRef": "RLP BE/BB Mathematik 1-10, Themenbereich 'Raum und Form' - Niveaustufe E, 'Beschreiben weiterer Eigenschaften der Dreiecksarten (z. B. Symmetrie)', 'Beschreiben besonderer Linien in Dreiecken ...' sowie 'Untersuchen und Beschreiben der Groessenbeziehungen in ebenen geometrischen Figuren', S. 52.",
+      "dimensionTags": {
+        "framework": "be-bb-rlp-sek1-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J7",
+        "area": "Raum und Form"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "dc85986b-a86c-43cb-8485-0e258d5d17ec",
+      "title": "Dreiecke nach Kongruenzsaetzen konstruieren und ihre Loesbarkeit begruenden",
+      "titleEn": "Construct Triangles Using Congruence Theorems and Justify Their Solvability",
+      "description": "Die Schuelerinnen und Schueler formulieren Aussagen zur Loesbarkeit von Dreieckskonstruktionen, nutzen Kongruenzsaetze und konstruieren Mittelsenkrechten, Hoehen, Seitenhalbierende sowie Dreiecke nachvollziehbar.",
+      "descriptionEn": "Students formulate statements about the solvability of triangle constructions, use congruence theorems, and construct perpendicular bisectors, altitudes, medians, and triangles in a transparent way.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "Gymnasium",
+        "J7",
+        "GeometryConstructionCorridor",
+        "Kongruenz",
+        "Dreieckskonstruktion"
+      ],
+      "contains": [],
+      "requires": [
+        "90fbea54-dc72-4c0b-ad95-157450f772dd"
+      ],
+      "sourceRef": "RLP BE/BB Mathematik 1-10, Themenbereich 'Raum und Form' - Niveaustufe E, 'Nutzen von Lage- und Groessenbeziehungen zum Formulieren von Aussagen zur Loesbarkeit bei der Konstruktion von Dreiecken', 'Konstruieren von Mittelsenkrechten, Hoehen und Seitenhalbierenden in Dreiecken' und 'Konstruieren von Dreiecken nach den Kongruenzsaetzen', S. 52.",
+      "dimensionTags": {
+        "framework": "be-bb-rlp-sek1-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J7",
+        "area": "Raum und Form"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "ec896b7e-ae75-4a57-b888-4459de5f8518",
+      "title": "Abbildungen und Aehnlichkeit als Geometrie-Follow-on",
+      "titleEn": "Transformations and Similarity as a Geometry Follow-on",
+      "description": "Korridorcluster fuer den ersten reviewed Follow-on der Berlin-Lane zu Kongruenz- und Aehnlichkeitsabbildungen, zu Original-Bild-Beziehungen sowie zu maßstaeblichen Vergroesserungen und Verkleinerungen.",
+      "descriptionEn": "Corridor cluster for the first reviewed follow-on of the Berlin lane on congruence and similarity transformations, original-image relations, and scale enlargements and reductions.",
+      "weight": 4,
+      "tags": [
+        "Sek1",
+        "Gymnasium",
+        "PilotSubset",
+        "TransformationSimilarityCorridor"
+      ],
+      "contains": [
+        "2c1dd378-2bab-4cbf-9067-f1108b415ed6",
+        "f45758d1-2a8a-420c-a870-59f7e1ab383c"
+      ],
+      "requires": [
+        "dc85986b-a86c-43cb-8485-0e258d5d17ec"
+      ],
+      "sourceRef": "RLP BE/BB Mathematik 1-10, Themenbereich 'Geometrische Abbildungen' - Niveaustufen E sowie G/H, S. 53-55.",
+      "dimensionTags": {
+        "framework": "be-bb-rlp-sek1-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "GLOBAL",
+        "area": "Geometrische Abbildungen"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "2c1dd378-2bab-4cbf-9067-f1108b415ed6",
+      "title": "Niveaustufe E: Kongruenz- und Aehnlichkeitsabbildungen beschreiben",
+      "titleEn": "Competency Level E: Describe Congruence and Similarity Transformations",
+      "description": "Korridorcluster fuer die Niveaustufe E zum Erkennen kongruenter und aehnlicher Figuren sowie zum Beschreiben der Eigenschaften von Kongruenz- und Aehnlichkeitsabbildungen.",
+      "descriptionEn": "Corridor cluster for competency level E on recognizing congruent and similar figures and on describing the properties of congruence and similarity transformations.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "Gymnasium",
+        "J7",
+        "TransformationSimilarityCorridor"
+      ],
+      "contains": [
+        "8529115f-3e4e-48b4-857b-63c79f2dc2a0"
+      ],
+      "requires": [
+        "dc85986b-a86c-43cb-8485-0e258d5d17ec"
+      ],
+      "sourceRef": "RLP BE/BB Mathematik 1-10, Themenbereich 'Geometrische Abbildungen' - Niveaustufe E, S. 53.",
+      "dimensionTags": {
+        "framework": "be-bb-rlp-sek1-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J7",
+        "area": "Geometrische Abbildungen"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "8529115f-3e4e-48b4-857b-63c79f2dc2a0",
+      "title": "Kongruente und aehnliche Figuren erkennen und Eigenschaften von Abbildungen beschreiben",
+      "titleEn": "Recognize Congruent and Similar Figures and Describe Transformation Properties",
+      "description": "Die Schuelerinnen und Schueler erkennen kongruente und aehnliche ebene Figuren anhand ihrer Eigenschaften, beschreiben Original-Bild-Beziehungen und erklaeren Laengen-, Winkel- und Verhaeltnistreue bei Kongruenz- und Aehnlichkeitsabbildungen.",
+      "descriptionEn": "Students recognize congruent and similar plane figures through their properties, describe original-image relations, and explain length, angle, and ratio preservation in congruence and similarity transformations.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "Gymnasium",
+        "J7",
+        "TransformationSimilarityCorridor",
+        "Aehnlichkeit"
+      ],
+      "contains": [],
+      "requires": [
+        "dc85986b-a86c-43cb-8485-0e258d5d17ec"
+      ],
+      "sourceRef": "RLP BE/BB Mathematik 1-10, Themenbereich 'Geometrische Abbildungen' - Niveaustufe E, 'Erkennen und Benennen kongruenter und aehnlicher ebener geometrischer Objekte anhand ihrer Eigenschaften' sowie 'Beschreiben der Eigenschaften ... von Kongruenz- und Aehnlichkeitsabbildungen', S. 53.",
+      "dimensionTags": {
+        "framework": "be-bb-rlp-sek1-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J7",
+        "area": "Geometrische Abbildungen"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "f45758d1-2a8a-420c-a870-59f7e1ab383c",
+      "title": "Niveaustufen G/H: Maßstaebliche Vergroesserungen und Verkleinerungen nutzen",
+      "titleEn": "Competency Levels G/H: Use Scale Enlargements and Reductions",
+      "description": "Korridorcluster fuer die Niveaustufen G und H zum Zeichnen kongruenter sowie maßstaeblich vergroesserter oder verkleinerter Figuren und zum Begruenden von Eigenschaften mit Kongruenz und Aehnlichkeit.",
+      "descriptionEn": "Corridor cluster for competency levels G and H on drawing congruent as well as scaled enlarged or reduced figures and justifying properties using congruence and similarity.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "Gymnasium",
+        "J9",
+        "TransformationSimilarityCorridor"
+      ],
+      "contains": [
+        "bd059550-5601-473e-af36-f3494acf263a"
+      ],
+      "requires": [
+        "8529115f-3e4e-48b4-857b-63c79f2dc2a0",
+        "5e106650-6a02-422c-aa6d-522d6627b7dc"
+      ],
+      "sourceRef": "RLP BE/BB Mathematik 1-10, Themenbereich 'Geometrische Abbildungen' - Niveaustufen G/H, S. 54-55.",
+      "dimensionTags": {
+        "framework": "be-bb-rlp-sek1-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J9",
+        "area": "Geometrische Abbildungen"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "bd059550-5601-473e-af36-f3494acf263a",
+      "title": "Kongruente sowie maßstaeblich vergroesserte und verkleinerte Figuren zeichnen und begruenden",
+      "titleEn": "Draw and Justify Congruent as well as Scaled Enlarged and Reduced Figures",
+      "description": "Die Schuelerinnen und Schueler zeichnen kongruente sowie maßstaeblich vergroesserte oder verkleinerte ebene Figuren, nutzen Geometriesoftware passend und begruenden Eigenschaften geometrischer Objekte mit Kongruenz und Aehnlichkeit.",
+      "descriptionEn": "Students draw congruent as well as scaled enlarged or reduced plane figures, use geometry software appropriately, and justify properties of geometric objects using congruence and similarity.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "Gymnasium",
+        "J9",
+        "TransformationSimilarityCorridor",
+        "Massstab"
+      ],
+      "contains": [],
+      "requires": [
+        "8529115f-3e4e-48b4-857b-63c79f2dc2a0",
+        "5e106650-6a02-422c-aa6d-522d6627b7dc"
+      ],
+      "sourceRef": "RLP BE/BB Mathematik 1-10, Themenbereich 'Geometrische Abbildungen' - Niveaustufen G/H, 'Zeichnen von kongruenten sowie maßstaeblich vergroesserten und verkleinerten ebenen Figuren ...', 'Nutzen von Geometriesoftware zum Konstruieren von Abbildungen' sowie 'Begruenden von Eigenschaften von geometrischen Objekten mithilfe der Eigenschaften von Kongruenz und Aehnlichkeit', S. 53-55.",
+      "dimensionTags": {
+        "framework": "be-bb-rlp-sek1-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J9",
+        "area": "Geometrische Abbildungen"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "646b73f6-48b7-4055-8556-4af1ae115f0d",
+      "title": "Niveaustufen G/H: Pythagoras in Konstruktionen und Begruendungen",
+      "titleEn": "Competency Levels G/H: Pythagoras in Constructions and Justifications",
+      "description": "Korridorcluster fuer den spaeteren Geometrie-Follow-on der Berlin-Lane zum Begruenden und Konstruieren mit dem Satz des Pythagoras in den Niveaustufen G und H.",
+      "descriptionEn": "Corridor cluster for the later geometry follow-on of the Berlin lane on justifying and constructing with the Pythagorean theorem across competency levels G and H.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "Gymnasium",
+        "J9",
+        "GeometryConstructionCorridor"
+      ],
+      "contains": [
+        "f846c7d7-960a-46b7-93cf-d577931fd373"
+      ],
+      "requires": [
+        "dc85986b-a86c-43cb-8485-0e258d5d17ec",
+        "5e106650-6a02-422c-aa6d-522d6627b7dc"
+      ],
+      "sourceRef": "RLP BE/BB Mathematik 1-10, Themenbereich 'Raum und Form' - Niveaustufen G/H, S. 53.",
+      "dimensionTags": {
+        "framework": "be-bb-rlp-sek1-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J9",
+        "area": "Raum und Form"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "f846c7d7-960a-46b7-93cf-d577931fd373",
+      "title": "Satz des Pythagoras in Konstruktionen und Begruendungen nutzen",
+      "titleEn": "Use the Pythagorean Theorem in Constructions and Justifications",
+      "description": "Die Schuelerinnen und Schueler nutzen den Satz des Pythagoras beim Konstruieren geometrischer Figuren, berechnen Strecken in rechtwinkligen Dreiecken und begruenden Eigenschaften von Figuren nachvollziehbar.",
+      "descriptionEn": "Students use the Pythagorean theorem when constructing geometric figures, calculate lengths in right triangles, and justify properties of figures in a comprehensible way.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "Gymnasium",
+        "J9",
+        "GeometryConstructionCorridor",
+        "Pythagoras"
+      ],
+      "contains": [],
+      "requires": [
+        "dc85986b-a86c-43cb-8485-0e258d5d17ec",
+        "5e106650-6a02-422c-aa6d-522d6627b7dc"
+      ],
+      "sourceRef": "RLP BE/BB Mathematik 1-10, Themenbereich 'Raum und Form' - Niveaustufen G/H, 'Konstruieren geometrischer Figuren (auch unter Nutzung des Satzes des Pythagoras ...)' und 'Begruenden der Eigenschaften von geometrischen Objekten ... mithilfe ... des Satzes des Pythagoras', S. 53.",
+      "dimensionTags": {
+        "framework": "be-bb-rlp-sek1-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J9",
+        "area": "Raum und Form"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "41a525e3-fe61-41b8-9d27-f1154f236ad2",
+      "title": "Erster Flaechen-und-Koerperkorridor",
+      "titleEn": "First Area and Solids Corridor",
+      "description": "Erster reviewed Korridor der Berlin-Lane zu Flaechenformeln, Flaecheninhalten, Kreisen sowie zu Volumen- und Oberflaechenrechnungen an Prismen und Kreiszylindern auf Niveaustufe E, nun verbreitert um spaetere G/H-Follow-ons zu Pyramiden, Kegeln, zusammengesetzten Koerpern und zur Dreieckstrigonometrie.",
+      "descriptionEn": "First reviewed corridor of the Berlin lane on area formulas, area calculations, circles, and volume/surface calculations for prisms and cylinders at competency level E, now widened by later G/H follow-ons on pyramids, cones, composed solids, and triangle trigonometry.",
+      "weight": 10,
+      "tags": [
+        "Sek1",
+        "Gymnasium",
+        "PilotSubset",
+        "MeasurementCorridor"
+      ],
+      "contains": [
+        "63f198a6-2a59-473c-b127-9fe9088ac6d3",
+        "92bd8f2c-7928-4862-ac02-38ca5de2f9b7",
+        "aa326b6f-9559-40ae-a900-aa008fccaf1a"
+      ],
+      "requires": [
+        "917e14e1-4dfa-4450-826b-7e194513ddb1"
+      ],
+      "sourceRef": "RLP BE/BB Mathematik 1-10, Themenbereich 'Groessen und Messen' - Niveaustufen E sowie G/H, S. 46-49.",
+      "dimensionTags": {
+        "framework": "be-bb-rlp-sek1-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "GLOBAL",
+        "area": "Groessen und Messen"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "63f198a6-2a59-473c-b127-9fe9088ac6d3",
+      "title": "Niveaustufe E: Flaechen, Kreise und Koerper berechnen",
+      "titleEn": "Competency Level E: Calculate Areas, Circles, and Solids",
+      "description": "Korridorcluster fuer die Niveaustufe E zum Begruenden von Flaechenformeln, zum Berechnen von Flaecheninhalten ebener Figuren sowie zum Rechnen an Kreisen, Prismen und Kreiszylindern.",
+      "descriptionEn": "Corridor cluster for competency level E on justifying area formulas, calculating areas of plane figures, and carrying out calculations involving circles, prisms, and cylinders.",
+      "weight": 5,
+      "tags": [
+        "Sek1",
+        "Gymnasium",
+        "J7",
+        "MeasurementCorridor"
+      ],
+      "contains": [
+        "ef65c82f-0702-423e-8c53-97f0142c1bfc",
+        "0513edbd-a8dd-42e0-ba6d-79edf1eee8b8",
+        "cb57f3d5-a214-48e7-8498-52d5c8e3d325",
+        "727b31aa-6d70-482b-8d89-3e53d4297ed5",
+        "8391f387-d0a6-4ee3-b9a1-c5c81cf0e518"
+      ],
+      "requires": [
+        "917e14e1-4dfa-4450-826b-7e194513ddb1"
+      ],
+      "sourceRef": "RLP BE/BB Mathematik 1-10, Themenbereich 'Groessen und Messen' - Niveaustufe E, S. 46-47.",
+      "dimensionTags": {
+        "framework": "be-bb-rlp-sek1-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J7",
+        "area": "Groessen und Messen"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "ef65c82f-0702-423e-8c53-97f0142c1bfc",
+      "title": "Flaechenformeln ebener Figuren durch Zerlegen und Ergaenzen begruenden",
+      "titleEn": "Justify Area Formulas of Plane Figures by Decomposing and Completing",
+      "description": "Die Schuelerinnen und Schueler begruenden Flaecheninhaltsformeln fuer Parallelogramme und Dreiecke durch Zerlegen und Ergaenzen nachvollziehbar.",
+      "descriptionEn": "Students justify area formulas for parallelograms and triangles in a transparent way by decomposing and completing figures.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "Gymnasium",
+        "J7",
+        "MeasurementCorridor",
+        "Flaecheninhalt"
+      ],
+      "contains": [],
+      "requires": [
+        "917e14e1-4dfa-4450-826b-7e194513ddb1"
+      ],
+      "sourceRef": "RLP BE/BB Mathematik 1-10, Themenbereich 'Groessen und Messen' - Niveaustufe E, 'Begruenden der Flaecheninhaltsformeln fuer Parallelogramme und Dreiecke ...', S. 47.",
+      "dimensionTags": {
+        "framework": "be-bb-rlp-sek1-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J7",
+        "area": "Groessen und Messen"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "0513edbd-a8dd-42e0-ba6d-79edf1eee8b8",
+      "title": "Flaecheninhalte ebener Figuren berechnen",
+      "titleEn": "Calculate Areas of Plane Figures",
+      "description": "Die Schuelerinnen und Schueler berechnen Flaecheninhalte von Dreiecken, Vierecken und Kreisen nachvollziehbar und deuten ihre Ergebnisse mit passenden Einheiten.",
+      "descriptionEn": "Students calculate areas of triangles, quadrilaterals, and circles in a transparent way and interpret their results using suitable units.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "Gymnasium",
+        "J7",
+        "MeasurementCorridor",
+        "Flaecheninhalt"
+      ],
+      "contains": [],
+      "requires": [
+        "ef65c82f-0702-423e-8c53-97f0142c1bfc"
+      ],
+      "sourceRef": "RLP BE/BB Mathematik 1-10, Themenbereich 'Groessen und Messen' - Niveaustufe E, 'Berechnen des Flaecheninhalts von Dreiecken, Vierecken, Kreisen ...', S. 47.",
+      "dimensionTags": {
+        "framework": "be-bb-rlp-sek1-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J7",
+        "area": "Groessen und Messen"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "cb57f3d5-a214-48e7-8498-52d5c8e3d325",
+      "title": "Umfang und Flaecheninhalt von Kreisen und Kreisteilen berechnen",
+      "titleEn": "Calculate Circumference and Area of Circles and Circle Parts",
+      "description": "Die Schuelerinnen und Schueler berechnen Umfaenge von Kreisen und Kreisteilen sowie Flaecheninhalte von Kreisen und deuten ihre Ergebnisse in passenden Sachsituationen.",
+      "descriptionEn": "Students calculate circumferences of circles and circle parts as well as areas of circles and interpret their results in suitable contexts.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "Gymnasium",
+        "J7",
+        "MeasurementCorridor",
+        "Kreis"
+      ],
+      "contains": [],
+      "requires": [
+        "0513edbd-a8dd-42e0-ba6d-79edf1eee8b8"
+      ],
+      "sourceRef": "RLP BE/BB Mathematik 1-10, Themenbereich 'Groessen und Messen' - Niveaustufe E, 'Berechnen des Umfangs von ... Kreisen und Kreisteilen ...' sowie 'Berechnen des Flaecheninhalts von ... Kreisen ...', S. 47.",
+      "dimensionTags": {
+        "framework": "be-bb-rlp-sek1-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J7",
+        "area": "Groessen und Messen"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "727b31aa-6d70-482b-8d89-3e53d4297ed5",
+      "title": "Volumen und Oberflaechen gerader Prismen berechnen",
+      "titleEn": "Calculate Volumes and Surfaces of Right Prisms",
+      "description": "Die Schuelerinnen und Schueler berechnen Volumen und Oberflaechen gerader Prismen nach den Prinzipien Grundflaeche mal Hoehe beziehungsweise Addition der Teilflaechen und bewerten die Ergebnisse im Sachkontext.",
+      "descriptionEn": "Students calculate volumes and surfaces of right prisms using the principles base area times height and addition of partial areas and evaluate the results in context.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "Gymnasium",
+        "J7",
+        "MeasurementCorridor",
+        "Koerper"
+      ],
+      "contains": [],
+      "requires": [
+        "0513edbd-a8dd-42e0-ba6d-79edf1eee8b8"
+      ],
+      "sourceRef": "RLP BE/BB Mathematik 1-10, Themenbereich 'Groessen und Messen' - Niveaustufe E, 'Berechnen des Volumens von geraden Prismen ... und des Oberflaecheninhalts ...', S. 47.",
+      "dimensionTags": {
+        "framework": "be-bb-rlp-sek1-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J7",
+        "area": "Groessen und Messen"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "8391f387-d0a6-4ee3-b9a1-c5c81cf0e518",
+      "title": "Kreise und Kreiszylinder untersuchen und berechnen",
+      "titleEn": "Investigate and Calculate Circles and Cylinders",
+      "description": "Die Schuelerinnen und Schueler berechnen Umfaenge, Flaecheninhalte, Volumina und Oberflaechen an Kreisen und geraden Kreiszylindern, deuten Darstellungen und begruenden geometrische Beziehungen im Sachkontext.",
+      "descriptionEn": "Students calculate circumferences, areas, volumes, and surfaces for circles and right cylinders, interpret representations, and justify geometric relations in context.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "Gymnasium",
+        "J7",
+        "MeasurementCorridor",
+        "Zylinder"
+      ],
+      "contains": [],
+      "requires": [
+        "cb57f3d5-a214-48e7-8498-52d5c8e3d325",
+        "727b31aa-6d70-482b-8d89-3e53d4297ed5"
+      ],
+      "sourceRef": "RLP BE/BB Mathematik 1-10, Themenbereich 'Groessen und Messen' - Niveaustufe E, 'Berechnen des Volumens von ... Kreiszylindern ... und des Oberflaecheninhalts ...' sowie die Kreisbezuge aus S. 47.",
+      "dimensionTags": {
+        "framework": "be-bb-rlp-sek1-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J7",
+        "area": "Groessen und Messen"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "92bd8f2c-7928-4862-ac02-38ca5de2f9b7",
+      "title": "Niveaustufen G/H: Pyramiden, Kegel und zusammengesetzte Koerper vertiefen",
+      "titleEn": "Competency Levels G/H: Extend Work on Pyramids, Cones, and Composite Solids",
+      "description": "Korridorcluster fuer die Niveaustufen G und H zum Darstellen, Beschreiben und Berechnen von Pyramiden, Kegeln sowie zusammengesetzten Koerpern im spaeteren Berlin-Measurement-Follow-on.",
+      "descriptionEn": "Corridor cluster for competency levels G and H on representing, describing, and calculating pyramids, cones, and composite solids in the later Berlin measurement follow-on.",
+      "weight": 3,
+      "tags": [
+        "Sek1",
+        "Gymnasium",
+        "J9",
+        "MeasurementCorridor"
+      ],
+      "contains": [
+        "4eae0670-19d2-4204-b851-4dafb5fc5f23",
+        "3d9cc9aa-fda6-45c9-99c7-6dffda157ab6",
+        "251af9b6-de2c-4fa7-883a-3095cf1a5991"
+      ],
+      "requires": [
+        "8391f387-d0a6-4ee3-b9a1-c5c81cf0e518",
+        "5e106650-6a02-422c-aa6d-522d6627b7dc"
+      ],
+      "sourceRef": "RLP BE/BB Mathematik 1-10, Themenbereich 'Groessen und Messen' sowie 'Raum und Form' - Niveaustufen G/H, S. 48-49 und 53.",
+      "dimensionTags": {
+        "framework": "be-bb-rlp-sek1-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J9",
+        "area": "Groessen und Messen"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "4eae0670-19d2-4204-b851-4dafb5fc5f23",
+      "title": "Pyramiden und Kegel in Schraegbildern darstellen, Netze nutzen und zusammengesetzte Koerper beschreiben",
+      "titleEn": "Represent Pyramids and Cones in Oblique Drawings, Use Nets, and Describe Composite Solids",
+      "description": "Die Schuelerinnen und Schueler zeichnen Schraegbilder von Pyramiden, Kegeln und zusammengesetzten Koerpern, nutzen Netze und Fachbegriffe passend und beschreiben Eigenschaften sowie Darstellungen komplexerer Koerperformen nachvollziehbar.",
+      "descriptionEn": "Students draw oblique representations of pyramids, cones, and composite solids, use nets and technical terminology appropriately, and describe properties and representations of more complex solids in a transparent way.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "Gymnasium",
+        "J9",
+        "MeasurementCorridor",
+        "Koerperdarstellung"
+      ],
+      "contains": [],
+      "requires": [
+        "8391f387-d0a6-4ee3-b9a1-c5c81cf0e518",
+        "5e106650-6a02-422c-aa6d-522d6627b7dc"
+      ],
+      "sourceRef": "RLP BE/BB Mathematik 1-10, Themenbereich 'Raum und Form' - Niveaustufen G/H, 'Beschreiben von Eigenschaften geometrischer Flaechen und Koerper ...', 'Skizzieren von Schraegbildern ... von geraden Kreiskegeln und -zylindern, Pyramiden, zusammengesetzten Koerpern und Differenzkoerpern' sowie die F-Follow-on-Netzhinweise zu Pyramiden, S. 52-53.",
+      "dimensionTags": {
+        "framework": "be-bb-rlp-sek1-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J9",
+        "area": "Raum und Form"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "3d9cc9aa-fda6-45c9-99c7-6dffda157ab6",
+      "title": "Volumen von Prismen, Pyramiden und Kegeln plausibilisieren und berechnen",
+      "titleEn": "Plausibilize and Calculate Volumes of Prisms, Pyramids, and Cones",
+      "description": "Die Schuelerinnen und Schueler plausibilisieren und berechnen Volumina von Prismen, Pyramiden, Kegeln und zusammengesetzten Koerpern, nutzen Zerlegungs- und Ergaenzungsprinzipien sowie spaetere Argumente wie Cavalieri und bewerten Ergebnisse im Kontext.",
+      "descriptionEn": "Students plausibilize and calculate volumes of prisms, pyramids, cones, and composite solids, use decomposition and completion principles as well as later arguments such as Cavalieri, and evaluate results in context.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "Gymnasium",
+        "J9",
+        "MeasurementCorridor",
+        "Koerperberechnung"
+      ],
+      "contains": [],
+      "requires": [
+        "4eae0670-19d2-4204-b851-4dafb5fc5f23"
+      ],
+      "sourceRef": "RLP BE/BB Mathematik 1-10, Themenbereich 'Groessen und Messen' - Niveaustufen G/H, 'Berechnen des Volumens von Koerpern (auch von geraden Pyramiden, geraden Kreiskegeln ...)', 'Berechnen des Volumens und des Oberflaecheninhaltes zusammengesetzter Koerper ...' sowie 'Berechnen des Volumens schiefer Prismen, Zylinder und Pyramiden unter Nutzung des Satzes von Cavalieri', S. 48-49.",
+      "dimensionTags": {
+        "framework": "be-bb-rlp-sek1-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J9",
+        "area": "Groessen und Messen"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "251af9b6-de2c-4fa7-883a-3095cf1a5991",
+      "title": "Oberflaecheninhalte von Kegeln begruenden und berechnen",
+      "titleEn": "Justify and Calculate Surface Areas of Cones",
+      "description": "Die Schuelerinnen und Schueler begruenden Oberflaecheninhalte gerader Kegel mithilfe von Netzen oder geeigneten Skizzen und berechnen sie sicher in passenden Kontexten.",
+      "descriptionEn": "Students justify surface areas of right cones by using nets or suitable sketches and calculate them reliably in appropriate contexts.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "Gymnasium",
+        "J9",
+        "MeasurementCorridor",
+        "Koerperberechnung"
+      ],
+      "contains": [],
+      "requires": [
+        "4eae0670-19d2-4204-b851-4dafb5fc5f23"
+      ],
+      "sourceRef": "RLP BE/BB Mathematik 1-10, Themenbereich 'Groessen und Messen' - Niveaustufen G/H, 'Berechnen des Oberflaecheninhalts von Koerpern (auch gerade Pyramiden, gerade Kegel ...)', S. 48-49.",
+      "dimensionTags": {
+        "framework": "be-bb-rlp-sek1-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J9",
+        "area": "Groessen und Messen"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "aa326b6f-9559-40ae-a900-aa008fccaf1a",
+      "title": "Niveaustufen G/H: Dreieckstrigonometrie vertiefen",
+      "titleEn": "Competency Levels G/H: Extend Triangle Trigonometry",
+      "description": "Korridorcluster fuer die Niveaustufen G und H zum Berechnen von Seiten, Winkeln und Beziehungen in rechtwinkligen und beliebigen Dreiecken mithilfe von Sinus, Kosinus, Tangens sowie Sinus- und Kosinussatz im spaeteren Berlin-Measurement-Follow-on.",
+      "descriptionEn": "Corridor cluster for competency levels G and H on calculating sides, angles, and relations in right and arbitrary triangles using sine, cosine, tangent, and the sine and cosine rules in the later Berlin measurement follow-on.",
+      "weight": 2,
+      "tags": [
+        "Sek1",
+        "Gymnasium",
+        "J9",
+        "MeasurementCorridor",
+        "Trigonometrie"
+      ],
+      "contains": [
+        "8a767c39-b714-47a5-baba-85587879947b",
+        "4c425c98-16e2-4811-8788-7f3d6708e37c"
+      ],
+      "requires": [
+        "bd059550-5601-473e-af36-f3494acf263a",
+        "f846c7d7-960a-46b7-93cf-d577931fd373"
+      ],
+      "sourceRef": "RLP BE/BB Mathematik 1-10, Themenbereich 'Groessen und Messen' - Niveaustufen G/H, 'Berechnen von Winkelgroessen und Seitenlaengen in rechtwinkligen Dreiecken mithilfe von Sinus, Kosinus und Tangens', 'Berechnen von Winkelgroessen und Seitenlaengen in beliebigen Dreiecken durch Zerlegung in rechtwinklige Teildreiecke', 'Nutzen des Sinussatzes ...' sowie 'Nutzen des Kosinussatzes ...', S. 48-49.",
+      "dimensionTags": {
+        "framework": "be-bb-rlp-sek1-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J9",
+        "area": "Groessen und Messen"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "8a767c39-b714-47a5-baba-85587879947b",
+      "title": "Seiten und Winkel in rechtwinkligen Dreiecken mit Sinus, Kosinus und Tangens berechnen",
+      "titleEn": "Calculate Sides and Angles in Right Triangles Using Sine, Cosine, and Tangent",
+      "description": "Die Schuelerinnen und Schueler berechnen Seitenlaengen und Winkel in rechtwinkligen Dreiecken mithilfe von Sinus, Kosinus und Tangens, nutzen Skizzen zur Kontrolle und deuten Ergebnisse in passenden Kontexten.",
+      "descriptionEn": "Students calculate side lengths and angles in right triangles using sine, cosine, and tangent, use sketches for checking, and interpret results in suitable contexts.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "Gymnasium",
+        "J9",
+        "MeasurementCorridor",
+        "Trigonometrie"
+      ],
+      "contains": [],
+      "requires": [
+        "bd059550-5601-473e-af36-f3494acf263a",
+        "f846c7d7-960a-46b7-93cf-d577931fd373"
+      ],
+      "sourceRef": "RLP BE/BB Mathematik 1-10, Themenbereich 'Groessen und Messen' - Niveaustufe G, 'Berechnen von Winkelgroessen und Seitenlaengen in rechtwinkligen Dreiecken mithilfe von Sinus, Kosinus und Tangens ...', S. 49.",
+      "dimensionTags": {
+        "framework": "be-bb-rlp-sek1-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J9",
+        "area": "Groessen und Messen"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "4c425c98-16e2-4811-8788-7f3d6708e37c",
+      "title": "Sinus- und Kosinussatz in beliebigen Dreiecken nutzen",
+      "titleEn": "Use the Sine and Cosine Rules in Arbitrary Triangles",
+      "description": "Die Schuelerinnen und Schueler zerlegen beliebige Dreiecke in rechtwinklige Teildreiecke, nutzen Sinus- und Kosinussatz zum Bestimmen von Seiten und Winkeln und bewerten ihre Ergebnisse nachvollziehbar.",
+      "descriptionEn": "Students decompose arbitrary triangles into right-triangle parts, use the sine and cosine rules to determine sides and angles, and assess their results transparently.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "Gymnasium",
+        "J9",
+        "MeasurementCorridor",
+        "Trigonometrie"
+      ],
+      "contains": [],
+      "requires": [
+        "8a767c39-b714-47a5-baba-85587879947b"
+      ],
+      "sourceRef": "RLP BE/BB Mathematik 1-10, Themenbereich 'Groessen und Messen' - Niveaustufen G/H, 'Berechnen von Winkelgroessen und Seitenlaengen in beliebigen Dreiecken durch Zerlegung in rechtwinklige Teildreiecke', 'Nutzen des Sinussatzes ...' sowie 'Nutzen des Kosinussatzes ...', S. 49.",
+      "dimensionTags": {
+        "framework": "be-bb-rlp-sek1-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J9",
+        "area": "Groessen und Messen"
       },
       "type": "atomic"
     }
