@@ -51,7 +51,6 @@ export function useAppCore({ role, setLearnerMeta, skillpilotId }: AppCoreOption
   // we must parse the URL manually using matchPath.
   const match = matchPath({ path: '/:view/:goalId?' }, location.pathname)
   const goalId = match?.params.goalId
-  console.log('[useAppCore] Render. goalId from matchPath:', goalId)
   const [searchParams, setSearchParams] = useSearchParams()
   const pendingSearchRef = React.useRef<string | null>(null)
   const currentSearchString = location.search.startsWith('?') ? location.search.slice(1) : location.search
@@ -320,10 +319,8 @@ export function useAppCore({ role, setLearnerMeta, skillpilotId }: AppCoreOption
   }, [goals])
 
   const currentGoal = useMemo(() => {
-    console.log('[useAppCore] Recalculating currentGoal. goalId:', goalId)
     if (goalId) {
       const candidate = goalIndexAll.get(goalId)
-      console.log('[useAppCore] Candidate found for', goalId, ':', !!candidate)
       if (candidate) return candidate
     }
     return goals[0] ?? null
@@ -384,14 +381,12 @@ export function useAppCore({ role, setLearnerMeta, skillpilotId }: AppCoreOption
   )
 
   const handleNavigateTo = (id: string) => {
-    console.log('[useAppCore] handleNavigateTo called with:', id, 'currentGoalId:', currentGoalId)
     if (!id || id === currentGoalId) {
       console.warn('[useAppCore] Navigation aborted: Invalid ID or same as current')
       return
     }
     const path = location.pathname.split('/')
     const view = path[1]
-    console.log('[useAppCore] Navigating to:', `/${view}/${id}`)
     navigate(`/${view}/${id}?${searchParams.toString()}`)
   }
 

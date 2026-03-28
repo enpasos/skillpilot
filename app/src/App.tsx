@@ -130,9 +130,6 @@ const App: React.FC = () => {
     isQuickstartRoute ||
     isStartRoute
 
-  // DEBUG: Check why landing page might be empty
-  // console.log('Routing State:', { normalizedPath, isPublicRoute, hasSession })
-
   const core = useAppCore({ role: role || 'explorer', setLearnerMeta, skillpilotId })
   const { currentLandscapeEntry, landscapeEntries, selectionGoalIndexAll } = core
 
@@ -451,16 +448,7 @@ const App: React.FC = () => {
     )
   }
 
-  console.log('[App] Render check', {
-    hasSession,
-    normalizedPath,
-    selectedLandscapeId: core.selectedLandscapeId,
-    loadingLandscapes: core.loadingLandscapes,
-    pendingLandscapeId
-  })
-
   if (!hasSession || (normalizedPath === '/' && !pendingLandscapeId)) {
-    console.log('[App] → Showing SessionSetup (first block: no session or root path)')
     return (
       <SessionSetup
         role={role}
@@ -468,7 +456,6 @@ const App: React.FC = () => {
         skillpilotId={skillpilotId}
         setSkillpilotId={setSkillpilotId}
         onStart={(id, landscapeId, forceRole, forceGoalId) => {
-          console.log('[App] onStart called (first block)', { id, landscapeId, forceRole, forceGoalId, currentRole: role })
           const activeRole = forceRole || role
           if (!activeRole) return
           setSkillpilotId(id)
@@ -504,7 +491,6 @@ const App: React.FC = () => {
   // If we have a session but no landscape selected (and not pending), show SessionSetup to let user pick one.
   // This effectively acts as the "Login/Start" screen when context is missing.
   if (!core.selectedLandscapeId && !core.loadingLandscapes && !pendingLandscapeId) {
-    console.log('[App] → Showing SessionSetup (second block: no landscape selected)')
     return (
       <SessionSetup
         role={role}
@@ -512,7 +498,6 @@ const App: React.FC = () => {
         skillpilotId={skillpilotId}
         setSkillpilotId={setSkillpilotId}
         onStart={(id, landscapeId, forceRole, forceGoalId) => {
-          console.log('[App] onStart called (second block)', { id, landscapeId, forceRole, forceGoalId, currentRole: role })
           const activeRole = forceRole || role
           if (!activeRole) return
           setSkillpilotId(id)

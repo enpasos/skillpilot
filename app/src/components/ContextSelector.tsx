@@ -40,7 +40,6 @@ export const ContextSelector: React.FC<ContextSelectorProps> = ({ onSelect }) =>
                 const summaries = Array.isArray(data) ? data : data.summaries
                 const hierarchy = Array.isArray(data) ? null : (data.hierarchy as Hierarchy | null)
 
-                console.log('[ContextSelector] Fetched data. Hierarchy available:', !!hierarchy)
                 setSummaries(summaries)
                 setHierarchy(hierarchy)
                 setLoading(false)

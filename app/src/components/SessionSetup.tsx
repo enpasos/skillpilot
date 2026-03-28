@@ -129,12 +129,6 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault()
-    console.log('[SessionSetup] handleSubmit called', {
-      role,
-      skillpilotId: skillpilotId.trim(),
-      selectedLandscapeId,
-      hasCheckedId
-    })
     if (role === 'learner' && !skillpilotId.trim()) return
 
     const effectiveId = role === 'learner' ? skillpilotId.trim() : ''

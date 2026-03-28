@@ -56,7 +56,6 @@ export const ExplorerView: React.FC<ExplorerViewProps> = ({
   children,
   goalIndexAll,
 }) => {
-  console.log('[ExplorerView] Render. currentGoal:', currentGoal?.id)
   const hasFilters = availableFilters.length > 0
   const isWildcardFilter = (value?: string) => {
     if (!value) return false

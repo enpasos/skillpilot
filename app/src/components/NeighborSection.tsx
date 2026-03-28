@@ -35,11 +35,10 @@ export const NeighborSection: React.FC<NeighborSectionProps> = ({
           {goals.map((goal) => {
             const value = showMastery ? getMastery(goal.id) : 0
             return (
-              <button
-                type="button"
-                key={goal.id}
-                onClick={(e) => {
-                  console.log('[NeighborSection] Clicked goal:', goal.id)
+                <button
+                  type="button"
+                  key={goal.id}
+                  onClick={(e) => {
                   e.stopPropagation()
                   onClick(goal.id)
                 }}

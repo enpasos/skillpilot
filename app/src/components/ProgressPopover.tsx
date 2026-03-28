@@ -146,14 +146,9 @@ export const ProgressPopover: React.FC<ProgressPopoverProps> = ({
             weeks[weekKey] = 0
         }
 
-        // Debug
-        console.log('[Velocity] Initialized Week Keys:', Object.keys(weeks))
-
         history.forEach(entry => {
             const d = new Date(entry.timestamp)
             const weekKey = getStartOfWeekKey(d)
-
-            console.log('[Velocity] Entry:', entry.timestamp, '-> Key:', weekKey)
 
             if (weeks[weekKey] !== undefined) {
                 weeks[weekKey]++
@@ -161,8 +156,6 @@ export const ProgressPopover: React.FC<ProgressPopoverProps> = ({
                 console.warn('[Velocity] Key not in window:', weekKey)
             }
         })
-
-        console.log('[Velocity] Final Counts:', weeks)
 
         return Object.entries(weeks).map(([key, count]) => ({ key, count }))
     }
