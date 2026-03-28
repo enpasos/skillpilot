@@ -345,6 +345,12 @@ export const CurriculaView: React.FC = () => {
       .catch(err => console.error("Failed to load topics", err))
   }, [selectedCurriculumId])
 
+  useEffect(() => {
+    if (!formState.topicId) return
+    if (topics.some((topic) => topic.id === formState.topicId)) return
+    setFormState((prev) => ({ ...prev, topicId: '' }))
+  }, [formState.topicId, topics])
+
 
 
   const validateSkillpilotId = useCallback(async (value?: string) => {
@@ -617,7 +623,10 @@ export const CurriculaView: React.FC = () => {
                     </label>
                     <CurriculumDropdown
                       currentLandscapeId={selectedCurriculumId}
-                      onSelect={setSelectedCurriculumId}
+                      onSelect={(nextCurriculumId) => {
+                        setSelectedCurriculumId(nextCurriculumId)
+                        setFormState((prev) => ({ ...prev, topicId: '' }))
+                      }}
                       landscapes={curriculumOptions}
                       showCompatibilityViews={false}
                     />
