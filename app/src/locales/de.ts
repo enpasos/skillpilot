@@ -192,7 +192,7 @@ export const de = {
         invalidImportFormat: "Ungültiges Dateiformat",
         emptyState: {
             title: "Wähle einen Kontext",
-            text: "Wähle links 'All' aus, um Ziele für die ganze Klasse zu planen.\nOder wähle einen einzelnen Schüler aus, um dessen Lernstand einzusehen oder zu bewerten."
+            text: "Wähle links 'Alle' aus, um Ziele für die ganze Klasse zu planen.\nOder wähle einen einzelnen Schüler aus, um dessen Lernstand einzusehen oder zu bewerten."
         }
     },
     curriculaPage: {
@@ -226,7 +226,7 @@ export const de = {
         },
         registration: {
             title: "Champion Registrierung & Verwaltung",
-            description: "Wähle ein Curriculum um dich als Champion anzumelden, oder verwalte deine bestehenden Championships.",
+            description: "Wähle ein Curriculum, um dich als Champion anzumelden, oder verwalte deine bestehenden Champion-Rollen.",
             curriculumLabel: "Curriculum",
             skillpilotLabel: "SkillPilot-ID",
             skillpilotPlaceholder: "Deine SkillPilot-ID",

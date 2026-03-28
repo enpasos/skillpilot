@@ -31,15 +31,15 @@ export const getCurriculaChampionCopy = (language: LabelLanguage): CurriculaCham
       }
     : {
         achievementsTooltip: 'In der Rolle Lernender Lernziele nachvollzogen',
-        issuesTooltip: 'GitHub Issues mit Hinweisen auf Fehler/Schwaechen erstellt',
-  pullRequestsTooltip: 'GitHub Pull-Requests mit Lösungsvorschlägen erstellt',
-        activeChampionshipsTitle: 'Aktive Championships',
-        stopChampionship: 'Championship beenden',
+        issuesTooltip: 'GitHub Issues mit Hinweisen auf Fehler/Schwächen erstellt',
+        pullRequestsTooltip: 'GitHub Pull-Requests mit Lösungsvorschlägen erstellt',
+        activeChampionshipsTitle: 'Aktive Champion-Rollen',
+        stopChampionship: 'Champion-Rolle beenden',
         connectWithGithub: 'Mit GitHub verbinden',
-        deregisterModalTitle: 'Championship beenden',
+        deregisterModalTitle: 'Champion-Rolle beenden',
         deregisterModalConfirm: 'Bestätigen',
-        deregisterPrompt: 'Wähle die Championships aus, die du beenden möchtest:',
-        noActiveChampionships: 'Keine aktiven Championships gefunden.',
+        deregisterPrompt: 'Wähle die Champion-Rollen aus, die du beenden möchtest:',
+        noActiveChampionships: 'Keine aktiven Champion-Rollen gefunden.',
         championSummary: (count: number) => `Du bist Champion für ${count} ${count === 1 ? 'Lehrplan' : 'Lehrpläne'}`,
       }
 )
