@@ -174,7 +174,7 @@ export const getCurriculumDisplayTitle = ({
     return ''
   }
   if (isCompatibilityOnlyCurriculum(curriculumId, compatibilityOnly)) {
-    return language === 'de' ? `${base} (Kompatibilitaetsansicht)` : `${base} (Compatibility view)`
+    return language === 'de' ? `${base} (Kompatibilitätsansicht)` : `${base} (Compatibility view)`
   }
   if (isLegacyHiddenByDefaultCurriculum(curriculumId, legacyHiddenByDefault)) {
     return language === 'de' ? `${base} (Legacy-Ansicht)` : `${base} (Legacy view)`

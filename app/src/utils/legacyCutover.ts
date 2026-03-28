@@ -269,16 +269,16 @@ export const getLegacyCutoverBannerDescription = ({
   }
   if (kind === 'hessen-upper') {
     return language === 'de'
-      ? 'Diese Hessen-Lernspur bleibt als eingefrorenes Kompatibilitaetsarchiv exportierbar. Fuer die gemeinsame DE-Struktur kannst du jetzt direkt auf Gymnasium (DE) umstellen, ohne deinen bisherigen Mastery-Verlauf zu verlieren.'
+      ? 'Diese Hessen-Lernspur bleibt als eingefrorenes Kompatibilitätsarchiv exportierbar. Für die gemeinsame DE-Struktur kannst du jetzt direkt auf Gymnasium (DE) umstellen, ohne deinen bisherigen Mastery-Verlauf zu verlieren.'
       : 'This Hesse learner trail remains exportable as a frozen compatibility archive. You can now move directly to Gymnasium (DE) without losing your existing mastery history.'
   }
   if (kind === 'bavaria') {
     return language === 'de'
-      ? `Diese Bayern-${bavariaSubject ?? 'Mathematik'}-Lernspur laeuft jetzt als schreibgeschuetzte Legacy-Ansicht. Fuer die gemeinsame DE-Struktur kannst du direkt auf Gymnasium (DE) mit Filter ${bavariaFilterDisplay} umstellen, ohne deinen bisherigen Mastery-Verlauf zu verlieren.`
+      ? `Diese Bayern-${bavariaSubject ?? 'Mathematik'}-Lernspur läuft jetzt als schreibgeschützte Legacy-Ansicht. Für die gemeinsame DE-Struktur kannst du direkt auf Gymnasium (DE) mit Filter ${bavariaFilterDisplay} umstellen, ohne deinen bisherigen Mastery-Verlauf zu verlieren.`
       : `This Bavaria ${bavariaSubjectEn ?? 'chemistry'} learner trail now runs as a read-only legacy view. You can move directly to Gymnasium (DE) with the ${bavariaFilterDisplay} filter without losing your existing mastery history.`
   }
   return language === 'de'
-    ? 'Diese Hessen-Sek-I-Lernspur laeuft jetzt als schreibgeschuetzte Legacy-Ansicht. Fuer die gemeinsame DE-Struktur kannst du direkt auf Gymnasium (DE) umstellen, ohne deinen bisherigen Mastery-Verlauf zu verlieren.'
+    ? 'Diese Hessen-Sek-I-Lernspur läuft jetzt als schreibgeschützte Legacy-Ansicht. Für die gemeinsame DE-Struktur kannst du direkt auf Gymnasium (DE) umstellen, ohne deinen bisherigen Mastery-Verlauf zu verlieren.'
     : 'This Hesse lower-secondary learner trail now runs as a read-only legacy view. You can move directly to Gymnasium (DE) without losing your existing mastery history.'
 }
 
@@ -339,7 +339,7 @@ export const getLegacyCutoverSuccessMessage = ({
   }
   if (kind === 'hessen-upper') {
     return language === 'de'
-      ? 'Dein Lernstand wurde auf Gymnasium (DE) umgestellt. Hessen bleibt als Kompatibilitaetsansicht erhalten, dein Mastery-Verlauf wird aber jetzt auf der gemeinsamen DE-Struktur weiter genutzt.'
+      ? 'Dein Lernstand wurde auf Gymnasium (DE) umgestellt. Hessen bleibt als Kompatibilitätsansicht erhalten, dein Mastery-Verlauf wird aber jetzt auf der gemeinsamen DE-Struktur weiter genutzt.'
       : 'Your learner state has been migrated to Gymnasium (DE). Hesse remains available as a compatibility view while your mastery history continues on the shared DE structure.'
   }
   if (kind === 'bavaria') {
@@ -363,7 +363,7 @@ export const getLegacyCompatibilityArchiveSuccessMessage = ({
   }
   if (kind === 'hessen-upper') {
     return language === 'de'
-      ? 'Die eingefrorene Hessen-Kompatibilitaetsansicht wurde als Archiv exportiert.'
+      ? 'Die eingefrorene Hessen-Kompatibilitätsansicht wurde als Archiv exportiert.'
       : 'The frozen Hesse compatibility view was exported as an archive.'
   }
   if (kind === 'bavaria') {
@@ -386,7 +386,7 @@ export const getLegacyRetirementGateCopy = ({
   return language === 'de'
     ? {
       title: 'Normale Hessen-Route beendet',
-      description: 'Diese Learner-Session wird nicht mehr als normale Arbeitsansicht ausgeliefert. Bitte stelle jetzt auf Gymnasium (DE) um oder lade das eingefrorene Hessen-Archiv fuer Audit- und Nachweiszwecke herunter.',
+      description: 'Diese Learner-Session wird nicht mehr als normale Arbeitsansicht ausgeliefert. Bitte stelle jetzt auf Gymnasium (DE) um oder lade das eingefrorene Hessen-Archiv für Audit- und Nachweiszwecke herunter.',
       cutoverLabel: 'Jetzt auf Gymnasium (DE) umstellen',
       cutoverPendingLabel: 'Stelle um...',
       archiveLabel: 'Archiv herunterladen',
@@ -408,8 +408,8 @@ export const getLegacyReadOnlyCopy = ({
   return language === 'de'
     ? {
       title: 'Nur Lesemodus',
-      activeGoalMessage: 'In dieser Legacy-Ansicht koennen keine neuen aktiven Lernziele gesetzt werden. Bitte auf Gymnasium (DE) umstellen.',
-      planMessage: 'Der Lernfokus kann in dieser Legacy-Ansicht nicht mehr veraendert werden. Bitte auf Gymnasium (DE) umstellen.',
+      activeGoalMessage: 'In dieser Legacy-Ansicht können keine neuen aktiven Lernziele gesetzt werden. Bitte auf Gymnasium (DE) umstellen.',
+      planMessage: 'Der Lernfokus kann in dieser Legacy-Ansicht nicht mehr verändert werden. Bitte auf Gymnasium (DE) umstellen.',
     }
     : {
       title: 'Read-only mode',
@@ -427,8 +427,8 @@ export const getLegacyErrorCopy = ({
       cutoverCreateMessage: 'Die Umstellung auf Gymnasium (DE) konnte nicht durchgeführt werden.',
       cutoverSystemMessage: 'Während der Umstellung ist ein Netzwerk- oder Systemfehler aufgetreten.',
       archiveTitle: 'Archivexport fehlgeschlagen',
-      archiveCreateMessage: 'Das Kompatibilitaetsarchiv konnte nicht erstellt werden.',
-      archiveSystemMessage: 'Waehrend des Archivexports ist ein Netzwerk- oder Systemfehler aufgetreten.',
+      archiveCreateMessage: 'Das Kompatibilitätsarchiv konnte nicht erstellt werden.',
+      archiveSystemMessage: 'Während des Archivexports ist ein Netzwerk- oder Systemfehler aufgetreten.',
     }
     : {
       cutoverTitle: 'Migration failed',

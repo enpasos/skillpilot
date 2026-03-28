@@ -20,7 +20,7 @@ export const getCurriculumDropdownCopy = (
           OTHER: 'Sprachen & Weiterbildung',
         },
         recommendedGroupLabel: 'Empfohlene Curricula',
-        compatibilityGroupLabel: 'Kompatibilitaetsansichten',
+        compatibilityGroupLabel: 'Kompatibilitätsansichten',
         legacyGroupLabel: 'Legacy-Ansichten',
       }
     : {

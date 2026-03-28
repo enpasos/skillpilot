@@ -37,9 +37,9 @@ export const getCurriculaChampionCopy = (language: LabelLanguage): CurriculaCham
         stopChampionship: 'Championship beenden',
         connectWithGithub: 'Mit GitHub verbinden',
         deregisterModalTitle: 'Championship beenden',
-        deregisterModalConfirm: 'Bestaetigen',
-        deregisterPrompt: 'Waehle die Championships aus, die du beenden moechtest:',
+        deregisterModalConfirm: 'Bestätigen',
+        deregisterPrompt: 'Wähle die Championships aus, die du beenden möchtest:',
         noActiveChampionships: 'Keine aktiven Championships gefunden.',
-        championSummary: (count: number) => `Du bist Champion fuer ${count} ${count === 1 ? 'Lehrplan' : 'Lehrplaene'}`,
+        championSummary: (count: number) => `Du bist Champion für ${count} ${count === 1 ? 'Lehrplan' : 'Lehrpläne'}`,
       }
 )

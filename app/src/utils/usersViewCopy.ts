@@ -61,12 +61,12 @@ export const getUsersPageCopy = (language: LabelLanguage): UsersPageCopy => (
   language === 'de'
     ? {
         title: 'SkillPilot-IDs',
-        subtitle: 'Ueberblick ueber generierte SkillPilot-IDs.',
+        subtitle: 'Überblick über generierte SkillPilot-IDs.',
         loading: 'Lade ID-Statistiken...',
         error: 'ID-Statistiken konnten nicht geladen werden.',
         unknownError: 'Unbekannter Fehler',
-        backToStats: 'Zurueck zur Statistik',
-        backToSkillPilot: 'Zurueck zu SkillPilot',
+        backToStats: 'Zurück zur Statistik',
+        backToSkillPilot: 'Zurück zu SkillPilot',
         filters: {
           all: 'Alle',
           withAchievements: 'Mit Erfolgen',
@@ -77,7 +77,7 @@ export const getUsersPageCopy = (language: LabelLanguage): UsersPageCopy => (
           achievements: 'IDs mit Erfolgen',
         },
         chart: {
-          title: 'Anzahl ueber Zeit',
+          title: 'Anzahl über Zeit',
           subtitle: 'Kumulierte Anzahl',
           empty: 'Noch keine Zeitreihendaten.',
           lastUpdated: 'Aktualisiert',
@@ -121,8 +121,8 @@ export const getUsersOperatorCopy = (language: LabelLanguage): UsersOperatorCopy
         validationRequired: 'Bitte gib mindestens eine SkillPilot-ID ein.',
         confirmation: (count: number) =>
           `Willst du wirklich ${count} Lernende auf Gymnasium (DE) umstellen?`,
-        previewPending: 'Pruefe...',
-        previewAction: 'Dry run pruefen',
+        previewPending: 'Prüfe...',
+        previewAction: 'Dry run prüfen',
         executePending: 'Migriere...',
         executeAction: 'Migration ausfuehren',
         runFailed: 'Bulk-Cutover fehlgeschlagen.',
@@ -136,7 +136,7 @@ export const getUsersOperatorCopy = (language: LabelLanguage): UsersOperatorCopy
         errors: 'Fehler',
         resultsPreview: 'Dry-run-Ergebnisse',
         resultsExecution: 'Migrationsergebnisse',
-        useEligibleIds: 'Nur migrierbare IDs uebernehmen',
+        useEligibleIds: 'Nur migrierbare IDs übernehmen',
         exportCsv: 'CSV herunterladen',
         tableSkillpilotId: 'SkillPilot ID',
         tableStatus: 'Status',
