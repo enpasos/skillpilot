@@ -470,6 +470,16 @@ export const CurriculaView: React.FC = () => {
     window.location.href = '/oauth2/authorization/github'
   }
 
+  const openDeregisterModal = () => {
+    setSelectedDeregisterIds([])
+    setShowDeregisterModal(true)
+  }
+
+  const closeDeregisterModal = () => {
+    setShowDeregisterModal(false)
+    setSelectedDeregisterIds([])
+  }
+
   const handleDeregister = async () => {
     if (selectedDeregisterIds.length === 0) return
 
@@ -480,8 +490,7 @@ export const CurriculaView: React.FC = () => {
         body: JSON.stringify(selectedDeregisterIds)
       })
       if (res.ok) {
-        setShowDeregisterModal(false)
-        setSelectedDeregisterIds([])
+        closeDeregisterModal()
         fetchUser()
         loadData()
       }
@@ -606,7 +615,7 @@ export const CurriculaView: React.FC = () => {
                 </div>
                 <button
                   type="button"
-                  onClick={() => setShowDeregisterModal(true)}
+                  onClick={openDeregisterModal}
                   className="text-sm font-medium text-red-600 dark:text-red-400 hover:text-red-700 hover:underline"
                 >
                   {championCopy.stopChampionship}
@@ -663,7 +672,7 @@ export const CurriculaView: React.FC = () => {
                             </div>
                             <button
                               type="button"
-                              onClick={() => setShowDeregisterModal(true)}
+                              onClick={openDeregisterModal}
                               className="px-4 py-2 rounded-full bg-white dark:bg-slate-800 text-red-600 dark:text-red-400 text-sm font-medium shadow-sm hover:shadow transition-all border border-transparent hover:border-red-200"
                             >
                               {championCopy.stopChampionship}
@@ -743,7 +752,7 @@ export const CurriculaView: React.FC = () => {
 
                         <button
                           type="button"
-                          onClick={() => setShowDeregisterModal(true)}
+                          onClick={openDeregisterModal}
                           className="px-5 py-2.5 rounded-full bg-red-500/10 text-red-700 dark:text-red-400 border border-red-500/20 hover:bg-red-500/20 transition-colors text-sm"
                         >
                           {championCopy.stopChampionship}
@@ -779,7 +788,7 @@ export const CurriculaView: React.FC = () => {
 
             <ConfirmModal
               isOpen={showDeregisterModal}
-              onClose={() => setShowDeregisterModal(false)}
+              onClose={closeDeregisterModal}
               onConfirm={handleDeregister}
               title={championCopy.deregisterModalTitle}
               confirmText={championCopy.deregisterModalConfirm}
