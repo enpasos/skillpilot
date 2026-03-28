@@ -73,6 +73,16 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
   // Collapsible logic for Login form
   const [showLogin, setShowLogin] = useState(false);
 
+  const resetTransientSetupState = (clearSkillpilotId = false) => {
+    setError(null)
+    setSelectedLandscapeId('')
+    setAvailableCurricula([])
+    setHasCheckedId(false)
+    if (clearSkillpilotId) {
+      setSkillpilotId('')
+    }
+  }
+
 
   const requestNewId = async () => {
     setLoading(true)
@@ -267,6 +277,7 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
               <button
                 onClick={() => {
                   setRole('learner')
+                  resetTransientSetupState()
                   const id = localStorage.getItem('skillpilot_id')
                   const savedLandscape = localStorage.getItem('skillpilot_learner_landscape')
                   if (id) {
@@ -336,8 +347,7 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
                     key={r}
                     onClick={() => {
                       setRole(r)
-                      setSelectedLandscapeId('')
-                      setHasCheckedId(false)
+                      resetTransientSetupState(true)
                       setShowLogin(true)
                     }}
                     className="hover:text-sky-500 hover:underline transition-colors"
@@ -354,8 +364,9 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
                   <button
                     type="button"
                     onClick={() => {
+                      resetTransientSetupState(true)
                       setShowLogin(false)
-                      setRole(null) // Reset role when going back
+                      setRole(null)
                     }}
                     className="flex items-center text-sm text-text-secondary hover:text-text-primary transition-colors hover:-translate-x-1 duration-200"
                   >
@@ -391,9 +402,7 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
                       value={skillpilotId}
                       onChange={(event) => {
                         setSkillpilotId(event.target.value)
-                        setSelectedLandscapeId('')
-                        setAvailableCurricula([])
-                        setHasCheckedId(false) // Hide dropdown while typing
+                        resetTransientSetupState()
                       }}
                       onBlur={() => {
                         if (!hasCheckedId) {
