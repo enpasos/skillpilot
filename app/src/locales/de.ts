@@ -15,7 +15,7 @@ export const de = {
                 description: "Verfolge deinen Fortschritt im Cockpit."
             },
             curricula: {
-                title: "Curriculum Champions",
+                title: "Curriculum-Champions",
                 description: "Curricula praktisch machen und voranbringen."
             }
         },
@@ -202,7 +202,7 @@ export const de = {
             button: "Zurück zur Startseite"
         },
         intro: {
-            title: "Was ist ein Curriculum Champion?",
+            title: "Was ist ein Curriculum-Champion?",
             description: "Champions übernehmen Verantwortung für ein Curriculum und sorgen dafür, dass es in der Praxis funktioniert.",
             comicAlt: "Curriculum-Champion-Comic",
             panels: [
@@ -225,7 +225,7 @@ export const de = {
             ]
         },
         registration: {
-            title: "Champion Registrierung & Verwaltung",
+            title: "Champion-Registrierung & Verwaltung",
             description: "Wähle ein Curriculum, um dich als Champion anzumelden, oder verwalte deine bestehenden Champion-Rollen.",
             curriculumLabel: "Curriculum",
             skillpilotLabel: "SkillPilot-ID",
@@ -240,7 +240,7 @@ export const de = {
             noSkillpilotId: "Keine SkillPilot-ID? Erstelle eine auf der Startseite.",
             generateId: "ID Generieren",
             generated: "ID generiert",
-            toggleShow: "Champion Registrierung / Verwaltung",
+            toggleShow: "Champion-Registrierung / Verwaltung",
             toggleHide: "Bereich ausblenden",
             submit: "Registrieren",
             submitting: "Registriere...",
