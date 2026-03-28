@@ -105,6 +105,8 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
 
   const checkLearner = async (id: string) => {
     if (!id) {
+      setSelectedLandscapeId('')
+      setAvailableCurricula([])
       setHasCheckedId(false)
       return
     }
@@ -389,6 +391,8 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
                       value={skillpilotId}
                       onChange={(event) => {
                         setSkillpilotId(event.target.value)
+                        setSelectedLandscapeId('')
+                        setAvailableCurricula([])
                         setHasCheckedId(false) // Hide dropdown while typing
                       }}
                       onBlur={() => {
