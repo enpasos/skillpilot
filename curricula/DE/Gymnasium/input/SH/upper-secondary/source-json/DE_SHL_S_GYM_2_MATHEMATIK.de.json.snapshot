@@ -133,8 +133,37 @@
       "id": "sh-sek2-e-analysis",
       "title": "Einfuehrungsjahr: Analysis",
       "titleEn": "Einfuehrungsjahr: Analysis",
-      "description": "Die Schuelerinnen und Schueler bearbeiten im Einfuehrungsjahr Differenzialrechnung sowie Extrempunkte und Wendepunkte.",
-      "descriptionEn": "Die Schuelerinnen und Schueler bearbeiten im Einfuehrungsjahr Differenzialrechnung sowie Extrempunkte und Wendepunkte.",
+      "description": "Die Schuelerinnen und Schueler bearbeiten im Einfuehrungsjahr Differenzialrechnung, Extrempunkte und Wendepunkte als ersten analysisorientierten Oberstufenkorridor.",
+      "descriptionEn": "Students work in the introductory year on differential calculus, extrema, and inflection points as a first upper-secondary analysis corridor.",
+      "weight": 3,
+      "tags": [
+        "Sek2",
+        "Einfuehrungsjahr",
+        "Analysis"
+      ],
+      "dimensionTags": {
+        "framework": "sh-fa-math-2024-sek2",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "EINFUEHRUNGSJAHR",
+        "area": "Analysis"
+      },
+      "requires": [],
+      "contains": [
+        "sh-sek2-e-analysis-ableitungen",
+        "sh-sek2-e-analysis-extrempunkte",
+        "sh-sek2-e-analysis-wendepunkte"
+      ],
+      "sourceRef": "Fachanforderungen Mathematik SH (2024), Sekundarstufe II, 3 Themen und Inhalte des Unterrichts, Phasentabelle Analysis / Geometrie / Stochastik, S. 74.",
+      "type": "cluster"
+    },
+    {
+      "id": "sh-sek2-e-analysis-ableitungen",
+      "title": "Einfuehrungsjahr: Analysis - Ableitungen elementarer Funktionen",
+      "titleEn": "Introductory Year: Analysis - Derivatives of Elementary Functions",
+      "description": "Die Schuelerinnen und Schueler berechnen im Einfuehrungsjahr Ableitungen elementarer Funktionen und nutzen grundlegende Ableitungsregeln in einfachen Untersuchungssituationen.",
+      "descriptionEn": "Students calculate derivatives of elementary functions in the introductory year and use basic differentiation rules in simple analysis situations.",
       "weight": 1,
       "tags": [
         "Sek2",
@@ -150,6 +179,60 @@
         "area": "Analysis"
       },
       "requires": [],
+      "contains": [],
+      "sourceRef": "Fachanforderungen Mathematik SH (2024), Sekundarstufe II, 3 Themen und Inhalte des Unterrichts, Phasentabelle Analysis / Geometrie / Stochastik, S. 74.",
+      "type": "atomic"
+    },
+    {
+      "id": "sh-sek2-e-analysis-extrempunkte",
+      "title": "Einfuehrungsjahr: Analysis - Extrempunkte mit Ableitungen untersuchen",
+      "titleEn": "Introductory Year: Analysis - Analyze Extrema Using Derivatives",
+      "description": "Die Schuelerinnen und Schueler untersuchen im Einfuehrungsjahr Monotonie und Extrempunkte mit Hilfe der ersten Ableitung und begruenden lokale Extremstellen fachsprachlich.",
+      "descriptionEn": "Students investigate monotonicity and extrema in the introductory year using the first derivative and justify local extrema in mathematical language.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "Einfuehrungsjahr",
+        "Analysis"
+      ],
+      "dimensionTags": {
+        "framework": "sh-fa-math-2024-sek2",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "EINFUEHRUNGSJAHR",
+        "area": "Analysis"
+      },
+      "requires": [
+        "sh-sek2-e-analysis-ableitungen"
+      ],
+      "contains": [],
+      "sourceRef": "Fachanforderungen Mathematik SH (2024), Sekundarstufe II, 3 Themen und Inhalte des Unterrichts, Phasentabelle Analysis / Geometrie / Stochastik, S. 74.",
+      "type": "atomic"
+    },
+    {
+      "id": "sh-sek2-e-analysis-wendepunkte",
+      "title": "Einfuehrungsjahr: Analysis - Wendepunkte und Kruemmung untersuchen",
+      "titleEn": "Introductory Year: Analysis - Investigate Inflection Points and Curvature",
+      "description": "Die Schuelerinnen und Schueler untersuchen im Einfuehrungsjahr Kruemmungsverhalten und Wendepunkte mit Hilfe von Ableitungen und deuten die Ergebnisse am Funktionsgraphen.",
+      "descriptionEn": "Students investigate curvature and inflection points in the introductory year using derivatives and interpret the results on the function graph.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "Einfuehrungsjahr",
+        "Analysis"
+      ],
+      "dimensionTags": {
+        "framework": "sh-fa-math-2024-sek2",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "EINFUEHRUNGSJAHR",
+        "area": "Analysis"
+      },
+      "requires": [
+        "sh-sek2-e-analysis-extrempunkte"
+      ],
       "contains": [],
       "sourceRef": "Fachanforderungen Mathematik SH (2024), Sekundarstufe II, 3 Themen und Inhalte des Unterrichts, Phasentabelle Analysis / Geometrie / Stochastik, S. 74.",
       "type": "atomic"
@@ -158,8 +241,37 @@
       "id": "sh-sek2-e-geometrie",
       "title": "Einfuehrungsjahr: Geometrie",
       "titleEn": "Einfuehrungsjahr: Geometrie",
-      "description": "Die Schuelerinnen und Schueler bearbeiten im Einfuehrungsjahr Vektoren im R2 und R3, Geraden sowie Lagebeziehungen von Geraden.",
-      "descriptionEn": "Die Schuelerinnen und Schueler bearbeiten im Einfuehrungsjahr Vektoren im R2 und R3, Geraden sowie Lagebeziehungen von Geraden.",
+      "description": "Die Schuelerinnen und Schueler bearbeiten im Einfuehrungsjahr Vektoren im R2 und R3, Geraden sowie Lagebeziehungen von Geraden als ersten analytisch-geometrischen Oberstufenkorridor.",
+      "descriptionEn": "Students work in the introductory year on vectors in R2 and R3, lines, and relative positions of lines as a first upper-secondary analytic-geometry corridor.",
+      "weight": 3,
+      "tags": [
+        "Sek2",
+        "Einfuehrungsjahr",
+        "Geometrie"
+      ],
+      "dimensionTags": {
+        "framework": "sh-fa-math-2024-sek2",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "EINFUEHRUNGSJAHR",
+        "area": "Analytische Geometrie"
+      },
+      "requires": [],
+      "contains": [
+        "sh-sek2-e-geometrie-vektoren-r2-r3",
+        "sh-sek2-e-geometrie-geraden",
+        "sh-sek2-e-geometrie-lagebeziehungen-geraden"
+      ],
+      "sourceRef": "Fachanforderungen Mathematik SH (2024), Sekundarstufe II, 3 Themen und Inhalte des Unterrichts, Phasentabelle Analysis / Geometrie / Stochastik, S. 74.",
+      "type": "cluster"
+    },
+    {
+      "id": "sh-sek2-e-geometrie-vektoren-r2-r3",
+      "title": "Einfuehrungsjahr: Geometrie - Vektoren im R2 und R3",
+      "titleEn": "Introductory Year: Geometry - Vectors in R2 and R3",
+      "description": "Die Schuelerinnen und Schueler bearbeiten im Einfuehrungsjahr Vektoren im R2 und R3 und nutzen sie zur Beschreibung von Punkten, Verschiebungen und einfachen geometrischen Situationen.",
+      "descriptionEn": "Students work in the introductory year with vectors in R2 and R3 and use them to describe points, translations, and simple geometric situations.",
       "weight": 1,
       "tags": [
         "Sek2",
@@ -180,11 +292,93 @@
       "type": "atomic"
     },
     {
+      "id": "sh-sek2-e-geometrie-geraden",
+      "title": "Einfuehrungsjahr: Geometrie - Geraden in Koordinatenraeumen beschreiben",
+      "titleEn": "Introductory Year: Geometry - Describe Lines in Coordinate Spaces",
+      "description": "Die Schuelerinnen und Schueler beschreiben im Einfuehrungsjahr Geraden im R2 und R3 mithilfe geeigneter Darstellungen und verknuepfen Punkte, Richtungen und Parameter.",
+      "descriptionEn": "Students describe in the introductory year lines in R2 and R3 using suitable representations and connect points, directions, and parameters.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "Einfuehrungsjahr",
+        "Geometrie"
+      ],
+      "dimensionTags": {
+        "framework": "sh-fa-math-2024-sek2",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "EINFUEHRUNGSJAHR",
+        "area": "Analytische Geometrie"
+      },
+      "requires": [
+        "sh-sek2-e-geometrie-vektoren-r2-r3"
+      ],
+      "contains": [],
+      "sourceRef": "Fachanforderungen Mathematik SH (2024), Sekundarstufe II, 3 Themen und Inhalte des Unterrichts, Phasentabelle Analysis / Geometrie / Stochastik, S. 74.",
+      "type": "atomic"
+    },
+    {
+      "id": "sh-sek2-e-geometrie-lagebeziehungen-geraden",
+      "title": "Einfuehrungsjahr: Geometrie - Lagebeziehungen von Geraden untersuchen",
+      "titleEn": "Introductory Year: Geometry - Investigate Relative Positions of Lines",
+      "description": "Die Schuelerinnen und Schueler untersuchen im Einfuehrungsjahr Lagebeziehungen von Geraden, vergleichen parallele, schneidende und identische Faelle und begruenden ihre Einordnung im Koordinatenraum.",
+      "descriptionEn": "Students investigate in the introductory year relative positions of lines, compare parallel, intersecting, and identical cases, and justify their classification in coordinate space.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "Einfuehrungsjahr",
+        "Geometrie"
+      ],
+      "dimensionTags": {
+        "framework": "sh-fa-math-2024-sek2",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "EINFUEHRUNGSJAHR",
+        "area": "Analytische Geometrie"
+      },
+      "requires": [
+        "sh-sek2-e-geometrie-geraden"
+      ],
+      "contains": [],
+      "sourceRef": "Fachanforderungen Mathematik SH (2024), Sekundarstufe II, 3 Themen und Inhalte des Unterrichts, Phasentabelle Analysis / Geometrie / Stochastik, S. 74.",
+      "type": "atomic"
+    },
+    {
       "id": "sh-sek2-e-stochastik",
       "title": "Einfuehrungsjahr: Stochastik",
       "titleEn": "Einfuehrungsjahr: Stochastik",
-      "description": "Die Schuelerinnen und Schueler bearbeiten im Einfuehrungsjahr Grundbegriffe der Stochastik und bedingte Wahrscheinlichkeit.",
-      "descriptionEn": "Die Schuelerinnen und Schueler bearbeiten im Einfuehrungsjahr Grundbegriffe der Stochastik und bedingte Wahrscheinlichkeit.",
+      "description": "Die Schuelerinnen und Schueler bearbeiten im Einfuehrungsjahr Grundbegriffe der Stochastik sowie bedingte Wahrscheinlichkeit als ersten stochastischen Oberstufenkorridor.",
+      "descriptionEn": "Students work in the introductory year on basic stochastics concepts and conditional probability as a first upper-secondary stochastics corridor.",
+      "weight": 2,
+      "tags": [
+        "Sek2",
+        "Einfuehrungsjahr",
+        "Stochastik"
+      ],
+      "dimensionTags": {
+        "framework": "sh-fa-math-2024-sek2",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "EINFUEHRUNGSJAHR",
+        "area": "Stochastik"
+      },
+      "requires": [],
+      "contains": [
+        "sh-sek2-e-stochastik-grundbegriffe",
+        "sh-sek2-e-stochastik-bedingte-wahrscheinlichkeit"
+      ],
+      "sourceRef": "Fachanforderungen Mathematik SH (2024), Sekundarstufe II, 3 Themen und Inhalte des Unterrichts, Phasentabelle Analysis / Geometrie / Stochastik, S. 74.",
+      "type": "cluster"
+    },
+    {
+      "id": "sh-sek2-e-stochastik-grundbegriffe",
+      "title": "Einfuehrungsjahr: Stochastik - Zufallsexperimente und Laplace-Wahrscheinlichkeiten",
+      "titleEn": "Introductory Year: Stochastics - Random Experiments and Laplace Probabilities",
+      "description": "Die Schuelerinnen und Schueler beschreiben im Einfuehrungsjahr Zufallsexperimente mit Ergebnis, Ergebnismenge und Ereignis, bestimmen einfache Laplace-Wahrscheinlichkeiten und vergleichen sie mit relativen Haeufigkeiten.",
+      "descriptionEn": "Students describe random experiments in the introductory year using outcomes, sample spaces, and events, determine simple Laplace probabilities, and compare them with relative frequencies.",
       "weight": 1,
       "tags": [
         "Sek2",
@@ -205,12 +399,39 @@
       "type": "atomic"
     },
     {
+      "id": "sh-sek2-e-stochastik-bedingte-wahrscheinlichkeit",
+      "title": "Einfuehrungsjahr: Stochastik - Bedingte Wahrscheinlichkeiten bestimmen",
+      "titleEn": "Introductory Year: Stochastics - Determine Conditional Probabilities",
+      "description": "Die Schuelerinnen und Schueler bestimmen im Einfuehrungsjahr bedingte Wahrscheinlichkeiten in einfachen Kontexten und nutzen dazu Baumdiagramme sowie Vierfeldertafeln als geeignete Darstellungen.",
+      "descriptionEn": "Students determine conditional probabilities in simple contexts in the introductory year and use tree diagrams and contingency tables as suitable representations.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "Einfuehrungsjahr",
+        "Stochastik"
+      ],
+      "dimensionTags": {
+        "framework": "sh-fa-math-2024-sek2",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "EINFUEHRUNGSJAHR",
+        "area": "Stochastik"
+      },
+      "requires": [
+        "sh-sek2-e-stochastik-grundbegriffe"
+      ],
+      "contains": [],
+      "sourceRef": "Fachanforderungen Mathematik SH (2024), Sekundarstufe II, 3 Themen und Inhalte des Unterrichts, Phasentabelle Analysis / Geometrie / Stochastik, S. 74.",
+      "type": "atomic"
+    },
+    {
       "id": "sh-sek2-q1-analysis",
       "title": "1. Jahr der Qualifikationsphase: Analysis",
       "titleEn": "1. Jahr der Qualifikationsphase: Analysis",
-      "description": "Die Schuelerinnen und Schueler bearbeiten im ersten Jahr der Qualifikationsphase Integralrechnung, e-Funktion sowie eine Vertiefung der Differenzial- und Integralrechnung.",
-      "descriptionEn": "Die Schuelerinnen und Schueler bearbeiten im ersten Jahr der Qualifikationsphase Integralrechnung, e-Funktion sowie eine Vertiefung der Differenzial- und Integralrechnung.",
-      "weight": 1,
+      "description": "Die Schuelerinnen und Schueler bearbeiten im ersten Jahr der Qualifikationsphase Integralrechnung, e-Funktion sowie eine Vertiefung der Differenzial- und Integralrechnung als analysisorientierten Q1-Korridor.",
+      "descriptionEn": "Students work in the first qualification year on integral calculus, the exponential function e, and a deepening of differential and integral calculus as an analysis-oriented Q1 corridor.",
+      "weight": 3,
       "tags": [
         "Sek2",
         "Q1-Jahr",
@@ -225,6 +446,92 @@
         "area": "Analysis"
       },
       "requires": [],
+      "contains": [
+        "sh-sek2-q1-analysis-integralrechnung",
+        "sh-sek2-q1-analysis-e-funktion",
+        "sh-sek2-q1-analysis-vertiefung"
+      ],
+      "sourceRef": "Fachanforderungen Mathematik SH (2024), Sekundarstufe II, 3 Themen und Inhalte des Unterrichts, Phasentabelle Analysis / Geometrie / Stochastik, S. 74.",
+      "type": "cluster"
+    },
+    {
+      "id": "sh-sek2-q1-analysis-integralrechnung",
+      "title": "1. Jahr der Qualifikationsphase: Analysis - Integralrechnung mit Hauptsatz und Integralen",
+      "titleEn": "First Qualification Year: Analysis - Integral Calculus with Fundamental Theorem and Integrals",
+      "description": "Die Schuelerinnen und Schueler nutzen im ersten Jahr der Qualifikationsphase das bestimmte Integral, den Hauptsatz der Differential- und Integralrechnung sowie elementare Integrationsregeln zur Untersuchung von Funktionen und einfachen Sachzusammenhaengen.",
+      "descriptionEn": "Students use in the first qualification year the definite integral, the Fundamental Theorem of Calculus, and elementary integration rules to investigate functions and simple real-world situations.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "Q1-Jahr",
+        "Analysis"
+      ],
+      "dimensionTags": {
+        "framework": "sh-fa-math-2024-sek2",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "QUALI_1",
+        "area": "Analysis"
+      },
+      "requires": [
+        "sh-sek2-e-analysis-ableitungen"
+      ],
+      "contains": [],
+      "sourceRef": "Fachanforderungen Mathematik SH (2024), Sekundarstufe II, 3 Themen und Inhalte des Unterrichts, Phasentabelle Analysis / Geometrie / Stochastik, S. 74.",
+      "type": "atomic"
+    },
+    {
+      "id": "sh-sek2-q1-analysis-e-funktion",
+      "title": "1. Jahr der Qualifikationsphase: Analysis - e-Funktion und natuerliche Exponentialfunktion",
+      "titleEn": "First Qualification Year: Analysis - e Function and Natural Exponential Function",
+      "description": "Die Schuelerinnen und Schueler nutzen im ersten Jahr der Qualifikationsphase die e-Funktion, begruenden zentrale Eigenschaften der natuerlichen Exponentialfunktion und deuten sie in kontinuierlichen Prozessen.",
+      "descriptionEn": "Students use in the first qualification year the function e^x, justify central properties of the natural exponential function, and interpret it in continuous processes.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "Q1-Jahr",
+        "Analysis"
+      ],
+      "dimensionTags": {
+        "framework": "sh-fa-math-2024-sek2",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "QUALI_1",
+        "area": "Analysis"
+      },
+      "requires": [
+        "sh-sek2-e-analysis-ableitungen"
+      ],
+      "contains": [],
+      "sourceRef": "Fachanforderungen Mathematik SH (2024), Sekundarstufe II, 3 Themen und Inhalte des Unterrichts, Phasentabelle Analysis / Geometrie / Stochastik, S. 74.",
+      "type": "atomic"
+    },
+    {
+      "id": "sh-sek2-q1-analysis-vertiefung",
+      "title": "1. Jahr der Qualifikationsphase: Analysis - Vertiefung der Differenzial- und Integralrechnung",
+      "titleEn": "First Qualification Year: Analysis - Deepening of Differential and Integral Calculus",
+      "description": "Die Schuelerinnen und Schueler vertiefen im ersten Jahr der Qualifikationsphase bekannte Inhalte aus Differenzial- und Integralrechnung und nutzen sie sicher in weiterfuehrenden Funktions- und Modellierungssituationen.",
+      "descriptionEn": "Students deepen known content from differential and integral calculus in the first qualification year and use it reliably in more advanced function and modelling situations.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "Q1-Jahr",
+        "Analysis"
+      ],
+      "dimensionTags": {
+        "framework": "sh-fa-math-2024-sek2",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "QUALI_1",
+        "area": "Analysis"
+      },
+      "requires": [
+        "sh-sek2-q1-analysis-integralrechnung",
+        "sh-sek2-q1-analysis-e-funktion"
+      ],
       "contains": [],
       "sourceRef": "Fachanforderungen Mathematik SH (2024), Sekundarstufe II, 3 Themen und Inhalte des Unterrichts, Phasentabelle Analysis / Geometrie / Stochastik, S. 74.",
       "type": "atomic"
@@ -233,9 +540,9 @@
       "id": "sh-sek2-q1-geometrie",
       "title": "1. Jahr der Qualifikationsphase: Geometrie",
       "titleEn": "1. Jahr der Qualifikationsphase: Geometrie",
-      "description": "Die Schuelerinnen und Schueler bearbeiten im ersten Jahr der Qualifikationsphase Skalarprodukt, Ebenen, Vektorprodukt, Lagebeziehungen zwischen Geraden und Ebenen sowie Abstaende.",
-      "descriptionEn": "Die Schuelerinnen und Schueler bearbeiten im ersten Jahr der Qualifikationsphase Skalarprodukt, Ebenen, Vektorprodukt, Lagebeziehungen zwischen Geraden und Ebenen sowie Abstaende.",
-      "weight": 1,
+      "description": "Die Schuelerinnen und Schueler bearbeiten im ersten Jahr der Qualifikationsphase Skalarprodukt, Ebenen, Vektorprodukt, Lagebeziehungen zwischen Geraden und Ebenen sowie Abstaende als ausgebauten analytisch-geometrischen Oberstufenkorridor.",
+      "descriptionEn": "Students work in the first qualification year on scalar product, planes, vector product, line-plane relations, and distances as an expanded upper-secondary analytic-geometry corridor.",
+      "weight": 5,
       "tags": [
         "Sek2",
         "Q1-Jahr",
@@ -250,6 +557,148 @@
         "area": "Analytische Geometrie"
       },
       "requires": [],
+      "contains": [
+        "sh-sek2-q1-geometrie-skalarprodukt",
+        "sh-sek2-q1-geometrie-ebenen",
+        "sh-sek2-q1-geometrie-vektorprodukt",
+        "sh-sek2-q1-geometrie-lagebeziehungen-geraden-ebenen",
+        "sh-sek2-q1-geometrie-abstaende"
+      ],
+      "sourceRef": "Fachanforderungen Mathematik SH (2024), Sekundarstufe II, 3 Themen und Inhalte des Unterrichts, Phasentabelle Analysis / Geometrie / Stochastik, S. 74.",
+      "type": "cluster"
+    },
+    {
+      "id": "sh-sek2-q1-geometrie-skalarprodukt",
+      "title": "1. Jahr der Qualifikationsphase: Geometrie - Skalarprodukt und Winkel",
+      "titleEn": "First Qualification Year: Geometry - Scalar Product and Angles",
+      "description": "Die Schuelerinnen und Schueler nutzen im ersten Jahr der Qualifikationsphase das Skalarprodukt zur Berechnung von Winkeln, Laengen und einfachen orthogonalen Beziehungen im Raum.",
+      "descriptionEn": "Students use in the first qualification year the scalar product to compute angles, lengths, and simple orthogonal relations in space.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "Q1-Jahr",
+        "Geometrie"
+      ],
+      "dimensionTags": {
+        "framework": "sh-fa-math-2024-sek2",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "QUALI_1",
+        "area": "Analytische Geometrie"
+      },
+      "requires": [
+        "sh-sek2-e-geometrie-vektoren-r2-r3"
+      ],
+      "contains": [],
+      "sourceRef": "Fachanforderungen Mathematik SH (2024), Sekundarstufe II, 3 Themen und Inhalte des Unterrichts, Phasentabelle Analysis / Geometrie / Stochastik, S. 74.",
+      "type": "atomic"
+    },
+    {
+      "id": "sh-sek2-q1-geometrie-ebenen",
+      "title": "1. Jahr der Qualifikationsphase: Geometrie - Ebenen beschreiben und nutzen",
+      "titleEn": "First Qualification Year: Geometry - Describe and Use Planes",
+      "description": "Die Schuelerinnen und Schueler beschreiben im ersten Jahr der Qualifikationsphase Ebenen in geeigneten Darstellungen und nutzen sie zur Analyse geometrischer Situationen im Raum.",
+      "descriptionEn": "Students describe in the first qualification year planes in suitable representations and use them to analyze geometric situations in space.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "Q1-Jahr",
+        "Geometrie"
+      ],
+      "dimensionTags": {
+        "framework": "sh-fa-math-2024-sek2",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "QUALI_1",
+        "area": "Analytische Geometrie"
+      },
+      "requires": [
+        "sh-sek2-e-geometrie-geraden"
+      ],
+      "contains": [],
+      "sourceRef": "Fachanforderungen Mathematik SH (2024), Sekundarstufe II, 3 Themen und Inhalte des Unterrichts, Phasentabelle Analysis / Geometrie / Stochastik, S. 74.",
+      "type": "atomic"
+    },
+    {
+      "id": "sh-sek2-q1-geometrie-vektorprodukt",
+      "title": "1. Jahr der Qualifikationsphase: Geometrie - Vektorprodukt einsetzen",
+      "titleEn": "First Qualification Year: Geometry - Use the Vector Product",
+      "description": "Die Schuelerinnen und Schueler nutzen im ersten Jahr der Qualifikationsphase das Vektorprodukt zur Beschreibung raeumlicher Zusammenhaenge und als weiterfuehrendes Werkzeug in der analytischen Geometrie.",
+      "descriptionEn": "Students use in the first qualification year the vector product to describe spatial relationships and as an advanced tool in analytic geometry.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "Q1-Jahr",
+        "Geometrie"
+      ],
+      "dimensionTags": {
+        "framework": "sh-fa-math-2024-sek2",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "QUALI_1",
+        "area": "Analytische Geometrie"
+      },
+      "requires": [
+        "sh-sek2-q1-geometrie-skalarprodukt"
+      ],
+      "contains": [],
+      "sourceRef": "Fachanforderungen Mathematik SH (2024), Sekundarstufe II, 3 Themen und Inhalte des Unterrichts, Phasentabelle Analysis / Geometrie / Stochastik, S. 74.",
+      "type": "atomic"
+    },
+    {
+      "id": "sh-sek2-q1-geometrie-lagebeziehungen-geraden-ebenen",
+      "title": "1. Jahr der Qualifikationsphase: Geometrie - Lagebeziehungen zwischen Geraden und Ebenen untersuchen",
+      "titleEn": "First Qualification Year: Geometry - Investigate Relative Positions of Lines and Planes",
+      "description": "Die Schuelerinnen und Schueler untersuchen im ersten Jahr der Qualifikationsphase Lagebeziehungen zwischen Geraden und Ebenen und begruenden parallele, schneidende oder enthaltene Faelle im Raum.",
+      "descriptionEn": "Students investigate in the first qualification year relative positions of lines and planes and justify parallel, intersecting, or contained cases in space.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "Q1-Jahr",
+        "Geometrie"
+      ],
+      "dimensionTags": {
+        "framework": "sh-fa-math-2024-sek2",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "QUALI_1",
+        "area": "Analytische Geometrie"
+      },
+      "requires": [
+        "sh-sek2-q1-geometrie-ebenen"
+      ],
+      "contains": [],
+      "sourceRef": "Fachanforderungen Mathematik SH (2024), Sekundarstufe II, 3 Themen und Inhalte des Unterrichts, Phasentabelle Analysis / Geometrie / Stochastik, S. 74.",
+      "type": "atomic"
+    },
+    {
+      "id": "sh-sek2-q1-geometrie-abstaende",
+      "title": "1. Jahr der Qualifikationsphase: Geometrie - Abstaende im Raum bestimmen",
+      "titleEn": "First Qualification Year: Geometry - Determine Distances in Space",
+      "description": "Die Schuelerinnen und Schueler bestimmen im ersten Jahr der Qualifikationsphase Abstaende in analytisch-geometrischen Situationen und verknuepfen dabei Raumvorstellungen, Orthogonalitaet und geeignete Rechenwege.",
+      "descriptionEn": "Students determine in the first qualification year distances in analytic-geometric situations and connect spatial intuition, orthogonality, and suitable solution methods.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "Q1-Jahr",
+        "Geometrie"
+      ],
+      "dimensionTags": {
+        "framework": "sh-fa-math-2024-sek2",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "QUALI_1",
+        "area": "Analytische Geometrie"
+      },
+      "requires": [
+        "sh-sek2-q1-geometrie-skalarprodukt",
+        "sh-sek2-q1-geometrie-lagebeziehungen-geraden-ebenen"
+      ],
       "contains": [],
       "sourceRef": "Fachanforderungen Mathematik SH (2024), Sekundarstufe II, 3 Themen und Inhalte des Unterrichts, Phasentabelle Analysis / Geometrie / Stochastik, S. 74.",
       "type": "atomic"
@@ -258,9 +707,9 @@
       "id": "sh-sek2-q1-stochastik",
       "title": "1. Jahr der Qualifikationsphase: Stochastik",
       "titleEn": "1. Jahr der Qualifikationsphase: Stochastik",
-      "description": "Die Schuelerinnen und Schueler bearbeiten im ersten Jahr der Qualifikationsphase Zufallsgroesse, Erwartungswert, Streuungsmasse sowie Binomial-, hypergeometrische und Normalverteilung.",
-      "descriptionEn": "Die Schuelerinnen und Schueler bearbeiten im ersten Jahr der Qualifikationsphase Zufallsgroesse, Erwartungswert, Streuungsmasse sowie Binomial-, hypergeometrische und Normalverteilung.",
-      "weight": 1,
+      "description": "Die Schuelerinnen und Schueler bearbeiten im ersten Jahr der Qualifikationsphase Zufallsgroessen, Kenngroessen von Verteilungen sowie binomial-, hypergeometrisch und normalverteilte Situationen als ausgebauten stochastischen Oberstufenkorridor.",
+      "descriptionEn": "Students work in the first qualification year on random variables, distribution characteristics, and binomial, hypergeometric, and normal-distribution situations as an expanded upper-secondary stochastics corridor.",
+      "weight": 4,
       "tags": [
         "Sek2",
         "Q1-Jahr",
@@ -275,6 +724,119 @@
         "area": "Stochastik"
       },
       "requires": [],
+      "contains": [
+        "sh-sek2-q1-stochastik-zufallsgroessen-kenngroessen",
+        "sh-sek2-q1-stochastik-binomialverteilungen",
+        "sh-sek2-q1-stochastik-hypergeometrische-verteilungen",
+        "sh-sek2-q1-stochastik-normalverteilung"
+      ],
+      "sourceRef": "Fachanforderungen Mathematik SH (2024), Sekundarstufe II, 3 Themen und Inhalte des Unterrichts, Phasentabelle Analysis / Geometrie / Stochastik, S. 74.",
+      "type": "cluster"
+    },
+    {
+      "id": "sh-sek2-q1-stochastik-zufallsgroessen-kenngroessen",
+      "title": "1. Jahr der Qualifikationsphase: Stochastik - Zufallsgroessen und Kenngroessen von Verteilungen",
+      "titleEn": "First Qualification Year: Stochastics - Random Variables and Distribution Characteristics",
+      "description": "Die Schuelerinnen und Schueler fuehren im ersten Jahr der Qualifikationsphase Zufallsgroessen ein, bestimmen Erwartungswert sowie Streuungsmasse diskreter Verteilungen und deuten diese in einfachen Kontexten.",
+      "descriptionEn": "Students introduce random variables in the first qualification year, determine expected value and dispersion measures of discrete distributions, and interpret them in simple contexts.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "Q1-Jahr",
+        "Stochastik"
+      ],
+      "dimensionTags": {
+        "framework": "sh-fa-math-2024-sek2",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "QUALI_1",
+        "area": "Stochastik"
+      },
+      "requires": [
+        "sh-sek2-e-stochastik-grundbegriffe"
+      ],
+      "contains": [],
+      "sourceRef": "Fachanforderungen Mathematik SH (2024), Sekundarstufe II, 3 Themen und Inhalte des Unterrichts, Phasentabelle Analysis / Geometrie / Stochastik, S. 74.",
+      "type": "atomic"
+    },
+    {
+      "id": "sh-sek2-q1-stochastik-binomialverteilungen",
+      "title": "1. Jahr der Qualifikationsphase: Stochastik - Binomialverteilungen in Kontexten nutzen",
+      "titleEn": "First Qualification Year: Stochastics - Use Binomial Distributions in Contexts",
+      "description": "Die Schuelerinnen und Schueler nutzen im ersten Jahr der Qualifikationsphase binomialverteilte Situationen als Modell, deuten Parameter und Ergebnisse im Kontext und reflektieren die Eignung des Modells.",
+      "descriptionEn": "Students use binomially distributed situations as a model in the first qualification year, interpret parameters and results in context, and reflect on the suitability of the model.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "Q1-Jahr",
+        "Stochastik"
+      ],
+      "dimensionTags": {
+        "framework": "sh-fa-math-2024-sek2",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "QUALI_1",
+        "area": "Stochastik"
+      },
+      "requires": [
+        "sh-sek2-q1-stochastik-zufallsgroessen-kenngroessen"
+      ],
+      "contains": [],
+      "sourceRef": "Fachanforderungen Mathematik SH (2024), Sekundarstufe II, 3 Themen und Inhalte des Unterrichts, Phasentabelle Analysis / Geometrie / Stochastik, S. 74.",
+      "type": "atomic"
+    },
+    {
+      "id": "sh-sek2-q1-stochastik-hypergeometrische-verteilungen",
+      "title": "1. Jahr der Qualifikationsphase: Stochastik - Hypergeometrische Verteilungen als Modelle ohne Zuruecklegen",
+      "titleEn": "First Qualification Year: Stochastics - Hypergeometric Distributions as Models Without Replacement",
+      "description": "Die Schuelerinnen und Schueler nutzen im ersten Jahr der Qualifikationsphase hypergeometrische Verteilungen fuer Ziehungen ohne Zuruecklegen und ordnen solchen Situationen passende Wahrscheinlichkeitsmodelle zu.",
+      "descriptionEn": "Students use hypergeometric distributions in the first qualification year for draws without replacement and assign suitable probability models to such situations.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "Q1-Jahr",
+        "Stochastik"
+      ],
+      "dimensionTags": {
+        "framework": "sh-fa-math-2024-sek2",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "QUALI_1",
+        "area": "Stochastik"
+      },
+      "requires": [
+        "sh-sek2-q1-stochastik-zufallsgroessen-kenngroessen"
+      ],
+      "contains": [],
+      "sourceRef": "Fachanforderungen Mathematik SH (2024), Sekundarstufe II, 3 Themen und Inhalte des Unterrichts, Phasentabelle Analysis / Geometrie / Stochastik, S. 74.",
+      "type": "atomic"
+    },
+    {
+      "id": "sh-sek2-q1-stochastik-normalverteilung",
+      "title": "1. Jahr der Qualifikationsphase: Stochastik - Normalverteilung einordnen",
+      "titleEn": "First Qualification Year: Stochastics - Situate the Normal Distribution",
+      "description": "Die Schuelerinnen und Schueler ordnen im ersten Jahr der Qualifikationsphase die Normalverteilung als weiteren Verteilungstyp ein und beziehen sie auf die zuvor bearbeiteten diskreten Verteilungen.",
+      "descriptionEn": "Students situate the normal distribution in the first qualification year as a further type of distribution and relate it to the previously studied discrete distributions.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "Q1-Jahr",
+        "Stochastik"
+      ],
+      "dimensionTags": {
+        "framework": "sh-fa-math-2024-sek2",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "QUALI_1",
+        "area": "Stochastik"
+      },
+      "requires": [
+        "sh-sek2-q1-stochastik-binomialverteilungen"
+      ],
       "contains": [],
       "sourceRef": "Fachanforderungen Mathematik SH (2024), Sekundarstufe II, 3 Themen und Inhalte des Unterrichts, Phasentabelle Analysis / Geometrie / Stochastik, S. 74.",
       "type": "atomic"
@@ -283,9 +845,9 @@
       "id": "sh-sek2-q2-analysis",
       "title": "2. Jahr der Qualifikationsphase: Analysis",
       "titleEn": "2. Jahr der Qualifikationsphase: Analysis",
-      "description": "Die Schuelerinnen und Schueler bearbeiten im zweiten Jahr der Qualifikationsphase Funktionenscharen sowie eine weitere Vertiefung der Differenzial- und Integralrechnung.",
-      "descriptionEn": "Die Schuelerinnen und Schueler bearbeiten im zweiten Jahr der Qualifikationsphase Funktionenscharen sowie eine weitere Vertiefung der Differenzial- und Integralrechnung.",
-      "weight": 1,
+      "description": "Die Schuelerinnen und Schueler bearbeiten im zweiten Jahr der Qualifikationsphase Funktionenscharen mit Parameterbedingungen sowie eine weitere Vertiefung der Differenzial- und Integralrechnung.",
+      "descriptionEn": "Students work in the second qualification year on function families with parameter conditions as well as a further deepening of differential and integral calculus.",
+      "weight": 2,
       "tags": [
         "Sek2",
         "Q2-Jahr",
@@ -300,6 +862,63 @@
         "area": "Analysis"
       },
       "requires": [],
+      "contains": [
+        "sh-sek2-q2-analysis-funktionenscharen-parameter",
+        "sh-sek2-q2-analysis-vertiefung"
+      ],
+      "sourceRef": "Fachanforderungen Mathematik SH (2024), Sekundarstufe II, 3 Themen und Inhalte des Unterrichts, Phasentabelle Analysis / Geometrie / Stochastik, S. 74.",
+      "type": "cluster"
+    },
+    {
+      "id": "sh-sek2-q2-analysis-funktionenscharen-parameter",
+      "title": "2. Jahr der Qualifikationsphase: Analysis - Parameter in Funktionenscharen aus Bedingungen bestimmen",
+      "titleEn": "Second Qualification Year: Analysis - Determine Parameters in Function Families from Conditions",
+      "description": "Die Schuelerinnen und Schueler bestimmen im zweiten Jahr der Qualifikationsphase Parameter in Funktionenscharen aus vorgegebenen Bedingungen und begruenden, wie sich dadurch Lage und Form der Graphen aendern.",
+      "descriptionEn": "Students determine parameters in function families from given conditions in the second qualification year and justify how this changes the position and shape of the graphs.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "Q2-Jahr",
+        "Analysis"
+      ],
+      "dimensionTags": {
+        "framework": "sh-fa-math-2024-sek2",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "QUALI_2",
+        "area": "Analysis"
+      },
+      "requires": [
+        "sh-sek2-q1-analysis-vertiefung"
+      ],
+      "contains": [],
+      "sourceRef": "Fachanforderungen Mathematik SH (2024), Sekundarstufe II, 3 Themen und Inhalte des Unterrichts, Phasentabelle Analysis / Geometrie / Stochastik, S. 74.",
+      "type": "atomic"
+    },
+    {
+      "id": "sh-sek2-q2-analysis-vertiefung",
+      "title": "2. Jahr der Qualifikationsphase: Analysis - Differenzial- und Integralrechnung weiter vertiefen",
+      "titleEn": "Second Qualification Year: Analysis - Further Deepen Differential and Integral Calculus",
+      "description": "Die Schuelerinnen und Schueler vertiefen im zweiten Jahr der Qualifikationsphase weiterfuehrende Aspekte der Differenzial- und Integralrechnung, ohne dass die Fachanforderungen hier bereits einen schmaleren, eindeutig isolierbaren Unterpunkt ausweisen.",
+      "descriptionEn": "Students deepen advanced aspects of differential and integral calculus in the second qualification year, without the subject requirements yet isolating a narrower clearly separable sub-point here.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "Q2-Jahr",
+        "Analysis"
+      ],
+      "dimensionTags": {
+        "framework": "sh-fa-math-2024-sek2",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "QUALI_2",
+        "area": "Analysis"
+      },
+      "requires": [
+        "sh-sek2-q1-analysis-vertiefung"
+      ],
       "contains": [],
       "sourceRef": "Fachanforderungen Mathematik SH (2024), Sekundarstufe II, 3 Themen und Inhalte des Unterrichts, Phasentabelle Analysis / Geometrie / Stochastik, S. 74.",
       "type": "atomic"
@@ -333,9 +952,9 @@
       "id": "sh-sek2-q2-stochastik",
       "title": "2. Jahr der Qualifikationsphase: Stochastik",
       "titleEn": "2. Jahr der Qualifikationsphase: Stochastik",
-      "description": "Die Schuelerinnen und Schueler bearbeiten im zweiten Jahr der Qualifikationsphase Signifikanztests und das Schaetzen von Wahrscheinlichkeiten.",
-      "descriptionEn": "Die Schuelerinnen und Schueler bearbeiten im zweiten Jahr der Qualifikationsphase Signifikanztests und das Schaetzen von Wahrscheinlichkeiten.",
-      "weight": 1,
+      "description": "Die Schuelerinnen und Schueler bearbeiten im zweiten Jahr der Qualifikationsphase Signifikanztests, Testentscheidungen im Kontext, das Schaetzen von Wahrscheinlichkeiten und das Deuten von Konfidenzniveaus als ausgebauten stochastischen Q2-Korridor.",
+      "descriptionEn": "Students work in the second qualification year on significance tests, contextual test decisions, estimating probabilities, and interpreting confidence levels as an expanded Q2 stochastics corridor.",
+      "weight": 4,
       "tags": [
         "Sek2",
         "Q2-Jahr",
@@ -350,6 +969,120 @@
         "area": "Stochastik"
       },
       "requires": [],
+      "contains": [
+        "sh-sek2-q2-stochastik-signifikanztests",
+        "sh-sek2-q2-stochastik-testentscheidungen",
+        "sh-sek2-q2-stochastik-konfidenzintervalle",
+        "sh-sek2-q2-stochastik-konfidenzniveau"
+      ],
+      "sourceRef": "Fachanforderungen Mathematik SH (2024), Sekundarstufe II, 3 Themen und Inhalte des Unterrichts, Phasentabelle Analysis / Geometrie / Stochastik, S. 74.",
+      "type": "cluster"
+    },
+    {
+      "id": "sh-sek2-q2-stochastik-signifikanztests",
+      "title": "2. Jahr der Qualifikationsphase: Stochastik - Signifikanztests ansetzen",
+      "titleEn": "Second Qualification Year: Stochastics - Set Up Significance Tests",
+      "description": "Die Schuelerinnen und Schueler formulieren im zweiten Jahr der Qualifikationsphase fuer Signifikanztests passende Null- und Alternativhypothesen und ordnen sie einer binomialen Testsituation zu.",
+      "descriptionEn": "Students formulate suitable null and alternative hypotheses for significance tests in the second qualification year and assign them to a binomial testing situation.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "Q2-Jahr",
+        "Stochastik"
+      ],
+      "dimensionTags": {
+        "framework": "sh-fa-math-2024-sek2",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "QUALI_2",
+        "area": "Stochastik"
+      },
+      "requires": [
+        "sh-sek2-q1-stochastik-binomialverteilungen"
+      ],
+      "contains": [],
+      "sourceRef": "Fachanforderungen Mathematik SH (2024), Sekundarstufe II, 3 Themen und Inhalte des Unterrichts, Phasentabelle Analysis / Geometrie / Stochastik, S. 74.",
+      "type": "atomic"
+    },
+    {
+      "id": "sh-sek2-q2-stochastik-testentscheidungen",
+      "title": "2. Jahr der Qualifikationsphase: Stochastik - Testentscheidungen im Kontext deuten",
+      "titleEn": "Second Qualification Year: Stochastics - Interpret Test Decisions in Context",
+      "description": "Die Schuelerinnen und Schueler entscheiden im zweiten Jahr der Qualifikationsphase, ob eine Nullhypothese verworfen oder beibehalten wird, und formulieren das Testergebnis in einer binomialen Anwendungssituation verstaendlich im Kontext.",
+      "descriptionEn": "Students decide in the second qualification year whether a null hypothesis is rejected or retained and formulate the test result understandably in a binomial application context.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "Q2-Jahr",
+        "Stochastik"
+      ],
+      "dimensionTags": {
+        "framework": "sh-fa-math-2024-sek2",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "QUALI_2",
+        "area": "Stochastik"
+      },
+      "requires": [
+        "sh-sek2-q2-stochastik-signifikanztests"
+      ],
+      "contains": [],
+      "sourceRef": "Fachanforderungen Mathematik SH (2024), Sekundarstufe II, 3 Themen und Inhalte des Unterrichts, Phasentabelle Analysis / Geometrie / Stochastik, S. 74.",
+      "type": "atomic"
+    },
+    {
+      "id": "sh-sek2-q2-stochastik-konfidenzintervalle",
+      "title": "2. Jahr der Qualifikationsphase: Stochastik - Wahrscheinlichkeiten mit Konfidenzintervallen schaetzen",
+      "titleEn": "Second Qualification Year: Stochastics - Estimate Probabilities with Confidence Intervals",
+      "description": "Die Schuelerinnen und Schueler schaetzen im zweiten Jahr der Qualifikationsphase Wahrscheinlichkeiten aus Stichproben und geben dazu Konfidenzintervalle als geeignete Unsicherheitsbereiche an.",
+      "descriptionEn": "Students estimate probabilities from samples in the second qualification year and state confidence intervals as suitable uncertainty ranges.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "Q2-Jahr",
+        "Stochastik"
+      ],
+      "dimensionTags": {
+        "framework": "sh-fa-math-2024-sek2",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "QUALI_2",
+        "area": "Stochastik"
+      },
+      "requires": [
+        "sh-sek2-q1-stochastik-zufallsgroessen-kenngroessen",
+        "sh-sek2-q1-stochastik-binomialverteilungen"
+      ],
+      "contains": [],
+      "sourceRef": "Fachanforderungen Mathematik SH (2024), Sekundarstufe II, 3 Themen und Inhalte des Unterrichts, Phasentabelle Analysis / Geometrie / Stochastik, S. 74.",
+      "type": "atomic"
+    },
+    {
+      "id": "sh-sek2-q2-stochastik-konfidenzniveau",
+      "title": "2. Jahr der Qualifikationsphase: Stochastik - Konfidenzniveaus deuten",
+      "titleEn": "Second Qualification Year: Stochastics - Interpret Confidence Levels",
+      "description": "Die Schuelerinnen und Schueler erklaeren im zweiten Jahr der Qualifikationsphase die Bedeutung eines Konfidenzniveaus in Worten, vermeiden typische Fehlinterpretationen und beziehen dies auf eine gegebene Stichprobensituation.",
+      "descriptionEn": "Students explain the meaning of a confidence level in words in the second qualification year, avoid typical misinterpretations, and relate this to a given sampling situation.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "Q2-Jahr",
+        "Stochastik"
+      ],
+      "dimensionTags": {
+        "framework": "sh-fa-math-2024-sek2",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "QUALI_2",
+        "area": "Stochastik"
+      },
+      "requires": [
+        "sh-sek2-q2-stochastik-konfidenzintervalle"
+      ],
       "contains": [],
       "sourceRef": "Fachanforderungen Mathematik SH (2024), Sekundarstufe II, 3 Themen und Inhalte des Unterrichts, Phasentabelle Analysis / Geometrie / Stochastik, S. 74.",
       "type": "atomic"
