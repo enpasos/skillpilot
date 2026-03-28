@@ -16,7 +16,7 @@ export const getAudioPlayerCopy = (language: LabelLanguage): AudioPlayerCopy => 
         pauseLabel: 'Pause',
       }
     : {
-        notebookLabel: 'Deep Dive: SkillPilot erklaert',
+        notebookLabel: 'Deep Dive: SkillPilot erklärt',
         subtitle: 'Generiert mit NotebookLM',
         playLabel: 'Abspielen',
         pauseLabel: 'Pause',

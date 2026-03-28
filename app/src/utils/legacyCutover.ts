@@ -191,7 +191,7 @@ export const buildLegacyHessenLowerPreviewItems = (
   return [
     { label: 'Quelle', value: 'Hessen Sek I' },
     { label: 'Ziel', value: 'Gymnasium (DE)' },
-    { label: 'Faecher', value: selectedSubjects || 'Mathematik, Physik, Chemie, Biologie, Französisch' },
+    { label: 'Fächer', value: selectedSubjects || 'Mathematik, Physik, Chemie, Biologie, Französisch' },
   ]
 }
 

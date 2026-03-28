@@ -78,7 +78,7 @@ export const getPersonalCurriculumSetupCopy = (
   ...(language === 'de'
     ? {
         title: 'Mein Lehrplan',
-        subtitle: 'Waehle zuerst Sekundarstufen, dann Faecher und fuer Sekundarstufe II die Kursniveaus.',
+        subtitle: 'Wähle zuerst Sekundarstufen, dann Fächer und für Sekundarstufe II die Kursniveaus.',
         preferencesTitle: 'Auswahlpriorisierung',
         randomStrategy: 'Zufaellig (Abwechslung)',
         sequentialStrategy: 'Schritt fuer Schritt',
@@ -150,7 +150,7 @@ export const getClassSetupCopy = (language: LabelLanguage): ClassSetupCopy => ({
         landscapeLabel: 'Fach / Landscape',
         levelFilterLabel: 'Filter / Niveau',
         noAdditionalCourseFilter: 'Kein zusaetzlicher Kursfilter verfuegbar',
-        courseFilterOnlySek2: 'Kursniveau nur fuer Sekundarstufe II relevant',
+        courseFilterOnlySek2: 'Kursniveau nur für Sekundarstufe II relevant',
         studentsLabel: 'Schuelerliste (Namen)',
         studentsHint: 'Ein Name pro Zeile oder durch Komma getrennt. Die Zuordnung Name ↔ SkillPilot-ID wird nur lokal gespeichert.',
         studentsPlaceholder: 'Peter\nFranz\nSimone',
