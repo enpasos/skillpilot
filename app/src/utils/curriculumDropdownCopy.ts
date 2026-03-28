@@ -16,7 +16,7 @@ export const getCurriculumDropdownCopy = (
     ? {
         categoryLabels: {
           SCHOOL: 'Schule',
-          UNI: 'Universitaet & Hochschule',
+          UNI: 'Universität & Hochschule',
           OTHER: 'Sprachen & Weiterbildung',
         },
         recommendedGroupLabel: 'Empfohlene Curricula',

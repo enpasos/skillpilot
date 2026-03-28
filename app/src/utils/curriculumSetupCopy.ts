@@ -143,7 +143,7 @@ export const getClassSetupCopy = (language: LabelLanguage): ClassSetupCopy => ({
         title: 'Neue Klasse / Kurs anlegen',
         classNameLabel: 'Bezeichnung',
         classNamePlaceholder: 'z.B. Physik LK',
-        selectSubjectFirst: 'Bitte waehle zuerst ein Fach aus.',
+        selectSubjectFirst: 'Bitte wähle zuerst ein Fach aus.',
         createLearnerFailedStatus: (status: number) => `Anlegen fehlgeschlagen (Status ${status}).`,
         createLearnerFailedGeneric: 'Anlegen der SkillPilot-ID fehlgeschlagen.',
         missingSkillpilotId: 'Keine SkillPilot-ID erhalten.',

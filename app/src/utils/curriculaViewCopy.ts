@@ -19,9 +19,9 @@ export const getCurriculaViewCopy = (language: LabelLanguage): CurriculaViewCopy
       }
     : {
         topicsLabel: 'Themen',
-        noTopicsAvailable: 'Keine Themen verfuegbar.',
+        noTopicsAvailable: 'Keine Themen verfügbar.',
         loggedInAsGithubUser: 'Als GitHub-Nutzer eingeloggt',
-        deregisterEntriesBadge: (count: number) => `${count} Eintraege`,
+        deregisterEntriesBadge: (count: number) => `${count} Einträge`,
         deregisterGoalsBadge: (count: number) => `${count} Ziele`,
       }
 )
