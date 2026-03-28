@@ -8,6 +8,7 @@ interface ConfirmModalProps {
   children: React.ReactNode;
   confirmText?: string;
   confirmClassName?: string;
+  confirmDisabled?: boolean;
 }
 
 export const ConfirmModal: React.FC<ConfirmModalProps> = ({
@@ -18,6 +19,7 @@ export const ConfirmModal: React.FC<ConfirmModalProps> = ({
   children,
   confirmText = 'Bestätigen',
   confirmClassName = 'bg-sky-600 hover:bg-sky-500',
+  confirmDisabled = false,
 }) => {
   if (!isOpen) {
     return null;
@@ -43,7 +45,8 @@ export const ConfirmModal: React.FC<ConfirmModalProps> = ({
           </button>
           <button
             onClick={onConfirm}
-            className={`px-6 py-2 rounded-lg text-white font-medium transition-colors ${confirmClassName}`}
+            disabled={confirmDisabled}
+            className={`px-6 py-2 rounded-lg text-white font-medium transition-colors disabled:cursor-not-allowed disabled:opacity-50 ${confirmClassName}`}
           >
             {confirmText}
           </button>

@@ -793,6 +793,7 @@ export const CurriculaView: React.FC = () => {
               title={championCopy.deregisterModalTitle}
               confirmText={championCopy.deregisterModalConfirm}
               confirmClassName="bg-red-600 hover:bg-red-700"
+              confirmDisabled={selectedDeregisterIds.length === 0}
             >
               <div className="space-y-4">
                 <p>{championCopy.deregisterPrompt}</p>
