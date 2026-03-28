@@ -23,10 +23,12 @@ This project is an invitation to the community to jointly build and bring to lif
 -   [Curricula & Champions](https://skillpilot.com/curricula)
 -   [Champion guide](qa-ci/champion-guide.md)
 -   [Four-level QA model](qa-ci/four-level-champion-model.md)
+-   [Canonical Gymnasium Math rollout status](dev/canonical-gymnasium-math-bundeslaender-status.md)
 
 ### High-level overview
 -   [Whitepaper (EN)](whitepaper/whitepaper.en.md)
 -   [Whitepaper (DE)](whitepaper/whitepaper.de.md)
+-   [Canonical Gymnasium implementation plan](dev/canonical-gymnasium-implementation-plan.md)
 
 ## Inside this documentation
 

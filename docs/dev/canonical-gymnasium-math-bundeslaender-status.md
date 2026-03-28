@@ -50,7 +50,7 @@ This file is generated from:
 | --- | --- | ---: | --- | ---: | --- | --- |
 | `DE-BY` Bayern | `P5` Broad state coverage | `85%` | `yes` | `267` | `archived_inputs` | `active` |
 | `DE-HE` Hessen | `P5` Broad state coverage | `85%` | `yes` | `484` | `snapshots_active` | `active` |
-| `DE-NW` Nordrhein-Westfalen | `P5` Broad state coverage | `85%` | `yes` | `56` | `snapshots_active` | `active` |
+| `DE-NW` Nordrhein-Westfalen | `P5` Broad state coverage | `85%` | `yes` | `62` | `snapshots_active` | `active` |
 | `DE-BW` Baden-Wuerttemberg | `P4` First corridor reviewed | `65%` | `yes` | `165` | `snapshots_active` | `active` |
 | `DE-NI` Niedersachsen | `P4` First corridor reviewed | `65%` | `yes` | `158` | `snapshots_active` | `active` |
 | `DE-BB` Brandenburg | `P4` First corridor reviewed | `65%` | `no` | `120` | `snapshots_active` | `next_wave` |
@@ -69,7 +69,7 @@ This file is generated from:
 
 - `DE-BY` (`P5`, `active`): Use Bavaria as the second broad comparison lane and keep gap-closing work corridor-specific.
 - `DE-HE` (`P5`, `active`): Keep Hessen as the stable reference baseline while other states broaden.
-- `DE-NW` (`P5`, `active`): Broaden Nordrhein-Westfalen from its now atom-anchored lower-secondary prerequisite/functions and upper-secondary analysis pilot coverage toward broader state coverage through another equally explicit NRW source corridor rather than reopening structural parent cleanup inside the current NRW snapshots.
+- `DE-NW` (`P5`, `active`): Broaden Nordrhein-Westfalen from its now multi-corridor lower-secondary prerequisite/functions and upper-secondary analysis plus first geometry/linear-algebra pilot coverage toward broader state coverage through a similarly explicit NRW follow-on such as the Q-phase geometry/linear-algebra continuation or another clearly exposed source corridor, rather than reopening parent cleanup inside the current NRW snapshots.
 - `DE-BW` (`P4`, `active`): Treat the active BW lower-secondary pilot snapshot as exhausted at explicit source-residue level: there are no unmapped goals left inside the imported Sek-I snapshot, so further widening should happen only by intentionally importing additional retained non-core source sections or another BW source lane, while the reviewed Kursstufe pilot snapshot remains fully stable.
 - `DE-NI` (`P4`, `active`): Treat the currently opened Niedersachsen Sek-I right-triangle / similarity and quadratics follow-ons as exhausted at explicit source-residue level; widen Niedersachsen further only if the next lower-secondary source corridor is imported cleanly or a separate Berufliches-Gymnasium lane is opened intentionally.
 - `DE-BB` (`P4`, `next_wave`): Treat Brandenburg's current linear-representation/projection side lane as exhausted at the explicitly source-exposed residue level; only widen it further if a clearly exposed matrix / linear-model follow-on appears, otherwise return to Berlin optional-course residue or another Brandenburg strip with equally explicit source-to-canonical alignment.
@@ -80,7 +80,7 @@ This file is generated from:
 
 - `DE-BY`: Use Bavaria as the second broad comparison lane and keep gap-closing work corridor-specific.
 - `DE-HE`: Keep Hessen as the stable reference baseline while other states broaden.
-- `DE-NW`: Broaden Nordrhein-Westfalen from its now atom-anchored lower-secondary prerequisite/functions and upper-secondary analysis pilot coverage toward broader state coverage through another equally explicit NRW source corridor rather than reopening structural parent cleanup inside the current NRW snapshots.
+- `DE-NW`: Broaden Nordrhein-Westfalen from its now multi-corridor lower-secondary prerequisite/functions and upper-secondary analysis plus first geometry/linear-algebra pilot coverage toward broader state coverage through a similarly explicit NRW follow-on such as the Q-phase geometry/linear-algebra continuation or another clearly exposed source corridor, rather than reopening parent cleanup inside the current NRW snapshots.
 - `DE-BW`: Treat the active BW lower-secondary pilot snapshot as exhausted at explicit source-residue level: there are no unmapped goals left inside the imported Sek-I snapshot, so further widening should happen only by intentionally importing additional retained non-core source sections or another BW source lane, while the reviewed Kursstufe pilot snapshot remains fully stable.
 - `DE-NI`: Treat the currently opened Niedersachsen Sek-I right-triangle / similarity and quadratics follow-ons as exhausted at explicit source-residue level; widen Niedersachsen further only if the next lower-secondary source corridor is imported cleanly or a separate Berufliches-Gymnasium lane is opened intentionally.
 - `DE-BB`: Treat Brandenburg's current linear-representation/projection side lane as exhausted at the explicitly source-exposed residue level; only widen it further if a clearly exposed matrix / linear-model follow-on appears, otherwise return to Berlin optional-course residue or another Brandenburg strip with equally explicit source-to-canonical alignment.

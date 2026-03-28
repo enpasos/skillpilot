@@ -8,6 +8,7 @@ See also:
 
 - `docs/concept/curriculum-graph/canonical-gymnasium-rollout.md`
 - `docs/dev/canonical-gymnasium-migration-status.md`
+- `docs/dev/canonical-gymnasium-math-bundeslaender-status.md`
 - `docs/dev/canonical-gymnasium-applicability-design.md`
 
 ## Purpose

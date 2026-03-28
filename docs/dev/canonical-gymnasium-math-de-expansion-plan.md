@@ -673,6 +673,7 @@ Program interpretation:
 - the NRW lane now also anchors the retained upper-secondary Q-phase exponential parent on the shared canonical exponential-functions cluster, so the next NRW upper-secondary move shifts away from that reviewed exponential umbrella and toward the retained E-phase power/polynomial split or another equally explicit imported corridor
 - the NRW lane now also anchors the retained upper-secondary E-phase power/polynomial split on the shared canonical `Funktionen und ihre Darstellung` cluster, so the current NRW upper-secondary pilot subset is now parent-anchored on its remaining explicit retained split parents and the next NRW move should come from another equally explicit imported corridor rather than more parent cleanup inside the current pilot subset
 - the NRW lane now also reaches the explicit lower-secondary Stage-1 algebra prerequisite strip on shared canonical variables/terms, term-evaluation, fraction-term, and broad Sek-I algebra goals, so the remaining unmapped NRW Sek-I goals inside the current snapshot are structural parents rather than still-open explicit atomic residues and the next NRW move should come from another equally explicit imported corridor rather than renewed parent cleanup
+- the NRW lane now also opens the first explicit upper-secondary `2.3 Analytische Geometrie und Lineare Algebra (G)` corridor and anchors its E-phase entry strip on shared canonical space/vector, mixed orientation-in-space, parametric-line, line-relation, and geometric-LGS anchors, so Nordrhein-Westfalen now spans both the initial upper-secondary analysis spine and a first upper-secondary geometry / linear-algebra entry corridor and the next NRW move should be a similarly explicit follow-on such as Q-phase geometry/linear algebra or another clearly exposed corridor
 
 ## Update workflow
 
@@ -686,7 +687,7 @@ Program interpretation:
 
 Keep the tracker stable and use it to drive math work in this order:
 
-1. broaden Nordrhein-Westfalen from its now atom-anchored lower-secondary prerequisite/functions plus upper-secondary analysis pilot coverage toward broader state coverage, but do so via another equally explicit NRW source corridor rather than reopening structural parent cleanup inside the already reviewed NRW snapshots
+1. broaden Nordrhein-Westfalen from its now atom-anchored lower-secondary prerequisite/functions plus upper-secondary analysis and first geometry/linear-algebra pilot coverage toward broader state coverage, but do so via another equally explicit NRW source corridor rather than reopening structural parent cleanup inside the already reviewed NRW snapshots
 2. keep Baden-Wuerttemberg and Niedersachsen stable at their now exhausted explicit lower-secondary pilot-snapshot / strip level unless additional retained source corridors are imported intentionally
 3. keep Brandenburg, Berlin, and Schleswig-Holstein stable at their explicitly source-exposed residue level unless a genuinely clearer local follow-on appears that changes the nationwide rollout picture
 
