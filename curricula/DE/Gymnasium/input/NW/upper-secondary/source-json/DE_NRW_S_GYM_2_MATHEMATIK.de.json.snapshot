@@ -8,8 +8,8 @@
   "frameworkId": "nrw-klp-gost-math",
   "title": "Mathematik Oberstufe (Nordrhein-Westfalen, Pilot-Quellsnapshot)",
   "titleEn": "Mathematics Upper Secondary (North Rhine-Westphalia, Pilot Source Snapshot)",
-  "description": "Erster archivierter NRW-Quellsnapshot fuer den Funktions-, Analysis- und einen ersten Geometrie-/Lineare-Algebra-Korridor des Kernlehrplans Mathematik Sekundarstufe II (Gymnasium/Gesamtschule, 2023). Der Snapshot bildet zunaechst die fuer das deutschlandweite Mathematik-Onboarding priorisierten Funktionen-und-Analysis-Kompetenzen aus Einfuehrungsphase sowie Grund- und Leistungskurs ab und oeffnet jetzt zusaetzlich den expliziten Einfuehrungsphasen-Einstieg `Analytische Geometrie und Lineare Algebra (G)`.",
-  "descriptionEn": "First archived NRW source snapshot for the functions, analysis, and a first geometry/linear-algebra corridor of the upper-secondary mathematics curriculum (Gymnasium/comprehensive school, 2023). The snapshot initially covers the functions-and-analysis competencies prioritized for Germany-wide mathematics onboarding from the introductory and qualification phases and now additionally opens the explicit introductory-phase `Analytic Geometry and Linear Algebra (G)` entry corridor.",
+  "description": "Erster archivierter NRW-Quellsnapshot fuer den Funktions-, Analysis-, Geometrie-/Lineare-Algebra- und erste Stochastik-Korridore des Kernlehrplans Mathematik Sekundarstufe II (Gymnasium/Gesamtschule, 2023). Der Snapshot bildet zunaechst die fuer das deutschlandweite Mathematik-Onboarding priorisierten Funktionen-und-Analysis-Kompetenzen aus Einfuehrungsphase sowie Grund- und Leistungskurs ab und oeffnet jetzt zusaetzlich den expliziten Einfuehrungsphasen-Einstieg `Analytische Geometrie und Lineare Algebra (G)`, einen ersten schmalen Grundkurs-Follow-on zu Skalarprodukt, Ebenen, Geraden-Ebenen-Schnitten und Schnittwinkeln, drei schmale Leistungskurs-Follow-ons zu Ebenen in Parameter-, Normalen- und Koordinatenform, Lagebeziehungen, Schnittwinkeln, Abstaenden sowie linearen Gleichungssystemen im Raum, zwei schmale Grundkurs-Stochastikstreifen zu Baumdiagrammen, Vierfeldertafeln, Unabhaengigkeit, bedingter Wahrscheinlichkeit, Zufallsgroessen, Kenngroessen und Binomialverteilungen sowie zwei schmale Leistungskurs-Stochastikstreifen zu Prognoseintervallen, Konfidenzintervallen, Stichprobenumfang, stetigen Zufallsgroessen und Normalverteilung.",
+  "descriptionEn": "First archived NRW source snapshot for the functions, analysis, geometry/linear-algebra, and first stochastics corridors of the upper-secondary mathematics curriculum (Gymnasium/comprehensive school, 2023). The snapshot initially covers the functions-and-analysis competencies prioritized for Germany-wide mathematics onboarding from the introductory and qualification phases and now additionally opens the explicit introductory-phase `Analytic Geometry and Linear Algebra (G)` entry corridor, a first narrow basic-course follow-on on scalar product, planes, line-plane intersections, and angles, three narrow advanced-course follow-ons on planes in parametric, normal, and coordinate form, positional relations, angles, distances, and systems of linear equations in space, two narrow basic-course stochastics strips on tree diagrams, contingency tables, independence, conditional probability, random variables, characteristic values, and binomial distributions, as well as two narrow advanced-course stochastics strips on prediction intervals, confidence intervals, sample size, continuous random variables, and the normal distribution.",
   "compatibilityOnly": true,
   "legacyHiddenByDefault": true,
   "filters": [
@@ -27,26 +27,31 @@
       "id": "06ef6e21-0c8d-41b8-b08a-b266ec5e7d9a",
       "title": "Mathematik Oberstufe",
       "titleEn": "Mathematics Upper Secondary",
-      "description": "Pilot-Subset der nordrhein-westfaelischen Mathematik-Kompetenzerwartungen der Oberstufe mit Fokus auf Funktionen, Analysis sowie einem ersten Geometrie-und-Lineare-Algebra-Korridor.",
-      "descriptionEn": "Pilot subset of the North Rhine-Westphalian upper-secondary mathematics competency expectations with a focus on functions, analysis, and a first geometry-and-linear-algebra corridor.",
-      "weight": 29,
+      "description": "Pilot-Subset der nordrhein-westfaelischen Mathematik-Kompetenzerwartungen der Oberstufe mit Fokus auf Funktionen, Analysis, einem ersten Geometrie-und-Lineare-Algebra-Korridor samt schrittweise geoeffneten Leistungskurs-Follow-ons sowie ersten Grund- und Leistungskurs-Stochastikstreifen.",
+      "descriptionEn": "Pilot subset of the North Rhine-Westphalian upper-secondary mathematics competency expectations with a focus on functions, analysis, a first geometry-and-linear-algebra corridor including stepwise-opened advanced-course follow-ons, and first basic-course and advanced-course stochastics strips.",
+      "weight": 55,
       "tags": [
         "GK",
         "LK",
         "PilotSubset",
         "Analysis",
         "Geometry",
-        "LinearAlgebra"
+        "LinearAlgebra",
+        "Stochastics"
       ],
       "contains": [
         "8fe81d64-ff44-46cf-964b-3312ca6dfa28",
         "31305eea-edf2-41b3-b312-bb1bc92f8fb7",
-        "a429a190-e7c7-4584-8ff6-2c5e6559b6e5"
+        "a429a190-e7c7-4584-8ff6-2c5e6559b6e5",
+        "7718ad42-f3d8-405e-ae40-6c544aef5220",
+        "16294415-5ccb-4422-9b8c-00eb1fc8049e",
+        "14e62dd5-ebcf-4815-b5f3-f22efe564eeb",
+        "91df70b1-c66a-4967-afe4-3b5347f5b05f"
       ],
       "requires": [
         "8fe81d64-ff44-46cf-964b-3312ca6dfa28"
       ],
-      "sourceRef": "KLP NRW Mathematik Sek II (Gymnasium/Gesamtschule, 2023), Kap. 1 sowie 2.3-2.4.2 Funktionen und Analysis und 2.3 Analytische Geometrie und Lineare Algebra, S. 8-10 und 22-27.",
+      "sourceRef": "KLP NRW Mathematik Sek II (Gymnasium/Gesamtschule, 2023), Kap. 1 sowie 2.3-2.4.2 Funktionen und Analysis, 2.3-2.4.2 Analytische Geometrie und Lineare Algebra sowie 2.4.1-2.4.2 Stochastik, S. 8-10 und 22-30.",
       "dimensionTags": {
         "framework": "nrw-klp-gost-math",
         "demandLevel": "AB2",
@@ -117,9 +122,9 @@
       "id": "a429a190-e7c7-4584-8ff6-2c5e6559b6e5",
       "title": "Analytische Geometrie und Lineare Algebra",
       "titleEn": "Analytic Geometry and Linear Algebra",
-      "description": "Pilot-Cluster fuer den ersten NRW-Oberstufenkorridor zu Vektoren, Geraden und linearen Zusammenhaengen im Raum aus der Einfuehrungsphase.",
-      "descriptionEn": "Pilot cluster for the first NRW upper-secondary corridor on vectors, lines, and linear relationships in space from the introductory phase.",
-      "weight": 5,
+      "description": "Pilot-Cluster fuer den ersten NRW-Oberstufenkorridor zu Vektoren, Geraden, Ebenen und linearen Zusammenhaengen im Raum aus Einfuehrungsphase, erster Qualifikationsphase und schrittweise geoeffneten Leistungskurs-Follow-ons.",
+      "descriptionEn": "Pilot cluster for the first NRW upper-secondary corridor on vectors, lines, planes, and linear relationships in space from the introductory phase, the first qualification-phase follow-on, and stepwise-opened advanced-course follow-ons.",
+      "weight": 18,
       "tags": [
         "GK",
         "LK",
@@ -128,10 +133,14 @@
         "PilotSubset"
       ],
       "contains": [
-        "4b513ab3-0505-48ad-86bc-348c441d7a8a"
+        "4b513ab3-0505-48ad-86bc-348c441d7a8a",
+        "7b5a157c-5d30-4f26-ae6b-35e3c156cde4",
+        "42de8784-043e-43c6-af4e-dfed3ed0a655",
+        "f89a7279-3bd4-494c-8506-b21fcc8bd2bf",
+        "ef524e6d-7d87-480c-8633-e3f56df43ff0"
       ],
       "requires": [],
-      "sourceRef": "KLP NRW Mathematik Sek II (Gymnasium/Gesamtschule, 2023), 2.3 Analytische Geometrie und Lineare Algebra, S. 23.",
+      "sourceRef": "KLP NRW Mathematik Sek II (Gymnasium/Gesamtschule, 2023), 2.3 sowie 2.4.1-2.4.2 Analytische Geometrie und Lineare Algebra, S. 23, 25 und 28.",
       "dimensionTags": {
         "framework": "nrw-klp-gost-math",
         "demandLevel": "AB2",
@@ -139,6 +148,122 @@
         "guidingIdeas": [],
         "phase": "GLOBAL",
         "area": "Analytische Geometrie und Lineare Algebra"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "7718ad42-f3d8-405e-ae40-6c544aef5220",
+      "title": "Stochastik",
+      "titleEn": "Stochastics",
+      "description": "Pilot-Cluster fuer den ersten NRW-Oberstufenkorridor zu Baumdiagrammen, Vierfeldertafeln, Unabhaengigkeit und bedingter Wahrscheinlichkeit im Grundkurs der Qualifikationsphase.",
+      "descriptionEn": "Pilot cluster for the first NRW upper-secondary corridor on tree diagrams, contingency tables, independence, and conditional probability in the basic-course qualification phase.",
+      "weight": 3,
+      "tags": [
+        "GK",
+        "Stochastics",
+        "PilotSubset"
+      ],
+      "contains": [
+        "1d38f454-495c-4ec9-ae52-4aeda8cec524",
+        "b6b710d1-1356-472c-9cb3-4c3b11a126e6",
+        "ae506288-1567-4786-98bb-d4316ed38e99"
+      ],
+      "requires": [],
+      "sourceRef": "KLP NRW Mathematik Sek II (Gymnasium/Gesamtschule, 2023), 2.4.1 Stochastik, Erwartung (6)-(8), S. 26.",
+      "dimensionTags": {
+        "framework": "nrw-klp-gost-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Stochastik"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "16294415-5ccb-4422-9b8c-00eb1fc8049e",
+      "title": "Stochastik: Zufallsgroessen, Kenngroessen und Binomialverteilungen",
+      "titleEn": "Stochastics: Random Variables, Characteristic Values, and Binomial Distributions",
+      "description": "Pilot-Cluster fuer den anschliessenden NRW-Oberstufenkorridor zu diskreten Zufallsgroessen, Kenngroessen und Binomialverteilungen im Grundkurs der Qualifikationsphase.",
+      "descriptionEn": "Pilot cluster for the adjacent NRW upper-secondary corridor on discrete random variables, characteristic values, and binomial distributions in the basic-course qualification phase.",
+      "weight": 3,
+      "tags": [
+        "GK",
+        "Stochastics",
+        "PilotSubset"
+      ],
+      "contains": [
+        "7abaddf3-772f-4546-aa29-1c476fc4134b",
+        "55a6ec39-5a3f-4e20-9c02-9ee05c4a74dc",
+        "3657fc37-fced-4147-a468-a70b1654faed"
+      ],
+      "requires": [],
+      "sourceRef": "KLP NRW Mathematik Sek II (Gymnasium/Gesamtschule, 2023), 2.4.1 Stochastik, Erwartung (9)-(13), S. 26.",
+      "dimensionTags": {
+        "framework": "nrw-klp-gost-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Stochastik"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "14e62dd5-ebcf-4815-b5f3-f22efe564eeb",
+      "title": "Stochastik (LK): Prognoseintervalle, Konfidenzintervalle und Stichprobenumfang",
+      "titleEn": "Stochastics (Advanced Course): Prediction Intervals, Confidence Intervals, and Sample Size",
+      "description": "Pilot-Cluster fuer den anschliessenden NRW-Oberstufenkorridor der beurteilenden Statistik im Leistungskurs: Prognoseintervalle, Konfidenzintervalle und Abschaetzungen zum erforderlichen Stichprobenumfang.",
+      "descriptionEn": "Pilot cluster for the adjacent NRW upper-secondary advanced-course corridor on inferential statistics: prediction intervals, confidence intervals, and estimates for the required sample size.",
+      "weight": 3,
+      "tags": [
+        "LK",
+        "Stochastics",
+        "PilotSubset"
+      ],
+      "contains": [
+        "d16b03c5-be1b-40e5-93d7-7cb17a435d56",
+        "725bb031-423c-481e-95b1-e9efd98cce2f",
+        "7c26b244-40bf-4694-8e6a-d5e2e8a1bd99"
+      ],
+      "requires": [],
+      "sourceRef": "KLP NRW Mathematik Sek II (Gymnasium/Gesamtschule, 2023), 2.4.2 Stochastik, Erwartungen (16)-(18), S. 29-30.",
+      "dimensionTags": {
+        "framework": "nrw-klp-gost-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Stochastik"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "91df70b1-c66a-4967-afe4-3b5347f5b05f",
+      "title": "Stochastik (LK): Stetige Zufallsgroessen und Normalverteilung",
+      "titleEn": "Stochastics (Advanced Course): Continuous Random Variables and Normal Distribution",
+      "description": "Pilot-Cluster fuer den anschliessenden NRW-Oberstufenkorridor des Leistungskurses zu stetigen Zufallsgroessen, Verteilungsfunktion und Normalverteilung.",
+      "descriptionEn": "Pilot cluster for the adjacent NRW upper-secondary advanced-course corridor on continuous random variables, distribution functions, and the normal distribution.",
+      "weight": 3,
+      "tags": [
+        "LK",
+        "Stochastics",
+        "PilotSubset"
+      ],
+      "contains": [
+        "56dcdcec-4ad2-4ca0-94b3-461ed1e9dac1",
+        "c6a14b58-da80-4a6d-9ec5-6338d3cba6a5",
+        "b85792fc-2a99-4a02-8285-828362063d6c"
+      ],
+      "requires": [],
+      "sourceRef": "KLP NRW Mathematik Sek II (Gymnasium/Gesamtschule, 2023), 2.4.2 Stochastik, Erwartungen (19)-(21), S. 30.",
+      "dimensionTags": {
+        "framework": "nrw-klp-gost-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Stochastik"
       },
       "type": "cluster"
     },
@@ -307,6 +432,820 @@
         "guidingIdeas": [],
         "phase": "E",
         "area": "Analytische Geometrie und Lineare Algebra"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "7b5a157c-5d30-4f26-ae6b-35e3c156cde4",
+      "title": "Qualifikationsphase Grundkurs: Skalarprodukt, Ebenen und Geraden-Ebenen-Schnitte",
+      "titleEn": "Qualification Phase Basic Course: Scalar Product, Planes, and Line-Plane Intersections",
+      "description": "Ausgewaehlte Grundkurs-Kompetenzen zu Skalarprodukt, Ebenen in verschiedenen Darstellungsformen, Orientierung im Raum, Geraden-Ebenen-Schnittpunkten und Schnittwinkeln.",
+      "descriptionEn": "Selected basic-course competencies on scalar product, planes in different representations, spatial orientation, line-plane intersections, and intersection angles.",
+      "weight": 5,
+      "tags": [
+        "GK",
+        "Q",
+        "Geometry",
+        "LinearAlgebra"
+      ],
+      "contains": [
+        "1e944a03-990b-49f8-8304-58c40ff3ac14",
+        "8bcdb737-6121-4b5a-982e-06d87abba7c3",
+        "ca613a95-4d20-43c7-9fab-0f1e22be2fe9",
+        "c84d49e3-6626-4149-a351-26ac92500ee6",
+        "61dd1254-898f-4b4b-9a5e-6ec20774138a"
+      ],
+      "requires": [
+        "4b513ab3-0505-48ad-86bc-348c441d7a8a"
+      ],
+      "sourceRef": "KLP NRW Mathematik Sek II (Gymnasium/Gesamtschule, 2023), 2.4.1 Analytische Geometrie und Lineare Algebra, Erwartung (1)-(5), S. 25.",
+      "dimensionTags": {
+        "framework": "nrw-klp-gost-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Analytische Geometrie und Lineare Algebra"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "1e944a03-990b-49f8-8304-58c40ff3ac14",
+      "title": "Skalarprodukt geometrisch deuten und berechnen",
+      "titleEn": "Interpret and calculate the scalar product geometrically",
+      "description": "Die Schuelerinnen und Schueler deuten das Skalarprodukt geometrisch in Bezug auf Orthogonalitaet, Betrag und Winkel zwischen Vektoren und berechnen es.",
+      "descriptionEn": "Students interpret the scalar product geometrically with respect to orthogonality, magnitude, and angles between vectors and calculate it.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "Q",
+        "Geometry",
+        "LinearAlgebra"
+      ],
+      "contains": [],
+      "requires": [
+        "4b513ab3-0505-48ad-86bc-348c441d7a8a"
+      ],
+      "sourceRef": "KLP NRW Mathematik Sek II (Gymnasium/Gesamtschule, 2023), 2.4.1 Analytische Geometrie und Lineare Algebra, Erwartung (1), S. 25.",
+      "dimensionTags": {
+        "framework": "nrw-klp-gost-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Analytische Geometrie und Lineare Algebra"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "8bcdb737-6121-4b5a-982e-06d87abba7c3",
+      "title": "Ebenen in Parameterform und Koordinatenform darstellen",
+      "titleEn": "Represent planes in parametric and coordinate form",
+      "description": "Die Schuelerinnen und Schueler stellen Ebenen in Parameterform und in Koordinatenform dar.",
+      "descriptionEn": "Students represent planes in parametric form and in coordinate form.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "Q",
+        "Geometry",
+        "LinearAlgebra"
+      ],
+      "contains": [],
+      "requires": [
+        "4b513ab3-0505-48ad-86bc-348c441d7a8a"
+      ],
+      "sourceRef": "KLP NRW Mathematik Sek II (Gymnasium/Gesamtschule, 2023), 2.4.1 Analytische Geometrie und Lineare Algebra, Erwartung (2), S. 25.",
+      "dimensionTags": {
+        "framework": "nrw-klp-gost-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Analytische Geometrie und Lineare Algebra"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "ca613a95-4d20-43c7-9fab-0f1e22be2fe9",
+      "title": "Koordinatenformen von Ebenen zur Orientierung im Raum nutzen",
+      "titleEn": "Use coordinate forms of planes for orientation in space",
+      "description": "Die Schuelerinnen und Schueler verwenden Koordinatenformen von Ebenen zur Orientierung im Raum, insbesondere fuer Punktproben, Achsenschnittpunkte und den Normalenvektor.",
+      "descriptionEn": "Students use coordinate forms of planes for orientation in space, especially for point tests, axis intercepts, and the normal vector.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "Q",
+        "Geometry",
+        "LinearAlgebra"
+      ],
+      "contains": [],
+      "requires": [
+        "8bcdb737-6121-4b5a-982e-06d87abba7c3"
+      ],
+      "sourceRef": "KLP NRW Mathematik Sek II (Gymnasium/Gesamtschule, 2023), 2.4.1 Analytische Geometrie und Lineare Algebra, Erwartung (3), S. 25.",
+      "dimensionTags": {
+        "framework": "nrw-klp-gost-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Analytische Geometrie und Lineare Algebra"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "c84d49e3-6626-4149-a351-26ac92500ee6",
+      "title": "Schnittpunkte von Geraden mit Ebenen berechnen",
+      "titleEn": "Calculate intersections of lines with planes",
+      "description": "Die Schuelerinnen und Schueler berechnen Schnittpunkte von Geraden mit Ebenen.",
+      "descriptionEn": "Students calculate intersections of lines with planes.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "Q",
+        "Geometry",
+        "LinearAlgebra"
+      ],
+      "contains": [],
+      "requires": [
+        "8bcdb737-6121-4b5a-982e-06d87abba7c3",
+        "d42ed7e0-690a-4aa6-bdea-a168fce8ad7f"
+      ],
+      "sourceRef": "KLP NRW Mathematik Sek II (Gymnasium/Gesamtschule, 2023), 2.4.1 Analytische Geometrie und Lineare Algebra, Erwartung (4), S. 25.",
+      "dimensionTags": {
+        "framework": "nrw-klp-gost-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Analytische Geometrie und Lineare Algebra"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "61dd1254-898f-4b4b-9a5e-6ec20774138a",
+      "title": "Schnittwinkel zwischen geometrischen Objekten berechnen",
+      "titleEn": "Calculate intersection angles between geometric objects",
+      "description": "Die Schuelerinnen und Schueler berechnen die Groesse des Schnittwinkels zwischen zwei sich schneidenden geometrischen Objekten.",
+      "descriptionEn": "Students calculate the size of the intersection angle between two intersecting geometric objects.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "Q",
+        "Geometry",
+        "LinearAlgebra"
+      ],
+      "contains": [],
+      "requires": [
+        "1e944a03-990b-49f8-8304-58c40ff3ac14",
+        "8bcdb737-6121-4b5a-982e-06d87abba7c3"
+      ],
+      "sourceRef": "KLP NRW Mathematik Sek II (Gymnasium/Gesamtschule, 2023), 2.4.1 Analytische Geometrie und Lineare Algebra, Erwartung (5), S. 25.",
+      "dimensionTags": {
+        "framework": "nrw-klp-gost-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Analytische Geometrie und Lineare Algebra"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "42de8784-043e-43c6-af4e-dfed3ed0a655",
+      "title": "Qualifikationsphase Leistungskurs: Ebenen, Parallelogramme und Dreiecke in Parameterform",
+      "titleEn": "Qualification Phase Advanced Course: Planes, Parallelograms, and Triangles in Parametric Form",
+      "description": "Ausgewaehlte Leistungskurs-Kompetenzen zu Ebenen sowie zu ebenen Figuren im Raum in Parameterform.",
+      "descriptionEn": "Selected advanced-course competencies on planes as well as planar figures in space in parametric form.",
+      "weight": 2,
+      "tags": [
+        "LK",
+        "Q",
+        "Geometry",
+        "LinearAlgebra"
+      ],
+      "contains": [
+        "547dee54-d84f-49ef-a1d4-1947c114b6ec",
+        "e714f54a-190a-456a-9610-a5bfe11aceda"
+      ],
+      "requires": [
+        "7b5a157c-5d30-4f26-ae6b-35e3c156cde4"
+      ],
+      "sourceRef": "KLP NRW Mathematik Sek II (Gymnasium/Gesamtschule, 2023), 2.4.2 Analytische Geometrie und Lineare Algebra, Erwartung (1), S. 28.",
+      "dimensionTags": {
+        "framework": "nrw-klp-gost-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Analytische Geometrie und Lineare Algebra"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "547dee54-d84f-49ef-a1d4-1947c114b6ec",
+      "title": "Ebenen in Parameterform darstellen",
+      "titleEn": "Represent Planes in Parametric Form",
+      "description": "Die Schuelerinnen und Schueler stellen Ebenen in Parameterform dar.",
+      "descriptionEn": "Students represent planes in parametric form.",
+      "weight": 1,
+      "tags": [
+        "LK",
+        "Q",
+        "Geometry",
+        "LinearAlgebra"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "KLP NRW Mathematik Sek II (Gymnasium/Gesamtschule, 2023), 2.4.2 Analytische Geometrie und Lineare Algebra, Erwartung (1), S. 28.",
+      "dimensionTags": {
+        "framework": "nrw-klp-gost-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Analytische Geometrie und Lineare Algebra"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "e714f54a-190a-456a-9610-a5bfe11aceda",
+      "title": "Parallelogramme und Dreiecke in Parameterform darstellen",
+      "titleEn": "Represent Parallelograms and Triangles in Parametric Form",
+      "description": "Die Schuelerinnen und Schueler stellen Parallelogramme und Dreiecke in Parameterform dar.",
+      "descriptionEn": "Students represent parallelograms and triangles in parametric form.",
+      "weight": 1,
+      "tags": [
+        "LK",
+        "Q",
+        "Geometry",
+        "LinearAlgebra"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "KLP NRW Mathematik Sek II (Gymnasium/Gesamtschule, 2023), 2.4.2 Analytische Geometrie und Lineare Algebra, Erwartung (1), S. 28.",
+      "dimensionTags": {
+        "framework": "nrw-klp-gost-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Analytische Geometrie und Lineare Algebra"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "f89a7279-3bd4-494c-8506-b21fcc8bd2bf",
+      "title": "Qualifikationsphase Leistungskurs: Ebenen, Lagebeziehungen, Winkel und Abstaende",
+      "titleEn": "Qualification Phase Advanced Course: Planes, Positional Relations, Angles, and Distances",
+      "description": "Ausgewaehlte Leistungskurs-Kompetenzen zu Ebenen in Normalen- und Koordinatenform, Lagebeziehungen, Geraden-Ebenen-Schnitten, Winkeln und Abstaenden im Raum.",
+      "descriptionEn": "Selected advanced-course competencies on planes in normal and coordinate form, positional relations, line-plane intersections, angles, and distances in space.",
+      "weight": 5,
+      "tags": [
+        "LK",
+        "Q",
+        "Geometry",
+        "LinearAlgebra"
+      ],
+      "contains": [
+        "22a06cd8-7995-47b7-9f4b-95c637685b1e",
+        "bb58b9ef-5bb9-40e9-90e8-eccb4d2077e2",
+        "d1ddfe3e-7b56-4f07-9457-e8e0f4a9c02e",
+        "8ddec0a9-d7e9-4eca-8473-588b63fc29d5",
+        "639ffae1-7133-4eb6-9730-7541c544572a"
+      ],
+      "requires": [
+        "42de8784-043e-43c6-af4e-dfed3ed0a655"
+      ],
+      "sourceRef": "KLP NRW Mathematik Sek II (Gymnasium/Gesamtschule, 2023), 2.4.2 Analytische Geometrie und Lineare Algebra, Erwartungen (3)-(5), (9)-(10), S. 28.",
+      "dimensionTags": {
+        "framework": "nrw-klp-gost-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Analytische Geometrie und Lineare Algebra"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "22a06cd8-7995-47b7-9f4b-95c637685b1e",
+      "title": "Ebenen in Normalenform und Koordinatenform darstellen und im Raum nutzen",
+      "titleEn": "Represent planes in normal and coordinate form and use them in space",
+      "description": "Die Schuelerinnen und Schueler stellen Ebenen in Normalenform sowie in Koordinatenform dar und nutzen diese zur Orientierung im Raum.",
+      "descriptionEn": "Students represent planes in normal form and in coordinate form and use them for orientation in space.",
+      "weight": 1,
+      "tags": [
+        "LK",
+        "Q",
+        "Geometry",
+        "LinearAlgebra"
+      ],
+      "contains": [],
+      "requires": [
+        "8bcdb737-6121-4b5a-982e-06d87abba7c3",
+        "ca613a95-4d20-43c7-9fab-0f1e22be2fe9"
+      ],
+      "sourceRef": "KLP NRW Mathematik Sek II (Gymnasium/Gesamtschule, 2023), 2.4.2 Analytische Geometrie und Lineare Algebra, Erwartung (3), S. 28.",
+      "dimensionTags": {
+        "framework": "nrw-klp-gost-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Analytische Geometrie und Lineare Algebra"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "bb58b9ef-5bb9-40e9-90e8-eccb4d2077e2",
+      "title": "Lagebeziehungen von Ebenen sowie von Geraden und Ebenen untersuchen",
+      "titleEn": "Investigate positional relations of planes as well as of lines and planes",
+      "description": "Die Schuelerinnen und Schueler untersuchen Lagebeziehungen von Ebenen sowie von Geraden und Ebenen.",
+      "descriptionEn": "Students investigate positional relations of planes as well as of lines and planes.",
+      "weight": 1,
+      "tags": [
+        "LK",
+        "Q",
+        "Geometry",
+        "LinearAlgebra"
+      ],
+      "contains": [],
+      "requires": [
+        "22a06cd8-7995-47b7-9f4b-95c637685b1e",
+        "6bc7445a-5d1e-4386-816b-566eb990f6a0"
+      ],
+      "sourceRef": "KLP NRW Mathematik Sek II (Gymnasium/Gesamtschule, 2023), 2.4.2 Analytische Geometrie und Lineare Algebra, Erwartung (4), S. 28.",
+      "dimensionTags": {
+        "framework": "nrw-klp-gost-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Analytische Geometrie und Lineare Algebra"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "d1ddfe3e-7b56-4f07-9457-e8e0f4a9c02e",
+      "title": "Schnittpunkte von Geraden mit Ebenen im Raum berechnen",
+      "titleEn": "Calculate intersections of lines with planes in space",
+      "description": "Die Schuelerinnen und Schueler berechnen Schnittpunkte von Geraden mit Ebenen.",
+      "descriptionEn": "Students calculate intersections of lines with planes.",
+      "weight": 1,
+      "tags": [
+        "LK",
+        "Q",
+        "Geometry",
+        "LinearAlgebra"
+      ],
+      "contains": [],
+      "requires": [
+        "bb58b9ef-5bb9-40e9-90e8-eccb4d2077e2",
+        "c84d49e3-6626-4149-a351-26ac92500ee6"
+      ],
+      "sourceRef": "KLP NRW Mathematik Sek II (Gymnasium/Gesamtschule, 2023), 2.4.2 Analytische Geometrie und Lineare Algebra, Erwartung (5), S. 28.",
+      "dimensionTags": {
+        "framework": "nrw-klp-gost-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Analytische Geometrie und Lineare Algebra"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "8ddec0a9-d7e9-4eca-8473-588b63fc29d5",
+      "title": "Winkel zwischen Geraden und Ebenen bestimmen",
+      "titleEn": "Determine angles between lines and planes",
+      "description": "Die Schuelerinnen und Schueler berechnen die Groesse des Schnittwinkels zwischen zwei sich schneidenden Objekten.",
+      "descriptionEn": "Students calculate the size of the intersection angle between two intersecting objects.",
+      "weight": 1,
+      "tags": [
+        "LK",
+        "Q",
+        "Geometry",
+        "LinearAlgebra"
+      ],
+      "contains": [],
+      "requires": [
+        "1e944a03-990b-49f8-8304-58c40ff3ac14",
+        "61dd1254-898f-4b4b-9a5e-6ec20774138a"
+      ],
+      "sourceRef": "KLP NRW Mathematik Sek II (Gymnasium/Gesamtschule, 2023), 2.4.2 Analytische Geometrie und Lineare Algebra, Erwartung (9), S. 28.",
+      "dimensionTags": {
+        "framework": "nrw-klp-gost-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Analytische Geometrie und Lineare Algebra"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "639ffae1-7133-4eb6-9730-7541c544572a",
+      "title": "Abstaende im Raum berechnen",
+      "titleEn": "Calculate distances in space",
+      "description": "Die Schuelerinnen und Schueler bestimmen Abstaende zwischen Punkten, Geraden und Ebenen.",
+      "descriptionEn": "Students determine distances between points, lines, and planes.",
+      "weight": 1,
+      "tags": [
+        "LK",
+        "Q",
+        "Geometry",
+        "LinearAlgebra"
+      ],
+      "contains": [],
+      "requires": [
+        "22a06cd8-7995-47b7-9f4b-95c637685b1e",
+        "bb58b9ef-5bb9-40e9-90e8-eccb4d2077e2"
+      ],
+      "sourceRef": "KLP NRW Mathematik Sek II (Gymnasium/Gesamtschule, 2023), 2.4.2 Analytische Geometrie und Lineare Algebra, Erwartung (10), S. 28.",
+      "dimensionTags": {
+        "framework": "nrw-klp-gost-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Analytische Geometrie und Lineare Algebra"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "ef524e6d-7d87-480c-8633-e3f56df43ff0",
+      "title": "Qualifikationsphase Leistungskurs: Lineare Gleichungssysteme und Loesungsmengen",
+      "titleEn": "Qualification Phase Advanced Course: Systems of Linear Equations and Solution Sets",
+      "description": "Ausgewaehlte Leistungskurs-Kompetenzen zu algorithmischen Loesungsverfahren fuer lineare Gleichungssysteme und zur Deutung ihrer Loesungsmenge.",
+      "descriptionEn": "Selected advanced-course competencies on algorithmic solution methods for systems of linear equations and the interpretation of their solution sets.",
+      "weight": 1,
+      "tags": [
+        "LK",
+        "Q",
+        "Geometry",
+        "LinearAlgebra"
+      ],
+      "contains": [
+        "2f008c08-4bd9-4341-bca4-57f99fc46216"
+      ],
+      "requires": [
+        "f89a7279-3bd4-494c-8506-b21fcc8bd2bf"
+      ],
+      "sourceRef": "KLP NRW Mathematik Sek II (Gymnasium/Gesamtschule, 2023), 2.4.2 Analytische Geometrie und Lineare Algebra, Erwartungen (6)-(8), S. 28.",
+      "dimensionTags": {
+        "framework": "nrw-klp-gost-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Analytische Geometrie und Lineare Algebra"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "2f008c08-4bd9-4341-bca4-57f99fc46216",
+      "title": "Lineare Gleichungssysteme loesen und Loesungsmengen deuten",
+      "titleEn": "Solve systems of linear equations and interpret solution sets",
+      "description": "Die Schuelerinnen und Schueler erlaeutern algorithmische Loesungsverfahren fuer lineare Gleichungssysteme, wenden sie ohne digitale Mathematikwerkzeuge auf einfache Systeme an und interpretieren die Loesungsmenge.",
+      "descriptionEn": "Students explain algorithmic solution methods for systems of linear equations, apply them to simple systems without digital mathematics tools, and interpret the solution set.",
+      "weight": 1,
+      "tags": [
+        "LK",
+        "Q",
+        "Geometry",
+        "LinearAlgebra"
+      ],
+      "contains": [],
+      "requires": [
+        "0527926b-5904-4bc4-9044-7ba4f2e3cc8b",
+        "d1ddfe3e-7b56-4f07-9457-e8e0f4a9c02e"
+      ],
+      "sourceRef": "KLP NRW Mathematik Sek II (Gymnasium/Gesamtschule, 2023), 2.4.2 Analytische Geometrie und Lineare Algebra, Erwartungen (6)-(8), S. 28.",
+      "dimensionTags": {
+        "framework": "nrw-klp-gost-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Analytische Geometrie und Lineare Algebra"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "1d38f454-495c-4ec9-ae52-4aeda8cec524",
+      "title": "Mehrstufige Zufallsexperimente mit Baumdiagrammen und Vierfeldertafeln untersuchen",
+      "titleEn": "Investigate Multi-Stage Random Experiments with Tree Diagrams and Contingency Tables",
+      "description": "Die Schuelerinnen und Schueler beschreiben mehrstufige Zufallsexperimente mithilfe von Baumdiagrammen und Vierfeldertafeln und berechnen damit Wahrscheinlichkeiten.",
+      "descriptionEn": "Students describe multi-stage random experiments using tree diagrams and contingency tables and use them to calculate probabilities.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "Stochastics",
+        "Q"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "KLP NRW Mathematik Sek II (Gymnasium/Gesamtschule, 2023), 2.4.1 Stochastik, Erwartung (6), S. 26.",
+      "dimensionTags": {
+        "framework": "nrw-klp-gost-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Stochastik"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "b6b710d1-1356-472c-9cb3-4c3b11a126e6",
+      "title": "Stochastische Unabhaengigkeit mit Baumdiagrammen und Vierfeldertafeln pruefen",
+      "titleEn": "Check Stochastic Independence with Tree Diagrams and Contingency Tables",
+      "description": "Die Schuelerinnen und Schueler pruefen Teilvorgaenge mehrstufiger Zufallsexperimente mithilfe von Vierfeldertafeln und Baumdiagrammen auf stochastische Unabhaengigkeit.",
+      "descriptionEn": "Students test sub-processes of multi-stage random experiments for stochastic independence using contingency tables and tree diagrams.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "Stochastics",
+        "Q"
+      ],
+      "contains": [],
+      "requires": [
+        "1d38f454-495c-4ec9-ae52-4aeda8cec524"
+      ],
+      "sourceRef": "KLP NRW Mathematik Sek II (Gymnasium/Gesamtschule, 2023), 2.4.1 Stochastik, Erwartung (7), S. 26.",
+      "dimensionTags": {
+        "framework": "nrw-klp-gost-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Stochastik"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "ae506288-1567-4786-98bb-d4316ed38e99",
+      "title": "Bedingte Wahrscheinlichkeiten in Kontexten bestimmen",
+      "titleEn": "Determine Conditional Probabilities in Contexts",
+      "description": "Die Schuelerinnen und Schueler loesen Problemstellungen im Kontext bedingter Wahrscheinlichkeiten.",
+      "descriptionEn": "Students solve problems in the context of conditional probabilities.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "Stochastics",
+        "Q"
+      ],
+      "contains": [],
+      "requires": [
+        "1d38f454-495c-4ec9-ae52-4aeda8cec524"
+      ],
+      "sourceRef": "KLP NRW Mathematik Sek II (Gymnasium/Gesamtschule, 2023), 2.4.1 Stochastik, Erwartung (8), S. 26.",
+      "dimensionTags": {
+        "framework": "nrw-klp-gost-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Stochastik"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "7abaddf3-772f-4546-aa29-1c476fc4134b",
+      "title": "Zufallsgroessen, Verteilungen und Kenngroessen diskreter Modelle beschreiben",
+      "titleEn": "Describe Random Variables, Distributions, and Characteristic Values of Discrete Models",
+      "description": "Die Schuelerinnen und Schueler beschreiben Zufallsgroessen als Zuordnungen, stellen diskrete Wahrscheinlichkeitsverteilungen dar und bestimmen Erwartungswert, Varianz und Standardabweichung in einfachen Kontexten.",
+      "descriptionEn": "Students describe random variables as assignments, represent discrete probability distributions, and determine expected value, variance, and standard deviation in simple contexts.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "Stochastics",
+        "Q"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "KLP NRW Mathematik Sek II (Gymnasium/Gesamtschule, 2023), 2.4.1 Stochastik, Erwartung (9)-(10), S. 26.",
+      "dimensionTags": {
+        "framework": "nrw-klp-gost-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Stochastik"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "55a6ec39-5a3f-4e20-9c02-9ee05c4a74dc",
+      "title": "Binomialverteilungen ueber n und p analysieren",
+      "titleEn": "Analyze Binomial Distributions via n and p",
+      "description": "Die Schuelerinnen und Schueler begruenden binomialverteilte Modelle in einfachen Situationen und erklaeren, wie die Parameter n und p Lage, Streuung und Form der Verteilung beeinflussen.",
+      "descriptionEn": "Students justify binomial models in simple situations and explain how the parameters n and p influence the location, spread, and shape of the distribution.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "Stochastics",
+        "Q"
+      ],
+      "contains": [],
+      "requires": [
+        "7abaddf3-772f-4546-aa29-1c476fc4134b"
+      ],
+      "sourceRef": "KLP NRW Mathematik Sek II (Gymnasium/Gesamtschule, 2023), 2.4.1 Stochastik, Erwartung (11)-(12), S. 26.",
+      "dimensionTags": {
+        "framework": "nrw-klp-gost-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Stochastik"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "3657fc37-fced-4147-a468-a70b1654faed",
+      "title": "Binomialverteilungen in Kontexten nutzen und beurteilen",
+      "titleEn": "Use and Assess Binomial Distributions in Contexts",
+      "description": "Die Schuelerinnen und Schueler nutzen Binomialverteilungen und ihre Kenngroessen in Sachkontexten und beurteilen die Eignung des Modells fuer die jeweilige Situation.",
+      "descriptionEn": "Students use binomial distributions and their characteristic values in contextual situations and assess the suitability of the model for the respective situation.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "Stochastics",
+        "Q"
+      ],
+      "contains": [],
+      "requires": [
+        "7abaddf3-772f-4546-aa29-1c476fc4134b",
+        "55a6ec39-5a3f-4e20-9c02-9ee05c4a74dc"
+      ],
+      "sourceRef": "KLP NRW Mathematik Sek II (Gymnasium/Gesamtschule, 2023), 2.4.1 Stochastik, Erwartung (13), S. 26.",
+      "dimensionTags": {
+        "framework": "nrw-klp-gost-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Stochastik"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "d16b03c5-be1b-40e5-93d7-7cb17a435d56",
+      "title": "Prognoseintervalle fuer absolute und relative Haeufigkeiten bestimmen und deuten",
+      "titleEn": "Determine and Interpret Prediction Intervals for Absolute and Relative Frequencies",
+      "description": "Die Schuelerinnen und Schueler ermitteln mithilfe der Sigma-Regeln Prognoseintervalle fuer absolute und relative Haeufigkeiten in einer Stichprobe und interpretieren diese im Sachkontext.",
+      "descriptionEn": "Students determine prediction intervals for absolute and relative frequencies in a sample using sigma rules and interpret them in context.",
+      "weight": 1,
+      "tags": [
+        "LK",
+        "Stochastics",
+        "Q"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "KLP NRW Mathematik Sek II (Gymnasium/Gesamtschule, 2023), 2.4.2 Stochastik, Erwartung (16), S. 30.",
+      "dimensionTags": {
+        "framework": "nrw-klp-gost-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Stochastik"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "725bb031-423c-481e-95b1-e9efd98cce2f",
+      "title": "Konfidenzintervalle fuer p aus relativen Haeufigkeiten bestimmen und deuten",
+      "titleEn": "Determine and Interpret Confidence Intervals for p from Relative Frequencies",
+      "description": "Die Schuelerinnen und Schueler ermitteln auf Grundlage einer relativen Haeufigkeit ein Konfidenzintervall fuer den Parameter p einer binomialverteilten Zufallsgroesse und interpretieren das Ergebnis im Sachkontext.",
+      "descriptionEn": "Students determine a confidence interval for the parameter p of a binomial random variable from a relative frequency and interpret the result in context.",
+      "weight": 1,
+      "tags": [
+        "LK",
+        "Stochastics",
+        "Q"
+      ],
+      "contains": [],
+      "requires": [
+        "d16b03c5-be1b-40e5-93d7-7cb17a435d56"
+      ],
+      "sourceRef": "KLP NRW Mathematik Sek II (Gymnasium/Gesamtschule, 2023), 2.4.2 Stochastik, Erwartung (17), S. 30.",
+      "dimensionTags": {
+        "framework": "nrw-klp-gost-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Stochastik"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "7c26b244-40bf-4694-8e6a-d5e2e8a1bd99",
+      "title": "Erforderlichen Stichprobenumfang fuer vorgegebene Intervalllaenge abschaetzen",
+      "titleEn": "Estimate Required Sample Size for a Prescribed Interval Length",
+      "description": "Die Schuelerinnen und Schueler schaetzen den erforderlichen Stichprobenumfang fuer ein Konfidenzintervall vorgegebener Laenge ab.",
+      "descriptionEn": "Students estimate the required sample size for a confidence interval of a prescribed length.",
+      "weight": 1,
+      "tags": [
+        "LK",
+        "Stochastics",
+        "Q"
+      ],
+      "contains": [],
+      "requires": [
+        "725bb031-423c-481e-95b1-e9efd98cce2f"
+      ],
+      "sourceRef": "KLP NRW Mathematik Sek II (Gymnasium/Gesamtschule, 2023), 2.4.2 Stochastik, Erwartung (18), S. 30.",
+      "dimensionTags": {
+        "framework": "nrw-klp-gost-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Stochastik"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "56dcdcec-4ad2-4ca0-94b3-461ed1e9dac1",
+      "title": "Diskrete und stetige Zufallsgroessen unterscheiden und Verteilungsfunktion deuten",
+      "titleEn": "Distinguish Discrete and Continuous Random Variables and Interpret Distribution Functions",
+      "description": "Die Schuelerinnen und Schueler unterscheiden diskrete und stetige Zufallsgroessen und deuten die Verteilungsfunktion als Integralfunktion.",
+      "descriptionEn": "Students distinguish discrete and continuous random variables and interpret the cumulative distribution function as an integral function.",
+      "weight": 1,
+      "tags": [
+        "LK",
+        "Stochastics",
+        "Q"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "KLP NRW Mathematik Sek II (Gymnasium/Gesamtschule, 2023), 2.4.2 Stochastik, Erwartung (19), S. 30.",
+      "dimensionTags": {
+        "framework": "nrw-klp-gost-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Stochastik"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "c6a14b58-da80-4a6d-9ec5-6338d3cba6a5",
+      "title": "Annaehernd normalverteilte Zufallsgroessen in Situationen erkennen",
+      "titleEn": "Recognize Approximately Normally Distributed Random Variables in Situations",
+      "description": "Die Schuelerinnen und Schueler untersuchen stochastische Situationen, die zu annaehernd normalverteilten Zufallsgroessen fuehren.",
+      "descriptionEn": "Students investigate stochastic situations that lead to approximately normally distributed random variables.",
+      "weight": 1,
+      "tags": [
+        "LK",
+        "Stochastics",
+        "Q"
+      ],
+      "contains": [],
+      "requires": [
+        "56dcdcec-4ad2-4ca0-94b3-461ed1e9dac1"
+      ],
+      "sourceRef": "KLP NRW Mathematik Sek II (Gymnasium/Gesamtschule, 2023), 2.4.2 Stochastik, Erwartung (20), S. 30.",
+      "dimensionTags": {
+        "framework": "nrw-klp-gost-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Stochastik"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "b85792fc-2a99-4a02-8285-828362063d6c",
+      "title": "Einfluss von mu und sigma auf Normalverteilung und Dichtegraph beschreiben",
+      "titleEn": "Describe the Influence of mu and sigma on the Normal Distribution and Density Graph",
+      "description": "Die Schuelerinnen und Schueler beschreiben den Einfluss der Parameter mu und sigma auf die Normalverteilung und die graphische Darstellung ihrer Dichtefunktion.",
+      "descriptionEn": "Students describe the influence of the parameters mu and sigma on the normal distribution and the graphical representation of its density function.",
+      "weight": 1,
+      "tags": [
+        "LK",
+        "Stochastics",
+        "Q"
+      ],
+      "contains": [],
+      "requires": [
+        "56dcdcec-4ad2-4ca0-94b3-461ed1e9dac1"
+      ],
+      "sourceRef": "KLP NRW Mathematik Sek II (Gymnasium/Gesamtschule, 2023), 2.4.2 Stochastik, Erwartung (21), S. 30.",
+      "dimensionTags": {
+        "framework": "nrw-klp-gost-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Stochastik"
       },
       "type": "atomic"
     },
