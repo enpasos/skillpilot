@@ -477,10 +477,6 @@ export const getRenderedChildIds = (
           : grandChildIds
       }
 
-      if (!isCompositionStructureNode(goal)) {
-        return [childId]
-      }
-
       const parentTitle = normalizeRedundantStructureTitle(goal.title)
       const childTitle = normalizeRedundantStructureTitle(child.title)
       if (!parentTitle || parentTitle !== childTitle) {
