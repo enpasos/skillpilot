@@ -134,6 +134,8 @@ export const compileCompositionView = (
   landscape: CanonicalAuthoringLandscape | null,
 ): CompositionCompileResult => {
   const findings: CompositionViewFinding[] = []
+  const hasScopeDiscriminator = ['jurisdiction', 'stage', 'courseProfile']
+    .some((key) => ((view.scope[key] ?? '') as string).trim())
 
   if (!(view.viewId ?? '').trim()) {
     findings.push({ code: 'CPV-001', severity: 'error', message: 'viewId fehlt.' })
@@ -141,14 +143,15 @@ export const compileCompositionView = (
   if (!(view.landscapeId ?? '').trim()) {
     findings.push({ code: 'CPV-001', severity: 'error', message: 'landscapeId fehlt.' })
   }
-  if (!(view.scope.jurisdiction ?? '').trim()) {
-    findings.push({ code: 'CPV-001', severity: 'error', message: 'scope.jurisdiction fehlt.' })
-  }
   if (!(view.scope.schoolForm ?? '').trim()) {
     findings.push({ code: 'CPV-001', severity: 'error', message: 'scope.schoolForm fehlt.' })
   }
-  if (!(view.scope.stage ?? '').trim()) {
-    findings.push({ code: 'CPV-001', severity: 'error', message: 'scope.stage fehlt.' })
+  if (!hasScopeDiscriminator) {
+    findings.push({
+      code: 'CPV-001',
+      severity: 'error',
+      message: 'Mindestens einer der Scope-Keys jurisdiction, stage oder courseProfile muss gesetzt sein.',
+    })
   }
   if (view.rootNodes.length === 0) {
     findings.push({ code: 'CPV-001', severity: 'error', message: 'Keine rootNodes definiert.' })

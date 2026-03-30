@@ -268,7 +268,7 @@ const TreeNode: React.FC<TreeNodeProps> = ({
       : undefined
   const shouldShowFilterBadge = depth === 1 && !!effectiveFilterLabel && !shouldMoveCourseProfileToSek2
   const contextualTitle = formatJurisdictionScopedTitle(
-    getAudienceGoalTitle(goal, audience, parentGoal),
+    getAudienceGoalTitle(goal, parentGoal),
     depth === 0 && goal.tags?.includes('root') ? jurisdictionRootFilterId : undefined,
     localizedLanguage,
   )

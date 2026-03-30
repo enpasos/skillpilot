@@ -201,7 +201,7 @@ export const GoalCard: React.FC<GoalCardProps> = ({
     ? copy.activeActionReveal
     : copy.activeActionSelect
   const { provenance, helpfulLinks } = extractSourceMetadata(goal)
-  const displayTitle = getAudienceGoalTitle(goal, showLearnerTools ? 'learner' : 'trainer')
+  const displayTitle = getAudienceGoalTitle(goal)
   const learningMaterialLinks = helpfulLinks.filter(isLearningMaterialLink).slice(0, 3)
   const sourceLinkLabel = provenance.sourceTitle || copy.coursePageFallback
   const displayDescription = stripLegacyAttributionLines(goal.description, Boolean(provenance.sourceUrl))
@@ -585,7 +585,7 @@ export const GoalCard: React.FC<GoalCardProps> = ({
                     className="flex items-center justify-between p-3 bg-white dark:bg-slate-800 rounded-lg border border-amber-200 dark:border-amber-900/50 hover:border-amber-400 dark:hover:border-amber-500 transition-colors text-left group/item"
                   >
                     <InlineMathText
-                      text={getAudienceGoalTitle(candidate, showLearnerTools ? 'learner' : 'trainer')}
+                      text={getAudienceGoalTitle(candidate)}
                       className="text-sm font-medium text-slate-700 dark:text-slate-200 group-hover/item:text-amber-600 dark:group-hover/item:text-amber-400"
                     />
                     <Send size={14} className="text-amber-400 opacity-0 group-hover/item:opacity-100 transition-opacity" />

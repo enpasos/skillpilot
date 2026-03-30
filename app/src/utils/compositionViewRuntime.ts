@@ -125,7 +125,7 @@ export const deriveRuntimeCompositionScope = ({
     ? normalizeComparableToken(courseProfileCandidate)
     : undefined
 
-  if (!jurisdiction) {
+  if (!jurisdiction && !stage && !courseProfile) {
     return null
   }
 
@@ -133,19 +133,15 @@ export const deriveRuntimeCompositionScope = ({
     return {
       landscapeId,
       schoolForm: 'Gymnasium',
-      jurisdiction,
+      ...(jurisdiction ? { jurisdiction } : {}),
       stage,
     }
-  }
-
-  if (!stage && !courseProfile) {
-    return null
   }
 
   return {
     landscapeId,
     schoolForm: 'Gymnasium',
-    jurisdiction,
+    ...(jurisdiction ? { jurisdiction } : {}),
     ...(stage ? { stage } : {}),
     ...(courseProfile ? { courseProfile } : {}),
   }
