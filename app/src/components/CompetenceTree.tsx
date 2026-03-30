@@ -127,6 +127,7 @@ interface TreeNodeProps {
   frontierIds?: Set<string>
   parentGoalId?: string
   audience?: TreeAudience
+  useRawGoalTitles?: boolean
 }
 
 const formatFilterLabel = (filterId: string | undefined, language: LabelLanguage) => {
@@ -169,6 +170,7 @@ const TreeNode: React.FC<TreeNodeProps> = ({
   frontierIds,
   parentGoalId,
   audience = 'trainer',
+  useRawGoalTitles = false,
 }) => {
   const t = useTranslation()
   const { language } = useLanguage()
@@ -260,16 +262,23 @@ const TreeNode: React.FC<TreeNodeProps> = ({
       ? formatFilterLabel(parentLandscapeFilterId, localizedLanguage)
       : undefined
   const shouldShowFilterBadge = depth === 1 && !!effectiveFilterLabel && !shouldMoveCourseProfileToSek2
-  const contextualTitle = formatJurisdictionScopedTitle(
-    getAudienceGoalTitle(goal, parentGoal),
-    depth === 0 && goal.tags?.includes('root') ? jurisdictionRootFilterId : undefined,
-    localizedLanguage,
-  )
-  const displayTitle = shouldShowFilterBadge
-    ? `${contextualTitle} (${effectiveFilterLabel})`
-    : inheritedSek2FilterLabel
-      ? `${contextualTitle} (${inheritedSek2FilterLabel})`
-      : contextualTitle
+  const baseTitle = useRawGoalTitles
+    ? goal.title
+    : getAudienceGoalTitle(goal, parentGoal)
+  const displayTitle = useRawGoalTitles
+    ? baseTitle
+    : (() => {
+      const contextualTitle = formatJurisdictionScopedTitle(
+        baseTitle,
+        depth === 0 && goal.tags?.includes('root') ? jurisdictionRootFilterId : undefined,
+        localizedLanguage,
+      )
+      return shouldShowFilterBadge
+        ? `${contextualTitle} (${effectiveFilterLabel})`
+        : inheritedSek2FilterLabel
+          ? `${contextualTitle} (${inheritedSek2FilterLabel})`
+          : contextualTitle
+    })()
 
   return (
     <div className="">
@@ -416,6 +425,7 @@ const TreeNode: React.FC<TreeNodeProps> = ({
                 frontierIds={frontierIds}
                 parentGoalId={goal.id}
                 audience={audience}
+                useRawGoalTitles={useRawGoalTitles}
               />
             ))}
           </div>
@@ -449,6 +459,7 @@ interface CompetenceTreeProps {
   frontierIds?: Set<string>
   audience?: TreeAudience
   visibleChildrenByParentOverride?: Map<string, string[]>
+  useRawGoalTitles?: boolean
 }
 
 export const CompetenceTree: React.FC<CompetenceTreeProps> = ({
@@ -460,6 +471,7 @@ export const CompetenceTree: React.FC<CompetenceTreeProps> = ({
   hideTechnicalStructureUi = false,
   allowClusterPlanning = true,
   visibleChildrenByParentOverride,
+  useRawGoalTitles = false,
   ...props
 }) => {
   // We don't strictly filter root goals by activeFilter, because root goals usually represent 'Structure' (e.g. 'Fächer')
@@ -502,6 +514,7 @@ export const CompetenceTree: React.FC<CompetenceTreeProps> = ({
           hasActivePlan={hasActivePlan}
           isInPlannedSubtree={false}
           audience={audience}
+          useRawGoalTitles={useRawGoalTitles}
           {...props}
         />
       ))}

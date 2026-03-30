@@ -117,6 +117,19 @@ export const buildVisibleChildrenMap = (
   return visibleChildrenByParent
 }
 
+export const buildDirectChildrenMap = (
+  allGoals: Map<string, UiGoal>,
+) => {
+  const directChildrenByParent = new Map<string, string[]>()
+
+  allGoals.forEach((parent) => {
+    const visibleChildren = (parent.contains ?? []).filter((childId) => allGoals.has(childId))
+    directChildrenByParent.set(parent.id, visibleChildren)
+  })
+
+  return directChildrenByParent
+}
+
 export const getRenderedChildIds = (
   goalId: string,
   allGoals: Map<string, UiGoal>,

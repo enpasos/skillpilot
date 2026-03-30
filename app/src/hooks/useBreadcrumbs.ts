@@ -15,6 +15,7 @@ interface Params {
   goalIndexAll: Map<string, Goal>
   parentMapAll: Map<string, string[]>
   globalRootGoals: Goal[]
+  useRawGoalTitles?: boolean
   onNavigate: (goalId: string, landscapeId?: string) => void
 }
 
@@ -23,10 +24,12 @@ export function useBreadcrumbs({
   goalIndexAll,
   parentMapAll,
   globalRootGoals,
+  useRawGoalTitles = false,
   onNavigate,
 }: Params) {
   return useMemo<BreadcrumbCrumb[]>(() => {
     if (!currentGoal) return []
+    const getDisplayTitle = (goal: Goal) => useRawGoalTitles ? goal.title : getAudienceGoalTitle(goal)
 
     const crumbs: BreadcrumbCrumb[] = []
 
@@ -47,11 +50,11 @@ export function useBreadcrumbs({
 
     const rootId = chain[0] ?? currentGoal.id
     const selectedRoot = goalIndexAll.get(rootId) ?? currentGoal
-    const rootLabel = getAudienceGoalTitle(selectedRoot)
+    const rootLabel = getDisplayTitle(selectedRoot)
 
     const rootOptions = Array.from(new Map(globalRootGoals.map((g) => [g.id, g])).values()).map((g) => ({
       id: g.id,
-      label: getAudienceGoalTitle(g),
+      label: getDisplayTitle(g),
     }))
 
     crumbs.push({
@@ -70,7 +73,7 @@ export function useBreadcrumbs({
     const tail = chain.slice(1)
     tail.forEach((goalId, idx) => {
       const goal = goalIndexAll.get(goalId)
-      const label = goal ? getAudienceGoalTitle(goal) : goalId
+      const label = goal ? getDisplayTitle(goal) : goalId
       const parentId = tail[idx - 1] ?? rootId
       const parent = goalIndexAll.get(parentId)
       let options =
@@ -78,7 +81,7 @@ export function useBreadcrumbs({
           .filter((childId) => goalIndexAll.has(childId))
           .map((childId) => {
             const child = goalIndexAll.get(childId)
-            return { id: childId, label: child ? getAudienceGoalTitle(child) : childId }
+            return { id: childId, label: child ? getDisplayTitle(child) : childId }
           }) || []
       if (options.length === 0) options = [{ id: goalId, label }]
       const pathToHere = chain.slice(0, idx + 2)
@@ -97,5 +100,5 @@ export function useBreadcrumbs({
     })
 
     return crumbs
-  }, [currentGoal, goalIndexAll, parentMapAll, globalRootGoals, onNavigate])
+  }, [currentGoal, goalIndexAll, parentMapAll, globalRootGoals, onNavigate, useRawGoalTitles])
 }

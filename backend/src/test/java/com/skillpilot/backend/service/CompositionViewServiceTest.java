@@ -4,7 +4,10 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.skillpilot.backend.landscape.LandscapeProperties;
+import java.io.IOException;
+import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.List;
 import java.util.Map;
 import org.junit.jupiter.api.Test;
 
@@ -42,6 +45,187 @@ class CompositionViewServiceTest {
 
         assertThat(match).isNotNull();
         assertThat(match.get("viewId")).isEqualTo("de-de-gym-sekii-math-lk");
+    }
+
+    @Test
+    void findMatchingView_matchesDeWideSekOneMathViewWithoutJurisdiction() {
+        CompositionViewService service = createService();
+
+        Map<String, Object> match = service.findMatchingView(
+                CANONICAL_MATH_ID,
+                Map.of(
+                        "schoolForm", "Gymnasium",
+                        "stage", "SekI"));
+
+        assertThat(match).isNotNull();
+        assertThat(match.get("viewId")).isEqualTo("de-de-gym-seki-math");
+    }
+
+    @Test
+    void findMatchingView_matchesDeWideSekTwoGkMathViewWithoutJurisdiction() {
+        CompositionViewService service = createService();
+
+        Map<String, Object> match = service.findMatchingView(
+                CANONICAL_MATH_ID,
+                Map.of(
+                        "schoolForm", "Gymnasium",
+                        "stage", "SekII",
+                        "courseProfile", "GK"));
+
+        assertThat(match).isNotNull();
+        assertThat(match.get("viewId")).isEqualTo("de-de-gym-sekii-math-gk");
+    }
+
+    @Test
+    void findMatchingView_prefersBwSpecificCrossStageMathViewOverDeWideFallback() {
+        CompositionViewService service = createService();
+
+        Map<String, Object> match = service.findMatchingView(
+                CANONICAL_MATH_ID,
+                Map.of(
+                        "schoolForm", "Gymnasium",
+                        "jurisdiction", "DE-BW",
+                        "stage", "CrossStage",
+                        "courseProfile", "GK"));
+
+        assertThat(match).isNotNull();
+        assertThat(match.get("viewId")).isEqualTo("de-bw-gym-math-gk");
+    }
+
+    @Test
+    void findMatchingView_prefersBwSpecificSekTwoMathViewOverCrossStageFallback() {
+        CompositionViewService service = createService();
+
+        Map<String, Object> match = service.findMatchingView(
+                CANONICAL_MATH_ID,
+                Map.of(
+                        "schoolForm", "Gymnasium",
+                        "jurisdiction", "DE-BW",
+                        "stage", "SekII",
+                        "courseProfile", "LK"));
+
+        assertThat(match).isNotNull();
+        assertThat(match.get("viewId")).isEqualTo("de-bw-gym-sekii-math-lk");
+    }
+
+    @Test
+    void findMatchingView_prefersBwSpecificSekOneMathViewOverDeWideFallback() {
+        CompositionViewService service = createService();
+
+        Map<String, Object> match = service.findMatchingView(
+                CANONICAL_MATH_ID,
+                Map.of(
+                        "schoolForm", "Gymnasium",
+                        "jurisdiction", "DE-BW",
+                        "stage", "SekI"));
+
+        assertThat(match).isNotNull();
+        assertThat(match.get("viewId")).isEqualTo("de-bw-gym-seki-math");
+    }
+
+    @Test
+    void findMatchingView_prefersHeSpecificSekTwoMathViewOverDeWideFallback() {
+        CompositionViewService service = createService();
+
+        Map<String, Object> match = service.findMatchingView(
+                CANONICAL_MATH_ID,
+                Map.of(
+                        "schoolForm", "Gymnasium",
+                        "jurisdiction", "DE-HE",
+                        "stage", "SekII",
+                        "courseProfile", "GK"));
+
+        assertThat(match).isNotNull();
+        assertThat(match.get("viewId")).isEqualTo("de-he-gym-sekii-math-gk");
+    }
+
+    @Test
+    void findMatchingView_prefersHeSpecificSekTwoMathLkViewOverDeWideFallback() {
+        CompositionViewService service = createService();
+
+        Map<String, Object> match = service.findMatchingView(
+                CANONICAL_MATH_ID,
+                Map.of(
+                        "schoolForm", "Gymnasium",
+                        "jurisdiction", "DE-HE",
+                        "stage", "SekII",
+                        "courseProfile", "LK"));
+
+        assertThat(match).isNotNull();
+        assertThat(match.get("viewId")).isEqualTo("de-he-gym-sekii-math-lk");
+    }
+
+    @Test
+    void findMatchingView_prefersHeSpecificCrossStageMathViewOverSekTwoFallbackForGk() {
+        CompositionViewService service = createService();
+
+        Map<String, Object> match = service.findMatchingView(
+                CANONICAL_MATH_ID,
+                Map.of(
+                        "schoolForm", "Gymnasium",
+                        "jurisdiction", "DE-HE",
+                        "stage", "CrossStage",
+                        "courseProfile", "GK"));
+
+        assertThat(match).isNotNull();
+        assertThat(match.get("viewId")).isEqualTo("de-he-gym-math-gk");
+    }
+
+    @Test
+    void findMatchingView_prefersHeSpecificCrossStageMathViewOverSekTwoFallbackForLk() {
+        CompositionViewService service = createService();
+
+        Map<String, Object> match = service.findMatchingView(
+                CANONICAL_MATH_ID,
+                Map.of(
+                        "schoolForm", "Gymnasium",
+                        "jurisdiction", "DE-HE",
+                        "stage", "CrossStage",
+                        "courseProfile", "LK"));
+
+        assertThat(match).isNotNull();
+        assertThat(match.get("viewId")).isEqualTo("de-he-gym-math-lk");
+    }
+
+    @Test
+    void findMatchingView_matchesEveryCanonicalMathCompositionViewByOwnScope() throws IOException {
+        CompositionViewService service = createService();
+        ObjectMapper objectMapper = new ObjectMapper();
+        List<Path> mathViewFiles;
+        try (var stream = Files.list(resolveCurriculaDir().resolve("DE/Gymnasium/composition-views/mathematik"))) {
+            mathViewFiles = stream
+                    .filter(path -> path.getFileName().toString().endsWith(".json"))
+                    .sorted()
+                    .toList();
+        }
+
+        assertThat(mathViewFiles).isNotEmpty();
+
+        for (Path viewFile : mathViewFiles) {
+            @SuppressWarnings("unchecked")
+            Map<String, Object> view = objectMapper.readValue(viewFile.toFile(), Map.class);
+            @SuppressWarnings("unchecked")
+            Map<String, Object> rawScope = (Map<String, Object>) view.get("scope");
+            String viewId = (String) view.get("viewId");
+
+            assertThat(rawScope)
+                    .withFailMessage("Composition view %s is missing a scope: %s", viewId, viewFile)
+                    .isNotNull();
+
+            Map<String, String> scope = rawScope.entrySet().stream()
+                    .collect(java.util.stream.Collectors.toMap(
+                            Map.Entry::getKey,
+                            entry -> String.valueOf(entry.getValue())));
+
+            Map<String, Object> match = service.findMatchingView(CANONICAL_MATH_ID, scope);
+
+            assertThat(match)
+                    .withFailMessage("No composition-view match found for %s via %s", viewId, viewFile.getFileName())
+                    .isNotNull();
+            assertThat(match.get("viewId"))
+                    .withFailMessage("Unexpected view resolution for %s via %s", viewId, viewFile.getFileName())
+                    .isEqualTo(viewId);
+        }
     }
 
     @Test

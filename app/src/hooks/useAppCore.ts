@@ -325,9 +325,17 @@ export function useAppCore({ role, setLearnerMeta, skillpilotId }: AppCoreOption
       (currentEntries, view) => applyCompositionViewProjection(currentEntries, view),
       orderedProjectedEntries,
     )
-    return role === 'learner'
-      ? normalizeLearnerProjectedEntries(compositionProjectedEntries)
-      : compositionProjectedEntries
+    if (role !== 'learner') {
+      return compositionProjectedEntries
+    }
+
+    const landscapeIdsWithMatchedCompositionViews = new Set(Object.keys(matchedCompositionViewsByLandscapeId))
+    return compositionProjectedEntries.map((entry) => {
+      if (landscapeIdsWithMatchedCompositionViews.has(entry.meta.landscapeId)) {
+        return entry
+      }
+      return normalizeLearnerProjectedEntries([entry])[0] ?? entry
+    })
   }, [
     activeFilter,
     graphSourceLandscapeEntries,
@@ -516,6 +524,7 @@ export function useAppCore({ role, setLearnerMeta, skillpilotId }: AppCoreOption
     goalIndexAll,
     parentMapAll,
     globalRootGoals: breadcrumbRootGoals,
+    useRawGoalTitles: currentLandscapeHasMatchedCompositionView,
     onNavigate: (goalId: string, landscapeId?: string) => {
       const newSearchParams = new URLSearchParams(searchParams)
       // Only switch landscape if the goal is NOT already loaded in the current context.

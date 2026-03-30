@@ -1,0 +1,60 @@
+{
+  "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+  "approvedDeDefaultFallbackGroups": [
+    {
+      "jurisdictions": [
+        "DE-HE"
+      ],
+      "rationale": "Hessen currently needs explicit upper-secondary and cross-stage mathematics views, while Sekundarstufe I still intentionally shares the curated DE-default learner-facing tree.",
+      "scopes": [
+        {
+          "schoolForm": "Gymnasium",
+          "stage": "SekI",
+          "expectedViewId": "de-de-gym-seki-math"
+        }
+      ]
+    },
+    {
+      "jurisdictions": [
+        "DE-BY",
+        "DE-BB",
+        "DE-BE",
+        "DE-NI",
+        "DE-NW",
+        "DE-SH"
+      ],
+      "rationale": "These active and next-wave mathematics lanes currently reuse the curated DE-default learner-facing tree until reviewed state-specific composition views are authored for the affected scopes.",
+      "scopes": [
+        {
+          "schoolForm": "Gymnasium",
+          "stage": "SekI",
+          "expectedViewId": "de-de-gym-seki-math"
+        },
+        {
+          "schoolForm": "Gymnasium",
+          "stage": "SekII",
+          "courseProfile": "GK",
+          "expectedViewId": "de-de-gym-sekii-math-gk"
+        },
+        {
+          "schoolForm": "Gymnasium",
+          "stage": "SekII",
+          "courseProfile": "LK",
+          "expectedViewId": "de-de-gym-sekii-math-lk"
+        },
+        {
+          "schoolForm": "Gymnasium",
+          "stage": "CrossStage",
+          "courseProfile": "GK",
+          "expectedViewId": "de-de-gym-math-gk"
+        },
+        {
+          "schoolForm": "Gymnasium",
+          "stage": "CrossStage",
+          "courseProfile": "LK",
+          "expectedViewId": "de-de-gym-math-lk"
+        }
+      ]
+    }
+  ]
+}
