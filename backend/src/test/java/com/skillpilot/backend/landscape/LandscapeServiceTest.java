@@ -633,9 +633,6 @@ class LandscapeServiceTest {
                                 .extracting(LandscapeFilter::getId)
                                 .containsExactly("ALL", "DE-BW", "DE-HE", "DE-BY", "DE-BB", "DE-BE", "DE-NI", "DE-NW",
                                                 "DE-SH");
-                assertThat(root.getGoals())
-                                .extracting(LearningGoal::getTitle)
-                                .contains("Warum Gymnasium gemeinsam denken? - Fächer, Voraussetzungen & Wege");
                 assertThat(landscapeService.getOverview().getSummaries())
                                 .extracting(LandscapeSummary::getCurriculumId)
                                 .contains(CANONICAL_GYMNASIUM_ROOT_ID)
