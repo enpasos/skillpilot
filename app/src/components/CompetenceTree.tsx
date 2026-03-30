@@ -218,6 +218,11 @@ const TreeNode: React.FC<TreeNodeProps> = ({
   )
   const mastery = masteryByGoalId.get(goalId) ?? 0
 
+  const hasStructuralChildren = (goal.contains ?? []).length > 0
+  if (audience === 'learner' && hasStructuralChildren && renderedChildren.length === 0 && !goal.tags?.includes('root')) {
+    return null
+  }
+
   const hasChildren = renderedChildren.length > 0
   const mastered = isMastered(mastery)
   const isPlanned = plannedGoals.has(goal.id)
