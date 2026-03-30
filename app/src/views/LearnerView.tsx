@@ -209,7 +209,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   onLandscapeGoalChange,
 }) => {
   const [plannedGoals, setPlannedGoals] = useState<Set<string>>(new Set())
-  const [forcedExpandedIds, setForcedExpandedIds] = useState<Set<string>>(new Set())
+  const [expandedGoalIds, setExpandedGoalIds] = useState<Set<string>>(new Set())
   const [learnerData, setLearnerData] = useState<Learner | null>(null)
   const [frontierOptions, setFrontierOptions] = useState<FrontierGoal[]>([])
   const [stateActiveGoalId, setStateActiveGoalId] = useState<string | null>(null)
@@ -378,6 +378,69 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
       ...selectedScopeEntries,
     ].join('|')
   }, [effectiveActiveFilter, landscapeId, learnerStructureMode, personalConfig, visibleRootGoals])
+
+  const learnerTreeExpansionStorageKey = useMemo(
+    () => `skillpilot:learner-tree-expanded:${skillpilotId || 'anonymous'}:${learnerTreeScopeKey}`,
+    [learnerTreeScopeKey, skillpilotId],
+  )
+
+  const buildCollapsedFocusPath = useCallback((targetId: string) => {
+    const expanded = new Set<string>()
+    if (!parentMap || !targetId) return expanded
+
+    const queue = [targetId]
+    while (queue.length > 0) {
+      const current = queue.pop()!
+      if (expanded.has(current)) continue
+      expanded.add(current)
+      const parents = parentMap.get(current)
+      if (parents) {
+        parents.forEach((parentId) => queue.push(parentId))
+      }
+    }
+
+    return expanded
+  }, [parentMap])
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return
+
+    const fallbackExpanded = new Set(visibleRootGoals.map((goal) => goal.id))
+    try {
+      const raw = window.localStorage.getItem(learnerTreeExpansionStorageKey)
+      if (!raw) {
+        setExpandedGoalIds(fallbackExpanded)
+        return
+      }
+
+      const parsed = JSON.parse(raw)
+      if (!Array.isArray(parsed)) {
+        setExpandedGoalIds(fallbackExpanded)
+        return
+      }
+
+      setExpandedGoalIds(new Set(parsed.filter((value): value is string => typeof value === 'string')))
+    } catch {
+      setExpandedGoalIds(fallbackExpanded)
+    }
+  }, [learnerTreeExpansionStorageKey, visibleRootGoals])
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return
+    window.localStorage.setItem(learnerTreeExpansionStorageKey, JSON.stringify(Array.from(expandedGoalIds)))
+  }, [expandedGoalIds, learnerTreeExpansionStorageKey])
+
+  const toggleExpandedGoal = useCallback((goalId: string) => {
+    setExpandedGoalIds((current) => {
+      const next = new Set(current)
+      if (next.has(goalId)) {
+        next.delete(goalId)
+      } else {
+        next.add(goalId)
+      }
+      return next
+    })
+  }, [])
 
   const getVisibleChildIds = useCallback((parentId: string) => {
     if (isPersonalConfigHydrating) return []
@@ -574,27 +637,11 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   const revealActiveGoal = useCallback(() => {
     if (!effectiveActiveGoalId || !parentMap) return
     const targetId = effectiveActiveGoalId
-    const ancestors = new Set<string>()
-
-    // Recursive / Iterative lookup
-    const queue = [targetId]
-    while (queue.length > 0) {
-      const current = queue.pop()!
-      const parents = parentMap.get(current)
-      if (parents) {
-        parents.forEach(p => {
-          if (!ancestors.has(p)) {
-            ancestors.add(p)
-            queue.push(p)
-          }
-        })
-      }
-    }
-    setForcedExpandedIds(ancestors)
+    setExpandedGoalIds(buildCollapsedFocusPath(targetId))
     if (targetId !== selectedId) {
       onSelectGoal(targetId)
     }
-  }, [effectiveActiveGoalId, parentMap, onSelectGoal, selectedId])
+  }, [buildCollapsedFocusPath, effectiveActiveGoalId, parentMap, onSelectGoal, selectedId])
 
   // Reveal Scope (Planned Goals) Logic
   const revealScope = useCallback(() => {
@@ -602,28 +649,11 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     // Get the first (and typically only) planned goal as target
     const targetId = Array.from(plannedGoals)[0]
     if (!targetId) return
-
-    const ancestors = new Set<string>()
-
-    // Find all ancestors to expand
-    const queue = [targetId]
-    while (queue.length > 0) {
-      const current = queue.pop()!
-      const parents = parentMap.get(current)
-      if (parents) {
-        parents.forEach(p => {
-          if (!ancestors.has(p)) {
-            ancestors.add(p)
-            queue.push(p)
-          }
-        })
-      }
-    }
-    setForcedExpandedIds(ancestors)
+    setExpandedGoalIds(buildCollapsedFocusPath(targetId))
     if (targetId !== selectedId) {
       onSelectGoal(targetId)
     }
-  }, [parentMap, plannedGoals, onSelectGoal, selectedId])
+  }, [buildCollapsedFocusPath, parentMap, plannedGoals, onSelectGoal, selectedId])
 
   // Auto-reveal scope on start if no active goal exists but scope is set
   const hasAutoRevealedScope = useRef(false)
@@ -984,21 +1014,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
         setStateActiveGoalId(targetId)
         setStateRequiredAction(data.stateMachine?.requiredAction ?? null)
         if (parentMap) {
-          const ancestors = new Set<string>()
-          const queue = [targetId]
-          while (queue.length > 0) {
-            const current = queue.pop()!
-            const parents = parentMap.get(current)
-            if (parents) {
-              parents.forEach((p) => {
-                if (!ancestors.has(p)) {
-                  ancestors.add(p)
-                  queue.push(p)
-                }
-              })
-            }
-          }
-          setForcedExpandedIds(ancestors)
+          setExpandedGoalIds(buildCollapsedFocusPath(targetId))
         }
         if (targetId !== selectedId) {
           onSelectGoal(targetId)
@@ -1027,6 +1043,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     onNotify,
     onRefresh,
     onSelectGoal,
+    buildCollapsedFocusPath,
     parentMap,
     selectedId,
     skillpilotId,
@@ -1948,7 +1965,8 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
               allowClusterPlanning
               personalConfig={personalConfig}
               activeGoalId={effectiveActiveGoalId ?? undefined}
-              forcedExpandedIds={forcedExpandedIds}
+              expandedGoalIds={expandedGoalIds}
+              onToggleExpanded={toggleExpandedGoal}
               frontierIds={frontierIds}
               audience="learner"
             />

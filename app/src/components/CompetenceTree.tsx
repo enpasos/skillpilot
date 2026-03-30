@@ -135,6 +135,8 @@ interface TreeNodeProps {
   hasActivePlan?: boolean
   isInPlannedSubtree?: boolean
   activeGoalId?: string
+  expandedGoalIds?: Set<string>
+  onToggleExpanded?: (goalId: string) => void
   forcedExpandedIds?: Set<string>
   frontierIds?: Set<string>
   parentGoalId?: string
@@ -176,6 +178,8 @@ const TreeNode: React.FC<TreeNodeProps> = ({
   hasActivePlan = false,
   isInPlannedSubtree = false,
   activeGoalId,
+  expandedGoalIds,
+  onToggleExpanded,
   forcedExpandedIds,
   frontierIds,
   parentGoalId,
@@ -192,20 +196,23 @@ const TreeNode: React.FC<TreeNodeProps> = ({
     audience === 'learner' && structureMode === 'content'
       ? depth < learnerInitialExpandDepth
       : depth < 1
-  const [isExpanded, setIsExpanded] = useState(shouldInitiallyExpand)
+  const [localIsExpanded, setLocalIsExpanded] = useState(shouldInitiallyExpand)
+  const isExpansionControlled = audience === 'learner' && !!expandedGoalIds && !!onToggleExpanded
 
   React.useEffect(() => {
+    if (isExpansionControlled) return
     if (shouldInitiallyExpand) {
-      setIsExpanded((current) => (current ? current : true))
+      setLocalIsExpanded((current) => (current ? current : true))
     }
-  }, [shouldInitiallyExpand])
+  }, [isExpansionControlled, shouldInitiallyExpand])
 
   // Force expansion if this ID is in the forced set
   React.useEffect(() => {
+    if (isExpansionControlled) return
     if (forcedExpandedIds && forcedExpandedIds.has(goalId)) {
-      setIsExpanded(true)
+      setLocalIsExpanded(true)
     }
-  }, [forcedExpandedIds, goalId])
+  }, [forcedExpandedIds, goalId, isExpansionControlled])
 
   if (!goal) return null
 
@@ -223,6 +230,9 @@ const TreeNode: React.FC<TreeNodeProps> = ({
     return null
   }
 
+  const isExpanded = isExpansionControlled
+    ? expandedGoalIds.has(goalId)
+    : localIsExpanded
   const hasChildren = renderedChildren.length > 0
   const mastered = isMastered(mastery)
   const isPlanned = plannedGoals.has(goal.id)
@@ -290,7 +300,11 @@ const TreeNode: React.FC<TreeNodeProps> = ({
         <button
           onClick={(e) => {
             e.stopPropagation()
-            setIsExpanded(!isExpanded)
+            if (isExpansionControlled) {
+              onToggleExpanded(goal.id)
+            } else {
+              setLocalIsExpanded(!localIsExpanded)
+            }
           }}
           className={`p-0.5 rounded hover:bg-slate-700 text-slate-400 w-4 h-4 flex items-center justify-center ${!hasChildren ? 'invisible' : ''
             }`}
@@ -414,6 +428,8 @@ const TreeNode: React.FC<TreeNodeProps> = ({
                 hasActivePlan={hasActivePlan}
                 isInPlannedSubtree={selfInSubtree}
                 activeGoalId={activeGoalId}
+                expandedGoalIds={expandedGoalIds}
+                onToggleExpanded={onToggleExpanded}
                 forcedExpandedIds={forcedExpandedIds}
                 frontierIds={frontierIds}
                 parentGoalId={goal.id}
@@ -446,6 +462,8 @@ interface CompetenceTreeProps {
   totalStudents?: number
   personalConfig?: Record<string, { selected: boolean; filterId?: string }>
   activeGoalId?: string
+  expandedGoalIds?: Set<string>
+  onToggleExpanded?: (goalId: string) => void
   forcedExpandedIds?: Set<string>
   frontierIds?: Set<string>
   audience?: TreeAudience
