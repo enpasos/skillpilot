@@ -18,6 +18,9 @@ export const isSyntheticProgramUnit = (goal: UiGoal) =>
 const isCompositionStructureNode = (goal: UiGoal) =>
   isSyntheticProgramUnit(goal) && goal.extendedData?.syntheticStructureKind === 'compositionView'
 
+const isFlattenableSyntheticPhaseNode = (goal: UiGoal | undefined) =>
+  !!goal && isSyntheticProgramUnit(goal) && !isCompositionStructureNode(goal) && !!detectExplicitPhaseContext(goal)
+
 const normalizeTreeComparableText = (value: string | undefined) =>
   (value ?? '')
     .normalize('NFKC')
@@ -456,7 +459,25 @@ export const getRenderedChildIds = (
     ? phaseFilteredChildIds
     : phaseFilteredChildIds.flatMap((childId) => {
       const child = allGoals.get(childId)
-      if (!child || !isCompositionStructureNode(goal)) {
+      if (!child) {
+        return [childId]
+      }
+
+      if (isFlattenableSyntheticPhaseNode(child)) {
+        const grandChildIds = visibleChildrenByParent.get(childId) ?? []
+        if (grandChildIds.length === 0) {
+          return []
+        }
+
+        const childPhaseContext = detectExplicitPhaseContext(child)
+        return childPhaseContext
+          ? grandChildIds.filter((grandChildId) =>
+            isGoalRelevantInPhaseContext(grandChildId, childPhaseContext, allGoals, phaseContextCache),
+          )
+          : grandChildIds
+      }
+
+      if (!isCompositionStructureNode(goal)) {
         return [childId]
       }
 
