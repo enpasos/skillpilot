@@ -107,7 +107,7 @@ export const isGoalRelevantInPhaseContext = (
   return matches
 }
 
-const hasEquivalentConcreteSibling = (
+const hasEquivalentPreferredSibling = (
   syntheticGoal: UiGoal,
   siblingIds: string[],
   allGoals: Map<string, UiGoal>,
@@ -117,7 +117,8 @@ const hasEquivalentConcreteSibling = (
 
   return siblingIds.some((siblingId) => {
     const sibling = allGoals.get(siblingId)
-    if (!sibling || sibling.id === syntheticGoal.id || isSyntheticProgramUnit(sibling)) return false
+    if (!sibling || sibling.id === syntheticGoal.id) return false
+    if (isSyntheticProgramUnit(sibling) && !isCompositionStructureNode(sibling)) return false
 
     const siblingTitle = normalizeTreeComparableText(sibling.title)
     return (
@@ -367,7 +368,12 @@ export const buildVisibleChildrenMap = (
       const child = allGoals.get(childId)
       if (!child) return false
 
-      if (audience === 'learner' && isSyntheticProgramUnit(child) && hasEquivalentConcreteSibling(child, childIds, allGoals)) {
+      if (
+        audience === 'learner'
+        && isSyntheticProgramUnit(child)
+        && !isCompositionStructureNode(child)
+        && hasEquivalentPreferredSibling(child, childIds, allGoals)
+      ) {
         return false
       }
 
