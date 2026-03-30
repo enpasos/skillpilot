@@ -32,13 +32,14 @@ import {
   loadAbi26CampaignContext,
   saveAbi26CampaignContext,
 } from '../utils/abi26MatheCampaign'
-import { applyDefaultGlobalStageScope, goalMatchesGlobalStageScope } from '../utils/personalCurriculumStageScope'
+import { applyDefaultGlobalStageScope } from '../utils/personalCurriculumStageScope'
 import { trackCampaignEvent } from '../utils/campaignTracking'
 import type { ToastKind } from '../hooks/useToast'
 import { queueToastForNextLoad } from '../hooks/useToast'
 import { dispatchLearnerUiRefresh } from '../utils/learnerUiEvents'
 import { formatFilterDisplayLabel } from '../utils/filterLabels'
 import { getLearnerViewCopy } from '../utils/learnerViewCopy'
+import { buildVisibleChildrenMap, getRenderedChildIds } from '../utils/treeProjectionRuntime'
 
 import type { UiGoal } from '../goalTypes'
 import type { Learner, FrontierGoal } from '../learnerTypes'
@@ -363,6 +364,10 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     if (!activeFilter || isWildcardFilter(activeFilter)) return activeFilter
     return supportedFilterIds.has(activeFilter) ? activeFilter : undefined
   }, [landscapeId, personalConfig, activeFilter, supportedFilterIds])
+  const learnerVisibleChildrenByParent = useMemo(
+    () => buildVisibleChildrenMap(goalIndexAll, effectiveActiveFilter, personalConfig, learnerStructureMode, 'learner'),
+    [effectiveActiveFilter, goalIndexAll, learnerStructureMode, personalConfig],
+  )
 
   const learnerTreeScopeKey = useMemo(() => {
     const selectedScopeEntries = Object.entries(personalConfig)
@@ -444,49 +449,8 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
 
   const getVisibleChildIds = useCallback((parentId: string) => {
     if (isPersonalConfigHydrating) return []
-
-    const parent = goalIndexAll.get(parentId)
-    const childIds = parent?.contains ?? []
-    if (childIds.length === 0) return []
-
-    const hasConfig = Object.keys(personalConfig).length > 0
-    const hasPositiveSibling = hasConfig && childIds.some(childId => {
-      const c = goalIndexAll.get(childId)
-      if (!c) return false
-      const cfg = (c.landscapeId ? personalConfig[c.landscapeId] : undefined) ?? personalConfig[c.id]
-      return cfg?.selected === true
-    })
-
-    return childIds.filter((childId) => {
-      const child = goalIndexAll.get(childId)
-      if (!child) return false
-
-      if (!goalMatchesGlobalStageScope(child, personalConfig)) {
-        return false
-      }
-
-      // Apply the currently active cockpit filter (e.g. DE-BY/DE-HE or GK/LK)
-      // on top of personal curriculum selections.
-      if (!goalMatchesFilter(child, effectiveActiveFilter)) {
-        return false
-      }
-
-      // 2) Personal curriculum selection + per-landscape filterId
-      if (hasConfig) {
-        const cfg = (child.landscapeId ? personalConfig[child.landscapeId] : undefined) ?? personalConfig[child.id]
-        if (cfg) {
-          if (cfg.selected !== true) return false
-          if (!goalMatchesFilter(child, cfg.filterId)) {
-            return false
-          }
-        } else if (hasPositiveSibling) {
-          return false
-        }
-      }
-
-      return true
-    })
-  }, [goalIndexAll, isPersonalConfigHydrating, personalConfig, effectiveActiveFilter])
+    return getRenderedChildIds(parentId, goalIndexAll, learnerVisibleChildrenByParent, 'learner').childIds
+  }, [goalIndexAll, isPersonalConfigHydrating, learnerVisibleChildrenByParent])
 
   const visibleGoals = useMemo(() => {
     if (isPersonalConfigHydrating) {

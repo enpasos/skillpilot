@@ -13,6 +13,7 @@ import { normalizeJurisdictionCode } from '../utils/jurisdictionMetadata'
 import {
   buildVisibleChildrenMap,
   getRenderedChildIds,
+  isFlattenableSyntheticPhaseNode,
   isSyntheticProgramUnit,
   type TreeAudience,
   type TreePhaseContext,
@@ -215,6 +216,7 @@ const TreeNode: React.FC<TreeNodeProps> = ({
   }, [forcedExpandedIds, goalId, isExpansionControlled])
 
   if (!goal) return null
+  if (audience === 'learner' && isFlattenableSyntheticPhaseNode(goal)) return null
 
   const { childIds: renderedChildren, phaseContext } = getRenderedChildIds(
     goalId,

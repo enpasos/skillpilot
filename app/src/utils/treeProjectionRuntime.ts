@@ -15,10 +15,10 @@ export const isCompetencyDimensionRoot = (goal: UiGoal) =>
 export const isSyntheticProgramUnit = (goal: UiGoal) =>
   (goal.tags ?? []).includes(SYNTHETIC_PROGRAM_UNIT_TAG)
 
-const isCompositionStructureNode = (goal: UiGoal) =>
+export const isCompositionStructureNode = (goal: UiGoal) =>
   isSyntheticProgramUnit(goal) && goal.extendedData?.syntheticStructureKind === 'compositionView'
 
-const isFlattenableSyntheticPhaseNode = (goal: UiGoal | undefined) =>
+export const isFlattenableSyntheticPhaseNode = (goal: UiGoal | undefined) =>
   !!goal && isSyntheticProgramUnit(goal) && !isCompositionStructureNode(goal) && !!detectExplicitPhaseContext(goal)
 
 const normalizeTreeComparableText = (value: string | undefined) =>
