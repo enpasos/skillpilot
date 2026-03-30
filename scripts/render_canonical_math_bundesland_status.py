@@ -136,6 +136,8 @@ def render() -> str:
     tracker = load_json(TRACKER_PATH)
     phase_scale = {entry["id"]: entry for entry in tracker["phaseScale"]}
     states = tracker["states"]
+    canonical_corridors = tracker.get("canonicalCorridors", [])
+    steering_model = tracker.get("steeringModel", {})
     canonical_states = canonical_jurisdictions(REPO_ROOT, tracker["landscapePath"])
     priority_order = {"active": 0, "next_wave": 1, "backlog": 2}
 
@@ -184,6 +186,9 @@ def render() -> str:
     broad_coverage_count = sum(
         1 for state in states if phase_scale[state["phase"]]["score"] >= p5_score
     )
+    active_corridor_count = sum(
+        1 for corridor in canonical_corridors if corridor.get("status") == "active"
+    )
     priority_counts: dict[str, int] = {}
     for state in states:
         priority_counts[state["priority"]] = priority_counts.get(state["priority"], 0) + 1
@@ -207,9 +212,49 @@ def render() -> str:
     lines.append(f"- States with structural anchors mapped (`P3+`): `{anchor_mapped_count}/{len(states)}`")
     lines.append(f"- States with reviewed corridor (`P4+`): `{corridor_ready_count}/{len(states)}`")
     lines.append(f"- States with broad coverage (`P5+`): `{broad_coverage_count}/{len(states)}`")
+    if canonical_corridors:
+        lines.append(f"- Active canonical corridors: `{active_corridor_count}/{len(canonical_corridors)}`")
     for priority in sorted(priority_counts, key=lambda value: priority_order.get(value, 99)):
         lines.append(f"- Priority `{priority}`: `{priority_counts[priority]}`")
     lines.append("")
+    if steering_model:
+        lines.append("## Steering model")
+        lines.append("")
+        primary_work_unit = steering_model.get("primaryWorkUnit")
+        if isinstance(primary_work_unit, str):
+            lines.append(f"- Primary work unit: `{primary_work_unit}`")
+        canonical_view_rule = steering_model.get("canonicalViewRule")
+        if isinstance(canonical_view_rule, str):
+            lines.append(f"- Canonical view rule: {canonical_view_rule}")
+        state_view_rule = steering_model.get("stateViewRule")
+        if isinstance(state_view_rule, str):
+            lines.append(f"- State view rule: {state_view_rule}")
+        execution_sequence = steering_model.get("executionSequence", [])
+        if execution_sequence:
+            lines.append("- Execution sequence:")
+            for step in execution_sequence:
+                lines.append(f"  - {step}")
+        atom_admission_rule = steering_model.get("atomAdmissionRule", [])
+        if atom_admission_rule:
+            lines.append("- Canonical atom admission:")
+            for step in atom_admission_rule:
+                lines.append(f"  - {step}")
+        lines.append("")
+    if canonical_corridors:
+        lines.append("## Canonical corridor register")
+        lines.append("")
+        lines.append("| Corridor | Status | Focus states | Next step |")
+        lines.append("| --- | --- | --- | --- |")
+        for corridor in canonical_corridors:
+            focus_states = corridor.get("focusStates", [])
+            focus_label = ", ".join(f"`{state}`" for state in focus_states if isinstance(state, str))
+            lines.append(
+                f"| `{corridor['id']}` {corridor['title']} | "
+                f"`{corridor['status']}` | "
+                f"{focus_label or '-'} | "
+                f"{corridor['nextStep']} |"
+            )
+        lines.append("")
     lines.append("## Program phases")
     lines.append("")
     lines.append("| Program phase | Status |")

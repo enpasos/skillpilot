@@ -1,6 +1,6 @@
 # Canonical Gymnasium Mathematics DE Expansion Plan
 
-Snapshot: `2026-03-21`
+Snapshot: `2026-03-30`
 
 This plan focuses on one target:
 
@@ -48,7 +48,58 @@ This setup keeps concerns separated:
 
 It also avoids hiding planning state in a huge curriculum JSON where operational progress would be hard to inspect and easy to forget.
 
+## Steering model
+
+The rollout should now be steered in a stricter order than the earlier mainly bundeslandwise queue.
+
+Target stance:
+
+- the canonical DE mathematics graph is the pedagogical source of truth
+- Bundesland mappings are evidence and coverage for that graph, not the primary design driver
+- Bundesland learner-facing trees should later be projections of that graph, not competing authored content universes
+
+Operational consequence:
+
+- the primary implementation unit is now a **canonical corridor**
+- the state tracker remains necessary, but it measures projection/readiness on the canonical spine, not the pedagogical quality of the canonical graph itself
+
+Canonical-first execution order:
+
+1. refine one canonical corridor until its atomic inventory and progression are pedagogically round
+2. map that corridor against all `16` state curricula and classify reviewed bridges as `exact`, `partial`, `not_applicable`, or `state_local`
+3. only then stabilize state-scoped composition views and learner-facing cluster shapes for the affected scopes
+
+Authoring rule for new canonical atoms:
+
+- add a canonical atom only if it improves the shared DE mathematics graph pedagogically
+- do not add canonical atoms merely to mirror one state's packaging, wording, or table layout
+- if a source item is only state-specific packaging, keep it in mapping/provenance or later state composition, not in the canonical core
+
+This means the canonical DE view must not become the raw union of all reviewed state atoms.
+It should instead become a curated, didactically closed competence model whose state-specific projections are then derived as tightly as possible without violating local curriculum constraints.
+
 ## Progress log
+
+### 2026-03-30 / Steering model recalibrated
+
+Executed work:
+
+- tightened the nationwide math rollout policy from a mainly bundeslandwise queue to a canonical-first corridor-steering model
+- kept the existing state tracker as operational readiness metadata, but clarified that canonical pedagogical quality is a separate first-order concern
+- introduced an explicit canonical corridor register in the machine-readable tracker and the generated quick status view
+- set the new active corridor framing to:
+  - `Sek I J10 function families`
+  - `Sek I J10 bodies, volumes, and plausibility`
+  - `Sek II analysis`
+  - `Sek II geometry and linear algebra`
+  - `Sek II stochastics`
+- moved the early `Sek I foundations` pass into the canonical next-wave register instead of treating it only as diffuse state-local cleanup
+
+Resulting rollout effect:
+
+- the project now has an explicit answer to "what should be designed canonically next?" before asking "which Bundesland should move next?"
+- the state tracker remains useful, but it is now clearly subordinate to corridor-first canonical design
+- future state views can converge more cleanly toward curated composition views over the canonical graph instead of broad state-shaped tree drift
 
 ### 2026-03-21 / Step 1 completed
 
@@ -721,6 +772,23 @@ Program interpretation:
 - the Bavaria comparison lane now also exact-resolves the neighboring explicit J10 periodic-modelling leaf `loesen realitaetsbezogene Problemstellungen zu periodischen Vorgaengen ...` by adding a dedicated canonical periodic-real-world-modelling atom under the shared J10 anchor and by moving the Bavaria source goal off the broader shared `Sinus- und Kosinusfunktionen beschreiben` surface onto that exact sibling; Bayern therefore treats the currently opened J10 sinus/cosinus strip as exhausted at explicit source-residue level and should move next to the adjacent J10 polynomial/ganzrationale strip rather than broad parent cleanup
 - the Bavaria comparison lane now also narrows the adjacent broad J10 polynomial/ganzrationale leaf `verstehen ganzrationale Funktionen als Summe von Potenzfunktionen ... und begruenden ... das Verhalten an den Raendern des Definitionsbereichs ...` onto a dedicated canonical power-sum/end-behaviour atom under the shared J10 anchor; because the Bavaria source leaf still also contains roots, multiplicities, biquadratic substitution, and sketching, the bridge remains reviewed `partial`, but the active queue is now narrowed to the neighboring explicit graph-to-degree/term leaf instead of staying on the broader generic `Ganzrationale Funktionen beschreiben` surface
 - the Bavaria comparison lane now also exact-resolves the neighboring explicit J10 polynomial leaf `ziehen aus dem Graphen einer ganzrationalen Funktion ... Rueckschluesse auf den Grad der Funktion oder auch auf den zugehoerigen Funktionsterm` by adding a dedicated canonical graph-to-degree-or-term atom under the shared J10 anchor and by moving the Bavaria source goal off the broader shared `Ganzrationale Funktionen beschreiben` surface onto that exact sibling; Bayern therefore keeps the opened J10 polynomial strip corridor-specific while the next clean BY follow-on should move to the neighboring symmetry leaf rather than broad parent cleanup
+- the Bavaria comparison lane now also exact-resolves the neighboring explicit J10 polynomial leaf `ueberpruefen rechnerisch sowie durch Analyse der Struktur des Funktionsterms, ob der Graph einer ganzrationalen Funktion Achsensymmetrie ... bzw. Punktsymmetrie ... aufweist` by adding a dedicated canonical symmetry-from-term atom under the shared J10 anchor and by moving the Bavaria source goal off the broader shared `Ganzrationale Funktionen beschreiben` surface onto that exact sibling; the opened BY J10 polynomial strip can therefore be treated as exhausted at explicit source-residue level, and the next clean Bavaria follow-on should move to the adjacent M10 geometry plausibility leaf for oblique prisms and pyramids rather than broad parent cleanup
+- the Bavaria comparison lane now also exact-resolves the first adjacent explicit M10 geometry plausibility leaf `machen ... mithilfe des Prinzips von Cavalieri plausibel, dass auch das Volumen eines schiefen Prismas ...` plus `Sie machen die Struktur der Formel zur Bestimmung des Volumens einer Pyramide plausibel` by adding a dedicated canonical oblique-prism-and-pyramid plausibility atom under the shared J10 anchor and by moving the Bavaria source goal off the broader shared `Volumen von Prismen, Pyramiden und Kegeln plausibilisieren und berechnen` surface onto that exact sibling; Bayern therefore keeps the opened M10 geometry strip corridor-specific while the next clean BY follow-on should move to the neighboring cone-volume plausibility leaf rather than broad parent cleanup
+- the Bavaria comparison lane now also exact-resolves the neighboring explicit M10 cone-volume plausibility leaf `machen die Formel zur Bestimmung des Volumens eines Kreiskegels plausibel, indem sie diesen Koerper als Grenzfall von Pyramiden betrachten` by adding a dedicated canonical cone-volume-limiting atom under the shared J10 anchor, by moving the Bavaria source goal off the broader shared `Volumen von Prismen, Pyramiden und Kegeln plausibilisieren und berechnen` surface onto that exact sibling, and by reattaching the broader 5D plausibility surface to a still-valid broad Baden-Wuerttemberg provenance source; the opened BY M10 geometry plausibility strip can therefore now be treated as exhausted at explicit source-residue level, and the next clean corridor move should be a reassessment for broader Baden-Wuerttemberg / Schleswig-Holstein projection work rather than more Bavaria-local cleanup
+- the tightened `Sek I J10 5D` corridor now also broadens cleanly into Baden-Wuerttemberg by exact-resolving the explicit BW leaf `Kugelformeln geometrisch deuten und anwenden` on the already existing canonical sphere-formula atom instead of keeping that state on a reviewed partial bridge; this removes the BW-specific `APV-202` debt on the shared sphere node and turns the corridor reassessment into a concrete first broader-state projection checkpoint, so the next clean move should inspect whether Schleswig-Holstein's broad `Pyramiden und Kegel` band can be narrowed without inventing new state-local canonical residue
+- the follow-on Schleswig-Holstein reassessment keeps that next-wave `J10 5D` band intentionally broad: the current SH lower-secondary snapshot exposes only the coarse calculation bands `Pyramiden und Kegel` and `Kugeln`, but no narrower source atoms that would justify splitting them onto additional shared canonical targets without drifting into state-local packaging. The correct result of that inspection is therefore not another canonical atom, but an explicit queue decision that the SH `5D` partials should remain as-is until a cleaner source split exists.
+- the active `Sek II analysis` corridor now also exact-resolves the explicit Schleswig-Holstein upper-secondary E-analysis leaf `Ableitungen elementarer Funktionen` on the already existing shared derivative-technique atom instead of leaving the SH lane on a reviewed partial bridge; this removes the SH-specific `APV-202` debt on that canonical analysis goal and sharpens the next clean analysis move to the adjacent explicit SH `Extrempunkte` / `Wendepunkte` leaves rather than broad analysis parents
+- the follow-on Schleswig-Holstein analysis tightening now also exact-resolves the adjacent explicit E-analysis leaves `Extrempunkte mit Ableitungen untersuchen` and `Wendepunkte und Kruemmung untersuchen` on the already existing shared extremum-analysis and inflection-analysis atoms; this removes the remaining SH-specific `APV-202` debt on the opened E-analysis strip and means the next clean SH analysis move should prefer the adjacent explicit Q1 leaves `e-Funktion` / `Integralrechnung` rather than reopening broad analysis parents
+- the next Schleswig-Holstein analysis step now also exact-resolves the adjacent explicit Q1 leaf `e-Funktion und natuerliche Exponentialfunktion` on the already existing shared natural-exponential-function atom; this removes the SH-specific `APV-202` debt on that canonical exponential-analysis goal and narrows the next clean SH analysis move to the remaining explicit Q1 `Integralrechnung` leaf rather than broad analysis parent cleanup
+- the follow-on Schleswig-Holstein Q1 integral step now avoids inventing a new canonical mix-atom by source-splitting the formerly broad `Integralrechnung mit Hauptsatz und Integralen` cell into two narrower explicit leaves and exact-resolving them on the already existing shared canonical atoms `Hauptsatz der Differential- und Integralrechnung nutzen` and `Einfache Integrale berechnen`; the opened SH upper-secondary analysis strip can therefore now be treated as exhausted at explicit source-residue level, and the next clean `Sek II analysis` move should prefer another equally narrow imported analysis atom instead of reopening broad SH Q1/Q2 analysis parents
+- the next `Sek II analysis` tightening now also exact-resolves the explicit Baden-Wuerttemberg Leistungsfach leaf `Die eulersche Zahl e naeherungsweise bestimmen` by adding a dedicated canonical Euler-number atom under the shared exponential corridor and moving the BW source off the broader natural-exponential-function leaf; this removes the BW-specific `APV-202` debt on that shared canonical target and sharpens the next clean analysis move toward another equally narrow imported atom such as Niedersachsen `Exponentialgleichungen loesen` instead of broad BW/SH parent cleanup
+- the follow-on `Sek II analysis` step now also exact-resolves the explicit Niedersachsen gA leaf `Exponentialgleichungen loesen` on the already existing shared canonical exponential-equation atom instead of leaving the NI lane on a reviewed partial bridge; this removes the NI-specific `APV-202` debt on that canonical target and sharpens the next clean analysis move toward another equally narrow Niedersachsen `Die e-Funktion` atom such as asymptotic limited-growth behavior or derivative use instead of broad SH/BW/NI parent cleanup
+- the next `Sek II analysis` tightening now also exact-resolves the explicit Niedersachsen gA leaf `Die Basis e durch die Eigenschaft (e^x)' = e^x charakterisieren` on the already existing shared canonical leaf `Besonderheit der natürlichen Exponentialfunktion erläutern` instead of leaving the NI lane on a reviewed partial bridge; this removes the NI-specific `APV-202` debt on the broader natural-exponential-function target and sharpens the next clean analysis move toward another equally narrow Niedersachsen `Die e-Funktion` atom such as derivative use or asymptotic limited-growth behavior instead of broad SH/BW/NI parent cleanup
+- the follow-on `Sek II analysis` tightening now also exact-resolves the explicit Niedersachsen eA leaf `Die Basis e durch (e^x)' = e^x charakterisieren` on that same shared canonical natural-exponential-specialness leaf instead of leaving the imported `Wachstumsmodelle - Exponentialfunktion` strip on an avoidable broad partial; this removes the last artificial Niedersachsen residue on the wider natural-exponential-function target and keeps the next clean analysis move on another equally narrow NI e-function atom such as derivative use or asymptotic limited-growth behavior instead of broad SH/BW/NI parent cleanup
+- the next `Sek II analysis` tightening now also exact-resolves the explicit Niedersachsen gA and eA leaves `Ableitungen von e^x und a^x verwenden` / `Ableitungsfunktionen von e^x und a^x verwenden` by adding a dedicated shared canonical derivative-use atom instead of leaving both strips on the broader elementary-derivative-rules surface; this keeps the corridor canonical-first and shifts the next clean analysis move to the remaining equally narrow Niedersachsen asymptotic limited-growth residue instead of broad SH/BW/NI parent cleanup
+- the follow-on `Sek II analysis` tightening now also exact-resolves the explicit Niedersachsen gA leaf `Asymptotisches Verhalten begrenzten Wachstums beschreiben` by adding a dedicated shared canonical bounded-growth-asymptotics atom under the Q1 exponential-deepening cluster instead of leaving that residue on the broader growth/decay-modelling surface; this keeps the corridor pedagogically round and shifts the next clean analysis move to the adjacent Niedersachsen eA asymptotic-in-context or growth-model-comparison atom instead of broad SH/BW/NI parent cleanup
+- the next `Sek II analysis` tightening now also exact-resolves the explicit Niedersachsen eA leaf `Asymptotisches Verhalten von Wachstumsmodellen im Sachzusammenhang beschreiben` by adding a dedicated shared canonical context-asymptotics atom under the same Q1 exponential-deepening cluster instead of leaving that residue on the unrelated logistic-growth surface; this keeps the corridor canonical-first and narrows the next clean analysis move to the adjacent Niedersachsen eA growth-model-comparison atom instead of broad SH/BW/NI parent cleanup
+- the follow-on `Sek II analysis` tightening now also exact-resolves the explicit Niedersachsen eA leaf `Verschiedene Wachstumsmodelle vergleichen` by adding a dedicated shared canonical growth-model-comparison atom under that same Q1 exponential-deepening cluster instead of leaving that residue on the broader growth/decay-modelling surface; this keeps the corridor canonical-first and shifts the next clean analysis move to the adjacent Niedersachsen differential-equation solution-check follow-on or a retained split around the still-broad differential-equation parent instead of broad SH/BW/NI parent cleanup
 
 ## Update workflow
 

@@ -30,7 +30,7 @@ Current status on `2026-03-25`:
     - Basisfach derivative-rule use on the shared derivative-entry leaf
     - Basisfach antiderivative-rule use on the shared simple-integral leaf
     - the explicit Basisfach Hauptsatz child exactly
-    - the e-entry adjacency on the shared natural-exponential leaf
+    - the explicit e-approximation leaf exactly on a dedicated shared Euler-number atom
     - iterative root approximation
     - product and chain rule use
     - simple rational-function adjacency

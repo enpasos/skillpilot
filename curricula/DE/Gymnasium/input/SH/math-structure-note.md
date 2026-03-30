@@ -41,11 +41,11 @@ Operational interpretation:
   - thirteen explicit source refinements inside Sek I: all official `5/6` cells, all official `7/8/9` cells, and all official `10` cells
   - a coarse reviewed later-Sek-I functions strip on `Strukturen und funktionaler Zusammenhang`
   - coarse reviewed broad Sek-I surface mappings on most remaining official lower-secondary cells
-  - a coarse reviewed upper-secondary analysis strip on the official `Analysis` phase cells
+  - an exact-resolved explicit upper-secondary E-analysis strip on `Ableitungen elementarer Funktionen`, `Extrempunkte mit Ableitungen untersuchen`, and `Wendepunkte und Kruemmung untersuchen`, plus an exact-resolved adjacent Q1 `e-Funktion` leaf and a source-split Q1 `Integralrechnung` cell whose `Hauptsatz` and `einfache Integrale` leaves now also exact-resolve on shared canonical atoms
   - coarse reviewed broad geometry and stochastics surface mappings on the remaining official upper-secondary cells
 
 Next step:
 
-- use the now fully refined SH Sek-I lane to widen reviewed canonical coverage beyond the current corridor-level bridges
-- if narrower canonical corridor coverage becomes necessary, continue refining the SH source lane beyond the current mostly one-cell-per-official-table-cell granularity
+- use the now fully refined SH Sek-I lane to widen reviewed canonical coverage beyond the current corridor-level bridges and keep the opened SH upper-secondary analysis lane stable at its now exact-resolved explicit source-residue level
+- if narrower canonical corridor coverage becomes necessary elsewhere in SH Sek II, continue refining the SH source lane only where a clearer source split exists beyond the current mostly one-cell-per-official-table-cell granularity
 - only after that should SH move from coarse cell-level reviewed surface toward materially broader fine-grained reviewed coverage

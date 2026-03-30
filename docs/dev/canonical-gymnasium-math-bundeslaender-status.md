@@ -1,6 +1,6 @@
 # Canonical Gymnasium Mathematics Bundeslaender Status
 
-Snapshot: `2026-03-28`
+Snapshot: `2026-03-30`
 
 This file is generated from:
 
@@ -16,9 +16,35 @@ This file is generated from:
 - States with structural anchors mapped (`P3+`): `8/16`
 - States with reviewed corridor (`P4+`): `8/16`
 - States with broad coverage (`P5+`): `3/16`
+- Active canonical corridors: `5/6`
 - Priority `active`: `5`
 - Priority `next_wave`: `3`
 - Priority `backlog`: `8`
+
+## Steering model
+
+- Primary work unit: `canonical_corridor`
+- Canonical view rule: Treat the canonical DE mathematics view as a curated pedagogical source of truth, not as the raw union of all state-specific atoms.
+- State view rule: Treat Bundesland views as projections that stay as close as possible to the canonical view while omitting atoms that would violate the local curriculum.
+- Execution sequence:
+  - Refine one canonical corridor until its atomic inventory and internal progression are pedagogically round.
+  - Map that corridor against all 16 state curricula and classify each reviewed bridge as exact, partial, not_applicable, or state_local.
+  - Only then stabilize state-scoped composition views and learner-facing cluster shapes for the affected scopes.
+- Canonical atom admission:
+  - Add a canonical atom only if it improves the pedagogical completeness of the shared DE math graph.
+  - Do not add canonical atoms only to mirror one state's packaging, table layout, or wording.
+  - Prefer canonical subtree quality over short-term mapping convenience.
+
+## Canonical corridor register
+
+| Corridor | Status | Focus states | Next step |
+| --- | --- | --- | --- |
+| `SEK1.J10.FUNCTION_FAMILIES` Sek I J10 function families | `active` | `DE-BY`, `DE-BW`, `DE-SH`, `DE-NI` | Treat the now-closed BY J10 exponential / trigonometric / polynomial strip as a canonical-quality checkpoint and continue only with equally explicit adjacent atoms instead of reopening broad generic function parents. |
+| `SEK1.J10.5D_GEOMETRY` Sek I J10 bodies, volumes, and plausibility | `active` | `DE-BY`, `DE-BW`, `DE-SH` | Treat the inspected Schleswig-Holstein J10 5D bands as intentionally broad in the current snapshot: `Pyramiden und Kegel` and `Kugeln` do not yet expose narrower source atoms than the existing reviewed partial bridges, so further 5D tightening should wait for a cleaner source split instead of inventing new state-local canonical residue. |
+| `SEK2.ANALYSIS` Sek II analysis and integral / exponential deepening | `active` | `DE-HE`, `DE-NW`, `DE-SH`, `DE-BW`, `DE-NI` | Treat the currently opened Schleswig-Holstein upper-secondary E-analysis strip, the explicit Baden-Wuerttemberg Euler-number leaf, and the Niedersachsen base-`e`, derivative-use, asymptotic-bounded-growth, context-asymptotics, growth-model-comparison, and exponential-equation leaves as exact-resolved at explicit source-residue level and keep tightening only equally explicit analysis atoms before reopening broad parents: the next clean move should prefer the adjacent Niedersachsen eA differential-equation solution-check atom or a retained split around the broad differential-equation parent instead of broad SH/BW/NI Q1/Q2 analysis parents. |
+| `SEK2.GEOMETRY_LINEAR_ALGEBRA` Sek II geometry and linear algebra | `active` | `DE-NW`, `DE-BB`, `DE-BE`, `DE-SH`, `DE-BW` | Keep closing narrow canonical space-geometry atoms where the current NRW/BE/BB/SH/BW strips expose them cleanly; avoid broad umbrella cleanup as the primary steering unit. |
+| `SEK2.STOCHASTICS` Sek II stochastics | `active` | `DE-NW`, `DE-BE`, `DE-BB`, `DE-SH`, `DE-NI`, `DE-BW` | Use the reviewed Nordrhein-Westfalen and Berlin/Brandenburg strips to stabilize canonical random-variable, distribution, test, and interval atoms before widening broad residual parents. |
+| `SEK1.FOUNDATIONS` Sek I foundations, proportionality, and early algebra | `next_wave` | `DE-BW`, `DE-NW`, `DE-BB`, `DE-BE`, `DE-SH`, `DE-NI` | After the active J10 and Sek-II corridors settle, run a canonical-first coverage pass on the early Sek-I arithmetic / proportionality / algebra spine instead of treating those rows only as state-local cleanup. |
 
 ## Program phases
 
@@ -55,7 +81,7 @@ This file is generated from:
 | `DE-NI` Niedersachsen | `P4` First corridor reviewed | `65%` | `yes` | `158` | `snapshots_active` | `active` |
 | `DE-BB` Brandenburg | `P4` First corridor reviewed | `65%` | `no` | `120` | `snapshots_active` | `next_wave` |
 | `DE-BE` Berlin | `P4` First corridor reviewed | `65%` | `no` | `148` | `snapshots_active` | `next_wave` |
-| `DE-SH` Schleswig-Holstein | `P4` First corridor reviewed | `65%` | `no` | `147` | `snapshots_active` | `next_wave` |
+| `DE-SH` Schleswig-Holstein | `P4` First corridor reviewed | `65%` | `no` | `149` | `snapshots_active` | `next_wave` |
 | `DE-HB` Bremen | `P0` Placeholder | `0%` | `no` | `0` | `mapping_scaffolded` | `backlog` |
 | `DE-HH` Hamburg | `P0` Placeholder | `0%` | `no` | `0` | `mapping_scaffolded` | `backlog` |
 | `DE-MV` Mecklenburg-Vorpommern | `P0` Placeholder | `0%` | `no` | `0` | `mapping_scaffolded` | `backlog` |
@@ -67,25 +93,25 @@ This file is generated from:
 
 ## Immediate queue
 
-- `DE-BY` (`P5`, `active`): Keep Bavaria as the second broad comparison lane and continue corridor-specific gap-closing on the neighboring explicit J10 polynomial symmetry leaf, not with broad parent cleanup.
+- `DE-BY` (`P5`, `active`): Keep Bavaria as the second broad comparison lane, but treat the opened M10 geometry plausibility strip as exhausted at explicit source-residue level and reassess whether the next clean 5D move should be broader state projection work in Baden-Wuerttemberg or Schleswig-Holstein rather than more Bavaria-local cleanup.
 - `DE-HE` (`P5`, `active`): Keep Hessen as the stable reference baseline while other states broaden.
 - `DE-NW` (`P5`, `active`): Treat the currently opened Nordrhein-Westfalen LK normal-distribution strip as exhausted at explicit source-residue level: the imported leaves for normal-distribution concept, approximation-in-situations, and mu/sigma are now exact-resolved, so further NRW widening should only happen if another equally explicit NRW corridor is imported; otherwise continue with the next active broad comparison lane such as Bayern instead of reopening broader parent cleanup inside the current NRW snapshots.
-- `DE-BW` (`P4`, `active`): Treat the active BW lower-secondary pilot snapshot as exhausted at explicit source-residue level: there are no unmapped goals left inside the imported Sek-I snapshot, so further widening should happen only by intentionally importing additional retained non-core source sections or another BW source lane, while the reviewed Kursstufe pilot snapshot remains fully stable.
+- `DE-BW` (`P4`, `active`): Treat the active BW lower-secondary pilot snapshot as source-exhausted but note that the tightened J10 5D corridor now also exact-resolves the Kugelformeln leaf; further 5D work should prefer Schleswig-Holstein projection cleanup or intentionally imported retained BW non-core sections instead of generic BW parent cleanup.
 - `DE-NI` (`P4`, `active`): Treat the currently opened Niedersachsen Sek-I right-triangle / similarity and quadratics follow-ons as exhausted at explicit source-residue level; widen Niedersachsen further only if the next lower-secondary source corridor is imported cleanly or a separate Berufliches-Gymnasium lane is opened intentionally.
 - `DE-BB` (`P4`, `next_wave`): Treat Brandenburg's current linear-representation/projection side lane as exhausted at the explicitly source-exposed residue level; only widen it further if a clearly exposed matrix / linear-model follow-on appears, otherwise return to Berlin optional-course residue or another Brandenburg strip with equally explicit source-to-canonical alignment.
 - `DE-BE` (`P4`, `next_wave`): Treat the Berlin matrix/transition, sequences/series, differential-equations, complex-numbers, logic, and reasoning/proof side lanes as now also parent-anchored on the corresponding shared canonical clusters; widen Berlin further only where the remaining analysis-deepening or numerical-mathematics residues stay equally explicit, otherwise decide whether Brandenburg's new linear-representation/projection side lane should widen next.
-- `DE-SH` (`P4`, `next_wave`): Treat the current SH upper-secondary follow-on lane as exhausted at the explicitly source-exposed residue level: after the E-geometry, Q1-geometry, E-analysis, Q1-analysis, the E- and Q1-stochastics splits, the narrowed Q2-stochastics follow-ons, the first explicit Q2-analysis parameter step, the narrow Q1 normal-distribution follow-on, the Q1 vector-product provenance step, and now also the retained Q2-analysis deepening residue being anchored on the shared deepening cluster, broaden SH further only if a genuinely new source-exposed Sek-II cell is split out; otherwise move the next wave to another jurisdiction.
+- `DE-SH` (`P4`, `next_wave`): Treat the inspected SH J10 5D lower-secondary bands `Pyramiden und Kegel` and `Kugeln` as intentionally broad in the current snapshot, but treat the SH upper-secondary E-analysis strip plus the adjacent Q1 `e-Funktion` and source-split `Integralrechnung` leaves as exact-resolved at explicit source-residue level; the next clean SH move should avoid reopening broad Q1/Q2 analysis parents unless a genuinely narrower source split appears.
 
 ## Next steps
 
-- `DE-BY`: Keep Bavaria as the second broad comparison lane and continue corridor-specific gap-closing on the neighboring explicit J10 polynomial symmetry leaf, not with broad parent cleanup.
+- `DE-BY`: Keep Bavaria as the second broad comparison lane, but treat the opened M10 geometry plausibility strip as exhausted at explicit source-residue level and reassess whether the next clean 5D move should be broader state projection work in Baden-Wuerttemberg or Schleswig-Holstein rather than more Bavaria-local cleanup.
 - `DE-HE`: Keep Hessen as the stable reference baseline while other states broaden.
 - `DE-NW`: Treat the currently opened Nordrhein-Westfalen LK normal-distribution strip as exhausted at explicit source-residue level: the imported leaves for normal-distribution concept, approximation-in-situations, and mu/sigma are now exact-resolved, so further NRW widening should only happen if another equally explicit NRW corridor is imported; otherwise continue with the next active broad comparison lane such as Bayern instead of reopening broader parent cleanup inside the current NRW snapshots.
-- `DE-BW`: Treat the active BW lower-secondary pilot snapshot as exhausted at explicit source-residue level: there are no unmapped goals left inside the imported Sek-I snapshot, so further widening should happen only by intentionally importing additional retained non-core source sections or another BW source lane, while the reviewed Kursstufe pilot snapshot remains fully stable.
+- `DE-BW`: Treat the active BW lower-secondary pilot snapshot as source-exhausted but note that the tightened J10 5D corridor now also exact-resolves the Kugelformeln leaf; further 5D work should prefer Schleswig-Holstein projection cleanup or intentionally imported retained BW non-core sections instead of generic BW parent cleanup.
 - `DE-NI`: Treat the currently opened Niedersachsen Sek-I right-triangle / similarity and quadratics follow-ons as exhausted at explicit source-residue level; widen Niedersachsen further only if the next lower-secondary source corridor is imported cleanly or a separate Berufliches-Gymnasium lane is opened intentionally.
 - `DE-BB`: Treat Brandenburg's current linear-representation/projection side lane as exhausted at the explicitly source-exposed residue level; only widen it further if a clearly exposed matrix / linear-model follow-on appears, otherwise return to Berlin optional-course residue or another Brandenburg strip with equally explicit source-to-canonical alignment.
 - `DE-BE`: Treat the Berlin matrix/transition, sequences/series, differential-equations, complex-numbers, logic, and reasoning/proof side lanes as now also parent-anchored on the corresponding shared canonical clusters; widen Berlin further only where the remaining analysis-deepening or numerical-mathematics residues stay equally explicit, otherwise decide whether Brandenburg's new linear-representation/projection side lane should widen next.
-- `DE-SH`: Treat the current SH upper-secondary follow-on lane as exhausted at the explicitly source-exposed residue level: after the E-geometry, Q1-geometry, E-analysis, Q1-analysis, the E- and Q1-stochastics splits, the narrowed Q2-stochastics follow-ons, the first explicit Q2-analysis parameter step, the narrow Q1 normal-distribution follow-on, the Q1 vector-product provenance step, and now also the retained Q2-analysis deepening residue being anchored on the shared deepening cluster, broaden SH further only if a genuinely new source-exposed Sek-II cell is split out; otherwise move the next wave to another jurisdiction.
+- `DE-SH`: Treat the inspected SH J10 5D lower-secondary bands `Pyramiden und Kegel` and `Kugeln` as intentionally broad in the current snapshot, but treat the SH upper-secondary E-analysis strip plus the adjacent Q1 `e-Funktion` and source-split `Integralrechnung` leaves as exact-resolved at explicit source-residue level; the next clean SH move should avoid reopening broad Q1/Q2 analysis parents unless a genuinely narrower source split appears.
 - `DE-HB`: Archive the official Bremen mathematics source bundle under `curricula/DE/Gymnasium/input/HB/`, then derive the first lower-secondary and upper-secondary source snapshots before activating shared provenance.
 - `DE-HH`: Archive the official Hamburg mathematics source bundle under `curricula/DE/Gymnasium/input/HH/`, then derive the first lower-secondary and upper-secondary source snapshots before activating shared provenance.
 - `DE-MV`: Archive the official Mecklenburg-Vorpommern mathematics source bundle under `curricula/DE/Gymnasium/input/MV/`, then derive the first lower-secondary and upper-secondary source snapshots before activating shared provenance.

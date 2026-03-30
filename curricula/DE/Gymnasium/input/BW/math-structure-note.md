@@ -124,7 +124,7 @@ Operational interpretation:
   - `a8049427-1331-41ec-9791-e50ffeefa2b7 -> 858113c5-e53b-57bb-b01f-ba95c3ddcb6f` for the Basisfach derivative-rule bridge onto the shared derivative-entry leaf
   - `cb8562b5-05c2-4daf-8471-cdf6231e8a14 -> a9ed219d-d497-55e5-a4e0-4d45d2554f6b` for the Basisfach antiderivative-rule bridge onto the shared simple-integral leaf
   - `2a7402b9-ef3a-4f3c-8769-d824f703470a -> b9bbd2a8-1379-5ffb-817f-41467d48abef` for the explicit Basisfach Hauptsatz child
-  - `65117831-b95b-4f8a-b1af-606785b92b5c -> 628928a6-4f48-54dc-952d-dec0e69dc856` for the e-entry adjacency onto the shared natural-exponential leaf
+  - `65117831-b95b-4f8a-b1af-606785b92b5c -> ccd47872-4d9d-44db-8c8d-eda24019b502` for the explicit e-approximation leaf onto the dedicated shared Euler-number atom
   - `587ea551-b69d-4820-8ff5-e161b49adbd4 -> 0c7bbd3f-0a04-4f0e-888b-40ab7841fb76` for iterative root approximation
   - `988e4e6e-6b8c-41b5-84f0-c34ec4d82b74 -> 899ed286-0cc2-4d6d-ba46-7d4e40a11f41` for product and chain rule use
   - `ff6922a2-2acc-4c59-a896-8e8c4f14a9ab -> 61686d85-0301-550e-bab9-bd9411c3e7ce` for the gebrochenrationale follow-on adjacency

@@ -2,13 +2,13 @@
 
 This lane now carries the first Schleswig-Holstein upper-secondary source snapshot into the shared DE-level canonical mathematics landscape.
 
-Current status on `2026-03-26`:
+Current status on `2026-03-30`:
 
 - repository-backed mapping fixture now exists:
   `sh_math_upper_secondary_to_canonical_math.json`
 - active `sourceLandscapeId`:
   `01ffba7d-7588-4221-bd2b-1a692839809a`
-- current mapping count: `13`
+- current mapping count: `39`
 - the first Schleswig-Holstein mathematics source PDF is now archived locally:
   `curricula/DE/Gymnasium/input/SH/Fachanforderungen_Mathematik_Sekundarstufe_2024_barrierearm.pdf`
 - the 2024 Allgemeiner Teil is now archived locally:
@@ -23,11 +23,18 @@ Current use:
 - the source root now bridges exactly to the shared canonical math root
 - upper-secondary entry anchors are now mapped as a structural bridge:
   `E -> E`, `1. Jahr -> Q1`, `2. Jahr -> Q3`
-- the lane now carries a coarse reviewed upper-secondary analysis strip on the SH `Analysis` phase cells:
-  `E -> Einfuehrung in den Ableitungsbegriff`, `Q1 -> Anwendungen des Ableitungsbegriffs`, `Q2 -> Integralrechnung und Differenzialgleichungen (Sek II)`
+- the lane now carries an exact-resolved explicit upper-secondary E-analysis strip on the SH `Analysis` phase cells:
+  `Ableitungen elementarer Funktionen -> Grundlegende Ableitungsregeln auf elementare Funktionsterme anwenden`
+  `Extrempunkte mit Ableitungen untersuchen -> Monotonie und Extremstellen mit der ersten Ableitung untersuchen`
+  `Wendepunkte und Kruemmung untersuchen -> Kruemmung und Wendestellen mit der zweiten Ableitung untersuchen`
+- the adjacent SH Q1 leaf `e-Funktion und natuerliche Exponentialfunktion` now exact-resolves on:
+  `Eigenschaften der natuerlichen Exponentialfunktion nutzen`
+- the formerly broad SH Q1 `Integralrechnung` cell is now source-split into two exact-resolved leaves:
+  `Bestimmtes Integral und Hauptsatz nutzen -> Hauptsatz der Differential- und Integralrechnung nutzen`
+  `Einfache Integrale mit elementaren Regeln berechnen -> Einfache Integrale berechnen`
 - the lane now also carries coarse reviewed broad geometry and stochastics surface mappings on all remaining official area cells:
   `Geometrie -> Raum, Matrizen und lineare Modelle (Sek II)`
   `Stochastik -> Stochastik, Tests und Statistik (Sek II)`
-- this reviewed pass is intentionally coarse because the current SH source snapshot keeps one retained source goal per official phase-and-area cell
+- this reviewed pass is intentionally coarse because the current SH source snapshot still keeps most retained source goals at one official phase-and-area cell, with only the now-tightened Q1 integral cell split further where the shared canonical corridor already warranted it
 - all official upper-secondary source cells now have at least one structural or coarse reviewed canonical bridge
-- next step: decide whether to refine the SH upper-secondary source lane before making narrower derivative-, geometry-, or stochastics-level reviewed claims
+- next step: treat the opened SH upper-secondary analysis strip as exact-resolved at explicit source-residue level and do not reopen broader SH Q1/Q2 analysis parents unless a genuinely narrower source split appears
