@@ -8,6 +8,7 @@ import { InlineMathText } from './InlineMathText'
 import { useLanguage } from '../contexts/LanguageContext'
 import { formatApplicabilityDimensionLabel, formatFilterValueLabel } from '../utils/filterLabels'
 import { getGoalCardCopy } from '../utils/goalCardCopy'
+import { getAudienceGoalTitle } from '../utils/treeProjectionRuntime'
 
 interface GoalCardProps {
   goal: Goal
@@ -200,6 +201,7 @@ export const GoalCard: React.FC<GoalCardProps> = ({
     ? copy.activeActionReveal
     : copy.activeActionSelect
   const { provenance, helpfulLinks } = extractSourceMetadata(goal)
+  const displayTitle = getAudienceGoalTitle(goal, showLearnerTools ? 'learner' : 'trainer')
   const learningMaterialLinks = helpfulLinks.filter(isLearningMaterialLink).slice(0, 3)
   const sourceLinkLabel = provenance.sourceTitle || copy.coursePageFallback
   const displayDescription = stripLegacyAttributionLines(goal.description, Boolean(provenance.sourceUrl))
@@ -254,7 +256,7 @@ export const GoalCard: React.FC<GoalCardProps> = ({
       <div className="flex items-start justify-between gap-2 mb-2">
         <div className="pr-8">
           <h2 className="text-2xl font-semibold text-text-primary leading-tight">
-            <InlineMathText text={goal.title} />
+            <InlineMathText text={displayTitle} />
           </h2>
           {!isLearnerAudience && isProjectedStructureNode && !hideTechnicalStructureUi && (
             <div className="mt-2 flex flex-wrap gap-2">
@@ -583,7 +585,7 @@ export const GoalCard: React.FC<GoalCardProps> = ({
                     className="flex items-center justify-between p-3 bg-white dark:bg-slate-800 rounded-lg border border-amber-200 dark:border-amber-900/50 hover:border-amber-400 dark:hover:border-amber-500 transition-colors text-left group/item"
                   >
                     <InlineMathText
-                      text={candidate.title}
+                      text={getAudienceGoalTitle(candidate, showLearnerTools ? 'learner' : 'trainer')}
                       className="text-sm font-medium text-slate-700 dark:text-slate-200 group-hover/item:text-amber-600 dark:group-hover/item:text-amber-400"
                     />
                     <Send size={14} className="text-amber-400 opacity-0 group-hover/item:opacity-100 transition-opacity" />

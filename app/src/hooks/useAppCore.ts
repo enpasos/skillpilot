@@ -467,6 +467,7 @@ export function useAppCore({ role, setLearnerMeta, skillpilotId }: AppCoreOption
     goalIndexAll,
     parentMapAll,
     globalRootGoals: breadcrumbRootGoals,
+    audience: showLearnerTools ? 'learner' : 'trainer',
     onNavigate: (goalId: string, landscapeId?: string) => {
       const newSearchParams = new URLSearchParams(searchParams)
       // Only switch landscape if the goal is NOT already loaded in the current context.

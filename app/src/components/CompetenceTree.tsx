@@ -12,6 +12,7 @@ import { formatFilterDisplayLabel, formatJurisdictionScopedTitle, type LabelLang
 import { normalizeJurisdictionCode } from '../utils/jurisdictionMetadata'
 import {
   buildVisibleChildrenMap,
+  getAudienceGoalTitle,
   getRenderedChildIds,
   isFlattenableSyntheticPhaseNode,
   isSyntheticProgramUnit,
@@ -19,20 +20,6 @@ import {
   type TreePhaseContext,
   type TreeStructureMode,
 } from '../utils/treeProjectionRuntime'
-
-const getContextualTreeTitle = (goal: UiGoal, parentGoal?: UiGoal): string => {
-  if (!parentGoal || !isSyntheticProgramUnit(parentGoal)) return goal.title
-
-  if (parentGoal.title === 'Sekundarstufe I') {
-    return goal.title.replace(/\s+\(Sek I\)$/u, '')
-  }
-
-  if (parentGoal.title === 'Sekundarstufe II') {
-    return goal.title.replace(/\s+\(Sek II\)$/u, '')
-  }
-
-  return goal.title
-}
 
 const COURSE_PROFILE_SUFFIX_PATTERN = /\s+\((GK|LK|GK\+LK)\)$/u
 
@@ -281,7 +268,7 @@ const TreeNode: React.FC<TreeNodeProps> = ({
       : undefined
   const shouldShowFilterBadge = depth === 1 && !!effectiveFilterLabel && !shouldMoveCourseProfileToSek2
   const contextualTitle = formatJurisdictionScopedTitle(
-    getContextualTreeTitle(goal, parentGoal),
+    getAudienceGoalTitle(goal, audience, parentGoal),
     depth === 0 && goal.tags?.includes('root') ? jurisdictionRootFilterId : undefined,
     localizedLanguage,
   )

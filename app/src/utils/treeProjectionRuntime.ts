@@ -36,6 +36,33 @@ const normalizeRedundantStructureTitle = (value: string | undefined) =>
     .replace(/\s+\((gk|lk)\)$/u, '')
     .trim()
 
+const simplifyLearnerSupportTitle = (value: string): string =>
+  value
+    .replace(/^((?:Lernkarten|Flashcards))\s*[-–]\s*(?:E-Phase|Q[1-4])$/u, '$1')
+    .replace(/^((?:Übungen|Uebungen|Practice(?: Set)?))\s*(?:[-–]\s*)?(?:E-Phase|Q[1-4])$/u, '$1')
+
+export const getAudienceGoalTitle = (
+  goal: Pick<UiGoal, 'title'>,
+  audience: TreeAudience = 'trainer',
+  parentGoal?: UiGoal,
+): string => {
+  let title = goal.title
+
+  if (parentGoal && isSyntheticProgramUnit(parentGoal)) {
+    if (parentGoal.title === 'Sekundarstufe I') {
+      title = title.replace(/\s+\(Sek I\)$/u, '')
+    } else if (parentGoal.title === 'Sekundarstufe II') {
+      title = title.replace(/\s+\(Sek II\)$/u, '')
+    }
+  }
+
+  if (audience === 'learner') {
+    title = simplifyLearnerSupportTitle(title)
+  }
+
+  return title
+}
+
 export const detectExplicitPhaseContext = (goal: UiGoal): TreePhaseContext | undefined => {
   const normalizedPhase = normalizeTreeComparableText(goal.phase)
   if (normalizedPhase === 'e') return 'E'

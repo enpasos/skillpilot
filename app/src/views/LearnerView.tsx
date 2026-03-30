@@ -39,7 +39,7 @@ import { queueToastForNextLoad } from '../hooks/useToast'
 import { dispatchLearnerUiRefresh } from '../utils/learnerUiEvents'
 import { formatFilterDisplayLabel } from '../utils/filterLabels'
 import { getLearnerViewCopy } from '../utils/learnerViewCopy'
-import { buildVisibleChildrenMap, getRenderedChildIds } from '../utils/treeProjectionRuntime'
+import { buildVisibleChildrenMap, getAudienceGoalTitle, getRenderedChildIds } from '../utils/treeProjectionRuntime'
 
 import type { UiGoal } from '../goalTypes'
 import type { Learner, FrontierGoal } from '../learnerTypes'
@@ -2083,7 +2083,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
                 <div className="bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-border-color p-6">
                   <div className="mb-6 border-b border-border-color pb-4">
                     <h1 className="text-2xl font-bold text-sky-600 dark:text-sky-400 mb-2">
-                      <InlineMathText text={currentGoal.title} />
+                      <InlineMathText text={getAudienceGoalTitle(currentGoal, 'learner')} />
                     </h1>
                     {currentGoal.description ? (
                       <p className="text-text-secondary">{currentGoal.description}</p>
@@ -2095,7 +2095,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
                     dataSourceUrl={getSrsSource(currentGoal)}
                     skillPilotId={skillpilotId}
                     readOnly={isCompatibilityAuditOnly}
-                    titleOverride={currentGoal.title}
+                    titleOverride={getAudienceGoalTitle(currentGoal, 'learner')}
                     onSync={syncClientData}
                     reloadSignal={srsReloadCounter}
                     filterTags={getSrsFilterTagsForGoal(currentGoal)}
@@ -2157,7 +2157,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
                         </span>
                         <div>
                           <InlineMathText
-                            text={candidate.title}
+                            text={getAudienceGoalTitle(candidate, 'learner')}
                             className="font-semibold text-text-primary group-hover:text-sky-600 dark:group-hover:text-sky-400 transition-colors line-clamp-2"
                           />
                         </div>

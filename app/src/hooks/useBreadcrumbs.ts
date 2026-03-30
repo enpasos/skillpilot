@@ -1,5 +1,6 @@
 import { useMemo } from "react"
 import type { UiGoal as Goal } from "../goalTypes"
+import { getAudienceGoalTitle, type TreeAudience } from "../utils/treeProjectionRuntime"
 
 export interface BreadcrumbCrumb {
   id: string
@@ -15,6 +16,7 @@ interface Params {
   parentMapAll: Map<string, string[]>
   globalRootGoals: Goal[]
   onNavigate: (goalId: string, landscapeId?: string) => void
+  audience?: TreeAudience
 }
 
 export function useBreadcrumbs({
@@ -23,6 +25,7 @@ export function useBreadcrumbs({
   parentMapAll,
   globalRootGoals,
   onNavigate,
+  audience = 'trainer',
 }: Params) {
   return useMemo<BreadcrumbCrumb[]>(() => {
     if (!currentGoal) return []
@@ -46,11 +49,11 @@ export function useBreadcrumbs({
 
     const rootId = chain[0] ?? currentGoal.id
     const selectedRoot = goalIndexAll.get(rootId) ?? currentGoal
-    const rootLabel = selectedRoot.title
+    const rootLabel = getAudienceGoalTitle(selectedRoot, audience)
 
     const rootOptions = Array.from(new Map(globalRootGoals.map((g) => [g.id, g])).values()).map((g) => ({
       id: g.id,
-      label: g.title,
+      label: getAudienceGoalTitle(g, audience),
     }))
 
     crumbs.push({
@@ -69,13 +72,16 @@ export function useBreadcrumbs({
     const tail = chain.slice(1)
     tail.forEach((goalId, idx) => {
       const goal = goalIndexAll.get(goalId)
-      const label = goal?.title ?? goalId
+      const label = goal ? getAudienceGoalTitle(goal, audience) : goalId
       const parentId = tail[idx - 1] ?? rootId
       const parent = goalIndexAll.get(parentId)
       let options =
         parent?.contains
           .filter((childId) => goalIndexAll.has(childId))
-          .map((childId) => ({ id: childId, label: goalIndexAll.get(childId)?.title ?? childId })) || []
+          .map((childId) => {
+            const child = goalIndexAll.get(childId)
+            return { id: childId, label: child ? getAudienceGoalTitle(child, audience) : childId }
+          }) || []
       if (options.length === 0) options = [{ id: goalId, label }]
       const pathToHere = chain.slice(0, idx + 2)
       crumbs.push({
@@ -93,5 +99,5 @@ export function useBreadcrumbs({
     })
 
     return crumbs
-  }, [currentGoal, goalIndexAll, parentMapAll, globalRootGoals, onNavigate])
+  }, [audience, currentGoal, goalIndexAll, parentMapAll, globalRootGoals, onNavigate])
 }
