@@ -192,23 +192,47 @@ const createSyntheticStructureGoal = ({
   nodeKind: 'tutor',
 })
 
-const collectReferencedGoalIds = (node: CompositionViewNode, goalIds: Set<string>) => {
+const resolveLandscapeEntryGoalId = (
+  landscapeId: string,
+  rootGoalIdByLandscapeId: Map<string, string>,
+): string | null => rootGoalIdByLandscapeId.get(landscapeId) ?? null
+
+const collectReferencedGoalIds = (
+  node: CompositionViewNode,
+  goalIds: Set<string>,
+  rootGoalIdByLandscapeId: Map<string, string>,
+) => {
   if (node.kind === 'canonicalSubtree') {
     goalIds.add(node.goalId)
     return
   }
 
-  node.children.forEach((child) => collectReferencedGoalIds(child, goalIds))
+  if (node.kind === 'goalEntry') {
+    goalIds.add(node.goalId)
+    return
+  }
+
+  if (node.kind === 'landscapeEntry') {
+    const goalId = resolveLandscapeEntryGoalId(node.landscapeId, rootGoalIdByLandscapeId)
+    if (goalId) {
+      goalIds.add(goalId)
+    }
+    return
+  }
+
+  node.children.forEach((child) => collectReferencedGoalIds(child, goalIds, rootGoalIdByLandscapeId))
 }
 
 interface CanonicalSubtreePresentation {
   displayLabel?: string
   treeOrder?: number
+  opaque?: boolean
 }
 
 const collectCanonicalSubtreePresentation = (
   nodes: CompositionViewNode[],
   presentationByGoalId: Map<string, CanonicalSubtreePresentation>,
+  rootGoalIdByLandscapeId: Map<string, string>,
 ) => {
   nodes.forEach((node, index) => {
     if (node.kind === 'canonicalSubtree') {
@@ -222,7 +246,32 @@ const collectCanonicalSubtreePresentation = (
       return
     }
 
-    collectCanonicalSubtreePresentation(node.children, presentationByGoalId)
+    if (node.kind === 'goalEntry') {
+      const existing = presentationByGoalId.get(node.goalId) ?? {}
+      const displayLabel = node.displayLabel?.trim()
+      presentationByGoalId.set(node.goalId, {
+        ...existing,
+        ...(displayLabel ? { displayLabel } : {}),
+        treeOrder: index,
+        opaque: true,
+      })
+      return
+    }
+
+    if (node.kind === 'landscapeEntry') {
+      const resolvedGoalId = resolveLandscapeEntryGoalId(node.landscapeId, rootGoalIdByLandscapeId)
+      if (!resolvedGoalId) return
+      const existing = presentationByGoalId.get(resolvedGoalId) ?? {}
+      const displayLabel = node.displayLabel?.trim()
+      presentationByGoalId.set(resolvedGoalId, {
+        ...existing,
+        ...(displayLabel ? { displayLabel } : {}),
+        treeOrder: index,
+      })
+      return
+    }
+
+    collectCanonicalSubtreePresentation(node.children, presentationByGoalId, rootGoalIdByLandscapeId)
   })
 }
 
@@ -230,6 +279,7 @@ const buildSyntheticGoals = (
   entry: LandscapeEntry,
   view: CompositionView,
   goalById: Map<string, UiGoal>,
+  rootGoalIdByLandscapeId: Map<string, string>,
 ) => {
   const syntheticGoals: UiGoal[] = []
 
@@ -240,6 +290,15 @@ const buildSyntheticGoals = (
   ): string | null => {
     if (node.kind === 'canonicalSubtree') {
       return goalById.has(node.goalId) ? node.goalId : null
+    }
+
+    if (node.kind === 'goalEntry') {
+      return goalById.has(node.goalId) ? node.goalId : null
+    }
+
+    if (node.kind === 'landscapeEntry') {
+      const goalId = resolveLandscapeEntryGoalId(node.landscapeId, rootGoalIdByLandscapeId)
+      return goalId && goalById.has(goalId) ? goalId : null
     }
 
     const childIds = node.children
@@ -274,6 +333,7 @@ const buildSyntheticGoalsForNodes = (
   view: CompositionView,
   goalById: Map<string, UiGoal>,
   nodes: CompositionViewNode[],
+  rootGoalIdByLandscapeId: Map<string, string>,
 ) => {
   const syntheticGoals: UiGoal[] = []
 
@@ -283,6 +343,15 @@ const buildSyntheticGoalsForNodes = (
   ): string | null => {
     if (node.kind === 'canonicalSubtree') {
       return goalById.has(node.goalId) ? node.goalId : null
+    }
+
+    if (node.kind === 'goalEntry') {
+      return goalById.has(node.goalId) ? node.goalId : null
+    }
+
+    if (node.kind === 'landscapeEntry') {
+      const goalId = resolveLandscapeEntryGoalId(node.landscapeId, rootGoalIdByLandscapeId)
+      return goalId && goalById.has(goalId) ? goalId : null
     }
 
     const childIds = node.children
@@ -317,6 +386,7 @@ const applyAnchoredProjection = ({
   view,
   strippedGoals,
   strippedGoalById,
+  rootGoalIdByLandscapeId,
   anchorGoalId,
   nodes,
   referencedGoalIds,
@@ -327,6 +397,7 @@ const applyAnchoredProjection = ({
   view: CompositionView
   strippedGoals: UiGoal[]
   strippedGoalById: Map<string, UiGoal>
+  rootGoalIdByLandscapeId: Map<string, string>
   anchorGoalId: string
   nodes: CompositionViewNode[]
   referencedGoalIds: Set<string>
@@ -343,6 +414,7 @@ const applyAnchoredProjection = ({
     view,
     strippedGoalById,
     nodes,
+    rootGoalIdByLandscapeId,
   )
   const preservedAnchorChildren = preserveExistingChildren
     ? (anchorGoal.contains ?? []).filter((childId) => {
@@ -425,6 +497,14 @@ export const applyCompositionViewProjection = (
     return entries
   }
 
+  const goalByIdAcrossEntries = new Map(entries.flatMap((entry) => entry.goals.map((goal) => [goal.id, goal] as const)))
+  const rootGoalIdByLandscapeId = new Map(
+    entries.flatMap((entry) => {
+      const rootGoal = entry.goals.find((goal) => (goal.tags ?? []).includes(ROOT_TAG) && goal.contains.length > 0)
+      return rootGoal ? [[entry.meta.landscapeId, rootGoal.id] as const] : []
+    }),
+  )
+
   return entries.map((entry) => {
     if (entry.meta.landscapeId !== view.landscapeId) {
       return entry
@@ -432,11 +512,10 @@ export const applyCompositionViewProjection = (
 
     const referencedGoalIds = new Set<string>()
     const presentationByGoalId = new Map<string, CanonicalSubtreePresentation>()
-    view.rootNodes.forEach((node) => collectReferencedGoalIds(node, referencedGoalIds))
-    collectCanonicalSubtreePresentation(view.rootNodes, presentationByGoalId)
+    view.rootNodes.forEach((node) => collectReferencedGoalIds(node, referencedGoalIds, rootGoalIdByLandscapeId))
+    collectCanonicalSubtreePresentation(view.rootNodes, presentationByGoalId, rootGoalIdByLandscapeId)
 
-    const goalById = new Map(entry.goals.map((goal) => [goal.id, goal]))
-    const presentReferencedGoalIds = Array.from(referencedGoalIds).filter((goalId) => goalById.has(goalId))
+    const presentReferencedGoalIds = Array.from(referencedGoalIds).filter((goalId) => goalByIdAcrossEntries.has(goalId))
     if (presentReferencedGoalIds.length === 0) {
       return entry
     }
@@ -454,19 +533,28 @@ export const applyCompositionViewProjection = (
           tags: [...(strippedGoal.tags ?? []), ROOT_TAG],
         }
         : strippedGoal
-      if (!presentation) return withRootTag
+      const maybeOpaque = presentation?.opaque
+        ? {
+          ...withRootTag,
+          contains: [],
+        }
+        : withRootTag
+      if (!presentation) return maybeOpaque
       return {
-        ...withRootTag,
-        title: presentation.displayLabel ?? withRootTag.title,
+        ...maybeOpaque,
+        title: presentation.displayLabel ?? maybeOpaque.title,
         extendedData: {
-          ...(withRootTag.extendedData ?? {}),
+          ...(maybeOpaque.extendedData ?? {}),
           ...(presentation.displayLabel ? { compositionDisplayLabel: presentation.displayLabel } : {}),
           ...(typeof presentation.treeOrder === 'number' ? { treeOrder: presentation.treeOrder } : {}),
+          ...(presentation.opaque ? { compositionEntryKind: 'goalEntry' } : {}),
           compositionViewId: view.viewId,
         },
       }
     })
     const strippedGoalById = new Map(strippedGoals.map((goal) => [goal.id, goal]))
+    const projectedGoalById = new Map(goalByIdAcrossEntries)
+    strippedGoals.forEach((goal) => projectedGoalById.set(goal.id, goal))
 
     const stageAnchorGoal = strippedGoals.find((goal) => isStageAnchorGoal(goal, view.scope.stage))
 
@@ -476,7 +564,8 @@ export const applyCompositionViewProjection = (
         entry,
         view,
         strippedGoals,
-        strippedGoalById,
+        strippedGoalById: projectedGoalById,
+        rootGoalIdByLandscapeId,
         anchorGoalId: stageAnchorGoal.id,
         nodes: rootStructure.children,
         referencedGoalIds,
@@ -497,6 +586,7 @@ export const applyCompositionViewProjection = (
         view,
         strippedGoals,
         strippedGoalById,
+        rootGoalIdByLandscapeId,
         anchorGoalId: authoredRootGoal.id,
         nodes: rootProjectionNodes,
         referencedGoalIds,
@@ -508,7 +598,7 @@ export const applyCompositionViewProjection = (
       }
     }
 
-    const syntheticGoals = buildSyntheticGoals(entry, view, strippedGoalById)
+    const syntheticGoals = buildSyntheticGoals(entry, view, projectedGoalById, rootGoalIdByLandscapeId)
 
     return {
       ...entry,

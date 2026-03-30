@@ -8,7 +8,11 @@ import {
   type CanonicalAuthoringLandscape,
 } from './canonicalAuthoring'
 
-export type CompositionViewNode = CompositionStructureNode | CompositionCanonicalSubtreeNode
+export type CompositionViewNode =
+  | CompositionStructureNode
+  | CompositionCanonicalSubtreeNode
+  | CompositionGoalEntryNode
+  | CompositionLandscapeEntryNode
 
 export interface CompositionStructureNode extends Record<string, unknown> {
   kind: 'structure'
@@ -20,6 +24,18 @@ export interface CompositionStructureNode extends Record<string, unknown> {
 export interface CompositionCanonicalSubtreeNode extends Record<string, unknown> {
   kind: 'canonicalSubtree'
   goalId: string
+  displayLabel?: string
+}
+
+export interface CompositionGoalEntryNode extends Record<string, unknown> {
+  kind: 'goalEntry'
+  goalId: string
+  displayLabel?: string
+}
+
+export interface CompositionLandscapeEntryNode extends Record<string, unknown> {
+  kind: 'landscapeEntry'
+  landscapeId: string
   displayLabel?: string
 }
 
@@ -74,6 +90,26 @@ const normalizeCompositionNode = (value: unknown, pathLabel: string): Compositio
     }
   }
 
+  if (record.kind === 'goalEntry') {
+    const displayLabel = asString(record.displayLabel)
+    return {
+      ...record,
+      kind: 'goalEntry',
+      goalId: asString(record.goalId),
+      ...(displayLabel.trim() ? { displayLabel } : {}),
+    }
+  }
+
+  if (record.kind === 'landscapeEntry') {
+    const displayLabel = asString(record.displayLabel)
+    return {
+      ...record,
+      kind: 'landscapeEntry',
+      landscapeId: asString(record.landscapeId),
+      ...(displayLabel.trim() ? { displayLabel } : {}),
+    }
+  }
+
   const children = Array.isArray(record.children) ? record.children : []
   return {
     ...record,
@@ -105,6 +141,9 @@ export const createEmptyCompositionView = (): CompositionView => ({
   rootNodes: [],
 })
 
+const getLandscapeRootGoal = (landscape: CanonicalAuthoringLandscape) =>
+  landscape.goals.find((goal) => (goal.tags ?? []).includes('root')) ?? null
+
 const isGenericStructureLabel = (label: string): boolean => {
   const normalized = label.trim().toLowerCase()
   return normalized === ''
@@ -132,6 +171,8 @@ const expandCanonicalSubtree = (
 export const compileCompositionView = (
   view: CompositionView,
   landscape: CanonicalAuthoringLandscape | null,
+  goalUniverse: CanonicalAuthoringLandscape | null = null,
+  landscapeUniverseById: Map<string, CanonicalAuthoringLandscape> | null = null,
 ): CompositionCompileResult => {
   const findings: CompositionViewFinding[] = []
   const hasScopeDiscriminator = ['jurisdiction', 'stage', 'courseProfile']
@@ -163,6 +204,8 @@ export const compileCompositionView = (
     return { compiledRootNodes: [], findings }
   }
 
+  const canonicalGoalUniverse = goalUniverse ? normalizeCanonicalLandscape(goalUniverse) : canonicalLandscape
+
   if (view.landscapeId && canonicalLandscape.landscapeId && view.landscapeId !== canonicalLandscape.landscapeId) {
     findings.push({
       code: 'CPV-001',
@@ -171,7 +214,7 @@ export const compileCompositionView = (
     })
   }
 
-  const index = buildCanonicalGraphIndex(canonicalLandscape)
+  const index = buildCanonicalGraphIndex(canonicalGoalUniverse)
   const structureIds = new Set<string>()
   const subtreeRootsByPath = new Map<string, { goalId: string, expandedGoalIds: Set<string> }>()
   const referencedRootIds = new Map<string, string>()
@@ -212,6 +255,69 @@ export const compileCompositionView = (
       return
     }
 
+    if (node.kind === 'landscapeEntry') {
+      if (!(node.landscapeId ?? '').trim()) {
+        findings.push({ code: 'CPV-001', severity: 'error', nodePath: pathKey, message: 'landscapeEntry ohne landscapeId.' })
+        return
+      }
+
+      if (!landscapeUniverseById) {
+        return
+      }
+
+      const referencedLandscape = landscapeUniverseById.get(node.landscapeId)
+      if (!referencedLandscape) {
+        findings.push({
+          code: 'CPV-002',
+          severity: 'error',
+          nodePath: pathKey,
+          message: `Fehlende kanonische Landscape-Referenz: ${node.landscapeId}`,
+        })
+        return
+      }
+
+      const rootGoal = getLandscapeRootGoal(referencedLandscape)
+      if (!rootGoal) {
+        findings.push({
+          code: 'CPV-002',
+          severity: 'error',
+          nodePath: pathKey,
+          message: `Referenzierte Landscape ${node.landscapeId} hat keinen Root-Knoten.`,
+        })
+      }
+      return
+    }
+
+    if (node.kind === 'goalEntry') {
+      if (!(node.goalId ?? '').trim()) {
+        findings.push({ code: 'CPV-001', severity: 'error', nodePath: pathKey, message: 'goalEntry ohne goalId.' })
+        return
+      }
+
+      const referencedGoal = index.goalById.get(node.goalId)
+      if (!referencedGoal) {
+        findings.push({
+          code: 'CPV-002',
+          severity: 'error',
+          nodePath: pathKey,
+          goalId: node.goalId,
+          message: `Fehlende kanonische Ziel-Referenz: ${node.goalId}`,
+        })
+        return
+      }
+
+      if (STATE_LOOKING_TITLE_PATTERN.test(referencedGoal.title)) {
+        findings.push({
+          code: 'CPV-102',
+          severity: 'warning',
+          nodePath: pathKey,
+          goalId: node.goalId,
+          message: 'Referenziertes kanonisches Ziel wirkt noch phasen- oder landesspezifisch benannt.',
+        })
+      }
+      return
+    }
+
     if (!(node.goalId ?? '').trim()) {
       findings.push({ code: 'CPV-001', severity: 'error', nodePath: pathKey, message: 'canonicalSubtree ohne goalId.' })
       return
@@ -242,7 +348,7 @@ export const compileCompositionView = (
 
     subtreeRootsByPath.set(pathKey, {
       goalId: node.goalId,
-      expandedGoalIds: expandCanonicalSubtree(node.goalId, canonicalLandscape),
+      expandedGoalIds: expandCanonicalSubtree(node.goalId, canonicalGoalUniverse),
     })
   }
 
@@ -300,6 +406,34 @@ export const compileCompositionView = (
         children: node.children
           .map((child, indexOfChild) => compileNode(child, runtimeId, [...path, indexOfChild]))
           .filter((child): child is CompiledCompositionPreviewNode => child !== null),
+      }
+    }
+
+    if (node.kind === 'landscapeEntry') {
+      const referencedLandscape = landscapeUniverseById?.get(node.landscapeId)
+      const rootGoal = referencedLandscape ? getLandscapeRootGoal(referencedLandscape) : null
+      if (rootGoal?.id) {
+        noteGoalOccurrence(rootGoal.id, parentKey)
+      }
+      return {
+        runtimeId: `landscape:${pathKey}`,
+        kind: 'goal',
+        label: node.displayLabel?.trim() || rootGoal?.title || referencedLandscape?.title || node.landscapeId,
+        sourceGoalId: rootGoal?.id,
+        children: [],
+      }
+    }
+
+    if (node.kind === 'goalEntry') {
+      const goal = index.goalById.get(node.goalId)
+      if (!goal) return null
+      noteGoalOccurrence(goal.id, parentKey)
+      return {
+        runtimeId: `goalEntry:${pathKey}`,
+        kind: 'goal',
+        label: node.displayLabel?.trim() || goal.title,
+        sourceGoalId: goal.id,
+        children: [],
       }
     }
 

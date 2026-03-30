@@ -39,6 +39,7 @@ import { queueToastForNextLoad } from '../hooks/useToast'
 import { dispatchLearnerUiRefresh } from '../utils/learnerUiEvents'
 import { formatFilterDisplayLabel } from '../utils/filterLabels'
 import { getLearnerViewCopy } from '../utils/learnerViewCopy'
+import { normalizeLearnerVisibleChildrenMap } from '../utils/learnerTreeProjection'
 import { buildVisibleChildrenMap, getAudienceGoalTitle, getRenderedChildIds } from '../utils/treeProjectionRuntime'
 
 import type { UiGoal } from '../goalTypes'
@@ -52,6 +53,7 @@ interface LearnerViewProps {
   onSelectGoal: (id: string) => void
   skillpilotId: string
   landscapeId: string
+  currentLandscapeHasMatchedCompositionView: boolean
   activeFilter?: string
   onLogout?: () => void
   onNotify?: (kind: ToastKind, message: string) => void
@@ -198,6 +200,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   onSelectGoal,
   skillpilotId,
   landscapeId,
+  currentLandscapeHasMatchedCompositionView,
   activeFilter = 'all',
   onLogout,
   onNotify,
@@ -365,8 +368,18 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     return supportedFilterIds.has(activeFilter) ? activeFilter : undefined
   }, [landscapeId, personalConfig, activeFilter, supportedFilterIds])
   const learnerVisibleChildrenByParent = useMemo(
-    () => buildVisibleChildrenMap(goalIndexAll, effectiveActiveFilter, personalConfig, learnerStructureMode, 'learner'),
-    [effectiveActiveFilter, goalIndexAll, learnerStructureMode, personalConfig],
+    () => {
+      const baseVisibleChildren = buildVisibleChildrenMap(
+        goalIndexAll,
+        effectiveActiveFilter,
+        personalConfig,
+        learnerStructureMode,
+      )
+      return currentLandscapeHasMatchedCompositionView
+        ? baseVisibleChildren
+        : normalizeLearnerVisibleChildrenMap(goalIndexAll, baseVisibleChildren)
+    },
+    [currentLandscapeHasMatchedCompositionView, effectiveActiveFilter, goalIndexAll, learnerStructureMode, personalConfig],
   )
 
   const learnerTreeScopeKey = useMemo(() => {
@@ -449,7 +462,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
 
   const getVisibleChildIds = useCallback((parentId: string) => {
     if (isPersonalConfigHydrating) return []
-    return getRenderedChildIds(parentId, goalIndexAll, learnerVisibleChildrenByParent, 'learner').childIds
+    return getRenderedChildIds(parentId, goalIndexAll, learnerVisibleChildrenByParent)
   }, [goalIndexAll, isPersonalConfigHydrating, learnerVisibleChildrenByParent])
 
   const visibleGoals = useMemo(() => {
@@ -1933,6 +1946,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
               onToggleExpanded={toggleExpandedGoal}
               frontierIds={frontierIds}
               audience="learner"
+              visibleChildrenByParentOverride={learnerVisibleChildrenByParent}
             />
           )}
         </div>

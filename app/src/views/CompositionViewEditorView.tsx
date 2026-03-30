@@ -15,6 +15,8 @@ import {
   normalizeCompositionView,
   type CompiledCompositionPreviewNode,
   type CompositionCanonicalSubtreeNode,
+  type CompositionGoalEntryNode,
+  type CompositionLandscapeEntryNode,
   type CompositionStructureNode,
   type CompositionView,
   type CompositionViewNode,
@@ -63,6 +65,18 @@ const createStructureNode = (): CompositionStructureNode => ({
 const createCanonicalSubtreeNode = (): CompositionCanonicalSubtreeNode => ({
   kind: 'canonicalSubtree',
   goalId: '',
+  displayLabel: '',
+})
+
+const createGoalEntryNode = (): CompositionGoalEntryNode => ({
+  kind: 'goalEntry',
+  goalId: '',
+  displayLabel: '',
+})
+
+const createLandscapeEntryNode = (): CompositionLandscapeEntryNode => ({
+  kind: 'landscapeEntry',
+  landscapeId: '',
   displayLabel: '',
 })
 
@@ -256,6 +270,18 @@ export const CompositionViewEditorView: React.FC = () => {
       .slice(0, 120)
   }, [candidateSearch, canonicalIndex])
 
+  const canonicalGoalCandidates = useMemo(() => {
+    const needle = candidateSearch.trim().toLowerCase()
+    return Array.from(canonicalIndex.goalById.values())
+      .filter((goal) => {
+        if (!needle) return true
+        const haystack = `${goal.id} ${goal.title} ${goal.shortKey ?? ''}`.toLowerCase()
+        return haystack.includes(needle)
+      })
+      .sort((left, right) => canonicalIndex.compareGoalIds(left.id, right.id))
+      .slice(0, 160)
+  }, [candidateSearch, canonicalIndex])
+
   const selectedCanonicalSummary = useMemo(
     () => canonicalSummaries.find((entry) => entry.path === canonicalPath) ?? null,
     [canonicalPath, canonicalSummaries],
@@ -441,6 +467,20 @@ export const CompositionViewEditorView: React.FC = () => {
     setSelectedNodePath(pathKeyFromIndices(path))
   }, [updateView, view])
 
+  const handleAddRootLandscapeEntry = useCallback(() => {
+    if (!view) return
+    const { nextNodes, path } = appendRootNode(view.rootNodes, createLandscapeEntryNode())
+    updateView((current) => ({ ...current, rootNodes: nextNodes }))
+    setSelectedNodePath(pathKeyFromIndices(path))
+  }, [updateView, view])
+
+  const handleAddRootGoalEntry = useCallback(() => {
+    if (!view) return
+    const { nextNodes, path } = appendRootNode(view.rootNodes, createGoalEntryNode())
+    updateView((current) => ({ ...current, rootNodes: nextNodes }))
+    setSelectedNodePath(pathKeyFromIndices(path))
+  }, [updateView, view])
+
   const handleAddChildStructure = useCallback(() => {
     if (!view || !selectedNodePath) return
     const path = indicesFromPathKey(selectedNodePath)
@@ -453,6 +493,22 @@ export const CompositionViewEditorView: React.FC = () => {
     if (!view || !selectedNodePath) return
     const path = indicesFromPathKey(selectedNodePath)
     const { nextNodes, path: nextPath } = appendChildNode(view.rootNodes, path, createCanonicalSubtreeNode())
+    updateView((current) => ({ ...current, rootNodes: nextNodes }))
+    setSelectedNodePath(pathKeyFromIndices(nextPath))
+  }, [selectedNodePath, updateView, view])
+
+  const handleAddChildLandscapeEntry = useCallback(() => {
+    if (!view || !selectedNodePath) return
+    const path = indicesFromPathKey(selectedNodePath)
+    const { nextNodes, path: nextPath } = appendChildNode(view.rootNodes, path, createLandscapeEntryNode())
+    updateView((current) => ({ ...current, rootNodes: nextNodes }))
+    setSelectedNodePath(pathKeyFromIndices(nextPath))
+  }, [selectedNodePath, updateView, view])
+
+  const handleAddChildGoalEntry = useCallback(() => {
+    if (!view || !selectedNodePath) return
+    const path = indicesFromPathKey(selectedNodePath)
+    const { nextNodes, path: nextPath } = appendChildNode(view.rootNodes, path, createGoalEntryNode())
     updateView((current) => ({ ...current, rootNodes: nextNodes }))
     setSelectedNodePath(pathKeyFromIndices(nextPath))
   }, [selectedNodePath, updateView, view])
@@ -519,6 +575,66 @@ export const CompositionViewEditorView: React.FC = () => {
     }))
   }, [selectedNodePath, updateView])
 
+  const handleSetLandscapeEntryLandscapeId = useCallback((landscapeId: string) => {
+    if (!selectedNodePath) return
+    const path = indicesFromPathKey(selectedNodePath)
+    updateView((current) => ({
+      ...current,
+      rootNodes: updateNodeAtPath(current.rootNodes, path, (node) => {
+        if (node.kind !== 'landscapeEntry') return node
+        return { ...node, landscapeId }
+      }),
+    }))
+  }, [selectedNodePath, updateView])
+
+  const handleSetLandscapeEntryDisplayLabel = useCallback((displayLabel: string) => {
+    if (!selectedNodePath) return
+    const path = indicesFromPathKey(selectedNodePath)
+    updateView((current) => ({
+      ...current,
+      rootNodes: updateNodeAtPath(current.rootNodes, path, (node) => {
+        if (node.kind !== 'landscapeEntry') return node
+        const trimmed = displayLabel.trim()
+        if (!trimmed) {
+          const nextNode = { ...node }
+          delete nextNode.displayLabel
+          return nextNode
+        }
+        return { ...node, displayLabel }
+      }),
+    }))
+  }, [selectedNodePath, updateView])
+
+  const handleSetGoalEntryGoalId = useCallback((goalId: string) => {
+    if (!selectedNodePath) return
+    const path = indicesFromPathKey(selectedNodePath)
+    updateView((current) => ({
+      ...current,
+      rootNodes: updateNodeAtPath(current.rootNodes, path, (node) => {
+        if (node.kind !== 'goalEntry') return node
+        return { ...node, goalId }
+      }),
+    }))
+  }, [selectedNodePath, updateView])
+
+  const handleSetGoalEntryDisplayLabel = useCallback((displayLabel: string) => {
+    if (!selectedNodePath) return
+    const path = indicesFromPathKey(selectedNodePath)
+    updateView((current) => ({
+      ...current,
+      rootNodes: updateNodeAtPath(current.rootNodes, path, (node) => {
+        if (node.kind !== 'goalEntry') return node
+        const trimmed = displayLabel.trim()
+        if (!trimmed) {
+          const nextNode = { ...node }
+          delete nextNode.displayLabel
+          return nextNode
+        }
+        return { ...node, displayLabel }
+      }),
+    }))
+  }, [selectedNodePath, updateView])
+
   const handleSave = useCallback(async () => {
     if (!view) return
     if (!draftPath.trim()) {
@@ -559,7 +675,12 @@ export const CompositionViewEditorView: React.FC = () => {
   const renderCompositionNode = useCallback((node: CompositionViewNode, path: number[], depth: number): React.ReactNode => {
     const pathKey = pathKeyFromIndices(path)
     const isSelected = selectedNodePath === pathKey
-    const referencedGoal = node.kind === 'canonicalSubtree' ? canonicalIndex.goalById.get(node.goalId) : null
+    const referencedGoal = node.kind === 'canonicalSubtree' || node.kind === 'goalEntry'
+      ? canonicalIndex.goalById.get(node.goalId)
+      : null
+    const referencedLandscape = node.kind === 'landscapeEntry'
+      ? canonicalSummaries.find((entry) => entry.landscapeId === node.landscapeId)
+      : null
 
     return (
       <div key={`composition-node-${pathKey}`}>
@@ -580,18 +701,38 @@ export const CompositionViewEditorView: React.FC = () => {
             {node.kind}
           </span>
           <div className="min-w-0 flex-1">
-            <InlineMathText
-              text={node.kind === 'structure'
-                ? node.label
-                : (node.displayLabel?.trim() || referencedGoal?.title || node.goalId || 'Unassigned canonical subtree')}
-              className="truncate font-medium text-text-primary"
-            />
-            <div className="truncate text-[11px] font-mono text-text-secondary">
-              {node.kind === 'structure' ? node.id : (referencedGoal?.id || 'goalId missing')}
-            </div>
-            {node.kind === 'canonicalSubtree' && node.displayLabel?.trim() ? (
-              <div className="truncate text-[11px] text-text-secondary">
-                canonical title: {referencedGoal?.title || 'unresolved'}
+              <InlineMathText
+                text={node.kind === 'structure'
+                  ? node.label
+                  : node.kind === 'canonicalSubtree'
+                    ? (node.displayLabel?.trim() || referencedGoal?.title || node.goalId || 'Unassigned canonical subtree')
+                    : node.kind === 'goalEntry'
+                      ? (node.displayLabel?.trim() || referencedGoal?.title || node.goalId || 'Unassigned goal entry')
+                    : (node.displayLabel?.trim() || referencedLandscape?.title || node.landscapeId || 'Unassigned landscape entry')}
+                className="truncate font-medium text-text-primary"
+              />
+              <div className="truncate text-[11px] font-mono text-text-secondary">
+                {node.kind === 'structure'
+                  ? node.id
+                  : node.kind === 'canonicalSubtree'
+                    ? (referencedGoal?.id || 'goalId missing')
+                    : node.kind === 'goalEntry'
+                      ? (referencedGoal?.id || 'goalId missing')
+                    : (referencedLandscape?.landscapeId || 'landscapeId missing')}
+              </div>
+              {node.kind === 'canonicalSubtree' && node.displayLabel?.trim() ? (
+                <div className="truncate text-[11px] text-text-secondary">
+                  canonical title: {referencedGoal?.title || 'unresolved'}
+                </div>
+              ) : null}
+              {node.kind === 'goalEntry' && node.displayLabel?.trim() ? (
+                <div className="truncate text-[11px] text-text-secondary">
+                  goal title: {referencedGoal?.title || 'unresolved'}
+                </div>
+              ) : null}
+              {node.kind === 'landscapeEntry' && node.displayLabel?.trim() ? (
+                <div className="truncate text-[11px] text-text-secondary">
+                  landscape title: {referencedLandscape?.title || 'unresolved'}
               </div>
             ) : null}
           </div>
@@ -603,7 +744,7 @@ export const CompositionViewEditorView: React.FC = () => {
         ) : null}
       </div>
     )
-  }, [canonicalIndex.goalById, selectedNodePath])
+  }, [canonicalIndex.goalById, canonicalSummaries, selectedNodePath])
 
   return (
     <div className="min-h-screen bg-chat-bg text-text-primary p-4 md:p-6">
@@ -729,7 +870,23 @@ export const CompositionViewEditorView: React.FC = () => {
                   disabled={!view}
                   className="rounded-lg border border-border-color px-3 py-1.5 text-xs font-semibold hover:bg-slate-100 dark:hover:bg-slate-800 disabled:opacity-50"
                 >
-                  Root Subtree
+                        Root Subtree
+                      </button>
+                      <button
+                        type="button"
+                        onClick={handleAddRootGoalEntry}
+                        disabled={!view}
+                        className="rounded-lg border border-border-color px-3 py-1.5 text-xs font-semibold hover:bg-slate-100 dark:hover:bg-slate-800 disabled:opacity-50"
+                      >
+                        Root Goal
+                      </button>
+                      <button
+                        type="button"
+                        onClick={handleAddRootLandscapeEntry}
+                  disabled={!view}
+                  className="rounded-lg border border-border-color px-3 py-1.5 text-xs font-semibold hover:bg-slate-100 dark:hover:bg-slate-800 disabled:opacity-50"
+                >
+                  Root Landscape
                 </button>
               </div>
             </div>
@@ -860,9 +1017,23 @@ export const CompositionViewEditorView: React.FC = () => {
                       >
                         Child Subtree
                       </button>
+                      <button
+                        type="button"
+                        onClick={handleAddChildGoalEntry}
+                        className="rounded-lg border border-border-color px-3 py-2 text-xs font-semibold hover:bg-slate-100 dark:hover:bg-slate-800"
+                      >
+                        Child Goal
+                      </button>
+                      <button
+                        type="button"
+                        onClick={handleAddChildLandscapeEntry}
+                        className="rounded-lg border border-border-color px-3 py-2 text-xs font-semibold hover:bg-slate-100 dark:hover:bg-slate-800"
+                      >
+                        Child Landscape
+                      </button>
                     </div>
                   </div>
-                ) : (
+                ) : selectedNode.kind === 'canonicalSubtree' ? (
                   <div className="flex flex-col gap-3 rounded-xl border border-border-color bg-chat-bg/40 p-3">
                     <div className="flex items-center justify-between gap-2">
                       <div>
@@ -920,6 +1091,117 @@ export const CompositionViewEditorView: React.FC = () => {
                               {goal.shortKey}
                             </span>
                           ) : null}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                ) : selectedNode.kind === 'goalEntry' ? (
+                  <div className="flex flex-col gap-3 rounded-xl border border-border-color bg-chat-bg/40 p-3">
+                    <div className="flex items-center justify-between gap-2">
+                      <div>
+                        <div className="text-sm font-semibold">Goal Entry Reference</div>
+                        <div className="text-[11px] font-mono text-text-secondary">{selectedNodePath}</div>
+                      </div>
+                      <div className="flex flex-wrap gap-2">
+                        <button type="button" onClick={() => handleMoveSelectedNode(-1)} className="rounded border border-border-color px-2 py-1 text-xs hover:bg-slate-100 dark:hover:bg-slate-800">↑</button>
+                        <button type="button" onClick={() => handleMoveSelectedNode(1)} className="rounded border border-border-color px-2 py-1 text-xs hover:bg-slate-100 dark:hover:bg-slate-800">↓</button>
+                        <button type="button" onClick={handleRemoveSelectedNode} className="rounded border border-rose-300 px-2 py-1 text-xs text-rose-700 hover:bg-rose-50 dark:border-rose-700 dark:text-rose-300 dark:hover:bg-rose-950/30">Entfernen</button>
+                      </div>
+                    </div>
+
+                    <label className="flex flex-col gap-1 text-sm">
+                      <span className="font-semibold">goalId</span>
+                      <input
+                        value={selectedNode.goalId}
+                        onChange={(event) => handleSetGoalEntryGoalId(event.target.value)}
+                        className="rounded-lg border border-border-color bg-chat-bg px-3 py-2 font-mono"
+                      />
+                    </label>
+
+                    <label className="flex flex-col gap-1 text-sm">
+                      <span className="font-semibold">displayLabel (optional)</span>
+                      <input
+                        value={selectedNode.displayLabel ?? ''}
+                        onChange={(event) => handleSetGoalEntryDisplayLabel(event.target.value)}
+                        className="rounded-lg border border-border-color bg-chat-bg px-3 py-2"
+                        placeholder="z. B. Übungen"
+                      />
+                    </label>
+
+                    <input
+                      type="search"
+                      value={candidateSearch}
+                      onChange={(event) => setCandidateSearch(event.target.value)}
+                      placeholder="Suche nach kanonischem Ziel"
+                      className="rounded-lg border border-border-color bg-chat-bg px-3 py-2 text-sm"
+                    />
+
+                    <div className="max-h-72 overflow-auto rounded-lg border border-border-color bg-white/60 p-2 dark:bg-slate-950/20">
+                      {canonicalGoalCandidates.map((goal) => (
+                        <button
+                          key={goal.id}
+                          type="button"
+                          onClick={() => handleSetGoalEntryGoalId(goal.id)}
+                          className="flex w-full items-start justify-between gap-3 rounded-md px-2 py-2 text-left hover:bg-slate-100 dark:hover:bg-slate-800/70"
+                        >
+                          <div className="min-w-0">
+                            <InlineMathText text={goal.title} className="truncate text-sm text-text-primary" />
+                            <div className="truncate text-[11px] font-mono text-text-secondary">{goal.id}</div>
+                          </div>
+                          {goal.shortKey ? (
+                            <span className="rounded bg-slate-100 px-1.5 py-0.5 text-[10px] font-semibold text-slate-700 dark:bg-slate-800 dark:text-slate-300">
+                              {goal.shortKey}
+                            </span>
+                          ) : null}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                ) : (
+                  <div className="flex flex-col gap-3 rounded-xl border border-border-color bg-chat-bg/40 p-3">
+                    <div className="flex items-center justify-between gap-2">
+                      <div>
+                        <div className="text-sm font-semibold">Landscape Entry Reference</div>
+                        <div className="text-[11px] font-mono text-text-secondary">{selectedNodePath}</div>
+                      </div>
+                      <div className="flex flex-wrap gap-2">
+                        <button type="button" onClick={() => handleMoveSelectedNode(-1)} className="rounded border border-border-color px-2 py-1 text-xs hover:bg-slate-100 dark:hover:bg-slate-800">↑</button>
+                        <button type="button" onClick={() => handleMoveSelectedNode(1)} className="rounded border border-border-color px-2 py-1 text-xs hover:bg-slate-100 dark:hover:bg-slate-800">↓</button>
+                        <button type="button" onClick={handleRemoveSelectedNode} className="rounded border border-rose-300 px-2 py-1 text-xs text-rose-700 hover:bg-rose-50 dark:border-rose-700 dark:text-rose-300 dark:hover:bg-rose-950/30">Entfernen</button>
+                      </div>
+                    </div>
+
+                    <label className="flex flex-col gap-1 text-sm">
+                      <span className="font-semibold">landscapeId</span>
+                      <input
+                        value={selectedNode.landscapeId}
+                        onChange={(event) => handleSetLandscapeEntryLandscapeId(event.target.value)}
+                        className="rounded-lg border border-border-color bg-chat-bg px-3 py-2 font-mono"
+                      />
+                    </label>
+
+                    <label className="flex flex-col gap-1 text-sm">
+                      <span className="font-semibold">displayLabel (optional)</span>
+                      <input
+                        value={selectedNode.displayLabel ?? ''}
+                        onChange={(event) => handleSetLandscapeEntryDisplayLabel(event.target.value)}
+                        className="rounded-lg border border-border-color bg-chat-bg px-3 py-2"
+                        placeholder="z. B. Mathematik"
+                      />
+                    </label>
+
+                    <div className="max-h-72 overflow-auto rounded-lg border border-border-color bg-white/60 p-2 dark:bg-slate-950/20">
+                      {canonicalSummaries.map((summary) => (
+                        <button
+                          key={summary.landscapeId}
+                          type="button"
+                          onClick={() => handleSetLandscapeEntryLandscapeId(summary.landscapeId)}
+                          className="flex w-full items-start justify-between gap-3 rounded-md px-2 py-2 text-left hover:bg-slate-100 dark:hover:bg-slate-800/70"
+                        >
+                          <div className="min-w-0">
+                            <InlineMathText text={summary.title} className="truncate text-sm text-text-primary" />
+                            <div className="truncate text-[11px] font-mono text-text-secondary">{summary.landscapeId}</div>
+                          </div>
                         </button>
                       ))}
                     </div>

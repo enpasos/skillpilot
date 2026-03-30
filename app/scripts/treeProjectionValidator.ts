@@ -4,6 +4,7 @@ import { fileURLToPath } from 'node:url'
 import { convertLearningGoal } from '../src/goalTypes'
 import type { LearningLandscape } from '../src/landscapeTypes'
 import { buildGoalIndex } from '../src/hooks/useGoalIndex'
+import { normalizeCompositionView } from '../src/utils/authoring/compositionViewAuthoring'
 import { applyGoalPlacementProjection } from '../src/utils/goalPlacementProjection'
 import { GLOBAL_STAGE_SCOPE_CONFIG_IDS } from '../src/utils/personalCurriculumStageScope'
 import { buildVisibleChildrenMap, getRenderedChildIds } from '../src/utils/treeProjectionRuntime'
@@ -11,6 +12,7 @@ import { buildVisibleChildrenMap, getRenderedChildIds } from '../src/utils/treeP
 const scriptDir = dirname(fileURLToPath(import.meta.url))
 const repoRoot = resolve(scriptDir, '../..')
 const canonicalDir = join(repoRoot, 'curricula', 'DE', 'Gymnasium', 'canonical')
+const compositionViewDir = join(repoRoot, 'curricula', 'DE', 'Gymnasium', 'composition-views')
 
 type PersonalCurriculumConfig = Record<string, { selected: boolean; filterId?: string }>
 
@@ -51,6 +53,15 @@ function loadCanonicalLandscapes(): Array<{ file: string; landscape: LearningLan
       file,
       landscape: JSON.parse(readFileSync(file, 'utf8')) as LearningLandscape,
     }))
+}
+
+function loadLandscapeIdsWithCompositionViews(): Set<string> {
+  return new Set(
+    getAllJsonFiles(compositionViewDir)
+      .filter((file) => file.endsWith('.view.json'))
+      .map((file) => normalizeCompositionView(JSON.parse(readFileSync(file, 'utf8'))).landscapeId)
+      .filter((landscapeId) => landscapeId.trim().length > 0),
+  )
 }
 
 function buildStageScopeConfig(scope: 'both' | 'sek1' | 'sek2'): PersonalCurriculumConfig {
@@ -97,7 +108,6 @@ function collectTreeProjectionFindingsForLandscape(
   const walk = (
     goalId: string,
     parentId?: string,
-    inheritedPhaseContext?: ReturnType<typeof getRenderedChildIds>['phaseContext'],
     path: Set<string> = new Set(),
   ) => {
     if (path.has(goalId)) {
@@ -113,15 +123,13 @@ function collectTreeProjectionFindingsForLandscape(
 
     const nextPath = new Set(path)
     nextPath.add(goalId)
-    const { childIds, phaseContext } = getRenderedChildIds(
+    const childIds = getRenderedChildIds(
       goalId,
       allGoals,
       visibleChildrenByParent,
-      'learner',
-      inheritedPhaseContext,
     )
 
-    childIds.forEach((childId) => walk(childId, goalId, phaseContext, nextPath))
+    childIds.forEach((childId) => walk(childId, goalId, nextPath))
   }
 
   globalRootGoals.forEach((rootGoal) => walk(rootGoal.id))
@@ -169,11 +177,13 @@ function collectTreeProjectionFindingsForLandscape(
 
 export function buildTreeProjectionValidationFindings(): TreeProjectionFinding[] {
   const findings: TreeProjectionFinding[] = []
+  const landscapeIdsWithCompositionViews = loadLandscapeIdsWithCompositionViews()
 
   for (const { file, landscape } of loadCanonicalLandscapes()) {
     if (!Array.isArray(landscape.goals) || landscape.goals.length === 0) continue
     if (!Array.isArray(landscape.programUnits) || landscape.programUnits.length === 0) continue
     if (!Array.isArray(landscape.goalPlacements) || landscape.goalPlacements.length === 0) continue
+    if (landscapeIdsWithCompositionViews.has(landscape.landscapeId)) continue
 
     const filterIds = [undefined, ...((landscape.filters ?? []).map((filter) => filter.id))]
     const stageScopes: Array<'both' | 'sek1' | 'sek2'> = ['both', 'sek1', 'sek2']

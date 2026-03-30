@@ -14,10 +14,8 @@ import {
   buildVisibleChildrenMap,
   getAudienceGoalTitle,
   getRenderedChildIds,
-  isFlattenableSyntheticPhaseNode,
   isSyntheticProgramUnit,
   type TreeAudience,
-  type TreePhaseContext,
   type TreeStructureMode,
 } from '../utils/treeProjectionRuntime'
 
@@ -129,7 +127,6 @@ interface TreeNodeProps {
   frontierIds?: Set<string>
   parentGoalId?: string
   audience?: TreeAudience
-  inheritedPhaseContext?: TreePhaseContext
 }
 
 const formatFilterLabel = (filterId: string | undefined, language: LabelLanguage) => {
@@ -172,7 +169,6 @@ const TreeNode: React.FC<TreeNodeProps> = ({
   frontierIds,
   parentGoalId,
   audience = 'trainer',
-  inheritedPhaseContext,
 }) => {
   const t = useTranslation()
   const { language } = useLanguage()
@@ -203,14 +199,11 @@ const TreeNode: React.FC<TreeNodeProps> = ({
   }, [forcedExpandedIds, goalId, isExpansionControlled])
 
   if (!goal) return null
-  if (audience === 'learner' && isFlattenableSyntheticPhaseNode(goal)) return null
 
-  const { childIds: renderedChildren, phaseContext } = getRenderedChildIds(
+  const renderedChildren = getRenderedChildIds(
     goalId,
     allGoals,
     sortedChildrenByParent,
-    audience,
-    inheritedPhaseContext,
   )
   const mastery = masteryByGoalId.get(goalId) ?? 0
 
@@ -423,7 +416,6 @@ const TreeNode: React.FC<TreeNodeProps> = ({
                 frontierIds={frontierIds}
                 parentGoalId={goal.id}
                 audience={audience}
-                inheritedPhaseContext={phaseContext}
               />
             ))}
           </div>
@@ -456,6 +448,7 @@ interface CompetenceTreeProps {
   forcedExpandedIds?: Set<string>
   frontierIds?: Set<string>
   audience?: TreeAudience
+  visibleChildrenByParentOverride?: Map<string, string[]>
 }
 
 export const CompetenceTree: React.FC<CompetenceTreeProps> = ({
@@ -466,6 +459,7 @@ export const CompetenceTree: React.FC<CompetenceTreeProps> = ({
   audience = 'trainer',
   hideTechnicalStructureUi = false,
   allowClusterPlanning = true,
+  visibleChildrenByParentOverride,
   ...props
 }) => {
   // We don't strictly filter root goals by activeFilter, because root goals usually represent 'Structure' (e.g. 'Fächer')
@@ -474,8 +468,13 @@ export const CompetenceTree: React.FC<CompetenceTreeProps> = ({
   const visibleRoots = rootGoals
   const hasActivePlan = props.plannedGoals.size > 0
   const visibleChildrenByParent = React.useMemo(
-    () => buildVisibleChildrenMap(props.allGoals, activeFilter, personalConfig, structureMode, audience),
-    [activeFilter, audience, personalConfig, props.allGoals, structureMode],
+    () => visibleChildrenByParentOverride ?? buildVisibleChildrenMap(
+      props.allGoals,
+      activeFilter,
+      personalConfig,
+      structureMode,
+    ),
+    [activeFilter, personalConfig, props.allGoals, structureMode, visibleChildrenByParentOverride],
   )
   const sortedChildrenByParent = React.useMemo(
     () => buildSortedChildrenMap(visibleChildrenByParent, props.allGoals),
@@ -510,4 +509,4 @@ export const CompetenceTree: React.FC<CompetenceTreeProps> = ({
   )
 }
 
-export type { TreeAudience, TreePhaseContext, TreeStructureMode } from '../utils/treeProjectionRuntime'
+export type { TreeAudience, TreeStructureMode } from '../utils/treeProjectionRuntime'

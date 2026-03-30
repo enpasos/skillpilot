@@ -14,6 +14,7 @@ import { goalMatchesFilter, isWildcardFilter } from '../utils/goalFilters'
 import { applyGoalPlacementProjection } from '../utils/goalPlacementProjection'
 import { getDisplayFiltersForSelection } from '../utils/filterLabels'
 import { normalizeTrainerLandscapeId } from '../utils/trainerLandscapeContext'
+import { normalizeLearnerProjectedEntries } from '../utils/learnerTreeProjection'
 import {
   applyCompositionViewProjection,
   deriveRuntimeCompositionScope,
@@ -107,6 +108,7 @@ export function useAppCore({ role, setLearnerMeta, skillpilotId }: AppCoreOption
   const localizedLanguage = language === 'en' ? 'en' : 'de'
   const [learnerPersonalCurriculum, setLearnerPersonalCurriculum] = React.useState<string | null>(null)
   const [matchedCompositionViewsByLandscapeId, setMatchedCompositionViewsByLandscapeId] = React.useState<Record<string, Record<string, unknown>>>({})
+  const [loadingMatchedCompositionViews, setLoadingMatchedCompositionViews] = React.useState(false)
 
   const [learnerGraphRefreshToken, setLearnerGraphRefreshToken] = React.useState(0)
   const { landscapeEntries, loadingLandscapes, landscapeError } = useLandscapes(selectedLandscapeId, language)
@@ -236,11 +238,13 @@ export function useAppCore({ role, setLearnerMeta, skillpilotId }: AppCoreOption
   useEffect(() => {
     if (role !== 'learner' || runtimeCompositionScopes.size === 0) {
       setMatchedCompositionViewsByLandscapeId({})
+      setLoadingMatchedCompositionViews(false)
       return
     }
 
     const controller = new AbortController()
     const signal = controller.signal
+    setLoadingMatchedCompositionViews(true)
     void Promise.all(
       Array.from(runtimeCompositionScopes.entries()).map(async ([landscapeId, scope]) => {
         if (!scope) return null
@@ -274,23 +278,64 @@ export function useAppCore({ role, setLearnerMeta, skillpilotId }: AppCoreOption
           next[entry[0]] = entry[1]
         })
         setMatchedCompositionViewsByLandscapeId(next)
+        setLoadingMatchedCompositionViews(false)
       })
       .catch((error) => {
         if (signal.aborted) return
         console.warn('[useAppCore] Failed to load matching composition views', error)
         setMatchedCompositionViewsByLandscapeId({})
+        setLoadingMatchedCompositionViews(false)
       })
 
     return () => controller.abort()
   }, [role, runtimeCompositionScopes])
 
   const projectedLandscapeEntries = useMemo(() => {
-    const placementProjected = applyGoalPlacementProjection(graphSourceLandscapeEntries, activeFilter)
-    return Object.values(matchedCompositionViewsByLandscapeId).reduce(
-      (currentEntries, view) => applyCompositionViewProjection(currentEntries, view),
-      placementProjected,
+    const compositionManagedLandscapeIds = new Set(runtimeCompositionScopes.keys())
+    const rawEntriesWithMatchedCompositionView = graphSourceLandscapeEntries.filter((entry) =>
+      !!matchedCompositionViewsByLandscapeId[entry.meta.landscapeId],
     )
-  }, [activeFilter, graphSourceLandscapeEntries, matchedCompositionViewsByLandscapeId])
+    const entriesNeedingPlacementProjection = graphSourceLandscapeEntries.filter((entry) => {
+      const landscapeId = entry.meta.landscapeId
+      if (!compositionManagedLandscapeIds.has(landscapeId)) {
+        return true
+      }
+      if (matchedCompositionViewsByLandscapeId[landscapeId]) {
+        return false
+      }
+      return !loadingMatchedCompositionViews
+    })
+
+    const placementProjectedEntries = applyGoalPlacementProjection(entriesNeedingPlacementProjection, activeFilter)
+    const projectedByLandscapeId = new Map<string, (typeof graphSourceLandscapeEntries)[number]>()
+
+    placementProjectedEntries.forEach((entry) => {
+      projectedByLandscapeId.set(entry.meta.landscapeId, entry)
+    })
+
+    rawEntriesWithMatchedCompositionView.forEach((entry) => {
+      projectedByLandscapeId.set(entry.meta.landscapeId, entry)
+    })
+
+    const orderedProjectedEntries = graphSourceLandscapeEntries
+      .map((entry) => projectedByLandscapeId.get(entry.meta.landscapeId))
+      .filter((entry): entry is (typeof graphSourceLandscapeEntries)[number] => !!entry)
+
+    const compositionProjectedEntries = Object.values(matchedCompositionViewsByLandscapeId).reduce(
+      (currentEntries, view) => applyCompositionViewProjection(currentEntries, view),
+      orderedProjectedEntries,
+    )
+    return role === 'learner'
+      ? normalizeLearnerProjectedEntries(compositionProjectedEntries)
+      : compositionProjectedEntries
+  }, [
+    activeFilter,
+    graphSourceLandscapeEntries,
+    loadingMatchedCompositionViews,
+    matchedCompositionViewsByLandscapeId,
+    role,
+    runtimeCompositionScopes,
+  ])
 
   const projectedCurrentLandscapeEntry = useMemo(() => {
     const targetLandscapeId = currentLandscapeEntry?.meta.landscapeId ?? selectedLandscapeId
@@ -298,6 +343,10 @@ export function useAppCore({ role, setLearnerMeta, skillpilotId }: AppCoreOption
       ?? projectedLandscapeEntries[0]
       ?? null
   }, [currentLandscapeEntry, projectedLandscapeEntries, selectedLandscapeId])
+  const currentLandscapeHasMatchedCompositionView = useMemo(() => {
+    const targetLandscapeId = currentLandscapeEntry?.meta.landscapeId ?? selectedLandscapeId
+    return !!(targetLandscapeId && matchedCompositionViewsByLandscapeId[targetLandscapeId])
+  }, [currentLandscapeEntry?.meta.landscapeId, matchedCompositionViewsByLandscapeId, selectedLandscapeId])
 
   const goals = useMemo(() => projectedCurrentLandscapeEntry?.goals ?? [], [projectedCurrentLandscapeEntry])
 
@@ -487,6 +536,7 @@ export function useAppCore({ role, setLearnerMeta, skillpilotId }: AppCoreOption
     showLearnerTools,
     selectedLandscapeId,
     currentLandscapeEntry,
+    currentLandscapeHasMatchedCompositionView,
     activeFilter,
     setActiveFilter,
     currentGoal,

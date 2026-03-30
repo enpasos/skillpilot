@@ -589,6 +589,7 @@ const App: React.FC = () => {
               onSelectGoal={core.handleSelectAbsolute}
               skillpilotId={skillpilotId}
               landscapeId={core.selectedLandscapeId}
+              currentLandscapeHasMatchedCompositionView={core.currentLandscapeHasMatchedCompositionView}
               activeFilter={core.activeFilter}
               onNotify={handleNotify}
               onLogout={handleLogout}
