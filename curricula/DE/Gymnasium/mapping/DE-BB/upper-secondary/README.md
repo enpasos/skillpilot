@@ -19,10 +19,18 @@ Current use:
 - canonical Gymnasium `Mathematik`
 - upper-secondary phase bridge `E/Q1/Q2/Q3/Q4` is mapped
 - first reviewed Brandenburg E-phase analysis entry corridor is mapped
+- first reviewed Brandenburg E-phase derivative-entry and derivative-application subclusters are mapped exactly
 - first reviewed Brandenburg `Q1` model-functions follow-on corridor is mapped
+- first reviewed Brandenburg `Q1` exponential and trigonometric subclusters are mapped exactly
 - first reviewed Brandenburg `Q2` integral-calculus follow-on corridor is mapped
 - first reviewed Brandenburg `Q2` stochastics follow-on corridor is mapped
 - first reviewed Brandenburg `Q2` data-and-distribution follow-on corridor is mapped
 - first reviewed Brandenburg `Q2` survey-and-critique follow-on corridor is mapped
+- first reviewed Brandenburg `Q2` stochastics bridge corridor is mapped exactly
+- first reviewed Brandenburg `Q2` stochastic parent subclusters are mapped exactly
+- second reviewed Brandenburg `Q2` stochastic bridge subclusters are mapped exactly
+- first reviewed Brandenburg `Q2` integral subclusters are mapped exactly
+- first reviewed Brandenburg `Q2` integral bridge corridor is mapped exactly
+- second reviewed Brandenburg `Q2` matrix/tabular side-lane is mapped exactly
 - first reviewed Brandenburg `Q2` matrix/tabular-representation split is mapped
 - next step: keep widening Brandenburg through similarly narrow upper-secondary leaves while the shared BE/BB overlap stays tight

@@ -542,26 +542,77 @@ class GoalMappingRepositoryFixtureTest {
         assertThat(file.getSourceLandscapeId()).isEqualTo(BRANDENBURG_MATH_UPPER_SECONDARY_LANDSCAPE_ID);
         assertThat(file.getTargetLandscapeId()).isEqualTo(CANONICAL_MATH_ID);
         assertThat(file.getMappings()).hasSize(83);
-        assertThat(file.getMappings()).filteredOn(entry -> "exact".equals(entry.getMatchType())).hasSize(36);
-        assertThat(file.getMappings()).filteredOn(entry -> "partial".equals(entry.getMatchType())).hasSize(47);
+        assertThat(file.getMappings()).filteredOn(entry -> "exact".equals(entry.getMatchType())).hasSize(78);
+        assertThat(file.getMappings()).filteredOn(entry -> "partial".equals(entry.getMatchType())).hasSize(5);
+        assertThat(file.getMappings())
+                .filteredOn(entry -> "partial".equals(entry.getMatchType()))
+                .extracting(GoalMappingEntry::getLegacyGoalId, GoalMappingEntry::getCanonicalGoalId, GoalMappingEntry::getMatchType)
+                .containsExactlyInAnyOrder(
+                        Tuple.tuple("9dc8f677-83c2-4e11-a6bd-1d2c503cfd28", "a668ea17-9226-4074-8f8e-051acbe839eb", "partial"),
+                        Tuple.tuple("bed222b2-5c5c-4883-9e5d-f7cbd8d8a69e", "c8951a07-a3e7-59d2-8a23-dce545dd811a", "partial"),
+                        Tuple.tuple("da8d18b7-9735-49ae-af32-b8938d59ce5b", "98dcf9bd-d119-5eb1-835c-7d719f67b485", "partial"),
+                        Tuple.tuple("5c68c777-d8ca-4709-81d6-d3bda6d0c0b4", "3e937f39-1187-58b3-96c3-ec39278c0e3c", "partial"),
+                        Tuple.tuple("e7bc2abb-9b89-47d3-8da4-f8694c3fbb4a", "6c8a677b-ede8-5c2c-86d8-0ef0be8ace28", "partial"));
         assertThat(file.getMappings())
                 .extracting(GoalMappingEntry::getLegacyGoalId, GoalMappingEntry::getCanonicalGoalId, GoalMappingEntry::getMatchType)
                 .contains(
                         Tuple.tuple("e498bdf5-d30a-43c9-b466-47fce7512c14", "24174bba-a654-5f81-8de3-ca5bd09d9b6f", "exact"),
                         Tuple.tuple("f3ad980a-175b-428d-9b0e-9e5cdffad8f0", "57b11e9a-4acf-5ebe-b2b6-c9f99d2b5bb5", "exact"),
+                        Tuple.tuple("3e7e513c-e755-47e9-b386-3168916b0f3c", "bc68c585-3b1d-4c94-8a2b-c10a4dcdb4e8", "exact"),
+                        Tuple.tuple("37b5fa56-688e-4819-9ae9-e1c99325ed00", "38234acf-d0f8-4ff9-a6f8-852d1596a692", "exact"),
+                        Tuple.tuple("f03af434-834f-4471-b7e6-190e3f7742ad", "b1dcc191-d046-50de-984a-ee5c17157628", "exact"),
+                        Tuple.tuple("f0be1e0f-d6e6-4d9b-afa2-15f15f382742", "b42bdfcc-3db7-5697-8b3e-69e50962ca86", "exact"),
+                        Tuple.tuple("5a9ba880-322d-49e6-a81a-24b67405b0f5", "f042385e-f772-42db-9c96-f21a792ac5ea", "exact"),
                         Tuple.tuple("cdefe13f-53f1-4597-be12-0de37fe5981b", "9460c3ff-e72d-4107-bc73-087d217200aa", "exact"),
                         Tuple.tuple("dde04e67-35f0-4a56-9f98-daf562ce9d5b", "effe43eb-cabe-56cb-a228-35887d7915c1", "exact"),
                         Tuple.tuple("8b615e9f-142c-47dc-85ea-365273d04a46", "ec6447d1-97da-5b77-94ae-4973b43f094e", "exact"),
                         Tuple.tuple("0551e6b0-8a7f-4b1d-948e-1237cf81796b", "845440ce-f63f-5835-903f-739145ca27bd", "exact"),
                         Tuple.tuple("660b1fc5-b4d6-4a83-a0d4-3ed8265fdfad", "b3604df4-15a8-41c8-a8b0-50dadd698bd3", "exact"),
+                        Tuple.tuple("cf2c56a8-0ee9-4306-a5f1-1f03b7619a5f", "48e7615d-3e6e-4b5c-9df3-310e510f91f0", "exact"),
+                        Tuple.tuple("49b654c4-2503-4f88-aadb-48405394f77d", "d51e649f-5dc8-40b8-b580-589016137458", "exact"),
                         Tuple.tuple("14700552-4956-45f3-9da5-b6fb9c2eae21", "781f133a-08bb-54b9-8fda-efa2f8f9b12c", "exact"),
+                        Tuple.tuple("4c2ae2be-1a19-48f4-886c-41d1169b9279", "346efb31-c400-5bd3-a698-dd9a7e1bc3f7", "exact"),
+                        Tuple.tuple("77989a74-8d9b-4a71-822e-c4f05c67e8dd", "d900e0a4-0c45-50dd-a37b-01f9f91a134c", "exact"),
+                        Tuple.tuple("200a8423-f9fd-4091-908e-b4bd0f9bbebb", "ab720928-9dbc-53c2-a1f8-865dda92122d", "exact"),
+                        Tuple.tuple("01ed534e-44d1-4e5d-bc32-f0103a1348d9", "bbef7cf2-90fa-59fa-a115-8b651aab9231", "exact"),
+                        Tuple.tuple("c5fec5b3-fcd8-462a-beb5-d5d5d7544fec", "31cbe2ae-67be-4b2e-9276-4f81fbfb6d96", "exact"),
+                        Tuple.tuple("045be183-58ef-4902-babf-f6ea92609d1d", "266f4250-04a2-4a53-ab24-d81c4e099950", "exact"),
+                        Tuple.tuple("6606aca9-3fef-40d9-8f73-bdaed7dd39fe", "f1a95baf-b91f-44db-bcb1-70a4d2e3f7d1", "exact"),
+                        Tuple.tuple("a0036a03-9fae-409b-aae8-aa91eaaec69f", "0f8fc8bc-3a9e-49a3-8afb-b125b571af97", "exact"),
+                        Tuple.tuple("df54cacc-bc46-44c6-86b9-5cf39f742aa2", "460b3df5-5d18-43c0-b29a-1c347a0a27f6", "exact"),
                         Tuple.tuple("0ddfc0cd-4eb6-4db1-8798-188a51dbe486", "2a1158e5-d4ca-51d4-860c-f43bd5a86836", "exact"),
                         Tuple.tuple("f4d6a5f3-82ff-4199-a6a1-55046a7e8e53", "52e57eb5-7cd1-5df0-a8c6-7b090f097d9f", "exact"),
+                        Tuple.tuple("a1c9e805-f1bb-4de3-82d0-335b319ab31a", "508292f2-671b-4fd3-acbf-53d705e44693", "exact"),
                         Tuple.tuple("dec2d72e-ad55-4179-885b-f3e5d64d8776", "bd63c0fc-50ef-55aa-ae6c-25cf73d02636", "exact"),
                         Tuple.tuple("557b2a54-2a52-45d1-8c97-c1fe3d0a934d", "9cc650e0-100d-5ae1-a83b-2b854ab7c5c8", "exact"),
+                        Tuple.tuple("61fdfe96-fd1a-43ec-b42a-ed3e44191ea1", "7c0dee9b-a827-456d-9f88-b196fc4e9a13", "exact"),
+                        Tuple.tuple("f2820843-e4f7-49d1-89f3-bf19ba8d9d9d", "fa02cf14-0411-4fe3-8be7-a62c69743e26", "exact"),
+                        Tuple.tuple("a77aba90-bdc9-420d-8805-872f71114ec4", "075f1ef2-6860-4b20-9df2-878157eb395e", "exact"),
                         Tuple.tuple("55041b6e-7a4a-4dd1-bcc8-1bc5759f4702", "858113c5-e53b-57bb-b01f-ba95c3ddcb6f", "exact"),
+                        Tuple.tuple("699b2590-2c7c-4ff3-8c2a-0ae14a214c0c", "90662398-a0fd-45bf-9ce9-2abbc20428ed", "exact"),
+                        Tuple.tuple("cf83da48-17ef-488b-9a68-75323d5764de", "ce774aad-edd7-4f86-a431-6ca921b8e570", "exact"),
+                        Tuple.tuple("c673e3dd-370d-4cb3-9c98-bf41328a4b57", "3b0d30b8-148b-43e0-b883-907fc691fc11", "exact"),
+                        Tuple.tuple("9270a0db-4378-4045-a2f1-b1c481ca7990", "985a62b1-c657-4c07-982b-72afd4c86e40", "exact"),
                         Tuple.tuple("13a20456-21ef-48ea-9768-9f4eececb975", "616c72a4-972d-5cc0-b903-e2a24bcb150c", "exact"),
+                        Tuple.tuple("7c467c89-5608-4f73-ad40-0bd38d06c5ef", "fd2fa63c-5626-4dc3-86b3-3672e906e34a", "exact"),
+                        Tuple.tuple("a04efa06-7d34-4a35-8080-5c76a5e6bae6", "f378917f-2ca7-4c68-bd66-3f9457095dd5", "exact"),
+                        Tuple.tuple("db92cb2f-dfa2-409e-b272-27f5d2f89aaf", "3862890e-9ea9-4c62-bcf2-e354c9d8f306", "exact"),
+                        Tuple.tuple("53b553ff-647f-4397-b106-19e049c8ad54", "187c1bef-57bc-4a93-a26b-04191879626c", "exact"),
+                        Tuple.tuple("091586f3-22fe-4b82-a207-719daa638558", "75efcc7c-3c96-47c6-a681-1e9337862a20", "exact"),
+                        Tuple.tuple("7ddb6b75-55a5-48b4-8ce4-2f5a3dc5274e", "1383d2c8-ad8f-42a0-9a50-6897185bafd1", "exact"),
                         Tuple.tuple("dc5f227f-2c12-409f-b1ba-39c7e3da086b", "e402f330-8ac6-525f-b3ff-bc4be229d131", "exact"),
+                        Tuple.tuple("abd1f3e5-bcb7-4d01-a37f-d0c1ad69c782", "5927ca6a-91d5-4541-84e9-833bbb2cd7df", "exact"),
+                        Tuple.tuple("654f9d22-b554-4528-86e1-52c5f94fbd7e", "9dfd0e4a-d7ea-5ce2-906e-678f0cf978b0", "exact"),
+                        Tuple.tuple("d8a872b0-befb-47d3-9699-9bcb6b6b5074", "f7879354-1a82-4195-8e3c-a339a820439c", "exact"),
+                        Tuple.tuple("f7858e56-1005-450e-bad5-c2d3f782a9f4", "990d7514-c4c3-485e-907e-91687676a8cc", "exact"),
+                        Tuple.tuple("e69bb038-3ffc-4546-a22b-2e4bdc6b3960", "a9ed219d-d497-55e5-a4e0-4d45d2554f6b", "exact"),
+                        Tuple.tuple("32bc5f5b-e9de-45c3-bf97-4bd7a53bdb30", "ece68088-71a8-466b-874c-09e6baac19fc", "exact"),
+                        Tuple.tuple("e73327b5-5b20-4fa3-a36b-8516469a848c", "164eb50f-1a5e-44a2-932e-561862e1378e", "exact"),
+                        Tuple.tuple("df7abdf8-02cd-4a75-a632-7db47db60133", "8eb14d81-353a-4909-9464-61be7b1ba5b8", "exact"),
+                        Tuple.tuple("d7662486-edb1-4fef-8fc2-b953387763cb", "3256476b-ec65-4038-9f5a-a8808fbcf207", "exact"),
+                        Tuple.tuple("3aca21da-835a-4adc-8ebb-0d1797888a5d", "509ae03b-96b1-4bb1-b015-b83d14569dae", "exact"),
+                        Tuple.tuple("44c4ffc1-f854-4343-8a8e-e83b8f2195f8", "5da12e3a-9abb-4134-a0a3-f44aa8de0a03", "exact"),
+                        Tuple.tuple("4ec28779-2898-4e08-b36d-e764a53e0531", "18293a33-a5ff-4a0f-9b6a-085f171cbffe", "exact"),
                         Tuple.tuple("b7cacf56-bae8-4d8f-b02f-6d6434da0eab", "dabff49b-d40a-4c81-a584-21408b2d4219", "exact"),
                         Tuple.tuple("f920f775-6588-4b5b-be64-675df24d74a3", "4aa70ad4-171d-5671-a864-c0c7758fa0ed", "exact"),
                         Tuple.tuple("f7d5be1b-108d-4424-9f9e-f6cc9f2dcaa8", "83a5546e-0ea6-576e-83e2-3387b30872bb", "exact"),
@@ -572,7 +623,7 @@ class GoalMappingRepositoryFixtureTest {
                         Tuple.tuple("2ad7cafd-b7f8-49e8-b7c0-bb5bf132978b", "19f170e4-b88f-4c06-b72a-ce6923748bb4", "exact"),
                         Tuple.tuple("fdfaafde-d430-406a-a03e-6c985671cf4b", "3016ec37-1c2e-47db-83f5-e767923bc97e", "exact"),
                         Tuple.tuple("3206078a-175a-47d3-b1c7-ce75447a8ca8", "ed5d869b-af4e-4b80-b34d-a2338e16ce34", "exact"),
-                        Tuple.tuple("a04efa06-7d34-4a35-8080-5c76a5e6bae6", "2826e0b6-84d3-5abb-85bd-da8db77cc17a", "partial"));
+                        Tuple.tuple("a04efa06-7d34-4a35-8080-5c76a5e6bae6", "f378917f-2ca7-4c68-bd66-3f9457095dd5", "exact"));
     }
 
     @Test
