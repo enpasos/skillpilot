@@ -109,6 +109,102 @@ const REQUIRED_CANONICAL_MATH_SCOPES: RequiredCanonicalMathScope[] = [
     expectedViewId: 'de-he-gym-math-lk',
     scope: { schoolForm: 'Gymnasium', jurisdiction: 'DE-HE', stage: 'CrossStage', courseProfile: 'LK' },
   },
+  {
+    expectedViewId: 'de-by-gym-sekii-math-gk',
+    scope: { schoolForm: 'Gymnasium', jurisdiction: 'DE-BY', stage: 'SekII', courseProfile: 'GK' },
+  },
+  {
+    expectedViewId: 'de-by-gym-sekii-math-lk',
+    scope: { schoolForm: 'Gymnasium', jurisdiction: 'DE-BY', stage: 'SekII', courseProfile: 'LK' },
+  },
+  {
+    expectedViewId: 'de-by-gym-math-gk',
+    scope: { schoolForm: 'Gymnasium', jurisdiction: 'DE-BY', stage: 'CrossStage', courseProfile: 'GK' },
+  },
+  {
+    expectedViewId: 'de-by-gym-math-lk',
+    scope: { schoolForm: 'Gymnasium', jurisdiction: 'DE-BY', stage: 'CrossStage', courseProfile: 'LK' },
+  },
+  {
+    expectedViewId: 'de-ni-gym-sekii-math-gk',
+    scope: { schoolForm: 'Gymnasium', jurisdiction: 'DE-NI', stage: 'SekII', courseProfile: 'GK' },
+  },
+  {
+    expectedViewId: 'de-ni-gym-sekii-math-lk',
+    scope: { schoolForm: 'Gymnasium', jurisdiction: 'DE-NI', stage: 'SekII', courseProfile: 'LK' },
+  },
+  {
+    expectedViewId: 'de-ni-gym-math-gk',
+    scope: { schoolForm: 'Gymnasium', jurisdiction: 'DE-NI', stage: 'CrossStage', courseProfile: 'GK' },
+  },
+  {
+    expectedViewId: 'de-ni-gym-math-lk',
+    scope: { schoolForm: 'Gymnasium', jurisdiction: 'DE-NI', stage: 'CrossStage', courseProfile: 'LK' },
+  },
+  {
+    expectedViewId: 'de-nw-gym-sekii-math-gk',
+    scope: { schoolForm: 'Gymnasium', jurisdiction: 'DE-NW', stage: 'SekII', courseProfile: 'GK' },
+  },
+  {
+    expectedViewId: 'de-nw-gym-sekii-math-lk',
+    scope: { schoolForm: 'Gymnasium', jurisdiction: 'DE-NW', stage: 'SekII', courseProfile: 'LK' },
+  },
+  {
+    expectedViewId: 'de-nw-gym-math-gk',
+    scope: { schoolForm: 'Gymnasium', jurisdiction: 'DE-NW', stage: 'CrossStage', courseProfile: 'GK' },
+  },
+  {
+    expectedViewId: 'de-nw-gym-math-lk',
+    scope: { schoolForm: 'Gymnasium', jurisdiction: 'DE-NW', stage: 'CrossStage', courseProfile: 'LK' },
+  },
+  {
+    expectedViewId: 'de-sh-gym-sekii-math-gk',
+    scope: { schoolForm: 'Gymnasium', jurisdiction: 'DE-SH', stage: 'SekII', courseProfile: 'GK' },
+  },
+  {
+    expectedViewId: 'de-sh-gym-sekii-math-lk',
+    scope: { schoolForm: 'Gymnasium', jurisdiction: 'DE-SH', stage: 'SekII', courseProfile: 'LK' },
+  },
+  {
+    expectedViewId: 'de-sh-gym-math-gk',
+    scope: { schoolForm: 'Gymnasium', jurisdiction: 'DE-SH', stage: 'CrossStage', courseProfile: 'GK' },
+  },
+  {
+    expectedViewId: 'de-sh-gym-math-lk',
+    scope: { schoolForm: 'Gymnasium', jurisdiction: 'DE-SH', stage: 'CrossStage', courseProfile: 'LK' },
+  },
+  {
+    expectedViewId: 'de-be-gym-sekii-math-gk',
+    scope: { schoolForm: 'Gymnasium', jurisdiction: 'DE-BE', stage: 'SekII', courseProfile: 'GK' },
+  },
+  {
+    expectedViewId: 'de-be-gym-sekii-math-lk',
+    scope: { schoolForm: 'Gymnasium', jurisdiction: 'DE-BE', stage: 'SekII', courseProfile: 'LK' },
+  },
+  {
+    expectedViewId: 'de-be-gym-math-gk',
+    scope: { schoolForm: 'Gymnasium', jurisdiction: 'DE-BE', stage: 'CrossStage', courseProfile: 'GK' },
+  },
+  {
+    expectedViewId: 'de-be-gym-math-lk',
+    scope: { schoolForm: 'Gymnasium', jurisdiction: 'DE-BE', stage: 'CrossStage', courseProfile: 'LK' },
+  },
+  {
+    expectedViewId: 'de-bb-gym-sekii-math-gk',
+    scope: { schoolForm: 'Gymnasium', jurisdiction: 'DE-BB', stage: 'SekII', courseProfile: 'GK' },
+  },
+  {
+    expectedViewId: 'de-bb-gym-sekii-math-lk',
+    scope: { schoolForm: 'Gymnasium', jurisdiction: 'DE-BB', stage: 'SekII', courseProfile: 'LK' },
+  },
+  {
+    expectedViewId: 'de-bb-gym-math-gk',
+    scope: { schoolForm: 'Gymnasium', jurisdiction: 'DE-BB', stage: 'CrossStage', courseProfile: 'GK' },
+  },
+  {
+    expectedViewId: 'de-bb-gym-math-lk',
+    scope: { schoolForm: 'Gymnasium', jurisdiction: 'DE-BB', stage: 'CrossStage', courseProfile: 'LK' },
+  },
 ]
 
 const composeScopeKey = (scope: {
@@ -364,7 +460,7 @@ for (const viewPath of compositionViewFiles) {
     const additionalFindings = [
       ...collectGenericTreeFindings(result.compiledRootNodes),
       ...(normalizedView.landscapeId === CANONICAL_DE_MATH_ID
-      && CANONICAL_DE_MATH_VIEW_ID_PATTERN.test(normalizedView.viewId)
+        && CANONICAL_DE_MATH_VIEW_ID_PATTERN.test(normalizedView.viewId)
         ? collectCanonicalMathTreeFindings(result.compiledRootNodes)
         : []),
     ]
