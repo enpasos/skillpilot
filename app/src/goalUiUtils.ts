@@ -6,14 +6,23 @@ export function levelLabel(level: number) {
 }
 
 export const MASTERED_THRESHOLD = 0.9
+export const COMPLETE_MASTERY_THRESHOLD = 0.999
+
+export function clampMastery(value: number): number {
+  return Math.max(0, Math.min(1, value))
+}
 
 export function isMastered(value: number): boolean {
   return value >= MASTERED_THRESHOLD
 }
 
+export function isCompleteMastery(value: number): boolean {
+  return clampMastery(value) >= COMPLETE_MASTERY_THRESHOLD
+}
+
 export function masteryColorClass(value: number): string {
-  const v = Math.max(0, Math.min(1, value))
-  if (v >= 0.75) return 'bg-mastery-high'
+  const v = clampMastery(value)
+  if (isCompleteMastery(v)) return 'bg-mastery-high'
   if (v >= 0.4) return 'bg-mastery-medium'
   if (v > 0) return 'bg-mastery-low'
   return 'bg-mastery-none'

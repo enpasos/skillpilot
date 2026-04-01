@@ -4,7 +4,7 @@ import { useTranslation } from '../hooks/useTranslation'
 import { useLanguage } from '../contexts/LanguageContext'
 import type { UiGoal } from '../goalTypes'
 import { sortGoalsTopologically } from '../utils/goalSorter'
-import { isMastered } from '../goalUiUtils'
+import { isCompleteMastery, isMastered, masteryColorClass } from '../goalUiUtils'
 import { InlineMathText } from './InlineMathText'
 import { isWildcardFilter } from '../utils/goalFilters'
 import { isCourseProfileFilterId } from '../utils/personalCurriculumStageScope'
@@ -219,6 +219,7 @@ const TreeNode: React.FC<TreeNodeProps> = ({
     : localIsExpanded
   const hasChildren = renderedChildren.length > 0
   const mastered = isMastered(mastery)
+  const complete = isCompleteMastery(mastery)
   const isPlanned = plannedGoals.has(goal.id)
   const isSelected = selectedId === goal.id
   const isSyntheticStructureNode = isSyntheticProgramUnit(goal)
@@ -309,7 +310,7 @@ const TreeNode: React.FC<TreeNodeProps> = ({
             title={`${t.tooltips.progress}: ${(mastery * 100).toFixed(0)}%`}
           >
             <div
-              className={`h-full ${mastered ? 'bg-emerald-500' : 'bg-sky-500'}`}
+              className={`h-full ${masteryColorClass(mastery)}`}
               style={{ width: `${mastery * 100}%` }}
             />
           </div>
@@ -319,8 +320,10 @@ const TreeNode: React.FC<TreeNodeProps> = ({
           <div
             className={`mr-1 ${isDimmed
               ? 'text-slate-300 dark:text-slate-600'
-              : mastered
+              : complete
                 ? 'text-emerald-500'
+                : mastered
+                  ? 'text-amber-500'
                 : 'text-red-500'
               }`}
           >

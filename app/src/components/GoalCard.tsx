@@ -3,7 +3,7 @@ import { Check, Target, Send } from 'lucide-react'
 import type { UiGoal as Goal } from '../goalTypes'
 
 import { MasteryBar } from './MasteryBar'
-import { isMastered } from '../goalUiUtils'
+import { isCompleteMastery, isMastered } from '../goalUiUtils'
 import { InlineMathText } from './InlineMathText'
 import { useLanguage } from '../contexts/LanguageContext'
 import { formatApplicabilityDimensionLabel, formatFilterValueLabel } from '../utils/filterLabels'
@@ -198,6 +198,7 @@ export const GoalCard: React.FC<GoalCardProps> = ({
   // Detect if Atomic Goal (no children)
   const isAtomic = !goal.contains || goal.contains.length === 0
   const mastered = isMastered(masteryValue)
+  const complete = isCompleteMastery(masteryValue)
   const canSetActive = Boolean(!readOnly && onSetActive && isAtomic && !mastered && (isFrontier || isActive))
   const activeActionLabel = isActive
     ? copy.activeActionReveal
@@ -244,7 +245,7 @@ export const GoalCard: React.FC<GoalCardProps> = ({
 
   if (mastered) {
     StatusIcon = Check
-    iconColor = "text-emerald-500"
+    iconColor = complete ? "text-emerald-500" : "text-amber-500"
     strokeWidth = 3
   } else if (isActive) {
     StatusIcon = Send
