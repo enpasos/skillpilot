@@ -38,26 +38,26 @@ State columns use Bundesland abbreviations:
 | Sek I Funktionen / Zuordnungen | `seed` | `n/s` | `n/s` | `corr` | `corr` | `corr` | `corr` | `seed` | `n/s` | `n/s` | `n/s` | `n/s` | `n/s` | `n/s` | `n/s` | `n/s` | `n/s` | visible `F3-F5` packaging is now connected on the first reviewed lanes; remaining broad HB/HH mixed corridors look more like source-granularity residue than like a new canonical gap | freeze more function package churn unless the remaining mixed lower-secondary lanes force a genuinely new shared atom |
 | Sek I Geometrie / Raum | `seed` | `n/s` | `n/s` | `n/s` | `n/s` | `corr` | `corr` | `seed` | `n/s` | `n/s` | `n/s` | `n/s` | `n/s` | `n/s` | `n/s` | `n/s` | `n/s` | canonical `G2-G7` packaging and the first `HB`/`HH` realignment are now in place; the next open question is only whether additional reviewed states force new shared atoms, especially around `G6/G7` | freeze geometry widening until another reviewed state exposes a concrete shared gap in the canonical cut |
 | Sek I Daten / Zufall | `seed` | `n/s` | `n/s` | `n/s` | `n/s` | `anchor` | `anchor` | `seed` | `n/s` | `n/s` | `n/s` | `n/s` | `n/s` | `n/s` | `corr` | `n/s` | `n/s` | canonical `D1-D5` package surface is now explicit; further reviewed state work should only test mapping residue, not reopen the package split without strong contrary evidence | freeze package churn here and use additional state lanes only for bridge quality and residue control |
-| Sek II Analysis | `seed` | `n/s` | `n/s` | `corr` | `corr` | `corr` | `corr` | `seed` | `n/s` | `n/s` | `n/s` | `n/s` | `n/s` | `n/s` | `n/s` | `n/s` | `n/s` | current open tensions sit in the broad integral corridor, the shared-core versus LK-depth split of model corridors, and the late Q4 parameter-family packaging | use `docs/dev/canonical-gymnasium-math-sek2-analysis-audit.md` as the active decision board and run the next canonical analysis packaging pass before more widening |
-| Sek II Stochastik | `seed` | `n/s` | `n/s` | `n/s` | `n/s` | `corr` | `corr` | `seed` | `n/s` | `n/s` | `n/s` | `n/s` | `n/s` | `n/s` | `n/s` | `n/s` | `n/s` | normal distribution, interval logic, and test design may still be mixed too broadly in the canonical graph | review the canonical upper-secondary stochastics atom inventory topic-wide |
-| Sek II Analytische Geometrie / Vektoren | `seed` | `n/s` | `n/s` | `n/s` | `n/s` | `corr` | `corr` | `seed` | `n/s` | `n/s` | `n/s` | `n/s` | `n/s` | `n/s` | `n/s` | `n/s` | `n/s` | check whether vector basics, line-plane relations, distance/angle, and reflections are split at the right depth | review canonical geometry-at-scale before more state detail work |
+| Sek II Analysis | `seed` | `n/s` | `n/s` | `corr` | `corr` | `corr` | `corr` | `seed` | `n/s` | `n/s` | `n/s` | `n/s` | `n/s` | `n/s` | `n/s` | `n/s` | `n/s` | visible `AN2-AN4` packaging is now in place and the first obvious `BE`/`HB`/`HH` realignment corrections are connected; the remaining open tension sits mainly in the late continuation corridor around differential equations, LK-depth, and parameter-family packaging | freeze more package churn and reopen `AN5` only if additional reviewed residue shows that the late continuation corridor still hides a real shared split |
+| Sek II Stochastik | `seed` | `n/s` | `n/s` | `n/s` | `n/s` | `corr` | `corr` | `seed` | `n/s` | `n/s` | `n/s` | `n/s` | `n/s` | `n/s` | `n/s` | `n/s` | `n/s` | visible `ST2`, `ST4`, and `ST5` packaging is now in place, `ST3` remains an explicit LK-boundary marker, and the first reviewed `HB`/`HH`/`HE` pass does not force a new bridge package; only broader multi-state residue could reopen this topic | freeze package churn here and reopen only if another reviewed lane shows a real shared canonical gap |
+| Sek II Analytische Geometrie / Vektoren | `seed` | `n/s` | `n/s` | `n/s` | `n/s` | `corr` | `corr` | `seed` | `n/s` | `n/s` | `n/s` | `n/s` | `n/s` | `n/s` | `n/s` | `n/s` | `n/s` | visible `AGV2-AGV5` packaging is now in place; the next question is no longer package invention but whether reviewed `HB`/`HH`/`HE` residue forces broader parent mappings or another cut between relation work and metric/application work | freeze more package churn and run the first reviewed `HB`/`HH`/`HE` realignment pass before deciding on any further space-geometry split |
 | Sek II Lineare Algebra / Matrizen | `seed` | `n/s` | `n/s` | `n/s` | `n/s` | `corr` | `corr` | `seed` | `n/s` | `n/s` | `n/s` | `n/s` | `n/s` | `n/s` | `n/s` | `n/s` | `n/s` | linear systems, matrix operations, transition models, and long-term behavior need a canonical pass to separate shared core from LK depth cleanly | review canonical matrix and transition-process atoms before further lane widening |
 
 ## Current recommendation
 
 Active next topic:
 
-1. `Sek II Analysis`
+1. `Sek II Analytische Geometrie / Vektoren`
 
 Active audit artifact:
 
-1. `docs/dev/canonical-gymnasium-math-sek2-analysis-audit.md`
+1. `docs/dev/canonical-gymnasium-math-sek2-analytic-geometry-audit.md`
 
 Why:
 
-- the current Sek-I function packaging is now materially far enough along that the next unsolved high-level packaging question sits in upper-secondary analysis
-- the reviewed `BB` / `BE` / `HB` / `HH` / `HE` evidence is already enough for a first canonical analysis audit without widening more state lanes first
-- the broad integral corridor and the shared-core versus LK-depth split are clearer next bottlenecks than more lower-secondary package churn
+- the first canonical Sek-II analytic-geometry packaging pass is now in place
+- the next bottleneck is no longer package invention but pressure-testing whether the revised visible space/vector surface survives real reviewed mappings cleanly
+- the reviewed `HB` / `HH` / `HE` evidence already available there is enough for a first realignment pass without widening more state lanes first
 
 Definition of done for one topic:
 

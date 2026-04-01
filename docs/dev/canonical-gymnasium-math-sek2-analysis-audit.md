@@ -149,23 +149,43 @@ For `Sek II Analysis`, use these work packages:
    - function families / parameter investigations
    - keep explicitly open until the shared-core versus LK-depth boundary is tested harder
 
+## Design step executed
+
+The first canonical Sek-II analysis packaging pass is now in place.
+
+Accepted package surface:
+
+1. `AN2` is now visible as `Differentialrechnung, Untersuchung und Optimierung`.
+2. `AN3` is now visible as `Exponential-, logarithmische und periodische Modelle (Sek II)`.
+3. `AN4` is now visible as `Integralbegriffe, Rekonstruktion und Kontextdeutung (Sek II)`.
+
+Important boundary decision:
+
+1. the broad integral corridor no longer carries ordinary differential equations directly
+2. late continuation stays reachable above `AN4`
+3. `AN5` remains intentionally open, especially around differential equations, late continuation, and parameter-family packaging
+
 ## Recommendation
 
-Do not widen more bundesland mappings on Sek-II analysis before one canonical pass answers these questions:
+Do not widen more bundesland mappings on Sek-II analysis before the revised package surface is pressure-tested against reviewed evidence.
 
-1. Is the current integral corridor too broad and in need of a visible split between `AN4` and `AN5`?
-2. Are exponential and periodic model corridors already separated at the right visible depth?
-3. Does Q4 parameter-family work already sit in the right visible analysis package, or is it still hidden inside a mixed late corridor?
+Open questions now reduced to:
+
+1. Is `AN5` only a broad continuation bucket, or does it need a stricter visible split between differential equations and parameter families?
+2. Is the shared-core versus LK-depth boundary inside the late continuation corridor already stable enough?
+3. Do reviewed state lanes force a sharper visible separation inside the remaining mixed continuation material?
 
 ## Recommended next concrete step
 
-Run one canonical design step only on:
+Run the first reviewed realignment pass against the revised package surface on:
 
-1. `AN2 Differential calculus, investigation, and optimisation`
-2. `AN3 Exponential, logarithmic, and periodic models`
-3. `AN4 Integral concepts, reconstruction, and context interpretation`
+1. `BB`
+2. `BE`
+3. `HB`
+4. `HH`
+5. `HE`
 
-Keep `AN5` open as an explicit follow-up decision.
+Keep `AN5` open as an explicit follow-up decision after this pressure test.
 
 ## Exit criteria for this audit
 
