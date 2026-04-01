@@ -895,7 +895,7 @@
       "description": "Gemeinsame Wurzel für Mathematik am Gymnasium in Deutschland. Die Baseline bündelt einen kanonischen Mathematik-Graphen über Sekundarstufe I und II mit Jahrgangsankern, fachlichen Korridoren und anschlussfähigen Oberstufenzielen.",
       "descriptionEn": "Shared root for mathematics at Gymnasium in Germany. The baseline bundles one canonical mathematics graph across lower and upper secondary with year anchors, content corridors, and upper-secondary continuation goals.",
       "core": true,
-      "weight": 518,
+      "weight": 604,
       "tags": [
         "root",
         "canonical",
@@ -3656,18 +3656,71 @@
       "type": "cluster"
     },
     {
-      "id": "88f8e185-a89b-4a34-869d-766042977f38",
-      "shortKey": "canonical_math_sek1_structures_functional_relationships",
-      "title": "Strukturen und funktionale Zusammenhaenge (Sek I)",
-      "titleEn": "Structures and Functional Relationships (Lower Secondary)",
-      "description": "Cluster fuer einen fachlich gemischten Sek-I-Korridor aus algebraischen und funktionalen Grundideen. Der Korridor verbindet Variablen und Terme, Zuordnungen und Darstellungswechsel, proportionale und indirekt proportionale Zusammenhaenge, lineare Gleichungen und Gleichungssysteme sowie lineare und quadratische Funktionen und ist zusaetzlich an die kanonischen Jahrgangsanker J7 bis J9 angebunden.",
-      "descriptionEn": "Cluster for a mixed lower-secondary corridor of algebraic and functional foundations. The corridor connects variables and expressions, mappings and representation changes, proportional and inverse-proportional relationships, linear equations and systems of equations, as well as linear and quadratic functions, and is additionally attached to the canonical year anchors J7 to J9.",
+      "id": "4fb3444d-1299-4ac2-bf3d-6ef238427f6a",
+      "shortKey": "canonical_math_sek1_linear_functions_calculations_applications",
+      "title": "Lineare Funktionen, rechnerische Verfahren und Anwendungen (Sek I)",
+      "titleEn": "Linear Functions, Calculations, and Applications (Lower Secondary)",
+      "description": "Cluster fuer den sichtbaren spaeteren Sek-I-Korridor zu linearen Funktionen. Der Korridor buendelt Grundvorstellungen zu Steigung und Achsenabschnitt mit rechnerischen Verfahren, Schnittpunkten und ersten Anwendungen, ohne den algebraischen Gleichungsstrang wieder mitzuschleppen.",
+      "descriptionEn": "Cluster for the visible later lower-secondary corridor on linear functions. The corridor bundles basic ideas of slope and intercept with calculations, intersections, and first applications without dragging the algebraic equation strand back in.",
       "core": true,
-      "weight": 15,
+      "weight": 3,
       "tags": [
         "canonical",
         "phase:SekI",
-        "area:Algebra",
+        "area:Analysis"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "K1",
+          "K2",
+          "K4"
+        ],
+        "guidingIdeas": [
+          "L1",
+          "L4"
+        ],
+        "phase": "GLOBAL",
+        "area": "Analysis",
+        "topicCode": "CANONICAL.MATH.SEK1.FUNCTIONS.F3"
+      },
+      "contains": [
+        "af3d6bff-c5fb-4ec6-a9f0-c0be09fc9186",
+        "e4f3a846-d2b8-4ee5-b0a2-4dc2833b2ecb"
+      ],
+      "requires": [],
+      "competencyRefs": [
+        "PROCESS.K1",
+        "PROCESS.K2",
+        "PROCESS.K4"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HE",
+          "DE-NI",
+          "DE-NW",
+          "DE-SH"
+        ]
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "2e00d486-59ca-4c93-9dc9-e6921d0af627",
+      "shortKey": "canonical_math_sek1_quadratic_functions_equation_boundary",
+      "title": "Quadratische Funktionen und die Gleichungsgrenze (Sek I)",
+      "titleEn": "Quadratic Functions and the Equation Boundary (Lower Secondary)",
+      "description": "Cluster fuer den sichtbaren spaeteren Sek-I-Korridor zu quadratischen Funktionen an der Grenze zum algebraischen Gleichungsarbeiten. Der Korridor haelt Scheitelpunktarbeit, Darstellungswechsel und quadratische Gleichungen bewusst zusammen, trennt aber den reinen Funktionsdeutungsstrang sichtbar vom expliziten Gleichungszweig.",
+      "descriptionEn": "Cluster for the visible later lower-secondary corridor on quadratic functions at the boundary to algebraic equation work. The corridor keeps vertex work, representation changes, and quadratic equations together while making the pure function-interpretation strand visibly distinct from the explicit equation branch.",
+      "core": true,
+      "weight": 6,
+      "tags": [
+        "canonical",
+        "phase:SekI",
         "area:Analysis"
       ],
       "dimensionTags": {
@@ -3684,20 +3737,128 @@
           "L4"
         ],
         "phase": "GLOBAL",
-        "area": "Algebra",
+        "area": "Analysis",
+        "topicCode": "CANONICAL.MATH.SEK1.FUNCTIONS.F4"
+      },
+      "contains": [
+        "d4a9fc20-d1be-46e7-86e9-2bf8d7a9cc40"
+      ],
+      "requires": [],
+      "competencyRefs": [
+        "PROCESS.K1",
+        "PROCESS.K2",
+        "PROCESS.K4",
+        "PROCESS.K5"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HE",
+          "DE-NI",
+          "DE-NW",
+          "DE-SH"
+        ]
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "9b4e8f0b-d447-4dad-b2a6-2a50ef99d9f6",
+      "shortKey": "canonical_math_sek1_late_j10_function_continuations",
+      "title": "Spaete J10-Funktionsfortsetzungen (Sek I)",
+      "titleEn": "Late Year-10 Function Continuations (Lower Secondary)",
+      "description": "Cluster fuer die spaeten Funktionsfortsetzungen in J10. Der Korridor macht periodische, trigonometrische, exponentielle und logarithmische Funktionsideen sowie den Ableitungseinstieg als eigenen sichtbaren Anschlussbereich des Sek-I-Funktionsthemas explizit.",
+      "descriptionEn": "Cluster for late year-10 function continuations. The corridor makes periodic, trigonometric, exponential, and logarithmic function ideas as well as the entry into derivatives explicit as a visible continuation area of the lower-secondary function topic.",
+      "core": true,
+      "weight": 13,
+      "tags": [
+        "canonical",
+        "phase:SekI",
+        "area:Analysis"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "K1",
+          "K2",
+          "K4",
+          "K5"
+        ],
+        "guidingIdeas": [
+          "L1",
+          "L4"
+        ],
+        "phase": "GLOBAL",
+        "area": "Analysis",
+        "topicCode": "CANONICAL.MATH.SEK1.FUNCTIONS.F5"
+      },
+      "contains": [
+        "0756b198-0074-49d5-becd-9bb9f161a291",
+        "0fd96c54-c629-45aa-a640-e2718890ddf9"
+      ],
+      "requires": [],
+      "competencyRefs": [
+        "PROCESS.K1",
+        "PROCESS.K2",
+        "PROCESS.K4",
+        "PROCESS.K5"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HE",
+          "DE-NI",
+          "DE-NW",
+          "DE-SH"
+        ]
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "88f8e185-a89b-4a34-869d-766042977f38",
+      "shortKey": "canonical_math_sek1_structures_functional_relationships",
+      "title": "Strukturen und funktionale Zusammenhaenge (Sek I)",
+      "titleEn": "Structures and Functional Relationships (Lower Secondary)",
+      "description": "Cluster fuer den sichtbaren Sek-I-Funktionskorridor von ersten Zuordnungen zum Funktionsbegriff, Darstellungswechsel, proportionalen und indirekt proportionalen Zusammenhaengen bis zu linearen, quadratischen und spaeten J10-Funktionsfortsetzungen. Die algebraische Kernverpackung fuer Variablen, Termumformungen und Gleichungsloesen liegt bewusst im Themenkorridor Zahlen, Terme und Algebra.",
+      "descriptionEn": "Cluster for the visible lower-secondary function corridor from first mappings to the function concept, switching representations, proportional and inverse-proportional relationships, and onward to linear, quadratic, and late year-10 function continuations. The algebra core packaging for variables, expression transformations, and equation solving deliberately lives in the numbers, expressions, and algebra topic corridor.",
+      "core": true,
+      "weight": 30,
+      "tags": [
+        "canonical",
+        "phase:SekI",
+        "area:Analysis"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "K1",
+          "K2",
+          "K4",
+          "K5"
+        ],
+        "guidingIdeas": [
+          "L1",
+          "L4"
+        ],
+        "phase": "GLOBAL",
+        "area": "Analysis",
         "topicCode": "CANONICAL.MATH.SEK1.STRUCTURES.FUNCTIONAL_RELATIONSHIPS"
       },
       "contains": [
-        "aad80460-c4b2-4d6f-964b-01c80e7ec6f2",
         "2bb4bb91-7929-483a-b735-44275f6b5cdc",
         "3babad6e-d860-40e9-8f69-0060bdeb4cb3",
         "2d055630-0655-4b23-ad2b-972fbb0d05cd",
         "fa72cf74-a31e-402e-90d7-422c118f4a5b",
-        "e6eb42c7-454f-49bf-b598-64d2935d2735",
-        "546bf0b3-6921-416b-a2ef-8fd37d429dc7",
-        "e42c208d-9555-43cc-92f5-5bb4c0688726",
-        "af3d6bff-c5fb-4ec6-a9f0-c0be09fc9186",
-        "d4a9fc20-d1be-46e7-86e9-2bf8d7a9cc40"
+        "4fb3444d-1299-4ac2-bf3d-6ef238427f6a",
+        "2e00d486-59ca-4c93-9dc9-e6921d0af627",
+        "9b4e8f0b-d447-4dad-b2a6-2a50ef99d9f6"
       ],
       "requires": [],
       "competencyRefs": [
@@ -3731,7 +3892,7 @@
       "description": "Cluster fuer einen spaeteren Sek-I-Unterkorridor zu Variablen und Termen. Der Korridor buendelt das Einfuehren von Variablen in Sachsituationen mit dem Aufstellen, Deuten und Umformen von Termen als algebraische Grundidee fuer den Anschluss an Gleichungen und Funktionen.",
       "descriptionEn": "Cluster for a later lower-secondary sub-corridor on variables and expressions. The corridor bundles introducing variables in real-world situations with setting up, interpreting, and transforming expressions as algebraic groundwork for equations and functions.",
       "core": true,
-      "weight": 1,
+      "weight": 5,
       "tags": [
         "canonical",
         "phase:SekI",
@@ -3875,7 +4036,7 @@
       "description": "Cluster fuer einen spaeteren Sek-I-Unterkorridor zu proportionalen Zuordnungen und Dreisatz. Der Korridor verbindet Quotientengleichheit, proportionale funktionale Deutungen, Dreisatzverfahren und erste Ursprungsgeraden als gemeinsames Anschlussfeld zwischen Funktionen und Groessenvorstellungen.",
       "descriptionEn": "Cluster for a later lower-secondary sub-corridor on proportional mappings and the rule of three. The corridor connects constant quotients, proportional functional interpretations, rule-of-three procedures, and first lines through the origin as a shared bridge between functions and quantity concepts.",
       "core": true,
-      "weight": 1,
+      "weight": 3,
       "tags": [
         "canonical",
         "phase:SekI",
@@ -4464,17 +4625,16 @@
     {
       "id": "a66c8d6d-8f3c-4e15-855a-019186e5eee4",
       "shortKey": "canonical_math_sek1_early_data_probability_counting",
-      "title": "Fruehe Daten-, Zufalls- und Zaehlvorstellungen (Sek I)",
-      "titleEn": "Early Data, Probability, and Counting Concepts (Lower Secondary)",
-      "description": "Cluster fuer den fruehen Sek-I-Korridor von statistischen Erhebungen ueber einfache Zaehlprobleme bis zu ersten Zufallsexperimenten. Der Korridor verbindet erste Haeufigkeitsvorstellungen mit grundlegenden Zaehlstrategien und dem Auswerten einfacher gleichwahrscheinlicher Situationen.",
-      "descriptionEn": "Cluster for the early lower-secondary corridor from statistical investigations through simple counting problems to first random experiments. The corridor connects first ideas of frequency with basic counting strategies and evaluating simple equiprobable situations.",
+      "title": "Fruehe Datenroutinen, Haeufigkeiten und Datendeutung (Sek I)",
+      "titleEn": "Early Data Routines, Frequencies, and Data Interpretation (Lower Secondary)",
+      "description": "Cluster fuer den fruehen Sek-I-Datenkorridor vom Erfassen und Darstellen von Daten ueber absolute und relative Haeufigkeiten bis zur kritischen Diagrammdeutung und zum arithmetischen Mittel. Die Paketgrenze bleibt bewusst datenorientiert; strukturierte Zaehlverfahren werden nicht stillschweigend in dieses fruehe Datenpaket eingezogen.",
+      "descriptionEn": "Cluster for the early lower-secondary data corridor from collecting and representing data through absolute and relative frequencies to critical diagram interpretation and the arithmetic mean. The package boundary stays deliberately data-oriented; structured counting methods are not silently folded into this early data package.",
       "core": true,
-      "weight": 3,
+      "weight": 4,
       "tags": [
         "canonical",
         "phase:SekI",
-        "area:Data",
-        "area:Probability"
+        "area:Data"
       ],
       "dimensionTags": {
         "framework": "canonical-gymnasium-math",
@@ -4489,13 +4649,14 @@
           "L5"
         ],
         "phase": "GLOBAL",
-        "area": "Probability",
-        "topicCode": "CANONICAL.MATH.SEK1.EARLY.DATA.PROBABILITY"
+        "area": "Data",
+        "topicCode": "CANONICAL.MATH.SEK1.DATA.PROBABILITY.D1"
       },
       "contains": [
+        "72b6bfa5-8e34-4029-8f85-0277207c485e",
         "91571d3f-3651-4477-ba21-320fc4077453",
-        "2ae76eae-799c-463e-9ec9-82327f8209a8",
-        "5ab17678-bba7-4e6b-9aff-5a909e24d40e"
+        "acbb7e26-f85f-405b-a3e5-affa6add6711",
+        "15505229-efec-4d01-8e71-acf15f9c2424"
       ],
       "requires": [],
       "competencyRefs": [
@@ -4642,7 +4803,7 @@
       "description": "Cluster fuer den spaeteren Sek-I-Unterkorridor zu Prozentrechnung und einfacher Zinsrechnung. Der Korridor verbindet Grundaufgaben der Prozentrechnung mit ersten expliziten Zinsanwendungen in Sachzusammenhaengen.",
       "descriptionEn": "Cluster for the later lower-secondary sub-corridor on percentage calculations and simple interest. The corridor connects basic percentage problems with first explicit interest applications in contextual settings.",
       "core": true,
-      "weight": 3,
+      "weight": 2,
       "tags": [
         "canonical",
         "phase:SekI",
@@ -4689,12 +4850,12 @@
     {
       "id": "3823e90d-a34b-46d2-a0f8-3168138d3a95",
       "shortKey": "canonical_math_sek1_later_data_probability_statistics",
-      "title": "Spaetere Daten-, Wahrscheinlichkeits- und Statistikvorstellungen (Sek I)",
-      "titleEn": "Later Data, Probability, and Statistics Concepts (Lower Secondary)",
-      "description": "Cluster fuer den spaeteren Sek-I-Korridor zu Haeufigkeiten, Wahrscheinlichkeiten, mehrstufigen Zufallsexperimenten und beschreibender Statistik. Der Korridor verbindet relative Haeufigkeiten und Laplace-Vorstellungen mit Baumdiagrammen sowie dem Bestimmen, Vergleichen und Deuten statistischer Kenngroessen und Boxplots.",
-      "descriptionEn": "Cluster for the later lower-secondary corridor on frequencies, probabilities, multi-stage random experiments, and descriptive statistics. The corridor connects relative frequencies and Laplace ideas with tree diagrams as well as determining, comparing, and interpreting statistical indicators and box plots.",
+      "title": "Laplace-Vorstellungen und Wahrscheinlichkeit aus Haeufigkeiten (Sek I)",
+      "titleEn": "Laplace Ideas and Probability from Frequencies (Lower Secondary)",
+      "description": "Cluster fuer die explizite Sek-I-Bruecke von Haeufigkeitsdarstellungen zu ersten Wahrscheinlichkeitsmodellen in gleichwahrscheinlichen Situationen. Der Korridor macht den Uebergang von empirischen Haeufigkeiten zu Laplace-Vorstellungen sichtbar, ohne die spaetere Struktur mehrstufiger Experimente bereits mitzuschleppen.",
+      "descriptionEn": "Cluster for the explicit lower-secondary bridge from frequency representations to first probability models in equiprobable situations. The corridor makes the transition from empirical frequencies to Laplace ideas visible without already dragging along the later structure of multi-step experiments.",
       "core": true,
-      "weight": 7,
+      "weight": 2,
       "tags": [
         "canonical",
         "phase:SekI",
@@ -4715,14 +4876,11 @@
         ],
         "phase": "GLOBAL",
         "area": "Probability",
-        "topicCode": "CANONICAL.MATH.SEK1.LATER.DATA.PROBABILITY"
+        "topicCode": "CANONICAL.MATH.SEK1.DATA.PROBABILITY.D2"
       },
       "contains": [
         "91571d3f-3651-4477-ba21-320fc4077453",
-        "5ab17678-bba7-4e6b-9aff-5a909e24d40e",
-        "efc3506a-5f35-4d77-9498-d70a091a470b",
-        "2242c379-ddbb-4f03-8aed-13f49a4674e8",
-        "1b02d4ec-acc0-4c5f-b3f3-5c3876c42654"
+        "5ab17678-bba7-4e6b-9aff-5a909e24d40e"
       ],
       "requires": [],
       "competencyRefs": [
@@ -4751,12 +4909,12 @@
     {
       "id": "1b02d4ec-acc0-4c5f-b3f3-5c3876c42654",
       "shortKey": "canonical_math_sek1_later_descriptive_statistics_boxplots",
-      "title": "Beschreibende Statistik mit Quartilen, Boxplots und Verteilungen (Sek I)",
-      "titleEn": "Descriptive Statistics with Quartiles, Box Plots, and Distributions (Lower Secondary)",
-      "description": "Cluster fuer den spaeteren Sek-I-Korridor der beschreibenden Statistik mit Quartilen, Boxplots und dem Vergleichen und Deuten von Datenverteilungen. Der Korridor buendelt das Darstellen charakteristischer Merkmale von Datensaetzen mit dem fachlich begruendeten Vergleich von Verteilungen.",
-      "descriptionEn": "Cluster for the later lower-secondary descriptive-statistics corridor with quartiles, box plots, and comparing and interpreting data distributions. The corridor bundles representing characteristic features of data sets with the mathematically justified comparison of distributions.",
+      "title": "Beschreibende Statistik und Datenvergleich (Sek I)",
+      "titleEn": "Descriptive Statistics and Data Comparison (Lower Secondary)",
+      "description": "Cluster fuer das spaetere Sek-I-Paket der beschreibenden Statistik. Der Korridor buendelt Lage- und Streuungsvorstellungen, Quartile, Boxplots und den fachlich begruendeten Vergleich von Datenverteilungen als eigenstaendige Datenperspektive neben den Wahrscheinlichkeitskorridoren.",
+      "descriptionEn": "Cluster for the later lower-secondary descriptive-statistics package. The corridor bundles measures of centre and spread, quartiles, box plots and the mathematically justified comparison of distributions as an independent data perspective beside the probability corridors.",
       "core": true,
-      "weight": 2,
+      "weight": 3,
       "tags": [
         "canonical",
         "phase:SekI",
@@ -4776,11 +4934,10 @@
         ],
         "phase": "GLOBAL",
         "area": "Data",
-        "topicCode": "CANONICAL.MATH.SEK1.LATER.DESCRIPTIVE.STATISTICS"
+        "topicCode": "CANONICAL.MATH.SEK1.DATA.PROBABILITY.D4"
       },
       "contains": [
-        "3e0c9bce-2528-4cf1-9b1f-c79146b0a5f2",
-        "b819973b-4cad-48a4-9f7e-f74b5e75ea6c"
+        "075ef99c-7f84-48b5-97f1-4e28c7d78f95"
       ],
       "requires": [],
       "competencyRefs": [
@@ -4806,12 +4963,12 @@
     {
       "id": "ecce03e4-0082-41e1-95bd-0244e76ed292",
       "shortKey": "canonical_math_sek1_later_geometry_circle_bodies",
-      "title": "Spaetere Geometrie-, Kreis- und Koerpervorstellungen (Sek I)",
-      "titleEn": "Later Geometry, Circle, and Solids Concepts (Lower Secondary)",
-      "description": "Cluster fuer den spaeteren Sek-I-Geometriekorridor zu Vierecken, Dreiecken und Kongruenz, Kreisgeometrie, Abbildungsgeometrie, Satz des Pythagoras sowie Koerpern. Der Korridor verbindet ebene Figuren und Begruendungen mit Kreisvorstellungen, Symmetrie und Winkelargumenten sowie ersten raeumlichen Koerperberechnungen.",
-      "descriptionEn": "Cluster for the later lower-secondary geometry corridor on quadrilaterals, triangles and congruence, circle geometry, transformational geometry, the Pythagorean theorem, and solids. The corridor connects planar figures and geometric justifications with circle concepts, symmetry and angle reasoning, and first calculations involving solids.",
+      "title": "Spaetere Figuren-, Abbildungs- und Satzgeometrie (Sek I)",
+      "titleEn": "Later Figure, Transformation, and Theorem Geometry (Lower Secondary)",
+      "description": "Cluster fuer den spaeteren Sek-I-Geometriekorridor zu Vierecken, Dreiecken und Kongruenz, geometrischen Abbildungen und Aehnlichkeit, Kreisgeometrie, Satz des Pythagoras sowie ersten Koerpervorstellungen. Der Korridor verbindet ebene Figuren und Konstruktionen mit Symmetrie- und Verhaeltnisargumenten, Kreisbeziehungen und geometrischen Begruendungen; erste raeumliche Koerperberechnungen bleiben als Kompatibilitaetsbruecke angebunden.",
+      "descriptionEn": "Cluster for the later lower-secondary geometry corridor on quadrilaterals, triangles and congruence, geometric transformations and similarity, circle geometry, the Pythagorean theorem, and first solids ideas. The corridor connects planar figures and constructions with symmetry and ratio arguments, circle relations, and geometric justifications; first solid calculations remain attached as a compatibility bridge.",
       "core": true,
-      "weight": 7,
+      "weight": 14,
       "tags": [
         "canonical",
         "phase:SekI",
@@ -4834,10 +4991,9 @@
       },
       "contains": [
         "879389a7-73de-45bb-a632-0d918c23a082",
+        "c5d04810-c893-45e9-bf2d-ae0b4b4f2bc0",
         "64ec32d7-6d82-40ec-b827-148b90e564f4",
-        "8da730f1-8947-498d-9e78-7fb20b00a994",
-        "4d78bbcc-89b8-47f0-aa45-516199e4da5d",
-        "80956a2c-5811-4021-863e-95675bec31f5",
+        "e6d4e44b-0c42-4cd9-9b83-53e3885d2f38",
         "1f89d69e-ead1-424b-8221-fae37fdea2bc"
       ],
       "requires": [],
@@ -4920,6 +5076,61 @@
       "type": "cluster"
     },
     {
+      "id": "c5d04810-c893-45e9-bf2d-ae0b4b4f2bc0",
+      "shortKey": "canonical_math_sek1_later_transformations_similarity",
+      "title": "Transformationen, Symmetrie und Aehnlichkeit (Sek I)",
+      "titleEn": "Transformations, Symmetry, and Similarity (Lower Secondary)",
+      "description": "Cluster fuer einen spaeteren Sek-I-Unterkorridor zu Symmetrie, geometrischen Abbildungen, Aehnlichkeit und Strahlensatz. Der Korridor verbindet Symmetrie- und Winkelargumente mit Bildvorstellungen, Verhaeltnis- und Groessentreue sowie konstruktiven Anwendungen von Aehnlichkeit.",
+      "descriptionEn": "Cluster for a later lower-secondary sub-corridor on symmetry, geometric transformations, similarity, and the intercept theorem. The corridor connects symmetry and angle reasoning with image relations, ratio and size preservation, and constructive uses of similarity.",
+      "core": true,
+      "weight": 4,
+      "tags": [
+        "canonical",
+        "phase:SekI",
+        "area:Geometry"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K1",
+          "K3",
+          "K4"
+        ],
+        "guidingIdeas": [
+          "L2"
+        ],
+        "phase": "GLOBAL",
+        "area": "Geometry",
+        "topicCode": "CANONICAL.MATH.SEK1.LATER.TRANSFORMATIONS.SIMILARITY"
+      },
+      "contains": [
+        "8da730f1-8947-498d-9e78-7fb20b00a994",
+        "6833664b-bd8b-44a2-95bc-c0b78ff89e31",
+        "2041f4ec-620d-4a20-9922-6ebf16f8f8fa",
+        "ffd1ae26-c461-4439-9b18-d835c8f38e1a"
+      ],
+      "requires": [],
+      "competencyRefs": [
+        "PROCESS.K1",
+        "PROCESS.K3",
+        "PROCESS.K4"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HE",
+          "DE-NI",
+          "DE-NW",
+          "DE-SH"
+        ]
+      },
+      "type": "cluster"
+    },
+    {
       "id": "64ec32d7-6d82-40ec-b827-148b90e564f4",
       "shortKey": "canonical_math_sek1_later_circle_geometry",
       "title": "Kreisbeziehungen und Satz des Thales (Sek I)",
@@ -4969,14 +5180,65 @@
       "type": "cluster"
     },
     {
+      "id": "e6d4e44b-0c42-4cd9-9b83-53e3885d2f38",
+      "shortKey": "canonical_math_sek1_later_pythagoras_reasoning",
+      "title": "Satz des Pythagoras und geometrische Begruendungen (Sek I)",
+      "titleEn": "Pythagorean Theorem and Geometric Justification (Lower Secondary)",
+      "description": "Cluster fuer einen spaeteren Sek-I-Unterkorridor zum Satz des Pythagoras. Der Korridor verbindet rechnerische Anwendungen in rechtwinkligen Dreiecken mit konstruktiven und begruendenden Anwendungen in Figuren.",
+      "descriptionEn": "Cluster for a later lower-secondary sub-corridor on the Pythagorean theorem. The corridor connects computational uses in right triangles with constructive and justificatory uses in geometric figures.",
+      "core": true,
+      "weight": 2,
+      "tags": [
+        "canonical",
+        "phase:SekI",
+        "area:Geometry"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K3",
+          "K4"
+        ],
+        "guidingIdeas": [
+          "L2"
+        ],
+        "phase": "GLOBAL",
+        "area": "Geometry",
+        "topicCode": "CANONICAL.MATH.SEK1.LATER.PYTHAGORAS.REASONING"
+      },
+      "contains": [
+        "4d78bbcc-89b8-47f0-aa45-516199e4da5d",
+        "80956a2c-5811-4021-863e-95675bec31f5"
+      ],
+      "requires": [],
+      "competencyRefs": [
+        "PROCESS.K3",
+        "PROCESS.K4"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HE",
+          "DE-NI",
+          "DE-NW",
+          "DE-SH"
+        ]
+      },
+      "type": "cluster"
+    },
+    {
       "id": "5ecf51c3-07bd-44fb-9862-5f2e5f2a99d1",
       "shortKey": "canonical_math_sek1_later_measurement_circle_solids_similarity",
-      "title": "Spaetere Flaechen-, Kreis-, Koerper- und Aehnlichkeitsvorstellungen (Sek I)",
-      "titleEn": "Later Area, Circle, Solids, and Similarity Concepts (Lower Secondary)",
-      "description": "Cluster fuer den spaeteren Sek-I-Korridor zu Flaecheninhalten, Kreisberechnungen, Koerpern sowie Aehnlichkeit und Strahlensatz. Der Korridor verbindet Flaechen- und Kreisvorstellungen mit Koerperberechnungen und geometrischen Verhaeltnissen in zentrischen Streckungen und Sachaufgaben.",
-      "descriptionEn": "Cluster for the later lower-secondary corridor on areas, circle calculations, solids, and similarity with the intercept theorem. The corridor connects area and circle concepts with calculations involving solids and geometric ratios in dilations and contextual problems.",
+      "title": "Spaetere Flaechen-, Kreis- und Koerpervorstellungen (Sek I)",
+      "titleEn": "Later Area, Circle, and Solids Concepts (Lower Secondary)",
+      "description": "Cluster fuer den spaeteren Sek-I-Korridor zu Flaecheninhalten, Kreisberechnungen und Koerpern. Der Korridor verbindet Flaechen- und Kreisvorstellungen mit Volumen-, Oberflaechen- und ersten raeumlichen Koerperberechnungen und haelt den Koerperstrang damit als eigene kanonische Arbeitseinheit sichtbar.",
+      "descriptionEn": "Cluster for the later lower-secondary corridor on area concepts, circle calculations, and solids. The corridor connects area and circle ideas with volume, surface, and first spatial solid calculations and keeps the solids strand visible as its own canonical work package.",
       "core": true,
-      "weight": 4,
+      "weight": 5,
       "tags": [
         "canonical",
         "phase:SekI",
@@ -4996,17 +5258,14 @@
         ],
         "phase": "GLOBAL",
         "area": "Measurement",
-        "topicCode": "CANONICAL.MATH.SEK1.LATER.MEASUREMENT"
+        "topicCode": "CANONICAL.MATH.SEK1.LATER.AREA.CIRCLE.SOLIDS"
       },
       "contains": [
         "87c55be5-06a9-41e2-a0d4-c60f7c8b8078",
         "8064088b-dc0a-4a67-ad63-360fdcc9869d",
         "415bd48b-8a76-4d4f-bfdd-d085573e7ac3",
         "1f89d69e-ead1-424b-8221-fae37fdea2bc",
-        "59d5a330-61be-4590-ab46-cf7cefecd144",
-        "6833664b-bd8b-44a2-95bc-c0b78ff89e31",
-        "2041f4ec-620d-4a20-9922-6ebf16f8f8fa",
-        "ffd1ae26-c461-4439-9b18-d835c8f38e1a"
+        "59d5a330-61be-4590-ab46-cf7cefecd144"
       ],
       "requires": [],
       "competencyRefs": [
@@ -5034,12 +5293,12 @@
     {
       "id": "9710e996-f6d0-4b8b-b893-592213c91767",
       "shortKey": "canonical_math_sek1_j10_trigonometry_circle_sector_solids_corridor",
-      "title": "Trigonometrie, Kreissektoren und Koerpervertiefung (Sek I)",
-      "titleEn": "Trigonometry, Circle Sectors, and Solid Extensions (Lower Secondary)",
-      "description": "Cluster fuer den J10-Korridor zu Dreieckstrigonometrie, Kreissektoren und vertieften Koerperberechnungen. Der Korridor verbindet rechtwinklige und allgemeine trigonometrische Verfahren mit Bogenmass-, Kreissektor- und raumgeometrischen Vertiefungen.",
-      "descriptionEn": "Cluster for the year-10 corridor on triangle trigonometry, circle sectors, and extended solid calculations. The corridor connects right-triangle and general trigonometric methods with radian measure, circle-sector reasoning, and more advanced spatial geometry.",
+      "title": "Trigonometrische Bruecke und spaetere Raumprobleme (Sek I)",
+      "titleEn": "Trigonometric Bridge and Later Spatial Problems (Lower Secondary)",
+      "description": "Cluster fuer den spaeteren Sek-I-Uebergang von Dreieckstrigonometrie zu anspruchsvolleren Raumproblemen. Der Korridor verbindet rechtwinklige und allgemeine trigonometrische Verfahren mit spaeteren raumgeometrischen Anwendungen auf Koerper, Winkel und Modellierung.",
+      "descriptionEn": "Cluster for the later lower-secondary transition from triangle trigonometry to more demanding spatial problems. The corridor connects right-triangle and general trigonometric methods with later spatial applications involving solids, angles, and modelling.",
       "core": true,
-      "weight": 3,
+      "weight": 9,
       "tags": [
         "canonical",
         "phase:SekI",
@@ -5060,11 +5319,10 @@
         ],
         "phase": "J10",
         "area": "Measurement",
-        "topicCode": "CANONICAL.MATH.SEK1.J10.MEASUREMENT_CORRIDOR"
+        "topicCode": "CANONICAL.MATH.SEK1.LATER.TRIGONOMETRY.SPACE"
       },
       "contains": [
         "219ce079-6bfd-4827-8b66-5dd199e44686",
-        "415bd48b-8a76-4d4f-bfdd-d085573e7ac3",
         "6248bbd7-c7e8-4f91-b3dc-de885cf5abce"
       ],
       "requires": [],
@@ -5098,7 +5356,7 @@
       "description": "Cluster fuer den J10-Korridor zu trigonometrischen und exponentiellen Funktionen. Der Korridor buendelt periodische Funktionsvorstellungen mit exponentiellem Wachstum, Exponentialgleichungen und Logarithmen.",
       "descriptionEn": "Cluster for the year-10 corridor on trigonometric and exponential functions. The corridor bundles periodic function concepts with exponential growth, exponential equations, and logarithms.",
       "core": true,
-      "weight": 2,
+      "weight": 8,
       "tags": [
         "canonical",
         "phase:SekI",
@@ -5539,10 +5797,10 @@
       "shortKey": "canonical_math_sek1_data_probability_foundations",
       "title": "Daten und Zufall (Sek I)",
       "titleEn": "Data and Probability Foundations (Lower Secondary)",
-      "description": "Cluster für grundlegende Daten- und Wahrscheinlichkeitsvorstellungen aus der gymnasialen Sekundarstufe I. Der Korridor verbindet Prozentrechnung, beschreibende Statistik, Laplace-Modelle, verknüpfte Ereignisse und zusammengesetzte Zufallsexperimente und ist zusätzlich an die kanonischen Jahrgangsanker J6 bis J10 angebunden.",
-      "descriptionEn": "Cluster for foundational data and probability ideas from lower-secondary Gymnasium mathematics. The corridor connects percentage calculations, descriptive statistics, Laplace models, compound events, and composed random experiments and is additionally attached to the canonical year anchors J6 to J10.",
+      "description": "Cluster fuer grundlegende Daten- und Zufallsvorstellungen aus der gymnasialen Sekundarstufe I. Der Korridor ist nun explizit in fuenf Teilpakete gegliedert: fruehe Datenroutinen und Datendeutung, Laplace-Vorstellungen als Wahrscheinlichkeitsbruecke, eine sichtbare Zaehl-/Kombinatorikbruecke, mehrstufige Zufallsexperimente mit bedingter Struktur sowie beschreibende Statistik und Datenvergleich.",
+      "descriptionEn": "Cluster for foundational data and probability ideas from lower-secondary Gymnasium mathematics. The corridor is now explicitly divided into five subpackages: early data routines and interpretation, Laplace ideas as the probability bridge, a visible counting/combinatorics bridge, multi-step random experiments with conditional structure, and descriptive statistics with data comparison.",
       "core": true,
-      "weight": 17,
+      "weight": 14,
       "tags": [
         "canonical",
         "phase:SekI",
@@ -5566,12 +5824,11 @@
         "topicCode": "CANONICAL.MATH.SEK1.DATA.PROBABILITY"
       },
       "contains": [
-        "32c9955e-c0e7-4085-8a9a-9341376a453b",
-        "075ef99c-7f84-48b5-97f1-4e28c7d78f95",
-        "5ab17678-bba7-4e6b-9aff-5a909e24d40e",
-        "50aeb801-d2b5-4939-b66b-2fcae0352dcf",
+        "a66c8d6d-8f3c-4e15-855a-019186e5eee4",
+        "3823e90d-a34b-46d2-a0f8-3168138d3a95",
+        "a2fb8b31-4c8d-4b18-9f5a-7e38b8d0af18",
         "c7911f0f-83d4-44ba-9f28-bdc1a5e8cb4a",
-        "5da9f264-25d1-54c7-a4d3-709c1b9b287a"
+        "1b02d4ec-acc0-4c5f-b3f3-5c3876c42654"
       ],
       "requires": [],
       "competencyRefs": [
@@ -5602,10 +5859,10 @@
       "shortKey": "canonical_math_sek1_geometry_space_foundations",
       "title": "Geometrie und Raum (Sek I)",
       "titleEn": "Geometry and Spatial Reasoning (Lower Secondary)",
-      "description": "Cluster für geometrische Grundvorstellungen und Raumvorstellungen aus der gymnasialen Sekundarstufe I. Der Korridor verbindet Figuren und Lagebeziehungen, Flächen und Volumina, Symmetrie und Kongruenz, Kreise, Ähnlichkeit, Satz des Pythagoras, Trigonometrie und raumgeometrische Körperprobleme und ist zusätzlich an die kanonischen Jahrgangsanker J5 bis J10 angebunden.",
-      "descriptionEn": "Cluster for geometric foundations and spatial reasoning from lower-secondary Gymnasium mathematics. The corridor connects figures and positional relations, areas and volumes, symmetry and congruence, circles, similarity, the Pythagorean theorem, trigonometry, and spatial body problems and is additionally attached to the canonical year anchors J5 to J10.",
+      "description": "Cluster fuer geometrische Grundvorstellungen und Raumvorstellungen aus der gymnasialen Sekundarstufe I. Der Korridor ist jetzt explizit in fruehe Geometrie und Raumvorstellungen, spaetere Figuren-, Abbildungs- und Satzgeometrie, spaetere Flaechen-, Kreis- und Koerpervorstellungen sowie die trigonometrische Bruecke mit spaeteren Raumproblemen gegliedert und ist zusaetzlich an die kanonischen Jahrgangsanker J5 bis J10 angebunden.",
+      "descriptionEn": "Cluster for lower-secondary geometry and spatial reasoning in Gymnasium. The corridor is now explicitly structured into early geometry and spatial imagination, later figure/transformation/theorem geometry, later area/circle/solids concepts, and the trigonometric bridge with later spatial problems, and is additionally linked to the canonical year anchors J5 to J10.",
       "core": true,
-      "weight": 26,
+      "weight": 34,
       "tags": [
         "canonical",
         "phase:SekI",
@@ -5627,15 +5884,10 @@
         "topicCode": "CANONICAL.MATH.SEK1.GEOMETRY"
       },
       "contains": [
-        "ca834a7d-5a66-4876-b24c-143b1464d937",
-        "e07fa2ee-c26f-4032-9140-358a4f6c1457",
-        "8da730f1-8947-498d-9e78-7fb20b00a994",
-        "f0a49da2-018b-4cda-adbd-27047b610a0f",
-        "415bd48b-8a76-4d4f-bfdd-d085573e7ac3",
-        "ffd1ae26-c461-4439-9b18-d835c8f38e1a",
-        "4d78bbcc-89b8-47f0-aa45-516199e4da5d",
-        "219ce079-6bfd-4827-8b66-5dd199e44686",
-        "6248bbd7-c7e8-4f91-b3dc-de885cf5abce"
+        "8e68f24a-8b0e-4ce6-9567-a49e706f83be",
+        "ecce03e4-0082-41e1-95bd-0244e76ed292",
+        "5ecf51c3-07bd-44fb-9862-5f2e5f2a99d1",
+        "9710e996-f6d0-4b8b-b893-592213c91767"
       ],
       "requires": [],
       "competencyRefs": [
@@ -5661,14 +5913,231 @@
       "type": "cluster"
     },
     {
+      "id": "0c5ab1e7-1060-4d1f-b96b-4b1cb2f0a96f",
+      "shortKey": "canonical_math_sek1_arithmetic_number_representations",
+      "title": "Arithmetische Routinen und Zahlvorstellungen (Sek I)",
+      "titleEn": "Arithmetic Fluency and Number Representations (Lower Secondary)",
+      "description": "Cluster fuer den sichtbaren Sek-I-Basiskorridor zu Zahlvorstellungen, sicheren Rechenroutinen und rationalen Zahlen. Der Korridor haelt die arithmetische Fluency als eigene Grundlage sichtbar, bevor Variablen, Terme und Gleichungen systematisch einsetzen.",
+      "descriptionEn": "Cluster for the visible lower-secondary base corridor on number representations, secure calculation routines, and rational numbers. The corridor keeps arithmetic fluency visible as its own foundation before variables, expressions, and equations become systematic.",
+      "core": true,
+      "weight": 25,
+      "tags": [
+        "canonical",
+        "phase:SekI",
+        "area:Arithmetic"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "K1",
+          "K2"
+        ],
+        "guidingIdeas": [
+          "L1"
+        ],
+        "phase": "GLOBAL",
+        "area": "Arithmetic",
+        "topicCode": "CANONICAL.MATH.SEK1.ALGEBRA.A1"
+      },
+      "contains": [
+        "8dd5199b-f614-4ebd-8819-b5ff37326524",
+        "de39c9fe-5940-4320-aca8-2be85d6ada8f"
+      ],
+      "requires": [],
+      "competencyRefs": [
+        "PROCESS.K1",
+        "PROCESS.K2"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HE",
+          "DE-NI",
+          "DE-NW",
+          "DE-SH"
+        ]
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "1c1d8828-6a1b-4a12-a3a9-a1e5df5bc0d1",
+      "shortKey": "canonical_math_sek1_variables_terms_equivalent_transformations",
+      "title": "Variablen, Terme und aequivalente Umformungen (Sek I)",
+      "titleEn": "Variables, Expressions, and Equivalent Transformations (Lower Secondary)",
+      "description": "Cluster fuer den sichtbaren Sek-I-Korridor zu Variablen, Termen und aequivalenten Umformungen. Der Korridor verbindet Variablenbedeutung, Termaufbau, Termdeutung und systematische Umformungen als algebraische Basissprache vor dem spaeteren Gleichungsarbeiten.",
+      "descriptionEn": "Cluster for the visible lower-secondary corridor on variables, expressions, and equivalent transformations. The corridor connects variable meaning, expression building, interpretation, and systematic transformations as the algebraic base language before later equation work.",
+      "core": true,
+      "weight": 6,
+      "tags": [
+        "canonical",
+        "phase:SekI",
+        "area:Algebra"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "K1",
+          "K2",
+          "K5"
+        ],
+        "guidingIdeas": [
+          "L1"
+        ],
+        "phase": "GLOBAL",
+        "area": "Algebra",
+        "topicCode": "CANONICAL.MATH.SEK1.ALGEBRA.A2"
+      },
+      "contains": [
+        "aad80460-c4b2-4d6f-964b-01c80e7ec6f2",
+        "959cc50b-6c81-4fa1-800f-4804a707b1ee"
+      ],
+      "requires": [],
+      "competencyRefs": [
+        "PROCESS.K1",
+        "PROCESS.K2",
+        "PROCESS.K5"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HE",
+          "DE-NI",
+          "DE-NW",
+          "DE-SH"
+        ]
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "5adabf7f-1b43-4b35-8d28-c438d62a0f4d",
+      "shortKey": "canonical_math_sek1_proportional_reasoning_percentage_rule_of_three",
+      "title": "Proportionale Zusammenhaenge, Prozentrechnung und Dreisatz (Sek I)",
+      "titleEn": "Proportional Reasoning, Percentages, and Rule of Three (Lower Secondary)",
+      "description": "Cluster fuer den sichtbaren Sek-I-Brueckenkorridor zu proportionalen Zusammenhaengen, Prozentrechnung und Dreisatz. Der Korridor haelt die Verbindung zwischen Groessen, Verhaeltnissen und ersten funktionalen Deutungen explizit, ohne den spaeteren Funktionskorridor zu ueberladen.",
+      "descriptionEn": "Cluster for the visible lower-secondary bridge corridor on proportional relationships, percentage calculations, and the rule of three. The corridor keeps the connection between quantities, ratios, and first functional interpretations explicit without overloading the later function corridor.",
+      "core": true,
+      "weight": 5,
+      "tags": [
+        "canonical",
+        "phase:SekI",
+        "area:Arithmetic",
+        "area:Algebra"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "K1",
+          "K2",
+          "K4"
+        ],
+        "guidingIdeas": [
+          "L1",
+          "L5"
+        ],
+        "phase": "GLOBAL",
+        "area": "Algebra",
+        "topicCode": "CANONICAL.MATH.SEK1.ALGEBRA.A3"
+      },
+      "contains": [
+        "2d055630-0655-4b23-ad2b-972fbb0d05cd",
+        "93e0c472-d51c-4f73-9ff3-8acd5032c018"
+      ],
+      "requires": [],
+      "competencyRefs": [
+        "PROCESS.K1",
+        "PROCESS.K2",
+        "PROCESS.K4"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HE",
+          "DE-NI",
+          "DE-NW",
+          "DE-SH"
+        ]
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "acbe35aa-0aeb-4582-b2c5-65caa0ba5014",
+      "shortKey": "canonical_math_sek1_equations_solvability_algebraic_modeling",
+      "title": "Gleichungen, Loesbarkeit und algebraisches Modellieren (Sek I)",
+      "titleEn": "Equations, Solvability, and Algebraic Modelling (Lower Secondary)",
+      "description": "Cluster fuer den sichtbaren Sek-I-Korridor zu linearen Gleichungen, Loesbarkeit und algebraischem Modellieren. Der Korridor buendelt Gleichungsloesen, Verhaeltnisgleichungen, Ungleichungen, erste Modellierungsuebersetzungen und lineare Gleichungssysteme; ein separates A5 bleibt bewusst noch offen.",
+      "descriptionEn": "Cluster for the visible lower-secondary corridor on linear equations, solvability, and algebraic modelling. The corridor bundles equation solving, ratio equations, inequalities, first modelling translations, and systems of linear equations; a separate A5 deliberately remains open.",
+      "core": true,
+      "weight": 6,
+      "tags": [
+        "canonical",
+        "phase:SekI",
+        "area:Algebra"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K1",
+          "K2",
+          "K4"
+        ],
+        "guidingIdeas": [
+          "L1",
+          "L4"
+        ],
+        "phase": "GLOBAL",
+        "area": "Algebra",
+        "topicCode": "CANONICAL.MATH.SEK1.ALGEBRA.A4"
+      },
+      "contains": [
+        "325771e1-602d-4bca-a199-a8f39a2d3dee",
+        "058bf6de-6c0e-4298-b054-9e8dff6e6a66",
+        "e6eb42c7-454f-49bf-b598-64d2935d2735",
+        "fa0b6b69-ce54-4711-90e6-26f27249cd71",
+        "546bf0b3-6921-416b-a2ef-8fd37d429dc7",
+        "e42c208d-9555-43cc-92f5-5bb4c0688726"
+      ],
+      "requires": [],
+      "competencyRefs": [
+        "PROCESS.K1",
+        "PROCESS.K2",
+        "PROCESS.K4"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HE",
+          "DE-NI",
+          "DE-NW",
+          "DE-SH"
+        ]
+      },
+      "type": "cluster"
+    },
+    {
       "id": "6e28d5ad-5f18-4a26-8a9e-9ea7e50b0fbb",
       "shortKey": "canonical_math_sek1_numbers_terms_algebra",
       "title": "Zahlen, Terme und Algebra (Sek I)",
       "titleEn": "Numbers, Expressions, and Algebra (Lower Secondary)",
-      "description": "Cluster für Zahlvorstellungen, algebraische Grundideen und symbolisches Rechnen aus der gymnasialen Sekundarstufe I. Der Korridor verbindet Zahlaufbau, rationale Zahlen, Terme und Gleichungen, Bruchterme, lineare Gleichungssysteme, Wurzelterme, Potenzgesetze sowie exponentielle Wachstumsmodelle und ist zusätzlich an die kanonischen Jahrgangsanker J5 bis J10 angebunden.",
-      "descriptionEn": "Cluster for number sense, foundational algebraic ideas, and symbolic reasoning from lower-secondary Gymnasium mathematics. The corridor connects number construction, rational numbers, expressions and equations, fractional expressions, linear systems, radical expressions, exponent laws, and exponential growth models and is additionally attached to the canonical year anchors J5 to J10.",
+      "description": "Cluster fuer Zahlvorstellungen, algebraische Grundideen und symbolisches Rechnen aus der gymnasialen Sekundarstufe I. Der Korridor ist jetzt sichtbar in A1 bis A4 gegliedert: arithmetische Fluency, Variablen und Terme, proportionale und prozentbezogene Bruecken sowie Gleichungen und algebraisches Modellieren. Spaetere Residuen wie Bruchterme, Wurzeln, Potenzen und exponentielle Modelle bleiben vorerst als Anschlusskorridore erhalten.",
+      "descriptionEn": "Cluster for number sense, foundational algebraic ideas, and symbolic reasoning from lower-secondary Gymnasium mathematics. The corridor is now visibly organised into A1 to A4: arithmetic fluency, variables and expressions, proportional and percentage bridges, and equations with algebraic modelling. Later residues such as fractional expressions, radicals, powers, and exponential models deliberately remain as follow-on corridors for now.",
       "core": true,
-      "weight": 45,
+      "weight": 59,
       "tags": [
         "canonical",
         "phase:SekI",
@@ -5691,16 +6160,11 @@
         "topicCode": "CANONICAL.MATH.SEK1.ALGEBRA"
       },
       "contains": [
-        "8dd5199b-f614-4ebd-8819-b5ff37326524",
-        "de39c9fe-5940-4320-aca8-2be85d6ada8f",
-        "aad80460-c4b2-4d6f-964b-01c80e7ec6f2",
-        "325771e1-602d-4bca-a199-a8f39a2d3dee",
-        "058bf6de-6c0e-4298-b054-9e8dff6e6a66",
-        "959cc50b-6c81-4fa1-800f-4804a707b1ee",
+        "0c5ab1e7-1060-4d1f-b96b-4b1cb2f0a96f",
+        "1c1d8828-6a1b-4a12-a3a9-a1e5df5bc0d1",
+        "5adabf7f-1b43-4b35-8d28-c438d62a0f4d",
+        "acbe35aa-0aeb-4582-b2c5-65caa0ba5014",
         "792b3f32-4c13-423d-89c2-facb34827f47",
-        "fa0b6b69-ce54-4711-90e6-26f27249cd71",
-        "546bf0b3-6921-416b-a2ef-8fd37d429dc7",
-        "e42c208d-9555-43cc-92f5-5bb4c0688726",
         "8a0b0baf-c7e6-43df-a470-f56050ecaa46",
         "289db903-2831-45ef-afc2-c0619c91d680",
         "42e19186-6769-41ac-a7bf-ab39bdb50661",
@@ -7107,14 +7571,16 @@
     {
       "id": "c7911f0f-83d4-44ba-9f28-bdc1a5e8cb4a",
       "shortKey": "canonical_math_sek1_j10_compound_random_experiments",
-      "title": "Zusammengesetzte Zufallsexperimente modellieren und simulieren",
-      "titleEn": "Model and simulate compound random experiments",
-      "description": "Kanonischer Cluster für zusammengesetzte Zufallsexperimente und stochastische Simulationen in J10. Der Cluster unterscheidet zwischen Struktur- und Pfadregeln sowie simulationsgestützten Näherungsverfahren.",
-      "descriptionEn": "Canonical cluster for compound random experiments and stochastic simulations in year 10. It distinguishes between tree- and path-rule reasoning and simulation-based approximation methods.",
+      "title": "Mehrstufige Zufallsexperimente, Baumdiagramme und bedingte Struktur (Sek I)",
+      "titleEn": "Multi-Step Random Experiments, Tree Diagrams, and Conditional Structure (Lower Secondary)",
+      "description": "Kanonischer Cluster fuer das spaetere Sek-I-Paket zu mehrstufigen Zufallsexperimenten. Der Korridor buendelt Baumdiagramme, Pfadregeln, simulationsgestuetzte Approximationen sowie die Nachbarschaft zu verknuepften Ereignissen und Vierfelderstrukturen. Die sichtbare Zaehl-/Kombinatorikbruecke ist nun als eigenes D5-Paket ausgelagert.",
+      "descriptionEn": "Canonical cluster for the later lower-secondary package on multi-step random experiments. The corridor bundles tree diagrams, path rules, simulation-based approximations, and the adjacency to combined events and contingency-table structures. The visible counting/combinatorics bridge now lives in its own D5 package.",
       "core": true,
-      "weight": 2,
+      "weight": 4,
       "tags": [
-        "canonical"
+        "canonical",
+        "phase:SekI",
+        "area:Probability"
       ],
       "dimensionTags": {
         "framework": "canonical-gymnasium-math",
@@ -7127,11 +7593,12 @@
         "guidingIdeas": [
           "L5"
         ],
-        "phase": "J10",
+        "phase": "GLOBAL",
         "area": "Probability",
-        "topicCode": "CANONICAL.MATH.SEK1.J10.2"
+        "topicCode": "CANONICAL.MATH.SEK1.DATA.PROBABILITY.D3"
       },
       "contains": [
+        "50aeb801-d2b5-4939-b66b-2fcae0352dcf",
         "efc3506a-5f35-4d77-9498-d70a091a470b",
         "e55edcb9-2184-4a24-890e-70cc91028990"
       ],
@@ -8908,8 +9375,8 @@
       "shortKey": "canonical_math_analyze_linear_functions_rechnerisch",
       "title": "Lineare Funktionen rechnerisch untersuchen",
       "titleEn": "Analyze linear functions algebraically",
-      "description": "Kanonischer Cluster für lineare Rechenroutinen im J8-Korridor. Der Cluster trennt hier zwischen dem rechnerischen Arbeiten mit Geradengleichungen, Nullstellen und Schnittpunkten sowie dem systematischen Lösen linearer Gleichungen und Ungleichungen.",
-      "descriptionEn": "Canonical cluster for linear calculation routines in the year-8 corridor. The cluster distinguishes between algebraic work with line equations, roots, and intersections, and the systematic solving of linear equations and inequalities.",
+      "description": "Kanonischer Cluster fuer lineare Rechenroutinen im J8-Korridor. Der Cluster trennt hier zwischen rechnerischem Arbeiten mit Geradengleichungen, Nullstellen und Schnittpunkten sowie funktionalen Anwendungen, ohne den algebraischen Gleichungsstrang mitzuschleppen.",
+      "descriptionEn": "Canonical cluster for linear calculation routines in the year-8 corridor. The cluster distinguishes algebraic work with line equations, roots, and intersections together with function-based applications, without carrying along the separate algebraic equation strand.",
       "core": true,
       "weight": 2,
       "tags": [
@@ -8933,12 +9400,10 @@
       },
       "contains": [
         "e09072f9-67d9-412c-b872-24ecbf329232",
-        "ae772695-d55e-4cc5-81bc-6605272759b4",
-        "e6eb42c7-454f-49bf-b598-64d2935d2735"
+        "ae772695-d55e-4cc5-81bc-6605272759b4"
       ],
       "requires": [
-        "af3d6bff-c5fb-4ec6-a9f0-c0be09fc9186",
-        "fd860da9-73ba-47cd-a1a8-452424915a80"
+        "af3d6bff-c5fb-4ec6-a9f0-c0be09fc9186"
       ],
       "applicability": {
         "jurisdiction": [
@@ -10882,8 +11347,7 @@
       ],
       "requires": [
         "fd860da9-73ba-47cd-a1a8-452424915a80",
-        "af3d6bff-c5fb-4ec6-a9f0-c0be09fc9186",
-        "9023226b-fc17-412b-807c-2bb45cd551d5"
+        "af3d6bff-c5fb-4ec6-a9f0-c0be09fc9186"
       ],
       "applicability": {
         "jurisdiction": [
@@ -11284,8 +11748,8 @@
       "shortKey": "canonical_math_sek1_j9_quadratic_basics",
       "title": "Quadratische Funktionen und Gleichungen grundlegend untersuchen",
       "titleEn": "Investigate quadratic functions and equations in a foundational way",
-      "description": "Kanonischer Cluster fuer den Grundlagenstrang zu quadratischen Funktionen und Gleichungen in J9. Er buendelt Scheitelpunktarbeit, Graphdeutung, Gleichungsloesen und den gezielten Wechsel zwischen Darstellungsformen.",
-      "descriptionEn": "Canonical cluster for the foundational year-9 strand on quadratic functions and equations. It bundles vertex work, graph interpretation, solving equations, and purposeful switching between representations.",
+      "description": "Kanonischer Cluster fuer den Grundlagenstrang zu quadratischen Funktionen in J9 an der expliziten Grenze zum quadratischen Gleichungsloesen. Er buendelt Scheitelpunktarbeit, Graphdeutung und Darstellungswechsel sichtbar mit einem separaten Gleichungszweig, statt alles in einem unscharfen Teilkorridor zu verschmelzen.",
+      "descriptionEn": "Canonical cluster for the foundational year-9 strand on quadratic functions at the explicit boundary to solving quadratic equations. It visibly combines vertex work, graph interpretation, and switching representations with a separate equation branch instead of collapsing everything into one blurry subcorridor.",
       "core": true,
       "weight": 6,
       "tags": [
@@ -11310,7 +11774,8 @@
       },
       "contains": [
         "c23705d2-57fc-4260-80d8-2d340203a173",
-        "f9443306-709d-49dc-9747-853f37cfe4fa"
+        "f9443306-709d-49dc-9747-853f37cfe4fa",
+        "9023226b-fc17-412b-807c-2bb45cd551d5"
       ],
       "requires": [
         "af3d6bff-c5fb-4ec6-a9f0-c0be09fc9186"
@@ -11332,12 +11797,12 @@
     {
       "id": "f9443306-709d-49dc-9747-853f37cfe4fa",
       "shortKey": "canonical_math_sek1_j9_quadratic_representations_equations",
-      "title": "Quadratische Funktionen in Darstellungen deuten und Gleichungen loesen (Sek I)",
-      "titleEn": "Interpret Quadratic Functions Across Representations and Solve Equations (Lower Secondary)",
-      "description": "Kanonischer Cluster fuer einen spaeten Sek-I-Korridor zu quadratischen Funktionen und Gleichungen, der Graphdeutung, Darstellungswechsel, Parameterdeutung und das Loesen quadratischer Gleichungen zusammenfuehrt, ohne bereits die weitergehenden Anwendungs- und Modellierungsteile des vollstaendigen Quadratik-Korridors mitzunehmen.",
-      "descriptionEn": "Canonical cluster for a later lower-secondary corridor on quadratic functions and equations that brings together graph interpretation, switching between representations, parameter interpretation, and solving quadratic equations without yet including the more advanced application and modelling parts of the full quadratic corridor.",
+      "title": "Quadratische Funktionen in Darstellungen deuten (Sek I)",
+      "titleEn": "Interpret Quadratic Functions Across Representations (Lower Secondary)",
+      "description": "Kanonischer Cluster fuer einen spaeten Sek-I-Korridor zu quadratischen Funktionen, der Graphdeutung, Darstellungswechsel und Parameterdeutung zusammenfuehrt, ohne den expliziten Zweig des quadratischen Gleichungsloesens mitzunehmen.",
+      "descriptionEn": "Canonical cluster for a later lower-secondary corridor on quadratic functions that brings together graph interpretation, switching representations, and parameter interpretation without including the explicit branch for solving quadratic equations.",
       "core": true,
-      "weight": 4,
+      "weight": 3,
       "tags": [
         "canonical",
         "phase:SekI",
@@ -11361,8 +11826,7 @@
         "topicCode": "CANONICAL.MATH.SEK1.LATER.QUADRATICS.REPRESENTATIONS.EQUATIONS"
       },
       "contains": [
-        "18eb8537-5d25-4252-9450-ea8c42270211",
-        "9023226b-fc17-412b-807c-2bb45cd551d5"
+        "18eb8537-5d25-4252-9450-ea8c42270211"
       ],
       "requires": [
         "af3d6bff-c5fb-4ec6-a9f0-c0be09fc9186"
@@ -16967,7 +17431,7 @@
       "titleEn": "Foundations of Calculus and Mathematical Models",
       "description": "Cluster-Knoten für grundlegende Funktionen, den Ableitungsbegriff, exponentielle und trigonometrische Modelle, Folgen und Reihen sowie grundlegende Verfahren zum Lösen von Gleichungen.",
       "descriptionEn": "Cluster node for foundational functions, the concept of derivatives, exponential and trigonometric models, sequences and series, and core methods for solving equations.",
-      "weight": 62,
+      "weight": 71,
       "tags": [
         "GK",
         "LK",
@@ -17027,7 +17491,7 @@
       "titleEn": "Functions and Their Representation",
       "description": "Grundbegriffe und Eigenschaften von Funktionen (Definitions-/Wertemenge, Graph, Term), Symmetrien, Verhalten im Unendlichen, Transformationen sowie Modellieren einfacher Situationen mit linearen und quadratischen Funktionen.",
       "descriptionEn": "Basic concepts and properties of functions (domain/range, graph, term), symmetries, behavior at infinity, transformations and modelling simple situations with linear and quadratic functions.",
-      "weight": 14,
+      "weight": 19,
       "tags": [
         "GK",
         "LK",
@@ -17044,7 +17508,8 @@
         "2d75fd3f-c68b-4a11-89ae-19a30fefc47a",
         "29ce4053-b5c5-4a82-9ff0-3acc492284d8",
         "34047d7c-3a92-59fa-91b4-354211ff36e1",
-        "e41a9eb4-8d3f-5f45-b3f3-5a88072e6f4e"
+        "e41a9eb4-8d3f-5f45-b3f3-5a88072e6f4e",
+        "5da9f264-25d1-54c7-a4d3-709c1b9b287a"
       ],
       "requires": [
         "5c6b7342-0f67-4b4c-894d-fd83a6df64b3"
@@ -33851,6 +34316,110 @@
         ]
       },
       "type": "atomic"
+    },
+    {
+      "id": "3d8f5e4c-8f7b-49cf-bd83-1d9876db5bf6",
+      "shortKey": "canonical_math_sek1_counting_combinatorial_reasoning_probability",
+      "title": "Zaehlverfahren und kombinatorische Ueberlegungen fuer Wahrscheinlichkeiten nutzen",
+      "titleEn": "Use counting procedures and combinatorial reasoning for probabilities",
+      "description": "Die lernende Person kann Zaehlverfahren strukturieren, kombinatorische Ueberlegungen in Sachsituationen einsetzen und sie zur effizienten Bestimmung von Wahrscheinlichkeiten in endlichen Modellen nutzen.",
+      "descriptionEn": "The learner can structure counting procedures, use combinatorial reasoning in contextual situations, and apply it to determine probabilities efficiently in finite models.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K1.1",
+          "K2.1",
+          "K4.1"
+        ],
+        "guidingIdeas": [
+          "L1",
+          "L5"
+        ],
+        "phase": "J10",
+        "area": "Probability",
+        "topicCode": "CANONICAL.MATH.SEK1.DATA.PROBABILITY.D5A"
+      },
+      "contains": [],
+      "requires": [
+        "2ae76eae-799c-463e-9ec9-82327f8209a8",
+        "5ab17678-bba7-4e6b-9aff-5a909e24d40e"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HE",
+          "DE-NI",
+          "DE-NW",
+          "DE-SH"
+        ]
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "a2fb8b31-4c8d-4b18-9f5a-7e38b8d0af18",
+      "shortKey": "canonical_math_sek1_counting_combinatorics_bridge",
+      "title": "Zaehlen, Kombinatorik und Wahrscheinlichkeitsbruecken (Sek I)",
+      "titleEn": "Counting, Combinatorics, and Probability Bridges (Lower Secondary)",
+      "description": "Cluster fuer die sichtbare Sek-I-Bruecke zwischen fruehen Zaehlstrategien und spaeteren Wahrscheinlichkeitsanwendungen. Der Korridor buendelt einfache Zaehlprinzipien mit spaeteren kombinatorischen Ueberlegungen zur effizienten Bestimmung von Wahrscheinlichkeiten, ohne die eigentlichen Vierfelder-/Bedingt-Strukturen aus D3 zu absorbieren.",
+      "descriptionEn": "Cluster for the visible lower-secondary bridge between early counting strategies and later probability applications. The corridor bundles simple counting principles with later combinatorial reasoning for efficient probability determination without absorbing the actual contingency-table and conditional structures from D3.",
+      "core": true,
+      "weight": 2,
+      "tags": [
+        "canonical",
+        "phase:SekI",
+        "area:Probability",
+        "area:Arithmetic"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "K1",
+          "K2",
+          "K3",
+          "K4"
+        ],
+        "guidingIdeas": [
+          "L1",
+          "L5"
+        ],
+        "phase": "GLOBAL",
+        "area": "Probability",
+        "topicCode": "CANONICAL.MATH.SEK1.DATA.PROBABILITY.D5"
+      },
+      "contains": [
+        "2ae76eae-799c-463e-9ec9-82327f8209a8",
+        "3d8f5e4c-8f7b-49cf-bd83-1d9876db5bf6"
+      ],
+      "requires": [],
+      "competencyRefs": [
+        "PROCESS.K1",
+        "PROCESS.K2",
+        "PROCESS.K3",
+        "PROCESS.K4"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HE",
+          "DE-NI",
+          "DE-NW",
+          "DE-SH"
+        ]
+      },
+      "type": "cluster"
     }
   ]
 }

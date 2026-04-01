@@ -16,11 +16,214 @@ Reserved source landscapes on `2026-03-28`:
 Activation state:
 
 - repository-backed lower-secondary and upper-secondary mapping fixtures now exist
-- shared provenance registries are intentionally still inactive for both lanes
-- no archived Bremen mathematics source bundle or source-json snapshot is active yet
+- the first Bremen mathematics source bundle is now archived under `curricula/DE/Gymnasium/input/HB/`
+- the first Bremen lower-secondary source snapshot now lives at:
+  - `curricula/DE/Gymnasium/input/HB/lower-secondary/source-json/DE_BRE_S_GYM_1_MATHEMATIK.de.json.snapshot`
+- the first Bremen upper-secondary source snapshot now lives at:
+  - `curricula/DE/Gymnasium/input/HB/upper-secondary/source-json/DE_BRE_S_GYM_2_MATHEMATIK.de.json.snapshot`
+- both Bremen `sourceLandscapeId` values are now active in `source-landscape-registry.json`
+- both Bremen lanes now contribute source goal memberships to `source-goal-membership-registry.json`
+- both Bremen lanes now contribute atomic closures to `source-goal-closure-registry.json`
+- the lower-secondary mapping lane now carries the first structural anchor mappings:
+  - Sek-I orientation root
+  - paired grades `5/6` -> canonical `J6` (`partial`)
+  - paired grades `7/8` -> canonical `J8` (`partial`)
+  - `J9`
+- the lower-secondary mapping lane now also carries the first reviewed lower-secondary corridor mappings:
+  - `J9` restricted core content -> canonical `J9` anchor (`partial`)
+  - J9 Arithmetik/Algebra -> `Zahlen, Terme und Algebra (Sek I)` (`partial`)
+  - J9 Geometrie -> `Geometrie und Raum (Sek I)` (`partial`)
+  - J9 Funktionale Zusammenhaenge -> `Quadratische Funktionen beschreiben und anwenden` (`partial`)
+  - J9 Stochastik -> `Daten und Zufall (Sek I)` (`partial`)
+- the lower-secondary source snapshot now also carries the first explicit Bremen `7/8` refinement:
+  - the paired-grades `7/8` anchor is now split into the first explicit source atoms for:
+    - arithmetic/algebra with fractions, rational numbers, expressions, and linear equations
+    - geometry with triangles, prisms, similarity, and the Pythagorean theorem
+    - functional relationships with proportional, linear, and first quadratic representations
+    - stochastics with distributions, Laplace, and two-stage random experiments
+- the lower-secondary mapping lane now also carries the first deeper Bremen `7/8` bridges:
+  - `J7/8 Arithmetik/Algebra` -> `Zahlen, Terme und Algebra (Sek I)` (`partial`)
+  - `J7/8 Geometrie` -> `Geometrie und Raum (Sek I)` (`partial`)
+  - `J7/8 Funktionale Zusammenhaenge` -> `Strukturen und funktionale Zusammenhaenge (Sek I)` (`partial`)
+  - `J7/8 Stochastik` -> `Daten und Zufall (Sek I)` (`partial`)
+- the lower-secondary source snapshot now also carries the first explicit Bremen `5/6` refinement:
+  - the paired-grades `5/6` anchor is now split into the first explicit source atoms for:
+    - arithmetic/algebra with number line, calculation, factors, multiples, and quantities
+    - geometry with plane figures, cuboids, angles, and first area and volume ideas
+    - early functional relationships with tables, diagrams, scale, and number-patterns
+    - stochastics with lists, diagrams, means, and first random experiments
+- the lower-secondary mapping lane now also carries the first deeper Bremen `5/6` bridges:
+  - `J5/6 Arithmetik/Algebra` -> `Zahlen, Terme und Algebra (Sek I)` (`partial`)
+  - `J5/6 Geometrie` -> `Geometrie und Raum (Sek I)` (`partial`)
+  - `J5/6 Funktionale Zusammenhaenge` -> `Einfache Zuordnungen, Tabellen und Diagramme (Sek I)` (`partial`)
+  - `J5/6 Stochastik` -> `Daten und Zufall (Sek I)` (`partial`)
+- the upper-secondary mapping lane now carries the first structural anchor mappings:
+  - upper-secondary orientation root
+  - `E`
+  - `Q1`
+  - `Q2`
+  - `Q3`
+  - `Q4`
+- the upper-secondary mapping lane now also carries the first reviewed upper-secondary subject-area bridges:
+  - `Sachgebiet Analysis` -> canonical `Integralrechnung und Differenzialgleichungen (Sek II)` (`partial`)
+  - `Sachgebiet Stochastik` -> canonical `Wahrscheinlichkeitsverteilungen, Hypothesentests und Statistik` (`partial`)
+  - `Sachgebiet Lineare Algebra / Analytische Geometrie` -> canonical `Analytische Geometrie, lineare Algebra und vertiefte Analysis` (`partial`)
+- the upper-secondary source snapshot now also carries the first explicit Bremen Analysis refinement:
+  - `Sachgebiet Analysis` is now split into:
+    - a first explicit `Analysis 2` corridor on introduction and first applications of integral calculus
+    - a broad `Analysis 3` follow-on anchor
+  - the `Analysis 2` corridor currently exposes the first explicit source atoms for:
+    - integral concept / reconstructed quantity / cumulative total effect
+    - antiderivatives, definite integrals, and the fundamental theorem
+    - area calculation with definite integrals
+    - application contexts for integrals and antiderivatives
+- the upper-secondary mapping lane now also carries the first deeper Bremen Analysis bridges:
+  - `Analysis 2` -> canonical `Einfuehrung und erste Anwendungen der Integralrechnung` (`partial`)
+  - `A 2.1-A 2.3` -> canonical `Integralbegriff, Bestandsrekonstruktion und Hauptsatz` (`partial`)
+  - `A 2.4-A 2.6` -> canonical `Hauptsatz der Differential- und Integralrechnung nutzen` (`partial`)
+  - `A 2.7` -> canonical `Flaechen mit Integralen berechnen` (`partial`)
+  - `A 2.10` -> canonical `Bestaende und Mittelwerte modellieren` (`partial`)
+  - `Analysis 3` -> canonical `Vertiefung der Differenzial- und Integralrechnung` (`partial`)
+- the upper-secondary source snapshot now also carries the first explicit Bremen Stochastics refinement:
+  - `Sachgebiet Stochastik` is now split into:
+    - a first explicit `Stochastik 1` corridor on statistics and probability foundations
+    - an explicit `Stochastik 2` corridor on binomial distributions, intervals, and tests
+  - the `Stochastik 1` corridor currently exposes the first explicit source atoms for:
+    - combinatorial counting principles and numbers of possibilities
+    - arithmetic mean, empirical variance, and standard deviation
+    - probabilities, discrete distributions, and stochastic judgements in context
+    - tree diagrams, contingency tables, conditional probabilities, and independence
+- the upper-secondary mapping lane now also carries the first deeper Bremen Stochastics bridges:
+  - `Stochastik 1` -> canonical `Stochastik, Tests und Statistik (Sek II)` (`partial`)
+  - `S 1.1` -> canonical `Grundlegende Zaehlprinzipien anwenden` (`partial`)
+  - `S 1.2` -> canonical `Stichprobenkennwerte bestimmen und deuten` (`partial`)
+  - `S 1.3-S 1.5 und S 1.8` -> canonical `Stichprobenkennwerte und Binomialverteilungen` (`partial`)
+  - `S 1.6-S 1.7` -> canonical `Baumdiagramme, Vierfeldertafeln und bedingte Wahrscheinlichkeiten` (`partial`)
+- the upper-secondary source snapshot now also carries the first explicit Bremen Stochastics-2 refinement:
+  - the `Stochastik 2` corridor currently exposes the first explicit source atoms for:
+    - binomial distributions, cumulative probabilities, and model evaluation
+    - parameter estimation and confidence intervals
+    - hypothesis tests, decision rules, and error types
+- the upper-secondary mapping lane now also carries the first deeper Bremen Stochastics-2 bridges:
+  - `Stochastik 2` -> canonical `Stochastik, Tests und Statistik (Sek II)` (`partial`)
+  - `S 2.1-S 2.3` -> canonical `Zufallsgroessen und Binomialverteilungen` (`partial`)
+  - `S 2.4 SP` -> canonical `Prognose- und Konfidenzintervalle` (`partial`)
+  - `S 2.5 HY-S 2.6` -> canonical `Hypothesentests` (`partial`)
+- the upper-secondary source snapshot now also carries the first explicit Bremen linear-algebra / analytic-geometry refinement:
+  - `Sachgebiet Lineare Algebra / Analytische Geometrie` is now split into:
+    - a first explicit `Lineare Algebra 1` corridor on vectors in geometric contexts
+    - a remaining follow-on anchor for the remaining LA/AG content
+  - the `Lineare Algebra 1` corridor currently exposes the first explicit source atoms for:
+    - points, vectors, and elementary vector operations
+    - linear combinations, vector magnitude, and geometric interpretation
+    - dot product, angles, and geometric applications
+- the upper-secondary mapping lane now also carries the first deeper Bremen LA/AG bridges:
+  - `Sachgebiet Lineare Algebra / Analytische Geometrie` -> canonical `Raum, Matrizen und lineare Modelle (Sek II)` (`partial`)
+  - `Lineare Algebra 1` -> canonical `Orientieren und Bewegen im Raum` (`partial`)
+  - `LA 1.1-LA 1.3` -> canonical `Punkte und Vektoren im Raum koordinatisieren und elementar nutzen` (`partial`)
+  - `LA 1.4-LA 1.5` -> canonical `Vektoren im Raum beschreiben und darstellen` (`partial`)
+  - `LA 1.6-LA 1.7` -> canonical `Skalarprodukt geometrisch deuten und berechnen` (`partial`)
+- the upper-secondary source snapshot now also carries the first explicit Bremen matrix refinement inside the remaining LA/AG lane:
+  - the remaining LA/AG follow-on anchor is now split into:
+    - a first explicit matrix corridor on `LA 2-LA 3`
+    - a broad residual anchor for `LA 4` and Analytische Geometrie
+  - the matrix corridor currently exposes the first explicit source atoms for:
+    - LGS, Gauß-Algorithmus, and matrices as tabular representation
+    - matrix operations and matrix-vector equations
+    - redistributions, state vectors, and stationary states
+- the upper-secondary mapping lane now also carries the first deeper Bremen matrix bridges:
+  - `Lineare Algebra 2-3` -> canonical `Matrizen zur Beschreibung von Übergangsprozessen` (`partial`)
+  - `LA 2.1-LA 2.4` -> canonical `Matrizen als Darstellungsform verstehen` (`partial`)
+  - `LA 2.5-LA 2.7` -> canonical `Mit Matrizen rechnen` (`partial`)
+  - `LA 3.1-LA 3.6` -> canonical `Matrizen zur Beschreibung von Übergangsprozessen` (`partial`)
+- the upper-secondary source snapshot now also carries the first explicit Bremen analytic-geometry refinement:
+  - the remaining LA/AG residual anchor was first split into:
+    - a first explicit `Analytische Geometrie 3-4` corridor on lines and planes
+    - a mixed follow-on anchor for `LA 4` and later AG deepening
+  - the analytic-geometry corridor currently exposes the first explicit source atoms for:
+    - lines, parametric form, and positional relations
+    - planes, equation forms, and positional relations
+- the upper-secondary mapping lane now also carries the first deeper Bremen analytic-geometry bridges:
+  - `Analytische Geometrie 3-4` -> canonical `Geraden und Ebenen im Raum` (`partial`)
+  - `AG 3.1-AG 3.4` -> canonical `Geraden im Raum parametrisch darstellen` (`partial`)
+  - `AG 4.1-AG 4.5` -> canonical `Ebenen durch verschiedene Gleichungsformen beschreiben` (`partial`)
+- the upper-secondary source snapshot now also carries the first explicit Bremen `LA4` refinement:
+  - the remaining mixed LA/AG follow-on anchor was first split into:
+    - a first explicit `Lineare Algebra 4` corridor on population matrices and long-term behaviour
+    - a broad residual anchor for `AG 5` projections, reflections, distances, and angles
+  - the `LA4` corridor currently exposes the first explicit source atoms for:
+    - population developments and population matrices
+    - successor/predecessor states, distributions, and fixed vectors
+    - growth factors, long-term behaviour, and model critique
+- the upper-secondary mapping lane now also carries the first deeper Bremen `LA4` bridges:
+  - `Lineare Algebra 4` -> canonical `Matrizen zur Beschreibung von Übergangsprozessen` (`partial`)
+  - `LA 4.1` -> canonical `Übergangsprozesse mit Graphen und Matrizen beschreiben` (`partial`)
+  - `LA 4.2-LA 4.4` -> canonical `Stabile Zustände mithilfe von Fixvektoren bestimmen` (`partial`)
+  - `LA 4.5-LA 4.11` -> canonical `Langfristige Entwicklung von Übergangsprozessen (LK)` (`partial`)
+
+- the upper-secondary source snapshot now also carries the first explicit Bremen `AG5` refinement:
+  - the remaining `AG5` corridor is now split into the first explicit source atoms for:
+    - projections and reflections on planes
+    - distances in room-geometric situations
+    - angle measures between geometric objects
+    - applied spatial-geometry interpretation and judgment
+- the upper-secondary mapping lane now also carries the first deeper Bremen `AG5` bridges:
+  - `Analytische Geometrie 5` -> canonical `Geraden und Ebenen im Raum` (`partial`)
+  - `AG 5.1` -> canonical `Punkte an Ebenen spiegeln` (`partial`)
+  - `AG 5.2` -> canonical `Abstaende im Raum berechnen` (`partial`)
+  - `AG 5.3` -> canonical `Schnittwinkel zwischen geometrischen Objekten berechnen` (`partial`)
+  - `AG 5.4` -> canonical `Sachprobleme mit Geraden und Ebenen modellieren` (`partial`)
+
+- the upper-secondary source snapshot now also carries the first explicit Bremen `A3` refinement:
+  - the former broad `A3` follow-on anchor is now split into:
+    - an explicit `A 3.1-A 3.4` strip on natural exponential functions, compositions, parameters, and extended differentiation rules
+    - an explicit `A 3.5-A 3.6` strip on antiderivatives, integrals, and deeper function investigations
+    - an explicit `A 3.7 [LK]` corridor that is itself now split into:
+      - substitution techniques
+      - symmetries and reflections
+      - loci of parametric points
+      - improper integrals
+    - an explicit `A 3.8` strip on bounded growth, decay, and advanced-course differential-equation context
+- the upper-secondary mapping lane now also carries the first deeper Bremen `A3` bridges:
+  - `A 3.1-A 3.4` -> canonical `Vertiefung der Analysis` (`partial`)
+  - `A 3.5-A 3.6` -> canonical `Integrationstechniken gezielt kombinieren` (`partial`)
+  - `A 3.7a [LK]` -> canonical `Substitutionsmethode anwenden (LK)` (`partial`)
+  - `A 3.7b [LK]` -> canonical `Spiegelungen von Funktionsgraphen beschreiben` (`partial`)
+  - `A 3.7c [LK]` -> canonical `Funktionenscharen und Ortskurven untersuchen` (`partial`)
+  - `A 3.7d [LK]` -> canonical `Uneigentliche Integrale berechnen (LK)` (`partial`)
+  - `A 3.8` -> canonical `Wachstums- und Zerfallsprozesse modellieren` (`partial`)
+
+Archived local sources:
+
+- `curricula/DE/Gymnasium/input/HB/06-12-06_mathe_gy.pdf`
+- `curricula/DE/Gymnasium/input/HB/Gy_Mathe_2006_inhalt_Einschraenkungen.pdf`
+- `curricula/DE/Gymnasium/input/HB/GyO_Mathematik_2022.pdf`
 
 Operational rule from here:
 
-- keep these reserved `sourceLandscapeId` values stable while the first Bremen mathematics source bundle is archived under `curricula/DE/Gymnasium/input/HB/`
-- activate the shared provenance registries only after real archived source-landscape JSON snapshots with stable source goal IDs exist
-- prefer lower-secondary source import first, then the upper-secondary lane
+- keep these reserved `sourceLandscapeId` values stable while the first Bremen lower-secondary and upper-secondary source snapshots remain the authoritative active source basis for the lanes
+- keep the Bremen `5/6`, `7/8`, and J9 lower-secondary corridors plus the now broad upper-secondary lane stable while the rollout shifts to other states
+- the imported lower-secondary pilot subset currently covers:
+  - the didactic orientation anchor for Sekundarstufe I
+  - the paired grade anchors `5/6` and `7/8`
+  - the first explicit `5/6` corridor on Arithmetik/Algebra, Geometrie, funktionalen Zusammenhaengen, and Stochastik
+  - the first explicit `7/8` corridor on Arithmetik/Algebra, Geometrie, funktionalen Zusammenhaengen, and Stochastik
+  - the current valid Jahrgang-9 anchor of the restricted Bremen Sek-I track
+  - the first restricted Jahrgang-9 content corridor on Arithmetik/Algebra, Geometrie, funktionalen Zusammenhaengen, and Stochastik
+- the imported upper-secondary pilot subset currently covers:
+  - the didactic orientation anchor for the gymnasiale Oberstufe
+  - the structural anchor of the Einfuehrungsphase
+  - the structural anchors `Q1-Q4`
+  - the three Oberstufen-Sachgebiete Analysis, Stochastik, and Lineare Algebra / Analytische Geometrie
+- the lower-secondary mapping lane now carries `4` structural anchor mappings
+- the lower-secondary mapping lane now also carries `13` first-corridor mappings across the explicit `5/6` and `7/8` corridors plus the currently valid J9 restricted content set
+- the upper-secondary mapping lane now carries `6` structural anchor mappings
+- the upper-secondary mapping lane now also carries `3` first reviewed subject-area bridges across Analysis, Stochastics, and Lineare Algebra / Analytische Geometrie
+- the upper-secondary mapping lane now also carries `17` first deeper Analysis-bridge mappings across the Bremen `A2` corridor and the fully explicit `A3` strips
+- the upper-secondary mapping lane now also carries `5` first deeper Stochastics-bridge mappings on the Bremen `S1` corridor
+- the upper-secondary mapping lane now also carries `4` first deeper Stochastics-bridge mappings on the Bremen `S2` corridor
+- the upper-secondary mapping lane now also carries `5` first deeper LA/AG-bridge mappings on the Bremen `LA1` corridor
+- the upper-secondary mapping lane now also carries `4` first deeper Matrix-bridge mappings on the Bremen `LA2-LA3` corridor
+- the upper-secondary mapping lane now also carries `3` first deeper Analytische-Geometrie-bridge mappings on the Bremen `AG3-AG4` corridor
+- the upper-secondary mapping lane now also carries `4` first deeper LA4 population-matrix bridge mappings on the Bremen `LA4` corridor
+- the upper-secondary mapping lane now also carries `5` first deeper AG5 bridge mappings on the Bremen `AG5` corridor

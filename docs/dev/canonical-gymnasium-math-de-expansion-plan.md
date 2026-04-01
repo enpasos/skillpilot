@@ -27,11 +27,17 @@ Use three persisted artifacts:
 - purpose: easy-to-scan overview for humans
 - generation: `python3 scripts/render_canonical_math_bundesland_status.py`
 
+4. topic workboard
+- `docs/dev/canonical-gymnasium-math-topic-workboard.md`
+- purpose: canonical-first decision board by topic and Bundesland
+- use: one row per high-level topic, one state cell per Bundesland, plus explicit canonical gaps and next action
+
 Working rule:
 
 - update the JSON tracker first
 - regenerate the Markdown quick view second
-- commit both together
+- update the topic workboard whenever the active implementation unit changes
+- keep plan, tracker, quick view, and workboard aligned
 
 This keeps the plan persisted, diffable, and simple to review in PRs.
 

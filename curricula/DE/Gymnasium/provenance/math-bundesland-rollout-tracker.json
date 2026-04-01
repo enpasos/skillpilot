@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-03-30",
+  "updatedAt": "2026-04-01T00:00:00Z",
   "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
   "quickViewPath": "docs/dev/canonical-gymnasium-math-bundeslaender-status.md",
   "renderCommand": "python3 scripts/render_canonical_math_bundesland_status.py",
@@ -191,8 +191,8 @@
         "curricula/DE/Gymnasium/mapping/DE-HE/lower-secondary/hessen_math_lower_secondary_to_canonical_math.json",
         "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_math_upper_secondary_to_canonical_math.json"
       ],
-      "notes": "Reference donor for upper-secondary mathematics and the current broad Hessen baseline on the canonical spine.",
-      "nextStep": "Keep Hessen as the stable reference baseline while other states broaden."
+      "notes": "Hessen remains the stable lower-secondary and upper-secondary reference lane. Its reviewed Sek-I function mappings are already mostly atomic and therefore currently more precise than a mechanical rewrite to broad F3-F5 package targets.",
+      "nextStep": "Keep Hessen as the precision baseline while broader mixed lanes in other states are being pressure-tested."
     },
     {
       "jurisdiction": "DE-BY",
@@ -281,29 +281,29 @@
       "jurisdiction": "DE-HB",
       "repoStateKey": "HB",
       "displayName": "Bremen",
-      "phase": "P0",
+      "phase": "P5",
       "priority": "backlog",
-      "sourceStage": "mapping_scaffolded",
+      "sourceStage": "snapshots_active",
       "mappingFiles": [
         "curricula/DE/Gymnasium/mapping/DE-HB/lower-secondary/hb_math_lower_secondary_to_canonical_math.json",
         "curricula/DE/Gymnasium/mapping/DE-HB/upper-secondary/hb_math_upper_secondary_to_canonical_math.json"
       ],
-      "notes": "Repository-backed lower-secondary and upper-secondary Bremen mathematics mapping fixtures now exist with stable reserved source-landscape IDs, but no archived state-local mathematics source bundle or source-json snapshot is active yet.",
-      "nextStep": "Archive the official Bremen mathematics source bundle under `curricula/DE/Gymnasium/input/HB/`, then derive the first lower-secondary and upper-secondary source snapshots before activating shared provenance."
+      "notes": "Bremen is on P5. Its reviewed lower-secondary function corridor remains intentionally broad because the current J7/8 source bundle still mixes proportional, linear, and first quadratic function work at one surface.",
+      "nextStep": "Use Bremen only as pressure test for shared function packaging unless the source lane is later split more finely."
     },
     {
       "jurisdiction": "DE-HH",
       "repoStateKey": "HH",
       "displayName": "Hamburg",
-      "phase": "P0",
+      "phase": "P4",
       "priority": "backlog",
-      "sourceStage": "mapping_scaffolded",
+      "sourceStage": "snapshots_active",
       "mappingFiles": [
         "curricula/DE/Gymnasium/mapping/DE-HH/lower-secondary/hh_math_lower_secondary_to_canonical_math.json",
         "curricula/DE/Gymnasium/mapping/DE-HH/upper-secondary/hh_math_upper_secondary_to_canonical_math.json"
       ],
-      "notes": "Repository-backed lower-secondary and upper-secondary Hamburg mathematics mapping fixtures now exist with stable reserved source-landscape IDs, but no archived state-local mathematics source bundle or source-json snapshot is active yet.",
-      "nextStep": "Archive the official Hamburg mathematics source bundle under `curricula/DE/Gymnasium/input/HH/`, then derive the first lower-secondary and upper-secondary source snapshots before activating shared provenance."
+      "notes": "Hamburg is on P4. The reviewed lower-secondary lane now connects the visible function packaging more cleanly: the broad J10 function corridor maps to the late J10 continuation package, while application-heavy linear work points to the new F3 package. The broader J8 mixed corridor intentionally remains wider because it still spans algebra and function material together.",
+      "nextStep": "Only split the remaining broad Hamburg J8 mixed function corridor further if the source can separate A3, A4, F3, and F4 more cleanly."
     },
     {
       "jurisdiction": "DE-MV",
