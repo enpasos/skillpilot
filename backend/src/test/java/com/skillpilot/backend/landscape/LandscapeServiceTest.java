@@ -725,11 +725,11 @@ class LandscapeServiceTest {
                                 .contains(
                                                 "Mechanische Grundlagen (Sek I)",
                                                 "Methode: Messunsicherheit und Fehleranalyse",
-                                                "Einführungsphase: Mechanik, Gravitation, Thermodynamik und Drehbewegungen",
+                                                "Mechanik, Gravitation, Thermodynamik und Drehbewegungen",
                                                 "Bewegungen mit Diagrammen untersuchen",
                                                 "Newtons Axiome und Inertialsysteme",
                                                 "Erhaltungssätze",
-                                                "Q4 Struktur von Materie, Raum und Zeit",
+                                                "Struktur von Materie, Raum und Zeit",
                                                 "Abiturprüfung Physik (GK)",
                                                 "Abiturprüfung Physik (LK)");
                 assertThat(pilot.getFilters())
@@ -759,8 +759,8 @@ class LandscapeServiceTest {
                                                 "Warum Chemie? - Relevanz und Orientierung",
                                                 "Chemische Grundlagen (Sek I)",
                                                 "Einführungsphase Reaktionsgrundlagen",
-                                                "Q1 Stoffgruppen",
-                                                "Q4 Energie und Nachhaltigkeit",
+                                                "Stoffgruppen",
+                                                "Energie und Nachhaltigkeit",
                                                 "Abiturprüfung Chemie (GK)",
                                                 "Abiturprüfung Chemie (LK)");
                 assertThat(chemistry.getFilters())
@@ -787,8 +787,8 @@ class LandscapeServiceTest {
                                                 "Fotosynthese und Zellatmung (Sek I)",
                                                 "Warum Biologie? - Relevanz und Orientierung",
                                                 "Einführungsphase Zellbiologie",
-                                                "Q1 Genetik und Gentechnik",
-                                                "Q3 Ökologie & Stoffwechsel",
+                                                "Genetik und Gentechnik",
+                                                "Ökologie & Stoffwechsel",
                                                 "Abiturprüfung Biologie (GK)",
                                                 "Abiturprüfung Biologie (LK)");
                 assertThat(biology.getFilters())
@@ -813,8 +813,8 @@ class LandscapeServiceTest {
                                 .contains(
                                                 "Warum Informatik? - Relevanz und Orientierung",
                                                 "Einführungsphase Informatik",
-                                                "Q1 Algorithmik & objektorientierte Modellierung",
-                                                "Q4 Vertiefendes Themenfeld",
+                                                "Algorithmik & objektorientierte Modellierung",
+                                                "Vertiefendes Themenfeld",
                                                 "Abiturpruefung Informatik (GK)",
                                                 "Abiturpruefung Informatik (LK)");
                 assertThat(informatics.getFilters())
@@ -969,8 +969,8 @@ class LandscapeServiceTest {
                                 .contains(
                                                 "Warum Latein? - Relevanz und Orientierung",
                                                 "E-Phase Latein",
-                                                "Q1 Rhetorik",
-                                                "Q4 Rezeption",
+                                                "Rhetorik",
+                                                "Rezeption",
                                                 "Abiturprüfung Latein (GK)",
                                                 "Abiturprüfung Latein (LK)");
                 assertThat(latin.getFilters())
