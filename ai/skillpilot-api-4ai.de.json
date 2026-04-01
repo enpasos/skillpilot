@@ -2,7 +2,7 @@
   "openapi": "3.1.0",
   "info": {
     "title": "Skillpilot AI Interface",
-    "description": "Optimized API for AI Tutors.\n\n### INSTRUCTIONS\n1. **First Priority**: Ensure you have a `skillpilotId`. If not, **ASK** the user. Do **NOT** create a new learner unless explicitly requested (e.g. 'new user'). A valid SkillPilot ID alone is sufficient to load learner state; if the user sends a UUID, call `getLearnerState` immediately. Do **not** ask the user to open the cockpit, type \"ready\", or take browser steps before loading state.\n2. **State Machine**: Always follow `stateMachine.requiredAction` (fallback: `nextAllowedActions`).\n   - If `setCurriculum`: ask the user to select from `stateMachine.curriculumOptions`.\n   - If `setPersonalization`: apply subject/module `goalIds` plus `filters` (e.g. GK/LK).\n   - If `setScope`: call `setScope` with `goalIds` from `stateMachine.goalOptions` (scope/cluster options). If `frontier` is empty, treat these as a **context change** (scope is replaced, not expanded) and do not invent new scopes. If only one option or the user says \"egal\", pick it automatically.\n   - If `setActiveGoal`: select from `stateMachine.goalOptions` and call `setActiveGoal`.\n   - **Never teach without an active goal.** If `requiredAction` is `setActiveGoal` (or `activeGoal` is null), call `setActiveGoal` first; no content before that.\n   - Treat `frontier` and `stateMachine.goalOptions` as **candidates only**. A goal is current only when it is returned in `activeGoal`.\n   - **Autopilot weder erraten noch nachspielen.** Wenn Autopilot aktiv ist, kann das Backend das nächste Ziel bereits in `activeGoal` mit `requiredAction = setMastery` zurückgeben.\n   - Start exam mode only if the returned `activeGoal` itself has `nodeKind = exam` or contains `examData`. Never infer exam mode from selectable candidates alone.\n   - If `setMastery`: teach the locked goal and call `setMastery`.\n   - Nach `setMastery`: Wenn der zurückgegebene Zustand bereits ein neues `activeGoal` enthält, damit sofort weitermachen und **keine** manuelle Zielauswahl anbieten.\n   - Wenn nach `setMastery` **kein** `activeGoal` zurückkommt und stattdessen `requiredAction = setActiveGoal` gilt, darfst du **kein** Ziel nur textlich als „neu/naechstes Lernziel“ ausgeben. Bei genau einer atomaren Option: sofort `setActiveGoal`. Bei mehreren atomaren Optionen: kurze Auswahl oder nur bei ausdruecklichem „egal“ direkt setzen.\n   - If a call returns **409** due to a required action mismatch (e.g. missing active goal), call `getLearnerState` and follow `stateMachine.requiredAction` immediately.\n3. **Core Concepts**: Use `getLearnerState` for context, `setMastery` for progress.\n4. **Interface Scope**: This AI interface intentionally omits internal release and pipeline metadata. Only tutor-relevant fields are exposed.",
+    "description": "Skillpilot AI-API für Lernstand und Lernfortschritt: Lade Zustand, wähle Ziele und speichere Mastery.",
     "version": "v2-ai-optimized-unified"
   },
   "servers": [
@@ -50,7 +50,7 @@
       "get": {
         "operationId": "getLearnerState",
         "summary": "Get unified learner state",
-        "description": "Returns the full context: ID, Curriculum, Rich Frontier, and Goals summary. Use this to avoid multiple round trips.",
+        "description": "Lädt den aktuellen Lernzustand zu einer bekannten `skillpilotId`.",
         "parameters": [
           {
             "name": "skillpilotId",
@@ -80,7 +80,7 @@
       "post": {
         "operationId": "setScope",
         "summary": "Set learning scope/focus",
-        "description": "Set focus using Goal UUIDs (from stateMachine.goalOptions/frontier). Free-text instructions are not supported; always pass goalIds.",
+        "description": "Setzt den Lernfokus anhand von Goal-IDs aus dem zuletzt geladenen Zustand und gibt den aktualisierten Zustand zurück.",
         "parameters": [
           {
             "name": "skillpilotId",
@@ -120,7 +120,7 @@
       "post": {
         "operationId": "setActiveGoal",
         "summary": "Lock an atomic goal for teaching",
-        "description": "Locks an atomic goal for teaching. Call only when stateMachine.requiredAction is setActiveGoal. A candidate becomes current only after this call succeeds and the response returns it in activeGoal. If the learner explicitly requests a redirect during setMastery, send redirect=true.",
+        "description": "Setzt ein atomares Ziel aus dem zuletzt geladenen Zustand als aktives Ziel und gibt den neuen Zustand zurück.",
         "parameters": [
           {
             "name": "skillpilotId",
@@ -160,7 +160,7 @@
       "post": {
         "operationId": "setMastery",
         "summary": "Update mastery and get next steps",
-        "description": "Updates mastery for the active goal and returns the new state. Call only after real work on that goal. Send an explicit one-entry mastery map {goalId: value}. If the response has no new activeGoal, do not announce a successor in plain text; follow stateMachine.requiredAction first.",
+        "description": "Persistiert Mastery-Änderungen für das aktuelle aktive Ziel und gibt den aktualisierten Zustand zurück.",
         "parameters": [
           {
             "name": "skillpilotId",
@@ -193,7 +193,7 @@
             }
           },
           "409": {
-            "description": "Action required before mastery can be saved. Returns current state so the client can follow stateMachine.requiredAction (e.g. setActiveGoal).",
+            "description": "Voraussetzung fehlt vor dem Speichern der Mastery. Zurückgegebener Zustand enthält den nächsten erforderlichen Schritt.",
             "content": {
               "application/json": {
                 "schema": {
@@ -229,6 +229,7 @@
       "post": {
         "operationId": "setCurriculum",
         "summary": "Set current curriculum/landscape",
+        "description": "Setzt das aktive Curriculum und gibt den aktualisierten Zustand zurück.",
         "parameters": [
           {
             "name": "skillpilotId",
@@ -271,7 +272,7 @@
       "post": {
         "operationId": "setPersonalization",
         "summary": "Personalize the curriculum",
-        "description": "Restrict the curriculum to specific subjects or levels. Use this after selecting a curriculum but before setting a scope.",
+        "description": "Speichert persönliche Präferenzen und Filter, danach den neuen Zustand.",
         "parameters": [
           {
             "name": "skillpilotId",
@@ -347,7 +348,7 @@
           },
           "frontier": {
             "type": "array",
-            "description": "Goals ready to be learned; includes atomic and cluster goals. Treat these as selectable candidates only. Filter by type=atomic when selecting an active goal. Full exam payloads are exposed on activeGoal, not here.",
+            "description": "Ziele, die im aktuellen Zustand lernbar sind (atomar und Cluster). Dies sind Kandidaten; das bestätigte aktuelle Ziel steht separat in `activeGoal`.",
             "items": {
               "$ref": "#/components/schemas/FrontierGoal"
             }
@@ -360,7 +361,7 @@
             "items": {
               "type": "string"
             },
-            "description": "List of allowed next actions. The AI MUST follow these hints."
+            "description": "Vom Backend erlaubte nächste Aktionen."
           },
           "activeFilters": {
             "type": "array",
@@ -381,7 +382,7 @@
           },
           "activeGoal": {
             "$ref": "#/components/schemas/FrontierGoal",
-            "description": "The confirmed current goal. Use this as the canonical source for teaching and for full exam payloads."
+            "description": "Bestätigtes aktives Lernziel."
           },
           "stateMachine": {
             "$ref": "#/components/schemas/StateMachineInfo"
@@ -393,11 +394,11 @@
         "properties": {
           "goalId": {
             "type": "string",
-            "description": "Atomic goal UUID to lock as the current learning target."
+            "description": "ID eines atomaren Ziels aus dem zuletzt geladenen Zustand, das als aktuelles Lernziel gesperrt wird."
           },
           "redirect": {
             "type": "boolean",
-            "description": "Set to true only when the user explicitly requests switching away from the current active goal while requiredAction is setMastery."
+            "description": "Nur true, wenn der Nutzer explizit auf ein anderes Ziel wechseln möchte."
           }
         },
         "required": [
@@ -461,7 +462,7 @@
           },
           "examData": {
             "$ref": "#/components/schemas/ExamData",
-            "description": "Full exam payload. Guaranteed only on activeGoal and stateMachine.activeGoal; selectable candidates may omit it even when nodeKind=exam."
+            "description": "Vollständige Prüfungsdaten. Garantiert nur auf `activeGoal` und `stateMachine.activeGoal`; bei auswählbaren Kandidaten kann das Feld fehlen."
           }
         }
       },
@@ -557,7 +558,7 @@
             "items": {
               "type": "string"
             },
-            "description": "List of Goal IDs (UUIDs) to set as the scope. REQUIRED. Use goal IDs from stateMachine.goalOptions/frontier."
+            "description": "Goal-IDs aus dem zuletzt geladenen Zustand für die Scope-Definition."
           }
         },
         "required": [
@@ -569,7 +570,7 @@
         "properties": {
           "frontier": {
             "type": "array",
-            "description": "Updated frontier after mastery; includes atomic and cluster goals. Treat these as selectable candidates only. Filter by type=atomic when selecting an active goal. Full exam payloads are exposed on activeGoal, not here.",
+            "description": "Aktualisierte Kandidatenziele nach Mastery (atomar und Cluster). Das bestätigte aktuelle Ziel steht separat in `activeGoal`.",
             "items": {
               "$ref": "#/components/schemas/FrontierGoal"
             }
@@ -579,7 +580,7 @@
             "items": {
               "type": "string"
             },
-            "description": "List of allowed next actions after mastery. The AI MUST follow these hints."
+            "description": "Vom Backend erlaubte nächste Aktionen."
           },
           "learningState": {
             "type": "string",
@@ -587,7 +588,7 @@
           },
           "activeGoal": {
             "$ref": "#/components/schemas/FrontierGoal",
-            "description": "The confirmed current goal after mastery handling. Use this as the canonical source for teaching and for full exam payloads."
+            "description": "Bestätigtes aktives Lernziel nach Mastery."
           },
           "stateMachine": {
             "$ref": "#/components/schemas/StateMachineInfo"
@@ -606,11 +607,11 @@
           },
           "requiredAction": {
             "type": "string",
-            "description": "Single required action for the current state. Follow this strictly."
+            "description": "Einzelne vom Backend geforderte Aktion für den aktuellen Zustand, sofern vorhanden."
           },
           "goalOptions": {
             "type": "array",
-            "description": "Goal options relevant to the required action. When requiredAction=setActiveGoal these are selectable candidates, not the current goal. Full exam payloads are exposed on activeGoal, not here.",
+            "description": "Goal-Optionen zum aktuellen `requiredAction`-Schritt. Dies sind auswählbare Kandidaten, nicht automatisch das bestätigte aktive Ziel.",
             "items": {
               "$ref": "#/components/schemas/FrontierGoal"
             }
@@ -624,7 +625,7 @@
           },
           "activeGoal": {
             "$ref": "#/components/schemas/FrontierGoal",
-            "description": "Mirror of the confirmed active goal inside the state machine. Use this, not goalOptions/frontier, when deciding whether exam mode should start."
+            "description": "Bestätigtes aktives Ziel im State Machine-Teil."
           }
         }
       },
@@ -649,11 +650,11 @@
               "type": "number",
               "format": "double"
             },
-            "description": "Map with a single entry {goalId: value} for mastery updates (0.0-1.0). AI agents should always provide this field explicitly."
+            "description": "Map von Goal-ID zu Mastery-Wert (0.0-1.0)."
           },
           "goalId": {
             "type": "string",
-            "description": "Optional helper: UUID of the target atomic goal (no children). AI agents should still provide explicit mastery values via the mastery map."
+            "description": "Optionale Ziel-ID für Legacy-Clients."
           }
         }
       },
@@ -666,11 +667,11 @@
               "type": "number",
               "format": "double"
             },
-            "description": "Map of Goal UUID to mastery score (0.0 to 1.0). e.g. {'uuid': 1.0}"
+            "description": "Map von Goal-ID zu Mastery-Wert (0.0-1.0)."
           },
           "goalId": {
             "type": "string",
-            "description": "Simplification: Single Goal UUID to mark as mastered (1.0)."
+            "description": "Optionale einzelne Ziel-ID."
           }
         },
         "required": [

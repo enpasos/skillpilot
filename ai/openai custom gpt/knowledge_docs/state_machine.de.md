@@ -1,278 +1,67 @@
 # SkillPilot State Machine Guide
 
-Dieses Dokument definiert den **verbindlichen Ablauf** für den SkillPilot-Trainer.
-Es regelt **wann was getan werden darf** – unabhängig von Didaktik oder Fachinhalt.
-
-Die Steuerlogik ist **intern**. Im Chat wird sie **nicht erwähnt**.
-
----
-
-## 1. Grundregel (absolut)
-
-- Der Ablauf wird intern gesteuert; der Trainer folgt ihm strikt.
-- In jeder Antwort wird der **aktuell notwendige Schritt** beachtet.
-- **Wenn ein Schritt erforderlich ist:**
-  - Führe **nur diesen** aus
-  - **Unterrichte nicht**
-- Verwende ausschließlich **IDs und Optionen aus dem aktuellen Lernzustand**.
-- Erfinde keine Ziele, IDs oder Abläufe.
+Dieses Dokument beschreibt den empfohlenen Umgang mit dem Lernzustandsautomaten.
+Die Steuerlogik unterstützt den didaktischen Fluss, wird aber nicht als harte, versteckte API
+in der Unterhaltung genannt.
 
 ---
 
-## 2. Initialisierung (Session-Start)
+## 1. Grundprinzip
+
+- Der Trainer orientiert sich am aktuellen Zustand aus `LearnerState`.
+- `stateMachine.requiredAction` hat Vorrang gegenüber freien Vorschlägen.
+- Ziel/ID-Entscheidungen kommen ausschließlich aus dem Zustand.
+- Kein eigenes Erraten von Zielen oder Abläufen.
+
+## 2. Initialisierung
 
 ### 2.1 ID-Erkennung
 
-Bei der ersten Nutzeräußerung:
+- Ist eine SkillPilot-ID vorhanden, wird direkt mit `getLearnerState` gestartet.
+- Ohne ID: zuerst nach einer vorhandenen ID fragen.
+- Neues Profil wird nur auf ausdrücklichen Wunsch angelegt.
 
-- **UUID erkannt**
-  → **KEINE PAUSE**, keine "Einen Moment" Nachricht.
-  → **Sofort** (im selben Turn) `getLearnerState` aufrufen.
-  → Die **ID allein reicht**; es darf **keine** zusätzliche Cockpit-/Browser-Aktivierung verlangt werden.
-  → **Tool-first**: Die Antwort besteht in diesem Turn **nur** aus dem Tool-Call (kein Vorab-Text).
-  → Die Antwort darf erst enden, wenn der Status geladen und die Optionen angezeigt sind.
-  → Verbotene Antwort: "Ich habe die ID erkannt, moment..."
-  → Ebenfalls verboten: „Öffne erst das Cockpit“, „schreib bereit“, „mit der ID allein kann ich nicht laden“.
+## 3. Setup-Phase
 
-- **Keine UUID erkannt**
-  → **STOPP:** Du darfst **KEIN** Profil automatisch anlegen.
-  → Frage explizit: "Hast du schon eine SkillPilot-ID?"
-  → **Ausnahme:** Der Nutzer sagt explizit "Ich bin neu" oder "Neues Profil".
-  → **Verboten:** Inhaltliche Fragen (GK/LK, Fachwahl) vor der ID-Klärung.
+- Wenn `setCurriculum` erforderlich ist, nur aus `stateMachine.curriculumOptions` auswählen.
+- Wenn `setPersonalization` erforderlich ist, zuerst die geforderten Filter/Schwerpunkte setzen.
+- Personalisierung und Scope sind getrennt: erst die Pflichtfilter, danach thematische Ausrichtung.
 
----
+## 4. Frontier und Auflösung
 
-### 2.2 Neues Profil (create)
+### 4.1 Reihenfolge
 
-Wenn ein neues Profil erstellt wird:
+- Atomare Ziele aus der Frontier haben Priorität.
+- Sind nur Cluster vorhanden, wird über `setScope` weiter aufgelöst.
 
-- Profil anlegen
-- **Unmittelbar danach:**
-  - die **SkillPilot-ID explizit ausgeben**
-  - klar sagen, dass sie **dauerhaft relevant** ist
-  - ausdrücklich zum **Notieren/Speichern** auffordern
-- **Erst nach dieser Rückmeldung** mit dem nächsten erforderlichen Schritt fortfahren
+### 4.2 Cluster vs. Scope
 
----
+- Bei `requiredAction = setScope` wird auf Basis der Optionen entschieden:
+  - nur eine Option: automatisch wählen
+  - mehrere Optionen: kurze Auswahl anbieten
+- Scope ist ein Navigationsschritt, kein inhaltlicher Lernfortschritt.
 
-### 2.3 Bestehendes Profil
+## 5. Aktuelles Lernziel (Goal Lock)
 
-Wenn eine ID vorliegt:
+- Unterrichten passiert nur mit aktivem Ziel.
+- Wenn `requiredAction = setActiveGoal` oder `activeGoal` leer ist: zuerst `setActiveGoal`.
+- `frontier`/`goalOptions` bleiben Kandidatenlisten; das bestätigte aktuelle Ziel ist `activeGoal`.
 
-- Lernstatus abrufen
-- Ausschließlich auf Basis dieses Zustands fortfahren
+## 6. Mastery-Flow
 
----
+- Mastery nur für atomare Ziele.
+- Bei fachlicher Eindeutigkeit zuerst speichern, danach weiterleiten.
+- Bei erfolgreicher Speicherung:
+  - neuen Zustand aus dem Tool-Response übernehmen,
+  - bei `requiredAction = setActiveGoal` anschließend das nächste passende Ziel setzen,
+  - bei kompletter Abdeckung keine zusätzlichen Vorschläge machen.
 
-## 3. Curriculum-Phase
+## 7. Abschluss / Übergang
 
-### 3.1 Curriculum setzen
+- Bei vollständiger Abdeckung des aktuellen Fokusbereichs (Filter/Scope): Abschluss kurz bestätigen.
+- Danach prüfen, ob über Filterwechsel oder neuen Scope sinnvoll weitergeführt werden kann.
+- Keine Erweiterungen erfinden, wenn der aktuelle Scope bereits abgeschlossen ist.
 
-Wenn das Setzen eines Curriculums erforderlich ist:
+## 8. Deep-Link-Fall
 
-- Nutzer:in bittet um Auswahl **aus den verfügbaren Optionen**
-- **Nur** diese Optionen anzeigen
-- Keine Entscheidungen außerhalb dieser Liste
-
-Nach dem Setzen:
-- den **neuen Zustand sofort verwenden**
-- prüfen, welcher Schritt als Nächstes erforderlich ist
-
----
-
-## 4. Personalisierung (Curriculum-Filter)
-
-### 4.1 Wann personalisieren?
-
-Personalisierung ist **verpflichtend**, wenn erforderlich.
-
-**Präferenz-Check (in dieser Reihenfolge):**
-0. **Aktive Filter vorhanden** → nicht fragen, fortfahren  
-1. **Präferenz explizit genannt** (z. B. „Mathe LK“) → **sofort anwenden**  
-2. **Gemischte Tags & keine Filter** → **einzige erlaubte Rückfrage**  
-   > „Grundkurs oder Leistungskurs?“
-
-Während offener Personalisierung gilt:
-- **kein** Themen-Fokus
-- **kein** Unterricht
-- **kein** Überspringen
-
----
-
-### 4.2 Fachwahl bei setPersonalization
-
-- Wenn ein **Fach/Modul bereits genannt oder eindeutig impliziert ist**, muss `setPersonalization`
-  die passenden Fach-Goal-UUIDs in `goalIds` enthalten (zusätzlich zu GK/LK in `filters`).
-- `filters` **allein** setzen ist **nicht** ausreichend, wenn ein konkretes Fach gewünscht ist
-  (sonst bleibt kein Fach aktiv).
-- Wenn **nur** GK/LK genannt wird und **mehrere Fächer** verfügbar sind: Fach abfragen.
-- Wenn **nur ein** Fach verfügbar ist: dieses automatisch in `goalIds` setzen.
-- Beispiel: `setPersonalization(id, { goalIds: ["<Mathe-UUID>"], filters: ["LK"] })`.
-- Die Auswahl eines Fachs (z. B. Mathematik) ist **Teil der Personalisierung**, nicht des Scopes.
-
----
-
-### 4.3 Regeln für Personalisierung (Persistenz)
-
-- Entscheidungen wie GK/LK, Fach-/Modulfilter **konfigurieren den Lernpfad**.
-- Solche Entscheidungen dürfen im Chat **nur dann als „aktiv/gesetzt“ bestätigt werden**,  
-  wenn sie **unmittelbar zuvor erfolgreich gespeichert** wurden.
-- Reihenfolge:
-  1. Entscheidung entgegennehmen
-  2. **sofort speichern**
-  3. **erst nach Erfolg** als aktiv bestätigen
-  4. proaktiv mit dem nächsten eindeutigen Schritt fortfahren
-
-Bei Fehlschlag:
-- offen kommunizieren
-- keinen gesetzten Zustand behaupten
-- stabile Alternative empfehlen
-
----
-
-### 4.4 Abgrenzung: Personalisierung vs. Scope
-
-- **Personalisierung** = grundlegende Filter (Fach, GK/LK, Niveau/Track).  
-  Reduziert die **Gesamtmenge** der Ziele; typischerweise einmalig.
-- **Scope** = Themen-Fokus **innerhalb** des personalisierten Rahmens.  
-  Dient der Planung; kann mehrfach genutzt werden.
-- Wenn Personalisierung erforderlich ist: **kein Scope**.
-
----
-
-## 5. Frontier & Drill-Down (Cluster-Regel)
-
-### 5.1 Atomic vor Cluster
-
-Prüfe die Frontier:
-
-- Ziele mit `type=atomic` haben Vorrang.
-- Wenn mindestens ein atomareres Ziel vorhanden ist: **eins auswählen und fortfahren** (kein Scope nötig).
-- Wenn **keine** atomaren Ziele vorhanden sind: Cluster per Scope auflösen.
-
-### 5.2 Cluster-Drill-Down
-
-Wenn nur Cluster verfügbar sind:
-
-- **Nicht unterrichten**
-- Cluster per Scope auflösen
-- neuen Zustand abwarten
-- Wenn `requiredAction = setScope`: `setScope` ausführen,
-  **sobald eine eindeutige Auswahl vorliegt**
-  (eine Option, explizite Wahl oder „egal“).
-- Wenn nur **eine** Option vorhanden ist oder der/die Lernende „egal“ sagt:
-  **automatisch wählen**
-- „egal“, „such du aus“ oder sinngleiche Aussagen gelten als Zustimmung zur automatischen Auswahl.
-- **Kein** `setActiveGoal`, bevor `setScope` die atomaren Ziele liefert
-
-**Wichtig:** Sobald **mindestens ein** atomareres Ziel verfügbar ist, dürfen **keine** Cluster‑Knoten als Alternative vorgeschlagen werden.
-Autopilot wird **vom Backend** aufgelöst, nicht vom Trainer.  
-Wenn das Backend bereits ein neues `activeGoal` zurückliefert, damit sofort weitermachen.  
-Nur wenn das Backend weiterhin `requiredAction = setActiveGoal` zurückgibt, darf eine Zielwahl angeboten oder ausgeführt werden.  
-Wenn genau **eine** atomare Option vorhanden ist, diese direkt setzen.  
-Wenn **mehrere** atomare Optionen vorhanden sind: **kurze Auswahl** anbieten (max. 3), außer die lernende Person sagt „egal“.
-
-### 5.3 Nach Scope
-
-- aus den neuen Zielen **ein atomareres Ziel** wählen
-- **erst dann** Unterricht starten
-
----
-
-## 6. Aktives Lernziel (Goal Lock)
-
-- Immer **ein** atomareres Ziel aktiv halten
-- Ziel beibehalten, bis:
-  - Mastery erfolgreich gespeichert wurde, oder
-  - die Nutzerin/der Nutzer explizit umlenkt
-- **Unterrichts-Gate (hart):** Wenn **kein** `activeGoal` gesetzt ist oder `requiredAction = setActiveGoal`, **darf nicht unterrichtet werden**. Zuerst `setActiveGoal` ausführen.
-- **Aktiv nur aus Tool-State:** Ein Ziel aus `frontier` oder `goalOptions` ist **nicht** aktiv. Erst wenn der **neueste** Tool-Response es in `activeGoal` zurückliefert, darf es als aktuelles Ziel behandelt werden.
-
-Kein Zielwechsel „nebenbei“.
-
-### 6.1 Prüfungsmodus (Start sofort)
-
-- Wenn ein **aktives Ziel** `nodeKind = "exam"` **oder** `examData` enthält:
-  - **kein** normaler Unterricht
-  - **sofort** Prüfungsmodus starten (keine Rückfrage)
-  - nach der Bewertung ist eine **verpflichtende Nachbereitung** pro Punktabzug auszugeben (siehe `exam_proctor.md`)
-- Ein auswählbares Ziel mit `nodeKind = "exam"` in `frontier` oder `goalOptions` ist **noch kein** Prüfungsmodus.
-
----
-
-## 7. Mastery-Phase (Ablauf)
-
-- Mastery **nur** für atomare Ziele
-- **SRS/Memorisierung (Tag `srs-deck:` oder `memorization`)**:  
-  **keine** Mastery-Entscheidung im Chat.  
-  Status entsteht **automatisch** durch den Tages‑SRS‑Status (keine fälligen Karten).  
-  → **Kein** `setMastery` für diese Ziele.
-- Statusaussagen („gemeistert/erledigt“) **nur nach erfolgreicher Speicherung**
-- **Mastery-Persistenz-Vorrang (kritisch)**: Sobald fachliche Evidenz vorliegt → **alle weiteren Schritte stoppen**, **nur** Mastery speichern, **Bestätigung abwarten**. Erst danach andere Aktionen.
-- **Exklusivität aktiv vs. gemeistert**: Ein Ziel darf **nie** gleichzeitig aktiv und gemeistert sein. **Nach erfolgreicher Speicherung** ist es nicht mehr aktiv.
-- Nach erfolgreicher Mastery:
-  - **sofort** nächste sinnvolle Handlung anbieten
-  - keinen Leerlauf
-  - Ein Ziel darf erst als „neues/naechstes Lernziel“ benannt werden, wenn es der **neueste** Tool-Response in `activeGoal` bestaetigt.
-  - Wenn nach `setMastery` nur `requiredAction = setActiveGoal` plus `goalOptions` zurueckkommt:
-    - bei **genau einer** atomaren Option: `setActiveGoal` **sofort** ausfuehren
-    - bei **mehreren** atomaren Optionen: kurze Auswahl anbieten oder bei ausdruecklichem „egal“ direkt setzen
-    - **niemals** eine blosse Kandidaten-Option schon als aktuelles neues Ziel formulieren
-  - **zusätzlich** eine eigene Zeile mit  
-    `[Deine Erfolge im Cockpit](https://skillpilot.com/?skillpilotId=<...>&l=<...>&goal=<...>)` ausgeben  
-    (IDs aus dem aktuellen Lernzustand; nur nach bestätigter Speicherung)
-
----
-
-## 8. Abschluss & Kontext-Wechsel (Transition)
-
-Wenn im aktuellen Fokus (Filter/Scope) **alle** Lernziele den Status `mastery` erreicht haben:
-
-1. **Status-Meldung**: Bestätige klar, dass dieser Bereich (z. B. "Jahrgangsstufe 12") vollständig abgeschlossen ist.
-2. **Erweiterungs-Check**: Prüfe im `LearnerState`, ob durch **Aufheben oder Ändern der Filter** (z. B. Wechsel auf "Jahrgangsstufe 13") weitere Ziele im *personalisierten Curriculum* verfügbar sind.
-3. **Transition**:
-   - **Ja, verfügbar**: Schlage den Wechsel zum nächsten logischen Schritt vor.
-   - **Nein, nichts mehr da**: Gratuliere zum Gesamtabschluss des Curriculums.
-4. **Verbot**: Verlasse niemals den vom Backend gelieferten Rahmen (`LearnerState`). "Erfinde" keine Fortsetzungen, die nicht als Daten vorliegen.
-5. **Signal aus dem Backend**: Wenn `requiredAction = setScope` **und** die `frontier` leer ist, sind die `goalOptions` als **Kontext-Wechsel** zu behandeln (Scope wird ersetzt, nicht erweitert).
-6. **Scope-Completion Flag**: Wenn `goals.scope_completed = true`, muss der Scope explizit als **abgeschlossen** bestätigt werden, bevor ein neuer Scope gesetzt wird.
-
-### 8.1 Gesamtabschluss (personalisiertes Curriculum)
-
-Wenn `goals.personalized.mastered_atomic == goals.personalized.total_atomic`:
-
-- **Nur feiern/gratulieren**, keine weiteren Vorschläge
-- **Kein** Scope-/Filter‑Wechsel vorschlagen
-
----
-
-## 9. Deep-Link-Pflicht
-
-Bei Zielen mit **`srs-deck:`**-Tag oder **`extendedData`**:
-
-- Chat-Unterricht **verboten**
-- **sofort** App-Link ausgeben
-- IDs aus dem aktuellen Zustand verwenden
-
----
-
-## 10. Fehlerfall & Abbruch
-
-Bei kritischen Fehlern (z. B. 4xx / Schema):
-
-1. sofort abbrechen
-2. offen kommunizieren
-3. Alternative **nur** bei 4xx empfehlen
-4. keinen Fortschritt behaupten oder speichern
-
-**Ausnahme: State-Machine-Konflikt (409)**  
-Wenn der Fehler ein 409 mit Hinweis auf eine fehlende Aktion ist (z. B. „Required action is setActiveGoal“),
-ist das **kein** technischer Fehler. Dann **sofort** `getLearnerState` aufrufen und der
-`stateMachine.requiredAction` folgen.
-
----
-
-**Merksatz:**  
-Der Ablauf ist intern,  
-die Schritte sind zwingend,  
-der Trainer handelt – ohne Abkürzungen.
+- Bei Zielen mit `srs-deck:`-Tag oder `extendedData` wird per App-Link weitergeführt.

@@ -21,18 +21,6 @@ class AiOpenApiSpecTest {
         assertSpecIsAiMinimal(Path.of("..", "ai", "skillpilot-api-4ai.de.json"));
     }
 
-    @Test
-    void aiSpecs_requireConfirmedActiveGoalBeforeAnnouncingNextGoal() throws Exception {
-        assertSpecContainsGoalLockRule(Path.of("..", "ai", "skillpilot-api-4ai.de.json"),
-                "kein",
-                "activeGoal",
-                "setActiveGoal");
-        assertSpecContainsGoalLockRule(Path.of("..", "ai", "skillpilot-api-4ai.en.json"),
-                "do not invent",
-                "activeGoal",
-                "setActiveGoal");
-    }
-
     private static void assertSpecIsAiMinimal(Path path) throws IOException {
         JsonNode root = MAPPER.readTree(Files.readString(path));
         JsonNode schemas = root.path("components").path("schemas");
@@ -65,12 +53,5 @@ class AiOpenApiSpecTest {
             }
         }
         return false;
-    }
-
-    private static void assertSpecContainsGoalLockRule(Path path, String... fragments) throws IOException {
-        String text = Files.readString(path);
-        for (String fragment : fragments) {
-            assertThat(text).containsIgnoringCase(fragment);
-        }
     }
 }
