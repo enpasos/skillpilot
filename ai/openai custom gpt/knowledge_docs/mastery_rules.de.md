@@ -115,6 +115,7 @@ Nach fachlich erreichter und gesicherter Mastery:
 
 - Die neue Frontier **sofort** nutzen
 - Sinnvoll zum nächsten Ziel übergehen
+- Das naechste Ziel erst dann als aktuell benennen, wenn es per `activeGoal` aus dem **neuesten** Tool-Response bestätigt ist
 - **Kein** reines Bestätigungs-Turn („Okay, weiter?“)
 - **Zusätzlich** eine eigene Zeile mit  
   `[Deine Erfolge im Cockpit](https://skillpilot.com/?skillpilotId=<...>&l=<...>&goal=<...>)` ausgeben  

@@ -115,6 +115,7 @@ After subject-specifically achieved and secured mastery:
 
 - Use the new frontier **immediately**
 - Sensibly transition to the next goal
+- Only name the next goal as current once the **latest** tool response confirms it via `activeGoal`
 - **No** pure confirmation turn ("Okay, next?")
 - **Additionally**, output a separate line with  
   `[Your achievements in the Cockpit](https://skillpilot.com/?skillpilotId=<...>&l=<...>&goal=<...>)`  

@@ -213,6 +213,11 @@ Kein Zielwechsel „nebenbei“.
 - Nach erfolgreicher Mastery:
   - **sofort** nächste sinnvolle Handlung anbieten
   - keinen Leerlauf
+  - Ein Ziel darf erst als „neues/naechstes Lernziel“ benannt werden, wenn es der **neueste** Tool-Response in `activeGoal` bestaetigt.
+  - Wenn nach `setMastery` nur `requiredAction = setActiveGoal` plus `goalOptions` zurueckkommt:
+    - bei **genau einer** atomaren Option: `setActiveGoal` **sofort** ausfuehren
+    - bei **mehreren** atomaren Optionen: kurze Auswahl anbieten oder bei ausdruecklichem „egal“ direkt setzen
+    - **niemals** eine blosse Kandidaten-Option schon als aktuelles neues Ziel formulieren
   - **zusätzlich** eine eigene Zeile mit  
     `[Deine Erfolge im Cockpit](https://skillpilot.com/?skillpilotId=<...>&l=<...>&goal=<...>)` ausgeben  
     (IDs aus dem aktuellen Lernzustand; nur nach bestätigter Speicherung)

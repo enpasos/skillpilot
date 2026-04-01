@@ -47,6 +47,30 @@ class AiPromptContractTest {
                 "ID alone");
     }
 
+    @Test
+    void prompts_requireConfirmedActiveGoalBeforeNamingNextGoal() throws Exception {
+        assertContainsUuidContract(
+                Path.of("..", "ai", "openai custom gpt", "system_instructions.de.md"),
+                "neuest",
+                "activeGoal",
+                "neues");
+        assertContainsUuidContract(
+                Path.of("..", "ai", "openai custom gpt", "system_instructions.en.md"),
+                "latest",
+                "activeGoal",
+                "next");
+        assertContainsUuidContract(
+                Path.of("..", "ai", "openai custom gpt", "knowledge_docs", "state_machine.de.md"),
+                "activeGoal",
+                "goalOptions",
+                "setActiveGoal");
+        assertContainsUuidContract(
+                Path.of("..", "ai", "openai custom gpt", "knowledge_docs", "state_machine.en.md"),
+                "activeGoal",
+                "goalOptions",
+                "setActiveGoal");
+    }
+
     private static void assertContainsUuidContract(Path path, String... fragments) throws IOException {
         String text = Files.readString(path);
         for (String fragment : fragments) {

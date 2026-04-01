@@ -61,6 +61,11 @@ Expected behavior:
 
 If it waits for a "ping", the system instructions or actions are not correctly wired.
 
+Additional check after a successful mastery:
+- The GPT must **not** merely say “New learning goal: ...” in plain text.
+- Either the tool response already returns that goal in `activeGoal`, or the GPT must call `setActiveGoal` first.
+- If only `goalOptions`/frontier candidates are present, they are **not yet** confirmed current goals.
+
 ## 3. Knowledge: attaching knowledge_docs
 
 In the **Knowledge** section of the GPT builder:
@@ -86,8 +91,10 @@ In the **Actions** section:
 
 ## 5. Model choice
 
-  - **Recommended Model:** **GPT-4o** (or GPT-5.1 if available).
-      - This model follows the complex instruction to map UUIDs much better than smaller models.
+  - **Recommended Model:** **GPT-4o** (or **GPT-5.1**, if available).
+      - These models follow the multi-step UUID -> state -> mastery -> next active-goal flow much more reliably.
+  - **Not recommended for this flow:** fast Instant/Mini variants such as **GPT-5.3 Instant**.
+      - Typical failure mode: the model narrates a “next goal” in plain text instead of performing the required tool call first.
 
 -----
 

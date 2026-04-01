@@ -73,6 +73,11 @@ Expected behavior:
 
 If it waits for a "ping", the system instructions or actions are not correctly wired.
 
+Zusatzcheck nach einer erfolgreichen Mastery:
+- Das GPT darf **nicht** nur textlich „Neues Lernziel: ...“ sagen.
+- Entweder der Tool-Response liefert dieses Ziel bereits in `activeGoal`, oder das GPT muss zuerst `setActiveGoal` ausführen.
+- Wenn nur `goalOptions`/Frontier-Kandidaten vorliegen, sind das **noch keine** bestaetigten aktuellen Ziele.
+
 ## 3. Knowledge: attaching knowledge_docs
 
 In the **Wissen** section of the GPT builder:
@@ -98,8 +103,10 @@ In the **Aktionen** section:
 
 ## 5. Model choice
 
-  - **Empfohlenes Modell:** **GPT-4o** (or GPT-5.1 if available).
-      - This model follows the complex instruction to map UUIDs much better than smaller models.
+  - **Empfohlenes Modell:** **GPT-4o** (oder **GPT-5.1**, falls verfuegbar).
+      - Diese Modelle folgen dem mehrstufigen Tool-Flow fuer UUID -> State -> Mastery -> neues Active Goal deutlich stabiler.
+  - **Nicht empfohlen fuer diesen Flow:** schnelle Instant-/Mini-Modelle wie **GPT-5.3 Instant**.
+      - Typischer Fehler: Das Modell formuliert ein „naechstes Lernziel“ nur textlich, statt vorab den erforderlichen Tool-Call auszufuehren.
 
 -----
 
