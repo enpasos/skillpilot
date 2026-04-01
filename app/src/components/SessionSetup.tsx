@@ -26,6 +26,8 @@ import { normalizeTrainerLandscapeId } from '../utils/trainerLandscapeContext'
 export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skillpilotId, setSkillpilotId, onStart }) => {
   const t = useTranslation()
   const { language } = useLanguage()
+  const isPublicSkillpilot =
+    typeof window !== 'undefined' && /(^|\.)skillpilot\.com$/i.test(window.location.hostname)
   const [selectedLandscapeId, setSelectedLandscapeId] = useState<string>(() => {
     // Restore trainer's last selection from local storage
     if (role === 'trainer') {
@@ -330,10 +332,15 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
                 <Link to="/stats" className="hover:text-sky-500 hover:underline transition-colors">
                   {t.startPage.links.statistics}
                 </Link>
-                <Link to="/workbench" className="hover:text-sky-500 hover:underline transition-colors inline-flex items-center gap-1">
-                  <Wrench size={12} />
-                  <span>{t.startPage.links.workbench}</span>
-                </Link>
+                {!isPublicSkillpilot && (
+                  <Link
+                    to="/workbench"
+                    className="hover:text-sky-500 hover:underline transition-colors inline-flex items-center gap-1"
+                  >
+                    <Wrench size={12} />
+                    <span>{t.startPage.links.workbench}</span>
+                  </Link>
+                )}
                 <Link
                   to={`/whitepaper/${language === 'de' ? 'de' : 'en'}`}
                   target="_blank"
