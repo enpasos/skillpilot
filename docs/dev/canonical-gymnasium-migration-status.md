@@ -4284,6 +4284,63 @@ Interpretation:
   - archive the official mathematics source bundle under `curricula/DE/Gymnasium/input/BW/`
   - then build the first lower-secondary and upper-secondary source snapshots
 
+### 2026-04-03: Bavaria upper-secondary retained-splits the matrix-power/fixed-vector source atom
+
+What changed:
+
+- the broad Bavaria upper-secondary source atom:
+  - `ccd385d1-13f8-5b0a-bb7c-2c1428f6eaf3`
+  is no longer treated as one archived atomic bundle
+- instead, the retained Bavaria source snapshot now resolves it through two child leaves:
+  - `c0959210-c934-4498-b94d-44c90b1a4ad1` (`berechnen Potenzen von Matrizen und deuten diese bei mehrstufigen Prozessen`)
+  - `0cb17a53-944d-47b7-9bac-2094e91793eb` (`bestimmen bei mehrstufigen Prozessen Fixvektoren und deuten diese im Sachzusammenhang`)
+- the retained parent:
+  - `ccd385d1-13f8-5b0a-bb7c-2c1428f6eaf3`
+  now stays in the Bavaria source file as a broad corridor node whose `contains` list points at those two new children
+- the archived Bavaria source registries were widened in place:
+  - `source-goal-membership-registry.json` now includes both new retained child IDs
+  - `source-goal-closure-registry.json` now resolves the broad parent through those two children instead of treating `ccd385d1...` as atomic
+- the Bavaria upper-secondary mapping lane now keeps the retained parent as a broad `partial` bridge to the shared canonical corridor:
+  - `d6d8904c-896f-5850-8181-06c223346b80` (`Matrizen, Übergangsprozesse und lineare Modelle (Sek II)`)
+- the new matrix-power child:
+  - `c0959210-c934-4498-b94d-44c90b1a4ad1`
+  now maps `exact` to:
+  - `33c6e64c-5955-5b07-85d4-74a97b19dd56` (`Matrixpotenzen in Übergangsprozessen deuten`)
+- the new fixed-vector child:
+  - `0cb17a53-944d-47b7-9bac-2094e91793eb`
+  now maps `exact` to:
+  - `8d893e63-d7de-52d9-8bcb-f48f47d1ccbf` (`Stabile Zustände mithilfe von Fixvektoren bestimmen`)
+- the adjacent Bavaria absorption leaf:
+  - `532c66d0-f4f1-5689-b97d-025f7730da5d`
+  remains a broad `partial` bridge to:
+  - `0a024ecf-27ee-40a2-bf41-0e2faaeb1252`
+  because this slice still has no cleaner one-to-one canonical target
+
+Why this cut:
+
+- the original Bavaria source wording bundles two separable skills:
+  - matrix powers for multi-step transition processes
+  - fixed vectors as stable states
+- both subskills already have honest shared canonical atoms, so keeping one broad `partial` bridge would preserve unnecessary breadth mismatch
+- retaining the broad parent in the archived source tree keeps provenance stable while letting the learner-facing bridge become more exact
+- the adjacent absorption clause still mixes a different late-process interpretation surface and therefore should not be forced onto one of the two newly exact children
+
+Validation used:
+
+- `APPLICABILITY_APPLY_SCOPE=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced npm --prefix app run apply:applicability`
+- `npm --prefix app run validate:view-filters`
+
+Validation result:
+
+- the applicability compiler persisted `1` landscape and changed `136` goals across `1` file in the canonical mathematics graph
+- `npm --prefix app run validate:view-filters` now reports `0` errors, `14` warnings, and `534` accepted warnings
+
+Interpretation:
+
+- Bavaria upper-secondary mathematics now reaches the shared Sek-II matrix corridor through two exact source-backed leaves instead of one broad partial bridge
+- the clean move here was a retained split in the source lane, not a new canonical atom: the canonical corridor already had the right matrix-power and fixed-vector leaves
+- the remaining open decision in this micro-corridor is still the absorption / long-run behavior clause, which remains intentionally broad for now
+
 ### 2026-03-21: Baden-Wuerttemberg mathematics source import completes post-Niedersachsen Stage A
 
 What changed:
