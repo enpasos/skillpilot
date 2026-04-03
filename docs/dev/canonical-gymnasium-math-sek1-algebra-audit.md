@@ -47,6 +47,22 @@ Observed signal:
 - `HH` confirms a stable lower-secondary progression with broad `J6`, `J8`, and `J10` anchors
 - the reviewed Hamburg function corridors also indicate that proportional reasoning, linear equations, and algebraic modelling sit directly on the border between algebra and functions
 
+### Schleswig-Holstein (`SH`)
+
+Observed signal:
+
+- `SH` provides the first additional lower-secondary pressure test after the initial `HB` / `HH` / `HE` pass
+- the lane separates
+  - variables / terms
+  - proportionality / rule-of-three
+  - linear equations
+  - linear systems
+  while keeping
+  - quadratic equations
+  - exponential equations
+  attached to the function-side progression
+- this is exactly the kind of reviewed evidence that tests whether a visible `A5` is really needed
+
 ## Current canonical numbers / terms / algebra inventory
 
 The canonical graph is already materially seeded here.
@@ -158,9 +174,40 @@ Boundary decisions executed:
 - proportional reasoning stays visible as a bridge package instead of disappearing either into arithmetic or into the function topic
 - `A5` remains explicitly open: linear systems still live inside `A4` until mapping pressure proves they need their own visible package
 
+## Residue pressure test executed (`2026-04-01`, `SH`)
+
+The Schleswig-Holstein lower-secondary lane does not force a visible separate `A5`.
+
+Judgment:
+
+- `lineare Gleichungssysteme` fit the existing late equation atom surface cleanly
+- `quadratische Gleichungen` do not come in SH as a broad late-algebra continuation, but as part of the quadratic-function boundary package
+- `Exponentialgleichungen` sit even more clearly on the `J10` function continuation side
+
+Interpretation:
+
+- the reviewed SH lane argues against inventing one broad visible `A5` that would bundle together
+  - linear systems
+  - quadratic equations
+  - exponential equations
+- the current canonical split remains the cleaner design:
+  - algebra keeps linear equations, solvability, modelling, and linear systems in `A4`
+  - quadratic equations remain attached to the quadratic boundary package
+  - exponential equations remain attached to the `J10` function continuation
+
+Current conclusion:
+
+- do not open a visible `A5` now
+- only reopen this question if another reviewed lower-secondary lane shows a genuinely shared late-algebra corridor that sits clearly outside both `A4` and the function-side packages
+
 ## Recommendation
 
 Do not widen more bundesland mappings on Sek-I algebra until the revised `A1-A4` packaging has been pressure-tested against the reviewed lower-secondary lanes.
+
+That pressure test has now reached a stable interim judgment:
+
+- no visible `A5` package is currently justified
+- further lower-secondary work should treat `A5` as a reopen-only-if-forced residue, not as an active design task
 
 ## Recommended next concrete step
 

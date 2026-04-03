@@ -178,15 +178,16 @@ Important boundary decision:
 
 ## First reviewed realignment judgment
 
-The first reviewed `HB` / `HH` / `HE` pressure test does not force another canonical package split.
+The reviewed `BB` / `BY` / `HB` / `HH` / `HE` / `SH` pressure test does not force another canonical package split.
 
 Observed result:
 
 1. `HB` now aligns more cleanly with the revised visible surface:
    - foundations/distribution breadth sit under the foundational probability/distribution corridor
    - the later binomial corridor now lands on the explicit `ST2` package
-2. `HE` remains exact enough that no package-level correction is needed
-3. the only visible hybrid residue is `HH Modul 5.2 Hypothesentests und Normalverteilung`
+2. `BB`, `BY`, and `SH` now fit the frozen `ST2-ST5` surface cleanly enough that no additional package-level bridge is needed
+3. `HE` remains exact enough that no package-level correction is needed
+4. the only visible hybrid residue is `HH Modul 5.2 Hypothesentests und Normalverteilung`
 
 Accepted judgment for the HH hybrid:
 
@@ -208,7 +209,7 @@ Do not widen more bundesland mappings on Sek-II stochastics before the revised v
 Open questions now concentrated here:
 
 1. Is `ST3` only a boundary marker for LK-depth, or will later reviewed residue from additional states force a broader visible bridge package?
-2. Are the broad Q3 summary clusters now stable enough as corridor nodes beyond `HB` / `HH` / `HE`?
+2. Are the broad Q3 summary clusters now stable enough as corridor nodes beyond the currently reviewed `BB` / `BY` / `HB` / `HH` / `HE` / `SH` lanes?
 3. Do additional reviewed state lanes force a sharper separation between foundational distribution work and later inference work?
 
 ## Recommended next concrete step
@@ -227,5 +228,5 @@ This topic audit is complete when:
 
 1. the canonical subpackage boundaries above are either accepted or revised
 2. the canonical graph has a stable Sek-II stochastics packaging
-3. reviewed `HB`, `HH`, and `HE` evidence can be described as aligned to the revised packaging or intentionally broader because of source granularity
+3. reviewed `BB`, `BY`, `HB`, `HH`, `HE`, and `SH` evidence can be described as aligned to the revised packaging or intentionally broader because of source granularity
 4. it is clear whether normal approximation, tests, and interval reasoning require further visible separation in the canonical graph

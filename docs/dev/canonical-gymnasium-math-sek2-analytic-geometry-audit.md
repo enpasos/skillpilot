@@ -15,9 +15,13 @@ In scope:
 - the canonical upper-secondary analytic-geometry / vector topic surface in
   - `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json`
 - the already reviewed upper-secondary source and mapping evidence from
+  - `BB`
+  - `BE`
+  - `BY`
   - `HB`
   - `HH`
   - `HE`
+  - `SH`
 
 Out of scope:
 
@@ -60,6 +64,15 @@ Observed signal:
   - line/plane representations and positional relations
   - distances, angles, and reflections
   is already stable enough
+
+### Schleswig-Holstein (`SH`)
+
+Observed signal:
+
+- `SH` already contributes reviewed geometry corridors for:
+  - `E` vector basics, line descriptions, and line relations
+  - `Q1` scalar product, planes, vector product, line-plane relations, and distances
+- Schleswig-Holstein confirms that the frozen `AGV` surface already absorbs both an earlier entry corridor and a later mixed geometry corridor without forcing another visible bridge package
 
 ## Current canonical analytic-geometry inventory
 
@@ -178,25 +191,43 @@ Important boundary decision:
 3. late metric and application work is now kept separate from general relation work
 4. no new atomic wave was created; only visible package surfaces were clarified
 
+## First reviewed realignment judgment
+
+The reviewed `BB` / `BE` / `BY` / `HB` / `HH` / `HE` / `SH` pressure test does not force another canonical package split.
+
+Observed result:
+
+1. `HB` now aligns more cleanly because the reviewed `AG5` corridor no longer hangs on the representation package and instead lands on the late metric/application package
+2. `HH` now aligns more cleanly because
+   - `Modul 3` sits on the tightened vector-entry package
+   - the broad `Modul 6` parent no longer hangs on the line/plane representation package
+   - late `Modul 6` residue is distributed over the reviewed relation and metric/application packages
+3. `HE` remains exact enough that no package-level correction is needed
+
+Interpretation:
+
+The revised visible surface survives the first reviewed realignment pass without forcing a new shared canonical package.
+The remaining tension is now mainly source-granularity residue, not an obvious canonical gap.
+
 ## Recommendation
 
-Do not widen more bundesland mappings on Sek-II analytic geometry before the revised visible package surface is pressure-tested against reviewed evidence.
+Do not widen more bundesland mappings on Sek-II analytic geometry unless another reviewed lane exposes a concrete shared gap.
 
 Open questions now concentrated here:
 
-1. Do reviewed `HB` / `HH` / `HE` lanes align cleanly to the new visible split, or do they still force broader parent mappings?
-2. Is `AGV2` sufficient as the metric bridge, or do later reviewed lanes still mix it too strongly with `AGV5` residue?
-3. Are `AGV4` and `AGV5` now stable enough as separate visible continuations, or will more reviewed evidence force another cut?
+1. Is `AGV2` sufficient as the metric bridge, or do later reviewed lanes still mix it too strongly with `AGV5` residue?
+2. Are `AGV4` and `AGV5` now stable enough as separate visible continuations, or will broader multi-state residue force another cut?
+3. Does another reviewed lane require a clearer visible bridge between broad space-geometry overview nodes and the now tighter late packages?
 
 ## Recommended next concrete step
 
-Run the first reviewed realignment pass against the revised package surface on:
+Freeze package churn here unless another reviewed lane exposes a concrete shared gap.
 
-1. `HB`
-2. `HH`
-3. `HE`
+If the next upper-secondary topic is opened, prefer:
 
-Keep `AGV1` stable unless the realignment pass reveals that the tightened entry package still leaks too much later metric or relation material.
+1. `Sek II Lineare Algebra / Matrizen`
+
+Keep `AGV1` stable unless later reviewed residue shows that the tightened entry package still leaks too much later metric or relation material.
 
 ## Exit criteria for this audit
 
@@ -204,5 +235,5 @@ This topic audit is complete when:
 
 1. the canonical subpackage boundaries above are either accepted or revised
 2. the canonical graph has a stable Sek-II analytic-geometry packaging
-3. reviewed `HB`, `HH`, and `HE` evidence can be described as aligned to the revised packaging or intentionally broader because of source granularity
+3. reviewed `BB`, `BE`, `BY`, `HB`, `HH`, `HE`, and `SH` evidence can be described as aligned to the revised packaging or intentionally broader because of source granularity
 4. it is clear whether distances, angles, and reflections require further visible separation from general line/plane relations

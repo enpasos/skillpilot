@@ -125,6 +125,24 @@ The open question is whether that is already enough as a visible analysis surfac
 For `Sek II Analysis`, use these work packages:
 
 1. `AN1 E-phase analysis foundations and derivative entry`
+
+## Residue update: `NI` late-continuation pressure test
+
+The reviewed `NI` upper-secondary lane adds the strongest current pressure test for the open late-continuation question because it contains explicit evidence for both sides of the corridor:
+
+1. differential-equation continuation and solution checking
+2. function families and parameter fitting
+
+Current reviewed `NI` mapping evidence does not force a new visible `AN5` package:
+
+1. differential-equation continuation items already land on a shared canonical differential-equation target
+2. parameter-fitting and function-family items already land on distinct canonical late-analysis targets
+
+Judgment:
+
+1. keep the visible package surface at `AN2-AN4`
+2. treat `AN5-late-continuation` as `accept` for now
+3. reopen only if another reviewed lane shows a shared late-continuation split that cannot be absorbed by the existing atomic targets
    - basic analysis foundations
    - derivative entry
    - first function investigation routines
@@ -163,29 +181,20 @@ Important boundary decision:
 
 1. the broad integral corridor no longer carries ordinary differential equations directly
 2. late continuation stays reachable above `AN4`
-3. `AN5` remains intentionally open, especially around differential equations, late continuation, and parameter-family packaging
+3. no separate visible `AN5` package is currently justified; differential-equation continuation and late parameter work are absorbed by the existing late-analysis atoms
 
 ## Recommendation
 
-Do not widen more bundesland mappings on Sek-II analysis before the revised package surface is pressure-tested against reviewed evidence.
+Freeze Sek-II analysis package churn. Additional reviewed state work should only serve residue control, not reopen the package cut without clear contrary evidence.
 
 Open questions now reduced to:
 
-1. Is `AN5` only a broad continuation bucket, or does it need a stricter visible split between differential equations and parameter families?
-2. Is the shared-core versus LK-depth boundary inside the late continuation corridor already stable enough?
-3. Do reviewed state lanes force a sharper visible separation inside the remaining mixed continuation material?
+1. Does another reviewed lane expose a shared canonical gap beyond the current late-continuation atoms?
+2. Is the shared-core versus LK-depth boundary inside the late continuation corridor still stable under broader reviewed evidence?
 
 ## Recommended next concrete step
 
-Run the first reviewed realignment pass against the revised package surface on:
-
-1. `BB`
-2. `BE`
-3. `HB`
-4. `HH`
-5. `HE`
-
-Keep `AN5` open as an explicit follow-up decision after this pressure test.
+Do not schedule a dedicated next package step for Sek-II analysis. Keep the current surface frozen and only reopen it if a later validator finding or reviewed lane produces a concrete shared mismatch.
 
 ## Exit criteria for this audit
 
@@ -193,5 +202,5 @@ This topic audit is complete when:
 
 1. the canonical subpackage boundaries above are either accepted or revised
 2. the canonical graph has a stable Sek-II analysis packaging
-3. reviewed `BB`, `BE`, `HB`, `HH`, and `HE` evidence can be described as aligned to the revised packaging or intentionally broader because of source granularity
-4. it is clear whether integral continuation and late Q4 parameter work require further canonical restructuring
+3. reviewed `BB`, `BE`, `BY`, `HB`, `HH`, `HE`, `SH`, and `NI` evidence can be described as aligned to the revised packaging or intentionally broader because of source granularity
+4. the late-continuation question stays frozen unless new reviewed residue forces further canonical restructuring
