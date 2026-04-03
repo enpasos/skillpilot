@@ -1,6 +1,6 @@
 # Canonical Gymnasium Mathematics: Sek I Data / Chance Audit
 
-Snapshot: `2026-04-01`
+Snapshot: `2026-04-03`
 
 Purpose:
 
@@ -18,6 +18,7 @@ In scope:
   - `HB`
   - `HH`
   - `SH`
+  - `SN`
 
 Out of scope:
 
@@ -86,6 +87,41 @@ Observed signal:
 
 - `HB` supports a progression from early data routines toward probability models and then toward structured multi-step and conditional settings
 - `HB` strongly suggests that combinatorics / four-field-table work should not be hidden inside a diffuse broad statistics package
+
+### Sachsen (`SN`)
+
+Reviewed lower-secondary source and mapping evidence is now explicit in three later Sek-I lanes:
+
+1. `K8 Lernbereich 2 Zufallsversuche`
+   - Ereignisse und Laplace-Wahrscheinlichkeiten
+   - Baumdiagramme
+   - Simulationen
+   - Abzaehlprobleme
+
+2. `K10 Lernbereich 2 Diskrete Zufallsgroessen`
+   - Wahrscheinlichkeitsverteilungen
+   - Stabdiagramme und Histogramme
+   - Wahrscheinlichkeiten mit `genau/mindestens/hoechstens k`
+   - Pfadregeln und Abzaehlverfahren
+   - Verteilungsfunktion
+   - Erwartungswert, Varianz, Standardabweichung
+   - faire und unfaire Spiele
+
+3. `K9 Lernbereich 4 Auswerten von Daten`
+   - Modalwert, Median, arithmetisches Mittel
+   - Spannweite, Varianz, Standardabweichung
+   - Klassenbildung und Histogramme
+   - typische Fehler und Manipulationen in der Statistik
+
+Observed signal:
+
+- `SN` now also confirms the existing `D2`, `D3`, and `D5` surfaces with an explicit K8 chance-experiment strip
+- `SN` adds a real later Sek-I random-variable strip on top of the already frozen `D1-D5` surface
+- `SN` now also adds a real later descriptive-statistics strip that sits cleanly on the existing `D4` surface
+- the Sachsen K10 strip is still internally mixed between later probability structure, counting bridge, and descriptive-statistics adjacency
+- the Sachsen K8 strip is internally mixed between first Laplace work, tree structures, simulation, and counting
+- the Sachsen K9 strip is internally mixed between descriptive-statistics routine, histogram work, and critical-reading residue
+- together this is strong enough for reviewed corridor mappings, but still not clean enough to force a separate visible canonical `D6` package for discrete random variables or a separate visible critical-statistics package
 
 ## Current canonical data/chance inventory
 
@@ -238,6 +274,22 @@ Do not widen more bundesland mappings on Sek-I data/chance before one canonical 
 ## Recommended next concrete step
 
 Run one canonical design step only on:
+
+## Sachsen K10 random-variable and K9 descriptive-statistics corridors connected (`2026-04-03`)
+
+- `SN K10 Lernbereich 2 Diskrete Zufallsgroessen` now points to the broad visible `Daten und Zufall (Sek I)` surface
+- the split Sachsen source strips there now separate
+  - distributions of discrete random variables,
+  - event probabilities with path rules / counting procedures / distribution function,
+  - expected value / variance / standard deviation / fair games
+- `SN K9 Lernbereich 4 Auswerten von Daten` now also points to the visible `D4` descriptive-statistics surface
+- the split Sachsen source strips there now separate
+  - Lageparameter,
+  - Streuungsmasse und Histogramme,
+  - kritische Beurteilung statistischer Darstellungen
+- the later probability strips intentionally stay on broad existing `D3` and `D4`-adjacent package targets
+- the later descriptive-statistics strips intentionally stay on broad existing `D4` targets instead of forcing a new visible histogram or manipulation package
+- together this confirms reviewed late-Sek-I residue, but still does not justify a new visible canonical random-variable package beyond `D1-D5`
 
 1. `D1 Early data routines and first random experiments`
 2. `D2 Laplace ideas and probability from frequencies`

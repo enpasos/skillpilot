@@ -1,6 +1,6 @@
 # Canonical Gymnasium Mathematics: Sek I Numbers / Terms / Algebra Audit
 
-Snapshot: `2026-04-01`
+Snapshot: `2026-04-03`
 
 Purpose:
 
@@ -18,6 +18,7 @@ In scope:
   - `HB`
   - `HH`
   - `HE`
+  - `SN`
 
 Out of scope:
 
@@ -62,6 +63,23 @@ Observed signal:
   - exponential equations
   attached to the function-side progression
 - this is exactly the kind of reviewed evidence that tests whether a visible `A5` is really needed
+
+### Sachsen (`SN`)
+
+Observed signal:
+
+- `SN` now contributes six explicit reviewed lower-secondary strips:
+  - `K8 Arbeiten mit Termen und Gleichungen`
+  - `K7 Arbeiten mit rationalen Zahlen`
+  - `K6 Arbeiten mit gebrochenen Zahlen`
+  - `K5 Arbeiten mit natuerlichen Zahlen`
+  - `K5 Gemeine Brueche und Dezimalzahlen`
+  - `K10 Vernetzung: Zinsrechnung`
+- together they confirm
+  - the visible `A1` arithmetic / number-foundation package
+  - the visible `A2/A4` boundary between term work and equation work
+  - the still-broad attachment of first percentage notation and the later percentage / simple-interest residue to the existing `A3` bridge package
+- `SN` still does not force a visible `A5`; its reviewed lower-secondary algebra material, now including the lineare-Gleichungssysteme residue inside `K8 Funktionen und lineare Gleichungssysteme` and the later powers / roots strip inside `K9 Funktionen und Potenzen`, fits the current `A1-A4` surface without demanding a new shared late-algebra package
 
 ## Current canonical numbers / terms / algebra inventory
 
@@ -176,7 +194,7 @@ Boundary decisions executed:
 
 ## Residue pressure test executed (`2026-04-01`, `SH`)
 
-The Schleswig-Holstein lower-secondary lane does not force a visible separate `A5`.
+The Schleswig-Holstein and Sachsen lower-secondary lanes do not force a visible separate `A5`.
 
 Judgment:
 
@@ -207,12 +225,21 @@ Do not widen more bundesland mappings on Sek-I algebra until the revised `A1-A4`
 That pressure test has now reached a stable interim judgment:
 
 - no visible `A5` package is currently justified
+- the Sachsen K10 interest, K8 terms-and-equations, and K7/K6/K5 early-number and fraction corridors confirm that the visible `A1`, `A3`, and `A2/A4` split is stable enough for coverage work
 - further lower-secondary work should treat `A5` as a reopen-only-if-forced residue, not as an active design task
 
-## Recommended next concrete step
+## Sachsen K9/K8/K7/K6/K5 lower-secondary algebra corridor set extended with powers, fractions, decimals, and the K8 function/LGS boundary (`2026-04-03`)
 
-1. realign reviewed `HB`, `HH`, and `HE` algebra mappings to the visible `A1-A4` package surface
-2. use the remaining residue and mapping pressure to decide whether `A5` needs to become a separate visible package
+Outcome:
+
+1. `SN` now confirms the visible `A1` arithmetic package, the later number-extension package for powers and roots, the `A2/A4` package boundary, and the choice to keep first linear-system residue inside `A4` on reviewed lower-secondary lanes
+2. the corridor set still does not justify a separate visible `A5` package
+3. the algebra topic should therefore stay in coverage mode rather than reopening package design
+
+## Current next concrete step
+
+1. keep the canonical `A1-A4` package cut frozen
+2. use the next unresolved lower-secondary state lane to pressure-test early-number and fraction coverage before reopening algebra packaging
 
 ## Exit criteria for this audit
 

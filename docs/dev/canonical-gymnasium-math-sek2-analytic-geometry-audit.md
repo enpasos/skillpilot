@@ -21,6 +21,7 @@ In scope:
   - `HB`
   - `HH`
   - `HE`
+  - `SN`
   - `SH`
 
 Out of scope:
@@ -73,6 +74,19 @@ Observed signal:
   - `E` vector basics, line descriptions, and line relations
   - `Q1` scalar product, planes, vector product, line-plane relations, and distances
 - Schleswig-Holstein confirms that the frozen `AGV` surface already absorbs both an earlier entry corridor and a later mixed geometry corridor without forcing another visible bridge package
+
+### Sachsen (`SN`)
+
+Observed signal:
+
+- `SN` now adds a first reviewed upper-secondary geometry corridor directly on the broad upper snapshot
+- the Sachsen Grundkurs split cleanly separates:
+  - point/vector entry and elementary vector operations
+  - line and plane equation forms
+  - positional relations and intersections
+  - scalar/vector-product-based metric foundations
+  - distances and intersection angles
+- Sachsen therefore supports the tightened visible `AGV1-AGV5` surface without forcing another package-level bridge
 
 ## Current canonical analytic-geometry inventory
 
@@ -193,7 +207,7 @@ Important boundary decision:
 
 ## First reviewed realignment judgment
 
-The reviewed `BB` / `BE` / `BY` / `HB` / `HH` / `HE` / `SH` pressure test does not force another canonical package split.
+The reviewed `BB` / `BE` / `BY` / `HB` / `HH` / `HE` / `SH` / `SN` pressure test does not force another canonical package split.
 
 Observed result:
 
@@ -203,6 +217,12 @@ Observed result:
    - the broad `Modul 6` parent no longer hangs on the line/plane representation package
    - late `Modul 6` residue is distributed over the reviewed relation and metric/application packages
 3. `HE` remains exact enough that no package-level correction is needed
+4. `SN` now fits the frozen visible `AGV` surface cleanly enough on a newly opened GK corridor:
+   - vector entry lands on `AGV1`
+   - line/plane forms land on `AGV3`
+   - positional relations land on `AGV4`
+   - scalar-product and orthogonality work land on `AGV2`
+   - distances and angles land on `AGV5`
 
 Interpretation:
 

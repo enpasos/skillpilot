@@ -22,6 +22,7 @@ In scope:
   - `HH`
   - `HE`
   - `NI`
+  - `SN`
 
 Out of scope:
 
@@ -67,6 +68,17 @@ Observed signal:
   - matrix multiplication and inverse matrices
   - fixvectors and long-term behavior
 - Hamburg increases pressure on whether the current visible split between representation, arithmetic, transition modelling, and long-term interpretation is already stable enough
+
+### Sachsen (`SN`)
+
+Observed signal:
+
+- `SN` now adds a first reviewed upper-secondary matrix corridor directly on the broad upper snapshot
+- the Sachsen Grundkurs split cleanly separates:
+  - matrices as a representation for linear systems
+  - matrix multiplication and Gauss-Jordan elimination
+  - geometric and network-style applications with rotations and interdependency structures
+- Sachsen therefore supports the frozen `LM2-LM5` surface without forcing another package-level bridge
 
 ## Current canonical linear-algebra inventory
 
@@ -211,13 +223,17 @@ Important boundary decision:
 
 ## First reviewed realignment judgment
 
-The reviewed `BB` / `BE` / `BY` / `HB` / `HH` / `HE` pressure test does not force another canonical package split.
+The reviewed `BB` / `BE` / `BY` / `HB` / `HH` / `HE` / `SN` pressure test does not force another canonical package split.
 
 Observed result:
 
 1. `HB` now aligns more cleanly because
    - matrix-operation residue no longer hangs on the old broad operation atom
    - transition-model residue lands on the explicit `LM2` surface
+2. `SN` now fits the frozen visible matrix surface cleanly enough on a newly opened GK corridor:
+   - representation work lands on `Matrizen als Darstellungsform verstehen`
+   - arithmetic / Gauss-Jordan work lands on `LM3`
+   - rotation/interdependency work lands on `LM5`
    - fixvector and late continuation residue land on the explicit `LM4` surface
 2. `HH` now aligns more cleanly because
    - transition-modelling residue lands on `LM2`

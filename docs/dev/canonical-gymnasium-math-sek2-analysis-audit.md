@@ -17,9 +17,15 @@ In scope:
 - the already reviewed upper-secondary source and mapping evidence from
   - `BB`
   - `BE`
+  - `BW`
+  - `BY`
   - `HB`
   - `HH`
   - `HE`
+  - `NI`
+  - `NW`
+  - `SN`
+  - `SH`
 
 Out of scope:
 
@@ -56,6 +62,27 @@ Observed signal:
 
 - `HH` already connects reviewed upper-secondary analysis work into the shared E-analysis baseline and the broad integral corridor
 - the Hamburg lane increases pressure on whether the current visible split between E-foundations, model corridors, and the integral corridor is already sufficient
+
+### Nordrhein-Westfalen (`NW`)
+
+Observed signal:
+
+- `NW` now adds a reviewed mixed upper-secondary analysis lane with:
+  - an explicit E-phase derivative and first-curve parent
+  - a broad GK follow-on that mixes optimisation, exponential work, and integral understanding
+  - narrow LK integral strips and a late LK function-family strip
+- Nordrhein-Westfalen confirms that the visible `AN2-AN4` surface can absorb both broader parents and narrower late strips without forcing a new visible `AN5` package.
+
+### Sachsen (`SN`)
+
+Observed signal:
+
+- `SN` now adds a first reviewed upper-secondary analysis corridor on the broad upper snapshot itself
+- the Sachsen Grundkurs split cleanly separates:
+  - derivative entry and derivative-based investigation
+  - model-heavy `e`/`ln`/trigonometric / regression work
+  - integral reconstruction, Hauptsatz, and area interpretation
+- Sachsen therefore supports the frozen visible `AN2-AN4` surface directly and does not create new pressure toward a separate visible `AN5` package
 
 ## Current canonical analysis inventory
 
@@ -202,5 +229,5 @@ This topic audit is complete when:
 
 1. the canonical subpackage boundaries above are either accepted or revised
 2. the canonical graph has a stable Sek-II analysis packaging
-3. reviewed `BB`, `BE`, `BY`, `HB`, `HH`, `HE`, `SH`, and `NI` evidence can be described as aligned to the revised packaging or intentionally broader because of source granularity
+3. reviewed `BB`, `BE`, `BW`, `BY`, `HB`, `HH`, `HE`, `NI`, `NW`, `SN`, and `SH` evidence can be described as aligned to the revised packaging or intentionally broader because of source granularity
 4. the late-continuation question stays frozen unless new reviewed residue forces further canonical restructuring

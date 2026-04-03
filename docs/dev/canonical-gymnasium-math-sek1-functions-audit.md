@@ -1,6 +1,6 @@
 # Canonical Gymnasium Mathematics: Sek I Functions / Mappings Audit
 
-Snapshot: `2026-04-01`
+Snapshot: `2026-04-03`
 
 Purpose:
 
@@ -20,6 +20,7 @@ In scope:
   - `HB`
   - `HH`
   - `HE`
+  - `SN`
 
 Out of scope:
 
@@ -64,6 +65,23 @@ Observed signal:
   - exponential growth
   - exponential equations and logarithms
   - change rates and derivative entry
+
+### Sachsen (`SN`)
+
+Observed signal:
+
+- `SN` now contributes five explicit function-side evidence lanes:
+  - a broad `K10 Lernbereich 1 Wachstumsvorgaenge und periodische Vorgaenge` strip
+  - a late `J10` strip inside `K10 Lernbereich 4 Funktionale Zusammenhaenge`
+  - a later `K9 Funktionen und Potenzen` strip
+  - a middle-stage `K8 Funktionen und lineare Gleichungssysteme` strip
+  - an early `K6 Zuordnungen in der Umwelt` strip
+- the broad Sachsen `K10 Lernbereich 1` strip already fits the visible J10 trigonometric/exponential corridor without forcing a separate shared growth-model or periodic-model package
+- the late Sachsen lane mixes periodic / trigonometric / exponential / logarithmic continuation with sequence, limit, and parametrized-curve residue
+- the later Sachsen `K9` lane confirms the current quadratic boundary and keeps powers / roots on the existing late number-extension side instead of forcing a separate shared power-function package
+- the middle Sachsen lane confirms the current `F3` surface for linear functions and regression while keeping its linear-system residue on the algebra side instead of forcing a new shared mixed package
+- the early Sachsen lane confirms the existing early `F1/F2` surface for mappings, representations, and proportional assignments without forcing a separate package for the attached frequency-interpretation residue
+- together these five Sachsen lanes widen the reviewed evidence across the early, middle, later, and late Sek-I function topic without forcing a new shared regression package, a new mixed function-equation package, a new shared power-function package, a separate shared growth/periodicity package, or a new visible sequence / parametric-curve subpackage
 
 ## Current canonical function inventory
 
@@ -111,7 +129,7 @@ Do not widen more bundesland mappings on Sek-I functions until the revised `F3-F
 
 ## Recommended next concrete step
 
-1. realign reviewed `BB`, `BE`, `HB`, `HH`, and `HE` function mappings to the visible `F3-F5` package surface where that is cleaner than the current mixed targets
+1. realign reviewed `BB`, `BE`, `HB`, `HH`, `HE`, and `SN` function mappings to the visible `F3-F5` package surface where that is cleaner than the current mixed targets
 2. use the remaining residue and mapping pressure to decide whether additional subpackages are still needed inside late J10 continuations or at the quadratic/equation boundary
 
 ## Exit criteria for this audit
@@ -120,7 +138,7 @@ This topic audit is complete when:
 
 1. the canonical subpackage boundaries above are either accepted or revised
 2. the canonical graph has a stable Sek-I function packaging after the algebra cleanup
-3. reviewed `BB`, `BE`, `HB`, `HH`, and `HE` evidence can be described as aligned to the revised packaging or intentionally broader because of source granularity
+3. reviewed `BB`, `BE`, `HB`, `HH`, `HE`, and `SN` evidence can be described as aligned to the revised packaging or intentionally broader because of source granularity
 4. it is clear whether the remaining residue at late J10 depth or around the quadratic/equation boundary requires further canonical restructuring
 
 ## First reviewed mapping realignment connected (`2026-04-01`)
@@ -129,3 +147,15 @@ This topic audit is complete when:
 - `HH lineare Funktionen in Anwendungen` now points to `F3`, which better reflects application-heavy linear function work than the older single linear-function atom
 - `BB`, `BE`, and `HE` keep their more precise atomic or already adequate subcorridor targets
 - the remaining broad `HB` and `HH` mixed lower-secondary function corridors intentionally stay broader because they still span algebra and function packaging at source level
+
+## Sachsen K10, K9, K8, and K6 function-side corridors connected (`2026-04-03`)
+
+- `SN K10 Lernbereich 1 Wachstumsvorgaenge und periodische Vorgaenge` now also points to the visible J10 trigonometric/exponential corridor surface
+- `SN K10 Lernbereich 4 Funktionale Zusammenhaenge` now points to the visible `F5` package surface
+- the split Sachsen source strips on periodic / trigonometric / exponential graphs, logarithmic and exponential-equation work, and the broader sequences / parametrized-curves residue make `SN` the next explicit late-J10 evidence lane after `HH`
+- `SN K9 Lernbereich 1 Funktionen und Potenzen` now also contributes a reviewed later lane: its powers / roots strip stays on the late number-extension package, its power-function strip stays on the existing power-function surface, and its quadratic-function / equation strips confirm the current `F4` boundary without forcing another shared package
+- `SN K8 Lernbereich 3 Funktionen und lineare Gleichungssysteme` now also contributes a reviewed middle-stage lane: its function-concept strip points to the shared early representation surface, its linear-function strip points to the visible `F3` surface, its regression strip intentionally stays broad on `F3`, and its linear-system strip stays on the algebra side
+- `SN K6 Lernbereich 2 Zuordnungen in der Umwelt` now also points to the early shared function surface via mappings / representations and proportional-assignment work
+- the Sachsen frequency-related residue inside `K6` intentionally stays on the broad early function surface instead of forcing a separate shared package at this stage
+- the Sachsen broad `K10 Lernbereich 1` growth-and-periodicity anchor intentionally stays on the visible J10 trigonometric/exponential corridor instead of being over-split into separate exponential and periodic subtargets without reviewed source strips
+- the Sachsen late-J10 strip intentionally stays broad on `F5`, because the current canonical Sek-I function surface does not yet expose a narrower shared package for sequences, limits, and parametrized curves

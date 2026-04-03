@@ -1,11 +1,11 @@
 # Canonical Gymnasium Mathematics: Sek I Geometry / Space Audit
 
-Snapshot: `2026-04-01`
+Snapshot: `2026-04-03`
 
 Purpose:
 
 - review the current canonical geometry inventory before more bundeslandwise widening
-- use already reviewed `HB` and `HH` Sek-I evidence to test whether the current canonical cuts are pedagogically stable
+- use already reviewed `HB`, `HH`, and `SN` Sek-I evidence to test whether the current canonical cuts are pedagogically stable
 - define the next canonical work packages for `Sek I Geometrie / Raum`
 
 ## Scope
@@ -17,6 +17,7 @@ In scope:
 - the already reviewed lower-secondary source and mapping evidence from
   - `HB`
   - `HH`
+  - `SN`
 
 Out of scope:
 
@@ -68,6 +69,41 @@ Observed signal:
 - `HB` confirms that body geometry and early space ideas are real topic lanes
 - `HB` also supports a later progression from triangle/similarity/Pythagoras toward circle/body/trigonometry
 - `HB` is less granular than `HH`, so it is good validation for corridor shape but weaker for atomic wording
+
+### Sachsen (`SN`)
+
+Reviewed lower-secondary geometry evidence now also includes four explicit middle- and late-Sek-I strips:
+
+1. `K8 Lernbereich 4 Aehnlichkeit`
+   - central dilation and construction
+   - similarity properties for angles and corresponding side ratios
+   - main similarity theorem and applications of similar figures
+
+2. `K9 Lernbereich 2 Kreise, Kreiszylinder und Kugeln`
+   - circumference and area of circles and circle parts
+   - surface area, volume, and mass of circular cylinders
+   - surface area, volume, and mass of spheres
+
+3. `K9 Lernbereich 3 Rechtwinklige Dreiecke`
+   - Pythagoras and one proof
+   - altitude theorem, cathetus theorem, and converse statements
+   - sine, cosine, and tangent in the right triangle
+   - applications to lengths, angles, areas, and first spatial situations
+
+4. `K10 Lernbereich 3 Algebraisches Loesen geometrischer Probleme`
+   - broad analytic access to geometric problems
+   - algebraic description of figures and relations
+
+Observed signal:
+
+- `SN` now clearly confirms the existing `G3` transformations/similarity package as a real shared middle-Sek-I lane
+- `SN` strongly confirms the existing `G5` Pythagoras package as a real shared late Sek-I lane
+- `SN` also confirms that the trigonometric bridge is a real `G7` continuation and not only a body-geometry residue
+- `SN` additionally confirms the existing `G6` circle-and-solids package as a real shared late Sek-I lane for circle-part, cylinder, and sphere calculations
+- the broad Sachsen `K10` algebraic-geometry corridor fits the existing later figure/transformation/theorem geometry surface without forcing a separate visible analytic-geometry package in Sek I
+- the explicit Sachsen zentrische-Streckung material still does not force a separate visible canonical package beyond the current `G3` surface
+- the theorem-group material around altitude and cathetus theorems still does not force a separate visible canonical package beyond the current Pythagoras and trigonometric-bridge surfaces
+- the Sachsen mass-applications on circular solids do not yet force a separate visible mass-application package beyond the current `G6` surface
 
 ## Current canonical geometry inventory
 
@@ -167,7 +203,7 @@ For nationwide topic work this should become a visibly separate work package.
 
 Important conclusion:
 
-- `HB` and `HH` do not primarily prove that the canonical graph lacks geometry atoms everywhere
+- `HB`, `HH`, and `SN` do not primarily prove that the canonical graph lacks geometry atoms everywhere
 - they primarily show that some existing atoms and clusters are not grouped in the cleanest nationwide topic structure
 
 That means the next step should be a canonical repackaging review before another large state rollout wave.
@@ -253,11 +289,25 @@ Resulting effect:
 - the biggest remaining work is no longer canonical packaging, but mapping realignment and validation against more states
 - `HB` and `HH` can now be checked against a cleaner canonical geometry spine without another large atomic rewrite first
 
-## Recommended next concrete step
+## Sachsen K9 right-triangle and circle/solids corridors connected on `2026-04-03`
 
-Run one canonical design step only on:
+The new Sachsen lower-secondary geometry strips add reviewed evidence exactly where the current canonical cut was most likely to be challenged next:
 
-1. `G2 Triangles, quadrilaterals, congruence, constructions`
+1. `G5 Pythagoras and geometric justification`
+2. `G6 Later area, circle, and solids ideas`
+3. `G7 Trigonometric bridge`
+
+Outcome:
+
+- `SN` validates the frozen `G5/G6/G7` package surface
+- no new visible theorem-group package is justified yet for altitude theorem / cathetus theorem material
+- no new visible mass-application package is justified yet for circle-cylinder-sphere calculations
+- the next geometry work should therefore stay in nationwide coverage mode rather than reopening canonical package design
+
+## Current next concrete step
+
+1. keep the canonical geometry package cut frozen
+2. use the next unresolved lower-secondary state lane to pressure-test `G2-G7` coverage instead of inventing another geometry package
 2. `G3 Transformations, symmetry, similarity`
 3. `G4 Circle relations and Thales`
 4. `G5 Pythagoras`
