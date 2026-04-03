@@ -1,26 +1,40 @@
 # ST Math Onboarding Note
 
-This note records the first Sachsen-Anhalt source-landscape identifiers for the mathematics-first DE expansion track and their reserved pre-activation state.
+Status: P4 (`first_corridor_reviewed`)
 
 Reserved source landscapes on `2026-03-28`:
-
-- lower-secondary Gymnasium mathematics (`classes 5-10`):
+- lower-secondary Gymnasium mathematics:
   - `sourceLandscapeId`: `251bcdfc-19eb-4543-8ff7-5fb9fef6b667`
-  - mapping fixture:
-    `curricula/DE/Gymnasium/mapping/DE-ST/lower-secondary/st_math_lower_secondary_to_canonical_math.json`
-- upper-secondary Gymnasium mathematics (`classes 11-12`):
+  - snapshot key: `DE_SAN_S_GYM_1_MATHEMATIK`
+- upper-secondary Gymnasium mathematics:
   - `sourceLandscapeId`: `000359cf-2dfb-4216-bc71-743f76917a35`
-  - mapping fixture:
-    `curricula/DE/Gymnasium/mapping/DE-ST/upper-secondary/st_math_upper_secondary_to_canonical_math.json`
+  - snapshot key: `DE_SAN_S_GYM_2_MATHEMATIK`
 
-Activation state:
+Archived official source inputs:
+- `curricula/DE/Gymnasium/input/ST/Mathematik_FLP_Gym_01_07_2019.pdf`
+- `curricula/DE/Gymnasium/input/ST/GSB_Gymnasium_010822_swd.pdf`
 
-- repository-backed lower-secondary and upper-secondary mapping fixtures now exist
-- shared provenance registries are intentionally still inactive for both lanes
-- no archived Sachsen-Anhalt mathematics source bundle or source-json snapshot is active yet
+Current source snapshot files:
+- `curricula/DE/Gymnasium/input/ST/lower-secondary/source-json/DE_SAN_S_GYM_1_MATHEMATIK.de.json.snapshot`
+- `curricula/DE/Gymnasium/input/ST/upper-secondary/source-json/DE_SAN_S_GYM_2_MATHEMATIK.de.json.snapshot`
 
-Operational rule from here:
+Current mapping files:
+- `curricula/DE/Gymnasium/mapping/DE-ST/lower-secondary/st_math_lower_secondary_to_canonical_math.json`
+- `curricula/DE/Gymnasium/mapping/DE-ST/upper-secondary/st_math_upper_secondary_to_canonical_math.json`
 
-- keep these reserved `sourceLandscapeId` values stable while the first Sachsen-Anhalt mathematics source bundle is archived under `curricula/DE/Gymnasium/input/ST/`
-- activate the shared provenance registries only after real archived source-landscape JSON snapshots with stable source goal IDs exist
-- prefer lower-secondary source import first, then the upper-secondary lane
+Phase notes:
+- `P1`: archived the official Sachsen-Anhalt mathematics source PDFs.
+- `P2`: derived the first lower-secondary and upper-secondary source snapshots with stable source goal IDs.
+- `P3`: activated both Sachsen-Anhalt source landscapes in shared provenance registries and mapped the first structural anchors onto the shared canonical math spine.
+- `P4`: opened the first reviewed Sek-II corridors on the Sachsen-Anhalt upper-secondary lane through explicit `GA/EA` analysis, stochastics, and analytic-geometry splits, the first reviewed lower-secondary foundations corridor on `JG 5/6`, and the first reviewed lower-secondary functions corridor on the `JG 5/6` correspondence / proportionality strip plus first reviewed lower-secondary data and geometry corridors on the `JG 5/6` data-display / measures-of-data and geometry-basics / area-volume strips.
+
+Current anchor inventory:
+- lower-secondary: `41` staged goals / `41` closures
+- upper-secondary: `31` staged goals / `31` closures
+- shared provenance is now active for both `DE_SAN` source landscapes
+- lower-secondary: `5` structural spine mappings (`root`, `5/6`, `7/8`, `9`, `10`)
+- upper-secondary: `27` mappings (`root`, structural `Analysis` / `AGV` / `Stochastik` anchors, plus the first reviewed `GA/EA` analysis, stochastics, and analytic-geometry corridors)
+- lower-secondary: `17` mappings (`root`, year-band anchors, plus the first reviewed `JG 5/6` foundations corridor on the early algebra spine, the first reviewed `JG 5/6` functions corridor on the early function / proportionality surface, the first reviewed `JG 5/6` data corridor on the existing descriptive-statistics surface, and the first reviewed `JG 5/6` geometry corridor on the early geometry / space surface)`
+
+Next suggested step:
+- open the next reviewed Sachsen-Anhalt lower-secondary geometry corridor, most cleanly on the `JG 5/6` angle, triangle, and quadrilateral strips

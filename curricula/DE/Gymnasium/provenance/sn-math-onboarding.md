@@ -50,6 +50,15 @@ Current anchor inventory:
   - `K10 Lernbereich 5 Vernetzung: Zinsrechnung`
   - `K10 Lernbereich 3 Algebraisches Loesen geometrischer Probleme`
   - `K10 Lernbereich 1 Wachstumsvorgaenge und periodische Vorgaenge`
+  - `K5 Lernbereich 3 Lagebeziehungen geometrischer Objekte`
+  - `K5 Lernbereich 4 Rechtecke und Quader`
+  - `K6 Lernbereich 4 Prismen`
+  - `K6 Lernbereich 3 Dreiecke und Vierecke`
+  - `K7 Lernbereich 1 Geometrie in der Ebene`
+  - `K7 Lernbereich 3 Darstellen und Berechnen von Prismen und Pyramiden`
+  - `K7 Lernbereich 4 Vernetzung: Darstellen von Daten`
+  - `K6 Lernbereich 5 Vernetzung: Anteile`
+  - `K5 Lernbereich 5 Vernetzung: Mathematik im Alltag`
 
 Next suggested step:
-- open the next reviewed Sachsen lower-secondary corridor on the existing snapshot, most plausibly an early geometry / space lane in Klassenstufe 5 oder 6
+- switch from Sachsen lower-secondary residue work to the next still-open state lane, most plausibly `Sachsen-Anhalt (ST)` onboarding

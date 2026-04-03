@@ -18,6 +18,7 @@ In scope:
   - `HB`
   - `HH`
   - `SN`
+- `ST`
 
 Out of scope:
 
@@ -72,38 +73,81 @@ Observed signal:
 
 ### Sachsen (`SN`)
 
-Reviewed lower-secondary geometry evidence now also includes four explicit middle- and late-Sek-I strips:
+Reviewed lower-secondary geometry evidence now also includes ten explicit early-, middle-, and late-Sek-I strips:
 
-1. `K8 Lernbereich 4 Aehnlichkeit`
+1. `K5 Lernbereich 3 Lagebeziehungen geometrischer Objekte`
+   - geometric basic concepts and positional relations
+   - drawings and first justifications in the plane
+
+2. `K5 Lernbereich 4 Rechtecke und Quader`
+   - rectangles and cuboids
+   - perimeter, area, surface area, and volume of simple bodies
+
+3. `K6 Lernbereich 4 Prismen`
+   - prism properties and representations
+   - surface areas and volumes of prisms
+
+4. `K6 Lernbereich 3 Dreiecke und Vierecke`
+   - triangles and quadrilaterals
+   - congruence, constructions, interior-angle theorems, and area ideas
+
+5. `K7 Lernbereich 1 Geometrie in der Ebene`
+   - circle and angle geometry
+   - theorems, constructions, and first formal justification
+
+6. `K7 Lernbereich 3 Darstellen und Berechnen von Prismen und Pyramiden`
+   - orthographic or oblique representations, nets, and first pyramid work
+   - surface-area and volume calculations
+
+7. `K8 Lernbereich 4 Aehnlichkeit`
    - central dilation and construction
    - similarity properties for angles and corresponding side ratios
    - main similarity theorem and applications of similar figures
 
-2. `K9 Lernbereich 2 Kreise, Kreiszylinder und Kugeln`
+8. `K9 Lernbereich 2 Kreise, Kreiszylinder und Kugeln`
    - circumference and area of circles and circle parts
    - surface area, volume, and mass of circular cylinders
    - surface area, volume, and mass of spheres
 
-3. `K9 Lernbereich 3 Rechtwinklige Dreiecke`
+9. `K9 Lernbereich 3 Rechtwinklige Dreiecke`
    - Pythagoras and one proof
    - altitude theorem, cathetus theorem, and converse statements
    - sine, cosine, and tangent in the right triangle
    - applications to lengths, angles, areas, and first spatial situations
 
-4. `K10 Lernbereich 3 Algebraisches Loesen geometrischer Probleme`
+10. `K10 Lernbereich 3 Algebraisches Loesen geometrischer Probleme`
    - broad analytic access to geometric problems
    - algebraic description of figures and relations
 
 Observed signal:
 
+- `SN` now also confirms the existing early-geometry / space surface through a reviewed K5 lane on basic geometric relations
+- `SN` now also confirms the same early-geometry / space surface through a reviewed K5 lane on rectangles, cuboids, and first area/volume ideas
+- `SN` now also confirms the same early-geometry / space surface through a reviewed K6 prism lane with first explicit prism representations plus surface/volume work
+- `SN` now also confirms the existing `G2` quadrilateral/triangle/congruence package through a reviewed K6 lane with congruence, constructions, interior-angle theorems, and area ideas
+- `SN` now also confirms the broader later figure/transformation/theorem geometry surface through a reviewed K7 plane-geometry lane with circle and angle geometry, theorems, constructions, and first formal justification
+- `SN` now also confirms the existing `G6` later solids surface through a reviewed K7 prism/pyramid lane with nets, Schraegbilder, pyramid work, and first explicit surface/volume calculations
 - `SN` now clearly confirms the existing `G3` transformations/similarity package as a real shared middle-Sek-I lane
 - `SN` strongly confirms the existing `G5` Pythagoras package as a real shared late Sek-I lane
 - `SN` also confirms that the trigonometric bridge is a real `G7` continuation and not only a body-geometry residue
 - `SN` additionally confirms the existing `G6` circle-and-solids package as a real shared late Sek-I lane for circle-part, cylinder, and sphere calculations
 - the broad Sachsen `K10` algebraic-geometry corridor fits the existing later figure/transformation/theorem geometry surface without forcing a separate visible analytic-geometry package in Sek I
+- the Sachsen K5 rectangles/cuboids lane still does not force a separate visible early area-volume package beyond the current early geometry / space surface
+- the Sachsen K6 prism lane likewise does not force a separate visible early prism package beyond the current early geometry / space surface
+- the Sachsen K7 plane-geometry lane still does not force a separate visible circle-angle/theorem package beyond the current broad later geometry surface
+- the Sachsen K7 prism/pyramid lane still does not force a separate visible later pyramid package beyond the current `G6` solids surface
 - the explicit Sachsen zentrische-Streckung material still does not force a separate visible canonical package beyond the current `G3` surface
 - the theorem-group material around altitude and cathetus theorems still does not force a separate visible canonical package beyond the current Pythagoras and trigonometric-bridge surfaces
 - the Sachsen mass-applications on circular solids do not yet force a separate visible mass-application package beyond the current `G6` surface
+
+### Sachsen-Anhalt (`ST`)
+
+Observed signal:
+
+- `ST` now contributes a first reviewed early lower-secondary geometry lane through `JG 5/6`
+- the lane currently covers broad geometry basics plus early perimeter / area / volume work
+- both strips fit the existing early geometry / space surface
+- this confirms that early Sachsen-Anhalt geometry does not currently force a separate visible early area-volume package
 
 ## Current canonical geometry inventory
 
@@ -327,3 +371,9 @@ This topic audit is complete when:
 3. `HB` and `HH` mappings can be described as
    - aligned to the revised packaging
    - or intentionally broader because of source granularity
+
+## Sachsen-Anhalt JG 5/6 geometry corridor connected (`2026-04-03`)
+
+- the ST `JG 5/6` strips `Geometrische Grundbegriffe und Abbildungen` and `Umfang, Flaecheninhalt und Volumen` now both point to the existing early geometry / space surface
+- the reviewed ST lane therefore confirms the broad early `G1` packaging without reopening the current Sek-I geometry cut
+

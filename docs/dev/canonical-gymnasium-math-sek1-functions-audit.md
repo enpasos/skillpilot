@@ -21,6 +21,7 @@ In scope:
   - `HH`
   - `HE`
   - `SN`
+- `ST`
 
 Out of scope:
 
@@ -82,6 +83,16 @@ Observed signal:
 - the middle Sachsen lane confirms the current `F3` surface for linear functions and regression while keeping its linear-system residue on the algebra side instead of forcing a new shared mixed package
 - the early Sachsen lane confirms the existing early `F1/F2` surface for mappings, representations, and proportional assignments without forcing a separate package for the attached frequency-interpretation residue
 - together these five Sachsen lanes widen the reviewed evidence across the early, middle, later, and late Sek-I function topic without forcing a new shared regression package, a new mixed function-equation package, a new shared power-function package, a separate shared growth/periodicity package, or a new visible sequence / parametric-curve subpackage
+
+### Sachsen-Anhalt (`ST`)
+
+Observed signal:
+
+- `ST` now contributes a first reviewed early lower-secondary function lane through `JG 5/6`
+- the lane splits the broad Sachsen-Anhalt source anchor into an early correspondence strip and a broad direct/inverse-proportionality strip
+- the correspondence strip fits the existing early `F1/F2` surface
+- the direct/inverse mix stays acceptable on the existing broad proportional bridge without forcing a separate visible inverse-proportional package
+- together this keeps the canonical early function surface stable and shifts the remaining pressure from packaging to coverage
 
 ## Current canonical function inventory
 
@@ -159,3 +170,11 @@ This topic audit is complete when:
 - the Sachsen frequency-related residue inside `K6` intentionally stays on the broad early function surface instead of forcing a separate shared package at this stage
 - the Sachsen broad `K10 Lernbereich 1` growth-and-periodicity anchor intentionally stays on the visible J10 trigonometric/exponential corridor instead of being over-split into separate exponential and periodic subtargets without reviewed source strips
 - the Sachsen late-J10 strip intentionally stays broad on `F5`, because the current canonical Sek-I function surface does not yet expose a narrower shared package for sequences, limits, and parametrized curves
+
+## Sachsen-Anhalt JG 5/6 correspondence / proportionality corridor connected (`2026-04-03`)
+
+- the broad ST `JG 5/6` source anchor `Zuordnungen, direkte und indirekte Proportionalitaet` now sits on the visible early function surface via an explicit reviewed corridor
+- its `Zuordnungen` strip points to the early mapping / representation surface
+- its broad proportionality strip intentionally stays on the existing proportional bridge instead of forcing a separate visible inverse-proportional package just from one mixed source lane
+- `ST` therefore confirms the early `F1/F2` surface without reopening the current Sek-I function packaging
+

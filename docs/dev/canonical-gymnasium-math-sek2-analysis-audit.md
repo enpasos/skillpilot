@@ -22,10 +22,11 @@ In scope:
   - `HB`
   - `HH`
   - `HE`
-  - `NI`
-  - `NW`
-  - `SN`
-  - `SH`
+- `NI`
+- `NW`
+- `ST`
+- `SN`
+- `SH`
 
 Out of scope:
 
@@ -72,6 +73,18 @@ Observed signal:
   - a broad GK follow-on that mixes optimisation, exponential work, and integral understanding
   - narrow LK integral strips and a late LK function-family strip
 - Nordrhein-Westfalen confirms that the visible `AN2-AN4` surface can absorb both broader parents and narrower late strips without forcing a new visible `AN5` package.
+
+### Sachsen-Anhalt (`ST`)
+
+Observed signal:
+
+- `ST` now adds the first reviewed upper-secondary analysis corridor on top of the newly mapped `GA` / `EA` snapshot lane
+- the Sachsen-Anhalt source separates both demand levels cleanly into:
+  - foundations of infinitesimal calculus
+  - differential calculus
+  - integral calculus
+- `GA` confirms the frozen shared surface with a broad but clean progression from derivative entry to integral interpretation
+- `EA` adds expected late depth through linear approximation, Newtonverfahren, Funktionsscharen, `ln` as antiderivative, and Rotationskoerper, but still fits into the existing visible `AN2-AN4` surface via reviewed `partial` bridges rather than forcing a visible `AN5` package
 
 ### Sachsen (`SN`)
 

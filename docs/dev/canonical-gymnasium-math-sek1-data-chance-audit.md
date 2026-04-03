@@ -19,6 +19,7 @@ In scope:
   - `HH`
   - `SH`
   - `SN`
+- `ST`
 
 Out of scope:
 
@@ -118,10 +119,21 @@ Observed signal:
 - `SN` now also confirms the existing `D2`, `D3`, and `D5` surfaces with an explicit K8 chance-experiment strip
 - `SN` adds a real later Sek-I random-variable strip on top of the already frozen `D1-D5` surface
 - `SN` now also adds a real later descriptive-statistics strip that sits cleanly on the existing `D4` surface
+- `SN` now also adds an earlier K7 data-display strip that still fits the same broad `D4` surface
 - the Sachsen K10 strip is still internally mixed between later probability structure, counting bridge, and descriptive-statistics adjacency
 - the Sachsen K8 strip is internally mixed between first Laplace work, tree structures, simulation, and counting
 - the Sachsen K9 strip is internally mixed between descriptive-statistics routine, histogram work, and critical-reading residue
+- the Sachsen K7 strip is internally mixed between diagram forms and first critical reading of statistical data
 - together this is strong enough for reviewed corridor mappings, but still not clean enough to force a separate visible canonical `D6` package for discrete random variables or a separate visible critical-statistics package
+
+### Sachsen-Anhalt (`ST`)
+
+Observed signal:
+
+- `ST` now contributes a first reviewed early lower-secondary data lane through `JG 5/6`
+- the lane is still broad and splits only into data-display work and measures-of-data work
+- both strips fit the existing descriptive-statistics surface
+- this confirms that early Sachsen-Anhalt data work does not currently force a separate visible early diagram-reading or measures package
 
 ## Current canonical data/chance inventory
 
@@ -283,10 +295,12 @@ Run one canonical design step only on:
   - event probabilities with path rules / counting procedures / distribution function,
   - expected value / variance / standard deviation / fair games
 - `SN K9 Lernbereich 4 Auswerten von Daten` now also points to the visible `D4` descriptive-statistics surface
+- `SN K7 Lernbereich 4 Vernetzung: Darstellen von Daten` now also points to the visible `D4` descriptive-statistics surface
 - the split Sachsen source strips there now separate
   - Lageparameter,
   - Streuungsmasse und Histogramme,
   - kritische Beurteilung statistischer Darstellungen
+- the earlier Sachsen K7 strip intentionally stays broad on the same `D4` surface instead of forcing a separate visible diagram-reading package
 - the later probability strips intentionally stay on broad existing `D3` and `D4`-adjacent package targets
 - the later descriptive-statistics strips intentionally stay on broad existing `D4` targets instead of forcing a new visible histogram or manipulation package
 - together this confirms reviewed late-Sek-I residue, but still does not justify a new visible canonical random-variable package beyond `D1-D5`
@@ -387,3 +401,9 @@ Result:
 
 - `Sek I Daten / Zufall` now has a stable visible `D1-D5` package surface
 - the topic should now be treated as materially packaged, with later work focused on mapping quality rather than package invention
+
+## Sachsen-Anhalt JG 5/6 data corridor connected (`2026-04-03`)
+
+- the ST `JG 5/6` strips `Erfassen, Darstellen und Auswerten von Daten` and `Kenngroessen von Daten` now both point to the existing descriptive-statistics surface
+- the reviewed ST lane therefore confirms the broad early `D4` packaging without reopening the current Sek-I data/chance cut
+

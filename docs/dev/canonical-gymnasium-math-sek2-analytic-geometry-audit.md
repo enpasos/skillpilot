@@ -20,9 +20,10 @@ In scope:
   - `BY`
   - `HB`
   - `HH`
-  - `HE`
-  - `SN`
-  - `SH`
+- `HE`
+- `ST`
+- `SN`
+- `SH`
 
 Out of scope:
 
@@ -87,6 +88,16 @@ Observed signal:
   - scalar/vector-product-based metric foundations
   - distances and intersection angles
 - Sachsen therefore supports the tightened visible `AGV1-AGV5` surface without forcing another package-level bridge
+
+### Sachsen-Anhalt (`ST`)
+
+Observed signal:
+
+- `ST` now adds a first reviewed upper-secondary geometry corridor on top of the newly mapped `GA` / `EA` snapshot lane
+- the Sachsen-Anhalt source separates both demand levels into:
+  - `Geraden und Ebenen`
+  - `Kreise`
+- these reviewed corridors are still broad and do not expose the tighter `AGV3-AGV5` split directly, but they fit the frozen visible space-geometry surface without forcing another bridge package
 
 ## Current canonical analytic-geometry inventory
 
@@ -207,7 +218,7 @@ Important boundary decision:
 
 ## First reviewed realignment judgment
 
-The reviewed `BB` / `BE` / `BY` / `HB` / `HH` / `HE` / `SH` / `SN` pressure test does not force another canonical package split.
+The reviewed `BB` / `BE` / `BY` / `HB` / `HH` / `HE` / `SH` / `SN` / `ST` pressure test does not force another canonical package split.
 
 Observed result:
 
@@ -223,6 +234,9 @@ Observed result:
    - positional relations land on `AGV4`
    - scalar-product and orthogonality work land on `AGV2`
    - distances and angles land on `AGV5`
+5. `ST` now fits the frozen visible `AGV` surface cleanly enough on newly opened `GA/EA` overview corridors:
+   - broad `Geraden und Ebenen` and `Kreise` parents can stay on the shared upper-secondary space corridor
+   - the source still does not force a sharper package-level bridge between analytic circles and the existing `AGV3-AGV5` surface
 
 Interpretation:
 

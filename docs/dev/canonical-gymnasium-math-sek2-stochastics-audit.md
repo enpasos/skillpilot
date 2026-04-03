@@ -19,9 +19,10 @@ In scope:
   - `BY`
   - `HB`
   - `HH`
-  - `HE`
-  - `SH`
-  - `SN`
+- `HE`
+- `SH`
+- `ST`
+- `SN`
 
 Out of scope:
 
@@ -64,6 +65,16 @@ Observed signal:
   - sample-based parameter estimation
   - one-sided and two-sided significance tests
 - Sachsen therefore supports the frozen visible `ST2-ST5` surface without forcing another package-level bridge
+
+### Sachsen-Anhalt (`ST`)
+
+Observed signal:
+
+- `ST` now adds a first reviewed upper-secondary stochastics corridor on top of the newly mapped `GA` / `EA` snapshot lane
+- the Sachsen-Anhalt source separates the corridor into:
+  - `GA` conditional probability and binomial distribution
+  - `EA` conditional probability, a mixed binomial/normal-distribution strip, and a later inferential-statistics strip with confidence intervals
+- `ST` therefore pressure-tests both the shared `ST2` / `ST5` surface and the narrow `ST3` boundary without forcing another visible bridge package
 
 ## Current canonical stochastics inventory
 
@@ -194,14 +205,14 @@ Important boundary decision:
 
 ## First reviewed realignment judgment
 
-The reviewed `BB` / `BY` / `HB` / `HH` / `HE` / `SH` / `SN` pressure test does not force another canonical package split.
+The reviewed `BB` / `BY` / `HB` / `HH` / `HE` / `SH` / `SN` / `ST` pressure test does not force another canonical package split.
 
 Observed result:
 
 1. `HB` now aligns more cleanly with the revised visible surface:
    - foundations/distribution breadth sit under the foundational probability/distribution corridor
    - the later binomial corridor now lands on the explicit `ST2` package
-2. `BB`, `BY`, `SH`, and `SN` now fit the frozen `ST2-ST5` surface cleanly enough that no additional package-level bridge is needed
+2. `BB`, `BY`, `SH`, `SN`, and `ST` now fit the frozen `ST2-ST5` surface cleanly enough that no additional package-level bridge is needed
 3. `HE` remains exact enough that no package-level correction is needed
 4. the only visible hybrid residue is `HH Modul 5.2 Hypothesentests und Normalverteilung`
 
