@@ -1,6 +1,6 @@
 # Canonical Gymnasium Mathematics Bundeslaender Status
 
-Snapshot: `2026-04-04T14:47:00Z`
+Snapshot: `2026-04-04T16:29:00Z`
 
 This file is generated from:
 
@@ -73,7 +73,7 @@ This file is generated from:
 
 | State | Phase | Score | Applicability | Mappings | Source stage | Priority |
 | --- | --- | ---: | --- | ---: | --- | --- |
-| `DE-BY` Bayern | `P5` Broad state coverage | `85%` | `yes` | `345` | `archived_inputs` | `active` |
+| `DE-BY` Bayern | `P5` Broad state coverage | `85%` | `yes` | `351` | `archived_inputs` | `active` |
 | `DE-HE` Hessen | `P5` Broad state coverage | `85%` | `yes` | `487` | `snapshots_active` | `active` |
 | `DE-NW` Nordrhein-Westfalen | `P5` Broad state coverage | `85%` | `yes` | `132` | `broad_reviewed_coverage` | `active` |
 | `DE-BB` Brandenburg | `P5` Broad state coverage | `85%` | `yes` | `145` | `broad_reviewed_coverage` | `backlog` |
@@ -92,24 +92,24 @@ This file is generated from:
 
 ## Immediate queue
 
-- `DE-BY` (`P5`, `active`): Keep Bavaria as the second broad comparison lane, but widen BY further only where another equally explicit retained upper-secondary source strip appears instead of reopening broad parent cleanup. The current M12-4 parent lane is now structurally closed.
+- `DE-BY` (`P5`, `active`): Keep Bavaria as the second broad comparison lane, but widen BY further only where another equally explicit retained upper-secondary source strip appears instead of reopening broad parent cleanup. The current M12-2, M12-3, M12-4, and M13-2 retained parent lanes are now structurally closed, with the explicit M12-3 error-probability and rejection-region leaves plus the M13-2 discrete-vs-continuous and bell-shaped empirical-normality leaves atomically resolved; the remaining Statistik-module leaves should now only be tightened if a future canonical regression/correlation strip or a non-binomial test strip is introduced.
 - `DE-HE` (`P5`, `active`): Keep Hessen as the precision baseline while broader mixed lanes in other states are being pressure-tested.
-- `DE-NW` (`P5`, `active`): Keep Nordrhein-Westfalen as a stable broad comparison lane. Further NRW widening should only happen if another equally explicit retained corridor is imported, not through renewed broad snapshot-parent cleanup.
+- `DE-NW` (`P5`, `active`): Keep Nordrhein-Westfalen as a stable broad comparison lane. Further NRW tightening should focus only on equally explicit retained stochastic or space-geometry leaves, not on renewed broad snapshot-parent cleanup.
 
 ## Next steps
 
-- `DE-BY`: Keep Bavaria as the second broad comparison lane, but widen BY further only where another equally explicit retained upper-secondary source strip appears instead of reopening broad parent cleanup. The current M12-4 parent lane is now structurally closed.
+- `DE-BY`: Keep Bavaria as the second broad comparison lane, but widen BY further only where another equally explicit retained upper-secondary source strip appears instead of reopening broad parent cleanup. The current M12-2, M12-3, M12-4, and M13-2 retained parent lanes are now structurally closed, with the explicit M12-3 error-probability and rejection-region leaves plus the M13-2 discrete-vs-continuous and bell-shaped empirical-normality leaves atomically resolved; the remaining Statistik-module leaves should now only be tightened if a future canonical regression/correlation strip or a non-binomial test strip is introduced.
 - `DE-HE`: Keep Hessen as the precision baseline while broader mixed lanes in other states are being pressure-tested.
-- `DE-NW`: Keep Nordrhein-Westfalen as a stable broad comparison lane. Further NRW widening should only happen if another equally explicit retained corridor is imported, not through renewed broad snapshot-parent cleanup.
+- `DE-NW`: Keep Nordrhein-Westfalen as a stable broad comparison lane. Further NRW tightening should focus only on equally explicit retained stochastic or space-geometry leaves, not on renewed broad snapshot-parent cleanup.
 - `DE-BB`: Keep Brandenburg stable as a broad reviewed comparison lane and move the next implementation step to the next still-open state lane.
-- `DE-BE`: Keep Berlin stable as a broad reviewed comparison lane and move the next implementation step to the next still-open state lane.
-- `DE-BW`: Keep Baden-Wuerttemberg stable as a broad reviewed comparison lane and move the next implementation step to the next still-open state lane.
+- `DE-BE`: Keep Berlin stable as a broad reviewed comparison lane and tighten it further only where equally explicit retained Q4 stochastics / inference leaves warrant another atomic pass; the broad normal-approximation intuition leaf should remain a later-distribution bridge until a source strip with a cleaner pure approximation claim appears.
+- `DE-BW`: Keep Baden-Wuerttemberg stable as a broad reviewed comparison lane. The retained BF/LF plane-form leaves, the BF point-reflection leaf, the BF point-plane-distance leaf, the LF Hesse-normal-form / distance leaf, both BF/LF angle / intersection-angle leaves, and the LF Fehler-1/2-Art leaf are now exact-resolved; the mixed LF reflection leaf now also sits on the dedicated reflection surface instead of a broad modeling surface, the mixed histogram/rejection-region leaf now sits on the broader hypothesis-test surface instead of the too narrow critical-values atom, and the null-hypothesis-only leaf now also sits on that broader hypothesis-test surface instead of the too narrow null-and-alternative atom. Tighten BW further only where another equally explicit upper-secondary geometry or stochastics leaf warrants an atomic pass.
 - `DE-HB`: Use Bremen only as pressure test for shared function packaging unless the source lane is later split more finely.
 - `DE-HH`: Keep Hamburg stable as a broad reviewed comparison lane and move the next implementation step to the next still-open state lane.
 - `DE-MV`: Keep Mecklenburg-Vorpommern stable as a broad reviewed comparison lane and move the next implementation step to deriving the first Thueringen source snapshots from the now archived input bundle.
 - `DE-NI`: Keep Niedersachsen stable as a broad reviewed comparison lane and move the next implementation step to the next still-open lane or to a new intentionally imported retained slice.
 - `DE-RP`: Keep Rheinland-Pfalz stable as a broad reviewed comparison lane and move the next implementation step to the next still-open state lane.
-- `DE-SH`: Keep Schleswig-Holstein stable as a broad reviewed comparison lane and move the next implementation step to the next still-open state lane.
+- `DE-SH`: Keep Schleswig-Holstein stable as a broad reviewed comparison lane and tighten it further only if another equally explicit retained upper-secondary stochastics or geometry leaf warrants an atomic pass.
 - `DE-SL`: Keep Saarland stable as a broad reviewed comparison lane and move the next implementation step to the next still-open state lane.
 - `DE-SN`: Keep Sachsen stable as a broad reviewed comparison lane and move the next implementation step to the next still-open state lane.
 - `DE-ST`: Keep Sachsen-Anhalt stable as a broad reviewed comparison lane and move the next implementation step to the next still-open state lane.
