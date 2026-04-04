@@ -25,6 +25,7 @@ In scope:
 - `NI`
 - `NW`
 - `RP`
+- `SL`
 - `ST`
 - `SN`
 - `SH`
@@ -87,6 +88,21 @@ Observed signal:
   - a `Grundfach` exponential strip and an `Leistungsfach` continuation strip
 - `Grundfach` confirms the frozen visible `AN2-AN4` surface with a clean split from derivative entry to integral understanding plus an explicit exponential-model lane
 - `Leistungsfach` adds the expected late continuation pressure through the bundled continuation strip, but this still fits the existing visible late-analysis surface through a reviewed `partial` bridge onto `Vertiefung der Analysis` rather than forcing a visible `AN5` package
+
+### Saarland (`SL`)
+
+Observed signal:
+
+- `SL` now adds a first reviewed upper-secondary analysis corridor on top of the newly activated `Einführungsphase` / `G-Kurs` / `Leistungskurs` snapshot lane
+- the Saarland source separates the reviewed analysis lane into:
+  - `Einführungsphase` entry anchors for continuity / polynomial investigation, derivative rules, and exponential / differentiability follow-on
+  - `G-Kurs` strips for
+    - `Grundlegende Funktionen und Ableitungen`
+    - `Integralrechnung`
+    - `Die e-Funktion und die ln-Funktion`
+    - `Modellieren`
+  - matching `Leistungskurs` strips with the same visible surface but expected greater depth
+- Saarland therefore confirms that the frozen visible `AN2-AN4` surface can absorb both broad phase parents and explicit reviewed derivative / integral / `e`-`ln` / modelling strips without forcing a visible `AN5` package
 
 ### Sachsen-Anhalt (`ST`)
 

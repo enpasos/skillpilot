@@ -1,6 +1,6 @@
 # Canonical Gymnasium Mathematics: Sek I Numbers / Terms / Algebra Audit
 
-Snapshot: `2026-04-03`
+Snapshot: `2026-04-04`
 
 Purpose:
 
@@ -19,6 +19,7 @@ In scope:
 - `HH`
 - `HE`
 - `RP`
+- `SL`
 - `ST`
 - `SN`
 
@@ -106,6 +107,17 @@ Observed signal:
   - `Rationale Zahlen`
   - `Prozent- und Zinsrechnung`
 - this makes `RP` a useful pressure test for whether the visible `A1/A3` surface can absorb a later number-extension strip next to a broad percent/simple-interest bridge without forcing a new late-algebra package
+
+### Saarland (`SL`)
+
+Observed signal:
+
+- `SL` now contributes a first reviewed lower-secondary algebra corridor on the explicit `Klassenstufe 7` lane
+- the Saarland source separates
+  - `Rationale Zahlen`
+  - `Terme, Gleichungen und Ungleichungen`
+  - `Prozentrechnung`
+- this makes `SL` a useful pressure test for whether the later number-extension surface, the broad percentage bridge, and a still-mixed terms/equations strip can coexist without forcing either a sharper visible `A2/A4` split or a new `A5`
 
 ## Current canonical numbers / terms / algebra inventory
 

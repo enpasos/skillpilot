@@ -288,3 +288,14 @@ This topic audit is complete when:
 2. the canonical graph has a stable Sek-II analytic-geometry packaging
 3. reviewed `BB`, `BE`, `BY`, `HB`, `HH`, `HE`, and `SH` evidence can be described as aligned to the revised packaging or intentionally broader because of source granularity
 4. it is clear whether distances, angles, and reflections require further visible separation from general line/plane relations
+
+### Saarland (`SL`)
+
+Observed signal:
+
+- `SL` now adds a first reviewed upper-secondary geometry corridor on top of the newly mapped `Einführungsphase`, `Hauptphase G-Kurs`, and `Hauptphase Leistungskurs` snapshot lane
+- the Saarland source separates the corridor explicitly into
+  - `G-Kurs: Vektoren` and `G-Kurs: Vektorielle Untersuchung geometrischer Strukturen`
+  - `Leistungskurs: Vektoren` and `Leistungskurs: Vektorielle Untersuchung geometrischer Strukturen`
+- the separate `Kreis und Kugel` Pflichtbereich remains outside this first reviewed corridor, so Saarland currently pressure-tests the shared vector / line-plane / positional-relation surface rather than a broader optional geometry extension
+- Saarland therefore supports the frozen visible upper-secondary space-geometry surface without forcing another package-level bridge

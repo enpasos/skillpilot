@@ -1,6 +1,6 @@
 # SL Math Onboarding Note
 
-Status: P1 (`partial_inputs_archived`)
+Status: P4 (`first_corridor_reviewed`)
 
 Reserved source landscapes on `2026-03-28`:
 
@@ -31,13 +31,33 @@ Archived official source inputs on `2026-04-04`:
 Current activation state:
 
 - repository-backed lower-secondary and upper-secondary mapping fixtures still exist with the reserved source-landscape IDs above
-- the first valid Saarland mathematics archive is now local for both lower-secondary and upper-secondary
-- the archived upper-secondary bundle now also includes an explicit transition handout for the MBA -> EP bridge
-- shared provenance registries are intentionally still inactive for both lanes
-- no archived Saarland source-json snapshot is active yet
+- the first Saarland lower-secondary and upper-secondary source snapshots are now active in shared provenance
+- the archived upper-secondary bundle also includes an explicit transition handout for the MBA -> EP bridge
+- shared provenance is now active for both `DE_SAR` source landscapes
+- the shared provenance registries now carry:
+  - lower-secondary memberships and closures for `38` goals
+  - upper-secondary memberships and closures for `39` goals
+- first structural anchor mappings are now active for both lanes
+- lower-secondary reviewed coverage now includes:
+  - a first explicit `Klassenstufe 7` function corridor with `Zuordnungen`, `proportionale Zuordnungen`, and `umgekehrt proportionale Zuordnungen`
+  - a first explicit `Klassenstufe 7` algebra corridor with `Rationale Zahlen`, `Terme, Gleichungen und Ungleichungen`, and `Prozentrechnung`
+- upper-secondary reviewed coverage now includes:
+  - analysis corridor splits across `Einführungsphase`, `Hauptphase G-Kurs`, and `Hauptphase Leistungskurs`
+  - stochastics corridor splits across `G-Kurs` and `Leistungskurs`
+  - analytic-geometry corridor splits across `G-Kurs` and `Leistungskurs`
+
+Snapshot scope:
+
+- lower-secondary snapshot:
+  - broad year anchors `5/6`, `7`, `8`, `9`, `10`
+  - broad leitidee anchors per year
+- upper-secondary snapshot:
+  - broad `Einführungsphase`, `Hauptphase G-Kurs`, `Hauptphase Leistungskurs`
+  - reviewed analysis, stochastics, and analytic-geometry corridor splits
 
 Operational rule from here:
 
 - keep the reserved `sourceLandscapeId` values stable
-- derive the first lower-secondary and upper-secondary source snapshots from the archived PDF bundle
+- keep the shared provenance registries aligned with future in-place Saarland source splits
+- keep the reviewed Saarland upper-secondary splits stable and continue with equally explicit lower-secondary corridors next
 - use the transition handout only as interpretive support, not as the primary source spine

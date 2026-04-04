@@ -269,3 +269,13 @@ This topic audit is complete when:
 2. the canonical graph has a stable Sek-II stochastics packaging
 3. reviewed `BB`, `BY`, `HB`, `HH`, `HE`, `RP`, and `SH` evidence can be described as aligned to the revised packaging or intentionally broader because of source granularity
 4. it is clear whether normal approximation, tests, and interval reasoning require further visible separation in the canonical graph
+
+### Saarland (`SL`)
+
+Observed signal:
+
+- `SL` now adds a first reviewed upper-secondary stochastics corridor on top of the newly mapped `Einführungsphase`, `Hauptphase G-Kurs`, and `Hauptphase Leistungskurs` snapshot lane
+- the Saarland source separates the corridor into:
+  - `G-Kurs` strips for probabilities / conditional probability, binomial distribution, and a later discrete-random-variable / characteristic-value continuation
+  - `Leistungskurs` strips for probabilities / conditional probability, binomial distribution, discrete random variables, normal distribution, and hypothesis tests
+- Saarland therefore confirms the frozen visible `ST2-ST5` surface and the explicit `ST3` boundary without forcing another package-level bridge

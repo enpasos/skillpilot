@@ -213,3 +213,14 @@ This topic audit is complete when:
 - its reviewed `Lineare Funktionen` strip points to the explicit linear-function surface
 - the RP lane therefore confirms the visible middle Sek-I function cut without forcing a new package boundary between proportional assignments and linear functions
 
+### Saarland (`SL`)
+
+Observed signal:
+
+- `SL` now contributes a first reviewed lower-secondary function corridor on the explicit `Klassenstufe 7` lane
+- the Saarland source separates
+  - `Zuordnungen`
+  - `Proportionale Zuordnungen`
+  - `Umgekehrt proportionale Zuordnungen`
+- this keeps the broad `Klassenstufe 7` function parent on the visible early function corridor, places the `Zuordnungen` strip on the early mapping / representation surface, and keeps both proportionality strips on the broad proportional bridge without forcing a separate visible inverse-proportional package
+- the Saarland lane therefore confirms the early Sek-I function surface without reopening the current packaging
