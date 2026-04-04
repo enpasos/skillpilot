@@ -632,7 +632,8 @@ class LandscapeServiceTest {
                 assertThat(root.getFilters())
                                 .extracting(LandscapeFilter::getId)
                                 .containsExactly("ALL", "DE-BW", "DE-HE", "DE-BY", "DE-BB", "DE-BE", "DE-NI", "DE-NW",
-                                                "DE-SH");
+                                                "DE-SH", "DE-HB", "DE-HH", "DE-MV", "DE-RP", "DE-SL", "DE-SN",
+                                                "DE-ST", "DE-TH");
                 assertThat(landscapeService.getOverview().getSummaries())
                                 .extracting(LandscapeSummary::getCurriculumId)
                                 .contains(CANONICAL_GYMNASIUM_ROOT_ID)

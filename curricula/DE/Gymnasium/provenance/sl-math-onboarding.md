@@ -1,6 +1,6 @@
 # SL Math Onboarding Note
 
-Status: P0 (`mapping_scaffolded`)
+Status: P1 (`partial_inputs_archived`)
 
 Reserved source landscapes on `2026-03-28`:
 
@@ -13,23 +13,31 @@ Reserved source landscapes on `2026-03-28`:
   - mapping fixture:
     `curricula/DE/Gymnasium/mapping/DE-SL/upper-secondary/sl_math_upper_secondary_to_canonical_math.json`
 
-Source situation on `2026-04-04`:
+Archived official source inputs on `2026-04-04`:
 
-- official Saarland mathematics source anchors and direct download targets are identified
-- the first automated archive attempt was invalid: the fetched files were `bunny-shield` HTML challenge pages, not PDF binaries
-- those invalid placeholder files were removed again from `curricula/DE/Gymnasium/input/SL/`
+- `curricula/DE/Gymnasium/input/SL/LP_MA_gym9_5und6_2023.pdf`
+- `curricula/DE/Gymnasium/input/SL/LP_MA_gym9_7_2023.pdf`
+- `curricula/DE/Gymnasium/input/SL/LP_MA_gym9_8_2024.pdf`
+- `curricula/DE/Gymnasium/input/SL/LP_MA_gym9_9_2025.pdf`
+- `curricula/DE/Gymnasium/input/SL/LP_MA_gym9_10_2026.pdf`
+- `curricula/DE/Gymnasium/input/SL/LP_Ma_EP_GOS_2014.pdf`
+- `curricula/DE/Gymnasium/input/SL/LP_Ma_GOS_HP_G-Kurs_2016_Stand_2019.pdf`
+- `curricula/DE/Gymnasium/input/SL/LP_Ma_LK_HP_2019.pdf`
+- `curricula/DE/Gymnasium/input/SL/Mathe_Handreichung.pdf`
+- `curricula/DE/Gymnasium/input/SL/LP_Anpassung_G8_MA_SekII.pdf`
+- `curricula/DE/Gymnasium/input/SL/LP_Anpassung_G8_MA_SekII_2025.pdf`
+- `curricula/DE/Gymnasium/input/SL/APA_Mathematik_2019.pdf`
+
+Current activation state:
+
+- repository-backed lower-secondary and upper-secondary mapping fixtures still exist with the reserved source-landscape IDs above
+- the first valid Saarland mathematics archive is now local for both lower-secondary and upper-secondary
+- the archived upper-secondary bundle now also includes an explicit transition handout for the MBA -> EP bridge
 - shared provenance registries are intentionally still inactive for both lanes
 - no archived Saarland source-json snapshot is active yet
 
-Known official source anchors:
-
-- gymnasiale Oberstufe landing page:
-  - `https://www.saarland.de/mbk/DE/portale/bildungsserver/unterricht-und-bildungsthemen/lehrplaenehandreichungen/lehrplaeneallgemeinbildende/gymnasiale-oberstufe-GOS/lehrplaene_GOS_node`
-- direct official lower-/upper-secondary document targets are documented in:
-  - `curricula/DE/Gymnasium/input/SL/README.md`
-
 Operational rule from here:
 
-- keep these reserved `sourceLandscapeId` values stable while the Saarland source lane is still blocked at archival stage
-- do not promote `DE-SL` back to `P1` until valid PDF binaries are archived locally
-- prefer a manual browser download or a browser-capable fetch step that can complete the `bunny-shield` challenge before deriving the first snapshots
+- keep the reserved `sourceLandscapeId` values stable
+- derive the first lower-secondary and upper-secondary source snapshots from the archived PDF bundle
+- use the transition handout only as interpretive support, not as the primary source spine
