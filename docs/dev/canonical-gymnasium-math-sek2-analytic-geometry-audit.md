@@ -1,6 +1,6 @@
 # Canonical Gymnasium Mathematics: Sek II Analytic Geometry / Vectors Audit
 
-Snapshot: `2026-04-03`
+Snapshot: `2026-04-04`
 
 Purpose:
 
@@ -21,6 +21,7 @@ In scope:
   - `HB`
   - `HH`
 - `HE`
+- `MV`
 - `RP`
 - `SN`
 - `ST`
@@ -111,6 +112,14 @@ Observed signal:
   - broad `Geraden und Ebenen im Raum` work in `A2`
 - this makes `RP` a useful pressure test for whether the frozen visible space-geometry surface can absorb broad geometry overview corridors without forcing another package-level bridge
 
+### Mecklenburg-Vorpommern (`MV`)
+
+Observed signal:
+
+- `MV` now adds a first reviewed broad upper-secondary geometry corridor on the active qualification-phase snapshot lane
+- the current Mecklenburg-Vorpommern source still exposes the space branch only through the mixed bands `Vektoren und Matrizen` and `Geraden und Ebenen`
+- `MV` therefore confirms that the frozen visible shared space-geometry surface can absorb a reviewed broad corridor without forcing a sharper `AGV3-AGV5` bridge package
+
 ## Current canonical analytic-geometry inventory
 
 The canonical graph is already materially seeded here.
@@ -141,7 +150,7 @@ The most relevant tensions are:
 
 ### 1. Vector basics should stay visible as a separate package
 
-The reviewed state evidence supports a stable common entry corridor for:
+The reviewed state evidence, now also including the broad Mecklenburg-Vorpommern corridor, supports a stable common entry corridor for:
 
 - points and vectors in space
 - coordinate representations

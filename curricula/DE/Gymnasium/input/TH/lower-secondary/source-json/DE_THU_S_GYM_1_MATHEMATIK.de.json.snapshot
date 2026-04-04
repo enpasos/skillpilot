@@ -1,0 +1,994 @@
+{
+  "landscapeId": "25444927-45d3-486c-8e7f-39853e7de610",
+  "locale": "de-DE",
+  "country": "DE",
+  "region": "TH",
+  "schoolType": "Gymnasium",
+  "subject": "Mathematik",
+  "frameworkId": "th-lp2018-2025-gym-sek1-math",
+  "title": "Mathematik Sekundarstufe I (Thueringen, erster Quellsnapshot)",
+  "titleEn": "Mathematics secondary level I (Thueringen, first source snapshot)",
+  "description": "Erster archivierter Thueringen-Quellsnapshot fuer die Mathematik der Sekundarstufe I. Der Snapshot verbindet die 2025-Entwurfsfassung fuer die Klassenstufen 5/6 mit dem archivierten 2018-Lehrplan als Bruecke fuer die Jahrgangsbaender 7/8 und 9/10.",
+  "descriptionEn": "First archived Thueringen source snapshot for lower-secondary mathematics. The snapshot combines the 2025 draft for grades 5/6 with the archived 2018 curriculum as a bridge for the grade bands 7/8 and 9/10.",
+  "compatibilityOnly": true,
+  "legacyHiddenByDefault": true,
+  "goals": [
+    {
+      "id": "th-sek1-root",
+      "title": "Mathematik Sekundarstufe I",
+      "titleEn": "Mathematics secondary level I",
+      "description": "Breiter erster Thueringen-Quellsnapshot fuer die Mathematik der Sekundarstufe I mit Orientierungsanker sowie den Klassenstufenbaendern 5/6, 7/8 und 9/10.",
+      "descriptionEn": "Broad first Thueringen source snapshot for lower-secondary mathematics with an orientation anchor and the grade-band clusters 5/6, 7/8, and 9/10.",
+      "weight": 4,
+      "tags": [
+        "Sek1",
+        "PilotSubset",
+        "Thueringen"
+      ],
+      "contains": [
+        "th-sek1-orientation",
+        "th-sek1-j5-6",
+        "th-sek1-j7-8",
+        "th-sek1-j9-10"
+      ],
+      "requires": [
+        "th-sek1-orientation"
+      ],
+      "sourceRef": "Lehrplan Mathematik Gymnasium 2025, Klassenstufen 5/6, S. 8-19; Lehrplan Mathematik Gymnasium 2018, Ziele des Kompetenzerwerbs in den Klassenstufen 7/8 und 9/10, S. 20-31.",
+      "dimensionTags": {
+        "framework": "th-lp2018-2025-gym-sek1-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "GLOBAL",
+        "area": "Sekundarstufe I"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "th-sek1-orientation",
+      "title": "Warum Mathematik? - Argumentieren, Modellieren und Darstellen",
+      "titleEn": "Why mathematics? - arguing, modelling, and representing",
+      "description": "Die Thueringer Lehrplaene rahmen Mathematik als Werkzeug zur Beschreibung von Wirklichkeit, als Sprache des Argumentierens und als Fach fuer den reflektierten Umgang mit Daten, Modellen und digitalen Werkzeugen.",
+      "descriptionEn": "The Thueringen curricula frame mathematics as a tool for describing reality, a language of reasoning, and a subject for reflective work with data, models, and digital tools.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "Orientation",
+        "Thueringen"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Lehrplan Mathematik Gymnasium 2025, Kapitel 1-2, S. 4-8; Lehrplan Mathematik Gymnasium 2018, Kapitel 1, S. 5-11.",
+      "dimensionTags": {
+        "framework": "th-lp2018-2025-gym-sek1-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "GLOBAL",
+        "area": "Orientierung"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "th-sek1-j5-6",
+      "title": "Klassenstufen 5/6",
+      "titleEn": "Grades 5/6",
+      "description": "Erster verfeinerter Thueringen-Quellanker fuer die Klassenstufen 5/6 im Gymnasium mit ersten reviewed Zahl-, Geometrie-, Daten-/Zufalls- und Funktionskorridoren sowie dem verbleibenden expliziten Lernbereich Groessen aus der 2025-Entwurfsfassung.",
+      "descriptionEn": "First refined Thueringen source anchor for grades 5/6 in Gymnasium with first reviewed numbers, geometry, data/chance, and function corridors plus the remaining explicit quantities learning area from the 2025 draft.",
+      "weight": 5,
+      "tags": [
+        "Sek1",
+        "JG5_6",
+        "Thueringen"
+      ],
+      "contains": [
+        "th-sek1-j5-6-algebra-corridor",
+        "th-sek1-j5-6-data-chance-corridor",
+        "th-sek1-j5-6-functions-corridor",
+        "th-sek1-j5-6-geometry-corridor",
+        "th-sek1-j5-6-quantities",
+      ],
+      "requires": [
+        "th-sek1-orientation"
+      ],
+      "sourceRef": "Lehrplan Mathematik Gymnasium 2025, Klassenstufen 5/6, S. 8-19.",
+      "dimensionTags": {
+        "framework": "th-lp2018-2025-gym-sek1-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG5_6",
+        "area": "Klassenstufen 5/6"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "th-sek1-j5-6-functions-corridor",
+      "title": "Klassenstufen 5/6: Zuordnungen",
+      "titleEn": "Grades 5/6: mappings",
+      "description": "Erster reviewed Thueringen-Korridor fuer fruehe Zuordnungen in den Klassenstufen 5/6.",
+      "descriptionEn": "First reviewed Thueringen corridor for early mappings in grades 5/6.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "JG5_6",
+        "Functions",
+        "Corridor",
+        "Thueringen"
+      ],
+      "contains": [
+        "th-sek1-j5-6-mappings"
+      ],
+      "requires": [
+        "th-sek1-orientation"
+      ],
+      "sourceRef": "Lehrplan Mathematik Gymnasium 2025, 2.1.8 Lernbereich Zuordnungen, S. 18-19.",
+      "dimensionTags": {
+        "framework": "th-lp2018-2025-gym-sek1-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG5_6",
+        "area": "Funktionen"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "th-sek1-j5-6-data-chance-corridor",
+      "title": "Klassenstufen 5/6: Daten und Zufall",
+      "titleEn": "Grades 5/6: data and chance",
+      "description": "Erster reviewed Thueringen-Korridor fuer fruehe Daten- und Zufallsvorstellungen in den Klassenstufen 5/6.",
+      "descriptionEn": "First reviewed Thueringen corridor for early data and chance concepts in grades 5/6.",
+      "weight": 2,
+      "tags": [
+        "Sek1",
+        "JG5_6",
+        "DataChance",
+        "Corridor",
+        "Thueringen"
+      ],
+      "contains": [
+        "th-sek1-j5-6-data-display",
+        "th-sek1-j5-6-statistics-chance"
+      ],
+      "requires": [
+        "th-sek1-orientation"
+      ],
+      "sourceRef": "Lehrplan Mathematik Gymnasium 2025, 2.1.1 Lernbereich Daten erfassen und darstellen, S. 8; 2.1.7 Lernbereich statistische Kenngroessen und mit Zufall experimentieren, S. 16-18.",
+      "dimensionTags": {
+        "framework": "th-lp2018-2025-gym-sek1-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG5_6",
+        "area": "Daten und Zufall"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "th-sek1-j5-6-algebra-corridor",
+      "title": "Klassenstufen 5/6: Natuerliche Zahlen und gebrochene Zahlen",
+      "titleEn": "Grades 5/6: natural numbers and fractions",
+      "description": "Erster reviewed Thueringen-Korridor fuer arithmetische Grundlagen in den Klassenstufen 5/6.",
+      "descriptionEn": "First reviewed Thueringen corridor for arithmetic foundations in grades 5/6.",
+      "weight": 2,
+      "tags": [
+        "Sek1",
+        "JG5_6",
+        "Algebra",
+        "Corridor",
+        "Thueringen"
+      ],
+      "contains": [
+        "th-sek1-j5-6-natural-numbers",
+        "th-sek1-j5-6-fractions"
+      ],
+      "requires": [
+        "th-sek1-orientation"
+      ],
+      "sourceRef": "Lehrplan Mathematik Gymnasium 2025, 2.1.2 Lernbereich Natuerliche Zahlen, S. 9-10; 2.1.5 Lernbereich Gebrochene Zahlen, S. 13-14.",
+      "dimensionTags": {
+        "framework": "th-lp2018-2025-gym-sek1-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG5_6",
+        "area": "Arithmetik/Algebra"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "th-sek1-j5-6-geometry-corridor",
+      "title": "Klassenstufen 5/6: Figuren, Koerper, Dreiecke und Kreis",
+      "titleEn": "Grades 5/6: figures, solids, triangles, and circle",
+      "description": "Erster reviewed Thueringen-Korridor fuer fruehe Geometrie- und Raumvorstellungen in den Klassenstufen 5/6.",
+      "descriptionEn": "First reviewed Thueringen corridor for early geometry and spatial concepts in grades 5/6.",
+      "weight": 2,
+      "tags": [
+        "Sek1",
+        "JG5_6",
+        "Geometry",
+        "Corridor",
+        "Thueringen"
+      ],
+      "contains": [
+        "th-sek1-j5-6-shapes-solids",
+        "th-sek1-j5-6-triangles-circle"
+      ],
+      "requires": [
+        "th-sek1-orientation"
+      ],
+      "sourceRef": "Lehrplan Mathematik Gymnasium 2025, 2.1.4 Lernbereich Figuren und Koerper, S. 11-13; 2.1.6 Lernbereich Dreiecke und Kreis, S. 14-16.",
+      "dimensionTags": {
+        "framework": "th-lp2018-2025-gym-sek1-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG5_6",
+        "area": "Geometrie"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "th-sek1-j5-6-data-display",
+      "title": "Klassenstufen 5/6: Daten erfassen und darstellen",
+      "titleEn": "Grades 5/6: collecting and displaying data",
+      "description": "Breiter erster Thueringen-Quellstrip fuer das Erfassen, Strukturieren und Darstellen von Daten in den Klassenstufen 5/6.",
+      "descriptionEn": "Broad first Thueringen source strip for collecting, structuring, and displaying data in grades 5/6.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "JG5_6",
+        "DataChance",
+        "Thueringen"
+      ],
+      "contains": [],
+      "requires": [
+        "th-sek1-orientation"
+      ],
+      "sourceRef": "Lehrplan Mathematik Gymnasium 2025, 2.1.1 Lernbereich Daten erfassen und darstellen, S. 8.",
+      "dimensionTags": {
+        "framework": "th-lp2018-2025-gym-sek1-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG5_6",
+        "area": "Daten und Zufall"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "th-sek1-j5-6-natural-numbers",
+      "title": "Klassenstufen 5/6: Natuerliche Zahlen",
+      "titleEn": "Grades 5/6: natural numbers",
+      "description": "Breiter erster Thueringen-Quellstrip fuer natuerliche Zahlen in den Klassenstufen 5/6.",
+      "descriptionEn": "Broad first Thueringen source strip for natural numbers in grades 5/6.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "JG5_6",
+        "Algebra",
+        "Thueringen"
+      ],
+      "contains": [],
+      "requires": [
+        "th-sek1-orientation"
+      ],
+      "sourceRef": "Lehrplan Mathematik Gymnasium 2025, 2.1.2 Lernbereich Natuerliche Zahlen, S. 9-10.",
+      "dimensionTags": {
+        "framework": "th-lp2018-2025-gym-sek1-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG5_6",
+        "area": "Arithmetik/Algebra"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "th-sek1-j5-6-quantities",
+      "title": "Klassenstufen 5/6: Groessen",
+      "titleEn": "Grades 5/6: quantities",
+      "description": "Breiter erster Thueringen-Quellstrip fuer Groessen in den Klassenstufen 5/6.",
+      "descriptionEn": "Broad first Thueringen source strip for quantities in grades 5/6.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "JG5_6",
+        "Geometry",
+        "Thueringen"
+      ],
+      "contains": [],
+      "requires": [
+        "th-sek1-orientation"
+      ],
+      "sourceRef": "Lehrplan Mathematik Gymnasium 2025, 2.1.3 Lernbereich Groessen, S. 10-11.",
+      "dimensionTags": {
+        "framework": "th-lp2018-2025-gym-sek1-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG5_6",
+        "area": "Groessen und Messen"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "th-sek1-j5-6-shapes-solids",
+      "title": "Klassenstufen 5/6: Figuren und Koerper",
+      "titleEn": "Grades 5/6: figures and solids",
+      "description": "Breiter erster Thueringen-Quellstrip fuer Figuren und Koerper in den Klassenstufen 5/6.",
+      "descriptionEn": "Broad first Thueringen source strip for figures and solids in grades 5/6.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "JG5_6",
+        "Geometry",
+        "Thueringen"
+      ],
+      "contains": [],
+      "requires": [
+        "th-sek1-orientation"
+      ],
+      "sourceRef": "Lehrplan Mathematik Gymnasium 2025, 2.1.4 Lernbereich Figuren und Koerper, S. 11-13.",
+      "dimensionTags": {
+        "framework": "th-lp2018-2025-gym-sek1-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG5_6",
+        "area": "Geometrie"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "th-sek1-j5-6-fractions",
+      "title": "Klassenstufen 5/6: Gebrochene Zahlen",
+      "titleEn": "Grades 5/6: fractions",
+      "description": "Breiter erster Thueringen-Quellstrip fuer gebrochene Zahlen in den Klassenstufen 5/6.",
+      "descriptionEn": "Broad first Thueringen source strip for fractions in grades 5/6.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "JG5_6",
+        "Algebra",
+        "Thueringen"
+      ],
+      "contains": [],
+      "requires": [
+        "th-sek1-j5-6-natural-numbers"
+      ],
+      "sourceRef": "Lehrplan Mathematik Gymnasium 2025, 2.1.5 Lernbereich Gebrochene Zahlen, S. 13-14.",
+      "dimensionTags": {
+        "framework": "th-lp2018-2025-gym-sek1-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG5_6",
+        "area": "Arithmetik/Algebra"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "th-sek1-j5-6-triangles-circle",
+      "title": "Klassenstufen 5/6: Dreiecke und Kreis",
+      "titleEn": "Grades 5/6: triangles and circle",
+      "description": "Breiter erster Thueringen-Quellstrip fuer Dreiecke und Kreis in den Klassenstufen 5/6.",
+      "descriptionEn": "Broad first Thueringen source strip for triangles and circle in grades 5/6.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "JG5_6",
+        "Geometry",
+        "Thueringen"
+      ],
+      "contains": [],
+      "requires": [
+        "th-sek1-j5-6-shapes-solids"
+      ],
+      "sourceRef": "Lehrplan Mathematik Gymnasium 2025, 2.1.6 Lernbereich Dreiecke und Kreis, S. 14-15.",
+      "dimensionTags": {
+        "framework": "th-lp2018-2025-gym-sek1-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG5_6",
+        "area": "Geometrie"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "th-sek1-j5-6-statistics-chance",
+      "title": "Klassenstufen 5/6: statistische Kenngroessen und mit Zufall experimentieren",
+      "titleEn": "Grades 5/6: statistical measures and experimenting with chance",
+      "description": "Breiter erster Thueringen-Quellstrip fuer statistische Kenngroessen und erste Zufallsexperimente in den Klassenstufen 5/6.",
+      "descriptionEn": "Broad first Thueringen source strip for statistical measures and first chance experiments in grades 5/6.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "JG5_6",
+        "DataChance",
+        "Thueringen"
+      ],
+      "contains": [],
+      "requires": [
+        "th-sek1-j5-6-data-display"
+      ],
+      "sourceRef": "Lehrplan Mathematik Gymnasium 2025, 2.1.7 Lernbereich statistische Kenngroessen und mit Zufall experimentieren, S. 15.",
+      "dimensionTags": {
+        "framework": "th-lp2018-2025-gym-sek1-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG5_6",
+        "area": "Daten und Zufall"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "th-sek1-j5-6-mappings",
+      "title": "Klassenstufen 5/6: Zuordnungen",
+      "titleEn": "Grades 5/6: mappings",
+      "description": "Breiter erster Thueringen-Quellstrip fuer Zuordnungen in den Klassenstufen 5/6.",
+      "descriptionEn": "Broad first Thueringen source strip for mappings in grades 5/6.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "JG5_6",
+        "Functions",
+        "Thueringen"
+      ],
+      "contains": [],
+      "requires": [
+        "th-sek1-j5-6-natural-numbers"
+      ],
+      "sourceRef": "Lehrplan Mathematik Gymnasium 2025, 2.1.8 Lernbereich Zuordnungen, S. 15-17.",
+      "dimensionTags": {
+        "framework": "th-lp2018-2025-gym-sek1-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG5_6",
+        "area": "Funktionen"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "th-sek1-j7-8",
+      "title": "Klassenstufen 7/8",
+      "titleEn": "Grades 7/8",
+      "description": "Erster verfeinerter Thueringen-Quellanker fuer die Klassenstufen 7/8 im Gymnasium mit ersten reviewed Algebra-, Funktions-, Geometrie- und Daten-/Zufallskorridoren auf Basis des archivierten 2018-Lehrplans.",
+      "descriptionEn": "First refined Thueringen source anchor for grades 7/8 in Gymnasium with first reviewed algebra, function, geometry, and data/chance corridors based on the archived 2018 curriculum.",
+      "weight": 4,
+      "tags": [
+        "Sek1",
+        "JG7_8",
+        "Thueringen"
+      ],
+      "contains": [
+        "th-sek1-j7-8-algebra-corridor",
+        "th-sek1-j7-8-functions-corridor",
+        "th-sek1-j7-8-geometry-corridor",
+        "th-sek1-j7-8-data-chance-corridor"
+      ],
+      "requires": [
+        "th-sek1-j5-6"
+      ],
+      "sourceRef": "Lehrplan Mathematik Gymnasium 2018, 2.2 Klassenstufen 7/8, S. 20-27.",
+      "dimensionTags": {
+        "framework": "th-lp2018-2025-gym-sek1-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG7_8",
+        "area": "Klassenstufen 7/8"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "th-sek1-j7-8-algebra-corridor",
+      "title": "Klassenstufen 7/8: Arithmetik und Algebra",
+      "titleEn": "Grades 7/8: arithmetic and algebra",
+      "description": "Erster reviewed Thueringen-Korridor fuer die breite Arithmetik-/Algebra-Lane in den Klassenstufen 7/8.",
+      "descriptionEn": "First reviewed Thueringen corridor for the broad arithmetic/algebra lane in grades 7/8.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "JG7_8",
+        "Algebra",
+        "Corridor",
+        "Thueringen"
+      ],
+      "contains": [
+        "th-sek1-j7-8-algebra"
+      ],
+      "requires": [
+        "th-sek1-j7-8"
+      ],
+      "sourceRef": "Lehrplan Mathematik Gymnasium 2018, 2.2.1 Arithmetik/Algebra, S. 20-22.",
+      "dimensionTags": {
+        "framework": "th-lp2018-2025-gym-sek1-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG7_8",
+        "area": "Arithmetik/Algebra"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "th-sek1-j7-8-algebra",
+      "title": "Klassenstufen 7/8: Arithmetik/Algebra",
+      "titleEn": "Grades 7/8: arithmetic/algebra",
+      "description": "Breiter erster Thueringen-Quellstrip fuer Arithmetik und Algebra in den Klassenstufen 7/8.",
+      "descriptionEn": "Broad first Thueringen source strip for arithmetic and algebra in grades 7/8.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "JG7_8",
+        "Algebra",
+        "Thueringen"
+      ],
+      "contains": [],
+      "requires": [
+        "th-sek1-j7-8"
+      ],
+      "sourceRef": "Lehrplan Mathematik Gymnasium 2018, 2.2.1 Arithmetik/Algebra, S. 20-22.",
+      "dimensionTags": {
+        "framework": "th-lp2018-2025-gym-sek1-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG7_8",
+        "area": "Arithmetik/Algebra"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "th-sek1-j7-8-functions-corridor",
+      "title": "Klassenstufen 7/8: Funktionen",
+      "titleEn": "Grades 7/8: functions",
+      "description": "Erster reviewed Thueringen-Korridor fuer die breite Funktions-Lane in den Klassenstufen 7/8.",
+      "descriptionEn": "First reviewed Thueringen corridor for the broad functions lane in grades 7/8.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "JG7_8",
+        "Functions",
+        "Corridor",
+        "Thueringen"
+      ],
+      "contains": [
+        "th-sek1-j7-8-functions"
+      ],
+      "requires": [
+        "th-sek1-j7-8"
+      ],
+      "sourceRef": "Lehrplan Mathematik Gymnasium 2018, 2.2.2 Funktionen, S. 22-24.",
+      "dimensionTags": {
+        "framework": "th-lp2018-2025-gym-sek1-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG7_8",
+        "area": "Funktionen"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "th-sek1-j7-8-functions",
+      "title": "Klassenstufen 7/8: Funktionen",
+      "titleEn": "Grades 7/8: functions",
+      "description": "Breiter erster Thueringen-Quellstrip fuer Funktionen in den Klassenstufen 7/8.",
+      "descriptionEn": "Broad first Thueringen source strip for functions in grades 7/8.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "JG7_8",
+        "Functions",
+        "Thueringen"
+      ],
+      "contains": [],
+      "requires": [
+        "th-sek1-j7-8"
+      ],
+      "sourceRef": "Lehrplan Mathematik Gymnasium 2018, 2.2.2 Funktionen, S. 22-24.",
+      "dimensionTags": {
+        "framework": "th-lp2018-2025-gym-sek1-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG7_8",
+        "area": "Funktionen"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "th-sek1-j7-8-geometry-corridor",
+      "title": "Klassenstufen 7/8: Geometrie",
+      "titleEn": "Grades 7/8: geometry",
+      "description": "Erster reviewed Thueringen-Korridor fuer die breite Geometrie-Lane in den Klassenstufen 7/8.",
+      "descriptionEn": "First reviewed Thueringen corridor for the broad geometry lane in grades 7/8.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "JG7_8",
+        "Geometry",
+        "Corridor",
+        "Thueringen"
+      ],
+      "contains": [
+        "th-sek1-j7-8-geometry"
+      ],
+      "requires": [
+        "th-sek1-j7-8"
+      ],
+      "sourceRef": "Lehrplan Mathematik Gymnasium 2018, 2.2.3 Geometrie, S. 24-26.",
+      "dimensionTags": {
+        "framework": "th-lp2018-2025-gym-sek1-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG7_8",
+        "area": "Geometrie"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "th-sek1-j7-8-geometry",
+      "title": "Klassenstufen 7/8: Geometrie",
+      "titleEn": "Grades 7/8: geometry",
+      "description": "Breiter erster Thueringen-Quellstrip fuer Geometrie in den Klassenstufen 7/8.",
+      "descriptionEn": "Broad first Thueringen source strip for geometry in grades 7/8.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "JG7_8",
+        "Geometry",
+        "Thueringen"
+      ],
+      "contains": [],
+      "requires": [
+        "th-sek1-j7-8"
+      ],
+      "sourceRef": "Lehrplan Mathematik Gymnasium 2018, 2.2.3 Geometrie, S. 24-26.",
+      "dimensionTags": {
+        "framework": "th-lp2018-2025-gym-sek1-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG7_8",
+        "area": "Geometrie"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "th-sek1-j7-8-data-chance-corridor",
+      "title": "Klassenstufen 7/8: Stochastik",
+      "titleEn": "Grades 7/8: stochastics",
+      "description": "Erster reviewed Thueringen-Korridor fuer die breite Daten-/Zufalls-Lane in den Klassenstufen 7/8.",
+      "descriptionEn": "First reviewed Thueringen corridor for the broad data/chance lane in grades 7/8.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "JG7_8",
+        "DataChance",
+        "Corridor",
+        "Thueringen"
+      ],
+      "contains": [
+        "th-sek1-j7-8-stochastics"
+      ],
+      "requires": [
+        "th-sek1-j7-8"
+      ],
+      "sourceRef": "Lehrplan Mathematik Gymnasium 2018, 2.2.4 Stochastik, S. 26-27.",
+      "dimensionTags": {
+        "framework": "th-lp2018-2025-gym-sek1-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG7_8",
+        "area": "Daten und Zufall"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "th-sek1-j7-8-stochastics",
+      "title": "Klassenstufen 7/8: Stochastik",
+      "titleEn": "Grades 7/8: stochastics",
+      "description": "Breiter erster Thueringen-Quellstrip fuer Stochastik in den Klassenstufen 7/8.",
+      "descriptionEn": "Broad first Thueringen source strip for stochastics in grades 7/8.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "JG7_8",
+        "DataChance",
+        "Thueringen"
+      ],
+      "contains": [],
+      "requires": [
+        "th-sek1-j7-8"
+      ],
+      "sourceRef": "Lehrplan Mathematik Gymnasium 2018, 2.2.4 Stochastik, S. 26-27.",
+      "dimensionTags": {
+        "framework": "th-lp2018-2025-gym-sek1-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG7_8",
+        "area": "Daten und Zufall"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "th-sek1-j9-10",
+      "title": "Klassenstufen 9/10",
+      "titleEn": "Grades 9/10",
+      "description": "Erster verfeinerter Thueringen-Quellanker fuer die Klassenstufen 9/10 mit reviewed Algebra-, Funktions-, Geometrie- und Daten-/Zufallskorridoren.",
+      "descriptionEn": "First refined Thueringen source anchor for grades 9/10 with reviewed algebra, functions, geometry, and data/chance corridors.",
+      "weight": 4,
+      "tags": [
+        "Sek1",
+        "JG9_10",
+        "Thueringen"
+      ],
+      "contains": [
+        "th-sek1-j9-10-algebra-corridor",
+        "th-sek1-j9-10-functions-corridor",
+        "th-sek1-j9-10-geometry-corridor",
+        "th-sek1-j9-10-data-chance-corridor"
+      ],
+      "requires": [
+        "th-sek1-j7-8"
+      ],
+      "sourceRef": "Lehrplan Mathematik Gymnasium 2018, 2.3 Klassenstufen 9/10, S. 27-31.",
+      "dimensionTags": {
+        "framework": "th-lp2018-2025-gym-sek1-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG9_10",
+        "area": "Klassenstufen 9/10"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "th-sek1-j9-10-algebra-corridor",
+      "title": "Klassenstufen 9/10: Arithmetik und Algebra",
+      "titleEn": "Grades 9/10: arithmetic and algebra",
+      "description": "Erster reviewed Thueringen-Korridor fuer die breite Arithmetik-/Algebra-Lane in den Klassenstufen 9/10.",
+      "descriptionEn": "First reviewed Thueringen corridor for the broad arithmetic/algebra lane in grades 9/10.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "JG9_10",
+        "Algebra",
+        "Corridor",
+        "Thueringen"
+      ],
+      "contains": [
+        "th-sek1-j9-10-algebra"
+      ],
+      "requires": [
+        "th-sek1-j9-10"
+      ],
+      "sourceRef": "Lehrplan Mathematik Gymnasium 2018, 2.3.1 Arithmetik/Algebra, S. 27-28.",
+      "dimensionTags": {
+        "framework": "th-lp2018-2025-gym-sek1-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG9_10",
+        "area": "Arithmetik/Algebra"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "th-sek1-j9-10-algebra",
+      "title": "Klassenstufen 9/10: Arithmetik/Algebra",
+      "titleEn": "Grades 9/10: arithmetic/algebra",
+      "description": "Breiter erster Thueringen-Quellstrip fuer Arithmetik und Algebra in den Klassenstufen 9/10.",
+      "descriptionEn": "Broad first Thueringen source strip for arithmetic and algebra in grades 9/10.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "JG9_10",
+        "Algebra",
+        "Thueringen"
+      ],
+      "contains": [],
+      "requires": [
+        "th-sek1-j9-10"
+      ],
+      "sourceRef": "Lehrplan Mathematik Gymnasium 2018, 2.3.1 Arithmetik/Algebra, S. 27-28.",
+      "dimensionTags": {
+        "framework": "th-lp2018-2025-gym-sek1-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG9_10",
+        "area": "Arithmetik/Algebra"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "th-sek1-j9-10-functions-corridor",
+      "title": "Klassenstufen 9/10: Funktionen",
+      "titleEn": "Grades 9/10: functions",
+      "description": "Erster reviewed Thueringen-Korridor fuer die breite Funktionslane in den Klassenstufen 9/10.",
+      "descriptionEn": "First reviewed Thueringen corridor for the broad functions lane in grades 9/10.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "JG9_10",
+        "Functions",
+        "Corridor",
+        "Thueringen"
+      ],
+      "contains": [
+        "th-sek1-j9-10-functions"
+      ],
+      "requires": [
+        "th-sek1-j9-10"
+      ],
+      "sourceRef": "Lehrplan Mathematik Gymnasium 2018, 2.3.2 Funktionen, S. 28-29.",
+      "dimensionTags": {
+        "framework": "th-lp2018-2025-gym-sek1-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG9_10",
+        "area": "Funktionen"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "th-sek1-j9-10-functions",
+      "title": "Klassenstufen 9/10: Funktionen",
+      "titleEn": "Grades 9/10: functions",
+      "description": "Breiter erster Thueringen-Quellstrip fuer Funktionen in den Klassenstufen 9/10.",
+      "descriptionEn": "Broad first Thueringen source strip for functions in grades 9/10.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "JG9_10",
+        "Functions",
+        "Thueringen"
+      ],
+      "contains": [],
+      "requires": [
+        "th-sek1-j9-10"
+      ],
+      "sourceRef": "Lehrplan Mathematik Gymnasium 2018, 2.3.2 Funktionen, S. 28-29.",
+      "dimensionTags": {
+        "framework": "th-lp2018-2025-gym-sek1-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG9_10",
+        "area": "Funktionen"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "th-sek1-j9-10-geometry-corridor",
+      "title": "Klassenstufen 9/10: Geometrie",
+      "titleEn": "Grades 9/10: geometry",
+      "description": "Erster reviewed Thueringen-Korridor fuer die breite Geometrie-/Raum-Lane in den Klassenstufen 9/10.",
+      "descriptionEn": "First reviewed Thueringen corridor for the broad geometry/space lane in grades 9/10.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "JG9_10",
+        "Geometry",
+        "Corridor",
+        "Thueringen"
+      ],
+      "contains": [
+        "th-sek1-j9-10-geometry"
+      ],
+      "requires": [
+        "th-sek1-j9-10"
+      ],
+      "sourceRef": "Lehrplan Mathematik Gymnasium 2018, 2.3.3 Geometrie, S. 29-31.",
+      "dimensionTags": {
+        "framework": "th-lp2018-2025-gym-sek1-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG9_10",
+        "area": "Geometrie"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "th-sek1-j9-10-geometry",
+      "title": "Klassenstufen 9/10: Geometrie",
+      "titleEn": "Grades 9/10: geometry",
+      "description": "Breiter erster Thueringen-Quellstrip fuer Geometrie in den Klassenstufen 9/10.",
+      "descriptionEn": "Broad first Thueringen source strip for geometry in grades 9/10.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "JG9_10",
+        "Geometry",
+        "Thueringen"
+      ],
+      "contains": [],
+      "requires": [
+        "th-sek1-j9-10"
+      ],
+      "sourceRef": "Lehrplan Mathematik Gymnasium 2018, 2.3.3 Geometrie, S. 29-31.",
+      "dimensionTags": {
+        "framework": "th-lp2018-2025-gym-sek1-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG9_10",
+        "area": "Geometrie"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "th-sek1-j9-10-data-chance-corridor",
+      "title": "Klassenstufen 9/10: Stochastik",
+      "titleEn": "Grades 9/10: stochastics",
+      "description": "Erster reviewed Thueringen-Korridor fuer die breite Daten-/Zufallslane in den Klassenstufen 9/10.",
+      "descriptionEn": "First reviewed Thueringen corridor for the broad data/chance lane in grades 9/10.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "JG9_10",
+        "DataChance",
+        "Corridor",
+        "Thueringen"
+      ],
+      "contains": [
+        "th-sek1-j9-10-stochastics"
+      ],
+      "requires": [
+        "th-sek1-j9-10"
+      ],
+      "sourceRef": "Lehrplan Mathematik Gymnasium 2018, 2.3.4 Stochastik, S. 31.",
+      "dimensionTags": {
+        "framework": "th-lp2018-2025-gym-sek1-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG9_10",
+        "area": "Stochastik"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "th-sek1-j9-10-stochastics",
+      "title": "Klassenstufen 9/10: Stochastik",
+      "titleEn": "Grades 9/10: stochastics",
+      "description": "Breiter erster Thueringen-Quellstrip fuer Stochastik in den Klassenstufen 9/10.",
+      "descriptionEn": "Broad first Thueringen source strip for stochastics in grades 9/10.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "JG9_10",
+        "DataChance",
+        "Thueringen"
+      ],
+      "contains": [],
+      "requires": [
+        "th-sek1-j9-10"
+      ],
+      "sourceRef": "Lehrplan Mathematik Gymnasium 2018, 2.3.4 Stochastik, S. 31.",
+      "dimensionTags": {
+        "framework": "th-lp2018-2025-gym-sek1-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG9_10",
+        "area": "Daten und Zufall"
+      },
+      "type": "atomic"
+    }
+  ]
+}

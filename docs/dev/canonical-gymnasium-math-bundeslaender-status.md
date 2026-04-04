@@ -1,6 +1,6 @@
 # Canonical Gymnasium Mathematics Bundeslaender Status
 
-Snapshot: `2026-04-04T00:00:00Z`
+Snapshot: `2026-04-04T10:33:00Z`
 
 This file is generated from:
 
@@ -11,11 +11,11 @@ This file is generated from:
 
 - Tracked states: `16`
 - Canonical source coverage present: `6/16`
-- State-weighted rollout score: `62.8%`
-- States with active snapshots (`P2+`): `14/16`
-- States with structural anchors mapped (`P3+`): `14/16`
-- States with reviewed corridor (`P4+`): `14/16`
-- States with broad coverage (`P5+`): `4/16`
+- State-weighted rollout score: `72.5%`
+- States with active snapshots (`P2+`): `16/16`
+- States with structural anchors mapped (`P3+`): `16/16`
+- States with reviewed corridor (`P4+`): `16/16`
+- States with broad coverage (`P5+`): `6/16`
 - Active canonical corridors: `5/6`
 - Priority `active`: `6`
 - Priority `next_wave`: `4`
@@ -85,11 +85,11 @@ This file is generated from:
 | `DE-SH` Schleswig-Holstein | `P4` First corridor reviewed | `65%` | `no` | `149` | `snapshots_active` | `next_wave` |
 | `DE-SN` Sachsen | `P4` First corridor reviewed | `65%` | `no` | `123` | `snapshots_active` | `next_wave` |
 | `DE-HB` Bremen | `P5` Broad state coverage | `85%` | `no` | `68` | `snapshots_active` | `backlog` |
+| `DE-MV` Mecklenburg-Vorpommern | `P5` Broad state coverage | `85%` | `no` | `59` | `broad_reviewed_coverage` | `backlog` |
+| `DE-TH` Thueringen | `P5` Broad state coverage | `85%` | `no` | `48` | `broad_reviewed_coverage` | `backlog` |
 | `DE-HH` Hamburg | `P4` First corridor reviewed | `65%` | `no` | `64` | `snapshots_active` | `backlog` |
 | `DE-RP` Rheinland-Pfalz | `P4` First corridor reviewed | `65%` | `no` | `65` | `first_corridor_reviewed` | `backlog` |
-| `DE-SL` Saarland | `P4` First corridor reviewed | `65%` | `no` | `77` | `first_corridor_reviewed` | `backlog` |
-| `DE-TH` Thueringen | `P1` Source archived | `15%` | `no` | `0` | `partial_inputs_archived` | `backlog` |
-| `DE-MV` Mecklenburg-Vorpommern | `P0` Placeholder | `0%` | `no` | `0` | `mapping_scaffolded` | `backlog` |
+| `DE-SL` Saarland | `P4` First corridor reviewed | `65%` | `no` | `86` | `first_corridor_reviewed` | `backlog` |
 
 ## Immediate queue
 
@@ -117,11 +117,11 @@ This file is generated from:
 - `DE-SH`: Treat the inspected SH J10 5D lower-secondary bands `Pyramiden und Kegel` and `Kugeln` as intentionally broad in the current snapshot, but treat the SH upper-secondary E-analysis strip plus the adjacent Q1 `e-Funktion` and source-split `Integralrechnung` leaves as exact-resolved at explicit source-residue level; the next clean SH move should avoid reopening broad Q1/Q2 analysis parents unless a genuinely narrower source split appears.
 - `DE-SN`: Switch from Sachsen lower-secondary residue work to the next still-open state lane, most plausibly Sachsen-Anhalt (ST) onboarding.
 - `DE-HB`: Use Bremen only as pressure test for shared function packaging unless the source lane is later split more finely.
+- `DE-MV`: Keep Mecklenburg-Vorpommern stable as a broad reviewed comparison lane and move the next implementation step to deriving the first Thueringen source snapshots from the now archived input bundle.
+- `DE-TH`: Keep Thueringen stable as a broad reviewed comparison lane and move the next implementation step to the next still-open state lane.
 - `DE-HH`: Only split the remaining broad Hamburg J8 mixed function corridor further if the source can separate A3, A4, F3, and F4 more cleanly.
 - `DE-RP`: Open the next reviewed Rheinland-Pfalz lower-secondary strip beyond the first geometry pass; later RP residue can now be tightened selectively.
-- `DE-SL`: Open the next reviewed Saarland lower-secondary corridor, most cleanly in data/chance or geometry on the same explicit year-lane pattern.
-- `DE-TH`: Resolve access to the current 2025 Thueringen Gymnasium mathematics PDF for classes 5/6 and 11/12, then derive the first lower-secondary and upper-secondary source snapshots before activating shared provenance.
-- `DE-MV`: Archive the official Mecklenburg-Vorpommern mathematics source bundle under `curricula/DE/Gymnasium/input/MV/`, then derive the first lower-secondary and upper-secondary source snapshots before activating shared provenance.
+- `DE-SL`: Open the next reviewed Saarland lower-secondary corridor, most cleanly `Strukturen und funktionaler Zusammenhang` in `Klassenstufe 9`.
 
 ## Regeneration
 

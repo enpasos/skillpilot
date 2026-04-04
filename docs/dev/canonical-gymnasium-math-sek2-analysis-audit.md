@@ -1,6 +1,6 @@
 # Canonical Gymnasium Mathematics: Sek II Analysis Audit
 
-Snapshot: `2026-04-01`
+Snapshot: `2026-04-04`
 
 Purpose:
 
@@ -21,7 +21,8 @@ In scope:
   - `BY`
   - `HB`
   - `HH`
-  - `HE`
+- `HE`
+- `MV`
 - `NI`
 - `NW`
 - `RP`
@@ -29,6 +30,7 @@ In scope:
 - `ST`
 - `SN`
 - `SH`
+- `TH`
 
 Out of scope:
 
@@ -75,6 +77,20 @@ Observed signal:
   - a broad GK follow-on that mixes optimisation, exponential work, and integral understanding
   - narrow LK integral strips and a late LK function-family strip
 - Nordrhein-Westfalen confirms that the visible `AN2-AN4` surface can absorb both broader parents and narrower late strips without forcing a new visible `AN5` package.
+
+### Mecklenburg-Vorpommern (`MV`)
+
+Observed signal:
+
+- `MV` now adds a first reviewed upper-secondary analysis corridor on top of the newly activated broad qualification-phase snapshot lane
+- the Mecklenburg-Vorpommern source still exposes analysis mainly as broad topic bands, but those bands now form a didactically coherent reviewed corridor across:
+  - `Grenzwerte und Stetigkeit`
+  - `Ableitungen`
+  - `Untersuchungen von Funktionen und ihrer Graphen`
+  - `Anwendungen der Differentialrechnung`
+  - `Stammfunktionen`
+  - `Anwendungen der Integralrechnung`
+- Mecklenburg-Vorpommern therefore confirms that the frozen visible `AN2-AN4` surface can already absorb a broad reviewed curriculum corridor even when the source has not yet been split into narrower late-analysis residues
 
 ### Rheinland-Pfalz (`RP`)
 
@@ -126,6 +142,16 @@ Observed signal:
   - model-heavy `e`/`ln`/trigonometric / regression work
   - integral reconstruction, Hauptsatz, and area interpretation
 - Sachsen therefore supports the frozen visible `AN2-AN4` surface directly and does not create new pressure toward a separate visible `AN5` package
+
+### Thueringen (`TH`)
+
+Observed signal:
+
+- `TH` now adds a first reviewed upper-secondary analysis corridor on top of the newly activated `Klassenstufe 11` / `11/12` snapshot lane
+- the Thueringen source is still broad, but it now exposes a didactically coherent reviewed bridge across:
+  - `Klassenstufe 11: Funktionen`
+  - `Klassenstufen 11/12: Analysis`
+- Thueringen therefore confirms that the frozen visible `AN2-AN4` surface can already absorb a reviewed broad corridor even when the current state packaging still mixes entry-phase function work and later upper-secondary analysis inside broad source bands
 
 ## Current canonical analysis inventory
 

@@ -1,0 +1,458 @@
+{
+  "landscapeId": "cced401d-58d5-4832-b010-3b3466d0655b",
+  "locale": "de-DE",
+  "country": "DE",
+  "region": "TH",
+  "schoolType": "Gymnasium",
+  "subject": "Mathematik",
+  "frameworkId": "th-lp2018-2025-gym-sek2-math",
+  "title": "Mathematik Sekundarstufe II (Thueringen, erster Quellsnapshot)",
+  "titleEn": "Mathematics secondary level II (Thueringen, first source snapshot)",
+  "description": "Erster archivierter Thueringen-Quellsnapshot fuer die Mathematik der Sekundarstufe II. Der Snapshot verbindet den 2018-Lehrplan fuer die Einfuehrungsphase mit der 2025-Entwurfsfassung fuer die Zielbeschreibungen der Klassenstufen 11/12.",
+  "descriptionEn": "First archived Thueringen source snapshot for upper-secondary mathematics. The snapshot combines the 2018 curriculum for the entry phase with the 2025 draft for the target descriptions of grades 11/12.",
+  "compatibilityOnly": true,
+  "legacyHiddenByDefault": true,
+  "goals": [
+    {
+      "id": "th-sek2-root",
+      "title": "Mathematik Sekundarstufe II",
+      "titleEn": "Mathematics secondary level II",
+      "description": "Breiter erster Thueringen-Quellsnapshot fuer die Mathematik der Sekundarstufe II mit Orientierungsanker sowie den Klassenstufen 11 und 12.",
+      "descriptionEn": "Broad first Thueringen source snapshot for upper-secondary mathematics with an orientation anchor and grades 11 and 12.",
+      "weight": 3,
+      "tags": [
+        "Sek2",
+        "PilotSubset",
+        "Thueringen"
+      ],
+      "contains": [
+        "th-sek2-orientation",
+        "th-sek2-j11",
+        "th-sek2-j12",
+        "th-sek2-analysis-corridor",
+        "th-sek2-stochastics-corridor",
+        "th-sek2-analytic-geometry-corridor",
+        "th-sek2-linear-algebra-corridor"
+      ],
+      "requires": [
+        "th-sek2-orientation"
+      ],
+      "sourceRef": "Lehrplan Mathematik Gymnasium 2018, Einfuehrungsphase und Qualifikationsphase, S. 32-44; Lehrplan Mathematik Gymnasium 2025, Lernbereiche 11/12, S. 21-26.",
+      "dimensionTags": {
+        "framework": "th-lp2018-2025-gym-sek2-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "GLOBAL",
+        "area": "Sekundarstufe II"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "th-sek2-orientation",
+      "title": "Warum Mathematik in 11/12? - Wissenschaftspropedeutik und Modellierung",
+      "titleEn": "Why mathematics in grades 11/12? - scientific propaedeutics and modelling",
+      "description": "Die Thueringer Oberstufenlehrplaene rahmen Mathematik als wissenschaftspropedeutisches Kernfach, das vertiefte Allgemeinbildung, Modellierung, Argumentation und den reflektierten Einsatz digitaler Werkzeuge verbindet.",
+      "descriptionEn": "The Thueringen upper-secondary curricula frame mathematics as a scientific-propaedeutic core subject combining advanced general education, modelling, reasoning, and reflective use of digital tools.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "Orientation",
+        "Thueringen"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Lehrplan Mathematik Gymnasium 2025, Kapitel 3-4, S. 20-21; Lehrplan Mathematik Gymnasium 2018, Kapitel 3-4, S. 32-38.",
+      "dimensionTags": {
+        "framework": "th-lp2018-2025-gym-sek2-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "GLOBAL",
+        "area": "Orientierung"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "th-sek2-j11",
+      "title": "Klassenstufe 11",
+      "titleEn": "Grade 11",
+      "description": "Breiter erster Thueringen-Quellanker fuer die Klassenstufe 11 mit den vier Einfuehrungsphasenbereichen Arithmetik/Algebra, Funktionen, Geometrie und Stochastik.",
+      "descriptionEn": "Broad first Thueringen source anchor for grade 11 with the four entry-phase areas arithmetic/algebra, functions, geometry, and stochastics.",
+      "weight": 4,
+      "tags": [
+        "Sek2",
+        "J11",
+        "Thueringen"
+      ],
+      "contains": [
+        "th-sek2-j11-algebra",
+        "th-sek2-j11-functions",
+        "th-sek2-j11-geometry",
+        "th-sek2-j11-stochastics"
+      ],
+      "requires": [
+        "th-sek2-orientation"
+      ],
+      "sourceRef": "Lehrplan Mathematik Gymnasium 2018, Kapitel 3 Einfuehrungsphase, S. 32-37.",
+      "dimensionTags": {
+        "framework": "th-lp2018-2025-gym-sek2-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J11",
+        "area": "Klassenstufe 11"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "th-sek2-j11-algebra",
+      "title": "Klassenstufe 11: Arithmetik/Algebra",
+      "titleEn": "Grade 11: arithmetic/algebra",
+      "description": "Breiter erster Thueringen-Quellstrip fuer Arithmetik und Algebra in Klassenstufe 11.",
+      "descriptionEn": "Broad first Thueringen source strip for arithmetic and algebra in grade 11.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "J11",
+        "Algebra",
+        "Thueringen"
+      ],
+      "contains": [],
+      "requires": [
+        "th-sek2-j11"
+      ],
+      "sourceRef": "Lehrplan Mathematik Gymnasium 2018, 3.1 Arithmetik/Algebra, S. 32-34.",
+      "dimensionTags": {
+        "framework": "th-lp2018-2025-gym-sek2-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J11",
+        "area": "Arithmetik/Algebra"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "th-sek2-j11-functions",
+      "title": "Klassenstufe 11: Funktionen",
+      "titleEn": "Grade 11: functions",
+      "description": "Breiter erster Thueringen-Quellstrip fuer Funktionen in Klassenstufe 11.",
+      "descriptionEn": "Broad first Thueringen source strip for functions in grade 11.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "J11",
+        "Functions",
+        "Thueringen"
+      ],
+      "contains": [],
+      "requires": [
+        "th-sek2-j11"
+      ],
+      "sourceRef": "Lehrplan Mathematik Gymnasium 2018, 3.2 Funktionen, S. 34-36.",
+      "dimensionTags": {
+        "framework": "th-lp2018-2025-gym-sek2-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J11",
+        "area": "Funktionen"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "th-sek2-j11-geometry",
+      "title": "Klassenstufe 11: Geometrie",
+      "titleEn": "Grade 11: geometry",
+      "description": "Breiter erster Thueringen-Quellstrip fuer Geometrie in Klassenstufe 11.",
+      "descriptionEn": "Broad first Thueringen source strip for geometry in grade 11.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "J11",
+        "Geometry",
+        "Thueringen"
+      ],
+      "contains": [],
+      "requires": [
+        "th-sek2-j11"
+      ],
+      "sourceRef": "Lehrplan Mathematik Gymnasium 2018, 3.3 Geometrie, S. 36-37.",
+      "dimensionTags": {
+        "framework": "th-lp2018-2025-gym-sek2-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J11",
+        "area": "Geometrie"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "th-sek2-j11-stochastics",
+      "title": "Klassenstufe 11: Stochastik",
+      "titleEn": "Grade 11: stochastics",
+      "description": "Breiter erster Thueringen-Quellstrip fuer Stochastik in Klassenstufe 11.",
+      "descriptionEn": "Broad first Thueringen source strip for stochastics in grade 11.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "J11",
+        "DataChance",
+        "Thueringen"
+      ],
+      "contains": [],
+      "requires": [
+        "th-sek2-j11"
+      ],
+      "sourceRef": "Lehrplan Mathematik Gymnasium 2018, 3.4 Stochastik, S. 37.",
+      "dimensionTags": {
+        "framework": "th-lp2018-2025-gym-sek2-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J11",
+        "area": "Daten und Zufall"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "th-sek2-j12",
+      "title": "Klassenstufen 11/12",
+      "titleEn": "Grades 11/12",
+      "description": "Breiter erster Thueringen-Quellanker fuer die Lernbereiche der gymnasialen Oberstufe mit Analysis, Analytischer Geometrie und Stochastik.",
+      "descriptionEn": "Broad first Thueringen source anchor for the upper-secondary learning areas with analysis, analytic geometry, and stochastics.",
+      "weight": 3,
+      "tags": [
+        "Sek2",
+        "J11_12",
+        "Thueringen"
+      ],
+      "contains": [
+        "th-sek2-j12-analysis",
+        "th-sek2-j12-analytic-geometry",
+        "th-sek2-j12-stochastics"
+      ],
+      "requires": [
+        "th-sek2-j11"
+      ],
+      "sourceRef": "Lehrplan Mathematik Gymnasium 2025, Kapitel 4 Lernbereiche 11/12, S. 21-26; Lehrplan Mathematik Gymnasium 2018, Kapitel 4 Qualifikationsphase, S. 38-42.",
+      "dimensionTags": {
+        "framework": "th-lp2018-2025-gym-sek2-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J11_12",
+        "area": "Klassenstufen 11/12"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "th-sek2-analysis-corridor",
+      "title": "Analysis",
+      "titleEn": "Analysis",
+      "description": "Erster reviewed Thueringen-Quellkorridor fuer die Analysis der gymnasialen Oberstufe. Der Korridor verbindet den breiten Funktionen-Einstieg der Klassenstufe 11 mit dem breiten Analysis-Lernbereich der Klassenstufen 11/12.",
+      "descriptionEn": "First reviewed Thuringia source corridor for upper-secondary analysis. The corridor connects the broad functions entry in grade 11 with the broad grades-11/12 analysis learning area.",
+      "core": true,
+      "weight": 2,
+      "tags": [
+        "source",
+        "sek2",
+        "analysis",
+        "Thueringen"
+      ],
+      "contains": [
+        "th-sek2-j11-functions",
+        "th-sek2-j12-analysis"
+      ],
+      "requires": [
+        "th-sek2-orientation"
+      ],
+      "sourceRef": "Lehrplan Mathematik Gymnasium 2018, 3.2 Funktionen, S. 34-36; Lehrplan Mathematik Gymnasium 2025, 4.1 Lernbereich Analysis, S. 21-24.",
+      "dimensionTags": {
+        "framework": "th-gymnasium-math",
+        "phase": "SekII",
+        "area": "Analysis",
+        "topicCode": "TH.MATH.SEK2.ANALYSIS.CORRIDOR"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "th-sek2-stochastics-corridor",
+      "title": "Stochastik",
+      "titleEn": "Stochastics",
+      "description": "Erster reviewed Thueringen-Quellkorridor fuer die Stochastik der gymnasialen Oberstufe. Der Korridor verbindet den breiten Stochastik-Einstieg der Klassenstufe 11 mit dem breiten Stochastik-Lernbereich der Klassenstufen 11/12.",
+      "descriptionEn": "First reviewed Thuringia source corridor for upper-secondary stochastics. The corridor connects the broad stochastics entry in grade 11 with the broad grades-11/12 stochastics learning area.",
+      "core": true,
+      "weight": 2,
+      "tags": [
+        "source",
+        "sek2",
+        "stochastics",
+        "Thueringen"
+      ],
+      "contains": [
+        "th-sek2-j11-stochastics",
+        "th-sek2-j12-stochastics"
+      ],
+      "requires": [
+        "th-sek2-orientation"
+      ],
+      "sourceRef": "Lehrplan Mathematik Gymnasium 2018, 3.4 Stochastik, S. 37; Lehrplan Mathematik Gymnasium 2025, 4.3 Lernbereich Stochastik, S. 25-26.",
+      "dimensionTags": {
+        "framework": "th-gymnasium-math",
+        "phase": "SekII",
+        "area": "Stochastik",
+        "topicCode": "TH.MATH.SEK2.STOCHASTICS.CORRIDOR"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "th-sek2-analytic-geometry-corridor",
+      "title": "Analytische Geometrie / Vektoren",
+      "titleEn": "Analytic geometry / vectors",
+      "description": "Erster reviewed Thueringen-Quellkorridor fuer Analytische Geometrie und Vektoren in der gymnasialen Oberstufe. Der Korridor verbindet den breiten Geometrie-Einstieg der Klassenstufe 11 mit dem breiten Lernbereich Analytische Geometrie der Klassenstufen 11/12.",
+      "descriptionEn": "First reviewed Thuringia source corridor for analytic geometry and vectors in upper secondary. The corridor connects the broad geometry entry in grade 11 with the broad analytic geometry learning area in grades 11/12.",
+      "core": true,
+      "weight": 2,
+      "tags": [
+        "source",
+        "sek2",
+        "geometry",
+        "vectors",
+        "Thueringen"
+      ],
+      "contains": [
+        "th-sek2-j11-geometry",
+        "th-sek2-j12-analytic-geometry"
+      ],
+      "requires": [
+        "th-sek2-orientation"
+      ],
+      "sourceRef": "Lehrplan Mathematik Gymnasium 2018, 3.3 Geometrie, S. 36-37; Lehrplan Mathematik Gymnasium 2025, 4.2 Lernbereich Analytische Geometrie, S. 24-25.",
+      "dimensionTags": {
+        "framework": "th-gymnasium-math",
+        "phase": "SekII",
+        "area": "Analytische Geometrie",
+        "topicCode": "TH.MATH.SEK2.AGV.CORRIDOR"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "th-sek2-linear-algebra-corridor",
+      "title": "Lineare Algebra / Matrizen",
+      "titleEn": "Linear algebra / matrices",
+      "description": "Erster reviewed Thueringen-Quellkorridor fuer lineare Algebra und Matrizen in der gymnasialen Oberstufe. Der Korridor nutzt dieselbe aktuell noch breite Geometrie-/AGV-Quellverpackung und haengt sie bewusst auf die gemeinsame Raum-/Matrix-Oberflaeche, ohne einen kuenstlichen Matrixsplit zu erzwingen.",
+      "descriptionEn": "First reviewed Thuringia source corridor for linear algebra and matrices in upper secondary. The corridor reuses the same still-broad geometry/analytic-geometry source packaging and deliberately attaches it to the shared space/matrix surface without forcing an artificial matrix split.",
+      "core": true,
+      "weight": 2,
+      "tags": [
+        "source",
+        "sek2",
+        "linear-algebra",
+        "matrices",
+        "Thueringen"
+      ],
+      "contains": [
+        "th-sek2-j11-geometry",
+        "th-sek2-j12-analytic-geometry"
+      ],
+      "requires": [
+        "th-sek2-orientation"
+      ],
+      "sourceRef": "Lehrplan Mathematik Gymnasium 2018, 3.3 Geometrie, S. 36-37; Lehrplan Mathematik Gymnasium 2025, 4.2 Lernbereich Analytische Geometrie, S. 24-25.",
+      "dimensionTags": {
+        "framework": "th-gymnasium-math",
+        "phase": "SekII",
+        "area": "Lineare Algebra",
+        "topicCode": "TH.MATH.SEK2.LM.CORRIDOR"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "th-sek2-j12-analysis",
+      "title": "Klassenstufen 11/12: Analysis",
+      "titleEn": "Grades 11/12: analysis",
+      "description": "Breiter erster Thueringen-Quellstrip fuer Analysis in den Klassenstufen 11/12.",
+      "descriptionEn": "Broad first Thueringen source strip for analysis in grades 11/12.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "J11_12",
+        "Analysis",
+        "Thueringen"
+      ],
+      "contains": [],
+      "requires": [
+        "th-sek2-j12"
+      ],
+      "sourceRef": "Lehrplan Mathematik Gymnasium 2025, 4.1 Lernbereich Analysis, S. 21-24; Lehrplan Mathematik Gymnasium 2018, 4.1 Analysis, S. 39-41.",
+      "dimensionTags": {
+        "framework": "th-lp2018-2025-gym-sek2-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J11_12",
+        "area": "Analysis"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "th-sek2-j12-analytic-geometry",
+      "title": "Klassenstufen 11/12: Analytische Geometrie",
+      "titleEn": "Grades 11/12: analytic geometry",
+      "description": "Breiter erster Thueringen-Quellstrip fuer Analytische Geometrie in den Klassenstufen 11/12.",
+      "descriptionEn": "Broad first Thueringen source strip for analytic geometry in grades 11/12.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "J11_12",
+        "Geometry",
+        "Thueringen"
+      ],
+      "contains": [],
+      "requires": [
+        "th-sek2-j12"
+      ],
+      "sourceRef": "Lehrplan Mathematik Gymnasium 2025, 4.2 Lernbereich Analytische Geometrie, S. 24-25; Lehrplan Mathematik Gymnasium 2018, 4.2 Vektorrechnung/Analytische Geometrie, S. 41-42.",
+      "dimensionTags": {
+        "framework": "th-lp2018-2025-gym-sek2-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J11_12",
+        "area": "Analytische Geometrie"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "th-sek2-j12-stochastics",
+      "title": "Klassenstufen 11/12: Stochastik",
+      "titleEn": "Grades 11/12: stochastics",
+      "description": "Breiter erster Thueringen-Quellstrip fuer Stochastik in den Klassenstufen 11/12.",
+      "descriptionEn": "Broad first Thueringen source strip for stochastics in grades 11/12.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "J11_12",
+        "DataChance",
+        "Thueringen"
+      ],
+      "contains": [],
+      "requires": [
+        "th-sek2-j12"
+      ],
+      "sourceRef": "Lehrplan Mathematik Gymnasium 2025, 4.3 Lernbereich Stochastik, S. 25-26; Lehrplan Mathematik Gymnasium 2018, 4.3 Stochastik, S. 42.",
+      "dimensionTags": {
+        "framework": "th-lp2018-2025-gym-sek2-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J11_12",
+        "area": "Stochastik"
+      },
+      "type": "atomic"
+    }
+  ]
+}

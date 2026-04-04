@@ -1,0 +1,1327 @@
+{
+  "landscapeId": "71c43461-d20e-4267-bd18-ad9ba66f0c5b",
+  "locale": "de-DE",
+  "country": "DE",
+  "region": "MV",
+  "schoolType": "Gymnasium",
+  "subject": "Mathematik",
+  "frameworkId": "mv-rp2019-gym-sek1-math",
+  "title": "Mathematik Sekundarstufe I (Mecklenburg-Vorpommern, erster Quellsnapshot)",
+  "titleEn": "Mathematics secondary level I (Mecklenburg-Vorpommern, first source snapshot)",
+  "description": "Erster archivierter Mecklenburg-Vorpommern-Quellsnapshot fuer die Mathematik der Sekundarstufe I. Der Snapshot umfasst einen allgemeinen Orientierungsanker, die schulartunabhaengige Orientierungsstufe 5/6 sowie die Gymnasium-Jahrgaenge 7, 8, 9 und 10 als breite Klassenstufenanker.",
+  "descriptionEn": "First archived Mecklenburg-Vorpommern source snapshot for lower-secondary mathematics. The snapshot covers a general orientation anchor, the shared orientation stage grades 5/6, and the Gymnasium grades 7, 8, 9, and 10 as broad grade anchors.",
+  "compatibilityOnly": true,
+  "legacyHiddenByDefault": true,
+  "goals": [
+    {
+      "id": "mv-sek1-root",
+      "title": "Mathematik Sekundarstufe I",
+      "titleEn": "Mathematics secondary level I",
+      "description": "Breiter erster Mecklenburg-Vorpommern-Quellsnapshot fuer die Mathematik der Sekundarstufe I mit Orientierungsanker sowie den Klassenstufenbaendern 5/6, 7, 8, 9 und 10.",
+      "descriptionEn": "Broad first Mecklenburg-Vorpommern source snapshot for lower-secondary mathematics with an orientation anchor and the grade-band clusters 5/6, 7, 8, 9, and 10.",
+      "weight": 6,
+      "tags": [
+        "Sek1",
+        "PilotSubset",
+        "Mecklenburg-Vorpommern"
+      ],
+      "contains": [
+        "mv-sek1-orientation",
+        "mv-sek1-j5-6",
+        "mv-sek1-j7",
+        "mv-sek1-j8",
+        "mv-sek1-j9",
+        "mv-sek1-j10"
+      ],
+      "requires": [
+        "mv-sek1-orientation"
+      ],
+      "sourceRef": "Rahmenplan Orientierungsstufe Mathematik 2020, S. 14-25; Rahmenplan Sekundarstufe I Gymnasium/Gesamtschule Mathematik 2019, S. 15-40.",
+      "dimensionTags": {
+        "framework": "mv-rp2019-gym-sek1-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "GLOBAL",
+        "area": "Sekundarstufe I"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "mv-sek1-orientation",
+      "title": "Warum Mathematik? - Modellieren, Argumentieren und Anwenden",
+      "titleEn": "Why mathematics? - Modelling, arguing, and applying",
+      "description": "Die Mecklenburg-Vorpommern-Rahmenplaene rahmen Mathematik als Werkzeug zur Beschreibung von Wirklichkeit, als Sprache fuer Begruendung und Kommunikation sowie als Handlungsfeld fuer alltags- und fachbezogene Problemloesung.",
+      "descriptionEn": "The Mecklenburg-Vorpommern curricula frame mathematics as a tool for describing reality, a language for reasoning and communication, and a field for solving disciplinary and real-world problems.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "Orientation",
+        "Mecklenburg-Vorpommern"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Rahmenplan Orientierungsstufe Mathematik 2020, Fachprofil und Kompetenzbereiche, S. 4-14; Rahmenplan Sekundarstufe I Gymnasium/Gesamtschule Mathematik 2019, Fachprofil und Kompetenzbereiche, S. 4-14.",
+      "dimensionTags": {
+        "framework": "mv-rp2019-gym-sek1-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "GLOBAL",
+        "area": "Orientierung"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "mv-sek1-j5-6",
+      "title": "Klassen 5/6",
+      "titleEn": "Grades 5/6",
+      "description": "Erster verfeinerter Mecklenburg-Vorpommern-Quellkorridor fuer die schulartunabhaengige Orientierungsstufe 5/6 im Fach Mathematik mit reviewed Zahlen-, Geometrie- sowie Daten-/Zufallskorridoren.",
+      "descriptionEn": "First refined Mecklenburg-Vorpommern source corridor for the shared orientation stage grades 5/6 in mathematics with reviewed number, geometry, and data/chance corridors.",
+      "weight": 3,
+      "tags": [
+        "Sek1",
+        "JG5_6",
+        "Mecklenburg-Vorpommern",
+        "Orientierungsstufe"
+      ],
+      "contains": [
+        "mv-sek1-j5-6-arithmetic-corridor",
+        "mv-sek1-j5-6-geometry-corridor",
+        "mv-sek1-j5-6-data-chance-corridor"
+      ],
+      "requires": [
+        "mv-sek1-orientation"
+      ],
+      "sourceRef": "Rahmenplan Orientierungsstufe Mathematik 2020, Unterrichtsinhalte Klasse 5 und Klasse 6, S. 14-25.",
+      "dimensionTags": {
+        "framework": "mv-rp2019-gym-sek1-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG5_6",
+        "area": "Orientierungsstufe"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "mv-sek1-j5-6-arithmetic-corridor",
+      "title": "Klassen 5/6: Natuerliche Zahlen, Teilbarkeit, Brueche und Dezimalbrueche",
+      "titleEn": "Grades 5/6: natural numbers, divisibility, fractions, and decimals",
+      "description": "Erster reviewed Mecklenburg-Vorpommern-Korridor fuer arithmetische Grundlagen in der Orientierungsstufe 5/6.",
+      "descriptionEn": "First reviewed Mecklenburg-Vorpommern corridor for arithmetic foundations in the orientation stage grades 5/6.",
+      "weight": 2,
+      "tags": [
+        "Sek1",
+        "JG5_6",
+        "Algebra",
+        "Corridor",
+        "Mecklenburg-Vorpommern",
+        "Orientierungsstufe"
+      ],
+      "contains": [
+        "mv-sek1-j5-6-natural-numbers-divisibility",
+        "mv-sek1-j5-6-fractions-decimals"
+      ],
+      "requires": [
+        "mv-sek1-orientation"
+      ],
+      "sourceRef": "Rahmenplan Orientierungsstufe Mathematik 2020, Klasse 5/6, Natuerliche Zahlen sowie Gebrochene Zahlen, S. 14-22.",
+      "dimensionTags": {
+        "framework": "mv-rp2019-gym-sek1-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG5_6",
+        "area": "Zahlen und Operationen"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "mv-sek1-j5-6-natural-numbers-divisibility",
+      "title": "Klassen 5/6: Natuerliche Zahlen und Teilbarkeit",
+      "titleEn": "Grades 5/6: natural numbers and divisibility",
+      "description": "Breiter erster Mecklenburg-Vorpommern-Quellstrip fuer natuerliche Zahlen in Klassen 5/6 mit Rechenoperationen, Potenzen, Primzahlen und Teilbarkeit.",
+      "descriptionEn": "Broad first Mecklenburg-Vorpommern source strip for natural numbers in grades 5/6 with arithmetic operations, powers, prime numbers, and divisibility.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "JG5_6",
+        "Algebra",
+        "Mecklenburg-Vorpommern",
+        "Orientierungsstufe"
+      ],
+      "contains": [],
+      "requires": [
+        "mv-sek1-orientation"
+      ],
+      "sourceRef": "Rahmenplan Orientierungsstufe Mathematik 2020, Klasse 5: Natuerliche Zahlen; Klasse 6: Natuerliche Zahlen, S. 14-21.",
+      "dimensionTags": {
+        "framework": "mv-rp2019-gym-sek1-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG5_6",
+        "area": "Zahlen und Operationen"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "mv-sek1-j5-6-fractions-decimals",
+      "title": "Klassen 5/6: Brueche und Dezimalbrueche",
+      "titleEn": "Grades 5/6: fractions and decimals",
+      "description": "Breiter erster Mecklenburg-Vorpommern-Quellstrip fuer Brueche und Dezimalbrueche in Klassen 5/6 mit Grundvorstellungen, Darstellungen und Rechenoperationen.",
+      "descriptionEn": "Broad first Mecklenburg-Vorpommern source strip for fractions and decimals in grades 5/6 with basic concepts, representations, and operations.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "JG5_6",
+        "Algebra",
+        "Mecklenburg-Vorpommern",
+        "Orientierungsstufe"
+      ],
+      "contains": [],
+      "requires": [
+        "mv-sek1-j5-6-natural-numbers-divisibility"
+      ],
+      "sourceRef": "Rahmenplan Orientierungsstufe Mathematik 2020, Klasse 5/6, Gebrochene Zahlen, S. 16-22.",
+      "dimensionTags": {
+        "framework": "mv-rp2019-gym-sek1-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG5_6",
+        "area": "Zahlen und Operationen"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "mv-sek1-j5-6-geometry-corridor",
+      "title": "Klassen 5/6: Fruehe Geometrie und Raumvorstellungen",
+      "titleEn": "Grades 5/6: early geometry and spatial concepts",
+      "description": "Erster reviewed Mecklenburg-Vorpommern-Korridor fuer fruehe Geometrie- und Raumvorstellungen in der Orientierungsstufe 5/6.",
+      "descriptionEn": "First reviewed Mecklenburg-Vorpommern corridor for early geometry and spatial concepts in the orientation stage grades 5/6.",
+      "weight": 2,
+      "tags": [
+        "Sek1",
+        "JG5_6",
+        "Geometry",
+        "Corridor",
+        "Mecklenburg-Vorpommern",
+        "Orientierungsstufe"
+      ],
+      "contains": [
+        "mv-sek1-j5-6-plane-geometry",
+        "mv-sek1-j5-6-cuboids-cubes"
+      ],
+      "requires": [
+        "mv-sek1-orientation"
+      ],
+      "sourceRef": "Rahmenplan Orientierungsstufe Mathematik 2020, Klasse 5: Planimetrie; Klasse 6: Stereometrie, S. 19-24.",
+      "dimensionTags": {
+        "framework": "mv-rp2019-gym-sek1-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG5_6",
+        "area": "Geometrie und Raum"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "mv-sek1-j5-6-plane-geometry",
+      "title": "Klassen 5/6: Winkel, Konstruktionen, Abbildungen, Rechtecke und Quadrate",
+      "titleEn": "Grades 5/6: angles, constructions, transformations, rectangles, and squares",
+      "description": "Breiter erster Mecklenburg-Vorpommern-Quellstrip fuer ebene Geometrie in Klassen 5/6 mit Winkeln, Winkelpaaren, Grundkonstruktionen, Abbildungen sowie Rechtecken und Quadraten.",
+      "descriptionEn": "Broad first Mecklenburg-Vorpommern source strip for plane geometry in grades 5/6 with angles, angle pairs, basic constructions, transformations, and rectangles and squares.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "JG5_6",
+        "Geometry",
+        "Mecklenburg-Vorpommern",
+        "Orientierungsstufe"
+      ],
+      "contains": [],
+      "requires": [
+        "mv-sek1-orientation"
+      ],
+      "sourceRef": "Rahmenplan Orientierungsstufe Mathematik 2020, Klasse 5: Planimetrie, S. 19-20.",
+      "dimensionTags": {
+        "framework": "mv-rp2019-gym-sek1-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG5_6",
+        "area": "Geometrie in der Ebene"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "mv-sek1-j5-6-cuboids-cubes",
+      "title": "Klassen 5/6: Quader und Wuerfel",
+      "titleEn": "Grades 5/6: cuboids and cubes",
+      "description": "Breiter erster Mecklenburg-Vorpommern-Quellstrip fuer Quader und Wuerfel in Klassen 5/6 mit Eigenschaften, Schraegbildern, Netzen, Oberflaecheninhalt und Volumen.",
+      "descriptionEn": "Broad first Mecklenburg-Vorpommern source strip for cuboids and cubes in grades 5/6 with properties, oblique sketches, nets, surface area, and volume.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "JG5_6",
+        "Geometry",
+        "Mecklenburg-Vorpommern",
+        "Orientierungsstufe"
+      ],
+      "contains": [],
+      "requires": [
+        "mv-sek1-j5-6-plane-geometry"
+      ],
+      "sourceRef": "Rahmenplan Orientierungsstufe Mathematik 2020, Klasse 6: Stereometrie, S. 23-24.",
+      "dimensionTags": {
+        "framework": "mv-rp2019-gym-sek1-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG5_6",
+        "area": "Geometrie und Raum"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "mv-sek1-j5-6-data-chance-corridor",
+      "title": "Klassen 5/6: Fruehe Daten- und Zufallsvorstellungen",
+      "titleEn": "Grades 5/6: early data and chance concepts",
+      "description": "Erster reviewed Mecklenburg-Vorpommern-Korridor fuer fruehe Daten- und Zufallsvorstellungen in der Orientierungsstufe 5/6.",
+      "descriptionEn": "First reviewed Mecklenburg-Vorpommern corridor for early data and chance concepts in the orientation stage grades 5/6.",
+      "weight": 2,
+      "tags": [
+        "Sek1",
+        "JG5_6",
+        "DataChance",
+        "Corridor",
+        "Mecklenburg-Vorpommern",
+        "Orientierungsstufe"
+      ],
+      "contains": [
+        "mv-sek1-j5-6-statistical-surveys",
+        "mv-sek1-j5-6-single-stage-random-experiments"
+      ],
+      "requires": [
+        "mv-sek1-orientation"
+      ],
+      "sourceRef": "Rahmenplan Orientierungsstufe Mathematik 2020, Klasse 5: Statistische Erhebungen; Klasse 6: Statistische Erhebungen und einstufige Zufallsexperimente, S. 21-23.",
+      "dimensionTags": {
+        "framework": "mv-rp2019-gym-sek1-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG5_6",
+        "area": "Daten und Zufall"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "mv-sek1-j5-6-statistical-surveys",
+      "title": "Klassen 5/6: Statistische Erhebungen",
+      "titleEn": "Grades 5/6: statistical surveys",
+      "description": "Breiter erster Mecklenburg-Vorpommern-Quellstrip fuer statistische Erhebungen in Klassen 5/6 mit Listen, Haeufigkeitstabellen, Lagekennwerten und grafischen Darstellungen.",
+      "descriptionEn": "Broad first Mecklenburg-Vorpommern source strip for statistical surveys in grades 5/6 with lists, frequency tables, summary measures, and graphical displays.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "JG5_6",
+        "DataChance",
+        "Mecklenburg-Vorpommern",
+        "Orientierungsstufe"
+      ],
+      "contains": [],
+      "requires": [
+        "mv-sek1-orientation"
+      ],
+      "sourceRef": "Rahmenplan Orientierungsstufe Mathematik 2020, Klasse 5: Statistische Erhebungen, S. 21-22.",
+      "dimensionTags": {
+        "framework": "mv-rp2019-gym-sek1-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG5_6",
+        "area": "Daten und Zufall"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "mv-sek1-j5-6-single-stage-random-experiments",
+      "title": "Klassen 5/6: Einstufige Zufallsexperimente",
+      "titleEn": "Grades 5/6: single-stage random experiments",
+      "description": "Breiter erster Mecklenburg-Vorpommern-Quellstrip fuer einstufige Zufallsexperimente in Klassen 5/6 mit Ergebnis, Ergebnismenge, Baumdiagramm, Haeufigkeiten und Wahrscheinlichkeit.",
+      "descriptionEn": "Broad first Mecklenburg-Vorpommern source strip for single-stage random experiments in grades 5/6 with outcome, sample space, tree diagrams, frequencies, and probability.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "JG5_6",
+        "DataChance",
+        "Mecklenburg-Vorpommern",
+        "Orientierungsstufe"
+      ],
+      "contains": [],
+      "requires": [
+        "mv-sek1-j5-6-statistical-surveys"
+      ],
+      "sourceRef": "Rahmenplan Orientierungsstufe Mathematik 2020, Klasse 6: Einstufige Zufallsexperimente, S. 23.",
+      "dimensionTags": {
+        "framework": "mv-rp2019-gym-sek1-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG5_6",
+        "area": "Daten und Zufall"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "mv-sek1-j7",
+      "title": "Klasse 7",
+      "titleEn": "Grade 7",
+      "description": "Erster verfeinerter Mecklenburg-Vorpommern-Quellanker fuer die Mathematik der Klassenstufe 7 im gymnasialen Bildungsgang mit ersten reviewed Funktions-, Algebra- und Geometrie-Korridoren.",
+      "descriptionEn": "First refined Mecklenburg-Vorpommern source anchor for grade 7 mathematics in the Gymnasium track with first reviewed function, algebra, and geometry corridors.",
+      "weight": 3,
+      "tags": [
+        "Sek1",
+        "J7",
+        "Mecklenburg-Vorpommern"
+      ],
+      "contains": [
+        "mv-sek1-j7-functions-corridor",
+        "mv-sek1-j7-algebra-corridor",
+        "mv-sek1-j7-geometry-corridor"
+      ],
+      "requires": [
+        "mv-sek1-orientation",
+        "mv-sek1-j5-6"
+      ],
+      "sourceRef": "Rahmenplan Sekundarstufe I Gymnasium/Gesamtschule Mathematik 2019, Klasse 7, S. 15-20.",
+      "dimensionTags": {
+        "framework": "mv-rp2019-gym-sek1-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J7",
+        "area": "Grundlagen"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "mv-sek1-j7-geometry-corridor",
+      "title": "Klasse 7: Dreiecke, Vierecke und Kreise",
+      "titleEn": "Grade 7: triangles, quadrilaterals, and circles",
+      "description": "Erster reviewed Mecklenburg-Vorpommern-Korridor fuer Dreiecke, Vierecke und Kreise in Klasse 7.",
+      "descriptionEn": "First reviewed Mecklenburg-Vorpommern corridor for triangles, quadrilaterals, and circles in grade 7.",
+      "weight": 2,
+      "tags": [
+        "Sek1",
+        "J7",
+        "Geometry",
+        "Corridor",
+        "Mecklenburg-Vorpommern"
+      ],
+      "contains": [
+        "mv-sek1-j7-triangles-quadrilaterals",
+        "mv-sek1-j7-circles"
+      ],
+      "requires": [
+        "mv-sek1-j5-6"
+      ],
+      "sourceRef": "Rahmenplan Sekundarstufe I Gymnasium/Gesamtschule Mathematik 2019, Klasse 7, Dreieck, Viereck und Kreis, S. 19.",
+      "dimensionTags": {
+        "framework": "mv-rp2019-gym-sek1-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J7",
+        "area": "Raum und Form"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "mv-sek1-j7-triangles-quadrilaterals",
+      "title": "Klasse 7: Dreiecke und Vierecke",
+      "titleEn": "Grade 7: triangles and quadrilaterals",
+      "description": "Breiter erster Mecklenburg-Vorpommern-Quellstrip fuer Dreiecke und Vierecke in Klasse 7 mit Kongruenz, Konstruktionen sowie Umfang und Flaecheninhalt.",
+      "descriptionEn": "Broad first Mecklenburg-Vorpommern source strip for triangles and quadrilaterals in grade 7 with congruence, constructions, perimeter, and area.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "J7",
+        "Geometry",
+        "Mecklenburg-Vorpommern"
+      ],
+      "contains": [],
+      "requires": [
+        "mv-sek1-j5-6"
+      ],
+      "sourceRef": "Rahmenplan Sekundarstufe I Gymnasium/Gesamtschule Mathematik 2019, Klasse 7, Dreieck und Viereck, S. 19.",
+      "dimensionTags": {
+        "framework": "mv-rp2019-gym-sek1-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J7",
+        "area": "Raum und Form"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "mv-sek1-j7-circles",
+      "title": "Klasse 7: Kreise",
+      "titleEn": "Grade 7: circles",
+      "description": "Breiter erster Mecklenburg-Vorpommern-Quellstrip fuer Kreise in Klasse 7 mit Kreisbeziehungen, Satz des Thales, Winkelbeziehungen sowie Umfang und Flaecheninhalt.",
+      "descriptionEn": "Broad first Mecklenburg-Vorpommern source strip for circles in grade 7 with circle relations, Thales, angle relations, circumference, and area.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "J7",
+        "Geometry",
+        "Mecklenburg-Vorpommern"
+      ],
+      "contains": [],
+      "requires": [
+        "mv-sek1-j7-triangles-quadrilaterals"
+      ],
+      "sourceRef": "Rahmenplan Sekundarstufe I Gymnasium/Gesamtschule Mathematik 2019, Klasse 7, Kreis, S. 19.",
+      "dimensionTags": {
+        "framework": "mv-rp2019-gym-sek1-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J7",
+        "area": "Raum und Form"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "mv-sek1-j7-algebra-corridor",
+      "title": "Klasse 7: Prozent, Zins und Zahlbereichserweiterungen",
+      "titleEn": "Grade 7: percentages, interest, and number extensions",
+      "description": "Erster reviewed Mecklenburg-Vorpommern-Korridor fuer Prozent- und Zinsrechnung sowie spaetere Zahlbereichserweiterungen in Klasse 7.",
+      "descriptionEn": "First reviewed Mecklenburg-Vorpommern corridor for percentage/interest work and later number extensions in grade 7.",
+      "weight": 2,
+      "tags": [
+        "Sek1",
+        "J7",
+        "Algebra",
+        "Corridor",
+        "Mecklenburg-Vorpommern"
+      ],
+      "contains": [
+        "mv-sek1-j7-percentage-interest",
+        "mv-sek1-j7-integers-rationals-roots"
+      ],
+      "requires": [
+        "mv-sek1-j5-6"
+      ],
+      "sourceRef": "Rahmenplan Sekundarstufe I Gymnasium/Gesamtschule Mathematik 2019, Klasse 7, Prozent- und Zinsrechnung sowie ganze/rationale Zahlen und Quadratwurzel, S. 17-18.",
+      "dimensionTags": {
+        "framework": "mv-rp2019-gym-sek1-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J7",
+        "area": "Zahl und Operation"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "mv-sek1-j7-percentage-interest",
+      "title": "Klasse 7: Prozent- und Zinsrechnung",
+      "titleEn": "Grade 7: percentage and interest calculations",
+      "description": "Breiter erster Mecklenburg-Vorpommern-Quellstrip fuer Prozent- und Zinsrechnung in Klasse 7.",
+      "descriptionEn": "Broad first Mecklenburg-Vorpommern source strip for percentage and interest calculations in grade 7.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "J7",
+        "Algebra",
+        "Mecklenburg-Vorpommern"
+      ],
+      "contains": [],
+      "requires": [
+        "mv-sek1-j7-proportionality"
+      ],
+      "sourceRef": "Rahmenplan Sekundarstufe I Gymnasium/Gesamtschule Mathematik 2019, Klasse 7, Prozent- und Zinsrechnung, S. 17.",
+      "dimensionTags": {
+        "framework": "mv-rp2019-gym-sek1-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J7",
+        "area": "Zahl und Operation"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "mv-sek1-j7-integers-rationals-roots",
+      "title": "Klasse 7: Ganze Zahlen, rationale Zahlen und Quadratwurzel",
+      "titleEn": "Grade 7: integers, rational numbers, and square root",
+      "description": "Breiter erster Mecklenburg-Vorpommern-Quellstrip fuer ganze Zahlen, rationale Zahlen und die Quadratwurzel in Klasse 7.",
+      "descriptionEn": "Broad first Mecklenburg-Vorpommern source strip for integers, rational numbers, and square root in grade 7.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "J7",
+        "Algebra",
+        "Mecklenburg-Vorpommern"
+      ],
+      "contains": [],
+      "requires": [
+        "mv-sek1-j7-percentage-interest"
+      ],
+      "sourceRef": "Rahmenplan Sekundarstufe I Gymnasium/Gesamtschule Mathematik 2019, Klasse 7, Ganze Zahlen, rationale Zahlen und Quadratwurzel, S. 18.",
+      "dimensionTags": {
+        "framework": "mv-rp2019-gym-sek1-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J7",
+        "area": "Zahl und Operation"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "mv-sek1-j7-functions-corridor",
+      "title": "Klasse 7: Zuordnungen und proportionale Zusammenhaenge",
+      "titleEn": "Grade 7: mappings and proportional relationships",
+      "description": "Erster reviewed Mecklenburg-Vorpommern-Korridor fuer funktionale Zuordnungen und proportionale Zusammenhaenge in Klasse 7.",
+      "descriptionEn": "First reviewed Mecklenburg-Vorpommern corridor for mappings and proportional relationships in grade 7.",
+      "weight": 2,
+      "tags": [
+        "Sek1",
+        "J7",
+        "Functions",
+        "Corridor",
+        "Mecklenburg-Vorpommern"
+      ],
+      "contains": [
+        "mv-sek1-j7-mappings",
+        "mv-sek1-j7-proportionality"
+      ],
+      "requires": [
+        "mv-sek1-j5-6"
+      ],
+      "sourceRef": "Rahmenplan Sekundarstufe I Gymnasium/Gesamtschule Mathematik 2019, Klasse 7, Zuordnungen sowie proportionale und umgekehrt proportionale Zuordnungen, S. 15-20.",
+      "dimensionTags": {
+        "framework": "mv-rp2019-gym-sek1-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J7",
+        "area": "Funktionaler Zusammenhang"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "mv-sek1-j7-mappings",
+      "title": "Klasse 7: Zuordnungen",
+      "titleEn": "Grade 7: mappings",
+      "description": "Breiter erster Mecklenburg-Vorpommern-Quellstrip fuer Zuordnungen in Klasse 7.",
+      "descriptionEn": "Broad first Mecklenburg-Vorpommern source strip for mappings in grade 7.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "J7",
+        "Functions",
+        "Mecklenburg-Vorpommern"
+      ],
+      "contains": [],
+      "requires": [
+        "mv-sek1-j5-6"
+      ],
+      "sourceRef": "Rahmenplan Sekundarstufe I Gymnasium/Gesamtschule Mathematik 2019, Klasse 7, Zuordnungen, S. 15-20.",
+      "dimensionTags": {
+        "framework": "mv-rp2019-gym-sek1-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J7",
+        "area": "Funktionaler Zusammenhang"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "mv-sek1-j7-proportionality",
+      "title": "Klasse 7: Proportionale und umgekehrt proportionale Zuordnungen",
+      "titleEn": "Grade 7: proportional and inverse-proportional mappings",
+      "description": "Breiter erster Mecklenburg-Vorpommern-Quellstrip fuer proportionale und umgekehrt proportionale Zuordnungen in Klasse 7.",
+      "descriptionEn": "Broad first Mecklenburg-Vorpommern source strip for proportional and inverse-proportional mappings in grade 7.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "J7",
+        "Functions",
+        "Mecklenburg-Vorpommern"
+      ],
+      "contains": [],
+      "requires": [
+        "mv-sek1-j7-mappings"
+      ],
+      "sourceRef": "Rahmenplan Sekundarstufe I Gymnasium/Gesamtschule Mathematik 2019, Klasse 7, proportionale und umgekehrt proportionale Zuordnungen, S. 15-20.",
+      "dimensionTags": {
+        "framework": "mv-rp2019-gym-sek1-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J7",
+        "area": "Funktionaler Zusammenhang"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "mv-sek1-j8",
+      "title": "Klasse 8",
+      "titleEn": "Grade 8",
+      "description": "Erster verfeinerter Mecklenburg-Vorpommern-Quellanker fuer die Mathematik der Klassenstufe 8 im gymnasialen Bildungsgang mit reviewed Linearfunktions- und Geometriekorridoren.",
+      "descriptionEn": "First refined Mecklenburg-Vorpommern source anchor for grade 8 mathematics in the Gymnasium track with reviewed linear-functions and geometry corridors.",
+      "weight": 3,
+      "tags": [
+        "Sek1",
+        "J8",
+        "Mecklenburg-Vorpommern"
+      ],
+      "contains": [
+        "mv-sek1-j8-linear-functions-corridor",
+        "mv-sek1-j8-geometry-corridor"
+      ],
+      "requires": [
+        "mv-sek1-orientation",
+        "mv-sek1-j7"
+      ],
+      "sourceRef": "Rahmenplan Sekundarstufe I Gymnasium/Gesamtschule Mathematik 2019, Klasse 8, S. 21-26.",
+      "dimensionTags": {
+        "framework": "mv-rp2019-gym-sek1-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J8",
+        "area": "Grundlagen"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "mv-sek1-j8-linear-functions-corridor",
+      "title": "Klasse 8: Funktionen sowie lineare und konstante Funktionen",
+      "titleEn": "Grade 8: functions plus linear and constant functions",
+      "description": "Erster reviewed Mecklenburg-Vorpommern-Korridor fuer mittlere Sek-I-Linearfunktionsarbeit in Klasse 8.",
+      "descriptionEn": "First reviewed Mecklenburg-Vorpommern corridor for middle lower-secondary linear-function work in grade 8.",
+      "weight": 2,
+      "tags": [
+        "Sek1",
+        "J8",
+        "Functions",
+        "Corridor",
+        "Mecklenburg-Vorpommern"
+      ],
+      "contains": [
+        "mv-sek1-j8-function-concept",
+        "mv-sek1-j8-linear-functions"
+      ],
+      "requires": [
+        "mv-sek1-j7-functions-corridor"
+      ],
+      "sourceRef": "Rahmenplan Sekundarstufe I Gymnasium/Gesamtschule Mathematik 2019, Klasse 8, Funktionen sowie lineare und konstante Funktionen, S. 22-23.",
+      "dimensionTags": {
+        "framework": "mv-rp2019-gym-sek1-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J8",
+        "area": "Funktionen"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "mv-sek1-j8-function-concept",
+      "title": "Klasse 8: Funktionen und Darstellungsformen",
+      "titleEn": "Grade 8: functions and representations",
+      "description": "Breiter erster Mecklenburg-Vorpommern-Quellstrip fuer Funktionsbegriff und Darstellungsformen in Klasse 8 mit Stelle, Argument und Funktionswert.",
+      "descriptionEn": "Broad first Mecklenburg-Vorpommern source strip for the function concept and representations in grade 8 with input, argument, and function value.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "J8",
+        "Functions",
+        "Mecklenburg-Vorpommern"
+      ],
+      "contains": [],
+      "requires": [
+        "mv-sek1-j7-mappings"
+      ],
+      "sourceRef": "Rahmenplan Sekundarstufe I Gymnasium/Gesamtschule Mathematik 2019, Klasse 8, Funktionen, S. 22.",
+      "dimensionTags": {
+        "framework": "mv-rp2019-gym-sek1-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J8",
+        "area": "Funktionen"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "mv-sek1-j8-linear-functions",
+      "title": "Klasse 8: Lineare und konstante Funktionen",
+      "titleEn": "Grade 8: linear and constant functions",
+      "description": "Breiter erster Mecklenburg-Vorpommern-Quellstrip fuer lineare und konstante Funktionen in Klasse 8 mit Steigung, Achsenabschnitt, Nullstelle, Lagebeziehungen und Parameterwirkung.",
+      "descriptionEn": "Broad first Mecklenburg-Vorpommern source strip for linear and constant functions in grade 8 with slope, intercept, roots, line relations, and parameter effects.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "J8",
+        "Functions",
+        "Mecklenburg-Vorpommern"
+      ],
+      "contains": [],
+      "requires": [
+        "mv-sek1-j8-function-concept"
+      ],
+      "sourceRef": "Rahmenplan Sekundarstufe I Gymnasium/Gesamtschule Mathematik 2019, Klasse 8, Lineare Funktionen, konstante Funktionen, S. 22-23.",
+      "dimensionTags": {
+        "framework": "mv-rp2019-gym-sek1-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J8",
+        "area": "Funktionen"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "mv-sek1-j8-geometry-corridor",
+      "title": "Klasse 8: Rechtwinkliges Dreieck, Aehnlichkeit und Koerper",
+      "titleEn": "Grade 8: right triangles, similarity, and solids",
+      "description": "Erster reviewed Mecklenburg-Vorpommern-Korridor fuer spaetere Sek-I-Geometrie in Klasse 8.",
+      "descriptionEn": "First reviewed Mecklenburg-Vorpommern corridor for later lower-secondary geometry in grade 8.",
+      "weight": 3,
+      "tags": [
+        "Sek1",
+        "J8",
+        "Geometry",
+        "Corridor",
+        "Mecklenburg-Vorpommern"
+      ],
+      "contains": [
+        "mv-sek1-j8-right-triangles-pythagoras",
+        "mv-sek1-j8-similarity",
+        "mv-sek1-j8-solids"
+      ],
+      "requires": [
+        "mv-sek1-j7-geometry-corridor"
+      ],
+      "sourceRef": "Rahmenplan Sekundarstufe I Gymnasium/Gesamtschule Mathematik 2019, Klasse 8, Rechtwinkliges Dreieck sowie Planimetrie und Stereometrie, S. 24-25.",
+      "dimensionTags": {
+        "framework": "mv-rp2019-gym-sek1-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J8",
+        "area": "Geometrie"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "mv-sek1-j8-right-triangles-pythagoras",
+      "title": "Klasse 8: Rechtwinkliges Dreieck und Satz des Pythagoras",
+      "titleEn": "Grade 8: right triangles and the Pythagorean theorem",
+      "description": "Breiter erster Mecklenburg-Vorpommern-Quellstrip fuer rechtwinklige Dreiecke in Klasse 8 mit Satz des Pythagoras, Umkehrung und ersten Begruendungen.",
+      "descriptionEn": "Broad first Mecklenburg-Vorpommern source strip for right triangles in grade 8 with the Pythagorean theorem, its converse, and first justifications.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "J8",
+        "Geometry",
+        "Mecklenburg-Vorpommern"
+      ],
+      "contains": [],
+      "requires": [
+        "mv-sek1-j7-triangles-quadrilaterals"
+      ],
+      "sourceRef": "Rahmenplan Sekundarstufe I Gymnasium/Gesamtschule Mathematik 2019, Klasse 8, Rechtwinkliges Dreieck, S. 24.",
+      "dimensionTags": {
+        "framework": "mv-rp2019-gym-sek1-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J8",
+        "area": "Geometrie"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "mv-sek1-j8-similarity",
+      "title": "Klasse 8: Aehnlichkeit",
+      "titleEn": "Grade 8: similarity",
+      "description": "Breiter erster Mecklenburg-Vorpommern-Quellstrip fuer Aehnlichkeit in Klasse 8 mit Strahlensaetzen, zentrischer Streckung und Aehnlichkeit von Figuren.",
+      "descriptionEn": "Broad first Mecklenburg-Vorpommern source strip for similarity in grade 8 with the intercept theorems, central dilation, and similar figures.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "J8",
+        "Geometry",
+        "Mecklenburg-Vorpommern"
+      ],
+      "contains": [],
+      "requires": [
+        "mv-sek1-j7-geometry-corridor"
+      ],
+      "sourceRef": "Rahmenplan Sekundarstufe I Gymnasium/Gesamtschule Mathematik 2019, Klasse 8, Planimetrie und Stereometrie: Aehnlichkeit, S. 24-25.",
+      "dimensionTags": {
+        "framework": "mv-rp2019-gym-sek1-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J8",
+        "area": "Geometrie"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "mv-sek1-j8-solids",
+      "title": "Klasse 8: Prismen, Pyramiden und Zylinder",
+      "titleEn": "Grade 8: prisms, pyramids, and cylinders",
+      "description": "Breiter erster Mecklenburg-Vorpommern-Quellstrip fuer Koerpervorstellungen in Klasse 8 mit Prismen, Pyramiden, Zylindern, Darstellung, Volumen und Oberflaecheninhalt.",
+      "descriptionEn": "Broad first Mecklenburg-Vorpommern source strip for solids concepts in grade 8 with prisms, pyramids, cylinders, representations, volume, and surface area.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "J8",
+        "Geometry",
+        "Mecklenburg-Vorpommern"
+      ],
+      "contains": [],
+      "requires": [
+        "mv-sek1-j7-geometry-corridor"
+      ],
+      "sourceRef": "Rahmenplan Sekundarstufe I Gymnasium/Gesamtschule Mathematik 2019, Klasse 8, Planimetrie und Stereometrie: Prisma, Pyramide, Zylinder, S. 24-25.",
+      "dimensionTags": {
+        "framework": "mv-rp2019-gym-sek1-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J8",
+        "area": "Geometrie"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "mv-sek1-j9",
+      "title": "Klasse 9",
+      "titleEn": "Grade 9",
+      "description": "Erster verfeinerter Mecklenburg-Vorpommern-Quellanker fuer die Mathematik der Klassenstufe 9 im gymnasialen Bildungsgang mit reviewed Daten-/Statistik- und Quadratik-Korridoren.",
+      "descriptionEn": "First refined Mecklenburg-Vorpommern source anchor for grade 9 mathematics in the Gymnasium track with reviewed data/statistics and quadratics corridors.",
+      "weight": 3,
+      "tags": [
+        "Sek1",
+        "J9",
+        "Mecklenburg-Vorpommern"
+      ],
+      "contains": [
+        "mv-sek1-j9-data-corridor",
+        "mv-sek1-j9-quadratics-corridor"
+      ],
+      "requires": [
+        "mv-sek1-orientation",
+        "mv-sek1-j8"
+      ],
+      "sourceRef": "Rahmenplan Sekundarstufe I Gymnasium/Gesamtschule Mathematik 2019, Klasse 9, S. 27-33.",
+      "dimensionTags": {
+        "framework": "mv-rp2019-gym-sek1-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J9",
+        "area": "Grundlagen"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "mv-sek1-j9-data-corridor",
+      "title": "Klasse 9: Statistik",
+      "titleEn": "Grade 9: statistics",
+      "description": "Erster reviewed Mecklenburg-Vorpommern-Korridor fuer Statistik in Klasse 9.",
+      "descriptionEn": "First reviewed Mecklenburg-Vorpommern corridor for statistics in grade 9.",
+      "weight": 2,
+      "tags": [
+        "Sek1",
+        "J9",
+        "DataChance",
+        "Corridor",
+        "Mecklenburg-Vorpommern"
+      ],
+      "contains": [
+        "mv-sek1-j9-statistics-measures",
+        "mv-sek1-j9-statistical-surveys"
+      ],
+      "requires": [
+        "mv-sek1-j7-algebra-corridor"
+      ],
+      "sourceRef": "Rahmenplan Sekundarstufe I Gymnasium/Gesamtschule Mathematik 2019, Klasse 9, Statistik, S. 28.",
+      "dimensionTags": {
+        "framework": "mv-rp2019-gym-sek1-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J9",
+        "area": "Daten und Zufall"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "mv-sek1-j9-statistics-measures",
+      "title": "Klasse 9: Haeufigkeiten, Mittelwerte und Streumasse",
+      "titleEn": "Grade 9: frequencies, means, and measures of spread",
+      "description": "Breiter erster Mecklenburg-Vorpommern-Quellstrip fuer Haeufigkeiten, Mittelwerte und Streumasse in Klasse 9.",
+      "descriptionEn": "Broad first Mecklenburg-Vorpommern source strip for frequencies, means, and measures of spread in grade 9.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "J9",
+        "DataChance",
+        "Mecklenburg-Vorpommern"
+      ],
+      "contains": [],
+      "requires": [
+        "mv-sek1-j5-6"
+      ],
+      "sourceRef": "Rahmenplan Sekundarstufe I Gymnasium/Gesamtschule Mathematik 2019, Klasse 9, Statistik: Haeufigkeiten, Mittelwerte und Streumasse, S. 28.",
+      "dimensionTags": {
+        "framework": "mv-rp2019-gym-sek1-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J9",
+        "area": "Daten und Zufall"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "mv-sek1-j9-statistical-surveys",
+      "title": "Klasse 9: Statistische Erhebungen",
+      "titleEn": "Grade 9: statistical surveys",
+      "description": "Breiter erster Mecklenburg-Vorpommern-Quellstrip fuer statistische Erhebungen in Klasse 9 mit Stichprobe, Klasseneinteilung, grafischer Darstellung sowie Diskussion und Wertung.",
+      "descriptionEn": "Broad first Mecklenburg-Vorpommern source strip for statistical surveys in grade 9 with sampling, class intervals, graphical displays, discussion, and evaluation.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "J9",
+        "DataChance",
+        "Mecklenburg-Vorpommern"
+      ],
+      "contains": [],
+      "requires": [
+        "mv-sek1-j9-statistics-measures"
+      ],
+      "sourceRef": "Rahmenplan Sekundarstufe I Gymnasium/Gesamtschule Mathematik 2019, Klasse 9, Statistik: Statistische Erhebungen, S. 28.",
+      "dimensionTags": {
+        "framework": "mv-rp2019-gym-sek1-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J9",
+        "area": "Daten und Zufall"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "mv-sek1-j9-quadratics-corridor",
+      "title": "Klasse 9: Quadratische Funktionen und quadratische Gleichungen",
+      "titleEn": "Grade 9: quadratic functions and quadratic equations",
+      "description": "Erster reviewed Mecklenburg-Vorpommern-Korridor fuer explizite Quadratik in Klasse 9.",
+      "descriptionEn": "First reviewed Mecklenburg-Vorpommern corridor for explicit quadratics in grade 9.",
+      "weight": 2,
+      "tags": [
+        "Sek1",
+        "J9",
+        "Functions",
+        "Corridor",
+        "Mecklenburg-Vorpommern"
+      ],
+      "contains": [
+        "mv-sek1-j9-quadratic-functions",
+        "mv-sek1-j9-quadratic-equations"
+      ],
+      "requires": [
+        "mv-sek1-j7-functions-corridor"
+      ],
+      "sourceRef": "Rahmenplan Sekundarstufe I Gymnasium/Gesamtschule Mathematik 2019, Klasse 9, Quadratische Funktionen und quadratische Gleichungen, S. 31-32.",
+      "dimensionTags": {
+        "framework": "mv-rp2019-gym-sek1-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J9",
+        "area": "Funktionen"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "mv-sek1-j9-quadratic-functions",
+      "title": "Klasse 9: Quadratische Funktionen",
+      "titleEn": "Grade 9: quadratic functions",
+      "description": "Breiter erster Mecklenburg-Vorpommern-Quellstrip fuer quadratische Funktionen in Klasse 9 mit Eigenschaften, Parabeldeutung und Parameterwirkung.",
+      "descriptionEn": "Broad first Mecklenburg-Vorpommern source strip for quadratic functions in grade 9 with properties, parabola interpretation, and parameter effects.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "J9",
+        "Functions",
+        "Mecklenburg-Vorpommern"
+      ],
+      "contains": [],
+      "requires": [
+        "mv-sek1-j7-functions-corridor"
+      ],
+      "sourceRef": "Rahmenplan Sekundarstufe I Gymnasium/Gesamtschule Mathematik 2019, Klasse 9, Quadratische Funktionen, S. 31.",
+      "dimensionTags": {
+        "framework": "mv-rp2019-gym-sek1-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J9",
+        "area": "Funktionen"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "mv-sek1-j9-quadratic-equations",
+      "title": "Klasse 9: Quadratische Gleichungen",
+      "titleEn": "Grade 9: quadratic equations",
+      "description": "Breiter erster Mecklenburg-Vorpommern-Quellstrip fuer quadratische Gleichungen in Klasse 9 mit Loesungsformel, Vieta, Linearfaktoren und Loesbarkeitsfragen.",
+      "descriptionEn": "Broad first Mecklenburg-Vorpommern source strip for quadratic equations in grade 9 with formula-based solving, Vieta, factorisation, and solvability questions.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "J9",
+        "Functions",
+        "Mecklenburg-Vorpommern"
+      ],
+      "contains": [],
+      "requires": [
+        "mv-sek1-j9-quadratic-functions"
+      ],
+      "sourceRef": "Rahmenplan Sekundarstufe I Gymnasium/Gesamtschule Mathematik 2019, Klasse 9, Quadratische Gleichungen, S. 31-32.",
+      "dimensionTags": {
+        "framework": "mv-rp2019-gym-sek1-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J9",
+        "area": "Funktionen"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "mv-sek1-j10",
+      "title": "Klasse 10",
+      "titleEn": "Grade 10",
+      "description": "Erster verfeinerter Mecklenburg-Vorpommern-Quellanker fuer die Mathematik der Klassenstufe 10 im gymnasialen Bildungsgang mit reviewed Wahrscheinlichkeits- und Funktionskorridoren.",
+      "descriptionEn": "First refined Mecklenburg-Vorpommern source anchor for grade 10 mathematics in the Gymnasium track with reviewed probability and function corridors.",
+      "weight": 3,
+      "tags": [
+        "Sek1",
+        "J10",
+        "Mecklenburg-Vorpommern"
+      ],
+      "contains": [
+        "mv-sek1-j10-chance-corridor",
+        "mv-sek1-j10-functions-corridor"
+      ],
+      "requires": [
+        "mv-sek1-orientation",
+        "mv-sek1-j9"
+      ],
+      "sourceRef": "Rahmenplan Sekundarstufe I Gymnasium/Gesamtschule Mathematik 2019, Klasse 10, S. 34-40.",
+      "dimensionTags": {
+        "framework": "mv-rp2019-gym-sek1-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J10",
+        "area": "Grundlagen"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "mv-sek1-j10-functions-corridor",
+      "title": "Klasse 10: Exponential-, Logarithmus- und Sinusfunktionen",
+      "titleEn": "Grade 10: exponential, logarithmic, and sine functions",
+      "description": "Erster reviewed Mecklenburg-Vorpommern-Korridor fuer spaetere Funktionsklassen in Klasse 10.",
+      "descriptionEn": "First reviewed Mecklenburg-Vorpommern corridor for later function classes in grade 10.",
+      "weight": 2,
+      "tags": [
+        "Sek1",
+        "J10",
+        "Functions",
+        "Corridor",
+        "Mecklenburg-Vorpommern"
+      ],
+      "contains": [
+        "mv-sek1-j10-exponential-logarithmic-functions",
+        "mv-sek1-j10-sine-functions"
+      ],
+      "requires": [
+        "mv-sek1-j7-functions-corridor"
+      ],
+      "sourceRef": "Rahmenplan Sekundarstufe I Gymnasium/Gesamtschule Mathematik 2019, Klasse 10, Exponential- und Logarithmusfunktionen sowie Sinusfunktionen, S. 36-39.",
+      "dimensionTags": {
+        "framework": "mv-rp2019-gym-sek1-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J10",
+        "area": "Funktionen"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "mv-sek1-j10-exponential-logarithmic-functions",
+      "title": "Klasse 10: Exponential- und Logarithmusfunktionen",
+      "titleEn": "Grade 10: exponential and logarithmic functions",
+      "description": "Breiter erster Mecklenburg-Vorpommern-Quellstrip fuer Exponential- und Logarithmusfunktionen in Klasse 10 mit Eigenschaften, Modellierung und ersten Deutungen.",
+      "descriptionEn": "Broad first Mecklenburg-Vorpommern source strip for exponential and logarithmic functions in grade 10 with properties, modelling, and first interpretations.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "J10",
+        "Functions",
+        "Mecklenburg-Vorpommern"
+      ],
+      "contains": [],
+      "requires": [
+        "mv-sek1-j7-functions-corridor"
+      ],
+      "sourceRef": "Rahmenplan Sekundarstufe I Gymnasium/Gesamtschule Mathematik 2019, Klasse 10, Exponential- und Logarithmusfunktionen, S. 36-37.",
+      "dimensionTags": {
+        "framework": "mv-rp2019-gym-sek1-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J10",
+        "area": "Funktionen"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "mv-sek1-j10-sine-functions",
+      "title": "Klasse 10: Sinusfunktionen",
+      "titleEn": "Grade 10: sine functions",
+      "description": "Breiter erster Mecklenburg-Vorpommern-Quellstrip fuer Sinusfunktionen in Klasse 10 mit Einheitskreis, Winkelmass und Parameterdeutung.",
+      "descriptionEn": "Broad first Mecklenburg-Vorpommern source strip for sine functions in grade 10 with unit circle, angle measure, and parameter interpretation.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "J10",
+        "Functions",
+        "Mecklenburg-Vorpommern"
+      ],
+      "contains": [],
+      "requires": [
+        "mv-sek1-j7-functions-corridor"
+      ],
+      "sourceRef": "Rahmenplan Sekundarstufe I Gymnasium/Gesamtschule Mathematik 2019, Klasse 10, Sinusfunktionen, S. 38-39.",
+      "dimensionTags": {
+        "framework": "mv-rp2019-gym-sek1-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J10",
+        "area": "Funktionen"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "mv-sek1-j10-chance-corridor",
+      "title": "Klasse 10: Zufallsexperimente, Zufallsgroessen und Binomialverteilung",
+      "titleEn": "Grade 10: random experiments, random variables, and binomial distribution",
+      "description": "Erster reviewed Mecklenburg-Vorpommern-Korridor fuer spaetere Wahrscheinlichkeitsarbeit in Klasse 10.",
+      "descriptionEn": "First reviewed Mecklenburg-Vorpommern corridor for later probability work in grade 10.",
+      "weight": 2,
+      "tags": [
+        "Sek1",
+        "J10",
+        "DataChance",
+        "Corridor",
+        "Mecklenburg-Vorpommern"
+      ],
+      "contains": [
+        "mv-sek1-j10-random-experiments",
+        "mv-sek1-j10-random-variables-binomial"
+      ],
+      "requires": [
+        "mv-sek1-j9-data-corridor"
+      ],
+      "sourceRef": "Rahmenplan Sekundarstufe I Gymnasium/Gesamtschule Mathematik 2019, Klasse 10, Zufallsexperimente, Zufallsgroessen und Binomialverteilung, S. 41.",
+      "dimensionTags": {
+        "framework": "mv-rp2019-gym-sek1-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J10",
+        "area": "Daten und Zufall"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "mv-sek1-j10-random-experiments",
+      "title": "Klasse 10: Zufallsexperimente mit und ohne Zuruecklegen",
+      "titleEn": "Grade 10: random experiments with and without replacement",
+      "description": "Breiter erster Mecklenburg-Vorpommern-Quellstrip fuer Zufallsexperimente mit und ohne Zuruecklegen in Klasse 10 mit Baumdiagramm und Wahrscheinlichkeiten.",
+      "descriptionEn": "Broad first Mecklenburg-Vorpommern source strip for random experiments with and without replacement in grade 10 with tree diagrams and probabilities.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "J10",
+        "DataChance",
+        "Mecklenburg-Vorpommern"
+      ],
+      "contains": [],
+      "requires": [
+        "mv-sek1-j9-data-corridor"
+      ],
+      "sourceRef": "Rahmenplan Sekundarstufe I Gymnasium/Gesamtschule Mathematik 2019, Klasse 10, Zufallsexperimente mit und ohne Zuruecklegen, S. 41.",
+      "dimensionTags": {
+        "framework": "mv-rp2019-gym-sek1-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J10",
+        "area": "Daten und Zufall"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "mv-sek1-j10-random-variables-binomial",
+      "title": "Klasse 10: Zufallsgroessen und Binomialverteilung",
+      "titleEn": "Grade 10: random variables and binomial distribution",
+      "description": "Breiter erster Mecklenburg-Vorpommern-Quellstrip fuer Zufallsgroessen und Binomialverteilung in Klasse 10 mit Histogramm, Erwartungswert, Varianz und Standardabweichung.",
+      "descriptionEn": "Broad first Mecklenburg-Vorpommern source strip for random variables and binomial distribution in grade 10 with histograms, expectation, variance, and standard deviation.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "J10",
+        "DataChance",
+        "Mecklenburg-Vorpommern"
+      ],
+      "contains": [],
+      "requires": [
+        "mv-sek1-j10-random-experiments"
+      ],
+      "sourceRef": "Rahmenplan Sekundarstufe I Gymnasium/Gesamtschule Mathematik 2019, Klasse 10, Zufallsgroesse und Binomialverteilung, S. 41.",
+      "dimensionTags": {
+        "framework": "mv-rp2019-gym-sek1-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J10",
+        "area": "Daten und Zufall"
+      },
+      "type": "atomic"
+    }
+  ]
+}

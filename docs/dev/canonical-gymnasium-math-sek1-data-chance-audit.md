@@ -1,6 +1,6 @@
 # Canonical Gymnasium Mathematics: Sek I Data / Chance Audit
 
-Snapshot: `2026-04-03`
+Snapshot: `2026-04-04`
 
 Purpose:
 
@@ -17,6 +17,7 @@ In scope:
 - the already reviewed lower-secondary source and mapping evidence from
   - `HB`
   - `HH`
+  - `MV`
   - `SH`
   - `RP`
 - `SN`
@@ -135,6 +136,42 @@ Observed signal:
 - the lane is still broad and splits only into data-display work and measures-of-data work
 - both strips fit the existing descriptive-statistics surface
 - this confirms that early Sachsen-Anhalt data work does not currently force a separate visible early diagram-reading or measures package
+
+### Mecklenburg-Vorpommern (`MV`)
+
+Observed signal:
+
+- `MV` now contributes a first reviewed early lower-secondary data/chance corridor on the explicit `Klassen 5/6` lane
+- the Mecklenburg-Vorpommern source separates
+  - `Statistische Erhebungen`
+  - `einstufige Zufallsexperimente`
+- this makes `MV` a useful pressure test for whether the visible early data/chance surface can absorb both survey/display work and first Laplace-style probability work without forcing a separate early diagram or early-probability package
+- `MV` now contributes a first reviewed lower-secondary data/chance corridor on the explicit `Klasse 9` lane
+- the Mecklenburg-Vorpommern source separates
+  - `Haeufigkeiten, Mittelwerte und Streumasse`
+  - `statistische Erhebungen`
+- this makes `MV` a useful pressure test for whether the visible `D4` descriptive-statistics surface can absorb both summary measures and survey-design/evaluation residue without forcing a separate survey or critical-statistics package
+- `MV` now also contributes a first reviewed later-probability corridor on the explicit `Klasse 10` lane
+- the Mecklenburg-Vorpommern source separates
+  - `Zufallsexperimente mit und ohne Zuruecklegen`
+  - `Zufallsgroessen und Binomialverteilung`
+- this confirms that the visible `D3` surface can coexist with the frozen broad `D1-D5` surface for later random-variable residue without forcing a separate visible `D6` package
+
+### Thueringen (`TH`)
+
+Observed signal:
+
+- `TH` now contributes a first reviewed lower-secondary data/chance corridor on the explicit `Klassenstufen 5/6` lane
+- the Thueringen source separates
+  - `Daten erfassen und darstellen`
+  - `statistische Kenngroessen und mit Zufall experimentieren`
+- this makes `TH` a useful pressure test for whether the early data surface can coexist with a still-mixed early statistics/chance strip on the broad Sek-I data/chance surface without forcing either a separate early diagram package or a separate early-probability package
+- `TH` now also contributes a first reviewed broad `Klassenstufen 7/8` data/chance corridor
+- the archived `7/8` source still exposes only one shared `Stochastik` strip
+- this confirms that the shared broad Sek-I data/chance surface can absorb a reviewed wide `7/8` lane without forcing a sharper canonical split from source granularity alone
+- `TH` now also contributes a first reviewed broad `Klassenstufen 9/10` data/chance corridor
+- the archived `9/10` source still exposes only one shared `Stochastik` strip
+- this confirms that the same shared broad later Sek-I data/chance surface can absorb a reviewed wide `9/10` lane without forcing a sharper canonical split from source granularity alone
 
 ## Current canonical data/chance inventory
 
@@ -432,3 +469,13 @@ Result:
 - the second strip points to the visible probability-from-frequencies bridge
 - the RP lane therefore confirms the visible Sek-I chance surface without forcing a new visible later random-variable package
 
+## Saarland Klassenstufe 7 data/chance corridor connected (`2026-04-04`)
+
+- the broad SL `Klassenstufe 7: Daten und Zufall` anchor now carries a first reviewed corridor on the shared Sek-I data/chance surface
+- the current Saarland grade-7 source still exposes only one shared data/chance strip
+- this confirms that the shared broad Sek-I data/chance surface can absorb an explicit reviewed class-7 lane without forcing a sharper state-local split from source granularity alone
+## Saarland Klassenstufe 8 data/chance corridor connected (`2026-04-04`)
+
+- the broad SL `Klassenstufe 8: Daten und Zufall` anchor now carries a first reviewed corridor on the shared Sek-I data/chance surface
+- the current Saarland grade-8 source still exposes only one shared data/chance strip
+- this confirms the shared broad Sek-I data/chance surface can absorb an explicit reviewed class-8 lane without forcing a sharper state-local split

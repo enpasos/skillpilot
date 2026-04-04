@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-04-04T00:00:00Z",
+  "updatedAt": "2026-04-04T10:33:00Z",
   "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
   "quickViewPath": "docs/dev/canonical-gymnasium-math-bundeslaender-status.md",
   "renderCommand": "python3 scripts/render_canonical_math_bundesland_status.py",
@@ -317,15 +317,15 @@
       "jurisdiction": "DE-MV",
       "repoStateKey": "MV",
       "displayName": "Mecklenburg-Vorpommern",
-      "phase": "P0",
+      "phase": "P5",
       "priority": "backlog",
-      "sourceStage": "mapping_scaffolded",
+      "sourceStage": "broad_reviewed_coverage",
       "mappingFiles": [
         "curricula/DE/Gymnasium/mapping/DE-MV/lower-secondary/mv_math_lower_secondary_to_canonical_math.json",
         "curricula/DE/Gymnasium/mapping/DE-MV/upper-secondary/mv_math_upper_secondary_to_canonical_math.json"
       ],
-      "notes": "Repository-backed lower-secondary and upper-secondary Mecklenburg-Vorpommern mathematics mapping fixtures now exist with stable reserved source-landscape IDs, but no archived state-local mathematics source bundle or source-json snapshot is active yet.",
-      "nextStep": "Archive the official Mecklenburg-Vorpommern mathematics source bundle under `curricula/DE/Gymnasium/input/MV/`, then derive the first lower-secondary and upper-secondary source snapshots before activating shared provenance."
+      "notes": "Mecklenburg-Vorpommern is now on P5. Its lower-secondary and upper-secondary pilot snapshots are fully mapped on source-goal level, and the state carries reviewed lower-secondary coverage across classes-5/6 arithmetic, geometry, and data/chance foundations, class-7 functions/algebra/geometry, class-8 linear functions plus geometry, class-9 statistics plus explicit quadratics, class-10 later probability plus late functions, plus reviewed upper-secondary corridors in analysis, stochastics, analytic geometry / vectors, and linear algebra / matrices on the canonical DE math spine.",
+      "nextStep": "Keep Mecklenburg-Vorpommern stable as a broad reviewed comparison lane and move the next implementation step to deriving the first Thueringen source snapshots from the now archived input bundle."
     },
     {
       "jurisdiction": "DE-RP",
@@ -367,8 +367,8 @@
         "curricula/DE/Gymnasium/mapping/DE-SL/lower-secondary/sl_math_lower_secondary_to_canonical_math.json",
         "curricula/DE/Gymnasium/mapping/DE-SL/upper-secondary/sl_math_upper_secondary_to_canonical_math.json"
       ],
-      "notes": "Saarland now has active lower-secondary and upper-secondary mathematics source snapshots in shared provenance plus first structural anchor mappings on the shared canonical spine. The lower lane bridges classes 5/6, 7, 8, 9, and 10 together with broad leitidee anchors for algebra, measurement, geometry, functions, and data/chance, and now also carries first reviewed lower-secondary grade-7 corridors in functions and algebra: `Strukturen und funktionaler Zusammenhang` is split into explicit `Zuordnungen`, `proportionale Zuordnungen`, and `umgekehrt proportionale Zuordnungen` strips, while `Zahl und Operation` is split into explicit `Rationale Zahlen`, `Terme, Gleichungen und Ungleichungen`, and `Prozentrechnung` strips. This keeps rational numbers on the later number-extension surface, keeps percentage work on the broad proportional bridge, and deliberately leaves the mixed terms/equations strip on the broad algebra surface instead of forcing a sharper `A2/A4` or visible `A5` split. The upper lane also carries first reviewed analysis, stochastics, and analytic-geometry corridors.",
-      "nextStep": "Open the next reviewed Saarland lower-secondary corridor, most cleanly in data/chance or geometry on the same explicit year-lane pattern."
+      "notes": "Saarland now has active lower-secondary and upper-secondary mathematics source snapshots in shared provenance plus first structural anchor mappings on the shared canonical spine. The lower lane bridges classes 5/6, 7, 8, 9, and 10 together with broad leitidee anchors for algebra, measurement, geometry, functions, and data/chance, and now also carries first reviewed lower-secondary grade-7 corridors in functions, algebra, geometry, data/chance, and measurement together with first reviewed broad grade-8 algebra, function, geometry, data/chance, and measurement corridors plus a first reviewed broad grade-9 algebra corridor: `Strukturen und funktionaler Zusammenhang` in grade 7 is split into explicit `Zuordnungen`, `proportionale Zuordnungen`, and `umgekehrt proportionale Zuordnungen` strips, `Zahl und Operation` in grade 7 is split into explicit `Rationale Zahlen`, `Terme, Gleichungen und Ungleichungen`, and `Prozentrechnung` strips, `Raum und Form` in grade 7 is now closed as a first broad reviewed geometry corridor on the shared Sek-I geometry surface, `Daten und Zufall` in grade 7 is now closed as a first broad reviewed data/chance corridor on the shared Sek-I data/chance surface, `Größen und Messen` in grade 7 is now closed as a first broad reviewed measurement corridor on the shared early Sek-I measurement / area / volume surface, `Zahl und Operation` in grade 8 is now closed as a first broad reviewed algebra corridor on the shared Sek-I algebra surface, `Strukturen und funktionaler Zusammenhang` in grade 8 is now closed as a first broad reviewed function corridor on the shared Sek-I function-foundations surface, `Raum und Form` in grade 8 is now closed as a first broad reviewed geometry corridor on the shared Sek-I geometry surface, `Daten und Zufall` in grade 8 is now closed as a first broad reviewed data/chance corridor on the shared Sek-I data/chance surface, `Größen und Messen` in grade 8 is now closed as a first broad reviewed measurement corridor on the shared early Sek-I measurement / area / volume surface, and `Zahl und Operation` in grade 9 is now closed as a first broad reviewed algebra corridor on the shared Sek-I algebra surface. This keeps rational numbers on the later number-extension surface, keeps percentage work on the broad proportional bridge, deliberately leaves the mixed terms/equations strip on the broad algebra surface instead of forcing a sharper `A2/A4` or visible `A5` split, and keeps the current broad geometry, data/chance, and measurement strips on the shared canonical surfaces without inventing sharper state-local splits. The upper lane also carries first reviewed analysis, stochastics, and analytic-geometry corridors.",
+      "nextStep": "Open the next reviewed Saarland lower-secondary corridor, most cleanly `Strukturen und funktionaler Zusammenhang` in `Klassenstufe 9`."
     },
     {
       "jurisdiction": "DE-SN",
@@ -402,15 +402,15 @@
       "jurisdiction": "DE-TH",
       "repoStateKey": "TH",
       "displayName": "Thueringen",
-      "phase": "P1",
+      "phase": "P5",
       "priority": "backlog",
-      "sourceStage": "partial_inputs_archived",
+      "sourceStage": "broad_reviewed_coverage",
       "mappingFiles": [
         "curricula/DE/Gymnasium/mapping/DE-TH/lower-secondary/th_math_lower_secondary_to_canonical_math.json",
         "curricula/DE/Gymnasium/mapping/DE-TH/upper-secondary/th_math_upper_secondary_to_canonical_math.json"
       ],
-      "notes": "Thueringen now has a partially archived official mathematics input bundle: the public 2018 Gymnasium mathematics PDF is archived locally and the public detail page for the 2025 curriculum is archived, but the current 2025 PDF for classes 5/6 and 11/12 still returns an access-restricted HTML response instead of a downloadable PDF.",
-      "nextStep": "Resolve access to the current 2025 Thueringen Gymnasium mathematics PDF for classes 5/6 and 11/12, then derive the first lower-secondary and upper-secondary source snapshots before activating shared provenance."
+      "notes": "Thueringen is now on P5. Its lower-secondary and upper-secondary pilot snapshots are fully mapped on source-goal level, and the state now carries reviewed lower-secondary coverage across the explicit `Klassenstufen 5/6` lane in algebra, geometry, data/chance, and functions, the broad `Klassenstufen 7/8` lanes in algebra, functions, geometry, and data/chance, and the broad `Klassenstufen 9/10` lanes in algebra, geometry, data/chance, and functions, plus reviewed upper-secondary corridors in analysis, stochastics, analytic geometry / vectors, and lineare algebra / matrizen on the canonical DE math spine. The archived `Klassenstufen 9/10: Funktionen` strip is now deliberately closed as a broad reviewed function corridor on the shared Sek-I function surface because it crosses the visible `F4` / late-`J10` boundary too broadly for a narrower reviewed split.",
+      "nextStep": "Keep Thueringen stable as a broad reviewed comparison lane and move the next implementation step to the next still-open state lane."
     }
   ]
 }

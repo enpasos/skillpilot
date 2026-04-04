@@ -1,6 +1,6 @@
 # Canonical Gymnasium Mathematics: Sek I Functions / Mappings Audit
 
-Snapshot: `2026-04-03`
+Snapshot: `2026-04-04`
 
 Purpose:
 
@@ -106,6 +106,16 @@ Observed signal:
   - `Lineare Funktionen`
 - this makes `RP` a useful pressure test for whether the visible middle Sek-I function surface can absorb a broad proportional bridge next to a cleaner linear-function strip without forcing another package boundary
 
+### Mecklenburg-Vorpommern (`MV`)
+
+Observed signal:
+
+- `MV` now contributes a first reviewed lower-secondary function corridor on the explicit `Klasse 7` lane
+- the Mecklenburg-Vorpommern source separates
+  - `Zuordnungen`
+  - `proportionale und umgekehrt proportionale Zuordnungen`
+- this makes `MV` a useful early-lane pressure test for whether the visible early Sek-I function surface can absorb a broad direct/inverse-proportionality bridge next to a cleaner mappings strip without forcing a separate inverse-proportional package
+
 ## Current canonical function inventory
 
 The canonical graph is already materially seeded here.
@@ -123,7 +133,7 @@ Important current package questions:
 The canonical Sek-I function topic is not missing a usable backbone.
 The main risk is packaging, not first missing content.
 
-After the algebra cleanup, the decisive remaining questions sat in three places:
+After the algebra cleanup, and with the new Mecklenburg-Vorpommern early lane connected, the decisive remaining questions sat in three places:
 
 1. the J8 linear calculation strip
 2. the quadratic/equation boundary
@@ -158,6 +168,21 @@ Do not widen more bundesland mappings on Sek-I functions until the revised `F3-F
 ## Exit criteria for this audit
 
 This topic audit is complete when:
+
+### Thueringen (`TH`)
+
+Observed signal:
+
+- `TH` now contributes a first reviewed lower-secondary functions corridor on the explicit `Klassenstufen 5/6` lane
+- the Thueringen source currently separates
+  - `Zuordnungen`
+- this makes `TH` a useful pressure test for whether the visible early mapping surface can absorb a clean `5/6` correspondence lane without forcing a broader early function split
+- `TH` now also contributes a first reviewed broad `Klassenstufen 7/8` functions corridor
+- the archived `7/8` source still exposes only one shared `Funktionen` strip
+- this confirms that the shared broad Sek-I function surface can absorb a reviewed wide `7/8` lane without forcing a sharper canonical split from source granularity alone
+- `TH` now also contributes a first reviewed broad `Klassenstufen 9/10` functions corridor
+- the archived `9/10` source still exposes only one shared `Funktionen` strip
+- this confirms that the same shared broad Sek-I function surface can absorb a reviewed wide `9/10` lane, while the strip remains deliberately broad because it crosses the visible `F4` / late-`J10` boundary too broadly for a narrower reviewed split
 
 1. the canonical subpackage boundaries above are either accepted or revised
 2. the canonical graph has a stable Sek-I function packaging after the algebra cleanup
@@ -206,6 +231,26 @@ This topic audit is complete when:
 - the reviewed ST lane therefore confirms the existing late-J10 continuation surface without forcing a separate mixed function-classes package
 
 
+## Mecklenburg-Vorpommern Klasse 8 linear-functions corridor connected (`2026-04-04`)
+
+- the MV `Klasse 8` lane now contributes a reviewed middle-stage function corridor with separate strips for the broad `Funktionen` concept work and for `Lineare und konstante Funktionen`
+- the concept strip now points to the visible early function-concept surface
+- the linear strip now points to the visible `F3` linear-functions surface
+- the MV lane therefore confirms the current middle Sek-I function cut without pulling algebra residue back into the function topic
+
+## Mecklenburg-Vorpommern Klasse 9 quadratics corridor connected (`2026-04-04`)
+
+- the MV `Klasse 9` lane now contributes a reviewed explicit quadratics corridor with separate strips for `Quadratische Funktionen` and `Quadratische Gleichungen`
+- the function strip now points to the visible late Sek-I quadratic representations surface
+- the equations strip now points to the explicit quadratic-equations branch
+- the MV lane therefore confirms the current `F4` boundary without forcing a separate mixed quadratics package beyond the existing function/equation cut
+
+## Mecklenburg-Vorpommern Klasse 10 late function corridor connected (`2026-04-04`)
+
+- the MV `Klasse 10` lane now contributes a reviewed late function corridor with separate strips for `Exponential- und Logarithmusfunktionen` and `Sinusfunktionen`
+- both reviewed strips intentionally stay on the broad visible J10 trig/exponential continuation surface
+- the MV lane therefore confirms the existing late-J10 continuation surface without forcing a separate mixed late-function-classes package
+
 ## Rheinland-Pfalz Klassenstufen 7 und 8 function corridor connected (`2026-04-03`)
 
 - the broad RP `Klassenstufen 7 und 8: Funktionaler Zusammenhang` anchor now points to the visible `F3` surface instead of the early general function surface
@@ -224,3 +269,8 @@ Observed signal:
   - `Umgekehrt proportionale Zuordnungen`
 - this keeps the broad `Klassenstufe 7` function parent on the visible early function corridor, places the `Zuordnungen` strip on the early mapping / representation surface, and keeps both proportionality strips on the broad proportional bridge without forcing a separate visible inverse-proportional package
 - the Saarland lane therefore confirms the early Sek-I function surface without reopening the current packaging
+## Saarland Klassenstufe 8 broad functions corridor connected (`2026-04-04`)
+
+- the broad SL `Klassenstufe 8: Strukturen und funktionaler Zusammenhang` anchor now carries a first reviewed corridor on the shared Sek-I function-foundations surface
+- the current Saarland grade-8 source still exposes only one shared functions strip
+- this confirms the shared broad Sek-I function-foundations surface can absorb an explicit reviewed class-8 lane without forcing a sharper state-local split

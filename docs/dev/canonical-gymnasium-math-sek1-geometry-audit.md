@@ -1,6 +1,6 @@
 # Canonical Gymnasium Mathematics: Sek I Geometry / Space Audit
 
-Snapshot: `2026-04-03`
+Snapshot: `2026-04-04`
 
 Purpose:
 
@@ -17,6 +17,7 @@ In scope:
 - the already reviewed lower-secondary source and mapping evidence from
   - `HB`
   - `HH`
+  - `MV`
   - `SN`
 - `ST`
 
@@ -161,6 +162,37 @@ Observed signal:
   - `Koerper und ihre Darstellungen`
   - `Trigonometrische Beziehungen`
 - this makes `RP` a useful pressure test for whether the visible later Sek-I geometry surface can absorb later transformation work next to explicit `G5`, `G6`, and `G7` strips without forcing another package
+
+### Mecklenburg-Vorpommern (`MV`)
+
+Observed signal:
+
+- `MV` now contributes reviewed lower-secondary geometry corridors on the explicit `Klassen 5/6`, `Klasse 7`, and `Klasse 8` lanes
+
+### Thueringen (`TH`)
+
+Observed signal:
+
+- `TH` now contributes a first reviewed lower-secondary geometry corridor on the explicit `Klassenstufen 5/6` lane
+- the Thueringen source separates
+  - `Figuren und Koerper`
+  - `Dreiecke und Kreis`
+- this makes `TH` a useful pressure test for whether the visible early geometry / space surface can absorb a clean `5/6` foundations lane without forcing a sharper early geometry split
+- `TH` now also contributes a first reviewed broad `Klassenstufen 7/8` geometry corridor
+- the archived `7/8` source still exposes only one shared `Geometrie` strip
+- this confirms that the shared broad Sek-I geometry surface can absorb a reviewed wide `7/8` lane without forcing a sharper canonical split from source granularity alone
+- `TH` now also contributes a first reviewed broad `Klassenstufen 9/10` geometry corridor
+- the archived `9/10` source still exposes only one shared `Geometrie` strip
+- this confirms that the same shared broad later Sek-I geometry surface can absorb a reviewed wide `9/10` lane without forcing a sharper canonical split from source granularity alone
+- the Mecklenburg-Vorpommern `Klassen 5/6` source now separates
+  - broad plane geometry with angles, constructions, transformations, rectangles, and squares
+  - broad cuboid/cube work with nets, surface area, and volume
+- the Mecklenburg-Vorpommern `Klasse 8` source now separates
+  - `Rechtwinkliges Dreieck` with explicit Pythagoras work
+  - `Aehnlichkeit`
+  - `Prisma`, `Pyramide`, and `Zylinder` body work
+- this makes `MV` a useful pressure test for whether the early geometry / space surface can absorb broad plane-geometry plus cuboid/cube work without forcing a separate visible early area-volume package, while the visible `G5`, `G3`, and `G6` surfaces can coexist inside one reviewed later lower-secondary lane without forcing another mixed geometry package
+
 
 ## Current canonical geometry inventory
 
@@ -436,3 +468,23 @@ This topic audit is complete when:
 - the trigonometric-relations strip points to the visible `G7` bridge
 - the RP lane therefore confirms the visible later Sek-I geometry surface without forcing another package boundary
 
+## Saarland Klassenstufe 7 geometry corridor connected (`2026-04-04`)
+
+- the broad SL `Klassenstufe 7: Raum und Form` anchor now carries a first reviewed corridor on the shared Sek-I geometry surface
+- the current Saarland grade-7 source still exposes only one shared geometry strip
+- this confirms that the shared broad Sek-I geometry surface can absorb an explicit reviewed class-7 lane without forcing a sharper state-local split from source granularity alone
+## Saarland Klassenstufe 7 measurement corridor connected (`2026-04-04`)
+
+- the broad SL `Klassenstufe 7: Groessen und Messen` anchor now carries a first reviewed corridor on the shared early Sek-I measurement / area / volume surface
+- the current Saarland grade-7 source still exposes only one shared measurement strip
+- this confirms the shared early measurement surface can absorb an explicit reviewed class-7 lane without forcing a sharper state-local split
+## Saarland Klassenstufe 8 geometry corridor connected (`2026-04-04`)
+
+- the broad SL `Klassenstufe 8: Raum und Form` anchor now carries a first reviewed corridor on the shared Sek-I geometry surface
+- the current Saarland grade-8 source still exposes only one shared geometry strip
+- this confirms the shared broad Sek-I geometry surface can absorb an explicit reviewed class-8 lane without forcing a sharper state-local split
+## Saarland Klassenstufe 8 measurement corridor connected (`2026-04-04`)
+
+- the broad SL `Klassenstufe 8: Groessen und Messen` anchor now carries a first reviewed corridor on the shared early Sek-I measurement / area / volume surface
+- the current Saarland grade-8 source still exposes only one shared measurement strip
+- this confirms the shared early measurement surface can absorb an explicit reviewed class-8 lane without forcing a sharper state-local split

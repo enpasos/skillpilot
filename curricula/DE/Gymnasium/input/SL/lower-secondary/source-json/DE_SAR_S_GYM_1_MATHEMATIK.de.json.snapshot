@@ -240,8 +240,8 @@
       "id": "5db95d61-d6f8-588d-994e-4e551a0912e9",
       "title": "Klassenstufe 7",
       "titleEn": "Klassenstufe 7",
-      "description": "Erster breiter Saarland-Quellkorridor für Klassenstufe 7 mit den Leitideen Zahl und Operation, Größen und Messen, Raum und Form, Strukturen und funktionaler Zusammenhang sowie Daten und Zufall.",
-      "descriptionEn": "First broad Saarland source corridor for Klassenstufe 7 with the guiding ideas numbers and operations, quantities and measurement, space and shape, structures and functional relationships, and data and chance.",
+      "description": "Erster verfeinerter Saarland-Quellkorridor für Klassenstufe 7 mit reviewed Algebra-, Größen-/Messen-, Geometrie-, Funktions- und Daten-/Zufallskorridoren.",
+      "descriptionEn": "First refined Saarland source corridor for grade 7 with reviewed algebra, measurement, geometry, function, and data/chance corridors.",
       "weight": 5,
       "tags": [
         "Sek1",
@@ -251,10 +251,10 @@
       ],
       "contains": [
         "8c7616c0-5da3-572d-9a6f-11392bc2612c",
-        "37795468-b887-5d55-9cb0-9c77ffd38365",
-        "2aae9ae3-bcfe-5b6f-ae96-2f3b70ae3570",
+        "sl-sek1-j7-measurement-corridor",
+        "sl-sek1-j7-geometry-corridor",
         "48a83320-2fc4-5398-a965-752df23507b0",
-        "74523dcd-42bd-5112-9e4c-d33ca47b9fe3"
+        "sl-sek1-j7-data-chance-corridor"
       ],
       "requires": [
         "1eac4215-ac5b-5be9-b356-745a2b010d0a"
@@ -379,6 +379,35 @@
       "type": "atomic"
     },
     {
+      "id": "sl-sek1-j7-measurement-corridor",
+      "title": "Klassenstufe 7: Größen und Messen",
+      "titleEn": "Grade 7: quantities and measurement",
+      "description": "Erster reviewter Saarland-Quellcluster für die Leitidee Größen und Messen in Klassenstufe 7.",
+      "descriptionEn": "First reviewed Saarland source cluster for the guiding idea quantities and measurement in grade 7.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "J7",
+        "Saarland",
+        "Leitidee",
+        "Corridor"
+      ],
+      "contains": [
+        "37795468-b887-5d55-9cb0-9c77ffd38365"
+      ],
+      "requires": [],
+      "sourceRef": "Saarland Gymnasium Mathematik LP_MA_gym9_7_2023.pdf, Kompetenzschema und Themenfelder.",
+      "dimensionTags": {
+        "framework": "sl-gym9-sek1-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J7",
+        "area": "Größen und Messen"
+      },
+      "type": "cluster"
+    },
+    {
       "id": "37795468-b887-5d55-9cb0-9c77ffd38365",
       "title": "Klassenstufe 7: Größen und Messen",
       "titleEn": "Klassenstufe 7: Größen und Messen",
@@ -403,6 +432,35 @@
         "area": "Größen und Messen"
       },
       "type": "atomic"
+    },
+    {
+      "id": "sl-sek1-j7-geometry-corridor",
+      "title": "Klassenstufe 7: Raum und Form",
+      "titleEn": "Grade 7: space and shape",
+      "description": "Erster reviewter Saarland-Quellcluster für die Leitidee Raum und Form in Klassenstufe 7.",
+      "descriptionEn": "First reviewed Saarland source cluster for the guiding idea space and shape in grade 7.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "J7",
+        "Saarland",
+        "Leitidee",
+        "Corridor"
+      ],
+      "contains": [
+        "2aae9ae3-bcfe-5b6f-ae96-2f3b70ae3570"
+      ],
+      "requires": [],
+      "sourceRef": "Saarland Gymnasium Mathematik LP_MA_gym9_7_2023.pdf, Kompetenzschema und Themenfelder.",
+      "dimensionTags": {
+        "framework": "sl-gym9-sek1-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J7",
+        "area": "Raum und Form"
+      },
+      "type": "cluster"
     },
     {
       "id": "2aae9ae3-bcfe-5b6f-ae96-2f3b70ae3570",
@@ -539,6 +597,35 @@
       "type": "atomic"
     },
     {
+      "id": "sl-sek1-j7-data-chance-corridor",
+      "title": "Klassenstufe 7: Daten und Zufall",
+      "titleEn": "Grade 7: data and chance",
+      "description": "Erster reviewter Saarland-Quellcluster für die Leitidee Daten und Zufall in Klassenstufe 7.",
+      "descriptionEn": "First reviewed Saarland source cluster for the guiding idea data and chance in grade 7.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "J7",
+        "Saarland",
+        "Leitidee",
+        "Corridor"
+      ],
+      "contains": [
+        "74523dcd-42bd-5112-9e4c-d33ca47b9fe3"
+      ],
+      "requires": [],
+      "sourceRef": "Saarland Gymnasium Mathematik LP_MA_gym9_7_2023.pdf, Kompetenzschema und Themenfelder.",
+      "dimensionTags": {
+        "framework": "sl-gym9-sek1-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J7",
+        "area": "Daten und Zufall"
+      },
+      "type": "cluster"
+    },
+    {
       "id": "74523dcd-42bd-5112-9e4c-d33ca47b9fe3",
       "title": "Klassenstufe 7: Daten und Zufall",
       "titleEn": "Klassenstufe 7: Daten und Zufall",
@@ -568,8 +655,8 @@
       "id": "6849e08e-49f1-5520-a58e-7cbe3183a1de",
       "title": "Klassenstufe 8",
       "titleEn": "Klassenstufe 8",
-      "description": "Erster breiter Saarland-Quellkorridor für Klassenstufe 8 mit den Leitideen Zahl und Operation, Größen und Messen, Raum und Form, Strukturen und funktionaler Zusammenhang sowie Daten und Zufall.",
-      "descriptionEn": "First broad Saarland source corridor for Klassenstufe 8 with the guiding ideas numbers and operations, quantities and measurement, space and shape, structures and functional relationships, and data and chance.",
+      "description": "Erster verfeinerter Saarland-Quellkorridor für Klassenstufe 8 mit reviewed Algebra-, Größen-/Messen-, Geometrie-, Funktions- und Daten-/Zufallskorridoren.",
+      "descriptionEn": "First refined Saarland source corridor for grade 8 with reviewed algebra, measurement, geometry, function, and data/chance corridors.",
       "weight": 5,
       "tags": [
         "Sek1",
@@ -578,11 +665,11 @@
         "Leitideen"
       ],
       "contains": [
-        "27a199ca-50a3-5336-bddd-fc464ea15050",
-        "37a20287-bd4e-5f2a-832e-0b322894305f",
-        "b79560b1-72e9-5779-9c08-ebdf07d98e97",
-        "9d35ecc7-3552-5437-8cdd-5aee3b2f8151",
-        "3f1fa567-24b4-5173-9102-3956d7805d1f"
+        "sl-sek1-j8-algebra-corridor",
+        "sl-sek1-j8-measurement-corridor",
+        "sl-sek1-j8-geometry-corridor",
+        "sl-sek1-j8-functions-corridor",
+        "sl-sek1-j8-data-chance-corridor"
       ],
       "requires": [
         "1eac4215-ac5b-5be9-b356-745a2b010d0a"
@@ -595,6 +682,35 @@
         "guidingIdeas": [],
         "phase": "J8",
         "area": "Klassenstufe 8"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "sl-sek1-j8-algebra-corridor",
+      "title": "Klassenstufe 8: Zahl und Operation",
+      "titleEn": "Grade 8: numbers and operations",
+      "description": "Erster reviewter Saarland-Quellcluster für die Leitidee Zahl und Operation in Klassenstufe 8.",
+      "descriptionEn": "First reviewed Saarland source cluster for the guiding idea numbers and operations in grade 8.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "J8",
+        "Saarland",
+        "Leitidee",
+        "Corridor"
+      ],
+      "contains": [
+        "27a199ca-50a3-5336-bddd-fc464ea15050"
+      ],
+      "requires": [],
+      "sourceRef": "Saarland Gymnasium Mathematik LP_MA_gym9_8_2023.pdf, Kompetenzschema und Themenfelder.",
+      "dimensionTags": {
+        "framework": "sl-gym9-sek1-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J8",
+        "area": "Zahl und Operation"
       },
       "type": "cluster"
     },
@@ -625,6 +741,35 @@
       "type": "atomic"
     },
     {
+      "id": "sl-sek1-j8-measurement-corridor",
+      "title": "Klassenstufe 8: Größen und Messen",
+      "titleEn": "Grade 8: quantities and measurement",
+      "description": "Erster reviewter Saarland-Quellcluster für die Leitidee Größen und Messen in Klassenstufe 8.",
+      "descriptionEn": "First reviewed Saarland source cluster for the guiding idea quantities and measurement in grade 8.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "J8",
+        "Saarland",
+        "Leitidee",
+        "Corridor"
+      ],
+      "contains": [
+        "37a20287-bd4e-5f2a-832e-0b322894305f"
+      ],
+      "requires": [],
+      "sourceRef": "Saarland Gymnasium Mathematik LP_MA_gym9_8_2023.pdf, Kompetenzschema und Themenfelder.",
+      "dimensionTags": {
+        "framework": "sl-gym9-sek1-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J8",
+        "area": "Größen und Messen"
+      },
+      "type": "cluster"
+    },
+    {
       "id": "37a20287-bd4e-5f2a-832e-0b322894305f",
       "title": "Klassenstufe 8: Größen und Messen",
       "titleEn": "Klassenstufe 8: Größen und Messen",
@@ -649,6 +794,35 @@
         "area": "Größen und Messen"
       },
       "type": "atomic"
+    },
+    {
+      "id": "sl-sek1-j8-geometry-corridor",
+      "title": "Klassenstufe 8: Raum und Form",
+      "titleEn": "Grade 8: space and shape",
+      "description": "Erster reviewter Saarland-Quellcluster für die Leitidee Raum und Form in Klassenstufe 8.",
+      "descriptionEn": "First reviewed Saarland source cluster for the guiding idea space and shape in grade 8.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "J8",
+        "Saarland",
+        "Leitidee",
+        "Corridor"
+      ],
+      "contains": [
+        "b79560b1-72e9-5779-9c08-ebdf07d98e97"
+      ],
+      "requires": [],
+      "sourceRef": "Saarland Gymnasium Mathematik LP_MA_gym9_8_2023.pdf, Kompetenzschema und Themenfelder.",
+      "dimensionTags": {
+        "framework": "sl-gym9-sek1-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J8",
+        "area": "Raum und Form"
+      },
+      "type": "cluster"
     },
     {
       "id": "b79560b1-72e9-5779-9c08-ebdf07d98e97",
@@ -677,6 +851,35 @@
       "type": "atomic"
     },
     {
+      "id": "sl-sek1-j8-functions-corridor",
+      "title": "Klassenstufe 8: Strukturen und funktionaler Zusammenhang",
+      "titleEn": "Grade 8: structures and functional relationships",
+      "description": "Erster reviewter Saarland-Quellcluster für die Leitidee Strukturen und funktionaler Zusammenhang in Klassenstufe 8.",
+      "descriptionEn": "First reviewed Saarland source cluster for the guiding idea structures and functional relationships in grade 8.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "J8",
+        "Saarland",
+        "Leitidee",
+        "Corridor"
+      ],
+      "contains": [
+        "9d35ecc7-3552-5437-8cdd-5aee3b2f8151"
+      ],
+      "requires": [],
+      "sourceRef": "Saarland Gymnasium Mathematik LP_MA_gym9_8_2023.pdf, Kompetenzschema und Themenfelder.",
+      "dimensionTags": {
+        "framework": "sl-gym9-sek1-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J8",
+        "area": "Strukturen und funktionaler Zusammenhang"
+      },
+      "type": "cluster"
+    },
+    {
       "id": "9d35ecc7-3552-5437-8cdd-5aee3b2f8151",
       "title": "Klassenstufe 8: Strukturen und funktionaler Zusammenhang",
       "titleEn": "Klassenstufe 8: Strukturen und funktionaler Zusammenhang",
@@ -701,6 +904,35 @@
         "area": "Strukturen und funktionaler Zusammenhang"
       },
       "type": "atomic"
+    },
+    {
+      "id": "sl-sek1-j8-data-chance-corridor",
+      "title": "Klassenstufe 8: Daten und Zufall",
+      "titleEn": "Grade 8: data and chance",
+      "description": "Erster reviewter Saarland-Quellcluster für die Leitidee Daten und Zufall in Klassenstufe 8.",
+      "descriptionEn": "First reviewed Saarland source cluster for the guiding idea data and chance in grade 8.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "J8",
+        "Saarland",
+        "Leitidee",
+        "Corridor"
+      ],
+      "contains": [
+        "3f1fa567-24b4-5173-9102-3956d7805d1f"
+      ],
+      "requires": [],
+      "sourceRef": "Saarland Gymnasium Mathematik LP_MA_gym9_8_2023.pdf, Kompetenzschema und Themenfelder.",
+      "dimensionTags": {
+        "framework": "sl-gym9-sek1-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J8",
+        "area": "Daten und Zufall"
+      },
+      "type": "cluster"
     },
     {
       "id": "3f1fa567-24b4-5173-9102-3956d7805d1f",
@@ -732,8 +964,8 @@
       "id": "d9caea49-5de9-5935-b87a-ea60d7711fce",
       "title": "Klassenstufe 9",
       "titleEn": "Klassenstufe 9",
-      "description": "Erster breiter Saarland-Quellkorridor für Klassenstufe 9 mit den Leitideen Zahl und Operation, Größen und Messen, Raum und Form, Strukturen und funktionaler Zusammenhang sowie Daten und Zufall.",
-      "descriptionEn": "First broad Saarland source corridor for Klassenstufe 9 with the guiding ideas numbers and operations, quantities and measurement, space and shape, structures and functional relationships, and data and chance.",
+      "description": "Erster verfeinerter Saarland-Quellkorridor für Klassenstufe 9 mit reviewed Algebra- und den verbleibenden breiten Leitideen Größen und Messen, Raum und Form, Strukturen und funktionaler Zusammenhang sowie Daten und Zufall.",
+      "descriptionEn": "First refined Saarland source corridor for grade 9 with a reviewed algebra corridor plus the remaining broad guiding ideas quantities and measurement, space and shape, structures and functional relationships, and data and chance.",
       "weight": 5,
       "tags": [
         "Sek1",
@@ -742,7 +974,7 @@
         "Leitideen"
       ],
       "contains": [
-        "575197b4-f2a5-5715-ad6d-e6c0ecd76686",
+        "sl-sek1-j9-algebra-corridor",
         "c734be23-9770-504f-afab-9192aca85317",
         "93e01f54-c841-58bd-a6b6-5a51b0bf7557",
         "6d9eeb79-e80b-52bc-a953-0e0994422550",
@@ -759,6 +991,35 @@
         "guidingIdeas": [],
         "phase": "J9",
         "area": "Klassenstufe 9"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "sl-sek1-j9-algebra-corridor",
+      "title": "Klassenstufe 9: Zahl und Operation",
+      "titleEn": "Grade 9: numbers and operations",
+      "description": "Erster reviewter Saarland-Quellcluster für die Leitidee Zahl und Operation in Klassenstufe 9.",
+      "descriptionEn": "First reviewed Saarland source cluster for the guiding idea numbers and operations in grade 9.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "J9",
+        "Saarland",
+        "Leitidee",
+        "Corridor"
+      ],
+      "contains": [
+        "575197b4-f2a5-5715-ad6d-e6c0ecd76686"
+      ],
+      "requires": [],
+      "sourceRef": "Saarland Gymnasium Mathematik LP_MA_gym9_9_2023.pdf, Kompetenzschema und Themenfelder.",
+      "dimensionTags": {
+        "framework": "sl-gym9-sek1-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J9",
+        "area": "Zahl und Operation"
       },
       "type": "cluster"
     },

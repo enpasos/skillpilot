@@ -1,0 +1,444 @@
+{
+  "landscapeId": "9d420a46-b007-44ce-a4b4-453ef4e38523",
+  "locale": "de-DE",
+  "country": "DE",
+  "region": "MV",
+  "schoolType": "Gymnasium",
+  "subject": "Mathematik",
+  "frameworkId": "mv-rp2019-gym-sek2-math",
+  "title": "Mathematik Qualifikationsphase (Mecklenburg-Vorpommern, erster Quellsnapshot)",
+  "titleEn": "Mathematics qualification phase (Mecklenburg-Vorpommern, first source snapshot)",
+  "description": "Erster archivierter Mecklenburg-Vorpommern-Quellsnapshot fuer die Mathematik der gymnasialen Oberstufe. Der Snapshot umfasst einen allgemeinen Orientierungsanker sowie die breiten Themenanker der Qualifikationsphase zu Analysis, analytischer Geometrie, linearen Modellen und Stochastik.",
+  "descriptionEn": "First archived Mecklenburg-Vorpommern source snapshot for upper-secondary mathematics. The snapshot covers a general orientation anchor and broad qualification-phase topic anchors across analysis, analytic geometry, linear models, and stochastics.",
+  "compatibilityOnly": true,
+  "legacyHiddenByDefault": true,
+  "goals": [
+    {
+      "id": "mv-sek2-root",
+      "title": "Mathematik Qualifikationsphase",
+      "titleEn": "Mathematics qualification phase",
+      "description": "Breiter erster Mecklenburg-Vorpommern-Quellsnapshot fuer die Mathematik der Qualifikationsphase mit allgemeinen Oberstufenankern und den grossen Themenblaecken aus dem Rahmenplan 2019.",
+      "descriptionEn": "Broad first Mecklenburg-Vorpommern source snapshot for upper-secondary mathematics with general qualification-phase anchors and the major topic blocks from the 2019 curriculum.",
+      "weight": 10,
+      "tags": [
+        "Sek2",
+        "PilotSubset",
+        "Mecklenburg-Vorpommern"
+      ],
+      "contains": [
+        "mv-sek2-orientation",
+        "mv-sek2-analysis",
+        "mv-sek2-analytic-geometry-corridor",
+        "mv-sek2-linear-algebra-corridor",
+        "mv-sek2-stochastics-corridor"
+      ],
+      "requires": [
+        "mv-sek2-orientation"
+      ],
+      "sourceRef": "Rahmenplan fuer die Qualifikationsphase der gymnasialen Oberstufe Mathematik 2019, Unterrichtsinhalte, S. 17-25.",
+      "dimensionTags": {
+        "framework": "mv-rp2019-gym-sek2-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Qualifikationsphase"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "mv-sek2-orientation",
+      "title": "Warum Mathematik in 11/12? - Wissenschaftspropedeutik und Modellbildung",
+      "titleEn": "Why mathematics in grades 11/12? - Academic preparation and modelling",
+      "description": "Der Oberstufenrahmenplan Mecklenburg-Vorpommern rahmt Mathematik als wissenschaftspropedeutisches Fach, das Modellbildung, Begruendung, Kommunikation und den reflektierten Einsatz mathematischer Werkzeuge verbindet.",
+      "descriptionEn": "The upper-secondary curriculum in Mecklenburg-Vorpommern frames mathematics as an academically preparatory subject that combines modelling, justification, communication, and reflective use of mathematical tools.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "Orientation",
+        "Mecklenburg-Vorpommern"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Rahmenplan fuer die Qualifikationsphase der gymnasialen Oberstufe Mathematik 2019, Fachprofil und Kompetenzbereiche, S. 4-16.",
+      "dimensionTags": {
+        "framework": "mv-rp2019-gym-sek2-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "GLOBAL",
+        "area": "Orientierung"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "mv-sek2-analysis",
+      "title": "Analysis",
+      "titleEn": "Analysis",
+      "description": "Erster reviewed Mecklenburg-Vorpommern-Quellkorridor fuer die Analysis der Qualifikationsphase mit den breiten Themenankern zu Grenzwerten, Ableitungen, Funktionsuntersuchungen, Differentialanwendungen, Stammfunktionen und Integral-Anwendungen.",
+      "descriptionEn": "First reviewed Mecklenburg-Vorpommern source corridor for upper-secondary analysis with broad topic anchors for limits, derivatives, function investigation, differential applications, antiderivatives, and integral applications.",
+      "weight": 6,
+      "tags": [
+        "Sek2",
+        "Analysis",
+        "Corridor",
+        "Mecklenburg-Vorpommern"
+      ],
+      "contains": [
+        "mv-sek2-limits",
+        "mv-sek2-derivatives",
+        "mv-sek2-function-analysis",
+        "mv-sek2-diff-applications",
+        "mv-sek2-antiderivatives",
+        "mv-sek2-integral-applications"
+      ],
+      "requires": [
+        "mv-sek2-orientation"
+      ],
+      "sourceRef": "Rahmenplan fuer die Qualifikationsphase der gymnasialen Oberstufe Mathematik 2019, Grenzwerte und Stetigkeit bis Anwendungen der Integralrechnung, S. 17-25.",
+      "dimensionTags": {
+        "framework": "mv-rp2019-gym-sek2-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Analysis"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "mv-sek2-limits",
+      "title": "Grenzwerte und Stetigkeit",
+      "titleEn": "Limits and continuity",
+      "description": "Breiter erster Mecklenburg-Vorpommern-Quellanker fuer den Qualifikationsphasenteil zu Grenzwerten und Stetigkeit.",
+      "descriptionEn": "Broad first Mecklenburg-Vorpommern source anchor for the qualification-phase topic on limits and continuity.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "Analysis",
+        "Mecklenburg-Vorpommern"
+      ],
+      "contains": [],
+      "requires": [
+        "mv-sek2-orientation"
+      ],
+      "sourceRef": "Rahmenplan fuer die Qualifikationsphase der gymnasialen Oberstufe Mathematik 2019, Grenzwerte und Stetigkeit, S. 17.",
+      "dimensionTags": {
+        "framework": "mv-rp2019-gym-sek2-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Analysis"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "mv-sek2-derivatives",
+      "title": "Ableitungen",
+      "titleEn": "Derivatives",
+      "description": "Breiter erster Mecklenburg-Vorpommern-Quellanker fuer den Qualifikationsphasenteil zu Ableitungen.",
+      "descriptionEn": "Broad first Mecklenburg-Vorpommern source anchor for the qualification-phase topic on derivatives.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "Analysis",
+        "Mecklenburg-Vorpommern"
+      ],
+      "contains": [],
+      "requires": [
+        "mv-sek2-limits"
+      ],
+      "sourceRef": "Rahmenplan fuer die Qualifikationsphase der gymnasialen Oberstufe Mathematik 2019, Ableitungen, S. 18.",
+      "dimensionTags": {
+        "framework": "mv-rp2019-gym-sek2-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Analysis"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "mv-sek2-function-analysis",
+      "title": "Untersuchungen von Funktionen und ihrer Graphen",
+      "titleEn": "Investigating functions and their graphs",
+      "description": "Breiter erster Mecklenburg-Vorpommern-Quellanker fuer Funktionsuntersuchungen in der Qualifikationsphase.",
+      "descriptionEn": "Broad first Mecklenburg-Vorpommern source anchor for investigating functions in the qualification phase.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "Analysis",
+        "Mecklenburg-Vorpommern"
+      ],
+      "contains": [],
+      "requires": [
+        "mv-sek2-derivatives"
+      ],
+      "sourceRef": "Rahmenplan fuer die Qualifikationsphase der gymnasialen Oberstufe Mathematik 2019, Untersuchungen von Funktionen und ihrer Graphen, S. 19.",
+      "dimensionTags": {
+        "framework": "mv-rp2019-gym-sek2-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Analysis"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "mv-sek2-diff-applications",
+      "title": "Anwendungen der Differentialrechnung",
+      "titleEn": "Applications of differential calculus",
+      "description": "Breiter erster Mecklenburg-Vorpommern-Quellanker fuer Anwendungen der Differentialrechnung in der Qualifikationsphase.",
+      "descriptionEn": "Broad first Mecklenburg-Vorpommern source anchor for applications of differential calculus in the qualification phase.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "Analysis",
+        "Mecklenburg-Vorpommern"
+      ],
+      "contains": [],
+      "requires": [
+        "mv-sek2-function-analysis"
+      ],
+      "sourceRef": "Rahmenplan fuer die Qualifikationsphase der gymnasialen Oberstufe Mathematik 2019, Anwendungen der Differentialrechnung, S. 20.",
+      "dimensionTags": {
+        "framework": "mv-rp2019-gym-sek2-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Analysis"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "mv-sek2-analytic-geometry-corridor",
+      "title": "Analytische Geometrie / Vektoren",
+      "titleEn": "Analytic geometry / vectors",
+      "description": "Breiter erster reviewed Mecklenburg-Vorpommern-Korridor fuer analytische Geometrie und Vektoren in der Qualifikationsphase mit den gemischten Themenbaendern zu Vektoren/Matrizen sowie Geraden und Ebenen.",
+      "descriptionEn": "Broad first reviewed Mecklenburg-Vorpommern corridor for analytic geometry and vectors in the qualification phase across the mixed topic bands on vectors/matrices and lines/planes.",
+      "weight": 2,
+      "tags": [
+        "Sek2",
+        "Geometry",
+        "Corridor",
+        "Mecklenburg-Vorpommern"
+      ],
+      "contains": [
+        "mv-sek2-vectors-matrices",
+        "mv-sek2-lines-planes"
+      ],
+      "requires": [
+        "mv-sek2-orientation"
+      ],
+      "sourceRef": "Rahmenplan fuer die Qualifikationsphase der gymnasialen Oberstufe Mathematik 2019, Vektoren und Matrizen sowie Geraden und Ebenen, S. 21-22.",
+      "dimensionTags": {
+        "framework": "mv-rp2019-gym-sek2-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Analytische Geometrie / Vektoren"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "mv-sek2-linear-algebra-corridor",
+      "title": "Lineare Algebra / Matrizen",
+      "titleEn": "Linear algebra / matrices",
+      "description": "Breiter erster reviewed Mecklenburg-Vorpommern-Korridor fuer lineare Algebra und Matrizen in der Qualifikationsphase auf dem gemischten Source-Strip zu Vektoren und Matrizen.",
+      "descriptionEn": "Broad first reviewed Mecklenburg-Vorpommern corridor for linear algebra and matrices in the qualification phase on the mixed source strip for vectors and matrices.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "LinearAlgebra",
+        "Corridor",
+        "Mecklenburg-Vorpommern"
+      ],
+      "contains": [
+        "mv-sek2-vectors-matrices"
+      ],
+      "requires": [
+        "mv-sek2-orientation"
+      ],
+      "sourceRef": "Rahmenplan fuer die Qualifikationsphase der gymnasialen Oberstufe Mathematik 2019, Vektoren und Matrizen, S. 21.",
+      "dimensionTags": {
+        "framework": "mv-rp2019-gym-sek2-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Lineare Algebra / Matrizen"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "mv-sek2-vectors-matrices",
+      "title": "Vektoren und Matrizen",
+      "titleEn": "Vectors and matrices",
+      "description": "Breiter erster Mecklenburg-Vorpommern-Quellanker fuer Vektoren und Matrizen in der Qualifikationsphase.",
+      "descriptionEn": "Broad first Mecklenburg-Vorpommern source anchor for vectors and matrices in the qualification phase.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "Geometry",
+        "LinearAlgebra",
+        "Mecklenburg-Vorpommern"
+      ],
+      "contains": [],
+      "requires": [
+        "mv-sek2-orientation"
+      ],
+      "sourceRef": "Rahmenplan fuer die Qualifikationsphase der gymnasialen Oberstufe Mathematik 2019, Vektoren und Matrizen, S. 21.",
+      "dimensionTags": {
+        "framework": "mv-rp2019-gym-sek2-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Raum und lineare Modelle"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "mv-sek2-lines-planes",
+      "title": "Geraden und Ebenen",
+      "titleEn": "Lines and planes",
+      "description": "Breiter erster Mecklenburg-Vorpommern-Quellanker fuer Geraden und Ebenen in der Qualifikationsphase.",
+      "descriptionEn": "Broad first Mecklenburg-Vorpommern source anchor for lines and planes in the qualification phase.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "Geometry",
+        "Mecklenburg-Vorpommern"
+      ],
+      "contains": [],
+      "requires": [
+        "mv-sek2-vectors-matrices"
+      ],
+      "sourceRef": "Rahmenplan fuer die Qualifikationsphase der gymnasialen Oberstufe Mathematik 2019, Geraden und Ebenen, S. 22.",
+      "dimensionTags": {
+        "framework": "mv-rp2019-gym-sek2-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Analytische Geometrie"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "mv-sek2-stochastics-corridor",
+      "title": "Stochastik",
+      "titleEn": "Stochastics",
+      "description": "Breiter erster reviewed Mecklenburg-Vorpommern-Korridor fuer Stochastik in der Qualifikationsphase.",
+      "descriptionEn": "Broad first reviewed Mecklenburg-Vorpommern corridor for stochastics in the qualification phase.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "Stochastik",
+        "Mecklenburg-Vorpommern"
+      ],
+      "contains": [
+        "mv-sek2-stochastics"
+      ],
+      "requires": [
+        "mv-sek2-orientation"
+      ],
+      "sourceRef": "Rahmenplan fuer die Qualifikationsphase der gymnasialen Oberstufe Mathematik 2019, Wahrscheinlichkeitsrechnung und Statistik, S. 23.",
+      "dimensionTags": {
+        "framework": "mv-rp2019-gym-sek2-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Stochastik"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "mv-sek2-stochastics",
+      "title": "Wahrscheinlichkeitsrechnung und Statistik",
+      "titleEn": "Probability and statistics",
+      "description": "Breiter erster Mecklenburg-Vorpommern-Quellanker fuer Wahrscheinlichkeitsrechnung und Statistik in der Qualifikationsphase.",
+      "descriptionEn": "Broad first Mecklenburg-Vorpommern source anchor for probability and statistics in the qualification phase.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "Stochastik",
+        "Mecklenburg-Vorpommern"
+      ],
+      "contains": [],
+      "requires": [
+        "mv-sek2-orientation"
+      ],
+      "sourceRef": "Rahmenplan fuer die Qualifikationsphase der gymnasialen Oberstufe Mathematik 2019, Wahrscheinlichkeitsrechnung und Statistik, S. 23.",
+      "dimensionTags": {
+        "framework": "mv-rp2019-gym-sek2-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Stochastik"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "mv-sek2-antiderivatives",
+      "title": "Stammfunktionen",
+      "titleEn": "Antiderivatives",
+      "description": "Breiter erster Mecklenburg-Vorpommern-Quellanker fuer Stammfunktionen in der Qualifikationsphase.",
+      "descriptionEn": "Broad first Mecklenburg-Vorpommern source anchor for antiderivatives in the qualification phase.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "Analysis",
+        "Mecklenburg-Vorpommern"
+      ],
+      "contains": [],
+      "requires": [
+        "mv-sek2-derivatives"
+      ],
+      "sourceRef": "Rahmenplan fuer die Qualifikationsphase der gymnasialen Oberstufe Mathematik 2019, Stammfunktionen, S. 24.",
+      "dimensionTags": {
+        "framework": "mv-rp2019-gym-sek2-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Analysis"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "mv-sek2-integral-applications",
+      "title": "Anwendungen der Integralrechnung",
+      "titleEn": "Applications of integral calculus",
+      "description": "Breiter erster Mecklenburg-Vorpommern-Quellanker fuer Anwendungen der Integralrechnung in der Qualifikationsphase.",
+      "descriptionEn": "Broad first Mecklenburg-Vorpommern source anchor for applications of integral calculus in the qualification phase.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "Analysis",
+        "Mecklenburg-Vorpommern"
+      ],
+      "contains": [],
+      "requires": [
+        "mv-sek2-antiderivatives"
+      ],
+      "sourceRef": "Rahmenplan fuer die Qualifikationsphase der gymnasialen Oberstufe Mathematik 2019, Anwendungen der Integralrechnung, S. 25.",
+      "dimensionTags": {
+        "framework": "mv-rp2019-gym-sek2-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Analysis"
+      },
+      "type": "atomic"
+    }
+  ]
+}

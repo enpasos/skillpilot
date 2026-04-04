@@ -1,6 +1,6 @@
 # Canonical Gymnasium Mathematics: Sek II Linear Algebra / Matrices Audit
 
-Snapshot: `2026-04-03`
+Snapshot: `2026-04-04`
 
 Purpose:
 
@@ -21,9 +21,11 @@ In scope:
   - `HB`
   - `HH`
   - `HE`
-  - `NI`
-  - `RP`
-  - `SN`
+- `MV`
+- `NI`
+- `RP`
+- `SN`
+- `TH`
 
 Out of scope:
 
@@ -92,6 +94,22 @@ Observed signal:
   - `A2` broad geometry work on lines and planes in space
 - this makes `RP` a useful pressure test for whether the frozen matrix surface can stay stable even when matrix work is still mixed across representation, operations, powers, and geometric mappings
 
+### Mecklenburg-Vorpommern (`MV`)
+
+Observed signal:
+
+- `MV` now adds a first reviewed broad upper-secondary matrix corridor on the active qualification-phase snapshot lane
+- the current Mecklenburg-Vorpommern source still exposes matrix work only through one mixed `Vektoren und Matrizen` band
+- `MV` therefore confirms that the frozen shared matrix surface can absorb a reviewed broad corridor without forcing a sharper visible `LM2-LM5` bridge package
+
+### Thueringen (`TH`)
+
+Observed signal:
+
+- `TH` now adds a first reviewed broad upper-secondary matrix corridor on top of the newly activated `Klassenstufe 11` / `11/12` snapshot lane
+- the current Thueringen source still exposes no explicit matrix-only strip and still mixes the available matrix-relevant evidence into the broad geometry / analytic-geometry packaging
+- `TH` therefore confirms that the frozen shared matrix surface can absorb a reviewed broad corridor even when the source currently only provides one shared Raum-/AGV-style bridge instead of a narrower explicit matrix strand
+
 ## Current canonical linear-algebra inventory
 
 The canonical graph is already materially seeded here.
@@ -122,7 +140,7 @@ The most relevant tensions are:
 
 ### 1. Matrix entry should stay visible as a separate package
 
-The reviewed state evidence supports a stable common entry corridor for:
+The reviewed state evidence, now also including the broad Mecklenburg-Vorpommern corridor, supports a stable common entry corridor for:
 
 - matrices as structured representations
 - reading entries over rows and columns

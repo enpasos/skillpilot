@@ -18,6 +18,7 @@ In scope:
 - `HB`
 - `HH`
 - `HE`
+- `MV`
 - `RP`
 - `SL`
 - `ST`
@@ -108,6 +109,19 @@ Observed signal:
   - `Prozent- und Zinsrechnung`
 - this makes `RP` a useful pressure test for whether the visible `A1/A3` surface can absorb a later number-extension strip next to a broad percent/simple-interest bridge without forcing a new late-algebra package
 
+### Mecklenburg-Vorpommern (`MV`)
+
+Observed signal:
+
+- `MV` now contributes reviewed lower-secondary algebra corridors on the explicit `Klassen 5/6` and `Klasse 7` lanes
+- the Mecklenburg-Vorpommern `Klassen 5/6` source now separates
+  - `Natuerliche Zahlen und Teilbarkeit`
+  - `Brueche und Dezimalbrueche`
+- the Mecklenburg-Vorpommern `Klasse 7` source still separates
+  - `Prozent- und Zinsrechnung`
+  - a broad strip across `ganze Zahlen`, `rationale Zahlen`, and `Quadratwurzel`
+- this makes `MV` a useful pressure test for whether the visible `A1` arithmetic surface can absorb an early foundations lane before the later `A3` bridge and number-extension surface appear, without forcing a new early-algebra package
+
 ### Saarland (`SL`)
 
 Observed signal:
@@ -118,6 +132,22 @@ Observed signal:
   - `Terme, Gleichungen und Ungleichungen`
   - `Prozentrechnung`
 - this makes `SL` a useful pressure test for whether the later number-extension surface, the broad percentage bridge, and a still-mixed terms/equations strip can coexist without forcing either a sharper visible `A2/A4` split or a new `A5`
+
+### Thueringen (`TH`)
+
+Observed signal:
+
+- `TH` now contributes a first reviewed lower-secondary algebra corridor on the explicit `Klassenstufen 5/6` lane
+- the Thueringen source separates
+  - `Natuerliche Zahlen`
+  - `Gebrochene Zahlen`
+- this makes `TH` a useful pressure test for whether the visible early `A1` arithmetic surface can absorb a clean `5/6` foundations lane without forcing a new early-algebra package
+- `TH` now also contributes a first reviewed broad `Klassenstufen 7/8` algebra corridor
+- the archived `7/8` source still exposes only one shared `Arithmetik/Algebra` strip
+- this confirms that the shared broad Sek-I algebra surface can absorb a reviewed wide `7/8` lane without forcing a sharper canonical split from source granularity alone
+- `TH` now also contributes a first reviewed broad `Klassenstufen 9/10` algebra corridor
+- the archived `9/10` source still exposes only one shared `Arithmetik/Algebra` strip
+- this confirms that the same shared broad later Sek-I algebra surface can absorb a reviewed wide `9/10` lane without forcing a sharper canonical split from source granularity alone
 
 ## Current canonical numbers / terms / algebra inventory
 
@@ -320,4 +350,13 @@ This topic audit is complete when:
 - `Rationale Zahlen` points to the visible later number-extension surface
 - `Prozent- und Zinsrechnung` points to the broad percent/simple-interest bridge
 - the RP lane therefore confirms the visible `A1/A3` surface without forcing a new visible `A5` or another late-algebra package
+## Saarland Klassenstufe 8 algebra corridor connected (`2026-04-04`)
 
+- the broad SL `Klassenstufe 8: Zahl und Operation` anchor now carries a first reviewed corridor on the shared Sek-I algebra surface
+- the current Saarland grade-8 source still exposes only one shared algebra strip
+- this confirms the shared broad Sek-I algebra surface can absorb an explicit reviewed class-8 lane without forcing a sharper state-local split
+## Saarland Klassenstufe 9 algebra corridor connected (`2026-04-04`)
+
+- the broad SL `Klassenstufe 9: Zahl und Operation` anchor now carries a first reviewed corridor on the shared Sek-I algebra surface
+- the current Saarland grade-9 source still exposes only one shared algebra strip
+- this confirms the shared broad Sek-I algebra surface can absorb an explicit reviewed class-9 lane without forcing a sharper state-local split
