@@ -42,10 +42,14 @@ Activation state:
 
 - the first reviewed upper-secondary geometry / space parent corridor is now fully connected: the broad BW course-stage geometry corridor plus the Basisfach / Leistungsfach parent strips and the two application parents now sit on the shared Sek-II space/matrix-model surface
 
+- the first reviewed upper-secondary integral-application parent corridor is now fully connected: the broad BW course-stage integral-application corridor plus the Basisfach and Leistungsfach parent strips now sit on the shared Sek-II integral / late-analysis surfaces
+
+- the remaining reviewed upper-secondary analysis parent residue is now fully connected: the broad first and second BW analysis course-stage corridors plus the linked Basisfach / Leistungsfach parent strips and the retained natural-exponential / integral split leaves now sit on the shared Sek-II analysis, exponential, integral, and late-analysis surfaces
+
 Operational rule from here:
 
 - keep these reserved `sourceLandscapeId` values stable while the first Baden-Wuerttemberg mathematics source snapshots are prepared
 - activate the shared provenance registries only after real archived source-landscape JSON snapshots with stable source goal IDs exist
 - prefer the active BW widening only on still-unmapped upper-secondary source parents or on intentionally imported retained non-core sections
 - do not reopen the already fully mapped lower-secondary pilot subset unless a new retained BW source slice is imported intentionally
-- the next clean BW move is now the remaining broad upper-secondary integral-application corridor parent pass
+- keep BW stable as a broad reviewed comparison lane; widen it only if an intentionally imported retained non-core BW source slice is added later

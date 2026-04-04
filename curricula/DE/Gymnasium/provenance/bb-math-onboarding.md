@@ -1,5 +1,7 @@
 # BB Math Onboarding Note
 
+Status: P5 (`broad_reviewed_coverage`)
+
 This note records the first Brandenburg source-landscape identifiers for the mathematics-first DE expansion track and their activation state.
 
 Reserved source landscapes on `2026-03-21`:
@@ -87,7 +89,7 @@ Activation state:
   - statistische Erhebungen exemplarisch planen und dokumentieren
   - Erhebungsdaten tabellarisch und grafisch aufbereiten
   - Erhebungsdaten mit Kenngroessen auswerten und kritisch beurteilen
-- repository-backed lower-secondary and upper-secondary mapping fixtures now carry `76` mappings in total
+- repository-backed lower-secondary and upper-secondary mapping fixtures now carry `145` mappings in total
 
 Operational rule from here:
 
@@ -102,5 +104,5 @@ Operational rule from here:
 - the first reviewed Brandenburg upper-secondary Q2 stochastics corridor is now mapped
 - the first reviewed Brandenburg upper-secondary Q2 data-and-distribution corridor is now mapped
 - the first reviewed Brandenburg upper-secondary Q2 survey-and-critique corridor is now mapped
-- next, widen the Brandenburg lower-secondary lane beyond the initial functions corridor while the shared BE/BB overlap still stays tight
-- after that, decide whether another Brandenburg upper-secondary follow-on corridor or a broader multi-state lower-secondary wave gives the cleaner payoff
+- the remaining broad Brandenburg lower-secondary algebra / geometry / body parents and the broad upper-secondary analysis / Q3 geometry / projection parents are now also mapped
+- Brandenburg is now a stable broad reviewed comparison lane; further widening should only happen if an intentionally imported retained non-core source slice is added later

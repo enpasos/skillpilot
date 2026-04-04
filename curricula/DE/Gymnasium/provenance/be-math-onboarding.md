@@ -1,5 +1,7 @@
 # BE Math Onboarding Note
 
+Status: P5 (`broad_reviewed_coverage`)
+
 This note records the first Berlin source-landscape identifiers for the mathematics-first DE expansion track and their activation state.
 
 Reserved source landscapes on `2026-03-21`:
@@ -81,7 +83,7 @@ Activation state:
   - Wahrscheinlichkeiten in binomialen Situationen berechnen
   - Erwartungswert und Standardabweichung der Binomialverteilung bestimmen und deuten
   - Binomialverteilungen zur Beschreibung stochastischer Situationen nutzen
-- repository-backed lower-secondary and upper-secondary mapping fixtures now carry `64` mappings in total
+- repository-backed lower-secondary and upper-secondary mapping files now carry `173` mappings in total
 
 Operational rule from here:
 
@@ -95,5 +97,5 @@ Operational rule from here:
 - the first reviewed Berlin upper-secondary Q2 stochastics corridor is now mapped
 - the first reviewed Berlin upper-secondary Q2 data-and-survey corridor is now mapped
 - the first reviewed Berlin upper-secondary Q4 distribution-and-binomial corridor is now mapped
-- next, widen the Berlin upper-secondary lane from the active `Q4` distribution-and-binomial strip toward the first `Q4` inference, tests, and normal-approximation follow-on corridor
-- after that, widen the Berlin lower-secondary lane beyond the initial functions corridor
+- the remaining broad Berlin lower-secondary algebra / geometry / body parents and the broad upper-secondary root, Q1/Q3/Q4, analysis-deepening, and numerical-mathematics parents are now also mapped
+- Berlin is now a stable broad reviewed comparison lane; further widening should only happen if an intentionally imported retained non-core source slice is added later

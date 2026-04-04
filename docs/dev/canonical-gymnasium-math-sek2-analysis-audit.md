@@ -292,6 +292,33 @@ Open questions now reduced to:
 
 Do not schedule a dedicated next package step for Sek-II analysis. Keep the current surface frozen and only reopen it if a later validator finding or reviewed lane produces a concrete shared mismatch.
 
+## Baden-Wuerttemberg upper-secondary integral-application parents connected (`2026-04-04`)
+
+Observed signal:
+
+- `BW` now also carries the broad upper-secondary parent corridor `Integralgrenzwert, Flaechen und Rotationskoerper`
+- the broad course-stage parent sits on the shared `Integralbegriffe, Rekonstruktion und Kontextdeutung (Sek II)` surface
+- the `Basisfach` parent sits on `Flaechen und Kontextdeutung mit Integralen`
+- the `Leistungsfach` parent sits on `Vertiefung der Analysis`
+
+Interpretation:
+
+- Baden-Wuerttemberg therefore confirms once more that the frozen visible `AN2-AN4` surface is sufficient even for the remaining broad integral-application parents
+- the late Leistungsfach continuation can stay above `AN4` without forcing a separate visible `AN5` package
+
+## Baden-Wuerttemberg upper-secondary broad analysis parents closed (`2026-04-04`)
+
+Observed signal:
+
+- `BW` now also carries the broad first and second course-stage analysis parents on the shared Sek-II analysis surface
+- the linked `Basisfach` and `Leistungsfach` parent strips now sit on the shared integral / late-analysis surfaces
+- the retained natural-exponential split leaf and the two retained broad integral-idea leaves are now also connected to the shared exponential and integral surfaces
+
+Interpretation:
+
+- Baden-Wuerttemberg no longer keeps any unmapped broad upper-secondary analysis residue inside the active pilot snapshot
+- the current frozen visible `AN2-AN4` package cut still absorbs these mixed BW parent bands without forcing a new visible bridge package
+
 ## Exit criteria for this audit
 
 This topic audit is complete when:

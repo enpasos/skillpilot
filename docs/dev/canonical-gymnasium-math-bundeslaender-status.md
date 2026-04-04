@@ -1,6 +1,6 @@
 # Canonical Gymnasium Mathematics Bundeslaender Status
 
-Snapshot: `2026-04-04T11:55:00Z`
+Snapshot: `2026-04-04T14:47:00Z`
 
 This file is generated from:
 
@@ -11,15 +11,14 @@ This file is generated from:
 
 - Tracked states: `16`
 - Canonical source coverage present: `6/16`
-- State-weighted rollout score: `78.8%`
+- State-weighted rollout score: `85.0%`
 - States with active snapshots (`P2+`): `16/16`
 - States with structural anchors mapped (`P3+`): `16/16`
 - States with reviewed corridor (`P4+`): `16/16`
-- States with broad coverage (`P5+`): `11/16`
+- States with broad coverage (`P5+`): `16/16`
 - Active canonical corridors: `5/6`
-- Priority `active`: `5`
-- Priority `next_wave`: `3`
-- Priority `backlog`: `8`
+- Priority `active`: `3`
+- Priority `backlog`: `13`
 
 ## Steering model
 
@@ -74,50 +73,45 @@ This file is generated from:
 
 | State | Phase | Score | Applicability | Mappings | Source stage | Priority |
 | --- | --- | ---: | --- | ---: | --- | --- |
-| `DE-BY` Bayern | `P5` Broad state coverage | `85%` | `yes` | `312` | `archived_inputs` | `active` |
+| `DE-BY` Bayern | `P5` Broad state coverage | `85%` | `yes` | `345` | `archived_inputs` | `active` |
 | `DE-HE` Hessen | `P5` Broad state coverage | `85%` | `yes` | `487` | `snapshots_active` | `active` |
-| `DE-NW` Nordrhein-Westfalen | `P5` Broad state coverage | `85%` | `yes` | `122` | `snapshots_active` | `active` |
-| `DE-BW` Baden-Wuerttemberg | `P4` First corridor reviewed | `65%` | `yes` | `177` | `first_corridor_reviewed` | `active` |
-| `DE-NI` Niedersachsen | `P4` First corridor reviewed | `65%` | `yes` | `158` | `snapshots_active` | `active` |
-| `DE-BB` Brandenburg | `P4` First corridor reviewed | `65%` | `yes` | `120` | `snapshots_active` | `next_wave` |
-| `DE-BE` Berlin | `P4` First corridor reviewed | `65%` | `no` | `148` | `snapshots_active` | `next_wave` |
-| `DE-SN` Sachsen | `P4` First corridor reviewed | `65%` | `no` | `123` | `snapshots_active` | `next_wave` |
+| `DE-NW` Nordrhein-Westfalen | `P5` Broad state coverage | `85%` | `yes` | `132` | `broad_reviewed_coverage` | `active` |
+| `DE-BB` Brandenburg | `P5` Broad state coverage | `85%` | `yes` | `145` | `broad_reviewed_coverage` | `backlog` |
+| `DE-BE` Berlin | `P5` Broad state coverage | `85%` | `no` | `173` | `broad_reviewed_coverage` | `backlog` |
+| `DE-BW` Baden-Wuerttemberg | `P5` Broad state coverage | `85%` | `yes` | `190` | `broad_reviewed_coverage` | `backlog` |
 | `DE-HB` Bremen | `P5` Broad state coverage | `85%` | `no` | `68` | `snapshots_active` | `backlog` |
 | `DE-HH` Hamburg | `P5` Broad state coverage | `85%` | `no` | `76` | `broad_reviewed_coverage` | `backlog` |
 | `DE-MV` Mecklenburg-Vorpommern | `P5` Broad state coverage | `85%` | `no` | `59` | `broad_reviewed_coverage` | `backlog` |
+| `DE-NI` Niedersachsen | `P5` Broad state coverage | `85%` | `yes` | `203` | `broad_reviewed_coverage` | `backlog` |
 | `DE-RP` Rheinland-Pfalz | `P5` Broad state coverage | `85%` | `no` | `65` | `broad_reviewed_coverage` | `backlog` |
 | `DE-SH` Schleswig-Holstein | `P5` Broad state coverage | `85%` | `no` | `149` | `broad_reviewed_coverage` | `backlog` |
 | `DE-SL` Saarland | `P5` Broad state coverage | `85%` | `no` | `95` | `broad_reviewed_coverage` | `backlog` |
+| `DE-SN` Sachsen | `P5` Broad state coverage | `85%` | `no` | `130` | `broad_reviewed_coverage` | `backlog` |
 | `DE-ST` Sachsen-Anhalt | `P5` Broad state coverage | `85%` | `no` | `72` | `broad_reviewed_coverage` | `backlog` |
 | `DE-TH` Thueringen | `P5` Broad state coverage | `85%` | `no` | `48` | `broad_reviewed_coverage` | `backlog` |
 
 ## Immediate queue
 
-- `DE-BY` (`P5`, `active`): Keep Bavaria as the second broad comparison lane, but treat the first reviewed Sek-II analysis, stochastics, AGV, and LM passes as baseline coverage and widen BY further only where another equally explicit source corridor appears instead of reopening broad parent cleanup.
+- `DE-BY` (`P5`, `active`): Keep Bavaria as the second broad comparison lane, but widen BY further only where another equally explicit retained upper-secondary source strip appears instead of reopening broad parent cleanup. The current M12-4 parent lane is now structurally closed.
 - `DE-HE` (`P5`, `active`): Keep Hessen as the precision baseline while broader mixed lanes in other states are being pressure-tested.
-- `DE-NW` (`P5`, `active`): Treat the currently opened Nordrhein-Westfalen LK normal-distribution strip as exhausted at explicit source-residue level: the imported leaves for normal-distribution concept, approximation-in-situations, and mu/sigma are now exact-resolved, so further NRW widening should only happen if another equally explicit NRW corridor is imported; otherwise continue with the next active broad comparison lane such as Bayern instead of reopening broader parent cleanup inside the current NRW snapshots.
-- `DE-BW` (`P4`, `active`): Keep the BW lower-secondary pilot subset closed and continue only with the remaining still-unmapped BW upper-secondary integral-application corridor parents.
-- `DE-NI` (`P4`, `active`): Treat the currently opened Niedersachsen Sek-I right-triangle / similarity and quadratics follow-ons as exhausted at explicit source-residue level; widen Niedersachsen further only if the next lower-secondary source corridor is imported cleanly or a separate Berufliches-Gymnasium lane is opened intentionally.
-- `DE-BB` (`P4`, `next_wave`): Treat Brandenburg's current linear-representation/projection side lane as exhausted at the explicitly source-exposed residue level; only widen it further if a clearly exposed matrix / linear-model follow-on appears, otherwise return to Berlin optional-course residue or another Brandenburg strip with equally explicit source-to-canonical alignment.
-- `DE-BE` (`P4`, `next_wave`): Treat the Berlin matrix/transition, sequences/series, differential-equations, complex-numbers, logic, and reasoning/proof side lanes as now also parent-anchored on the corresponding shared canonical clusters; widen Berlin further only where the remaining analysis-deepening or numerical-mathematics residues stay equally explicit, otherwise decide whether Brandenburg's new linear-representation/projection side lane should widen next.
-- `DE-SN` (`P4`, `next_wave`): Switch from Sachsen lower-secondary residue work to the next still-open state lane, most plausibly Sachsen-Anhalt (ST) onboarding.
+- `DE-NW` (`P5`, `active`): Keep Nordrhein-Westfalen as a stable broad comparison lane. Further NRW widening should only happen if another equally explicit retained corridor is imported, not through renewed broad snapshot-parent cleanup.
 
 ## Next steps
 
-- `DE-BY`: Keep Bavaria as the second broad comparison lane, but treat the first reviewed Sek-II analysis, stochastics, AGV, and LM passes as baseline coverage and widen BY further only where another equally explicit source corridor appears instead of reopening broad parent cleanup.
+- `DE-BY`: Keep Bavaria as the second broad comparison lane, but widen BY further only where another equally explicit retained upper-secondary source strip appears instead of reopening broad parent cleanup. The current M12-4 parent lane is now structurally closed.
 - `DE-HE`: Keep Hessen as the precision baseline while broader mixed lanes in other states are being pressure-tested.
-- `DE-NW`: Treat the currently opened Nordrhein-Westfalen LK normal-distribution strip as exhausted at explicit source-residue level: the imported leaves for normal-distribution concept, approximation-in-situations, and mu/sigma are now exact-resolved, so further NRW widening should only happen if another equally explicit NRW corridor is imported; otherwise continue with the next active broad comparison lane such as Bayern instead of reopening broader parent cleanup inside the current NRW snapshots.
-- `DE-BW`: Keep the BW lower-secondary pilot subset closed and continue only with the remaining still-unmapped BW upper-secondary integral-application corridor parents.
-- `DE-NI`: Treat the currently opened Niedersachsen Sek-I right-triangle / similarity and quadratics follow-ons as exhausted at explicit source-residue level; widen Niedersachsen further only if the next lower-secondary source corridor is imported cleanly or a separate Berufliches-Gymnasium lane is opened intentionally.
-- `DE-BB`: Treat Brandenburg's current linear-representation/projection side lane as exhausted at the explicitly source-exposed residue level; only widen it further if a clearly exposed matrix / linear-model follow-on appears, otherwise return to Berlin optional-course residue or another Brandenburg strip with equally explicit source-to-canonical alignment.
-- `DE-BE`: Treat the Berlin matrix/transition, sequences/series, differential-equations, complex-numbers, logic, and reasoning/proof side lanes as now also parent-anchored on the corresponding shared canonical clusters; widen Berlin further only where the remaining analysis-deepening or numerical-mathematics residues stay equally explicit, otherwise decide whether Brandenburg's new linear-representation/projection side lane should widen next.
-- `DE-SN`: Switch from Sachsen lower-secondary residue work to the next still-open state lane, most plausibly Sachsen-Anhalt (ST) onboarding.
+- `DE-NW`: Keep Nordrhein-Westfalen as a stable broad comparison lane. Further NRW widening should only happen if another equally explicit retained corridor is imported, not through renewed broad snapshot-parent cleanup.
+- `DE-BB`: Keep Brandenburg stable as a broad reviewed comparison lane and move the next implementation step to the next still-open state lane.
+- `DE-BE`: Keep Berlin stable as a broad reviewed comparison lane and move the next implementation step to the next still-open state lane.
+- `DE-BW`: Keep Baden-Wuerttemberg stable as a broad reviewed comparison lane and move the next implementation step to the next still-open state lane.
 - `DE-HB`: Use Bremen only as pressure test for shared function packaging unless the source lane is later split more finely.
 - `DE-HH`: Keep Hamburg stable as a broad reviewed comparison lane and move the next implementation step to the next still-open state lane.
 - `DE-MV`: Keep Mecklenburg-Vorpommern stable as a broad reviewed comparison lane and move the next implementation step to deriving the first Thueringen source snapshots from the now archived input bundle.
+- `DE-NI`: Keep Niedersachsen stable as a broad reviewed comparison lane and move the next implementation step to the next still-open lane or to a new intentionally imported retained slice.
 - `DE-RP`: Keep Rheinland-Pfalz stable as a broad reviewed comparison lane and move the next implementation step to the next still-open state lane.
 - `DE-SH`: Keep Schleswig-Holstein stable as a broad reviewed comparison lane and move the next implementation step to the next still-open state lane.
 - `DE-SL`: Keep Saarland stable as a broad reviewed comparison lane and move the next implementation step to the next still-open state lane.
+- `DE-SN`: Keep Sachsen stable as a broad reviewed comparison lane and move the next implementation step to the next still-open state lane.
 - `DE-ST`: Keep Sachsen-Anhalt stable as a broad reviewed comparison lane and move the next implementation step to the next still-open state lane.
 - `DE-TH`: Keep Thueringen stable as a broad reviewed comparison lane and move the next implementation step to the next still-open state lane.
 

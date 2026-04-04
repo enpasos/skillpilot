@@ -1,5 +1,7 @@
 # NRW Math Onboarding Note
 
+Status: P5 (`broad_reviewed_coverage`)
+
 This note records the first Nordrhein-Westfalen source-landscape identifiers for the mathematics-first DE expansion track and their activation state.
 
 Reserved and activated source landscapes on `2026-03-20`:
@@ -45,9 +47,10 @@ Activation result:
   - rational-number ordering
   - mapping analysis
   - function concept and representations
+- the lower-secondary source snapshot now also carries its remaining broad parent bridges on the shared canonical prerequisite and Sek-I function surfaces, so both NRW pilot snapshots are now fully bridged on source-goal level
 
 Operational rule from here:
 
 - keep these reserved `sourceLandscapeId` values stable while broadening the NRW source snapshots
 - extend the registered goal sets in place only when later NRW mathematics corridors need additional explicit source atoms
-- keep the next reviewed NRW upper-secondary mapping pass on the new retained E-phase power-function child unless we intentionally decide that this clause should stay source-structural only
+- keep NRW stable as a broad comparison lane and widen it further only if another equally explicit retained corridor is imported
