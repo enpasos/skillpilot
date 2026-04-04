@@ -1,6 +1,6 @@
 # Canonical Gymnasium Mathematics Bundeslaender Status
 
-Snapshot: `2026-04-03T00:00:00Z`
+Snapshot: `2026-04-04T00:00:00Z`
 
 This file is generated from:
 
@@ -11,7 +11,7 @@ This file is generated from:
 
 - Tracked states: `16`
 - Canonical source coverage present: `6/16`
-- State-weighted rollout score: `59.7%`
+- State-weighted rollout score: `58.8%`
 - States with active snapshots (`P2+`): `13/16`
 - States with structural anchors mapped (`P3+`): `13/16`
 - States with reviewed corridor (`P4+`): `13/16`
@@ -87,9 +87,9 @@ This file is generated from:
 | `DE-HB` Bremen | `P5` Broad state coverage | `85%` | `no` | `68` | `snapshots_active` | `backlog` |
 | `DE-HH` Hamburg | `P4` First corridor reviewed | `65%` | `no` | `64` | `snapshots_active` | `backlog` |
 | `DE-RP` Rheinland-Pfalz | `P4` First corridor reviewed | `65%` | `no` | `65` | `first_corridor_reviewed` | `backlog` |
-| `DE-SL` Saarland | `P1` Source archived | `15%` | `no` | `0` | `partial_inputs_archived` | `backlog` |
 | `DE-TH` Thueringen | `P1` Source archived | `15%` | `no` | `0` | `partial_inputs_archived` | `backlog` |
 | `DE-MV` Mecklenburg-Vorpommern | `P0` Placeholder | `0%` | `no` | `0` | `mapping_scaffolded` | `backlog` |
+| `DE-SL` Saarland | `P0` Placeholder | `0%` | `no` | `0` | `mapping_scaffolded` | `backlog` |
 
 ## Immediate queue
 
@@ -119,9 +119,9 @@ This file is generated from:
 - `DE-HB`: Use Bremen only as pressure test for shared function packaging unless the source lane is later split more finely.
 - `DE-HH`: Only split the remaining broad Hamburg J8 mixed function corridor further if the source can separate A3, A4, F3, and F4 more cleanly.
 - `DE-RP`: Open the next reviewed Rheinland-Pfalz lower-secondary strip beyond the first geometry pass; later RP residue can now be tightened selectively.
-- `DE-SL`: Derive the first Saarland lower-secondary and upper-secondary source snapshots from the archived PDF bundle, then activate shared provenance.
 - `DE-TH`: Resolve access to the current 2025 Thueringen Gymnasium mathematics PDF for classes 5/6 and 11/12, then derive the first lower-secondary and upper-secondary source snapshots before activating shared provenance.
 - `DE-MV`: Archive the official Mecklenburg-Vorpommern mathematics source bundle under `curricula/DE/Gymnasium/input/MV/`, then derive the first lower-secondary and upper-secondary source snapshots before activating shared provenance.
+- `DE-SL`: Archive valid Saarland mathematics PDFs via manual browser download or a browser-capable fetch step, then promote DE-SL to P1 and derive the first snapshots.
 
 ## Regeneration
 
