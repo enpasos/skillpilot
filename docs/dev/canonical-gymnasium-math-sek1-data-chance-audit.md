@@ -18,7 +18,8 @@ In scope:
   - `HB`
   - `HH`
   - `SH`
-  - `SN`
+  - `RP`
+- `SN`
 - `ST`
 
 Out of scope:
@@ -406,4 +407,28 @@ Result:
 
 - the ST `JG 5/6` strips `Erfassen, Darstellen und Auswerten von Daten` and `Kenngroessen von Daten` now both point to the existing descriptive-statistics surface
 - the reviewed ST lane therefore confirms the broad early `D4` packaging without reopening the current Sek-I data/chance cut
+
+## Sachsen-Anhalt JG 7/8 chance corridor connected (`2026-04-03`)
+
+- the ST `JG 7/8` strip `Zufaellige Ereignisse, Haeufigkeiten, Wahrscheinlichkeiten` now points to the existing Laplace / frequency bridge
+- the ST `JG 7/8` strip `Mehrstufige Zufallsversuche und Wahrscheinlichkeiten` now points to the visible multi-step random-experiment surface
+- the reviewed ST lane therefore confirms the current `D2/D3` split without forcing a new mixed early-probability package
+
+## Sachsen-Anhalt JG 10 random-variables corridor connected (`2026-04-03`)
+
+- the ST `JG10` strip `Zufallsgroessen` now points to the broad visible `Daten und Zufall (Sek I)` surface
+- the reviewed ST lane therefore confirms that later Sek-I random-variable residue can stay on the frozen `D1-D5` package surface without forcing a separate visible `D6` package
+
+## Sachsen-Anhalt JG 9 frequency-distributions corridor connected (`2026-04-03`)
+
+- the ST `JG9` strip `Haeufigkeitsverteilungen` now points to the visible `D4` descriptive-statistics surface
+- the reviewed ST lane therefore confirms that later Sek-I distribution-comparison residue can stay on the frozen descriptive-statistics package without forcing a separate visible histogram or frequency-distribution package
+
+
+## Rheinland-Pfalz Klassenstufen 9 und 10 data/chance corridor connected (`2026-04-03`)
+
+- the broad RP `Klassenstufen 9 und 10: Daten und Zufall` anchor now carries a reviewed split into `Vierfeldertafeln, zweistufige Zufallsexperimente` and `Wahrscheinlichkeiten durch Simulationen`
+- the first strip points to the visible multi-stage-experiment surface
+- the second strip points to the visible probability-from-frequencies bridge
+- the RP lane therefore confirms the visible Sek-I chance surface without forcing a new visible later random-variable package
 

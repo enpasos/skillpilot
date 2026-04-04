@@ -149,6 +149,19 @@ Observed signal:
 - both strips fit the existing early geometry / space surface
 - this confirms that early Sachsen-Anhalt geometry does not currently force a separate visible early area-volume package
 
+
+### Rheinland-Pfalz (`RP`)
+
+Observed signal:
+
+- `RP` now contributes a first reviewed lower-secondary geometry corridor on the explicit `Klassenstufen 9 und 10` lane
+- the Rheinland-Pfalz source separates
+  - `Geometrische Abbildungen`
+  - `Satzgruppe des Pythagoras`
+  - `Koerper und ihre Darstellungen`
+  - `Trigonometrische Beziehungen`
+- this makes `RP` a useful pressure test for whether the visible later Sek-I geometry surface can absorb later transformation work next to explicit `G5`, `G6`, and `G7` strips without forcing another package
+
 ## Current canonical geometry inventory
 
 The canonical graph is not empty here. It already has substantial geometry content:
@@ -376,4 +389,50 @@ This topic audit is complete when:
 
 - the ST `JG 5/6` strips `Geometrische Grundbegriffe und Abbildungen` and `Umfang, Flaecheninhalt und Volumen` now both point to the existing early geometry / space surface
 - the reviewed ST lane therefore confirms the broad early `G1` packaging without reopening the current Sek-I geometry cut
+
+## Sachsen-Anhalt JG 5/6 angle / triangle / quadrilateral corridor connected (`2026-04-03`)
+
+- the ST `JG 5/6` strips `Winkelbeziehungen`, `Dreiecke`, and `Vierecke` now all point to the existing triangle / quadrilateral / congruence surface
+- the reviewed ST lane therefore confirms the current `G2` cut without forcing a separate visible early angle package
+
+## Sachsen-Anhalt JG 7/8 body / similarity corridor connected (`2026-04-03`)
+
+- the ST `JG 7/8` strips `Koerperdarstellung` and `Koerperberechnung` now point to the existing later solids surface
+- the ST `JG 7/8` strip `Aehnlichkeit` now points to the existing transformation / similarity surface
+- the reviewed ST lane therefore confirms the current `G3/G6` split without forcing a new mixed body-similarity package
+
+## Sachsen-Anhalt JG 7/8 Pythagoras corridor connected (`2026-04-03`)
+
+- the ST `JG 7/8` strip `Satzgruppe des Pythagoras` now points to the explicit Pythagoras / geometric-justification surface
+- the reviewed ST lane therefore confirms the current `G5` cut without forcing a broader mixed theorem package
+
+## Sachsen-Anhalt JG 9 trigonometry corridor connected (`2026-04-03`)
+
+- the ST `JG9` strip `Trigonometrie` now points to the visible `G7` trigonometric bridge
+- the reviewed ST lane therefore confirms the current `G7` cut without forcing a broader mixed trigonometry/solids package
+
+## Sachsen-Anhalt JG 7/8 circles corridor connected (`2026-04-03`)
+
+- the ST `JG7/8` strip `Kreise` now points to the broad visible `G6` circle/solids surface
+- the reviewed ST lane therefore confirms that this unsplit circle residue can stay on the existing later circle/body package without forcing a narrower separate circle package
+
+## Sachsen-Anhalt JG 10 vectors corridor connected (`2026-04-03`)
+
+- the ST `JG10` strip `Vektoren` now points to the visible Sek-I vector-entry surface
+- the reviewed ST lane therefore confirms that this vector residue can stay on the existing coordinate-geometry / vectors package without forcing a broader visible Sek-I analytic-geometry package
+
+## Sachsen-Anhalt JG 5/6 quantities corridor connected (`2026-04-03`)
+
+- the ST `JG5/6` strip `Groessen` now points to the visible early measurement / area / volume surface
+- the reviewed ST lane therefore confirms that this broad quantities residue can stay on the existing early measurement package without forcing a separate standalone quantities package
+
+
+## Rheinland-Pfalz Klassenstufen 9 und 10 geometry corridor connected (`2026-04-03`)
+
+- the broad RP `Klassenstufen 9 und 10: Raum und Form` anchor now carries a reviewed split into `Geometrische Abbildungen`, `Satzgruppe des Pythagoras`, `Koerper und ihre Darstellungen`, and `Trigonometrische Beziehungen`
+- geometric transformations point to the broad later figure/theorem geometry surface
+- the Pythagoras strip points to the visible `G5` surface
+- the body strip points to the visible `G6` surface
+- the trigonometric-relations strip points to the visible `G7` bridge
+- the RP lane therefore confirms the visible later Sek-I geometry surface without forcing another package boundary
 

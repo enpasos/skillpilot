@@ -20,6 +20,7 @@ In scope:
   - `HB`
   - `HH`
 - `HE`
+- `RP`
 - `SH`
 - `ST`
 - `SN`
@@ -53,6 +54,17 @@ Observed signal:
 
 - `HH` already contributes a reviewed `Modul 5` corridor with an explicit split between `Binomialverteilung` and `Hypothesentests und Normalverteilung`
 - Hamburg increases pressure on where normal approximation, interval logic, and test design should sit, because the source packaging mixes them more strongly than an ideal canonical split would
+
+### Rheinland-Pfalz (`RP`)
+
+Observed signal:
+
+- `RP` now adds the first reviewed upper-secondary stochastics corridor on top of the newly activated `Grundfach` / `Leistungsfach` snapshot lane
+- the Rheinland-Pfalz source separates the stochastics corridor explicitly into:
+  - a `Grundfach` strip for probabilities, simulations, and binomial modelling
+  - the two `Grundfach` Wahlpflichtfortsetzungen `Schaetzen von Wahrscheinlichkeiten` and `Testen von Hypothesen`
+  - `Leistungsfach` strips for conditional probability, binomial distribution, normal approximation, confidence intervals, and hypothesis tests
+- Rheinland-Pfalz therefore confirms the frozen visible `ST2-ST5` surface and the explicit `ST3` boundary without forcing another package-level bridge
 
 ### Sachsen (`SN`)
 
@@ -212,7 +224,7 @@ Observed result:
 1. `HB` now aligns more cleanly with the revised visible surface:
    - foundations/distribution breadth sit under the foundational probability/distribution corridor
    - the later binomial corridor now lands on the explicit `ST2` package
-2. `BB`, `BY`, `SH`, `SN`, and `ST` now fit the frozen `ST2-ST5` surface cleanly enough that no additional package-level bridge is needed
+2. `BB`, `BY`, `RP`, `SH`, `SN`, and `ST` now fit the frozen `ST2-ST5` surface cleanly enough that no additional package-level bridge is needed
 3. `HE` remains exact enough that no package-level correction is needed
 4. the only visible hybrid residue is `HH Modul 5.2 Hypothesentests und Normalverteilung`
 
@@ -255,5 +267,5 @@ This topic audit is complete when:
 
 1. the canonical subpackage boundaries above are either accepted or revised
 2. the canonical graph has a stable Sek-II stochastics packaging
-3. reviewed `BB`, `BY`, `HB`, `HH`, `HE`, and `SH` evidence can be described as aligned to the revised packaging or intentionally broader because of source granularity
+3. reviewed `BB`, `BY`, `HB`, `HH`, `HE`, `RP`, and `SH` evidence can be described as aligned to the revised packaging or intentionally broader because of source granularity
 4. it is clear whether normal approximation, tests, and interval reasoning require further visible separation in the canonical graph

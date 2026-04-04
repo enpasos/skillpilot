@@ -1,6 +1,6 @@
 # Canonical Gymnasium Mathematics: Sek II Linear Algebra / Matrices Audit
 
-Snapshot: `2026-04-01`
+Snapshot: `2026-04-03`
 
 Purpose:
 
@@ -22,6 +22,7 @@ In scope:
   - `HH`
   - `HE`
   - `NI`
+  - `RP`
   - `SN`
 
 Out of scope:
@@ -79,6 +80,17 @@ Observed signal:
   - matrix multiplication and Gauss-Jordan elimination
   - geometric and network-style applications with rotations and interdependency structures
 - Sachsen therefore supports the frozen `LM2-LM5` surface without forcing another package-level bridge
+
+
+### Rheinland-Pfalz (`RP`)
+
+Observed signal:
+
+- `RP` now adds a first reviewed upper-secondary `Raum und Form` split directly on the `Grundfach` / `Leistungsfach` lane
+- the Rheinland-Pfalz source explicitly separates
+  - `A1` matrix/application work
+  - `A2` broad geometry work on lines and planes in space
+- this makes `RP` a useful pressure test for whether the frozen matrix surface can stay stable even when matrix work is still mixed across representation, operations, powers, and geometric mappings
 
 ## Current canonical linear-algebra inventory
 
@@ -223,7 +235,7 @@ Important boundary decision:
 
 ## First reviewed realignment judgment
 
-The reviewed `BB` / `BE` / `BY` / `HB` / `HH` / `HE` / `SN` pressure test does not force another canonical package split.
+The reviewed `BB` / `BE` / `BY` / `HB` / `HH` / `HE` / `RP` / `SN` pressure test does not force another canonical package split.
 
 Observed result:
 
@@ -241,6 +253,11 @@ Observed result:
    - fixvector and long-term residue land on `LM4`
 3. `BB`, `BE`, and `BY` now fit the frozen `LM2-LM5` surface cleanly enough that no additional package-level bridge is needed
 4. `HE` remains exact enough that no package-level correction is needed
+
+4. `RP` now adds a first explicit `GF/LF` `A1/A2` split in `Raum und Form`:
+   - matrix/application work can stay on the shared upper-secondary matrix/space summary surface
+   - the parallel geometry corridors remain separate enough that the matrix topic is not forced back into one mixed overview package
+   - the source is still too broad to force a sharper package-level split inside `LM2-LM5`
 
 Interpretation:
 

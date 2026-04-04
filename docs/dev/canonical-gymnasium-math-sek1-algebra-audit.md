@@ -18,6 +18,7 @@ In scope:
 - `HB`
 - `HH`
 - `HE`
+- `RP`
 - `ST`
 - `SN`
 
@@ -94,6 +95,17 @@ Observed signal:
   - rational numbers / gebrochene Zahlen
   - first equations and inequalities
 - this confirms the early `A1` arithmetic surface and the first `A4` entry point without forcing a separate visible late-algebra package
+
+
+### Rheinland-Pfalz (`RP`)
+
+Observed signal:
+
+- `RP` now contributes a first reviewed lower-secondary algebra corridor on the explicit `Klassenstufen 7 und 8` lane
+- the Rheinland-Pfalz source separates
+  - `Rationale Zahlen`
+  - `Prozent- und Zinsrechnung`
+- this makes `RP` a useful pressure test for whether the visible `A1/A3` surface can absorb a later number-extension strip next to a broad percent/simple-interest bridge without forcing a new late-algebra package
 
 ## Current canonical numbers / terms / algebra inventory
 
@@ -263,3 +275,37 @@ This topic audit is complete when:
 2. the canonical graph has a stable Sek-I algebra packaging
 3. reviewed `HB`, `HH`, and `HE` evidence can be described as aligned to the revised packaging or intentionally broader because of source granularity
 4. it is clear whether late lower-secondary linear-system / extension material deserves a visible `A5` package
+
+## Sachsen-Anhalt JG 9 powers/logarithms corridor connected (`2026-04-03`)
+
+- the ST `JG9` strip `Potenzen und Logarithmen` now points to the existing later number-extension surface
+- the reviewed ST lane therefore keeps logarithm residue on the broad late-number bridge instead of forcing an earlier visible logarithm package before the J10 function branch
+
+## Sachsen-Anhalt JG 7/8 rational-numbers/roots corridor connected (`2026-04-03`)
+
+- the ST `JG7/8` strip `Rationale Zahlen und Wurzeln` now points to the existing later number-extension surface
+- the reviewed ST lane therefore confirms that the rational-number / root residue can stay on the broad late-number bridge without forcing a separate visible roots package
+
+## Sachsen-Anhalt JG 7/8 percentage corridor connected (`2026-04-03`)
+
+- the ST `JG7/8` strip `Prozentrechnung` now points to the broad visible `A3` bridge
+- the reviewed ST lane therefore confirms that later percentage residue can stay on the existing proportionality / percentages / rule-of-three surface without forcing a narrower separate package
+
+## Sachsen-Anhalt JG 7/8 equations/inequalities corridor connected (`2026-04-03`)
+
+- the ST `JG7/8` strip `Gleichungen und Ungleichungen` now points to the visible `A4` surface
+- the reviewed ST lane therefore confirms that this mixed equations/inequalities residue can stay on the existing solvability / algebraic-modelling corridor without forcing a visible `A5`
+
+## Sachsen-Anhalt JG 7/8 variables corridor connected (`2026-04-03`)
+
+- the ST `JG7/8` strip `Arbeiten mit Variablen` now points to the visible `A2` surface
+- the reviewed ST lane therefore confirms that this variable/term residue can stay on the existing variables / terms / equivalent-transformations corridor without forcing a new separate package
+
+
+## Rheinland-Pfalz Klassenstufen 7 und 8 algebra corridor connected (`2026-04-03`)
+
+- the broad RP `Klassenstufen 7 und 8: Zahl und Zahlbereiche` anchor now carries a reviewed split into `Rationale Zahlen` and `Prozent- und Zinsrechnung`
+- `Rationale Zahlen` points to the visible later number-extension surface
+- `Prozent- und Zinsrechnung` points to the broad percent/simple-interest bridge
+- the RP lane therefore confirms the visible `A1/A3` surface without forcing a new visible `A5` or another late-algebra package
+

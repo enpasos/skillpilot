@@ -24,6 +24,7 @@ In scope:
   - `HE`
 - `NI`
 - `NW`
+- `RP`
 - `ST`
 - `SN`
 - `SH`
@@ -73,6 +74,19 @@ Observed signal:
   - a broad GK follow-on that mixes optimisation, exponential work, and integral understanding
   - narrow LK integral strips and a late LK function-family strip
 - Nordrhein-Westfalen confirms that the visible `AN2-AN4` surface can absorb both broader parents and narrower late strips without forcing a new visible `AN5` package.
+
+### Rheinland-Pfalz (`RP`)
+
+Observed signal:
+
+- `RP` now adds the first reviewed upper-secondary analysis corridor on top of the newly activated `Grundfach` / `Leistungsfach` snapshot lane
+- the Rheinland-Pfalz source separates the functional-analysis corridor explicitly into:
+  - `Grenzwerte`
+  - `Differentialrechnung`
+  - `Integralrechnung`
+  - a `Grundfach` exponential strip and an `Leistungsfach` continuation strip
+- `Grundfach` confirms the frozen visible `AN2-AN4` surface with a clean split from derivative entry to integral understanding plus an explicit exponential-model lane
+- `Leistungsfach` adds the expected late continuation pressure through the bundled continuation strip, but this still fits the existing visible late-analysis surface through a reviewed `partial` bridge onto `Vertiefung der Analysis` rather than forcing a visible `AN5` package
 
 ### Sachsen-Anhalt (`ST`)
 
@@ -242,5 +256,5 @@ This topic audit is complete when:
 
 1. the canonical subpackage boundaries above are either accepted or revised
 2. the canonical graph has a stable Sek-II analysis packaging
-3. reviewed `BB`, `BE`, `BW`, `BY`, `HB`, `HH`, `HE`, `NI`, `NW`, `SN`, and `SH` evidence can be described as aligned to the revised packaging or intentionally broader because of source granularity
+3. reviewed `BB`, `BE`, `BW`, `BY`, `HB`, `HH`, `HE`, `NI`, `NW`, `RP`, `SN`, and `SH` evidence can be described as aligned to the revised packaging or intentionally broader because of source granularity
 4. the late-continuation question stays frozen unless new reviewed residue forces further canonical restructuring

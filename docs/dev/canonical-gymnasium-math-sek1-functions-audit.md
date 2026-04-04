@@ -20,7 +20,8 @@ In scope:
   - `HB`
   - `HH`
   - `HE`
-  - `SN`
+  - `RP`
+- `SN`
 - `ST`
 
 Out of scope:
@@ -93,6 +94,17 @@ Observed signal:
 - the correspondence strip fits the existing early `F1/F2` surface
 - the direct/inverse mix stays acceptable on the existing broad proportional bridge without forcing a separate visible inverse-proportional package
 - together this keeps the canonical early function surface stable and shifts the remaining pressure from packaging to coverage
+
+
+### Rheinland-Pfalz (`RP`)
+
+Observed signal:
+
+- `RP` now contributes a first reviewed lower-secondary function corridor on the explicit `Klassenstufen 7 und 8` lane
+- the Rheinland-Pfalz source separates
+  - `Proportionale und antiproportionale Zuordnungen`
+  - `Lineare Funktionen`
+- this makes `RP` a useful pressure test for whether the visible middle Sek-I function surface can absorb a broad proportional bridge next to a cleaner linear-function strip without forcing another package boundary
 
 ## Current canonical function inventory
 
@@ -177,4 +189,27 @@ This topic audit is complete when:
 - its `Zuordnungen` strip points to the early mapping / representation surface
 - its broad proportionality strip intentionally stays on the existing proportional bridge instead of forcing a separate visible inverse-proportional package just from one mixed source lane
 - `ST` therefore confirms the early `F1/F2` surface without reopening the current Sek-I function packaging
+
+## Sachsen-Anhalt JG 7/8 linear-functions corridor connected (`2026-04-03`)
+
+- the ST `JG 7/8` strip `Lineare Funktionen` now points to the visible `F3` linear-functions surface
+- the reviewed ST lane therefore confirms the current `F3` cut without pulling algebra residue back into the function topic
+
+## Sachsen-Anhalt JG 9 quadratics corridor connected (`2026-04-03`)
+
+- the ST `JG 9` strip `Quadratische Gleichungen und quadratische Funktionen` now points to the visible `F4` quadratics surface
+- the reviewed ST lane therefore confirms the current `F4` boundary without forcing a separate mixed quadratics package beyond the existing function/equation cut
+
+## Sachsen-Anhalt JG 10 function-classes corridor connected (`2026-04-03`)
+
+- the ST `JG10` strip `Funktionsklassen` now points to the broad visible J10 trig/exponential corridor
+- the reviewed ST lane therefore confirms the existing late-J10 continuation surface without forcing a separate mixed function-classes package
+
+
+## Rheinland-Pfalz Klassenstufen 7 und 8 function corridor connected (`2026-04-03`)
+
+- the broad RP `Klassenstufen 7 und 8: Funktionaler Zusammenhang` anchor now points to the visible `F3` surface instead of the early general function surface
+- its reviewed `Proportionale und antiproportionale Zuordnungen` strip points to the broad proportional bridge
+- its reviewed `Lineare Funktionen` strip points to the explicit linear-function surface
+- the RP lane therefore confirms the visible middle Sek-I function cut without forcing a new package boundary between proportional assignments and linear functions
 

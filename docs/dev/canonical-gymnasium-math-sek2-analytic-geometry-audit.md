@@ -1,6 +1,6 @@
 # Canonical Gymnasium Mathematics: Sek II Analytic Geometry / Vectors Audit
 
-Snapshot: `2026-04-01`
+Snapshot: `2026-04-03`
 
 Purpose:
 
@@ -21,8 +21,9 @@ In scope:
   - `HB`
   - `HH`
 - `HE`
-- `ST`
+- `RP`
 - `SN`
+- `ST`
 - `SH`
 
 Out of scope:
@@ -98,6 +99,17 @@ Observed signal:
   - `Geraden und Ebenen`
   - `Kreise`
 - these reviewed corridors are still broad and do not expose the tighter `AGV3-AGV5` split directly, but they fit the frozen visible space-geometry surface without forcing another bridge package
+
+
+### Rheinland-Pfalz (`RP`)
+
+Observed signal:
+
+- `RP` now adds a first reviewed upper-secondary `Raum und Form` split directly on the `Grundfach` / `Leistungsfach` lane
+- the Rheinland-Pfalz source explicitly separates
+  - matrix/application work in `A1`
+  - broad `Geraden und Ebenen im Raum` work in `A2`
+- this makes `RP` a useful pressure test for whether the frozen visible space-geometry surface can absorb broad geometry overview corridors without forcing another package-level bridge
 
 ## Current canonical analytic-geometry inventory
 
@@ -218,7 +230,7 @@ Important boundary decision:
 
 ## First reviewed realignment judgment
 
-The reviewed `BB` / `BE` / `BY` / `HB` / `HH` / `HE` / `SH` / `SN` / `ST` pressure test does not force another canonical package split.
+The reviewed `BB` / `BE` / `BY` / `HB` / `HH` / `HE` / `RP` / `SH` / `SN` / `ST` pressure test does not force another canonical package split.
 
 Observed result:
 
@@ -237,6 +249,11 @@ Observed result:
 5. `ST` now fits the frozen visible `AGV` surface cleanly enough on newly opened `GA/EA` overview corridors:
    - broad `Geraden und Ebenen` and `Kreise` parents can stay on the shared upper-secondary space corridor
    - the source still does not force a sharper package-level bridge between analytic circles and the existing `AGV3-AGV5` surface
+
+6. `RP` now fits the frozen visible `AGV` surface cleanly enough on newly opened `GF/LF` `Raum und Form` splits:
+   - the broad `Geraden und Ebenen im Raum` children can stay on the shared upper-secondary space corridor
+   - the source explicitly keeps the parallel matrix/application work outside the geometry child lanes
+   - the reviewed split still does not force a sharper package-level bridge between the broad overview corridor and `AGV3-AGV5`
 
 Interpretation:
 
