@@ -293,3 +293,8 @@ Observed signal:
   - `G-Kurs` strips for probabilities / conditional probability, binomial distribution, and a later discrete-random-variable / characteristic-value continuation
   - `Leistungskurs` strips for probabilities / conditional probability, binomial distribution, discrete random variables, normal distribution, and hypothesis tests
 - Saarland therefore confirms the frozen visible `ST2-ST5` surface and the explicit `ST3` boundary without forcing another package-level bridge
+
+## Baden-Wuerttemberg upper-secondary stochastics parents connected (`2026-04-04`)
+- the broad BW course-stage stochastics corridor now sits on the shared Sek-II stochastics summary surface
+- the BW `Basisfach: Normalverteilung und Zufallsgroessen` parent now sits on the shared probability/distribution surface
+- the BW `Leistungsfach: Hypothesentests und Normalverteilung` hybrid parent stays deliberately on the reviewed summary surface instead of forcing a visible `ST3/ST4` bridge package

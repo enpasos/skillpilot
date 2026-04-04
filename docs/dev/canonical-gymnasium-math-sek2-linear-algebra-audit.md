@@ -310,3 +310,8 @@ This topic audit is complete when:
 2. the canonical graph has a stable Sek-II linear-algebra packaging
 3. reviewed `BB`, `BE`, `BY`, `HB`, `HH`, `HE`, and `NI` evidence can be described as aligned to the revised packaging or intentionally broader because of source granularity
 4. it is clear whether long-term behavior and linear geometric mappings require further visible separation in the canonical graph
+
+## Baden-Wuerttemberg upper-secondary Gauss parents connected (`2026-04-04`)
+- the broad BW course-stage Gauss / linear-system corridor now sits on the shared Sek-II space/matrix-model surface
+- the BW `Basisfach: Lineare Gleichungssysteme und Stufenform` parent now sits on the same broad LM surface
+- the BW `Leistungsfach: Gaußverfahren, Matrixschreibweise und geometrische Deutung` parent also stays on that shared LM surface instead of forcing a sharper package-level bridge

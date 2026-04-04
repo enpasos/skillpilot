@@ -1,6 +1,6 @@
 # RP Math Onboarding Note
 
-Status: P4 (`first_corridor_reviewed`)
+Status: P5 (`broad_reviewed_coverage`)
 
 Reserved source landscapes on `2026-03-28`:
 
@@ -37,6 +37,8 @@ Current activation state:
 
 Operational rule from here:
 
-- keep the reserved `sourceLandscapeId` values stable while refining or activating the shared RP lower-secondary and upper-secondary source snapshots
+- keep the reserved `sourceLandscapeId` values stable while keeping the shared RP lower-secondary and upper-secondary source snapshots as broad reviewed comparison lanes
 - the reviewed RP upper-secondary analysis, stochastics, and combined geometry / linear algebra corridors are now open on top of the active anchor pass
-- the next operational step is the next reviewed RP lower-secondary strip beyond the first geometry pass
+- the reviewed RP lower-secondary functions, algebra, data/chance, and geometry corridors now cover the current pilot snapshot on source-goal level
+- the current lower-secondary and upper-secondary RP pilot snapshots are now fully mapped at source-goal level
+- the next operational step is to keep Rheinland-Pfalz stable as a broad reviewed comparison lane and switch to the next still-open state lane

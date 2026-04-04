@@ -33,15 +33,19 @@ Activation state:
 - the first active Baden-Wuerttemberg upper-secondary source snapshot now lives at:
   - `curricula/DE/Gymnasium/input/BW/upper-secondary/source-json/DE_BAW_S_GYM_2_MATHEMATIK.de.json.snapshot`
 - the imported upper-secondary pilot subset currently covers:
+  - the first reviewed upper-secondary stochastics parent corridor is now fully connected: the broad BW course-stage stochastics corridor sits on the shared Sek-II stochastics summary surface, the Basisfach normal-distribution/random-variable parent sits on the shared probability/distribution surface, and the Leistungsfach test/normal-distribution hybrid parent stays on the reviewed summary surface
   - the shared orientation layer from `1.4 Basisfach und Leistungsfach in der Oberstufe`
   - `3.5.4 Leitidee Funktionaler Zusammenhang` in `Basisfach`
   - `3.4.4 Leitidee Funktionaler Zusammenhang` in `Leistungsfach`
+
+- the first reviewed upper-secondary Gauss / linear-system parent corridor is now fully connected: the broad BW course-stage Gauss corridor plus the Basisfach and Leistungsfach parent strips now sit on the shared Sek-II space/matrix-model surface
+
+- the first reviewed upper-secondary geometry / space parent corridor is now fully connected: the broad BW course-stage geometry corridor plus the Basisfach / Leistungsfach parent strips and the two application parents now sit on the shared Sek-II space/matrix-model surface
 
 Operational rule from here:
 
 - keep these reserved `sourceLandscapeId` values stable while the first Baden-Wuerttemberg mathematics source snapshots are prepared
 - activate the shared provenance registries only after real archived source-landscape JSON snapshots with stable source goal IDs exist
-- prefer the same first reviewed corridor order used for NRW and Niedersachsen:
-  - start with lower-secondary shared function anchors
-  - then review the first upper-secondary change-rate / analysis anchor corridor
-  - and only then retained-split downstream follow-ons if a broad source clause needs tightening
+- prefer the active BW widening only on still-unmapped upper-secondary source parents or on intentionally imported retained non-core sections
+- do not reopen the already fully mapped lower-secondary pilot subset unless a new retained BW source slice is imported intentionally
+- the next clean BW move is now the remaining broad upper-secondary integral-application corridor parent pass

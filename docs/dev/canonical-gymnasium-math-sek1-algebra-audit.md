@@ -360,3 +360,8 @@ This topic audit is complete when:
 - the broad SL `Klassenstufe 9: Zahl und Operation` anchor now carries a first reviewed corridor on the shared Sek-I algebra surface
 - the current Saarland grade-9 source still exposes only one shared algebra strip
 - this confirms the shared broad Sek-I algebra surface can absorb an explicit reviewed class-9 lane without forcing a sharper state-local split
+## Saarland Klassenstufe 10 algebra corridor connected (`2026-04-04`)
+
+- the broad SL `Klassenstufe 10: Zahl und Operation` anchor now carries a first reviewed corridor on the shared Sek-I algebra surface
+- the current Saarland grade-10 source still exposes only one shared algebra strip
+- this confirms the shared broad Sek-I algebra surface can absorb an explicit reviewed class-10 lane without forcing a sharper state-local split

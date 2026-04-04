@@ -35,7 +35,7 @@ Current activation state:
 - the archived upper-secondary bundle also includes an explicit transition handout for the MBA -> EP bridge
 - shared provenance is now active for both `DE_SAR` source landscapes
 - the shared provenance registries now carry:
-  - lower-secondary memberships and closures for `47` goals
+  - lower-secondary memberships and closures for `53` goals
   - upper-secondary memberships and closures for `39` goals
 - first structural anchor mappings are now active for both lanes
 - lower-secondary reviewed coverage now includes:
@@ -50,6 +50,15 @@ Current activation state:
   - a first explicit `Klassenstufe 8` data/chance corridor with the broad `Daten und Zufall` strip on the shared Sek-I data/chance surface
   - a first explicit `Klassenstufe 8` measurement corridor with the broad `Größen und Messen` strip on the shared early Sek-I measurement / area / volume surface
   - a first explicit `Klassenstufe 9` algebra corridor with the broad `Zahl und Operation` strip on the shared Sek-I algebra surface
+  - a first explicit `Klassenstufe 9` functions corridor with the broad `Strukturen und funktionaler Zusammenhang` strip on the shared broad Sek-I function surface
+  - a first explicit `Klassenstufe 9` geometry corridor with the broad `Raum und Form` strip on the shared Sek-I geometry surface
+  - a first explicit `Klassenstufe 9` data/chance corridor with the broad `Daten und Zufall` strip on the shared Sek-I data/chance surface
+  - a first explicit `Klassenstufe 9` measurement corridor with the broad `Größen und Messen` strip on the shared early Sek-I measurement / area / volume surface
+  - a first explicit `Klassenstufe 10` algebra corridor with the broad `Zahl und Operation` strip on the shared Sek-I algebra surface
+  - a first explicit `Klassenstufe 10` functions corridor with the broad `Strukturen und funktionaler Zusammenhang` strip on the shared broad Sek-I function-foundations surface
+  - a first explicit `Klassenstufe 10` geometry corridor with the broad `Raum und Form` strip on the shared Sek-I geometry surface
+  - a first explicit `Klassenstufe 10` data/chance corridor with the broad `Daten und Zufall` strip on the shared Sek-I data/chance surface
+  - a first explicit `Klassenstufe 10` measurement corridor with the broad `Groessen und Messen` strip on the shared early Sek-I measurement / area / volume surface
 - upper-secondary reviewed coverage now includes:
   - analysis corridor splits across `Einführungsphase`, `Hauptphase G-Kurs`, and `Hauptphase Leistungskurs`
   - stochastics corridor splits across `G-Kurs` and `Leistungskurs`
@@ -68,5 +77,5 @@ Operational rule from here:
 
 - keep the reserved `sourceLandscapeId` values stable
 - keep the shared provenance registries aligned with future in-place Saarland source splits
-- keep the reviewed Saarland upper-secondary splits stable and continue with equally explicit lower-secondary corridors next, most cleanly `Strukturen und funktionaler Zusammenhang` in `Klassenstufe 9`
+- keep the reviewed Saarland upper-secondary splits stable and continue with equally explicit lower-secondary corridors next, keep the now broadly reviewed Saarland lower-secondary lane stable and switch to the next still-open lane
 - use the transition handout only as interpretive support, not as the primary source spine

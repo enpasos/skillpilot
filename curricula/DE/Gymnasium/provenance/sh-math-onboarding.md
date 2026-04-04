@@ -2,6 +2,12 @@
 
 This note records the first Schleswig-Holstein source-landscape identifiers for the mathematics-first DE expansion track and their activation state.
 
+Current rollout status on `2026-04-04`:
+
+- `DE-SH` is now on `P5` (`broad_reviewed_coverage`).
+- the current lower-secondary and upper-secondary Schleswig-Holstein pilot snapshots are fully mapped on source-goal level
+- Schleswig-Holstein can now be kept stable as a broad reviewed comparison lane
+
 Reserved and activated source landscapes on `2026-03-26`:
 
 - lower-secondary Gymnasium mathematics:
@@ -198,5 +204,5 @@ Operational rule from here:
 - keep the archived SH snapshots source-native first, i.e. preserve official year bands and official upper-secondary phase buckets instead of normalizing them inside the source lane
 - keep the shared lower-secondary entry-anchor bridge stable on top of the SH year-band snapshot
 - keep the shared upper-secondary entry-anchor bridge stable on top of the SH phase snapshot
-- keep the widened reviewed SH surface stable and use the now fully refined SH Sek-I lane to widen reviewed canonical coverage beyond the current corridor-level bridges next
-- if reviewed work needs narrower source-to-canonical evidence, continue refining the SH source lane beyond the current mostly one-cell-per-table-cell granularity before forcing finer canonical claims
+- keep the widened reviewed SH surface stable and use Schleswig-Holstein as a broad reviewed comparison lane rather than as an active onboarding residue
+- only reopen the SH lane if a genuinely narrower source split is needed for a shared canonical gap

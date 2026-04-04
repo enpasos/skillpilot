@@ -308,3 +308,8 @@ Observed signal:
   - `Leistungskurs: Vektoren` and `Leistungskurs: Vektorielle Untersuchung geometrischer Strukturen`
 - the separate `Kreis und Kugel` Pflichtbereich remains outside this first reviewed corridor, so Saarland currently pressure-tests the shared vector / line-plane / positional-relation surface rather than a broader optional geometry extension
 - Saarland therefore supports the frozen visible upper-secondary space-geometry surface without forcing another package-level bridge
+
+## Baden-Wuerttemberg upper-secondary geometry parents connected (`2026-04-04`)
+- the broad BW course-stage geometry / spatial-model corridor now sits on the shared Sek-II space/matrix-model surface
+- the BW Basisfach and Leistungsfach geometry parents now also sit on that same broad surface
+- the two BW application parents on planes, reflections, motions, and volumes deliberately stay on the shared surface instead of forcing a sharper package-level bridge

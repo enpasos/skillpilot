@@ -479,3 +479,13 @@ Result:
 - the broad SL `Klassenstufe 8: Daten und Zufall` anchor now carries a first reviewed corridor on the shared Sek-I data/chance surface
 - the current Saarland grade-8 source still exposes only one shared data/chance strip
 - this confirms the shared broad Sek-I data/chance surface can absorb an explicit reviewed class-8 lane without forcing a sharper state-local split
+## Saarland Klassenstufe 9 data/chance corridor connected (`2026-04-04`)
+
+- the broad SL `Klassenstufe 9: Daten und Zufall` anchor now carries a first reviewed corridor on the shared Sek-I data/chance surface
+- the current Saarland grade-9 source still exposes only one shared data/chance strip
+- this confirms the shared broad Sek-I data/chance surface can absorb an explicit reviewed class-9 lane without forcing a sharper state-local split
+
+## Saarland Klassenstufe 10 data/chance corridor connected (`2026-04-04`)
+- the broad SL `Klassenstufe 10: Daten und Zufall` anchor now carries a first reviewed corridor on the shared Sek-I data/chance surface
+- the current Saarland grade-10 source still exposes only one shared data/chance strip
+- this confirms the shared Sek-I data/chance surface can absorb an explicit reviewed grade-10 lane without forcing a sharper state-local split

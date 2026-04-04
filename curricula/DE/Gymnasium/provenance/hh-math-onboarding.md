@@ -1,6 +1,6 @@
 # Hamburg Math Onboarding
 
-Status: P4 (`reviewed_corridors_present`)
+Status: P5 (`broad_reviewed_coverage`)
 
 Reserved source landscapes on `2026-03-28`:
 - `DE_HAM_S_GYM_1_MATHEMATIK`
@@ -23,6 +23,7 @@ Phase notes:
 - `P2`: activated both Hamburg source landscapes in shared provenance registries.
 - `P3`: mapped first structural anchors from both Hamburg lanes into the canonical math spine.
 - `P4`: opened reviewed corridors in lower secondary (`J8` and `J10` functions, `J8` and `J10` geometry) and upper secondary (`Modul 3` vector geometry, `Modul 4` analysis, `Modul 5` stochastics, `Modul 6` analytic geometry, `Modul 7` linear algebra), then realigned the lower-secondary geometry mappings to the revised canonical Sek-I geometry packaging.
+- `P5`: completed the remaining broad Hamburg source-parent mappings in lower secondary (orientation, `J6`, `J8`, and `J10` broad parents) and upper secondary (orientation plus `S1/S2` and `S3/S4` structure parents), so both Hamburg pilot snapshots are now fully mapped on source-goal level.
 
 Next suggested step:
-- Review `HH` lower-secondary `Daten und Zufall` against the topic-first board, or compare the revised Sek-I geometry packaging against another reviewed Bundesland lane.
+- keep Hamburg stable as a broad reviewed comparison lane and reopen it only if a genuinely narrower source split is needed for a shared canonical gap.

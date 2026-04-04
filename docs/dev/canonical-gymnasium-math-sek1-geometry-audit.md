@@ -488,3 +488,23 @@ This topic audit is complete when:
 - the broad SL `Klassenstufe 8: Groessen und Messen` anchor now carries a first reviewed corridor on the shared early Sek-I measurement / area / volume surface
 - the current Saarland grade-8 source still exposes only one shared measurement strip
 - this confirms the shared early measurement surface can absorb an explicit reviewed class-8 lane without forcing a sharper state-local split
+## Saarland Klassenstufe 9 geometry corridor connected (`2026-04-04`)
+
+- the broad SL `Klassenstufe 9: Raum und Form` anchor now carries a first reviewed corridor on the shared Sek-I geometry surface
+- the current Saarland grade-9 source still exposes only one shared geometry strip
+- this confirms the shared broad Sek-I geometry surface can absorb an explicit reviewed class-9 lane without forcing a sharper state-local split
+## Saarland Klassenstufe 9 measurement corridor connected (`2026-04-04`)
+
+- the broad SL `Klassenstufe 9: Groessen und Messen` anchor now carries a first reviewed corridor on the shared early Sek-I measurement / area / volume surface
+- the current Saarland grade-9 source still exposes only one shared measurement strip
+- this confirms the shared early measurement surface can absorb an explicit reviewed class-9 lane without forcing a sharper state-local split
+
+## Saarland Klassenstufe 10 geometry corridor connected (`2026-04-04`)
+- the broad SL `Klassenstufe 10: Raum und Form` anchor now carries a first reviewed corridor on the shared Sek-I geometry surface
+- the current Saarland grade-10 source still exposes only one shared geometry strip
+- this confirms the shared Sek-I geometry surface can absorb an explicit reviewed grade-10 lane without forcing a sharper state-local split
+
+## Saarland Klassenstufe 10 measurement corridor connected (`2026-04-04`)
+- the broad SL `Klassenstufe 10: Groessen und Messen` anchor now carries a first reviewed corridor on the shared early Sek-I measurement / area / volume surface
+- the current Saarland grade-10 source still exposes only one shared measurement strip
+- this confirms the shared early Sek-I measurement surface can absorb an explicit reviewed grade-10 lane without forcing a sharper state-local split

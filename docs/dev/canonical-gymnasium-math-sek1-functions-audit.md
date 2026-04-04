@@ -274,3 +274,13 @@ Observed signal:
 - the broad SL `Klassenstufe 8: Strukturen und funktionaler Zusammenhang` anchor now carries a first reviewed corridor on the shared Sek-I function-foundations surface
 - the current Saarland grade-8 source still exposes only one shared functions strip
 - this confirms the shared broad Sek-I function-foundations surface can absorb an explicit reviewed class-8 lane without forcing a sharper state-local split
+## Saarland Klassenstufe 9 broad functions corridor connected (`2026-04-04`)
+
+- the broad SL `Klassenstufe 9: Strukturen und funktionaler Zusammenhang` anchor now carries a first reviewed corridor on the shared broad Sek-I function surface
+- the current Saarland grade-9 source still exposes only one shared functions strip
+- this confirms the shared broad Sek-I function surface can absorb an explicit reviewed class-9 lane without forcing a sharper state-local split
+## Saarland Klassenstufe 10 broad functions corridor connected (`2026-04-04`)
+
+- the broad SL `Klassenstufe 10: Strukturen und funktionaler Zusammenhang` anchor now carries a first reviewed corridor on the shared broad Sek-I function-foundations surface
+- the current Saarland grade-10 source still exposes only one shared functions strip
+- this confirms the shared broad Sek-I function-foundations surface can absorb an explicit reviewed class-10 lane without forcing a sharper state-local split
