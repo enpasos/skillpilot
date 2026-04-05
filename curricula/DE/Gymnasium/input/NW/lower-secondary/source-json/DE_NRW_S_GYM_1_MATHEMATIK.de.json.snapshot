@@ -8,8 +8,8 @@
   "frameworkId": "nrw-klp-g9-math",
   "title": "Mathematik Sekundarstufe I (Nordrhein-Westfalen, Pilot-Quellsnapshot)",
   "titleEn": "Mathematics Secondary Level I (North Rhine-Westphalia, Pilot Source Snapshot)",
-  "description": "Erster archivierter NRW-Quellsnapshot fuer den Funktionskorridor des Kernlehrplans Mathematik Sekundarstufe I (Gymnasium G9, 2019). Der Snapshot umfasst nun den priorisierten Funktionskorridor aus 2.4.1 und 2.4.2 sowie den fuer diesen Korridor benoetigten Praerequisite-Strip aus Erprobungsstufe und erster Stufe.",
-  "descriptionEn": "First archived NRW source snapshot for the functions corridor of the lower-secondary mathematics curriculum (Gymnasium G9, 2019). The snapshot now covers the prioritised functions corridor from sections 2.4.1 and 2.4.2 together with the prerequisite strip from the probationary and first stage needed for that corridor.",
+  "description": "Erster archivierter NRW-Quellsnapshot fuer die priorisierten Funktionen-, Daten/Zufall- und Geometriekorridore des Kernlehrplans Mathematik Sekundarstufe I (Gymnasium G9, 2019). Der Snapshot umfasst den Funktionskorridor aus 2.4.1 und 2.4.2, den dafuer benoetigten Praerequisite-Strip aus Erprobungsstufe und erster Stufe, die expliziten Daten/Zufall-Korridore aus 2.3, 2.4.1 und 2.4.2 sowie die expliziten Geometriekorridore aus 2.3, 2.4.1 und 2.4.2.",
+  "descriptionEn": "First archived NRW source snapshot for the prioritised functions, data/chance, and geometry corridors of the lower-secondary mathematics curriculum (Gymnasium G9, 2019). The snapshot covers the functions corridor from sections 2.4.1 and 2.4.2, the prerequisite strip from the probationary and first stage needed for it, the explicit data/chance corridors from sections 2.3, 2.4.1, and 2.4.2, and the explicit geometry corridors from sections 2.3, 2.4.1, and 2.4.2.",
   "compatibilityOnly": true,
   "legacyHiddenByDefault": true,
   "goals": [
@@ -17,31 +17,35 @@
       "id": "d342185c-0e18-41b3-ae4c-81baa9cac560",
       "title": "Mathematik Sekundarstufe I",
       "titleEn": "Mathematics Secondary Level I",
-      "description": "Pilot-Subset der nordrhein-westfaelischen Mathematik-Kompetenzerwartungen der Sekundarstufe I mit Fokus auf den Funktionskorridor und seinen arithmetisch-algebraischen Voraussetzungen.",
-      "descriptionEn": "Pilot subset of the North Rhine-Westphalian lower-secondary mathematics competency expectations with a focus on the functions corridor and its arithmetic-algebraic prerequisites.",
-      "weight": 24,
+      "description": "Pilot-Subset der nordrhein-westfaelischen Mathematik-Kompetenzerwartungen der Sekundarstufe I mit Fokus auf dem Funktionskorridor, seinen arithmetisch-algebraischen Voraussetzungen, einem expliziten Daten/Zufall-Korridor und einem explizit archivierten Geometriekorridor.",
+      "descriptionEn": "Pilot subset of the North Rhine-Westphalian lower-secondary mathematics competency expectations with a focus on the functions corridor, its arithmetic-algebraic prerequisites, an explicit data/chance corridor, and an explicitly archived geometry corridor.",
+      "weight": 51,
       "tags": [
         "Sek1",
         "PilotSubset",
         "Funktionen",
-        "PrerequisiteStrip"
+        "PrerequisiteStrip",
+        "DatenUndZufall",
+        "Geometrie"
       ],
       "contains": [
         "779925c9-038c-4905-b049-de083db123ac",
         "c1d6a313-813c-4fac-8d82-c792f595b14a",
-        "f43fd248-195e-4168-bf70-ce92f864738f"
+        "f43fd248-195e-4168-bf70-ce92f864738f",
+        "eff200ff-8402-59ee-9809-97800768f06f",
+        "688b5e70-8472-57e4-a0c1-c892490000e4"
       ],
       "requires": [
         "779925c9-038c-4905-b049-de083db123ac"
       ],
-      "sourceRef": "KLP NRW Mathematik Sek I (Gymnasium G9, 2019), Kap. 1 sowie 2.3-2.4.2, S. 8-10 und 23-33.",
+      "sourceRef": "KLP NRW Mathematik Sek I (Gymnasium G9, 2019), Kap. 1 sowie 2.3-2.4.2, S. 8-10 und 23-35.",
       "dimensionTags": {
         "framework": "nrw-klp-g9-math",
         "demandLevel": "AB1",
         "processCompetencies": [],
         "guidingIdeas": [],
         "phase": "GLOBAL",
-        "area": "Funktionen"
+        "area": "Mathematik"
       },
       "type": "cluster"
     },
@@ -105,7 +109,7 @@
       "titleEn": "Probationary Stage: Quantity Relations and First Algebraic Terms",
       "description": "Grundlegende Vorerfahrungen aus der Erprobungsstufe zu Groessenzusammenhaengen, Dreisatz, Zahlendarstellungen, Grundrechenarten sowie dem ersten Umgang mit Variablen und Termen.",
       "descriptionEn": "Foundational probationary-stage competencies on quantity relations, the rule of three, number representations, basic arithmetic, and a first use of variables and algebraic expressions.",
-      "weight": 9,
+      "weight": 7,
       "tags": [
         "Sek1",
         "Erprobungsstufe",
@@ -608,7 +612,7 @@
       "titleEn": "Functions",
       "description": "Pilot-Cluster fuer die NRW-Funktionskompetenzen der ersten und zweiten Stufe der Sekundarstufe I.",
       "descriptionEn": "Pilot cluster for the NRW functions competencies of the first and second stage of lower secondary.",
-      "weight": 7,
+      "weight": 9,
       "tags": [
         "Sek1",
         "Funktionen",
@@ -986,6 +990,1070 @@
         "area": "Funktionen"
       },
       "type": "atomic"
+    },
+    {
+      "id": "eff200ff-8402-59ee-9809-97800768f06f",
+      "title": "Daten und Zufall",
+      "titleEn": "Data and Chance",
+      "description": "Pilot-Cluster fuer die NRW-Stochastikkompetenzen der Erprobungsstufe sowie der ersten und zweiten Stufe der Sekundarstufe I.",
+      "descriptionEn": "Pilot cluster for the NRW data/chance competencies across the probationary, first, and second stage of lower secondary.",
+      "tags": [
+        "Sek1",
+        "DatenUndZufall",
+        "PilotSubset"
+      ],
+      "contains": [
+        "6fd8f178-8bca-51a0-a09f-35a5e7cda6d8",
+        "6844db7c-62e5-5410-85e0-565170f87d9e",
+        "75dd90ef-4c8b-5c8e-bdc6-fee3b66d2398"
+      ],
+      "requires": [],
+      "sourceRef": "KLP NRW Mathematik Sek I (Gymnasium G9, 2019), 2.3-2.4.2 Stochastik, S. 26, 31 und 35.",
+      "dimensionTags": {
+        "framework": "nrw-klp-g9-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "GLOBAL",
+        "area": "DatenUndZufall"
+      },
+      "type": "cluster",
+      "weight": 9
+    },
+    {
+      "id": "6fd8f178-8bca-51a0-a09f-35a5e7cda6d8",
+      "title": "Erprobungsstufe: Daten, Haeufigkeiten und Kenngroessen",
+      "titleEn": "Probationary Stage: Data, Frequencies and Statistics",
+      "description": "Fruehe Daten- und Statistikkompetenzen der Erprobungsstufe zu Datenerhebungen, Haeufigkeiten, Diagrammen und ersten Kenngroessen.",
+      "descriptionEn": "Probationary-stage data and statistics competencies on data collection, frequencies, diagrams, and first statistical measures.",
+      "tags": [
+        "Sek1",
+        "DatenUndZufall",
+        "Erprobungsstufe"
+      ],
+      "contains": [
+        "9d266916-5cb0-5a06-b67a-a2c5a770aa53",
+        "3cda33da-b3c7-5653-9e32-161e83341cef"
+      ],
+      "requires": [],
+      "sourceRef": "KLP NRW Mathematik Sek I (Gymnasium G9, 2019), 2.3 Stochastik, S. 26-27.",
+      "dimensionTags": {
+        "framework": "nrw-klp-g9-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "ERPROBUNGSSTUFE",
+        "area": "DatenUndZufall"
+      },
+      "type": "cluster",
+      "weight": 2
+    },
+    {
+      "id": "6844db7c-62e5-5410-85e0-565170f87d9e",
+      "title": "Erste Stufe: Zufallsexperimente, Laplace und Simulation",
+      "titleEn": "First Stage: Random Experiments, Laplace and Simulation",
+      "description": "Stochastikkompetenzen der ersten Stufe zu ein- und zweistufigen Zufallsexperimenten, Laplace-Vorstellungen, Pfadregeln und Simulationen.",
+      "descriptionEn": "First-stage data/chance competencies on one- and two-stage random experiments, Laplace ideas, path rules, and simulations.",
+      "tags": [
+        "Sek1",
+        "DatenUndZufall",
+        "Stage1"
+      ],
+      "contains": [
+        "80294bcb-d3ed-5c11-9ee2-569d5ad644f8",
+        "2e018d58-b501-59bd-9e93-dcd63fb4b436",
+        "fd0bfe6c-c03c-5c96-ae9e-e01947897a71"
+      ],
+      "requires": [],
+      "sourceRef": "KLP NRW Mathematik Sek I (Gymnasium G9, 2019), 2.4.1 Stochastik, S. 31.",
+      "dimensionTags": {
+        "framework": "nrw-klp-g9-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "STAGE1",
+        "area": "DatenUndZufall"
+      },
+      "type": "cluster",
+      "weight": 3
+    },
+    {
+      "id": "75dd90ef-4c8b-5c8e-bdc6-fee3b66d2398",
+      "title": "Zweite Stufe: Datenkritik, bedingte Wahrscheinlichkeit und Vierfeldertafeln",
+      "titleEn": "Second Stage: Data Critique, Conditional Probability and Four-Field Tables",
+      "description": "Stochastikkompetenzen der zweiten Stufe zu statistischer Datenkritik, bedingten Wahrscheinlichkeiten, Vierfeldertafeln, Unabhaengigkeit und kombinatorischen Ueberlegungen.",
+      "descriptionEn": "Second-stage data/chance competencies on critical reading of statistics, conditional probability, four-field tables, independence, and combinatorial reasoning.",
+      "tags": [
+        "Sek1",
+        "DatenUndZufall",
+        "Stage2"
+      ],
+      "contains": [
+        "1186e72c-628a-51d7-ac91-6c3806d7029d",
+        "3e8ef701-37df-5b99-865c-fb6407ed8964",
+        "124e1adb-1076-5e48-8f04-2dd3c19fa72b",
+        "44c7ffd0-124a-55df-a606-a980d617157b"
+      ],
+      "requires": [],
+      "sourceRef": "KLP NRW Mathematik Sek I (Gymnasium G9, 2019), 2.4.2 Stochastik, S. 35.",
+      "dimensionTags": {
+        "framework": "nrw-klp-g9-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "STAGE2",
+        "area": "DatenUndZufall"
+      },
+      "type": "cluster",
+      "weight": 4
+    },
+    {
+      "id": "9d266916-5cb0-5a06-b67a-a2c5a770aa53",
+      "title": "Statistische Daten erheben, darstellen und auswerten",
+      "titleEn": "Collect, Represent and Evaluate Statistical Data",
+      "description": "Die Schuelerinnen und Schueler erheben statistische Daten, fassen sie in Ur- und Strichlisten zusammen, bilden geeignete Klasseneinteilungen und stellen Haeufigkeiten in Tabellen und Diagrammen auch mit digitalen Werkzeugen dar.",
+      "descriptionEn": "Students collect statistical data, organise it in raw and tally lists, form suitable classes, and represent frequencies in tables and diagrams, including with digital tools.",
+      "tags": [
+        "Sek1",
+        "DatenUndZufall",
+        "Erprobungsstufe"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "KLP NRW Mathematik Sek I (Gymnasium G9, 2019), 2.3 Stochastik, Erwartungen (1) und (2), S. 26-27.",
+      "dimensionTags": {
+        "framework": "nrw-klp-g9-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "Mod-3",
+          "Kom-2",
+          "Ope-11"
+        ],
+        "guidingIdeas": [],
+        "phase": "ERPROBUNGSSTUFE",
+        "area": "DatenUndZufall"
+      },
+      "type": "atomic",
+      "weight": 1
+    },
+    {
+      "id": "3cda33da-b3c7-5653-9e32-161e83341cef",
+      "title": "Kenngroessen statistischer Daten bestimmen, vergleichen und grafische Darstellungen deuten",
+      "titleEn": "Determine, Compare and Interpret Statistical Measures and Graphics",
+      "description": "Die Schuelerinnen und Schueler bestimmen, vergleichen und deuten Haeufigkeiten und Kenngroessen statistischer Daten, lesen und interpretieren grafische Darstellungen statistischer Erhebungen, fuehren Veraenderungen statistischer Kenngroessen auf den Einfluss einzelner Daten zurueck und diskutieren Vor- und Nachteile grafischer Darstellungen.",
+      "descriptionEn": "Students determine, compare, and interpret frequencies and statistical measures, read and interpret graphical representations of surveys, trace changes in statistics back to individual data points, and discuss the advantages and disadvantages of graphical representations.",
+      "tags": [
+        "Sek1",
+        "DatenUndZufall",
+        "Erprobungsstufe"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "KLP NRW Mathematik Sek I (Gymnasium G9, 2019), 2.3 Stochastik, Erwartungen (3)-(6), S. 27.",
+      "dimensionTags": {
+        "framework": "nrw-klp-g9-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "Mod-7",
+          "Arg-1",
+          "Kom-1",
+          "Mod-2",
+          "Arg-2",
+          "Arg-3",
+          "Mod-8",
+          "Arg-9"
+        ],
+        "guidingIdeas": [],
+        "phase": "ERPROBUNGSSTUFE",
+        "area": "DatenUndZufall"
+      },
+      "type": "atomic",
+      "weight": 1
+    },
+    {
+      "id": "80294bcb-d3ed-5c11-9ee2-569d5ad644f8",
+      "title": "Ein- und zweistufige Zufallsexperimente mit Baumdiagrammen darstellen und Wahrscheinlichkeiten bestimmen",
+      "titleEn": "Represent One- and Two-Stage Random Experiments with Tree Diagrams and Determine Probabilities",
+      "description": "Die Schuelerinnen und Schueler stellen ein- und zweistufige Zufallsexperimente mit Baumdiagrammen dar, entnehmen Wahrscheinlichkeiten aus Baumdiagrammen und bestimmen Wahrscheinlichkeiten mithilfe stochastischer Regeln.",
+      "descriptionEn": "Students represent one- and two-stage random experiments with tree diagrams, extract probabilities from tree diagrams, and determine probabilities using stochastic rules.",
+      "tags": [
+        "Sek1",
+        "DatenUndZufall",
+        "Stage1"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "KLP NRW Mathematik Sek I (Gymnasium G9, 2019), 2.4.1 Stochastik, Erwartungen (2) und (3), S. 31.",
+      "dimensionTags": {
+        "framework": "nrw-klp-g9-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "Ope-6",
+          "Mod-5",
+          "Mod-7",
+          "Ope-8",
+          "Pro-5",
+          "Arg-5"
+        ],
+        "guidingIdeas": [],
+        "phase": "STAGE1",
+        "area": "DatenUndZufall"
+      },
+      "type": "atomic",
+      "weight": 1
+    },
+    {
+      "id": "2e018d58-b501-59bd-9e93-dcd63fb4b436",
+      "title": "Relative Haeufigkeiten langer Versuchsreihen deuten und Laplace-Wahrscheinlichkeiten berechnen",
+      "titleEn": "Interpret Relative Frequencies of Long Series and Calculate Laplace Probabilities",
+      "description": "Die Schuelerinnen und Schueler schaetzen Wahrscheinlichkeiten auf der Basis von Hypothesen sowie relativen Haeufigkeiten langer Versuchsreihen ab und grenzen Laplace-Versuche anhand von Beispielen gegenueber anderen Zufallsversuchen ab.",
+      "descriptionEn": "Students estimate probabilities based on hypotheses and relative frequencies of long series of experiments and distinguish Laplace experiments from other random experiments using examples.",
+      "tags": [
+        "Sek1",
+        "DatenUndZufall",
+        "Stage1"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "KLP NRW Mathematik Sek I (Gymnasium G9, 2019), 2.4.1 Stochastik, Erwartungen (1) und (4), S. 31.",
+      "dimensionTags": {
+        "framework": "nrw-klp-g9-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "Mod-8",
+          "Pro-3",
+          "Arg-2",
+          "Arg-3",
+          "Mod-5",
+          "Kom-3"
+        ],
+        "guidingIdeas": [],
+        "phase": "STAGE1",
+        "area": "DatenUndZufall"
+      },
+      "type": "atomic",
+      "weight": 1
+    },
+    {
+      "id": "fd0bfe6c-c03c-5c96-ae9e-e01947897a71",
+      "title": "Simulationen einfacher Zufallsexperimente nutzen",
+      "titleEn": "Use Simulations of Simple Random Experiments",
+      "description": "Die Schuelerinnen und Schueler simulieren Zufallserscheinungen in alltaeglichen Situationen mit einem stochastischen Modell.",
+      "descriptionEn": "Students simulate random phenomena in everyday situations using a stochastic model.",
+      "tags": [
+        "Sek1",
+        "DatenUndZufall",
+        "Stage1"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "KLP NRW Mathematik Sek I (Gymnasium G9, 2019), 2.4.1 Stochastik, Erwartung (5), S. 31.",
+      "dimensionTags": {
+        "framework": "nrw-klp-g9-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "Mod-4",
+          "Mod-6",
+          "Mod-9"
+        ],
+        "guidingIdeas": [],
+        "phase": "STAGE1",
+        "area": "DatenUndZufall"
+      },
+      "type": "atomic",
+      "weight": 1
+    },
+    {
+      "id": "1186e72c-628a-51d7-ac91-6c3806d7029d",
+      "title": "Statistische Darstellungen kritisch lesen und Datenmanipulation beurteilen",
+      "titleEn": "Critically Read Statistical Representations and Judge Data Manipulation",
+      "description": "Die Schuelerinnen und Schueler analysieren grafische Darstellungen statistischer Erhebungen kritisch, erkennen Manipulationen und interpretieren sowie beurteilen Daten und statistische Aussagen in authentischen Texten.",
+      "descriptionEn": "Students critically analyse graphical representations of statistical surveys, detect manipulations, and interpret and judge data and statistical claims in authentic texts.",
+      "tags": [
+        "Sek1",
+        "DatenUndZufall",
+        "Stage2"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "KLP NRW Mathematik Sek I (Gymnasium G9, 2019), 2.4.2 Stochastik, Erwartungen (2) und (6), S. 35.",
+      "dimensionTags": {
+        "framework": "nrw-klp-g9-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "Arg-9",
+          "Kom-10",
+          "Kom-11",
+          "Mod-7",
+          "Mod-8"
+        ],
+        "guidingIdeas": [],
+        "phase": "STAGE2",
+        "area": "DatenUndZufall"
+      },
+      "type": "atomic",
+      "weight": 1
+    },
+    {
+      "id": "3e8ef701-37df-5b99-865c-fb6407ed8964",
+      "title": "Bedingte Wahrscheinlichkeiten mit Vierfeldertafeln und Baumdiagrammen bestimmen",
+      "titleEn": "Determine Conditional Probabilities with Four-Field Tables and Tree Diagrams",
+      "description": "Die Schuelerinnen und Schueler verwenden zweistufige Zufallsversuche zur Darstellung zufaelliger Erscheinungen in alltaeglichen Situationen und berechnen Wahrscheinlichkeiten mithilfe von Baumdiagrammen und Vierfeldertafeln und deuten diese im Sachzusammenhang.",
+      "descriptionEn": "Students use two-stage random experiments to represent random phenomena in everyday situations and calculate probabilities using tree diagrams and four-field tables, interpreting them in context.",
+      "tags": [
+        "Sek1",
+        "DatenUndZufall",
+        "Stage2"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "KLP NRW Mathematik Sek I (Gymnasium G9, 2019), 2.4.2 Stochastik, Erwartungen (3) und (5), S. 35.",
+      "dimensionTags": {
+        "framework": "nrw-klp-g9-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "Mod-4",
+          "Ope-8",
+          "Mod-7",
+          "Mod-8"
+        ],
+        "guidingIdeas": [],
+        "phase": "STAGE2",
+        "area": "DatenUndZufall"
+      },
+      "type": "atomic",
+      "weight": 1
+    },
+    {
+      "id": "124e1adb-1076-5e48-8f04-2dd3c19fa72b",
+      "title": "Stochastische Unabhaengigkeit in einfachen Situationen pruefen und bewerten",
+      "titleEn": "Check and Evaluate Stochastic Independence in Simple Situations",
+      "description": "Die Schuelerinnen und Schueler pruefen in einfachen alltaeglichen Situationen, ob eine stochastische Unabhaengigkeit plausibel ist, und bewerten ihre Ergebnisse im Sachzusammenhang.",
+      "descriptionEn": "Students check in simple everyday situations whether stochastic independence is plausible and evaluate the result in context.",
+      "tags": [
+        "Sek1",
+        "DatenUndZufall",
+        "Stage2"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "KLP NRW Mathematik Sek I (Gymnasium G9, 2019), 2.4.2 Stochastik, bedingte Wahrscheinlichkeit und stochastische Unabhaengigkeit, S. 35.",
+      "dimensionTags": {
+        "framework": "nrw-klp-g9-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "Arg-9",
+          "Mod-7",
+          "Mod-8"
+        ],
+        "guidingIdeas": [],
+        "phase": "STAGE2",
+        "area": "DatenUndZufall"
+      },
+      "type": "atomic",
+      "weight": 1
+    },
+    {
+      "id": "44c7ffd0-124a-55df-a606-a980d617157b",
+      "title": "Einfache kombinatorische Zaehlprinzipien fuer Wahrscheinlichkeitsbetrachtungen nutzen",
+      "titleEn": "Use Simple Combinatorial Counting Principles for Probability Contexts",
+      "description": "Die Schuelerinnen und Schueler fuehren in konkreten Situationen kombinatorische Ueberlegungen durch, um die Anzahl der jeweiligen Moeglichkeiten zu bestimmen und Wahrscheinlichkeiten in endlichen Modellen vorzubereiten.",
+      "descriptionEn": "Students use combinatorial reasoning in concrete situations to determine the number of possibilities and prepare probability reasoning in finite models.",
+      "tags": [
+        "Sek1",
+        "DatenUndZufall",
+        "Stage2"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "KLP NRW Mathematik Sek I (Gymnasium G9, 2019), 2.4.2 Stochastik, Erwartung (4), S. 35.",
+      "dimensionTags": {
+        "framework": "nrw-klp-g9-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "Pro-4",
+          "Pro-5",
+          "Pro-7"
+        ],
+        "guidingIdeas": [],
+        "phase": "STAGE2",
+        "area": "DatenUndZufall"
+      },
+      "type": "atomic",
+      "weight": 1
+    },
+    {
+      "id": "688b5e70-8472-57e4-a0c1-c892490000e4",
+      "title": "Geometrie",
+      "titleEn": "Geometry",
+      "description": "Pilot-Cluster fuer die NRW-Geometriekompetenzen der Erprobungsstufe sowie der ersten und zweiten Stufe der Sekundarstufe I.",
+      "descriptionEn": "Pilot cluster for the North Rhine-Westphalian lower-secondary geometry competencies across the probationary, first, and second stage.",
+      "tags": [
+        "Sek1",
+        "Geometrie",
+        "PilotSubset"
+      ],
+      "contains": [
+        "56e68356-1a7c-5cb7-a031-fc4940697c74",
+        "431671e6-4b07-5b9f-9dd3-cf2d1e80194b",
+        "641811e9-b545-5797-aa8d-83175db31412"
+      ],
+      "requires": [],
+      "sourceRef": "KLP NRW Mathematik Sek I (Gymnasium G9, 2019), 2.3-2.4.2 Geometrie, S. 25, 30 und 34.",
+      "dimensionTags": {
+        "framework": "nrw-klp-g9-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "GLOBAL",
+        "area": "Geometrie"
+      },
+      "type": "cluster",
+      "weight": 18
+    },
+    {
+      "id": "56e68356-1a7c-5cb7-a031-fc4940697c74",
+      "title": "Erprobungsstufe: Geometrische Grundvorstellungen",
+      "titleEn": "Probationary Stage: Introductory Geometry",
+      "description": "Geometrische Grundvorstellungen der Erprobungsstufe zu Figuren und Koerpern, Symmetrie, Koordinatendarstellungen, Winkeln sowie ersten Flaechen- und Volumenideen.",
+      "descriptionEn": "Probationary-stage geometry foundations on figures and solids, symmetry, coordinate representations, angles, and first area and volume ideas.",
+      "tags": [
+        "Sek1",
+        "Geometrie",
+        "Erprobungsstufe"
+      ],
+      "contains": [
+        "009de949-cbf8-57da-96f2-31504aa642c7",
+        "e163282a-0acb-59e8-a0d3-daa975a1725b",
+        "4ef06a4c-3da0-5f99-864f-77bdec1b68d4",
+        "28c297ae-547a-5016-8e31-acc1a05b3f97",
+        "7cc3b8ee-b402-5c9b-94e7-d58fa47dd550",
+        "a977db43-3784-5175-902f-91121ac197b5",
+        "1132391a-f5a1-5af5-b8ed-4e5584d70038"
+      ],
+      "requires": [],
+      "sourceRef": "KLP NRW Mathematik Sek I (Gymnasium G9, 2019), 2.3 Geometrie, S. 25.",
+      "dimensionTags": {
+        "framework": "nrw-klp-g9-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "ERPROBUNGSSTUFE",
+        "area": "Geometrie"
+      },
+      "type": "cluster",
+      "weight": 7
+    },
+    {
+      "id": "431671e6-4b07-5b9f-9dd3-cf2d1e80194b",
+      "title": "Erste Stufe: Dreiecke, Saetze und Konstruktionen",
+      "titleEn": "First Stage: Triangles, Theorems and Constructions",
+      "description": "Geometrische Kompetenzerwartungen der ersten Stufe zu Winkelsaetzen, Thales, Konstruktionen und Flaecheninhalten ebener Figuren.",
+      "descriptionEn": "First-stage geometry competencies on angle theorems, Thales, constructions, and areas of plane figures.",
+      "tags": [
+        "Sek1",
+        "Geometrie",
+        "Stage1"
+      ],
+      "contains": [
+        "87f2b7af-ab3a-539d-af00-5a13ec9bdb83",
+        "52d7fa9e-4937-55e5-9f5e-b0f816c23f49",
+        "f31fb597-4091-5eeb-8a98-2de8176caec6",
+        "448645a7-c92b-5f8b-9bd1-24028b147e85",
+        "aeacb33f-6bfc-509c-b10b-d633d2edadeb"
+      ],
+      "requires": [],
+      "sourceRef": "KLP NRW Mathematik Sek I (Gymnasium G9, 2019), 2.4.1 Geometrie, S. 30.",
+      "dimensionTags": {
+        "framework": "nrw-klp-g9-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "STAGE1",
+        "area": "Geometrie"
+      },
+      "type": "cluster",
+      "weight": 5
+    },
+    {
+      "id": "641811e9-b545-5797-aa8d-83175db31412",
+      "title": "Zweite Stufe: Aehnlichkeit, Koerper und Trigonometrie",
+      "titleEn": "Second Stage: Similarity, Solids and Trigonometry",
+      "description": "Geometrische Kompetenzerwartungen der zweiten Stufe zu Aehnlichkeit, Kreis- und Koerperberechnungen, Satz des Pythagoras und trigonometrischen Beziehungen.",
+      "descriptionEn": "Second-stage geometry competencies on similarity, circle and solid calculations, the Pythagorean theorem, and trigonometric relationships.",
+      "tags": [
+        "Sek1",
+        "Geometrie",
+        "Stage2"
+      ],
+      "contains": [
+        "13a34627-237b-5c1b-b9b3-0cb8d91da151",
+        "a2f202f1-2b76-5812-ad7f-c0543e7a2124",
+        "2aaaf1f6-ceaf-5fd7-b39b-6b388b9c8eb5",
+        "72a10bf8-bed8-550b-829b-5a904db099ff",
+        "f4a62c39-0a2e-514f-9c42-7da1896c18a6",
+        "e0a80468-3e82-5d4e-ade3-fb804b47b0ad"
+      ],
+      "requires": [],
+      "sourceRef": "KLP NRW Mathematik Sek I (Gymnasium G9, 2019), 2.4.2 Geometrie, S. 34.",
+      "dimensionTags": {
+        "framework": "nrw-klp-g9-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "STAGE2",
+        "area": "Geometrie"
+      },
+      "type": "cluster",
+      "weight": 6
+    },
+    {
+      "id": "009de949-cbf8-57da-96f2-31504aa642c7",
+      "title": "Grundbegriffe, Figuren, Koerper und Lagebeziehungen beschreiben",
+      "titleEn": "Describe Basic Concepts, Figures, Solids and Positional Relations",
+      "description": "Die Schuelerinnen und Schueler erlaeutern Grundbegriffe und verwenden diese zur Beschreibung von ebenen Figuren und Koerpern sowie deren Lagebeziehungen zueinander.",
+      "descriptionEn": "Students explain basic concepts and use them to describe plane figures and solids as well as their positional relations.",
+      "tags": [
+        "Sek1",
+        "Geometrie",
+        "Erprobungsstufe"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "KLP NRW Mathematik Sek I (Gymnasium G9, 2019), 2.3 Geometrie, Erwartung (1), S. 25.",
+      "dimensionTags": {
+        "framework": "nrw-klp-g9-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "Ope-3",
+          "Kom-3"
+        ],
+        "guidingIdeas": [],
+        "phase": "ERPROBUNGSSTUFE",
+        "area": "Geometrie"
+      },
+      "type": "atomic",
+      "weight": 1
+    },
+    {
+      "id": "e163282a-0acb-59e8-a0d3-daa975a1725b",
+      "title": "Besondere Vierecke charakterisieren und klassifizieren",
+      "titleEn": "Characterise and Classify Special Quadrilaterals",
+      "description": "Die Schuelerinnen und Schueler charakterisieren und klassifizieren besondere Vierecke.",
+      "descriptionEn": "Students characterise and classify special quadrilaterals.",
+      "tags": [
+        "Sek1",
+        "Geometrie",
+        "Erprobungsstufe"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "KLP NRW Mathematik Sek I (Gymnasium G9, 2019), 2.3 Geometrie, Erwartung (2), S. 25.",
+      "dimensionTags": {
+        "framework": "nrw-klp-g9-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "Arg-4",
+          "Arg-6",
+          "Kom-6"
+        ],
+        "guidingIdeas": [],
+        "phase": "ERPROBUNGSSTUFE",
+        "area": "Geometrie"
+      },
+      "type": "atomic",
+      "weight": 1
+    },
+    {
+      "id": "4ef06a4c-3da0-5f99-864f-77bdec1b68d4",
+      "title": "Ebene Figuren zeichnen und im Koordinatensystem darstellen",
+      "titleEn": "Draw Plane Figures and Represent Them in the Coordinate System",
+      "description": "Die Schuelerinnen und Schueler zeichnen ebene Figuren mit geeigneten Hilfsmitteln und stellen ebene Figuren im kartesischen Koordinatensystem dar.",
+      "descriptionEn": "Students draw plane figures with suitable tools and represent plane figures in the Cartesian coordinate system.",
+      "tags": [
+        "Sek1",
+        "Geometrie",
+        "Erprobungsstufe"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "KLP NRW Mathematik Sek I (Gymnasium G9, 2019), 2.3 Geometrie, Erwartungen (4) und (6), S. 25.",
+      "dimensionTags": {
+        "framework": "nrw-klp-g9-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "Ope-9",
+          "Ope-11",
+          "Ope-12"
+        ],
+        "guidingIdeas": [],
+        "phase": "ERPROBUNGSSTUFE",
+        "area": "Geometrie"
+      },
+      "type": "atomic",
+      "weight": 1
+    },
+    {
+      "id": "28c297ae-547a-5016-8e31-acc1a05b3f97",
+      "title": "Symmetrien und Abbildungen ebener Figuren erzeugen und untersuchen",
+      "titleEn": "Create and Investigate Symmetries and Transformations of Plane Figures",
+      "description": "Die Schuelerinnen und Schueler erzeugen ebene symmetrische Figuren und Muster, ermitteln Symmetrieachsen oder Symmetriepunkte und untersuchen Abbildungen ebener Figuren auch mit dynamischer Geometriesoftware.",
+      "descriptionEn": "Students create symmetric plane figures and patterns, identify axes or centres of symmetry, and investigate transformations of plane figures, including with dynamic geometry software.",
+      "tags": [
+        "Sek1",
+        "Geometrie",
+        "Erprobungsstufe"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "KLP NRW Mathematik Sek I (Gymnasium G9, 2019), 2.3 Geometrie, Erwartungen (5), (7) und (8), S. 25.",
+      "dimensionTags": {
+        "framework": "nrw-klp-g9-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "Ope-8",
+          "Ope-9",
+          "Ope-11",
+          "Ope-13",
+          "Pro-3",
+          "Pro-6",
+          "Pro-9"
+        ],
+        "guidingIdeas": [],
+        "phase": "ERPROBUNGSSTUFE",
+        "area": "Geometrie"
+      },
+      "type": "atomic",
+      "weight": 1
+    },
+    {
+      "id": "7cc3b8ee-b402-5c9b-94e7-d58fa47dd550",
+      "title": "Winkel groessen schaetzen, messen und klassifizieren",
+      "titleEn": "Estimate, Measure and Classify Angles",
+      "description": "Die Schuelerinnen und Schueler schaetzen und messen die Groesse von Winkeln und klassifizieren Winkel mit Fachbegriffen.",
+      "descriptionEn": "Students estimate and measure the size of angles and classify angles using subject-specific terminology.",
+      "tags": [
+        "Sek1",
+        "Geometrie",
+        "Erprobungsstufe"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "KLP NRW Mathematik Sek I (Gymnasium G9, 2019), 2.3 Geometrie, Erwartung (9), S. 25.",
+      "dimensionTags": {
+        "framework": "nrw-klp-g9-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "Ope-9",
+          "Kom-3",
+          "Kom-6"
+        ],
+        "guidingIdeas": [],
+        "phase": "ERPROBUNGSSTUFE",
+        "area": "Geometrie"
+      },
+      "type": "atomic",
+      "weight": 1
+    },
+    {
+      "id": "a977db43-3784-5175-902f-91121ac197b5",
+      "title": "Laengen, Flaecheninhalte und Volumina einfacher Figuren und Quader bestimmen",
+      "titleEn": "Determine Lengths, Areas and Volumes of Simple Figures and Cuboids",
+      "description": "Die Schuelerinnen und Schueler bestimmen Streckenlaengen mithilfe von Massstaeben, nutzen Messprinzipien bei Flaechen- und Volumenbestimmungen, berechnen Umfaenge und Flaecheninhalte einfacher Figuren sowie Oberflaecheninhalte und Volumina von Quadern.",
+      "descriptionEn": "Students determine lengths using scales, use measurement principles for areas and volumes, and calculate perimeters, areas, surface areas, and volumes for simple figures and cuboids.",
+      "tags": [
+        "Sek1",
+        "Geometrie",
+        "Erprobungsstufe"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "KLP NRW Mathematik Sek I (Gymnasium G9, 2019), 2.3 Geometrie, Erwartungen (10)-(13), S. 25.",
+      "dimensionTags": {
+        "framework": "nrw-klp-g9-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "Pro-4",
+          "Pro-5",
+          "Arg-3",
+          "Arg-5",
+          "Arg-7",
+          "Ope-4",
+          "Ope-8"
+        ],
+        "guidingIdeas": [],
+        "phase": "ERPROBUNGSSTUFE",
+        "area": "Geometrie"
+      },
+      "type": "atomic",
+      "weight": 1
+    },
+    {
+      "id": "1132391a-f5a1-5af5-b8ed-4e5584d70038",
+      "title": "Quader und Wuerfel in verschiedenen Darstellungen nutzen",
+      "titleEn": "Use Cuboids and Cubes Across Different Representations",
+      "description": "Die Schuelerinnen und Schueler beschreiben Drehungen und Verschiebungen eines Quaders aus der Vorstellung heraus und stellen Quader und Wuerfel als Netz, Schraegbild und Modell dar.",
+      "descriptionEn": "Students describe rotations and translations of a cuboid mentally and represent cuboids and cubes as nets, oblique drawings, and models.",
+      "tags": [
+        "Sek1",
+        "Geometrie",
+        "Erprobungsstufe"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "KLP NRW Mathematik Sek I (Gymnasium G9, 2019), 2.3 Geometrie, Erwartungen (14) und (15), S. 25.",
+      "dimensionTags": {
+        "framework": "nrw-klp-g9-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "Ope-2",
+          "Kom-3",
+          "Kom-5",
+          "Mod-1"
+        ],
+        "guidingIdeas": [],
+        "phase": "ERPROBUNGSSTUFE",
+        "area": "Geometrie"
+      },
+      "type": "atomic",
+      "weight": 1
+    },
+    {
+      "id": "87f2b7af-ab3a-539d-af00-5a13ec9bdb83",
+      "title": "Winkelsaetze in ebenen Figuren nutzen",
+      "titleEn": "Use Angle Theorems in Plane Figures",
+      "description": "Die Schuelerinnen und Schueler nutzen geometrische Saetze zur Winkelbestimmung in ebenen Figuren.",
+      "descriptionEn": "Students use geometric theorems to determine angles in plane figures.",
+      "tags": [
+        "Sek1",
+        "Geometrie",
+        "Stage1"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "KLP NRW Mathematik Sek I (Gymnasium G9, 2019), 2.4.1 Geometrie, Erwartung (1), S. 30.",
+      "dimensionTags": {
+        "framework": "nrw-klp-g9-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "Arg-7",
+          "Arg-9",
+          "Arg-10"
+        ],
+        "guidingIdeas": [],
+        "phase": "STAGE1",
+        "area": "Geometrie"
+      },
+      "type": "atomic",
+      "weight": 1
+    },
+    {
+      "id": "52d7fa9e-4937-55e5-9f5e-b0f816c23f49",
+      "title": "Innenwinkelsumme im Dreieck und Satz des Thales begruenden",
+      "titleEn": "Justify the Triangle Angle Sum and Thales Theorem",
+      "description": "Die Schuelerinnen und Schueler begruenden die Beweisfuehrung zur Summe der Innenwinkel in einem Dreieck und zum Satz des Thales.",
+      "descriptionEn": "Students justify the proof of the triangle angle sum and of Thales theorem.",
+      "tags": [
+        "Sek1",
+        "Geometrie",
+        "Stage1"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "KLP NRW Mathematik Sek I (Gymnasium G9, 2019), 2.4.1 Geometrie, Erwartung (2), S. 30.",
+      "dimensionTags": {
+        "framework": "nrw-klp-g9-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "Pro-10",
+          "Arg-8"
+        ],
+        "guidingIdeas": [],
+        "phase": "STAGE1",
+        "area": "Geometrie"
+      },
+      "type": "atomic",
+      "weight": 1
+    },
+    {
+      "id": "f31fb597-4091-5eeb-8a98-2de8176caec6",
+      "title": "Konstruktionen mit Zirkel und Lineal durchfuehren und auswerten",
+      "titleEn": "Carry Out and Evaluate Constructions with Compass and Ruler",
+      "description": "Die Schuelerinnen und Schueler fuehren Konstruktionen mit Zirkel und Lineal durch, nutzen sie zur Beantwortung von Fragestellungen und loesen geometrische Probleme mithilfe geometrischer Saetze.",
+      "descriptionEn": "Students carry out constructions with compass and ruler, use them to answer questions, and solve geometric problems by means of geometric theorems.",
+      "tags": [
+        "Sek1",
+        "Geometrie",
+        "Stage1"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "KLP NRW Mathematik Sek I (Gymnasium G9, 2019), 2.4.1 Geometrie, Erwartungen (3), (6) und (7), S. 30.",
+      "dimensionTags": {
+        "framework": "nrw-klp-g9-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "Ope-9",
+          "Pro-4",
+          "Pro-5",
+          "Pro-6",
+          "Pro-7",
+          "Kom-8",
+          "Ope-12",
+          "Ope-13"
+        ],
+        "guidingIdeas": [],
+        "phase": "STAGE1",
+        "area": "Geometrie"
+      },
+      "type": "atomic",
+      "weight": 1
+    },
+    {
+      "id": "448645a7-c92b-5f8b-9bd1-24028b147e85",
+      "title": "Dreieckskonstruktionen planen, ausfuehren und auf Loesbarkeit beurteilen",
+      "titleEn": "Plan, Carry Out and Judge the Solvability of Triangle Constructions",
+      "description": "Die Schuelerinnen und Schueler formulieren und begruenden Aussagen zur Loesbarkeit und Eindeutigkeit von Konstruktionsaufgaben, zeichnen Dreiecke aus gegebenen Winkel- und Seitenmassen und geben die Konstruktionsschritte mit Fachbegriffen an.",
+      "descriptionEn": "Students justify statements about the solvability and uniqueness of construction tasks, draw triangles from given angle and side measures, and describe the construction steps with subject-specific terminology.",
+      "tags": [
+        "Sek1",
+        "Geometrie",
+        "Stage1"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "KLP NRW Mathematik Sek I (Gymnasium G9, 2019), 2.4.1 Geometrie, Erwartungen (4) und (5), S. 30.",
+      "dimensionTags": {
+        "framework": "nrw-klp-g9-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "Arg-2",
+          "Arg-3",
+          "Arg-5",
+          "Arg-6",
+          "Arg-7",
+          "Ope-12",
+          "Kom-4",
+          "Kom-9"
+        ],
+        "guidingIdeas": [],
+        "phase": "STAGE1",
+        "area": "Geometrie"
+      },
+      "type": "atomic",
+      "weight": 1
+    },
+    {
+      "id": "aeacb33f-6bfc-509c-b10b-d633d2edadeb",
+      "title": "Flaecheninhalte ebener Figuren berechnen und Terme entwickeln",
+      "titleEn": "Calculate Areas of Plane Figures and Develop Formulas",
+      "description": "Die Schuelerinnen und Schueler berechnen Flaecheninhalte ebener Figuren und entwickeln Terme zur Berechnung von Flaecheninhalten ebener Figuren.",
+      "descriptionEn": "Students calculate the areas of plane figures and develop formulas for those areas.",
+      "tags": [
+        "Sek1",
+        "Geometrie",
+        "Stage1"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "KLP NRW Mathematik Sek I (Gymnasium G9, 2019), 2.4.1 Geometrie, Erwartung (8), S. 30.",
+      "dimensionTags": {
+        "framework": "nrw-klp-g9-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "Ope-5",
+          "Pro-5",
+          "Pro-8",
+          "Pro-10"
+        ],
+        "guidingIdeas": [],
+        "phase": "STAGE1",
+        "area": "Geometrie"
+      },
+      "type": "atomic",
+      "weight": 1
+    },
+    {
+      "id": "13a34627-237b-5c1b-b9b3-0cb8d91da151",
+      "title": "Aehnliche Figuren durch zentrische Streckungen erzeugen und untersuchen",
+      "titleEn": "Create and Investigate Similar Figures through Central Dilations",
+      "description": "Die Schuelerinnen und Schueler erzeugen aehnliche Figuren durch zentrische Streckungen und ermitteln aus gegebenen Abbildungen Streckzentrum und Streckfaktor.",
+      "descriptionEn": "Students create similar figures through central dilations and determine the centre and scale factor from given images.",
+      "tags": [
+        "Sek1",
+        "Geometrie",
+        "Stage2"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "KLP NRW Mathematik Sek I (Gymnasium G9, 2019), 2.4.2 Geometrie, Erwartung (2), S. 34.",
+      "dimensionTags": {
+        "framework": "nrw-klp-g9-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "Ope-8",
+          "Ope-9"
+        ],
+        "guidingIdeas": [],
+        "phase": "STAGE2",
+        "area": "Geometrie"
+      },
+      "type": "atomic",
+      "weight": 1
+    },
+    {
+      "id": "a2f202f1-2b76-5812-ad7f-c0543e7a2124",
+      "title": "Laengen und Flaecheninhalte an Kreisen und Kreissektoren berechnen",
+      "titleEn": "Calculate Lengths and Areas for Circles and Circular Sectors",
+      "description": "Die Schuelerinnen und Schueler berechnen Laengen und Flaecheninhalte an Kreisen und Kreissektoren und erlaeutern eine Idee zur Herleitung der Formeln fuer Flaecheninhalt und Umfang eines Kreises durch Naeherungsverfahren.",
+      "descriptionEn": "Students calculate lengths and areas for circles and circular sectors and explain one idea for deriving the circle formulas by approximation.",
+      "tags": [
+        "Sek1",
+        "Geometrie",
+        "Stage2"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "KLP NRW Mathematik Sek I (Gymnasium G9, 2019), 2.4.2 Geometrie, Erwartungen (3) und (4), S. 34.",
+      "dimensionTags": {
+        "framework": "nrw-klp-g9-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "Ope-8",
+          "Ope-10",
+          "Arg-8",
+          "Kom-4"
+        ],
+        "guidingIdeas": [],
+        "phase": "STAGE2",
+        "area": "Geometrie"
+      },
+      "type": "atomic",
+      "weight": 1
+    },
+    {
+      "id": "2aaaf1f6-ceaf-5fd7-b39b-6b388b9c8eb5",
+      "title": "Oberflaecheninhalte und Volumina von Koerpern berechnen und begruenden",
+      "titleEn": "Calculate and Justify Surface Areas and Volumes of Solids",
+      "description": "Die Schuelerinnen und Schueler schaetzen und berechnen Oberflaecheninhalte und Volumina von Koerpern, Teilkoerpern sowie zusammengesetzten Koerpern und begruenden Volumengleichheiten mit dem Prinzip von Cavalieri.",
+      "descriptionEn": "Students estimate and calculate surface areas and volumes of solids, partial solids, and composite solids and justify equal volumes using Cavalieri's principle.",
+      "tags": [
+        "Sek1",
+        "Geometrie",
+        "Stage2"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "KLP NRW Mathematik Sek I (Gymnasium G9, 2019), 2.4.2 Geometrie, Erwartungen (5) und (6), S. 34.",
+      "dimensionTags": {
+        "framework": "nrw-klp-g9-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "Ope-10",
+          "Pro-5",
+          "Pro-7",
+          "Arg-5",
+          "Arg-6",
+          "Arg-7"
+        ],
+        "guidingIdeas": [],
+        "phase": "STAGE2",
+        "area": "Geometrie"
+      },
+      "type": "atomic",
+      "weight": 1
+    },
+    {
+      "id": "72a10bf8-bed8-550b-829b-5a904db099ff",
+      "title": "Satz des Pythagoras begruenden",
+      "titleEn": "Justify the Pythagorean Theorem",
+      "description": "Die Schuelerinnen und Schueler beweisen den Satz des Pythagoras.",
+      "descriptionEn": "Students prove the Pythagorean theorem.",
+      "tags": [
+        "Sek1",
+        "Geometrie",
+        "Stage2"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "KLP NRW Mathematik Sek I (Gymnasium G9, 2019), 2.4.2 Geometrie, Erwartung (1), S. 34.",
+      "dimensionTags": {
+        "framework": "nrw-klp-g9-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "Arg-7",
+          "Arg-9",
+          "Arg-10"
+        ],
+        "guidingIdeas": [],
+        "phase": "STAGE2",
+        "area": "Geometrie"
+      },
+      "type": "atomic",
+      "weight": 1
+    },
+    {
+      "id": "f4a62c39-0a2e-514f-9c42-7da1896c18a6",
+      "title": "Sinus, Kosinus und Tangens im rechtwinkligen Dreieck begruenden und anwenden",
+      "titleEn": "Justify and Apply Sine, Cosine and Tangent in Right Triangles",
+      "description": "Die Schuelerinnen und Schueler begruenden die Definition von Sinus, Kosinus und Tangens durch invariante Seitenverhaeltnisse aehnlicher rechtwinkliger Dreiecke und berechnen Groessen mithilfe trigonometrischer Beziehungen.",
+      "descriptionEn": "Students justify the definitions of sine, cosine, and tangent via invariant side ratios of similar right triangles and calculate quantities using trigonometric relations.",
+      "tags": [
+        "Sek1",
+        "Geometrie",
+        "Stage2"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "KLP NRW Mathematik Sek I (Gymnasium G9, 2019), 2.4.2 Geometrie, Erwartungen (7) und (9), S. 34.",
+      "dimensionTags": {
+        "framework": "nrw-klp-g9-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "Pro-5",
+          "Pro-6",
+          "Arg-9",
+          "Kom-4",
+          "Pro-10",
+          "Ope-9"
+        ],
+        "guidingIdeas": [],
+        "phase": "STAGE2",
+        "area": "Geometrie"
+      },
+      "type": "atomic",
+      "weight": 1
+    },
+    {
+      "id": "e0a80468-3e82-5d4e-ade3-fb804b47b0ad",
+      "title": "Kosinussatz und geometrische Modellierungen mit trigonometrischen Beziehungen nutzen",
+      "titleEn": "Use the Cosine Rule and Geometric Modelling with Trigonometric Relations",
+      "description": "Die Schuelerinnen und Schueler erlaeutern den Kosinussatz als Verallgemeinerung des Satzes des Pythagoras und nutzen Massangaben in Sachsituationen fuer geometrische Berechnungen und Bewertungen.",
+      "descriptionEn": "Students explain the cosine rule as a generalisation of the Pythagorean theorem and use measurements in contextual situations for geometric calculations and evaluation.",
+      "tags": [
+        "Sek1",
+        "Geometrie",
+        "Stage2"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "KLP NRW Mathematik Sek I (Gymnasium G9, 2019), 2.4.2 Geometrie, Erwartungen (8) und (10), S. 34.",
+      "dimensionTags": {
+        "framework": "nrw-klp-g9-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "Arg-4",
+          "Arg-8",
+          "Mod-7",
+          "Mod-8",
+          "Ope-10"
+        ],
+        "guidingIdeas": [],
+        "phase": "STAGE2",
+        "area": "Geometrie"
+      },
+      "type": "atomic",
+      "weight": 1
     }
   ]
 }

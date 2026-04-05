@@ -8,9 +8,15 @@
   `curricula/DE/Gymnasium/input/NI/lower-secondary/references.md`
 - archived source snapshot:
   `curricula/DE/Gymnasium/input/NI/lower-secondary/source-json/DE_NDS_S_GYM_1_MATHEMATIK.de.json.snapshot`
-
 - structure note:
   `curricula/DE/Gymnasium/input/NI/math-structure-note.md`
+- active pilot scope:
+  - first shared lower-secondary functions corridor
+  - imported algebra and measurement follow-ons
+  - explicit lower-secondary data/chance corridor from `Planung und Durchfuehrung statistischer Erhebungen`, `Masszahlen statistischer Erhebungen`, `Wahrscheinlichkeit`, `Ein- und mehrstufige Zufallsversuche`, and `Baumdiagramme und Vierfeldertafeln`
+  - explicit later-Sek-I geometry/trigonometry and quadratics follow-ons
+- current next step:
+  - keep Niedersachsen stable while nationwide canonical math work shifts from topic-row breadth to applicability / cutover cleanup
 
 ### Sekundarstufe II (Gymnasiale Oberstufe)
 - archived source PDF:

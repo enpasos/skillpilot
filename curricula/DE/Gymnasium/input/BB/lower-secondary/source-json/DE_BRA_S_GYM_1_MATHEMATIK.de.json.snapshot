@@ -8,8 +8,8 @@
   "frameworkId": "be-bb-rlp-sek1-math",
   "title": "Mathematik Sekundarstufe I (Brandenburg, Pilot-Quellsnapshot)",
   "titleEn": "Mathematics Secondary Level I (Brandenburg, Pilot Source Snapshot)",
-  "description": "Erster archivierter Brandenburg-Quellsnapshot fuer die Mathematik der Sekundarstufe I. Der Snapshot aktiviert die strukturellen Gymnasium-Anker der Jahrgangsstufen 7 bis 10 sowie den ersten reviewed Funktionskorridor aus Zuordnungen und linearen Funktionen, den ersten reviewed Algebra-und-Gleichungskorridor, den erweiterten reviewed Geometrie-und-Konstruktionskorridor mit einem ersten Abbildungs-und-Aehnlichkeits-Follow-on und den verbreiterten reviewed Measurement-Korridor zu Flaechen, Kreisen sowie Prisma- und Zylinderrechnungen mit spaeteren Pyramiden-/Kegel-/Koerper- und Dreieckstrigonometrie-Follow-ons auf dem gemeinsamen Berlin/Brandenburg-Rahmenlehrplan.",
-  "descriptionEn": "First archived Brandenburg source snapshot for lower-secondary mathematics. The snapshot activates the structural Gymnasium anchors for grades 7 to 10 together with the first reviewed functions corridor on mappings and linear functions, the first reviewed algebra-and-equations corridor, the widened reviewed geometry-and-constructions corridor with a first transformations-and-similarity follow-on, and the widened reviewed measurement corridor on areas, circles, and prism/cylinder calculations with later pyramids/cones/solids and triangle-trigonometry follow-ons from the shared Berlin/Brandenburg curriculum.",
+  "description": "Erster archivierter Brandenburg-Quellsnapshot fuer die Mathematik der Sekundarstufe I. Der Snapshot aktiviert die strukturellen Gymnasium-Anker der Jahrgangsstufen 7 bis 10 sowie den ersten reviewed Funktionskorridor aus Zuordnungen und linearen Funktionen, den ersten reviewed Algebra-und-Gleichungskorridor, den ersten expliziten reviewed Daten-und-Zufall-Korridor von statistischen Erhebungen bis zu bedingten Wahrscheinlichkeiten, den erweiterten reviewed Geometrie-und-Konstruktionskorridor mit einem ersten Abbildungs-und-Aehnlichkeits-Follow-on und den verbreiterten reviewed Measurement-Korridor zu Flaechen, Kreisen sowie Prisma- und Zylinderrechnungen mit spaeteren Pyramiden-/Kegel-/Koerper- und Dreieckstrigonometrie-Follow-ons auf dem gemeinsamen Berlin/Brandenburg-Rahmenlehrplan.",
+  "descriptionEn": "First archived Brandenburg source snapshot for lower-secondary mathematics. The snapshot activates the structural Gymnasium anchors for grades 7 to 10 together with the first reviewed functions corridor on mappings and linear functions, the first reviewed algebra-and-equations corridor, the first explicit reviewed data/chance corridor from statistical surveys to conditional probability, the widened reviewed geometry-and-constructions corridor with a first transformations-and-similarity follow-on, and the widened reviewed measurement corridor on areas, circles, and prism/cylinder calculations with later pyramids/cones/solids and triangle-trigonometry follow-ons from the shared Berlin/Brandenburg curriculum.",
   "compatibilityOnly": true,
   "legacyHiddenByDefault": true,
   "goals": [
@@ -17,9 +17,9 @@
       "id": "86d256a7-57da-4a68-93ae-a38203b15ec8",
       "title": "Mathematik Sekundarstufe I",
       "titleEn": "Mathematics Secondary Level I",
-      "description": "Pilot-Subset der Brandenburg-Lane des gemeinsamen BE/BB-Rahmenlehrplans Mathematik mit Fokus auf der Gymnasium-Fortschrittsstruktur der Jahrgangsstufen 7 bis 10, dem ersten reviewed Funktionskorridor, dem ersten reviewed Algebra-und-Gleichungskorridor, dem erweiterten reviewed Geometrie-und-Konstruktionskorridor mit erstem Abbildungs-und-Aehnlichkeits-Follow-on und dem verbreiterten reviewed Measurement-Korridor zu Flaechen, Kreisen, Prismen, Zylindern sowie spaeteren Pyramiden-/Kegel-/Koerper- und Dreieckstrigonometrievertiefungen.",
-      "descriptionEn": "Pilot subset of the Brandenburg lane of the shared Berlin/Brandenburg mathematics curriculum with a focus on the Gymnasium progression structure for grades 7 to 10, the first reviewed functions corridor, the first reviewed algebra-and-equations corridor, the widened reviewed geometry-and-constructions corridor with a first transformations-and-similarity follow-on, and the widened reviewed measurement corridor on areas, circles, prisms, cylinders, and later pyramids/cones/solids and triangle-trigonometry extensions.",
-      "weight": 38,
+      "description": "Pilot-Subset der brandenburg-Lane des gemeinsamen BE/BB-Rahmenlehrplans Mathematik mit Fokus auf der Gymnasium-Fortschrittsstruktur der Jahrgangsstufen 7 bis 10, dem ersten reviewed Funktionskorridor, dem ersten reviewed Algebra-und-Gleichungskorridor, dem ersten expliziten reviewed Daten-und-Zufall-Korridor sowie dem erweiterten reviewed Geometrie-und-Konstruktionskorridor mit erstem Abbildungs-und-Aehnlichkeits-Follow-on und dem verbreiterten reviewed Measurement-Korridor zu Flaechen, Kreisen, Prismen, Zylindern sowie spaeteren Pyramiden-/Kegel-/Koerper- und Dreieckstrigonometrievertiefungen.",
+      "descriptionEn": "Pilot subset of the brandenburg lane of the shared Berlin/Brandenburg mathematics curriculum with a focus on the Gymnasium progression structure for grades 7 to 10, the first reviewed functions corridor, the first reviewed algebra-and-equations corridor, the first explicit reviewed data/chance corridor, the widened reviewed geometry-and-constructions corridor with a first transformations-and-similarity follow-on, and the widened reviewed measurement corridor on areas, circles, prisms, cylinders, and later pyramids/cones/solids and triangle-trigonometry extensions.",
+      "weight": 46,
       "tags": [
         "Sek1",
         "Gymnasium",
@@ -29,7 +29,8 @@
         "AlgebraEquationsCorridor",
         "GeometryConstructionCorridor",
         "TransformationSimilarityCorridor",
-        "MeasurementCorridor"
+        "MeasurementCorridor",
+        "DataChanceCorridor"
       ],
       "contains": [
         "3a57ac61-eb4f-4731-9695-9c966cec7840",
@@ -40,12 +41,13 @@
         "5b1d5ff7-15fb-46c5-bbf1-1cea5c386926",
         "29b2bf27-4536-49b7-80e9-44167809534e",
         "dd8e7003-8fea-4a71-83ed-121d705cf319",
+        "e467871b-2dae-4cc7-8e3b-3ce7e1e28c12",
         "0bd7b016-2cb8-4743-b060-f198500b4ba1"
       ],
       "requires": [
         "3a57ac61-eb4f-4731-9695-9c966cec7840"
       ],
-      "sourceRef": "RLP BE/BB Mathematik 1-10, Gueltigkeit Brandenburg sowie Regelungen fuer das Gymnasium und Niveaustufen, S. 2 und 15-16.",
+      "sourceRef": "RLP BE/BB Mathematik 1-10, Gueltigkeit Brandenburg sowie Regelungen fuer das Gymnasium und Niveaustufen, S. 2 und 15-16; Themenbereich 'Daten und Zufall' - Niveaustufen E-H, S. 64-65.",
       "dimensionTags": {
         "framework": "be-bb-rlp-sek1-math",
         "demandLevel": "AB1",
@@ -1646,6 +1648,431 @@
         "guidingIdeas": [],
         "phase": "J9",
         "area": "Groessen und Messen"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "e467871b-2dae-4cc7-8e3b-3ce7e1e28c12",
+      "title": "Erster Daten-und-Zufall-Korridor",
+      "titleEn": "First Data-and-Chance Corridor",
+      "description": "Erster reviewed Korridor der Brandenburg-Lane zu statistischen Erhebungen, Diagrammen, Haeufigkeiten, Laplace-Vorstellungen, mehrstufigen Zufallsexperimenten, bedingten Wahrscheinlichkeiten und kombinatorischen Wahrscheinlichkeitsbruecken auf den Niveaustufen E bis H.",
+      "descriptionEn": "First reviewed corridor of the brandenburg lane on statistical surveys, diagrams, frequencies, Laplace ideas, multi-stage random experiments, conditional probabilities, and combinatorial probability bridges across competency levels E to H.",
+      "weight": 8,
+      "tags": [
+        "Sek1",
+        "Gymnasium",
+        "PilotSubset",
+        "DataChanceCorridor"
+      ],
+      "contains": [
+        "5d69f1c1-b637-4cfe-b200-6254530e1041",
+        "87418c34-4407-484f-bef8-ca72a486dab2",
+        "6a660f15-aac5-4365-8fe6-58bcb1588af9",
+        "d21c2e05-6837-47b4-9094-374f3cae1b90",
+        "9c94991c-97fd-413e-90b4-a681aec3d0c0"
+      ],
+      "requires": [
+        "6d35465d-6d48-4d13-bc0f-a82a1e7e778b"
+      ],
+      "sourceRef": "RLP BE/BB Mathematik 1-10, Themenbereich 'Daten und Zufall' - Niveaustufen E-H, S. 64-65.",
+      "dimensionTags": {
+        "framework": "be-bb-rlp-sek1-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "GLOBAL",
+        "area": "Daten und Zufall"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "5d69f1c1-b637-4cfe-b200-6254530e1041",
+      "title": "Niveaustufen E/F: Datenroutinen und Haeufigkeiten",
+      "titleEn": "Competency Levels E/F: Data Routines and Frequencies",
+      "description": "Korridorcluster fuer die Niveaustufen E/F zu statistischen Erhebungen, Stichproben, Diagrammen und ersten Haeufigkeits- sowie Lagevorstellungen.",
+      "descriptionEn": "Corridor cluster for competency levels E/F on statistical surveys, samples, diagrams, and first ideas of frequencies and data measures.",
+      "weight": 2,
+      "tags": [
+        "Sek1",
+        "Gymnasium",
+        "J7",
+        "J8",
+        "DataChanceCorridor"
+      ],
+      "contains": [
+        "a257a931-efa2-42e8-938e-62a686dc2ba8",
+        "1b28635c-95ca-4bab-9848-889e9a502cfd"
+      ],
+      "requires": [
+        "6d35465d-6d48-4d13-bc0f-a82a1e7e778b"
+      ],
+      "sourceRef": "RLP BE/BB Mathematik 1-10, Themenbereich 'Daten und Zufall' - Niveaustufen E/F, S. 64.",
+      "dimensionTags": {
+        "framework": "be-bb-rlp-sek1-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "GLOBAL",
+        "area": "Daten und Zufall"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "87418c34-4407-484f-bef8-ca72a486dab2",
+      "title": "Niveaustufen F/G/H: Beschreibende Statistik und Datenkritik",
+      "titleEn": "Competency Levels F/G/H: Descriptive Statistics and Data Critique",
+      "description": "Korridorcluster fuer spaetere statistische Darstellungen, Boxplots und Histogramme, selbst geplante Erhebungen sowie Datenkritik und Manipulationserkennung.",
+      "descriptionEn": "Corridor cluster for later statistical representations, boxplots and histograms, self-planned surveys, and data critique with manipulation detection.",
+      "weight": 2,
+      "tags": [
+        "Sek1",
+        "Gymnasium",
+        "J8",
+        "J9",
+        "J10",
+        "DataChanceCorridor"
+      ],
+      "contains": [
+        "96bd7c8b-fd20-4778-aa96-3f4569a9dfb0",
+        "ae9feff8-91ab-4668-8386-2e7c9c6238b9"
+      ],
+      "requires": [
+        "5d69f1c1-b637-4cfe-b200-6254530e1041"
+      ],
+      "sourceRef": "RLP BE/BB Mathematik 1-10, Themenbereich 'Daten und Zufall' - Niveaustufen F-H, S. 64.",
+      "dimensionTags": {
+        "framework": "be-bb-rlp-sek1-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "GLOBAL",
+        "area": "Daten und Zufall"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "6a660f15-aac5-4365-8fe6-58bcb1588af9",
+      "title": "Niveaustufen E/F: Wahrscheinlichkeiten aus Haeufigkeiten und Laplace",
+      "titleEn": "Competency Levels E/F: Probabilities from Frequencies and Laplace Ideas",
+      "description": "Korridorcluster fuer die Niveaustufen E/F zu Ergebnismengen, relativen Haeufigkeiten, Laplace-Vorstellungen, Summenregel und dem Gesetz der grossen Zahlen.",
+      "descriptionEn": "Corridor cluster for competency levels E/F on sample spaces, relative frequencies, Laplace ideas, the sum rule, and the law of large numbers.",
+      "weight": 2,
+      "tags": [
+        "Sek1",
+        "Gymnasium",
+        "J7",
+        "J8",
+        "DataChanceCorridor"
+      ],
+      "contains": [
+        "115e1c14-80b4-4c86-83af-b31f21d7aa64",
+        "7e021cdd-bc3b-4e31-ac0e-c5b3570b9e5a"
+      ],
+      "requires": [
+        "5d69f1c1-b637-4cfe-b200-6254530e1041"
+      ],
+      "sourceRef": "RLP BE/BB Mathematik 1-10, Themenbereich 'Daten und Zufall' - Niveaustufen E/F, S. 64-65.",
+      "dimensionTags": {
+        "framework": "be-bb-rlp-sek1-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "GLOBAL",
+        "area": "Daten und Zufall"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "d21c2e05-6837-47b4-9094-374f3cae1b90",
+      "title": "Niveaustufe G: Mehrstufige Zufallsexperimente und bedingte Struktur",
+      "titleEn": "Competency Level G: Multi-Stage Random Experiments and Conditional Structure",
+      "description": "Korridorcluster fuer die Niveaustufe G zu mehrstufigen Zufallsexperimenten, Baumdiagrammen, Vierfeldertafeln, Gegenwahrscheinlichkeiten und alltagsnaher bedingter Wahrscheinlichkeit.",
+      "descriptionEn": "Corridor cluster for competency level G on multi-stage random experiments, tree diagrams, four-field tables, counter-probabilities, and everyday conditional probability.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "Gymnasium",
+        "J9",
+        "DataChanceCorridor"
+      ],
+      "contains": [
+        "d20342b0-a4e4-409a-b40d-fff2908160c0"
+      ],
+      "requires": [
+        "6a660f15-aac5-4365-8fe6-58bcb1588af9"
+      ],
+      "sourceRef": "RLP BE/BB Mathematik 1-10, Themenbereich 'Daten und Zufall' - Niveaustufe G, S. 64-65.",
+      "dimensionTags": {
+        "framework": "be-bb-rlp-sek1-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J9",
+        "area": "Daten und Zufall"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "9c94991c-97fd-413e-90b4-a681aec3d0c0",
+      "title": "Niveaustufe H: Kombinatorische Wahrscheinlichkeitsbruecken",
+      "titleEn": "Competency Level H: Combinatorial Probability Bridges",
+      "description": "Korridorcluster fuer die Niveaustufe H zu Fakultaeten, Binomialkoeffizienten sowie zur Nutzung von Wahrscheinlichkeiten fuer Prognosen und Rueckschluesse aus relativen Haeufigkeiten.",
+      "descriptionEn": "Corridor cluster for competency level H on factorials, binomial coefficients, and the use of probabilities for predictions and inference from relative frequencies.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "Gymnasium",
+        "J10",
+        "DataChanceCorridor"
+      ],
+      "contains": [
+        "8537e25d-1f30-4f23-9e42-6827a9339fed"
+      ],
+      "requires": [
+        "d21c2e05-6837-47b4-9094-374f3cae1b90"
+      ],
+      "sourceRef": "RLP BE/BB Mathematik 1-10, Themenbereich 'Daten und Zufall' - Niveaustufe H, S. 65.",
+      "dimensionTags": {
+        "framework": "be-bb-rlp-sek1-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J10",
+        "area": "Daten und Zufall"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "a257a931-efa2-42e8-938e-62a686dc2ba8",
+      "title": "Statistische Erhebungen, Stichproben und Simulationen fuer Datensammlungen nutzen",
+      "titleEn": "Use Statistical Surveys, Samples, and Simulations for Data Collections",
+      "description": "Die Schuelerinnen und Schueler planen und fuehren statistische Erhebungen nach vorgegebenen Fragestellungen, Merkmalen und Stichproben durch, nutzen Simulationen zufaelliger Vorgaenge zur Erstellung von Datensammlungen und waehlen dazu passende Darstellungswege.",
+      "descriptionEn": "Students plan and conduct statistical surveys based on given questions, characteristics, and samples, use simulations of random processes to create data collections, and choose suitable representation formats.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "Gymnasium",
+        "J7",
+        "DataChanceCorridor",
+        "Daten"
+      ],
+      "contains": [],
+      "requires": [
+        "6d35465d-6d48-4d13-bc0f-a82a1e7e778b"
+      ],
+      "sourceRef": "RLP BE/BB Mathematik 1-10, Themenbereich 'Daten und Zufall' - Niveaustufe E, 'Planen und Durchfuehren von statistischen Erhebungen ...' und 'Simulationen von zufaelligen Vorgaengen ...', S. 64.",
+      "dimensionTags": {
+        "framework": "be-bb-rlp-sek1-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J7",
+        "area": "Daten und Zufall"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "1b28635c-95ca-4bab-9848-889e9a502cfd",
+      "title": "Diagrammarten sowie Haeufigkeiten und Mittelwerte vergleichen",
+      "titleEn": "Compare Diagram Types, Frequencies, and Data Measures",
+      "description": "Die Schuelerinnen und Schueler stellen Daten auch mit prozentualen Angaben in Diagrammen dar, vergleichen Diagrammarten und bestimmen bzw. vergleichen arithmetisches Mittel, Modalwert, Median sowie absolute und relative Haeufigkeiten in verschiedenen Darstellungsformen.",
+      "descriptionEn": "Students represent data, including percentage data, in diagrams, compare diagram types, and determine and compare arithmetic mean, mode, median, and absolute and relative frequencies in different representations.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "Gymnasium",
+        "J7",
+        "DataChanceCorridor",
+        "Haeufigkeiten"
+      ],
+      "contains": [],
+      "requires": [
+        "a257a931-efa2-42e8-938e-62a686dc2ba8"
+      ],
+      "sourceRef": "RLP BE/BB Mathematik 1-10, Themenbereich 'Daten und Zufall' - Niveaustufe E, 'Darstellen von Daten ...', 'Vergleichen von Diagrammarten' und 'Ermitteln und Vergleichen von arithmetischem Mittel ... sowie absoluter und relativer Haeufigkeit', S. 64.",
+      "dimensionTags": {
+        "framework": "be-bb-rlp-sek1-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J7",
+        "area": "Daten und Zufall"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "96bd7c8b-fd20-4778-aa96-3f4569a9dfb0",
+      "title": "Boxplots, Histogramme und alltaegliche Statistikdarstellungen lesen",
+      "titleEn": "Read Boxplots, Histograms, and Everyday Statistical Representations",
+      "description": "Die Schuelerinnen und Schueler stellen Daten auch klassenweise in Diagrammen, Boxplots und Histogrammen dar, vergleichen verschiedene Darstellungsformen und lesen bzw. beschreiben statistische Darstellungen aus dem Alltag.",
+      "descriptionEn": "Students represent data, including grouped data, in diagrams, boxplots, and histograms, compare different forms of representation, and read and describe statistical representations from everyday life.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "Gymnasium",
+        "J8",
+        "DataChanceCorridor",
+        "BeschreibendeStatistik"
+      ],
+      "contains": [],
+      "requires": [
+        "1b28635c-95ca-4bab-9848-889e9a502cfd"
+      ],
+      "sourceRef": "RLP BE/BB Mathematik 1-10, Themenbereich 'Daten und Zufall' - Niveaustufe F, 'Darstellen von Daten ... in Diagrammen (auch Boxplots und Histogramme)' und 'Lesen, Verstehen und Beschreiben ...', S. 64.",
+      "dimensionTags": {
+        "framework": "be-bb-rlp-sek1-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J8",
+        "area": "Daten und Zufall"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "ae9feff8-91ab-4668-8386-2e7c9c6238b9",
+      "title": "Statistische Erhebungen auswerten, praesentieren und Manipulationen erkennen",
+      "titleEn": "Evaluate and Present Statistical Surveys and Detect Manipulation",
+      "description": "Die Schuelerinnen und Schueler planen und fuehren statistische Erhebungen und Simulationen zunehmend selbststaendig durch, praesentieren Ergebnisse in zieladaequaten Darstellungsformen, erkennen typische Fehler und Manipulationen bei grafischen Darstellungen und interpretieren Mittelwerte sowie Streumasse begruendet.",
+      "descriptionEn": "Students increasingly plan and conduct statistical surveys and simulations independently, present results in target-appropriate representations, detect typical errors and manipulations in graphical displays, and justify interpretations of data measures and dispersion.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "Gymnasium",
+        "J9",
+        "J10",
+        "DataChanceCorridor",
+        "Datenkritik"
+      ],
+      "contains": [],
+      "requires": [
+        "96bd7c8b-fd20-4778-aa96-3f4569a9dfb0"
+      ],
+      "sourceRef": "RLP BE/BB Mathematik 1-10, Themenbereich 'Daten und Zufall' - Niveaustufen G/H, 'selbststaendiges Planen und Durchfuehren ...', 'Praesentieren der Ergebnisse ...', 'Diagramme veraendern ...', 'Erkennen von typischen Fehlern und Manipulationen ...' sowie 'Analysieren, Interpretieren von Mittelwerten und Streumassen', S. 64.",
+      "dimensionTags": {
+        "framework": "be-bb-rlp-sek1-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J9",
+        "area": "Daten und Zufall"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "115e1c14-80b4-4c86-83af-b31f21d7aa64",
+      "title": "Ergebnismengen, Ereignisse und relative Haeufigkeiten bei Zufallsexperimenten strukturieren",
+      "titleEn": "Structure Sample Spaces, Events, and Relative Frequencies in Random Experiments",
+      "description": "Die Schuelerinnen und Schueler arbeiten kombinatorische Fragestellungen systematisch durch, beschreiben Ergebnismengen und Ereignisse bei Zufallsexperimenten und untersuchen relative Haeufigkeiten von Ereignissen auch in zweistufigen Situationen.",
+      "descriptionEn": "Students systematically work through combinatorial questions, describe sample spaces and events in random experiments, and investigate relative frequencies of events, including in two-stage situations.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "Gymnasium",
+        "J7",
+        "J8",
+        "DataChanceCorridor",
+        "Zufallsexperimente"
+      ],
+      "contains": [],
+      "requires": [
+        "5d69f1c1-b637-4cfe-b200-6254530e1041"
+      ],
+      "sourceRef": "RLP BE/BB Mathematik 1-10, Themenbereich 'Daten und Zufall' - Niveaustufen E/F, 'systematisches Durcharbeiten ...', 'Angeben der Ergebnismenge', 'Zusammenfassen von Ergebnissen ...' und 'Untersuchen der relativen Haeufigkeiten ...', S. 64-65.",
+      "dimensionTags": {
+        "framework": "be-bb-rlp-sek1-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J8",
+        "area": "Daten und Zufall"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "7e021cdd-bc3b-4e31-ac0e-c5b3570b9e5a",
+      "title": "Laplace-Vorstellungen, Summenregel und Gesetz der grossen Zahlen nutzen",
+      "titleEn": "Use Laplace Ideas, the Sum Rule, and the Law of Large Numbers",
+      "description": "Die Schuelerinnen und Schueler begruenden Gleichwahrscheinlichkeit etwa ueber Symmetrien, bestimmen Wahrscheinlichkeiten mit der Summenregel, nutzen das Gesetz der grossen Zahlen zur Deutung des Wahrscheinlichkeitsbegriffs und vergleichen theoretische Wahrscheinlichkeiten mit empirischen Beobachtungen.",
+      "descriptionEn": "Students justify equiprobability, for example through symmetries, determine probabilities with the sum rule, use the law of large numbers to interpret the concept of probability, and compare theoretical probabilities with empirical observations.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "Gymnasium",
+        "J8",
+        "DataChanceCorridor",
+        "Laplace"
+      ],
+      "contains": [],
+      "requires": [
+        "115e1c14-80b4-4c86-83af-b31f21d7aa64"
+      ],
+      "sourceRef": "RLP BE/BB Mathematik 1-10, Themenbereich 'Daten und Zufall' - Niveaustufe F, 'Nutzen des Gesetzes der grossen Zahlen ...', 'Regel von Laplace', 'Berechnen von Wahrscheinlichkeiten ... mit der Summenregel' und 'Vergleichen von theoretisch ermittelten Wahrscheinlichkeiten mit empirischen Beobachtungen', S. 65.",
+      "dimensionTags": {
+        "framework": "be-bb-rlp-sek1-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J8",
+        "area": "Daten und Zufall"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "d20342b0-a4e4-409a-b40d-fff2908160c0",
+      "title": "Mehrstufige und bedingte Wahrscheinlichkeiten mit Baumdiagrammen und Vierfeldertafeln bestimmen",
+      "titleEn": "Determine Multi-Stage and Conditional Probabilities with Tree Diagrams and Four-Field Tables",
+      "description": "Die Schuelerinnen und Schueler bestimmen bei mehrstufigen Zufallsexperimenten auch bedingte Wahrscheinlichkeiten unter Nutzung von Baumdiagrammen, Pfadregeln, Vierfeldertafeln, Gegenwahrscheinlichkeiten und Urnenmodellen, interpretieren Wahrscheinlichkeitsaussagen aus dem Alltag und nutzen Visualisierungen fuer einfache bedingte Modelle.",
+      "descriptionEn": "Students determine probabilities in multi-stage random experiments, including conditional probabilities, using tree diagrams, path rules, four-field tables, counter-probabilities, and urn models, interpret probability statements from everyday life, and use visualisations for simple conditional models.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "Gymnasium",
+        "J9",
+        "DataChanceCorridor",
+        "BedingteWahrscheinlichkeit"
+      ],
+      "contains": [],
+      "requires": [
+        "7e021cdd-bc3b-4e31-ac0e-c5b3570b9e5a"
+      ],
+      "sourceRef": "RLP BE/BB Mathematik 1-10, Themenbereich 'Daten und Zufall' - Niveaustufe G, 'Ermitteln von (auch bedingten) Wahrscheinlichkeiten ...' sowie 'Nutzen von Visualisierungen ... bedingte Wahrscheinlichkeiten zu erkennen', S. 65.",
+      "dimensionTags": {
+        "framework": "be-bb-rlp-sek1-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J9",
+        "area": "Daten und Zufall"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "8537e25d-1f30-4f23-9e42-6827a9339fed",
+      "title": "Fakultaeten, Binomialkoeffizienten und Wahrscheinlichkeitsprognosen nutzen",
+      "titleEn": "Use Factorials, Binomial Coefficients, and Probability-Based Predictions",
+      "description": "Die Schuelerinnen und Schueler bestimmen Anzahlen mithilfe von Fakultaeten und Binomialkoeffizienten, schaetzen Wahrscheinlichkeiten ueber relative Haeufigkeiten und nutzen Wahrscheinlichkeiten, um relative und absolute Haeufigkeiten vorherzusagen.",
+      "descriptionEn": "Students determine counts using factorials and binomial coefficients, estimate probabilities via relative frequencies, and use probabilities to predict relative and absolute frequencies.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "Gymnasium",
+        "J10",
+        "DataChanceCorridor",
+        "Kombinatorik"
+      ],
+      "contains": [],
+      "requires": [
+        "d20342b0-a4e4-409a-b40d-fff2908160c0"
+      ],
+      "sourceRef": "RLP BE/BB Mathematik 1-10, Themenbereich 'Daten und Zufall' - Niveaustufe H, 'Bestimmen von Anzahlen mithilfe von Fakultaeten und Binomialkoeffizienten ...', 'Nutzen von relativen Haeufigkeiten zum Schaetzen von Wahrscheinlichkeiten ...' und 'Nutzen von Wahrscheinlichkeiten zum Vorhersagen ...', S. 65.",
+      "dimensionTags": {
+        "framework": "be-bb-rlp-sek1-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J10",
+        "area": "Daten und Zufall"
       },
       "type": "atomic"
     }

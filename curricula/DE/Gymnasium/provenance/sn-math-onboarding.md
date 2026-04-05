@@ -23,6 +23,7 @@ Phase notes:
 - `P3`: mapped the first structural anchors from the Sachsen lower-secondary class bands and upper-secondary learning areas onto the shared canonical math spine.
 - `P4`: opened the first reviewed Sachsen Sek-II analysis, stochastics, analytic-geometry, and linear-algebra corridors plus the first reviewed Sachsen Sek-I J10 function, K9 function-and-power, K9 circle-and-body, K8 similarity, K8 heuristics, K8 chance-experiments, K9 data, K8 middle-stage function-and-linear-system, discrete-random-variable, K9 right-triangle geometry, K8 terms-and-equations, K7 rational-numbers, K6 fraction-number, K5 natural-number, K5 fraction-and-decimal, and K6 early-correspondence corridors by splitting the corresponding source learning areas into explicit source strips and mapping them onto the frozen shared canonical surfaces.
 - `P5`: closed the remaining Sachsen pilot residue by mapping the lower-secondary orientation anchor plus the broad modern-computing connector and the upper-secondary orientation / Grundkurs / Leistungskurs / further-applications structure parents onto the shared canonical mathematics spine.
+- the reviewed exact Sachsen lower-secondary root / early-equation / early-geometry bridges now also contribute canonical goal provenance in `canonical-goal-provenance-registry.json`
 
 Current anchor inventory:
 - lower-secondary: root plus class-band bridges `5/6`, `7/8`, `9/10`
@@ -62,4 +63,4 @@ Current anchor inventory:
   - `K5 Lernbereich 5 Vernetzung: Mathematik im Alltag`
 
 Next suggested step:
-- keep Sachsen stable as a broad reviewed comparison lane and move the next implementation step to the next still-open state lane
+- keep Sachsen stable as a broad reviewed comparison lane; the next Sachsen-specific cleanup step is the shared `P6/F6` learner-facing scope stabilization, not more topic breadth

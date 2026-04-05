@@ -1,6 +1,6 @@
 # Canonical Gymnasium Mathematics: Sek II Stochastics Audit
 
-Snapshot: `2026-04-04`
+Snapshot: `2026-04-05`
 
 Purpose:
 
@@ -15,12 +15,15 @@ In scope:
 - the canonical upper-secondary stochastics topic surface in
   - `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json`
 - the already reviewed upper-secondary source and mapping evidence from
+  - `BE`
   - `BB`
   - `BY`
   - `HB`
   - `HH`
 - `HE`
 - `MV`
+- `NI`
+- `NW`
 - `RP`
 - `SH`
 - `SL`
@@ -101,6 +104,20 @@ Observed signal:
   - `Klassenstufen 11/12: Stochastik`
 - the `Klassenstufe 11` strip sits cleanly on the shared `Wahrscheinlichkeiten und Verteilungen` surface, while the broad `11/12` strip stays on the summary `Stochastik, Tests und Statistik` surface
 - Thueringen therefore confirms that the frozen visible stochastics packaging can absorb a reviewed broad corridor without forcing another bridge package
+
+### Additional reviewed close-out evidence (`BE`, `NI`, `NW`, `SH`)
+
+Observed signal:
+
+- `BE` already carries a reviewed Q2 stochastics corridor plus reviewed Q4 distribution/binomial and inference/test follow-ons, and the retained exact leaves now sit on the explicit canonical survey/statistics, interval, and `ST4` surfaces instead of broad residual parents
+- `NI` upper-secondary stochastics residue is fully closed on source-goal level across conditional probability / independence, expectation / standard deviation, binomial distributions, normal distribution, and the binomial-vs-normal bridge
+- `NW` already carries reviewed GK and LK stochastic strips, with explicit binomial-distribution and confidence-interval leaves now exact-resolved on the canonical stochastics atoms
+- `SH` already carries reviewed broad upper-secondary stochastics corridor coverage plus exact leaves for random experiments, conditional probabilities, binomial models, hypothesis framing, test interpretation, confidence intervals, and confidence-level interpretation
+
+Judgment:
+
+- together these lanes remove the remaining `n/s` debt for the upper-secondary stochastics row
+- they do not force a new visible package beyond the current `ST2-ST5` surface plus the explicit `ST3` boundary
 
 ## Current canonical stochastics inventory
 
@@ -275,13 +292,30 @@ If the next upper-secondary topic is opened, prefer:
 
 Keep `ST1` stable unless a later reviewed lane reveals that the foundational Q3 package still leaks too much later inference material.
 
+## Close-out judgment (`2026-04-05`)
+
+The current Sek-II stochastics sweep can now be treated as closed.
+
+Why this is now strong enough:
+
+1. the accepted visible package surface stays at `ST2-ST5` with `ST3` as explicit boundary marker
+2. the corresponding workboard row now has no remaining `n/s` cells
+3. the reviewed `BE` / `BB` / `BY` / `HB` / `HH` / `HE` / `MV` / `NI` / `NW` / `RP` / `SH` / `SL` / `SN` / `ST` / `TH` evidence does not force a new shared canonical package
+4. the remaining hybrid residue is documented as source-granularity pressure, not as an open package blocker
+
+Operational consequence:
+
+1. keep `Sek II Stochastik` in residue-control mode only
+2. do not schedule another dedicated package pass for this topic
+3. reopen only if a later reviewed lane or validator finding exposes a real shared canonical gap
+
 ## Exit criteria for this audit
 
 This topic audit is complete when:
 
 1. the canonical subpackage boundaries above are either accepted or revised
 2. the canonical graph has a stable Sek-II stochastics packaging
-3. reviewed `BB`, `BY`, `HB`, `HH`, `HE`, `RP`, and `SH` evidence can be described as aligned to the revised packaging or intentionally broader because of source granularity
+3. reviewed state evidence across the resolved upper-secondary stochastics lanes can be described as aligned to the revised packaging or intentionally broader because of source granularity
 4. it is clear whether normal approximation, tests, and interval reasoning require further visible separation in the canonical graph
 
 ### Saarland (`SL`)

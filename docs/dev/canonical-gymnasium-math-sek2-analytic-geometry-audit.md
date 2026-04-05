@@ -1,6 +1,6 @@
 # Canonical Gymnasium Mathematics: Sek II Analytic Geometry / Vectors Audit
 
-Snapshot: `2026-04-04`
+Snapshot: `2026-04-05`
 
 Purpose:
 
@@ -119,6 +119,18 @@ Observed signal:
 - `MV` now adds a first reviewed broad upper-secondary geometry corridor on the active qualification-phase snapshot lane
 - the current Mecklenburg-Vorpommern source still exposes the space branch only through the mixed bands `Vektoren und Matrizen` and `Geraden und Ebenen`
 - `MV` therefore confirms that the frozen visible shared space-geometry surface can absorb a reviewed broad corridor without forcing a sharper `AGV3-AGV5` bridge package
+
+### Additional reviewed close-out evidence (`NI`, `NW`)
+
+Observed signal:
+
+- `NI` upper-secondary geometry residue is fully closed on source-goal level across the retained geometry / coordinate / representation leaves, and the lane is now explicitly classified as a stable broad reviewed comparison lane
+- `NW` already carries the first explicit upper-secondary geometry / linear-algebra entry strip plus multiple later reviewed space-geometry strips, and the retained plane-form, point/vector, line/plane, reflection, and distance/application residues now sit on the matching canonical space-geometry surfaces instead of broad parent leftovers
+
+Judgment:
+
+- together with the already reviewed `BB` / `BE` realignment pass already recorded below, these lanes remove the remaining `n/s` debt for the upper-secondary analytic-geometry row
+- they do not force a new visible package beyond the current `AGV1-AGV5` surface
 
 ## Current canonical analytic-geometry inventory
 
@@ -289,13 +301,30 @@ If the next upper-secondary topic is opened, prefer:
 
 Keep `AGV1` stable unless later reviewed residue shows that the tightened entry package still leaks too much later metric or relation material.
 
+## Close-out judgment (`2026-04-05`)
+
+The current Sek-II analytic-geometry / vector sweep can now be treated as closed.
+
+Why this is now strong enough:
+
+1. the accepted visible package surface stays at `AGV1-AGV5`
+2. the corresponding workboard row now has no remaining `n/s` cells
+3. the reviewed `BB` / `BE` / `BY` / `HB` / `HH` / `HE` / `MV` / `NI` / `NW` / `RP` / `SH` / `SL` / `SN` / `ST` / `TH` evidence does not force a new shared canonical package
+4. the remaining tension is documented as source-granularity residue rather than an open package blocker
+
+Operational consequence:
+
+1. keep `Sek II Analytische Geometrie / Vektoren` in residue-control mode only
+2. do not schedule another dedicated package pass for this topic
+3. reopen only if a later reviewed lane or validator finding exposes a real shared canonical gap
+
 ## Exit criteria for this audit
 
 This topic audit is complete when:
 
 1. the canonical subpackage boundaries above are either accepted or revised
 2. the canonical graph has a stable Sek-II analytic-geometry packaging
-3. reviewed `BB`, `BE`, `BY`, `HB`, `HH`, `HE`, and `SH` evidence can be described as aligned to the revised packaging or intentionally broader because of source granularity
+3. reviewed state evidence across the resolved upper-secondary analytic-geometry lanes can be described as aligned to the revised packaging or intentionally broader because of source granularity
 4. it is clear whether distances, angles, and reflections require further visible separation from general line/plane relations
 
 ### Saarland (`SL`)

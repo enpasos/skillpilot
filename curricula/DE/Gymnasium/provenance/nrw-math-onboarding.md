@@ -47,7 +47,11 @@ Activation result:
   - rational-number ordering
   - mapping analysis
   - function concept and representations
-- the lower-secondary source snapshot now also carries its remaining broad parent bridges on the shared canonical prerequisite and Sek-I function surfaces, so both NRW pilot snapshots are now fully bridged on source-goal level
+- the lower-secondary source snapshot now also carries explicit geometry corridors from `2.3`, `2.4.1`, and `2.4.2`, including reviewed source atoms for early geometry / space, quadrilateral properties, coordinate-system drawing, symmetry / transformations, angle work, triangle theorems and constructions, plane-area formulas, similarity, circle calculations, body calculations, Pythagoras, and trigonometrical / cosine-law applications
+- the lower-secondary mapping fixture now also reaches the shared Sek-I geometry surface, including reviewed bridges on the early geometry / space corridor, the visible `G2` congruence / construction cut, the visible `G3` transformation / similarity cut, the visible `G4` circle / Thales surface, the visible `G5` Pythagoras cut, the visible `G6` circle / body / solids surface, and the visible `G7` trigonometric bridge
+- the lower-secondary source snapshot now also carries explicit data/chance corridors from `2.3`, `2.4.1`, and `2.4.2`, including reviewed source atoms for statistical data collection and representation, early measures of data, one- and two-stage random experiments, Laplace-based probability, simulations, critical reading of statistical representations, conditional probability, stochastic independence, and combinatorial probability preparation
+- the lower-secondary mapping fixture now also reaches the shared Sek-I data/chance surface, including reviewed bridges on the visible `D1` early data strip, the visible `D2` Laplace bridge, the visible `D3` multi-stage random-experiment surface, the visible `D4` descriptive-statistics / data-critique surface, and the visible `D5` counting bridge
+- the lower-secondary source snapshot now also carries its remaining broad parent bridges on the shared canonical prerequisite, Sek-I function, Sek-I data/chance, and Sek-I geometry surfaces, so both NRW pilot snapshots are now fully bridged on source-goal level
 
 Operational rule from here:
 

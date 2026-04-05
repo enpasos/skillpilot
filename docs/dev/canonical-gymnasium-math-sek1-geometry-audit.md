@@ -1,12 +1,12 @@
 # Canonical Gymnasium Mathematics: Sek I Geometry / Space Audit
 
-Snapshot: `2026-04-04`
+Snapshot: `2026-04-05`
 
 Purpose:
 
-- review the current canonical geometry inventory before more bundeslandwise widening
-- use already reviewed `HB`, `HH`, and `SN` Sek-I evidence to test whether the current canonical cuts are pedagogically stable
-- define the next canonical work packages for `Sek I Geometrie / Raum`
+- review the current canonical geometry inventory after the lower-secondary breadth wave widened further
+- use reviewed Sek-I evidence to test whether the current canonical cuts are pedagogically stable at nationwide scale
+- verify whether the former Nordrhein-Westfalen blocker is now removed so `Sek I Geometrie / Raum` can be treated as coverage-closed
 
 ## Scope
 
@@ -14,7 +14,7 @@ In scope:
 
 - the canonical Sek-I geometry topic surface in
   - `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json`
-- the already reviewed lower-secondary source and mapping evidence from
+- the reviewed lower-secondary source and mapping evidence from
   - `HB`
   - `HH`
   - `MV`
@@ -23,7 +23,6 @@ In scope:
 
 Out of scope:
 
-- full bundesland completion
 - direct canonical JSON refactoring in this step
 - learner-facing composition views
 
@@ -338,14 +337,7 @@ For `Sek I Geometrie / Raum`, use these work packages:
 
 ## Recommendation
 
-Do not widen more bundesland mappings on Sek-I geometry before one canonical pass answers these questions:
-
-1. Should `G3 transformations / similarity` become a clearer canonical subcluster?
-2. Should `G6 body geometry` be split out more visibly from the later mixed geometry corridor?
-3. Is `G5 Pythagoras` already at the right atomic depth, or is the pair
-   - `Satz des Pythagoras anwenden`
-   - `Satz des Pythagoras in Konstruktionen und geometrischen Begruendungen nutzen`
-   sufficient for the shared national core?
+Do not reopen Sek-I geometry packaging. Keep the current `G2-G7` surface frozen, treat the geometry row as coverage-closed, and move the active lower-secondary breadth wave to data/chance.
 
 ## Design step executed on `2026-04-01`
 
@@ -396,10 +388,8 @@ Outcome:
 ## Current next concrete step
 
 1. keep the canonical geometry package cut frozen
-2. use the next unresolved lower-secondary state lane to pressure-test `G2-G7` coverage instead of inventing another geometry package
-2. `G3 Transformations, symmetry, similarity`
-3. `G4 Circle relations and Thales`
-4. `G5 Pythagoras`
+2. treat `NW` together with `BW`, `BY`, `BE`, `BB`, `NI`, and `SH` as resolved against the current `G2-G7` package surface
+3. move the active lower-secondary breadth wave to `Sek I Daten / Zufall`
 
 Why this cut:
 
@@ -413,9 +403,8 @@ This topic audit is complete when:
 
 1. the canonical subpackage boundaries above are either accepted or revised
 2. the canonical graph has a stable later Sek-I geometry packaging
-3. `HB` and `HH` mappings can be described as
-   - aligned to the revised packaging
-   - or intentionally broader because of source granularity
+3. reviewed nationwide evidence can be described as aligned to the revised packaging or intentionally broader because of source granularity
+4. every Bundesland cell in the geometry row is resolved once
 
 ## Sachsen-Anhalt JG 5/6 geometry corridor connected (`2026-04-03`)
 
@@ -508,3 +497,76 @@ This topic audit is complete when:
 - the broad SL `Klassenstufe 10: Groessen und Messen` anchor now carries a first reviewed corridor on the shared early Sek-I measurement / area / volume surface
 - the current Saarland grade-10 source still exposes only one shared measurement strip
 - this confirms the shared early Sek-I measurement surface can absorb an explicit reviewed grade-10 lane without forcing a sharper state-local split
+
+## Additional reviewed nationwide evidence (`BW`, `BY`, `BE`, `BB`, `NI`, `SH`)
+
+### Baden-Wuerttemberg (`BW`)
+
+Observed signal:
+
+- the active Baden-Wuerttemberg lower-secondary source snapshot now carries a reviewed geometry surface far beyond the first function-only onboarding step
+- the reviewed BW lower-secondary mapping lane now already covers early geometry and measurement, figure properties, symmetry and angle reasoning, later trigonometric geometry, circle figures, and body work
+- this includes explicit reviewed bridges for early geometry / space, positional relations, angle work, quadrilateral properties, coordinate-system drawing, symmetry reasoning, later trigonometric geometry, and later circle/body continuation
+- together this confirms that the current `G1-G7` surface can absorb the Baden-Wuerttemberg lower-secondary lane without forcing a new shared geometry split
+
+### Bayern (`BY`)
+
+Observed signal:
+
+- the reviewed Bavaria `M5-M10` tranches now cover early coordinate and angle geometry, symmetry, congruence and triangle construction, similarity, Pythagoras, right-triangle trigonometry, sinus/cosinus-law continuation, and the refined J10 space-geometry lane
+- `M7 2` and `M7 5` confirm the existing J7 geometry anchors without forcing another early split
+- the reviewed `M9` geometry leaves confirm the visible `G3`, `G5`, and trigonometric bridge surfaces, while `M10 5` already drove and now confirms the explicit later J10 space-geometry split
+- together this keeps Bavaria on the current canonical geometry package surface instead of forcing another nationwide repackaging pass
+
+### Berlin (`BE`)
+
+Observed signal:
+
+- the Berlin lower-secondary lane no longer carries only broad geometry parents; it now has an explicit first geometry-and-construction corridor, a reviewed transformation/similarity follow-on, a reviewed Pythagoras lane, and a reviewed area/circle/body lane
+- the mapped Berlin lower-secondary goals now cover positional relations, angle arguments, special lines and symmetries in triangles, congruence constructions, similarity / scale geometry, Pythagoras, and first circle/body calculations
+- this confirms the visible `G2-G7` surface for Berlin without forcing a Berlin-specific geometry package
+
+### Brandenburg (`BB`)
+
+Observed signal:
+
+- Brandenburg now carries the same shared lower-secondary geometry-and-construction surface as Berlin, but with reviewed mappings that already land on the narrower canonical congruence, transformation, and Pythagoras targets where the wording fits
+- the reviewed Brandenburg lower-secondary lane covers positional relations, angle arguments, special lines and symmetries in triangles, congruence constructions, similarity / enlargement-reduction work, Pythagoras, and first circle/body calculations
+- this confirms that the current `G2-G7` surface can absorb the Brandenburg lower-secondary lane without reopening packaging
+
+### Niedersachsen (`NI`)
+
+Observed signal:
+
+- the Niedersachsen lower-secondary source snapshot now already carries reviewed geometry content, not only the earlier function corridor
+- the mapped NI lower-secondary geometry lane covers early area/volume ideas, area formulas for triangles/parallelograms/trapezoids, prism surface/volume work, similarity, Pythagoras, right-triangle trigonometry, and sinus/cosinus-law continuation
+- together this confirms the existing early measurement / space surface plus the visible `G3`, `G5`, `G6`, and `G7` package handles for Niedersachsen
+
+### Schleswig-Holstein (`SH`)
+
+Observed signal:
+
+- the Schleswig-Holstein lower-secondary source snapshot is now refined across `5/6`, `7/8/9`, and `10` for both `Raum und Form` and the geometry-owned parts of `Groessen und Messen`
+- the reviewed SH geometry lane now covers early figures/bodies/symmetry/construction, later quadrilaterals, congruence, circle relations, Thales, Pythagoras, similarity, trigonometry, circles/circle sectors, and later body work through pyramids, cones, and spheres
+- there are now no remaining unmapped SH Sek-I source atoms or source clusters in the active geometry-owning lane; the remaining breadth mismatch is broad-source residue, not a missing canonical package
+
+## Nordrhein-Westfalen lower-secondary geometry corridor connected (`2026-04-05`)
+
+Observed signal:
+
+- the active Nordrhein-Westfalen lower-secondary source snapshot now also carries explicit reviewed geometry corridors from `2.3`, `2.4.1`, and `2.4.2`
+- the mapped NRW lower-secondary lane now covers early geometry / space, quadrilateral properties, coordinate-system drawing, symmetry and transformations, angle work, triangle theorems and constructions, plane-area formulas, similarity, circle calculations, body calculations, Pythagoras, and right-triangle / cosine-law applications
+- the compiled canonical applicability now reaches the shared `Geometrie und Raum (Sek I)` root together with the visible `G2`, `G3`, `G4`, `G5`, `G6`, and `G7` package handles for `DE-NW`
+- the Nordrhein-Westfalen geometry cell can therefore now be treated as resolved on topic level
+
+Operational consequence:
+
+- `Sek I Geometrie / Raum` is now no longer blocked by either canonical packaging or a missing Nordrhein-Westfalen lane
+- the geometry row can now be treated as coverage-closed for the current nationwide sweep
+- the next lower-secondary breadth move should therefore leave geometry residue-control mode and continue on `Sek I Daten / Zufall`
+
+## Coverage checkpoint (`2026-04-05`)
+
+- `NW` now joins `BW`, `BY`, `BE`, `BB`, `NI`, and `SH` as resolved against the frozen `G2-G7` package surface
+- all Bundesland cells in the nationwide geometry row are now resolved once
+- the remaining lower-secondary work signal therefore moves entirely to `Sek I Daten / Zufall`, not to another shared canonical geometry gap

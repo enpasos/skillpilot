@@ -1,6 +1,6 @@
 # NRW Mathematics Structure Note
 
-State: `2026-03-29`
+State: `2026-04-05`
 
 This note records the first source-snapshot scope for the mathematics-first DE expansion track in Nordrhein-Westfalen.
 
@@ -43,16 +43,22 @@ Current import boundary:
 - the upper-secondary snapshot now also carries the adjacent explicit NRW LK integral-theorem / antiderivative strip from `2.4.2` on anschaulichem Hauptsatz, Stammfunktionen ganzrationaler Funktionen, `ln(x)` als Stammfunktion von `1/x`, and Intervalladditivitaet / Linearitaet von Integralen
 - the upper-secondary snapshot now also carries the first explicit NRW LK integral-applications follow-on from `2.4.2` on reconstructed stocks / total effects, definite-integral area work, improper-integral area work, and solids of revolution
 - the upper-secondary snapshot now also carries a retained two-way source split inside the broad E-phase polynomial clause: a separate power-function child and a separate polynomial-description child
-- the lower-secondary snapshot now includes both the prerequisite strip and the first exact shared lower-secondary function-onboarding surface
+- the lower-secondary snapshot now includes the prerequisite strip, the first exact shared lower-secondary function-onboarding surface, explicit lower-secondary data/chance corridors from `2.3`, `2.4.1`, and `2.4.2`, and explicit lower-secondary geometry corridors from `2.3`, `2.4.1`, and `2.4.2`
 
 Segmentation chosen for the first import:
 
 - Sek I:
   - `2.3 Arithmetik/Algebra` (erste Variablen- und Termvorstellungen)
   - `2.3 Funktionen` (Zusammenhang zwischen Groessen, Dreisatz)
+  - `2.3 Geometrie` (fruehe Figuren/Koerper, Symmetrie, Koordinaten, Winkel, erste Flaechen- und Volumenideen)
   - `2.4.1 Arithmetik/Algebra` (rationale Zahlen, Terme, Gleichungen)
   - `2.4.1 Funktionen` (proportionale / lineare Funktionen)
+  - `2.3 Stochastik` (statistische Daten, Haeufigkeiten, Diagramme, Kenngroessen)
+  - `2.4.1 Stochastik` (ein- und zweistufige Zufallsversuche, Baumdiagramm, Laplace, Simulation)
+  - `2.4.2 Stochastik` (Datenkritik, bedingte Wahrscheinlichkeit, Vierfeldertafel, kombinatorische Ueberlegungen)
+  - `2.4.1 Geometrie` (Winkelsaetze, Thales, Konstruktionen, Flaecheninhalte)
   - `2.4.2 Funktionen` (quadratische / exponentielle / sinusfoermige Funktionen)
+  - `2.4.2 Geometrie` (Aehnlichkeit, Kreis- und Koerperberechnungen, Pythagoras, Trigonometrie)
 - Sek II:
   - `2.3 Funktionen und Analysis` (Einfuehrungsphase)
   - `2.3 Analytische Geometrie und Lineare Algebra` (Einstiegskorridor zu Vektoren und Geraden im Raum)
@@ -68,6 +74,7 @@ Operational interpretation:
 
 - the first NRW canonical mapping work should start from these source goal IDs, not directly from the PDFs
 - the first exact NRW canonical bridges now already cover shared motivation, arithmetic prerequisites, mapping analysis, and the first shared function-concept atom
+- the lower-secondary NRW lane now also reaches the shared canonical Sek-I geometry surface through explicit reviewed geometry source atoms on early geometry / space, quadrilateral properties, coordinate-system drawing, symmetry / transformations, angle work, Thales, triangle constructions, plane-area formulas, similarity, circle calculations, body calculations, Pythagoras, and right-triangle / cosine-law applications
 - for upper-secondary analysis, the retained E-phase power/polynomial split is now no longer a cleanup target inside the current pilot subset; further NRW work should move to another equally explicit imported corridor instead of reopening this already exact-resolved intro surface
 - the upper-secondary NRW lane now also exact-resolves the retained three-way exponential split on properties of `a^x`, the special role of `e^x`, and growth/decay usage while the retained Q-phase exponential parent stays anchored on the shared canonical exponential-functions cluster
 - the upper-secondary NRW lane now also exact-resolves the explicit E-phase geometry leaf `Geraden und Strecken in Parameterform darstellen` through a dedicated canonical upper-secondary parameter-form atom, so the earlier NRW partial on the shared `Geraden im Raum parametrisch darstellen` atom is no longer needed
@@ -82,4 +89,6 @@ Operational interpretation:
 - the currently opened NRW LK normal-distribution strip is now exhausted at explicit source-residue level: the imported leaves for normal-distribution concept, approximation-in-situations, and mu/sigma are exact-resolved, so further NRW upper-secondary widening should move only to another equally explicit newly imported corridor, or else to the next active broad comparison lane instead of renewed cleanup inside the current pilot subset
 - for lower-secondary functions, the NRW lane now also reaches the retained `2.4.2` Stage-2 umbrella through a reviewed mixed parent bridge on the shared canonical J10 anchor: together with the already active Stage-2 atom bridges for function-class distinction, parameter effects from graphs, and growth-model use, the current NRW functions snapshot is now anchored at both Stage-1 and Stage-2 parent level, so the next NRW lower-secondary move should import another equally explicit corridor rather than reopening the reviewed umbrella cleanup
 - the lower-secondary NRW lane now also reaches the explicit Stage-1 algebra prerequisite strip on shared canonical variables/terms, term-evaluation, fraction-term, and broad Sek-I algebra goals; with that bridge set in place, the remaining unmapped NRW Sek-I goals inside the current snapshot are structural parents rather than explicit atomic residues, so the next NRW move should import another equally explicit corridor instead of reopening structural parent cleanup
+- the lower-secondary NRW lane now also reaches the shared Sek-I data/chance surface through explicit reviewed source atoms on statistical data collection and representation, early measures of data, one- and two-stage random experiments, Laplace-based probability, simulations, critical reading of statistical representations, conditional probability, stochastic independence, and combinatorial probability preparation
+- after the lower-secondary data/chance widening, the current NRW pilot subset is no longer blocked on an unresolved lower-secondary math topic row; further NRW lower-secondary widening should therefore now wait for another equally explicit retained corridor instead of renewed cleanup inside the already reviewed prerequisite, functions, data/chance, or geometry slices
 - later NRW broadening should extend these same landscape IDs in place instead of creating replacement pilot landscape IDs

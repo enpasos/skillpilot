@@ -1,6 +1,6 @@
 # Canonical Gymnasium Mathematics: Sek I Numbers / Terms / Algebra Audit
 
-Snapshot: `2026-04-04`
+Snapshot: `2026-04-05`
 
 Purpose:
 
@@ -19,10 +19,16 @@ In scope:
 - `HH`
 - `HE`
 - `MV`
+- `NI`
+- `NW`
 - `RP`
 - `SL`
+- `BB`
+- `BE`
 - `ST`
 - `SN`
+- `BW`
+- `BY`
 
 Out of scope:
 
@@ -296,6 +302,24 @@ That pressure test has now reached a stable interim judgment:
 - the Sachsen K10 interest, K6 shares, K8 terms-and-equations, K7/K6/K5 early-number and fraction corridors, and the first Sachsen-Anhalt `JG 5/6` foundations corridor confirm that the visible `A1`, `A3`, and `A2/A4` split is stable enough for coverage work
 - further lower-secondary work should treat `A5` as a reopen-only-if-forced residue, not as an active design task
 
+## Additional reviewed close-out evidence (`BW`, `BY`, `BE`, `BB`, `NI`, `NW`)
+
+1. `BW` now pressure-tests the algebra surface across the full reviewed lower-secondary pilot subset:
+   - `Klassen 5/6` carry the foundation strip across `Zahl-Variable-Operation`
+   - `Klassen 7/8` now include a broad algebra widening with percent / interest work, formula rearrangement, and roots
+   - `Klassen 9/10` now keep explicit variable-term and power-rule follow-ons on the shared algebra and late-number surfaces
+2. `BY` now adds a reviewed Sek-I algebra lane on the shared `J5-J10` spine:
+   - the Bavaria `M8` tranche now exact-resolves connected fraction-term and linear-system leaves on the existing `A1-A4` surface
+   - the reviewed `M9` tranche adds roots and quadratics without forcing a visible separate `A5`
+3. `NI` now carries a fully mapped lower-secondary pilot snapshot with the arithmetic base and imported algebra strip closed on source-goal level, plus explicit right-triangle / similarity and quadratics follow-ons outside the core algebra cut.
+4. `NW` now carries an explicit lower-secondary prerequisite strip with quantity relations, rule-of-three basics, rational-number / term / linear-equation prerequisites, while the remaining broad lower-secondary parents are closed on the shared prerequisite and function/algebra surfaces.
+5. `BE` and `BB` do not yet expose narrower dedicated algebra corridors beyond the shared `J7-J10` framework and the first reviewed functions lane, but both now keep their remaining broad lower-secondary algebra parents stably mapped on the shared canonical Sek-I algebra surface.
+
+Interpretation:
+
+- `BW`, `BY`, `NI`, and `NW` now give corridor-level evidence that the frozen `A1-A4` cut survives broader lower-secondary comparison lanes
+- `BE` and `BB` resolve as broad anchor lanes for this topic rather than as evidence for another shared algebra package
+
 ## Sachsen K9/K8/K7/K6/K5 lower-secondary algebra corridor set extended with powers, fractions, decimals, and the K8 function/LGS boundary (`2026-04-03`)
 
 Outcome:
@@ -309,13 +333,24 @@ Outcome:
 1. keep the canonical `A1-A4` package cut frozen
 2. use the next unresolved lower-secondary state lane to pressure-test early-number and fraction coverage before reopening algebra packaging
 
+## Close-out judgment (`2026-04-05`)
+
+The current Sek-I numbers / terms / algebra sweep can now be treated as closed.
+
+Why this is now strong enough:
+
+1. the accepted visible package surface stays at `A1-A4`
+2. the reviewed `BW`/`BY`/`MV`/`NI`/`NW`/`RP`/`SH`/`SL`/`SN`/`ST` lanes do not force a visible `A5`
+3. the broader `BE`/`BB` lower-secondary algebra parents are now resolved as stable anchor evidence on the shared Sek-I algebra surface rather than as open package debt
+4. the remaining tension stays at source-granularity residue or at the algebra/function boundary, not at a missing shared lower-secondary algebra corridor
+
 ## Exit criteria for this audit
 
 This topic audit is complete when:
 
 1. the canonical subpackage boundaries above are either accepted or revised
 2. the canonical graph has a stable Sek-I algebra packaging
-3. reviewed `HB`, `HH`, and `HE` evidence can be described as aligned to the revised packaging or intentionally broader because of source granularity
+3. reviewed `BW`, `BY`, `MV`, `NI`, `NW`, `RP`, `SH`, `SL`, `SN`, and `ST` evidence can be described as aligned to the revised packaging or intentionally broader because of source granularity, while `BE` and `BB` are explicitly accepted as resolved broad anchor lanes
 4. it is clear whether late lower-secondary linear-system / extension material deserves a visible `A5` package
 
 ## Sachsen-Anhalt JG 9 powers/logarithms corridor connected (`2026-04-03`)

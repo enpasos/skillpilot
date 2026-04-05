@@ -31,6 +31,7 @@ Activation state:
 - the imported lower-secondary pilot subset currently covers:
   - the Gymnasium year anchors `J7-J10`
   - the first reviewed functions corridor on Niveaustufen `E-F`
+  - the first explicit reviewed lower-secondary data/chance corridor on Niveaustufen `E-H`
 - the imported upper-secondary pilot subset currently covers:
   - the Einfuehrungsphase bridge to `Niveaustufe H`
   - the Qualifikationsphase anchors `Q1-Q4`
@@ -49,6 +50,10 @@ Activation state:
   - lineare Funktionen beschreiben
   - Darstellungwechsel bei linearen Funktionen
   - Berechnungen zu linearen Funktionen
+- the lower-secondary mapping lane now also carries the first reviewed data/chance corridor mappings:
+  - statistische Erhebungen, Diagramme und Haeufigkeiten
+  - Boxplots / Histogramme, Datenkritik und Manipulationserkennung
+  - Laplace-Vorstellungen, bedingte Wahrscheinlichkeit und kombinatorische Wahrscheinlichkeitsbruecken
 - the upper-secondary mapping lane now carries the first structural anchor mappings:
   - `E`, `Q1`, `Q2`, `Q3`, `Q4`
 - the upper-secondary mapping lane now also carries the first reviewed corridor mappings:
@@ -89,14 +94,15 @@ Activation state:
   - statistische Erhebungen exemplarisch planen und dokumentieren
   - Erhebungsdaten tabellarisch und grafisch aufbereiten
   - Erhebungsdaten mit Kenngroessen auswerten und kritisch beurteilen
-- repository-backed lower-secondary and upper-secondary mapping fixtures now carry `145` mappings in total
+- repository-backed lower-secondary and upper-secondary mapping fixtures now carry `159` mappings in total
 
 Operational rule from here:
 
 - keep these reserved `sourceLandscapeId` values stable
-- keep the first Brandenburg reviewed lower-secondary corridor stable while the new upper-secondary E-phase entry lane is widened
+- keep the first Brandenburg reviewed lower-secondary functions and data/chance corridors stable while the new upper-secondary E-phase entry lane is widened
 - the shared lower-secondary anchor spine `J7-J10` is now mapped
 - the first reviewed lower-secondary functions corridor is now mapped
+- the first explicit reviewed lower-secondary data/chance corridor is now mapped
 - the Brandenburg upper-secondary phase bridge `E/Q1/Q2/Q3/Q4` is now mapped
 - the first reviewed Brandenburg upper-secondary E-phase analysis corridor is now mapped
 - the first reviewed Brandenburg upper-secondary Q1 model-functions corridor is now mapped

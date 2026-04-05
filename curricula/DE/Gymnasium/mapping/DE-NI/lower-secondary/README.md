@@ -1,47 +1,40 @@
 # DE-NI Lower-Secondary Mapping Lane
 
-This lane is reserved for future Niedersachsen lower-secondary Gymnasium mappings into the shared DE-level canonical landscapes.
+This lane now carries the active Niedersachsen lower-secondary Gymnasium mappings into the shared DE-level canonical mathematics landscape.
 
-Current status on `2026-03-25`:
+Current status on `2026-04-05`:
 
-- repository-backed mapping fixture now exists:
+- repository-backed mapping fixture:
   `ni_math_lower_secondary_to_canonical_math.json`
 - reserved `sourceLandscapeId`:
   `2b995085-dc5e-47c6-a563-9dcfc01fb74d`
-- current mapping count: `20`
-- the first archived Niedersachsen lower-secondary source snapshot is now active in the shared provenance registries:
+- current mapping count: `53`
+- active source snapshot:
   `curricula/DE/Gymnasium/input/NI/lower-secondary/source-json/DE_NDS_S_GYM_1_MATHEMATIK.de.json.snapshot`
-- the first reviewed lower-secondary corridor pass is now active:
-  - `Warum Mathematik? – Denken, Muster & Zukunft` (`exact`)
-- the first Niedersachsen arithmetic prerequisite strip is now also bridged onto the shared canonical arithmetic spine:
-  - `Bruchdarstellungen verwenden, Brueche vergleichen, kuerzen und erweitern` (`exact`)
-  - `Dezimalzahlen auf der Zahlengeraden, im Stellenwertsystem und als Bruch darstellen` (`exact`)
-  - `Positive und negative Zahlen an der Zahlengeraden veranschaulichen` (`exact`)
-- the first Niedersachsen lower-secondary functions corridor is now also active:
-  - `Zuordnungen mit Worten, Tabellen und Graphen erfassen und zwischen Darstellungsformen wechseln` (`exact`)
-  - `Proportionale Zusammenhaenge grafisch und tabellarisch identifizieren und mit Dreisatz oder Quotient deuten` (`partial`)
-  - `Lineare Zusammenhaenge identifizieren und zwischen Sachtext, Tabelle, Koordinatensystem und Gleichung darstellen` (`partial`)
-  - `Lineare Funktionen und lineare Gleichungen anhand von Term, Graph, Steigung und Parametern analysieren` (`partial`)
-- the first Niedersachsen lower-secondary functions follow-on is now also active:
-  - `Antiproportionale Zusammenhaenge grafisch und tabellarisch identifizieren und mit Dreisatz oder Produkt deuten` (`partial`)
-  - `Prozent- und Zinsrechnung mithilfe des Dreisatzes bearbeiten` (`exact`)
-  - `Lineare Gleichungen durch Probieren, Rueckwaertsarbeiten und algebraische Verfahren loesen` (`partial`)
-  - `Lineare Gleichungssysteme mit zwei Variablen aus Sachproblemen aufstellen und loesen` (`partial`)
-- the first Niedersachsen lower-secondary algebra follow-on is now also active:
-  - `Gleichartige Terme zusammenfassen sowie ausmultiplizieren und ausklammern` (`partial`)
-  - `Summen multiplizieren und binomische Formeln in einfachen Faellen anwenden` (`partial`)
-  - `Einfache lineare Gleichungen durch Umformen loesen` (`partial`)
-  - `Einfache Verhaeltnisgleichungen loesen` (`partial`)
-- the first Niedersachsen lower-secondary measurement / geometry follow-on is now also active:
-  - `Umfang und Flaecheninhalt von Dreieck, Parallelogramm und Trapez vergleichen, schaetzen und berechnen` (`partial`)
-  - `Formeln fuer Flaecheninhalte von Dreieck, Parallelogramm und Trapez begruenden, anwenden und interpretieren` (`partial`)
-  - `Oberflaechen- und Rauminhalt des Prismas vergleichen, schaetzen, berechnen und Formeln begruenden` (`partial`)
-  - `Mit Schraegbildern und Netzen umgehen, Darstellungen vergleichen, interpretieren und wechseln` (`partial`)
+- the archived Niedersachsen lower-secondary pilot snapshot is now fully bridged on source-goal level across:
+  - the motivation root
+  - the arithmetic prerequisite strip
+  - the first lower-secondary functions corridor
+  - the imported `Elementare Termumformungen` strip
+  - the imported `Laengen, Flaechen- und Rauminhalte und deren Terme` strip
+  - the explicit lower-secondary `Daten und Zufall` corridor from the five real learning areas:
+    - `Planung und Durchfuehrung statistischer Erhebungen`
+    - `Masszahlen statistischer Erhebungen`
+    - `Wahrscheinlichkeit`
+    - `Ein- und mehrstufige Zufallsversuche`
+    - `Baumdiagramme und Vierfeldertafeln`
+  - the explicit later-Sek-I right-triangle / similarity follow-on
+  - the explicit later-Sek-I quadratics follow-on
+- the new data/chance slice now lands on the frozen canonical `D1-D5` surface without forcing new package churn:
+  - survey planning and early data preparation stay on the early data routines surface
+  - descriptive-statistics work sits on the existing `D1/D4` surface
+  - probability-from-frequencies and Laplace work sit on `D2`
+  - one-/multi-stage experiments plus simulation sit on `D3`
+  - tree/vierfelder work sits on the linked-events side of `D3`
 
-Expected first use:
+Expected use from here:
 
 - canonical Gymnasium `Mathematik`
 - shared `J5-J10` anchor alignment
-- the archived Niedersachsen lower-secondary pilot snapshot is now fully atomically bridged on its active base
-- the archived Niedersachsen lower-secondary pilot snapshot is now fully atomically bridged on its active base, on the fully imported `Elementare Termumformungen` strip, and on the fully imported `Laengen, Flaechen- und Rauminhalte und deren Terme` strip
-- next reviewed widening should extend the Niedersachsen lower-secondary source snapshot beyond the now fully bridged functions, algebra, and measurement strips
+- treat the active Niedersachsen lower-secondary pilot snapshot as closed across its imported functions, algebra, measurement, data/chance, geometry/trigonometry, and quadratics slices
+- any further Niedersachsen widening should now wait for an intentionally imported new retained slice or for explicit `P6/F6` cutover work rather than reopening this closed pilot snapshot

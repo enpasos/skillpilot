@@ -24,6 +24,7 @@ Activation state:
 - both Berlin `sourceLandscapeId` values are now active in `source-landscape-registry.json`
 - both Berlin lanes now contribute source goal memberships to `source-goal-membership-registry.json`
 - both Berlin lanes now contribute atomic closures to `source-goal-closure-registry.json`
+- the reviewed exact Berlin lower-secondary and upper-secondary mappings now also contribute canonical goal provenance in `canonical-goal-provenance-registry.json`
 - the first active Berlin lower-secondary source snapshot now lives at:
   - `curricula/DE/Gymnasium/input/BE/lower-secondary/source-json/DE_BER_S_GYM_1_MATHEMATIK.de.json.snapshot`
 - the first active Berlin upper-secondary source snapshot now lives at:
@@ -31,6 +32,7 @@ Activation state:
 - the imported lower-secondary pilot subset currently covers:
   - the Gymnasium year anchors `J7-J10`
   - the first reviewed functions corridor on Niveaustufen `E-F`
+  - the first explicit reviewed lower-secondary data/chance corridor on Niveaustufen `E-H`
 - the imported upper-secondary pilot subset currently covers:
   - the Einfuehrungsphase bridge
   - the Qualifikationsphase anchors `Q1-Q4`
@@ -48,6 +50,10 @@ Activation state:
   - lineare Funktionen beschreiben
   - Darstellungwechsel bei linearen Funktionen
   - Berechnungen zu linearen Funktionen
+- the lower-secondary mapping lane now also carries the first reviewed data/chance corridor mappings:
+  - statistische Erhebungen, Diagramme und Haeufigkeiten
+  - Boxplots / Histogramme, Datenkritik und Manipulationserkennung
+  - Laplace-Vorstellungen, bedingte Wahrscheinlichkeit und kombinatorische Wahrscheinlichkeitsbruecken
 - the upper-secondary mapping lane now carries the first structural anchor mappings:
   - `E`, `Q1`, `Q2`, `Q3`, `Q4`
 - the upper-secondary mapping lane now also carries the first reviewed Q1 differential corridor mappings:
@@ -83,14 +89,15 @@ Activation state:
   - Wahrscheinlichkeiten in binomialen Situationen berechnen
   - Erwartungswert und Standardabweichung der Binomialverteilung bestimmen und deuten
   - Binomialverteilungen zur Beschreibung stochastischer Situationen nutzen
-- repository-backed lower-secondary and upper-secondary mapping files now carry `173` mappings in total
+- repository-backed lower-secondary and upper-secondary mapping files now carry `187` mappings in total
 
 Operational rule from here:
 
 - keep these reserved `sourceLandscapeId` values stable
-- keep the first Berlin reviewed lower-secondary corridor stable while the upper-secondary entry lane is widened
+- keep the first Berlin reviewed lower-secondary functions and data/chance corridors stable while the upper-secondary entry lane is widened
 - the shared lower-secondary anchor spine `J7-J10` is now mapped
 - the first reviewed lower-secondary functions corridor is now mapped
+- the first explicit reviewed lower-secondary data/chance corridor is now mapped
 - the Berlin upper-secondary phase bridge `E/Q1/Q2/Q3/Q4` is now mapped
 - the first reviewed Berlin upper-secondary Q1 differential corridor is now mapped
 - the first reviewed Berlin upper-secondary Q2 integral corridor is now mapped
@@ -98,4 +105,5 @@ Operational rule from here:
 - the first reviewed Berlin upper-secondary Q2 data-and-survey corridor is now mapped
 - the first reviewed Berlin upper-secondary Q4 distribution-and-binomial corridor is now mapped
 - the remaining broad Berlin lower-secondary algebra / geometry / body parents and the broad upper-secondary root, Q1/Q3/Q4, analysis-deepening, and numerical-mathematics parents are now also mapped
+- Berlin is no longer a mapping-only lane in the canonical math applicability/status pass; the next Berlin-specific cleanup step is the shared `P6/F6` learner-facing scope stabilization, not more topic breadth
 - Berlin is now a stable broad reviewed comparison lane; further widening should only happen if an intentionally imported retained non-core source slice is added later

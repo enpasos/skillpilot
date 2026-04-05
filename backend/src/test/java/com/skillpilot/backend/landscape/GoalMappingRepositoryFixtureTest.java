@@ -181,7 +181,9 @@ class GoalMappingRepositoryFixtureTest {
         assertThat(file.getVersion()).isEqualTo(1);
         assertThat(file.getSourceLandscapeId()).isEqualTo(NRW_MATH_SEK1_LANDSCAPE_ID);
         assertThat(file.getTargetLandscapeId()).isEqualTo(CANONICAL_MATH_ID);
-        assertThat(file.getMappings()).hasSize(32);
+        assertThat(file.getMappings()).hasSize(67);
+        assertThat(file.getMappings()).filteredOn(entry -> "exact".equals(entry.getMatchType())).hasSize(18);
+        assertThat(file.getMappings()).filteredOn(entry -> "partial".equals(entry.getMatchType())).hasSize(49);
         assertThat(file.getMappings())
                 .extracting(GoalMappingEntry::getLegacyGoalId, GoalMappingEntry::getCanonicalGoalId, GoalMappingEntry::getMatchType)
                 .containsExactly(
@@ -216,7 +218,42 @@ class GoalMappingRepositoryFixtureTest {
                         Tuple.tuple("c1d6a313-813c-4fac-8d82-c792f595b14a", "5c6b7342-0f67-4b4c-894d-fd83a6df64b3", "partial"),
                         Tuple.tuple("cbd61ee1-2038-433a-a93e-ae4708515187", "0c5ab1e7-1060-4d1f-b96b-4b1cb2f0a96f", "partial"),
                         Tuple.tuple("bfdfd5ff-1749-4579-af96-bb1fd4d0975b", "6e28d5ad-5f18-4a26-8a9e-9ea7e50b0fbb", "partial"),
-                        Tuple.tuple("f43fd248-195e-4168-bf70-ce92f864738f", "88f8e185-a89b-4a34-869d-766042977f38", "partial"));
+                        Tuple.tuple("f43fd248-195e-4168-bf70-ce92f864738f", "88f8e185-a89b-4a34-869d-766042977f38", "partial"),
+                        Tuple.tuple("688b5e70-8472-57e4-a0c1-c892490000e4", "ed631938-ad77-405e-ac25-b06d750b9c05", "partial"),
+                        Tuple.tuple("56e68356-1a7c-5cb7-a031-fc4940697c74", "8e68f24a-8b0e-4ce6-9567-a49e706f83be", "partial"),
+                        Tuple.tuple("431671e6-4b07-5b9f-9dd3-cf2d1e80194b", "ecce03e4-0082-41e1-95bd-0244e76ed292", "partial"),
+                        Tuple.tuple("641811e9-b545-5797-aa8d-83175db31412", "ed631938-ad77-405e-ac25-b06d750b9c05", "partial"),
+                        Tuple.tuple("009de949-cbf8-57da-96f2-31504aa642c7", "ca834a7d-5a66-4876-b24c-143b1464d937", "partial"),
+                        Tuple.tuple("e163282a-0acb-59e8-a0d3-daa975a1725b", "d98849c7-bd0b-50d4-90aa-6293a3adb211", "exact"),
+                        Tuple.tuple("4ef06a4c-3da0-5f99-864f-77bdec1b68d4", "25593605-5e13-55cc-9a05-8f3d737e15e9", "exact"),
+                        Tuple.tuple("28c297ae-547a-5016-8e31-acc1a05b3f97", "c5d04810-c893-45e9-bf2d-ae0b4b4f2bc0", "partial"),
+                        Tuple.tuple("7cc3b8ee-b402-5c9b-94e7-d58fa47dd550", "2331caf2-ccb2-5492-9fc6-48763b848bae", "exact"),
+                        Tuple.tuple("a977db43-3784-5175-902f-91121ac197b5", "a569561a-49bf-4426-b1d0-7edd8554c2a3", "partial"),
+                        Tuple.tuple("1132391a-f5a1-5af5-b8ed-4e5584d70038", "8e68f24a-8b0e-4ce6-9567-a49e706f83be", "partial"),
+                        Tuple.tuple("87f2b7af-ab3a-539d-af00-5a13ec9bdb83", "fc047e6e-5d6d-460f-99fc-ade3a23b9a8e", "exact"),
+                        Tuple.tuple("52d7fa9e-4937-55e5-9f5e-b0f816c23f49", "36728db8-da44-4add-97b8-0fdd7cfd9c41", "partial"),
+                        Tuple.tuple("f31fb597-4091-5eeb-8a98-2de8176caec6", "f0a49da2-018b-4cda-adbd-27047b610a0f", "partial"),
+                        Tuple.tuple("448645a7-c92b-5f8b-9bd1-24028b147e85", "f6ef3ce8-5264-4f43-a6e9-22f7f8ec8824", "exact"),
+                        Tuple.tuple("aeacb33f-6bfc-509c-b10b-d633d2edadeb", "87c55be5-06a9-41e2-a0d4-c60f7c8b8078", "exact"),
+                        Tuple.tuple("13a34627-237b-5c1b-b9b3-0cb8d91da151", "ffd1ae26-c461-4439-9b18-d835c8f38e1a", "partial"),
+                        Tuple.tuple("a2f202f1-2b76-5812-ad7f-c0543e7a2124", "8064088b-dc0a-4a67-ad63-360fdcc9869d", "partial"),
+                        Tuple.tuple("2aaaf1f6-ceaf-5fd7-b39b-6b388b9c8eb5", "5ecf51c3-07bd-44fb-9862-5f2e5f2a99d1", "partial"),
+                        Tuple.tuple("72a10bf8-bed8-550b-829b-5a904db099ff", "e6d4e44b-0c42-4cd9-9b83-53e3885d2f38", "partial"),
+                        Tuple.tuple("f4a62c39-0a2e-514f-9c42-7da1896c18a6", "71a483ba-9680-4654-bb5e-5ab5427f0919", "partial"),
+                        Tuple.tuple("e0a80468-3e82-5d4e-ade3-fb804b47b0ad", "0cefa694-636e-4c4b-abff-3ac3750dca18", "partial"),
+                        Tuple.tuple("eff200ff-8402-59ee-9809-97800768f06f", "728db43c-cf11-4fb6-b1dc-27e76573bcfc", "partial"),
+                        Tuple.tuple("6fd8f178-8bca-51a0-a09f-35a5e7cda6d8", "a66c8d6d-8f3c-4e15-855a-019186e5eee4", "partial"),
+                        Tuple.tuple("6844db7c-62e5-5410-85e0-565170f87d9e", "c7911f0f-83d4-44ba-9f28-bdc1a5e8cb4a", "partial"),
+                        Tuple.tuple("75dd90ef-4c8b-5c8e-bdc6-fee3b66d2398", "728db43c-cf11-4fb6-b1dc-27e76573bcfc", "partial"),
+                        Tuple.tuple("9d266916-5cb0-5a06-b67a-a2c5a770aa53", "91571d3f-3651-4477-ba21-320fc4077453", "partial"),
+                        Tuple.tuple("3cda33da-b3c7-5653-9e32-161e83341cef", "075ef99c-7f84-48b5-97f1-4e28c7d78f95", "partial"),
+                        Tuple.tuple("80294bcb-d3ed-5c11-9ee2-569d5ad644f8", "efc3506a-5f35-4d77-9498-d70a091a470b", "exact"),
+                        Tuple.tuple("2e018d58-b501-59bd-9e93-dcd63fb4b436", "5ab17678-bba7-4e6b-9aff-5a909e24d40e", "partial"),
+                        Tuple.tuple("fd0bfe6c-c03c-5c96-ae9e-e01947897a71", "e55edcb9-2184-4a24-890e-70cc91028990", "exact"),
+                        Tuple.tuple("1186e72c-628a-51d7-ac91-6c3806d7029d", "acbb7e26-f85f-405b-a3e5-affa6add6711", "exact"),
+                        Tuple.tuple("3e8ef701-37df-5b99-865c-fb6407ed8964", "50aeb801-d2b5-4939-b66b-2fcae0352dcf", "partial"),
+                        Tuple.tuple("124e1adb-1076-5e48-8f04-2dd3c19fa72b", "c7911f0f-83d4-44ba-9f28-bdc1a5e8cb4a", "partial"),
+                        Tuple.tuple("44c7ffd0-124a-55df-a606-a980d617157b", "3d8f5e4c-8f7b-49cf-bd83-1d9876db5bf6", "exact"));
     }
 
     @Test
@@ -226,9 +263,9 @@ class GoalMappingRepositoryFixtureTest {
         assertThat(file.getVersion()).isEqualTo(1);
         assertThat(file.getSourceLandscapeId()).isEqualTo(NIEDERSACHSEN_MATH_SEK1_LANDSCAPE_ID);
         assertThat(file.getTargetLandscapeId()).isEqualTo(CANONICAL_MATH_ID);
-        assertThat(file.getMappings()).hasSize(38);
+        assertThat(file.getMappings()).hasSize(53);
         assertThat(file.getMappings()).filteredOn(entry -> "exact".equals(entry.getMatchType())).hasSize(9);
-        assertThat(file.getMappings()).filteredOn(entry -> "partial".equals(entry.getMatchType())).hasSize(29);
+        assertThat(file.getMappings()).filteredOn(entry -> "partial".equals(entry.getMatchType())).hasSize(44);
         assertThat(file.getMappings())
                 .extracting(GoalMappingEntry::getLegacyGoalId, GoalMappingEntry::getCanonicalGoalId, GoalMappingEntry::getMatchType)
                 .contains(
@@ -256,6 +293,11 @@ class GoalMappingRepositoryFixtureTest {
                         Tuple.tuple("9dcde142-1bae-417b-b08c-999ce0a3e963", "5c6b7342-0f67-4b4c-894d-fd83a6df64b3", "partial"),
                         Tuple.tuple("2390d3c2-5859-40b4-9819-4fcace9bbc02", "5c6b7342-0f67-4b4c-894d-fd83a6df64b3", "partial"),
                         Tuple.tuple("44535000-5ace-49f6-bbf3-5b1118abb704", "5c6b7342-0f67-4b4c-894d-fd83a6df64b3", "partial"),
+                        Tuple.tuple("7b0ac262-c039-460c-a628-b9c37122cc7a", "728db43c-cf11-4fb6-b1dc-27e76573bcfc", "partial"),
+                        Tuple.tuple("beb816fd-50b6-4938-a59a-d0fddd91a837", "1b02d4ec-acc0-4c5f-b3f3-5c3876c42654", "partial"),
+                        Tuple.tuple("0802b695-822f-4fd3-9c06-a209328212aa", "5ab17678-bba7-4e6b-9aff-5a909e24d40e", "partial"),
+                        Tuple.tuple("f026868c-54f1-47fe-9fc5-baebbdec525f", "efc3506a-5f35-4d77-9498-d70a091a470b", "partial"),
+                        Tuple.tuple("b8e7eeee-4712-4110-9d77-72a8ae448720", "50aeb801-d2b5-4939-b66b-2fcae0352dcf", "partial"),
                         Tuple.tuple("1c0b4160-1269-4740-8f61-7130d0601618", "ed631938-ad77-405e-ac25-b06d750b9c05", "partial"),
                         Tuple.tuple("1bf645cf-7244-4182-8f0e-4d5603163c4f", "88f8e185-a89b-4a34-869d-766042977f38", "partial"));
     }
@@ -550,7 +592,7 @@ class GoalMappingRepositoryFixtureTest {
                         Tuple.tuple("f84004f9-0987-40f4-88dd-830c039b7bf6", "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2", "exact"),
                         Tuple.tuple("e0769810-ba73-4a52-8e9c-660d1fb9d6e6", "628928a6-4f48-54dc-952d-dec0e69dc856", "partial"),
                         Tuple.tuple("7bf62048-84ba-467f-ba23-f053c4e2989f", "a9ed219d-d497-55e5-a4e0-4d45d2554f6b", "partial"),
-                        Tuple.tuple("46690ab9-0b1f-4bd9-9409-4976a40c6ec2", "5ebfc509-0b4c-5c60-befb-2477eb24d4b5", "partial"),
+                        Tuple.tuple("46690ab9-0b1f-4bd9-9409-4976a40c6ec2", "e9ad45b9-c0d2-5804-b6bf-79e5ce041d2c", "partial"),
                         Tuple.tuple("c5739dd3-a261-4229-aff6-678d8ee618b3", "5ebfc509-0b4c-5c60-befb-2477eb24d4b5", "partial"),
                         Tuple.tuple("13e285f3-522c-4eae-9fed-8b13b2af7b7d", "5ebfc509-0b4c-5c60-befb-2477eb24d4b5", "partial"),
                         Tuple.tuple("34ee3898-2b07-4096-adbb-9cc4bd6db065", "bb25e25c-173f-463f-b602-2687d3ebf66f", "exact"),

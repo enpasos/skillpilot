@@ -1,6 +1,6 @@
 # Canonical Gymnasium Mathematics: Sek I Data / Chance Audit
 
-Snapshot: `2026-04-04`
+Snapshot: `2026-04-05`
 
 Purpose:
 
@@ -489,3 +489,64 @@ Result:
 - the broad SL `Klassenstufe 10: Daten und Zufall` anchor now carries a first reviewed corridor on the shared Sek-I data/chance surface
 - the current Saarland grade-10 source still exposes only one shared data/chance strip
 - this confirms the shared Sek-I data/chance surface can absorb an explicit reviewed grade-10 lane without forcing a sharper state-local split
+
+## Additional reviewed nationwide evidence (`BW`, `BY`, `SH`)
+
+### Baden-Wuerttemberg (`BW`)
+
+Observed signal:
+
+- the reviewed Baden-Wuerttemberg lower-secondary lane already carries explicit `3.1.5`, `3.2.5`, and `3.3.5` widening steps on the shared Sek-I data/chance spine
+- `3.1.5 Daten und Zufall` now bridges reviewed early data leaves for frequencies, arithmetic mean, and critical diagram reading
+- `3.2.5 Daten und Zufall` now bridges reviewed later descriptive-statistics and Laplace work
+- `3.3.5 Daten und Zufall` now bridges reviewed later conditional-probability, four-field, stochastic-independence, random-variable, and binomial surfaces
+- together this confirms that the visible `D1-D5` surface can absorb the Baden-Wuerttemberg lane without forcing another package split
+
+### Bayern (`BY`)
+
+Observed signal:
+
+- the reviewed Bavaria retained gymnasium lane now already reaches the visible Sek-I data/chance surface across `M5-M10`
+- the active BY mappings now cover simple counting, frequencies, arithmetic mean, descriptive statistics with quartiles and boxplots, Laplace situations, linked events with Vierfelderstrukturen, tree diagrams, simulation, and conditional-structure work
+- together this keeps Bavaria on the current `D1-D5` package surface instead of forcing a new nationwide data/chance pass
+
+### Schleswig-Holstein (`SH`)
+
+Observed signal:
+
+- Schleswig-Holstein no longer only serves as the original third-state validation lane; the lower-secondary source snapshot is now fully refined across `5/6` and `7/8/9` on `Daten und Zufall`
+- the active SH mappings now cover early statistical surveys, simple combinatorics, one-stage random experiments, frequencies, probability, multi-stage random experiments, quartiles / boxplots, and data-comparison work
+- there are now no remaining unmapped SH Sek-I source atoms or source clusters in the active data/chance-owning lane; the remaining mismatch is broad-source residue, not a missing canonical package
+
+## Nordrhein-Westfalen lower-secondary data/chance corridor connected (`2026-04-05`)
+
+Observed signal:
+
+- the active Nordrhein-Westfalen lower-secondary source snapshot now also carries explicit reviewed data/chance corridors from `2.3`, `2.4.1`, and `2.4.2`
+- the mapped NRW lower-secondary lane now covers early statistical data collection and representation, first measures of data, one- and two-stage random experiments, Laplace-based probability, simulation, critical reading of statistical representations, conditional probability, stochastic independence, and combinatorics
+- the compiled canonical applicability now keeps `DE-NW` on the shared `Daten und Zufall (Sek I)` root together with the visible `D1`, `D2`, `D3`, `D4`, and `D5` package handles
+- the Nordrhein-Westfalen data/chance cell can therefore now be treated as resolved on topic level
+
+## Berlin / Brandenburg lower-secondary data/chance corridors connected (`2026-04-05`)
+
+Observed signal:
+
+- the active shared BE/BB lower-secondary source snapshots now also carry explicit reviewed data/chance corridors from the Sek-I `Daten und Zufall` surface on Niveaustufen `E-H`
+- the mapped Berlin and Brandenburg lower-secondary lanes now cover statistical surveys and samples, diagram work with frequencies and simple data measures, boxplots / histograms / descriptive-statistics reading, survey critique and manipulation detection, Laplace-oriented probability reasoning, tree/vierfelder-based conditional structure, and explicit combinatorial probability bridges
+- the compiled canonical applicability can therefore keep both `DE-BE` and `DE-BB` on the shared `Daten und Zufall (Sek I)` root together with the visible `D1`, `D2`, `D3`, `D4`, and `D5` package handles
+- the Berlin and Brandenburg data/chance cells can therefore now be treated as resolved on topic level
+
+## Niedersachsen lower-secondary data/chance corridor connected (`2026-04-05`)
+
+Observed signal:
+
+- the active Niedersachsen lower-secondary source snapshot now also carries an explicit reviewed data/chance corridor from the five real Lernbereiche `Planung und Durchfuehrung statistischer Erhebungen`, `Masszahlen statistischer Erhebungen`, `Wahrscheinlichkeit`, `Ein- und mehrstufige Zufallsversuche`, and `Baumdiagramme und Vierfeldertafeln`
+- the mapped Niedersachsen lower-secondary lane now covers survey planning and data preparation, chart/frequency work, simple descriptive-statistics measures, probability as a model of relative frequencies, Laplace reasoning, simulation, multi-stage tree-diagram work, and vierfelder-linked-event interpretation
+- the compiled canonical applicability can therefore keep `DE-NI` on the shared `Daten und Zufall (Sek I)` root together with the visible `D1`, `D2`, `D3`, and `D4` package handles, while the NI source still does not force a separate new canonical package beyond the frozen `D1-D5` cut
+- the Niedersachsen data/chance cell can therefore now be treated as resolved on topic level
+
+## Coverage checkpoint (`2026-04-05`)
+
+- `NI` now joins `BE`, `BB`, `BW`, `BY`, `NW`, and `SH` together with the already reviewed `HB`, `HH`, `HE`, `MV`, `RP`, `SL`, `SN`, `ST`, and `TH` lanes as resolved against the frozen `D1-D5` package surface
+- the nationwide data/chance row is therefore fully resolved once across all `16` states and is no longer blocked by package design or by state-lane breadth debt
+- the next nationwide math move should therefore no longer be another Sek-I data/chance sweep; it should shift to applicability, learner-facing scope stabilization, and the broader `P6/F6` cutover work

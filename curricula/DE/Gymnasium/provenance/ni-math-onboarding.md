@@ -25,8 +25,9 @@ Activation state:
 - the active upper-secondary source snapshot lives at:
   - curricula/DE/Gymnasium/input/NI/upper-secondary/source-json/DE_NDS_S_GYM_2_MATHEMATIK.de.json.snapshot
 - the lower-secondary pilot snapshot is fully mapped on source-goal level:
-  - 38 goals
-  - 38 mappings
+  - 53 goals
+  - 53 mappings
+  - explicit lower-secondary data/chance corridor from the five real Lernbereiche is now included and closed on source-goal level
 - the upper-secondary pilot snapshot is now also fully mapped on source-goal level:
   - 165 goals
   - 165 mappings
@@ -35,4 +36,5 @@ Activation state:
 Operational rule from here:
 
 - keep these reserved sourceLandscapeId values stable as the Niedersachsen broad reviewed comparison lane
-- do not reopen the closed NI pilot snapshots unless a genuinely new Niedersachsen retained slice is imported intentionally
+- treat the lower-secondary NI snapshot as closed across functions, algebra, measurement, data/chance, geometry/trigonometry, and quadratics
+- do not reopen the closed NI pilot snapshots unless a genuinely new Niedersachsen retained slice is imported intentionally or `P6/F6` cutover work reveals a real source-side correction need

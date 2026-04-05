@@ -31,6 +31,7 @@ Activation result:
 - both Schleswig-Holstein `sourceLandscapeId` values are now active in `source-landscape-registry.json`
 - both Schleswig-Holstein lanes now contribute source goal memberships to `source-goal-membership-registry.json`
 - both Schleswig-Holstein lanes now contribute atomic closures to `source-goal-closure-registry.json`
+- the reviewed exact Schleswig-Holstein lower-secondary root bridge and upper-secondary analysis / geometry / stochastics leaves now also contribute canonical goal provenance in `canonical-goal-provenance-registry.json`
 - the lower-secondary source snapshot now preserves the official SH year-band table:
   - `5/6`
   - `7/8/9`
@@ -205,4 +206,5 @@ Operational rule from here:
 - keep the shared lower-secondary entry-anchor bridge stable on top of the SH year-band snapshot
 - keep the shared upper-secondary entry-anchor bridge stable on top of the SH phase snapshot
 - keep the widened reviewed SH surface stable and use Schleswig-Holstein as a broad reviewed comparison lane rather than as an active onboarding residue
+- Schleswig-Holstein is no longer a mapping-only lane in the canonical math applicability/status pass; the next SH-specific cleanup step is the shared `P6/F6` learner-facing scope stabilization, not more topic breadth
 - only reopen the SH lane if a genuinely narrower source split is needed for a shared canonical gap

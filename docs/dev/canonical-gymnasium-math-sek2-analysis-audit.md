@@ -1,6 +1,6 @@
 # Canonical Gymnasium Mathematics: Sek II Analysis Audit
 
-Snapshot: `2026-04-04`
+Snapshot: `2026-04-05`
 
 Purpose:
 
@@ -291,6 +291,23 @@ Open questions now reduced to:
 ## Recommended next concrete step
 
 Do not schedule a dedicated next package step for Sek-II analysis. Keep the current surface frozen and only reopen it if a later validator finding or reviewed lane produces a concrete shared mismatch.
+
+## Close-out judgment (`2026-04-05`)
+
+The current Sek-II analysis sweep can now be treated as closed.
+
+Why this is now strong enough:
+
+1. the accepted visible package surface stays at `AN2-AN4`
+2. late continuation is explicitly downgraded to accepted residue instead of an open package blocker
+3. the corresponding workboard row now has no remaining `n/s` cells
+4. no reviewed state lane currently forces a new shared canonical analysis package
+
+Operational consequence:
+
+1. keep `Sek II Analysis` in residue-control mode only
+2. do not schedule another dedicated package pass for this topic
+3. reopen only if a later reviewed lane or validator finding exposes a real shared canonical gap
 
 ## Baden-Wuerttemberg upper-secondary integral-application parents connected (`2026-04-04`)
 

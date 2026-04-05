@@ -1,6 +1,6 @@
 # SL Math Onboarding Note
 
-Status: P4 (`first_corridor_reviewed`)
+Status: P5 (`broad_reviewed_coverage`)
 
 Reserved source landscapes on `2026-03-28`:
 
@@ -38,6 +38,7 @@ Current activation state:
   - lower-secondary memberships and closures for `53` goals
   - upper-secondary memberships and closures for `39` goals
 - first structural anchor mappings are now active for both lanes
+- the reviewed exact Saarland lower-secondary contribution statement and upper-secondary orientation statement now also contribute canonical goal provenance in `canonical-goal-provenance-registry.json`
 - lower-secondary reviewed coverage now includes:
   - a first explicit `Klassenstufe 7` function corridor with `Zuordnungen`, `proportionale Zuordnungen`, and `umgekehrt proportionale Zuordnungen`
   - a first explicit `Klassenstufe 7` algebra corridor with `Rationale Zahlen`, `Terme, Gleichungen und Ungleichungen`, and `Prozentrechnung`
@@ -77,5 +78,5 @@ Operational rule from here:
 
 - keep the reserved `sourceLandscapeId` values stable
 - keep the shared provenance registries aligned with future in-place Saarland source splits
-- keep the reviewed Saarland upper-secondary splits stable and continue with equally explicit lower-secondary corridors next, keep the now broadly reviewed Saarland lower-secondary lane stable and switch to the next still-open lane
+- keep Saarland stable as a source-covered comparison lane; the next Saarland-specific cleanup step is the shared `P6/F6` learner-facing scope stabilization, not more topic breadth
 - use the transition handout only as interpretive support, not as the primary source spine

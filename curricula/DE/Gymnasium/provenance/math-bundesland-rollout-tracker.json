@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-04-04T16:29:00Z",
+  "updatedAt": "2026-04-05T17:20:00Z",
   "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
   "quickViewPath": "docs/dev/canonical-gymnasium-math-bundeslaender-status.md",
   "renderCommand": "python3 scripts/render_canonical_math_bundesland_status.py",
@@ -72,12 +72,12 @@
     {
       "id": "F4",
       "title": "Lower-secondary breadth",
-      "status": "pending"
+      "status": "completed"
     },
     {
       "id": "F5",
       "title": "Upper-secondary breadth",
-      "status": "pending"
+      "status": "completed"
     },
     {
       "id": "F6",
@@ -128,7 +128,7 @@
     {
       "id": "SEK2.ANALYSIS",
       "title": "Sek II analysis and integral / exponential deepening",
-      "status": "active",
+      "status": "completed",
       "focusStates": [
         "DE-HE",
         "DE-NW",
@@ -138,12 +138,12 @@
         "DE-NI",
         "DE-SN"
       ],
-      "nextStep": "Treat the reviewed Bavaria exponential/logarithmic and integral strips, the Schleswig-Holstein upper-secondary E-analysis strip, the explicit Baden-Wuerttemberg Euler-number leaf, and the Niedersachsen base-`e`, derivative-use, asymptotic-bounded-growth, context-asymptotics, growth-model-comparison, and exponential-equation leaves as exact- or corridor-resolved at explicit source-residue level and keep tightening only equally explicit analysis atoms before reopening broad parents."
+      "nextStep": "Treat the Sek-II analysis full sweep as closed for now: freeze the visible `AN2-AN4` surface, keep residue control quiet, and reopen only if a later reviewed lane or validator finding forces a real shared canonical gap."
     },
     {
       "id": "SEK2.GEOMETRY_LINEAR_ALGEBRA",
       "title": "Sek II geometry and linear algebra",
-      "status": "active",
+      "status": "completed",
       "focusStates": [
         "DE-NW",
         "DE-BB",
@@ -154,12 +154,12 @@
         "DE-SN",
         "DE-RP"
       ],
-      "nextStep": "Keep closing narrow canonical space-geometry and matrix atoms where the current NRW/BB/BE/SH/BW/BY/SN/RP strips expose them cleanly; avoid broad umbrella cleanup as the primary steering unit."
+      "nextStep": "Treat the Sek-II geometry / linear-algebra full sweep as closed for now: freeze the visible `AGV1-AGV5` and `LM2-LM5` surfaces, accept broad overview lanes as resolved where the source remains corridor-level, and reopen only if a later reviewed lane or validator finding forces a real shared canonical gap."
     },
     {
       "id": "SEK2.STOCHASTICS",
       "title": "Sek II stochastics",
-      "status": "active",
+      "status": "completed",
       "focusStates": [
         "DE-NW",
         "DE-BE",
@@ -170,21 +170,20 @@
         "DE-BY",
         "DE-SN"
       ],
-      "nextStep": "Use the reviewed Nordrhein-Westfalen, Berlin/Brandenburg, Schleswig-Holstein, and Bavaria strips to stabilize canonical random-variable, distribution, test, and interval atoms before widening broad residual parents."
+      "nextStep": "Treat the Sek-II stochastics full sweep as closed for now: freeze the visible `ST2-ST5` surface plus the explicit `ST3` boundary, and reopen only if a later reviewed lane or validator finding forces a real shared canonical gap."
     },
     {
       "id": "SEK1.FOUNDATIONS",
-      "title": "Sek I foundations, proportionality, and early algebra",
-      "status": "next_wave",
+      "title": "Sek I lower-secondary breadth",
+      "status": "completed",
       "focusStates": [
         "DE-BW",
-        "DE-NW",
-        "DE-BB",
+        "DE-BY",
         "DE-BE",
-        "DE-SH",
+        "DE-BB",
         "DE-NI"
       ],
-      "nextStep": "After the active J10 and Sek-II corridors settle, run a canonical-first coverage pass on the early Sek-I arithmetic / proportionality / algebra spine instead of treating those rows only as state-local cleanup."
+      "nextStep": "Treat the nationwide lower-secondary breadth sweep as closed for now: all top-level Sek-I rows are resolved once, freeze the visible `A1-A4`, `F1-F5`, `G2-G7`, and `D1-D5` surfaces, and shift the active nationwide completion work to applicability, learner-facing scope selection, and `P6/F6` cutover cleanup."
     }
   ],
   "states": [
@@ -226,8 +225,8 @@
         "curricula/DE/Gymnasium/mapping/DE-NW/lower-secondary/nrw_math_lower_secondary_to_canonical_math.json",
         "curricula/DE/Gymnasium/mapping/DE-NW/upper-secondary/nrw_math_upper_secondary_to_canonical_math.json"
       ],
-      "notes": "The Nordrhein-Westfalen lane now carries its first reviewed lower-secondary prerequisite and functions corridor plus the first reviewed upper-secondary analysis corridor, the first explicit upper-secondary geometry / linear-algebra entry strip, five explicit upper-secondary Leistungskurs geometry / linear-algebra strips, three explicit upper-secondary Grundkurs stochastic strips, two explicit upper-secondary Leistungskurs stochastic strips, and two explicit upper-secondary Leistungskurs integral strips. In the lower-secondary snapshot, the previously open broad parents `Mathematik Sekundarstufe I`, `Funktionsvoraussetzungen`, `Erprobungsstufe: Groessenzusammenhaenge und erste Terme`, `Erste Stufe: Zuordnungen, rationale Zahlen und lineare Grundlagen`, and `Funktionen` are now also attached on the shared canonical prerequisite and Sek-I function surfaces. Together with the already closed upper-secondary analysis, geometry / linear-algebra, stochastic, and integral parents, both NRW pilot snapshots are now fully bridged on source-goal level. The retained upper-secondary stochastic lane is now also tighter: `Binomialverteilungen ueber n und p analysieren`, `Binomialverteilungen in Kontexten nutzen und beurteilen`, `Konfidenzintervalle fuer p aus relativen Haeufigkeiten bestimmen und deuten`, and `Erforderlichen Stichprobenumfang fuer vorgegebene Intervalllaenge abschaetzen` now sit on exact canonical atoms instead of remaining broad partial attachments. In the retained upper-secondary geometry lane, the two explicit plane-form leaves now also sit exactly on the shared canonical plane-forms atom instead of remaining broad partial attachments, the broad coordinate-system/vector entry leaf now sits on the broader points/vectors/movements surface instead of the narrower pure-vector atom, the remaining E-vector leaf on lengths / scaling / collinearity now sits on the more fitting elementary points-and-vectors atom instead of the broader room-movements surface, the mixed vector/line/LGS application leaf now sits on the shared Sek-II space/matrix-model surface instead of the too narrow intersection atom, the mixed LK parent for planes plus planar figures in parameter form now also sits on the shared Sek-II space/matrix-model surface instead of the narrower line/plane-form surface, the LK reflection cluster now sits on the dedicated reflection surface instead of the broad room-application surface, and both the LK linear-equation-system side cluster and its atomic LGS/solution-set leaf now sit on the shared Sek-II space/matrix-model surface instead of narrower geometry-only targets.",
-      "nextStep": "Keep Nordrhein-Westfalen as a stable broad comparison lane. Further NRW tightening should focus only on equally explicit retained stochastic or space-geometry leaves, not on renewed broad snapshot-parent cleanup."
+      "notes": "The Nordrhein-Westfalen lane now carries reviewed lower-secondary prerequisite, functions, data/chance, and geometry corridors plus the first reviewed upper-secondary analysis corridor, the first explicit upper-secondary geometry / linear-algebra entry strip, five explicit upper-secondary Leistungskurs geometry / linear-algebra strips, three explicit upper-secondary Grundkurs stochastic strips, two explicit upper-secondary Leistungskurs stochastic strips, and two explicit upper-secondary Leistungskurs integral strips. In the lower-secondary snapshot, the previously open broad parents `Mathematik Sekundarstufe I`, `Funktionsvoraussetzungen`, `Erprobungsstufe: Groessenzusammenhaenge und erste Terme`, `Erste Stufe: Zuordnungen, rationale Zahlen und lineare Grundlagen`, `Funktionen`, the new `Daten und Zufall` corridors from `2.3`, `2.4.1`, and `2.4.2`, and the new `Geometrie` corridors from `2.3`, `2.4.1`, and `2.4.2` are now attached on the shared canonical prerequisite, function, Sek-I data/chance, and Sek-I geometry surfaces. Together with the already closed upper-secondary analysis, geometry / linear-algebra, stochastic, and integral parents, both NRW pilot snapshots are now fully bridged on source-goal level. The retained upper-secondary stochastic lane is now also tighter: `Binomialverteilungen ueber n und p analysieren`, `Binomialverteilungen in Kontexten nutzen und beurteilen`, `Konfidenzintervalle fuer p aus relativen Haeufigkeiten bestimmen und deuten`, and `Erforderlichen Stichprobenumfang fuer vorgegebene Intervalllaenge abschaetzen` now sit on exact canonical atoms instead of remaining broad partial attachments. In the retained upper-secondary geometry lane, the two explicit plane-form leaves now also sit exactly on the shared canonical plane-forms atom instead of remaining broad partial attachments, the broad coordinate-system/vector entry leaf now sits on the broader points/vectors/movements surface instead of the narrower pure-vector atom, the remaining E-vector leaf on lengths / scaling / collinearity now sits on the more fitting elementary points-and-vectors atom instead of the broader room-movements surface, the mixed vector/line/LGS application leaf now sits on the shared Sek-II space/matrix-model surface instead of the too narrow intersection atom, the mixed LK parent for planes plus planar figures in parameter form now also sits on the shared Sek-II space/matrix-model surface instead of the narrower line/plane-form surface, the LK reflection cluster now sits on the dedicated reflection surface instead of the broad room-application surface, and both the LK linear-equation-system side cluster and its atomic LGS/solution-set leaf now sit on the shared Sek-II space/matrix-model surface instead of narrower geometry-only targets.",
+      "nextStep": "Keep Nordrhein-Westfalen as a stable broad reviewed comparison lane. Further NRW tightening should now wait for another equally explicit retained corridor instead of renewed cleanup inside the already reviewed lower-secondary prerequisite, functions, data/chance, or geometry slices."
     },
     {
       "jurisdiction": "DE-NI",
@@ -240,8 +239,8 @@
         "curricula/DE/Gymnasium/mapping/DE-NI/lower-secondary/ni_math_lower_secondary_to_canonical_math.json",
         "curricula/DE/Gymnasium/mapping/DE-NI/upper-secondary/ni_math_upper_secondary_to_canonical_math.json"
       ],
-      "notes": "The Niedersachsen lane now fully bridges both archived pilot snapshots on source-goal level. The lower-secondary lane is closed across its motivation root, arithmetic base, first functions corridor, imported algebra strip, imported measurement strip, the explicit right-triangle / similarity follow-on, and the explicit quadratics follow-on. The upper-secondary lane is now also closed across the broad Oberstufe / Einfuehrungsphase / gA / eA parents, the retained analysis / e-function leaves, the retained geometry / coordinate / representation leaves, and the retained stochastics leaves on conditional probability / independence, expectation / standard deviation, binomial distributions, normal distribution, and the binomial-vs-normal bridge. Niedersachsen is now a stable broad reviewed comparison lane.",
-      "nextStep": "Keep Niedersachsen stable as a broad reviewed comparison lane and move the next implementation step to the next still-open lane or to a new intentionally imported retained slice."
+      "notes": "The Niedersachsen lane now fully bridges both archived pilot snapshots on source-goal level. The lower-secondary lane is closed across its motivation root, arithmetic base, first functions corridor, imported algebra strip, imported measurement strip, the explicit lower-secondary data/chance corridor from statistical surveys, descriptive statistics, probability, multi-stage experiments, and tree/vierfelder work, the explicit right-triangle / similarity follow-on, and the explicit quadratics follow-on. The upper-secondary lane is now also closed across the broad Oberstufe / Einfuehrungsphase / gA / eA parents, the retained analysis / e-function leaves, the retained geometry / coordinate / representation leaves, and the retained stochastics leaves on conditional probability / independence, expectation / standard deviation, binomial distributions, normal distribution, and the binomial-vs-normal bridge. Niedersachsen is now a stable broad reviewed comparison lane.",
+      "nextStep": "Keep Niedersachsen stable as a broad reviewed comparison lane while the nationwide canonical math work shifts from topic-row breadth to applicability, learner-facing scope stabilization, and `P6/F6` cutover cleanup."
     },
     {
       "jurisdiction": "DE-BW",
@@ -268,8 +267,8 @@
         "curricula/DE/Gymnasium/mapping/DE-BB/lower-secondary/bb_math_lower_secondary_to_canonical_math.json",
         "curricula/DE/Gymnasium/mapping/DE-BB/upper-secondary/bb_math_upper_secondary_to_canonical_math.json"
       ],
-      "notes": "Brandenburg is now on P5. Its lower-secondary and upper-secondary pilot snapshots are fully mapped on source-goal level. The lane carries the shared BE/BB lower-secondary year anchors `J7-J10`, the first reviewed functions corridor on Niveaustufen `E-F`, and now also the remaining broad lower-secondary algebra, geometry, transformation/similarity, body/area, and trigonometry parents on the shared canonical Sek-I algebra and geometry surfaces. On the upper-secondary side it carries the first reviewed E-phase entry corridor on Ableitungsbegriff und ersten Ableitungsanwendungen, the first reviewed Q1 model-functions corridor on natuerlicher Exponentialfunktion, Logarithmus und periodischen Funktionen, the first reviewed Q2 integral-calculus corridor, the first reviewed Q2 stochastics corridor, the first reviewed Q2 data-and-distribution corridor, and the first reviewed Q2 survey-and-critique corridor, and now also the remaining broad upper-secondary root, analysis-entry/model-function parents, Q3 vector/line parents, cut-angle and distance follow-ons, the LK distance residue parent, and the linear-representation/projection side lane on the shared canonical analysis and space/matrix-model surfaces.",
-      "nextStep": "Keep Brandenburg stable as a broad reviewed comparison lane and move the next implementation step to the next still-open state lane."
+      "notes": "Brandenburg is now on P5. Its lower-secondary and upper-secondary pilot snapshots are fully mapped on source-goal level. The lane carries the shared BE/BB lower-secondary year anchors `J7-J10`, the first reviewed functions corridor on Niveaustufen `E-F`, the new explicit lower-secondary data/chance corridor on Niveaustufen `E-H` with surveys, frequencies, boxplots/histograms, data critique, Laplace ideas, conditional probability, and combinatorial bridges, and the remaining broad lower-secondary algebra, geometry, transformation/similarity, body/area, and trigonometry parents on the shared canonical Sek-I algebra, data/chance, and geometry surfaces. On the upper-secondary side it carries the first reviewed E-phase entry corridor on Ableitungsbegriff und ersten Ableitungsanwendungen, the first reviewed Q1 model-functions corridor on natuerlicher Exponentialfunktion, Logarithmus und periodischen Funktionen, the first reviewed Q2 integral-calculus corridor, the first reviewed Q2 stochastics corridor, the first reviewed Q2 data-and-distribution corridor, and the first reviewed Q2 survey-and-critique corridor, and now also the remaining broad upper-secondary root, analysis-entry/model-function parents, Q3 vector/line parents, cut-angle and distance follow-ons, the LK distance residue parent, and the linear-representation/projection side lane on the shared canonical analysis and space/matrix-model surfaces.",
+      "nextStep": "Keep Brandenburg stable as a broad reviewed comparison lane; further widening should now wait for another equally explicit retained slice while the nationwide canonical math work shifts from topic-row breadth to applicability and cutover cleanup."
     },
     {
       "jurisdiction": "DE-BE",
@@ -282,8 +281,8 @@
         "curricula/DE/Gymnasium/mapping/DE-BE/lower-secondary/be_math_lower_secondary_to_canonical_math.json",
         "curricula/DE/Gymnasium/mapping/DE-BE/upper-secondary/be_math_upper_secondary_to_canonical_math.json"
       ],
-      "notes": "Berlin is now on P5. Its lower-secondary and upper-secondary pilot snapshots are fully mapped on source-goal level. The lane carries the shared BE/BB lower-secondary year anchors `J7-J10`, the first reviewed functions corridor on Niveaustufen `E-F`, and now also the remaining broad lower-secondary algebra, geometry, transformation/similarity, body/area, and trigonometry parents on the shared canonical Sek-I algebra and geometry surfaces. On the upper-secondary side it carries the first reviewed Q1 differential entry corridor, the first reviewed Q2 integral-calculus follow-on corridor, the first reviewed Q2 stochastics follow-on corridor, the first reviewed Q2 data-and-survey follow-on corridor, the first reviewed Q4 distribution-and-binomial follow-on corridor, and the first reviewed Q4 inference/test/normal-approximation follow-on corridor, and now also exact retained Berlin Q2 leaves for survey planning/data preparation, tree-diagram modeling, contingency-table use, context-based conditional-probability calculation, stochastic-independence checks, simulation-based investigation, explicit binomial-model use, tabular/graphical data preparation, sample location/dispersion measures, and survey-data evaluation / critical-assessment on the canonical stochastics and data-parameter atoms. The top-level Berlin `Q2-Daten-und-Erhebungskorridor` now also sits on the nearer survey/statistics surface instead of the too broad later-distribution surface, the Berlin `Q2-Statistische Erhebungen planen und Daten aufbereiten` subcluster now also lands exactly on the matching canonical survey/data-preparation cluster instead of a less fitting random-experiment evaluation surface, and the Berlin `Q2-Lage- und Streuungsmasse von Stichproben bestimmen` subcluster now also lands exactly on the matching canonical sample-statistics cluster instead of a broader later-statistics descriptive-measures surface. It also carries exact retained Berlin Q4 leaves for confidence-interval reasoning via simple `k`-sigma intervals, sigma-rule / `k`-sigma-interval interpretation, test-result interpretation, and Type-I/Type-II-error interpretation on the explicit canonical interval and ST4 atoms, while the broader bell-shape / normal-approximation intuition leaf intentionally stays on the shared later-distribution surface instead of overclaiming the narrower LK binomial-approximation atom. The remaining broad upper-secondary root, Q1/Q3/Q4 structure parents, the analysis-deepening side lane, and the numerical-mathematics side lane stay on the shared canonical analysis, stochastics, and space/matrix-model surfaces.",
-      "nextStep": "Keep Berlin stable as a broad reviewed comparison lane and tighten it further only where equally explicit retained Q4 stochastics / inference leaves warrant another atomic pass; the broad normal-approximation intuition leaf should remain a later-distribution bridge until a source strip with a cleaner pure approximation claim appears."
+      "notes": "Berlin is now on P5. Its lower-secondary and upper-secondary pilot snapshots are fully mapped on source-goal level. The lane carries the shared BE/BB lower-secondary year anchors `J7-J10`, the first reviewed functions corridor on Niveaustufen `E-F`, the new explicit lower-secondary data/chance corridor on Niveaustufen `E-H` with surveys, frequencies, boxplots/histograms, data critique, Laplace ideas, conditional probability, and combinatorial bridges, and now also the remaining broad lower-secondary algebra, geometry, transformation/similarity, body/area, and trigonometry parents on the shared canonical Sek-I algebra, data/chance, and geometry surfaces. On the upper-secondary side it carries the first reviewed Q1 differential entry corridor, the first reviewed Q2 integral-calculus follow-on corridor, the first reviewed Q2 stochastics follow-on corridor, the first reviewed Q2 data-and-survey follow-on corridor, the first reviewed Q4 distribution-and-binomial follow-on corridor, and the first reviewed Q4 inference/test/normal-approximation follow-on corridor, and now also exact retained Berlin Q2 leaves for survey planning/data preparation, tree-diagram modeling, contingency-table use, context-based conditional-probability calculation, stochastic-independence checks, simulation-based investigation, explicit binomial-model use, tabular/graphical data preparation, sample location/dispersion measures, and survey-data evaluation / critical-assessment on the canonical stochastics and data-parameter atoms. The top-level Berlin `Q2-Daten-und-Erhebungskorridor` now also sits on the nearer survey/statistics surface instead of the too broad later-distribution surface, the Berlin `Q2-Statistische Erhebungen planen und Daten aufbereiten` subcluster now also lands exactly on the matching canonical survey/data-preparation cluster instead of a less fitting random-experiment evaluation surface, and the Berlin `Q2-Lage- und Streuungsmasse von Stichproben bestimmen` subcluster now also lands exactly on the matching canonical sample-statistics cluster instead of a broader later-statistics descriptive-measures surface. It also carries exact retained Berlin Q4 leaves for confidence-interval reasoning via simple `k`-sigma intervals, sigma-rule / `k`-sigma-interval interpretation, test-result interpretation, and Type-I/Type-II-error interpretation on the explicit canonical interval and ST4 atoms, while the broader bell-shape / normal-approximation intuition leaf intentionally stays on the shared later-distribution surface instead of overclaiming the narrower LK binomial-approximation atom. The remaining broad upper-secondary root, Q1/Q3/Q4 structure parents, the analysis-deepening side lane, and the numerical-mathematics side lane stay on the shared canonical analysis, stochastics, and space/matrix-model surfaces.",
+      "nextStep": "Keep Berlin stable as a broad reviewed comparison lane; further widening should now wait for another equally explicit retained slice while the nationwide canonical math work shifts from topic-row breadth to applicability and cutover cleanup."
     },
     {
       "jurisdiction": "DE-HB",

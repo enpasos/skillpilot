@@ -1,6 +1,6 @@
 # Niedersachsen Mathematics Structure Note
 
-State: `2026-03-25`
+State: `2026-04-05`
 
 This note records the first source-snapshot scope for the mathematics-first DE expansion track in Niedersachsen.
 
@@ -17,7 +17,7 @@ Initial source snapshots:
 Current import boundary:
 
 - the archived Niedersachsen source snapshot is intentionally a partial pilot subset, not a full subject import
-- the first active snapshot focuses on the shared lower-secondary functions corridor that is most likely to matter for cross-state canonical mathematics onboarding and now also includes the first fully imported adjacent algebra and measurement follow-ons
+- the first active snapshot focuses on the shared lower-secondary functions corridor that is most likely to matter for cross-state canonical mathematics onboarding and now also includes the first fully imported adjacent algebra and measurement follow-ons, the first explicit lower-secondary data/chance corridor, and the first explicit later geometry/trigonometry and quadratics follow-ons
 - the imported Sek-I slice currently covers:
   - the curriculum-wide motivation layer for `Funktionaler Zusammenhang`
   - `Proportionale und antiproportionale Zusammenhaenge`
@@ -34,6 +34,13 @@ Current import boundary:
     - Flaechenformeln fuer Dreieck, Parallelogramm und Trapez begruenden, anwenden und interpretieren
     - Oberflaechen- und Rauminhalte von Prismen vergleichen, schaetzen, berechnen und Formeln begruenden
     - Schraegbilder und Netze vergleichen, interpretieren und zwischen Darstellungen wechseln
+  - the first explicit lower-secondary `Daten und Zufall` corridor:
+    - `Planung und Durchfuehrung statistischer Erhebungen`
+    - `Masszahlen statistischer Erhebungen`
+    - `Wahrscheinlichkeit`
+    - `Ein- und mehrstufige Zufallsversuche`
+    - `Baumdiagramme und Vierfeldertafeln`
+    - the retained NI atoms now land on the shared early-data, descriptive-statistics, Laplace, simulation / tree-diagram, and linked-events surfaces without forcing a visible canonical package beyond the frozen `D1-D5` cut
   - the first explicit later-Sek-I geometry/trigonometry follow-on `Entdeckungen an rechtwinkligen Dreiecken und Aehnlichkeit`:
     - Aehnlichkeit in Dreiecken beschreiben und fuer Streckenberechnungen nutzen
     - Satzgruppe des Pythagoras begruenden und anwenden
@@ -67,6 +74,7 @@ Operational interpretation:
 - the first Niedersachsen canonical mapping work should start from these source goal IDs, not directly from the PDFs
 - the active reviewed Niedersachsen bridges now cover every atomic goal inside the archived Sek-I and Sek-II pilot snapshots
 - the first reviewed Niedersachsen bridges started inside the imported Sek-I functions corridor and the imported Sek-II derivative-entry corridor, and the next lower-secondary widening now also opens the explicit right-triangle / similarity follow-on with exact canonical bridges for Pythagoras and right-triangle trigonometry while broader similarity / root / general-triangle residues initially stayed visible in source
+- the explicit lower-secondary data/chance corridor now also carries reviewed partial provenance bridges for early statistical surveys, chart/frequency work, descriptive-statistics measures, first probability models, simulation / multi-stage experiments, and tree/vierfelder linked-events work, so this opened NI strip is now closed at explicit source-residue level
 - the right-triangle / similarity follow-on now also carries reviewed partial provenance bridges for triangle similarity, root-based square-root basics, and general-triangle sine/cosine-law work, so this opened NI strip is now closed at explicit source-residue level
 - the adjacent quadratics follow-on now also carries reviewed partial provenance bridges for quadratic-function, quadratic-equation, and quadratic-modelling work plus a dedicated exact parabola-as-locus bridge, so this opened NI strip is now closed at explicit source-residue level
 - inside the imported Sek-II `Die e-Funktion` strip, the explicit gA atom `Die Basis e durch die Eigenschaft (e^x)' = e^x charakterisieren` now also exact-resolves on the shared canonical natural-exponential-specialness leaf instead of remaining on a reviewed partial bridge
@@ -79,4 +87,4 @@ Operational interpretation:
 - inside the imported Sek-II `Die e-Funktion` strip, the explicit gA atom `Exponentialgleichungen loesen` now also exact-resolves on the shared canonical exponential-equation leaf instead of remaining on a reviewed partial bridge
 - inside the imported Sek-II surface, retained source splits are preferable to stacking repeated broad partial bridges from the same AB3 clause, including second-stage splits when a first retained child is still too broad for the next canonical follow-on
 - later Niedersachsen broadening should extend these same landscape IDs in place instead of creating replacement pilot landscapes
-- with `Daten und Zufall` (eA), the first shared general-Gymnasium upper-secondary Niedersachsen source surface imported from the active PDF is exhausted; further Niedersachsen widening should therefore now wait for the next clean lower-secondary source corridor or a separate Berufliches-Gymnasium lane instead of forcing broader partial bridges from the already closed explicit strips
+- with the explicit Sek-I data/chance corridor now imported and closed, the active Niedersachsen math pilot snapshots no longer have an obvious next retained slice inside the already reviewed PDFs; further Niedersachsen widening should therefore now wait for a genuinely new retained source corridor, for a separate Berufliches-Gymnasium lane, or for `P6/F6` cutover work instead of forcing broader partial bridges from already closed explicit strips

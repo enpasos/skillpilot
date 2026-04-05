@@ -1,6 +1,6 @@
 # Canonical Gymnasium Mathematics: Sek II Linear Algebra / Matrices Audit
 
-Snapshot: `2026-04-04`
+Snapshot: `2026-04-05`
 
 Purpose:
 
@@ -23,8 +23,11 @@ In scope:
   - `HE`
 - `MV`
 - `NI`
+- `NW`
 - `RP`
+- `SH`
 - `SN`
+- `ST`
 - `TH`
 
 Out of scope:
@@ -109,6 +112,27 @@ Observed signal:
 - `TH` now adds a first reviewed broad upper-secondary matrix corridor on top of the newly activated `Klassenstufe 11` / `11/12` snapshot lane
 - the current Thueringen source still exposes no explicit matrix-only strip and still mixes the available matrix-relevant evidence into the broad geometry / analytic-geometry packaging
 - `TH` therefore confirms that the frozen shared matrix surface can absorb a reviewed broad corridor even when the source currently only provides one shared Raum-/AGV-style bridge instead of a narrower explicit matrix strand
+
+### Nordrhein-Westfalen (`NW`)
+
+Observed signal:
+
+- `NW` already carries an explicit upper-secondary geometry / linear-algebra entry strip plus reviewed `LK` geometry / linear-algebra strips on the shared Sek-II space/matrix surface
+- the retained mixed vector/line/`LGS` application leaf and the `LK` linear-equation-system side lane now stay on that same shared matrix/space surface instead of forcing a sharper bridge between the analytic-geometry and matrix packages
+
+### Schleswig-Holstein (`SH`)
+
+Observed signal:
+
+- `SH` currently exposes no explicit matrix-only strip, but its upper-secondary phase lane is fully mapped and keeps the broad area bridge `Geometrie -> Raum, Matrizen und lineare Modelle (Sek II)` stable on the shared upper-secondary matrix/space surface
+- Schleswig-Holstein therefore resolves as a broad anchor lane for the matrix topic rather than as evidence for another shared canonical package
+
+### Sachsen-Anhalt (`ST`)
+
+Observed signal:
+
+- `ST` currently carries a fully mapped upper-secondary pilot snapshot with explicit `GA/EA` analysis, stochastics, and analytic-geometry corridors, but still no narrower explicit matrix-only strip
+- Sachsen-Anhalt therefore acts as another broad anchor lane: the remaining Raum/LM residue stays on the shared upper-secondary matrix/space surface and does not force another canonical bridge package
 
 ## Current canonical linear-algebra inventory
 
@@ -282,6 +306,12 @@ Interpretation:
 The revised visible matrix surface survives the first reviewed realignment pass without forcing a new shared canonical package.
 The remaining tension is now mainly source-granularity residue, not an obvious canonical gap.
 
+## Additional reviewed close-out evidence (`NW`, `SH`, `ST`)
+
+1. `NW` now confirms that explicit upper-secondary geometry / linear-algebra entry strips, `LK` side strips, and `LGS` residue can all stay on the frozen `LM` surface without forcing a new shared package-level bridge.
+2. `SH` confirms that a fully mapped upper-secondary lane can still remain only a broad `Geometrie -> Raum, Matrizen und lineare Modelle (Sek II)` anchor without leaving open matrix-package debt.
+3. `ST` confirms the same broad-anchor outcome on a fully mapped `GA/EA` overview lane: lack of an explicit matrix-only strip is accepted source granularity, not a reason to reopen `LM2-LM5`.
+
 ## Recommendation
 
 Do not widen more bundesland mappings on Sek-II linear algebra unless another reviewed lane exposes a concrete shared gap.
@@ -302,13 +332,24 @@ At this point, the next productive mode is:
 
 Keep `LM1` stable unless later reviewed residue shows that the entry package still leaks too much later transition or long-term material.
 
+## Close-out judgment (`2026-04-05`)
+
+The current Sek-II linear-algebra / matrices sweep can now be treated as closed.
+
+Why this is now strong enough:
+
+1. the accepted visible package surface stays at `LM1-LM5`
+2. the reviewed `BB`/`BE`/`BY`/`HB`/`HH`/`HE`/`NI`/`NW`/`RP`/`SN` corridors align without forcing another shared package-level bridge
+3. the broader `MV`/`SH`/`ST`/`TH` overview lanes are now resolved as stable anchor evidence on the shared space/matrix surface rather than as open matrix debt
+4. the remaining tension stays at source-granularity residue, not at a missing shared canonical matrix corridor
+
 ## Exit criteria for this audit
 
 This topic audit is complete when:
 
 1. the canonical subpackage boundaries above are either accepted or revised
 2. the canonical graph has a stable Sek-II linear-algebra packaging
-3. reviewed `BB`, `BE`, `BY`, `HB`, `HH`, `HE`, and `NI` evidence can be described as aligned to the revised packaging or intentionally broader because of source granularity
+3. reviewed `BB`, `BE`, `BY`, `HB`, `HH`, `HE`, `NI`, `NW`, `RP`, and `SN` evidence can be described as aligned to the revised packaging or intentionally broader because of source granularity, while the broader `MV`, `SH`, `ST`, and `TH` overview lanes are explicitly accepted as resolved anchor evidence
 4. it is clear whether long-term behavior and linear geometric mappings require further visible separation in the canonical graph
 
 ## Baden-Wuerttemberg upper-secondary Gauss parents connected (`2026-04-04`)

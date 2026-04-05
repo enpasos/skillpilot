@@ -1,12 +1,12 @@
 # Canonical Gymnasium Mathematics: Sek I Functions / Mappings Audit
 
-Snapshot: `2026-04-04`
+Snapshot: `2026-04-05`
 
 Purpose:
 
-- review the current canonical `Sek I Funktionen / Zuordnungen` inventory after the first algebra boundary cleanup
-- use already reviewed lower-secondary state evidence to test whether the current canonical function cuts are pedagogically stable
-- define the next canonical work packages for `Sek I Funktionen / Zuordnungen`
+- review the current canonical `Sek I Funktionen / Zuordnungen` inventory after the lower-secondary breadth sweep
+- use reviewed lower-secondary state evidence to test whether the current canonical function cuts are pedagogically stable
+- decide whether the nationwide `Sek I Funktionen / Zuordnungen` row can be treated as closed for now
 
 ## Scope
 
@@ -14,15 +14,7 @@ In scope:
 
 - the canonical Sek-I function and mapping topic surface in
   - `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json`
-- the already reviewed lower-secondary source and mapping evidence from
-  - `BB`
-  - `BE`
-  - `HB`
-  - `HH`
-  - `HE`
-  - `RP`
-- `SN`
-- `ST`
+- the reviewed lower-secondary source and mapping evidence across all `16` Bundeslaender
 
 Out of scope:
 
@@ -131,9 +123,9 @@ Important current package questions:
 ## Audit judgment
 
 The canonical Sek-I function topic is not missing a usable backbone.
-The main risk is packaging, not first missing content.
+The main remaining risk was packaging, not first missing content.
 
-After the algebra cleanup, and with the new Mecklenburg-Vorpommern early lane connected, the decisive remaining questions sat in three places:
+After the algebra cleanup, and with the new Mecklenburg-Vorpommern early lane connected, the decisive nationwide close-out questions sat in three places:
 
 1. the J8 linear calculation strip
 2. the quadratic/equation boundary
@@ -158,12 +150,12 @@ Boundary decisions executed:
 
 ## Recommendation
 
-Do not widen more bundesland mappings on Sek-I functions until the revised `F3-F5` packaging has been pressure-tested against the reviewed lower-secondary lanes.
+Do not widen more bundesland mappings on Sek-I functions unless a later reviewed lane or validator finding forces a genuinely new shared package beyond the current surface.
 
 ## Recommended next concrete step
 
-1. realign reviewed `BB`, `BE`, `HB`, `HH`, `HE`, and `SN` function mappings to the visible `F3-F5` package surface where that is cleaner than the current mixed targets
-2. use the remaining residue and mapping pressure to decide whether additional subpackages are still needed inside late J10 continuations or at the quadratic/equation boundary
+1. keep the current `F1-F5` function surface frozen and use later function evidence only for residue control
+2. move the active lower-secondary breadth wave to `Sek I Geometrie / Raum`
 
 ## Exit criteria for this audit
 
@@ -186,7 +178,7 @@ Observed signal:
 
 1. the canonical subpackage boundaries above are either accepted or revised
 2. the canonical graph has a stable Sek-I function packaging after the algebra cleanup
-3. reviewed `BB`, `BE`, `HB`, `HH`, `HE`, and `SN` evidence can be described as aligned to the revised packaging or intentionally broader because of source granularity
+3. reviewed nationwide evidence can be described as aligned to the revised packaging or intentionally broader because of source granularity
 4. it is clear whether the remaining residue at late J10 depth or around the quadratic/equation boundary requires further canonical restructuring
 
 ## First reviewed mapping realignment connected (`2026-04-01`)
@@ -284,3 +276,57 @@ Observed signal:
 - the broad SL `Klassenstufe 10: Strukturen und funktionaler Zusammenhang` anchor now carries a first reviewed corridor on the shared broad Sek-I function-foundations surface
 - the current Saarland grade-10 source still exposes only one shared functions strip
 - this confirms the shared broad Sek-I function-foundations surface can absorb an explicit reviewed class-10 lane without forcing a sharper state-local split
+
+## Additional reviewed close-out evidence (`BW`, `BY`, `NI`, `NW`, `SH`)
+
+### Baden-Wuerttemberg (`BW`)
+
+Observed signal:
+
+- `BW` now contributes a reviewed entry corridor plus a reviewed `JG7/8` linear follow-on corridor on the shared Sek-I function spine
+- the first Baden-Wuerttemberg cut already reopens the shared mappings, representation, proportionality, and function-concept surface with one explicit retained prerequisite bridge instead of forcing a new canonical package
+- the adjacent `JG7/8` cut adds reviewed graph-reading, linear-description, line-equation, and rate-of-change interpretation strips, while direct function-value and variable-term prerequisites remain explicit retained bridges
+- together this confirms the current early and middle Sek-I `F1/F2/F3` surface without forcing a Baden-Wuerttemberg-specific function split
+
+### Bayern (`BY`)
+
+Observed signal:
+
+- the reviewed Bavaria `M8-M10` tranches now cover introductory function work, linear functions, quadratics, exponential/logarithmic continuation, and sinus/cosinus continuation on the existing shared J8-J10 function surface
+- `M8 1 Funktion und Term` and `M8 2 Lineare Funktionen` intentionally stay conservative broad bridges where the current canonical function corridor is still coarser than the Bavaria source wording, while the explicit function-concept and remaining linear-function leaves already align to the existing shared surface
+- `M9 2 Quadratische Funktionen` confirms the current `F4` quadratic/equation boundary through mixed corridor-level and leaf-level attachments
+- `M10` confirms the existing late J10 exponential, logarithmic, and trigonometric continuation corridor without forcing another visible split beyond the current late function surface
+
+### Niedersachsen (`NI`)
+
+Observed signal:
+
+- `NI` now contributes a clean prerequisite-backed lower-secondary function corridor on the shared proportional and linear spine
+- `Zuordnungen analysieren` is already exact, while proportionality, representation work, and linear-function follow-ons are reviewed partial bridges on the same shared surface
+- the remaining Niedersachsen breadth mismatch is documented as source-granularity residue rather than as evidence for a missing canonical atom
+- together this confirms the current early and middle Sek-I function surface for Niedersachsen without reopening packaging
+
+### Nordrhein-Westfalen (`NW`)
+
+Observed signal:
+
+- the NRW prerequisite widening removed the hidden-entry blocker, and the first reviewed exact bridges now activate both mappings and function-concept work on real lower-secondary source support
+- reviewed follow-on bridges now also cover function values, proportionality, line description, and linear-parameter interpretation without introducing new applicability overrides
+- the remaining Nordrhein-Westfalen mismatch is explicitly retained as source breadth, not treated as evidence for a missing shared package
+- together this confirms the current `F1/F2/F3` surface and keeps the next NRW work out of lower-secondary function packaging
+
+### Schleswig-Holstein (`SH`)
+
+Observed signal:
+
+- the Schleswig-Holstein lower-secondary source snapshot is now refined across all official year bands instead of relying only on one broad parent lane
+- the reviewed SH function-side mappings now cover simple mappings, representation change, proportional and inverse-proportional work, linear functions, quadratics, trigonometric functions, exponential growth, and logarithms
+- the late J10 SH strips intentionally stay on the broad visible trigonometric/exponential continuation corridor rather than forcing a sharper state-local split
+- there are now no remaining unmapped SH Sek-I source atoms or source clusters in the active lane, and the remaining SH function residue is broad-source residue rather than a missing canonical split
+
+## Close-out judgment (`2026-04-05`)
+
+- with `BW`, `BY`, `NI`, `NW`, and `SH` now folded into the reviewed evidence base, the `Sek I Funktionen / Zuordnungen` row can be treated as coverage-closed for the current nationwide sweep
+- the visible `F1-F5` surface absorbs all `16` state lanes without forcing a new shared regression package, a standalone inverse-proportional package, a mixed function/equation package, a separate power-function package, or a sharper late-J10 split
+- the remaining broad `HB`/`HH` overview lanes, the Sachsen sequence / parametrized-curve residue, and similar wide state-local strips are better described as accepted source-granularity residue than as open canonical gaps
+- the next lower-secondary breadth step should therefore move to `Sek I Geometrie / Raum`, not back into function package churn
