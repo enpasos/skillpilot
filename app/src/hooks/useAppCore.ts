@@ -54,6 +54,7 @@ export function useAppCore({ role, setLearnerMeta, skillpilotId }: AppCoreOption
   const goalId = match?.params.goalId
   const [searchParams, setSearchParams] = useSearchParams()
   const pendingSearchRef = React.useRef<string | null>(null)
+  const pendingSelectedGoalIdRef = React.useRef<string | null>(null)
   const currentSearchString = location.search.startsWith('?') ? location.search.slice(1) : location.search
 
   const replaceSearchParamsIfNeeded = useCallback((next: URLSearchParams) => {
@@ -385,6 +386,10 @@ export function useAppCore({ role, setLearnerMeta, skillpilotId }: AppCoreOption
 
   const currentGoalId = currentGoal?.id ?? ''
 
+  useEffect(() => {
+    pendingSelectedGoalIdRef.current = null
+  }, [currentGoalId])
+
   const { neighbors } = useCompetenceGraph(currentGoal, allGoalsGlobal)
   const matchesActiveFilter = useCallback(
     (goal: Goal) => {
@@ -449,9 +454,17 @@ export function useAppCore({ role, setLearnerMeta, skillpilotId }: AppCoreOption
 
   const handleSelectAbsolute = useCallback((id: string) => {
     if (!id) return
+    if (id === currentGoalId) {
+      pendingSelectedGoalIdRef.current = null
+      return
+    }
+    if (pendingSelectedGoalIdRef.current === id) {
+      return
+    }
+    pendingSelectedGoalIdRef.current = id
     const view = location.pathname.split('/')[1]
     navigate(`/${view}/${id}?${searchParams.toString()}`)
-  }, [navigate, location.pathname, searchParams])
+  }, [currentGoalId, navigate, location.pathname, searchParams])
 
   const handleNavigateToExternal = useCallback(
     (targetLandscapeId: string, goalId: string) => {
