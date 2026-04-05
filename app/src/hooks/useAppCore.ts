@@ -54,7 +54,7 @@ export function useAppCore({ role, setLearnerMeta, skillpilotId }: AppCoreOption
   const goalId = match?.params.goalId
   const [searchParams, setSearchParams] = useSearchParams()
   const pendingSearchRef = React.useRef<string | null>(null)
-  const pendingSelectedGoalIdRef = React.useRef<string | null>(null)
+  const pendingSelectedGoalNavigationRef = React.useRef<string | null>(null)
   const currentSearchString = location.search.startsWith('?') ? location.search.slice(1) : location.search
 
   const replaceSearchParamsIfNeeded = useCallback((next: URLSearchParams) => {
@@ -387,8 +387,8 @@ export function useAppCore({ role, setLearnerMeta, skillpilotId }: AppCoreOption
   const currentGoalId = currentGoal?.id ?? ''
 
   useEffect(() => {
-    pendingSelectedGoalIdRef.current = null
-  }, [currentGoalId])
+    pendingSelectedGoalNavigationRef.current = null
+  }, [location.pathname, location.search])
 
   const { neighbors } = useCompetenceGraph(currentGoal, allGoalsGlobal)
   const matchesActiveFilter = useCallback(
@@ -454,17 +454,25 @@ export function useAppCore({ role, setLearnerMeta, skillpilotId }: AppCoreOption
 
   const handleSelectAbsolute = useCallback((id: string) => {
     if (!id) return
-    if (id === currentGoalId) {
-      pendingSelectedGoalIdRef.current = null
-      return
-    }
-    if (pendingSelectedGoalIdRef.current === id) {
-      return
-    }
-    pendingSelectedGoalIdRef.current = id
     const view = location.pathname.split('/')[1]
-    navigate(`/${view}/${id}?${searchParams.toString()}`)
-  }, [currentGoalId, navigate, location.pathname, searchParams])
+    const nextSearch = searchParams.toString()
+    const nextPath = `/${view}/${id}`
+    const nextUrl = nextSearch ? `${nextPath}?${nextSearch}` : nextPath
+    const currentRouteGoalId = goalId ?? ''
+    const currentUrl = `${location.pathname}${location.search}`
+
+    // Selection is URL-driven. If the router already targets this goal, another navigate
+    // is always redundant even if currentGoal is still resolving from async landscape data.
+    if (currentRouteGoalId === id && currentUrl === nextUrl) {
+      pendingSelectedGoalNavigationRef.current = null
+      return
+    }
+    if (pendingSelectedGoalNavigationRef.current === nextUrl) {
+      return
+    }
+    pendingSelectedGoalNavigationRef.current = nextUrl
+    navigate(nextUrl)
+  }, [goalId, navigate, location.pathname, location.search, searchParams])
 
   const handleNavigateToExternal = useCallback(
     (targetLandscapeId: string, goalId: string) => {
