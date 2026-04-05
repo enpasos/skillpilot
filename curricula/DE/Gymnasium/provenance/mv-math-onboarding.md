@@ -1,6 +1,6 @@
 # MV Math Onboarding Note
 
-Status: P5 (`broad_state_coverage`)
+Status: P5 (`broad_reviewed_coverage`)
 
 This note records the first Mecklenburg-Vorpommern source-landscape identifiers for the mathematics-first DE expansion track and their first-corridor-reviewed state.
 
@@ -25,6 +25,7 @@ Current activation state:
 
 - the first Mecklenburg-Vorpommern source-json snapshots are active in shared provenance
 - the lower-secondary and upper-secondary pilot snapshots are now fully mapped on source-goal level
+- the reviewed exact Mecklenburg-Vorpommern lower-secondary and upper-secondary orientation anchors now also contribute canonical goal provenance in `canonical-goal-provenance-registry.json`
 - the lower-secondary mapping lane now carries first reviewed Orientierungsstufe `Klassen 5/6` arithmetic, geometry, and data/chance corridors plus first reviewed lower-secondary corridors in `Klasse 7`, `Klasse 8`, `Klasse 9`, and `Klasse 10`: `Klassen 5/6` now cover `Natuerliche Zahlen, Teilbarkeit, Brueche und Dezimalbrueche`, early plane geometry and cuboid/cube work, plus early statistical surveys and single-stage random experiments, `Klasse 7` covers functions, algebra, and geometry, `Klasse 8` contributes both a reviewed middle-stage linear-functions corridor plus a reviewed geometry corridor, `Klasse 9` contributes both a reviewed statistics corridor plus an explicit quadratics corridor, and `Klasse 10` carries both a reviewed later-probability corridor plus a reviewed late function corridor with `Exponential-/Logarithmusfunktionen` and `Sinusfunktionen`
 - the upper-secondary mapping lane now also carries first reviewed analysis, stochastics, analytic-geometry / vectors, and linear-algebra / matrices corridors:
   - `Analysis`
@@ -53,4 +54,4 @@ Operational rule from here:
 
 - keep these reserved `sourceLandscapeId` values stable
 - keep the reviewed MV analysis, AGV, and LM corridors broad until the source exposes narrower didactic residues cleanly
-- the next operational step is no longer another MV pilot corridor but the next open Bundesland/input lane, most cleanly `TH`
+- keep Mecklenburg-Vorpommern stable as a source-covered comparison lane; the next Mecklenburg-Vorpommern-specific cleanup step is the shared `P6/F6` learner-facing scope stabilization, not more topic breadth

@@ -329,4 +329,5 @@ Observed signal:
 - with `BW`, `BY`, `NI`, `NW`, and `SH` now folded into the reviewed evidence base, the `Sek I Funktionen / Zuordnungen` row can be treated as coverage-closed for the current nationwide sweep
 - the visible `F1-F5` surface absorbs all `16` state lanes without forcing a new shared regression package, a standalone inverse-proportional package, a mixed function/equation package, a separate power-function package, or a sharper late-J10 split
 - the remaining broad `HB`/`HH` overview lanes, the Sachsen sequence / parametrized-curve residue, and similar wide state-local strips are better described as accepted source-granularity residue than as open canonical gaps
+- the active canonical corridor `SEK1.J10.FUNCTION_FAMILIES` can therefore move from `active` to `completed`; the remaining late-function breadth is accepted source-granularity residue and should reopen only if a later reviewed lane or validator finding exposes a real shared gap beyond the current `F1-F5` surface
 - the next lower-secondary breadth step should therefore move to `Sek I Geometrie / Raum`, not back into function package churn

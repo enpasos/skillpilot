@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-04-05T17:20:00Z",
+  "updatedAt": "2026-04-05T17:25:02Z",
   "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
   "quickViewPath": "docs/dev/canonical-gymnasium-math-bundeslaender-status.md",
   "renderCommand": "python3 scripts/render_canonical_math_bundesland_status.py",
@@ -57,17 +57,17 @@
     {
       "id": "F1",
       "title": "Active five-state base",
-      "status": "in_progress"
+      "status": "completed"
     },
     {
       "id": "F2",
       "title": "Remaining source onboarding",
-      "status": "in_progress"
+      "status": "completed"
     },
     {
       "id": "F3",
       "title": "Nationwide first-corridor pass",
-      "status": "in_progress"
+      "status": "completed"
     },
     {
       "id": "F4",
@@ -82,17 +82,17 @@
     {
       "id": "F6",
       "title": "Cutover and maintenance",
-      "status": "pending"
+      "status": "completed"
     }
   ],
   "steeringModel": {
-    "primaryWorkUnit": "canonical_corridor",
+    "primaryWorkUnit": "maintenance_delta",
     "canonicalViewRule": "Treat the canonical DE mathematics view as a curated pedagogical source of truth, not as the raw union of all state-specific atoms.",
     "stateViewRule": "Treat Bundesland views as projections that stay as close as possible to the canonical view while omitting atoms that would violate the local curriculum.",
     "executionSequence": [
-      "Refine one canonical corridor until its atomic inventory and internal progression are pedagogically round.",
-      "Map that corridor against all 16 state curricula and classify each reviewed bridge as exact, partial, not_applicable, or state_local.",
-      "Only then stabilize state-scoped composition views and learner-facing cluster shapes for the affected scopes."
+      "Archive or refresh the retained state source lane first, then narrow the affected curriculum delta to mappings, provenance, applicability, and composition scopes.",
+      "Only touch the reviewed canonical atoms and the smallest state-scoped mathematics composition views whose learner-facing tree shape really changes.",
+      "Re-run applicability, composition-view validation, canonical math scope coverage, status rendering, and CI before merging the maintenance delta."
     ],
     "atomAdmissionRule": [
       "Add a canonical atom only if it improves the pedagogical completeness of the shared DE math graph.",
@@ -104,7 +104,7 @@
     {
       "id": "SEK1.J10.FUNCTION_FAMILIES",
       "title": "Sek I J10 function families",
-      "status": "active",
+      "status": "completed",
       "focusStates": [
         "DE-BY",
         "DE-BW",
@@ -112,18 +112,18 @@
         "DE-NI",
         "DE-SN"
       ],
-      "nextStep": "Treat the now-closed BY J10 exponential / trigonometric strip and the newly opened Sachsen K10 function strip as canonical-quality checkpoints, and continue only with equally explicit adjacent atoms instead of reopening broad generic function parents."
+      "nextStep": "Treat the Sek-I J10 function-family sweep as closed for now: freeze the visible `F1-F5` surface including the late J10 continuation corridor, accept broad `9/10` or year-10 function lanes as resolved where the source remains mixed, and reopen only if a later reviewed lane or validator finding forces a real shared canonical gap beyond the current function surface."
     },
     {
       "id": "SEK1.J10.5D_GEOMETRY",
       "title": "Sek I J10 bodies, volumes, and plausibility",
-      "status": "active",
+      "status": "completed",
       "focusStates": [
         "DE-BY",
         "DE-BW",
         "DE-SH"
       ],
-      "nextStep": "Treat the inspected Schleswig-Holstein J10 5D bands as intentionally broad in the current snapshot: `Pyramiden und Kegel` and `Kugeln` do not yet expose narrower source atoms than the existing reviewed partial bridges, so further 5D tightening should wait for a cleaner source split instead of inventing new state-local canonical residue."
+      "nextStep": "Treat the Sek-I J10 bodies / volumes / plausibility sweep as closed for now: freeze the visible `G2-G7` surface together with the late J10 body and plausibility corridor, accept broad year-10 body bands as resolved where the source remains coarse, and reopen only if a later reviewed lane or validator finding forces a real shared canonical gap beyond the current geometry surface."
     },
     {
       "id": "SEK2.ANALYSIS",
@@ -191,225 +191,225 @@
       "jurisdiction": "DE-HE",
       "repoStateKey": "HE",
       "displayName": "Hessen",
-      "phase": "P5",
-      "priority": "active",
-      "sourceStage": "snapshots_active",
+      "phase": "P6",
+      "priority": "backlog",
+      "sourceStage": "cutover_ready",
       "mappingFiles": [
         "curricula/DE/Gymnasium/mapping/DE-HE/lower-secondary/hessen_math_lower_secondary_to_canonical_math.json",
         "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_math_upper_secondary_to_canonical_math.json"
       ],
       "notes": "Hessen remains the stable lower-secondary and upper-secondary reference lane. Its reviewed Sek-I function mappings are already mostly atomic and therefore currently more precise than a mechanical rewrite to broad F3-F5 package targets.",
-      "nextStep": "Keep Hessen as the precision baseline while broader mixed lanes in other states are being pressure-tested."
+      "nextStep": "Keep Hessen on maintenance only: refresh retained source snapshots, canonical mappings/provenance, applicability, and the state-scoped mathematics composition views together whenever a curriculum revision changes visible scope or learner-facing tree shape."
     },
     {
       "jurisdiction": "DE-BY",
       "repoStateKey": "BY",
       "displayName": "Bayern",
-      "phase": "P5",
-      "priority": "active",
-      "sourceStage": "archived_inputs",
+      "phase": "P6",
+      "priority": "backlog",
+      "sourceStage": "cutover_ready",
       "mappingFiles": [
         "curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_math_to_canonical_math.json"
       ],
       "notes": "Broad Bavaria bridge on the shared math spine through the retained gymnasium source lane, now also with reviewed Sek-II coverage in analysis, stochastics, analytic geometry, and linear algebra / matrices in addition to the earlier exact-resolved J10 function-family and 5D geometry leaves. Explicit M12 trigonometric analysis plus M11 rational-function and function-properties analysis slices are now attached on source-goal level as well; the retained hybrid M12 strip on antiderivatives and product/chain rule is now bridged on the broad canonical analysis surface, the explicit M12 root-function strip now also lands on the canonical Q2 analysis deepening spine, the adjacent explicit M12 rational-function deepening strip is now attached there as well, the retained hybrid `M12 4 Untersuchung von Funktionen – Quotientenregel, Umkehrfunktion` parent now also lands on that same canonical Q2 deepening surface, the retained `M12 3` one-sided significance-test parent now also lands on the explicit canonical `ST4` test surface, the introductory test-design leaf is aligned there as well, the explicit error-probability leaf now sits on the exact canonical error-probabilities atom, the missing rejection-region leaf now sits on the exact canonical critical-values atom, the remaining `M12 2` probability-foundations leaf now lands on the broad canonical ST1 foundations surface, its explicit random-variable / distribution leaf now also lands on the canonical random-variable-and-distribution atom, the retained `M13 2 Normalverteilung` parent now sits on the broader later-distribution surface, and its explicit leaves for discrete-vs-continuous random variables, bell-shaped empirical situations, density/cumulative-function properties, and interval probabilities now land on the matching canonical LK normal-distribution atoms, with both the discrete-vs-continuous / distribution-function leaf and the bell-shaped-histogram / empirical-normality leaf now exact-resolved on their dedicated canonical LK atoms and the mixed density/cumulative-function leaf now moved off the too narrow density-only atom onto the broader later-distribution surface. The remaining explicit M12 polynomial-parameter strip now also lands on the canonical parameter / antiderivative spine, and the retained M12 statistics module is now attached on the canonical stochastics / tests / survey-critique surface, with the mixed Chi-Quadrat-/t-Test / p-value leaf now also moved off the too narrow binomial-test surface onto the broader Sek-II stochastics / inference surface and the regression / correlation / Simpson-paradox leaf now also moved off the too narrow conditional-probability-critique surface onto the broader survey/statistics surface.",
-      "nextStep": "Keep Bavaria as the second broad comparison lane, but widen BY further only where another equally explicit retained upper-secondary source strip appears instead of reopening broad parent cleanup. The current M12-2, M12-3, M12-4, and M13-2 retained parent lanes are now structurally closed, with the explicit M12-3 error-probability and rejection-region leaves plus the M13-2 discrete-vs-continuous and bell-shaped empirical-normality leaves atomically resolved; the remaining Statistik-module leaves should now only be tightened if a future canonical regression/correlation strip or a non-binomial test strip is introduced."
+      "nextStep": "Keep Bayern on maintenance only: refresh retained source snapshots, canonical mappings/provenance, applicability, and the state-scoped mathematics composition views together whenever a curriculum revision changes visible scope or learner-facing tree shape."
     },
     {
       "jurisdiction": "DE-NW",
       "repoStateKey": "NW",
       "displayName": "Nordrhein-Westfalen",
-      "phase": "P5",
-      "priority": "active",
-      "sourceStage": "broad_reviewed_coverage",
+      "phase": "P6",
+      "priority": "backlog",
+      "sourceStage": "cutover_ready",
       "mappingFiles": [
         "curricula/DE/Gymnasium/mapping/DE-NW/lower-secondary/nrw_math_lower_secondary_to_canonical_math.json",
         "curricula/DE/Gymnasium/mapping/DE-NW/upper-secondary/nrw_math_upper_secondary_to_canonical_math.json"
       ],
       "notes": "The Nordrhein-Westfalen lane now carries reviewed lower-secondary prerequisite, functions, data/chance, and geometry corridors plus the first reviewed upper-secondary analysis corridor, the first explicit upper-secondary geometry / linear-algebra entry strip, five explicit upper-secondary Leistungskurs geometry / linear-algebra strips, three explicit upper-secondary Grundkurs stochastic strips, two explicit upper-secondary Leistungskurs stochastic strips, and two explicit upper-secondary Leistungskurs integral strips. In the lower-secondary snapshot, the previously open broad parents `Mathematik Sekundarstufe I`, `Funktionsvoraussetzungen`, `Erprobungsstufe: Groessenzusammenhaenge und erste Terme`, `Erste Stufe: Zuordnungen, rationale Zahlen und lineare Grundlagen`, `Funktionen`, the new `Daten und Zufall` corridors from `2.3`, `2.4.1`, and `2.4.2`, and the new `Geometrie` corridors from `2.3`, `2.4.1`, and `2.4.2` are now attached on the shared canonical prerequisite, function, Sek-I data/chance, and Sek-I geometry surfaces. Together with the already closed upper-secondary analysis, geometry / linear-algebra, stochastic, and integral parents, both NRW pilot snapshots are now fully bridged on source-goal level. The retained upper-secondary stochastic lane is now also tighter: `Binomialverteilungen ueber n und p analysieren`, `Binomialverteilungen in Kontexten nutzen und beurteilen`, `Konfidenzintervalle fuer p aus relativen Haeufigkeiten bestimmen und deuten`, and `Erforderlichen Stichprobenumfang fuer vorgegebene Intervalllaenge abschaetzen` now sit on exact canonical atoms instead of remaining broad partial attachments. In the retained upper-secondary geometry lane, the two explicit plane-form leaves now also sit exactly on the shared canonical plane-forms atom instead of remaining broad partial attachments, the broad coordinate-system/vector entry leaf now sits on the broader points/vectors/movements surface instead of the narrower pure-vector atom, the remaining E-vector leaf on lengths / scaling / collinearity now sits on the more fitting elementary points-and-vectors atom instead of the broader room-movements surface, the mixed vector/line/LGS application leaf now sits on the shared Sek-II space/matrix-model surface instead of the too narrow intersection atom, the mixed LK parent for planes plus planar figures in parameter form now also sits on the shared Sek-II space/matrix-model surface instead of the narrower line/plane-form surface, the LK reflection cluster now sits on the dedicated reflection surface instead of the broad room-application surface, and both the LK linear-equation-system side cluster and its atomic LGS/solution-set leaf now sit on the shared Sek-II space/matrix-model surface instead of narrower geometry-only targets.",
-      "nextStep": "Keep Nordrhein-Westfalen as a stable broad reviewed comparison lane. Further NRW tightening should now wait for another equally explicit retained corridor instead of renewed cleanup inside the already reviewed lower-secondary prerequisite, functions, data/chance, or geometry slices."
+      "nextStep": "Keep Nordrhein-Westfalen on maintenance only: refresh retained source snapshots, canonical mappings/provenance, applicability, and the state-scoped mathematics composition views together whenever a curriculum revision changes visible scope or learner-facing tree shape."
     },
     {
       "jurisdiction": "DE-NI",
       "repoStateKey": "NI",
       "displayName": "Niedersachsen",
-      "phase": "P5",
+      "phase": "P6",
       "priority": "backlog",
-      "sourceStage": "broad_reviewed_coverage",
+      "sourceStage": "cutover_ready",
       "mappingFiles": [
         "curricula/DE/Gymnasium/mapping/DE-NI/lower-secondary/ni_math_lower_secondary_to_canonical_math.json",
         "curricula/DE/Gymnasium/mapping/DE-NI/upper-secondary/ni_math_upper_secondary_to_canonical_math.json"
       ],
       "notes": "The Niedersachsen lane now fully bridges both archived pilot snapshots on source-goal level. The lower-secondary lane is closed across its motivation root, arithmetic base, first functions corridor, imported algebra strip, imported measurement strip, the explicit lower-secondary data/chance corridor from statistical surveys, descriptive statistics, probability, multi-stage experiments, and tree/vierfelder work, the explicit right-triangle / similarity follow-on, and the explicit quadratics follow-on. The upper-secondary lane is now also closed across the broad Oberstufe / Einfuehrungsphase / gA / eA parents, the retained analysis / e-function leaves, the retained geometry / coordinate / representation leaves, and the retained stochastics leaves on conditional probability / independence, expectation / standard deviation, binomial distributions, normal distribution, and the binomial-vs-normal bridge. Niedersachsen is now a stable broad reviewed comparison lane.",
-      "nextStep": "Keep Niedersachsen stable as a broad reviewed comparison lane while the nationwide canonical math work shifts from topic-row breadth to applicability, learner-facing scope stabilization, and `P6/F6` cutover cleanup."
+      "nextStep": "Keep Niedersachsen on maintenance only: refresh retained source snapshots, canonical mappings/provenance, applicability, and the state-scoped mathematics composition views together whenever a curriculum revision changes visible scope or learner-facing tree shape."
     },
     {
       "jurisdiction": "DE-BW",
       "repoStateKey": "BW",
       "displayName": "Baden-Wuerttemberg",
-      "phase": "P5",
+      "phase": "P6",
       "priority": "backlog",
-      "sourceStage": "broad_reviewed_coverage",
+      "sourceStage": "cutover_ready",
       "mappingFiles": [
         "curricula/DE/Gymnasium/mapping/DE-BW/lower-secondary/bw_math_lower_secondary_to_canonical_math.json",
         "curricula/DE/Gymnasium/mapping/DE-BW/upper-secondary/bw_math_upper_secondary_to_canonical_math.json"
       ],
-      "notes": "The BW lane now reaches the full reviewed Klassen-5/6 foundation strip across Zahl-Variable-Operation, Messen, Raum und Form, Funktionaler Zusammenhang, and Daten und Zufall, with the retained lower-secondary top-level pilot root now also parent-anchored on the shared canonical mathematics root, the broad mixed 5/6 umbrella now also parent-anchored on the shared J6 year anchor, and the retained 5/6 Leitidee parents now also parent-anchored on the shared lower-secondary numbers/algebra, early measurement, early geometry, and early data clusters. It keeps the reviewed lower-secondary J7/J8 functions and representation strip active, with the broad first function corridor now also parent-anchored on the shared Sek-I function-foundations cluster, the formerly still-broad J5/J6 mixed-function strip now also parent-anchored on that same shared Sek-I function-foundations cluster, the formerly still-open J7/J8 function corridor now also parent-anchored on the same shared Sek-I function-foundations cluster, and the retained J7/J8 representation subcorridor now also parent-anchored on the shared functions-and-representations cluster. It now also carries the first broad Klassen-7/8 widening across Algebra, Geometrie, and Daten und Zufall with percent and interest work, formula rearrangement, roots, quadratic equations, angle reasoning, congruence, similarity, quartiles, boxplots, and Laplace-style probability, with the broad mixed 7/8 umbrella now also parent-anchored on the shared J8 year anchor and with the already anchored 7/8 area umbrellas for Raum und Form and Daten und Zufall sitting on the shared Sek-I geometry and data/probability clusters. It also still carries the first explicit lower-secondary J9/J10 follow-on around variable terms, power rules, power/root functions, symmetry, and exponential growth with logarithms, now also with the overarching mixed 9/10 connector parent anchored on the shared mixed lower-secondary structures/functional-relationships cluster, the remaining explicit lower-secondary 3.2.1 algebra/equation parents and the narrower J9/J10 year parents parent-anchored on the shared Sek-I algebra, power-function, and J10 continuation clusters, and the formerly still-broad 9/10 algebra/function follow-on parent now also anchored on the shared J10 year anchor. Additionally it carries the first broad late-Sek-I geometry / measurement widening in Klassen 9/10 on trigonometry, circle figures, oblique body drawings, nets, cone surfaces, solid volumes, and sphere formulas, with that broad geometry parent now also anchored on the shared Sek-I geometry corridor, its split J9 trigonometrie parent now also anchored on the shared J9 trigonometry cluster, its split J10 circle/body parent now also anchored on the shared J10 trigonometry-circle-solids corridor, and its explicit Kugelformeln leaf now also exact-resolved on the shared sphere-formula atom, the clean late-Sek-I coordinate/vector follow-on on vector basics, spatial coordinate drawings, distances and midpoints, parametric lines, line relations, and rectilinear motion models, now also with its broad parent anchored on the shared late-Sek-I coordinate/vector entry cluster, the broadened late-Sek-I function / differential widening on trigonometrische Funktionen, periodische Modellierung, derivative entry, basic derivative rules, monotonicity / extrema, tangent / normal / inflection interpretation, and simple sinus/cosinus derivatives, and the first broad late-Sek-I stochastics widening on conditional probabilities, four-field tables, random variables, Bernoulli chains, binomial histograms, and binomial key measures, now also with its split J9 four-field/conditional-probability parent anchored on the shared foundational stochastics-methods cluster and its split J10 random-variable/binomial parent anchored on the shared probability-distribution overview cluster. There are now no remaining unmapped goals inside the active BW lower-secondary pilot snapshot; any further BW Sek-I broadening means intentionally importing additional retained non-core source sections beyond this already fully reviewed pilot subset. On the upper-secondary side it carries the first Kursstufe exponential/logarithm/integral corridor from the archived source snapshots, has fully atomically bridged the adjacent upper-secondary calculation-rules follow-on from Zahl-Variable-Operation, has opened the first upper-secondary stochastics follow-on from Daten und Zufall, has opened the first upper-secondary geometry follow-on from Raum und Form plus the linked Leistungsfach and Basisfach Messen strips, has opened the first upper-secondary Gau\u00df / linear-system follow-on, has opened the remaining upper-secondary Messen integral-application strip on limiting processes, means, areas between graphs, and rotation bodies, has now also retain-split the remaining broad upper-secondary Raum-und-Form application atoms on reflections, motions, and area/volume work, and surfaces the reviewed BW Basisfach/Leistungsfach substructure in the learner-facing Kursstufe views. The first BW upper-secondary stochastics corridor is now also fully parent-mapped: the broad course-stage stochastics parent sits on the shared Sek-II stochastics summary surface, the Basisfach normal-distribution/random-variable parent sits on the shared probability/distribution surface, and the Leistungsfach normal-distribution/hypothesis-test hybrid parent stays on the reviewed summary surface. The first BW upper-secondary Gauss / linear-system corridor is now also fully parent-mapped: the broad course-stage Gauss parent plus the Basisfach and Leistungsfach parent strips sit on the shared Sek-II space/matrix-model surface. The first BW upper-secondary geometry / space corridor is now also fully parent-mapped: the broad course-stage geometry corridor plus the Basisfach / Leistungsfach geometry parents and the two application parents sit on the shared Sek-II space/matrix-model surface. The first BW upper-secondary integral-application corridor is now also fully parent-mapped: the broad course-stage integral-application parent sits on the shared Sek-II integral-concepts surface, the Basisfach integral-grenzwert/area-between-graphs parent sits on the shared area/context surface, and the Leistungsfach integral-grenzwert/means/rotation-body parent stays on the late-analysis continuation surface. The remaining reviewed BW upper-secondary analysis parent residue is now also fully connected: the broad first and second course-stage analysis corridors plus the linked Basisfach / Leistungsfach parent strips and the retained natural-exponential / integral split leaves now sit on the shared Sek-II analysis, exponential, integral, and late-analysis surfaces. There are now no remaining unmapped goals inside the active BW upper-secondary pilot snapshot; any further BW Sek-II broadening means intentionally importing additional retained non-core source sections beyond this already fully reviewed pilot subset.",
-      "nextStep": "Keep Baden-Wuerttemberg stable as a broad reviewed comparison lane. The retained BF/LF plane-form leaves, the BF point-reflection leaf, the BF point-plane-distance leaf, the LF Hesse-normal-form / distance leaf, both BF/LF angle / intersection-angle leaves, and the LF Fehler-1/2-Art leaf are now exact-resolved; the mixed LF reflection leaf now also sits on the dedicated reflection surface instead of a broad modeling surface, the mixed histogram/rejection-region leaf now sits on the broader hypothesis-test surface instead of the too narrow critical-values atom, and the null-hypothesis-only leaf now also sits on that broader hypothesis-test surface instead of the too narrow null-and-alternative atom. Tighten BW further only where another equally explicit upper-secondary geometry or stochastics leaf warrants an atomic pass."
+      "notes": "The BW lane now reaches the full reviewed Klassen-5/6 foundation strip across Zahl-Variable-Operation, Messen, Raum und Form, Funktionaler Zusammenhang, and Daten und Zufall, with the retained lower-secondary top-level pilot root now also parent-anchored on the shared canonical mathematics root, the broad mixed 5/6 umbrella now also parent-anchored on the shared J6 year anchor, and the retained 5/6 Leitidee parents now also parent-anchored on the shared lower-secondary numbers/algebra, early measurement, early geometry, and early data clusters. It keeps the reviewed lower-secondary J7/J8 functions and representation strip active, with the broad first function corridor now also parent-anchored on the shared Sek-I function-foundations cluster, the formerly still-broad J5/J6 mixed-function strip now also parent-anchored on that same shared Sek-I function-foundations cluster, the formerly still-open J7/J8 function corridor now also parent-anchored on the same shared Sek-I function-foundations cluster, and the retained J7/J8 representation subcorridor now also parent-anchored on the shared functions-and-representations cluster. It now also carries the first broad Klassen-7/8 widening across Algebra, Geometrie, and Daten und Zufall with percent and interest work, formula rearrangement, roots, quadratic equations, angle reasoning, congruence, similarity, quartiles, boxplots, and Laplace-style probability, with the broad mixed 7/8 umbrella now also parent-anchored on the shared J8 year anchor and with the already anchored 7/8 area umbrellas for Raum und Form and Daten und Zufall sitting on the shared Sek-I geometry and data/probability clusters. It also still carries the first explicit lower-secondary J9/J10 follow-on around variable terms, power rules, power/root functions, symmetry, and exponential growth with logarithms, now also with the overarching mixed 9/10 connector parent anchored on the shared mixed lower-secondary structures/functional-relationships cluster, the remaining explicit lower-secondary 3.2.1 algebra/equation parents and the narrower J9/J10 year parents parent-anchored on the shared Sek-I algebra, power-function, and J10 continuation clusters, and the formerly still-broad 9/10 algebra/function follow-on parent now also anchored on the shared J10 year anchor. Additionally it carries the first broad late-Sek-I geometry / measurement widening in Klassen 9/10 on trigonometry, circle figures, oblique body drawings, nets, cone surfaces, solid volumes, and sphere formulas, with that broad geometry parent now also anchored on the shared Sek-I geometry corridor, its split J9 trigonometrie parent now also anchored on the shared J9 trigonometry cluster, its split J10 circle/body parent now also anchored on the shared J10 trigonometry-circle-solids corridor, and its explicit Kugelformeln leaf now also exact-resolved on the shared sphere-formula atom, the clean late-Sek-I coordinate/vector follow-on on vector basics, spatial coordinate drawings, distances and midpoints, parametric lines, line relations, and rectilinear motion models, now also with its broad parent anchored on the shared late-Sek-I coordinate/vector entry cluster, the broadened late-Sek-I function / differential widening on trigonometrische Funktionen, periodische Modellierung, derivative entry, basic derivative rules, monotonicity / extrema, tangent / normal / inflection interpretation, and simple sinus/cosinus derivatives, and the first broad late-Sek-I stochastics widening on conditional probabilities, four-field tables, random variables, Bernoulli chains, binomial histograms, and binomial key measures, now also with its split J9 four-field/conditional-probability parent anchored on the shared foundational stochastics-methods cluster and its split J10 random-variable/binomial parent anchored on the shared probability-distribution overview cluster. There are now no remaining unmapped goals inside the active BW lower-secondary pilot snapshot; any further BW Sek-I broadening means intentionally importing additional retained non-core source sections beyond this already fully reviewed pilot subset. On the upper-secondary side it carries the first Kursstufe exponential/logarithm/integral corridor from the archived source snapshots, has fully atomically bridged the adjacent upper-secondary calculation-rules follow-on from Zahl-Variable-Operation, has opened the first upper-secondary stochastics follow-on from Daten und Zufall, has opened the first upper-secondary geometry follow-on from Raum und Form plus the linked Leistungsfach and Basisfach Messen strips, has opened the first upper-secondary Gauß / linear-system follow-on, has opened the remaining upper-secondary Messen integral-application strip on limiting processes, means, areas between graphs, and rotation bodies, has now also retain-split the remaining broad upper-secondary Raum-und-Form application atoms on reflections, motions, and area/volume work, and surfaces the reviewed BW Basisfach/Leistungsfach substructure in the learner-facing Kursstufe views. The first BW upper-secondary stochastics corridor is now also fully parent-mapped: the broad course-stage stochastics parent sits on the shared Sek-II stochastics summary surface, the Basisfach normal-distribution/random-variable parent sits on the shared probability/distribution surface, and the Leistungsfach normal-distribution/hypothesis-test hybrid parent stays on the reviewed summary surface. The first BW upper-secondary Gauss / linear-system corridor is now also fully parent-mapped: the broad course-stage Gauss parent plus the Basisfach and Leistungsfach parent strips sit on the shared Sek-II space/matrix-model surface. The first BW upper-secondary geometry / space corridor is now also fully parent-mapped: the broad course-stage geometry corridor plus the Basisfach / Leistungsfach geometry parents and the two application parents sit on the shared Sek-II space/matrix-model surface. The first BW upper-secondary integral-application corridor is now also fully parent-mapped: the broad course-stage integral-application parent sits on the shared Sek-II integral-concepts surface, the Basisfach integral-grenzwert/area-between-graphs parent sits on the shared area/context surface, and the Leistungsfach integral-grenzwert/means/rotation-body parent stays on the late-analysis continuation surface. The remaining reviewed BW upper-secondary analysis parent residue is now also fully connected: the broad first and second course-stage analysis corridors plus the linked Basisfach / Leistungsfach parent strips and the retained natural-exponential / integral split leaves now sit on the shared Sek-II analysis, exponential, integral, and late-analysis surfaces. There are now no remaining unmapped goals inside the active BW upper-secondary pilot snapshot; any further BW Sek-II broadening means intentionally importing additional retained non-core source sections beyond this already fully reviewed pilot subset.",
+      "nextStep": "Keep Baden-Wuerttemberg on maintenance only: refresh retained source snapshots, canonical mappings/provenance, applicability, and the state-scoped mathematics composition views together whenever a curriculum revision changes visible scope or learner-facing tree shape."
     },
     {
       "jurisdiction": "DE-BB",
       "repoStateKey": "BB",
       "displayName": "Brandenburg",
-      "phase": "P5",
+      "phase": "P6",
       "priority": "backlog",
-      "sourceStage": "broad_reviewed_coverage",
+      "sourceStage": "cutover_ready",
       "mappingFiles": [
         "curricula/DE/Gymnasium/mapping/DE-BB/lower-secondary/bb_math_lower_secondary_to_canonical_math.json",
         "curricula/DE/Gymnasium/mapping/DE-BB/upper-secondary/bb_math_upper_secondary_to_canonical_math.json"
       ],
       "notes": "Brandenburg is now on P5. Its lower-secondary and upper-secondary pilot snapshots are fully mapped on source-goal level. The lane carries the shared BE/BB lower-secondary year anchors `J7-J10`, the first reviewed functions corridor on Niveaustufen `E-F`, the new explicit lower-secondary data/chance corridor on Niveaustufen `E-H` with surveys, frequencies, boxplots/histograms, data critique, Laplace ideas, conditional probability, and combinatorial bridges, and the remaining broad lower-secondary algebra, geometry, transformation/similarity, body/area, and trigonometry parents on the shared canonical Sek-I algebra, data/chance, and geometry surfaces. On the upper-secondary side it carries the first reviewed E-phase entry corridor on Ableitungsbegriff und ersten Ableitungsanwendungen, the first reviewed Q1 model-functions corridor on natuerlicher Exponentialfunktion, Logarithmus und periodischen Funktionen, the first reviewed Q2 integral-calculus corridor, the first reviewed Q2 stochastics corridor, the first reviewed Q2 data-and-distribution corridor, and the first reviewed Q2 survey-and-critique corridor, and now also the remaining broad upper-secondary root, analysis-entry/model-function parents, Q3 vector/line parents, cut-angle and distance follow-ons, the LK distance residue parent, and the linear-representation/projection side lane on the shared canonical analysis and space/matrix-model surfaces.",
-      "nextStep": "Keep Brandenburg stable as a broad reviewed comparison lane; further widening should now wait for another equally explicit retained slice while the nationwide canonical math work shifts from topic-row breadth to applicability and cutover cleanup."
+      "nextStep": "Keep Brandenburg on maintenance only: refresh retained source snapshots, canonical mappings/provenance, applicability, and the state-scoped mathematics composition views together whenever a curriculum revision changes visible scope or learner-facing tree shape."
     },
     {
       "jurisdiction": "DE-BE",
       "repoStateKey": "BE",
       "displayName": "Berlin",
-      "phase": "P5",
+      "phase": "P6",
       "priority": "backlog",
-      "sourceStage": "broad_reviewed_coverage",
+      "sourceStage": "cutover_ready",
       "mappingFiles": [
         "curricula/DE/Gymnasium/mapping/DE-BE/lower-secondary/be_math_lower_secondary_to_canonical_math.json",
         "curricula/DE/Gymnasium/mapping/DE-BE/upper-secondary/be_math_upper_secondary_to_canonical_math.json"
       ],
       "notes": "Berlin is now on P5. Its lower-secondary and upper-secondary pilot snapshots are fully mapped on source-goal level. The lane carries the shared BE/BB lower-secondary year anchors `J7-J10`, the first reviewed functions corridor on Niveaustufen `E-F`, the new explicit lower-secondary data/chance corridor on Niveaustufen `E-H` with surveys, frequencies, boxplots/histograms, data critique, Laplace ideas, conditional probability, and combinatorial bridges, and now also the remaining broad lower-secondary algebra, geometry, transformation/similarity, body/area, and trigonometry parents on the shared canonical Sek-I algebra, data/chance, and geometry surfaces. On the upper-secondary side it carries the first reviewed Q1 differential entry corridor, the first reviewed Q2 integral-calculus follow-on corridor, the first reviewed Q2 stochastics follow-on corridor, the first reviewed Q2 data-and-survey follow-on corridor, the first reviewed Q4 distribution-and-binomial follow-on corridor, and the first reviewed Q4 inference/test/normal-approximation follow-on corridor, and now also exact retained Berlin Q2 leaves for survey planning/data preparation, tree-diagram modeling, contingency-table use, context-based conditional-probability calculation, stochastic-independence checks, simulation-based investigation, explicit binomial-model use, tabular/graphical data preparation, sample location/dispersion measures, and survey-data evaluation / critical-assessment on the canonical stochastics and data-parameter atoms. The top-level Berlin `Q2-Daten-und-Erhebungskorridor` now also sits on the nearer survey/statistics surface instead of the too broad later-distribution surface, the Berlin `Q2-Statistische Erhebungen planen und Daten aufbereiten` subcluster now also lands exactly on the matching canonical survey/data-preparation cluster instead of a less fitting random-experiment evaluation surface, and the Berlin `Q2-Lage- und Streuungsmasse von Stichproben bestimmen` subcluster now also lands exactly on the matching canonical sample-statistics cluster instead of a broader later-statistics descriptive-measures surface. It also carries exact retained Berlin Q4 leaves for confidence-interval reasoning via simple `k`-sigma intervals, sigma-rule / `k`-sigma-interval interpretation, test-result interpretation, and Type-I/Type-II-error interpretation on the explicit canonical interval and ST4 atoms, while the broader bell-shape / normal-approximation intuition leaf intentionally stays on the shared later-distribution surface instead of overclaiming the narrower LK binomial-approximation atom. The remaining broad upper-secondary root, Q1/Q3/Q4 structure parents, the analysis-deepening side lane, and the numerical-mathematics side lane stay on the shared canonical analysis, stochastics, and space/matrix-model surfaces.",
-      "nextStep": "Keep Berlin stable as a broad reviewed comparison lane; further widening should now wait for another equally explicit retained slice while the nationwide canonical math work shifts from topic-row breadth to applicability and cutover cleanup."
+      "nextStep": "Keep Berlin on maintenance only: refresh retained source snapshots, canonical mappings/provenance, applicability, and the state-scoped mathematics composition views together whenever a curriculum revision changes visible scope or learner-facing tree shape."
     },
     {
       "jurisdiction": "DE-HB",
       "repoStateKey": "HB",
       "displayName": "Bremen",
-      "phase": "P5",
+      "phase": "P6",
       "priority": "backlog",
-      "sourceStage": "snapshots_active",
+      "sourceStage": "cutover_ready",
       "mappingFiles": [
         "curricula/DE/Gymnasium/mapping/DE-HB/lower-secondary/hb_math_lower_secondary_to_canonical_math.json",
         "curricula/DE/Gymnasium/mapping/DE-HB/upper-secondary/hb_math_upper_secondary_to_canonical_math.json"
       ],
-      "notes": "Bremen is on P5. Its reviewed lower-secondary function corridor remains intentionally broad because the current J7/8 source bundle still mixes proportional, linear, and first quadratic function work at one surface.",
-      "nextStep": "Use Bremen only as pressure test for shared function packaging unless the source lane is later split more finely."
+      "notes": "Bremen is now on P5 with active lower-secondary and upper-secondary pilot snapshots fully mapped on source-goal level. The lane carries reviewed lower-secondary 5/6, 7/8, and restricted J9 corridors across arithmetic/algebra, geometry, functions, and data/chance, plus reviewed upper-secondary analysis, stochastics, linear-algebra/matrix, and analytic-geometry follow-ons on the canonical DE math spine. Its reviewed lower-secondary function corridor remains intentionally broad because the current 7/8 source bundle still mixes proportional, linear, and first quadratic function work at one surface.",
+      "nextStep": "Keep Bremen on maintenance only: refresh retained source snapshots, canonical mappings/provenance, applicability, and the state-scoped mathematics composition views together whenever a curriculum revision changes visible scope or learner-facing tree shape."
     },
     {
       "jurisdiction": "DE-HH",
       "repoStateKey": "HH",
       "displayName": "Hamburg",
-      "phase": "P5",
+      "phase": "P6",
       "priority": "backlog",
-      "sourceStage": "broad_reviewed_coverage",
+      "sourceStage": "cutover_ready",
       "mappingFiles": [
         "curricula/DE/Gymnasium/mapping/DE-HH/lower-secondary/hh_math_lower_secondary_to_canonical_math.json",
         "curricula/DE/Gymnasium/mapping/DE-HH/upper-secondary/hh_math_upper_secondary_to_canonical_math.json"
       ],
       "notes": "Hamburg is now on P5. Its lower-secondary and upper-secondary pilot snapshots are fully mapped on source-goal level. The lane carries reviewed lower-secondary corridors in J8 and J10 functions and geometry, broad lower-secondary source-parent mappings for the remaining J6/J8/J10 anchors, and reviewed upper-secondary corridors in analysis, stochastics, analytic geometry, and linear algebra together with exact lower-/upper-secondary orientation bridges and broad `S1/S2` / `S3/S4` structure-parent links on the shared canonical mathematics spine. The current Hamburg pilot snapshots are now stable broad reviewed comparison lanes rather than active onboarding residue.",
-      "nextStep": "Keep Hamburg stable as a broad reviewed comparison lane and move the next implementation step to the next still-open state lane."
+      "nextStep": "Keep Hamburg on maintenance only: refresh retained source snapshots, canonical mappings/provenance, applicability, and the state-scoped mathematics composition views together whenever a curriculum revision changes visible scope or learner-facing tree shape."
     },
     {
       "jurisdiction": "DE-MV",
       "repoStateKey": "MV",
       "displayName": "Mecklenburg-Vorpommern",
-      "phase": "P5",
+      "phase": "P6",
       "priority": "backlog",
-      "sourceStage": "broad_reviewed_coverage",
+      "sourceStage": "cutover_ready",
       "mappingFiles": [
         "curricula/DE/Gymnasium/mapping/DE-MV/lower-secondary/mv_math_lower_secondary_to_canonical_math.json",
         "curricula/DE/Gymnasium/mapping/DE-MV/upper-secondary/mv_math_upper_secondary_to_canonical_math.json"
       ],
       "notes": "Mecklenburg-Vorpommern is now on P5. Its lower-secondary and upper-secondary pilot snapshots are fully mapped on source-goal level, and the state carries reviewed lower-secondary coverage across classes-5/6 arithmetic, geometry, and data/chance foundations, class-7 functions/algebra/geometry, class-8 linear functions plus geometry, class-9 statistics plus explicit quadratics, class-10 later probability plus late functions, plus reviewed upper-secondary corridors in analysis, stochastics, analytic geometry / vectors, and linear algebra / matrices on the canonical DE math spine.",
-      "nextStep": "Keep Mecklenburg-Vorpommern stable as a broad reviewed comparison lane and move the next implementation step to deriving the first Thueringen source snapshots from the now archived input bundle."
+      "nextStep": "Keep Mecklenburg-Vorpommern on maintenance only: refresh retained source snapshots, canonical mappings/provenance, applicability, and the state-scoped mathematics composition views together whenever a curriculum revision changes visible scope or learner-facing tree shape."
     },
     {
       "jurisdiction": "DE-RP",
       "repoStateKey": "RP",
       "displayName": "Rheinland-Pfalz",
-      "phase": "P5",
+      "phase": "P6",
       "priority": "backlog",
-      "sourceStage": "broad_reviewed_coverage",
+      "sourceStage": "cutover_ready",
       "mappingFiles": [
         "curricula/DE/Gymnasium/mapping/DE-RP/lower-secondary/rp_math_lower_secondary_to_canonical_math.json",
         "curricula/DE/Gymnasium/mapping/DE-RP/upper-secondary/rp_math_upper_secondary_to_canonical_math.json"
       ],
       "notes": "Rheinland-Pfalz is now on P5. Its lower-secondary and upper-secondary pilot snapshots are fully mapped on source-goal level, and the state now carries reviewed upper-secondary corridors in analysis, stochastics, and the combined Raum-und-Form split, plus reviewed lower-secondary corridors in functions, algebra, data/chance, and geometry. The explicit RP 9/10 geometry split confirms the visible `G5/G6/G7` surface while keeping later transformations on the broad theorem/figure geometry branch, and the current RP pilot snapshots are now stable broad comparison lanes rather than active onboarding residue.",
-      "nextStep": "Keep Rheinland-Pfalz stable as a broad reviewed comparison lane and move the next implementation step to the next still-open state lane.",
+      "nextStep": "Keep Rheinland-Pfalz on maintenance only: refresh retained source snapshots, canonical mappings/provenance, applicability, and the state-scoped mathematics composition views together whenever a curriculum revision changes visible scope or learner-facing tree shape.",
       "note": "Shared provenance is active, structural anchors are mapped, and Rheinland-Pfalz now has reviewed upper-secondary analysis and stochastics corridors with explicit GF/LF source strips."
     },
     {
       "jurisdiction": "DE-SH",
       "repoStateKey": "SH",
       "displayName": "Schleswig-Holstein",
-      "phase": "P5",
+      "phase": "P6",
       "priority": "backlog",
-      "sourceStage": "broad_reviewed_coverage",
+      "sourceStage": "cutover_ready",
       "mappingFiles": [
         "curricula/DE/Gymnasium/mapping/DE-SH/lower-secondary/sh_math_lower_secondary_to_canonical_math.json",
         "curricula/DE/Gymnasium/mapping/DE-SH/upper-secondary/sh_math_upper_secondary_to_canonical_math.json"
       ],
       "notes": "Schleswig-Holstein is now on P5. Its lower-secondary and upper-secondary pilot snapshots are fully mapped on source-goal level, the lower-secondary lane is fully refined across the official year-band cells, and the upper-secondary lane is mapped across the official phase-and-area cells with tightened exact leaves in E-analysis and Q1 analysis. The retained upper-secondary stochastics lane now also carries an exact E leaf for random experiments and Laplace probabilities, exact E/Q1 leaves for conditional probabilities and binomial models in context, exact Q2 leaves for formulating null and alternative hypotheses, interpreting test decisions in context, estimating probabilities with confidence intervals, and interpreting confidence levels, while the broader Q1 normal-distribution orientation leaf intentionally sits on the shared later-distribution surface instead of overclaiming the narrower LK normal-approximation atom. On the geometry side, the E leaves for vectors in R2/R3 and for line relations now also land exactly on the dedicated canonical vector and line-line atoms instead of broader entry surfaces, and the explicit leaves for lines in coordinate spaces, scalar product / angle use, plane descriptions, line-plane relations, and distance calculations now also land exactly on the matching canonical space-geometry atoms; the broader vector-product strip intentionally remains partial but now sits on the shared Sek-II space/matrix-model surface instead of the narrower plane-forms surface. The current Schleswig-Holstein pilot snapshots are now stable broad reviewed comparison lanes rather than active onboarding residue.",
-      "nextStep": "Keep Schleswig-Holstein stable as a broad reviewed comparison lane and tighten it further only if another equally explicit retained upper-secondary stochastics or geometry leaf warrants an atomic pass."
+      "nextStep": "Keep Schleswig-Holstein on maintenance only: refresh retained source snapshots, canonical mappings/provenance, applicability, and the state-scoped mathematics composition views together whenever a curriculum revision changes visible scope or learner-facing tree shape."
     },
     {
       "jurisdiction": "DE-SL",
       "repoStateKey": "SL",
       "displayName": "Saarland",
-      "phase": "P5",
+      "phase": "P6",
       "priority": "backlog",
-      "sourceStage": "broad_reviewed_coverage",
+      "sourceStage": "cutover_ready",
       "mappingFiles": [
         "curricula/DE/Gymnasium/mapping/DE-SL/lower-secondary/sl_math_lower_secondary_to_canonical_math.json",
         "curricula/DE/Gymnasium/mapping/DE-SL/upper-secondary/sl_math_upper_secondary_to_canonical_math.json"
       ],
       "notes": "Saarland is now on P5. Its lower-secondary and upper-secondary pilot snapshots are fully mapped on source-goal level, and the state now carries reviewed lower-secondary coverage across explicit grade-7 corridors in functions, algebra, geometry, data/chance, and measurement, broad grade-8 corridors in algebra, functions, geometry, data/chance, and measurement, broad grade-9 corridors in algebra, functions, geometry, data/chance, and measurement, and broad grade-10 corridors in algebra, functions, geometry, data/chance, and measurement, plus reviewed upper-secondary corridors in analysis, stochastics, and analytic geometry on the canonical DE math spine. The archived grade-10 strips are now deliberately closed as broad reviewed corridors on the shared Sek-I algebra, function-foundations, geometry, data/chance, and early measurement / area / volume surfaces because the current source granularity does not justify sharper reviewed splits.",
-      "nextStep": "Keep Saarland stable as a broad reviewed comparison lane and move the next implementation step to the next still-open state lane."
+      "nextStep": "Keep Saarland on maintenance only: refresh retained source snapshots, canonical mappings/provenance, applicability, and the state-scoped mathematics composition views together whenever a curriculum revision changes visible scope or learner-facing tree shape."
     },
     {
       "jurisdiction": "DE-SN",
       "repoStateKey": "SN",
       "displayName": "Sachsen",
-      "phase": "P5",
+      "phase": "P6",
       "priority": "backlog",
-      "sourceStage": "broad_reviewed_coverage",
+      "sourceStage": "cutover_ready",
       "mappingFiles": [
         "curricula/DE/Gymnasium/mapping/DE-SN/lower-secondary/sn_math_lower_secondary_to_canonical_math.json",
         "curricula/DE/Gymnasium/mapping/DE-SN/upper-secondary/sn_math_upper_secondary_to_canonical_math.json"
       ],
       "notes": "Sachsen is now on P5. Its lower-secondary and upper-secondary pilot snapshots are fully mapped on source-goal level, including the lower-secondary orientation anchor, the broad `K9 Lernbereich 5 Vernetzung: Mathematik und moderne Rechentechnik` connector, the upper-secondary orientation anchor, the broad `Jahrgangsstufen 11/12` Grundkurs- and Leistungskurs-parents, and the two broad `Weitere Anwendungen` parents in addition to the previously reviewed Sek-II corridors in analysis, stochastics, analytic geometry, and lineare Algebra and the previously reviewed Sek-I corridors in late J10 functions, K10 growth and periodicity, K10 interest applications, K10 algebraic geometry problem solving, K9 functions and Potenzen, K9 circles/circular solids, K8 similarity, K8 heuristics, K8 chance experiments, K9 data, K8 middle-stage functions and lineare Gleichungssysteme, discrete random variables, K9 right-triangle geometry, K8 terms and equations, K7 rational numbers, K7 plane geometry, K7 prisms/pyramids, K7 data display, K6 fraction numbers, K6 shares/proportional views, K5 natural numbers, K5 fractions and decimals, K5 everyday-application linkage, K6 early mappings, and K5/K6 early geometry relations, rectangles/cuboids, prisms, and triangles/quadrilaterals.",
-      "nextStep": "Keep Sachsen stable as a broad reviewed comparison lane and move the next implementation step to the next still-open state lane."
+      "nextStep": "Keep Sachsen on maintenance only: refresh retained source snapshots, canonical mappings/provenance, applicability, and the state-scoped mathematics composition views together whenever a curriculum revision changes visible scope or learner-facing tree shape."
     },
     {
       "jurisdiction": "DE-ST",
       "repoStateKey": "ST",
       "displayName": "Sachsen-Anhalt",
-      "phase": "P5",
+      "phase": "P6",
       "priority": "backlog",
-      "sourceStage": "broad_reviewed_coverage",
+      "sourceStage": "cutover_ready",
       "mappingFiles": [
         "curricula/DE/Gymnasium/mapping/DE-ST/lower-secondary/st_math_lower_secondary_to_canonical_math.json",
         "curricula/DE/Gymnasium/mapping/DE-ST/upper-secondary/st_math_upper_secondary_to_canonical_math.json"
       ],
       "notes": "Sachsen-Anhalt is now on P5. Its lower-secondary and upper-secondary pilot snapshots are fully mapped on source-goal level, and the state now carries reviewed Sek-II corridors in analysis, stochastics, and analytic geometry, the exact lower-secondary and upper-secondary orientation bridges, partial structural `GA` / `EA` links onto the global canonical mathematics root, and reviewed lower-secondary coverage across foundations, algebra, functions, data/chance, geometry, measurement, trigonometry, and first vectors. The current Sachsen-Anhalt pilot snapshots are now stable broad comparison lanes rather than active onboarding residue.",
-      "nextStep": "Keep Sachsen-Anhalt stable as a broad reviewed comparison lane and move the next implementation step to the next still-open state lane."
+      "nextStep": "Keep Sachsen-Anhalt on maintenance only: refresh retained source snapshots, canonical mappings/provenance, applicability, and the state-scoped mathematics composition views together whenever a curriculum revision changes visible scope or learner-facing tree shape."
     },
     {
       "jurisdiction": "DE-TH",
       "repoStateKey": "TH",
       "displayName": "Thueringen",
-      "phase": "P5",
+      "phase": "P6",
       "priority": "backlog",
-      "sourceStage": "broad_reviewed_coverage",
+      "sourceStage": "cutover_ready",
       "mappingFiles": [
         "curricula/DE/Gymnasium/mapping/DE-TH/lower-secondary/th_math_lower_secondary_to_canonical_math.json",
         "curricula/DE/Gymnasium/mapping/DE-TH/upper-secondary/th_math_upper_secondary_to_canonical_math.json"
       ],
       "notes": "Thueringen is now on P5. Its lower-secondary and upper-secondary pilot snapshots are fully mapped on source-goal level, and the state now carries reviewed lower-secondary coverage across the explicit `Klassenstufen 5/6` lane in algebra, geometry, data/chance, and functions, the broad `Klassenstufen 7/8` lanes in algebra, functions, geometry, and data/chance, and the broad `Klassenstufen 9/10` lanes in algebra, geometry, data/chance, and functions, plus reviewed upper-secondary corridors in analysis, stochastics, analytic geometry / vectors, and lineare algebra / matrizen on the canonical DE math spine. The archived `Klassenstufen 9/10: Funktionen` strip is now deliberately closed as a broad reviewed function corridor on the shared Sek-I function surface because it crosses the visible `F4` / late-`J10` boundary too broadly for a narrower reviewed split.",
-      "nextStep": "Keep Thueringen stable as a broad reviewed comparison lane and move the next implementation step to the next still-open state lane."
+      "nextStep": "Keep Thueringen on maintenance only: refresh retained source snapshots, canonical mappings/provenance, applicability, and the state-scoped mathematics composition views together whenever a curriculum revision changes visible scope or learner-facing tree shape."
     }
   ]
 }

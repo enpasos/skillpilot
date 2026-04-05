@@ -1,6 +1,8 @@
 # HB Math Onboarding Note
 
-This note records the first Bremen source-landscape identifiers for the mathematics-first DE expansion track and their reserved pre-activation state.
+Status: P5 (`broad_reviewed_coverage`)
+
+This note records the first Bremen source-landscape identifiers for the mathematics-first DE expansion track and their now-active broad-reviewed-coverage state.
 
 Reserved source landscapes on `2026-03-28`:
 
@@ -24,6 +26,7 @@ Activation state:
 - both Bremen `sourceLandscapeId` values are now active in `source-landscape-registry.json`
 - both Bremen lanes now contribute source goal memberships to `source-goal-membership-registry.json`
 - both Bremen lanes now contribute atomic closures to `source-goal-closure-registry.json`
+- the reviewed exact Bremen lower-secondary and upper-secondary orientation anchors plus the exact Bremen `J9` entry anchor now also contribute canonical goal provenance in `canonical-goal-provenance-registry.json`
 - the lower-secondary mapping lane now carries the first structural anchor mappings:
   - Sek-I orientation root
   - paired grades `5/6` -> canonical `J6` (`partial`)
@@ -202,7 +205,7 @@ Archived local sources:
 Operational rule from here:
 
 - keep these reserved `sourceLandscapeId` values stable while the first Bremen lower-secondary and upper-secondary source snapshots remain the authoritative active source basis for the lanes
-- keep the Bremen `5/6`, `7/8`, and J9 lower-secondary corridors plus the now broad upper-secondary lane stable while the rollout shifts to other states
+- keep Bremen stable as a source-covered comparison lane; the next Bremen-specific cleanup step is the shared `P6/F6` learner-facing scope stabilization, not more topic breadth
 - the imported lower-secondary pilot subset currently covers:
   - the didactic orientation anchor for Sekundarstufe I
   - the paired grade anchors `5/6` and `7/8`

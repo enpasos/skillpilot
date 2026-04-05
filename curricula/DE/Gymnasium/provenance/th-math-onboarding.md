@@ -39,6 +39,7 @@ Activation state:
   - `curricula/DE/Gymnasium/provenance/source-landscape-registry.json`
   - `curricula/DE/Gymnasium/provenance/source-goal-membership-registry.json`
   - `curricula/DE/Gymnasium/provenance/source-goal-closure-registry.json`
+- the reviewed exact Thueringen lower-secondary and upper-secondary orientation anchors now also contribute canonical goal provenance in `canonical-goal-provenance-registry.json`
 - the first structural anchor mappings are now active:
   - lower-secondary root and orientation are connected
   - the broad lower-secondary `5/6`, `7/8`, and `9/10` source parents stay as structural bridges on the canonical mathematics root because the current Thueringen packaging has no direct combined canonical year-anchor counterpart
@@ -162,4 +163,4 @@ Operational rule from here:
 
 - keep the reserved `sourceLandscapeId` values stable
 - keep the current anchor mappings stable as the baseline
-- keep Thueringen stable as a broad reviewed comparison lane and move the next implementation step to the next still-open state lane
+- keep Thueringen stable as a source-covered comparison lane; the next Thueringen-specific cleanup step is the shared `P6/F6` learner-facing scope stabilization, not more topic breadth

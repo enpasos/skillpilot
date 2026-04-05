@@ -30,6 +30,7 @@ Current activation state:
   - `curricula/DE/Gymnasium/input/RP/upper-secondary/source-json/DE_RLP_S_GYM_2_MATHEMATIK.de.json.snapshot`
 - shared provenance registries are now active for both RP lanes
 - first structural anchor mappings are now in place for both RP lanes
+- the reviewed exact Rheinland-Pfalz lower-secondary contribution statement and upper-secondary MSS orientation statement now also contribute canonical goal provenance in `canonical-goal-provenance-registry.json`
 - the first reviewed lower-secondary function and algebra corridors are now open in classes 7 and 8, the first reviewed lower-secondary data/chance corridor is now open in classes 9 and 10, and the first reviewed lower-secondary geometry corridor is now open in classes 9 and 10
 - active snapshot scope:
   - lower-secondary: `30` goals / `30` closures / `30` mappings
@@ -41,4 +42,4 @@ Operational rule from here:
 - the reviewed RP upper-secondary analysis, stochastics, and combined geometry / linear algebra corridors are now open on top of the active anchor pass
 - the reviewed RP lower-secondary functions, algebra, data/chance, and geometry corridors now cover the current pilot snapshot on source-goal level
 - the current lower-secondary and upper-secondary RP pilot snapshots are now fully mapped at source-goal level
-- the next operational step is to keep Rheinland-Pfalz stable as a broad reviewed comparison lane and switch to the next still-open state lane
+- the next operational step is to keep Rheinland-Pfalz stable as a source-covered comparison lane; the next Rheinland-Pfalz-specific cleanup step is the shared `P6/F6` learner-facing scope stabilization, not more topic breadth

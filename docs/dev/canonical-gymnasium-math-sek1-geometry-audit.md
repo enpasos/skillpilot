@@ -569,4 +569,5 @@ Operational consequence:
 
 - `NW` now joins `BW`, `BY`, `BE`, `BB`, `NI`, and `SH` as resolved against the frozen `G2-G7` package surface
 - all Bundesland cells in the nationwide geometry row are now resolved once
+- the active canonical corridor `SEK1.J10.5D_GEOMETRY` can therefore move from `active` to `completed`; the remaining late-body breadth is accepted broad-source residue and should reopen only if a later reviewed lane or validator finding exposes a real shared gap beyond the current `G2-G7` surface
 - the remaining lower-secondary work signal therefore moves entirely to `Sek I Daten / Zufall`, not to another shared canonical geometry gap

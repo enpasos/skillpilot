@@ -286,9 +286,10 @@ def render() -> str:
     lines.append("")
     lines.append("## Immediate queue")
     lines.append("")
-    for row in rows:
-        if row["priority"] == "backlog":
-            continue
+    immediate_queue_rows = [row for row in rows if row["priority"] != "backlog"]
+    if not immediate_queue_rows:
+        lines.append("- none (`F6` complete; maintenance-only deltas remain)")
+    for row in immediate_queue_rows:
         lines.append(
             f"- `{row['jurisdiction']}` (`{row['phase_id']}`, `{row['priority']}`): {row['next_step']}"
         )
