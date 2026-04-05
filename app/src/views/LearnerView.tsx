@@ -952,22 +952,30 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
 
 
   // Auto-reveal when active goal changes (including from SSE updates).
-  // Only mark an active goal as handled once the tree can actually reveal it.
+  // Keep at most one pending selection request per active goal while the router catches up.
   const prevRevealedActiveGoalIdRef = useRef<string | null>(null)
+  const pendingActiveGoalSelectionRef = useRef<string | null>(null)
   useEffect(() => {
     if (!effectiveActiveGoalId) {
       prevRevealedActiveGoalIdRef.current = null
+      pendingActiveGoalSelectionRef.current = null
       return
     }
     if (!parentMap || parentMap.size === 0) return
 
+    if (selectedId === effectiveActiveGoalId) {
+      pendingActiveGoalSelectionRef.current = null
+    }
+
     const activeGoalChanged = effectiveActiveGoalId !== prevRevealedActiveGoalIdRef.current
     const needsSelection = selectedId !== effectiveActiveGoalId
     if (!activeGoalChanged && !needsSelection) return
+    if (!activeGoalChanged && pendingActiveGoalSelectionRef.current === effectiveActiveGoalId) return
 
     console.log('[SSE] 🎯 Active goal ready for reveal:', effectiveActiveGoalId)
     revealActiveGoal()
     prevRevealedActiveGoalIdRef.current = effectiveActiveGoalId
+    pendingActiveGoalSelectionRef.current = needsSelection ? effectiveActiveGoalId : null
   }, [effectiveActiveGoalId, parentMap, revealActiveGoal, selectedId])
 
 
@@ -1015,6 +1023,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
           setExpandedGoalIds(buildCollapsedFocusPath(targetId))
         }
         if (targetId !== selectedId) {
+          pendingActiveGoalSelectionRef.current = targetId
           onSelectGoal(targetId)
         }
         onRefresh?.()
