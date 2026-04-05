@@ -603,6 +603,7 @@ const App: React.FC = () => {
               getMastery={core.getMasteryValue}
               currentGoal={core.currentGoal}
               onSelectGoal={core.handleSelectAbsolute}
+              routeGoalId={core.currentRouteGoalId}
               skillpilotId={sanitizedSkillpilotId}
               landscapeId={core.selectedLandscapeId}
               currentLandscapeHasMatchedCompositionView={core.currentLandscapeHasMatchedCompositionView}

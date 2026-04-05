@@ -39,6 +39,7 @@ import { queueToastForNextLoad } from '../hooks/useToast'
 import { dispatchLearnerUiRefresh } from '../utils/learnerUiEvents'
 import { formatFilterDisplayLabel } from '../utils/filterLabels'
 import { getLearnerViewCopy } from '../utils/learnerViewCopy'
+import { getNextVisibleLearnerGoalSelection } from '../utils/learnerGoalSelection'
 import { normalizeLearnerVisibleChildrenMap } from '../utils/learnerTreeProjection'
 import {
   buildDirectChildrenMap,
@@ -56,6 +57,7 @@ interface LearnerViewProps {
   getMastery: (goalId: string) => number
   currentGoal: UiGoal | null
   onSelectGoal: (id: string) => void
+  routeGoalId?: string
   skillpilotId: string
   landscapeId: string
   currentLandscapeHasMatchedCompositionView: boolean
@@ -203,6 +205,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   getMastery,
   currentGoal,
   onSelectGoal,
+  routeGoalId,
   skillpilotId,
   landscapeId,
   currentLandscapeHasMatchedCompositionView,
@@ -277,7 +280,8 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     return null
   }, [hasAbi26Marker, queryCampaignContext, hasPersistedCampaignForLearner, persistedCampaignContext, skillpilotId])
 
-  const selectedId = currentGoal?.id ?? rootGoals[0]?.id ?? ''
+  const currentRouteGoalId = routeGoalId ?? ''
+  const selectedId = currentRouteGoalId || currentGoal?.id || rootGoals[0]?.id || ''
   const effectiveActiveGoalId = stateActiveGoalId ?? learnerData?.activeGoalId ?? null
   const hasTrackedCampaignOpenRef = useRef(false)
   const hasAppliedCampaignFilterRef = useRef(false)
@@ -509,19 +513,19 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   }, [visibleRootGoals, goalIndexAll, isPersonalConfigHydrating, personalConfig, getVisibleChildIds])
 
   useEffect(() => {
-    if (!currentGoal) return
-    if (visibleGoals.has(currentGoal.id)) return
+    const nextVisibleGoalId = getNextVisibleLearnerGoalSelection({
+      currentGoalId: currentGoal?.id,
+      currentRouteGoalId,
+      visibleGoalIds: visibleGoals,
+      activeGoalId: effectiveActiveGoalId,
+      plannedGoalIds: plannedGoals,
+      visibleRootGoalIds: visibleRootGoals.map((goal) => goal.id),
+    })
 
-    const nextVisibleGoalId =
-      (effectiveActiveGoalId && visibleGoals.has(effectiveActiveGoalId) ? effectiveActiveGoalId : undefined)
-      ?? Array.from(plannedGoals).find((goalId) => visibleGoals.has(goalId))
-      ?? visibleRootGoals.find((goal) => visibleGoals.has(goal.id))?.id
-      ?? Array.from(visibleGoals)[0]
-
-    if (nextVisibleGoalId && nextVisibleGoalId !== currentGoal.id) {
+    if (nextVisibleGoalId) {
       onSelectGoal(nextVisibleGoalId)
     }
-  }, [currentGoal, visibleGoals, effectiveActiveGoalId, plannedGoals, visibleRootGoals, onSelectGoal])
+  }, [currentGoal, currentRouteGoalId, visibleGoals, effectiveActiveGoalId, plannedGoals, visibleRootGoals, onSelectGoal])
 
   const getFilteredMastery = useCallback(
     (goalId: string) => {
@@ -627,10 +631,10 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     if (!effectiveActiveGoalId || !parentMap) return
     const targetId = effectiveActiveGoalId
     setExpandedGoalIds(buildCollapsedFocusPath(targetId))
-    if (targetId !== selectedId) {
+    if (targetId !== currentRouteGoalId) {
       onSelectGoal(targetId)
     }
-  }, [buildCollapsedFocusPath, effectiveActiveGoalId, parentMap, onSelectGoal, selectedId])
+  }, [buildCollapsedFocusPath, currentRouteGoalId, effectiveActiveGoalId, parentMap, onSelectGoal])
 
   // Reveal Scope (Planned Goals) Logic
   const revealScope = useCallback(() => {
@@ -639,10 +643,10 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     const targetId = Array.from(plannedGoals)[0]
     if (!targetId) return
     setExpandedGoalIds(buildCollapsedFocusPath(targetId))
-    if (targetId !== selectedId) {
+    if (targetId !== currentRouteGoalId) {
       onSelectGoal(targetId)
     }
-  }, [buildCollapsedFocusPath, parentMap, plannedGoals, onSelectGoal, selectedId])
+  }, [buildCollapsedFocusPath, currentRouteGoalId, parentMap, plannedGoals, onSelectGoal])
 
   // Auto-reveal scope on start if no active goal exists but scope is set
   const hasAutoRevealedScope = useRef(false)
@@ -954,29 +958,29 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   // Auto-reveal when active goal changes (including from SSE updates).
   // Keep at most one pending selection request per active goal while the router catches up.
   const prevRevealedActiveGoalIdRef = useRef<string | null>(null)
-  const pendingActiveGoalSelectionRef = useRef<string | null>(null)
+  const pendingActiveGoalRouteSyncRef = useRef<string | null>(null)
   useEffect(() => {
     if (!effectiveActiveGoalId) {
       prevRevealedActiveGoalIdRef.current = null
-      pendingActiveGoalSelectionRef.current = null
+      pendingActiveGoalRouteSyncRef.current = null
       return
     }
     if (!parentMap || parentMap.size === 0) return
 
-    if (selectedId === effectiveActiveGoalId) {
-      pendingActiveGoalSelectionRef.current = null
+    if (currentRouteGoalId === effectiveActiveGoalId) {
+      pendingActiveGoalRouteSyncRef.current = null
     }
 
     const activeGoalChanged = effectiveActiveGoalId !== prevRevealedActiveGoalIdRef.current
-    const needsSelection = selectedId !== effectiveActiveGoalId
-    if (!activeGoalChanged && !needsSelection) return
-    if (!activeGoalChanged && pendingActiveGoalSelectionRef.current === effectiveActiveGoalId) return
+    const routeNeedsSync = currentRouteGoalId !== effectiveActiveGoalId
+    if (!activeGoalChanged && !routeNeedsSync) return
+    if (!activeGoalChanged && pendingActiveGoalRouteSyncRef.current === effectiveActiveGoalId) return
 
     console.log('[SSE] 🎯 Active goal ready for reveal:', effectiveActiveGoalId)
     revealActiveGoal()
     prevRevealedActiveGoalIdRef.current = effectiveActiveGoalId
-    pendingActiveGoalSelectionRef.current = needsSelection ? effectiveActiveGoalId : null
-  }, [effectiveActiveGoalId, parentMap, revealActiveGoal, selectedId])
+    pendingActiveGoalRouteSyncRef.current = routeNeedsSync ? effectiveActiveGoalId : null
+  }, [currentRouteGoalId, effectiveActiveGoalId, parentMap, revealActiveGoal])
 
 
   // Load planned goals from backend
@@ -1022,8 +1026,8 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
         if (parentMap) {
           setExpandedGoalIds(buildCollapsedFocusPath(targetId))
         }
-        if (targetId !== selectedId) {
-          pendingActiveGoalSelectionRef.current = targetId
+        if (targetId !== currentRouteGoalId) {
+          pendingActiveGoalRouteSyncRef.current = targetId
           onSelectGoal(targetId)
         }
         onRefresh?.()
@@ -1051,8 +1055,8 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     onRefresh,
     onSelectGoal,
     buildCollapsedFocusPath,
+    currentRouteGoalId,
     parentMap,
-    selectedId,
     skillpilotId,
     t.notifications.activeGoalSetFailed,
     t.notifications.activeGoalSetSystemFailed,

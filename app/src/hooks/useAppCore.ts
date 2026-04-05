@@ -565,6 +565,7 @@ export function useAppCore({ role, setLearnerMeta, skillpilotId }: AppCoreOption
     landscapeError,
     showLearnerTools,
     selectedLandscapeId,
+    currentRouteGoalId: goalId ?? '',
     currentLandscapeEntry,
     currentLandscapeHasMatchedCompositionView,
     activeFilter,
