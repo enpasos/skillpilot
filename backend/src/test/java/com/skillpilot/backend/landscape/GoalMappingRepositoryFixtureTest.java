@@ -542,19 +542,24 @@ class GoalMappingRepositoryFixtureTest {
         assertThat(file.getSourceLandscapeId()).isEqualTo(BADEN_WUERTTEMBERG_MATH_UPPER_SECONDARY_LANDSCAPE_ID);
         assertThat(file.getTargetLandscapeId()).isEqualTo(CANONICAL_MATH_ID);
         assertThat(file.getMappings()).hasSize(89);
-        assertThat(file.getMappings()).filteredOn(entry -> "exact".equals(entry.getMatchType())).hasSize(13);
-        assertThat(file.getMappings()).filteredOn(entry -> "partial".equals(entry.getMatchType())).hasSize(76);
+        assertThat(file.getMappings()).filteredOn(entry -> "exact".equals(entry.getMatchType())).hasSize(18);
+        assertThat(file.getMappings()).filteredOn(entry -> "partial".equals(entry.getMatchType())).hasSize(71);
         assertThat(file.getMappings())
                 .extracting(GoalMappingEntry::getLegacyGoalId, GoalMappingEntry::getCanonicalGoalId, GoalMappingEntry::getMatchType)
                 .contains(
                         Tuple.tuple("f84004f9-0987-40f4-88dd-830c039b7bf6", "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2", "exact"),
-                        Tuple.tuple("e0769810-ba73-4a52-8e9c-660d1fb9d6e6", "4047af71-de53-5dc3-80c6-a7c78fb4bfe4", "partial"),
+                        Tuple.tuple("e0769810-ba73-4a52-8e9c-660d1fb9d6e6", "628928a6-4f48-54dc-952d-dec0e69dc856", "partial"),
                         Tuple.tuple("7bf62048-84ba-467f-ba23-f053c4e2989f", "a9ed219d-d497-55e5-a4e0-4d45d2554f6b", "partial"),
                         Tuple.tuple("46690ab9-0b1f-4bd9-9409-4976a40c6ec2", "e9ad45b9-c0d2-5804-b6bf-79e5ce041d2c", "partial"),
                         Tuple.tuple("c5739dd3-a261-4229-aff6-678d8ee618b3", "1511b39a-4094-5450-a755-4a3ad3339733", "partial"),
                         Tuple.tuple("13e285f3-522c-4eae-9fed-8b13b2af7b7d", "c72a8032-71f6-56ed-a896-06ae435ff2ec", "partial"),
+                        Tuple.tuple("34ee3898-2b07-4096-adbb-9cc4bd6db065", "94d63ad9-ae1c-5ff2-b05e-188a0f5ebec6", "exact"),
                         Tuple.tuple("8ab263f6-a460-4ca2-bbe9-b7e9a22bbaa2", "e7350739-c89f-5c7b-b4d1-717d6a767298", "partial"),
+                        Tuple.tuple("8c12f6ea-154d-44ab-af4d-4de8c5c325c7", "d900e0a4-0c45-50dd-a37b-01f9f91a134c", "exact"),
+                        Tuple.tuple("8d7a8269-f56d-483a-b733-a0f50e257b49", "0f4f9957-8afe-4aab-9dd8-c26c9aee2afd", "exact"),
                         Tuple.tuple("97ab0ab9-9444-410d-b2d9-1ac9fa935ad8", "2afba4a2-287d-5e8f-aeee-a3bcf8652236", "exact"),
+                        Tuple.tuple("d344ae76-c06b-4ad2-93eb-d287a4fdec36", "7d9c565c-8df1-40ca-b3c6-2d4ec51e9140", "exact"),
+                        Tuple.tuple("7289bdba-0913-4a64-b46f-a58c3c431c42", "7d9c565c-8df1-40ca-b3c6-2d4ec51e9140", "exact"),
                         Tuple.tuple("e0c333ea-9873-4718-819c-d39b22ccee30", "b9bbd2a8-1379-5ffb-817f-41467d48abef", "partial"),
                         Tuple.tuple("72d7ad67-e2ef-41a0-bb52-b62eb5d071e0", "2afba4a2-287d-5e8f-aeee-a3bcf8652236", "partial"),
                         Tuple.tuple("65117831-b95b-4f8a-b1af-606785b92b5c", "ccd47872-4d9d-44db-8c8d-eda24019b502", "exact"),
@@ -570,8 +575,8 @@ class GoalMappingRepositoryFixtureTest {
         assertThat(file.getSourceLandscapeId()).isEqualTo(SCHLESWIG_HOLSTEIN_MATH_UPPER_SECONDARY_LANDSCAPE_ID);
         assertThat(file.getTargetLandscapeId()).isEqualTo(CANONICAL_MATH_ID);
         assertThat(file.getMappings()).hasSize(41);
-        assertThat(file.getMappings()).filteredOn(entry -> "exact".equals(entry.getMatchType())).hasSize(21);
-        assertThat(file.getMappings()).filteredOn(entry -> "partial".equals(entry.getMatchType())).hasSize(20);
+        assertThat(file.getMappings()).filteredOn(entry -> "exact".equals(entry.getMatchType())).hasSize(25);
+        assertThat(file.getMappings()).filteredOn(entry -> "partial".equals(entry.getMatchType())).hasSize(16);
         assertThat(file.getMappings())
                 .extracting(GoalMappingEntry::getLegacyGoalId, GoalMappingEntry::getCanonicalGoalId, GoalMappingEntry::getMatchType)
                 .contains(
@@ -580,11 +585,13 @@ class GoalMappingRepositoryFixtureTest {
                         Tuple.tuple("sh-sek2-e-analysis-ableitungen", "858113c5-e53b-57bb-b01f-ba95c3ddcb6f", "exact"),
                         Tuple.tuple("sh-sek2-e-analysis-extrempunkte", "350fc8b1-ead0-4239-b28a-217cbd3bd1c3", "exact"),
                         Tuple.tuple("sh-sek2-e-analysis-wendepunkte", "b3604df4-15a8-41c8-a8b0-50dadd698bd3", "exact"),
-                        Tuple.tuple("sh-sek2-q1-analysis-integralrechnung", "93ac7fc8-6d83-5394-bbea-80758b463da1", "partial"),
+                        Tuple.tuple("sh-sek2-q1-analysis-integralrechnung", "93ac7fc8-6d83-5394-bbea-80758b463da1", "exact"),
                         Tuple.tuple("sh-sek2-q1-analysis-integralrechnung-hauptsatz", "b9bbd2a8-1379-5ffb-817f-41467d48abef", "exact"),
                         Tuple.tuple("sh-sek2-q1-analysis-integralrechnung-integrale", "a9ed219d-d497-55e5-a4e0-4d45d2554f6b", "exact"),
                         Tuple.tuple("sh-sek2-q1-analysis-e-funktion", "628928a6-4f48-54dc-952d-dec0e69dc856", "exact"),
-                        Tuple.tuple("sh-sek2-q1-analysis-vertiefung", "76842ec4-c76b-5c03-9694-8a18acb1da0f", "partial"));
+                        Tuple.tuple("sh-sek2-q1-stochastik-hypergeometrische-verteilungen", "1462c189-8679-5f32-bf58-6e81e99e4635", "exact"),
+                        Tuple.tuple("sh-sek2-q1-analysis-vertiefung", "76842ec4-c76b-5c03-9694-8a18acb1da0f", "exact"),
+                        Tuple.tuple("sh-sek2-q2-analysis-vertiefung", "76842ec4-c76b-5c03-9694-8a18acb1da0f", "exact"));
     }
 
     @Test
