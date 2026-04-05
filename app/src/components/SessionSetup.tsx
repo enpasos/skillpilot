@@ -22,6 +22,7 @@ import { useLanguage } from '../contexts/LanguageContext'
 import { AudioPlayer } from './AudioPlayer'
 import { getSkillpilotGptUrl } from '../utils/skillpilotGpt'
 import { normalizeTrainerLandscapeId } from '../utils/trainerLandscapeContext'
+import { sanitizeSkillpilotId } from '../utils/skillpilotId'
 
 export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skillpilotId, setSkillpilotId, onStart }) => {
   const t = useTranslation()
@@ -53,7 +54,7 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
     }
 
     if (deepLinkId) {
-      const id = deepLinkId.trim();
+      const id = sanitizeSkillpilotId(deepLinkId);
       if (skillpilotId !== id) {
         setSkillpilotId(id);
       }
@@ -100,7 +101,7 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
       const data = await res.json()
       const id = data.state?.skillpilotId || data.skillpilotId || data.learnerId || data.id
       if (!id) throw new Error('Keine SkillPilot-ID im Response')
-      setSkillpilotId(String(id))
+      setSkillpilotId(sanitizeSkillpilotId(String(id)))
 
       if (data.availableCurricula) {
         setAvailableCurricula(data.availableCurricula)
@@ -116,7 +117,8 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
   }
 
   const checkLearner = async (id: string) => {
-    if (!id) {
+    const sanitizedId = sanitizeSkillpilotId(id)
+    if (!sanitizedId) {
       setSelectedLandscapeId('')
       setAvailableCurricula([])
       setHasCheckedId(false)
@@ -125,7 +127,7 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
     setLoading(true)
     try {
       const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
-      const url = apiBase ? `${apiBase}/api/ui/learners/${id}` : `/api/ui/learners/${id}`
+      const url = apiBase ? `${apiBase}/api/ui/learners/${sanitizedId}` : `/api/ui/learners/${sanitizedId}`
       const res = await fetch(url)
       if (res.ok) {
         const data = await res.json()
@@ -143,9 +145,9 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault()
-    if (role === 'learner' && !skillpilotId.trim()) return
+    if (role === 'learner' && !sanitizeSkillpilotId(skillpilotId)) return
 
-    const effectiveId = role === 'learner' ? skillpilotId.trim() : ''
+    const effectiveId = role === 'learner' ? sanitizeSkillpilotId(skillpilotId) : ''
 
     if (role === 'learner' && selectedLandscapeId) {
       // Save selection to backend before navigation so learner state is in sync.
@@ -283,14 +285,14 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
                   const id = localStorage.getItem('skillpilot_id')
                   const savedLandscape = localStorage.getItem('skillpilot_learner_landscape')
                   if (id) {
-                    setSkillpilotId(id)
+                    setSkillpilotId(sanitizeSkillpilotId(id))
                     // If we have a saved landscape, set it immediately and mark as checked
                     if (savedLandscape) {
                       setSelectedLandscapeId(savedLandscape)
                       setHasCheckedId(true)
                     }
                     // Still check learner to get latest data from server (non-blocking update)
-                    checkLearner(id)
+                    checkLearner(sanitizeSkillpilotId(id))
                   }
                   setShowLogin(true)
                 }}
@@ -408,12 +410,12 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
                       type="text"
                       value={skillpilotId}
                       onChange={(event) => {
-                        setSkillpilotId(event.target.value)
+                        setSkillpilotId(sanitizeSkillpilotId(event.target.value))
                         resetTransientSetupState()
                       }}
                       onBlur={() => {
                         if (!hasCheckedId) {
-                          checkLearner(skillpilotId.trim())
+                          checkLearner(sanitizeSkillpilotId(skillpilotId))
                         }
                       }}
                       className="rounded border border-border-color bg-input-bg px-3 py-2 text-sm text-text-primary font-mono focus:border-sky-400 transition-colors"
@@ -426,11 +428,11 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
                     {error && <span className="text-[11px] text-rose-300 mt-1">Fehler: {error}</span>}
 
                     {/* Show "Weiter" button if we have an ID but haven't checked it yet */}
-                    {skillpilotId.trim().length > 0 && !hasCheckedId && (
+                    {sanitizeSkillpilotId(skillpilotId).length > 0 && !hasCheckedId && (
                       <div className="pt-2">
                         <button
                           type="button"
-                          onClick={() => checkLearner(skillpilotId.trim())}
+                          onClick={() => checkLearner(sanitizeSkillpilotId(skillpilotId))}
                           disabled={loading}
                           className="w-full rounded-full border border-sky-500/50 bg-sky-600/20 px-4 py-2 text-sm font-semibold text-sky-100 hover:bg-sky-600/40 hover:border-sky-400 transition-colors"
                         >
@@ -468,7 +470,7 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
                     <div className="pt-4">
                       <button
                         type="submit"
-                        disabled={(role === 'learner' && !skillpilotId.trim()) || !selectedLandscapeId}
+                        disabled={(role === 'learner' && !sanitizeSkillpilotId(skillpilotId)) || !selectedLandscapeId}
                         className="w-full rounded-full border border-sky-500 bg-sky-600 px-4 py-2 text-sm font-semibold text-white hover:bg-sky-500 hover:border-sky-400 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                       >
                         {role === 'trainer' ? t.startPage.login.dashboardButton : t.startPage.login.startButton}

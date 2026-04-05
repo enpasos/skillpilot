@@ -7,6 +7,7 @@ import { useAppCore } from './hooks/useAppCore'
 import { consumeQueuedToast, useToast } from './hooks/useToast'
 import { useTranslation } from './hooks/useTranslation'
 import { useLanguage } from './contexts/LanguageContext'
+import { sanitizeSkillpilotId } from './utils/skillpilotId'
 
 type Role = 'learner' | 'trainer' | 'explorer'
 
@@ -92,11 +93,11 @@ const App: React.FC = () => {
     return (localStorage.getItem('skillpilot_role') as Role) || null
   })
   const [skillpilotId, setSkillpilotId] = useState(() => {
-    return localStorage.getItem('skillpilot_id') || ''
+    return sanitizeSkillpilotId(localStorage.getItem('skillpilot_id'))
   })
   const [hasSession, setHasSession] = useState(() => {
     const storedRole = localStorage.getItem('skillpilot_role')
-    const storedId = localStorage.getItem('skillpilot_id')
+    const storedId = sanitizeSkillpilotId(localStorage.getItem('skillpilot_id'))
     if (!storedRole) return false
     if (storedRole === 'learner') return !!storedId
     return true
@@ -110,6 +111,8 @@ const App: React.FC = () => {
   const { toast, showToast } = useToast()
   const navigate = useNavigate()
   const location = useLocation()
+  const sanitizedSkillpilotId = sanitizeSkillpilotId(skillpilotId)
+  const hasActiveSession = hasSession && (role !== 'learner' || !!sanitizedSkillpilotId)
   // Use window.location as fallback for initial load after OAuth redirect (SPA cache issue)
   const actualPath = window.location.pathname
   const normalizedPath = location.pathname === '/' ? '/' : location.pathname.replace(/\/+$/, '')
@@ -130,8 +133,19 @@ const App: React.FC = () => {
     isQuickstartRoute ||
     isStartRoute
 
-  const core = useAppCore({ role: role || 'explorer', setLearnerMeta, skillpilotId })
+  const core = useAppCore({ role: role || 'explorer', setLearnerMeta, skillpilotId: sanitizedSkillpilotId })
   const { currentLandscapeEntry, landscapeEntries, selectionGoalIndexAll } = core
+
+  useEffect(() => {
+    const storedId = localStorage.getItem('skillpilot_id')
+    const sanitizedStoredId = sanitizeSkillpilotId(storedId)
+    if ((storedId ?? '') === sanitizedStoredId) return
+    if (sanitizedStoredId) {
+      localStorage.setItem('skillpilot_id', sanitizedStoredId)
+    } else {
+      localStorage.removeItem('skillpilot_id')
+    }
+  }, [])
 
   useEffect(() => {
     const queuedToast = consumeQueuedToast()
@@ -271,7 +285,7 @@ const App: React.FC = () => {
       path === '/quickstart' || path.startsWith('/quickstart/') ||
       path === '/start' || path.startsWith('/start/')
     const isGoalView = GOAL_VIEWS.has(view)
-    const hasAccess = hasSession || isPublicPath || path === '/'
+    const hasAccess = hasActiveSession || isPublicPath || path === '/'
     const baseTitle = 'SkillPilot'
     const defaultDescription =
       language === 'en'
@@ -355,7 +369,7 @@ const App: React.FC = () => {
       } else {
         title = `${baseTitle} | ${t.startPage.subtitle}`
       }
-    } else if (!hasSession) {
+    } else if (!hasActiveSession) {
       title = `${baseTitle} | ${t.startPage.subtitle}`
     } else if (isGoalView && core.currentGoal) {
       title = `${core.currentGoal.title} | ${baseTitle}`
@@ -382,7 +396,7 @@ const App: React.FC = () => {
     upsertMetaTag('name', 'twitter:title', title)
     upsertMetaTag('name', 'twitter:description', finalDescription)
     upsertMetaTag('name', 'twitter:image', imageUrl)
-  }, [location.pathname, hasSession, language, t, core.currentGoal])
+  }, [location.pathname, hasActiveSession, language, t, core.currentGoal])
 
   const handleLogout = () => {
     localStorage.removeItem('skillpilot_id')
@@ -396,7 +410,7 @@ const App: React.FC = () => {
   }
 
   useEffect(() => {
-    if (!hasSession) return
+    if (!hasActiveSession) return
     if (isPublicRoute) return // Don't redirect if on public route
 
     // Deep Link Enforcer for Goal Navigation
@@ -427,7 +441,7 @@ const App: React.FC = () => {
     if (!window.location.pathname.startsWith(desiredPath) && window.location.pathname !== '/') {
       navigate(desiredPath + location.search, { replace: true })
     }
-  }, [role, hasSession, navigate, isPublicRoute, location.search])
+  }, [role, hasActiveSession, navigate, isPublicRoute, location.search])
 
   // Direct check for /curricula using window.location to handle OAuth redirect cache issues
   // This ensures CurriculaView is rendered even if React Router state is out of sync
@@ -458,20 +472,21 @@ const App: React.FC = () => {
     )
   }
 
-  if (!hasSession || (normalizedPath === '/' && !pendingLandscapeId)) {
+  if (!hasActiveSession || (normalizedPath === '/' && !pendingLandscapeId)) {
     return (
       <SessionSetup
         role={role}
         setRole={setRole}
-        skillpilotId={skillpilotId}
+        skillpilotId={sanitizedSkillpilotId}
         setSkillpilotId={setSkillpilotId}
         onStart={(id, landscapeId, forceRole, forceGoalId) => {
           const activeRole = forceRole || role
           if (!activeRole) return
-          setSkillpilotId(id)
+          const sanitizedId = sanitizeSkillpilotId(id)
+          setSkillpilotId(sanitizedId)
           setHasSession(true)
           setRole(activeRole) // Explicitly set role to avoid redirect race
-          localStorage.setItem('skillpilot_id', id)
+          localStorage.setItem('skillpilot_id', sanitizedId)
           localStorage.setItem('skillpilot_role', activeRole)
           if (landscapeId) {
             setPendingLandscapeId(landscapeId)
@@ -505,15 +520,16 @@ const App: React.FC = () => {
       <SessionSetup
         role={role}
         setRole={setRole}
-        skillpilotId={skillpilotId}
+        skillpilotId={sanitizedSkillpilotId}
         setSkillpilotId={setSkillpilotId}
         onStart={(id, landscapeId, forceRole, forceGoalId) => {
           const activeRole = forceRole || role
           if (!activeRole) return
-          setSkillpilotId(id)
+          const sanitizedId = sanitizeSkillpilotId(id)
+          setSkillpilotId(sanitizedId)
           setHasSession(true)
           setRole(activeRole) // Explicitly set role to avoid redirect race
-          localStorage.setItem('skillpilot_id', id)
+          localStorage.setItem('skillpilot_id', sanitizedId)
           localStorage.setItem('skillpilot_role', activeRole)
           if (landscapeId) {
             setPendingLandscapeId(landscapeId)
@@ -587,7 +603,7 @@ const App: React.FC = () => {
               getMastery={core.getMasteryValue}
               currentGoal={core.currentGoal}
               onSelectGoal={core.handleSelectAbsolute}
-              skillpilotId={skillpilotId}
+              skillpilotId={sanitizedSkillpilotId}
               landscapeId={core.selectedLandscapeId}
               currentLandscapeHasMatchedCompositionView={core.currentLandscapeHasMatchedCompositionView}
               activeFilter={core.activeFilter}

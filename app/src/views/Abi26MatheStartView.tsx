@@ -19,6 +19,7 @@ import {
 import { trackCampaignEvent } from '../utils/campaignTracking'
 import { useLanguage } from '../contexts/LanguageContext'
 import { formatFilterDisplayLabel } from '../utils/filterLabels'
+import { sanitizeSkillpilotId } from '../utils/skillpilotId'
 
 const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
 const toApi = (path: string) => (apiBase ? `${apiBase}${path}` : path)
@@ -90,7 +91,7 @@ export const Abi26MatheStartView: React.FC = () => {
         throw new Error(`ID-Service ist gerade nicht erreichbar (HTTP ${createRes.status}).`)
       }
       const created = await createRes.json()
-      const id = String(created?.state?.skillpilotId || created?.skillpilotId || created?.learnerId || created?.id || '').trim()
+      const id = sanitizeSkillpilotId(String(created?.state?.skillpilotId || created?.skillpilotId || created?.learnerId || created?.id || ''))
       if (!id) {
         throw new Error('Die SkillPilot-ID konnte nicht erzeugt werden. Bitte erneut versuchen.')
       }
