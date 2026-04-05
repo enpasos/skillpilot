@@ -951,15 +951,24 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   useLearnerUpdates(skillpilotId, handleSseUpdate)
 
 
-  // Auto-reveal when active goal changes (including from SSE updates)
-  const prevActiveGoalIdRef = useRef<string | null>(null)
+  // Auto-reveal when active goal changes (including from SSE updates).
+  // Only mark an active goal as handled once the tree can actually reveal it.
+  const prevRevealedActiveGoalIdRef = useRef<string | null>(null)
   useEffect(() => {
-    if (effectiveActiveGoalId && effectiveActiveGoalId !== prevActiveGoalIdRef.current) {
-      console.log('[SSE] 🎯 Active goal changed, revealing:', effectiveActiveGoalId)
-      revealActiveGoal()
+    if (!effectiveActiveGoalId) {
+      prevRevealedActiveGoalIdRef.current = null
+      return
     }
-    prevActiveGoalIdRef.current = effectiveActiveGoalId
-  }, [effectiveActiveGoalId, revealActiveGoal])
+    if (!parentMap || parentMap.size === 0) return
+
+    const activeGoalChanged = effectiveActiveGoalId !== prevRevealedActiveGoalIdRef.current
+    const needsSelection = selectedId !== effectiveActiveGoalId
+    if (!activeGoalChanged && !needsSelection) return
+
+    console.log('[SSE] 🎯 Active goal ready for reveal:', effectiveActiveGoalId)
+    revealActiveGoal()
+    prevRevealedActiveGoalIdRef.current = effectiveActiveGoalId
+  }, [effectiveActiveGoalId, parentMap, revealActiveGoal, selectedId])
 
 
   // Load planned goals from backend
