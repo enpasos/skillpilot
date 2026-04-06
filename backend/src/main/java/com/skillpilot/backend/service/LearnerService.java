@@ -1116,27 +1116,15 @@ public class LearnerService {
         if (storedActiveGoalId != null && !storedActiveGoalId.isBlank()) {
             String curriculumId = learner.getSelectedCurriculum();
             if (curriculumId != null) {
-                // Must rebuild context to compute scope
                 Map<String, LearningGoal> allGoals = getFilteredGoals(curriculumId, learner.getPersonalCurriculum());
-                Map<String, List<String>> effectiveRequires = computeEffectiveRequires(allGoals);
-                List<String> newPlannedIds = new ArrayList<>(normalizedTargetIds); // Use the new set
+                Map<String, LearningGoal> structuralGoals = getFilteredGoals(curriculumId, "{}");
+                List<String> newPlannedIds = new ArrayList<>(normalizedTargetIds);
                 String activeGoalId = resolveGoalIdInVisibleGoals(storedActiveGoalId, allGoals, false);
+                boolean activeGoalOutOfScope = activeGoalId != null
+                        && isGoalOutOfPlannedScope(activeGoalId, newPlannedIds, structuralGoals, null);
 
-                Set<String> newScope = computeScope(newPlannedIds, allGoals, effectiveRequires);
-
-                // If scope is empty (Plan cleared), active goal is usually invalid unless it's
-                // a top-level module?
-                // But setActiveGoal restricts to atomic frontier.
-                // If plan is cleared, we are in overview. Active goal should probably be
-                // cleared to be safe.
-                boolean inScope = activeGoalId != null && newScope.contains(activeGoalId);
-
-                if (!inScope) {
-                    learner.setActiveGoalId(null);
-                    learner.setLearningState(LearningState.FRONTIER);
-                    learnerRepository.save(learner);
-                    eventPublisher.publishEvent(
-                            new LearnerStateChangedEvent(this, skillpilotId, "ACTIVE_GOAL_CLEARED_BY_SCOPE"));
+                if (activeGoalOutOfScope) {
+                    clearPersistedActiveGoal(learner, skillpilotId, "ACTIVE_GOAL_CLEARED_OUT_OF_SCOPE");
                 }
             }
         }
@@ -2993,6 +2981,10 @@ public class LearnerService {
             }
         }
 
+        Set<String> scope = Collections.emptySet();
+        if (curriculumId != null && !plannedIds.isEmpty()) {
+            scope = computeScope(plannedIds, structuralGoals, Collections.emptyMap());
+        }
         Map<String, Double> mastery = getMastery(skillpilotId);
         String storedActiveGoalId = learner.getActiveGoalId();
         String activeGoalId = resolveGoalIdInVisibleGoals(storedActiveGoalId, allGoals, false);
@@ -3001,20 +2993,21 @@ public class LearnerService {
         boolean activeGoalInvalidInView = storedActiveGoalId != null
                 && !storedActiveGoalId.isBlank()
                 && activeGoalId == null;
-        if (activeGoalMastered || activeGoalInvalidInView) {
-            // Persistently clear stale active goals.
-            learner.setActiveGoalId(null);
-            learner.setLearningState(LearningState.FRONTIER);
-            learnerRepository.save(learner);
-            eventPublisher.publishEvent(
-                    new LearnerStateChangedEvent(this, skillpilotId,
-                            activeGoalInvalidInView ? "ACTIVE_GOAL_CLEARED_INVALID_VIEW" : "ACTIVE_GOAL_CLEARED_STALE"));
+        boolean activeGoalIsCurrentViewGoal = storedActiveGoalId != null
+                && !storedActiveGoalId.isBlank()
+                && storedActiveGoalId.equals(activeGoalId);
+        boolean activeGoalOutOfScope = activeGoalIsCurrentViewGoal
+                && activeGoalId != null
+                && isGoalOutOfPlannedScope(activeGoalId, plannedIds, structuralGoals, scope);
+        if (activeGoalMastered || activeGoalInvalidInView || activeGoalOutOfScope) {
+            clearPersistedActiveGoal(
+                    learner,
+                    skillpilotId,
+                    activeGoalInvalidInView
+                            ? "ACTIVE_GOAL_CLEARED_INVALID_VIEW"
+                            : activeGoalOutOfScope ? "ACTIVE_GOAL_CLEARED_OUT_OF_SCOPE" : "ACTIVE_GOAL_CLEARED_STALE");
             activeGoalId = null;
             activeGoalMastered = false;
-        }
-        Set<String> scope = Collections.emptySet();
-        if (curriculumId != null && !plannedIds.isEmpty()) {
-            scope = computeScope(plannedIds, structuralGoals, Collections.emptyMap());
         }
 
         com.skillpilot.backend.api.GoalStats personalizedStats = computeAtomicStats(allGoals, null, mastery);
@@ -4568,6 +4561,33 @@ public class LearnerService {
         // User requested that focus should strictly be Plan + Descendants.
         // Prerequisites outside this scope should be ignored in getRichFrontier.
         return scope;
+    }
+
+    private boolean isGoalOutOfPlannedScope(
+            String goalId,
+            List<String> plannedIds,
+            Map<String, LearningGoal> structuralGoals,
+            Set<String> precomputedScope) {
+        if (goalId == null || goalId.isBlank()) {
+            return false;
+        }
+        if (plannedIds == null || plannedIds.isEmpty()) {
+            return true;
+        }
+        if (structuralGoals == null || structuralGoals.isEmpty()) {
+            return true;
+        }
+        Set<String> scope = precomputedScope != null
+                ? precomputedScope
+                : computeScope(plannedIds, structuralGoals, Collections.emptyMap());
+        return !scope.contains(goalId);
+    }
+
+    private void clearPersistedActiveGoal(Learner learner, String skillpilotId, String changeType) {
+        learner.setActiveGoalId(null);
+        learner.setLearningState(LearningState.FRONTIER);
+        learnerRepository.save(learner);
+        eventPublisher.publishEvent(new LearnerStateChangedEvent(this, skillpilotId, changeType));
     }
 
 }

@@ -63,6 +63,7 @@ class LearnerServiceCanonicalProjectionTest {
     private static final String LEGACY_SEK1_NUMBER_BASICS_ID = "d20fcef5-b5dd-4e97-945a-52f7b7d89306";
     private static final String LEGACY_SEK1_PROPORTIONAL_ID = "ed0c5283-b1b2-4562-9115-7336fca7a8d4";
     private static final String CANONICAL_SEK1_PROPORTIONAL_ID = "c1f50bcc-7848-4e49-b9de-0ec030cc6bca";
+    private static final String CANONICAL_SEK1_COORDINATE_GEOMETRY_ID = "121e3fdf-54d2-4d46-bc2d-f6e725f10f41";
     private static final String LEGACY_SEK1_LINEAR_EQUATIONS_ID = "05b6a520-c23a-414a-842a-ba1c0e57b776";
     private static final String LEGACY_SEK1_BINOMIALS_ID = "172f1e73-b8fa-47be-b7af-50c93ce8cc7b";
     private static final String LEGACY_ANALYSIS_CLUSTER_ID = "a6ee6304-8c26-4eda-b56e-676655e703c2";
@@ -963,6 +964,28 @@ class LearnerServiceCanonicalProjectionTest {
         assertThat(state.stateMachine().goalOptions())
                 .extracting(FrontierGoal::id)
                 .containsExactly(CANONICAL_FUNCTION_CONCEPT_ID);
+    }
+
+    @Test
+    void getLearnerStateClearsActiveGoalWhenPlannedFocusExcludesIt() {
+        learner.setActiveGoalId(CANONICAL_SEK1_COORDINATE_GEOMETRY_ID);
+        when(plannedGoalRepository.findByLearner_SkillpilotId(LEARNER_ID))
+                .thenReturn(List.of(new PlannedGoal(learner, CANONICAL_ANALYSIS_CLUSTER_ID)));
+        when(masteryRepository.findByLearner_SkillpilotId(LEARNER_ID)).thenReturn(List.of());
+
+        UnifiedLearnerStateResponse state = learnerService.getLearnerState(LEARNER_ID);
+
+        assertThat(state.activeGoal()).isNull();
+        assertThat(learner.getActiveGoalId()).isNull();
+        assertThat(learner.getLearningState()).isEqualTo(LearningState.FRONTIER);
+        verify(learnerRepository).save(argThat(saved ->
+                saved != null
+                        && saved.getActiveGoalId() == null
+                        && saved.getLearningState() == LearningState.FRONTIER));
+        verify(eventPublisher).publishEvent(argThat(event ->
+                event instanceof LearnerStateChangedEvent changedEvent
+                        && "ACTIVE_GOAL_CLEARED_OUT_OF_SCOPE".equals(changedEvent.getChangeType())
+                        && LEARNER_ID.equals(changedEvent.getSkillpilotId())));
     }
 
     @Test

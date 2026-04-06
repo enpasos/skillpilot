@@ -874,6 +874,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
         if (res.ok) {
           setCompatibilityRouteRetired(false)
           const data = await res.json()
+          const backendActiveGoalId = data.activeGoal?.id ?? data.stateMachine?.activeGoal?.id ?? null
           if (data.frontier && Array.isArray(data.frontier)) {
             setFrontierOptions(data.frontier)
           } else if (data.stateMachine && Array.isArray(data.stateMachine.goalOptions)) {
@@ -881,7 +882,11 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
           } else {
             setFrontierOptions([])
           }
-          setStateActiveGoalId(data.activeGoal?.id ?? data.stateMachine?.activeGoal?.id ?? null)
+          if (data.goals?.planned && Array.isArray(data.goals.planned)) {
+            setPlannedGoals(new Set(data.goals.planned.map((goal: { id?: string }) => goal.id).filter(Boolean)))
+          }
+          setStateActiveGoalId(backendActiveGoalId)
+          setLearnerData(prev => prev ? { ...prev, activeGoalId: backendActiveGoalId ?? undefined } : prev)
           setStateRequiredAction(data.stateMachine?.requiredAction ?? null)
           // Store backend-computed stats for consistency with GPT
           if (data.goals) {
@@ -899,6 +904,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
           setCompatibilityRouteRetired(true)
           setFrontierOptions([])
           setStateActiveGoalId(null)
+          setLearnerData(prev => prev ? { ...prev, activeGoalId: undefined } : prev)
           setStateRequiredAction('compatibilityArchive')
           setBackendStats(null)
           clearReportedLoadError('learner-initial-load')
