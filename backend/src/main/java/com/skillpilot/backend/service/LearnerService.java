@@ -738,7 +738,8 @@ public class LearnerService {
         if (curriculumId != null) {
             goals = getFilteredGoals(curriculumId, learner.getPersonalCurriculum());
         }
-        Map<String, Double> projected = applyCanonicalMasteryProjection(goals, result);
+        String projectionStateFilterId = resolveProjectionStateFilterId(learner);
+        Map<String, Double> projected = applyCanonicalMasteryProjection(goals, result, projectionStateFilterId);
         return applySrsMasteryOverlay(skillpilotId, goals, projected);
     }
 
@@ -755,7 +756,11 @@ public class LearnerService {
         if (curriculumId != null) {
             goals = getFilteredGoals(curriculumId, learner.getPersonalCurriculum());
         }
-        Map<String, MasteryEntryDTO> projected = applyCanonicalMasteryProjectionWithTimestamps(goals, result);
+        String projectionStateFilterId = resolveProjectionStateFilterId(learner);
+        Map<String, MasteryEntryDTO> projected = applyCanonicalMasteryProjectionWithTimestamps(
+                goals,
+                result,
+                projectionStateFilterId);
         return applySrsMasteryOverlayWithTimestamps(skillpilotId, goals, projected);
     }
 
@@ -765,6 +770,7 @@ public class LearnerService {
             return Collections.emptyMap();
         }
 
+        Learner learner = getLearner(skillpilotId);
         List<Mastery> mastered = masteryRepository.findByLearner_SkillpilotId(skillpilotId);
         Map<String, MasteryEntryDTO> result = new HashMap<>();
         for (Mastery m : mastered) {
@@ -779,12 +785,17 @@ public class LearnerService {
             }
         }
 
-        Map<String, MasteryEntryDTO> projected = applyCanonicalMasteryProjectionWithTimestamps(goals, result);
+        String projectionStateFilterId = resolveProjectionStateFilterId(learner);
+        Map<String, MasteryEntryDTO> projected = applyCanonicalMasteryProjectionWithTimestamps(
+                goals,
+                result,
+                projectionStateFilterId);
         return applySrsMasteryOverlayWithTimestamps(skillpilotId, goals, projected);
     }
 
     private Map<String, Double> applyCanonicalMasteryProjection(Map<String, LearningGoal> goals,
-            Map<String, Double> masteryMap) {
+            Map<String, Double> masteryMap,
+            String stateFilterId) {
         if (goals == null || goals.isEmpty() || masteryMap == null || masteryMap.isEmpty()) {
             return masteryMap;
         }
@@ -795,6 +806,9 @@ public class LearnerService {
 
         for (ResolvedGoalMapping mapping : goalMappingService.getAllMappings()) {
             if (!"exact".equals(mapping.matchType())) {
+                continue;
+            }
+            if (!mappingMatchesProjectionStateFilter(mapping, stateFilterId)) {
                 continue;
             }
             if (!visibleGoalIds.contains(mapping.canonicalGoalId())) {
@@ -816,7 +830,8 @@ public class LearnerService {
     }
 
     private Map<String, MasteryEntryDTO> applyCanonicalMasteryProjectionWithTimestamps(Map<String, LearningGoal> goals,
-            Map<String, MasteryEntryDTO> masteryMap) {
+            Map<String, MasteryEntryDTO> masteryMap,
+            String stateFilterId) {
         if (goals == null || goals.isEmpty() || masteryMap == null || masteryMap.isEmpty()) {
             return masteryMap;
         }
@@ -827,6 +842,9 @@ public class LearnerService {
 
         for (ResolvedGoalMapping mapping : goalMappingService.getAllMappings()) {
             if (!"exact".equals(mapping.matchType())) {
+                continue;
+            }
+            if (!mappingMatchesProjectionStateFilter(mapping, stateFilterId)) {
                 continue;
             }
             if (!visibleGoalIds.contains(mapping.canonicalGoalId())) {
@@ -845,6 +863,18 @@ public class LearnerService {
         }
 
         return changed ? projected : masteryMap;
+    }
+
+    private boolean mappingMatchesProjectionStateFilter(ResolvedGoalMapping mapping, String stateFilterId) {
+        if (stateFilterId == null || stateFilterId.isBlank()) {
+            return true;
+        }
+        if (mapping == null) {
+            return false;
+        }
+        String sourceJurisdiction = normalizeFilterId(
+                landscapeService.resolveSourceLandscapeJurisdiction(mapping.sourceLandscapeId()));
+        return stateFilterId.equals(sourceJurisdiction);
     }
 
     private boolean shouldReplaceProjectedEntry(MasteryEntryDTO current, MasteryEntryDTO candidate) {
@@ -2159,6 +2189,33 @@ public class LearnerService {
         } catch (Exception ignored) {
             return new HashMap<>();
         }
+    }
+
+    private String resolveProjectionStateFilterId(Learner learner) {
+        if (learner == null) {
+            return null;
+        }
+        return resolveProjectionStateFilterId(learner.getSelectedCurriculum(), learner.getPersonalCurriculum());
+    }
+
+    private String resolveProjectionStateFilterId(String curriculumId, String personalCurriculumJson) {
+        if (curriculumId == null || curriculumId.isBlank()) {
+            return null;
+        }
+        Map<String, Map<String, Object>> config = parsePersonalCurriculumConfig(personalCurriculumJson);
+        if (config.isEmpty()) {
+            return null;
+        }
+        Map<String, Object> rootConfig = config.get(curriculumId);
+        if (rootConfig == null) {
+            return null;
+        }
+        Object filterId = rootConfig.get("filterId");
+        if (!(filterId instanceof String textFilterId)) {
+            return null;
+        }
+        String normalizedFilterId = normalizeFilterId(textFilterId);
+        return isStateFilterId(normalizedFilterId) ? normalizedFilterId : null;
     }
 
     private Map<String, Object> normalizePersonalCurriculumPayload(Map<String, Object> config) {
