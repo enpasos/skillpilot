@@ -64,6 +64,38 @@ assert.equal(
   'Visible current goals must not trigger fallback navigation.',
 )
 
+const staleRouteOutsidePlannedScopeFallsBackToPlannedGoal = getNextVisibleLearnerGoalSelection({
+  currentGoalId: 'old-active-goal',
+  currentRouteGoalId: 'old-active-goal',
+  visibleGoalIds: ['old-active-goal', 'planned-goal'],
+  activeGoalId: null,
+  plannedGoalIds: ['planned-goal'],
+  plannedScopeGoalIds: ['planned-goal', 'planned-child'],
+  visibleRootGoalIds: ['root-goal'],
+})
+
+assert.equal(
+  staleRouteOutsidePlannedScopeFallsBackToPlannedGoal,
+  'planned-goal',
+  'A stale explicit route outside the current planned scope must yield to the new focus subtree.',
+)
+
+const explicitRouteInsidePlannedScopeStaysStable = getNextVisibleLearnerGoalSelection({
+  currentGoalId: 'planned-child',
+  currentRouteGoalId: 'planned-child',
+  visibleGoalIds: ['planned-goal', 'planned-child'],
+  activeGoalId: null,
+  plannedGoalIds: ['planned-goal'],
+  plannedScopeGoalIds: ['planned-goal', 'planned-child'],
+  visibleRootGoalIds: ['root-goal'],
+})
+
+assert.equal(
+  explicitRouteInsidePlannedScopeStaysStable,
+  null,
+  'An explicit route inside the current planned scope must remain stable.',
+)
+
 const canonicalMathLandscape = JSON.parse(
   readFileSync('../curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json', 'utf8'),
 )

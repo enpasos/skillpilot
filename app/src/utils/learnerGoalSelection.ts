@@ -4,6 +4,7 @@ interface NextVisibleLearnerGoalSelectionInput {
   visibleGoalIds: Iterable<string>
   activeGoalId?: string | null
   plannedGoalIds?: Iterable<string>
+  plannedScopeGoalIds?: Iterable<string>
   visibleRootGoalIds?: Iterable<string>
 }
 
@@ -13,13 +14,29 @@ export function getNextVisibleLearnerGoalSelection({
   visibleGoalIds,
   activeGoalId,
   plannedGoalIds = [],
+  plannedScopeGoalIds = [],
   visibleRootGoalIds = [],
 }: NextVisibleLearnerGoalSelectionInput): string | null {
-  if (!currentGoalId) return null
-  if (currentRouteGoalId) return null
-
   const visible = new Set(visibleGoalIds)
-  if (visible.has(currentGoalId)) return null
+  const plannedScope = new Set(plannedScopeGoalIds)
+  let explicitRouteStillAuthoritative = false
+
+  if (currentRouteGoalId) {
+    if (activeGoalId && currentRouteGoalId === activeGoalId) {
+      return null
+    }
+
+    const routeWithinPlannedScope = plannedScope.size === 0 || plannedScope.has(currentRouteGoalId)
+    if (routeWithinPlannedScope) {
+      explicitRouteStillAuthoritative = true
+    }
+  }
+
+  if (explicitRouteStillAuthoritative) {
+    return null
+  }
+
+  if (currentGoalId && visible.has(currentGoalId) && !currentRouteGoalId) return null
 
   if (activeGoalId && visible.has(activeGoalId) && activeGoalId !== currentGoalId) {
     return activeGoalId

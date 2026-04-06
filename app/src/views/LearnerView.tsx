@@ -561,6 +561,29 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     return visible
   }, [visibleRootGoals, goalIndexAll, isPersonalConfigHydrating, personalConfig, getVisibleChildIds])
 
+  const plannedScopeGoalIds = useMemo(() => {
+    if (plannedGoals.size === 0) {
+      return new Set<string>()
+    }
+
+    const scope = new Set<string>()
+    const stack = Array.from(plannedGoals)
+    while (stack.length > 0) {
+      const goalId = stack.pop()
+      if (!goalId || scope.has(goalId)) continue
+      scope.add(goalId)
+
+      const childIds = getRenderedChildIds(goalId, goalIndexAll, learnerVisibleChildrenByParent)
+      childIds.forEach((childId) => {
+        if (!scope.has(childId)) {
+          stack.push(childId)
+        }
+      })
+    }
+
+    return scope
+  }, [goalIndexAll, learnerVisibleChildrenByParent, plannedGoals])
+
   useEffect(() => {
     const nextVisibleGoalId = getNextVisibleLearnerGoalSelection({
       currentGoalId: currentGoal?.id,
@@ -568,13 +591,23 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
       visibleGoalIds: visibleGoals,
       activeGoalId: effectiveActiveGoalId,
       plannedGoalIds: plannedGoals,
+      plannedScopeGoalIds,
       visibleRootGoalIds: visibleRootGoals.map((goal) => goal.id),
     })
 
     if (nextVisibleGoalId) {
       onSelectGoal(nextVisibleGoalId)
     }
-  }, [currentGoal, currentRouteGoalId, visibleGoals, effectiveActiveGoalId, plannedGoals, visibleRootGoals, onSelectGoal])
+  }, [
+    currentGoal,
+    currentRouteGoalId,
+    visibleGoals,
+    effectiveActiveGoalId,
+    plannedGoals,
+    plannedScopeGoalIds,
+    visibleRootGoals,
+    onSelectGoal,
+  ])
 
   const getFilteredMastery = useCallback(
     (goalId: string) => {
