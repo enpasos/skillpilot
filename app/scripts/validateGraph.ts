@@ -59,6 +59,8 @@ const PHYSICS_POTENTIAL_ENERGY_AND_POTENTIAL_GOAL_ID = '99bbf33e-74f5-4f33-98e2-
 
 const MATH_LANDSCAPE_ID = '2796fc7b-ba9d-446f-8f26-711dd6d8a9a3'
 const MATH_DIFFERENTIATION_GOAL_ID = 'e2b6b4d1-02db-4a27-948e-ecfbdb44dab3'
+const CANONICAL_GYM_MATH_LANDSCAPE_ID = '68a8ac50-f5f5-4e24-8aa9-5e408ca01ced'
+const CANONICAL_GYM_MATH_SEK1_MOTIVATION_GOAL_ID = '65365dce-f33f-49d8-9516-42f75883aa86'
 
 const RULE_REQUIRES_ANCESTOR = 'GVR-001'
 const RULE_PHASE_MONOTONIC = 'GVR-002'
@@ -70,6 +72,7 @@ const RULE_MIT_ATOMIC_SOURCE_LINKS = 'GVR-007'
 const RULE_NO_LEGACY_LINK_FIELDS = 'GVR-008'
 const RULE_EXPLICIT_TYPE_CONSISTENCY = 'GVR-009'
 const RULE_SHORTKEY_UNIQUE_WITHIN_LANDSCAPE = 'GVR-010'
+const RULE_SCOPED_TRANSITIVE_TO_MOTIVATION = 'GVR-011'
 const HESSEN_GYM_OVERVIEW_LANDSCAPE_ID = 'bbbf39f3-4a5b-46cf-9edd-48f2c54ae0da'
 const motivationRuleLandscapeIds = new Set<string>([
   '3e56aa75-c76c-4de5-883b-0aac98297846', // DE_HES_S_GYM_2_BIOLOGIE
@@ -103,6 +106,13 @@ interface ParsedLandscape {
   title: string
   frameworkId?: string
   goals: UiGoal[]
+}
+
+interface ScopedMotivationConnectivityProfile {
+  landscapeId: string
+  anchorGoalId: string
+  goalSelector: (goal: UiGoal) => boolean
+  scopeLabel: string
 }
 
 const curriculaDir = join(process.cwd(), '../curricula')
@@ -335,6 +345,26 @@ function isWarumGoal(goal: UiGoal): boolean {
   const title = goal.title ?? ''
   return /^\s*(warum|why)\b/i.test(title)
 }
+
+function isCanonicalGymMathSek1Goal(goal: UiGoal): boolean {
+  if (goal.id === CANONICAL_GYM_MATH_SEK1_MOTIVATION_GOAL_ID) return true
+  if (goal.tags?.includes('phase:SekI')) return true
+
+  const phase = goal.phase ?? ''
+  if (/^J\d{1,2}$/.test(phase)) return true
+
+  const topicCode = goal.themenfeld ?? ''
+  return topicCode.includes('SEK1')
+}
+
+const scopedMotivationConnectivityProfiles: ScopedMotivationConnectivityProfile[] = [
+  {
+    landscapeId: CANONICAL_GYM_MATH_LANDSCAPE_ID,
+    anchorGoalId: CANONICAL_GYM_MATH_SEK1_MOTIVATION_GOAL_ID,
+    goalSelector: isCanonicalGymMathSek1Goal,
+    scopeLabel: 'canonical DE Gymnasium mathematics / Sek I',
+  },
+]
 
 function hasPathToTarget(startId: string, targetId: string, edgeMap: Map<string, string[]>): boolean {
   if (startId === targetId) return true
@@ -709,6 +739,36 @@ function validateLandscape(landscape: ParsedLandscape) {
         }
       })
     }
+  }
+
+  for (const profile of scopedMotivationConnectivityProfiles) {
+    if (profile.landscapeId !== landscape.landscapeId) continue
+
+    const scopedGoals = landscape.goals.filter(profile.goalSelector)
+    const anchorGoal = localMap.get(profile.anchorGoalId)
+    const anchorLabel = anchorGoal
+      ? `${anchorGoal.id} (${anchorGoal.title})`
+      : profile.anchorGoalId
+
+    if (!anchorGoal) {
+      addIssue(
+        graphRuleIssueLevel,
+        landscape.landscapeId,
+        `[${RULE_SCOPED_TRANSITIVE_TO_MOTIVATION}] Configured motivation anchor ${anchorLabel} is missing for scope ${profile.scopeLabel}.`,
+      )
+      continue
+    }
+
+    scopedGoals.forEach((goal) => {
+      if (goal.id === anchorGoal.id) return
+      if (hasPathToTarget(goal.id, anchorGoal.id, effectiveEdges)) return
+
+      addIssue(
+        graphRuleIssueLevel,
+        landscape.landscapeId,
+        `[${RULE_SCOPED_TRANSITIVE_TO_MOTIVATION}] Scoped node ${goal.id} (${goal.title}) has no transitive effective-requires path to motivation anchor ${anchorLabel} for scope ${profile.scopeLabel}.`,
+      )
+    })
   }
 
   // GVR-007:

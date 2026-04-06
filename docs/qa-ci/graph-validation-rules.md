@@ -46,6 +46,7 @@ This is the single source of truth for algorithmic graph validation in CI.
 | `GVR-008` | Committed landscape goals must use canonical `resourceLinks` as the only supported goal-level helper-link field. | Local landscape | `error` |
 | `GVR-009` | If explicit `type` metadata is present, it must match the canonical node classification derived from direct `contains` children (`atomic` iff leaf, `cluster` iff non-leaf). | Local landscape | `error` |
 | `GVR-010` | If `shortKey` is present, it must be unique within the logical `landscapeId` (duplicates across locale serializations are allowed only when they refer to the same goal id). | Logical landscape (`landscapeId`, including multi-file localizations) | `error` |
+| `GVR-011` | Configured scoped motivation-connectivity profile: every node selected by the profile must have a transitive path to the configured motivation anchor via effective `requires`. | Profile-defined rollout scopes | `error` |
 
 ## Core validator checks (always active, fail CI)
 
@@ -170,6 +171,33 @@ Until the validator and landscapes are migrated, this file distinguishes clearly
 
 - rules that are implemented today and have stable `GVR-*` IDs
 - planned future direction that is not yet implemented in CI and therefore has no stable rule IDs here
+
+## Scoped motivation connectivity (`GVR-011`)
+
+`GVR-011` is intentionally phrased as a reusable validator pattern, not as a one-off landscape exception.
+
+Rule semantics:
+
+- a validator profile declares:
+  - one target landscape
+  - one reviewed motivation anchor goal
+  - one scoped goal selector
+- `GVR-011` fails if any selected node except the anchor itself has no transitive path to that anchor in the effective-requires graph.
+
+Current active profile:
+
+- landscape: canonical DE Gymnasium mathematics (`Mathematik (Gymnasium, DE)`)
+- scope: Sekundarstufe I
+- anchor: `Warum Mathematik? – Entdecken, Muster & Alltag`
+- selected nodes:
+  - all goals tagged `phase:SekI`
+  - plus goals whose normalized phase is `J*`
+  - plus goals whose topic code contains `SEK1`
+
+Interpretation:
+
+- This keeps the rule formulation general while still allowing rollout-specific route guarantees where the graph has already reached review-safe maturity.
+- It is stronger than composition-view ordering alone: the learner-facing tree may start with the motivation node, but `GVR-011` additionally requires the authored graph semantics to reflect that anchor.
 
 ## Motivation-anchor rollout rules (`GVR-004`, `GVR-005`)
 

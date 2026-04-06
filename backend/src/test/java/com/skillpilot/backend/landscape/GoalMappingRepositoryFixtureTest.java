@@ -148,13 +148,14 @@ class GoalMappingRepositoryFixtureTest {
         assertThat(file.getVersion()).isEqualTo(1);
         assertThat(file.getSourceLandscapeId()).isEqualTo(HESSEN_MATH_SEK1_LANDSCAPE_ID);
         assertThat(file.getTargetLandscapeId()).isEqualTo(CANONICAL_MATH_ID);
-        assertThat(file.getMappings()).hasSize(36);
+        assertThat(file.getMappings()).hasSize(37);
         assertThat(file.getMappings())
                 .extracting(GoalMappingEntry::getMatchType)
                 .contains("exact", "partial");
         assertThat(file.getMappings())
                 .extracting(GoalMappingEntry::getLegacyGoalId, GoalMappingEntry::getCanonicalGoalId, GoalMappingEntry::getMatchType)
                 .contains(
+                        Tuple.tuple("fcaf48ce-f837-53fc-b864-d61fd18d88ed", "65365dce-f33f-49d8-9516-42f75883aa86", "exact"),
                         Tuple.tuple("d20fcef5-b5dd-4e97-945a-52f7b7d89306", "cf474eab-1379-4877-907e-58b0892ce734", "exact"),
                         Tuple.tuple("05b6a520-c23a-414a-842a-ba1c0e57b776", "e6eb42c7-454f-49bf-b598-64d2935d2735", "exact"),
                         Tuple.tuple("172f1e73-b8fa-47be-b7af-50c93ce8cc7b", "e322310f-f33a-485d-bc23-2412a6b8fa12", "exact"),
@@ -187,7 +188,7 @@ class GoalMappingRepositoryFixtureTest {
         assertThat(file.getMappings())
                 .extracting(GoalMappingEntry::getLegacyGoalId, GoalMappingEntry::getCanonicalGoalId, GoalMappingEntry::getMatchType)
                 .containsExactly(
-                        Tuple.tuple("779925c9-038c-4905-b049-de083db123ac", "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2", "exact"),
+                        Tuple.tuple("779925c9-038c-4905-b049-de083db123ac", "65365dce-f33f-49d8-9516-42f75883aa86", "exact"),
                         Tuple.tuple("af088299-b91e-4391-b207-c67138ad64ac", "cf474eab-1379-4877-907e-58b0892ce734", "exact"),
                         Tuple.tuple("de1e6925-473e-46c4-8bfd-fdab0989f231", "4b67bed9-06da-40b2-a306-24e9e7dfd390", "exact"),
                         Tuple.tuple("ab9cf03f-8b77-446c-b920-6e424f4df612", "cafd6520-c4af-4109-9863-cc49ba6fad4d", "exact"),
@@ -269,7 +270,7 @@ class GoalMappingRepositoryFixtureTest {
         assertThat(file.getMappings())
                 .extracting(GoalMappingEntry::getLegacyGoalId, GoalMappingEntry::getCanonicalGoalId, GoalMappingEntry::getMatchType)
                 .contains(
-                        Tuple.tuple("e1942eb6-f1a5-45a7-b160-c7be0b5e30fa", "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2", "exact"),
+                        Tuple.tuple("e1942eb6-f1a5-45a7-b160-c7be0b5e30fa", "65365dce-f33f-49d8-9516-42f75883aa86", "exact"),
                         Tuple.tuple("430a4b3b-1442-4542-a27a-5fe8726dc447", "f6a54a49-b6cf-4ab7-a185-aa08bfcb6c97", "exact"),
                         Tuple.tuple("2c6d3275-ac7d-47d9-9de6-bbf2ad6b4d69", "2f565855-bcd6-4da5-bc80-4b72a2d93d50", "exact"),
                         Tuple.tuple("20f4e9dc-d898-45e2-b7df-eb89c9ee6195", "199fe2ed-2576-4611-b8de-fd56fb9f78fc", "exact"),
@@ -317,7 +318,7 @@ class GoalMappingRepositoryFixtureTest {
                 .extracting(GoalMappingEntry::getLegacyGoalId, GoalMappingEntry::getCanonicalGoalId, GoalMappingEntry::getMatchType)
                 .contains(
                         Tuple.tuple("1bec2c6e-b631-433f-b25d-7ea4db6ef68c", "c01b1ce9-a667-4a46-b251-ec33ae602b15", "partial"),
-                        Tuple.tuple("572f46ab-e5a7-471d-955e-a07aa7ae6a72", "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2", "exact"),
+                        Tuple.tuple("572f46ab-e5a7-471d-955e-a07aa7ae6a72", "65365dce-f33f-49d8-9516-42f75883aa86", "exact"),
                         Tuple.tuple("332b3bd1-afc0-4266-a977-49ef0843e5b1", "2bb4bb91-7929-483a-b735-44275f6b5cdc", "partial"),
                         Tuple.tuple("73c424f2-f564-477b-bce5-d8aa9d2adf78", "5c6b7342-0f67-4b4c-894d-fd83a6df64b3", "partial"),
                         Tuple.tuple("b92035f8-8791-4c99-a878-9f93a87e85f7", "8f7bb79b-f014-4bb6-8dce-7e3f1c92e893", "partial"),
