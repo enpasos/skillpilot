@@ -47,6 +47,7 @@ This is the single source of truth for algorithmic graph validation in CI.
 | `GVR-009` | If explicit `type` metadata is present, it must match the canonical node classification derived from direct `contains` children (`atomic` iff leaf, `cluster` iff non-leaf). | Local landscape | `error` |
 | `GVR-010` | If `shortKey` is present, it must be unique within the logical `landscapeId` (duplicates across locale serializations are allowed only when they refer to the same goal id). | Logical landscape (`landscapeId`, including multi-file localizations) | `error` |
 | `GVR-011` | Configured scoped motivation-connectivity profile: every node selected by the profile must have a transitive path to the configured motivation anchor via effective `requires`. | Profile-defined rollout scopes | `error` |
+| `GVR-012` | Configured scoped full-route-coverage profile: every node selected by the profile must have a transitive path to one configured motivation anchor and to one configured terminal autonomy goal via effective `requires`. | Profile-defined rollout scopes | `error` |
 
 ## Core validator checks (always active, fail CI)
 
@@ -199,6 +200,38 @@ Interpretation:
 - This keeps the rule formulation general while still allowing rollout-specific route guarantees where the graph has already reached review-safe maturity.
 - It is stronger than composition-view ordering alone: the learner-facing tree may start with the motivation node, but `GVR-011` additionally requires the authored graph semantics to reflect that anchor.
 
+## Scoped full route coverage (`GVR-012`)
+
+`GVR-012` is intentionally phrased as a reusable validator pattern, not as a one-off landscape exception.
+
+Rule semantics:
+
+- a validator profile declares:
+  - one target landscape
+  - one scoped goal selector
+  - one or more motivation anchor goals
+  - one or more terminal autonomy goals
+- `GVR-012` fails if any selected node has:
+  - no transitive path to any configured motivation anchor in the effective-requires graph, or
+  - no transitive path from itself to any configured terminal autonomy goal in that same effective-requires graph
+
+Current active profile:
+
+- landscape: canonical DE Gymnasium mathematics (`Mathematik (Gymnasium, DE)`)
+- scope: Sekundarstufe I
+- motivation anchor: `Warum Mathematik? – Entdecken, Muster & Alltag`
+- terminal autonomy goal: `Sek-I-Abschlussaufgaben Mathematik`
+- selected nodes:
+  - all goals tagged `phase:SekI`
+  - plus goals whose normalized phase is `J*`
+  - plus goals whose topic code contains `SEK1`
+
+Interpretation:
+
+- `GVR-012` is the migration-compatible full-route check for reviewed scopes where both ends of the route are now authored explicitly.
+- It does **not** yet prove that the route is authored canonically on the atomic direct-prerequisite layer; it validates full route coverage on the current effective-requires projection.
+- This keeps the rule formulation general while allowing strict CI protection once a concrete rollout scope has explicit motivation and terminal-autonomy anchors.
+
 ## Motivation-anchor rollout rules (`GVR-004`, `GVR-005`)
 
 - Scope is controlled in `app/scripts/validateGraph.ts` via `motivationRuleLandscapeIds`.
@@ -232,9 +265,9 @@ Interpretation of current coverage strength:
 - they do **not** yet ensure that the node also lies on a path toward one or more terminal autonomy goals
 - they do **not** yet prove that the didactic route is modeled canonically on the atomic `requires` layer
 
-## Planned direction for route-quality validation (not yet implemented in CI)
+## Planned direction for stricter atomic route-quality validation (not yet implemented in CI)
 
-The following direction is planned but currently has no stable validator rule IDs in this file.
+The following stricter direction is planned but currently has no additional stable validator rule IDs in this file beyond the effective-graph rollout checks above.
 
 Target semantics for mature landscapes:
 
@@ -247,6 +280,7 @@ Target semantics for mature landscapes:
 Recommended rollout strategy:
 
 - keep `GVR-004` / `GVR-005` as migration-compatible checks on `R_eff`
+- use `GVR-012` for profile-based full route coverage on reviewed scopes while landscapes are still partly cluster-authored
 - later add stricter route-quality rules on the atomic graph
 - treat full atomic route coverage as `SHOULD` at concept level first, then promote it to `MUST` only for mature rollout subsets or strict validator profiles
 

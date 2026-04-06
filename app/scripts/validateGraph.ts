@@ -61,6 +61,7 @@ const MATH_LANDSCAPE_ID = '2796fc7b-ba9d-446f-8f26-711dd6d8a9a3'
 const MATH_DIFFERENTIATION_GOAL_ID = 'e2b6b4d1-02db-4a27-948e-ecfbdb44dab3'
 const CANONICAL_GYM_MATH_LANDSCAPE_ID = '68a8ac50-f5f5-4e24-8aa9-5e408ca01ced'
 const CANONICAL_GYM_MATH_SEK1_MOTIVATION_GOAL_ID = '65365dce-f33f-49d8-9516-42f75883aa86'
+const CANONICAL_GYM_MATH_SEK1_CAPSTONE_GOAL_ID = '30b62966-80d0-45f1-bdd9-b4fb815c7111'
 
 const RULE_REQUIRES_ANCESTOR = 'GVR-001'
 const RULE_PHASE_MONOTONIC = 'GVR-002'
@@ -73,6 +74,7 @@ const RULE_NO_LEGACY_LINK_FIELDS = 'GVR-008'
 const RULE_EXPLICIT_TYPE_CONSISTENCY = 'GVR-009'
 const RULE_SHORTKEY_UNIQUE_WITHIN_LANDSCAPE = 'GVR-010'
 const RULE_SCOPED_TRANSITIVE_TO_MOTIVATION = 'GVR-011'
+const RULE_SCOPED_FULL_ROUTE_COVERAGE = 'GVR-012'
 const HESSEN_GYM_OVERVIEW_LANDSCAPE_ID = 'bbbf39f3-4a5b-46cf-9edd-48f2c54ae0da'
 const motivationRuleLandscapeIds = new Set<string>([
   '3e56aa75-c76c-4de5-883b-0aac98297846', // DE_HES_S_GYM_2_BIOLOGIE
@@ -111,6 +113,14 @@ interface ParsedLandscape {
 interface ScopedMotivationConnectivityProfile {
   landscapeId: string
   anchorGoalId: string
+  goalSelector: (goal: UiGoal) => boolean
+  scopeLabel: string
+}
+
+interface ScopedFullRouteCoverageProfile {
+  landscapeId: string
+  motivationAnchorGoalIds: string[]
+  terminalGoalIds: string[]
   goalSelector: (goal: UiGoal) => boolean
   scopeLabel: string
 }
@@ -357,11 +367,25 @@ function isCanonicalGymMathSek1Goal(goal: UiGoal): boolean {
   return topicCode.includes('SEK1')
 }
 
+function isCanonicalGymMathSek1AtomicGoal(goal: UiGoal): boolean {
+  return isAtomicGoal(goal) && isCanonicalGymMathSek1Goal(goal)
+}
+
 const scopedMotivationConnectivityProfiles: ScopedMotivationConnectivityProfile[] = [
   {
     landscapeId: CANONICAL_GYM_MATH_LANDSCAPE_ID,
     anchorGoalId: CANONICAL_GYM_MATH_SEK1_MOTIVATION_GOAL_ID,
-    goalSelector: isCanonicalGymMathSek1Goal,
+    goalSelector: isCanonicalGymMathSek1AtomicGoal,
+    scopeLabel: 'canonical DE Gymnasium mathematics / Sek I',
+  },
+]
+
+const scopedFullRouteCoverageProfiles: ScopedFullRouteCoverageProfile[] = [
+  {
+    landscapeId: CANONICAL_GYM_MATH_LANDSCAPE_ID,
+    motivationAnchorGoalIds: [CANONICAL_GYM_MATH_SEK1_MOTIVATION_GOAL_ID],
+    terminalGoalIds: [CANONICAL_GYM_MATH_SEK1_CAPSTONE_GOAL_ID],
+    goalSelector: isCanonicalGymMathSek1AtomicGoal,
     scopeLabel: 'canonical DE Gymnasium mathematics / Sek I',
   },
 ]
@@ -387,6 +411,24 @@ function hasPathToTarget(startId: string, targetId: string, edgeMap: Map<string,
   }
 
   return false
+}
+
+function buildReverseEdges(edgeMap: Map<string, string[]>): Map<string, string[]> {
+  const reverseEdges = new Map<string, string[]>()
+
+  edgeMap.forEach((targets, sourceId) => {
+    if (!reverseEdges.has(sourceId)) {
+      reverseEdges.set(sourceId, [])
+    }
+
+    targets.forEach((targetId) => {
+      const existing = reverseEdges.get(targetId) ?? []
+      existing.push(sourceId)
+      reverseEdges.set(targetId, existing)
+    })
+  })
+
+  return reverseEdges
 }
 
 function validateLandscape(landscape: ParsedLandscape) {
@@ -663,6 +705,7 @@ function validateLandscape(landscape: ParsedLandscape) {
       .map((ref) => ref.goalId)
     effectiveEdges.set(goal.id, edges)
   }
+  const reverseEffectiveEdges = buildReverseEdges(effectiveEdges)
   detectCycles(effectiveEdges, 'effective_requires (with inheritance)')
 
   // GVR-002:
@@ -767,6 +810,68 @@ function validateLandscape(landscape: ParsedLandscape) {
         graphRuleIssueLevel,
         landscape.landscapeId,
         `[${RULE_SCOPED_TRANSITIVE_TO_MOTIVATION}] Scoped node ${goal.id} (${goal.title}) has no transitive effective-requires path to motivation anchor ${anchorLabel} for scope ${profile.scopeLabel}.`,
+      )
+    })
+  }
+
+  for (const profile of scopedFullRouteCoverageProfiles) {
+    if (profile.landscapeId !== landscape.landscapeId) continue
+
+    const scopedGoals = landscape.goals.filter(profile.goalSelector)
+    const missingAnchorIds = profile.motivationAnchorGoalIds.filter((goalId) => !localMap.has(goalId))
+    const missingTerminalIds = profile.terminalGoalIds.filter((goalId) => !localMap.has(goalId))
+
+    if (missingAnchorIds.length > 0) {
+      addIssue(
+        graphRuleIssueLevel,
+        landscape.landscapeId,
+        `[${RULE_SCOPED_FULL_ROUTE_COVERAGE}] Missing configured motivation anchor(s) ${missingAnchorIds.join(', ')} for scope ${profile.scopeLabel}.`,
+      )
+      continue
+    }
+
+    if (missingTerminalIds.length > 0) {
+      addIssue(
+        graphRuleIssueLevel,
+        landscape.landscapeId,
+        `[${RULE_SCOPED_FULL_ROUTE_COVERAGE}] Missing configured terminal autonomy goal(s) ${missingTerminalIds.join(', ')} for scope ${profile.scopeLabel}.`,
+      )
+      continue
+    }
+
+    const motivationAnchorLabels = profile.motivationAnchorGoalIds
+      .map((goalId) => {
+        const goal = localMap.get(goalId)
+        return goal ? `${goal.id} (${goal.title})` : goalId
+      })
+      .join(', ')
+    const terminalGoalLabels = profile.terminalGoalIds
+      .map((goalId) => {
+        const goal = localMap.get(goalId)
+        return goal ? `${goal.id} (${goal.title})` : goalId
+      })
+      .join(', ')
+
+    scopedGoals.forEach((goal) => {
+      const hasMotivationPath = profile.motivationAnchorGoalIds.some((anchorGoalId) =>
+        hasPathToTarget(goal.id, anchorGoalId, effectiveEdges))
+      const hasTerminalPath = profile.terminalGoalIds.some((terminalGoalId) =>
+        hasPathToTarget(goal.id, terminalGoalId, reverseEffectiveEdges))
+
+      if (hasMotivationPath && hasTerminalPath) return
+
+      const missingSegments: string[] = []
+      if (!hasMotivationPath) {
+        missingSegments.push(`motivation anchor path (${motivationAnchorLabels})`)
+      }
+      if (!hasTerminalPath) {
+        missingSegments.push(`terminal autonomy path (${terminalGoalLabels})`)
+      }
+
+      addIssue(
+        graphRuleIssueLevel,
+        landscape.landscapeId,
+        `[${RULE_SCOPED_FULL_ROUTE_COVERAGE}] Scoped node ${goal.id} (${goal.title}) is missing ${missingSegments.join(' and ')} for scope ${profile.scopeLabel}.`,
       )
     })
   }
