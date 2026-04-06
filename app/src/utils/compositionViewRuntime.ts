@@ -486,6 +486,63 @@ const subtreeReferencesAnyGoal = (
   return hasReferencedDescendant
 }
 
+const compositionViewNodeExposesGoal = (
+  node: CompositionViewNode,
+  targetGoalIds: Set<string>,
+  goalById: Map<string, UiGoal>,
+  rootGoalIdByLandscapeId: Map<string, string>,
+  cache: Map<string, boolean>,
+): boolean => {
+  if (node.kind === 'structure') {
+    return node.children.some((child) =>
+      compositionViewNodeExposesGoal(child, targetGoalIds, goalById, rootGoalIdByLandscapeId, cache),
+    )
+  }
+
+  if (node.kind === 'goalEntry') {
+    return targetGoalIds.has(node.goalId)
+  }
+
+  if (node.kind === 'landscapeEntry') {
+    const rootGoalId = resolveLandscapeEntryGoalId(node.landscapeId, rootGoalIdByLandscapeId)
+    if (!rootGoalId) return false
+    return subtreeReferencesAnyGoal(rootGoalId, goalById, targetGoalIds, cache)
+  }
+
+  return subtreeReferencesAnyGoal(node.goalId, goalById, targetGoalIds, cache)
+}
+
+export const compositionViewExposesGoal = (
+  entries: LandscapeEntry[],
+  rawView: unknown,
+  goalId: string,
+): boolean => {
+  if (!goalId || !rawView) return false
+
+  const view = normalizeCompositionView(rawView)
+  if (!view.landscapeId || view.rootNodes.length === 0) {
+    return false
+  }
+
+  const goalByIdAcrossEntries = new Map(entries.flatMap((entry) => entry.goals.map((goal) => [goal.id, goal] as const)))
+  if (!goalByIdAcrossEntries.has(goalId)) {
+    return false
+  }
+
+  const rootGoalIdByLandscapeId = new Map(
+    entries.flatMap((entry) => {
+      const rootGoal = entry.goals.find((goal) => (goal.tags ?? []).includes(ROOT_TAG) && goal.contains.length > 0)
+      return rootGoal ? [[entry.meta.landscapeId, rootGoal.id] as const] : []
+    }),
+  )
+  const targetGoalIds = new Set([goalId])
+  const cache = new Map<string, boolean>()
+
+  return view.rootNodes.some((node) =>
+    compositionViewNodeExposesGoal(node, targetGoalIds, goalByIdAcrossEntries, rootGoalIdByLandscapeId, cache),
+  )
+}
+
 export const applyCompositionViewProjection = (
   entries: LandscapeEntry[],
   rawView: unknown,

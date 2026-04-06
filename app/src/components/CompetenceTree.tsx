@@ -214,9 +214,10 @@ const TreeNode: React.FC<TreeNodeProps> = ({
     return null
   }
 
+  const isForcedExpanded = !!forcedExpandedIds?.has(goalId)
   const isExpanded = isExpansionControlled
-    ? expandedGoalIds.has(goalId)
-    : localIsExpanded
+    ? isForcedExpanded || expandedGoalIds.has(goalId)
+    : isForcedExpanded || localIsExpanded
   const hasChildren = renderedChildren.length > 0
   const mastered = isMastered(mastery)
   const complete = isCompleteMastery(mastery)

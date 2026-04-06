@@ -17,6 +17,7 @@ import { normalizeTrainerLandscapeId } from '../utils/trainerLandscapeContext'
 import { normalizeLearnerProjectedEntries } from '../utils/learnerTreeProjection'
 import {
   applyCompositionViewProjection,
+  compositionViewExposesGoal,
   deriveRuntimeCompositionScope,
 } from '../utils/compositionViewRuntime'
 import { normalizeCompositionView } from '../utils/authoring/compositionViewAuthoring'
@@ -291,17 +292,44 @@ export function useAppCore({ role, setLearnerMeta, skillpilotId }: AppCoreOption
     return () => controller.abort()
   }, [role, runtimeCompositionScopes])
 
+  const effectiveMatchedCompositionViewsByLandscapeId = useMemo(() => {
+    if (role !== 'learner' || !goalId) {
+      return matchedCompositionViewsByLandscapeId
+    }
+
+    const routeLandscapeId = graphSourceLandscapeEntries.find((entry) =>
+      entry.goals.some((goal) => goal.id === goalId),
+    )?.meta.landscapeId
+
+    if (!routeLandscapeId) {
+      return matchedCompositionViewsByLandscapeId
+    }
+
+    const matchedView = matchedCompositionViewsByLandscapeId[routeLandscapeId]
+    if (!matchedView) {
+      return matchedCompositionViewsByLandscapeId
+    }
+
+    if (compositionViewExposesGoal(graphSourceLandscapeEntries, matchedView, goalId)) {
+      return matchedCompositionViewsByLandscapeId
+    }
+
+    const next = { ...matchedCompositionViewsByLandscapeId }
+    delete next[routeLandscapeId]
+    return next
+  }, [goalId, graphSourceLandscapeEntries, matchedCompositionViewsByLandscapeId, role])
+
   const projectedLandscapeEntries = useMemo(() => {
     const compositionManagedLandscapeIds = new Set(runtimeCompositionScopes.keys())
     const rawEntriesWithMatchedCompositionView = graphSourceLandscapeEntries.filter((entry) =>
-      !!matchedCompositionViewsByLandscapeId[entry.meta.landscapeId],
+      !!effectiveMatchedCompositionViewsByLandscapeId[entry.meta.landscapeId],
     )
     const entriesNeedingPlacementProjection = graphSourceLandscapeEntries.filter((entry) => {
       const landscapeId = entry.meta.landscapeId
       if (!compositionManagedLandscapeIds.has(landscapeId)) {
         return true
       }
-      if (matchedCompositionViewsByLandscapeId[landscapeId]) {
+      if (effectiveMatchedCompositionViewsByLandscapeId[landscapeId]) {
         return false
       }
       return !loadingMatchedCompositionViews
@@ -322,7 +350,7 @@ export function useAppCore({ role, setLearnerMeta, skillpilotId }: AppCoreOption
       .map((entry) => projectedByLandscapeId.get(entry.meta.landscapeId))
       .filter((entry): entry is (typeof graphSourceLandscapeEntries)[number] => !!entry)
 
-    const compositionProjectedEntries = Object.values(matchedCompositionViewsByLandscapeId).reduce(
+    const compositionProjectedEntries = Object.values(effectiveMatchedCompositionViewsByLandscapeId).reduce(
       (currentEntries, view) => applyCompositionViewProjection(currentEntries, view),
       orderedProjectedEntries,
     )
@@ -330,7 +358,7 @@ export function useAppCore({ role, setLearnerMeta, skillpilotId }: AppCoreOption
       return compositionProjectedEntries
     }
 
-    const landscapeIdsWithMatchedCompositionViews = new Set(Object.keys(matchedCompositionViewsByLandscapeId))
+    const landscapeIdsWithMatchedCompositionViews = new Set(Object.keys(effectiveMatchedCompositionViewsByLandscapeId))
     return compositionProjectedEntries.map((entry) => {
       if (landscapeIdsWithMatchedCompositionViews.has(entry.meta.landscapeId)) {
         return entry
@@ -339,9 +367,9 @@ export function useAppCore({ role, setLearnerMeta, skillpilotId }: AppCoreOption
     })
   }, [
     activeFilter,
+    effectiveMatchedCompositionViewsByLandscapeId,
     graphSourceLandscapeEntries,
     loadingMatchedCompositionViews,
-    matchedCompositionViewsByLandscapeId,
     role,
     runtimeCompositionScopes,
   ])
@@ -354,8 +382,8 @@ export function useAppCore({ role, setLearnerMeta, skillpilotId }: AppCoreOption
   }, [currentLandscapeEntry, projectedLandscapeEntries, selectedLandscapeId])
   const currentLandscapeHasMatchedCompositionView = useMemo(() => {
     const targetLandscapeId = currentLandscapeEntry?.meta.landscapeId ?? selectedLandscapeId
-    return !!(targetLandscapeId && matchedCompositionViewsByLandscapeId[targetLandscapeId])
-  }, [currentLandscapeEntry?.meta.landscapeId, matchedCompositionViewsByLandscapeId, selectedLandscapeId])
+    return !!(targetLandscapeId && effectiveMatchedCompositionViewsByLandscapeId[targetLandscapeId])
+  }, [currentLandscapeEntry?.meta.landscapeId, effectiveMatchedCompositionViewsByLandscapeId, selectedLandscapeId])
 
   const goals = useMemo(() => projectedCurrentLandscapeEntry?.goals ?? [], [projectedCurrentLandscapeEntry])
 
@@ -375,6 +403,19 @@ export function useAppCore({ role, setLearnerMeta, skillpilotId }: AppCoreOption
     goals.forEach((goal) => map.set(goal.id, shortKeyFromId(goal.id)))
     return map
   }, [goals])
+
+  const routeGoal = useMemo(() => {
+    if (!goalId) return null
+    return goalIndexAll.get(goalId) ?? selectionGoalIndexAll.get(goalId) ?? null
+  }, [goalId, goalIndexAll, selectionGoalIndexAll])
+
+  useEffect(() => {
+    if (role !== 'learner') return
+    const routeGoalLandscapeId = routeGoal?.landscapeId
+    if (!goalId || !routeGoalLandscapeId) return
+    if (routeGoalLandscapeId === selectedLandscapeId) return
+    setSelectedLandscapeId(routeGoalLandscapeId)
+  }, [goalId, role, routeGoal?.landscapeId, selectedLandscapeId])
 
   const currentGoal = useMemo(() => {
     if (goalId) {

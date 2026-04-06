@@ -1,5 +1,8 @@
 import assert from 'node:assert/strict'
+import { readFileSync } from 'node:fs'
 import { getNextVisibleLearnerGoalSelection } from '../src/utils/learnerGoalSelection'
+import { prepareLandscapeEntries } from '../src/hooks/useLandscapes'
+import { compositionViewExposesGoal } from '../src/utils/compositionViewRuntime'
 
 const explicitRouteSelection = getNextVisibleLearnerGoalSelection({
   currentGoalId: 'root-goal',
@@ -59,6 +62,27 @@ assert.equal(
   noRedirectWhenCurrentVisible,
   null,
   'Visible current goals must not trigger fallback navigation.',
+)
+
+const canonicalMathLandscape = JSON.parse(
+  readFileSync('../curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json', 'utf8'),
+)
+const genericMathLkView = JSON.parse(
+  readFileSync('../curricula/DE/Gymnasium/composition-views/mathematik/de-de-lk.view.json', 'utf8'),
+)
+const genericMathSek1GoalId = '121e3fdf-54d2-4d46-bc2d-f6e725f10f41'
+const genericMathVisibleGoalId = '65365dce-f33f-49d8-9516-42f75883aa86'
+
+assert.equal(
+  compositionViewExposesGoal(prepareLandscapeEntries([canonicalMathLandscape]), genericMathLkView, genericMathSek1GoalId),
+  false,
+  'A composition view that does not expose the routed goal must not stay active for learner tree routing.',
+)
+
+assert.equal(
+  compositionViewExposesGoal(prepareLandscapeEntries([canonicalMathLandscape]), genericMathLkView, genericMathVisibleGoalId),
+  true,
+  'A composition view must still stay active for goals that are explicitly carried by the view tree.',
 )
 
 console.log('✅ Learner goal selection regression checks passed.')
