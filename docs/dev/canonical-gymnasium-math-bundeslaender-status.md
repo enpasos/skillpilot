@@ -1,29 +1,43 @@
 # Canonical Gymnasium Mathematics Bundeslaender Status
 
-Snapshot: `2026-04-05T17:25:02Z`
+Snapshot: `2026-04-06T13:07:04Z`
 
 This file is generated from:
 
 - `curricula/DE/Gymnasium/provenance/math-bundesland-rollout-tracker.json`
 - `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json`
+- `app/scripts/reportCanonicalMathStateAtomCounts.ts`
+- `curricula/DE/Gymnasium/composition-views/mathematik`
 
 ## Headline
 
 - Tracked states: `16`
 - Canonical source coverage present: `16/16`
-- State-weighted rollout score: `100.0%`
+- Operational state-weighted rollout score (count-gated): `89.7%`
 - States with active snapshots (`P2+`): `16/16`
 - States with structural anchors mapped (`P3+`): `16/16`
 - States with reviewed corridor (`P4+`): `16/16`
 - States with broad coverage (`P5+`): `16/16`
+- States operationally cutover-ready (`P6` after count gate): `5/16`
 - Active canonical corridors: `0/6`
-- Priority `backlog`: `16`
+- Atomic-count reference lane: `DE-HE` Hessen
+- Hessen reference counts: `Sek I 101`, `Sek II (GK) 288`, `Sek II (LK) 339`
+- Hessen corridor (`+-20%`): `Sek I 81-121`, `Sek II (GK) 231-345`, `Sek II (LK) 272-406`
+- Non-reference states within corridor on all three stage counts: `4/15`
+- Sek I within corridor: `8/15`
+- Sek II (GK) within corridor: `4/15`
+- Sek II (LK) within corridor: `4/15`
+- Count-gated states blocked from `cutover_ready`: `11`
+- Priority `active`: `7`
+- Priority `next_wave`: `4`
+- Priority `backlog`: `5`
 
 ## Steering model
 
 - Primary work unit: `maintenance_delta`
 - Canonical view rule: Treat the canonical DE mathematics view as a curated pedagogical source of truth, not as the raw union of all state-specific atoms.
 - State view rule: Treat Bundesland views as projections that stay as close as possible to the canonical view while omitting atoms that would violate the local curriculum.
+- Count gate rule: states outside the Hessen `+-20%` stage-count corridor are operationally capped at `P5` / `subtree_adopted` until the corridor passes.
 - Execution sequence:
   - Archive or refresh the retained state source lane first, then narrow the affected curriculum delta to mappings, provenance, applicability, and composition scopes.
   - Only touch the reviewed canonical atoms and the smallest state-scoped mathematics composition views whose learner-facing tree shape really changes.
@@ -44,6 +58,31 @@ This file is generated from:
 | `SEK2.STOCHASTICS` Sek II stochastics | `completed` | `DE-NW`, `DE-BE`, `DE-BB`, `DE-SH`, `DE-NI`, `DE-BW`, `DE-BY`, `DE-SN` | Treat the Sek-II stochastics full sweep as closed for now: freeze the visible `ST2-ST5` surface plus the explicit `ST3` boundary, and reopen only if a later reviewed lane or validator finding forces a real shared canonical gap. |
 | `SEK1.FOUNDATIONS` Sek I lower-secondary breadth | `completed` | `DE-BW`, `DE-BY`, `DE-BE`, `DE-BB`, `DE-NI` | Treat the nationwide lower-secondary breadth sweep as closed for now: all top-level Sek-I rows are resolved once, freeze the visible `A1-A4`, `F1-F5`, `G2-G7`, and `D1-D5` surfaces, and shift the active nationwide completion work to applicability, learner-facing scope selection, and `P6/F6` cutover cleanup. |
 
+## Atomic count corridor
+
+Hessen (`DE-HE`) is the reference lane. All other states should stay within `+-20%` of the Hessen stage counts.
+
+Operational gate: out-of-corridor states are capped at `P5` / `subtree_adopted`. Full three-stage failures escalate to `active`, partial failures to `next_wave`.
+
+| State | Sek I | Sek II (GK) | Sek II (LK) | Corridor | Detail |
+| --- | ---: | ---: | ---: | --- | --- |
+| `DE-BW` Baden-Wuerttemberg | `72` | `54` | `67` | `out` | Sek I low, Sek II (GK) low, Sek II (LK) low |
+| `DE-MV` Mecklenburg-Vorpommern | `47` | `10` | `10` | `out` | Sek I low, Sek II (GK) low, Sek II (LK) low |
+| `DE-RP` Rheinland-Pfalz | `72` | `45` | `59` | `out` | Sek I low, Sek II (GK) low, Sek II (LK) low |
+| `DE-SL` Saarland | `69` | `24` | `33` | `out` | Sek I low, Sek II (GK) low, Sek II (LK) low |
+| `DE-SN` Sachsen | `80` | `94` | `108` | `out` | Sek I low, Sek II (GK) low, Sek II (LK) low |
+| `DE-ST` Sachsen-Anhalt | `25` | `75` | `91` | `out` | Sek I low, Sek II (GK) low, Sek II (LK) low |
+| `DE-TH` Thueringen | `1` | `75` | `91` | `out` | Sek I low, Sek II (GK) low, Sek II (LK) low |
+| `DE-BY` Bayern | `120` | `96` | `108` | `out` | Sek II (GK) low, Sek II (LK) low |
+| `DE-NI` Niedersachsen | `97` | `91` | `105` | `out` | Sek II (GK) low, Sek II (LK) low |
+| `DE-NW` Nordrhein-Westfalen | `95` | `85` | `104` | `out` | Sek II (GK) low, Sek II (LK) low |
+| `DE-SH` Schleswig-Holstein | `94` | `60` | `62` | `out` | Sek II (GK) low, Sek II (LK) low |
+| `DE-BB` Brandenburg | `98` | `333` | `394` | `ok` | all stage counts within Hessen corridor |
+| `DE-BE` Berlin | `94` | `333` | `394` | `ok` | all stage counts within Hessen corridor |
+| `DE-HB` Bremen | `98` | `333` | `394` | `ok` | all stage counts within Hessen corridor |
+| `DE-HE` Hessen | `101` | `288` | `339` | `reference` | reference lane `Hessen` |
+| `DE-HH` Hamburg | `97` | `333` | `394` | `ok` | all stage counts within Hessen corridor |
+
 ## Program phases
 
 | Program phase | Status |
@@ -54,7 +93,7 @@ This file is generated from:
 | `F3` Nationwide first-corridor pass | `completed` |
 | `F4` Lower-secondary breadth | `completed` |
 | `F5` Upper-secondary breadth | `completed` |
-| `F6` Cutover and maintenance | `completed` |
+| `F6` Cutover and maintenance | `active` |
 
 ## State phase scale
 
@@ -70,47 +109,57 @@ This file is generated from:
 
 ## State view
 
-| State | Phase | Score | Applicability | Mappings | Source stage | Priority |
-| --- | --- | ---: | --- | ---: | --- | --- |
-| `DE-BB` Brandenburg | `P6` State cutover ready | `100%` | `yes` | `159` | `cutover_ready` | `backlog` |
-| `DE-BE` Berlin | `P6` State cutover ready | `100%` | `yes` | `187` | `cutover_ready` | `backlog` |
-| `DE-BW` Baden-Wuerttemberg | `P6` State cutover ready | `100%` | `yes` | `190` | `cutover_ready` | `backlog` |
-| `DE-BY` Bayern | `P6` State cutover ready | `100%` | `yes` | `351` | `cutover_ready` | `backlog` |
-| `DE-HB` Bremen | `P6` State cutover ready | `100%` | `yes` | `68` | `cutover_ready` | `backlog` |
-| `DE-HE` Hessen | `P6` State cutover ready | `100%` | `yes` | `487` | `cutover_ready` | `backlog` |
-| `DE-HH` Hamburg | `P6` State cutover ready | `100%` | `yes` | `76` | `cutover_ready` | `backlog` |
-| `DE-MV` Mecklenburg-Vorpommern | `P6` State cutover ready | `100%` | `yes` | `59` | `cutover_ready` | `backlog` |
-| `DE-NI` Niedersachsen | `P6` State cutover ready | `100%` | `yes` | `218` | `cutover_ready` | `backlog` |
-| `DE-NW` Nordrhein-Westfalen | `P6` State cutover ready | `100%` | `yes` | `167` | `cutover_ready` | `backlog` |
-| `DE-RP` Rheinland-Pfalz | `P6` State cutover ready | `100%` | `yes` | `65` | `cutover_ready` | `backlog` |
-| `DE-SH` Schleswig-Holstein | `P6` State cutover ready | `100%` | `yes` | `149` | `cutover_ready` | `backlog` |
-| `DE-SL` Saarland | `P6` State cutover ready | `100%` | `yes` | `95` | `cutover_ready` | `backlog` |
-| `DE-SN` Sachsen | `P6` State cutover ready | `100%` | `yes` | `130` | `cutover_ready` | `backlog` |
-| `DE-ST` Sachsen-Anhalt | `P6` State cutover ready | `100%` | `yes` | `72` | `cutover_ready` | `backlog` |
-| `DE-TH` Thueringen | `P6` State cutover ready | `100%` | `yes` | `48` | `cutover_ready` | `backlog` |
+| State | Operational phase | Tracked phase | Score | Applicability | Mappings | Count corridor | Source stage | Priority |
+| --- | --- | --- | ---: | --- | ---: | --- | --- | --- |
+| `DE-BW` Baden-Wuerttemberg | `P5` Broad state coverage | `P6` State cutover ready | `85%` | `yes` | `190` | `out` | `subtree_adopted` | `active` |
+| `DE-MV` Mecklenburg-Vorpommern | `P5` Broad state coverage | `P6` State cutover ready | `85%` | `yes` | `64` | `out` | `subtree_adopted` | `active` |
+| `DE-RP` Rheinland-Pfalz | `P5` Broad state coverage | `P6` State cutover ready | `85%` | `yes` | `65` | `out` | `subtree_adopted` | `active` |
+| `DE-SL` Saarland | `P5` Broad state coverage | `P6` State cutover ready | `85%` | `yes` | `97` | `out` | `subtree_adopted` | `active` |
+| `DE-SN` Sachsen | `P5` Broad state coverage | `P6` State cutover ready | `85%` | `yes` | `130` | `out` | `subtree_adopted` | `active` |
+| `DE-ST` Sachsen-Anhalt | `P5` Broad state coverage | `P6` State cutover ready | `85%` | `yes` | `82` | `out` | `subtree_adopted` | `active` |
+| `DE-TH` Thueringen | `P5` Broad state coverage | `P6` State cutover ready | `85%` | `yes` | `56` | `out` | `subtree_adopted` | `active` |
+| `DE-BY` Bayern | `P5` Broad state coverage | `P6` State cutover ready | `85%` | `yes` | `351` | `out` | `subtree_adopted` | `next_wave` |
+| `DE-NI` Niedersachsen | `P5` Broad state coverage | `P6` State cutover ready | `85%` | `yes` | `218` | `out` | `subtree_adopted` | `next_wave` |
+| `DE-NW` Nordrhein-Westfalen | `P5` Broad state coverage | `P6` State cutover ready | `85%` | `yes` | `167` | `out` | `subtree_adopted` | `next_wave` |
+| `DE-SH` Schleswig-Holstein | `P5` Broad state coverage | `P6` State cutover ready | `85%` | `yes` | `149` | `out` | `subtree_adopted` | `next_wave` |
+| `DE-BB` Brandenburg | `P6` State cutover ready | `P6` State cutover ready | `100%` | `yes` | `159` | `ok` | `cutover_ready` | `backlog` |
+| `DE-BE` Berlin | `P6` State cutover ready | `P6` State cutover ready | `100%` | `yes` | `187` | `ok` | `cutover_ready` | `backlog` |
+| `DE-HB` Bremen | `P6` State cutover ready | `P6` State cutover ready | `100%` | `yes` | `68` | `ok` | `cutover_ready` | `backlog` |
+| `DE-HE` Hessen | `P6` State cutover ready | `P6` State cutover ready | `100%` | `yes` | `488` | `reference` | `cutover_ready` | `backlog` |
+| `DE-HH` Hamburg | `P6` State cutover ready | `P6` State cutover ready | `100%` | `yes` | `76` | `ok` | `cutover_ready` | `backlog` |
 
 ## Immediate queue
 
-- none (`F6` complete; maintenance-only deltas remain)
+- `DE-BW` (`P5`, `active`): Bring Baden-Wuerttemberg into the Hessen atomic-count corridor on `Sek I`, `Sek II (GK)`, `Sek II (LK)`: start with learner-facing mathematics composition views and applicability, then narrow any remaining gap through the smallest mapping/provenance delta that explains the missing visible atoms; do not treat the lane as `cutover_ready` until all stage counts stay within `+-20%` of Hessen.
+- `DE-MV` (`P5`, `active`): Bring Mecklenburg-Vorpommern into the Hessen atomic-count corridor on `Sek I`, `Sek II (GK)`, `Sek II (LK)`: start with learner-facing mathematics composition views and applicability, then narrow any remaining gap through the smallest mapping/provenance delta that explains the missing visible atoms; do not treat the lane as `cutover_ready` until all stage counts stay within `+-20%` of Hessen.
+- `DE-RP` (`P5`, `active`): Bring Rheinland-Pfalz into the Hessen atomic-count corridor on `Sek I`, `Sek II (GK)`, `Sek II (LK)`: start with learner-facing mathematics composition views and applicability, then narrow any remaining gap through the smallest mapping/provenance delta that explains the missing visible atoms; do not treat the lane as `cutover_ready` until all stage counts stay within `+-20%` of Hessen.
+- `DE-SL` (`P5`, `active`): Bring Saarland into the Hessen atomic-count corridor on `Sek I`, `Sek II (GK)`, `Sek II (LK)`: start with learner-facing mathematics composition views and applicability, then narrow any remaining gap through the smallest mapping/provenance delta that explains the missing visible atoms; do not treat the lane as `cutover_ready` until all stage counts stay within `+-20%` of Hessen.
+- `DE-SN` (`P5`, `active`): Bring Sachsen into the Hessen atomic-count corridor on `Sek I`, `Sek II (GK)`, `Sek II (LK)`: start with learner-facing mathematics composition views and applicability, then narrow any remaining gap through the smallest mapping/provenance delta that explains the missing visible atoms; do not treat the lane as `cutover_ready` until all stage counts stay within `+-20%` of Hessen.
+- `DE-ST` (`P5`, `active`): Bring Sachsen-Anhalt into the Hessen atomic-count corridor on `Sek I`, `Sek II (GK)`, `Sek II (LK)`: start with learner-facing mathematics composition views and applicability, then narrow any remaining gap through the smallest mapping/provenance delta that explains the missing visible atoms; do not treat the lane as `cutover_ready` until all stage counts stay within `+-20%` of Hessen.
+- `DE-TH` (`P5`, `active`): Bring Thueringen into the Hessen atomic-count corridor on `Sek I`, `Sek II (GK)`, `Sek II (LK)`: start with learner-facing mathematics composition views and applicability, then narrow any remaining gap through the smallest mapping/provenance delta that explains the missing visible atoms; do not treat the lane as `cutover_ready` until all stage counts stay within `+-20%` of Hessen.
+- `DE-BY` (`P5`, `next_wave`): Bring Bayern into the Hessen atomic-count corridor on `Sek II (GK)`, `Sek II (LK)`: start with learner-facing mathematics composition views and applicability, then narrow any remaining gap through the smallest mapping/provenance delta that explains the missing visible atoms; do not treat the lane as `cutover_ready` until all stage counts stay within `+-20%` of Hessen.
+- `DE-NI` (`P5`, `next_wave`): Bring Niedersachsen into the Hessen atomic-count corridor on `Sek II (GK)`, `Sek II (LK)`: start with learner-facing mathematics composition views and applicability, then narrow any remaining gap through the smallest mapping/provenance delta that explains the missing visible atoms; do not treat the lane as `cutover_ready` until all stage counts stay within `+-20%` of Hessen.
+- `DE-NW` (`P5`, `next_wave`): Bring Nordrhein-Westfalen into the Hessen atomic-count corridor on `Sek II (GK)`, `Sek II (LK)`: start with learner-facing mathematics composition views and applicability, then narrow any remaining gap through the smallest mapping/provenance delta that explains the missing visible atoms; do not treat the lane as `cutover_ready` until all stage counts stay within `+-20%` of Hessen.
+- `DE-SH` (`P5`, `next_wave`): Bring Schleswig-Holstein into the Hessen atomic-count corridor on `Sek II (GK)`, `Sek II (LK)`: start with learner-facing mathematics composition views and applicability, then narrow any remaining gap through the smallest mapping/provenance delta that explains the missing visible atoms; do not treat the lane as `cutover_ready` until all stage counts stay within `+-20%` of Hessen.
 
 ## Next steps
 
+- `DE-BW`: Bring Baden-Wuerttemberg into the Hessen atomic-count corridor on `Sek I`, `Sek II (GK)`, `Sek II (LK)`: start with learner-facing mathematics composition views and applicability, then narrow any remaining gap through the smallest mapping/provenance delta that explains the missing visible atoms; do not treat the lane as `cutover_ready` until all stage counts stay within `+-20%` of Hessen.
+- `DE-MV`: Bring Mecklenburg-Vorpommern into the Hessen atomic-count corridor on `Sek I`, `Sek II (GK)`, `Sek II (LK)`: start with learner-facing mathematics composition views and applicability, then narrow any remaining gap through the smallest mapping/provenance delta that explains the missing visible atoms; do not treat the lane as `cutover_ready` until all stage counts stay within `+-20%` of Hessen.
+- `DE-RP`: Bring Rheinland-Pfalz into the Hessen atomic-count corridor on `Sek I`, `Sek II (GK)`, `Sek II (LK)`: start with learner-facing mathematics composition views and applicability, then narrow any remaining gap through the smallest mapping/provenance delta that explains the missing visible atoms; do not treat the lane as `cutover_ready` until all stage counts stay within `+-20%` of Hessen.
+- `DE-SL`: Bring Saarland into the Hessen atomic-count corridor on `Sek I`, `Sek II (GK)`, `Sek II (LK)`: start with learner-facing mathematics composition views and applicability, then narrow any remaining gap through the smallest mapping/provenance delta that explains the missing visible atoms; do not treat the lane as `cutover_ready` until all stage counts stay within `+-20%` of Hessen.
+- `DE-SN`: Bring Sachsen into the Hessen atomic-count corridor on `Sek I`, `Sek II (GK)`, `Sek II (LK)`: start with learner-facing mathematics composition views and applicability, then narrow any remaining gap through the smallest mapping/provenance delta that explains the missing visible atoms; do not treat the lane as `cutover_ready` until all stage counts stay within `+-20%` of Hessen.
+- `DE-ST`: Bring Sachsen-Anhalt into the Hessen atomic-count corridor on `Sek I`, `Sek II (GK)`, `Sek II (LK)`: start with learner-facing mathematics composition views and applicability, then narrow any remaining gap through the smallest mapping/provenance delta that explains the missing visible atoms; do not treat the lane as `cutover_ready` until all stage counts stay within `+-20%` of Hessen.
+- `DE-TH`: Bring Thueringen into the Hessen atomic-count corridor on `Sek I`, `Sek II (GK)`, `Sek II (LK)`: start with learner-facing mathematics composition views and applicability, then narrow any remaining gap through the smallest mapping/provenance delta that explains the missing visible atoms; do not treat the lane as `cutover_ready` until all stage counts stay within `+-20%` of Hessen.
+- `DE-BY`: Bring Bayern into the Hessen atomic-count corridor on `Sek II (GK)`, `Sek II (LK)`: start with learner-facing mathematics composition views and applicability, then narrow any remaining gap through the smallest mapping/provenance delta that explains the missing visible atoms; do not treat the lane as `cutover_ready` until all stage counts stay within `+-20%` of Hessen.
+- `DE-NI`: Bring Niedersachsen into the Hessen atomic-count corridor on `Sek II (GK)`, `Sek II (LK)`: start with learner-facing mathematics composition views and applicability, then narrow any remaining gap through the smallest mapping/provenance delta that explains the missing visible atoms; do not treat the lane as `cutover_ready` until all stage counts stay within `+-20%` of Hessen.
+- `DE-NW`: Bring Nordrhein-Westfalen into the Hessen atomic-count corridor on `Sek II (GK)`, `Sek II (LK)`: start with learner-facing mathematics composition views and applicability, then narrow any remaining gap through the smallest mapping/provenance delta that explains the missing visible atoms; do not treat the lane as `cutover_ready` until all stage counts stay within `+-20%` of Hessen.
+- `DE-SH`: Bring Schleswig-Holstein into the Hessen atomic-count corridor on `Sek II (GK)`, `Sek II (LK)`: start with learner-facing mathematics composition views and applicability, then narrow any remaining gap through the smallest mapping/provenance delta that explains the missing visible atoms; do not treat the lane as `cutover_ready` until all stage counts stay within `+-20%` of Hessen.
 - `DE-BB`: Keep Brandenburg on maintenance only: refresh retained source snapshots, canonical mappings/provenance, applicability, and the state-scoped mathematics composition views together whenever a curriculum revision changes visible scope or learner-facing tree shape.
 - `DE-BE`: Keep Berlin on maintenance only: refresh retained source snapshots, canonical mappings/provenance, applicability, and the state-scoped mathematics composition views together whenever a curriculum revision changes visible scope or learner-facing tree shape.
-- `DE-BW`: Keep Baden-Wuerttemberg on maintenance only: refresh retained source snapshots, canonical mappings/provenance, applicability, and the state-scoped mathematics composition views together whenever a curriculum revision changes visible scope or learner-facing tree shape.
-- `DE-BY`: Keep Bayern on maintenance only: refresh retained source snapshots, canonical mappings/provenance, applicability, and the state-scoped mathematics composition views together whenever a curriculum revision changes visible scope or learner-facing tree shape.
 - `DE-HB`: Keep Bremen on maintenance only: refresh retained source snapshots, canonical mappings/provenance, applicability, and the state-scoped mathematics composition views together whenever a curriculum revision changes visible scope or learner-facing tree shape.
 - `DE-HE`: Keep Hessen on maintenance only: refresh retained source snapshots, canonical mappings/provenance, applicability, and the state-scoped mathematics composition views together whenever a curriculum revision changes visible scope or learner-facing tree shape.
 - `DE-HH`: Keep Hamburg on maintenance only: refresh retained source snapshots, canonical mappings/provenance, applicability, and the state-scoped mathematics composition views together whenever a curriculum revision changes visible scope or learner-facing tree shape.
-- `DE-MV`: Keep Mecklenburg-Vorpommern on maintenance only: refresh retained source snapshots, canonical mappings/provenance, applicability, and the state-scoped mathematics composition views together whenever a curriculum revision changes visible scope or learner-facing tree shape.
-- `DE-NI`: Keep Niedersachsen on maintenance only: refresh retained source snapshots, canonical mappings/provenance, applicability, and the state-scoped mathematics composition views together whenever a curriculum revision changes visible scope or learner-facing tree shape.
-- `DE-NW`: Keep Nordrhein-Westfalen on maintenance only: refresh retained source snapshots, canonical mappings/provenance, applicability, and the state-scoped mathematics composition views together whenever a curriculum revision changes visible scope or learner-facing tree shape.
-- `DE-RP`: Keep Rheinland-Pfalz on maintenance only: refresh retained source snapshots, canonical mappings/provenance, applicability, and the state-scoped mathematics composition views together whenever a curriculum revision changes visible scope or learner-facing tree shape.
-- `DE-SH`: Keep Schleswig-Holstein on maintenance only: refresh retained source snapshots, canonical mappings/provenance, applicability, and the state-scoped mathematics composition views together whenever a curriculum revision changes visible scope or learner-facing tree shape.
-- `DE-SL`: Keep Saarland on maintenance only: refresh retained source snapshots, canonical mappings/provenance, applicability, and the state-scoped mathematics composition views together whenever a curriculum revision changes visible scope or learner-facing tree shape.
-- `DE-SN`: Keep Sachsen on maintenance only: refresh retained source snapshots, canonical mappings/provenance, applicability, and the state-scoped mathematics composition views together whenever a curriculum revision changes visible scope or learner-facing tree shape.
-- `DE-ST`: Keep Sachsen-Anhalt on maintenance only: refresh retained source snapshots, canonical mappings/provenance, applicability, and the state-scoped mathematics composition views together whenever a curriculum revision changes visible scope or learner-facing tree shape.
-- `DE-TH`: Keep Thueringen on maintenance only: refresh retained source snapshots, canonical mappings/provenance, applicability, and the state-scoped mathematics composition views together whenever a curriculum revision changes visible scope or learner-facing tree shape.
 
 ## Regeneration
 

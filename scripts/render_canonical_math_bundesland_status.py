@@ -3,10 +3,13 @@
 from __future__ import annotations
 
 import json
+import math
+import subprocess
 from pathlib import Path
 
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
+APP_ROOT = REPO_ROOT / "app"
 TRACKER_PATH = REPO_ROOT / "curricula/DE/Gymnasium/provenance/math-bundesland-rollout-tracker.json"
 SOURCE_LANDSCAPE_REGISTRY_PATH = REPO_ROOT / "curricula/DE/Gymnasium/provenance/source-landscape-registry.json"
 CANONICAL_GOAL_PROVENANCE_REGISTRY_PATH = (
@@ -15,6 +18,14 @@ CANONICAL_GOAL_PROVENANCE_REGISTRY_PATH = (
 CANONICAL_GOAL_APPLICABILITY_OVERRIDE_REGISTRY_PATH = (
     REPO_ROOT / "curricula/DE/Gymnasium/provenance/canonical-goal-applicability-override-registry.json"
 )
+COMPOSITION_VIEW_MATH_DIR = REPO_ROOT / "curricula/DE/Gymnasium/composition-views/mathematik"
+ATOMIC_COUNT_SCRIPT_PATH = APP_ROOT / "scripts/reportCanonicalMathStateAtomCounts.ts"
+APP_TSX_PATH = APP_ROOT / "node_modules/.bin/tsx"
+ATOMIC_COUNT_METRICS = [
+    ("sek1", "Sek I"),
+    ("sek2Gk", "Sek II (GK)"),
+    ("sek2Lk", "Sek II (LK)"),
+]
 
 
 def load_json(path: Path) -> dict:
@@ -132,6 +143,66 @@ def canonical_jurisdictions(repo_root: Path, landscape_rel_path: str) -> set[str
     return jurisdictions
 
 
+def load_atomic_count_report() -> dict:
+    if not APP_TSX_PATH.exists():
+        raise FileNotFoundError(
+            f"Missing tsx runtime for atomic count report: {APP_TSX_PATH.relative_to(REPO_ROOT)}"
+        )
+    if not ATOMIC_COUNT_SCRIPT_PATH.exists():
+        raise FileNotFoundError(
+            f"Missing atomic count script: {ATOMIC_COUNT_SCRIPT_PATH.relative_to(REPO_ROOT)}"
+        )
+
+    completed = subprocess.run(
+        [str(APP_TSX_PATH), str(ATOMIC_COUNT_SCRIPT_PATH.relative_to(APP_ROOT))],
+        cwd=APP_ROOT,
+        check=True,
+        capture_output=True,
+        text=True,
+    )
+    try:
+        return json.loads(completed.stdout)
+    except json.JSONDecodeError as exc:
+        raise RuntimeError(
+            "Failed to parse atomic count report JSON emitted by "
+            f"{ATOMIC_COUNT_SCRIPT_PATH.relative_to(REPO_ROOT)}"
+        ) from exc
+
+
+def integer_corridor(reference_value: int, tolerance_percent: float) -> tuple[int, int]:
+    tolerance_ratio = tolerance_percent / 100.0
+    lower_bound = math.ceil(reference_value * (1.0 - tolerance_ratio))
+    upper_bound = math.floor(reference_value * (1.0 + tolerance_ratio))
+    return lower_bound, upper_bound
+
+
+def corridor_status(value: int, lower_bound: int, upper_bound: int) -> str:
+    if value < lower_bound:
+        return "low"
+    if value > upper_bound:
+        return "high"
+    return "ok"
+
+
+def build_count_gate_next_step(
+    display_name: str,
+    issue_metric_labels: list[str],
+    reference_label: str,
+    tolerance_percent: float,
+) -> str:
+    if issue_metric_labels:
+        issue_scope = ", ".join(f"`{label}`" for label in issue_metric_labels)
+    else:
+        issue_scope = "the missing stage-count data"
+    return (
+        f"Bring {display_name} into the {reference_label} atomic-count corridor on {issue_scope}: "
+        "start with learner-facing mathematics composition views and applicability, then narrow any remaining "
+        "gap through the smallest mapping/provenance delta that explains the missing visible atoms; "
+        f"do not treat the lane as `cutover_ready` until all stage counts stay within `+-{int(tolerance_percent)}%` "
+        f"of {reference_label}."
+    )
+
+
 def render() -> str:
     tracker = load_json(TRACKER_PATH)
     phase_scale = {entry["id"]: entry for entry in tracker["phaseScale"]}
@@ -139,59 +210,189 @@ def render() -> str:
     canonical_corridors = tracker.get("canonicalCorridors", [])
     steering_model = tracker.get("steeringModel", {})
     canonical_states = canonical_jurisdictions(REPO_ROOT, tracker["landscapePath"])
+    atomic_count_policy = tracker.get("atomicCountPolicy", {})
+    atomic_count_report = load_atomic_count_report() if atomic_count_policy else {}
+    atomic_count_rows = atomic_count_report.get("rows", []) if isinstance(atomic_count_report, dict) else []
+    atomic_count_by_jurisdiction = {
+        row["jurisdiction"]: row
+        for row in atomic_count_rows
+        if isinstance(row, dict) and isinstance(row.get("jurisdiction"), str)
+    }
+    cutover_gate = atomic_count_policy.get("cutoverGate", {}) if isinstance(atomic_count_policy, dict) else {}
+    cutover_gate_enabled = bool(cutover_gate.get("enabled"))
+    cutover_gate_fallback_phase_id = (
+        cutover_gate.get("fallbackPhase", "P5") if cutover_gate_enabled else None
+    )
+    cutover_gate_fallback_source_stage = (
+        cutover_gate.get("fallbackSourceStage", "subtree_adopted")
+        if cutover_gate_enabled
+        else None
+    )
+    cutover_gate_partial_failure_priority = (
+        cutover_gate.get("partialFailurePriority", "next_wave")
+        if cutover_gate_enabled
+        else None
+    )
+    cutover_gate_full_failure_priority = (
+        cutover_gate.get("fullFailurePriority", "active")
+        if cutover_gate_enabled
+        else None
+    )
+    reference_jurisdiction = atomic_count_policy.get("referenceJurisdiction")
+    reference_label = atomic_count_policy.get("referenceLabel", reference_jurisdiction)
+    tolerance_percent = float(atomic_count_policy.get("tolerancePercent", 20)) if atomic_count_policy else 20.0
+    reference_counts = (
+        atomic_count_by_jurisdiction.get(reference_jurisdiction)
+        if isinstance(reference_jurisdiction, str)
+        else None
+    )
+    corridor_bounds = {
+        key: integer_corridor(int(reference_counts[key]), tolerance_percent)
+        for key, _label in ATOMIC_COUNT_METRICS
+        if isinstance(reference_counts, dict) and isinstance(reference_counts.get(key), int)
+    }
     priority_order = {"active": 0, "next_wave": 1, "backlog": 2}
 
-    total_score = 0
     rows = []
-    for state in sorted(
-        states,
-        key=lambda state: (
-            priority_order.get(state["priority"], 99),
-            -phase_scale[state["phase"]]["score"],
-            state["jurisdiction"],
-        ),
-    ):
+    stage_corridor_pass_counts = {key: 0 for key, _label in ATOMIC_COUNT_METRICS}
+    full_corridor_pass_count = 0
+    for state in states:
         phase = phase_scale[state["phase"]]
         score = phase["score"]
-        total_score += score
+        atomic_counts = atomic_count_by_jurisdiction.get(state["jurisdiction"])
+        count_corridor = "n/a"
+        count_corridor_detail = "no automatic count data"
+        count_issue_metric_labels: list[str] = []
+        if isinstance(atomic_counts, dict) and corridor_bounds:
+            if state["jurisdiction"] == reference_jurisdiction:
+                count_corridor = "reference"
+                count_corridor_detail = f"reference lane `{reference_label}`"
+            else:
+                issues = []
+                for metric_key, metric_label in ATOMIC_COUNT_METRICS:
+                    metric_value = atomic_counts.get(metric_key)
+                    if not isinstance(metric_value, int):
+                        issues.append(f"{metric_label} missing")
+                        continue
+                    lower_bound, upper_bound = corridor_bounds[metric_key]
+                    metric_status = corridor_status(metric_value, lower_bound, upper_bound)
+                    if metric_status == "ok":
+                        stage_corridor_pass_counts[metric_key] += 1
+                    else:
+                        count_issue_metric_labels.append(metric_label)
+                        issues.append(f"{metric_label} {metric_status}")
+                if issues:
+                    count_corridor = "out"
+                    count_corridor_detail = ", ".join(issues)
+                else:
+                    count_corridor = "ok"
+                    count_corridor_detail = "all stage counts within Hessen corridor"
+                    full_corridor_pass_count += 1
+
+        effective_phase = phase
+        effective_source_stage = state["sourceStage"]
+        effective_priority = state["priority"]
+        effective_next_step = state["nextStep"]
+        count_gate_status = "n/a" if count_corridor == "n/a" else "pass"
+        if state["jurisdiction"] == reference_jurisdiction and count_corridor == "reference":
+            count_gate_status = "reference"
+        elif cutover_gate_enabled and count_corridor == "out":
+            if (
+                isinstance(cutover_gate_fallback_phase_id, str)
+                and cutover_gate_fallback_phase_id in phase_scale
+            ):
+                effective_phase = phase_scale[cutover_gate_fallback_phase_id]
+            if isinstance(cutover_gate_fallback_source_stage, str):
+                effective_source_stage = cutover_gate_fallback_source_stage
+            if len(count_issue_metric_labels) == len(ATOMIC_COUNT_METRICS):
+                if isinstance(cutover_gate_full_failure_priority, str):
+                    effective_priority = cutover_gate_full_failure_priority
+            elif isinstance(cutover_gate_partial_failure_priority, str):
+                effective_priority = cutover_gate_partial_failure_priority
+            effective_next_step = build_count_gate_next_step(
+                state["displayName"],
+                count_issue_metric_labels,
+                str(reference_label),
+                tolerance_percent,
+            )
+            count_gate_status = "blocked"
+
         rows.append(
             {
                 "jurisdiction": state["jurisdiction"],
                 "display_name": state["displayName"],
+                "tracked_phase_id": phase["id"],
+                "tracked_phase_label": phase["label"],
+                "tracked_score": score,
                 "phase_id": phase["id"],
                 "phase_label": phase["label"],
-                "score": score,
+                "score": effective_phase["score"],
+                "effective_phase_id": effective_phase["id"],
+                "effective_phase_label": effective_phase["label"],
+                "effective_source_stage": effective_source_stage,
+                "effective_priority": effective_priority,
+                "effective_next_step": effective_next_step,
                 "applicability": "yes" if state["jurisdiction"] in canonical_states else "no",
                 "mapping_count": mapping_count(REPO_ROOT, state.get("mappingFiles", [])),
                 "source_stage": state["sourceStage"],
                 "priority": state["priority"],
                 "next_step": state["nextStep"],
+                "atomic_counts": atomic_counts,
+                "count_corridor": count_corridor,
+                "count_corridor_detail": count_corridor_detail,
+                "count_issue_metric_labels": count_issue_metric_labels,
+                "count_gate_status": count_gate_status,
             }
         )
 
+    rows.sort(
+        key=lambda row: (
+            priority_order.get(row["effective_priority"], 99),
+            -row["score"],
+            -len(row["count_issue_metric_labels"]),
+            row["jurisdiction"],
+        )
+    )
+
+    total_score = sum(row["score"] for row in rows)
     average_score = round(total_score / len(states), 1) if states else 0.0
     coverage_count = sum(1 for state in states if state["jurisdiction"] in canonical_states)
     p2_score = phase_scale["P2"]["score"]
     p4_score = phase_scale["P4"]["score"]
     p5_score = phase_scale["P5"]["score"]
     snapshot_active_count = sum(
-        1 for state in states if phase_scale[state["phase"]]["score"] >= p2_score
+        1 for row in rows if row["score"] >= p2_score
     )
     anchor_mapped_count = sum(
-        1 for state in states if phase_scale[state["phase"]]["score"] >= phase_scale["P3"]["score"]
+        1 for row in rows if row["score"] >= phase_scale["P3"]["score"]
     )
     corridor_ready_count = sum(
-        1 for state in states if phase_scale[state["phase"]]["score"] >= p4_score
+        1 for row in rows if row["score"] >= p4_score
     )
     broad_coverage_count = sum(
-        1 for state in states if phase_scale[state["phase"]]["score"] >= p5_score
+        1 for row in rows if row["score"] >= p5_score
+    )
+    cutover_ready_count = sum(
+        1 for row in rows if row["score"] >= phase_scale["P6"]["score"]
     )
     active_corridor_count = sum(
         1 for corridor in canonical_corridors if corridor.get("status") == "active"
     )
+    counted_rows = [
+        row
+        for row in rows
+        if isinstance(row.get("atomic_counts"), dict)
+    ]
+    counted_non_reference_rows = [
+        row
+        for row in counted_rows
+        if row["jurisdiction"] != reference_jurisdiction
+    ]
     priority_counts: dict[str, int] = {}
-    for state in states:
-        priority_counts[state["priority"]] = priority_counts.get(state["priority"], 0) + 1
+    for row in rows:
+        priority = row["effective_priority"]
+        priority_counts[priority] = priority_counts.get(priority, 0) + 1
+    count_gate_blocked_count = sum(1 for row in rows if row["count_gate_status"] == "blocked")
 
     lines: list[str] = []
     lines.append("# Canonical Gymnasium Mathematics Bundeslaender Status")
@@ -202,18 +403,48 @@ def render() -> str:
     lines.append("")
     lines.append(f"- `{TRACKER_PATH.relative_to(REPO_ROOT)}`")
     lines.append(f"- `{tracker['landscapePath']}`")
+    lines.append(f"- `{ATOMIC_COUNT_SCRIPT_PATH.relative_to(REPO_ROOT)}`")
+    lines.append(f"- `{COMPOSITION_VIEW_MATH_DIR.relative_to(REPO_ROOT)}`")
     lines.append("")
     lines.append("## Headline")
     lines.append("")
     lines.append(f"- Tracked states: `{len(states)}`")
     lines.append(f"- Canonical source coverage present: `{coverage_count}/{len(states)}`")
-    lines.append(f"- State-weighted rollout score: `{average_score}%`")
+    lines.append(f"- Operational state-weighted rollout score (count-gated): `{average_score}%`")
     lines.append(f"- States with active snapshots (`P2+`): `{snapshot_active_count}/{len(states)}`")
     lines.append(f"- States with structural anchors mapped (`P3+`): `{anchor_mapped_count}/{len(states)}`")
     lines.append(f"- States with reviewed corridor (`P4+`): `{corridor_ready_count}/{len(states)}`")
     lines.append(f"- States with broad coverage (`P5+`): `{broad_coverage_count}/{len(states)}`")
+    lines.append(f"- States operationally cutover-ready (`P6` after count gate): `{cutover_ready_count}/{len(states)}`")
     if canonical_corridors:
         lines.append(f"- Active canonical corridors: `{active_corridor_count}/{len(canonical_corridors)}`")
+    if reference_counts and corridor_bounds:
+        lines.append(f"- Atomic-count reference lane: `{reference_jurisdiction}` {reference_label}")
+        lines.append(
+            "- Hessen reference counts: "
+            + ", ".join(
+                f"`{metric_label} {reference_counts[metric_key]}`"
+                for metric_key, metric_label in ATOMIC_COUNT_METRICS
+            )
+        )
+        lines.append(
+            f"- Hessen corridor (`+-{int(tolerance_percent)}%`): "
+            + ", ".join(
+                f"`{metric_label} {corridor_bounds[metric_key][0]}-{corridor_bounds[metric_key][1]}`"
+                for metric_key, metric_label in ATOMIC_COUNT_METRICS
+            )
+        )
+        lines.append(
+            "- Non-reference states within corridor on all three stage counts: "
+            f"`{full_corridor_pass_count}/{len(counted_non_reference_rows)}`"
+        )
+        for metric_key, metric_label in ATOMIC_COUNT_METRICS:
+            lines.append(
+                f"- {metric_label} within corridor: "
+                f"`{stage_corridor_pass_counts[metric_key]}/{len(counted_non_reference_rows)}`"
+            )
+        if cutover_gate_enabled:
+            lines.append(f"- Count-gated states blocked from `cutover_ready`: `{count_gate_blocked_count}`")
     for priority in sorted(priority_counts, key=lambda value: priority_order.get(value, 99)):
         lines.append(f"- Priority `{priority}`: `{priority_counts[priority]}`")
     lines.append("")
@@ -229,6 +460,12 @@ def render() -> str:
         state_view_rule = steering_model.get("stateViewRule")
         if isinstance(state_view_rule, str):
             lines.append(f"- State view rule: {state_view_rule}")
+        if cutover_gate_enabled and reference_counts and corridor_bounds:
+            lines.append(
+                f"- Count gate rule: states outside the {reference_label} `+-{int(tolerance_percent)}%` "
+                f"stage-count corridor are operationally capped at `{cutover_gate_fallback_phase_id}` / "
+                f"`{cutover_gate_fallback_source_stage}` until the corridor passes."
+            )
         execution_sequence = steering_model.get("executionSequence", [])
         if execution_sequence:
             lines.append("- Execution sequence:")
@@ -255,6 +492,40 @@ def render() -> str:
                 f"{corridor['nextStep']} |"
             )
         lines.append("")
+    if reference_counts and corridor_bounds:
+        lines.append("## Atomic count corridor")
+        lines.append("")
+        lines.append(
+            f"Hessen (`{reference_jurisdiction}`) is the reference lane. "
+            f"All other states should stay within `+-{int(tolerance_percent)}%` of the Hessen stage counts."
+        )
+        lines.append("")
+        if cutover_gate_enabled:
+            lines.append(
+                f"Operational gate: out-of-corridor states are capped at `{cutover_gate_fallback_phase_id}` / "
+                f"`{cutover_gate_fallback_source_stage}`. Full three-stage failures escalate to "
+                f"`{cutover_gate_full_failure_priority}`, partial failures to `{cutover_gate_partial_failure_priority}`."
+            )
+            lines.append("")
+        lines.append("| State | Sek I | Sek II (GK) | Sek II (LK) | Corridor | Detail |")
+        lines.append("| --- | ---: | ---: | ---: | --- | --- |")
+        for row in rows:
+            atomic_counts = row.get("atomic_counts")
+            if not isinstance(atomic_counts, dict):
+                lines.append(
+                    f"| `{row['jurisdiction']}` {row['display_name']} | - | - | - | "
+                    f"`{row['count_corridor']}` | {row['count_corridor_detail']} |"
+                )
+                continue
+            lines.append(
+                f"| `{row['jurisdiction']}` {row['display_name']} | "
+                f"`{atomic_counts['sek1']}` | "
+                f"`{atomic_counts['sek2Gk']}` | "
+                f"`{atomic_counts['sek2Lk']}` | "
+                f"`{row['count_corridor']}` | "
+                f"{row['count_corridor_detail']} |"
+            )
+        lines.append("")
     lines.append("## Program phases")
     lines.append("")
     lines.append("| Program phase | Status |")
@@ -271,33 +542,35 @@ def render() -> str:
     lines.append("")
     lines.append("## State view")
     lines.append("")
-    lines.append("| State | Phase | Score | Applicability | Mappings | Source stage | Priority |")
-    lines.append("| --- | --- | ---: | --- | ---: | --- | --- |")
+    lines.append("| State | Operational phase | Tracked phase | Score | Applicability | Mappings | Count corridor | Source stage | Priority |")
+    lines.append("| --- | --- | --- | ---: | --- | ---: | --- | --- | --- |")
     for row in rows:
         lines.append(
             f"| `{row['jurisdiction']}` {row['display_name']} | "
-            f"`{row['phase_id']}` {row['phase_label']} | "
+            f"`{row['effective_phase_id']}` {row['effective_phase_label']} | "
+            f"`{row['tracked_phase_id']}` {row['tracked_phase_label']} | "
             f"`{row['score']}%` | "
             f"`{row['applicability']}` | "
             f"`{row['mapping_count']}` | "
-            f"`{row['source_stage']}` | "
-            f"`{row['priority']}` |"
+            f"`{row['count_corridor']}` | "
+            f"`{row['effective_source_stage']}` | "
+            f"`{row['effective_priority']}` |"
         )
     lines.append("")
     lines.append("## Immediate queue")
     lines.append("")
-    immediate_queue_rows = [row for row in rows if row["priority"] != "backlog"]
+    immediate_queue_rows = [row for row in rows if row["effective_priority"] != "backlog"]
     if not immediate_queue_rows:
         lines.append("- none (`F6` complete; maintenance-only deltas remain)")
     for row in immediate_queue_rows:
         lines.append(
-            f"- `{row['jurisdiction']}` (`{row['phase_id']}`, `{row['priority']}`): {row['next_step']}"
+            f"- `{row['jurisdiction']}` (`{row['effective_phase_id']}`, `{row['effective_priority']}`): {row['effective_next_step']}"
         )
     lines.append("")
     lines.append("## Next steps")
     lines.append("")
     for row in rows:
-        lines.append(f"- `{row['jurisdiction']}`: {row['next_step']}")
+        lines.append(f"- `{row['jurisdiction']}`: {row['effective_next_step']}")
     lines.append("")
     lines.append("## Regeneration")
     lines.append("")
