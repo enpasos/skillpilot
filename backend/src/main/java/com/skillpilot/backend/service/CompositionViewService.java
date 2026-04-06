@@ -22,8 +22,13 @@ public class CompositionViewService {
     private static final Path COMPOSITION_VIEW_ROOT = Path.of("DE", "Gymnasium", "composition-views");
     private static final TypeReference<Map<String, Object>> MAP_TYPE = new TypeReference<>() {
     };
+    private static final String COURSE_PROFILE_KEY = "courseProfile";
     private static final String STAGE_KEY = "stage";
     private static final String STAGE_CROSS = "CROSSSTAGE";
+    private static final String COURSE_PROFILE_ALL = "ALL";
+    private static final String COURSE_PROFILE_COMBINED = "GK+LK";
+    private static final String COURSE_PROFILE_GK = "GK";
+    private static final String COURSE_PROFILE_LK = "LK";
 
     private final LandscapeProperties properties;
     private final ObjectMapper objectMapper;
@@ -61,6 +66,8 @@ public class CompositionViewService {
                             .<ViewMatch>comparingInt(match -> match.score().scopeSize())
                             .reversed()
                             .thenComparingInt(match -> match.score().stageFallbackCount())
+                            .thenComparingInt(match -> match.score().courseFallbackCount())
+                            .thenComparingInt(match -> match.score().coursePreferenceRank())
                             .thenComparing(match -> asString(match.view().get("viewId"))))
                     .findFirst()
                     .map(match -> Collections.unmodifiableMap(new LinkedHashMap<>(match.view())))
@@ -70,7 +77,7 @@ public class CompositionViewService {
         }
     }
 
-    private record MatchScore(int scopeSize, int stageFallbackCount) {
+    private record MatchScore(int scopeSize, int stageFallbackCount, int courseFallbackCount, int coursePreferenceRank) {
     }
 
     private record ViewMatch(Map<String, Object> view, MatchScore score) {
@@ -120,10 +127,12 @@ public class CompositionViewService {
 
     private static MatchScore scoreScopeMatch(Map<String, String> viewScope, Map<String, String> requestedScope) {
         if (viewScope.isEmpty()) {
-            return requestedScope.isEmpty() ? new MatchScore(0, 0) : null;
+            return requestedScope.isEmpty() ? new MatchScore(0, 0, 0, 0) : null;
         }
 
         int stageFallbackCount = 0;
+        int courseFallbackCount = 0;
+        int coursePreferenceRank = 0;
         for (Map.Entry<String, String> entry : viewScope.entrySet()) {
             String requestedValue = requestedScope.get(entry.getKey());
             if (!StringUtils.hasText(requestedValue)) {
@@ -141,18 +150,33 @@ public class CompositionViewService {
                 continue;
             }
 
+            if (COURSE_PROFILE_KEY.equals(entry.getKey())) {
+                CourseProfileMatch courseProfileMatch = matchCourseProfileScope(entry.getValue(), requestedValue);
+                if (courseProfileMatch == null) {
+                    return null;
+                }
+                if (courseProfileMatch.fallback()) {
+                    courseFallbackCount += 1;
+                }
+                coursePreferenceRank += courseProfileMatch.preferenceRank();
+                continue;
+            }
+
             if (!normalizeValue(requestedValue).equals(normalizeValue(entry.getValue()))) {
                 return null;
             }
         }
 
-        return new MatchScore(viewScope.size(), stageFallbackCount);
+        return new MatchScore(viewScope.size(), stageFallbackCount, courseFallbackCount, coursePreferenceRank);
     }
 
     private enum StageMatch {
         EXACT,
         FALLBACK,
         NONE
+    }
+
+    private record CourseProfileMatch(boolean fallback, int preferenceRank) {
     }
 
     private static StageMatch matchStageScope(String viewStage, String requestedStage) {
@@ -169,5 +193,26 @@ public class CompositionViewService {
             return StageMatch.FALLBACK;
         }
         return StageMatch.NONE;
+    }
+
+    private static CourseProfileMatch matchCourseProfileScope(String viewCourseProfile, String requestedCourseProfile) {
+        String normalizedViewCourseProfile = normalizeValue(viewCourseProfile);
+        String normalizedRequestedCourseProfile = normalizeValue(requestedCourseProfile);
+        if (!StringUtils.hasText(normalizedViewCourseProfile) || !StringUtils.hasText(normalizedRequestedCourseProfile)) {
+            return null;
+        }
+        if (normalizedViewCourseProfile.equals(normalizedRequestedCourseProfile)) {
+            return new CourseProfileMatch(false, 0);
+        }
+        if (COURSE_PROFILE_ALL.equals(normalizedRequestedCourseProfile)
+                || COURSE_PROFILE_COMBINED.equals(normalizedRequestedCourseProfile)) {
+            if (COURSE_PROFILE_LK.equals(normalizedViewCourseProfile)) {
+                return new CourseProfileMatch(true, 0);
+            }
+            if (COURSE_PROFILE_GK.equals(normalizedViewCourseProfile)) {
+                return new CourseProfileMatch(true, 1);
+            }
+        }
+        return null;
     }
 }

@@ -33,6 +33,21 @@ class CompositionViewServiceTest {
     }
 
     @Test
+    void findMatchingView_fallsBackFromCombinedCourseProfileToLkCrossStageView() {
+        CompositionViewService service = createService();
+
+        Map<String, Object> match = service.findMatchingView(
+                CANONICAL_MATH_ID,
+                Map.of(
+                        "schoolForm", "Gymnasium",
+                        "stage", "CrossStage",
+                        "courseProfile", "GK+LK"));
+
+        assertThat(match).isNotNull();
+        assertThat(match.get("viewId")).isEqualTo("de-de-gym-math-lk");
+    }
+
+    @Test
     void findMatchingView_prefersExactStageViewOverCrossStageFallback() {
         CompositionViewService service = createService();
 
@@ -74,6 +89,21 @@ class CompositionViewServiceTest {
 
         assertThat(match).isNotNull();
         assertThat(match.get("viewId")).isEqualTo("de-de-gym-sekii-math-gk");
+    }
+
+    @Test
+    void findMatchingView_fallsBackFromCombinedCourseProfileToLkSekTwoView() {
+        CompositionViewService service = createService();
+
+        Map<String, Object> match = service.findMatchingView(
+                CANONICAL_MATH_ID,
+                Map.of(
+                        "schoolForm", "Gymnasium",
+                        "stage", "SekII",
+                        "courseProfile", "GK+LK"));
+
+        assertThat(match).isNotNull();
+        assertThat(match.get("viewId")).isEqualTo("de-de-gym-sekii-math-lk");
     }
 
     @Test

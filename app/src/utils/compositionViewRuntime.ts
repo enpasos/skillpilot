@@ -22,6 +22,12 @@ export interface RuntimeCompositionScope extends GoalPlacementContext {
 
 const normalizeComparableToken = (value?: string) => value?.trim().toUpperCase() ?? ''
 
+const normalizeCourseProfileScope = (value?: string) => {
+  const normalized = normalizeComparableToken(value)
+  if (normalized === 'ALL') return 'GK+LK'
+  return normalized || undefined
+}
+
 const isStageAnchorGoal = (goal: UiGoal, stage?: string) => {
   if (!(goal.tags ?? []).includes(SYNTHETIC_PROGRAM_UNIT_TAG)) {
     return false
@@ -121,9 +127,7 @@ export const deriveRuntimeCompositionScope = ({
     .find((value): value is NonNullable<typeof value> => !!value)
   const stage = inferStageFromPersonalCurriculum(personalCurriculum)
   const courseProfileCandidate = [landscapeFilterId, activeFilter].find((value) => isCourseProfileFilterId(value))
-  const courseProfile = courseProfileCandidate && normalizeComparableToken(courseProfileCandidate) !== 'ALL'
-    ? normalizeComparableToken(courseProfileCandidate)
-    : undefined
+  const courseProfile = normalizeCourseProfileScope(courseProfileCandidate)
 
   if (!jurisdiction && !stage && !courseProfile) {
     return null
