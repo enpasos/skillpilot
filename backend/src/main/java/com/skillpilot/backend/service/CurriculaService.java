@@ -26,6 +26,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.LinkedHashSet;
 import java.util.Map;
@@ -45,6 +46,9 @@ public class CurriculaService {
     private static final Logger log = LoggerFactory.getLogger(CurriculaService.class);
     private static final double MASTERY_THRESHOLD = 0.9;
     private static final String HESSEN_FILTER_ID = "DE-HE";
+    private static final String CANONICAL_GYMNASIUM_ROOT_ID = "a0e13c56-c25f-4742-9272-3a1a603ee52e";
+    private static final String STAGE_SCOPE_SEK1_ID = "__skillpilot_stage_scope_sek1__";
+    private static final String STAGE_SCOPE_SEK2_ID = "__skillpilot_stage_scope_sek2__";
     private static final Pattern GITHUB_ID_PATTERN = Pattern.compile("^[A-Za-z0-9-]{1,39}$");
     private static final Pattern WHY_TOPIC_PATTERN = Pattern.compile("^\\s*(warum|why)\\b.*",
             Pattern.CASE_INSENSITIVE | Pattern.UNICODE_CASE);
@@ -55,6 +59,7 @@ public class CurriculaService {
     private final CurriculumChampionRepository championRepository;
     private final GitHubStatsService githubStatsService;
     private final LearnerService learnerService;
+    private final CompositionViewService compositionViewService;
     private final ObjectMapper objectMapper;
 
     private final AtomicReference<CurriculaMetricsSnapshot> metricsSnapshot = new AtomicReference<>(
@@ -67,6 +72,7 @@ public class CurriculaService {
             CurriculumChampionRepository championRepository,
             GitHubStatsService githubStatsService,
             LearnerService learnerService,
+            CompositionViewService compositionViewService,
             ObjectMapper objectMapper) {
         this.landscapeService = landscapeService;
         this.masteryRepository = masteryRepository;
@@ -74,6 +80,7 @@ public class CurriculaService {
         this.championRepository = championRepository;
         this.githubStatsService = githubStatsService;
         this.learnerService = learnerService;
+        this.compositionViewService = compositionViewService;
         this.objectMapper = objectMapper;
     }
 
@@ -443,14 +450,24 @@ public class CurriculaService {
                     curriculumId,
                     learner.getPersonalCurriculum(),
                     topicId,
-                    true);
+                    false);
+            Set<String> learnerFacingAtomicIds = resolveLearnerFacingAtomicIds(
+                    curriculumId,
+                    topicId,
+                    learner.getPersonalCurriculum(),
+                    filteredAtomicIds);
             if (topicId != null
                     && HESSEN_FILTER_ID.equals(rootFilterId)
                     && isCanonicalGymnasiumLandscape(curriculumId)) {
-                Set<String> legacyEquivalentAtomicIds = resolveHessenEquivalentCanonicalAtomicIds(topicId, filteredAtomicIds);
+                Set<String> legacyEquivalentAtomicIds = resolveHessenEquivalentCanonicalAtomicIds(
+                        topicId,
+                        learnerFacingAtomicIds.isEmpty() ? filteredAtomicIds : learnerFacingAtomicIds);
                 if (!legacyEquivalentAtomicIds.isEmpty()) {
                     return legacyEquivalentAtomicIds;
                 }
+            }
+            if (!learnerFacingAtomicIds.isEmpty()) {
+                return learnerFacingAtomicIds;
             }
             if (!filteredAtomicIds.isEmpty() || topicId != null) {
                 return filteredAtomicIds;
@@ -485,6 +502,188 @@ public class CurriculaService {
         return atomicIds;
     }
 
+    private Set<String> resolveLearnerFacingAtomicIds(
+            String curriculumId,
+            String topicId,
+            String personalCurriculumJson,
+            Set<String> filteredAtomicIds) {
+        if (filteredAtomicIds == null || filteredAtomicIds.isEmpty()) {
+            return Collections.emptySet();
+        }
+        String compositionLandscapeId = resolveCompositionLandscapeId(curriculumId, topicId);
+        if (compositionLandscapeId == null || compositionLandscapeId.isBlank()) {
+            return Collections.emptySet();
+        }
+
+        Map<String, String> requestedScope = deriveRuntimeCompositionScope(compositionLandscapeId, personalCurriculumJson);
+        if (requestedScope.isEmpty()) {
+            return Collections.emptySet();
+        }
+
+        Map<String, Object> matchedView = compositionViewService.findMatchingView(compositionLandscapeId, requestedScope);
+        if (matchedView == null) {
+            return Collections.emptySet();
+        }
+
+        Set<String> learnerFacingAtomicIds = new LinkedHashSet<>();
+        collectAtomicGoalIdsFromCompositionViewNodeList(matchedView.get("rootNodes"), learnerFacingAtomicIds);
+        learnerFacingAtomicIds.retainAll(filteredAtomicIds);
+        if (topicId != null && !topicId.isBlank()) {
+            learnerFacingAtomicIds.retainAll(collectAtomicGoalIds(topicId));
+        }
+        return learnerFacingAtomicIds;
+    }
+
+    private String resolveCompositionLandscapeId(String curriculumId, String topicId) {
+        if (topicId != null && !topicId.isBlank()) {
+            String topicLandscapeId = landscapeService.getLandscapeIdForGoal(topicId);
+            if (topicLandscapeId != null && !topicLandscapeId.isBlank()) {
+                return topicLandscapeId;
+            }
+        }
+        return curriculumId;
+    }
+
+    private Map<String, String> deriveRuntimeCompositionScope(String landscapeId, String personalCurriculumJson) {
+        LearningLandscape landscape = landscapeService.getById(landscapeId);
+        if (landscape == null || landscape.getFrameworkId() == null || !landscape.getFrameworkId().startsWith("canonical-gymnasium")) {
+            return Collections.emptyMap();
+        }
+
+        Map<String, Map<String, Object>> config = parsePersonalCurriculumConfig(personalCurriculumJson);
+        if (config == null) {
+            config = Collections.emptyMap();
+        }
+
+        String rootFilterId = readFilterId(config, CANONICAL_GYMNASIUM_ROOT_ID);
+        String landscapeFilterId = readFilterId(config, landscapeId);
+        String jurisdiction = resolveJurisdictionFilter(rootFilterId, landscapeFilterId);
+        String stage = inferStageScope(config);
+        String courseProfile = normalizeCourseProfileScope(landscapeFilterId);
+
+        if (jurisdiction == null && stage == null && courseProfile == null) {
+            return Collections.emptyMap();
+        }
+
+        Map<String, String> scope = new LinkedHashMap<>();
+        scope.put("schoolForm", "Gymnasium");
+        if (jurisdiction != null) {
+            scope.put("jurisdiction", jurisdiction);
+        }
+        if (stage != null) {
+            scope.put("stage", stage);
+        }
+        if (courseProfile != null && !"SekI".equals(stage)) {
+            scope.put("courseProfile", courseProfile);
+        }
+        return scope;
+    }
+
+    private String resolveJurisdictionFilter(String... filterCandidates) {
+        for (String filterCandidate : filterCandidates) {
+            String jurisdiction = BundeslandCodeNormalizer.normalize(filterCandidate);
+            if (jurisdiction != null && !jurisdiction.isBlank()) {
+                return jurisdiction;
+            }
+        }
+        return null;
+    }
+
+    private String readFilterId(Map<String, Map<String, Object>> config, String landscapeId) {
+        if (config == null || config.isEmpty()) {
+            return null;
+        }
+        Map<String, Object> entry = config.get(landscapeId);
+        if (entry == null) {
+            return null;
+        }
+        Object filterId = entry.get("filterId");
+        if (!(filterId instanceof String textFilterId)) {
+            return null;
+        }
+        return normalize(textFilterId);
+    }
+
+    private String inferStageScope(Map<String, Map<String, Object>> config) {
+        boolean sek1Selected = readSelectedFlag(config, STAGE_SCOPE_SEK1_ID, true);
+        boolean sek2Selected = readSelectedFlag(config, STAGE_SCOPE_SEK2_ID, true);
+        if (sek1Selected && sek2Selected) {
+            return "CrossStage";
+        }
+        if (sek1Selected) {
+            return "SekI";
+        }
+        if (sek2Selected) {
+            return "SekII";
+        }
+        return null;
+    }
+
+    private boolean readSelectedFlag(Map<String, Map<String, Object>> config, String configId, boolean defaultValue) {
+        if (config == null || config.isEmpty()) {
+            return defaultValue;
+        }
+        Map<String, Object> entry = config.get(configId);
+        if (entry == null) {
+            return defaultValue;
+        }
+        Object selected = entry.get("selected");
+        if (selected instanceof Boolean selectedFlag) {
+            return selectedFlag;
+        }
+        return defaultValue;
+    }
+
+    private String normalizeCourseProfileScope(String filterId) {
+        String normalized = normalize(filterId);
+        if ("GK".equals(normalized) || "LK".equals(normalized) || "GK+LK".equals(normalized)) {
+            return normalized;
+        }
+        if ("ALL".equals(normalized)) {
+            return "GK+LK";
+        }
+        return null;
+    }
+
+    @SuppressWarnings("unchecked")
+    private void collectAtomicGoalIdsFromCompositionViewNodeList(Object rawNodes, Set<String> atomicIds) {
+        if (!(rawNodes instanceof List<?> nodeList)) {
+            return;
+        }
+        for (Object rawNode : nodeList) {
+            if (!(rawNode instanceof Map<?, ?> node)) {
+                continue;
+            }
+            Object kind = node.get("kind");
+            if (!(kind instanceof String kindText)) {
+                continue;
+            }
+            switch (kindText) {
+                case "structure" -> collectAtomicGoalIdsFromCompositionViewNodeList(node.get("children"), atomicIds);
+                case "canonicalSubtree", "goalEntry" -> {
+                    Object goalId = node.get("goalId");
+                    if (goalId instanceof String goalIdText && !goalIdText.isBlank()) {
+                        atomicIds.addAll(collectAtomicGoalIds(goalIdText));
+                    }
+                }
+                case "landscapeEntry" -> {
+                    Object landscapeId = node.get("landscapeId");
+                    if (landscapeId instanceof String landscapeIdText && !landscapeIdText.isBlank()) {
+                        LearningLandscape landscape = landscapeService.getById(landscapeIdText);
+                        if (landscape != null && landscape.getGoals() != null) {
+                            landscape.getGoals().stream()
+                                    .filter(goal -> goal.getTags() != null && goal.getTags().contains("root"))
+                                    .findFirst()
+                                    .ifPresent(rootGoal -> atomicIds.addAll(collectAtomicGoalIds(rootGoal.getId())));
+                        }
+                    }
+                }
+                default -> {
+                }
+            }
+        }
+    }
+
     private boolean isCanonicalGymnasiumLandscape(String curriculumId) {
         LearningLandscape landscape = landscapeService.getById(curriculumId);
         if (landscape == null) {
@@ -517,6 +716,19 @@ public class CurriculaService {
             return normalizedBundesland != null ? normalizedBundesland : normalizedFilterId;
         } catch (Exception e) {
             return null;
+        }
+    }
+
+    private Map<String, Map<String, Object>> parsePersonalCurriculumConfig(String personalCurriculumJson) {
+        if (personalCurriculumJson == null || personalCurriculumJson.isBlank()) {
+            return Collections.emptyMap();
+        }
+        try {
+            Object parsed = objectMapper.readValue(personalCurriculumJson, Object.class);
+            Map<String, Map<String, Object>> config = coercePersonalCurriculumConfig(parsed);
+            return config != null ? config : Collections.emptyMap();
+        } catch (Exception e) {
+            return Collections.emptyMap();
         }
     }
 

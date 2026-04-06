@@ -6,9 +6,12 @@ import com.skillpilot.backend.landscape.LandscapeProperties;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Objects;
@@ -51,7 +54,7 @@ public class CompositionViewService {
         Map<String, String> normalizedRequestedScope = normalizeScope(requestedScope);
 
         try (Stream<Path> stream = Files.walk(baseDir)) {
-            return stream
+            List<ViewMatch> matches = stream
                     .filter(Files::isRegularFile)
                     .filter(path -> path.getFileName().toString().endsWith(".view.json"))
                     .map(this::readViewFile)
@@ -69,9 +72,25 @@ public class CompositionViewService {
                             .thenComparingInt(match -> match.score().courseFallbackCount())
                             .thenComparingInt(match -> match.score().coursePreferenceRank())
                             .thenComparing(match -> asString(match.view().get("viewId"))))
-                    .findFirst()
-                    .map(match -> Collections.unmodifiableMap(new LinkedHashMap<>(match.view())))
-                    .orElse(null);
+                    .toList();
+            if (matches.isEmpty()) {
+                return null;
+            }
+
+            if (isCombinedCourseProfileRequest(normalizedRequestedScope)) {
+                MatchScore bestScore = matches.get(0).score();
+                List<Map<String, Object>> mergeCandidates = matches.stream()
+                        .filter(match -> match.score().scopeSize() == bestScore.scopeSize())
+                        .filter(match -> match.score().stageFallbackCount() == bestScore.stageFallbackCount())
+                        .filter(match -> match.score().courseFallbackCount() == bestScore.courseFallbackCount())
+                        .map(ViewMatch::view)
+                        .toList();
+                if (mergeCandidates.size() > 1 && bestScore.courseFallbackCount() > 0) {
+                    return mergeViews(landscapeId, requestedScope, mergeCandidates);
+                }
+            }
+
+            return Collections.unmodifiableMap(new LinkedHashMap<>(matches.get(0).view()));
         } catch (IOException e) {
             throw new IllegalStateException("Failed to load composition views from " + baseDir, e);
         }
@@ -214,5 +233,93 @@ public class CompositionViewService {
             }
         }
         return null;
+    }
+
+    private static boolean isCombinedCourseProfileRequest(Map<String, String> requestedScope) {
+        String requestedCourseProfile = normalizeValue(requestedScope.get(COURSE_PROFILE_KEY));
+        return COURSE_PROFILE_ALL.equals(requestedCourseProfile) || COURSE_PROFILE_COMBINED.equals(requestedCourseProfile);
+    }
+
+    private static Map<String, Object> mergeViews(
+            String landscapeId,
+            Map<String, String> requestedScope,
+            List<Map<String, Object>> views) {
+        List<Map<String, Object>> normalizedViews = views.stream()
+                .map(view -> Collections.unmodifiableMap(new LinkedHashMap<>(view)))
+                .toList();
+        List<Map<String, Object>> mergedRootNodes = mergeNodeMaps(normalizedViews.stream()
+                .flatMap(view -> asNodeList(view.get("rootNodes")).stream())
+                .toList());
+        List<String> sourceViewIds = normalizedViews.stream()
+                .map(view -> asString(view.get("viewId")))
+                .filter(StringUtils::hasText)
+                .distinct()
+                .toList();
+
+        Map<String, Object> merged = new LinkedHashMap<>();
+        merged.put("viewId", "merged:" + String.join("+", sourceViewIds));
+        merged.put("landscapeId", landscapeId);
+        merged.put("scope", Collections.unmodifiableMap(new LinkedHashMap<>(requestedScope)));
+        merged.put("rootNodes", mergedRootNodes);
+        merged.put("mergedFromViewIds", sourceViewIds);
+        return Collections.unmodifiableMap(merged);
+    }
+
+    @SuppressWarnings("unchecked")
+    private static List<Map<String, Object>> asNodeList(Object value) {
+        if (!(value instanceof List<?> rawList)) {
+            return Collections.emptyList();
+        }
+        List<Map<String, Object>> nodes = new ArrayList<>();
+        for (Object entry : rawList) {
+            if (entry instanceof Map<?, ?> rawNode) {
+                Map<String, Object> node = new LinkedHashMap<>();
+                rawNode.forEach((key, childValue) -> {
+                    if (key instanceof String stringKey) {
+                        node.put(stringKey, childValue);
+                    }
+                });
+                nodes.add(node);
+            }
+        }
+        return nodes;
+    }
+
+    private static List<Map<String, Object>> mergeNodeMaps(List<Map<String, Object>> nodes) {
+        Map<String, List<Map<String, Object>>> grouped = new LinkedHashMap<>();
+        for (Map<String, Object> node : nodes) {
+            grouped.computeIfAbsent(nodeSignature(node), key -> new ArrayList<>()).add(node);
+        }
+
+        List<Map<String, Object>> merged = new ArrayList<>();
+        for (List<Map<String, Object>> group : grouped.values()) {
+            Map<String, Object> first = new LinkedHashMap<>(group.get(0));
+            if ("structure".equals(asString(first.get("kind")))) {
+                List<Map<String, Object>> children = group.stream()
+                        .flatMap(node -> asNodeList(node.get("children")).stream())
+                        .toList();
+                first.put("children", mergeNodeMaps(children));
+            } else {
+                first.remove("children");
+            }
+            merged.add(Collections.unmodifiableMap(first));
+        }
+        return Collections.unmodifiableList(merged);
+    }
+
+    private static String nodeSignature(Map<String, Object> node) {
+        String kind = asString(node.get("kind"));
+        if ("structure".equals(kind)) {
+            String id = asString(node.get("id"));
+            String label = asString(node.get("label"));
+            return "structure:" + (StringUtils.hasText(id) ? id : label);
+        }
+        if ("canonicalSubtree".equals(kind) || "goalEntry".equals(kind)) {
+            return kind + ":" + asString(node.get("goalId"));
+        }
+        if ("landscapeEntry".equals(kind)) {
+            return kind + ":" + asString(node.get("landscapeId"));
+        }
+        return kind + ":" + node.hashCode();
     }
 }

@@ -44,7 +44,8 @@ class CompositionViewServiceTest {
                         "courseProfile", "GK+LK"));
 
         assertThat(match).isNotNull();
-        assertThat(match.get("viewId")).isEqualTo("de-de-gym-math-lk");
+        assertThat(match.get("viewId")).isEqualTo("merged:de-de-gym-math-lk+de-de-gym-math-gk");
+        assertThat(match.get("mergedFromViewIds")).isEqualTo(List.of("de-de-gym-math-lk", "de-de-gym-math-gk"));
     }
 
     @Test
@@ -103,7 +104,8 @@ class CompositionViewServiceTest {
                         "courseProfile", "GK+LK"));
 
         assertThat(match).isNotNull();
-        assertThat(match.get("viewId")).isEqualTo("de-de-gym-sekii-math-lk");
+        assertThat(match.get("viewId")).isEqualTo("merged:de-de-gym-sekii-math-lk+de-de-gym-sekii-math-gk");
+        assertThat(match.get("mergedFromViewIds")).isEqualTo(List.of("de-de-gym-sekii-math-lk", "de-de-gym-sekii-math-gk"));
     }
 
     @Test

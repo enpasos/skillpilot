@@ -440,7 +440,7 @@ public class LearnerControllerIntegrationTest {
         assertThat(response.champion().curriculumId()).isEqualTo(CANONICAL_GYMNASIUM_ROOT_ID);
         assertThat(response.champion().topicId()).isEqualTo(CANONICAL_MATH_ROOT_ID);
         assertThat(response.champion().masteredCount()).isEqualTo(2);
-        assertThat(response.champion().totalTopicGoals()).isEqualTo(360);
+        assertThat(response.champion().totalTopicGoals()).isEqualTo(282);
 
         var snapshot = curriculaService.getSnapshot();
         var curriculum = snapshot.curricula().stream()
@@ -451,7 +451,7 @@ public class LearnerControllerIntegrationTest {
                 .anySatisfy(champion -> {
                     assertThat(champion.topicId()).isEqualTo(CANONICAL_MATH_ROOT_ID);
                     assertThat(champion.masteredCount()).isEqualTo(2);
-                    assertThat(champion.totalTopicGoals()).isEqualTo(360);
+                    assertThat(champion.totalTopicGoals()).isEqualTo(282);
                 });
     }
 
@@ -480,13 +480,42 @@ public class LearnerControllerIntegrationTest {
     }
 
     @Test
-    void registerChampionIgnoresGkLkFilterAndCountsBothCourseLevels() {
+    void registerChampionRespectsGkLkFilterForLearnerFacingCanonicalScope() {
         Learner learner = learnerRepository.findById(learnerId).orElseThrow();
         learner.setSelectedCurriculum(CANONICAL_GYMNASIUM_ROOT_ID);
         learner.setPersonalCurriculum("""
                 {
                   "a0e13c56-c25f-4742-9272-3a1a603ee52e": {"selected": true, "filterId": "DE-HE"},
                   "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced": {"selected": true, "filterId": "GK"}
+                }
+                """);
+        learnerRepository.save(learner);
+
+        masteryRepository.saveAll(List.of(
+                new Mastery(learner, LEGACY_MATH_FUNCTION_CONCEPT_ID, 1.0),
+                new Mastery(learner, LEGACY_MATH_LK_PROOF_STRATEGIES_ID, 1.0)));
+
+        var response = curriculaService.registerChampion(
+                new ChampionRegistrationRequest(
+                        CANONICAL_GYMNASIUM_ROOT_ID,
+                        learnerId,
+                        "enpasos",
+                        CANONICAL_MATH_ROOT_ID));
+
+        assertThat(response.champion().masteredCount()).isEqualTo(1);
+        assertThat(response.champion().totalTopicGoals()).isGreaterThan(1);
+    }
+
+    @Test
+    void registerChampionCountsBothCourseLevelsForCombinedCanonicalScope() {
+        Learner learner = learnerRepository.findById(learnerId).orElseThrow();
+        learner.setSelectedCurriculum(CANONICAL_GYMNASIUM_ROOT_ID);
+        learner.setPersonalCurriculum("""
+                {
+                  "a0e13c56-c25f-4742-9272-3a1a603ee52e": {"selected": true, "filterId": "DE-HE"},
+                  "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced": {"selected": true, "filterId": "ALL"},
+                  "__skillpilot_stage_scope_sek1__": {"selected": true},
+                  "__skillpilot_stage_scope_sek2__": {"selected": true}
                 }
                 """);
         learnerRepository.save(learner);
@@ -528,7 +557,7 @@ public class LearnerControllerIntegrationTest {
                         CANONICAL_PHYSICS_ROOT_ID));
 
         assertThat(response.champion().masteredCount()).isEqualTo(1);
-        assertThat(response.champion().totalTopicGoals()).isEqualTo(308);
+        assertThat(response.champion().totalTopicGoals()).isEqualTo(227);
     }
 
     @Test
