@@ -500,7 +500,14 @@ def render() -> str:
             f"All other states should stay within `+-{int(tolerance_percent)}%` of the Hessen stage counts."
         )
         lines.append("")
-        if cutover_gate_enabled:
+        if cutover_gate_enabled and count_gate_blocked_count == 0:
+            lines.append(
+                "Current state: all non-reference states are within the corridor on all three stage counts. "
+                "The count gate is therefore fully passed nationwide and no state is operationally blocked from "
+                "`cutover_ready`; the remaining work is maintenance only."
+            )
+            lines.append("")
+        elif cutover_gate_enabled:
             lines.append(
                 f"Operational gate: out-of-corridor states are capped at `{cutover_gate_fallback_phase_id}` / "
                 f"`{cutover_gate_fallback_source_stage}`. Full three-stage failures escalate to "

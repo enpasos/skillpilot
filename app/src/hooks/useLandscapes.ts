@@ -121,16 +121,31 @@ export function prepareLandscapeEntries(items: LearningLandscape[]): LandscapeEn
   return applyEffectiveRequires(normalized)
 }
 
-export function useLandscapes(landscapeId?: string, language: string = 'de') {
+interface UseLandscapesOptions {
+  enabled?: boolean
+}
+
+export function useLandscapes(
+  landscapeId?: string,
+  language: string = 'de',
+  { enabled = true }: UseLandscapesOptions = {},
+) {
   const [entries, setEntries] = useState<LandscapeEntry[]>([])
   // Start loading immediately to prevent "No Data" flash during initial effect cycle
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(enabled)
   const [error, setError] = useState<Error | null>(null)
 
   useEffect(() => {
     const controller = new AbortController()
     const signal = controller.signal
     const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
+
+    if (!enabled) {
+      setEntries([])
+      setLoading(false)
+      setError(null)
+      return () => controller.abort()
+    }
 
     setLoading(true)
     setError(null)
@@ -193,7 +208,7 @@ export function useLandscapes(landscapeId?: string, language: string = 'de') {
     return () => {
       controller.abort()
     }
-  }, [landscapeId, language])
+  }, [enabled, landscapeId, language])
 
   return { landscapeEntries: entries, loadingLandscapes: loading, landscapeError: error }
 }

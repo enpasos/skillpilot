@@ -4,10 +4,12 @@ import { Routes, Route, Navigate, useNavigate, useLocation } from 'react-router-
 import { SessionSetup } from './components/SessionSetup'
 import { ToastHost } from './components/ToastHost'
 import { useAppCore } from './hooks/useAppCore'
+import { useLandscapes } from './hooks/useLandscapes'
 import { consumeQueuedToast, useToast } from './hooks/useToast'
 import { useTranslation } from './hooks/useTranslation'
 import { useLanguage } from './contexts/LanguageContext'
 import { sanitizeSkillpilotId } from './utils/skillpilotId'
+import { CANONICAL_GYMNASIUM_ROOT_ID } from './utils/curriculumDisplay'
 
 type Role = 'learner' | 'trainer' | 'explorer'
 
@@ -135,6 +137,21 @@ const App: React.FC = () => {
 
   const core = useAppCore({ role: role || 'explorer', setLearnerMeta, skillpilotId: sanitizedSkillpilotId })
   const { currentLandscapeEntry, landscapeEntries, selectionGoalIndexAll } = core
+  const needsCanonicalGymnasiumSetupClosure = Boolean(
+    currentLandscapeEntry
+    && currentLandscapeEntry.meta.frameworkId?.startsWith('canonical-gymnasium')
+    && core.selectedLandscapeId !== CANONICAL_GYMNASIUM_ROOT_ID,
+  )
+  const {
+    landscapeEntries: canonicalGymnasiumSetupLandscapeEntries,
+  } = useLandscapes(
+    CANONICAL_GYMNASIUM_ROOT_ID,
+    language,
+    { enabled: needsCanonicalGymnasiumSetupClosure },
+  )
+  const setupRootLandscapeId = needsCanonicalGymnasiumSetupClosure
+    ? CANONICAL_GYMNASIUM_ROOT_ID
+    : core.selectedLandscapeId
 
   useEffect(() => {
     const storedId = localStorage.getItem('skillpilot_id')
@@ -178,18 +195,27 @@ const App: React.FC = () => {
         compatibilityOnly: entry.meta.compatibilityOnly,
       })
 
-      const currentEntry = currentLandscapeEntry
+      const setupLandscapeEntries = needsCanonicalGymnasiumSetupClosure && canonicalGymnasiumSetupLandscapeEntries.length > 0
+        ? canonicalGymnasiumSetupLandscapeEntries
+        : landscapeEntries
+      const setupGoalIndex = new Map(
+        setupLandscapeEntries.flatMap((entry) => entry.goals.map((goal) => [goal.id, goal] as const)),
+      )
+      const currentEntry = needsCanonicalGymnasiumSetupClosure
+        ? setupLandscapeEntries.find((entry) => entry.meta.landscapeId === CANONICAL_GYMNASIUM_ROOT_ID) ?? null
+        : currentLandscapeEntry
       if (!currentEntry) {
-        return landscapeEntries.map(toSummary)
+        return setupLandscapeEntries.map(toSummary)
       }
 
       const summaries = [toSummary(currentEntry)]
       const seenLandscapeIds = new Set([currentEntry.meta.landscapeId])
-      const entriesById = new Map(landscapeEntries.map((entry) => [entry.meta.landscapeId, entry]))
+      const entriesById = new Map(setupLandscapeEntries.map((entry) => [entry.meta.landscapeId, entry]))
       const rootGoal = currentEntry.goals.find((goal) => goal.tags?.includes('root')) ?? currentEntry.goals[0]
 
       for (const childId of rootGoal?.contains ?? []) {
-        const childGoal = selectionGoalIndexAll.get(childId)
+        const normalizedChildId = childId.includes(':') ? childId.split(':', 2)[1] : childId
+        const childGoal = setupGoalIndex.get(normalizedChildId)
         const childLandscapeId = childGoal?.landscapeId
         if (!childLandscapeId || seenLandscapeIds.has(childLandscapeId) || childLandscapeId === currentEntry.meta.landscapeId) {
           continue
@@ -206,7 +232,12 @@ const App: React.FC = () => {
 
       return summaries
     },
-    [currentLandscapeEntry, landscapeEntries, selectionGoalIndexAll],
+    [
+      canonicalGymnasiumSetupLandscapeEntries,
+      currentLandscapeEntry,
+      landscapeEntries,
+      needsCanonicalGymnasiumSetupClosure,
+    ],
   )
 
   const trainerClassSetupLandscapes = useMemo(() => {
@@ -611,7 +642,7 @@ const App: React.FC = () => {
               onNotify={handleNotify}
               onLogout={handleLogout}
               availableLandscapes={availableLandscapes}
-              rootLandscapeId={core.selectedLandscapeId}
+              rootLandscapeId={setupRootLandscapeId}
               onRefresh={core.refreshMastery}
               onScopeDataRefresh={core.refreshLearnerGraphData}
               parentMap={core.parentMapAll}

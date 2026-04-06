@@ -60,25 +60,25 @@ This file is generated from:
 
 Hessen (`DE-HE`) is the reference lane. All other states should stay within `+-20%` of the Hessen stage counts.
 
-Operational gate: out-of-corridor states are capped at `P5` / `subtree_adopted`. Full three-stage failures escalate to `active`, partial failures to `next_wave`.
+Current state: all non-reference states are within the corridor on all three stage counts. The count gate is therefore fully passed nationwide and no state is operationally blocked from `cutover_ready`; the remaining work is maintenance only.
 
 | State | Sek I | Sek II (GK) | Sek II (LK) | Corridor | Detail |
 | --- | ---: | ---: | ---: | --- | --- |
 | `DE-BB` Brandenburg | `98` | `333` | `394` | `ok` | all stage counts within Hessen corridor |
 | `DE-BE` Berlin | `94` | `333` | `394` | `ok` | all stage counts within Hessen corridor |
-| `DE-BW` Baden-Wuerttemberg | `82` | `333` | `394` | `ok` | all stage counts within Hessen corridor |
+| `DE-BW` Baden-Wuerttemberg | `81` | `310` | `370` | `ok` | all stage counts within Hessen corridor |
 | `DE-BY` Bayern | `120` | `333` | `394` | `ok` | all stage counts within Hessen corridor |
 | `DE-HB` Bremen | `98` | `333` | `394` | `ok` | all stage counts within Hessen corridor |
 | `DE-HE` Hessen | `101` | `288` | `339` | `reference` | reference lane `Hessen` |
 | `DE-HH` Hamburg | `97` | `333` | `394` | `ok` | all stage counts within Hessen corridor |
-| `DE-MV` Mecklenburg-Vorpommern | `83` | `333` | `394` | `ok` | all stage counts within Hessen corridor |
-| `DE-NI` Niedersachsen | `97` | `333` | `394` | `ok` | all stage counts within Hessen corridor |
-| `DE-NW` Nordrhein-Westfalen | `95` | `333` | `394` | `ok` | all stage counts within Hessen corridor |
-| `DE-RP` Rheinland-Pfalz | `82` | `333` | `394` | `ok` | all stage counts within Hessen corridor |
-| `DE-SH` Schleswig-Holstein | `94` | `333` | `394` | `ok` | all stage counts within Hessen corridor |
-| `DE-SL` Saarland | `88` | `333` | `394` | `ok` | all stage counts within Hessen corridor |
-| `DE-SN` Sachsen | `89` | `333` | `394` | `ok` | all stage counts within Hessen corridor |
-| `DE-ST` Sachsen-Anhalt | `90` | `333` | `394` | `ok` | all stage counts within Hessen corridor |
+| `DE-MV` Mecklenburg-Vorpommern | `83` | `310` | `370` | `ok` | all stage counts within Hessen corridor |
+| `DE-NI` Niedersachsen | `96` | `310` | `370` | `ok` | all stage counts within Hessen corridor |
+| `DE-NW` Nordrhein-Westfalen | `94` | `310` | `370` | `ok` | all stage counts within Hessen corridor |
+| `DE-RP` Rheinland-Pfalz | `81` | `310` | `370` | `ok` | all stage counts within Hessen corridor |
+| `DE-SH` Schleswig-Holstein | `93` | `310` | `370` | `ok` | all stage counts within Hessen corridor |
+| `DE-SL` Saarland | `87` | `310` | `370` | `ok` | all stage counts within Hessen corridor |
+| `DE-SN` Sachsen | `88` | `310` | `370` | `ok` | all stage counts within Hessen corridor |
+| `DE-ST` Sachsen-Anhalt | `90` | `310` | `370` | `ok` | all stage counts within Hessen corridor |
 | `DE-TH` Thueringen | `83` | `267` | `315` | `ok` | all stage counts within Hessen corridor |
 
 ## Program phases

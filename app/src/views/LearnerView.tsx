@@ -2320,7 +2320,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
       </main>
 
       <PersonalCurriculumSetup
-        key={`personal-curriculum:${skillpilotId}:${landscapeId}:${isSetupOpen ? 'open' : 'closed'}`}
+        key={`personal-curriculum:${skillpilotId}:${landscapeId}:${rootLandscapeId ?? 'no-root'}:${availableLandscapes.map((landscape) => landscape.landscapeId).join(',')}:${isSetupOpen ? 'open' : 'closed'}`}
         isOpen={isSetupOpen}
         onClose={() => setIsSetupOpen(false)}
         availableLandscapes={availableLandscapes}
