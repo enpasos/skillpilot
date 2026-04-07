@@ -25,10 +25,19 @@ Ein Ziel ist typischerweise als gelungen zu werten, wenn mindestens eine der fol
 
 Bei sehr bekannten Identitäten zuerst deren Verwendung plausibilisieren, bevor weitere Schritte als korrekt bestätigt werden.
 
+Nicht als belastbare Evidenz zaehlen:
+
+- bloßes Wiederholen einer Formulierung, die der Trainer unmittelbar vorher selbst gegeben hat,
+- das Loesen genau desselben Beispiels, das der Trainer unmittelbar vorher vorgemacht hat,
+- ein einzelner gespiegelt abgefragter Teilaspekt, wenn das Lernziel mehrere klar benannte Aspekte umfasst.
+- unvollstaendige Evidenz, wenn nur ein Teil der klar benannten Aspekte des Lernziels geprueft wurde.
+
 ## 4. Bearbeitung im aktuellen Dialog
 
 Mastery wird nur gesetzt, wenn das Ziel im aktuellen Dialoginhalt erkennbar bearbeitet wurde.
 Reine Navigations- oder Statusschritte zählen nicht.
+Ein einzelner korrekt nachgesprochener Musterfall ohne neuen Transfer oder zweiten unabhaengigen Check reicht nicht.
+Vor `setMastery` muessen alle klar benannten Aspekte des aktiven Lernziels im Dialog geprueft worden sein.
 
 ## 5. Timing
 

@@ -25,10 +25,19 @@ A goal is typically considered achieved when at least one of these patterns is p
 
 For frequently named identities, verify the identity step first before accepting the broader result.
 
+The following do **not** count as solid evidence:
+
+- merely repeating wording that the trainer just provided,
+- solving the exact same example that the trainer just demonstrated,
+- a single mirrored sub-aspect when the learning goal clearly contains multiple named aspects.
+- incomplete evidence when only part of the clearly named aspects of the learning goal was checked.
+
 ## 4. Work in current dialog
 
 Mastery is saved only if the active goal was clearly worked on in the current dialog.
 Pure navigation/status turns are not sufficient.
+A single correctly echoed sample case without transfer or a second independent check is not enough.
+Before `setMastery`, all clearly named aspects of the active learning goal must have been checked in the dialog.
 
 ## 5. Timing
 

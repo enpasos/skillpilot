@@ -121,8 +121,8 @@ End-to-end flow for a typical learner session:
 5.  **Personalization:** If `stateMachine.requiredAction` is `setPersonalization` (e.g. GK/LK or subject/level filters are needed), ask for the missing preference and call `setPersonalization`.
 6.  **Scope:** If the user has a specific topic goal ("I want to learn Stochastik/Analysis"), call `setScope` to focus the plan.
 7.  **Lock Goal:** It calls `setActiveGoal` for the chosen atomic goal.
-8.  **Teaching:** It teaches that locked goal and does exercises.
-9.  **Mastery:** After success, it calls `setMastery` **immediately** (no confirmation prompt). If competence is not verified, it must **not** call `setMastery`. This returns the **new** frontier immediately.
+8.  **Teaching:** It teaches that locked goal and does exercises, but without front-loading the exact sample solution for the very next task. At least one answer must require transfer or a second independent check. If the goal has multiple clearly named aspects, all of them must be checked.
+9.  **Mastery:** After success, it calls `setMastery` **immediately** (no confirmation prompt). If competence is not verified, it must **not** call `setMastery`. Mere repetition of the trainer's own wording is not enough, and partial coverage of a multi-aspect goal is not enough either. This returns the **new** frontier immediately.
 10. **Loop:** It picks the next `type=atomic` goal from `frontier`, locks it, and continues.
 
 -----
