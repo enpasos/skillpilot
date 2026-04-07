@@ -82,8 +82,8 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
     onApply,
     initialConfig = {},
     rootLandscapeId,
-    initialStrategy = 'RANDOM',
-    initialAutoPilot = false,
+    initialStrategy = 'SEQUENTIAL',
+    initialAutoPilot = true,
     initialStrictMode = false,
     migration,
 }) => {

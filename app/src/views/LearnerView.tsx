@@ -817,7 +817,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
 
   const atomicFrontierOptions = useMemo(() => {
     const atomic = frontierOptions.filter((candidate) => candidate.type === 'atomic')
-    const strategy = learnerData?.learningStrategy || 'RANDOM'
+    const strategy = learnerData?.learningStrategy ?? 'SEQUENTIAL'
 
     if (strategy === 'SEQUENTIAL') {
       return atomic
