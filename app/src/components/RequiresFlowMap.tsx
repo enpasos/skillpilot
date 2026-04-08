@@ -171,32 +171,7 @@ export const RequiresFlowMap: React.FC<RequiresFlowMapProps> = ({
       return { nodes: [], nodesByLevel: new Map(), orderedLevels: [], edges: [] }
     }
 
-    const atomicDescendantsMemo = new Map<string, Goal[]>()
-    const getAtomicDescendants = (goal: Goal, stack: Set<string> = new Set()): Goal[] => {
-      const cached = atomicDescendantsMemo.get(goal.id)
-      if (cached) return cached
-      if (stack.has(goal.id)) return []
-
-      stack.add(goal.id)
-      let result: Goal[]
-      if (isAtomicGoal(goal)) {
-        result = [goal]
-      } else {
-        const deduped = new Map<string, Goal>()
-        goal.contains.forEach((childRef) => {
-          const child = resolveGoalRef(childRef, goalIndexAll)
-          if (!child || child.id === goal.id) return
-          getAtomicDescendants(child, stack).forEach((atomicGoal) => {
-            deduped.set(atomicGoal.id, atomicGoal)
-          })
-        })
-        result = Array.from(deduped.values())
-      }
-      stack.delete(goal.id)
-
-      atomicDescendantsMemo.set(goal.id, result)
-      return result
-    }
+    const isCurrentGoalRef = (ref: string): boolean => refsMatch(ref, currentGoal.id)
 
     const upsertPrerequisite = (
       bucket: Map<string, { goal: Goal; relation: PrereqKind }>,
@@ -212,23 +187,9 @@ export const RequiresFlowMap: React.FC<RequiresFlowMapProps> = ({
       const expanded = new Map<string, Goal>()
       goal.requires.forEach((ref) => {
         const prereqGoal = resolveGoalRef(ref, goalIndexAll)
-        if (!prereqGoal || prereqGoal.id === goal.id) return
+        if (!prereqGoal || prereqGoal.id === goal.id || isCurrentGoalRef(prereqGoal.id)) return
 
-        if (!atomicOnly || isAtomicGoal(prereqGoal)) {
-          expanded.set(prereqGoal.id, prereqGoal)
-          return
-        }
-
-        const atomicDescendants = getAtomicDescendants(prereqGoal).filter((atomicGoal) => atomicGoal.id !== goal.id)
-        if (atomicDescendants.length === 0) {
-          // Fallback: keep the original prerequisite if the cluster has no atomic children.
-          expanded.set(prereqGoal.id, prereqGoal)
-          return
-        }
-
-        atomicDescendants.forEach((atomicGoal) => {
-          expanded.set(atomicGoal.id, atomicGoal)
-        })
+        expanded.set(prereqGoal.id, prereqGoal)
       })
       return Array.from(expanded.values())
     }
@@ -237,35 +198,18 @@ export const RequiresFlowMap: React.FC<RequiresFlowMapProps> = ({
       const expanded = new Map<string, { goal: Goal; relation: PrereqKind }>()
       getEffectiveRequiresRefs(goal).forEach((ref) => {
         const prereqGoal = resolveGoalRef(ref, goalIndexAll)
-        if (!prereqGoal || prereqGoal.id === goal.id) return
+        if (!prereqGoal || prereqGoal.id === goal.id || isCurrentGoalRef(prereqGoal.id)) return
 
         const relation: PrereqKind = goal.requires.some((directRef) => refsMatch(directRef, prereqGoal.id))
           ? 'direct'
           : 'inherited'
 
-        if (!atomicOnly || isAtomicGoal(prereqGoal)) {
-          upsertPrerequisite(expanded, { goal: prereqGoal, relation })
-          return
-        }
-
-        const atomicDescendants = getAtomicDescendants(prereqGoal).filter((atomicGoal) => atomicGoal.id !== goal.id)
-        if (atomicDescendants.length === 0) {
-          // Fallback: keep the original prerequisite if the cluster has no atomic children.
-          upsertPrerequisite(expanded, { goal: prereqGoal, relation })
-          return
-        }
-
-        atomicDescendants.forEach((atomicGoal) => {
-          upsertPrerequisite(expanded, { goal: atomicGoal, relation })
-        })
+        // Keep explicit prerequisite references intact.
+        // Expanding cluster prerequisites into all atomic descendants overstates the dependency
+        // and turns one structural authoring shortcut into many hard requirements.
+        upsertPrerequisite(expanded, { goal: prereqGoal, relation })
       })
       return Array.from(expanded.values())
-    }
-
-    const shouldRenderInAtomicMode = (goal: Goal): boolean => {
-      if (isAtomicGoal(goal)) return true
-      // Data-safety fallback: avoid dropping prerequisite paths when cluster metadata is incomplete.
-      return getAtomicDescendants(goal).length === 0
     }
 
     const allNodes = new Map<string, Goal>()
@@ -277,7 +221,7 @@ export const RequiresFlowMap: React.FC<RequiresFlowMapProps> = ({
       stack.add(goal.id)
 
       expandEffectivePrerequisites(goal).forEach(({ goal: prereqGoal, relation }) => {
-        if (!prereqGoal || prereqGoal.id === goal.id) return
+        if (!prereqGoal || prereqGoal.id === goal.id || isCurrentGoalRef(prereqGoal.id)) return
 
         allNodes.set(prereqGoal.id, prereqGoal)
 
@@ -325,7 +269,6 @@ export const RequiresFlowMap: React.FC<RequiresFlowMapProps> = ({
     }
 
     const nodes = Array.from(allNodes.values())
-      .filter((goal) => !atomicOnly || shouldRenderInAtomicMode(goal))
       .map((goal) => {
         const normalizedId = normalizeGoalRef(goal.id)
         let relationToCurrent: PrerequisiteRelationToCurrent = 'transitive'
