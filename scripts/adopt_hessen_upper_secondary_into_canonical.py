@@ -310,6 +310,245 @@ class SubjectConfig:
         self.external_ref_overrides = external_ref_overrides or {}
 
 
+PHYSICS_PROCESS_COMPETENCY_ALIASES: dict[str, str] = {
+    "PK1": "PROCESS.PK1",
+    "PK1_EXPERIMENTIEREN": "PROCESS.PK1",
+    "PK2": "PROCESS.PK2",
+    "PK2_MODELLIEREN": "PROCESS.PK2",
+    "PK3": "PROCESS.PK3",
+    "PK3_MATHEMATISIEREN": "PROCESS.PK3",
+    "PK4": "PROCESS.PK4",
+    "PK4_KOMMUNIZIEREN": "PROCESS.PK4",
+    "PK5": "PROCESS.PK5",
+    "PK5_BEWERTEN": "PROCESS.PK5",
+}
+
+
+def build_physics_program_units() -> list[dict[str, Any]]:
+    return [
+        {
+            "id": "de-gym-physics-program",
+            "kind": "program",
+            "label": "Gymnasium Physik (DE)",
+            "shortLabel": "Gymnasium",
+        },
+        {
+            "id": "de-gym-physics-sek1",
+            "kind": "stage",
+            "label": "Sekundarstufe I",
+            "shortLabel": "Sek I",
+            "order": 10,
+            "parentUnitId": "de-gym-physics-program",
+        },
+        {
+            "id": "de-gym-physics-sek2",
+            "kind": "stage",
+            "label": "Sekundarstufe II",
+            "shortLabel": "Sek II",
+            "order": 20,
+            "parentUnitId": "de-gym-physics-program",
+        },
+        {
+            "id": "de-gym-physics-e",
+            "kind": "phase",
+            "label": "E-Phase",
+            "shortLabel": "E",
+            "order": 21,
+            "parentUnitId": "de-gym-physics-sek2",
+        },
+        {
+            "id": "de-gym-physics-q1",
+            "kind": "phase",
+            "label": "Q1",
+            "shortLabel": "Q1",
+            "order": 22,
+            "parentUnitId": "de-gym-physics-sek2",
+        },
+        {
+            "id": "de-gym-physics-q2",
+            "kind": "phase",
+            "label": "Q2",
+            "shortLabel": "Q2",
+            "order": 23,
+            "parentUnitId": "de-gym-physics-sek2",
+        },
+        {
+            "id": "de-gym-physics-q3",
+            "kind": "phase",
+            "label": "Q3",
+            "shortLabel": "Q3",
+            "order": 24,
+            "parentUnitId": "de-gym-physics-sek2",
+        },
+        {
+            "id": "de-gym-physics-q4",
+            "kind": "phase",
+            "label": "Q4",
+            "shortLabel": "Q4",
+            "order": 25,
+            "parentUnitId": "de-gym-physics-sek2",
+        },
+        {
+            "id": "de-gym-physics-abitur",
+            "kind": "exam",
+            "label": "Abiturprüfung",
+            "shortLabel": "Abitur",
+            "order": 30,
+            "parentUnitId": "de-gym-physics-sek2",
+        },
+    ]
+
+
+def build_physics_competency_catalog() -> list[dict[str, Any]]:
+    return [
+        {
+            "id": "PROCESS.PK1",
+            "label": "Experimentieren",
+            "dimension": "process-competency",
+        },
+        {
+            "id": "PROCESS.PK2",
+            "label": "Modellieren",
+            "dimension": "process-competency",
+        },
+        {
+            "id": "PROCESS.PK3",
+            "label": "Mathematisieren",
+            "dimension": "process-competency",
+        },
+        {
+            "id": "PROCESS.PK4",
+            "label": "Kommunizieren",
+            "dimension": "process-competency",
+        },
+        {
+            "id": "PROCESS.PK5",
+            "label": "Bewerten",
+            "dimension": "process-competency",
+        },
+    ]
+
+
+def build_physics_goal_placements(goals: list[dict[str, Any]], root_goal_id: str) -> list[dict[str, Any]]:
+    goal_id_by_title = {
+        goal.get("title"): goal.get("id")
+        for goal in goals
+        if isinstance(goal.get("title"), str) and isinstance(goal.get("id"), str)
+    }
+
+    def require_goal_id(title: str) -> str:
+        goal_id = goal_id_by_title.get(title)
+        if not goal_id:
+            raise RuntimeError(f"Missing expected physics goal for placement: {title}")
+        return goal_id
+
+    sek1_context = {
+        "schoolForm": "Gymnasium",
+        "stage": "SekI",
+        "durationModel": "G9",
+    }
+    sek2_context = {
+        "schoolForm": "Gymnasium",
+        "stage": "SekII",
+    }
+
+    placements: list[dict[str, Any]] = [
+        {
+            "goalId": root_goal_id,
+            "unitId": "de-gym-physics-program",
+            "relation": "primary",
+        },
+        {
+            "goalId": require_goal_id("Warum Physik? – Weltverständnis & Zukunft"),
+            "unitId": "de-gym-physics-e",
+            "relation": "primary",
+            "context": sek2_context,
+        },
+    ]
+
+    for title in [
+        "Mechanische Grundlagen (Sek I)",
+        "Lichtausbreitung und Reflexion (Sek I)",
+        "Wärmelehre und Teilchenmodell (Sek I)",
+        "Druck und Auftrieb (Sek I)",
+        "Farben und Farbmischung (Sek I)",
+        "Akustische Grundlagen (Sek I)",
+        "Optische Grundlagen (Sek I)",
+        "Magnetismus und einfache Stromkreise (Sek I)",
+        "Spannung, Schaltungen und Sicherheit (Sek I)",
+        "Atomaufbau und Radioaktivität (Sek I)",
+    ]:
+        placements.append(
+            {
+                "goalId": require_goal_id(title),
+                "unitId": "de-gym-physics-sek1",
+                "relation": "primary",
+                "context": sek1_context,
+            }
+        )
+
+    for title, unit_id in [
+        ("Mechanik, Gravitation, Thermodynamik und Drehbewegungen", "de-gym-physics-e"),
+        ("Elektrisches und magnetisches Feld", "de-gym-physics-q1"),
+        ("Schwingungen, Induktion und mechanische Wellen", "de-gym-physics-q2"),
+        ("Elektromagnetische Wellen und Quantenphysik", "de-gym-physics-q3"),
+        ("Struktur von Materie, Raum und Zeit", "de-gym-physics-q4"),
+    ]:
+        placements.append(
+            {
+                "goalId": require_goal_id(title),
+                "unitId": unit_id,
+                "relation": "primary",
+                "context": sek2_context,
+            }
+        )
+
+    for title in [
+        "Abiturprüfung Physik (GK)",
+        "Abiturprüfung Physik (LK)",
+    ]:
+        placements.append(
+            {
+                "goalId": require_goal_id(title),
+                "unitId": "de-gym-physics-abitur",
+                "relation": "assessed",
+                "context": sek2_context,
+            }
+        )
+
+    return placements
+
+
+def apply_physics_competency_refs(goals: list[dict[str, Any]], root_goal_id: str) -> None:
+    goal_by_id = {
+        goal.get("id"): goal
+        for goal in goals
+        if isinstance(goal.get("id"), str)
+    }
+
+    root_goal = goal_by_id.get(root_goal_id)
+    if not root_goal:
+        raise RuntimeError("Missing physics root goal while applying competency refs")
+
+    target_goal_ids = {root_goal_id}
+    target_goal_ids.update(root_goal.get("contains") or [])
+
+    for goal_id in target_goal_ids:
+        goal = goal_by_id.get(goal_id)
+        if not goal:
+            continue
+        raw_competencies = ((goal.get("dimensionTags") or {}).get("processCompetencies") or [])
+        competency_refs = dedupe(
+            [
+                PHYSICS_PROCESS_COMPETENCY_ALIASES[code]
+                for code in raw_competencies
+                if isinstance(code, str) and code in PHYSICS_PROCESS_COMPETENCY_ALIASES
+            ]
+        )
+        if competency_refs:
+            goal["competencyRefs"] = competency_refs
+
+
 MATH = SubjectConfig(
     subject_key="math",
     source_landscape_path=resolve_hessen_upper_secondary_landscape_path("math"),
@@ -1129,6 +1368,12 @@ def adopt_subject(config: SubjectConfig) -> tuple[int, int]:
     current["description"] = config.landscape_description
     current["descriptionEn"] = config.landscape_description_en
     current["goals"] = [root_goal] + retained_current_goals + preserved_current_goals + adopted_goals
+
+    if config.subject_key == "physics":
+        current["programUnits"] = build_physics_program_units()
+        current["goalPlacements"] = build_physics_goal_placements(current["goals"], config.root_goal_id)
+        current["competencyCatalog"] = build_physics_competency_catalog()
+        apply_physics_competency_refs(current["goals"], config.root_goal_id)
 
     if config.subject_key == "math":
         write_goal_provenance_for_landscape(config.target_landscape_id, extract_goal_provenance(current["goals"]))

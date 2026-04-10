@@ -704,6 +704,70 @@ class CompositionViewServiceTest {
         assertThat(match.get("viewId")).isEqualTo("de-de-gym-sekii-physics-lk");
     }
 
+    @Test
+    void findMatchingView_prefersHeSpecificCrossStagePhysicsViewOverDeWideFallbackForGk() {
+        CompositionViewService service = createService();
+
+        Map<String, Object> match = service.findMatchingView(
+                CANONICAL_PHYSICS_ID,
+                Map.of(
+                        "schoolForm", "Gymnasium",
+                        "jurisdiction", "DE-HE",
+                        "stage", "CrossStage",
+                        "courseProfile", "GK"));
+
+        assertThat(match).isNotNull();
+        assertThat(match.get("viewId")).isEqualTo("de-he-gym-physics-gk");
+    }
+
+    @Test
+    void findMatchingView_prefersBySpecificCrossStagePhysicsViewOverDeWideFallbackForLk() {
+        CompositionViewService service = createService();
+
+        Map<String, Object> match = service.findMatchingView(
+                CANONICAL_PHYSICS_ID,
+                Map.of(
+                        "schoolForm", "Gymnasium",
+                        "jurisdiction", "DE-BY",
+                        "stage", "CrossStage",
+                        "courseProfile", "LK"));
+
+        assertThat(match).isNotNull();
+        assertThat(match.get("viewId")).isEqualTo("de-by-gym-physics-lk");
+    }
+
+    @Test
+    void findMatchingView_prefersHeSpecificSekTwoPhysicsViewOverDeWideFallbackForGk() {
+        CompositionViewService service = createService();
+
+        Map<String, Object> match = service.findMatchingView(
+                CANONICAL_PHYSICS_ID,
+                Map.of(
+                        "schoolForm", "Gymnasium",
+                        "jurisdiction", "DE-HE",
+                        "stage", "SekII",
+                        "courseProfile", "GK"));
+
+        assertThat(match).isNotNull();
+        assertThat(match.get("viewId")).isEqualTo("de-he-gym-sekii-physics-gk");
+    }
+
+    @Test
+    void findMatchingView_prefersBySpecificSekTwoPhysicsViewOverDeWideFallbackForLk() {
+        CompositionViewService service = createService();
+
+        Map<String, Object> match = service.findMatchingView(
+                CANONICAL_PHYSICS_ID,
+                Map.of(
+                        "schoolForm", "Gymnasium",
+                        "jurisdiction", "DE-BY",
+                        "stage", "SekII",
+                        "courseProfile", "LK"));
+
+        assertThat(match).isNotNull();
+        assertThat(match.get("viewId")).isEqualTo("de-by-gym-sekii-physics-lk");
+    }
+
     private static CompositionViewService createService() {
         LandscapeProperties properties = new LandscapeProperties();
         properties.setDirectory(resolveCurriculaDir().toString());

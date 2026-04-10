@@ -10,6 +10,7 @@ See also:
 - `docs/dev/canonical-gymnasium-migration-status.md`
 - `docs/dev/canonical-gymnasium-math-bundeslaender-status.md`
 - `docs/dev/canonical-gymnasium-applicability-design.md`
+- `docs/dev/canonical-gymnasium-physics-parity-plan.md`
 
 ## Purpose
 
@@ -677,7 +678,7 @@ WP8 progress so far:
   - horizontal projection
   - traffic safety / reaction and braking distances
 - first explicit Hessen Physik -> canonical Physik mapping fixture added:
-  - `curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_physics_upper_secondary_to_canonical_physics_pilot.json`
+  - `curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_physics_upper_secondary_to_canonical_physics.json`
 - the Physics pilot reuses the existing canonical Mathematics pilot instead of duplicating content:
   - selected canonical mathematics atoms are visible in the Physics motion cluster
   - Physics atomic goals add only a small set of explicit Math -> Physics prerequisite edges

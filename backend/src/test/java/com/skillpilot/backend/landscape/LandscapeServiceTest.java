@@ -736,6 +736,49 @@ class LandscapeServiceTest {
                 assertThat(pilot.getFilters())
                                 .extracting(LandscapeFilter::getId)
                                 .containsExactly("GK", "LK");
+                assertThat(pilot.getProgramUnits())
+                                .extracting(ProgramUnit::getId)
+                                .containsExactly(
+                                                "de-gym-physics-program",
+                                                "de-gym-physics-sek1",
+                                                "de-gym-physics-sek2",
+                                                "de-gym-physics-e",
+                                                "de-gym-physics-q1",
+                                                "de-gym-physics-q2",
+                                                "de-gym-physics-q3",
+                                                "de-gym-physics-q4",
+                                                "de-gym-physics-abitur");
+                assertThat(pilot.getGoalPlacements()).hasSize(19);
+                assertThat(pilot.getGoalPlacements())
+                                .extracting(GoalPlacement::getUnitId)
+                                .contains(
+                                                "de-gym-physics-program",
+                                                "de-gym-physics-sek1",
+                                                "de-gym-physics-e",
+                                                "de-gym-physics-q1",
+                                                "de-gym-physics-q2",
+                                                "de-gym-physics-q3",
+                                                "de-gym-physics-q4",
+                                                "de-gym-physics-abitur");
+                assertThat(pilot.getCompetencyCatalog())
+                                .extracting(CompetencyCatalogEntry::getId)
+                                .containsExactly(
+                                                "PROCESS.PK1",
+                                                "PROCESS.PK2",
+                                                "PROCESS.PK3",
+                                                "PROCESS.PK4",
+                                                "PROCESS.PK5");
+                LearningGoal physicsRoot = pilot.getGoals().stream()
+                                .filter(goal -> "Physik".equals(goal.getTitle()))
+                                .findFirst()
+                                .orElseThrow();
+                assertThat(physicsRoot.getCompetencyRefs())
+                                .containsExactly(
+                                                "PROCESS.PK1",
+                                                "PROCESS.PK2",
+                                                "PROCESS.PK3",
+                                                "PROCESS.PK4",
+                                                "PROCESS.PK5");
                 assertThat(landscapeService.getClosure(CANONICAL_PHYSICS_PILOT_ID))
                                 .extracting(LearningLandscape::getLandscapeId)
                                 .contains(CANONICAL_PHYSICS_PILOT_ID, CANONICAL_MATH_ID)
