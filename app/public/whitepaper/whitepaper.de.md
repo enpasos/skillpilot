@@ -16,6 +16,18 @@ Die Qualitätssicherung erfolgt offen: über ein **Champion-Programm** aus der P
 
 ![SkillPilot Comic](../comic1/SkillPilot_Comic.de.jpg)
 
+### SkillGraph Processing
+
+SkillGraph Processing strukturiert Curricula und Kompetenzmodelle zu abhängigkeitsbasierten Lernlandschaften, die von Menschen und KI-Agenten validiert, erkundet und genutzt werden können.
+
+![SkillGraph Processing](SkillPilotProcess.png)
+
+### SkillPilot Tutor
+
+SkillPilot Tutor begleitet Lernende durch diese Landschaften mit frontier-basierten nächsten Schritten, Mastery-Tracking und kontextbezogener Tutor-Unterstützung.
+
+![SkillPilot Tutor](SkillPilotTutor.png)
+
 ---
 
 ## 1. Die Herausforderung: Individuelle Skill-Navigation skaliert nicht

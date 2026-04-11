@@ -16,6 +16,18 @@ Quality assurance is anchored in a practice-driven **Champion program** and the 
 
 ![SkillPilot Cartoon](../comic1/SkillPilot_Comic.en.jpg)
 
+### SkillGraph Processing
+
+SkillGraph Processing structures curricula and competence models into dependency-aware learning landscapes that can be validated, explored, and used by humans or AI agents.
+
+![SkillGraph Processing](SkillPilotProcess.png)
+
+### SkillPilot Tutor
+
+SkillPilot Tutor guides learners through those landscapes with frontier-based next steps, mastery tracking, and contextual tutoring support.
+
+![SkillPilot Tutor](SkillPilotTutor.png)
+
 ---
 
 ## 1. The Challenge: Individual Skill Navigation Does Not Scale
