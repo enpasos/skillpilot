@@ -1,14 +1,14 @@
 # SkillPilot Whitepaper (EN)
 
-**Version:** 1.0.17
-**Date:** February 2026
+**Version:** 1.0.18
+**Date:** April 2026
 **Project:** SkillPilot
 
 ---
 
 ## Summary
 
-SkillPilot connects to **existing curricula** and uses them as the **source of truth** (e.g., state curricula, module handbooks, standards like CEFR). SkillPilot does not replace these standards; it translates them into a machine-readable **skill graph**. Learners, teachers, and an AI tutor use this as a machine-readable map. This allows the learner to move safely from their current **skill state** to their **skill goals**. The AI tutor leads the dialogue – relying on the **exact backend logic** for learning status, rules, and next steps.
+SkillPilot connects to **existing curricula** and uses them as the **normative source of truth** (e.g., state curricula, module handbooks, standards like CEFR). SkillPilot does not replace these standards; it translates them into a versioned, machine-readable **skill graph** as an operational model. Learners, teachers, and an AI tutor use this graph as a machine-readable map. This allows the learner to move safely from their current **skill state** to their **skill goals**. Runtime authority for learning state, active filters, rules, and next steps sits in the backend state; the AI tutor leads the dialogue by relying on this **exact backend logic**.
 
 To achieve this, the system records learning achievements on atomic skill goals and derives the **mastery level** for higher-level topics. On this basis, the path via the **next attainable skill goals** leads systematically to individual educational objectives.
 
@@ -28,6 +28,8 @@ SkillPilot Tutor guides learners through those landscapes with frontier-based ne
 
 ![SkillPilot Tutor](SkillPilotTutor.png)
 
+**How to read this whitepaper:** Unless stated otherwise, the text describes the current state. Phrases such as *planned*, *in the roadmap*, or *in later stages* mark forward-looking items.
+
 ---
 
 ## 1. The Challenge: Individual Skill Navigation Does Not Scale
@@ -46,21 +48,23 @@ SkillPilot closes this **tool gap**: outcome-oriented navigation in the curricul
 
 ## 2. The Shift: Why Hybrid AI Systems Are the Right Approach
 
-In the three years since ChatGPT went online in November 2022, the world of language-based AI has developed rapidly. A sense of this pace is provided by a look at *Humanity's Last Exam*, the toughest AI benchmark to date. Introduced in early 2025 to test KIs with thousands of extreme expert questions for true logical reasoning rather than mere knowledge, leading models were still failing almost completely at the beginning of the year (under 10% success), but were able to quintuple this performance to about 50% by year-end.
+Since late 2022, the world of language-based AI has developed rapidly. A sense of this pace is provided by a look at *Humanity's Last Exam*, the toughest AI benchmark to date. Introduced in early 2025 to test AI systems with thousands of extreme expert questions for true logical reasoning rather than mere knowledge, leading models were still failing almost completely at the beginning of the year (under 10% success), but were able to quintuple this performance to about 50% by year-end.
 
-As of late 2025, KIs are thus professionally and linguistically up to many topics taught at schools and universities. But they have limits: They are not trained pedagogues and do not work like algorithmically exact bookkeeping programs that calculate and manage without error.
+As of **December 2025**, leading AI systems are thus professionally and linguistically up to many topics taught at schools and universities. But they have limits: They are not trained pedagogues and do not work like algorithmically exact bookkeeping programs that calculate and manage without error.
 
-To ensure the algorithmic **precision** required for **SkillPilot** in navigating learning goals, another trend benefits us: Coupling language KIs to classical software. Standards are being established that allow KIs like ChatGPT to specifically call interfaces (APIs) of classical programs.
+To ensure the algorithmic **precision** required for **SkillPilot** in navigating learning goals, another trend benefits us: coupling language models to classical software. Standards are being established that allow systems like ChatGPT to specifically call interfaces (APIs) of classical programs.
 
-The approach for **SkillPilot** follows almost automatically: It emerges as a hybrid application. Classical, exact software handles the precise "bookkeeping" and navigation of skill goals in the background. Leading language KIs are instructed (as SkillPilot GPT) to speak with learners as empathetic trainers, but use the software's exact logic in the background for learning progress.
+The approach for **SkillPilot** follows almost automatically: it emerges as a hybrid application. Classical, exact software handles the precise "bookkeeping" and navigation of skill goals in the background. Leading language models are instructed (as SkillPilot GPT) to speak with learners as empathetic trainers, but use the software's exact logic in the background for learning progress.
 
 ---
 
 ## 3. The Product: How SkillPilot Works
 
-### 3.1 The Technology: The Skill Graph (Source of Truth & Frontier)
+### 3.1 The Technology: The Skill Graph (Operational Model & Frontier)
 
 SkillPilot replaces linear lists with a connected graph.
+
+The separation of layers matters: the official curriculum remains the **normative source**. The versioned **skill graph** is the derived **operational model**. At runtime, the **backend state** is the authoritative source for current learning state, active filters, and allowed transitions.
 
 ![Example visualization of the skill graph](graph_example.en.png)
 
@@ -74,7 +78,7 @@ This is about:
 
 - **Operationalization:** learning outcomes are broken down into atomic skill goals (without changing the standard).
 - **Traceability:** each skill remains traceable to source/section/version.
-- **Navigability:** prerequisites and hierarchies are modeled explicitly so paths are plannable (didactic prereqs possibly as **overlay**). The graph does not enforce rigid paths: it supports pedagogical flexibility. In **Optimistic Mode**, prerequisites are checked only **inside the selected filter** (e.g., grade level), so learners can start directly in the selected year without being blocked by gaps from earlier years. If learners struggle, the tutor switches to diagnostic **Pessimistic Mode** to find the missing foundation.
+- **Navigability:** prerequisites and hierarchies are modeled explicitly so paths are plannable (didactic prereqs possibly as **overlay**). The **overall graph** does not enforce a single teaching path; it allows multiple didactically meaningful routes. Inside a **selected scope** or an **explicitly modeled target route**, SkillPilot then deliberately narrows the next steps to the relevant subset. In **Optimistic Mode**, prerequisites are checked only **inside the selected filter** (e.g., grade level), so learners can start directly in the selected year without being blocked by gaps from earlier years. If learners struggle, the tutor switches to diagnostic **Pessimistic Mode** to find the missing foundation.
 - **Governance:** changes currently run via GitHub (Issues/PRs), with versioning through GitHub history (see section 6).
 
 #### Map: Nodes & Edges
@@ -84,7 +88,7 @@ This is about:
   - **Prerequisites:** "A before B"
   - **Contains/Part-of:** "X includes Y and Z"
 
-#### Three Node Types in Practice
+#### Three Learning Modes / Node Types in Practice
 
 SkillPilot distinguishes three **node types** that reflect different learning modes:
 
@@ -92,7 +96,9 @@ SkillPilot distinguishes three **node types** that reflect different learning mo
 - **Memorization:** Individual facts are memorized in a targeted way (modern flashcard principle).
 - **Independent problem solving:** Final-exam tasks are solved independently (e.g., on paper, photographed, and uploaded), immediately graded (points, pass/fail, errors), and then explained.
 
-In the curriculum **Upper Secondary School (DE, HE, G9, Secondary II) – Mathematics (QA Stage 2)**, **all three node types** are used.
+These three types describe **learning modes**. The didactic route described in section 3.3 is a separate layer: it arranges steps such as motivation, understanding, memorization, and application along a path. **Motivation** is therefore a didactic phase; when modeled explicitly in a curriculum, it appears as a route node, not as a fourth base type.
+
+In **mathematics** within the Gymnasium landscapes, **all three node types** are used.
 
 ![Exam Node (Example)](examnode.en.png)
 
@@ -101,9 +107,9 @@ In the curriculum **Upper Secondary School (DE, HE, G9, Secondary II) – Mathem
 
 #### Frontier: Next Reachable Steps
 
-SkillPilot computes the **frontier**: skills whose prerequisites are met but not yet mastered.  
-This avoids jumps and keeps learning in the zone of sensible next steps. We call this boundary of current knowledge the **Frontier** (didactically: Zone of Proximal Development according to Vygotsky). It marks exactly the skills that are learnable next.
-The **frontier is not an AI recommendation**, but the mathematically computed set of all logically unlocked learning goals.
+SkillPilot computes the **frontier** relative to the **active scope or filter**: skills whose prerequisites are met inside that active graph slice but are not yet mastered.  
+This avoids jumps and keeps learning in the zone of sensible next steps. We call this boundary of current knowledge the **Frontier** (didactically: Zone of Proximal Development according to Vygotsky). It marks exactly the skills that are learnable next **within the current filter**.
+The **frontier is not an AI recommendation**, but the mathematically computed set of logically unlocked learning goals in the active graph slice. For diagnosis, the scope can be widened deliberately (e.g., in **Pessimistic Mode**).
 
 ![The AI Tutor](Tutor.en.png)
 
@@ -111,11 +117,11 @@ The **frontier is not an AI recommendation**, but the mathematically computed se
 
 The skill graph provides the route, but learners do not interact with datasets; they need a guide. This role is taken by the **AI Tutor** (SkillPilot GPT). It serves as an intuitive interface that translates the abstract instructions of the graph into natural, motivating language.
 
-The tutor is not a "black box" but acts strictly based on backend logic: it receives the next goal and allowed transitions from the graph, illustrating them in a didactically meaningful dialogue. This turns "exact bookkeeping" into a personal learning experience.
+The tutor is not a "black box" but acts strictly based on backend logic: it receives the active scope, frontier, next goal, and allowed transitions from the backend, and turns them into a didactically meaningful dialogue. This turns "exact bookkeeping" into a personal learning experience.
 
 #### Focus Instead of Distraction
 
-The **frontier** calculated in chapter 3.1 serves as a **focus filter** for the tutor: from the full set, only content that fits the goal and current state is shown - the **next feasible step** instead of "everything at once".
+The **frontier** calculated in chapter 3.1 for the **active scope** serves as a **focus filter** for the tutor: from the full set, only content that fits the goal and current state is shown - the **next feasible step** instead of "everything at once".
 
 #### Mastery: Progress as an Evidence Model
 
@@ -126,6 +132,8 @@ The **frontier** calculated in chapter 3.1 serves as a **focus filter** for the 
 - **Formative:** tutor dialogs, in-chat tasks, quick checks.
 - **Optional stronger:** quizzes, task series, artifacts (solution steps/code/short text), oral checks.
 - **Optional review:** skills can later require a re-check.
+
+In the current system, this evidence remains separated from the central state: the SkillPilot server primarily stores the derived status. Stronger evidence can be added institutionally via extra artifacts or references.
 
 > SkillPilot makes progress visible - the institution decides which evidence has which consequences.
 
@@ -142,6 +150,7 @@ Not every learning goal is learned the same way: concepts need understanding and
 **The Path to Exam Readiness ("Get me ready for finals")**
 In practice, students rarely learn isolated topics. They usually pursue an overarching end goal. The typical approach is to define a fixed context - for example, "Advanced Physics Course, Hesse, Final Exam Preparation."
 As soon as this context is defined in SkillPilot, the system bundles all relevant learning routes from the full landscape that lead to the required exam competencies. Learners are then guided by the tutor systematically along these routes.
+This target route is therefore a selection **inside the larger graph**, not the graph's only possible path.
 
 **The System of Learning Paths (The didactic route)**
 Within this curriculum, the path is not left to chance. Each individual topic route follows a clear didactic structure. The final goal of each route is always the ability to independently solve complex tasks and solutions. All prior goals systematically build up the capabilities required for that.
@@ -151,6 +160,8 @@ A typical route consistently goes through the following phases:
 2. **Understanding (Guided Learning):** In Socratic dialogue with the AI tutor, the new concept is introduced with guidance and understanding is built step by step.
 3. **Memorization (Drill):** In parallel with understanding, required facts and formulas are reinforced through the integrated flashcard system.
 4. **Application (Mastery):** At the end of the route, learners independently solve complex exam-level problems (e.g., photographed handwritten steps), while the tutor only evaluates and provides feedback.
+
+These four phases describe **didactic roles along a route**. They do not replace the three learning modes introduced above; they arrange those modes, together with optional motivation nodes, into a learnable sequence.
 
 Short form of the route:
 **Understand why this is relevant for me** -> **build understanding through guided familiarization** -> **memorize in parallel** -> **independently develop solutions**.
@@ -168,13 +179,13 @@ SkillPilot integrates a **flashcard drill engine** (SRS):
 - **Competence loop:** the skill graph defines *what* comes next.
 - **Memorization loop:** the drill engine optimizes *how* to repeat (intervals, prioritization; e.g., SuperMemo-2).
 
-In addition, other learning modes are needed for "doing" skills: the tutor should send learners into suitable **practice formats** (e.g., problem sets, programming tasks, writing/speaking exercises) and then guide them back in chat for evaluation, feedback, and transfer.
+In addition, other learning modes are needed for "doing" skills. **In later stages**, the tutor should send learners into suitable **practice formats** (e.g., problem sets, programming tasks, writing/speaking exercises) and then guide them back in chat for evaluation, feedback, and transfer.
 
 #### Technical Implications: Target Route in Backend, UI, and Tutor
 
-- **Backend (didactic route logic):** The target route is not a free AI computation. It is a topological route modeled in the curriculum under DAG constraints. This means human curriculum authors (champions) retain full pedagogical control, because the AI is not allowed to leave or alter the predefined path on its own. For each long-term goal, upstream nodes (motivation, understanding, memorization, application) are explicitly configured as `requires`.
+- **Backend (didactic route logic):** The target route is not a free AI computation. It is a **modeled sub-route inside the larger graph** under DAG constraints. This means human curriculum authors (champions) retain full pedagogical control. The AI is not allowed to leave the **selected route** on its own as long as scope and mode stay unchanged; a scope change or a diagnostic escalation into **Pessimistic Mode** are explicit system transitions. In route-oriented curricula, the upstream steps (motivation, understanding, memorization, application) can be modeled as explicit `requires` nodes or tightly guided route segments.
 - **UI/UX (route visualization):** Learners select their target context (e.g., advanced physics) and a long-term goal. The interface fades irrelevant areas and clearly highlights the didactic route toward the goal.
-- **AI tutor (didactic context):** The tutor operates strictly on this predefined route and explains transparently why the current step is the logical next stop on the way to exam readiness.
+- **AI tutor (didactic context):** The tutor operates strictly on this selected route and active mode and explains transparently why the current step is the logical next stop on the way to exam readiness.
 
 ---
 
@@ -217,7 +228,7 @@ To keep learning states **portable** and **verifiable**, SkillPilot uses a **cha
 #### Signed Exports
 
 Learners can export profile + progress.  
-The server **cryptographically signs** these exports so offline manipulation is detectable.
+The server **cryptographically signs** these exports so offline manipulation is detectable. Today, the export primarily signs state data (mastery/status), scope information, timestamps, and provenance/integrity metadata. It is therefore **not a substitute** for a full archive of all underlying dialogs or artifacts.
 
 #### Data Provenance on Import
 
@@ -239,10 +250,10 @@ SkillPilot is not just a concept: it already contains curricula/standards as sta
    Learning goals in SkillPilot are derived from publicly accessible, official curricula/regulations. We cite the sources; SkillPilot provides its own structuring and summary – not official wording.  
    Outcome: The curriculum exists and is visible in the UI.
 2. **Stage 2 – QA by Curriculum Champion**  
-   A Curriculum Champion has mastered a curriculum or a module inside SkillPilot, cleaned errors in the curriculum and SkillPilot, and awarded a **QA checkmark**. A curriculum can collect multiple QA checkmarks.
+   A Curriculum Champion has worked through an **explicitly named scope** inside SkillPilot, cleaned errors in the curriculum and in SkillPilot, and awarded a **QA checkmark**. That scope can be an entire subject, a module, or a clearly bounded topic area. A curriculum can collect multiple QA checkmarks.
 
-**Current status:** The subject **Mathematics** for **Gymnasiale Oberstufe (DE, HE, G9, Secondary II)** has now reached **Stage 2**. All other curricula are currently in **Stage 1**. The current status is visible in the [Curriculum Directory](https://skillpilot.com/curricula).  
-![QA Example Mathematics (Stage 2)](champion.en.png)
+**Current status:** The earlier, narrower scope **Mathematics in Upper Secondary School Hesse (G9, Secondary II)** had already reached **Stage 2**. With the canonical expansion to the broader scope **Gymnasium Mathematics (nationwide, Secondary I + II)**, the object under review became much wider: first from Hesse to all 16 federal states, and second from upper secondary only to the full Gymnasium years. For this broadened scope, the certificate is currently **not yet** reached; until practice coverage catches up, it should be read as **Stage 1** again. The champion profile shown below therefore illustrates progress and engagement, not automatically a Stage-2 release for the full current scope. The current status is visible in the [Curriculum Directory](https://skillpilot.com/curricula).  
+![Champion profile example with scope-aware progress counter](champion-status.en.svg)
 
 **Curriculum Champions (practice anchor):**  
 ![Curriculum Champion comic](../comic3/champion.en.png)  
@@ -275,7 +286,7 @@ The QA process does not only cover curricula: the SkillPilot AI tutor is continu
 - English (A1-C2)
 - French (A1-C2)
 
-The listed curricula are currently in **Stage 1 (AI-derived)**. The process to move them to **Stage 2** runs via the **Curriculum Champion process**.
+The listed curricula should therefore first be read as **available content**, not automatically as **Stage-2-certified**. Whether a scope has reached **Stage 2** must always be read for the exact displayed scope in the [Curriculum Directory](https://skillpilot.com/curricula). The process to move a scope into **Stage 2** runs via the **Curriculum Champion process**.
 
 > [!IMPORTANT]
 > We invite you to actively shape this process: **[Become a Curriculum Champion](https://skillpilot.com/curricula)** and help ensure the quality and practical relevance of your subject area.
@@ -288,7 +299,7 @@ Bologna/EHEA sets the framework for **outcomes, transparency, recognition, and q
 
 - **Learning outcomes / competencies:** Contribution: Make outcomes navigable as a skill graph; progress visible. Limit/prerequisite: Clean modeling, source references, versioning.
 - **Credits/workload (ECTS logic):** Contribution: Support paths/prereqs and workload transparency. Limit/prerequisite: **No credit awarding**; rules remain institutional.
-- **Recognition/mobility:** Contribution: Evidence + signed exports as preparation/support. As described in Chapter 4.2, the signed exports provide the technical basis (evidence) to transfer informal learning into formal recognition processes. Limit/prerequisite: Recognition remains a formal process.
+- **Recognition/mobility:** Contribution: Evidence + signed exports as preparation/support. As described in Chapter 4.2, signed exports primarily secure state data and provenance; stronger recognition processes may require additional institutional evidence. Limit/prerequisite: Recognition remains a formal process.
 - **Quality assurance:** Contribution: Signals about hurdles/paths for curriculum development. Limit/prerequisite: QA processes + transparent AI rules required.
 
 ---
@@ -298,7 +309,7 @@ Bologna/EHEA sets the framework for **outcomes, transparency, recognition, and q
 SkillPilot is released as **open source** under the **Apache-2.0 license** - an invitation to include established stakeholders rather than displace them:
 
 - Institutions retain **sovereignty** over curricula and content.
-- Coupling content to skill goals is possible in the future.
+- Coupling content to skill goals is **in the roadmap**.
 - Open interfaces enable contributions and integration.
 
 **Governance & quality assurance (currently via GitHub + Champion program):**
