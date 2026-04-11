@@ -75,6 +75,850 @@ Why this is the right number right now:
 - the current delete-handoff boundary is now enforced via DE-level retained-asset, mapping, and provenance registries instead
 - the close-out headline is now capped correctly because all tracked legacy trees are retired from the active repo
 
+## Update 2026-04-10
+
+What changed:
+
+- canonical Physics reached `M1` Hessen+Bavaria hardened parity inside the DE-level canonical layer
+- the canonical Physics landscape now carries:
+  - `9` `programUnits`
+  - `19` `goalPlacements`
+  - `5` `competencyCatalog` entries
+  - `17` goals with reviewed `competencyRefs`
+- Physics composition views now include not only the `5` DE-wide baseline files, but also `8` explicit reviewed `DE-HE` / `DE-BY` scope views
+- active Physics mapping lanes and canonical identifiers no longer present the subject as a live `pilot`
+- active Physics provenance and applicability exceptions now live in the shared DE-level registries instead of staying inline in the canonical graph JSON
+
+Validation used:
+
+- `cd app && npm run validate:graph`
+- `cd app && npm run validate:view-filters`
+- `cd app && npm run validate:composition-views`
+- `cd backend && ./gradlew test --tests 'com.skillpilot.backend.service.CompositionViewServiceTest'`
+- `cd backend && ./gradlew test --tests 'com.skillpilot.backend.landscape.LandscapeServiceTest' --tests 'com.skillpilot.backend.landscape.GoalMappingRepositoryFixtureTest'`
+
+Validation result:
+
+- `validate:graph`: `593 landscape(s) passed validation.`
+- `validate:view-filters`: `0 error(s), 1382 warning(s), 337 accepted warning(s)`
+- `validate:composition-views`: `86 composition view(s) passed validation.`
+- the Physics backend parity bundle passed with the new registry-backed and state-scoped view assertions
+
+Interpretation:
+
+- this does not change the migration delete-handoff headline, which remains `100%`
+- it does close the remaining canonical Physics hardening gap for the reviewed Hessen+Bavaria corridor
+- the next Physics work is no longer basic parity cleanup; it is repeatable M2 onboarding for additional Bundeslaender
+
+### 2026-04-10: NRW upper-secondary Physics completes the first M2 source-lane activation
+
+What changed:
+
+- the first NRW upper-secondary Physics source snapshot now exists at:
+  - `curricula/DE/Gymnasium/input/NW/upper-secondary/source-json/DE_NRW_S_GYM_2_PHYSIK.de.json.snapshot`
+- the shared DE-level provenance registries now also carry this NRW Physics lane:
+  - `curricula/DE/Gymnasium/provenance/source-landscape-registry.json`
+  - `curricula/DE/Gymnasium/provenance/source-goal-membership-registry.json`
+  - `curricula/DE/Gymnasium/provenance/source-goal-closure-registry.json`
+- the reserved repository-backed mapping scaffold now exists at:
+  - `curricula/DE/Gymnasium/mapping/DE-NW/upper-secondary/nrw_physics_upper_secondary_to_canonical_physics.json`
+- the first active NRW Physics lane is intentionally narrow and source-led:
+  - one shared orientation anchor
+  - one Einfuehrungsphasen entry on periodische Vorgaenge, Kreisbewegung, Gravitation, and physikalische Weltbilder
+  - two Grundkurs anchors on `Quantenobjekte` and `Klassische Wellen und Teilchen in Feldern`
+  - one Leistungskurs anchor on `Quantenphysik` plus `Atom- und Kernphysik`
+
+Validation used:
+
+- `cd backend && ./gradlew test --tests 'com.skillpilot.backend.landscape.LandscapeServiceTest' --tests 'com.skillpilot.backend.landscape.GoalMappingRepositoryFixtureTest'`
+
+Interpretation:
+
+- Physics now has a real third-state DE-level source lane beyond Hessen and Bayern
+- this is still a source-lane activation, not yet a reviewed canonical corridor mapping
+- the next clean NRW Physics move is the first reviewed upper-secondary mapping corridor on top of this active source snapshot
+
+### 2026-04-10: NRW upper-secondary Physics opens the first reviewed entry corridor
+
+What changed:
+
+- the NRW Physics mapping lane now carries `5` reviewed mappings at:
+  - `curricula/DE/Gymnasium/mapping/DE-NW/upper-secondary/nrw_physics_upper_secondary_to_canonical_physics.json`
+- the first reviewed cut stays intentionally narrow:
+  - shared source root -> canonical Physics root (`partial`)
+  - shared orientation anchor -> shared canonical motivation leaf (`exact`)
+  - NRW E-phase entry cluster -> shared canonical E-phase mechanics surface (`partial`)
+  - `Periodische Vorgaenge in alltaeglichen Situationen untersuchen` -> `Harmonische Schwingung verstehen` (`partial`)
+  - `Kreisbewegung, Gravitation und physikalische Weltbilder modellieren` -> integrated canonical gravitation/worldview task surface (`partial`)
+- the NRW Physics onboarding note and mapping-lane README now reflect that the lane has moved beyond pure scaffold state
+
+Validation used:
+
+- `cd backend && ./gradlew test --tests 'com.skillpilot.backend.landscape.LandscapeServiceTest' --tests 'com.skillpilot.backend.landscape.GoalMappingRepositoryFixtureTest'`
+- `cd app && npm run validate:view-filters`
+
+Interpretation:
+
+- NRW Physics has now crossed from pure source-lane activation into the first reviewed canonical bridge set
+- the reviewed corridor is still conservative and does not yet claim a full NRW cutover tree
+- the next clean NRW Physics move after this first corridor was the second reviewed `Quantenobjekte` corridor documented below
+
+### 2026-04-10: NRW upper-secondary Physics adds a second reviewed `Quantenobjekte` corridor
+
+What changed:
+
+- the NRW Physics mapping lane now carries `8` reviewed mappings at:
+  - `curricula/DE/Gymnasium/mapping/DE-NW/upper-secondary/nrw_physics_upper_secondary_to_canonical_physics.json`
+- the new second corridor adds three conservative `partial` bridges onto the canonical Q3 duality surface:
+  - NRW GK `Quantenobjekte` -> canonical `Welle-Teilchen-Dualismus`
+  - `Photonen und Elektronen als Quantenobjekte beschreiben` -> canonical `Welle-Teilchen-Dualismus`
+  - `Die Bedeutung von Modellen an Photon und Elektron reflektieren` -> canonical `Welle-Teilchen-Dualismus`
+- the onboarding note, mapping-lane README, and repository-backed fixture test now reflect the widened NRW Physics bridge set
+
+Validation used:
+
+- `cd backend && ./gradlew test --tests 'com.skillpilot.backend.landscape.LandscapeServiceTest' --tests 'com.skillpilot.backend.landscape.GoalMappingRepositoryFixtureTest'`
+- `cd app && npm run validate:view-filters`
+
+Interpretation:
+
+- NRW Physics now has one reviewed E-phase corridor plus one reviewed GK `Quantenobjekte` corridor
+- the canonical Q4 cluster `Quantenobjekte` remains intentionally unused for this NRW GK bridge because it is didactically deeper than the imported NRW surface
+- the next clean NRW Physics move after this second corridor was the split between `Wellen` and `Felder` documented below
+
+### 2026-04-10: NRW upper-secondary Physics splits the reviewed `Wellen` / `Felder` corridor
+
+What changed:
+
+- the NRW Physics mapping lane now carries `10` reviewed mappings at:
+  - `curricula/DE/Gymnasium/mapping/DE-NW/upper-secondary/nrw_physics_upper_secondary_to_canonical_physics.json`
+- the new split corridor adds two conservative `partial` bridges:
+  - `Klassische Wellenphaenomene an Licht beschreiben` -> canonical Q3 `Elektromagnetische Wellen`
+  - `Geladene Teilchen in homogenen E- und B-Feldern untersuchen` -> canonical Q1 `Elektrisches und magnetisches Feld`
+- the mixed NRW parent `Klassische Wellen und Teilchen in Feldern` intentionally remains unmapped on parent level because the canonical Physics graph separates the didactic surface into reviewed Q3 light-wave and Q1 field branches instead of one shared mixed parent node
+- the onboarding note, mapping-lane README, and repository-backed fixture test now reflect the widened NRW Physics bridge set
+
+Validation used:
+
+- `cd backend && ./gradlew test --tests 'com.skillpilot.backend.landscape.LandscapeServiceTest' --tests 'com.skillpilot.backend.landscape.GoalMappingRepositoryFixtureTest'`
+- `cd app && npm run validate:view-filters`
+
+Interpretation:
+
+- NRW Physics now has reviewed entry bridges on the shared motivation/E-phase surface, on GK `Quantenobjekte`, and on the first split GK `Wellen` / `Felder` surface
+- this step keeps the canonical separation between Q3 light-wave topics and Q1 field dynamics explicit instead of inventing a synthetic mixed canonical parent
+- the next clean NRW Physics move after this split corridor was the first reviewed LK bridge documented below
+
+### 2026-04-10: NRW upper-secondary Physics opens the first reviewed LK corridor
+
+What changed:
+
+- the NRW Physics mapping lane now carries `13` reviewed mappings at:
+  - `curricula/DE/Gymnasium/mapping/DE-NW/upper-secondary/nrw_physics_upper_secondary_to_canonical_physics.json`
+- the first LK corridor adds three conservative `partial` bridges:
+  - NRW LK `Quantenphysik sowie Atom- und Kernphysik` -> canonical Q4 `Struktur von Materie, Raum und Zeit`
+  - `Quantenphysik als Weiterentwicklung des physikalischen Weltbilds deuten` -> canonical Q4 `Quantenobjekte`
+  - `Aufbau der Materie sowie ionisierende Strahlung und Kernprozesse modellieren` -> canonical Q4 `Kernphysik`
+- the onboarding note, mapping-lane README, and repository-backed fixture test now reflect the widened NRW Physics bridge set
+
+Validation used:
+
+- `cd backend && ./gradlew test --tests 'com.skillpilot.backend.landscape.LandscapeServiceTest' --tests 'com.skillpilot.backend.landscape.GoalMappingRepositoryFixtureTest'`
+- `cd app && npm run validate:view-filters`
+
+Interpretation:
+
+- NRW Physics now has one reviewed LK entry corridor in addition to the reviewed E-phase and GK corridors
+- the LK bridge intentionally stays on canonical cluster level because the imported NRW LK atoms are still broader than the currently reviewed canonical Q4 atomic surfaces
+- the next clean NRW Physics move is now a narrower LK split inside `Quantenobjekte` or `Kernphysik`, most likely around radioactivity / nuclear processes or around the Q4 measurement / world-view residue
+
+### 2026-04-10: NRW upper-secondary Physics narrows the LK `Kernphysik` residue
+
+What changed:
+
+- the NRW Physics mapping lane now carries `15` reviewed mappings at:
+  - `curricula/DE/Gymnasium/mapping/DE-NW/upper-secondary/nrw_physics_upper_secondary_to_canonical_physics.json`
+- the NRW upper-secondary Physics source snapshot was widened in place so the retained LK residue `Aufbau der Materie sowie ionisierende Strahlung und Kernprozesse modellieren` is now a source cluster with three child atoms:
+  - `Aufbau der Materie im Kleinen modellieren`
+  - `Ionisierende Strahlung und radioaktive Zerfaelle modellieren`
+  - `Strahlungsrisiken und Kernprozesse fachlich beurteilen`
+- the narrower LK residue now adds two conservative `partial` bridges:
+  - `Ionisierende Strahlung und radioaktive Zerfaelle modellieren` -> canonical Q4 `Radioaktive Strahlung und Wirkungen`
+  - `Strahlungsrisiken und Kernprozesse fachlich beurteilen` -> canonical Q4 `Beurteilung von Strahlungsrisiken und Kernenergie`
+- the retained source cluster `Aufbau der Materie sowie ionisierende Strahlung und Kernprozesse modellieren` stays mapped to canonical Q4 `Kernphysik`
+- the parallel new NRW child `Aufbau der Materie im Kleinen modellieren` intentionally remains unmapped for now because the current canonical Q4 surface does not yet expose a reviewed one-to-one target without overclaiming toward a more specific elementarteilchen surface
+- the source membership and atomic-closure registries now reflect the widened NRW Physics snapshot and the narrower LK residue children
+- the onboarding note, mapping-lane README, and repository-backed fixture test now reflect the widened NRW Physics bridge set
+
+Validation used:
+
+- `cd backend && ./gradlew test --tests 'com.skillpilot.backend.landscape.LandscapeServiceTest' --tests 'com.skillpilot.backend.landscape.GoalMappingRepositoryFixtureTest'`
+- `cd app && npm run validate:view-filters`
+
+Interpretation:
+
+- NRW Physics now has its first reviewed LK residue split inside the canonical Q4 `Kernphysik` surface
+- this still is not a full NRW Q4 cutover: the new child bridges stay conservative and one LK matter child remains source-led and intentionally unmapped
+- the next clean NRW Physics move is now either a further reviewed split of the new radiation child toward `Zerfallsgesetze anwenden` or a reviewed canonical target for the still unmapped LK matter child
+
+### 2026-04-10: NRW upper-secondary Physics splits the LK radiation residue toward `Zerfallsgesetze`
+
+What changed:
+
+- the NRW Physics mapping lane now carries `16` reviewed mappings at:
+  - `curricula/DE/Gymnasium/mapping/DE-NW/upper-secondary/nrw_physics_upper_secondary_to_canonical_physics.json`
+- the retained NRW LK radiation child `Ionisierende Strahlung und radioaktive Zerfaelle modellieren` was widened in place into a source cluster with two narrower child atoms:
+  - `Ionisierende Strahlung nachweisen und Wirkungen beschreiben`
+  - `Radioaktive Zerfaelle und Kernumwandlungen qualitativ beschreiben`
+- the earlier direct bridge from the broad NRW radiation child onto canonical `Radioaktive Strahlung und Wirkungen` is replaced by two narrower conservative `partial` bridges:
+  - `Ionisierende Strahlung nachweisen und Wirkungen beschreiben` -> canonical Q4 `Radioaktive Strahlung und Wirkungen`
+  - `Radioaktive Zerfaelle und Kernumwandlungen qualitativ beschreiben` -> canonical Q4 `Zerfallsgesetze anwenden`
+- the retained NRW LK residue cluster `Aufbau der Materie sowie ionisierende Strahlung und Kernprozesse modellieren` stays mapped to canonical Q4 `Kernphysik`
+- the sibling NRW LK child `Strahlungsrisiken und Kernprozesse fachlich beurteilen` stays mapped to canonical Q4 `Beurteilung von Strahlungsrisiken und Kernenergie`
+- the parallel NRW LK child `Aufbau der Materie im Kleinen modellieren` still remains intentionally unmapped
+- the source membership and atomic-closure registries now reflect the widened NRW Physics snapshot and the narrower radiation residue children
+- the onboarding note, mapping-lane README, M2 shortlist, and repository-backed fixture test now reflect the widened NRW Physics bridge set
+
+Validation used:
+
+- `cd backend && ./gradlew test --tests 'com.skillpilot.backend.landscape.LandscapeServiceTest' --tests 'com.skillpilot.backend.landscape.GoalMappingRepositoryFixtureTest'`
+- `cd app && npm run validate:view-filters`
+
+Interpretation:
+
+- NRW Physics now has a first reviewed NRW access path not only to canonical `Radioaktive Strahlung und Wirkungen`, but also to `Zerfallsgesetze anwenden`
+- this is still conservative: both new NRW bridges remain `partial`, and the broader risk/judgement child plus the matter child still mark the remaining LK residue
+- the next clean NRW Physics move is now either a reviewed split below the current risk/judgement child or a reviewed canonical target for the still unmapped LK matter child
+
+### 2026-04-10: NRW upper-secondary Physics splits the LK judgement residue toward `Strahlungsrisiken` and `Kernenergieoptionen`
+
+What changed:
+
+- the NRW Physics mapping lane now carries `17` reviewed mappings at:
+  - `curricula/DE/Gymnasium/mapping/DE-NW/upper-secondary/nrw_physics_upper_secondary_to_canonical_physics.json`
+- the retained NRW LK judgement child `Strahlungsrisiken und Kernprozesse fachlich beurteilen` was widened in place into a source cluster with two narrower child atoms:
+  - `Strahlungsrisiken mit physikalischen Groessen beurteilen`
+  - `Kernenergieoptionen mit physikalischen Kriterien bewerten`
+- the earlier direct bridge from the broad NRW judgement child onto canonical `Beurteilung von Strahlungsrisiken und Kernenergie` is replaced by two narrower conservative `partial` bridges:
+  - `Strahlungsrisiken mit physikalischen Groessen beurteilen` -> canonical Q4 `Strahlungsrisiken mit physikalischen Größen beurteilen`
+  - `Kernenergieoptionen mit physikalischen Kriterien bewerten` -> canonical Q4 `Kernenergieoptionen mit physikalischen Kriterien bewerten`
+- the retained NRW LK residue cluster `Aufbau der Materie sowie ionisierende Strahlung und Kernprozesse modellieren` stays mapped to canonical Q4 `Kernphysik`
+- the sibling NRW LK matter child `Aufbau der Materie im Kleinen modellieren` still remains intentionally unmapped
+- the source membership and atomic-closure registries now reflect the widened NRW Physics snapshot and the narrower judgement residue children
+- the onboarding note, mapping-lane README, M2 shortlist, and repository-backed fixture test now reflect the widened NRW Physics bridge set
+
+Validation used:
+
+- `cd backend && ./gradlew test --tests 'com.skillpilot.backend.landscape.LandscapeServiceTest' --tests 'com.skillpilot.backend.landscape.GoalMappingRepositoryFixtureTest'`
+- `cd app && npm run validate:view-filters`
+
+Interpretation:
+
+- NRW Physics now has first reviewed NRW access paths not only to the canonical Q4 context cluster, but also to its two narrower judgement leaves
+- this is still conservative: both new NRW bridges remain `partial`, and the LK matter child still marks the remaining source-led residue
+- the next clean NRW Physics move is now a reviewed canonical target for the still unmapped LK matter child, or a further source split inside that matter wording if no reviewed one-to-one target exists yet
+
+### 2026-04-10: NRW upper-secondary Physics splits the LK matter residue without claiming a new canonical bridge
+
+What changed:
+
+- the NRW Physics mapping lane still carries `17` reviewed mappings at:
+  - `curricula/DE/Gymnasium/mapping/DE-NW/upper-secondary/nrw_physics_upper_secondary_to_canonical_physics.json`
+- the retained NRW LK matter child `Aufbau der Materie im Kleinen modellieren` was widened in place into a source cluster with two narrower child atoms:
+  - `Elementare Bestandteile der Materie mit Strukturmodellen ordnen`
+  - `Kernaufbau und Bindungen in einfachen Modellen beschreiben`
+- no new reviewed canonical bridge is claimed yet for these two new matter children
+- the retained NRW LK residue cluster `Aufbau der Materie sowie ionisierende Strahlung und Kernprozesse modellieren` stays mapped to canonical Q4 `Kernphysik`
+- the source membership and atomic-closure registries now reflect the widened NRW Physics snapshot and the narrower matter residue children
+- the onboarding note, mapping-lane README, and M2 shortlist now reflect the widened source split without changing the reviewed mapping count
+
+Validation used:
+
+- `cd backend && ./gradlew test --tests 'com.skillpilot.backend.landscape.LandscapeServiceTest' --tests 'com.skillpilot.backend.landscape.GoalMappingRepositoryFixtureTest'`
+- `cd app && npm run validate:view-filters`
+
+Interpretation:
+
+- the NRW Physics LK matter wording is now materially easier to review against the canonical Q4 matter surface because `elementare Bestandteile` and `Kernaufbau/Bindungen` are no longer bundled into one broad source atom
+- the canonical DE Physics graph still does not yet offer a reviewed one-to-one target for either child without overclaiming into explicit Standardmodell or stronger binding-energy detail
+- the next clean NRW Physics move is now a decision on whether `Elementare Bestandteile der Materie mit Strukturmodellen ordnen` justifies a conservative partial bridge toward a narrow Standardmodell surface, or whether the matter lane should stay source-led pending further canonical refinement
+
+### 2026-04-10: NRW upper-secondary Physics opens a first matter bridge toward `Elementarteilchen und Standardmodell`
+
+What changed:
+
+- the NRW Physics mapping lane now carries `18` reviewed mappings at:
+  - `curricula/DE/Gymnasium/mapping/DE-NW/upper-secondary/nrw_physics_upper_secondary_to_canonical_physics.json`
+- the new NRW LK matter child `Elementare Bestandteile der Materie mit Strukturmodellen ordnen` now maps conservatively as `partial` onto the canonical Q4 cluster `Elementarteilchen und Standardmodell`
+- this is intentionally a cluster-level bridge, not yet a narrower claim onto `Standardmodell: Teilchenfamilien` or `Hadronen aus Quarks deuten`
+- the sibling NRW LK matter child `Kernaufbau und Bindungen in einfachen Modellen beschreiben` remains intentionally unmapped
+- the onboarding note, mapping-lane README, and repository-backed fixture test now reflect the widened NRW Physics bridge set
+
+Validation used:
+
+- `cd backend && ./gradlew test --tests 'com.skillpilot.backend.landscape.LandscapeServiceTest' --tests 'com.skillpilot.backend.landscape.GoalMappingRepositoryFixtureTest'`
+- `cd app && npm run validate:view-filters`
+
+Interpretation:
+
+- NRW Physics now has a first reviewed access path into the canonical Q4 matter / Standardmodell surface without overclaiming the sharper Hessen-authored atomic detail
+- this remains conservative: the new bridge is `partial` and intentionally stops at the cluster level
+- the next clean NRW Physics move is now to decide whether `Kernaufbau und Bindungen in einfachen Modellen beschreiben` justifies a reviewed canonical target, or whether the matter lane should stay source-led beyond this first Standardmodell access path
+
+### 2026-04-10: NRW upper-secondary Physics splits the remaining LK matter residue into `Kernaufbau` and `Bindungen/Modellgrenzen`
+
+What changed:
+
+- the NRW Physics mapping lane still carries `18` reviewed mappings at:
+  - `curricula/DE/Gymnasium/mapping/DE-NW/upper-secondary/nrw_physics_upper_secondary_to_canonical_physics.json`
+- the retained NRW LK matter subcluster `Kernaufbau und Bindungen in einfachen Modellen beschreiben` was widened in place into two narrower child atoms:
+  - `Kernaufbau in einfachen Modellen beschreiben`
+  - `Einfache Bindungen in Materiemodellen beschreiben und Modellgrenzen einordnen`
+- no new reviewed canonical bridge is claimed for those two narrower children
+- the retained source snapshot, source membership registry, and source atomic-closure registry now reflect `25` NRW Physics source goals instead of `23`
+- the onboarding note, mapping-lane README, and M2 shortlist now reflect the narrower retained matter residue without changing the reviewed mapping count
+
+Validation used:
+
+- `cd backend && ./gradlew test --tests 'com.skillpilot.backend.landscape.LandscapeServiceTest' --tests 'com.skillpilot.backend.landscape.GoalMappingRepositoryFixtureTest'`
+- `cd app && npm run validate:view-filters`
+
+Interpretation:
+
+- the remaining NRW LK matter residue is now easier to review against the canonical Q4 nuclear-matter surface because `Kernaufbau` and `Bindungen/Modellgrenzen` are no longer bundled into one retained source atom
+- this stays intentionally source-led: the current canonical Physics graph still does not expose a reviewed one-to-one target for either new child without overclaiming toward stronger binding-energy, reaction, or particle-physics statements
+- the next clean NRW Physics move is now to decide whether `Kernaufbau in einfachen Modellen beschreiben` justifies a conservative reviewed target, or whether the matter lane should remain source-led until the canonical Q4 matter surface is refined further
+
+### 2026-04-10: NRW upper-secondary Physics opens a structural matter bridge onto the canonical atom model surface
+
+What changed:
+
+- the NRW Physics mapping lane now carries `19` reviewed mappings at:
+  - `curricula/DE/Gymnasium/mapping/DE-NW/upper-secondary/nrw_physics_upper_secondary_to_canonical_physics.json`
+- the narrowed NRW LK matter child `Kernaufbau in einfachen Modellen beschreiben` now maps conservatively as `partial` onto the existing canonical atom-structure leaf `Kern und Hülle des Atoms qualitativ beschreiben`
+- this is intentionally a cross-stage structural bridge onto an already reviewed canonical atom, not a sharper Q4 claim onto `Bindungsenergie und Massendefekt`, `Potenzialtopfmodell für Kerne`, or `Kernreaktionen und Kernmodelle`
+- the sibling NRW LK matter child `Einfache Bindungen in Materiemodellen beschreiben und Modellgrenzen einordnen` remains intentionally unmapped
+- the onboarding note, mapping-lane README, M2 shortlist, and repository-backed fixture test now reflect the widened NRW Physics bridge set
+
+Validation used:
+
+- `cd backend && ./gradlew test --tests 'com.skillpilot.backend.landscape.LandscapeServiceTest' --tests 'com.skillpilot.backend.landscape.GoalMappingRepositoryFixtureTest'`
+- `cd app && npm run validate:view-filters`
+
+Interpretation:
+
+- NRW Physics now has a second reviewed access path on the LK matter residue: one bridge into the broad Q4 `Elementarteilchen` surface and one bridge into the already shared canonical atom-structure surface
+- this remains conservative in fachlicher Hinsicht, but operationally it adds one new active `APV-202` for the canonical atom-structure leaf because the NRW reach on that target is now backed explicitly by a reviewed `partial` mapping
+- the next clean NRW Physics move is now to decide whether the remaining `Bindungen/Modellgrenzen` residue justifies a reviewed canonical target, or whether the matter lane should stop here for now
+
+### 2026-04-10: NRW upper-secondary Physics splits the last LK matter residue into `Bindungen` and `Modellgrenzen`
+
+What changed:
+
+- the NRW Physics mapping lane still carries `19` reviewed mappings at:
+  - `curricula/DE/Gymnasium/mapping/DE-NW/upper-secondary/nrw_physics_upper_secondary_to_canonical_physics.json`
+- the retained NRW LK matter child cluster `Einfache Bindungen in Materiemodellen beschreiben und Modellgrenzen einordnen` was widened in place into two narrower child atoms:
+  - `Einfache Bindungen in Materiemodellen beschreiben`
+  - `Modellgrenzen einfacher Materiemodelle fachlich einordnen`
+- no new reviewed canonical bridge is claimed for those two narrower children
+- the retained source snapshot, source membership registry, and source atomic-closure registry now reflect `27` NRW Physics source goals instead of `25`
+- the onboarding note, mapping-lane README, and M2 shortlist now reflect the narrower retained matter residue without changing the reviewed mapping count
+
+Validation used:
+
+- `cd backend && ./gradlew test --tests 'com.skillpilot.backend.landscape.LandscapeServiceTest' --tests 'com.skillpilot.backend.landscape.GoalMappingRepositoryFixtureTest'`
+- `cd app && npm run validate:view-filters`
+
+Interpretation:
+
+- the remaining NRW LK matter residue is now narrower to review against the canonical Q4 matter surface because `Bindungen` and `Modellgrenzen` no longer share one retained source atom
+- this still stays intentionally source-led: the current canonical Physics graph does not yet expose reviewed one-to-one targets for either new child without overclaiming toward stronger binding-energy, reaction, or particle-physics statements
+- the next clean NRW Physics move is now to decide whether `Einfache Bindungen in Materiemodellen beschreiben` justifies a conservative reviewed target, or whether the last two matter residuals should remain source-led for now
+
+### 2026-04-10: NRW upper-secondary Physics keeps the last LK matter children source-led after explicit target review
+
+What changed:
+
+- the NRW Physics mapping lane still carries `19` reviewed mappings at:
+  - `curricula/DE/Gymnasium/mapping/DE-NW/upper-secondary/nrw_physics_upper_secondary_to_canonical_physics.json`
+- the narrower NRW LK matter child `Einfache Bindungen in Materiemodellen beschreiben` was reviewed explicitly against the current closest canonical candidates:
+  - `Bindungsenergie und Massendefekt`
+  - `Potenzialtopfmodell für Kerne`
+  - `Fundamentale Wechselwirkungen`
+- no new reviewed canonical bridge is claimed, because those current candidates all overclaim the NRW source wording in different directions
+- the onboarding note, mapping-lane README, and M2 shortlist now record this reviewed stop condition instead of keeping the lane in an implicit "maybe next" state
+
+Validation used:
+
+- `git diff --check`
+
+Interpretation:
+
+- `Bindungsenergie und Massendefekt` is too sharp because it already includes mass-defect explanation plus simple reaction-energy calculation
+- `Potenzialtopfmodell für Kerne` is too specific because it presupposes the narrower binding-energy / nuclear-potential framing
+- `Fundamentale Wechselwirkungen` is too broad because it sits inside the later Standardmodell / interactions package and asks for the four interactions across atomic, nuclear, and cosmic processes
+- the next clean NRW Physics move is therefore no longer another mapping on this matter residue, but either a new narrow canonical binding-model surface or a shift to another still-open NRW Physics corridor
+
+### 2026-04-10: Physics gets its first bundesland rollout tracker after the NRW activation
+
+What changed:
+
+- the first Physics rollout tracker now exists at:
+  - `curricula/DE/Gymnasium/provenance/physics-bundesland-rollout-tracker.json`
+- the first generated Physics bundesland quick view now exists at:
+  - `docs/dev/canonical-gymnasium-physics-bundeslaender-status.md`
+- a repository-backed renderer now exists at:
+  - `scripts/render_canonical_physics_bundesland_status.py`
+- the tracker currently covers the active canonical Physics states `DE-HE`, `DE-BY`, and `DE-NW`
+- the parity plan and the M2 shortlist now no longer describe Physics as a two-state-only surface
+
+Validation used:
+
+- `python3 scripts/render_canonical_physics_bundesland_status.py`
+- `git diff --check`
+
+Interpretation:
+
+- this is a rollout-discipline step, not a new canonical Physics mapping
+- it closes one real parity gap versus mathematics: Physics now has a machine-readable state tracker plus a rendered quick-view status artifact
+- the next clean move can now be chosen against a visible three-state rollout surface instead of relying only on the narrower NRW lane log
+
+### 2026-04-10: NRW Physics gets its first committed upper-secondary applicability cut
+
+What changed:
+
+- the canonical Physics landscape has now been realigned to the current compiled applicability state:
+  - `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json`
+- this first committed NRW upper-secondary applicability cut now persists `DE-NW` on seven shared canonical targets reached by the reviewed NRW lane:
+  - `Harmonische Schwingung verstehen`
+  - `Gravitation und Weltbilder in GK-Aufgaben verknüpfen`
+  - `Radioaktive Strahlung und Wirkungen`
+  - `Zerfallsgesetze anwenden`
+  - `Strahlungsrisiken mit physikalischen Größen beurteilen`
+  - `Kernenergieoptionen mit physikalischen Kriterien bewerten`
+  - `Kern und Hülle des Atoms qualitativ beschreiben`
+- the accepted-warning registry now records the seven NRW-specific Physics `APV-202` findings explicitly:
+  - `docs/qa-ci/applicability-accepted-warnings.json`
+- the NRW onboarding note, lane README, tracker note, and Physics M2 shortlist now reflect that the first NRW Physics move is no longer only source- and mapping-backed, but also partially committed in canonical applicability:
+  - `curricula/DE/Gymnasium/provenance/nrw-physics-onboarding.md`
+  - `curricula/DE/Gymnasium/mapping/DE-NW/upper-secondary/README.md`
+  - `curricula/DE/Gymnasium/provenance/physics-bundesland-rollout-tracker.json`
+  - `docs/dev/canonical-gymnasium-physics-m2-lane-shortlist.md`
+
+Validation used:
+
+- `cd app && APPLICABILITY_APPLY_SCOPE=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a npm run apply:applicability`
+- `cd app && npm run validate:view-filters --silent | rg '\[7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a\]|error\(s\)|warning\(s\)|accepted warning\(s\)'`
+- `python3 scripts/render_canonical_physics_bundesland_status.py`
+- `python3 -m py_compile scripts/render_canonical_physics_bundesland_status.py`
+- `git diff --check -- curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json docs/qa-ci/applicability-accepted-warnings.json curricula/DE/Gymnasium/provenance/nrw-physics-onboarding.md curricula/DE/Gymnasium/mapping/DE-NW/upper-secondary/README.md curricula/DE/Gymnasium/provenance/physics-bundesland-rollout-tracker.json docs/dev/canonical-gymnasium-physics-m2-lane-shortlist.md docs/dev/canonical-gymnasium-physics-bundeslaender-status.md`
+
+Interpretation:
+
+- this is the first learner-visible NRW Physics step that persists beyond the source lane and mapping fixture into the canonical applicability surface
+- the NRW Physics lane still remains a reviewed partial-bridge pilot rather than a broad `P5` cutover lane, so its `APV-202` debt is retained intentionally and documented instead of being treated as unresolved drift
+- the next clean move is now either one further NRW corridor that can justify another committed applicability widening, or the first Baden-Wuerttemberg upper-secondary Physics source lane
+
+### 2026-04-11: NRW Physics matter-structure follow-on replaces the broad Standardmodell bridge with a narrow canonical atom
+
+What changed:
+
+- the canonical Physics landscape now contains a new narrow Q4 atom:
+  - `b3f3f4f7-b5cc-40e1-b57a-3d93649baa61` `Elementare Bestandteile der Materie mit Strukturmodellen ordnen`
+- the new atom sits under the existing parent cluster:
+  - `7add799b-2d76-58db-81e5-d54393718f50` `Elementarteilchen und Standardmodell`
+- its provenance is repository-backed in:
+  - `curricula/DE/Gymnasium/provenance/canonical-goal-provenance-registry.json`
+- the NRW mapping lane now retargets the imported LK matter child `e59d5e73-3e45-49b4-825c-11fc5a41310d` away from the broader Standardmodell cluster and onto that new narrow atom:
+  - `curricula/DE/Gymnasium/mapping/DE-NW/upper-secondary/nrw_physics_upper_secondary_to_canonical_physics.json`
+- after applicability persistence, both the new atom and its parent cluster now carry `DE-NW` in the canonical Physics file
+- the accepted-warning registry now records the one new NRW-specific `APV-202` on the narrow atom:
+  - `docs/qa-ci/applicability-accepted-warnings.json`
+
+Validation used:
+
+- `cd app && APPLICABILITY_APPLY_SCOPE=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a npm run apply:applicability`
+- `cd app && npm run validate:view-filters --silent | rg '\[7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a\]|error\(s\)|warning\(s\)|accepted warning\(s\)'`
+- `python3 scripts/render_canonical_physics_bundesland_status.py`
+
+Interpretation:
+
+- this is cleaner than the earlier broad cluster bridge because the new canonical atom matches the NRW wording directly without dragging in the stronger interactions/research scope of the full Standardmodell package
+- the parent cluster can now become `DE-NW`-visible through normal child-union instead of through a direct broad bridge or a retained override
+- the NRW Physics lane still stays in reviewed partial-bridge territory on this slice, but the matter branch is now narrower and more stable than before
+
+### 2026-04-11: NRW Physics exact-resolves the mixed GK E/B-field clause through two narrow canonical Q1 atoms
+
+What changed:
+
+- the imported NRW GK field clause `70de8e83-2dad-476b-b16a-9a8ab347f13b` is no longer treated as one mapped atomic residue:
+  - in the NRW source snapshot it is now a cluster with two new children
+  - the shared NRW Physics source membership and closure registries now reflect `29` source goals instead of `27`
+- the canonical Physics landscape now contains two new narrow Q1 atoms:
+  - `741774ef-15fc-4bcf-a370-e2c5cf4257d0` `Geladene Teilchen in homogenen elektrischen Feldern untersuchen`
+  - `9854589c-5feb-4942-b90f-311ddf36eb78` `Geladene Teilchen in homogenen magnetischen Feldern untersuchen`
+- both new canonical atoms are repository-backed in:
+  - `curricula/DE/Gymnasium/provenance/canonical-goal-provenance-registry.json`
+- the NRW mapping lane now replaces the earlier broad parent-level partial on canonical `Q1 Elektrisches und magnetisches Feld` with two narrow exact bridges:
+  - `cfcada5e-df7c-4803-894d-bd5784a38850` -> `741774ef-15fc-4bcf-a370-e2c5cf4257d0`
+  - `d6a20f83-15f7-4305-8844-b6ca0883cfcc` -> `9854589c-5feb-4942-b90f-311ddf36eb78`
+- the repository-backed NRW Physics mapping fixture therefore now carries `20` entries instead of `19`
+- after applicability persistence, the new atoms and their reviewed Q1 parent path now carry `DE-NW`:
+  - `Bewegung geladener Teilchen im elektrischen Feld`
+  - `Mikroskopische und makroskopische Wirkung magnetischer Felder`
+  - `Magnetisches Feld`
+  - `Q1 Elektrisches und magnetisches Feld`
+
+Validation used:
+
+- `cd app && APPLICABILITY_APPLY_SCOPE=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a npm run apply:applicability`
+- `cd app && npm run validate:view-filters --silent`
+- `cd backend && ./gradlew test --tests 'com.skillpilot.backend.landscape.LandscapeServiceTest' --tests 'com.skillpilot.backend.landscape.GoalMappingRepositoryFixtureTest'`
+- `python3 scripts/render_canonical_physics_bundesland_status.py`
+
+Interpretation:
+
+- this is cleaner than the earlier parent-level partial on `Q1 Elektrisches und magnetisches Feld`, because the imported NRW wording is now resolved at the same granularity at which the shared Q1 field surface actually branches
+- unlike the earlier matter follow-on, this step does not add new accepted-warning debt, because both NRW child bridges now land on matching narrow canonical atoms as `exact`
+- the mixed NRW parent `Klassische Wellen und Teilchen in Feldern` still stays intentionally unmapped as a parent package; only its reviewed electric and wave subcorridors now carry committed NRW applicability
+
+### 2026-04-11: NRW Physics exact-resolves the GK Quantenobjekte children through two narrow canonical Q4 atoms
+
+What changed:
+
+- the canonical Physics landscape now contains two new narrow Q4 entry atoms under `Quantenobjekte`:
+  - `a359c859-eee0-40ef-a9d1-88db2e6c55b2` `Photonen und Elektronen als Quantenobjekte beschreiben`
+  - `defe44d2-c3d3-456b-a786-fad2cef13fe8` `Die Bedeutung von Modellen an Photon und Elektron reflektieren`
+- both new atoms are provenance-backed in:
+  - `curricula/DE/Gymnasium/provenance/canonical-goal-provenance-registry.json`
+- the NRW mapping lane now retargets the two imported GK child atoms away from the broad Q3 `Welle-Teilchen-Dualismus` cluster and onto those new narrow Q4 atoms as `exact`:
+  - `cc33e6c0-4f16-401d-ac77-4ce89025609f` -> `a359c859-eee0-40ef-a9d1-88db2e6c55b2`
+  - `9d6c16e1-30ad-4f1b-a7cb-348b1a2f7591` -> `defe44d2-c3d3-456b-a786-fad2cef13fe8`
+- the NRW GK parent `Qualifikationsphase GK: Quantenobjekte` still keeps its reviewed partial bridge onto the canonical Q3 surface `Welle-Teilchen-Dualismus`
+- after applicability persistence, the two new atoms and the shared canonical Q4 cluster `Quantenobjekte` now all carry `DE-NW`
+
+Validation used:
+
+- `cd app && APPLICABILITY_APPLY_SCOPE=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a npm run apply:applicability`
+- `cd app && npm run validate:view-filters --silent`
+- `cd backend && ./gradlew test --tests 'com.skillpilot.backend.landscape.LandscapeServiceTest' --tests 'com.skillpilot.backend.landscape.GoalMappingRepositoryFixtureTest'`
+- `python3 scripts/render_canonical_physics_bundesland_status.py`
+
+Interpretation:
+
+- this is cleaner than a direct broad bridge onto canonical `Quantenobjekte`, because the two NRW GK child wordings are now resolved as exact entry atoms instead of being forced onto the deeper Q4 package as one unspecific cluster claim
+- unlike the radiation and matter follow-ons, this step does not create new accepted-warning debt; the new NRW widening is exact and the shared Q4 `Quantenobjekte` cluster follows through child-union
+- all currently reviewed NRW Physics mapping targets now carry committed `DE-NW` applicability, so the next clean move is no longer another repair on the same reviewed target set but either a genuinely new NRW source corridor or the next Bundesland lane
+
+### 2026-04-11: Baden-Wuerttemberg upper-secondary Physics opens the first reviewed field corridor
+
+What changed:
+
+- the official Baden-Wuerttemberg Gymnasium Physics PDF is now archived locally at:
+  - `curricula/DE/Gymnasium/input/BW/BP2016BW_ALLG_GYM_PH.pdf`
+- the first BW upper-secondary Physics source snapshot now exists at:
+  - `curricula/DE/Gymnasium/input/BW/upper-secondary/source-json/DE_BAW_S_GYM_2_PHYSIK.de.json.snapshot`
+- the new source lane is now active in the shared DE-level provenance registries:
+  - `curricula/DE/Gymnasium/provenance/source-landscape-registry.json`
+  - `curricula/DE/Gymnasium/provenance/source-goal-membership-registry.json`
+  - `curricula/DE/Gymnasium/provenance/source-goal-closure-registry.json`
+- the repository-backed BW upper-secondary Physics mapping lane now exists at:
+  - `curricula/DE/Gymnasium/mapping/DE-BW/upper-secondary/bw_physics_upper_secondary_to_canonical_physics.json`
+- the first reviewed BW field corridor carries `7` mappings:
+  - BW source root -> canonical Physics root (`partial`)
+  - shared orientation anchor -> shared canonical motivation anchor (`exact`)
+  - Basisfach `Elektromagnetische Felder` parent -> shared canonical Q1 field surface (`partial`)
+  - Basisfach child `Elektrische und magnetische Felder im Basisfach beschreiben` -> shared canonical Q1 field surface (`partial`)
+  - Leistungsfach `Elektromagnetische Felder` parent -> shared canonical Q1 field surface (`partial`)
+  - Leistungsfach child `Elektrisches Feld im Leistungsfach untersuchen` -> canonical `Elektrisches Feld` cluster (`partial`)
+  - Leistungsfach child `Magnetisches Feld im Leistungsfach untersuchen` -> canonical `Magnetisches Feld` cluster (`partial`)
+- the BW onboarding note, mapping-lane README, M2 shortlist, rollout tracker, and rendered quick view now reflect that Baden-Wuerttemberg is a real fourth active Physics state on the canonical path:
+  - `curricula/DE/Gymnasium/provenance/bw-physics-onboarding.md`
+  - `curricula/DE/Gymnasium/mapping/DE-BW/upper-secondary/README.md`
+  - `docs/dev/canonical-gymnasium-physics-m2-lane-shortlist.md`
+  - `curricula/DE/Gymnasium/provenance/physics-bundesland-rollout-tracker.json`
+  - `docs/dev/canonical-gymnasium-physics-bundeslaender-status.md`
+
+Validation used:
+
+- `cd backend && ./gradlew test --tests 'com.skillpilot.backend.landscape.LandscapeServiceTest' --tests 'com.skillpilot.backend.landscape.GoalMappingRepositoryFixtureTest'`
+- `cd app && npm run validate:view-filters --silent`
+- `python3 scripts/render_canonical_physics_bundesland_status.py`
+
+Validation result:
+
+- backend mapping/runtime bundle: `BUILD SUCCESSFUL`
+- `validate:view-filters`: `0 error(s), 1383 warning(s), 345 accepted warning(s)`
+- the rendered Physics Bundeslaender quick view now shows `4/4` tracked states with active snapshots and first reviewed corridors
+
+Interpretation:
+
+- Baden-Wuerttemberg is no longer only a reserved or source-only Physics lane; it now has the first real reviewed upper-secondary corridor on the shared canonical field surface
+- this move deliberately stops before `Elektrodynamik`, `Schwingungen`, `Wellen`, any BW-specific Physics composition views, or a new BW applicability persistence pass from this lane
+- the next clean BW Physics move is therefore an adjacent follow-on on `Elektrodynamik`, `Schwingungen`, or `Wellen`, not a broader state-specific tree or applicability sweep
+
+### 2026-04-11: Baden-Wuerttemberg upper-secondary Physics adds the first LF electrodynamics follow-on and a small committed applicability cut
+
+What changed:
+
+- the BW upper-secondary Physics source snapshot now widens the first reviewed corridor with one adjacent Leistungsfach `Elektrodynamik` cluster plus three new atomic children:
+  - `Bewegungsinduktion und Ladungstrennung`
+  - `Induktionsgesetz und Lenz'sche Regel`
+  - `Selbstinduktion und Induktivitaet`
+- the repository-backed BW upper-secondary mapping lane now carries `10` reviewed mappings:
+  - the previous `7` field-corridor mappings remain in place
+  - three new exact bridges now connect the BW LF electrodynamics atoms onto the shared canonical induction surface
+- the BW provenance-backed source registries now include the widened snapshot closure:
+  - `curricula/DE/Gymnasium/provenance/source-goal-membership-registry.json`
+  - `curricula/DE/Gymnasium/provenance/source-goal-closure-registry.json`
+- the canonical Physics file now persists the resulting small `DE-BW` applicability cut across the field/induction closure:
+  - `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json`
+- the BW onboarding note, mapping-lane README, rollout tracker, shortlist, and rendered quick view now reflect the widened corridor plus the scoped applicability persistence:
+  - `curricula/DE/Gymnasium/provenance/bw-physics-onboarding.md`
+  - `curricula/DE/Gymnasium/mapping/DE-BW/upper-secondary/README.md`
+  - `curricula/DE/Gymnasium/provenance/physics-bundesland-rollout-tracker.json`
+  - `docs/dev/canonical-gymnasium-physics-m2-lane-shortlist.md`
+  - `docs/dev/canonical-gymnasium-physics-bundeslaender-status.md`
+
+Validation used:
+
+- `cd app && APPLICABILITY_APPLY_SCOPE=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a npm run apply:applicability`
+- `cd app && npm run validate:view-filters --silent`
+- `cd backend && ./gradlew test --tests 'com.skillpilot.backend.landscape.LandscapeServiceTest' --tests 'com.skillpilot.backend.landscape.GoalMappingRepositoryFixtureTest'`
+- `python3 scripts/render_canonical_physics_bundesland_status.py`
+
+Validation result:
+
+- applicability persistence: `Changed 15 goal(s) across 1 file(s)`
+- backend mapping/runtime bundle: `BUILD SUCCESSFUL`
+- `validate:view-filters`: `0 error(s), 1382 warning(s), 345 accepted warning(s)`
+- the rendered Physics Bundeslaender quick view now keeps Baden-Wuerttemberg at `P4`, but shows `Applicability yes`, `Mappings 10`, and a state projection with `18` visible goals and `0` warnings on the committed BW field/induction slice
+
+Interpretation:
+
+- this is still a narrow reviewed BW lane, not a broad `P5` state coverage claim; the committed applicability cut is intentionally scoped to the already reviewed field/induction closure
+- the clean gain over the prior BW step is that the electrodynamics follow-on now lands on exact shared canonical induction atoms, so the first BW committed applicability persistence does not introduce new accepted-warning debt
+- the next clean BW Physics move remains the still-missing `Basisfach Elektrodynamik` residue or the adjacent `Schwingungen` / `Wellen` surfaces, not BW-specific composition views or a broader applicability sweep
+
+### 2026-04-11: Baden-Wuerttemberg upper-secondary Physics adds the Basisfach electrodynamics induction strip
+
+What changed:
+
+- the BW upper-secondary Physics source snapshot now widens the imported Basisfach side with one adjacent `Basisfach: Elektrodynamik` cluster plus three retained atomic children:
+  - `Bewegungsinduktion und Ladungstrennung im Basisfach`
+  - `Induktionsgesetz und Lenz'sche Regel im Basisfach`
+  - `Selbstinduktion und Induktivitaet im Basisfach`
+- the repository-backed BW upper-secondary mapping lane now carries `14` reviewed mappings:
+  - the earlier `10` reviewed mappings remain in place
+  - the new Basisfach electrodynamics parent now bridges conservatively onto the canonical induction cluster (`partial`)
+  - the new Basisfach induction leaves now bridge onto the shared canonical induction atoms with one `exact` alignment on `Bewegungsinduktion` and two conservative `partial` alignments on `Induktionsgesetz` and `Selbstinduktion`
+- the BW provenance-backed source registries now include the widened snapshot membership and closure for `15` source goals and `10` atomic descendants under the active root:
+  - `curricula/DE/Gymnasium/provenance/source-goal-membership-registry.json`
+  - `curricula/DE/Gymnasium/provenance/source-goal-closure-registry.json`
+- the BW onboarding note, mapping-lane README, rollout tracker, shortlist, and rendered quick view now reflect the Basisfach electrodynamics widening:
+  - `curricula/DE/Gymnasium/provenance/bw-physics-onboarding.md`
+  - `curricula/DE/Gymnasium/mapping/DE-BW/upper-secondary/README.md`
+  - `curricula/DE/Gymnasium/provenance/physics-bundesland-rollout-tracker.json`
+  - `docs/dev/canonical-gymnasium-physics-m2-lane-shortlist.md`
+  - `docs/dev/canonical-gymnasium-physics-bundeslaender-status.md`
+
+Validation used:
+
+- `cd backend && ./gradlew test --tests 'com.skillpilot.backend.landscape.LandscapeServiceTest' --tests 'com.skillpilot.backend.landscape.GoalMappingRepositoryFixtureTest'`
+- `cd app && npm run validate:view-filters --silent`
+- `python3 scripts/render_canonical_physics_bundesland_status.py`
+
+Validation result:
+
+- backend mapping/runtime bundle: `BUILD SUCCESSFUL`
+- `validate:view-filters`: `0 error(s), 1382 warning(s), 345 accepted warning(s)`
+- the rendered Physics Bundeslaender quick view now keeps Baden-Wuerttemberg at `P4`, still with `Applicability yes`, but updates the BW lane to `Mappings 14`
+
+Interpretation:
+
+- this keeps the BW lane narrow and source-led: the imported Basisfach `Elektrodynamik` row is only widened on the induction strip, while the remaining source residue on technical applications and Maxwell overview is still intentionally deferred
+- the two new Basisfach `partial` atom bridges do not create new accepted-warning debt, because the corresponding canonical induction targets already carry committed `DE-BW` applicability from the earlier LF follow-on
+- the next clean BW Physics move is now either the still-unmapped BF `technische Anwendungen` / `Maxwell-Ueberblick` residue of `3.4.2.2 Elektrodynamik` or the adjacent `Schwingungen` / `Wellen` surfaces
+
+### 2026-04-11: Baden-Wuerttemberg upper-secondary Physics anchors the BF induction-applications residue on one new canonical atom
+
+What changed:
+
+- the BW upper-secondary Physics source snapshot now retain-splits the remaining Basisfach `3.4.2.2 Elektrodynamik` residue into two explicit children:
+  - `Technische Anwendungen des Induktionsgesetzes im Basisfach beschreiben`
+  - `Elektromagnetische Felder im Maxwell-Ueberblick beschreiben`
+- the repository-backed BW upper-secondary mapping lane now carries `15` reviewed mappings:
+  - the new Basisfach applications child now exact-anchors onto one new narrow canonical atom `Technische Anwendungen des Induktionsgesetzes qualitativ beschreiben`
+  - the new Maxwell-overview child remains intentionally ungemappt
+- the canonical Physics file now contains that new narrow induction-applications atom under the shared Q2 induction cluster:
+  - `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json`
+- the canonical-goal provenance registry now records the new canonical atom as source-led from the BW Basisfach applications child:
+  - `curricula/DE/Gymnasium/provenance/canonical-goal-provenance-registry.json`
+- the BW provenance-backed source registries now include the widened snapshot membership and closure for `17` source goals and `12` atomic descendants under the active root:
+  - `curricula/DE/Gymnasium/provenance/source-goal-membership-registry.json`
+  - `curricula/DE/Gymnasium/provenance/source-goal-closure-registry.json`
+- the BW onboarding note, mapping-lane README, rollout tracker, shortlist, and rendered quick view now reflect the new BF applications follow-on while keeping the Maxwell residue explicit:
+  - `curricula/DE/Gymnasium/provenance/bw-physics-onboarding.md`
+  - `curricula/DE/Gymnasium/mapping/DE-BW/upper-secondary/README.md`
+  - `curricula/DE/Gymnasium/provenance/physics-bundesland-rollout-tracker.json`
+  - `docs/dev/canonical-gymnasium-physics-m2-lane-shortlist.md`
+  - `docs/dev/canonical-gymnasium-physics-bundeslaender-status.md`
+
+Validation used:
+
+- `cd app && APPLICABILITY_APPLY_SCOPE=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a npm run apply:applicability`
+- `cd backend && ./gradlew test --tests 'com.skillpilot.backend.landscape.LandscapeServiceTest' --tests 'com.skillpilot.backend.landscape.GoalMappingRepositoryFixtureTest'`
+- `cd app && npm run validate:view-filters --silent | rg '\[7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a\]|error\(s\)|warning\(s\)|accepted warning\(s\)'`
+- `python3 scripts/render_canonical_physics_bundesland_status.py`
+
+Validation result:
+
+- applicability persistence check: `Changed 0 goal(s) across 0 file(s)`
+- backend mapping/runtime bundle: `BUILD SUCCESSFUL`
+- Physics validation scope stays at `0 error(s), 1382 warning(s), 345 accepted warning(s)`
+- the rendered Physics Bundeslaender quick view now keeps Baden-Wuerttemberg at `P4`, still with `Applicability yes`, and updates the BW lane to `Mappings 15`
+
+Interpretation:
+
+- this is cleaner than forcing the BW Basisfach applications wording onto the narrower existing `Wirbelströme und Waltenhofen-Pendel` context leaf; the new canonical applications atom is broad enough for generator/transformator/induction-device examples without dragging the Maxwell clause into the same bridge
+- the new BW widening stays debt-neutral: the new BW applications bridge is `exact`, and the already committed BW field/induction closure required no further applicability file changes
+- the next clean BW Physics move is now either the still-unmapped BF `Maxwell-Ueberblick` residue of `3.4.2.2 Elektrodynamik` or the adjacent `Schwingungen` / `Wellen` surfaces
+
+### 2026-04-11: Baden-Wuerttemberg upper-secondary Physics closes the BF Maxwell-overview residue on one new canonical atom
+
+What changed:
+
+- the repository-backed BW upper-secondary mapping lane now carries `16` reviewed mappings:
+  - the existing `15` reviewed mappings remain in place
+  - the retained BW Basisfach child `Elektromagnetische Felder im Maxwell-Ueberblick beschreiben` now exact-anchors onto one new narrow canonical atom `Elektromagnetische Felder im Maxwell-Ueberblick beschreiben`
+- the canonical Physics file now contains that new narrow Maxwell-overview atom under the shared Q2 induction cluster:
+  - `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json`
+- the canonical-goal provenance registry now records the new canonical atom as source-led from the BW Basisfach Maxwell child:
+  - `curricula/DE/Gymnasium/provenance/canonical-goal-provenance-registry.json`
+- the BW onboarding note, mapping-lane README, rollout tracker, shortlist, and rendered quick view now reflect that the imported Basisfach `3.4.2.2 Elektrodynamik` row is now fully reviewed on the current BW lane:
+  - `curricula/DE/Gymnasium/provenance/bw-physics-onboarding.md`
+  - `curricula/DE/Gymnasium/mapping/DE-BW/upper-secondary/README.md`
+  - `curricula/DE/Gymnasium/provenance/physics-bundesland-rollout-tracker.json`
+  - `docs/dev/canonical-gymnasium-physics-m2-lane-shortlist.md`
+  - `docs/dev/canonical-gymnasium-physics-bundeslaender-status.md`
+
+Validation used:
+
+- `cd app && APPLICABILITY_APPLY_SCOPE=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a npm run apply:applicability`
+- `cd backend && ./gradlew test --tests 'com.skillpilot.backend.landscape.LandscapeServiceTest' --tests 'com.skillpilot.backend.landscape.GoalMappingRepositoryFixtureTest'`
+- `cd app && npm run validate:view-filters --silent | rg '\[7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a\]|error\(s\)|warning\(s\)|accepted warning\(s\)'`
+- `python3 scripts/render_canonical_physics_bundesland_status.py`
+
+Validation result:
+
+- applicability persistence check: `Changed 0 goal(s) across 0 file(s)`
+- backend mapping/runtime bundle: `BUILD SUCCESSFUL`
+- Physics validation scope stays at `0 error(s), 1382 warning(s), 345 accepted warning(s)`
+- the rendered Physics Bundeslaender quick view now keeps Baden-Wuerttemberg at `P4`, still with `Applicability yes`, and updates the BW lane to `Mappings 16`
+
+Interpretation:
+
+- this is cleaner than trying to force the BW Maxwell clause into the canonical `Elektromagnetische Wellen` package; the new narrow atom states exactly the overview claim the source wording makes, without overclaiming the later Q3 wave surface
+- the new BW widening also stays debt-neutral: the new Maxwell-overview bridge is `exact`, and the already committed BW field/induction closure again required no further applicability file changes
+- the next clean BW Physics move now shifts fully onto the adjacent `Schwingungen` / `Wellen` surfaces
+
+### 2026-04-11: Baden-Wuerttemberg upper-secondary Physics adds the first BF Schwingungen follow-on
+
+What changed:
+
+- the BW upper-secondary Physics source snapshot now widens the imported Basisfach side with one adjacent `Basisfach: Schwingungen` cluster plus six retained atomic children:
+  - `Schwingungen experimentell aufzeichnen und als periodische Bewegungen beschreiben`
+  - `Ungedaempfte harmonische Schwingungen mathematisch beschreiben`
+  - `Lineare Rueckstellkraft bei harmonischen mechanischen Schwingungen beschreiben`
+  - `Schwingung eines Federpendels und Energieumwandlungen beschreiben`
+  - `Schwingung in einem elektromagnetischen Schwingkreis und Energieumwandlungen beschreiben`
+  - `Mechanische und elektromagnetische Schwingungen vergleichen`
+- the repository-backed BW upper-secondary mapping lane now carries `21` reviewed mappings:
+  - the earlier `16` reviewed mappings remain in place
+  - the new Basisfach `Schwingungen` parent now bridges conservatively onto the shared canonical Q2 surface `Schwingungen, Induktion und mechanische Wellen`
+  - four new conservative partial bridges now connect the imported Basisfach `Schwingungen` children onto the existing canonical Q2 atoms `Harmonische Schwingung verstehen`, `Charakteristische Schwingungsgroessen`, `Energie und Energieerhaltung in Schwingungen`, and `Elektromagnetischen Schwingkreis analysieren`
+  - the retained source children on `lineare Rueckstellkraft` and on the explicit comparison of mechanischen versus elektromagnetischen Schwingungen stay intentionally source-led
+- the scoped canonical Physics applicability persistence now widens the earlier BW field/induction cut onto the shared Q2 oscillation strip, and the four resulting BW-only `APV-202` findings are now explicitly accepted:
+  - `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json`
+  - `docs/qa-ci/applicability-accepted-warnings.json`
+- the BW provenance-backed source registries now include the widened snapshot membership and closure for `24` source goals and `18` atomic descendants under the active root:
+  - `curricula/DE/Gymnasium/provenance/source-goal-membership-registry.json`
+  - `curricula/DE/Gymnasium/provenance/source-goal-closure-registry.json`
+- the BW onboarding note, mapping-lane README, rollout tracker, shortlist, and rendered quick view now reflect the new Basisfach `Schwingungen` follow-on while keeping `Wellen` and Leistungsfach `Schwingungen` deferred:
+  - `curricula/DE/Gymnasium/provenance/bw-physics-onboarding.md`
+  - `curricula/DE/Gymnasium/mapping/DE-BW/upper-secondary/README.md`
+  - `curricula/DE/Gymnasium/provenance/physics-bundesland-rollout-tracker.json`
+  - `docs/dev/canonical-gymnasium-physics-m2-lane-shortlist.md`
+  - `docs/dev/canonical-gymnasium-physics-bundeslaender-status.md`
+
+Validation used:
+
+- `cd app && APPLICABILITY_APPLY_SCOPE=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a npm run apply:applicability`
+- `cd backend && ./gradlew test --tests 'com.skillpilot.backend.landscape.LandscapeServiceTest' --tests 'com.skillpilot.backend.landscape.GoalMappingRepositoryFixtureTest'`
+- `cd app && npm run validate:view-filters --silent`
+- `python3 scripts/render_canonical_physics_bundesland_status.py`
+
+Validation result:
+
+- backend mapping/runtime bundle: `BUILD SUCCESSFUL`
+- `validate:view-filters`: `0 error(s), 1416 warning(s), 349 accepted warning(s)`
+- the rendered Physics Bundeslaender quick view now keeps Baden-Wuerttemberg at `P4`, still with `Applicability yes`, and updates the BW lane to `Mappings 21`
+
+Interpretation:
+
+- this is cleaner than inventing new canonical oscillation atoms for BW immediately; the imported Basisfach `Schwingungen` wording is now narrowed to a reviewed source split first, and only the four cleanest alignments land conservatively on existing shared Q2 targets
+- the widening now also commits the resulting BW visibility on the shared Q2 oscillation strip instead of leaving `APV-203` drift in the canonical Physics file; the remaining four BW-only `APV-202` findings are intentionally accepted because the bridges stay conservative `partial`
+- the next clean BW Physics move is now either the adjacent `Wellen` surface or the still-unopened Leistungsfach `Schwingungen` strip, not BW-specific composition views or a broader applicability sweep
+
+### 2026-04-11: BW upper-secondary Physics opens the adjacent Basisfach `Wellen` corridor
+
+Observed repo state:
+
+- the BW upper-secondary Physics source snapshot now widens the imported Basisfach side with one adjacent `Basisfach: Wellen` cluster plus six retained atomic children:
+  - `Wellen mithilfe charakteristischer Eigenschaften und Groessen beschreiben`
+  - `Grundlegende Wellenphaenomene beschreiben und in Alltagssituationen erkennen`
+  - `Eindimensionale stehende Wellen beschreiben und als Interferenzphaenomen erklaeren`
+  - `Ueberlagerung zweidimensionaler koehaerenter Wellen mithilfe des Gangunterschieds qualitativ beschreiben`
+  - `Grundlegende Wellenphaenomene mithilfe des Huygens'schen Prinzips erklaeren`
+  - `Das elektromagnetische Spektrum im Ueberblick beschreiben`
+- the repository-backed BW upper-secondary mapping lane now carries `28` reviewed mappings:
+  - the earlier `21` reviewed mappings remain in place
+  - the new Basisfach `Wellen` parent now bridges conservatively onto the canonical `Mechanische Wellen` cluster
+  - six new conservative partial bridges now connect the imported Basisfach `Wellen` children onto the existing canonical atoms `Harmonische Wellen und ihre Groessen`, `Wellenphaenomene: Brechung, Reflexion, Beugung`, `Stehende Wellen und Wellenlaengenbestimmung`, `Ueberlagerung und Interferenz von Wellen`, `Huygens'sches Prinzip und Elementarwellen`, and `Spektrum elektromagnetischer Wellen`
+- the scoped canonical Physics applicability persistence now widens the earlier BW field/induction and oscillation cut onto the shared mechanical-wave strip plus the first electromagnetic-spectrum entry:
+  - `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json`
+- five resulting BW-only `APV-202` findings on the newly committed Wellen-Atome are now explicitly accepted:
+  - `docs/qa-ci/applicability-accepted-warnings.json`
+- the BW provenance-backed source registries now include the widened snapshot membership and closure for `31` source goals and `24` atomic descendants under the active root:
+  - `curricula/DE/Gymnasium/provenance/source-goal-membership-registry.json`
+  - `curricula/DE/Gymnasium/provenance/source-goal-closure-registry.json`
+- the BW onboarding note, mapping-lane README, rollout tracker, shortlist, and rendered quick view now reflect the new Basisfach `Wellen` follow-on while keeping Leistungsfach `Schwingungen` deferred:
+  - `curricula/DE/Gymnasium/provenance/bw-physics-onboarding.md`
+  - `curricula/DE/Gymnasium/mapping/DE-BW/upper-secondary/README.md`
+  - `curricula/DE/Gymnasium/provenance/physics-bundesland-rollout-tracker.json`
+  - `docs/dev/canonical-gymnasium-physics-m2-lane-shortlist.md`
+  - `docs/dev/canonical-gymnasium-physics-bundeslaender-status.md`
+
+Validation used:
+
+- `cd backend && ./gradlew test --tests 'com.skillpilot.backend.landscape.LandscapeServiceTest' --tests 'com.skillpilot.backend.landscape.GoalMappingRepositoryFixtureTest'`
+- `cd app && APPLICABILITY_APPLY_SCOPE=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a npm run apply:applicability`
+- `cd app && npm run validate:view-filters --silent`
+- `python3 scripts/render_canonical_physics_bundesland_status.py`
+
+Validation result:
+
+- backend mapping/runtime bundle: `BUILD SUCCESSFUL`
+- `apply:applicability`: `Changed 49 goal(s) across 1 file(s)`
+- `validate:view-filters`: `0 error(s), 1382 warning(s), 354 accepted warning(s)`
+- the rendered Physics Bundeslaender quick view now keeps Baden-Wuerttemberg at `P4`, still with `Applicability yes`, and updates the BW lane to `Mappings 28`
+
+Interpretation:
+
+- this is cleaner than inventing new canonical Wellen-Atome for BW immediately; the imported Basisfach `Wellen` wording now lands conservatively on existing shared Q2/Q3 targets and only carries what the current source split actually supports
+- the widening now also commits the resulting BW visibility on the shared mechanical-wave strip and the first electromagnetic-spectrum entry instead of leaving `APV-203` drift in the canonical Physics file; the remaining five BW-only `APV-202` findings are intentionally accepted because the bridges stay conservative `partial`
+- the next clean BW Physics move is now the still-unopened Leistungsfach `Schwingungen` strip, not BW-specific composition views or a broader applicability sweep
+
 ## Snapshot 2026-03-18
 
 Observed repo state:
@@ -3000,6 +3844,179 @@ Validation used:
 - `npm run apply:applicability`
 - `npm run validate:view-filters`
 - `./run_ci.sh`
+
+### 2026-04-11: BW upper-secondary Physics opens the first Leistungsfach Schwingungen follow-on
+
+What changed:
+
+- the active BW upper-secondary Physics source snapshot:
+  - `curricula/DE/Gymnasium/input/BW/upper-secondary/source-json/DE_BAW_S_GYM_2_PHYSIK.de.json.snapshot`
+  now also carries one selected LF `3.6.3 Schwingungen` cluster:
+  - `6850b598-26a2-4960-9544-52e5fc31f750`
+  with the three retained LF leaves:
+  - `e6e0636f-ff78-4e42-99f7-0be0fcd1e151` (`Ungedaempfte mechanische Schwingungsdifferentialgleichungen mit Ansatz loesen`)
+  - `4cbe6dac-2bcb-44cb-83d4-6a8b7719411a` (`Differentialgleichung eines elektromagnetischen Schwingkreises mit Ansatz loesen`)
+  - `47770f3f-cc2f-4a65-ada9-f3cceb9e9908` (`Ueberlagerungen unabhaengiger Schwingungen und Schwebungen qualitativ beschreiben`)
+- the same BW source snapshot now reaches `35` retained source goals and `27` atomic descendants
+- the BW upper-secondary Physics mapping lane:
+  - `curricula/DE/Gymnasium/mapping/DE-BW/upper-secondary/bw_physics_upper_secondary_to_canonical_physics.json`
+  now carries `32` reviewed rows instead of `28`
+- the new BW LF parent maps `partial` onto the shared canonical Q2 surface:
+  - `fcefb129-ad4c-50a2-9762-a910caa1af16` (`Q2 Schwingungen, Induktion und mechanische Wellen`)
+- the retained BW LF mechanical DGL leaf now maps `exact` onto the existing canonical LK atom:
+  - `b2fb9a25-4d26-5cf2-a917-823909dcb6bd` (`Schwingungsgleichung loesen`)
+- two new narrow canonical Q2 atoms were added directly in the shared Physics graph:
+  - `a7255b83-336c-4d42-ba5c-bc2f6248ea36` (`Differentialgleichung des elektromagnetischen Schwingkreises mit Ansatz loesen`)
+  - `4888444f-4520-437a-9ba7-e74e8f8ed129` (`Ueberlagerungen unabhaengiger Schwingungen qualitativ beschreiben`)
+- the two new canonical atoms now contribute source-backed provenance in:
+  - `curricula/DE/Gymnasium/provenance/canonical-goal-provenance-registry.json`
+- the shared source registries:
+  - `curricula/DE/Gymnasium/provenance/source-goal-membership-registry.json`
+  - `curricula/DE/Gymnasium/provenance/source-goal-closure-registry.json`
+  now also carry the new BW LF `Schwingungen` cluster and its three retained leaves
+
+Why this cut:
+
+- the clean LF value-add in BW `3.6.3 Schwingungen` is not another broad BF recap, but the narrow advanced strip on solving oscillation differential equations and on independent superposition / beats
+- the existing canonical LK atom `Schwingungsgleichung loesen` was already the right shared target for the mechanical DGL clause
+- the electromagnetic DGL clause and the qualitative superposition / beat clause had no clean one-to-one canonical leaves yet, so two new narrow Q2 atoms were added instead of forcing those BW leaves onto overly broad Thomson/resonance surfaces
+- this keeps the BW LF move narrow, source-led, and debt-neutral while still widening learner-visible canonical coverage
+
+Validation used:
+
+- `cd backend && ./gradlew test --tests 'com.skillpilot.backend.landscape.LandscapeServiceTest' --tests 'com.skillpilot.backend.landscape.GoalMappingRepositoryFixtureTest'`
+- `cd app && APPLICABILITY_APPLY_SCOPE=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a npm run apply:applicability`
+- `cd app && npm run validate:view-filters --silent`
+- `python3 scripts/render_canonical_physics_bundesland_status.py`
+- `git diff --check`
+
+Validation result:
+
+- backend tests passed with `BUILD SUCCESSFUL`
+- `apply:applicability` changed `3` goals across `1` file
+- `validate:view-filters` stayed at `0 error(s), 1382 warning(s), 354 accepted warning(s)`
+- no new BW Physics accepted-warning entries were needed for this LF `Schwingungen` slice
+
+Interpretation:
+
+- BW upper-secondary Physics now reaches one first LF `Schwingungen` strip without reopening the earlier BF debt model
+- the clean move here was one selected LF follow-on with three exact leaves and one already-shared partial parent, not a broad claim on the full BW `3.6.3` surface
+- the next clean BW move is now the still-unopened Leistungsfach `Wellen` surface
+
+### 2026-04-11: BW upper-secondary Physics opens the first Leistungsfach Wellen follow-on
+
+What changed:
+
+- the BW upper-secondary source snapshot:
+  - `curricula/DE/Gymnasium/input/BW/upper-secondary/source-json/DE_BAW_S_GYM_2_PHYSIK.de.json.snapshot`
+  now also carries the retained cluster:
+  - `0be98247-e7db-4d44-9188-5c2d70a922aa` (`Leistungsfach: Wellen`)
+  with the two selected LF leaves:
+  - `f51888a6-7a59-4b66-a0a1-dd0adfbd0a47` (`Fortschreitende ebene Transversalwellen und Momentanbilder beschreiben`)
+  - `bf252790-f980-4ac4-86ae-bc8b543b7d74` (`Hertz'schen Dipol und die Abstrahlung elektromagnetischer Wellen in Grundzuegen beschreiben`)
+- the BW upper-secondary Physics mapping lane:
+  - `curricula/DE/Gymnasium/mapping/DE-BW/upper-secondary/bw_physics_upper_secondary_to_canonical_physics.json`
+  now carries `34` rows instead of `32`
+- the two new BW LF leaves exact-resolve onto two new narrow canonical Physics atoms:
+  - `158e1c19-7ccb-4c8c-931c-b685951ab161` (`Fortschreitende ebene Transversalwellen und Momentanbilder beschreiben`)
+  - `5da7d4d0-878e-44fd-b398-1b1de8b636a4` (`Hertz'schen Dipol als Grenzfall des Schwingkreises deuten`)
+- those new canonical atoms were added under:
+  - `dc38c943-11f6-5f4f-945b-67e330814727` (`Mechanische Wellen`)
+  - `c1563745-2722-503d-819f-95d336937e2b` (`Elektromagnetische Wellen`)
+- the canonical provenance registry:
+  - `curricula/DE/Gymnasium/provenance/canonical-goal-provenance-registry.json`
+  now also records both new atoms as source-backed BW leaves
+- the shared source registries:
+  - `curricula/DE/Gymnasium/provenance/source-goal-membership-registry.json`
+  - `curricula/DE/Gymnasium/provenance/source-goal-closure-registry.json`
+  now also carry the new BW LF `Wellen` cluster and its two retained leaves
+
+Why this cut:
+
+- the clean LF value-add in BW `3.6.4 Wellen` is not another broad replay of the already imported BF wave strip
+- the first selected LF delta sits instead on:
+  - explicit modeling of the progressing plane transverse wave via `s(x,t)` and the momentary snapshot
+  - the transfer from electromagnetic oscillating circuit to radiating Hertz dipole
+- a broad parent bridge for the retained LF `Wellen` cluster would overclaim the canonical DE graph, because the selected BW slice spans one Q2 wave-modeling surface and one Q3 electromagnetic-wave surface
+- two new narrow canonical atoms therefore keep the move exact, source-led, and debt-neutral without widening a new partial-only BW applicability residue
+
+Validation used:
+
+- `cd backend && ./gradlew test --tests 'com.skillpilot.backend.landscape.LandscapeServiceTest' --tests 'com.skillpilot.backend.landscape.GoalMappingRepositoryFixtureTest'`
+- `cd app && APPLICABILITY_APPLY_SCOPE=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a npm run apply:applicability`
+- `cd app && npm run validate:view-filters --silent`
+- `python3 scripts/render_canonical_physics_bundesland_status.py`
+- `git diff --check`
+
+Validation result:
+
+- backend tests passed with `BUILD SUCCESSFUL`
+- `apply:applicability` changed `0` goals across `0` files
+- `validate:view-filters` stayed at `0 error(s), 1382 warning(s), 354 accepted warning(s)`
+- no new BW Physics accepted-warning entries were needed for this LF `Wellen` slice
+
+Interpretation:
+
+- BW upper-secondary Physics now reaches not only the BF `Wellen` strip and the first LF `Schwingungen` strip, but also one first exact LF `Wellen` strip across two new canonical micro-surfaces
+- the clean move here was not a broad claim on full BW `3.6.4 Wellen`, but one narrow selected LF follow-on that keeps the shared canonical tree didactically sharper
+- the next clean BW move is now the adjacent Leistungsfach `Wellenoptik` surface
+
+### 2026-04-11: BW upper-secondary Physics opens the first Leistungsfach Wellenoptik entry
+
+What changed:
+
+- the BW upper-secondary source snapshot:
+  - `curricula/DE/Gymnasium/input/BW/upper-secondary/source-json/DE_BAW_S_GYM_2_PHYSIK.de.json.snapshot`
+  now also carries the retained cluster:
+  - `3844f4b6-67a8-4fe7-842b-40b64f7b3054` (`Leistungsfach: Wellenoptik`)
+  with the two selected LF leaves:
+  - `d78b903d-5e2b-4fe3-99b8-52a4ce593533` (`Kohaerentes Licht als elektromagnetische Welle beschreiben`)
+  - `d2443d8c-a324-4f3c-a83b-914c70ea1e50` (`Strahlenmodell und Wellenmodell des Lichts vergleichen`)
+- the BW upper-secondary Physics mapping lane:
+  - `curricula/DE/Gymnasium/mapping/DE-BW/upper-secondary/bw_physics_upper_secondary_to_canonical_physics.json`
+  now carries `36` rows instead of `34`
+- the two new BW LF leaves exact-resolve onto two new narrow canonical Physics atoms:
+  - `5b90066f-b5b3-4e82-8d31-7b95ff0a0451` (`Kohaerentes Licht als elektromagnetische Welle beschreiben`)
+  - `8ad305d2-bde0-4223-9477-517b2943148b` (`Strahlenmodell und Wellenmodell des Lichts vergleichen`)
+- both new canonical atoms were added under:
+  - `c1563745-2722-503d-819f-95d336937e2b` (`Elektromagnetische Wellen`)
+- the canonical provenance registry:
+  - `curricula/DE/Gymnasium/provenance/canonical-goal-provenance-registry.json`
+  now also records both new atoms as source-backed BW leaves
+- the shared source registries:
+  - `curricula/DE/Gymnasium/provenance/source-goal-membership-registry.json`
+  - `curricula/DE/Gymnasium/provenance/source-goal-closure-registry.json`
+  now also carry the new BW LF `Wellenoptik` cluster and its two retained leaves
+
+Why this cut:
+
+- the clean first BW move on `3.6.5 Wellenoptik` is not yet the full interference and far-field calculation strip
+- the didactically smallest reviewed entry sits first on:
+  - coherent light as electromagnetic wave
+  - the explicit comparison of ray and wave model of light
+- these two concepts were genuinely missing as narrow canonical Physics surfaces, so two new atoms improve the shared DE graph instead of just mirroring one state package label
+- the move therefore opens LF `Wellenoptik` debt-neutral and without prematurely forcing the broader interference clauses onto existing single-slit, double-slit, or grating atoms
+
+Validation used:
+
+- `cd backend && ./gradlew test --tests 'com.skillpilot.backend.landscape.LandscapeServiceTest' --tests 'com.skillpilot.backend.landscape.GoalMappingRepositoryFixtureTest'`
+- `cd app && APPLICABILITY_APPLY_SCOPE=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a npm run apply:applicability`
+- `cd app && npm run validate:view-filters --silent`
+- `python3 scripts/render_canonical_physics_bundesland_status.py`
+- `git diff --check`
+
+Validation result:
+
+- backend tests passed with `BUILD SUCCESSFUL`
+- `apply:applicability` changed `0` goals across `0` files
+- `validate:view-filters` stayed at `0 error(s), 1382 warning(s), 354 accepted warning(s)`
+- no new BW Physics accepted-warning entries were needed for this LF `Wellenoptik` entry slice
+
+Interpretation:
+
+- BW upper-secondary Physics now reaches a first exact LF `Wellenoptik` entry in addition to the earlier LF `Schwingungen` and LF `Wellen` strips
+- the clean move here was one conceptual entry corridor, not yet the broader quantitative interference strip of `3.6.5`
+- the next clean BW move is now the adjacent Interferenz-/Fernfeld-follow-on inside Leistungsfach `Wellenoptik`
 
 ### 2026-03-21: Baden-Wuerttemberg lower-secondary starts the first reviewed function-corridor mapping cut
 

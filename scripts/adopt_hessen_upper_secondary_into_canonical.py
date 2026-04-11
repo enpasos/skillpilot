@@ -436,11 +436,13 @@ def build_physics_goal_placements(goals: list[dict[str, Any]], root_goal_id: str
         if isinstance(goal.get("title"), str) and isinstance(goal.get("id"), str)
     }
 
-    def require_goal_id(title: str) -> str:
-        goal_id = goal_id_by_title.get(title)
-        if not goal_id:
-            raise RuntimeError(f"Missing expected physics goal for placement: {title}")
-        return goal_id
+    def require_goal_id(*titles: str) -> str:
+        for title in titles:
+            goal_id = goal_id_by_title.get(title)
+            if goal_id:
+                return goal_id
+        expected = " | ".join(titles)
+        raise RuntimeError(f"Missing expected physics goal for placement: {expected}")
 
     sek1_context = {
         "schoolForm": "Gymnasium",
@@ -488,15 +490,16 @@ def build_physics_goal_placements(goals: list[dict[str, Any]], root_goal_id: str
         )
 
     for title, unit_id in [
-        ("Mechanik, Gravitation, Thermodynamik und Drehbewegungen", "de-gym-physics-e"),
-        ("Elektrisches und magnetisches Feld", "de-gym-physics-q1"),
-        ("Schwingungen, Induktion und mechanische Wellen", "de-gym-physics-q2"),
-        ("Elektromagnetische Wellen und Quantenphysik", "de-gym-physics-q3"),
-        ("Struktur von Materie, Raum und Zeit", "de-gym-physics-q4"),
+        (("Mechanik, Gravitation, Thermodynamik und Drehbewegungen",
+                "Einführungsphase: Mechanik, Gravitation, Thermodynamik und Drehbewegungen"), "de-gym-physics-e"),
+        (("Elektrisches und magnetisches Feld", "Q1 Elektrisches und magnetisches Feld"), "de-gym-physics-q1"),
+        (("Schwingungen, Induktion und mechanische Wellen", "Q2 Schwingungen, Induktion und mechanische Wellen"), "de-gym-physics-q2"),
+        (("Elektromagnetische Wellen und Quantenphysik", "Q3 Elektromagnetische Wellen und Quantenphysik"), "de-gym-physics-q3"),
+        (("Struktur von Materie, Raum und Zeit", "Q4 Struktur von Materie, Raum und Zeit"), "de-gym-physics-q4"),
     ]:
         placements.append(
             {
-                "goalId": require_goal_id(title),
+                "goalId": require_goal_id(*title),
                 "unitId": unit_id,
                 "relation": "primary",
                 "context": sek2_context,
@@ -547,6 +550,32 @@ def apply_physics_competency_refs(goals: list[dict[str, Any]], root_goal_id: str
         )
         if competency_refs:
             goal["competencyRefs"] = competency_refs
+
+
+def cleanup_physics_active_naming(goals: list[dict[str, Any]]) -> None:
+    for goal in goals:
+        short_key = goal.get("shortKey")
+        if short_key == "canonical_physics_pilot_module":
+            goal["shortKey"] = "canonical_physics_module"
+
+        tags = goal.get("tags")
+        if isinstance(tags, list):
+            cleaned_tags = dedupe([tag for tag in tags if tag != "pilot"])
+            if cleaned_tags != tags:
+                goal["tags"] = cleaned_tags
+
+        dimension_tags = goal.get("dimensionTags")
+        if isinstance(dimension_tags, dict) and dimension_tags.get("framework") == "canonical-gymnasium-physics-pilot":
+            dimension_tags["framework"] = "canonical-gymnasium-physics"
+
+        extended_data = goal.get("extendedData")
+        if isinstance(extended_data, dict) and "pilot" in extended_data:
+            cleaned_extended_data = copy.deepcopy(extended_data)
+            cleaned_extended_data.pop("pilot", None)
+            if cleaned_extended_data:
+                goal["extendedData"] = cleaned_extended_data
+            else:
+                goal.pop("extendedData", None)
 
 
 MATH = SubjectConfig(
@@ -1057,43 +1086,46 @@ GREEK = SubjectConfig(
     framework_id="canonical-gymnasium-greek",
 )
 
-CHINESE = SubjectConfig(
-    subject_key="chinese",
-    source_landscape_path=resolve_hessen_upper_secondary_landscape_path("chinese"),
-    target_landscape_path=REPO_ROOT
-    / "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHINESISCH.de.json",
-    mapping_path=resolve_hessen_upper_secondary_mapping_path("chinese"),
-    source_landscape_id="7651cbe2-5fb8-464d-b0c4-3e830cda41dd",
-    source_landscape_title="Chinesisch Oberstufe (Hessen, KC 2024)",
-    target_landscape_id="8fdb83f5-b42a-5b36-ab5d-64edd4b2ab80",
-    root_goal_id="494065c2-8707-5284-b6ba-a159df15bb6c",
-    root_goal_mode="exact_root",
-    root_title="Chinesisch",
-    root_title_en="Chinese",
-    root_description=(
-        "Gemeinsame Wurzel für Chinesisch am Gymnasium in Deutschland. "
-        "Die aktuelle Baseline übernimmt die hessische Oberstufe vollständig und schafft "
-        "damit einen belastbaren Startpunkt für die spätere bundesländerübergreifende Konvergenz."
-    ),
-    root_description_en=(
-        "Shared root for Chinese at Gymnasium in Germany. "
-        "The current baseline fully adopts the Hessian upper-secondary curriculum and establishes "
-        "a reliable starting point for later cross-state convergence."
-    ),
-    landscape_title="Chinesisch (Gymnasium, DE)",
-    landscape_title_en="Chinese (Gymnasium, DE)",
-    landscape_description=(
-        "Chinesisch für das Gymnasium in Deutschland. "
-        "Die aktuelle Baseline sichert die hessische Oberstufe vollständig als Ausgangspunkt "
-        "für spätere bundesländerübergreifende Angleichung."
-    ),
-    landscape_description_en=(
-        "Chinese for Gymnasium in Germany. "
-        "The current baseline fully secures the Hessian upper-secondary curriculum as the starting point "
-        "for later cross-state alignment."
-    ),
-    framework_id="canonical-gymnasium-chinese",
-)
+try:
+    CHINESE = SubjectConfig(
+        subject_key="chinese",
+        source_landscape_path=resolve_hessen_upper_secondary_landscape_path("chinese"),
+        target_landscape_path=REPO_ROOT
+        / "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHINESISCH.de.json",
+        mapping_path=resolve_hessen_upper_secondary_mapping_path("chinese"),
+        source_landscape_id="7651cbe2-5fb8-464d-b0c4-3e830cda41dd",
+        source_landscape_title="Chinesisch Oberstufe (Hessen, KC 2024)",
+        target_landscape_id="8fdb83f5-b42a-5b36-ab5d-64edd4b2ab80",
+        root_goal_id="494065c2-8707-5284-b6ba-a159df15bb6c",
+        root_goal_mode="exact_root",
+        root_title="Chinesisch",
+        root_title_en="Chinese",
+        root_description=(
+            "Gemeinsame Wurzel für Chinesisch am Gymnasium in Deutschland. "
+            "Die aktuelle Baseline übernimmt die hessische Oberstufe vollständig und schafft "
+            "damit einen belastbaren Startpunkt für die spätere bundesländerübergreifende Konvergenz."
+        ),
+        root_description_en=(
+            "Shared root for Chinese at Gymnasium in Germany. "
+            "The current baseline fully adopts the Hessian upper-secondary curriculum and establishes "
+            "a reliable starting point for later cross-state convergence."
+        ),
+        landscape_title="Chinesisch (Gymnasium, DE)",
+        landscape_title_en="Chinese (Gymnasium, DE)",
+        landscape_description=(
+            "Chinesisch für das Gymnasium in Deutschland. "
+            "Die aktuelle Baseline sichert die hessische Oberstufe vollständig als Ausgangspunkt "
+            "für spätere bundesländerübergreifende Angleichung."
+        ),
+        landscape_description_en=(
+            "Chinese for Gymnasium in Germany. "
+            "The current baseline fully secures the Hessian upper-secondary curriculum as the starting point "
+            "for later cross-state alignment."
+        ),
+        framework_id="canonical-gymnasium-chinese",
+    )
+except KeyError:
+    CHINESE = None
 
 MUSIC = SubjectConfig(
     subject_key="music",
@@ -1281,6 +1313,10 @@ def adopt_subject(config: SubjectConfig) -> tuple[int, int]:
         transformed["id"] = canonical_id_for_legacy(legacy_goal["id"])
         if existing_goal and existing_goal.get("shortKey"):
             transformed["shortKey"] = existing_goal["shortKey"]
+        if existing_goal and config.subject_key == "physics":
+            for field in ("title", "titleEn", "description", "descriptionEn"):
+                if existing_goal.get(field):
+                    transformed[field] = existing_goal[field]
         transformed["tags"] = merge_tags(legacy_goal.get("tags"), existing_goal.get("tags") if existing_goal else None)
         transformed["contains"] = map_refs(legacy_goal.get("contains"))
         transformed["requires"] = map_refs(legacy_goal.get("requires"))
@@ -1374,8 +1410,9 @@ def adopt_subject(config: SubjectConfig) -> tuple[int, int]:
         current["goalPlacements"] = build_physics_goal_placements(current["goals"], config.root_goal_id)
         current["competencyCatalog"] = build_physics_competency_catalog()
         apply_physics_competency_refs(current["goals"], config.root_goal_id)
+        cleanup_physics_active_naming(current["goals"])
 
-    if config.subject_key == "math":
+    if config.subject_key in {"math", "physics"}:
         write_goal_provenance_for_landscape(config.target_landscape_id, extract_goal_provenance(current["goals"]))
         write_goal_applicability_overrides_for_landscape(
             config.target_landscape_id,
@@ -1417,7 +1454,10 @@ def main() -> None:
     latin_goals, latin_mappings = adopt_subject(LATIN)
     spanish_goals, spanish_mappings = adopt_subject(SPANISH)
     greek_goals, greek_mappings = adopt_subject(GREEK)
-    chinese_goals, chinese_mappings = adopt_subject(CHINESE)
+    if CHINESE is not None:
+        chinese_goals, chinese_mappings = adopt_subject(CHINESE)
+    else:
+        chinese_goals, chinese_mappings = 0, 0
     music_goals, music_mappings = adopt_subject(MUSIC)
     economics_goals, economics_mappings = adopt_subject(ECONOMICS)
     print(

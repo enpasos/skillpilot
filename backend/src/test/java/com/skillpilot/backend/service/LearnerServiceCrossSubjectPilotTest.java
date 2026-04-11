@@ -39,7 +39,7 @@ class LearnerServiceCrossSubjectPilotTest {
 
     private static final String LEARNER_ID = "cross-subject-pilot-learner";
     private static final String CANONICAL_GYMNASIUM_ROOT_ID = "a0e13c56-c25f-4742-9272-3a1a603ee52e";
-    private static final String CANONICAL_PHYSICS_PILOT_ID = "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a";
+    private static final String CANONICAL_PHYSICS_ID = "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a";
     private static final String CANONICAL_PHYSICS_ROOT_ID = "bf980fff-b62b-4ea4-a20d-31681a7ad785";
     private static final String CANONICAL_PHYSICS_GK_PERSONAL_CONFIG = """
             {
@@ -251,7 +251,7 @@ class LearnerServiceCrossSubjectPilotTest {
 
         learner = new Learner();
         learner.setSkillpilotId(LEARNER_ID);
-        learner.setSelectedCurriculum(CANONICAL_PHYSICS_PILOT_ID);
+        learner.setSelectedCurriculum(CANONICAL_PHYSICS_ID);
         learner.setLearningState(LearningState.FRONTIER);
         learner.setPersonalCurriculum("{}");
 
@@ -957,7 +957,7 @@ class LearnerServiceCrossSubjectPilotTest {
         UnifiedLearnerStateResponse state = learnerService.getLearnerState(LEARNER_ID);
 
         assertThat(state.curriculum()).isNotNull();
-        assertThat(state.curriculum().getCurriculumId()).isEqualTo(CANONICAL_PHYSICS_PILOT_ID);
+        assertThat(state.curriculum().getCurriculumId()).isEqualTo(CANONICAL_PHYSICS_ID);
         assertThat(state.stateMachine().requiredAction()).isEqualTo("setActiveGoal");
         assertThat(state.stateMachine().goalOptions())
                 .extracting(FrontierGoal::id)
@@ -1027,7 +1027,7 @@ class LearnerServiceCrossSubjectPilotTest {
 
     @Test
     void canonicalPhysicsPilotElectricalEnergyGoalDependsOnReviewedVoltageBridge() {
-        LearningLandscape landscape = landscapeService.getById(CANONICAL_PHYSICS_PILOT_ID);
+        LearningLandscape landscape = landscapeService.getById(CANONICAL_PHYSICS_ID);
         LearningGoal heatGoal = landscape.getGoals().stream()
                 .filter(goal -> CANONICAL_PHYSICS_SEK1_HEAT_ENERGY_ID.equals(goal.getId()))
                 .findFirst()
@@ -1045,7 +1045,7 @@ class LearnerServiceCrossSubjectPilotTest {
 
     @Test
     void canonicalPhysicsPilotPressureClusterAndTemperatureGoalDependOnReviewedMechanicsAndHeatBridges() {
-        LearningLandscape landscape = landscapeService.getById(CANONICAL_PHYSICS_PILOT_ID);
+        LearningLandscape landscape = landscapeService.getById(CANONICAL_PHYSICS_ID);
         LearningGoal pressureCluster = landscape.getGoals().stream()
                 .filter(goal -> CANONICAL_PHYSICS_SEK1_PRESSURE_CLUSTER_ID.equals(goal.getId()))
                 .findFirst()
@@ -1062,7 +1062,7 @@ class LearnerServiceCrossSubjectPilotTest {
 
     @Test
     void canonicalPhysicsPilotHarmonicWavesEntryDependsOnReviewedSek1AcousticsBridge() {
-        LearningLandscape landscape = landscapeService.getById(CANONICAL_PHYSICS_PILOT_ID);
+        LearningLandscape landscape = landscapeService.getById(CANONICAL_PHYSICS_ID);
         LearningGoal harmonicWavesGoal = landscape.getGoals().stream()
                 .filter(goal -> CANONICAL_PHYSICS_HARMONIC_WAVES_ID.equals(goal.getId()))
                 .findFirst()
@@ -1074,7 +1074,7 @@ class LearnerServiceCrossSubjectPilotTest {
 
     @Test
     void canonicalPhysicsPilotElectromagneticSpectrumEntryDependsOnReviewedSek1ColorsBridge() {
-        LearningLandscape landscape = landscapeService.getById(CANONICAL_PHYSICS_PILOT_ID);
+        LearningLandscape landscape = landscapeService.getById(CANONICAL_PHYSICS_ID);
         LearningGoal electromagneticSpectrumGoal = landscape.getGoals().stream()
                 .filter(goal -> CANONICAL_PHYSICS_EM_SPECTRUM_ID.equals(goal.getId()))
                 .findFirst()
@@ -1086,7 +1086,7 @@ class LearnerServiceCrossSubjectPilotTest {
 
     @Test
     void canonicalPhysicsPilotUpperSecondaryRadiationGoalDependsOnReviewedSek1RadioactivityBridge() {
-        LearningLandscape landscape = landscapeService.getById(CANONICAL_PHYSICS_PILOT_ID);
+        LearningLandscape landscape = landscapeService.getById(CANONICAL_PHYSICS_ID);
         LearningGoal upperSecondaryRadiationGoal = landscape.getGoals().stream()
                 .filter(goal -> CANONICAL_PHYSICS_UPPER_SECONDARY_RADIATION_ID.equals(goal.getId()))
                 .findFirst()

@@ -1,10 +1,11 @@
 # Nordrhein-Westfalen (NW) - Gymnasium Curricula
 
-Current local archive status on `2026-03-20`:
+Current local archive status on `2026-04-10`:
 
 - mathematics source PDFs for Sek I and Sek II are now archived locally
 - first NRW mathematics source snapshots are now archived locally as pilot subsets under `lower-secondary/source-json/` and `upper-secondary/source-json/`
-- first canonical NRW work should start from those archived PDFs and snapshot goal IDs, not from the public links alone
+- first NRW upper-secondary physics source snapshot is now archived locally as a pilot subset under `upper-secondary/source-json/`
+- first canonical NRW work should start from the locally retained source artifacts and snapshot goal IDs, not from the public links alone
 
 ## Mathematik
 ### Sekundarstufe I (Klassen 5-10)
@@ -25,3 +26,4 @@ Current local archive status on `2026-03-20`:
 
 ### Sekundarstufe II (Gymnasiale Oberstufe)
 - **Neuer Kernlehrplan Physik in NRW (2022)**: [Schulentwicklung NRW (QUA-LiS) - Lehrplannavigator Sek II](https://www.schulentwicklung.nrw.de/lehrplaene/lehrplannavigator-s-ii/gymnasiale-oberstufe/physik/)
+- Pilot source snapshot: `upper-secondary/source-json/DE_NRW_S_GYM_2_PHYSIK.de.json.snapshot`

@@ -2,7 +2,7 @@
 
 This lane records the active Baden-Wuerttemberg upper-secondary Gymnasium mappings into the shared DE-level canonical landscapes.
 
-Current status on `2026-03-25`:
+Math status on `2026-03-25`:
 
 - repository-backed mapping fixture now exists:
   `bw_math_upper_secondary_to_canonical_math.json`
@@ -121,3 +121,33 @@ Current use:
   - the shared geometry block now also carries the Basisfach angle, distance, and area leaves from `3.5.2`
   - the shared integral block now also carries the BW limit-process and between-graphs strip from `3.5.2` / `3.4.2`
   - the shared geometry block now also carries the retain-split BW application semantics for reflections, movements, and area/volume work from `3.5.3` / `3.4.3`
+
+Physics status on `2026-04-11`:
+
+- repository-backed Physics mapping fixture now exists:
+  `bw_physics_upper_secondary_to_canonical_physics.json`
+- reserved `sourceLandscapeId`:
+  `eee2dc63-f96b-42c3-a2c9-b906432ccf5d`
+- current Physics mapping count: `36`
+- the first archived Baden-Wuerttemberg upper-secondary Physics source snapshot is now active in the shared provenance registries:
+  `curricula/DE/Gymnasium/input/BW/upper-secondary/source-json/DE_BAW_S_GYM_2_PHYSIK.de.json.snapshot`
+- the first active BW Physics Kursstufe cut now closes:
+  - the shared Physics motivation anchor exactly
+  - the narrow Basisfach field corridor as a reviewed partial bridge onto the shared canonical Q1 field surface
+  - the retained Basisfach child `Elektrische und magnetische Felder im Basisfach beschreiben` as a reviewed partial bridge onto that same shared Q1 field surface
+  - the adjacent Basisfach-Elektrodynamik-Follow-on as a reviewed partial bridge onto the canonical induction cluster plus one exact and two conservative partial bridges on the shared induction atoms
+  - the retained Basisfach applications child `Technische Anwendungen des Induktionsgesetzes im Basisfach beschreiben` now exact-resolves onto one new narrow canonical induction-applications atom
+  - the retained Basisfach Maxwell child `Elektromagnetische Felder im Maxwell-Ueberblick beschreiben` now exact-resolves onto one new narrow canonical Maxwell-overview atom
+  - one adjacent Basisfach-`Schwingungen` follow-on as a reviewed partial bridge onto the shared canonical Q2 `Schwingungen, Induktion und mechanische Wellen` surface plus four conservative partial bridges on existing Q2 oscillation atoms
+  - one adjacent Basisfach-`Wellen` follow-on as a reviewed partial bridge onto the canonical `Mechanische Wellen` cluster plus six conservative partial bridges on existing wave and spectrum atoms
+  - the narrow Leistungsfach field corridor as a reviewed partial bridge onto the shared canonical Q1 field surface
+  - the Leistungsfach child `Elektrisches Feld im Leistungsfach untersuchen` as a reviewed partial bridge onto the canonical `Elektrisches Feld` cluster
+  - the Leistungsfach child `Magnetisches Feld im Leistungsfach untersuchen` as a reviewed partial bridge onto the canonical `Magnetisches Feld` cluster
+  - the adjacent Leistungsfach-Elektrodynamik-Follow-on now exact-resolves `Bewegungsinduktion und Ladungstrennung`, `Induktionsgesetz und Lenz'sche Regel`, and `Selbstinduktion und Induktivitaet` onto existing canonical Q2 induction atoms
+  - one first adjacent Leistungsfach-`Schwingungen` follow-on as a reviewed partial bridge onto the shared canonical Q2 surface plus one exact bridge onto the existing canonical LK atom `Schwingungsgleichung loesen` and two exact bridges onto new narrow canonical Q2 atoms for LC-differential-equation solving and independent-oscillation superposition
+  - one first adjacent Leistungsfach-`Wellen` follow-on now exact-resolves two retained BW leaves onto new narrow canonical atoms for progressive plane transverse-wave modeling and the Hertz-dipole transition from the electromagnetic oscillating circuit to electromagnetic radiation
+  - one first adjacent Leistungsfach-`Wellenoptik` follow-on now exact-resolves two retained BW leaves onto new narrow canonical atoms for coherent light as electromagnetic wave and for comparing ray and wave model of light
+- the resulting BW field/induction closure is now also widened as a small committed `DE-BW` applicability cut onto the shared Q2 oscillation strip and the adjacent mechanical-wave / first-spectrum surface in the canonical Physics file
+- the nine resulting BW-only `APV-202` findings on the newly committed oscillation and wave atoms are intentionally accepted because the reviewed BW `Schwingungen` and `Wellen` bridges remain conservative `partial` alignments
+- the imported BW Physics lane now reaches the Basisfach `Schwingungen` / `Wellen` strips plus one first Leistungsfach-`Schwingungen` strip, one first Leistungsfach-`Wellen` strip, and one first Leistungsfach-`Wellenoptik` strip, but intentionally still stops before the quantitative Interferenz-/Fernfeld-Follow-on of `3.6.5` or BW-specific Physics composition views
+- no BW-specific Physics composition views are introduced in this first step

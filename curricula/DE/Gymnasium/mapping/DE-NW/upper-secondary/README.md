@@ -2,15 +2,73 @@
 
 This lane is reserved for future Nordrhein-Westfalen upper-secondary Gymnasium mappings into the shared DE-level canonical landscapes.
 
-Current status on `2026-03-29`:
+Current status on `2026-04-10`:
 
 - repository-backed mapping fixture now exists:
   `nrw_math_upper_secondary_to_canonical_math.json`
+- repository-backed Physics mapping scaffold now also exists:
+  `nrw_physics_upper_secondary_to_canonical_physics.json`
 - reserved `sourceLandscapeId`:
   `d3a068ca-90c6-4d7f-ab6b-4d8b43085cb1`
+- reserved Physics `sourceLandscapeId`:
+  `8abb46ff-072b-41b7-9d70-0334cb5a1a6c`
 - current mapping count: `91`
+- current Physics mapping count: `20`
 - the first NRW upper-secondary source snapshot now exists and is active in the shared provenance registries:
   `curricula/DE/Gymnasium/input/NW/upper-secondary/source-json/DE_NRW_S_GYM_2_MATHEMATIK.de.json.snapshot`
+- the first NRW upper-secondary Physics source snapshot now also exists and is active in the shared provenance registries:
+  `curricula/DE/Gymnasium/input/NW/upper-secondary/source-json/DE_NRW_S_GYM_2_PHYSIK.de.json.snapshot`
+- the canonical Physics file now also carries the first committed NRW upper-secondary applicability cut on seven shared targets:
+  - `Harmonische Schwingung verstehen`
+  - `Gravitation und Weltbilder in GK-Aufgaben verknüpfen`
+  - `Radioaktive Strahlung und Wirkungen`
+  - `Zerfallsgesetze anwenden`
+  - `Strahlungsrisiken mit physikalischen Größen beurteilen`
+  - `Kernenergieoptionen mit physikalischen Kriterien bewerten`
+  - `Kern und Hülle des Atoms qualitativ beschreiben`
+- the NRW matter-structure branch now also has a narrower committed follow-on:
+  - `Elementare Bestandteile der Materie mit Strukturmodellen ordnen` no longer maps to the broader cluster `Elementarteilchen und Standardmodell`
+  - it now maps to the new narrow canonical atom `Elementare Bestandteile der Materie mit Strukturmodellen ordnen`
+  - that new atom and the parent cluster `Elementarteilchen und Standardmodell` are now both committed for `DE-NW`
+- the NRW GK field-particle branch now also has a committed follow-on:
+  - the imported mixed field leaf is now source-split into `Geladene Teilchen in homogenen elektrischen Feldern untersuchen` and `Geladene Teilchen in homogenen magnetischen Feldern untersuchen`
+  - both new NRW GK children now map `exact` onto new narrow canonical Q1 atoms with the same titles
+  - the shared Q1 path `Bewegung geladener Teilchen im elektrischen Feld`, `Mikroskopische und makroskopische Wirkung magnetischer Felder`, `Magnetisches Feld`, and `Q1 Elektrisches und magnetisches Feld` is now committed for `DE-NW`
+- the NRW GK quantum-object branch now also has a committed follow-on:
+  - `Photonen und Elektronen als Quantenobjekte beschreiben` now maps `exact` to a new narrow canonical Q4 atom with the same title
+  - `Die Bedeutung von Modellen an Photon und Elektron reflektieren` now maps `exact` to a new narrow canonical Q4 atom with the same title
+  - the shared canonical Q4 cluster `Quantenobjekte` is now committed for `DE-NW`
+- the accepted-warning registry now records the corresponding seven NRW-specific Physics `APV-202` findings as reviewed partial-bridge debt
+- the accepted-warning registry now also records the corresponding new NRW-specific `APV-202` on the narrow matter-structure atom
+- the NRW Physics lane now also carries eight reviewed narrow corridors:
+  - shared source root -> canonical Physics root (`partial`)
+  - shared orientation anchor -> shared canonical motivation leaf (`exact`)
+  - E-phase entry cluster -> shared E-phase mechanics surface (`partial`)
+  - `Periodische Vorgaenge ...` -> `Harmonische Schwingung verstehen` (`partial`)
+  - `Kreisbewegung, Gravitation und physikalische Weltbilder ...` -> integrated GK gravitation/worldview task surface (`partial`)
+  - NRW GK `Quantenobjekte` cluster -> canonical Q3 `Welle-Teilchen-Dualismus` (`partial`)
+  - `Photonen und Elektronen als Quantenobjekte beschreiben` -> new narrow canonical Q4 atom `Photonen und Elektronen als Quantenobjekte beschreiben` (`exact`)
+  - `Die Bedeutung von Modellen an Photon und Elektron reflektieren` -> new narrow canonical Q4 atom `Die Bedeutung von Modellen an Photon und Elektron reflektieren` (`exact`)
+  - `Klassische Wellenphaenomene an Licht beschreiben` -> canonical Q3 `Elektromagnetische Wellen` (`partial`)
+  - retained NRW GK field parent `Geladene Teilchen in homogenen E- und B-Feldern untersuchen` is now source-split and no longer mapped directly
+  - `Geladene Teilchen in homogenen elektrischen Feldern untersuchen` -> new narrow canonical Q1 atom `Geladene Teilchen in homogenen elektrischen Feldern untersuchen` (`exact`)
+  - `Geladene Teilchen in homogenen magnetischen Feldern untersuchen` -> new narrow canonical Q1 atom `Geladene Teilchen in homogenen magnetischen Feldern untersuchen` (`exact`)
+  - the mixed NRW parent `Klassische Wellen und Teilchen in Feldern` intentionally remains without its own canonical target because the shared DE-level Physics graph splits that source package across reviewed Q3 and Q1 surfaces
+  - NRW LK `Quantenphysik sowie Atom- und Kernphysik` -> canonical Q4 `Struktur von Materie, Raum und Zeit` (`partial`)
+  - `Quantenphysik als Weiterentwicklung des physikalischen Weltbilds deuten` -> canonical Q4 `Quantenobjekte` (`partial`)
+  - retained NRW LK residue cluster `Aufbau der Materie sowie ionisierende Strahlung und Kernprozesse modellieren` -> canonical Q4 `Kernphysik` (`partial`)
+  - retained NRW LK radiation cluster `Ionisierende Strahlung und radioaktive Zerfaelle modellieren` is now source-split and no longer mapped directly
+  - `Ionisierende Strahlung nachweisen und Wirkungen beschreiben` -> canonical Q4 `Radioaktive Strahlung und Wirkungen` (`partial`)
+  - `Radioaktive Zerfaelle und Kernumwandlungen qualitativ beschreiben` -> canonical Q4 `Zerfallsgesetze anwenden` (`partial`)
+  - `Elementare Bestandteile der Materie mit Strukturmodellen ordnen` -> new narrow canonical Q4 atom `Elementare Bestandteile der Materie mit Strukturmodellen ordnen` (`partial`)
+  - `Kernaufbau in einfachen Modellen beschreiben` -> canonical Sek-I atom `Kern und Hülle des Atoms qualitativ beschreiben` (`partial`)
+  - retained NRW LK judgement cluster `Strahlungsrisiken und Kernprozesse fachlich beurteilen` is now source-split and no longer mapped directly
+  - `Strahlungsrisiken mit physikalischen Groessen beurteilen` -> canonical Q4 `Strahlungsrisiken mit physikalischen Größen beurteilen` (`partial`)
+  - `Kernenergieoptionen mit physikalischen Kriterien bewerten` -> canonical Q4 `Kernenergieoptionen mit physikalischen Kriterien bewerten` (`partial`)
+  - retained NRW LK matter cluster `Aufbau der Materie im Kleinen modellieren` is now source-split into `Elementare Bestandteile der Materie mit Strukturmodellen ordnen` and a narrower retained subcluster `Kernaufbau und Bindungen in einfachen Modellen beschreiben`; the first child now reaches the new narrow canonical atom with the same title conservatively, while the broader parent cluster follows only through child-union
+  - the retained NRW LK subcluster `Kernaufbau und Bindungen in einfachen Modellen beschreiben` is now widened once more into `Kernaufbau in einfachen Modellen beschreiben` and a narrower retained child cluster `Einfache Bindungen in Materiemodellen beschreiben und Modellgrenzen einordnen`; the first narrower child now reaches the existing canonical structural atom on `Kern und Hülle des Atoms`
+  - the retained NRW LK child cluster `Einfache Bindungen in Materiemodellen beschreiben und Modellgrenzen einordnen` is now widened once more into `Einfache Bindungen in Materiemodellen beschreiben` and `Modellgrenzen einfacher Materiemodelle fachlich einordnen`; both narrower children intentionally remain unmapped for now
+  - after explicit review, `Einfache Bindungen in Materiemodellen beschreiben` also remains unmapped: the current canonical candidates `Bindungsenergie und Massendefekt`, `Potenzialtopfmodell für Kerne`, and `Fundamentale Wechselwirkungen` all overclaim relative to the narrower NRW source wording
 
 Expected first use:
 

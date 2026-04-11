@@ -15,7 +15,7 @@ class LandscapeServiceTest {
 
         private static final String CANONICAL_GYMNASIUM_ROOT_ID = "a0e13c56-c25f-4742-9272-3a1a603ee52e";
         private static final String CANONICAL_MATH_ID = "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced";
-        private static final String CANONICAL_PHYSICS_PILOT_ID = "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a";
+        private static final String CANONICAL_PHYSICS_ID = "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a";
         private static final String CANONICAL_CHEMISTRY_ID = "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0";
         private static final String CANONICAL_BIOLOGY_ID = "08a43a1b-d97e-522c-9dfa-c950a493364e";
         private static final String CANONICAL_INFORMATICS_ID = "7d51b38c-a149-5407-bddc-d2ce7878b020";
@@ -36,6 +36,7 @@ class LandscapeServiceTest {
         private static final String CANONICAL_ECONOMICS_ID = "605bdaf6-32d5-56fd-8d92-5a80c2fd2901";
         private static final String CANONICAL_BW_RULE_OF_THREE_ID = "ca9093cd-9ccf-5fb4-9dd8-bf4f92af4e70";
         private static final String CANONICAL_BW_COORDINATE_SYSTEM_ID = "25593605-5e13-55cc-9a05-8f3d737e15e9";
+        private static final String CANONICAL_PHYSICS_KINETIC_ENERGY_ID = "7eeff2de-6015-49a6-a96e-a488d886dc9f";
         private static final String HESSEN_UPPER_MATH_ID = "2796fc7b-ba9d-446f-8f26-711dd6d8a9a3";
         private static final String BAVARIA_GYMNASIUM_ROOT_ID = "12322e3f-f351-5d40-b4ea-4a13d7e15854";
         private static final String HESSEN_LOWER_OVERVIEW_ID = "f050ee48-6891-4f83-995f-0f8be5e31b7f";
@@ -44,8 +45,10 @@ class LandscapeServiceTest {
         private static final String HESSEN_LOWER_MATH_PROCESS_CLUSTER_ID = "69eae42e-5386-4892-a6c3-0263661f66ce";
         private static final String NRW_LOWER_MATH_ID = "c862423f-d0ac-4a65-8ad2-9a6e560313a8";
         private static final String NRW_UPPER_MATH_ID = "d3a068ca-90c6-4d7f-ab6b-4d8b43085cb1";
+        private static final String NRW_UPPER_PHYSICS_ID = "8abb46ff-072b-41b7-9d70-0334cb5a1a6c";
         private static final String NRW_LOWER_FUNCTION_CLUSTER_ID = "f43fd248-195e-4168-bf70-ce92f864738f";
         private static final String NRW_UPPER_ANALYSIS_CLUSTER_ID = "31305eea-edf2-41b3-b312-bb1bc92f8fb7";
+        private static final String NRW_UPPER_PHYSICS_ENTRY_CLUSTER_ID = "8cf56a06-2097-436b-80a0-86d2977ce171";
         private static final String NIEDERSACHSEN_LOWER_MATH_ID = "2b995085-dc5e-47c6-a563-9dcfc01fb74d";
         private static final String NIEDERSACHSEN_LOWER_FUNCTION_CLUSTER_ID = "9dcde142-1bae-417b-b08c-999ce0a3e963";
         private static final String NIEDERSACHSEN_UPPER_MATH_ID = "fcb04661-6ea2-4030-a9b2-97e6cc03daf8";
@@ -125,7 +128,7 @@ class LandscapeServiceTest {
                                 .doesNotContain("3e56aa75-c76c-4de5-883b-0aac98297846",
                                                 "2796fc7b-ba9d-446f-8f26-711dd6d8a9a3",
                                                 CANONICAL_MATH_ID,
-                                                CANONICAL_PHYSICS_PILOT_ID,
+                                                CANONICAL_PHYSICS_ID,
                                                 CANONICAL_CHEMISTRY_ID,
                                                 CANONICAL_BIOLOGY_ID,
                                                 CANONICAL_INFORMATICS_ID,
@@ -317,10 +320,13 @@ class LandscapeServiceTest {
 
                 assertThat(landscapeService.getById(NRW_LOWER_MATH_ID)).isNotNull();
                 assertThat(landscapeService.getById(NRW_UPPER_MATH_ID)).isNotNull();
+                assertThat(landscapeService.getById(NRW_UPPER_PHYSICS_ID)).isNotNull();
                 assertThat(landscapeService.resolveSourceLandscapeJurisdiction(NRW_LOWER_MATH_ID)).isEqualTo("DE-NW");
                 assertThat(landscapeService.resolveSourceLandscapeJurisdiction(NRW_UPPER_MATH_ID)).isEqualTo("DE-NW");
+                assertThat(landscapeService.resolveSourceLandscapeJurisdiction(NRW_UPPER_PHYSICS_ID)).isEqualTo("DE-NW");
                 assertThat(landscapeService.isLegacyHiddenByDefaultLandscape(NRW_LOWER_MATH_ID)).isTrue();
                 assertThat(landscapeService.isLegacyHiddenByDefaultLandscape(NRW_UPPER_MATH_ID)).isTrue();
+                assertThat(landscapeService.isLegacyHiddenByDefaultLandscape(NRW_UPPER_PHYSICS_ID)).isTrue();
         }
 
         @Test
@@ -593,6 +599,24 @@ class LandscapeServiceTest {
         }
 
         @Test
+        void nrwPilotPhysicsSourceLandscapeIsPresentInRealGoalMembershipRegistry() throws Exception {
+                ObjectMapper objectMapper = new ObjectMapper();
+                JsonNode root = objectMapper.readTree(Files.readString(
+                                Path.of("../curricula/DE/Gymnasium/provenance/source-goal-membership-registry.json")));
+                JsonNode landscapes = root.path("landscapes");
+
+                JsonNode nrwUpperPhysics = StreamSupport.stream(landscapes.spliterator(), false)
+                                .filter(node -> NRW_UPPER_PHYSICS_ID.equals(node.path("landscapeId").asText()))
+                                .findFirst()
+                                .orElseThrow();
+
+                assertThat(StreamSupport.stream(nrwUpperPhysics.path("goalIds").spliterator(), false)
+                                .map(JsonNode::asText)
+                                .toList())
+                                .contains(NRW_UPPER_PHYSICS_ENTRY_CLUSTER_ID);
+        }
+
+        @Test
         void niedersachsenPilotMathSourceLandscapeIsPresentInRealGoalMembershipRegistry() throws Exception {
                 ObjectMapper objectMapper = new ObjectMapper();
                 JsonNode root = objectMapper.readTree(Files.readString(
@@ -637,13 +661,13 @@ class LandscapeServiceTest {
                 assertThat(landscapeService.getOverview().getSummaries())
                                 .extracting(LandscapeSummary::getCurriculumId)
                                 .contains(CANONICAL_GYMNASIUM_ROOT_ID)
-                                .doesNotContain(CANONICAL_MATH_ID, CANONICAL_PHYSICS_PILOT_ID, CANONICAL_CHEMISTRY_ID,
+                                .doesNotContain(CANONICAL_MATH_ID, CANONICAL_PHYSICS_ID, CANONICAL_CHEMISTRY_ID,
                                                 CANONICAL_BIOLOGY_ID, CANONICAL_INFORMATICS_ID, CANONICAL_HISTORY_ID,
                                                 CANONICAL_GERMAN_ID, CANONICAL_POLITICS_ECONOMICS_ID,
                                                 CANONICAL_ECONOMICS_ID);
                 assertThat(landscapeService.getClosure(CANONICAL_GYMNASIUM_ROOT_ID))
                                 .extracting(LearningLandscape::getLandscapeId)
-                                .contains(CANONICAL_GYMNASIUM_ROOT_ID, CANONICAL_MATH_ID, CANONICAL_PHYSICS_PILOT_ID,
+                                .contains(CANONICAL_GYMNASIUM_ROOT_ID, CANONICAL_MATH_ID, CANONICAL_PHYSICS_ID,
                                                 CANONICAL_CHEMISTRY_ID, CANONICAL_BIOLOGY_ID, CANONICAL_INFORMATICS_ID,
                                                 CANONICAL_HISTORY_ID, CANONICAL_GERMAN_ID,
                                                 CANONICAL_POLITICS_ECONOMICS_ID, CANONICAL_ENGLISH_ID,
@@ -710,13 +734,36 @@ class LandscapeServiceTest {
         }
 
         @Test
+        void localizedCanonicalPhysicsUnionsRegistryOverridesAndDerivedApplicability() {
+                LandscapeProperties properties = new LandscapeProperties();
+                properties.setDirectory("../curricula");
+                ObjectMapper objectMapper = new ObjectMapper();
+                LandscapeService landscapeService = new LandscapeService(properties, objectMapper);
+
+                LearningLandscape canonicalPhysics = landscapeService.getClosure(CANONICAL_GYMNASIUM_ROOT_ID).stream()
+                                .filter(landscape -> CANONICAL_PHYSICS_ID.equals(landscape.getLandscapeId()))
+                                .findFirst()
+                                .orElseThrow();
+
+                LearningGoal kineticEnergyGoal = canonicalPhysics.getGoals().stream()
+                                .filter(goal -> CANONICAL_PHYSICS_KINETIC_ENERGY_ID.equals(goal.getId()))
+                                .findFirst()
+                                .orElseThrow();
+
+                assertThat(kineticEnergyGoal.getExtendedData()).isNull();
+                assertThat(kineticEnergyGoal.getApplicability()).containsKey("jurisdiction");
+                assertThat(kineticEnergyGoal.getApplicability().get("jurisdiction"))
+                                .contains("DE-BY", "DE-HE");
+        }
+
+        @Test
         void loadsCanonicalPhysicsPilotAsChildCurriculumAndClosureIncludesMathPilot() {
                 LandscapeProperties properties = new LandscapeProperties();
                 properties.setDirectory("../curricula");
                 ObjectMapper objectMapper = new ObjectMapper();
                 LandscapeService landscapeService = new LandscapeService(properties, objectMapper);
 
-                LearningLandscape pilot = landscapeService.getById(CANONICAL_PHYSICS_PILOT_ID);
+                LearningLandscape pilot = landscapeService.getById(CANONICAL_PHYSICS_ID);
 
                 assertThat(pilot).isNotNull();
                 assertThat(pilot.getTitle()).isEqualTo("Physik (Gymnasium, DE)");
@@ -726,11 +773,11 @@ class LandscapeServiceTest {
                                 .contains(
                                                 "Mechanische Grundlagen (Sek I)",
                                                 "Methode: Messunsicherheit und Fehleranalyse",
-                                                "Mechanik, Gravitation, Thermodynamik und Drehbewegungen",
+                                                "Einführungsphase: Mechanik, Gravitation, Thermodynamik und Drehbewegungen",
                                                 "Bewegungen mit Diagrammen untersuchen",
                                                 "Newtons Axiome und Inertialsysteme",
                                                 "Erhaltungssätze",
-                                                "Struktur von Materie, Raum und Zeit",
+                                                "Q4 Struktur von Materie, Raum und Zeit",
                                                 "Abiturprüfung Physik (GK)",
                                                 "Abiturprüfung Physik (LK)");
                 assertThat(pilot.getFilters())
@@ -779,9 +826,13 @@ class LandscapeServiceTest {
                                                 "PROCESS.PK3",
                                                 "PROCESS.PK4",
                                                 "PROCESS.PK5");
-                assertThat(landscapeService.getClosure(CANONICAL_PHYSICS_PILOT_ID))
+                assertThat(physicsRoot.getExtendedData()).isNull();
+                assertThat(landscapeService.resolveGoalProvenance(physicsRoot))
+                                .containsEntry("sourceLandscapeId", "24f2ca0f-b94a-444e-bb70-677cb6f85c02")
+                                .containsEntry("sourceGoalId", "1b716911-2c34-4806-9240-7c31f71312bb");
+                assertThat(landscapeService.getClosure(CANONICAL_PHYSICS_ID))
                                 .extracting(LearningLandscape::getLandscapeId)
-                                .contains(CANONICAL_PHYSICS_PILOT_ID, CANONICAL_MATH_ID)
+                                .contains(CANONICAL_PHYSICS_ID, CANONICAL_MATH_ID)
                                 .doesNotContain(HESSEN_UPPER_MATH_ID);
         }
 

@@ -54,6 +54,14 @@ For a detailed introduction and the vision behind SkillPilot, please refer to th
 *   [**Read Whitepaper (English)**](https://skillpilot.com/whitepaper/en)
 *   [**Whitepaper lesen (Deutsch)**](https://skillpilot.com/whitepaper/de)
 
+### SkillGraph Processing
+
+![SkillGraph Processing](docs/whitepaper/SkillPilotProcess.png)
+
+### SkillPilot Tutor
+
+![SkillPilot Tutor](docs/whitepaper/SkillPilotTutor.png)
+
 ## 🌐 Live 
 
 Visit us at **[skillpilot.com](https://skillpilot.com)**.

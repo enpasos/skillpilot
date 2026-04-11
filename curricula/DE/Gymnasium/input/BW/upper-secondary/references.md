@@ -1,4 +1,4 @@
-### Source PDF (download link)
+## Mathematics source PDF (download link)
 
 Starting point:
 https://www.bildungsplaene-bw.de/,Lde/LS/BP2016BW/ALLG/GYM/M
@@ -17,3 +17,23 @@ Scope:
 Archived locally at:
 
 - `curricula/DE/Gymnasium/input/BW/BP2016BW_ALLG_GYM_M.pdf`
+
+## Physics source PDF (download link)
+
+Starting point:
+https://www.bildungsplaene-bw.de/,Lde/LS/BP2016BW/ALLG/GYM/PH/KS
+
+- `BP2016BW_ALLG_GYM_PH.pdf`:
+  https://www.bildungsplaene-bw.de/site/bildungsplan-rebrush2024/bpExport/3260210/Lde/index.html?_finish=Erstellen&_page=0&requestMode=PDF
+
+Scope:
+
+- Baden-Wuerttemberg
+- Gymnasium
+- Physik
+- upper-secondary extraction target: `Kursstufe`
+- note: the official provider export covers Gymnasium Physik broadly and includes the upper-secondary Basisfach/Leistungsfach sections used for this pilot extraction
+
+Archived locally at:
+
+- `curricula/DE/Gymnasium/input/BW/BP2016BW_ALLG_GYM_PH.pdf`

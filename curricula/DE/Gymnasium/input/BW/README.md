@@ -1,11 +1,13 @@
 # Baden-Wuerttemberg (BW) - Gymnasium Curricula
 
-Current local archive status on `2026-03-21`:
+Current local archive status on `2026-04-11`:
 
 - the official Baden-Wuerttemberg Gymnasium mathematics export PDF is now archived locally
 - this provider export currently covers both lower-secondary and Kursstufe mathematics in one source bundle
 - the first lower-secondary and upper-secondary source snapshots are now archived locally as well
 - first canonical BW work should now start from that archived source snapshot and the lane-specific provenance notes, not from the public links alone
+- the official Baden-Wuerttemberg Gymnasium physics export PDF is now archived locally as well
+- the first upper-secondary Physics source snapshot is now archived locally and activated in the shared DE-level provenance registries
 
 ## Mathematik
 ### Sekundarstufe I (Klassen 5-10)
@@ -26,3 +28,6 @@ Current local archive status on `2026-03-21`:
 
 ### Sekundarstufe II (Kursstufe, Klassen 11-12)
 - **Bildungsplan 2016 (Basisfach/Leistungsfach)**: [Landesbildungsserver BW - Physik GyO](https://www.bildungsplaene-bw.de/,Lde/LS/BP2016BW/ALLG/GYM/PH/KS)
+- Archived source PDF: `BP2016BW_ALLG_GYM_PH.pdf`
+- Archived source snapshot: `upper-secondary/source-json/DE_BAW_S_GYM_2_PHYSIK.de.json.snapshot`
+- Source references: `upper-secondary/references.md`

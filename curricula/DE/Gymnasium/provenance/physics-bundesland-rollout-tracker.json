@@ -1,0 +1,173 @@
+{
+  "version": 1,
+  "updatedAt": "2026-04-11T00:00:00Z",
+  "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+  "quickViewPath": "docs/dev/canonical-gymnasium-physics-bundeslaender-status.md",
+  "renderCommand": "python3 scripts/render_canonical_physics_bundesland_status.py",
+  "phaseScale": [
+    {
+      "id": "P0",
+      "label": "Placeholder",
+      "score": 0,
+      "description": "README/source links only, no active Physics rollout lane."
+    },
+    {
+      "id": "P1",
+      "label": "Source archived",
+      "score": 15,
+      "description": "Physics source material is archived in the DE-level input lane."
+    },
+    {
+      "id": "P2",
+      "label": "Snapshots active",
+      "score": 30,
+      "description": "Physics source snapshots and provenance are active."
+    },
+    {
+      "id": "P3",
+      "label": "Anchors mapped",
+      "score": 50,
+      "description": "Canonical structural anchors are mapped on the shared Physics spine."
+    },
+    {
+      "id": "P4",
+      "label": "First corridor reviewed",
+      "score": 65,
+      "description": "At least one didactically closed reviewed Physics corridor is mapped."
+    },
+    {
+      "id": "P5",
+      "label": "Broad state coverage",
+      "score": 85,
+      "description": "The state has broad reviewed coverage across the active Physics spine."
+    },
+    {
+      "id": "P6",
+      "label": "State cutover ready",
+      "score": 100,
+      "description": "The state is operationally ready on the canonical Physics landscape."
+    }
+  ],
+  "programPhases": [
+    {
+      "id": "F0",
+      "title": "Tracking scaffold",
+      "status": "completed"
+    },
+    {
+      "id": "F1",
+      "title": "Hessen and Bayern hardened base",
+      "status": "completed"
+    },
+    {
+      "id": "F2",
+      "title": "Third-state activation",
+      "status": "completed"
+    },
+    {
+      "id": "F3",
+      "title": "Repeatable multi-state rollout",
+      "status": "active"
+    }
+  ],
+  "steeringModel": {
+    "primaryWorkUnit": "narrow_reviewed_corridor",
+    "canonicalViewRule": "Treat the canonical DE Physics landscape as a curated pedagogical source of truth, not as the raw union of all state-specific package structures.",
+    "stateViewRule": "Treat Bundesland views as projections that stay as close as possible to the canonical Physics tree while omitting or deferring atoms that would overclaim the local curriculum.",
+    "executionSequence": [
+      "Archive or refresh the retained state source lane first, then narrow the affected delta to mappings, provenance, applicability, and only the learner-facing views that really change.",
+      "Prefer reviewed source splits and conservative partial bridges over premature canonical atom growth when the current shared Physics surface is still semantically narrower or broader than the source wording.",
+      "Re-run the standard Physics mapping, applicability, and runtime fences before merging the rollout delta."
+    ],
+    "atomAdmissionRule": [
+      "Add a canonical Physics atom only if it improves the pedagogical completeness of the shared DE graph.",
+      "Do not add canonical atoms only to mirror one state's package wording or to avoid a temporary source-led residual.",
+      "Prefer canonical subtree quality over short-term mapping convenience."
+    ]
+  },
+  "canonicalCorridors": [
+    {
+      "id": "M1.HE_BY_HARDENED_BASE",
+      "title": "Hessen and Bayern hardened base",
+      "status": "completed",
+      "focusStates": [
+        "DE-HE",
+        "DE-BY"
+      ],
+      "nextStep": "Treat the Hessen/Bayern base as maintenance-only: refresh retained source snapshots, mappings, provenance, applicability, and state-scoped composition views together whenever a curriculum revision changes visible Physics scope."
+    },
+    {
+      "id": "SEK2.NW.UPPER_SECONDARY",
+      "title": "Nordrhein-Westfalen upper-secondary narrow corridor lane",
+      "status": "active",
+      "focusStates": [
+        "DE-NW"
+      ],
+      "nextStep": "Keep the NRW upper-secondary Physics lane narrow and reviewed: prefer another clean source-led corridor or a genuinely missing canonical micro-surface over inventing NRW-specific composition views or overclaiming the remaining matter residue."
+    },
+    {
+      "id": "SEK2.BW.UPPER_SECONDARY_ENTRY",
+      "title": "Baden-Wuerttemberg upper-secondary first entry lane",
+      "status": "active",
+      "focusStates": [
+        "DE-BW"
+      ],
+      "nextStep": "Keep the BW upper-secondary Physics lane narrow and reviewed: prefer the adjacent Leistungsfach-`Wellenoptik`-Interferenzstreifen before inventing BW-specific Physics composition views or a broader applicability sweep."
+    }
+  ],
+  "states": [
+    {
+      "jurisdiction": "DE-HE",
+      "repoStateKey": "HE",
+      "displayName": "Hessen",
+      "phase": "P6",
+      "priority": "backlog",
+      "sourceStage": "cutover_ready",
+      "mappingFiles": [
+        "curricula/DE/Gymnasium/mapping/DE-HE/lower-secondary/hessen_physics_lower_secondary_to_canonical_physics.json",
+        "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_physics_upper_secondary_to_canonical_physics.json"
+      ],
+      "notes": "Hessen remains the stable lower-secondary and upper-secondary reference lane for canonical Physics, including the hardened DE-HE composition-view set and registry-backed applicability behavior.",
+      "nextStep": "Keep Hessen on maintenance only: refresh retained source snapshots, mappings, provenance, applicability, and the DE-HE Physics composition views together whenever a curriculum revision changes visible scope or learner-facing tree shape."
+    },
+    {
+      "jurisdiction": "DE-BY",
+      "repoStateKey": "BY",
+      "displayName": "Bayern",
+      "phase": "P6",
+      "priority": "backlog",
+      "sourceStage": "cutover_ready",
+      "mappingFiles": [
+        "curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_physics_to_canonical_physics.json"
+      ],
+      "notes": "Bayern is the second hardened Physics state on the active canonical path and already carries its reviewed state-scoped composition views plus registry-backed applicability widening.",
+      "nextStep": "Keep Bayern on maintenance only: refresh retained source snapshots, mappings, provenance, applicability, and the DE-BY Physics composition views together whenever a curriculum revision changes visible scope or learner-facing tree shape."
+    },
+    {
+      "jurisdiction": "DE-NW",
+      "repoStateKey": "NW",
+      "displayName": "Nordrhein-Westfalen",
+      "phase": "P4",
+      "priority": "next_wave",
+      "sourceStage": "subtree_adopted",
+      "mappingFiles": [
+        "curricula/DE/Gymnasium/mapping/DE-NW/upper-secondary/nrw_physics_upper_secondary_to_canonical_physics.json"
+      ],
+      "notes": "Nordrhein-Westfalen now has an active upper-secondary Physics source snapshot, provenance-backed membership and closure, and a reviewed narrow mapping lane across E-phase, GK quantum/wave-field, and LK matter/radiation/judgement corridors. The lane currently carries 20 reviewed mappings, a first committed NRW applicability cut on seven shared canonical targets, a committed matter-structure follow-on on one new narrow canonical atom plus its parent cluster, a committed GK field follow-on on two new narrow canonical Q1 atoms plus their parent clusters, and a committed GK quantum-object follow-on on two new narrow canonical Q4 atoms plus the shared `Quantenobjekte` cluster, but no NRW-specific Physics composition views and no lower-secondary Physics source snapshot yet.",
+      "nextStep": "Either keep widening the NRW upper-secondary lane through another still-missing reviewed corridor outside the current pilot subset, or stop local widening and move to the next state lane; do not invent NRW-specific Physics composition views before broader reviewed evidence actually requires them."
+    },
+    {
+      "jurisdiction": "DE-BW",
+      "repoStateKey": "BW",
+      "displayName": "Baden-Wuerttemberg",
+      "phase": "P4",
+      "priority": "active",
+      "sourceStage": "subtree_adopted",
+      "mappingFiles": [
+        "curricula/DE/Gymnasium/mapping/DE-BW/upper-secondary/bw_physics_upper_secondary_to_canonical_physics.json"
+      ],
+      "notes": "Baden-Wuerttemberg now has an active upper-secondary Physics source snapshot, provenance-backed membership and closure, a first reviewed narrow field corridor across the shared orientation anchor plus Basisfach/Leistungsfach `Elektromagnetische Felder`, one adjacent BF electrodynamics induction strip, two exact BF electrodynamics follow-ons on new narrow canonical applications and Maxwell-overview atoms, one adjacent BF `Schwingungen` follow-on on the shared canonical Q2 surface plus four conservative partial bridges on existing oscillation atoms, one adjacent BF `Wellen` follow-on on the canonical `Mechanische Wellen` cluster plus six conservative partial bridges on existing wave and spectrum atoms, one adjacent LF electrodynamics follow-on, one first adjacent LF `Schwingungen` follow-on with three exact leaf bridges across mechanical DGL solving, LC-DGL solving, and independent-oscillation superposition, one first adjacent LF `Wellen` follow-on with two exact leaf bridges across progressive plane transverse-wave modeling and the Hertz-dipole transfer from oscillating circuit to radiation, and one first adjacent LF `Wellenoptik` follow-on with two exact leaf bridges across coherent light as electromagnetic wave and the comparison of ray and wave model of light. The lane currently carries 36 reviewed mappings, widens the earlier small committed BW applicability cut from the field/induction closure onto the shared Q2 oscillation strip and adjacent wave strip, and intentionally still stops before the quantitative Interferenz-/Fernfeld-follow-on of `3.6.5` or BW-specific Physics composition views.",
+      "nextStep": "Either widen the BW upper-secondary lane on the adjacent Leistungsfach-`Wellenoptik`-Interferenzstreifen, or stop local widening and move to the next state lane; do not introduce BW-specific Physics composition views before wider reviewed evidence requires them."
+    }
+  ]
+}

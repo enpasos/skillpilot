@@ -24,6 +24,7 @@ This project is an invitation to the community to jointly build and bring to lif
 -   [Champion guide](qa-ci/champion-guide.md)
 -   [Four-level QA model](qa-ci/four-level-champion-model.md)
 -   [Canonical Gymnasium Math rollout status](dev/canonical-gymnasium-math-bundeslaender-status.md)
+-   [Canonical Gymnasium Physics rollout status](dev/canonical-gymnasium-physics-bundeslaender-status.md)
 
 ### High-level overview
 -   [Whitepaper (EN)](whitepaper/whitepaper.en.md)

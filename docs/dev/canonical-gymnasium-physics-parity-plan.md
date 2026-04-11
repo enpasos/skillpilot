@@ -1,16 +1,17 @@
 # Canonical Gymnasium Physics Parity Plan
 
-Snapshot: `2026-04-10`
+Snapshot: `2026-04-11`
 
-This document defines the concrete path for bringing canonical DE Gymnasium Physics to the same operational level as canonical Mathematics.
+This document tracks the path for bringing canonical DE Gymnasium Physics to the same operational level as canonical Mathematics.
 
-It does not mean "same size" or "same number of Bundeslaender on day one".
+Parity does not mean "same size" or "same number of Bundeslaender".
 It means "same artifact family, same validation discipline, same runtime readiness, and the same migration hygiene".
 
 See also:
 
 - `docs/dev/canonical-gymnasium-implementation-plan.md`
 - `docs/dev/canonical-gymnasium-migration-status.md`
+- `docs/dev/canonical-gymnasium-physics-m2-lane-shortlist.md`
 - `docs/dev/canonical-gymnasium-math-bundeslaender-status.md`
 - `docs/concept/curriculum-graph/canonical-gymnasium-rollout.md`
 
@@ -27,7 +28,7 @@ Physics is on mathematics-level parity only when all of the following are true:
 3. reviewed source lanes are represented through stable mapping and provenance artifacts
 4. applicability is compiled and validated from the same DE-level registry and view-filter pipeline
 5. backend/runtime tests cover the Physics-specific landscape, mapping, and composition-view contracts
-6. "pilot" naming survives only where the content is still intentionally provisional
+6. "pilot" naming survives only where the content is still intentionally historical or provisional
 
 Non-goal:
 
@@ -36,243 +37,60 @@ Non-goal:
 Parity means Physics should use the same machinery.
 It does not mean Physics must immediately have `800` goals, `70` composition views, or `31` mapping files.
 
-## 2. Current baseline
+## 2. Current state
 
-Observed repository state on `2026-04-10`:
+Observed repository state on `2026-04-11` after the current hardening and BW rollout step:
 
-| Area | Mathematics | Physics | Gap |
+| Area | Mathematics | Physics | Comment |
 | --- | ---: | ---: | --- |
-| goals in canonical file | `800` | `433` | size is fine; not the main problem |
-| goals with `applicability` | `800` | `433` | already good on both |
-| goals with `shortKey` | `276` | `98` | acceptable but can widen over time |
-| `programUnits` | `14` | `0` | missing in Physics |
-| `goalPlacements` | `81` | `0` | missing in Physics |
-| `competencyCatalog` entries | `6` | `0` | missing in Physics |
-| goals with `competencyRefs` | `52` | `0` | missing in Physics |
-| composition views | `70` | `5` | Physics has only DE-wide baseline views |
-| committed mapping files | `31` | `3` | Physics only has Hessen Sek I, Hessen Sek II, Bavaria pilot |
+| goals in canonical file | `800` | `433` | size difference is fine |
+| goals with raw inline `applicability` | `800` | `57` | Physics now relies on registry-backed applicability compilation for the hardened corridor |
+| goals with `shortKey` | `276` | `98` | acceptable for now |
+| `programUnits` | `14` | `9` | M1 schema layer now present in Physics |
+| `goalPlacements` | `81` | `19` | M1 placement layer now present in Physics |
+| `competencyCatalog` entries | `6` | `5` | Physics now has reviewed process-competency entries |
+| goals with `competencyRefs` | `52` | `17` | focused reviewed coverage, not bulk-stamped |
+| composition views | `70` | `13` | Physics now has DE-wide + `DE-HE` + `DE-BY` reviewed views |
+| committed mapping files | `31` | `4` | Physics has Hessen Sek I, Hessen Sek II, Bavaria Gymnasium, Baden-Wuerttemberg upper-secondary |
 
-Relevant files today:
+Relevant Physics files:
 
-- canonical reference:
-  - `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json`
-- canonical target:
+- canonical landscape:
   - `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json`
-- current Physics composition views:
-  - `curricula/DE/Gymnasium/composition-views/physik/de-de-gym-seki-physics.view.json`
-  - `curricula/DE/Gymnasium/composition-views/physik/de-de-gym-physics-gk.view.json`
-  - `curricula/DE/Gymnasium/composition-views/physik/de-de-gym-physics-lk.view.json`
-  - `curricula/DE/Gymnasium/composition-views/physik/de-de-gym-sekii-physics-gk.view.json`
-  - `curricula/DE/Gymnasium/composition-views/physik/de-de-gym-sekii-physics-lk.view.json`
-- current Physics mappings:
-  - `curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_physics_upper_secondary_to_canonical_physics.json`
+- composition-view lanes:
+  - DE-wide baseline: `curricula/DE/Gymnasium/composition-views/physik/de-de-gym-*.view.json`
+  - Hessen scope views: `curricula/DE/Gymnasium/composition-views/physik/de-he-*.view.json`
+  - Bavaria scope views: `curricula/DE/Gymnasium/composition-views/physik/de-by-*.view.json`
+- mapping lanes:
   - `curricula/DE/Gymnasium/mapping/DE-HE/lower-secondary/hessen_physics_lower_secondary_to_canonical_physics.json`
+  - `curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_physics_upper_secondary_to_canonical_physics.json`
   - `curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_physics_to_canonical_physics.json`
+  - `curricula/DE/Gymnasium/mapping/DE-BW/upper-secondary/bw_physics_upper_secondary_to_canonical_physics.json`
+- registry-backed provenance/applicability:
+  - `curricula/DE/Gymnasium/provenance/canonical-goal-provenance-registry.json`
+  - `curricula/DE/Gymnasium/provenance/canonical-goal-applicability-override-registry.json`
 
 Important asymmetry:
 
-- Mathematics already has the full DE-level scope machinery.
-- Physics is already runtime-relevant and cutover-capable for reviewed corridors, but still structurally looks like a narrower subject pilot.
+- Mathematics still has the broader Bundesland and composition-view footprint.
+- Physics now matches the artifact discipline for the currently reviewed Hessen+Bavaria corridor.
+- The remaining gap is rollout breadth, not basic canonical machinery.
 
-## 3. Target shape
-
-The Physics parity target has two layers:
+## 3. Milestones
 
 ### 3.1 M1: Hessen + Bavaria hardened parity
 
-This is the first serious target.
-Physics should reach the same artifact discipline as the current hardened multi-state subjects, while still only covering reviewed Hessen and Bavaria slices.
+Status: `completed`
 
-Required outcome:
+Delivered outcome:
 
-- canonical Physics file includes reviewed `programUnits`, `goalPlacements`, and a small reviewed `competencyCatalog`
-- Physics composition views exist not only for DE-wide defaults, but also for the reviewed state scopes that already have mappings
-- current reviewed mappings and provenance lanes no longer look like temporary pilot leftovers
-- validation and backend tests explicitly fence this hardened state
+- canonical Physics now includes reviewed `programUnits`, `goalPlacements`, and a minimal reviewed `competencyCatalog`
+- Physics now has explicit state-scoped composition views for `DE-HE` and `DE-BY`
+- active mapping and canonical identifiers no longer present Physics as a live `pilot`
+- Physics provenance and applicability exceptions now live in the DE-level registries instead of staying inline in the canonical graph JSON
+- backend and app validation now fence this hardened state directly
 
-### 3.2 M2: Bundesland rollout framework parity
-
-This is the second target.
-Physics should then support the same style of further state expansion as Mathematics.
-
-Required outcome:
-
-- a stable Physics rollout tracker exists
-- new state onboarding can be done lane-by-lane without inventing a new process
-- view naming, mapping naming, provenance updates, applicability compilation, and runtime tests follow a repeatable pattern
-
-## 4. Work packages
-
-## WP1. Canonical schema parity
-
-Status: `planned`
-
-Primary file:
-
-- `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json`
-
-Tasks:
-
-- add reviewed `programUnits` for:
-  - `Gymnasium`
-  - `SekI`
-  - `SekII`
-  - relevant phase/year buckets already implicit in the graph
-  - `GK` / `LK` / exam units only where they drive placement or learner views
-- add reviewed `goalPlacements` for the currently adopted Physics corridors
-- introduce a minimal Physics `competencyCatalog` only for reviewed, source-backed axes
-- add `competencyRefs` only where the source semantics are clear enough; do not bulk-stamp them
-- normalize remaining `shortKey` names that still encode "pilot" when the node is no longer provisional
-
-Guardrails:
-
-- do not rewrite the whole Physics graph just to force a math-shaped ontology
-- keep authored `requires` inside the base Physics landscape intra-landscape
-- keep the existing Math bridge intact; do not duplicate math atoms into Physics
-
-Exit criteria:
-
-- Physics top-level keys match the mathematics artifact family where applicable
-- new structural metadata is validated by existing graph/runtime loaders
-- no runtime contract breaks for existing Physics learner flows
-
-## WP2. Composition-view parity
-
-Status: `planned`
-
-Primary directory:
-
-- `curricula/DE/Gymnasium/composition-views/physik/`
-
-Current gap:
-
-- Physics has only `5` DE-wide views
-- Mathematics has explicit DE-wide and state-scoped views across stage/course combinations
-
-Tasks:
-
-- keep the existing five DE-wide Physics views as the default baseline
-- add reviewed state-scoped Physics views for the states that already have committed mappings:
-  - `DE-HE`
-  - `DE-BY`
-- use the mathematics convention: explicit reviewed scope files instead of hidden runtime reparenting
-- compile each view against the canonical Physics landscape and enforce single-occurrence output
-
-Recommended first view matrix:
-
-- `de-he-gk.view.json`
-- `de-he-lk.view.json`
-- `de-he-sekii-gk.view.json`
-- `de-he-sekii-lk.view.json`
-- `de-by-gk.view.json`
-- `de-by-lk.view.json`
-- `de-by-sekii-gk.view.json`
-- `de-by-sekii-lk.view.json`
-
-Optional later extension:
-
-- `de-he-seki.view.json`
-- `de-by-seki.view.json`
-
-if and only if the reviewed Sek-I slices are strong enough to justify separate learner-facing trees.
-
-Exit criteria:
-
-- `app/package.json` validation path stays clean for the new Physics views:
-  - `npm run validate:composition-views`
-  - `npm run validate:view-filters`
-- backend composition-view matching is covered for the new Physics scope files
-
-## WP3. Mapping parity
-
-Status: `planned`
-
-Current Physics mapping baseline:
-
-- Hessen Sek II: `376` mappings
-- Hessen Sek I: `53` mappings
-- Bavaria Gymnasium: `26` mappings
-
-Tasks:
-
-- harden the current reviewed Physics mappings first
-- decide whether the remaining `*_pilot.json` filenames still describe reality
-- if the reviewed scope is now stable enough, rename:
-  - `hessen_physics_upper_secondary_to_canonical_physics.json`
-  - `bavaria_physics_to_canonical_physics.json`
-  to non-pilot filenames
-- update all repository references together:
-  - backend tests
-  - retained-asset registries
-  - scripts
-  - docs
-- only then plan additional state onboarding
-
-Rule:
-
-- naming cleanup is not cosmetic here
-- as long as filenames and short keys still say `pilot`, downstream readers will continue to treat Physics as a special case
-
-Exit criteria:
-
-- mapping filenames reflect the actual operational state
-- repository fixture tests cover the current canonical filenames
-- no retained-asset registry or script still depends on obsolete pilot names
-
-## WP4. Provenance and applicability parity
-
-Status: `planned`
-
-Primary files:
-
-- `curricula/DE/Gymnasium/provenance/source-landscape-registry.json`
-- `curricula/DE/Gymnasium/provenance/source-goal-membership-registry.json`
-- `curricula/DE/Gymnasium/provenance/source-goal-closure-registry.json`
-- `curricula/DE/Gymnasium/provenance/canonical-goal-provenance-registry.json`
-- `curricula/DE/Gymnasium/provenance/canonical-goal-applicability-override-registry.json`
-
-Tasks:
-
-- verify that every reviewed Physics source lane used for cutover has matching DE-level provenance coverage
-- move remaining Physics-specific exceptions out of canonical graph JSON where the repo policy already expects registry-based overrides
-- compile and review Physics applicability with the same pipeline used for Mathematics
-- avoid Physics-only special cases in runtime filtering unless there is a documented reason
-
-Recommended follow-up artifact once a third non-Hessen state becomes active:
-
-- `curricula/DE/Gymnasium/provenance/physics-bundesland-rollout-tracker.json`
-
-This does not need to exist before M1.
-It becomes useful once Physics is no longer just a Hessen+Bavaria lane.
-
-Exit criteria:
-
-- applicability compilation stays clean for the reviewed Physics scope
-- provenance lookups do not depend on live legacy trees
-- Physics no longer needs subject-specific runtime exceptions just to behave like other canonical subjects
-
-## WP5. Runtime and test parity
-
-Status: `planned`
-
-Primary test surfaces:
-
-- `backend/src/test/java/com/skillpilot/backend/service/CompositionViewServiceTest.java`
-- `backend/src/test/java/com/skillpilot/backend/landscape/GoalMappingRepositoryFixtureTest.java`
-- `backend/src/test/java/com/skillpilot/backend/landscape/LandscapeServiceTest.java`
-
-Tasks:
-
-- extend composition-view matching tests for the new Physics state-scoped views
-- extend mapping-fixture tests if Physics mapping filenames or counts change
-- add Physics assertions for the new structural metadata:
-  - `programUnits`
-  - `goalPlacements`
-  - `competencyCatalog`
-- keep closure tests proving that canonical Physics continues to pull in canonical Mathematics, not legacy math
-- keep view-filter validation and composition-view validation on the normal QA path
-
-Validation commands:
+Validation evidence from this cycle:
 
 ```bash
 cd app
@@ -281,62 +99,191 @@ npm run validate:view-filters
 npm run validate:composition-views
 ```
 
+Observed results:
+
+- `validate:graph`: `593 landscape(s) passed validation.`
+- `validate:view-filters`: `0 error(s), 1382 warning(s), 337 accepted warning(s)`
+- `validate:composition-views`: `86 composition view(s) passed validation.`
+
 ```bash
 cd backend
-./gradlew test --tests 'com.skillpilot.backend.landscape.GoalMappingRepositoryFixtureTest' --tests 'com.skillpilot.backend.landscape.LandscapeServiceTest' --tests 'com.skillpilot.backend.service.CompositionViewServiceTest'
+./gradlew test --tests 'com.skillpilot.backend.service.CompositionViewServiceTest'
+./gradlew test --tests 'com.skillpilot.backend.landscape.LandscapeServiceTest' --tests 'com.skillpilot.backend.landscape.GoalMappingRepositoryFixtureTest'
+./gradlew test --tests 'com.skillpilot.backend.landscape.LandscapeServiceTest' --tests 'com.skillpilot.backend.service.LearnerServiceCrossSubjectPilotTest' --tests 'com.skillpilot.backend.controller.LearnerControllerIntegrationTest'
 ```
 
-Exit criteria:
+Observed results:
 
-- the Physics parity bundle is guarded by the same automated checks as Mathematics
-- no new Physics behavior is validated only manually
+- Physics composition-view matching tests pass for `DE-HE` and `DE-BY`
+- `LandscapeServiceTest` and `GoalMappingRepositoryFixtureTest` pass with the registry-backed Physics assertions
+- the cross-subject learner/controller regression bundle stayed green during the active naming cleanup
 
-## WP6. Naming and residue cleanup
+### 3.2 M2: Bundesland rollout framework parity
 
-Status: `planned`
+Status: `active`
 
-Tasks:
+Required outcome:
 
-- remove `pilot` from active Physics naming where the subject is no longer a pilot in practice
-- audit internal identifiers and comments that still encode obsolete staging
-- align backend constant names such as `CANONICAL_PHYSICS_PILOT_ID` only after repository file naming is settled
-- keep rename churn tightly bundled with test and registry updates
+- Physics onboarding for the next Bundesland follows a repeatable lane-by-lane process
+- state-scoped view naming, mapping naming, provenance updates, applicability compilation, and runtime tests follow the same discipline already used by Mathematics
+- the first concrete post-`M1` lane is selected and documented in:
+  - `docs/dev/canonical-gymnasium-physics-m2-lane-shortlist.md`
+- the first concrete post-`M1` lane now exists as an active DE-level source lane:
+  - `DE-NW` upper-secondary Physics source snapshot + registry activation + mapping scaffold
+- the next concrete post-`M1` lane now also exists as an active DE-level source lane with one first reviewed corridor:
+  - `DE-BW` upper-secondary Physics source snapshot + registry activation + first reviewed field corridor
+- once a third active Physics state becomes real on the canonical path, a stable rollout tracker is introduced:
+  - `curricula/DE/Gymnasium/provenance/physics-bundesland-rollout-tracker.json`
 
-Important:
+### 3.3 Open delta vs Mathematics
 
-- do not start with renames alone
-- do renames only after the schema/view/provenance work makes the new name truthful
+The remaining Physics-vs-Math gap is now mainly this:
 
-Exit criteria:
+- fewer reviewed Bundesland source lanes
+- fewer learner-facing state-scoped composition views
+- narrower `shortKey` and `competencyRefs` coverage
+- the Physics-specific Bundesland rollout tracker is now present for the active Hessen/Bayern/Nordrhein-Westfalen/Baden-Wuerttemberg surface
 
-- repository naming describes the real operational state
-- future contributors do not need to guess whether Physics is still an exception lane
+## 4. Work packages
 
-## 5. Recommended execution order
+### WP1. Canonical schema parity
 
-1. harden the canonical Physics file:
-   - `programUnits`
-   - `goalPlacements`
-   - minimal reviewed `competencyCatalog`
-2. add the first state-scoped Physics composition views for `DE-HE` and `DE-BY`
-3. compile/apply applicability and clean up registry-backed exceptions
-4. rename current mapping artifacts away from `pilot` only if the hardened state is now real
-5. extend backend tests and app validation to fence the new state
-6. only after that, decide whether a broader Physics Bundesland rollout should start
+Status: `completed (M1)`
 
-This order matters.
-If we rename first, we only hide the remaining parity debt.
-If we add more states first, we multiply debt across more files.
+Delivered:
+
+- added `9` Physics `programUnits`
+- added `19` Physics `goalPlacements`
+- added a reviewed Physics `competencyCatalog` with `5` process entries
+- added focused `competencyRefs` coverage to `17` goals
+- removed active `pilot` residue from canonical Physics naming where the node is no longer provisional
+
+Follow-up:
+
+- widen `competencyRefs` or placements only when the next reviewed source lane justifies it
+
+### WP2. Composition-view parity
+
+Status: `completed (M1)`
+
+Delivered:
+
+- kept the existing `5` DE-wide Physics views as baseline
+- added `8` reviewed state-scoped Physics views:
+  - `de-he-gk.view.json`
+  - `de-he-lk.view.json`
+  - `de-he-sekii-gk.view.json`
+  - `de-he-sekii-lk.view.json`
+  - `de-by-gk.view.json`
+  - `de-by-lk.view.json`
+  - `de-by-sekii-gk.view.json`
+  - `de-by-sekii-lk.view.json`
+- added backend matching tests so these files win over the DE-wide fallback where they should
+
+Follow-up:
+
+- add separate Sek-I state views only if the reviewed lower-secondary slices become strong enough to justify distinct learner-facing trees
+
+### WP3. Mapping parity
+
+Status: `completed (M1)`
+
+Delivered:
+
+- retired the active `*_pilot.json` filenames on the reviewed Physics lanes
+- stabilized the current mapping filenames:
+  - `hessen_physics_upper_secondary_to_canonical_physics.json`
+  - `hessen_physics_lower_secondary_to_canonical_physics.json`
+  - `bavaria_physics_to_canonical_physics.json`
+- updated repository references across backend tests, retained-asset registries, scripts, and docs
+
+Follow-up:
+
+- onboard additional states lane-by-lane; do not reopen the finished naming cleanup unless a new lane makes it necessary
+
+### WP4. Provenance and applicability parity
+
+Status: `completed (M1)`
+
+Delivered:
+
+- moved active Physics provenance and applicability overrides out of the canonical graph JSON and into the shared DE-level registries
+- added runtime coverage proving that localized canonical Physics unions registry overrides with derived applicability
+- kept Physics on the same registry-backed applicability path as other canonical subjects
+
+Follow-up:
+
+- keep `physics-bundesland-rollout-tracker.json` aligned once another Physics state or corridor becomes active
+
+### WP5. Runtime and test parity
+
+Status: `completed (M1)`
+
+Delivered:
+
+- extended backend coverage for Physics composition-view matching
+- extended `LandscapeServiceTest` for:
+  - `programUnits`
+  - `goalPlacements`
+  - `competencyCatalog`
+  - `competencyRefs`
+  - registry-backed Physics provenance/applicability behavior
+- kept mapping fixture coverage aligned with the stable non-pilot Physics filenames
+- kept the standard app validation commands on the normal QA path
+
+Follow-up:
+
+- for each new Physics Bundesland lane, add at least:
+  - mapping fixture coverage
+  - registry/provenance runtime assertions
+  - composition-view matching assertions if new scoped views are introduced
+
+### WP6. Naming and residue cleanup
+
+Status: `completed for the active canonical Physics path`
+
+Delivered:
+
+- active canonical Physics short keys and framework tags no longer describe the subject as a live pilot
+- backend constant names for the active canonical Physics identifier were aligned with the stable naming
+- the generator script now cleans active Physics naming on rebuild instead of reintroducing stale pilot residue
+
+Remaining historical residue that is currently acceptable:
+
+- `LearnerServiceCrossSubjectPilotTest`
+- `cross-subject-pilot-learner`
+- legacy-guard branches inside the adoption script
+
+These are historical/test-scope names, not active canonical Physics identifiers.
+
+## 5. Recommended next execution order
+
+M1 is done.
+The next useful order is the M2 rollout path:
+
+1. choose the next Physics Bundesland lane and archive its source bundle under the DE-level retained-input structure
+2. add or refine the source snapshot and committed mapping file for that lane
+3. extend the provenance and applicability registries for the newly reviewed Physics corridor
+4. add state-scoped composition views only where the learner-facing tree actually differs from the DE-wide default
+5. add the minimal runtime/backend tests that fence the new lane
+6. keep the Physics rollout tracker aligned once another active state or corridor changes the rollout surface
+7. keep `programUnits`, `goalPlacements`, and `competencyRefs` growth source-led rather than trying to pre-expand them speculatively
+
+This matters because the old M1 debt is no longer the blocker.
+The next risk is rollout entropy across new state lanes.
 
 ## 6. Definition of done
 
-Physics is "at the same level as mathematics" for current repo purposes when:
+For current repo purposes, Physics has already reached `M1`.
 
-- the canonical Physics file carries the same reviewed schema classes as Mathematics where semantically justified
-- reviewed `DE-HE` and `DE-BY` Physics scopes have explicit composition-view files
-- reviewed Physics mappings and registries no longer look like temporary pilot residue
-- the standard app and backend validation commands cover the Physics parity bundle
-- no active Physics artifact that is already part of the stable canonical path still needs the word `pilot`
+Physics reaches full mathematics-style rollout parity when:
 
-At that point, Physics is no longer a special migration corridor.
-It becomes a normal canonical DE Gymnasium subject with the same operational tooling standard as Mathematics.
+- reviewed additional Bundesland lanes can be onboarded without inventing a Physics-only process
+- the standard app/backend validation bundle remains the fence for each new lane
+- any remaining historical `pilot` wording is limited to legacy/test context and no longer appears on active canonical artifacts
+- Physics expansion is driven by the same stable mapping, registry, view, and runtime contracts that Mathematics already uses
+
+Current verdict:
+
+- `M1 Hessen + Bavaria hardened parity`: done
+- `M2 Bundesland rollout framework parity`: next
