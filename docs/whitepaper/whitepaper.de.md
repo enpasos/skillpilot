@@ -20,13 +20,13 @@ Die Qualitätssicherung erfolgt offen: über ein **Champion-Programm** aus der P
 
 SkillGraph Processing strukturiert Curricula und Kompetenzmodelle zu abhängigkeitsbasierten Lernlandschaften, die von Menschen und KI-Agenten validiert, erkundet und genutzt werden können.
 
-![SkillGraph Processing](SkillPilotProcess.png)
+![SkillGraph Processing](SkillPilotProcess.de.png)
 
 ### SkillPilot Tutor
 
 SkillPilot Tutor begleitet Lernende durch diese Landschaften mit frontier-basierten nächsten Schritten, Mastery-Tracking und kontextbezogener Tutor-Unterstützung.
 
-![SkillPilot Tutor](SkillPilotTutor.png)
+![SkillPilot Tutor](SkillPilotTutor.de.png)
 
 **Lesart dieses Whitepapers:** Wenn nicht anders markiert, beschreibt der Text den aktuellen Stand. Formulierungen wie *geplant*, *vorgesehen* oder *in weiteren Ausbaustufen* kennzeichnen Roadmap-Punkte.
 
