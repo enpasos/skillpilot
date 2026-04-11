@@ -2,7 +2,18 @@
 
 [![CI](https://github.com/enpasos/skillpilot/actions/workflows/ci.yml/badge.svg)](https://github.com/enpasos/skillpilot/actions/workflows/ci.yml)
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+
  
+
+SkillGraph Processing structures curricula and competence models into dependency-aware learning landscapes that can be validated, explored, and used by humans or AI agents.
+
+![SkillGraph Processing](docs/whitepaper/SkillPilotProcess.png)
+
+ 
+
+SkillPilot Tutor guides learners through those landscapes with frontier-based next steps, mastery tracking, and contextual tutoring support.
+
+![SkillPilot Tutor](docs/whitepaper/SkillPilotTutor.png)
 
 SkillPilot navigates you through complex learning landscapes, modeling curricula as a dependency graph to provide personalized learning paths and track your mastery.
 
@@ -53,14 +64,6 @@ For a detailed introduction and the vision behind SkillPilot, please refer to th
 
 *   [**Read Whitepaper (English)**](https://skillpilot.com/whitepaper/en)
 *   [**Whitepaper lesen (Deutsch)**](https://skillpilot.com/whitepaper/de)
-
-### SkillGraph Processing
-
-![SkillGraph Processing](docs/whitepaper/SkillPilotProcess.png)
-
-### SkillPilot Tutor
-
-![SkillPilot Tutor](docs/whitepaper/SkillPilotTutor.png)
 
 ## 🌐 Live 
 
