@@ -624,7 +624,7 @@ class GoalMappingRepositoryFixtureTest {
         assertThat(file.getVersion()).isEqualTo(1);
         assertThat(file.getSourceLandscapeId()).isEqualTo(BADEN_WUERTTEMBERG_PHYSICS_UPPER_SECONDARY_LANDSCAPE_ID);
         assertThat(file.getTargetLandscapeId()).isEqualTo(CANONICAL_PHYSICS_ID);
-        assertThat(file.getMappings()).hasSize(51);
+        assertThat(file.getMappings()).hasSize(58);
         assertThat(file.getMappings())
                 .extracting(GoalMappingEntry::getMatchType)
                 .contains("exact", "partial");
@@ -674,6 +674,13 @@ class GoalMappingRepositoryFixtureTest {
                         Tuple.tuple("7b93414b-dd50-41c2-8f49-10778158e070", "c64820e1-c0ee-4342-9225-f981650f0c52", "exact"),
                         Tuple.tuple("9eab2921-588d-4cd1-87f1-626d7ebb702d", "31ed4e95-3ed4-4cfb-9b11-9f3c1341f2d4", "exact"),
                         Tuple.tuple("fb7ccbb9-1903-4006-999a-ba91c5167e29", "c2b6acd8-b298-4e4e-aa7a-553a8a65f913", "exact"),
+                        Tuple.tuple("776b6333-501a-4cb3-9cad-cebad8091ea1", "4245c54f-d609-41bc-9eff-e9ceeff4902f", "exact"),
+                        Tuple.tuple("88bda530-af99-4e8a-a764-f87db088836e", "5c57dbc7-d258-4aad-a84c-e773f3c493ae", "exact"),
+                        Tuple.tuple("610fa85f-8f6f-4ff0-b97b-979bc95e3710", "1a1c09f0-96b7-4c33-a623-0e8101537876", "exact"),
+                        Tuple.tuple("6e23dc59-32d9-4b47-a27f-c1a57c8a930f", "6031bed0-9baa-4f45-b2a5-57ffb00d39cc", "exact"),
+                        Tuple.tuple("74ea86cb-0b10-4b5d-b8a9-5497d8dc2262", "cb0e05ff-e47d-55e7-bd5b-f8d78f2cb91f", "exact"),
+                        Tuple.tuple("f13e8c8c-8800-4dd3-8434-010daf6cae45", "d2860d7f-32ff-5d74-b2f8-b7bfc8d75aec", "exact"),
+                        Tuple.tuple("01e362b6-53a6-477e-9a33-1fa1f9398720", "dfa53498-34f5-5326-9d94-87e7b528caf3", "exact"),
                         Tuple.tuple("c4a045f0-63ef-49dd-b384-964b44624d3e", "4245c54f-d609-41bc-9eff-e9ceeff4902f", "exact"),
                         Tuple.tuple("39193a03-8e6b-4bc0-96b4-861f56881392", "5c57dbc7-d258-4aad-a84c-e773f3c493ae", "exact"),
                         Tuple.tuple("994d00f8-8152-4add-afb6-cdab6ac6bd11", "1a1c09f0-96b7-4c33-a623-0e8101537876", "exact"),

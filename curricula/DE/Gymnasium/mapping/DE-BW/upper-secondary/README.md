@@ -128,7 +128,7 @@ Physics status on `2026-04-12`:
   `bw_physics_upper_secondary_to_canonical_physics.json`
 - reserved `sourceLandscapeId`:
   `eee2dc63-f96b-42c3-a2c9-b906432ccf5d`
-- current Physics mapping count: `51`
+- current Physics mapping count: `58`
 - the first archived Baden-Wuerttemberg upper-secondary Physics source snapshot is now active in the shared provenance registries:
   `curricula/DE/Gymnasium/input/BW/upper-secondary/source-json/DE_BAW_S_GYM_2_PHYSIK.de.json.snapshot`
 - the first active BW Physics Kursstufe cut now closes:
@@ -140,6 +140,7 @@ Physics status on `2026-04-12`:
   - the retained Basisfach Maxwell child `Elektromagnetische Felder im Maxwell-Ueberblick beschreiben` now exact-resolves onto one new narrow canonical Maxwell-overview atom
   - one adjacent Basisfach-`Schwingungen` follow-on as a reviewed partial bridge onto the shared canonical Q2 `Schwingungen, Induktion und mechanische Wellen` surface plus four conservative partial bridges on existing Q2 oscillation atoms and two exact bridges onto new narrow canonical atoms for linear restoring force and the mechanical/electromagnetic oscillation comparison
   - one adjacent Basisfach-`Wellen` follow-on as a reviewed partial bridge onto the canonical `Mechanische Wellen` cluster plus six conservative partial bridges on existing wave and spectrum atoms
+  - one first adjacent Basisfach-`Quantenphysik` follow-on now exact-resolves four retained BW leaves onto the narrow canonical BW `Quantenobjekte` strip for double-slit comparison, probability interpretation, single-quantum interference, and complementarity, and three further retained BW leaves onto the shared canonical Q3 `Welle-Teilchen-Dualismus` strip for photoelectric effect, photon energy / momentum, and De-Broglie matter waves
   - the narrow Leistungsfach field corridor as a reviewed partial bridge onto the shared canonical Q1 field surface
   - the Leistungsfach child `Elektrisches Feld im Leistungsfach untersuchen` as a reviewed partial bridge onto the canonical `Elektrisches Feld` cluster
   - the Leistungsfach child `Magnetisches Feld im Leistungsfach untersuchen` as a reviewed partial bridge onto the canonical `Magnetisches Feld` cluster
@@ -150,5 +151,5 @@ Physics status on `2026-04-12`:
   - one widened adjacent Leistungsfach-`Quantenphysik` follow-on now exact-resolves three further retained BW leaves onto the shared canonical Q3 `Welle-Teilchen-Dualismus` strip for photoelectric effect, photon energy / momentum, and De-Broglie matter waves, and five retained BW leaves onto one narrow BW-only canonical `Quantenobjekte` strip for double-slit comparison, probability interpretation, single-quantum interference, complementarity, and uncertainty / trajectory limits
 - the resulting BW field/induction closure is now also widened as a small committed `DE-BW` applicability cut onto the shared Q2 oscillation strip, the adjacent mechanical-wave / first-spectrum surface, the shared Q3 `Welle-Teilchen-Dualismus` strip, and the shared Q4 entry / `Quantenobjekte` clusters in the canonical Physics file
 - the nine resulting BW-only `APV-202` findings on the newly committed oscillation and wave atoms are intentionally accepted because the reviewed BW `Schwingungen` and `Wellen` bridges remain conservative `partial` alignments
-- the imported BW Physics lane now reaches the Basisfach `Schwingungen` / `Wellen` strips plus one first Leistungsfach-`Schwingungen` strip, one first Leistungsfach-`Wellen` strip, the widened Leistungsfach-`Wellenoptik` interference strip, and the first Leistungsfach-`Quantenphysik` strip, and the current active BW snapshot no longer contains unmapped retained leaves, but it intentionally still stops before broader BW-specific Physics composition views or a wider Q4 applicability sweep
+- the imported BW Physics lane now reaches the Basisfach `Schwingungen` / `Wellen` strips plus one first Basisfach-`Quantenphysik` strip, one first Leistungsfach-`Schwingungen` strip, one first Leistungsfach-`Wellen` strip, the widened Leistungsfach-`Wellenoptik` interference strip, and the first Leistungsfach-`Quantenphysik` strip, and the current active BW snapshot no longer contains unmapped retained leaves, but it intentionally still stops before broader BW-specific Physics composition views or a wider state-wide applicability sweep
 - no BW-specific Physics composition views are introduced in this first step

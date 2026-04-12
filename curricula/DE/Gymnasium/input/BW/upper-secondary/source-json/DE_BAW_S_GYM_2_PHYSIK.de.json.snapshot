@@ -8,8 +8,8 @@
   "frameworkId": "bw-bp2016-gym-physics",
   "title": "Physik Kursstufe (Baden-Wuerttemberg, Pilot-Quellsnapshot)",
   "titleEn": "Physics Course Stage (Baden-Wuerttemberg, Pilot Source Snapshot)",
-  "description": "Erster archivierter Baden-Wuerttemberg-Quellsnapshot fuer einen schmalen Physik-Einstieg in der Kursstufe. Der Snapshot umfasst einen gemeinsamen Orientierungsanker, den ersten reviewed Feld-Korridor in Basisfach und Leistungsfach, angrenzende Basisfach- und Leistungsfach-Follow-ons zur Elektrodynamik sowie erste Basisfach- und Leistungsfach-Follow-ons zu Schwingungen, Wellen, Wellenoptik und Quantenphysik.",
-  "descriptionEn": "First archived Baden-Wuerttemberg source snapshot for a narrow upper-secondary physics entry corridor. The snapshot covers one shared orientation anchor, the first reviewed field corridor in the basic and advanced course, adjacent basic-course and advanced-course follow-ons on electrodynamics, and first basic-course and advanced-course follow-ons on oscillations, waves, wave optics, and quantum physics.",
+  "description": "Erster archivierter Baden-Wuerttemberg-Quellsnapshot fuer einen schmalen Physik-Einstieg in der Kursstufe. Der Snapshot umfasst einen gemeinsamen Orientierungsanker, den ersten reviewed Feld-Korridor in Basisfach und Leistungsfach, angrenzende Basisfach- und Leistungsfach-Follow-ons zur Elektrodynamik, erste Basisfach- und Leistungsfach-Follow-ons zu Schwingungen und Wellen, einen ersten Leistungsfach-Follow-on zu Wellenoptik sowie erste Basisfach- und Leistungsfach-Follow-ons zu Quantenphysik.",
+  "descriptionEn": "First archived Baden-Wuerttemberg source snapshot for a narrow upper-secondary physics entry corridor. The snapshot covers one shared orientation anchor, the first reviewed field corridor in the basic and advanced course, adjacent basic-course and advanced-course follow-ons on electrodynamics, first basic-course and advanced-course follow-ons on oscillations and waves, one first advanced-course follow-on on wave optics, and first basic-course and advanced-course follow-ons on quantum physics.",
   "compatibilityOnly": true,
   "legacyHiddenByDefault": true,
   "filters": [
@@ -27,9 +27,9 @@
       "id": "a55e2959-e951-4955-91be-18c8d8ca1f44",
       "title": "Physik Kursstufe",
       "titleEn": "Physics Course Stage",
-      "description": "Pilot-Subset der baden-wuerttembergischen Physik-Kompetenzen der Kursstufe mit Fokus auf dem gemeinsamen Orientierungsanker, dem ersten reviewed Feld-Korridor in Basisfach und Leistungsfach, angrenzenden Basisfach- und Leistungsfach-Follow-ons zur Elektrodynamik sowie ersten Basisfach- und Leistungsfach-Follow-ons zu Schwingungen, Wellen, Wellenoptik und Quantenphysik.",
-      "descriptionEn": "Pilot subset of Baden-Wuerttemberg course-stage physics competencies with a focus on the shared orientation anchor, the first reviewed field corridor in the basic and advanced course, adjacent basic-course and advanced-course follow-ons on electrodynamics, and first basic-course and advanced-course follow-ons on oscillations, waves, wave optics, and quantum physics.",
-      "weight": 44,
+      "description": "Pilot-Subset der baden-wuerttembergischen Physik-Kompetenzen der Kursstufe mit Fokus auf dem gemeinsamen Orientierungsanker, dem ersten reviewed Feld-Korridor in Basisfach und Leistungsfach, angrenzenden Basisfach- und Leistungsfach-Follow-ons zur Elektrodynamik, ersten Basisfach- und Leistungsfach-Follow-ons zu Schwingungen und Wellen, einem ersten Leistungsfach-Follow-on zu Wellenoptik sowie ersten Basisfach- und Leistungsfach-Follow-ons zu Quantenphysik.",
+      "descriptionEn": "Pilot subset of Baden-Wuerttemberg course-stage physics competencies with a focus on the shared orientation anchor, the first reviewed field corridor in the basic and advanced course, adjacent basic-course and advanced-course follow-ons on electrodynamics, first basic-course and advanced-course follow-ons on oscillations and waves, one first advanced-course follow-on on wave optics, and first basic-course and advanced-course follow-ons on quantum physics.",
+      "weight": 51,
       "tags": [
         "BF",
         "LF",
@@ -52,12 +52,13 @@
         "6850b598-26a2-4960-9544-52e5fc31f750",
         "0be98247-e7db-4d44-9188-5c2d70a922aa",
         "3844f4b6-67a8-4fe7-842b-40b64f7b3054",
+        "459befd7-e4d7-4cc1-aec5-3583bf37f5de",
         "386c5baa-8527-4099-8e22-de2f847ece0f"
       ],
       "requires": [
         "81d3e73e-8d07-4c5a-950b-a5fee02a4493"
       ],
-      "sourceRef": "Bildungsplan BW Physik Gymnasium, 1.1 sowie 3.4.2, 3.4.3, 3.4.4 sowie 3.6.2, 3.6.3, 3.6.4, 3.6.5 und 3.6.6, insbesondere 3.4.2.2, 3.6.2.3, 3.6.3, 3.6.4, 3.6.5 und 3.6.6, S. 3 und 26-38.",
+      "sourceRef": "Bildungsplan BW Physik Gymnasium, 1.1 sowie 3.4.2, 3.4.3, 3.4.4 und 3.4.6 sowie 3.6.2, 3.6.3, 3.6.4, 3.6.5 und 3.6.6, insbesondere 3.4.2.2, 3.4.6, 3.6.2.3, 3.6.3, 3.6.4, 3.6.5 und 3.6.6, S. 3 und 26-38.",
       "dimensionTags": {
         "framework": "bw-bp2016-gym-physics",
         "demandLevel": "AB2",
@@ -1304,6 +1305,228 @@
         "guidingIdeas": [],
         "phase": "Q",
         "area": "Wellenoptik"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "459befd7-e4d7-4cc1-aec5-3583bf37f5de",
+      "title": "Basisfach: Quantenphysik",
+      "titleEn": "Basic Course: Quantum Physics",
+      "description": "Angrenzender BW-Basisfach-Follow-on der Kursstufe zur Quantenphysik mit Fokus auf Doppelspalt-Vergleich, Wahrscheinlichkeitsaussagen, Komplementaritaet, lichtelektrischem Effekt sowie Energie-, Impuls- und De-Broglie-Beschreibung von Quantenobjekten.",
+      "descriptionEn": "Adjacent Baden-Wuerttemberg basic-course follow-on on quantum physics with a focus on double-slit comparison, probability statements, complementarity, the photoelectric effect, and the description of quantum objects via energy, momentum, and De Broglie waves.",
+      "weight": 7,
+      "tags": [
+        "BF",
+        "PilotSubset",
+        "Quantenphysik"
+      ],
+      "contains": [
+        "776b6333-501a-4cb3-9cad-cebad8091ea1",
+        "88bda530-af99-4e8a-a764-f87db088836e",
+        "610fa85f-8f6f-4ff0-b97b-979bc95e3710",
+        "6e23dc59-32d9-4b47-a27f-c1a57c8a930f",
+        "74ea86cb-0b10-4b5d-b8a9-5497d8dc2262",
+        "f13e8c8c-8800-4dd3-8434-010daf6cae45",
+        "01e362b6-53a6-477e-9a33-1fa1f9398720"
+      ],
+      "requires": [
+        "e82111bd-59ef-477a-b482-45fa68674f6b"
+      ],
+      "sourceRef": "Bildungsplan BW Physik Gymnasium, 3.4.6 Quantenphysik, ausgewaehlte Teilaspekte (1) bis (6), S. 29-30.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Quantenphysik"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "776b6333-501a-4cb3-9cad-cebad8091ea1",
+      "title": "Gemeinsamkeiten und Unterschiede von klassischen Wellen, klassischen Teilchen und Quantenobjekten am Doppelspalt beschreiben",
+      "titleEn": "Describe Similarities and Differences of Classical Waves, Classical Particles, and Quantum Objects at the Double Slit",
+      "description": "Die Schuelerinnen und Schueler beschreiben im Basisfach Gemeinsamkeiten und Unterschiede des Verhaltens von klassischen Wellen, klassischen Teilchen und Quantenobjekten am Doppelspalt.",
+      "descriptionEn": "Students in the basic course describe similarities and differences in the behavior of classical waves, classical particles, and quantum objects at the double slit.",
+      "weight": 1,
+      "tags": [
+        "BF",
+        "Quantenphysik",
+        "Concept"
+      ],
+      "contains": [],
+      "requires": [
+        "e82111bd-59ef-477a-b482-45fa68674f6b"
+      ],
+      "sourceRef": "Bildungsplan BW Physik Gymnasium, 3.4.6 Quantenphysik (1), S. 30.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Quantenphysik"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "88bda530-af99-4e8a-a764-f87db088836e",
+      "title": "Wahrscheinlichkeitsaussagen statt klassischem Determinismus erlaeutern",
+      "titleEn": "Explain Probability Statements Instead of Classical Determinism",
+      "description": "Die Schuelerinnen und Schueler erlaeutern im Basisfach, wie fuer Quantenobjekte der Determinismus der klassischen Physik durch Wahrscheinlichkeitsaussagen ersetzt wird.",
+      "descriptionEn": "Students in the basic course explain how determinism in classical physics is replaced by probability statements for quantum objects.",
+      "weight": 1,
+      "tags": [
+        "BF",
+        "Quantenphysik",
+        "Concept"
+      ],
+      "contains": [],
+      "requires": [
+        "776b6333-501a-4cb3-9cad-cebad8091ea1"
+      ],
+      "sourceRef": "Bildungsplan BW Physik Gymnasium, 3.4.6 Quantenphysik (2), S. 30.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Quantenphysik"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "610fa85f-8f6f-4ff0-b97b-979bc95e3710",
+      "title": "Interferenz einzelner Quantenobjekte mit Wahrscheinlichkeitsaussagen beschreiben",
+      "titleEn": "Describe Interference of Single Quantum Objects Using Probability Statements",
+      "description": "Die Schuelerinnen und Schueler beschreiben im Basisfach Experimente zur Interferenz einzelner Quantenobjekte anhand von Wahrscheinlichkeitsaussagen und erklaeren den Ausgang der Experimente fachsprachlich.",
+      "descriptionEn": "Students in the basic course describe experiments on the interference of single quantum objects using probability statements and explain the outcomes of the experiments in technical language.",
+      "weight": 1,
+      "tags": [
+        "BF",
+        "Quantenphysik",
+        "Experiment"
+      ],
+      "contains": [],
+      "requires": [
+        "88bda530-af99-4e8a-a764-f87db088836e"
+      ],
+      "sourceRef": "Bildungsplan BW Physik Gymnasium, 3.4.6 Quantenphysik (3), S. 30.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Quantenphysik"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "6e23dc59-32d9-4b47-a27f-c1a57c8a930f",
+      "title": "Komplementaritaet durch Interferenzfaehigkeit und Welcher-Weg-Information erlaeutern",
+      "titleEn": "Explain Complementarity Through Interference Capability and Which-Path Information",
+      "description": "Die Schuelerinnen und Schueler beschreiben im Basisfach, dass Quantenobjekte zwar stets Wellen- und Teilcheneigenschaften aufweisen, sich diese aber nicht unabhaengig voneinander beobachten lassen, und erlaeutern dies anhand von Interferenzfaehigkeit und Welcher-Weg-Information.",
+      "descriptionEn": "Students in the basic course describe that quantum objects always show wave and particle properties, but that these cannot be observed independently of one another, and explain this using interference capability and which-path information.",
+      "weight": 1,
+      "tags": [
+        "BF",
+        "Quantenphysik",
+        "Concept"
+      ],
+      "contains": [],
+      "requires": [
+        "610fa85f-8f6f-4ff0-b97b-979bc95e3710"
+      ],
+      "sourceRef": "Bildungsplan BW Physik Gymnasium, 3.4.6 Quantenphysik (4), S. 30.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Quantenphysik"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "74ea86cb-0b10-4b5d-b8a9-5497d8dc2262",
+      "title": "Lichtelektrischen Effekt mit Einstein'scher Lichtquantenhypothese erklaeren",
+      "titleEn": "Explain the Photoelectric Effect Using Einstein's Light Quantum Hypothesis",
+      "description": "Die Schuelerinnen und Schueler beschreiben im Basisfach den lichtelektrischen Effekt und erklaeren ihn anhand der Einstein'schen Lichtquantenhypothese, zum Beispiel am Hallwachs-Effekt und an der Einstein'schen Gleichung.",
+      "descriptionEn": "Students in the basic course describe the photoelectric effect and explain it using Einstein's light quantum hypothesis, for example with the Hallwachs effect and Einstein's equation.",
+      "weight": 1,
+      "tags": [
+        "BF",
+        "Quantenphysik",
+        "Concept"
+      ],
+      "contains": [],
+      "requires": [
+        "f13e8c8c-8800-4dd3-8434-010daf6cae45"
+      ],
+      "sourceRef": "Bildungsplan BW Physik Gymnasium, 3.4.6 Quantenphysik (5), S. 30.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Quantenphysik"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "f13e8c8c-8800-4dd3-8434-010daf6cae45",
+      "title": "Energie und Impuls von Photonen beschreiben",
+      "titleEn": "Describe the Energy and Momentum of Photons",
+      "description": "Die Schuelerinnen und Schueler erlaeutern im Basisfach, wie sich Photonen anhand ihrer Energie und ihres Impulses beschreiben lassen, und stellen die Zusammenhaenge mit Frequenz und Wellenlaenge dar.",
+      "descriptionEn": "Students in the basic course explain how photons can be described by their energy and momentum and represent the relationships with frequency and wavelength.",
+      "weight": 1,
+      "tags": [
+        "BF",
+        "Quantenphysik",
+        "Concept"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Bildungsplan BW Physik Gymnasium, 3.4.6 Quantenphysik (6), Photonenteil, S. 30.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Quantenphysik"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "01e362b6-53a6-477e-9a33-1fa1f9398720",
+      "title": "De-Broglie-Wellenlaenge von Materiewellen erlaeutern",
+      "titleEn": "Explain the De Broglie Wavelength of Matter Waves",
+      "description": "Die Schuelerinnen und Schueler erlaeutern im Basisfach die De-Broglie-Wellenlaenge von Materiewellen und deuten damit die Wellennatur von Quantenobjekten.",
+      "descriptionEn": "Students in the basic course explain the De Broglie wavelength of matter waves and use it to interpret the wave nature of quantum objects.",
+      "weight": 1,
+      "tags": [
+        "BF",
+        "Quantenphysik",
+        "Concept"
+      ],
+      "contains": [],
+      "requires": [
+        "f13e8c8c-8800-4dd3-8434-010daf6cae45"
+      ],
+      "sourceRef": "Bildungsplan BW Physik Gymnasium, 3.4.6 Quantenphysik (6), De-Broglie-Teil, S. 30.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Quantenphysik"
       },
       "type": "atomic"
     },

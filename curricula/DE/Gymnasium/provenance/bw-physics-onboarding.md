@@ -20,15 +20,18 @@ Activation result:
 - the BW upper-secondary Physics lane is now active in `source-landscape-registry.json`
 - the first BW upper-secondary Physics snapshot now contributes real `goalIds` to `source-goal-membership-registry.json`
 - the same snapshot now contributes atomic closures to `source-goal-closure-registry.json`
-- the repository-backed BW Physics mapping file now carries `51` reviewed upper-secondary mappings across the first narrow field corridor, adjacent BF and LF electrodynamics follow-ons, one first BF follow-on on `Schwingungen`, one adjacent BF follow-on on `Wellen`, one first adjacent LF follow-on on `Schwingungen`, one first adjacent LF follow-on on `Wellen`, one widened adjacent LF follow-on on `Wellenoptik`, and one widened adjacent LF follow-on on `Quantenphysik`
+- the repository-backed BW Physics mapping file now carries `58` reviewed upper-secondary mappings across the first narrow field corridor, adjacent BF and LF electrodynamics follow-ons, one first BF follow-on on `Schwingungen`, one adjacent BF follow-on on `Wellen`, one first adjacent BF follow-on on `Quantenphysik`, one first adjacent LF follow-on on `Schwingungen`, one first adjacent LF follow-on on `Wellen`, one widened adjacent LF follow-on on `Wellenoptik`, and one widened adjacent LF follow-on on `Quantenphysik`
 - the first BW upper-secondary Physics snapshot is intentionally narrow and source-led:
   - one shared orientation anchor from `1.1 Bildungswert des Faches Physik`
   - one Basisfach corridor on `3.4.2 Elektromagnetische Felder`
   - one adjacent Basisfach follow-on on the induction strip of `3.4.2.2 Elektrodynamik`
   - one adjacent Basisfach follow-on on `3.4.3 Schwingungen`
+  - one adjacent Basisfach follow-on on `3.4.4 Wellen`
+  - one first adjacent Basisfach follow-on on selected BF `3.4.6 Quantenphysik`
   - one Leistungsfach corridor on `3.6.2 Elektromagnetische Felder`
   - one adjacent Leistungsfach follow-on on `3.6.2.3 Elektrodynamik`
   - one first adjacent Leistungsfach follow-on on selected LF `3.6.3 Schwingungen`
+  - one first adjacent Leistungsfach follow-on on selected LF `3.6.4 Wellen`
   - one widened adjacent Leistungsfach follow-on on selected LF `3.6.5 Wellenoptik`
   - one widened adjacent Leistungsfach follow-on on selected LF `3.6.6 Quantenphysik`
 - the reviewed BW Physics corridor stays intentionally conservative:
@@ -48,6 +51,14 @@ Activation result:
   - exact bridge from `Mechanische und elektromagnetische Schwingungen vergleichen` onto one new narrow canonical Q2 atom for the cross-comparison of mechanical and electromagnetic oscillations
   - partial bridge from the retained Basisfach `Wellen` parent onto the canonical `Mechanische Wellen` cluster
   - conservative partial bridges from the retained Basisfach `Wellen` children onto the shared canonical atoms `Harmonische Wellen und ihre Groessen`, `Wellenphaenomene: Brechung, Reflexion, Beugung`, `Stehende Wellen und Wellenlaengenbestimmung`, `Ueberlagerung und Interferenz von Wellen`, `Huygens'sches Prinzip und Elementarwellen`, and `Spektrum elektromagnetischer Wellen`
+  - no broad parent bridge from the retained Basisfach `Quantenphysik` parent, because the selected BF `3.4.6` slice spans the shared canonical Q3 `Welle-Teilchen-Dualismus` strip plus the narrow reviewed BW Q4 comparison / measurement strip
+  - exact bridge from `Gemeinsamkeiten und Unterschiede von klassischen Wellen, klassischen Teilchen und Quantenobjekten am Doppelspalt beschreiben` onto the existing narrow canonical BW Q4 atom for the same double-slit comparison surface
+  - exact bridge from `Wahrscheinlichkeitsaussagen statt klassischem Determinismus erlaeutern` onto the existing narrow canonical BW Q4 atom on probability interpretation
+  - exact bridge from `Interferenz einzelner Quantenobjekte mit Wahrscheinlichkeitsaussagen beschreiben` onto the existing narrow canonical BW Q4 atom on single-quantum interference
+  - exact bridge from `Komplementaritaet durch Interferenzfaehigkeit und Welcher-Weg-Information erlaeutern` onto the existing narrow canonical BW Q4 atom on complementarity
+  - exact bridge from `Lichtelektrischen Effekt mit Einstein'scher Lichtquantenhypothese erklaeren` onto the existing shared canonical Q3 atom `Fotöffekt und Einstein-Deutung`
+  - exact bridge from `Energie und Impuls von Photonen beschreiben` onto the existing shared canonical Q3 atom `Energie und Impuls von Photonen`
+  - exact bridge from `De-Broglie-Wellenlaenge von Materiewellen erlaeutern` onto the existing shared canonical Q3 atom `De-Broglie-Wellen`
   - partial bridge from `Elektrisches Feld im Leistungsfach untersuchen` onto the canonical `Elektrisches Feld` cluster
   - partial bridge from `Magnetisches Feld im Leistungsfach untersuchen` onto the canonical `Magnetisches Feld` cluster
   - exact bridge from `Bewegungsinduktion und Ladungstrennung` onto the canonical induction atom of the same pedagogical surface
@@ -79,13 +90,13 @@ Activation result:
 - the earlier narrow BW field/induction closure now also widens the committed applicability pass in the canonical Physics file onto the shared Q2 oscillation strip
 - the four resulting BW-only `APV-202` findings on the newly committed Q2 oscillation atoms are intentionally accepted, because the reviewed BW `Schwingungen` bridges remain conservative `partial` alignments
 - the widened BW Physics lane now also commits the shared mechanical-wave and first electromagnetic-spectrum surface for `DE-BW`; the five resulting BW-only `APV-202` findings on the imported `Wellen` atoms are intentionally accepted because the reviewed BW `Wellen` bridges remain conservative `partial` alignments
-- the widened BW Physics lane now also commits the shared Q3 `Welle-Teilchen-Dualismus` strip plus the shared Q4 entry cluster and the shared `Quantenobjekte` cluster for `DE-BW`, while the new quantum leaves themselves stay narrow and only the Q4 leaves remain BW-only
-- the new LF `Schwingungen`, LF `Wellen`, LF `Wellenoptik`, and LF `Quantenphysik` slices add no further accepted-warning debt, because their new reviewed BW bridges close through exact leaves rather than new partial-only applicability claims
+- the widened BW Physics lane now also commits the shared Q3 `Welle-Teilchen-Dualismus` strip plus the shared Q4 entry cluster and the shared `Quantenobjekte` cluster for `DE-BW`; the narrow BW Q4 comparison / measurement leaves stay BW-scoped, but the reused double-slit, probability, single-quantum-interference, and complementarity atoms now surface for both `GK` and `LK` inside that BW scope
+- the new BF `Quantenphysik` slice and the earlier LF `Schwingungen`, LF `Wellen`, LF `Wellenoptik`, and LF `Quantenphysik` slices add no further accepted-warning debt, because their new reviewed BW bridges close through exact leaves rather than new partial-only applicability claims
 - the active BW source snapshot now exact/partial-closes every retained source leaf in the current pilot cut
 - no BW-specific Physics composition views are introduced in this step
 
 Operational rule from here:
 
 - keep the reserved `sourceLandscapeId` stable while widening the BW Physics source snapshot
-- treat the adjacent Leistungsfach-`Wellenoptik`-Interferenzstreifen and the first LF-`Quantenphysik` strip as covered; prefer either stopping local widening here or only another clearly missing reviewed BW corridor before opening state-specific Physics composition views
+- treat the first Basisfach-`Quantenphysik` strip, the adjacent Leistungsfach-`Wellenoptik`-Interferenzstreifen, and the first LF-`Quantenphysik` strip as covered; if local widening continues, prefer the still-missing Basisfach-`Wellenoptik` strip before broader BW-specific Physics composition work
 - keep further canonical Physics applicability persistence for `DE-BW` tightly scoped to newly reviewed BW corridor growth; do not run broader state-wide sweeps before wider reviewed evidence exists
