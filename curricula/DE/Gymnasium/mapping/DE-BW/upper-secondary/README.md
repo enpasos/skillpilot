@@ -122,13 +122,13 @@ Current use:
   - the shared integral block now also carries the BW limit-process and between-graphs strip from `3.5.2` / `3.4.2`
   - the shared geometry block now also carries the retain-split BW application semantics for reflections, movements, and area/volume work from `3.5.3` / `3.4.3`
 
-Physics status on `2026-04-11`:
+Physics status on `2026-04-12`:
 
 - repository-backed Physics mapping fixture now exists:
   `bw_physics_upper_secondary_to_canonical_physics.json`
 - reserved `sourceLandscapeId`:
   `eee2dc63-f96b-42c3-a2c9-b906432ccf5d`
-- current Physics mapping count: `36`
+- current Physics mapping count: `46`
 - the first archived Baden-Wuerttemberg upper-secondary Physics source snapshot is now active in the shared provenance registries:
   `curricula/DE/Gymnasium/input/BW/upper-secondary/source-json/DE_BAW_S_GYM_2_PHYSIK.de.json.snapshot`
 - the first active BW Physics Kursstufe cut now closes:
@@ -146,8 +146,9 @@ Physics status on `2026-04-11`:
   - the adjacent Leistungsfach-Elektrodynamik-Follow-on now exact-resolves `Bewegungsinduktion und Ladungstrennung`, `Induktionsgesetz und Lenz'sche Regel`, and `Selbstinduktion und Induktivitaet` onto existing canonical Q2 induction atoms
   - one first adjacent Leistungsfach-`Schwingungen` follow-on as a reviewed partial bridge onto the shared canonical Q2 surface plus one exact bridge onto the existing canonical LK atom `Schwingungsgleichung loesen` and two exact bridges onto new narrow canonical Q2 atoms for LC-differential-equation solving and independent-oscillation superposition
   - one first adjacent Leistungsfach-`Wellen` follow-on now exact-resolves two retained BW leaves onto new narrow canonical atoms for progressive plane transverse-wave modeling and the Hertz-dipole transition from the electromagnetic oscillating circuit to electromagnetic radiation
-  - one first adjacent Leistungsfach-`Wellenoptik` follow-on now exact-resolves two retained BW leaves onto new narrow canonical atoms for coherent light as electromagnetic wave and for comparing ray and wave model of light
-- the resulting BW field/induction closure is now also widened as a small committed `DE-BW` applicability cut onto the shared Q2 oscillation strip and the adjacent mechanical-wave / first-spectrum surface in the canonical Physics file
+  - one widened adjacent Leistungsfach-`Wellenoptik` follow-on now exact-resolves seven retained BW leaves onto new narrow canonical atoms for coherent light as electromagnetic wave, ray-versus-wave-model comparison, interference experiments, pattern and intensity interpretation, far-field calculation, everyday interference contexts, and model history
+  - one first adjacent Leistungsfach-`Quantenphysik` follow-on now exact-resolves five retained BW leaves onto one narrow BW-only canonical `Quantenobjekte` strip for double-slit comparison, probability interpretation, single-quantum interference, complementarity, and uncertainty / trajectory limits
+- the resulting BW field/induction closure is now also widened as a small committed `DE-BW` applicability cut onto the shared Q2 oscillation strip, the adjacent mechanical-wave / first-spectrum surface, and the shared Q4 entry / `Quantenobjekte` clusters in the canonical Physics file
 - the nine resulting BW-only `APV-202` findings on the newly committed oscillation and wave atoms are intentionally accepted because the reviewed BW `Schwingungen` and `Wellen` bridges remain conservative `partial` alignments
-- the imported BW Physics lane now reaches the Basisfach `Schwingungen` / `Wellen` strips plus one first Leistungsfach-`Schwingungen` strip, one first Leistungsfach-`Wellen` strip, and one first Leistungsfach-`Wellenoptik` strip, but intentionally still stops before the quantitative Interferenz-/Fernfeld-Follow-on of `3.6.5` or BW-specific Physics composition views
+- the imported BW Physics lane now reaches the Basisfach `Schwingungen` / `Wellen` strips plus one first Leistungsfach-`Schwingungen` strip, one first Leistungsfach-`Wellen` strip, the narrowed Leistungsfach-`Wellenoptik` interference strip, and one first Leistungsfach-`Quantenphysik` strip, but intentionally still stops before broader BW-specific Physics composition views or a wider Q4 applicability sweep
 - no BW-specific Physics composition views are introduced in this first step
