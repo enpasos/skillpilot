@@ -20,7 +20,7 @@ Activation result:
 - the BW upper-secondary Physics lane is now active in `source-landscape-registry.json`
 - the first BW upper-secondary Physics snapshot now contributes real `goalIds` to `source-goal-membership-registry.json`
 - the same snapshot now contributes atomic closures to `source-goal-closure-registry.json`
-- the repository-backed BW Physics mapping file now carries `36` reviewed upper-secondary mappings across the first narrow field corridor, adjacent BF and LF electrodynamics follow-ons, one first BF follow-on on `Schwingungen`, one adjacent BF follow-on on `Wellen`, one first adjacent LF follow-on on `Schwingungen`, one first adjacent LF follow-on on `Wellen`, and one first adjacent LF follow-on on `Wellenoptik`
+- the repository-backed BW Physics mapping file now carries `41` reviewed upper-secondary mappings across the first narrow field corridor, adjacent BF and LF electrodynamics follow-ons, one first BF follow-on on `Schwingungen`, one adjacent BF follow-on on `Wellen`, one first adjacent LF follow-on on `Schwingungen`, one first adjacent LF follow-on on `Wellen`, and one widened adjacent LF follow-on on `Wellenoptik`
 - the first BW upper-secondary Physics snapshot is intentionally narrow and source-led:
   - one shared orientation anchor from `1.1 Bildungswert des Faches Physik`
   - one Basisfach corridor on `3.4.2 Elektromagnetische Felder`
@@ -29,7 +29,7 @@ Activation result:
   - one Leistungsfach corridor on `3.6.2 Elektromagnetische Felder`
   - one adjacent Leistungsfach follow-on on `3.6.2.3 Elektrodynamik`
   - one first adjacent Leistungsfach follow-on on selected LF `3.6.3 Schwingungen`
-  - one first adjacent Leistungsfach follow-on on selected LF `3.6.5 Wellenoptik`
+  - one widened adjacent Leistungsfach follow-on on selected LF `3.6.5 Wellenoptik`
 - the reviewed BW Physics corridor stays intentionally conservative:
   - partial bridge from the BW source root onto the canonical Physics root
   - exact bridge on the shared motivation/orientation anchor
@@ -58,9 +58,14 @@ Activation result:
   - no broad parent bridge from the retained Leistungsfach `Wellen` parent, because the first selected LF `3.6.4` slice spans one Q2 wave-modeling atom and one Q3 electromagnetic-radiation atom
   - exact bridge from `Fortschreitende ebene Transversalwellen und Momentanbilder beschreiben` onto one new narrow canonical LK atom of the same pedagogical surface
   - exact bridge from `Hertz'schen Dipol und die Abstrahlung elektromagnetischer Wellen in Grundzuegen beschreiben` onto one new narrow canonical LK atom on the Schwingkreis-to-radiation transfer
-  - no broad parent bridge from the retained Leistungsfach `Wellenoptik` parent, because the first selected LF `3.6.5` slice currently only opens the conceptual entry on coherent light and on the comparison of ray and wave model
+  - no broad parent bridge from the retained Leistungsfach `Wellenoptik` parent, because the selected LF `3.6.5` slice now covers seven exact leaves on a narrow reviewed interference strip but still does not justify a broader canonical optics-parent claim
   - exact bridge from `Kohaerentes Licht als elektromagnetische Welle beschreiben` onto one new narrow canonical LK atom of the same pedagogical surface
   - exact bridge from `Strahlenmodell und Wellenmodell des Lichts vergleichen` onto one new narrow canonical LK comparison atom
+  - exact bridge from `Interferenzphaenomene an Einzelspalt, Doppelspalt und Gitter experimentell untersuchen` onto one new narrow canonical LK experiment atom of the same pedagogical surface
+  - exact bridge from `Interferenzmuster und Intensitaetsverteilungen bei Einzelspalt, Doppelspalt und Gitter beschreiben` onto one new narrow canonical LK pattern-and-intensity atom of the same pedagogical surface
+  - exact bridge from `Lage von Interferenzminima und Interferenzmaxima in Fernfeldnaeherung berechnen` onto one new narrow canonical LK far-field calculation atom
+  - exact bridge from `Interferenzphaenomene im Alltag physikalisch beschreiben` onto one new narrow canonical LK context atom on everyday interference phenomena
+  - exact bridge from `Geschichtliche Entwicklung von Modellvorstellungen des Lichts beschreiben` onto one new narrow canonical LK model-history atom
 - the earlier narrow BW field/induction closure now also widens the committed applicability pass in the canonical Physics file onto the shared Q2 oscillation strip
 - the four resulting BW-only `APV-202` findings on the newly committed Q2 oscillation atoms are intentionally accepted, because the reviewed BW `Schwingungen` bridges remain conservative `partial` alignments
 - the widened BW Physics lane now also commits the shared mechanical-wave and first electromagnetic-spectrum surface for `DE-BW`; the five resulting BW-only `APV-202` findings on the imported `Wellen` atoms are intentionally accepted because the reviewed BW `Wellen` bridges remain conservative `partial` alignments
@@ -70,5 +75,5 @@ Activation result:
 Operational rule from here:
 
 - keep the reserved `sourceLandscapeId` stable while widening the BW Physics source snapshot
-- prefer the next BW follow-on on the adjacent Leistungsfach-`Wellenoptik`-Interferenzstreifen before opening state-specific Physics composition views
+- treat the adjacent Leistungsfach-`Wellenoptik`-Interferenzstreifen as covered; prefer either stopping local widening here or only another clearly missing reviewed BW corridor before opening state-specific Physics composition views
 - keep further canonical Physics applicability persistence for `DE-BW` tightly scoped to newly reviewed BW corridor growth; do not run broader state-wide sweeps before wider reviewed evidence exists
