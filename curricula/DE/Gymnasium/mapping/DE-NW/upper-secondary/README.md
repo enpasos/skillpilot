@@ -13,7 +13,7 @@ Current status on `2026-04-10`:
 - reserved Physics `sourceLandscapeId`:
   `8abb46ff-072b-41b7-9d70-0334cb5a1a6c`
 - current mapping count: `91`
-- current Physics mapping count: `20`
+- current Physics mapping count: `25`
 - the first NRW upper-secondary source snapshot now exists and is active in the shared provenance registries:
   `curricula/DE/Gymnasium/input/NW/upper-secondary/source-json/DE_NRW_S_GYM_2_MATHEMATIK.de.json.snapshot`
 - the first NRW upper-secondary Physics source snapshot now also exists and is active in the shared provenance registries:
@@ -38,9 +38,17 @@ Current status on `2026-04-10`:
   - `Photonen und Elektronen als Quantenobjekte beschreiben` now maps `exact` to a new narrow canonical Q4 atom with the same title
   - `Die Bedeutung von Modellen an Photon und Elektron reflektieren` now maps `exact` to a new narrow canonical Q4 atom with the same title
   - the shared canonical Q4 cluster `Quantenobjekte` is now committed for `DE-NW`
-- the accepted-warning registry now records the corresponding seven NRW-specific Physics `APV-202` findings as reviewed partial-bridge debt
-- the accepted-warning registry now also records the corresponding new NRW-specific `APV-202` on the narrow matter-structure atom
-- the NRW Physics lane now also carries eight reviewed narrow corridors:
+- the NRW GK atom-model branch now also has a committed follow-on:
+  - `Qualifikationsphase GK: Quantenphysikalisches Atommodell` now maps `partial` to the shared canonical Q3 cluster `Atomvorstellungen`
+  - `Energiewerte fuer das Wasserstoffatom mit einem quantenphysikalischen Atommodell beschreiben` now maps `exact` to `Energieniveaus des Wasserstoffatoms`
+  - `Linienspektren und Fraunhofer-Linien mit Energieniveaus erklaeren` now maps `exact` to `Emission, Absorption und Linienspektren`
+  - `Messergebnisse des Franck-Hertz-Versuchs interpretieren` now maps `exact` to `Franck-Hertz-Versuch`
+  - `Orbitale des Wasserstoffatoms als Nachweiswahrscheinlichkeiten interpretieren` now maps `exact` to the new narrow canonical Q3 atom with the same title
+  - the shared Q3 cluster `Atomvorstellungen` and the shared atoms `De-Broglie-Wellen`, `Bohr’sche Postulate und Quantisierung`, `Energieniveaus des Wasserstoffatoms`, `Emission, Absorption und Linienspektren`, and `Franck-Hertz-Versuch` are now committed for `DE-NW`
+- the accepted-warning registry now records the corresponding eight NRW-specific Physics `APV-202` findings as reviewed partial-bridge debt
+- the accepted-warning registry now also records the corresponding NRW-specific prerequisite `APV-201` on `De-Broglie-Wellen` and `Bohr’sche Postulate und Quantisierung`
+- the accepted-warning registry now also records the corresponding new NRW-specific `APV-202` on the narrow matter-structure atom and on the shared Q3 cluster `Atomvorstellungen`
+- the NRW Physics lane now also carries the following reviewed narrow corridors:
   - shared source root -> canonical Physics root (`partial`)
   - shared orientation anchor -> shared canonical motivation leaf (`exact`)
   - E-phase entry cluster -> shared E-phase mechanics surface (`partial`)
@@ -49,6 +57,13 @@ Current status on `2026-04-10`:
   - NRW GK `Quantenobjekte` cluster -> canonical Q3 `Welle-Teilchen-Dualismus` (`partial`)
   - `Photonen und Elektronen als Quantenobjekte beschreiben` -> new narrow canonical Q4 atom `Photonen und Elektronen als Quantenobjekte beschreiben` (`exact`)
   - `Die Bedeutung von Modellen an Photon und Elektron reflektieren` -> new narrow canonical Q4 atom `Die Bedeutung von Modellen an Photon und Elektron reflektieren` (`exact`)
+  - NRW GK `Qualifikationsphase GK: Quantenphysikalisches Atommodell` -> canonical Q3 `Atomvorstellungen` (`partial`)
+  - `Energiewerte fuer das Wasserstoffatom mit einem quantenphysikalischen Atommodell beschreiben` -> canonical Q3 `Energieniveaus des Wasserstoffatoms` (`exact`)
+  - prerequisite bridges on the shared canonical Q3 atoms `De-Broglie-Wellen` and `Bohr’sche Postulate und Quantisierung` keep the NRW atom-model strip didactically closed even though the source does not isolate separate one-to-one leaves for that narrower prerequisite chain
+  - `Linienspektren und Fraunhofer-Linien mit Energieniveaus erklaeren` -> canonical Q3 `Emission, Absorption und Linienspektren` (`exact`)
+  - `Messergebnisse des Franck-Hertz-Versuchs interpretieren` -> canonical Q3 `Franck-Hertz-Versuch` (`exact`)
+  - `Orbitale des Wasserstoffatoms als Nachweiswahrscheinlichkeiten interpretieren` -> new narrow canonical Q3 atom `Orbitale des Wasserstoffatoms als Nachweiswahrscheinlichkeiten interpretieren` (`exact`)
+  - the narrower NRW atom-model residue around charakteristische Roentgenspektren, Spektralanalyse/Modellentwicklung, and Modellgeschichte intentionally remains outside the current reviewed strip
   - `Klassische Wellenphaenomene an Licht beschreiben` -> canonical Q3 `Elektromagnetische Wellen` (`partial`)
   - retained NRW GK field parent `Geladene Teilchen in homogenen E- und B-Feldern untersuchen` is now source-split and no longer mapped directly
   - `Geladene Teilchen in homogenen elektrischen Feldern untersuchen` -> new narrow canonical Q1 atom `Geladene Teilchen in homogenen elektrischen Feldern untersuchen` (`exact`)

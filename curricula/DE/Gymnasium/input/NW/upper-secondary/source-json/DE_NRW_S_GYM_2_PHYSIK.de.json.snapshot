@@ -8,8 +8,8 @@
   "frameworkId": "nrw-klp-gost-physics",
   "title": "Physik Oberstufe (Nordrhein-Westfalen, Pilot-Quellsnapshot)",
   "titleEn": "Physics Upper Secondary (North Rhine-Westphalia, Pilot Source Snapshot)",
-  "description": "Erster archivierter NRW-Quellsnapshot fuer einen schmalen Oberstufen-Einstiegskorridor Physik. Der Snapshot umfasst einen gemeinsamen Orientierungsanker, den Einstieg der Einfuehrungsphase ueber periodische Vorgaenge sowie Kreisbewegung, Gravitation und physikalische Weltbilder, zwei Grundkurs-Anker zu Quantenobjekten und zu klassischen Wellen sowie geladenen Teilchen in Feldern und einen ersten Leistungskurs-Anker zu Quantenphysik sowie Atom- und Kernphysik.",
-  "descriptionEn": "First archived NRW source snapshot for a narrow upper-secondary entry corridor in physics. The snapshot covers a shared orientation anchor, an introductory-phase entry on periodic phenomena plus circular motion, gravitation, and physical world views, two basic-course anchors on quantum objects and on classical waves plus charged particles in fields, and a first advanced-course anchor on quantum physics as well as atomic and nuclear physics.",
+  "description": "Erster archivierter NRW-Quellsnapshot fuer einen schmalen Oberstufen-Einstiegskorridor Physik. Der Snapshot umfasst einen gemeinsamen Orientierungsanker, den Einstieg der Einfuehrungsphase ueber periodische Vorgaenge sowie Kreisbewegung, Gravitation und physikalische Weltbilder, drei Grundkurs-Anker zu Quantenobjekten, zu einem quantenphysikalischen Atommodell sowie zu klassischen Wellen und geladenen Teilchen in Feldern und einen ersten Leistungskurs-Anker zu Quantenphysik sowie Atom- und Kernphysik.",
+  "descriptionEn": "First archived NRW source snapshot for a narrow upper-secondary entry corridor in physics. The snapshot covers a shared orientation anchor, an introductory-phase entry on periodic phenomena plus circular motion, gravitation, and physical world views, three basic-course anchors on quantum objects, on a quantum-physical atomic model, and on classical waves plus charged particles in fields, and a first advanced-course anchor on quantum physics as well as atomic and nuclear physics.",
   "compatibilityOnly": true,
   "legacyHiddenByDefault": true,
   "filters": [
@@ -27,9 +27,9 @@
       "id": "715c722a-bf7d-46d2-8d03-73ccb17fbd15",
       "title": "Physik Oberstufe",
       "titleEn": "Physics Upper Secondary",
-      "description": "Pilot-Subset der nordrhein-westfaelischen Physik-Kompetenzerwartungen der gymnasialen Oberstufe mit Fokus auf einen ersten gemeinsamen Orientierungsanker, einen Einfuehrungsphasen-Einstieg zu periodischen Vorgaengen, Kreisbewegung, Gravitation und physikalischen Weltbildern, zwei Grundkurs-Anker zu Quantenobjekten sowie zu klassischen Wellen und geladenen Teilchen in Feldern und einen ersten Leistungskurs-Anker zu Quantenphysik sowie Atom- und Kernphysik.",
-      "descriptionEn": "Pilot subset of North Rhine-Westphalian upper-secondary physics competencies with a focus on a first shared orientation anchor, an introductory-phase entry on periodic phenomena, circular motion, gravitation, and physical world views, two basic-course anchors on quantum objects as well as on classical waves and charged particles in fields, and a first advanced-course anchor on quantum physics together with atomic and nuclear physics.",
-      "weight": 16,
+      "description": "Pilot-Subset der nordrhein-westfaelischen Physik-Kompetenzerwartungen der gymnasialen Oberstufe mit Fokus auf einen ersten gemeinsamen Orientierungsanker, einen Einfuehrungsphasen-Einstieg zu periodischen Vorgaengen, Kreisbewegung, Gravitation und physikalischen Weltbildern, drei Grundkurs-Anker zu Quantenobjekten, zu einem quantenphysikalischen Atommodell sowie zu klassischen Wellen und geladenen Teilchen in Feldern und einen ersten Leistungskurs-Anker zu Quantenphysik sowie Atom- und Kernphysik.",
+      "descriptionEn": "Pilot subset of North Rhine-Westphalian upper-secondary physics competencies with a focus on a first shared orientation anchor, an introductory-phase entry on periodic phenomena, circular motion, gravitation, and physical world views, three basic-course anchors on quantum objects, on a quantum-physical atomic model, and on classical waves plus charged particles in fields, and a first advanced-course anchor on quantum physics together with atomic and nuclear physics.",
+      "weight": 18,
       "tags": [
         "E",
         "Q",
@@ -45,6 +45,7 @@
         "86e3c110-14ac-4886-8d2d-6e1c30d3cc2e",
         "8cf56a06-2097-436b-80a0-86d2977ce171",
         "c7bd088a-4bae-470e-a4fe-ba240051cff7",
+        "cf942ad6-04d7-4904-b94b-6f874f074446",
         "6c643974-3a11-4d44-a3c5-4e3187b9eb6c",
         "de7778a9-afa1-4be9-a3e7-eb192fab790b"
       ],
@@ -262,6 +263,152 @@
         "guidingIdeas": [],
         "phase": "Q",
         "area": "Quantenobjekte"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "cf942ad6-04d7-4904-b94b-6f874f074446",
+      "title": "Qualifikationsphase GK: Quantenphysikalisches Atommodell",
+      "titleEn": "Qualification Phase Basic Course: Quantum-Physical Atomic Model",
+      "description": "Pilot-Cluster fuer einen schmalen NRW-Grundkurs-Follow-on zu Energieniveaus, Linienspektren, Franck-Hertz-Versuch und Orbitaldeutung im quantenphysikalischen Atommodell.",
+      "descriptionEn": "Pilot cluster for a narrow NRW basic-course follow-on on energy levels, line spectra, the Franck-Hertz experiment, and orbital interpretation in the quantum-physical atomic model.",
+      "weight": 2,
+      "tags": [
+        "Q",
+        "GK",
+        "PilotSubset",
+        "Quantenphysik",
+        "AtomKernphysik"
+      ],
+      "contains": [
+        "5d18fea9-1f1a-42da-bf81-1bb35c546fd7",
+        "64354bdb-d7bb-4d0c-9579-cc92bd3d1045",
+        "1a14816f-4e34-45ad-8a91-38fb06ba0fd4",
+        "a39948f8-441c-4606-ba77-3509354753fd"
+      ],
+      "requires": [
+        "c7bd088a-4bae-470e-a4fe-ba240051cff7"
+      ],
+      "sourceRef": "KLP NRW Physik Sek II (2022), Inhaltsfeld 'Atom- und Kernphysik' (Qualifikationsphase - Grundkurs); QUA-LiS NRW Material 'UV Q_8: Quantenphysikalisches Atommodell'.",
+      "dimensionTags": {
+        "framework": "nrw-klp-gost-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Atommodelle"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "5d18fea9-1f1a-42da-bf81-1bb35c546fd7",
+      "title": "Energiewerte fuer das Wasserstoffatom mit einem quantenphysikalischen Atommodell beschreiben",
+      "titleEn": "Describe Energy Values for the Hydrogen Atom Using a Quantum-Physical Atomic Model",
+      "description": "Die Schuelerinnen und Schueler beschreiben die Energiewerte fuer das Wasserstoffatom mithilfe eines quantenphysikalischen Atommodells.",
+      "descriptionEn": "Students describe the energy values for the hydrogen atom using a quantum-physical atomic model.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "GK",
+        "Quantenphysik",
+        "AtomKernphysik"
+      ],
+      "contains": [],
+      "requires": [
+        "c7bd088a-4bae-470e-a4fe-ba240051cff7"
+      ],
+      "sourceRef": "QUA-LiS NRW Material 'UV Q_8: Quantenphysikalisches Atommodell', Kompetenzerwartung zu Energiewerten des Wasserstoffatoms.",
+      "dimensionTags": {
+        "framework": "nrw-klp-gost-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Atommodelle"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "64354bdb-d7bb-4d0c-9579-cc92bd3d1045",
+      "title": "Linienspektren und Fraunhofer-Linien mit Energieniveaus erklaeren",
+      "titleEn": "Explain Line Spectra and Fraunhofer Lines Using Energy Levels",
+      "description": "Die Schuelerinnen und Schueler erklaeren die Energie emittierter und absorbierter Photonen am Beispiel von Linienspektren leuchtender Gase und Fraunhofer-Linien mit den unterschiedlichen Energieniveaus in der Atomhuelle.",
+      "descriptionEn": "Students explain the energy of emitted and absorbed photons using line spectra of glowing gases and Fraunhofer lines together with the different energy levels in the electron shell.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "GK",
+        "Quantenphysik",
+        "AtomKernphysik"
+      ],
+      "contains": [],
+      "requires": [
+        "5d18fea9-1f1a-42da-bf81-1bb35c546fd7"
+      ],
+      "sourceRef": "QUA-LiS NRW Material 'UV Q_8: Quantenphysikalisches Atommodell', Kompetenzerwartung zu Linienspektren und Fraunhofer-Linien.",
+      "dimensionTags": {
+        "framework": "nrw-klp-gost-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Atommodelle"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "1a14816f-4e34-45ad-8a91-38fb06ba0fd4",
+      "title": "Messergebnisse des Franck-Hertz-Versuchs interpretieren",
+      "titleEn": "Interpret Measurements of the Franck-Hertz Experiment",
+      "description": "Die Schuelerinnen und Schueler interpretieren die Messergebnisse des Franck-Hertz-Versuchs.",
+      "descriptionEn": "Students interpret the measurements of the Franck-Hertz experiment.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "GK",
+        "Quantenphysik",
+        "AtomKernphysik"
+      ],
+      "contains": [],
+      "requires": [
+        "64354bdb-d7bb-4d0c-9579-cc92bd3d1045"
+      ],
+      "sourceRef": "QUA-LiS NRW Material 'UV Q_8: Quantenphysikalisches Atommodell', Kompetenzerwartung zum Franck-Hertz-Versuch.",
+      "dimensionTags": {
+        "framework": "nrw-klp-gost-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Atommodelle"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "a39948f8-441c-4606-ba77-3509354753fd",
+      "title": "Orbitale des Wasserstoffatoms als Nachweiswahrscheinlichkeiten interpretieren",
+      "titleEn": "Interpret Hydrogen Orbitals as Detection Probabilities",
+      "description": "Die Schuelerinnen und Schueler interpretieren die Orbitale des Wasserstoffatoms als Veranschaulichung der Nachweiswahrscheinlichkeiten fuer das Elektron.",
+      "descriptionEn": "Students interpret the orbitals of the hydrogen atom as a visualization of the detection probabilities for the electron.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "GK",
+        "Quantenphysik",
+        "AtomKernphysik"
+      ],
+      "contains": [],
+      "requires": [
+        "1a14816f-4e34-45ad-8a91-38fb06ba0fd4"
+      ],
+      "sourceRef": "QUA-LiS NRW Material 'UV Q_8: Quantenphysikalisches Atommodell', Kompetenzerwartung zu Orbitalen als Nachweiswahrscheinlichkeiten.",
+      "dimensionTags": {
+        "framework": "nrw-klp-gost-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Atommodelle"
       },
       "type": "atomic"
     },
