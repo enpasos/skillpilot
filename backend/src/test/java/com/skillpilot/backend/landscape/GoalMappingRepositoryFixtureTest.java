@@ -624,7 +624,7 @@ class GoalMappingRepositoryFixtureTest {
         assertThat(file.getVersion()).isEqualTo(1);
         assertThat(file.getSourceLandscapeId()).isEqualTo(BADEN_WUERTTEMBERG_PHYSICS_UPPER_SECONDARY_LANDSCAPE_ID);
         assertThat(file.getTargetLandscapeId()).isEqualTo(CANONICAL_PHYSICS_ID);
-        assertThat(file.getMappings()).hasSize(46);
+        assertThat(file.getMappings()).hasSize(49);
         assertThat(file.getMappings())
                 .extracting(GoalMappingEntry::getMatchType)
                 .contains("exact", "partial");
@@ -676,7 +676,10 @@ class GoalMappingRepositoryFixtureTest {
                         Tuple.tuple("39193a03-8e6b-4bc0-96b4-861f56881392", "5c57dbc7-d258-4aad-a84c-e773f3c493ae", "exact"),
                         Tuple.tuple("994d00f8-8152-4add-afb6-cdab6ac6bd11", "1a1c09f0-96b7-4c33-a623-0e8101537876", "exact"),
                         Tuple.tuple("8efdd0b8-8cee-4e58-b797-179fda2300cc", "6031bed0-9baa-4f45-b2a5-57ffb00d39cc", "exact"),
-                        Tuple.tuple("70f19a7b-3a4e-44bd-b159-e90e52360ea2", "f6e5929f-d52a-42a4-a5d2-ff498ee7083f", "exact"));
+                        Tuple.tuple("70f19a7b-3a4e-44bd-b159-e90e52360ea2", "f6e5929f-d52a-42a4-a5d2-ff498ee7083f", "exact"),
+                        Tuple.tuple("e06d5a30-7aa0-4adc-b153-9f45d033956a", "cb0e05ff-e47d-55e7-bd5b-f8d78f2cb91f", "exact"),
+                        Tuple.tuple("19579f3d-1667-4c5b-856a-99321986552d", "d2860d7f-32ff-5d74-b2f8-b7bfc8d75aec", "exact"),
+                        Tuple.tuple("7d1a08bc-6966-4176-91eb-0e2676164f2a", "dfa53498-34f5-5326-9d94-87e7b528caf3", "exact"));
     }
 
     @Test

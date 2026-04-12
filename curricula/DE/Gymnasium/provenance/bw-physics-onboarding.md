@@ -20,7 +20,7 @@ Activation result:
 - the BW upper-secondary Physics lane is now active in `source-landscape-registry.json`
 - the first BW upper-secondary Physics snapshot now contributes real `goalIds` to `source-goal-membership-registry.json`
 - the same snapshot now contributes atomic closures to `source-goal-closure-registry.json`
-- the repository-backed BW Physics mapping file now carries `46` reviewed upper-secondary mappings across the first narrow field corridor, adjacent BF and LF electrodynamics follow-ons, one first BF follow-on on `Schwingungen`, one adjacent BF follow-on on `Wellen`, one first adjacent LF follow-on on `Schwingungen`, one first adjacent LF follow-on on `Wellen`, one widened adjacent LF follow-on on `Wellenoptik`, and one first adjacent LF follow-on on `Quantenphysik`
+- the repository-backed BW Physics mapping file now carries `49` reviewed upper-secondary mappings across the first narrow field corridor, adjacent BF and LF electrodynamics follow-ons, one first BF follow-on on `Schwingungen`, one adjacent BF follow-on on `Wellen`, one first adjacent LF follow-on on `Schwingungen`, one first adjacent LF follow-on on `Wellen`, one widened adjacent LF follow-on on `Wellenoptik`, and one widened adjacent LF follow-on on `Quantenphysik`
 - the first BW upper-secondary Physics snapshot is intentionally narrow and source-led:
   - one shared orientation anchor from `1.1 Bildungswert des Faches Physik`
   - one Basisfach corridor on `3.4.2 Elektromagnetische Felder`
@@ -30,7 +30,7 @@ Activation result:
   - one adjacent Leistungsfach follow-on on `3.6.2.3 Elektrodynamik`
   - one first adjacent Leistungsfach follow-on on selected LF `3.6.3 Schwingungen`
   - one widened adjacent Leistungsfach follow-on on selected LF `3.6.5 Wellenoptik`
-  - one first adjacent Leistungsfach follow-on on selected LF `3.6.6 Quantenphysik`
+  - one widened adjacent Leistungsfach follow-on on selected LF `3.6.6 Quantenphysik`
 - the reviewed BW Physics corridor stays intentionally conservative:
   - partial bridge from the BW source root onto the canonical Physics root
   - exact bridge on the shared motivation/orientation anchor
@@ -67,6 +67,9 @@ Activation result:
   - exact bridge from `Lage von Interferenzminima und Interferenzmaxima in Fernfeldnaeherung berechnen` onto one new narrow canonical LK far-field calculation atom
   - exact bridge from `Interferenzphaenomene im Alltag physikalisch beschreiben` onto one new narrow canonical LK context atom on everyday interference phenomena
   - exact bridge from `Geschichtliche Entwicklung von Modellvorstellungen des Lichts beschreiben` onto one new narrow canonical LK model-history atom
+  - exact bridge from `Lichtelektrischen Effekt mit Einstein'scher Lichtquantenhypothese erklaeren` onto the existing shared canonical Q3 atom `Fotöffekt und Einstein-Deutung`
+  - exact bridge from `Energie und Impuls von Photonen beschreiben` onto the existing shared canonical Q3 atom `Energie und Impuls von Photonen`, after narrowing that shared atom to the photon-relations core instead of a broader energy-mass sidetrack
+  - exact bridge from `De-Broglie-Wellenlaenge von Materiewellen erlaeutern` onto the existing shared canonical Q3 atom `De-Broglie-Wellen`
   - exact bridge from `Klassische Wellen, klassische Teilchen und Quantenobjekte am Doppelspalt vergleichen` onto one new narrow canonical BW-only Q4 atom of the same pedagogical surface
   - exact bridge from `Wahrscheinlichkeitsaussagen statt klassischem Determinismus erlaeutern` onto one new narrow canonical BW-only Q4 atom on probability interpretation
   - exact bridge from `Interferenz einzelner Quantenobjekte mit Wahrscheinlichkeitsaussagen beschreiben` onto one new narrow canonical BW-only Q4 atom on single-quantum interference
@@ -75,12 +78,12 @@ Activation result:
 - the earlier narrow BW field/induction closure now also widens the committed applicability pass in the canonical Physics file onto the shared Q2 oscillation strip
 - the four resulting BW-only `APV-202` findings on the newly committed Q2 oscillation atoms are intentionally accepted, because the reviewed BW `Schwingungen` bridges remain conservative `partial` alignments
 - the widened BW Physics lane now also commits the shared mechanical-wave and first electromagnetic-spectrum surface for `DE-BW`; the five resulting BW-only `APV-202` findings on the imported `Wellen` atoms are intentionally accepted because the reviewed BW `Wellen` bridges remain conservative `partial` alignments
-- the widened BW Physics lane now also commits the shared Q4 entry cluster and the shared `Quantenobjekte` cluster for `DE-BW`, while the new quantum leaves themselves stay BW-only
+- the widened BW Physics lane now also commits the shared Q3 `Welle-Teilchen-Dualismus` strip plus the shared Q4 entry cluster and the shared `Quantenobjekte` cluster for `DE-BW`, while the new quantum leaves themselves stay narrow and only the Q4 leaves remain BW-only
 - the new LF `Schwingungen`, LF `Wellen`, LF `Wellenoptik`, and LF `Quantenphysik` slices add no further accepted-warning debt, because their new reviewed BW bridges close through exact leaves rather than new partial-only applicability claims
 - no BW-specific Physics composition views are introduced in this step
 
 Operational rule from here:
 
 - keep the reserved `sourceLandscapeId` stable while widening the BW Physics source snapshot
-- treat the adjacent Leistungsfach-`Wellenoptik`-Interferenzstreifen and one first LF-`Quantenphysik` strip as covered; prefer either stopping local widening here or only another clearly missing reviewed BW corridor before opening state-specific Physics composition views
+- treat the adjacent Leistungsfach-`Wellenoptik`-Interferenzstreifen and the first LF-`Quantenphysik` strip as covered; prefer either stopping local widening here or only another clearly missing reviewed BW corridor before opening state-specific Physics composition views
 - keep further canonical Physics applicability persistence for `DE-BW` tightly scoped to newly reviewed BW corridor growth; do not run broader state-wide sweeps before wider reviewed evidence exists
