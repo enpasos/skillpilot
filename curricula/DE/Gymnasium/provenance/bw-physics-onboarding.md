@@ -20,7 +20,7 @@ Activation result:
 - the BW upper-secondary Physics lane is now active in `source-landscape-registry.json`
 - the first BW upper-secondary Physics snapshot now contributes real `goalIds` to `source-goal-membership-registry.json`
 - the same snapshot now contributes atomic closures to `source-goal-closure-registry.json`
-- the repository-backed BW Physics mapping file now carries `49` reviewed upper-secondary mappings across the first narrow field corridor, adjacent BF and LF electrodynamics follow-ons, one first BF follow-on on `Schwingungen`, one adjacent BF follow-on on `Wellen`, one first adjacent LF follow-on on `Schwingungen`, one first adjacent LF follow-on on `Wellen`, one widened adjacent LF follow-on on `Wellenoptik`, and one widened adjacent LF follow-on on `Quantenphysik`
+- the repository-backed BW Physics mapping file now carries `51` reviewed upper-secondary mappings across the first narrow field corridor, adjacent BF and LF electrodynamics follow-ons, one first BF follow-on on `Schwingungen`, one adjacent BF follow-on on `Wellen`, one first adjacent LF follow-on on `Schwingungen`, one first adjacent LF follow-on on `Wellen`, one widened adjacent LF follow-on on `Wellenoptik`, and one widened adjacent LF follow-on on `Quantenphysik`
 - the first BW upper-secondary Physics snapshot is intentionally narrow and source-led:
   - one shared orientation anchor from `1.1 Bildungswert des Faches Physik`
   - one Basisfach corridor on `3.4.2 Elektromagnetische Felder`
@@ -44,7 +44,8 @@ Activation result:
   - exact bridge from `Elektromagnetische Felder im Maxwell-Ueberblick beschreiben` onto one new narrow canonical Maxwell-overview atom
   - partial bridge from the retained Basisfach `Schwingungen` parent onto the shared canonical Q2 `Schwingungen, Induktion und mechanische Wellen` surface
   - conservative partial bridges from the retained Basisfach `Schwingungen` children onto the shared canonical Q2 entry atoms for periodic/harmonic descriptions, characteristic quantities, energy in mechanical oscillations, and the electromagnetic oscillating circuit
-  - the retained Basisfach source children on `lineare Rueckstellkraft` and on the explicit cross-comparison of mechanical versus electromagnetic oscillations stay intentionally source-led
+  - exact bridge from `Lineare Rueckstellkraft bei harmonischen mechanischen Schwingungen beschreiben` onto one new narrow canonical Q2 atom for linear restoring force as the harmonic-oscillation condition
+  - exact bridge from `Mechanische und elektromagnetische Schwingungen vergleichen` onto one new narrow canonical Q2 atom for the cross-comparison of mechanical and electromagnetic oscillations
   - partial bridge from the retained Basisfach `Wellen` parent onto the canonical `Mechanische Wellen` cluster
   - conservative partial bridges from the retained Basisfach `Wellen` children onto the shared canonical atoms `Harmonische Wellen und ihre Groessen`, `Wellenphaenomene: Brechung, Reflexion, Beugung`, `Stehende Wellen und Wellenlaengenbestimmung`, `Ueberlagerung und Interferenz von Wellen`, `Huygens'sches Prinzip und Elementarwellen`, and `Spektrum elektromagnetischer Wellen`
   - partial bridge from `Elektrisches Feld im Leistungsfach untersuchen` onto the canonical `Elektrisches Feld` cluster
@@ -80,6 +81,7 @@ Activation result:
 - the widened BW Physics lane now also commits the shared mechanical-wave and first electromagnetic-spectrum surface for `DE-BW`; the five resulting BW-only `APV-202` findings on the imported `Wellen` atoms are intentionally accepted because the reviewed BW `Wellen` bridges remain conservative `partial` alignments
 - the widened BW Physics lane now also commits the shared Q3 `Welle-Teilchen-Dualismus` strip plus the shared Q4 entry cluster and the shared `Quantenobjekte` cluster for `DE-BW`, while the new quantum leaves themselves stay narrow and only the Q4 leaves remain BW-only
 - the new LF `Schwingungen`, LF `Wellen`, LF `Wellenoptik`, and LF `Quantenphysik` slices add no further accepted-warning debt, because their new reviewed BW bridges close through exact leaves rather than new partial-only applicability claims
+- the active BW source snapshot now exact/partial-closes every retained source leaf in the current pilot cut
 - no BW-specific Physics composition views are introduced in this step
 
 Operational rule from here:
