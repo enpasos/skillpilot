@@ -18,7 +18,7 @@ Activation result:
 - the NRW upper-secondary Physics lane is now active in `source-landscape-registry.json`
 - the first NRW upper-secondary Physics snapshot now contributes real `goalIds` to `source-goal-membership-registry.json`
 - the same snapshot now contributes atomic closures to `source-goal-closure-registry.json`
-- the repository-backed NRW Physics mapping file now carries `27` reviewed upper-secondary mappings across the current narrow reviewed corridors
+- the repository-backed NRW Physics mapping file now carries `28` reviewed upper-secondary mappings across the current narrow reviewed corridors
 - the first compiled NRW upper-secondary Physics applicability cut is now committed in the canonical Physics file on seven shared target goals:
   - `Harmonische Schwingung verstehen`
   - `Gravitation und Weltbilder in GK-Aufgaben verknüpfen`
@@ -42,9 +42,10 @@ Activation result:
 - the first committed NRW atom-model follow-on is now also in place:
   - the imported GK child cluster `Qualifikationsphase GK: Quantenphysikalisches Atommodell` now reaches the shared canonical Q3 cluster `Atomvorstellungen` conservatively as `partial`
   - the imported NRW GK children `Energiewerte fuer das Wasserstoffatom mit einem quantenphysikalischen Atommodell beschreiben`, `Linienspektren und Fraunhofer-Linien mit Energieniveaus erklaeren`, and `Messergebnisse des Franck-Hertz-Versuchs interpretieren` now target the shared canonical Q3 atoms `Energieniveaus des Wasserstoffatoms`, `Emission, Absorption und Linienspektren`, and `Franck-Hertz-Versuch` as `exact` bridges
+  - the imported NRW GK child `Bedeutung von Flammenfaerbung, Linienspektren und Spektralanalyse fuer Modelle diskreter Energiezustaende interpretieren` now targets a new narrow canonical Q3 atom with the same title as an `exact` bridge
   - the imported NRW GK child `Orbitale des Wasserstoffatoms als Nachweiswahrscheinlichkeiten interpretieren` now targets the new narrow canonical Q3 atom with the same title as an `exact` bridge
   - the imported NRW GK children `Charakteristisches Roentgenspektrum mit Energieniveaus der Atomhuelle erklaeren` and `Historische Entwicklung der Atommodelle und Modellgrenzen fachlich einordnen` now target new narrow canonical Q3 atoms with the same titles as `exact` bridges
-  - the shared canonical Q3 cluster `Atomvorstellungen` plus the shared Q3 atoms `De-Broglie-Wellen`, `Bohr’sche Postulate und Quantisierung`, `Energieniveaus des Wasserstoffatoms`, `Emission, Absorption und Linienspektren`, and `Franck-Hertz-Versuch` now all carry `DE-NW`; the De-Broglie and Bohr/quantization atoms are widened as reviewed prerequisite bridges rather than by one-to-one mapping rows, while the narrower Roentgenspektrum- and Modellgeschichte-surfaces are now resolved through dedicated exact NRW atoms
+  - the shared canonical Q3 cluster `Atomvorstellungen` plus the shared Q3 atoms `De-Broglie-Wellen`, `Bohr’sche Postulate und Quantisierung`, `Energieniveaus des Wasserstoffatoms`, `Emission, Absorption und Linienspektren`, and `Franck-Hertz-Versuch` now all carry `DE-NW`; the De-Broglie and Bohr/quantization atoms are widened as reviewed prerequisite bridges rather than by one-to-one mapping rows, while the narrower Spektralanalyse-, Roentgenspektrum-, and Modellgeschichte-surfaces are now resolved through dedicated exact NRW atoms
 - the accepted-warning registry now records the eight NRW-specific `APV-202` findings explicitly as reviewed partial-bridge debt instead of leaving them as active Physics drift
 - the accepted-warning registry now also records the reviewed NRW prerequisite bridges `APV-201` on `De-Broglie-Wellen` and `Bohr’sche Postulate und Quantisierung`
 - the accepted-warning registry now also records the new NRW-specific `APV-202` on that narrow matter-structure atom and on the shared Q3 cluster `Atomvorstellungen` explicitly as reviewed partial-bridge debt
@@ -66,11 +67,12 @@ Activation result:
   - the imported NRW GK child `Energiewerte fuer das Wasserstoffatom mit einem quantenphysikalischen Atommodell beschreiben` now reaches the shared canonical Q3 atom `Energieniveaus des Wasserstoffatoms` as `exact`
   - the shared canonical prerequisite atoms `De-Broglie-Wellen` and `Bohr’sche Postulate und Quantisierung` are now also widened for `DE-NW` as reviewed prerequisite bridges because the NRW atom-model strip needs both the duality anchor and the quantization anchor didactically, even though the source does not isolate separate one-to-one leaves for them
   - the imported NRW GK child `Linienspektren und Fraunhofer-Linien mit Energieniveaus erklaeren` now reaches the shared canonical Q3 atom `Emission, Absorption und Linienspektren` as `exact`
+  - the imported NRW GK child `Bedeutung von Flammenfaerbung, Linienspektren und Spektralanalyse fuer Modelle diskreter Energiezustaende interpretieren` now reaches the new narrow canonical Q3 atom with the same title as `exact`
   - the imported NRW GK child `Messergebnisse des Franck-Hertz-Versuchs interpretieren` now reaches the shared canonical Q3 atom `Franck-Hertz-Versuch` as `exact`
   - the imported NRW GK child `Orbitale des Wasserstoffatoms als Nachweiswahrscheinlichkeiten interpretieren` now reaches the new narrow canonical Q3 atom with the same title as `exact`
   - the imported NRW GK child `Charakteristisches Roentgenspektrum mit Energieniveaus der Atomhuelle erklaeren` now reaches the new narrow canonical Q3 atom with the same title as `exact`
   - the imported NRW GK child `Historische Entwicklung der Atommodelle und Modellgrenzen fachlich einordnen` now reaches the new narrow canonical Q3 atom with the same title as `exact`
-  - the remaining narrower NRW atom-model residue around Spektralanalyse/Modellentwicklung intentionally remains outside the current reviewed strip
+  - the explicit NRW atom-model residue around Spektralanalyse/Modellentwicklung is now exact-resolved as its own narrow Q3 atom instead of being left as reviewed debt
   - partial bridge from `Klassische Wellenphaenomene an Licht beschreiben` onto the canonical Q3 cluster `Elektromagnetische Wellen`
   - the imported NRW GK field clause `Geladene Teilchen in homogenen E- und B-Feldern untersuchen` is now source-split into narrower electric- and magnetic-field children instead of staying mapped as one broad parent
   - exact bridge from `Geladene Teilchen in homogenen elektrischen Feldern untersuchen` onto the new narrow canonical Q1 atom with the same title
@@ -99,4 +101,4 @@ Operational rule from here:
 
 - keep the reserved `sourceLandscapeId` stable while broadening the NRW Physics source snapshot
 - do not create NRW-specific Physics composition views before a wider reviewed `Wellen` / `Felder` or LK corridor proves they are needed
-- the next clean NRW Physics move is now no longer another review pass on the committed GK field, quantum-object, or atom-model entry strip, but either the still-missing explicit atom-model residue around Spektralanalyse/Modellentwicklung or a move to the next state lane
+- the next clean NRW Physics move is now no longer another review pass on the committed GK field, quantum-object, or atom-model entry strip, but a move to the next state lane or at most another equally explicit NRW corridor outside the exhausted GK atom-model strip
