@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-04-12T00:00:00Z",
+  "updatedAt": "2026-04-13T00:00:00Z",
   "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
   "quickViewPath": "docs/dev/canonical-gymnasium-physics-bundeslaender-status.md",
   "renderCommand": "python3 scripts/render_canonical_physics_bundesland_status.py",
@@ -99,11 +99,20 @@
     {
       "id": "SEK2.NW.UPPER_SECONDARY",
       "title": "Nordrhein-Westfalen upper-secondary narrow corridor lane",
-      "status": "active",
+      "status": "completed",
       "focusStates": [
         "DE-NW"
       ],
-      "nextStep": "Keep the NRW upper-secondary Physics lane narrow and reviewed: prefer another clean source-led corridor such as an explicit atom-model residue or a genuinely missing canonical micro-surface over inventing NRW-specific composition views or overclaiming the remaining matter residue."
+      "nextStep": "Treat the current NRW upper-secondary corridor as complete at the reviewed pilot-cut level and keep it stable while the next state lane advances. Reopen NRW only for another clearly source-led corridor outside the exhausted GK atom-model strip; do not invent NRW-specific Physics composition views before broader reviewed evidence actually requires them."
+    },
+    {
+      "id": "SEK2.NI.UPPER_SECONDARY_ENTRY",
+      "title": "Niedersachsen upper-secondary first entry lane",
+      "status": "active",
+      "focusStates": [
+        "DE-NI"
+      ],
+      "nextStep": "Keep the Niedersachsen upper-secondary Physics lane narrow and reviewed: the next clean widening is either the remaining `Dynamik` energy/experiment strip or the first equally explicit qualification-phase anchor such as `Elektrizitaet` or `Schwingungen und Wellen`; avoid Niedersachsen-specific Physics composition views or new canonical atoms without wider reviewed evidence."
     },
     {
       "id": "SEK2.BW.UPPER_SECONDARY_ENTRY",
@@ -144,17 +153,30 @@
       "nextStep": "Keep Bayern on maintenance only: refresh retained source snapshots, mappings, provenance, applicability, and the DE-BY Physics composition views together whenever a curriculum revision changes visible scope or learner-facing tree shape."
     },
     {
+      "jurisdiction": "DE-NI",
+      "repoStateKey": "NI",
+      "displayName": "Niedersachsen",
+      "phase": "P4",
+      "priority": "active",
+      "sourceStage": "subtree_adopted",
+      "mappingFiles": [
+        "curricula/DE/Gymnasium/mapping/DE-NI/upper-secondary/ni_physics_upper_secondary_to_canonical_physics.json"
+      ],
+      "notes": "Niedersachsen now has an active upper-secondary Physics source snapshot, provenance-backed membership and closure, and a first reviewed narrow mapping lane on one shared orientation anchor plus an E-phase `Dynamik` corridor. The lane currently carries 9 reviewed mappings and a first committed applicability cut on the shared free-fall, horizontal-throw, Newton, and circle-motion strip, without Niedersachsen-specific Physics composition views or new canonical Physics atoms.",
+      "nextStep": "Keep the Niedersachsen upper-secondary Physics lane narrow and reviewed: the next clean widening is either the remaining `Dynamik` energy/experiment strip or the first equally explicit qualification-phase anchor such as `Elektrizitaet` or `Schwingungen und Wellen`; avoid Niedersachsen-specific Physics composition views or new canonical atoms without wider reviewed evidence."
+    },
+    {
       "jurisdiction": "DE-NW",
       "repoStateKey": "NW",
       "displayName": "Nordrhein-Westfalen",
       "phase": "P4",
-      "priority": "active",
+      "priority": "next_wave",
       "sourceStage": "subtree_adopted",
       "mappingFiles": [
         "curricula/DE/Gymnasium/mapping/DE-NW/upper-secondary/nrw_physics_upper_secondary_to_canonical_physics.json"
       ],
       "notes": "Nordrhein-Westfalen now has an active upper-secondary Physics source snapshot, provenance-backed membership and closure, and a reviewed narrow mapping lane across E-phase, GK quantum-object/atom-model/wave-field, and LK matter/radiation/judgement corridors. The lane currently carries 28 reviewed mappings, a first committed NRW applicability cut on seven shared canonical targets, a committed matter-structure follow-on on one new narrow canonical atom plus its parent cluster, a committed GK field follow-on on two new narrow canonical Q1 atoms plus their parent clusters, a committed GK quantum-object follow-on on two new narrow canonical Q4 atoms plus the shared `Quantenobjekte` cluster, and a committed GK atom-model follow-on on the shared Q3 cluster `Atomvorstellungen`, three shared Q3 atom-model leaves, two reviewed prerequisite bridges on `De-Broglie-Wellen` and `Bohr’sche Postulate und Quantisierung`, and four new narrow canonical Q3 atoms for orbital interpretation, spectral-analysis/model development, characteristic X-ray spectra, and atom-model history/model limits, but no NRW-specific Physics composition views and no lower-secondary Physics source snapshot yet.",
-      "nextStep": "Move to the next state lane, or at most choose another equally explicit NRW corridor outside the now exhausted GK atom-model strip; do not invent NRW-specific Physics composition views before broader reviewed evidence actually requires them."
+      "nextStep": "Keep the current NRW upper-secondary corridor stable while the Niedersachsen lane advances. Reopen NRW only for another clearly source-led corridor outside the exhausted GK atom-model strip; do not invent NRW-specific Physics composition views before broader reviewed evidence actually requires them."
     },
     {
       "jurisdiction": "DE-BW",

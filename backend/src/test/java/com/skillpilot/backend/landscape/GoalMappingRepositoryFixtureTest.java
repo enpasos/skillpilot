@@ -35,6 +35,7 @@ class GoalMappingRepositoryFixtureTest {
     private static final String NRW_PHYSICS_UPPER_SECONDARY_LANDSCAPE_ID = "8abb46ff-072b-41b7-9d70-0334cb5a1a6c";
     private static final String NIEDERSACHSEN_MATH_SEK1_LANDSCAPE_ID = "2b995085-dc5e-47c6-a563-9dcfc01fb74d";
     private static final String NIEDERSACHSEN_MATH_UPPER_SECONDARY_LANDSCAPE_ID = "fcb04661-6ea2-4030-a9b2-97e6cc03daf8";
+    private static final String NIEDERSACHSEN_PHYSICS_UPPER_SECONDARY_LANDSCAPE_ID = "730a6dbb-7ddb-486b-8ac8-dd9e58e3d113";
     private static final String BADEN_WUERTTEMBERG_MATH_SEK1_LANDSCAPE_ID = "6232b783-199c-4c50-92f2-9fb31277e619";
     private static final String BADEN_WUERTTEMBERG_MATH_UPPER_SECONDARY_LANDSCAPE_ID = "fa8f864a-aac5-486d-8e77-40df2af038a3";
     private static final String BADEN_WUERTTEMBERG_PHYSICS_UPPER_SECONDARY_LANDSCAPE_ID = "eee2dc63-f96b-42c3-a2c9-b906432ccf5d";
@@ -108,6 +109,8 @@ class GoalMappingRepositoryFixtureTest {
             NIEDERSACHSEN_LOWER_SECONDARY_MAPPING_DIR.resolve("ni_math_lower_secondary_to_canonical_math.json");
     private static final Path NIEDERSACHSEN_UPPER_SECONDARY_MAPPING_FILE =
             NIEDERSACHSEN_UPPER_SECONDARY_MAPPING_DIR.resolve("ni_math_upper_secondary_to_canonical_math.json");
+    private static final Path NIEDERSACHSEN_PHYSICS_UPPER_SECONDARY_MAPPING_FILE =
+            NIEDERSACHSEN_UPPER_SECONDARY_MAPPING_DIR.resolve("ni_physics_upper_secondary_to_canonical_physics.json");
     private static final Path BADEN_WUERTTEMBERG_SEK1_MAPPING_FILE =
             BADEN_WUERTTEMBERG_LOWER_SECONDARY_MAPPING_DIR.resolve("bw_math_lower_secondary_to_canonical_math.json");
     private static final Path BADEN_WUERTTEMBERG_UPPER_SECONDARY_MAPPING_FILE =
@@ -580,6 +583,31 @@ class GoalMappingRepositoryFixtureTest {
                         Tuple.tuple("d6f34105-f627-43cc-a944-c6dc74ceb51b", "ce774aad-edd7-4f86-a431-6ca921b8e570", "partial"),
                         Tuple.tuple("ac68fb30-e742-4ac8-8073-42de9e8bf5f0", "213c3e11-3e8d-4db7-a04e-3a05c13304a5", "partial"),
                         Tuple.tuple("0d271a5b-5f2e-4080-8783-1f9952279637", "44dba16e-2e86-56be-974b-a62093ef9211", "partial"));
+    }
+
+    @Test
+    void parsesRepositoryBackedCanonicalPhysicsNiedersachsenUpperSecondaryMappingFixture() throws Exception {
+        GoalMappingFile file = new ObjectMapper()
+                .readValue(NIEDERSACHSEN_PHYSICS_UPPER_SECONDARY_MAPPING_FILE.toFile(), GoalMappingFile.class);
+
+        assertThat(file.getVersion()).isEqualTo(1);
+        assertThat(file.getSourceLandscapeId()).isEqualTo(NIEDERSACHSEN_PHYSICS_UPPER_SECONDARY_LANDSCAPE_ID);
+        assertThat(file.getTargetLandscapeId()).isEqualTo(CANONICAL_PHYSICS_ID);
+        assertThat(file.getMappings()).hasSize(9);
+        assertThat(file.getMappings()).filteredOn(entry -> "exact".equals(entry.getMatchType())).hasSize(1);
+        assertThat(file.getMappings()).filteredOn(entry -> "partial".equals(entry.getMatchType())).hasSize(8);
+        assertThat(file.getMappings())
+                .extracting(GoalMappingEntry::getLegacyGoalId, GoalMappingEntry::getCanonicalGoalId, GoalMappingEntry::getMatchType)
+                .containsExactly(
+                        Tuple.tuple("044ac6ff-e3ec-4537-8230-b60e61f03609", "bf980fff-b62b-4ea4-a20d-31681a7ad785", "partial"),
+                        Tuple.tuple("1d6e6519-2db3-433b-b4d9-a615985464d8", "5c44b9ba-9b05-4774-95d5-073230d3fc4f", "exact"),
+                        Tuple.tuple("2bdc5d32-bc85-42b9-a135-d9548f39e15d", "942de15b-32f1-5713-80e5-e7aeb8749fc4", "partial"),
+                        Tuple.tuple("7089d61b-83d0-4a25-a00f-795bfd811380", "230345f3-c360-4963-b390-ab94e3e2c864", "partial"),
+                        Tuple.tuple("89635501-ca3e-424e-9e59-61dc6f1f750e", "89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2", "partial"),
+                        Tuple.tuple("2e476a0b-9a2e-4779-b8e4-478564fde98a", "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20", "partial"),
+                        Tuple.tuple("6b7aa8aa-1858-4eec-b451-375637934d5c", "977e7421-0953-4b40-a966-5668b54ed8c9", "partial"),
+                        Tuple.tuple("4649db94-9ab8-4bb3-a7a0-bbd1f9722180", "ec7a0a68-730b-5c94-ac72-a937508f8303", "partial"),
+                        Tuple.tuple("07ea623a-5638-4b64-b101-180451d364bd", "accb1d9e-cd48-5983-bcef-9b9bca4a9114", "partial"));
     }
 
     @Test

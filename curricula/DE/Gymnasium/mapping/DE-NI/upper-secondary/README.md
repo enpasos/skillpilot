@@ -2,15 +2,22 @@
 
 This lane is reserved for future Niedersachsen upper-secondary Gymnasium mappings into the shared DE-level canonical landscapes.
 
-Current status on `2026-03-25`:
+Current status on `2026-04-13`:
 
 - repository-backed mapping fixture now exists:
   `ni_math_upper_secondary_to_canonical_math.json`
+- repository-backed Physics mapping scaffold now also exists:
+  `ni_physics_upper_secondary_to_canonical_physics.json`
 - reserved `sourceLandscapeId`:
   `fcb04661-6ea2-4030-a9b2-97e6cc03daf8`
+- reserved Physics `sourceLandscapeId`:
+  `730a6dbb-7ddb-486b-8ac8-dd9e58e3d113`
 - current mapping count: `129`
+- current Physics mapping count: `9`
 - the first archived Niedersachsen upper-secondary source snapshot is now active in the shared provenance registries:
   `curricula/DE/Gymnasium/input/NI/upper-secondary/source-json/DE_NDS_S_GYM_2_MATHEMATIK.de.json.snapshot`
+- the first archived Niedersachsen upper-secondary Physics source snapshot is now also active in the shared provenance registries:
+  `curricula/DE/Gymnasium/input/NI/upper-secondary/source-json/DE_NDS_S_GYM_2_PHYSIK.de.json.snapshot`
 - the first reviewed Niedersachsen upper-secondary E-phase entry bridges are now active:
   - `Warum Mathematik in der Einfuehrungsphase? - gemeinsame Basis fuer die Qualifikationsphase` (`exact`)
   - `Potenz- und Wurzelfunktionen skizzieren, Symmetrie und Globalverhalten beschreiben` (`partial`)
@@ -150,10 +157,23 @@ Current status on `2026-03-25`:
   - `Konfidenzintervalle im Kontext interpretieren` (`partial`)
   - `Konfidenzniveau als relative Trefferhaeufigkeit deuten` (`partial`)
   - `Simulationen fuer naeherungsweise normalverteilte Situationen nutzen` (`partial`)
+- the first reviewed Niedersachsen upper-secondary Physics `Dynamik` corridor is now also active:
+  - shared source root -> canonical Physics root (`partial`)
+  - shared orientation anchor -> shared canonical motivation leaf (`exact`)
+  - Niedersachsen E-phase `Dynamik` cluster -> shared canonical E-phase mechanics surface (`partial`)
+  - `Freien Fall mithilfe von t-s- und t-v-Zusammenhaengen beschreiben` -> `Freier Fall experimentell untersuchen` (`partial`)
+  - `Waagerechten Wurf mithilfe von t-s- und t-v-Zusammenhaengen beschreiben` -> `Waagerechter Wurf analysieren` (`partial`)
+  - `Grundgleichung der Mechanik nennen und Krafteinheit deuten` -> `Newtons 2. Axiom (Grundgleichung der Mechanik)` (`partial`)
+  - `Die drei newtonschen Axiome erlaeutern` -> `Die drei Newtonschen Axiome benennen und erklären` (`partial`)
+  - `Gleichfoermige Kreisbewegung mit Umlaufdauer, Bahngeschwindigkeit und Zentripetalbeschleunigung beschreiben` -> `Bahn- und Winkelgeschwindigkeit` (`partial`)
+  - `Zentripetalkraft in einfachen Aufgaben anwenden` -> `Kreisbewegung mit Zentripetalkraft anwenden` (`partial`)
+- the first committed Niedersachsen Physics applicability cut now also widens the reviewed shared E-phase motion strip for `DE-NI` without introducing new canonical atoms or Niedersachsen-specific Physics composition views
 
 Expected first use:
 
 - canonical Gymnasium `Mathematik`
 - Niedersachsen upper-secondary anchor alignment onto the canonical `E` / `Q` spine
 - the archived Niedersachsen upper-secondary pilot snapshot is now fully atomically bridged on its active E-phase base, on the fully imported gA learning areas `Von der Aenderung zum Bestand - Integralrechnung`, `Die e-Funktion`, `Raumanschauung und Koordinatisierung`, and `Daten und Zufall`, and on the first five fully imported eA learning areas `Von der Aenderung zum Bestand - Integralrechnung`, `Wachstumsmodelle - Exponentialfunktion`, `Raumanschauung und Koordinatisierung`, `Kurvenanpassung und Funktionenscharen`, and `Daten und Zufall`
+- canonical Gymnasium `Physik`
+- Niedersachsen upper-secondary Physics anchor alignment onto the shared motivation leaf and the first reviewed E-phase `Dynamik` strip
 - next reviewed widening should move to the next Niedersachsen lower-secondary geometry / algebra corridor unless a separate Berufliches-Gymnasium lane is opened intentionally, because the first shared general-Gymnasium upper-secondary pilot surface is now exhausted

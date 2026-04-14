@@ -32,3 +32,14 @@
 
 ### Sekundarstufe II (Gymnasiale Oberstufe)
 - **Kerncurriculum Physik Sekundarbereich II (2022-2024)**: [NIBIS - Kerncurricula Sek II](https://cuvo.nibis.de/)
+- archived source PDF:
+  `curricula/DE/Gymnasium/input/NI/upper-secondary/kerncurriculum_gymnasiale_oberstufe-physik_2022.pdf`
+- provenance note:
+  `curricula/DE/Gymnasium/input/NI/upper-secondary/references.md`
+- archived source snapshot:
+  `curricula/DE/Gymnasium/input/NI/upper-secondary/source-json/DE_NDS_S_GYM_2_PHYSIK.de.json.snapshot`
+- active pilot scope:
+  - first shared upper-secondary dynamics corridor
+  - imported entry leaves on freier Fall, waagerechtem Wurf, Grundgleichung der Mechanik, Newtonschen Axiomen, gleichfoermiger Kreisbewegung, and Zentripetalkraft
+- current next step:
+  - either close the remaining `Dynamik` energy/experiment strip conservatively or move to the first equally explicit qualification-phase anchor such as `Elektrizitaet` or `Schwingungen und Wellen`
