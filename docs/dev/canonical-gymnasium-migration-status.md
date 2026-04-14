@@ -5862,3 +5862,285 @@ Interpretation:
 - Niedersachsen upper-secondary Physics now reaches not only the shared E-phase motion strip but also the first adjacent shared energy strip on `Kinetische Energie` and `Energieerhaltung`
 - the clean move here was to keep the widening on the same explicit KC pages and to avoid inventing a premature Niedersachsen-specific learner-facing view or new canonical Physics atoms
 - the next clean Niedersachsen move should now leave the exhausted E-phase mechanics starter and open the first equally explicit qualification-phase anchor such as `Elektrizitaet` or `Schwingungen und Wellen`, unless the remaining sustainability-only Bewertungsblatt is intentionally resolved first
+
+### 2026-04-14: Niedersachsen Physics opens the first qualification-phase electricity anchor
+
+What changed:
+
+- the Niedersachsen upper-secondary Physics source snapshot:
+  - `730a6dbb-7ddb-486b-8ac8-dd9e58e3d113`
+  now also contains the first qualification-phase source cluster:
+  - `f32b91d4-8691-408c-9417-8e34e4e3d87b` (`Qualifikationsphase: Elektrizitaet - Potenzial und Kondensator`)
+- that new source strip imports seven new leaves from the Niedersachsen `Elektrizitaet` pages:
+  - `81f12b68-a361-4b89-8759-735bb2b2526f` (`Zusammenhang zwischen Ladung und elektrischer Stromstaerke beschreiben`)
+  - `7757d083-2261-44bc-99c9-9195d0e38586` (`Elektrische Spannung als Energie pro Ladung deuten`)
+  - `afabf0e1-22a9-446d-b84f-d760bb7a28c6` (`Feldstaerke im Plattenkondensator mit der anliegenden Spannung verknuepfen`)
+  - `8f272d0a-231d-4646-ae46-29dc67000878` (`Energiebilanz fuer geladene Koerper im elektrischen Feld eines Plattenkondensators angeben`)
+  - `5d1eb42c-1b2c-43e1-a53d-856e817100ed` (`Auf- und Entladevorgaenge eines Kondensators ueber t-I-Zusammenhaenge beschreiben`)
+  - `dce1062a-2503-4e99-b30a-a500dd271a2f` (`Kapazitaet eines Kondensators grundlegend angeben und in einfachen Bestimmungen nutzen`)
+  - `7fab7a9c-c2f0-456e-8ede-389aa47257af` (`Gleichung fuer die Energie des elektrischen Feldes eines Plattenkondensators nennen`)
+- the repository-backed Niedersachsen Physics mapping lane:
+  - `curricula/DE/Gymnasium/mapping/DE-NI/upper-secondary/ni_physics_upper_secondary_to_canonical_physics.json`
+  now carries `20` reviewed rows instead of `12`
+- the new reviewed bridges are:
+  - `f32b91d4-8691-408c-9417-8e34e4e3d87b` -> `0895074d-c4af-56ea-88dd-ae0fdae443ed` (`Potenzial und Kondensator`) (`partial`)
+  - `81f12b68-a361-4b89-8759-735bb2b2526f` -> `bbee4c52-4e95-5529-990f-706aa99316a3` (`Stromstärke als Ladungstransport`) (`partial`)
+  - `7757d083-2261-44bc-99c9-9195d0e38586` -> `1730c01d-8c85-57df-b031-c11e2a0511b1` (`Arbeit, Spannung und Potenzial im E-Feld`) (`partial`)
+  - `afabf0e1-22a9-446d-b84f-d760bb7a28c6` -> `9f59a088-3939-59e9-821d-167fadfda782` (`Kondensator und Feld im Plattenkondensator`) (`partial`)
+  - `8f272d0a-231d-4646-ae46-29dc67000878` -> `1730c01d-8c85-57df-b031-c11e2a0511b1` (`Arbeit, Spannung und Potenzial im E-Feld`) (`partial`)
+  - `5d1eb42c-1b2c-43e1-a53d-856e817100ed` -> `0b4f2020-8486-5372-9cb9-6e59f698ac2d` (`Auf- und Entladen eines Kondensators`) (`partial`)
+  - `dce1062a-2503-4e99-b30a-a500dd271a2f` -> `9f59a088-3939-59e9-821d-167fadfda782` (`Kondensator und Feld im Plattenkondensator`) (`partial`)
+  - `7fab7a9c-c2f0-456e-8ede-389aa47257af` -> `fd9fd8ad-c4a1-5552-9ea0-1878e0636f20` (`Energie des elektrischen Feldes`) (`partial`)
+
+Why this cut:
+
+- the active Niedersachsen Physics lane had reached the limit of the initial E-phase mechanics starter, so the next clean widening needed to leave the same KC page pair and open the first equally explicit qualification-phase surface
+- the Niedersachsen wording on pages `33-34` aligns conservatively with already existing shared canonical Q1 electricity goals, so the widening can stay within the current canonical Physics graph without inventing Niedersachsen-specific atoms
+- the magnetische-Felder / Lorentzkraft / Wien-Filter strip on the following page is clearly adjacent, but it is a better follow-on after the field/potential/capacitor base has been opened explicitly
+
+Validation used:
+
+- `node -e "for (const p of process.argv.slice(1)) JSON.parse(require('fs').readFileSync(p,'utf8'));" ...`
+- `cd app && APPLICABILITY_APPLY_SCOPE=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a npm run apply:applicability`
+- `cd app && npm run validate:view-filters --silent`
+- `cd backend && ./gradlew test --tests 'com.skillpilot.backend.landscape.LandscapeServiceTest' --tests 'com.skillpilot.backend.landscape.GoalMappingRepositoryFixtureTest'`
+- `python3 scripts/render_canonical_physics_bundesland_status.py`
+
+Interpretation:
+
+- Niedersachsen upper-secondary Physics now reaches not only the shared E-phase motion and energy strip but also the first shared Q1 electricity strip on current/voltage/potential/capacitor surfaces
+- the clean move here was to open the qualification-phase route without broadening into magnetische Felder or inventing new canonical Physics atoms
+- the next clean Niedersachsen move should now stay on this opened qualification-phase route and go deeper into `Elektrizitaet` (`magnetische Felder`, `Lorentzkraft`, `Wien-Filter`) or, if a parallel anchor is more useful, open `Schwingungen und Wellen`
+
+### 2026-04-14: Niedersachsen Physics extends the qualification-phase electricity lane onto magnet fields and free electrons
+
+What changed:
+
+- the Niedersachsen upper-secondary Physics source snapshot:
+  - `730a6dbb-7ddb-486b-8ac8-dd9e58e3d113`
+  now also contains the adjacent qualification-phase source cluster:
+  - `cc2183ef-1878-40da-a00b-5f6c3e4cc1fd` (`Qualifikationsphase: Elektrizitaet - Magnetfeld und freie Elektronen`)
+- that new source strip imports six new leaves from the Niedersachsen `Elektrizitaet` page `35`:
+  - `59da0142-1d54-40b5-bcda-93fded9a3ef5` (`Magnetische Felder mit Kompassnadeln beschreiben und Feldrichtungen bestimmen`)
+  - `90fcb135-5573-43a4-9309-f6f488f9e360` (`Leiterkraft im homogenen Magnetfeld bestimmen und magnetische Flussdichte deuten`)
+  - `f9525247-5349-4202-96ca-b88eb1fa2cab` (`Lorentzkraft auf freie Elektronen beschreiben und Bahnformen begruenden`)
+  - `89b0d282-76a2-44c2-92ea-a1d684b4b1f8` (`Elektronenbahnen im homogenen Magnetfeld auf andere geladene Teilchen uebertragen`)
+  - `3b71a64f-683a-47df-b656-d8fd430e4c45` (`Freie Elektronen im homogenen elektrischen Querfeld und im Wien-Filter beschreiben`)
+  - `0966258c-1eaa-4c41-8311-17352dcf0ec1` (`Spezifische Ladung von Elektronen mit dem Fadenstrahlrohr einordnen`)
+- the repository-backed Niedersachsen Physics mapping lane:
+  - `curricula/DE/Gymnasium/mapping/DE-NI/upper-secondary/ni_physics_upper_secondary_to_canonical_physics.json`
+  now carries `25` reviewed rows instead of `20`
+- the new reviewed bridges are:
+  - `cc2183ef-1878-40da-a00b-5f6c3e4cc1fd` -> `13e882bd-2fc6-59c6-a2a8-32eb1fbf1751` (`Magnetisches Feld`) (`partial`)
+  - `59da0142-1d54-40b5-bcda-93fded9a3ef5` -> `0f6b798b-594e-5480-8c5f-95e2486a4d85` (`Magnetische Felder und Feldlinienbilder`) (`partial`)
+  - `90fcb135-5573-43a4-9309-f6f488f9e360` -> `c6355a22-24cf-5d8b-88af-ea11711460fb` (`Kraft auf stromdurchflossene Leiter`) (`partial`)
+  - `f9525247-5349-4202-96ca-b88eb1fa2cab` -> `8c9394cb-f54a-508d-9750-4c49e31b3fa9` (`Lorentzkraft auf freie Ladungen`) (`partial`)
+  - `89b0d282-76a2-44c2-92ea-a1d684b4b1f8` -> `9854589c-5feb-4942-b90f-311ddf36eb78` (`Geladene Teilchen in homogenen magnetischen Feldern untersuchen`) (`partial`)
+- the two remaining source leaves:
+  - `3b71a64f-683a-47df-b656-d8fd430e4c45`
+  - `0966258c-1eaa-4c41-8311-17352dcf0ec1`
+  stay intentionally source-led, because the current shared canonical graph does not yet isolate a reviewed crossed-field/`Wien-Filter` target or the narrower eA `Fadenstrahlrohr` target
+
+Why this cut:
+
+- after opening the first Niedersachsen Q1 potential/capacitor strip, the next equally explicit adjacent KC move was the page-35 magnetic-field/electron-trajectory surface, not yet the broader page-36 induction layer
+- the reviewed part of this source strip lands conservatively on already existing shared magnetic-field goals, so the widening still does not need new canonical Physics atoms
+- the crossed-field and `Fadenstrahlrohr` clauses were imported into the source snapshot to keep provenance honest, but left unmapped because the current shared canonical Physics graph does not yet expose a sufficiently narrow reviewed target
+
+Validation used:
+
+- `node -e "for (const p of process.argv.slice(1)) JSON.parse(require('fs').readFileSync(p,'utf8'));" ...`
+- `cd app && APPLICABILITY_APPLY_SCOPE=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a npm run apply:applicability`
+- `cd app && npm run validate:view-filters --silent`
+- `cd backend && ./gradlew test --tests 'com.skillpilot.backend.landscape.LandscapeServiceTest' --tests 'com.skillpilot.backend.landscape.GoalMappingRepositoryFixtureTest'`
+- `python3 scripts/render_canonical_physics_bundesland_status.py`
+
+Interpretation:
+
+- Niedersachsen upper-secondary Physics now reaches not only the shared Q1 potential/capacitor strip but also the first shared magnetic-field strip on field-line description, conductor force, Lorentzkraft, and simple charged-particle motion
+- the clean move here was to keep widening on the same explicit KC route while leaving crossed-field/`Wien-Filter` and `Fadenstrahlrohr` residues source-led
+- the next clean Niedersachsen move should now most plausibly open the adjacent page-36 `Induktion` strip (`Hallsonde`, `Spule`, `Induktionsspannung`) or revisit the current source-led residues only if broader reviewed shared targets become justified
+
+### 2026-04-14: Niedersachsen Physics opens the adjacent page-36 induction strip without adding new canonical atoms
+
+What changed:
+
+- the Niedersachsen upper-secondary Physics source snapshot:
+  - `730a6dbb-7ddb-486b-8ac8-dd9e58e3d113`
+  now also contains the adjacent qualification-phase source cluster:
+  - `80a48714-a00c-4df7-9781-abe13212d1e2` (`Qualifikationsphase: Elektrizitaet - Spule, Hallsonde und Induktion`)
+- that new source strip imports six new leaves from the Niedersachsen `Elektrizitaet` page `36`:
+  - `17f451db-df50-4aa8-98ec-9760529df3fd` (`Magnetische Flussdichte bei Spulen mit einer Hallsonde experimentell messen`)
+  - `6287ed0a-90d4-4b1a-bc26-b656de38c916` (`Magnetische Flussdichte bei einer Spule qualitativ von I, n, l und mu_r abhaengig beschreiben`)
+  - `aa0c5e7a-4026-47a7-ab7c-331a2eba3115` (`Magnetfeldlinienbilder fuer geraden Leiter und Spule skizzieren`)
+  - `3002d429-c5ee-4b49-b00b-a3e49f926895` (`Induktionsspannung qualitativ mithilfe des magnetischen Flusses beschreiben`)
+  - `82b1744d-940a-4c3b-bef9-b64b72040fa0` (`Versuche und Diagramme zum Induktionsgesetz bei linearen A- oder B-Aenderungen auswerten`)
+  - `faf57450-d634-4a43-96ff-0fbeb3c5c12b` (`Eine technische Anwendung der Induktion qualitativ beschreiben`)
+- the repository-backed Niedersachsen Physics mapping lane:
+  - `curricula/DE/Gymnasium/mapping/DE-NI/upper-secondary/ni_physics_upper_secondary_to_canonical_physics.json`
+  now carries `31` reviewed rows instead of `25`
+- the six new reviewed bridges are:
+  - `17f451db-df50-4aa8-98ec-9760529df3fd` -> `106417ed-80db-5490-a1ee-bb4160d3f2b4` (`Magnetfeld von geradem Leiter und Spule`) (`partial`)
+  - `6287ed0a-90d4-4b1a-bc26-b656de38c916` -> `106417ed-80db-5490-a1ee-bb4160d3f2b4` (`Magnetfeld von geradem Leiter und Spule`) (`partial`)
+  - `aa0c5e7a-4026-47a7-ab7c-331a2eba3115` -> `0f6b798b-594e-5480-8c5f-95e2486a4d85` (`Magnetische Felder und Feldlinienbilder`) (`partial`)
+  - `3002d429-c5ee-4b49-b00b-a3e49f926895` -> `1a037489-3c95-540b-8cae-0acd360358ee` (`Induktion durch Änderung des magnetischen Flusses`) (`partial`)
+  - `82b1744d-940a-4c3b-bef9-b64b72040fa0` -> `eb1ea150-ec6c-5000-bce3-f46c820dccf8` (`Induktionsgesetz und Lenz’sche Regel`) (`partial`)
+  - `faf57450-d634-4a43-96ff-0fbeb3c5c12b` -> `fdcd5faf-f9bf-4fa9-87f4-4e22d8d3387c` (`Technische Anwendungen des Induktionsgesetzes qualitativ beschreiben`) (`partial`)
+- the widened shared applicability surface now also reaches the existing canonical induction strip:
+  - `106417ed-80db-5490-a1ee-bb4160d3f2b4` (`Magnetfeld von geradem Leiter und Spule`)
+  - `1a037489-3c95-540b-8cae-0acd360358ee` (`Induktion durch Änderung des magnetischen Flusses`)
+  - `eb1ea150-ec6c-5000-bce3-f46c820dccf8` (`Induktionsgesetz und Lenz’sche Regel`)
+  - `fdcd5faf-f9bf-4fa9-87f4-4e22d8d3387c` (`Technische Anwendungen des Induktionsgesetzes qualitativ beschreiben`)
+  - `b2b74d0a-575c-5c6b-8e24-b0b0f32c1126` (`Induktion und elektromagnetische Schwingungen`)
+  - `fcefb129-ad4c-50a2-9762-a910caa1af16` (`Q2 Schwingungen, Induktion und mechanische Wellen`)
+- four new Niedersachsen-specific `APV-202` entries were added for the intentionally broader partial bridges on the shared induction strip:
+  - `106417ed-80db-5490-a1ee-bb4160d3f2b4`
+  - `1a037489-3c95-540b-8cae-0acd360358ee`
+  - `eb1ea150-ec6c-5000-bce3-f46c820dccf8`
+  - `fdcd5faf-f9bf-4fa9-87f4-4e22d8d3387c`
+
+Why this cut:
+
+- after the reviewed page-35 magnet-field strip, the next equally explicit adjacent KC move was the page-36 induction surface on coils, Hall-probe measurements, first flux-based induction, and one simple induction application
+- all six reviewed bridges land on already existing shared canonical magnetic-field or induction targets, so the widening stays inside the current canonical Physics graph and does not justify new Niedersachsen-specific atoms
+- the imported page-36 source is still only partially exhausted: narrower eA residue around Hall voltage, differential/sinusoidal induction, and self-induction exists, but was not forced into the current wider shared targets
+
+Validation used:
+
+- `node -e "for (const p of process.argv.slice(1)) JSON.parse(require('fs').readFileSync(p,'utf8'));" ...`
+- `cd backend && ./gradlew test --tests 'com.skillpilot.backend.landscape.GoalMappingRepositoryFixtureTest'`
+- `cd app && APPLICABILITY_APPLY_SCOPE=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a npm run apply:applicability`
+- `cd app && npm run validate:view-filters --silent`
+- `python3 scripts/render_canonical_physics_bundesland_status.py`
+
+Interpretation:
+
+- Niedersachsen upper-secondary Physics now reaches not only the shared Q1 electricity and magnetic-field strip but also the first shared induction strip on coil fields, flux-based induction, induction-law reading, and one simple technical application
+- the clean move here was to keep widening on the same explicit KC route while still avoiding new canonical Physics atoms or Niedersachsen-specific composition views
+- the next clean Niedersachsen move should now either continue on the remaining page-36 eA induction residue (`Hallspannung`, differential/sinusoidal induction, `Selbstinduktion`) or open a parallel reviewed anchor such as `Schwingungen und Wellen`
+
+### 2026-04-14: Niedersachsen Physics closes the remaining page-36 eA induction residue on the shared LK surface
+
+What changed:
+
+- the Niedersachsen upper-secondary Physics source snapshot:
+  - `730a6dbb-7ddb-486b-8ac8-dd9e58e3d113`
+  now widens the existing page-36 source cluster:
+  - `80a48714-a00c-4df7-9781-abe13212d1e2` (`Qualifikationsphase: Elektrizitaet - Spule, Hallsonde und Induktion`)
+  from `6` to `10` imported leaves
+- the four new imported LK leaves are:
+  - `2b8672fa-0558-4592-963a-8b5d5ec50699` (`Hallspannung aus der Driftgeschwindigkeit anhand einer Skizze herleiten`)
+  - `dc61b9c2-1c4d-4ac7-bab1-929504433e43` (`Induktionsgesetz in differenzieller Form fuer lineare und sinusfoermige Flussaenderungen anwenden`)
+  - `4c9164a4-aa58-419d-85cf-e39dc5446a83` (`Selbstinduktion beim Ein- und Ausschalten von Spulen erklaeren und Induktivitaet definieren`)
+  - `89d75af3-ae18-4417-a0ac-5228639c10f7` (`Energie des magnetischen Feldes einer Spule angeben und Spulen als Energiespeicher beschreiben`)
+- the repository-backed Niedersachsen Physics mapping lane:
+  - `curricula/DE/Gymnasium/mapping/DE-NI/upper-secondary/ni_physics_upper_secondary_to_canonical_physics.json`
+  now carries `35` reviewed rows instead of `31`
+- the four new reviewed bridges are:
+  - `2b8672fa-0558-4592-963a-8b5d5ec50699` -> `b39ae8fb-4358-5866-8adf-3d5365368eeb` (`Hall-Effekt anwenden`) (`partial`)
+  - `dc61b9c2-1c4d-4ac7-bab1-929504433e43` -> `d18d4190-ddc1-5181-b1b6-e79947b737c2` (`Induktionsgesetz in Differenzialform`) (`partial`)
+  - `4c9164a4-aa58-419d-85cf-e39dc5446a83` -> `37f28bc4-def2-57cf-a06b-191dfd228205` (`Selbstinduktion und Induktivität`) (`partial`)
+  - `89d75af3-ae18-4417-a0ac-5228639c10f7` -> `a1389d4e-dc97-5557-babe-a31a2bd57217` (`Energie gespeicherter Magnetfelder`) (`partial`)
+- the source provenance for Niedersachsen Physics now widens to `40` imported source goals and `34` atomic descendants on the source root
+- after applicability compilation, `DE-NI` is now also visible on the four shared LK follow-on leaves:
+  - `b39ae8fb-4358-5866-8adf-3d5365368eeb` (`Hall-Effekt anwenden`)
+  - `d18d4190-ddc1-5181-b1b6-e79947b737c2` (`Induktionsgesetz in Differenzialform`)
+  - `37f28bc4-def2-57cf-a06b-191dfd228205` (`Selbstinduktion und Induktivität`)
+  - `a1389d4e-dc97-5557-babe-a31a2bd57217` (`Energie gespeicherter Magnetfelder`)
+- four new Niedersachsen-specific `APV-202` entries were added for these intentionally broader partial bridges:
+  - `b39ae8fb-4358-5866-8adf-3d5365368eeb`
+  - `d18d4190-ddc1-5181-b1b6-e79947b737c2`
+  - `37f28bc4-def2-57cf-a06b-191dfd228205`
+  - `a1389d4e-dc97-5557-babe-a31a2bd57217`
+
+Why this cut:
+
+- after the reviewed page-36 GK strip was open, the remaining adjacent source work was no longer a new thematic route but only the LK residue on Hallspannung, differential-form induction, self-induction, and magnetic field energy
+- those four clauses now land conservatively on already existing shared LK atoms, so the NI lane closes the page-36 route without inventing new canonical Physics atoms
+- this also removes the need to keep pointing at a still-open page-36 eA remainder in the rollout tracker; the next clean move can now leave `Elektrizitaet`
+
+Validation used:
+
+- `node -e \"for (const p of process.argv.slice(1)) JSON.parse(require('fs').readFileSync(p,'utf8'));\" ...`
+- `cd backend && ./gradlew test --tests 'com.skillpilot.backend.landscape.GoalMappingRepositoryFixtureTest'`
+- `cd app && APPLICABILITY_APPLY_SCOPE=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a npm run apply:applicability`
+- `cd app && npm run validate:view-filters --silent`
+- `python3 scripts/render_canonical_physics_bundesland_status.py`
+
+Interpretation:
+
+- Niedersachsen upper-secondary Physics now closes the full reviewed page-36 electricity route from coil fields and first induction up to the available shared LK follow-on leaves
+- the clean move here was to keep the widening on the same explicit KC page while still avoiding new canonical Physics atoms or Niedersachsen-specific composition views
+- the next clean Niedersachsen move should now leave `Elektrizitaet` and open `Schwingungen und Wellen`; the older `Querfeld`/`Wien-Filter` and `Fadenstrahlrohr` residues remain optional cleanup only if broader reviewed shared targets become justified
+
+### 2026-04-14: Niedersachsen Physics opens the first reviewed Q2 oscillation strip on the shared Schwingungsflaeche
+
+What changed:
+
+- the Niedersachsen upper-secondary Physics source snapshot:
+  - `730a6dbb-7ddb-486b-8ac8-dd9e58e3d113`
+  now adds the new source cluster:
+  - `4f738cef-9b3b-4ebd-83a7-e0723b93256a` (`Qualifikationsphase: Schwingungen - mechanische und elektromagnetische Schwingungen`)
+  with `9` imported leaves
+- the nine new imported leaves are:
+  - `a213645d-2f77-4e68-83b6-a84986a6bdff` (`Harmonische Schwingungen grafisch darstellen und mit Auslenkung, Amplitude, Periodendauer und Frequenz beschreiben`)
+  - `ade0c38e-ebf6-440f-8f54-e934358ae2fa` (`Periodendauer eines Feder-Masse-Pendels angeben und experimentelle Abhaengigkeiten ueberpruefen`)
+  - `5c426b0f-df26-4bcc-b481-c76058324a16` (`Lineares Kraftgesetz als Bedingung einer mechanischen harmonischen Schwingung nennen`)
+  - `0be87521-0bdd-4d4e-acbc-70be73934d4d` (`Energieumwandlungen beim Feder-Masse-Pendel beschreiben`)
+  - `2fc1c704-0e36-4049-97e3-f7fb99d15f34` (`Gedaempfte Schwingungen in t-s- und t-v-Diagrammen deuten`)
+  - `845db953-8702-4426-96fb-eb90baf7986c` (`Resonanz bei erzwungenen Schwingungen anhand eines Experiments erlaeutern`)
+  - `57fadc9a-c0ed-419d-8813-9b97d879e7f8` (`Elektromagnetischen Schwingkreis beschreiben und Schwingungsgroessen aus Messdaten bestimmen`)
+  - `62cc5ced-563a-4f83-88bf-a9a50dde85c2` (`Energieumwandlungen und Resonanzkurve im elektromagnetischen Schwingkreis beschreiben`)
+  - `420a2faf-45bb-4a69-8062-73ec84838e95` (`Kapazitaetsabhaengigkeit der Eigenschwingung experimentell bestimmen und die Thomsonsche Schwingungsgleichung nennen`)
+- the repository-backed Niedersachsen Physics mapping lane:
+  - `curricula/DE/Gymnasium/mapping/DE-NI/upper-secondary/ni_physics_upper_secondary_to_canonical_physics.json`
+  now carries `44` reviewed rows instead of `35`
+- the nine new reviewed bridges are:
+  - `a213645d-2f77-4e68-83b6-a84986a6bdff` -> `fcf8580c-ecfd-58ea-bbf5-a1b29c9ecf8e` (`Charakteristische Schwingungsgrößen`) (`partial`)
+  - `ade0c38e-ebf6-440f-8f54-e934358ae2fa` -> `d03f1cb6-c224-53db-ad91-76cc7827978d` (`Harmonische Schwingung verstehen`) (`partial`)
+  - `5c426b0f-df26-4bcc-b481-c76058324a16` -> `05af2893-0201-4d7f-985b-272d7b88e26e` (`Lineare Rückstellkraft bei harmonischen Schwingungen beschreiben`) (`partial`)
+  - `0be87521-0bdd-4d4e-acbc-70be73934d4d` -> `78cf6eff-b3bc-5444-9ef8-5d39dae8d17d` (`Energie und Energieerhaltung in Schwingungen`) (`partial`)
+  - `2fc1c704-0e36-4049-97e3-f7fb99d15f34` -> `e6895bc3-fcbd-59ad-baef-a78c97a13e11` (`Gedämpfte Schwingungen beschreiben`) (`partial`)
+  - `845db953-8702-4426-96fb-eb90baf7986c` -> `3efa0cda-f55b-5534-8fac-ffe1d312aed1` (`Erzwungene Schwingungen und Resonanz`) (`partial`)
+  - `57fadc9a-c0ed-419d-8813-9b97d879e7f8` -> `ac4ba260-6086-5fcc-bea2-c06f1425a1cc` (`Elektromagnetischen Schwingkreis analysieren`) (`partial`)
+  - `62cc5ced-563a-4f83-88bf-a9a50dde85c2` -> `ac4ba260-6086-5fcc-bea2-c06f1425a1cc` (`Elektromagnetischen Schwingkreis analysieren`) (`partial`)
+  - `420a2faf-45bb-4a69-8062-73ec84838e95` -> `f36a5946-f2a8-59b8-b3bd-a2f246defa4f` (`Thomson’sche Schwingungsgleichung nutzen`) (`partial`)
+- the source provenance for Niedersachsen Physics now widens to `50` imported source goals and `43` atomic descendants on the source root
+- after applicability compilation, `DE-NI` is now also visible on the eight shared oscillation leaves:
+  - `d03f1cb6-c224-53db-ad91-76cc7827978d` (`Harmonische Schwingung verstehen`)
+  - `fcf8580c-ecfd-58ea-bbf5-a1b29c9ecf8e` (`Charakteristische Schwingungsgrößen`)
+  - `05af2893-0201-4d7f-985b-272d7b88e26e` (`Lineare Rückstellkraft bei harmonischen Schwingungen beschreiben`)
+  - `78cf6eff-b3bc-5444-9ef8-5d39dae8d17d` (`Energie und Energieerhaltung in Schwingungen`)
+  - `e6895bc3-fcbd-59ad-baef-a78c97a13e11` (`Gedämpfte Schwingungen beschreiben`)
+  - `3efa0cda-f55b-5534-8fac-ffe1d312aed1` (`Erzwungene Schwingungen und Resonanz`)
+  - `ac4ba260-6086-5fcc-bea2-c06f1425a1cc` (`Elektromagnetischen Schwingkreis analysieren`)
+  - `f36a5946-f2a8-59b8-b3bd-a2f246defa4f` (`Thomson’sche Schwingungsgleichung nutzen`)
+- eight new Niedersachsen-specific `APV-202` entries were added for these intentionally broader partial bridges:
+  - `d03f1cb6-c224-53db-ad91-76cc7827978d`
+  - `fcf8580c-ecfd-58ea-bbf5-a1b29c9ecf8e`
+  - `05af2893-0201-4d7f-985b-272d7b88e26e`
+  - `78cf6eff-b3bc-5444-9ef8-5d39dae8d17d`
+  - `e6895bc3-fcbd-59ad-baef-a78c97a13e11`
+  - `3efa0cda-f55b-5534-8fac-ffe1d312aed1`
+  - `ac4ba260-6086-5fcc-bea2-c06f1425a1cc`
+  - `f36a5946-f2a8-59b8-b3bd-a2f246defa4f`
+
+Why this cut:
+
+- after the reviewed `Elektrizitaet` route was exhausted, the next equally explicit source move was no longer another electricity cleanup but the first narrow Q2 `Schwingungen` surface on pages `37-38`
+- the imported source already aligns conservatively with existing shared Q2 oscillation leaves, so the corridor can widen without inventing new canonical Physics atoms
+- keeping `Wellen` separate preserves a clean next move instead of mixing two adjacent but still distinguishable source surfaces into one oversized NI cut
+
+Validation used:
+
+- `node -e \"for (const p of process.argv.slice(1)) JSON.parse(require('fs').readFileSync(p,'utf8'));\" ...`
+- `cd app && APPLICABILITY_APPLY_SCOPE=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a npm run apply:applicability`
+- `cd app && npm run validate:view-filters --silent`
+- `cd backend && ./gradlew test --tests 'com.skillpilot.backend.landscape.LandscapeServiceTest' --tests 'com.skillpilot.backend.landscape.GoalMappingRepositoryFixtureTest'`
+- `python3 scripts/render_canonical_physics_bundesland_status.py`
+
+Interpretation:
+
+- Niedersachsen upper-secondary Physics now reaches the first shared Q2 oscillation strip while still keeping the active lane narrow, reviewed, and free of Niedersachsen-specific canonical atom authoring
+- the clean move here was to open only `Schwingungen`, not immediately the adjacent `Wellen` surface, because the source still separates mechanical/electromagnetic oscillations from the later interference and wave-phenomena blocks
+- the next clean Niedersachsen move should now continue from this opened Q2 strip onto `Wellen`; the older `Querfeld`/`Wien-Filter` and `Fadenstrahlrohr` residues remain optional cleanup only if broader reviewed shared targets become justified

@@ -2,7 +2,7 @@
 
 This lane is reserved for future Niedersachsen upper-secondary Gymnasium mappings into the shared DE-level canonical landscapes.
 
-Current status on `2026-04-13`:
+Current status on `2026-04-14`:
 
 - repository-backed mapping fixture now exists:
   `ni_math_upper_secondary_to_canonical_math.json`
@@ -13,7 +13,7 @@ Current status on `2026-04-13`:
 - reserved Physics `sourceLandscapeId`:
   `730a6dbb-7ddb-486b-8ac8-dd9e58e3d113`
 - current mapping count: `129`
-- current Physics mapping count: `9`
+- current Physics mapping count: `35`
 - the first archived Niedersachsen upper-secondary source snapshot is now active in the shared provenance registries:
   `curricula/DE/Gymnasium/input/NI/upper-secondary/source-json/DE_NDS_S_GYM_2_MATHEMATIK.de.json.snapshot`
 - the first archived Niedersachsen upper-secondary Physics source snapshot is now also active in the shared provenance registries:
@@ -172,7 +172,52 @@ Current status on `2026-04-13`:
   - `Energieerhaltungssatz der Mechanik formulieren und in einfachen Situationen nutzen` -> `Energieerhaltung` (`partial`)
   - `Einfache Experimente zum Energieerhaltungssatz planen, durchfuehren und dokumentieren` -> `Energieerhaltung` (`partial`)
   - `Energienutzung und Nachhaltigkeit mit einem einfachen Bewertungsverfahren einordnen` remains intentionally source-led, because the currently available shared thermodynamics evaluation goals would overclaim the Niedersachsen wording
+- the first reviewed Niedersachsen upper-secondary Physics qualification-phase `Elektrizitaet` anchor is now also active:
+  - `Qualifikationsphase: Elektrizitaet - Potenzial und Kondensator` -> `Potenzial und Kondensator` (`partial`)
+  - `Zusammenhang zwischen Ladung und elektrischer Stromstaerke beschreiben` -> `Stromstärke als Ladungstransport` (`partial`)
+  - `Elektrische Spannung als Energie pro Ladung deuten` -> `Arbeit, Spannung und Potenzial im E-Feld` (`partial`)
+  - `Feldstaerke im Plattenkondensator mit der anliegenden Spannung verknuepfen` -> `Kondensator und Feld im Plattenkondensator` (`partial`)
+  - `Energiebilanz fuer geladene Koerper im elektrischen Feld eines Plattenkondensators angeben` -> `Arbeit, Spannung und Potenzial im E-Feld` (`partial`)
+  - `Auf- und Entladevorgaenge eines Kondensators ueber t-I-Zusammenhaenge beschreiben` -> `Auf- und Entladen eines Kondensators` (`partial`)
+  - `Kapazitaet eines Kondensators grundlegend angeben und in einfachen Bestimmungen nutzen` -> `Kondensator und Feld im Plattenkondensator` (`partial`)
+  - `Gleichung fuer die Energie des elektrischen Feldes eines Plattenkondensators nennen` -> `Energie des elektrischen Feldes` (`partial`)
+- the first adjacent Niedersachsen upper-secondary Physics qualification-phase magnet-field strip is now also active:
+  - `Qualifikationsphase: Elektrizitaet - Magnetfeld und freie Elektronen` -> `Magnetisches Feld` (`partial`)
+  - `Magnetische Felder mit Kompassnadeln beschreiben und Feldrichtungen bestimmen` -> `Magnetische Felder und Feldlinienbilder` (`partial`)
+  - `Leiterkraft im homogenen Magnetfeld bestimmen und magnetische Flussdichte deuten` -> `Kraft auf stromdurchflossene Leiter` (`partial`)
+  - `Lorentzkraft auf freie Elektronen beschreiben und Bahnformen begruenden` -> `Lorentzkraft auf freie Ladungen` (`partial`)
+  - `Elektronenbahnen im homogenen Magnetfeld auf andere geladene Teilchen uebertragen` -> `Geladene Teilchen in homogenen magnetischen Feldern untersuchen` (`partial`)
+  - `Freie Elektronen im homogenen elektrischen Querfeld und im Wien-Filter beschreiben` remains intentionally source-led, because no reviewed shared crossed-field target has been isolated yet
+  - `Spezifische Ladung von Elektronen mit dem Fadenstrahlrohr einordnen` remains intentionally source-led, because the current shared canonical graph does not yet isolate this narrower eA surface
+- the first adjacent Niedersachsen upper-secondary Physics qualification-phase induction strip is now also active:
+  - `Qualifikationsphase: Elektrizitaet - Spule, Hallsonde und Induktion` -> `Induktion und elektromagnetische Schwingungen` (`partial`)
+  - `Magnetische Flussdichte bei Spulen mit einer Hallsonde experimentell messen` -> `Magnetfeld von geradem Leiter und Spule` (`partial`)
+  - `Magnetische Flussdichte bei einer Spule qualitativ von I, n, l und mu_r abhaengig beschreiben` -> `Magnetfeld von geradem Leiter und Spule` (`partial`)
+  - `Magnetfeldlinienbilder fuer geraden Leiter und Spule skizzieren` -> `Magnetische Felder und Feldlinienbilder` (`partial`)
+  - `Induktionsspannung qualitativ mithilfe des magnetischen Flusses beschreiben` -> `Induktion durch Änderung des magnetischen Flusses` (`partial`)
+  - `Versuche und Diagramme zum Induktionsgesetz bei linearen A- oder B-Aenderungen auswerten` -> `Induktionsgesetz und Lenz’sche Regel` (`partial`)
+  - `Eine technische Anwendung der Induktion qualitativ beschreiben` -> `Technische Anwendungen des Induktionsgesetzes qualitativ beschreiben` (`partial`)
+- the first adjacent Niedersachsen upper-secondary Physics page-36 LK follow-on is now also active:
+  - `Hallspannung aus der Driftgeschwindigkeit anhand einer Skizze herleiten` -> `Hall-Effekt anwenden` (`partial`)
+  - `Induktionsgesetz in differenzieller Form fuer lineare und sinusfoermige Flussaenderungen anwenden` -> `Induktionsgesetz in Differenzialform` (`partial`)
+  - `Selbstinduktion beim Ein- und Ausschalten von Spulen erklaeren und Induktivitaet definieren` -> `Selbstinduktion und Induktivität` (`partial`)
+  - `Energie des magnetischen Feldes einer Spule angeben und Spulen als Energiespeicher beschreiben` -> `Energie gespeicherter Magnetfelder` (`partial`)
+- the first Niedersachsen upper-secondary Physics Q2 oscillation strip is now also active:
+  - `Harmonische Schwingungen grafisch darstellen und mit Auslenkung, Amplitude, Periodendauer und Frequenz beschreiben` -> `Charakteristische Schwingungsgrößen` (`partial`)
+  - `Periodendauer eines Feder-Masse-Pendels angeben und experimentelle Abhaengigkeiten ueberpruefen` -> `Harmonische Schwingung verstehen` (`partial`)
+  - `Lineares Kraftgesetz als Bedingung einer mechanischen harmonischen Schwingung nennen` -> `Lineare Rückstellkraft bei harmonischen Schwingungen beschreiben` (`partial`)
+  - `Energieumwandlungen beim Feder-Masse-Pendel beschreiben` -> `Energie und Energieerhaltung in Schwingungen` (`partial`)
+  - `Gedaempfte Schwingungen in t-s- und t-v-Diagrammen deuten` -> `Gedämpfte Schwingungen beschreiben` (`partial`)
+  - `Resonanz bei erzwungenen Schwingungen anhand eines Experiments erlaeutern` -> `Erzwungene Schwingungen und Resonanz` (`partial`)
+  - `Elektromagnetischen Schwingkreis beschreiben und Schwingungsgroessen aus Messdaten bestimmen` -> `Elektromagnetischen Schwingkreis analysieren` (`partial`)
+  - `Energieumwandlungen und Resonanzkurve im elektromagnetischen Schwingkreis beschreiben` -> `Elektromagnetischen Schwingkreis analysieren` (`partial`)
+  - `Kapazitaetsabhaengigkeit der Eigenschwingung experimentell bestimmen und die Thomsonsche Schwingungsgleichung nennen` -> `Thomson’sche Schwingungsgleichung nutzen` (`partial`)
 - the first committed Niedersachsen Physics applicability cut now also widens the reviewed shared E-phase motion strip for `DE-NI` without introducing new canonical atoms or Niedersachsen-specific Physics composition views
+- the first committed Niedersachsen Physics qualification-phase applicability cut now also widens the shared Q1 strip on `Stromstärke als Ladungstransport`, `Arbeit, Spannung und Potenzial im E-Feld`, `Potenzial und Kondensator`, `Kondensator und Feld im Plattenkondensator`, `Auf- und Entladen eines Kondensators`, and `Energie des elektrischen Feldes`, still without introducing new canonical atoms or Niedersachsen-specific Physics composition views
+- the adjacent committed Niedersachsen Physics qualification-phase magnet strip now also widens the shared Q1 surface on `Magnetisches Feld`, `Magnetische Felder und Feldlinienbilder`, `Kraft auf stromdurchflossene Leiter`, `Lorentzkraft auf freie Ladungen`, and `Geladene Teilchen in homogenen magnetischen Feldern untersuchen`, still without introducing new canonical atoms or Niedersachsen-specific Physics composition views
+- the adjacent committed Niedersachsen Physics qualification-phase induction strip now also widens the shared surface on `Magnetfeld von geradem Leiter und Spule`, `Induktion durch Änderung des magnetischen Flusses`, `Induktionsgesetz und Lenz’sche Regel`, `Technische Anwendungen des Induktionsgesetzes qualitativ beschreiben`, and thereby also on the parent clusters `Induktion und elektromagnetische Schwingungen` and `Q2 Schwingungen, Induktion und mechanische Wellen`, still without introducing new canonical atoms or Niedersachsen-specific Physics composition views
+- the adjacent committed Niedersachsen Physics page-36 LK follow-on now also widens the shared LK surface on `Hall-Effekt anwenden`, `Induktionsgesetz in Differenzialform`, `Selbstinduktion und Induktivität`, and `Energie gespeicherter Magnetfelder`, still without introducing new canonical atoms or Niedersachsen-specific Physics composition views
+- the first committed Niedersachsen Physics oscillation strip now also widens the shared Q2 surface on `Harmonische Schwingung verstehen`, `Charakteristische Schwingungsgrößen`, `Lineare Rückstellkraft bei harmonischen Schwingungen beschreiben`, `Energie und Energieerhaltung in Schwingungen`, `Gedämpfte Schwingungen beschreiben`, `Erzwungene Schwingungen und Resonanz`, `Elektromagnetischen Schwingkreis analysieren`, and `Thomson’sche Schwingungsgleichung nutzen`, still without introducing new canonical atoms or Niedersachsen-specific Physics composition views
 
 Expected first use:
 
@@ -180,5 +225,5 @@ Expected first use:
 - Niedersachsen upper-secondary anchor alignment onto the canonical `E` / `Q` spine
 - the archived Niedersachsen upper-secondary pilot snapshot is now fully atomically bridged on its active E-phase base, on the fully imported gA learning areas `Von der Aenderung zum Bestand - Integralrechnung`, `Die e-Funktion`, `Raumanschauung und Koordinatisierung`, and `Daten und Zufall`, and on the first five fully imported eA learning areas `Von der Aenderung zum Bestand - Integralrechnung`, `Wachstumsmodelle - Exponentialfunktion`, `Raumanschauung und Koordinatisierung`, `Kurvenanpassung und Funktionenscharen`, and `Daten und Zufall`
 - canonical Gymnasium `Physik`
-- Niedersachsen upper-secondary Physics anchor alignment onto the shared motivation leaf, the first reviewed E-phase `Dynamik` strip, and one adjacent E-phase energy strip
-- next reviewed widening should now move to the first equally explicit Niedersachsen qualification-phase anchor such as `Elektrizitaet` or `Schwingungen und Wellen`, unless the remaining sustainability-only Bewertungsblatt inside `Dynamik` is intentionally resolved first
+- Niedersachsen upper-secondary Physics anchor alignment onto the shared motivation leaf, the first reviewed E-phase `Dynamik` strip, one adjacent E-phase energy strip, one first reviewed qualification-phase `Elektrizitaet` strip, one adjacent reviewed magnet-field strip, one adjacent reviewed induction strip, one adjacent LK follow-on on the same page-36 route, and now also one first reviewed Q2 oscillation strip
+- next reviewed widening should now leave the opened `Schwingungen` strip and continue with `Wellen`; the still source-led `Querfeld`/`Wien-Filter` and `Fadenstrahlrohr` residues remain optional only if broader reviewed shared targets become justified

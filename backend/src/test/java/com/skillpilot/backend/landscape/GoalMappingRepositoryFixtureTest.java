@@ -593,9 +593,9 @@ class GoalMappingRepositoryFixtureTest {
         assertThat(file.getVersion()).isEqualTo(1);
         assertThat(file.getSourceLandscapeId()).isEqualTo(NIEDERSACHSEN_PHYSICS_UPPER_SECONDARY_LANDSCAPE_ID);
         assertThat(file.getTargetLandscapeId()).isEqualTo(CANONICAL_PHYSICS_ID);
-        assertThat(file.getMappings()).hasSize(12);
+        assertThat(file.getMappings()).hasSize(44);
         assertThat(file.getMappings()).filteredOn(entry -> "exact".equals(entry.getMatchType())).hasSize(1);
-        assertThat(file.getMappings()).filteredOn(entry -> "partial".equals(entry.getMatchType())).hasSize(11);
+        assertThat(file.getMappings()).filteredOn(entry -> "partial".equals(entry.getMatchType())).hasSize(43);
         assertThat(file.getMappings())
                 .extracting(GoalMappingEntry::getLegacyGoalId, GoalMappingEntry::getCanonicalGoalId, GoalMappingEntry::getMatchType)
                 .containsExactly(
@@ -610,7 +610,39 @@ class GoalMappingRepositoryFixtureTest {
                         Tuple.tuple("07ea623a-5638-4b64-b101-180451d364bd", "accb1d9e-cd48-5983-bcef-9b9bca4a9114", "partial"),
                         Tuple.tuple("292f99ef-0bd8-43df-b9a8-bf47d3293bd1", "7eeff2de-6015-49a6-a96e-a488d886dc9f", "partial"),
                         Tuple.tuple("1f1f08e8-2845-4758-ae2f-f977748d0b5d", "91c49019-ea51-4ce5-a919-c91c45b25e83", "partial"),
-                        Tuple.tuple("c53ea281-1bfb-4e97-8a2a-a81b023ded24", "91c49019-ea51-4ce5-a919-c91c45b25e83", "partial"));
+                        Tuple.tuple("c53ea281-1bfb-4e97-8a2a-a81b023ded24", "91c49019-ea51-4ce5-a919-c91c45b25e83", "partial"),
+                        Tuple.tuple("f32b91d4-8691-408c-9417-8e34e4e3d87b", "0895074d-c4af-56ea-88dd-ae0fdae443ed", "partial"),
+                        Tuple.tuple("81f12b68-a361-4b89-8759-735bb2b2526f", "bbee4c52-4e95-5529-990f-706aa99316a3", "partial"),
+                        Tuple.tuple("7757d083-2261-44bc-99c9-9195d0e38586", "1730c01d-8c85-57df-b031-c11e2a0511b1", "partial"),
+                        Tuple.tuple("afabf0e1-22a9-446d-b84f-d760bb7a28c6", "9f59a088-3939-59e9-821d-167fadfda782", "partial"),
+                        Tuple.tuple("8f272d0a-231d-4646-ae46-29dc67000878", "1730c01d-8c85-57df-b031-c11e2a0511b1", "partial"),
+                        Tuple.tuple("5d1eb42c-1b2c-43e1-a53d-856e817100ed", "0b4f2020-8486-5372-9cb9-6e59f698ac2d", "partial"),
+                        Tuple.tuple("dce1062a-2503-4e99-b30a-a500dd271a2f", "9f59a088-3939-59e9-821d-167fadfda782", "partial"),
+                        Tuple.tuple("7fab7a9c-c2f0-456e-8ede-389aa47257af", "fd9fd8ad-c4a1-5552-9ea0-1878e0636f20", "partial"),
+                        Tuple.tuple("cc2183ef-1878-40da-a00b-5f6c3e4cc1fd", "13e882bd-2fc6-59c6-a2a8-32eb1fbf1751", "partial"),
+                        Tuple.tuple("59da0142-1d54-40b5-bcda-93fded9a3ef5", "0f6b798b-594e-5480-8c5f-95e2486a4d85", "partial"),
+                        Tuple.tuple("90fcb135-5573-43a4-9309-f6f488f9e360", "c6355a22-24cf-5d8b-88af-ea11711460fb", "partial"),
+                        Tuple.tuple("f9525247-5349-4202-96ca-b88eb1fa2cab", "8c9394cb-f54a-508d-9750-4c49e31b3fa9", "partial"),
+                        Tuple.tuple("89b0d282-76a2-44c2-92ea-a1d684b4b1f8", "9854589c-5feb-4942-b90f-311ddf36eb78", "partial"),
+                        Tuple.tuple("17f451db-df50-4aa8-98ec-9760529df3fd", "106417ed-80db-5490-a1ee-bb4160d3f2b4", "partial"),
+                        Tuple.tuple("6287ed0a-90d4-4b1a-bc26-b656de38c916", "106417ed-80db-5490-a1ee-bb4160d3f2b4", "partial"),
+                        Tuple.tuple("aa0c5e7a-4026-47a7-ab7c-331a2eba3115", "0f6b798b-594e-5480-8c5f-95e2486a4d85", "partial"),
+                        Tuple.tuple("3002d429-c5ee-4b49-b00b-a3e49f926895", "1a037489-3c95-540b-8cae-0acd360358ee", "partial"),
+                        Tuple.tuple("82b1744d-940a-4c3b-bef9-b64b72040fa0", "eb1ea150-ec6c-5000-bce3-f46c820dccf8", "partial"),
+                        Tuple.tuple("faf57450-d634-4a43-96ff-0fbeb3c5c12b", "fdcd5faf-f9bf-4fa9-87f4-4e22d8d3387c", "partial"),
+                        Tuple.tuple("2b8672fa-0558-4592-963a-8b5d5ec50699", "b39ae8fb-4358-5866-8adf-3d5365368eeb", "partial"),
+                        Tuple.tuple("dc61b9c2-1c4d-4ac7-bab1-929504433e43", "d18d4190-ddc1-5181-b1b6-e79947b737c2", "partial"),
+                        Tuple.tuple("4c9164a4-aa58-419d-85cf-e39dc5446a83", "37f28bc4-def2-57cf-a06b-191dfd228205", "partial"),
+                        Tuple.tuple("89d75af3-ae18-4417-a0ac-5228639c10f7", "a1389d4e-dc97-5557-babe-a31a2bd57217", "partial"),
+                        Tuple.tuple("a213645d-2f77-4e68-83b6-a84986a6bdff", "d03f1cb6-c224-53db-ad91-76cc7827978d", "partial"),
+                        Tuple.tuple("ade0c38e-ebf6-440f-8f54-e934358ae2fa", "fcf8580c-ecfd-58ea-bbf5-a1b29c9ecf8e", "partial"),
+                        Tuple.tuple("5c426b0f-df26-4bcc-b481-c76058324a16", "05af2893-0201-4d7f-985b-272d7b88e26e", "partial"),
+                        Tuple.tuple("0be87521-0bdd-4d4e-acbc-70be73934d4d", "78cf6eff-b3bc-5444-9ef8-5d39dae8d17d", "partial"),
+                        Tuple.tuple("2fc1c704-0e36-4049-97e3-f7fb99d15f34", "e6895bc3-fcbd-59ad-baef-a78c97a13e11", "partial"),
+                        Tuple.tuple("845db953-8702-4426-96fb-eb90baf7986c", "3efa0cda-f55b-5534-8fac-ffe1d312aed1", "partial"),
+                        Tuple.tuple("57fadc9a-c0ed-419d-8813-9b97d879e7f8", "ac4ba260-6086-5fcc-bea2-c06f1425a1cc", "partial"),
+                        Tuple.tuple("62cc5ced-563a-4f83-88bf-a9a50dde85c2", "ac4ba260-6086-5fcc-bea2-c06f1425a1cc", "partial"),
+                        Tuple.tuple("420a2faf-45bb-4a69-8062-73ec84838e95", "f36a5946-f2a8-59b8-b3bd-a2f246defa4f", "partial"));
     }
 
     @Test

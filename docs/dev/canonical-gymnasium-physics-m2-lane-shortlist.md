@@ -35,10 +35,15 @@ Execution update on `2026-04-11`:
 - `DE-NI` upper-secondary Physics now also has:
   - an active source snapshot
   - provenance-backed membership and closure
-  - a repository-backed mapping lane with `12` reviewed mappings
+  - a repository-backed mapping lane with `44` reviewed mappings
   - one shared orientation anchor
   - one reviewed E-phase `Dynamik` corridor
   - one adjacent reviewed E-phase energy strip on `Kinetische Energie` and `Energieerhaltung`, while the sustainability-only Bewertungsblatt remains source-led
+  - one first reviewed qualification-phase `Elektrizitaet` strip on `Potenzial und Kondensator`, `Stromstärke als Ladungstransport`, `Arbeit, Spannung und Potenzial im E-Feld`, `Kondensator und Feld im Plattenkondensator`, `Auf- und Entladen eines Kondensators`, and `Energie des elektrischen Feldes`
+  - one adjacent reviewed qualification-phase magnet-field strip on `Magnetisches Feld`, `Magnetische Felder und Feldlinienbilder`, `Kraft auf stromdurchflossene Leiter`, `Lorentzkraft auf freie Ladungen`, and `Geladene Teilchen in homogenen magnetischen Feldern untersuchen`, while `Querfeld`/`Wien-Filter` and `Fadenstrahlrohr` remain source-led
+  - one adjacent reviewed qualification-phase induction strip on `Magnetfeld von geradem Leiter und Spule`, `Induktion durch Änderung des magnetischen Flusses`, `Induktionsgesetz und Lenz’sche Regel`, and `Technische Anwendungen des Induktionsgesetzes qualitativ beschreiben`
+  - one adjacent reviewed LK follow-on on `Hall-Effekt anwenden`, `Induktionsgesetz in Differenzialform`, `Selbstinduktion und Induktivität`, and `Energie gespeicherter Magnetfelder`
+  - one first reviewed Q2 oscillation strip on `Harmonische Schwingung verstehen`, `Charakteristische Schwingungsgrößen`, `Lineare Rückstellkraft bei harmonischen Schwingungen beschreiben`, `Energie und Energieerhaltung in Schwingungen`, `Gedämpfte Schwingungen beschreiben`, `Erzwungene Schwingungen und Resonanz`, `Elektromagnetischen Schwingkreis analysieren`, and `Thomson’sche Schwingungsgleichung nutzen`
 
 See also:
 
@@ -68,7 +73,7 @@ What **does** already exist and can be reused:
 
 Operational consequence:
 
-- the next Physics move should now stay on **the active NI lane**, most plausibly on the first equally explicit qualification-phase anchor such as `Elektrizitaet` or `Schwingungen und Wellen`, not on a broad multi-state sweep
+- the next Physics move should now stay on **the active NI lane**, most plausibly on `Wellen`; the older `Querfeld`/`Wien-Filter` and `Fadenstrahlrohr` residues are now secondary cleanup, not the main corridor
 - the first slice should prefer **upper-secondary Physics**, because the canonical Physics graph and composition views are already strongest there
 
 ## 2. Candidate ranking

@@ -8,8 +8,8 @@
   "frameworkId": "ni-kc-gost-physics",
   "title": "Physik Oberstufe (Niedersachsen, Pilot-Quellsnapshot)",
   "titleEn": "Physics Upper Secondary (Lower Saxony, Pilot Source Snapshot)",
-  "description": "Erster archivierter Niedersachsen-Quellsnapshot fuer einen schmalen Oberstufen-Einstiegskorridor Physik. Der Snapshot umfasst einen gemeinsamen Orientierungsanker, einen ersten Einfuehrungsphasen-Korridor `Dynamik` mit freiem Fall, waagerechtem Wurf, Grundgleichung der Mechanik, Newtonschen Axiomen sowie gleichfoermiger Kreisbewegung mit Zentripetalkraft und einen ersten angrenzenden Energie-/Experiment-Streifen derselben KC-Seiten.",
-  "descriptionEn": "First archived Lower Saxony source snapshot for a narrow upper-secondary entry corridor in physics. The snapshot covers one shared orientation anchor, a first introductory-phase `Dynamics` corridor with free fall, horizontal projection, the fundamental equation of mechanics, Newton's laws, and uniform circular motion with centripetal force, plus one first adjacent energy-and-experiment strip from the same curriculum pages.",
+  "description": "Erster archivierter Niedersachsen-Quellsnapshot fuer einen schmalen Oberstufen-Einstiegskorridor Physik. Der Snapshot umfasst einen gemeinsamen Orientierungsanker, einen ersten Einfuehrungsphasen-Korridor `Dynamik` mit freiem Fall, waagerechtem Wurf, Grundgleichung der Mechanik, Newtonschen Axiomen sowie gleichfoermiger Kreisbewegung mit Zentripetalkraft, einen angrenzenden Energie-/Experiment-Streifen derselben KC-Seiten, einen ersten Qualifikationsphasen-Anker `Elektrizitaet` auf den shared Q1-Flaechen Potenzial und Kondensator, einen ersten angrenzenden Magnetfeld-/Elektronenbahn-Streifen derselben Elektrizitaetssequenz, einen page-36-Streifen zu Spule, Hallsonde, Induktionsspannung und ersten LK-Vertiefungen zu Hallspannung, Differenzialform und Selbstinduktion sowie nun auch einen ersten Schwingungs-Streifen zu mechanischen und elektromagnetischen Schwingungen.",
+  "descriptionEn": "First archived Lower Saxony source snapshot for a narrow upper-secondary entry corridor in physics. The snapshot covers one shared orientation anchor, a first introductory-phase `Dynamics` corridor with free fall, horizontal projection, the fundamental equation of mechanics, Newton's laws, and uniform circular motion with centripetal force, an adjacent energy-and-experiment strip from the same curriculum pages, a first qualification-phase `Electricity` anchor on the shared Q1 potential-and-capacitor surfaces, a first adjacent magnetic-field-and-electron-trajectory strip from the same electricity sequence, a page-36 strip on coils, Hall probes, induced voltage, and first advanced-course follow-ons on Hall voltage, differential-form induction, and self-induction, and now also a first oscillation strip on mechanical and electromagnetic oscillations.",
   "compatibilityOnly": true,
   "legacyHiddenByDefault": true,
   "filters": [
@@ -27,26 +27,32 @@
       "id": "044ac6ff-e3ec-4537-8230-b60e61f03609",
       "title": "Physik Oberstufe",
       "titleEn": "Physics Upper Secondary",
-      "description": "Pilot-Subset der niedersaechsischen Physik-Kompetenzen der gymnasialen Oberstufe mit Fokus auf einen ersten gemeinsamen Orientierungsanker, einen schmalen Einfuehrungsphasen-Korridor `Dynamik` und einen ersten angrenzenden Energie-/Experiment-Streifen.",
-      "descriptionEn": "Pilot subset of the Lower Saxony upper-secondary physics competencies with a focus on one shared orientation anchor, a narrow introductory-phase `Dynamics` corridor, and one first adjacent energy-and-experiment strip.",
-      "weight": 11,
+      "description": "Pilot-Subset der niedersaechsischen Physik-Kompetenzen der gymnasialen Oberstufe mit Fokus auf einen ersten gemeinsamen Orientierungsanker, einen schmalen Einfuehrungsphasen-Korridor `Dynamik`, einen angrenzenden Energie-/Experiment-Streifen, einen ersten schmalen Qualifikationsphasen-Anker `Elektrizitaet` mit Potenzial/Kondensator, Magnetfeld-/Elektronenbahn-Basis sowie page-36-Streifen zu Spule, Hallsonde, Induktionsspannung und ersten LK-Vertiefungen zu Hallspannung, Differenzialform und Selbstinduktion und nun auch einen ersten Schwingungs-Streifen zu mechanischen und elektromagnetischen Schwingungen.",
+      "descriptionEn": "Pilot subset of the Lower Saxony upper-secondary physics competencies with a focus on one shared orientation anchor, a narrow introductory-phase `Dynamics` corridor, an adjacent energy-and-experiment strip, a first narrow qualification-phase `Electricity` anchor with potential/capacitor, magnetic-field/electron-trajectory basics, page-36 strips on coils, Hall probes, induced voltage, and first advanced-course follow-ons on Hall voltage, differential-form induction, and self-induction, and now also a first oscillation strip on mechanical and electromagnetic oscillations.",
+      "weight": 43,
       "tags": [
         "E",
         "Q",
         "GK",
         "LK",
         "PilotSubset",
-        "Mechanik"
+        "Mechanik",
+        "Elektrizitaet",
+        "Schwingungen"
       ],
       "contains": [
         "1d6e6519-2db3-433b-b4d9-a615985464d8",
         "2bdc5d32-bc85-42b9-a135-d9548f39e15d",
-        "4d00b658-4c32-4123-96e3-779a186ab031"
+        "4d00b658-4c32-4123-96e3-779a186ab031",
+        "f32b91d4-8691-408c-9417-8e34e4e3d87b",
+        "cc2183ef-1878-40da-a00b-5f6c3e4cc1fd",
+        "80a48714-a00c-4df7-9781-abe13212d1e2",
+        "4f738cef-9b3b-4ebd-83a7-e0723b93256a"
       ],
       "requires": [
         "1d6e6519-2db3-433b-b4d9-a615985464d8"
       ],
-      "sourceRef": "KC Niedersachsen Physik Sek II, 2.2 Einfuehrungs- und Qualifikationsphase sowie Themenbereich `Dynamik`, S. 7 sowie 27-28.",
+      "sourceRef": "KC Niedersachsen Physik Sek II, 2.2 Einfuehrungs- und Qualifikationsphase sowie Themenbereiche `Dynamik`, `Elektrizitaet` und `Schwingungen und Wellen`, S. 7 sowie 27-28 und 33-38.",
       "dimensionTags": {
         "framework": "ni-kc-gost-physics",
         "demandLevel": "AB2",
@@ -304,6 +310,44 @@
       "type": "cluster"
     },
     {
+      "id": "f32b91d4-8691-408c-9417-8e34e4e3d87b",
+      "title": "Qualifikationsphase: Elektrizitaet - Potenzial und Kondensator",
+      "titleEn": "Qualification Phase: Electricity - Potential and Capacitor",
+      "description": "Erster niedersaechsischer Qualifikationsphasen-Anker auf den shared Q1-Flaechen zu Stromstaerke als Ladungstransport, elektrischer Spannung, Plattenkondensator, Energiebilanz im elektrischen Feld sowie Auf- und Entladevorgaengen.",
+      "descriptionEn": "First Lower Saxony qualification-phase anchor on the shared Q1 surfaces for current as charge transport, electric voltage, parallel-plate capacitor, energy balance in electric fields, and charging/discharging processes.",
+      "weight": 7,
+      "tags": [
+        "Q",
+        "GK",
+        "LK",
+        "PilotSubset",
+        "Elektrizitaet",
+        "Kondensator"
+      ],
+      "contains": [
+        "81f12b68-a361-4b89-8759-735bb2b2526f",
+        "7757d083-2261-44bc-99c9-9195d0e38586",
+        "afabf0e1-22a9-446d-b84f-d760bb7a28c6",
+        "8f272d0a-231d-4646-ae46-29dc67000878",
+        "5d1eb42c-1b2c-43e1-a53d-856e817100ed",
+        "dce1062a-2503-4e99-b30a-a500dd271a2f",
+        "7fab7a9c-c2f0-456e-8ede-389aa47257af"
+      ],
+      "requires": [
+        "1d6e6519-2db3-433b-b4d9-a615985464d8"
+      ],
+      "sourceRef": "KC Niedersachsen Physik Sek II, Themenbereich `Elektrizitaet`, S. 33-34.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Elektrizitaet"
+      },
+      "type": "cluster"
+    },
+    {
       "id": "292f99ef-0bd8-43df-b9a8-bf47d3293bd1",
       "title": "Kinetische Energie nennen und in einfachen Situationen berechnen",
       "titleEn": "State Kinetic Energy and Calculate It in Simple Situations",
@@ -332,6 +376,43 @@
         "area": "Kinetische Energie"
       },
       "type": "atomic"
+    },
+    {
+      "id": "cc2183ef-1878-40da-a00b-5f6c3e4cc1fd",
+      "title": "Qualifikationsphase: Elektrizitaet - Magnetfeld und freie Elektronen",
+      "titleEn": "Qualification Phase: Electricity - Magnetic Field and Free Electrons",
+      "description": "Angrenzender niedersaechsischer Qualifikationsphasen-Streifen auf den shared Q1-Flaechen zu Magnetfeldbeschreibung, Leiterkraft, magnetischer Flussdichte sowie einfachen Elektronenbahnen unter Lorentzkraft.",
+      "descriptionEn": "Adjacent Lower Saxony qualification-phase strip on the shared Q1 surfaces for magnetic-field description, force on conductors, magnetic flux density, and simple electron trajectories under Lorentz force.",
+      "weight": 6,
+      "tags": [
+        "Q",
+        "GK",
+        "LK",
+        "PilotSubset",
+        "Elektrizitaet",
+        "Magnetfeld"
+      ],
+      "contains": [
+        "59da0142-1d54-40b5-bcda-93fded9a3ef5",
+        "90fcb135-5573-43a4-9309-f6f488f9e360",
+        "f9525247-5349-4202-96ca-b88eb1fa2cab",
+        "89b0d282-76a2-44c2-92ea-a1d684b4b1f8",
+        "3b71a64f-683a-47df-b656-d8fd430e4c45",
+        "0966258c-1eaa-4c41-8311-17352dcf0ec1"
+      ],
+      "requires": [
+        "1d6e6519-2db3-433b-b4d9-a615985464d8"
+      ],
+      "sourceRef": "KC Niedersachsen Physik Sek II, Themenbereich `Elektrizitaet`, Magnetfeld- und Elektronenbahn-Streifen, S. 35.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Elektrizitaet und Magnetfeld"
+      },
+      "type": "cluster"
     },
     {
       "id": "1f1f08e8-2845-4758-ae2f-f977748d0b5d",
@@ -422,6 +503,1032 @@
         "guidingIdeas": [],
         "phase": "E",
         "area": "Energie und Bewertung"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "59da0142-1d54-40b5-bcda-93fded9a3ef5",
+      "title": "Magnetische Felder mit Kompassnadeln beschreiben und Feldrichtungen bestimmen",
+      "titleEn": "Describe Magnetic Fields with Compass Needles and Determine Field Directions",
+      "description": "Die Schuelerinnen und Schueler beschreiben magnetische Felder durch ihre Wirkung auf Kompassnadeln und ermitteln Richtungen magnetischer Felder in einfachen Situationen.",
+      "descriptionEn": "Students describe magnetic fields through their effect on compass needles and determine magnetic-field directions in simple situations.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "GK",
+        "LK",
+        "Elektrizitaet",
+        "Magnetfeld"
+      ],
+      "contains": [],
+      "requires": [
+        "1d6e6519-2db3-433b-b4d9-a615985464d8"
+      ],
+      "sourceRef": "KC Niedersachsen Physik Sek II, Themenbereich `Elektrizitaet`, Magnetfeld-Streifen, S. 35.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-physics",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Magnetfeld"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "90fcb135-5573-43a4-9309-f6f488f9e360",
+      "title": "Leiterkraft im homogenen Magnetfeld bestimmen und magnetische Flussdichte deuten",
+      "titleEn": "Determine Force on Conductors in a Homogeneous Magnetic Field and Interpret Magnetic Flux Density",
+      "description": "Die Schuelerinnen und Schueler ermitteln Richtung und Betrag der Kraft auf einen stromdurchflossenen Leiter im homogenen Magnetfeld, deuten die magnetische Flussdichte in Analogie zur elektrischen Feldstaerke und ordnen ein Stromwaage-Experiment fachlich ein.",
+      "descriptionEn": "Students determine the direction and magnitude of the force on a current-carrying conductor in a homogeneous magnetic field, interpret magnetic flux density analogously to electric field strength, and classify a current-balance experiment scientifically.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "GK",
+        "LK",
+        "Elektrizitaet",
+        "Magnetfeld"
+      ],
+      "contains": [],
+      "requires": [
+        "59da0142-1d54-40b5-bcda-93fded9a3ef5"
+      ],
+      "sourceRef": "KC Niedersachsen Physik Sek II, Themenbereich `Elektrizitaet`, Magnetfeld-Streifen, S. 35.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Leiterkraft und Flussdichte"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "f9525247-5349-4202-96ca-b88eb1fa2cab",
+      "title": "Lorentzkraft auf freie Elektronen beschreiben und Bahnformen begruenden",
+      "titleEn": "Describe the Lorentz Force on Free Electrons and Justify Trajectory Shapes",
+      "description": "Die Schuelerinnen und Schueler beschreiben die Bewegung freier Elektronen unter Einfluss der Lorentzkraft und begruenden den prinzipiellen Verlauf der zugehoerigen Bahnkurven.",
+      "descriptionEn": "Students describe the motion of free electrons under the influence of the Lorentz force and justify the principal shape of the associated trajectories.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "GK",
+        "LK",
+        "Elektrizitaet",
+        "Magnetfeld",
+        "Elektronen"
+      ],
+      "contains": [],
+      "requires": [
+        "90fcb135-5573-43a4-9309-f6f488f9e360"
+      ],
+      "sourceRef": "KC Niedersachsen Physik Sek II, Themenbereich `Elektrizitaet`, Elektronenbahn-Streifen, S. 35.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Lorentzkraft"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "89b0d282-76a2-44c2-92ea-a1d684b4b1f8",
+      "title": "Elektronenbahnen im homogenen Magnetfeld auf andere geladene Teilchen uebertragen",
+      "titleEn": "Transfer Electron Trajectories in Homogeneous Magnetic Fields to Other Charged Particles",
+      "description": "Die Schuelerinnen und Schueler uebertragen ihre Kenntnisse ueber Elektronenbahnen im homogenen Magnetfeld auf andere geladene Teilchen und deuten einfache Bahnformen qualitativ.",
+      "descriptionEn": "Students transfer their knowledge of electron trajectories in homogeneous magnetic fields to other charged particles and qualitatively interpret simple trajectories.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "GK",
+        "LK",
+        "Elektrizitaet",
+        "Magnetfeld",
+        "Elektronen"
+      ],
+      "contains": [],
+      "requires": [
+        "f9525247-5349-4202-96ca-b88eb1fa2cab"
+      ],
+      "sourceRef": "KC Niedersachsen Physik Sek II, Themenbereich `Elektrizitaet`, Elektronenbahn-Streifen, S. 35.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Teilchenbahnen"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "3b71a64f-683a-47df-b656-d8fd430e4c45",
+      "title": "Freie Elektronen im homogenen elektrischen Querfeld und im Wien-Filter beschreiben",
+      "titleEn": "Describe Free Electrons in a Homogeneous Transverse Electric Field and in the Wien Filter",
+      "description": "Die Schuelerinnen und Schueler beschreiben die Bewegung freier Elektronen unter Einfluss der Kraft im homogenen elektrischen Querfeld und im Wien-Filter und ordnen die dabei auftretenden Bahnformen qualitativ ein.",
+      "descriptionEn": "Students describe the motion of free electrons under the force in a homogeneous transverse electric field and in the Wien filter and classify the resulting trajectories qualitatively.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "GK",
+        "LK",
+        "Elektrizitaet",
+        "Elektronen",
+        "Querfeld"
+      ],
+      "contains": [],
+      "requires": [
+        "f9525247-5349-4202-96ca-b88eb1fa2cab"
+      ],
+      "sourceRef": "KC Niedersachsen Physik Sek II, Themenbereich `Elektrizitaet`, Querfeld-/Wien-Filter-Streifen, S. 35.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Querfeld und Wien-Filter"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "0966258c-1eaa-4c41-8311-17352dcf0ec1",
+      "title": "Spezifische Ladung von Elektronen mit dem Fadenstrahlrohr einordnen",
+      "titleEn": "Classify the Specific Charge of Electrons Using the Fine-Beam Tube",
+      "description": "Die Schuelerinnen und Schueler beschreiben auf erhoehtem Anforderungsniveau das physikalische Prinzip zur Bestimmung der spezifischen Ladung von Elektronen mithilfe des Fadenstrahlrohres und ordnen die zugehoerige Zielgroesse fachlich ein.",
+      "descriptionEn": "At advanced level, students describe the physical principle for determining the specific charge of electrons using the fine-beam tube and classify the associated target quantity scientifically.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "LK",
+        "Elektrizitaet",
+        "Elektronen",
+        "Fadenstrahlrohr"
+      ],
+      "contains": [],
+      "requires": [
+        "89b0d282-76a2-44c2-92ea-a1d684b4b1f8"
+      ],
+      "sourceRef": "KC Niedersachsen Physik Sek II, Themenbereich `Elektrizitaet`, eA-Streifen zum Fadenstrahlrohr, S. 35.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Fadenstrahlrohr"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "80a48714-a00c-4df7-9781-abe13212d1e2",
+      "title": "Qualifikationsphase: Elektrizitaet - Spule, Hallsonde und Induktion",
+      "titleEn": "Qualification Phase: Electricity - Coils, Hall Probe, and Induction",
+      "description": "Angrenzender niedersaechsischer page-36-Streifen auf den shared Q1-/Q2-Flaechen zu Spulenfeldern, Hallsondenmessung, Magnetfeldlinienbildern, erster qualitativer Induktions- und Anwendungseinordnung sowie ersten LK-Vertiefungen zu Hallspannung, Differenzialform und Selbstinduktion.",
+      "descriptionEn": "Adjacent Lower Saxony page-36 strip on the shared Q1/Q2 surfaces for coil fields, Hall-probe measurement, magnetic-field line sketches, a first qualitative induction-and-application entry, and first advanced-course follow-ons on Hall voltage, differential-form induction, and self-induction.",
+      "weight": 10,
+      "tags": [
+        "Q",
+        "GK",
+        "LK",
+        "PilotSubset",
+        "Elektrizitaet",
+        "Magnetfeld",
+        "Induktion"
+      ],
+      "contains": [
+        "17f451db-df50-4aa8-98ec-9760529df3fd",
+        "6287ed0a-90d4-4b1a-bc26-b656de38c916",
+        "aa0c5e7a-4026-47a7-ab7c-331a2eba3115",
+        "3002d429-c5ee-4b49-b00b-a3e49f926895",
+        "82b1744d-940a-4c3b-bef9-b64b72040fa0",
+        "faf57450-d634-4a43-96ff-0fbeb3c5c12b",
+        "2b8672fa-0558-4592-963a-8b5d5ec50699",
+        "dc61b9c2-1c4d-4ac7-bab1-929504433e43",
+        "4c9164a4-aa58-419d-85cf-e39dc5446a83",
+        "89d75af3-ae18-4417-a0ac-5228639c10f7"
+      ],
+      "requires": [
+        "cc2183ef-1878-40da-a00b-5f6c3e4cc1fd"
+      ],
+      "sourceRef": "KC Niedersachsen Physik Sek II, Themenbereich `Elektrizitaet`, Spulen-/Hallsonden-/Induktions-Streifen, S. 36.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Elektrizitaet, Spule und Induktion"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "17f451db-df50-4aa8-98ec-9760529df3fd",
+      "title": "Magnetische Flussdichte bei Spulen mit einer Hallsonde experimentell messen",
+      "titleEn": "Measure Magnetic Flux Density in Coils Experimentally with a Hall Probe",
+      "description": "Die Schuelerinnen und Schueler fuehren Experimente zur Messung der magnetischen Flussdichte bei Spulen mit einer Hallsonde durch und dokumentieren die Beobachtungen fachsprachlich.",
+      "descriptionEn": "Students carry out experiments to measure magnetic flux density in coils using a Hall probe and document their observations in scientific language.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "GK",
+        "LK",
+        "Elektrizitaet",
+        "Magnetfeld",
+        "Spule",
+        "Experiment"
+      ],
+      "contains": [],
+      "requires": [
+        "59da0142-1d54-40b5-bcda-93fded9a3ef5"
+      ],
+      "sourceRef": "KC Niedersachsen Physik Sek II, Themenbereich `Elektrizitaet`, Hallsonden-/Spulen-Streifen, S. 36.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-physics",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Hallsonde und Spule"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "6287ed0a-90d4-4b1a-bc26-b656de38c916",
+      "title": "Magnetische Flussdichte bei einer Spule qualitativ von I, n, l und mu_r abhaengig beschreiben",
+      "titleEn": "Describe Magnetic Flux Density in a Coil Qualitatively as Depending on I, n, l, and mu_r",
+      "description": "Die Schuelerinnen und Schueler beschreiben die magnetische Flussdichte bei einer Spule qualitativ in ihrer Abhaengigkeit von Stromstaerke, Windungszahl, Laenge und Materialfaktor.",
+      "descriptionEn": "Students qualitatively describe how magnetic flux density in a coil depends on current, number of turns, length, and material factor.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "GK",
+        "LK",
+        "Elektrizitaet",
+        "Magnetfeld",
+        "Spule"
+      ],
+      "contains": [],
+      "requires": [
+        "17f451db-df50-4aa8-98ec-9760529df3fd"
+      ],
+      "sourceRef": "KC Niedersachsen Physik Sek II, Themenbereich `Elektrizitaet`, Spulen-Streifen, S. 36.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Spulenmagnetfeld"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "aa0c5e7a-4026-47a7-ab7c-331a2eba3115",
+      "title": "Magnetfeldlinienbilder fuer geraden Leiter und Spule skizzieren",
+      "titleEn": "Sketch Magnetic Field Line Diagrams for a Straight Conductor and a Coil",
+      "description": "Die Schuelerinnen und Schueler skizzieren Magnetfeldlinienbilder fuer einen geraden Leiter und eine Spule und ordnen deren qualitative Feldstruktur fachlich ein.",
+      "descriptionEn": "Students sketch magnetic field line diagrams for a straight conductor and a coil and classify their qualitative field structure scientifically.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "GK",
+        "LK",
+        "Elektrizitaet",
+        "Magnetfeld",
+        "Spule"
+      ],
+      "contains": [],
+      "requires": [
+        "59da0142-1d54-40b5-bcda-93fded9a3ef5"
+      ],
+      "sourceRef": "KC Niedersachsen Physik Sek II, Themenbereich `Elektrizitaet`, Magnetfeldlinien-Streifen fuer Leiter und Spule, S. 36.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-physics",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Magnetfeldlinienbilder"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "3002d429-c5ee-4b49-b00b-a3e49f926895",
+      "title": "Induktionsspannung qualitativ mithilfe des magnetischen Flusses beschreiben",
+      "titleEn": "Describe Induced Voltage Qualitatively Using Magnetic Flux",
+      "description": "Die Schuelerinnen und Schueler beschreiben die Erzeugung einer Induktionsspannung qualitativ mithilfe des magnetischen Flusses und ordnen einfache Versuchsvariationen fachlich ein.",
+      "descriptionEn": "Students describe the generation of an induced voltage qualitatively using magnetic flux and classify simple experimental variations scientifically.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "GK",
+        "LK",
+        "Elektrizitaet",
+        "Induktion"
+      ],
+      "contains": [],
+      "requires": [
+        "aa0c5e7a-4026-47a7-ab7c-331a2eba3115"
+      ],
+      "sourceRef": "KC Niedersachsen Physik Sek II, Themenbereich `Elektrizitaet`, Induktions-Streifen, S. 36.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-physics",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Induktion"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "82b1744d-940a-4c3b-bef9-b64b72040fa0",
+      "title": "Versuche und Diagramme zum Induktionsgesetz bei linearen A- oder B-Aenderungen auswerten",
+      "titleEn": "Evaluate Experiments and Diagrams on the Induction Law for Linear Changes in A or B",
+      "description": "Die Schuelerinnen und Schueler werten geeignete Versuche oder Diagramme zur Ueberpruefung des Induktionsgesetzes fuer lineare Aenderungen von Flaeche oder magnetischer Flussdichte aus.",
+      "descriptionEn": "Students evaluate suitable experiments or diagrams for verifying the induction law for linear changes in area or magnetic flux density.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "GK",
+        "LK",
+        "Elektrizitaet",
+        "Induktion"
+      ],
+      "contains": [],
+      "requires": [
+        "3002d429-c5ee-4b49-b00b-a3e49f926895"
+      ],
+      "sourceRef": "KC Niedersachsen Physik Sek II, Themenbereich `Elektrizitaet`, Induktionsgesetz-Streifen, S. 36.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Induktionsgesetz"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "faf57450-d634-4a43-96ff-0fbeb3c5c12b",
+      "title": "Eine technische Anwendung der Induktion qualitativ beschreiben",
+      "titleEn": "Describe a Technical Application of Induction Qualitatively",
+      "description": "Die Schuelerinnen und Schueler beschreiben ein Beispiel fuer eine technische Anwendung der Induktion qualitativ und ordnen den Nutzen des Prinzips in einem einfachen Sachkontext ein.",
+      "descriptionEn": "Students qualitatively describe one example of a technical application of induction and classify the usefulness of the principle in a simple real-world context.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "GK",
+        "LK",
+        "Elektrizitaet",
+        "Induktion",
+        "Anwendung"
+      ],
+      "contains": [],
+      "requires": [
+        "82b1744d-940a-4c3b-bef9-b64b72040fa0"
+      ],
+      "sourceRef": "KC Niedersachsen Physik Sek II, Themenbereich `Elektrizitaet`, Anwendungs-Streifen zur Induktion, S. 36.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Induktionsanwendungen"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "2b8672fa-0558-4592-963a-8b5d5ec50699",
+      "title": "Hallspannung aus der Driftgeschwindigkeit anhand einer Skizze herleiten",
+      "titleEn": "Derive Hall Voltage from Drift Velocity Using a Sketch",
+      "description": "Die Schuelerinnen und Schueler leiten die Hallspannung in Abhaengigkeit von der Driftgeschwindigkeit anhand einer geeigneten Skizze her und deuten die beteiligten Groessen fachsprachlich.",
+      "descriptionEn": "Students derive the Hall voltage as a function of drift velocity using a suitable sketch and interpret the involved quantities in scientific language.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "LK",
+        "Elektrizitaet",
+        "Magnetfeld",
+        "Hallsonde"
+      ],
+      "contains": [],
+      "requires": [
+        "17f451db-df50-4aa8-98ec-9760529df3fd",
+        "f9525247-5349-4202-96ca-b88eb1fa2cab"
+      ],
+      "sourceRef": "KC Niedersachsen Physik Sek II, Themenbereich `Elektrizitaet`, eA-Streifen zur Hallspannung, S. 36.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Hall-Effekt"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "dc61b9c2-1c4d-4ac7-bab1-929504433e43",
+      "title": "Induktionsgesetz in differenzieller Form fuer lineare und sinusfoermige Flussaenderungen anwenden",
+      "titleEn": "Apply the Law of Induction in Differential Form to Linear and Sinusoidal Flux Changes",
+      "description": "Die Schuelerinnen und Schueler wenden das Induktionsgesetz in differenzieller Form auf lineare und sinusfoermige Verlaeufe des magnetischen Flusses an, begruenden t-U-Diagramme fachlich und stellen technische Bezuege zur Erzeugung von Wechselspannung her.",
+      "descriptionEn": "Students apply the law of induction in differential form to linear and sinusoidal courses of magnetic flux, justify t-U diagrams scientifically, and relate the results to the generation of alternating voltage.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "LK",
+        "Elektrizitaet",
+        "Induktion"
+      ],
+      "contains": [],
+      "requires": [
+        "82b1744d-940a-4c3b-bef9-b64b72040fa0"
+      ],
+      "sourceRef": "KC Niedersachsen Physik Sek II, Themenbereich `Elektrizitaet`, eA-Streifen zur Differenzialform des Induktionsgesetzes, S. 36.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Induktionsgesetz in Differenzialform"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "4c9164a4-aa58-419d-85cf-e39dc5446a83",
+      "title": "Selbstinduktion beim Ein- und Ausschalten von Spulen erklaeren und Induktivitaet definieren",
+      "titleEn": "Explain Self-Induction in Switching Coils On and Off and Define Inductance",
+      "description": "Die Schuelerinnen und Schueler erlaeutern beim Ein- und Ausschalten von Spulen die Vorgaenge der Selbstinduktion und definieren die Induktivitaet als Bauteileigenschaft aus einer Energiebetrachtung.",
+      "descriptionEn": "Students explain the processes of self-induction when coils are switched on and off and define inductance as a component property from an energy perspective.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "LK",
+        "Elektrizitaet",
+        "Induktion",
+        "Spule"
+      ],
+      "contains": [],
+      "requires": [
+        "6287ed0a-90d4-4b1a-bc26-b656de38c916",
+        "82b1744d-940a-4c3b-bef9-b64b72040fa0"
+      ],
+      "sourceRef": "KC Niedersachsen Physik Sek II, Themenbereich `Elektrizitaet`, eA-Streifen zu Selbstinduktion und Induktivitaet, S. 36.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Selbstinduktion und Induktivitaet"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "89d75af3-ae18-4417-a0ac-5228639c10f7",
+      "title": "Energie des magnetischen Feldes einer Spule angeben und Spulen als Energiespeicher beschreiben",
+      "titleEn": "State the Energy of a Coil's Magnetic Field and Describe Coils as Energy Stores",
+      "description": "Die Schuelerinnen und Schueler beschreiben Spulen als Energiespeicher in Analogie zu Kondensatoren und nennen die Gleichung fuer die Energie des magnetischen Feldes einer Spule.",
+      "descriptionEn": "Students describe coils as energy stores analogous to capacitors and state the equation for the energy of a coil's magnetic field.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "LK",
+        "Elektrizitaet",
+        "Induktion",
+        "Spule",
+        "Energie"
+      ],
+      "contains": [],
+      "requires": [
+        "4c9164a4-aa58-419d-85cf-e39dc5446a83"
+      ],
+      "sourceRef": "KC Niedersachsen Physik Sek II, Themenbereich `Elektrizitaet`, eA-Streifen zur Feldenergie der Spule, S. 36.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Magnetfeldenergie"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "4f738cef-9b3b-4ebd-83a7-e0723b93256a",
+      "title": "Qualifikationsphase: Schwingungen - mechanische und elektromagnetische Schwingungen",
+      "titleEn": "Qualification Phase: Oscillations - Mechanical and Electromagnetic Oscillations",
+      "description": "Erster niedersaechsischer Q2-Streifen auf den shared Schwingungsflaechen zu harmonischen mechanischen Schwingungen, Daempfung und Resonanz sowie zum elektromagnetischen Schwingkreis mit Thomson-Bezug.",
+      "descriptionEn": "First Lower Saxony Q2 strip on the shared oscillation surfaces for harmonic mechanical oscillations, damping and resonance, and the electromagnetic oscillating circuit with a Thomson reference.",
+      "weight": 9,
+      "tags": [
+        "Q",
+        "GK",
+        "LK",
+        "PilotSubset",
+        "Schwingungen",
+        "Elektrizitaet"
+      ],
+      "contains": [
+        "a213645d-2f77-4e68-83b6-a84986a6bdff",
+        "ade0c38e-ebf6-440f-8f54-e934358ae2fa",
+        "5c426b0f-df26-4bcc-b481-c76058324a16",
+        "0be87521-0bdd-4d4e-acbc-70be73934d4d",
+        "2fc1c704-0e36-4049-97e3-f7fb99d15f34",
+        "845db953-8702-4426-96fb-eb90baf7986c",
+        "57fadc9a-c0ed-419d-8813-9b97d879e7f8",
+        "62cc5ced-563a-4f83-88bf-a9a50dde85c2",
+        "420a2faf-45bb-4a69-8062-73ec84838e95"
+      ],
+      "requires": [
+        "1d6e6519-2db3-433b-b4d9-a615985464d8"
+      ],
+      "sourceRef": "KC Niedersachsen Physik Sek II, Themenbereich `Schwingungen und Wellen`, erster Schwingungs-Streifen, S. 37-38.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Schwingungen"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "a213645d-2f77-4e68-83b6-a84986a6bdff",
+      "title": "Harmonische Schwingungen grafisch darstellen und mit Auslenkung, Amplitude, Periodendauer und Frequenz beschreiben",
+      "titleEn": "Represent Harmonic Oscillations Graphically and Describe Them Using Displacement, Amplitude, Period, and Frequency",
+      "description": "Die Schuelerinnen und Schueler stellen harmonische Schwingungen grafisch dar und beschreiben sie mithilfe von Auslenkung, Amplitude, Periodendauer und Frequenz.",
+      "descriptionEn": "Students represent harmonic oscillations graphically and describe them using displacement, amplitude, period, and frequency.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "GK",
+        "LK",
+        "Schwingungen",
+        "Mechanik"
+      ],
+      "contains": [],
+      "requires": [
+        "1d6e6519-2db3-433b-b4d9-a615985464d8"
+      ],
+      "sourceRef": "KC Niedersachsen Physik Sek II, Themenbereich `Schwingungen und Wellen`, Schwingungs-Streifen, S. 37.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-physics",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Harmonische Schwingungen"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "ade0c38e-ebf6-440f-8f54-e934358ae2fa",
+      "title": "Periodendauer eines Feder-Masse-Pendels angeben und experimentelle Abhaengigkeiten ueberpruefen",
+      "titleEn": "State the Period of a Mass-Spring Oscillator and Verify Experimental Dependencies",
+      "description": "Die Schuelerinnen und Schueler geben die Gleichung fuer die Periodendauer eines Feder-Masse-Pendels an und ueberpruefen die zugehoerigen Abhaengigkeiten experimentell.",
+      "descriptionEn": "Students state the equation for the period of a mass-spring oscillator and verify the associated dependencies experimentally.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "GK",
+        "LK",
+        "Schwingungen",
+        "Mechanik",
+        "Experiment"
+      ],
+      "contains": [],
+      "requires": [
+        "a213645d-2f77-4e68-83b6-a84986a6bdff"
+      ],
+      "sourceRef": "KC Niedersachsen Physik Sek II, Themenbereich `Schwingungen und Wellen`, Schwingungs-Streifen, S. 37.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Feder-Masse-Pendel"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "5c426b0f-df26-4bcc-b481-c76058324a16",
+      "title": "Lineares Kraftgesetz als Bedingung einer mechanischen harmonischen Schwingung nennen",
+      "titleEn": "State a Linear Force Law as a Condition for a Mechanical Harmonic Oscillation",
+      "description": "Die Schuelerinnen und Schueler nennen auf erhoehtem Anforderungsniveau ein lineares Kraftgesetz als Bedingung fuer die Entstehung einer mechanischen harmonischen Schwingung.",
+      "descriptionEn": "At advanced level, students state a linear force law as a condition for the emergence of a mechanical harmonic oscillation.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "LK",
+        "Schwingungen",
+        "Mechanik"
+      ],
+      "contains": [],
+      "requires": [
+        "ade0c38e-ebf6-440f-8f54-e934358ae2fa"
+      ],
+      "sourceRef": "KC Niedersachsen Physik Sek II, Themenbereich `Schwingungen und Wellen`, eA-Schwingungs-Streifen, S. 37.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Lineares Kraftgesetz"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "0be87521-0bdd-4d4e-acbc-70be73934d4d",
+      "title": "Energieumwandlungen beim Feder-Masse-Pendel beschreiben",
+      "titleEn": "Describe Energy Transformations in a Mass-Spring Oscillator",
+      "description": "Die Schuelerinnen und Schueler beschreiben auf erhoehtem Anforderungsniveau die Schwingung eines Feder-Masse-Pendels mithilfe von Energieumwandlungen.",
+      "descriptionEn": "At advanced level, students describe the oscillation of a mass-spring oscillator using energy transformations.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "LK",
+        "Schwingungen",
+        "Mechanik",
+        "Energie"
+      ],
+      "contains": [],
+      "requires": [
+        "ade0c38e-ebf6-440f-8f54-e934358ae2fa"
+      ],
+      "sourceRef": "KC Niedersachsen Physik Sek II, Themenbereich `Schwingungen und Wellen`, eA-Schwingungs-Streifen, S. 37.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Energieumwandlungen in Schwingungen"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "2fc1c704-0e36-4049-97e3-f7fb99d15f34",
+      "title": "Gedaempfte Schwingungen in t-s- und t-v-Diagrammen deuten",
+      "titleEn": "Interpret Damped Oscillations in Time-Displacement and Time-Velocity Diagrams",
+      "description": "Die Schuelerinnen und Schueler deuten auf erhoehtem Anforderungsniveau die zugehoerigen t-s- und t-v-Diagramme auch bei gedaempften Schwingungen im Spezialfall exponentiell abnehmender Amplitude.",
+      "descriptionEn": "At advanced level, students interpret the corresponding time-displacement and time-velocity diagrams also for damped oscillations in the special case of exponentially decreasing amplitude.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "LK",
+        "Schwingungen",
+        "Mechanik",
+        "Daempfung"
+      ],
+      "contains": [],
+      "requires": [
+        "0be87521-0bdd-4d4e-acbc-70be73934d4d"
+      ],
+      "sourceRef": "KC Niedersachsen Physik Sek II, Themenbereich `Schwingungen und Wellen`, eA-Schwingungs-Streifen, S. 37.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Gedaempfte Schwingungen"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "845db953-8702-4426-96fb-eb90baf7986c",
+      "title": "Resonanz bei erzwungenen Schwingungen anhand eines Experiments erlaeutern",
+      "titleEn": "Explain Resonance in Forced Oscillations Using an Experiment",
+      "description": "Die Schuelerinnen und Schueler erlaeutern auf erhoehtem Anforderungsniveau das Phaenomen Resonanz bei erzwungenen Schwingungen anhand eines Experiments.",
+      "descriptionEn": "At advanced level, students explain the phenomenon of resonance in forced oscillations using an experiment.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "LK",
+        "Schwingungen",
+        "Mechanik",
+        "Resonanz"
+      ],
+      "contains": [],
+      "requires": [
+        "2fc1c704-0e36-4049-97e3-f7fb99d15f34"
+      ],
+      "sourceRef": "KC Niedersachsen Physik Sek II, Themenbereich `Schwingungen und Wellen`, eA-Schwingungs-Streifen, S. 37.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Resonanz"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "57fadc9a-c0ed-419d-8813-9b97d879e7f8",
+      "title": "Elektromagnetischen Schwingkreis beschreiben und Schwingungsgroessen aus Messdaten bestimmen",
+      "titleEn": "Describe an Electromagnetic Oscillating Circuit and Determine Oscillation Quantities from Measurement Data",
+      "description": "Die Schuelerinnen und Schueler beschreiben den Aufbau eines elektromagnetischen Schwingkreises und ermitteln Amplitude, Periodendauer beziehungsweise Frequenz aus vorgelegten Messdaten.",
+      "descriptionEn": "Students describe the structure of an electromagnetic oscillating circuit and determine amplitude, period, and frequency from given measurement data.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "GK",
+        "LK",
+        "Schwingungen",
+        "Elektrizitaet",
+        "Schwingkreis"
+      ],
+      "contains": [],
+      "requires": [
+        "cc2183ef-1878-40da-a00b-5f6c3e4cc1fd",
+        "a213645d-2f77-4e68-83b6-a84986a6bdff"
+      ],
+      "sourceRef": "KC Niedersachsen Physik Sek II, Themenbereich `Schwingungen und Wellen`, elektromagnetischer Schwingkreis, S. 38.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Elektromagnetischer Schwingkreis"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "62cc5ced-563a-4f83-88bf-a9a50dde85c2",
+      "title": "Energieumwandlungen und Resonanzkurve im elektromagnetischen Schwingkreis beschreiben",
+      "titleEn": "Describe Energy Transformations and the Resonance Curve in an Electromagnetic Oscillating Circuit",
+      "description": "Die Schuelerinnen und Schueler beschreiben auf erhoehtem Anforderungsniveau in Analogie zum Feder-Masse-Pendel die Energieumwandlungen in einem Schwingkreis qualitativ und ordnen ein Experiment zur Erzeugung einer Resonanzkurve fachlich ein.",
+      "descriptionEn": "At advanced level, students qualitatively describe the energy transformations in an oscillating circuit by analogy with a mass-spring oscillator and classify an experiment for generating a resonance curve.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "LK",
+        "Schwingungen",
+        "Elektrizitaet",
+        "Schwingkreis",
+        "Resonanz"
+      ],
+      "contains": [],
+      "requires": [
+        "57fadc9a-c0ed-419d-8813-9b97d879e7f8"
+      ],
+      "sourceRef": "KC Niedersachsen Physik Sek II, Themenbereich `Schwingungen und Wellen`, eA-Streifen zum elektromagnetischen Schwingkreis, S. 38.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Energieumwandlungen und Resonanz im Schwingkreis"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "420a2faf-45bb-4a69-8062-73ec84838e95",
+      "title": "Kapazitaetsabhaengigkeit der Eigenschwingung experimentell bestimmen und die Thomsonsche Schwingungsgleichung nennen",
+      "titleEn": "Determine the Capacitance Dependence of Natural Oscillation Experimentally and State Thomson's Oscillation Equation",
+      "description": "Die Schuelerinnen und Schueler ermitteln auf erhoehtem Anforderungsniveau die Abhaengigkeit der Frequenz der Eigenschwingung von der Kapazitaet experimentell anhand eines Resonanzversuchs und nennen die thomsonsche Schwingungsgleichung.",
+      "descriptionEn": "At advanced level, students experimentally determine the dependence of natural oscillation frequency on capacitance using a resonance experiment and state Thomson's oscillation equation.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "LK",
+        "Schwingungen",
+        "Elektrizitaet",
+        "Schwingkreis",
+        "Thomson"
+      ],
+      "contains": [],
+      "requires": [
+        "62cc5ced-563a-4f83-88bf-a9a50dde85c2"
+      ],
+      "sourceRef": "KC Niedersachsen Physik Sek II, Themenbereich `Schwingungen und Wellen`, eA-Streifen zur Thomson-Gleichung, S. 38.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Thomsonsche Schwingungsgleichung"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "81f12b68-a361-4b89-8759-735bb2b2526f",
+      "title": "Zusammenhang zwischen Ladung und elektrischer Stromstaerke beschreiben",
+      "titleEn": "Describe the Relation Between Charge and Electric Current",
+      "description": "Die Schuelerinnen und Schueler beschreiben den Zusammenhang zwischen elektrischer Ladung und elektrischer Stromstaerke und nutzen ihn zur fachsprachlichen Einordnung einfacher Messsituationen.",
+      "descriptionEn": "Students describe the relation between electric charge and electric current and use it to classify simple measurement situations in scientific language.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "GK",
+        "LK",
+        "Elektrizitaet"
+      ],
+      "contains": [],
+      "requires": [
+        "1d6e6519-2db3-433b-b4d9-a615985464d8"
+      ],
+      "sourceRef": "KC Niedersachsen Physik Sek II, Themenbereich `Elektrizitaet`, S. 33.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-physics",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Elektrische Stromstaerke"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "7757d083-2261-44bc-99c9-9195d0e38586",
+      "title": "Elektrische Spannung als Energie pro Ladung deuten",
+      "titleEn": "Interpret Electric Voltage as Energy per Charge",
+      "description": "Die Schuelerinnen und Schueler deuten die elektrische Spannung als pro Ladung uebertragbare Energie und nutzen diese Deutung in einfachen fachlichen Zusammenhaengen.",
+      "descriptionEn": "Students interpret electric voltage as transferable energy per charge and use this interpretation in simple scientific contexts.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "GK",
+        "LK",
+        "Elektrizitaet",
+        "Energie"
+      ],
+      "contains": [],
+      "requires": [
+        "81f12b68-a361-4b89-8759-735bb2b2526f"
+      ],
+      "sourceRef": "KC Niedersachsen Physik Sek II, Themenbereich `Elektrizitaet`, S. 33.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Elektrische Spannung"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "afabf0e1-22a9-446d-b84f-d760bb7a28c6",
+      "title": "Feldstaerke im Plattenkondensator mit der anliegenden Spannung verknuepfen",
+      "titleEn": "Relate Field Strength in a Parallel-Plate Capacitor to the Applied Voltage",
+      "description": "Die Schuelerinnen und Schueler beschreiben den Zusammenhang zwischen der Feldstaerke in einem Plattenkondensator und der anliegenden Spannung und nutzen ihn in einfachen Kontexten.",
+      "descriptionEn": "Students describe the relation between field strength in a parallel-plate capacitor and the applied voltage and use it in simple contexts.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "GK",
+        "LK",
+        "Elektrizitaet",
+        "Kondensator"
+      ],
+      "contains": [],
+      "requires": [
+        "7757d083-2261-44bc-99c9-9195d0e38586"
+      ],
+      "sourceRef": "KC Niedersachsen Physik Sek II, Themenbereich `Elektrizitaet`, S. 34.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Plattenkondensator"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "8f272d0a-231d-4646-ae46-29dc67000878",
+      "title": "Energiebilanz fuer geladene Koerper im elektrischen Feld eines Plattenkondensators angeben",
+      "titleEn": "State the Energy Balance for Charged Bodies in the Electric Field of a Parallel-Plate Capacitor",
+      "description": "Die Schuelerinnen und Schueler geben die Energiebilanz fuer einen freien geladenen Koerper im elektrischen Feld eines Plattenkondensators an und nutzen sie zur Beschreibung einfacher Situationen.",
+      "descriptionEn": "Students state the energy balance for a free charged body in the electric field of a parallel-plate capacitor and use it to describe simple situations.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "GK",
+        "LK",
+        "Elektrizitaet",
+        "Energie"
+      ],
+      "contains": [],
+      "requires": [
+        "afabf0e1-22a9-446d-b84f-d760bb7a28c6"
+      ],
+      "sourceRef": "KC Niedersachsen Physik Sek II, Themenbereich `Elektrizitaet`, S. 34.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Energie im elektrischen Feld"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "5d1eb42c-1b2c-43e1-a53d-856e817100ed",
+      "title": "Auf- und Entladevorgaenge eines Kondensators ueber t-I-Zusammenhaenge beschreiben",
+      "titleEn": "Describe Charging and Discharging Processes of a Capacitor via Time-Current Relations",
+      "description": "Die Schuelerinnen und Schueler beschreiben den t-I-Zusammenhang beim Auf- und Entladevorgang eines Kondensators mithilfe einer Exponentialfunktion und deuten den Einfluss einfacher Parameter qualitativ.",
+      "descriptionEn": "Students describe the time-current relation during charging and discharging of a capacitor using an exponential function and qualitatively interpret the influence of simple parameters.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "GK",
+        "LK",
+        "Elektrizitaet",
+        "Kondensator"
+      ],
+      "contains": [],
+      "requires": [
+        "81f12b68-a361-4b89-8759-735bb2b2526f",
+        "afabf0e1-22a9-446d-b84f-d760bb7a28c6"
+      ],
+      "sourceRef": "KC Niedersachsen Physik Sek II, Themenbereich `Elektrizitaet`, S. 34.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Auf- und Entladen"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "dce1062a-2503-4e99-b30a-a500dd271a2f",
+      "title": "Kapazitaet eines Kondensators grundlegend angeben und in einfachen Bestimmungen nutzen",
+      "titleEn": "State Capacitor Capacitance Basics and Use Them in Simple Determinations",
+      "description": "Die Schuelerinnen und Schueler nennen die Definition der Kapazitaet eines Kondensators und nutzen sie in einfachen experimentellen oder rechnerischen Bestimmungen.",
+      "descriptionEn": "Students state the definition of capacitor capacitance and use it in simple experimental or computational determinations.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "GK",
+        "LK",
+        "Elektrizitaet",
+        "Kondensator"
+      ],
+      "contains": [],
+      "requires": [
+        "afabf0e1-22a9-446d-b84f-d760bb7a28c6"
+      ],
+      "sourceRef": "KC Niedersachsen Physik Sek II, Themenbereich `Elektrizitaet`, S. 34.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-physics",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Kapazitaet"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "7fab7a9c-c2f0-456e-8ede-389aa47257af",
+      "title": "Gleichung fuer die Energie des elektrischen Feldes eines Plattenkondensators nennen",
+      "titleEn": "State the Equation for the Energy of the Electric Field of a Parallel-Plate Capacitor",
+      "description": "Die Schuelerinnen und Schueler nennen die Gleichung fuer die Energie des elektrischen Feldes eines Plattenkondensators und ordnen sie einfachen Kondensator-Kontexten zu.",
+      "descriptionEn": "Students state the equation for the energy of the electric field of a parallel-plate capacitor and relate it to simple capacitor contexts.",
+      "weight": 1,
+      "tags": [
+        "Q",
+        "GK",
+        "LK",
+        "Elektrizitaet",
+        "Energie",
+        "Kondensator"
+      ],
+      "contains": [],
+      "requires": [
+        "7757d083-2261-44bc-99c9-9195d0e38586",
+        "dce1062a-2503-4e99-b30a-a500dd271a2f"
+      ],
+      "sourceRef": "KC Niedersachsen Physik Sek II, Themenbereich `Elektrizitaet`, S. 34.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-physics",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Feldenergie"
       },
       "type": "atomic"
     },
