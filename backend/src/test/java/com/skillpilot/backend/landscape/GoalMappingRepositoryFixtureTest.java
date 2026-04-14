@@ -593,9 +593,9 @@ class GoalMappingRepositoryFixtureTest {
         assertThat(file.getVersion()).isEqualTo(1);
         assertThat(file.getSourceLandscapeId()).isEqualTo(NIEDERSACHSEN_PHYSICS_UPPER_SECONDARY_LANDSCAPE_ID);
         assertThat(file.getTargetLandscapeId()).isEqualTo(CANONICAL_PHYSICS_ID);
-        assertThat(file.getMappings()).hasSize(9);
+        assertThat(file.getMappings()).hasSize(12);
         assertThat(file.getMappings()).filteredOn(entry -> "exact".equals(entry.getMatchType())).hasSize(1);
-        assertThat(file.getMappings()).filteredOn(entry -> "partial".equals(entry.getMatchType())).hasSize(8);
+        assertThat(file.getMappings()).filteredOn(entry -> "partial".equals(entry.getMatchType())).hasSize(11);
         assertThat(file.getMappings())
                 .extracting(GoalMappingEntry::getLegacyGoalId, GoalMappingEntry::getCanonicalGoalId, GoalMappingEntry::getMatchType)
                 .containsExactly(
@@ -607,7 +607,10 @@ class GoalMappingRepositoryFixtureTest {
                         Tuple.tuple("2e476a0b-9a2e-4779-b8e4-478564fde98a", "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20", "partial"),
                         Tuple.tuple("6b7aa8aa-1858-4eec-b451-375637934d5c", "977e7421-0953-4b40-a966-5668b54ed8c9", "partial"),
                         Tuple.tuple("4649db94-9ab8-4bb3-a7a0-bbd1f9722180", "ec7a0a68-730b-5c94-ac72-a937508f8303", "partial"),
-                        Tuple.tuple("07ea623a-5638-4b64-b101-180451d364bd", "accb1d9e-cd48-5983-bcef-9b9bca4a9114", "partial"));
+                        Tuple.tuple("07ea623a-5638-4b64-b101-180451d364bd", "accb1d9e-cd48-5983-bcef-9b9bca4a9114", "partial"),
+                        Tuple.tuple("292f99ef-0bd8-43df-b9a8-bf47d3293bd1", "7eeff2de-6015-49a6-a96e-a488d886dc9f", "partial"),
+                        Tuple.tuple("1f1f08e8-2845-4758-ae2f-f977748d0b5d", "91c49019-ea51-4ce5-a919-c91c45b25e83", "partial"),
+                        Tuple.tuple("c53ea281-1bfb-4e97-8a2a-a81b023ded24", "91c49019-ea51-4ce5-a919-c91c45b25e83", "partial"));
     }
 
     @Test

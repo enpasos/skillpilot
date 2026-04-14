@@ -8,8 +8,8 @@
   "frameworkId": "ni-kc-gost-physics",
   "title": "Physik Oberstufe (Niedersachsen, Pilot-Quellsnapshot)",
   "titleEn": "Physics Upper Secondary (Lower Saxony, Pilot Source Snapshot)",
-  "description": "Erster archivierter Niedersachsen-Quellsnapshot fuer einen schmalen Oberstufen-Einstiegskorridor Physik. Der Snapshot umfasst einen gemeinsamen Orientierungsanker und einen ersten Einfuehrungsphasen-Korridor `Dynamik` mit freiem Fall, waagerechtem Wurf, Grundgleichung der Mechanik, Newtonschen Axiomen sowie gleichfoermiger Kreisbewegung und Zentripetalkraft.",
-  "descriptionEn": "First archived Lower Saxony source snapshot for a narrow upper-secondary entry corridor in physics. The snapshot covers one shared orientation anchor and a first introductory-phase `Dynamics` corridor with free fall, horizontal projection, the fundamental equation of mechanics, Newton's laws, and uniform circular motion together with centripetal force.",
+  "description": "Erster archivierter Niedersachsen-Quellsnapshot fuer einen schmalen Oberstufen-Einstiegskorridor Physik. Der Snapshot umfasst einen gemeinsamen Orientierungsanker, einen ersten Einfuehrungsphasen-Korridor `Dynamik` mit freiem Fall, waagerechtem Wurf, Grundgleichung der Mechanik, Newtonschen Axiomen sowie gleichfoermiger Kreisbewegung mit Zentripetalkraft und einen ersten angrenzenden Energie-/Experiment-Streifen derselben KC-Seiten.",
+  "descriptionEn": "First archived Lower Saxony source snapshot for a narrow upper-secondary entry corridor in physics. The snapshot covers one shared orientation anchor, a first introductory-phase `Dynamics` corridor with free fall, horizontal projection, the fundamental equation of mechanics, Newton's laws, and uniform circular motion with centripetal force, plus one first adjacent energy-and-experiment strip from the same curriculum pages.",
   "compatibilityOnly": true,
   "legacyHiddenByDefault": true,
   "filters": [
@@ -27,9 +27,9 @@
       "id": "044ac6ff-e3ec-4537-8230-b60e61f03609",
       "title": "Physik Oberstufe",
       "titleEn": "Physics Upper Secondary",
-      "description": "Pilot-Subset der niedersaechsischen Physik-Kompetenzen der gymnasialen Oberstufe mit Fokus auf einen ersten gemeinsamen Orientierungsanker und einen schmalen Einfuehrungsphasen-Korridor `Dynamik`.",
-      "descriptionEn": "Pilot subset of the Lower Saxony upper-secondary physics competencies with a focus on one shared orientation anchor and a narrow introductory-phase `Dynamics` corridor.",
-      "weight": 7,
+      "description": "Pilot-Subset der niedersaechsischen Physik-Kompetenzen der gymnasialen Oberstufe mit Fokus auf einen ersten gemeinsamen Orientierungsanker, einen schmalen Einfuehrungsphasen-Korridor `Dynamik` und einen ersten angrenzenden Energie-/Experiment-Streifen.",
+      "descriptionEn": "Pilot subset of the Lower Saxony upper-secondary physics competencies with a focus on one shared orientation anchor, a narrow introductory-phase `Dynamics` corridor, and one first adjacent energy-and-experiment strip.",
+      "weight": 11,
       "tags": [
         "E",
         "Q",
@@ -40,7 +40,8 @@
       ],
       "contains": [
         "1d6e6519-2db3-433b-b4d9-a615985464d8",
-        "2bdc5d32-bc85-42b9-a135-d9548f39e15d"
+        "2bdc5d32-bc85-42b9-a135-d9548f39e15d",
+        "4d00b658-4c32-4123-96e3-779a186ab031"
       ],
       "requires": [
         "1d6e6519-2db3-433b-b4d9-a615985464d8"
@@ -263,6 +264,164 @@
         "guidingIdeas": [],
         "phase": "E",
         "area": "Kreisbewegung"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "4d00b658-4c32-4123-96e3-779a186ab031",
+      "title": "Einfuehrungsphase: Dynamik - Energie und Experimente",
+      "titleEn": "Introductory Phase: Dynamics - Energy and Experiments",
+      "description": "Angrenzender niedersaechsischer Dynamik-Streifen der Einfuehrungsphase zu kinetischer Energie, mechanischer Energieerhaltung, einfachen Energieerhaltungsexperimenten und ersten Werturteilen zur Energienutzung.",
+      "descriptionEn": "Adjacent Lower Saxony introductory-phase dynamics strip on kinetic energy, mechanical energy conservation, simple energy-conservation experiments, and first value judgments on energy use.",
+      "weight": 4,
+      "tags": [
+        "E",
+        "GK",
+        "LK",
+        "PilotSubset",
+        "Mechanik",
+        "Dynamik",
+        "Energie"
+      ],
+      "contains": [
+        "292f99ef-0bd8-43df-b9a8-bf47d3293bd1",
+        "1f1f08e8-2845-4758-ae2f-f977748d0b5d",
+        "c53ea281-1bfb-4e97-8a2a-a81b023ded24",
+        "e4bafbf9-6875-4129-9e40-4aa6a6b35402"
+      ],
+      "requires": [
+        "2bdc5d32-bc85-42b9-a135-d9548f39e15d"
+      ],
+      "sourceRef": "KC Niedersachsen Physik Sek II, Themenbereich `Dynamik`, Energie- und Experiment-Streifen, S. 28.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "E",
+        "area": "Mechanik und Energie"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "292f99ef-0bd8-43df-b9a8-bf47d3293bd1",
+      "title": "Kinetische Energie nennen und in einfachen Situationen berechnen",
+      "titleEn": "State Kinetic Energy and Calculate It in Simple Situations",
+      "description": "Die Schuelerinnen und Schueler nennen die Gleichung fuer die kinetische Energie und berechnen sie in ausgewaehlten einfachen mechanischen Situationen.",
+      "descriptionEn": "Students state the equation for kinetic energy and calculate it in selected simple mechanical situations.",
+      "weight": 1,
+      "tags": [
+        "E",
+        "GK",
+        "LK",
+        "Mechanik",
+        "Dynamik",
+        "Energie"
+      ],
+      "contains": [],
+      "requires": [
+        "89635501-ca3e-424e-9e59-61dc6f1f750e"
+      ],
+      "sourceRef": "KC Niedersachsen Physik Sek II, Themenbereich `Dynamik`, Energie-Streifen, S. 28.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-physics",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "E",
+        "area": "Kinetische Energie"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "1f1f08e8-2845-4758-ae2f-f977748d0b5d",
+      "title": "Energieerhaltungssatz der Mechanik formulieren und in einfachen Situationen nutzen",
+      "titleEn": "Formulate the Mechanical Energy Conservation Principle and Use It in Simple Situations",
+      "description": "Die Schuelerinnen und Schueler formulieren den Energieerhaltungssatz der Mechanik und nutzen ihn in ausgewaehlten einfachen Situationen als Alternative zur Aufgabenloesung.",
+      "descriptionEn": "Students formulate the mechanical energy conservation principle and use it in selected simple situations as an alternative route for solving tasks.",
+      "weight": 1,
+      "tags": [
+        "E",
+        "GK",
+        "LK",
+        "Mechanik",
+        "Dynamik",
+        "Energie"
+      ],
+      "contains": [],
+      "requires": [
+        "292f99ef-0bd8-43df-b9a8-bf47d3293bd1"
+      ],
+      "sourceRef": "KC Niedersachsen Physik Sek II, Themenbereich `Dynamik`, Energie-Streifen, S. 28.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "E",
+        "area": "Energieerhaltung"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "c53ea281-1bfb-4e97-8a2a-a81b023ded24",
+      "title": "Einfache Experimente zum Energieerhaltungssatz planen, durchfuehren und dokumentieren",
+      "titleEn": "Plan, Carry Out, and Document Simple Experiments on Energy Conservation",
+      "description": "Die Schuelerinnen und Schueler planen einfache Experimente zur Ueberpruefung des Energieerhaltungssatzes, fuehren sie durch, dokumentieren die Ergebnisse und argumentieren mithilfe des Energieerhaltungssatzes.",
+      "descriptionEn": "Students plan simple experiments to verify energy conservation, carry them out, document the results, and argue using the principle of energy conservation.",
+      "weight": 1,
+      "tags": [
+        "E",
+        "GK",
+        "LK",
+        "Mechanik",
+        "Dynamik",
+        "Energie",
+        "Experiment"
+      ],
+      "contains": [],
+      "requires": [
+        "1f1f08e8-2845-4758-ae2f-f977748d0b5d"
+      ],
+      "sourceRef": "KC Niedersachsen Physik Sek II, Themenbereich `Dynamik`, Experiment-Streifen zur Energieerhaltung, S. 28.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "E",
+        "area": "Energieexperimente"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "e4bafbf9-6875-4129-9e40-4aa6a6b35402",
+      "title": "Energienutzung und Nachhaltigkeit mit einem einfachen Bewertungsverfahren einordnen",
+      "titleEn": "Assess Energy Use and Sustainability with a Simple Evaluation Procedure",
+      "description": "Die Schuelerinnen und Schueler wenden ein einfaches Bewertungsverfahren auf eine Fragestellung im Zusammenhang mit Nachhaltigkeit an und erarbeiten ein Werturteil zu einer Fragestellung bezueglich der Energienutzung.",
+      "descriptionEn": "Students apply a simple evaluation procedure to a question related to sustainability and develop a value judgment on a question concerning energy use.",
+      "weight": 1,
+      "tags": [
+        "E",
+        "GK",
+        "LK",
+        "Mechanik",
+        "Dynamik",
+        "Energie",
+        "Bewertung"
+      ],
+      "contains": [],
+      "requires": [
+        "1f1f08e8-2845-4758-ae2f-f977748d0b5d"
+      ],
+      "sourceRef": "KC Niedersachsen Physik Sek II, Themenbereich `Dynamik`, Bewertungs-Streifen zu Energienutzung und Nachhaltigkeit, S. 27-28.",
+      "dimensionTags": {
+        "framework": "ni-kc-gost-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "E",
+        "area": "Energie und Bewertung"
       },
       "type": "atomic"
     },

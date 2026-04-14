@@ -32,6 +32,13 @@ Execution update on `2026-04-11`:
   - one first adjacent LF-`Schwingungen` follow-on on the shared canonical Q2 surface plus three exact reviewed leaf bridges on mechanical DGL solving, LC-DGL solving, and independent-oscillation superposition
   - one first adjacent LF-`Wellen` follow-on on two exact reviewed leaf bridges for progressive plane transverse-wave modeling and Hertz-dipole / electromagnetic-radiation transfer
   - one first adjacent LF-`Wellenoptik` follow-on on two exact reviewed leaf bridges for coherent light as electromagnetic wave and the comparison of ray and wave model of light
+- `DE-NI` upper-secondary Physics now also has:
+  - an active source snapshot
+  - provenance-backed membership and closure
+  - a repository-backed mapping lane with `12` reviewed mappings
+  - one shared orientation anchor
+  - one reviewed E-phase `Dynamik` corridor
+  - one adjacent reviewed E-phase energy strip on `Kinetische Energie` and `Energieerhaltung`, while the sustainability-only Bewertungsblatt remains source-led
 
 See also:
 
@@ -61,7 +68,7 @@ What **does** already exist and can be reused:
 
 Operational consequence:
 
-- the next Physics move should now be either **one small adjacent follow-on on the active BW lane**, now most plausibly the quantitative Interferenz-/Fernfeld-streifen inside Leistungsfach `Wellenoptik`, or **one small fifth-state source lane**, not a broad multi-state sweep
+- the next Physics move should now stay on **the active NI lane**, most plausibly on the first equally explicit qualification-phase anchor such as `Elektrizitaet` or `Schwingungen und Wellen`, not on a broad multi-state sweep
 - the first slice should prefer **upper-secondary Physics**, because the canonical Physics graph and composition views are already strongest there
 
 ## 2. Candidate ranking

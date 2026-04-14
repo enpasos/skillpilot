@@ -4,7 +4,7 @@ Status: `P4` (`reviewed_corridors_opened`)
 
 This note records the first Niedersachsen Physics source-landscape identifier for the DE-level canonical Physics rollout.
 
-Activated on `2026-04-13`:
+Activated on `2026-04-13`, widened on `2026-04-14`:
 
 - upper-secondary Gymnasium Physics:
   - `sourceLandscapeId`: `730a6dbb-7ddb-486b-8ac8-dd9e58e3d113`
@@ -18,7 +18,7 @@ Activation result:
 - the Niedersachsen upper-secondary Physics lane is now active in `source-landscape-registry.json`
 - the first Niedersachsen upper-secondary Physics snapshot now contributes real `goalIds` to `source-goal-membership-registry.json`
 - the same snapshot now contributes atomic closures to `source-goal-closure-registry.json`
-- the repository-backed Niedersachsen Physics mapping file now carries `9` reviewed upper-secondary mappings across the current narrow reviewed corridor
+- the repository-backed Niedersachsen Physics mapping file now carries `12` reviewed upper-secondary mappings across the current narrow reviewed corridor
 - the first committed Niedersachsen upper-secondary Physics applicability cut is now active on the shared canonical motivation anchor and on the reviewed E-phase dynamics strip:
   - `Freier Fall experimentell untersuchen`
   - `Gleichmäßig beschleunigte Bewegung und Beschleunigung`
@@ -30,18 +30,23 @@ Activation result:
   - `Kreisbewegungen und Zentripetalkraft`
   - `Bahn- und Winkelgeschwindigkeit`
   - `Kreisbewegung mit Zentripetalkraft anwenden`
-- the first source snapshot is intentionally narrow and source-led:
+- the widened source snapshot is still intentionally narrow and source-led:
   - one shared orientation anchor
   - one Einfuehrungsphasen-Korridor `Dynamik`
   - six imported leaf goals on freier Fall, waagerechter Wurf, Grundgleichung der Mechanik, Newtonsche Axiome, gleichfoermige Kreisbewegung, and Zentripetalkraft
+  - one adjacent E-phase energy/experiment strip with four imported leaves on kinetic energy, mechanical energy conservation, experimental verification, and sustainability-related value judgment
 - the reviewed Niedersachsen Physics corridor stays intentionally conservative:
   - exact bridge on the shared motivation anchor
   - partial bridge on the Niedersachsen E-phase `Dynamik` cluster toward the shared canonical E-phase mechanics surface
   - partial bridges from the imported dynamics leaves onto the existing shared canonical free-fall, horizontal-throw, Newton, and circle-motion targets
+  - new partial bridge from `Kinetische Energie nennen und in einfachen Situationen berechnen` onto the shared canonical leaf `Kinetische Energie`
+  - new partial bridge from `Energieerhaltungssatz der Mechanik formulieren und in einfachen Situationen nutzen` onto the shared canonical leaf `Energieerhaltung`
+  - new partial bridge from `Einfache Experimente zum Energieerhaltungssatz planen, durchfuehren und dokumentieren` onto the shared canonical leaf `Energieerhaltung`
+  - the new source leaf on sustainability-related value judgment stays intentionally source-led, because the currently available shared thermodynamics evaluation surface would overclaim the Niedersachsen wording
   - no Niedersachsen-specific Physics composition views are introduced in this first step
   - no new canonical Physics atoms are introduced just for Niedersachsen wording
 
 Operational rule from here:
 
 - keep the reserved `sourceLandscapeId` stable while broadening the Niedersachsen Physics source snapshot
-- keep the Niedersachsen Physics lane narrow and reviewed; the next clean widening should either close the remaining energy/experiment strip inside `Dynamik` or move to the first equally explicit qualification-phase anchor such as `Elektrizitaet` or `Schwingungen und Wellen`
+- keep the Niedersachsen Physics lane narrow and reviewed; the next clean widening should now move to the first equally explicit qualification-phase anchor such as `Elektrizitaet` or `Schwingungen und Wellen`, unless the remaining sustainability-only Bewertungsblatt inside `Dynamik` is intentionally resolved first

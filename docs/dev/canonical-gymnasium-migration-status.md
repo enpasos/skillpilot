@@ -5818,3 +5818,47 @@ Validation used:
 - `npm run apply:applicability`
 - `npm run validate:view-filters`
 - `./run_ci.sh`
+
+### 2026-04-14: Niedersachsen Physics widens the E-phase dynamics lane onto energy and experiments
+
+What changed:
+
+- the Niedersachsen upper-secondary Physics source snapshot:
+  - `730a6dbb-7ddb-486b-8ac8-dd9e58e3d113`
+  now also contains the adjacent E-phase source cluster:
+  - `4d00b658-4c32-4123-96e3-779a186ab031` (`Einfuehrungsphase: Dynamik - Energie und Experimente`)
+- that new source strip imports four new leaves from the same KC `Dynamik` pages:
+  - `292f99ef-0bd8-43df-b9a8-bf47d3293bd1` (`Kinetische Energie nennen und in einfachen Situationen berechnen`)
+  - `1f1f08e8-2845-4758-ae2f-f977748d0b5d` (`Energieerhaltungssatz der Mechanik formulieren und in einfachen Situationen nutzen`)
+  - `c53ea281-1bfb-4e97-8a2a-a81b023ded24` (`Einfache Experimente zum Energieerhaltungssatz planen, durchfuehren und dokumentieren`)
+  - `e4bafbf9-6875-4129-9e40-4aa6a6b35402` (`Energienutzung und Nachhaltigkeit mit einem einfachen Bewertungsverfahren einordnen`)
+- the repository-backed Niedersachsen Physics mapping lane:
+  - `curricula/DE/Gymnasium/mapping/DE-NI/upper-secondary/ni_physics_upper_secondary_to_canonical_physics.json`
+  now carries `12` reviewed rows instead of `9`
+- the three new reviewed bridges are:
+  - `292f99ef-0bd8-43df-b9a8-bf47d3293bd1` -> `7eeff2de-6015-49a6-a96e-a488d886dc9f` (`Kinetische Energie`) (`partial`)
+  - `1f1f08e8-2845-4758-ae2f-f977748d0b5d` -> `91c49019-ea51-4ce5-a919-c91c45b25e83` (`Energieerhaltung`) (`partial`)
+  - `c53ea281-1bfb-4e97-8a2a-a81b023ded24` -> `91c49019-ea51-4ce5-a919-c91c45b25e83` (`Energieerhaltung`) (`partial`)
+- the fourth new Niedersachsen source leaf:
+  - `e4bafbf9-6875-4129-9e40-4aa6a6b35402`
+  stays intentionally source-led, because the currently available shared thermodynamics evaluation goals would overclaim the narrower Niedersachsen wording on a simple Bewertungsverfahren around Energienutzung and Nachhaltigkeit
+
+Why this cut:
+
+- the active Niedersachsen Physics lane was already anchored on the shared E-phase `Dynamik` strip, and the next clean adjacent move on the same KC pages was the energy/experiment surface on page `28`
+- the three new mapped leaves land conservatively on already existing shared canonical energy goals, so the widening does not need new canonical Physics atoms
+- the sustainability-related Bewertungsblatt was imported into the source snapshot to keep provenance honest, but not forced onto the broader thermodynamics/climate evaluation surface before wider reviewed evidence exists
+
+Validation used:
+
+- `node -e "for (const p of process.argv.slice(1)) JSON.parse(require('fs').readFileSync(p,'utf8'));" ...`
+- `cd app && APPLICABILITY_APPLY_SCOPE=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a npm run apply:applicability`
+- `cd app && npm run validate:view-filters --silent`
+- `cd backend && ./gradlew test --tests 'com.skillpilot.backend.landscape.LandscapeServiceTest' --tests 'com.skillpilot.backend.landscape.GoalMappingRepositoryFixtureTest'`
+- `python3 scripts/render_canonical_physics_bundesland_status.py`
+
+Interpretation:
+
+- Niedersachsen upper-secondary Physics now reaches not only the shared E-phase motion strip but also the first adjacent shared energy strip on `Kinetische Energie` and `Energieerhaltung`
+- the clean move here was to keep the widening on the same explicit KC pages and to avoid inventing a premature Niedersachsen-specific learner-facing view or new canonical Physics atoms
+- the next clean Niedersachsen move should now leave the exhausted E-phase mechanics starter and open the first equally explicit qualification-phase anchor such as `Elektrizitaet` or `Schwingungen und Wellen`, unless the remaining sustainability-only Bewertungsblatt is intentionally resolved first

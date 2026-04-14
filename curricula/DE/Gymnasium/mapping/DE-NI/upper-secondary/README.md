@@ -167,6 +167,11 @@ Current status on `2026-04-13`:
   - `Die drei newtonschen Axiome erlaeutern` -> `Die drei Newtonschen Axiome benennen und erklären` (`partial`)
   - `Gleichfoermige Kreisbewegung mit Umlaufdauer, Bahngeschwindigkeit und Zentripetalbeschleunigung beschreiben` -> `Bahn- und Winkelgeschwindigkeit` (`partial`)
   - `Zentripetalkraft in einfachen Aufgaben anwenden` -> `Kreisbewegung mit Zentripetalkraft anwenden` (`partial`)
+- one adjacent Niedersachsen upper-secondary Physics E-phase `Dynamik` energy strip is now also active:
+  - `Kinetische Energie nennen und in einfachen Situationen berechnen` -> `Kinetische Energie` (`partial`)
+  - `Energieerhaltungssatz der Mechanik formulieren und in einfachen Situationen nutzen` -> `Energieerhaltung` (`partial`)
+  - `Einfache Experimente zum Energieerhaltungssatz planen, durchfuehren und dokumentieren` -> `Energieerhaltung` (`partial`)
+  - `Energienutzung und Nachhaltigkeit mit einem einfachen Bewertungsverfahren einordnen` remains intentionally source-led, because the currently available shared thermodynamics evaluation goals would overclaim the Niedersachsen wording
 - the first committed Niedersachsen Physics applicability cut now also widens the reviewed shared E-phase motion strip for `DE-NI` without introducing new canonical atoms or Niedersachsen-specific Physics composition views
 
 Expected first use:
@@ -175,5 +180,5 @@ Expected first use:
 - Niedersachsen upper-secondary anchor alignment onto the canonical `E` / `Q` spine
 - the archived Niedersachsen upper-secondary pilot snapshot is now fully atomically bridged on its active E-phase base, on the fully imported gA learning areas `Von der Aenderung zum Bestand - Integralrechnung`, `Die e-Funktion`, `Raumanschauung und Koordinatisierung`, and `Daten und Zufall`, and on the first five fully imported eA learning areas `Von der Aenderung zum Bestand - Integralrechnung`, `Wachstumsmodelle - Exponentialfunktion`, `Raumanschauung und Koordinatisierung`, `Kurvenanpassung und Funktionenscharen`, and `Daten und Zufall`
 - canonical Gymnasium `Physik`
-- Niedersachsen upper-secondary Physics anchor alignment onto the shared motivation leaf and the first reviewed E-phase `Dynamik` strip
-- next reviewed widening should move to the next Niedersachsen lower-secondary geometry / algebra corridor unless a separate Berufliches-Gymnasium lane is opened intentionally, because the first shared general-Gymnasium upper-secondary pilot surface is now exhausted
+- Niedersachsen upper-secondary Physics anchor alignment onto the shared motivation leaf, the first reviewed E-phase `Dynamik` strip, and one adjacent E-phase energy strip
+- next reviewed widening should now move to the first equally explicit Niedersachsen qualification-phase anchor such as `Elektrizitaet` or `Schwingungen und Wellen`, unless the remaining sustainability-only Bewertungsblatt inside `Dynamik` is intentionally resolved first
