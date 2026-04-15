@@ -22,6 +22,14 @@ export interface RuntimeCompositionScope extends GoalPlacementContext {
 
 const normalizeComparableToken = (value?: string) => value?.trim().toUpperCase() ?? ''
 
+const getStructuralTreeOrder = (goal: UiGoal) =>
+  typeof goal.extendedData?.treeOrder === 'number'
+    ? goal.extendedData.treeOrder
+    : Number.MAX_SAFE_INTEGER
+
+const isSyntheticProgramUnit = (goal: UiGoal) =>
+  (goal.tags ?? []).includes(SYNTHETIC_PROGRAM_UNIT_TAG)
+
 const normalizeCourseProfileScope = (value?: string) => {
   const normalized = normalizeComparableToken(value)
   if (normalized === 'ALL') return 'GK+LK'
@@ -51,6 +59,183 @@ const isStageAnchorGoal = (goal: UiGoal, stage?: string) => {
   }
 
   return false
+}
+
+const extractScopeToken = (goal: Pick<UiGoal, 'title' | 'phase'> | undefined): string | undefined => {
+  if (!goal) return undefined
+
+  const normalizedPhase = normalizeComparableToken(goal.phase)
+  if (/^J([5-9]|10)$/u.test(normalizedPhase)) {
+    return normalizedPhase
+  }
+  if (/^(E|Q[1-4]|ABITUR)$/u.test(normalizedPhase)) {
+    return normalizedPhase
+  }
+
+  const normalizedTitle = normalizeComparableToken(goal.title)
+  const yearMatch = /^JAHRGANG(?:SSTUFE)?\s+([5-9]|10)\b/u.exec(normalizedTitle)
+  if (yearMatch) {
+    return `J${yearMatch[1]}`
+  }
+
+  if (normalizedTitle.startsWith('E-PHASE')) {
+    return 'E'
+  }
+
+  const qMatch = /^Q([1-4])(?:\b|[.\s:\-–(])/u.exec(normalizedTitle)
+  if (qMatch) {
+    return `Q${qMatch[1]}`
+  }
+
+  return undefined
+}
+
+const isExplicitScopeAnchor = (goal: UiGoal, scopeToken?: string) => {
+  if (!scopeToken) return false
+  const normalizedTitle = normalizeComparableToken(goal.title)
+  if (scopeToken.startsWith('J')) {
+    return normalizedTitle === `JAHRGANGSSTUFE ${scopeToken.slice(1)}`
+      || normalizedTitle === `JAHRGANG ${scopeToken.slice(1)}`
+      || normalizedTitle === scopeToken
+  }
+  if (scopeToken === 'E') {
+    return normalizedTitle === 'E-PHASE' || normalizedTitle === 'E'
+  }
+  if (/^Q[1-4]$/u.test(scopeToken)) {
+    return normalizedTitle === scopeToken
+  }
+  return false
+}
+
+const collectReachableGoalIds = (goalById: Map<string, UiGoal>) => {
+  const reachable = new Set<string>()
+  const stack = Array.from(goalById.values())
+    .filter((goal) => (goal.tags ?? []).includes(ROOT_TAG))
+    .map((goal) => goal.id)
+
+  while (stack.length > 0) {
+    const goalId = stack.pop()
+    if (!goalId || reachable.has(goalId)) continue
+    reachable.add(goalId)
+    const goal = goalById.get(goalId)
+    if (!goal) continue
+    ;(goal.contains ?? []).forEach((childId) => {
+      if (!reachable.has(childId)) {
+        stack.push(childId)
+      }
+    })
+  }
+
+  return reachable
+}
+
+const buildParentIdsByChild = (goalById: Map<string, UiGoal>) => {
+  const parentIdsByChild = new Map<string, string[]>()
+  goalById.forEach((goal) => {
+    ;(goal.contains ?? []).forEach((childId) => {
+      const parentIds = parentIdsByChild.get(childId) ?? []
+      parentIds.push(goal.id)
+      parentIdsByChild.set(childId, parentIds)
+    })
+  })
+  return parentIdsByChild
+}
+
+const compareSupplementCandidates = (
+  left: { goal: UiGoal; distance: number },
+  right: { goal: UiGoal; distance: number },
+) => {
+  if (left.distance !== right.distance) {
+    return left.distance - right.distance
+  }
+
+  const leftIsCompositionStructure = isSyntheticProgramUnit(left.goal) && left.goal.extendedData?.syntheticStructureKind === 'compositionView'
+  const rightIsCompositionStructure = isSyntheticProgramUnit(right.goal) && right.goal.extendedData?.syntheticStructureKind === 'compositionView'
+  if (leftIsCompositionStructure !== rightIsCompositionStructure) {
+    return leftIsCompositionStructure ? -1 : 1
+  }
+
+  const leftIsSynthetic = isSyntheticProgramUnit(left.goal)
+  const rightIsSynthetic = isSyntheticProgramUnit(right.goal)
+  if (leftIsSynthetic !== rightIsSynthetic) {
+    return leftIsSynthetic ? -1 : 1
+  }
+
+  const leftTreeOrder = getStructuralTreeOrder(left.goal)
+  const rightTreeOrder = getStructuralTreeOrder(right.goal)
+  if (leftTreeOrder !== rightTreeOrder) {
+    return leftTreeOrder - rightTreeOrder
+  }
+
+  return left.goal.title.localeCompare(right.goal.title, undefined, { sensitivity: 'base' })
+}
+
+const findBestReachableScopeParentId = (
+  routeGoal: UiGoal,
+  goalById: Map<string, UiGoal>,
+  reachableGoalIds: Set<string>,
+) => {
+  const routeScopeToken = extractScopeToken(routeGoal)
+  if (!routeScopeToken) return undefined
+
+  const candidates = Array.from(reachableGoalIds)
+    .map((goalId) => goalById.get(goalId))
+    .filter((goal): goal is UiGoal => !!goal)
+    .filter((goal) => extractScopeToken(goal) === routeScopeToken)
+    .map((goal) => ({ goal, distance: 0 }))
+    .sort(compareSupplementCandidates)
+
+  return candidates[0]?.goal.id
+}
+
+const findBestSupplementAnchorId = ({
+  routeGoalId,
+  routeGoal,
+  targetParentId,
+  goalById,
+  reachableGoalIds,
+  parentIdsByChild,
+}: {
+  routeGoalId: string
+  routeGoal: UiGoal
+  targetParentId: string
+  goalById: Map<string, UiGoal>
+  reachableGoalIds: Set<string>
+  parentIdsByChild: Map<string, string[]>
+}) => {
+  const routeScopeToken = extractScopeToken(routeGoal)
+  const queue: Array<{ goalId: string; distance: number }> = [{ goalId: routeGoalId, distance: 0 }]
+  const visited = new Set<string>([routeGoalId])
+  const candidates: Array<{ goal: UiGoal; distance: number }> = []
+
+  while (queue.length > 0) {
+    const current = queue.shift()
+    if (!current) continue
+    const currentGoal = goalById.get(current.goalId)
+    if (!currentGoal) continue
+
+    if (
+      current.goalId !== targetParentId
+      && current.goalId !== routeGoalId
+      && (currentGoal.contains ?? []).length > 0
+      && !isExplicitScopeAnchor(currentGoal, routeScopeToken)
+    ) {
+      candidates.push({ goal: currentGoal, distance: current.distance })
+    }
+
+    const parentIds = parentIdsByChild.get(current.goalId) ?? []
+    parentIds.forEach((parentId) => {
+      if (visited.has(parentId) || reachableGoalIds.has(parentId)) return
+      visited.add(parentId)
+      queue.push({ goalId: parentId, distance: current.distance + 1 })
+    })
+  }
+
+  if (candidates.length > 0) {
+    return candidates.sort(compareSupplementCandidates)[0]?.goal.id
+  }
+
+  return routeGoalId !== targetParentId ? routeGoalId : undefined
 }
 
 const stripRootTag = (goal: UiGoal): UiGoal => ({
@@ -545,6 +730,66 @@ export const compositionViewExposesGoal = (
   return view.rootNodes.some((node) =>
     compositionViewNodeExposesGoal(node, targetGoalIds, goalByIdAcrossEntries, rootGoalIdByLandscapeId, cache),
   )
+}
+
+export const applyMatchedCompositionRouteGoalProjection = (
+  entries: LandscapeEntry[],
+  routeGoalId?: string | null,
+): LandscapeEntry[] => {
+  if (!routeGoalId) return entries
+
+  return entries.map((entry) => {
+    const goalById = new Map(entry.goals.map((goal) => [goal.id, goal] as const))
+    const routeGoal = goalById.get(routeGoalId)
+    if (!routeGoal) {
+      return entry
+    }
+
+    const reachableGoalIds = collectReachableGoalIds(goalById)
+    if (reachableGoalIds.has(routeGoalId)) {
+      return entry
+    }
+
+    const targetParentId = findBestReachableScopeParentId(routeGoal, goalById, reachableGoalIds)
+    if (!targetParentId) {
+      return entry
+    }
+
+    const parentIdsByChild = buildParentIdsByChild(goalById)
+    const supplementalAnchorId = findBestSupplementAnchorId({
+      routeGoalId,
+      routeGoal,
+      targetParentId,
+      goalById,
+      reachableGoalIds,
+      parentIdsByChild,
+    })
+    if (!supplementalAnchorId) {
+      return entry
+    }
+
+    const targetParent = goalById.get(targetParentId)
+    if (!targetParent || (targetParent.contains ?? []).includes(supplementalAnchorId)) {
+      return entry
+    }
+
+    const clonedGoals = entry.goals.map((goal) =>
+      goal.id === targetParentId
+        ? {
+          ...goal,
+          contains: [...(goal.contains ?? []), supplementalAnchorId],
+        }
+        : {
+          ...goal,
+          contains: Array.isArray(goal.contains) ? [...goal.contains] : [],
+        },
+    )
+
+    return {
+      ...entry,
+      goals: clonedGoals,
+    }
+  })
 }
 
 export const applyCompositionViewProjection = (

@@ -1,6 +1,6 @@
 # Canonical Gymnasium Physics Parity Plan
 
-Snapshot: `2026-04-11`
+Snapshot: `2026-04-15`
 
 This document tracks the path for bringing canonical DE Gymnasium Physics to the same operational level as canonical Mathematics.
 
@@ -40,7 +40,7 @@ It does not mean Physics must immediately have `800` goals, `70` composition vie
 
 ## 2. Current state
 
-Observed repository state on `2026-04-11` after the current hardening and BW rollout step:
+Observed repository state on `2026-04-15` after the current hardening, BW rollout, and Berlin first-entry activation:
 
 | Area | Mathematics | Physics | Comment |
 | --- | ---: | ---: | --- |
@@ -52,7 +52,7 @@ Observed repository state on `2026-04-11` after the current hardening and BW rol
 | `competencyCatalog` entries | `6` | `5` | Physics now has reviewed process-competency entries |
 | goals with `competencyRefs` | `52` | `17` | focused reviewed coverage, not bulk-stamped |
 | composition views | `70` | `13` | Physics now has DE-wide + `DE-HE` + `DE-BY` reviewed views |
-| committed mapping files | `31` | `4` | Physics has Hessen Sek I, Hessen Sek II, Bavaria Gymnasium, Baden-Wuerttemberg upper-secondary |
+| committed mapping files | `31` | `5` | Physics has Hessen Sek I, Hessen Sek II, Bavaria Gymnasium, Baden-Wuerttemberg upper-secondary, and Berlin upper-secondary |
 
 Relevant Physics files:
 
@@ -67,6 +67,7 @@ Relevant Physics files:
   - `curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_physics_upper_secondary_to_canonical_physics.json`
   - `curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_physics_to_canonical_physics.json`
   - `curricula/DE/Gymnasium/mapping/DE-BW/upper-secondary/bw_physics_upper_secondary_to_canonical_physics.json`
+  - `curricula/DE/Gymnasium/mapping/DE-BE/upper-secondary/be_physics_upper_secondary_to_canonical_physics.json`
 - registry-backed provenance/applicability:
   - `curricula/DE/Gymnasium/provenance/canonical-goal-provenance-registry.json`
   - `curricula/DE/Gymnasium/provenance/canonical-goal-applicability-override-registry.json`
@@ -133,6 +134,8 @@ Required outcome:
   - `DE-NW` upper-secondary Physics source snapshot + registry activation + mapping scaffold
 - the next concrete post-`M1` lane now also exists as an active DE-level source lane with one first reviewed corridor:
   - `DE-BW` upper-secondary Physics source snapshot + registry activation + first reviewed field corridor
+- the first concrete fifth-state lane now also exists as an active DE-level source lane with one first reviewed corridor:
+  - `DE-BE` upper-secondary Physics source snapshot + registry activation + first reviewed Q1 field/capacitor corridor
 - once a third active Physics state becomes real on the canonical path, a stable rollout tracker is introduced:
   - `curricula/DE/Gymnasium/provenance/physics-bundesland-rollout-tracker.json`
 
@@ -143,7 +146,7 @@ The remaining Physics-vs-Math gap is now mainly this:
 - fewer reviewed Bundesland source lanes
 - fewer learner-facing state-scoped composition views
 - narrower `shortKey` and `competencyRefs` coverage
-- the Physics-specific Bundesland rollout tracker is now present for the active Hessen/Bayern/Nordrhein-Westfalen/Baden-Wuerttemberg surface
+- the Physics-specific Bundesland rollout tracker is now present for the active Hessen/Bayern/Nordrhein-Westfalen/Baden-Wuerttemberg/Berlin surface
 
 ## 4. Work packages
 

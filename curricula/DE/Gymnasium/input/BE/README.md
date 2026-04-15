@@ -35,4 +35,12 @@ Das LISUM gibt gemeinsame Rahmenlehrpläne für Berlin und Brandenburg heraus.
 - **Rahmenlehrplan Teil C Physik (ab 2015/2017)**: [Bildungsserver BE/BB - Physik Sek I](https://bildungsserver.berlin-brandenburg.de/rlp-online/teil-c-faecher/physik)
 
 ### Sekundarstufe II (Gymnasiale Oberstufe)
+- Archiviert:
+  `curricula/DE/Gymnasium/input/BE/upper-secondary/Teil_C_RLP_GOST_2022_Physik.pdf`
+- Aktiver Source-Snapshot:
+  `curricula/DE/Gymnasium/input/BE/upper-secondary/source-json/DE_BER_S_GYM_2_PHYSIK.de.json.snapshot`
+- Aktiver Pilotumfang:
+  gemeinsamer Orientierungsanker, struktureller `Q1`-Anker `Gravitationsfeld, elektrisches und magnetisches Feld`, erster reviewed `Q1`-Einstiegskorridor `Elektrisches Feld und Kondensator` sowie erster reviewed `3.2.1`-Follow-on `Magnetfeld und Lorentzkraft`
 - **Rahmenlehrplan gymnasiale Oberstufe Teil C Physik (ab 2022/23)**: [Bildungsserver BE/BB - Physik Sek II](https://bildungsserver.berlin-brandenburg.de/rlp-online/gymnasiale-oberstufe/teil-c-faecher/physik)
+- Hinweis:
+  gemeinsamer BE/BB-Rahmenlehrplan, der hier zunaechst als Berliner retained source lane mit schmaler Berlin-spezifischer Mapping-Lane aktiviert ist

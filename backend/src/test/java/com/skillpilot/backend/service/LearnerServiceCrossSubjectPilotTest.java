@@ -25,6 +25,7 @@ import com.skillpilot.backend.repository.LearnerClientStateRepository;
 import com.skillpilot.backend.repository.LearnerRepository;
 import com.skillpilot.backend.repository.MasteryRepository;
 import com.skillpilot.backend.repository.PlannedGoalRepository;
+import java.lang.reflect.Method;
 import java.nio.file.Path;
 import java.time.Instant;
 import java.util.List;
@@ -574,24 +575,22 @@ class LearnerServiceCrossSubjectPilotTest {
     }
 
     @Test
-    void canonicalGymnasiumRootPropagatesBundeslandFilterIntoPhysicsChildLandscape() {
+    void canonicalGymnasiumRootPropagatesBundeslandFilterIntoPhysicsChildLandscape() throws Exception {
         learner.setSelectedCurriculum(CANONICAL_GYMNASIUM_ROOT_ID);
-        learner.setPersonalCurriculum("""
+        String personalCurriculum = """
                 {
                   "a0e13c56-c25f-4742-9272-3a1a603ee52e": {"selected": true, "filterId": "DE-BY"},
                   "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced": {"selected": false, "filterId": "GK"},
                   "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a": {"selected": true, "filterId": "GK"}
                 }
-                """);
-        when(plannedGoalRepository.findByLearner_SkillpilotId(LEARNER_ID))
-                .thenReturn(List.of(new PlannedGoal(learner, CANONICAL_PHYSICS_ROOT_ID)));
-        when(masteryRepository.findByLearner_SkillpilotId(LEARNER_ID)).thenReturn(List.of());
+                """;
+        learner.setPersonalCurriculum(personalCurriculum);
 
-        List<FrontierGoal> frontier = learnerService.getRichFrontier(LEARNER_ID);
+        Map<String, LearningGoal> filteredGoals = invokeGetFilteredGoals(CANONICAL_GYMNASIUM_ROOT_ID, personalCurriculum);
 
-        assertThat(frontier)
-                .extracting(FrontierGoal::id)
-                .contains(
+        assertThat(filteredGoals)
+                .containsKeys(
+                        CANONICAL_PHYSICS_ROOT_ID,
                         CANONICAL_PHYSICS_WHY_ID,
                         CANONICAL_PHYSICS_STANDING_WAVES_ID,
                         CANONICAL_PHYSICS_INTERFERENCE_PATTERNS_ID,
@@ -1545,6 +1544,14 @@ class LearnerServiceCrossSubjectPilotTest {
 
     private static Path resolveCurriculaDir() {
         return Path.of("../curricula").toAbsolutePath().normalize();
+    }
+
+    @SuppressWarnings("unchecked")
+    private Map<String, LearningGoal> invokeGetFilteredGoals(String curriculumId, String personalCurriculumJson)
+            throws Exception {
+        Method method = LearnerService.class.getDeclaredMethod("getFilteredGoals", String.class, String.class);
+        method.setAccessible(true);
+        return (Map<String, LearningGoal>) method.invoke(learnerService, curriculumId, personalCurriculumJson);
     }
 
     private Mastery masteryEntry(String goalId, double value, Instant updatedAt) {

@@ -1,0 +1,481 @@
+{
+  "landscapeId": "8e54a9e6-dd9d-4f5d-a632-734b4ef5c754",
+  "locale": "de-DE",
+  "country": "DE",
+  "region": "BE",
+  "schoolType": "Gymnasium",
+  "subject": "Physik",
+  "frameworkId": "be-bb-rlp-gost-physics",
+  "title": "Physik Oberstufe (Berlin, Pilot-Quellsnapshot)",
+  "titleEn": "Physics Upper Secondary (Berlin, Pilot Source Snapshot)",
+  "description": "Erster archivierter Berlin-Quellsnapshot fuer die gymnasiale Oberstufe Physik. Der Snapshot aktiviert einen gemeinsamen Orientierungsanker, den strukturellen Q1-Anker `Gravitationsfeld, elektrisches und magnetisches Feld` sowie zwei reviewed Teilkorridore auf der retained `3.2.1`-Route: `Elektrisches Feld und Kondensator` und `Magnetfeld und Lorentzkraft`.",
+  "descriptionEn": "First archived Berlin source snapshot for upper-secondary physics. The snapshot activates a shared orientation anchor, the structural Q1 anchor `Gravitational, electric, and magnetic field`, and two reviewed sub-corridors on the retained `3.2.1` route: `Electric field and capacitor` and `Magnetic field and Lorentz force`.",
+  "compatibilityOnly": true,
+  "legacyHiddenByDefault": true,
+  "filters": [
+    {
+      "id": "GK",
+      "label": "Grundkurs"
+    },
+    {
+      "id": "LK",
+      "label": "Leistungskurs"
+    }
+  ],
+  "goals": [
+    {
+      "id": "c1505165-44da-4f45-9f40-4830c422f5c7",
+      "title": "Physik Oberstufe",
+      "titleEn": "Physics Upper Secondary",
+      "description": "Pilot-Subset der Berliner Physik-Oberstufe mit Fokus auf einem gemeinsamen Orientierungsanker, einem strukturellen Q1-Anker `Gravitationsfeld, elektrisches und magnetisches Feld` sowie zwei reviewed Teilkorridoren `Elektrisches Feld und Kondensator` und `Magnetfeld und Lorentzkraft`.",
+      "descriptionEn": "Pilot subset of Berlin upper-secondary physics focusing on a shared orientation anchor, a structural Q1 anchor `Gravitational, electric, and magnetic field`, and two reviewed sub-corridors `Electric field and capacitor` and `Magnetic field and Lorentz force`.",
+      "weight": 12,
+      "tags": [
+        "Q1",
+        "GK",
+        "LK",
+        "PilotSubset",
+        "ElektrischesFeld",
+        "Kondensator",
+        "Magnetfeld",
+        "Lorentzkraft"
+      ],
+      "contains": [
+        "51a83f9a-41b1-4d5c-bf3e-08eb32f0ab54",
+        "4b9f9228-ca7e-4b37-bf4c-1481baacbad1",
+        "eac4cf36-1b68-428d-874e-9628f6776605",
+        "fd682853-38d1-4549-a355-cc3d3cf8ac49"
+      ],
+      "requires": [
+        "51a83f9a-41b1-4d5c-bf3e-08eb32f0ab54"
+      ],
+      "sourceRef": "RLP Berlin/Brandenburg Physik GO Teil C, Bildungsbeitrag sowie 3.2.1, S. 5-16 und 24-28.",
+      "dimensionTags": {
+        "framework": "be-bb-rlp-gost-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "GLOBAL",
+        "area": "Physik Oberstufe"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "51a83f9a-41b1-4d5c-bf3e-08eb32f0ab54",
+      "title": "Warum Physik? - Weltverstaendnis und Zukunft",
+      "titleEn": "Why Physics? - Understanding the World and the Future",
+      "description": "Physikalische Bildung schafft Weltverstaendnis, technologische Orientierung und wissenschaftspropedeutische Vorbereitung fuer verantwortliche gesellschaftliche Teilhabe.",
+      "descriptionEn": "Physics education creates understanding of the world, technological orientation, and propaedeutic preparation for responsible participation in society.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "Orientation",
+        "Motivation"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "RLP Berlin/Brandenburg Physik GO Teil C, 1-2, S. 5-16.",
+      "dimensionTags": {
+        "framework": "be-bb-rlp-gost-physics",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "GLOBAL",
+        "area": "Orientierung"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "4b9f9228-ca7e-4b37-bf4c-1481baacbad1",
+      "title": "Q1: Gravitationsfeld, elektrisches und magnetisches Feld",
+      "titleEn": "Q1: Gravitational, Electric, and Magnetic Field",
+      "description": "Das erste Berliner Physik-Kurshalbjahr verbindet Gravitationsfeld, elektrisches Feld und magnetisches Feld als gemeinsamen Q1-Anker.",
+      "descriptionEn": "The first Berlin upper-secondary physics semester combines gravitational, electric, and magnetic fields as a shared Q1 anchor.",
+      "weight": 1,
+      "tags": [
+        "Q1",
+        "GK",
+        "LK",
+        "StructuralAnchor",
+        "ElektrischesFeld",
+        "Magnetfeld"
+      ],
+      "contains": [],
+      "requires": [
+        "51a83f9a-41b1-4d5c-bf3e-08eb32f0ab54"
+      ],
+      "sourceRef": "RLP Berlin/Brandenburg Physik GO Teil C, 3.2 und 3.2.1, S. 23-28.",
+      "dimensionTags": {
+        "framework": "be-bb-rlp-gost-physics",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q1",
+        "area": "Elektrisches und magnetisches Feld"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "eac4cf36-1b68-428d-874e-9628f6776605",
+      "title": "Q1: Elektrisches Feld und Kondensator (erster Einstiegskorridor)",
+      "titleEn": "Q1: Electric Field and Capacitor (First Entry Corridor)",
+      "description": "Pilot-Cluster fuer den ersten Berliner Physik-Einstieg auf der Q1-Flaeche `Elektrisches Feld und Kondensator` mit Stromstaerke, Spannung, Kapazitaet, Feldstaerke im Plattenkondensator und Feldenergie.",
+      "descriptionEn": "Pilot cluster for the first Berlin physics entry on the Q1 surface `Electric field and capacitor` with current, voltage, capacitance, field strength in the parallel-plate capacitor, and field energy.",
+      "weight": 6,
+      "tags": [
+        "Q1",
+        "GK",
+        "LK",
+        "PilotSubset",
+        "ElektrischesFeld",
+        "Kondensator"
+      ],
+      "contains": [
+        "6fc36e56-d8a0-4424-81d0-2cb5eb8f4624",
+        "d2e4c66c-8a87-43e9-b364-cd4ed5e00f52",
+        "4b1b9cbe-c2c1-4831-8ae8-06feb516e8cb",
+        "9c242b8e-0350-4f41-9de1-db5aafbdde6f",
+        "bc711895-0170-4012-9b6c-c9c7a9d790e9",
+        "53e962eb-94a0-4f4d-9e9d-e23be27df65d"
+      ],
+      "requires": [
+        "4b9f9228-ca7e-4b37-bf4c-1481baacbad1"
+      ],
+      "sourceRef": "RLP Berlin/Brandenburg Physik GO Teil C, 3.2.1 Elektrisches Feld, S. 24-28.",
+      "dimensionTags": {
+        "framework": "be-bb-rlp-gost-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q1",
+        "area": "Elektrisches Feld und Kondensator"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "6fc36e56-d8a0-4424-81d0-2cb5eb8f4624",
+      "title": "Stromstaerke als Ladungstransport beschreiben",
+      "titleEn": "Describe Current as Charge Transport",
+      "description": "Die Lernenden beschreiben die Stromstaerke als transportierte Ladung pro Zeit und nutzen I = Delta Q / Delta t in einfachen Zusammenhaengen.",
+      "descriptionEn": "Students describe electric current as transported charge per time and use I = delta Q / delta t in simple contexts.",
+      "weight": 1,
+      "tags": [
+        "Q1",
+        "GK",
+        "LK",
+        "ElektrischesFeld",
+        "Kondensator"
+      ],
+      "contains": [],
+      "requires": [
+        "4b9f9228-ca7e-4b37-bf4c-1481baacbad1"
+      ],
+      "sourceRef": "RLP Berlin/Brandenburg Physik GO Teil C, 3.2.1 Elektrisches Feld, S. 24-25.",
+      "dimensionTags": {
+        "framework": "be-bb-rlp-gost-physics",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q1",
+        "area": "Stromstaerke"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "d2e4c66c-8a87-43e9-b364-cd4ed5e00f52",
+      "title": "Spannung als Arbeit pro Ladung im elektrischen Feld deuten",
+      "titleEn": "Interpret Voltage as Work per Charge in the Electric Field",
+      "description": "Die Lernenden deuten die Spannung als Arbeit pro Ladung und nutzen diesen Zusammenhang fuer einfache Beschreibungen des elektrischen Feldes.",
+      "descriptionEn": "Students interpret voltage as work per charge and use this relation for simple descriptions of the electric field.",
+      "weight": 1,
+      "tags": [
+        "Q1",
+        "GK",
+        "LK",
+        "ElektrischesFeld",
+        "Kondensator"
+      ],
+      "contains": [],
+      "requires": [
+        "6fc36e56-d8a0-4424-81d0-2cb5eb8f4624"
+      ],
+      "sourceRef": "RLP Berlin/Brandenburg Physik GO Teil C, 3.2.1 Elektrisches Feld, S. 24-25.",
+      "dimensionTags": {
+        "framework": "be-bb-rlp-gost-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q1",
+        "area": "Spannung und Potenzial"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "4b1b9cbe-c2c1-4831-8ae8-06feb516e8cb",
+      "title": "Kapazitaet eines Kondensators mit C = Q/U beschreiben",
+      "titleEn": "Describe Capacitor Capacitance Using C = Q/U",
+      "description": "Die Lernenden beschreiben die Kapazitaet eines Kondensators als Verhaeltnis von Ladung und Spannung.",
+      "descriptionEn": "Students describe the capacitance of a capacitor as the ratio of charge and voltage.",
+      "weight": 1,
+      "tags": [
+        "Q1",
+        "GK",
+        "LK",
+        "ElektrischesFeld",
+        "Kondensator"
+      ],
+      "contains": [],
+      "requires": [
+        "d2e4c66c-8a87-43e9-b364-cd4ed5e00f52"
+      ],
+      "sourceRef": "RLP Berlin/Brandenburg Physik GO Teil C, 3.2.1 Elektrisches Feld, S. 25.",
+      "dimensionTags": {
+        "framework": "be-bb-rlp-gost-physics",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q1",
+        "area": "Kapazitaet"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "9c242b8e-0350-4f41-9de1-db5aafbdde6f",
+      "title": "Feldstaerke im Plattenkondensator mit E = U/d verknuepfen",
+      "titleEn": "Relate Field Strength in the Parallel-Plate Capacitor via E = U/d",
+      "description": "Die Lernenden verknuepfen die Feldstaerke im Inneren eines Plattenkondensators mit Spannung und Plattenabstand.",
+      "descriptionEn": "Students relate the field strength inside a parallel-plate capacitor to voltage and plate distance.",
+      "weight": 1,
+      "tags": [
+        "Q1",
+        "GK",
+        "LK",
+        "ElektrischesFeld",
+        "Kondensator"
+      ],
+      "contains": [],
+      "requires": [
+        "d2e4c66c-8a87-43e9-b364-cd4ed5e00f52"
+      ],
+      "sourceRef": "RLP Berlin/Brandenburg Physik GO Teil C, 3.2.1 Elektrisches Feld, S. 25.",
+      "dimensionTags": {
+        "framework": "be-bb-rlp-gost-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q1",
+        "area": "Plattenkondensator"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "bc711895-0170-4012-9b6c-c9c7a9d790e9",
+      "title": "Kapazitaet des Plattenkondensators von Flaeche, Abstand und Dielektrikum abhaengig beschreiben",
+      "titleEn": "Describe the Dependence of Parallel-Plate Capacitance on Area, Distance, and Dielectric",
+      "description": "Die Lernenden beschreiben die Abhaengigkeit der Kapazitaet eines Plattenkondensators von der Flaeche, dem Plattenabstand und dem Dielektrikum.",
+      "descriptionEn": "Students describe how the capacitance of a parallel-plate capacitor depends on area, plate distance, and dielectric.",
+      "weight": 1,
+      "tags": [
+        "Q1",
+        "GK",
+        "LK",
+        "ElektrischesFeld",
+        "Kondensator"
+      ],
+      "contains": [],
+      "requires": [
+        "9c242b8e-0350-4f41-9de1-db5aafbdde6f"
+      ],
+      "sourceRef": "RLP Berlin/Brandenburg Physik GO Teil C, 3.2.1 Elektrisches Feld, S. 25.",
+      "dimensionTags": {
+        "framework": "be-bb-rlp-gost-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q1",
+        "area": "Plattenkondensator"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "53e962eb-94a0-4f4d-9e9d-e23be27df65d",
+      "title": "Energie geladener Kondensatoren als Feldenergie beschreiben",
+      "titleEn": "Describe the Energy of Charged Capacitors as Field Energy",
+      "description": "Die Lernenden beschreiben geladene Kondensatoren als Energiespeicher des elektrischen Feldes.",
+      "descriptionEn": "Students describe charged capacitors as energy stores of the electric field.",
+      "weight": 1,
+      "tags": [
+        "Q1",
+        "GK",
+        "LK",
+        "ElektrischesFeld",
+        "Kondensator",
+        "Energie"
+      ],
+      "contains": [],
+      "requires": [
+        "bc711895-0170-4012-9b6c-c9c7a9d790e9"
+      ],
+      "sourceRef": "RLP Berlin/Brandenburg Physik GO Teil C, 3.2.1 Elektrisches Feld, S. 25.",
+      "dimensionTags": {
+        "framework": "be-bb-rlp-gost-physics",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q1",
+        "area": "Energie im elektrischen Feld"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "fd682853-38d1-4549-a355-cc3d3cf8ac49",
+      "title": "Q1: Magnetfeld und Lorentzkraft (erster Follow-on-Korridor)",
+      "titleEn": "Q1: Magnetic Field and Lorentz Force (First Follow-on Corridor)",
+      "description": "Pilot-Cluster fuer den ersten Berliner Physik-Follow-on auf der retained `3.2.1`-Route mit Feldlinienbildern, magnetischer Flussdichte ueber Leiterkraft, langer Spule und Lorentzkraft.",
+      "descriptionEn": "Pilot cluster for the first Berlin physics follow-on on the retained `3.2.1` route with field line diagrams, magnetic flux density via force on conductors, the long coil, and the Lorentz force.",
+      "weight": 4,
+      "tags": [
+        "Q1",
+        "GK",
+        "LK",
+        "PilotSubset",
+        "Magnetfeld",
+        "Lorentzkraft"
+      ],
+      "contains": [
+        "503629f0-8006-48ea-9308-1e0ed6f79796",
+        "b67109e6-ad62-4f79-b34b-9e5705508fb8",
+        "7d87435c-9efe-41ab-a0d3-30967fe4a8f1",
+        "1efb11c4-b0b8-41c6-b3b5-7a79b6d525b4"
+      ],
+      "requires": [
+        "4b9f9228-ca7e-4b37-bf4c-1481baacbad1"
+      ],
+      "sourceRef": "RLP Berlin/Brandenburg Physik GO Teil C, 3.2.1 Magnetfeld, S. 25-28.",
+      "dimensionTags": {
+        "framework": "be-bb-rlp-gost-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q1",
+        "area": "Magnetfeld und Lorentzkraft"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "503629f0-8006-48ea-9308-1e0ed6f79796",
+      "title": "Feldlinienbilder von Permanentmagneten, geradem Leiter und Spule beschreiben",
+      "titleEn": "Describe Field Line Diagrams of Permanent Magnets, Straight Conductors, and Coils",
+      "description": "Die Lernenden beschreiben Magnetfelder von Permanentmagneten, geradem Leiter und Spule mithilfe von Feldlinienbildern.",
+      "descriptionEn": "Students describe magnetic fields of permanent magnets, straight conductors, and coils using field line diagrams.",
+      "weight": 1,
+      "tags": [
+        "Q1",
+        "GK",
+        "LK",
+        "Magnetfeld"
+      ],
+      "contains": [],
+      "requires": [
+        "4b9f9228-ca7e-4b37-bf4c-1481baacbad1"
+      ],
+      "sourceRef": "RLP Berlin/Brandenburg Physik GO Teil C, 3.2.1 Magnetfeld, S. 25-26.",
+      "dimensionTags": {
+        "framework": "be-bb-rlp-gost-physics",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q1",
+        "area": "Magnetfeld"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "b67109e6-ad62-4f79-b34b-9e5705508fb8",
+      "title": "Magnetische Flussdichte ueber Leiterkraft deuten",
+      "titleEn": "Interpret Magnetic Flux Density via Force on Conductors",
+      "description": "Die Lernenden deuten die magnetische Flussdichte ueber die Kraft auf stromdurchflossene Leiter und nutzen B = F_L / (I * l) in einfachen Zusammenhaengen.",
+      "descriptionEn": "Students interpret magnetic flux density via the force on current-carrying conductors and use B = F_L / (I * l) in simple contexts.",
+      "weight": 1,
+      "tags": [
+        "Q1",
+        "GK",
+        "LK",
+        "Magnetfeld"
+      ],
+      "contains": [],
+      "requires": [
+        "503629f0-8006-48ea-9308-1e0ed6f79796"
+      ],
+      "sourceRef": "RLP Berlin/Brandenburg Physik GO Teil C, 3.2.1 Magnetfeld, S. 25-26.",
+      "dimensionTags": {
+        "framework": "be-bb-rlp-gost-physics",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q1",
+        "area": "Magnetische Flussdichte"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "7d87435c-9efe-41ab-a0d3-30967fe4a8f1",
+      "title": "Magnetische Flussdichte in der langen Spule und Materialeinfluss beschreiben",
+      "titleEn": "Describe Magnetic Flux Density in a Long Coil and the Influence of Material",
+      "description": "Die Lernenden beschreiben die magnetische Flussdichte im Inneren einer langen Spule und den Einfluss von Materie auf die Flussdichte.",
+      "descriptionEn": "Students describe magnetic flux density inside a long coil and the influence of matter on that flux density.",
+      "weight": 1,
+      "tags": [
+        "Q1",
+        "GK",
+        "LK",
+        "Magnetfeld",
+        "Spule"
+      ],
+      "contains": [],
+      "requires": [
+        "b67109e6-ad62-4f79-b34b-9e5705508fb8"
+      ],
+      "sourceRef": "RLP Berlin/Brandenburg Physik GO Teil C, 3.2.1 Magnetfeld, S. 25-27.",
+      "dimensionTags": {
+        "framework": "be-bb-rlp-gost-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q1",
+        "area": "Magnetfeld in der Spule"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "1efb11c4-b0b8-41c6-b3b5-7a79b6d525b4",
+      "title": "Lorentzkraft auf bewegte Ladungen im Magnetfeld beschreiben",
+      "titleEn": "Describe the Lorentz Force on Moving Charges in a Magnetic Field",
+      "description": "Die Lernenden beschreiben die Lorentzkraft auf bewegte Ladungen im Magnetfeld mit F_L = Q * v * B in einfachen Zusammenhaengen.",
+      "descriptionEn": "Students describe the Lorentz force on moving charges in a magnetic field using F_L = Q * v * B in simple contexts.",
+      "weight": 1,
+      "tags": [
+        "Q1",
+        "GK",
+        "LK",
+        "Magnetfeld",
+        "Lorentzkraft"
+      ],
+      "contains": [],
+      "requires": [
+        "b67109e6-ad62-4f79-b34b-9e5705508fb8"
+      ],
+      "sourceRef": "RLP Berlin/Brandenburg Physik GO Teil C, 3.2.1 Magnetfeld, S. 25-27.",
+      "dimensionTags": {
+        "framework": "be-bb-rlp-gost-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q1",
+        "area": "Lorentzkraft"
+      },
+      "type": "atomic"
+    }
+  ]
+}

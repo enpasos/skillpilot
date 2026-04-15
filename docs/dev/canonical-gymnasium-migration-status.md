@@ -6144,3 +6144,246 @@ Interpretation:
 - Niedersachsen upper-secondary Physics now reaches the first shared Q2 oscillation strip while still keeping the active lane narrow, reviewed, and free of Niedersachsen-specific canonical atom authoring
 - the clean move here was to open only `Schwingungen`, not immediately the adjacent `Wellen` surface, because the source still separates mechanical/electromagnetic oscillations from the later interference and wave-phenomena blocks
 - the next clean Niedersachsen move should now continue from this opened Q2 strip onto `Wellen`; the older `Querfeld`/`Wien-Filter` and `Fadenstrahlrohr` residues remain optional cleanup only if broader reviewed shared targets become justified
+
+### 2026-04-15: Niedersachsen Physics exacts no new atom but closes the Michelson residue on the shared interferometer surface
+
+What changed:
+
+- the repository-backed Niedersachsen Physics mapping lane:
+  - `curricula/DE/Gymnasium/mapping/DE-NI/upper-secondary/ni_physics_upper_secondary_to_canonical_physics.json`
+  now carries `54` reviewed rows instead of `53`
+- one new reviewed bridge was added:
+  - `35bbb17f-d9be-4e2e-ab00-86f8d52d7cb0` (`Michelson-Interferometer zum Nachweis kleiner Laengenaenderungen einordnen`)
+    -> `d1e26b52-78a7-5f3b-ac9f-97f3e62d7db1` (`Interferometer verstehen`) (`partial`)
+- no Niedersachsen source snapshot widening was needed in this step:
+  - the retained NI `Michelson` atom was already present inside the imported `Wellen` strip
+- no new canonical Physics atom was introduced:
+  - the move reuses the existing shared Q3 leaf `Interferometer verstehen`
+- after applicability compilation, `DE-NI` is now also visible on:
+  - `d1e26b52-78a7-5f3b-ac9f-97f3e62d7db1` (`Interferometer verstehen`)
+  - and thereby also on the parent clusters `Elektromagnetische Wellen` and `Q3 Elektromagnetische Wellen und Quantenphysik`
+- thirteen Niedersachsen-specific `APV-202` entries are now documented for the widened NI `Wellen`/`Michelson` surface:
+  - seven shared Physics wave/optics leaves: `cb0ced6d-b7c1-5b7d-9922-8c394f6030e8`, `d716a35e-e422-5aba-b39a-f2e22f1e1e74`, `d5772db3-120c-5c37-ab46-2336d02236b0`, `91683676-01cf-5003-80fa-a04d043b4e61`, `4a7cbe83-b694-57d3-85ce-1eeca418daaf`, `549269d3-1aef-5c55-9640-ee2a8e2ee9a1`, `81c0d811-e6de-5489-8415-3b257c734a2e`
+  - five shared cross-subject math prerequisites pulled by the same optics route: `c1f50bcc-7848-4e49-b9de-0ec030cc6bca`, `af3d6bff-c5fb-4ec6-a9f0-c0be09fc9186`, `e322310f-f33a-485d-bc23-2412a6b8fa12`, `9023226b-fc17-412b-807c-2bb45cd551d5`, `a7ccb7a9-6fb0-4e2d-b6e0-6420cc5ae0bf`
+  - plus the new interferometer leaf `d1e26b52-78a7-5f3b-ac9f-97f3e62d7db1`
+
+Why this cut:
+
+- after the reviewed NI `Wellen` strip, the only remaining source-led residue on that already opened topic row was the imported `Michelson` leaf
+- unlike the still source-led `Querfeld`/`Wien-Filter` and `Fadenstrahlrohr` residues, the canonical Physics graph now already exposes a sufficiently narrow reviewed target with `Interferometer verstehen`
+- this closes the active NI `Schwingungen`/`Wellen` row without forcing Niedersachsen-specific canonical atom growth
+
+Validation used:
+
+- `cd app && APPLICABILITY_APPLY_SCOPE=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a npm run apply:applicability`
+- `cd app && npm run validate:view-filters --silent`
+- `cd backend && ./gradlew test --tests 'com.skillpilot.backend.landscape.LandscapeServiceTest' --tests 'com.skillpilot.backend.landscape.GoalMappingRepositoryFixtureTest'`
+- `python3 scripts/render_canonical_physics_bundesland_status.py`
+
+Interpretation:
+
+- Niedersachsen upper-secondary Physics now closes the first retained `Schwingungen`/`Wellen` row on the active topic-first maintenance surface without introducing new canonical atoms or Niedersachsen-specific composition views
+- the clean move here was to reuse the already existing shared interferometer leaf instead of keeping `Michelson` source-led longer than necessary
+- the remaining NI source-led Physics residues are now only the earlier `Querfeld`/`Wien-Filter` and `Fadenstrahlrohr` clauses
+
+### 2026-04-15: Niedersachsen Physics reuses the shared electric-field particle-motion leaf for the crossed-field follow-on
+
+What changed:
+
+- the repository-backed Niedersachsen Physics mapping lane:
+  - `curricula/DE/Gymnasium/mapping/DE-NI/upper-secondary/ni_physics_upper_secondary_to_canonical_physics.json`
+  now carries `55` reviewed rows instead of `54`
+- one new reviewed bridge was added:
+  - `3b71a64f-683a-47df-b656-d8fd430e4c45` (`Freie Elektronen im homogenen elektrischen Querfeld und im Wien-Filter beschreiben`)
+    -> `741774ef-15fc-4bcf-a370-e2c5cf4257d0` (`Geladene Teilchen in homogenen elektrischen Feldern untersuchen`) (`partial`)
+- no Niedersachsen source snapshot widening was needed in this step:
+  - the retained crossed-field / `Wien-Filter` atom was already present inside the imported qualification-phase `Elektrizitaet` strip
+- no new canonical Physics atom was introduced:
+  - the move reuses the existing shared Q1 leaf `Geladene Teilchen in homogenen elektrischen Feldern untersuchen`
+- after applicability compilation, `DE-NI` is now also visible on:
+  - `741774ef-15fc-4bcf-a370-e2c5cf4257d0` (`Geladene Teilchen in homogenen elektrischen Feldern untersuchen`)
+  - and thereby also on the parent clusters `47f76c5c-05d1-59eb-876d-cafb98a66c5b` (`Bewegung geladener Teilchen im elektrischen Feld`) and `43eb9b9e-cfdf-5cf1-88db-87391c7ba595` (`Ladungen in Feldern`)
+- one new Niedersachsen-specific `APV-202` entry is now documented for the widened NI crossed-field surface:
+  - `741774ef-15fc-4bcf-a370-e2c5cf4257d0`
+
+Why this cut:
+
+- unlike the still source-led eA `Fadenstrahlrohr` residue, the non-eA crossed-field clause already overlaps enough with the shared reviewed Q1 electric-field particle-motion leaf
+- the reviewed NI wording stays narrower than the canonical target because it focuses on free electrons plus `Wien-Filter` context, not the full broader charged-particle and energy-change surface, so `partial` is the defensible match
+- this closes the retained non-eA `Querfeld` / `Wien-Filter` residue without forcing Niedersachsen-specific canonical atom growth
+
+Validation used:
+
+- `cd app && APPLICABILITY_APPLY_SCOPE=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a npm run apply:applicability`
+- `cd app && npm run validate:view-filters --silent`
+- `cd backend && ./gradlew test --tests 'com.skillpilot.backend.landscape.LandscapeServiceTest' --tests 'com.skillpilot.backend.landscape.GoalMappingRepositoryFixtureTest'`
+- `python3 scripts/render_canonical_physics_bundesland_status.py`
+
+Interpretation:
+
+- Niedersachsen upper-secondary Physics now closes the retained non-eA crossed-field follow-on on its active qualification-phase `Elektrizitaet` route without introducing new canonical atoms or Niedersachsen-specific composition views
+- the only remaining NI source-led Physics residue is now the narrower eA `Fadenstrahlrohr` clause
+
+### 2026-04-15: Niedersachsen Physics keeps `Fadenstrahlrohr` deferred even after discovering adjacent Bayern raw-source evidence
+
+What changed:
+
+- no new Niedersachsen Physics mapping row was added in this step:
+  - `curricula/DE/Gymnasium/mapping/DE-NI/upper-secondary/ni_physics_upper_secondary_to_canonical_physics.json`
+  remains at `55` reviewed rows
+- no new canonical Physics atom was introduced:
+  - the shared canonical Physics graph still does not isolate a sufficiently narrow fine-beam-tube / specific-charge measurement target
+- the remaining Niedersachsen source-led residue stays:
+  - `0966258c-1eaa-4c41-8311-17352dcf0ec1` (`Spezifische Ladung von Elektronen mit dem Fadenstrahlrohr einordnen`)
+- the decision is now explicit because adjacent second-state evidence exists in the broader Bayern source file:
+  - `curricula/DE/Gymnasium/input/BY/gymnasium/Physik.json`
+  - `4a5610d3-febc-5686-9996-ca232fceb44a` combines `Elektronenablenkroehre` verification in the electric transverse field with electron-mass determination via `Fadenstrahlrohr`
+
+Why no bridge yet:
+
+- the newly surfaced Bayern evidence is real, but it is not yet an imported retained reviewed second-state corridor on the active canonical Physics rollout path
+- the Niedersachsen wording stays narrower and differently framed (`spezifische Ladung` / principle / target quantity) than the broader Bayern experiment wording (`Elektronenablenkroehre`, regression, mass determination, uncertainty assessment)
+- authoring a new shared canonical measurement atom before a retained reviewed second-state lane exists would overtake the current source-led rollout discipline
+
+Validation used:
+
+- `python3 scripts/render_canonical_physics_bundesland_status.py`
+- `git diff --check`
+
+Interpretation:
+
+- Niedersachsen Physics is now explicitly closed at the current retained pilot-cut level
+- the remaining `Fadenstrahlrohr` clause is not forgotten debt, but a deliberately deferred shared-measurement candidate for a later multi-state retained rollout
+
+### 2026-04-15: Niedersachsen Physics closes the deferred `Fadenstrahlrohr` residue via an imported Bayern second-state corridor
+
+What changed:
+
+- one new shared canonical Physics atom was introduced:
+  - `966782e5-690d-4fae-bbab-fa3fa30525c3` (`Fadenstrahlrohr als Elektronen-Messverfahren einordnen`)
+- the repository-backed Niedersachsen Physics mapping lane:
+  - `curricula/DE/Gymnasium/mapping/DE-NI/upper-secondary/ni_physics_upper_secondary_to_canonical_physics.json`
+  now carries `56` reviewed rows instead of `55`
+- one new reviewed Niedersachsen bridge was added:
+  - `0966258c-1eaa-4c41-8311-17352dcf0ec1` (`Spezifische Ladung von Elektronen mit dem Fadenstrahlrohr einordnen`)
+    -> `966782e5-690d-4fae-bbab-fa3fa30525c3` (`Fadenstrahlrohr als Elektronen-Messverfahren einordnen`) (`partial`)
+- the retained Bayern second-state evidence is now imported on the active canonical path:
+  - `curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_physics_to_canonical_physics.json`
+  now carries `44` reviewed rows instead of `43`
+  - `4a5610d3-febc-5686-9996-ca232fceb44a`
+    -> `966782e5-690d-4fae-bbab-fa3fa30525c3` (`partial`)
+- after applicability compilation, the new shared measurement atom now carries:
+  - `DE-BY`, `DE-NI`
+- no new accepted-warning debt was needed for this step:
+  - the widened shared measurement surface produces no new applicability findings on the new atom or its parent cluster
+
+Why this cut now:
+
+- the earlier defer decision was correct at the time, because a single-state Niedersachsen clause alone would have forced a premature shared measurement atom
+- once the adjacent retained Bayern experiment corridor was actually imported and reviewed, the multi-state evidence became concrete enough to justify a narrow shared canonical leaf
+- the new atom is still intentionally narrower than the broader Bayern experimental clause and broader than the Niedersachsen wording, so both state bridges stay defensibly `partial`
+
+Validation used:
+
+- `cd app && APPLICABILITY_APPLY_SCOPE=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a npm run apply:applicability`
+- `cd app && npm run validate:view-filters --silent`
+- `cd backend && ./gradlew test --tests 'com.skillpilot.backend.landscape.LandscapeServiceTest' --tests 'com.skillpilot.backend.landscape.GoalMappingRepositoryFixtureTest'`
+- `python3 scripts/render_canonical_physics_bundesland_status.py`
+
+Interpretation:
+
+- Niedersachsen Physics no longer has a measurement-specific source-led residue on the active retained pilot surface
+- the only intentionally source-led Niedersachsen Physics residue is now the sustainability-related Bewertungsblatt from the E-phase energy strip
+
+### 2026-04-15: Berlin upper-secondary Physics opens the first reviewed Q1 field/capacitor corridor
+
+What changed:
+
+- the first retained Berlin upper-secondary Physics source PDF is now archived locally:
+  - `curricula/DE/Gymnasium/input/BE/upper-secondary/Teil_C_RLP_GOST_2022_Physik.pdf`
+- the first Berlin upper-secondary Physics source snapshot is now active:
+  - `curricula/DE/Gymnasium/input/BE/upper-secondary/source-json/DE_BER_S_GYM_2_PHYSIK.de.json.snapshot`
+- the retained source lane is now registered in the shared DE-level source registry:
+  - `8e54a9e6-dd9d-4f5d-a632-734b4ef5c754` (`Physik Oberstufe (Berlin, Pilot-Quellsnapshot)`)
+- provenance-backed membership and atomic closure are now active for that retained snapshot:
+  - `source-goal-membership-registry.json`
+  - `source-goal-closure-registry.json`
+- the first repository-backed Berlin upper-secondary Physics mapping lane now exists:
+  - `curricula/DE/Gymnasium/mapping/DE-BE/upper-secondary/be_physics_upper_secondary_to_canonical_physics.json`
+  - `10` reviewed rows
+- the first reviewed Berlin corridor is intentionally narrow:
+  - one shared orientation anchor
+  - one structural `Q1` field anchor
+  - one first reviewed `Q1` electric-field / capacitor corridor
+- no canonical Physics atom was added in this step:
+  - the Berlin start reuses the existing shared Q1 field/capacitor surface
+- no committed Berlin applicability cut was added in this step:
+  - Berlin stays a reviewed `P4` source/mapping lane without a DE-BE applicability persist pass
+
+Why this cut:
+
+- Berlin is the cleanest next real Physics rollout lane after the closed Niedersachsen maintenance pass because the retained BE/BB upper-secondary PDF offers a narrow `3.2.1` field corridor that already fits the shared canonical Q1 field/capacitor surface
+- the start stays intentionally conservative:
+  - no Berlin-only canonical atom
+  - no Berlin-specific composition view
+  - no premature applicability cut
+- this keeps the next move obvious:
+  - extend the same retained Berlin `3.2.1` route toward magnetic field or charged-particle motion before opening another new state
+
+Validation used:
+
+- `cd backend && ./gradlew test --tests 'com.skillpilot.backend.landscape.LandscapeServiceTest' --tests 'com.skillpilot.backend.landscape.GoalMappingRepositoryFixtureTest'`
+- `python3 scripts/render_canonical_physics_bundesland_status.py`
+- `git diff --check`
+
+Interpretation:
+
+- canonical Physics now has a real fifth active non-Hessen/Bayern maintenance-era source lane beyond the already active NRW/BW/NI surface
+- Berlin is active as a narrow reviewed `P4` entry lane, but still intentionally does not widen learner-facing applicability or composition-view debt yet
+
+### 2026-04-15: Berlin upper-secondary Physics widens the retained `3.2.1` route onto the shared magnetic-field surface
+
+What changed:
+
+- the active Berlin upper-secondary Physics source snapshot
+  - `curricula/DE/Gymnasium/input/BE/upper-secondary/source-json/DE_BER_S_GYM_2_PHYSIK.de.json.snapshot`
+  now includes one first retained `3.2.1` magnetic-field / Lorentz-force follow-on next to the earlier electric-field / capacitor corridor
+- the Berlin snapshot contributes five additional retained source goals through the shared provenance registries:
+  - one corridor parent `Q1: Magnetfeld und Lorentzkraft (erster Follow-on-Korridor)`
+  - four leaves on field line diagrams, magnetic flux density via conductor force, long-coil field strength, and Lorentz force
+- the repository-backed Berlin Physics mapping lane
+  - `curricula/DE/Gymnasium/mapping/DE-BE/upper-secondary/be_physics_upper_secondary_to_canonical_physics.json`
+  now carries `15` reviewed rows instead of `10`
+- the new reviewed Berlin bridges are:
+  - retained corridor parent -> shared canonical cluster `Magnetisches Feld` (`partial`)
+  - `Feldlinienbilder von Permanentmagneten, geradem Leiter und Spule beschreiben`
+    -> `Magnetische Felder und Feldlinienbilder` (`exact`)
+  - `Magnetische Flussdichte ueber Leiterkraft deuten`
+    -> `Kraft auf stromdurchflossene Leiter` (`partial`)
+  - `Magnetische Flussdichte in der langen Spule und Materialeinfluss beschreiben`
+    -> `Magnetfeld von geradem Leiter und Spule` (`partial`)
+  - `Lorentzkraft auf bewegte Ladungen im Magnetfeld beschreiben`
+    -> `Lorentzkraft auf freie Ladungen` (`partial`)
+- no canonical Physics atom was added in this step:
+  - the Berlin follow-on reuses the existing shared Q1 magnetic-field surface
+- no committed Berlin applicability cut was added in this step
+
+Why this cut:
+
+- continuing Berlin on the same retained `3.2.1` route is cleaner than jumping immediately into `3.2.2`, because the shared canonical Q1 magnetic-field surface already exists and matches the source wording well enough for conservative reviewed bridges
+- the exact/partial split stays disciplined:
+  - field-line diagrams are one-to-one enough for `exact`
+  - conductor force, long-coil field strength, and Lorentz force stay `partial` because the retained Berlin wording is still narrower than the broader shared canonical leaves
+- this leaves the next move obvious:
+  - extend Berlin into `3.2.2 Bewegung von geladenen Teilchen in Feldern`
+
+Validation used:
+
+- `cd backend && ./gradlew test --tests 'com.skillpilot.backend.landscape.LandscapeServiceTest' --tests 'com.skillpilot.backend.landscape.GoalMappingRepositoryFixtureTest'`
+- `python3 scripts/render_canonical_physics_bundesland_status.py`
+- `git diff --check`
+
+Interpretation:
+
+- Berlin no longer stops at the electric-field / capacitor entry and now covers the first retained magnetic-field follow-on on the same Q1 route
+- the lane still remains a narrow reviewed `P4` source/mapping slice with no Berlin-specific applicability or composition-view debt

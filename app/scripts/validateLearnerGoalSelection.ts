@@ -2,7 +2,12 @@ import assert from 'node:assert/strict'
 import { readFileSync } from 'node:fs'
 import { getNextVisibleLearnerGoalSelection } from '../src/utils/learnerGoalSelection'
 import { prepareLandscapeEntries } from '../src/hooks/useLandscapes'
-import { compositionViewExposesGoal } from '../src/utils/compositionViewRuntime'
+import {
+  applyCompositionViewProjection,
+  applyMatchedCompositionRouteGoalProjection,
+} from '../src/utils/compositionViewRuntime'
+import { normalizeLearnerProjectedEntries } from '../src/utils/learnerTreeProjection'
+import { buildDirectChildrenMap } from '../src/utils/treeProjectionRuntime'
 
 const explicitRouteSelection = getNextVisibleLearnerGoalSelection({
   currentGoalId: 'root-goal',
@@ -99,22 +104,65 @@ assert.equal(
 const canonicalMathLandscape = JSON.parse(
   readFileSync('../curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json', 'utf8'),
 )
-const genericMathLkView = JSON.parse(
-  readFileSync('../curricula/DE/Gymnasium/composition-views/mathematik/de-de-lk.view.json', 'utf8'),
+const genericMathSekIView = JSON.parse(
+  readFileSync('../curricula/DE/Gymnasium/composition-views/mathematik/de-de-seki.view.json', 'utf8'),
 )
-const genericMathSek1GoalId = '121e3fdf-54d2-4d46-bc2d-f6e725f10f41'
-const genericMathVisibleGoalId = '65365dce-f33f-49d8-9516-42f75883aa86'
+const canonicalMathPrismGoalId = '59d5a330-61be-4590-ab46-cf7cefecd144'
 
-assert.equal(
-  compositionViewExposesGoal(prepareLandscapeEntries([canonicalMathLandscape]), genericMathLkView, genericMathSek1GoalId),
-  false,
-  'A composition view that does not expose the routed goal must not stay active for learner tree routing.',
+const compositionProjectedMathEntries = applyCompositionViewProjection(
+  prepareLandscapeEntries([canonicalMathLandscape]),
+  genericMathSekIView,
+)
+const routeProjectedMathEntries = applyMatchedCompositionRouteGoalProjection(
+  compositionProjectedMathEntries,
+  canonicalMathPrismGoalId,
+)
+const normalizedMathEntries = normalizeLearnerProjectedEntries(routeProjectedMathEntries)
+const mathEntry = normalizedMathEntries[0]
+const mathGoalById = new Map(mathEntry.goals.map((goal) => [goal.id, goal] as const))
+const mathChildrenByParent = buildDirectChildrenMap(mathGoalById)
+const mathRootGoal = mathEntry.goals.find((goal) => (goal.tags ?? []).includes('root'))
+
+assert.ok(mathRootGoal, 'The projected canonical mathematics landscape must retain a root goal.')
+
+const findVisiblePath = (
+  goalId: string,
+  currentId: string,
+  visited: Set<string> = new Set(),
+): string[] | null => {
+  if (visited.has(currentId)) return null
+  const nextVisited = new Set(visited)
+  nextVisited.add(currentId)
+  if (currentId === goalId) {
+    return [currentId]
+  }
+
+  for (const childId of mathChildrenByParent.get(currentId) ?? []) {
+    const childPath = findVisiblePath(goalId, childId, nextVisited)
+    if (childPath) {
+      return [currentId, ...childPath]
+    }
+  }
+
+  return null
+}
+
+const visiblePrismPathIds = findVisiblePath(canonicalMathPrismGoalId, mathRootGoal!.id)
+assert.ok(
+  visiblePrismPathIds,
+  'A routed goal outside the explicit composition-view surface must still remain reachable in the learner tree.',
 )
 
-assert.equal(
-  compositionViewExposesGoal(prepareLandscapeEntries([canonicalMathLandscape]), genericMathLkView, genericMathVisibleGoalId),
-  true,
-  'A composition view must still stay active for goals that are explicitly carried by the view tree.',
+const visiblePrismPathTitles = visiblePrismPathIds!.map((goalId) => mathGoalById.get(goalId)?.title ?? goalId)
+
+assert.ok(
+  visiblePrismPathTitles.some((title) => title.startsWith('Jahrgangsstufe 7')),
+  'The supplemental route-goal path must attach the later mathematics prism goal to the matching J7 scope.',
+)
+
+assert.ok(
+  !visiblePrismPathTitles.some((title) => title.startsWith('Jahrgangsstufe 5')),
+  'The supplemental route-goal path must not leak the later mathematics prism goal into J5.',
 )
 
 console.log('✅ Learner goal selection regression checks passed.')

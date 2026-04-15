@@ -2,7 +2,7 @@
 
 This lane is reserved for future Niedersachsen upper-secondary Gymnasium mappings into the shared DE-level canonical landscapes.
 
-Current status on `2026-04-14`:
+Current status on `2026-04-15`:
 
 - repository-backed mapping fixture now exists:
   `ni_math_upper_secondary_to_canonical_math.json`
@@ -13,7 +13,7 @@ Current status on `2026-04-14`:
 - reserved Physics `sourceLandscapeId`:
   `730a6dbb-7ddb-486b-8ac8-dd9e58e3d113`
 - current mapping count: `129`
-- current Physics mapping count: `35`
+- current Physics mapping count: `55`
 - the first archived Niedersachsen upper-secondary source snapshot is now active in the shared provenance registries:
   `curricula/DE/Gymnasium/input/NI/upper-secondary/source-json/DE_NDS_S_GYM_2_MATHEMATIK.de.json.snapshot`
 - the first archived Niedersachsen upper-secondary Physics source snapshot is now also active in the shared provenance registries:
@@ -187,8 +187,8 @@ Current status on `2026-04-14`:
   - `Leiterkraft im homogenen Magnetfeld bestimmen und magnetische Flussdichte deuten` -> `Kraft auf stromdurchflossene Leiter` (`partial`)
   - `Lorentzkraft auf freie Elektronen beschreiben und Bahnformen begruenden` -> `Lorentzkraft auf freie Ladungen` (`partial`)
   - `Elektronenbahnen im homogenen Magnetfeld auf andere geladene Teilchen uebertragen` -> `Geladene Teilchen in homogenen magnetischen Feldern untersuchen` (`partial`)
-  - `Freie Elektronen im homogenen elektrischen Querfeld und im Wien-Filter beschreiben` remains intentionally source-led, because no reviewed shared crossed-field target has been isolated yet
-  - `Spezifische Ladung von Elektronen mit dem Fadenstrahlrohr einordnen` remains intentionally source-led, because the current shared canonical graph does not yet isolate this narrower eA surface
+  - `Freie Elektronen im homogenen elektrischen Querfeld und im Wien-Filter beschreiben` -> `Geladene Teilchen in homogenen elektrischen Feldern untersuchen` (`partial`)
+  - `Spezifische Ladung von Elektronen mit dem Fadenstrahlrohr einordnen` -> `Fadenstrahlrohr als Elektronen-Messverfahren einordnen` (`partial`)
 - the first adjacent Niedersachsen upper-secondary Physics qualification-phase induction strip is now also active:
   - `Qualifikationsphase: Elektrizitaet - Spule, Hallsonde und Induktion` -> `Induktion und elektromagnetische Schwingungen` (`partial`)
   - `Magnetische Flussdichte bei Spulen mit einer Hallsonde experimentell messen` -> `Magnetfeld von geradem Leiter und Spule` (`partial`)
@@ -215,9 +215,15 @@ Current status on `2026-04-14`:
 - the first committed Niedersachsen Physics applicability cut now also widens the reviewed shared E-phase motion strip for `DE-NI` without introducing new canonical atoms or Niedersachsen-specific Physics composition views
 - the first committed Niedersachsen Physics qualification-phase applicability cut now also widens the shared Q1 strip on `Stromstärke als Ladungstransport`, `Arbeit, Spannung und Potenzial im E-Feld`, `Potenzial und Kondensator`, `Kondensator und Feld im Plattenkondensator`, `Auf- und Entladen eines Kondensators`, and `Energie des elektrischen Feldes`, still without introducing new canonical atoms or Niedersachsen-specific Physics composition views
 - the adjacent committed Niedersachsen Physics qualification-phase magnet strip now also widens the shared Q1 surface on `Magnetisches Feld`, `Magnetische Felder und Feldlinienbilder`, `Kraft auf stromdurchflossene Leiter`, `Lorentzkraft auf freie Ladungen`, and `Geladene Teilchen in homogenen magnetischen Feldern untersuchen`, still without introducing new canonical atoms or Niedersachsen-specific Physics composition views
+- one adjacent Niedersachsen upper-secondary Physics crossed-field follow-on is now also active:
+  - `Freie Elektronen im homogenen elektrischen Querfeld und im Wien-Filter beschreiben` -> `Geladene Teilchen in homogenen elektrischen Feldern untersuchen` (`partial`)
+- the adjacent committed Niedersachsen Physics crossed-field follow-on now also widens the shared Q1 electric-field surface on `Geladene Teilchen in homogenen elektrischen Feldern untersuchen`, and thereby also on the parent clusters `Bewegung geladener Teilchen im elektrischen Feld` and `Ladungen in Feldern`, still without introducing new canonical atoms or Niedersachsen-specific Physics composition views
 - the adjacent committed Niedersachsen Physics qualification-phase induction strip now also widens the shared surface on `Magnetfeld von geradem Leiter und Spule`, `Induktion durch Änderung des magnetischen Flusses`, `Induktionsgesetz und Lenz’sche Regel`, `Technische Anwendungen des Induktionsgesetzes qualitativ beschreiben`, and thereby also on the parent clusters `Induktion und elektromagnetische Schwingungen` and `Q2 Schwingungen, Induktion und mechanische Wellen`, still without introducing new canonical atoms or Niedersachsen-specific Physics composition views
 - the adjacent committed Niedersachsen Physics page-36 LK follow-on now also widens the shared LK surface on `Hall-Effekt anwenden`, `Induktionsgesetz in Differenzialform`, `Selbstinduktion und Induktivität`, and `Energie gespeicherter Magnetfelder`, still without introducing new canonical atoms or Niedersachsen-specific Physics composition views
 - the first committed Niedersachsen Physics oscillation strip now also widens the shared Q2 surface on `Harmonische Schwingung verstehen`, `Charakteristische Schwingungsgrößen`, `Lineare Rückstellkraft bei harmonischen Schwingungen beschreiben`, `Energie und Energieerhaltung in Schwingungen`, `Gedämpfte Schwingungen beschreiben`, `Erzwungene Schwingungen und Resonanz`, `Elektromagnetischen Schwingkreis analysieren`, and `Thomson’sche Schwingungsgleichung nutzen`, still without introducing new canonical atoms or Niedersachsen-specific Physics composition views
+- one adjacent Niedersachsen upper-secondary Physics Michelson follow-on is now also active:
+  - `Michelson-Interferometer zum Nachweis kleiner Laengenaenderungen einordnen` -> `Interferometer verstehen` (`partial`)
+- the adjacent committed Niedersachsen Physics Michelson follow-on now also widens the shared Q3 optics surface on `Interferometer verstehen`, still without introducing new canonical atoms or Niedersachsen-specific Physics composition views
 
 Expected first use:
 
@@ -226,4 +232,4 @@ Expected first use:
 - the archived Niedersachsen upper-secondary pilot snapshot is now fully atomically bridged on its active E-phase base, on the fully imported gA learning areas `Von der Aenderung zum Bestand - Integralrechnung`, `Die e-Funktion`, `Raumanschauung und Koordinatisierung`, and `Daten und Zufall`, and on the first five fully imported eA learning areas `Von der Aenderung zum Bestand - Integralrechnung`, `Wachstumsmodelle - Exponentialfunktion`, `Raumanschauung und Koordinatisierung`, `Kurvenanpassung und Funktionenscharen`, and `Daten und Zufall`
 - canonical Gymnasium `Physik`
 - Niedersachsen upper-secondary Physics anchor alignment onto the shared motivation leaf, the first reviewed E-phase `Dynamik` strip, one adjacent E-phase energy strip, one first reviewed qualification-phase `Elektrizitaet` strip, one adjacent reviewed magnet-field strip, one adjacent reviewed induction strip, one adjacent LK follow-on on the same page-36 route, and now also one first reviewed Q2 oscillation strip
-- next reviewed widening should now leave the opened `Schwingungen` strip and continue with `Wellen`; the still source-led `Querfeld`/`Wien-Filter` and `Fadenstrahlrohr` residues remain optional only if broader reviewed shared targets become justified
+- keep Niedersachsen Physics now on maintenance inside the closed topic-first maintenance surface; preserve the reviewed `Michelson`, crossed-field, and fine-beam-tube follow-ons, and leave only the sustainability-related Bewertungsblatt intentionally source-led

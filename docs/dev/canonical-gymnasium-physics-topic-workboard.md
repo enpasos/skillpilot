@@ -1,6 +1,6 @@
 # Canonical Gymnasium Physics Topic Workboard
 
-Snapshot: `2026-04-14`
+Snapshot: `2026-04-15`
 
 Purpose:
 
@@ -48,7 +48,7 @@ State columns use Bundesland abbreviations:
 | Topic | Canonical | BW | BY | BE | BB | HB | HH | HE | MV | NI | NW | RP | SL | SN | ST | SH | TH | Open canonical gaps | Next action |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Sek II Mechanik / Dynamik | `seed` | `n/s` | `corr` | `n/s` | `n/s` | `n/s` | `n/s` | `seed` | `n/s` | `corr` | `corr` | `n/s` | `n/s` | `n/s` | `n/s` | `n/s` | `n/s` | the active shared mechanics surface around free fall, horizontal throw, Newton, circle motion, and kinetic/energy entry is currently sufficient for the reviewed `HE`/`BY`/`NI`/`NW` evidence; the open debt is nationwide coverage rather than a visible new package split | keep the row stable, do not reopen canonical mechanics packaging now, and only revisit it when another state source lane produces a real shared mismatch beyond the current E-phase mechanics surface |
-| Sek II Elektrizitaet / Magnetismus / Induktion | `seed` | `corr` | `n/s` | `n/s` | `n/s` | `n/s` | `n/s` | `seed` | `n/s` | `corr` | `corr` | `n/s` | `n/s` | `n/s` | `n/s` | `n/s` | `n/s` | the active shared field/induction strip now covers the reviewed `HE`/`BW`/`NI`/`NW` evidence without forcing another visible package on the current canonical surface; the open debt is still the unchecked state columns, not a packaging blocker | keep this row in residue-control mode while the nationwide completion work shifts to `Schwingungen / Wellen`; reopen only if another source lane forces a genuine shared field or induction gap |
+| Sek II Elektrizitaet / Magnetismus / Induktion | `seed` | `corr` | `n/s` | `corr` | `n/s` | `n/s` | `n/s` | `seed` | `n/s` | `corr` | `corr` | `n/s` | `n/s` | `n/s` | `n/s` | `n/s` | `n/s` | the active shared field/induction strip now covers the reviewed `HE`/`BW`/`NI`/`NW` evidence and now also the first Berlin `Q1` field/capacitor corridor plus one first retained `3.2.1` magnetic-field / Lorentz-force follow-on without forcing another visible package or new canonical atom on the current canonical surface; the open debt is still the unchecked state columns plus the still-unopened Berlin `3.2.2` particle-motion strip | keep this row active through the Berlin lane and extend the retained Berlin route into `3.2.2 Bewegung von geladenen Teilchen in Feldern` before opening another new state; reopen canonical packaging only if that follow-on exposes a genuinely shared field or induction gap |
 | Sek II Schwingungen / Wellen | `seed` | `corr` | `corr` | `n/s` | `n/s` | `n/s` | `n/s` | `seed` | `n/s` | `corr` | `corr` | `n/s` | `n/s` | `n/s` | `n/s` | `n/s` | `n/s` | the shared surface now covers reviewed `HE`, refreshed `BY`, widened `BW`, widened `NI`, and narrow `NW` evidence across mechanical waves, first optics/spectrum leaves, and the shared `Q2/Q3` bridge without forcing a new top-level package; the remaining open debt is now almost entirely the still-missing source lanes in the unchecked state columns, while `Michelson` in `NI` still stays intentionally source-led | treat this as the current topic-first reference row, but keep the shared cut stable: all currently available retained source states on this row are now resolved once, so reopen the row only when another Bundesland source lane becomes real or a genuinely shared gap appears |
 | Sek II Quanten / Atom / Kernphysik | `seed` | `corr` | `n/s` | `n/s` | `n/s` | `n/s` | `n/s` | `seed` | `n/s` | `n/s` | `corr` | `n/s` | `n/s` | `n/s` | `n/s` | `n/s` | `n/s` | the currently visible `Q3/Q4` quantum, atom-model, and kernel surface is sufficient for the reviewed `HE`/`BW`/`NW` evidence; the open problem is still the many unchecked state cells, not another immediate canonical split | keep this row quiet while `Schwingungen / Wellen` catches up nationwide; reopen quantum breadth only after the active wave row has reduced its `n/s` debt or another state source clearly forces a shared gap |
 
@@ -57,8 +57,8 @@ State columns use Bundesland abbreviations:
 Current focus:
 
 1. keep `Sek II Mechanik / Dynamik` stable
-2. keep `Sek II Elektrizitaet / Magnetismus / Induktion` stable
-3. keep `Sek II Schwingungen / Wellen` stable as the current topic-first reference row
+2. keep `Sek II Elektrizitaet / Magnetismus / Induktion` active through the Berlin first-entry lane
+3. keep `Sek II Schwingungen / Wellen` stable as the current broader reference row
 4. keep `Sek II Quanten / Atom / Kernphysik` in residue-control mode until another retained source lane creates a real shared reason to reopen breadth
 
 Active coordination artifact:
@@ -68,6 +68,7 @@ Active coordination artifact:
 Why:
 
 - Physics now has enough reviewed multi-state evidence to stop steering only by state lane
+- Berlin keeps `Sek II Elektrizitaet / Magnetismus / Induktion` active as the cleanest nationwide onboarding row and already covers the first retained magnetic follow-on without forcing another canonical atom
 - the widened Niedersachsen wave strip plus the refreshed Bayern contribution now close the current wave row once across all currently available retained source states
 - the active wave row is now resolved once across all currently available retained source states, so the remaining nationwide Physics debt is easier to see as missing source lanes than as another sequence of pseudo-active lane notes
 

@@ -1,11 +1,11 @@
 # Canonical Gymnasium Physics M2 Lane Shortlist
 
-Snapshot: `2026-04-11`
+Snapshot: `2026-04-15`
 
 This document narrows the first post-`M1` Physics rollout move.
 
 It started intentionally smaller than a full machine-readable rollout tracker.
-Physics now has that tracker because Hessen, Bayern, Nordrhein-Westfalen, and Baden-Wuerttemberg are active on the current canonical path.
+Physics now has that tracker because Hessen, Bayern, Nordrhein-Westfalen, Baden-Wuerttemberg, and Berlin are active on the current canonical path.
 The shortlist still exists because it keeps the narrower M2 corridor reasoning readable beside the machine-readable tracker.
 
 Execution update on `2026-04-11`:
@@ -35,15 +35,28 @@ Execution update on `2026-04-11`:
 - `DE-NI` upper-secondary Physics now also has:
   - an active source snapshot
   - provenance-backed membership and closure
-  - a repository-backed mapping lane with `44` reviewed mappings
+  - a repository-backed mapping lane with `55` reviewed mappings
   - one shared orientation anchor
   - one reviewed E-phase `Dynamik` corridor
   - one adjacent reviewed E-phase energy strip on `Kinetische Energie` and `Energieerhaltung`, while the sustainability-only Bewertungsblatt remains source-led
   - one first reviewed qualification-phase `Elektrizitaet` strip on `Potenzial und Kondensator`, `Stromstärke als Ladungstransport`, `Arbeit, Spannung und Potenzial im E-Feld`, `Kondensator und Feld im Plattenkondensator`, `Auf- und Entladen eines Kondensators`, and `Energie des elektrischen Feldes`
-  - one adjacent reviewed qualification-phase magnet-field strip on `Magnetisches Feld`, `Magnetische Felder und Feldlinienbilder`, `Kraft auf stromdurchflossene Leiter`, `Lorentzkraft auf freie Ladungen`, and `Geladene Teilchen in homogenen magnetischen Feldern untersuchen`, while `Querfeld`/`Wien-Filter` and `Fadenstrahlrohr` remain source-led
+  - one adjacent reviewed qualification-phase magnet-field strip on `Magnetisches Feld`, `Magnetische Felder und Feldlinienbilder`, `Kraft auf stromdurchflossene Leiter`, `Lorentzkraft auf freie Ladungen`, and `Geladene Teilchen in homogenen magnetischen Feldern untersuchen`
+  - one adjacent reviewed crossed-field follow-on on `Geladene Teilchen in homogenen elektrischen Feldern untersuchen`
+  - one adjacent reviewed fine-beam-tube follow-on on the new shared Q1 measurement leaf `Fadenstrahlrohr als Elektronen-Messverfahren einordnen`
+  - retained Bayern source evidence on `Elektronenablenkroehre` / `Fadenstrahlrohr` is now imported as the reviewed second-state corridor that justifies that shared atom
   - one adjacent reviewed qualification-phase induction strip on `Magnetfeld von geradem Leiter und Spule`, `Induktion durch Änderung des magnetischen Flusses`, `Induktionsgesetz und Lenz’sche Regel`, and `Technische Anwendungen des Induktionsgesetzes qualitativ beschreiben`
   - one adjacent reviewed LK follow-on on `Hall-Effekt anwenden`, `Induktionsgesetz in Differenzialform`, `Selbstinduktion und Induktivität`, and `Energie gespeicherter Magnetfelder`
   - one first reviewed Q2 oscillation strip on `Harmonische Schwingung verstehen`, `Charakteristische Schwingungsgrößen`, `Lineare Rückstellkraft bei harmonischen Schwingungen beschreiben`, `Energie und Energieerhaltung in Schwingungen`, `Gedämpfte Schwingungen beschreiben`, `Erzwungene Schwingungen und Resonanz`, `Elektromagnetischen Schwingkreis analysieren`, and `Thomson’sche Schwingungsgleichung nutzen`
+  - one adjacent reviewed `Wellen` strip on `Mechanische Wellen`, `Harmonische Wellen und ihre Größen`, `Wellenphänomene`, `Polarisation`, `Überlagerung und Interferenz von Wellen`, `Stehende Wellen und Wellenlängenbestimmung`, `Spektren mit Beugungsgitter deuten`, `Spektrum elektromagnetischer Wellen`, and `Bragg-Bedingung anwenden (LK)`
+  - one adjacent reviewed `Michelson` follow-on on `Interferometer verstehen`
+- `DE-BE` upper-secondary Physics now also has:
+  - an active source snapshot
+  - a source-landscape registry entry
+  - provenance-backed membership and closure
+  - a repository-backed mapping lane with `10` reviewed mappings
+  - one shared orientation anchor
+  - one structural `Q1` field anchor
+  - one first reviewed `Q1` electric-field / capacitor corridor
 
 See also:
 
@@ -55,12 +68,12 @@ See also:
 
 Canonical Physics has now reached hardened `M1` parity for the reviewed `DE-HE` + `DE-BY` corridor.
 
-What does **not** exist yet for Physics beyond the currently active Hessen, Bayern, Nordrhein-Westfalen, and Baden-Wuerttemberg surface:
+What does **not** exist yet for Physics beyond the currently active Hessen, Bayern, Nordrhein-Westfalen, Baden-Wuerttemberg, and Berlin surface:
 
-- no additional Physics `source-json` snapshots outside Hessen, Bayern, Nordrhein-Westfalen, and Baden-Wuerttemberg
-- no additional Physics source-landscape registry entries outside Hessen, Bayern, Nordrhein-Westfalen, and Baden-Wuerttemberg
+- no additional Physics `source-json` snapshots outside Hessen, Bayern, Nordrhein-Westfalen, Baden-Wuerttemberg, and Berlin
+- no additional Physics source-landscape registry entries outside Hessen, Bayern, Nordrhein-Westfalen, Baden-Wuerttemberg, and Berlin
 - no reviewed fifth-state Physics composition views yet
-- no active fifth-state Physics lane yet, so the next rollout decision should still stay narrow
+- no active sixth-state Physics lane yet, so the next rollout decision should still stay narrow
 
 What **does** already exist and can be reused:
 
@@ -73,7 +86,7 @@ What **does** already exist and can be reused:
 
 Operational consequence:
 
-- the next Physics move should now stay on **the active NI lane**, most plausibly on `Wellen`; the older `Querfeld`/`Wien-Filter` and `Fadenstrahlrohr` residues are now secondary cleanup, not the main corridor
+- the next Physics move no longer needs another NI widening on the already closed retained NI pilot corridor; Niedersachsen now stays on maintenance and now carries the reviewed `Michelson`, crossed-field, and fine-beam-tube follow-ons, while only the sustainability-related Bewertungsblatt remains intentionally source-led
 - the first slice should prefer **upper-secondary Physics**, because the canonical Physics graph and composition views are already strongest there
 
 ## 2. Candidate ranking

@@ -16,8 +16,8 @@ import { getDisplayFiltersForSelection } from '../utils/filterLabels'
 import { normalizeTrainerLandscapeId } from '../utils/trainerLandscapeContext'
 import { normalizeLearnerProjectedEntries } from '../utils/learnerTreeProjection'
 import {
+  applyMatchedCompositionRouteGoalProjection,
   applyCompositionViewProjection,
-  compositionViewExposesGoal,
   deriveRuntimeCompositionScope,
 } from '../utils/compositionViewRuntime'
 import { normalizeCompositionView } from '../utils/authoring/compositionViewAuthoring'
@@ -292,32 +292,10 @@ export function useAppCore({ role, setLearnerMeta, skillpilotId }: AppCoreOption
     return () => controller.abort()
   }, [role, runtimeCompositionScopes])
 
-  const effectiveMatchedCompositionViewsByLandscapeId = useMemo(() => {
-    if (role !== 'learner' || !goalId) {
-      return matchedCompositionViewsByLandscapeId
-    }
-
-    const routeLandscapeId = graphSourceLandscapeEntries.find((entry) =>
-      entry.goals.some((goal) => goal.id === goalId),
-    )?.meta.landscapeId
-
-    if (!routeLandscapeId) {
-      return matchedCompositionViewsByLandscapeId
-    }
-
-    const matchedView = matchedCompositionViewsByLandscapeId[routeLandscapeId]
-    if (!matchedView) {
-      return matchedCompositionViewsByLandscapeId
-    }
-
-    if (compositionViewExposesGoal(graphSourceLandscapeEntries, matchedView, goalId)) {
-      return matchedCompositionViewsByLandscapeId
-    }
-
-    const next = { ...matchedCompositionViewsByLandscapeId }
-    delete next[routeLandscapeId]
-    return next
-  }, [goalId, graphSourceLandscapeEntries, matchedCompositionViewsByLandscapeId, role])
+  const effectiveMatchedCompositionViewsByLandscapeId = useMemo(
+    () => matchedCompositionViewsByLandscapeId,
+    [matchedCompositionViewsByLandscapeId],
+  )
 
   const projectedLandscapeEntries = useMemo(() => {
     const compositionManagedLandscapeIds = new Set(runtimeCompositionScopes.keys())
@@ -358,17 +336,13 @@ export function useAppCore({ role, setLearnerMeta, skillpilotId }: AppCoreOption
       return compositionProjectedEntries
     }
 
-    const landscapeIdsWithMatchedCompositionViews = new Set(Object.keys(effectiveMatchedCompositionViewsByLandscapeId))
-    return compositionProjectedEntries.map((entry) => {
-      if (landscapeIdsWithMatchedCompositionViews.has(entry.meta.landscapeId)) {
-        return entry
-      }
-      return normalizeLearnerProjectedEntries([entry])[0] ?? entry
-    })
+    const routeProjectedEntries = applyMatchedCompositionRouteGoalProjection(compositionProjectedEntries, goalId)
+    return routeProjectedEntries.map((entry) => normalizeLearnerProjectedEntries([entry])[0] ?? entry)
   }, [
     activeFilter,
     effectiveMatchedCompositionViewsByLandscapeId,
     graphSourceLandscapeEntries,
+    goalId,
     loadingMatchedCompositionViews,
     role,
     runtimeCompositionScopes,
