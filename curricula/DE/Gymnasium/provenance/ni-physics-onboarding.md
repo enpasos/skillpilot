@@ -18,8 +18,8 @@ Activation result:
 - the Niedersachsen upper-secondary Physics lane is now active in `source-landscape-registry.json`
 - the first Niedersachsen upper-secondary Physics snapshot now contributes real `goalIds` to `source-goal-membership-registry.json`
 - the same snapshot now contributes atomic closures to `source-goal-closure-registry.json`
-- the repository-backed Niedersachsen Physics mapping file now carries `44` reviewed upper-secondary mappings across the current narrow reviewed corridor
-- the committed Niedersachsen upper-secondary Physics applicability cut is now active on the shared canonical motivation anchor, on the reviewed E-phase dynamics strip, on the adjacent E-phase energy strip, on the first shared Q1 potential/capacitor strip, on the first shared magnetic-field strip, on the first shared induction strip, on the shared LK follow-on leaves for Hall-Effekt, Differenzialform, Selbstinduktion, and coil-field energy, and now also on the first shared Q2 oscillation strip:
+- the repository-backed Niedersachsen Physics mapping file now carries `53` reviewed upper-secondary mappings across the current narrow reviewed corridor
+- the committed Niedersachsen upper-secondary Physics applicability cut is now active on the shared canonical motivation anchor, on the reviewed E-phase dynamics strip, on the adjacent E-phase energy strip, on the first shared Q1 potential/capacitor strip, on the first shared magnetic-field strip, on the first shared induction strip, on the shared LK follow-on leaves for Hall-Effekt, Differenzialform, Selbstinduktion, and coil-field energy, on the first shared Q2 oscillation strip, and now also on one first shared `Wellen` strip plus the first adjacent Q3 optics/spectrum leaves:
   - `Freier Fall experimentell untersuchen`
   - `Gleichmäßig beschleunigte Bewegung und Beschleunigung`
   - `Waagerechter Wurf analysieren`
@@ -59,6 +59,17 @@ Activation result:
   - `Erzwungene Schwingungen und Resonanz`
   - `Elektromagnetischen Schwingkreis analysieren`
   - `Thomson’sche Schwingungsgleichung nutzen`
+  - `Mechanische Wellen`
+  - `Harmonische Wellen und ihre Größen`
+  - `Wellenphänomene: Brechung, Reflexion, Beugung`
+  - `Überlagerung und Interferenz von Wellen`
+  - `Stehende Wellen und Wellenlängenbestimmung`
+  - `Q3 Elektromagnetische Wellen und Quantenphysik`
+  - `Elektromagnetische Wellen`
+  - `Spektrum elektromagnetischer Wellen`
+  - `Polarisation und Schwingungsebene`
+  - `Spektren mit Beugungsgitter deuten`
+  - `Bragg-Bedingung anwenden (LK)`
 - the widened source snapshot is still intentionally narrow and source-led:
   - one shared orientation anchor
   - one Einfuehrungsphasen-Korridor `Dynamik`
@@ -69,6 +80,7 @@ Activation result:
   - one adjacent qualification-phase induction strip with six imported leaves on Hall-probe coil measurements, qualitative coil-field dependencies, conductor/coil field-line images, first flux-based induction, induction-law diagram reading, and one simple technical induction application
   - one adjacent qualification-phase LK follow-on on the same page-36 source with four imported leaves on Hallspannung derivation, differential-form induction for linear/sinusoidal flux changes, self-induction/inductance, and coil field energy
   - one first qualification-phase oscillation strip with nine imported leaves on harmonic oscillation description, Feder-Masse period law, linear restoring force, energy transformations, damping, resonance, electromagnetic oscillating circuits, and Thomson reference
+  - one first qualification-phase wave strip with nine imported leaves on harmonic waves, wave phenomena, polarization, interference, standing-wave ultrasound, grating-based light wavelengths, visible-light spectrum placement, Bragg reflection, and one still source-led Michelson follow-on
 - the reviewed Niedersachsen Physics corridor stays intentionally conservative:
   - exact bridge on the shared motivation anchor
   - partial bridge on the Niedersachsen E-phase `Dynamik` cluster toward the shared canonical E-phase mechanics surface
@@ -108,13 +120,23 @@ Activation result:
   - new partial bridge from `Elektromagnetischen Schwingkreis beschreiben und Schwingungsgroessen aus Messdaten bestimmen` onto `Elektromagnetischen Schwingkreis analysieren`
   - new partial bridge from `Energieumwandlungen und Resonanzkurve im elektromagnetischen Schwingkreis beschreiben` onto `Elektromagnetischen Schwingkreis analysieren`
   - new partial bridge from `Kapazitaetsabhaengigkeit der Eigenschwingung experimentell bestimmen und die Thomsonsche Schwingungsgleichung nennen` onto `Thomson’sche Schwingungsgleichung nutzen`
+  - new partial bridge from the qualification-phase source cluster `Wellen - Grundlagen, Interferenz und Spektren` onto the shared canonical Q2 cluster `Mechanische Wellen`
+  - new partial bridge from `Harmonische Wellen mit Wellenlaenge, Frequenz, Ausbreitungsgeschwindigkeit, Amplitude und Phase beschreiben` onto `Harmonische Wellen und ihre Größen`
+  - new partial bridge from `Reflexion, Brechung und Beugung als Wellenphaenomene beschreiben` onto `Wellenphänomene: Brechung, Reflexion, Beugung`
+  - new partial bridge from `Longitudinale und transversale Wellen vergleichen und Polarisierbarkeit experimentell einordnen` onto `Polarisation und Schwingungsebene`
+  - new partial bridge from `Interferenzphaenomene an stehender Welle, Doppelspalt und Gitter beschreiben und deuten` onto `Überlagerung und Interferenz von Wellen`
+  - new partial bridge from `Wellenlaenge von Ultraschall bei stehenden Wellen experimentell bestimmen` onto `Stehende Wellen und Wellenlängenbestimmung`
+  - new partial bridge from `Wellenlaenge von weissem und monochromatischem Licht mit dem Gitter bestimmen` onto `Spektren mit Beugungsgitter deuten`
+  - new partial bridge from `Sichtbares Licht in das Spektrum elektromagnetischer Wellen einordnen` onto `Spektrum elektromagnetischer Wellen`
+  - new partial bridge from `Bragg-Reflexion zur Wellenlaengenbestimmung von Roentgenstrahlung einordnen` onto `Bragg-Bedingung anwenden (LK)`
   - the new source leaf on sustainability-related value judgment stays intentionally source-led, because the currently available shared thermodynamics evaluation surface would overclaim the Niedersachsen wording
   - the new source leaf on homogenous electric transverse fields and `Wien-Filter` stays intentionally source-led, because the current shared canonical magnetic-field surface does not yet isolate a reviewed crossed-field target
   - the new eA-only source leaf on the `Fadenstrahlrohr` stays intentionally source-led, because the current shared canonical graph does not yet isolate the narrower specific-charge surface as a reviewed shared Q1 target
+  - the new source leaf on the `Michelson-Interferometer` stays intentionally source-led, because the current shared canonical graph still has no reviewed narrow Michelson target
   - no Niedersachsen-specific Physics composition views are introduced in this widened step
   - no new canonical Physics atoms are introduced just for Niedersachsen wording
 
 Operational rule from here:
 
 - keep the reserved `sourceLandscapeId` stable while broadening the Niedersachsen Physics source snapshot
-- keep the Niedersachsen Physics lane narrow and reviewed; after the first reviewed `Schwingungen` strip, the next clean widening should now open `Wellen`, while the still source-led `Querfeld`/`Wien-Filter` and `Fadenstrahlrohr` residues remain optional only if broader reviewed shared targets become justified
+- keep the Niedersachsen Physics lane narrow and reviewed inside the active topic-first row `Sek II Schwingungen / Wellen`; after the first reviewed `Wellen` strip, use Niedersachsen as the widened comparison lane for that topic, while `Michelson` and the still source-led `Querfeld`/`Wien-Filter` and `Fadenstrahlrohr` residues remain optional only if broader reviewed shared targets become justified

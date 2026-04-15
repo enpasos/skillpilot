@@ -41,6 +41,7 @@ class LearnerServiceCrossSubjectPilotTest {
     private static final String CANONICAL_GYMNASIUM_ROOT_ID = "a0e13c56-c25f-4742-9272-3a1a603ee52e";
     private static final String CANONICAL_PHYSICS_ID = "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a";
     private static final String CANONICAL_PHYSICS_ROOT_ID = "bf980fff-b62b-4ea4-a20d-31681a7ad785";
+    private static final String CANONICAL_PHYSICS_WHY_ID = "5c44b9ba-9b05-4774-95d5-073230d3fc4f";
     private static final String CANONICAL_PHYSICS_GK_PERSONAL_CONFIG = """
             {
               "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a": {"selected": true, "filterId": "GK"}
@@ -52,6 +53,9 @@ class LearnerServiceCrossSubjectPilotTest {
     private static final String CANONICAL_PHYSICS_E3_CLUSTER_ID = "287739a3-6143-55d0-abe7-1a08889e9b49";
     private static final String CANONICAL_PHYSICS_HORIZONTAL_THROW_CLUSTER_ID = "82b5df3d-b1a7-4c6f-bd62-18fbbbe097a3";
     private static final String CANONICAL_PHYSICS_E2_CLUSTER_ID = "9340e894-bb0d-45a4-91f2-b90a63ad50a8";
+    private static final String CANONICAL_PHYSICS_STANDING_WAVES_ID = "d5772db3-120c-5c37-ab46-2336d02236b0";
+    private static final String CANONICAL_PHYSICS_INTERFERENCE_PATTERNS_ID = "2c6af966-7703-4176-a117-5ddb8295bedf";
+    private static final String CANONICAL_PHYSICS_DOUBLE_SLIT_INTERFERENCE_ID = "6270e558-d657-5363-a6b2-e49a032a453b";
     private static final String CANONICAL_PHYSICS_NEWTON_CLUSTER_ID = "4dc9a094-66d7-4d4d-9436-134aabe48f39";
     private static final String CANONICAL_PHYSICS_CONSERVATION_CLUSTER_ID = "e9d616d8-685f-4129-a36f-dae7a280bae7";
     private static final String LEGACY_PHYSICS_CLUSTER_ID = "af70212d-e318-462d-a53f-fee8f05697d6";
@@ -587,8 +591,11 @@ class LearnerServiceCrossSubjectPilotTest {
 
         assertThat(frontier)
                 .extracting(FrontierGoal::id)
-                .contains(CANONICAL_PHYSICS_ROOT_ID, CANONICAL_PHYSICS_CLUSTER_ID, CANONICAL_PHYSICS_E2_CLUSTER_ID,
-                        CANONICAL_PHYSICS_E3_CLUSTER_ID, "5c44b9ba-9b05-4774-95d5-073230d3fc4f");
+                .contains(
+                        CANONICAL_PHYSICS_WHY_ID,
+                        CANONICAL_PHYSICS_STANDING_WAVES_ID,
+                        CANONICAL_PHYSICS_INTERFERENCE_PATTERNS_ID,
+                        CANONICAL_PHYSICS_DOUBLE_SLIT_INTERFERENCE_ID);
     }
 
     @Test

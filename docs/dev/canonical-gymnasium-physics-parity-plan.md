@@ -12,6 +12,7 @@ See also:
 - `docs/dev/canonical-gymnasium-implementation-plan.md`
 - `docs/dev/canonical-gymnasium-migration-status.md`
 - `docs/dev/canonical-gymnasium-physics-m2-lane-shortlist.md`
+- `docs/dev/canonical-gymnasium-physics-topic-workboard.md`
 - `docs/dev/canonical-gymnasium-math-bundeslaender-status.md`
 - `docs/concept/curriculum-graph/canonical-gymnasium-rollout.md`
 
@@ -259,18 +260,19 @@ These are historical/test-scope names, not active canonical Physics identifiers.
 ## 5. Recommended next execution order
 
 M1 is done.
-The next useful order is the M2 rollout path:
+The next useful order is still `M2`, but it should now run **topic first** on the active Physics surface:
 
-1. choose the next Physics Bundesland lane and archive its source bundle under the DE-level retained-input structure
-2. add or refine the source snapshot and committed mapping file for that lane
-3. extend the provenance and applicability registries for the newly reviewed Physics corridor
-4. add state-scoped composition views only where the learner-facing tree actually differs from the DE-wide default
-5. add the minimal runtime/backend tests that fence the new lane
-6. keep the Physics rollout tracker aligned once another active state or corridor changes the rollout surface
+1. choose the active Physics topic row in `docs/dev/canonical-gymnasium-physics-topic-workboard.md`
+2. compare that row across all currently available Bundesland sources and make the unresolved cells explicit
+3. add or refine the narrow source snapshot and committed mappings only for the next unresolved state cell inside that row
+4. extend applicability and source registries for the newly reviewed topic slice
+5. add state-scoped composition views only where the learner-facing tree actually differs from the DE-wide default
+6. add the minimal runtime/backend tests that fence the widened topic slice
 7. keep `programUnits`, `goalPlacements`, and `competencyRefs` growth source-led rather than trying to pre-expand them speculatively
+8. once the active row is stable again, move to the next unresolved state cell in the same row before reopening another Physics topic
 
 This matters because the old M1 debt is no longer the blocker.
-The next risk is rollout entropy across new state lanes.
+The next risk is rollout entropy across new state lanes and cross-topic churn.
 
 ## 6. Definition of done
 
