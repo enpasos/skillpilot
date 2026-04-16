@@ -1,6 +1,6 @@
 # Canonical Gymnasium Physics Bundeslaender Status
 
-Snapshot: `2026-04-16T00:00:00Z`
+Snapshot: `2026-04-16T10:32:00Z`
 
 This file is generated from:
 
@@ -10,14 +10,14 @@ This file is generated from:
 
 ## Headline
 
-- Tracked states: `8`
-- Canonical source coverage present: `8/8`
-- States with active snapshots (`P2+`): `8/8`
-- States with structural anchors mapped (`P3+`): `8/8`
-- States with reviewed corridor (`P4+`): `8/8`
-- States with broad coverage (`P5+`): `2/8`
-- States operationally cutover-ready (`P6`): `2/8`
-- Active canonical corridors: `1/7`
+- Tracked states: `9`
+- Canonical source coverage present: `9/9`
+- States with active snapshots (`P2+`): `9/9`
+- States with structural anchors mapped (`P3+`): `9/9`
+- States with reviewed corridor (`P4+`): `9/9`
+- States with broad coverage (`P5+`): `2/9`
+- States operationally cutover-ready (`P6`): `2/9`
+- Active canonical corridors: `1/8`
 - Priority `active`: `1`
 
 ## Steering model
@@ -45,7 +45,8 @@ This file is generated from:
 | `SEK2.BW.UPPER_SECONDARY_ENTRY` Baden-Wuerttemberg upper-secondary first entry lane | `completed` | `DE-BW` | Treat the current BW upper-secondary first-entry lane as complete at the reviewed pilot-cut level and keep it stable inside the current topic-first maintenance phase. Reopen BW only for another clearly missing reviewed corridor outside the now-covered Basisfach-/Leistungsfach optics and quantum strips, or when a later retained source lane creates a genuinely shared Physics gap; still avoid BW-specific Physics composition views or a broader applicability sweep before wider evidence exists. |
 | `SEK2.BE.UPPER_SECONDARY_ENTRY` Berlin upper-secondary first entry lane | `completed` | `DE-BE` | Treat the current Berlin upper-secondary first-entry lane as complete at the reviewed pilot-cut level. The shared BE/BB residue on `c0` / `Relativitaet` / `Eintrittswinkel` is now explicitly frozen at the current reviewed level, so reopen Berlin only if that trio later becomes jointly reviewable or another later retained source lane creates a genuinely shared Physics gap. |
 | `SEK2.BB.UPPER_SECONDARY_ENTRY` Brandenburg upper-secondary first entry lane | `completed` | `DE-BB` | Treat the current Brandenburg retained `3.2.1` -> `3.2.2` upper-secondary lane as complete at the reviewed pilot-cut level. The shared BE/BB residue on `c0` / `Relativitaet` / `Eintrittswinkel` is now explicitly frozen at the current reviewed level, so reopen Brandenburg only if that trio later becomes jointly reviewable or another later retained source lane creates a genuinely shared Physics gap. |
-| `SEK2.SH.UPPER_SECONDARY_ENTRY` Schleswig-Holstein upper-secondary first entry lane | `active` | `DE-SH` | Continue the new Schleswig-Holstein upper-secondary lane on the same official source family `Elektrische und magnetische Felder`: after the first reviewed field-concept corridor, take the next retained SH step on `Koerper in statischen Feldern` before switching to another physics topic row or forcing a Schleswig-Holstein-specific canonical split. |
+| `SEK2.SH.UPPER_SECONDARY_ENTRY` Schleswig-Holstein upper-secondary first entry lane | `completed` | `DE-SH` | Treat the current Schleswig-Holstein upper-secondary lane as complete at the reviewed pilot-cut level. Keep `Massenspektrometer` plus `Drehimpuls und Drehimpulserhaltung` frozen as explicit source-led micro-residues unless broader reviewed evidence later warrants narrow shared canonical splits, and move the next active Physics rollout to a new source family. |
+| `SEK2.RP.UPPER_SECONDARY_ENTRY` Rheinland-Pfalz upper-secondary first entry lane | `active` | `DE-RP` | Treat the Rheinland-Pfalz field/induction family, the opened oscillation/wave strips, the first GF quantum corridor `Quantenobjekte I`, and the first GF atom-model corridor `Quantenmechanische Atomvorstellung I` as stable on the current conservative reviewed cut. Keep `Periodendauer`, `Polarisation`, `Weisslichtspektrum`, and `gekoppelte Schwingungen` frozen as explicit source-led RP micro-residues, keep `Plancksches Wirkungsquantum mit einer experimentellen Methode naeherungsweise bestimmen` source-led inside the RP quantum strip, and move the next active RP widening to the adjacent strip `Quantenmechanische Atomvorstellung II`. |
 
 ## Program phases
 
@@ -80,11 +81,12 @@ This file is generated from:
 | `DE-BW` Baden-Wuerttemberg | `P4` First corridor reviewed | `65%` | `yes` | `64` | `subtree_adopted` | `backlog` |
 | `DE-BE` Berlin | `P4` First corridor reviewed | `65%` | `yes` | `24` | `subtree_adopted` | `backlog` |
 | `DE-BB` Brandenburg | `P4` First corridor reviewed | `65%` | `yes` | `24` | `subtree_adopted` | `backlog` |
-| `DE-SH` Schleswig-Holstein | `P4` First corridor reviewed | `65%` | `yes` | `10` | `subtree_adopted` | `active` |
+| `DE-SH` Schleswig-Holstein | `P4` First corridor reviewed | `65%` | `yes` | `22` | `subtree_adopted` | `backlog` |
+| `DE-RP` Rheinland-Pfalz | `P4` First corridor reviewed | `65%` | `yes` | `61` | `subtree_adopted` | `active` |
 
 ## Immediate queue
 
-- `DE-SH` Schleswig-Holstein: Schleswig-Holstein now has an active upper-secondary Physics source snapshot from the combined-stage Fachanforderungen source family, provenance-backed membership and closure, and one first reviewed narrow mapping lane on the shared orientation anchor, one structural Sek-II anchor `Elektrische und magnetische Felder`, and one first reviewed field-concept corridor on the official SH subtopic `Das Feldkonzept zur Beschreibung von Wechselwirkungen`. The lane currently carries 10 reviewed mappings, introduces no Schleswig-Holstein-specific canonical Physics atoms, no Schleswig-Holstein-specific composition views, and no committed Schleswig-Holstein applicability cut yet.
+- `DE-RP` Rheinland-Pfalz: Rheinland-Pfalz now has an active upper-secondary Physics source snapshot for the Mainzer Studienstufe, the archived official MSS Physics PDF, provenance-backed membership and closure, one first reviewed narrow mapping lane on the shared orientation anchor, one structural Qualifikationsphasen-Anker `Statische elektrische und magnetische Felder`, one first reviewed gemeinsamer Grundfach-/Leistungsfach-Korridor on the Pflichtbaustein `Feldkonzept fuer statische elektrische und magnetische Felder`, one first reviewed GF/LF-common follow-on on `Wechselwirkung von geladenen Koerpern mit statischen Feldern`, one first narrow reviewed LK follow-on on `Hall-Effekt`, two adjacent conservative LK follow-ons on `Kreisbahnen` and `gekreuzten Feldern`, one first reviewed GF/LF-common induction corridor `Veraenderliche elektromagnetische Felder`, one adjacent shared induction follow-on on `Selbstinduktion` / `Ein- und Ausschaltvorgaenge bei der Spule`, one adjacent narrow LK induction follow-on on `Induktionsgesetz in differentieller Form`, one first reviewed GF/LF-common oscillation corridor `Harmonische Schwingungen`, one first reviewed Grundfach wave corridor `Harmonische Wellen`, one first reviewed Grundfach superposition/interference follow-on `Superposition von Wellen`, one first narrow reviewed LF follow-on `Harmonische Wellen und ihre Superposition`, one first narrow reviewed LF Pflichtbaustein follow-on `Schwingungen und Wellen`, one first reviewed Grundfach quantum corridor `Quantenobjekte I` with one structural quantum/atom anchor on the shared Q4 surface plus reviewed bridges across double-slit behavior of photons/electrons, photon energy-frequency-momentum relations, De-Broglie matter waves, probability interpretation via the wavefunction, and the model/worldview reflection surface, and now also one first reviewed Grundfach atom-model corridor `Quantenmechanische Atomvorstellung I` with reviewed bridges across quantized absorption / emission, the hydrogen energy-level model, and orbital probability interpretation on the shared canonical atom-model surface. The lane currently carries 61 reviewed mappings, introduces no Rheinland-Pfalz-specific canonical Physics atoms, no Rheinland-Pfalz-specific composition views, and no committed Rheinland-Pfalz applicability cut yet; the retained RP field/induction family is closed on the current conservative reviewed cut, the remaining RP oscillation/wave micro-residues on period dependence, wave types / polarization, the white-light double-slit spectrum, and coupled oscillations are explicitly frozen as source-led residues on the same reviewed cut, and the adjacent RP clause `Plancksches Wirkungsquantum mit einer experimentellen Methode naeherungsweise bestimmen` stays intentionally source-led because the current shared canonical method surface remains photoeffect-specific.
 
 ## Next steps
 
@@ -95,7 +97,8 @@ This file is generated from:
 - `DE-BW`: Keep Baden-Wuerttemberg on maintenance only at the current reviewed pilot-cut level: preserve the existing first-entry strip inside the current topic-first maintenance phase, and reopen BW only for another clearly missing reviewed corridor outside the now-covered Basisfach-/Leistungsfach optics and quantum strips or when later retained source lanes create a genuinely shared Physics gap; do not introduce BW-specific Physics composition views before wider reviewed evidence requires them.
 - `DE-BE`: Keep Berlin stable on the reviewed retained `3.2.1` -> `3.2.2` route. The shared BE/BB residue on `c0` / `Relativitaet` / `Eintrittswinkel` is now explicitly frozen at the current reviewed level; the next rollout move should therefore come from a different source family unless that trio later becomes jointly reviewable.
 - `DE-BB`: Keep Brandenburg stable on the reviewed retained `3.2.1` -> `3.2.2` route. The shared BE/BB residue on `c0` / `Relativitaet` / `Eintrittswinkel` is now explicitly frozen at the current reviewed level; the next rollout move should therefore come from a different source family unless that trio later becomes jointly reviewable.
-- `DE-SH`: Keep Schleswig-Holstein active on the same retained source family: after the first reviewed field-concept corridor, continue on `Koerper in statischen Feldern` before switching to another Physics topic row or forcing a Schleswig-Holstein-specific canonical split.
+- `DE-SH`: Treat Schleswig-Holstein as complete at the current reviewed pilot-cut level. Keep `Massenspektrometer` plus `Drehimpuls und Drehimpulserhaltung` frozen as explicit source-led micro-residues unless broader reviewed evidence warrants narrow shared canonical splits, and reopen SH only if a later multi-state source lane creates a genuinely shared Physics gap on either residue.
+- `DE-RP`: Keep the Rheinland-Pfalz field/induction family, the opened oscillation/wave strips, the first GF quantum corridor `Quantenobjekte I`, and the first GF atom-model corridor `Quantenmechanische Atomvorstellung I` stable at the current conservative reviewed cut. Leave `Periodendauer`, `Polarisation`, `Weisslichtspektrum`, and `gekoppelte Schwingungen` explicitly frozen as source-led RP micro-residues, keep `Plancksches Wirkungsquantum mit einer experimentellen Methode naeherungsweise bestimmen` source-led inside the RP quantum strip, and move the next active RP widening to the adjacent strip `Quantenmechanische Atomvorstellung II`.
 
 ## Regeneration
 

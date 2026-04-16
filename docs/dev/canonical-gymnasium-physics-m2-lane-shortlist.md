@@ -75,11 +75,46 @@ Execution update on `2026-04-11`:
   - an active source snapshot
   - a source-landscape registry entry
   - provenance-backed membership and closure
-  - a repository-backed mapping lane with `10` reviewed mappings
+  - a repository-backed mapping lane with `22` reviewed mappings
   - one shared orientation anchor
   - one structural upper-secondary field anchor `Elektrische und magnetische Felder`
   - one first reviewed field-concept corridor on the official SH subtopic `Das Feldkonzept zur Beschreibung von Wechselwirkungen`
+  - one first reviewed static-fields follow-on corridor on the official SH subtopic `Koerper in statischen Feldern`
+  - one second reviewed SH follow-on on Elektronenmessung und technischen Anwendungen inside the same SH source family
+  - one third reviewed SH follow-on on Kreisbewegungen inside the same SH source family
+  - one adjacent SH `Massenspektrometer` leaf that stays intentionally source-led because the current shared canonical Physics surface still has no narrow reviewed target for it
+  - one adjacent SH `Drehimpuls und Drehimpulserhaltung` leaf that stays intentionally source-led because the current shared canonical Physics surface on that concept is still a separate Drehbewegungsflaeche
   - no Schleswig-Holstein-specific canonical Physics atom and no committed Schleswig-Holstein applicability cut yet
+- `DE-RP` upper-secondary Physics now also has:
+  - an archived official MSS Physics PDF
+  - an active source snapshot
+  - a source-landscape registry entry
+  - provenance-backed membership and closure
+  - a repository-backed mapping lane with `61` reviewed mappings
+  - one shared orientation anchor
+  - one structural Qualifikationsphasen-Anker `Statische elektrische und magnetische Felder`
+  - one first reviewed gemeinsamer Grundfach-/Leistungsfach-Korridor on the Pflichtbaustein `Feldkonzept fuer statische elektrische und magnetische Felder`
+  - one first reviewed GF/LF-common follow-on on `Wechselwirkung von geladenen Koerpern mit statischen Feldern`
+  - one first narrow reviewed LK follow-on on `Hall-Effekt`
+  - two adjacent conservative LK follow-ons on `Kreisbahnen im homogenen Magnetfeld` and `gekreuzten elektrischen und magnetischen Feldern`
+  - one first reviewed GF/LF-common induction corridor `Veraenderliche elektromagnetische Felder`
+  - one adjacent shared induction follow-on on `Selbstinduktion` und `Ein-/Ausschaltvorgaengen bei der Spule`
+  - one adjacent narrow LK induction follow-on on `Induktionsgesetz in differentieller Form`
+  - one first reviewed GF/LF-common harmonics corridor `Harmonische Schwingungen`
+  - one first reviewed Grundfach wave corridor `Harmonische Wellen`
+  - one first reviewed Grundfach superposition/interference follow-on `Superposition von Wellen`
+  - one first narrow reviewed LF follow-on `Harmonische Wellen und ihre Superposition`
+  - one first narrow reviewed LF-Pflichtbaustein follow-on `Schwingungen und Wellen`
+  - one first reviewed Grundfach quantum corridor `Quantenobjekte I`
+  - one first reviewed Grundfach atom-model corridor `Quantenmechanische Atomvorstellung I`
+  - the retained RP field/induction family is now closed on the current conservative reviewed cut
+  - one adjacent RP harmonics leaf on the dependence of the period on system quantities stays intentionally source-led
+  - one adjacent RP Grundfach wave leaf on wave types / polarization stays intentionally source-led
+  - one adjacent RP Grundfach superposition leaf on the spectrum of white light at the double slit stays intentionally source-led
+  - one adjacent RP LF leaf on coupled oscillations stays intentionally source-led
+  - those four RP oscillation/wave micro-residues are now explicitly frozen as source-led residues on the current reviewed cut
+  - one adjacent RP quantum leaf on the approximate experimental determination of Planck's constant stays intentionally source-led because the current shared canonical method surface remains photoeffect-specific
+  - no Rheinland-Pfalz-specific canonical Physics atom and no committed Rheinland-Pfalz applicability cut yet
 
 See also:
 
@@ -93,10 +128,10 @@ Canonical Physics has now reached hardened `M1` parity for the reviewed `DE-HE` 
 
 What does **not** exist yet for Physics beyond the currently active Hessen, Bayern, Nordrhein-Westfalen, Baden-Wuerttemberg, Berlin, Brandenburg, and Schleswig-Holstein surface:
 
-- no additional Physics `source-json` snapshots outside Hessen, Bayern, Nordrhein-Westfalen, Baden-Wuerttemberg, Berlin, Brandenburg, and Schleswig-Holstein
-- no additional Physics source-landscape registry entries outside Hessen, Bayern, Nordrhein-Westfalen, Baden-Wuerttemberg, Berlin, Brandenburg, and Schleswig-Holstein
+- no additional Physics `source-json` snapshots outside Hessen, Bayern, Nordrhein-Westfalen, Baden-Wuerttemberg, Berlin, Brandenburg, Schleswig-Holstein, and Rheinland-Pfalz
+- no additional Physics source-landscape registry entries outside Hessen, Bayern, Nordrhein-Westfalen, Baden-Wuerttemberg, Berlin, Brandenburg, Schleswig-Holstein, and Rheinland-Pfalz
 - no reviewed fifth-state Physics composition views yet
-- the first active eighth-state Physics lane now exists on `DE-SH` upper-secondary Physics; the retained BE/BB upper-secondary family stays closed at the current reviewed cut, and the next rollout decision inside Physics can therefore continue on the opened SH source family before another new state/source family is needed
+- the first active ninth-state Physics lane now exists on `DE-RP` upper-secondary Physics, while `DE-SH` and the retained BE/BB family stay explicitly closed at the current reviewed cut; the RP oscillation/wave micro-residues are now explicitly frozen, one first RP GF quantum corridor plus one adjacent GF atom-model corridor are open, and the next rollout move inside Physics should therefore target `Quantenmechanische Atomvorstellung II` rather than another RP wave micro-widening
 
 What **does** already exist and can be reused:
 

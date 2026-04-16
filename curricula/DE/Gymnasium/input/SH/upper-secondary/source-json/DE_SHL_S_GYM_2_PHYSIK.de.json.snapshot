@@ -8,8 +8,8 @@
   "frameworkId": "sh-fa-physics-2022-sek2",
   "title": "Physik Oberstufe (Schleswig-Holstein, Pilot-Quellsnapshot)",
   "titleEn": "Physics Upper Secondary (Schleswig-Holstein, Pilot Source Snapshot)",
-  "description": "Erster archivierter Schleswig-Holstein-Quellsnapshot fuer die Oberstufe Physik aus den Fachanforderungen Physik Sekundarstufe (2022). Der Snapshot aktiviert einen gemeinsamen Orientierungsanker, einen strukturellen Sek-II-Anker `Elektrische und magnetische Felder` sowie einen ersten reviewed Einstiegskorridor auf dem offiziellen Themenstreifen `Das Feldkonzept zur Beschreibung von Wechselwirkungen`.",
-  "descriptionEn": "First archived Schleswig-Holstein source snapshot for upper-secondary physics from the subject requirements for physics (2022). The snapshot activates a shared orientation anchor, a structural upper-secondary anchor `Electric and magnetic fields`, and one first reviewed entry corridor on the official topic strip `The field concept as a description of interactions`.",
+  "description": "Archivierter Schleswig-Holstein-Quellsnapshot fuer die Oberstufe Physik aus den Fachanforderungen Physik Sekundarstufe (2022). Der Snapshot aktiviert einen gemeinsamen Orientierungsanker, einen strukturellen Sek-II-Anker `Elektrische und magnetische Felder`, einen ersten reviewed Einstiegskorridor auf dem offiziellen Themenstreifen `Das Feldkonzept zur Beschreibung von Wechselwirkungen`, einen ersten retained Follow-on auf `Koerper in statischen Feldern`, einen zweiten retained Follow-on auf Elektronenmessung und technische Anwendungen derselben SH-Quellflaeche sowie einen dritten retained Follow-on auf Kreisbewegungen und Drehimpuls.",
+  "descriptionEn": "Archived Schleswig-Holstein source snapshot for upper-secondary physics from the subject requirements for physics (2022). The snapshot activates a shared orientation anchor, a structural upper-secondary anchor `Electric and magnetic fields`, one first reviewed entry corridor on the official topic strip `The field concept as a description of interactions`, one first retained follow-on on `Bodies in static fields`, one second retained follow-on on electron measurement and technical applications within the same Schleswig-Holstein source strip, and one third retained follow-on on circular motion and angular momentum.",
   "compatibilityOnly": true,
   "legacyHiddenByDefault": true,
   "filters": [
@@ -27,21 +27,29 @@
       "id": "sh-phys-sek2-root",
       "title": "Physik Oberstufe",
       "titleEn": "Physics Upper Secondary",
-      "description": "Pilot-Quellsnapshot der schleswig-holsteinischen Oberstufenphysik mit einem gemeinsamen Orientierungsanker, einem strukturellen Feld-Anker und einem ersten reviewed Einstiegskorridor zum Feldkonzept.",
-      "descriptionEn": "Pilot source snapshot of Schleswig-Holstein upper-secondary physics with a shared orientation anchor, one structural field anchor, and a first reviewed entry corridor on the field concept.",
-      "weight": 8,
+      "description": "Pilot-Quellsnapshot der schleswig-holsteinischen Oberstufenphysik mit einem gemeinsamen Orientierungsanker, einem strukturellen Feld-Anker, einem ersten reviewed Einstiegskorridor zum Feldkonzept, einem ersten retained Follow-on auf Koerper in statischen Feldern, einem zweiten retained Follow-on auf Elektronenmessung und technische Anwendungen sowie einem dritten retained Follow-on auf Kreisbewegungen und Drehimpuls.",
+      "descriptionEn": "Pilot source snapshot of Schleswig-Holstein upper-secondary physics with a shared orientation anchor, one structural field anchor, one first reviewed entry corridor on the field concept, one first retained follow-on on bodies in static fields, one second retained follow-on on electron measurement and technical applications, and one third retained follow-on on circular motion and angular momentum.",
+      "weight": 22,
       "tags": [
         "Sek2",
         "GK",
         "eA",
         "PilotSubset",
         "ElektrischeMagnetischeFelder",
-        "Feldkonzept"
+        "Feldkonzept",
+        "StatischeFelder",
+        "Elektronenmessung",
+        "TechnischeAnwendungen",
+        "Kreisbewegung",
+        "Drehbewegung"
       ],
       "contains": [
         "sh-phys-sek2-orientation",
         "sh-phys-sek2-fields-anchor",
-        "sh-phys-sek2-field-concept"
+        "sh-phys-sek2-field-concept",
+        "sh-phys-sek2-static-fields",
+        "sh-phys-sek2-electron-measurement-applications",
+        "sh-phys-sek2-circular-motion-rotation"
       ],
       "requires": [
         "sh-phys-sek2-orientation"
@@ -316,6 +324,521 @@
         "guidingIdeas": [],
         "phase": "SEK2",
         "area": "Feldgesetze"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "sh-phys-sek2-static-fields",
+      "title": "Sek II: Koerper in statischen Feldern (erster Follow-on-Korridor)",
+      "titleEn": "Upper Secondary: Bodies in Static Fields (First Follow-On Corridor)",
+      "description": "Erster reviewed Schleswig-Holstein-Follow-on auf dem offiziellen Teilthema `Koerper in statischen Feldern` mit Kraeften auf Ladungen, Lorentzkraft, Bewegungen in homogenen Feldern und Energiebetrachtungen beim Beschleunigen von Ladungen.",
+      "descriptionEn": "First reviewed Schleswig-Holstein follow-on on the official subtopic `Bodies in Static Fields` with forces on charges, Lorentz force, motions in homogeneous fields, and energy considerations for accelerated charges.",
+      "weight": 5,
+      "tags": [
+        "Sek2",
+        "GK",
+        "eA",
+        "PilotSubset",
+        "ElektrischeMagnetischeFelder",
+        "StatischeFelder"
+      ],
+      "contains": [
+        "sh-phys-sek2-electric-force-on-charges",
+        "sh-phys-sek2-lorentz-force-on-moving-charges",
+        "sh-phys-sek2-motion-in-homogeneous-electric-fields",
+        "sh-phys-sek2-motion-in-homogeneous-magnetic-fields",
+        "sh-phys-sek2-accelerated-charge-energy"
+      ],
+      "requires": [
+        "sh-phys-sek2-field-concept"
+      ],
+      "sourceRef": "Fachanforderungen Physik SH (2022), Sekundarstufe II, 2.3 Inhalte, `Koerper in statischen Feldern`, S. 55-56.",
+      "dimensionTags": {
+        "framework": "sh-fa-physics-2022-sek2",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "SEK2",
+        "area": "Koerper in statischen Feldern"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "sh-phys-sek2-electric-force-on-charges",
+      "title": "Kraefte auf Ladungen in elektrischen Feldern beschreiben und berechnen",
+      "titleEn": "Describe and Calculate Forces on Charges in Electric Fields",
+      "description": "Die Lernenden beschreiben und berechnen Kraefte auf Ladungen in elektrischen Feldern und nutzen dazu einfache Modelle homogener Felder.",
+      "descriptionEn": "Learners describe and calculate forces on charges in electric fields and use simple models of homogeneous fields.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "GK",
+        "eA",
+        "StatischeFelder"
+      ],
+      "contains": [],
+      "requires": [
+        "sh-phys-sek2-force-between-charges"
+      ],
+      "sourceRef": "Fachanforderungen Physik SH (2022), Sekundarstufe II, 2.3 Inhalte, S. 55.",
+      "dimensionTags": {
+        "framework": "sh-fa-physics-2022-sek2",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "SEK2",
+        "area": "Elektrische Kraefte"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "sh-phys-sek2-lorentz-force-on-moving-charges",
+      "title": "Kraefte auf bewegte Ladungen im Magnetfeld beschreiben und berechnen",
+      "titleEn": "Describe and Calculate Forces on Moving Charges in Magnetic Fields",
+      "description": "Die Lernenden beschreiben und berechnen Kraefte auf bewegte Ladungen im Magnetfeld und ordnen die Lorentzkraft fachsprachlich ein.",
+      "descriptionEn": "Learners describe and calculate forces on moving charges in magnetic fields and classify the Lorentz force in disciplinary language.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "GK",
+        "eA",
+        "StatischeFelder",
+        "Magnetfeld"
+      ],
+      "contains": [],
+      "requires": [
+        "sh-phys-sek2-field-properties"
+      ],
+      "sourceRef": "Fachanforderungen Physik SH (2022), Sekundarstufe II, 2.3 Inhalte, S. 55.",
+      "dimensionTags": {
+        "framework": "sh-fa-physics-2022-sek2",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "SEK2",
+        "area": "Lorentzkraft"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "sh-phys-sek2-motion-in-homogeneous-electric-fields",
+      "title": "Bewegung geladener Teilchen in homogenen elektrischen Feldern analysieren",
+      "titleEn": "Analyze the Motion of Charged Particles in Homogeneous Electric Fields",
+      "description": "Die Lernenden analysieren und berechnen die Bewegung geladener Teilchen in homogenen elektrischen Feldern und vergleichen diese mit Bewegungen im Gravitationsfeld.",
+      "descriptionEn": "Learners analyze and calculate the motion of charged particles in homogeneous electric fields and compare it with motion in gravitational fields.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "GK",
+        "eA",
+        "StatischeFelder"
+      ],
+      "contains": [],
+      "requires": [
+        "sh-phys-sek2-electric-force-on-charges"
+      ],
+      "sourceRef": "Fachanforderungen Physik SH (2022), Sekundarstufe II, 2.3 Inhalte, S. 55.",
+      "dimensionTags": {
+        "framework": "sh-fa-physics-2022-sek2",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "SEK2",
+        "area": "Bewegung im elektrischen Feld"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "sh-phys-sek2-motion-in-homogeneous-magnetic-fields",
+      "title": "Bewegung geladener Teilchen in homogenen Magnetfeldern analysieren",
+      "titleEn": "Analyze the Motion of Charged Particles in Homogeneous Magnetic Fields",
+      "description": "Die Lernenden analysieren und berechnen die Bewegung geladener Teilchen in homogenen Magnetfeldern und deuten einfache Bahnformen fachlich.",
+      "descriptionEn": "Learners analyze and calculate the motion of charged particles in homogeneous magnetic fields and interpret simple trajectory shapes in disciplinary terms.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "GK",
+        "eA",
+        "StatischeFelder",
+        "Magnetfeld"
+      ],
+      "contains": [],
+      "requires": [
+        "sh-phys-sek2-lorentz-force-on-moving-charges"
+      ],
+      "sourceRef": "Fachanforderungen Physik SH (2022), Sekundarstufe II, 2.3 Inhalte, S. 55-56.",
+      "dimensionTags": {
+        "framework": "sh-fa-physics-2022-sek2",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "SEK2",
+        "area": "Bewegung im Magnetfeld"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "sh-phys-sek2-accelerated-charge-energy",
+      "title": "Geschwindigkeit und Energie beschleunigter Ladungen mit dem Energiesatz bestimmen",
+      "titleEn": "Determine Speed and Energy of Accelerated Charges Using the Energy Principle",
+      "description": "Die Lernenden bestimmen Geschwindigkeit und Energie beschleunigter Ladungen mit Hilfe des Energiesatzes und beschreiben den Zusammenhang zur potenziellen Energie im homogenen elektrischen Feld.",
+      "descriptionEn": "Learners determine the speed and energy of accelerated charges using the energy principle and describe the relation to potential energy in a homogeneous electric field.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "GK",
+        "eA",
+        "StatischeFelder",
+        "Energie"
+      ],
+      "contains": [],
+      "requires": [
+        "sh-phys-sek2-electric-force-on-charges"
+      ],
+      "sourceRef": "Fachanforderungen Physik SH (2022), Sekundarstufe II, 2.3 Inhalte, S. 56.",
+      "dimensionTags": {
+        "framework": "sh-fa-physics-2022-sek2",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "SEK2",
+        "area": "Beschleunigte Ladungen"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "sh-phys-sek2-electron-measurement-applications",
+      "title": "Sek II: Elektronenmessung und technische Anwendungen (zweiter Follow-on-Korridor)",
+      "titleEn": "Upper Secondary: Electron Measurement and Technical Applications (Second Follow-On Corridor)",
+      "description": "Zweiter reviewed Schleswig-Holstein-Follow-on auf dem offiziellen Teilthema `Koerper in statischen Feldern` mit Elektronenmessung, Hall-Effekt, technischen Anwendungen beschleunigter Ladungen und einem explizit source-led Rest auf dem Massenspektrometer.",
+      "descriptionEn": "Second reviewed Schleswig-Holstein follow-on on the official subtopic `Bodies in static fields` with electron measurement, the Hall effect, technical applications of accelerated charges, and one explicitly source-led residual on the mass spectrometer.",
+      "weight": 5,
+      "tags": [
+        "Sek2",
+        "GK",
+        "eA",
+        "PilotSubset",
+        "Elektronenmessung",
+        "TechnischeAnwendungen"
+      ],
+      "contains": [
+        "sh-phys-sek2-millikan-experiment",
+        "sh-phys-sek2-fine-beam-tube-measurement",
+        "sh-phys-sek2-hall-effect-and-hall-probe",
+        "sh-phys-sek2-particle-accelerators",
+        "sh-phys-sek2-mass-spectrometer"
+      ],
+      "requires": [
+        "sh-phys-sek2-static-fields"
+      ],
+      "sourceRef": "Fachanforderungen Physik SH (2022), Sekundarstufe II, 2.3 Inhalte, `Koerper in statischen Feldern`, S. 56.",
+      "dimensionTags": {
+        "framework": "sh-fa-physics-2022-sek2",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "SEK2",
+        "area": "Elektronenmessung und Anwendungen"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "sh-phys-sek2-millikan-experiment",
+      "title": "Millikanversuch zur Elementarladung fachlich einordnen",
+      "titleEn": "Classify the Millikan Experiment for the Elementary Charge",
+      "description": "Die Lernenden ordnen den Millikanversuch fachlich als Messverfahren zur Bestimmung der Elementarladung ein und beschreiben den Schwebefall als Auswertungskontext.",
+      "descriptionEn": "Learners classify the Millikan experiment as a measurement method for determining the elementary charge and describe the hover case as its evaluation context.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "GK",
+        "eA",
+        "Elektronenmessung",
+        "Experiment"
+      ],
+      "contains": [],
+      "requires": [
+        "sh-phys-sek2-accelerated-charge-energy"
+      ],
+      "sourceRef": "Fachanforderungen Physik SH (2022), Sekundarstufe II, 2.3 Inhalte, S. 56.",
+      "dimensionTags": {
+        "framework": "sh-fa-physics-2022-sek2",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "SEK2",
+        "area": "Millikanversuch"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "sh-phys-sek2-fine-beam-tube-measurement",
+      "title": "Fadenstrahlrohr zur e/m-Bestimmung fachlich einordnen",
+      "titleEn": "Classify the Fine-Beam Tube for Determining e/m",
+      "description": "Die Lernenden ordnen das Fadenstrahlrohr als Messverfahren zur Bestimmung von Elektronenkenngroessen fachlich ein und benennen die relevanten Messgroessen.",
+      "descriptionEn": "Learners classify the fine-beam tube as a measurement method for determining electron properties and identify the relevant measured quantities.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "GK",
+        "eA",
+        "Elektronenmessung",
+        "Measurement",
+        "Magnetfeld"
+      ],
+      "contains": [],
+      "requires": [
+        "sh-phys-sek2-motion-in-homogeneous-magnetic-fields"
+      ],
+      "sourceRef": "Fachanforderungen Physik SH (2022), Sekundarstufe II, 2.3 Inhalte, S. 56.",
+      "dimensionTags": {
+        "framework": "sh-fa-physics-2022-sek2",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "SEK2",
+        "area": "Fadenstrahlrohr"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "sh-phys-sek2-hall-effect-and-hall-probe",
+      "title": "Hall-Effekt und Hallsonde fachlich einordnen",
+      "titleEn": "Classify the Hall Effect and Hall Probe",
+      "description": "Die Lernenden ordnen den Hall-Effekt und die Hallsonde fachlich ein, deuten Hall-Spannungen und benennen typische Messanwendungen.",
+      "descriptionEn": "Learners classify the Hall effect and the Hall probe, interpret Hall voltages, and identify typical measurement applications.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "GK",
+        "eA",
+        "TechnischeAnwendungen",
+        "Experiment",
+        "Magnetfeld"
+      ],
+      "contains": [],
+      "requires": [
+        "sh-phys-sek2-lorentz-force-on-moving-charges"
+      ],
+      "sourceRef": "Fachanforderungen Physik SH (2022), Sekundarstufe II, 2.3 Inhalte, S. 55-56.",
+      "dimensionTags": {
+        "framework": "sh-fa-physics-2022-sek2",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "SEK2",
+        "area": "Hall-Effekt"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "sh-phys-sek2-particle-accelerators",
+      "title": "Linear- und Kreisbeschleuniger fachlich einordnen",
+      "titleEn": "Classify Linear and Circular Accelerators",
+      "description": "Die Lernenden ordnen Linear- und Kreisbeschleuniger als technische Anwendungen beschleunigter und abgelenkter Ladungen fachlich ein.",
+      "descriptionEn": "Learners classify linear and circular accelerators as technical applications of accelerated and deflected charges.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "GK",
+        "eA",
+        "TechnischeAnwendungen",
+        "Magnetfeld",
+        "ElektrischesFeld"
+      ],
+      "contains": [],
+      "requires": [
+        "sh-phys-sek2-motion-in-homogeneous-magnetic-fields",
+        "sh-phys-sek2-accelerated-charge-energy"
+      ],
+      "sourceRef": "Fachanforderungen Physik SH (2022), Sekundarstufe II, 2.3 Inhalte, S. 56.",
+      "dimensionTags": {
+        "framework": "sh-fa-physics-2022-sek2",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "SEK2",
+        "area": "Teilchenbeschleuniger"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "sh-phys-sek2-mass-spectrometer",
+      "title": "Massenspektrometer als technische Anwendung beschreiben",
+      "titleEn": "Describe the Mass Spectrometer as a Technical Application",
+      "description": "Die Lernenden beschreiben das Massenspektrometer als technische Anwendung elektrischer und magnetischer Felder und benennen den Zusammenhang zur Trennung geladener Teilchen nach ihren Eigenschaften.",
+      "descriptionEn": "Learners describe the mass spectrometer as a technical application of electric and magnetic fields and identify its relation to separating charged particles by their properties.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "GK",
+        "eA",
+        "TechnischeAnwendungen",
+        "Elektronenmessung"
+      ],
+      "contains": [],
+      "requires": [
+        "sh-phys-sek2-motion-in-homogeneous-electric-fields",
+        "sh-phys-sek2-motion-in-homogeneous-magnetic-fields"
+      ],
+      "sourceRef": "Fachanforderungen Physik SH (2022), Sekundarstufe II, 2.3 Inhalte, S. 56.",
+      "dimensionTags": {
+        "framework": "sh-fa-physics-2022-sek2",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "SEK2",
+        "area": "Massenspektrometer"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "sh-phys-sek2-circular-motion-rotation",
+      "title": "Sek II: Kreisbewegungen und Drehimpuls (dritter Follow-on-Korridor)",
+      "titleEn": "Upper Secondary: Circular Motion and Angular Momentum (Third Follow-On Corridor)",
+      "description": "Dritter reviewed Schleswig-Holstein-Follow-on auf dem offiziellen Teilthema `Koerper in statischen Feldern` mit Kreisbewegungen als beschleunigten Bewegungen, Bahn- und Winkelgeschwindigkeit, Zentripetalkraft sowie einem explizit source-led Rest auf Drehimpuls und Drehimpulserhaltung.",
+      "descriptionEn": "Third reviewed Schleswig-Holstein follow-on on the official subtopic `Bodies in static fields` with circular motion as accelerated motion, orbital and angular velocity, centripetal force, and one explicitly source-led residual on angular momentum and angular-momentum conservation.",
+      "weight": 4,
+      "tags": [
+        "Sek2",
+        "GK",
+        "eA",
+        "PilotSubset",
+        "Kreisbewegung",
+        "Drehbewegung"
+      ],
+      "contains": [
+        "sh-phys-sek2-circular-motion-kinematics",
+        "sh-phys-sek2-centripetal-force",
+        "sh-phys-sek2-circular-motions-in-fields",
+        "sh-phys-sek2-angular-momentum"
+      ],
+      "requires": [
+        "sh-phys-sek2-static-fields"
+      ],
+      "sourceRef": "Fachanforderungen Physik SH (2022), Sekundarstufe II, 2.3 Inhalte, `Koerper in statischen Feldern`, S. 56.",
+      "dimensionTags": {
+        "framework": "sh-fa-physics-2022-sek2",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "SEK2",
+        "area": "Kreisbewegungen und Drehimpuls"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "sh-phys-sek2-circular-motion-kinematics",
+      "title": "Kreisbewegungen als beschleunigte Bewegung sowie Bahn- und Winkelgeschwindigkeit beschreiben und berechnen",
+      "titleEn": "Describe and Calculate Circular Motion as Accelerated Motion with Orbital and Angular Velocity",
+      "description": "Die Lernenden beschreiben Kreisbewegungen als beschleunigte Bewegung und berechnen Bahn- und Winkelgeschwindigkeiten bei Kreisbewegungen.",
+      "descriptionEn": "Learners describe circular motion as accelerated motion and calculate orbital and angular velocities for circular motions.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "GK",
+        "eA",
+        "Kreisbewegung"
+      ],
+      "contains": [],
+      "requires": [
+        "sh-phys-sek2-motion-in-homogeneous-magnetic-fields"
+      ],
+      "sourceRef": "Fachanforderungen Physik SH (2022), Sekundarstufe II, 2.3 Inhalte, S. 56.",
+      "dimensionTags": {
+        "framework": "sh-fa-physics-2022-sek2",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "SEK2",
+        "area": "Bahn- und Winkelgeschwindigkeit"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "sh-phys-sek2-centripetal-force",
+      "title": "Zentripetalkraft und auftretende Kraefte bei Kreisbewegungen erklaeren",
+      "titleEn": "Explain Centripetal Force and the Forces Acting in Circular Motion",
+      "description": "Die Lernenden erklaeren die auftretenden Kraefte bei Kreisbewegungen und den Zusammenhang der Zentripetalkraft mit Masse, Geschwindigkeit und Radius.",
+      "descriptionEn": "Learners explain the forces acting in circular motion and the relation of centripetal force to mass, speed, and radius.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "GK",
+        "eA",
+        "Kreisbewegung",
+        "Kraft"
+      ],
+      "contains": [],
+      "requires": [
+        "sh-phys-sek2-circular-motion-kinematics"
+      ],
+      "sourceRef": "Fachanforderungen Physik SH (2022), Sekundarstufe II, 2.3 Inhalte, S. 56.",
+      "dimensionTags": {
+        "framework": "sh-fa-physics-2022-sek2",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "SEK2",
+        "area": "Zentripetalkraft"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "sh-phys-sek2-circular-motions-in-fields",
+      "title": "Kreisbewegungen im Magnetfeld und im Gravitationsfeld analysieren",
+      "titleEn": "Analyze Circular Motions in Magnetic and Gravitational Fields",
+      "description": "Die Lernenden analysieren und berechnen Kreisbewegungen im Magnetfeld und im Gravitationsfeld und deuten dabei die Rolle der Zentripetalkraft.",
+      "descriptionEn": "Learners analyze and calculate circular motions in magnetic and gravitational fields and interpret the role of centripetal force in these contexts.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "GK",
+        "eA",
+        "Kreisbewegung",
+        "Magnetfeld",
+        "Gravitation"
+      ],
+      "contains": [],
+      "requires": [
+        "sh-phys-sek2-centripetal-force"
+      ],
+      "sourceRef": "Fachanforderungen Physik SH (2022), Sekundarstufe II, 2.3 Inhalte, S. 56.",
+      "dimensionTags": {
+        "framework": "sh-fa-physics-2022-sek2",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "SEK2",
+        "area": "Kreisbewegungen im Feld"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "sh-phys-sek2-angular-momentum",
+      "title": "Drehimpuls und Drehimpulserhaltung fachlich einordnen",
+      "titleEn": "Classify Angular Momentum and Angular-Momentum Conservation",
+      "description": "Die Lernenden ordnen Drehimpuls und Drehimpulserhaltung fachlich ein und beschreiben ihre Rolle fuer Drehbewegungen.",
+      "descriptionEn": "Learners classify angular momentum and angular-momentum conservation and describe their role in rotational motion.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "GK",
+        "eA",
+        "Drehbewegung"
+      ],
+      "contains": [],
+      "requires": [
+        "sh-phys-sek2-circular-motions-in-fields"
+      ],
+      "sourceRef": "Fachanforderungen Physik SH (2022), Sekundarstufe II, 2.3 Inhalte, S. 56.",
+      "dimensionTags": {
+        "framework": "sh-fa-physics-2022-sek2",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "SEK2",
+        "area": "Drehimpuls"
       },
       "type": "atomic"
     }

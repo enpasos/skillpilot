@@ -6723,3 +6723,853 @@ Interpretation:
 
 - Physics now has a real eighth active Bundesland lane on the current canonical path
 - the active follow-on is no longer another new source family immediately, but the next retained SH step on `Koerper in statischen Feldern`
+
+### 2026-04-16: Schleswig-Holstein upper-secondary Physics widens onto a first static-fields follow-on
+
+What changed:
+
+- the active Schleswig-Holstein upper-secondary Physics source snapshot
+  - `curricula/DE/Gymnasium/input/SH/upper-secondary/source-json/DE_SHL_S_GYM_2_PHYSIK.de.json.snapshot`
+  now widens the retained source family `Elektrische und magnetische Felder` beyond the first field-concept cut
+- the same SH source lane now carries one first reviewed follow-on on the official subtopic `Koerper in statischen Feldern`
+- the repository-backed SH mapping lane
+  - `curricula/DE/Gymnasium/mapping/DE-SH/upper-secondary/sh_physics_upper_secondary_to_canonical_physics.json`
+  now carries `15` reviewed mappings
+- the widened SH leaves resolve conservatively onto existing shared canonical atoms for:
+  - charges in electric fields
+  - Lorentzkraft
+  - motion in homogeneous electric and magnetic fields
+  - work/energy in electric fields
+- no canonical Physics atom was added in this step
+- no committed Schleswig-Holstein applicability cut was added in this step
+
+Why this cut:
+
+- after the first SH field-concept corridor, the clean next move was to stay on the same official source family instead of opening another state/source family immediately
+- `Koerper in statischen Feldern` is the adjacent retained SH subtopic on the same row and already fits existing shared Q1 field atoms without forcing a new canonical package
+- the current SH cut therefore stays narrow and source-led:
+  - one first follow-on for electric force, Lorentzkraft, homogeneous field motion, and acceleration energy
+  - the residue on Kreisbewegungen, Elektronenmessung, and technischen Anwendungen remains intentionally open for the next SH move
+
+Validation used:
+
+- `python3 scripts/render_canonical_physics_bundesland_status.py`
+- `cd backend && GRADLE_USER_HOME=/home/enpasos/projects/skillpilot/backend/.gradle-ci ./gradlew clean check --no-daemon`
+- `git diff --check`
+
+Interpretation:
+
+- Schleswig-Holstein now has a widened reviewed Physics lane on the current canonical path, not just a first-entry seed
+- the active follow-on remains inside the same SH source family, specifically on the remaining `Koerper in statischen Feldern` residue
+
+### 2026-04-16: Schleswig-Holstein upper-secondary Physics widens onto Elektronenmessung und technische Anwendungen
+
+What changed:
+
+- the active Schleswig-Holstein upper-secondary Physics source snapshot
+  - `curricula/DE/Gymnasium/input/SH/upper-secondary/source-json/DE_SHL_S_GYM_2_PHYSIK.de.json.snapshot`
+  now widens the retained source family `Elektrische und magnetische Felder` by a second follow-on inside `Koerper in statischen Feldern`
+- the repository-backed SH mapping lane
+  - `curricula/DE/Gymnasium/mapping/DE-SH/upper-secondary/sh_physics_upper_secondary_to_canonical_physics.json`
+  now carries `19` reviewed mappings
+- the widened SH leaves resolve conservatively onto existing shared canonical atoms for:
+  - `Millikan-Versuch und Elementarladung`
+  - `Fadenstrahlrohr als Elektronen-Messverfahren einordnen`
+  - `Hall-Effekt anwenden`
+  - `Teilchenbeschleuniger (Zyklotron/Synchrotron)`
+- the adjacent SH `Massenspektrometer` leaf is now explicit in the source snapshot and remains intentionally source-led because the current shared canonical Physics surface still has no narrow reviewed target for it
+- no canonical Physics atom was added in this step
+- no committed Schleswig-Holstein applicability cut was added in this step
+
+Why this cut:
+
+- after the first SH field-concept corridor and the first static-fields follow-on, the clean next move was to stay on the same official SH source family instead of switching topic rows or forcing a new canonical package
+- the official SH clause on Elektronenmessung und technischen Anwendungen already overlaps with existing shared measurement/application atoms for Millikan, Fadenstrahlrohr, Hall-Effekt, and Teilchenbeschleuniger
+- `Massenspektrometer` still lacks that narrow shared target, so the second SH follow-on stays conservative and explicitly leaves that one application source-led
+
+Validation used:
+
+- `python3 scripts/render_canonical_physics_bundesland_status.py`
+- `cd backend && GRADLE_USER_HOME=/home/enpasos/projects/skillpilot/backend/.gradle-ci ./gradlew clean check --no-daemon`
+- `git diff --check`
+
+Interpretation:
+
+- Schleswig-Holstein now has a materially widened reviewed Physics lane on the current canonical path, not just one first-entry corridor plus one adjacent follow-on
+- the remaining open SH residue on this source family is now mainly `Kreisbewegungen`, while `Massenspektrometer` is an explicit source-led micro-residue rather than an implicit missing slice
+
+### 2026-04-16: Schleswig-Holstein upper-secondary Physics widens onto Kreisbewegungen
+
+What changed:
+
+- the active Schleswig-Holstein upper-secondary Physics source snapshot
+  - `curricula/DE/Gymnasium/input/SH/upper-secondary/source-json/DE_SHL_S_GYM_2_PHYSIK.de.json.snapshot`
+  now widens the retained source family `Elektrische und magnetische Felder` by a third follow-on inside `Koerper in statischen Feldern`
+- the repository-backed SH mapping lane
+  - `curricula/DE/Gymnasium/mapping/DE-SH/upper-secondary/sh_physics_upper_secondary_to_canonical_physics.json`
+  now carries `22` reviewed mappings
+- the widened SH leaves resolve conservatively onto existing shared canonical atoms for:
+  - `Bahn- und Winkelgeschwindigkeit`
+  - `Zentripetalkraft herleiten`
+  - `Kreisbewegung mit Zentripetalkraft anwenden`
+- the adjacent SH leaf `Drehimpuls und Drehimpulserhaltung` is now explicit in the source snapshot and remains intentionally source-led because the current shared canonical Physics surface on that concept is still a separate Drehbewegungsflaeche rather than a narrow continuation of the SH static-fields clause
+- no canonical Physics atom was added in this step
+- no committed Schleswig-Holstein applicability cut was added in this step
+
+Why this cut:
+
+- after the first SH field-concept corridor and the two adjacent static-fields/application follow-ons, the clean next move was to finish the circle-motion strip on the same official SH source family instead of switching rows too early
+- the official SH wording on Kreisbewegungen already overlaps with the existing shared mechanics surface for orbital/angular velocity, centripetal force, and quantitative circular-motion analysis
+- `Drehimpuls und Drehimpulserhaltung` still sits on a broader rotational-mechanics surface, so the third SH follow-on stays conservative and explicitly leaves that one concept source-led
+
+Validation used:
+
+- `python3 scripts/render_canonical_physics_bundesland_status.py`
+- `cd backend && GRADLE_USER_HOME=/home/enpasos/projects/skillpilot/backend/.gradle-ci ./gradlew clean check --no-daemon`
+- `git diff --check`
+
+Interpretation:
+
+- Schleswig-Holstein now has a broadly widened reviewed Physics lane on the current canonical path across the opened SH field source family
+- the remaining open SH debt on this family is no longer a hidden missing corridor but two explicit source-led micro-residues: `Massenspektrometer` and `Drehimpuls und Drehimpulserhaltung`
+
+### 2026-04-16: Schleswig-Holstein upper-secondary Physics freezes its two remaining micro-residues
+
+What changed:
+
+- the Schleswig-Holstein upper-secondary Physics lane is now treated as complete at the current reviewed pilot-cut level
+- the two remaining SH source leaves
+  - `Massenspektrometer`
+  - `Drehimpuls und Drehimpulserhaltung`
+  are now explicitly frozen as source-led micro-residues in the SH onboarding, lane README, rollout tracker, workboard, shortlist, and quick-view artifacts
+- no mappings changed in this step
+- no canonical Physics atom was added in this step
+- no committed Schleswig-Holstein applicability cut was added in this step
+
+Why this cut:
+
+- after the first field-concept corridor and the three adjacent SH follow-ons, the active SH source family no longer has a didactically meaningful reviewed widening left without forcing weak or semantically stretched bridges
+- `Massenspektrometer` still has no narrow shared canonical target on the current field strip
+- `Drehimpuls und Drehimpulserhaltung` still belongs to a broader rotational-mechanics surface rather than to a narrow continuation of the retained SH static-fields clause
+
+Validation used:
+
+- `python3 scripts/render_canonical_physics_bundesland_status.py`
+- `git diff --check`
+
+Interpretation:
+
+- Schleswig-Holstein is now operationally in the same maintenance-style state as the other reviewed retained upper-secondary lanes
+- the next clean Physics rollout move should therefore come from a new state/source family rather than from another SH residue attempt
+
+### 2026-04-16: Rheinland-Pfalz Physics is now the explicit next source-onboarding target
+
+What changed:
+
+- Rheinland-Pfalz Physics is now explicitly tracked as the next active source-onboarding target in:
+  - `curricula/DE/Gymnasium/provenance/physics-bundesland-rollout-tracker.json`
+  - `docs/dev/canonical-gymnasium-physics-topic-workboard.md`
+  - `docs/dev/canonical-gymnasium-physics-m2-lane-shortlist.md`
+  - `docs/dev/canonical-gymnasium-physics-parity-plan.md`
+- a dedicated onboarding note now exists at:
+  - `curricula/DE/Gymnasium/provenance/rp-physics-onboarding.md`
+- the Rheinland-Pfalz input README now records the current official MSS Physics source route at:
+  - `curricula/DE/Gymnasium/input/RP/README.md`
+- the current official Sek-II source is identified as the Schulcampus node:
+  - `25a2f512-91be-4a59-9dc5-342aece95a0b`
+  - title `Lehrplan Physik - Grund- und Leistungsfach`
+  - file `Physik_SekII.pdf`
+- Rheinland-Pfalz intentionally remains at `P0`
+- no RP Physics snapshot, registry activation, mapping lane, canonical atom, or applicability cut was added in this step
+
+Why this cut:
+
+- after Schleswig-Holstein was explicitly closed at the current reviewed pilot cut, the next clean Physics move had to open a new source family rather than widening more frozen residues
+- Rheinland-Pfalz is the nearest attractive next state because the official MSS Physics source is already identifiable from the public Bildungsserver / Schulcampus route and the repository already has a mature RP mathematics lane
+- the actual current Physics PDF is not yet archived locally, and the public download route currently redirects anonymous requests through Schulcampus session validation
+- authoring a reviewed RP lane from metadata-only evidence would therefore be weaker than stopping explicitly at source-onboarding
+
+Validation used:
+
+- `python3 scripts/render_canonical_physics_bundesland_status.py`
+- `git diff --check`
+
+Interpretation:
+
+- Physics now has an explicit next active source-onboarding target again instead of an empty immediate queue
+- the next correct RP move is source acquisition and archival, not a fabricated snapshot or mapping corridor
+
+### 2026-04-16: Rheinland-Pfalz Physics lane is now active on the first reviewed GF/LF-common field-concept strip
+
+What changed:
+
+- the current official Rheinland-Pfalz MSS Physics PDF is now archived locally at:
+  - `curricula/DE/Gymnasium/input/RP/Physik_Sekundarstufe_II_MSS.pdf`
+- the first RP upper-secondary Physics source snapshot now exists at:
+  - `curricula/DE/Gymnasium/input/RP/upper-secondary/source-json/DE_RLP_S_GYM_2_PHYSIK.de.json.snapshot`
+- the first RP mapping lane now exists at:
+  - `curricula/DE/Gymnasium/mapping/DE-RP/upper-secondary/rp_physics_upper_secondary_to_canonical_physics.json`
+- the RP Physics lane is now active in:
+  - `curricula/DE/Gymnasium/provenance/source-landscape-registry.json`
+  - `curricula/DE/Gymnasium/provenance/source-goal-membership-registry.json`
+  - `curricula/DE/Gymnasium/provenance/source-goal-closure-registry.json`
+- the repository-backed fixture now covers the new lane in:
+  - `backend/src/test/java/com/skillpilot/backend/landscape/GoalMappingRepositoryFixtureTest.java`
+
+Current reviewed RP cut:
+
+- `11` reviewed mappings
+- one shared orientation anchor
+- one structural Qualifikationsphasen-Anker `Statische elektrische und magnetische Felder`
+- one first reviewed gemeinsamer Grundfach-/Leistungsfach-Korridor on the Pflichtbaustein `Feldkonzept fuer statische elektrische und magnetische Felder`
+- no Rheinland-Pfalz-specific canonical Physics atom
+- no committed Rheinland-Pfalz applicability cut
+
+Why this cut:
+
+- the actual official source is now locally archived and inspectable, so the lane no longer has to stop at metadata-backed `P0`
+- the first corridor is intentionally limited to the narrow GF/LF overlap on the static field-concept strip
+- the adjacent Energie-/Speicherstreifen is not widened yet because the GF/LF overlap there is less clean and would otherwise overclaim the current shared canonical surface
+
+Validation used:
+
+- `python3 scripts/render_canonical_physics_bundesland_status.py`
+- `cd backend && GRADLE_USER_HOME=/home/enpasos/projects/skillpilot/backend/.gradle-ci ./gradlew clean check --no-daemon`
+- `git diff --check`
+
+Interpretation:
+
+- Physics now has a real ninth state lane on the canonical DE path, not just another placeholder
+- the next clean Physics move stays inside Rheinland-Pfalz on the adjacent GF/LF-common static-field interaction strip
+
+### 2026-04-16: Rheinland-Pfalz Physics now also carries the first reviewed GF/LF-common static-field interaction follow-on
+
+What changed:
+
+- the active RP upper-secondary Physics snapshot in
+  - `curricula/DE/Gymnasium/input/RP/upper-secondary/source-json/DE_RLP_S_GYM_2_PHYSIK.de.json.snapshot`
+  now includes one adjacent reviewed GF/LF-common follow-on on `Wechselwirkung von geladenen Koerpern mit statischen Feldern`
+- the RP mapping lane in
+  - `curricula/DE/Gymnasium/mapping/DE-RP/upper-secondary/rp_physics_upper_secondary_to_canonical_physics.json`
+  now carries the additional conservative bridges onto the shared canonical cluster `Ladungen in Feldern` plus the existing shared Q1 atoms for electric-field particle motion, work/energy in electric fields, Lorentzkraft, and magnetic-field particle motion
+- the provenance registries, rollout tracker, RP onboarding note, RP input README, lane README, topic workboard, parity plan, and lane shortlist are all updated accordingly
+- the repository-backed fixture in
+  - `backend/src/test/java/com/skillpilot/backend/landscape/GoalMappingRepositoryFixtureTest.java`
+  now covers `17` reviewed RP mappings
+
+Current reviewed RP cut:
+
+- `17` reviewed mappings
+- one shared orientation anchor
+- one structural Qualifikationsphasen-Anker `Statische elektrische und magnetische Felder`
+- one first reviewed gemeinsamer Grundfach-/Leistungsfach-Korridor on `Feldkonzept fuer statische elektrische und magnetische Felder`
+- one first reviewed GF/LF-common follow-on on `Wechselwirkung von geladenen Koerpern mit statischen Feldern`
+- no Rheinland-Pfalz-specific canonical Physics atom
+- no committed Rheinland-Pfalz applicability cut
+
+Why this cut:
+
+- the GF/LF overlap on the RP static-field interaction strip is clean on five source leaves and does not require a new canonical package
+- the adjacent LF-only residue `Hall-Effekt`, `Kreisbahnen geladener Teilchen im homogenen Magnetfeld`, and `Wien-Filter` is narrower and should not be smuggled into the common RP cut
+- this keeps RP aligned with the established topic-first rollout rule: widen the shared reviewed strip first, leave the narrower LK-only tail explicit
+
+Validation used:
+
+- `python3 scripts/render_canonical_physics_bundesland_status.py`
+- `cd backend && GRADLE_USER_HOME=/home/enpasos/projects/skillpilot/backend/.gradle-ci ./gradlew clean check --no-daemon`
+- `git diff --check`
+
+Interpretation:
+
+- Rheinland-Pfalz stays the active Physics lane, but it is now past the entry cut and onto a second reviewed corridor on the same source family
+- the next clean Physics decision is no longer `whether` RP has a real second corridor, but `whether` the remaining LF-only residue now warrants a reviewed shared follow-on or should stay source-led while another GF/LF-common RP strip opens first
+
+### 2026-04-16: Rheinland-Pfalz Physics now also carries the first narrow LK Hall follow-on
+
+What changed:
+
+- the active RP upper-secondary Physics snapshot in
+  - `curricula/DE/Gymnasium/input/RP/upper-secondary/source-json/DE_RLP_S_GYM_2_PHYSIK.de.json.snapshot`
+  now exposes an explicit LK residue cluster for the same static-field interaction strip with three leaves:
+  - `Hall-Effekt`
+  - `Kreisbahnen geladener Teilchen im homogenen Magnetfeld`
+  - `Wien-Filter`
+- the RP mapping lane in
+  - `curricula/DE/Gymnasium/mapping/DE-RP/upper-secondary/rp_physics_upper_secondary_to_canonical_physics.json`
+  now adds one new conservative mapping:
+  - `rp-phys-sek2-hall-effect` -> `Hall-Effekt anwenden` (`partial`)
+- the remaining RP LK leaves `Kreisbahnen` and `Wien-Filter` stay intentionally source-led
+
+Current reviewed RP cut:
+
+- `18` reviewed mappings
+- one shared orientation anchor
+- one structural Qualifikationsphasen-Anker `Statische elektrische und magnetische Felder`
+- one first reviewed gemeinsamer Grundfach-/Leistungsfach-Korridor on `Feldkonzept fuer statische elektrische und magnetische Felder`
+- one first reviewed GF/LF-common follow-on on `Wechselwirkung von geladenen Koerpern mit statischen Feldern`
+- one first narrow reviewed LK follow-on on `Hall-Effekt`
+- no Rheinland-Pfalz-specific canonical Physics atom
+- no committed Rheinland-Pfalz applicability cut
+
+Why this cut:
+
+- `Hall-Effekt` is the cleanest narrow RP-LK continuation because the shared canonical target `Hall-Effekt anwenden` already exists and is semantically close
+- `Kreisbahnen` would currently overclaim the narrower shared quantitative-bahnform surface
+- `Wien-Filter` would currently drag in a broader crossed-field package than the reviewed RP cut needs
+
+Validation used:
+
+- `python3 scripts/render_canonical_physics_bundesland_status.py`
+- `cd backend && GRADLE_USER_HOME=/home/enpasos/projects/skillpilot/backend/.gradle-ci ./gradlew clean check --no-daemon`
+- `git diff --check`
+
+Interpretation:
+
+- Rheinland-Pfalz remains the active Physics lane, but the open RP residue is now smaller and more explicit
+- the next clean Physics move is now either an explicit freeze decision for `Kreisbahnen` / `Wien-Filter` or the opening of another GF/LF-common RP strip
+
+### 2026-04-16: Rheinland-Pfalz Physics now also carries the first reviewed GF/LF-common induction corridor
+
+What changed:
+
+- the active RP upper-secondary Physics snapshot in
+  - `curricula/DE/Gymnasium/input/RP/upper-secondary/source-json/DE_RLP_S_GYM_2_PHYSIK.de.json.snapshot`
+  now includes one first reviewed GF/LF-common induction corridor `Veraenderliche elektromagnetische Felder`
+- the RP mapping lane in
+  - `curricula/DE/Gymnasium/mapping/DE-RP/upper-secondary/rp_physics_upper_secondary_to_canonical_physics.json`
+  now adds conservative bridges onto the shared canonical induction surface:
+  - parent -> `Induktion und elektromagnetische Schwingungen`
+  - `Magnetischer Fluss` -> `Induktion durch Änderung des magnetischen Flusses`
+  - `Induktionsgesetz` leaves -> `Induktionsgesetz und Lenz’sche Regel`
+  - `technische Anwendung der Induktion` -> `Technische Anwendungen des Induktionsgesetzes qualitativ beschreiben`
+- the LF-only RP induction residue `Differentialform` / `Selbstinduktion` is now explicit but remains intentionally source-led
+
+Current reviewed RP cut:
+
+- `24` reviewed mappings
+- one shared orientation anchor
+- one structural Qualifikationsphasen-Anker `Statische elektrische und magnetische Felder`
+- one first reviewed gemeinsamer Grundfach-/Leistungsfach-Korridor on `Feldkonzept fuer statische elektrische und magnetische Felder`
+- one first reviewed GF/LF-common follow-on on `Wechselwirkung von geladenen Koerpern mit statischen Feldern`
+- one first narrow reviewed LK follow-on on `Hall-Effekt`
+- one first reviewed GF/LF-common induction corridor `Veraenderliche elektromagnetische Felder`
+- no Rheinland-Pfalz-specific canonical Physics atom
+- no committed Rheinland-Pfalz applicability cut
+
+Why this cut:
+
+- the GF/LF overlap on `Veraenderliche elektromagnetische Felder` is explicit in the RP source and aligns cleanly to the existing shared induction surface
+- this is a stronger next rollout unit than forcing either `Wien-Filter` or quantitative `Kreisbahnen`
+- the remaining RP residues are now clearly separated into two narrow LF-only pairs: `Kreisbahnen` / `Wien-Filter` and `Differentialform` / `Selbstinduktion`
+
+Validation used:
+
+- `python3 scripts/render_canonical_physics_bundesland_status.py`
+- `cd backend && GRADLE_USER_HOME=/home/enpasos/projects/skillpilot/backend/.gradle-ci ./gradlew clean check --no-daemon`
+- `git diff --check`
+
+Interpretation:
+
+- Rheinland-Pfalz remains the active Physics lane and now has three reviewed GF/LF-common cuts on the same source family
+- the next clean Physics move is now a narrow decision between the two remaining LF-only RP residue pairs, not another broad RP source-onboarding step
+
+### 2026-04-16: Rheinland-Pfalz Physics now also carries the first shared self-induction follow-on
+
+What changed:
+
+- the active RP upper-secondary Physics snapshot in
+  - `curricula/DE/Gymnasium/input/RP/upper-secondary/source-json/DE_RLP_S_GYM_2_PHYSIK.de.json.snapshot`
+  now also includes one additional shared induction leaf
+  - `Selbstinduktion und Ein-/Ausschaltvorgaenge bei der Spule qualitativ erklaeren`
+- the RP mapping lane in
+  - `curricula/DE/Gymnasium/mapping/DE-RP/upper-secondary/rp_physics_upper_secondary_to_canonical_physics.json`
+  now adds one new conservative bridge:
+  - `rp-phys-sek2-self-induction-switching-processes` -> `Selbstinduktion und Induktivität` (`partial`)
+
+Current reviewed RP cut:
+
+- `25` reviewed mappings
+- one shared orientation anchor
+- one structural Qualifikationsphasen-Anker `Statische elektrische und magnetische Felder`
+- one first reviewed gemeinsamer Grundfach-/Leistungsfach-Korridor on `Feldkonzept fuer statische elektrische und magnetische Felder`
+- one first reviewed GF/LF-common follow-on on `Wechselwirkung von geladenen Koerpern mit statischen Feldern`
+- one first narrow reviewed LK follow-on on `Hall-Effekt`
+- one first reviewed GF/LF-common induction corridor `Veraenderliche elektromagnetische Felder`
+- one adjacent shared induction follow-on on `Selbstinduktion` und `Ein-/Ausschaltvorgaengen bei der Spule`
+- no Rheinland-Pfalz-specific canonical Physics atom
+- no committed Rheinland-Pfalz applicability cut
+
+Why this cut:
+
+- the official RP MSS source still lists `Selbstinduktion` and `Ein- und Ausschaltvorgaenge bei der Spule` inside the shared Pflichtbaustein `Veraenderliche elektromagnetische Felder`
+- the existing shared canonical atom `Selbstinduktion und Induktivität` already provides a narrow conservative target
+- this is a cleaner next move than reopening the broader older RP residue `Kreisbahnen` / `Wien-Filter`
+
+Validation used:
+
+- `python3 scripts/render_canonical_physics_bundesland_status.py`
+- `cd backend && GRADLE_USER_HOME=/home/enpasos/projects/skillpilot/backend/.gradle-ci ./gradlew clean check --no-daemon`
+- `git diff --check`
+
+Interpretation:
+
+- Rheinland-Pfalz remains the active Physics lane and the shared RP induction strip is now materially less fragmentary
+- the remaining RP residue is now narrower: the LF-only induction residue `Differentialform` and the older pair `Kreisbahnen` / `Wien-Filter`
+
+### 2026-04-16: Rheinland-Pfalz Physics now also carries the narrow LK induction follow-on on differential form
+
+What changed:
+
+- the active RP upper-secondary Physics snapshot in
+  - `curricula/DE/Gymnasium/input/RP/upper-secondary/source-json/DE_RLP_S_GYM_2_PHYSIK.de.json.snapshot`
+  now also includes one narrow LK induction residue cluster and the new leaf
+  - `Induktionsgesetz in differentieller Form fachlich anwenden`
+- the RP mapping lane in
+  - `curricula/DE/Gymnasium/mapping/DE-RP/upper-secondary/rp_physics_upper_secondary_to_canonical_physics.json`
+  now adds one new conservative bridge:
+  - `rp-phys-sek2-law-of-induction-differential-form` -> `Induktionsgesetz in Differenzialform` (`partial`)
+
+Current reviewed RP cut:
+
+- `26` reviewed mappings
+- one shared orientation anchor
+- one structural Qualifikationsphasen-Anker `Statische elektrische und magnetische Felder`
+- one first reviewed gemeinsamer Grundfach-/Leistungsfach-Korridor on `Feldkonzept fuer statische elektrische und magnetische Felder`
+- one first reviewed GF/LF-common follow-on on `Wechselwirkung von geladenen Koerpern mit statischen Feldern`
+- one first narrow reviewed LK follow-on on `Hall-Effekt`
+- one first reviewed GF/LF-common induction corridor `Veraenderliche elektromagnetische Felder`
+- one adjacent shared induction follow-on on `Selbstinduktion` und `Ein-/Ausschaltvorgaengen bei der Spule`
+- one adjacent narrow LK induction follow-on on `Induktionsgesetz in differentieller Form`
+- no Rheinland-Pfalz-specific canonical Physics atom
+- no committed Rheinland-Pfalz applicability cut
+
+Why this cut:
+
+- the official RP MSS source names the differential form explicitly in the LK section of the same induction baustein
+- the existing shared canonical LK atom `Induktionsgesetz in Differenzialform` already provides a narrow reviewed target
+- this is still cleaner than reopening the broader older RP residue `Kreisbahnen` / `Wien-Filter`
+
+Validation used:
+
+- `python3 scripts/render_canonical_physics_bundesland_status.py`
+- `cd backend && GRADLE_USER_HOME=/home/enpasos/projects/skillpilot/backend/.gradle-ci ./gradlew clean check --no-daemon`
+- `git diff --check`
+
+Interpretation:
+
+- Rheinland-Pfalz remains the active Physics lane and the RP induction strip is now both shared and LK-side substantially closed
+- the only remaining older RP residue on this source family is now `Kreisbahnen` / `Wien-Filter`
+
+### 2026-04-16: Rheinland-Pfalz Physics now also carries the conservative LK follow-ons on Kreisbahnen and Wien-Filter
+
+What changed:
+
+- the RP mapping lane in
+  - `curricula/DE/Gymnasium/mapping/DE-RP/upper-secondary/rp_physics_upper_secondary_to_canonical_physics.json`
+  now adds two new conservative bridges:
+  - `rp-phys-sek2-circular-trajectories-in-homogeneous-magnetic-fields` -> `Geladene Teilchen in homogenen magnetischen Feldern untersuchen` (`partial`)
+  - `rp-phys-sek2-crossed-fields-wien-filter` -> `Geladene Teilchen in homogenen elektrischen Feldern untersuchen` (`partial`)
+
+Current reviewed RP cut:
+
+- `28` reviewed mappings
+- one shared orientation anchor
+- one structural Qualifikationsphasen-Anker `Statische elektrische und magnetische Felder`
+- one first reviewed gemeinsamer Grundfach-/Leistungsfach-Korridor on `Feldkonzept fuer statische elektrische und magnetische Felder`
+- one first reviewed GF/LF-common follow-on on `Wechselwirkung von geladenen Koerpern mit statischen Feldern`
+- one first narrow reviewed LK follow-on on `Hall-Effekt`
+- two adjacent conservative LK follow-ons on `Kreisbahnen im homogenen Magnetfeld` and `gekreuzten elektrischen und magnetischen Feldern`
+- one first reviewed GF/LF-common induction corridor `Veraenderliche elektromagnetische Felder`
+- one adjacent shared induction follow-on on `Selbstinduktion` und `Ein-/Ausschaltvorgaengen bei der Spule`
+- one adjacent narrow LK induction follow-on on `Induktionsgesetz in differentieller Form`
+- no Rheinland-Pfalz-specific canonical Physics atom
+- no committed Rheinland-Pfalz applicability cut
+
+Why this cut:
+
+- the existing retained BE/BB charged-particle-motion lane already uses the same conservative projection pattern for `Kreisbahnen` and `gekreuzte Felder`
+- Rheinland-Pfalz does not yet justify a narrower shared canonical split for Wien-Filter or quantitative magnetic circle calculations
+- these two partial bridges close the retained RP field/induction family on the current reviewed level without overclaiming a new shared package
+
+Validation used:
+
+- `python3 scripts/render_canonical_physics_bundesland_status.py`
+- `cd backend && GRADLE_USER_HOME=/home/enpasos/projects/skillpilot/backend/.gradle-ci ./gradlew clean check --no-daemon`
+- `git diff --check`
+
+Interpretation:
+
+- the retained Rheinland-Pfalz field/induction family is now closed on the current conservative reviewed cut
+- the next clean Physics move inside Rheinland-Pfalz should therefore switch to a different reviewed strip rather than reopen this family again
+
+### 2026-04-16: Rheinland-Pfalz Physics now also carries the first reviewed GF/LF-common harmonics corridor
+
+What changed:
+
+- the active RP upper-secondary Physics snapshot in
+  - `curricula/DE/Gymnasium/input/RP/upper-secondary/source-json/DE_RLP_S_GYM_2_PHYSIK.de.json.snapshot`
+  now also contains:
+  - one structural anchor `Mechanische und elektromagnetische Schwingungen und Wellen`
+  - one first reviewed GF/LF-common corridor `Harmonische Schwingungen`
+  - the shared leaves `Harmonische Schwingungen als periodische Vorgaenge beschreiben`, `Charakteristische Groessen harmonischer Schwingungen fachlich deuten`, `Elektromagnetischen Schwingkreis in Analogie zum mechanischen Oszillator deuten`, and `Mechanische und elektromagnetische Schwingungen in Analogie vergleichen`
+  - one adjacent leaf `Abhaengigkeit der Periodendauer von systembeschreibenden Groessen an einem Beispiel deuten` that stays intentionally source-led inside this new strip
+- the RP mapping lane in
+  - `curricula/DE/Gymnasium/mapping/DE-RP/upper-secondary/rp_physics_upper_secondary_to_canonical_physics.json`
+  now adds six conservative bridges:
+  - `rp-phys-sek2-oscillations-waves-anchor` -> `Q2 Schwingungen, Induktion und mechanische Wellen` (`partial`)
+  - `rp-phys-sek2-harmonic-oscillations` -> `Mechanische Schwingungen` (`partial`)
+  - `rp-phys-sek2-harmonic-oscillation-basics` -> `Harmonische Schwingung verstehen` (`partial`)
+  - `rp-phys-sek2-characteristic-oscillation-quantities` -> `Charakteristische Schwingungsgroessen` (`partial`)
+  - `rp-phys-sek2-electromagnetic-oscillating-circuit` -> `Elektromagnetischen Schwingkreis analysieren` (`partial`)
+  - `rp-phys-sek2-mechanical-electromagnetic-oscillation-comparison` -> `Mechanische und elektromagnetische Schwingungen vergleichen` (`partial`)
+
+Current reviewed RP cut:
+
+- `34` reviewed mappings
+- one shared orientation anchor
+- one structural Qualifikationsphasen-Anker `Statische elektrische und magnetische Felder`
+- one first reviewed GF/LF-common corridor on `Feldkonzept fuer statische elektrische und magnetische Felder`
+- one first reviewed GF/LF-common follow-on on `Wechselwirkung von geladenen Koerpern mit statischen Feldern`
+- one first narrow reviewed LK follow-on on `Hall-Effekt`
+- two adjacent conservative LK follow-ons on `Kreisbahnen im homogenen Magnetfeld` and `gekreuzten elektrischen und magnetischen Feldern`
+- one first reviewed GF/LF-common induction corridor `Veraenderliche elektromagnetische Felder`
+- one adjacent shared induction follow-on on `Selbstinduktion` und `Ein-/Ausschaltvorgaengen bei der Spule`
+- one adjacent narrow LK induction follow-on on `Induktionsgesetz in differentieller Form`
+- one structural anchor `Mechanische und elektromagnetische Schwingungen und Wellen`
+- one first reviewed GF/LF-common harmonics corridor `Harmonische Schwingungen`
+- no Rheinland-Pfalz-specific canonical Physics atom
+- no committed Rheinland-Pfalz applicability cut
+
+Why this cut:
+
+- the existing shared Q2 oscillation surface already carries reviewed BW and NI evidence on the same four target atoms
+- the RP MSS wording stays conservative enough for a GF/LF-common corridor before the broader adjacent wave strip is opened
+- leaving the period-dependence clause source-led keeps the new RP oscillation strip tight instead of overclaiming a narrower canonical target too early
+
+Validation used:
+
+- `python3 scripts/render_canonical_physics_bundesland_status.py`
+- `cd backend && GRADLE_USER_HOME=/home/enpasos/projects/skillpilot/backend/.gradle-ci ./gradlew clean check --no-daemon`
+- `git diff --check`
+
+Interpretation:
+
+- Rheinland-Pfalz remains the active Physics lane, but now no longer only on the closed field/induction family
+- the next clean RP move is the adjacent reviewed wave strip rather than another reopening of the older field residue
+
+### 2026-04-16: Rheinland-Pfalz Physics now also carries the first reviewed Grundfach wave corridor
+
+What changed:
+
+- the active RP upper-secondary Physics snapshot in
+  - `curricula/DE/Gymnasium/input/RP/upper-secondary/source-json/DE_RLP_S_GYM_2_PHYSIK.de.json.snapshot`
+  now also contains one first reviewed Grundfach corridor `Harmonische Wellen` with:
+  - `Erzeugung, Ausbreitung und Energietransport bei Wellen qualitativ beschreiben`
+  - `Beschreibende Groessen harmonischer Wellen fachlich deuten`
+  - `Transversale und longitudinale Wellen sowie lineare Polarisation unterscheiden`
+  - `Brechung, Reflexion und Beugung als grundlegende Wellenphaenomene beschreiben`
+- the RP mapping lane in
+  - `curricula/DE/Gymnasium/mapping/DE-RP/upper-secondary/rp_physics_upper_secondary_to_canonical_physics.json`
+  now adds four conservative bridges:
+  - `rp-phys-sek2-harmonic-waves-gf` -> `Mechanische Wellen` (`partial`)
+  - `rp-phys-sek2-wave-propagation-energy-transport` -> `Mechanische Wellen` (`partial`)
+  - `rp-phys-sek2-harmonic-wave-quantities` -> `Harmonische Wellen und ihre Groessen` (`partial`)
+  - `rp-phys-sek2-basic-wave-phenomena` -> `Wellenphaenomene: Brechung, Reflexion, Beugung` (`partial`)
+
+Current reviewed RP cut:
+
+- `38` reviewed mappings
+- one shared orientation anchor
+- one structural Qualifikationsphasen-Anker `Statische elektrische und magnetische Felder`
+- one first reviewed GF/LF-common corridor on `Feldkonzept fuer statische elektrische und magnetische Felder`
+- one first reviewed GF/LF-common follow-on on `Wechselwirkung von geladenen Koerpern mit statischen Feldern`
+- one first narrow reviewed LK follow-on on `Hall-Effekt`
+- two adjacent conservative LK follow-ons on `Kreisbahnen im homogenen Magnetfeld` and `gekreuzten elektrischen und magnetischen Feldern`
+- one first reviewed GF/LF-common induction corridor `Veraenderliche elektromagnetische Felder`
+- one adjacent shared induction follow-on on `Selbstinduktion` und `Ein-/Ausschaltvorgaengen bei der Spule`
+- one adjacent narrow LK induction follow-on on `Induktionsgesetz in differentieller Form`
+- one structural anchor `Mechanische und elektromagnetische Schwingungen und Wellen`
+- one first reviewed GF/LF-common harmonics corridor `Harmonische Schwingungen`
+- one first reviewed Grundfach wave corridor `Harmonische Wellen`
+- no Rheinland-Pfalz-specific canonical Physics atom
+- no committed Rheinland-Pfalz applicability cut
+
+Why this cut:
+
+- the Grundfach baustein `Harmonische Wellen` is the next narrow official RP source surface after the newly opened harmonics strip
+- the existing shared canonical wave surface already carries reviewed BW and NI evidence for `Mechanische Wellen`, `Harmonische Wellen und ihre Groessen`, and `Wellenphaenomene`
+- keeping the clause `Transversale und longitudinale Wellen sowie lineare Polarisation` source-led avoids overclaiming a narrower canonical target before broader reviewed evidence exists
+
+Validation used:
+
+- `python3 scripts/render_canonical_physics_bundesland_status.py`
+- `cd backend && GRADLE_USER_HOME=/home/enpasos/projects/skillpilot/backend/.gradle-ci ./gradlew clean check --no-daemon`
+- `git diff --check`
+
+Interpretation:
+
+- Rheinland-Pfalz remains the active Physics lane and now has a first reviewed wave cut next to the new harmonics strip
+- the next clean RP move is the adjacent `Superposition von Wellen` / standing-wave / interference surface rather than another reopening of the older field/induction family
+
+### 2026-04-16: Rheinland-Pfalz Physics now also carries the first reviewed Grundfach superposition/interference follow-on
+
+What changed:
+
+- the active RP upper-secondary Physics snapshot in
+  - `curricula/DE/Gymnasium/input/RP/upper-secondary/source-json/DE_RLP_S_GYM_2_PHYSIK.de.json.snapshot`
+  now also contains one first reviewed Grundfach follow-on `Superposition von Wellen` with:
+  - `Stehende Wellen als Ueberlagerung im eindimensionalen Fall beschreiben`
+  - `Wellenlaengen mit einer durch Reflexion erzeugten stehenden Welle bestimmen`
+  - `Interferenz am Doppelspalt mit monochromatischem Licht qualitativ beschreiben`
+  - `Entstehung des Spektrums von weissem Licht am Doppelspalt fachlich einordnen`
+  - `Wellenlaengen von monochromatischem Licht experimentell bestimmen`
+  - `Wellenlaengenbereiche elektromagnetischer Wellen im Ueberblick einordnen`
+- the RP mapping lane in
+  - `curricula/DE/Gymnasium/mapping/DE-RP/upper-secondary/rp_physics_upper_secondary_to_canonical_physics.json`
+  now adds six conservative bridges:
+  - `rp-phys-sek2-wave-superposition-gf` -> `Ueberlagerung und Interferenz von Wellen` (`partial`)
+  - `rp-phys-sek2-standing-wave-superposition` -> `Stehende Wellen und Wellenlaengenbestimmung` (`partial`)
+  - `rp-phys-sek2-standing-wave-wavelength-determination` -> `Stehende Wellen und Wellenlaengenbestimmung` (`partial`)
+  - `rp-phys-sek2-double-slit-interference-monochromatic-light` -> `Interferenz am Doppelspalt` (`partial`)
+  - `rp-phys-sek2-monochromatic-light-wavelength-determination` -> `Interferenz am Doppelspalt` (`partial`)
+  - `rp-phys-sek2-electromagnetic-wavelength-ranges-overview` -> `Spektrum elektromagnetischer Wellen` (`partial`)
+
+Current reviewed RP cut:
+
+- `44` reviewed mappings
+- one first reviewed Grundfach superposition/interference follow-on `Superposition von Wellen`
+- no Rheinland-Pfalz-specific canonical Physics atom
+- no committed Rheinland-Pfalz applicability cut
+
+Why this cut:
+
+- the Grundfach Pflichtbaustein `Superposition von Wellen` is the next official narrow RP source surface after `Harmonische Wellen`
+- the shared canonical Q2/Q3 wave surface already carries reviewed targets for standing waves, double-slit interference, and the overview of electromagnetic wavelength ranges
+- keeping `Entstehung des Spektrums von weissem Licht am Doppelspalt` source-led avoids overclaiming a narrower canonical target before broader reviewed evidence exists
+
+Validation used:
+
+- `python3 scripts/render_canonical_physics_bundesland_status.py`
+- `cd backend && GRADLE_USER_HOME=/home/enpasos/projects/skillpilot/backend/.gradle-ci ./gradlew clean check --no-daemon`
+- `git diff --check`
+
+Interpretation:
+
+- Rheinland-Pfalz remains the active Physics lane and now has a third reviewed cut inside the oscillation/wave family
+- the next clean RP move is the adjacent reviewed LF surface `Harmonische Wellen und ihre Superposition`
+
+### 2026-04-16: Rheinland-Pfalz Physics now also carries the first narrow LF wave/superposition follow-on
+
+What changed:
+
+- the active RP upper-secondary Physics snapshot in
+  - `curricula/DE/Gymnasium/input/RP/upper-secondary/source-json/DE_RLP_S_GYM_2_PHYSIK.de.json.snapshot`
+  now also contains one first narrow reviewed LF follow-on `Harmonische Wellen und ihre Superposition` with:
+  - `Beugung und Interferenz am Einzelspalt mit monochromatischem Licht fachlich beschreiben`
+  - `Aufbau und Funktionsweise eines einfachen Interferometers fachlich einordnen`
+- the RP mapping lane in
+  - `curricula/DE/Gymnasium/mapping/DE-RP/upper-secondary/rp_physics_upper_secondary_to_canonical_physics.json`
+  now adds two conservative bridges:
+  - `rp-phys-sek2-single-slit-diffraction-interference` -> `Interferenzmuster und Intensitaetsverteilungen bei Einzelspalt, Doppelspalt und Gitter beschreiben` (`partial`)
+  - `rp-phys-sek2-simple-interferometer` -> `Interferometer verstehen` (`partial`)
+
+Current reviewed RP cut:
+
+- `46` reviewed mappings
+- one first narrow LF wave/superposition follow-on `Harmonische Wellen und ihre Superposition`
+- no Rheinland-Pfalz-specific canonical Physics atom
+- no committed Rheinland-Pfalz applicability cut
+
+Why this cut:
+
+- the LF Pflichtbaustein `Harmonische Wellen und ihre Superposition` largely overlaps the already covered GF surfaces `Harmonische Wellen` and `Superposition von Wellen`
+- the genuinely new reviewed LF residue is therefore narrow: `Einzelspalt` plus `einfaches Interferometer`
+- keeping the LF cut at that residue avoids duplicating already reviewed GF content inside the RP lane
+
+Validation used:
+
+- `python3 scripts/render_canonical_physics_bundesland_status.py`
+- `cd backend && GRADLE_USER_HOME=/home/enpasos/projects/skillpilot/backend/.gradle-ci ./gradlew clean check --no-daemon`
+- `git diff --check`
+
+Interpretation:
+
+- Rheinland-Pfalz remains the active Physics lane and now has a fourth reviewed cut inside the oscillation/wave family
+- the next clean RP move is the adjacent LF Pflichtbaustein `Schwingungen und Wellen`
+
+### 2026-04-16: Rheinland-Pfalz Physics now also carries the first narrow LF Pflichtbaustein follow-on `Schwingungen und Wellen`
+
+What changed:
+
+- the active RP upper-secondary Physics snapshot in
+  - `curricula/DE/Gymnasium/input/RP/upper-secondary/source-json/DE_RLP_S_GYM_2_PHYSIK.de.json.snapshot`
+  now also contains one first narrow reviewed LF Pflichtbaustein follow-on `Schwingungen und Wellen` with:
+  - `Freie gedaempfte Schwingungen qualitativ beschreiben`
+  - `Erzwungene Schwingungen und Resonanz phaenomenologisch deuten`
+  - `Gekoppelte Schwingungen fachlich einordnen`
+  - `Zeitliche und raeumliche Entwicklung harmonischer Wellen mathematisch beschreiben`
+- the RP mapping lane in
+  - `curricula/DE/Gymnasium/mapping/DE-RP/upper-secondary/rp_physics_upper_secondary_to_canonical_physics.json`
+  now adds three conservative bridges:
+  - `rp-phys-sek2-free-damped-oscillations` -> `Gedämpfte Schwingungen beschreiben` (`partial`)
+  - `rp-phys-sek2-forced-oscillations-resonance` -> `Erzwungene Schwingungen und Resonanz` (`partial`)
+  - `rp-phys-sek2-harmonic-wave-mathematical-representation` -> `Wellengleichung formulieren` (`partial`)
+
+Current reviewed RP cut:
+
+- `49` reviewed mappings
+- one first narrow LF Pflichtbaustein follow-on `Schwingungen und Wellen`
+- no Rheinland-Pfalz-specific canonical Physics atom
+- no committed Rheinland-Pfalz applicability cut
+
+Why this cut:
+
+- the LF Pflichtbaustein `Schwingungen und Wellen` contains one real LF residue beyond the already reviewed RP harmonics, basic-wave, GF-superposition, and narrow LF-wave strips
+- `Gedämpfung`, `erzwungene Schwingungen / Resonanz`, and the mathematical wave representation already have narrow enough shared canonical targets for a conservative reviewed bridge
+- `Gekoppelte Schwingungen` still has no equally clean shared target and therefore stays intentionally source-led
+
+Validation used:
+
+- `python3 scripts/render_canonical_physics_bundesland_status.py`
+- `cd backend && GRADLE_USER_HOME=/home/enpasos/projects/skillpilot/backend/.gradle-ci ./gradlew clean check --no-daemon`
+- `git diff --check`
+
+Interpretation:
+
+- Rheinland-Pfalz remains the active Physics lane and now has a fifth reviewed cut inside the oscillation/wave family
+- the next clean RP move is not another immediate widening on the same strip but the explicit residue decision on `Periodendauer`, `Polarisation`, `Weisslichtspektrum`, and `gekoppelte Schwingungen`
+
+### 2026-04-16: Rheinland-Pfalz Physics freezes the remaining oscillation/wave micro-residues explicitly on the current reviewed cut
+
+What changed:
+
+- the RP rollout/docs surface now makes the remaining oscillation/wave micro-residues explicit instead of leaving them as open near-term widening debt:
+  - `Abhaengigkeit der Periodendauer von systembeschreibenden Groessen an einem Beispiel deuten`
+  - `Transversale und longitudinale Wellen sowie lineare Polarisation unterscheiden`
+  - `Entstehung des Spektrums von weissem Licht am Doppelspalt fachlich einordnen`
+  - `Gekoppelte Schwingungen fachlich einordnen`
+- the RP onboarding note, lane README, source README, rollout tracker, topic workboard, parity plan, and M2 shortlist now all say the same thing:
+  - those four clauses are explicitly frozen as source-led RP micro-residues on the current reviewed cut
+  - the next clean RP widening should come from a different strip unless broader reviewed evidence later warrants a genuinely narrower shared canonical target
+
+Current reviewed RP cut:
+
+- `49` reviewed mappings
+- no Rheinland-Pfalz-specific canonical Physics atom
+- no committed Rheinland-Pfalz applicability cut
+- no new mapping row, source split, or canonical atom was needed for this step
+
+Why this decision:
+
+- the current shared oscillation/wave surface already carries the conservative reviewed RP cut on the broad family cleanly enough
+- none of the four remaining clauses currently justifies an RP-specific canonical split on its own
+- keeping them explicitly frozen is better than pretending they are immediate mapping debt
+
+Validation used:
+
+- `python3 scripts/render_canonical_physics_bundesland_status.py`
+- `git diff --check`
+
+Interpretation:
+
+- Rheinland-Pfalz remains the active Physics lane, but the remaining oscillation/wave micro-residues are no longer open immediate widening debt
+- the next clean RP move is now a different reviewed strip, not another forced micro-bridge on `Periodendauer`, `Polarisation`, `Weisslichtspektrum`, or `gekoppelte Schwingungen`
+
+### 2026-04-16: Rheinland-Pfalz Physics now also carries the first reviewed Grundfach-Quantenkorridor `Quantenobjekte I`
+
+What changed:
+
+- the active RP upper-secondary Physics snapshot in
+  - `curricula/DE/Gymnasium/input/RP/upper-secondary/source-json/DE_RLP_S_GYM_2_PHYSIK.de.json.snapshot`
+  now also contains one structural quantum/atom anchor plus one first reviewed Grundfach corridor `Quantenobjekte I` with:
+  - `Quantenmechanisches Verhalten freier Elektronen und Photonen am Doppelspalt beschreiben`
+  - `Zusammenhaenge zwischen Energie, Frequenz, Impuls und Wellenlaenge von Photonen fachlich deuten`
+  - `Impuls und Wellenlaenge zur Beschreibung materieller Quantenobjekte verknuepfen`
+  - `Nachweiswahrscheinlichkeitsdichte ueber das Betragsquadrat der Zustandsfunktion qualitativ deuten`
+  - `Quantenphysikalisches Weltbild zu Realitaet, Lokalitaet, Kausalitaet und Determinismus fachlich einordnen`
+  - `Plancksches Wirkungsquantum mit einer experimentellen Methode naeherungsweise bestimmen`
+- the RP mapping lane in
+  - `curricula/DE/Gymnasium/mapping/DE-RP/upper-secondary/rp_physics_upper_secondary_to_canonical_physics.json`
+  now adds seven conservative bridges:
+  - `rp-phys-sek2-quantum-matter-anchor` -> `Q4 Struktur von Materie, Raum und Zeit` (`partial`)
+  - `rp-phys-sek2-quantum-objects-gf` -> `Quantenobjekte` (`partial`)
+  - `rp-phys-sek2-quantum-double-slit-behavior` -> `Photonen und Elektronen als Quantenobjekte beschreiben` (`partial`)
+  - `rp-phys-sek2-photon-energy-frequency-momentum` -> `Energie und Impuls von Photonen` (`partial`)
+  - `rp-phys-sek2-material-quantum-objects-wavelength-momentum` -> `De-Broglie-Wellen` (`partial`)
+  - `rp-phys-sek2-wavefunction-detection-probability` -> `Wellenfunktion und Wahrscheinlichkeitsdeutung` (`partial`)
+  - `rp-phys-sek2-quantum-worldview-classification` -> `Die Bedeutung von Modellen an Photon und Elektron reflektieren` (`partial`)
+
+Current reviewed RP cut:
+
+- `56` reviewed mappings
+- `65` snapshot goals
+- root weight `53`
+- root atomic closure `53`
+- one first reviewed Grundfach-Quantenkorridor `Quantenobjekte I`
+- no Rheinland-Pfalz-specific canonical Physics atom
+- no committed Rheinland-Pfalz applicability cut
+
+Why this cut:
+
+- the RP MSS strip `Quantenobjekte I` is the next clean adjacent source surface after the stabilized oscillation/wave family
+- the shared canonical `Q4 Struktur von Materie, Raum und Zeit` / `Quantenobjekte` surface already carries reviewed multi-state targets for double-slit quantum behavior, photon relations, De-Broglie matter waves, wavefunction-based probability interpretation, and model/worldview reflection
+- keeping `Plancksches Wirkungsquantum mit einer experimentellen Methode naeherungsweise bestimmen` source-led avoids overclaiming a narrower shared method target because the current canonical method surface is still photoeffect-specific
+
+Validation used:
+
+- `python3 scripts/render_canonical_physics_bundesland_status.py`
+- `cd backend && GRADLE_USER_HOME=/home/enpasos/projects/skillpilot/backend/.gradle-ci ./gradlew clean check --no-daemon`
+- `git diff --check`
+
+Interpretation:
+
+- Rheinland-Pfalz remains the active Physics lane and now also widens the shared Q4 quantum surface
+- the next clean RP move is the adjacent strip `Quantenmechanische Atomvorstellung I`, not a forced micro-bridge on the RP Planck-estimation clause or a reopening of the already frozen RP oscillation/wave micro-residues
+
+### 2026-04-16: Rheinland-Pfalz Physics now also carries the first reviewed Grundfach-Atommodellkorridor `Quantenmechanische Atomvorstellung I`
+
+What changed:
+
+- the active RP upper-secondary Physics snapshot in
+  - `curricula/DE/Gymnasium/input/RP/upper-secondary/source-json/DE_RLP_S_GYM_2_PHYSIK.de.json.snapshot`
+  now also contains one first reviewed Grundfach atom-model corridor `Quantenmechanische Atomvorstellung I` with:
+  - `Quantisierte Energieaufnahme von Photonen an Atomen experimentell einordnen`
+  - `Quantisierte Emission am Wasserstoffatom ueber Uebergaenge zwischen Energieniveaus deuten`
+  - `Energiestufenmodell des Wasserstoffatoms mit den diskreten Energiewerten fachlich nutzen`
+  - `Orbitale des Wasserstoffatoms als Nachweiswahrscheinlichkeiten fachlich deuten`
+- the RP mapping lane in
+  - `curricula/DE/Gymnasium/mapping/DE-RP/upper-secondary/rp_physics_upper_secondary_to_canonical_physics.json`
+  now adds five conservative bridges:
+  - `rp-phys-sek2-quantum-atomic-model-gf` -> `Atomvorstellungen` (`partial`)
+  - `rp-phys-sek2-quantized-photon-absorption` -> `Emission, Absorption und Linienspektren` (`partial`)
+  - `rp-phys-sek2-hydrogen-emission-energy-level-transitions` -> `Emission, Absorption und Linienspektren` (`partial`)
+  - `rp-phys-sek2-hydrogen-energy-level-model` -> `Energieniveaus des Wasserstoffatoms` (`partial`)
+  - `rp-phys-sek2-hydrogen-orbital-probability-model` -> `Orbitale des Wasserstoffatoms als Nachweiswahrscheinlichkeiten interpretieren` (`partial`)
+
+Current reviewed RP cut:
+
+- `61` reviewed mappings
+- `70` snapshot goals
+- root weight `57`
+- root atomic closure `57`
+- one first reviewed Grundfach-Quantenkorridor `Quantenobjekte I`
+- one adjacent first reviewed Grundfach-Atommodellkorridor `Quantenmechanische Atomvorstellung I`
+- no Rheinland-Pfalz-specific canonical Physics atom
+- no committed Rheinland-Pfalz applicability cut
+
+Why this cut:
+
+- the RP MSS strip `Quantenmechanische Atomvorstellung I` is the clean adjacent reviewed source surface after the stabilized RP quantum-entry strip `Quantenobjekte I`
+- the shared canonical atom-model surface already carries narrow enough reviewed targets for quantized absorption/emission, the hydrogen energy-level model, and orbital probability interpretation
+- no RP-specific canonical atom was needed to connect the hydrogen-atom model corridor conservatively
+
+Validation used:
+
+- `python3 scripts/render_canonical_physics_bundesland_status.py`
+- `cd backend && GRADLE_USER_HOME=/home/enpasos/projects/skillpilot/backend/.gradle-ci ./gradlew clean check --no-daemon`
+- `git diff --check`
+
+Interpretation:
+
+- Rheinland-Pfalz remains the active Physics lane and now widens the shared Q4 atom-model surface in addition to the earlier `Quantenobjekte I` strip
+- the next clean RP move is now the adjacent strip `Quantenmechanische Atomvorstellung II`, while the RP Planck-estimation clause stays intentionally source-led on the current reviewed cut

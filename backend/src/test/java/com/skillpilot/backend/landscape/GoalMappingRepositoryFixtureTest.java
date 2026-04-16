@@ -44,6 +44,7 @@ class GoalMappingRepositoryFixtureTest {
     private static final String SCHLESWIG_HOLSTEIN_PHYSICS_UPPER_SECONDARY_LANDSCAPE_ID = "f1a2c733-b994-4db3-9dd6-54ffe544002b";
     private static final String BRANDENBURG_MATH_UPPER_SECONDARY_LANDSCAPE_ID = "c36ba9b3-4d11-4b19-a278-cd6c3c3fcc71";
     private static final String BRANDENBURG_PHYSICS_UPPER_SECONDARY_LANDSCAPE_ID = "6759f46a-5642-41f7-8dc7-71fd1c335855";
+    private static final String RHEINLAND_PFALZ_PHYSICS_UPPER_SECONDARY_LANDSCAPE_ID = "eb32f91f-5f6f-4e13-a969-f53a0e92431f";
     private static final String BAYERN_MATH_LANDSCAPE_ID = "c1600692-e543-5cf2-a399-6bd96e6b817f";
     private static final String BAYERN_PHYSICS_LANDSCAPE_ID = "42c2f7e3-91b4-5de8-bef0-d563440e9d52";
     private static final String BAYERN_CHEMISTRY_LANDSCAPE_ID = "ff1ca997-b6cc-5ece-8e13-5498b4bbf808";
@@ -130,6 +131,8 @@ class GoalMappingRepositoryFixtureTest {
             Path.of("../curricula/DE/Gymnasium/mapping/DE-BB/upper-secondary/bb_math_upper_secondary_to_canonical_math.json");
     private static final Path BRANDENBURG_PHYSICS_UPPER_SECONDARY_MAPPING_FILE =
             Path.of("../curricula/DE/Gymnasium/mapping/DE-BB/upper-secondary/bb_physics_upper_secondary_to_canonical_physics.json");
+    private static final Path RHEINLAND_PFALZ_PHYSICS_UPPER_SECONDARY_MAPPING_FILE =
+            Path.of("../curricula/DE/Gymnasium/mapping/DE-RP/upper-secondary/rp_physics_upper_secondary_to_canonical_physics.json");
     private static final Path BAYERN_MAPPING_FILE = BAVARIA_GYMNASIUM_MAPPING_DIR.resolve("bavaria_math_to_canonical_math.json");
     private static final Path BAYERN_PHYSICS_MAPPING_FILE = BAVARIA_GYMNASIUM_MAPPING_DIR.resolve("bavaria_physics_to_canonical_physics.json");
     private static final Path BAYERN_CHEMISTRY_MAPPING_FILE =
@@ -898,9 +901,9 @@ class GoalMappingRepositoryFixtureTest {
         assertThat(file.getVersion()).isEqualTo(1);
         assertThat(file.getSourceLandscapeId()).isEqualTo(SCHLESWIG_HOLSTEIN_PHYSICS_UPPER_SECONDARY_LANDSCAPE_ID);
         assertThat(file.getTargetLandscapeId()).isEqualTo(CANONICAL_PHYSICS_ID);
-        assertThat(file.getMappings()).hasSize(10);
+        assertThat(file.getMappings()).hasSize(22);
         assertThat(file.getMappings()).filteredOn(entry -> "exact".equals(entry.getMatchType())).hasSize(1);
-        assertThat(file.getMappings()).filteredOn(entry -> "partial".equals(entry.getMatchType())).hasSize(9);
+        assertThat(file.getMappings()).filteredOn(entry -> "partial".equals(entry.getMatchType())).hasSize(21);
         assertThat(file.getMappings())
                 .extracting(GoalMappingEntry::getLegacyGoalId, GoalMappingEntry::getCanonicalGoalId, GoalMappingEntry::getMatchType)
                 .containsExactly(
@@ -913,7 +916,96 @@ class GoalMappingRepositoryFixtureTest {
                         Tuple.tuple("sh-phys-sek2-force-between-charges", "8da5c981-8216-5fcd-a393-19f392ae2006", "partial"),
                         Tuple.tuple("sh-phys-sek2-field-lines", "98e42cda-9e5d-5910-b2c0-3e631fd20c78", "partial"),
                         Tuple.tuple("sh-phys-sek2-superposition", "4ca83b3f-3605-5c0d-abc4-9f24b9e29bbe", "partial"),
-                        Tuple.tuple("sh-phys-sek2-coulomb-gravity", "8da5c981-8216-5fcd-a393-19f392ae2006", "partial"));
+                        Tuple.tuple("sh-phys-sek2-coulomb-gravity", "8da5c981-8216-5fcd-a393-19f392ae2006", "partial"),
+                        Tuple.tuple("sh-phys-sek2-electric-force-on-charges", "741774ef-15fc-4bcf-a370-e2c5cf4257d0", "partial"),
+                        Tuple.tuple("sh-phys-sek2-lorentz-force-on-moving-charges", "8c9394cb-f54a-508d-9750-4c49e31b3fa9", "partial"),
+                        Tuple.tuple("sh-phys-sek2-motion-in-homogeneous-electric-fields", "741774ef-15fc-4bcf-a370-e2c5cf4257d0", "partial"),
+                        Tuple.tuple("sh-phys-sek2-motion-in-homogeneous-magnetic-fields", "9854589c-5feb-4942-b90f-311ddf36eb78", "partial"),
+                        Tuple.tuple("sh-phys-sek2-accelerated-charge-energy", "1730c01d-8c85-57df-b031-c11e2a0511b1", "partial"),
+                        Tuple.tuple("sh-phys-sek2-millikan-experiment", "0f803c37-8191-5a07-9b31-9603ded98fe2", "partial"),
+                        Tuple.tuple("sh-phys-sek2-fine-beam-tube-measurement", "966782e5-690d-4fae-bbab-fa3fa30525c3", "partial"),
+                        Tuple.tuple("sh-phys-sek2-hall-effect-and-hall-probe", "b39ae8fb-4358-5866-8adf-3d5365368eeb", "partial"),
+                        Tuple.tuple("sh-phys-sek2-particle-accelerators", "2d62b444-796e-548d-aeee-cfd9c6665ddc", "partial"),
+                        Tuple.tuple("sh-phys-sek2-circular-motion-kinematics", "ec7a0a68-730b-5c94-ac72-a937508f8303", "partial"),
+                        Tuple.tuple("sh-phys-sek2-centripetal-force", "e918b31f-6f39-5dee-ade6-3617080fb24f", "partial"),
+                        Tuple.tuple("sh-phys-sek2-circular-motions-in-fields", "accb1d9e-cd48-5983-bcef-9b9bca4a9114", "partial"));
+    }
+
+    @Test
+    void parsesRepositoryBackedCanonicalPhysicsRheinlandPfalzUpperSecondaryMappingFixture() throws Exception {
+        GoalMappingFile file = new ObjectMapper()
+                .readValue(RHEINLAND_PFALZ_PHYSICS_UPPER_SECONDARY_MAPPING_FILE.toFile(), GoalMappingFile.class);
+
+        assertThat(file.getVersion()).isEqualTo(1);
+        assertThat(file.getSourceLandscapeId()).isEqualTo(RHEINLAND_PFALZ_PHYSICS_UPPER_SECONDARY_LANDSCAPE_ID);
+        assertThat(file.getTargetLandscapeId()).isEqualTo(CANONICAL_PHYSICS_ID);
+        assertThat(file.getMappings()).hasSize(61);
+        assertThat(file.getMappings()).filteredOn(entry -> "exact".equals(entry.getMatchType())).hasSize(1);
+        assertThat(file.getMappings()).filteredOn(entry -> "partial".equals(entry.getMatchType())).hasSize(60);
+        assertThat(file.getMappings())
+                .extracting(GoalMappingEntry::getLegacyGoalId, GoalMappingEntry::getCanonicalGoalId, GoalMappingEntry::getMatchType)
+                .containsExactly(
+                        Tuple.tuple("rp-phys-sek2-root", "bf980fff-b62b-4ea4-a20d-31681a7ad785", "partial"),
+                        Tuple.tuple("rp-phys-sek2-orientation", "5c44b9ba-9b05-4774-95d5-073230d3fc4f", "exact"),
+                        Tuple.tuple("rp-phys-sek2-fields-anchor", "0735269d-703d-57ab-8861-6f7e1c5e2b8a", "partial"),
+                        Tuple.tuple("rp-phys-sek2-field-concept", "0735269d-703d-57ab-8861-6f7e1c5e2b8a", "partial"),
+                        Tuple.tuple("rp-phys-sek2-static-field-properties", "0735269d-703d-57ab-8861-6f7e1c5e2b8a", "partial"),
+                        Tuple.tuple("rp-phys-sek2-electric-field-line-images", "98e42cda-9e5d-5910-b2c0-3e631fd20c78", "partial"),
+                        Tuple.tuple("rp-phys-sek2-magnetic-field-line-images", "0f6b798b-594e-5480-8c5f-95e2486a4d85", "partial"),
+                        Tuple.tuple("rp-phys-sek2-field-superposition", "4ca83b3f-3605-5c0d-abc4-9f24b9e29bbe", "partial"),
+                        Tuple.tuple("rp-phys-sek2-electric-influenz", "a6e48b88-51ed-5942-bdb8-8d2192652e0d", "partial"),
+                        Tuple.tuple("rp-phys-sek2-electric-field-strength", "d7bc20e0-5ee9-593a-a7a9-d7cbb88392e6", "partial"),
+                        Tuple.tuple("rp-phys-sek2-magnetic-flux-density", "ed6cfd98-38fa-59c3-af0d-0f9f61d52d25", "partial"),
+                        Tuple.tuple("rp-phys-sek2-static-field-interactions", "43eb9b9e-cfdf-5cf1-88db-87391c7ba595", "partial"),
+                        Tuple.tuple("rp-phys-sek2-electric-force-on-charged-particles", "741774ef-15fc-4bcf-a370-e2c5cf4257d0", "partial"),
+                        Tuple.tuple("rp-phys-sek2-motion-in-homogeneous-electric-fields", "741774ef-15fc-4bcf-a370-e2c5cf4257d0", "partial"),
+                        Tuple.tuple("rp-phys-sek2-accelerated-charge-energy", "1730c01d-8c85-57df-b031-c11e2a0511b1", "partial"),
+                        Tuple.tuple("rp-phys-sek2-lorentz-force-on-charged-particles", "8c9394cb-f54a-508d-9750-4c49e31b3fa9", "partial"),
+                        Tuple.tuple("rp-phys-sek2-motion-in-homogeneous-magnetic-fields", "9854589c-5feb-4942-b90f-311ddf36eb78", "partial"),
+                        Tuple.tuple("rp-phys-sek2-hall-effect", "b39ae8fb-4358-5866-8adf-3d5365368eeb", "partial"),
+                        Tuple.tuple("rp-phys-sek2-variable-electromagnetic-fields", "b2b74d0a-575c-5c6b-8e24-b0b0f32c1126", "partial"),
+                        Tuple.tuple("rp-phys-sek2-magnetic-flux", "1a037489-3c95-540b-8cae-0acd360358ee", "partial"),
+                        Tuple.tuple("rp-phys-sek2-law-of-induction-difference-quotient", "eb1ea150-ec6c-5000-bce3-f46c820dccf8", "partial"),
+                        Tuple.tuple("rp-phys-sek2-law-of-induction-simple-special-cases", "eb1ea150-ec6c-5000-bce3-f46c820dccf8", "partial"),
+                        Tuple.tuple("rp-phys-sek2-direction-of-induced-current", "eb1ea150-ec6c-5000-bce3-f46c820dccf8", "partial"),
+                        Tuple.tuple("rp-phys-sek2-technical-induction-application", "fdcd5faf-f9bf-4fa9-87f4-4e22d8d3387c", "partial"),
+                        Tuple.tuple("rp-phys-sek2-self-induction-switching-processes", "37f28bc4-def2-57cf-a06b-191dfd228205", "partial"),
+                        Tuple.tuple("rp-phys-sek2-law-of-induction-differential-form", "d18d4190-ddc1-5181-b1b6-e79947b737c2", "partial"),
+                        Tuple.tuple("rp-phys-sek2-circular-trajectories-in-homogeneous-magnetic-fields", "9854589c-5feb-4942-b90f-311ddf36eb78", "partial"),
+                        Tuple.tuple("rp-phys-sek2-crossed-fields-wien-filter", "741774ef-15fc-4bcf-a370-e2c5cf4257d0", "partial"),
+                        Tuple.tuple("rp-phys-sek2-oscillations-waves-anchor", "fcefb129-ad4c-50a2-9762-a910caa1af16", "partial"),
+                        Tuple.tuple("rp-phys-sek2-harmonic-oscillations", "aee9676f-7cd6-50f0-a504-fd88ef67b59e", "partial"),
+                        Tuple.tuple("rp-phys-sek2-harmonic-oscillation-basics", "d03f1cb6-c224-53db-ad91-76cc7827978d", "partial"),
+                        Tuple.tuple("rp-phys-sek2-characteristic-oscillation-quantities", "fcf8580c-ecfd-58ea-bbf5-a1b29c9ecf8e", "partial"),
+                        Tuple.tuple("rp-phys-sek2-electromagnetic-oscillating-circuit", "ac4ba260-6086-5fcc-bea2-c06f1425a1cc", "partial"),
+                        Tuple.tuple("rp-phys-sek2-mechanical-electromagnetic-oscillation-comparison", "a844895e-2cdc-4665-aad2-a49c62f11759", "partial"),
+                        Tuple.tuple("rp-phys-sek2-harmonic-waves-gf", "dc38c943-11f6-5f4f-945b-67e330814727", "partial"),
+                        Tuple.tuple("rp-phys-sek2-wave-propagation-energy-transport", "dc38c943-11f6-5f4f-945b-67e330814727", "partial"),
+                        Tuple.tuple("rp-phys-sek2-harmonic-wave-quantities", "cb0ced6d-b7c1-5b7d-9922-8c394f6030e8", "partial"),
+                        Tuple.tuple("rp-phys-sek2-basic-wave-phenomena", "d716a35e-e422-5aba-b39a-f2e22f1e1e74", "partial"),
+                        Tuple.tuple("rp-phys-sek2-wave-superposition-gf", "224243cd-5a53-5d6e-bed5-564cca167a80", "partial"),
+                        Tuple.tuple("rp-phys-sek2-standing-wave-superposition", "d5772db3-120c-5c37-ab46-2336d02236b0", "partial"),
+                        Tuple.tuple("rp-phys-sek2-standing-wave-wavelength-determination", "d5772db3-120c-5c37-ab46-2336d02236b0", "partial"),
+                        Tuple.tuple("rp-phys-sek2-double-slit-interference-monochromatic-light", "6270e558-d657-5363-a6b2-e49a032a453b", "partial"),
+                        Tuple.tuple("rp-phys-sek2-monochromatic-light-wavelength-determination", "6270e558-d657-5363-a6b2-e49a032a453b", "partial"),
+                        Tuple.tuple("rp-phys-sek2-electromagnetic-wavelength-ranges-overview", "4a7cbe83-b694-57d3-85ce-1eeca418daaf", "partial"),
+                        Tuple.tuple("rp-phys-sek2-single-slit-diffraction-interference", "2c6af966-7703-4176-a117-5ddb8295bedf", "partial"),
+                        Tuple.tuple("rp-phys-sek2-simple-interferometer", "d1e26b52-78a7-5f3b-ac9f-97f3e62d7db1", "partial"),
+                        Tuple.tuple("rp-phys-sek2-free-damped-oscillations", "e6895bc3-fcbd-59ad-baef-a78c97a13e11", "partial"),
+                        Tuple.tuple("rp-phys-sek2-forced-oscillations-resonance", "3efa0cda-f55b-5534-8fac-ffe1d312aed1", "partial"),
+                        Tuple.tuple("rp-phys-sek2-harmonic-wave-mathematical-representation", "e160acb4-5b88-509e-8055-2653df420c65", "partial"),
+                        Tuple.tuple("rp-phys-sek2-quantum-matter-anchor", "5482bc19-3836-51a5-ba98-fbf5e265b908", "partial"),
+                        Tuple.tuple("rp-phys-sek2-quantum-objects-gf", "ab636b78-6031-5a5b-afa2-9ffefbdd5dda", "partial"),
+                        Tuple.tuple("rp-phys-sek2-quantum-double-slit-behavior", "a359c859-eee0-40ef-a9d1-88db2e6c55b2", "partial"),
+                        Tuple.tuple("rp-phys-sek2-photon-energy-frequency-momentum", "d2860d7f-32ff-5d74-b2f8-b7bfc8d75aec", "partial"),
+                        Tuple.tuple("rp-phys-sek2-material-quantum-objects-wavelength-momentum", "dfa53498-34f5-5326-9d94-87e7b528caf3", "partial"),
+                        Tuple.tuple("rp-phys-sek2-wavefunction-detection-probability", "51bc5513-6879-548f-b19a-9746b667f1a3", "partial"),
+                        Tuple.tuple("rp-phys-sek2-quantum-worldview-classification", "defe44d2-c3d3-456b-a786-fad2cef13fe8", "partial"),
+                        Tuple.tuple("rp-phys-sek2-quantum-atomic-model-gf", "dd5a8efd-5d11-5388-aa2a-5147dec4348f", "partial"),
+                        Tuple.tuple("rp-phys-sek2-quantized-photon-absorption", "904670af-8e4c-543e-bc9b-e6248d87a10d", "partial"),
+                        Tuple.tuple("rp-phys-sek2-hydrogen-emission-energy-level-transitions", "904670af-8e4c-543e-bc9b-e6248d87a10d", "partial"),
+                        Tuple.tuple("rp-phys-sek2-hydrogen-energy-level-model", "d7244ce4-5409-58d1-a1b4-bfae35f391e1", "partial"),
+                        Tuple.tuple("rp-phys-sek2-hydrogen-orbital-probability-model", "b1f00a6d-1a03-496c-b1bd-c1f2259f59a8", "partial"));
     }
 
     @Test

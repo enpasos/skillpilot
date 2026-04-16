@@ -1,0 +1,111 @@
+# RP Physics Onboarding Note
+
+Status: `P4` (`first_reviewed_corridor`)
+
+Activated on `2026-04-16`:
+
+- upper-secondary Gymnasium Physics:
+  - `sourceLandscapeId`: `eb32f91f-5f6f-4e13-a969-f53a0e92431f`
+  - archived official PDF:
+    `curricula/DE/Gymnasium/input/RP/Physik_Sekundarstufe_II_MSS.pdf`
+  - mapping fixture:
+    `curricula/DE/Gymnasium/mapping/DE-RP/upper-secondary/rp_physics_upper_secondary_to_canonical_physics.json`
+  - active source snapshot:
+    `curricula/DE/Gymnasium/input/RP/upper-secondary/source-json/DE_RLP_S_GYM_2_PHYSIK.de.json.snapshot`
+
+Activation result:
+
+- the official Rheinland-Pfalz physics source is now explicitly linked from:
+  - `curricula/DE/Gymnasium/input/RP/README.md`
+- the Rheinland-Pfalz upper-secondary Physics lane is now active in `source-landscape-registry.json`
+- the first Rheinland-Pfalz upper-secondary Physics snapshot now contributes real `goalIds` to `source-goal-membership-registry.json`
+- the same snapshot now contributes atomic closures to `source-goal-closure-registry.json`
+- the repository-backed Rheinland-Pfalz Physics mapping file now carries `61` reviewed upper-secondary mappings
+- the active Rheinland-Pfalz upper-secondary Physics snapshot is intentionally narrow and conservative, with one GF/LF-common spine plus adjacent reviewed Grundfach quantum corridors:
+  - one shared orientation anchor
+  - one structural Qualifikationsphasen-Anker `Statische elektrische und magnetische Felder`
+  - one first reviewed gemeinsamer Grundfach-/Leistungsfach-Korridor on the Pflichtbaustein `Feldkonzept fuer statische elektrische und magnetische Felder`
+  - one first reviewed gemeinsamer Grundfach-/Leistungsfach-Follow-on on `Wechselwirkung von geladenen Koerpern mit statischen Feldern`
+  - one first schmaler reviewed LK-Follow-on on the `Hall-Effekt`-Rest derselben RP-Feldsequenz
+  - two additional schmale reviewed LK-Follow-ons on `Kreisbahnen im homogenen Magnetfeld` and `gekreuzten elektrischen und magnetischen Feldern`
+  - one widened reviewed gemeinsamer Grundfach-/Leistungsfach-Induktionskorridor `Veraenderliche elektromagnetische Felder`
+  - one additional shared induction follow-on `Selbstinduktion und Ein-/Ausschaltvorgaenge bei der Spule`
+  - one additional schmaler LK-Induktionsfollow-on `Induktionsgesetz in differentieller Form`
+  - one first reviewed gemeinsamer Grundfach-/Leistungsfach-Schwingungskorridor `Harmonische Schwingungen`
+  - one first reviewed Grundfach-Wellenkorridor `Harmonische Wellen`
+  - one first reviewed Grundfach-Follow-on `Superposition von Wellen`
+  - one first schmaler reviewed LF-Follow-on `Harmonische Wellen und ihre Superposition`
+  - one first schmaler reviewed LF-Pflichtbaustein-Follow-on `Schwingungen und Wellen`
+  - one first reviewed Grundfach-Quantenkorridor `Quantenobjekte I`
+  - one first reviewed Grundfach-Atommodellkorridor `Quantenmechanische Atomvorstellung I`
+- the reviewed Rheinland-Pfalz Physics corridor stays intentionally conservative:
+  - partial bridge from the RP source root onto the canonical Physics root
+  - exact bridge on the shared motivation/orientation anchor
+  - partial bridges from the structural RP field anchor, the retained field-concept parent, and the retained field-properties leaf onto the shared canonical `Q1 Elektrisches und magnetisches Feld`
+  - partial bridges from the retained RP leaves onto existing shared canonical atoms or clusters for electric field-line sketches, magnetic field-line sketches, field superposition, charge phenomena, the electric-field surface, and the magnetic-field fundamentals surface
+  - partial bridge from the retained RP follow-on parent onto the shared canonical cluster `Ladungen in Feldern`
+  - partial bridges from the retained RP follow-on leaves onto existing shared canonical atoms for motion in homogeneous electric fields, work/energy in electric fields, Lorentzkraft, and motion in homogeneous magnetic fields
+  - one additional partial bridge from the retained RP LK residue onto the existing shared canonical LK atom `Hall-Effekt anwenden`
+  - one additional conservative partial bridge from the retained RP LK residue leaf `Kreisbahnen geladener Teilchen im homogenen Magnetfeld` onto the shared canonical atom `Geladene Teilchen in homogenen magnetischen Feldern untersuchen`
+  - one additional conservative partial bridge from the retained RP LK residue leaf `Geladene Teilchen in gekreuzten elektrischen und magnetischen Feldern technisch einordnen` onto the shared canonical atom `Geladene Teilchen in homogenen elektrischen Feldern untersuchen`
+  - one additional partial bridge from the retained RP induction parent onto the shared canonical cluster `Induktion und elektromagnetische Schwingungen`
+  - partial bridges from the retained RP induction leaves onto the existing shared canonical atoms `Induktion durch Änderung des magnetischen Flusses`, `Induktionsgesetz und Lenz’sche Regel`, `Technische Anwendungen des Induktionsgesetzes qualitativ beschreiben`, `Selbstinduktion und Induktivität`, and `Induktionsgesetz in Differenzialform`
+  - one additional partial bridge from the retained RP oscillations/waves anchor onto the shared canonical cluster `Q2 Schwingungen, Induktion und mechanische Wellen`
+  - one additional partial bridge from the retained RP parent `Harmonische Schwingungen` onto the shared canonical cluster `Mechanische Schwingungen`
+  - partial bridges from the retained RP leaves onto the existing shared canonical atoms `Harmonische Schwingung verstehen`, `Charakteristische Schwingungsgroessen`, `Elektromagnetischen Schwingkreis analysieren`, and `Mechanische und elektromagnetische Schwingungen vergleichen`
+  - one additional partial bridge from the retained RP Grundfach parent `Harmonische Wellen` onto the shared canonical cluster `Mechanische Wellen`
+  - one additional partial bridge from the retained RP leaf `Erzeugung, Ausbreitung und Energietransport bei Wellen qualitativ beschreiben` onto the shared canonical cluster `Mechanische Wellen`
+  - one additional partial bridge from the retained RP leaf `Beschreibende Groessen harmonischer Wellen fachlich deuten` onto the shared canonical atom `Harmonische Wellen und ihre Groessen`
+  - one additional partial bridge from the retained RP leaf `Brechung, Reflexion und Beugung als grundlegende Wellenphaenomene beschreiben` onto the shared canonical atom `Wellenphaenomene: Brechung, Reflexion, Beugung`
+  - one additional partial bridge from the retained RP Grundfach parent `Superposition von Wellen` onto the shared canonical cluster `Ueberlagerung und Interferenz von Wellen`
+  - two additional partial bridges from the retained RP leaves `Stehende Wellen als Ueberlagerung im eindimensionalen Fall beschreiben` and `Wellenlaengen mit einer durch Reflexion erzeugten stehenden Welle bestimmen` onto the shared canonical atom `Stehende Wellen und Wellenlaengenbestimmung`
+  - two additional partial bridges from the retained RP leaves `Interferenz am Doppelspalt mit monochromatischem Licht qualitativ beschreiben` and `Wellenlaengen von monochromatischem Licht experimentell bestimmen` onto the shared canonical atom `Interferenz am Doppelspalt`
+  - one additional partial bridge from the retained RP leaf `Wellenlaengenbereiche elektromagnetischer Wellen im Ueberblick einordnen` onto the shared canonical atom `Spektrum elektromagnetischer Wellen`
+  - one additional partial bridge from the retained RP LF residue leaf `Beugung und Interferenz am Einzelspalt mit monochromatischem Licht fachlich beschreiben` onto the shared canonical atom `Interferenzmuster und Intensitaetsverteilungen bei Einzelspalt, Doppelspalt und Gitter beschreiben`
+  - one additional partial bridge from the retained RP LF residue leaf `Aufbau und Funktionsweise eines einfachen Interferometers fachlich einordnen` onto the shared canonical atom `Interferometer verstehen`
+  - one additional partial bridge from the retained RP LF-Pflichtbaustein leaf `Freie gedaempfte Schwingungen qualitativ beschreiben` onto the shared canonical atom `Gedämpfte Schwingungen beschreiben`
+  - one additional partial bridge from the retained RP LF-Pflichtbaustein leaf `Erzwungene Schwingungen und Resonanz phaenomenologisch deuten` onto the shared canonical atom `Erzwungene Schwingungen und Resonanz`
+  - one additional partial bridge from the retained RP LF-Pflichtbaustein leaf `Zeitliche und raeumliche Entwicklung harmonischer Wellen mathematisch beschreiben` onto the shared canonical atom `Wellengleichung formulieren`
+  - one additional partial bridge from the new RP structural quantum/atom anchor onto the shared canonical Q4 cluster `Struktur von Materie, Raum und Zeit`
+  - one additional partial bridge from the retained RP Grundfach parent `Quantenobjekte I` onto the shared canonical Q4 cluster `Quantenobjekte`
+  - one additional partial bridge from the retained RP leaf `Quantenmechanisches Verhalten freier Elektronen und Photonen am Doppelspalt beschreiben` onto the shared canonical atom `Photonen und Elektronen als Quantenobjekte beschreiben`
+  - one additional partial bridge from the retained RP leaf `Zusammenhaenge zwischen Energie, Frequenz, Impuls und Wellenlaenge von Photonen fachlich deuten` onto the shared canonical atom `Energie und Impuls von Photonen`
+  - one additional partial bridge from the retained RP leaf `Impuls und Wellenlaenge zur Beschreibung materieller Quantenobjekte verknuepfen` onto the shared canonical atom `De-Broglie-Wellen`
+  - one additional partial bridge from the retained RP leaf `Nachweiswahrscheinlichkeitsdichte ueber das Betragsquadrat der Zustandsfunktion qualitativ deuten` onto the shared canonical atom `Wellenfunktion und Wahrscheinlichkeitsdeutung`
+  - one additional partial bridge from the retained RP leaf `Quantenphysikalisches Weltbild zu Realitaet, Lokalitaet, Kausalitaet und Determinismus fachlich einordnen` onto the shared canonical atom `Die Bedeutung von Modellen an Photon und Elektron reflektieren`
+  - one additional partial bridge from the retained RP Grundfach parent `Quantenmechanische Atomvorstellung I` onto the shared canonical cluster `Atomvorstellungen`
+  - two additional partial bridges from the retained RP leaves `Quantisierte Energieaufnahme von Photonen an Atomen experimentell einordnen` and `Quantisierte Emission am Wasserstoffatom ueber Uebergaenge zwischen Energieniveaus deuten` onto the shared canonical atom `Emission, Absorption und Linienspektren`
+  - one additional partial bridge from the retained RP leaf `Energiestufenmodell des Wasserstoffatoms mit den diskreten Energiewerten fachlich nutzen` onto the shared canonical atom `Energieniveaus des Wasserstoffatoms`
+  - one additional partial bridge from the retained RP leaf `Orbitale des Wasserstoffatoms als Nachweiswahrscheinlichkeiten fachlich deuten` onto the shared canonical atom `Orbitale des Wasserstoffatoms als Nachweiswahrscheinlichkeiten interpretieren`
+- no Rheinland-Pfalz-specific canonical Physics atom is introduced in this step
+- no committed Rheinland-Pfalz applicability cut is introduced in this step
+- no Rheinland-Pfalz-specific Physics composition view is introduced in this step
+
+Operational rule from here:
+
+- keep the `sourceLandscapeId` stable while widening the Rheinland-Pfalz Physics source snapshot
+- treat the current GF/LF-common Pflichtbaustein `Feldkonzept fuer statische elektrische und magnetische Felder` as the first reviewed RP cut
+- treat the active GF/LF-common strip `Wechselwirkung von geladenen Koerpern mit statischen Feldern` as the second reviewed RP cut
+- treat `Hall-Effekt` as the first narrow reviewed RP LK follow-on on that residue
+- treat `Kreisbahnen im homogenen Magnetfeld` and `gekreuzte Felder` as the next conservative RP LK follow-ons on that same residue
+- treat the active GF/LF-common strip `Veraenderliche elektromagnetische Felder` as the third reviewed RP cut
+- treat `Selbstinduktion und Ein-/Ausschaltvorgaenge bei der Spule` as the next shared RP induction follow-on on that third cut
+- treat `Induktionsgesetz in differentieller Form` as the next schmaler RP LK induction follow-on on that same source family
+- the current retained RP field/induction family is now closed on the conservative reviewed cut
+- treat the active GF/LF-common strip `Harmonische Schwingungen` as the fourth reviewed RP cut
+- keep `Abhaengigkeit der Periodendauer von systembeschreibenden Groessen an einem Beispiel` intentionally source-led inside that new strip and now freeze it explicitly as part of the current RP oscillation/wave micro-residue set unless broader reviewed evidence later warrants a narrower shared target
+- treat the active Grundfach strip `Harmonische Wellen` as the fifth reviewed RP cut
+- keep `Transversale und longitudinale Wellen sowie lineare Polarisation` intentionally source-led inside that new wave strip and now freeze it explicitly as part of the current RP oscillation/wave micro-residue set unless broader reviewed evidence later warrants a narrower shared target
+- treat the active Grundfach strip `Superposition von Wellen` as the sixth reviewed RP cut
+- keep `Entstehung des Spektrums von weissem Licht am Doppelspalt` intentionally source-led inside that new strip and now freeze it explicitly as part of the current RP oscillation/wave micro-residue set unless broader reviewed evidence later warrants a narrower shared target
+- treat the active LF residue `Harmonische Wellen und ihre Superposition` as the seventh reviewed RP cut
+- keep the LF residue intentionally narrow on `Einzelspalt` and `einfaches Interferometer` instead of duplicating the already covered Grundfach content
+- treat the active LF Pflichtbaustein-Follow-on `Schwingungen und Wellen` as the eighth reviewed RP cut
+- keep `Gekoppelte Schwingungen` intentionally source-led inside that LF strip and now freeze it explicitly as part of the current RP oscillation/wave micro-residue set unless broader reviewed evidence later warrants a narrower shared target
+- treat the remaining RP oscillation/wave micro-residues `Periodendauer`, `Polarisation`, `Weisslichtspektrum`, and `gekoppelte Schwingungen` as explicitly frozen source-led residues on the current reviewed cut
+- do not reopen that RP oscillation/wave micro-residue set unless broader reviewed evidence later warrants a genuinely narrower shared canonical target
+- treat the active Grundfach strip `Quantenobjekte I` as the ninth reviewed RP cut
+- keep `Plancksches Wirkungsquantum mit einer experimentellen Methode naeherungsweise bestimmen` intentionally source-led inside that new RP quantum strip because the current shared canonical method target remains photoeffect-specific
+- treat the active Grundfach strip `Quantenmechanische Atomvorstellung I` as the tenth reviewed RP cut
+- move the next active RP widening to the adjacent strip `Quantenmechanische Atomvorstellung II` instead of reopening the now-frozen RP oscillation/wave micro-residue set or forcing a narrower Planck-method split
+- do not force a Rheinland-Pfalz-specific canonical split or applicability cut before broader reviewed evidence exists

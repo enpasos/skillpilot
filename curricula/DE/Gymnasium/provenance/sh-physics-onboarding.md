@@ -20,17 +20,25 @@ Activation result:
 - the Schleswig-Holstein upper-secondary Physics lane is now active in `source-landscape-registry.json`
 - the first Schleswig-Holstein upper-secondary Physics snapshot now contributes real `goalIds` to `source-goal-membership-registry.json`
 - the same snapshot now contributes atomic closures to `source-goal-closure-registry.json`
-- the repository-backed Schleswig-Holstein Physics mapping file now carries `10` reviewed upper-secondary mappings
+- the repository-backed Schleswig-Holstein Physics mapping file now carries `22` reviewed upper-secondary mappings
 - the first Schleswig-Holstein upper-secondary Physics snapshot is intentionally narrow and source-led:
   - one shared orientation anchor
   - one structural Sek-II anchor `Elektrische und magnetische Felder`
   - one first reviewed field-concept entry corridor on the official SH subtopic `Das Feldkonzept zur Beschreibung von Wechselwirkungen`
+  - one first reviewed static-fields follow-on corridor on the official SH subtopic `Koerper in statischen Feldern`
+  - one second reviewed follow-on on Elektronenmessung und technischen Anwendungen inside the same official SH subtopic
+  - one third reviewed follow-on on Kreisbewegungen inside the same official SH subtopic
 - the reviewed Schleswig-Holstein Physics corridor stays intentionally conservative:
   - partial bridge from the SH source root onto the canonical Physics root
   - exact bridge on the shared motivation/orientation anchor
   - partial bridge from the structural SH field anchor onto the shared canonical `Q1 Elektrisches und magnetisches Feld`
   - partial bridge from the retained SH field-concept parent onto the shared canonical cluster `Elektrisches Feld`
   - partial bridges from the retained SH leaves onto existing shared field-concept atoms for charge phenomena, Coulomb interaction, field-line sketches, and superposition
+  - partial bridges from the retained SH static-fields leaves onto existing shared canonical atoms for charges in electric fields, Lorentzkraft, Bewegungen in homogenen Feldern, and work/energy in electric fields
+  - partial bridges from the retained SH electron-measurement/application leaves onto existing shared canonical atoms for Millikan, Fadenstrahlrohr, Hall-Effekt, and Teilchenbeschleuniger
+  - partial bridges from the retained SH circle-motion leaves onto existing shared canonical atoms for Bahn- und Winkelgeschwindigkeit, Zentripetalkraft, and Kreisbewegung mit Zentripetalkraft
+  - the adjacent `Massenspektrometer` source leaf stays intentionally source-led because the current shared canonical Physics surface still has no narrow reviewed target for it
+  - the adjacent `Drehimpuls und Drehimpulserhaltung` source leaf stays intentionally source-led because the current shared canonical Physics surface on that concept is still a separate Drehbewegungsflaeche and not a narrow reviewed continuation of the SH static-fields clause
 - no Schleswig-Holstein-specific canonical Physics atom is introduced in this step
 - no committed Schleswig-Holstein applicability cut is introduced in this step
 - no Schleswig-Holstein-specific Physics composition view is introduced in this step
@@ -38,6 +46,6 @@ Activation result:
 Operational rule from here:
 
 - keep the reserved `sourceLandscapeId` stable while widening the Schleswig-Holstein Physics source snapshot
-- treat the retained SH corridor `Das Feldkonzept zur Beschreibung von Wechselwirkungen` as the current first reviewed cut
-- continue the same SH source family on `Koerper in statischen Feldern` before switching to another Physics topic row
+- treat the retained SH corridor `Das Feldkonzept zur Beschreibung von Wechselwirkungen` plus the first static-fields follow-on as the current reviewed SH cut
+- treat the current SH lane as complete at the reviewed pilot-cut level and keep `Massenspektrometer` plus `Drehimpuls und Drehimpulserhaltung` as explicit source-led micro-residues unless later retained rollouts create genuinely shared Physics targets for them
 - do not force a Schleswig-Holstein-specific canonical split or applicability cut before broader reviewed evidence exists

@@ -40,7 +40,7 @@ It does not mean Physics must immediately have `800` goals, `70` composition vie
 
 ## 2. Current state
 
-Observed repository state on `2026-04-16` after the current hardening, BW rollout, Berlin widening, Brandenburg retained `3.2.1` -> `3.2.2` widening, and the Schleswig-Holstein first-entry activation:
+Observed repository state on `2026-04-16` after the current hardening, BW rollout, Berlin widening, Brandenburg retained `3.2.1` -> `3.2.2` widening, the Schleswig-Holstein first-entry plus three retained SH follow-ons on the same field source family, and the Rheinland-Pfalz widening through the first GF quantum corridor `Quantenobjekte I` plus the adjacent GF atom-model corridor `Quantenmechanische Atomvorstellung I`:
 
 | Area | Mathematics | Physics | Comment |
 | --- | ---: | ---: | --- |
@@ -52,7 +52,7 @@ Observed repository state on `2026-04-16` after the current hardening, BW rollou
 | `competencyCatalog` entries | `6` | `5` | Physics now has reviewed process-competency entries |
 | goals with `competencyRefs` | `52` | `17` | focused reviewed coverage, not bulk-stamped |
 | composition views | `70` | `13` | Physics now has DE-wide + `DE-HE` + `DE-BY` reviewed views |
-| committed mapping files | `31` | `7` | Physics has Hessen Sek I, Hessen Sek II, Bavaria Gymnasium, Baden-Wuerttemberg upper-secondary, Berlin upper-secondary, Brandenburg upper-secondary, and Schleswig-Holstein upper-secondary |
+| committed mapping files | `31` | `8` | Physics has Hessen Sek I, Hessen Sek II, Bavaria Gymnasium, Baden-Wuerttemberg upper-secondary, Berlin upper-secondary, Brandenburg upper-secondary, Schleswig-Holstein upper-secondary, and Rheinland-Pfalz upper-secondary |
 
 Relevant Physics files:
 
@@ -70,6 +70,7 @@ Relevant Physics files:
   - `curricula/DE/Gymnasium/mapping/DE-BE/upper-secondary/be_physics_upper_secondary_to_canonical_physics.json`
   - `curricula/DE/Gymnasium/mapping/DE-BB/upper-secondary/bb_physics_upper_secondary_to_canonical_physics.json`
   - `curricula/DE/Gymnasium/mapping/DE-SH/upper-secondary/sh_physics_upper_secondary_to_canonical_physics.json`
+  - `curricula/DE/Gymnasium/mapping/DE-RP/upper-secondary/rp_physics_upper_secondary_to_canonical_physics.json`
 - registry-backed provenance/applicability:
   - `curricula/DE/Gymnasium/provenance/canonical-goal-provenance-registry.json`
   - `curricula/DE/Gymnasium/provenance/canonical-goal-applicability-override-registry.json`
@@ -141,7 +142,9 @@ Required outcome:
 - the first concrete sixth-state lane now also exists as an active DE-level source lane with one first reviewed corridor:
   - `DE-BB` upper-secondary Physics source snapshot + registry activation + first reviewed Q1 field/capacitor corridor plus first retained `3.2.1` magnetic-field / Lorentz-force follow-on and first retained `3.2.2` charged-particle-motion follow-on from the shared BE/BB upper-secondary source family
 - the first concrete seventh-state lane now also exists as an active DE-level source lane with one first reviewed corridor:
-  - `DE-SH` upper-secondary Physics source snapshot + registry activation + first reviewed field-concept corridor on the official SH topic `Elektrische und magnetische Felder`
+  - `DE-SH` upper-secondary Physics source snapshot + registry activation + first reviewed field-concept corridor plus three retained follow-ons on the official SH topic `Elektrische und magnetische Felder`
+- the next explicit new-state lane now exists as an active DE-level source lane with four first reviewed GF/LF-common corridors, one first reviewed GF wave corridor, three reviewed GF/LF oscillation/wave follow-ons, and one first reviewed GF quantum corridor:
+  - `DE-RP` upper-secondary Physics source snapshot + registry activation + first reviewed GF/LF-common field-concept corridor plus first reviewed GF/LF-common static-field interaction follow-on plus one narrow reviewed `Hall-Effekt` follow-on plus two adjacent conservative LK follow-ons on `Kreisbahnen` and `gekreuzten Feldern` plus first reviewed GF/LF-common induction corridor plus one adjacent shared self-induction/switching follow-on and one adjacent narrow LK induction follow-on on `Differentialform` plus one first reviewed GF/LF-common harmonics corridor plus one first reviewed GF wave corridor `Harmonische Wellen` plus one first reviewed GF superposition/interference follow-on `Superposition von Wellen` plus one first narrow LF wave/superposition follow-on `Harmonische Wellen und ihre Superposition` plus one first narrow LF-Pflichtbaustein follow-on `Schwingungen und Wellen` plus one first reviewed GF quantum corridor `Quantenobjekte I` plus one adjacent first reviewed GF atom-model corridor `Quantenmechanische Atomvorstellung I`, while the remaining RP oscillation/wave micro-residues on `Periodendauer`, `Polarisation`, `Weisslichtspektrum`, and `gekoppelte Schwingungen` stay explicitly frozen and the RP Planck-estimation clause stays intentionally source-led on the current reviewed cut
 - once a third active Physics state becomes real on the canonical path, a stable rollout tracker is introduced:
   - `curricula/DE/Gymnasium/provenance/physics-bundesland-rollout-tracker.json`
 
@@ -152,7 +155,7 @@ The remaining Physics-vs-Math gap is now mainly this:
 - fewer reviewed Bundesland source lanes
 - fewer learner-facing state-scoped composition views
 - narrower `shortKey` and `competencyRefs` coverage
-- the Physics-specific Bundesland rollout tracker is now present for the active Hessen/Bayern/Niedersachsen/Nordrhein-Westfalen/Baden-Wuerttemberg/Berlin/Brandenburg/Schleswig-Holstein surface
+- the Physics-specific Bundesland rollout tracker is now present for the active Hessen/Bayern/Niedersachsen/Nordrhein-Westfalen/Baden-Wuerttemberg/Berlin/Brandenburg/Schleswig-Holstein/Rheinland-Pfalz surface
 
 ## 4. Work packages
 
