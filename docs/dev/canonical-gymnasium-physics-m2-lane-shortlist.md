@@ -1,11 +1,11 @@
 # Canonical Gymnasium Physics M2 Lane Shortlist
 
-Snapshot: `2026-04-15`
+Snapshot: `2026-04-16`
 
 This document narrows the first post-`M1` Physics rollout move.
 
 It started intentionally smaller than a full machine-readable rollout tracker.
-Physics now has that tracker because Hessen, Bayern, Nordrhein-Westfalen, Baden-Wuerttemberg, and Berlin are active on the current canonical path.
+Physics now has that tracker because Hessen, Bayern, Nordrhein-Westfalen, Baden-Wuerttemberg, Berlin, Brandenburg, and Schleswig-Holstein are active on the current canonical path.
 The shortlist still exists because it keeps the narrower M2 corridor reasoning readable beside the machine-readable tracker.
 
 Execution update on `2026-04-11`:
@@ -53,10 +53,33 @@ Execution update on `2026-04-11`:
   - an active source snapshot
   - a source-landscape registry entry
   - provenance-backed membership and closure
-  - a repository-backed mapping lane with `10` reviewed mappings
+  - a repository-backed mapping lane with `24` reviewed mappings
   - one shared orientation anchor
   - one structural `Q1` field anchor
   - one first reviewed `Q1` electric-field / capacitor corridor
+  - one first reviewed retained `3.2.1` magnetic-field / Lorentz-force follow-on
+  - one first reviewed retained `3.2.2` charged-particle-motion follow-on
+  - one explicit LK follow-on on crossed fields / Hall-Effekt / Elektronenstrahlroehre where narrow shared targets already exist
+  - one explicitly deferred shared BE/BB residue on `c0`, `Relativitaet`, and `beliebige Eintrittswinkel`
+- `DE-BB` upper-secondary Physics now also has:
+  - an active source snapshot
+  - a source-landscape registry entry
+  - provenance-backed membership and closure
+  - a repository-backed mapping lane with `24` reviewed mappings
+  - one shared orientation anchor
+  - one structural `Q1` field anchor
+  - one first reviewed `Q1` electric-field / capacitor corridor from the shared BE/BB source family
+  - one first reviewed retained `3.2.1` magnetic-field / Lorentz-force follow-on from the same shared BE/BB source family
+  - one first reviewed retained `3.2.2` charged-particle-motion follow-on from the same shared BE/BB source family, while `c0`, relativistic mass, and arbitrary entry angles remain explicit shared residue
+- `DE-SH` upper-secondary Physics now also has:
+  - an active source snapshot
+  - a source-landscape registry entry
+  - provenance-backed membership and closure
+  - a repository-backed mapping lane with `10` reviewed mappings
+  - one shared orientation anchor
+  - one structural upper-secondary field anchor `Elektrische und magnetische Felder`
+  - one first reviewed field-concept corridor on the official SH subtopic `Das Feldkonzept zur Beschreibung von Wechselwirkungen`
+  - no Schleswig-Holstein-specific canonical Physics atom and no committed Schleswig-Holstein applicability cut yet
 
 See also:
 
@@ -68,12 +91,12 @@ See also:
 
 Canonical Physics has now reached hardened `M1` parity for the reviewed `DE-HE` + `DE-BY` corridor.
 
-What does **not** exist yet for Physics beyond the currently active Hessen, Bayern, Nordrhein-Westfalen, Baden-Wuerttemberg, and Berlin surface:
+What does **not** exist yet for Physics beyond the currently active Hessen, Bayern, Nordrhein-Westfalen, Baden-Wuerttemberg, Berlin, Brandenburg, and Schleswig-Holstein surface:
 
-- no additional Physics `source-json` snapshots outside Hessen, Bayern, Nordrhein-Westfalen, Baden-Wuerttemberg, and Berlin
-- no additional Physics source-landscape registry entries outside Hessen, Bayern, Nordrhein-Westfalen, Baden-Wuerttemberg, and Berlin
+- no additional Physics `source-json` snapshots outside Hessen, Bayern, Nordrhein-Westfalen, Baden-Wuerttemberg, Berlin, Brandenburg, and Schleswig-Holstein
+- no additional Physics source-landscape registry entries outside Hessen, Bayern, Nordrhein-Westfalen, Baden-Wuerttemberg, Berlin, Brandenburg, and Schleswig-Holstein
 - no reviewed fifth-state Physics composition views yet
-- no active sixth-state Physics lane yet, so the next rollout decision should still stay narrow
+- the first active eighth-state Physics lane now exists on `DE-SH` upper-secondary Physics; the retained BE/BB upper-secondary family stays closed at the current reviewed cut, and the next rollout decision inside Physics can therefore continue on the opened SH source family before another new state/source family is needed
 
 What **does** already exist and can be reused:
 

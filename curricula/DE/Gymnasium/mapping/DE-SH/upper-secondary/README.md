@@ -38,3 +38,31 @@ Current use:
 - this reviewed pass is intentionally coarse because the current SH source snapshot still keeps most retained source goals at one official phase-and-area cell, with only the now-tightened Q1 integral cell split further where the shared canonical corridor already warranted it
 - all official upper-secondary source cells now have at least one structural or coarse reviewed canonical bridge
 - next step: treat the opened SH upper-secondary analysis strip as exact-resolved at explicit source-residue level and do not reopen broader SH Q1/Q2 analysis parents unless a genuinely narrower source split appears
+
+## Physics
+
+Current status on `2026-04-16`:
+
+- repository-backed mapping fixture now exists:
+  `sh_physics_upper_secondary_to_canonical_physics.json`
+- reserved `sourceLandscapeId`:
+  `f1a2c733-b994-4db3-9dd6-54ffe544002b`
+- current mapping count: `10`
+- the first Schleswig-Holstein upper-secondary physics source snapshot is now active:
+  `curricula/DE/Gymnasium/input/SH/upper-secondary/source-json/DE_SHL_S_GYM_2_PHYSIK.de.json.snapshot`
+
+Current use:
+
+- canonical Gymnasium `Physik`
+- one shared orientation anchor is mapped
+- one structural Sek-II field anchor `Elektrische und magnetische Felder` is mapped
+- one first reviewed SH field-concept corridor `Das Feldkonzept zur Beschreibung von Wechselwirkungen` is mapped
+- the current SH physics cut stays intentionally conservative:
+  - partial bridge from the SH source root onto the canonical physics root
+  - exact bridge on the shared motivation/orientation anchor
+  - partial bridge from the structural SH field anchor onto the shared canonical `Q1 Elektrisches und magnetisches Feld`
+  - partial bridge from the retained SH field-concept parent onto the shared canonical cluster `Elektrisches Feld`
+  - partial bridges from the retained SH leaves onto existing shared field-concept atoms for charge phenomena, Coulomb interaction, field-line sketches, and superposition
+- no Schleswig-Holstein-specific canonical physics atom is introduced in this step
+- no committed Schleswig-Holstein applicability cut is introduced in this step
+- next step: continue the same SH source family on `Koerper in statischen Feldern` before considering a switch to another physics topic row

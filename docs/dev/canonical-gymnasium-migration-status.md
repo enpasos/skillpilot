@@ -6387,3 +6387,339 @@ Interpretation:
 
 - Berlin no longer stops at the electric-field / capacitor entry and now covers the first retained magnetic-field follow-on on the same Q1 route
 - the lane still remains a narrow reviewed `P4` source/mapping slice with no Berlin-specific applicability or composition-view debt
+
+### 2026-04-15: Berlin upper-secondary Physics extends the retained Q1 route into `3.2.2 Bewegung von geladenen Teilchen in Feldern`
+
+What changed:
+
+- the active Berlin upper-secondary Physics source snapshot
+  - `curricula/DE/Gymnasium/input/BE/upper-secondary/source-json/DE_BER_S_GYM_2_PHYSIK.de.json.snapshot`
+  now also includes one retained `3.2.2` follow-on corridor with:
+  - one electric subcluster on longitudinal field, transverse field, and `Millikan`
+  - one intentionally source-led `c0` clause
+  - one magnetic subcluster on circle motion in homogeneous magnetic fields and the specific charge of the electron
+- the shared provenance registries now carry nine additional retained Berlin source goals on that route:
+  - one corridor parent
+  - two retained subclusters
+  - six retained leaves
+- the repository-backed Berlin Physics mapping lane
+  - `curricula/DE/Gymnasium/mapping/DE-BE/upper-secondary/be_physics_upper_secondary_to_canonical_physics.json`
+  now carries `21` reviewed rows instead of `15`
+- the new reviewed Berlin bridges are:
+  - retained electric `3.2.2` subcluster -> `Ladungen in Feldern` (`partial`)
+  - longitudinal-field leaf -> `Geladene Teilchen in homogenen elektrischen Feldern untersuchen` (`partial`)
+  - transverse-field leaf -> `Geladene Teilchen in homogenen elektrischen Feldern untersuchen` (`partial`)
+  - `Millikan-Experiment im Schwebefall einordnen` -> `Millikan-Versuch und Elementarladung` (`partial`)
+  - circle-motion leaf -> `Geladene Teilchen in homogenen magnetischen Feldern untersuchen` (`partial`)
+  - `Spezifische Ladung des Elektrons bestimmen` -> `Fadenstrahlrohr als Elektronen-Messverfahren einordnen` (`partial`)
+- no canonical Physics atom was added in this step
+- no committed Berlin applicability cut was added in this step
+- `Vakuumlichtgeschwindigkeit c0 als Obergrenze fuer Geschwindigkeiten einordnen` intentionally stays source-led
+
+Why this cut:
+
+- continuing Berlin on the same retained Q1 field route is still cleaner than opening a new state, because the shared canonical Physics graph already exposes narrow enough reviewed targets for the electric-field, `Millikan`, magnetic-field, and `Fadenstrahlrohr` parts of `3.2.2`
+- the cut stays disciplined:
+  - no Berlin-only canonical atom
+  - no Berlin-specific composition view
+  - no premature applicability pass
+  - no forced canonical target for the `c0` clause
+- this leaves the next move narrow again:
+  - make the remaining `c0` / LK-only residue explicit before opening another new Physics state
+
+Validation used:
+
+- `cd backend && ./gradlew test --tests 'com.skillpilot.backend.landscape.LandscapeServiceTest' --tests 'com.skillpilot.backend.landscape.GoalMappingRepositoryFixtureTest'`
+- `python3 scripts/render_canonical_physics_bundesland_status.py`
+- `git diff --check`
+
+Interpretation:
+
+- Berlin now covers the retained Q1 field route through `3.2.1` and into the first shared part of `3.2.2`
+- the lane still remains a narrow reviewed `P4` source/mapping slice with no Berlin-specific applicability or composition-view debt
+
+### 2026-04-15: Berlin upper-secondary Physics makes the first LK residue on the retained `3.2.2` route explicit
+
+What changed:
+
+- the active Berlin upper-secondary Physics source snapshot
+  - `curricula/DE/Gymnasium/input/BE/upper-secondary/source-json/DE_BER_S_GYM_2_PHYSIK.de.json.snapshot`
+  now includes one explicit retained LK residue subcluster on:
+  - mathematical electric-field trajectories
+  - relativistic mass increase
+  - arbitrary entry angles in magnetic fields
+  - crossed electric/magnetic fields
+  - Hall-Effekt / Hall-Spannung
+  - Elektronenstrahlroehre as a specific-charge measurement context
+- the shared provenance registries now carry seven additional retained Berlin source goals on that route:
+  - one LK residue parent
+  - six LK leaves
+- the repository-backed Berlin Physics mapping lane
+  - `curricula/DE/Gymnasium/mapping/DE-BE/upper-secondary/be_physics_upper_secondary_to_canonical_physics.json`
+  now carries `24` reviewed rows instead of `21`
+- the new reviewed Berlin bridges are:
+  - `Geladene Teilchen in gekreuzten elektrischen und magnetischen Feldern beschreiben`
+    -> `Geladene Teilchen in homogenen elektrischen Feldern untersuchen` (`partial`)
+  - `Hall-Effekt und Hall-Spannung anwenden`
+    -> `Hall-Effekt anwenden` (`partial`)
+  - `Elektronenstrahlroehre zur Bestimmung der spezifischen Ladung einordnen`
+    -> `Fadenstrahlrohr als Elektronen-Messverfahren einordnen` (`partial`)
+- no canonical Physics atom was added in this step
+- no committed Berlin applicability cut was added in this step
+- the remaining Berlin residues
+  - `Vakuumlichtgeschwindigkeit c0 als Obergrenze fuer Geschwindigkeiten einordnen`
+  - `Relativistische Massenzunahme schnell bewegter Teilchen einordnen`
+  - `Ladungstraeger in Magnetfeldern fuer beliebige Eintrittswinkel beschreiben`
+  intentionally stay source-led
+
+Why this cut:
+
+- the clean move here was to make the retained LK residue explicit without pretending that all of it already has narrow shared canonical coverage
+- three parts already overlap enough with reviewed shared targets:
+  - crossed-field motion with the existing electric-field particle-motion target
+  - Hall-Effekt with the existing LK `Hall-Effekt anwenden` leaf
+  - Elektronenstrahlroehre as a specific-charge measurement context with the shared `Fadenstrahlrohr` measurement leaf
+- the remaining three clauses still do not justify another canonical split or a Berlin-specific atom
+
+Validation used:
+
+- `cd backend && ./gradlew test --tests 'com.skillpilot.backend.landscape.LandscapeServiceTest' --tests 'com.skillpilot.backend.landscape.GoalMappingRepositoryFixtureTest'`
+- `python3 scripts/render_canonical_physics_bundesland_status.py`
+- `git diff --check`
+
+Interpretation:
+
+- Berlin now covers the retained Q1 field route through `3.2.1`, the shared part of `3.2.2`, and the first narrow LK continuation on that same route
+- the only remaining Berlin source-led debt on this lane is now the explicit trio `c0` / `Relativitaet` / `Eintrittswinkel`
+
+### 2026-04-15: Berlin upper-secondary Physics keeps the remaining `c0` / `Relativitaet` / `Eintrittswinkel` trio source-led after explicit target review
+
+What changed:
+
+- the Berlin Physics lane itself stays unchanged at:
+  - `24` reviewed mappings
+  - no Berlin-specific canonical Physics atom
+  - no Berlin-specific composition view
+  - no committed Berlin applicability cut
+- the remaining source-led Berlin trio is now explicitly documented as a deferred shared BE/BB residue candidate:
+  - `86b6e00c-3015-4da4-82f4-4d7c4a0a9cc0` (`Vakuumlichtgeschwindigkeit c0 als Obergrenze fuer Geschwindigkeiten einordnen`)
+  - `a7c898a2-1911-4913-b4c9-6ab2aab75db9` (`Relativistische Massenzunahme schnell bewegter Teilchen einordnen`)
+  - `7dc4ed91-6ecb-4c54-a883-cb681fab9bdb` (`Ladungstraeger in Magnetfeldern fuer beliebige Eintrittswinkel beschreiben`)
+- onboarding, the Berlin mapping-lane README, the Physics rollout tracker, the quick view, the topic workboard, and the M2 shortlist now all describe that trio as intentionally deferred instead of as an open Berlin-only mapping todo
+
+Why this decision:
+
+- the current shared canonical Physics graph still has no reviewed narrow leaf for the `c0` clause without overclaiming into broader relativity packaging
+- the existing shared relativistic-mass leaf is still too Hessen-specific in its linear-accelerator framing for the Berlin wording
+- the existing shared magnetic particle-motion leaves still do not isolate the arbitrary-entry-angle clause tightly enough to justify another reviewed bridge
+- forcing another Berlin-only canonical split here would weaken the current source-led multi-state discipline instead of improving it
+
+Validation used:
+
+- `python3 scripts/render_canonical_physics_bundesland_status.py`
+- `git diff --check`
+
+Interpretation:
+
+- the retained Berlin Q1 field route is now operationally closed at the current reviewed level
+- the next clean Physics move is no longer another Berlin widening, but a second-state follow-on from the shared BE/BB upper-secondary source family if that deferred trio later becomes jointly reviewable
+
+### 2026-04-15: Brandenburg upper-secondary Physics opens the second state on the shared BE/BB upper-secondary source family
+
+What changed:
+
+- the first Brandenburg upper-secondary Physics source PDF is now archived locally at:
+  - `curricula/DE/Gymnasium/input/BB/upper-secondary/Teil_C_RLP_GOST_2022_Physik.pdf`
+- the first Brandenburg upper-secondary Physics source snapshot is now active:
+  - `curricula/DE/Gymnasium/input/BB/upper-secondary/source-json/DE_BRA_S_GYM_2_PHYSIK.de.json.snapshot`
+- the retained source lane is now registered in the shared DE-level source registry:
+  - `6759f46a-5642-41f7-8dc7-71fd1c335855` (`Physik Oberstufe (Brandenburg, Pilot-Quellsnapshot)`)
+- provenance-backed membership and atomic closure are now active for that retained snapshot:
+  - `source-goal-membership-registry.json`
+  - `source-goal-closure-registry.json`
+- the first repository-backed Brandenburg upper-secondary Physics mapping lane now exists:
+  - `curricula/DE/Gymnasium/mapping/DE-BB/upper-secondary/bb_physics_upper_secondary_to_canonical_physics.json`
+  - `10` reviewed rows
+- the first reviewed Brandenburg corridor is intentionally narrow:
+  - one shared orientation anchor
+  - one structural `Q1` field anchor
+  - one first reviewed `Q1` electric-field / capacitor corridor
+- no canonical Physics atom was added in this step:
+  - the Brandenburg start reuses the existing shared Q1 field/capacitor surface
+- no committed Brandenburg applicability cut was added in this step:
+  - Brandenburg starts as a reviewed `P4` source/mapping lane without a DE-BB applicability persist pass
+
+Why this cut:
+
+- after Berlin closed its current retained `3.2.1` -> `3.2.2` Q1 route at the reviewed level, the clean next move was to open the second state from the same BE/BB upper-secondary source family instead of forcing another Berlin-only canonical split
+- starting Brandenburg on the already stable shared Q1 field/capacitor surface keeps the multi-state comparison honest while staying narrow:
+  - no Brandenburg-only canonical atom
+  - no Brandenburg-specific composition view
+  - no premature applicability cut
+- this leaves the next move narrow and obvious again:
+  - widen Brandenburg on the retained `3.2.1` route toward magnetic field / Lorentzkraft before reopening the shared BE/BB residue on `c0`, `Relativitaet`, and `Eintrittswinkel`
+
+Validation used:
+
+- `cd backend && GRADLE_USER_HOME=/home/enpasos/projects/skillpilot/backend/.gradle-ci ./gradlew clean check --no-daemon`
+- `python3 scripts/render_canonical_physics_bundesland_status.py`
+- `git diff --check`
+
+Interpretation:
+
+- canonical Physics now has a real seventh active non-maintenance state lane on the current reviewed path
+- the Berlin/Brandenburg upper-secondary source family is now open on both state lanes, but still intentionally only at the narrow reviewed `Q1` field/capacitor entry level for Brandenburg
+
+### 2026-04-15: Brandenburg upper-secondary Physics widens the retained `3.2.1` route onto the shared magnetic-field surface
+
+What changed:
+
+- the active Brandenburg upper-secondary Physics snapshot now also carries one first reviewed retained `3.2.1` magnetic-field / Lorentz-force follow-on:
+  - parent cluster `Q1: Magnetfeld und Lorentzkraft (erster Follow-on-Korridor)`
+  - four reviewed leaves on field-line diagrams, conductor-force interpretation, long-coil field strength, and Lorentz force
+- the Brandenburg source snapshot now contributes `15` reviewed source goals via `source-goal-membership-registry.json`
+- the same snapshot now contributes widened atomic closures via `source-goal-closure-registry.json`
+- the repository-backed Brandenburg upper-secondary Physics mapping lane now carries `15` reviewed rows:
+  - one partial bridge from the new Brandenburg magnetic parent onto the shared canonical `Magnetisches Feld` cluster
+  - one exact bridge from the Brandenburg field-line leaf onto the canonical atom of the same pedagogical surface
+  - three conservative partial bridges onto `Kraft auf stromdurchflossene Leiter`, `Magnetfeld von geradem Leiter und Spule`, and `Lorentzkraft auf freie Ladungen`
+- no canonical Physics atom was added in this step:
+  - the Brandenburg follow-on reuses the existing shared magnetic-field surface that was already stable from Hessen, Niedersachsen, Nordrhein-Westfalen, Baden-Wuerttemberg, and Berlin
+- no committed Brandenburg applicability cut was added in this step:
+  - Brandenburg remains a reviewed `P4` source/mapping lane without a DE-BB applicability persist pass
+
+Why this cut:
+
+- after the first Brandenburg `Q1` electric-field / capacitor entry, the clean next move was to widen the same retained `3.2.1` route before opening another source family or forcing the deferred shared BE/BB residue
+- the shared canonical magnetic-field strip was already narrow enough to absorb this second-state follow-on without inventing another visible package:
+  - no Brandenburg-only canonical atom
+  - no Brandenburg-specific composition view
+  - no premature applicability cut
+- this keeps the next move narrow and obvious again:
+  - widen Brandenburg next into retained `3.2.2 Bewegung geladener Teilchen in Feldern` before reopening `c0`, `Relativitaet`, and `Eintrittswinkel`
+
+Validation used:
+
+- `python3 scripts/render_canonical_physics_bundesland_status.py`
+- `cd backend && GRADLE_USER_HOME=/home/enpasos/projects/skillpilot/backend/.gradle-ci ./gradlew clean check --no-daemon`
+- `git diff --check`
+
+Interpretation:
+
+- the shared BE/BB upper-secondary source family is now open on both state lanes across the retained `3.2.1` electric and magnetic strip
+- the next clean Physics move inside that family is no longer another Brandenburg `3.2.1` widening, but the retained `3.2.2` charged-particle-motion follow-on
+
+### 2026-04-15: Brandenburg upper-secondary Physics closes the retained `3.2.2` route at the current reviewed level
+
+What changed:
+
+- the active Brandenburg upper-secondary Physics snapshot now also carries one first reviewed retained `3.2.2` charged-particle-motion follow-on:
+  - one electric-field subsurface on longitudinal acceleration, transverse trajectories, and the Millikan experiment
+  - one magnetic-field subsurface on circular trajectories and specific charge
+  - one explicit LK side-lane on crossed fields, Hall-Effekt, and Elektronenstrahlroehre
+  - the `c0` leaf and the LK leaves on relativistic mass increase plus arbitrary entry angles stay explicitly source-led
+- the Brandenburg source snapshot now contributes `31` reviewed source goals via `source-goal-membership-registry.json`
+- the same snapshot now contributes widened atomic closures with `24` root atomics via `source-goal-closure-registry.json`
+- the repository-backed Brandenburg upper-secondary Physics mapping lane now carries `24` reviewed rows:
+  - new partial bridges on the shared charged-particle-motion surfaces in electric and magnetic fields
+  - new partial bridge on `Millikan-Versuch und Elementarladung`
+  - new partial bridges on the shared measurement surface for specific charge / Elektronenstrahlroehre
+  - new partial bridges on crossed fields and Hall-Effekt where narrow shared targets already existed
+- no canonical Physics atom was added in this step:
+  - the Brandenburg follow-on still reuses the existing shared Q1 field / particle-motion surface
+- no committed Brandenburg applicability cut was added in this step:
+  - Brandenburg remains a reviewed `P4` source/mapping lane without a DE-BB applicability persist pass
+
+Why this cut:
+
+- after the reviewed Brandenburg retained `3.2.1` electric and magnetic strip, the clean next move was to close the matching retained `3.2.2` corridor from the same BE/BB source family instead of forcing another canonical split
+- the shared canonical particle-motion surface was already narrow enough to absorb this second-state follow-on without inventing another visible package:
+  - no Brandenburg-only canonical atom
+  - no Brandenburg-specific composition view
+  - no premature applicability cut
+- this leaves the remaining BE/BB debt explicit and honest:
+  - `c0`
+  - `Relativitaet`
+  - `Eintrittswinkel`
+
+Validation used:
+
+- `python3 scripts/render_canonical_physics_bundesland_status.py`
+- `cd backend && GRADLE_USER_HOME=/home/enpasos/projects/skillpilot/backend/.gradle-ci ./gradlew clean check --no-daemon`
+- `git diff --check`
+
+Interpretation:
+
+- Brandenburg now matches the current reviewed Berlin cut on the retained `3.2.1` -> `3.2.2` route
+- the shared BE/BB upper-secondary source family is therefore operationally closed at the current reviewed level
+- the next clean Physics move is no longer another Brandenburg widening, but either an explicit shared BE/BB residue decision or a different state/source family
+
+### 2026-04-15: Berlin/Brandenburg upper-secondary Physics freezes the shared `c0` / `Relativitaet` / `Eintrittswinkel` residue at the current reviewed level
+
+What changed:
+
+- no Berlin or Brandenburg mapping rows changed in this step:
+  - `DE-BE` stays at `24` reviewed mappings
+  - `DE-BB` stays at `24` reviewed mappings
+- no canonical Physics atom was added in this step
+- no applicability cut was added in this step
+- onboarding notes, mapping-lane READMEs, the rollout tracker, the quick-view, the topic workboard, and the M2 shortlist now all treat the remaining trio as an explicitly frozen shared BE/BB residue set instead of as an immediately pending next bridge
+
+Why this decision:
+
+- the Berlin-only target review already showed that the current shared canonical Physics graph still has no reviewed narrow leaf for the `c0` clause without overclaiming into broader relativity packaging
+- after Brandenburg now matches the same retained `3.2.1` -> `3.2.2` cut, the shared evidence still does not improve that conclusion:
+  - the existing shared relativistic-mass leaf remains too Hessen-shaped in its linear-accelerator framing
+  - the existing shared magnetic-field particle-motion leaves still do not isolate the arbitrary-entry-angle clause tightly enough
+- forcing another BE/BB-only canonical split here would widen ontology debt without creating a stable shared surface
+
+Validation used:
+
+- `python3 scripts/render_canonical_physics_bundesland_status.py`
+- `git diff --check`
+
+Interpretation:
+
+- the shared BE/BB upper-secondary family is now not only operationally closed at the current reviewed cut, but also explicitly closed against another immediate residue bridge
+- the next clean Physics rollout move should therefore come from a different state/source family unless later reviewed evidence genuinely changes that residue assessment
+
+### 2026-04-16: Schleswig-Holstein upper-secondary Physics opens a first retained field-concept corridor
+
+What changed:
+
+- Schleswig-Holstein now has an active upper-secondary Physics source snapshot:
+  - `curricula/DE/Gymnasium/input/SH/upper-secondary/source-json/DE_SHL_S_GYM_2_PHYSIK.de.json.snapshot`
+- the new SH upper-secondary Physics lane is now active in:
+  - `source-landscape-registry.json`
+  - `source-goal-membership-registry.json`
+  - `source-goal-closure-registry.json`
+- the repository-backed SH mapping lane now exists:
+  - `curricula/DE/Gymnasium/mapping/DE-SH/upper-secondary/sh_physics_upper_secondary_to_canonical_physics.json`
+- the lane currently carries `10` reviewed mappings:
+  - one partial bridge from the SH source root onto the canonical Physics root
+  - one exact bridge on the shared orientation anchor
+  - one partial bridge from the structural SH field anchor onto `Q1 Elektrisches und magnetisches Feld`
+  - one partial bridge from the retained SH corridor parent onto the shared canonical cluster `Elektrisches Feld`
+  - six conservative partial leaf bridges on the field-concept surface for charge phenomena, Coulomb interaction, field-line sketches, and superposition
+- no canonical Physics atom was added in this step
+- no committed Schleswig-Holstein applicability cut was added in this step
+
+Why this cut:
+
+- after the shared BE/BB residue was explicitly frozen, the clean next move was to open a different retained source family instead of forcing another weak bridge on `c0` / `Relativitaet` / `Eintrittswinkel`
+- Schleswig-Holstein is a good next source because the combined-stage Fachanforderungen expose a clear Sek-II topic row `Elektrische und magnetische Felder` that already sits close to the current shared Q1 field surface
+- the first SH cut therefore stays narrow and source-led:
+  - one shared orientation anchor
+  - one structural upper-secondary field anchor
+  - one first reviewed corridor on `Das Feldkonzept zur Beschreibung von Wechselwirkungen`
+
+Validation used:
+
+- `python3 scripts/render_canonical_physics_bundesland_status.py`
+- `cd backend && GRADLE_USER_HOME=/home/enpasos/projects/skillpilot/backend/.gradle-ci ./gradlew clean check --no-daemon`
+- `git diff --check`
+
+Interpretation:
+
+- Physics now has a real eighth active Bundesland lane on the current canonical path
+- the active follow-on is no longer another new source family immediately, but the next retained SH step on `Koerper in statischen Feldern`

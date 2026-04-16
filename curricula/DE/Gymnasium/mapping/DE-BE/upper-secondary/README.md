@@ -33,7 +33,7 @@ Current status on `2026-04-15`:
   `be_physics_upper_secondary_to_canonical_physics.json`
 - reserved `sourceLandscapeId`:
   `8e54a9e6-dd9d-4f5d-a632-734b4ef5c754`
-- current mapping count: `15`
+- current mapping count: `24`
 - the first Berlin upper-secondary physics source PDF is now archived locally:
   `curricula/DE/Gymnasium/input/BE/upper-secondary/Teil_C_RLP_GOST_2022_Physik.pdf`
 - the first Berlin upper-secondary physics source snapshot is now active:
@@ -46,4 +46,8 @@ Current use:
 - one structural `Q1` field anchor is mapped
 - one first reviewed Berlin `Q1` electric-field / capacitor corridor is mapped
 - one first reviewed Berlin `3.2.1` magnetic-field / Lorentz-force follow-on is mapped
-- next step: keep the Berlin lane on the retained route and extend it into `3.2.2 Bewegung von geladenen Teilchen in Feldern` before opening another new Physics state
+- one first reviewed Berlin retained `3.2.2` charged-particle-motion follow-on is mapped
+- one explicit LK follow-on on crossed fields / Hall-Effekt / Elektronenstrahlroehre is now mapped conservatively where shared targets already exist
+- the retained `c0`, `Relativitaet`, and `beliebige Eintrittswinkel` clauses stay intentionally source-led
+- that remaining source-led Berlin trio is now an explicitly deferred shared BE/BB residue candidate, not an open Berlin-only mapping todo
+- next step: keep Berlin stable; the shared BE/BB residue is now explicitly frozen at the current reviewed level, so the next rollout move should come from a different source family unless that trio later becomes jointly reviewable

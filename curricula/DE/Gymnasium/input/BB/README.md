@@ -35,4 +35,15 @@ Das LISUM gibt gemeinsame Rahmenlehrpläne für Berlin und Brandenburg heraus.
 - **Rahmenlehrplan Teil C Physik (ab 2015/2017)**: [Bildungsserver BE/BB - Physik Sek I](https://bildungsserver.berlin-brandenburg.de/rlp-online/teil-c-faecher/physik)
 
 ### Sekundarstufe II (Gymnasiale Oberstufe)
+- Archiviert:
+  `curricula/DE/Gymnasium/input/BB/upper-secondary/Teil_C_RLP_GOST_2022_Physik.pdf`
+- Aktiver Source-Snapshot:
+  `curricula/DE/Gymnasium/input/BB/upper-secondary/source-json/DE_BRA_S_GYM_2_PHYSIK.de.json.snapshot`
+- Aktiver Pilotumfang:
+  gemeinsamer Orientierungsanker plus struktureller `Q1`-Feldanker, erster reviewed `Q1`-Einstiegskorridor `Elektrisches Feld und Kondensator`, erster reviewed retained `3.2.1`-Follow-on `Magnetfeld und Lorentzkraft` und erster reviewed retained `3.2.2`-Follow-on `Bewegung geladener Teilchen in Feldern`
 - **Rahmenlehrplan gymnasiale Oberstufe Teil C Physik (ab 2022/23)**: [Bildungsserver BE/BB - Physik Sek II](https://bildungsserver.berlin-brandenburg.de/rlp-online/gymnasiale-oberstufe/teil-c-faecher/physik)
+
+### Physik-Nächste Schritte
+- die Brandenburg-Lane auf dem jetzt reviewed retained `3.2.1` -> `3.2.2`-Korridor stabil halten
+- die gemeinsame BE/BB-Residue-Frage `c0` / `Relativitaet` / `Eintrittswinkel` nur dann neu bewerten, wenn sie wirklich jointly reviewable wird
+- keine Brandenburg-spezifischen Physik-Composition-Views oder einen verfruehten Applicability-Cut erzwingen

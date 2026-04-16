@@ -34,3 +34,30 @@ Current use:
 - second reviewed Brandenburg `Q2` matrix/tabular side-lane is mapped exactly
 - first reviewed Brandenburg `Q2` matrix/tabular-representation split is mapped
 - next step: keep widening Brandenburg through similarly narrow upper-secondary leaves while the shared BE/BB overlap stays tight
+
+## Physics
+
+Current status on `2026-04-15`:
+
+- repository-backed mapping fixture now exists:
+  `bb_physics_upper_secondary_to_canonical_physics.json`
+- reserved `sourceLandscapeId`:
+  `6759f46a-5642-41f7-8dc7-71fd1c335855`
+- current mapping count: `24`
+- the first Brandenburg upper-secondary physics source PDF is now archived locally:
+  `curricula/DE/Gymnasium/input/BB/upper-secondary/Teil_C_RLP_GOST_2022_Physik.pdf`
+- the first Brandenburg upper-secondary physics source snapshot is now active:
+  `curricula/DE/Gymnasium/input/BB/upper-secondary/source-json/DE_BRA_S_GYM_2_PHYSIK.de.json.snapshot`
+
+Current use:
+
+- canonical Gymnasium `Physik`
+- one shared orientation anchor is mapped
+- one structural `Q1` field anchor is mapped
+- one first reviewed `Q1` electric-field / capacitor corridor is mapped
+- one first reviewed retained `3.2.1` magnetic-field / Lorentz-force follow-on is mapped
+- one first reviewed retained `3.2.2` charged-particle-motion follow-on is mapped
+- the remaining `c0`, `Relativitaet`, and `beliebige Eintrittswinkel` clauses are now explicitly frozen as shared BE/BB residue at the current reviewed level
+- no Brandenburg-specific canonical Physics atom is introduced in this step
+- no committed Brandenburg applicability cut is introduced in this step
+- next step: keep Brandenburg stable on the reviewed retained `3.2.1` -> `3.2.2` route; the next rollout move should come from a different source family unless the deferred shared BE/BB residue on `c0`, `Relativitaet`, and `beliebige Eintrittswinkel` later becomes jointly reviewable

@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-04-15T00:00:00Z",
+  "updatedAt": "2026-04-16T00:00:00Z",
   "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
   "quickViewPath": "docs/dev/canonical-gymnasium-physics-bundeslaender-status.md",
   "renderCommand": "python3 scripts/render_canonical_physics_bundesland_status.py",
@@ -132,11 +132,29 @@
     {
       "id": "SEK2.BE.UPPER_SECONDARY_ENTRY",
       "title": "Berlin upper-secondary first entry lane",
-      "status": "active",
+      "status": "completed",
       "focusStates": [
         "DE-BE"
       ],
-      "nextStep": "Keep Berlin active on the retained `3.2.1` route: the first reviewed electric-field/capacitor corridor and the first magnetic-field/Lorentz-force follow-on are now covered, so extend the same lane into `3.2.2 Bewegung von geladenen Teilchen in Feldern` before opening another new state. Continue to avoid Berlin-specific composition views, Berlin-only canonical atoms, or a premature applicability cut."
+      "nextStep": "Treat the current Berlin upper-secondary first-entry lane as complete at the reviewed pilot-cut level. The shared BE/BB residue on `c0` / `Relativitaet` / `Eintrittswinkel` is now explicitly frozen at the current reviewed level, so reopen Berlin only if that trio later becomes jointly reviewable or another later retained source lane creates a genuinely shared Physics gap."
+    },
+    {
+      "id": "SEK2.BB.UPPER_SECONDARY_ENTRY",
+      "title": "Brandenburg upper-secondary first entry lane",
+      "status": "completed",
+      "focusStates": [
+        "DE-BB"
+      ],
+      "nextStep": "Treat the current Brandenburg retained `3.2.1` -> `3.2.2` upper-secondary lane as complete at the reviewed pilot-cut level. The shared BE/BB residue on `c0` / `Relativitaet` / `Eintrittswinkel` is now explicitly frozen at the current reviewed level, so reopen Brandenburg only if that trio later becomes jointly reviewable or another later retained source lane creates a genuinely shared Physics gap."
+    },
+    {
+      "id": "SEK2.SH.UPPER_SECONDARY_ENTRY",
+      "title": "Schleswig-Holstein upper-secondary first entry lane",
+      "status": "active",
+      "focusStates": [
+        "DE-SH"
+      ],
+      "nextStep": "Continue the new Schleswig-Holstein upper-secondary lane on the same official source family `Elektrische und magnetische Felder`: after the first reviewed field-concept corridor, take the next retained SH step on `Koerper in statischen Feldern` before switching to another physics topic row or forcing a Schleswig-Holstein-specific canonical split."
     }
   ],
   "states": [
@@ -211,13 +229,39 @@
       "repoStateKey": "BE",
       "displayName": "Berlin",
       "phase": "P4",
-      "priority": "active",
+      "priority": "backlog",
       "sourceStage": "subtree_adopted",
       "mappingFiles": [
         "curricula/DE/Gymnasium/mapping/DE-BE/upper-secondary/be_physics_upper_secondary_to_canonical_physics.json"
       ],
-      "notes": "Berlin now has an active upper-secondary Physics source snapshot, the archived 2022/23 BE/BB gymnasiale Oberstufe PDF, provenance-backed membership and closure, and one reviewed narrow mapping lane on the shared orientation anchor, the structural `Q1` field anchor `Gravitationsfeld, elektrisches und magnetisches Feld`, one first reviewed `Q1` electric-field / capacitor corridor, and one first reviewed retained `3.2.1` magnetic-field / Lorentz-force follow-on. The lane currently carries 15 reviewed mappings, introduces no Berlin-specific canonical Physics atoms, no Berlin-specific composition views, and no committed Berlin applicability cut yet.",
-      "nextStep": "Keep Berlin active on the retained `3.2.1` -> `3.2.2` route and extend the same lane into `Bewegung von geladenen Teilchen in Feldern` before opening another new Physics state. Continue to avoid Berlin-specific composition views, Berlin-only canonical atoms, or a premature applicability cut."
+      "notes": "Berlin now has an active upper-secondary Physics source snapshot, the archived 2022/23 BE/BB gymnasiale Oberstufe PDF, provenance-backed membership and closure, and one reviewed narrow mapping lane on the shared orientation anchor, the structural `Q1` field anchor `Gravitationsfeld, elektrisches und magnetisches Feld`, one first reviewed `Q1` electric-field / capacitor corridor, one first reviewed retained `3.2.1` magnetic-field / Lorentz-force follow-on, one first reviewed retained `3.2.2` charged-particle-motion follow-on, and one explicit LK follow-on on crossed fields / Hall-Effekt / Elektronenstrahlroehre. The lane currently carries 24 reviewed mappings, introduces no Berlin-specific canonical Physics atoms, no Berlin-specific composition views, and no committed Berlin applicability cut yet. The remaining source-led trio `c0` / `Relativitaet` / `Eintrittswinkel` is now explicitly deferred as a shared BE/BB residue candidate rather than treated as an open Berlin-only mapping todo.",
+      "nextStep": "Keep Berlin stable on the reviewed retained `3.2.1` -> `3.2.2` route. The shared BE/BB residue on `c0` / `Relativitaet` / `Eintrittswinkel` is now explicitly frozen at the current reviewed level; the next rollout move should therefore come from a different source family unless that trio later becomes jointly reviewable."
+    },
+    {
+      "jurisdiction": "DE-BB",
+      "repoStateKey": "BB",
+      "displayName": "Brandenburg",
+      "phase": "P4",
+      "priority": "backlog",
+      "sourceStage": "subtree_adopted",
+      "mappingFiles": [
+        "curricula/DE/Gymnasium/mapping/DE-BB/upper-secondary/bb_physics_upper_secondary_to_canonical_physics.json"
+      ],
+      "notes": "Brandenburg now has an active upper-secondary Physics source snapshot from the shared 2022/23 BE/BB gymnasiale Oberstufe source family, the archived upper-secondary Physics PDF in the BB lane, provenance-backed membership and closure, and one reviewed narrow mapping lane on the shared orientation anchor, the structural `Q1` field anchor `Gravitationsfeld, elektrisches und magnetisches Feld`, one first reviewed `Q1` electric-field / capacitor corridor, one first reviewed retained `3.2.1` magnetic-field / Lorentz-force follow-on, and one first reviewed retained `3.2.2` charged-particle-motion follow-on with an explicit LK side-lane on crossed fields, Hall-Effekt, and Elektronenstrahlroehre where narrow shared targets already exist. The lane currently carries 24 reviewed mappings, introduces no Brandenburg-specific canonical Physics atoms, no Brandenburg-specific composition views, and no committed Brandenburg applicability cut yet. The remaining `c0` / `Relativitaet` / `Eintrittswinkel` trio stays explicitly source-led as shared BE/BB residue.",
+      "nextStep": "Keep Brandenburg stable on the reviewed retained `3.2.1` -> `3.2.2` route. The shared BE/BB residue on `c0` / `Relativitaet` / `Eintrittswinkel` is now explicitly frozen at the current reviewed level; the next rollout move should therefore come from a different source family unless that trio later becomes jointly reviewable."
+    },
+    {
+      "jurisdiction": "DE-SH",
+      "repoStateKey": "SH",
+      "displayName": "Schleswig-Holstein",
+      "phase": "P4",
+      "priority": "active",
+      "sourceStage": "subtree_adopted",
+      "mappingFiles": [
+        "curricula/DE/Gymnasium/mapping/DE-SH/upper-secondary/sh_physics_upper_secondary_to_canonical_physics.json"
+      ],
+      "notes": "Schleswig-Holstein now has an active upper-secondary Physics source snapshot from the combined-stage Fachanforderungen source family, provenance-backed membership and closure, and one first reviewed narrow mapping lane on the shared orientation anchor, one structural Sek-II anchor `Elektrische und magnetische Felder`, and one first reviewed field-concept corridor on the official SH subtopic `Das Feldkonzept zur Beschreibung von Wechselwirkungen`. The lane currently carries 10 reviewed mappings, introduces no Schleswig-Holstein-specific canonical Physics atoms, no Schleswig-Holstein-specific composition views, and no committed Schleswig-Holstein applicability cut yet.",
+      "nextStep": "Keep Schleswig-Holstein active on the same retained source family: after the first reviewed field-concept corridor, continue on `Koerper in statischen Feldern` before switching to another Physics topic row or forcing a Schleswig-Holstein-specific canonical split."
     }
   ]
 }

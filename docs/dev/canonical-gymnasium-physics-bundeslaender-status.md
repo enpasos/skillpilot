@@ -1,6 +1,6 @@
 # Canonical Gymnasium Physics Bundeslaender Status
 
-Snapshot: `2026-04-15T00:00:00Z`
+Snapshot: `2026-04-16T00:00:00Z`
 
 This file is generated from:
 
@@ -10,14 +10,14 @@ This file is generated from:
 
 ## Headline
 
-- Tracked states: `6`
-- Canonical source coverage present: `6/6`
-- States with active snapshots (`P2+`): `6/6`
-- States with structural anchors mapped (`P3+`): `6/6`
-- States with reviewed corridor (`P4+`): `6/6`
-- States with broad coverage (`P5+`): `2/6`
-- States operationally cutover-ready (`P6`): `2/6`
-- Active canonical corridors: `1/5`
+- Tracked states: `8`
+- Canonical source coverage present: `8/8`
+- States with active snapshots (`P2+`): `8/8`
+- States with structural anchors mapped (`P3+`): `8/8`
+- States with reviewed corridor (`P4+`): `8/8`
+- States with broad coverage (`P5+`): `2/8`
+- States operationally cutover-ready (`P6`): `2/8`
+- Active canonical corridors: `1/7`
 - Priority `active`: `1`
 
 ## Steering model
@@ -43,7 +43,9 @@ This file is generated from:
 | `SEK2.NW.UPPER_SECONDARY` Nordrhein-Westfalen upper-secondary narrow corridor lane | `completed` | `DE-NW` | Treat the current NRW upper-secondary corridor as complete at the reviewed pilot-cut level and keep it stable inside the current topic-first maintenance phase. Reopen NRW only for another clearly source-led corridor outside the exhausted GK atom-model strip or when a later retained source lane creates a genuinely shared Physics gap; do not invent NRW-specific Physics composition views before broader reviewed evidence actually requires them. |
 | `SEK2.NI.UPPER_SECONDARY_ENTRY` Niedersachsen upper-secondary first entry lane | `completed` | `DE-NI` | Treat the Niedersachsen upper-secondary first-entry lane as closed at the current reviewed pilot-cut level: the imported Niedersachsen pilot corridor now includes the reviewed `Michelson`, crossed-field, and fine-beam-tube follow-ons, so keep that retained row stable. Reopen Niedersachsen only when another later Bundesland source lane forces a genuinely shared Physics gap or when the still source-led sustainability-related Bewertungsblatt gains a genuinely shared Physics evaluation surface. |
 | `SEK2.BW.UPPER_SECONDARY_ENTRY` Baden-Wuerttemberg upper-secondary first entry lane | `completed` | `DE-BW` | Treat the current BW upper-secondary first-entry lane as complete at the reviewed pilot-cut level and keep it stable inside the current topic-first maintenance phase. Reopen BW only for another clearly missing reviewed corridor outside the now-covered Basisfach-/Leistungsfach optics and quantum strips, or when a later retained source lane creates a genuinely shared Physics gap; still avoid BW-specific Physics composition views or a broader applicability sweep before wider evidence exists. |
-| `SEK2.BE.UPPER_SECONDARY_ENTRY` Berlin upper-secondary first entry lane | `active` | `DE-BE` | Keep Berlin active on the retained `3.2.1` route: the first reviewed electric-field/capacitor corridor and the first magnetic-field/Lorentz-force follow-on are now covered, so extend the same lane into `3.2.2 Bewegung von geladenen Teilchen in Feldern` before opening another new state. Continue to avoid Berlin-specific composition views, Berlin-only canonical atoms, or a premature applicability cut. |
+| `SEK2.BE.UPPER_SECONDARY_ENTRY` Berlin upper-secondary first entry lane | `completed` | `DE-BE` | Treat the current Berlin upper-secondary first-entry lane as complete at the reviewed pilot-cut level. The shared BE/BB residue on `c0` / `Relativitaet` / `Eintrittswinkel` is now explicitly frozen at the current reviewed level, so reopen Berlin only if that trio later becomes jointly reviewable or another later retained source lane creates a genuinely shared Physics gap. |
+| `SEK2.BB.UPPER_SECONDARY_ENTRY` Brandenburg upper-secondary first entry lane | `completed` | `DE-BB` | Treat the current Brandenburg retained `3.2.1` -> `3.2.2` upper-secondary lane as complete at the reviewed pilot-cut level. The shared BE/BB residue on `c0` / `Relativitaet` / `Eintrittswinkel` is now explicitly frozen at the current reviewed level, so reopen Brandenburg only if that trio later becomes jointly reviewable or another later retained source lane creates a genuinely shared Physics gap. |
+| `SEK2.SH.UPPER_SECONDARY_ENTRY` Schleswig-Holstein upper-secondary first entry lane | `active` | `DE-SH` | Continue the new Schleswig-Holstein upper-secondary lane on the same official source family `Elektrische und magnetische Felder`: after the first reviewed field-concept corridor, take the next retained SH step on `Koerper in statischen Feldern` before switching to another physics topic row or forcing a Schleswig-Holstein-specific canonical split. |
 
 ## Program phases
 
@@ -76,11 +78,13 @@ This file is generated from:
 | `DE-NI` Niedersachsen | `P4` First corridor reviewed | `65%` | `yes` | `56` | `subtree_adopted` | `backlog` |
 | `DE-NW` Nordrhein-Westfalen | `P4` First corridor reviewed | `65%` | `yes` | `28` | `subtree_adopted` | `backlog` |
 | `DE-BW` Baden-Wuerttemberg | `P4` First corridor reviewed | `65%` | `yes` | `64` | `subtree_adopted` | `backlog` |
-| `DE-BE` Berlin | `P4` First corridor reviewed | `65%` | `yes` | `15` | `subtree_adopted` | `active` |
+| `DE-BE` Berlin | `P4` First corridor reviewed | `65%` | `yes` | `24` | `subtree_adopted` | `backlog` |
+| `DE-BB` Brandenburg | `P4` First corridor reviewed | `65%` | `yes` | `24` | `subtree_adopted` | `backlog` |
+| `DE-SH` Schleswig-Holstein | `P4` First corridor reviewed | `65%` | `yes` | `10` | `subtree_adopted` | `active` |
 
 ## Immediate queue
 
-- `DE-BE` Berlin: Berlin now has an active upper-secondary Physics source snapshot, the archived 2022/23 BE/BB gymnasiale Oberstufe PDF, provenance-backed membership and closure, and one reviewed narrow mapping lane on the shared orientation anchor, the structural `Q1` field anchor `Gravitationsfeld, elektrisches und magnetisches Feld`, one first reviewed `Q1` electric-field / capacitor corridor, and one first reviewed retained `3.2.1` magnetic-field / Lorentz-force follow-on. The lane currently carries 15 reviewed mappings, introduces no Berlin-specific canonical Physics atoms, no Berlin-specific composition views, and no committed Berlin applicability cut yet.
+- `DE-SH` Schleswig-Holstein: Schleswig-Holstein now has an active upper-secondary Physics source snapshot from the combined-stage Fachanforderungen source family, provenance-backed membership and closure, and one first reviewed narrow mapping lane on the shared orientation anchor, one structural Sek-II anchor `Elektrische und magnetische Felder`, and one first reviewed field-concept corridor on the official SH subtopic `Das Feldkonzept zur Beschreibung von Wechselwirkungen`. The lane currently carries 10 reviewed mappings, introduces no Schleswig-Holstein-specific canonical Physics atoms, no Schleswig-Holstein-specific composition views, and no committed Schleswig-Holstein applicability cut yet.
 
 ## Next steps
 
@@ -89,7 +93,9 @@ This file is generated from:
 - `DE-NI`: Keep Niedersachsen on maintenance only at the current reviewed pilot-cut level: preserve the imported retained pilot corridor including the reviewed `Michelson`, crossed-field, and fine-beam-tube follow-ons. Leave the sustainability-related Bewertungsblatt intentionally source-led unless a later retained rollout creates a genuinely shared Physics evaluation surface, and continue to avoid Niedersachsen-specific Physics composition views or new canonical atoms without broader reviewed evidence.
 - `DE-NW`: Keep Nordrhein-Westfalen on maintenance only at the current reviewed pilot-cut level: preserve the existing upper-secondary corridor inside the current topic-first maintenance phase, and reopen NRW only for another clearly source-led corridor outside the exhausted GK atom-model strip or when later retained source lanes create a genuinely shared Physics gap; do not invent NRW-specific Physics composition views before broader reviewed evidence actually requires them.
 - `DE-BW`: Keep Baden-Wuerttemberg on maintenance only at the current reviewed pilot-cut level: preserve the existing first-entry strip inside the current topic-first maintenance phase, and reopen BW only for another clearly missing reviewed corridor outside the now-covered Basisfach-/Leistungsfach optics and quantum strips or when later retained source lanes create a genuinely shared Physics gap; do not introduce BW-specific Physics composition views before wider reviewed evidence requires them.
-- `DE-BE`: Keep Berlin active on the retained `3.2.1` -> `3.2.2` route and extend the same lane into `Bewegung von geladenen Teilchen in Feldern` before opening another new Physics state. Continue to avoid Berlin-specific composition views, Berlin-only canonical atoms, or a premature applicability cut.
+- `DE-BE`: Keep Berlin stable on the reviewed retained `3.2.1` -> `3.2.2` route. The shared BE/BB residue on `c0` / `Relativitaet` / `Eintrittswinkel` is now explicitly frozen at the current reviewed level; the next rollout move should therefore come from a different source family unless that trio later becomes jointly reviewable.
+- `DE-BB`: Keep Brandenburg stable on the reviewed retained `3.2.1` -> `3.2.2` route. The shared BE/BB residue on `c0` / `Relativitaet` / `Eintrittswinkel` is now explicitly frozen at the current reviewed level; the next rollout move should therefore come from a different source family unless that trio later becomes jointly reviewable.
+- `DE-SH`: Keep Schleswig-Holstein active on the same retained source family: after the first reviewed field-concept corridor, continue on `Koerper in statischen Feldern` before switching to another Physics topic row or forcing a Schleswig-Holstein-specific canonical split.
 
 ## Regeneration
 

@@ -23,3 +23,11 @@
 ## Physik
 ### Sekundarstufe I und II
 - **Fachanforderungen Physik Sekundarstufe (2024, für Sek II gültig ab 2022/23)**: [Fachportal SH - Fachanforderungen](https://fachportal.lernnetz.de/sh/faecher/physik/fachanforderungen.html)
+- Aktiver source-json-Snapshot:
+  `curricula/DE/Gymnasium/input/SH/upper-secondary/source-json/DE_SHL_S_GYM_2_PHYSIK.de.json.snapshot`
+- Hinweis:
+  der erste retained SH-Physik-Snapshot extrahiert zunaechst einen schmalen Sek-II-Einstieg auf der offiziellen Themenflaeche `Elektrische und magnetische Felder`, beginnend mit dem Teilthema `Das Feldkonzept zur Beschreibung von Wechselwirkungen`
+- Aktiver source-json-Snapshot Sekundarstufe II:
+  `curricula/DE/Gymnasium/input/SH/upper-secondary/source-json/DE_SHL_S_GYM_2_PHYSIK.de.json.snapshot`
+- Hinweis:
+  der erste retained SH-Physik-Slice konzentriert sich aktuell auf den offiziellen Sek-II-Themenstreifen `Elektrische und magnetische Felder` mit dem reviewed Einstiegskorridor `Das Feldkonzept zur Beschreibung von Wechselwirkungen`

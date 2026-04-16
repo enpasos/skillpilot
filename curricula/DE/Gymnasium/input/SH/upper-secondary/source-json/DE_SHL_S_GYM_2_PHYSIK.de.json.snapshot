@@ -1,0 +1,323 @@
+{
+  "landscapeId": "f1a2c733-b994-4db3-9dd6-54ffe544002b",
+  "locale": "de-DE",
+  "country": "DE",
+  "region": "SH",
+  "schoolType": "Gymnasium",
+  "subject": "Physik",
+  "frameworkId": "sh-fa-physics-2022-sek2",
+  "title": "Physik Oberstufe (Schleswig-Holstein, Pilot-Quellsnapshot)",
+  "titleEn": "Physics Upper Secondary (Schleswig-Holstein, Pilot Source Snapshot)",
+  "description": "Erster archivierter Schleswig-Holstein-Quellsnapshot fuer die Oberstufe Physik aus den Fachanforderungen Physik Sekundarstufe (2022). Der Snapshot aktiviert einen gemeinsamen Orientierungsanker, einen strukturellen Sek-II-Anker `Elektrische und magnetische Felder` sowie einen ersten reviewed Einstiegskorridor auf dem offiziellen Themenstreifen `Das Feldkonzept zur Beschreibung von Wechselwirkungen`.",
+  "descriptionEn": "First archived Schleswig-Holstein source snapshot for upper-secondary physics from the subject requirements for physics (2022). The snapshot activates a shared orientation anchor, a structural upper-secondary anchor `Electric and magnetic fields`, and one first reviewed entry corridor on the official topic strip `The field concept as a description of interactions`.",
+  "compatibilityOnly": true,
+  "legacyHiddenByDefault": true,
+  "filters": [
+    {
+      "id": "GK",
+      "label": "grundlegendes Niveau"
+    },
+    {
+      "id": "eA",
+      "label": "erhoehtes Niveau"
+    }
+  ],
+  "goals": [
+    {
+      "id": "sh-phys-sek2-root",
+      "title": "Physik Oberstufe",
+      "titleEn": "Physics Upper Secondary",
+      "description": "Pilot-Quellsnapshot der schleswig-holsteinischen Oberstufenphysik mit einem gemeinsamen Orientierungsanker, einem strukturellen Feld-Anker und einem ersten reviewed Einstiegskorridor zum Feldkonzept.",
+      "descriptionEn": "Pilot source snapshot of Schleswig-Holstein upper-secondary physics with a shared orientation anchor, one structural field anchor, and a first reviewed entry corridor on the field concept.",
+      "weight": 8,
+      "tags": [
+        "Sek2",
+        "GK",
+        "eA",
+        "PilotSubset",
+        "ElektrischeMagnetischeFelder",
+        "Feldkonzept"
+      ],
+      "contains": [
+        "sh-phys-sek2-orientation",
+        "sh-phys-sek2-fields-anchor",
+        "sh-phys-sek2-field-concept"
+      ],
+      "requires": [
+        "sh-phys-sek2-orientation"
+      ],
+      "sourceRef": "Fachanforderungen Physik SH (2022), Sekundarstufe II, 2.3 Inhalte, S. 64-67.",
+      "dimensionTags": {
+        "framework": "sh-fa-physics-2022-sek2",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "GLOBAL",
+        "area": "Sekundarstufe II"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "sh-phys-sek2-orientation",
+      "title": "Warum Physik? - Weltverstaendnis und Verantwortung",
+      "titleEn": "Why Physics? - Understanding the World and Responsibility",
+      "description": "Physikalische Bildung erschliesst Modelle zur Beschreibung der Welt, reflektiert den Zusammenhang von Erkenntnis und Experiment und unterstuetzt verantwortliches Handeln in technischen und gesellschaftlichen Kontexten.",
+      "descriptionEn": "Physics education opens up models for describing the world, reflects the relation between knowledge and experiment, and supports responsible action in technical and societal contexts.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "GK",
+        "eA",
+        "Orientation",
+        "Motivation"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Fachanforderungen Physik SH (2022), Sekundarstufe II, 1-2, S. 57-63.",
+      "dimensionTags": {
+        "framework": "sh-fa-physics-2022-sek2",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "GLOBAL",
+        "area": "Orientierung"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "sh-phys-sek2-fields-anchor",
+      "title": "Sek II: Elektrische und magnetische Felder",
+      "titleEn": "Upper Secondary: Electric and Magnetic Fields",
+      "description": "Die schleswig-holsteinische Oberstufenphysik behandelt elektrische und magnetische Felder als gemeinsamen Themenstreifen mit Feldkonzept, statischen Feldern und veraenderlichen elektromagnetischen Feldern.",
+      "descriptionEn": "Schleswig-Holstein upper-secondary physics treats electric and magnetic fields as a shared topic strip with the field concept, static fields, and changing electromagnetic fields.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "GK",
+        "eA",
+        "StructuralAnchor",
+        "ElektrischeMagnetischeFelder"
+      ],
+      "contains": [],
+      "requires": [
+        "sh-phys-sek2-orientation"
+      ],
+      "sourceRef": "Fachanforderungen Physik SH (2022), Sekundarstufe II, 2.3 Inhalte, S. 64.",
+      "dimensionTags": {
+        "framework": "sh-fa-physics-2022-sek2",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "SEK2",
+        "area": "Elektrische und magnetische Felder"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "sh-phys-sek2-field-concept",
+      "title": "Sek II: Das Feldkonzept zur Beschreibung von Wechselwirkungen",
+      "titleEn": "Upper Secondary: The Field Concept as a Description of Interactions",
+      "description": "Erster reviewed Schleswig-Holstein-Korridor zum Feldbegriff mit Feldarten, Ladungsnachweis, Kraftwirkungen, Feldlinienbildern, Superposition und dem Vergleich von Coulomb- und Gravitationsgesetz.",
+      "descriptionEn": "First reviewed Schleswig-Holstein corridor on the field concept with field types, charge detection, force effects, field-line diagrams, superposition, and the comparison of Coulomb's law with gravitation.",
+      "weight": 6,
+      "tags": [
+        "Sek2",
+        "GK",
+        "eA",
+        "PilotSubset",
+        "ElektrischeMagnetischeFelder",
+        "Feldkonzept"
+      ],
+      "contains": [
+        "sh-phys-sek2-field-properties",
+        "sh-phys-sek2-charge-detection",
+        "sh-phys-sek2-force-between-charges",
+        "sh-phys-sek2-field-lines",
+        "sh-phys-sek2-superposition",
+        "sh-phys-sek2-coulomb-gravity"
+      ],
+      "requires": [
+        "sh-phys-sek2-fields-anchor"
+      ],
+      "sourceRef": "Fachanforderungen Physik SH (2022), Sekundarstufe II, 2.3 Inhalte, `Das Feldkonzept zur Beschreibung von Wechselwirkungen`, S. 64-65.",
+      "dimensionTags": {
+        "framework": "sh-fa-physics-2022-sek2",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "SEK2",
+        "area": "Feldkonzept"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "sh-phys-sek2-field-properties",
+      "title": "Grundlegende Eigenschaften von Feldern an Beispielen beschreiben und vergleichen",
+      "titleEn": "Describe and Compare Basic Properties of Fields",
+      "description": "Die Lernenden beschreiben grundlegende Eigenschaften elektrischer, magnetischer und gravitativer Felder an Beispielen und vergleichen diese Felder fachsprachlich.",
+      "descriptionEn": "Learners describe basic properties of electric, magnetic, and gravitational fields using examples and compare these fields in subject-specific language.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "GK",
+        "eA",
+        "Feldkonzept"
+      ],
+      "contains": [],
+      "requires": [
+        "sh-phys-sek2-fields-anchor"
+      ],
+      "sourceRef": "Fachanforderungen Physik SH (2022), Sekundarstufe II, 2.3 Inhalte, S. 64.",
+      "dimensionTags": {
+        "framework": "sh-fa-physics-2022-sek2",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "SEK2",
+        "area": "Feldkonzept"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "sh-phys-sek2-charge-detection",
+      "title": "Experimente zum Nachweis elektrischer Ladungen interpretieren",
+      "titleEn": "Interpret Experiments for Detecting Electric Charge",
+      "description": "Die Lernenden interpretieren Experimente zum Nachweis elektrischer Ladungen und ordnen Beobachtungen zu Anziehung, Abstossung und Ladungstrennung fachlich ein.",
+      "descriptionEn": "Learners interpret experiments for detecting electric charge and classify observations on attraction, repulsion, and charge separation in a physics context.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "GK",
+        "eA",
+        "Feldkonzept",
+        "Experiment"
+      ],
+      "contains": [],
+      "requires": [
+        "sh-phys-sek2-field-properties"
+      ],
+      "sourceRef": "Fachanforderungen Physik SH (2022), Sekundarstufe II, 2.3 Inhalte, S. 64.",
+      "dimensionTags": {
+        "framework": "sh-fa-physics-2022-sek2",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "SEK2",
+        "area": "Ladungsnachweis"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "sh-phys-sek2-force-between-charges",
+      "title": "Kraefte zwischen und in geladenen Koerpern beschreiben",
+      "titleEn": "Describe Forces Between and Within Charged Bodies",
+      "description": "Die Lernenden beschreiben Kraefte zwischen geladenen Koerpern und innerhalb geladener Koerper und nutzen dazu einfache qualitative und quantitative Feldvorstellungen.",
+      "descriptionEn": "Learners describe forces between charged bodies and within charged bodies using simple qualitative and quantitative field ideas.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "GK",
+        "eA",
+        "Feldkonzept"
+      ],
+      "contains": [],
+      "requires": [
+        "sh-phys-sek2-charge-detection"
+      ],
+      "sourceRef": "Fachanforderungen Physik SH (2022), Sekundarstufe II, 2.3 Inhalte, S. 64-65.",
+      "dimensionTags": {
+        "framework": "sh-fa-physics-2022-sek2",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "SEK2",
+        "area": "Kraftwirkungen"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "sh-phys-sek2-field-lines",
+      "title": "Elektrische Felder mit Feldlinien und Aequipotenziallinien darstellen",
+      "titleEn": "Represent Electric Fields with Field Lines and Equipotential Lines",
+      "description": "Die Lernenden stellen elektrische Felder mit Feldlinien und Aequipotenziallinien dar und skizzieren so einfache Feldsituationen fachgerecht.",
+      "descriptionEn": "Learners represent electric fields with field lines and equipotential lines and sketch simple field situations appropriately.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "GK",
+        "eA",
+        "Feldkonzept"
+      ],
+      "contains": [],
+      "requires": [
+        "sh-phys-sek2-force-between-charges"
+      ],
+      "sourceRef": "Fachanforderungen Physik SH (2022), Sekundarstufe II, 2.3 Inhalte, S. 65.",
+      "dimensionTags": {
+        "framework": "sh-fa-physics-2022-sek2",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "SEK2",
+        "area": "Feldlinien und Potenzial"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "sh-phys-sek2-superposition",
+      "title": "Die Superposition elektrischer Felder grafisch und quantitativ beschreiben",
+      "titleEn": "Describe Superposition of Electric Fields Graphically and Quantitatively",
+      "description": "Die Lernenden beschreiben die Superposition elektrischer Felder durch grafische Vektoraddition in der Ebene und nutzen einfache quantitative Zusammenhaenge.",
+      "descriptionEn": "Learners describe the superposition of electric fields by graphical vector addition in the plane and use simple quantitative relations.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "GK",
+        "eA",
+        "Feldkonzept"
+      ],
+      "contains": [],
+      "requires": [
+        "sh-phys-sek2-field-lines"
+      ],
+      "sourceRef": "Fachanforderungen Physik SH (2022), Sekundarstufe II, 2.3 Inhalte, S. 65.",
+      "dimensionTags": {
+        "framework": "sh-fa-physics-2022-sek2",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "SEK2",
+        "area": "Superposition"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "sh-phys-sek2-coulomb-gravity",
+      "title": "Coulomb-Gesetz und Gravitationsgesetz vergleichen und anwenden",
+      "titleEn": "Compare and Apply Coulomb's Law and the Law of Gravitation",
+      "description": "Die Lernenden vergleichen Coulomb-Gesetz und Gravitationsgesetz fachlich und wenden beide Gesetze in einfachen typischen Kontexten an.",
+      "descriptionEn": "Learners compare Coulomb's law and the law of gravitation and apply both laws in simple typical contexts.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "GK",
+        "eA",
+        "Feldkonzept"
+      ],
+      "contains": [],
+      "requires": [
+        "sh-phys-sek2-superposition"
+      ],
+      "sourceRef": "Fachanforderungen Physik SH (2022), Sekundarstufe II, 2.3 Inhalte, S. 65.",
+      "dimensionTags": {
+        "framework": "sh-fa-physics-2022-sek2",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "SEK2",
+        "area": "Feldgesetze"
+      },
+      "type": "atomic"
+    }
+  ]
+}
