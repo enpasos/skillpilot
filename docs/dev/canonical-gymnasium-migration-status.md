@@ -7910,3 +7910,135 @@ Interpretation:
 
 - Rheinland-Pfalz remains the active Physics lane and now also carries a first narrow LF astrophysics strip on the shared Q4 astrophysics surface
 - the next clean RP move is now the adjacent LF strip `Kosmologie`
+
+### 2026-04-19: Rheinland-Pfalz Physics now also carries the first narrow reviewed LF cosmology follow-on `Kosmologie`
+
+What changed:
+
+- the active RP upper-secondary Physics snapshot in
+  - `curricula/DE/Gymnasium/input/RP/upper-secondary/source-json/DE_RLP_S_GYM_2_PHYSIK.de.json.snapshot`
+  now also contains one first narrow reviewed LF follow-on `Kosmologie` with three visible leaves:
+  - `Struktur des Universums fachlich beschreiben`
+  - `Urknalltheorie, Hintergrundstrahlung, Hubble-Gesetz und Weltalter fachlich einordnen`
+  - `Aktuelle Forschungsergebnisse der Kosmologie fachlich einordnen`
+- the RP mapping lane in
+  - `curricula/DE/Gymnasium/mapping/DE-RP/upper-secondary/rp_physics_upper_secondary_to_canonical_physics.json`
+  now adds three conservative bridges:
+  - `rp-phys-sek2-cosmology-lf` -> `Astrophysik` (`partial`)
+  - `rp-phys-sek2-structure-of-universe` -> `Struktur und Alter des Universums` (`partial`)
+  - `rp-phys-sek2-universe-development-big-bang-hubble-age` -> `Kosmologie und Urknall` (`partial`)
+
+Current reviewed RP cut:
+
+- `88` reviewed mappings
+- `111` snapshot goals
+- root weight `90`
+- root atomic closure `90`
+- one first narrow reviewed LF cosmology follow-on `Kosmologie`
+- no Rheinland-Pfalz-specific canonical Physics atom
+- no committed Rheinland-Pfalz applicability cut
+
+Why this cut:
+
+- the RP LF strip `Kosmologie` is the next clean adjacent source surface after the stabilized RP astrophysics strip
+- the shared canonical astrophysics surface already carries one narrow reviewed target for `Struktur und Alter des Universums` and one sufficiently conservative reviewed target for `Kosmologie und Urknall`
+- `Aktuelle Forschungsergebnisse der Kosmologie` stays intentionally source-led because the current shared canonical cosmology surface still has no genuinely narrow reviewed target for it
+
+Validation used:
+
+- JSON-Parse for RP snapshot, RP mapping, membership registry, closure registry, and rollout tracker
+- `python3 scripts/render_canonical_physics_bundesland_status.py`
+- `cd backend && GRADLE_USER_HOME=/home/enpasos/projects/skillpilot/backend/.gradle-ci ./gradlew clean check --no-daemon --console=plain`
+- `git diff --check`
+
+Interpretation:
+
+- Rheinland-Pfalz remains the active Physics lane and now also carries a first narrow LF cosmology strip on the shared Q4 astrophysics/cosmology surface
+- the next clean RP move is now the adjacent LF strip `Chaos und Fraktale`
+
+### 2026-04-19: Rheinland-Pfalz Physics now also carries the first narrow reviewed LF chaos follow-on `Chaos und Fraktale`
+
+What changed:
+
+- the active RP upper-secondary Physics snapshot in
+  - `curricula/DE/Gymnasium/input/RP/upper-secondary/source-json/DE_RLP_S_GYM_2_PHYSIK.de.json.snapshot`
+  now also contains one first narrow reviewed LF follow-on `Chaos und Fraktale` with three visible leaves:
+  - `Beispiele von Chaosphaenomenen und fraktalen Strukturen fachlich einordnen`
+  - `Merkmale und Systembedingungen chaotischer Systeme fachlich beschreiben`
+  - `Strukturelle Aehnlichkeiten in verschiedenen Bereichen fachlich einordnen`
+- the RP mapping lane in
+  - `curricula/DE/Gymnasium/mapping/DE-RP/upper-secondary/rp_physics_upper_secondary_to_canonical_physics.json`
+  now adds one conservative bridge:
+  - `rp-phys-sek2-characteristics-of-chaotic-systems` -> `Grenzen der Vorhersagbarkeit (Chaos)` (`partial`)
+
+Current reviewed RP cut:
+
+- `89` reviewed mappings
+- `115` snapshot goals
+- root weight `93`
+- root atomic closure `93`
+- one first narrow reviewed LF chaos follow-on `Chaos und Fraktale`
+- no Rheinland-Pfalz-specific canonical Physics atom
+- no committed Rheinland-Pfalz applicability cut
+
+Why this cut:
+
+- the RP LF strip `Chaos und Fraktale` is the next clean adjacent source surface after the stabilized RP cosmology strip
+- the shared canonical Physics surface currently exposes exactly one narrow enough reviewed chaos target on limits of predictability / sensitivity to initial conditions
+- the RP clauses on `Chaosphaenomene und fraktale Strukturen` and `Strukturelle Aehnlichkeiten in verschiedenen Bereichen` stay intentionally source-led because the current shared canonical chaos surface still has no genuinely narrow reviewed targets for them
+
+Validation used:
+
+- JSON-Parse for RP snapshot, RP mapping, membership registry, closure registry, and rollout tracker
+- `python3 scripts/render_canonical_physics_bundesland_status.py`
+- `cd backend && GRADLE_USER_HOME=/home/enpasos/projects/skillpilot/backend/.gradle-ci ./gradlew clean check --no-daemon --console=plain`
+- `git diff --check`
+
+Interpretation:
+
+- Rheinland-Pfalz remains the active Physics lane and now also carries one first narrow LF chaos strip on the shared chaos surface
+- the next clean RP move is now the adjacent LF strip `Stroemungsphysik`
+
+### 2026-04-19: Rheinland-Pfalz Physics now also carries the first narrow reviewed LF fluid-dynamics follow-on `Stroemungsphysik`
+
+What changed:
+
+- the active RP upper-secondary Physics snapshot in
+  - `curricula/DE/Gymnasium/input/RP/upper-secondary/source-json/DE_RLP_S_GYM_2_PHYSIK.de.json.snapshot`
+  now also contains one first narrow reviewed LF follow-on `Stroemungsphysik` with four visible leaves:
+  - `Stroemungsphaenomene und Stroemungsarten fachlich einordnen`
+  - `Kontinuitaetsgleichung, Stroemungsgesetze und Reynolds-Zahl fachlich einordnen`
+  - `Dynamischen Auftrieb fachlich einordnen`
+  - `Sinkgeschwindigkeiten im Praktikum fachlich einordnen`
+- the RP mapping lane in
+  - `curricula/DE/Gymnasium/mapping/DE-RP/upper-secondary/rp_physics_upper_secondary_to_canonical_physics.json`
+  now adds one conservative bridge:
+  - `rp-phys-sek2-dynamic-lift` -> `Auftrieb an Tragflächen und Luftwiderstand qualitativ einordnen` (`partial`)
+
+Current reviewed RP cut:
+
+- `90` reviewed mappings
+- `120` snapshot goals
+- root weight `97`
+- root atomic closure `97`
+- one first narrow reviewed LF fluid-dynamics follow-on `Stroemungsphysik`
+- no Rheinland-Pfalz-specific canonical Physics atom
+- no committed Rheinland-Pfalz applicability cut
+
+Why this cut:
+
+- the RP LF strip `Stroemungsphysik` is the next clean adjacent source surface after the stabilized RP chaos strip
+- the shared canonical Physics surface currently exposes exactly one sufficiently narrow reviewed target on dynamic lift at airfoils
+- the RP clauses on `Stroemungsphaenomene und Stroemungsarten`, `Kontinuitaetsgleichung` / `Stroemungsgesetze` / `Reynolds-Zahl`, and `Sinkgeschwindigkeiten im Praktikum` stay intentionally source-led because the current shared canonical Physics surface still has no genuinely narrow reviewed targets for them
+
+Validation used:
+
+- JSON-Parse for RP snapshot, RP mapping, membership registry, closure registry, and rollout tracker
+- `python3 scripts/render_canonical_physics_bundesland_status.py`
+- `cd backend && GRADLE_USER_HOME=/home/enpasos/projects/skillpilot/backend/.gradle-ci ./gradlew clean check --no-daemon --console=plain`
+- `git diff --check`
+
+Interpretation:
+
+- Rheinland-Pfalz remains the active Physics lane and now also carries one first narrow LF fluid-dynamics strip on the current shared cross-stage pressure/buoyancy surface
+- the next clean RP move is no longer another reviewed corridor on the same lane, but an explicit closure decision on the remaining LF residue `Individuelles Thema`

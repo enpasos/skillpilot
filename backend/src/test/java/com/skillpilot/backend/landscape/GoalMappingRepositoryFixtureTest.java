@@ -939,9 +939,9 @@ class GoalMappingRepositoryFixtureTest {
         assertThat(file.getVersion()).isEqualTo(1);
         assertThat(file.getSourceLandscapeId()).isEqualTo(RHEINLAND_PFALZ_PHYSICS_UPPER_SECONDARY_LANDSCAPE_ID);
         assertThat(file.getTargetLandscapeId()).isEqualTo(CANONICAL_PHYSICS_ID);
-        assertThat(file.getMappings()).hasSize(85);
+        assertThat(file.getMappings()).hasSize(90);
         assertThat(file.getMappings()).filteredOn(entry -> "exact".equals(entry.getMatchType())).hasSize(1);
-        assertThat(file.getMappings()).filteredOn(entry -> "partial".equals(entry.getMatchType())).hasSize(84);
+        assertThat(file.getMappings()).filteredOn(entry -> "partial".equals(entry.getMatchType())).hasSize(89);
         assertThat(file.getMappings())
                 .extracting(GoalMappingEntry::getLegacyGoalId, GoalMappingEntry::getCanonicalGoalId, GoalMappingEntry::getMatchType)
                 .containsExactly(
@@ -1029,7 +1029,12 @@ class GoalMappingRepositoryFixtureTest {
                         Tuple.tuple("rp-phys-sek2-spacetime-diagrams", "6ebb6182-f221-5f4c-b112-4ac72b104321", "partial"),
                         Tuple.tuple("rp-phys-sek2-gravitational-time-dependence-evidence", "a9169a74-de19-54a9-a8ac-a2ce43c7342e", "partial"),
                         Tuple.tuple("rp-phys-sek2-astrophysics-lf", "b59cb1ef-05c2-5b09-abb3-8b6903ca0fd6", "partial"),
-                        Tuple.tuple("rp-phys-sek2-mass-luminosity-stellar-evolution", "9b47a758-1b5d-5906-84c9-8621050d5aa5", "partial"));
+                        Tuple.tuple("rp-phys-sek2-mass-luminosity-stellar-evolution", "9b47a758-1b5d-5906-84c9-8621050d5aa5", "partial"),
+                        Tuple.tuple("rp-phys-sek2-cosmology-lf", "b59cb1ef-05c2-5b09-abb3-8b6903ca0fd6", "partial"),
+                        Tuple.tuple("rp-phys-sek2-structure-of-universe", "5db07785-8cca-50d5-81a9-e0264d344af9", "partial"),
+                        Tuple.tuple("rp-phys-sek2-universe-development-big-bang-hubble-age", "e5b3d86c-0a74-5fa7-b9c4-7964bcb5ebc9", "partial"),
+                        Tuple.tuple("rp-phys-sek2-characteristics-of-chaotic-systems", "76fd0ab2-079a-516e-a33b-170355336d40", "partial"),
+                        Tuple.tuple("rp-phys-sek2-dynamic-lift", "24b4686a-e8a6-4583-8952-33e6f653c2a3", "partial"));
     }
 
     @Test

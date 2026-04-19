@@ -38,6 +38,9 @@ Current use:
 - one first schmaler reviewed LF-Follow-on `Relativistische Kinematik` is mapped
 - one first schmaler reviewed LF-Follow-on `Relativistische Dynamik` is mapped
 - one first schmaler reviewed LF-Follow-on `Astrophysik` is mapped
+- one first schmaler reviewed LF-Follow-on `Kosmologie` is mapped
+- one first schmaler reviewed LF-Follow-on `Chaos und Fraktale` is mapped
+- one first schmaler reviewed LF-Follow-on `Stroemungsphysik` is mapped
 - the current RP physics cut stays intentionally conservative:
   - partial bridge from the RP source root onto the canonical physics root
   - exact bridge on the shared motivation/orientation anchor
@@ -101,6 +104,11 @@ Current use:
   - one additional partial bridge from the retained RP LF leaf `Abhaengigkeit der Zeit vom Gravitationsfeld und experimentelle Belege fachlich einordnen` onto the shared canonical atom `GPS und Relativitätstheorie`
   - one additional partial bridge from the retained RP LF parent `Astrophysik` onto the shared canonical cluster `Astrophysik`
   - one additional partial bridge from the retained RP LF leaf `Masse-Leuchtkraft-Beziehung und Sternentwicklung fachlich einordnen` onto the shared canonical cluster `Sternentstehung und Sternentwicklung`
+  - one additional partial bridge from the retained RP LF parent `Kosmologie` onto the shared canonical cluster `Astrophysik`
+  - one additional partial bridge from the retained RP LF leaf `Struktur des Universums fachlich beschreiben` onto the shared canonical atom `Struktur und Alter des Universums`
+  - one additional partial bridge from the retained RP LF leaf `Urknalltheorie, Hintergrundstrahlung, Hubble-Gesetz und Weltalter fachlich einordnen` onto the shared canonical atom `Kosmologie und Urknall`
+  - one additional partial bridge from the retained RP LF leaf `Merkmale und Systembedingungen chaotischer Systeme fachlich beschreiben` onto the shared canonical atom `Grenzen der Vorhersagbarkeit (Chaos)`
+  - one additional partial bridge from the retained RP LF leaf `Dynamischen Auftrieb fachlich einordnen` onto the shared canonical atom `Auftrieb an Tragflächen und Luftwiderstand qualitativ einordnen`
 - no Rheinland-Pfalz-specific canonical physics atom is introduced in this step
 - no committed Rheinland-Pfalz applicability cut is introduced in this step
 - the retained RP field/induction family is now closed on the current conservative reviewed cut
@@ -117,4 +125,10 @@ Current use:
 - one adjacent RP LF leaf `Zustandsgroessen der Sonne fachlich einordnen` stays intentionally source-led because the current shared canonical astrophysics surface still has no narrow reviewed target for it
 - one adjacent RP LF leaf `Standardsonnenmodell fachlich einordnen` stays intentionally source-led because the current shared canonical astrophysics surface still has no narrow reviewed target for it
 - one adjacent RP LF leaf `Aktuelle Forschungsergebnisse der Astrophysik fachlich einordnen` stays intentionally source-led because the current shared canonical astrophysics surface still has no narrow reviewed target for it
-- next step: keep the frozen RP oscillation/wave micro-residues plus the source-led RP Planck-estimation clause stable, keep the opened RP LF strips `Quantenobjekte II`, `Quantenmechanische Atomvorstellung II`, `Wechselwirkung von Quantenobjekten`, `Elementarteilchenphysik`, `Relativistische Kinematik`, `Relativistische Dynamik`, and `Astrophysik` stable, leave `Lumineszenz`, `Laser`, `chemische Bindung/Molekuelstruktur`, `Farbstoffmolekuele`, `Paarerzeugung`, `Offene Fragen`, `Masse-Energie-Aequivalenz`, the RP relativistic energy/impulse/limiting-speed clause, `Zustandsgroessen der Sonne`, `Standardsonnenmodell`, and `Aktuelle Forschungsergebnisse` source-led for now, and move the next active RP widening to the adjacent LF strip `Kosmologie`
+- one adjacent RP LF leaf `Aktuelle Forschungsergebnisse der Kosmologie fachlich einordnen` stays intentionally source-led because the current shared canonical cosmology surface still has no narrow reviewed target for it
+- one adjacent RP LF leaf `Beispiele von Chaosphaenomenen und fraktalen Strukturen fachlich einordnen` stays intentionally source-led because the current shared canonical chaos surface still has no narrow reviewed target for the added fractal-evidence clause
+- one adjacent RP LF leaf `Strukturelle Aehnlichkeiten in verschiedenen Bereichen fachlich einordnen` stays intentionally source-led because the current shared canonical chaos surface still has no narrow reviewed target for that cross-domain analogy clause
+- one adjacent RP LF leaf `Stroemungsphaenomene und Stroemungsarten fachlich einordnen` stays intentionally source-led because the current shared canonical Physics surface still has no narrow reviewed target for that fluid-phenomena clause
+- one adjacent RP LF leaf `Kontinuitaetsgleichung, Stroemungsgesetze und Reynolds-Zahl fachlich einordnen` stays intentionally source-led because the current shared canonical Physics surface still has no narrow reviewed target for that fluid-laws clause
+- one adjacent RP LF leaf `Sinkgeschwindigkeiten im Praktikum fachlich einordnen` stays intentionally source-led because the current shared canonical Physics surface still has no narrow reviewed target for that practicum clause
+- next step: keep the frozen RP oscillation/wave micro-residues plus the source-led RP Planck-estimation clause stable, keep the opened RP LF strips `Quantenobjekte II`, `Quantenmechanische Atomvorstellung II`, `Wechselwirkung von Quantenobjekten`, `Elementarteilchenphysik`, `Relativistische Kinematik`, `Relativistische Dynamik`, `Astrophysik`, `Kosmologie`, `Chaos und Fraktale`, and `Stroemungsphysik` stable, leave `Lumineszenz`, `Laser`, `chemische Bindung/Molekuelstruktur`, `Farbstoffmolekuele`, `Paarerzeugung`, `Offene Fragen`, `Masse-Energie-Aequivalenz`, the RP relativistic energy/impulse/limiting-speed clause, `Zustandsgroessen der Sonne`, `Standardsonnenmodell`, `Aktuelle Forschungsergebnisse` in `Astrophysik`, `Aktuelle Forschungsergebnisse` in `Kosmologie`, the remaining `Chaos und Fraktale` leaves, and the remaining `Stroemungsphysik` leaves source-led for now, and move the next active RP move toward an explicit lane-closure decision on `Individuelles Thema`

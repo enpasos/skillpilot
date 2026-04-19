@@ -45,6 +45,9 @@ Activation result:
   - one first schmaler reviewed LF-Follow-on `Relativistische Kinematik`
   - one first schmaler reviewed LF-Follow-on `Relativistische Dynamik`
   - one first schmaler reviewed LF-Follow-on `Astrophysik`
+  - one first schmaler reviewed LF-Follow-on `Kosmologie`
+  - one first schmaler reviewed LF-Follow-on `Chaos und Fraktale`
+  - one first schmaler reviewed LF-Follow-on `Stroemungsphysik`
 - the reviewed Rheinland-Pfalz Physics corridor stays intentionally conservative:
   - partial bridge from the RP source root onto the canonical Physics root
   - exact bridge on the shared motivation/orientation anchor
@@ -150,5 +153,11 @@ Operational rule from here:
 - keep `Masse-Energie-Aequivalenz` and the retained RP LF clause on `Energie`, `Impuls`, `Geschwindigkeit`, `Grenzgeschwindigkeit`, and `Grenzfaelle` intentionally source-led inside that new strip unless broader reviewed evidence later warrants genuinely narrow shared canonical targets
 - treat the active LF strip `Astrophysik` as the seventeenth reviewed RP cut
 - keep `Zustandsgroessen der Sonne`, `Standardsonnenmodell`, and `Aktuelle Forschungsergebnisse` intentionally source-led inside that new strip unless broader reviewed evidence later warrants genuinely narrow shared canonical targets
-- move the next active RP widening to the adjacent LF strip `Kosmologie`
+- treat the active LF strip `Kosmologie` as the eighteenth reviewed RP cut
+- keep `Aktuelle Forschungsergebnisse` intentionally source-led inside that new strip unless broader reviewed evidence later warrants genuinely narrow shared canonical targets
+- treat the active LF strip `Chaos und Fraktale` as the nineteenth reviewed RP cut
+- keep the leaves on `Chaosphaenomene und fraktale Strukturen` and `Strukturelle Aehnlichkeiten in verschiedenen Bereichen` intentionally source-led inside that new strip unless broader reviewed evidence later warrants genuinely narrow shared canonical targets
+- treat the active LF strip `Stroemungsphysik` as the twentieth reviewed RP cut
+- keep the leaves on `Stroemungsphaenomene und Stroemungsarten`, `Kontinuitaetsgleichung, Stroemungsgesetze und Reynolds-Zahl`, and `Sinkgeschwindigkeiten im Praktikum` intentionally source-led inside that new strip unless broader reviewed evidence later warrants genuinely narrow shared canonical targets
+- move the next active RP move away from further corridor authoring and toward an explicit lane-closure decision on the remaining RP LF residue `Individuelles Thema`
 - do not force a Rheinland-Pfalz-specific canonical split or applicability cut before broader reviewed evidence exists
