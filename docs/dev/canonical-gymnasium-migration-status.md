@@ -7865,3 +7865,48 @@ Interpretation:
 
 - Rheinland-Pfalz remains the active Physics lane and now also carries a first narrow LF relativity-dynamics strip on the shared relativity surface
 - the next clean RP move is now the adjacent LF strip `Astrophysik`
+
+### 2026-04-19: Rheinland-Pfalz Physics now also carries the first narrow reviewed LF astrophysics follow-on `Astrophysik`
+
+What changed:
+
+- the active RP upper-secondary Physics snapshot in
+  - `curricula/DE/Gymnasium/input/RP/upper-secondary/source-json/DE_RLP_S_GYM_2_PHYSIK.de.json.snapshot`
+  now also contains one first narrow reviewed LF follow-on `Astrophysik` with four visible leaves:
+  - `Zustandsgroessen der Sonne fachlich einordnen`
+  - `Masse-Leuchtkraft-Beziehung und Sternentwicklung fachlich einordnen`
+  - `Standardsonnenmodell fachlich einordnen`
+  - `Aktuelle Forschungsergebnisse der Astrophysik fachlich einordnen`
+- the RP mapping lane in
+  - `curricula/DE/Gymnasium/mapping/DE-RP/upper-secondary/rp_physics_upper_secondary_to_canonical_physics.json`
+  now adds two conservative bridges:
+  - `rp-phys-sek2-astrophysics-lf` -> `Astrophysik` (`partial`)
+  - `rp-phys-sek2-mass-luminosity-stellar-evolution` -> `Sternentstehung und Sternentwicklung` (`partial`)
+
+Current reviewed RP cut:
+
+- `85` reviewed mappings
+- `107` snapshot goals
+- root weight `87`
+- root atomic closure `87`
+- one first narrow reviewed LF astrophysics follow-on `Astrophysik`
+- no Rheinland-Pfalz-specific canonical Physics atom
+- no committed Rheinland-Pfalz applicability cut
+
+Why this cut:
+
+- the RP LF strip `Astrophysik` is the next clean adjacent source surface after the stabilized RP relativity strips
+- the shared canonical astrophysics surface already carries a narrow enough reviewed cluster target for the strip and one sufficiently conservative reviewed bridge on `Sternentwicklung`
+- `Zustandsgroessen der Sonne`, `Standardsonnenmodell`, and `Aktuelle Forschungsergebnisse` stay intentionally source-led because the current shared canonical astrophysics surface still has no genuinely narrow reviewed targets for them
+
+Validation used:
+
+- JSON-Parse for RP snapshot, RP mapping, membership registry, closure registry, and rollout tracker
+- `python3 scripts/render_canonical_physics_bundesland_status.py`
+- `cd backend && GRADLE_USER_HOME=/home/enpasos/projects/skillpilot/backend/.gradle-ci ./gradlew clean check --no-daemon --console=plain`
+- `git diff --check`
+
+Interpretation:
+
+- Rheinland-Pfalz remains the active Physics lane and now also carries a first narrow LF astrophysics strip on the shared Q4 astrophysics surface
+- the next clean RP move is now the adjacent LF strip `Kosmologie`

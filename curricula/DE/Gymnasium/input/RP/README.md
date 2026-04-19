@@ -62,10 +62,12 @@
 - den ersten schmalen RP-LF-Follow-on `Elementarteilchenphysik` jetzt stabil halten
 - den ersten schmalen RP-LF-Follow-on `Relativistische Kinematik` jetzt stabil halten
 - den ersten schmalen RP-LF-Follow-on `Relativistische Dynamik` jetzt stabil halten
+- den ersten schmalen RP-LF-Follow-on `Astrophysik` jetzt stabil halten
 - `Plancksches Wirkungsquantum mit einer experimentellen Methode naeherungsweise bestimmen` im RP-Quantenstreifen bewusst source-led lassen, solange die bestehende shared Canonical-Methode photoeffekt-spezifisch bleibt
 - `Lumineszenz`, `Laser`, `chemische Bindung/Molekuelstruktur` und `Farbstoffmolekuele` im RP-LF-Atommodellstreifen vorerst bewusst source-led halten, solange die bestehende shared Canonical-Flaeche dafuer keine schmalen reviewed Ziele traegt
 - `Paarerzeugung` im RP-LF-Streifen `Wechselwirkung von Quantenobjekten` vorerst bewusst source-led halten, solange die bestehende shared Canonical-Flaeche dafuer kein genuinely narrow reviewed Ziel traegt
 - `Offene Fragen der Elementarteilchenphysik` im RP-LF-Streifen `Elementarteilchenphysik` vorerst bewusst source-led halten, solange die bestehende shared Canonical-Forschungsflaeche dafuer kein genuinely narrow reviewed Ziel traegt
 - `Masse-Energie-Aequivalenz` sowie den RP-LF-Dynamikrest auf `Energie`, `Impuls`, `Geschwindigkeit`, `Grenzgeschwindigkeit` und `Grenzfaelle` vorerst bewusst source-led halten, solange die bestehende shared Canonical-Relativitaetsflaeche dafuer keine schmalen reviewed Ziele traegt
-- den naechsten RP-Physik-Zug jetzt auf dem adjazenten LF-Streifen `Astrophysik` suchen, statt innerhalb der bereits geoeffneten RP-Relativitaetsfamilie weitere Mikro-Splits zu erzwingen
+- `Zustandsgroessen der Sonne`, `Standardsonnenmodell` und `Aktuelle Forschungsergebnisse` im RP-LF-Streifen `Astrophysik` vorerst bewusst source-led halten, solange die bestehende shared Canonical-Astrophysikflaeche dafuer keine schmalen reviewed Ziele traegt
+- den naechsten RP-Physik-Zug jetzt auf dem adjazenten LF-Streifen `Kosmologie` suchen
 - keinen Rheinland-Pfalz-spezifischen kanonischen Physik-Atom erzwingen, solange die bestehende shared Q1-Flaeche die RP-Quelle noch konservativ tragen kann

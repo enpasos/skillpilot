@@ -1,12 +1,12 @@
 # DE-RP Upper-Secondary Mapping Lane
 
-Current status on `2026-04-18`:
+Current status on `2026-04-19`:
 
 - repository-backed mapping fixture now exists:
   `rp_physics_upper_secondary_to_canonical_physics.json`
 - active `sourceLandscapeId`:
   `eb32f91f-5f6f-4e13-a969-f53a0e92431f`
-- current mapping count: `83`
+- current mapping count: `85`
 - the current official Rheinland-Pfalz MSS Physics PDF is now archived locally:
   `curricula/DE/Gymnasium/input/RP/Physik_Sekundarstufe_II_MSS.pdf`
 - the first Rheinland-Pfalz upper-secondary Physics source snapshot is now active:
@@ -37,6 +37,7 @@ Current use:
 - one first schmaler reviewed LF-Follow-on `Elementarteilchenphysik` is mapped
 - one first schmaler reviewed LF-Follow-on `Relativistische Kinematik` is mapped
 - one first schmaler reviewed LF-Follow-on `Relativistische Dynamik` is mapped
+- one first schmaler reviewed LF-Follow-on `Astrophysik` is mapped
 - the current RP physics cut stays intentionally conservative:
   - partial bridge from the RP source root onto the canonical physics root
   - exact bridge on the shared motivation/orientation anchor
@@ -98,6 +99,8 @@ Current use:
   - one additional partial bridge from the retained RP LF leaf `Lorentz-Kontraktion, Zeitdilatation und Zwillingsparadoxon fachlich deuten` onto the shared canonical atom `Zeitdilatation und Längenkontraktion`
   - one additional partial bridge from the retained RP LF leaf `Raum-Zeit-Diagramme in relativistischen Kontexten fachlich nutzen` onto the shared canonical atom `Minkowski-Diagramme nutzen`
   - one additional partial bridge from the retained RP LF leaf `Abhaengigkeit der Zeit vom Gravitationsfeld und experimentelle Belege fachlich einordnen` onto the shared canonical atom `GPS und Relativitätstheorie`
+  - one additional partial bridge from the retained RP LF parent `Astrophysik` onto the shared canonical cluster `Astrophysik`
+  - one additional partial bridge from the retained RP LF leaf `Masse-Leuchtkraft-Beziehung und Sternentwicklung fachlich einordnen` onto the shared canonical cluster `Sternentstehung und Sternentwicklung`
 - no Rheinland-Pfalz-specific canonical physics atom is introduced in this step
 - no committed Rheinland-Pfalz applicability cut is introduced in this step
 - the retained RP field/induction family is now closed on the current conservative reviewed cut
@@ -111,4 +114,7 @@ Current use:
 - one adjacent RP LF leaf `Offene Fragen der Elementarteilchenphysik an Beispielen fachlich beschreiben` stays intentionally source-led because the current shared canonical research surface still remains broader than the RP wording
 - one adjacent RP LF leaf `Masse-Energie-Aequivalenz fachlich einordnen` stays intentionally source-led because the current shared canonical relativistic-dynamics surface still has no narrow reviewed target for it
 - one adjacent RP LF clause `Zusammenhaenge zwischen Energie, Impuls, Geschwindigkeit sowie Grenzgeschwindigkeit und Grenzfaelle fachlich deuten` stays intentionally source-led because the current shared canonical relativistic-dynamics surface still has no narrow reviewed target for it
-- next step: keep the frozen RP oscillation/wave micro-residues plus the source-led RP Planck-estimation clause stable, keep the opened RP LF strips `Quantenobjekte II`, `Quantenmechanische Atomvorstellung II`, `Wechselwirkung von Quantenobjekten`, `Elementarteilchenphysik`, `Relativistische Kinematik`, and `Relativistische Dynamik` stable, leave `Lumineszenz`, `Laser`, `chemische Bindung/Molekuelstruktur`, `Farbstoffmolekuele`, `Paarerzeugung`, `Offene Fragen`, `Masse-Energie-Aequivalenz`, and the RP relativistic energy/impulse/limiting-speed clause source-led for now, and move the next active RP widening to the adjacent LF strip `Astrophysik`
+- one adjacent RP LF leaf `Zustandsgroessen der Sonne fachlich einordnen` stays intentionally source-led because the current shared canonical astrophysics surface still has no narrow reviewed target for it
+- one adjacent RP LF leaf `Standardsonnenmodell fachlich einordnen` stays intentionally source-led because the current shared canonical astrophysics surface still has no narrow reviewed target for it
+- one adjacent RP LF leaf `Aktuelle Forschungsergebnisse der Astrophysik fachlich einordnen` stays intentionally source-led because the current shared canonical astrophysics surface still has no narrow reviewed target for it
+- next step: keep the frozen RP oscillation/wave micro-residues plus the source-led RP Planck-estimation clause stable, keep the opened RP LF strips `Quantenobjekte II`, `Quantenmechanische Atomvorstellung II`, `Wechselwirkung von Quantenobjekten`, `Elementarteilchenphysik`, `Relativistische Kinematik`, `Relativistische Dynamik`, and `Astrophysik` stable, leave `Lumineszenz`, `Laser`, `chemische Bindung/Molekuelstruktur`, `Farbstoffmolekuele`, `Paarerzeugung`, `Offene Fragen`, `Masse-Energie-Aequivalenz`, the RP relativistic energy/impulse/limiting-speed clause, `Zustandsgroessen der Sonne`, `Standardsonnenmodell`, and `Aktuelle Forschungsergebnisse` source-led for now, and move the next active RP widening to the adjacent LF strip `Kosmologie`

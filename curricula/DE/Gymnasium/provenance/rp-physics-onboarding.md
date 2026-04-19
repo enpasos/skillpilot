@@ -20,7 +20,7 @@ Activation result:
 - the Rheinland-Pfalz upper-secondary Physics lane is now active in `source-landscape-registry.json`
 - the first Rheinland-Pfalz upper-secondary Physics snapshot now contributes real `goalIds` to `source-goal-membership-registry.json`
 - the same snapshot now contributes atomic closures to `source-goal-closure-registry.json`
-- the repository-backed Rheinland-Pfalz Physics mapping file now carries `83` reviewed upper-secondary mappings
+- the repository-backed Rheinland-Pfalz Physics mapping file now carries `85` reviewed upper-secondary mappings
 - the active Rheinland-Pfalz upper-secondary Physics snapshot is intentionally narrow and conservative, with one GF/LF-common spine plus adjacent reviewed Grundfach quantum corridors:
   - one shared orientation anchor
   - one structural Qualifikationsphasen-Anker `Statische elektrische und magnetische Felder`
@@ -44,6 +44,7 @@ Activation result:
   - one first schmaler reviewed LF-Follow-on `Elementarteilchenphysik`
   - one first schmaler reviewed LF-Follow-on `Relativistische Kinematik`
   - one first schmaler reviewed LF-Follow-on `Relativistische Dynamik`
+  - one first schmaler reviewed LF-Follow-on `Astrophysik`
 - the reviewed Rheinland-Pfalz Physics corridor stays intentionally conservative:
   - partial bridge from the RP source root onto the canonical Physics root
   - exact bridge on the shared motivation/orientation anchor
@@ -105,6 +106,8 @@ Activation result:
   - one additional partial bridge from the retained RP LF leaf `Lorentz-Kontraktion, Zeitdilatation und Zwillingsparadoxon fachlich deuten` onto the shared canonical atom `Zeitdilatation und Längenkontraktion`
   - one additional partial bridge from the retained RP LF leaf `Raum-Zeit-Diagramme in relativistischen Kontexten fachlich nutzen` onto the shared canonical atom `Minkowski-Diagramme nutzen`
   - one additional partial bridge from the retained RP LF leaf `Abhaengigkeit der Zeit vom Gravitationsfeld und experimentelle Belege fachlich einordnen` onto the shared canonical atom `GPS und Relativitätstheorie`
+  - one additional partial bridge from the retained RP LF parent `Astrophysik` onto the shared canonical cluster `Astrophysik`
+  - one additional partial bridge from the retained RP LF leaf `Masse-Leuchtkraft-Beziehung und Sternentwicklung fachlich einordnen` onto the shared canonical cluster `Sternentstehung und Sternentwicklung`
 - no Rheinland-Pfalz-specific canonical Physics atom is introduced in this step
 - no committed Rheinland-Pfalz applicability cut is introduced in this step
 - no Rheinland-Pfalz-specific Physics composition view is introduced in this step
@@ -145,5 +148,7 @@ Operational rule from here:
 - treat the active LF strip `Relativistische Kinematik` as the fifteenth reviewed RP cut
 - treat the active LF strip `Relativistische Dynamik` as the sixteenth reviewed RP cut
 - keep `Masse-Energie-Aequivalenz` and the retained RP LF clause on `Energie`, `Impuls`, `Geschwindigkeit`, `Grenzgeschwindigkeit`, and `Grenzfaelle` intentionally source-led inside that new strip unless broader reviewed evidence later warrants genuinely narrow shared canonical targets
-- move the next active RP widening to the adjacent LF strip `Astrophysik` instead of forcing another micro-split inside the already opened RP relativity family
+- treat the active LF strip `Astrophysik` as the seventeenth reviewed RP cut
+- keep `Zustandsgroessen der Sonne`, `Standardsonnenmodell`, and `Aktuelle Forschungsergebnisse` intentionally source-led inside that new strip unless broader reviewed evidence later warrants genuinely narrow shared canonical targets
+- move the next active RP widening to the adjacent LF strip `Kosmologie`
 - do not force a Rheinland-Pfalz-specific canonical split or applicability cut before broader reviewed evidence exists

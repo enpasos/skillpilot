@@ -939,9 +939,9 @@ class GoalMappingRepositoryFixtureTest {
         assertThat(file.getVersion()).isEqualTo(1);
         assertThat(file.getSourceLandscapeId()).isEqualTo(RHEINLAND_PFALZ_PHYSICS_UPPER_SECONDARY_LANDSCAPE_ID);
         assertThat(file.getTargetLandscapeId()).isEqualTo(CANONICAL_PHYSICS_ID);
-        assertThat(file.getMappings()).hasSize(83);
+        assertThat(file.getMappings()).hasSize(85);
         assertThat(file.getMappings()).filteredOn(entry -> "exact".equals(entry.getMatchType())).hasSize(1);
-        assertThat(file.getMappings()).filteredOn(entry -> "partial".equals(entry.getMatchType())).hasSize(82);
+        assertThat(file.getMappings()).filteredOn(entry -> "partial".equals(entry.getMatchType())).hasSize(84);
         assertThat(file.getMappings())
                 .extracting(GoalMappingEntry::getLegacyGoalId, GoalMappingEntry::getCanonicalGoalId, GoalMappingEntry::getMatchType)
                 .containsExactly(
@@ -1027,7 +1027,9 @@ class GoalMappingRepositoryFixtureTest {
                         Tuple.tuple("rp-phys-sek2-relativity-postulates-simultaneity-experiments", "a684bec1-ba59-59d0-98d2-4ca37236f64c", "partial"),
                         Tuple.tuple("rp-phys-sek2-relativistic-consequences", "19aef2ed-eb46-55b1-9486-ee83f7520bb6", "partial"),
                         Tuple.tuple("rp-phys-sek2-spacetime-diagrams", "6ebb6182-f221-5f4c-b112-4ac72b104321", "partial"),
-                        Tuple.tuple("rp-phys-sek2-gravitational-time-dependence-evidence", "a9169a74-de19-54a9-a8ac-a2ce43c7342e", "partial"));
+                        Tuple.tuple("rp-phys-sek2-gravitational-time-dependence-evidence", "a9169a74-de19-54a9-a8ac-a2ce43c7342e", "partial"),
+                        Tuple.tuple("rp-phys-sek2-astrophysics-lf", "b59cb1ef-05c2-5b09-abb3-8b6903ca0fd6", "partial"),
+                        Tuple.tuple("rp-phys-sek2-mass-luminosity-stellar-evolution", "9b47a758-1b5d-5906-84c9-8621050d5aa5", "partial"));
     }
 
     @Test
