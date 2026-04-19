@@ -20,7 +20,7 @@ Activation result:
 - the Rheinland-Pfalz upper-secondary Physics lane is now active in `source-landscape-registry.json`
 - the first Rheinland-Pfalz upper-secondary Physics snapshot now contributes real `goalIds` to `source-goal-membership-registry.json`
 - the same snapshot now contributes atomic closures to `source-goal-closure-registry.json`
-- the repository-backed Rheinland-Pfalz Physics mapping file now carries `61` reviewed upper-secondary mappings
+- the repository-backed Rheinland-Pfalz Physics mapping file now carries `83` reviewed upper-secondary mappings
 - the active Rheinland-Pfalz upper-secondary Physics snapshot is intentionally narrow and conservative, with one GF/LF-common spine plus adjacent reviewed Grundfach quantum corridors:
   - one shared orientation anchor
   - one structural Qualifikationsphasen-Anker `Statische elektrische und magnetische Felder`
@@ -37,7 +37,13 @@ Activation result:
   - one first schmaler reviewed LF-Follow-on `Harmonische Wellen und ihre Superposition`
   - one first schmaler reviewed LF-Pflichtbaustein-Follow-on `Schwingungen und Wellen`
   - one first reviewed Grundfach-Quantenkorridor `Quantenobjekte I`
+  - one first schmaler reviewed LF-Follow-on `Quantenobjekte II`
   - one first reviewed Grundfach-Atommodellkorridor `Quantenmechanische Atomvorstellung I`
+  - one first schmaler reviewed LF-Follow-on `Quantenmechanische Atomvorstellung II`
+  - one first schmaler reviewed LF-Follow-on `Wechselwirkung von Quantenobjekten`
+  - one first schmaler reviewed LF-Follow-on `Elementarteilchenphysik`
+  - one first schmaler reviewed LF-Follow-on `Relativistische Kinematik`
+  - one first schmaler reviewed LF-Follow-on `Relativistische Dynamik`
 - the reviewed Rheinland-Pfalz Physics corridor stays intentionally conservative:
   - partial bridge from the RP source root onto the canonical Physics root
   - exact bridge on the shared motivation/orientation anchor
@@ -73,10 +79,32 @@ Activation result:
   - one additional partial bridge from the retained RP leaf `Impuls und Wellenlaenge zur Beschreibung materieller Quantenobjekte verknuepfen` onto the shared canonical atom `De-Broglie-Wellen`
   - one additional partial bridge from the retained RP leaf `Nachweiswahrscheinlichkeitsdichte ueber das Betragsquadrat der Zustandsfunktion qualitativ deuten` onto the shared canonical atom `Wellenfunktion und Wahrscheinlichkeitsdeutung`
   - one additional partial bridge from the retained RP leaf `Quantenphysikalisches Weltbild zu Realitaet, Lokalitaet, Kausalitaet und Determinismus fachlich einordnen` onto the shared canonical atom `Die Bedeutung von Modellen an Photon und Elektron reflektieren`
+  - one additional partial bridge from the retained RP LF parent `Quantenobjekte II` onto the shared canonical Q4 cluster `Quantenobjekte`
+  - one additional partial bridge from the retained RP LF leaf `Interpretationsmoeglichkeiten der Quantentheorie an einem Gedanken- oder Realexperiment fachlich reflektieren` onto the shared canonical atom `Das Messproblem in der Quantenphysik`
+  - one additional partial bridge from the retained RP LF leaf `Elektronenbeugungsroehre als experimentellen Beleg fuer materielle Quantenobjekte fachlich einordnen` onto the shared canonical atom `Photonen und Elektronen als Quantenobjekte beschreiben`
+  - one additional partial bridge from the retained RP LF leaf `Hallwachs-Effekt als experimentellen Beleg fuer Lichtquanten fachlich einordnen` onto the shared canonical atom `Fotöffekt und Einstein-Deutung`
+  - one additional partial bridge from the retained RP LF leaf `Quantenradierer im Hinblick auf Interferenz und Welcher-Weg-Information fachlich deuten` onto the shared canonical atom `Komplementaritaet durch Interferenzfaehigkeit und Welcher-Weg-Information erlaeutern`
   - one additional partial bridge from the retained RP Grundfach parent `Quantenmechanische Atomvorstellung I` onto the shared canonical cluster `Atomvorstellungen`
   - two additional partial bridges from the retained RP leaves `Quantisierte Energieaufnahme von Photonen an Atomen experimentell einordnen` and `Quantisierte Emission am Wasserstoffatom ueber Uebergaenge zwischen Energieniveaus deuten` onto the shared canonical atom `Emission, Absorption und Linienspektren`
   - one additional partial bridge from the retained RP leaf `Energiestufenmodell des Wasserstoffatoms mit den diskreten Energiewerten fachlich nutzen` onto the shared canonical atom `Energieniveaus des Wasserstoffatoms`
   - one additional partial bridge from the retained RP leaf `Orbitale des Wasserstoffatoms als Nachweiswahrscheinlichkeiten fachlich deuten` onto the shared canonical atom `Orbitale des Wasserstoffatoms als Nachweiswahrscheinlichkeiten interpretieren`
+  - one additional partial bridge from the retained RP Leistungsfach parent `Quantenmechanische Atomvorstellung II` onto the shared canonical cluster `Atomvorstellungen`
+  - one additional partial bridge from the retained RP LF leaf `Franck-Hertz-Versuch fachlich einordnen` onto the shared canonical atom `Franck-Hertz-Versuch`
+  - one additional partial bridge from the retained RP LF leaf `Natriumresonanzabsorption als Beispiel quantisierter Absorption deuten` onto the shared canonical atom `Emission, Absorption und Linienspektren`
+  - one additional partial bridge from the retained RP LF leaf `Spektralanalyse fuer diskrete Energiezustaende fachlich nutzen` onto the shared canonical atom `Bedeutung von Flammenfaerbung, Linienspektren und Spektralanalyse fuer Modelle diskreter Energiezustaende interpretieren`
+  - one additional partial bridge from the retained RP LF leaf `Compton-Effekt als Wechselwirkung von Strahlung und Materie fachlich deuten` onto the shared canonical atom `Compton-Effekt`
+  - one additional partial bridge from the retained RP LF leaf `Hallwachs-Effekt als Licht-Materie-Wechselwirkung fachlich einordnen` onto the shared canonical atom `Fotöffekt und Einstein-Deutung`
+  - one additional partial bridge from the retained RP LF leaf `Elektronenbeugung und Bragg-Reflexion als Interferenzphaenomene fachlich deuten` onto the shared canonical atom `Bragg-Bedingung anwenden (LK)`
+  - one additional partial bridge from the retained RP LF leaf `Entstehung von Roentgenstrahlung fachlich beschreiben` onto the shared canonical atom `Röntgenspektren deuten`
+  - one additional partial bridge from the retained RP LF parent `Elementarteilchenphysik` onto the shared canonical Q4 cluster `Elementarteilchen und Standardmodell`
+  - one additional partial bridge from the retained RP LF leaf `Standardmodell als Ordnungsschema der Elementarteilchen fachlich beschreiben` onto the shared canonical atom `Standardmodell: Teilchenfamilien`
+  - one additional partial bridge from the retained RP LF leaf `Fundamentale Wechselwirkungen und Austauschteilchen fachlich einordnen` onto the shared canonical atom `Fundamentale Wechselwirkungen`
+  - one additional partial bridge from the retained RP LF leaf `Experimentelle Befunde der Elementarteilchenphysik fachlich einordnen` onto the shared canonical atom `Teilchenphysik in der Forschung (CERN)`
+  - one additional partial bridge from the retained RP LF parent `Relativistische Kinematik` onto the shared canonical cluster `Spezielle Relativitätstheorie`
+  - one additional partial bridge from the retained RP LF leaf `Relativitaetspostulate, Relativitaet der Gleichzeitigkeit und experimentelle Belege fachlich einordnen` onto the shared canonical atom `Relativitätspostulate und Experimente`
+  - one additional partial bridge from the retained RP LF leaf `Lorentz-Kontraktion, Zeitdilatation und Zwillingsparadoxon fachlich deuten` onto the shared canonical atom `Zeitdilatation und Längenkontraktion`
+  - one additional partial bridge from the retained RP LF leaf `Raum-Zeit-Diagramme in relativistischen Kontexten fachlich nutzen` onto the shared canonical atom `Minkowski-Diagramme nutzen`
+  - one additional partial bridge from the retained RP LF leaf `Abhaengigkeit der Zeit vom Gravitationsfeld und experimentelle Belege fachlich einordnen` onto the shared canonical atom `GPS und Relativitätstheorie`
 - no Rheinland-Pfalz-specific canonical Physics atom is introduced in this step
 - no committed Rheinland-Pfalz applicability cut is introduced in this step
 - no Rheinland-Pfalz-specific Physics composition view is introduced in this step
@@ -106,6 +134,16 @@ Operational rule from here:
 - do not reopen that RP oscillation/wave micro-residue set unless broader reviewed evidence later warrants a genuinely narrower shared canonical target
 - treat the active Grundfach strip `Quantenobjekte I` as the ninth reviewed RP cut
 - keep `Plancksches Wirkungsquantum mit einer experimentellen Methode naeherungsweise bestimmen` intentionally source-led inside that new RP quantum strip because the current shared canonical method target remains photoeffect-specific
-- treat the active Grundfach strip `Quantenmechanische Atomvorstellung I` as the tenth reviewed RP cut
-- move the next active RP widening to the adjacent strip `Quantenmechanische Atomvorstellung II` instead of reopening the now-frozen RP oscillation/wave micro-residue set or forcing a narrower Planck-method split
+- treat the active LF strip `Quantenobjekte II` as the tenth reviewed RP cut
+- treat the active Grundfach strip `Quantenmechanische Atomvorstellung I` as the eleventh reviewed RP cut
+- treat the active LF strip `Quantenmechanische Atomvorstellung II` as the twelfth reviewed RP cut
+- keep `Lumineszenz`, `Laser`, `chemische Bindung/Molekuelstruktur`, and `Farbstoffmolekuele` intentionally source-led inside that LF strip unless broader reviewed evidence later warrants narrower shared canonical targets
+- treat the active LF strip `Wechselwirkung von Quantenobjekten` as the thirteenth reviewed RP cut
+- keep `Paarerzeugung` intentionally source-led inside that LF strip unless broader reviewed evidence later warrants a genuinely shared narrow canonical target
+- treat the active LF strip `Elementarteilchenphysik` as the fourteenth reviewed RP cut
+- keep `Offene Fragen der Elementarteilchenphysik` intentionally source-led inside that LF strip unless broader reviewed evidence later warrants a genuinely narrow shared research target
+- treat the active LF strip `Relativistische Kinematik` as the fifteenth reviewed RP cut
+- treat the active LF strip `Relativistische Dynamik` as the sixteenth reviewed RP cut
+- keep `Masse-Energie-Aequivalenz` and the retained RP LF clause on `Energie`, `Impuls`, `Geschwindigkeit`, `Grenzgeschwindigkeit`, and `Grenzfaelle` intentionally source-led inside that new strip unless broader reviewed evidence later warrants genuinely narrow shared canonical targets
+- move the next active RP widening to the adjacent LF strip `Astrophysik` instead of forcing another micro-split inside the already opened RP relativity family
 - do not force a Rheinland-Pfalz-specific canonical split or applicability cut before broader reviewed evidence exists

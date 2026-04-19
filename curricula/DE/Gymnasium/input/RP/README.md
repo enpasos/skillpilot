@@ -55,7 +55,17 @@
 - den angrenzenden LF-Rest `Gekoppelte Schwingungen` jetzt explizit als source-led Mikrorest eingefroren halten
 - die verbleibenden RP-Oszillations-/Wellenreste (`Periodendauer`, `Polarisation`, `Weisslichtspektrum`, `gekoppelte Schwingungen`) nicht mehr als offene Sofort-Todos behandeln, sondern auf dem aktuellen reviewed Schnitt eingefroren halten
 - den ersten RP-Grundfach-Quantenstreifen `Quantenobjekte I` jetzt stabil halten
+- den ersten schmalen RP-LF-Follow-on `Quantenobjekte II` jetzt stabil halten
 - den ersten RP-Grundfach-Atommodellstreifen `Quantenmechanische Atomvorstellung I` jetzt stabil halten
+- den ersten schmalen RP-LF-Follow-on `Quantenmechanische Atomvorstellung II` jetzt stabil halten
+- den ersten schmalen RP-LF-Follow-on `Wechselwirkung von Quantenobjekten` jetzt stabil halten
+- den ersten schmalen RP-LF-Follow-on `Elementarteilchenphysik` jetzt stabil halten
+- den ersten schmalen RP-LF-Follow-on `Relativistische Kinematik` jetzt stabil halten
+- den ersten schmalen RP-LF-Follow-on `Relativistische Dynamik` jetzt stabil halten
 - `Plancksches Wirkungsquantum mit einer experimentellen Methode naeherungsweise bestimmen` im RP-Quantenstreifen bewusst source-led lassen, solange die bestehende shared Canonical-Methode photoeffekt-spezifisch bleibt
-- den naechsten RP-Physik-Zug jetzt auf dem adjazenten Streifen `Quantenmechanische Atomvorstellung II` suchen, statt eine kuenstliche neue shared Canonical-Flaeche nur fuer die eingefrorenen RP-Wellenreste oder fuer die RP-Planck-Naeherung zu erzwingen
+- `Lumineszenz`, `Laser`, `chemische Bindung/Molekuelstruktur` und `Farbstoffmolekuele` im RP-LF-Atommodellstreifen vorerst bewusst source-led halten, solange die bestehende shared Canonical-Flaeche dafuer keine schmalen reviewed Ziele traegt
+- `Paarerzeugung` im RP-LF-Streifen `Wechselwirkung von Quantenobjekten` vorerst bewusst source-led halten, solange die bestehende shared Canonical-Flaeche dafuer kein genuinely narrow reviewed Ziel traegt
+- `Offene Fragen der Elementarteilchenphysik` im RP-LF-Streifen `Elementarteilchenphysik` vorerst bewusst source-led halten, solange die bestehende shared Canonical-Forschungsflaeche dafuer kein genuinely narrow reviewed Ziel traegt
+- `Masse-Energie-Aequivalenz` sowie den RP-LF-Dynamikrest auf `Energie`, `Impuls`, `Geschwindigkeit`, `Grenzgeschwindigkeit` und `Grenzfaelle` vorerst bewusst source-led halten, solange die bestehende shared Canonical-Relativitaetsflaeche dafuer keine schmalen reviewed Ziele traegt
+- den naechsten RP-Physik-Zug jetzt auf dem adjazenten LF-Streifen `Astrophysik` suchen, statt innerhalb der bereits geoeffneten RP-Relativitaetsfamilie weitere Mikro-Splits zu erzwingen
 - keinen Rheinland-Pfalz-spezifischen kanonischen Physik-Atom erzwingen, solange die bestehende shared Q1-Flaeche die RP-Quelle noch konservativ tragen kann

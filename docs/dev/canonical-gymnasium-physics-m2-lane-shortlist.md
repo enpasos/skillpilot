@@ -90,7 +90,7 @@ Execution update on `2026-04-11`:
   - an active source snapshot
   - a source-landscape registry entry
   - provenance-backed membership and closure
-  - a repository-backed mapping lane with `61` reviewed mappings
+  - a repository-backed mapping lane with `69` reviewed mappings
   - one shared orientation anchor
   - one structural Qualifikationsphasen-Anker `Statische elektrische und magnetische Felder`
   - one first reviewed gemeinsamer Grundfach-/Leistungsfach-Korridor on the Pflichtbaustein `Feldkonzept fuer statische elektrische und magnetische Felder`
@@ -106,7 +106,10 @@ Execution update on `2026-04-11`:
   - one first narrow reviewed LF follow-on `Harmonische Wellen und ihre Superposition`
   - one first narrow reviewed LF-Pflichtbaustein follow-on `Schwingungen und Wellen`
   - one first reviewed Grundfach quantum corridor `Quantenobjekte I`
+  - one first narrow reviewed LF quantum-object follow-on `Quantenobjekte II`
   - one first reviewed Grundfach atom-model corridor `Quantenmechanische Atomvorstellung I`
+  - one first narrow reviewed LF atom-model follow-on `Quantenmechanische Atomvorstellung II`
+  - one first narrow reviewed LF interaction follow-on `Wechselwirkung von Quantenobjekten`
   - the retained RP field/induction family is now closed on the current conservative reviewed cut
   - one adjacent RP harmonics leaf on the dependence of the period on system quantities stays intentionally source-led
   - one adjacent RP Grundfach wave leaf on wave types / polarization stays intentionally source-led
@@ -131,7 +134,7 @@ What does **not** exist yet for Physics beyond the currently active Hessen, Baye
 - no additional Physics `source-json` snapshots outside Hessen, Bayern, Nordrhein-Westfalen, Baden-Wuerttemberg, Berlin, Brandenburg, Schleswig-Holstein, and Rheinland-Pfalz
 - no additional Physics source-landscape registry entries outside Hessen, Bayern, Nordrhein-Westfalen, Baden-Wuerttemberg, Berlin, Brandenburg, Schleswig-Holstein, and Rheinland-Pfalz
 - no reviewed fifth-state Physics composition views yet
-- the first active ninth-state Physics lane now exists on `DE-RP` upper-secondary Physics, while `DE-SH` and the retained BE/BB family stay explicitly closed at the current reviewed cut; the RP oscillation/wave micro-residues are now explicitly frozen, one first RP GF quantum corridor plus one adjacent GF atom-model corridor are open, and the next rollout move inside Physics should therefore target `Quantenmechanische Atomvorstellung II` rather than another RP wave micro-widening
+- the first active ninth-state Physics lane now exists on `DE-RP` upper-secondary Physics, while `DE-SH` and the retained BE/BB family stay explicitly closed at the current reviewed cut; the RP oscillation/wave micro-residues are now explicitly frozen, one first RP GF quantum corridor plus one first RP LF quantum-object follow-on plus the opened GF/LF atom-model, LF interaction, LF particle-physics, LF relativity-kinematics, and LF relativity-dynamics corridors are open, the retained RP dynamics clauses on `Masse-Energie-Aequivalenz` and `Energie`/`Impuls`/`Geschwindigkeit`/`Grenzgeschwindigkeit`/`Grenzfaelle` stay intentionally source-led, and the next rollout move inside Physics should therefore target `Astrophysik` rather than another RP micro-widening inside the already opened LF relativity strips
 
 What **does** already exist and can be reused:
 

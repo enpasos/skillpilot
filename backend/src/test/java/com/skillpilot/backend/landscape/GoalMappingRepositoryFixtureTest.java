@@ -939,9 +939,9 @@ class GoalMappingRepositoryFixtureTest {
         assertThat(file.getVersion()).isEqualTo(1);
         assertThat(file.getSourceLandscapeId()).isEqualTo(RHEINLAND_PFALZ_PHYSICS_UPPER_SECONDARY_LANDSCAPE_ID);
         assertThat(file.getTargetLandscapeId()).isEqualTo(CANONICAL_PHYSICS_ID);
-        assertThat(file.getMappings()).hasSize(61);
+        assertThat(file.getMappings()).hasSize(83);
         assertThat(file.getMappings()).filteredOn(entry -> "exact".equals(entry.getMatchType())).hasSize(1);
-        assertThat(file.getMappings()).filteredOn(entry -> "partial".equals(entry.getMatchType())).hasSize(60);
+        assertThat(file.getMappings()).filteredOn(entry -> "partial".equals(entry.getMatchType())).hasSize(82);
         assertThat(file.getMappings())
                 .extracting(GoalMappingEntry::getLegacyGoalId, GoalMappingEntry::getCanonicalGoalId, GoalMappingEntry::getMatchType)
                 .containsExactly(
@@ -1005,7 +1005,29 @@ class GoalMappingRepositoryFixtureTest {
                         Tuple.tuple("rp-phys-sek2-quantized-photon-absorption", "904670af-8e4c-543e-bc9b-e6248d87a10d", "partial"),
                         Tuple.tuple("rp-phys-sek2-hydrogen-emission-energy-level-transitions", "904670af-8e4c-543e-bc9b-e6248d87a10d", "partial"),
                         Tuple.tuple("rp-phys-sek2-hydrogen-energy-level-model", "d7244ce4-5409-58d1-a1b4-bfae35f391e1", "partial"),
-                        Tuple.tuple("rp-phys-sek2-hydrogen-orbital-probability-model", "b1f00a6d-1a03-496c-b1bd-c1f2259f59a8", "partial"));
+                        Tuple.tuple("rp-phys-sek2-hydrogen-orbital-probability-model", "b1f00a6d-1a03-496c-b1bd-c1f2259f59a8", "partial"),
+                        Tuple.tuple("rp-phys-sek2-quantum-atomic-model-lf", "dd5a8efd-5d11-5388-aa2a-5147dec4348f", "partial"),
+                        Tuple.tuple("rp-phys-sek2-franck-hertz-experiment", "cf340ce4-8d91-5d22-a1d9-53bf408abdb3", "partial"),
+                        Tuple.tuple("rp-phys-sek2-sodium-resonance-absorption", "904670af-8e4c-543e-bc9b-e6248d87a10d", "partial"),
+                        Tuple.tuple("rp-phys-sek2-spectral-analysis", "c14857d3-634f-4a59-9a3f-8d0638fc5784", "partial"),
+                        Tuple.tuple("rp-phys-sek2-compton-effect", "2aa2ef4b-8204-59b9-ad53-71c994cd6180", "partial"),
+                        Tuple.tuple("rp-phys-sek2-hallwachs-effect", "cb0e05ff-e47d-55e7-bd5b-f8d78f2cb91f", "partial"),
+                        Tuple.tuple("rp-phys-sek2-electron-diffraction-bragg", "81c0d811-e6de-5489-8415-3b257c734a2e", "partial"),
+                        Tuple.tuple("rp-phys-sek2-xray-generation", "48e77690-17f7-5ebe-a8f7-87b2ee9820da", "partial"),
+                        Tuple.tuple("rp-phys-sek2-quantum-objects-lf", "ab636b78-6031-5a5b-afa2-9ffefbdd5dda", "partial"),
+                        Tuple.tuple("rp-phys-sek2-quantum-theory-interpretations", "b05da028-65e4-5cd1-a13c-6c1a95b6dfdf", "partial"),
+                        Tuple.tuple("rp-phys-sek2-electron-diffraction-tube", "a359c859-eee0-40ef-a9d1-88db2e6c55b2", "partial"),
+                        Tuple.tuple("rp-phys-sek2-hallwachs-effect-evidence", "cb0e05ff-e47d-55e7-bd5b-f8d78f2cb91f", "partial"),
+                        Tuple.tuple("rp-phys-sek2-quantum-eraser", "6031bed0-9baa-4f45-b2a5-57ffb00d39cc", "partial"),
+                        Tuple.tuple("rp-phys-sek2-particle-physics-lf", "7add799b-2d76-58db-81e5-d54393718f50", "partial"),
+                        Tuple.tuple("rp-phys-sek2-standard-model-ordering-scheme", "4e046c1c-bcc7-5e3c-9f71-f80d69027483", "partial"),
+                        Tuple.tuple("rp-phys-sek2-fundamental-interactions-exchange-particles", "8eb6456b-d915-50ed-a076-2b23c2e5420c", "partial"),
+                        Tuple.tuple("rp-phys-sek2-particle-physics-experimental-evidence", "2fab2e3a-1558-5e67-aed0-15fc51c737cd", "partial"),
+                        Tuple.tuple("rp-phys-sek2-relativistic-kinematics-lf", "157c404a-e14b-598a-9389-6924f8f9262e", "partial"),
+                        Tuple.tuple("rp-phys-sek2-relativity-postulates-simultaneity-experiments", "a684bec1-ba59-59d0-98d2-4ca37236f64c", "partial"),
+                        Tuple.tuple("rp-phys-sek2-relativistic-consequences", "19aef2ed-eb46-55b1-9486-ee83f7520bb6", "partial"),
+                        Tuple.tuple("rp-phys-sek2-spacetime-diagrams", "6ebb6182-f221-5f4c-b112-4ac72b104321", "partial"),
+                        Tuple.tuple("rp-phys-sek2-gravitational-time-dependence-evidence", "a9169a74-de19-54a9-a8ac-a2ce43c7342e", "partial"));
     }
 
     @Test

@@ -7573,3 +7573,295 @@ Interpretation:
 
 - Rheinland-Pfalz remains the active Physics lane and now widens the shared Q4 atom-model surface in addition to the earlier `Quantenobjekte I` strip
 - the next clean RP move is now the adjacent strip `Quantenmechanische Atomvorstellung II`, while the RP Planck-estimation clause stays intentionally source-led on the current reviewed cut
+
+### 2026-04-17: Rheinland-Pfalz Physics now also carries the first narrow reviewed LF atom-model follow-on `Quantenmechanische Atomvorstellung II`
+
+What changed:
+
+- the active RP upper-secondary Physics snapshot in
+  - `curricula/DE/Gymnasium/input/RP/upper-secondary/source-json/DE_RLP_S_GYM_2_PHYSIK.de.json.snapshot`
+  now also contains one first narrow reviewed LF atom-model follow-on `Quantenmechanische Atomvorstellung II` with seven visible application leaves:
+  - `Franck-Hertz-Versuch fachlich einordnen`
+  - `Natriumresonanzabsorption als Beispiel quantisierter Absorption deuten`
+  - `Lumineszenz als atommodellgestuetztes Anwendungsbeispiel fachlich einordnen`
+  - `Laser als Anwendungsbeispiel atomarer Uebergaenge fachlich einordnen`
+  - `Spektralanalyse fuer diskrete Energiezustaende fachlich nutzen`
+  - `Chemische Bindung und Molekuelstruktur als atommodellgestuetzte Anwendung fachlich einordnen`
+  - `Farbstoffmolekuele als quantenphysikalisches Anwendungsbeispiel fachlich einordnen`
+- the RP mapping lane in
+  - `curricula/DE/Gymnasium/mapping/DE-RP/upper-secondary/rp_physics_upper_secondary_to_canonical_physics.json`
+  now adds four conservative bridges:
+  - `rp-phys-sek2-quantum-atomic-model-lf` -> `Atomvorstellungen` (`partial`)
+  - `rp-phys-sek2-franck-hertz-experiment` -> `Franck-Hertz-Versuch` (`partial`)
+  - `rp-phys-sek2-sodium-resonance-absorption` -> `Emission, Absorption und Linienspektren` (`partial`)
+  - `rp-phys-sek2-spectral-analysis` -> `Bedeutung von Flammenfaerbung, Linienspektren und Spektralanalyse fuer Modelle diskreter Energiezustaende interpretieren` (`partial`)
+
+Current reviewed RP cut:
+
+- `65` reviewed mappings
+- `78` snapshot goals
+- root weight `64`
+- root atomic closure `64`
+- one first reviewed Grundfach-Quantenkorridor `Quantenobjekte I`
+- one adjacent first reviewed Grundfach-Atommodellkorridor `Quantenmechanische Atomvorstellung I`
+- one first narrow reviewed LF-Atommodell-Follow-on `Quantenmechanische Atomvorstellung II`
+- no Rheinland-Pfalz-specific canonical Physics atom
+- no committed Rheinland-Pfalz applicability cut
+
+Why this cut:
+
+- the RP LF strip `Quantenmechanische Atomvorstellung II` already exposes three application examples with narrow enough shared reviewed targets: `Franck-Hertz`, `Natriumresonanzabsorption`, and `Spektralanalyse`
+- the remaining LF examples `Lumineszenz`, `Laser`, `chemische Bindung/Molekuelstruktur`, and `Farbstoffmolekuele` would currently force broader or cross-subject claims than the shared canonical Physics surface can conservatively carry
+- freezing those four LF application examples as explicit source-led residues is cleaner than inventing a Rheinland-Pfalz-specific canonical split
+
+Validation used:
+
+- JSON-Parse for RP snapshot, RP mapping, membership registry, closure registry, and rollout tracker
+- `python3 scripts/render_canonical_physics_bundesland_status.py`
+- `cd backend && GRADLE_USER_HOME=/home/enpasos/projects/skillpilot/backend/.gradle-ci ./gradlew test --tests 'com.skillpilot.backend.landscape.GoalMappingRepositoryFixtureTest' --no-daemon`
+- `cd backend && GRADLE_USER_HOME=/home/enpasos/projects/skillpilot/backend/.gradle-ci ./gradlew clean check --no-daemon`
+- `git diff --check`
+
+Interpretation:
+
+- Rheinland-Pfalz remains the active Physics lane and now also carries a first narrow LF application strip on the shared atom-model surface
+- the next clean RP move is now the adjacent strip `Wechselwirkung von Quantenobjekten`, not another forced split inside the remaining LF application examples of `Quantenmechanische Atomvorstellung II`
+
+### 2026-04-17: Rheinland-Pfalz Physics now also carries the first narrow reviewed LF interaction follow-on `Wechselwirkung von Quantenobjekten`
+
+What changed:
+
+- the active RP upper-secondary Physics snapshot in
+  - `curricula/DE/Gymnasium/input/RP/upper-secondary/source-json/DE_RLP_S_GYM_2_PHYSIK.de.json.snapshot`
+  now also contains one first narrow reviewed LF interaction follow-on `Wechselwirkung von Quantenobjekten` with five visible leaves:
+  - `Compton-Effekt als Wechselwirkung von Strahlung und Materie fachlich deuten`
+  - `Hallwachs-Effekt als Licht-Materie-Wechselwirkung fachlich einordnen`
+  - `Paarerzeugung als Wechselwirkung hochenergetischer Strahlung mit Materie fachlich einordnen`
+  - `Elektronenbeugung und Bragg-Reflexion als Interferenzphaenomene fachlich deuten`
+  - `Entstehung von Roentgenstrahlung fachlich beschreiben`
+- the RP mapping lane in
+  - `curricula/DE/Gymnasium/mapping/DE-RP/upper-secondary/rp_physics_upper_secondary_to_canonical_physics.json`
+  now adds four conservative bridges:
+  - `rp-phys-sek2-compton-effect` -> `Compton-Effekt` (`partial`)
+  - `rp-phys-sek2-hallwachs-effect` -> `Fotöffekt und Einstein-Deutung` (`partial`)
+  - `rp-phys-sek2-electron-diffraction-bragg` -> `Bragg-Bedingung anwenden (LK)` (`partial`)
+  - `rp-phys-sek2-xray-generation` -> `Röntgenspektren deuten` (`partial`)
+
+Current reviewed RP cut:
+
+- `69` reviewed mappings
+- `84` snapshot goals
+- root weight `69`
+- root atomic closure `69`
+- one first reviewed Grundfach-Quantenkorridor `Quantenobjekte I`
+- one adjacent first reviewed Grundfach-Atommodellkorridor `Quantenmechanische Atomvorstellung I`
+- one first narrow reviewed LF-Atommodell-Follow-on `Quantenmechanische Atomvorstellung II`
+- one first narrow reviewed LF-Interaktions-Follow-on `Wechselwirkung von Quantenobjekten`
+- no Rheinland-Pfalz-specific canonical Physics atom
+- no committed Rheinland-Pfalz applicability cut
+
+Why this cut:
+
+- the RP LF strip `Wechselwirkung von Quantenobjekten` already exposes four examples with narrow enough shared reviewed targets on the existing Q3 quantum / X-ray surface: `Compton-Effekt`, `Hallwachs-Effekt`, `Elektronenbeugung / Bragg-Reflexion`, and `Roentgenstrahlung`
+- the remaining source leaf `Paarerzeugung` would currently force a broader or conceptually shifted claim than the shared canonical Physics surface can conservatively carry
+- freezing that one LF residue as explicit source-led micro-residue is cleaner than inventing a Rheinland-Pfalz-specific canonical split
+
+Validation used:
+
+- JSON-Parse for RP snapshot, RP mapping, membership registry, closure registry, and rollout tracker
+- `python3 scripts/render_canonical_physics_bundesland_status.py`
+- `cd backend && GRADLE_USER_HOME=/home/enpasos/projects/skillpilot/backend/.gradle-ci ./gradlew clean check --no-daemon --console=plain`
+- `git diff --check`
+
+Interpretation:
+
+- Rheinland-Pfalz remains the active Physics lane and now also carries a first narrow LF interaction strip on the shared quantum / X-ray surface
+- the next clean RP move is now the adjacent strip `Quantenobjekte II`, not another forced split inside the remaining source-led residue `Paarerzeugung`
+
+### 2026-04-17: Rheinland-Pfalz Physics now also carries the first narrow reviewed LF quantum-object follow-on `Quantenobjekte II`
+
+What changed:
+
+- the active RP upper-secondary Physics snapshot in
+  - `curricula/DE/Gymnasium/input/RP/upper-secondary/source-json/DE_RLP_S_GYM_2_PHYSIK.de.json.snapshot`
+  now also contains one first narrow reviewed LF quantum-object follow-on `Quantenobjekte II` with four visible leaves:
+  - `Interpretationsmoeglichkeiten der Quantentheorie an einem Gedanken- oder Realexperiment fachlich reflektieren`
+  - `Elektronenbeugungsroehre als experimentellen Beleg fuer materielle Quantenobjekte fachlich einordnen`
+  - `Hallwachs-Effekt als experimentellen Beleg fuer Lichtquanten fachlich einordnen`
+  - `Quantenradierer im Hinblick auf Interferenz und Welcher-Weg-Information fachlich deuten`
+- the RP mapping lane in
+  - `curricula/DE/Gymnasium/mapping/DE-RP/upper-secondary/rp_physics_upper_secondary_to_canonical_physics.json`
+  now adds five conservative bridges:
+  - `rp-phys-sek2-quantum-objects-lf` -> `Quantenobjekte` (`partial`)
+  - `rp-phys-sek2-quantum-theory-interpretations` -> `Das Messproblem in der Quantenphysik` (`partial`)
+  - `rp-phys-sek2-electron-diffraction-tube` -> `Photonen und Elektronen als Quantenobjekte beschreiben` (`partial`)
+  - `rp-phys-sek2-hallwachs-effect-evidence` -> `Fotöffekt und Einstein-Deutung` (`partial`)
+  - `rp-phys-sek2-quantum-eraser` -> `Komplementaritaet durch Interferenzfaehigkeit und Welcher-Weg-Information erlaeutern` (`partial`)
+
+Current reviewed RP cut:
+
+- `74` reviewed mappings
+- `89` snapshot goals
+- root weight `73`
+- root atomic closure `73`
+- one first reviewed Grundfach-Quantenkorridor `Quantenobjekte I`
+- one first narrow reviewed LF-Quantenobjekt-Follow-on `Quantenobjekte II`
+- one adjacent first reviewed Grundfach-Atommodellkorridor `Quantenmechanische Atomvorstellung I`
+- one first narrow reviewed LF-Atommodell-Follow-on `Quantenmechanische Atomvorstellung II`
+- one first narrow reviewed LF-Interaktions-Follow-on `Wechselwirkung von Quantenobjekten`
+- no Rheinland-Pfalz-specific canonical Physics atom
+- no committed Rheinland-Pfalz applicability cut
+
+Why this cut:
+
+- the RP LF strip `Quantenobjekte II` now exposes one clean shared interpretation/messproblem route plus three experimental-evidence leaves with existing narrow enough reviewed targets on the shared Q4 quantum-object surface
+- the new cut widens the already opened RP Q4 family without forcing a new canonical split for named interpretation schools
+- reusing the existing shared Messproblem-, Komplementaritaet-, photoeffect-, and quantum-object targets is cleaner than inventing a Rheinland-Pfalz-specific LF package
+
+Validation used:
+
+- JSON-Parse for RP snapshot, RP mapping, membership registry, closure registry, and rollout tracker
+- `python3 scripts/render_canonical_physics_bundesland_status.py`
+- `cd backend && GRADLE_USER_HOME=/home/enpasos/projects/skillpilot/backend/.gradle-ci ./gradlew clean check --no-daemon --console=plain`
+- `git diff --check`
+
+Interpretation:
+
+- Rheinland-Pfalz remains the active Physics lane and now also carries a first narrow LF quantum-object strip on the shared Q4 surface
+- the next clean RP move is now the existing shared LF strip `Elementarteilchenphysik`, not another micro-split inside the already opened RP quantum / atom / interaction family
+
+### 2026-04-17: Rheinland-Pfalz Physics now also carries the first narrow reviewed LF particle-physics follow-on `Elementarteilchenphysik`
+
+What changed:
+
+- the active RP upper-secondary Physics snapshot in
+  - `curricula/DE/Gymnasium/input/RP/upper-secondary/source-json/DE_RLP_S_GYM_2_PHYSIK.de.json.snapshot`
+  now also contains one first narrow reviewed LF particle-physics follow-on `Elementarteilchenphysik` with four visible leaves:
+  - `Standardmodell als Ordnungsschema der Elementarteilchen fachlich beschreiben`
+  - `Fundamentale Wechselwirkungen und Austauschteilchen fachlich einordnen`
+  - `Experimentelle Befunde der Elementarteilchenphysik fachlich einordnen`
+  - `Offene Fragen der Elementarteilchenphysik an Beispielen fachlich beschreiben`
+- the RP mapping lane in
+  - `curricula/DE/Gymnasium/mapping/DE-RP/upper-secondary/rp_physics_upper_secondary_to_canonical_physics.json`
+  now adds four conservative bridges:
+  - `rp-phys-sek2-particle-physics-lf` -> `Elementarteilchen und Standardmodell` (`partial`)
+  - `rp-phys-sek2-standard-model-ordering-scheme` -> `Standardmodell: Teilchenfamilien` (`partial`)
+  - `rp-phys-sek2-fundamental-interactions-exchange-particles` -> `Fundamentale Wechselwirkungen` (`partial`)
+  - `rp-phys-sek2-particle-physics-experimental-evidence` -> `Teilchenphysik in der Forschung (CERN)` (`partial`)
+
+Current reviewed RP cut:
+
+- `78` reviewed mappings
+- `94` snapshot goals
+- root weight `77`
+- root atomic closure `77`
+- one first narrow reviewed LF particle-physics follow-on `Elementarteilchenphysik`
+- no Rheinland-Pfalz-specific canonical Physics atom
+- no committed Rheinland-Pfalz applicability cut
+
+Why this cut:
+
+- the RP LF strip `Elementarteilchenphysik` is the next clean adjacent source surface after the stabilized RP quantum / atom / interaction family
+- the shared canonical Q4 particle-physics surface already carries narrow enough reviewed targets for the Standardmodell as ordering scheme, the four fundamental interactions, and the research-facing experimental evidence surface
+- keeping `Offene Fragen` source-led avoids overclaiming the broader existing research/CERN target before wider reviewed evidence exists
+
+Validation used:
+
+- JSON-Parse for RP snapshot, RP mapping, membership registry, closure registry, and rollout tracker
+- `python3 scripts/render_canonical_physics_bundesland_status.py`
+- `cd backend && GRADLE_USER_HOME=/home/enpasos/projects/skillpilot/backend/.gradle-ci ./gradlew clean check --no-daemon --console=plain`
+- `git diff --check`
+
+Interpretation:
+
+- Rheinland-Pfalz remains the active Physics lane and now also carries a first narrow LF particle-physics strip on the shared Q4 surface
+- the next clean RP move is now the adjacent shared LF strip `Relativistische Kinematik`, not another micro-split inside the already opened RP particle-physics residue `Offene Fragen`
+
+### 2026-04-17: Rheinland-Pfalz Physics now also carries the first narrow reviewed LF relativity-kinematics follow-on `Relativistische Kinematik`
+
+What changed:
+
+- the active RP upper-secondary Physics snapshot in
+  - `curricula/DE/Gymnasium/input/RP/upper-secondary/source-json/DE_RLP_S_GYM_2_PHYSIK.de.json.snapshot`
+  now also contains one first narrow reviewed LF follow-on `Relativistische Kinematik` with three visible reviewed leaves:
+  - `Relativitaetspostulate, Relativitaet der Gleichzeitigkeit und experimentelle Belege fachlich einordnen`
+  - `Lorentz-Kontraktion, Zeitdilatation und Zwillingsparadoxon fachlich deuten`
+  - `Raum-Zeit-Diagramme in relativistischen Kontexten fachlich nutzen`
+- the RP mapping lane in
+  - `curricula/DE/Gymnasium/mapping/DE-RP/upper-secondary/rp_physics_upper_secondary_to_canonical_physics.json`
+  now adds four conservative bridges:
+  - `rp-phys-sek2-relativistic-kinematics-lf` -> `Spezielle Relativitätstheorie` (`partial`)
+  - `rp-phys-sek2-relativity-postulates-simultaneity-experiments` -> `Relativitätspostulate und Experimente` (`partial`)
+  - `rp-phys-sek2-relativistic-consequences` -> `Zeitdilatation und Längenkontraktion` (`partial`)
+  - `rp-phys-sek2-spacetime-diagrams` -> `Minkowski-Diagramme nutzen` (`partial`)
+
+Current reviewed RP cut:
+
+- `82` reviewed mappings
+- `98` snapshot goals
+- root weight `80`
+- root atomic closure `80`
+- one first narrow reviewed LF relativity-kinematics follow-on `Relativistische Kinematik`
+- no Rheinland-Pfalz-specific canonical Physics atom
+- no committed Rheinland-Pfalz applicability cut
+
+Why this cut:
+
+- the RP LF strip `Relativistische Kinematik` is the next clean adjacent source surface after the stabilized RP particle-physics strip
+- the shared canonical special-relativity surface already carries narrow enough reviewed targets for postulates plus experimental evidence, relativistic consequences, and Minkowski-diagram usage
+- folding the experimental evidence clause into the first reviewed RP leaf keeps the cut narrow and avoids a redundant second bridge onto the same shared experimental target
+
+Validation used:
+
+- JSON-Parse for RP snapshot, RP mapping, membership registry, closure registry, and rollout tracker
+- `python3 scripts/render_canonical_physics_bundesland_status.py`
+- `cd backend && GRADLE_USER_HOME=/home/enpasos/projects/skillpilot/backend/.gradle-ci ./gradlew clean check --no-daemon --console=plain`
+- `git diff --check`
+
+Interpretation:
+
+- Rheinland-Pfalz remains the active Physics lane and now also carries a first narrow LF relativity-kinematics strip on the shared special-relativity surface
+- the next clean RP move is now the adjacent shared LF strip `Relativistische Dynamik`
+
+### 2026-04-18: Rheinland-Pfalz Physics now also carries the first narrow reviewed LF relativity-dynamics follow-on `Relativistische Dynamik`
+
+What changed:
+
+- the active RP upper-secondary Physics snapshot in
+  - `curricula/DE/Gymnasium/input/RP/upper-secondary/source-json/DE_RLP_S_GYM_2_PHYSIK.de.json.snapshot`
+  now also contains one first narrow reviewed LF follow-on `Relativistische Dynamik` with three visible leaves:
+  - `Masse-Energie-Aequivalenz fachlich einordnen`
+  - `Abhaengigkeit der Zeit vom Gravitationsfeld und experimentelle Belege fachlich einordnen`
+  - `Zusammenhaenge zwischen Energie, Impuls, Geschwindigkeit sowie Grenzgeschwindigkeit und Grenzfaelle fachlich deuten`
+- the RP mapping lane in
+  - `curricula/DE/Gymnasium/mapping/DE-RP/upper-secondary/rp_physics_upper_secondary_to_canonical_physics.json`
+  now adds one conservative bridge:
+  - `rp-phys-sek2-gravitational-time-dependence-evidence` -> `GPS und Relativitätstheorie` (`partial`)
+
+Current reviewed RP cut:
+
+- `83` reviewed mappings
+- `102` snapshot goals
+- root weight `83`
+- root atomic closure `83`
+- one first narrow reviewed LF relativity-dynamics follow-on `Relativistische Dynamik`
+- no Rheinland-Pfalz-specific canonical Physics atom
+- no committed Rheinland-Pfalz applicability cut
+
+Why this cut:
+
+- the RP LF strip `Relativistische Dynamik` is the next clean adjacent source surface after the stabilized RP relativity-kinematics strip
+- the shared canonical relativity surface already carries one narrow enough reviewed target for the gravitation/time clause via `GPS und Relativitätstheorie`
+- `Masse-Energie-Aequivalenz` plus the retained RP LF clause on `Energie`, `Impuls`, `Geschwindigkeit`, `Grenzgeschwindigkeit`, and `Grenzfaelle` stay intentionally source-led because the current shared canonical relativity surface still has no genuinely narrow reviewed targets for them
+
+Validation used:
+
+- JSON-Parse for RP snapshot, RP mapping, membership registry, closure registry, and rollout tracker
+- `python3 scripts/render_canonical_physics_bundesland_status.py`
+- `cd backend && GRADLE_USER_HOME=/home/enpasos/projects/skillpilot/backend/.gradle-ci ./gradlew clean check --no-daemon --console=plain`
+- `git diff --check`
+
+Interpretation:
+
+- Rheinland-Pfalz remains the active Physics lane and now also carries a first narrow LF relativity-dynamics strip on the shared relativity surface
+- the next clean RP move is now the adjacent LF strip `Astrophysik`
