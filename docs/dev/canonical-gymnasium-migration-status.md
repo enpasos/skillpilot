@@ -2260,7 +2260,7 @@ Applied changes:
 Validation used:
 
 - `npm run validate:view-filters`
-- `./gradlew test --tests 'com.skillpilot.backend.landscape.GoalMappingRepositoryFixtureTest'`
+- `cd backend && GRADLE_USER_HOME=/home/enpasos/projects/skillpilot/backend/.gradle-ci ./gradlew clean check --no-daemon --console=plain`
 
 Validation result:
 
@@ -8771,3 +8771,889 @@ Interpretation:
 - the nationwide Physics `P2` tranche is now closed
 - the active blocker has shifted from snapshot activation to first structural-anchor activation
 - the next clean rollout move is the first conservative `P3` pass, not another snapshot-only or state-local reviewed corridor widening
+
+### 2026-04-20: Bremen Physics moves from `P2` source-backed snapshots to `P3` structural anchors
+
+What changed:
+
+- the first Bremen lower-secondary Physics structural-anchor mapping now lives at
+  - `curricula/DE/Gymnasium/mapping/DE-HB/lower-secondary/hb_physics_lower_secondary_to_canonical_physics.json`
+- the first Bremen upper-secondary Physics structural-anchor mapping now lives at
+  - `curricula/DE/Gymnasium/mapping/DE-HB/upper-secondary/hb_physics_upper_secondary_to_canonical_physics.json`
+- the Bremen onboarding note now documents the first anchor cut:
+  - `curricula/DE/Gymnasium/provenance/hb-physics-onboarding.md`
+- the Physics rollout tracker now lifts `DE-HB` from `P2` to `P3`
+
+Current Bremen Physics state:
+
+- lower-secondary retained source lane now maps the retained root plus orientation and the first thematic retained subanchors across `Schall`, `Optik`, `Mechanik`, `Elektrostatik`, `Stromkreis`, `Elektromagnetismus`, and `Radioaktivitaet` onto the shared Sek-I physics spine
+- upper-secondary retained source lane now maps the retained root plus orientation, the broad `E`, `Q1`, and `Q2` anchors, and one explicit `Q4` side anchor from the LK leaf `Struktur der Materie` onto the shared canonical upper-secondary spine
+- no reviewed Bremen Physics corridor is open yet
+- no Bremen-specific canonical Physics atom exists yet
+- no committed Bremen applicability cut exists yet
+
+Why this cut:
+
+- it starts the nationwide Physics `P3` tranche with the narrowest possible first anchor pass on one of the newly activated states
+- it keeps the Bremen cut explicitly structural instead of slipping into a first reviewed corridor too early
+- it establishes the exact lower-/upper-secondary mapping file shape that the remaining newly activated states can now mirror
+
+Validation used:
+
+- JSON parse of the two new Bremen Physics mapping files plus the updated tracker
+- `./gradlew test --tests 'com.skillpilot.backend.landscape.GoalMappingRepositoryFixtureTest'`
+- `python3 scripts/render_canonical_physics_bundesland_status.py`
+- `git diff --check`
+
+Interpretation:
+
+- the active blocker is no longer whether the first structural-anchor pass can start; it has now started with Bremen
+- the nationwide `F4.ALL_NEWLY_ARCHIVED_STATE_STRUCTURAL_ANCHOR_ACTIVATION` corridor stays active, and the next clean state on that path is Hamburg
+
+### 2026-04-20: Hamburg Physics moves from `P2` source-backed snapshots to `P3` structural anchors
+
+What changed:
+
+- the first Hamburg lower-secondary Physics structural-anchor mapping now lives at
+  - `curricula/DE/Gymnasium/mapping/DE-HH/lower-secondary/hh_physics_lower_secondary_to_canonical_physics.json`
+- the first Hamburg upper-secondary Physics structural-anchor mapping now lives at
+  - `curricula/DE/Gymnasium/mapping/DE-HH/upper-secondary/hh_physics_upper_secondary_to_canonical_physics.json`
+- the Hamburg onboarding note now documents the first anchor cut:
+  - `curricula/DE/Gymnasium/provenance/hh-physics-onboarding.md`
+- the Physics rollout tracker now lifts `DE-HH` from `P2` to `P3`
+
+Current Hamburg Physics state:
+
+- lower-secondary retained source lane now maps the retained root plus orientation and the first thematic retained subanchors across `Elektrizitaet`, `Bewegung und Kraft`, `Licht und Schall`, `Elektrizitaet und Magnetismus`, and `Licht und Materie` onto the shared Sek-I physics spine
+- upper-secondary retained source lane now maps the retained root plus orientation, the broad `Q1`, `Q2`, and `Q3` anchors, and one explicit late-side anchor on `Astrophysik` onto the shared canonical upper-secondary spine
+- no reviewed Hamburg Physics corridor is open yet
+- no Hamburg-specific canonical Physics atom exists yet
+- no committed Hamburg applicability cut exists yet
+
+Why this cut:
+
+- it proves the first conservative `P3` anchor pattern is repeatable on a second newly activated state instead of being a Bremen one-off
+- it keeps Hamburg explicitly structural instead of slipping into a first reviewed corridor too early
+- it moves the active nationwide tranche forward without inventing another canonical Physics atom or an early Hamburg applicability sweep
+
+Validation used:
+
+- JSON parse of the two new Hamburg Physics mapping files plus the updated tracker
+- `cd backend && GRADLE_USER_HOME=/home/enpasos/projects/skillpilot/backend/.gradle-ci ./gradlew clean check --no-daemon --console=plain`
+- `python3 scripts/render_canonical_physics_bundesland_status.py`
+- `git diff --check`
+
+Interpretation:
+
+- the active blocker is no longer whether Hamburg can carry the first structural-anchor cut; Hamburg now does
+- the nationwide `F4.ALL_NEWLY_ARCHIVED_STATE_STRUCTURAL_ANCHOR_ACTIVATION` corridor stays active, and the next clean state on that path is Mecklenburg-Vorpommern
+
+### 2026-04-20: Mecklenburg-Vorpommern Physics moves from `P2` source-backed snapshots to `P3` structural anchors
+
+What changed:
+
+- the first Mecklenburg-Vorpommern lower-secondary Physics structural-anchor mapping now lives at
+  - `curricula/DE/Gymnasium/mapping/DE-MV/lower-secondary/mv_physics_lower_secondary_to_canonical_physics.json`
+- the first Mecklenburg-Vorpommern upper-secondary Physics structural-anchor mapping now lives at
+  - `curricula/DE/Gymnasium/mapping/DE-MV/upper-secondary/mv_physics_upper_secondary_to_canonical_physics.json`
+- the Mecklenburg-Vorpommern onboarding note now documents the first anchor cut:
+  - `curricula/DE/Gymnasium/provenance/mv-physics-onboarding.md`
+- the Physics rollout tracker now lifts `DE-MV` from `P2` to `P3`
+
+Current Mecklenburg-Vorpommern Physics state:
+
+- lower-secondary retained source lane now maps the retained root plus orientation and the first thematic retained subanchors across `Klasse 7`, `Klasse 8`, `Klasse 9`, and `Klasse 10` onto the shared Sek-I physics spine on mechanics, optics, electricity, and nuclear physics
+- upper-secondary retained source lane now maps the retained root plus orientation and the broad retained anchors `Elektrische und magnetische Felder`, `Schwingungen und Wellen`, and `Quantenphysik und Materie` onto the shared canonical upper-secondary spine
+- the integrative upper-secondary band remains intentionally source-led at this first `P3` cut
+- no reviewed Mecklenburg-Vorpommern Physics corridor is open yet
+- no Mecklenburg-Vorpommern-specific canonical Physics atom exists yet
+- no committed Mecklenburg-Vorpommern applicability cut exists yet
+
+Why this cut:
+
+- it proves the conservative `P3` anchor pattern is also viable on a state whose retained intake started from class-wide Sek-I strips and a source-led integrative upper-secondary band
+- it keeps Mecklenburg-Vorpommern explicitly structural instead of overclaiming the first reviewed corridor too early
+- it moves the nationwide structural-anchor tranche forward without inventing another canonical Physics atom or an early applicability sweep
+
+Validation used:
+
+- JSON parse of the two new Mecklenburg-Vorpommern Physics mapping files plus the updated tracker
+- `cd backend && GRADLE_USER_HOME=/home/enpasos/projects/skillpilot/backend/.gradle-ci ./gradlew clean check --no-daemon --console=plain`
+- `python3 scripts/render_canonical_physics_bundesland_status.py`
+- `git diff --check`
+
+Interpretation:
+
+- the active blocker is no longer whether Mecklenburg-Vorpommern can carry the first structural-anchor cut; Mecklenburg-Vorpommern now does
+- the nationwide `F4.ALL_NEWLY_ARCHIVED_STATE_STRUCTURAL_ANCHOR_ACTIVATION` corridor stays active, and the next clean state on that path is Saarland
+
+### 2026-04-20: Saarland Physics moves from `P2` source-backed snapshots to `P3` structural anchors
+
+What changed:
+
+- the first Saarland lower-secondary Physics structural-anchor mapping now lives at
+  - `curricula/DE/Gymnasium/mapping/DE-SL/lower-secondary/sl_physics_lower_secondary_to_canonical_physics.json`
+- the first Saarland upper-secondary Physics structural-anchor mapping now lives at
+  - `curricula/DE/Gymnasium/mapping/DE-SL/upper-secondary/sl_physics_upper_secondary_to_canonical_physics.json`
+- the Saarland onboarding note now documents the first anchor cut:
+  - `curricula/DE/Gymnasium/provenance/sl-physics-onboarding.md`
+- the Physics rollout tracker now lifts `DE-SL` from `P2` to `P3`
+
+Current Saarland Physics state:
+
+- lower-secondary retained source lane now maps the retained root plus orientation and the first thematic retained subanchors across the `Klassenstufen 5/6` Naturwissenschaften feeder, `Klassenstufe 7`, branch-sensitive `Klassenstufe 8`, branch-sensitive `Klassenstufe 9`, and branch-sensitive `Klassenstufe 10` strips onto the shared Sek-I physics spine on mechanics, optics, electricity, and radioactivity
+- upper-secondary retained source lane now maps the retained root plus orientation and the broad course-sensitive thematic anchors `Einfuehrungsphase: Kraft und Bewegung`, `Hauptphase G-Kurs`, and `Hauptphase Leistungskurs` onto the shared canonical upper-secondary spine on `E`, `Q1`, `Q2`, and `Q3`
+- `Einfuehrungsphase: Kernenergie und Radioaktivitaet` remains intentionally source-led at this first `P3` cut
+- no reviewed Saarland Physics corridor is open yet
+- no Saarland-specific canonical Physics atom exists yet
+- no committed Saarland applicability cut exists yet
+
+Why this cut:
+
+- it proves the conservative `P3` anchor pattern is also viable on a state with branch-sensitive Sek-I packaging and a course-sensitive Oberstufenstruktur
+- it keeps Saarland explicitly structural instead of opening a first reviewed corridor before the remaining new states carry comparable anchor coverage
+- it moves the nationwide structural-anchor tranche forward without inventing another canonical Physics atom or an early applicability sweep
+
+Validation used:
+
+- JSON parse of the two new Saarland Physics mapping files plus the updated tracker
+- `cd backend && GRADLE_USER_HOME=/home/enpasos/projects/skillpilot/backend/.gradle-ci ./gradlew clean check --no-daemon --console=plain`
+- `python3 scripts/render_canonical_physics_bundesland_status.py`
+- `git diff --check`
+
+Interpretation:
+
+- the active blocker is no longer whether Saarland can carry the first structural-anchor cut; Saarland now does
+- the nationwide `F4.ALL_NEWLY_ARCHIVED_STATE_STRUCTURAL_ANCHOR_ACTIVATION` corridor stays active, and the next clean state on that path is Sachsen
+
+### 2026-04-20: Sachsen Physics moves from `P2` source-backed snapshots to `P3` structural anchors
+
+What changed:
+
+- the first Sachsen lower-secondary Physics structural-anchor mapping now lives at
+  - `curricula/DE/Gymnasium/mapping/DE-SN/lower-secondary/sn_physics_lower_secondary_to_canonical_physics.json`
+- the first Sachsen upper-secondary Physics structural-anchor mapping now lives at
+  - `curricula/DE/Gymnasium/mapping/DE-SN/upper-secondary/sn_physics_upper_secondary_to_canonical_physics.json`
+- the Sachsen onboarding note now documents the first anchor cut:
+  - `curricula/DE/Gymnasium/provenance/sn-physics-onboarding.md`
+- the Physics rollout tracker now lifts `DE-SN` from `P2` to `P3`
+
+Current Sachsen Physics state:
+
+- lower-secondary retained source lane now maps the retained root plus orientation and the first thematic retained subanchors across `Klassenstufe 6`, `Klassenstufe 7`, `Klassenstufe 8`, `Klassenstufe 9`, and `Klassenstufe 10` onto the shared Sek-I physics spine on mechanics, optics, and electricity
+- the lower-secondary heat, energy, astronomy, wave, and practicum strips remain intentionally source-led at this first `P3` cut
+- upper-secondary retained source lane now maps the retained root plus orientation and the first broad thematic anchors across `GK11`, `GK12`, `LK11`, and `LK12` onto the shared canonical upper-secondary spine on `E`, `Q1`, `Q2`, `Q3`, and `Q4`
+- the upper-secondary capacitor/practicum, modelling, Newton/curvilinear, and remaining practicum strips remain intentionally source-led at this first `P3` cut
+- no reviewed Sachsen Physics corridor is open yet
+- no Sachsen-specific canonical Physics atom exists yet
+- no committed Sachsen applicability cut exists yet
+
+Why this cut:
+
+- it proves the conservative `P3` anchor pattern is also viable on a state whose retained source family spans one shared Sek-I/Sek-II Gymnasium Physics PDF but still breaks into distinct lower- and upper-secondary structural strips
+- it keeps Sachsen explicitly structural instead of pretending the first reviewed corridor already exists across the newly activated wave, quantum, or relativity surfaces
+- it moves the nationwide structural-anchor tranche forward without inventing another canonical Physics atom or an early applicability sweep
+
+Validation used:
+
+- JSON parse of the two new Sachsen Physics mapping files plus the updated tracker
+- `cd backend && GRADLE_USER_HOME=/home/enpasos/projects/skillpilot/backend/.gradle-ci ./gradlew clean check --no-daemon --console=plain`
+- `python3 scripts/render_canonical_physics_bundesland_status.py`
+- `git diff --check`
+
+Interpretation:
+
+- the active blocker is no longer whether Sachsen can carry the first structural-anchor cut; Sachsen now does
+- the nationwide `F4.ALL_NEWLY_ARCHIVED_STATE_STRUCTURAL_ANCHOR_ACTIVATION` corridor stays active, and the next clean state on that path is Sachsen-Anhalt
+
+### 2026-04-20: Sachsen-Anhalt Physics moves from `P2` source-backed snapshots to `P3` structural anchors
+
+What changed:
+
+- the first Sachsen-Anhalt lower-secondary Physics structural-anchor mapping now lives at
+  - `curricula/DE/Gymnasium/mapping/DE-ST/lower-secondary/st_physics_lower_secondary_to_canonical_physics.json`
+- the first Sachsen-Anhalt upper-secondary Physics structural-anchor mapping now lives at
+  - `curricula/DE/Gymnasium/mapping/DE-ST/upper-secondary/st_physics_upper_secondary_to_canonical_physics.json`
+- the Sachsen-Anhalt onboarding note now documents the first anchor cut:
+  - `curricula/DE/Gymnasium/provenance/st-physics-onboarding.md`
+- the Physics rollout tracker now lifts `DE-ST` from `P2` to `P3`
+
+Current Sachsen-Anhalt Physics state:
+
+- lower-secondary retained source lane now maps the retained root plus orientation and the first thematic retained subanchors across `Schuljahrgang 6`, `Schuljahrgaenge 7/8`, and `Schuljahrgang 9` onto the shared Sek-I physics spine on mechanics, optics, and electricity
+- the lower-secondary nature-of-physics, heat, and gas strips remain intentionally source-led at this first `P3` cut
+- upper-secondary retained source lane now maps the retained root plus orientation and the first broad thematic anchors across `Schuljahrgang 10 (Einfuehrungsphase)`, `grundlegendes Anforderungsniveau`, `erhoehtes Anforderungsniveau`, and `zweistuendiges Wahlpflichtfach` onto the shared canonical upper-secondary spine on `E`, `Q1`, `Q2`, `Q3`, and `Q4`
+- the upper-secondary optics, radioactivity, climate, practicum, and task-practicum strips remain intentionally source-led at this first `P3` cut
+- no reviewed Sachsen-Anhalt Physics corridor is open yet
+- no Sachsen-Anhalt-specific canonical Physics atom exists yet
+- no committed Sachsen-Anhalt applicability cut exists yet
+
+Why this cut:
+
+- it proves the conservative `P3` anchor pattern is also viable on a state whose retained source family separates a narrow Einfuehrungsphase from three different qualification profiles without forcing an early reviewed corridor
+- it keeps Sachsen-Anhalt explicitly structural instead of pretending the first reviewed optics, induction, relativity, or quantum corridor is already justified on that retained family
+- it moves the nationwide structural-anchor tranche forward without inventing another canonical Physics atom or an early applicability sweep
+
+Validation used:
+
+- JSON parse of the two new Sachsen-Anhalt Physics mapping files plus the updated tracker
+- `cd backend && GRADLE_USER_HOME=/home/enpasos/projects/skillpilot/backend/.gradle-ci ./gradlew clean check --no-daemon --console=plain`
+- `python3 scripts/render_canonical_physics_bundesland_status.py`
+- `git diff --check`
+
+Interpretation:
+
+- the active blocker is no longer whether Sachsen-Anhalt can carry the first structural-anchor cut; Sachsen-Anhalt now does
+
+### 2026-04-20: Thueringen Physics moves from `P2` source-backed snapshots to `P3` structural anchors
+
+What changed:
+
+- the first Thueringen lower-secondary Physics structural-anchor mapping now lives at
+  - `curricula/DE/Gymnasium/mapping/DE-TH/lower-secondary/th_physics_lower_secondary_to_canonical_physics.json`
+- the first Thueringen upper-secondary Physics structural-anchor mapping now lives at
+  - `curricula/DE/Gymnasium/mapping/DE-TH/upper-secondary/th_physics_upper_secondary_to_canonical_physics.json`
+- the Thueringen onboarding note now documents the first anchor cut:
+  - `curricula/DE/Gymnasium/provenance/th-physics-onboarding.md`
+- the Physics rollout tracker now lifts `DE-TH` from `P2` to `P3`
+
+Current Thueringen Physics state:
+
+- `8` conservative lower-secondary structural mappings
+- `9` conservative upper-secondary structural mappings
+- the lower-secondary heat strip remains intentionally source-led at this first `P3` cut
+- the upper-secondary `Klassenstufe 11` strips on electricity, optics, and radioactivity remain intentionally source-led at this first `P3` cut
+- no reviewed Thueringen Physics corridor is open yet
+- no Thueringen-specific canonical Physics atom exists yet
+- no committed Thueringen applicability cut exists yet
+
+Why this cut:
+
+- it closes the first conservative `P3` floor for all seven newly archived Physics state families
+- it keeps Thueringen structural instead of pretending a first reviewed mechanics, field, optics, or radioactivity corridor is already justified on the retained 2012/2024 source family
+- it reestablishes the mathematics-style rollout order: first all source bundles archived, then all source-backed snapshots active, then all first structural anchors active, only then another horizontal reviewed topic pass
+
+Validation:
+
+- JSON parse of the two new Thueringen Physics mapping files plus the updated tracker
+- `GRADLE_USER_HOME=/home/enpasos/projects/skillpilot/backend/.gradle-ci ./gradlew test --tests 'com.skillpilot.backend.landscape.GoalMappingRepositoryFixtureTest' --tests 'com.skillpilot.backend.landscape.LandscapeServiceTest' --no-daemon --console=plain`
+- `GRADLE_USER_HOME=/home/enpasos/projects/skillpilot/backend/.gradle-ci ./gradlew clean check --no-daemon --console=plain`
+- `python3 scripts/render_canonical_physics_bundesland_status.py`
+- `git diff --check`
+
+Interpretation:
+
+- the newly archived-state `P3` structural-anchor tranche is now complete nationwide
+- the active blocker is no longer missing first structural anchors on `DE-HB` / `DE-HH` / `DE-MV` / `DE-SL` / `DE-SN` / `DE-ST` / `DE-TH`
+- the next clean Physics move is now the first renewed horizontal all-state reviewed pass, starting with `Sek II Mechanik / Dynamik`
+
+### 2026-04-20: Physics reenters the first horizontal all-state reviewed pass on `Sek II Mechanik / Dynamik`
+
+What changed:
+
+- the topic board row `Sek II Mechanik / Dynamik` is now resolved once across all retained state columns instead of still carrying unresolved `n/s` cells
+- the row now explicitly distinguishes
+  - reviewed corridor evidence on `DE-BY`, `DE-HE`, `DE-NI`, `DE-NW`, and `DE-SH`
+  - broad structural anchors on `DE-HB`, `DE-SL`, `DE-SN`, `DE-ST`, and `DE-TH`
+  - local side packaging on `DE-BW`, `DE-BE`, `DE-BB`, `DE-HH`, `DE-MV`, and `DE-RP`
+- the active rollout tracker now advances the horizontal pass from `Sek II Mechanik / Dynamik` to `Sek II Elektrizitaet / Magnetismus / Induktion`
+
+Interpretation:
+
+- the first renewed horizontal all-state row pass does **not** justify a new canonical mechanics package split
+- the current shared mechanics surface remains sufficient on the canonical level
+- the remaining mechanics debt is now state-coverage bookkeeping and local packaging discipline, not a visible new canonical atom gap
+- the next clean Physics move is therefore the next horizontal all-state reviewed row on `Sek II Elektrizitaet / Magnetismus / Induktion`
+
+Validation:
+
+- `python3 scripts/render_canonical_physics_bundesland_status.py`
+- `git diff --check`
+
+### 2026-04-20: Physics binds `F6` into a fixed run path
+
+What changed:
+
+- a new wrapper [run_canonical_physics_evidence_watch.sh](/home/enpasos/projects/skillpilot/scripts/run_canonical_physics_evidence_watch.sh) now executes the `F6` watch flow in one stable command path
+- the existing frontend package scripts now expose the same flow as `npm run check:canonical-physics-evidence-watch` in [package.json](/home/enpasos/projects/skillpilot/app/package.json)
+- the manifest now exposes this wrapper as `runCommand`, and the active `F6` tracker text/workboard now point to the fixed run path
+
+Interpretation:
+
+- `F6` is now anchored in an actual operational entrypoint instead of a loose bundle of individual commands
+- this is the right shape for later CI or cron integration because the watch flow already has one repo-stable executable surface
+
+Validation:
+
+- `./scripts/run_canonical_physics_evidence_watch.sh`
+- `python3 scripts/render_canonical_physics_bundesland_status.py`
+- `git diff --check`
+
+### 2026-04-20: Physics adds an exit-code `F6` evidence-watch check
+
+What changed:
+
+- a new script [check_canonical_physics_evidence_watch_delta.py](/home/enpasos/projects/skillpilot/scripts/check_canonical_physics_evidence_watch_delta.py) now compares the current watched files against the frozen baseline and exits non-zero when the watch surface drifts
+- the manifest now exposes this as `checkCommand`, so `F6` has a single machine-readable command for automated watch execution
+- the active `F6` tracker text and the topic workboard now include the exit-code check as part of the operational watch surface
+
+Interpretation:
+
+- `F6` is now usable not only for human review and markdown rendering, but also as a strict maintenance gate in CI or cron-style monitoring
+- this still does **not** auto-reopen rollout work; it only ensures that file drift cannot stay silent once the baseline has been frozen
+
+Validation:
+
+- `python3 scripts/check_canonical_physics_evidence_watch_delta.py`
+- `python3 scripts/render_canonical_physics_bundesland_status.py`
+- `git diff --check`
+
+### 2026-04-20: Physics adds a baseline-driven `F6` delta view
+
+What changed:
+
+- a new capture script [capture_canonical_physics_evidence_watch_baseline.py](/home/enpasos/projects/skillpilot/scripts/capture_canonical_physics_evidence_watch_baseline.py) now freezes the current `F6` watch surface into [physics-evidence-watch-baseline.json](/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/provenance/physics-evidence-watch-baseline.json)
+- a new delta renderer [render_canonical_physics_evidence_watch_delta.py](/home/enpasos/projects/skillpilot/scripts/render_canonical_physics_evidence_watch_delta.py) now compares the current watched files against that baseline and writes [canonical-gymnasium-physics-evidence-watch-delta.md](/home/enpasos/projects/skillpilot/docs/dev/canonical-gymnasium-physics-evidence-watch-delta.md)
+- the active `F6` tracker text and the topic workboard now treat the baseline-driven delta view as part of the operational watch surface
+
+Interpretation:
+
+- `F6` can now distinguish between a merely documented watch set and an actual file-level signal: the baseline freezes the current accepted watch surface, and the delta view highlights later file changes without reopening rollout automatically
+- this still does **not** decide didactic relevance on its own; it only turns file-level drift into an explicit maintenance event that can be reviewed against the documented reopen rules
+
+Validation:
+
+- `python3 scripts/capture_canonical_physics_evidence_watch_baseline.py`
+- `python3 scripts/render_canonical_physics_evidence_watch_delta.py`
+- `python3 scripts/render_canonical_physics_bundesland_status.py`
+- `git diff --check`
+
+### 2026-04-20: Physics renders a reproducible `F6` evidence-watch status view
+
+What changed:
+
+- a new script [render_canonical_physics_evidence_watch_status.py](/home/enpasos/projects/skillpilot/scripts/render_canonical_physics_evidence_watch_status.py) now renders the machine-readable watch manifest into a human-readable status sheet
+- the generated status sheet [canonical-gymnasium-physics-evidence-watch-status.md](/home/enpasos/projects/skillpilot/docs/dev/canonical-gymnasium-physics-evidence-watch-status.md) now shows the current watch target register plus existence, content hash, and last-modified timestamp per watched file
+- the active `F6` tracker text and the topic workboard now point to this rendered status view in addition to the raw manifest
+
+Interpretation:
+
+- `F6` is now executable at two levels: the raw manifest remains the authoritative machine surface, while the rendered watch sheet provides a reproducible human audit view over the same watched files
+- this still does **not** reopen rollout work; it only removes the last manual step from checking whether the maintained watch surface is still intact and unchanged
+
+Validation:
+
+- `python3 scripts/render_canonical_physics_evidence_watch_status.py`
+- `python3 scripts/render_canonical_physics_bundesland_status.py`
+- `git diff --check`
+
+### 2026-04-20: Physics materializes a machine-readable evidence-watch manifest for `F6`
+
+What changed:
+
+- a new provenance artifact [physics-evidence-watch-manifest.json](/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/provenance/physics-evidence-watch-manifest.json) now captures the active `F6` watch surface in machine-readable form
+- the manifest groups the watch surface into
+  - Hessen lower-secondary seed watch
+  - lower-secondary candidate floors for `Kosmos` and `Elektronik`
+  - the overlap guard for `Licht / Materie / Atommodell / Strahlung`
+  - upper-secondary residue watch for BE/BB, SH, and RP
+- the active `F6` tracker text now points to this manifest as the primary operational watch surface
+
+Interpretation:
+
+- `F6` is now no longer only documented in prose; it has a machine-readable provenance artifact that future tooling or maintenance scripts can consume directly
+- this still does **not** reopen rollout work; it only makes the watch mode executable without re-deriving the relevant file set and trigger rules from free text
+
+Validation:
+
+- `python3 scripts/render_canonical_physics_bundesland_status.py`
+- `git diff --check`
+
+### 2026-04-20: Physics materializes concrete watch files for `F6` evidence watch
+
+What changed:
+
+- the topic workboard now adds a concrete `Current watch files` list below the watch targets
+- the active `F6.MAINTENANCE_EVIDENCE_WATCH` tracker text now points to specific source snapshot files instead of only naming abstract watch lanes
+- the file watch set now covers
+  - Hessen, Sachsen, Hamburg, Saarland, and Sachsen-Anhalt lower-secondary snapshots as the main Sek-I reopen surface
+  - Brandenburg and Berlin upper-secondary snapshots for the frozen BE/BB residue
+  - Schleswig-Holstein upper-secondary for the SH micro-residues
+  - Rheinland-Pfalz upper-secondary for the remaining RP source-led LF residues
+
+Interpretation:
+
+- `F6` is now executable at file level: future maintenance no longer needs to rediscover which concrete source files are the first ones to inspect for a possible reopen trigger
+- this still does **not** reopen rollout work; it only sharpens the observation surface for future source-backed changes
+
+Validation:
+
+- `python3 scripts/render_canonical_physics_bundesland_status.py`
+- `git diff --check`
+
+### 2026-04-20: Physics materializes explicit watch targets for `F6` evidence watch
+
+What changed:
+
+- the topic workboard now adds a concrete `Current watch targets` section below the reopen triggers
+- the active `F6.MAINTENANCE_EVIDENCE_WATCH` tracker text now points to specific lanes and strips to monitor first instead of only naming abstract trigger types
+- the watch targets now prioritize
+  - Hessen Sek I revisions as the strongest reopen signal
+  - Sachsen Sek I as the strongest current non-Hessen evidence floor for `Kosmos` and `Elektronik`
+  - Hamburg, Saarland, and Sachsen-Anhalt as secondary watch lanes for possible strengthening of currently mixed side packaging
+
+Interpretation:
+
+- `F6` is now operationally specific enough that future maintenance can check concrete source lanes first instead of rediscovering the likely trigger points from scratch
+- this still does **not** reopen active rollout work; it narrows where to look when a future source-backed trigger appears
+
+Validation:
+
+- `python3 scripts/render_canonical_physics_bundesland_status.py`
+- `git diff --check`
+
+### 2026-04-20: Physics materializes explicit reopen triggers for `F6` maintenance mode
+
+What changed:
+
+- the topic workboard now contains an explicit `Current reopen triggers` section instead of leaving `F6` as a generic wait state
+- the active `F6.MAINTENANCE_EVIDENCE_WATCH` tracker text now names the concrete triggers that would justify reopening active rollout work
+- the reopen criteria are now explicit for the three strongest lower-secondary non-admitted candidates:
+  - `Sek I Kosmos / Erde / Mensch / Astronomie`
+  - `Sek I Elektronik / Halbleiter / elektromagnetische Wellen`
+  - `Sek I Licht / Materie / Atommodell / Strahlung`
+
+Interpretation:
+
+- `F6` is now not just a passive maintenance label; it is an operational watch state with concrete reopening conditions
+- this reduces ambiguity about what kind of new source-backed evidence is actually strong enough to justify another nationwide row or another reviewed Physics pass
+- the next clean Physics move still depends on external evidence, but the bar is now documented in a way that future maintenance work can apply directly
+
+Validation:
+
+- `python3 scripts/render_canonical_physics_bundesland_status.py`
+- `git diff --check`
+
+### 2026-04-20: Physics enters explicit maintenance / evidence-watch mode after closing `F5`
+
+What changed:
+
+- the rollout tracker now adds a new active steering phase `F6 Maintenance and evidence watch`
+- the new active corridor `F6.MAINTENANCE_EVIDENCE_WATCH` makes the operational state explicit: no further reviewed Physics rollout is active on the current evidence floor
+- the topic workboard now states the same consequence directly instead of only implying it via closed rows and frozen candidate admission
+
+Interpretation:
+
+- this does **not** reopen rollout work on a new row; it formalizes the opposite state
+- Physics now has an explicit maintenance-mode steering state: keep the completed cuts stable, watch for curriculum revisions or new source-backed evidence, and reopen active rollout only when a real trigger appears
+- this avoids a misleading pseudo-active state after the current `F5` tranche has already been completed end to end
+
+Validation:
+
+- `python3 scripts/render_canonical_physics_bundesland_status.py`
+- `git diff --check`
+
+### 2026-04-20: Physics closes the current `F5` horizontal all-state reentry tranche at the reviewed cut
+
+What changed:
+
+- the rollout tracker now marks `F5.ALL_STATE_HORIZONTAL_TOPIC_REENTRY` as `completed`
+- the program-phase tracker now marks `F5` itself as `completed`
+- the seven newly activated `P3` states `DE-HB`, `DE-HH`, `DE-MV`, `DE-SL`, `DE-SN`, `DE-ST`, and `DE-TH` no longer stay `priority: active`; they now move to backlog-style maintenance and evidence-watch wording
+- the topic workboard now states explicitly that the current horizontal reentry tranche is operationally closed at the current reviewed cut
+
+Interpretation:
+
+- no active nationwide Physics topic pass remains open on the current evidence floor
+- the completed `F5` tranche now consists of
+  - the four renewed Sek-II all-state rows
+  - the first eight renewed Sek-I rows
+  - the first post-tranche lower-secondary candidate sweep
+- the next clean Physics move therefore requires new source-backed evidence or a genuinely new Hessen-seeded lower-secondary strip, not continued motion inside the same closed reentry tranche
+
+Validation:
+
+- `python3 scripts/render_canonical_physics_bundesland_status.py`
+- `git diff --check`
+
+### 2026-04-20: Physics closes the first post-tranche lower-secondary candidate sweep without admitting another nationwide row
+
+What changed:
+
+- the topic workboard now treats the first post-tranche lower-secondary candidate sweep as explicitly complete
+- the three strongest visible candidates have now each been checked against the current retained evidence floor:
+  - `Sek I Kosmos / Erde / Mensch / Astronomie`
+  - `Sek I Elektronik / Halbleiter / elektromagnetische Wellen`
+  - `Sek I Licht / Materie / Atommodell / Strahlung`
+- the rollout tracker no longer points toward another immediate candidate pass; it now states that no additional Sek-I row is admitted on the current evidence floor
+
+Interpretation:
+
+- the candidate sweep does **not** reveal another row-worthy nationwide lower-secondary strip at the current reviewed cut
+- the blockers differ by candidate, but the operational result is now the same for all three: no admission
+- the next clean Physics move therefore requires new source-backed evidence or a genuinely new Hessen-seeded lower-secondary strip, not another pass over the same current candidate pool
+
+Validation:
+
+- `python3 scripts/render_canonical_physics_bundesland_status.py`
+- `git diff --check`
+
+### 2026-04-20: Physics runs the third explicit evidence pass for `Sek I Licht / Materie / Atommodell / Strahlung` and keeps the row closed
+
+What changed:
+
+- the topic workboard blocker note now names a third visible post-tranche lower-secondary candidate explicitly: `Sek I Licht / Materie / Atommodell / Strahlung`
+- the retained-source evidence is now documented more precisely:
+  - Hessen does carry a lower-secondary seed through `10.2 Radioaktivitaet` with `Bausteine des Atoms` and `Radioaktive Strahlung`
+  - Hamburg carries the mixed transition strip `Licht und Materie: Brechung, Spektrum, Atommodell und Strahlung`
+  - Bremen, Saarland, Mecklenburg-Vorpommern, and Thueringen carry adjacent retained side evidence on Kernenergie, ionisierende Strahlung, Materie, or radioaktive Strahlung
+- the rollout tracker still keeps the additional lower-secondary row admission frozen, because this candidate does not expose a missing nationwide row; its evidence is already materially covered by the audited rows `Sek I Optik / Licht / Schall` and `Sek I Radioaktivitaet / Kernphysik`
+
+Interpretation:
+
+- this third visible candidate also does **not** clear the admission bar
+- the blocker is different here: unlike `Kosmos` or `Elektronik`, the problem is not primarily missing Hessen seeding, but lack of a distinct canonical gap beyond rows that are already audited and stable
+- the next clean Physics move therefore remains the same: keep the first audited Sek-I tranche stable until a genuinely new, row-worthy lower-secondary strip emerges instead of repackaging already covered material
+
+Validation:
+
+- `python3 scripts/render_canonical_physics_bundesland_status.py`
+- `git diff --check`
+
+### 2026-04-20: Physics runs the second explicit evidence pass for `Sek I Elektronik / Halbleiter / elektromagnetische Wellen` and keeps the row closed
+
+What changed:
+
+- the topic workboard blocker note now names a second visible post-tranche lower-secondary candidate explicitly: `Sek I Elektronik / Halbleiter / elektromagnetische Wellen`
+- the retained-source evidence is now documented more precisely:
+  - Sachsen carries the clearest lower-secondary evidence through `K9 Lernbereich 1 Grundlagen der Elektronik` and `K10 Lernbereich 4 Hertz'sche Wellen`
+  - Saarland contributes mixed lower-secondary side packaging through `Halbleiterschaltungstechnik I/II` inside broader class-9 and class-10 strips
+  - Sachsen-Anhalt contributes mixed side packaging through semiconductors inside the year-9 electrodynamics focus on induction, generator, transformer, and conduction in metals and semiconductors
+  - Hessen currently contributes no lower-secondary seed strip for this row
+- the rollout tracker therefore keeps the additional lower-secondary row admission frozen instead of promoting `Elektronik / Halbleiter / elektromagnetische Wellen` into the next nationwide row
+
+Interpretation:
+
+- this second visible candidate also does **not** clear the admission bar
+- the decisive blocker is again the missing Hessen lower-secondary seed plus the fact that most non-Sachsen evidence is still bundled into broader electricity/electrodynamics strips rather than one clean retained nationwide row
+- the next clean Physics move remains to keep the first audited Sek-I tranche stable until a genuinely Hessen-seeded and multi-state-supported next row emerges
+
+Validation:
+
+- `python3 scripts/render_canonical_physics_bundesland_status.py`
+- `git diff --check`
+
+### 2026-04-20: Physics runs the first explicit evidence pass for `Sek I Kosmos / Erde / Mensch / Astronomie` and keeps the row closed
+
+What changed:
+
+- the topic workboard blocker note now names the strongest currently visible next lower-secondary candidate explicitly: `Sek I Kosmos / Erde / Mensch / Astronomie`
+- the retained-source evidence is now documented more precisely:
+  - Sachsen carries one clear lower-secondary astronomy anchor through `K10 Lernbereich 2 Kosmos, Erde und Mensch`
+  - Hamburg contributes only one local side clause on `Energieerzeugung in der Sonne` inside the transition strip `Licht und Materie`
+  - Bayern's strongest astronomy evidence in the retained source bundle is upper-secondary `Ph13 Astrophysik`, not a lower-secondary strip
+  - Hessen currently contributes no lower-secondary seed strip for this row
+- the rollout tracker therefore keeps the additional lower-secondary row admission frozen instead of promoting `Kosmos / Erde / Mensch / Astronomie` into the next nationwide row
+
+Interpretation:
+
+- the strongest visible post-tranche candidate is now named and evidence-backed, but it still does **not** clear the admission bar
+- the decisive blocker is not only thin multi-state support; it is specifically the missing Hessen lower-secondary seed plus the fact that the Bayern evidence does not actually strengthen the Sek-I side
+- the next clean Physics move remains to keep the first audited Sek-I tranche stable until a genuinely Hessen-seeded and multi-state-supported next row emerges
+
+Validation:
+
+- `python3 scripts/render_canonical_physics_bundesland_status.py`
+- `git diff --check`
+
+### 2026-04-20: Physics freezes additional lower-secondary row admission after the first audited Sek-I tranche
+
+What changed:
+
+- the topic workboard no longer treats another preselected lower-secondary row as implicitly next
+- the current reviewed decision is now explicit: the first renewed lower-secondary tranche stops after
+  - `Sek I Elektrizitaet / Magnetismus`
+  - `Sek I Mechanik / Bewegung`
+  - `Sek I Optik / Licht / Schall`
+  - `Sek I Waerme / Thermik / Teilchenmodell`
+  - `Sek I Radioaktivitaet / Kernphysik`
+  - `Sek I Stoffe / Dichte / Druck / Auftrieb`
+  - `Sek I Energie / Arbeit / Leistung / Erhaltung`
+  - `Sek I Klima / Energieversorgung / Umwelturteil`
+- the rollout tracker now freezes additional lower-secondary row admission at the current reviewed cut instead of opening another nationwide row on reflex
+- `Sek I Kosmos / Erde / Mensch / Astronomie` is explicitly **not admitted yet** as the next nationwide row candidate
+
+Interpretation:
+
+- the retained lower-secondary evidence beyond the first audited tranche is currently still too sparse and too unevenly distributed to justify another nationwide row
+- the strongest visible next-row evidence is currently concentrated in side packaging such as Bayern lower-secondary astronomy material, Sachsen `Kosmos, Erde und Mensch`, and isolated Hamburg bridge clauses, but not in one sufficiently Hessen-seeded and multi-state-supported strip
+- the next clean Physics move is therefore to keep the completed first Sek-I tranche stable until either another retained lower-secondary row becomes clearly row-worthy or a new source-backed widening changes that evidence floor
+
+Validation:
+
+- `python3 scripts/render_canonical_physics_bundesland_status.py`
+- `git diff --check`
+
+### 2026-04-20: Physics completes the renewed lower-secondary all-state reviewed pass on `Sek I Klima / Energieversorgung / Umwelturteil`
+
+What changed:
+
+- the topic board row `Sek I Klima / Energieversorgung / Umwelturteil` is now resolved once across every currently source-backed lower-secondary state cell instead of still carrying only unresolved `n/s` cells
+- the row now explicitly distinguishes
+  - the Hessen lower-secondary seed lane
+  - retained Bayern side evidence as `loc` through the common Gymnasium bundle on climate-system texts, climate-protection measures, and source-based environmental evaluation
+  - additional retained side packaging on `DE-HH`, `DE-SL`, and `DE-SN`, where climate, Kraftwerke, nachhaltige Energieversorgung, Klimaphysik, or gesellschaftliche Einordnung remain embedded in transition strips, mixed class-10 bundles, or the Sachsen `K9 Lernbereich 2 Energieversorgung`
+  - still-missing lower-secondary retained-source placeholders or row-external packaging on `DE-HB`, `DE-MV`, `DE-BW`, `DE-BE`, `DE-BB`, `DE-NI`, `DE-NW`, `DE-RP`, `DE-ST`, `DE-SH`, and `DE-TH`
+- the active rollout tracker no longer advances to another preselected lower-secondary row; it now moves to an explicit lower-secondary row-admission decision on whether one more nationwide row should be opened at the current reviewed cut
+
+Interpretation:
+
+- the renewed lower-secondary climate/energy-supply/environment-judgment row pass does **not** justify another canonical Sek-I climate, energy-supply, or environmental-judgment package split
+- the current shared Sek-I surface remains sufficient on the canonical level
+- the remaining debt on this row is now limited to later retained-source activation or later anchor widening for currently local climate/energy-supply packaging, not a visible new canonical atom gap
+- the next clean Physics move is therefore an explicit decision whether the retained lower-secondary evidence already justifies one more nationwide row beyond this first audited tranche, not another reflex state-local widening
+
+Validation:
+
+- `python3 scripts/render_canonical_physics_bundesland_status.py`
+- `git diff --check`
+- the active coordination lane stays on `F5.ALL_STATE_HORIZONTAL_TOPIC_REENTRY`
+
+### 2026-04-20: Physics completes the renewed all-state reviewed pass on `Sek II Elektrizitaet / Magnetismus / Induktion`
+
+What changed:
+
+- the topic board row `Sek II Elektrizitaet / Magnetismus / Induktion` is now resolved once across all retained state columns instead of still carrying unresolved `n/s` cells
+- the row now explicitly distinguishes
+  - reviewed corridor evidence on `DE-BY`, `DE-BW`, `DE-BE`, `DE-BB`, `DE-HE`, `DE-NI`, `DE-NW`, `DE-RP`, and `DE-SH`
+  - broad structural anchors on `DE-HB`, `DE-HH`, `DE-MV`, `DE-SL`, `DE-SN`, `DE-ST`, and `DE-TH`
+- the active rollout tracker now advances the horizontal pass from `Sek II Elektrizitaet / Magnetismus / Induktion` to `Sek II Schwingungen / Wellen`
+
+Interpretation:
+
+- the renewed all-state field/induction row pass does **not** justify another canonical field, magnetism, or induction package split
+- the current shared field/induction surface remains sufficient on the canonical level
+- the remaining debt on this row is now disciplined residue handling on the frozen BE/BB trio `c0` / `Relativitaet` / `Eintrittswinkel` plus the frozen SH micro-residues, not a visible new canonical atom gap
+- the next clean Physics move is therefore the next horizontal all-state reviewed row on `Sek II Schwingungen / Wellen`
+
+Validation:
+
+- `python3 scripts/render_canonical_physics_bundesland_status.py`
+- `git diff --check`
+
+### 2026-04-20: Physics completes the renewed all-state reviewed pass on `Sek II Schwingungen / Wellen`
+
+What changed:
+
+- the topic board row `Sek II Schwingungen / Wellen` is now resolved once across all retained state columns instead of still carrying unresolved `n/s` cells
+- the row now explicitly distinguishes
+  - reviewed corridor evidence on `DE-BY`, `DE-BW`, `DE-HE`, `DE-NI`, `DE-NW`, and `DE-RP`
+  - broad structural anchors on `DE-HB`, `DE-HH`, `DE-MV`, `DE-SL`, `DE-SN`, `DE-ST`, and `DE-TH`
+  - local side packaging on `DE-BE`, `DE-BB`, and `DE-SH`
+- the active rollout tracker now advances the horizontal pass from `Sek II Schwingungen / Wellen` to `Sek II Quanten / Atom / Kernphysik`
+
+Interpretation:
+
+- the renewed all-state oscillation/wave row pass does **not** justify another canonical oscillation, wave, or optics package split
+- the current shared oscillation/wave surface remains sufficient on the canonical level
+- the remaining debt on this row is now disciplined residue handling on the frozen RP micro-residues `Periodendauer`, `Polarisation`, `Weisslichtspektrum`, and `gekoppelte Schwingungen`, not a visible new canonical atom gap
+- the next clean Physics move is therefore the next horizontal all-state reviewed row on `Sek II Quanten / Atom / Kernphysik`
+
+Validation:
+
+- `python3 scripts/render_canonical_physics_bundesland_status.py`
+- `git diff --check`
+
+### 2026-04-20: Physics completes the renewed all-state reviewed pass on `Sek II Quanten / Atom / Kernphysik`
+
+What changed:
+
+- the topic board row `Sek II Quanten / Atom / Kernphysik` is now resolved once across all retained state columns instead of still carrying unresolved `n/s` cells
+- the row now explicitly distinguishes
+  - reviewed corridor evidence on `DE-BW`, `DE-NW`, and `DE-RP`, with the canonical row still seeded from `DE-HE`
+  - broad structural anchors on `DE-HB`, `DE-HH`, `DE-MV`, `DE-SL`, `DE-SN`, `DE-ST`, and `DE-TH`
+  - local side packaging on `DE-BY`, `DE-NI`, `DE-BE`, `DE-BB`, and `DE-SH`
+- the active rollout tracker now advances from the completed initial Sek-II row tranche to the first lower-secondary row `Sek I Elektrizitaet / Magnetismus`
+
+Interpretation:
+
+- the renewed all-state quantum/atom/kernel row pass does **not** justify another canonical quantum, atom-model, or particle-physics package split
+- the current shared Q3/Q4 quantum surface remains sufficient on the canonical level
+- the remaining debt on this row is now disciplined residue handling on the frozen RP clauses for Planck estimation, `Paarerzeugung`, remaining LF application examples, and `Offene Fragen`, not a visible new canonical atom gap
+- with all four initial Sek-II rows now horizontally audited once, the next clean Physics move is the first lower-secondary all-state reviewed row on `Sek I Elektrizitaet / Magnetismus`
+
+Validation:
+
+- `python3 scripts/render_canonical_physics_bundesland_status.py`
+- `git diff --check`
+
+### 2026-04-20: Physics completes the first lower-secondary all-state reviewed pass on `Sek I Elektrizitaet / Magnetismus`
+
+What changed:
+
+- the topic board row `Sek I Elektrizitaet / Magnetismus` is now resolved once across every currently source-backed lower-secondary state cell instead of still carrying only unresolved `n/s` cells
+- the row now explicitly distinguishes
+  - the Hessen lower-secondary seed lane
+  - broad structural anchors on `DE-HB`, `DE-HH`, `DE-MV`, `DE-SL`, `DE-SN`, `DE-ST`, and `DE-TH`
+  - retained Bayern side evidence as `loc` through the shared Gymnasium bundle on `Ph8 Elektrischer Strom` and `Ph10 Elektromagnetismus`
+  - still-missing lower-secondary retained-source placeholders on `DE-BW`, `DE-BE`, `DE-BB`, `DE-NI`, `DE-NW`, `DE-RP`, and `DE-SH`
+- the active rollout tracker now advances from the first lower-secondary reviewed row `Sek I Elektrizitaet / Magnetismus` to the next lower-secondary row `Sek I Mechanik / Bewegung`
+
+Interpretation:
+
+- the renewed lower-secondary electricity/magnetism row pass does **not** justify another canonical Sek-I electricity, magnetism, or induction package split
+- the current shared Sek-I electricity/magnetism surface remains sufficient on the canonical level
+- the remaining debt on this row is now limited to later retained-source activation for the still-missing lower-secondary state lanes, not a visible new canonical atom gap
+- the next clean Physics move is therefore the next lower-secondary all-state reviewed row on `Sek I Mechanik / Bewegung`
+
+Validation:
+
+- `python3 scripts/render_canonical_physics_bundesland_status.py`
+- `git diff --check`
+
+### 2026-04-20: Physics completes the renewed lower-secondary all-state reviewed pass on `Sek I Mechanik / Bewegung`
+
+What changed:
+
+- the topic board row `Sek I Mechanik / Bewegung` is now resolved once across every currently source-backed lower-secondary state cell instead of still carrying only unresolved `n/s` cells
+- the row now explicitly distinguishes
+  - the Hessen lower-secondary seed lane
+  - broad structural anchors on `DE-HB`, `DE-HH`, `DE-MV`, `DE-SL`, `DE-SN`, `DE-ST`, and `DE-TH`
+  - retained Bayern side evidence as `loc` through the shared Gymnasium bundle on `Ph8 Mechanik`, `Ph9 Energie als Erhaltungsgroesse`, and the two `Ph10` mechanics strips
+  - still-missing lower-secondary retained-source placeholders on `DE-BW`, `DE-BE`, `DE-BB`, `DE-NI`, `DE-NW`, `DE-RP`, and `DE-SH`
+- the active rollout tracker now advances from the lower-secondary reviewed row `Sek I Mechanik / Bewegung` to the next lower-secondary row `Sek I Optik / Licht / Schall`
+
+Interpretation:
+
+- the renewed lower-secondary mechanics row pass does **not** justify another canonical Sek-I mechanics, movement, or energy package split
+- the current shared Sek-I mechanics surface remains sufficient on the canonical level
+- the remaining debt on this row is now limited to later retained-source activation for the still-missing lower-secondary state lanes, not a visible new canonical atom gap
+- the next clean Physics move is therefore the next lower-secondary all-state reviewed row on `Sek I Optik / Licht / Schall`
+
+Validation:
+
+- `python3 scripts/render_canonical_physics_bundesland_status.py`
+- `git diff --check`
+
+### 2026-04-20: Physics completes the renewed lower-secondary all-state reviewed pass on `Sek I Optik / Licht / Schall`
+
+What changed:
+
+- the topic board row `Sek I Optik / Licht / Schall` is now resolved once across every currently source-backed lower-secondary state cell instead of still carrying only unresolved `n/s` cells
+- the row now explicitly distinguishes
+  - the Hessen lower-secondary seed lane
+  - broad structural anchors on `DE-HB`, `DE-HH`, `DE-MV`, `DE-SL`, `DE-SN`, `DE-ST`, and `DE-TH`
+  - retained Bayern side evidence as `loc` through the shared Gymnasium bundle on `Ph8 Optik`
+  - still-missing lower-secondary retained-source placeholders on `DE-BW`, `DE-BE`, `DE-BB`, `DE-NI`, `DE-NW`, `DE-RP`, and `DE-SH`
+- the active rollout tracker now advances from the lower-secondary reviewed row `Sek I Optik / Licht / Schall` to the next lower-secondary row `Sek I Waerme / Thermik / Teilchenmodell`
+
+Interpretation:
+
+- the renewed lower-secondary optics/light/sound row pass does **not** justify another canonical Sek-I optics, light, or sound package split
+- the current shared Sek-I optics/light/sound surface remains sufficient on the canonical level
+- the remaining debt on this row is now limited to later retained-source activation for the still-missing lower-secondary state lanes, not a visible new canonical atom gap
+- the next clean Physics move is therefore the next lower-secondary all-state reviewed row on `Sek I Waerme / Thermik / Teilchenmodell`
+
+Validation:
+
+- `python3 scripts/render_canonical_physics_bundesland_status.py`
+- `git diff --check`
+
+### 2026-04-20: Physics completes the renewed lower-secondary all-state reviewed pass on `Sek I Waerme / Thermik / Teilchenmodell`
+
+What changed:
+
+- the topic board row `Sek I Waerme / Thermik / Teilchenmodell` is now resolved once across every currently source-backed lower-secondary state cell instead of still carrying only unresolved `n/s` cells
+- the row now explicitly distinguishes
+  - the Hessen lower-secondary seed lane
+  - one broad structural anchor on `DE-SL`
+  - retained Bayern side evidence as `loc` through the shared Gymnasium bundle on `Ph9 Waermelehre`
+  - additional retained lower-secondary side evidence on `DE-MV`, `DE-SN`, `DE-ST`, and `DE-TH`, where the thermics strips remain explicitly source-led outside the current `P3` anchor cut
+  - still-missing lower-secondary retained-source placeholders or row-external packaging on `DE-HB`, `DE-HH`, `DE-BW`, `DE-BE`, `DE-BB`, `DE-NI`, `DE-NW`, `DE-RP`, and `DE-SH`
+- the active rollout tracker now advances from the lower-secondary reviewed row `Sek I Waerme / Thermik / Teilchenmodell` to the next lower-secondary row `Sek I Radioaktivitaet / Kernphysik`
+
+Interpretation:
+
+- the renewed lower-secondary thermics row pass does **not** justify another canonical Sek-I heat, thermics, or particle-model package split
+- the current shared Sek-I thermics surface remains sufficient on the canonical level
+- the remaining debt on this row is now limited to later retained-source activation or later anchor widening for the still source-led lower-secondary thermics strips, not a visible new canonical atom gap
+- the next clean Physics move is therefore the next lower-secondary all-state reviewed row on `Sek I Radioaktivitaet / Kernphysik`
+
+Validation:
+
+- `python3 scripts/render_canonical_physics_bundesland_status.py`
+- `git diff --check`
+
+### 2026-04-20: Physics completes the renewed lower-secondary all-state reviewed pass on `Sek I Radioaktivitaet / Kernphysik`
+
+What changed:
+
+- the topic board row `Sek I Radioaktivitaet / Kernphysik` is now resolved once across every currently source-backed lower-secondary state cell instead of still carrying only unresolved `n/s` cells
+- the row now explicitly distinguishes
+  - the Hessen lower-secondary seed lane
+  - broad structural anchors on `DE-HB`, `DE-MV`, `DE-SL`, and `DE-TH`
+  - retained Bayern side evidence as `loc` through the shared Gymnasium bundle on `Ph10 Kernphysik`
+  - retained Hamburg side packaging as `loc` through the transition strip `Licht und Materie` with ionising radiation
+  - still-missing lower-secondary retained-source placeholders or row-external packaging on `DE-BW`, `DE-BE`, `DE-BB`, `DE-NI`, `DE-NW`, `DE-RP`, `DE-SH`, `DE-SN`, and `DE-ST`
+- the active rollout tracker now advances from the lower-secondary reviewed row `Sek I Radioaktivitaet / Kernphysik` to the next lower-secondary row `Sek I Stoffe / Dichte / Druck / Auftrieb`
+
+Interpretation:
+
+- the renewed lower-secondary radioactivity/nuclear row pass does **not** justify another canonical Sek-I radioactivity, nuclear physics, or nuclear-energy package split
+- the current shared Sek-I radioactivity/nuclear surface remains sufficient on the canonical level
+- the remaining debt on this row is now limited to later retained-source activation or later anchor widening for the still row-external lower-secondary state lanes, not a visible new canonical atom gap
+- the next clean Physics move is therefore the next lower-secondary all-state reviewed row on `Sek I Stoffe / Dichte / Druck / Auftrieb`
+
+Validation:
+
+- `python3 scripts/render_canonical_physics_bundesland_status.py`
+- `git diff --check`
+
+### 2026-04-20: Physics completes the renewed lower-secondary all-state reviewed pass on `Sek I Stoffe / Dichte / Druck / Auftrieb`
+
+What changed:
+
+- the topic board row `Sek I Stoffe / Dichte / Druck / Auftrieb` is now resolved once across every currently source-backed lower-secondary state cell instead of still carrying only unresolved `n/s` cells
+- the row now explicitly distinguishes
+  - the Hessen lower-secondary seed lane
+  - broad structural anchors on `DE-MV`, `DE-SL`, `DE-SN`, `DE-ST`, and `DE-TH`
+  - retained Bayern side evidence as `loc` through the shared Gymnasium bundle on pressure and gases in `Ph9 Waermelehre`
+  - retained Bremen side packaging as `loc` through the J7/8 force-motion strip with Dichte
+  - still-missing lower-secondary retained-source placeholders or row-external packaging on `DE-HH`, `DE-BW`, `DE-BE`, `DE-BB`, `DE-NI`, `DE-NW`, `DE-RP`, and `DE-SH`
+- the active rollout tracker now advances from the lower-secondary reviewed row `Sek I Stoffe / Dichte / Druck / Auftrieb` to the next lower-secondary row `Sek I Energie / Arbeit / Leistung / Erhaltung`
+
+Interpretation:
+
+- the renewed lower-secondary density/pressure/buoyancy row pass does **not** justify another canonical Sek-I materials, density, pressure, or buoyancy package split
+- the current shared Sek-I density/pressure/buoyancy surface remains sufficient on the canonical level
+- the remaining debt on this row is now limited to later retained-source activation or later anchor widening for the still row-external lower-secondary state lanes, not a visible new canonical atom gap
+- the next clean Physics move is therefore the next lower-secondary all-state reviewed row on `Sek I Energie / Arbeit / Leistung / Erhaltung`
+
+Validation:
+
+- `python3 scripts/render_canonical_physics_bundesland_status.py`
+- `git diff --check`
+
+### 2026-04-20: Physics completes the renewed lower-secondary all-state reviewed pass on `Sek I Energie / Arbeit / Leistung / Erhaltung`
+
+What changed:
+
+- the topic board row `Sek I Energie / Arbeit / Leistung / Erhaltung` is now resolved once across every currently source-backed lower-secondary state cell instead of still carrying only unresolved `n/s` cells
+- the row now explicitly distinguishes
+  - the Hessen lower-secondary seed lane
+  - retained Bayern side evidence as `loc` through the shared Gymnasium bundle on `Ph9 Energie als Erhaltungsgroesse`
+  - additional retained side packaging on `DE-HB`, `DE-HH`, `DE-MV`, `DE-SL`, `DE-SN`, `DE-ST`, and `DE-TH`, where energy, work, power, efficiency, or conservation remain bundled into mechanics strips, transition packages, feeders, or explicitly source-led lower-secondary leaves
+  - still-missing lower-secondary retained-source placeholders or row-external packaging on `DE-BW`, `DE-BE`, `DE-BB`, `DE-NI`, `DE-NW`, `DE-RP`, and `DE-SH`
+- the active rollout tracker now advances from the lower-secondary reviewed row `Sek I Energie / Arbeit / Leistung / Erhaltung` to the next lower-secondary row `Sek I Klima / Energieversorgung / Umwelturteil`
+
+Interpretation:
+
+- the renewed lower-secondary energy row pass does **not** justify another canonical Sek-I energy, work, power, or conservation package split
+- the current shared Sek-I energy surface remains sufficient on the canonical level
+- the remaining debt on this row is now limited to later retained-source activation or later anchor widening for the still bundled lower-secondary energy strips, not a visible new canonical atom gap
+- the next clean Physics move is therefore the next lower-secondary all-state reviewed row on `Sek I Klima / Energieversorgung / Umwelturteil`
+
+Validation:
+
+- `python3 scripts/render_canonical_physics_bundesland_status.py`
+- `git diff --check`

@@ -1,6 +1,6 @@
 # Canonical Gymnasium Physics Bundeslaender Status
 
-Snapshot: `2026-04-20T08:45:00Z`
+Snapshot: `2026-04-20T19:00:00Z`
 
 This file is generated from:
 
@@ -13,12 +13,12 @@ This file is generated from:
 - Tracked states: `16`
 - Canonical source coverage present: `16/16`
 - States with active snapshots (`P2+`): `16/16`
-- States with structural anchors mapped (`P3+`): `9/16`
+- States with structural anchors mapped (`P3+`): `16/16`
 - States with reviewed corridor (`P4+`): `9/16`
 - States with broad coverage (`P5+`): `2/16`
 - States operationally cutover-ready (`P6`): `2/16`
-- Active canonical corridors: `1/11`
-- Priority `active`: `7`
+- Active canonical corridors: `1/13`
+- Priority `active`: `0`
 
 ## Steering model
 
@@ -50,7 +50,9 @@ This file is generated from:
 | `SEK2.RP.UPPER_SECONDARY_ENTRY` Rheinland-Pfalz upper-secondary first entry lane | `completed` | `DE-RP` | Treat the current Rheinland-Pfalz upper-secondary lane as stable at the reviewed pilot-cut level and do not widen it further until the still-missing Bundesland source lanes are archived locally. When Rheinland-Pfalz is revisited later, start with an explicit closure decision on the remaining LF residue `Individuelles Thema` rather than another spontaneous corridor widening. |
 | `F4.ALL_MISSING_STATE_SOURCE_ONBOARDING` All-missing-state Physics source onboarding tranche | `completed` | `DE-HB`, `DE-HH`, `DE-MV`, `DE-SL`, `DE-SN`, `DE-ST`, `DE-TH` | The source-archive tranche is now complete: all seven previously missing Physics state families are archived locally for Sek I and Sek II where applicable. Keep the archived bundles stable and move the active rollout to source-snapshot and provenance activation before another reviewed topic-row widening. |
 | `F4.ALL_NEWLY_ARCHIVED_STATE_SNAPSHOT_ACTIVATION` All-newly-archived-state Physics snapshot activation tranche | `completed` | `DE-HB`, `DE-HH`, `DE-MV`, `DE-SL`, `DE-SN`, `DE-ST`, `DE-TH` | The snapshot/provenance tranche is now complete: Bremen, Hamburg, Mecklenburg-Vorpommern, Saarland, Sachsen, Sachsen-Anhalt, and Thueringen all have active retained lower-secondary and upper-secondary Physics source lanes. Keep those source-backed bundles stable and move the active rollout to the first structural-anchor pass before another reviewed topic-row widening. |
-| `F4.ALL_NEWLY_ARCHIVED_STATE_STRUCTURAL_ANCHOR_ACTIVATION` All-newly-archived-state Physics structural-anchor activation tranche | `active` | `DE-HB`, `DE-HH`, `DE-MV`, `DE-SL`, `DE-SN`, `DE-ST`, `DE-TH` | Start the first conservative `P3` structural-anchor pass across Bremen, Hamburg, Mecklenburg-Vorpommern, Saarland, Sachsen, Sachsen-Anhalt, and Thueringen. Use broad lower-secondary and upper-secondary source anchors only, and do not widen topic-specific reviewed Physics corridors again before those first anchor cuts exist. |
+| `F4.ALL_NEWLY_ARCHIVED_STATE_STRUCTURAL_ANCHOR_ACTIVATION` All-newly-archived-state Physics structural-anchor activation tranche | `completed` | `DE-HB`, `DE-HH`, `DE-MV`, `DE-SL`, `DE-SN`, `DE-ST`, `DE-TH` | The first conservative `P3` structural-anchor pass is now complete for Bremen, Hamburg, Mecklenburg-Vorpommern, Saarland, Sachsen, Sachsen-Anhalt, and Thueringen. Keep those statewide anchor cuts stable and move the active rollout back to the first horizontal all-state reviewed Physics topic row instead of another state-local structural activation. |
+| `F5.ALL_STATE_HORIZONTAL_TOPIC_REENTRY` All-state horizontal Physics topic-pass reentry | `completed` | `DE-BB`, `DE-BE`, `DE-BW`, `DE-BY`, `DE-HB`, `DE-HH`, `DE-HE`, `DE-MV`, `DE-NI`, `DE-NW`, `DE-RP`, `DE-SH`, `DE-SL`, `DE-SN`, `DE-ST`, `DE-TH` | The horizontal all-state reentry tranche is now complete at the current reviewed cut: the four initial Sek-II rows, the first eight lower-secondary rows, and the first post-tranche lower-secondary candidate sweep are all closed once. Keep the audited rows stable, keep additional lower-secondary row admission frozen, and reopen this corridor only when new source-backed evidence or a genuinely new Hessen-seeded lower-secondary strip justifies another nationwide row. |
+| `F6.MAINTENANCE_EVIDENCE_WATCH` Physics maintenance and evidence watch | `active` | `DE-BB`, `DE-BE`, `DE-BW`, `DE-BY`, `DE-HB`, `DE-HH`, `DE-HE`, `DE-MV`, `DE-NI`, `DE-NW`, `DE-RP`, `DE-SH`, `DE-SL`, `DE-SN`, `DE-ST`, `DE-TH` | Physics is now in maintenance / evidence-watch mode. Keep the completed Hessen/Bayern base, the reviewed upper-secondary state corridors, the first eight audited lower-secondary rows, and the frozen post-tranche candidate decisions stable. Use the machine-readable watch manifest `curricula/DE/Gymnasium/provenance/physics-evidence-watch-manifest.json`, the rendered watch status `docs/dev/canonical-gymnasium-physics-evidence-watch-status.md`, the baseline-driven delta view `docs/dev/canonical-gymnasium-physics-evidence-watch-delta.md`, the exit-code check `python3 scripts/check_canonical_physics_evidence_watch_delta.py`, and the fixed run path `./scripts/run_canonical_physics_evidence_watch.sh` as the operational watch surface for lower-secondary candidate rows and upper-secondary residue lanes. Reopen active rollout only when one of the watched source files changes in a way that satisfies the documented reopen triggers. |
 
 ## Program phases
 
@@ -60,7 +62,9 @@ This file is generated from:
 | `F1` Hessen and Bayern hardened base | `completed` |
 | `F2` Third-state activation | `completed` |
 | `F3` Repeatable multi-state rollout | `completed` |
-| `F4` Retained-state maintenance and future source onboarding | `active` |
+| `F4` Retained-state maintenance and future source onboarding | `completed` |
+| `F5` Horizontal all-state reviewed pass | `completed` |
+| `F6` Maintenance and evidence watch | `active` |
 
 ## State phase scale
 
@@ -82,28 +86,22 @@ This file is generated from:
 | `DE-BE` Berlin | `P4` First corridor reviewed | `65%` | `yes` | `24` | `subtree_adopted` | `backlog` |
 | `DE-BW` Baden-Wuerttemberg | `P4` First corridor reviewed | `65%` | `yes` | `64` | `subtree_adopted` | `backlog` |
 | `DE-BY` Bayern | `P6` State cutover ready | `100%` | `yes` | `44` | `cutover_ready` | `backlog` |
-| `DE-HB` Bremen | `P2` Snapshots active | `30%` | `yes` | `0` | `snapshots_active` | `active` |
+| `DE-HB` Bremen | `P3` Anchors mapped | `50%` | `yes` | `16` | `anchors_mapped` | `backlog` |
 | `DE-HE` Hessen | `P6` State cutover ready | `100%` | `yes` | `429` | `cutover_ready` | `backlog` |
-| `DE-HH` Hamburg | `P2` Snapshots active | `30%` | `yes` | `0` | `snapshots_active` | `active` |
-| `DE-MV` Mecklenburg-Vorpommern | `P2` Snapshots active | `30%` | `yes` | `0` | `snapshots_active` | `active` |
+| `DE-HH` Hamburg | `P3` Anchors mapped | `50%` | `yes` | `14` | `anchors_mapped` | `backlog` |
+| `DE-MV` Mecklenburg-Vorpommern | `P3` Anchors mapped | `50%` | `yes` | `18` | `anchors_mapped` | `backlog` |
 | `DE-NI` Niedersachsen | `P4` First corridor reviewed | `65%` | `yes` | `56` | `subtree_adopted` | `backlog` |
 | `DE-NW` Nordrhein-Westfalen | `P4` First corridor reviewed | `65%` | `yes` | `28` | `subtree_adopted` | `backlog` |
 | `DE-RP` Rheinland-Pfalz | `P4` First corridor reviewed | `65%` | `yes` | `90` | `subtree_adopted` | `backlog` |
 | `DE-SH` Schleswig-Holstein | `P4` First corridor reviewed | `65%` | `yes` | `22` | `subtree_adopted` | `backlog` |
-| `DE-SL` Saarland | `P2` Snapshots active | `30%` | `yes` | `0` | `snapshots_active` | `active` |
-| `DE-SN` Sachsen | `P2` Snapshots active | `30%` | `yes` | `0` | `snapshots_active` | `active` |
-| `DE-ST` Sachsen-Anhalt | `P2` Snapshots active | `30%` | `yes` | `0` | `snapshots_active` | `active` |
-| `DE-TH` Thueringen | `P2` Snapshots active | `30%` | `yes` | `0` | `snapshots_active` | `active` |
+| `DE-SL` Saarland | `P3` Anchors mapped | `50%` | `yes` | `24` | `anchors_mapped` | `backlog` |
+| `DE-SN` Sachsen | `P3` Anchors mapped | `50%` | `yes` | `33` | `anchors_mapped` | `backlog` |
+| `DE-ST` Sachsen-Anhalt | `P3` Anchors mapped | `50%` | `yes` | `40` | `anchors_mapped` | `backlog` |
+| `DE-TH` Thueringen | `P3` Anchors mapped | `50%` | `yes` | `17` | `anchors_mapped` | `backlog` |
 
 ## Immediate queue
 
-- `DE-HB` Bremen: Bremen now has active retained lower-secondary and upper-secondary Physics source snapshots from the archived 2006/2022 source family. The lower-secondary lane carries one shared orientation anchor, one retained `J7/8` strip on `Schall und Laerm`, `Sehen, Licht und Farben`, `Kraefte und Bewegung`, and `Elektrostatik`, and one retained `J9` strip on `Der elektrische Stromkreis als System`, `Elektromagnetismus`, and `Radioaktivitaet und Kernenergie`. The upper-secondary lane carries one shared orientation anchor, one Einfuehrungsphase strip on `Mechanik` and `Energie`, and three broad qualification anchors on `Elektrische und magnetische Felder`, `Mechanische und elektromagnetische Schwingungen und Wellen`, and `Quantenphysik und Materie` plus one explicit LK-only `Struktur der Materie` leaf. Both lanes are now provenance-backed through membership and closure, but no Bremen Physics mapping lane is open yet, no Bremen-specific canonical Physics atom exists yet, and no committed Bremen applicability cut exists yet.
-- `DE-HH` Hamburg: Hamburg now has active retained lower-secondary and upper-secondary Physics source snapshots from the archived 2011/2022 source family. The lower-secondary lane carries one shared orientation anchor, one retained `J8` strip on `Elektrizitaet`, `Bewegung und Kraft`, and `Licht und Schall`, and one retained transition strip on `Elektrizitaet und Magnetismus`, `Bewegung und Kraft`, `Energie`, and `Licht und Materie`. The upper-secondary lane carries one shared orientation anchor and four broad Studienstufen anchors on `Elektrische und magnetische Felder`, `Mechanische und elektromagnetische Schwingungen und Wellen`, `Quantenphysik und Materie`, and `Gravitation und Astrophysik`. Both lanes are now provenance-backed through membership and closure, but no Hamburg Physics mapping lane is open yet, no Hamburg-specific canonical Physics atom exists yet, and no committed Hamburg applicability cut exists yet.
-- `DE-MV` Mecklenburg-Vorpommern: Mecklenburg-Vorpommern now has active retained lower-secondary and upper-secondary Physics source snapshots from the archived 2022 source family. The lower-secondary lane carries one shared orientation anchor and retained class strips for `Klasse 7` (`Dichte`, `Kraefte`, `Physik auf der Baustelle`), `Klasse 8` (`Licht`, `elektrische Ladung`, `Stromkreise`, `Temperatur und Waerme`), `Klasse 9` (`Magnetismus`, `Gleichstrommotor und Induktion`, `geradlinige Bewegung`, `Mit dem E-Bike unterwegs`), and `Klasse 10` (`gleichmaessig beschleunigte Bewegung`, `Dynamik`, `Gravitationsfeld und Kreisbewegung`, `Kernphysik`). The upper-secondary lane carries one shared orientation anchor, one integratives Oberstufenband, and three broad retained theme anchors on `Elektrische und magnetische Felder`, `Schwingungen und Wellen`, and `Quantenphysik und Materie`. Both lanes are now provenance-backed through membership and closure, but no Mecklenburg-Vorpommern Physics mapping lane is open yet, no Mecklenburg-Vorpommern-specific canonical Physics atom exists yet, and no committed Mecklenburg-Vorpommern applicability cut exists yet.
-- `DE-SL` Saarland: Saarland now has active retained lower-secondary and upper-secondary Physics source snapshots from the archived 2012/2023/2024/2026 source family. The lower-secondary lane carries one shared orientation anchor, one retained `Klassenstufen 5/6` Naturwissenschaften feeder strip, one retained `Klassenstufe 7` strip, and branch-sensitive retained `Klassenstufe 8`, `Klassenstufe 9`, and `Klassenstufe 10` strips. The upper-secondary lane carries one shared orientation anchor plus broad retained `Einfuehrungsphase`, `Hauptphase G-Kurs`, and `Hauptphase Leistungskurs` strips. Both lanes are now provenance-backed through membership and closure, but no Saarland Physics mapping lane is open yet, no Saarland-specific canonical Physics atom exists yet, and no committed Saarland applicability cut exists yet.
-- `DE-SN` Sachsen: Sachsen now has active retained lower-secondary and upper-secondary Physics source snapshots from the archived shared Gymnasium Physics PDF. The lower-secondary lane carries one shared orientation anchor plus retained class strips for `6`, `7`, `8`, `9`, and `10`; the upper-secondary lane carries one shared orientation anchor plus broad retained `GK11`, `GK12`, `LK11`, and `LK12` strips. Both lanes are now provenance-backed through membership and closure, but no Sachsen Physics mapping lane is open yet, no Sachsen-specific canonical Physics atom exists yet, and no committed Sachsen applicability cut exists yet.
-- `DE-ST` Sachsen-Anhalt: Sachsen-Anhalt now has active retained lower-secondary and upper-secondary Physics source snapshots from the archived 2019/2022 source family. The lower-secondary lane carries one shared orientation anchor plus retained `Schuljahrgang 6`, `Schuljahrgaenge 7/8`, and `Schuljahrgang 9` strips. The upper-secondary lane carries one shared orientation anchor plus retained `Schuljahrgang 10 (Einfuehrungsphase)`, `grundlegendes Anforderungsniveau`, `erhoehtes Anforderungsniveau`, and `zweistuendiges Wahlpflichtfach` strips. Both lanes are now provenance-backed through membership and closure, but no Sachsen-Anhalt Physics mapping lane is open yet, no Sachsen-Anhalt-specific canonical Physics atom exists yet, and no committed Sachsen-Anhalt applicability cut exists yet.
-- `DE-TH` Thueringen: Thueringen now has active retained lower-secondary and upper-secondary Physics source snapshots from the archived 2012/2024 source family. The lower-secondary lane carries one shared orientation anchor plus retained `Klassenstufen 7/8` and `Klassenstufen 9/10` strips. The upper-secondary lane carries one shared orientation anchor plus a retained `Klassenstufe 11` strip and a retained `Qualifikationsphase` strip built from the 2024 content-area update. Both lanes are now provenance-backed through membership and closure, but no Thueringen Physics mapping lane is open yet, no Thueringen-specific canonical Physics atom exists yet, and no committed Thueringen applicability cut exists yet.
+- none
 
 ## Next steps
 
@@ -111,18 +109,18 @@ This file is generated from:
 - `DE-BE`: Keep Berlin stable on the reviewed retained `3.2.1` -> `3.2.2` route. The shared BE/BB residue on `c0` / `Relativitaet` / `Eintrittswinkel` is now explicitly frozen at the current reviewed level; the next rollout move should therefore come from a different source family unless that trio later becomes jointly reviewable.
 - `DE-BW`: Keep Baden-Wuerttemberg on maintenance only at the current reviewed pilot-cut level: preserve the existing first-entry strip inside the current topic-first maintenance phase, and reopen BW only for another clearly missing reviewed corridor outside the now-covered Basisfach-/Leistungsfach optics and quantum strips or when later retained source lanes create a genuinely shared Physics gap; do not introduce BW-specific Physics composition views before wider reviewed evidence requires them.
 - `DE-BY`: Keep Bayern on maintenance only, but treat the refreshed BY contribution on the retained Ph11/Ph12 wave strip and on the imported fine-beam-tube experiment clause as part of that maintenance surface: if later Bayern source revisions touch either strip, refresh mappings, applicability, provenance, and the DE-BY Physics composition views together without inventing Bayern-specific composition views or new canonical atoms unless broader reviewed evidence really forces them.
-- `DE-HB`: Keep Bremen stable as a source-backed retained Physics lane. The nationwide `P2` snapshot/provenance tranche is now complete; use these Bremen Sek-I and Sek-II lanes as one candidate input for the first `P3` structural-anchor pass.
+- `DE-HB`: Keep Bremen stable at the first conservative `P3` structural-anchor cut. Do not widen Bremen into another state-local corridor on the current evidence floor; reopen it only when a later source-backed nationwide row or a genuinely shared Physics gap reaches a Bremen-relevant strip.
 - `DE-HE`: Keep Hessen on maintenance only: refresh retained source snapshots, mappings, provenance, applicability, and the DE-HE Physics composition views together whenever a curriculum revision changes visible scope or learner-facing tree shape.
-- `DE-HH`: Keep Hamburg stable as a source-backed retained Physics lane. The nationwide `P2` snapshot/provenance tranche is now complete; use these Hamburg Sek-I and Sek-II lanes as one candidate input for the first `P3` structural-anchor pass.
-- `DE-MV`: Keep Mecklenburg-Vorpommern stable as a source-backed retained Physics lane. The nationwide `P2` snapshot/provenance tranche is now complete; use these Mecklenburg-Vorpommern Sek-I and Sek-II lanes as one candidate input for the first `P3` structural-anchor pass.
+- `DE-HH`: Keep Hamburg stable at the first conservative `P3` structural-anchor cut. Do not widen Hamburg into another state-local corridor on the current evidence floor; reopen it only when a later source-backed nationwide row or a genuinely shared Physics gap reaches a Hamburg-relevant strip.
+- `DE-MV`: Keep Mecklenburg-Vorpommern stable at the first conservative `P3` structural-anchor cut. Do not widen Mecklenburg-Vorpommern into another state-local corridor on the current evidence floor; reopen it only when a later source-backed nationwide row or a genuinely shared Physics gap reaches a Mecklenburg-Vorpommern-relevant strip.
 - `DE-NI`: Keep Niedersachsen on maintenance only at the current reviewed pilot-cut level: preserve the imported retained pilot corridor including the reviewed `Michelson`, crossed-field, and fine-beam-tube follow-ons. Leave the sustainability-related Bewertungsblatt intentionally source-led unless a later retained rollout creates a genuinely shared Physics evaluation surface, and continue to avoid Niedersachsen-specific Physics composition views or new canonical atoms without broader reviewed evidence.
 - `DE-NW`: Keep Nordrhein-Westfalen on maintenance only at the current reviewed pilot-cut level: preserve the existing upper-secondary corridor inside the current topic-first maintenance phase, and reopen NRW only for another clearly source-led corridor outside the exhausted GK atom-model strip or when later retained source lanes create a genuinely shared Physics gap; do not invent NRW-specific Physics composition views before broader reviewed evidence actually requires them.
 - `DE-RP`: Keep Rheinland-Pfalz stable at the current conservative reviewed cut and pause further widening until the still-missing Bundesland Physics source lanes are archived locally for both Sek I and Sek II where applicable. When Rheinland-Pfalz is revisited after that source-onboarding tranche, start with an explicit closure decision on the remaining LF residue `Individuelles Thema`.
 - `DE-SH`: Treat Schleswig-Holstein as complete at the current reviewed pilot-cut level. Keep `Massenspektrometer` plus `Drehimpuls und Drehimpulserhaltung` frozen as explicit source-led micro-residues unless broader reviewed evidence warrants narrow shared canonical splits, and reopen SH only if a later multi-state source lane creates a genuinely shared Physics gap on either residue.
-- `DE-SL`: Keep Saarland stable as a source-backed retained Physics lane. The nationwide `P2` snapshot/provenance tranche is now complete; use these Saarland Sek-I and Sek-II lanes as one candidate input for the first `P3` structural-anchor pass.
-- `DE-SN`: Keep Sachsen stable as a source-backed retained Physics lane. The nationwide `P2` snapshot/provenance tranche is now complete; use these Sachsen Sek-I and Sek-II lanes as one candidate input for the first `P3` structural-anchor pass.
-- `DE-ST`: Keep Sachsen-Anhalt stable as a source-backed retained Physics lane. The nationwide `P2` snapshot/provenance tranche is now complete; use these Sachsen-Anhalt Sek-I and Sek-II lanes as one candidate input for the first `P3` structural-anchor pass.
-- `DE-TH`: Keep Thueringen stable as a source-backed retained Physics lane. The nationwide `P2` snapshot/provenance tranche is now complete; use these Thueringen Sek-I and Sek-II lanes as one candidate input for the first `P3` structural-anchor pass.
+- `DE-SL`: Keep Saarland stable at the first conservative `P3` structural-anchor cut. Do not widen Saarland into another state-local corridor on the current evidence floor; reopen it only when a later source-backed nationwide row or a genuinely shared Physics gap reaches a Saarland-relevant strip.
+- `DE-SN`: Keep Sachsen stable at the first conservative `P3` structural-anchor cut. Do not widen Sachsen into another state-local corridor on the current evidence floor; reopen it only when a later source-backed nationwide row or a genuinely shared Physics gap reaches a Sachsen-relevant strip.
+- `DE-ST`: Keep Sachsen-Anhalt stable at the first conservative `P3` structural-anchor cut. Do not widen Sachsen-Anhalt into another state-local corridor on the current evidence floor; reopen it only when a later source-backed nationwide row or a genuinely shared Physics gap reaches a Sachsen-Anhalt-relevant strip.
+- `DE-TH`: Keep Thueringen stable at the first conservative `P3` structural-anchor cut. Do not widen Thueringen into another state-local corridor on the current evidence floor; reopen it only when a later source-backed nationwide row or a genuinely shared Physics gap reaches a Thueringen-relevant strip.
 
 ## Regeneration
 

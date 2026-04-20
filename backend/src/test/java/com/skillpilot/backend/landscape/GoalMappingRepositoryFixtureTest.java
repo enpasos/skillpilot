@@ -33,6 +33,12 @@ class GoalMappingRepositoryFixtureTest {
     private static final String NRW_MATH_SEK1_LANDSCAPE_ID = "c862423f-d0ac-4a65-8ad2-9a6e560313a8";
     private static final String NRW_MATH_UPPER_SECONDARY_LANDSCAPE_ID = "d3a068ca-90c6-4d7f-ab6b-4d8b43085cb1";
     private static final String NRW_PHYSICS_UPPER_SECONDARY_LANDSCAPE_ID = "8abb46ff-072b-41b7-9d70-0334cb5a1a6c";
+    private static final String BREMEN_PHYSICS_SEK1_LANDSCAPE_ID = "6cf49ad5-537a-45ee-848c-b114fd3c57df";
+    private static final String BREMEN_PHYSICS_UPPER_SECONDARY_LANDSCAPE_ID = "10228ad5-6cc9-4e93-8436-c47f8b0b488a";
+    private static final String HAMBURG_PHYSICS_SEK1_LANDSCAPE_ID = "cc3245a5-2980-4019-aa51-84904e073195";
+    private static final String HAMBURG_PHYSICS_UPPER_SECONDARY_LANDSCAPE_ID = "b400d5b6-7b13-4a64-881d-7416dcf01785";
+    private static final String MECKLENBURG_VORPOMMERN_PHYSICS_SEK1_LANDSCAPE_ID = "27da5587-bef3-49ad-9fec-3907253b85bd";
+    private static final String MECKLENBURG_VORPOMMERN_PHYSICS_UPPER_SECONDARY_LANDSCAPE_ID = "f66821d1-64a5-428d-a826-36990b6f1e0f";
     private static final String NIEDERSACHSEN_MATH_SEK1_LANDSCAPE_ID = "2b995085-dc5e-47c6-a563-9dcfc01fb74d";
     private static final String NIEDERSACHSEN_MATH_UPPER_SECONDARY_LANDSCAPE_ID = "fcb04661-6ea2-4030-a9b2-97e6cc03daf8";
     private static final String NIEDERSACHSEN_PHYSICS_UPPER_SECONDARY_LANDSCAPE_ID = "730a6dbb-7ddb-486b-8ac8-dd9e58e3d113";
@@ -40,6 +46,14 @@ class GoalMappingRepositoryFixtureTest {
     private static final String BADEN_WUERTTEMBERG_MATH_UPPER_SECONDARY_LANDSCAPE_ID = "fa8f864a-aac5-486d-8e77-40df2af038a3";
     private static final String BADEN_WUERTTEMBERG_PHYSICS_UPPER_SECONDARY_LANDSCAPE_ID = "eee2dc63-f96b-42c3-a2c9-b906432ccf5d";
     private static final String BERLIN_PHYSICS_UPPER_SECONDARY_LANDSCAPE_ID = "8e54a9e6-dd9d-4f5d-a632-734b4ef5c754";
+    private static final String SAARLAND_PHYSICS_SEK1_LANDSCAPE_ID = "e5f66ad7-8f49-41f5-b8b2-52ab9a0ebcac";
+    private static final String SAARLAND_PHYSICS_UPPER_SECONDARY_LANDSCAPE_ID = "36092b29-547c-4018-8f47-97f04d786ba1";
+    private static final String SAXONY_PHYSICS_SEK1_LANDSCAPE_ID = "d2e1fbb7-9e42-49a7-a07b-a7973156da12";
+    private static final String SAXONY_PHYSICS_UPPER_SECONDARY_LANDSCAPE_ID = "e1213911-abd2-4a1e-88ca-7a78a58c2189";
+    private static final String SAXONY_ANHALT_PHYSICS_SEK1_LANDSCAPE_ID = "3eedae6b-7e62-4e6e-a96c-78cd6df4c4aa";
+    private static final String SAXONY_ANHALT_PHYSICS_UPPER_SECONDARY_LANDSCAPE_ID = "85f23183-91d4-4eb0-ad51-aa3a03b240a8";
+    private static final String THUERINGIA_PHYSICS_SEK1_LANDSCAPE_ID = "2b1b8596-f8c5-44ba-9dec-4cccb834769a";
+    private static final String THUERINGIA_PHYSICS_UPPER_SECONDARY_LANDSCAPE_ID = "8b6387d0-7fc8-40e4-89ca-e5049b5bc42f";
     private static final String SCHLESWIG_HOLSTEIN_MATH_UPPER_SECONDARY_LANDSCAPE_ID = "01ffba7d-7588-4221-bd2b-1a692839809a";
     private static final String SCHLESWIG_HOLSTEIN_PHYSICS_UPPER_SECONDARY_LANDSCAPE_ID = "f1a2c733-b994-4db3-9dd6-54ffe544002b";
     private static final String BRANDENBURG_MATH_UPPER_SECONDARY_LANDSCAPE_ID = "c36ba9b3-4d11-4b19-a278-cd6c3c3fcc71";
@@ -73,6 +87,30 @@ class GoalMappingRepositoryFixtureTest {
     private static final Path HESSEN_LOWER_SECONDARY_MAPPING_DIR = Path.of("../curricula/DE/Gymnasium/mapping/DE-HE/lower-secondary");
     private static final Path NRW_UPPER_SECONDARY_MAPPING_DIR = Path.of("../curricula/DE/Gymnasium/mapping/DE-NW/upper-secondary");
     private static final Path NRW_LOWER_SECONDARY_MAPPING_DIR = Path.of("../curricula/DE/Gymnasium/mapping/DE-NW/lower-secondary");
+    private static final Path BREMEN_UPPER_SECONDARY_MAPPING_DIR = Path.of("../curricula/DE/Gymnasium/mapping/DE-HB/upper-secondary");
+    private static final Path BREMEN_LOWER_SECONDARY_MAPPING_DIR = Path.of("../curricula/DE/Gymnasium/mapping/DE-HB/lower-secondary");
+    private static final Path HAMBURG_UPPER_SECONDARY_MAPPING_DIR = Path.of("../curricula/DE/Gymnasium/mapping/DE-HH/upper-secondary");
+    private static final Path HAMBURG_LOWER_SECONDARY_MAPPING_DIR = Path.of("../curricula/DE/Gymnasium/mapping/DE-HH/lower-secondary");
+    private static final Path MECKLENBURG_VORPOMMERN_UPPER_SECONDARY_MAPPING_DIR =
+            Path.of("../curricula/DE/Gymnasium/mapping/DE-MV/upper-secondary");
+    private static final Path MECKLENBURG_VORPOMMERN_LOWER_SECONDARY_MAPPING_DIR =
+            Path.of("../curricula/DE/Gymnasium/mapping/DE-MV/lower-secondary");
+    private static final Path SAARLAND_UPPER_SECONDARY_MAPPING_DIR =
+            Path.of("../curricula/DE/Gymnasium/mapping/DE-SL/upper-secondary");
+    private static final Path SAARLAND_LOWER_SECONDARY_MAPPING_DIR =
+            Path.of("../curricula/DE/Gymnasium/mapping/DE-SL/lower-secondary");
+    private static final Path SAXONY_UPPER_SECONDARY_MAPPING_DIR =
+            Path.of("../curricula/DE/Gymnasium/mapping/DE-SN/upper-secondary");
+    private static final Path SAXONY_LOWER_SECONDARY_MAPPING_DIR =
+            Path.of("../curricula/DE/Gymnasium/mapping/DE-SN/lower-secondary");
+    private static final Path SAXONY_ANHALT_UPPER_SECONDARY_MAPPING_DIR =
+            Path.of("../curricula/DE/Gymnasium/mapping/DE-ST/upper-secondary");
+    private static final Path SAXONY_ANHALT_LOWER_SECONDARY_MAPPING_DIR =
+            Path.of("../curricula/DE/Gymnasium/mapping/DE-ST/lower-secondary");
+    private static final Path THUERINGIA_UPPER_SECONDARY_MAPPING_DIR =
+            Path.of("../curricula/DE/Gymnasium/mapping/DE-TH/upper-secondary");
+    private static final Path THUERINGIA_LOWER_SECONDARY_MAPPING_DIR =
+            Path.of("../curricula/DE/Gymnasium/mapping/DE-TH/lower-secondary");
     private static final Path NIEDERSACHSEN_UPPER_SECONDARY_MAPPING_DIR =
             Path.of("../curricula/DE/Gymnasium/mapping/DE-NI/upper-secondary");
     private static final Path NIEDERSACHSEN_LOWER_SECONDARY_MAPPING_DIR =
@@ -109,6 +147,34 @@ class GoalMappingRepositoryFixtureTest {
             NRW_UPPER_SECONDARY_MAPPING_DIR.resolve("nrw_math_upper_secondary_to_canonical_math.json");
     private static final Path NRW_PHYSICS_UPPER_SECONDARY_MAPPING_FILE =
             NRW_UPPER_SECONDARY_MAPPING_DIR.resolve("nrw_physics_upper_secondary_to_canonical_physics.json");
+    private static final Path BREMEN_PHYSICS_SEK1_MAPPING_FILE =
+            BREMEN_LOWER_SECONDARY_MAPPING_DIR.resolve("hb_physics_lower_secondary_to_canonical_physics.json");
+    private static final Path BREMEN_PHYSICS_UPPER_SECONDARY_MAPPING_FILE =
+            BREMEN_UPPER_SECONDARY_MAPPING_DIR.resolve("hb_physics_upper_secondary_to_canonical_physics.json");
+    private static final Path HAMBURG_PHYSICS_SEK1_MAPPING_FILE =
+            HAMBURG_LOWER_SECONDARY_MAPPING_DIR.resolve("hh_physics_lower_secondary_to_canonical_physics.json");
+    private static final Path HAMBURG_PHYSICS_UPPER_SECONDARY_MAPPING_FILE =
+            HAMBURG_UPPER_SECONDARY_MAPPING_DIR.resolve("hh_physics_upper_secondary_to_canonical_physics.json");
+    private static final Path MECKLENBURG_VORPOMMERN_PHYSICS_SEK1_MAPPING_FILE =
+            MECKLENBURG_VORPOMMERN_LOWER_SECONDARY_MAPPING_DIR.resolve("mv_physics_lower_secondary_to_canonical_physics.json");
+    private static final Path MECKLENBURG_VORPOMMERN_PHYSICS_UPPER_SECONDARY_MAPPING_FILE = MECKLENBURG_VORPOMMERN_UPPER_SECONDARY_MAPPING_DIR.resolve(
+            "mv_physics_upper_secondary_to_canonical_physics.json");
+    private static final Path SAARLAND_PHYSICS_SEK1_MAPPING_FILE =
+            SAARLAND_LOWER_SECONDARY_MAPPING_DIR.resolve("sl_physics_lower_secondary_to_canonical_physics.json");
+    private static final Path SAARLAND_PHYSICS_UPPER_SECONDARY_MAPPING_FILE =
+            SAARLAND_UPPER_SECONDARY_MAPPING_DIR.resolve("sl_physics_upper_secondary_to_canonical_physics.json");
+    private static final Path SAXONY_PHYSICS_SEK1_MAPPING_FILE =
+            SAXONY_LOWER_SECONDARY_MAPPING_DIR.resolve("sn_physics_lower_secondary_to_canonical_physics.json");
+    private static final Path SAXONY_PHYSICS_UPPER_SECONDARY_MAPPING_FILE =
+            SAXONY_UPPER_SECONDARY_MAPPING_DIR.resolve("sn_physics_upper_secondary_to_canonical_physics.json");
+    private static final Path SAXONY_ANHALT_PHYSICS_SEK1_MAPPING_FILE =
+            SAXONY_ANHALT_LOWER_SECONDARY_MAPPING_DIR.resolve("st_physics_lower_secondary_to_canonical_physics.json");
+    private static final Path SAXONY_ANHALT_PHYSICS_UPPER_SECONDARY_MAPPING_FILE =
+            SAXONY_ANHALT_UPPER_SECONDARY_MAPPING_DIR.resolve("st_physics_upper_secondary_to_canonical_physics.json");
+    private static final Path THUERINGIA_PHYSICS_SEK1_MAPPING_FILE =
+            THUERINGIA_LOWER_SECONDARY_MAPPING_DIR.resolve("th_physics_lower_secondary_to_canonical_physics.json");
+    private static final Path THUERINGIA_PHYSICS_UPPER_SECONDARY_MAPPING_FILE =
+            THUERINGIA_UPPER_SECONDARY_MAPPING_DIR.resolve("th_physics_upper_secondary_to_canonical_physics.json");
     private static final Path NIEDERSACHSEN_SEK1_MAPPING_FILE =
             NIEDERSACHSEN_LOWER_SECONDARY_MAPPING_DIR.resolve("ni_math_lower_secondary_to_canonical_math.json");
     private static final Path NIEDERSACHSEN_UPPER_SECONDARY_MAPPING_FILE =
@@ -1205,6 +1271,385 @@ class GoalMappingRepositoryFixtureTest {
     }
 
     @Test
+    void parsesRepositoryBackedCanonicalPhysicsBremenSek1MappingFixture() throws Exception {
+        GoalMappingFile file = new ObjectMapper().readValue(BREMEN_PHYSICS_SEK1_MAPPING_FILE.toFile(), GoalMappingFile.class);
+
+        assertThat(file.getVersion()).isEqualTo(1);
+        assertThat(file.getSourceLandscapeId()).isEqualTo(BREMEN_PHYSICS_SEK1_LANDSCAPE_ID);
+        assertThat(file.getTargetLandscapeId()).isEqualTo(CANONICAL_PHYSICS_ID);
+        assertThat(file.getMappings()).hasSize(9);
+        assertThat(file.getMappings()).filteredOn(entry -> "exact".equals(entry.getMatchType())).isEmpty();
+        assertThat(file.getMappings()).filteredOn(entry -> "partial".equals(entry.getMatchType())).hasSize(9);
+        assertThat(file.getMappings())
+                .extracting(GoalMappingEntry::getLegacyGoalId, GoalMappingEntry::getCanonicalGoalId, GoalMappingEntry::getMatchType)
+                .containsExactly(
+                        Tuple.tuple("hb-phys-sek1-root", "bf980fff-b62b-4ea4-a20d-31681a7ad785", "partial"),
+                        Tuple.tuple("hb-phys-sek1-orientation", "5c44b9ba-9b05-4774-95d5-073230d3fc4f", "partial"),
+                        Tuple.tuple("hb-phys-sek1-sound-noise", "41fd5575-b1a6-40e7-8ea2-66b75a597a79", "partial"),
+                        Tuple.tuple("hb-phys-sek1-light-colors", "84b1bc70-dadf-449b-a8d4-8bcee1da1fea", "partial"),
+                        Tuple.tuple("hb-phys-sek1-force-motion", "9645f0d8-43a3-5f29-873c-daa5ace638db", "partial"),
+                        Tuple.tuple("hb-phys-sek1-electrostatics", "bbabac7c-9613-4c7e-877e-d7dc3df5300f", "partial"),
+                        Tuple.tuple("hb-phys-sek1-circuit-system", "bbabac7c-9613-4c7e-877e-d7dc3df5300f", "partial"),
+                        Tuple.tuple("hb-phys-sek1-electromagnetism", "4924d83e-5e4b-4819-9d70-86cda3496195", "partial"),
+                        Tuple.tuple("hb-phys-sek1-radioactivity", "8917c71a-bfcb-4003-971c-188a69446b60", "partial"));
+    }
+
+    @Test
+    void parsesRepositoryBackedCanonicalPhysicsBremenUpperSecondaryMappingFixture() throws Exception {
+        GoalMappingFile file =
+                new ObjectMapper().readValue(BREMEN_PHYSICS_UPPER_SECONDARY_MAPPING_FILE.toFile(), GoalMappingFile.class);
+
+        assertThat(file.getVersion()).isEqualTo(1);
+        assertThat(file.getSourceLandscapeId()).isEqualTo(BREMEN_PHYSICS_UPPER_SECONDARY_LANDSCAPE_ID);
+        assertThat(file.getTargetLandscapeId()).isEqualTo(CANONICAL_PHYSICS_ID);
+        assertThat(file.getMappings()).hasSize(7);
+        assertThat(file.getMappings()).filteredOn(entry -> "exact".equals(entry.getMatchType())).isEmpty();
+        assertThat(file.getMappings()).filteredOn(entry -> "partial".equals(entry.getMatchType())).hasSize(7);
+        assertThat(file.getMappings())
+                .extracting(GoalMappingEntry::getLegacyGoalId, GoalMappingEntry::getCanonicalGoalId, GoalMappingEntry::getMatchType)
+                .containsExactly(
+                        Tuple.tuple("hb-phys-sek2-root", "bf980fff-b62b-4ea4-a20d-31681a7ad785", "partial"),
+                        Tuple.tuple("hb-phys-sek2-orientation", "5c44b9ba-9b05-4774-95d5-073230d3fc4f", "partial"),
+                        Tuple.tuple("hb-phys-sek2-e", "942de15b-32f1-5713-80e5-e7aeb8749fc4", "partial"),
+                        Tuple.tuple("hb-phys-sek2-fields", "0735269d-703d-57ab-8861-6f7e1c5e2b8a", "partial"),
+                        Tuple.tuple("hb-phys-sek2-oscillations-waves", "fcefb129-ad4c-50a2-9762-a910caa1af16", "partial"),
+                        Tuple.tuple("hb-phys-sek2-quantum-matter", "5d960c58-f363-5dc1-b012-e6363b4b31cf", "partial"),
+                        Tuple.tuple("hb-phys-sek2-structure-matter", "5482bc19-3836-51a5-ba98-fbf5e265b908", "partial"));
+    }
+
+    @Test
+    void parsesRepositoryBackedCanonicalPhysicsHamburgSek1MappingFixture() throws Exception {
+        GoalMappingFile file = new ObjectMapper().readValue(HAMBURG_PHYSICS_SEK1_MAPPING_FILE.toFile(), GoalMappingFile.class);
+
+        assertThat(file.getVersion()).isEqualTo(1);
+        assertThat(file.getSourceLandscapeId()).isEqualTo(HAMBURG_PHYSICS_SEK1_LANDSCAPE_ID);
+        assertThat(file.getTargetLandscapeId()).isEqualTo(CANONICAL_PHYSICS_ID);
+        assertThat(file.getMappings()).hasSize(8);
+        assertThat(file.getMappings()).filteredOn(entry -> "exact".equals(entry.getMatchType())).isEmpty();
+        assertThat(file.getMappings()).filteredOn(entry -> "partial".equals(entry.getMatchType())).hasSize(8);
+        assertThat(file.getMappings())
+                .extracting(GoalMappingEntry::getLegacyGoalId, GoalMappingEntry::getCanonicalGoalId, GoalMappingEntry::getMatchType)
+                .containsExactly(
+                        Tuple.tuple("hh-phys-sek1-root", "bf980fff-b62b-4ea4-a20d-31681a7ad785", "partial"),
+                        Tuple.tuple("hh-phys-sek1-orientation", "5c44b9ba-9b05-4774-95d5-073230d3fc4f", "partial"),
+                        Tuple.tuple("hh-phys-sek1-j8-electricity", "4924d83e-5e4b-4819-9d70-86cda3496195", "partial"),
+                        Tuple.tuple("hh-phys-sek1-j8-motion-force", "9645f0d8-43a3-5f29-873c-daa5ace638db", "partial"),
+                        Tuple.tuple("hh-phys-sek1-j8-light-sound", "84b1bc70-dadf-449b-a8d4-8bcee1da1fea", "partial"),
+                        Tuple.tuple("hh-phys-sek1-transition-electricity-magnetism", "bbabac7c-9613-4c7e-877e-d7dc3df5300f", "partial"),
+                        Tuple.tuple("hh-phys-sek1-transition-motion-force", "9645f0d8-43a3-5f29-873c-daa5ace638db", "partial"),
+                        Tuple.tuple("hh-phys-sek1-transition-light-matter", "8917c71a-bfcb-4003-971c-188a69446b60", "partial"));
+    }
+
+    @Test
+    void parsesRepositoryBackedCanonicalPhysicsHamburgUpperSecondaryMappingFixture() throws Exception {
+        GoalMappingFile file =
+                new ObjectMapper().readValue(HAMBURG_PHYSICS_UPPER_SECONDARY_MAPPING_FILE.toFile(), GoalMappingFile.class);
+
+        assertThat(file.getVersion()).isEqualTo(1);
+        assertThat(file.getSourceLandscapeId()).isEqualTo(HAMBURG_PHYSICS_UPPER_SECONDARY_LANDSCAPE_ID);
+        assertThat(file.getTargetLandscapeId()).isEqualTo(CANONICAL_PHYSICS_ID);
+        assertThat(file.getMappings()).hasSize(6);
+        assertThat(file.getMappings()).filteredOn(entry -> "exact".equals(entry.getMatchType())).isEmpty();
+        assertThat(file.getMappings()).filteredOn(entry -> "partial".equals(entry.getMatchType())).hasSize(6);
+        assertThat(file.getMappings())
+                .extracting(GoalMappingEntry::getLegacyGoalId, GoalMappingEntry::getCanonicalGoalId, GoalMappingEntry::getMatchType)
+                .containsExactly(
+                        Tuple.tuple("hh-phys-sek2-root", "bf980fff-b62b-4ea4-a20d-31681a7ad785", "partial"),
+                        Tuple.tuple("hh-phys-sek2-orientation", "5c44b9ba-9b05-4774-95d5-073230d3fc4f", "partial"),
+                        Tuple.tuple("hh-phys-sek2-fields", "0735269d-703d-57ab-8861-6f7e1c5e2b8a", "partial"),
+                        Tuple.tuple("hh-phys-sek2-oscillations-waves", "fcefb129-ad4c-50a2-9762-a910caa1af16", "partial"),
+                        Tuple.tuple("hh-phys-sek2-quantum-matter", "5d960c58-f363-5dc1-b012-e6363b4b31cf", "partial"),
+                        Tuple.tuple("hh-phys-sek2-gravitation-astrophysics", "b59cb1ef-05c2-5b09-abb3-8b6903ca0fd6", "partial"));
+    }
+
+    @Test
+    void parsesRepositoryBackedCanonicalPhysicsMecklenburgVorpommernSek1MappingFixture() throws Exception {
+        GoalMappingFile file = new ObjectMapper().readValue(MECKLENBURG_VORPOMMERN_PHYSICS_SEK1_MAPPING_FILE.toFile(), GoalMappingFile.class);
+
+        assertThat(file.getVersion()).isEqualTo(1);
+        assertThat(file.getSourceLandscapeId()).isEqualTo(MECKLENBURG_VORPOMMERN_PHYSICS_SEK1_LANDSCAPE_ID);
+        assertThat(file.getTargetLandscapeId()).isEqualTo(CANONICAL_PHYSICS_ID);
+        assertThat(file.getMappings()).hasSize(13);
+        assertThat(file.getMappings()).filteredOn(entry -> "exact".equals(entry.getMatchType())).isEmpty();
+        assertThat(file.getMappings()).filteredOn(entry -> "partial".equals(entry.getMatchType())).hasSize(13);
+        assertThat(file.getMappings())
+                .extracting(GoalMappingEntry::getLegacyGoalId, GoalMappingEntry::getCanonicalGoalId, GoalMappingEntry::getMatchType)
+                .containsExactly(
+                        Tuple.tuple("mv-phys-sek1-root", "bf980fff-b62b-4ea4-a20d-31681a7ad785", "partial"),
+                        Tuple.tuple("mv-phys-sek1-orientation", "5c44b9ba-9b05-4774-95d5-073230d3fc4f", "partial"),
+                        Tuple.tuple("mv-phys-sek1-j7-density", "9645f0d8-43a3-5f29-873c-daa5ace638db", "partial"),
+                        Tuple.tuple("mv-phys-sek1-j7-forces", "9645f0d8-43a3-5f29-873c-daa5ace638db", "partial"),
+                        Tuple.tuple("mv-phys-sek1-j8-light", "84b1bc70-dadf-449b-a8d4-8bcee1da1fea", "partial"),
+                        Tuple.tuple("mv-phys-sek1-j8-charge", "bbabac7c-9613-4c7e-877e-d7dc3df5300f", "partial"),
+                        Tuple.tuple("mv-phys-sek1-j8-circuits", "bbabac7c-9613-4c7e-877e-d7dc3df5300f", "partial"),
+                        Tuple.tuple("mv-phys-sek1-j9-magnetism", "4924d83e-5e4b-4819-9d70-86cda3496195", "partial"),
+                        Tuple.tuple("mv-phys-sek1-j9-induction", "4924d83e-5e4b-4819-9d70-86cda3496195", "partial"),
+                        Tuple.tuple("mv-phys-sek1-j9-uniform-motion", "9645f0d8-43a3-5f29-873c-daa5ace638db", "partial"),
+                        Tuple.tuple("mv-phys-sek1-j10-accelerated-motion", "9645f0d8-43a3-5f29-873c-daa5ace638db", "partial"),
+                        Tuple.tuple("mv-phys-sek1-j10-dynamics", "9645f0d8-43a3-5f29-873c-daa5ace638db", "partial"),
+                        Tuple.tuple("mv-phys-sek1-j10-nuclear-physics", "8917c71a-bfcb-4003-971c-188a69446b60", "partial"));
+    }
+
+    @Test
+    void parsesRepositoryBackedCanonicalPhysicsMecklenburgVorpommernUpperSecondaryMappingFixture() throws Exception {
+        GoalMappingFile file =
+                new ObjectMapper().readValue(MECKLENBURG_VORPOMMERN_PHYSICS_UPPER_SECONDARY_MAPPING_FILE.toFile(), GoalMappingFile.class);
+
+        assertThat(file.getVersion()).isEqualTo(1);
+        assertThat(file.getSourceLandscapeId()).isEqualTo(MECKLENBURG_VORPOMMERN_PHYSICS_UPPER_SECONDARY_LANDSCAPE_ID);
+        assertThat(file.getTargetLandscapeId()).isEqualTo(CANONICAL_PHYSICS_ID);
+        assertThat(file.getMappings()).hasSize(5);
+        assertThat(file.getMappings()).filteredOn(entry -> "exact".equals(entry.getMatchType())).isEmpty();
+        assertThat(file.getMappings()).filteredOn(entry -> "partial".equals(entry.getMatchType())).hasSize(5);
+        assertThat(file.getMappings())
+                .extracting(GoalMappingEntry::getLegacyGoalId, GoalMappingEntry::getCanonicalGoalId, GoalMappingEntry::getMatchType)
+                .containsExactly(
+                        Tuple.tuple("mv-phys-sek2-root", "bf980fff-b62b-4ea4-a20d-31681a7ad785", "partial"),
+                        Tuple.tuple("mv-phys-sek2-orientation", "5c44b9ba-9b05-4774-95d5-073230d3fc4f", "partial"),
+                        Tuple.tuple("mv-phys-sek2-fields", "0735269d-703d-57ab-8861-6f7e1c5e2b8a", "partial"),
+                        Tuple.tuple("mv-phys-sek2-oscillations-waves", "fcefb129-ad4c-50a2-9762-a910caa1af16", "partial"),
+                        Tuple.tuple("mv-phys-sek2-quantum-matter", "5d960c58-f363-5dc1-b012-e6363b4b31cf", "partial"));
+    }
+
+    @Test
+    void parsesRepositoryBackedCanonicalPhysicsSaarlandSek1MappingFixture() throws Exception {
+        GoalMappingFile file = new ObjectMapper().readValue(SAARLAND_PHYSICS_SEK1_MAPPING_FILE.toFile(), GoalMappingFile.class);
+
+        assertThat(file.getVersion()).isEqualTo(1);
+        assertThat(file.getSourceLandscapeId()).isEqualTo(SAARLAND_PHYSICS_SEK1_LANDSCAPE_ID);
+        assertThat(file.getTargetLandscapeId()).isEqualTo(CANONICAL_PHYSICS_ID);
+        assertThat(file.getMappings()).hasSize(13);
+        assertThat(file.getMappings()).filteredOn(entry -> "exact".equals(entry.getMatchType())).isEmpty();
+        assertThat(file.getMappings()).filteredOn(entry -> "partial".equals(entry.getMatchType())).hasSize(13);
+        assertThat(file.getMappings())
+                .extracting(GoalMappingEntry::getLegacyGoalId, GoalMappingEntry::getCanonicalGoalId, GoalMappingEntry::getMatchType)
+                .containsExactly(
+                        Tuple.tuple("sl-phys-sek1-root", "bf980fff-b62b-4ea4-a20d-31681a7ad785", "partial"),
+                        Tuple.tuple("sl-phys-sek1-orientation", "5c44b9ba-9b05-4774-95d5-073230d3fc4f", "partial"),
+                        Tuple.tuple("sl-phys-j5-6-science-feeder", "9645f0d8-43a3-5f29-873c-daa5ace638db", "partial"),
+                        Tuple.tuple("sl-phys-j7-electricity", "4924d83e-5e4b-4819-9d70-86cda3496195", "partial"),
+                        Tuple.tuple("sl-phys-j7-optics", "051cedc5-d380-4716-9751-b18f2e67a912", "partial"),
+                        Tuple.tuple("sl-phys-j7-mechanics", "9645f0d8-43a3-5f29-873c-daa5ace638db", "partial"),
+                        Tuple.tuple("sl-phys-j8-nw-track", "9645f0d8-43a3-5f29-873c-daa5ace638db", "partial"),
+                        Tuple.tuple("sl-phys-j8-two-hour-track", "84b1bc70-dadf-449b-a8d4-8bcee1da1fea", "partial"),
+                        Tuple.tuple("sl-phys-j9-informatics-track", "bbabac7c-9613-4c7e-877e-d7dc3df5300f", "partial"),
+                        Tuple.tuple("sl-phys-j9-nw-track", "84b1bc70-dadf-449b-a8d4-8bcee1da1fea", "partial"),
+                        Tuple.tuple("sl-phys-j10-informatics-track", "8917c71a-bfcb-4003-971c-188a69446b60", "partial"),
+                        Tuple.tuple("sl-phys-j10-nw-track", "8917c71a-bfcb-4003-971c-188a69446b60", "partial"),
+                        Tuple.tuple("sl-phys-j10-two-hour-track", "8917c71a-bfcb-4003-971c-188a69446b60", "partial"));
+    }
+
+    @Test
+    void parsesRepositoryBackedCanonicalPhysicsSaarlandUpperSecondaryMappingFixture() throws Exception {
+        GoalMappingFile file =
+                new ObjectMapper().readValue(SAARLAND_PHYSICS_UPPER_SECONDARY_MAPPING_FILE.toFile(), GoalMappingFile.class);
+
+        assertThat(file.getVersion()).isEqualTo(1);
+        assertThat(file.getSourceLandscapeId()).isEqualTo(SAARLAND_PHYSICS_UPPER_SECONDARY_LANDSCAPE_ID);
+        assertThat(file.getTargetLandscapeId()).isEqualTo(CANONICAL_PHYSICS_ID);
+        assertThat(file.getMappings()).hasSize(11);
+        assertThat(file.getMappings()).filteredOn(entry -> "exact".equals(entry.getMatchType())).isEmpty();
+        assertThat(file.getMappings()).filteredOn(entry -> "partial".equals(entry.getMatchType())).hasSize(11);
+        assertThat(file.getMappings())
+                .extracting(GoalMappingEntry::getLegacyGoalId, GoalMappingEntry::getCanonicalGoalId, GoalMappingEntry::getMatchType)
+                .containsExactly(
+                        Tuple.tuple("sl-phys-sek2-root", "bf980fff-b62b-4ea4-a20d-31681a7ad785", "partial"),
+                        Tuple.tuple("sl-phys-sek2-orientation", "5c44b9ba-9b05-4774-95d5-073230d3fc4f", "partial"),
+                        Tuple.tuple("sl-phys-ep-force-motion", "942de15b-32f1-5713-80e5-e7aeb8749fc4", "partial"),
+                        Tuple.tuple("sl-phys-gk-fields", "0735269d-703d-57ab-8861-6f7e1c5e2b8a", "partial"),
+                        Tuple.tuple("sl-phys-gk-induction", "fcefb129-ad4c-50a2-9762-a910caa1af16", "partial"),
+                        Tuple.tuple("sl-phys-gk-oscillations-waves", "fcefb129-ad4c-50a2-9762-a910caa1af16", "partial"),
+                        Tuple.tuple("sl-phys-gk-quanta-atoms", "5d960c58-f363-5dc1-b012-e6363b4b31cf", "partial"),
+                        Tuple.tuple("sl-phys-lk-fields", "0735269d-703d-57ab-8861-6f7e1c5e2b8a", "partial"),
+                        Tuple.tuple("sl-phys-lk-induction", "fcefb129-ad4c-50a2-9762-a910caa1af16", "partial"),
+                        Tuple.tuple("sl-phys-lk-oscillations-waves", "fcefb129-ad4c-50a2-9762-a910caa1af16", "partial"),
+                        Tuple.tuple("sl-phys-lk-quanta-atoms", "5d960c58-f363-5dc1-b012-e6363b4b31cf", "partial"));
+    }
+
+    @Test
+    void parsesRepositoryBackedCanonicalPhysicsSaxonySek1MappingFixture() throws Exception {
+        GoalMappingFile file = new ObjectMapper().readValue(SAXONY_PHYSICS_SEK1_MAPPING_FILE.toFile(), GoalMappingFile.class);
+
+        assertThat(file.getVersion()).isEqualTo(1);
+        assertThat(file.getSourceLandscapeId()).isEqualTo(SAXONY_PHYSICS_SEK1_LANDSCAPE_ID);
+        assertThat(file.getTargetLandscapeId()).isEqualTo(CANONICAL_PHYSICS_ID);
+        assertThat(file.getMappings()).hasSize(12);
+        assertThat(file.getMappings()).filteredOn(entry -> "exact".equals(entry.getMatchType())).isEmpty();
+        assertThat(file.getMappings()).filteredOn(entry -> "partial".equals(entry.getMatchType())).hasSize(12);
+        assertThat(file.getMappings())
+                .extracting(GoalMappingEntry::getLegacyGoalId, GoalMappingEntry::getCanonicalGoalId, GoalMappingEntry::getMatchType)
+                .containsExactly(
+                        Tuple.tuple("sn-phys-sek1-root", "bf980fff-b62b-4ea4-a20d-31681a7ad785", "partial"),
+                        Tuple.tuple("sn-phys-sek1-orientation", "5c44b9ba-9b05-4774-95d5-073230d3fc4f", "partial"),
+                        Tuple.tuple("sn-phys-k6-light", "051cedc5-d380-4716-9751-b18f2e67a912", "partial"),
+                        Tuple.tuple("sn-phys-k6-bodies-motion", "9645f0d8-43a3-5f29-873c-daa5ace638db", "partial"),
+                        Tuple.tuple("sn-phys-k6-circuits", "4924d83e-5e4b-4819-9d70-86cda3496195", "partial"),
+                        Tuple.tuple("sn-phys-k7-forces", "9645f0d8-43a3-5f29-873c-daa5ace638db", "partial"),
+                        Tuple.tuple("sn-phys-k7-current-voltage", "bbabac7c-9613-4c7e-877e-d7dc3df5300f", "partial"),
+                        Tuple.tuple("sn-phys-k8-fluid-gas-mechanics", "9645f0d8-43a3-5f29-873c-daa5ace638db", "partial"),
+                        Tuple.tuple("sn-phys-k8-electrical-components", "bbabac7c-9613-4c7e-877e-d7dc3df5300f", "partial"),
+                        Tuple.tuple("sn-phys-k9-electronics", "bbabac7c-9613-4c7e-877e-d7dc3df5300f", "partial"),
+                        Tuple.tuple("sn-phys-k9-laws-of-motion", "9645f0d8-43a3-5f29-873c-daa5ace638db", "partial"),
+                        Tuple.tuple("sn-phys-k10-light-ray-wave", "84b1bc70-dadf-449b-a8d4-8bcee1da1fea", "partial"));
+    }
+
+    @Test
+    void parsesRepositoryBackedCanonicalPhysicsSaxonyUpperSecondaryMappingFixture() throws Exception {
+        GoalMappingFile file =
+                new ObjectMapper().readValue(SAXONY_PHYSICS_UPPER_SECONDARY_MAPPING_FILE.toFile(), GoalMappingFile.class);
+
+        assertThat(file.getVersion()).isEqualTo(1);
+        assertThat(file.getSourceLandscapeId()).isEqualTo(SAXONY_PHYSICS_UPPER_SECONDARY_LANDSCAPE_ID);
+        assertThat(file.getTargetLandscapeId()).isEqualTo(CANONICAL_PHYSICS_ID);
+        assertThat(file.getMappings()).hasSize(21);
+        assertThat(file.getMappings()).filteredOn(entry -> "exact".equals(entry.getMatchType())).isEmpty();
+        assertThat(file.getMappings()).filteredOn(entry -> "partial".equals(entry.getMatchType())).hasSize(21);
+        assertThat(file.getMappings())
+                .extracting(GoalMappingEntry::getLegacyGoalId, GoalMappingEntry::getCanonicalGoalId, GoalMappingEntry::getMatchType)
+                .containsExactly(
+                        Tuple.tuple("sn-phys-sek2-root", "bf980fff-b62b-4ea4-a20d-31681a7ad785", "partial"),
+                        Tuple.tuple("sn-phys-sek2-orientation", "5c44b9ba-9b05-4774-95d5-073230d3fc4f", "partial"),
+                        Tuple.tuple("sn-phys-gk11-energy-conservation", "942de15b-32f1-5713-80e5-e7aeb8749fc4", "partial"),
+                        Tuple.tuple("sn-phys-gk11-kinematics-dynamics", "942de15b-32f1-5713-80e5-e7aeb8749fc4", "partial"),
+                        Tuple.tuple("sn-phys-gk11-charged-particles-fields", "0735269d-703d-57ab-8861-6f7e1c5e2b8a", "partial"),
+                        Tuple.tuple("sn-phys-gk12-light-wave-properties", "5d960c58-f363-5dc1-b012-e6363b4b31cf", "partial"),
+                        Tuple.tuple("sn-phys-gk12-quantum-basics", "5d960c58-f363-5dc1-b012-e6363b4b31cf", "partial"),
+                        Tuple.tuple("sn-phys-gk12-radiation-atom-shell-nucleus", "5482bc19-3836-51a5-ba98-fbf5e265b908", "partial"),
+                        Tuple.tuple("sn-phys-lk11-conservation-laws", "942de15b-32f1-5713-80e5-e7aeb8749fc4", "partial"),
+                        Tuple.tuple("sn-phys-lk11-kinematics", "942de15b-32f1-5713-80e5-e7aeb8749fc4", "partial"),
+                        Tuple.tuple("sn-phys-lk11-relativity", "5482bc19-3836-51a5-ba98-fbf5e265b908", "partial"),
+                        Tuple.tuple("sn-phys-lk11-electric-field", "0735269d-703d-57ab-8861-6f7e1c5e2b8a", "partial"),
+                        Tuple.tuple("sn-phys-lk11-magnetic-field", "0735269d-703d-57ab-8861-6f7e1c5e2b8a", "partial"),
+                        Tuple.tuple("sn-phys-lk11-charged-particles-fields", "0735269d-703d-57ab-8861-6f7e1c5e2b8a", "partial"),
+                        Tuple.tuple("sn-phys-lk11-induction", "fcefb129-ad4c-50a2-9762-a910caa1af16", "partial"),
+                        Tuple.tuple("sn-phys-lk12-oscillations", "fcefb129-ad4c-50a2-9762-a910caa1af16", "partial"),
+                        Tuple.tuple("sn-phys-lk12-waves", "5d960c58-f363-5dc1-b012-e6363b4b31cf", "partial"),
+                        Tuple.tuple("sn-phys-lk12-quantum-basics", "5d960c58-f363-5dc1-b012-e6363b4b31cf", "partial"),
+                        Tuple.tuple("sn-phys-lk12-atomic-physics", "5482bc19-3836-51a5-ba98-fbf5e265b908", "partial"),
+                        Tuple.tuple("sn-phys-lk12-atomic-nuclei", "5482bc19-3836-51a5-ba98-fbf5e265b908", "partial"),
+                        Tuple.tuple("sn-phys-lk12-thermodynamics", "942de15b-32f1-5713-80e5-e7aeb8749fc4", "partial"));
+    }
+
+    @Test
+    void parsesRepositoryBackedCanonicalPhysicsSaxonyAnhaltSek1MappingFixture() throws Exception {
+        GoalMappingFile file = new ObjectMapper().readValue(SAXONY_ANHALT_PHYSICS_SEK1_MAPPING_FILE.toFile(), GoalMappingFile.class);
+
+        assertThat(file.getVersion()).isEqualTo(1);
+        assertThat(file.getSourceLandscapeId()).isEqualTo(SAXONY_ANHALT_PHYSICS_SEK1_LANDSCAPE_ID);
+        assertThat(file.getTargetLandscapeId()).isEqualTo(CANONICAL_PHYSICS_ID);
+        assertThat(file.getMappings()).hasSize(11);
+        assertThat(file.getMappings()).filteredOn(entry -> "exact".equals(entry.getMatchType())).isEmpty();
+        assertThat(file.getMappings()).filteredOn(entry -> "partial".equals(entry.getMatchType())).hasSize(11);
+        assertThat(file.getMappings())
+                .extracting(GoalMappingEntry::getLegacyGoalId, GoalMappingEntry::getCanonicalGoalId, GoalMappingEntry::getMatchType)
+                .containsExactly(
+                        Tuple.tuple("st-phys-sek1-root", "bf980fff-b62b-4ea4-a20d-31681a7ad785", "partial"),
+                        Tuple.tuple("st-phys-sek1-orientation", "5c44b9ba-9b05-4774-95d5-073230d3fc4f", "partial"),
+                        Tuple.tuple("st-phys-j6-ray-optics", "051cedc5-d380-4716-9751-b18f2e67a912", "partial"),
+                        Tuple.tuple("st-phys-j6-bodies-particles-motion", "9645f0d8-43a3-5f29-873c-daa5ace638db", "partial"),
+                        Tuple.tuple("st-phys-j6-magnetism", "4924d83e-5e4b-4819-9d70-86cda3496195", "partial"),
+                        Tuple.tuple("st-phys-j7-8-forces-effects", "9645f0d8-43a3-5f29-873c-daa5ace638db", "partial"),
+                        Tuple.tuple("st-phys-j7-8-electric-current-effects", "bbabac7c-9613-4c7e-877e-d7dc3df5300f", "partial"),
+                        Tuple.tuple("st-phys-j7-8-pressure-buoyancy", "9645f0d8-43a3-5f29-873c-daa5ace638db", "partial"),
+                        Tuple.tuple("st-phys-j7-8-circuits-electromagnetism", "4924d83e-5e4b-4819-9d70-86cda3496195", "partial"),
+                        Tuple.tuple("st-phys-j9-induction-conduction", "4924d83e-5e4b-4819-9d70-86cda3496195", "partial"),
+                        Tuple.tuple("st-phys-j9-point-mass-mechanics", "9645f0d8-43a3-5f29-873c-daa5ace638db", "partial"));
+    }
+
+    @Test
+    void parsesRepositoryBackedCanonicalPhysicsSaxonyAnhaltUpperSecondaryMappingFixture() throws Exception {
+        GoalMappingFile file =
+                new ObjectMapper().readValue(SAXONY_ANHALT_PHYSICS_UPPER_SECONDARY_MAPPING_FILE.toFile(), GoalMappingFile.class);
+
+        assertThat(file.getVersion()).isEqualTo(1);
+        assertThat(file.getSourceLandscapeId()).isEqualTo(SAXONY_ANHALT_PHYSICS_UPPER_SECONDARY_LANDSCAPE_ID);
+        assertThat(file.getTargetLandscapeId()).isEqualTo(CANONICAL_PHYSICS_ID);
+        assertThat(file.getMappings()).hasSize(29);
+        assertThat(file.getMappings()).filteredOn(entry -> "exact".equals(entry.getMatchType())).isEmpty();
+        assertThat(file.getMappings()).filteredOn(entry -> "partial".equals(entry.getMatchType())).hasSize(29);
+        assertThat(file.getMappings())
+                .extracting(GoalMappingEntry::getLegacyGoalId, GoalMappingEntry::getCanonicalGoalId, GoalMappingEntry::getMatchType)
+                .containsExactly(
+                        Tuple.tuple("st-phys-sek2-root", "bf980fff-b62b-4ea4-a20d-31681a7ad785", "partial"),
+                        Tuple.tuple("st-phys-sek2-orientation", "5c44b9ba-9b05-4774-95d5-073230d3fc4f", "partial"),
+                        Tuple.tuple("st-phys-e-gravitation", "942de15b-32f1-5713-80e5-e7aeb8749fc4", "partial"),
+                        Tuple.tuple("st-phys-gan-foundation-mechanics", "942de15b-32f1-5713-80e5-e7aeb8749fc4", "partial"),
+                        Tuple.tuple("st-phys-gan-mechanical-oscillations-waves", "fcefb129-ad4c-50a2-9762-a910caa1af16", "partial"),
+                        Tuple.tuple("st-phys-gan-light-wave-properties", "5d960c58-f363-5dc1-b012-e6363b4b31cf", "partial"),
+                        Tuple.tuple("st-phys-gan-electric-field", "0735269d-703d-57ab-8861-6f7e1c5e2b8a", "partial"),
+                        Tuple.tuple("st-phys-gan-magnetic-field", "0735269d-703d-57ab-8861-6f7e1c5e2b8a", "partial"),
+                        Tuple.tuple("st-phys-gan-electromagnetic-induction", "fcefb129-ad4c-50a2-9762-a910caa1af16", "partial"),
+                        Tuple.tuple("st-phys-gan-quantum-object-properties", "5d960c58-f363-5dc1-b012-e6363b4b31cf", "partial"),
+                        Tuple.tuple("st-phys-gan-quantum-atom-model", "5482bc19-3836-51a5-ba98-fbf5e265b908", "partial"),
+                        Tuple.tuple("st-phys-ean-mechanical-oscillations", "fcefb129-ad4c-50a2-9762-a910caa1af16", "partial"),
+                        Tuple.tuple("st-phys-ean-mechanical-waves", "fcefb129-ad4c-50a2-9762-a910caa1af16", "partial"),
+                        Tuple.tuple("st-phys-ean-light-wave-properties", "5d960c58-f363-5dc1-b012-e6363b4b31cf", "partial"),
+                        Tuple.tuple("st-phys-ean-advanced-mechanics", "942de15b-32f1-5713-80e5-e7aeb8749fc4", "partial"),
+                        Tuple.tuple("st-phys-ean-electric-field", "0735269d-703d-57ab-8861-6f7e1c5e2b8a", "partial"),
+                        Tuple.tuple("st-phys-ean-magnetic-field", "0735269d-703d-57ab-8861-6f7e1c5e2b8a", "partial"),
+                        Tuple.tuple("st-phys-ean-electromagnetic-induction", "fcefb129-ad4c-50a2-9762-a910caa1af16", "partial"),
+                        Tuple.tuple("st-phys-ean-ac-resistances-em-oscillations", "fcefb129-ad4c-50a2-9762-a910caa1af16", "partial"),
+                        Tuple.tuple("st-phys-ean-special-relativity", "5482bc19-3836-51a5-ba98-fbf5e265b908", "partial"),
+                        Tuple.tuple("st-phys-ean-quantum-object-properties", "5d960c58-f363-5dc1-b012-e6363b4b31cf", "partial"),
+                        Tuple.tuple("st-phys-ean-quantum-atom-model", "5482bc19-3836-51a5-ba98-fbf5e265b908", "partial"),
+                        Tuple.tuple("st-phys-wpf-field-concept", "0735269d-703d-57ab-8861-6f7e1c5e2b8a", "partial"),
+                        Tuple.tuple("st-phys-wpf-bodies-static-fields", "0735269d-703d-57ab-8861-6f7e1c5e2b8a", "partial"),
+                        Tuple.tuple("st-phys-wpf-changing-em-fields", "fcefb129-ad4c-50a2-9762-a910caa1af16", "partial"),
+                        Tuple.tuple("st-phys-wpf-oscillations", "fcefb129-ad4c-50a2-9762-a910caa1af16", "partial"),
+                        Tuple.tuple("st-phys-wpf-waves", "5d960c58-f363-5dc1-b012-e6363b4b31cf", "partial"),
+                        Tuple.tuple("st-phys-wpf-quantum-objects", "5d960c58-f363-5dc1-b012-e6363b4b31cf", "partial"),
+                        Tuple.tuple("st-phys-wpf-atomic-models", "5482bc19-3836-51a5-ba98-fbf5e265b908", "partial"));
+    }
+
+    @Test
+    void parsesRepositoryBackedCanonicalPhysicsThueringenSek1MappingFixture() throws Exception {
+        GoalMappingFile file = new ObjectMapper().readValue(THUERINGIA_PHYSICS_SEK1_MAPPING_FILE.toFile(), GoalMappingFile.class);
+
+        assertThat(file.getVersion()).isEqualTo(1);
+        assertThat(file.getSourceLandscapeId()).isEqualTo(THUERINGIA_PHYSICS_SEK1_LANDSCAPE_ID);
+        assertThat(file.getTargetLandscapeId()).isEqualTo(CANONICAL_PHYSICS_ID);
+        assertThat(file.getMappings()).hasSize(8);
+        assertThat(file.getMappings()).filteredOn(entry -> "exact".equals(entry.getMatchType())).isEmpty();
+        assertThat(file.getMappings()).filteredOn(entry -> "partial".equals(entry.getMatchType())).hasSize(8);
+        assertThat(file.getMappings())
+                .extracting(GoalMappingEntry::getLegacyGoalId, GoalMappingEntry::getCanonicalGoalId, GoalMappingEntry::getMatchType)
+                .containsExactly(
+                        Tuple.tuple("th-phys-sek1-root", "bf980fff-b62b-4ea4-a20d-31681a7ad785", "partial"),
+                        Tuple.tuple("th-phys-sek1-orientation", "5c44b9ba-9b05-4774-95d5-073230d3fc4f", "partial"),
+                        Tuple.tuple("th-phys-j7-8-mechanics-pressure-energy", "9645f0d8-43a3-5f29-873c-daa5ace638db", "partial"),
+                        Tuple.tuple("th-phys-j7-8-electricity-conduction", "bbabac7c-9613-4c7e-877e-d7dc3df5300f", "partial"),
+                        Tuple.tuple("th-phys-j7-8-light-optics", "84b1bc70-dadf-449b-a8d4-8bcee1da1fea", "partial"),
+                        Tuple.tuple("th-phys-j9-10-electromagnetic-interactions", "4924d83e-5e4b-4819-9d70-86cda3496195", "partial"),
+                        Tuple.tuple("th-phys-j9-10-motion-forces-conservation", "9645f0d8-43a3-5f29-873c-daa5ace638db", "partial"),
+                        Tuple.tuple("th-phys-j9-10-radioactivity", "8917c71a-bfcb-4003-971c-188a69446b60", "partial"));
+    }
+
+    @Test
+    void parsesRepositoryBackedCanonicalPhysicsThueringenUpperSecondaryMappingFixture() throws Exception {
+        GoalMappingFile file =
+                new ObjectMapper().readValue(THUERINGIA_PHYSICS_UPPER_SECONDARY_MAPPING_FILE.toFile(), GoalMappingFile.class);
+
+        assertThat(file.getVersion()).isEqualTo(1);
+        assertThat(file.getSourceLandscapeId()).isEqualTo(THUERINGIA_PHYSICS_UPPER_SECONDARY_LANDSCAPE_ID);
+        assertThat(file.getTargetLandscapeId()).isEqualTo(CANONICAL_PHYSICS_ID);
+        assertThat(file.getMappings()).hasSize(9);
+        assertThat(file.getMappings()).filteredOn(entry -> "exact".equals(entry.getMatchType())).isEmpty();
+        assertThat(file.getMappings()).filteredOn(entry -> "partial".equals(entry.getMatchType())).hasSize(9);
+        assertThat(file.getMappings())
+                .extracting(GoalMappingEntry::getLegacyGoalId, GoalMappingEntry::getCanonicalGoalId, GoalMappingEntry::getMatchType)
+                .containsExactly(
+                        Tuple.tuple("th-phys-sek2-root", "bf980fff-b62b-4ea4-a20d-31681a7ad785", "partial"),
+                        Tuple.tuple("th-phys-sek2-orientation", "5c44b9ba-9b05-4774-95d5-073230d3fc4f", "partial"),
+                        Tuple.tuple("th-phys-j11-forces-motion", "942de15b-32f1-5713-80e5-e7aeb8749fc4", "partial"),
+                        Tuple.tuple("th-phys-j11-heat-state-changes", "942de15b-32f1-5713-80e5-e7aeb8749fc4", "partial"),
+                        Tuple.tuple("th-phys-j11-conservation-laws", "942de15b-32f1-5713-80e5-e7aeb8749fc4", "partial"),
+                        Tuple.tuple("th-phys-q-fields", "0735269d-703d-57ab-8861-6f7e1c5e2b8a", "partial"),
+                        Tuple.tuple("th-phys-q-oscillations-waves", "fcefb129-ad4c-50a2-9762-a910caa1af16", "partial"),
+                        Tuple.tuple("th-phys-q-special-relativity", "5482bc19-3836-51a5-ba98-fbf5e265b908", "partial"),
+                        Tuple.tuple("th-phys-q-quantum-matter", "5d960c58-f363-5dc1-b012-e6363b4b31cf", "partial"));
+    }
+
+    @Test
     void parsesRepositoryBackedCanonicalNrwUpperSecondaryPhysicsMappingFixture() throws Exception {
         GoalMappingFile file =
                 new ObjectMapper().readValue(NRW_PHYSICS_UPPER_SECONDARY_MAPPING_FILE.toFile(), GoalMappingFile.class);
@@ -1529,6 +1974,48 @@ class GoalMappingRepositoryFixtureTest {
         assertThat(service.getMappingsForSourceLandscape(HESSEN_MATH_SEK1_LANDSCAPE_ID))
                 .isNotEmpty()
                 .allMatch(mapping -> CANONICAL_MATH_ID.equals(mapping.targetLandscapeId()));
+        assertThat(service.getMappingsForSourceLandscape(BREMEN_PHYSICS_SEK1_LANDSCAPE_ID))
+                .isNotEmpty()
+                .allMatch(mapping -> CANONICAL_PHYSICS_ID.equals(mapping.targetLandscapeId()));
+        assertThat(service.getMappingsForSourceLandscape(BREMEN_PHYSICS_UPPER_SECONDARY_LANDSCAPE_ID))
+                .isNotEmpty()
+                .allMatch(mapping -> CANONICAL_PHYSICS_ID.equals(mapping.targetLandscapeId()));
+        assertThat(service.getMappingsForSourceLandscape(HAMBURG_PHYSICS_SEK1_LANDSCAPE_ID))
+                .isNotEmpty()
+                .allMatch(mapping -> CANONICAL_PHYSICS_ID.equals(mapping.targetLandscapeId()));
+        assertThat(service.getMappingsForSourceLandscape(HAMBURG_PHYSICS_UPPER_SECONDARY_LANDSCAPE_ID))
+                .isNotEmpty()
+                .allMatch(mapping -> CANONICAL_PHYSICS_ID.equals(mapping.targetLandscapeId()));
+        assertThat(service.getMappingsForSourceLandscape(MECKLENBURG_VORPOMMERN_PHYSICS_SEK1_LANDSCAPE_ID))
+                .isNotEmpty()
+                .allMatch(mapping -> CANONICAL_PHYSICS_ID.equals(mapping.targetLandscapeId()));
+        assertThat(service.getMappingsForSourceLandscape(MECKLENBURG_VORPOMMERN_PHYSICS_UPPER_SECONDARY_LANDSCAPE_ID))
+                .isNotEmpty()
+                .allMatch(mapping -> CANONICAL_PHYSICS_ID.equals(mapping.targetLandscapeId()));
+        assertThat(service.getMappingsForSourceLandscape(SAARLAND_PHYSICS_SEK1_LANDSCAPE_ID))
+                .isNotEmpty()
+                .allMatch(mapping -> CANONICAL_PHYSICS_ID.equals(mapping.targetLandscapeId()));
+        assertThat(service.getMappingsForSourceLandscape(SAARLAND_PHYSICS_UPPER_SECONDARY_LANDSCAPE_ID))
+                .isNotEmpty()
+                .allMatch(mapping -> CANONICAL_PHYSICS_ID.equals(mapping.targetLandscapeId()));
+        assertThat(service.getMappingsForSourceLandscape(SAXONY_PHYSICS_SEK1_LANDSCAPE_ID))
+                .isNotEmpty()
+                .allMatch(mapping -> CANONICAL_PHYSICS_ID.equals(mapping.targetLandscapeId()));
+        assertThat(service.getMappingsForSourceLandscape(SAXONY_PHYSICS_UPPER_SECONDARY_LANDSCAPE_ID))
+                .isNotEmpty()
+                .allMatch(mapping -> CANONICAL_PHYSICS_ID.equals(mapping.targetLandscapeId()));
+        assertThat(service.getMappingsForSourceLandscape(SAXONY_ANHALT_PHYSICS_SEK1_LANDSCAPE_ID))
+                .isNotEmpty()
+                .allMatch(mapping -> CANONICAL_PHYSICS_ID.equals(mapping.targetLandscapeId()));
+        assertThat(service.getMappingsForSourceLandscape(SAXONY_ANHALT_PHYSICS_UPPER_SECONDARY_LANDSCAPE_ID))
+                .isNotEmpty()
+                .allMatch(mapping -> CANONICAL_PHYSICS_ID.equals(mapping.targetLandscapeId()));
+        assertThat(service.getMappingsForSourceLandscape(THUERINGIA_PHYSICS_SEK1_LANDSCAPE_ID))
+                .isNotEmpty()
+                .allMatch(mapping -> CANONICAL_PHYSICS_ID.equals(mapping.targetLandscapeId()));
+        assertThat(service.getMappingsForSourceLandscape(THUERINGIA_PHYSICS_UPPER_SECONDARY_LANDSCAPE_ID))
+                .isNotEmpty()
+                .allMatch(mapping -> CANONICAL_PHYSICS_ID.equals(mapping.targetLandscapeId()));
         assertThat(service.getMappingsForSourceLandscape(HESSEN_PHYSICS_SEK1_LANDSCAPE_ID))
                 .isNotEmpty()
                 .allMatch(mapping -> CANONICAL_PHYSICS_ID.equals(mapping.targetLandscapeId()));

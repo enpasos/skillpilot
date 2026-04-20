@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-04-20T08:45:00Z",
+  "updatedAt": "2026-04-20T19:00:00Z",
   "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
   "quickViewPath": "docs/dev/canonical-gymnasium-physics-bundeslaender-status.md",
   "renderCommand": "python3 scripts/render_canonical_physics_bundesland_status.py",
@@ -72,6 +72,16 @@
     {
       "id": "F4",
       "title": "Retained-state maintenance and future source onboarding",
+      "status": "completed"
+    },
+    {
+      "id": "F5",
+      "title": "Horizontal all-state reviewed pass",
+      "status": "completed"
+    },
+    {
+      "id": "F6",
+      "title": "Maintenance and evidence watch",
       "status": "active"
     }
   ],
@@ -199,7 +209,7 @@
     {
       "id": "F4.ALL_NEWLY_ARCHIVED_STATE_STRUCTURAL_ANCHOR_ACTIVATION",
       "title": "All-newly-archived-state Physics structural-anchor activation tranche",
-      "status": "active",
+      "status": "completed",
       "focusStates": [
         "DE-HB",
         "DE-HH",
@@ -209,7 +219,55 @@
         "DE-ST",
         "DE-TH"
       ],
-      "nextStep": "Start the first conservative `P3` structural-anchor pass across Bremen, Hamburg, Mecklenburg-Vorpommern, Saarland, Sachsen, Sachsen-Anhalt, and Thueringen. Use broad lower-secondary and upper-secondary source anchors only, and do not widen topic-specific reviewed Physics corridors again before those first anchor cuts exist."
+      "nextStep": "The first conservative `P3` structural-anchor pass is now complete for Bremen, Hamburg, Mecklenburg-Vorpommern, Saarland, Sachsen, Sachsen-Anhalt, and Thueringen. Keep those statewide anchor cuts stable and move the active rollout back to the first horizontal all-state reviewed Physics topic row instead of another state-local structural activation."
+    },
+    {
+      "id": "F5.ALL_STATE_HORIZONTAL_TOPIC_REENTRY",
+      "title": "All-state horizontal Physics topic-pass reentry",
+      "status": "completed",
+      "focusStates": [
+        "DE-BB",
+        "DE-BE",
+        "DE-BW",
+        "DE-BY",
+        "DE-HB",
+        "DE-HH",
+        "DE-HE",
+        "DE-MV",
+        "DE-NI",
+        "DE-NW",
+        "DE-RP",
+        "DE-SH",
+        "DE-SL",
+        "DE-SN",
+        "DE-ST",
+        "DE-TH"
+      ],
+      "nextStep": "The horizontal all-state reentry tranche is now complete at the current reviewed cut: the four initial Sek-II rows, the first eight lower-secondary rows, and the first post-tranche lower-secondary candidate sweep are all closed once. Keep the audited rows stable, keep additional lower-secondary row admission frozen, and reopen this corridor only when new source-backed evidence or a genuinely new Hessen-seeded lower-secondary strip justifies another nationwide row."
+    },
+    {
+      "id": "F6.MAINTENANCE_EVIDENCE_WATCH",
+      "title": "Physics maintenance and evidence watch",
+      "status": "active",
+      "focusStates": [
+        "DE-BB",
+        "DE-BE",
+        "DE-BW",
+        "DE-BY",
+        "DE-HB",
+        "DE-HH",
+        "DE-HE",
+        "DE-MV",
+        "DE-NI",
+        "DE-NW",
+        "DE-RP",
+        "DE-SH",
+        "DE-SL",
+        "DE-SN",
+        "DE-ST",
+        "DE-TH"
+      ],
+      "nextStep": "Physics is now in maintenance / evidence-watch mode. Keep the completed Hessen/Bayern base, the reviewed upper-secondary state corridors, the first eight audited lower-secondary rows, and the frozen post-tranche candidate decisions stable. Use the machine-readable watch manifest `curricula/DE/Gymnasium/provenance/physics-evidence-watch-manifest.json`, the rendered watch status `docs/dev/canonical-gymnasium-physics-evidence-watch-status.md`, the baseline-driven delta view `docs/dev/canonical-gymnasium-physics-evidence-watch-delta.md`, the exit-code check `python3 scripts/check_canonical_physics_evidence_watch_delta.py`, and the fixed run path `./scripts/run_canonical_physics_evidence_watch.sh` as the operational watch surface for lower-secondary candidate rows and upper-secondary residue lanes. Reopen active rollout only when one of the watched source files changes in a way that satisfies the documented reopen triggers."
     }
   ],
   "states": [
@@ -269,12 +327,15 @@
       "jurisdiction": "DE-HB",
       "repoStateKey": "HB",
       "displayName": "Bremen",
-      "phase": "P2",
-      "priority": "active",
-      "sourceStage": "snapshots_active",
-      "mappingFiles": [],
-      "notes": "Bremen now has active retained lower-secondary and upper-secondary Physics source snapshots from the archived 2006/2022 source family. The lower-secondary lane carries one shared orientation anchor, one retained `J7/8` strip on `Schall und Laerm`, `Sehen, Licht und Farben`, `Kraefte und Bewegung`, and `Elektrostatik`, and one retained `J9` strip on `Der elektrische Stromkreis als System`, `Elektromagnetismus`, and `Radioaktivitaet und Kernenergie`. The upper-secondary lane carries one shared orientation anchor, one Einfuehrungsphase strip on `Mechanik` and `Energie`, and three broad qualification anchors on `Elektrische und magnetische Felder`, `Mechanische und elektromagnetische Schwingungen und Wellen`, and `Quantenphysik und Materie` plus one explicit LK-only `Struktur der Materie` leaf. Both lanes are now provenance-backed through membership and closure, but no Bremen Physics mapping lane is open yet, no Bremen-specific canonical Physics atom exists yet, and no committed Bremen applicability cut exists yet.",
-      "nextStep": "Keep Bremen stable as a source-backed retained Physics lane. The nationwide `P2` snapshot/provenance tranche is now complete; use these Bremen Sek-I and Sek-II lanes as one candidate input for the first `P3` structural-anchor pass."
+      "phase": "P3",
+      "priority": "backlog",
+      "sourceStage": "anchors_mapped",
+      "mappingFiles": [
+        "curricula/DE/Gymnasium/mapping/DE-HB/lower-secondary/hb_physics_lower_secondary_to_canonical_physics.json",
+        "curricula/DE/Gymnasium/mapping/DE-HB/upper-secondary/hb_physics_upper_secondary_to_canonical_physics.json"
+      ],
+      "notes": "Bremen now has the first conservative Physics `P3` structural-anchor cut on top of the active retained lower-secondary and upper-secondary source snapshots from the archived 2006/2022 source family. The lower-secondary lane now maps the retained root plus orientation and the first thematic retained subanchors across `J7/8` and `J9` onto the shared Sek-I content spine; the upper-secondary lane now maps the retained root plus orientation, the broad anchors `E`, `Q1`, and `Q2`, and one explicit `Q4` side anchor from the LK leaf `Struktur der Materie` onto the shared canonical upper-secondary spine. The cut remains intentionally structural: no reviewed Bremen topic corridor is open yet, no Bremen-specific canonical Physics atom exists yet, and no committed Bremen applicability cut exists yet.",
+      "nextStep": "Keep Bremen stable at the first conservative `P3` structural-anchor cut. Do not widen Bremen into another state-local corridor on the current evidence floor; reopen it only when a later source-backed nationwide row or a genuinely shared Physics gap reaches a Bremen-relevant strip."
     },
     {
       "jurisdiction": "DE-HE",
@@ -294,23 +355,29 @@
       "jurisdiction": "DE-HH",
       "repoStateKey": "HH",
       "displayName": "Hamburg",
-      "phase": "P2",
-      "priority": "active",
-      "sourceStage": "snapshots_active",
-      "mappingFiles": [],
-      "notes": "Hamburg now has active retained lower-secondary and upper-secondary Physics source snapshots from the archived 2011/2022 source family. The lower-secondary lane carries one shared orientation anchor, one retained `J8` strip on `Elektrizitaet`, `Bewegung und Kraft`, and `Licht und Schall`, and one retained transition strip on `Elektrizitaet und Magnetismus`, `Bewegung und Kraft`, `Energie`, and `Licht und Materie`. The upper-secondary lane carries one shared orientation anchor and four broad Studienstufen anchors on `Elektrische und magnetische Felder`, `Mechanische und elektromagnetische Schwingungen und Wellen`, `Quantenphysik und Materie`, and `Gravitation und Astrophysik`. Both lanes are now provenance-backed through membership and closure, but no Hamburg Physics mapping lane is open yet, no Hamburg-specific canonical Physics atom exists yet, and no committed Hamburg applicability cut exists yet.",
-      "nextStep": "Keep Hamburg stable as a source-backed retained Physics lane. The nationwide `P2` snapshot/provenance tranche is now complete; use these Hamburg Sek-I and Sek-II lanes as one candidate input for the first `P3` structural-anchor pass."
+      "phase": "P3",
+      "priority": "backlog",
+      "sourceStage": "anchors_mapped",
+      "mappingFiles": [
+        "curricula/DE/Gymnasium/mapping/DE-HH/lower-secondary/hh_physics_lower_secondary_to_canonical_physics.json",
+        "curricula/DE/Gymnasium/mapping/DE-HH/upper-secondary/hh_physics_upper_secondary_to_canonical_physics.json"
+      ],
+      "notes": "Hamburg now has the second conservative Physics `P3` structural-anchor cut on top of the active retained lower-secondary and upper-secondary source snapshots from the archived 2011/2022 source family. The lower-secondary lane now maps the retained root plus orientation and the first thematic retained subanchors across the `J8` and transition checkpoints onto the shared Sek-I content spine; the upper-secondary lane now maps the retained root plus orientation, the broad retained anchors `Q1`, `Q2`, and `Q3`, and one explicit late-side anchor on `Astrophysik` onto the shared canonical upper-secondary spine. The cut remains intentionally structural: no reviewed Hamburg topic corridor is open yet, no Hamburg-specific canonical Physics atom exists yet, and no committed Hamburg applicability cut exists yet.",
+      "nextStep": "Keep Hamburg stable at the first conservative `P3` structural-anchor cut. Do not widen Hamburg into another state-local corridor on the current evidence floor; reopen it only when a later source-backed nationwide row or a genuinely shared Physics gap reaches a Hamburg-relevant strip."
     },
     {
       "jurisdiction": "DE-MV",
       "repoStateKey": "MV",
       "displayName": "Mecklenburg-Vorpommern",
-      "phase": "P2",
-      "priority": "active",
-      "sourceStage": "snapshots_active",
-      "mappingFiles": [],
-      "notes": "Mecklenburg-Vorpommern now has active retained lower-secondary and upper-secondary Physics source snapshots from the archived 2022 source family. The lower-secondary lane carries one shared orientation anchor and retained class strips for `Klasse 7` (`Dichte`, `Kraefte`, `Physik auf der Baustelle`), `Klasse 8` (`Licht`, `elektrische Ladung`, `Stromkreise`, `Temperatur und Waerme`), `Klasse 9` (`Magnetismus`, `Gleichstrommotor und Induktion`, `geradlinige Bewegung`, `Mit dem E-Bike unterwegs`), and `Klasse 10` (`gleichmaessig beschleunigte Bewegung`, `Dynamik`, `Gravitationsfeld und Kreisbewegung`, `Kernphysik`). The upper-secondary lane carries one shared orientation anchor, one integratives Oberstufenband, and three broad retained theme anchors on `Elektrische und magnetische Felder`, `Schwingungen und Wellen`, and `Quantenphysik und Materie`. Both lanes are now provenance-backed through membership and closure, but no Mecklenburg-Vorpommern Physics mapping lane is open yet, no Mecklenburg-Vorpommern-specific canonical Physics atom exists yet, and no committed Mecklenburg-Vorpommern applicability cut exists yet.",
-      "nextStep": "Keep Mecklenburg-Vorpommern stable as a source-backed retained Physics lane. The nationwide `P2` snapshot/provenance tranche is now complete; use these Mecklenburg-Vorpommern Sek-I and Sek-II lanes as one candidate input for the first `P3` structural-anchor pass."
+      "phase": "P3",
+      "priority": "backlog",
+      "sourceStage": "anchors_mapped",
+      "mappingFiles": [
+        "curricula/DE/Gymnasium/mapping/DE-MV/lower-secondary/mv_physics_lower_secondary_to_canonical_physics.json",
+        "curricula/DE/Gymnasium/mapping/DE-MV/upper-secondary/mv_physics_upper_secondary_to_canonical_physics.json"
+      ],
+      "notes": "Mecklenburg-Vorpommern now has the third conservative Physics `P3` structural-anchor cut on top of the active retained lower-secondary and upper-secondary source snapshots from the archived 2022 source family. The lower-secondary lane now maps the retained root plus orientation and the first thematic retained subanchors across `Klasse 7`, `Klasse 8`, `Klasse 9`, and `Klasse 10` onto the shared Sek-I content spine on mechanics, optics, electricity, and nuclear physics; the upper-secondary lane now maps the retained root plus orientation and the three broad retained theme anchors `Elektrische und magnetische Felder`, `Schwingungen und Wellen`, and `Quantenphysik und Materie` onto the shared canonical upper-secondary spine, while the integrative upper-secondary band still remains intentionally source-led. The cut remains intentionally structural: no reviewed Mecklenburg-Vorpommern topic corridor is open yet, no Mecklenburg-Vorpommern-specific canonical Physics atom exists yet, and no committed Mecklenburg-Vorpommern applicability cut exists yet.",
+      "nextStep": "Keep Mecklenburg-Vorpommern stable at the first conservative `P3` structural-anchor cut. Do not widen Mecklenburg-Vorpommern into another state-local corridor on the current evidence floor; reopen it only when a later source-backed nationwide row or a genuinely shared Physics gap reaches a Mecklenburg-Vorpommern-relevant strip."
     },
     {
       "jurisdiction": "DE-NI",
@@ -368,45 +435,57 @@
       "jurisdiction": "DE-SL",
       "repoStateKey": "SL",
       "displayName": "Saarland",
-      "phase": "P2",
-      "priority": "active",
-      "sourceStage": "snapshots_active",
-      "mappingFiles": [],
-      "notes": "Saarland now has active retained lower-secondary and upper-secondary Physics source snapshots from the archived 2012/2023/2024/2026 source family. The lower-secondary lane carries one shared orientation anchor, one retained `Klassenstufen 5/6` Naturwissenschaften feeder strip, one retained `Klassenstufe 7` strip, and branch-sensitive retained `Klassenstufe 8`, `Klassenstufe 9`, and `Klassenstufe 10` strips. The upper-secondary lane carries one shared orientation anchor plus broad retained `Einfuehrungsphase`, `Hauptphase G-Kurs`, and `Hauptphase Leistungskurs` strips. Both lanes are now provenance-backed through membership and closure, but no Saarland Physics mapping lane is open yet, no Saarland-specific canonical Physics atom exists yet, and no committed Saarland applicability cut exists yet.",
-      "nextStep": "Keep Saarland stable as a source-backed retained Physics lane. The nationwide `P2` snapshot/provenance tranche is now complete; use these Saarland Sek-I and Sek-II lanes as one candidate input for the first `P3` structural-anchor pass."
+      "phase": "P3",
+      "priority": "backlog",
+      "sourceStage": "anchors_mapped",
+      "mappingFiles": [
+        "curricula/DE/Gymnasium/mapping/DE-SL/lower-secondary/sl_physics_lower_secondary_to_canonical_physics.json",
+        "curricula/DE/Gymnasium/mapping/DE-SL/upper-secondary/sl_physics_upper_secondary_to_canonical_physics.json"
+      ],
+      "notes": "Saarland now has the fourth conservative Physics `P3` structural-anchor cut on top of the active retained lower-secondary and upper-secondary source snapshots from the archived 2012/2023/2024/2026 source family. The lower-secondary lane now maps the retained root plus orientation and the first broad thematic subanchors across the `Klassenstufen 5/6` Naturwissenschaften feeder, `Klassenstufe 7`, branch-sensitive `Klassenstufe 8`, branch-sensitive `Klassenstufe 9`, and branch-sensitive `Klassenstufe 10` strips onto the shared Sek-I content spine on mechanics, optics, electricity, and radioactivity; the upper-secondary lane now maps the retained root plus orientation and the first broad course-sensitive thematic anchors across `Einfuehrungsphase: Kraft und Bewegung`, `Hauptphase G-Kurs`, and `Hauptphase Leistungskurs` onto the shared canonical upper-secondary spine on `E`, `Q1`, `Q2`, and `Q3`, while `Einfuehrungsphase: Kernenergie und Radioaktivitaet` still remains intentionally source-led. The cut remains intentionally structural: no reviewed Saarland topic corridor is open yet, no Saarland-specific canonical Physics atom exists yet, and no committed Saarland applicability cut exists yet.",
+      "nextStep": "Keep Saarland stable at the first conservative `P3` structural-anchor cut. Do not widen Saarland into another state-local corridor on the current evidence floor; reopen it only when a later source-backed nationwide row or a genuinely shared Physics gap reaches a Saarland-relevant strip."
     },
     {
       "jurisdiction": "DE-SN",
       "repoStateKey": "SN",
       "displayName": "Sachsen",
-      "phase": "P2",
-      "priority": "active",
-      "sourceStage": "snapshots_active",
-      "mappingFiles": [],
-      "notes": "Sachsen now has active retained lower-secondary and upper-secondary Physics source snapshots from the archived shared Gymnasium Physics PDF. The lower-secondary lane carries one shared orientation anchor plus retained class strips for `6`, `7`, `8`, `9`, and `10`; the upper-secondary lane carries one shared orientation anchor plus broad retained `GK11`, `GK12`, `LK11`, and `LK12` strips. Both lanes are now provenance-backed through membership and closure, but no Sachsen Physics mapping lane is open yet, no Sachsen-specific canonical Physics atom exists yet, and no committed Sachsen applicability cut exists yet.",
-      "nextStep": "Keep Sachsen stable as a source-backed retained Physics lane. The nationwide `P2` snapshot/provenance tranche is now complete; use these Sachsen Sek-I and Sek-II lanes as one candidate input for the first `P3` structural-anchor pass."
+      "phase": "P3",
+      "priority": "backlog",
+      "sourceStage": "anchors_mapped",
+      "mappingFiles": [
+        "curricula/DE/Gymnasium/mapping/DE-SN/lower-secondary/sn_physics_lower_secondary_to_canonical_physics.json",
+        "curricula/DE/Gymnasium/mapping/DE-SN/upper-secondary/sn_physics_upper_secondary_to_canonical_physics.json"
+      ],
+      "notes": "Sachsen now has the fifth conservative Physics `P3` structural-anchor cut on top of the active retained lower-secondary and upper-secondary source snapshots from the archived shared Gymnasium Physics PDF. The lower-secondary lane now maps the retained root plus orientation and the first broad thematic subanchors across `Klassenstufe 6`, `Klassenstufe 7`, `Klassenstufe 8`, `Klassenstufe 9`, and `Klassenstufe 10` onto the shared Sek-I content spine on mechanics, optics, and electricity, while the remaining heat, energy, astronomy, wave, and practicum strips still remain intentionally source-led. The upper-secondary lane now maps the retained root plus orientation and the first broad thematic anchors across `GK11`, `GK12`, `LK11`, and `LK12` onto the shared canonical upper-secondary spine on `E`, `Q1`, `Q2`, `Q3`, and `Q4`, while the capacitor/practicum, modelling, Newton/curvilinear, and remaining practicum strips still remain intentionally source-led. The cut remains intentionally structural: no reviewed Sachsen topic corridor is open yet, no Sachsen-specific canonical Physics atom exists yet, and no committed Sachsen applicability cut exists yet.",
+      "nextStep": "Keep Sachsen stable at the first conservative `P3` structural-anchor cut. Do not widen Sachsen into another state-local corridor on the current evidence floor; reopen it only when a later source-backed nationwide row or a genuinely shared Physics gap reaches a Sachsen-relevant strip."
     },
     {
       "jurisdiction": "DE-ST",
       "repoStateKey": "ST",
       "displayName": "Sachsen-Anhalt",
-      "phase": "P2",
-      "priority": "active",
-      "sourceStage": "snapshots_active",
-      "mappingFiles": [],
-      "notes": "Sachsen-Anhalt now has active retained lower-secondary and upper-secondary Physics source snapshots from the archived 2019/2022 source family. The lower-secondary lane carries one shared orientation anchor plus retained `Schuljahrgang 6`, `Schuljahrgaenge 7/8`, and `Schuljahrgang 9` strips. The upper-secondary lane carries one shared orientation anchor plus retained `Schuljahrgang 10 (Einfuehrungsphase)`, `grundlegendes Anforderungsniveau`, `erhoehtes Anforderungsniveau`, and `zweistuendiges Wahlpflichtfach` strips. Both lanes are now provenance-backed through membership and closure, but no Sachsen-Anhalt Physics mapping lane is open yet, no Sachsen-Anhalt-specific canonical Physics atom exists yet, and no committed Sachsen-Anhalt applicability cut exists yet.",
-      "nextStep": "Keep Sachsen-Anhalt stable as a source-backed retained Physics lane. The nationwide `P2` snapshot/provenance tranche is now complete; use these Sachsen-Anhalt Sek-I and Sek-II lanes as one candidate input for the first `P3` structural-anchor pass."
+      "phase": "P3",
+      "priority": "backlog",
+      "sourceStage": "anchors_mapped",
+      "mappingFiles": [
+        "curricula/DE/Gymnasium/mapping/DE-ST/lower-secondary/st_physics_lower_secondary_to_canonical_physics.json",
+        "curricula/DE/Gymnasium/mapping/DE-ST/upper-secondary/st_physics_upper_secondary_to_canonical_physics.json"
+      ],
+      "notes": "Sachsen-Anhalt now has the sixth conservative Physics `P3` structural-anchor cut on top of the active retained lower-secondary and upper-secondary source snapshots from the archived 2019/2022 source family. The lower-secondary lane now maps the retained root plus orientation and the first broad thematic subanchors across `Schuljahrgang 6`, `Schuljahrgaenge 7/8`, and `Schuljahrgang 9` onto the shared Sek-I content spine on mechanics, optics, and electricity, while the remaining nature-of-physics, heat, and gas strips still remain intentionally source-led. The upper-secondary lane now maps the retained root plus orientation and the first broad thematic anchors across `Schuljahrgang 10 (Einfuehrungsphase)`, `grundlegendes Anforderungsniveau`, `erhoehtes Anforderungsniveau`, and `zweistuendiges Wahlpflichtfach` onto the shared canonical upper-secondary spine on `E`, `Q1`, `Q2`, `Q3`, and `Q4`, while the remaining optics, radioactivity, climate, practicum, and task-practicum strips still remain intentionally source-led. The cut remains intentionally structural: no reviewed Sachsen-Anhalt topic corridor is open yet, no Sachsen-Anhalt-specific canonical Physics atom exists yet, and no committed Sachsen-Anhalt applicability cut exists yet.",
+      "nextStep": "Keep Sachsen-Anhalt stable at the first conservative `P3` structural-anchor cut. Do not widen Sachsen-Anhalt into another state-local corridor on the current evidence floor; reopen it only when a later source-backed nationwide row or a genuinely shared Physics gap reaches a Sachsen-Anhalt-relevant strip."
     },
     {
       "jurisdiction": "DE-TH",
       "repoStateKey": "TH",
       "displayName": "Thueringen",
-      "phase": "P2",
-      "priority": "active",
-      "sourceStage": "snapshots_active",
-      "mappingFiles": [],
-      "notes": "Thueringen now has active retained lower-secondary and upper-secondary Physics source snapshots from the archived 2012/2024 source family. The lower-secondary lane carries one shared orientation anchor plus retained `Klassenstufen 7/8` and `Klassenstufen 9/10` strips. The upper-secondary lane carries one shared orientation anchor plus a retained `Klassenstufe 11` strip and a retained `Qualifikationsphase` strip built from the 2024 content-area update. Both lanes are now provenance-backed through membership and closure, but no Thueringen Physics mapping lane is open yet, no Thueringen-specific canonical Physics atom exists yet, and no committed Thueringen applicability cut exists yet.",
-      "nextStep": "Keep Thueringen stable as a source-backed retained Physics lane. The nationwide `P2` snapshot/provenance tranche is now complete; use these Thueringen Sek-I and Sek-II lanes as one candidate input for the first `P3` structural-anchor pass."
+      "phase": "P3",
+      "priority": "backlog",
+      "sourceStage": "anchors_mapped",
+      "mappingFiles": [
+        "curricula/DE/Gymnasium/mapping/DE-TH/lower-secondary/th_physics_lower_secondary_to_canonical_physics.json",
+        "curricula/DE/Gymnasium/mapping/DE-TH/upper-secondary/th_physics_upper_secondary_to_canonical_physics.json"
+      ],
+      "notes": "Thueringen now has the seventh conservative Physics `P3` structural-anchor cut on top of the active retained lower-secondary and upper-secondary source snapshots from the archived 2012/2024 source family. The lower-secondary lane now maps the retained root plus orientation and the first broad thematic subanchors across `Klassenstufen 7/8` and `Klassenstufen 9/10` onto the shared Sek-I content spine on mechanics, electricity, optics, electromagnetism, and radioactivity, while the remaining heat strip still remains intentionally source-led. The upper-secondary lane now maps the retained root plus orientation and the first broad thematic anchors across `Klassenstufe 11` and `Qualifikationsphase` onto the shared canonical upper-secondary spine on `E`, `Q1`, `Q2`, `Q3`, and `Q4`, while the remaining `Klassenstufe 11` strips on electricity, optics, and radioactivity still remain intentionally source-led. The cut remains intentionally structural: no reviewed Thueringen topic corridor is open yet, no Thueringen-specific canonical Physics atom exists yet, and no committed Thueringen applicability cut exists yet.",
+      "nextStep": "Keep Thueringen stable at the first conservative `P3` structural-anchor cut. Do not widen Thueringen into another state-local corridor on the current evidence floor; reopen it only when a later source-backed nationwide row or a genuinely shared Physics gap reaches a Thueringen-relevant strip."
     }
   ]
 }

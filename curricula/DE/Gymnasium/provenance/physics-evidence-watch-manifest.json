@@ -1,0 +1,113 @@
+{
+  "version": 3,
+  "updatedAt": "2026-04-20T07:45:43Z",
+  "mode": "maintenance_evidence_watch",
+  "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+  "trackerPath": "curricula/DE/Gymnasium/provenance/physics-bundesland-rollout-tracker.json",
+  "baselinePath": "curricula/DE/Gymnasium/provenance/physics-evidence-watch-baseline.json",
+  "baselineCommand": "python3 scripts/capture_canonical_physics_evidence_watch_baseline.py",
+  "statusViewPath": "docs/dev/canonical-gymnasium-physics-evidence-watch-status.md",
+  "renderCommand": "python3 scripts/render_canonical_physics_evidence_watch_status.py",
+  "deltaViewPath": "docs/dev/canonical-gymnasium-physics-evidence-watch-delta.md",
+  "deltaCommand": "python3 scripts/render_canonical_physics_evidence_watch_delta.py",
+  "checkCommand": "python3 scripts/check_canonical_physics_evidence_watch_delta.py",
+  "runCommand": "./scripts/run_canonical_physics_evidence_watch.sh",
+  "watchTargets": [
+    {
+      "id": "sek1_hessen_seed_watch",
+      "kind": "lower_secondary_seed",
+      "states": [
+        "DE-HE"
+      ],
+      "candidateRows": [
+        "Sek I Kosmos / Erde / Mensch / Astronomie",
+        "Sek I Elektronik / Halbleiter / elektromagnetische Wellen",
+        "Sek I Licht / Materie / Atommodell / Strahlung"
+      ],
+      "paths": [
+        "curricula/DE/Gymnasium/input/HE/lower-secondary/source-json/DE_HES_S_GYM_1_PHYSIK.de.json.snapshot"
+      ],
+      "reopenRule": "Reopen lower-secondary nationwide row admission if Hessen gains a visible retained strip on cosmos/astronomy, electronics/semiconductors/electromagnetic waves, or a distinct light-matter/atom-model/radiation band that is also supported by at least one additional retained state lane and is not already materially absorbed by an audited row."
+    },
+    {
+      "id": "sek1_cosmos_floor_watch",
+      "kind": "lower_secondary_candidate_floor",
+      "states": [
+        "DE-SN",
+        "DE-HH"
+      ],
+      "candidateRows": [
+        "Sek I Kosmos / Erde / Mensch / Astronomie"
+      ],
+      "paths": [
+        "curricula/DE/Gymnasium/input/SN/lower-secondary/source-json/DE_SAC_S_GYM_1_PHYSIK.de.json.snapshot",
+        "curricula/DE/Gymnasium/input/HH/lower-secondary/source-json/DE_HAM_S_GYM_1_PHYSIK.de.json.snapshot"
+      ],
+      "reopenRule": "Reopen the cosmos row only if a non-Sachsen lane strengthens from local side packaging to a comparably broad retained lower-secondary astronomy/cosmos anchor, or Hessen gains its own lower-secondary seed strip."
+    },
+    {
+      "id": "sek1_electronics_floor_watch",
+      "kind": "lower_secondary_candidate_floor",
+      "states": [
+        "DE-SN",
+        "DE-SL",
+        "DE-ST"
+      ],
+      "candidateRows": [
+        "Sek I Elektronik / Halbleiter / elektromagnetische Wellen"
+      ],
+      "paths": [
+        "curricula/DE/Gymnasium/input/SN/lower-secondary/source-json/DE_SAC_S_GYM_1_PHYSIK.de.json.snapshot",
+        "curricula/DE/Gymnasium/input/SL/lower-secondary/source-json/DE_SAR_S_GYM_1_PHYSIK.de.json.snapshot",
+        "curricula/DE/Gymnasium/input/ST/lower-secondary/source-json/DE_SAN_S_GYM_1_PHYSIK.de.json.snapshot"
+      ],
+      "reopenRule": "Reopen the electronics row only if Hessen gains a lower-secondary seed strip or a second non-Sachsen lane moves from mixed side packaging to a clearly retained standalone row."
+    },
+    {
+      "id": "sek1_light_matter_overlap_watch",
+      "kind": "lower_secondary_overlap_guard",
+      "states": [
+        "DE-HE",
+        "DE-HH",
+        "DE-HB",
+        "DE-MV",
+        "DE-SL",
+        "DE-TH"
+      ],
+      "candidateRows": [
+        "Sek I Licht / Materie / Atommodell / Strahlung"
+      ],
+      "paths": [
+        "curricula/DE/Gymnasium/input/HE/lower-secondary/source-json/DE_HES_S_GYM_1_PHYSIK.de.json.snapshot",
+        "curricula/DE/Gymnasium/input/HH/lower-secondary/source-json/DE_HAM_S_GYM_1_PHYSIK.de.json.snapshot",
+        "curricula/DE/Gymnasium/input/HB/lower-secondary/source-json/DE_BRE_S_GYM_1_PHYSIK.de.json.snapshot",
+        "curricula/DE/Gymnasium/input/MV/lower-secondary/source-json/DE_MVP_S_GYM_1_PHYSIK.de.json.snapshot",
+        "curricula/DE/Gymnasium/input/SL/lower-secondary/source-json/DE_SAR_S_GYM_1_PHYSIK.de.json.snapshot",
+        "curricula/DE/Gymnasium/input/TH/lower-secondary/source-json/DE_THU_S_GYM_1_PHYSIK.de.json.snapshot"
+      ],
+      "reopenRule": "Reopen the light-matter row only if new retained evidence creates a distinct canonical gap beyond the already audited rows `Sek I Optik / Licht / Schall` and `Sek I Radioaktivitaet / Kernphysik`."
+    },
+    {
+      "id": "sek2_residue_watch",
+      "kind": "upper_secondary_residue_watch",
+      "states": [
+        "DE-BE",
+        "DE-BB",
+        "DE-SH",
+        "DE-RP"
+      ],
+      "candidateRows": [
+        "BE/BB residue",
+        "SH micro-residues",
+        "RP source-led LF residues"
+      ],
+      "paths": [
+        "curricula/DE/Gymnasium/input/BE/upper-secondary/source-json/DE_BER_S_GYM_2_PHYSIK.de.json.snapshot",
+        "curricula/DE/Gymnasium/input/BB/upper-secondary/source-json/DE_BRA_S_GYM_2_PHYSIK.de.json.snapshot",
+        "curricula/DE/Gymnasium/input/SH/upper-secondary/source-json/DE_SHL_S_GYM_2_PHYSIK.de.json.snapshot",
+        "curricula/DE/Gymnasium/input/RP/upper-secondary/source-json/DE_RLP_S_GYM_2_PHYSIK.de.json.snapshot"
+      ],
+      "reopenRule": "Reopen an upper-secondary maintenance lane only if a later source revision changes visible scope or creates a genuinely shared canonical Physics gap beyond the current stable reviewed cuts."
+    }
+  ]
+}

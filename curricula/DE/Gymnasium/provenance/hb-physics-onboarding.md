@@ -1,6 +1,6 @@
 # HB Physics Onboarding Note
 
-Status: `P2` (`snapshots_active`)
+Status: `P3` (`anchors_mapped`)
 
 This note records the first Bremen Physics source-landscape identifiers for the DE-level canonical Physics rollout.
 
@@ -33,12 +33,18 @@ Activation result:
   - one retained qualification anchor `Mechanische und elektromagnetische Schwingungen und Wellen`
   - one retained qualification anchor `Quantenphysik und Materie`
   - one explicit LK-only structural leaf `Struktur der Materie`
-- there is still no Bremen Physics mapping lane
+- the first Bremen Physics mapping lanes now live at
+  - `curricula/DE/Gymnasium/mapping/DE-HB/lower-secondary/hb_physics_lower_secondary_to_canonical_physics.json`
+  - `curricula/DE/Gymnasium/mapping/DE-HB/upper-secondary/hb_physics_upper_secondary_to_canonical_physics.json`
+- the first Bremen `P3` cut stays intentionally structural:
+  - lower-secondary root plus orientation and the first thematic retained subanchors across `J7/8` and `J9` onto the shared Sek-I spine
+  - upper-secondary root plus orientation, the broad retained anchors `E`, `Q1`, and `Q2`, and one explicit `Q4` side anchor from the LK leaf `Struktur der Materie`
+- there is still no reviewed Bremen Physics corridor
 - there is still no Bremen-specific canonical Physics atom
 - there is still no committed Bremen applicability cut
 
 Operational rule from here:
 
 - keep both Bremen Physics `sourceLandscapeId` values stable while the new retained source snapshots remain the authoritative Bremen source basis
-- do not open a reviewed Bremen topic mapping before the current nationwide Physics `P2` snapshot/provenance tranche is complete for the other newly archived states
-- once that tranche is complete, use the Bremen source-backed lower-secondary and upper-secondary lanes as one candidate input for the later `P3` structural-anchor pass
+- keep the first Bremen lower-secondary and upper-secondary structural-anchor files stable while the remaining newly archived states move from `P2` to `P3`
+- do not widen Bremen into a reviewed corridor before the active nationwide structural-anchor tranche has advanced beyond this first narrow anchor cut
