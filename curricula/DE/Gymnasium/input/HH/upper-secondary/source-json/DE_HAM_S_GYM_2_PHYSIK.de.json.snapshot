@@ -1,0 +1,453 @@
+{
+  "landscapeId": "b400d5b6-7b13-4a64-881d-7416dcf01785",
+  "locale": "de-DE",
+  "country": "DE",
+  "region": "HH",
+  "schoolType": "Gymnasium",
+  "subject": "Physik",
+  "frameworkId": "hh-bp2022-gyo-physik",
+  "title": "Physik Studienstufe (Hamburg, erster Quellsnapshot)",
+  "titleEn": "Physics Upper Secondary Level (Hamburg, first source snapshot)",
+  "description": "Erster archivierter Hamburg-Quellsnapshot fuer die Physik der Studienstufe. Der Snapshot aktiviert einen allgemeinen Orientierungsanker sowie die vier breiten Themenfelder `Elektrische und magnetische Felder`, `Mechanische und elektromagnetische Schwingungen und Wellen`, `Quantenphysik und Materie` und `Wahlthema: Gravitation und Astrophysik`.",
+  "descriptionEn": "First archived Hamburg source snapshot for upper-secondary physics. The snapshot activates a general orientation anchor together with the four broad topic fields `Electric and Magnetic Fields`, `Mechanical and Electromagnetic Oscillations and Waves`, `Quantum Physics and Matter`, and the elective `Gravitation and Astrophysics`.",
+  "compatibilityOnly": true,
+  "legacyHiddenByDefault": true,
+  "goals": [
+    {
+      "id": "hh-phys-sek2-root",
+      "title": "Physik Studienstufe",
+      "titleEn": "Physics upper secondary level",
+      "description": "Breiter erster Hamburg-Quellsnapshot fuer die Physik der Studienstufe mit einem allgemeinen Orientierungsanker sowie den vier grossen retained Themenfeldern Felder, Schwingungen/Wellen, Quantenphysik/Materie und Gravitation/Astrophysik.",
+      "descriptionEn": "Broad first Hamburg source snapshot for upper-secondary physics with a general orientation anchor and the four major retained topic fields fields, oscillations/waves, quantum physics/matter, and gravitation/astrophysics.",
+      "weight": 11,
+      "tags": [
+        "Sek2",
+        "PilotSubset",
+        "Hamburg",
+        "Studienstufe"
+      ],
+      "contains": [
+        "hh-phys-sek2-orientation",
+        "hh-phys-sek2-fields",
+        "hh-phys-sek2-oscillations-waves",
+        "hh-phys-sek2-quantum-matter",
+        "hh-phys-sek2-gravitation-astrophysics"
+      ],
+      "requires": [
+        "hh-phys-sek2-orientation"
+      ],
+      "sourceRef": "Bildungsplan Studienstufe Physik Hamburg (2022), 1 Lernen im Fach Physik und 2.3 Inhalte, S. 3-21.",
+      "dimensionTags": {
+        "framework": "hh-bp2022-gyo-physik",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "GLOBAL",
+        "area": "Studienstufe"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "hh-phys-sek2-orientation",
+      "title": "Warum Physik in der Studienstufe? - Modelle, Quantifizierung und Wissenschaftspropadeutik",
+      "titleEn": "Why physics in upper secondary? - Models, quantification, and academic preparation",
+      "description": "Der Hamburger Physikunterricht der Studienstufe vertieft Inhalte der Sekundarstufe I, formalisiert Naturgesetze staerker quantitativ und nutzt Modelle, Experimente und fachliche Urteile als wissenschaftspropadeutische Arbeitsweisen.",
+      "descriptionEn": "Hamburg upper-secondary physics deepens lower-secondary content, formalises natural laws more strongly in quantitative terms, and uses models, experiments, and scientific judgement as academically preparatory modes of work.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "Orientation",
+        "Hamburg"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Bildungsplan Studienstufe Physik Hamburg (2022), 1 Lernen im Fach Physik und 2.3 Inhalte, S. 3-21.",
+      "dimensionTags": {
+        "framework": "hh-bp2022-gyo-physik",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "GLOBAL",
+        "area": "Orientierung"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "hh-phys-sek2-fields",
+      "title": "Elektrische und magnetische Felder",
+      "titleEn": "Electric and magnetic fields",
+      "description": "Breiter Hamburg-Anker fuer das erste verbindliche Studienstufen-Themenfeld zu elektrischen und magnetischen Feldern.",
+      "descriptionEn": "Broad Hamburg anchor for the first compulsory upper-secondary topic field on electric and magnetic fields.",
+      "weight": 3,
+      "tags": [
+        "Sek2",
+        "Hamburg",
+        "Felder",
+        "StructuralAnchor"
+      ],
+      "contains": [
+        "hh-phys-sek2-field-concept",
+        "hh-phys-sek2-static-fields",
+        "hh-phys-sek2-changing-em-fields"
+      ],
+      "requires": [
+        "hh-phys-sek2-orientation"
+      ],
+      "sourceRef": "Bildungsplan Studienstufe Physik Hamburg (2022), 2.3 Inhalte, Themenbereich `Elektrische und magnetische Felder`, S. 21.",
+      "dimensionTags": {
+        "framework": "hh-bp2022-gyo-physik",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "STUDIENSTUFE",
+        "area": "Elektrische und magnetische Felder"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "hh-phys-sek2-field-concept",
+      "title": "Das Feldkonzept zur Beschreibung von Wechselwirkungen",
+      "titleEn": "The field concept for describing interactions",
+      "description": "Die Lernenden nutzen das Feldkonzept, um Wechselwirkungen zwischen Ladungen, Stroemen und Koerpern systematisch zu beschreiben und verschiedene Feldbilder modellhaft zu deuten.",
+      "descriptionEn": "Learners use the field concept to describe interactions between charges, currents, and bodies systematically and to interpret different field patterns as models.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "Hamburg",
+        "Feldkonzept"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Bildungsplan Studienstufe Physik Hamburg (2022), Themenbereich 1.1 `Das Feldkonzept zur Beschreibung von Wechselwirkungen`, S. 22-25.",
+      "dimensionTags": {
+        "framework": "hh-bp2022-gyo-physik",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "STUDIENSTUFE",
+        "area": "Elektrische und magnetische Felder"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "hh-phys-sek2-static-fields",
+      "title": "Koerper in statischen Feldern",
+      "titleEn": "Bodies in static fields",
+      "description": "Die Lernenden untersuchen Ladungen, Koerper und Bahnen in statischen elektrischen und magnetischen Feldern und verbinden das mit Kondensator-, Lorentzkraft- und Messverfahren-Kontexten.",
+      "descriptionEn": "Learners investigate charges, bodies, and trajectories in static electric and magnetic fields and connect this with contexts around capacitors, Lorentz force, and measurement methods.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "Hamburg",
+        "StatischeFelder"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Bildungsplan Studienstufe Physik Hamburg (2022), Themenbereich 1.2 `Koerper in statischen Feldern`, S. 26-29.",
+      "dimensionTags": {
+        "framework": "hh-bp2022-gyo-physik",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "STUDIENSTUFE",
+        "area": "Elektrische und magnetische Felder"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "hh-phys-sek2-changing-em-fields",
+      "title": "Veraenderliche elektromagnetische Felder",
+      "titleEn": "Changing electromagnetic fields",
+      "description": "Die Lernenden beschreiben Induktion, magnetischen Fluss und elektromagnetische Zusammenhaenge in zeitlich veraenderlichen Feldern und verknuepfen sie mit technischen Anwendungen.",
+      "descriptionEn": "Learners describe induction, magnetic flux, and electromagnetic relations in time-varying fields and connect them with technical applications.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "Hamburg",
+        "Induktion"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Bildungsplan Studienstufe Physik Hamburg (2022), Themenbereich 1.3 `Veraenderliche elektromagnetische Felder`, S. 30-33.",
+      "dimensionTags": {
+        "framework": "hh-bp2022-gyo-physik",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "STUDIENSTUFE",
+        "area": "Elektrische und magnetische Felder"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "hh-phys-sek2-oscillations-waves",
+      "title": "Mechanische und elektromagnetische Schwingungen und Wellen",
+      "titleEn": "Mechanical and electromagnetic oscillations and waves",
+      "description": "Breiter Hamburg-Anker fuer den gemeinsamen Schwingungs- und Wellenstreifen der Studienstufe.",
+      "descriptionEn": "Broad Hamburg anchor for the shared oscillations and waves strip of upper secondary.",
+      "weight": 3,
+      "tags": [
+        "Sek2",
+        "Hamburg",
+        "SchwingungenWellen",
+        "StructuralAnchor"
+      ],
+      "contains": [
+        "hh-phys-sek2-oscillations",
+        "hh-phys-sek2-wave-properties",
+        "hh-phys-sek2-wave-superposition"
+      ],
+      "requires": [
+        "hh-phys-sek2-orientation"
+      ],
+      "sourceRef": "Bildungsplan Studienstufe Physik Hamburg (2022), 2.3 Inhalte, Themenbereich `Mechanische und elektromagnetische Schwingungen und Wellen`, S. 21.",
+      "dimensionTags": {
+        "framework": "hh-bp2022-gyo-physik",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "STUDIENSTUFE",
+        "area": "Mechanische und elektromagnetische Schwingungen und Wellen"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "hh-phys-sek2-oscillations",
+      "title": "Schwingungen",
+      "titleEn": "Oscillations",
+      "description": "Die Lernenden beschreiben mechanische und elektromagnetische Schwingungen mit ihren charakteristischen Groessen, vergleichen ihre Energieformen und deuten Daempfung und Resonanz.",
+      "descriptionEn": "Learners describe mechanical and electromagnetic oscillations by their characteristic quantities, compare their energy forms, and interpret damping and resonance.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "Hamburg",
+        "Schwingungen"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Bildungsplan Studienstufe Physik Hamburg (2022), Themenbereich 2.1 `Schwingungen`, S. 34-37.",
+      "dimensionTags": {
+        "framework": "hh-bp2022-gyo-physik",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "STUDIENSTUFE",
+        "area": "Mechanische und elektromagnetische Schwingungen und Wellen"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "hh-phys-sek2-wave-properties",
+      "title": "Eigenschaften und Ausbreitung von Wellen",
+      "titleEn": "Properties and propagation of waves",
+      "description": "Die Lernenden beschreiben harmonische Wellen ueber Ausbreitung, Wellenlaenge, Frequenz, Polarisation und mathematische Beschreibungen der Wellenausbreitung.",
+      "descriptionEn": "Learners describe harmonic waves through propagation, wavelength, frequency, polarisation, and mathematical descriptions of wave propagation.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "Hamburg",
+        "Wellen"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Bildungsplan Studienstufe Physik Hamburg (2022), Themenbereich 2.2 `Eigenschaften und Ausbreitung von Wellen`, S. 38-41.",
+      "dimensionTags": {
+        "framework": "hh-bp2022-gyo-physik",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "STUDIENSTUFE",
+        "area": "Mechanische und elektromagnetische Schwingungen und Wellen"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "hh-phys-sek2-wave-superposition",
+      "title": "Ueberlagerung von Wellen",
+      "titleEn": "Superposition of waves",
+      "description": "Die Lernenden beschreiben Interferenz, stehende Wellen und weitere Ueberlagerungsphaenomene bei mechanischen und elektromagnetischen Wellen.",
+      "descriptionEn": "Learners describe interference, standing waves, and other superposition phenomena in mechanical and electromagnetic waves.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "Hamburg",
+        "Interferenz"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Bildungsplan Studienstufe Physik Hamburg (2022), Themenbereich 2.3 `Ueberlagerung von Wellen`, S. 42-44.",
+      "dimensionTags": {
+        "framework": "hh-bp2022-gyo-physik",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "STUDIENSTUFE",
+        "area": "Mechanische und elektromagnetische Schwingungen und Wellen"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "hh-phys-sek2-quantum-matter",
+      "title": "Quantenphysik und Materie",
+      "titleEn": "Quantum physics and matter",
+      "description": "Breiter Hamburg-Anker fuer den verbindlichen Quantenphysik- und Materiestreifen der Studienstufe.",
+      "descriptionEn": "Broad Hamburg anchor for the compulsory quantum physics and matter strip of upper secondary.",
+      "weight": 2,
+      "tags": [
+        "Sek2",
+        "Hamburg",
+        "Quantenphysik",
+        "StructuralAnchor"
+      ],
+      "contains": [
+        "hh-phys-sek2-quantum-objects",
+        "hh-phys-sek2-atom-models"
+      ],
+      "requires": [
+        "hh-phys-sek2-orientation"
+      ],
+      "sourceRef": "Bildungsplan Studienstufe Physik Hamburg (2022), 2.3 Inhalte, Themenbereich `Quantenphysik und Materie`, S. 21.",
+      "dimensionTags": {
+        "framework": "hh-bp2022-gyo-physik",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "STUDIENSTUFE",
+        "area": "Quantenphysik und Materie"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "hh-phys-sek2-quantum-objects",
+      "title": "Quantenobjekte",
+      "titleEn": "Quantum objects",
+      "description": "Die Lernenden nutzen den Begriff des Quantenobjekts fuer Photon und Elektron, deuten Nichtdeterminiertheit einzelner Ereignisse und verbinden das mit Interferenz und Wahrscheinlichkeitsvorstellungen.",
+      "descriptionEn": "Learners use the concept of the quantum object for photons and electrons, interpret the non-determinism of single events, and connect this with interference and probability ideas.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "Hamburg",
+        "Quantenobjekte"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Bildungsplan Studienstufe Physik Hamburg (2022), Themenbereich 3.1 `Quantenobjekte`, S. 45-49.",
+      "dimensionTags": {
+        "framework": "hh-bp2022-gyo-physik",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "STUDIENSTUFE",
+        "area": "Quantenphysik und Materie"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "hh-phys-sek2-atom-models",
+      "title": "Atomvorstellungen",
+      "titleEn": "Atomic models",
+      "description": "Die Lernenden vergleichen Atomvorstellungen, deuten Spektren, Energiezustandsmodelle und quantisierte Uebergaenge und verbinden das mit Erklaerungen zur Materiestruktur.",
+      "descriptionEn": "Learners compare atomic models, interpret spectra, energy-level models, and quantised transitions, and connect this with explanations of the structure of matter.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "Hamburg",
+        "Atomvorstellungen"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Bildungsplan Studienstufe Physik Hamburg (2022), Themenbereich 3.2 `Atomvorstellungen`, S. 50-54.",
+      "dimensionTags": {
+        "framework": "hh-bp2022-gyo-physik",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "STUDIENSTUFE",
+        "area": "Quantenphysik und Materie"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "hh-phys-sek2-gravitation-astrophysics",
+      "title": "Wahlthema: Gravitation und Astrophysik",
+      "titleEn": "Elective topic: gravitation and astrophysics",
+      "description": "Breiter Hamburg-Anker fuer das Wahlthema Gravitation und Astrophysik der Studienstufe.",
+      "descriptionEn": "Broad Hamburg anchor for the elective upper-secondary topic gravitation and astrophysics.",
+      "weight": 2,
+      "tags": [
+        "Sek2",
+        "Hamburg",
+        "Wahlthema",
+        "Astrophysik",
+        "StructuralAnchor"
+      ],
+      "contains": [
+        "hh-phys-sek2-planetary-motion",
+        "hh-phys-sek2-astrophysics-aspects"
+      ],
+      "requires": [
+        "hh-phys-sek2-orientation"
+      ],
+      "sourceRef": "Bildungsplan Studienstufe Physik Hamburg (2022), 2.3 Inhalte, Wahlthema `Gravitation und Astrophysik`, S. 21.",
+      "dimensionTags": {
+        "framework": "hh-bp2022-gyo-physik",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "STUDIENSTUFE",
+        "area": "Gravitation und Astrophysik"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "hh-phys-sek2-planetary-motion",
+      "title": "Planetenbewegungen",
+      "titleEn": "Planetary motion",
+      "description": "Die Lernenden deuten Bahnbewegungen, Gravitationszusammenhaenge und astronomische Beobachtungen an Planetensystemen und Himmelskoerpern.",
+      "descriptionEn": "Learners interpret orbital motion, gravitational relationships, and astronomical observations involving planetary systems and celestial bodies.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "Hamburg",
+        "Gravitation"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Bildungsplan Studienstufe Physik Hamburg (2022), Wahlthema 4.1 `Planetenbewegungen`, S. 55-58.",
+      "dimensionTags": {
+        "framework": "hh-bp2022-gyo-physik",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "STUDIENSTUFE",
+        "area": "Gravitation und Astrophysik"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "hh-phys-sek2-astrophysics-aspects",
+      "title": "Aspekte der Astrophysik",
+      "titleEn": "Aspects of astrophysics",
+      "description": "Die Lernenden nutzen ausgewaehlte astrophysikalische Beispiele, um Sterne, kosmische Strahlung oder weitere astronomische Phaenomene mit physikalischen Modellen zu verbinden.",
+      "descriptionEn": "Learners use selected astrophysical examples to connect stars, cosmic radiation, or other astronomical phenomena with physical models.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "Hamburg",
+        "Astrophysik"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Bildungsplan Studienstufe Physik Hamburg (2022), Wahlthema 4.2 `Aspekte der Astrophysik`, S. 59-61.",
+      "dimensionTags": {
+        "framework": "hh-bp2022-gyo-physik",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "STUDIENSTUFE",
+        "area": "Gravitation und Astrophysik"
+      },
+      "type": "atomic"
+    }
+  ]
+}

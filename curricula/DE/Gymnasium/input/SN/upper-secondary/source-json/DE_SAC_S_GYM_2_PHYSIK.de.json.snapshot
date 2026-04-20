@@ -1,0 +1,811 @@
+{
+  "landscapeId": "e1213911-abd2-4a1e-88ca-7a78a58c2189",
+  "locale": "de-DE",
+  "country": "DE",
+  "region": "SN",
+  "schoolType": "Gymnasium",
+  "subject": "Physik",
+  "frameworkId": "sn-lp2025-gym-sek2-physik",
+  "title": "Physik Jahrgangsstufen 11/12 (Sachsen, erster Quellsnapshot)",
+  "titleEn": "Physics Grades 11/12 (Saxony, first source snapshot)",
+  "description": "Erster archivierter Sachsen-Quellsnapshot fuer die Gymnasialphysik der Jahrgangsstufen 11 und 12. Der Snapshot umfasst einen allgemeinen Orientierungsanker sowie die getrennten Grundkurs- und Leistungskurs-Lernbereiche des gemeinsamen Gymnasium-Lehrplans.",
+  "descriptionEn": "First archived Saxony source snapshot for upper-secondary physics in grades 11 and 12. The snapshot covers a general orientation anchor plus the separate basic-course and advanced-course learning areas from the shared Gymnasium curriculum.",
+  "compatibilityOnly": true,
+  "legacyHiddenByDefault": true,
+  "goals": [
+    {
+      "id": "sn-phys-sek2-root",
+      "title": "Physik Jahrgangsstufen 11/12",
+      "titleEn": "Physics grades 11/12",
+      "description": "Breiter erster Sachsen-Quellsnapshot fuer die Gymnasialphysik der Jahrgangsstufen 11 und 12 mit einem allgemeinen Orientierungsanker sowie den getrennten Grundkurs- und Leistungskurs-Lernbereichen.",
+      "descriptionEn": "Broad first Saxony source snapshot for upper-secondary physics in grades 11 and 12 with a general orientation anchor plus separate basic-course and advanced-course learning-area clusters.",
+      "weight": 27,
+      "tags": [
+        "Sek2",
+        "PilotSubset",
+        "Sachsen"
+      ],
+      "contains": [
+        "sn-phys-sek2-orientation",
+        "sn-phys-sek2-gk11",
+        "sn-phys-sek2-gk12",
+        "sn-phys-sek2-lk11",
+        "sn-phys-sek2-lk12"
+      ],
+      "requires": [
+        "sn-phys-sek2-orientation"
+      ],
+      "sourceRef": "Lehrplan Gymnasium Physik Sachsen, Jahrgangsstufen 11/12 - Grundkurs und Leistungskurs, S. 5 und 35-61.",
+      "dimensionTags": {
+        "framework": "sn-lp2025-gym-sek2-physik",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "GLOBAL",
+        "area": "Oberstufe"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "sn-phys-sek2-orientation",
+      "title": "Warum Physik in Jahrgang 11/12? - klassische und moderne Physik verknuepfen",
+      "titleEn": "Why physics in grades 11/12? - linking classical and modern physics",
+      "description": "Der saechsische Oberstufenlehrplan rahmt Physik in Jahrgang 11 und 12 als wissenschaftspropädeutisches Arbeiten an klassischer und moderner Physik, das experimentelles, mathematisches und reflektierendes Vorgehen verbindet.",
+      "descriptionEn": "The Saxon upper-secondary curriculum frames physics in grades 11 and 12 as academically preparatory work on classical and modern physics that combines experimental, mathematical, and reflective approaches.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "Orientation",
+        "Sachsen"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Lehrplan Gymnasium Physik Sachsen, Ziele Jahrgangsstufen 11/12 - Grundkurs und Leistungskurs, S. 32 und 39.",
+      "dimensionTags": {
+        "framework": "sn-lp2025-gym-sek2-physik",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "GLOBAL",
+        "area": "Orientierung"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "sn-phys-sek2-gk11",
+      "title": "Jahrgangsstufe 11 Grundkurs",
+      "titleEn": "Grade 11 basic course",
+      "description": "Breiter Sachsen-GK-Anker fuer Jahrgangsstufe 11 mit den Lernbereichen Erhaltung der Energie, Anwendung der Kinetik und Dynamik, Kondensator und Spule sowie geladene Teilchen in elektrischen und magnetischen Feldern.",
+      "descriptionEn": "Broad Saxony basic-course anchor for grade 11 with the learning areas conservation of energy, applications of kinematics and dynamics, capacitor and coil, and charged particles in electric and magnetic fields.",
+      "weight": 4,
+      "tags": [
+        "Sek2",
+        "GK",
+        "J11",
+        "Sachsen"
+      ],
+      "contains": [
+        "sn-phys-gk11-energy-conservation",
+        "sn-phys-gk11-kinematics-dynamics",
+        "sn-phys-gk11-capacitor-coil",
+        "sn-phys-gk11-charged-particles-fields"
+      ],
+      "requires": [
+        "sn-phys-sek2-orientation"
+      ],
+      "sourceRef": "Lehrplan Gymnasium Physik Sachsen, Jahrgangsstufe 11 - Grundkurs, Lernbereiche 1-4, S. 5 und 35-38.",
+      "dimensionTags": {
+        "framework": "sn-lp2025-gym-sek2-physik",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "GK11",
+        "area": "Grundkurs"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "sn-phys-gk11-energy-conservation",
+      "title": "GK11 Lernbereich 1 Erhaltung der Energie",
+      "titleEn": "GK11 learning area 1 conservation of energy",
+      "description": "Breiter Lernbereichsanker fuer Energieerhaltung, Energieuebertragung, Reibung und Energieentwertung im Grundkurs Jahrgangsstufe 11.",
+      "descriptionEn": "Broad learning-area anchor for conservation of energy, energy transfer, friction, and energy degradation in the basic course of grade 11.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "GK",
+        "J11",
+        "Sachsen",
+        "Lernbereich"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Lehrplan Gymnasium Physik Sachsen, Jahrgangsstufe 11 - Grundkurs, Lernbereich 1, S. 35.",
+      "dimensionTags": {
+        "framework": "sn-lp2025-gym-sek2-physik",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "GK11",
+        "area": "Mechanik und Energie"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "sn-phys-gk11-kinematics-dynamics",
+      "title": "GK11 Lernbereich 2 Anwendung der Kinetik und Dynamik",
+      "titleEn": "GK11 learning area 2 application of kinematics and dynamics",
+      "description": "Breiter Lernbereichsanker fuer geradlinige und gleichmaessig beschleunigte Bewegung, waagerechten Wurf, Newton'sche Gesetze und Kreisbewegung im Grundkurs Jahrgangsstufe 11.",
+      "descriptionEn": "Broad learning-area anchor for rectilinear and uniformly accelerated motion, horizontal projectile motion, Newton's laws, and circular motion in the basic course of grade 11.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "GK",
+        "J11",
+        "Sachsen",
+        "Lernbereich"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Lehrplan Gymnasium Physik Sachsen, Jahrgangsstufe 11 - Grundkurs, Lernbereich 2, S. 35-36.",
+      "dimensionTags": {
+        "framework": "sn-lp2025-gym-sek2-physik",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "GK11",
+        "area": "Mechanik"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "sn-phys-gk11-capacitor-coil",
+      "title": "GK11 Lernbereich 3 Kondensator und Spule - Praktikum",
+      "titleEn": "GK11 learning area 3 capacitor and coil - practicum",
+      "description": "Breiter Lernbereichsanker fuer Ladungs- und Energiespeicherung in Kondensator und Spule sowie fuer praktisches experimentelles Arbeiten im Grundkurs Jahrgangsstufe 11.",
+      "descriptionEn": "Broad learning-area anchor for storing charge and energy in capacitors and coils and for practical experimental work in the basic course of grade 11.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "GK",
+        "J11",
+        "Sachsen",
+        "Lernbereich"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Lehrplan Gymnasium Physik Sachsen, Jahrgangsstufe 11 - Grundkurs, Lernbereich 3, S. 36.",
+      "dimensionTags": {
+        "framework": "sn-lp2025-gym-sek2-physik",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "GK11",
+        "area": "Elektrizitaetslehre"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "sn-phys-gk11-charged-particles-fields",
+      "title": "GK11 Lernbereich 4 Geladene Teilchen in elektrischen und magnetischen Feldern",
+      "titleEn": "GK11 learning area 4 charged particles in electric and magnetic fields",
+      "description": "Breiter Lernbereichsanker fuer elektrische und magnetische Felder, Teilchenbahnen, Lorentzkraft und erste relativistische Grenzen im Grundkurs Jahrgangsstufe 11.",
+      "descriptionEn": "Broad learning-area anchor for electric and magnetic fields, particle trajectories, Lorentz force, and first relativistic limits in the basic course of grade 11.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "GK",
+        "J11",
+        "Sachsen",
+        "Lernbereich"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Lehrplan Gymnasium Physik Sachsen, Jahrgangsstufe 11 - Grundkurs, Lernbereich 4, S. 37.",
+      "dimensionTags": {
+        "framework": "sn-lp2025-gym-sek2-physik",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "GK11",
+        "area": "Felder"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "sn-phys-sek2-gk12",
+      "title": "Jahrgangsstufe 12 Grundkurs",
+      "titleEn": "Grade 12 basic course",
+      "description": "Breiter Sachsen-GK-Anker fuer Jahrgangsstufe 12 mit den Lernbereichen Welleneigenschaften des Lichts, Praktikum Optik, Grundlagen der Quantenphysik sowie Strahlung aus Atomhuelle und Atomkern.",
+      "descriptionEn": "Broad Saxony basic-course anchor for grade 12 with the learning areas wave properties of light, optics practicum, basics of quantum physics, and radiation from the atomic shell and nucleus.",
+      "weight": 4,
+      "tags": [
+        "Sek2",
+        "GK",
+        "J12",
+        "Sachsen"
+      ],
+      "contains": [
+        "sn-phys-gk12-light-wave-properties",
+        "sn-phys-gk12-optics-practicum",
+        "sn-phys-gk12-quantum-basics",
+        "sn-phys-gk12-radiation-atom-shell-nucleus"
+      ],
+      "requires": [
+        "sn-phys-sek2-gk11"
+      ],
+      "sourceRef": "Lehrplan Gymnasium Physik Sachsen, Jahrgangsstufe 12 - Grundkurs, Lernbereiche 1-4, S. 5 und 38-40.",
+      "dimensionTags": {
+        "framework": "sn-lp2025-gym-sek2-physik",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "GK12",
+        "area": "Grundkurs"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "sn-phys-gk12-light-wave-properties",
+      "title": "GK12 Lernbereich 1 Welleneigenschaften des Lichts",
+      "titleEn": "GK12 learning area 1 wave properties of light",
+      "description": "Breiter Lernbereichsanker fuer Huygens'sches Prinzip, Interferenz, Beugung und Polarisierbarkeit des Lichts im Grundkurs Jahrgangsstufe 12.",
+      "descriptionEn": "Broad learning-area anchor for the Huygens principle, interference, diffraction, and polarisation of light in the basic course of grade 12.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "GK",
+        "J12",
+        "Sachsen",
+        "Lernbereich"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Lehrplan Gymnasium Physik Sachsen, Jahrgangsstufe 12 - Grundkurs, Lernbereich 1, S. 38-39.",
+      "dimensionTags": {
+        "framework": "sn-lp2025-gym-sek2-physik",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "GK12",
+        "area": "Wellenoptik"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "sn-phys-gk12-optics-practicum",
+      "title": "GK12 Lernbereich 2 Praktikum Optik",
+      "titleEn": "GK12 learning area 2 optics practicum",
+      "description": "Breiter Lernbereichsanker fuer experimentelles Arbeiten, Wellenlaengenbestimmung und Messunsicherheiten im Optikpraktikum des Grundkurses Jahrgangsstufe 12.",
+      "descriptionEn": "Broad learning-area anchor for experimentation, wavelength determination, and measurement uncertainty in the optics practicum of the basic course of grade 12.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "GK",
+        "J12",
+        "Sachsen",
+        "Lernbereich"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Lehrplan Gymnasium Physik Sachsen, Jahrgangsstufe 12 - Grundkurs, Lernbereich 2, S. 39.",
+      "dimensionTags": {
+        "framework": "sn-lp2025-gym-sek2-physik",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "GK12",
+        "area": "Praktikum"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "sn-phys-gk12-quantum-basics",
+      "title": "GK12 Lernbereich 3 Grundlagen der Quantenphysik",
+      "titleEn": "GK12 learning area 3 basics of quantum physics",
+      "description": "Breiter Lernbereichsanker fuer Photonen, Elektronenbeugung, De-Broglie-Wellenlaenge, Messprozess und Grundvorstellungen der Quantenphysik im Grundkurs Jahrgangsstufe 12.",
+      "descriptionEn": "Broad learning-area anchor for photons, electron diffraction, de Broglie wavelength, the measurement process, and basic ideas of quantum physics in the basic course of grade 12.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "GK",
+        "J12",
+        "Sachsen",
+        "Lernbereich"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Lehrplan Gymnasium Physik Sachsen, Jahrgangsstufe 12 - Grundkurs, Lernbereich 3, S. 39-40.",
+      "dimensionTags": {
+        "framework": "sn-lp2025-gym-sek2-physik",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "GK12",
+        "area": "Quantenphysik"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "sn-phys-gk12-radiation-atom-shell-nucleus",
+      "title": "GK12 Lernbereich 4 Strahlung aus Atomhuelle und Atomkern",
+      "titleEn": "GK12 learning area 4 radiation from the atomic shell and nucleus",
+      "description": "Breiter Lernbereichsanker fuer Atommodelle, Spektren, Laser, Radioaktivitaet, Kernprozesse und Zerfallsgesetz im Grundkurs Jahrgangsstufe 12.",
+      "descriptionEn": "Broad learning-area anchor for atomic models, spectra, lasers, radioactivity, nuclear processes, and the decay law in the basic course of grade 12.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "GK",
+        "J12",
+        "Sachsen",
+        "Lernbereich"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Lehrplan Gymnasium Physik Sachsen, Jahrgangsstufe 12 - Grundkurs, Lernbereich 4, S. 40-41.",
+      "dimensionTags": {
+        "framework": "sn-lp2025-gym-sek2-physik",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "GK12",
+        "area": "Atom- und Kernphysik"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "sn-phys-sek2-lk11",
+      "title": "Jahrgangsstufe 11 Leistungskurs",
+      "titleEn": "Grade 11 advanced course",
+      "description": "Breiter Sachsen-LK-Anker fuer Jahrgangsstufe 11 mit den Lernbereichen Erhaltungssaetze, Kinematik, Newton'sche Gesetze, Modellbildung, krummlinige Bewegungen, Relativitaet, elektrische und magnetische Felder, geladene Teilchen, Induktion und Praktikum.",
+      "descriptionEn": "Broad Saxony advanced-course anchor for grade 11 with the learning areas conservation laws, kinematics, Newton's laws, modelling, curved motion, relativity, electric and magnetic fields, charged particles, induction, and practicum.",
+      "weight": 11,
+      "tags": [
+        "Sek2",
+        "LK",
+        "J11",
+        "Sachsen"
+      ],
+      "contains": [
+        "sn-phys-lk11-conservation-laws",
+        "sn-phys-lk11-kinematics",
+        "sn-phys-lk11-newton-laws",
+        "sn-phys-lk11-modelling-simulation",
+        "sn-phys-lk11-curvilinear-motion",
+        "sn-phys-lk11-relativity",
+        "sn-phys-lk11-electric-field",
+        "sn-phys-lk11-magnetic-field",
+        "sn-phys-lk11-charged-particles-fields",
+        "sn-phys-lk11-induction",
+        "sn-phys-lk11-practicum"
+      ],
+      "requires": [
+        "sn-phys-sek2-orientation"
+      ],
+      "sourceRef": "Lehrplan Gymnasium Physik Sachsen, Jahrgangsstufe 11 - Leistungskurs, Lernbereiche 1-11, S. 5-6 und 42-54.",
+      "dimensionTags": {
+        "framework": "sn-lp2025-gym-sek2-physik",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "LK11",
+        "area": "Leistungskurs"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "sn-phys-lk11-conservation-laws",
+      "title": "LK11 Lernbereich 1 Erhaltungssaetze und ihre Anwendungen",
+      "titleEn": "LK11 learning area 1 conservation laws and their applications",
+      "description": "Breiter Lernbereichsanker fuer mechanische Energieformen, Energieuebertragung, Energieentwertung und Erhaltungssaetze im Leistungskurs Jahrgangsstufe 11.",
+      "descriptionEn": "Broad learning-area anchor for mechanical forms of energy, energy transfer, energy degradation, and conservation laws in the advanced course of grade 11.",
+      "weight": 1,
+      "tags": ["Sek2","LK","J11","Sachsen","Lernbereich"],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Lehrplan Gymnasium Physik Sachsen, Jahrgangsstufe 11 - Leistungskurs, Lernbereich 1, S. 42-44.",
+      "dimensionTags": {
+        "framework": "sn-lp2025-gym-sek2-physik",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "LK11",
+        "area": "Mechanik und Energie"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "sn-phys-lk11-kinematics",
+      "title": "LK11 Lernbereich 2 Kinematik geradliniger Bewegungen",
+      "titleEn": "LK11 learning area 2 kinematics of rectilinear motion",
+      "description": "Breiter Lernbereichsanker fuer geradlinige Bewegungen, Bewegungsgleichungen und ihre mathematische Beschreibung im Leistungskurs Jahrgangsstufe 11.",
+      "descriptionEn": "Broad learning-area anchor for rectilinear motion, equations of motion, and their mathematical description in the advanced course of grade 11.",
+      "weight": 1,
+      "tags": ["Sek2","LK","J11","Sachsen","Lernbereich"],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Lehrplan Gymnasium Physik Sachsen, Jahrgangsstufe 11 - Leistungskurs, Lernbereich 2, S. 44-45.",
+      "dimensionTags": {
+        "framework": "sn-lp2025-gym-sek2-physik",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "LK11",
+        "area": "Mechanik"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "sn-phys-lk11-newton-laws",
+      "title": "LK11 Lernbereich 3 Newton'sche Gesetze und deren Anwendungen",
+      "titleEn": "LK11 learning area 3 Newton's laws and their applications",
+      "description": "Breiter Lernbereichsanker fuer Dynamik, Kraftgesetze und Anwendungen der Newton'schen Gesetze im Leistungskurs Jahrgangsstufe 11.",
+      "descriptionEn": "Broad learning-area anchor for dynamics, force laws, and applications of Newton's laws in the advanced course of grade 11.",
+      "weight": 1,
+      "tags": ["Sek2","LK","J11","Sachsen","Lernbereich"],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Lehrplan Gymnasium Physik Sachsen, Jahrgangsstufe 11 - Leistungskurs, Lernbereich 3, S. 45-46.",
+      "dimensionTags": {
+        "framework": "sn-lp2025-gym-sek2-physik",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "LK11",
+        "area": "Mechanik"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "sn-phys-lk11-modelling-simulation",
+      "title": "LK11 Lernbereich 4 Modellbildung und Simulation",
+      "titleEn": "LK11 learning area 4 modelling and simulation",
+      "description": "Breiter Lernbereichsanker fuer Modellbildung, Simulation und den reflektierten Einsatz mathematischer und digitaler Werkzeuge im Leistungskurs Jahrgangsstufe 11.",
+      "descriptionEn": "Broad learning-area anchor for modelling, simulation, and the reflective use of mathematical and digital tools in the advanced course of grade 11.",
+      "weight": 1,
+      "tags": ["Sek2","LK","J11","Sachsen","Lernbereich"],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Lehrplan Gymnasium Physik Sachsen, Jahrgangsstufe 11 - Leistungskurs, Lernbereich 4, S. 46-47.",
+      "dimensionTags": {
+        "framework": "sn-lp2025-gym-sek2-physik",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "LK11",
+        "area": "Modellbildung"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "sn-phys-lk11-curvilinear-motion",
+      "title": "LK11 Lernbereich 5 Krummlinige Bewegungen",
+      "titleEn": "LK11 learning area 5 curvilinear motion",
+      "description": "Breiter Lernbereichsanker fuer Kreis- und andere krummlinige Bewegungen im Leistungskurs Jahrgangsstufe 11.",
+      "descriptionEn": "Broad learning-area anchor for circular and other curvilinear motion in the advanced course of grade 11.",
+      "weight": 1,
+      "tags": ["Sek2","LK","J11","Sachsen","Lernbereich"],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Lehrplan Gymnasium Physik Sachsen, Jahrgangsstufe 11 - Leistungskurs, Lernbereich 5, S. 47-48.",
+      "dimensionTags": {
+        "framework": "sn-lp2025-gym-sek2-physik",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "LK11",
+        "area": "Mechanik"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "sn-phys-lk11-relativity",
+      "title": "LK11 Lernbereich 6 Einblick in die Relativitaetstheorie",
+      "titleEn": "LK11 learning area 6 insight into relativity theory",
+      "description": "Breiter Lernbereichsanker fuer Spezielle und erste Allgemeine Relativitaet, Zeitdilatation, Laengenkontraktion und Relativitaet der Gleichzeitigkeit im Leistungskurs Jahrgangsstufe 11.",
+      "descriptionEn": "Broad learning-area anchor for special and first general relativity, time dilation, length contraction, and relativity of simultaneity in the advanced course of grade 11.",
+      "weight": 1,
+      "tags": ["Sek2","LK","J11","Sachsen","Lernbereich"],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Lehrplan Gymnasium Physik Sachsen, Jahrgangsstufe 11 - Leistungskurs, Lernbereich 6, S. 48-49.",
+      "dimensionTags": {
+        "framework": "sn-lp2025-gym-sek2-physik",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "LK11",
+        "area": "Relativitaet"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "sn-phys-lk11-electric-field",
+      "title": "LK11 Lernbereich 7 Elektrisches Feld",
+      "titleEn": "LK11 learning area 7 electric field",
+      "description": "Breiter Lernbereichsanker fuer Feldlinienbilder, Influenz, Polarisation und Energieumwandlungen im elektrischen Feld im Leistungskurs Jahrgangsstufe 11.",
+      "descriptionEn": "Broad learning-area anchor for field-line patterns, induction, polarisation, and energy transformations in electric fields in the advanced course of grade 11.",
+      "weight": 1,
+      "tags": ["Sek2","LK","J11","Sachsen","Lernbereich"],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Lehrplan Gymnasium Physik Sachsen, Jahrgangsstufe 11 - Leistungskurs, Lernbereich 7, S. 49-50.",
+      "dimensionTags": {
+        "framework": "sn-lp2025-gym-sek2-physik",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "LK11",
+        "area": "Elektrisches Feld"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "sn-phys-lk11-magnetic-field",
+      "title": "LK11 Lernbereich 8 Magnetisches Feld",
+      "titleEn": "LK11 learning area 8 magnetic field",
+      "description": "Breiter Lernbereichsanker fuer Magnetisierung, magnetische Felder und ihre Darstellung im Leistungskurs Jahrgangsstufe 11.",
+      "descriptionEn": "Broad learning-area anchor for magnetisation, magnetic fields, and their representation in the advanced course of grade 11.",
+      "weight": 1,
+      "tags": ["Sek2","LK","J11","Sachsen","Lernbereich"],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Lehrplan Gymnasium Physik Sachsen, Jahrgangsstufe 11 - Leistungskurs, Lernbereich 8, S. 50-51.",
+      "dimensionTags": {
+        "framework": "sn-lp2025-gym-sek2-physik",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "LK11",
+        "area": "Magnetisches Feld"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "sn-phys-lk11-charged-particles-fields",
+      "title": "LK11 Lernbereich 9 Geladene Teilchen in Feldern",
+      "titleEn": "LK11 learning area 9 charged particles in fields",
+      "description": "Breiter Lernbereichsanker fuer geladene Teilchen in elektrischen, magnetischen und gekreuzten Feldern im Leistungskurs Jahrgangsstufe 11.",
+      "descriptionEn": "Broad learning-area anchor for charged particles in electric, magnetic, and crossed fields in the advanced course of grade 11.",
+      "weight": 1,
+      "tags": ["Sek2","LK","J11","Sachsen","Lernbereich"],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Lehrplan Gymnasium Physik Sachsen, Jahrgangsstufe 11 - Leistungskurs, Lernbereich 9, S. 51-52.",
+      "dimensionTags": {
+        "framework": "sn-lp2025-gym-sek2-physik",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "LK11",
+        "area": "Felder"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "sn-phys-lk11-induction",
+      "title": "LK11 Lernbereich 10 Elektromagnetische Induktion",
+      "titleEn": "LK11 learning area 10 electromagnetic induction",
+      "description": "Breiter Lernbereichsanker fuer Induktionsgesetz, Selbstinduktion und Energiespeicherung im Magnetfeld im Leistungskurs Jahrgangsstufe 11.",
+      "descriptionEn": "Broad learning-area anchor for the law of induction, self-induction, and energy storage in magnetic fields in the advanced course of grade 11.",
+      "weight": 1,
+      "tags": ["Sek2","LK","J11","Sachsen","Lernbereich"],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Lehrplan Gymnasium Physik Sachsen, Jahrgangsstufe 11 - Leistungskurs, Lernbereich 10, S. 52-53.",
+      "dimensionTags": {
+        "framework": "sn-lp2025-gym-sek2-physik",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "LK11",
+        "area": "Induktion"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "sn-phys-lk11-practicum",
+      "title": "LK11 Lernbereich 11 Physikalisches Praktikum",
+      "titleEn": "LK11 learning area 11 physics practicum",
+      "description": "Breiter Lernbereichsanker fuer experimentelles Arbeiten zu Mechanik und Elektrizitaetslehre im physikalischen Praktikum des Leistungskurses Jahrgangsstufe 11.",
+      "descriptionEn": "Broad learning-area anchor for experimentation in mechanics and electricity in the physics practicum of the advanced course of grade 11.",
+      "weight": 1,
+      "tags": ["Sek2","LK","J11","Sachsen","Lernbereich"],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Lehrplan Gymnasium Physik Sachsen, Jahrgangsstufe 11 - Leistungskurs, Lernbereich 11, S. 53-54.",
+      "dimensionTags": {
+        "framework": "sn-lp2025-gym-sek2-physik",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "LK11",
+        "area": "Praktikum"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "sn-phys-sek2-lk12",
+      "title": "Jahrgangsstufe 12 Leistungskurs",
+      "titleEn": "Grade 12 advanced course",
+      "description": "Breiter Sachsen-LK-Anker fuer Jahrgangsstufe 12 mit den Lernbereichen Schwingungen, Wellen, Praktikum, Quantenphysik, Atomphysik, Atomkerne und Thermodynamik.",
+      "descriptionEn": "Broad Saxony advanced-course anchor for grade 12 with the learning areas oscillations, waves, practicum, quantum physics, atomic physics, atomic nuclei, and thermodynamics.",
+      "weight": 7,
+      "tags": [
+        "Sek2",
+        "LK",
+        "J12",
+        "Sachsen"
+      ],
+      "contains": [
+        "sn-phys-lk12-oscillations",
+        "sn-phys-lk12-waves",
+        "sn-phys-lk12-optics-oscillations-practicum",
+        "sn-phys-lk12-quantum-basics",
+        "sn-phys-lk12-atomic-physics",
+        "sn-phys-lk12-atomic-nuclei",
+        "sn-phys-lk12-thermodynamics"
+      ],
+      "requires": [
+        "sn-phys-sek2-lk11"
+      ],
+      "sourceRef": "Lehrplan Gymnasium Physik Sachsen, Jahrgangsstufe 12 - Leistungskurs, Lernbereiche 1-7, S. 6 und 54-61.",
+      "dimensionTags": {
+        "framework": "sn-lp2025-gym-sek2-physik",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "LK12",
+        "area": "Leistungskurs"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "sn-phys-lk12-oscillations",
+      "title": "LK12 Lernbereich 1 Mechanische und elektromagnetische Schwingungen",
+      "titleEn": "LK12 learning area 1 mechanical and electromagnetic oscillations",
+      "description": "Breiter Lernbereichsanker fuer mechanische und elektromagnetische Schwingungen, Daempfung, Resonanz und Schwingkreiszusammenhaenge im Leistungskurs Jahrgangsstufe 12.",
+      "descriptionEn": "Broad learning-area anchor for mechanical and electromagnetic oscillations, damping, resonance, and oscillating-circuit relations in the advanced course of grade 12.",
+      "weight": 1,
+      "tags": ["Sek2","LK","J12","Sachsen","Lernbereich"],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Lehrplan Gymnasium Physik Sachsen, Jahrgangsstufe 12 - Leistungskurs, Lernbereich 1, S. 54-56.",
+      "dimensionTags": {
+        "framework": "sn-lp2025-gym-sek2-physik",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "LK12",
+        "area": "Schwingungen"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "sn-phys-lk12-waves",
+      "title": "LK12 Lernbereich 2 Wellen als vielschichtige Naturerscheinung",
+      "titleEn": "LK12 learning area 2 waves as a multifaceted natural phenomenon",
+      "description": "Breiter Lernbereichsanker fuer Wellenfronten, Interferenz, stehende Wellen, Wellenoptik und die Uebertragung von Welleneigenschaften auf Licht im Leistungskurs Jahrgangsstufe 12.",
+      "descriptionEn": "Broad learning-area anchor for wavefronts, interference, standing waves, wave optics, and the transfer of wave properties to light in the advanced course of grade 12.",
+      "weight": 1,
+      "tags": ["Sek2","LK","J12","Sachsen","Lernbereich"],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Lehrplan Gymnasium Physik Sachsen, Jahrgangsstufe 12 - Leistungskurs, Lernbereich 2, S. 56-58.",
+      "dimensionTags": {
+        "framework": "sn-lp2025-gym-sek2-physik",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "LK12",
+        "area": "Wellen"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "sn-phys-lk12-optics-oscillations-practicum",
+      "title": "LK12 Lernbereich 3 Praktikum Optik und Schwingungen",
+      "titleEn": "LK12 learning area 3 practicum in optics and oscillations",
+      "description": "Breiter Lernbereichsanker fuer experimentelles Arbeiten zu Optik, Schwingungen und Messunsicherheiten im Leistungskurs Jahrgangsstufe 12.",
+      "descriptionEn": "Broad learning-area anchor for experimentation in optics, oscillations, and measurement uncertainty in the advanced course of grade 12.",
+      "weight": 1,
+      "tags": ["Sek2","LK","J12","Sachsen","Lernbereich"],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Lehrplan Gymnasium Physik Sachsen, Jahrgangsstufe 12 - Leistungskurs, Lernbereich 3, S. 58.",
+      "dimensionTags": {
+        "framework": "sn-lp2025-gym-sek2-physik",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "LK12",
+        "area": "Praktikum"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "sn-phys-lk12-quantum-basics",
+      "title": "LK12 Lernbereich 4 Grundlagen der Quantenphysik",
+      "titleEn": "LK12 learning area 4 basics of quantum physics",
+      "description": "Breiter Lernbereichsanker fuer Photonen, Elektronen als Quantenobjekte, Welle-Teilchen-Aspekte und Grundfragen der Quantenphysik im Leistungskurs Jahrgangsstufe 12.",
+      "descriptionEn": "Broad learning-area anchor for photons, electrons as quantum objects, wave-particle aspects, and basic questions of quantum physics in the advanced course of grade 12.",
+      "weight": 1,
+      "tags": ["Sek2","LK","J12","Sachsen","Lernbereich"],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Lehrplan Gymnasium Physik Sachsen, Jahrgangsstufe 12 - Leistungskurs, Lernbereich 4, S. 58-59.",
+      "dimensionTags": {
+        "framework": "sn-lp2025-gym-sek2-physik",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "LK12",
+        "area": "Quantenphysik"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "sn-phys-lk12-atomic-physics",
+      "title": "LK12 Lernbereich 5 Grundlagen der Atomphysik",
+      "titleEn": "LK12 learning area 5 basics of atomic physics",
+      "description": "Breiter Lernbereichsanker fuer Atommodelle, Spektren, Bohr-Modell und quantenmechanische Atomvorstellungen im Leistungskurs Jahrgangsstufe 12.",
+      "descriptionEn": "Broad learning-area anchor for atomic models, spectra, the Bohr model, and quantum-mechanical atomic concepts in the advanced course of grade 12.",
+      "weight": 1,
+      "tags": ["Sek2","LK","J12","Sachsen","Lernbereich"],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Lehrplan Gymnasium Physik Sachsen, Jahrgangsstufe 12 - Leistungskurs, Lernbereich 5, S. 59-60.",
+      "dimensionTags": {
+        "framework": "sn-lp2025-gym-sek2-physik",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "LK12",
+        "area": "Atomphysik"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "sn-phys-lk12-atomic-nuclei",
+      "title": "LK12 Lernbereich 6 Eigenschaften der Atomkerne",
+      "titleEn": "LK12 learning area 6 properties of atomic nuclei",
+      "description": "Breiter Lernbereichsanker fuer Kernumwandlungen, Kernprozesse, Kernspaltung und Kernfusion im Leistungskurs Jahrgangsstufe 12.",
+      "descriptionEn": "Broad learning-area anchor for nuclear transformations, nuclear processes, fission, and fusion in the advanced course of grade 12.",
+      "weight": 1,
+      "tags": ["Sek2","LK","J12","Sachsen","Lernbereich"],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Lehrplan Gymnasium Physik Sachsen, Jahrgangsstufe 12 - Leistungskurs, Lernbereich 6, S. 60-61.",
+      "dimensionTags": {
+        "framework": "sn-lp2025-gym-sek2-physik",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "LK12",
+        "area": "Kernphysik"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "sn-phys-lk12-thermodynamics",
+      "title": "LK12 Lernbereich 7 Thermodynamik",
+      "titleEn": "LK12 learning area 7 thermodynamics",
+      "description": "Breiter Lernbereichsanker fuer Waerme, innere Energie, Wirkungsgrad und Waermekraftmaschinen im Leistungskurs Jahrgangsstufe 12.",
+      "descriptionEn": "Broad learning-area anchor for heat, internal energy, efficiency, and heat engines in the advanced course of grade 12.",
+      "weight": 1,
+      "tags": ["Sek2","LK","J12","Sachsen","Lernbereich"],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Lehrplan Gymnasium Physik Sachsen, Jahrgangsstufe 12 - Leistungskurs, Lernbereich 7, S. 61.",
+      "dimensionTags": {
+        "framework": "sn-lp2025-gym-sek2-physik",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "LK12",
+        "area": "Thermodynamik"
+      },
+      "type": "atomic"
+    }
+  ]
+}

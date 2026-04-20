@@ -1,0 +1,452 @@
+{
+  "landscapeId": "10228ad5-6cc9-4e93-8436-c47f8b0b488a",
+  "locale": "de-DE",
+  "country": "DE",
+  "region": "HB",
+  "schoolType": "Gymnasium",
+  "subject": "Physik",
+  "frameworkId": "hb-gyo-2022-physik",
+  "title": "Physik Oberstufe (Bremen, Pilot-Quellsnapshot)",
+  "titleEn": "Physics Upper Secondary (Bremen, Pilot Source Snapshot)",
+  "description": "Erster archivierter Bremen-Quellsnapshot fuer die gymnasiale Oberstufe Physik. Der Snapshot aktiviert einen strukturellen Start auf Basis des Bildungsplans 2022 mit Orientierungsanker, der Einfuehrungsphase `Mechanik` und `Energie` sowie den drei Qualifikationsphasen-Inhaltsbereichen `Elektrische und magnetische Felder`, `Mechanische und elektromagnetische Schwingungen und Wellen` und `Quantenphysik und Materie`.",
+  "descriptionEn": "First archived Bremen source snapshot for upper-secondary physics. The snapshot activates a structural start based on the 2022 curriculum with an orientation anchor, the introductory-phase areas `Mechanics` and `Energy`, and the three qualification-phase content areas `Electric and Magnetic Fields`, `Mechanical and Electromagnetic Oscillations and Waves`, and `Quantum Physics and Matter`.",
+  "compatibilityOnly": true,
+  "legacyHiddenByDefault": true,
+  "goals": [
+    {
+      "id": "hb-phys-sek2-root",
+      "title": "Physik Oberstufe",
+      "titleEn": "Physics Upper Secondary",
+      "description": "Pilot-Subset der Bremen-Lane fuer die gymnasiale Oberstufe Physik mit dem strukturellen Uebergang von der Einfuehrungsphase in die Qualifikationsphase und den drei grossen Inhaltsbereichen Felder, Schwingungen/Wellen und Quantenphysik/Materie.",
+      "descriptionEn": "Pilot subset of the Bremen lane for upper-secondary physics with the structural transition from the introductory phase into qualification phase and the three major content areas fields, oscillations/waves, and quantum physics/matter.",
+      "weight": 11,
+      "tags": [
+        "Sek2",
+        "Gymnasium",
+        "PilotSubset",
+        "StructuralAnchors"
+      ],
+      "contains": [
+        "hb-phys-sek2-orientation",
+        "hb-phys-sek2-e",
+        "hb-phys-sek2-fields",
+        "hb-phys-sek2-oscillations-waves",
+        "hb-phys-sek2-quantum-matter"
+      ],
+      "requires": [
+        "hb-phys-sek2-orientation"
+      ],
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Physik (Bremen, 2022), Vorbemerkung, Aufgaben und Ziele sowie Kapitel 3.1 und 3.2.",
+      "dimensionTags": {
+        "framework": "hb-gyo-2022-physik",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "GLOBAL",
+        "area": "Oberstufenstruktur"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "hb-phys-sek2-orientation",
+      "title": "Warum Physik in der Oberstufe? - Weltbild, Technik und Wissenschaftspropadeutik",
+      "titleEn": "Why Physics in Upper Secondary? - Worldview, Technology, and Academic Preparation",
+      "description": "Der Physikunterricht der Bremer Oberstufe vertieft physikalische Bildung als Zugang zu modernem Weltbild, Technik, gesellschaftlicher Entwicklung und wissenschaftspropadeutischem Arbeiten.",
+      "descriptionEn": "Bremen upper-secondary physics deepens physical education as an entry into a modern worldview, technology, societal development, and academic-propaedeutic work.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "Gymnasium",
+        "Orientation"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Physik (Bremen, 2022), Vorbemerkung und Aufgaben und Ziele, S. 4-5.",
+      "dimensionTags": {
+        "framework": "hb-gyo-2022-physik",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "GLOBAL",
+        "area": "Orientierung"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "hb-phys-sek2-e",
+      "title": "Einfuehrungsphase: Mechanik und Energie",
+      "titleEn": "Introductory Phase: Mechanics and Energy",
+      "description": "Die Einfuehrungsphase wiederholt und vertieft Grundlagen und legt mit `Mechanik` und `Energie` die gemeinsame Basis fuer die Qualifikationsphase.",
+      "descriptionEn": "The introductory phase revisits and deepens foundational ideas and establishes the common basis for the qualification phase through `Mechanics` and `Energy`.",
+      "weight": 2,
+      "tags": [
+        "Sek2",
+        "E",
+        "StructuralAnchor"
+      ],
+      "contains": [
+        "hb-phys-sek2-e-mechanics",
+        "hb-phys-sek2-e-energy"
+      ],
+      "requires": [
+        "hb-phys-sek2-orientation"
+      ],
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Physik (Bremen, 2022), Kapitel 3.1 Einfuehrungsphase.",
+      "dimensionTags": {
+        "framework": "hb-gyo-2022-physik",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "E",
+        "area": "Einfuehrungsphase"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "hb-phys-sek2-e-mechanics",
+      "title": "E Mechanik: Bewegung, Kraefte, Kreisbewegung und Impuls",
+      "titleEn": "E Mechanics: Motion, Forces, Circular Motion, and Momentum",
+      "description": "Die Lernenden beschreiben und berechnen Bewegungen, deuten Kraefte und ihre vektorielle Zusammensetzung, untersuchen Kreisbewegungen und Impulserhaltung und arbeiten dabei mit Diagrammen, Experimenten und Messunsicherheiten.",
+      "descriptionEn": "Learners describe and calculate motions, interpret forces and their vector composition, investigate circular motion and momentum conservation, and work with diagrams, experiments, and measurement uncertainty.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "E",
+        "Mechanik"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Physik (Bremen, 2022), Kapitel 3.1, Inhaltsbereich `Mechanik`.",
+      "dimensionTags": {
+        "framework": "hb-gyo-2022-physik",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "E",
+        "area": "Mechanik"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "hb-phys-sek2-e-energy",
+      "title": "E Energie: Erhaltung, Umwandlung, Wirkungsgrad und Nachhaltigkeit",
+      "titleEn": "E Energy: Conservation, Transformation, Efficiency, and Sustainability",
+      "description": "Die Lernenden nutzen Energie als Bilanzierungsgroesse, deuten Energieformen, Energieumwandlungen, Wirkungsgrade und Energieentwertung und reflektieren Fragen der Energieversorgung unter nachhaltigen Gesichtspunkten.",
+      "descriptionEn": "Learners use energy as a balancing quantity, interpret energy forms, energy transformations, efficiencies, and degradation, and reflect on questions of energy supply under sustainability aspects.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "E",
+        "Energie"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Physik (Bremen, 2022), Kapitel 3.1, Inhaltsbereich `Energie`.",
+      "dimensionTags": {
+        "framework": "hb-gyo-2022-physik",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "E",
+        "area": "Energie"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "hb-phys-sek2-fields",
+      "title": "Qualifikationsphase: Elektrische und magnetische Felder",
+      "titleEn": "Qualification Phase: Electric and Magnetic Fields",
+      "description": "Der erste grosse Qualifikationsphasenbereich fuehrt in elektrische und magnetische Felder, Ladungen in Feldern, Kondensatoren, Lorentzkraft und Feldanwendungen ein.",
+      "descriptionEn": "The first major qualification-phase area introduces electric and magnetic fields, charges in fields, capacitors, Lorentz force, and field applications.",
+      "weight": 2,
+      "tags": [
+        "Sek2",
+        "Q",
+        "StructuralAnchor",
+        "Felder"
+      ],
+      "contains": [
+        "hb-phys-sek2-electric-field",
+        "hb-phys-sek2-magnetic-field"
+      ],
+      "requires": [
+        "hb-phys-sek2-e"
+      ],
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Physik (Bremen, 2022), Kapitel 3.2 Qualifikationsphase, Inhaltsbereich `Elektrische und magnetische Felder`.",
+      "dimensionTags": {
+        "framework": "hb-gyo-2022-physik",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Elektrische und magnetische Felder"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "hb-phys-sek2-electric-field",
+      "title": "Elektrisches Feld: Feldstaerke, Bahnformen und Kondensator",
+      "titleEn": "Electric Field: Field Strength, Trajectories, and Capacitor",
+      "description": "Die Lernenden beschreiben das elektrische Feld ueber Feldlinien, Feldstaerke, Bahnformen geladener Teilchen sowie Spannung, potentielle Energie und den Kondensator als Energiespeicher.",
+      "descriptionEn": "Learners describe the electric field through field lines, field strength, charged-particle trajectories, voltage, potential energy, and the capacitor as an energy store.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "Q",
+        "ElektrischesFeld"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Physik (Bremen, 2022), Kapitel 3.2, Kernbaustein `Elektrisches Feld`.",
+      "dimensionTags": {
+        "framework": "hb-gyo-2022-physik",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Elektrisches Feld"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "hb-phys-sek2-magnetic-field",
+      "title": "Magnetisches Feld: Feldbilder, Lorentzkraft und technische Anwendungen",
+      "titleEn": "Magnetic Field: Field Diagrams, Lorentz Force, and Technical Applications",
+      "description": "Die Lernenden beschreiben magnetische Feldbilder, deuten Lorentzkraft und Bahnformen geladener Teilchen im Magnetfeld und verknuepfen das Feldkonzept mit technischen Anwendungen wie Beschleunigern oder Messverfahren.",
+      "descriptionEn": "Learners describe magnetic field diagrams, interpret Lorentz force and charged-particle trajectories in magnetic fields, and connect the field concept to technical applications such as accelerators or measurement methods.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "Q",
+        "MagnetischesFeld"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Physik (Bremen, 2022), Kapitel 3.2, Kernbaustein `Magnetisches Feld`.",
+      "dimensionTags": {
+        "framework": "hb-gyo-2022-physik",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Magnetisches Feld"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "hb-phys-sek2-oscillations-waves",
+      "title": "Qualifikationsphase: Mechanische und elektromagnetische Schwingungen und Wellen",
+      "titleEn": "Qualification Phase: Mechanical and Electromagnetic Oscillations and Waves",
+      "description": "Der zweite grosse Qualifikationsphasenbereich buendelt mechanische Schwingungen und Wellen, elektromagnetische Schwingungen und die Wellenoptik.",
+      "descriptionEn": "The second major qualification-phase area bundles mechanical oscillations and waves, electromagnetic oscillations, and wave optics.",
+      "weight": 3,
+      "tags": [
+        "Sek2",
+        "Q",
+        "StructuralAnchor",
+        "SchwingungenWellen"
+      ],
+      "contains": [
+        "hb-phys-sek2-mechanical-oscillations-waves",
+        "hb-phys-sek2-electromagnetic-oscillations",
+        "hb-phys-sek2-wave-optics"
+      ],
+      "requires": [
+        "hb-phys-sek2-e"
+      ],
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Physik (Bremen, 2022), Kapitel 3.2 Qualifikationsphase, Inhaltsbereich `Mechanische und elektromagnetische Schwingungen und Wellen`.",
+      "dimensionTags": {
+        "framework": "hb-gyo-2022-physik",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Schwingungen und Wellen"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "hb-phys-sek2-mechanical-oscillations-waves",
+      "title": "Mechanische Schwingungen und Wellen: Harmonische Bewegung, Resonanz und stehende Wellen",
+      "titleEn": "Mechanical Oscillations and Waves: Harmonic Motion, Resonance, and Standing Waves",
+      "description": "Die Lernenden beschreiben harmonische Schwingungen, Daempfung, Resonanz und mechanische Wellen einschliesslich stehender Wellen und Wellenlaengenbestimmung.",
+      "descriptionEn": "Learners describe harmonic oscillations, damping, resonance, and mechanical waves including standing waves and wavelength determination.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "Q",
+        "MechanischeSchwingungenWellen"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Physik (Bremen, 2022), Kapitel 3.2, Kernbaustein `Mechanische Schwingungen & Wellen`.",
+      "dimensionTags": {
+        "framework": "hb-gyo-2022-physik",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Mechanische Schwingungen und Wellen"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "hb-phys-sek2-electromagnetic-oscillations",
+      "title": "Elektromagnetische Schwingungen: Schwingkreis, Resonanz und Spektrum",
+      "titleEn": "Electromagnetic Oscillations: Oscillating Circuit, Resonance, and Spectrum",
+      "description": "Die Lernenden beschreiben den elektromagnetischen Schwingkreis, charakteristische Schwingungsgroessen, Resonanz, Energie im Feld und die Ausbreitung elektromagnetischer Wellen.",
+      "descriptionEn": "Learners describe the electromagnetic oscillating circuit, characteristic oscillation quantities, resonance, field energy, and the propagation of electromagnetic waves.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "Q",
+        "ElektromagnetischeSchwingungen"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Physik (Bremen, 2022), Kapitel 3.2, Kernbaustein `Elektromagnetische Schwingungen`.",
+      "dimensionTags": {
+        "framework": "hb-gyo-2022-physik",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Elektromagnetische Schwingungen"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "hb-phys-sek2-wave-optics",
+      "title": "Wellenoptik: Interferenz, Beugung und Polarisation",
+      "titleEn": "Wave Optics: Interference, Diffraction, and Polarisation",
+      "description": "Die Lernenden beschreiben Licht als Wellenphaenomen, deuten Interferenz und Beugung, bestimmen Wellenlaengen am Doppelspalt und unterscheiden polarisierte von unpolarisierten Wellen.",
+      "descriptionEn": "Learners describe light as a wave phenomenon, interpret interference and diffraction, determine wavelengths at the double slit, and distinguish polarised from unpolarised waves.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "Q",
+        "Wellenoptik"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Physik (Bremen, 2022), Kapitel 3.2, Kernbaustein `Wellenoptik`.",
+      "dimensionTags": {
+        "framework": "hb-gyo-2022-physik",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Wellenoptik"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "hb-phys-sek2-quantum-matter",
+      "title": "Qualifikationsphase: Quantenphysik und Materie",
+      "titleEn": "Qualification Phase: Quantum Physics and Matter",
+      "description": "Der dritte grosse Qualifikationsphasenbereich fuehrt in Quantenobjekte, die Quantenphysik der Atomhuelle und im Leistungskurs zusaetzlich in die Struktur der Materie ein.",
+      "descriptionEn": "The third major qualification-phase area introduces quantum objects, the quantum physics of the atomic shell, and in advanced courses additionally the structure of matter.",
+      "weight": 3,
+      "tags": [
+        "Sek2",
+        "Q",
+        "StructuralAnchor",
+        "QuantenphysikMaterie"
+      ],
+      "contains": [
+        "hb-phys-sek2-quantum-objects",
+        "hb-phys-sek2-atomic-shell",
+        "hb-phys-sek2-structure-matter"
+      ],
+      "requires": [
+        "hb-phys-sek2-e"
+      ],
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Physik (Bremen, 2022), Kapitel 3.2 Qualifikationsphase, Inhaltsbereich `Quantenphysik und Materie`.",
+      "dimensionTags": {
+        "framework": "hb-gyo-2022-physik",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Quantenphysik und Materie"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "hb-phys-sek2-quantum-objects",
+      "title": "Quantenobjekte: Doppelspalt, Fotoeffekt und Elektronenbeugung",
+      "titleEn": "Quantum Objects: Double Slit, Photoelectric Effect, and Electron Diffraction",
+      "description": "Die Lernenden deuten Photonen und Elektronen als Quantenobjekte und erschliessen Interferenz, Superposition, Komplementaritaet und stochastische Vorhersagbarkeit an typischen Experimenten.",
+      "descriptionEn": "Learners interpret photons and electrons as quantum objects and develop interference, superposition, complementarity, and probabilistic predictability from typical experiments.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "Q",
+        "Quantenobjekte"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Physik (Bremen, 2022), Kapitel 3.2, Kernbaustein `Quantenobjekte`.",
+      "dimensionTags": {
+        "framework": "hb-gyo-2022-physik",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Quantenobjekte"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "hb-phys-sek2-atomic-shell",
+      "title": "Quantenphysik der Atomhuelle: Energieniveaus, Orbitale und Spektren",
+      "titleEn": "Quantum Physics of the Atomic Shell: Energy Levels, Orbitals, and Spectra",
+      "description": "Die Lernenden deuten die Atomhuelle ueber quantisierte Energieniveaus, Orbitale und Spektren und nutzen diese Vorstellungen fuer den Uebergang von Atommodellen zur Quantenbeschreibung.",
+      "descriptionEn": "Learners interpret the atomic shell through quantised energy levels, orbitals, and spectra and use these ideas for the transition from atomic models to quantum description.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "Q",
+        "Atomhuelle"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Physik (Bremen, 2022), Kapitel 3.2, Kernbaustein `Quantenphysik der Atomhuelle`.",
+      "dimensionTags": {
+        "framework": "hb-gyo-2022-physik",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Quantenphysik der Atomhuelle"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "hb-phys-sek2-structure-matter",
+      "title": "Struktur der Materie [LK]: Aufbauvorstellungen jenseits der Atomhuelle",
+      "titleEn": "Structure of Matter [Advanced Course]: Structural Ideas Beyond the Atomic Shell",
+      "description": "Im Leistungskurs fuehrt der Bremer Bildungsplan zusaetzlich einen Materie-Streifen jenseits der Atomhuelle; dieser Snapshot haelt ihn als source-led Strukturanker sichtbar, ohne ihn schon in reviewed Korridore aufzufaechern.",
+      "descriptionEn": "In advanced courses the Bremen curriculum additionally introduces a matter strip beyond the atomic shell; this snapshot keeps it visible as a source-led structural anchor without unfolding it into reviewed corridors yet.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "Q",
+        "LK",
+        "Materie"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Bildungsplan Gymnasiale Oberstufe Physik (Bremen, 2022), Kapitel 3.2, Inhaltsbereich `Quantenphysik und Materie`, Zusatzbaustein `Struktur der Materie` fuer den Leistungskurs.",
+      "dimensionTags": {
+        "framework": "hb-gyo-2022-physik",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q",
+        "area": "Struktur der Materie"
+      },
+      "type": "atomic"
+    }
+  ]
+}

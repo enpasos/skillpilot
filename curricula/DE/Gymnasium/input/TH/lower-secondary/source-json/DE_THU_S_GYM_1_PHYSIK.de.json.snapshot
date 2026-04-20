@@ -1,0 +1,332 @@
+{
+  "landscapeId": "2b1b8596-f8c5-44ba-9dec-4cccb834769a",
+  "locale": "de-DE",
+  "country": "DE",
+  "region": "TH",
+  "schoolType": "Gymnasium",
+  "subject": "Physik",
+  "frameworkId": "th-lp2012-gym-sek1-physik",
+  "title": "Physik Sekundarstufe I (Thueringen, erster Quellsnapshot)",
+  "titleEn": "Physics secondary level I (Thuringia, first source snapshot)",
+  "description": "Erster archivierter Thueringen-Quellsnapshot fuer die Physik der Sekundarstufe I. Der Snapshot umfasst einen allgemeinen Orientierungsanker sowie retained Klassenbaender fuer die Klassenstufen 7/8 und 9/10 aus dem Lehrplan Physik Gymnasium 2012.",
+  "descriptionEn": "First archived Thuringia source snapshot for lower-secondary physics. The snapshot covers a general orientation anchor plus retained class bands for grades 7/8 and 9/10 from the 2012 Gymnasium physics curriculum.",
+  "compatibilityOnly": true,
+  "legacyHiddenByDefault": true,
+  "goals": [
+    {
+      "id": "th-phys-sek1-root",
+      "title": "Physik Sekundarstufe I",
+      "titleEn": "Physics secondary level I",
+      "description": "Breiter erster Thueringen-Quellsnapshot fuer die Physik der Sekundarstufe I mit einem allgemeinen Orientierungsanker sowie retained Klassenbaendern fuer 7/8 und 9/10.",
+      "descriptionEn": "Broad first Thuringia source snapshot for lower-secondary physics with a general orientation anchor plus retained class bands for grades 7/8 and 9/10.",
+      "weight": 8,
+      "tags": [
+        "Sek1",
+        "PilotSubset",
+        "Thueringen"
+      ],
+      "contains": [
+        "th-phys-sek1-orientation",
+        "th-phys-sek1-j7-8",
+        "th-phys-sek1-j9-10"
+      ],
+      "requires": [
+        "th-phys-sek1-orientation"
+      ],
+      "sourceRef": "Lehrplan Physik Gymnasium 2012, Ziele des Kompetenzerwerbs in den Klassenstufen 7-10, S. 11-24.",
+      "dimensionTags": {
+        "framework": "th-lp2012-gym-sek1-physik",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "GLOBAL",
+        "area": "Sekundarstufe I"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "th-phys-sek1-orientation",
+      "title": "Warum Physik? - Modellieren, Experimentieren und Verantwortung",
+      "titleEn": "Why physics? - modelling, experimenting, and responsibility",
+      "description": "Der Thueringer Physiklehrplan rahmt Physik als experimentelle Naturwissenschaft, die Beobachten, Modellieren, Quantifizieren und verantwortliches Urteilen in Alltag, Technik und Gesellschaft verbindet.",
+      "descriptionEn": "The Thuringia physics curriculum frames physics as an experimental science connecting observation, modelling, quantification, and responsible judgement in everyday life, technology, and society.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "Orientation",
+        "Thueringen"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Lehrplan Physik Gymnasium 2012, Kapitel 1 und 2, S. 5-11.",
+      "dimensionTags": {
+        "framework": "th-lp2012-gym-sek1-physik",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "GLOBAL",
+        "area": "Orientierung"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "th-phys-sek1-j7-8",
+      "title": "Klassenstufen 7/8",
+      "titleEn": "Grades 7/8",
+      "description": "Breiter erster Thueringen-Quellanker fuer die Klassenstufen 7/8 mit den retained Themenbereichen Mechanik, Elektrizitaet, Waerme und Optik.",
+      "descriptionEn": "Broad first Thuringia source anchor for grades 7/8 with retained topic areas in mechanics, electricity, heat, and optics.",
+      "weight": 4,
+      "tags": [
+        "Sek1",
+        "JG7_8",
+        "Thueringen"
+      ],
+      "contains": [
+        "th-phys-j7-8-mechanics-pressure-energy",
+        "th-phys-j7-8-electricity-conduction",
+        "th-phys-j7-8-heat-state-changes",
+        "th-phys-j7-8-light-optics"
+      ],
+      "requires": [
+        "th-phys-sek1-orientation"
+      ],
+      "sourceRef": "Lehrplan Physik Gymnasium 2012, Klassenstufen 7/8, S. 11-19.",
+      "dimensionTags": {
+        "framework": "th-lp2012-gym-sek1-physik",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG7_8",
+        "area": "Klassenstufen 7/8"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "th-phys-j7-8-mechanics-pressure-energy",
+      "title": "Klassenstufen 7/8: Kraft, Druck und mechanische Energie",
+      "titleEn": "Grades 7/8: force, pressure, and mechanical energy",
+      "description": "Breiter retained Thueringen-Quellstrip fuer Kraft, Druck, Auftrieb und mechanische Energie in den Klassenstufen 7/8.",
+      "descriptionEn": "Broad retained Thuringia source strip for force, pressure, buoyancy, and mechanical energy in grades 7/8.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "JG7_8",
+        "Mechanics",
+        "Thueringen"
+      ],
+      "contains": [],
+      "requires": [
+        "th-phys-sek1-orientation"
+      ],
+      "sourceRef": "Lehrplan Physik Gymnasium 2012, 2.1.1 Kraft, Druck und mechanische Energie, S. 11-13.",
+      "dimensionTags": {
+        "framework": "th-lp2012-gym-sek1-physik",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG7_8",
+        "area": "Mechanik"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "th-phys-j7-8-electricity-conduction",
+      "title": "Klassenstufen 7/8: Geladene Koerper, Stromkreise und Leitungsvorgaenge",
+      "titleEn": "Grades 7/8: charged bodies, circuits, and conduction processes",
+      "description": "Breiter retained Thueringen-Quellstrip fuer elektrische Grunderscheinungen, Stromkreise, elektrische Groessen und Leitungsvorgaenge in den Klassenstufen 7/8.",
+      "descriptionEn": "Broad retained Thuringia source strip for basic electrical phenomena, circuits, electrical quantities, and conduction processes in grades 7/8.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "JG7_8",
+        "Electricity",
+        "Thueringen"
+      ],
+      "contains": [],
+      "requires": [
+        "th-phys-sek1-orientation"
+      ],
+      "sourceRef": "Lehrplan Physik Gymnasium 2012, 2.1.2 Geladene Koerper, Stromkreise, elektrische Groessen und elektrische Leitungsvorgaenge, S. 13-15.",
+      "dimensionTags": {
+        "framework": "th-lp2012-gym-sek1-physik",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG7_8",
+        "area": "Elektrizitaet"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "th-phys-j7-8-heat-state-changes",
+      "title": "Klassenstufen 7/8: Temperatur, Waerme und Zustandsaenderungen",
+      "titleEn": "Grades 7/8: temperature, heat, and changes of state",
+      "description": "Breiter retained Thueringen-Quellstrip fuer Temperatur, Waerme, thermische Energie und Aggregatzustandsaenderungen in den Klassenstufen 7/8.",
+      "descriptionEn": "Broad retained Thuringia source strip for temperature, heat, thermal energy, and changes of state in grades 7/8.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "JG7_8",
+        "Thermodynamics",
+        "Thueringen"
+      ],
+      "contains": [],
+      "requires": [
+        "th-phys-sek1-orientation"
+      ],
+      "sourceRef": "Lehrplan Physik Gymnasium 2012, 2.1.3 Temperatur, Waerme und Zustandsaenderungen, S. 15-17.",
+      "dimensionTags": {
+        "framework": "th-lp2012-gym-sek1-physik",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG7_8",
+        "area": "Waerme"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "th-phys-j7-8-light-optics",
+      "title": "Klassenstufen 7/8: Lichtausbreitung und Bildentstehung",
+      "titleEn": "Grades 7/8: propagation of light and image formation",
+      "description": "Breiter retained Thueringen-Quellstrip fuer Lichtausbreitung, Reflexion, Brechung und Bildentstehung an Linsen in den Klassenstufen 7/8.",
+      "descriptionEn": "Broad retained Thuringia source strip for light propagation, reflection, refraction, and image formation with lenses in grades 7/8.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "JG7_8",
+        "Optics",
+        "Thueringen"
+      ],
+      "contains": [],
+      "requires": [
+        "th-phys-sek1-orientation"
+      ],
+      "sourceRef": "Lehrplan Physik Gymnasium 2012, 2.1.4 Lichtausbreitung und Bildentstehung, S. 17-19.",
+      "dimensionTags": {
+        "framework": "th-lp2012-gym-sek1-physik",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG7_8",
+        "area": "Optik"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "th-phys-sek1-j9-10",
+      "title": "Klassenstufen 9/10",
+      "titleEn": "Grades 9/10",
+      "description": "Breiter erster Thueringen-Quellanker fuer die Klassenstufen 9/10 mit den retained Themenbereichen Elektromagnetismus, Bewegungen/Kraefte/Erhaltungssaetze und Radioaktivitaet.",
+      "descriptionEn": "Broad first Thuringia source anchor for grades 9/10 with retained topic areas in electromagnetism, motion/forces/conservation, and radioactivity.",
+      "weight": 3,
+      "tags": [
+        "Sek1",
+        "JG9_10",
+        "Thueringen"
+      ],
+      "contains": [
+        "th-phys-j9-10-electromagnetic-interactions",
+        "th-phys-j9-10-motion-forces-conservation",
+        "th-phys-j9-10-radioactivity"
+      ],
+      "requires": [
+        "th-phys-sek1-orientation"
+      ],
+      "sourceRef": "Lehrplan Physik Gymnasium 2012, Klassenstufen 9/10, S. 20-24.",
+      "dimensionTags": {
+        "framework": "th-lp2012-gym-sek1-physik",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG9_10",
+        "area": "Klassenstufen 9/10"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "th-phys-j9-10-electromagnetic-interactions",
+      "title": "Klassenstufen 9/10: Elektromagnetische Wechselwirkungen",
+      "titleEn": "Grades 9/10: electromagnetic interactions",
+      "description": "Breiter retained Thueringen-Quellstrip fuer Magnete, Magnetfelder, Elektromagneten und technische Anwendungen elektromagnetischer Wechselwirkungen in den Klassenstufen 9/10.",
+      "descriptionEn": "Broad retained Thuringia source strip for magnets, magnetic fields, electromagnets, and technical applications of electromagnetic interactions in grades 9/10.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "JG9_10",
+        "Magnetism",
+        "Thueringen"
+      ],
+      "contains": [],
+      "requires": [
+        "th-phys-sek1-orientation"
+      ],
+      "sourceRef": "Lehrplan Physik Gymnasium 2012, 2.2.1 Elektromagnetische Wechselwirkungen, S. 20-21.",
+      "dimensionTags": {
+        "framework": "th-lp2012-gym-sek1-physik",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG9_10",
+        "area": "Elektromagnetismus"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "th-phys-j9-10-motion-forces-conservation",
+      "title": "Klassenstufen 9/10: Bewegungen, Kraefte und Erhaltungssaetze",
+      "titleEn": "Grades 9/10: motion, forces, and conservation laws",
+      "description": "Breiter retained Thueringen-Quellstrip fuer Bewegungen, Kraefte, Schwingungen, Wellen und mechanische Erhaltungssaetze in den Klassenstufen 9/10.",
+      "descriptionEn": "Broad retained Thuringia source strip for motion, forces, oscillations, waves, and mechanical conservation laws in grades 9/10.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "JG9_10",
+        "Mechanics",
+        "Thueringen"
+      ],
+      "contains": [],
+      "requires": [
+        "th-phys-sek1-orientation"
+      ],
+      "sourceRef": "Lehrplan Physik Gymnasium 2012, 2.2.2 Bewegungen, Kraefte und Erhaltungssaetze, S. 21-24.",
+      "dimensionTags": {
+        "framework": "th-lp2012-gym-sek1-physik",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG9_10",
+        "area": "Mechanik"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "th-phys-j9-10-radioactivity",
+      "title": "Klassenstufen 9/10: Radioaktivitaet",
+      "titleEn": "Grades 9/10: radioactivity",
+      "description": "Breiter retained Thueringen-Quellstrip fuer radioaktive Strahlung, Zerfall, Halbwertszeit und Anwendungen der Radioaktivitaet in den Klassenstufen 9/10.",
+      "descriptionEn": "Broad retained Thuringia source strip for radioactive radiation, decay, half-life, and applications of radioactivity in grades 9/10.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "JG9_10",
+        "NuclearPhysics",
+        "Thueringen"
+      ],
+      "contains": [],
+      "requires": [
+        "th-phys-sek1-orientation"
+      ],
+      "sourceRef": "Lehrplan Physik Gymnasium 2012, 2.2.3 Radioaktivitaet, S. 24.",
+      "dimensionTags": {
+        "framework": "th-lp2012-gym-sek1-physik",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG9_10",
+        "area": "Radioaktivitaet"
+      },
+      "type": "atomic"
+    }
+  ]
+}

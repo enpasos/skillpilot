@@ -1,0 +1,1132 @@
+{
+  "landscapeId": "85f23183-91d4-4eb0-ad51-aa3a03b240a8",
+  "locale": "de-DE",
+  "country": "DE",
+  "region": "ST",
+  "schoolType": "Gymnasium",
+  "subject": "Physik",
+  "frameworkId": "st-flp2022-gym-sek2-physik",
+  "title": "Physik Sekundarstufe II (Sachsen-Anhalt, erster Quellsnapshot)",
+  "titleEn": "Physics secondary level II (Saxony-Anhalt, first source snapshot)",
+  "description": "Erster archivierter Sachsen-Anhalt-Quellsnapshot fuer die Physik der Sekundarstufe II. Der Snapshot umfasst einen allgemeinen Orientierungsanker, den retained Einfuehrungsphasenstreifen des Schuljahrgangs 10 sowie die retained Oberstufenstreifen fuer grundlegendes Anforderungsniveau, erhoehtes Anforderungsniveau und zweistuendiges Wahlpflichtfach.",
+  "descriptionEn": "First archived Saxony-Anhalt source snapshot for upper-secondary physics. The snapshot covers a general orientation anchor, the retained introductory-phase strip of grade 10, and retained upper-secondary strips for the basic demand level, advanced demand level, and the two-hour elective course.",
+  "compatibilityOnly": true,
+  "legacyHiddenByDefault": true,
+  "goals": [
+    {
+      "id": "st-phys-sek2-root",
+      "title": "Physik Sekundarstufe II",
+      "titleEn": "Physics secondary level II",
+      "description": "Breiter erster Sachsen-Anhalt-Quellsnapshot fuer die Physik der Sekundarstufe II mit einem allgemeinen Orientierungsanker, dem Schuljahrgang 10 als Einfuehrungsphase sowie retained Streifen fuer gAN, eAN und WPF.",
+      "descriptionEn": "Broad first Saxony-Anhalt source snapshot for upper-secondary physics with a general orientation anchor, grade 10 as introductory phase, and retained strips for the basic demand level, advanced demand level, and elective course.",
+      "weight": 36,
+      "tags": [
+        "Sek2",
+        "PilotSubset",
+        "Sachsen-Anhalt"
+      ],
+      "contains": [
+        "st-phys-sek2-orientation",
+        "st-phys-sek2-j10-e",
+        "st-phys-sek2-gan",
+        "st-phys-sek2-ean",
+        "st-phys-sek2-wpf"
+      ],
+      "requires": [
+        "st-phys-sek2-orientation"
+      ],
+      "sourceRef": "Fachlehrplan Physik Sachsen-Anhalt, Schuljahrgang 10 (Einfuehrungsphase) und Schuljahrgaenge 11/12 (Qualifikationsphase), S. 21-23 und 47-105.",
+      "dimensionTags": {
+        "framework": "st-flp2022-gym-sek2-physik",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "GLOBAL",
+        "area": "Sekundarstufe II"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "st-phys-sek2-orientation",
+      "title": "Warum Physik in der Oberstufe? - wissenschaftspropädeutisch vertiefen",
+      "titleEn": "Why physics in upper secondary? - deepening with academic preparation",
+      "description": "Der Fachlehrplan Sachsen-Anhalt rahmt die Physik der Einfuehrungs- und Qualifikationsphase als wissenschaftspropädeutische Vertiefung, die klassische und moderne Physik, Experiment, Modellierung und reflektierte Bewertung verbindet.",
+      "descriptionEn": "The Saxony-Anhalt curriculum frames upper-secondary physics as academically preparatory deepening that connects classical and modern physics, experimentation, modelling, and reflective evaluation.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "Orientation",
+        "Sachsen-Anhalt"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Fachlehrplan Physik Sachsen-Anhalt, Kompetenzentwicklung in den Schuljahrgaengen und Oberstufenprofil, S. 14-23.",
+      "dimensionTags": {
+        "framework": "st-flp2022-gym-sek2-physik",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "GLOBAL",
+        "area": "Orientierung"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "st-phys-sek2-j10-e",
+      "title": "Schuljahrgang 10 (Einfuehrungsphase)",
+      "titleEn": "Grade 10 introductory phase",
+      "description": "Breiter retained Sachsen-Anhalt-Streifen fuer den Schuljahrgang 10 als Einfuehrungsphase mit Geometrischer Optik, Radioaktivitaet und Kernenergie, Gravitation, Klimaphysik und Experimentalpraktikum.",
+      "descriptionEn": "Broad retained Saxony-Anhalt strip for grade 10 as the introductory phase with geometric optics, radioactivity and nuclear energy, gravitation, climate physics, and experimental practicum.",
+      "weight": 5,
+      "tags": [
+        "Sek2",
+        "E",
+        "Sachsen-Anhalt"
+      ],
+      "contains": [
+        "st-phys-e-geometric-optics",
+        "st-phys-e-radioactivity-nuclear-energy",
+        "st-phys-e-gravitation",
+        "st-phys-e-climate-physics",
+        "st-phys-e-experimental-practicum"
+      ],
+      "requires": [
+        "st-phys-sek2-orientation"
+      ],
+      "sourceRef": "Fachlehrplan Physik Sachsen-Anhalt, Schuljahrgang 10 (Einfuehrungsphase), S. 47-53.",
+      "dimensionTags": {
+        "framework": "st-flp2022-gym-sek2-physik",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "E",
+        "area": "Einfuehrungsphase"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "st-phys-e-geometric-optics",
+      "title": "E Kompetenzschwerpunkt Geometrische Optik",
+      "titleEn": "E competence focus geometric optics",
+      "description": "Breiter Kompetenzschwerpunktanker fuer Strahlenmodell, Reflexion, Brechung, Linsenabbildung, Lichtleiter und Fernrohr in der Einfuehrungsphase.",
+      "descriptionEn": "Broad competence-focus anchor for the ray model, reflection, refraction, lens imaging, optical fibres, and telescopes in the introductory phase.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "E",
+        "Sachsen-Anhalt",
+        "Kompetenzschwerpunkt"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Fachlehrplan Physik Sachsen-Anhalt, Schuljahrgang 10, Kompetenzschwerpunkt `Geometrische Optik`, S. 46-47.",
+      "dimensionTags": {
+        "framework": "st-flp2022-gym-sek2-physik",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "E",
+        "area": "Optik"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "st-phys-e-radioactivity-nuclear-energy",
+      "title": "E Kompetenzschwerpunkt Radioaktivitaet und Kernenergie",
+      "titleEn": "E competence focus radioactivity and nuclear energy",
+      "description": "Breiter Kompetenzschwerpunktanker fuer Atomkerne, radioaktiven Zerfall, Nachweis von Strahlung, Halbwertszeit und Kernumwandlungen in der Einfuehrungsphase.",
+      "descriptionEn": "Broad competence-focus anchor for atomic nuclei, radioactive decay, radiation detection, half-life, and nuclear transformations in the introductory phase.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "E",
+        "Sachsen-Anhalt",
+        "Kompetenzschwerpunkt"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Fachlehrplan Physik Sachsen-Anhalt, Schuljahrgang 10, Kompetenzschwerpunkt `Radioaktivitaet und Kernenergie`, S. 47-49.",
+      "dimensionTags": {
+        "framework": "st-flp2022-gym-sek2-physik",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "E",
+        "area": "Kernphysik"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "st-phys-e-gravitation",
+      "title": "E Kompetenzschwerpunkt Gravitation",
+      "titleEn": "E competence focus gravitation",
+      "description": "Breiter Kompetenzschwerpunktanker fuer Gravitationsfeld, Gravitationsgesetz, kosmische Geschwindigkeit und Satellitenbahnen in der Einfuehrungsphase.",
+      "descriptionEn": "Broad competence-focus anchor for gravitational fields, the law of gravitation, escape velocity, and satellite orbits in the introductory phase.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "E",
+        "Sachsen-Anhalt",
+        "Kompetenzschwerpunkt"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Fachlehrplan Physik Sachsen-Anhalt, Schuljahrgang 10, Kompetenzschwerpunkt `Gravitation`, S. 49-50.",
+      "dimensionTags": {
+        "framework": "st-flp2022-gym-sek2-physik",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "E",
+        "area": "Gravitation"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "st-phys-e-climate-physics",
+      "title": "E Kompetenzschwerpunkt Klimaphysik",
+      "titleEn": "E competence focus climate physics",
+      "description": "Breiter Kompetenzschwerpunktanker fuer Strahlungshaushalt der Erde, Treibhauseffekt, Rueckkopplungen und Klimaschutz in der Einfuehrungsphase.",
+      "descriptionEn": "Broad competence-focus anchor for the Earth's radiation balance, the greenhouse effect, feedback processes, and climate protection in the introductory phase.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "E",
+        "Sachsen-Anhalt",
+        "Kompetenzschwerpunkt"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Fachlehrplan Physik Sachsen-Anhalt, Schuljahrgang 10, Kompetenzschwerpunkt `Klimaphysik`, S. 50-52.",
+      "dimensionTags": {
+        "framework": "st-flp2022-gym-sek2-physik",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "E",
+        "area": "Klimaphysik"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "st-phys-e-experimental-practicum",
+      "title": "E Kompetenzschwerpunkt Experimentalpraktikum",
+      "titleEn": "E competence focus experimental practicum",
+      "description": "Breiter Kompetenzschwerpunktanker fuer Experimentplanung, Messwerterfassung, Auswertung und Dokumentation in der Einfuehrungsphase.",
+      "descriptionEn": "Broad competence-focus anchor for experiment planning, data collection, evaluation, and documentation in the introductory phase.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "E",
+        "Sachsen-Anhalt",
+        "Kompetenzschwerpunkt"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Fachlehrplan Physik Sachsen-Anhalt, Schuljahrgang 10, Kompetenzschwerpunkt `Experimentalpraktikum`, S. 52-53.",
+      "dimensionTags": {
+        "framework": "st-flp2022-gym-sek2-physik",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "E",
+        "area": "Praktikum"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "st-phys-sek2-gan",
+      "title": "Grundlegendes Anforderungsniveau",
+      "titleEn": "Basic demand level",
+      "description": "Breiter retained Sachsen-Anhalt-Streifen fuer das grundlegende Anforderungsniveau mit den Themenbereichen Schwingungen und Wellen, Elektrodynamik, Quantenphysik und Praktika.",
+      "descriptionEn": "Broad retained Saxony-Anhalt strip for the basic demand level with the themes oscillations and waves, electrodynamics, quantum physics, and practica.",
+      "weight": 10,
+      "tags": [
+        "Sek2",
+        "gAN",
+        "Sachsen-Anhalt"
+      ],
+      "contains": [
+        "st-phys-gan-foundation-mechanics",
+        "st-phys-gan-mechanical-oscillations-waves",
+        "st-phys-gan-light-wave-properties",
+        "st-phys-gan-electric-field",
+        "st-phys-gan-magnetic-field",
+        "st-phys-gan-electromagnetic-induction",
+        "st-phys-gan-quantum-object-properties",
+        "st-phys-gan-quantum-atom-model",
+        "st-phys-gan-experimental-practicum",
+        "st-phys-gan-tasks-practicum"
+      ],
+      "requires": [
+        "st-phys-sek2-j10-e"
+      ],
+      "sourceRef": "Fachlehrplan Physik Sachsen-Anhalt, Schuljahrgaenge 11/12 (gAN), S. 54-71.",
+      "dimensionTags": {
+        "framework": "st-flp2022-gym-sek2-physik",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "GAN",
+        "area": "Qualifikationsphase"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "st-phys-gan-foundation-mechanics",
+      "title": "gAN Kompetenzschwerpunkt Grundlagenkurs Mechanik",
+      "titleEn": "gAN competence focus foundation course mechanics",
+      "description": "Breiter Kompetenzschwerpunktanker fuer Punktmasse, Wuerfe, Energieerhaltung, Impuls und Bewegungsdiagramme im grundlegenden Anforderungsniveau.",
+      "descriptionEn": "Broad competence-focus anchor for point-mass mechanics, projectile motion, conservation of energy, momentum, and motion diagrams in the basic demand level.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "gAN",
+        "Sachsen-Anhalt",
+        "Kompetenzschwerpunkt"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Fachlehrplan Physik Sachsen-Anhalt, gAN, Kompetenzschwerpunkt `Grundlagenkurs Mechanik`, S. 54-55.",
+      "dimensionTags": {
+        "framework": "st-flp2022-gym-sek2-physik",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "GAN",
+        "area": "Mechanik"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "st-phys-gan-mechanical-oscillations-waves",
+      "title": "gAN Kompetenzschwerpunkt Mechanische Schwingungen und Wellen",
+      "titleEn": "gAN competence focus mechanical oscillations and waves",
+      "description": "Breiter Kompetenzschwerpunktanker fuer harmonische Schwingungen, Resonanz, mechanische Wellen, Polarisation und stehende Wellen im grundlegenden Anforderungsniveau.",
+      "descriptionEn": "Broad competence-focus anchor for harmonic oscillations, resonance, mechanical waves, polarisation, and standing waves in the basic demand level.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "gAN",
+        "Sachsen-Anhalt",
+        "Kompetenzschwerpunkt"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Fachlehrplan Physik Sachsen-Anhalt, gAN, Kompetenzschwerpunkt `Mechanische Schwingungen und Wellen`, S. 55-57.",
+      "dimensionTags": {
+        "framework": "st-flp2022-gym-sek2-physik",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "GAN",
+        "area": "Schwingungen und Wellen"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "st-phys-gan-light-wave-properties",
+      "title": "gAN Kompetenzschwerpunkt Welleneigenschaften des Lichtes",
+      "titleEn": "gAN competence focus wave properties of light",
+      "description": "Breiter Kompetenzschwerpunktanker fuer Interferenz, Gitter, Spektren und Polarisation des Lichtes im grundlegenden Anforderungsniveau.",
+      "descriptionEn": "Broad competence-focus anchor for interference, gratings, spectra, and polarisation of light in the basic demand level.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "gAN",
+        "Sachsen-Anhalt",
+        "Kompetenzschwerpunkt"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Fachlehrplan Physik Sachsen-Anhalt, gAN, Kompetenzschwerpunkt `Welleneigenschaften des Lichtes`, S. 57-59.",
+      "dimensionTags": {
+        "framework": "st-flp2022-gym-sek2-physik",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "GAN",
+        "area": "Wellenoptik"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "st-phys-gan-electric-field",
+      "title": "gAN Kompetenzschwerpunkt Elektrisches Feld",
+      "titleEn": "gAN competence focus electric field",
+      "description": "Breiter Kompetenzschwerpunktanker fuer elektrische Felder, Kondensator, Ladungstraegerbewegung und Entladevorgaenge im grundlegenden Anforderungsniveau.",
+      "descriptionEn": "Broad competence-focus anchor for electric fields, capacitors, charge motion, and discharge processes in the basic demand level.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "gAN",
+        "Sachsen-Anhalt",
+        "Kompetenzschwerpunkt"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Fachlehrplan Physik Sachsen-Anhalt, gAN, Kompetenzschwerpunkt `Elektrisches Feld`, S. 59-61.",
+      "dimensionTags": {
+        "framework": "st-flp2022-gym-sek2-physik",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "GAN",
+        "area": "Elektrodynamik"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "st-phys-gan-magnetic-field",
+      "title": "gAN Kompetenzschwerpunkt Magnetisches Feld",
+      "titleEn": "gAN competence focus magnetic field",
+      "description": "Breiter Kompetenzschwerpunktanker fuer Dauermagnete, stromdurchflossene Leiter und Spulen, Lorentzkraft und Magnetfeld als Energietraeger im grundlegenden Anforderungsniveau.",
+      "descriptionEn": "Broad competence-focus anchor for permanent magnets, current-carrying conductors and coils, the Lorentz force, and the magnetic field as an energy carrier in the basic demand level.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "gAN",
+        "Sachsen-Anhalt",
+        "Kompetenzschwerpunkt"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Fachlehrplan Physik Sachsen-Anhalt, gAN, Kompetenzschwerpunkt `Magnetisches Feld`, S. 61-62.",
+      "dimensionTags": {
+        "framework": "st-flp2022-gym-sek2-physik",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "GAN",
+        "area": "Elektrodynamik"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "st-phys-gan-electromagnetic-induction",
+      "title": "gAN Kompetenzschwerpunkt Elektromagnetische Induktion",
+      "titleEn": "gAN competence focus electromagnetic induction",
+      "description": "Breiter Kompetenzschwerpunktanker fuer Induktionsgesetz, Transformator und elektromagnetischen Schwingkreis im grundlegenden Anforderungsniveau.",
+      "descriptionEn": "Broad competence-focus anchor for the law of induction, transformers, and the electromagnetic oscillating circuit in the basic demand level.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "gAN",
+        "Sachsen-Anhalt",
+        "Kompetenzschwerpunkt"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Fachlehrplan Physik Sachsen-Anhalt, gAN, Kompetenzschwerpunkt `Elektromagnetische Induktion`, S. 62-64.",
+      "dimensionTags": {
+        "framework": "st-flp2022-gym-sek2-physik",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "GAN",
+        "area": "Elektrodynamik"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "st-phys-gan-quantum-object-properties",
+      "title": "gAN Kompetenzschwerpunkt Eigenschaften von Quantenobjekten",
+      "titleEn": "gAN competence focus properties of quantum objects",
+      "description": "Breiter Kompetenzschwerpunktanker fuer Photoeffekt, Photonen, Elektronenwellen und grundlegende Wesenszuege der Quantentheorie im grundlegenden Anforderungsniveau.",
+      "descriptionEn": "Broad competence-focus anchor for the photoelectric effect, photons, electron waves, and foundational features of quantum theory in the basic demand level.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "gAN",
+        "Sachsen-Anhalt",
+        "Kompetenzschwerpunkt"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Fachlehrplan Physik Sachsen-Anhalt, gAN, Kompetenzschwerpunkt `Eigenschaften von Quantenobjekten`, S. 64-66.",
+      "dimensionTags": {
+        "framework": "st-flp2022-gym-sek2-physik",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "GAN",
+        "area": "Quantenphysik"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "st-phys-gan-quantum-atom-model",
+      "title": "gAN Kompetenzschwerpunkt Quantenphysikalisches Atommodell",
+      "titleEn": "gAN competence focus quantum atomic model",
+      "description": "Breiter Kompetenzschwerpunktanker fuer Energiestufen, Orbitale, Emission und Absorption im quantenphysikalischen Atommodell des Wasserstoffatoms im grundlegenden Anforderungsniveau.",
+      "descriptionEn": "Broad competence-focus anchor for energy levels, orbitals, emission, and absorption in the quantum atomic model of hydrogen in the basic demand level.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "gAN",
+        "Sachsen-Anhalt",
+        "Kompetenzschwerpunkt"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Fachlehrplan Physik Sachsen-Anhalt, gAN, Kompetenzschwerpunkt `Quantenphysikalisches Atommodell`, S. 66-68.",
+      "dimensionTags": {
+        "framework": "st-flp2022-gym-sek2-physik",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "GAN",
+        "area": "Atomphysik"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "st-phys-gan-experimental-practicum",
+      "title": "gAN Kompetenzschwerpunkt Experimentalpraktikum",
+      "titleEn": "gAN competence focus experimental practicum",
+      "description": "Breiter Kompetenzschwerpunktanker fuer Experimentplanung, Messunsicherheit, Hypothesenpruefung und Dokumentation im grundlegenden Anforderungsniveau.",
+      "descriptionEn": "Broad competence-focus anchor for experiment planning, measurement uncertainty, hypothesis testing, and documentation in the basic demand level.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "gAN",
+        "Sachsen-Anhalt",
+        "Kompetenzschwerpunkt"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Fachlehrplan Physik Sachsen-Anhalt, gAN, Kompetenzschwerpunkt `Experimentalpraktikum`, S. 68-70.",
+      "dimensionTags": {
+        "framework": "st-flp2022-gym-sek2-physik",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "GAN",
+        "area": "Praktikum"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "st-phys-gan-tasks-practicum",
+      "title": "gAN Kompetenzschwerpunkt Aufgabenpraktikum",
+      "titleEn": "gAN competence focus tasks practicum",
+      "description": "Breiter Kompetenzschwerpunktanker fuer Aufgabenstrategien, Modellwahl, Plausibilitaetspruefung und begruendetes Urteilen im grundlegenden Anforderungsniveau.",
+      "descriptionEn": "Broad competence-focus anchor for task strategies, model selection, plausibility checks, and reasoned judgment in the basic demand level.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "gAN",
+        "Sachsen-Anhalt",
+        "Kompetenzschwerpunkt"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Fachlehrplan Physik Sachsen-Anhalt, gAN, Kompetenzschwerpunkt `Aufgabenpraktikum`, S. 70-72.",
+      "dimensionTags": {
+        "framework": "st-flp2022-gym-sek2-physik",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "GAN",
+        "area": "Praktikum"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "st-phys-sek2-ean",
+      "title": "Erhoehtes Anforderungsniveau",
+      "titleEn": "Advanced demand level",
+      "description": "Breiter retained Sachsen-Anhalt-Streifen fuer das erhoehte Anforderungsniveau mit Themenbereichen zu Schwingungen und Wellen, Elektrodynamik, ausgewaehlten Gebieten der nichtklassischen Physik und Praktika.",
+      "descriptionEn": "Broad retained Saxony-Anhalt strip for the advanced demand level with themes on oscillations and waves, electrodynamics, selected areas of non-classical physics, and practica.",
+      "weight": 13,
+      "tags": [
+        "Sek2",
+        "eAN",
+        "Sachsen-Anhalt"
+      ],
+      "contains": [
+        "st-phys-ean-mechanical-oscillations",
+        "st-phys-ean-mechanical-waves",
+        "st-phys-ean-light-wave-properties",
+        "st-phys-ean-advanced-mechanics",
+        "st-phys-ean-electric-field",
+        "st-phys-ean-magnetic-field",
+        "st-phys-ean-electromagnetic-induction",
+        "st-phys-ean-ac-resistances-em-oscillations",
+        "st-phys-ean-special-relativity",
+        "st-phys-ean-quantum-object-properties",
+        "st-phys-ean-quantum-atom-model",
+        "st-phys-ean-experimental-practicum",
+        "st-phys-ean-tasks-practicum"
+      ],
+      "requires": [
+        "st-phys-sek2-j10-e"
+      ],
+      "sourceRef": "Fachlehrplan Physik Sachsen-Anhalt, Schuljahrgaenge 11/12 (eAN), S. 73-96.",
+      "dimensionTags": {
+        "framework": "st-flp2022-gym-sek2-physik",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "EAN",
+        "area": "Qualifikationsphase"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "st-phys-ean-mechanical-oscillations",
+      "title": "eAN Kompetenzschwerpunkt Mechanische Schwingungen",
+      "titleEn": "eAN competence focus mechanical oscillations",
+      "description": "Breiter Kompetenzschwerpunktanker fuer harmonische und gedaempfte Schwingungen, Resonanz und mathematische Beschreibung mechanischer Schwingungen im erhoehten Anforderungsniveau.",
+      "descriptionEn": "Broad competence-focus anchor for harmonic and damped oscillations, resonance, and the mathematical description of mechanical oscillations in the advanced demand level.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "eAN",
+        "Sachsen-Anhalt",
+        "Kompetenzschwerpunkt"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Fachlehrplan Physik Sachsen-Anhalt, eAN, Kompetenzschwerpunkt `Mechanische Schwingungen`, S. 73-74.",
+      "dimensionTags": {
+        "framework": "st-flp2022-gym-sek2-physik",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "EAN",
+        "area": "Schwingungen und Wellen"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "st-phys-ean-mechanical-waves",
+      "title": "eAN Kompetenzschwerpunkt Mechanische Wellen",
+      "titleEn": "eAN competence focus mechanical waves",
+      "description": "Breiter Kompetenzschwerpunktanker fuer mechanische Wellen, Akustik, Schallgeschwindigkeit und mathematische Darstellung harmonischer Wellen im erhoehten Anforderungsniveau.",
+      "descriptionEn": "Broad competence-focus anchor for mechanical waves, acoustics, the speed of sound, and the mathematical description of harmonic waves in the advanced demand level.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "eAN",
+        "Sachsen-Anhalt",
+        "Kompetenzschwerpunkt"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Fachlehrplan Physik Sachsen-Anhalt, eAN, Kompetenzschwerpunkt `Mechanische Wellen`, S. 74-76.",
+      "dimensionTags": {
+        "framework": "st-flp2022-gym-sek2-physik",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "EAN",
+        "area": "Schwingungen und Wellen"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "st-phys-ean-light-wave-properties",
+      "title": "eAN Kompetenzschwerpunkt Welleneigenschaften des Lichtes",
+      "titleEn": "eAN competence focus wave properties of light",
+      "description": "Breiter Kompetenzschwerpunktanker fuer Wellenoptik, Gitterinterferenz, Doppelspalt, Spektren und Interferometer im erhoehten Anforderungsniveau.",
+      "descriptionEn": "Broad competence-focus anchor for wave optics, grating interference, the double slit, spectra, and interferometers in the advanced demand level.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "eAN",
+        "Sachsen-Anhalt",
+        "Kompetenzschwerpunkt"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Fachlehrplan Physik Sachsen-Anhalt, eAN, Kompetenzschwerpunkt `Welleneigenschaften des Lichtes`, S. 76-78.",
+      "dimensionTags": {
+        "framework": "st-flp2022-gym-sek2-physik",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "EAN",
+        "area": "Wellenoptik"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "st-phys-ean-advanced-mechanics",
+      "title": "eAN Kompetenzschwerpunkt Aufbaukurs Mechanik",
+      "titleEn": "eAN competence focus advanced mechanics",
+      "description": "Breiter Kompetenzschwerpunktanker fuer Wurfbewegungen, Stoesse, Impulserhaltung und fortgeschrittene Modellierung von Bewegungen im erhoehten Anforderungsniveau.",
+      "descriptionEn": "Broad competence-focus anchor for projectile motion, collisions, conservation of momentum, and advanced motion modelling in the advanced demand level.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "eAN",
+        "Sachsen-Anhalt",
+        "Kompetenzschwerpunkt"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Fachlehrplan Physik Sachsen-Anhalt, eAN, Kompetenzschwerpunkt `Aufbaukurs Mechanik`, S. 78-80.",
+      "dimensionTags": {
+        "framework": "st-flp2022-gym-sek2-physik",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "EAN",
+        "area": "Mechanik"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "st-phys-ean-electric-field",
+      "title": "eAN Kompetenzschwerpunkt Elektrisches Feld",
+      "titleEn": "eAN competence focus electric field",
+      "description": "Breiter Kompetenzschwerpunktanker fuer Coulomb-Gesetz, Potenzial, Kondensator, Millikan-Versuch und Ladungstraegerbewegung im elektrischen Feld im erhoehten Anforderungsniveau.",
+      "descriptionEn": "Broad competence-focus anchor for Coulomb's law, electric potential, capacitors, the Millikan experiment, and charge motion in electric fields in the advanced demand level.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "eAN",
+        "Sachsen-Anhalt",
+        "Kompetenzschwerpunkt"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Fachlehrplan Physik Sachsen-Anhalt, eAN, Kompetenzschwerpunkt `Elektrisches Feld`, S. 80-82.",
+      "dimensionTags": {
+        "framework": "st-flp2022-gym-sek2-physik",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "EAN",
+        "area": "Elektrodynamik"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "st-phys-ean-magnetic-field",
+      "title": "eAN Kompetenzschwerpunkt Magnetisches Feld",
+      "titleEn": "eAN competence focus magnetic field",
+      "description": "Breiter Kompetenzschwerpunktanker fuer magnetische Flussdichte, Hall-Effekt, spezifische Ladung und Massenspektrograph im erhoehten Anforderungsniveau.",
+      "descriptionEn": "Broad competence-focus anchor for magnetic flux density, the Hall effect, specific charge, and the mass spectrograph in the advanced demand level.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "eAN",
+        "Sachsen-Anhalt",
+        "Kompetenzschwerpunkt"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Fachlehrplan Physik Sachsen-Anhalt, eAN, Kompetenzschwerpunkt `Magnetisches Feld`, S. 82-84.",
+      "dimensionTags": {
+        "framework": "st-flp2022-gym-sek2-physik",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "EAN",
+        "area": "Elektrodynamik"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "st-phys-ean-electromagnetic-induction",
+      "title": "eAN Kompetenzschwerpunkt Elektromagnetische Induktion",
+      "titleEn": "eAN competence focus electromagnetic induction",
+      "description": "Breiter Kompetenzschwerpunktanker fuer Induktionsgesetz in differenzieller Form, Wirbelstroeme, belasteten Transformator und Selbstinduktion im erhoehten Anforderungsniveau.",
+      "descriptionEn": "Broad competence-focus anchor for the differential law of induction, eddy currents, loaded transformers, and self-induction in the advanced demand level.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "eAN",
+        "Sachsen-Anhalt",
+        "Kompetenzschwerpunkt"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Fachlehrplan Physik Sachsen-Anhalt, eAN, Kompetenzschwerpunkt `Elektromagnetische Induktion`, S. 84-85.",
+      "dimensionTags": {
+        "framework": "st-flp2022-gym-sek2-physik",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "EAN",
+        "area": "Elektrodynamik"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "st-phys-ean-ac-resistances-em-oscillations",
+      "title": "eAN Kompetenzschwerpunkt Wechselstromwiderstaende und elektromagnetische Schwingungen",
+      "titleEn": "eAN competence focus AC resistances and electromagnetic oscillations",
+      "description": "Breiter Kompetenzschwerpunktanker fuer Wechselstromkreis, kapazitive und induktive Widerstaende, Phasenbeziehungen und elektromagnetische Schwingungen im erhoehten Anforderungsniveau.",
+      "descriptionEn": "Broad competence-focus anchor for AC circuits, capacitive and inductive reactance, phase relations, and electromagnetic oscillations in the advanced demand level.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "eAN",
+        "Sachsen-Anhalt",
+        "Kompetenzschwerpunkt"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Fachlehrplan Physik Sachsen-Anhalt, eAN, Kompetenzschwerpunkt `Wechselstromwiderstaende und elektromagnetische Schwingungen`, S. 85-86.",
+      "dimensionTags": {
+        "framework": "st-flp2022-gym-sek2-physik",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "EAN",
+        "area": "Elektrodynamik"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "st-phys-ean-special-relativity",
+      "title": "eAN Kompetenzschwerpunkt Spezielle Relativitaetstheorie",
+      "titleEn": "eAN competence focus special relativity",
+      "description": "Breiter Kompetenzschwerpunktanker fuer Einstein-Postulate, Zeitdilatation, Laengenkontraktion, relativistische Masse und Teilchenbeschleuniger im erhoehten Anforderungsniveau.",
+      "descriptionEn": "Broad competence-focus anchor for Einstein's postulates, time dilation, length contraction, relativistic mass, and particle accelerators in the advanced demand level.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "eAN",
+        "Sachsen-Anhalt",
+        "Kompetenzschwerpunkt"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Fachlehrplan Physik Sachsen-Anhalt, eAN, Kompetenzschwerpunkt `Spezielle Relativitaetstheorie`, S. 86-88.",
+      "dimensionTags": {
+        "framework": "st-flp2022-gym-sek2-physik",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "EAN",
+        "area": "Nichtklassische Physik"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "st-phys-ean-quantum-object-properties",
+      "title": "eAN Kompetenzschwerpunkt Eigenschaften von Quantenobjekten",
+      "titleEn": "eAN competence focus properties of quantum objects",
+      "description": "Breiter Kompetenzschwerpunktanker fuer Photoeffekt, de-Broglie-Beziehung, Quantenobjekte und den Paradigmenwechsel zur Quantentheorie im erhoehten Anforderungsniveau.",
+      "descriptionEn": "Broad competence-focus anchor for the photoelectric effect, the de Broglie relation, quantum objects, and the paradigm shift to quantum theory in the advanced demand level.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "eAN",
+        "Sachsen-Anhalt",
+        "Kompetenzschwerpunkt"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Fachlehrplan Physik Sachsen-Anhalt, eAN, Kompetenzschwerpunkt `Eigenschaften von Quantenobjekten`, S. 88-91.",
+      "dimensionTags": {
+        "framework": "st-flp2022-gym-sek2-physik",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "EAN",
+        "area": "Nichtklassische Physik"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "st-phys-ean-quantum-atom-model",
+      "title": "eAN Kompetenzschwerpunkt Quantenphysikalisches Atommodell",
+      "titleEn": "eAN competence focus quantum atomic model",
+      "description": "Breiter Kompetenzschwerpunktanker fuer quantenphysikalisches Atommodell, Absorptions- und Emissionsspektren sowie Orbitale des Wasserstoffatoms im erhoehten Anforderungsniveau.",
+      "descriptionEn": "Broad competence-focus anchor for the quantum atomic model, absorption and emission spectra, and hydrogen orbitals in the advanced demand level.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "eAN",
+        "Sachsen-Anhalt",
+        "Kompetenzschwerpunkt"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Fachlehrplan Physik Sachsen-Anhalt, eAN, Kompetenzschwerpunkt `Quantenphysikalisches Atommodell`, S. 91-94.",
+      "dimensionTags": {
+        "framework": "st-flp2022-gym-sek2-physik",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "EAN",
+        "area": "Nichtklassische Physik"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "st-phys-ean-experimental-practicum",
+      "title": "eAN Kompetenzschwerpunkt Experimentalpraktikum",
+      "titleEn": "eAN competence focus experimental practicum",
+      "description": "Breiter Kompetenzschwerpunktanker fuer eigenstaendige Versuchsplanung, Fehleranalyse und datenbasierte Erkenntnisgewinnung im erhoehten Anforderungsniveau.",
+      "descriptionEn": "Broad competence-focus anchor for independent experiment planning, error analysis, and data-driven knowledge generation in the advanced demand level.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "eAN",
+        "Sachsen-Anhalt",
+        "Kompetenzschwerpunkt"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Fachlehrplan Physik Sachsen-Anhalt, eAN, Kompetenzschwerpunkt `Experimentalpraktikum`, S. 94-95.",
+      "dimensionTags": {
+        "framework": "st-flp2022-gym-sek2-physik",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "EAN",
+        "area": "Praktikum"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "st-phys-ean-tasks-practicum",
+      "title": "eAN Kompetenzschwerpunkt Aufgabenpraktikum",
+      "titleEn": "eAN competence focus tasks practicum",
+      "description": "Breiter Kompetenzschwerpunktanker fuer komplexe Aufgabenstrategien, Modellwahl, Argumentation und reflektiertes Urteilen im erhoehten Anforderungsniveau.",
+      "descriptionEn": "Broad competence-focus anchor for complex task strategies, model selection, argumentation, and reflective judgment in the advanced demand level.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "eAN",
+        "Sachsen-Anhalt",
+        "Kompetenzschwerpunkt"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Fachlehrplan Physik Sachsen-Anhalt, eAN, Kompetenzschwerpunkt `Aufgabenpraktikum`, S. 95-96.",
+      "dimensionTags": {
+        "framework": "st-flp2022-gym-sek2-physik",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "EAN",
+        "area": "Praktikum"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "st-phys-sek2-wpf",
+      "title": "Zweistuendiges Wahlpflichtfach",
+      "titleEn": "Two-hour elective course",
+      "description": "Breiter retained Sachsen-Anhalt-Streifen fuer das zweistuendige Wahlpflichtfach mit Themenbereichen zu elektrischen und magnetischen Feldern, Schwingungen und Wellen sowie Quantenphysik und Materie.",
+      "descriptionEn": "Broad retained Saxony-Anhalt strip for the two-hour elective course with themes on electric and magnetic fields, oscillations and waves, and quantum physics and matter.",
+      "weight": 7,
+      "tags": [
+        "Sek2",
+        "WPF",
+        "Sachsen-Anhalt"
+      ],
+      "contains": [
+        "st-phys-wpf-field-concept",
+        "st-phys-wpf-bodies-static-fields",
+        "st-phys-wpf-changing-em-fields",
+        "st-phys-wpf-oscillations",
+        "st-phys-wpf-waves",
+        "st-phys-wpf-quantum-objects",
+        "st-phys-wpf-atomic-models"
+      ],
+      "requires": [
+        "st-phys-sek2-j10-e"
+      ],
+      "sourceRef": "Fachlehrplan Physik Sachsen-Anhalt, Schuljahrgaenge 11/12 (Wahlpflichtfach), S. 97-105.",
+      "dimensionTags": {
+        "framework": "st-flp2022-gym-sek2-physik",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "WPF",
+        "area": "Qualifikationsphase"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "st-phys-wpf-field-concept",
+      "title": "WPF Kompetenzschwerpunkt Das Feldkonzept zur Beschreibung von Wechselwirkungen",
+      "titleEn": "WPF competence focus field concept for describing interactions",
+      "description": "Breiter Kompetenzschwerpunktanker fuer elektrische und magnetische Felder, Feldlinien, Kondensatorentladung und Spule als Energietraeger im Wahlpflichtfach.",
+      "descriptionEn": "Broad competence-focus anchor for electric and magnetic fields, field lines, capacitor discharge, and the coil as an energy carrier in the elective course.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "WPF",
+        "Sachsen-Anhalt",
+        "Kompetenzschwerpunkt"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Fachlehrplan Physik Sachsen-Anhalt, WPF, Kompetenzschwerpunkt `Das Feldkonzept zur Beschreibung von Wechselwirkungen`, S. 97-98.",
+      "dimensionTags": {
+        "framework": "st-flp2022-gym-sek2-physik",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "WPF",
+        "area": "Elektrische und magnetische Felder"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "st-phys-wpf-bodies-static-fields",
+      "title": "WPF Kompetenzschwerpunkt Koerper in statischen Feldern",
+      "titleEn": "WPF competence focus bodies in static fields",
+      "description": "Breiter Kompetenzschwerpunktanker fuer Ladungstraegerbahnen und Energiebetrachtungen in homogenen elektrischen und magnetischen Feldern im Wahlpflichtfach.",
+      "descriptionEn": "Broad competence-focus anchor for charge trajectories and energy considerations in homogeneous electric and magnetic fields in the elective course.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "WPF",
+        "Sachsen-Anhalt",
+        "Kompetenzschwerpunkt"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Fachlehrplan Physik Sachsen-Anhalt, WPF, Kompetenzschwerpunkt `Koerper in statischen Feldern`, S. 98-99.",
+      "dimensionTags": {
+        "framework": "st-flp2022-gym-sek2-physik",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "WPF",
+        "area": "Elektrische und magnetische Felder"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "st-phys-wpf-changing-em-fields",
+      "title": "WPF Kompetenzschwerpunkt Veraenderliche elektromagnetische Felder",
+      "titleEn": "WPF competence focus changing electromagnetic fields",
+      "description": "Breiter Kompetenzschwerpunktanker fuer magnetischen Fluss, Induktionsgesetz, Generatorprinzip und Transformator im Wahlpflichtfach.",
+      "descriptionEn": "Broad competence-focus anchor for magnetic flux, the law of induction, generator principles, and transformers in the elective course.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "WPF",
+        "Sachsen-Anhalt",
+        "Kompetenzschwerpunkt"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Fachlehrplan Physik Sachsen-Anhalt, WPF, Kompetenzschwerpunkt `Veraenderliche elektromagnetische Felder`, S. 99-100.",
+      "dimensionTags": {
+        "framework": "st-flp2022-gym-sek2-physik",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "WPF",
+        "area": "Elektrische und magnetische Felder"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "st-phys-wpf-oscillations",
+      "title": "WPF Kompetenzschwerpunkt Schwingungen",
+      "titleEn": "WPF competence focus oscillations",
+      "description": "Breiter Kompetenzschwerpunktanker fuer mechanische und elektromagnetische Schwingungen, Kenngroessen und Energieumwandlungen im Wahlpflichtfach.",
+      "descriptionEn": "Broad competence-focus anchor for mechanical and electromagnetic oscillations, characteristic quantities, and energy transformations in the elective course.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "WPF",
+        "Sachsen-Anhalt",
+        "Kompetenzschwerpunkt"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Fachlehrplan Physik Sachsen-Anhalt, WPF, Kompetenzschwerpunkt `Schwingungen`, S. 100-101.",
+      "dimensionTags": {
+        "framework": "st-flp2022-gym-sek2-physik",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "WPF",
+        "area": "Schwingungen und Wellen"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "st-phys-wpf-waves",
+      "title": "WPF Kompetenzschwerpunkt Wellen",
+      "titleEn": "WPF competence focus waves",
+      "description": "Breiter Kompetenzschwerpunktanker fuer mechanische und elektromagnetische Wellen, Interferenz, stehende Wellen und Spektren im Wahlpflichtfach.",
+      "descriptionEn": "Broad competence-focus anchor for mechanical and electromagnetic waves, interference, standing waves, and spectra in the elective course.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "WPF",
+        "Sachsen-Anhalt",
+        "Kompetenzschwerpunkt"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Fachlehrplan Physik Sachsen-Anhalt, WPF, Kompetenzschwerpunkt `Wellen`, S. 102-104.",
+      "dimensionTags": {
+        "framework": "st-flp2022-gym-sek2-physik",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "WPF",
+        "area": "Schwingungen und Wellen"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "st-phys-wpf-quantum-objects",
+      "title": "WPF Kompetenzschwerpunkt Quantenobjekte",
+      "titleEn": "WPF competence focus quantum objects",
+      "description": "Breiter Kompetenzschwerpunktanker fuer Teilchen- und Welleneigenschaften, Photoeffekt und grundlegende Wesenszuege der Quantentheorie im Wahlpflichtfach.",
+      "descriptionEn": "Broad competence-focus anchor for particle and wave properties, the photoelectric effect, and basic features of quantum theory in the elective course.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "WPF",
+        "Sachsen-Anhalt",
+        "Kompetenzschwerpunkt"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Fachlehrplan Physik Sachsen-Anhalt, WPF, Kompetenzschwerpunkt `Quantenobjekte`, S. 104-105.",
+      "dimensionTags": {
+        "framework": "st-flp2022-gym-sek2-physik",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "WPF",
+        "area": "Quantenphysik und Materie"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "st-phys-wpf-atomic-models",
+      "title": "WPF Kompetenzschwerpunkt Atomvorstellungen",
+      "titleEn": "WPF competence focus atomic models",
+      "description": "Breiter Kompetenzschwerpunktanker fuer Absorptions- und Emissionslinien, Energieniveaus und Orbitale des Wasserstoffatoms im Wahlpflichtfach.",
+      "descriptionEn": "Broad competence-focus anchor for absorption and emission lines, energy levels, and hydrogen orbitals in the elective course.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "WPF",
+        "Sachsen-Anhalt",
+        "Kompetenzschwerpunkt"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Fachlehrplan Physik Sachsen-Anhalt, WPF, Kompetenzschwerpunkt `Atomvorstellungen`, S. 105-106.",
+      "dimensionTags": {
+        "framework": "st-flp2022-gym-sek2-physik",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "WPF",
+        "area": "Quantenphysik und Materie"
+      },
+      "type": "atomic"
+    }
+  ]
+}

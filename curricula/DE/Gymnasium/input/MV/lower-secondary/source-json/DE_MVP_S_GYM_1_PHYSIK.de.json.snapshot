@@ -1,0 +1,592 @@
+{
+  "landscapeId": "27da5587-bef3-49ad-9fec-3907253b85bd",
+  "locale": "de-DE",
+  "country": "DE",
+  "region": "MV",
+  "schoolType": "Gymnasium",
+  "subject": "Physik",
+  "frameworkId": "mv-rp2022-gym-sek1-physik",
+  "title": "Physik Sekundarstufe I (Mecklenburg-Vorpommern, erster Quellsnapshot)",
+  "titleEn": "Physics Secondary Level I (Mecklenburg-Vorpommern, first source snapshot)",
+  "description": "Erster archivierter Mecklenburg-Vorpommern-Quellsnapshot fuer die Physik der Sekundarstufe I. Der Snapshot umfasst einen allgemeinen Orientierungsanker sowie die Gymnasium-Klassen 7, 8, 9 und 10 als breite retained Klassenstufenanker.",
+  "descriptionEn": "First archived Mecklenburg-Vorpommern source snapshot for lower-secondary physics. The snapshot covers a general orientation anchor and the Gymnasium grades 7, 8, 9, and 10 as broad retained grade anchors.",
+  "compatibilityOnly": true,
+  "legacyHiddenByDefault": true,
+  "goals": [
+    {
+      "id": "mv-phys-sek1-root",
+      "title": "Physik Sekundarstufe I",
+      "titleEn": "Physics secondary level I",
+      "description": "Breiter erster Mecklenburg-Vorpommern-Quellsnapshot fuer die Physik der Sekundarstufe I mit Orientierungsanker sowie retained Klassenstufenbaendern 7, 8, 9 und 10.",
+      "descriptionEn": "Broad first Mecklenburg-Vorpommern source snapshot for lower-secondary physics with an orientation anchor and retained grade-band clusters 7, 8, 9, and 10.",
+      "weight": 16,
+      "tags": [
+        "Sek1",
+        "PilotSubset",
+        "Mecklenburg-Vorpommern"
+      ],
+      "contains": [
+        "mv-phys-sek1-orientation",
+        "mv-phys-sek1-j7",
+        "mv-phys-sek1-j8",
+        "mv-phys-sek1-j9",
+        "mv-phys-sek1-j10"
+      ],
+      "requires": [
+        "mv-phys-sek1-orientation"
+      ],
+      "sourceRef": "Rahmenplan Physik Gymnasium/Gesamtschule 7-10 Mecklenburg-Vorpommern (Erprobungsfassung 2022), Unterrichtsinhalte Klasse 7 bis Klasse 10, S. 17-43.",
+      "dimensionTags": {
+        "framework": "mv-rp2022-gym-sek1-physik",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "GLOBAL",
+        "area": "Sekundarstufe I"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "mv-phys-sek1-orientation",
+      "title": "Warum Physik? - Materie, Energie, Wechselwirkung und System verstehen",
+      "titleEn": "Why physics? - Understanding matter, energy, interaction, and system",
+      "description": "Der Physikunterricht in Mecklenburg-Vorpommern fuehrt experimentell und modellbasiert in die Basiskonzepte Materie, Energie, Wechselwirkung und System ein und verbindet physikalische Erkenntnisse mit Alltag, Technik und gesellschaftlicher Orientierung.",
+      "descriptionEn": "Physics teaching in Mecklenburg-Vorpommern introduces the basic concepts of matter, energy, interaction, and system through experiments and models and connects physical knowledge with everyday life, technology, and societal orientation.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "Orientation",
+        "Mecklenburg-Vorpommern"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Rahmenplan Physik Gymnasium/Gesamtschule 7-10 Mecklenburg-Vorpommern (Erprobungsfassung 2022), Beitrag des Unterrichtsfaches Physik zum Kompetenzerwerb, S. 4-15.",
+      "dimensionTags": {
+        "framework": "mv-rp2022-gym-sek1-physik",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "GLOBAL",
+        "area": "Orientierung"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "mv-phys-sek1-j7",
+      "title": "Klasse 7",
+      "titleEn": "Grade 7",
+      "description": "Breiter Mecklenburg-Vorpommern-Anker fuer Klasse 7 mit retained Themen zu Dichte, Kraeften und dem kontextorientierten Strip `Physik auf der Baustelle`.",
+      "descriptionEn": "Broad Mecklenburg-Vorpommern anchor for grade 7 with retained themes on density, forces, and the context-oriented strip `Physics on the construction site`.",
+      "weight": 3,
+      "tags": [
+        "Sek1",
+        "J7",
+        "Mecklenburg-Vorpommern"
+      ],
+      "contains": [
+        "mv-phys-sek1-j7-density",
+        "mv-phys-sek1-j7-forces",
+        "mv-phys-sek1-j7-construction-context"
+      ],
+      "requires": [
+        "mv-phys-sek1-orientation"
+      ],
+      "sourceRef": "Rahmenplan Physik Gymnasium/Gesamtschule 7-10 Mecklenburg-Vorpommern (Erprobungsfassung 2022), Klasse 7, S. 17-24.",
+      "dimensionTags": {
+        "framework": "mv-rp2022-gym-sek1-physik",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J7",
+        "area": "Klassenstufe 7"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "mv-phys-sek1-j7-density",
+      "title": "Klasse 7: Materie und Dichte",
+      "titleEn": "Grade 7: matter and density",
+      "description": "Die Lernenden beschreiben Koerper und Stoffe ueber Masse, Volumen und Dichte, nutzen das Teilchenmodell fuer Stoffbetrachtungen und deuten Schwimm-, Schweb- und Sinkverhalten in Medien.",
+      "descriptionEn": "Learners describe bodies and materials through mass, volume, and density, use the particle model for material descriptions, and interpret floating, hovering, and sinking in media.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "J7",
+        "Materie",
+        "Mecklenburg-Vorpommern"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Rahmenplan Physik Gymnasium/Gesamtschule 7-10 Mecklenburg-Vorpommern (Erprobungsfassung 2022), Klasse 7, `Materie - Dichte`, S. 17-18.",
+      "dimensionTags": {
+        "framework": "mv-rp2022-gym-sek1-physik",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J7",
+        "area": "Materie"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "mv-phys-sek1-j7-forces",
+      "title": "Klasse 7: Wechselwirkung und Kraefte",
+      "titleEn": "Grade 7: interaction and forces",
+      "description": "Die Lernenden beschreiben Kraefte als Wechselwirkungen, nutzen Kraftpfeile, Gewichtskraft, Federspannkraft, Reibung, Druck sowie magnetische und elektrische Kraefte in alltagsnahen Situationen.",
+      "descriptionEn": "Learners describe forces as interactions, use force arrows, weight force, spring force, friction, pressure, and magnetic and electric forces in everyday situations.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "J7",
+        "Kraefte",
+        "Mecklenburg-Vorpommern"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Rahmenplan Physik Gymnasium/Gesamtschule 7-10 Mecklenburg-Vorpommern (Erprobungsfassung 2022), Klasse 7, `Wechselwirkung - Kraefte`, S. 18-20.",
+      "dimensionTags": {
+        "framework": "mv-rp2022-gym-sek1-physik",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J7",
+        "area": "Wechselwirkung"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "mv-phys-sek1-j7-construction-context",
+      "title": "Klasse 7: Physik auf der Baustelle",
+      "titleEn": "Grade 7: physics on the construction site",
+      "description": "Die Lernenden verknuepfen Dichte, kraftumformende Einrichtungen, Arbeit, Leistung und Energie in einem anwendungsbezogenen Baustellenkontext.",
+      "descriptionEn": "Learners connect density, force-transforming devices, work, power, and energy in an application-oriented construction-site context.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "J7",
+        "Kontext",
+        "Mecklenburg-Vorpommern"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Rahmenplan Physik Gymnasium/Gesamtschule 7-10 Mecklenburg-Vorpommern (Erprobungsfassung 2022), Klasse 7, `Kontext - Physik auf der Baustelle`, S. 20-24.",
+      "dimensionTags": {
+        "framework": "mv-rp2022-gym-sek1-physik",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J7",
+        "area": "Kontext"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "mv-phys-sek1-j8",
+      "title": "Klasse 8",
+      "titleEn": "Grade 8",
+      "description": "Breiter Mecklenburg-Vorpommern-Anker fuer Klasse 8 mit retained Themen zu Licht, elektrischer Ladung, Stromkreisen sowie Temperatur und Waerme.",
+      "descriptionEn": "Broad Mecklenburg-Vorpommern anchor for grade 8 with retained themes on light, electric charge, electric circuits, and temperature and heat.",
+      "weight": 4,
+      "tags": [
+        "Sek1",
+        "J8",
+        "Mecklenburg-Vorpommern"
+      ],
+      "contains": [
+        "mv-phys-sek1-j8-light",
+        "mv-phys-sek1-j8-charge",
+        "mv-phys-sek1-j8-circuits",
+        "mv-phys-sek1-j8-heat"
+      ],
+      "requires": [
+        "mv-phys-sek1-j7"
+      ],
+      "sourceRef": "Rahmenplan Physik Gymnasium/Gesamtschule 7-10 Mecklenburg-Vorpommern (Erprobungsfassung 2022), Klasse 8, S. 25-32.",
+      "dimensionTags": {
+        "framework": "mv-rp2022-gym-sek1-physik",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J8",
+        "area": "Klassenstufe 8"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "mv-phys-sek1-j8-light",
+      "title": "Klasse 8: Licht und optische Wahrnehmung",
+      "titleEn": "Grade 8: light and optical perception",
+      "description": "Die Lernenden beschreiben Spektrum, Farbwahrnehmung, Strahlenmodell, Brechung, Dispersion und optische Abbildungen und verbinden das mit Anwendungen wie Auge, Linsen und Lichtquellen.",
+      "descriptionEn": "Learners describe spectrum, colour perception, the ray model, refraction, dispersion, and optical imaging and connect this with applications such as the eye, lenses, and light sources.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "J8",
+        "Optik",
+        "Mecklenburg-Vorpommern"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Rahmenplan Physik Gymnasium/Gesamtschule 7-10 Mecklenburg-Vorpommern (Erprobungsfassung 2022), Klasse 8, `Wechselwirkung - Licht`, S. 25-26.",
+      "dimensionTags": {
+        "framework": "mv-rp2022-gym-sek1-physik",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J8",
+        "area": "Wechselwirkung"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "mv-phys-sek1-j8-charge",
+      "title": "Klasse 8: Elektrische Ladung und Atombau",
+      "titleEn": "Grade 8: electric charge and atomic structure",
+      "description": "Die Lernenden deuten elektrische Ladung, Coulombkraft und einfache Atomvorstellungen mit Elektronen, Protonen, Neutronen und Ionen und verbinden das mit Stromwirkungen und Gefahren des elektrischen Stroms.",
+      "descriptionEn": "Learners interpret electric charge, Coulomb force, and simple atomic models with electrons, protons, neutrons, and ions and connect this with effects and hazards of electric current.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "J8",
+        "ElektrischeLadung",
+        "Mecklenburg-Vorpommern"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Rahmenplan Physik Gymnasium/Gesamtschule 7-10 Mecklenburg-Vorpommern (Erprobungsfassung 2022), Klasse 8, `Materie - Elektrische Ladung`, S. 26-28.",
+      "dimensionTags": {
+        "framework": "mv-rp2022-gym-sek1-physik",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J8",
+        "area": "Materie"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "mv-phys-sek1-j8-circuits",
+      "title": "Klasse 8: Stromkreise und elektrische Energie",
+      "titleEn": "Grade 8: circuits and electrical energy",
+      "description": "Die Lernenden beschreiben Stromstaerke, Spannung, Reihen- und Parallelschaltung, Ohm'sches Gesetz, Widerstand sowie elektrische Leistung und elektrische Energie in einfachen Stromkreisen.",
+      "descriptionEn": "Learners describe current, voltage, series and parallel circuits, Ohm's law, resistance, electrical power, and electrical energy in simple electric circuits.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "J8",
+        "Stromkreise",
+        "Mecklenburg-Vorpommern"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Rahmenplan Physik Gymnasium/Gesamtschule 7-10 Mecklenburg-Vorpommern (Erprobungsfassung 2022), Klasse 8, `System - Stromkreise`, S. 28-30.",
+      "dimensionTags": {
+        "framework": "mv-rp2022-gym-sek1-physik",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J8",
+        "area": "System"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "mv-phys-sek1-j8-heat",
+      "title": "Klasse 8: Temperatur und Waerme",
+      "titleEn": "Grade 8: temperature and heat",
+      "description": "Die Lernenden beschreiben Temperatur, Waerme, thermische Ausdehnung sowie den Zusammenhang zwischen Teilchenbewegung, Temperatur und Energie in Stoffen und Aggregatszustandsaenderungen.",
+      "descriptionEn": "Learners describe temperature, heat, thermal expansion, and the relation between particle motion, temperature, and energy in materials and changes of state.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "J8",
+        "Waerme",
+        "Mecklenburg-Vorpommern"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Rahmenplan Physik Gymnasium/Gesamtschule 7-10 Mecklenburg-Vorpommern (Erprobungsfassung 2022), Klasse 8, `Energie - Temperatur und Waerme`, S. 30-32.",
+      "dimensionTags": {
+        "framework": "mv-rp2022-gym-sek1-physik",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J8",
+        "area": "Energie"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "mv-phys-sek1-j9",
+      "title": "Klasse 9",
+      "titleEn": "Grade 9",
+      "description": "Breiter Mecklenburg-Vorpommern-Anker fuer Klasse 9 mit retained Themen zu Magnetismus, Gleichstrommotor und Induktion, geradliniger Bewegung sowie dem Kontext `Mit dem E-Bike unterwegs`.",
+      "descriptionEn": "Broad Mecklenburg-Vorpommern anchor for grade 9 with retained themes on magnetism, direct-current motor and induction, rectilinear motion, and the context `Travelling with the e-bike`.",
+      "weight": 4,
+      "tags": [
+        "Sek1",
+        "J9",
+        "Mecklenburg-Vorpommern"
+      ],
+      "contains": [
+        "mv-phys-sek1-j9-magnetism",
+        "mv-phys-sek1-j9-induction",
+        "mv-phys-sek1-j9-uniform-motion",
+        "mv-phys-sek1-j9-ebike-context"
+      ],
+      "requires": [
+        "mv-phys-sek1-j8"
+      ],
+      "sourceRef": "Rahmenplan Physik Gymnasium/Gesamtschule 7-10 Mecklenburg-Vorpommern (Erprobungsfassung 2022), Klasse 9, S. 33-38.",
+      "dimensionTags": {
+        "framework": "mv-rp2022-gym-sek1-physik",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J9",
+        "area": "Klassenstufe 9"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "mv-phys-sek1-j9-magnetism",
+      "title": "Klasse 9: Magnetismus und Elektromagnetismus",
+      "titleEn": "Grade 9: magnetism and electromagnetism",
+      "description": "Die Lernenden beschreiben Dauermagnete, Feldlinienbilder, das Erdmagnetfeld sowie stromdurchflossene Leiter, Spulen und das elektromotorische Prinzip.",
+      "descriptionEn": "Learners describe permanent magnets, field-line patterns, the Earth's magnetic field, and current-carrying wires, coils, and the electromechanical principle.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "J9",
+        "Magnetismus",
+        "Mecklenburg-Vorpommern"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Rahmenplan Physik Gymnasium/Gesamtschule 7-10 Mecklenburg-Vorpommern (Erprobungsfassung 2022), Klasse 9, `Wechselwirkung - Magnetismus`, S. 33-34.",
+      "dimensionTags": {
+        "framework": "mv-rp2022-gym-sek1-physik",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J9",
+        "area": "Wechselwirkung"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "mv-phys-sek1-j9-induction",
+      "title": "Klasse 9: Gleichstrommotor, Induktion, Generator und Transformator",
+      "titleEn": "Grade 9: direct-current motor, induction, generator, and transformer",
+      "description": "Die Lernenden deuten Aufbau, Funktionsweise und Energieumwandlungen von Gleichstrommotor, elektromagnetischer Induktion, Generator und Transformator.",
+      "descriptionEn": "Learners interpret the structure, function, and energy conversions of the direct-current motor, electromagnetic induction, the generator, and the transformer.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "J9",
+        "Induktion",
+        "Mecklenburg-Vorpommern"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Rahmenplan Physik Gymnasium/Gesamtschule 7-10 Mecklenburg-Vorpommern (Erprobungsfassung 2022), Klasse 9, `Energie - Gleichstrommotor und Induktion`, S. 34-35.",
+      "dimensionTags": {
+        "framework": "mv-rp2022-gym-sek1-physik",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J9",
+        "area": "Energie"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "mv-phys-sek1-j9-uniform-motion",
+      "title": "Klasse 9: Geradlinige, gleichfoermige Bewegung",
+      "titleEn": "Grade 9: rectilinear uniform motion",
+      "description": "Die Lernenden beschreiben Ruhe, Bewegung, Bezugssysteme, gleichfoermige Bewegung und Geschwindigkeitsdarstellungen mit Gleichungen und Diagrammen.",
+      "descriptionEn": "Learners describe rest, motion, frames of reference, uniform motion, and speed representations with equations and diagrams.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "J9",
+        "Bewegung",
+        "Mecklenburg-Vorpommern"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Rahmenplan Physik Gymnasium/Gesamtschule 7-10 Mecklenburg-Vorpommern (Erprobungsfassung 2022), Klasse 9, `Bewegungen - Geradlinige, gleichfoermige Bewegung`, S. 36.",
+      "dimensionTags": {
+        "framework": "mv-rp2022-gym-sek1-physik",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J9",
+        "area": "Bewegungen"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "mv-phys-sek1-j9-ebike-context",
+      "title": "Klasse 9: Mit dem E-Bike unterwegs",
+      "titleEn": "Grade 9: travelling with the e-bike",
+      "description": "Die Lernenden verknuepfen Aufbau und Energiebetrachtungen des E-Bikes mit ungleichfoermiger Bewegung, Reaktionsweg, Kreisbewegung und Kraeften bei der Kurvenfahrt.",
+      "descriptionEn": "Learners connect the structure and energy considerations of the e-bike with non-uniform motion, reaction distance, circular motion, and forces in cornering.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "J9",
+        "Kontext",
+        "Mecklenburg-Vorpommern"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Rahmenplan Physik Gymnasium/Gesamtschule 7-10 Mecklenburg-Vorpommern (Erprobungsfassung 2022), Klasse 9, `Kontext - Mit dem E-Bike unterwegs`, S. 37-38.",
+      "dimensionTags": {
+        "framework": "mv-rp2022-gym-sek1-physik",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J9",
+        "area": "Kontext"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "mv-phys-sek1-j10",
+      "title": "Klasse 10",
+      "titleEn": "Grade 10",
+      "description": "Breiter Mecklenburg-Vorpommern-Anker fuer Klasse 10 mit retained Themen zu beschleunigter Bewegung, Dynamik, Gravitationsfeld und Kreisbewegung sowie Kernphysik.",
+      "descriptionEn": "Broad Mecklenburg-Vorpommern anchor for grade 10 with retained themes on accelerated motion, dynamics, gravitational field and circular motion, and nuclear physics.",
+      "weight": 4,
+      "tags": [
+        "Sek1",
+        "J10",
+        "Mecklenburg-Vorpommern"
+      ],
+      "contains": [
+        "mv-phys-sek1-j10-accelerated-motion",
+        "mv-phys-sek1-j10-dynamics",
+        "mv-phys-sek1-j10-gravitation-circular",
+        "mv-phys-sek1-j10-nuclear-physics"
+      ],
+      "requires": [
+        "mv-phys-sek1-j9"
+      ],
+      "sourceRef": "Rahmenplan Physik Gymnasium/Gesamtschule 7-10 Mecklenburg-Vorpommern (Erprobungsfassung 2022), Klasse 10, S. 39-43.",
+      "dimensionTags": {
+        "framework": "mv-rp2022-gym-sek1-physik",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J10",
+        "area": "Klassenstufe 10"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "mv-phys-sek1-j10-accelerated-motion",
+      "title": "Klasse 10: Gleichmaessig beschleunigte Bewegung und Wuerfe",
+      "titleEn": "Grade 10: uniformly accelerated motion and projectile motion",
+      "description": "Die Lernenden beschreiben gleichmaessig beschleunigte Bewegungen, freien Fall und Wuerfe mit Bewegungsgleichungen, Diagrammen und Bezugssystemen.",
+      "descriptionEn": "Learners describe uniformly accelerated motion, free fall, and projectile motion with equations of motion, diagrams, and frames of reference.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "J10",
+        "Bewegung",
+        "Mecklenburg-Vorpommern"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Rahmenplan Physik Gymnasium/Gesamtschule 7-10 Mecklenburg-Vorpommern (Erprobungsfassung 2022), Klasse 10, `Bewegungen - Gleichmaessig beschleunigte Bewegung`, S. 39-40.",
+      "dimensionTags": {
+        "framework": "mv-rp2022-gym-sek1-physik",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J10",
+        "area": "Bewegungen"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "mv-phys-sek1-j10-dynamics",
+      "title": "Klasse 10: Dynamik und Newton'sche Gesetze",
+      "titleEn": "Grade 10: dynamics and Newton's laws",
+      "description": "Die Lernenden beschreiben Traegheit, Grundgesetz der Mechanik, Wechselwirkungsgesetz sowie Kraeftegleichgewicht, Kraefteaddition und Kraeftezerlegung.",
+      "descriptionEn": "Learners describe inertia, the basic law of mechanics, the interaction law, as well as force equilibrium, vector addition, and decomposition of forces.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "J10",
+        "Dynamik",
+        "Mecklenburg-Vorpommern"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Rahmenplan Physik Gymnasium/Gesamtschule 7-10 Mecklenburg-Vorpommern (Erprobungsfassung 2022), Klasse 10, `Wechselwirkung - Dynamik`, S. 40-41.",
+      "dimensionTags": {
+        "framework": "mv-rp2022-gym-sek1-physik",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J10",
+        "area": "Wechselwirkung"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "mv-phys-sek1-j10-gravitation-circular",
+      "title": "Klasse 10: Gravitationsfeld, Kreisbewegung und Satellitenbahnen",
+      "titleEn": "Grade 10: gravitational field, circular motion, and satellite orbits",
+      "description": "Die Lernenden beschreiben Gravitationskraft, Feldlinienbilder, Kreisbewegung, Radialbeschleunigung und einfache Satellitenbahnen um Himmelskoerper.",
+      "descriptionEn": "Learners describe gravitational force, field-line patterns, circular motion, radial acceleration, and simple satellite orbits around celestial bodies.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "J10",
+        "Gravitation",
+        "Mecklenburg-Vorpommern"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Rahmenplan Physik Gymnasium/Gesamtschule 7-10 Mecklenburg-Vorpommern (Erprobungsfassung 2022), Klasse 10, `Wechselwirkung - Gravitationsfeld und Kreisbewegung`, S. 41-42.",
+      "dimensionTags": {
+        "framework": "mv-rp2022-gym-sek1-physik",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J10",
+        "area": "Wechselwirkung"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "mv-phys-sek1-j10-nuclear-physics",
+      "title": "Klasse 10: Kernphysik, Radioaktivitaet und Energieumwandlung",
+      "titleEn": "Grade 10: nuclear physics, radioactivity, and energy conversion",
+      "description": "Die Lernenden beschreiben Atomkern und Nuklide, Strahlungsarten, Zerfallsgesetz, Kernspaltung und Kernfusion sowie die Umwandlung von Masse in Energie und den gesellschaftlichen Umgang mit Kernenergie.",
+      "descriptionEn": "Learners describe the atomic nucleus and nuclides, types of radiation, radioactive decay, fission and fusion, as well as the conversion of mass into energy and the societal handling of nuclear energy.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "J10",
+        "Kernphysik",
+        "Mecklenburg-Vorpommern"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Rahmenplan Physik Gymnasium/Gesamtschule 7-10 Mecklenburg-Vorpommern (Erprobungsfassung 2022), Klasse 10, `Materie - Kernphysik`, S. 42-43.",
+      "dimensionTags": {
+        "framework": "mv-rp2022-gym-sek1-physik",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J10",
+        "area": "Materie"
+      },
+      "type": "atomic"
+    }
+  ]
+}

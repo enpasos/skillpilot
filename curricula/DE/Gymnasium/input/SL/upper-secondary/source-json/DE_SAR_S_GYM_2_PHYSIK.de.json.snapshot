@@ -1,0 +1,462 @@
+{
+  "landscapeId": "36092b29-547c-4018-8f47-97f04d786ba1",
+  "locale": "de-DE",
+  "country": "DE",
+  "region": "SL",
+  "schoolType": "Gymnasium",
+  "subject": "Physik",
+  "frameworkId": "sl-gos-sek2-physik",
+  "title": "Physik Gymnasiale Oberstufe (Saarland, erster Quellsnapshot)",
+  "titleEn": "Physics upper secondary level (Saarland, first source snapshot)",
+  "description": "Erster archivierter Saarland-Quellsnapshot fuer die Physik der gymnasialen Oberstufe. Der Snapshot umfasst einen allgemeinen Orientierungsanker sowie die breiten Korridore Einfuehrungsphase, Hauptphase G-Kurs und Hauptphase Leistungskurs.",
+  "descriptionEn": "First archived Saarland source snapshot for upper-secondary physics. The snapshot covers a general orientation anchor plus the broad corridors entry phase, main phase basic course, and main phase advanced course.",
+  "compatibilityOnly": true,
+  "legacyHiddenByDefault": true,
+  "filters": [
+    {
+      "id": "EP",
+      "label": "Einfuehrungsphase"
+    },
+    {
+      "id": "GK",
+      "label": "G-Kurs"
+    },
+    {
+      "id": "LK",
+      "label": "Leistungskurs"
+    }
+  ],
+  "goals": [
+    {
+      "id": "sl-phys-sek2-root",
+      "title": "Physik Gymnasiale Oberstufe",
+      "titleEn": "Physics upper secondary level",
+      "description": "Erster archivierter Saarland-Quellsnapshot fuer die Physik der gymnasialen Oberstufe mit einem allgemeinen Orientierungsanker sowie den breiten Korridoren Einfuehrungsphase, Hauptphase G-Kurs und Hauptphase Leistungskurs.",
+      "descriptionEn": "First archived Saarland source snapshot for upper-secondary physics with a general orientation anchor plus the broad corridors entry phase, main phase basic course, and main phase advanced course.",
+      "weight": 11,
+      "tags": [
+        "Sek2",
+        "PilotSubset",
+        "Saarland"
+      ],
+      "contains": [
+        "sl-phys-sek2-orientation",
+        "sl-phys-sek2-ep",
+        "sl-phys-sek2-gk",
+        "sl-phys-sek2-lk"
+      ],
+      "requires": [
+        "sl-phys-sek2-orientation"
+      ],
+      "sourceRef": "Saarland Physik Oberstufe: LP_Ph_EP_GOS_2023.pdf, LP_Ph_HP_GK_2023.pdf, LP_Ph_HP_LK_2023.pdf.",
+      "dimensionTags": {
+        "framework": "sl-gos-sek2-physik",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "GLOBAL",
+        "area": "Gymnasiale Oberstufe"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "sl-phys-sek2-orientation",
+      "title": "Warum Physik in der Oberstufe? - wissenschaftspropädeutische Vertiefung",
+      "titleEn": "Why physics in upper secondary education? - scientific preparatory deepening",
+      "description": "Die saarlaendischen Oberstufenlehrplaene rahmen Physik als wissenschaftspropädeutische Vertiefung mit Feldern, Schwingungen und Wellen sowie Quanten und Atomen in Einfuehrungsphase und Hauptphase.",
+      "descriptionEn": "The Saarland upper-secondary curricula frame physics as a scientific preparatory deepening with fields, oscillations and waves, and quanta and atoms across entry and main phase.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "Orientation",
+        "Saarland"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Einleitungen und Hinweise der saarlaendischen Physik-Lehrplaene gymnasiale Oberstufe, Stand 2023.",
+      "dimensionTags": {
+        "framework": "sl-gos-sek2-physik",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "GLOBAL",
+        "area": "Orientierung"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "sl-phys-sek2-ep",
+      "title": "Einfuehrungsphase",
+      "titleEn": "Entry phase",
+      "description": "Breiter erster Saarland-Quellkorridor fuer die Einfuehrungsphase mit Mechanik sowie Kernenergie und Radioaktivitaet.",
+      "descriptionEn": "Broad first Saarland source corridor for the entry phase with mechanics plus nuclear energy and radioactivity.",
+      "weight": 2,
+      "tags": [
+        "Sek2",
+        "EP",
+        "Saarland"
+      ],
+      "contains": [
+        "sl-phys-ep-force-motion",
+        "sl-phys-ep-nuclear-radioactivity"
+      ],
+      "requires": [
+        "sl-phys-sek2-orientation"
+      ],
+      "sourceRef": "LP_Ph_EP_GOS_2023.pdf, Themenfelder Einfuehrungsphase.",
+      "dimensionTags": {
+        "framework": "sl-gos-sek2-physik",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "EP",
+        "area": "Einfuehrungsphase"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "sl-phys-ep-force-motion",
+      "title": "Einfuehrungsphase: Kraft und Bewegung",
+      "titleEn": "Entry phase: force and motion",
+      "description": "Breiter retained Saarland-Quellstrip fuer Traegheit, beschleunigte Bewegung, Grundgesetz der Mechanik, Wurfbewegungen, Stossprozesse und Kreisbewegung in der Einfuehrungsphase.",
+      "descriptionEn": "Broad retained Saarland source strip for inertia, accelerated motion, the fundamental law of mechanics, projectile motion, collisions, and circular motion in the entry phase.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "EP",
+        "Mechanics",
+        "Saarland"
+      ],
+      "contains": [],
+      "requires": [
+        "sl-phys-sek2-orientation"
+      ],
+      "sourceRef": "LP_Ph_EP_GOS_2023.pdf, Kraft und Bewegung.",
+      "dimensionTags": {
+        "framework": "sl-gos-sek2-physik",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "EP",
+        "area": "Mechanik"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "sl-phys-ep-nuclear-radioactivity",
+      "title": "Einfuehrungsphase: Kernenergie und Radioaktivitaet",
+      "titleEn": "Entry phase: nuclear energy and radioactivity",
+      "description": "Breiter retained Saarland-Quellstrip fuer Kern-Huellen-Modell, Kernbindungsenergie, Kernkraftwerke und Radioaktivitaet in der Einfuehrungsphase.",
+      "descriptionEn": "Broad retained Saarland source strip for the nuclear shell model, nuclear binding energy, nuclear power plants, and radioactivity in the entry phase.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "EP",
+        "NuclearPhysics",
+        "Saarland"
+      ],
+      "contains": [],
+      "requires": [
+        "sl-phys-sek2-orientation"
+      ],
+      "sourceRef": "LP_Ph_EP_GOS_2023.pdf, Kernenergie und Radioaktivitaet.",
+      "dimensionTags": {
+        "framework": "sl-gos-sek2-physik",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "EP",
+        "area": "Kernenergie und Radioaktivitaet"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "sl-phys-sek2-gk",
+      "title": "Hauptphase G-Kurs",
+      "titleEn": "Main phase basic course",
+      "description": "Breiter erster Saarland-Quellkorridor fuer den G-Kurs mit Feldern, elektromagnetischer Induktion, Schwingungen und Wellen sowie Quanten und Atomen.",
+      "descriptionEn": "Broad first Saarland source corridor for the basic course with fields, electromagnetic induction, oscillations and waves, and quanta and atoms.",
+      "weight": 4,
+      "tags": [
+        "Sek2",
+        "GK",
+        "Saarland"
+      ],
+      "contains": [
+        "sl-phys-gk-fields",
+        "sl-phys-gk-induction",
+        "sl-phys-gk-oscillations-waves",
+        "sl-phys-gk-quanta-atoms"
+      ],
+      "requires": [
+        "sl-phys-sek2-orientation"
+      ],
+      "sourceRef": "LP_Ph_HP_GK_2023.pdf, Themenfelder Hauptphase G-Kurs.",
+      "dimensionTags": {
+        "framework": "sl-gos-sek2-physik",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "GK",
+        "area": "Hauptphase G-Kurs"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "sl-phys-gk-fields",
+      "title": "Hauptphase G-Kurs: Felder",
+      "titleEn": "Main phase basic course: fields",
+      "description": "Breiter retained Saarland-Quellstrip fuer Gravitationsfeld, elektrisches Feld, magnetisches Feld und Bewegung von Ladungstraegern in Feldern im G-Kurs.",
+      "descriptionEn": "Broad retained Saarland source strip for gravitational fields, electric fields, magnetic fields, and the motion of charge carriers in fields in the basic course.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "GK",
+        "Fields",
+        "Saarland"
+      ],
+      "contains": [],
+      "requires": [
+        "sl-phys-sek2-orientation"
+      ],
+      "sourceRef": "LP_Ph_HP_GK_2023.pdf, Themenfeld 1 Felder.",
+      "dimensionTags": {
+        "framework": "sl-gos-sek2-physik",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "GK",
+        "area": "Felder"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "sl-phys-gk-induction",
+      "title": "Hauptphase G-Kurs: Elektromagnetische Induktion",
+      "titleEn": "Main phase basic course: electromagnetic induction",
+      "description": "Breiter retained Saarland-Quellstrip fuer Induktionsgesetz und elektromagnetische Induktion im G-Kurs.",
+      "descriptionEn": "Broad retained Saarland source strip for the law of induction and electromagnetic induction in the basic course.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "GK",
+        "Induction",
+        "Saarland"
+      ],
+      "contains": [],
+      "requires": [
+        "sl-phys-sek2-orientation"
+      ],
+      "sourceRef": "LP_Ph_HP_GK_2023.pdf, Themenfeld 2 Elektromagnetische Induktion.",
+      "dimensionTags": {
+        "framework": "sl-gos-sek2-physik",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "GK",
+        "area": "Induktion"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "sl-phys-gk-oscillations-waves",
+      "title": "Hauptphase G-Kurs: Schwingungen und Wellen",
+      "titleEn": "Main phase basic course: oscillations and waves",
+      "description": "Breiter retained Saarland-Quellstrip fuer mechanische und elektromagnetische Schwingungen, mechanische und elektromagnetische Wellen sowie das Wellenmodell des Lichts im G-Kurs.",
+      "descriptionEn": "Broad retained Saarland source strip for mechanical and electromagnetic oscillations, mechanical and electromagnetic waves, and the wave model of light in the basic course.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "GK",
+        "Waves",
+        "Saarland"
+      ],
+      "contains": [],
+      "requires": [
+        "sl-phys-sek2-orientation"
+      ],
+      "sourceRef": "LP_Ph_HP_GK_2023.pdf, Themenfeld 3 Schwingungen und Wellen.",
+      "dimensionTags": {
+        "framework": "sl-gos-sek2-physik",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "GK",
+        "area": "Schwingungen und Wellen"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "sl-phys-gk-quanta-atoms",
+      "title": "Hauptphase G-Kurs: Quanten und Atome",
+      "titleEn": "Main phase basic course: quanta and atoms",
+      "description": "Breiter retained Saarland-Quellstrip fuer Photoeffekt, Materiewellen, Wahrscheinlichkeitsverhalten von Quantenobjekten, quantenhafte Emission und Absorption sowie das quantenmechanische Atommodell im G-Kurs.",
+      "descriptionEn": "Broad retained Saarland source strip for the photoelectric effect, matter waves, probabilistic behaviour of quantum objects, quantum emission and absorption, and the quantum-mechanical atomic model in the basic course.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "GK",
+        "QuantumPhysics",
+        "Saarland"
+      ],
+      "contains": [],
+      "requires": [
+        "sl-phys-sek2-orientation"
+      ],
+      "sourceRef": "LP_Ph_HP_GK_2023.pdf, Themenfeld 4 Quanten und Atome.",
+      "dimensionTags": {
+        "framework": "sl-gos-sek2-physik",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "GK",
+        "area": "Quanten und Atome"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "sl-phys-sek2-lk",
+      "title": "Hauptphase Leistungskurs",
+      "titleEn": "Main phase advanced course",
+      "description": "Breiter erster Saarland-Quellkorridor fuer den Leistungskurs mit Feldern, elektromagnetischer Induktion, Schwingungen und Wellen sowie Quanten und Atomen.",
+      "descriptionEn": "Broad first Saarland source corridor for the advanced course with fields, electromagnetic induction, oscillations and waves, and quanta and atoms.",
+      "weight": 4,
+      "tags": [
+        "Sek2",
+        "LK",
+        "Saarland"
+      ],
+      "contains": [
+        "sl-phys-lk-fields",
+        "sl-phys-lk-induction",
+        "sl-phys-lk-oscillations-waves",
+        "sl-phys-lk-quanta-atoms"
+      ],
+      "requires": [
+        "sl-phys-sek2-orientation"
+      ],
+      "sourceRef": "LP_Ph_HP_LK_2023.pdf, Themenfelder Hauptphase Leistungskurs.",
+      "dimensionTags": {
+        "framework": "sl-gos-sek2-physik",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "LK",
+        "area": "Hauptphase Leistungskurs"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "sl-phys-lk-fields",
+      "title": "Hauptphase Leistungskurs: Felder",
+      "titleEn": "Main phase advanced course: fields",
+      "description": "Breiter retained Saarland-Quellstrip fuer Gravitationsfeld, elektrisches Feld, magnetisches Feld und Bewegung von Ladungstraegern in Feldern im Leistungskurs.",
+      "descriptionEn": "Broad retained Saarland source strip for gravitational fields, electric fields, magnetic fields, and the motion of charge carriers in fields in the advanced course.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "LK",
+        "Fields",
+        "Saarland"
+      ],
+      "contains": [],
+      "requires": [
+        "sl-phys-sek2-orientation"
+      ],
+      "sourceRef": "LP_Ph_HP_LK_2023.pdf, Themenfeld 1 Felder.",
+      "dimensionTags": {
+        "framework": "sl-gos-sek2-physik",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "LK",
+        "area": "Felder"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "sl-phys-lk-induction",
+      "title": "Hauptphase Leistungskurs: Elektromagnetische Induktion",
+      "titleEn": "Main phase advanced course: electromagnetic induction",
+      "description": "Breiter retained Saarland-Quellstrip fuer Induktionsgesetz, Selbstinduktion und Energie des magnetischen Feldes im Leistungskurs.",
+      "descriptionEn": "Broad retained Saarland source strip for the law of induction, self-induction, and the energy of the magnetic field in the advanced course.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "LK",
+        "Induction",
+        "Saarland"
+      ],
+      "contains": [],
+      "requires": [
+        "sl-phys-sek2-orientation"
+      ],
+      "sourceRef": "LP_Ph_HP_LK_2023.pdf, Themenfeld 2 Elektromagnetische Induktion.",
+      "dimensionTags": {
+        "framework": "sl-gos-sek2-physik",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "LK",
+        "area": "Induktion"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "sl-phys-lk-oscillations-waves",
+      "title": "Hauptphase Leistungskurs: Schwingungen und Wellen",
+      "titleEn": "Main phase advanced course: oscillations and waves",
+      "description": "Breiter retained Saarland-Quellstrip fuer mechanische und elektromagnetische Schwingungen, mechanische und elektromagnetische Wellen sowie das Wellenmodell des Lichts im Leistungskurs.",
+      "descriptionEn": "Broad retained Saarland source strip for mechanical and electromagnetic oscillations, mechanical and electromagnetic waves, and the wave model of light in the advanced course.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "LK",
+        "Waves",
+        "Saarland"
+      ],
+      "contains": [],
+      "requires": [
+        "sl-phys-sek2-orientation"
+      ],
+      "sourceRef": "LP_Ph_HP_LK_2023.pdf, Themenfeld 3 Schwingungen und Wellen.",
+      "dimensionTags": {
+        "framework": "sl-gos-sek2-physik",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "LK",
+        "area": "Schwingungen und Wellen"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "sl-phys-lk-quanta-atoms",
+      "title": "Hauptphase Leistungskurs: Quanten und Atome",
+      "titleEn": "Main phase advanced course: quanta and atoms",
+      "description": "Breiter retained Saarland-Quellstrip fuer Photoeffekt, Roentgenstrahlung, Materiewellen, Wahrscheinlichkeitsverhalten von Quantenobjekten, Heisenberg, quantenhafte Emission und Absorption sowie quantenmechanische Atommodelle im Leistungskurs.",
+      "descriptionEn": "Broad retained Saarland source strip for the photoelectric effect, X-rays, matter waves, probabilistic behaviour of quantum objects, Heisenberg, quantum emission and absorption, and quantum-mechanical atomic models in the advanced course.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "LK",
+        "QuantumPhysics",
+        "Saarland"
+      ],
+      "contains": [],
+      "requires": [
+        "sl-phys-sek2-orientation"
+      ],
+      "sourceRef": "LP_Ph_HP_LK_2023.pdf, Themenfeld 4 Quanten und Atome.",
+      "dimensionTags": {
+        "framework": "sl-gos-sek2-physik",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "LK",
+        "area": "Quanten und Atome"
+      },
+      "type": "atomic"
+    }
+  ]
+}

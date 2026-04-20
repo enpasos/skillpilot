@@ -105,4 +105,9 @@ Operational note:
 - `DE-SL` now also has a real archived lower-secondary plus upper-secondary Physics bundle.
 - the lower-secondary archive is branch-sensitive from Klassenstufe `8` onward and includes the fruehe Naturwissenschaften-Feederquelle fuer `5/6`.
 - the upper-secondary archive includes Einfuehrungsphase, Hauptphase `G-Kurs`, Hauptphase `Leistungskurs`, and the retained APA/IQB support documents.
-- the next meaningful step is to derive the first lower-secondary and upper-secondary Physics source snapshots plus provenance scaffold from the archived PDF bundle.
+- the first retained lower-secondary and upper-secondary Physics source snapshots now live at:
+  - `curricula/DE/Gymnasium/input/SL/lower-secondary/source-json/DE_SAR_S_GYM_1_PHYSIK.de.json.snapshot`
+  - `curricula/DE/Gymnasium/input/SL/upper-secondary/source-json/DE_SAR_S_GYM_2_PHYSIK.de.json.snapshot`
+- the active snapshot/provenance activation is documented in:
+  - `curricula/DE/Gymnasium/provenance/sl-physics-onboarding.md`
+- the next meaningful step is no longer local source intake, but the first structural-anchor pass across the now-complete newly archived Physics state set.

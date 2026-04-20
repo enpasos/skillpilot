@@ -8429,3 +8429,345 @@ Interpretation:
 
 - Physics is now out of the archive-intake phase and into the source-snapshot activation phase
 - the next clean implementation step is to build the first retained lower-secondary and upper-secondary snapshots plus provenance scaffold for the newly archived states, not to widen another reviewed state corridor yet
+
+### 2026-04-20: Bremen Physics moves from `P1` archive-only to `P2` source-backed snapshots
+
+What changed:
+
+- the first retained Bremen lower-secondary Physics snapshot now lives at
+  - `curricula/DE/Gymnasium/input/HB/lower-secondary/source-json/DE_BRE_S_GYM_1_PHYSIK.de.json.snapshot`
+- the first retained Bremen upper-secondary Physics snapshot now lives at
+  - `curricula/DE/Gymnasium/input/HB/upper-secondary/source-json/DE_BRE_S_GYM_2_PHYSIK.de.json.snapshot`
+- the shared provenance registries now activate both Bremen Physics source landscapes:
+  - `curricula/DE/Gymnasium/provenance/source-landscape-registry.json`
+  - `curricula/DE/Gymnasium/provenance/source-goal-membership-registry.json`
+  - `curricula/DE/Gymnasium/provenance/source-goal-closure-registry.json`
+- the Bremen input README and a new onboarding note now document the active retained source lanes:
+  - `curricula/DE/Gymnasium/input/HB/README.md`
+  - `curricula/DE/Gymnasium/provenance/hb-physics-onboarding.md`
+- the Physics rollout tracker now lifts `DE-HB` from `P1` to `P2`
+
+Current Bremen Physics state:
+
+- lower-secondary retained source lane active with one orientation anchor, one `J7/8` strip on `Schall`, `Licht`, `Kraefte/Bewegung`, and `Elektrostatik`, plus one `J9` strip on `Stromkreis`, `Elektromagnetismus`, and `Radioaktivitaet`
+- upper-secondary retained source lane active with one orientation anchor, one Einfuehrungsphase strip on `Mechanik` and `Energie`, plus three broad qualification anchors on `Felder`, `Schwingungen/Wellen`, and `Quantenphysik/Materie`
+- no Bremen Physics mapping lane yet
+- no Bremen-specific canonical Physics atom yet
+- no committed Bremen applicability cut yet
+
+Why this cut:
+
+- it is the first real Physics `P2` activation after the nationwide archive tranche completed
+- it keeps the new Bremen lanes intentionally narrow and source-led instead of inventing reviewed Physics mapping before the rest of the newly archived states have matching source-backed lanes
+- it restores the same rollout discipline used earlier in Mathematics: source-backed state lanes first, horizontal reviewed mapping only afterwards
+
+Validation used:
+
+- JSON parse of the two new Bremen Physics snapshots
+- tracker JSON parse
+- `python3 scripts/render_canonical_physics_bundesland_status.py`
+- `git diff --check`
+
+Interpretation:
+
+- the active Physics blocker is no longer Bremen source availability; Bremen is now a real retained source lane for both Sek I and Sek II
+- the active `F4.ALL_NEWLY_ARCHIVED_STATE_SNAPSHOT_ACTIVATION` corridor remains open, but now with Bremen already converted from archive-only intake to source-backed snapshot/provenance state
+
+### 2026-04-20: Hamburg Physics moves from `P1` archive-only to `P2` source-backed snapshots
+
+What changed:
+
+- the first retained Hamburg lower-secondary Physics snapshot now lives at
+  - `curricula/DE/Gymnasium/input/HH/lower-secondary/source-json/DE_HAM_S_GYM_1_PHYSIK.de.json.snapshot`
+- the first retained Hamburg upper-secondary Physics snapshot now lives at
+  - `curricula/DE/Gymnasium/input/HH/upper-secondary/source-json/DE_HAM_S_GYM_2_PHYSIK.de.json.snapshot`
+- the shared provenance registries now activate both Hamburg Physics source landscapes:
+  - `curricula/DE/Gymnasium/provenance/source-landscape-registry.json`
+  - `curricula/DE/Gymnasium/provenance/source-goal-membership-registry.json`
+  - `curricula/DE/Gymnasium/provenance/source-goal-closure-registry.json`
+- the Hamburg input README and a new onboarding note now document the active retained source lanes:
+  - `curricula/DE/Gymnasium/input/HH/README.md`
+  - `curricula/DE/Gymnasium/provenance/hh-physics-onboarding.md`
+- the Physics rollout tracker now lifts `DE-HH` from `P1` to `P2`
+
+Current Hamburg Physics state:
+
+- lower-secondary retained source lane active with one orientation anchor, one `J8` strip on `Elektrizitaet`, `Bewegung und Kraft`, and `Licht und Schall`, plus one transition strip on `Elektrizitaet und Magnetismus`, `Bewegung und Kraft`, `Energie`, and `Licht und Materie`
+- upper-secondary retained source lane active with one orientation anchor plus four broad Studienstufen anchors on `Elektrische und magnetische Felder`, `Mechanische und elektromagnetische Schwingungen und Wellen`, `Quantenphysik und Materie`, and `Gravitation und Astrophysik`
+- no Hamburg Physics mapping lane yet
+- no Hamburg-specific canonical Physics atom yet
+- no committed Hamburg applicability cut yet
+
+Why this cut:
+
+- it keeps the second newly archived Physics state aligned with the same `P2` activation discipline used for Bremen
+- it stays strictly source-backed and intentionally narrow instead of inventing reviewed Physics mapping before the rest of the newly archived states also have active retained lanes
+- it preserves the mathematics-style rollout order: first all states get source-backed Sek-I and Sek-II lanes, only afterwards do horizontal reviewed topic cuts reopen
+
+Validation used:
+
+- JSON parse of the two new Hamburg Physics snapshots
+- tracker JSON parse
+- `python3 scripts/render_canonical_physics_bundesland_status.py`
+- `git diff --check`
+
+Interpretation:
+
+- the active Physics blocker is no longer Hamburg source availability; Hamburg is now a real retained source lane for both Sek I and Sek II
+- the active `F4.ALL_NEWLY_ARCHIVED_STATE_SNAPSHOT_ACTIVATION` corridor remains open, now with both Bremen and Hamburg converted from archive-only intake to source-backed snapshot/provenance state
+
+### 2026-04-20: Mecklenburg-Vorpommern Physics moves from `P1` archive-only to `P2` source-backed snapshots
+
+What changed:
+
+- the first retained Mecklenburg-Vorpommern lower-secondary Physics snapshot now lives at
+  - `curricula/DE/Gymnasium/input/MV/lower-secondary/source-json/DE_MVP_S_GYM_1_PHYSIK.de.json.snapshot`
+- the first retained Mecklenburg-Vorpommern upper-secondary Physics snapshot now lives at
+  - `curricula/DE/Gymnasium/input/MV/upper-secondary/source-json/DE_MVP_S_GYM_2_PHYSIK.de.json.snapshot`
+- the shared provenance registries now activate both Mecklenburg-Vorpommern Physics source landscapes:
+  - `curricula/DE/Gymnasium/provenance/source-landscape-registry.json`
+  - `curricula/DE/Gymnasium/provenance/source-goal-membership-registry.json`
+  - `curricula/DE/Gymnasium/provenance/source-goal-closure-registry.json`
+- the Mecklenburg-Vorpommern input README and a new onboarding note now document the active retained source lanes:
+  - `curricula/DE/Gymnasium/input/MV/README.md`
+  - `curricula/DE/Gymnasium/provenance/mv-physics-onboarding.md`
+- the Physics rollout tracker now lifts `DE-MV` from `P1` to `P2`
+
+Current Mecklenburg-Vorpommern Physics state:
+
+- lower-secondary retained source lane active with one orientation anchor, one class-7 strip on `Dichte`, `Kraefte`, and `Physik auf der Baustelle`, one class-8 strip on `Licht`, `elektrische Ladung`, `Stromkreise`, and `Temperatur und Waerme`, one class-9 strip on `Magnetismus`, `Gleichstrommotor und Induktion`, `geradlinige Bewegung`, and `Mit dem E-Bike unterwegs`, plus one class-10 strip on `gleichmaessig beschleunigte Bewegung`, `Dynamik`, `Gravitationsfeld und Kreisbewegung`, and `Kernphysik`
+- upper-secondary retained source lane active with one orientation anchor, one integratives Oberstufenband, plus three broad Themenanker on `Elektrische und magnetische Felder`, `Schwingungen und Wellen`, and `Quantenphysik und Materie`
+- no Mecklenburg-Vorpommern Physics mapping lane yet
+- no Mecklenburg-Vorpommern-specific canonical Physics atom yet
+- no committed Mecklenburg-Vorpommern applicability cut yet
+
+Why this cut:
+
+- it brings the third newly archived Physics state onto the same `P2` source-backed footing as Bremen and Hamburg
+- it keeps the MV lanes source-led and class-/theme-anchored instead of opening premature reviewed mapping while the nationwide snapshot tranche is still incomplete
+- it stays aligned with the mathematics rollout order: source-backed Sek-I and Sek-II lanes first, horizontal reviewed corridor work afterwards
+
+Validation used:
+
+- JSON parse of the two new Mecklenburg-Vorpommern Physics snapshots
+- tracker JSON parse
+- `python3 scripts/render_canonical_physics_bundesland_status.py`
+- `git diff --check`
+
+Interpretation:
+
+- the active Physics blocker is no longer Mecklenburg-Vorpommern source availability; Mecklenburg-Vorpommern is now a real retained source lane for both Sek I and Sek II
+- the active `F4.ALL_NEWLY_ARCHIVED_STATE_SNAPSHOT_ACTIVATION` corridor remains open, now with Bremen, Hamburg, and Mecklenburg-Vorpommern converted from archive-only intake to source-backed snapshot/provenance state
+
+### 2026-04-20: Sachsen Physics moves from `P1` archive-only to `P2` source-backed snapshots
+
+What changed:
+
+- the first retained Sachsen lower-secondary Physics snapshot now lives at
+  - `curricula/DE/Gymnasium/input/SN/lower-secondary/source-json/DE_SAC_S_GYM_1_PHYSIK.de.json.snapshot`
+- the first retained Sachsen upper-secondary Physics snapshot now lives at
+  - `curricula/DE/Gymnasium/input/SN/upper-secondary/source-json/DE_SAC_S_GYM_2_PHYSIK.de.json.snapshot`
+- the shared provenance registries now activate both Sachsen Physics source landscapes:
+  - `curricula/DE/Gymnasium/provenance/source-landscape-registry.json`
+  - `curricula/DE/Gymnasium/provenance/source-goal-membership-registry.json`
+  - `curricula/DE/Gymnasium/provenance/source-goal-closure-registry.json`
+- the Sachsen input README and a new onboarding note now document the active retained source lanes:
+  - `curricula/DE/Gymnasium/input/SN/README.md`
+  - `curricula/DE/Gymnasium/provenance/sn-physics-onboarding.md`
+- the Physics rollout tracker now lifts `DE-SN` from `P1` to `P2`
+
+Current Sachsen Physics state:
+
+- lower-secondary retained source lane active with one orientation anchor plus retained class strips for `Klassenstufe 6` (`Licht`, `Eigenschaften und Bewegungen von Koerpern`, `Temperatur und Zustand von Koerpern`, `Elektrische Stromkreise`), `Klassenstufe 7` (`Kraefte`, `Stromstaerke und Spannung in Stromkreisen`, `Energiewandler`), `Klassenstufe 8` (`Mechanik der Fluessigkeiten und Gase`, `Thermische Energie`, `Eigenschaften elektrischer Bauelemente`, `Selbststaendiges Experimentieren`), `Klassenstufe 9` (`Grundlagen der Elektronik`, `Energieversorgung`, `Bewegungsgesetze`, `Physikalisches Praktikum`), and `Klassenstufe 10` (`Mechanische Schwingungen und Wellen`, `Kosmos, Erde und Mensch`, `Licht als Strahl und Welle`, `Hertz'sche Wellen`, `Physikalisches Praktikum`)
+- upper-secondary retained source lane active with one orientation anchor plus broad `GK11`, `GK12`, `LK11`, and `LK12` strips on the shared Gymnasium Lehrplan
+- no Sachsen Physics mapping lane yet
+- no Sachsen-specific canonical Physics atom yet
+- no committed Sachsen applicability cut yet
+
+Why this cut:
+
+- it brings Sachsen onto the same `P2` source-backed footing as Bremen, Hamburg, and Mecklenburg-Vorpommern
+- it keeps the Sachsen lanes source-led and class-/course-anchored instead of opening premature reviewed mapping while the nationwide snapshot tranche is still incomplete
+- it stays aligned with the mathematics rollout order: source-backed Sek-I and Sek-II lanes first, horizontal reviewed corridor work afterwards
+
+Validation used:
+
+- JSON parse of the two new Sachsen Physics snapshots
+- JSON parse of the updated source-landscape, membership, closure, and tracker registries
+- `python3 scripts/render_canonical_physics_bundesland_status.py`
+- `git diff --check`
+
+Interpretation:
+
+- the active Physics blocker is no longer Sachsen source availability; Sachsen is now a real retained source lane for both Sek I and Sek II
+- the active `F4.ALL_NEWLY_ARCHIVED_STATE_SNAPSHOT_ACTIVATION` corridor remains open, now with Bremen, Hamburg, Mecklenburg-Vorpommern, and Sachsen converted from archive-only intake to source-backed snapshot/provenance state
+
+### 2026-04-20: Sachsen-Anhalt Physics moves from `P1` archive-only to `P2` source-backed snapshots
+
+What changed:
+
+- the first retained Sachsen-Anhalt lower-secondary Physics snapshot now lives at
+  - `curricula/DE/Gymnasium/input/ST/lower-secondary/source-json/DE_SAN_S_GYM_1_PHYSIK.de.json.snapshot`
+- the first retained Sachsen-Anhalt upper-secondary Physics snapshot now lives at
+  - `curricula/DE/Gymnasium/input/ST/upper-secondary/source-json/DE_SAN_S_GYM_2_PHYSIK.de.json.snapshot`
+- the shared provenance registries now activate both Sachsen-Anhalt Physics source landscapes:
+  - `curricula/DE/Gymnasium/provenance/source-landscape-registry.json`
+  - `curricula/DE/Gymnasium/provenance/source-goal-membership-registry.json`
+  - `curricula/DE/Gymnasium/provenance/source-goal-closure-registry.json`
+- the Sachsen-Anhalt input README and a new onboarding note now document the active retained source lanes:
+  - `curricula/DE/Gymnasium/input/ST/README.md`
+  - `curricula/DE/Gymnasium/provenance/st-physics-onboarding.md`
+- the Physics rollout tracker now lifts `DE-ST` from `P1` to `P2`
+
+Current Sachsen-Anhalt Physics state:
+
+- lower-secondary retained source lane active with one orientation anchor plus retained `Schuljahrgang 6`, `Schuljahrgaenge 7/8`, and `Schuljahrgang 9` strips
+- upper-secondary retained source lane active with one orientation anchor plus retained `Schuljahrgang 10 (Einfuehrungsphase)`, `grundlegendes Anforderungsniveau`, `erhoehtes Anforderungsniveau`, and `zweistuendiges Wahlpflichtfach` strips
+- no Sachsen-Anhalt Physics mapping lane yet
+- no Sachsen-Anhalt-specific canonical Physics atom yet
+- no committed Sachsen-Anhalt applicability cut yet
+
+Why this cut:
+
+- it brings Sachsen-Anhalt onto the same `P2` source-backed footing as Bremen, Hamburg, Mecklenburg-Vorpommern, and Sachsen
+- it keeps the Sachsen-Anhalt lanes source-led and stage-/track-anchored instead of opening premature reviewed mapping while the nationwide snapshot tranche is still incomplete
+- it stays aligned with the mathematics rollout order: source-backed Sek-I and Sek-II lanes first, horizontal reviewed corridor work afterwards
+
+Validation used:
+
+- JSON parse of the two new Sachsen-Anhalt Physics snapshots
+- JSON parse of the updated source-landscape, membership, closure, and tracker registries
+- `python3 scripts/render_canonical_physics_bundesland_status.py`
+- `git diff --check`
+
+Interpretation:
+
+- the active Physics blocker is no longer Sachsen-Anhalt source availability; Sachsen-Anhalt is now a real retained source lane for both Sek I and Sek II
+- the active `F4.ALL_NEWLY_ARCHIVED_STATE_SNAPSHOT_ACTIVATION` corridor remains open, now with Bremen, Hamburg, Mecklenburg-Vorpommern, Sachsen, and Sachsen-Anhalt converted from archive-only intake to source-backed snapshot/provenance state
+
+### 2026-04-20: Thueringen Physics moves from `P1` archive-only to `P2` source-backed snapshots
+
+What changed:
+
+- the first retained Thueringen lower-secondary Physics snapshot now lives at
+  - `curricula/DE/Gymnasium/input/TH/lower-secondary/source-json/DE_THU_S_GYM_1_PHYSIK.de.json.snapshot`
+- the first retained Thueringen upper-secondary Physics snapshot now lives at
+  - `curricula/DE/Gymnasium/input/TH/upper-secondary/source-json/DE_THU_S_GYM_2_PHYSIK.de.json.snapshot`
+- the shared provenance registries now activate both Thueringen Physics source landscapes:
+  - `curricula/DE/Gymnasium/provenance/source-landscape-registry.json`
+  - `curricula/DE/Gymnasium/provenance/source-goal-membership-registry.json`
+  - `curricula/DE/Gymnasium/provenance/source-goal-closure-registry.json`
+- the Thueringen input README and a new onboarding note now document the active retained source lanes:
+  - `curricula/DE/Gymnasium/input/TH/README.md`
+  - `curricula/DE/Gymnasium/provenance/th-physics-onboarding.md`
+- the Physics rollout tracker now lifts `DE-TH` from `P1` to `P2`
+
+Current Thueringen Physics state:
+
+- lower-secondary retained source lane active with one orientation anchor plus retained `Klassenstufen 7/8` and `Klassenstufen 9/10` strips
+- upper-secondary retained source lane active with one orientation anchor plus a retained `Klassenstufe 11` strip and a retained `Qualifikationsphase` strip
+- no Thueringen Physics mapping lane yet
+- no Thueringen-specific canonical Physics atom yet
+- no committed Thueringen applicability cut yet
+
+Why this cut:
+
+- it brings Thueringen onto the same `P2` source-backed footing as Bremen, Hamburg, Mecklenburg-Vorpommern, Sachsen, and Sachsen-Anhalt
+- it keeps the Thueringen lanes source-led and stage-anchored instead of opening premature reviewed mapping while the nationwide snapshot tranche is still incomplete
+- it uses the 2012 PDF for the broad retained lower-secondary and `Klassenstufe 11` strips while already taking the 2024 qualification-phase content-area update seriously in the upper-secondary lane
+
+Validation used:
+
+- JSON parse of the two new Thueringen Physics snapshots
+- JSON parse of the updated source-landscape, membership, closure, and tracker registries
+- `python3 scripts/render_canonical_physics_bundesland_status.py`
+- `git diff --check`
+
+Interpretation:
+
+- the active Physics blocker is no longer Thueringen source availability; Thueringen is now a real retained source lane for both Sek I and Sek II
+- the active `F4.ALL_NEWLY_ARCHIVED_STATE_SNAPSHOT_ACTIVATION` corridor remains open, now with Bremen, Hamburg, Mecklenburg-Vorpommern, Sachsen, Sachsen-Anhalt, and Thueringen converted from archive-only intake to source-backed snapshot/provenance state
+
+### 2026-04-20: Saarland Physics moves from `P1` archive-only to `P2` source-backed snapshots
+
+What changed:
+
+- the first retained Saarland lower-secondary Physics snapshot now lives at
+  - `curricula/DE/Gymnasium/input/SL/lower-secondary/source-json/DE_SAR_S_GYM_1_PHYSIK.de.json.snapshot`
+- the first retained Saarland upper-secondary Physics snapshot now lives at
+  - `curricula/DE/Gymnasium/input/SL/upper-secondary/source-json/DE_SAR_S_GYM_2_PHYSIK.de.json.snapshot`
+- the shared provenance registries now activate both Saarland Physics source landscapes:
+  - `curricula/DE/Gymnasium/provenance/source-landscape-registry.json`
+  - `curricula/DE/Gymnasium/provenance/source-goal-membership-registry.json`
+  - `curricula/DE/Gymnasium/provenance/source-goal-closure-registry.json`
+- the Saarland input README and a new onboarding note now document the active retained source lanes:
+  - `curricula/DE/Gymnasium/input/SL/README.md`
+  - `curricula/DE/Gymnasium/provenance/sl-physics-onboarding.md`
+- the Physics rollout tracker now lifts `DE-SL` from `P1` to `P2`
+
+Current Saarland Physics state:
+
+- lower-secondary retained source lane active with one orientation anchor plus a retained `Klassenstufen 5/6` Naturwissenschaften feeder strip, a retained `Klassenstufe 7` strip, and branch-sensitive retained `Klassenstufen 8`, `9`, and `10` strips
+- upper-secondary retained source lane active with one orientation anchor plus retained `Einfuehrungsphase`, `Hauptphase G-Kurs`, and `Hauptphase Leistungskurs` strips
+- no Saarland Physics mapping lane yet
+- no Saarland-specific canonical Physics atom yet
+- no committed Saarland applicability cut yet
+
+Why this cut:
+
+- it completes the still-missing Saarland conversion from archive-only intake to active retained source lanes for both Sek I and Sek II
+- it keeps Saarland intentionally broad and source-led instead of opening premature reviewed mapping while the nationwide snapshot tranche is still being closed
+- it preserves branch-sensitive lower-secondary packaging and the EP/GK/LK upper-secondary split as real retained source structure for later horizontal Physics work
+
+Validation used:
+
+- JSON parse of the two new Saarland Physics snapshots
+- JSON parse of the updated source-landscape, membership, closure, and tracker registries
+- `python3 scripts/render_canonical_physics_bundesland_status.py`
+- `git diff --check`
+
+Interpretation:
+
+- the active Physics blocker is no longer Saarland source availability; Saarland is now a real retained source lane for both Sek I and Sek II
+- the active `F4.ALL_NEWLY_ARCHIVED_STATE_SNAPSHOT_ACTIVATION` corridor is now complete, with Bremen, Hamburg, Mecklenburg-Vorpommern, Saarland, Sachsen, Sachsen-Anhalt, and Thueringen all converted from archive-only intake to source-backed snapshot/provenance state
+
+### 2026-04-20: Physics snapshot activation tranche is complete; the active move is now structural anchors
+
+What changed:
+
+- the previously active nationwide corridor `F4.ALL_NEWLY_ARCHIVED_STATE_SNAPSHOT_ACTIVATION` is now marked `completed`
+- a new active nationwide corridor `F4.ALL_NEWLY_ARCHIVED_STATE_STRUCTURAL_ANCHOR_ACTIVATION` now carries the rollout
+- all seven newly archived Physics state families now sit at `P2` with active retained lower-secondary and upper-secondary source lanes:
+  - `DE-HB`
+  - `DE-HH`
+  - `DE-MV`
+  - `DE-SL`
+  - `DE-SN`
+  - `DE-ST`
+  - `DE-TH`
+- the Physics workboard now treats the first conservative `P3` structural-anchor pass as the active blocker-clearing move instead of more snapshot-only widening
+
+Current program state:
+
+- source archive coverage is complete for all tracked Bundeslaender
+- source-backed Physics snapshots are now active for all tracked Bundeslaender
+- the newly archived-state tranche is no longer blocked on source intake or snapshot activation
+- the next rollout task is the first conservative anchor pass across the seven newly activated states
+
+Why this cut:
+
+- it realigns Physics with the same rollout order already used in Mathematics: sources first, snapshots second, broad structural anchors third, reviewed topic corridors afterwards
+- it prevents another round of opportunistic single-state widening before the new state lanes have even minimal canonical anchor structure
+- it gives the upcoming horizontal Physics pass a complete retained source basis across all Bundeslaender
+
+Validation used:
+
+- JSON parse of the updated Physics tracker and shared provenance registries
+- `python3 scripts/render_canonical_physics_bundesland_status.py`
+- `git diff --check`
+
+Interpretation:
+
+- the nationwide Physics `P2` tranche is now closed
+- the active blocker has shifted from snapshot activation to first structural-anchor activation
+- the next clean rollout move is the first conservative `P3` pass, not another snapshot-only or state-local reviewed corridor widening

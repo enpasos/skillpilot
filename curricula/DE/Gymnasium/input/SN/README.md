@@ -24,5 +24,9 @@
   - note: the public Sachsen Lehrplandatenbank currently exposes one shared Gymnasium physics PDF covering classes `6-10` and year levels `11/12`
 
 ### Physik-Naechste Schritte
-- die archivierte saechsische Gymnasium-Physikquelle jetzt gemeinsam als retained Source-Onboarding-Baustein im Physik-Tracker auf `P1` halten
-- als naechsten saechsischen Physik-Schritt erst source-backed Sek-I- und Sek-II-Snapshots plus Provenance-Scaffold anlegen, bevor irgendein topic-spezifisches Mapping authored wird
+- die archivierte saechsische Gymnasium-Physikquelle jetzt als aktive retained Source-Lanes mit source-backed Snapshots in
+  - `lower-secondary/source-json/DE_SAC_S_GYM_1_PHYSIK.de.json.snapshot`
+  - `upper-secondary/source-json/DE_SAC_S_GYM_2_PHYSIK.de.json.snapshot`
+  stabil halten
+- die Aktivierung ist dokumentiert in `curricula/DE/Gymnasium/provenance/sn-physics-onboarding.md`
+- vor jedem topic-spezifischen SN-Physik-Mapping erst die restlichen neu archivierten Bundeslaender ebenfalls auf `P2` bringen

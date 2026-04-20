@@ -1,0 +1,328 @@
+{
+  "landscapeId": "6cf49ad5-537a-45ee-848c-b114fd3c57df",
+  "locale": "de-DE",
+  "country": "DE",
+  "region": "HB",
+  "schoolType": "Gymnasium",
+  "subject": "Physik",
+  "frameworkId": "hb-gymnasium-sek1-physik-2006-restricted-2022",
+  "title": "Physik Sekundarstufe I (Bremen, Pilot-Quellsnapshot)",
+  "titleEn": "Physics Secondary Level I (Bremen, Pilot Source Snapshot)",
+  "description": "Erster archivierter Bremen-Quellsnapshot fuer die Physik der Sekundarstufe I. Der Snapshot bildet die aktuell gueltige Bremer Gymnasium-Spur aus dem Bildungsplan 2006 in der durch die Anlage 239/2022 eingeschraenkten Fassung ab und aktiviert einen schmalen retained Start mit den Physik-Rahmenthemen der Jahrgaenge 7/8 und den auf Jahrgang 9 vorgezogenen Themen des frueheren 10er-Abschnitts.",
+  "descriptionEn": "First archived Bremen source snapshot for lower-secondary physics. The snapshot models the currently valid Bremen Gymnasium track from the 2006 curriculum in the restricted 2022 form and activates a narrow retained start with the grade-7/8 physics themes together with the former grade-10 topics that now apply in grade 9.",
+  "compatibilityOnly": true,
+  "legacyHiddenByDefault": true,
+  "goals": [
+    {
+      "id": "hb-phys-sek1-root",
+      "title": "Physik Sekundarstufe I",
+      "titleEn": "Physics Secondary Level I",
+      "description": "Pilot-Subset der Bremen-Lane fuer die aktuell gueltige Gymnasium-Sek-I-Physik. Der retained Start aktiviert den Physik-Einstieg in den Jahrgaengen 7/8 und den durch die Einschraenkungsanlage auf Jahrgang 9 vorgezogenen Stromkreis-, Elektromagnetismus- und Radioaktivitaetsstreifen. Die frueheren Themen `Energie` und `Mechanik` aus dem 10er-Abschnitt werden bewusst nicht mehr in dieser Sek-I-Physikspur gefuehrt, weil sie jetzt in die gymnasiale Oberstufe uebergehen.",
+      "descriptionEn": "Pilot subset of the Bremen lane for the currently valid lower-secondary Gymnasium physics track. The retained start activates the grade-7/8 physics entry and the electric-circuit, electromagnetism, and radioactivity strip that the 2022 restriction moves into grade 9. The former grade-10 themes `Energy` and `Mechanics` are intentionally no longer carried in this lower-secondary physics lane because they move into upper secondary.",
+      "weight": 8,
+      "tags": [
+        "Sek1",
+        "Gymnasium",
+        "PilotSubset",
+        "RestrictedValidity",
+        "J7-J9"
+      ],
+      "contains": [
+        "hb-phys-sek1-orientation",
+        "hb-phys-sek1-j7-8",
+        "hb-phys-sek1-j9"
+      ],
+      "requires": [
+        "hb-phys-sek1-orientation"
+      ],
+      "sourceRef": "Bildungsplan Naturwissenschaften, Biologie, Chemie, Physik Gymnasium 5-10 (2006), Physik: Aufgaben und Ziele sowie Themen und Inhalte; Anlage zur Mitteilung 239/2022, Physik-Teil zur Einschraenkung auf Jahrgaenge 5-9.",
+      "dimensionTags": {
+        "framework": "hb-gymnasium-sek1-physik-2006-restricted-2022",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "GLOBAL",
+        "area": "Gymnasium progression"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "hb-phys-sek1-orientation",
+      "title": "Warum Physik? - Schall, Licht, Bewegung und Elektrizitaet deuten",
+      "titleEn": "Why Physics? - Interpreting Sound, Light, Motion, and Electricity",
+      "description": "Der Bremer Physikunterricht der Sekundarstufe I macht physikalische Betrachtungsweisen fuer Alltag, Technik, Umwelt, Kommunikation und Energieversorgung nutzbar und fuehrt in experimentelle sowie modellbildende Arbeitsweisen ein.",
+      "descriptionEn": "Bremen lower-secondary physics makes physical ways of thinking usable for everyday life, technology, environment, communication, and energy supply, and introduces experimental and model-building methods.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "Gymnasium",
+        "Orientation"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Bildungsplan Naturwissenschaften, Biologie, Chemie, Physik Gymnasium 5-10 (2006), Physik: Aufgaben und Ziele, S. 46-48.",
+      "dimensionTags": {
+        "framework": "hb-gymnasium-sek1-physik-2006-restricted-2022",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "GLOBAL",
+        "area": "Orientierung"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "hb-phys-sek1-j7-8",
+      "title": "Jahrgaenge 7/8: Schall, Licht, Bewegung und Elektrostatik",
+      "titleEn": "Grades 7/8: Sound, Light, Motion, and Electrostatics",
+      "description": "Der retained Bremer J7/8-Physikanker buendelt die vier aktuell gueltigen Rahmenthemen `Schall und Laerm`, `Sehen, Licht und Farben`, `Kraefte und Bewegung` und `Elektrostatik - vom Phaenomen zum Modell`.",
+      "descriptionEn": "The retained Bremen grade-7/8 physics anchor bundles the four currently valid themes `Sound and Noise`, `Seeing, Light and Colors`, `Forces and Motion`, and `Electrostatics - From Phenomenon to Model`.",
+      "weight": 4,
+      "tags": [
+        "Sek1",
+        "Gymnasium",
+        "J7",
+        "J8",
+        "StructuralAnchor"
+      ],
+      "contains": [
+        "hb-phys-sek1-sound-noise",
+        "hb-phys-sek1-light-colors",
+        "hb-phys-sek1-force-motion",
+        "hb-phys-sek1-electrostatics"
+      ],
+      "requires": [
+        "hb-phys-sek1-orientation"
+      ],
+      "sourceRef": "Bildungsplan Naturwissenschaften, Biologie, Chemie, Physik Gymnasium 5-10 (2006), Physik: Rahmenthemen 7/8 sowie Anforderungen am Ende der Jahrgangsstufe 8, S. 49-56; Anlage zur Mitteilung 239/2022, Physik, S. 5.",
+      "dimensionTags": {
+        "framework": "hb-gymnasium-sek1-physik-2006-restricted-2022",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J7-J8",
+        "area": "Gymnasium progression"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "hb-phys-sek1-sound-noise",
+      "title": "J7/8 Schall und Laerm: Lautstaerken, Schallausbreitung und Gesundheitsschutz",
+      "titleEn": "J7/8 Sound and Noise: Sound Levels, Propagation, and Health Protection",
+      "description": "Die Lernenden messen und bewerten Lautstaerken, erklaeren Entstehung und Ausbreitung von Schall mit dem Teilchenmodell und beschreiben gesundheitsschaedliche Wirkungen von Laerm sowie Massnahmen zum Laermschutz.",
+      "descriptionEn": "Learners measure and assess sound levels, explain the origin and propagation of sound with the particle model, and describe harmful effects of noise together with measures for noise protection.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "Gymnasium",
+        "J7",
+        "J8",
+        "Schall"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Bildungsplan Naturwissenschaften, Biologie, Chemie, Physik Gymnasium 5-10 (2006), Physik: `Schall und Laerm`, S. 49 und S. 54.",
+      "dimensionTags": {
+        "framework": "hb-gymnasium-sek1-physik-2006-restricted-2022",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J7-J8",
+        "area": "Schall und Laerm"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "hb-phys-sek1-light-colors",
+      "title": "J7/8 Sehen, Licht und Farben: Strahlenoptik, Auge und Farbmischung",
+      "titleEn": "J7/8 Seeing, Light and Colors: Ray Optics, Eye, and Color Mixing",
+      "description": "Die Lernenden nutzen das Strahlenmodell fuer Reflexion, Brechung und einfache Abbildungsvorgaenge, erklaeren den Sehvorgang am einfachen Augenmodell und deuten die Zerlegung sowie Mischung von Lichtfarben.",
+      "descriptionEn": "Learners use the ray model for reflection, refraction, and simple imaging processes, explain seeing with a simple eye model, and interpret the decomposition and mixing of light colors.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "Gymnasium",
+        "J7",
+        "J8",
+        "Optik"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Bildungsplan Naturwissenschaften, Biologie, Chemie, Physik Gymnasium 5-10 (2006), Physik: `Sehen, Licht und Farben`, S. 50 und S. 55.",
+      "dimensionTags": {
+        "framework": "hb-gymnasium-sek1-physik-2006-restricted-2022",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J7-J8",
+        "area": "Sehen, Licht und Farben"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "hb-phys-sek1-force-motion",
+      "title": "J7/8 Kraefte und Bewegung: Vektorpfeile, Arbeit, Geschwindigkeit und Dichte",
+      "titleEn": "J7/8 Forces and Motion: Vector Arrows, Work, Speed, and Density",
+      "description": "Die Lernenden beschreiben Gewichtskraft und andere Kraefte mit Betrag, Richtung und Angriffspunkt, deuten physikalische Arbeit, bestimmen Geschwindigkeiten aus Experimenten und Diagrammen und nutzen die Dichte fuer Schwimmen, Schweben und Sinken.",
+      "descriptionEn": "Learners describe weight force and other forces by magnitude, direction, and point of action, interpret physical work, determine speeds from experiments and diagrams, and use density for floating, hovering, and sinking.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "Gymnasium",
+        "J7",
+        "J8",
+        "Mechanik"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Bildungsplan Naturwissenschaften, Biologie, Chemie, Physik Gymnasium 5-10 (2006), Physik: `Kraefte und Bewegung`, S. 50 und S. 55.",
+      "dimensionTags": {
+        "framework": "hb-gymnasium-sek1-physik-2006-restricted-2022",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J7-J8",
+        "area": "Kraefte und Bewegung"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "hb-phys-sek1-electrostatics",
+      "title": "J7/8 Elektrostatik: Ladungstrennung, Spannung und Gewitterschutz",
+      "titleEn": "J7/8 Electrostatics: Charge Separation, Voltage, and Thunderstorm Protection",
+      "description": "Die Lernenden beschreiben elektrostatische Grundphaenomene, nutzen ein Teilchen- und Elektronenmodell fuer Leiter und Nichtleiter, deuten Ladungstrennung als physikalische Arbeit und erklaeren Gewitterentstehung sowie Schutzmassnahmen.",
+      "descriptionEn": "Learners describe basic electrostatic phenomena, use a particle and electron model for conductors and insulators, interpret charge separation as physical work, and explain thunderstorm formation and protection measures.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "Gymnasium",
+        "J7",
+        "J8",
+        "Elektrostatik"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Bildungsplan Naturwissenschaften, Biologie, Chemie, Physik Gymnasium 5-10 (2006), Physik: `Elektrostatik - vom Phaenomen zum Modell`, S. 50-51 und S. 56.",
+      "dimensionTags": {
+        "framework": "hb-gymnasium-sek1-physik-2006-restricted-2022",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J7-J8",
+        "area": "Elektrostatik"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "hb-phys-sek1-j9",
+      "title": "Jahrgang 9: Stromkreis, Elektromagnetismus und Radioaktivitaet",
+      "titleEn": "Grade 9: Electric Circuits, Electromagnetism, and Radioactivity",
+      "description": "Der retained Bremer J9-Physikanker fasst die durch die Einschraenkungsanlage 2022 auf Jahrgang 9 vorgezogenen Themen `Der elektrische Stromkreis als System`, `Elektromagnetismus` und `Radioaktivitaet und Kernenergie` zusammen.",
+      "descriptionEn": "The retained Bremen grade-9 physics anchor combines the topics `The Electric Circuit as a System`, `Electromagnetism`, and `Radioactivity and Nuclear Energy` that the 2022 restriction brings forward into grade 9.",
+      "weight": 3,
+      "tags": [
+        "Sek1",
+        "Gymnasium",
+        "J9",
+        "StructuralAnchor",
+        "RestrictedValidity"
+      ],
+      "contains": [
+        "hb-phys-sek1-circuit-system",
+        "hb-phys-sek1-electromagnetism",
+        "hb-phys-sek1-radioactivity"
+      ],
+      "requires": [
+        "hb-phys-sek1-j7-8"
+      ],
+      "sourceRef": "Bildungsplan Naturwissenschaften, Biologie, Chemie, Physik Gymnasium 5-10 (2006), Physik: Anforderungen am Ende der Jahrgangsstufe 10, S. 57-59; Anlage zur Mitteilung 239/2022, Physik, S. 5-7.",
+      "dimensionTags": {
+        "framework": "hb-gymnasium-sek1-physik-2006-restricted-2022",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J9",
+        "area": "Gymnasium progression"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "hb-phys-sek1-circuit-system",
+      "title": "J9 Stromkreis als System: Spannung, Stromstaerke und Widerstand",
+      "titleEn": "J9 Electric Circuit as a System: Voltage, Current, and Resistance",
+      "description": "Die Lernenden beschreiben Spannung, Stromstaerke und Widerstand anschaulich und fachlich adaquat, erklaeren Reihen- und Parallelschaltungen, messen Spannungen und Stromstaerken und diskutieren Sicherheitsmassnahmen beim Umgang mit Elektrizitaet.",
+      "descriptionEn": "Learners describe voltage, current, and resistance in an intuitive yet physically adequate way, explain series and parallel circuits, measure voltages and currents, and discuss safety measures when dealing with electricity.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "Gymnasium",
+        "J9",
+        "ElektrischerStromkreis"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Bildungsplan Naturwissenschaften, Biologie, Chemie, Physik Gymnasium 5-10 (2006), Physik: `Der elektrische Stromkreis als System`, S. 51-52 und S. 57; Anlage zur Mitteilung 239/2022, Physik, S. 5-6.",
+      "dimensionTags": {
+        "framework": "hb-gymnasium-sek1-physik-2006-restricted-2022",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J9",
+        "area": "Elektrischer Stromkreis"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "hb-phys-sek1-electromagnetism",
+      "title": "J9 Elektromagnetismus: Magnetfelder, Induktion und technische Anwendungen",
+      "titleEn": "J9 Electromagnetism: Magnetic Fields, Induction, and Technical Applications",
+      "description": "Die Lernenden beschreiben magnetische Grundphaenomene, erklaeren Magnetismus mit dem Elementarmagnetenmodell, nutzen Linke-Hand-Regel und Dreifingerregel und ordnen Elektromotor, Generator und Transformator als technische Anwendungen ein.",
+      "descriptionEn": "Learners describe basic magnetic phenomena, explain magnetism with the elementary magnet model, use the left-hand rule and the three-finger rule, and classify electric motors, generators, and transformers as technical applications.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "Gymnasium",
+        "J9",
+        "Elektromagnetismus"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Bildungsplan Naturwissenschaften, Biologie, Chemie, Physik Gymnasium 5-10 (2006), Physik: `Elektromagnetismus`, S. 57; Anlage zur Mitteilung 239/2022, Physik, S. 6.",
+      "dimensionTags": {
+        "framework": "hb-gymnasium-sek1-physik-2006-restricted-2022",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J9",
+        "area": "Elektromagnetismus"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "hb-phys-sek1-radioactivity",
+      "title": "J9 Radioaktivitaet und Kernenergie: Strahlungsarten, Halbwertszeit und Bewertung",
+      "titleEn": "J9 Radioactivity and Nuclear Energy: Radiation Types, Half-Life, and Evaluation",
+      "description": "Die Lernenden unterscheiden Strahlungsarten, deuten Zerfallsprozesse und Halbwertszeit, beschreiben biologische Strahlenwirkungen und diskutieren Chancen und Risiken der Kernenergienutzung sowie medizinischer Anwendungen ionisierender Strahlung.",
+      "descriptionEn": "Learners distinguish radiation types, interpret decay processes and half-life, describe biological radiation effects, and discuss opportunities and risks of nuclear energy use and medical applications of ionising radiation.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "Gymnasium",
+        "J9",
+        "Radioaktivitaet"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Bildungsplan Naturwissenschaften, Biologie, Chemie, Physik Gymnasium 5-10 (2006), Physik: `Radioaktivitaet und Kernenergie`, S. 58; Anlage zur Mitteilung 239/2022, Physik, S. 6-7.",
+      "dimensionTags": {
+        "framework": "hb-gymnasium-sek1-physik-2006-restricted-2022",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J9",
+        "area": "Radioaktivitaet und Kernenergie"
+      },
+      "type": "atomic"
+    }
+  ]
+}

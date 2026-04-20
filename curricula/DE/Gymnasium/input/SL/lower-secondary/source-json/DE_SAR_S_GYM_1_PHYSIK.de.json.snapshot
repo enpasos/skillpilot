@@ -1,0 +1,535 @@
+{
+  "landscapeId": "e5f66ad7-8f49-41f5-b8b2-52ab9a0ebcac",
+  "locale": "de-DE",
+  "country": "DE",
+  "region": "SL",
+  "schoolType": "Gymnasium",
+  "subject": "Physik",
+  "frameworkId": "sl-gym9-sek1-physik",
+  "title": "Physik Sekundarstufe I (Saarland, erster Quellsnapshot)",
+  "titleEn": "Physics lower secondary level (Saarland, first source snapshot)",
+  "description": "Erster archivierter Saarland-Quellsnapshot fuer die Physik der Sekundarstufe I. Der Snapshot umfasst einen allgemeinen Orientierungsanker, einen breiten Naturwissenschaften-Feeder fuer 5/6, den Klassenstufe-7-Streifen sowie branch-sensitive retained Klassenstufe-8-, 9- und 10-Streifen.",
+  "descriptionEn": "First archived Saarland source snapshot for lower-secondary physics. The snapshot covers a general orientation anchor, a broad science feeder for grades 5/6, the grade-7 strip, and branch-sensitive retained strips for grades 8, 9, and 10.",
+  "compatibilityOnly": true,
+  "legacyHiddenByDefault": true,
+  "goals": [
+    {
+      "id": "sl-phys-sek1-root",
+      "title": "Physik Sekundarstufe I",
+      "titleEn": "Physics lower secondary level",
+      "description": "Breiter erster Saarland-Quellsnapshot fuer die Physik der Sekundarstufe I mit einem allgemeinen Orientierungsanker, einem Naturwissenschaften-Feeder fuer 5/6, einem retained Klassenstufe-7-Streifen sowie branch-sensitiven retained Klassenstufe-8-, 9- und 10-Streifen.",
+      "descriptionEn": "Broad first Saarland source snapshot for lower-secondary physics with a general orientation anchor, a science feeder for grades 5/6, a retained grade-7 strip, and branch-sensitive retained strips for grades 8, 9, and 10.",
+      "weight": 12,
+      "tags": [
+        "Sek1",
+        "PilotSubset",
+        "Saarland"
+      ],
+      "contains": [
+        "sl-phys-sek1-orientation",
+        "sl-phys-sek1-j5-6",
+        "sl-phys-sek1-j7",
+        "sl-phys-sek1-j8",
+        "sl-phys-sek1-j9",
+        "sl-phys-sek1-j10"
+      ],
+      "requires": [
+        "sl-phys-sek1-orientation"
+      ],
+      "sourceRef": "Saarland Physik/Naturwissenschaften G9 Lehrplaene Klassenstufen 5/6, 7, 8, 9 und 10, Stand 2012-2026.",
+      "dimensionTags": {
+        "framework": "sl-gym9-sek1-physik",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "GLOBAL",
+        "area": "Sekundarstufe I"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "sl-phys-sek1-orientation",
+      "title": "Warum Physik? - Beobachten, Modellieren und verantworten",
+      "titleEn": "Why physics? - observing, modelling, and acting responsibly",
+      "description": "Die saarlaendischen Lehrplaene rahmen Physik als experimentelle Naturwissenschaft, die Beobachten, Modellieren, Quantifizieren und verantwortliches Urteilen in Alltag, Technik, Energie und Umwelt verbindet.",
+      "descriptionEn": "The Saarland curricula frame physics as an experimental science connecting observation, modelling, quantification, and responsible judgement in everyday life, technology, energy, and environment.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "Orientation",
+        "Saarland"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Einleitungen und Kompetenzorientierung der saarlaendischen Physik-Lehrplaene G9 Sek I sowie Naturwissenschaften 5/6, Stand 2012-2026.",
+      "dimensionTags": {
+        "framework": "sl-gym9-sek1-physik",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "GLOBAL",
+        "area": "Orientierung"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "sl-phys-sek1-j5-6",
+      "title": "Klassenstufen 5/6",
+      "titleEn": "Grades 5/6",
+      "description": "Breiter erster Saarland-Physik-Feeder fuer die Klassenstufen 5/6 aus dem Fach Naturwissenschaften.",
+      "descriptionEn": "Broad first Saarland physics feeder for grades 5/6 from the integrated science subject.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "J5_6",
+        "Saarland"
+      ],
+      "contains": [
+        "sl-phys-j5-6-science-feeder"
+      ],
+      "requires": [
+        "sl-phys-sek1-orientation"
+      ],
+      "sourceRef": "NW_5und6_Gym_2012.pdf, Naturwissenschaften 5/6 im Gymnasium.",
+      "dimensionTags": {
+        "framework": "sl-gym9-sek1-physik",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J5_6",
+        "area": "Klassenstufen 5/6"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "sl-phys-j5-6-science-feeder",
+      "title": "Klassenstufen 5/6: Naturwissenschaften-Feeder Bewegung und Energie",
+      "titleEn": "Grades 5/6: science feeder on motion and energy",
+      "description": "Breiter retained Saarland-Feeder fuer fruehe physiknahe Grundlagen aus Naturwissenschaften 5/6, insbesondere Beobachtung, Messdaten, Bewegung und Energie im alltagsnahen Kontext.",
+      "descriptionEn": "Broad retained Saarland feeder for early physics-related foundations from science grades 5/6, especially observation, measurement data, motion, and energy in everyday contexts.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "J5_6",
+        "ScienceFeeder",
+        "Saarland"
+      ],
+      "contains": [],
+      "requires": [
+        "sl-phys-sek1-orientation"
+      ],
+      "sourceRef": "NW_5und6_Gym_2012.pdf, Themenkreis Mensch als System: Bewegung und Energiebereitstellung, S. 20 ff.",
+      "dimensionTags": {
+        "framework": "sl-gym9-sek1-physik",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J5_6",
+        "area": "Feeder"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "sl-phys-sek1-j7",
+      "title": "Klassenstufe 7",
+      "titleEn": "Grade 7",
+      "description": "Breiter erster Saarland-Quellanker fuer die Klassenstufe 7 mit den retained Themenfeldern Elektrizitaet, Optik und Mechanik.",
+      "descriptionEn": "Broad first Saarland source anchor for grade 7 with the retained topic fields electricity, optics, and mechanics.",
+      "weight": 3,
+      "tags": [
+        "Sek1",
+        "J7",
+        "Saarland"
+      ],
+      "contains": [
+        "sl-phys-j7-electricity",
+        "sl-phys-j7-optics",
+        "sl-phys-j7-mechanics"
+      ],
+      "requires": [
+        "sl-phys-sek1-orientation"
+      ],
+      "sourceRef": "LP_PH_gym9_7_2023.pdf, Themenfelder Klassenstufe 7.",
+      "dimensionTags": {
+        "framework": "sl-gym9-sek1-physik",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J7",
+        "area": "Klassenstufe 7"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "sl-phys-j7-electricity",
+      "title": "Klassenstufe 7: Grundlagen der Elektrizitaet",
+      "titleEn": "Grade 7: foundations of electricity",
+      "description": "Breiter retained Saarland-Quellstrip fuer Magnetismus, Stromkreis, Spannung, Stromstaerke und sicheren Umgang mit Elektrizitaet in Klassenstufe 7.",
+      "descriptionEn": "Broad retained Saarland source strip for magnetism, circuits, voltage, electric current, and safe use of electricity in grade 7.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "J7",
+        "Electricity",
+        "Saarland"
+      ],
+      "contains": [],
+      "requires": [
+        "sl-phys-sek1-orientation"
+      ],
+      "sourceRef": "LP_PH_gym9_7_2023.pdf, Grundlagen der Elektrizitaet.",
+      "dimensionTags": {
+        "framework": "sl-gym9-sek1-physik",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J7",
+        "area": "Elektrizitaet"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "sl-phys-j7-optics",
+      "title": "Klassenstufe 7: Grundlagen der Optik",
+      "titleEn": "Grade 7: foundations of optics",
+      "description": "Breiter retained Saarland-Quellstrip fuer Lichtausbreitung, Schatten, Reflexion und geometrische Optik in Klassenstufe 7.",
+      "descriptionEn": "Broad retained Saarland source strip for light propagation, shadows, reflection, and geometric optics in grade 7.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "J7",
+        "Optics",
+        "Saarland"
+      ],
+      "contains": [],
+      "requires": [
+        "sl-phys-sek1-orientation"
+      ],
+      "sourceRef": "LP_PH_gym9_7_2023.pdf, Grundlagen der Optik.",
+      "dimensionTags": {
+        "framework": "sl-gym9-sek1-physik",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J7",
+        "area": "Optik"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "sl-phys-j7-mechanics",
+      "title": "Klassenstufe 7: Grundlagen der Mechanik",
+      "titleEn": "Grade 7: foundations of mechanics",
+      "description": "Breiter retained Saarland-Quellstrip fuer Geschwindigkeit, Bewegungen und erste mechanische Modellierungen in Klassenstufe 7.",
+      "descriptionEn": "Broad retained Saarland source strip for speed, motion, and first mechanical modelling in grade 7.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "J7",
+        "Mechanics",
+        "Saarland"
+      ],
+      "contains": [],
+      "requires": [
+        "sl-phys-sek1-orientation"
+      ],
+      "sourceRef": "LP_PH_gym9_7_2023.pdf, Grundlagen der Mechanik.",
+      "dimensionTags": {
+        "framework": "sl-gym9-sek1-physik",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J7",
+        "area": "Mechanik"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "sl-phys-sek1-j8",
+      "title": "Klassenstufe 8",
+      "titleEn": "Grade 8",
+      "description": "Breiter erster Saarland-Quellanker fuer die Klassenstufe 8 mit branch-sensitiven retained Streifen fuer den naturwissenschaftlichen Zweig und den zweistuendigen/sprachlichen Zweig.",
+      "descriptionEn": "Broad first Saarland source anchor for grade 8 with branch-sensitive retained strips for the science track and the two-hour/language track.",
+      "weight": 2,
+      "tags": [
+        "Sek1",
+        "J8",
+        "Saarland"
+      ],
+      "contains": [
+        "sl-phys-j8-nw-track",
+        "sl-phys-j8-two-hour-track"
+      ],
+      "requires": [
+        "sl-phys-sek1-orientation"
+      ],
+      "sourceRef": "LP_PH_gym9_8_NW_Zweig_2024.pdf; LP_PH_gym9_8_spr_Zweig_2024.pdf.",
+      "dimensionTags": {
+        "framework": "sl-gym9-sek1-physik",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J8",
+        "area": "Klassenstufe 8"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "sl-phys-j8-nw-track",
+      "title": "Klassenstufe 8: NW-Zweig",
+      "titleEn": "Grade 8: science track",
+      "description": "Breiter retained Saarland-Quellstrip fuer Kraft, mechanische Energie, Druck, Temperatur sowie thermische Energie und Waerme im naturwissenschaftlichen Zweig der Klassenstufe 8.",
+      "descriptionEn": "Broad retained Saarland source strip for force, mechanical energy, pressure, temperature, and thermal energy and heat in the science track of grade 8.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "J8",
+        "NWTrack",
+        "Saarland"
+      ],
+      "contains": [],
+      "requires": [
+        "sl-phys-sek1-orientation"
+      ],
+      "sourceRef": "LP_PH_gym9_8_NW_Zweig_2024.pdf, Themenfelder Klassenstufe 8 NW-Zweig.",
+      "dimensionTags": {
+        "framework": "sl-gym9-sek1-physik",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J8",
+        "area": "NW-Zweig"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "sl-phys-j8-two-hour-track",
+      "title": "Klassenstufe 8: zweistuendiger/sprachlicher Zweig",
+      "titleEn": "Grade 8: two-hour/language track",
+      "description": "Breiter retained Saarland-Quellstrip fuer Kraft, mechanische Energie, Brechung und optische Abbildungen, Druck sowie Temperatur im zweistuendigen/sprachlichen Zweig der Klassenstufe 8.",
+      "descriptionEn": "Broad retained Saarland source strip for force, mechanical energy, refraction and optical imaging, pressure, and temperature in the two-hour/language track of grade 8.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "J8",
+        "TwoHourTrack",
+        "Saarland"
+      ],
+      "contains": [],
+      "requires": [
+        "sl-phys-sek1-orientation"
+      ],
+      "sourceRef": "LP_PH_gym9_8_spr_Zweig_2024.pdf, Themenfelder Klassenstufe 8 zweistuendig.",
+      "dimensionTags": {
+        "framework": "sl-gym9-sek1-physik",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J8",
+        "area": "Zweistundig"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "sl-phys-sek1-j9",
+      "title": "Klassenstufe 9",
+      "titleEn": "Grade 9",
+      "description": "Breiter erster Saarland-Quellanker fuer die Klassenstufe 9 mit branch-sensitiven retained Streifen fuer den Informatikzweig und den naturwissenschaftlichen Zweig.",
+      "descriptionEn": "Broad first Saarland source anchor for grade 9 with branch-sensitive retained strips for the informatics track and the science track.",
+      "weight": 2,
+      "tags": [
+        "Sek1",
+        "J9",
+        "Saarland"
+      ],
+      "contains": [
+        "sl-phys-j9-informatics-track",
+        "sl-phys-j9-nw-track"
+      ],
+      "requires": [
+        "sl-phys-sek1-orientation"
+      ],
+      "sourceRef": "LP_PH_gym9_9_inf_Zweig_2024.pdf; LP_PH_gym9_9_nw_Zweig_2024.pdf.",
+      "dimensionTags": {
+        "framework": "sl-gym9-sek1-physik",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J9",
+        "area": "Klassenstufe 9"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "sl-phys-j9-informatics-track",
+      "title": "Klassenstufe 9: Informatikzweig",
+      "titleEn": "Grade 9: informatics track",
+      "description": "Breiter retained Saarland-Quellstrip fuer Gesetze des elektrischen Stromkreises und Halbleiterschaltungstechnik I im Informatikzweig der Klassenstufe 9.",
+      "descriptionEn": "Broad retained Saarland source strip for laws of electric circuits and semiconductor circuit technology I in the informatics track of grade 9.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "J9",
+        "INFTrack",
+        "Saarland"
+      ],
+      "contains": [],
+      "requires": [
+        "sl-phys-sek1-orientation"
+      ],
+      "sourceRef": "LP_PH_gym9_9_inf_Zweig_2024.pdf, Themenfelder Klassenstufe 9 In-Zweig.",
+      "dimensionTags": {
+        "framework": "sl-gym9-sek1-physik",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J9",
+        "area": "Informatikzweig"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "sl-phys-j9-nw-track",
+      "title": "Klassenstufe 9: NW-Zweig",
+      "titleEn": "Grade 9: science track",
+      "description": "Breiter retained Saarland-Quellstrip fuer Brechung, Abbildungen und Spektralfarben sowie Gesetze des elektrischen Stromkreises im naturwissenschaftlichen Zweig der Klassenstufe 9.",
+      "descriptionEn": "Broad retained Saarland source strip for refraction, imaging and spectral colours plus laws of electric circuits in the science track of grade 9.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "J9",
+        "NWTrack",
+        "Saarland"
+      ],
+      "contains": [],
+      "requires": [
+        "sl-phys-sek1-orientation"
+      ],
+      "sourceRef": "LP_PH_gym9_9_nw_Zweig_2024.pdf, Themenfelder Klassenstufe 9 NW-Zweig.",
+      "dimensionTags": {
+        "framework": "sl-gym9-sek1-physik",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J9",
+        "area": "NW-Zweig"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "sl-phys-sek1-j10",
+      "title": "Klassenstufe 10",
+      "titleEn": "Grade 10",
+      "description": "Breiter erster Saarland-Quellanker fuer die Klassenstufe 10 mit branch-sensitiven retained Streifen fuer den Informatikzweig, den naturwissenschaftlichen Zweig und den zweistuendigen Zweig ohne Infozweig.",
+      "descriptionEn": "Broad first Saarland source anchor for grade 10 with branch-sensitive retained strips for the informatics track, the science track, and the two-hour track without the informatics branch.",
+      "weight": 3,
+      "tags": [
+        "Sek1",
+        "J10",
+        "Saarland"
+      ],
+      "contains": [
+        "sl-phys-j10-informatics-track",
+        "sl-phys-j10-nw-track",
+        "sl-phys-j10-two-hour-track"
+      ],
+      "requires": [
+        "sl-phys-sek1-orientation"
+      ],
+      "sourceRef": "LP_PH_gym9_10_inf_Zweig_2026.pdf; LP_PH_gym9_10_nw_Zweig_2026.pdf; LP_PH_gym9_10_zweistuendig_ohne_Infozweig_2026.pdf.",
+      "dimensionTags": {
+        "framework": "sl-gym9-sek1-physik",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J10",
+        "area": "Klassenstufe 10"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "sl-phys-j10-informatics-track",
+      "title": "Klassenstufe 10: Informatikzweig",
+      "titleEn": "Grade 10: informatics track",
+      "description": "Breiter retained Saarland-Quellstrip fuer Spektralfarben und Klimaphysik, Halbleiterschaltungstechnik II, elektromagnetische Wechselwirkung, nachhaltige Energieversorgung und ionisierende Strahlung im Informatikzweig der Klassenstufe 10.",
+      "descriptionEn": "Broad retained Saarland source strip for spectral colours and climate physics, semiconductor circuit technology II, electromagnetic interaction, sustainable energy supply, and ionising radiation in the informatics track of grade 10.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "J10",
+        "INFTrack",
+        "Saarland"
+      ],
+      "contains": [],
+      "requires": [
+        "sl-phys-sek1-orientation"
+      ],
+      "sourceRef": "LP_PH_gym9_10_inf_Zweig_2026.pdf, Themenfelder Klassenstufe 10 Informatikzweig.",
+      "dimensionTags": {
+        "framework": "sl-gym9-sek1-physik",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J10",
+        "area": "Informatikzweig"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "sl-phys-j10-nw-track",
+      "title": "Klassenstufe 10: NW-Zweig",
+      "titleEn": "Grade 10: science track",
+      "description": "Breiter retained Saarland-Quellstrip fuer elektromagnetische Wechselwirkung, nachhaltige Energieversorgung, Thermodynamik und Klimaphysik sowie ionisierende Strahlung im naturwissenschaftlichen Zweig der Klassenstufe 10.",
+      "descriptionEn": "Broad retained Saarland source strip for electromagnetic interaction, sustainable energy supply, thermodynamics and climate physics, and ionising radiation in the science track of grade 10.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "J10",
+        "NWTrack",
+        "Saarland"
+      ],
+      "contains": [],
+      "requires": [
+        "sl-phys-sek1-orientation"
+      ],
+      "sourceRef": "LP_PH_gym9_10_nw_Zweig_2026.pdf, Themenfelder Klassenstufe 10 NW-Zweig.",
+      "dimensionTags": {
+        "framework": "sl-gym9-sek1-physik",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J10",
+        "area": "NW-Zweig"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "sl-phys-j10-two-hour-track",
+      "title": "Klassenstufe 10: zweistuendiger Zweig ohne Infozweig",
+      "titleEn": "Grade 10: two-hour track without informatics branch",
+      "description": "Breiter retained Saarland-Quellstrip fuer Spektralfarben und Klimaphysik, Gesetze des elektrischen Stromkreises, elektromagnetische Wechselwirkung, nachhaltige Energieversorgung und ionisierende Strahlung im zweistuendigen Zweig ohne Infozweig.",
+      "descriptionEn": "Broad retained Saarland source strip for spectral colours and climate physics, laws of electric circuits, electromagnetic interaction, sustainable energy supply, and ionising radiation in the two-hour track without the informatics branch.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "J10",
+        "TwoHourTrack",
+        "Saarland"
+      ],
+      "contains": [],
+      "requires": [
+        "sl-phys-sek1-orientation"
+      ],
+      "sourceRef": "LP_PH_gym9_10_zweistuendig_ohne_Infozweig_2026.pdf, Themenfelder Klassenstufe 10 zweistuendig.",
+      "dimensionTags": {
+        "framework": "sl-gym9-sek1-physik",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J10",
+        "area": "Zweistundig"
+      },
+      "type": "atomic"
+    }
+  ]
+}

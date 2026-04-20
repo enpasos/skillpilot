@@ -19,5 +19,9 @@
 - **Offizielle Quelle**: [Bildungsplan Studienstufe Physik](https://www.hamburg.de/resource/blob/123094/2691efabaaf2679cd7dd970a95a3c748/physik-gyo-2022-data.pdf)
 
 ### Physik-Naechste Schritte
-- die archivierten Hamburger Sek-I- und Sek-II-Physikquellen jetzt gemeinsam als retained Source-Onboarding-Baustein im Physik-Tracker auf `P1` halten
-- als naechsten Hamburger Physik-Schritt erst source-backed Sek-I- und Sek-II-Snapshots plus Provenance-Scaffold anlegen, bevor irgendein topic-spezifisches Mapping authored wird
+- die archivierten Hamburger Sek-I- und Sek-II-Physikquellen jetzt als aktive retained Source-Lanes mit source-backed Snapshots in
+  - `lower-secondary/source-json/DE_HAM_S_GYM_1_PHYSIK.de.json.snapshot`
+  - `upper-secondary/source-json/DE_HAM_S_GYM_2_PHYSIK.de.json.snapshot`
+  stabil halten
+- die Aktivierung ist dokumentiert in `curricula/DE/Gymnasium/provenance/hh-physics-onboarding.md`
+- vor jedem topic-spezifischen HH-Physik-Mapping erst die restlichen neu archivierten Bundeslaender ebenfalls auf `P2` bringen

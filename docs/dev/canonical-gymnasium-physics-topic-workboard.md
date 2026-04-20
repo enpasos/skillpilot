@@ -18,19 +18,20 @@ Scope rule for now:
 Working rule:
 
 1. the previously missing-state Physics source archive tranche is now complete for both **Sek I and Sek II** where applicable
-2. the next active tranche is source-snapshot and provenance activation for those newly archived states
-3. only after those source-backed lanes exist should another Physics topic row become active
-4. then review the current canonical atom inventory for that row
-5. compare the row against all retained Bundesland sources
-6. classify each state cell
-7. add canonical atoms only where multiple states or strong pedagogical structure justify them
-8. only then widen or refine the state mappings for that topic
+2. the source-snapshot and provenance activation tranche for those newly archived states is now also complete
+3. the next active tranche is the first conservative structural-anchor pass (`P3`) across those new source-backed states
+4. only after those source-backed anchor cuts exist should another Physics topic row become active
+5. then review the current canonical atom inventory for that row
+6. compare the row against all retained Bundesland sources
+7. classify each state cell
+8. add canonical atoms only where multiple states or strong pedagogical structure justify them
+9. only then widen or refine the state mappings for that topic
 
 Coverage rule:
 
 1. every active Physics topic row runs in `all states required` mode
-2. before the newly archived-state snapshot/provenance tranche is complete, the active work item is source-lane activation, not another topic-row widening
-3. once the source tranche is complete, a topic row is operationally closed only when every retained Bundesland source column is resolved once
+2. before the newly archived-state structural-anchor tranche is complete, the active work item is source-backed anchor activation, not another topic-row widening
+3. once the anchor tranche is complete, a topic row is operationally closed only when every retained Bundesland source column is resolved once
 4. `seed`, `anchor`, `corr`, `gap`, and `loc` count as resolved cells; only `n/s` means the row is still unchecked for that state
 
 Legend:
@@ -63,8 +64,8 @@ Current focus:
 2. keep `Sek II Elektrizitaet / Magnetismus / Induktion` stable
 3. keep `Sek II Schwingungen / Wellen` stable
 4. keep `Sek II Quanten / Atom / Kernphysik` stable
-5. keep Rheinland-Pfalz stable at the current conservative reviewed cut and do not widen it further before the newly archived state lanes have source-backed snapshots
-6. make the active Physics move a snapshot/provenance tranche for `DE-HB`, `DE-HH`, `DE-MV`, `DE-SL`, `DE-SN`, `DE-ST`, and `DE-TH`, based on the now-complete Sek-I-plus-Sek-II archive pass
+5. keep Rheinland-Pfalz stable at the current conservative reviewed cut and do not widen it further before the newly archived state lanes have first structural anchors
+6. make the active Physics move the first conservative structural-anchor tranche for `DE-HB`, `DE-HH`, `DE-MV`, `DE-SL`, `DE-SN`, `DE-ST`, and `DE-TH`, based on the now-complete Sek-I-plus-Sek-II archive pass and the now-complete snapshot/provenance pass
 
 Active coordination artifact:
 
@@ -75,14 +76,14 @@ Why:
 - Physics now has enough reviewed multi-state evidence that another single-state widening would only deepen source asymmetry
 - Berlin and Brandenburg still close the retained BE/BB `3.2.1` -> `3.2.2` cut without forcing another canonical atom, and the remaining trio stays explicitly frozen as source-led residue
 - Schleswig-Holstein no longer needs another reflex widening on the same retained source family; the next clean move is now a new state/source family outside the frozen SH and BE/BB residues
-- the missing nationwide Physics debt is no longer source acquisition itself; it is the absence of source-backed retained snapshots and provenance for the seven newly archived state bundles
-- the correct next move is therefore to activate those source lanes first, exactly as already done in Mathematics before the broader horizontal pass
+- the missing nationwide Physics debt is no longer source acquisition itself and no longer snapshot activation itself; it is the absence of first conservative structural anchors for the seven newly activated state bundles
+- the correct next move is therefore the first `P3` anchor pass, exactly as already done in Mathematics before another broader horizontal reviewed pass
 
 Current blocker note:
 
-1. the archive tranche is complete, but seven Physics state lanes still lack retained source snapshots and provenance-backed activation
-2. that remains the active blocker before another topic-first pass should begin
-3. Rheinland-Pfalz no longer needs another opportunistic widening; the right next move is the newly archived-state snapshot/provenance tranche
+1. the archive tranche is complete and the snapshot/provenance tranche is now also complete, but seven Physics state lanes still lack first conservative structural anchors
+2. that remains the active blocker before another topic-first reviewed pass should begin
+3. Rheinland-Pfalz no longer needs another opportunistic widening; the right next move is the newly archived-state structural-anchor tranche
 
 Definition of done for one Physics topic row:
 

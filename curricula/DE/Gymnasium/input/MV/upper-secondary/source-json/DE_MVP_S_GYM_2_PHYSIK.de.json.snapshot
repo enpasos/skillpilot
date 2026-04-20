@@ -1,0 +1,422 @@
+{
+  "landscapeId": "f66821d1-64a5-428d-a826-36990b6f1e0f",
+  "locale": "de-DE",
+  "country": "DE",
+  "region": "MV",
+  "schoolType": "Gymnasium",
+  "subject": "Physik",
+  "frameworkId": "mv-rp2022-sek2-physik",
+  "title": "Physik Sekundarbereich II (Mecklenburg-Vorpommern, erster Quellsnapshot)",
+  "titleEn": "Physics Upper Secondary Level (Mecklenburg-Vorpommern, first source snapshot)",
+  "description": "Erster archivierter Mecklenburg-Vorpommern-Quellsnapshot fuer die Physik des Sekundarbereichs II. Der Snapshot umfasst einen allgemeinen Orientierungsanker, ein integratives Oberstufenband sowie die drei breiten retained Themenfelder `Elektrische und magnetische Felder`, `Schwingungen und Wellen` und `Quantenphysik und Materie`.",
+  "descriptionEn": "First archived Mecklenburg-Vorpommern source snapshot for upper-secondary physics. The snapshot covers a general orientation anchor, an integrative upper-secondary band, and the three broad retained topic fields `Electric and Magnetic Fields`, `Oscillations and Waves`, and `Quantum Physics and Matter`.",
+  "compatibilityOnly": true,
+  "legacyHiddenByDefault": true,
+  "goals": [
+    {
+      "id": "mv-phys-sek2-root",
+      "title": "Physik Sekundarbereich II",
+      "titleEn": "Physics upper secondary level",
+      "description": "Breiter erster Mecklenburg-Vorpommern-Quellsnapshot fuer die Physik des Sekundarbereichs II mit Orientierungsanker, integrativem Oberstufenband und den drei grossen retained Themenfeldern Felder, Schwingungen/Wellen und Quantenphysik/Materie.",
+      "descriptionEn": "Broad first Mecklenburg-Vorpommern source snapshot for upper-secondary physics with an orientation anchor, an integrative upper-secondary band, and the three major retained topic fields fields, oscillations/waves, and quantum physics/matter.",
+      "weight": 11,
+      "tags": [
+        "Sek2",
+        "PilotSubset",
+        "Mecklenburg-Vorpommern"
+      ],
+      "contains": [
+        "mv-phys-sek2-orientation",
+        "mv-phys-sek2-integrative-topics",
+        "mv-phys-sek2-fields",
+        "mv-phys-sek2-oscillations-waves",
+        "mv-phys-sek2-quantum-matter"
+      ],
+      "requires": [
+        "mv-phys-sek2-orientation"
+      ],
+      "sourceRef": "Rahmenplan Physik Sekundarbereich II Mecklenburg-Vorpommern (Erprobungsfassung 2022), jahrgangsuebergreifende integrative Themen sowie Unterrichtsinhalte, S. 15-38.",
+      "dimensionTags": {
+        "framework": "mv-rp2022-sek2-physik",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "GLOBAL",
+        "area": "Sekundarbereich II"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "mv-phys-sek2-orientation",
+      "title": "Warum Physik in 10-12? - Formalisieren, modellieren und bewerten",
+      "titleEn": "Why physics in grades 10-12? - Formalising, modelling, and evaluating",
+      "description": "Der Physikunterricht im Sekundarbereich II fuehrt Inhalte der Sekundarstufe I quantitativer weiter, nutzt Modelle, Experimente und digitale Werkzeuge und verbindet naturwissenschaftliche Erkenntnisgewinnung mit begruendetem Urteilen.",
+      "descriptionEn": "Upper-secondary physics continues lower-secondary content in a more quantitative way, uses models, experiments, and digital tools, and connects scientific inquiry with reasoned judgement.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "Orientation",
+        "Mecklenburg-Vorpommern"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Rahmenplan Physik Sekundarbereich II Mecklenburg-Vorpommern (Erprobungsfassung 2022), Beitrag des Unterrichtsfaches Physik zum Kompetenzerwerb, S. 4-15.",
+      "dimensionTags": {
+        "framework": "mv-rp2022-sek2-physik",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "GLOBAL",
+        "area": "Orientierung"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "mv-phys-sek2-integrative-topics",
+      "title": "Jahrgangsuebergreifende integrative Themen",
+      "titleEn": "Cross-year integrative topics",
+      "description": "Der Mecklenburg-Vorpommern-Rahmenplan fuehrt jahrgangsuebergreifende integrative Themen als gemeinsamen Oberstufenkern fuer Basiskonzepte, Modelle, physikalische Groessen und fachuebergreifende Einordnungen.",
+      "descriptionEn": "The Mecklenburg-Vorpommern curriculum uses cross-year integrative topics as a shared upper-secondary core for basic concepts, models, physical quantities, and interdisciplinary perspectives.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "IntegrativeThemen",
+        "Mecklenburg-Vorpommern"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Rahmenplan Physik Sekundarbereich II Mecklenburg-Vorpommern (Erprobungsfassung 2022), `Jahrgangsuebergreifende integrative Themen`, S. 15-18.",
+      "dimensionTags": {
+        "framework": "mv-rp2022-sek2-physik",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "GLOBAL",
+        "area": "Integrative Themen"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "mv-phys-sek2-fields",
+      "title": "Elektrische und magnetische Felder",
+      "titleEn": "Electric and magnetic fields",
+      "description": "Breiter Mecklenburg-Vorpommern-Anker fuer das retained Oberstufenthemenfeld zu elektrischen und magnetischen Feldern.",
+      "descriptionEn": "Broad Mecklenburg-Vorpommern anchor for the retained upper-secondary topic field on electric and magnetic fields.",
+      "weight": 4,
+      "tags": [
+        "Sek2",
+        "Felder",
+        "Mecklenburg-Vorpommern",
+        "StructuralAnchor"
+      ],
+      "contains": [
+        "mv-phys-sek2-electric-fields",
+        "mv-phys-sek2-capacitor",
+        "mv-phys-sek2-magnetic-fields-induction",
+        "mv-phys-sek2-charged-particles"
+      ],
+      "requires": [
+        "mv-phys-sek2-orientation"
+      ],
+      "sourceRef": "Rahmenplan Physik Sekundarbereich II Mecklenburg-Vorpommern (Erprobungsfassung 2022), `Elektrische und magnetische Felder`, S. 19-25.",
+      "dimensionTags": {
+        "framework": "mv-rp2022-sek2-physik",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "SEK2",
+        "area": "Elektrische und magnetische Felder"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "mv-phys-sek2-electric-fields",
+      "title": "Elektrische Felder",
+      "titleEn": "Electric fields",
+      "description": "Die Lernenden beschreiben Ladung, Stromstaerke, Coulombkraft, Feldbegriff, Feldlinien, Feldstaerke, Superposition sowie Arbeit und Potenzial im elektrischen Feld.",
+      "descriptionEn": "Learners describe charge, current, Coulomb force, the field concept, field lines, field strength, superposition, as well as work and potential in electric fields.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "ElektrischesFeld",
+        "Mecklenburg-Vorpommern"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Rahmenplan Physik Sekundarbereich II Mecklenburg-Vorpommern (Erprobungsfassung 2022), `Elektrische Felder`, S. 19-20.",
+      "dimensionTags": {
+        "framework": "mv-rp2022-sek2-physik",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "SEK2",
+        "area": "Elektrische und magnetische Felder"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "mv-phys-sek2-capacitor",
+      "title": "Kondensator",
+      "titleEn": "Capacitor",
+      "description": "Die Lernenden deuten den Kondensator als Ladungs- und Energiespeicher, beschreiben Kapazitaet und Feld im Plattenkondensator und betrachten Auf- und Entladevorgaenge.",
+      "descriptionEn": "Learners interpret the capacitor as a charge and energy store, describe capacitance and the field in a plate capacitor, and consider charging and discharging processes.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "Kondensator",
+        "Mecklenburg-Vorpommern"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Rahmenplan Physik Sekundarbereich II Mecklenburg-Vorpommern (Erprobungsfassung 2022), `Kondensator`, S. 21-22.",
+      "dimensionTags": {
+        "framework": "mv-rp2022-sek2-physik",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "SEK2",
+        "area": "Elektrische und magnetische Felder"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "mv-phys-sek2-magnetic-fields-induction",
+      "title": "Magnetische Felder und Induktion",
+      "titleEn": "Magnetic fields and induction",
+      "description": "Die Lernenden beschreiben Lorentzkraft, magnetische Flussdichte, Magnetfelder, magnetischen Fluss, Induktionsgesetz, Lenz'sche Regel sowie im LK Selbstinduktion und Induktivitaet.",
+      "descriptionEn": "Learners describe Lorentz force, magnetic flux density, magnetic fields, magnetic flux, the law of induction, Lenz's rule, and in advanced level also self-induction and inductance.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "MagnetischesFeld",
+        "Induktion",
+        "Mecklenburg-Vorpommern"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Rahmenplan Physik Sekundarbereich II Mecklenburg-Vorpommern (Erprobungsfassung 2022), `Magnetische Felder und Induktion`, S. 23-24.",
+      "dimensionTags": {
+        "framework": "mv-rp2022-sek2-physik",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "SEK2",
+        "area": "Elektrische und magnetische Felder"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "mv-phys-sek2-charged-particles",
+      "title": "Bewegung geladener Teilchen in Feldern",
+      "titleEn": "Motion of charged particles in fields",
+      "description": "Die Lernenden beschreiben Elektronenstrahlroehre, Beschleunigung im Laengsfeld, Ablenkung im Querfeld, Kreisbewegung im Magnetfeld und im LK gekreuzte Felder, Halleffekt und Massenspektrographie.",
+      "descriptionEn": "Learners describe the electron beam tube, acceleration in longitudinal fields, deflection in transverse fields, circular motion in magnetic fields, and in advanced level crossed fields, Hall effect, and mass spectrography.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "GeladeneTeilchen",
+        "Mecklenburg-Vorpommern"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Rahmenplan Physik Sekundarbereich II Mecklenburg-Vorpommern (Erprobungsfassung 2022), `Bewegung geladener Teilchen in Feldern`, S. 24-25.",
+      "dimensionTags": {
+        "framework": "mv-rp2022-sek2-physik",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "SEK2",
+        "area": "Elektrische und magnetische Felder"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "mv-phys-sek2-oscillations-waves",
+      "title": "Schwingungen und Wellen",
+      "titleEn": "Oscillations and waves",
+      "description": "Breiter Mecklenburg-Vorpommern-Anker fuer das retained Oberstufenthemenfeld Schwingungen und Wellen.",
+      "descriptionEn": "Broad Mecklenburg-Vorpommern anchor for the retained upper-secondary topic field oscillations and waves.",
+      "weight": 3,
+      "tags": [
+        "Sek2",
+        "SchwingungenWellen",
+        "Mecklenburg-Vorpommern",
+        "StructuralAnchor"
+      ],
+      "contains": [
+        "mv-phys-sek2-oscillations",
+        "mv-phys-sek2-waves",
+        "mv-phys-sek2-wave-phenomena"
+      ],
+      "requires": [
+        "mv-phys-sek2-orientation"
+      ],
+      "sourceRef": "Rahmenplan Physik Sekundarbereich II Mecklenburg-Vorpommern (Erprobungsfassung 2022), `Schwingungen und Wellen`, S. 26-31.",
+      "dimensionTags": {
+        "framework": "mv-rp2022-sek2-physik",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "SEK2",
+        "area": "Schwingungen und Wellen"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "mv-phys-sek2-oscillations",
+      "title": "Schwingungen",
+      "titleEn": "Oscillations",
+      "description": "Die Lernenden beschreiben mechanische und elektromagnetische Schwingungen, Schwingkreise, Thomson-Gleichung, Daempfung und Resonanz und vergleichen ihre Energieumwandlungen.",
+      "descriptionEn": "Learners describe mechanical and electromagnetic oscillations, oscillating circuits, the Thomson equation, damping, and resonance and compare their energy conversions.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "Schwingungen",
+        "Mecklenburg-Vorpommern"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Rahmenplan Physik Sekundarbereich II Mecklenburg-Vorpommern (Erprobungsfassung 2022), `Schwingungen`, S. 26-28.",
+      "dimensionTags": {
+        "framework": "mv-rp2022-sek2-physik",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "SEK2",
+        "area": "Schwingungen und Wellen"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "mv-phys-sek2-waves",
+      "title": "Mechanische und elektromagnetische Wellen",
+      "titleEn": "Mechanical and electromagnetic waves",
+      "description": "Die Lernenden beschreiben Entstehung, Kenngroessen, Ausbreitung und mathematische Beschreibung mechanischer und elektromagnetischer Wellen sowie das elektromagnetische Spektrum.",
+      "descriptionEn": "Learners describe the origin, characteristic quantities, propagation, and mathematical description of mechanical and electromagnetic waves as well as the electromagnetic spectrum.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "Wellen",
+        "Mecklenburg-Vorpommern"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Rahmenplan Physik Sekundarbereich II Mecklenburg-Vorpommern (Erprobungsfassung 2022), `Mechanische und elektromagnetische Wellen`, S. 28-30.",
+      "dimensionTags": {
+        "framework": "mv-rp2022-sek2-physik",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "SEK2",
+        "area": "Schwingungen und Wellen"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "mv-phys-sek2-wave-phenomena",
+      "title": "Phaenomene bei der Ausbreitung von Wellen",
+      "titleEn": "Phenomena in wave propagation",
+      "description": "Die Lernenden beschreiben Beugung, stehende Wellen, Interferenz, Wellenfronten und weitere Phaenomene bei der Ausbreitung von Wellen.",
+      "descriptionEn": "Learners describe diffraction, standing waves, interference, wavefronts, and further phenomena in the propagation of waves.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "Interferenz",
+        "Mecklenburg-Vorpommern"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Rahmenplan Physik Sekundarbereich II Mecklenburg-Vorpommern (Erprobungsfassung 2022), `Phaenomene bei der Ausbreitung von Wellen`, S. 30-31.",
+      "dimensionTags": {
+        "framework": "mv-rp2022-sek2-physik",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "SEK2",
+        "area": "Schwingungen und Wellen"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "mv-phys-sek2-quantum-matter",
+      "title": "Quantenphysik und Materie",
+      "titleEn": "Quantum physics and matter",
+      "description": "Breiter Mecklenburg-Vorpommern-Anker fuer das retained Oberstufenthemenfeld Quantenphysik und Materie.",
+      "descriptionEn": "Broad Mecklenburg-Vorpommern anchor for the retained upper-secondary topic field quantum physics and matter.",
+      "weight": 2,
+      "tags": [
+        "Sek2",
+        "Quantenphysik",
+        "Mecklenburg-Vorpommern",
+        "StructuralAnchor"
+      ],
+      "contains": [
+        "mv-phys-sek2-quantum-objects",
+        "mv-phys-sek2-atomic-models"
+      ],
+      "requires": [
+        "mv-phys-sek2-orientation"
+      ],
+      "sourceRef": "Rahmenplan Physik Sekundarbereich II Mecklenburg-Vorpommern (Erprobungsfassung 2022), `Quantenphysik und Materie`, S. 32-38.",
+      "dimensionTags": {
+        "framework": "mv-rp2022-sek2-physik",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "SEK2",
+        "area": "Quantenphysik und Materie"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "mv-phys-sek2-quantum-objects",
+      "title": "Quantenobjekte",
+      "titleEn": "Quantum objects",
+      "description": "Die Lernenden beschreiben Hallwachs-Versuch, Doppelspalt, Elektronen und Photonen als Quantenobjekte, Wellenfunktion und weitere quantenphysikalische Effekte.",
+      "descriptionEn": "Learners describe the Hallwachs experiment, double slit, electrons and photons as quantum objects, the wave function, and further quantum effects.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "Quantenobjekte",
+        "Mecklenburg-Vorpommern"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Rahmenplan Physik Sekundarbereich II Mecklenburg-Vorpommern (Erprobungsfassung 2022), `Quantenobjekte`, S. 32-34.",
+      "dimensionTags": {
+        "framework": "mv-rp2022-sek2-physik",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "SEK2",
+        "area": "Quantenphysik und Materie"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "mv-phys-sek2-atomic-models",
+      "title": "Atomvorstellungen",
+      "titleEn": "Atomic models",
+      "description": "Die Lernenden beschreiben Struktur des Atoms, Wechselwirkung von Atomen mit Photonen, Quantenzahlen und Wellenfunktionen und vergleichen Bahn- und Orbitalvorstellungen.",
+      "descriptionEn": "Learners describe the structure of the atom, the interaction of atoms with photons, quantum numbers, and wave functions and compare orbit and orbital concepts.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "Atomvorstellungen",
+        "Mecklenburg-Vorpommern"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Rahmenplan Physik Sekundarbereich II Mecklenburg-Vorpommern (Erprobungsfassung 2022), `Atomvorstellungen`, S. 34-38.",
+      "dimensionTags": {
+        "framework": "mv-rp2022-sek2-physik",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "SEK2",
+        "area": "Quantenphysik und Materie"
+      },
+      "type": "atomic"
+    }
+  ]
+}

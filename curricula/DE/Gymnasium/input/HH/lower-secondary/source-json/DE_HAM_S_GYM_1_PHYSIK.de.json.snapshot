@@ -1,0 +1,322 @@
+{
+  "landscapeId": "cc3245a5-2980-4019-aa51-84904e073195",
+  "locale": "de-DE",
+  "country": "DE",
+  "region": "HH",
+  "schoolType": "Gymnasium",
+  "subject": "Physik",
+  "frameworkId": "hh-gym-seki-physik-2011",
+  "title": "Physik Sekundarstufe I (Hamburg, erster Quellsnapshot)",
+  "titleEn": "Physics Secondary Level I (Hamburg, first source snapshot)",
+  "description": "Erster archivierter Hamburg-Quellsnapshot fuer die Physik der Sekundarstufe I. Der Snapshot aktiviert einen allgemeinen Orientierungsanker sowie zwei breite retained Checkpoint-Baender fuer die Mindestanforderungen am Ende der Jahrgangsstufe 8 und fuer den Uebergang in die Studienstufe.",
+  "descriptionEn": "First archived Hamburg source snapshot for lower-secondary physics. The snapshot activates a general orientation anchor and two broad retained checkpoint bands for the minimum requirements at the end of grade 8 and for the transition into upper secondary level.",
+  "compatibilityOnly": true,
+  "legacyHiddenByDefault": true,
+  "goals": [
+    {
+      "id": "hh-phys-sek1-root",
+      "title": "Physik Sekundarstufe I",
+      "titleEn": "Physics Secondary Level I",
+      "description": "Breiter erster Hamburg-Quellsnapshot fuer die Physik der Sekundarstufe I mit einem allgemeinen Orientierungsanker sowie zwei retained Checkpoint-Baendern fuer die Mindestanforderungen am Ende der Jahrgangsstufe 8 und fuer den Uebergang in die Studienstufe.",
+      "descriptionEn": "Broad first Hamburg source snapshot for lower-secondary physics with a general orientation anchor and two retained checkpoint bands for the minimum requirements at the end of grade 8 and for the transition into upper secondary level.",
+      "weight": 8,
+      "tags": [
+        "Sek1",
+        "PilotSubset",
+        "Hamburg",
+        "Mindestanforderungen"
+      ],
+      "contains": [
+        "hh-phys-sek1-orientation",
+        "hh-phys-sek1-j8",
+        "hh-phys-sek1-transition"
+      ],
+      "requires": [
+        "hh-phys-sek1-orientation"
+      ],
+      "sourceRef": "Bildungsplan Gymnasium Sekundarstufe I Physik Hamburg (2011), 3 Anforderungen und Inhalte im Fach Physik sowie 3.2 Inhalte, S. 17-23.",
+      "dimensionTags": {
+        "framework": "hh-gym-seki-physik-2011",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "GLOBAL",
+        "area": "Sekundarstufe I"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "hh-phys-sek1-orientation",
+      "title": "Warum Physik? - Naturphaenomene beschreiben, erklaeren und technisch deuten",
+      "titleEn": "Why Physics? - Describing, explaining, and technically interpreting natural phenomena",
+      "description": "Der Hamburger Physikunterricht der Sekundarstufe I fuehrt in fachliche Modelle, Experimente und quantitative Beschreibungen ein und nutzt Physik zur Orientierung in Alltag, Technik, Umwelt und spaeterer Studienstufe.",
+      "descriptionEn": "Hamburg lower-secondary physics introduces domain models, experiments, and quantitative descriptions and uses physics as an orientation tool for everyday life, technology, the environment, and later upper secondary work.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "Orientation",
+        "Hamburg"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Bildungsplan Gymnasium Sekundarstufe I Physik Hamburg (2011), 1 Lernen im Fach Physik und 3 Anforderungen und Inhalte im Fach Physik, S. 3-18.",
+      "dimensionTags": {
+        "framework": "hh-gym-seki-physik-2011",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "GLOBAL",
+        "area": "Orientierung"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "hh-phys-sek1-j8",
+      "title": "J8 Mindestanforderungen",
+      "titleEn": "J8 minimum requirements",
+      "description": "Breiter Hamburg-Checkpoint fuer die Mindestanforderungen am Ende der Jahrgangsstufe 8 mit einem retained Einstieg auf Elektrizitaet, Bewegung und Kraft sowie Licht und Schall.",
+      "descriptionEn": "Broad Hamburg checkpoint for the minimum requirements at the end of grade 8 with a retained entry on electricity, motion and force, and light and sound.",
+      "weight": 3,
+      "tags": [
+        "Sek1",
+        "J8",
+        "Hamburg",
+        "Mindestanforderungen"
+      ],
+      "contains": [
+        "hh-phys-sek1-j8-electricity",
+        "hh-phys-sek1-j8-motion-force",
+        "hh-phys-sek1-j8-light-sound"
+      ],
+      "requires": [
+        "hh-phys-sek1-orientation"
+      ],
+      "sourceRef": "Bildungsplan Gymnasium Sekundarstufe I Physik Hamburg (2011), Mindestanforderungen am Ende der Jahrgangsstufe 8, S. 18-22.",
+      "dimensionTags": {
+        "framework": "hh-gym-seki-physik-2011",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J8",
+        "area": "Mindestanforderungen"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "hh-phys-sek1-j8-electricity",
+      "title": "J8 Elektrizitaet: Ladung, einfacher Stromkreis und elektrische Wirkungen",
+      "titleEn": "J8 Electricity: charge, simple circuits, and electrical effects",
+      "description": "Die Lernenden beschreiben den einfachen Stromkreis mit Spannung, Stromstaerke und Reihen- bzw. Parallelschaltung, deuten elektrische Ladung und erkennen an einfachen Geraeten die Waerme- und Magnetwirkung des elektrischen Stroms.",
+      "descriptionEn": "Learners describe the simple electric circuit with voltage, current, and series or parallel wiring, interpret electric charge, and identify the heating and magnetic effects of electric current in simple devices.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "J8",
+        "Elektrizitaet",
+        "Hamburg"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Bildungsplan Gymnasium Sekundarstufe I Physik Hamburg (2011), Mindestanforderungen am Ende der Jahrgangsstufe 8, Elektrizitaet, S. 18-19.",
+      "dimensionTags": {
+        "framework": "hh-gym-seki-physik-2011",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J8",
+        "area": "Elektrizitaet"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "hh-phys-sek1-j8-motion-force",
+      "title": "J8 Bewegung und Kraft: gleichfoermige Bewegung, Kraftwirkungen und Sicherheit",
+      "titleEn": "J8 Motion and force: uniform motion, force effects, and safety",
+      "description": "Die Lernenden beschreiben einfache Bewegungen mit Weg, Zeit und Geschwindigkeit, deuten Verformung und Beschleunigung als Kraftwirkungen und beurteilen Alltagssituationen wie den Strassenverkehr unter mechanischen Sicherheitsaspekten.",
+      "descriptionEn": "Learners describe simple motions with distance, time, and speed, interpret deformation and acceleration as effects of force, and assess everyday situations such as road traffic from a mechanics and safety perspective.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "J8",
+        "BewegungKraft",
+        "Hamburg"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Bildungsplan Gymnasium Sekundarstufe I Physik Hamburg (2011), Mindestanforderungen am Ende der Jahrgangsstufe 8, Bewegung und Kraft, S. 19-20.",
+      "dimensionTags": {
+        "framework": "hh-gym-seki-physik-2011",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J8",
+        "area": "Bewegung und Kraft"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "hh-phys-sek1-j8-light-sound",
+      "title": "J8 Licht und Schall: Ausbreitung, Reflexion und Analogien",
+      "titleEn": "J8 Light and sound: propagation, reflection, and analogies",
+      "description": "Die Lernenden verwenden das Strahlenmodell des Lichts, deuten Reflexion von Licht und Schall und benennen grundlegende Analogien zwischen Schall- und Lichtausbreitung.",
+      "descriptionEn": "Learners use the ray model of light, interpret the reflection of light and sound, and identify basic analogies between sound and light propagation.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "J8",
+        "LichtSchall",
+        "Hamburg"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Bildungsplan Gymnasium Sekundarstufe I Physik Hamburg (2011), Mindestanforderungen am Ende der Jahrgangsstufe 8, Licht und Materie / Schall-Licht-Analogien, S. 21-22.",
+      "dimensionTags": {
+        "framework": "hh-gym-seki-physik-2011",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J8",
+        "area": "Licht und Schall"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "hh-phys-sek1-transition",
+      "title": "Uebergang in die Studienstufe",
+      "titleEn": "Transition into upper secondary level",
+      "description": "Breiter Hamburg-Checkpoint fuer die Mindestanforderungen beim Uebergang in die Studienstufe mit retained Folgestreifen auf Elektrizitaet und Magnetismus, Bewegung und Kraft, Energie sowie Licht und Materie.",
+      "descriptionEn": "Broad Hamburg checkpoint for the minimum requirements on transition into upper secondary level with retained follow-on strips on electricity and magnetism, motion and force, energy, and light and matter.",
+      "weight": 4,
+      "tags": [
+        "Sek1",
+        "J10",
+        "Hamburg",
+        "Mindestanforderungen"
+      ],
+      "contains": [
+        "hh-phys-sek1-transition-electricity-magnetism",
+        "hh-phys-sek1-transition-motion-force",
+        "hh-phys-sek1-transition-energy",
+        "hh-phys-sek1-transition-light-matter"
+      ],
+      "requires": [
+        "hh-phys-sek1-j8"
+      ],
+      "sourceRef": "Bildungsplan Gymnasium Sekundarstufe I Physik Hamburg (2011), Mindestanforderungen fuer den Uebergang in die Studienstufe, S. 18-22.",
+      "dimensionTags": {
+        "framework": "hh-gym-seki-physik-2011",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J10",
+        "area": "Mindestanforderungen"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "hh-phys-sek1-transition-electricity-magnetism",
+      "title": "Uebergang Elektrizitaet und Magnetismus: Widerstand, Kennlinien und Sensoren",
+      "titleEn": "Transition electricity and magnetism: resistance, characteristic curves, and sensors",
+      "description": "Die Lernenden nutzen Widerstand, Spannung-Strom-Kennlinien und einfache Sensorprinzipien fuer weitergefuehrte Schaltungen, deuten technische Anwendungen der magnetischen und thermischen Stromwirkung und begruenden Sicherheitsregeln im Umgang mit Elektrizitaet.",
+      "descriptionEn": "Learners use resistance, voltage-current characteristic curves, and simple sensor principles for more advanced circuits, interpret technical applications of the magnetic and thermal effects of electric current, and justify safety rules for dealing with electricity.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "J10",
+        "Elektrizitaet",
+        "Magnetismus",
+        "Hamburg"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Bildungsplan Gymnasium Sekundarstufe I Physik Hamburg (2011), Mindestanforderungen fuer den Uebergang in die Studienstufe, Elektrizitaet, S. 18-19.",
+      "dimensionTags": {
+        "framework": "hh-gym-seki-physik-2011",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J10",
+        "area": "Elektrizitaet und Magnetismus"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "hh-phys-sek1-transition-motion-force",
+      "title": "Uebergang Bewegung und Kraft: beschleunigte Bewegung, freier Fall und Newton",
+      "titleEn": "Transition motion and force: accelerated motion, free fall, and Newton",
+      "description": "Die Lernenden beschreiben beschleunigte Bewegungen, nutzen die Bewegungsgleichungen fuer den freien Fall und ordnen Kraft, Beschleunigung und Bewegungsdaten in einem ersten quantitativen Mechanikzugang zusammen.",
+      "descriptionEn": "Learners describe accelerated motion, use the equations of motion for free fall, and bring together force, acceleration, and motion data in an initial quantitative mechanics approach.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "J10",
+        "BewegungKraft",
+        "Hamburg"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Bildungsplan Gymnasium Sekundarstufe I Physik Hamburg (2011), Mindestanforderungen fuer den Uebergang in die Studienstufe, Bewegung und Kraft, S. 19-20.",
+      "dimensionTags": {
+        "framework": "hh-gym-seki-physik-2011",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J10",
+        "area": "Bewegung und Kraft"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "hh-phys-sek1-transition-energy",
+      "title": "Uebergang Energie: Erhaltung, Wirkungsgrad, Klima und Kraftwerke",
+      "titleEn": "Transition energy: conservation, efficiency, climate, and power plants",
+      "description": "Die Lernenden argumentieren mit Energie als Erhaltungsgroesse, vergleichen Energiewandler und Wirkungsgrade, beschreiben Energieuebertragung im Stromkreis und deuten Kraftwerke, Klimawandel und Einsparmoeglichkeiten in gesellschaftlichen Zusammenhaengen.",
+      "descriptionEn": "Learners argue with energy as a conserved quantity, compare energy converters and efficiencies, describe energy transfer in electric circuits, and interpret power plants, climate change, and saving options in societal contexts.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "J10",
+        "Energie",
+        "Hamburg"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Bildungsplan Gymnasium Sekundarstufe I Physik Hamburg (2011), Mindestanforderungen fuer den Uebergang in die Studienstufe, Energie, S. 20-21.",
+      "dimensionTags": {
+        "framework": "hh-gym-seki-physik-2011",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J10",
+        "area": "Energie"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "hh-phys-sek1-transition-light-matter",
+      "title": "Uebergang Licht und Materie: Brechung, Spektrum, Atommodell und Strahlung",
+      "titleEn": "Transition light and matter: refraction, spectrum, atomic model, and radiation",
+      "description": "Die Lernenden erweitern den Optikstreifen um Brechung, Spektralfarben und UV-Schutz und verbinden ihn mit ersten Vorstellungen zum Aufbau der Materie, zu ionisierender Strahlung und zur Energieerzeugung in der Sonne.",
+      "descriptionEn": "Learners extend the optics strip by refraction, spectral colours, and UV protection and connect it with first ideas about the structure of matter, ionising radiation, and the production of energy in the sun.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "J10",
+        "LichtMaterie",
+        "Hamburg"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Bildungsplan Gymnasium Sekundarstufe I Physik Hamburg (2011), Mindestanforderungen fuer den Uebergang in die Studienstufe, Licht und Materie / Materie, S. 21-22.",
+      "dimensionTags": {
+        "framework": "hh-gym-seki-physik-2011",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J10",
+        "area": "Licht und Materie"
+      },
+      "type": "atomic"
+    }
+  ]
+}

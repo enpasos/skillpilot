@@ -1,0 +1,419 @@
+{
+  "landscapeId": "8b6387d0-7fc8-40e4-89ca-e5049b5bc42f",
+  "locale": "de-DE",
+  "country": "DE",
+  "region": "TH",
+  "schoolType": "Gymnasium",
+  "subject": "Physik",
+  "frameworkId": "th-lp2012-2024-gym-sek2-physik",
+  "title": "Physik Sekundarstufe II (Thueringen, erster Quellsnapshot)",
+  "titleEn": "Physics secondary level II (Thuringia, first source snapshot)",
+  "description": "Erster archivierter Thueringen-Quellsnapshot fuer die Physik der Sekundarstufe II. Der Snapshot verbindet den retained Klassenstufe-11-Streifen aus dem Lehrplan 2012 mit den vier broad Inhaltsbereichen der 2024er Weiterentwicklung fuer die Qualifikationsphase.",
+  "descriptionEn": "First archived Thuringia source snapshot for upper-secondary physics. The snapshot combines the retained grade-11 strip from the 2012 curriculum with the four broad content areas of the 2024 update for the qualification phase.",
+  "compatibilityOnly": true,
+  "legacyHiddenByDefault": true,
+  "goals": [
+    {
+      "id": "th-phys-sek2-root",
+      "title": "Physik Sekundarstufe II",
+      "titleEn": "Physics secondary level II",
+      "description": "Breiter erster Thueringen-Quellsnapshot fuer die Physik der Sekundarstufe II mit einem allgemeinen Orientierungsanker, einem retained Klassenstufe-11-Streifen und einem retained Qualifikationsphasen-Streifen.",
+      "descriptionEn": "Broad first Thuringia source snapshot for upper-secondary physics with a general orientation anchor, a retained grade-11 strip, and a retained qualification-phase strip.",
+      "weight": 11,
+      "tags": [
+        "Sek2",
+        "PilotSubset",
+        "Thueringen"
+      ],
+      "contains": [
+        "th-phys-sek2-orientation",
+        "th-phys-sek2-j11",
+        "th-phys-sek2-qphase"
+      ],
+      "requires": [
+        "th-phys-sek2-orientation"
+      ],
+      "sourceRef": "Lehrplan Physik Gymnasium 2012, Klassenstufe 11, S. 25-32; Lehrplan Physik Gymnasium 2024, Qualifikationsphase, S. 14-26.",
+      "dimensionTags": {
+        "framework": "th-lp2012-2024-gym-sek2-physik",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "GLOBAL",
+        "area": "Sekundarstufe II"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "th-phys-sek2-orientation",
+      "title": "Warum Physik in 11/12? - Wissenschaftspropädeutik und Verantwortung",
+      "titleEn": "Why physics in grades 11/12? - scientific propaedeutics and responsibility",
+      "description": "Die Thueringer Oberstufenlehrplaene rahmen Physik als wissenschaftspropädeutisches Fach, das qualitative und quantitative Modellbildung, Experimentieren und gesellschaftliche Verantwortung verbindet.",
+      "descriptionEn": "The Thuringia upper-secondary curricula frame physics as a scientific-propaedeutic subject combining qualitative and quantitative modelling, experimentation, and societal responsibility.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "Orientation",
+        "Thueringen"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Lehrplan Physik Gymnasium 2012, Kapitel 3-4, S. 25 und 33; Lehrplan Physik Gymnasium 2024, Kapitel 1-4, S. 4-14.",
+      "dimensionTags": {
+        "framework": "th-lp2012-2024-gym-sek2-physik",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "GLOBAL",
+        "area": "Orientierung"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "th-phys-sek2-j11",
+      "title": "Klassenstufe 11",
+      "titleEn": "Grade 11",
+      "description": "Breiter erster Thueringen-Quellanker fuer die Klassenstufe 11 mit den retained Themenbereichen Kraefte/Bewegungen, Elektrizitaet, Waerme, Optik, Erhaltungssaetze und Radioaktivitaet.",
+      "descriptionEn": "Broad first Thuringia source anchor for grade 11 with retained topic areas in forces/motion, electricity, heat, optics, conservation laws, and radioactivity.",
+      "weight": 6,
+      "tags": [
+        "Sek2",
+        "J11",
+        "Thueringen"
+      ],
+      "contains": [
+        "th-phys-j11-forces-motion",
+        "th-phys-j11-electricity-conduction",
+        "th-phys-j11-heat-state-changes",
+        "th-phys-j11-light-imaging",
+        "th-phys-j11-conservation-laws",
+        "th-phys-j11-radioactivity"
+      ],
+      "requires": [
+        "th-phys-sek2-orientation"
+      ],
+      "sourceRef": "Lehrplan Physik Gymnasium 2012, Klassenstufe 11, Themenbereiche 3.1-3.6, S. 25-32.",
+      "dimensionTags": {
+        "framework": "th-lp2012-2024-gym-sek2-physik",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J11",
+        "area": "Klassenstufe 11"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "th-phys-j11-forces-motion",
+      "title": "Klassenstufe 11: Kraefte und Bewegungen",
+      "titleEn": "Grade 11: forces and motion",
+      "description": "Breiter retained Thueringen-Quellstrip fuer Kraefte, newtonsche Gesetze, Kreisbewegung und Gravitation in Klassenstufe 11.",
+      "descriptionEn": "Broad retained Thuringia source strip for forces, Newton's laws, circular motion, and gravitation in grade 11.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "J11",
+        "Mechanics",
+        "Thueringen"
+      ],
+      "contains": [],
+      "requires": [
+        "th-phys-sek2-orientation"
+      ],
+      "sourceRef": "Lehrplan Physik Gymnasium 2012, 3.1 Kraefte und Bewegungen, S. 25-26.",
+      "dimensionTags": {
+        "framework": "th-lp2012-2024-gym-sek2-physik",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J11",
+        "area": "Mechanik"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "th-phys-j11-electricity-conduction",
+      "title": "Klassenstufe 11: Elektrische Groessen und Leitungsvorgaenge",
+      "titleEn": "Grade 11: electrical quantities and conduction processes",
+      "description": "Breiter retained Thueringen-Quellstrip fuer elektrische Groessen, Stromkreise und elektrische Leitungsvorgaenge in Klassenstufe 11.",
+      "descriptionEn": "Broad retained Thuringia source strip for electrical quantities, circuits, and electrical conduction processes in grade 11.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "J11",
+        "Electricity",
+        "Thueringen"
+      ],
+      "contains": [],
+      "requires": [
+        "th-phys-sek2-orientation"
+      ],
+      "sourceRef": "Lehrplan Physik Gymnasium 2012, 3.2 Elektrische Groessen und elektrische Leitungsvorgaenge, S. 27.",
+      "dimensionTags": {
+        "framework": "th-lp2012-2024-gym-sek2-physik",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J11",
+        "area": "Elektrizitaet"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "th-phys-j11-heat-state-changes",
+      "title": "Klassenstufe 11: Temperatur, Waerme und Zustandsaenderungen",
+      "titleEn": "Grade 11: temperature, heat, and changes of state",
+      "description": "Breiter retained Thueringen-Quellstrip fuer Temperatur, Waerme und Zustandsaenderungen in Klassenstufe 11.",
+      "descriptionEn": "Broad retained Thuringia source strip for temperature, heat, and changes of state in grade 11.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "J11",
+        "Thermodynamics",
+        "Thueringen"
+      ],
+      "contains": [],
+      "requires": [
+        "th-phys-sek2-orientation"
+      ],
+      "sourceRef": "Lehrplan Physik Gymnasium 2012, 3.3 Temperatur, Waerme und Zustandsaenderungen, S. 27-28.",
+      "dimensionTags": {
+        "framework": "th-lp2012-2024-gym-sek2-physik",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J11",
+        "area": "Waerme"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "th-phys-j11-light-imaging",
+      "title": "Klassenstufe 11: Lichtausbreitung und Bildentstehung",
+      "titleEn": "Grade 11: light propagation and image formation",
+      "description": "Breiter retained Thueringen-Quellstrip fuer Reflexion, Brechung und Bildentstehung an Linsen in Klassenstufe 11.",
+      "descriptionEn": "Broad retained Thuringia source strip for reflection, refraction, and image formation with lenses in grade 11.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "J11",
+        "Optics",
+        "Thueringen"
+      ],
+      "contains": [],
+      "requires": [
+        "th-phys-sek2-orientation"
+      ],
+      "sourceRef": "Lehrplan Physik Gymnasium 2012, 3.4 Lichtausbreitung und Bildentstehung, S. 28-29.",
+      "dimensionTags": {
+        "framework": "th-lp2012-2024-gym-sek2-physik",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J11",
+        "area": "Optik"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "th-phys-j11-conservation-laws",
+      "title": "Klassenstufe 11: Erhaltungssaetze",
+      "titleEn": "Grade 11: conservation laws",
+      "description": "Breiter retained Thueringen-Quellstrip fuer Energie-, Impuls- und Stoesserhaltung in Klassenstufe 11.",
+      "descriptionEn": "Broad retained Thuringia source strip for conservation of energy, momentum, and collisions in grade 11.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "J11",
+        "Conservation",
+        "Thueringen"
+      ],
+      "contains": [],
+      "requires": [
+        "th-phys-sek2-orientation"
+      ],
+      "sourceRef": "Lehrplan Physik Gymnasium 2012, 3.5 Erhaltungssaetze, S. 29-30.",
+      "dimensionTags": {
+        "framework": "th-lp2012-2024-gym-sek2-physik",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J11",
+        "area": "Erhaltungssaetze"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "th-phys-j11-radioactivity",
+      "title": "Klassenstufe 11: Radioaktivitaet",
+      "titleEn": "Grade 11: radioactivity",
+      "description": "Breiter retained Thueringen-Quellstrip fuer Atomkerne, Strahlungsarten, Zerfall und Halbwertszeit in Klassenstufe 11.",
+      "descriptionEn": "Broad retained Thuringia source strip for atomic nuclei, radiation types, decay, and half-life in grade 11.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "J11",
+        "NuclearPhysics",
+        "Thueringen"
+      ],
+      "contains": [],
+      "requires": [
+        "th-phys-sek2-orientation"
+      ],
+      "sourceRef": "Lehrplan Physik Gymnasium 2012, 3.6 Radioaktivitaet, S. 31-32.",
+      "dimensionTags": {
+        "framework": "th-lp2012-2024-gym-sek2-physik",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J11",
+        "area": "Radioaktivitaet"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "th-phys-sek2-qphase",
+      "title": "Qualifikationsphase",
+      "titleEn": "Qualification phase",
+      "description": "Breiter erster Thueringen-Quellanker fuer die Qualifikationsphase mit den vier retained Inhaltsbereichen der Weiterentwicklung 2024.",
+      "descriptionEn": "Broad first Thuringia source anchor for the qualification phase with the four retained content areas of the 2024 update.",
+      "weight": 4,
+      "tags": [
+        "Sek2",
+        "QPhase",
+        "Thueringen"
+      ],
+      "contains": [
+        "th-phys-q-fields",
+        "th-phys-q-oscillations-waves",
+        "th-phys-q-special-relativity",
+        "th-phys-q-quantum-matter"
+      ],
+      "requires": [
+        "th-phys-sek2-orientation"
+      ],
+      "sourceRef": "Lehrplan Physik Gymnasium 2024, Qualifikationsphase, Inhaltsbereiche 4.1-4.4, S. 14-26.",
+      "dimensionTags": {
+        "framework": "th-lp2012-2024-gym-sek2-physik",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "QPHASE",
+        "area": "Qualifikationsphase"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "th-phys-q-fields",
+      "title": "Qualifikationsphase: Elektrische und magnetische Felder",
+      "titleEn": "Qualification phase: electric and magnetic fields",
+      "description": "Breiter retained Thueringen-Quellstrip fuer elektrische und magnetische Felder, Feldvergleich und elektromagnetische Induktion in der Qualifikationsphase.",
+      "descriptionEn": "Broad retained Thuringia source strip for electric and magnetic fields, field comparison, and electromagnetic induction in the qualification phase.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "QPhase",
+        "Fields",
+        "Thueringen"
+      ],
+      "contains": [],
+      "requires": [
+        "th-phys-sek2-orientation"
+      ],
+      "sourceRef": "Lehrplan Physik Gymnasium 2024, 4.1 Elektrische und magnetische Felder, S. 14-18.",
+      "dimensionTags": {
+        "framework": "th-lp2012-2024-gym-sek2-physik",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "QPHASE",
+        "area": "Felder"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "th-phys-q-oscillations-waves",
+      "title": "Qualifikationsphase: Mechanische und elektromagnetische Schwingungen und Wellen",
+      "titleEn": "Qualification phase: mechanical and electromagnetic oscillations and waves",
+      "description": "Breiter retained Thueringen-Quellstrip fuer mechanische und elektromagnetische Schwingungen, mechanische und elektromagnetische Wellen sowie Wellenoptik in der Qualifikationsphase.",
+      "descriptionEn": "Broad retained Thuringia source strip for mechanical and electromagnetic oscillations, mechanical and electromagnetic waves, and wave optics in the qualification phase.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "QPhase",
+        "Waves",
+        "Thueringen"
+      ],
+      "contains": [],
+      "requires": [
+        "th-phys-sek2-orientation"
+      ],
+      "sourceRef": "Lehrplan Physik Gymnasium 2024, 4.2 Mechanische und elektromagnetische Schwingungen und Wellen, S. 19-22.",
+      "dimensionTags": {
+        "framework": "th-lp2012-2024-gym-sek2-physik",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "QPHASE",
+        "area": "Schwingungen und Wellen"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "th-phys-q-special-relativity",
+      "title": "Qualifikationsphase: Spezielle Relativitätstheorie",
+      "titleEn": "Qualification phase: special relativity",
+      "description": "Breiter retained Thueringen-Quellstrip fuer kinematische und dynamische Grundlagen der speziellen Relativitaetstheorie im erhoehten Anforderungsniveau.",
+      "descriptionEn": "Broad retained Thuringia source strip for kinematic and dynamic foundations of special relativity in the advanced demand level.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "QPhase",
+        "Relativity",
+        "Thueringen"
+      ],
+      "contains": [],
+      "requires": [
+        "th-phys-sek2-orientation"
+      ],
+      "sourceRef": "Lehrplan Physik Gymnasium 2024, 4.3 Spezielle Relativitaetstheorie, S. 22-23.",
+      "dimensionTags": {
+        "framework": "th-lp2012-2024-gym-sek2-physik",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "QPHASE",
+        "area": "Relativitaet"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "th-phys-q-quantum-matter",
+      "title": "Qualifikationsphase: Quantenphysik und Materie",
+      "titleEn": "Qualification phase: quantum physics and matter",
+      "description": "Breiter retained Thueringen-Quellstrip fuer Quantenobjekte, Atomvorstellungen und Kernphysik in der Qualifikationsphase.",
+      "descriptionEn": "Broad retained Thuringia source strip for quantum objects, atomic models, and nuclear physics in the qualification phase.",
+      "weight": 1,
+      "tags": [
+        "Sek2",
+        "QPhase",
+        "QuantumPhysics",
+        "Thueringen"
+      ],
+      "contains": [],
+      "requires": [
+        "th-phys-sek2-orientation"
+      ],
+      "sourceRef": "Lehrplan Physik Gymnasium 2024, 4.4 Quantenphysik und Materie, S. 23-26.",
+      "dimensionTags": {
+        "framework": "th-lp2012-2024-gym-sek2-physik",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "QPHASE",
+        "area": "Quantenphysik und Materie"
+      },
+      "type": "atomic"
+    }
+  ]
+}

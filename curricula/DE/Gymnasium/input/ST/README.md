@@ -28,5 +28,9 @@
   - `https://lisa.sachsen-anhalt.de/unterricht/lehrplaene`
 
 ### Physik-Naechste Schritte
-- die archivierten Sachsen-Anhalt-Physikquellen jetzt gemeinsam als retained Source-Onboarding-Baustein im Physik-Tracker auf `P1` halten
-- als naechsten Sachsen-Anhalt-Physik-Schritt erst source-backed Sek-I- und Sek-II-Snapshots plus Provenance-Scaffold anlegen, bevor irgendein topic-spezifisches Mapping authored wird
+- die archivierte Sachsen-Anhalt-Physikquelle jetzt als aktive retained Source-Lanes mit source-backed Snapshots in
+  - `lower-secondary/source-json/DE_SAN_S_GYM_1_PHYSIK.de.json.snapshot`
+  - `upper-secondary/source-json/DE_SAN_S_GYM_2_PHYSIK.de.json.snapshot`
+  stabil halten
+- die Aktivierung ist dokumentiert in `curricula/DE/Gymnasium/provenance/st-physics-onboarding.md`
+- vor jedem topic-spezifischen ST-Physik-Mapping erst die restlichen neu archivierten Bundeslaender ebenfalls auf `P2` bringen

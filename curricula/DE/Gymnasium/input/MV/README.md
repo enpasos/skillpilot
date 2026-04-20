@@ -36,5 +36,9 @@
 - **Offizielle Quelle**: [Rahmenplan Physik Sekundarbereich II (Erprobungsfassung 2022)](https://www.bildung-mv.de/export/sites/bildungsserver/.galleries/dokumente/unterricht/rahmenplaene/RP_PHYS_SEK2_Erprobungsfassung.pdf)
 
 ### Physik-Naechste Schritte
-- die archivierten Mecklenburg-Vorpommern-Sek-I- und Sek-II-Physikquellen jetzt gemeinsam als retained Source-Onboarding-Baustein im Physik-Tracker auf `P1` halten
-- als naechsten Mecklenburg-Vorpommern-Physik-Schritt erst source-backed Sek-I- und Sek-II-Snapshots plus Provenance-Scaffold anlegen, bevor irgendein topic-spezifisches Mapping authored wird
+- die archivierten Mecklenburg-Vorpommern-Sek-I- und Sek-II-Physikquellen jetzt als aktive retained Source-Lanes mit source-backed Snapshots in
+  - `lower-secondary/source-json/DE_MVP_S_GYM_1_PHYSIK.de.json.snapshot`
+  - `upper-secondary/source-json/DE_MVP_S_GYM_2_PHYSIK.de.json.snapshot`
+  stabil halten
+- die Aktivierung ist dokumentiert in `curricula/DE/Gymnasium/provenance/mv-physics-onboarding.md`
+- vor jedem topic-spezifischen MV-Physik-Mapping erst die restlichen neu archivierten Bundeslaender ebenfalls auf `P2` bringen

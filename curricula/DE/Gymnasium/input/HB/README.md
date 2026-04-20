@@ -25,5 +25,8 @@
   - Direkte PDF-Quelle: [LIS Bremen - Gymnasiale Oberstufe Physik](https://www.lis.bremen.de/sixcms/media.php/13/GyO_Physik_2022.pdf)
 
 ### Physik-Naechste Schritte
-- die archivierten Bremer Sek-I- und Sek-II-Physikquellen jetzt gemeinsam als retained Source-Onboarding-Baustein im Physik-Tracker auf `P1` halten
-- als naechsten Bremer Physik-Schritt erst source-backed Sek-I- und Sek-II-Snapshots plus Provenance-Scaffold anlegen, bevor irgendein topic-spezifisches Mapping authored wird
+- die ersten retained Bremer Physik-Snapshots sind jetzt aktiv unter
+  - `curricula/DE/Gymnasium/input/HB/lower-secondary/source-json/DE_BRE_S_GYM_1_PHYSIK.de.json.snapshot`
+  - `curricula/DE/Gymnasium/input/HB/upper-secondary/source-json/DE_BRE_S_GYM_2_PHYSIK.de.json.snapshot`
+- die Bremer Sek-I- und Sek-II-Physiklane ist damit im gemeinsamen Provenance-Scaffold auf `P2`
+- kein topic-spezifisches reviewed Mapping authoren, bevor die laufende bundesweite `P2`-Tranche fuer die weiteren neu archivierten Physiklaender ebenfalls abgeschlossen ist

@@ -1,0 +1,756 @@
+{
+  "landscapeId": "d2e1fbb7-9e42-49a7-a07b-a7973156da12",
+  "locale": "de-DE",
+  "country": "DE",
+  "region": "SN",
+  "schoolType": "Gymnasium",
+  "subject": "Physik",
+  "frameworkId": "sn-lp2025-gym-sek1-physik",
+  "title": "Physik Sekundarstufe I (Sachsen, erster Quellsnapshot)",
+  "titleEn": "Physics Secondary Level I (Saxony, first source snapshot)",
+  "description": "Erster archivierter Sachsen-Quellsnapshot fuer die Physik der Sekundarstufe I. Der Snapshot umfasst einen allgemeinen Orientierungsanker sowie die Klassenstufen 6 bis 10 mit ihren jeweiligen Lernbereichsankern aus dem gemeinsamen Gymnasium-Lehrplan.",
+  "descriptionEn": "First archived Saxony source snapshot for lower-secondary physics. The snapshot covers a general orientation anchor plus grades 6 to 10 with their learning-area anchors from the shared Gymnasium curriculum.",
+  "compatibilityOnly": true,
+  "legacyHiddenByDefault": true,
+  "goals": [
+    {
+      "id": "sn-phys-sek1-root",
+      "title": "Physik Sekundarstufe I",
+      "titleEn": "Physics secondary level I",
+      "description": "Breiter erster Sachsen-Quellsnapshot fuer die Physik der Sekundarstufe I mit einem allgemeinen Orientierungsanker sowie den Klassenstufen 6 bis 10 und ihren jeweiligen Lernbereichsankern.",
+      "descriptionEn": "Broad first Saxony source snapshot for lower-secondary physics with a general orientation anchor plus grades 6 to 10 and their learning-area anchors.",
+      "weight": 21,
+      "tags": [
+        "Sek1",
+        "PilotSubset",
+        "Sachsen"
+      ],
+      "contains": [
+        "sn-phys-sek1-orientation",
+        "sn-phys-sek1-k6",
+        "sn-phys-sek1-k7",
+        "sn-phys-sek1-k8",
+        "sn-phys-sek1-k9",
+        "sn-phys-sek1-k10"
+      ],
+      "requires": [
+        "sn-phys-sek1-orientation"
+      ],
+      "sourceRef": "Lehrplan Gymnasium Physik Sachsen, Uebersicht ueber die Lernbereiche und Zeitrichtwerte sowie Klassenstufen 6-10, S. 4-31.",
+      "dimensionTags": {
+        "framework": "sn-lp2025-gym-sek1-physik",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "GLOBAL",
+        "area": "Sekundarstufe I"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "sn-phys-sek1-orientation",
+      "title": "Warum Physik? - Naturerscheinungen beschreiben, erklaeren und anwenden",
+      "titleEn": "Why physics? - Describing, explaining, and applying natural phenomena",
+      "description": "Der saechsische Physiklehrplan rahmt Physik als Naturwissenschaft, die Erscheinungen der Natur und Technik mit Begriffen, Gesetzen, Experimenten und Modellen erschliesst und fuer Alltag, Gesellschaft und Technik nutzbar macht.",
+      "descriptionEn": "The Saxon physics curriculum frames physics as a natural science that opens up phenomena of nature and technology through concepts, laws, experiments, and models and makes them usable for everyday life, society, and technology.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "Orientation",
+        "Sachsen"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Lehrplan Gymnasium Physik Sachsen, Ziele und Aufgaben des Faches Physik, S. 1-3.",
+      "dimensionTags": {
+        "framework": "sn-lp2025-gym-sek1-physik",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "GLOBAL",
+        "area": "Orientierung"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "sn-phys-sek1-k6",
+      "title": "Klassenstufe 6",
+      "titleEn": "Grade 6",
+      "description": "Breiter Sachsen-Anker fuer Klassenstufe 6 mit den Lernbereichen Licht, Eigenschaften und Bewegungen von Koerpern, Temperatur und Zustand von Koerpern sowie elektrische Stromkreise.",
+      "descriptionEn": "Broad Saxony anchor for grade 6 with the learning areas light, properties and motion of bodies, temperature and state of bodies, and electric circuits.",
+      "weight": 4,
+      "tags": [
+        "Sek1",
+        "K6",
+        "Sachsen"
+      ],
+      "contains": [
+        "sn-phys-k6-light",
+        "sn-phys-k6-bodies-motion",
+        "sn-phys-k6-temperature-state",
+        "sn-phys-k6-circuits"
+      ],
+      "requires": [
+        "sn-phys-sek1-orientation"
+      ],
+      "sourceRef": "Lehrplan Gymnasium Physik Sachsen, Klassenstufe 6, Lernbereiche 1-4, S. 4-5 und 6-16.",
+      "dimensionTags": {
+        "framework": "sn-lp2025-gym-sek1-physik",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "K6",
+        "area": "Klassenstufe 6"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "sn-phys-k6-light",
+      "title": "K6 Lernbereich 1 Licht und seine Eigenschaften",
+      "titleEn": "K6 learning area 1 light and its properties",
+      "description": "Breiter Lernbereichsanker fuer Licht, Schatten, Reflexion, Brechung und erste optische Anwendungen in Klassenstufe 6.",
+      "descriptionEn": "Broad learning-area anchor for light, shadows, reflection, refraction, and first optical applications in grade 6.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "K6",
+        "Sachsen",
+        "Lernbereich"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Lehrplan Gymnasium Physik Sachsen, Klassenstufe 6, Lernbereich 1, S. 6-9.",
+      "dimensionTags": {
+        "framework": "sn-lp2025-gym-sek1-physik",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "K6",
+        "area": "Optik"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "sn-phys-k6-bodies-motion",
+      "title": "K6 Lernbereich 2 Eigenschaften und Bewegungen von Koerpern",
+      "titleEn": "K6 learning area 2 properties and motions of bodies",
+      "description": "Breiter Lernbereichsanker fuer Koerpereigenschaften, Bewegungen, Geschwindigkeit und erste mechanische Beschreibungen in Klassenstufe 6.",
+      "descriptionEn": "Broad learning-area anchor for properties of bodies, motion, speed, and first mechanical descriptions in grade 6.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "K6",
+        "Sachsen",
+        "Lernbereich"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Lehrplan Gymnasium Physik Sachsen, Klassenstufe 6, Lernbereich 2, S. 9-11.",
+      "dimensionTags": {
+        "framework": "sn-lp2025-gym-sek1-physik",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "K6",
+        "area": "Mechanik"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "sn-phys-k6-temperature-state",
+      "title": "K6 Lernbereich 3 Temperatur und Zustand von Koerpern",
+      "titleEn": "K6 learning area 3 temperature and state of bodies",
+      "description": "Breiter Lernbereichsanker fuer Temperatur, Aggregatzustaende, Waerme und Zustandsaenderungen von Koerpern in Klassenstufe 6.",
+      "descriptionEn": "Broad learning-area anchor for temperature, states of matter, heat, and changes of state of bodies in grade 6.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "K6",
+        "Sachsen",
+        "Lernbereich"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Lehrplan Gymnasium Physik Sachsen, Klassenstufe 6, Lernbereich 3, S. 11-13.",
+      "dimensionTags": {
+        "framework": "sn-lp2025-gym-sek1-physik",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "K6",
+        "area": "Waerme"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "sn-phys-k6-circuits",
+      "title": "K6 Lernbereich 4 Elektrische Stromkreise",
+      "titleEn": "K6 learning area 4 electric circuits",
+      "description": "Breiter Lernbereichsanker fuer einfache elektrische Stromkreise, Schaltungen und grundlegende elektrische Wirkungen in Klassenstufe 6.",
+      "descriptionEn": "Broad learning-area anchor for simple electric circuits, circuit types, and basic electrical effects in grade 6.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "K6",
+        "Sachsen",
+        "Lernbereich"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Lehrplan Gymnasium Physik Sachsen, Klassenstufe 6, Lernbereich 4, S. 13-16.",
+      "dimensionTags": {
+        "framework": "sn-lp2025-gym-sek1-physik",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "K6",
+        "area": "Elektrizitaet"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "sn-phys-sek1-k7",
+      "title": "Klassenstufe 7",
+      "titleEn": "Grade 7",
+      "description": "Breiter Sachsen-Anker fuer Klassenstufe 7 mit den Lernbereichen Kraefte, Stromstaerke und Spannung in Stromkreisen sowie Energiewandler.",
+      "descriptionEn": "Broad Saxony anchor for grade 7 with the learning areas forces, current and voltage in electric circuits, and energy converters.",
+      "weight": 3,
+      "tags": [
+        "Sek1",
+        "K7",
+        "Sachsen"
+      ],
+      "contains": [
+        "sn-phys-k7-forces",
+        "sn-phys-k7-current-voltage",
+        "sn-phys-k7-energy-converters"
+      ],
+      "requires": [
+        "sn-phys-sek1-k6"
+      ],
+      "sourceRef": "Lehrplan Gymnasium Physik Sachsen, Klassenstufe 7, Lernbereiche 1-3, S. 5 und 17-23.",
+      "dimensionTags": {
+        "framework": "sn-lp2025-gym-sek1-physik",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "K7",
+        "area": "Klassenstufe 7"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "sn-phys-k7-forces",
+      "title": "K7 Lernbereich 1 Kraefte",
+      "titleEn": "K7 learning area 1 forces",
+      "description": "Breiter Lernbereichsanker fuer Kraefte, Feldlinienvorstellungen, Magnetismus und elektrostatische Wechselwirkungen in Klassenstufe 7.",
+      "descriptionEn": "Broad learning-area anchor for forces, first field-line ideas, magnetism, and electrostatic interactions in grade 7.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "K7",
+        "Sachsen",
+        "Lernbereich"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Lehrplan Gymnasium Physik Sachsen, Klassenstufe 7, Lernbereich 1, S. 17-20.",
+      "dimensionTags": {
+        "framework": "sn-lp2025-gym-sek1-physik",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "K7",
+        "area": "Wechselwirkung"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "sn-phys-k7-current-voltage",
+      "title": "K7 Lernbereich 2 Stromstaerke und Spannung in Stromkreisen",
+      "titleEn": "K7 learning area 2 current and voltage in circuits",
+      "description": "Breiter Lernbereichsanker fuer Stromstaerke, Spannung, Widerstand und das quantitative Beschreiben von Stromkreisen in Klassenstufe 7.",
+      "descriptionEn": "Broad learning-area anchor for current, voltage, resistance, and the quantitative description of electric circuits in grade 7.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "K7",
+        "Sachsen",
+        "Lernbereich"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Lehrplan Gymnasium Physik Sachsen, Klassenstufe 7, Lernbereich 2, S. 20-21.",
+      "dimensionTags": {
+        "framework": "sn-lp2025-gym-sek1-physik",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "K7",
+        "area": "Elektrizitaet"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "sn-phys-k7-energy-converters",
+      "title": "K7 Lernbereich 3 Energiewandler",
+      "titleEn": "K7 learning area 3 energy converters",
+      "description": "Breiter Lernbereichsanker fuer Energieformen, Energieumwandlung, Leistung und die Goldene Regel der Mechanik in Klassenstufe 7.",
+      "descriptionEn": "Broad learning-area anchor for forms of energy, energy conversion, power, and the golden rule of mechanics in grade 7.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "K7",
+        "Sachsen",
+        "Lernbereich"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Lehrplan Gymnasium Physik Sachsen, Klassenstufe 7, Lernbereich 3, S. 21-23.",
+      "dimensionTags": {
+        "framework": "sn-lp2025-gym-sek1-physik",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "K7",
+        "area": "Energie"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "sn-phys-sek1-k8",
+      "title": "Klassenstufe 8",
+      "titleEn": "Grade 8",
+      "description": "Breiter Sachsen-Anker fuer Klassenstufe 8 mit den Lernbereichen Mechanik der Fluessigkeiten und Gase, thermische Energie, Eigenschaften elektrischer Bauelemente und selbststaendiges Experimentieren.",
+      "descriptionEn": "Broad Saxony anchor for grade 8 with the learning areas mechanics of liquids and gases, thermal energy, properties of electrical components, and independent experimentation.",
+      "weight": 4,
+      "tags": [
+        "Sek1",
+        "K8",
+        "Sachsen"
+      ],
+      "contains": [
+        "sn-phys-k8-fluid-gas-mechanics",
+        "sn-phys-k8-thermal-energy",
+        "sn-phys-k8-electrical-components",
+        "sn-phys-k8-independent-experiments"
+      ],
+      "requires": [
+        "sn-phys-sek1-k7"
+      ],
+      "sourceRef": "Lehrplan Gymnasium Physik Sachsen, Klassenstufe 8, Lernbereiche 1-4, S. 4-5 und 24-31.",
+      "dimensionTags": {
+        "framework": "sn-lp2025-gym-sek1-physik",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "K8",
+        "area": "Klassenstufe 8"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "sn-phys-k8-fluid-gas-mechanics",
+      "title": "K8 Lernbereich 1 Mechanik der Fluessigkeiten und Gase",
+      "titleEn": "K8 learning area 1 mechanics of liquids and gases",
+      "description": "Breiter Lernbereichsanker fuer Druck, Auftrieb und mechanische Zusammenhaenge in Fluessigkeiten und Gasen in Klassenstufe 8.",
+      "descriptionEn": "Broad learning-area anchor for pressure, buoyancy, and mechanical relations in liquids and gases in grade 8.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "K8",
+        "Sachsen",
+        "Lernbereich"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Lehrplan Gymnasium Physik Sachsen, Klassenstufe 8, Lernbereich 1, S. 24-25.",
+      "dimensionTags": {
+        "framework": "sn-lp2025-gym-sek1-physik",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "K8",
+        "area": "Mechanik"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "sn-phys-k8-thermal-energy",
+      "title": "K8 Lernbereich 2 Thermische Energie",
+      "titleEn": "K8 learning area 2 thermal energy",
+      "description": "Breiter Lernbereichsanker fuer innere Energie, Waermeuebertragung und thermische Prozesse in Klassenstufe 8.",
+      "descriptionEn": "Broad learning-area anchor for internal energy, heat transfer, and thermal processes in grade 8.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "K8",
+        "Sachsen",
+        "Lernbereich"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Lehrplan Gymnasium Physik Sachsen, Klassenstufe 8, Lernbereich 2, S. 25-27.",
+      "dimensionTags": {
+        "framework": "sn-lp2025-gym-sek1-physik",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "K8",
+        "area": "Waerme"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "sn-phys-k8-electrical-components",
+      "title": "K8 Lernbereich 3 Eigenschaften elektrischer Bauelemente",
+      "titleEn": "K8 learning area 3 properties of electrical components",
+      "description": "Breiter Lernbereichsanker fuer Bauelemente, Halbleitereigenschaften und elektrische Kennlinien in Klassenstufe 8.",
+      "descriptionEn": "Broad learning-area anchor for components, semiconductor properties, and electrical characteristic curves in grade 8.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "K8",
+        "Sachsen",
+        "Lernbereich"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Lehrplan Gymnasium Physik Sachsen, Klassenstufe 8, Lernbereich 3, S. 27-29.",
+      "dimensionTags": {
+        "framework": "sn-lp2025-gym-sek1-physik",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "K8",
+        "area": "Elektrizitaet"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "sn-phys-k8-independent-experiments",
+      "title": "K8 Lernbereich 4 Selbststaendiges Experimentieren",
+      "titleEn": "K8 learning area 4 independent experimentation",
+      "description": "Breiter Lernbereichsanker fuer selbststaendiges Experimentieren, Auswerten und Kommunizieren physikalischer Untersuchungen in Klassenstufe 8.",
+      "descriptionEn": "Broad learning-area anchor for independent experimentation, evaluation, and communication of physical investigations in grade 8.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "K8",
+        "Sachsen",
+        "Lernbereich"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Lehrplan Gymnasium Physik Sachsen, Klassenstufe 8, Lernbereich 4, S. 29-31.",
+      "dimensionTags": {
+        "framework": "sn-lp2025-gym-sek1-physik",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "K8",
+        "area": "Experimentieren"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "sn-phys-sek1-k9",
+      "title": "Klassenstufe 9",
+      "titleEn": "Grade 9",
+      "description": "Breiter Sachsen-Anker fuer Klassenstufe 9 mit den Lernbereichen Grundlagen der Elektronik, Energieversorgung, Bewegungsgesetze und physikalisches Praktikum.",
+      "descriptionEn": "Broad Saxony anchor for grade 9 with the learning areas fundamentals of electronics, energy supply, laws of motion, and a physics practicum.",
+      "weight": 4,
+      "tags": [
+        "Sek1",
+        "K9",
+        "Sachsen"
+      ],
+      "contains": [
+        "sn-phys-k9-electronics",
+        "sn-phys-k9-energy-supply",
+        "sn-phys-k9-laws-of-motion",
+        "sn-phys-k9-practicum"
+      ],
+      "requires": [
+        "sn-phys-sek1-k8"
+      ],
+      "sourceRef": "Lehrplan Gymnasium Physik Sachsen, Klassenstufe 9, Lernbereiche 1-4, S. 4-5 und 32-40.",
+      "dimensionTags": {
+        "framework": "sn-lp2025-gym-sek1-physik",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "K9",
+        "area": "Klassenstufe 9"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "sn-phys-k9-electronics",
+      "title": "K9 Lernbereich 1 Grundlagen der Elektronik",
+      "titleEn": "K9 learning area 1 fundamentals of electronics",
+      "description": "Breiter Lernbereichsanker fuer elektronische Grundprinzipien, Bauelemente und einfache Schaltungszusammenhaenge in Klassenstufe 9.",
+      "descriptionEn": "Broad learning-area anchor for basic principles of electronics, components, and simple circuit relations in grade 9.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "K9",
+        "Sachsen",
+        "Lernbereich"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Lehrplan Gymnasium Physik Sachsen, Klassenstufe 9, Lernbereich 1, S. 32-33.",
+      "dimensionTags": {
+        "framework": "sn-lp2025-gym-sek1-physik",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "K9",
+        "area": "Elektronik"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "sn-phys-k9-energy-supply",
+      "title": "K9 Lernbereich 2 Energieversorgung",
+      "titleEn": "K9 learning area 2 energy supply",
+      "description": "Breiter Lernbereichsanker fuer Formen der Energieversorgung, Kraftwerke, Stromerzeugung und gesellschaftliche Einordnung von Energiequellen in Klassenstufe 9.",
+      "descriptionEn": "Broad learning-area anchor for forms of energy supply, power plants, electricity generation, and the societal framing of energy sources in grade 9.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "K9",
+        "Sachsen",
+        "Lernbereich"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Lehrplan Gymnasium Physik Sachsen, Klassenstufe 9, Lernbereich 2, S. 33-35.",
+      "dimensionTags": {
+        "framework": "sn-lp2025-gym-sek1-physik",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "K9",
+        "area": "Energie"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "sn-phys-k9-laws-of-motion",
+      "title": "K9 Lernbereich 3 Bewegungsgesetze",
+      "titleEn": "K9 learning area 3 laws of motion",
+      "description": "Breiter Lernbereichsanker fuer geradlinige und gekruemmte Bewegungen, Kreisbewegung und grundlegende Bewegungsgesetze in Klassenstufe 9.",
+      "descriptionEn": "Broad learning-area anchor for rectilinear and curved motion, circular motion, and basic laws of motion in grade 9.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "K9",
+        "Sachsen",
+        "Lernbereich"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Lehrplan Gymnasium Physik Sachsen, Klassenstufe 9, Lernbereich 3, S. 35-38.",
+      "dimensionTags": {
+        "framework": "sn-lp2025-gym-sek1-physik",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "K9",
+        "area": "Mechanik"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "sn-phys-k9-practicum",
+      "title": "K9 Lernbereich 4 Physikalisches Praktikum",
+      "titleEn": "K9 learning area 4 physics practicum",
+      "description": "Breiter Lernbereichsanker fuer experimentelles Arbeiten, Messen und Auswerten im physikalischen Praktikum der Klassenstufe 9.",
+      "descriptionEn": "Broad learning-area anchor for experimentation, measurement, and evaluation in the physics practicum of grade 9.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "K9",
+        "Sachsen",
+        "Lernbereich"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Lehrplan Gymnasium Physik Sachsen, Klassenstufe 9, Lernbereich 4, S. 38-40.",
+      "dimensionTags": {
+        "framework": "sn-lp2025-gym-sek1-physik",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "K9",
+        "area": "Praktikum"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "sn-phys-sek1-k10",
+      "title": "Klassenstufe 10",
+      "titleEn": "Grade 10",
+      "description": "Breiter Sachsen-Anker fuer Klassenstufe 10 mit den Lernbereichen mechanische Schwingungen und Wellen, Kosmos Erde und Mensch, Licht als Strahl und Welle, Hertz'sche Wellen und physikalisches Praktikum.",
+      "descriptionEn": "Broad Saxony anchor for grade 10 with the learning areas mechanical oscillations and waves, cosmos earth and human, light as ray and wave, Hertzian waves, and a physics practicum.",
+      "weight": 5,
+      "tags": [
+        "Sek1",
+        "K10",
+        "Sachsen"
+      ],
+      "contains": [
+        "sn-phys-k10-mechanical-oscillations-waves",
+        "sn-phys-k10-cosmos-earth-human",
+        "sn-phys-k10-light-ray-wave",
+        "sn-phys-k10-hertzian-waves",
+        "sn-phys-k10-practicum"
+      ],
+      "requires": [
+        "sn-phys-sek1-k9"
+      ],
+      "sourceRef": "Lehrplan Gymnasium Physik Sachsen, Klassenstufe 10, Lernbereiche 1-5, S. 4-5 und 40-49.",
+      "dimensionTags": {
+        "framework": "sn-lp2025-gym-sek1-physik",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "K10",
+        "area": "Klassenstufe 10"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "sn-phys-k10-mechanical-oscillations-waves",
+      "title": "K10 Lernbereich 1 Mechanische Schwingungen und Wellen",
+      "titleEn": "K10 learning area 1 mechanical oscillations and waves",
+      "description": "Breiter Lernbereichsanker fuer mechanische Schwingungen, Wellen und ihre grundlegenden Kenngroessen in Klassenstufe 10.",
+      "descriptionEn": "Broad learning-area anchor for mechanical oscillations, waves, and their fundamental quantities in grade 10.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "K10",
+        "Sachsen",
+        "Lernbereich"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Lehrplan Gymnasium Physik Sachsen, Klassenstufe 10, Lernbereich 1, S. 40-42.",
+      "dimensionTags": {
+        "framework": "sn-lp2025-gym-sek1-physik",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "K10",
+        "area": "Schwingungen und Wellen"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "sn-phys-k10-cosmos-earth-human",
+      "title": "K10 Lernbereich 2 Kosmos, Erde und Mensch",
+      "titleEn": "K10 learning area 2 cosmos, earth, and human",
+      "description": "Breiter Lernbereichsanker fuer astronomische und kosmische Zusammenhaenge zwischen Kosmos, Erde und Mensch in Klassenstufe 10.",
+      "descriptionEn": "Broad learning-area anchor for astronomical and cosmic relations between cosmos, earth, and human in grade 10.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "K10",
+        "Sachsen",
+        "Lernbereich"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Lehrplan Gymnasium Physik Sachsen, Klassenstufe 10, Lernbereich 2, S. 42-44.",
+      "dimensionTags": {
+        "framework": "sn-lp2025-gym-sek1-physik",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "K10",
+        "area": "Astronomie"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "sn-phys-k10-light-ray-wave",
+      "title": "K10 Lernbereich 3 Licht als Strahl und Welle",
+      "titleEn": "K10 learning area 3 light as ray and wave",
+      "description": "Breiter Lernbereichsanker fuer Licht als Strahl und Welle, Interferenz und optische Zusammenhaenge in Klassenstufe 10.",
+      "descriptionEn": "Broad learning-area anchor for light as ray and wave, interference, and optical relations in grade 10.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "K10",
+        "Sachsen",
+        "Lernbereich"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Lehrplan Gymnasium Physik Sachsen, Klassenstufe 10, Lernbereich 3, S. 44-46.",
+      "dimensionTags": {
+        "framework": "sn-lp2025-gym-sek1-physik",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "K10",
+        "area": "Optik"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "sn-phys-k10-hertzian-waves",
+      "title": "K10 Lernbereich 4 Hertz'sche Wellen",
+      "titleEn": "K10 learning area 4 Hertzian waves",
+      "description": "Breiter Lernbereichsanker fuer elektromagnetische Wellen, ihre Erzeugung und technische Nutzung in Klassenstufe 10.",
+      "descriptionEn": "Broad learning-area anchor for electromagnetic waves, their generation, and their technical use in grade 10.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "K10",
+        "Sachsen",
+        "Lernbereich"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Lehrplan Gymnasium Physik Sachsen, Klassenstufe 10, Lernbereich 4, S. 46-47.",
+      "dimensionTags": {
+        "framework": "sn-lp2025-gym-sek1-physik",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "K10",
+        "area": "Elektromagnetische Wellen"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "sn-phys-k10-practicum",
+      "title": "K10 Lernbereich 5 Physikalisches Praktikum",
+      "titleEn": "K10 learning area 5 physics practicum",
+      "description": "Breiter Lernbereichsanker fuer experimentelles Arbeiten, optische und wellenbezogene Untersuchungen im physikalischen Praktikum der Klassenstufe 10.",
+      "descriptionEn": "Broad learning-area anchor for experimentation and optical and wave-related investigations in the physics practicum of grade 10.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "K10",
+        "Sachsen",
+        "Lernbereich"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Lehrplan Gymnasium Physik Sachsen, Klassenstufe 10, Lernbereich 5, S. 47-49.",
+      "dimensionTags": {
+        "framework": "sn-lp2025-gym-sek1-physik",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "K10",
+        "area": "Praktikum"
+      },
+      "type": "atomic"
+    }
+  ]
+}

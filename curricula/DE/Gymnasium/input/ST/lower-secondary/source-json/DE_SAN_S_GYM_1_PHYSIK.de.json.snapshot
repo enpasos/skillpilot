@@ -1,0 +1,509 @@
+{
+  "landscapeId": "3eedae6b-7e62-4e6e-a96c-78cd6df4c4aa",
+  "locale": "de-DE",
+  "country": "DE",
+  "region": "ST",
+  "schoolType": "Gymnasium",
+  "subject": "Physik",
+  "frameworkId": "st-flp2022-gym-sek1-physik",
+  "title": "Physik Sekundarstufe I (Sachsen-Anhalt, erster Quellsnapshot)",
+  "titleEn": "Physics secondary level I (Saxony-Anhalt, first source snapshot)",
+  "description": "Erster archivierter Sachsen-Anhalt-Quellsnapshot fuer die Physik der Sekundarstufe I. Der Snapshot umfasst einen allgemeinen Orientierungsanker sowie die retained Kompetenzschwerpunktstreifen fuer Schuljahrgang 6, Schuljahrgaenge 7/8 und Schuljahrgang 9 aus dem Fachlehrplan Physik 2022.",
+  "descriptionEn": "First archived Saxony-Anhalt source snapshot for lower-secondary physics. The snapshot covers a general orientation anchor plus retained competence-focus strips for grade 6, grades 7/8, and grade 9 from the 2022 physics curriculum.",
+  "compatibilityOnly": true,
+  "legacyHiddenByDefault": true,
+  "goals": [
+    {
+      "id": "st-phys-sek1-root",
+      "title": "Physik Sekundarstufe I",
+      "titleEn": "Physics secondary level I",
+      "description": "Breiter erster Sachsen-Anhalt-Quellsnapshot fuer die Physik der Sekundarstufe I mit einem allgemeinen Orientierungsanker sowie retained Kompetenzschwerpunktstreifen fuer Schuljahrgang 6, Schuljahrgaenge 7/8 und Schuljahrgang 9.",
+      "descriptionEn": "Broad first Saxony-Anhalt source snapshot for lower-secondary physics with a general orientation anchor plus retained competence-focus strips for grade 6, grades 7/8, and grade 9.",
+      "weight": 14,
+      "tags": [
+        "Sek1",
+        "PilotSubset",
+        "Sachsen-Anhalt"
+      ],
+      "contains": [
+        "st-phys-sek1-orientation",
+        "st-phys-sek1-j6",
+        "st-phys-sek1-j7-8",
+        "st-phys-sek1-j9"
+      ],
+      "requires": [
+        "st-phys-sek1-orientation"
+      ],
+      "sourceRef": "Fachlehrplan Physik Sachsen-Anhalt, Uebersicht und Kompetenzentwicklung in den Schuljahrgaengen 6, 7/8 und 9, S. 20-46.",
+      "dimensionTags": {
+        "framework": "st-flp2022-gym-sek1-physik",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "GLOBAL",
+        "area": "Sekundarstufe I"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "st-phys-sek1-orientation",
+      "title": "Warum Physik? - Natur, Technik und Modellierung verstehen",
+      "titleEn": "Why physics? - Understanding nature, technology, and modelling",
+      "description": "Der Fachlehrplan Sachsen-Anhalt rahmt Physik als naturwissenschaftliche Bildung, die Naturphaenomene und technische Entwicklungen mithilfe von Experimenten, Modellen, Fachsprache und reflektiertem Urteilen erschliesst.",
+      "descriptionEn": "The Saxony-Anhalt curriculum frames physics as scientific education that opens up natural phenomena and technical developments through experiments, models, disciplinary language, and reflective judgment.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "Orientation",
+        "Sachsen-Anhalt"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Fachlehrplan Physik Sachsen-Anhalt, Bildung und Erziehung im Fach Physik, S. 4-20.",
+      "dimensionTags": {
+        "framework": "st-flp2022-gym-sek1-physik",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "GLOBAL",
+        "area": "Orientierung"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "st-phys-sek1-j6",
+      "title": "Schuljahrgang 6",
+      "titleEn": "Grade 6",
+      "description": "Breiter retained Sachsen-Anhalt-Streifen fuer Schuljahrgang 6 mit Kompetenzschwerpunkten zur Naturwissenschaft Physik, Strahlenoptik, Eigenschaften und Bewegung von Koerpern und Teilchen, Temperatur und Waerme sowie Magnetismus.",
+      "descriptionEn": "Broad retained Saxony-Anhalt strip for grade 6 with competence foci on the nature of physics, ray optics, properties and motion of bodies and particles, temperature and heat, and magnetism.",
+      "weight": 5,
+      "tags": [
+        "Sek1",
+        "J6",
+        "Sachsen-Anhalt"
+      ],
+      "contains": [
+        "st-phys-j6-nature-of-physics",
+        "st-phys-j6-ray-optics",
+        "st-phys-j6-bodies-particles-motion",
+        "st-phys-j6-temperature-heat",
+        "st-phys-j6-magnetism"
+      ],
+      "requires": [
+        "st-phys-sek1-orientation"
+      ],
+      "sourceRef": "Fachlehrplan Physik Sachsen-Anhalt, Schuljahrgang 6, S. 25-32.",
+      "dimensionTags": {
+        "framework": "st-flp2022-gym-sek1-physik",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J6",
+        "area": "Schuljahrgang 6"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "st-phys-j6-nature-of-physics",
+      "title": "J6 Kompetenzschwerpunkt Die Naturwissenschaft Physik",
+      "titleEn": "J6 competence focus the natural science physics",
+      "description": "Breiter Kompetenzschwerpunktanker fuer den Einstieg in Physik als Naturwissenschaft mit Beobachtung, Beschreibung, Erklaerung und erster Modellierung von Phaenomenen.",
+      "descriptionEn": "Broad competence-focus anchor for entering physics as a natural science through observing, describing, explaining, and first modelling phenomena.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "J6",
+        "Sachsen-Anhalt",
+        "Kompetenzschwerpunkt"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Fachlehrplan Physik Sachsen-Anhalt, Schuljahrgang 6, Kompetenzschwerpunkt `Die Naturwissenschaft Physik`, S. 25-26.",
+      "dimensionTags": {
+        "framework": "st-flp2022-gym-sek1-physik",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J6",
+        "area": "Natur der Physik"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "st-phys-j6-ray-optics",
+      "title": "J6 Kompetenzschwerpunkt Strahlenoptik",
+      "titleEn": "J6 competence focus ray optics",
+      "description": "Breiter Kompetenzschwerpunktanker fuer Lichtausbreitung, Schatten, Reflexion, Brechung und einfache optische Abbildungen im Schuljahrgang 6.",
+      "descriptionEn": "Broad competence-focus anchor for light propagation, shadows, reflection, refraction, and simple optical imaging in grade 6.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "J6",
+        "Sachsen-Anhalt",
+        "Kompetenzschwerpunkt"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Fachlehrplan Physik Sachsen-Anhalt, Schuljahrgang 6, Kompetenzschwerpunkt `Strahlenoptik`, S. 26-27.",
+      "dimensionTags": {
+        "framework": "st-flp2022-gym-sek1-physik",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J6",
+        "area": "Optik"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "st-phys-j6-bodies-particles-motion",
+      "title": "J6 Kompetenzschwerpunkt Eigenschaften und Bewegung von Koerpern und Teilchen",
+      "titleEn": "J6 competence focus properties and motion of bodies and particles",
+      "description": "Breiter Kompetenzschwerpunktanker fuer Stoffeigenschaften, Aggregatzustaende, Bewegungen, Geschwindigkeit und erste Teilchenvorstellungen im Schuljahrgang 6.",
+      "descriptionEn": "Broad competence-focus anchor for material properties, states of matter, motion, speed, and first particle ideas in grade 6.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "J6",
+        "Sachsen-Anhalt",
+        "Kompetenzschwerpunkt"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Fachlehrplan Physik Sachsen-Anhalt, Schuljahrgang 6, Kompetenzschwerpunkt `Eigenschaften und Bewegung von Koerpern und Teilchen`, S. 27-29.",
+      "dimensionTags": {
+        "framework": "st-flp2022-gym-sek1-physik",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J6",
+        "area": "Mechanik und Teilchenmodell"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "st-phys-j6-temperature-heat",
+      "title": "J6 Kompetenzschwerpunkt Temperatur und Waerme",
+      "titleEn": "J6 competence focus temperature and heat",
+      "description": "Breiter Kompetenzschwerpunktanker fuer Temperatur, Thermometer, Waermeuebertragung und Zustandsaenderungen im Schuljahrgang 6.",
+      "descriptionEn": "Broad competence-focus anchor for temperature, thermometers, heat transfer, and changes of state in grade 6.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "J6",
+        "Sachsen-Anhalt",
+        "Kompetenzschwerpunkt"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Fachlehrplan Physik Sachsen-Anhalt, Schuljahrgang 6, Kompetenzschwerpunkt `Temperatur und Waerme`, S. 29-31.",
+      "dimensionTags": {
+        "framework": "st-flp2022-gym-sek1-physik",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J6",
+        "area": "Waermelehre"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "st-phys-j6-magnetism",
+      "title": "J6 Kompetenzschwerpunkt Magnetismus",
+      "titleEn": "J6 competence focus magnetism",
+      "description": "Breiter Kompetenzschwerpunktanker fuer Dauermagnete, Magnetfelder, Feldlinienbilder, Kompass und Erdmagnetfeld im Schuljahrgang 6.",
+      "descriptionEn": "Broad competence-focus anchor for permanent magnets, magnetic fields, field-line images, compass use, and the Earth's magnetic field in grade 6.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "J6",
+        "Sachsen-Anhalt",
+        "Kompetenzschwerpunkt"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Fachlehrplan Physik Sachsen-Anhalt, Schuljahrgang 6, Kompetenzschwerpunkt `Magnetismus`, S. 31-32.",
+      "dimensionTags": {
+        "framework": "st-flp2022-gym-sek1-physik",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J6",
+        "area": "Magnetismus"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "st-phys-sek1-j7-8",
+      "title": "Schuljahrgaenge 7/8",
+      "titleEn": "Grades 7/8",
+      "description": "Breiter retained Sachsen-Anhalt-Streifen fuer die Schuljahrgaenge 7/8 mit Kompetenzschwerpunkten zu Kraeften, Elektrizitaet, Waerme, Druck und Auftrieb, Gasen sowie Stromkreisen und Elektromagnetismus.",
+      "descriptionEn": "Broad retained Saxony-Anhalt strip for grades 7/8 with competence foci on forces, electricity, heat, pressure and buoyancy, gases, and circuits plus electromagnetism.",
+      "weight": 6,
+      "tags": [
+        "Sek1",
+        "J7_8",
+        "Sachsen-Anhalt"
+      ],
+      "contains": [
+        "st-phys-j7-8-forces-effects",
+        "st-phys-j7-8-electric-current-effects",
+        "st-phys-j7-8-heat-states",
+        "st-phys-j7-8-pressure-buoyancy",
+        "st-phys-j7-8-gases-technical-applications",
+        "st-phys-j7-8-circuits-electromagnetism"
+      ],
+      "requires": [
+        "st-phys-sek1-j6"
+      ],
+      "sourceRef": "Fachlehrplan Physik Sachsen-Anhalt, Schuljahrgaenge 7/8, S. 33-42.",
+      "dimensionTags": {
+        "framework": "st-flp2022-gym-sek1-physik",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J7_8",
+        "area": "Schuljahrgaenge 7/8"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "st-phys-j7-8-forces-effects",
+      "title": "J7/8 Kompetenzschwerpunkt Kraefte und ihre Wirkungen",
+      "titleEn": "J7/8 competence focus forces and their effects",
+      "description": "Breiter Kompetenzschwerpunktanker fuer Kraft als vektorielle Groesse, Hebelgesetz, mechanische Arbeit, Energieerhaltung und Wirkungsgrad in den Schuljahrgaengen 7/8.",
+      "descriptionEn": "Broad competence-focus anchor for force as a vector quantity, the lever law, mechanical work, conservation of energy, and efficiency in grades 7/8.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "J7_8",
+        "Sachsen-Anhalt",
+        "Kompetenzschwerpunkt"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Fachlehrplan Physik Sachsen-Anhalt, Schuljahrgaenge 7/8, Kompetenzschwerpunkt `Kraefte und ihre Wirkungen`, S. 33-34.",
+      "dimensionTags": {
+        "framework": "st-flp2022-gym-sek1-physik",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J7_8",
+        "area": "Mechanik"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "st-phys-j7-8-electric-current-effects",
+      "title": "J7/8 Kompetenzschwerpunkt Elektrischer Strom und seine Wirkungen",
+      "titleEn": "J7/8 competence focus electric current and its effects",
+      "description": "Breiter Kompetenzschwerpunktanker fuer elektrische Ladung, Spannung, Stromwirkungen und das Feld des Plattenkondensators in den Schuljahrgaengen 7/8.",
+      "descriptionEn": "Broad competence-focus anchor for electric charge, voltage, current effects, and the field of the plate capacitor in grades 7/8.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "J7_8",
+        "Sachsen-Anhalt",
+        "Kompetenzschwerpunkt"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Fachlehrplan Physik Sachsen-Anhalt, Schuljahrgaenge 7/8, Kompetenzschwerpunkt `Elektrischer Strom und seine Wirkungen`, S. 34-36.",
+      "dimensionTags": {
+        "framework": "st-flp2022-gym-sek1-physik",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J7_8",
+        "area": "Elektrizitaet"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "st-phys-j7-8-heat-states",
+      "title": "J7/8 Kompetenzschwerpunkt Waerme und Aggregatzustaende",
+      "titleEn": "J7/8 competence focus heat and states of matter",
+      "description": "Breiter Kompetenzschwerpunktanker fuer Waermeaustausch, spezifische Waermekapazitaet, Aggregatzustandsaenderungen und einfache thermodynamische Bilanzen in den Schuljahrgaengen 7/8.",
+      "descriptionEn": "Broad competence-focus anchor for heat transfer, specific heat capacity, phase changes, and simple thermodynamic balances in grades 7/8.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "J7_8",
+        "Sachsen-Anhalt",
+        "Kompetenzschwerpunkt"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Fachlehrplan Physik Sachsen-Anhalt, Schuljahrgaenge 7/8, Kompetenzschwerpunkt `Waerme und Aggregatzustaende`, S. 36-38.",
+      "dimensionTags": {
+        "framework": "st-flp2022-gym-sek1-physik",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J7_8",
+        "area": "Waermelehre"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "st-phys-j7-8-pressure-buoyancy",
+      "title": "J7/8 Kompetenzschwerpunkt Druck und Auftrieb",
+      "titleEn": "J7/8 competence focus pressure and buoyancy",
+      "description": "Breiter Kompetenzschwerpunktanker fuer Druck, Schweredruck, Archimedisches Gesetz und dynamischen Auftrieb in den Schuljahrgaengen 7/8.",
+      "descriptionEn": "Broad competence-focus anchor for pressure, hydrostatic pressure, Archimedes' principle, and dynamic lift in grades 7/8.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "J7_8",
+        "Sachsen-Anhalt",
+        "Kompetenzschwerpunkt"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Fachlehrplan Physik Sachsen-Anhalt, Schuljahrgaenge 7/8, Kompetenzschwerpunkt `Druck und Auftrieb`, S. 38-39.",
+      "dimensionTags": {
+        "framework": "st-flp2022-gym-sek1-physik",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J7_8",
+        "area": "Druck und Auftrieb"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "st-phys-j7-8-gases-technical-applications",
+      "title": "J7/8 Kompetenzschwerpunkt Verhalten von Gasen und technische Anwendungen",
+      "titleEn": "J7/8 competence focus gases and technical applications",
+      "description": "Breiter Kompetenzschwerpunktanker fuer Zustandsgroessen von Gasen, thermodynamische Prozesse und technische Anwendungen wie Verbrennungsmotor, Kuehlschrank oder Waermepumpe in den Schuljahrgaengen 7/8.",
+      "descriptionEn": "Broad competence-focus anchor for gas state variables, thermodynamic processes, and technical applications such as combustion engines, refrigerators, or heat pumps in grades 7/8.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "J7_8",
+        "Sachsen-Anhalt",
+        "Kompetenzschwerpunkt"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Fachlehrplan Physik Sachsen-Anhalt, Schuljahrgaenge 7/8, Kompetenzschwerpunkt `Verhalten von Gasen und technische Anwendungen`, S. 39-40.",
+      "dimensionTags": {
+        "framework": "st-flp2022-gym-sek1-physik",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J7_8",
+        "area": "Thermodynamik"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "st-phys-j7-8-circuits-electromagnetism",
+      "title": "J7/8 Kompetenzschwerpunkt Stromkreise und Elektromagnetismus",
+      "titleEn": "J7/8 competence focus circuits and electromagnetism",
+      "description": "Breiter Kompetenzschwerpunktanker fuer Widerstand, Reihen- und Parallelschaltung, elektrische Leistung, Elektromagnet, Motorprinzip und Gleichstrommotor in den Schuljahrgaengen 7/8.",
+      "descriptionEn": "Broad competence-focus anchor for resistance, series and parallel circuits, electric power, electromagnets, motor principles, and direct-current motors in grades 7/8.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "J7_8",
+        "Sachsen-Anhalt",
+        "Kompetenzschwerpunkt"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Fachlehrplan Physik Sachsen-Anhalt, Schuljahrgaenge 7/8, Kompetenzschwerpunkt `Stromkreise und Elektromagnetismus`, S. 40-42.",
+      "dimensionTags": {
+        "framework": "st-flp2022-gym-sek1-physik",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J7_8",
+        "area": "Elektrizitaet und Magnetismus"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "st-phys-sek1-j9",
+      "title": "Schuljahrgang 9",
+      "titleEn": "Grade 9",
+      "description": "Breiter retained Sachsen-Anhalt-Streifen fuer Schuljahrgang 9 mit Kompetenzschwerpunkten zu elektromagnetischer Induktion und Leitungsvorgaengen sowie zur Mechanik der Punktmasse.",
+      "descriptionEn": "Broad retained Saxony-Anhalt strip for grade 9 with competence foci on electromagnetic induction and conduction processes as well as point-mass mechanics.",
+      "weight": 2,
+      "tags": [
+        "Sek1",
+        "J9",
+        "Sachsen-Anhalt"
+      ],
+      "contains": [
+        "st-phys-j9-induction-conduction",
+        "st-phys-j9-point-mass-mechanics"
+      ],
+      "requires": [
+        "st-phys-sek1-j7-8"
+      ],
+      "sourceRef": "Fachlehrplan Physik Sachsen-Anhalt, Schuljahrgang 9, S. 43-46.",
+      "dimensionTags": {
+        "framework": "st-flp2022-gym-sek1-physik",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J9",
+        "area": "Schuljahrgang 9"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "st-phys-j9-induction-conduction",
+      "title": "J9 Kompetenzschwerpunkt Elektromagnetische Induktion und Leitungsvorgaenge",
+      "titleEn": "J9 competence focus electromagnetic induction and conduction processes",
+      "description": "Breiter Kompetenzschwerpunktanker fuer Induktionsgesetz, Transformator, Wechselstromgenerator und Leitungsvorgaenge in Metallen und Halbleitern im Schuljahrgang 9.",
+      "descriptionEn": "Broad competence-focus anchor for the law of induction, transformers, AC generators, and conduction processes in metals and semiconductors in grade 9.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "J9",
+        "Sachsen-Anhalt",
+        "Kompetenzschwerpunkt"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Fachlehrplan Physik Sachsen-Anhalt, Schuljahrgang 9, Kompetenzschwerpunkt `Elektromagnetische Induktion und Leitungsvorgaenge`, S. 43-44.",
+      "dimensionTags": {
+        "framework": "st-flp2022-gym-sek1-physik",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J9",
+        "area": "Elektrodynamik"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "st-phys-j9-point-mass-mechanics",
+      "title": "J9 Kompetenzschwerpunkt Mechanik der Punktmasse",
+      "titleEn": "J9 competence focus point-mass mechanics",
+      "description": "Breiter Kompetenzschwerpunktanker fuer Newton'sche Gesetze, Bewegungsdiagramme, Kreisbewegung, Energie- und Arbeitsbetrachtungen sowie Reibung im Schuljahrgang 9.",
+      "descriptionEn": "Broad competence-focus anchor for Newton's laws, motion diagrams, circular motion, energy and work considerations, and friction in grade 9.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "J9",
+        "Sachsen-Anhalt",
+        "Kompetenzschwerpunkt"
+      ],
+      "contains": [],
+      "requires": [],
+      "sourceRef": "Fachlehrplan Physik Sachsen-Anhalt, Schuljahrgang 9, Kompetenzschwerpunkt `Mechanik der Punktmasse`, S. 44-46.",
+      "dimensionTags": {
+        "framework": "st-flp2022-gym-sek1-physik",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J9",
+        "area": "Mechanik"
+      },
+      "type": "atomic"
+    }
+  ]
+}

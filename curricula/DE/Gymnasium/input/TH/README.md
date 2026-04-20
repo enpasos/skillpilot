@@ -25,5 +25,8 @@
 - **Gymnasium Lehrplan-Uebersicht**: `https://www.schulportal-thueringen.de/lehrplaene/gymnasium`
 
 ### Physik-Naechste Schritte
-- die archivierten Thueringer Physikquellen jetzt gemeinsam als retained Source-Onboarding-Baustein im Physik-Tracker auf `P1` halten
-- als naechsten Thueringer Physik-Schritt erst source-backed Sek-I- und Sek-II-Snapshots plus Provenance-Scaffold anlegen, bevor irgendein topic-spezifisches Mapping authored wird
+- die ersten retained Thueringer Physik-Snapshots jetzt aktiv halten unter
+  - `lower-secondary/source-json/DE_THU_S_GYM_1_PHYSIK.de.json.snapshot`
+  - `upper-secondary/source-json/DE_THU_S_GYM_2_PHYSIK.de.json.snapshot`
+- die Aktivierung ist dokumentiert in `curricula/DE/Gymnasium/provenance/th-physics-onboarding.md`
+- vor irgendeinem topic-spezifischen Thueringen-Mapping erst die restlichen neu archivierten Physiklaender ebenfalls auf `P2` ziehen
