@@ -8042,3 +8042,390 @@ Interpretation:
 
 - Rheinland-Pfalz remains the active Physics lane and now also carries one first narrow LF fluid-dynamics strip on the current shared cross-stage pressure/buoyancy surface
 - the next clean RP move is no longer another reviewed corridor on the same lane, but an explicit closure decision on the remaining LF residue `Individuelles Thema`
+
+### 2026-04-19: Physics rollout steering is reset to `all sources first`, matching Mathematics
+
+What changed:
+
+- the Physics rollout tracker in
+  - `curricula/DE/Gymnasium/provenance/physics-bundesland-rollout-tracker.json`
+  now treats the Rheinland-Pfalz lane as stable at the current reviewed cut instead of as the active widening target
+- the active Physics corridor is now the missing-state source-onboarding tranche for:
+  - `DE-HB`
+  - `DE-HH`
+  - `DE-MV`
+  - `DE-SL`
+  - `DE-SN`
+  - `DE-ST`
+  - `DE-TH`
+- those seven states are now explicitly tracked in the Physics rollout tracker as `P0` placeholders with source-onboarding next steps
+- the Physics topic workboard in
+  - `docs/dev/canonical-gymnasium-physics-topic-workboard.md`
+  now states the corrected working rule:
+  - first archive the still-missing official Physics source materials locally
+  - only then continue the topic-first horizontal pass across Bundeslaender
+
+Why this reset:
+
+- this is the cleaner rollout discipline and matches the Mathematics migration pattern
+- continuing to widen Rheinland-Pfalz while seven Bundeslaender still have no local retained Physics source lane would deepen source asymmetry and bias later canonical decisions
+- the current nationwide Physics debt is now primarily the missing local source base, not another reviewed corridor inside an already-open state lane
+
+Validation used:
+
+- JSON-Parse for the updated Physics rollout tracker
+- `python3 scripts/render_canonical_physics_bundesland_status.py`
+- `git diff --check`
+
+Interpretation:
+
+- Physics is now again steered by the same order that already worked in Mathematics: source completeness first, then horizontal topic work
+- the next correct Physics move is therefore source acquisition / local archiving for the seven still-missing Bundeslaender, not another reviewed RP corridor
+
+### 2026-04-19: Bremen Physics source onboarding is now at `P1`
+
+What changed:
+
+- the official Bremen Gymnasiale-Oberstufe Physics PDF is now archived locally at:
+  - `curricula/DE/Gymnasium/input/HB/GyO_Physik_2022.pdf`
+- the Bremen input README in
+  - `curricula/DE/Gymnasium/input/HB/README.md`
+  now documents both the retained local PDF and the official direct PDF source
+- the Physics rollout tracker in
+  - `curricula/DE/Gymnasium/provenance/physics-bundesland-rollout-tracker.json`
+  now lifts `DE-HB` from `P0` to `P1`
+
+Current Bremen Physics state:
+
+- official upper-secondary source archived locally
+- no source snapshot yet
+- no provenance-backed source lane yet
+- no mapping lane yet
+
+Why this cut:
+
+- this is the correct first move under the restored `all sources first` rollout order
+- it creates a real retained local source asset instead of keeping Bremen as a README-only placeholder
+- it still stops short of any topic-specific modeling until the source-backed snapshot lane exists
+
+Validation used:
+
+- local file check on `curricula/DE/Gymnasium/input/HB/GyO_Physik_2022.pdf`
+- tracker JSON parse
+- `python3 scripts/render_canonical_physics_bundesland_status.py`
+- `git diff --check`
+
+Interpretation:
+
+- the missing-state Physics source-onboarding tranche has now moved from pure placeholders to the first concrete retained local source asset
+- the next clean move in the tranche is another missing-state source archive or the first Bremen source snapshot, not a return to Rheinland-Pfalz widening
+
+### 2026-04-19: Physics source onboarding is clarified to cover Sek I and Sek II together
+
+What changed:
+
+- the Physics rollout tracker in
+  - `curricula/DE/Gymnasium/provenance/physics-bundesland-rollout-tracker.json`
+  now states the missing-state source-onboarding tranche explicitly for both Sek I and Sek II where applicable
+- the Bremen source-onboarding state now reflects the real retained asset set:
+  - Sek I Naturwissenschaften Gymnasium PDF
+  - Sek-I restriction note from 2022
+  - Sek-II Gymnasiale-Oberstufe Physik PDF
+- the Physics topic workboard in
+  - `docs/dev/canonical-gymnasium-physics-topic-workboard.md`
+  now makes the same point explicitly: the current source tranche is not a Sek-II-only pass
+
+Why this clarification:
+
+- that is the correct analogue to the Mathematics rollout
+- otherwise the source base would remain asymmetrical between lower and upper secondary even before the horizontal topic pass begins
+- the right order is therefore:
+  - source completeness across stages first
+  - topic-first reviewed corridor work second
+
+Validation used:
+
+- tracker JSON parse
+- `python3 scripts/render_canonical_physics_bundesland_status.py`
+- `git diff --check`
+
+Interpretation:
+
+- the active Physics source tranche now explicitly means: archive the missing Bundesland sources for Sek I and Sek II, not only for Sek II
+
+### 2026-04-19: Hamburg Physics source onboarding is now at `P1`
+
+What changed:
+
+- the official Hamburg Physics PDFs are now archived locally at:
+  - `curricula/DE/Gymnasium/input/HH/physik-gym-seki-data.pdf`
+  - `curricula/DE/Gymnasium/input/HH/physik-gyo-2022-data.pdf`
+- the Hamburg input README in
+  - `curricula/DE/Gymnasium/input/HH/README.md`
+  now documents the retained local Sek-I and Sek-II Physics PDFs with their direct official sources
+- the Physics rollout tracker in
+  - `curricula/DE/Gymnasium/provenance/physics-bundesland-rollout-tracker.json`
+  now lifts `DE-HH` from `P0` to `P1`
+
+Current Hamburg Physics state:
+
+- official Sek-I source archived locally
+- official Sek-II source archived locally
+- no source snapshot yet
+- no provenance-backed source lane yet
+- no mapping lane yet
+
+Why this cut:
+
+- it follows the restored `all sources first` order
+- it keeps Hamburg symmetric across Sek I and Sek II before any topic-first modeling begins
+- it converts Hamburg from a README-only placeholder into a real retained source lane candidate without overclaiming any curricular structure yet
+
+Validation used:
+
+- local file checks on the two archived Hamburg PDFs
+- tracker JSON parse
+- `python3 scripts/render_canonical_physics_bundesland_status.py`
+- `git diff --check`
+
+Interpretation:
+
+- the missing-state source-onboarding tranche now has two real retained local source families, Bremen and Hamburg
+- the next clean move is the same for the next missing Bundesland: archive Sek I and Sek II first, then activate snapshots later
+
+### 2026-04-19: Mecklenburg-Vorpommern Physics source onboarding is now at `P1`
+
+What changed:
+
+- the official Mecklenburg-Vorpommern Physics PDFs are now archived locally at:
+  - `curricula/DE/Gymnasium/input/MV/Physik_Gymnasium_7_10_2022.pdf`
+  - `curricula/DE/Gymnasium/input/MV/Physik_Gymnasium_11_12_2022.pdf`
+- the Mecklenburg-Vorpommern input README in
+  - `curricula/DE/Gymnasium/input/MV/README.md`
+  now documents the retained local Sek-I and Sek-II Physics PDFs with their direct official sources
+- the Physics rollout tracker in
+  - `curricula/DE/Gymnasium/provenance/physics-bundesland-rollout-tracker.json`
+  now lifts `DE-MV` from `P0` to `P1`
+
+Current Mecklenburg-Vorpommern Physics state:
+
+- official Sek-I source archived locally
+- official Sek-II source archived locally
+- no source snapshot yet
+- no provenance-backed source lane yet
+- no mapping lane yet
+
+Why this cut:
+
+- it follows the restored `all sources first` order
+- it keeps Mecklenburg-Vorpommern symmetric across Sek I and Sek II before any topic-first modeling begins
+- it converts Mecklenburg-Vorpommern from a README-only placeholder into a real retained source lane candidate without overclaiming any curricular structure yet
+
+Validation used:
+
+- local file checks on the two archived Mecklenburg-Vorpommern PDFs
+- tracker JSON parse
+- `python3 scripts/render_canonical_physics_bundesland_status.py`
+- `git diff --check`
+
+Interpretation:
+
+- the missing-state source-onboarding tranche now has three real retained local source families: Bremen, Hamburg, and Mecklenburg-Vorpommern
+- the next clean move is the same again for the next missing Bundesland: archive Sek I and Sek II first, then activate snapshots later
+
+### 2026-04-19: Sachsen-Anhalt Physics source onboarding is now at `P1`
+
+What changed:
+
+- the official Sachsen-Anhalt Physics PDFs are now archived locally at:
+  - `curricula/DE/Gymnasium/input/ST/Physik_FLP_Gym_01_07_2019.pdf`
+  - `curricula/DE/Gymnasium/input/ST/FLP_Physik_Gym_01082022_swd.pdf`
+- the Sachsen-Anhalt input README in
+  - `curricula/DE/Gymnasium/input/ST/README.md`
+  now documents the retained local Physics PDF family with the direct official LISA sources
+- the Physics rollout tracker in
+  - `curricula/DE/Gymnasium/provenance/physics-bundesland-rollout-tracker.json`
+  now lifts `DE-ST` from `P0` to `P1`
+
+Current Sachsen-Anhalt Physics state:
+
+- official retained Physics source family archived locally
+- the same retained source family spans Sek I and Sek II
+- no source snapshot yet
+- no provenance-backed source lane yet
+- no mapping lane yet
+
+Why this cut:
+
+- it follows the restored `all sources first` order
+- it gives Sachsen-Anhalt a real retained local Physics source family without jumping ahead to topic work
+- the archived official family already spans Sek I and Sek II, so this is a clean `P1` source cut without inventing separate stage-specific files
+
+Validation used:
+
+- local file checks on the two archived Sachsen-Anhalt Physics PDFs
+- tracker JSON parse
+- `python3 scripts/render_canonical_physics_bundesland_status.py`
+- `git diff --check`
+
+Interpretation:
+
+- the missing-state source-onboarding tranche now has four real retained local source families: Bremen, Hamburg, Mecklenburg-Vorpommern, and Sachsen-Anhalt
+- the next clean move is still the same: archive the next missing Bundesland source family first, then activate snapshots later
+
+### 2026-04-19: Sachsen Physics source onboarding is now at `P1`
+
+What changed:
+
+- the official Sachsen Gymnasium Physics PDF is now archived locally at:
+  - `curricula/DE/Gymnasium/input/SN/lehrplan-gymnasium-physik-sachsen-2025.pdf`
+- the Sachsen input README in
+  - `curricula/DE/Gymnasium/input/SN/README.md`
+  now documents the retained local Physics PDF with the direct official Lehrplandatenbank source
+- the Physics rollout tracker in
+  - `curricula/DE/Gymnasium/provenance/physics-bundesland-rollout-tracker.json`
+  now lifts `DE-SN` from `P0` to `P1`
+
+Current Sachsen Physics state:
+
+- official retained Physics source family archived locally
+- the same retained source family spans Sek I and Sek II
+- no source snapshot yet
+- no provenance-backed source lane yet
+- no mapping lane yet
+
+Why this cut:
+
+- it follows the restored `all sources first` order
+- Sachsen exposes one shared official Gymnasium Physics PDF for classes `6-10` and year levels `11/12`, so a single retained source family is the correct source-first cut
+- it converts Sachsen from a README-only placeholder into a real retained source lane candidate without overclaiming any reviewed curricular structure yet
+
+Validation used:
+
+- local file check on the archived Sachsen Gymnasium Physics PDF
+- tracker JSON parse
+- `python3 scripts/render_canonical_physics_bundesland_status.py`
+- `git diff --check`
+
+Interpretation:
+
+- the missing-state source-onboarding tranche now has five real retained local source families: Bremen, Hamburg, Mecklenburg-Vorpommern, Sachsen-Anhalt, and Sachsen
+- the next clean move is still the same: archive the next missing Bundesland source family first, then activate snapshots later
+
+### 2026-04-19: Thueringen Physics source onboarding is now at `P1`
+
+What changed:
+
+- the official Thueringen Gymnasium Physics PDFs are now archived locally at:
+  - `curricula/DE/Gymnasium/input/TH/LP_GY_Physik_2012.pdf`
+  - `curricula/DE/Gymnasium/input/TH/LP_GY_Physik_2024.pdf`
+- the Thueringen input README in
+  - `curricula/DE/Gymnasium/input/TH/README.md`
+  now documents the retained local Physics PDFs with their direct official Schulportal sources
+- the Physics rollout tracker in
+  - `curricula/DE/Gymnasium/provenance/physics-bundesland-rollout-tracker.json`
+  now lifts `DE-TH` from `P0` to `P1`
+
+Current Thueringen Physics state:
+
+- official retained Physics source family archived locally
+- the retained source family spans Sek I and Sek II through the 2012 base PDF plus the 2024 upper-secondary update
+- no source snapshot yet
+- no provenance-backed source lane yet
+- no mapping lane yet
+
+Why this cut:
+
+- it follows the restored `all sources first` order
+- the Thueringen Physics base source is not just an Oberstufen fragment: the 2012 PDF already covers Klassenstufen `7-10`, Einfuehrungsphase, and Qualifikationsphase
+- the 2024 PDF is needed in addition because it explicitly replaces the Qualifikationsphasen-Kapitel of the 2012 source from Schuljahr `2025/26` onward
+
+Validation used:
+
+- local file checks on the two archived Thueringen Physics PDFs
+- tracker JSON parse
+- `python3 scripts/render_canonical_physics_bundesland_status.py`
+- `git diff --check`
+
+Interpretation:
+
+- the missing-state source-onboarding tranche now has six real retained local source families: Bremen, Hamburg, Mecklenburg-Vorpommern, Sachsen-Anhalt, Sachsen, and Thueringen
+- the only remaining blocked source-onboarding state in the tranche is Saarland
+
+### 2026-04-20: Saarland Physics source onboarding is now at `P1`
+
+What changed:
+
+- the official Saarland Physics bundle is now present locally under:
+  - `curricula/DE/Gymnasium/input/SL/NW_5und6_Gym_2012.pdf`
+  - `curricula/DE/Gymnasium/input/SL/LP_PH_gym9_7_2023.pdf`
+  - `curricula/DE/Gymnasium/input/SL/LP_PH_gym9_8_NW_Zweig_2024.pdf`
+  - `curricula/DE/Gymnasium/input/SL/LP_PH_gym9_8_spr_Zweig_2024.pdf`
+  - `curricula/DE/Gymnasium/input/SL/LP_PH_gym9_9_inf_Zweig_2024.pdf`
+  - `curricula/DE/Gymnasium/input/SL/LP_PH_gym9_9_nw_Zweig_2024.pdf`
+  - `curricula/DE/Gymnasium/input/SL/LP_PH_gym9_10_inf_Zweig_2026.pdf`
+  - `curricula/DE/Gymnasium/input/SL/LP_PH_gym9_10_nw_Zweig_2026.pdf`
+  - `curricula/DE/Gymnasium/input/SL/LP_PH_gym9_10_zweistuendig_ohne_Infozweig_2026.pdf`
+  - `curricula/DE/Gymnasium/input/SL/LP_Ph_EP_GOS_2023.pdf`
+  - `curricula/DE/Gymnasium/input/SL/LP_Ph_HP_GK_2023.pdf`
+  - `curricula/DE/Gymnasium/input/SL/LP_Ph_HP_LK_2023.pdf`
+  - `curricula/DE/Gymnasium/input/SL/APA_Physik_2023.pdf`
+  - `curricula/DE/Gymnasium/input/SL/HInweis_IQB_Formelsammlung.pdf`
+- the Saarland input README in
+  - `curricula/DE/Gymnasium/input/SL/README.md`
+  now documents the retained lower-secondary and upper-secondary Physics bundle
+- the Physics rollout tracker in
+  - `curricula/DE/Gymnasium/provenance/physics-bundesland-rollout-tracker.json`
+  now lifts `DE-SL` from `P0` to `P1`
+
+Current Saarland Physics state:
+
+- official retained Physics source family archived locally
+- the lower-secondary bundle includes the `5/6` Naturwissenschaften feeder and branch-sensitive Physik files for `7-10`
+- the upper-secondary bundle includes Einfuehrungsphase, Hauptphase `G-Kurs`, Hauptphase `Leistungskurs`, and retained APA/IQB support documents
+- no source snapshot yet
+- no provenance-backed source lane yet
+- no mapping lane yet
+
+Why this cut:
+
+- it resolves the last missing state in the archive tranche without inventing any reviewed curricular structure
+- it restores symmetry with the Mathematics rollout: all Bundeslaender now have locally archived Physics source material before another horizontal topic pass begins
+- the bundle was already placed locally, so the correct repo move is to register it explicitly rather than keep Saarland falsely blocked at `P0`
+
+Validation used:
+
+- local file checks on the archived Saarland Physics PDFs
+- tracker JSON parse
+- `python3 scripts/render_canonical_physics_bundesland_status.py`
+- `git diff --check`
+
+Interpretation:
+
+- the missing-state Physics source-archive tranche is now complete across all seven previously unarchived states
+- the next active rollout step is no longer source acquisition, but retained source-snapshot and provenance activation for those newly archived bundles
+
+### 2026-04-20: Physics source-archive tranche is complete; the active move is now snapshot activation
+
+What changed:
+
+- the tracker/workboard steering no longer treats missing-state Physics source acquisition as the active work item
+- the completed archive tranche for `DE-HB`, `DE-HH`, `DE-MV`, `DE-SL`, `DE-SN`, `DE-ST`, and `DE-TH` is now frozen as finished intake work
+- the active rollout move is now the first retained lower-secondary and upper-secondary source-snapshot plus provenance activation for those seven states
+
+Why this steering update:
+
+- the repo now has real retained local Physics source assets for every Bundesland lane in the intake tranche
+- leaving the old source-acquisition corridor marked active would make the steering artifact stale
+- the next correct move, consistent with Mathematics, is to activate source-backed lanes before the next horizontal topic-row widening
+
+Validation used:
+
+- tracker JSON parse
+- `python3 scripts/render_canonical_physics_bundesland_status.py`
+- `git diff --check`
+
+Interpretation:
+
+- Physics is now out of the archive-intake phase and into the source-snapshot activation phase
+- the next clean implementation step is to build the first retained lower-secondary and upper-secondary snapshots plus provenance scaffold for the newly archived states, not to widen another reviewed state corridor yet

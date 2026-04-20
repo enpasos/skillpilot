@@ -56,3 +56,53 @@ Operational note:
 - `DE-SL` now has a real archived lower-secondary plus upper-secondary mathematics bundle.
 - the upper-secondary archive now also includes a transition handout for the MBA -> GOS entry step.
 - The next meaningful step is to derive the first lower-secondary and upper-secondary source snapshots from the archived PDF bundle.
+
+## Physik
+
+Archived official source inputs on `2026-04-20`:
+
+### Sekundarstufe I
+- `NW_5und6_Gym_2012.pdf`
+  - Naturwissenschaften Klassenstufen `5/6` im Gymnasium als frueher Physik-Feeder
+- `LP_PH_gym9_7_2023.pdf`
+  - Physik Klassenstufe `7` im neunjährigen Gymnasium
+- `LP_PH_gym9_8_NW_Zweig_2024.pdf`
+  - Physik Klassenstufe `8` im neunjährigen Gymnasium, naturwissenschaftlicher Zweig
+- `LP_PH_gym9_8_spr_Zweig_2024.pdf`
+  - Physik Klassenstufe `8` im neunjährigen Gymnasium, sprachlicher Zweig
+- `LP_PH_gym9_9_inf_Zweig_2024.pdf`
+  - Physik Klassenstufe `9` im neunjährigen Gymnasium, informationstechnischer Zweig
+- `LP_PH_gym9_9_nw_Zweig_2024.pdf`
+  - Physik Klassenstufe `9` im neunjährigen Gymnasium, naturwissenschaftlicher Zweig
+- `LP_PH_gym9_10_inf_Zweig_2026.pdf`
+  - Physik Klassenstufe `10` im neunjährigen Gymnasium, informationstechnischer Zweig
+- `LP_PH_gym9_10_nw_Zweig_2026.pdf`
+  - Physik Klassenstufe `10` im neunjährigen Gymnasium, naturwissenschaftlicher Zweig
+- `LP_PH_gym9_10_zweistuendig_ohne_Infozweig_2026.pdf`
+  - Physik Klassenstufe `10` im neunjährigen Gymnasium, zweistuendig ohne Infozweig
+
+### Gymnasiale Oberstufe
+- `LP_Ph_EP_GOS_2023.pdf`
+  - Physik Einfuehrungsphase der gymnasialen Oberstufe
+- `LP_Ph_HP_GK_2023.pdf`
+  - Physik Hauptphase der gymnasialen Oberstufe `G-Kurs`
+- `LP_Ph_HP_LK_2023.pdf`
+  - Physik Hauptphase der gymnasialen Oberstufe `Leistungskurs`
+- `APA_Physik_2023.pdf`
+  - APA Physik gymnasiale Oberstufe
+- `HInweis_IQB_Formelsammlung.pdf`
+  - Hinweis zur IQB-Formelsammlung Physik
+
+Official source anchors:
+
+- gymnasiale Sek-I landing page:
+  - `https://www.saarland.de/mbk/DE/portale/bildungsserver/unterricht-und-bildungsthemen/lehrplaenehandreichungen/lehrplaeneallgemeinbildende/gymnasium`
+- gymnasiale Oberstufe landing page:
+  - `https://www.saarland.de/mbk/DE/portale/bildungsserver/unterricht-und-bildungsthemen/lehrplaenehandreichungen/lehrplaeneallgemeinbildende/gymnasiale-oberstufe-GOS/lehrplaene_GOS_node`
+
+Operational note:
+
+- `DE-SL` now also has a real archived lower-secondary plus upper-secondary Physics bundle.
+- the lower-secondary archive is branch-sensitive from Klassenstufe `8` onward and includes the fruehe Naturwissenschaften-Feederquelle fuer `5/6`.
+- the upper-secondary archive includes Einfuehrungsphase, Hauptphase `G-Kurs`, Hauptphase `Leistungskurs`, and the retained APA/IQB support documents.
+- the next meaningful step is to derive the first lower-secondary and upper-secondary Physics source snapshots plus provenance scaffold from the archived PDF bundle.

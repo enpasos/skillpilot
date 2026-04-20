@@ -1,12 +1,28 @@
 # Canonical Gymnasium Physics M2 Lane Shortlist
 
-Snapshot: `2026-04-16`
+Snapshot: `2026-04-19`
 
 This document narrows the first post-`M1` Physics rollout move.
 
 It started intentionally smaller than a full machine-readable rollout tracker.
 Physics now has that tracker because Hessen, Bayern, Nordrhein-Westfalen, Baden-Wuerttemberg, Berlin, Brandenburg, and Schleswig-Holstein are active on the current canonical path.
 The shortlist still exists because it keeps the narrower M2 corridor reasoning readable beside the machine-readable tracker.
+
+Execution reset on `2026-04-19`:
+
+- Physics now follows the same rollout discipline as Mathematics again:
+  - first archive the official source material for every still-missing Bundesland locally
+  - and do that for Sek I and Sek II together where applicable
+  - only then continue the topic-first horizontal reviewed pass
+- this means the next active Physics move is no longer another Rheinland-Pfalz widening
+- the active tranche is now the missing-state source onboarding for:
+  - `DE-HB`
+  - `DE-HH`
+  - `DE-MV`
+  - `DE-SL`
+  - `DE-SN`
+  - `DE-ST`
+  - `DE-TH`
 
 Execution update on `2026-04-11`:
 
@@ -134,7 +150,7 @@ What does **not** exist yet for Physics beyond the currently active Hessen, Baye
 - no additional Physics `source-json` snapshots outside Hessen, Bayern, Nordrhein-Westfalen, Baden-Wuerttemberg, Berlin, Brandenburg, Schleswig-Holstein, and Rheinland-Pfalz
 - no additional Physics source-landscape registry entries outside Hessen, Bayern, Nordrhein-Westfalen, Baden-Wuerttemberg, Berlin, Brandenburg, Schleswig-Holstein, and Rheinland-Pfalz
 - no reviewed fifth-state Physics composition views yet
-- the first active ninth-state Physics lane now exists on `DE-RP` upper-secondary Physics, while `DE-SH` and the retained BE/BB family stay explicitly closed at the current reviewed cut; the RP oscillation/wave micro-residues are now explicitly frozen, one first RP GF quantum corridor plus one first RP LF quantum-object follow-on plus the opened GF/LF atom-model, LF interaction, LF particle-physics, LF relativity-kinematics, LF relativity-dynamics, LF astrophysics, LF cosmology, LF chaos, and LF fluid-dynamics corridors are open, the retained RP dynamics clauses on `Masse-Energie-Aequivalenz` and `Energie`/`Impuls`/`Geschwindigkeit`/`Grenzgeschwindigkeit`/`Grenzfaelle` stay intentionally source-led, the retained RP astrophysics clauses on `Zustandsgroessen der Sonne`, `Standardsonnenmodell`, and `Aktuelle Forschungsergebnisse` stay intentionally source-led, `Aktuelle Forschungsergebnisse` in the RP cosmology strip stays intentionally source-led, the remaining RP `Chaos und Fraktale` leaves stay intentionally source-led, the remaining RP `Stroemungsphysik` leaves stay intentionally source-led, and the next rollout move inside Physics should therefore shift to an explicit lane-closure decision on `Individuelles Thema`
+- the first active ninth-state Physics lane now exists on `DE-RP` upper-secondary Physics, but it is no longer the active widening target; Rheinland-Pfalz is frozen at the current reviewed cut while the missing-state source-onboarding tranche is completed first
 
 What **does** already exist and can be reused:
 

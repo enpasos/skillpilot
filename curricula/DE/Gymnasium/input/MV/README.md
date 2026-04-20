@@ -28,7 +28,13 @@
 
 ## Physik
 ### Sekundarstufe I (Klassen 7-10)
-- **Rahmenplan für den Sekundarbereich I Physik (Erprobungsfassung 2022)**: [Bildungsserver MV - Rahmenpläne Sek I](https://www.bildung-mv.de/lehrer/rahmenplaene/rahmenplaene-allgemeinbildende-schulen/)
+- **Archivierte offizielle Quelle**: `Physik_Gymnasium_7_10_2022.pdf`
+- **Offizielle Quelle**: [Rahmenplan Physik Gymnasium/Gesamtschule 7-10 (Erprobungsfassung 2022)](https://www.bildung-mv.de/.galleries/dokumente/unterricht/rahmenplaene/RP_PHYS_Gym_Ges_7_10.pdf)
 
 ### Sekundarstufe II (Klassen 11-12)
-- **Rahmenplan für den Sekundarbereich II Physik (Erprobungsfassung 2022)**: [Bildungsserver MV - Rahmenpläne Sek II](https://www.bildung-mv.de/lehrer/rahmenplaene/rahmenplaene-allgemeinbildende-schulen/)
+- **Archivierte offizielle Quelle**: `Physik_Gymnasium_11_12_2022.pdf`
+- **Offizielle Quelle**: [Rahmenplan Physik Sekundarbereich II (Erprobungsfassung 2022)](https://www.bildung-mv.de/export/sites/bildungsserver/.galleries/dokumente/unterricht/rahmenplaene/RP_PHYS_SEK2_Erprobungsfassung.pdf)
+
+### Physik-Naechste Schritte
+- die archivierten Mecklenburg-Vorpommern-Sek-I- und Sek-II-Physikquellen jetzt gemeinsam als retained Source-Onboarding-Baustein im Physik-Tracker auf `P1` halten
+- als naechsten Mecklenburg-Vorpommern-Physik-Schritt erst source-backed Sek-I- und Sek-II-Snapshots plus Provenance-Scaffold anlegen, bevor irgendein topic-spezifisches Mapping authored wird

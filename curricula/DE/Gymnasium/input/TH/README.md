@@ -14,4 +14,16 @@
 
 ## Physik
 ### Sekundarstufe I und II
-- **Lehrplan Physik Gymnasium (2024, schrittweise ab 2025/26)**: `https://www.schulportal-thueringen.de/lehrplaene/gymnasium`
+- **Lehrplan Physik Gymnasium (2012)**:
+  - archived file: `curricula/DE/Gymnasium/input/TH/LP_GY_Physik_2012.pdf`
+  - official source: `https://www.schulportal-thueringen.de/tip/resources/medien/14477?dateiname=Physik_GY_Nov_2012_7_12.pdf`
+  - note: the archived official PDF covers Physik im Gymnasium fuer die Klassenstufen `7-10`, die Einfuehrungsphase der Thueringer Oberstufe fuer Schueler mit Realschulabschluss und die Qualifikationsphase
+- **Lehrplan Physik Gymnasium (2024; Inkraftsetzung fuer Klassenstufe 11 im Schuljahr 2025/26)**:
+  - archived file: `curricula/DE/Gymnasium/input/TH/LP_GY_Physik_2024.pdf`
+  - official source: `https://www.schulportal-thueringen.de/tip/resources/medien/63792?dateiname=LP_GY_OSt_Physik_final_2024-10-28.pdf`
+  - note: the archived official PDF replaces Kapitel `1` und `4` des Lehrplans 2012 fuer die Qualifikationsphase schrittweise ab Schuljahr `2025/26`
+- **Gymnasium Lehrplan-Uebersicht**: `https://www.schulportal-thueringen.de/lehrplaene/gymnasium`
+
+### Physik-Naechste Schritte
+- die archivierten Thueringer Physikquellen jetzt gemeinsam als retained Source-Onboarding-Baustein im Physik-Tracker auf `P1` halten
+- als naechsten Thueringer Physik-Schritt erst source-backed Sek-I- und Sek-II-Snapshots plus Provenance-Scaffold anlegen, bevor irgendein topic-spezifisches Mapping authored wird

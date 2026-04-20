@@ -17,4 +17,16 @@
 
 ## Physik
 ### Sekundarstufe I und II (Klassen 5-12)
-- **Grundsatzband und Fachlehrplan Physik Gymnasium (2022)**: [Landesportal Sachsen-Anhalt - Lehrpläne](https://lisa.sachsen-anhalt.de/unterricht/lehrplaene)
+- **Archivierter Fachlehrplan Physik Gymnasium/Berufliches Gymnasium (Stand: 01.07.2019)**:
+  - archived file: `curricula/DE/Gymnasium/input/ST/Physik_FLP_Gym_01_07_2019.pdf`
+  - official source: `https://lisa.sachsen-anhalt.de/fileadmin/Bibliothek/Politik_und_Verwaltung/MK/LISA/Unterricht/Lehrplaene/Gym/Anpassung/Physik_FLP_Gym_01_07_2019.pdf`
+  - note: the archived official PDF covers Sek I and Sek II in one retained Physics source family, including Schuljahrgaenge `6`, `7/8`, `9`, `10 (Einfuehrungsphase)`, and `11/12 (Qualifikationsphase)`
+- **Archivierter Anpassungsstand Physik Gymnasium/Berufliches Gymnasium (Stand: 01.08.2022)**:
+  - archived file: `curricula/DE/Gymnasium/input/ST/FLP_Physik_Gym_01082022_swd.pdf`
+  - official source: `https://lisa.sachsen-anhalt.de/fileadmin/Bibliothek/Politik_und_Verwaltung/MK/LISA/Unterricht/Lehrplaene/Gym/Anpassung_2022/FLP_Physik_Gym_01082022_swd.pdf`
+- **Offizielle Lehrplan-Uebersicht**:
+  - `https://lisa.sachsen-anhalt.de/unterricht/lehrplaene`
+
+### Physik-Naechste Schritte
+- die archivierten Sachsen-Anhalt-Physikquellen jetzt gemeinsam als retained Source-Onboarding-Baustein im Physik-Tracker auf `P1` halten
+- als naechsten Sachsen-Anhalt-Physik-Schritt erst source-backed Sek-I- und Sek-II-Snapshots plus Provenance-Scaffold anlegen, bevor irgendein topic-spezifisches Mapping authored wird

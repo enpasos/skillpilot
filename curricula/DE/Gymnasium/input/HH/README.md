@@ -11,7 +11,13 @@
 
 ## Physik
 ### Sekundarstufe I (Klassen 5-10)
-- **Bildungsplan Gymnasium Sekundarstufe I Physik (2011)**: [Bildungspläne Hamburg](https://www.hamburg.de/bsb/bildungsplaene)
+- **Archivierte offizielle Quelle**: `physik-gym-seki-data.pdf`
+- **Offizielle Quelle**: [Bildungsplan Gymnasium Sekundarstufe I - Physik](https://www.hamburg.de/resource/blob/123488/8c3d4d03adf8ddad189172bef45ab665/physik-gym-seki-data.pdf)
 
 ### Sekundarstufe II (Studienstufe)
-- **Bildungsplan Studienstufe Physik / Rahmenplan GyO**: [Bildungspläne Hamburg](https://www.hamburg.de/bsb/bildungsplaene)
+- **Archivierte offizielle Quelle**: `physik-gyo-2022-data.pdf`
+- **Offizielle Quelle**: [Bildungsplan Studienstufe Physik](https://www.hamburg.de/resource/blob/123094/2691efabaaf2679cd7dd970a95a3c748/physik-gyo-2022-data.pdf)
+
+### Physik-Naechste Schritte
+- die archivierten Hamburger Sek-I- und Sek-II-Physikquellen jetzt gemeinsam als retained Source-Onboarding-Baustein im Physik-Tracker auf `P1` halten
+- als naechsten Hamburger Physik-Schritt erst source-backed Sek-I- und Sek-II-Snapshots plus Provenance-Scaffold anlegen, bevor irgendein topic-spezifisches Mapping authored wird

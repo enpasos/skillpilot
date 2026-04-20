@@ -9,7 +9,21 @@
 
 ## Physik
 ### Sekundarstufe I (Klassen 5-10)
-- **Bildungsplan Naturwissenschaften (Physik) Sek I (2006, reduziert 2022)**: [LIS Bremen - Lehrpläne](https://www.lis.bremen.de/schulqualitaet/lehrplaene-und-richtlinien-4384)
+- **Archivierte offizielle PDFs**
+  - `Naturwissenschaften_Gymnasium_5_10_2006.pdf`
+  - `Naturwissenschaften_Gymnasium_5_9_Einschraenkungen_2022.pdf`
+- **Öffentliche Quellen**
+  - Lehrpläne: [LIS Bremen - Sekundarbereich I](https://www.lis.bremen.de/schulqualitaet/bildungsplaene/sekundarbereich-i-21953)
+  - Direkte PDF-Quelle Bildungsplan: [LIS Bremen - Naturwissenschaften, Biologie, Chemie, Physik Gymnasium 2006](https://www.lis.bremen.de/sixcms/media.php/13/06-12-06_nat_gy.pdf)
+  - Direkte PDF-Quelle Einschränkungen: [LIS Bremen - Hinweise zur eingeschränkten Gültigkeit 2022](https://www.lis.bremen.de/sixcms/media.php/13/Gy_Naturwiss_2006_inhalt_Einschr%C3%A4nkungen.pdf)
 
 ### Sekundarstufe II (Gymnasiale Oberstufe)
-- **Bildungsplan Physik GyO**: [LIS Bremen - Lehrpläne](https://www.lis.bremen.de/schulqualitaet/lehrplaene-und-richtlinien-4384)
+- **Archivierte offizielle PDFs**
+  - `GyO_Physik_2022.pdf`
+- **Öffentliche Quellen**
+  - Lehrpläne: [LIS Bremen - Lehrpläne](https://www.lis.bremen.de/schulqualitaet/lehrplaene-und-richtlinien-4384)
+  - Direkte PDF-Quelle: [LIS Bremen - Gymnasiale Oberstufe Physik](https://www.lis.bremen.de/sixcms/media.php/13/GyO_Physik_2022.pdf)
+
+### Physik-Naechste Schritte
+- die archivierten Bremer Sek-I- und Sek-II-Physikquellen jetzt gemeinsam als retained Source-Onboarding-Baustein im Physik-Tracker auf `P1` halten
+- als naechsten Bremer Physik-Schritt erst source-backed Sek-I- und Sek-II-Snapshots plus Provenance-Scaffold anlegen, bevor irgendein topic-spezifisches Mapping authored wird

@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-04-19T11:00:00Z",
+  "updatedAt": "2026-04-20T04:10:00Z",
   "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
   "quickViewPath": "docs/dev/canonical-gymnasium-physics-bundeslaender-status.md",
   "renderCommand": "python3 scripts/render_canonical_physics_bundesland_status.py",
@@ -80,7 +80,8 @@
     "canonicalViewRule": "Treat the canonical DE Physics landscape as a curated pedagogical source of truth, not as the raw union of all state-specific package structures.",
     "stateViewRule": "Treat Bundesland views as projections that stay as close as possible to the canonical Physics tree while omitting or deferring atoms that would overclaim the local curriculum.",
     "executionSequence": [
-      "Choose the active Physics topic row first, then compare that row across all currently available Bundesland sources before widening another state lane.",
+      "First archive the official Physics source materials for every still-missing Bundesland lane locally under the DE-level input structure, for both Sek I and Sek II where applicable; do not widen another reviewed state corridor before that source-onboarding tranche is complete.",
+      "Once the source base is locally complete, choose one active Physics topic row and compare that row across all retained Bundesland sources before widening another state lane.",
       "Archive or refresh the retained state source lane first, then narrow the affected delta to mappings, provenance, applicability, and only the learner-facing views that really change inside that topic row.",
       "Prefer reviewed source splits and conservative partial bridges over premature canonical atom growth when the current shared Physics surface is still semantically narrower or broader than the source wording.",
       "Re-run the standard Physics mapping, applicability, and runtime fences before merging the rollout delta."
@@ -159,14 +160,107 @@
     {
       "id": "SEK2.RP.UPPER_SECONDARY_ENTRY",
       "title": "Rheinland-Pfalz upper-secondary first entry lane",
-      "status": "active",
+      "status": "completed",
       "focusStates": [
         "DE-RP"
       ],
-      "nextStep": "Treat the Rheinland-Pfalz field/induction family, the opened oscillation/wave strips, the first GF quantum corridor `Quantenobjekte I`, the opened LF strips `Quantenobjekte II`, `Elementarteilchenphysik`, `Relativistische Kinematik`, `Relativistische Dynamik`, and `Astrophysik`, the opened GF/LF atom-model strips `Quantenmechanische Atomvorstellung I` and `Quantenmechanische Atomvorstellung II`, and the first narrow LF interaction strip `Wechselwirkung von Quantenobjekten` as stable on the current conservative reviewed cut. Keep `Periodendauer`, `Polarisation`, `Weisslichtspektrum`, and `gekoppelte Schwingungen` frozen as explicit source-led RP micro-residues, keep `Plancksches Wirkungsquantum mit einer experimentellen Methode naeherungsweise bestimmen` source-led inside the RP quantum strip, keep `Lumineszenz`, `Laser`, `chemische Bindung/Molekuelstruktur`, and `Farbstoffmolekuele` source-led inside the RP LF atom-model strip, keep `Paarerzeugung` source-led inside the RP LF interaction strip, keep `Offene Fragen der Elementarteilchenphysik` source-led inside the RP LF particle-physics strip, keep `Masse-Energie-Aequivalenz` plus the retained RP relativity-dynamics clause on `Energie`, `Impuls`, `Geschwindigkeit`, `Grenzgeschwindigkeit`, and `Grenzfaelle` source-led inside the opened LF dynamics strip, keep `Zustandsgroessen der Sonne`, `Standardsonnenmodell`, and `Aktuelle Forschungsergebnisse` source-led inside the opened LF astrophysics strip, and move the next active RP widening to the adjacent LF strip `Kosmologie`."
+      "nextStep": "Treat the current Rheinland-Pfalz upper-secondary lane as stable at the reviewed pilot-cut level and do not widen it further until the still-missing Bundesland source lanes are archived locally. When Rheinland-Pfalz is revisited later, start with an explicit closure decision on the remaining LF residue `Individuelles Thema` rather than another spontaneous corridor widening."
+    },
+    {
+      "id": "F4.ALL_MISSING_STATE_SOURCE_ONBOARDING",
+      "title": "All-missing-state Physics source onboarding tranche",
+      "status": "completed",
+      "focusStates": [
+        "DE-HB",
+        "DE-HH",
+        "DE-MV",
+        "DE-SL",
+        "DE-SN",
+        "DE-ST",
+        "DE-TH"
+      ],
+      "nextStep": "The source-archive tranche is now complete: all seven previously missing Physics state families are archived locally for Sek I and Sek II where applicable. Keep the archived bundles stable and move the active rollout to source-snapshot and provenance activation before another reviewed topic-row widening."
+    },
+    {
+      "id": "F4.ALL_NEWLY_ARCHIVED_STATE_SNAPSHOT_ACTIVATION",
+      "title": "All-newly-archived-state Physics snapshot activation tranche",
+      "status": "active",
+      "focusStates": [
+        "DE-HB",
+        "DE-HH",
+        "DE-MV",
+        "DE-SL",
+        "DE-SN",
+        "DE-ST",
+        "DE-TH"
+      ],
+      "nextStep": "Activate the first retained lower-secondary and upper-secondary Physics source snapshots plus provenance scaffold for Bremen, Hamburg, Mecklenburg-Vorpommern, Saarland, Sachsen, Sachsen-Anhalt, and Thueringen from the newly archived DE-level input bundles. Do not reopen another reviewed topic-row widening before those source-backed lanes exist."
     }
   ],
   "states": [
+    {
+      "jurisdiction": "DE-BB",
+      "repoStateKey": "BB",
+      "displayName": "Brandenburg",
+      "phase": "P4",
+      "priority": "backlog",
+      "sourceStage": "subtree_adopted",
+      "mappingFiles": [
+        "curricula/DE/Gymnasium/mapping/DE-BB/upper-secondary/bb_physics_upper_secondary_to_canonical_physics.json"
+      ],
+      "notes": "Brandenburg now has an active upper-secondary Physics source snapshot from the shared 2022/23 BE/BB gymnasiale Oberstufe source family, the archived upper-secondary Physics PDF in the BB lane, provenance-backed membership and closure, and one reviewed narrow mapping lane on the shared orientation anchor, the structural `Q1` field anchor `Gravitationsfeld, elektrisches und magnetisches Feld`, one first reviewed `Q1` electric-field / capacitor corridor, one first reviewed retained `3.2.1` magnetic-field / Lorentz-force follow-on, and one first reviewed retained `3.2.2` charged-particle-motion follow-on with an explicit LK side-lane on crossed fields, Hall-Effekt, and Elektronenstrahlroehre where narrow shared targets already exist. The lane currently carries 24 reviewed mappings, introduces no Brandenburg-specific canonical Physics atoms, no Brandenburg-specific composition views, and no committed Brandenburg applicability cut yet. The remaining `c0` / `Relativitaet` / `Eintrittswinkel` trio stays explicitly source-led as shared BE/BB residue.",
+      "nextStep": "Keep Brandenburg stable on the reviewed retained `3.2.1` -> `3.2.2` route. The shared BE/BB residue on `c0` / `Relativitaet` / `Eintrittswinkel` is now explicitly frozen at the current reviewed level; the next rollout move should therefore come from a different source family unless that trio later becomes jointly reviewable."
+    },
+    {
+      "jurisdiction": "DE-BE",
+      "repoStateKey": "BE",
+      "displayName": "Berlin",
+      "phase": "P4",
+      "priority": "backlog",
+      "sourceStage": "subtree_adopted",
+      "mappingFiles": [
+        "curricula/DE/Gymnasium/mapping/DE-BE/upper-secondary/be_physics_upper_secondary_to_canonical_physics.json"
+      ],
+      "notes": "Berlin now has an active upper-secondary Physics source snapshot, the archived 2022/23 BE/BB gymnasiale Oberstufe PDF, provenance-backed membership and closure, and one reviewed narrow mapping lane on the shared orientation anchor, the structural `Q1` field anchor `Gravitationsfeld, elektrisches und magnetisches Feld`, one first reviewed `Q1` electric-field / capacitor corridor, one first reviewed retained `3.2.1` magnetic-field / Lorentz-force follow-on, one first reviewed retained `3.2.2` charged-particle-motion follow-on, and one explicit LK follow-on on crossed fields / Hall-Effekt / Elektronenstrahlroehre. The lane currently carries 24 reviewed mappings, introduces no Berlin-specific canonical Physics atoms, no Berlin-specific composition views, and no committed Berlin applicability cut yet. The remaining source-led trio `c0` / `Relativitaet` / `Eintrittswinkel` is now explicitly deferred as a shared BE/BB residue candidate rather than treated as an open Berlin-only mapping todo.",
+      "nextStep": "Keep Berlin stable on the reviewed retained `3.2.1` -> `3.2.2` route. The shared BE/BB residue on `c0` / `Relativitaet` / `Eintrittswinkel` is now explicitly frozen at the current reviewed level; the next rollout move should therefore come from a different source family unless that trio later becomes jointly reviewable."
+    },
+    {
+      "jurisdiction": "DE-BW",
+      "repoStateKey": "BW",
+      "displayName": "Baden-Wuerttemberg",
+      "phase": "P4",
+      "priority": "backlog",
+      "sourceStage": "subtree_adopted",
+      "mappingFiles": [
+        "curricula/DE/Gymnasium/mapping/DE-BW/upper-secondary/bw_physics_upper_secondary_to_canonical_physics.json"
+      ],
+      "notes": "Baden-Wuerttemberg now has a completed upper-secondary Physics first-entry snapshot with provenance-backed membership and closure, a first reviewed narrow field corridor across the shared orientation anchor plus Basisfach/Leistungsfach `Elektromagnetische Felder`, one adjacent BF electrodynamics induction strip, two exact BF electrodynamics follow-ons on new narrow canonical applications and Maxwell-overview atoms, one adjacent BF `Schwingungen` follow-on on the shared canonical Q2 surface plus four conservative partial bridges on existing oscillation atoms and two exact leaf bridges on new narrow canonical atoms for linear restoring force and the mechanical/electromagnetic oscillation comparison, one adjacent BF `Wellen` follow-on on the canonical `Mechanische Wellen` cluster plus six conservative partial bridges on existing wave and spectrum atoms, one first adjacent BF `Wellenoptik` follow-on with three exact leaf bridges across coherent light, model comparison, and everyday interference contexts plus three conservative partial bridges across experiments, pattern/intensity interpretation, and far-field calculation onto existing broader BW optics atoms with LF-only single-slit residue, one first adjacent BF `Quantenphysik` follow-on with seven exact leaf bridges across double-slit comparison, probability interpretation, single-quantum interference, complementarity, photoelectric effect, photon energy / momentum, and De-Broglie matter waves, one adjacent LF electrodynamics follow-on, one first adjacent LF `Schwingungen` follow-on with three exact leaf bridges across mechanical DGL solving, LC-DGL solving, and independent-oscillation superposition, one first adjacent LF `Wellen` follow-on with two exact leaf bridges across progressive plane transverse-wave modeling and the Hertz-dipole transfer from oscillating circuit to radiation, one widened adjacent LF `Wellenoptik` follow-on with seven exact leaf bridges across coherent light, model comparison, interference experiments, pattern and intensity interpretation, far-field calculation, everyday interference contexts, and model history, and one widened adjacent LF `Quantenphysik` follow-on with eight exact leaf bridges across photoelectric effect, photon energy / momentum, De-Broglie matter waves, double-slit comparison, probability interpretation, single-quantum interference, complementarity, and uncertainty / trajectory limits. The lane currently carries 64 reviewed mappings, widens the earlier small committed BW applicability cut from the field/induction closure onto the shared Q2 oscillation strip and adjacent wave strip, and now also commits the shared Q3 `Welle-Teilchen-Dualismus` strip plus the shared Q4 entry / `Quantenobjekte` clusters for `DE-BW`; the reused narrow BW optics and Q4 comparison / measurement atoms now surface for both `GK` and `LK` inside that BW scope while remaining BW-scoped. The completed BW pilot cut now exact/partial-closes every retained source leaf in the current snapshot, without introducing BW-specific Physics composition views.",
+      "nextStep": "Keep Baden-Wuerttemberg on maintenance only at the current reviewed pilot-cut level: preserve the existing first-entry strip inside the current topic-first maintenance phase, and reopen BW only for another clearly missing reviewed corridor outside the now-covered Basisfach-/Leistungsfach optics and quantum strips or when later retained source lanes create a genuinely shared Physics gap; do not introduce BW-specific Physics composition views before wider reviewed evidence requires them."
+    },
+    {
+      "jurisdiction": "DE-BY",
+      "repoStateKey": "BY",
+      "displayName": "Bayern",
+      "phase": "P6",
+      "priority": "backlog",
+      "sourceStage": "cutover_ready",
+      "mappingFiles": [
+        "curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_physics_to_canonical_physics.json"
+      ],
+      "notes": "Bayern is the second hardened Physics state on the active canonical path, already carries its reviewed state-scoped composition views plus registry-backed applicability widening, and now also refreshes the retained maintenance surface via the reviewed Ph11/Ph12 wave strip plus one narrow reviewed Ph12 experimental follow-on from the broad `Elektronenablenkroehre` / `Fadenstrahlrohr` clause onto the shared Q1 measurement surface, still without introducing Bayern-specific Physics composition views.",
+      "nextStep": "Keep Bayern on maintenance only, but treat the refreshed BY contribution on the retained Ph11/Ph12 wave strip and on the imported fine-beam-tube experiment clause as part of that maintenance surface: if later Bayern source revisions touch either strip, refresh mappings, applicability, provenance, and the DE-BY Physics composition views together without inventing Bayern-specific composition views or new canonical atoms unless broader reviewed evidence really forces them."
+    },
+    {
+      "jurisdiction": "DE-HB",
+      "repoStateKey": "HB",
+      "displayName": "Bremen",
+      "phase": "P1",
+      "priority": "active",
+      "sourceStage": "source_archived",
+      "mappingFiles": [],
+      "notes": "Bremen now has both official retained Physics source families archived locally: the Gymnasium Sek-I Naturwissenschaften plan plus its 2022 restriction note and the Gymnasiale-Oberstufe Physics Bildungsplan (`curricula/DE/Gymnasium/input/HB/Naturwissenschaften_Gymnasium_5_10_2006.pdf`, `curricula/DE/Gymnasium/input/HB/Naturwissenschaften_Gymnasium_5_9_Einschraenkungen_2022.pdf`, `curricula/DE/Gymnasium/input/HB/GyO_Physik_2022.pdf`). No Physics source snapshot is active yet, no provenance-backed source lane exists yet, and no Physics mapping lane has been opened yet.",
+      "nextStep": "Use the archived Bremen Sek-I and Sek-II Physics PDFs as the source base for the first retained `DE-HB` Physics snapshots and provenance scaffold. Do not author any topic-specific reviewed Physics mapping for Bremen before those source-backed lanes exist."
+    },
     {
       "jurisdiction": "DE-HE",
       "repoStateKey": "HE",
@@ -182,17 +276,26 @@
       "nextStep": "Keep Hessen on maintenance only: refresh retained source snapshots, mappings, provenance, applicability, and the DE-HE Physics composition views together whenever a curriculum revision changes visible scope or learner-facing tree shape."
     },
     {
-      "jurisdiction": "DE-BY",
-      "repoStateKey": "BY",
-      "displayName": "Bayern",
-      "phase": "P6",
-      "priority": "backlog",
-      "sourceStage": "cutover_ready",
-      "mappingFiles": [
-        "curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_physics_to_canonical_physics.json"
-      ],
-      "notes": "Bayern is the second hardened Physics state on the active canonical path, already carries its reviewed state-scoped composition views plus registry-backed applicability widening, and now also refreshes the retained maintenance surface via the reviewed Ph11/Ph12 wave strip plus one narrow reviewed Ph12 experimental follow-on from the broad `Elektronenablenkroehre` / `Fadenstrahlrohr` clause onto the shared Q1 measurement surface, still without introducing Bayern-specific Physics composition views.",
-      "nextStep": "Keep Bayern on maintenance only, but treat the refreshed BY contribution on the retained Ph11/Ph12 wave strip and on the imported fine-beam-tube experiment clause as part of that maintenance surface: if later Bayern source revisions touch either strip, refresh mappings, applicability, provenance, and the DE-BY Physics composition views together without inventing Bayern-specific composition views or new canonical atoms unless broader reviewed evidence really forces them."
+      "jurisdiction": "DE-HH",
+      "repoStateKey": "HH",
+      "displayName": "Hamburg",
+      "phase": "P1",
+      "priority": "active",
+      "sourceStage": "source_archived",
+      "mappingFiles": [],
+      "notes": "Hamburg now has both official retained Physics source families archived locally: the Gymnasium Sek-I Physik Bildungsplan and the Studienstufe Physik Bildungsplan (`curricula/DE/Gymnasium/input/HH/physik-gym-seki-data.pdf`, `curricula/DE/Gymnasium/input/HH/physik-gyo-2022-data.pdf`). No Physics source snapshot is active yet, no provenance-backed source lane exists yet, and no Physics mapping lane has been opened yet.",
+      "nextStep": "Use the archived Hamburg Sek-I and Sek-II Physics PDFs as the source base for the first retained `DE-HH` Physics snapshots and provenance scaffold. Do not author any topic-specific reviewed Physics mapping for Hamburg before those source-backed lanes exist."
+    },
+    {
+      "jurisdiction": "DE-MV",
+      "repoStateKey": "MV",
+      "displayName": "Mecklenburg-Vorpommern",
+      "phase": "P1",
+      "priority": "active",
+      "sourceStage": "source_archived",
+      "mappingFiles": [],
+      "notes": "Mecklenburg-Vorpommern now has both official retained Physics source families archived locally: the Gymnasium/Gesamtschule Sek-I Physics framework for Klassen 7-10 and the Sekundarbereich-II Physics framework for Klassen 11-12 (`curricula/DE/Gymnasium/input/MV/Physik_Gymnasium_7_10_2022.pdf`, `curricula/DE/Gymnasium/input/MV/Physik_Gymnasium_11_12_2022.pdf`). No Physics source snapshot is active yet, no provenance-backed source lane exists yet, and no Physics mapping lane has been opened yet.",
+      "nextStep": "Use the archived Mecklenburg-Vorpommern Sek-I and Sek-II Physics PDFs as the source base for the first retained `DE-MV` Physics snapshots and provenance scaffold. Do not author any topic-specific reviewed Physics mapping for Mecklenburg-Vorpommern before those source-backed lanes exist."
     },
     {
       "jurisdiction": "DE-NI",
@@ -221,43 +324,17 @@
       "nextStep": "Keep Nordrhein-Westfalen on maintenance only at the current reviewed pilot-cut level: preserve the existing upper-secondary corridor inside the current topic-first maintenance phase, and reopen NRW only for another clearly source-led corridor outside the exhausted GK atom-model strip or when later retained source lanes create a genuinely shared Physics gap; do not invent NRW-specific Physics composition views before broader reviewed evidence actually requires them."
     },
     {
-      "jurisdiction": "DE-BW",
-      "repoStateKey": "BW",
-      "displayName": "Baden-Wuerttemberg",
+      "jurisdiction": "DE-RP",
+      "repoStateKey": "RP",
+      "displayName": "Rheinland-Pfalz",
       "phase": "P4",
       "priority": "backlog",
       "sourceStage": "subtree_adopted",
       "mappingFiles": [
-        "curricula/DE/Gymnasium/mapping/DE-BW/upper-secondary/bw_physics_upper_secondary_to_canonical_physics.json"
+        "curricula/DE/Gymnasium/mapping/DE-RP/upper-secondary/rp_physics_upper_secondary_to_canonical_physics.json"
       ],
-      "notes": "Baden-Wuerttemberg now has a completed upper-secondary Physics first-entry snapshot with provenance-backed membership and closure, a first reviewed narrow field corridor across the shared orientation anchor plus Basisfach/Leistungsfach `Elektromagnetische Felder`, one adjacent BF electrodynamics induction strip, two exact BF electrodynamics follow-ons on new narrow canonical applications and Maxwell-overview atoms, one adjacent BF `Schwingungen` follow-on on the shared canonical Q2 surface plus four conservative partial bridges on existing oscillation atoms and two exact leaf bridges on new narrow canonical atoms for linear restoring force and the mechanical/electromagnetic oscillation comparison, one adjacent BF `Wellen` follow-on on the canonical `Mechanische Wellen` cluster plus six conservative partial bridges on existing wave and spectrum atoms, one first adjacent BF `Wellenoptik` follow-on with three exact leaf bridges across coherent light, model comparison, and everyday interference contexts plus three conservative partial bridges across experiments, pattern/intensity interpretation, and far-field calculation onto existing broader BW optics atoms with LF-only single-slit residue, one first adjacent BF `Quantenphysik` follow-on with seven exact leaf bridges across double-slit comparison, probability interpretation, single-quantum interference, complementarity, photoelectric effect, photon energy / momentum, and De-Broglie matter waves, one adjacent LF electrodynamics follow-on, one first adjacent LF `Schwingungen` follow-on with three exact leaf bridges across mechanical DGL solving, LC-DGL solving, and independent-oscillation superposition, one first adjacent LF `Wellen` follow-on with two exact leaf bridges across progressive plane transverse-wave modeling and the Hertz-dipole transfer from oscillating circuit to radiation, one widened adjacent LF `Wellenoptik` follow-on with seven exact leaf bridges across coherent light, model comparison, interference experiments, pattern and intensity interpretation, far-field calculation, everyday interference contexts, and model history, and one widened adjacent LF `Quantenphysik` follow-on with eight exact leaf bridges across photoelectric effect, photon energy / momentum, De-Broglie matter waves, double-slit comparison, probability interpretation, single-quantum interference, complementarity, and uncertainty / trajectory limits. The lane currently carries 64 reviewed mappings, widens the earlier small committed BW applicability cut from the field/induction closure onto the shared Q2 oscillation strip and adjacent wave strip, and now also commits the shared Q3 `Welle-Teilchen-Dualismus` strip plus the shared Q4 entry / `Quantenobjekte` clusters for `DE-BW`; the reused narrow BW optics and Q4 comparison / measurement atoms now surface for both `GK` and `LK` inside that BW scope while remaining BW-scoped. The completed BW pilot cut now exact/partial-closes every retained source leaf in the current snapshot, without introducing BW-specific Physics composition views.",
-      "nextStep": "Keep Baden-Wuerttemberg on maintenance only at the current reviewed pilot-cut level: preserve the existing first-entry strip inside the current topic-first maintenance phase, and reopen BW only for another clearly missing reviewed corridor outside the now-covered Basisfach-/Leistungsfach optics and quantum strips or when later retained source lanes create a genuinely shared Physics gap; do not introduce BW-specific Physics composition views before wider reviewed evidence requires them."
-    },
-    {
-      "jurisdiction": "DE-BE",
-      "repoStateKey": "BE",
-      "displayName": "Berlin",
-      "phase": "P4",
-      "priority": "backlog",
-      "sourceStage": "subtree_adopted",
-      "mappingFiles": [
-        "curricula/DE/Gymnasium/mapping/DE-BE/upper-secondary/be_physics_upper_secondary_to_canonical_physics.json"
-      ],
-      "notes": "Berlin now has an active upper-secondary Physics source snapshot, the archived 2022/23 BE/BB gymnasiale Oberstufe PDF, provenance-backed membership and closure, and one reviewed narrow mapping lane on the shared orientation anchor, the structural `Q1` field anchor `Gravitationsfeld, elektrisches und magnetisches Feld`, one first reviewed `Q1` electric-field / capacitor corridor, one first reviewed retained `3.2.1` magnetic-field / Lorentz-force follow-on, one first reviewed retained `3.2.2` charged-particle-motion follow-on, and one explicit LK follow-on on crossed fields / Hall-Effekt / Elektronenstrahlroehre. The lane currently carries 24 reviewed mappings, introduces no Berlin-specific canonical Physics atoms, no Berlin-specific composition views, and no committed Berlin applicability cut yet. The remaining source-led trio `c0` / `Relativitaet` / `Eintrittswinkel` is now explicitly deferred as a shared BE/BB residue candidate rather than treated as an open Berlin-only mapping todo.",
-      "nextStep": "Keep Berlin stable on the reviewed retained `3.2.1` -> `3.2.2` route. The shared BE/BB residue on `c0` / `Relativitaet` / `Eintrittswinkel` is now explicitly frozen at the current reviewed level; the next rollout move should therefore come from a different source family unless that trio later becomes jointly reviewable."
-    },
-    {
-      "jurisdiction": "DE-BB",
-      "repoStateKey": "BB",
-      "displayName": "Brandenburg",
-      "phase": "P4",
-      "priority": "backlog",
-      "sourceStage": "subtree_adopted",
-      "mappingFiles": [
-        "curricula/DE/Gymnasium/mapping/DE-BB/upper-secondary/bb_physics_upper_secondary_to_canonical_physics.json"
-      ],
-      "notes": "Brandenburg now has an active upper-secondary Physics source snapshot from the shared 2022/23 BE/BB gymnasiale Oberstufe source family, the archived upper-secondary Physics PDF in the BB lane, provenance-backed membership and closure, and one reviewed narrow mapping lane on the shared orientation anchor, the structural `Q1` field anchor `Gravitationsfeld, elektrisches und magnetisches Feld`, one first reviewed `Q1` electric-field / capacitor corridor, one first reviewed retained `3.2.1` magnetic-field / Lorentz-force follow-on, and one first reviewed retained `3.2.2` charged-particle-motion follow-on with an explicit LK side-lane on crossed fields, Hall-Effekt, and Elektronenstrahlroehre where narrow shared targets already exist. The lane currently carries 24 reviewed mappings, introduces no Brandenburg-specific canonical Physics atoms, no Brandenburg-specific composition views, and no committed Brandenburg applicability cut yet. The remaining `c0` / `Relativitaet` / `Eintrittswinkel` trio stays explicitly source-led as shared BE/BB residue.",
-      "nextStep": "Keep Brandenburg stable on the reviewed retained `3.2.1` -> `3.2.2` route. The shared BE/BB residue on `c0` / `Relativitaet` / `Eintrittswinkel` is now explicitly frozen at the current reviewed level; the next rollout move should therefore come from a different source family unless that trio later becomes jointly reviewable."
+      "notes": "Rheinland-Pfalz now has an active upper-secondary Physics source snapshot for the Mainzer Studienstufe, the archived official MSS Physics PDF, provenance-backed membership and closure, one first reviewed narrow mapping lane on the shared orientation anchor, one structural Qualifikationsphasen-Anker `Statische elektrische und magnetische Felder`, one first reviewed gemeinsamer Grundfach-/Leistungsfach-Korridor on the Pflichtbaustein `Feldkonzept fuer statische elektrische und magnetische Felder`, one first reviewed GF/LF-common follow-on on `Wechselwirkung von geladenen Koerpern mit statischen Feldern`, one first narrow reviewed LK follow-on on `Hall-Effekt`, two adjacent conservative LK follow-ons on `Kreisbahnen` and `gekreuzten Feldern`, one first reviewed GF/LF-common induction corridor `Veraenderliche elektromagnetische Felder`, one adjacent shared induction follow-on on `Selbstinduktion` / `Ein- und Ausschaltvorgaenge bei der Spule`, one adjacent narrow LK induction follow-on on `Induktionsgesetz in differentieller Form`, one first reviewed GF/LF-common oscillation corridor `Harmonische Schwingungen`, one first reviewed Grundfach wave corridor `Harmonische Wellen`, one first reviewed Grundfach superposition/interference follow-on `Superposition von Wellen`, one first narrow reviewed LF follow-on `Harmonische Wellen und ihre Superposition`, one first narrow reviewed LF Pflichtbaustein follow-on `Schwingungen und Wellen`, one first reviewed Grundfach quantum corridor `Quantenobjekte I` with one structural quantum/atom anchor on the shared Q4 surface plus reviewed bridges across double-slit behavior of photons/electrons, photon energy-frequency-momentum relations, De-Broglie matter waves, probability interpretation via the wavefunction, and the model/worldview reflection surface, one first narrow reviewed LF follow-on `Quantenobjekte II` with reviewed bridges across the measurement problem, the electron diffraction tube, Hallwachs as an evidence experiment, and the quantum eraser / which-path surface on the same shared Q4 quantum-object surface, one first reviewed Grundfach atom-model corridor `Quantenmechanische Atomvorstellung I` with reviewed bridges across quantized absorption / emission, the hydrogen energy-level model, and orbital probability interpretation on the shared canonical atom-model surface, one first narrow reviewed LF atom-model follow-on `Quantenmechanische Atomvorstellung II` with reviewed bridges across Franck-Hertz, Natriumresonanzabsorption, and Spektralanalyse on the same shared canonical atom-model surface, one first narrow reviewed LF interaction follow-on `Wechselwirkung von Quantenobjekten` with reviewed bridges across Compton-Effekt, Hallwachs-Effekt, Elektronenbeugung / Bragg-Reflexion, and Roentgenstrahlung, one first narrow reviewed LF particle-physics follow-on `Elementarteilchenphysik` with reviewed bridges across the Standardmodell as ordering scheme, fundamental interactions, and experimental evidence on the shared Q4 particle-physics surface, one first narrow reviewed LF relativity follow-on `Relativistische Kinematik` with reviewed bridges across relativity postulates / simultaneity / experiments, relativistic consequences, and spacetime diagrams on the shared special-relativity surface, one first narrow reviewed LF relativity-dynamics follow-on `Relativistische Dynamik` with one reviewed bridge across gravitation-dependent time and experimental evidence on the shared relativity surface, one first narrow reviewed LF astrophysics follow-on `Astrophysik` with one reviewed parent bridge on the shared astrophysics cluster and one reviewed bridge across the mass-luminosity relation / stellar evolution onto the shared stellar-evolution surface, one first narrow reviewed LF cosmology follow-on `Kosmologie` with one reviewed parent bridge on the shared astrophysics cluster plus reviewed bridges across the structure of the universe and the development of the universe onto the shared cosmology surface, one first narrow reviewed LF chaos follow-on `Chaos und Fraktale` with one reviewed bridge across characteristics and system conditions of chaotic systems onto the shared chaos surface, and now also one first narrow reviewed LF fluid-dynamics follow-on `Stroemungsphysik` with one reviewed bridge across dynamic lift onto the shared cross-stage pressure/buoyancy surface. The lane currently carries 90 reviewed mappings, introduces no Rheinland-Pfalz-specific canonical Physics atoms, no Rheinland-Pfalz-specific composition views, and no committed Rheinland-Pfalz applicability cut yet; the retained RP field/induction family is closed on the current conservative reviewed cut, the remaining RP oscillation/wave micro-residues on period dependence, wave types / polarization, the white-light double-slit spectrum, and coupled oscillations are explicitly frozen as source-led residues on the same reviewed cut, the adjacent RP clause `Plancksches Wirkungsquantum mit einer experimentellen Methode naeherungsweise bestimmen` stays intentionally source-led because the current shared canonical method surface remains photoeffect-specific, the remaining LF atom-model application examples `Lumineszenz`, `Laser`, `chemische Bindung/Molekuelstruktur`, and `Farbstoffmolekuele` stay intentionally source-led because the current shared canonical Physics surface still has no narrow reviewed targets for them, `Paarerzeugung` stays intentionally source-led inside the LF interaction strip because the current shared canonical quantum surface still has no genuinely narrow reviewed target for it, `Offene Fragen der Elementarteilchenphysik` stays intentionally source-led inside the LF particle-physics strip because the current shared canonical research surface still remains broader than the RP wording, the newly visible RP dynamics clauses on `Masse-Energie-Aequivalenz` plus `Energie`, `Impuls`, `Geschwindigkeit`, `Grenzgeschwindigkeit`, and `Grenzfaelle` stay intentionally source-led because the current shared canonical relativity surface still has no genuinely narrow reviewed targets for them, the newly visible RP astrophysics clauses on `Zustandsgroessen der Sonne`, `Standardsonnenmodell`, and `Aktuelle Forschungsergebnisse` stay intentionally source-led because the current shared canonical astrophysics surface still has no genuinely narrow reviewed targets for them, the newly visible RP cosmology clause on `Aktuelle Forschungsergebnisse` stays intentionally source-led because the current shared canonical cosmology surface still has no genuinely narrow reviewed target for it, the newly visible RP chaos clauses on `Chaosphaenomene und fraktale Strukturen` and `Strukturelle Aehnlichkeiten in verschiedenen Bereichen` stay intentionally source-led because the current shared canonical chaos surface still has no genuinely narrow reviewed targets for them, and the newly visible RP fluid-dynamics clauses on `Stroemungsphaenomene und Stroemungsarten`, `Kontinuitaetsgleichung` / `Stroemungsgesetze` / `Reynolds-Zahl`, and `Sinkgeschwindigkeiten im Praktikum` stay intentionally source-led because the current shared canonical Physics surface still has no genuinely narrow reviewed targets for them.",
+      "nextStep": "Keep Rheinland-Pfalz stable at the current conservative reviewed cut and pause further widening until the still-missing Bundesland Physics source lanes are archived locally for both Sek I and Sek II where applicable. When Rheinland-Pfalz is revisited after that source-onboarding tranche, start with an explicit closure decision on the remaining LF residue `Individuelles Thema`."
     },
     {
       "jurisdiction": "DE-SH",
@@ -273,17 +350,48 @@
       "nextStep": "Treat Schleswig-Holstein as complete at the current reviewed pilot-cut level. Keep `Massenspektrometer` plus `Drehimpuls und Drehimpulserhaltung` frozen as explicit source-led micro-residues unless broader reviewed evidence warrants narrow shared canonical splits, and reopen SH only if a later multi-state source lane creates a genuinely shared Physics gap on either residue."
     },
     {
-      "jurisdiction": "DE-RP",
-      "repoStateKey": "RP",
-      "displayName": "Rheinland-Pfalz",
-      "phase": "P4",
+      "jurisdiction": "DE-SL",
+      "repoStateKey": "SL",
+      "displayName": "Saarland",
+      "phase": "P1",
       "priority": "active",
-      "sourceStage": "subtree_adopted",
-      "mappingFiles": [
-        "curricula/DE/Gymnasium/mapping/DE-RP/upper-secondary/rp_physics_upper_secondary_to_canonical_physics.json"
-      ],
-      "notes": "Rheinland-Pfalz now has an active upper-secondary Physics source snapshot for the Mainzer Studienstufe, the archived official MSS Physics PDF, provenance-backed membership and closure, one first reviewed narrow mapping lane on the shared orientation anchor, one structural Qualifikationsphasen-Anker `Statische elektrische und magnetische Felder`, one first reviewed gemeinsamer Grundfach-/Leistungsfach-Korridor on the Pflichtbaustein `Feldkonzept fuer statische elektrische und magnetische Felder`, one first reviewed GF/LF-common follow-on on `Wechselwirkung von geladenen Koerpern mit statischen Feldern`, one first narrow reviewed LK follow-on on `Hall-Effekt`, two adjacent conservative LK follow-ons on `Kreisbahnen` and `gekreuzten Feldern`, one first reviewed GF/LF-common induction corridor `Veraenderliche elektromagnetische Felder`, one adjacent shared induction follow-on on `Selbstinduktion` / `Ein- und Ausschaltvorgaenge bei der Spule`, one adjacent narrow LK induction follow-on on `Induktionsgesetz in differentieller Form`, one first reviewed GF/LF-common oscillation corridor `Harmonische Schwingungen`, one first reviewed Grundfach wave corridor `Harmonische Wellen`, one first reviewed Grundfach superposition/interference follow-on `Superposition von Wellen`, one first narrow reviewed LF follow-on `Harmonische Wellen und ihre Superposition`, one first narrow reviewed LF Pflichtbaustein follow-on `Schwingungen und Wellen`, one first reviewed Grundfach quantum corridor `Quantenobjekte I` with one structural quantum/atom anchor on the shared Q4 surface plus reviewed bridges across double-slit behavior of photons/electrons, photon energy-frequency-momentum relations, De-Broglie matter waves, probability interpretation via the wavefunction, and the model/worldview reflection surface, one first narrow reviewed LF follow-on `Quantenobjekte II` with reviewed bridges across the measurement problem, the electron diffraction tube, Hallwachs as an evidence experiment, and the quantum eraser / which-path surface on the same shared Q4 quantum-object surface, one first reviewed Grundfach atom-model corridor `Quantenmechanische Atomvorstellung I` with reviewed bridges across quantized absorption / emission, the hydrogen energy-level model, and orbital probability interpretation on the shared canonical atom-model surface, one first narrow reviewed LF atom-model follow-on `Quantenmechanische Atomvorstellung II` with reviewed bridges across Franck-Hertz, Natriumresonanzabsorption, and Spektralanalyse on the same shared canonical atom-model surface, one first narrow reviewed LF interaction follow-on `Wechselwirkung von Quantenobjekten` with reviewed bridges across Compton-Effekt, Hallwachs-Effekt, Elektronenbeugung / Bragg-Reflexion, and Roentgenstrahlung, one first narrow reviewed LF particle-physics follow-on `Elementarteilchenphysik` with reviewed bridges across the Standardmodell as ordering scheme, fundamental interactions, and experimental evidence on the shared Q4 particle-physics surface, one first narrow reviewed LF relativity follow-on `Relativistische Kinematik` with reviewed bridges across relativity postulates / simultaneity / experiments, relativistic consequences, and spacetime diagrams on the shared special-relativity surface, one first narrow reviewed LF relativity-dynamics follow-on `Relativistische Dynamik` with one reviewed bridge across gravitation-dependent time and experimental evidence on the shared relativity surface, one first narrow reviewed LF astrophysics follow-on `Astrophysik` with one reviewed parent bridge on the shared astrophysics cluster and one reviewed bridge across the mass-luminosity relation / stellar evolution onto the shared stellar-evolution surface, one first narrow reviewed LF cosmology follow-on `Kosmologie` with one reviewed parent bridge on the shared astrophysics cluster plus reviewed bridges across the structure of the universe and the development of the universe onto the shared cosmology surface, one first narrow reviewed LF chaos follow-on `Chaos und Fraktale` with one reviewed bridge across characteristics and system conditions of chaotic systems onto the shared chaos surface, and now also one first narrow reviewed LF fluid-dynamics follow-on `Stroemungsphysik` with one reviewed bridge across dynamic lift onto the shared cross-stage pressure/buoyancy surface. The lane currently carries 90 reviewed mappings, introduces no Rheinland-Pfalz-specific canonical Physics atoms, no Rheinland-Pfalz-specific composition views, and no committed Rheinland-Pfalz applicability cut yet; the retained RP field/induction family is closed on the current conservative reviewed cut, the remaining RP oscillation/wave micro-residues on period dependence, wave types / polarization, the white-light double-slit spectrum, and coupled oscillations are explicitly frozen as source-led residues on the same reviewed cut, the adjacent RP clause `Plancksches Wirkungsquantum mit einer experimentellen Methode naeherungsweise bestimmen` stays intentionally source-led because the current shared canonical method surface remains photoeffect-specific, the remaining LF atom-model application examples `Lumineszenz`, `Laser`, `chemische Bindung/Molekuelstruktur`, and `Farbstoffmolekuele` stay intentionally source-led because the current shared canonical Physics surface still has no narrow reviewed targets for them, `Paarerzeugung` stays intentionally source-led inside the LF interaction strip because the current shared canonical quantum surface still has no genuinely narrow reviewed target for it, `Offene Fragen der Elementarteilchenphysik` stays intentionally source-led inside the LF particle-physics strip because the current shared canonical research surface still remains broader than the RP wording, the newly visible RP dynamics clauses on `Masse-Energie-Aequivalenz` plus `Energie`, `Impuls`, `Geschwindigkeit`, `Grenzgeschwindigkeit`, and `Grenzfaelle` stay intentionally source-led because the current shared canonical relativity surface still has no genuinely narrow reviewed targets for them, the newly visible RP astrophysics clauses on `Zustandsgroessen der Sonne`, `Standardsonnenmodell`, and `Aktuelle Forschungsergebnisse` stay intentionally source-led because the current shared canonical astrophysics surface still has no genuinely narrow reviewed targets for them, the newly visible RP cosmology clause on `Aktuelle Forschungsergebnisse` stays intentionally source-led because the current shared canonical cosmology surface still has no genuinely narrow reviewed target for it, the newly visible RP chaos clauses on `Chaosphaenomene und fraktale Strukturen` and `Strukturelle Aehnlichkeiten in verschiedenen Bereichen` stay intentionally source-led because the current shared canonical chaos surface still has no genuinely narrow reviewed targets for them, and the newly visible RP fluid-dynamics clauses on `Stroemungsphaenomene und Stroemungsarten`, `Kontinuitaetsgleichung` / `Stroemungsgesetze` / `Reynolds-Zahl`, and `Sinkgeschwindigkeiten im Praktikum` stay intentionally source-led because the current shared canonical Physics surface still has no genuinely narrow reviewed targets for them.",
-      "nextStep": "Keep the Rheinland-Pfalz field/induction family, the opened oscillation/wave strips, the first GF quantum corridor `Quantenobjekte I`, the opened LF strips `Quantenobjekte II`, `Elementarteilchenphysik`, `Relativistische Kinematik`, `Relativistische Dynamik`, `Astrophysik`, `Kosmologie`, `Chaos und Fraktale`, and `Stroemungsphysik`, the opened GF/LF atom-model strips `Quantenmechanische Atomvorstellung I` and `Quantenmechanische Atomvorstellung II`, and the first narrow LF interaction strip `Wechselwirkung von Quantenobjekten` stable at the current conservative reviewed cut. Leave `Periodendauer`, `Polarisation`, `Weisslichtspektrum`, and `gekoppelte Schwingungen` explicitly frozen as source-led RP micro-residues, keep `Plancksches Wirkungsquantum mit einer experimentellen Methode naeherungsweise bestimmen` source-led inside the RP quantum strip, keep `Lumineszenz`, `Laser`, `chemische Bindung/Molekuelstruktur`, and `Farbstoffmolekuele` source-led inside the RP LF atom-model strip, keep `Paarerzeugung` source-led inside the RP LF interaction strip, keep `Offene Fragen der Elementarteilchenphysik` source-led inside the RP LF particle-physics strip, keep `Masse-Energie-Aequivalenz` plus the retained RP relativity-dynamics clause on `Energie`, `Impuls`, `Geschwindigkeit`, `Grenzgeschwindigkeit`, and `Grenzfaelle` source-led inside the opened LF dynamics strip, keep `Zustandsgroessen der Sonne`, `Standardsonnenmodell`, and `Aktuelle Forschungsergebnisse` source-led inside the opened LF astrophysics strip, keep `Aktuelle Forschungsergebnisse` source-led inside the opened LF cosmology strip, keep `Chaosphaenomene und fraktale Strukturen` plus `Strukturelle Aehnlichkeiten in verschiedenen Bereichen` source-led inside the opened LF chaos strip, keep `Stroemungsphaenomene und Stroemungsarten`, `Kontinuitaetsgleichung` / `Stroemungsgesetze` / `Reynolds-Zahl`, and `Sinkgeschwindigkeiten im Praktikum` source-led inside the opened LF fluid-dynamics strip, and move the next active RP move toward an explicit lane-closure decision on the remaining LF residue `Individuelles Thema`."
+      "sourceStage": "source_archived",
+      "mappingFiles": [],
+      "notes": "Saarland now has the official retained Physics source family archived locally: the Naturwissenschaften feeder for Klassenstufen `5/6`, the branch-sensitive Gymnasium Physik bundle for Klassenstufen `7-10`, and the gymnasiale Oberstufe bundle with Einfuehrungsphase, Hauptphase `G-Kurs`, Hauptphase `Leistungskurs`, plus the retained APA/IQB support documents (`curricula/DE/Gymnasium/input/SL/NW_5und6_Gym_2012.pdf`, `curricula/DE/Gymnasium/input/SL/LP_PH_gym9_7_2023.pdf`, `curricula/DE/Gymnasium/input/SL/LP_PH_gym9_8_NW_Zweig_2024.pdf`, `curricula/DE/Gymnasium/input/SL/LP_PH_gym9_8_spr_Zweig_2024.pdf`, `curricula/DE/Gymnasium/input/SL/LP_PH_gym9_9_inf_Zweig_2024.pdf`, `curricula/DE/Gymnasium/input/SL/LP_PH_gym9_9_nw_Zweig_2024.pdf`, `curricula/DE/Gymnasium/input/SL/LP_PH_gym9_10_inf_Zweig_2026.pdf`, `curricula/DE/Gymnasium/input/SL/LP_PH_gym9_10_nw_Zweig_2026.pdf`, `curricula/DE/Gymnasium/input/SL/LP_PH_gym9_10_zweistuendig_ohne_Infozweig_2026.pdf`, `curricula/DE/Gymnasium/input/SL/LP_Ph_EP_GOS_2023.pdf`, `curricula/DE/Gymnasium/input/SL/LP_Ph_HP_GK_2023.pdf`, `curricula/DE/Gymnasium/input/SL/LP_Ph_HP_LK_2023.pdf`, `curricula/DE/Gymnasium/input/SL/APA_Physik_2023.pdf`, `curricula/DE/Gymnasium/input/SL/HInweis_IQB_Formelsammlung.pdf`). No Physics source snapshot is active yet, no provenance-backed source lane exists yet, and no Physics mapping lane has been opened yet.",
+      "nextStep": "Use the archived Saarland lower-secondary and upper-secondary Physics PDFs as the source base for the first retained `DE-SL` Physics snapshots and provenance scaffold. Do not author any topic-specific reviewed Physics mapping for Saarland before those source-backed lanes exist."
+    },
+    {
+      "jurisdiction": "DE-SN",
+      "repoStateKey": "SN",
+      "displayName": "Sachsen",
+      "phase": "P1",
+      "priority": "active",
+      "sourceStage": "source_archived",
+      "mappingFiles": [],
+      "notes": "Sachsen now has the official retained Gymnasium Physics source family archived locally: the shared Lehrplan PDF for Physik covering Klassenstufen `6-10` and Jahrgangsstufen `11/12` (`curricula/DE/Gymnasium/input/SN/lehrplan-gymnasium-physik-sachsen-2025.pdf`). No Physics source snapshot is active yet, no provenance-backed source lane exists yet, and no Physics mapping lane has been opened yet.",
+      "nextStep": "Use the archived Sachsen Gymnasium Physics PDF as the source base for the first retained `DE-SN` Physics snapshots and provenance scaffold across Sek I and Sek II. Do not author any topic-specific reviewed Physics mapping for Sachsen before those source-backed lanes exist."
+    },
+    {
+      "jurisdiction": "DE-ST",
+      "repoStateKey": "ST",
+      "displayName": "Sachsen-Anhalt",
+      "phase": "P1",
+      "priority": "active",
+      "sourceStage": "source_archived",
+      "mappingFiles": [],
+      "notes": "Sachsen-Anhalt now has the official retained Physics source family archived locally: the 2019 Fachlehrplan Physik Gymnasium/Berufliches Gymnasium plus the 2022 Anpassungsstand (`curricula/DE/Gymnasium/input/ST/Physik_FLP_Gym_01_07_2019.pdf`, `curricula/DE/Gymnasium/input/ST/FLP_Physik_Gym_01082022_swd.pdf`). The retained official PDF family covers Sek I and Sek II in one source set, including Schuljahrgaenge `6`, `7/8`, `9`, `10 (Einfuehrungsphase)`, and `11/12 (Qualifikationsphase)`. No Physics source snapshot is active yet, no provenance-backed source lane exists yet, and no Physics mapping lane has been opened yet.",
+      "nextStep": "Use the archived Sachsen-Anhalt Physics PDFs as the source base for the first retained `DE-ST` Physics snapshots and provenance scaffold across Sek I and Sek II. Do not author any topic-specific reviewed Physics mapping for Sachsen-Anhalt before those source-backed lanes exist."
+    },
+    {
+      "jurisdiction": "DE-TH",
+      "repoStateKey": "TH",
+      "displayName": "Thueringen",
+      "phase": "P1",
+      "priority": "active",
+      "sourceStage": "source_archived",
+      "mappingFiles": [],
+      "notes": "Thueringen now has the official retained Gymnasium Physics source family archived locally: the 2012 Lehrplan for Physik covering Klassenstufen `7-10`, Einfuehrungsphase, and Qualifikationsphase plus the 2024 Lehrplan update that replaces Kapitel `1` und `4` for the Qualifikationsphase with roll-in from Klassenstufe `11` in Schuljahr `2025/26` (`curricula/DE/Gymnasium/input/TH/LP_GY_Physik_2012.pdf`, `curricula/DE/Gymnasium/input/TH/LP_GY_Physik_2024.pdf`). No Physics source snapshot is active yet, no provenance-backed source lane exists yet, and no Physics mapping lane has been opened yet.",
+      "nextStep": "Use the archived Thueringen Physics PDFs as the source base for the first retained `DE-TH` Physics snapshots and provenance scaffold across Sek I and Sek II. Do not author any topic-specific reviewed Physics mapping for Thueringen before those source-backed lanes exist."
     }
   ]
 }

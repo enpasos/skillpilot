@@ -1,6 +1,6 @@
 # Canonical Gymnasium Physics Topic Workboard
 
-Snapshot: `2026-04-17`
+Snapshot: `2026-04-20`
 
 Purpose:
 
@@ -13,22 +13,25 @@ Scope rule for now:
 1. the active cross-state Physics surface is still mainly **Sek II**
 2. the board therefore starts with the four upper-secondary topic rows that already have real multi-state evidence
 3. Sek-I Physics rows should be added once more non-Hessen lower-secondary source lanes become real
+4. the active source-onboarding tranche nevertheless covers **Sek I and Sek II** source acquisition together
 
 Working rule:
 
-1. pick one Physics topic row
-2. review the current canonical atom inventory for that row
-3. compare the row against all currently available Bundesland sources
-4. classify each state cell
-5. add canonical atoms only where multiple states or strong pedagogical structure justify them
-6. only then widen or refine the state mappings for that topic
+1. the previously missing-state Physics source archive tranche is now complete for both **Sek I and Sek II** where applicable
+2. the next active tranche is source-snapshot and provenance activation for those newly archived states
+3. only after those source-backed lanes exist should another Physics topic row become active
+4. then review the current canonical atom inventory for that row
+5. compare the row against all retained Bundesland sources
+6. classify each state cell
+7. add canonical atoms only where multiple states or strong pedagogical structure justify them
+8. only then widen or refine the state mappings for that topic
 
 Coverage rule:
 
 1. every active Physics topic row runs in `all states required` mode
-2. a topic row is operationally closed for now once every **currently available retained-source** state column is resolved once
-3. `seed`, `anchor`, `corr`, `gap`, and `loc` count as resolved cells; only `n/s` means the row is still unchecked for that state
-4. if a Bundesland column stays `n/s` only because no retained Physics source lane exists in the repo yet, that does not block temporary row closure; the board still keeps that nationwide debt explicit instead of hiding it behind lane-local progress
+2. before the newly archived-state snapshot/provenance tranche is complete, the active work item is source-lane activation, not another topic-row widening
+3. once the source tranche is complete, a topic row is operationally closed only when every retained Bundesland source column is resolved once
+4. `seed`, `anchor`, `corr`, `gap`, and `loc` count as resolved cells; only `n/s` means the row is still unchecked for that state
 
 Legend:
 
@@ -57,10 +60,11 @@ State columns use Bundesland abbreviations:
 Current focus:
 
 1. keep `Sek II Mechanik / Dynamik` stable
-2. keep `Sek II Elektrizitaet / Magnetismus / Induktion` stable as the current reference row because the Schleswig-Holstein source family is now widened and explicitly residue-frozen at the current reviewed cut
-3. keep `Sek II Schwingungen / Wellen` stable as the current broader reference row
-4. keep `Sek II Quanten / Atom / Kernphysik` stable at the canonical level, but treat RP `Quantenobjekte I/II` plus `Quantenmechanische Atomvorstellung I/II`, `Wechselwirkung von Quantenobjekten`, and `Elementarteilchenphysik` as the now-stabilized widening on that row
-5. treat Rheinland-Pfalz MSS Physics on the current field/induction family as closed at the conservative reviewed cut, keep the opened harmonics/basic-wave/GF-superposition/LF-wave/LF-Pflichtbaustein strips plus the new GF/LF quantum and GF/LF atom-model plus LF interaction, LF particle-physics, LF relativity-kinematics, LF relativity-dynamics, LF astrophysics, LF cosmology, LF chaos, and LF fluid-dynamics strips stable, keep the remaining RP oscillation/wave micro-residues explicitly frozen, leave the RP Planck-estimation clause, `Paarerzeugung`, the remaining LF atom-model application examples, and `Offene Fragen` inside the LF particle-physics strip source-led, keep `Masse-Energie-Aequivalenz` plus the retained RP energy/impulse/limiting-speed clause source-led on the current relativity cut, keep the RP astrophysics leaves on `Zustandsgroessen der Sonne`, `Standardsonnenmodell`, and `Aktuelle Forschungsergebnisse` source-led on the current astrophysics cut, keep `Aktuelle Forschungsergebnisse` source-led on the current cosmology cut, keep the remaining RP `Chaos und Fraktale` leaves source-led on the current chaos cut, keep the remaining RP `Stroemungsphysik` leaves source-led on the current fluid-dynamics cut, and move next toward an explicit lane-closure decision on `Individuelles Thema`
+2. keep `Sek II Elektrizitaet / Magnetismus / Induktion` stable
+3. keep `Sek II Schwingungen / Wellen` stable
+4. keep `Sek II Quanten / Atom / Kernphysik` stable
+5. keep Rheinland-Pfalz stable at the current conservative reviewed cut and do not widen it further before the newly archived state lanes have source-backed snapshots
+6. make the active Physics move a snapshot/provenance tranche for `DE-HB`, `DE-HH`, `DE-MV`, `DE-SL`, `DE-SN`, `DE-ST`, and `DE-TH`, based on the now-complete Sek-I-plus-Sek-II archive pass
 
 Active coordination artifact:
 
@@ -68,18 +72,17 @@ Active coordination artifact:
 
 Why:
 
-- Physics now has enough reviewed multi-state evidence to stop steering only by state lane
+- Physics now has enough reviewed multi-state evidence that another single-state widening would only deepen source asymmetry
 - Berlin and Brandenburg still close the retained BE/BB `3.2.1` -> `3.2.2` cut without forcing another canonical atom, and the remaining trio stays explicitly frozen as source-led residue
 - Schleswig-Holstein no longer needs another reflex widening on the same retained source family; the next clean move is now a new state/source family outside the frozen SH and BE/BB residues
-- Rheinland-Pfalz remains the clean active source family because the official MSS Physics PDF is archived locally and the first four GF/LF-common cuts plus one adjacent shared induction follow-on, one first reviewed GF wave cut, one adjacent GF superposition/interference cut, one first narrow LF wave/superposition cut, one first narrow LF Pflichtbaustein cut, one first reviewed GF quantum cut plus one adjacent GF atom-model cut plus one first narrow LF atom-model follow-on, and now also one first narrow LF relativity-kinematics cut are now reviewed without forcing a new canonical atom
-- the widened Niedersachsen wave strip plus the refreshed Bayern contribution now close the current wave row once across all currently available retained source states
-- the active wave row is now resolved once across all currently available retained source states, so the remaining nationwide Physics debt is easier to see as missing source lanes than as another sequence of pseudo-active lane notes
+- the missing nationwide Physics debt is no longer source acquisition itself; it is the absence of source-backed retained snapshots and provenance for the seven newly archived state bundles
+- the correct next move is therefore to activate those source lanes first, exactly as already done in Mathematics before the broader horizontal pass
 
 Current blocker note:
 
-1. many Physics state cells are still `n/s` because the repository does not yet have retained source snapshots for most Bundeslaender on the current Physics path
-2. that is acceptable for now, but it should stay explicit on the topic board instead of being hidden behind a single still-active state lane
-3. Rheinland-Pfalz no longer needs another oscillation/wave micro-widening on the current row grid; the current field/induction family is closed on the conservative reviewed cut, the first RP harmonics/basic-wave/GF-superposition/LF-wave/LF-Pflichtbaustein strips plus one first GF quantum strip, the opened GF/LF atom-model strips, and one first LF relativity-kinematics strip are open, the remaining four RP wave micro-residues are explicitly frozen, and the RP Planck-estimation clause plus the remaining LF atom-model application examples stay intentionally source-led
+1. the archive tranche is complete, but seven Physics state lanes still lack retained source snapshots and provenance-backed activation
+2. that remains the active blocker before another topic-first pass should begin
+3. Rheinland-Pfalz no longer needs another opportunistic widening; the right next move is the newly archived-state snapshot/provenance tranche
 
 Definition of done for one Physics topic row:
 

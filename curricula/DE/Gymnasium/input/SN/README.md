@@ -17,4 +17,12 @@
 
 ## Physik
 ### Sekundarstufe I und II
-- **Lehrplaene Physik Gymnasium**: `https://www.schule.sachsen.de/lehrplaene/`
+- **Lehrplan Physik Gymnasium (2004/2007/2009/2011/2019/2022/2025; Klassenstufen 6-10 und Jahrgangsstufen 11/12)**:
+  - archived file: `curricula/DE/Gymnasium/input/SN/lehrplan-gymnasium-physik-sachsen-2025.pdf`
+  - official source: `https://www.schulportal.sachsen.de/lplandb/lehrplan/file/125/vo3eXMDs8Ua4hqbRxPxG`
+  - official overview: `https://www.schule.sachsen.de/lehrplaene/`
+  - note: the public Sachsen Lehrplandatenbank currently exposes one shared Gymnasium physics PDF covering classes `6-10` and year levels `11/12`
+
+### Physik-Naechste Schritte
+- die archivierte saechsische Gymnasium-Physikquelle jetzt gemeinsam als retained Source-Onboarding-Baustein im Physik-Tracker auf `P1` halten
+- als naechsten saechsischen Physik-Schritt erst source-backed Sek-I- und Sek-II-Snapshots plus Provenance-Scaffold anlegen, bevor irgendein topic-spezifisches Mapping authored wird
