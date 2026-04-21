@@ -1,5 +1,5 @@
 {
-  "version": 3,
+  "version": 4,
   "updatedAt": "2026-04-20T07:45:43Z",
   "mode": "maintenance_evidence_watch",
   "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
@@ -12,6 +12,7 @@
   "deltaCommand": "python3 scripts/render_canonical_physics_evidence_watch_delta.py",
   "checkCommand": "python3 scripts/check_canonical_physics_evidence_watch_delta.py",
   "runCommand": "./scripts/run_canonical_physics_evidence_watch.sh",
+  "workflowPath": ".github/workflows/canonical_physics_evidence_watch.yml",
   "watchTargets": [
     {
       "id": "sek1_hessen_seed_watch",

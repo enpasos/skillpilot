@@ -1,12 +1,12 @@
 # DE-RP Upper-Secondary Mapping Lane
 
-Current status on `2026-04-19`:
+Current status on `2026-04-20`:
 
 - repository-backed mapping fixture now exists:
   `rp_physics_upper_secondary_to_canonical_physics.json`
 - active `sourceLandscapeId`:
   `eb32f91f-5f6f-4e13-a969-f53a0e92431f`
-- current mapping count: `85`
+- current mapping count: `91`
 - the current official Rheinland-Pfalz MSS Physics PDF is now archived locally:
   `curricula/DE/Gymnasium/input/RP/Physik_Sekundarstufe_II_MSS.pdf`
 - the first Rheinland-Pfalz upper-secondary Physics source snapshot is now active:
@@ -33,6 +33,7 @@ Current use:
 - one first schmaler reviewed LF-Follow-on `Quantenobjekte II` is mapped
 - one first reviewed Grundfach-Atommodellkorridor `Quantenmechanische Atomvorstellung I` is mapped
 - one first schmaler reviewed LF-Follow-on `Quantenmechanische Atomvorstellung II` is mapped
+- one additional schmaler reviewed LF-Anwendungsanschluss `Laser` is mapped conservatively onto the shared canonical laser surface
 - one first schmaler reviewed LF-Follow-on `Wechselwirkung von Quantenobjekten` is mapped
 - one first schmaler reviewed LF-Follow-on `Elementarteilchenphysik` is mapped
 - one first schmaler reviewed LF-Follow-on `Relativistische Kinematik` is mapped
@@ -131,4 +132,4 @@ Current use:
 - one adjacent RP LF leaf `Stroemungsphaenomene und Stroemungsarten fachlich einordnen` stays intentionally source-led because the current shared canonical Physics surface still has no narrow reviewed target for that fluid-phenomena clause
 - one adjacent RP LF leaf `Kontinuitaetsgleichung, Stroemungsgesetze und Reynolds-Zahl fachlich einordnen` stays intentionally source-led because the current shared canonical Physics surface still has no narrow reviewed target for that fluid-laws clause
 - one adjacent RP LF leaf `Sinkgeschwindigkeiten im Praktikum fachlich einordnen` stays intentionally source-led because the current shared canonical Physics surface still has no narrow reviewed target for that practicum clause
-- next step: keep the frozen RP oscillation/wave micro-residues plus the source-led RP Planck-estimation clause stable, keep the opened RP LF strips `Quantenobjekte II`, `Quantenmechanische Atomvorstellung II`, `Wechselwirkung von Quantenobjekten`, `Elementarteilchenphysik`, `Relativistische Kinematik`, `Relativistische Dynamik`, `Astrophysik`, `Kosmologie`, `Chaos und Fraktale`, and `Stroemungsphysik` stable, leave `Lumineszenz`, `Laser`, `chemische Bindung/Molekuelstruktur`, `Farbstoffmolekuele`, `Paarerzeugung`, `Offene Fragen`, `Masse-Energie-Aequivalenz`, the RP relativistic energy/impulse/limiting-speed clause, `Zustandsgroessen der Sonne`, `Standardsonnenmodell`, `Aktuelle Forschungsergebnisse` in `Astrophysik`, `Aktuelle Forschungsergebnisse` in `Kosmologie`, the remaining `Chaos und Fraktale` leaves, and the remaining `Stroemungsphysik` leaves source-led for now, and move the next active RP move toward an explicit lane-closure decision on `Individuelles Thema`
+- next step: treat the RP lane as explicitly closed on the current reviewed cut; keep the frozen RP oscillation/wave micro-residues plus the source-led RP Planck-estimation clause stable, keep the opened RP LF strips `Quantenobjekte II`, `Quantenmechanische Atomvorstellung II`, `Wechselwirkung von Quantenobjekten`, `Elementarteilchenphysik`, `Relativistische Kinematik`, `Relativistische Dynamik`, `Astrophysik`, `Kosmologie`, `Chaos und Fraktale`, and `Stroemungsphysik` stable, and leave `Lumineszenz`, `chemische Bindung/Molekuelstruktur`, `Farbstoffmolekuele`, `Paarerzeugung`, `Offene Fragen`, `Masse-Energie-Aequivalenz`, the RP relativistic energy/impulse/limiting-speed clause, `Zustandsgroessen der Sonne`, `Standardsonnenmodell`, `Aktuelle Forschungsergebnisse` in `Astrophysik`, `Aktuelle Forschungsergebnisse` in `Kosmologie`, the remaining `Chaos und Fraktale` leaves, the remaining `Stroemungsphysik` leaves, and the LF residue set beginning with `Individuelles Thema` source-led for now

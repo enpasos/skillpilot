@@ -53,22 +53,16 @@ Activation result:
 - no Berlin-specific canonical Physics atom is introduced in this step
 - no committed Berlin applicability cut is introduced in this step
 - no Berlin-specific Physics composition view is introduced in this step
-- `Vakuumlichtgeschwindigkeit c0 als Obergrenze fuer Geschwindigkeiten einordnen` stays intentionally source-led because the current shared canonical Physics graph still does not expose a reviewed narrow target for that clause
-- `Relativistische Massenzunahme schnell bewegter Teilchen einordnen` and `Ladungstraeger in Magnetfeldern fuer beliebige Eintrittswinkel beschreiben` also stay intentionally source-led for the same reason
-- the remaining Berlin source-led trio is now treated as an explicitly deferred shared BE/BB residue candidate rather than as an open Berlin-local mapping todo:
-  - `Vakuumlichtgeschwindigkeit c0 als Obergrenze fuer Geschwindigkeiten einordnen`
-  - `Relativistische Massenzunahme schnell bewegter Teilchen einordnen`
+- `Vakuumlichtgeschwindigkeit c0 als Obergrenze fuer Geschwindigkeiten einordnen` and `Relativistische Massenzunahme schnell bewegter Teilchen einordnen` now bridge conservatively onto the shared canonical excursus `Exkurs: Relativistische Massenzunahme (Linearbeschleuniger)`
+- `Ladungstraeger in Magnetfeldern fuer beliebige Eintrittswinkel beschreiben` stays intentionally source-led because the existing shared magnetic-field particle-motion leaves still do not isolate that arbitrary-entry-angle clause tightly enough without overstating the current reviewed surface
+- the remaining Berlin source-led residue is now treated as an explicitly deferred shared BE/BB residue candidate rather than as an open Berlin-local mapping todo:
   - `Ladungstraeger in Magnetfeldern fuer beliebige Eintrittswinkel beschreiben`
-- current target-review result for that trio:
-  - the canonical Physics graph still has no reviewed narrow shared leaf for the `c0` clause without overclaiming into broader relativity packaging
-  - the existing shared relativistic-mass leaf stays Hessen-only and is still too specific to linear-accelerator framing for the Berlin wording
-  - the existing shared magnetic-field particle-motion leaves do not isolate the Berlin arbitrary-entry-angle clause tightly enough without overstating the current reviewed surface
 - after Brandenburg has now matched the retained Berlin `3.2.1` -> `3.2.2` cut, the next clean move is therefore not another Berlin-only or BE/BB-only bridge
-- treat the remaining trio as an explicit shared BE/BB residue set and only reopen it if later reviewed evidence really makes it jointly reviewable
+- treat the remaining `Eintrittswinkel` clause as the explicit shared BE/BB residue set and only reopen it if later reviewed evidence really makes it jointly reviewable
 
 Operational rule from here:
 
 - keep the reserved `sourceLandscapeId` stable while widening the Berlin Physics source snapshot
-- treat the retained `3.2.1` -> `3.2.2` Q1 field route as the current Berlin pilot cut and keep the remaining source-led `c0` / Relativitaet / Eintrittswinkel trio explicitly deferred until broader shared evidence justifies another reviewed move
-- keep Berlin stable now that Brandenburg matches the same retained cut from the shared BE/BB source family, and do not force any further BE/BB-only canonical split on that trio
+- treat the retained `3.2.1` -> `3.2.2` Q1 field route as the current Berlin pilot cut and keep the remaining source-led `Eintrittswinkel` clause explicitly deferred until broader shared evidence justifies another reviewed move
+- keep Berlin stable now that Brandenburg matches the same retained cut from the shared BE/BB source family, and do not force any further BE/BB-only canonical split on the remaining `Eintrittswinkel` residue
 - keep Berlin narrow and reviewed until broader retained evidence justifies an applicability pass or another shared canonical atom

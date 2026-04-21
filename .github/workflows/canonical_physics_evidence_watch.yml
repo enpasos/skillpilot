@@ -1,0 +1,63 @@
+name: Canonical Physics Evidence Watch
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '17 5 * * *'
+  push:
+    branches: [ main ]
+    paths:
+      - '.github/workflows/canonical_physics_evidence_watch.yml'
+      - 'scripts/capture_canonical_physics_evidence_watch_baseline.py'
+      - 'scripts/check_canonical_physics_evidence_watch_delta.py'
+      - 'scripts/render_canonical_physics_evidence_watch_delta.py'
+      - 'scripts/render_canonical_physics_evidence_watch_status.py'
+      - 'scripts/run_canonical_physics_evidence_watch.sh'
+      - 'curricula/DE/Gymnasium/provenance/physics-evidence-watch-manifest.json'
+      - 'curricula/DE/Gymnasium/provenance/physics-evidence-watch-baseline.json'
+      - 'curricula/DE/Gymnasium/provenance/physics-bundesland-rollout-tracker.json'
+      - 'curricula/DE/Gymnasium/input/**/source-json/*PHYSIK*.json.snapshot'
+  pull_request:
+    branches: [ main ]
+    paths:
+      - '.github/workflows/canonical_physics_evidence_watch.yml'
+      - 'scripts/capture_canonical_physics_evidence_watch_baseline.py'
+      - 'scripts/check_canonical_physics_evidence_watch_delta.py'
+      - 'scripts/render_canonical_physics_evidence_watch_delta.py'
+      - 'scripts/render_canonical_physics_evidence_watch_status.py'
+      - 'scripts/run_canonical_physics_evidence_watch.sh'
+      - 'curricula/DE/Gymnasium/provenance/physics-evidence-watch-manifest.json'
+      - 'curricula/DE/Gymnasium/provenance/physics-evidence-watch-baseline.json'
+      - 'curricula/DE/Gymnasium/provenance/physics-bundesland-rollout-tracker.json'
+      - 'curricula/DE/Gymnasium/input/**/source-json/*PHYSIK*.json.snapshot'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  physics-evidence-watch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Use Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Run canonical physics evidence watch
+        run: ./scripts/run_canonical_physics_evidence_watch.sh
+
+      - name: Upload evidence-watch artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: canonical-physics-evidence-watch
+          path: |
+            docs/dev/canonical-gymnasium-physics-evidence-watch-status.md
+            docs/dev/canonical-gymnasium-physics-evidence-watch-delta.md

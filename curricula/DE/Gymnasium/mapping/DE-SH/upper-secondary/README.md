@@ -47,7 +47,7 @@ Current status on `2026-04-16`:
   `sh_physics_upper_secondary_to_canonical_physics.json`
 - reserved `sourceLandscapeId`:
   `f1a2c733-b994-4db3-9dd6-54ffe544002b`
-- current mapping count: `22`
+- current mapping count: `23`
 - the first Schleswig-Holstein upper-secondary physics source snapshot is now active:
   `curricula/DE/Gymnasium/input/SH/upper-secondary/source-json/DE_SHL_S_GYM_2_PHYSIK.de.json.snapshot`
 
@@ -69,8 +69,8 @@ Current use:
   - partial bridges from the retained SH static-fields leaves onto existing shared canonical atoms for charges in electric fields, Lorentzkraft, Bewegungen in homogenen Feldern, and work/energy in electric fields
   - partial bridges from the retained SH electron-measurement/application leaves onto existing shared canonical atoms for Millikan, Fadenstrahlrohr, Hall-Effekt, and Teilchenbeschleuniger
   - partial bridges from the retained SH circle-motion leaves onto existing shared canonical atoms for Bahn- und Winkelgeschwindigkeit, Zentripetalkraft, and Kreisbewegung mit Zentripetalkraft
+  - one additional partial bridge from the adjacent SH `Drehimpuls und Drehimpulserhaltung` leaf onto the shared canonical atom `Drehimpuls als Erhaltungsgröße`
   - the adjacent SH `Massenspektrometer` leaf stays intentionally source-led because the current shared canonical Physics surface still has no narrow reviewed mass-spectrometer atom
-  - the adjacent SH `Drehimpuls und Drehimpulserhaltung` leaf stays intentionally source-led because the current shared canonical Physics surface on that concept is still a separate Drehbewegungsflaeche and not a narrow reviewed continuation of the SH static-fields clause
 - no Schleswig-Holstein-specific canonical physics atom is introduced in this step
 - no committed Schleswig-Holstein applicability cut is introduced in this step
-- next step: treat the SH lane as complete at the current reviewed pilot-cut level; keep `Massenspektrometer` plus `Drehimpuls und Drehimpulserhaltung` as explicit source-led micro-residues until broader reviewed evidence warrants narrower shared canonical targets, and move the next active Physics rollout to a new source family
+- next step: treat the SH lane as complete at the current reviewed pilot-cut level; keep only `Massenspektrometer` as an explicit source-led micro-residue until broader reviewed evidence warrants a narrower shared canonical target, and move the next active Physics rollout to a new source family

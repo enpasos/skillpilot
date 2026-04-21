@@ -75,5 +75,5 @@
 - `Aktuelle Forschungsergebnisse` im RP-LF-Streifen `Kosmologie` vorerst bewusst source-led halten, solange die bestehende shared Canonical-Kosmologieflaeche dafuer keine schmalen reviewed Ziele traegt
 - `Chaosphaenomene und fraktale Strukturen` sowie `Strukturelle Aehnlichkeiten in verschiedenen Bereichen` im RP-LF-Streifen `Chaos und Fraktale` vorerst bewusst source-led halten, solange die bestehende shared Canonical-Chaosflaeche dafuer keine schmalen reviewed Ziele traegt
 - `Stroemungsphaenomene und Stroemungsarten`, `Kontinuitaetsgleichung, Stroemungsgesetze und Reynolds-Zahl` sowie `Sinkgeschwindigkeiten im Praktikum` im RP-LF-Streifen `Stroemungsphysik` vorerst bewusst source-led halten, solange die bestehende shared Canonical-Flaeche dafuer keine schmalen reviewed Ziele traegt
-- den naechsten RP-Physik-Zug jetzt auf eine explizite Lane-Closure-Entscheidung zum verbleibenden LF-Rest `Individuelles Thema` richten
+- die RP-Physik-Lane jetzt explizit auf dem aktuellen reviewed Cut schliessen; der verbleibende LF-Rest um `Individuelles Thema` und die bereits dokumentierten source-led LF-Blaetter bleiben bewusst eingefroren, bis spaetere shared Canonical-Evidenz dafuer wirklich schmale Ziele traegt
 - keinen Rheinland-Pfalz-spezifischen kanonischen Physik-Atom erzwingen, solange die bestehende shared Q1-Flaeche die RP-Quelle noch konservativ tragen kann

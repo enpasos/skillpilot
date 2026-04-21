@@ -26,7 +26,7 @@ Activation result:
   - one structural `Q1` anchor `Gravitationsfeld, elektrisches und magnetisches Feld`
   - one first reviewed `Q1` electric-field / capacitor corridor on current, voltage, capacitance, field strength in the plate capacitor, geometric/dielectric dependence, and field energy
   - one first reviewed retained `3.2.1` magnetic-field / Lorentz-force follow-on on field-line diagrams, conductor-force interpretation, long-coil field strength, and Lorentz force
-  - one first reviewed retained `3.2.2` charged-particle-motion follow-on on electric particle motion, Millikan, magnetic circular trajectories, specific charge, crossed fields, Hall-Effekt, and Elektronenstrahlroehre, while `c0`, relativistic mass, and arbitrary entry angles stay source-led
+  - one first reviewed retained `3.2.2` charged-particle-motion follow-on on electric particle motion, Millikan, magnetic circular trajectories, specific charge, crossed fields, Hall-Effekt, and Elektronenstrahlroehre, while only the arbitrary-entry-angle clause still stays source-led
 - the reviewed Brandenburg Physics corridor stays intentionally conservative:
   - partial bridge from the Brandenburg source root onto the canonical Physics root
   - exact bridge on the shared motivation/orientation anchor
@@ -51,15 +51,13 @@ Activation result:
 - no Brandenburg-specific canonical Physics atom is introduced in this step
 - no committed Brandenburg applicability cut is introduced in this step
 - no Brandenburg-specific Physics composition view is introduced in this step
-- after Brandenburg now matches the reviewed Berlin retained `3.2.1` -> `3.2.2` cut, the remaining `c0` / relativistic-mass / arbitrary-entry-angle trio is no longer just a Brandenburg follow-on candidate
-- it is now treated as an explicit shared BE/BB residue set with no reviewed bridge at the current canonical level:
-  - the canonical Physics graph still has no reviewed narrow shared leaf for the `c0` clause without overclaiming into broader relativity packaging
-  - the existing shared relativistic-mass leaf is still too Hessen-shaped in its linear-accelerator framing for the retained BE/BB wording
-  - the existing shared magnetic-field particle-motion leaves still do not isolate the arbitrary-entry-angle clause tightly enough without overstating the current reviewed surface
+- after Brandenburg now matches the reviewed Berlin retained `3.2.1` -> `3.2.2` cut, the remaining arbitrary-entry-angle clause is no longer just a Brandenburg follow-on candidate
+- `c0` and relativistic mass now bridge conservatively onto the shared canonical excursus `Exkurs: Relativistische Massenzunahme (Linearbeschleuniger)`
+- the existing shared magnetic-field particle-motion leaves still do not isolate the arbitrary-entry-angle clause tightly enough without overstating the current reviewed surface
 
 Operational rule from here:
 
 - keep the reserved `sourceLandscapeId` stable while widening the Brandenburg Physics source snapshot
-- use the shared BE/BB upper-secondary source family explicitly: the Brandenburg retained `3.2.1` -> `3.2.2` route is now reviewed at the same narrow level as Berlin, so do not force another BE/BB-only bridge on the shared residue trio
+- use the shared BE/BB upper-secondary source family explicitly: the Brandenburg retained `3.2.1` -> `3.2.2` route is now reviewed at the same narrow level as Berlin, so do not force another BE/BB-only bridge on the remaining `Eintrittswinkel` residue
 - reopen Brandenburg only if that deferred shared BE/BB residue later becomes jointly reviewable or another later shared gap appears
 - keep Brandenburg narrow and reviewed until broader retained evidence justifies an applicability pass or another shared canonical atom

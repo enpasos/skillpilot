@@ -9,7 +9,7 @@ Current scope:
 - source-goal membership metadata needed for Hessen upper-secondary cutover when only archived legacy goal IDs remain in stored planned/active learner state
 - canonical-goal provenance metadata needed when canonical subject graphs must stay free of embedded state/source provenance while backend/runtime lookups still resolve legacy source references
 - canonical-goal applicability override metadata needed when reviewed scope exceptions must remain available outside the canonical subject graph JSON
-- physics evidence-watch manifests, baselines, derived status/delta views, exit-code checks, and fixed run-path wrappers needed when a subject is operationally frozen but specific retained source files still have to be monitored for justified reopen triggers
+- physics evidence-watch manifests, baselines, derived status/delta views, exit-code checks, fixed run-path wrappers, and workflow hooks needed when a subject is operationally frozen but specific retained source files still have to be monitored for justified reopen triggers
 
 Rules:
 

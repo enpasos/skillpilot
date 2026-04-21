@@ -143,7 +143,8 @@ Operational rule from here:
 - treat the active LF strip `Quantenobjekte II` as the tenth reviewed RP cut
 - treat the active Grundfach strip `Quantenmechanische Atomvorstellung I` as the eleventh reviewed RP cut
 - treat the active LF strip `Quantenmechanische Atomvorstellung II` as the twelfth reviewed RP cut
-- keep `Lumineszenz`, `Laser`, `chemische Bindung/Molekuelstruktur`, and `Farbstoffmolekuele` intentionally source-led inside that LF strip unless broader reviewed evidence later warrants narrower shared canonical targets
+- keep `Lumineszenz`, `chemische Bindung/Molekuelstruktur`, and `Farbstoffmolekuele` intentionally source-led inside that LF strip unless broader reviewed evidence later warrants narrower shared canonical targets
+- `Laser` now bridges conservatively onto the shared canonical atom `Laserprinzip und Anwendungen`
 - treat the active LF strip `Wechselwirkung von Quantenobjekten` as the thirteenth reviewed RP cut
 - keep `Paarerzeugung` intentionally source-led inside that LF strip unless broader reviewed evidence later warrants a genuinely shared narrow canonical target
 - treat the active LF strip `Elementarteilchenphysik` as the fourteenth reviewed RP cut
@@ -159,5 +160,5 @@ Operational rule from here:
 - keep the leaves on `Chaosphaenomene und fraktale Strukturen` and `Strukturelle Aehnlichkeiten in verschiedenen Bereichen` intentionally source-led inside that new strip unless broader reviewed evidence later warrants genuinely narrow shared canonical targets
 - treat the active LF strip `Stroemungsphysik` as the twentieth reviewed RP cut
 - keep the leaves on `Stroemungsphaenomene und Stroemungsarten`, `Kontinuitaetsgleichung, Stroemungsgesetze und Reynolds-Zahl`, and `Sinkgeschwindigkeiten im Praktikum` intentionally source-led inside that new strip unless broader reviewed evidence later warrants genuinely narrow shared canonical targets
-- move the next active RP move away from further corridor authoring and toward an explicit lane-closure decision on the remaining RP LF residue `Individuelles Thema`
+- treat the RP lane as explicitly closed on the current reviewed cut; keep the remaining source-led LF residue set beginning with `Individuelles Thema` intentionally frozen until later shared canonical evidence really warrants narrower targets
 - do not force a Rheinland-Pfalz-specific canonical split or applicability cut before broader reviewed evidence exists

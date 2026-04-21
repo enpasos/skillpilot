@@ -9070,6 +9070,53 @@ Validation:
 - `python3 scripts/render_canonical_physics_bundesland_status.py`
 - `git diff --check`
 
+### 2026-04-20: Physics closes the next stable upper-secondary residue slice on SH, BE/BB, and RP
+
+What changed:
+
+- Schleswig-Holstein gains one additional conservative reviewed bridge from `Drehimpuls und Drehimpulserhaltung` onto the shared canonical atom `Drehimpuls als Erhaltungsgröße`
+- Berlin and Brandenburg each gain two additional conservative reviewed bridges from `Vakuumlichtgeschwindigkeit c0 als Obergrenze fuer Geschwindigkeiten einordnen` and `Relativistische Massenzunahme schnell bewegter Teilchen einordnen` onto the shared canonical excursus `Exkurs: Relativistische Massenzunahme (Linearbeschleuniger)`
+- Rheinland-Pfalz gains one additional conservative reviewed bridge from `Laser als Anwendungsbeispiel atomarer Uebergaenge fachlich einordnen` onto the shared canonical atom `Laserprinzip und Anwendungen`
+- the remaining open upper-secondary residue surface is therefore reduced further:
+  - `DE-SH`: only `Massenspektrometer`
+  - `DE-BE` / `DE-BB`: only `beliebige Eintrittswinkel`
+  - `DE-RP`: the remaining LF source-led residue set beyond the now-closed `Laser` leaf
+
+Interpretation:
+
+- no new canonical Physics atom was introduced
+- no applicability cut was introduced
+- this is a closure move on already existing canonical surface, not another canonical expansion
+- the previously deferred SH and BE/BB leaves are now narrow enough to sit on the current shared angular-momentum and relativistic linear-accelerator surfaces without forcing a new split
+- `Massenspektrometer`, `beliebige Eintrittswinkel`, `Paarerzeugung`, and the remaining RP LF residues still do not have comparably clean narrow shared landing targets on the current canonical floor
+
+Validation:
+
+- `python3 scripts/render_canonical_physics_bundesland_status.py`
+- `cd backend && GRADLE_USER_HOME=/home/enpasos/projects/skillpilot/backend/.gradle-ci ./gradlew test --tests 'com.skillpilot.backend.landscape.GoalMappingRepositoryFixtureTest' --tests 'com.skillpilot.backend.landscape.LandscapeServiceTest' --no-daemon --console=plain`
+- `cd backend && GRADLE_USER_HOME=/home/enpasos/projects/skillpilot/backend/.gradle-ci ./gradlew clean check --no-daemon --console=plain`
+- `git diff --check`
+
+### 2026-04-20: Physics makes the remaining RP upper-secondary lane closure explicit
+
+What changed:
+
+- the Rheinland-Pfalz upper-secondary Physics lane is now explicitly marked as closed on the current reviewed cut instead of still pointing to a future closure-decision placeholder
+- the remaining source-led RP LF residue set is now operationally frozen, beginning with `Individuelles Thema` and continuing through the already documented LF leaves that still lack genuinely narrow shared canonical landing targets
+- no new mapping was added in this step; this is a closure and steering decision only
+
+Interpretation:
+
+- the current canonical Physics surface is now judged sufficient for every RP bridge that can be made conservatively without overclaiming
+- the remaining RP LF leaves are no longer treated as latent near-term widening debt
+- any later RP reopen must now be justified by genuinely new shared canonical evidence, not by the mere existence of still source-led local leaves
+
+Validation:
+
+- `python3 scripts/render_canonical_physics_bundesland_status.py`
+- `python3 -m json.tool curricula/DE/Gymnasium/provenance/physics-bundesland-rollout-tracker.json`
+- `git diff --check`
+
 ### 2026-04-20: Physics binds `F6` into a fixed run path
 
 What changed:
@@ -9082,6 +9129,25 @@ Interpretation:
 
 - `F6` is now anchored in an actual operational entrypoint instead of a loose bundle of individual commands
 - this is the right shape for later CI or cron integration because the watch flow already has one repo-stable executable surface
+
+Validation:
+
+- `./scripts/run_canonical_physics_evidence_watch.sh`
+- `python3 scripts/render_canonical_physics_bundesland_status.py`
+- `git diff --check`
+
+### 2026-04-20: Physics wires `F6` into GitHub Actions
+
+What changed:
+
+- a new workflow [canonical_physics_evidence_watch.yml](/home/enpasos/projects/skillpilot/.github/workflows/canonical_physics_evidence_watch.yml) now runs the `F6` watch wrapper on schedule, on manual dispatch, and on relevant push/pull-request changes
+- the workflow uploads the rendered watch status and delta markdown as artifacts, so file-level watch events stay inspectable even when the job fails
+- the manifest now exposes the workflow path, and the active `F6` tracker/workboard now include the workflow as part of the operational watch surface
+
+Interpretation:
+
+- `F6` is no longer only locally runnable; it now has a repo-native automated execution path
+- this is the first real maintenance automation step, because watched-file drift can now surface without a human manually invoking the wrapper
 
 Validation:
 
