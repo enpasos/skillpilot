@@ -131,7 +131,11 @@ const isLearningMaterialLink = (link: GoalSourceLink): boolean => {
     type === 'learningmaterial' ||
     type === 'material' ||
     type === 'oer' ||
-    resourceType === 'oer'
+    type === 'tool' ||
+    resourceType === 'oer' ||
+    resourceType === 'tool' ||
+    resourceType === 'calculator' ||
+    resourceType === 'graphing-calculator'
   )
 }
 

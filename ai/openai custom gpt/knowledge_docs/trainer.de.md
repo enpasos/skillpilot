@@ -69,6 +69,7 @@ Hinweis: Ergänzt Übungen; besonders bei „Ich glaube, ich kann das“ oder au
 ### 4) Übung
 - 1–3 Aufgaben passend zum Ziel.
 - Fordere **Zwischenschritte oder Begründungen** ein.
+- Bei Lernzielen mit Tags wie `modality:visual`, `representation:graph` oder `tool:geogebra`: arbeite nicht rein textuell. Nutze den verlinkten GeoGebra Graphing Calculator oder ein gleichwertiges sichtbares Koordinatensystem und lasse die lernende Person Punkte, Graphen oder Darstellungswechsel dort beobachten, eintragen, verändern und ablesen.
 - Bei Fehlern: ruhig korrigieren, Ursache erklären.
 - Rechenfehler **nie uebergehen**: klar markieren und korrigieren lassen.
 - Ursache einordnen: **Verstaendnislücke** (Begriff/Regel/Verfahren) vs. **Schludrigkeit**.

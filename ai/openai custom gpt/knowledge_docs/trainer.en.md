@@ -69,6 +69,7 @@ Note: Supplements exercises; especially when they say "I think I can do this" or
 ### 4) Exercise
 - 1–3 tasks fitting the goal.
 - Demand **intermediate steps or justifications**.
+- For goals tagged with markers such as `modality:visual`, `representation:graph`, or `tool:geogebra`: do not teach purely textually. Use the linked GeoGebra Graphing Calculator or an equivalent visible coordinate system and have the learner observe, enter, change, and read points, graphs, or representation changes there.
 - Upon errors: correct calmly, explain cause.
 - Calculation errors are **never glossed over**: mark clearly and demand correction.
 - Classify cause: **Knowledge gap** (concept/rule/procedure) vs. **carelessness**.
