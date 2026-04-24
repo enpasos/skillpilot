@@ -49,5 +49,5 @@ Current use:
 - one first reviewed Berlin retained `3.2.2` charged-particle-motion follow-on is mapped
 - one explicit LK follow-on on crossed fields / Hall-Effekt / Elektronenstrahlroehre is now mapped conservatively where shared targets already exist
 - the retained `c0` and `Relativitaet` clauses now bridge conservatively onto the shared canonical excursus `Exkurs: Relativistische Massenzunahme (Linearbeschleuniger)`
-- the remaining source-led Berlin residue is now the still deferred shared BE/BB clause `beliebige Eintrittswinkel`, not a broader Berlin-only mapping todo
-- next step: keep Berlin stable; the shared BE/BB residue is now reduced to `beliebige Eintrittswinkel`, so the next rollout move should come from a different source family unless that remaining clause later becomes jointly reviewable
+- the former shared BE/BB residue `beliebige Eintrittswinkel` now bridges conservatively onto the shared canonical atom `Ladungsträger in Magnetfeldern bei beliebigem Eintrittswinkel beschreiben`
+- next step: keep Berlin stable; the active retained lane is now semantically closed on the current reviewed cut and should reopen only if a later source revision changes visible scope or another later retained source lane creates a genuinely shared Physics gap

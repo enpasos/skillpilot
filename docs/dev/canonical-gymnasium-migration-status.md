@@ -9723,3 +9723,37 @@ Validation:
 
 - `python3 scripts/render_canonical_physics_bundesland_status.py`
 - `git diff --check`
+
+### 2026-04-24: Physics resolves the remaining reviewed upper-secondary semantic residue edges and leaves only maintenance watch
+
+What changed:
+
+- the former shared Berlin/Brandenburg upper-secondary residue on `beliebige Eintrittswinkel` now lands conservatively on the new genuinely shared canonical atom `Ladungsträger in Magnetfeldern bei beliebigem Eintrittswinkel beschreiben`
+- the former Schleswig-Holstein upper-secondary residue `Massenspektrometer` now lands conservatively on the new genuinely shared canonical atom `Massenspektrometer als Feldanwendung beschreiben`
+- the former Rheinland-Pfalz LF residue set is now closed on the current reviewed cut through additional conservative bridges on the shared canonical oscillation/wave, quantum/atom-model, relativity, astrophysics, cosmology, chaos, and fluid-dynamics surfaces
+- three additional genuinely shared canonical Physics surfaces were added where the previous floor still had a real gap:
+  - `Masse-Energie-Äquivalenz einordnen`
+  - `Strömungsphysik`
+  - `Kontinuitätsgleichung, Strömungsgesetze und Reynolds-Zahl einordnen`
+- the current reviewed mapping counts now stand at:
+  - `DE-BE`: `27` (`3 exact`, `24 partial`)
+  - `DE-BB`: `27` (`3 exact`, `24 partial`)
+  - `DE-SH`: `24` (`1 exact`, `23 partial`)
+  - `DE-RP`: `112` (`1 exact`, `111 partial`)
+
+Interpretation:
+
+- on the current reviewed floor, Physics no longer has an open canonical residue lane
+- the old BE/BB, SH, and RP residue bullets are no longer rollout debt; they are now part of the shared canonical surface
+- the rollout therefore stays correctly in `F6.MAINTENANCE_EVIDENCE_WATCH`, but now as pure revision watch rather than as implicit unfinished residue cleanup
+
+Validation:
+
+- `python3 scripts/render_canonical_physics_bundesland_status.py`
+- `python3 scripts/render_canonical_physics_evidence_watch_status.py`
+- `python3 scripts/capture_canonical_physics_evidence_watch_baseline.py`
+- `python3 scripts/render_canonical_physics_evidence_watch_delta.py`
+- `python3 scripts/check_canonical_physics_evidence_watch_delta.py` -> `physics-evidence-watch: changed=0 added=0 removed=0`
+- `cd backend && GRADLE_USER_HOME=/home/enpasos/projects/skillpilot/backend/.gradle-ci ./gradlew test --tests 'com.skillpilot.backend.landscape.GoalMappingRepositoryFixtureTest' --tests 'com.skillpilot.backend.landscape.LandscapeServiceTest' --no-daemon --console=plain` -> `BUILD SUCCESSFUL`
+- `cd backend && GRADLE_USER_HOME=/home/enpasos/projects/skillpilot/backend/.gradle-ci ./gradlew clean check --no-daemon --console=plain` -> `BUILD SUCCESSFUL`
+- `git diff --check`

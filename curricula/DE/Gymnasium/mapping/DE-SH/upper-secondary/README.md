@@ -70,7 +70,7 @@ Current use:
   - partial bridges from the retained SH electron-measurement/application leaves onto existing shared canonical atoms for Millikan, Fadenstrahlrohr, Hall-Effekt, and Teilchenbeschleuniger
   - partial bridges from the retained SH circle-motion leaves onto existing shared canonical atoms for Bahn- und Winkelgeschwindigkeit, Zentripetalkraft, and Kreisbewegung mit Zentripetalkraft
   - one additional partial bridge from the adjacent SH `Drehimpuls und Drehimpulserhaltung` leaf onto the shared canonical atom `Drehimpuls als Erhaltungsgröße`
-  - the adjacent SH `Massenspektrometer` leaf stays intentionally source-led because the current shared canonical Physics surface still has no narrow reviewed mass-spectrometer atom
+  - one additional partial bridge from the adjacent SH `Massenspektrometer` leaf onto the shared canonical atom `Massenspektrometer als Feldanwendung beschreiben`
 - no Schleswig-Holstein-specific canonical physics atom is introduced in this step
 - no committed Schleswig-Holstein applicability cut is introduced in this step
-- next step: treat the SH lane as complete at the current reviewed pilot-cut level; keep only `Massenspektrometer` as an explicit source-led micro-residue until broader reviewed evidence warrants a narrower shared canonical target, and move the next active Physics rollout to a new source family
+- next step: treat the SH lane as complete at the current reviewed pilot-cut level; the active retained lane is now semantically closed and should reopen only if a later source revision changes visible scope or another later retained source lane creates a genuinely shared Physics gap

@@ -743,9 +743,9 @@ class GoalMappingRepositoryFixtureTest {
         assertThat(file.getVersion()).isEqualTo(1);
         assertThat(file.getSourceLandscapeId()).isEqualTo(BERLIN_PHYSICS_UPPER_SECONDARY_LANDSCAPE_ID);
         assertThat(file.getTargetLandscapeId()).isEqualTo(CANONICAL_PHYSICS_ID);
-        assertThat(file.getMappings()).hasSize(26);
+        assertThat(file.getMappings()).hasSize(27);
         assertThat(file.getMappings()).filteredOn(entry -> "exact".equals(entry.getMatchType())).hasSize(3);
-        assertThat(file.getMappings()).filteredOn(entry -> "partial".equals(entry.getMatchType())).hasSize(23);
+        assertThat(file.getMappings()).filteredOn(entry -> "partial".equals(entry.getMatchType())).hasSize(24);
         assertThat(file.getMappings())
                 .extracting(GoalMappingEntry::getLegacyGoalId, GoalMappingEntry::getCanonicalGoalId, GoalMappingEntry::getMatchType)
                 .containsExactly(
@@ -774,7 +774,8 @@ class GoalMappingRepositoryFixtureTest {
                         Tuple.tuple("a7c898a2-1911-4913-b4c9-6ab2aab75db9", "8d34228c-da38-5c1e-97cc-571f3eafb9f4", "partial"),
                         Tuple.tuple("a3089b55-0c32-4194-abdc-dc9e8fa0b8c2", "741774ef-15fc-4bcf-a370-e2c5cf4257d0", "partial"),
                         Tuple.tuple("f36e676a-158a-4de1-aa63-ae4dc56823ad", "b39ae8fb-4358-5866-8adf-3d5365368eeb", "partial"),
-                        Tuple.tuple("ada444c4-ca4b-4eb8-8af3-9d088a5538c5", "966782e5-690d-4fae-bbab-fa3fa30525c3", "partial"));
+                        Tuple.tuple("ada444c4-ca4b-4eb8-8af3-9d088a5538c5", "966782e5-690d-4fae-bbab-fa3fa30525c3", "partial"),
+                        Tuple.tuple("7dc4ed91-6ecb-4c54-a883-cb681fab9bdb", "7fe6f8a1-5580-4e37-bf8e-9772964a6b0a", "partial"));
     }
 
     @Test
@@ -785,9 +786,9 @@ class GoalMappingRepositoryFixtureTest {
         assertThat(file.getVersion()).isEqualTo(1);
         assertThat(file.getSourceLandscapeId()).isEqualTo(BRANDENBURG_PHYSICS_UPPER_SECONDARY_LANDSCAPE_ID);
         assertThat(file.getTargetLandscapeId()).isEqualTo(CANONICAL_PHYSICS_ID);
-        assertThat(file.getMappings()).hasSize(26);
+        assertThat(file.getMappings()).hasSize(27);
         assertThat(file.getMappings()).filteredOn(entry -> "exact".equals(entry.getMatchType())).hasSize(3);
-        assertThat(file.getMappings()).filteredOn(entry -> "partial".equals(entry.getMatchType())).hasSize(23);
+        assertThat(file.getMappings()).filteredOn(entry -> "partial".equals(entry.getMatchType())).hasSize(24);
         assertThat(file.getMappings())
                 .extracting(GoalMappingEntry::getLegacyGoalId, GoalMappingEntry::getCanonicalGoalId, GoalMappingEntry::getMatchType)
                 .containsExactly(
@@ -816,7 +817,8 @@ class GoalMappingRepositoryFixtureTest {
                         Tuple.tuple("b3c88ece-145f-45a1-b212-c17639dea794", "8d34228c-da38-5c1e-97cc-571f3eafb9f4", "partial"),
                         Tuple.tuple("273d0e5f-6fac-4945-87b7-1b90260a46b7", "741774ef-15fc-4bcf-a370-e2c5cf4257d0", "partial"),
                         Tuple.tuple("06a413a2-22ec-4485-9d1d-2f4c7070919e", "b39ae8fb-4358-5866-8adf-3d5365368eeb", "partial"),
-                        Tuple.tuple("ec3eed86-860a-4d30-a00c-33117b4d19de", "966782e5-690d-4fae-bbab-fa3fa30525c3", "partial"));
+                        Tuple.tuple("ec3eed86-860a-4d30-a00c-33117b4d19de", "966782e5-690d-4fae-bbab-fa3fa30525c3", "partial"),
+                        Tuple.tuple("e17f3a08-8aaa-4faa-a126-27e291d3ff91", "7fe6f8a1-5580-4e37-bf8e-9772964a6b0a", "partial"));
     }
 
     @Test
@@ -971,9 +973,9 @@ class GoalMappingRepositoryFixtureTest {
         assertThat(file.getVersion()).isEqualTo(1);
         assertThat(file.getSourceLandscapeId()).isEqualTo(SCHLESWIG_HOLSTEIN_PHYSICS_UPPER_SECONDARY_LANDSCAPE_ID);
         assertThat(file.getTargetLandscapeId()).isEqualTo(CANONICAL_PHYSICS_ID);
-        assertThat(file.getMappings()).hasSize(23);
+        assertThat(file.getMappings()).hasSize(24);
         assertThat(file.getMappings()).filteredOn(entry -> "exact".equals(entry.getMatchType())).hasSize(1);
-        assertThat(file.getMappings()).filteredOn(entry -> "partial".equals(entry.getMatchType())).hasSize(22);
+        assertThat(file.getMappings()).filteredOn(entry -> "partial".equals(entry.getMatchType())).hasSize(23);
         assertThat(file.getMappings())
                 .extracting(GoalMappingEntry::getLegacyGoalId, GoalMappingEntry::getCanonicalGoalId, GoalMappingEntry::getMatchType)
                 .containsExactly(
@@ -999,7 +1001,8 @@ class GoalMappingRepositoryFixtureTest {
                         Tuple.tuple("sh-phys-sek2-circular-motion-kinematics", "ec7a0a68-730b-5c94-ac72-a937508f8303", "partial"),
                         Tuple.tuple("sh-phys-sek2-centripetal-force", "e918b31f-6f39-5dee-ade6-3617080fb24f", "partial"),
                         Tuple.tuple("sh-phys-sek2-circular-motions-in-fields", "accb1d9e-cd48-5983-bcef-9b9bca4a9114", "partial"),
-                        Tuple.tuple("sh-phys-sek2-angular-momentum", "37f17e7e-9fcf-5dca-ac10-e94cb8420be5", "partial"));
+                        Tuple.tuple("sh-phys-sek2-angular-momentum", "37f17e7e-9fcf-5dca-ac10-e94cb8420be5", "partial"),
+                        Tuple.tuple("sh-phys-sek2-mass-spectrometer", "3f17d0d2-562d-4c1c-9ebc-1a1a43f28f9c", "partial"));
     }
 
     @Test
@@ -1010,9 +1013,9 @@ class GoalMappingRepositoryFixtureTest {
         assertThat(file.getVersion()).isEqualTo(1);
         assertThat(file.getSourceLandscapeId()).isEqualTo(RHEINLAND_PFALZ_PHYSICS_UPPER_SECONDARY_LANDSCAPE_ID);
         assertThat(file.getTargetLandscapeId()).isEqualTo(CANONICAL_PHYSICS_ID);
-        assertThat(file.getMappings()).hasSize(91);
+        assertThat(file.getMappings()).hasSize(112);
         assertThat(file.getMappings()).filteredOn(entry -> "exact".equals(entry.getMatchType())).hasSize(1);
-        assertThat(file.getMappings()).filteredOn(entry -> "partial".equals(entry.getMatchType())).hasSize(90);
+        assertThat(file.getMappings()).filteredOn(entry -> "partial".equals(entry.getMatchType())).hasSize(111);
         assertThat(file.getMappings())
                 .extracting(GoalMappingEntry::getLegacyGoalId, GoalMappingEntry::getCanonicalGoalId, GoalMappingEntry::getMatchType)
                 .containsExactly(
@@ -1106,7 +1109,28 @@ class GoalMappingRepositoryFixtureTest {
                         Tuple.tuple("rp-phys-sek2-structure-of-universe", "5db07785-8cca-50d5-81a9-e0264d344af9", "partial"),
                         Tuple.tuple("rp-phys-sek2-universe-development-big-bang-hubble-age", "e5b3d86c-0a74-5fa7-b9c4-7964bcb5ebc9", "partial"),
                         Tuple.tuple("rp-phys-sek2-characteristics-of-chaotic-systems", "76fd0ab2-079a-516e-a33b-170355336d40", "partial"),
-                        Tuple.tuple("rp-phys-sek2-dynamic-lift", "24b4686a-e8a6-4583-8952-33e6f653c2a3", "partial"));
+                        Tuple.tuple("rp-phys-sek2-dynamic-lift", "24b4686a-e8a6-4583-8952-33e6f653c2a3", "partial"),
+                        Tuple.tuple("rp-phys-sek2-period-dependence-example", "fcf8580c-ecfd-58ea-bbf5-a1b29c9ecf8e", "partial"),
+                        Tuple.tuple("rp-phys-sek2-wave-types-and-polarization", "cb0ced6d-b7c1-5b7d-9922-8c394f6030e8", "partial"),
+                        Tuple.tuple("rp-phys-sek2-white-light-spectrum-double-slit", "6270e558-d657-5363-a6b2-e49a032a453b", "partial"),
+                        Tuple.tuple("rp-phys-sek2-coupled-oscillations", "aee9676f-7cd6-50f0-a504-fd88ef67b59e", "partial"),
+                        Tuple.tuple("rp-phys-sek2-planck-constant-experimental-estimation", "5476480f-7ff2-529f-aade-968198c782a9", "partial"),
+                        Tuple.tuple("rp-phys-sek2-luminescence", "dd5a8efd-5d11-5388-aa2a-5147dec4348f", "partial"),
+                        Tuple.tuple("rp-phys-sek2-chemical-bond-molecular-structure", "dd5a8efd-5d11-5388-aa2a-5147dec4348f", "partial"),
+                        Tuple.tuple("rp-phys-sek2-dye-molecules", "dd5a8efd-5d11-5388-aa2a-5147dec4348f", "partial"),
+                        Tuple.tuple("rp-phys-sek2-pair-production", "48e3d6c2-00bf-5afd-8846-ba3dbd01e96d", "partial"),
+                        Tuple.tuple("rp-phys-sek2-particle-physics-open-questions", "2fab2e3a-1558-5e67-aed0-15fc51c737cd", "partial"),
+                        Tuple.tuple("rp-phys-sek2-mass-energy-equivalence", "bfea7a23-1ce1-4a42-badd-1fc9bf30124a", "partial"),
+                        Tuple.tuple("rp-phys-sek2-relativistic-energy-momentum-speed-limit-cases", "157c404a-e14b-598a-9389-6924f8f9262e", "partial"),
+                        Tuple.tuple("rp-phys-sek2-solar-state-variables", "b59cb1ef-05c2-5b09-abb3-8b6903ca0fd6", "partial"),
+                        Tuple.tuple("rp-phys-sek2-standard-solar-model", "b59cb1ef-05c2-5b09-abb3-8b6903ca0fd6", "partial"),
+                        Tuple.tuple("rp-phys-sek2-astrophysics-current-research", "b59cb1ef-05c2-5b09-abb3-8b6903ca0fd6", "partial"),
+                        Tuple.tuple("rp-phys-sek2-cosmology-current-research", "e5b3d86c-0a74-5fa7-b9c4-7964bcb5ebc9", "partial"),
+                        Tuple.tuple("rp-phys-sek2-chaos-fractal-examples", "76fd0ab2-079a-516e-a33b-170355336d40", "partial"),
+                        Tuple.tuple("rp-phys-sek2-structural-similarities-across-domains", "76fd0ab2-079a-516e-a33b-170355336d40", "partial"),
+                        Tuple.tuple("rp-phys-sek2-flow-phenomena-and-flow-types", "a658b54c-94ac-4e9c-93e3-defe1f2508a1", "partial"),
+                        Tuple.tuple("rp-phys-sek2-continuity-bernoulli-stokes-reynolds", "333ca92b-a92c-46a9-86be-dea8ddbd43e0", "partial"),
+                        Tuple.tuple("rp-phys-sek2-sinking-velocities-practicum", "333ca92b-a92c-46a9-86be-dea8ddbd43e0", "partial"));
     }
 
     @Test

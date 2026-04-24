@@ -127,38 +127,37 @@ Operational rule from here:
 - treat `Induktionsgesetz in differentieller Form` as the next schmaler RP LK induction follow-on on that same source family
 - the current retained RP field/induction family is now closed on the conservative reviewed cut
 - treat the active GF/LF-common strip `Harmonische Schwingungen` as the fourth reviewed RP cut
-- keep `Abhaengigkeit der Periodendauer von systembeschreibenden Groessen an einem Beispiel` intentionally source-led inside that new strip and now freeze it explicitly as part of the current RP oscillation/wave micro-residue set unless broader reviewed evidence later warrants a narrower shared target
+- bridge `Abhaengigkeit der Periodendauer von systembeschreibenden Groessen an einem Beispiel` conservatively onto the shared canonical oscillation surface `Charakteristische Schwingungsgrößen`
 - treat the active Grundfach strip `Harmonische Wellen` as the fifth reviewed RP cut
-- keep `Transversale und longitudinale Wellen sowie lineare Polarisation` intentionally source-led inside that new wave strip and now freeze it explicitly as part of the current RP oscillation/wave micro-residue set unless broader reviewed evidence later warrants a narrower shared target
+- bridge `Transversale und longitudinale Wellen sowie lineare Polarisation` conservatively onto the shared canonical wave surface `Harmonische Wellen und ihre Größen`
 - treat the active Grundfach strip `Superposition von Wellen` as the sixth reviewed RP cut
-- keep `Entstehung des Spektrums von weissem Licht am Doppelspalt` intentionally source-led inside that new strip and now freeze it explicitly as part of the current RP oscillation/wave micro-residue set unless broader reviewed evidence later warrants a narrower shared target
+- bridge `Entstehung des Spektrums von weissem Licht am Doppelspalt` conservatively onto the shared canonical interference surface `Interferenz am Doppelspalt`
 - treat the active LF residue `Harmonische Wellen und ihre Superposition` as the seventh reviewed RP cut
 - keep the LF residue intentionally narrow on `Einzelspalt` and `einfaches Interferometer` instead of duplicating the already covered Grundfach content
 - treat the active LF Pflichtbaustein-Follow-on `Schwingungen und Wellen` as the eighth reviewed RP cut
-- keep `Gekoppelte Schwingungen` intentionally source-led inside that LF strip and now freeze it explicitly as part of the current RP oscillation/wave micro-residue set unless broader reviewed evidence later warrants a narrower shared target
-- treat the remaining RP oscillation/wave micro-residues `Periodendauer`, `Polarisation`, `Weisslichtspektrum`, and `gekoppelte Schwingungen` as explicitly frozen source-led residues on the current reviewed cut
-- do not reopen that RP oscillation/wave micro-residue set unless broader reviewed evidence later warrants a genuinely narrower shared canonical target
+- bridge `Gekoppelte Schwingungen` conservatively onto the shared canonical oscillation surface `Mechanische Schwingungen`
+- the former RP oscillation/wave micro-residues `Periodendauer`, `Polarisation`, `Weisslichtspektrum`, and `gekoppelte Schwingungen` now land conservatively on shared canonical oscillation and interference surfaces
 - treat the active Grundfach strip `Quantenobjekte I` as the ninth reviewed RP cut
-- keep `Plancksches Wirkungsquantum mit einer experimentellen Methode naeherungsweise bestimmen` intentionally source-led inside that new RP quantum strip because the current shared canonical method target remains photoeffect-specific
+- bridge `Plancksches Wirkungsquantum mit einer experimentellen Methode naeherungsweise bestimmen` conservatively onto the shared canonical method leaf `Fotöffekt-Auswertung`
 - treat the active LF strip `Quantenobjekte II` as the tenth reviewed RP cut
 - treat the active Grundfach strip `Quantenmechanische Atomvorstellung I` as the eleventh reviewed RP cut
 - treat the active LF strip `Quantenmechanische Atomvorstellung II` as the twelfth reviewed RP cut
-- keep `Lumineszenz`, `chemische Bindung/Molekuelstruktur`, and `Farbstoffmolekuele` intentionally source-led inside that LF strip unless broader reviewed evidence later warrants narrower shared canonical targets
+- bridge `Lumineszenz`, `chemische Bindung/Molekuelstruktur`, and `Farbstoffmolekuele` conservatively onto the shared canonical cluster `Atomvorstellungen`
 - `Laser` now bridges conservatively onto the shared canonical atom `Laserprinzip und Anwendungen`
 - treat the active LF strip `Wechselwirkung von Quantenobjekten` as the thirteenth reviewed RP cut
-- keep `Paarerzeugung` intentionally source-led inside that LF strip unless broader reviewed evidence later warrants a genuinely shared narrow canonical target
+- bridge `Paarerzeugung` conservatively onto the shared canonical atom `Antimaterie und Paarvernichtung`
 - treat the active LF strip `Elementarteilchenphysik` as the fourteenth reviewed RP cut
-- keep `Offene Fragen der Elementarteilchenphysik` intentionally source-led inside that LF strip unless broader reviewed evidence later warrants a genuinely narrow shared research target
+- bridge `Offene Fragen der Elementarteilchenphysik` conservatively onto the shared canonical research atom `Teilchenphysik in der Forschung (CERN)`
 - treat the active LF strip `Relativistische Kinematik` as the fifteenth reviewed RP cut
 - treat the active LF strip `Relativistische Dynamik` as the sixteenth reviewed RP cut
-- keep `Masse-Energie-Aequivalenz` and the retained RP LF clause on `Energie`, `Impuls`, `Geschwindigkeit`, `Grenzgeschwindigkeit`, and `Grenzfaelle` intentionally source-led inside that new strip unless broader reviewed evidence later warrants genuinely narrow shared canonical targets
+- bridge `Masse-Energie-Aequivalenz` onto the shared canonical atom `Masse-Energie-Äquivalenz einordnen` and bridge the retained RP LF clause on `Energie`, `Impuls`, `Geschwindigkeit`, `Grenzgeschwindigkeit`, and `Grenzfaelle` conservatively onto the shared canonical cluster `Spezielle Relativitätstheorie`
 - treat the active LF strip `Astrophysik` as the seventeenth reviewed RP cut
-- keep `Zustandsgroessen der Sonne`, `Standardsonnenmodell`, and `Aktuelle Forschungsergebnisse` intentionally source-led inside that new strip unless broader reviewed evidence later warrants genuinely narrow shared canonical targets
+- bridge `Zustandsgroessen der Sonne`, `Standardsonnenmodell`, and `Aktuelle Forschungsergebnisse` conservatively onto the shared canonical astrophysics surface
 - treat the active LF strip `Kosmologie` as the eighteenth reviewed RP cut
-- keep `Aktuelle Forschungsergebnisse` intentionally source-led inside that new strip unless broader reviewed evidence later warrants genuinely narrow shared canonical targets
+- bridge `Aktuelle Forschungsergebnisse` conservatively onto the shared canonical cosmology surface
 - treat the active LF strip `Chaos und Fraktale` as the nineteenth reviewed RP cut
-- keep the leaves on `Chaosphaenomene und fraktale Strukturen` and `Strukturelle Aehnlichkeiten in verschiedenen Bereichen` intentionally source-led inside that new strip unless broader reviewed evidence later warrants genuinely narrow shared canonical targets
+- bridge the leaves on `Chaosphaenomene und fraktale Strukturen` and `Strukturelle Aehnlichkeiten in verschiedenen Bereichen` conservatively onto the shared canonical chaos surface
 - treat the active LF strip `Stroemungsphysik` as the twentieth reviewed RP cut
-- keep the leaves on `Stroemungsphaenomene und Stroemungsarten`, `Kontinuitaetsgleichung, Stroemungsgesetze und Reynolds-Zahl`, and `Sinkgeschwindigkeiten im Praktikum` intentionally source-led inside that new strip unless broader reviewed evidence later warrants genuinely narrow shared canonical targets
-- treat the RP lane as explicitly closed on the current reviewed cut; keep the remaining source-led LF residue set beginning with `Individuelles Thema` intentionally frozen until later shared canonical evidence really warrants narrower targets
+- add the genuinely shared canonical fluid-dynamics surface `Strömungsphysik` / `Kontinuitätsgleichung, Strömungsgesetze und Reynolds-Zahl einordnen` and bridge the leaves on `Stroemungsphaenomene und Stroemungsarten`, `Kontinuitaetsgleichung, Stroemungsgesetze und Reynolds-Zahl`, and `Sinkgeschwindigkeiten im Praktikum` onto that shared surface
+- treat the RP lane as explicitly semantically closed on the current reviewed cut; reopen it only if a later source revision changes visible scope or another later retained source lane creates a genuinely shared Physics gap
 - do not force a Rheinland-Pfalz-specific canonical split or applicability cut before broader reviewed evidence exists

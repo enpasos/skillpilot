@@ -45,15 +45,11 @@
 - den RP-LK-Induktionsrest `Differentialform` jetzt als schmalen reviewed Follow-on stabil halten
 - den aelteren RP-LK-Rest `Kreisbahnen` / `Wien-Filter` jetzt auf dem konservativen reviewed Schnitt der shared Teilchenbewegungsflaeche stabil halten
 - den ersten gemeinsamen RP-Schwingungsstreifen `Harmonische Schwingungen` jetzt stabil halten
-- den einen angrenzenden RP-Schwingungsrest `Abhaengigkeit der Periodendauer von systembeschreibenden Groessen an einem Beispiel` jetzt explizit als source-led Mikrorest eingefroren halten
 - den ersten RP-Grundfach-Wellenstreifen `Harmonische Wellen` jetzt stabil halten
-- den angrenzenden GF-Wellenrest `Transversale und longitudinale Wellen sowie lineare Polarisation` jetzt explizit als source-led Mikrorest eingefroren halten
 - den ersten RP-Grundfach-Follow-on `Superposition von Wellen` jetzt stabil halten
-- den angrenzenden GF-Rest `Entstehung des Spektrums von weissem Licht am Doppelspalt` jetzt explizit als source-led Mikrorest eingefroren halten
 - den ersten schmalen RP-LF-Follow-on `Harmonische Wellen und ihre Superposition` jetzt stabil halten
 - den ersten schmalen RP-LF-Pflichtbaustein-Follow-on `Schwingungen und Wellen` jetzt stabil halten
-- den angrenzenden LF-Rest `Gekoppelte Schwingungen` jetzt explizit als source-led Mikrorest eingefroren halten
-- die verbleibenden RP-Oszillations-/Wellenreste (`Periodendauer`, `Polarisation`, `Weisslichtspektrum`, `gekoppelte Schwingungen`) nicht mehr als offene Sofort-Todos behandeln, sondern auf dem aktuellen reviewed Schnitt eingefroren halten
+- die frueher eingefrorenen RP-Oszillations-/Wellenreste (`Periodendauer`, `Polarisation`, `Weisslichtspektrum`, `gekoppelte Schwingungen`) jetzt konservativ auf shared Canonical-Ziele bzw. -Cluster ziehen
 - den ersten RP-Grundfach-Quantenstreifen `Quantenobjekte I` jetzt stabil halten
 - den ersten schmalen RP-LF-Follow-on `Quantenobjekte II` jetzt stabil halten
 - den ersten RP-Grundfach-Atommodellstreifen `Quantenmechanische Atomvorstellung I` jetzt stabil halten
@@ -66,14 +62,6 @@
 - den ersten schmalen RP-LF-Follow-on `Kosmologie` jetzt stabil halten
 - den ersten schmalen RP-LF-Follow-on `Chaos und Fraktale` jetzt stabil halten
 - den ersten schmalen RP-LF-Follow-on `Stroemungsphysik` jetzt stabil halten
-- `Plancksches Wirkungsquantum mit einer experimentellen Methode naeherungsweise bestimmen` im RP-Quantenstreifen bewusst source-led lassen, solange die bestehende shared Canonical-Methode photoeffekt-spezifisch bleibt
-- `Lumineszenz`, `Laser`, `chemische Bindung/Molekuelstruktur` und `Farbstoffmolekuele` im RP-LF-Atommodellstreifen vorerst bewusst source-led halten, solange die bestehende shared Canonical-Flaeche dafuer keine schmalen reviewed Ziele traegt
-- `Paarerzeugung` im RP-LF-Streifen `Wechselwirkung von Quantenobjekten` vorerst bewusst source-led halten, solange die bestehende shared Canonical-Flaeche dafuer kein genuinely narrow reviewed Ziel traegt
-- `Offene Fragen der Elementarteilchenphysik` im RP-LF-Streifen `Elementarteilchenphysik` vorerst bewusst source-led halten, solange die bestehende shared Canonical-Forschungsflaeche dafuer kein genuinely narrow reviewed Ziel traegt
-- `Masse-Energie-Aequivalenz` sowie den RP-LF-Dynamikrest auf `Energie`, `Impuls`, `Geschwindigkeit`, `Grenzgeschwindigkeit` und `Grenzfaelle` vorerst bewusst source-led halten, solange die bestehende shared Canonical-Relativitaetsflaeche dafuer keine schmalen reviewed Ziele traegt
-- `Zustandsgroessen der Sonne`, `Standardsonnenmodell` und `Aktuelle Forschungsergebnisse` im RP-LF-Streifen `Astrophysik` vorerst bewusst source-led halten, solange die bestehende shared Canonical-Astrophysikflaeche dafuer keine schmalen reviewed Ziele traegt
-- `Aktuelle Forschungsergebnisse` im RP-LF-Streifen `Kosmologie` vorerst bewusst source-led halten, solange die bestehende shared Canonical-Kosmologieflaeche dafuer keine schmalen reviewed Ziele traegt
-- `Chaosphaenomene und fraktale Strukturen` sowie `Strukturelle Aehnlichkeiten in verschiedenen Bereichen` im RP-LF-Streifen `Chaos und Fraktale` vorerst bewusst source-led halten, solange die bestehende shared Canonical-Chaosflaeche dafuer keine schmalen reviewed Ziele traegt
-- `Stroemungsphaenomene und Stroemungsarten`, `Kontinuitaetsgleichung, Stroemungsgesetze und Reynolds-Zahl` sowie `Sinkgeschwindigkeiten im Praktikum` im RP-LF-Streifen `Stroemungsphysik` vorerst bewusst source-led halten, solange die bestehende shared Canonical-Flaeche dafuer keine schmalen reviewed Ziele traegt
-- die RP-Physik-Lane jetzt explizit auf dem aktuellen reviewed Cut schliessen; der verbleibende LF-Rest um `Individuelles Thema` und die bereits dokumentierten source-led LF-Blaetter bleiben bewusst eingefroren, bis spaetere shared Canonical-Evidenz dafuer wirklich schmale Ziele traegt
+- die frueher eingefrorenen RP-Reste auf Planck-Abschaetzung, LF-Atommodell-Anwendungen, `Paarerzeugung`, `Offene Fragen`, Relativitaetsdynamik, Astrophysik, Kosmologie, Chaos und Stroemungsphysik jetzt konservativ auf shared Canonical-Ziele bzw. -Cluster ziehen
+- die RP-Physik-Lane damit auf dem aktuellen reviewed Cut semantisch schliessen; offene Wiedereroeffnung nur noch bei spaeteren sichtbaren Source-Revisionen oder neuen genuinely shared Physics gaps
 - keinen Rheinland-Pfalz-spezifischen kanonischen Physik-Atom erzwingen, solange die bestehende shared Q1-Flaeche die RP-Quelle noch konservativ tragen kann

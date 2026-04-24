@@ -20,7 +20,7 @@ Activation result:
 - the Berlin upper-secondary Physics lane is now active in `source-landscape-registry.json`
 - the first Berlin upper-secondary Physics snapshot now contributes real `goalIds` to `source-goal-membership-registry.json`
 - the same snapshot now contributes atomic closures to `source-goal-closure-registry.json`
-- the repository-backed Berlin Physics mapping file now carries `24` reviewed upper-secondary mappings
+- the repository-backed Berlin Physics mapping file now carries `27` reviewed upper-secondary mappings
 - the first Berlin upper-secondary Physics snapshot is intentionally narrow and source-led:
   - one shared orientation anchor from the Bildungsbeitrag
   - one structural `Q1` anchor `Gravitationsfeld, elektrisches und magnetisches Feld`
@@ -54,15 +54,12 @@ Activation result:
 - no committed Berlin applicability cut is introduced in this step
 - no Berlin-specific Physics composition view is introduced in this step
 - `Vakuumlichtgeschwindigkeit c0 als Obergrenze fuer Geschwindigkeiten einordnen` and `Relativistische Massenzunahme schnell bewegter Teilchen einordnen` now bridge conservatively onto the shared canonical excursus `Exkurs: Relativistische Massenzunahme (Linearbeschleuniger)`
-- `Ladungstraeger in Magnetfeldern fuer beliebige Eintrittswinkel beschreiben` stays intentionally source-led because the existing shared magnetic-field particle-motion leaves still do not isolate that arbitrary-entry-angle clause tightly enough without overstating the current reviewed surface
-- the remaining Berlin source-led residue is now treated as an explicitly deferred shared BE/BB residue candidate rather than as an open Berlin-local mapping todo:
-  - `Ladungstraeger in Magnetfeldern fuer beliebige Eintrittswinkel beschreiben`
-- after Brandenburg has now matched the retained Berlin `3.2.1` -> `3.2.2` cut, the next clean move is therefore not another Berlin-only or BE/BB-only bridge
-- treat the remaining `Eintrittswinkel` clause as the explicit shared BE/BB residue set and only reopen it if later reviewed evidence really makes it jointly reviewable
+- `Ladungstraeger in Magnetfeldern fuer beliebige Eintrittswinkel beschreiben` now also bridges conservatively onto the genuinely shared canonical atom `Ladungsträger in Magnetfeldern bei beliebigem Eintrittswinkel beschreiben`
+- the active Berlin retained field lane is therefore semantically closed on the current reviewed cut
 
 Operational rule from here:
 
 - keep the reserved `sourceLandscapeId` stable while widening the Berlin Physics source snapshot
-- treat the retained `3.2.1` -> `3.2.2` Q1 field route as the current Berlin pilot cut and keep the remaining source-led `Eintrittswinkel` clause explicitly deferred until broader shared evidence justifies another reviewed move
-- keep Berlin stable now that Brandenburg matches the same retained cut from the shared BE/BB source family, and do not force any further BE/BB-only canonical split on the remaining `Eintrittswinkel` residue
-- keep Berlin narrow and reviewed until broader retained evidence justifies an applicability pass or another shared canonical atom
+- treat the retained `3.2.1` -> `3.2.2` Q1 field route as the current Berlin pilot cut
+- keep Berlin stable now that the former shared BE/BB `Eintrittswinkel` residue also lands on a shared canonical atom
+- reopen Berlin only if a later source revision changes visible scope or another later retained source lane exposes a genuinely shared Physics gap

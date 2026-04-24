@@ -1,6 +1,6 @@
 {
   "version": 4,
-  "updatedAt": "2026-04-20T07:45:43Z",
+  "updatedAt": "2026-04-24T12:00:00Z",
   "mode": "maintenance_evidence_watch",
   "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
   "trackerPath": "curricula/DE/Gymnasium/provenance/physics-bundesland-rollout-tracker.json",
@@ -90,7 +90,7 @@
     },
     {
       "id": "sek2_residue_watch",
-      "kind": "upper_secondary_residue_watch",
+      "kind": "upper_secondary_revision_watch",
       "states": [
         "DE-BE",
         "DE-BB",
@@ -98,9 +98,7 @@
         "DE-RP"
       ],
       "candidateRows": [
-        "BE/BB residue",
-        "SH micro-residues",
-        "RP source-led LF residues"
+        "reviewed upper-secondary maintenance lanes"
       ],
       "paths": [
         "curricula/DE/Gymnasium/input/BE/upper-secondary/source-json/DE_BER_S_GYM_2_PHYSIK.de.json.snapshot",
@@ -108,7 +106,7 @@
         "curricula/DE/Gymnasium/input/SH/upper-secondary/source-json/DE_SHL_S_GYM_2_PHYSIK.de.json.snapshot",
         "curricula/DE/Gymnasium/input/RP/upper-secondary/source-json/DE_RLP_S_GYM_2_PHYSIK.de.json.snapshot"
       ],
-      "reopenRule": "Reopen an upper-secondary maintenance lane only if a later source revision changes visible scope or creates a genuinely shared canonical Physics gap beyond the current stable reviewed cuts."
+      "reopenRule": "Reopen an upper-secondary maintenance lane only if a later source revision changes visible scope or creates a genuinely shared canonical Physics gap beyond the current semantically closed reviewed cuts."
     }
   ]
 }

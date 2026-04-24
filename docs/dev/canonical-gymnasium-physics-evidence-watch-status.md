@@ -1,6 +1,6 @@
 # Canonical Gymnasium Physics Evidence Watch Status
 
-Snapshot: `2026-04-20T07:45:43Z`
+Snapshot: `2026-04-24T12:00:00Z`
 
 This file is generated from:
 
@@ -26,7 +26,7 @@ This file is generated from:
 | `lower_secondary_candidate_floor` | `2` |
 | `lower_secondary_overlap_guard` | `1` |
 | `lower_secondary_seed` | `1` |
-| `upper_secondary_residue_watch` | `1` |
+| `upper_secondary_revision_watch` | `1` |
 
 ## Watch target register
 
@@ -36,7 +36,7 @@ This file is generated from:
 | `sek1_cosmos_floor_watch` | `lower_secondary_candidate_floor` | `DE-SN`, `DE-HH` | Sek I Kosmos / Erde / Mensch / Astronomie | `2` | `0` |
 | `sek1_electronics_floor_watch` | `lower_secondary_candidate_floor` | `DE-SN`, `DE-SL`, `DE-ST` | Sek I Elektronik / Halbleiter / elektromagnetische Wellen | `3` | `0` |
 | `sek1_light_matter_overlap_watch` | `lower_secondary_overlap_guard` | `DE-HE`, `DE-HH`, `DE-HB`, `DE-MV`, `DE-SL`, `DE-TH` | Sek I Licht / Materie / Atommodell / Strahlung | `6` | `0` |
-| `sek2_residue_watch` | `upper_secondary_residue_watch` | `DE-BE`, `DE-BB`, `DE-SH`, `DE-RP` | BE/BB residue<br>SH micro-residues<br>RP source-led LF residues | `4` | `0` |
+| `sek2_residue_watch` | `upper_secondary_revision_watch` | `DE-BE`, `DE-BB`, `DE-SH`, `DE-RP` | reviewed upper-secondary maintenance lanes | `4` | `0` |
 
 ## Unique file register
 
@@ -119,13 +119,11 @@ This file is generated from:
 
 ## `sek2_residue_watch`
 
-- Kind: `upper_secondary_residue_watch`
+- Kind: `upper_secondary_revision_watch`
 - States: `DE-BE`, `DE-BB`, `DE-SH`, `DE-RP`
 - Candidate rows:
-  - `BE/BB residue`
-  - `SH micro-residues`
-  - `RP source-led LF residues`
-- Reopen rule: Reopen an upper-secondary maintenance lane only if a later source revision changes visible scope or creates a genuinely shared canonical Physics gap beyond the current stable reviewed cuts.
+  - `reviewed upper-secondary maintenance lanes`
+- Reopen rule: Reopen an upper-secondary maintenance lane only if a later source revision changes visible scope or creates a genuinely shared canonical Physics gap beyond the current semantically closed reviewed cuts.
 - Watched files:
 
 | File | Exists | SHA256-12 | Last modified (UTC) |
