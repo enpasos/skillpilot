@@ -8,11 +8,14 @@ export const en = {
             },
             gpt: {
                 title: "SkillPilot GPT",
-                description: "Learn interactively with your AI tutor."
+                badge: "Main start",
+                description: "Your AI tutor for learning goals, practice tasks, and the next sensible steps.",
+                cta: "Start SkillPilot GPT"
             },
             explorer: {
                 title: "Cockpit",
-                description: "Track your progress in the cockpit."
+                description: "View your progress and learning status.",
+                cta: "Open Cockpit"
             },
             curricula: {
                 title: "Curriculum Champions",
@@ -43,7 +46,7 @@ export const en = {
             }
         },
         banner: {
-            text: "**SkillPilot is free.**\nYou only need a ChatGPT account.\n\n**Tip:** For the best connection to your learning progress, we recommend **ChatGPT in the browser**. The ChatGPT app works for text and photos, but not reliably with voice input."
+            text: "**Free.** You only need a ChatGPT account.\nFor the best connection to your learning progress, use **ChatGPT in the browser**."
         },
         links: {
             statistics: "Statistics",

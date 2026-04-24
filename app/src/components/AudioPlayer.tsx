@@ -9,7 +9,11 @@ const AUDIO_SOURCES = {
   en: '/audio/intro-en.m4a',
 }
 
-export const AudioPlayer: React.FC = () => {
+interface AudioPlayerProps {
+  compact?: boolean
+}
+
+export const AudioPlayer: React.FC<AudioPlayerProps> = ({ compact = false }) => {
   const audioRef = useRef<HTMLAudioElement>(null)
   const { language } = useLanguage()
   const copy = getAudioPlayerCopy(language === 'en' ? 'en' : 'de')
@@ -65,16 +69,20 @@ export const AudioPlayer: React.FC = () => {
   }
 
   return (
-    <div className="w-full max-w-lg mb-8 animate-in fade-in slide-in-from-bottom-2 duration-700">
+    <div className={compact ? 'w-full h-full' : 'w-full max-w-lg mb-8 animate-in fade-in slide-in-from-bottom-2 duration-700'}>
       <audio ref={audioRef} src={AUDIO_SOURCES[language]} preload="metadata" />
 
       {/* Glassmorphism Container */}
-      <div className="relative overflow-hidden rounded-2xl border border-white/20 bg-white/10 dark:bg-black/20 backdrop-blur-md shadow-lg p-4 flex items-center gap-4">
+      <div className={
+        compact
+          ? 'relative h-full overflow-hidden rounded-xl border border-border-color bg-white/50 dark:bg-slate-800/50 p-5 flex items-center gap-4 hover:shadow-md hover:border-indigo-300/70 dark:hover:border-indigo-500/40 transition-all'
+          : 'relative overflow-hidden rounded-2xl border border-white/20 bg-white/10 dark:bg-black/20 backdrop-blur-md shadow-lg p-4 flex items-center gap-4'
+      }>
 
         {/* Play/Pause Button */}
         <button
           onClick={togglePlay}
-          className="flex-shrink-0 w-12 h-12 flex items-center justify-center rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 text-white shadow-md hover:scale-105 transition-transform active:scale-95"
+          className={`${compact ? 'w-10 h-10' : 'w-12 h-12'} flex-shrink-0 flex items-center justify-center rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 text-white shadow-md hover:scale-105 transition-transform active:scale-95`}
           aria-label={isPlaying ? copy.pauseLabel : copy.playLabel}
         >
           {isPlaying ? <Pause size={20} fill="currentColor" /> : <Play size={20} fill="currentColor" className="ml-1" />}
@@ -104,7 +112,7 @@ export const AudioPlayer: React.FC = () => {
         </div>
 
         {/* NotebookLM Icon/Brand (Subtle) */}
-        <div className="flex-shrink-0 text-slate-300 dark:text-slate-600">
+        <div className={compact ? 'hidden' : 'flex-shrink-0 text-slate-300 dark:text-slate-600'}>
           <Volume2 size={24} />
         </div>
       </div>

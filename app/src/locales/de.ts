@@ -8,11 +8,14 @@ export const de = {
             },
             gpt: {
                 title: "SkillPilot GPT",
-                description: "Lerne interaktiv mit deinem KI-Tutor."
+                badge: "Hauptstart",
+                description: "Dein KI-Tutor für Lernziele, Aufgaben und die nächsten sinnvollen Schritte.",
+                cta: "Mit SkillPilot GPT starten"
             },
             explorer: {
                 title: "Cockpit",
-                description: "Verfolge deinen Fortschritt im Cockpit."
+                description: "Fortschritt und Lernstand ansehen.",
+                cta: "Cockpit öffnen"
             },
             curricula: {
                 title: "Curriculum-Champions",
@@ -43,7 +46,7 @@ export const de = {
             }
         },
         banner: {
-            text: "**SkillPilot ist kostenlos.**\nDu benötigst lediglich einen ChatGPT-Account.\n\n**Tipp:** Für die beste Verbindung zum Lernstand empfehlen wir **ChatGPT im Browser**. Die ChatGPT-App funktioniert für Text und Fotos, aber nicht zuverlässig mit Spracheingabe."
+            text: "**Kostenlos.** Du brauchst nur einen ChatGPT-Account.\nFür die beste Verbindung zum Lernstand empfehlen wir **ChatGPT im Browser**."
         },
         links: {
             statistics: "Statistiken",

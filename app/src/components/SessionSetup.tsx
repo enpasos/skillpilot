@@ -222,7 +222,7 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
         </div>
       </div>
 
-      <div className="flex-grow flex flex-col items-center justify-center w-full max-w-lg">
+      <div className="flex-grow flex flex-col items-center justify-center w-full max-w-2xl">
         {/* 0. Logo & Title */}
         <div className="flex flex-col items-center mb-10 animate-in fade-in zoom-in duration-500">
           <div className="flex items-center gap-4 mb-2">
@@ -242,79 +242,96 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
           </Link>
         </div>
 
-        <div className="w-full space-y-4">
-          {!showLogin && (
-            <div className="flex justify-center w-full">
-              <AudioPlayer key={language} />
-            </div>
-          )}
-
+        <div className="w-full space-y-5">
           {!showLogin ? (
-            <div className="grid grid-cols-1 gap-4 w-full animate-in fade-in slide-in-from-bottom-4 duration-500 delay-100">
-              {/* Card 1: GPT */}
-              <a href={getSkillpilotGptUrl(language)} target="_blank" rel="noopener noreferrer" className="group relative overflow-hidden rounded-xl border border-border-color bg-white/50 dark:bg-slate-800/50 p-6 hover:shadow-lg hover:border-sky-400/50 transition-all duration-300">
-                <div className="flex items-center justify-between">
-                  <div>
-                    <h3 className="text-lg font-semibold text-text-primary group-hover:text-sky-600 dark:group-hover:text-sky-400 transition-colors flex items-center gap-2">
-                      {t.startPage.cards.gpt.title} <MessageCircle size={18} className="text-sky-500" />
+            <div className="w-full space-y-4 animate-in fade-in slide-in-from-bottom-4 duration-500 delay-100">
+              {/* Primary start: GPT */}
+              <a
+                href={getSkillpilotGptUrl(language)}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={t.startPage.cards.gpt.cta}
+                className="group relative block overflow-hidden rounded-2xl border-2 border-sky-200 bg-sky-50/80 p-6 shadow-lg shadow-sky-900/5 transition-all duration-300 hover:border-sky-400 hover:shadow-xl dark:border-sky-500/30 dark:bg-sky-950/30 sm:p-7"
+              >
+                <div className="flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
+                  <div className="min-w-0">
+                    <span className="inline-flex items-center gap-1.5 rounded-full border border-sky-200 bg-white/80 px-3 py-1 text-xs font-semibold text-sky-700 dark:border-sky-500/30 dark:bg-sky-900/40 dark:text-sky-200">
+                      <MessageCircle size={14} />
+                      {t.startPage.cards.gpt.badge}
+                    </span>
+                    <h3 className="mt-3 text-2xl font-bold tracking-tight text-slate-900 transition-colors group-hover:text-sky-700 dark:text-slate-100 dark:group-hover:text-sky-300">
+                      {t.startPage.cards.gpt.title}
                     </h3>
-                    <p className="text-sm text-text-secondary mt-1">
+                    <p className="mt-2 text-base leading-relaxed text-slate-700 dark:text-slate-300">
                       {t.startPage.cards.gpt.description}
                     </p>
-                    {/* Integrated Info Banner */}
                     {t.startPage.banner && (
-                      <div className="mt-3 rounded-lg border border-sky-200 bg-sky-50 dark:border-sky-800/30 dark:bg-sky-900/20 p-3 flex gap-2 text-xs text-sky-900 dark:text-sky-100 items-start">
-                        <ShieldCheck className="shrink-0 text-sky-600 dark:text-sky-400" size={16} />
-                        <div className="leading-relaxed whitespace-pre-line">
-                          {t.startPage.banner.text.split('**').map((part, i) =>
-                            i % 2 === 1 ? <span key={i} className="font-bold">{part}</span> : part
-                          )}
+                      <div className="mt-4 rounded-lg border border-sky-200 bg-white/70 p-3 text-xs leading-relaxed text-sky-950 dark:border-sky-500/30 dark:bg-sky-900/30 dark:text-sky-100">
+                        <div className="flex items-start gap-2">
+                          <ShieldCheck className="mt-0.5 shrink-0 text-sky-600 dark:text-sky-300" size={16} />
+                          <div className="whitespace-pre-line">
+                            {t.startPage.banner.text.split('**').map((part, i) =>
+                              i % 2 === 1 ? <span key={i} className="font-bold">{part}</span> : part
+                            )}
+                          </div>
                         </div>
                       </div>
                     )}
                   </div>
-                  <ArrowRight className="text-text-secondary group-hover:translate-x-1 group-hover:text-sky-500 transition-all shrink-0 ml-4" />
+                  <div className="shrink-0">
+                    <span className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-sky-600 px-5 py-3 text-sm font-semibold text-white shadow-sm shadow-sky-900/20 transition-colors group-hover:bg-sky-500 sm:w-auto">
+                      {t.startPage.cards.gpt.cta}
+                      <ArrowRight size={18} className="transition-transform group-hover:translate-x-0.5" />
+                    </span>
+                  </div>
                 </div>
               </a>
 
-              {/* Card 2: My Successes (Direct Learner Login) */}
-              <button
-                onClick={() => {
-                  setRole('learner')
-                  resetTransientSetupState()
-                  const id = localStorage.getItem('skillpilot_id')
-                  const savedLandscape = localStorage.getItem('skillpilot_learner_landscape')
-                  if (id) {
-                    setSkillpilotId(sanitizeSkillpilotId(id))
-                    // If we have a saved landscape, set it immediately and mark as checked
-                    if (savedLandscape) {
-                      setSelectedLandscapeId(savedLandscape)
-                      setHasCheckedId(true)
+              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                {/* Secondary start: Cockpit */}
+                <button
+                  onClick={() => {
+                    setRole('learner')
+                    resetTransientSetupState()
+                    const id = localStorage.getItem('skillpilot_id')
+                    const savedLandscape = localStorage.getItem('skillpilot_learner_landscape')
+                    if (id) {
+                      setSkillpilotId(sanitizeSkillpilotId(id))
+                      // If we have a saved landscape, set it immediately and mark as checked
+                      if (savedLandscape) {
+                        setSelectedLandscapeId(savedLandscape)
+                        setHasCheckedId(true)
+                      }
+                      // Still check learner to get latest data from server (non-blocking update)
+                      checkLearner(sanitizeSkillpilotId(id))
                     }
-                    // Still check learner to get latest data from server (non-blocking update)
-                    checkLearner(sanitizeSkillpilotId(id))
-                  }
-                  setShowLogin(true)
-                }}
-                className="group w-full relative overflow-hidden rounded-xl border border-border-color bg-white/50 dark:bg-slate-800/50 p-6 hover:shadow-lg hover:border-sky-400/50 transition-all duration-300 text-left"
-              >
-                <div className="flex items-center justify-between">
-                  <div>
-                    <h3 className="text-lg font-semibold text-text-primary group-hover:text-sky-600 dark:group-hover:text-sky-400 transition-colors flex items-center gap-2">
-                      {t.startPage.cards.explorer.title} <Compass size={18} className="text-sky-500" />
-                    </h3>
-                    <p className="text-sm text-text-secondary mt-1">
-                      {t.startPage.cards.explorer.description}
-                    </p>
+                    setShowLogin(true)
+                  }}
+                  className="group h-full w-full relative overflow-hidden rounded-xl border border-border-color bg-white/50 p-5 text-left transition-all duration-300 hover:border-sky-300/70 hover:shadow-md dark:bg-slate-800/50 dark:hover:border-sky-500/40"
+                >
+                  <div className="flex h-full flex-col justify-between gap-4">
+                    <div>
+                      <h3 className="flex items-center gap-2 text-lg font-semibold text-text-primary transition-colors group-hover:text-sky-600 dark:group-hover:text-sky-400">
+                        {t.startPage.cards.explorer.title} <Compass size={18} className="text-sky-500" />
+                      </h3>
+                      <p className="mt-1 text-sm text-text-secondary">
+                        {t.startPage.cards.explorer.description}
+                      </p>
+                    </div>
+                    <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-sky-600 dark:text-sky-300">
+                      {t.startPage.cards.explorer.cta}
+                      <ArrowRight size={16} className="transition-transform group-hover:translate-x-0.5" />
+                    </span>
                   </div>
-                  <ArrowRight className="text-text-secondary group-hover:translate-x-1 group-hover:text-sky-500 transition-all" />
-                </div>
-              </button>
+                </button>
+
+                <AudioPlayer key={language} compact />
+              </div>
 
               {/* Card 3: Curricula */}
               <Link
                 to="/curricula"
-                className="group relative overflow-hidden rounded-xl border border-border-color bg-white/50 dark:bg-slate-800/50 p-6 hover:shadow-lg hover:border-amber-400/50 transition-all duration-300"
+                className="group relative block overflow-hidden rounded-xl border border-border-color bg-white/50 p-5 transition-all duration-300 hover:border-amber-400/50 hover:shadow-md dark:bg-slate-800/50"
               >
                 <div className="flex items-center justify-between">
                   <div>
