@@ -21,6 +21,12 @@ class AiOpenApiSpecTest {
         assertSpecIsAiMinimal(Path.of("..", "ai", "skillpilot-api-4ai.de.json"));
     }
 
+    @Test
+    void aiSpecs_makeMasteryExplicitAndConsequential() throws Exception {
+        assertMasteryWriteIsGuarded(Path.of("..", "ai", "skillpilot-api-4ai.en.json"));
+        assertMasteryWriteIsGuarded(Path.of("..", "ai", "skillpilot-api-4ai.de.json"));
+    }
+
     private static void assertSpecIsAiMinimal(Path path) throws IOException {
         JsonNode root = MAPPER.readTree(Files.readString(path));
         JsonNode schemas = root.path("components").path("schemas");
@@ -29,6 +35,25 @@ class AiOpenApiSpecTest {
         assertThat(schemas.has("LearningLandscape")).isFalse();
         assertThat(schemas.has("ReleaseMetadata")).isFalse();
         assertThat(containsFieldNamed(root, "release")).isFalse();
+    }
+
+    private static void assertMasteryWriteIsGuarded(Path path) throws IOException {
+        JsonNode root = MAPPER.readTree(Files.readString(path));
+        String lang = path.getFileName().toString().contains(".de.") ? "de" : "en";
+        JsonNode operation = root.path("paths").path("/api/ai/" + lang + "/learners/{skillpilotId}/mastery")
+                .path("post");
+        assertThat(operation.path("x-openai-isConsequential").asBoolean()).isTrue();
+        assertThat(operation.path("requestBody").path("required").asBoolean()).isTrue();
+
+        JsonNode masteryRequest = root.path("components").path("schemas").path("MasteryUpdateRequest");
+        assertThat(masteryRequest.path("required").toString()).contains("\"mastery\"");
+        JsonNode masteryMap = masteryRequest.path("properties").path("mastery");
+        assertThat(masteryMap.path("minProperties").asInt()).isEqualTo(1);
+        assertThat(masteryMap.path("maxProperties").asInt()).isEqualTo(1);
+        assertThat(masteryMap.path("additionalProperties").path("minimum").asDouble()).isEqualTo(0.0);
+        assertThat(masteryMap.path("additionalProperties").path("maximum").asDouble()).isEqualTo(1.0);
+        assertThat(masteryRequest.path("properties").path("goalId").path("description").asText().toLowerCase())
+                .containsAnyOf("never", "niemals");
     }
 
     private static boolean containsFieldNamed(JsonNode node, String fieldName) {

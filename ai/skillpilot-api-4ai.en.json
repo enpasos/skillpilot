@@ -160,7 +160,7 @@
       "post": {
         "operationId": "setMastery",
         "summary": "Update mastery and get next steps",
-        "description": "Persists mastery updates for the current active goal and returns the updated learner state.",
+        "description": "Persists mastery for the current active atomic goal only after the learner has shown sufficient evidence in the current conversation. Never call this immediately after loading state or setting an active goal. The request must contain exactly one explicit mastery map entry for the active goal; empty bodies and goalId-only shortcuts are invalid.",
         "parameters": [
           {
             "name": "skillpilotId",
@@ -172,7 +172,7 @@
           }
         ],
         "requestBody": {
-          "required": false,
+          "required": true,
           "content": {
             "application/json": {
               "schema": {
@@ -203,7 +203,7 @@
             }
           }
         },
-        "x-openai-isConsequential": false
+        "x-openai-isConsequential": true
       }
     },
     "/api/ai/en/landscapes": {
@@ -607,7 +607,7 @@
           },
           "requiredAction": {
             "type": "string",
-            "description": "Single backend-required action for the current state, if any."
+            "description": "Single required next step for the current state, if any. Values matching tool names are tool calls. `teachActiveGoal` is a conversational teaching/checking step, not a tool call; do not call `setMastery` until learner evidence has been produced."
           },
           "goalOptions": {
             "type": "array",
@@ -646,17 +646,24 @@
         "properties": {
           "mastery": {
             "type": "object",
+            "minProperties": 1,
+            "maxProperties": 1,
             "additionalProperties": {
               "type": "number",
-              "format": "double"
+              "format": "double",
+              "minimum": 0.0,
+              "maximum": 1.0
             },
-            "description": "Map of {goalId: value} for mastery updates (0.0-1.0)."
+            "description": "Exactly one entry: {activeGoalId: masteryValue}. Use only after sufficient learner evidence. Value must be between 0.0 and 1.0."
           },
           "goalId": {
             "type": "string",
-            "description": "Optional target atomic goal ID."
+            "description": "Optional duplicate of the same active atomic goal ID for compatibility. This field alone never updates mastery."
           }
-        }
+        },
+        "required": [
+          "mastery"
+        ]
       },
       "MasteryResponse": {
         "type": "object",

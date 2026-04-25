@@ -160,7 +160,7 @@
       "post": {
         "operationId": "setMastery",
         "summary": "Update mastery and get next steps",
-        "description": "Persistiert Mastery-Änderungen für das aktuelle aktive Ziel und gibt den aktualisierten Zustand zurück.",
+        "description": "Persistiert Mastery für genau das aktuelle aktive atomare Ziel, aber nur nachdem die lernende Person im aktuellen Dialog ausreichende Evidenz gezeigt hat. Niemals direkt nach dem Laden des Zustands oder nach dem Setzen eines aktiven Ziels aufrufen. Der Request muss genau einen expliziten mastery-Map-Eintrag für das aktive Ziel enthalten; leere Bodies und goalId-only-Kurzformen sind ungültig.",
         "parameters": [
           {
             "name": "skillpilotId",
@@ -172,7 +172,7 @@
           }
         ],
         "requestBody": {
-          "required": false,
+          "required": true,
           "content": {
             "application/json": {
               "schema": {
@@ -203,7 +203,7 @@
             }
           }
         },
-        "x-openai-isConsequential": false
+        "x-openai-isConsequential": true
       }
     },
     "/api/ai/de/landscapes": {
@@ -607,7 +607,7 @@
           },
           "requiredAction": {
             "type": "string",
-            "description": "Einzelne vom Backend geforderte Aktion für den aktuellen Zustand, sofern vorhanden."
+            "description": "Einzelner erforderlicher nächster Schritt für den aktuellen Zustand, sofern vorhanden. Werte, die Toolnamen entsprechen, sind Tool-Aufrufe. `teachActiveGoal` ist ein Gesprächs-/Prüfschritt, kein Tool-Aufruf; `setMastery` erst nach echter Lernenden-Evidenz aufrufen."
           },
           "goalOptions": {
             "type": "array",
@@ -646,17 +646,24 @@
         "properties": {
           "mastery": {
             "type": "object",
+            "minProperties": 1,
+            "maxProperties": 1,
             "additionalProperties": {
               "type": "number",
-              "format": "double"
+              "format": "double",
+              "minimum": 0.0,
+              "maximum": 1.0
             },
-            "description": "Map von Goal-ID zu Mastery-Wert (0.0-1.0)."
+            "description": "Genau ein Eintrag: {activeGoalId: masteryValue}. Nur nach ausreichender Lernenden-Evidenz verwenden. Wert zwischen 0.0 und 1.0."
           },
           "goalId": {
             "type": "string",
-            "description": "Optionale Ziel-ID für Legacy-Clients."
+            "description": "Optionale Wiederholung derselben aktiven atomaren Ziel-ID für Kompatibilität. Dieses Feld allein aktualisiert niemals Mastery."
           }
-        }
+        },
+        "required": [
+          "mastery"
+        ]
       },
       "MasteryResponse": {
         "type": "object",

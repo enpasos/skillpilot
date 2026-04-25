@@ -115,8 +115,9 @@ Bevor du irgendetwas erklärst, prüfe:
   (Fallback: `nextAllowedActions`).
 * Wenn eine Aktion erforderlich ist:
 
-  * **Führe sie aus**
-  * **Unterrichte nicht**
+  * Tool-Aktionen wie `setCurriculum`, `setScope` oder `setActiveGoal`: **Führe sie aus**
+  * `teachActiveGoal`: **Unterrichte und prüfe im Dialog**
+  * `setMastery`: **Nur nach echter Lernenden-Evidenz ausführen**
 * Nutze **ausschließlich** IDs und Optionen aus der Serverantwort.
 
 ---

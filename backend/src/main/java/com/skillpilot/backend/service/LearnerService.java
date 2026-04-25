@@ -995,6 +995,15 @@ public class LearnerService {
 
     @Transactional
     public MasteryUpdateResponse setMastery(String skillpilotId, MasteryUpdateRequest request) {
+        if (request == null || request.mastery() == null || request.mastery().isEmpty()) {
+            throw new ResponseStatusException(org.springframework.http.HttpStatus.BAD_REQUEST,
+                    "mastery must contain exactly one goal update.");
+        }
+        if (request.mastery().size() != 1) {
+            throw new ResponseStatusException(org.springframework.http.HttpStatus.BAD_REQUEST,
+                    "mastery must contain exactly one goal update.");
+        }
+
         Learner learner = learnerRepository.findById(skillpilotId)
                 .orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "Learner not found"));
 
@@ -1006,14 +1015,32 @@ public class LearnerService {
         String activeGoalId = resolveGoalIdInVisibleGoals(learner.getActiveGoalId(), visibleGoals, false);
         String requestedGoalId = request.goalId();
         requestedGoalId = mapGoalIdForVisibleGoals(requestedGoalId, visibleGoals, false);
-        Map.Entry<String, Double> masteryEntry = null;
-        String masteryEntryGoalId = null;
-        if (request.mastery() != null && request.mastery().size() == 1) {
-            masteryEntry = request.mastery().entrySet().iterator().next();
-            masteryEntryGoalId = mapGoalIdForVisibleGoals(masteryEntry.getKey(), visibleGoals, false);
+        Map.Entry<String, Double> masteryEntry = request.mastery().entrySet().iterator().next();
+        if (masteryEntry.getKey() == null || masteryEntry.getKey().isBlank()) {
+            throw new ResponseStatusException(org.springframework.http.HttpStatus.BAD_REQUEST,
+                    "mastery goalId must not be empty.");
         }
+        if (masteryEntry.getValue() == null
+                || masteryEntry.getValue().isNaN()
+                || masteryEntry.getValue().isInfinite()
+                || masteryEntry.getValue() < 0.0
+                || masteryEntry.getValue() > 1.0) {
+            throw new ResponseStatusException(org.springframework.http.HttpStatus.BAD_REQUEST,
+                    "mastery value must be between 0.0 and 1.0.");
+        }
+        String masteryEntryGoalId = mapGoalIdForVisibleGoals(masteryEntry.getKey(), visibleGoals, false);
         if ((requestedGoalId == null || requestedGoalId.isBlank()) && masteryEntryGoalId != null) {
             requestedGoalId = masteryEntryGoalId;
+        }
+        if (requestedGoalId != null && !requestedGoalId.isBlank()
+                && masteryEntryGoalId != null && !requestedGoalId.equals(masteryEntryGoalId)) {
+            throw new ResponseStatusException(org.springframework.http.HttpStatus.BAD_REQUEST,
+                    "goalId must match the mastery map entry.");
+        }
+        if (activeGoalId != null && !activeGoalId.isBlank()
+                && masteryEntryGoalId != null && !activeGoalId.equals(masteryEntryGoalId)) {
+            throw new ResponseStatusException(org.springframework.http.HttpStatus.CONFLICT,
+                    "mastery update must target the active goal.");
         }
 
         String effectiveGoalId = (activeGoalId != null && !activeGoalId.isBlank())
@@ -1056,10 +1083,7 @@ public class LearnerService {
             }
         }
 
-        double masteryValue = 1.0;
-        if (masteryEntry != null && effectiveGoalId.equals(masteryEntryGoalId) && masteryEntry.getValue() != null) {
-            masteryValue = masteryEntry.getValue();
-        }
+        double masteryValue = masteryEntry.getValue();
 
         // Prevent mastery on Cluster Goals (goals that contain other goals)
         com.skillpilot.backend.landscape.LearningGoal def = landscapeService.getGoalDefinition(effectiveGoalId);
@@ -3214,7 +3238,7 @@ public class LearnerService {
             requiredAction = "setCurriculum";
             curriculumOptions = getAvailableBaseCurricula();
         } else if (activeGoal != null && !activeGoalMastered) {
-            requiredAction = "setMastery";
+            requiredAction = "teachActiveGoal";
             goalOptions = List.of(activeGoal);
         } else if (needsPersonalization(frontier, activeFilters)) {
             requiredAction = "setPersonalization";

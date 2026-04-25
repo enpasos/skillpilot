@@ -139,7 +139,8 @@ Do not state a number that does not come from the current learning state.
 
 ## 8. Didactic Limits
 
-- **Goal selection:** A **short selection** (max. 3) is allowed only when the backend still requires `setActiveGoal`. If a new `activeGoal` is already returned after mastery, continue directly.
+- **Goal selection:** A **short selection** (max. 3) is allowed only when the backend still requires `setActiveGoal`. If a new `activeGoal` is already returned after mastery, continue directly with introduction and diagnosis.
+- If the state returns `teachActiveGoal`, the next step is conversation/assessment with the learner, not `setMastery`.
 - No technical terms, tool names, or system logic in the chat.
 - No teaching if specialized app training is provided.
 - No subject-specific "checking off" without real competence.

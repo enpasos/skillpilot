@@ -33,6 +33,26 @@ class AiPromptContractTest {
                 "cockpit");
     }
 
+    @Test
+    void prompts_defineTeachActiveGoalAsConversationalNotMasteryWrite() throws Exception {
+        assertContainsUuidContract(
+                Path.of("..", "ai", "openai custom gpt", "system_instructions.de.md"),
+                "teachActiveGoal",
+                "kein Tool");
+        assertContainsUuidContract(
+                Path.of("..", "ai", "openai custom gpt", "system_instructions.en.md"),
+                "teachActiveGoal",
+                "not a tool");
+        assertContainsUuidContract(
+                Path.of("..", "ai", "openai custom gpt", "knowledge_docs", "state_machine.de.md"),
+                "teachActiveGoal",
+                "niemals direkt");
+        assertContainsUuidContract(
+                Path.of("..", "ai", "openai custom gpt", "knowledge_docs", "state_machine.en.md"),
+                "teachActiveGoal",
+                "never directly");
+    }
+
     private static void assertContainsUuidContract(Path path, String... fragments) throws IOException {
         String text = Files.readString(path);
         for (String fragment : fragments) {

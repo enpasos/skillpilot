@@ -25,6 +25,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.extensions.Extension;
 import io.swagger.v3.oas.annotations.extensions.ExtensionProperty;
 import java.util.List;
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -86,7 +87,7 @@ public class LearnerAiController {
         String requiredAction = state.stateMachine() != null ? state.stateMachine().requiredAction() : null;
         boolean redirect = Boolean.TRUE.equals(request.redirect());
         if (!"setActiveGoal".equals(requiredAction)) {
-            if ("setMastery".equals(requiredAction) && redirect) {
+            if (allowsMasteryWrite(requiredAction) && redirect) {
                 // Allow explicit user redirect while an active goal is locked.
             } else if (requiredAction != null) {
                 throw new org.springframework.web.server.ResponseStatusException(
@@ -99,32 +100,25 @@ public class LearnerAiController {
     }
 
     @PostMapping("/{skillpilotId}/mastery")
-    @Operation(extensions = @Extension(properties = @ExtensionProperty(name = "x-openai-isConsequential", value = "false", parseValue = true)))
+    @Operation(extensions = @Extension(properties = @ExtensionProperty(name = "x-openai-isConsequential", value = "true", parseValue = true)))
     public org.springframework.http.ResponseEntity<?> setMastery(
             @PathVariable String skillpilotId,
             @RequestBody(required = false) MasteryUpdateRequest request) {
         learnerService.assertWritableLearningSession(skillpilotId);
 
-        MasteryUpdateRequest effectiveRequest = request;
-
-        if (effectiveRequest == null) {
-            effectiveRequest = new MasteryUpdateRequest(null, null);
-        } else if ((effectiveRequest.mastery() == null || effectiveRequest.mastery().isEmpty())
-                && effectiveRequest.goalId() != null) {
-            java.util.Map<String, Double> newMap = new java.util.HashMap<>();
-            newMap.put(effectiveRequest.goalId(), 1.0);
-            effectiveRequest = new MasteryUpdateRequest(newMap, effectiveRequest.goalId());
+        org.springframework.http.ResponseEntity<?> validationError = validateAiMasteryRequest(request);
+        if (validationError != null) {
+            return validationError;
         }
 
         UnifiedLearnerStateResponse state = learnerService.getLearnerState(skillpilotId);
         String requiredAction = state.stateMachine() != null ? state.stateMachine().requiredAction() : null;
-        if (requiredAction != null && !"setMastery".equals(requiredAction)) {
+        if (requiredAction != null && !allowsMasteryWrite(requiredAction)) {
             // Recovery path:
             // If the conversation already selected a goal but the backend active goal was
-            // not
-            // persisted, allow /mastery to auto-lock that goal first.
+            // not persisted, allow /mastery to auto-lock that goal first.
             if ("setActiveGoal".equals(requiredAction)) {
-                String selectedGoalId = extractGoalIdFromMasteryRequest(effectiveRequest);
+                String selectedGoalId = extractGoalIdFromMasteryRequest(request);
                 if (selectedGoalId != null && !selectedGoalId.isBlank()) {
                     try {
                         learnerService.setActiveGoal(skillpilotId, selectedGoalId);
@@ -142,7 +136,7 @@ public class LearnerAiController {
                     }
                 }
             }
-            if (requiredAction != null && !"setMastery".equals(requiredAction)) {
+            if (requiredAction != null && !allowsMasteryWrite(requiredAction)) {
                 return org.springframework.http.ResponseEntity
                         .status(org.springframework.http.HttpStatus.CONFLICT)
                         .body(withAbsoluteExamAssetUrls(state));
@@ -150,7 +144,7 @@ public class LearnerAiController {
         }
 
         try {
-            MasteryUpdateResponse response = learnerService.setMastery(skillpilotId, effectiveRequest);
+            MasteryUpdateResponse response = learnerService.setMastery(skillpilotId, request);
             return org.springframework.http.ResponseEntity.ok(withAbsoluteExamAssetUrls(response));
         } catch (org.springframework.web.server.ResponseStatusException e) {
             if (org.springframework.http.HttpStatus.CONFLICT.equals(e.getStatusCode())) {
@@ -161,6 +155,34 @@ public class LearnerAiController {
             }
             throw e;
         }
+    }
+
+    private org.springframework.http.ResponseEntity<?> validateAiMasteryRequest(MasteryUpdateRequest request) {
+        if (request == null || request.mastery() == null || request.mastery().isEmpty()) {
+            return badMasteryRequest("setMastery requires an explicit mastery map with exactly one active goal.");
+        }
+        if (request.mastery().size() != 1) {
+            return badMasteryRequest("setMastery accepts exactly one mastery update at a time.");
+        }
+        Map.Entry<String, Double> entry = request.mastery().entrySet().iterator().next();
+        if (entry.getKey() == null || entry.getKey().isBlank()) {
+            return badMasteryRequest("setMastery requires a non-empty goal ID in mastery.");
+        }
+        Double value = entry.getValue();
+        if (value == null || value.isNaN() || value.isInfinite() || value < 0.0 || value > 1.0) {
+            return badMasteryRequest("setMastery value must be between 0.0 and 1.0.");
+        }
+        return null;
+    }
+
+    private org.springframework.http.ResponseEntity<?> badMasteryRequest(String message) {
+        return org.springframework.http.ResponseEntity
+                .status(org.springframework.http.HttpStatus.BAD_REQUEST)
+                .body(Map.of("error", message));
+    }
+
+    private boolean allowsMasteryWrite(String requiredAction) {
+        return "setMastery".equals(requiredAction) || "teachActiveGoal".equals(requiredAction);
     }
 
     private String extractGoalIdFromMasteryRequest(MasteryUpdateRequest request) {

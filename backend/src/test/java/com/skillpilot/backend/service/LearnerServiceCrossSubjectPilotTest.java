@@ -1345,7 +1345,7 @@ class LearnerServiceCrossSubjectPilotTest {
 
         assertThat(state.activeGoal()).isNotNull();
         assertThat(state.activeGoal().id()).isEqualTo(CANONICAL_PHYSICS_DIAGRAMS_ID);
-        assertThat(state.stateMachine().requiredAction()).isEqualTo("setMastery");
+        assertThat(state.stateMachine().requiredAction()).isEqualTo("teachActiveGoal");
         assertThat(state.stateMachine().goalOptions())
                 .extracting(FrontierGoal::id)
                 .containsExactly(CANONICAL_PHYSICS_DIAGRAMS_ID);
@@ -1360,7 +1360,7 @@ class LearnerServiceCrossSubjectPilotTest {
 
         assertThat(state.activeGoal()).isNotNull();
         assertThat(state.activeGoal().id()).isEqualTo(CANONICAL_PHYSICS_HORIZONTAL_THROW_ID);
-        assertThat(state.stateMachine().requiredAction()).isEqualTo("setMastery");
+        assertThat(state.stateMachine().requiredAction()).isEqualTo("teachActiveGoal");
         assertThat(state.stateMachine().goalOptions())
                 .extracting(FrontierGoal::id)
                 .containsExactly(CANONICAL_PHYSICS_HORIZONTAL_THROW_ID);
@@ -1439,7 +1439,7 @@ class LearnerServiceCrossSubjectPilotTest {
 
         assertThat(state.activeGoal()).isNotNull();
         assertThat(state.activeGoal().id()).isEqualTo(CANONICAL_PHYSICS_ENERGY_CONSERVATION_ID);
-        assertThat(state.stateMachine().requiredAction()).isEqualTo("setMastery");
+        assertThat(state.stateMachine().requiredAction()).isEqualTo("teachActiveGoal");
         assertThat(state.stateMachine().goalOptions())
                 .extracting(FrontierGoal::id)
                 .containsExactly(CANONICAL_PHYSICS_ENERGY_CONSERVATION_ID);

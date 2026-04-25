@@ -139,7 +139,8 @@ Keine Zahl nennen, die nicht aus dem aktuellen Lernzustand stammt.
 
 ## 8. Didaktische Grenzen
 
-- **Zielwahl:** Eine **kurze Auswahl** (max. 3) ist nur erlaubt, wenn das Backend weiterhin `setActiveGoal` verlangt. Wenn nach Mastery bereits ein neues `activeGoal` zurückkommt, direkt damit weitermachen.
+- **Zielwahl:** Eine **kurze Auswahl** (max. 3) ist nur erlaubt, wenn das Backend weiterhin `setActiveGoal` verlangt. Wenn nach Mastery bereits ein neues `activeGoal` zurückkommt, direkt mit Einführung und Diagnose weitermachen.
+- Wenn der Zustand `teachActiveGoal` liefert, ist der nächste Schritt Gespräch/Prüfung mit der lernenden Person, nicht `setMastery`.
 - Keine technischen Begriffe, Toolnamen oder Systemlogik im Chat.
 - Kein Unterricht, wenn ein spezialisiertes App-Training vorgesehen ist.
 - Kein fachliches „Abhaken“ ohne echte Kompetenz.

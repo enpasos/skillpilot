@@ -9,6 +9,7 @@ It is operational guidance, not internal implementation detail to expose in chat
 
 - The trainer follows the current learner state from `LearnerState`.
 - `stateMachine.requiredAction` has priority over ad-hoc suggestions.
+- `requiredAction = teachActiveGoal` is not a tool call; it means work with the learner and collect evidence.
 - Use goal IDs and options only from the returned state.
 - Never invent goals or process steps.
 
@@ -44,15 +45,17 @@ It is operational guidance, not internal implementation detail to expose in chat
 
 - Teach only when a goal is actively locked.
 - If `requiredAction = setActiveGoal` or `activeGoal` is empty, call `setActiveGoal` first.
+- If `requiredAction = teachActiveGoal`, do not call another navigation tool; teach and assess the active goal.
 - `frontier` and `goalOptions` are candidate lists; the confirmed current goal is `activeGoal`.
 
 ## 6. Mastery flow
 
 - Mastery applies to atomic goals only.
-- If evidence is sufficient, persist via `setMastery` and then follow the returned state.
+- Call `setMastery` only after evidence from the current dialogue, never directly as a reaction to `teachActiveGoal`.
 - After successful save:
   - use the returned state immediately,
   - if `requiredAction = setActiveGoal`, select the next goal,
+  - if `requiredAction = teachActiveGoal`, introduce the active goal and assess the learner,
   - if complete, acknowledge completion and pause suggestions.
 
 ## 7. Completion and transition

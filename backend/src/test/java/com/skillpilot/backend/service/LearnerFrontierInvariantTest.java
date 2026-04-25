@@ -154,7 +154,7 @@ public class LearnerFrontierInvariantTest {
 
         assertThat(state.activeGoal()).isNotNull();
         assertThat(state.activeGoal().id()).isEqualTo(learner.getActiveGoalId());
-        assertThat(state.stateMachine().requiredAction()).isEqualTo("setMastery");
+        assertThat(state.stateMachine().requiredAction()).isEqualTo("teachActiveGoal");
         assertThat(state.stateMachine().activeGoal()).isNotNull();
         assertThat(state.stateMachine().activeGoal().id()).isEqualTo(state.activeGoal().id());
         assertThat(state.stateMachine().goalOptions())

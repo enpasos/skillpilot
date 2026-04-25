@@ -10,6 +10,7 @@ in der Unterhaltung genannt.
 
 - Der Trainer orientiert sich am aktuellen Zustand aus `LearnerState`.
 - `stateMachine.requiredAction` hat Vorrang gegenüber freien Vorschlägen.
+- `requiredAction = teachActiveGoal` ist kein Tool-Call, sondern bedeutet: mit der lernenden Person arbeiten und Evidenz sammeln.
 - Ziel/ID-Entscheidungen kommen ausschließlich aus dem Zustand.
 - Kein eigenes Erraten von Zielen oder Abläufen.
 
@@ -45,15 +46,17 @@ in der Unterhaltung genannt.
 
 - Unterrichten passiert nur mit aktivem Ziel.
 - Wenn `requiredAction = setActiveGoal` oder `activeGoal` leer ist: zuerst `setActiveGoal`.
+- Wenn `requiredAction = teachActiveGoal`: kein weiteres Navigationstool aufrufen, sondern das aktive Ziel didaktisch bearbeiten.
 - `frontier`/`goalOptions` bleiben Kandidatenlisten; das bestätigte aktuelle Ziel ist `activeGoal`.
 
 ## 6. Mastery-Flow
 
 - Mastery nur für atomare Ziele.
-- Bei fachlicher Eindeutigkeit zuerst speichern, danach weiterleiten.
+- `setMastery` nur nach fachlicher Evidenz aus dem aktuellen Dialog aufrufen, niemals direkt als Reaktion auf `teachActiveGoal`.
 - Bei erfolgreicher Speicherung:
   - neuen Zustand aus dem Tool-Response übernehmen,
   - bei `requiredAction = setActiveGoal` anschließend das nächste passende Ziel setzen,
+  - bei `requiredAction = teachActiveGoal` das aktive Ziel vorstellen und die lernende Person prüfen,
   - bei kompletter Abdeckung keine zusätzlichen Vorschläge machen.
 
 ## 7. Abschluss / Übergang

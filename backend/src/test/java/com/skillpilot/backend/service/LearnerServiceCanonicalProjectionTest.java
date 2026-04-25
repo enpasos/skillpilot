@@ -960,7 +960,7 @@ class LearnerServiceCanonicalProjectionTest {
 
         assertThat(state.activeGoal()).isNotNull();
         assertThat(state.activeGoal().id()).isEqualTo(CANONICAL_FUNCTION_CONCEPT_ID);
-        assertThat(state.stateMachine().requiredAction()).isEqualTo("setMastery");
+        assertThat(state.stateMachine().requiredAction()).isEqualTo("teachActiveGoal");
         assertThat(state.stateMachine().goalOptions())
                 .extracting(FrontierGoal::id)
                 .containsExactly(CANONICAL_FUNCTION_CONCEPT_ID);

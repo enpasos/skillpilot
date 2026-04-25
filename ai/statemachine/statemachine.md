@@ -25,6 +25,7 @@ stateDiagram-v2
 
         Ready --> Ready: setScope
         Ready --> Ready: setActiveGoal
+        Ready --> Ready: teachActiveGoal
         Ready --> Ready: setMastery
         Ready --> Ready: getLearnerState
         Ready --> Ready: getFrontier
@@ -90,14 +91,15 @@ The implementation supports the strict flow shown in the diagram but allows for 
 ## Learning Loop Rules (Agent Contract)
 
 - Always pick **one atomic goal** from `frontierAtomic` (fallback: `frontier`) before teaching.
-- **Goal lock**: stick to that goal until `setMastery` succeeds or the user explicitly redirects.
-- After `setMastery`, immediately use the **new frontier** to select the next atomic goal.
+- **Goal lock**: stick to that goal until learner evidence justifies `setMastery` or the user explicitly redirects.
+- `teachActiveGoal` means teach/check in the conversation; it is not an API call.
+- After `setMastery`, use the returned state. If a new active goal exists, teach/check it before any further mastery write.
 
 ## Backend StateMachine Output
 
 The backend returns a `stateMachine` object in learner responses. It contains:
 - `state`: high-level state (SETUP, FRONTIER, TEACHING)
-- `requiredAction`: the **single** action the agent must perform next
+- `requiredAction`: the **single** next step the agent must perform; tool-like values are API calls, while `teachActiveGoal` is conversational.
 - `goalOptions` / `curriculumOptions`: the content choices for that action
 
-Agents should follow `stateMachine.requiredAction` strictly and use the provided options.
+Agents should follow `stateMachine.requiredAction` strictly and use the provided options. They must not translate `teachActiveGoal` into `setMastery`.

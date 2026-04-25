@@ -90,17 +90,38 @@ class LearnerAiControllerTest {
     @Test
     void setMastery_returnsConflictWhenSetActiveGoalIsRequiredButNoGoalIsProvided() {
         String skillpilotId = "learner-1";
-        UnifiedLearnerStateResponse before = learnerState(skillpilotId, "setActiveGoal");
-
-        when(learnerService.getLearnerState(skillpilotId)).thenReturn(before);
 
         var response = controller.setMastery(skillpilotId, new MasteryUpdateRequest(null, null));
 
-        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.CONFLICT);
-        assertThat(response.getBody()).isInstanceOf(UnifiedLearnerStateResponse.class);
+        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.BAD_REQUEST);
 
         verify(learnerService).assertWritableLearningSession(skillpilotId);
-        verify(learnerService).getLearnerState(skillpilotId);
+        verifyNoMoreInteractions(learnerService);
+    }
+
+    @Test
+    void setMastery_rejectsGoalIdOnlyShortcutWithoutSaving() {
+        String skillpilotId = "learner-1";
+
+        var response = controller.setMastery(skillpilotId, new MasteryUpdateRequest(null, "goal-1"));
+
+        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.BAD_REQUEST);
+
+        verify(learnerService).assertWritableLearningSession(skillpilotId);
+        verifyNoMoreInteractions(learnerService);
+    }
+
+    @Test
+    void setMastery_rejectsMultipleMasteryEntriesWithoutSaving() {
+        String skillpilotId = "learner-1";
+
+        var response = controller.setMastery(
+                skillpilotId,
+                new MasteryUpdateRequest(Map.of("goal-1", 1.0, "goal-2", 1.0), null));
+
+        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.BAD_REQUEST);
+
+        verify(learnerService).assertWritableLearningSession(skillpilotId);
         verifyNoMoreInteractions(learnerService);
     }
 
@@ -118,7 +139,7 @@ class LearnerAiControllerTest {
                 List.of("setMastery"),
                 "TEACHING",
                 nextGoal,
-                new StateMachineInfo("TEACHING", "setMastery", List.of(nextGoal), List.of(), nextGoal),
+                new StateMachineInfo("TEACHING", "teachActiveGoal", List.of(nextGoal), List.of(), nextGoal),
                 null);
 
         when(learnerService.getLearnerState(skillpilotId)).thenReturn(before);
@@ -134,7 +155,7 @@ class LearnerAiControllerTest {
         assertThat(body.activeGoal()).isNotNull();
         assertThat(body.activeGoal().id()).isEqualTo(nextGoalId);
         assertThat(body.stateMachine()).isNotNull();
-        assertThat(body.stateMachine().requiredAction()).isEqualTo("setMastery");
+        assertThat(body.stateMachine().requiredAction()).isEqualTo("teachActiveGoal");
 
         verify(learnerService).assertWritableLearningSession(skillpilotId);
         verify(learnerService).getLearnerState(skillpilotId);
@@ -201,7 +222,7 @@ class LearnerAiControllerTest {
                 Set.of(),
                 "TEACHING",
                 activeExamGoal,
-                new StateMachineInfo("TEACHING", "setMastery", List.of(activeExamGoal), List.of(), activeExamGoal));
+                new StateMachineInfo("TEACHING", "teachActiveGoal", List.of(activeExamGoal), List.of(), activeExamGoal));
 
         when(learnerService.getLearnerState(skillpilotId)).thenReturn(rawState);
 
@@ -234,7 +255,7 @@ class LearnerAiControllerTest {
                 Set.of(),
                 "TEACHING",
                 activeExamGoal,
-                new StateMachineInfo("TEACHING", "setMastery", List.of(activeExamGoal), List.of(), activeExamGoal));
+                new StateMachineInfo("TEACHING", "teachActiveGoal", List.of(activeExamGoal), List.of(), activeExamGoal));
 
         when(learnerService.getLearnerState(skillpilotId)).thenReturn(rawState);
 

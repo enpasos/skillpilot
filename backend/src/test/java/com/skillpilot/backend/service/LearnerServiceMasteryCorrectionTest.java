@@ -1,6 +1,7 @@
 package com.skillpilot.backend.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -23,6 +24,7 @@ import java.util.Optional;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.context.ApplicationEventPublisher;
+import org.springframework.web.server.ResponseStatusException;
 
 class LearnerServiceMasteryCorrectionTest {
 
@@ -86,5 +88,25 @@ class LearnerServiceMasteryCorrectionTest {
 
         assertThat(existingMastery.getValue()).isEqualTo(0.0);
         verify(masteryRepository).save(existingMastery);
+    }
+
+    @Test
+    void setMastery_rejectsEmptyMasteryMap() {
+        assertThatThrownBy(() -> learnerService.setMastery(
+                LEARNER_ID,
+                new MasteryUpdateRequest(Map.of(), GOAL_ID)))
+                .isInstanceOf(ResponseStatusException.class)
+                .hasMessageContaining("mastery must contain exactly one goal update");
+    }
+
+    @Test
+    void setMastery_rejectsMismatchedActiveGoalAndMasteryEntry() {
+        learner.setActiveGoalId("other-goal");
+
+        assertThatThrownBy(() -> learnerService.setMastery(
+                LEARNER_ID,
+                new MasteryUpdateRequest(Map.of(GOAL_ID, 1.0), GOAL_ID)))
+                .isInstanceOf(ResponseStatusException.class)
+                .hasMessageContaining("active goal");
     }
 }
