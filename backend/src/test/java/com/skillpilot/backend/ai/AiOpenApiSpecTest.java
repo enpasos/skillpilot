@@ -44,16 +44,13 @@ class AiOpenApiSpecTest {
                 .path("post");
         assertThat(operation.path("x-openai-isConsequential").asBoolean()).isTrue();
         assertThat(operation.path("requestBody").path("required").asBoolean()).isTrue();
+        assertThat(operation.path("description").asText()).hasSizeLessThanOrEqualTo(300);
 
         JsonNode masteryRequest = root.path("components").path("schemas").path("MasteryUpdateRequest");
-        assertThat(masteryRequest.path("required").toString()).contains("\"mastery\"");
-        JsonNode masteryMap = masteryRequest.path("properties").path("mastery");
-        assertThat(masteryMap.path("minProperties").asInt()).isEqualTo(1);
-        assertThat(masteryMap.path("maxProperties").asInt()).isEqualTo(1);
-        assertThat(masteryMap.path("additionalProperties").path("minimum").asDouble()).isEqualTo(0.0);
-        assertThat(masteryMap.path("additionalProperties").path("maximum").asDouble()).isEqualTo(1.0);
-        assertThat(masteryRequest.path("properties").path("goalId").path("description").asText().toLowerCase())
-                .containsAnyOf("never", "niemals");
+        assertThat(masteryRequest.path("required").toString())
+                .contains("\"goalId\"");
+        assertThat(masteryRequest.path("properties").has("mastery")).isFalse();
+        assertThat(masteryRequest.path("properties").has("value")).isFalse();
     }
 
     private static boolean containsFieldNamed(JsonNode node, String fieldName) {

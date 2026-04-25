@@ -160,7 +160,7 @@
       "post": {
         "operationId": "setMastery",
         "summary": "Update mastery and get next steps",
-        "description": "Persistiert Mastery für genau das aktuelle aktive atomare Ziel, aber nur nachdem die lernende Person im aktuellen Dialog ausreichende Evidenz gezeigt hat. Niemals direkt nach dem Laden des Zustands oder nach dem Setzen eines aktiven Ziels aufrufen. Der Request muss genau einen expliziten mastery-Map-Eintrag für das aktive Ziel enthalten; leere Bodies und goalId-only-Kurzformen sind ungültig.",
+        "description": "Persistiert Mastery nur fuer das aktive atomare Ziel nach ausreichender Evidenz im aktuellen Dialog. Nicht direkt nach State-Load oder setActiveGoal aufrufen. Request braucht goalId des aktiven Ziels.",
         "parameters": [
           {
             "name": "skillpilotId",
@@ -361,7 +361,7 @@
             "items": {
               "type": "string"
             },
-            "description": "Vom Backend erlaubte nächste Aktionen."
+            "description": "Backend-Berechtigungsliste, keine Handlungsanweisung. Immer stateMachine.requiredAction folgen; setMastery nur nach Lernenden-Evidenz."
           },
           "activeFilters": {
             "type": "array",
@@ -580,7 +580,7 @@
             "items": {
               "type": "string"
             },
-            "description": "Vom Backend erlaubte nächste Aktionen."
+            "description": "Backend-Berechtigungsliste, keine Handlungsanweisung. Immer stateMachine.requiredAction folgen; setMastery nur nach Lernenden-Evidenz."
           },
           "learningState": {
             "type": "string",
@@ -644,25 +644,13 @@
       "MasteryUpdateRequest": {
         "type": "object",
         "properties": {
-          "mastery": {
-            "type": "object",
-            "minProperties": 1,
-            "maxProperties": 1,
-            "additionalProperties": {
-              "type": "number",
-              "format": "double",
-              "minimum": 0.0,
-              "maximum": 1.0
-            },
-            "description": "Genau ein Eintrag: {activeGoalId: masteryValue}. Nur nach ausreichender Lernenden-Evidenz verwenden. Wert zwischen 0.0 und 1.0."
-          },
           "goalId": {
             "type": "string",
-            "description": "Optionale Wiederholung derselben aktiven atomaren Ziel-ID für Kompatibilität. Dieses Feld allein aktualisiert niemals Mastery."
+            "description": "ID des aktiven atomaren Ziels. Nur nach ausreichender Lernenden-Evidenz verwenden."
           }
         },
         "required": [
-          "mastery"
+          "goalId"
         ]
       },
       "MasteryResponse": {

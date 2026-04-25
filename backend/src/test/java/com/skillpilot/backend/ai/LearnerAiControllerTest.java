@@ -100,14 +100,29 @@ class LearnerAiControllerTest {
     }
 
     @Test
-    void setMastery_rejectsGoalIdOnlyShortcutWithoutSaving() {
+    void setMastery_acceptsGoalIdOnlyPayloadForActionCompatibility() {
         String skillpilotId = "learner-1";
+        String goalId = "goal-1";
+        FrontierGoal currentGoal = simpleGoal(goalId, "Current Goal");
+        UnifiedLearnerStateResponse before = learnerState(skillpilotId, "teachActiveGoal", currentGoal);
+        MasteryUpdateResponse masteryResponse = new MasteryUpdateResponse(
+                List.of(),
+                List.of("getFrontier"),
+                "FRONTIER",
+                null,
+                null,
+                null);
 
-        var response = controller.setMastery(skillpilotId, new MasteryUpdateRequest(null, "goal-1"));
+        when(learnerService.getLearnerState(skillpilotId)).thenReturn(before);
+        when(learnerService.setMastery(eq(skillpilotId), any(MasteryUpdateRequest.class))).thenReturn(masteryResponse);
 
-        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.BAD_REQUEST);
+        var response = controller.setMastery(skillpilotId, new MasteryUpdateRequest(null, goalId));
+
+        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
 
         verify(learnerService).assertWritableLearningSession(skillpilotId);
+        verify(learnerService).getLearnerState(skillpilotId);
+        verify(learnerService).setMastery(eq(skillpilotId), any(MasteryUpdateRequest.class));
         verifyNoMoreInteractions(learnerService);
     }
 

@@ -995,11 +995,12 @@ public class LearnerService {
 
     @Transactional
     public MasteryUpdateResponse setMastery(String skillpilotId, MasteryUpdateRequest request) {
-        if (request == null || request.mastery() == null || request.mastery().isEmpty()) {
+        Map<String, Double> requestedMastery = request == null ? null : request.mastery();
+        if (request == null || requestedMastery == null || requestedMastery.isEmpty()) {
             throw new ResponseStatusException(org.springframework.http.HttpStatus.BAD_REQUEST,
                     "mastery must contain exactly one goal update.");
         }
-        if (request.mastery().size() != 1) {
+        if (requestedMastery.size() != 1) {
             throw new ResponseStatusException(org.springframework.http.HttpStatus.BAD_REQUEST,
                     "mastery must contain exactly one goal update.");
         }
@@ -1015,7 +1016,7 @@ public class LearnerService {
         String activeGoalId = resolveGoalIdInVisibleGoals(learner.getActiveGoalId(), visibleGoals, false);
         String requestedGoalId = request.goalId();
         requestedGoalId = mapGoalIdForVisibleGoals(requestedGoalId, visibleGoals, false);
-        Map.Entry<String, Double> masteryEntry = request.mastery().entrySet().iterator().next();
+        Map.Entry<String, Double> masteryEntry = requestedMastery.entrySet().iterator().next();
         if (masteryEntry.getKey() == null || masteryEntry.getKey().isBlank()) {
             throw new ResponseStatusException(org.springframework.http.HttpStatus.BAD_REQUEST,
                     "mastery goalId must not be empty.");

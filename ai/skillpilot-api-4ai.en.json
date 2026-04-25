@@ -160,7 +160,7 @@
       "post": {
         "operationId": "setMastery",
         "summary": "Update mastery and get next steps",
-        "description": "Persists mastery for the current active atomic goal only after the learner has shown sufficient evidence in the current conversation. Never call this immediately after loading state or setting an active goal. The request must contain exactly one explicit mastery map entry for the active goal; empty bodies and goalId-only shortcuts are invalid.",
+        "description": "Persists mastery only for the active atomic goal after sufficient evidence in the current dialog. Do not call directly after state load or setActiveGoal. Request needs the active goalId.",
         "parameters": [
           {
             "name": "skillpilotId",
@@ -361,7 +361,7 @@
             "items": {
               "type": "string"
             },
-            "description": "Backend-allowed next actions."
+            "description": "Backend permission list, not an instruction. Always follow stateMachine.requiredAction; use setMastery only after learner evidence."
           },
           "activeFilters": {
             "type": "array",
@@ -580,7 +580,7 @@
             "items": {
               "type": "string"
             },
-            "description": "Backend-allowed next actions."
+            "description": "Backend permission list, not an instruction. Always follow stateMachine.requiredAction; use setMastery only after learner evidence."
           },
           "learningState": {
             "type": "string",
@@ -644,25 +644,13 @@
       "MasteryUpdateRequest": {
         "type": "object",
         "properties": {
-          "mastery": {
-            "type": "object",
-            "minProperties": 1,
-            "maxProperties": 1,
-            "additionalProperties": {
-              "type": "number",
-              "format": "double",
-              "minimum": 0.0,
-              "maximum": 1.0
-            },
-            "description": "Exactly one entry: {activeGoalId: masteryValue}. Use only after sufficient learner evidence. Value must be between 0.0 and 1.0."
-          },
           "goalId": {
             "type": "string",
-            "description": "Optional duplicate of the same active atomic goal ID for compatibility. This field alone never updates mastery."
+            "description": "Active atomic goal ID. Use only after sufficient learner evidence."
           }
         },
         "required": [
-          "mastery"
+          "goalId"
         ]
       },
       "MasteryResponse": {
