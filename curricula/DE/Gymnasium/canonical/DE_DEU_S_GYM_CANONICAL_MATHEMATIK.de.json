@@ -11006,10 +11006,10 @@
       "shortKey": "canonical_math_analyze_linear_functions_rechnerisch",
       "title": "Lineare Funktionen rechnerisch untersuchen",
       "titleEn": "Analyze linear functions algebraically",
-      "description": "Kanonischer Cluster für lineare Rechenroutinen im J8-Korridor. Der Cluster trennt hier zwischen rechnerischem Arbeiten mit Geradengleichungen, Nullstellen und Schnittpunkten sowie funktionalen Anwendungen, ohne den algebraischen Gleichungsstrang mitzuschleppen.",
-      "descriptionEn": "Canonical cluster for linear calculation routines in the year-8 corridor. The cluster distinguishes algebraic work with line equations, roots, and intersections together with function-based applications, without carrying along the separate algebraic equation strand.",
+      "description": "Kanonischer Cluster für lineare Rechenroutinen im J8-Korridor. Der Cluster trennt hier zwischen funktionalen Berechnungen, dem Aufstellen von Geradengleichungen, Nullstellen linearer Funktionen und Schnittpunkten zweier Geraden, ohne den algebraischen Gleichungsstrang mitzuschleppen.",
+      "descriptionEn": "Canonical cluster for linear calculation routines in the year-8 corridor. The cluster distinguishes function-based calculations, setting up line equations, roots of linear functions, and intersections of two lines without carrying along the separate algebraic equation strand.",
       "core": true,
-      "weight": 2,
+      "weight": 4,
       "tags": [
         "canonical",
         "modality:visual",
@@ -11045,7 +11045,9 @@
       },
       "contains": [
         "e09072f9-67d9-412c-b872-24ecbf329232",
-        "ae772695-d55e-4cc5-81bc-6605272759b4"
+        "ae772695-d55e-4cc5-81bc-6605272759b4",
+        "4acca6ef-5344-4dd1-b53d-506907573cf7",
+        "2f598bc7-c117-47d7-bb81-0f08ad679b91"
       ],
       "requires": [
         "af3d6bff-c5fb-4ec6-a9f0-c0be09fc9186"
@@ -11143,10 +11145,10 @@
     {
       "id": "ae772695-d55e-4cc5-81bc-6605272759b4",
       "shortKey": "canonical_math_linear_equations_roots_intersections",
-      "title": "Geradengleichungen, Nullstellen und Schnittpunkte bestimmen",
-      "titleEn": "Determine line equations, roots, and intersections",
-      "description": "Die lernende Person kann Geradengleichungen aufstellen, Nullstellen linearer Funktionen bestimmen und Schnittpunkte zweier Geraden rechnerisch ermitteln.",
-      "descriptionEn": "The learner can set up line equations, determine roots of linear functions, and calculate intersections of two lines algebraically.",
+      "title": "Geradengleichungen linearer Funktionen aufstellen",
+      "titleEn": "Set up equations of linear functions",
+      "description": "Die lernende Person kann aus Steigung und y-Achsenabschnitt oder aus geeigneten Punktinformationen die Gleichung einer linearen Funktion in der Form y = mx + b aufstellen.",
+      "descriptionEn": "The learner can set up the equation of a linear function in the form y = mx + b from slope and intercept or from suitable point information.",
       "core": true,
       "weight": 1,
       "tags": [
@@ -11185,6 +11187,142 @@
       "contains": [],
       "requires": [
         "af3d6bff-c5fb-4ec6-a9f0-c0be09fc9186"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "4acca6ef-5344-4dd1-b53d-506907573cf7",
+      "shortKey": "canonical_math_linear_function_roots",
+      "title": "Nullstellen linearer Funktionen berechnen",
+      "titleEn": "Calculate roots of linear functions",
+      "description": "Die lernende Person kann die Nullstelle einer linearen Funktion rechnerisch bestimmen und als Schnittpunkt des Graphen mit der x-Achse deuten.",
+      "descriptionEn": "The learner can calculate the root of a linear function and interpret it as the intersection of the graph with the x-axis.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical",
+        "modality:visual",
+        "representation:graph",
+        "tool:geogebra"
+      ],
+      "resourceLinks": [
+        {
+          "type": "tool",
+          "title": "GeoGebra Graphing Calculator",
+          "url": "https://www.geogebra.org/graphing",
+          "resourceType": "graphing-calculator",
+          "provider": "GeoGebra",
+          "description": "Dynamischer Graphikrechner für Visualisierung und gemeinsame Arbeit an Koordinatensystemen, Graphen und Funktionsdarstellungen.",
+          "lang": "mul"
+        }
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K1.1",
+          "K2.1",
+          "K4.1"
+        ],
+        "guidingIdeas": [
+          "L1",
+          "L4"
+        ],
+        "phase": "J8",
+        "area": "Analysis",
+        "topicCode": "CANONICAL.MATH.SEK1.2A2"
+      },
+      "contains": [],
+      "requires": [
+        "ae772695-d55e-4cc5-81bc-6605272759b4"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "2f598bc7-c117-47d7-bb81-0f08ad679b91",
+      "shortKey": "canonical_math_linear_function_intersections",
+      "title": "Schnittpunkte zweier Geraden berechnen",
+      "titleEn": "Calculate intersections of two lines",
+      "description": "Die lernende Person kann den Schnittpunkt zweier Geraden rechnerisch bestimmen und das Ergebnis als gemeinsamen Punkt beider Graphen deuten.",
+      "descriptionEn": "The learner can calculate the intersection of two lines and interpret the result as the common point of both graphs.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical",
+        "modality:visual",
+        "representation:graph",
+        "tool:geogebra"
+      ],
+      "resourceLinks": [
+        {
+          "type": "tool",
+          "title": "GeoGebra Graphing Calculator",
+          "url": "https://www.geogebra.org/graphing",
+          "resourceType": "graphing-calculator",
+          "provider": "GeoGebra",
+          "description": "Dynamischer Graphikrechner für Visualisierung und gemeinsame Arbeit an Koordinatensystemen, Graphen und Funktionsdarstellungen.",
+          "lang": "mul"
+        }
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K1.1",
+          "K2.1",
+          "K4.1"
+        ],
+        "guidingIdeas": [
+          "L1",
+          "L4"
+        ],
+        "phase": "J8",
+        "area": "Analysis",
+        "topicCode": "CANONICAL.MATH.SEK1.2A3"
+      },
+      "contains": [],
+      "requires": [
+        "4acca6ef-5344-4dd1-b53d-506907573cf7"
       ],
       "applicability": {
         "jurisdiction": [
@@ -22144,6 +22282,8 @@
         "f9d284a3-1a47-4aaa-bde2-3dac1c3bb0f0",
         "e09072f9-67d9-412c-b872-24ecbf329232",
         "ae772695-d55e-4cc5-81bc-6605272759b4",
+        "4acca6ef-5344-4dd1-b53d-506907573cf7",
+        "2f598bc7-c117-47d7-bb81-0f08ad679b91",
         "e6eb42c7-454f-49bf-b598-64d2935d2735",
         "fa72cf74-a31e-402e-90d7-422c118f4a5b",
         "797ee047-b8dd-45cf-880e-98571a56c690",
