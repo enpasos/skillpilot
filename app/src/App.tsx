@@ -301,11 +301,12 @@ const App: React.FC = () => {
   useEffect(() => {
     if (!pendingLandscapeId) return
     if (core.selectedLandscapeId !== pendingLandscapeId) return
+    if (normalizedPath === '/') return
     const timeoutId = window.setTimeout(() => {
       setPendingLandscapeId((current) => (current === core.selectedLandscapeId ? null : current))
     }, 0)
     return () => window.clearTimeout(timeoutId)
-  }, [core.selectedLandscapeId, pendingLandscapeId])
+  }, [core.selectedLandscapeId, normalizedPath, pendingLandscapeId])
 
   useEffect(() => {
     const rawPath = location.pathname || '/'
@@ -695,7 +696,7 @@ const App: React.FC = () => {
         <Route path="/start/abi26-he-mathe-k1" element={<Abi26MatheStartView />} />
         <Route path="/start/:campaignId" element={<Abi26MatheStartView />} />
 
-        <Route path="/" element={<Navigate to="/explorer" />} />
+        <Route path="/" element={<Navigate to={role === 'learner' ? '/learner' : role === 'trainer' ? '/trainer' : '/explorer'} replace />} />
       </Routes>
       </>
     </Suspense>

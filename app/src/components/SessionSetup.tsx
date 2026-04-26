@@ -23,6 +23,31 @@ import { AudioPlayer } from './AudioPlayer'
 import { getSkillpilotGptUrl } from '../utils/skillpilotGpt'
 import { normalizeTrainerLandscapeId } from '../utils/trainerLandscapeContext'
 import { sanitizeSkillpilotId } from '../utils/skillpilotId'
+import { CANONICAL_GYMNASIUM_ROOT_ID } from '../utils/curriculumDisplay'
+
+const getLearnerSelectedLandscapeId = (data: Record<string, unknown>) => {
+  const selectedCurriculum = typeof data.selectedCurriculum === 'string' ? data.selectedCurriculum : ''
+  const personalCurriculum = typeof data.personalCurriculum === 'string' ? data.personalCurriculum : ''
+
+  if (personalCurriculum) {
+    try {
+      const parsed = JSON.parse(personalCurriculum) as Record<string, unknown>
+      const rootConfig = parsed[CANONICAL_GYMNASIUM_ROOT_ID]
+      if (
+        rootConfig &&
+        typeof rootConfig === 'object' &&
+        !Array.isArray(rootConfig) &&
+        (rootConfig as { selected?: unknown }).selected === true
+      ) {
+        return CANONICAL_GYMNASIUM_ROOT_ID
+      }
+    } catch {
+      // Fall back to selectedCurriculum below.
+    }
+  }
+
+  return selectedCurriculum
+}
 
 export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skillpilotId, setSkillpilotId, onStart }) => {
   const t = useTranslation()
@@ -130,9 +155,10 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
       const url = apiBase ? `${apiBase}/api/ui/learners/${sanitizedId}` : `/api/ui/learners/${sanitizedId}`
       const res = await fetch(url)
       if (res.ok) {
-        const data = await res.json()
-        if (data.selectedCurriculum) {
-          setSelectedLandscapeId(data.selectedCurriculum)
+        const data = await res.json() as Record<string, unknown>
+        const learnerLandscapeId = getLearnerSelectedLandscapeId(data)
+        if (learnerLandscapeId) {
+          setSelectedLandscapeId(learnerLandscapeId)
         }
       }
     } catch {
