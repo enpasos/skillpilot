@@ -693,7 +693,7 @@ class LandscapeServiceTest {
                 assertThat(landscape.getGoals())
                                 .extracting(LearningGoal::getTitle)
                                 .contains(
-                                                "Funktionsgrundlagen (Sek I)",
+                                                "Funktionsgrundlagen",
                                                 "Lineare Funktionen rechnerisch untersuchen",
                                                 "Scheitelpunkte quadratischer Funktionen bestimmen",
                                                 "Wahrscheinlichkeitsverteilungen, Hypothesentests und Statistik",

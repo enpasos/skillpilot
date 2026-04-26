@@ -100,7 +100,7 @@ public class LearnerAiController {
     }
 
     @PostMapping("/{skillpilotId}/mastery")
-    @Operation(extensions = @Extension(properties = @ExtensionProperty(name = "x-openai-isConsequential", value = "true", parseValue = true)))
+    @Operation(extensions = @Extension(properties = @ExtensionProperty(name = "x-openai-isConsequential", value = "false", parseValue = true)))
     public org.springframework.http.ResponseEntity<?> setMastery(
             @PathVariable String skillpilotId,
             @RequestBody(required = false) MasteryUpdateRequest request) {
