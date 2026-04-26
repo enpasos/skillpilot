@@ -1,4 +1,4 @@
-import React, { Suspense, lazy, useEffect, useMemo, useState } from 'react'
+import React, { Suspense, lazy, useEffect, useMemo, useRef, useState } from 'react'
 import { Routes, Route, Navigate, useNavigate, useLocation } from 'react-router-dom'
 
 import { SessionSetup } from './components/SessionSetup'
@@ -10,6 +10,11 @@ import { useTranslation } from './hooks/useTranslation'
 import { useLanguage } from './contexts/LanguageContext'
 import { sanitizeSkillpilotId } from './utils/skillpilotId'
 import { CANONICAL_GYMNASIUM_ROOT_ID } from './utils/curriculumDisplay'
+import {
+  getLearnerPathToken,
+  getLearnerSelectedLandscapeId,
+  getStoredLandscapeIdForRole,
+} from './utils/learnerProfile'
 
 type Role = 'learner' | 'trainer' | 'explorer'
 
@@ -106,6 +111,9 @@ const App: React.FC = () => {
   })
   // Track pending landscape selection to prevent SessionSetup re-mount during navigation
   const [pendingLandscapeId, setPendingLandscapeId] = useState<string | null>(null)
+  const [resolvingLearnerPathToken, setResolvingLearnerPathToken] = useState<string | null>(null)
+  const logoutInProgressRef = useRef(false)
+  const rejectedLearnerPathTokenRef = useRef<string | null>(null)
   const [trainerLearnerId, setTrainerLearnerId] = useState('__ALL__')
   const [, setLearnerMeta] = useState<{ lastUpdated: string }>({
     lastUpdated: new Date().toISOString(),
@@ -119,6 +127,10 @@ const App: React.FC = () => {
   const actualPath = window.location.pathname
   const normalizedPath = location.pathname === '/' ? '/' : location.pathname.replace(/\/+$/, '')
   const normalizedActualPath = actualPath === '/' ? '/' : actualPath.replace(/\/+$/, '')
+  const learnerPathToken = useMemo(
+    () => sanitizeSkillpilotId(getLearnerPathToken(location.pathname)),
+    [location.pathname],
+  )
   const isWhitepaperRoute = normalizedPath === '/whitepaper' || normalizedPath.startsWith('/whitepaper/') ||
     normalizedActualPath === '/whitepaper' || normalizedActualPath.startsWith('/whitepaper/')
   const isQuickstartRoute = normalizedPath === '/quickstart' || normalizedPath.startsWith('/quickstart/') ||
@@ -137,6 +149,8 @@ const App: React.FC = () => {
 
   const core = useAppCore({ role: role || 'explorer', setLearnerMeta, skillpilotId: sanitizedSkillpilotId })
   const { currentLandscapeEntry, landscapeEntries, selectionGoalIndexAll } = core
+  const selectedLandscapeId = core.selectedLandscapeId
+  const setSelectedLandscapeId = core.setSelectedLandscapeId
   const needsCanonicalGymnasiumSetupClosure = Boolean(
     currentLandscapeEntry
     && currentLandscapeEntry.meta.frameworkId?.startsWith('canonical-gymnasium')
@@ -184,6 +198,117 @@ const App: React.FC = () => {
       navigate('/curricula', { replace: true })
     }
   }, [navigate])
+
+  useEffect(() => {
+    if (normalizedPath === '/') {
+      logoutInProgressRef.current = false
+    }
+  }, [normalizedPath])
+
+  useEffect(() => {
+    if (role !== 'learner') return
+    if (!learnerPathToken) return
+
+    const params = new URLSearchParams(location.search)
+    const queryLearnerId = sanitizeSkillpilotId(params.get('skillpilotId') || params.get('id'))
+    const tokenIsCurrentLearner = !!sanitizedSkillpilotId && learnerPathToken === sanitizedSkillpilotId
+    const tokenIsQueryLearner = !!queryLearnerId && learnerPathToken === queryLearnerId
+    if (!tokenIsCurrentLearner && !tokenIsQueryLearner) return
+
+    params.delete('skillpilotId')
+    params.delete('id')
+    const fallbackLandscapeId = params.get('l') || selectedLandscapeId || getStoredLandscapeIdForRole(role)
+    if (fallbackLandscapeId && !params.get('l')) {
+      params.set('l', fallbackLandscapeId)
+    }
+    if (fallbackLandscapeId) {
+      localStorage.setItem('skillpilot_learner_landscape', fallbackLandscapeId)
+    }
+
+    const nextSearch = params.toString()
+    navigate(`/learner${nextSearch ? `?${nextSearch}` : ''}`, { replace: true })
+  }, [
+    learnerPathToken,
+    location.search,
+    navigate,
+    role,
+    sanitizedSkillpilotId,
+    selectedLandscapeId,
+  ])
+
+  useEffect(() => {
+    if (!learnerPathToken) return
+    if (hasActiveSession) return
+    if (logoutInProgressRef.current) return
+    if (rejectedLearnerPathTokenRef.current === learnerPathToken) return
+
+    const params = new URLSearchParams(location.search)
+    const queryLearnerId = sanitizeSkillpilotId(params.get('skillpilotId') || params.get('id'))
+    if (queryLearnerId && queryLearnerId !== learnerPathToken) return
+
+    const controller = new AbortController()
+    const signal = controller.signal
+    const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
+    const url = apiBase
+      ? `${apiBase}/api/ui/learners/${learnerPathToken}`
+      : `/api/ui/learners/${learnerPathToken}`
+
+    const resolvingTimeoutId = window.setTimeout(() => {
+      setResolvingLearnerPathToken(learnerPathToken)
+    }, 0)
+    fetch(url, { signal })
+      .then(async (res) => {
+        if (!res.ok) {
+          rejectedLearnerPathTokenRef.current = learnerPathToken
+          return
+        }
+
+        const data = await res.json() as Record<string, unknown>
+        if (signal.aborted) return
+
+        rejectedLearnerPathTokenRef.current = null
+        const landscapeId = params.get('l') || getLearnerSelectedLandscapeId(data) || getStoredLandscapeIdForRole('learner')
+
+        setSkillpilotId(learnerPathToken)
+        setHasSession(true)
+        setRole('learner')
+        localStorage.setItem('skillpilot_id', learnerPathToken)
+        localStorage.setItem('skillpilot_role', 'learner')
+
+        params.delete('skillpilotId')
+        params.delete('id')
+        if (landscapeId) {
+          params.set('l', landscapeId)
+          localStorage.setItem('skillpilot_learner_landscape', landscapeId)
+          setPendingLandscapeId(landscapeId)
+          setSelectedLandscapeId(landscapeId)
+        }
+
+        const nextSearch = params.toString()
+        navigate(`/learner${nextSearch ? `?${nextSearch}` : ''}`, { replace: true })
+      })
+      .catch((error) => {
+        if (signal.aborted) return
+        console.warn('[App] Could not resolve /learner path token as SkillPilot ID', error)
+        rejectedLearnerPathTokenRef.current = learnerPathToken
+      })
+      .finally(() => {
+        if (!signal.aborted) {
+          setResolvingLearnerPathToken(null)
+        }
+      })
+
+    return () => {
+      window.clearTimeout(resolvingTimeoutId)
+      controller.abort()
+    }
+  }, [
+    hasActiveSession,
+    learnerPathToken,
+    location.search,
+    navigate,
+    setSelectedLandscapeId,
+  ])
 
   const availableLandscapes = useMemo(
     () => {
@@ -431,14 +556,16 @@ const App: React.FC = () => {
   }, [location.pathname, hasActiveSession, language, t, core.currentGoal])
 
   const handleLogout = () => {
+    logoutInProgressRef.current = true
     localStorage.removeItem('skillpilot_id')
     localStorage.removeItem('skillpilot_role')
     setHasSession(false)
     setSkillpilotId('')
     setPendingLandscapeId(null)
+    setResolvingLearnerPathToken(null)
     setRole(null)
     core.setSelectedLandscapeId('')
-    navigate('/')
+    navigate('/', { replace: true })
   }
 
   useEffect(() => {
@@ -504,7 +631,26 @@ const App: React.FC = () => {
     )
   }
 
-  if (!hasActiveSession || (normalizedPath === '/' && !pendingLandscapeId)) {
+  if (!hasActiveSession && resolvingLearnerPathToken === learnerPathToken && learnerPathToken) {
+    return (
+      <div className="min-h-screen bg-app-gradient text-slate-100 p-6">
+        SkillPilot-ID prüfen ...
+      </div>
+    )
+  }
+
+  if (hasActiveSession && normalizedPath === '/' && !pendingLandscapeId) {
+    const params = new URLSearchParams(location.search)
+    const fallbackLandscapeId = params.get('l') || selectedLandscapeId || getStoredLandscapeIdForRole(role)
+    if (fallbackLandscapeId && !params.get('l')) {
+      params.set('l', fallbackLandscapeId)
+    }
+    const nextSearch = params.toString()
+    const targetPath = role === 'learner' ? '/learner' : role === 'trainer' ? '/trainer' : '/explorer'
+    return <Navigate to={`${targetPath}${nextSearch ? `?${nextSearch}` : ''}`} replace />
+  }
+
+  if (!hasActiveSession) {
     return (
       <SessionSetup
         role={role}
@@ -527,7 +673,9 @@ const App: React.FC = () => {
           const search = landscapeId ? `?l=${landscapeId}` : ''
           // Fallback to URL if not passed explicitly (for manual clicks)
           const params = new URLSearchParams(location.search)
-          const deepLinkGoal = forceGoalId || params.get('goal') || params.get('g')
+          const queryLearnerId = sanitizeSkillpilotId(params.get('skillpilotId') || params.get('id'))
+          const routeGoalId = learnerPathToken && learnerPathToken !== sanitizedId && learnerPathToken !== queryLearnerId ? learnerPathToken : ''
+          const deepLinkGoal = forceGoalId || params.get('goal') || params.get('g') || routeGoalId
 
           if (activeRole === 'learner') {
             if (deepLinkGoal) {
@@ -570,7 +718,9 @@ const App: React.FC = () => {
           const search = landscapeId ? `?l=${landscapeId}` : ''
           // Fallback to URL if not passed explicitly (for manual clicks)
           const params = new URLSearchParams(location.search)
-          const deepLinkGoal = forceGoalId || params.get('goal') || params.get('g')
+          const queryLearnerId = sanitizeSkillpilotId(params.get('skillpilotId') || params.get('id'))
+          const routeGoalId = learnerPathToken && learnerPathToken !== sanitizedId && learnerPathToken !== queryLearnerId ? learnerPathToken : ''
+          const deepLinkGoal = forceGoalId || params.get('goal') || params.get('g') || routeGoalId
 
           if (activeRole === 'learner') {
             if (deepLinkGoal) {

@@ -23,31 +23,7 @@ import { AudioPlayer } from './AudioPlayer'
 import { getSkillpilotGptUrl } from '../utils/skillpilotGpt'
 import { normalizeTrainerLandscapeId } from '../utils/trainerLandscapeContext'
 import { sanitizeSkillpilotId } from '../utils/skillpilotId'
-import { CANONICAL_GYMNASIUM_ROOT_ID } from '../utils/curriculumDisplay'
-
-const getLearnerSelectedLandscapeId = (data: Record<string, unknown>) => {
-  const selectedCurriculum = typeof data.selectedCurriculum === 'string' ? data.selectedCurriculum : ''
-  const personalCurriculum = typeof data.personalCurriculum === 'string' ? data.personalCurriculum : ''
-
-  if (personalCurriculum) {
-    try {
-      const parsed = JSON.parse(personalCurriculum) as Record<string, unknown>
-      const rootConfig = parsed[CANONICAL_GYMNASIUM_ROOT_ID]
-      if (
-        rootConfig &&
-        typeof rootConfig === 'object' &&
-        !Array.isArray(rootConfig) &&
-        (rootConfig as { selected?: unknown }).selected === true
-      ) {
-        return CANONICAL_GYMNASIUM_ROOT_ID
-      }
-    } catch {
-      // Fall back to selectedCurriculum below.
-    }
-  }
-
-  return selectedCurriculum
-}
+import { getLearnerPathToken, getLearnerSelectedLandscapeId, getStoredLandscapeIdForRole } from '../utils/learnerProfile'
 
 export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skillpilotId, setSkillpilotId, onStart }) => {
   const t = useTranslation()
@@ -55,15 +31,7 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
   const isPublicSkillpilot =
     typeof window !== 'undefined' && /(^|\.)skillpilot\.com$/i.test(window.location.hostname)
   const [selectedLandscapeId, setSelectedLandscapeId] = useState<string>(() => {
-    // Restore trainer's last selection from local storage
-    if (role === 'trainer') {
-      return normalizeTrainerLandscapeId(localStorage.getItem('skillpilot_trainer_landscape'))
-    }
-    // Restore learner's last selection from local storage for faster startup
-    if (role === 'learner') {
-      return localStorage.getItem('skillpilot_learner_landscape') || ''
-    }
-    return ''
+    return getStoredLandscapeIdForRole(role)
   })
   // Use location (ensure import is added)
   const location = useLocation()
@@ -72,14 +40,16 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
     const params = new URLSearchParams(location.search)
     const deepLinkCurriculum = params.get('curriculum') || params.get('landscape') || params.get('l')
     const deepLinkId = params.get('skillpilotId') || params.get('id')
-    const deepLinkGoal = params.get('goal') || params.get('g')
+    const pathToken = sanitizeSkillpilotId(getLearnerPathToken(location.pathname))
+    const sanitizedDeepLinkId = sanitizeSkillpilotId(deepLinkId)
+    const deepLinkGoal = params.get('goal') || params.get('g') || (pathToken && pathToken !== sanitizedDeepLinkId ? pathToken : '')
 
     if (deepLinkCurriculum && deepLinkCurriculum !== selectedLandscapeId) {
       setSelectedLandscapeId(role === 'trainer' ? normalizeTrainerLandscapeId(deepLinkCurriculum) : deepLinkCurriculum)
     }
 
     if (deepLinkId) {
-      const id = sanitizeSkillpilotId(deepLinkId);
+      const id = sanitizedDeepLinkId;
       if (skillpilotId !== id) {
         setSkillpilotId(id);
       }
@@ -223,7 +193,7 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
         setSelectedLandscapeId('')
       }
     } else if (role === 'learner') {
-      setSelectedLandscapeId(localStorage.getItem('skillpilot_learner_landscape') || '')
+      setSelectedLandscapeId(getStoredLandscapeIdForRole(role))
     } else if (role === 'explorer') {
       setSelectedLandscapeId('')
     }

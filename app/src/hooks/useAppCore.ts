@@ -16,6 +16,7 @@ import { getDisplayFiltersForSelection } from '../utils/filterLabels'
 import { normalizeTrainerLandscapeId } from '../utils/trainerLandscapeContext'
 import { normalizeLearnerProjectedEntries } from '../utils/learnerTreeProjection'
 import { CANONICAL_GYMNASIUM_ROOT_ID } from '../utils/curriculumDisplay'
+import { getStoredLandscapeIdForRole } from '../utils/learnerProfile'
 import {
   applyMatchedCompositionRouteGoalProjection,
   applyCompositionViewProjection,
@@ -74,7 +75,7 @@ export function useAppCore({ role, setLearnerMeta, skillpilotId }: AppCoreOption
 
   // Manage selectedLandscapeId state here
   const [selectedLandscapeId, setSelectedLandscapeId] = React.useState<string>(() => {
-    return normalizeLandscapeIdForRole(searchParams.get('l'), role)
+    return normalizeLandscapeIdForRole(searchParams.get('l') || getStoredLandscapeIdForRole(role), role)
   })
 
   useEffect(() => {
@@ -85,7 +86,15 @@ export function useAppCore({ role, setLearnerMeta, skillpilotId }: AppCoreOption
 
   // Sync from URL if it changes externally
   useEffect(() => {
-    const fromUrl = normalizeLandscapeIdForRole(searchParams.get('l'), role)
+    const rawFromUrl = searchParams.get('l')
+    if (!rawFromUrl) {
+      const stored = normalizeLandscapeIdForRole(getStoredLandscapeIdForRole(role), role)
+      if (!selectedLandscapeId && stored) {
+        setSelectedLandscapeId(stored)
+      }
+      return
+    }
+    const fromUrl = normalizeLandscapeIdForRole(rawFromUrl, role)
     if (fromUrl !== selectedLandscapeId) {
       setSelectedLandscapeId(fromUrl)
     }
