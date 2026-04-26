@@ -312,7 +312,7 @@ export const RequiresFlowMap: React.FC<RequiresFlowMapProps> = ({
       orderedLevels: Array.from(nodesByLevel.keys()).sort((a, b) => b - a),
       edges,
     }
-  }, [goalIndexAll, currentGoal, atomicOnly])
+  }, [goalIndexAll, currentGoal])
 
   const openPrerequisiteCount = useMemo(() => (
     fullPrerequisiteFlow.nodes.reduce((count, node) => (

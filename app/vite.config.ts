@@ -777,14 +777,14 @@ const deckEditorDevPlugin = {
           const rootGoalIds = Array.isArray(scope.rootGoalIds)
             ? scope.rootGoalIds.filter((value): value is string => typeof value === 'string' && value.trim().length > 0)
             : []
-          const leafGoalIds = Array.isArray(scope.leafGoalIds)
+          const configuredLeafGoalIds = Array.isArray(scope.leafGoalIds)
             ? scope.leafGoalIds.filter((value): value is string => typeof value === 'string' && value.trim().length > 0)
             : []
           const goals = (Array.isArray(landscape.goals) ? landscape.goals : [])
             .filter((goal): goal is Record<string, unknown> => typeof goal === 'object' && goal !== null && !Array.isArray(goal))
           const goalById = new Map(goals.map((goal) => [String(goal.id ?? ''), goal]))
-          const scopeGoalIds = leafGoalIds.length > 0
-            ? new Set(leafGoalIds)
+          const scopeGoalIds = configuredLeafGoalIds.length > 0
+            ? new Set(configuredLeafGoalIds)
             : collectSemanticScopeGoalIds(rootGoalIds, goalById)
           const leafGoals = Array.from(scopeGoalIds)
             .map((goalId) => goalById.get(goalId))
@@ -794,8 +794,8 @@ const deckEditorDevPlugin = {
             ? parseJsonl(await fs.readFile(reviewAbsolutePath, 'utf8'))
             : []
           const reviewByGoalId = new Map(reviewRecords.map((record) => [String(record.goalId ?? ''), record]))
-          const leafGoalIds = new Set(leafGoals.map((goal) => String(goal.id ?? '')))
-          const obsoleteRecords = reviewRecords.filter((record) => !leafGoalIds.has(String(record.goalId ?? '')))
+          const currentLeafGoalIds = new Set(leafGoals.map((goal) => String(goal.id ?? '')))
+          const obsoleteRecords = reviewRecords.filter((record) => !currentLeafGoalIds.has(String(record.goalId ?? '')))
 
           const items = leafGoals.map((goal) => {
             const goalId = String(goal.id ?? '')
