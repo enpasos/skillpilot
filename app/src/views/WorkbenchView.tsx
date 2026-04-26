@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { ArrowRight, Blocks, BookOpenText, Home, Layers3, Network, Wrench } from 'lucide-react'
+import { ArrowRight, Blocks, BookOpenText, Home, Layers3, ListChecks, Network, Wrench } from 'lucide-react'
 import { LanguageToggle } from '../components/LanguageToggle'
 import { useLanguage } from '../contexts/LanguageContext'
 
@@ -90,6 +90,14 @@ const TOOL_DEFINITIONS: Record<'de' | 'en', WorkbenchTool[]> = {
       group: 'maintenance',
       icon: BookOpenText,
     },
+    {
+      title: 'Semantic Atomicity Review',
+      path: '/semantic-atomicity-review',
+      description: 'Pflegt Findings-Dateien zur semantischen Atomarität; die Bulkprüfung selbst läuft über Codex/CLI.',
+      scope: 'Review-Ledger, Entwickler-Queue und Fingerprint-Status technischer Blattziele',
+      group: 'maintenance',
+      icon: ListChecks,
+    },
   ],
   en: [
     {
@@ -123,6 +131,14 @@ const TOOL_DEFINITIONS: Record<'de' | 'en', WorkbenchTool[]> = {
       scope: 'deck files, card content, and preview for SRS material',
       group: 'maintenance',
       icon: BookOpenText,
+    },
+    {
+      title: 'Semantic Atomicity Review',
+      path: '/semantic-atomicity-review',
+      description: 'Maintains semantic atomicity findings files; the semantic bulk review itself runs through Codex/CLI.',
+      scope: 'review ledgers, developer queue, and fingerprint status for technical leaf goals',
+      group: 'maintenance',
+      icon: ListChecks,
     },
   ],
 }

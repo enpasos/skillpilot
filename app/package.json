@@ -13,6 +13,8 @@
     "validate:view-filters": "tsx scripts/validateViewFilters.ts",
     "validate:composition-views": "tsx scripts/validateCompositionViews.ts",
     "validate:learner-goal-selection": "tsx scripts/validateLearnerGoalSelection.ts",
+    "quality:semantic-atomicity": "tsx scripts/semanticAtomicityReview.ts",
+    "quality:semantic-atomicity:check": "tsx scripts/semanticAtomicityReview.ts --mode=check",
     "check:canonical-physics-evidence-watch": "bash ../scripts/run_canonical_physics_evidence_watch.sh",
     "report:learner-tree-fallbacks": "tsx scripts/reportLearnerTreeFallbackCoverage.ts",
     "report:canonical-math-scope-coverage": "tsx scripts/reportCanonicalMathScopeCoverage.ts",

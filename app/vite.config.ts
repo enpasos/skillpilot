@@ -1,5 +1,6 @@
+import { createHash } from 'node:crypto'
 import path from 'node:path'
-import { promises as fs } from 'node:fs'
+import { existsSync, promises as fs } from 'node:fs'
 import type { IncomingMessage, ServerResponse } from 'node:http'
 import { defineConfig, loadEnv, type ViteDevServer } from 'vite'
 import react from '@vitejs/plugin-react'
@@ -13,6 +14,7 @@ const REPO_ROOT = path.resolve(APP_ROOT, '..')
 const CURRICULA_ROOT = path.resolve(REPO_ROOT, 'curricula')
 const CANONICAL_GYMNASIUM_ROOT = path.resolve(CURRICULA_ROOT, 'DE', 'Gymnasium', 'canonical')
 const COMPOSITION_VIEW_ROOT = path.resolve(CURRICULA_ROOT, 'DE', 'Gymnasium', 'composition-views')
+const SEMANTIC_ATOMICITY_ROOT = path.resolve(CURRICULA_ROOT, 'DE', 'Gymnasium', 'quality', 'semantic-atomicity')
 const PUBLIC_DATA_ROOT = path.resolve(APP_ROOT, 'public', 'data')
 
 const toPosixPath = (value: string): string => value.split(path.sep).join('/')
@@ -81,6 +83,28 @@ const resolveCompositionViewAbsolutePath = (candidatePath: string): string | nul
   return absolutePath
 }
 
+const resolveSemanticAtomicityConfigAbsolutePath = (candidatePath: string): string | null => {
+  const sanitizedPath = candidatePath.trim().replace(/\\/g, '/').replace(/^\/+/, '')
+  if (!sanitizedPath.startsWith('curricula/DE/Gymnasium/quality/semantic-atomicity/')) return null
+
+  const absolutePath = path.resolve(REPO_ROOT, sanitizedPath)
+  if (!isPathInside(absolutePath, SEMANTIC_ATOMICITY_ROOT)) return null
+  if (!/\.config\.json$/i.test(path.basename(absolutePath))) return null
+
+  return absolutePath
+}
+
+const resolveSemanticAtomicityReviewAbsolutePath = (candidatePath: string): string | null => {
+  const sanitizedPath = candidatePath.trim().replace(/\\/g, '/').replace(/^\/+/, '')
+  if (!sanitizedPath.startsWith('curricula/DE/Gymnasium/quality/semantic-atomicity/')) return null
+
+  const absolutePath = path.resolve(REPO_ROOT, sanitizedPath)
+  if (!isPathInside(absolutePath, SEMANTIC_ATOMICITY_ROOT)) return null
+  if (!/\.review\.jsonl$/i.test(path.basename(absolutePath))) return null
+
+  return absolutePath
+}
+
 const collectDeckFiles = async (directory: string, result: string[]): Promise<void> => {
   const entries = await fs.readdir(directory, { withFileTypes: true })
 
@@ -102,6 +126,26 @@ const collectDeckFiles = async (directory: string, result: string[]): Promise<vo
   }
 }
 
+const collectSemanticAtomicityConfigFiles = async (directory: string, result: string[]): Promise<void> => {
+  const entries = await fs.readdir(directory, { withFileTypes: true })
+
+  for (const entry of entries) {
+    const absolutePath = path.join(directory, entry.name)
+
+    if (entry.isDirectory()) {
+      await collectSemanticAtomicityConfigFiles(absolutePath, result)
+      continue
+    }
+
+    if (!entry.isFile()) continue
+    if (!/\.config\.json$/i.test(entry.name)) continue
+    if (!isPathInside(absolutePath, SEMANTIC_ATOMICITY_ROOT)) continue
+
+    const relativeToRepo = path.relative(REPO_ROOT, absolutePath)
+    result.push(toPosixPath(relativeToRepo))
+  }
+}
+
 const isLandscapePayload = (value: unknown): boolean => {
   const record = asRecord(value)
   return typeof record.landscapeId === 'string' && Array.isArray(record.goals)
@@ -112,8 +156,130 @@ const isCompositionViewPayload = (value: unknown): boolean => {
   return typeof record.viewId === 'string' && typeof record.landscapeId === 'string' && Array.isArray(record.rootNodes)
 }
 
+const isSemanticAtomicityConfigPayload = (value: unknown): boolean => {
+  const record = asRecord(value)
+  const scope = asRecord(record.scope)
+  return record.schemaVersion === 1
+    && typeof record.reviewId === 'string'
+    && typeof record.ruleVersion === 'string'
+    && typeof record.landscapeId === 'string'
+    && typeof record.landscapePath === 'string'
+    && typeof record.reviewPath === 'string'
+    && Array.isArray(scope.rootGoalIds)
+}
+
 const normalizeScopeValue = (value: unknown): string =>
   typeof value === 'string' ? value.trim() : ''
+
+const normalizeSemanticText = (value: unknown): string =>
+  String(value ?? '')
+    .normalize('NFKC')
+    .replace(/\s+/g, ' ')
+    .trim()
+
+const stableJson = (value: unknown): string => {
+  if (Array.isArray(value)) {
+    return `[${value.map(stableJson).join(',')}]`
+  }
+  if (value && typeof value === 'object') {
+    return `{${Object.entries(value as Record<string, unknown>)
+      .sort(([left], [right]) => left.localeCompare(right))
+      .map(([key, nested]) => `${JSON.stringify(key)}:${stableJson(nested)}`)
+      .join(',')}}`
+  }
+  return JSON.stringify(value)
+}
+
+const fingerprintSemanticGoal = (goal: Record<string, unknown>, ruleVersion: string): string => {
+  const dimensionTags = asRecord(goal.dimensionTags)
+  const payload = {
+    ruleVersion,
+    goalId: normalizeSemanticText(goal.id),
+    shortKey: normalizeSemanticText(goal.shortKey),
+    title: normalizeSemanticText(goal.title),
+    titleEn: normalizeSemanticText(goal.titleEn),
+    description: normalizeSemanticText(goal.description),
+    descriptionEn: normalizeSemanticText(goal.descriptionEn),
+    phase: normalizeSemanticText(dimensionTags.phase),
+    area: normalizeSemanticText(dimensionTags.area),
+    topicCode: normalizeSemanticText(dimensionTags.topicCode),
+    nodeKind: normalizeSemanticText(goal.nodeKind),
+  }
+  return `sha256:${createHash('sha256').update(stableJson(payload)).digest('hex')}`
+}
+
+const parseJsonl = (raw: string): Record<string, unknown>[] => raw
+  .split(/\r?\n/)
+  .map((line) => line.trim())
+  .filter(Boolean)
+  .map((line) => JSON.parse(line) as Record<string, unknown>)
+
+const serializeJsonl = (records: Record<string, unknown>[]): string =>
+  `${records.map((record) => JSON.stringify(record)).join('\n')}\n`
+
+const isLeafGoal = (goal: Record<string, unknown>): boolean =>
+  !Array.isArray(goal.contains) || goal.contains.length === 0
+
+const collectSemanticScopeGoalIds = (
+  rootGoalIds: string[],
+  goalById: Map<string, Record<string, unknown>>,
+): Set<string> => {
+  const result = new Set<string>()
+  const visiting = new Set<string>()
+
+  const visit = (goalId: string) => {
+    if (result.has(goalId) || visiting.has(goalId)) return
+    const goal = goalById.get(goalId)
+    if (!goal) return
+    visiting.add(goalId)
+    result.add(goalId)
+    for (const childId of Array.isArray(goal.contains) ? goal.contains : []) {
+      if (typeof childId === 'string') visit(childId)
+    }
+    visiting.delete(goalId)
+  }
+
+  rootGoalIds.forEach(visit)
+  return result
+}
+
+const normalizeSemanticReviewRecord = (
+  rawRecord: Record<string, unknown>,
+  context: {
+    reviewId: string
+    ruleVersion: string
+    landscapeId: string
+    goalId: string
+    fingerprint: string
+  },
+): Record<string, unknown> => {
+  const status = rawRecord.status === 'atomic' || rawRecord.status === 'non_atomic'
+    ? rawRecord.status
+    : 'needs_developer_review'
+  return {
+    schemaVersion: 1,
+    reviewId: context.reviewId,
+    ruleVersion: context.ruleVersion,
+    landscapeId: context.landscapeId,
+    goalId: context.goalId,
+    fingerprint: context.fingerprint,
+    status,
+    semanticAtomic: status === 'atomic' ? true : status === 'non_atomic' ? false : null,
+    reviewedAt: typeof rawRecord.reviewedAt === 'string' && rawRecord.reviewedAt.trim()
+      ? rawRecord.reviewedAt.trim()
+      : new Date().toISOString().slice(0, 10),
+    reviewer: typeof rawRecord.reviewer === 'string' && rawRecord.reviewer.trim()
+      ? rawRecord.reviewer.trim()
+      : 'workbench',
+    reason: typeof rawRecord.reason === 'string' ? rawRecord.reason.trim() : '',
+    ...(typeof rawRecord.suggestedAction === 'string' && rawRecord.suggestedAction.trim()
+      ? { suggestedAction: rawRecord.suggestedAction.trim() }
+      : {}),
+    ...(Array.isArray(rawRecord.suggestedSplit)
+      ? { suggestedSplit: rawRecord.suggestedSplit.filter((value) => typeof value === 'string' && value.trim()) }
+      : {}),
+  }
+}
 
 const normalizeCompositionScope = (rawScope: unknown): Record<string, string> => {
   const record = asRecord(rawScope)
@@ -360,6 +526,7 @@ const deckEditorDevPlugin = {
         && !requestUrl.pathname.startsWith('/__graph-editor')
         && !requestUrl.pathname.startsWith('/__canonical-cluster-editor')
         && !requestUrl.pathname.startsWith('/__composition-view-editor')
+        && !requestUrl.pathname.startsWith('/__semantic-atomicity-review')
         && !requestUrl.pathname.startsWith('/__authoring')
         && requestUrl.pathname !== '/api/ui/composition-views/match'
       ) {
@@ -529,6 +696,193 @@ const deckEditorDevPlugin = {
 
           sendJson(res, 200, {
             path: toPosixPath(path.relative(REPO_ROOT, absolutePath)),
+          })
+          return
+        }
+
+        if (requestUrl.pathname === '/__semantic-atomicity-review/list') {
+          if (req.method !== 'GET') {
+            sendJson(res, 405, { error: 'Method not allowed' })
+            return
+          }
+
+          const files: string[] = []
+          try {
+            await collectSemanticAtomicityConfigFiles(SEMANTIC_ATOMICITY_ROOT, files)
+          } catch (error) {
+            const message = error instanceof Error ? error.message : ''
+            if (!message.includes('ENOENT')) throw error
+          }
+          files.sort((left, right) => left.localeCompare(right))
+          const configs = await Promise.all(files.map(async (filePath) => {
+            const absolutePath = resolveSemanticAtomicityConfigAbsolutePath(filePath)
+            if (!absolutePath) return null
+            const config = JSON.parse(await fs.readFile(absolutePath, 'utf8')) as Record<string, unknown>
+            if (!isSemanticAtomicityConfigPayload(config)) return null
+            const scope = asRecord(config.scope)
+            return {
+              path: filePath,
+              reviewId: config.reviewId,
+              ruleVersion: config.ruleVersion,
+              label: typeof scope.label === 'string' ? scope.label : config.reviewId,
+            }
+          }))
+
+          sendJson(res, 200, { configs: configs.filter(Boolean) })
+          return
+        }
+
+        if (requestUrl.pathname === '/__semantic-atomicity-review/load') {
+          if (req.method !== 'GET') {
+            sendJson(res, 405, { error: 'Method not allowed' })
+            return
+          }
+
+          const configPath = requestUrl.searchParams.get('config') ?? ''
+          const configAbsolutePath = resolveSemanticAtomicityConfigAbsolutePath(configPath)
+          if (!configAbsolutePath) {
+            sendJson(res, 400, { error: 'Invalid semantic atomicity config path.' })
+            return
+          }
+
+          const config = JSON.parse(await fs.readFile(configAbsolutePath, 'utf8')) as Record<string, unknown>
+          if (!isSemanticAtomicityConfigPayload(config)) {
+            sendJson(res, 400, { error: 'Invalid semantic atomicity config payload.' })
+            return
+          }
+
+          const scope = asRecord(config.scope)
+          const landscapePath = typeof config.landscapePath === 'string' ? config.landscapePath : ''
+          const landscapeAbsolutePath = resolveCanonicalLandscapeAbsolutePath(landscapePath)
+          if (!landscapeAbsolutePath) {
+            sendJson(res, 400, { error: 'Invalid canonical landscape path in semantic atomicity config.' })
+            return
+          }
+
+          const reviewPath = typeof config.reviewPath === 'string' ? config.reviewPath : ''
+          const reviewAbsolutePath = resolveSemanticAtomicityReviewAbsolutePath(reviewPath)
+          if (!reviewAbsolutePath) {
+            sendJson(res, 400, { error: 'Invalid review path in semantic atomicity config.' })
+            return
+          }
+
+          const landscape = JSON.parse(await fs.readFile(landscapeAbsolutePath, 'utf8')) as Record<string, unknown>
+          if (!isLandscapePayload(landscape)) {
+            sendJson(res, 400, { error: 'Configured landscape is not a valid landscape JSON.' })
+            return
+          }
+
+          const rootGoalIds = Array.isArray(scope.rootGoalIds)
+            ? scope.rootGoalIds.filter((value): value is string => typeof value === 'string' && value.trim().length > 0)
+            : []
+          const goals = (Array.isArray(landscape.goals) ? landscape.goals : [])
+            .filter((goal): goal is Record<string, unknown> => typeof goal === 'object' && goal !== null && !Array.isArray(goal))
+          const goalById = new Map(goals.map((goal) => [String(goal.id ?? ''), goal]))
+          const scopeGoalIds = collectSemanticScopeGoalIds(rootGoalIds, goalById)
+          const leafGoals = Array.from(scopeGoalIds)
+            .map((goalId) => goalById.get(goalId))
+            .filter((goal): goal is Record<string, unknown> => !!goal && isLeafGoal(goal))
+            .sort((left, right) => normalizeSemanticText(left.title).localeCompare(normalizeSemanticText(right.title), 'de'))
+          const reviewRecords = existsSync(reviewAbsolutePath)
+            ? parseJsonl(await fs.readFile(reviewAbsolutePath, 'utf8'))
+            : []
+          const reviewByGoalId = new Map(reviewRecords.map((record) => [String(record.goalId ?? ''), record]))
+          const leafGoalIds = new Set(leafGoals.map((goal) => String(goal.id ?? '')))
+          const obsoleteRecords = reviewRecords.filter((record) => !leafGoalIds.has(String(record.goalId ?? '')))
+
+          const items = leafGoals.map((goal) => {
+            const goalId = String(goal.id ?? '')
+            const record = reviewByGoalId.get(goalId) ?? null
+            const fingerprint = fingerprintSemanticGoal(goal, String(config.ruleVersion))
+            const status = !record ? 'missing' : record.fingerprint === fingerprint ? 'current' : 'stale'
+            return {
+              goal: {
+                id: goalId,
+                shortKey: goal.shortKey,
+                title: goal.title,
+                titleEn: goal.titleEn,
+                description: goal.description,
+                descriptionEn: goal.descriptionEn,
+                dimensionTags: goal.dimensionTags,
+              },
+              fingerprint,
+              status,
+              record,
+            }
+          })
+
+          sendJson(res, 200, {
+            configPath: toPosixPath(path.relative(REPO_ROOT, configAbsolutePath)),
+            reviewPath: toPosixPath(path.relative(REPO_ROOT, reviewAbsolutePath)),
+            config,
+            items,
+            obsoleteRecords,
+          })
+          return
+        }
+
+        if (requestUrl.pathname === '/__semantic-atomicity-review/save') {
+          if (req.method !== 'PUT') {
+            sendJson(res, 405, { error: 'Method not allowed' })
+            return
+          }
+
+          const payload = asRecord(await readJsonBody(req))
+          const configPath = typeof payload.configPath === 'string' ? payload.configPath : ''
+          const configAbsolutePath = resolveSemanticAtomicityConfigAbsolutePath(configPath)
+          if (!configAbsolutePath) {
+            sendJson(res, 400, { error: 'Invalid semantic atomicity config path.' })
+            return
+          }
+
+          const config = JSON.parse(await fs.readFile(configAbsolutePath, 'utf8')) as Record<string, unknown>
+          if (!isSemanticAtomicityConfigPayload(config)) {
+            sendJson(res, 400, { error: 'Invalid semantic atomicity config payload.' })
+            return
+          }
+
+          const reviewPath = typeof config.reviewPath === 'string' ? config.reviewPath : ''
+          const reviewAbsolutePath = resolveSemanticAtomicityReviewAbsolutePath(reviewPath)
+          const landscapePath = typeof config.landscapePath === 'string' ? config.landscapePath : ''
+          const landscapeAbsolutePath = resolveCanonicalLandscapeAbsolutePath(landscapePath)
+          if (!reviewAbsolutePath || !landscapeAbsolutePath) {
+            sendJson(res, 400, { error: 'Invalid semantic atomicity config paths.' })
+            return
+          }
+
+          const landscape = JSON.parse(await fs.readFile(landscapeAbsolutePath, 'utf8')) as Record<string, unknown>
+          if (!isLandscapePayload(landscape)) {
+            sendJson(res, 400, { error: 'Configured landscape is not a valid landscape JSON.' })
+            return
+          }
+          const goals = (Array.isArray(landscape.goals) ? landscape.goals : [])
+            .filter((goal): goal is Record<string, unknown> => typeof goal === 'object' && goal !== null && !Array.isArray(goal))
+          const goalById = new Map(goals.map((goal) => [String(goal.id ?? ''), goal]))
+          const inputRecords = Array.isArray(payload.records)
+            ? payload.records.filter((record): record is Record<string, unknown> => typeof record === 'object' && record !== null && !Array.isArray(record))
+            : []
+          const normalizedRecords = inputRecords
+            .map((record) => {
+              const goalId = typeof record.goalId === 'string' ? record.goalId : ''
+              const goal = goalById.get(goalId)
+              if (!goal) return null
+              return normalizeSemanticReviewRecord(record, {
+                reviewId: String(config.reviewId),
+                ruleVersion: String(config.ruleVersion),
+                landscapeId: String(config.landscapeId),
+                goalId,
+                fingerprint: fingerprintSemanticGoal(goal, String(config.ruleVersion)),
+              })
+            })
+            .filter((record): record is Record<string, unknown> => record !== null)
+            .sort((left, right) => String(left.goalId).localeCompare(String(right.goalId)))
+
+          await fs.mkdir(path.dirname(reviewAbsolutePath), { recursive: true })
+          await fs.writeFile(reviewAbsolutePath, serializeJsonl(normalizedRecords), 'utf8')
+
+          sendJson(res, 200, {
+            reviewPath: toPosixPath(path.relative(REPO_ROOT, reviewAbsolutePath)),
+            savedRecords: normalizedRecords.length,
           })
           return
         }

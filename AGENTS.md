@@ -318,6 +318,25 @@ When adding new goals (especially atomic ones), follow these conventions:
    * Keep global Abitur/final-exam goals on their own branch instead of mixing them into the normal phase exercise structure.
    * Do not introduce coarse cluster-level `requires` just to connect ordinary curriculum goals to a global exam branch.
 
+### 7.1 Semantic atomicity review
+
+Technical leaf nodes (`contains: []`) are not automatically semantically atomic.
+
+Rule:
+
+* A leaf goal is semantically atomic only if it contains exactly one content learning goal.
+* Broad titles/descriptions that combine independent routines such as “A, B und C bestimmen” should be split or sent to developer review.
+* Some combinations such as “berechnen und deuten” may still be one semantic goal; this must be judged from the content, not from keywords alone.
+
+Process:
+
+* Semantic atomicity is tracked in external review ledgers under `curricula/DE/Gymnasium/quality/semantic-atomicity/`.
+* Review records use `atomic`, `needs_developer_review`, or `non_atomic`.
+* `atomic` means `semanticAtomic: true`; uncertain or too-broad goals stay visible in the review queue.
+* Review records include a fingerprint of semantic fields, so later small graph edits make prior decisions stale until the goal is reviewed again.
+* The local Workbench route `/semantic-atomicity-review` is only an algorithmic ledger editor. Semantic bulk review decisions are made from the Codex command line and then written back to the ledger.
+* The pilot documentation is `docs/qa-ci/semantic-atomicity-review.md`.
+
 ---
 
 ## 8. Ideas for future work (for agents and humans)
