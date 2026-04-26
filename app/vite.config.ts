@@ -159,13 +159,15 @@ const isCompositionViewPayload = (value: unknown): boolean => {
 const isSemanticAtomicityConfigPayload = (value: unknown): boolean => {
   const record = asRecord(value)
   const scope = asRecord(record.scope)
+  const hasRootGoalIds = Array.isArray(scope.rootGoalIds)
+  const hasLeafGoalIds = Array.isArray(scope.leafGoalIds)
   return record.schemaVersion === 1
     && typeof record.reviewId === 'string'
     && typeof record.ruleVersion === 'string'
     && typeof record.landscapeId === 'string'
     && typeof record.landscapePath === 'string'
     && typeof record.reviewPath === 'string'
-    && Array.isArray(scope.rootGoalIds)
+    && (hasRootGoalIds || hasLeafGoalIds)
 }
 
 const normalizeScopeValue = (value: unknown): string =>
@@ -775,10 +777,15 @@ const deckEditorDevPlugin = {
           const rootGoalIds = Array.isArray(scope.rootGoalIds)
             ? scope.rootGoalIds.filter((value): value is string => typeof value === 'string' && value.trim().length > 0)
             : []
+          const leafGoalIds = Array.isArray(scope.leafGoalIds)
+            ? scope.leafGoalIds.filter((value): value is string => typeof value === 'string' && value.trim().length > 0)
+            : []
           const goals = (Array.isArray(landscape.goals) ? landscape.goals : [])
             .filter((goal): goal is Record<string, unknown> => typeof goal === 'object' && goal !== null && !Array.isArray(goal))
           const goalById = new Map(goals.map((goal) => [String(goal.id ?? ''), goal]))
-          const scopeGoalIds = collectSemanticScopeGoalIds(rootGoalIds, goalById)
+          const scopeGoalIds = leafGoalIds.length > 0
+            ? new Set(leafGoalIds)
+            : collectSemanticScopeGoalIds(rootGoalIds, goalById)
           const leafGoals = Array.from(scopeGoalIds)
             .map((goalId) => goalById.get(goalId))
             .filter((goal): goal is Record<string, unknown> => !!goal && isLeafGoal(goal))

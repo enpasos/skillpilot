@@ -25,6 +25,10 @@ import org.springframework.test.context.ActiveProfiles;
 @ActiveProfiles("test")
 public class LearnerServiceTest {
 
+    private static final String CANONICAL_GYMNASIUM_ROOT_ID = "a0e13c56-c25f-4742-9272-3a1a603ee52e";
+    private static final String COMPOSITION_J8_SCOPE_ID =
+            "composition:merged:de-de-gym-math-lk+de-de-gym-math-gk:structure:j8";
+
     @Autowired
     private LearnerService learnerService;
 
@@ -125,6 +129,39 @@ public class LearnerServiceTest {
         var state = learnerService.getLearnerState(learnerId);
         assertThat(state.nextAllowedActions()).containsExactlyInAnyOrder(
                 "setPersonalization", "setScope", "getFrontier");
+    }
+
+    @Test
+    @Transactional
+    void getLearnerState_resolvesCompositionViewPlannedScopeForAiFrontier() {
+        Learner learner = learnerRepository.findById(learnerId).orElseThrow();
+        learner.setSelectedCurriculum(CANONICAL_GYMNASIUM_ROOT_ID);
+        learner.setPersonalCurriculum("""
+                {
+                  "a0e13c56-c25f-4742-9272-3a1a603ee52e": {"selected": true, "filterId": "ALL"},
+                  "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced": {"selected": true, "filterId": "GK"},
+                  "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a": {"selected": true, "filterId": "ALL"}
+                }
+                """);
+        learnerRepository.save(learner);
+
+        learnerService.setPlannedGoals(learnerId, Set.of(COMPOSITION_J8_SCOPE_ID));
+
+        var state = learnerService.getLearnerState(learnerId);
+
+        assertThat(state.goals().planned())
+                .singleElement()
+                .satisfies(goal -> {
+                    assertThat(goal.id()).isEqualTo(COMPOSITION_J8_SCOPE_ID);
+                    assertThat(goal.title()).isEqualTo("Jahrgangsstufe 8");
+                    assertThat(goal.type()).isEqualTo("cluster");
+                });
+        assertThat(state.goals().scope()).isNotNull();
+        assertThat(state.goals().scope().total_atomic()).isLessThan(state.goals().personalized().total_atomic());
+        assertThat(state.frontier())
+                .extracting(goal -> goal.title())
+                .doesNotContain("Mathematik", "Physik");
+        assertThat(state.stateMachine().requiredAction()).isNotEqualTo("setScope");
     }
 
     private static LearningGoal goal(String id, List<String> requires, List<String> contains) {

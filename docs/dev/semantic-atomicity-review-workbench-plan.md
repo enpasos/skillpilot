@@ -101,6 +101,8 @@ Eine Config definiert einen Review-Scope:
 }
 ```
 
+Für disjunkte Review-Päckchen darf eine Config statt `rootGoalIds` auch `leafGoalIds` verwenden. Das ist sinnvoll, wenn sichtbare Jahrgangsanker und fachliche Korridore dieselben Blattziele mehrfach referenzieren würden.
+
 ### Ledger
 
 Das Ledger ist JSONL mit einem Record pro technischem Blattziel im Scope.

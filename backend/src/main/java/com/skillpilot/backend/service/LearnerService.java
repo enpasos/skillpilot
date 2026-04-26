@@ -86,6 +86,7 @@ public class LearnerService {
     private final LandscapeService landscapeService;
     private final GoalMappingService goalMappingService;
     private final DeckResourceService deckResourceService;
+    private final CompositionViewService compositionViewService;
 
     private final ObjectMapper objectMapper;
     private final ApplicationEventPublisher eventPublisher;
@@ -197,6 +198,7 @@ public class LearnerService {
                 landscapeService,
                 goalMappingService,
                 deckResourceService,
+                null,
                 objectMapper,
                 eventPublisher,
                 new NoOpTransactionManager());
@@ -211,6 +213,7 @@ public class LearnerService {
             LandscapeService landscapeService,
             GoalMappingService goalMappingService,
             DeckResourceService deckResourceService,
+            CompositionViewService compositionViewService,
             ObjectMapper objectMapper,
             ApplicationEventPublisher eventPublisher,
             PlatformTransactionManager transactionManager) {
@@ -221,6 +224,7 @@ public class LearnerService {
         this.landscapeService = landscapeService;
         this.goalMappingService = goalMappingService;
         this.deckResourceService = deckResourceService;
+        this.compositionViewService = compositionViewService;
         this.objectMapper = objectMapper;
         this.eventPublisher = eventPublisher;
         this.transactionTemplate = new TransactionTemplate(transactionManager);
@@ -957,6 +961,53 @@ public class LearnerService {
             boolean allowPartial) {
         List<String> mappedGoalIds = mapGoalIdsForVisibleGoals(goalIds, visibleGoals, allowPartial);
         return collapseContainedGoalIds(mappedGoalIds, visibleGoals);
+    }
+
+    private List<String> resolvePlannedGoalIdsForScope(List<String> goalIds,
+            Map<String, LearningGoal> visibleGoals,
+            boolean allowPartial) {
+        if (goalIds == null || goalIds.isEmpty()) {
+            return Collections.emptyList();
+        }
+
+        LinkedHashSet<String> resolvedGoalIds = new LinkedHashSet<>();
+        for (String goalId : goalIds) {
+            List<String> compositionGoalIds = resolveCompositionStructureGoalIds(goalId, visibleGoals, allowPartial);
+            if (!compositionGoalIds.isEmpty()) {
+                resolvedGoalIds.addAll(compositionGoalIds);
+                continue;
+            }
+
+            String mappedGoalId = mapGoalIdForVisibleGoals(goalId, visibleGoals, allowPartial);
+            if (mappedGoalId != null && !mappedGoalId.isBlank()) {
+                resolvedGoalIds.add(mappedGoalId);
+            }
+        }
+
+        return collapseContainedGoalIds(new ArrayList<>(resolvedGoalIds), visibleGoals);
+    }
+
+    private List<String> resolveCompositionStructureGoalIds(String goalId,
+            Map<String, LearningGoal> visibleGoals,
+            boolean allowPartial) {
+        if (compositionViewService == null || goalId == null || goalId.isBlank()) {
+            return Collections.emptyList();
+        }
+
+        CompositionViewService.CompositionStructureResolution resolution =
+                compositionViewService.resolveStructureReference(goalId);
+        if (resolution == null || resolution.referencedGoalIds().isEmpty()) {
+            return Collections.emptyList();
+        }
+
+        LinkedHashSet<String> mappedGoalIds = new LinkedHashSet<>();
+        for (String referencedGoalId : resolution.referencedGoalIds()) {
+            String mappedGoalId = mapGoalIdForVisibleGoals(referencedGoalId, visibleGoals, allowPartial);
+            if (mappedGoalId != null && !mappedGoalId.isBlank()) {
+                mappedGoalIds.add(mappedGoalId);
+            }
+        }
+        return new ArrayList<>(mappedGoalIds);
     }
 
     private List<String> collapseContainedGoalIds(List<String> goalIds, Map<String, LearningGoal> visibleGoals) {
@@ -2493,7 +2544,7 @@ public class LearnerService {
                 : effectivePrereqMastery;
 
         // Calculate Scope (Plan + Descendants + Prerequisites)
-        List<String> plannedIds = mapGoalIdsForVisibleGoals(getStoredPlannedGoals(skillpilotId), allStructuralGoals, true);
+        List<String> plannedIds = resolvePlannedGoalIdsForScope(getStoredPlannedGoals(skillpilotId), allStructuralGoals, true);
 
         // CRITICAL FIX: Use Structural (Unfiltered) Goals for Scope!
         // This ensures that if the User plans a Parent that is currently "Hidden" by a
@@ -3041,8 +3092,13 @@ public class LearnerService {
             structuralGoals = getFilteredGoals(curriculumId, "{}");
         }
 
+        List<String> storedPlannedGoalIds = getStoredPlannedGoals(skillpilotId);
         List<String> plannedIds = normalizePlannedGoalIdsForVisibleGoals(
-                getStoredPlannedGoals(skillpilotId),
+                storedPlannedGoalIds,
+                structuralGoals,
+                true);
+        List<String> plannedScopeIds = resolvePlannedGoalIdsForScope(
+                storedPlannedGoalIds,
                 structuralGoals,
                 true);
         List<FrontierGoal> plannedRich = new ArrayList<>();
@@ -3067,6 +3123,8 @@ public class LearnerService {
 
             if (g != null) {
                 plannedRich.add(toFrontierGoal(g, "Planned", null));
+            } else if (isCompositionStructureGoalId(pid)) {
+                plannedRich.add(toCompositionStructureFrontierGoal(pid, "Planned"));
             } else {
                 // True unknown (deleted or invalid ID)
                 plannedRich.add(new FrontierGoal(pid, "Unknown Goal", "", "unknown", null, "Planned",
@@ -3075,8 +3133,8 @@ public class LearnerService {
         }
 
         Set<String> scope = Collections.emptySet();
-        if (curriculumId != null && !plannedIds.isEmpty()) {
-            scope = computeScope(plannedIds, structuralGoals, Collections.emptyMap());
+        if (curriculumId != null && !plannedScopeIds.isEmpty()) {
+            scope = computeScope(plannedScopeIds, structuralGoals, Collections.emptyMap());
         }
         Map<String, Double> mastery = getMastery(skillpilotId);
         String storedActiveGoalId = learner.getActiveGoalId();
@@ -3091,7 +3149,7 @@ public class LearnerService {
                 && storedActiveGoalId.equals(activeGoalId);
         boolean activeGoalOutOfScope = activeGoalIsCurrentViewGoal
                 && activeGoalId != null
-                && isGoalOutOfPlannedScope(activeGoalId, plannedIds, structuralGoals, scope);
+                && isGoalOutOfPlannedScope(activeGoalId, plannedScopeIds, structuralGoals, scope);
         if (activeGoalMastered || activeGoalInvalidInView || activeGoalOutOfScope) {
             clearPersistedActiveGoal(
                     learner,
@@ -3104,7 +3162,7 @@ public class LearnerService {
         }
 
         com.skillpilot.backend.api.GoalStats personalizedStats = computeAtomicStats(allGoals, null, mastery);
-        com.skillpilot.backend.api.GoalStats scopeStats = plannedIds.isEmpty()
+        com.skillpilot.backend.api.GoalStats scopeStats = plannedScopeIds.isEmpty()
                 ? null
                 : computeAtomicStats(allGoals, scope, mastery);
         com.skillpilot.backend.api.GoalStats focusStats = (scopeStats != null && scopeStats.total_atomic() > 0)
@@ -3180,7 +3238,7 @@ public class LearnerService {
 
         List<FrontierGoal> scopeExpansionOptions = Collections.emptyList();
         if (curriculumId != null && !personalizationRequired && activeGoal == null
-                && frontier.isEmpty() && !plannedIds.isEmpty()) {
+                && frontier.isEmpty() && !plannedScopeIds.isEmpty()) {
             Map<String, Double> effectiveMastery = computeEffectiveMastery(allGoals, mastery);
             Map<String, LearningGoal> structuralForExpansion = structuralGoals;
             if (structuralForExpansion == null || structuralForExpansion.isEmpty()) {
@@ -3188,10 +3246,10 @@ public class LearnerService {
             }
             Set<String> scopeForExpansion = scope;
             if (scopeForExpansion == null || scopeForExpansion.isEmpty()) {
-                scopeForExpansion = computeScope(plannedIds, structuralForExpansion, Collections.emptyMap());
+                scopeForExpansion = computeScope(plannedScopeIds, structuralForExpansion, Collections.emptyMap());
             }
             scopeExpansionOptions = buildScopeExpansionOptions(curriculumId, allGoals, structuralForExpansion,
-                    scopeForExpansion, plannedIds, effectiveMastery);
+                    scopeForExpansion, plannedScopeIds, effectiveMastery);
         }
 
         StateMachineInfo stateMachine = buildStateMachineInfo(curriculumId, frontier, frontierAtomic, activeGoal,
@@ -3481,6 +3539,35 @@ public class LearnerService {
         learner.setLearningState(LearningState.TEACHING);
         learnerRepository.save(learner);
         eventPublisher.publishEvent(new LearnerStateChangedEvent(this, skillpilotId, "ACTIVE_GOAL_UPDATE"));
+    }
+
+    private boolean isCompositionStructureGoalId(String goalId) {
+        return goalId != null && goalId.startsWith("composition:") && goalId.contains(":structure:");
+    }
+
+    private FrontierGoal toCompositionStructureFrontierGoal(String goalId, String reason) {
+        CompositionViewService.CompositionStructureResolution resolution = compositionViewService == null
+                ? null
+                : compositionViewService.resolveStructureReference(goalId);
+        String title = resolution == null || resolution.label() == null || resolution.label().isBlank()
+                ? "Geplanter Lernbereich"
+                : resolution.label();
+        String description = resolution == null || resolution.referencedGoalIds().isEmpty()
+                ? ""
+                : "Geplanter Lernbereich aus der Curriculum-Ansicht.";
+        return new FrontierGoal(
+                goalId,
+                title,
+                description,
+                "cluster",
+                "tutor",
+                reason,
+                List.of("synthetic:program-unit"),
+                Collections.emptyList(),
+                null,
+                null,
+                null,
+                null);
     }
 
     private FrontierGoal toFrontierGoal(LearningGoal goal, String reason, com.skillpilot.backend.landscape.ExamData examData) {

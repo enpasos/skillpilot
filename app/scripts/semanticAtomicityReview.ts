@@ -15,7 +15,8 @@ interface ReviewConfig {
   reviewPath: string
   scope: {
     label: string
-    rootGoalIds: string[]
+    rootGoalIds?: string[]
+    leafGoalIds?: string[]
   }
 }
 
@@ -143,6 +144,13 @@ function collectScopeGoalIds(rootGoalIds: string[], goalById: Map<string, Learni
   return result
 }
 
+function collectConfiguredScopeGoalIds(config: ReviewConfig, goalById: Map<string, LearningGoal>): Set<string> {
+  if (Array.isArray(config.scope.leafGoalIds) && config.scope.leafGoalIds.length > 0) {
+    return new Set(config.scope.leafGoalIds)
+  }
+  return collectScopeGoalIds(config.scope.rootGoalIds ?? [], goalById)
+}
+
 function parseReviewRecords(path: string): { records: ReviewRecord[]; errors: string[] } {
   if (!existsSync(path)) {
     return { records: [], errors: [`Review file missing: ${path}`] }
@@ -203,7 +211,7 @@ function main() {
   }
 
   const goalById = new Map((landscape.goals ?? []).map((goal) => [goal.id, goal]))
-  const scopeGoalIds = collectScopeGoalIds(config.scope.rootGoalIds, goalById)
+  const scopeGoalIds = collectConfiguredScopeGoalIds(config, goalById)
   const leafGoals = Array.from(scopeGoalIds)
     .map((goalId) => goalById.get(goalId))
     .filter((goal): goal is LearningGoal => !!goal && isLeaf(goal))

@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.LinkedHashMap;
@@ -25,6 +26,8 @@ public class CompositionViewService {
     private static final Path COMPOSITION_VIEW_ROOT = Path.of("DE", "Gymnasium", "composition-views");
     private static final TypeReference<Map<String, Object>> MAP_TYPE = new TypeReference<>() {
     };
+    private static final String COMPOSITION_SYNTHETIC_PREFIX = "composition:";
+    private static final String COMPOSITION_STRUCTURE_SEPARATOR = ":structure:";
     private static final String COURSE_PROFILE_KEY = "courseProfile";
     private static final String STAGE_KEY = "stage";
     private static final String STAGE_CROSS = "CROSSSTAGE";
@@ -39,6 +42,68 @@ public class CompositionViewService {
     public CompositionViewService(LandscapeProperties properties, ObjectMapper objectMapper) {
         this.properties = properties;
         this.objectMapper = objectMapper;
+    }
+
+    public record CompositionStructureResolution(
+            String syntheticGoalId,
+            String viewId,
+            String nodeId,
+            String label,
+            List<String> referencedGoalIds) {
+    }
+
+    public CompositionStructureResolution resolveStructureReference(String syntheticGoalId) {
+        CompositionStructureReference reference = parseStructureReference(syntheticGoalId);
+        if (reference == null) {
+            return null;
+        }
+
+        Map<String, Object> view = findViewById(reference.viewId());
+        if (view == null) {
+            return null;
+        }
+
+        Map<String, Object> node = findStructureNode(view.get("rootNodes"), reference.nodeId());
+        if (node == null) {
+            return null;
+        }
+
+        LinkedHashSet<String> referencedGoalIds = new LinkedHashSet<>();
+        collectReferencedGoalIds(node, referencedGoalIds);
+        if (referencedGoalIds.isEmpty()) {
+            return null;
+        }
+
+        return new CompositionStructureResolution(
+                syntheticGoalId,
+                reference.viewId(),
+                reference.nodeId(),
+                asString(node.get("label")),
+                List.copyOf(referencedGoalIds));
+    }
+
+    private record CompositionStructureReference(String viewId, String nodeId) {
+    }
+
+    private static CompositionStructureReference parseStructureReference(String syntheticGoalId) {
+        if (!StringUtils.hasText(syntheticGoalId)
+                || !syntheticGoalId.startsWith(COMPOSITION_SYNTHETIC_PREFIX)) {
+            return null;
+        }
+        int structureSeparatorIndex = syntheticGoalId.lastIndexOf(COMPOSITION_STRUCTURE_SEPARATOR);
+        if (structureSeparatorIndex <= COMPOSITION_SYNTHETIC_PREFIX.length()) {
+            return null;
+        }
+
+        String viewId = syntheticGoalId.substring(
+                COMPOSITION_SYNTHETIC_PREFIX.length(),
+                structureSeparatorIndex);
+        String nodeId = syntheticGoalId.substring(
+                structureSeparatorIndex + COMPOSITION_STRUCTURE_SEPARATOR.length());
+        if (!StringUtils.hasText(viewId) || !StringUtils.hasText(nodeId)) {
+            return null;
+        }
+        return new CompositionStructureReference(viewId, nodeId);
     }
 
     public Map<String, Object> findMatchingView(String landscapeId, Map<String, String> requestedScope) {
@@ -96,6 +161,53 @@ public class CompositionViewService {
         }
     }
 
+    public Map<String, Object> findViewById(String viewId) {
+        if (!StringUtils.hasText(viewId)) {
+            return null;
+        }
+        String normalizedViewId = viewId.trim();
+        if (normalizedViewId.startsWith("merged:")) {
+            List<Map<String, Object>> sourceViews = Arrays.stream(normalizedViewId.substring("merged:".length()).split("\\+"))
+                    .map(String::trim)
+                    .filter(StringUtils::hasText)
+                    .map(this::findSingleViewById)
+                    .filter(Objects::nonNull)
+                    .toList();
+            if (sourceViews.isEmpty()) {
+                return null;
+            }
+            if (sourceViews.size() == 1) {
+                return Collections.unmodifiableMap(new LinkedHashMap<>(sourceViews.get(0)));
+            }
+            return mergeViews(
+                    asString(sourceViews.get(0).get("landscapeId")),
+                    asStringMap(sourceViews.get(0).get("scope")),
+                    sourceViews);
+        }
+        return findSingleViewById(normalizedViewId);
+    }
+
+    private Map<String, Object> findSingleViewById(String viewId) {
+        Path baseDir = Path.of(properties.getDirectory()).resolve(COMPOSITION_VIEW_ROOT);
+        if (!Files.isDirectory(baseDir)) {
+            return null;
+        }
+
+        try (Stream<Path> stream = Files.walk(baseDir)) {
+            return stream
+                    .filter(Files::isRegularFile)
+                    .filter(path -> path.getFileName().toString().endsWith(".view.json"))
+                    .map(this::readViewFile)
+                    .filter(Objects::nonNull)
+                    .filter(view -> normalizeValue(asString(view.get("viewId"))).equals(normalizeValue(viewId)))
+                    .findFirst()
+                    .map(view -> Collections.unmodifiableMap(new LinkedHashMap<>(view)))
+                    .orElse(null);
+        } catch (IOException e) {
+            throw new IllegalStateException("Failed to load composition views from " + baseDir, e);
+        }
+    }
+
     private record MatchScore(int scopeSize, int stageFallbackCount, int courseFallbackCount, int coursePreferenceRank) {
     }
 
@@ -123,8 +235,62 @@ public class CompositionViewService {
         return Collections.emptyMap();
     }
 
+    private static Map<String, String> asStringMap(Object value) {
+        if (!(value instanceof Map<?, ?> map)) {
+            return Collections.emptyMap();
+        }
+        Map<String, String> normalized = new LinkedHashMap<>();
+        map.forEach((key, entry) -> {
+            if (key instanceof String stringKey && entry instanceof String text && StringUtils.hasText(text)) {
+                normalized.put(stringKey, text.trim());
+            }
+        });
+        return normalized;
+    }
+
     private static String asString(Object value) {
         return value instanceof String text ? text : "";
+    }
+
+    private static Map<String, Object> findStructureNode(Object rawNodes, String nodeId) {
+        if (!StringUtils.hasText(nodeId)) {
+            return null;
+        }
+        for (Map<String, Object> node : asNodeList(rawNodes)) {
+            if ("structure".equals(asString(node.get("kind"))) && nodeId.equals(asString(node.get("id")))) {
+                return node;
+            }
+            Map<String, Object> childMatch = findStructureNode(node.get("children"), nodeId);
+            if (childMatch != null) {
+                return childMatch;
+            }
+        }
+        return null;
+    }
+
+    private static void collectReferencedGoalIds(Map<String, Object> node, LinkedHashSet<String> goalIds) {
+        if (node == null) {
+            return;
+        }
+
+        String kind = asString(node.get("kind"));
+        if ("canonicalSubtree".equals(kind) || "goalEntry".equals(kind)) {
+            String goalId = asString(node.get("goalId"));
+            if (StringUtils.hasText(goalId)) {
+                goalIds.add(goalId);
+            }
+            return;
+        }
+
+        if ("landscapeEntry".equals(kind)) {
+            // Landscape entries cannot be resolved without the landscape graph; callers can
+            // still resolve canonical subtree and goal entry children of the same structure.
+            return;
+        }
+
+        for (Map<String, Object> child : asNodeList(node.get("children"))) {
+            collectReferencedGoalIds(child, goalIds);
+        }
     }
 
     private static String normalizeValue(String value) {
