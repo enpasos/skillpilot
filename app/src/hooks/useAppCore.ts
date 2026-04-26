@@ -15,6 +15,7 @@ import { applyGoalPlacementProjection } from '../utils/goalPlacementProjection'
 import { getDisplayFiltersForSelection } from '../utils/filterLabels'
 import { normalizeTrainerLandscapeId } from '../utils/trainerLandscapeContext'
 import { normalizeLearnerProjectedEntries } from '../utils/learnerTreeProjection'
+import { CANONICAL_GYMNASIUM_ROOT_ID } from '../utils/curriculumDisplay'
 import {
   applyMatchedCompositionRouteGoalProjection,
   applyCompositionViewProjection,
@@ -387,6 +388,7 @@ export function useAppCore({ role, setLearnerMeta, skillpilotId }: AppCoreOption
     if (role !== 'learner') return
     const routeGoalLandscapeId = routeGoal?.landscapeId
     if (!goalId || !routeGoalLandscapeId) return
+    if (selectedLandscapeId === CANONICAL_GYMNASIUM_ROOT_ID) return
     if (goalIndexAll.has(goalId)) return
     if (routeGoalLandscapeId === selectedLandscapeId) return
     setSelectedLandscapeId(routeGoalLandscapeId)
