@@ -46,7 +46,7 @@ export const en = {
             }
         },
         banner: {
-            text: "**Free.** You only need a ChatGPT account.\nFor the best connection to your learning progress, use **ChatGPT in the browser**."
+            text: "**Free.** You only need a ChatGPT account.\nUse SkillPilot in the browser or in ChatGPT text chat. In the app, you can dictate your answer and send it as text. Voice Chat unfortunately does not work for this yet."
         },
         links: {
             statistics: "Statistics",

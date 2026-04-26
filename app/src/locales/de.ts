@@ -46,7 +46,7 @@ export const de = {
             }
         },
         banner: {
-            text: "**Kostenlos.** Du brauchst nur einen ChatGPT-Account.\nFür die beste Verbindung zum Lernstand empfehlen wir **ChatGPT im Browser**."
+            text: "**Kostenlos.** Du brauchst nur einen ChatGPT-Account.\nNutze SkillPilot im Browser oder im ChatGPT-Textchat. In der App kannst du deine Antwort diktieren und dann als Text senden. Voice Chat funktioniert dafür leider noch nicht."
         },
         links: {
             statistics: "Statistiken",
