@@ -301,6 +301,13 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     reportedLoadErrorsRef.current.clear()
   }, [skillpilotId])
 
+  useEffect(() => {
+    if (rootLandscapeId !== CANONICAL_GYMNASIUM_ROOT_ID) return
+    if (learnerData?.selectedCurriculum !== CANONICAL_GYMNASIUM_ROOT_ID) return
+    if (landscapeId === CANONICAL_GYMNASIUM_ROOT_ID) return
+    onLandscapeChange?.(CANONICAL_GYMNASIUM_ROOT_ID)
+  }, [landscapeId, learnerData?.selectedCurriculum, onLandscapeChange, rootLandscapeId])
+
   const getSrsSource = useCallback((goal: UiGoal) => {
     const extendedData = goal.extendedData as {
       vocabularySource?: string
@@ -1510,6 +1517,9 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
       if (configChanged) {
         setPersonalConfig(newConfig)
         onScopeDataRefresh?.()
+        if (rootLandscapeId === CANONICAL_GYMNASIUM_ROOT_ID && landscapeId !== CANONICAL_GYMNASIUM_ROOT_ID) {
+          onLandscapeChange?.(CANONICAL_GYMNASIUM_ROOT_ID)
+        }
       }
       if (preferencesChanged) {
         setLearnerData(prev => prev ? {
@@ -1532,10 +1542,13 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     }
   }, [
     learnerData,
+    landscapeId,
     onNotify,
+    onLandscapeChange,
     onScopeDataRefresh,
     personalConfig,
     refreshState,
+    rootLandscapeId,
     skillpilotId,
     t.notifications.personalCurriculumSaveFailed,
     t.notifications.preferencesSaveFailed,

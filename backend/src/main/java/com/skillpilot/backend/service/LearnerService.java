@@ -1592,12 +1592,23 @@ public class LearnerService {
         try {
             String json = objectMapper.writeValueAsString(finalConfig);
             learner.setPersonalCurriculum(json);
+            if (isSelectedInPersonalCurriculum(finalConfig.get(CANONICAL_GYMNASIUM_ROOT_ID))) {
+                learner.setSelectedCurriculum(CANONICAL_GYMNASIUM_ROOT_ID);
+            }
             learnerRepository.save(learner);
         } catch (Exception e) {
             throw new ResponseStatusException(org.springframework.http.HttpStatus.BAD_REQUEST,
                     "Invalid personalization config");
         }
         eventPublisher.publishEvent(new LearnerStateChangedEvent(this, skillpilotId, "PERSONALIZATION_UPDATE"));
+    }
+
+    private boolean isSelectedInPersonalCurriculum(Object rawConfig) {
+        if (!(rawConfig instanceof Map<?, ?> config)) {
+            return false;
+        }
+        Object selected = config.get("selected");
+        return selected instanceof Boolean && (Boolean) selected;
     }
 
     private boolean isSupportedCanonicalGymnasiumCutoverSource(String curriculumId) {

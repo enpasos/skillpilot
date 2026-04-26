@@ -387,9 +387,10 @@ export function useAppCore({ role, setLearnerMeta, skillpilotId }: AppCoreOption
     if (role !== 'learner') return
     const routeGoalLandscapeId = routeGoal?.landscapeId
     if (!goalId || !routeGoalLandscapeId) return
+    if (goalIndexAll.has(goalId)) return
     if (routeGoalLandscapeId === selectedLandscapeId) return
     setSelectedLandscapeId(routeGoalLandscapeId)
-  }, [goalId, role, routeGoal?.landscapeId, selectedLandscapeId])
+  }, [goalId, goalIndexAll, role, routeGoal?.landscapeId, selectedLandscapeId])
 
   const currentGoal = useMemo(() => {
     if (goalId) {
