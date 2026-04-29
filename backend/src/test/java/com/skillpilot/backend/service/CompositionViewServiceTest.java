@@ -49,6 +49,21 @@ class CompositionViewServiceTest {
     }
 
     @Test
+    void findFollowingStructureSiblings_returnsNextYearForMergedMathView() {
+        CompositionViewService service = createService();
+
+        List<CompositionViewService.CompositionStructureResolution> siblings =
+                service.findFollowingStructureSiblings(
+                        "composition:merged:de-de-gym-math-lk+de-de-gym-math-gk:structure:j8");
+
+        assertThat(siblings).isNotEmpty();
+        assertThat(siblings.get(0).syntheticGoalId())
+                .isEqualTo("composition:merged:de-de-gym-math-lk+de-de-gym-math-gk:structure:j9");
+        assertThat(siblings.get(0).label()).isEqualTo("Jahrgangsstufe 9");
+        assertThat(siblings.get(0).referencedGoalIds()).isNotEmpty();
+    }
+
+    @Test
     void findMatchingView_prefersExactStageViewOverCrossStageFallback() {
         CompositionViewService service = createService();
 

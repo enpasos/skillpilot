@@ -3,6 +3,7 @@ package com.skillpilot.backend.service;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatCode;
 
+import com.skillpilot.backend.api.MasteryUpdateRequest;
 import com.skillpilot.backend.domain.Learner;
 import com.skillpilot.backend.landscape.LearningGoal;
 import com.skillpilot.backend.repository.LearnerRepository;
@@ -28,6 +29,8 @@ public class LearnerServiceTest {
     private static final String CANONICAL_GYMNASIUM_ROOT_ID = "a0e13c56-c25f-4742-9272-3a1a603ee52e";
     private static final String COMPOSITION_J8_SCOPE_ID =
             "composition:merged:de-de-gym-math-lk+de-de-gym-math-gk:structure:j8";
+    private static final String COMPOSITION_J9_SCOPE_ID =
+            "composition:merged:de-de-gym-math-lk+de-de-gym-math-gk:structure:j9";
 
     @Autowired
     private LearnerService learnerService;
@@ -162,6 +165,56 @@ public class LearnerServiceTest {
                 .extracting(goal -> goal.title())
                 .doesNotContain("Mathematik", "Physik");
         assertThat(state.stateMachine().requiredAction()).isNotEqualTo("setScope");
+    }
+
+    @Test
+    @Transactional
+    void getLearnerState_offersNextCompositionYearWhenCurrentYearScopeIsComplete() {
+        Learner learner = learnerRepository.findById(learnerId).orElseThrow();
+        learner.setSelectedCurriculum(CANONICAL_GYMNASIUM_ROOT_ID);
+        learner.setPersonalCurriculum("""
+                {
+                  "a0e13c56-c25f-4742-9272-3a1a603ee52e": {"selected": true, "filterId": "ALL"},
+                  "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced": {"selected": true, "filterId": "GK"},
+                  "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a": {"selected": true, "filterId": "ALL"}
+                }
+                """);
+        learnerRepository.save(learner);
+        learnerService.setPlannedGoals(learnerId, Set.of(COMPOSITION_J8_SCOPE_ID));
+
+        completeCurrentScope();
+
+        var state = learnerService.getLearnerState(learnerId);
+
+        assertThat(state.goals().scope_completed()).isTrue();
+        assertThat(state.stateMachine().requiredAction()).isEqualTo("setScope");
+        assertThat(state.stateMachine().goalOptions())
+                .extracting(goal -> goal.id())
+                .contains(COMPOSITION_J9_SCOPE_ID);
+        assertThat(state.stateMachine().goalOptions())
+                .filteredOn(goal -> COMPOSITION_J9_SCOPE_ID.equals(goal.id()))
+                .singleElement()
+                .satisfies(goal -> {
+                    assertThat(goal.title()).isEqualTo("Jahrgangsstufe 9");
+                    assertThat(goal.type()).isEqualTo("cluster");
+                });
+    }
+
+    private void completeCurrentScope() {
+        for (int iteration = 0; iteration < 50; iteration += 1) {
+            var state = learnerService.getLearnerState(learnerId);
+            if (Boolean.TRUE.equals(state.goals().scope_completed())) {
+                return;
+            }
+            var nextGoal = state.frontier().stream()
+                    .filter(goal -> "atomic".equals(goal.type()))
+                    .findFirst()
+                    .orElseThrow(() -> new AssertionError("Expected an atomic frontier goal before scope completion."));
+            learnerService.setMastery(
+                    learnerId,
+                    new MasteryUpdateRequest(Map.of(nextGoal.id(), 1.0), nextGoal.id()));
+        }
+        throw new AssertionError("Scope did not complete within 50 mastery updates.");
     }
 
     private static LearningGoal goal(String id, List<String> requires, List<String> contains) {

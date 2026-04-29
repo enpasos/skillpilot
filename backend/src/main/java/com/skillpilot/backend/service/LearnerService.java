@@ -3249,7 +3249,7 @@ public class LearnerService {
                 scopeForExpansion = computeScope(plannedScopeIds, structuralForExpansion, Collections.emptyMap());
             }
             scopeExpansionOptions = buildScopeExpansionOptions(curriculumId, allGoals, structuralForExpansion,
-                    scopeForExpansion, plannedScopeIds, effectiveMastery);
+                    scopeForExpansion, plannedScopeIds, storedPlannedGoalIds, effectiveMastery);
         }
 
         StateMachineInfo stateMachine = buildStateMachineInfo(curriculumId, frontier, frontierAtomic, activeGoal,
@@ -3329,9 +3329,18 @@ public class LearnerService {
 
     private List<FrontierGoal> buildScopeExpansionOptions(String curriculumId, Map<String, LearningGoal> filteredGoals,
             Map<String, LearningGoal> structuralGoals, Set<String> scope, List<String> plannedIds,
-            Map<String, Double> effectiveMastery) {
+            List<String> storedPlannedIds, Map<String, Double> effectiveMastery) {
         if (plannedIds == null || plannedIds.isEmpty()) {
             return Collections.emptyList();
+        }
+
+        List<FrontierGoal> compositionOptions = buildCompositionScopeExpansionOptions(
+                filteredGoals,
+                scope,
+                storedPlannedIds,
+                effectiveMastery);
+        if (!compositionOptions.isEmpty()) {
+            return compositionOptions;
         }
 
         Map<String, Set<String>> parentMap = buildParentMap(structuralGoals);
@@ -3395,6 +3404,54 @@ public class LearnerService {
                         g.sourceLicenseUrl(),
                         g.examData()))
                 .toList();
+    }
+
+    private List<FrontierGoal> buildCompositionScopeExpansionOptions(
+            Map<String, LearningGoal> filteredGoals,
+            Set<String> scope,
+            List<String> storedPlannedIds,
+            Map<String, Double> effectiveMastery) {
+        if (compositionViewService == null || storedPlannedIds == null || storedPlannedIds.isEmpty()) {
+            return Collections.emptyList();
+        }
+
+        LinkedHashMap<String, FrontierGoal> options = new LinkedHashMap<>();
+        for (String storedPlannedId : storedPlannedIds) {
+            if (!isCompositionStructureGoalId(storedPlannedId)) {
+                continue;
+            }
+            List<CompositionViewService.CompositionStructureResolution> siblings =
+                    compositionViewService.findFollowingStructureSiblings(storedPlannedId);
+            for (CompositionViewService.CompositionStructureResolution sibling : siblings) {
+                if (sibling == null || sibling.syntheticGoalId() == null || sibling.syntheticGoalId().isBlank()) {
+                    continue;
+                }
+                List<String> mappedReferenceIds = sibling.referencedGoalIds().stream()
+                        .map(goalId -> mapGoalIdForVisibleGoals(goalId, filteredGoals, true))
+                        .filter(goalId -> goalId != null && filteredGoals.containsKey(goalId))
+                        .distinct()
+                        .toList();
+                if (mappedReferenceIds.isEmpty()) {
+                    continue;
+                }
+                if (scope != null && !scope.isEmpty() && mappedReferenceIds.stream().allMatch(scope::contains)) {
+                    continue;
+                }
+                boolean siblingCompleted = mappedReferenceIds.stream()
+                        .allMatch(goalId -> effectiveMastery != null
+                                && effectiveMastery.getOrDefault(goalId, 0.0) >= 0.9);
+                if (siblingCompleted) {
+                    continue;
+                }
+
+                options.putIfAbsent(
+                        sibling.syntheticGoalId(),
+                        toCompositionStructureFrontierGoal(sibling.syntheticGoalId(), "Scope expansion"));
+                break;
+            }
+        }
+
+        return new ArrayList<>(options.values());
     }
 
     private Map<String, Set<String>> buildParentMap(Map<String, LearningGoal> allGoals) {

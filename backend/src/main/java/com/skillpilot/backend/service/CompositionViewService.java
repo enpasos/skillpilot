@@ -82,6 +82,24 @@ public class CompositionViewService {
                 List.copyOf(referencedGoalIds));
     }
 
+    public List<CompositionStructureResolution> findFollowingStructureSiblings(String syntheticGoalId) {
+        CompositionStructureReference reference = parseStructureReference(syntheticGoalId);
+        if (reference == null) {
+            return Collections.emptyList();
+        }
+
+        Map<String, Object> view = findViewById(reference.viewId());
+        if (view == null) {
+            return Collections.emptyList();
+        }
+
+        List<CompositionStructureResolution> siblings = findFollowingStructureSiblings(
+                view.get("rootNodes"),
+                reference.viewId(),
+                reference.nodeId());
+        return siblings == null ? Collections.emptyList() : siblings;
+    }
+
     private record CompositionStructureReference(String viewId, String nodeId) {
     }
 
@@ -104,6 +122,50 @@ public class CompositionViewService {
             return null;
         }
         return new CompositionStructureReference(viewId, nodeId);
+    }
+
+    private static List<CompositionStructureResolution> findFollowingStructureSiblings(
+            Object rawNodes,
+            String viewId,
+            String nodeId) {
+        List<Map<String, Object>> nodes = asNodeList(rawNodes);
+        for (int index = 0; index < nodes.size(); index += 1) {
+            Map<String, Object> node = nodes.get(index);
+            if ("structure".equals(asString(node.get("kind"))) && nodeId.equals(asString(node.get("id")))) {
+                List<CompositionStructureResolution> siblings = new ArrayList<>();
+                for (int siblingIndex = index + 1; siblingIndex < nodes.size(); siblingIndex += 1) {
+                    Map<String, Object> sibling = nodes.get(siblingIndex);
+                    if (!"structure".equals(asString(sibling.get("kind")))) {
+                        continue;
+                    }
+                    String siblingNodeId = asString(sibling.get("id"));
+                    if (!StringUtils.hasText(siblingNodeId)) {
+                        continue;
+                    }
+                    LinkedHashSet<String> referencedGoalIds = new LinkedHashSet<>();
+                    collectReferencedGoalIds(sibling, referencedGoalIds);
+                    if (referencedGoalIds.isEmpty()) {
+                        continue;
+                    }
+                    siblings.add(new CompositionStructureResolution(
+                            COMPOSITION_SYNTHETIC_PREFIX + viewId + COMPOSITION_STRUCTURE_SEPARATOR + siblingNodeId,
+                            viewId,
+                            siblingNodeId,
+                            asString(sibling.get("label")),
+                            List.copyOf(referencedGoalIds)));
+                }
+                return siblings;
+            }
+
+            List<CompositionStructureResolution> childMatch = findFollowingStructureSiblings(
+                    node.get("children"),
+                    viewId,
+                    nodeId);
+            if (childMatch != null) {
+                return childMatch;
+            }
+        }
+        return null;
     }
 
     public Map<String, Object> findMatchingView(String landscapeId, Map<String, String> requestedScope) {
