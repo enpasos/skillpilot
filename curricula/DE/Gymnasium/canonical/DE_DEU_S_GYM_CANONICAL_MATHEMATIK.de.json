@@ -895,7 +895,7 @@
       "description": "Gemeinsame Wurzel für Mathematik am Gymnasium in Deutschland. Die Baseline bündelt einen kanonischen Mathematik-Graphen über Sekundarstufe I und II mit Jahrgangsankern, fachlichen Korridoren und anschlussfähigen Oberstufenzielen.",
       "descriptionEn": "Shared root for mathematics at Gymnasium in Germany. The baseline bundles one canonical mathematics graph across lower and upper secondary with year anchors, content corridors, and upper-secondary continuation goals.",
       "core": true,
-      "weight": 611,
+      "weight": 613,
       "tags": [
         "root",
         "canonical",
@@ -6043,7 +6043,7 @@
       "description": "Cluster für den späteren Sek-I-Übergang von Dreieckstrigonometrie zu anspruchsvolleren Raumproblemen. Der Korridor verbindet rechtwinklige und allgemeine trigonometrische Verfahren mit späteren raumgeometrischen Anwendungen auf Körper, Winkel und Modellierung.",
       "descriptionEn": "Cluster for the later lower-secondary transition from triangle trigonometry to more demanding spatial problems. The corridor connects right-triangle and general trigonometric methods with later spatial applications involving solids, angles, and modelling.",
       "core": true,
-      "weight": 9,
+      "weight": 11,
       "tags": [
         "canonical",
         "phase:SekI",
@@ -6792,7 +6792,7 @@
       "description": "Cluster für geometrische Grundvorstellungen und Raumvorstellungen aus der gymnasialen Sekundarstufe I. Der Korridor ist jetzt explizit in frühe Geometrie und Raumvorstellungen, spätere Figuren-, Abbildungs- und Satzgeometrie, spätere Flächen-, Kreis- und Körpervorstellungen sowie die trigonometrische Brücke mit späteren Raumproblemen gegliedert und ist zusätzlich an die kanonischen Jahrgangsanker J5 bis J10 angebunden.",
       "descriptionEn": "Cluster for lower-secondary geometry and spatial reasoning in Gymnasium. The corridor is now explicitly structured into early geometry and spatial imagination, later figure/transformation/theorem geometry, later area/circle/solids concepts, and the trigonometric bridge with later spatial problems, and is additionally linked to the canonical year anchors J5 to J10.",
       "core": true,
-      "weight": 34,
+      "weight": 36,
       "tags": [
         "canonical",
         "phase:SekI",
@@ -7181,7 +7181,7 @@
       "description": "Cluster für Größenvorstellungen, proportionale und umgekehrt proportionale Zusammenhänge sowie trigonometrische Anwendungen aus der gymnasialen Sekundarstufe I. Der Korridor verbindet Einheiten und Maßstab, Prozentrechnung, proportionale Zuordnungen, Ähnlichkeit, Dreieckstrigonometrie und den Übergang zu Sinus- und Kosinusfunktionen und ist zusätzlich an die kanonischen Jahrgangsanker J5 bis J10 angebunden.",
       "descriptionEn": "Cluster for measurement concepts, proportional and inverse-proportional relations, and trigonometric applications from lower-secondary Gymnasium mathematics. The corridor connects units and scale, percentage calculations, proportional mappings, similarity, triangle trigonometry, and the transition to sine and cosine functions and is additionally attached to the canonical year anchors J5 to J10.",
       "core": true,
-      "weight": 17,
+      "weight": 19,
       "tags": [
         "canonical",
         "phase:SekI",
@@ -9786,7 +9786,7 @@
       "description": "Kanonischer Jahrgangsstufenanker für J9 der gymnasialen Sekundarstufe I in Mathematik. Er bindet hier quadratische, stochastische, ähnlichkeitstheoretische, potenzbezogene, trigonometrische und koordinatengeometrische Anschlussziele an.",
       "descriptionEn": "Canonical year anchor for year 9 in lower-secondary Gymnasium mathematics. It attaches quadratic, stochastic, similarity-based, power-related, trigonometric, and coordinate-geometry bridge goals here.",
       "core": true,
-      "weight": 27,
+      "weight": 29,
       "tags": [
         "canonical",
         "phase:SekI",
@@ -13270,7 +13270,7 @@
       "description": "Kanonischer Cluster für trigonometrische Brücken in J9. Der Cluster trennt rechtwinklige Dreieckstrigonometrie vom weiterführenden Einsatz von Einheitskreisvorstellungen, Sinus- und Kosinussatz.",
       "descriptionEn": "Canonical cluster for trigonometric bridges in year 9. It separates right-triangle trigonometry from the more advanced use of unit-circle reasoning together with the sine and cosine laws.",
       "core": true,
-      "weight": 3,
+      "weight": 5,
       "tags": [
         "canonical"
       ],
@@ -13380,7 +13380,7 @@
       "description": "Kanonischer Cluster für den J9-Übergang zwischen Sinus- und Kosinuswerten am Einheitskreis im Gradmaß und dem Einsatz von Sinus- und Kosinussatz in allgemeinen Dreiecken.",
       "descriptionEn": "Canonical cluster for the year-9 transition between unit-circle based sine/cosine values in degree measure and the use of the sine and cosine laws in general triangles.",
       "core": true,
-      "weight": 2,
+      "weight": 4,
       "tags": [
         "canonical"
       ],
@@ -13402,6 +13402,8 @@
       },
       "contains": [
         "97b3232d-b89f-48b8-9fa1-7a25a1bdbb3d",
+        "0c8c1ae9-135e-4fe5-bf67-e497eb3a9909",
+        "786ae588-a4fb-40e6-a7f5-113cfc2bfd0f",
         "ef40a255-b6d4-4a1e-93b1-b79e65fb585d"
       ],
       "requires": [
@@ -13482,6 +13484,114 @@
       "type": "atomic"
     },
     {
+      "id": "0c8c1ae9-135e-4fe5-bf67-e497eb3a9909",
+      "shortKey": "canonical_math_sek1_j9_derive_sine_law",
+      "title": "Sinussatz herleiten",
+      "titleEn": "Derive the sine law",
+      "description": "Die lernende Person kann den Sinussatz in einem allgemeinen Dreieck mithilfe von Höhenzerlegungen herleiten und die entstehenden Seiten-Winkel-Verhältnisse nachvollziehbar begründen.",
+      "descriptionEn": "The learner can derive the sine law in a general triangle using altitude decompositions and justify the resulting side-angle ratios in a comprehensible way.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K1.1",
+          "K2.1",
+          "K4.1"
+        ],
+        "guidingIdeas": [
+          "L2",
+          "L4"
+        ],
+        "phase": "J9",
+        "area": "Geometry",
+        "topicCode": "CANONICAL.MATH.SEK1.J9.7B2A"
+      },
+      "contains": [],
+      "requires": [
+        "97b3232d-b89f-48b8-9fa1-7a25a1bdbb3d"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "786ae588-a4fb-40e6-a7f5-113cfc2bfd0f",
+      "shortKey": "canonical_math_sek1_j9_derive_cosine_law",
+      "title": "Kosinussatz herleiten",
+      "titleEn": "Derive the cosine law",
+      "description": "Die lernende Person kann den Kosinussatz in einem allgemeinen Dreieck mithilfe geeigneter Zerlegungen oder Koordinatenüberlegungen herleiten und den Satz des Pythagoras als Spezialfall erklären.",
+      "descriptionEn": "The learner can derive the cosine law in a general triangle using suitable decompositions or coordinate reasoning and explain the Pythagorean theorem as a special case.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K1.1",
+          "K2.1",
+          "K4.1"
+        ],
+        "guidingIdeas": [
+          "L2",
+          "L4"
+        ],
+        "phase": "J9",
+        "area": "Geometry",
+        "topicCode": "CANONICAL.MATH.SEK1.J9.7B2B"
+      },
+      "contains": [],
+      "requires": [
+        "97b3232d-b89f-48b8-9fa1-7a25a1bdbb3d"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "type": "atomic"
+    },
+    {
       "id": "ef40a255-b6d4-4a1e-93b1-b79e65fb585d",
       "shortKey": "canonical_math_sek1_j9_prove_and_apply_sine_cosine_laws",
       "title": "Sinus- und Kosinussatz begründen und anwenden",
@@ -13511,7 +13621,8 @@
       },
       "contains": [],
       "requires": [
-        "71a483ba-9680-4654-bb5e-5ab5427f0919"
+        "0c8c1ae9-135e-4fe5-bf67-e497eb3a9909",
+        "786ae588-a4fb-40e6-a7f5-113cfc2bfd0f"
       ],
       "applicability": {
         "jurisdiction": [
@@ -22361,6 +22472,8 @@
         "30c013ac-5164-4c3c-8bc1-9a10b2f49533",
         "80956a2c-5811-4021-863e-95675bec31f5",
         "97b3232d-b89f-48b8-9fa1-7a25a1bdbb3d",
+        "0c8c1ae9-135e-4fe5-bf67-e497eb3a9909",
+        "786ae588-a4fb-40e6-a7f5-113cfc2bfd0f",
         "ef40a255-b6d4-4a1e-93b1-b79e65fb585d",
         "3e4032bd-4d8c-4e72-bfdd-64a34df053c9",
         "e322310f-f33a-485d-bc23-2412a6b8fa12",
