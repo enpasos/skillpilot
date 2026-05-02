@@ -1,4 +1,5 @@
 import { CANONICAL_GYMNASIUM_ROOT_ID } from './curriculumDisplay'
+import { GLOBAL_STAGE_SCOPE_CONFIG_IDS } from './personalCurriculumStageScope'
 import { SKILLPILOT_GPT_URL_DE } from './skillpilotGpt'
 
 export type Abi26CourseLevel = 'GK' | 'LK'
@@ -88,19 +89,37 @@ export const loadAbi26CampaignContext = (): Abi26CampaignContext | null => {
 export const buildAbi26PersonalCurriculumConfig = (
   courseLevel: Abi26CourseLevel,
   baseConfig: Abi26PersonalCurriculumConfig = {},
-): Abi26PersonalCurriculumConfig => ({
-  ...baseConfig,
-  [ABI26_ROOT_CURRICULUM_ID]: {
+): Abi26PersonalCurriculumConfig => {
+  const next: Abi26PersonalCurriculumConfig = {}
+
+  Object.entries(baseConfig).forEach(([landscapeId, value]) => {
+    next[landscapeId] = {
+      ...value,
+      selected: false,
+    }
+  })
+
+  next[ABI26_ROOT_CURRICULUM_ID] = {
     ...baseConfig[ABI26_ROOT_CURRICULUM_ID],
     selected: true,
     filterId: ABI26_ROOT_FILTER_ID,
-  },
-  [ABI26_MATH_LANDSCAPE_ID]: {
+  }
+  next[ABI26_MATH_LANDSCAPE_ID] = {
     ...baseConfig[ABI26_MATH_LANDSCAPE_ID],
     selected: true,
     filterId: courseLevel,
-  },
-})
+  }
+  next[GLOBAL_STAGE_SCOPE_CONFIG_IDS.sek1] = {
+    ...baseConfig[GLOBAL_STAGE_SCOPE_CONFIG_IDS.sek1],
+    selected: false,
+  }
+  next[GLOBAL_STAGE_SCOPE_CONFIG_IDS.sek2] = {
+    ...baseConfig[GLOBAL_STAGE_SCOPE_CONFIG_IDS.sek2],
+    selected: true,
+  }
+
+  return next
+}
 
 export const buildAbi26CockpitUrl = (context: Abi26CampaignContext, skillpilotId: string) => {
   const focusGoalId = ABI26_FOCUS_GOAL_BY_LEVEL[context.courseLevel]

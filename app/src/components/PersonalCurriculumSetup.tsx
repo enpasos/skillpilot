@@ -94,11 +94,17 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
     const compatibilityCopy = setupCopy.compatibility
     const computedInitial = React.useMemo(() => {
         const initial: PersonalCurriculumConfig = {}
+        const hasExplicitInitialConfig = Object.keys(initialConfig).length > 0
+        const hasSelectedInitialChild = availableLandscapes.some((landscape) =>
+            landscape.landscapeId !== rootLandscapeId && initialConfig[landscape.landscapeId]?.selected === true
+        )
         availableLandscapes.forEach((l) => {
             const existing = initialConfig[l.landscapeId]
+            const defaultSelected = !hasExplicitInitialConfig
+                || (l.landscapeId === rootLandscapeId && hasSelectedInitialChild)
             const defaultFilterId = l.filters && l.filters.length > 0 ? l.filters[0].id : undefined
             initial[l.landscapeId] = {
-                selected: existing?.selected ?? true,
+                selected: existing?.selected ?? defaultSelected,
                 ...(existing?.filterId ? { filterId: existing.filterId } : defaultFilterId ? { filterId: defaultFilterId } : {})
             }
         })

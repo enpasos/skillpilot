@@ -15,6 +15,7 @@ import {
   buildAbi26CockpitUrl,
   buildAbi26PersonalCurriculumConfig,
 } from '../src/utils/abi26MatheCampaign'
+import { GLOBAL_STAGE_SCOPE_CONFIG_IDS } from '../src/utils/personalCurriculumStageScope'
 
 const explicitRouteSelection = getNextVisibleLearnerGoalSelection({
   currentGoalId: 'root-goal',
@@ -134,7 +135,7 @@ assert.equal(
 )
 
 const abi26PersonalConfig = buildAbi26PersonalCurriculumConfig('GK', {
-  existing: { selected: false, filterId: 'keep' },
+  existing: { selected: true, filterId: 'keep' },
 })
 
 assert.deepEqual(
@@ -150,7 +151,17 @@ assert.deepEqual(
 assert.deepEqual(
   abi26PersonalConfig.existing,
   { selected: false, filterId: 'keep' },
-  'Abi26 personal curriculum updates must preserve unrelated scope entries.',
+  'Abi26 personal curriculum updates must deselect unrelated subject entries.',
+)
+assert.deepEqual(
+  abi26PersonalConfig[GLOBAL_STAGE_SCOPE_CONFIG_IDS.sek1],
+  { selected: false },
+  'Abi26 personal curriculum must not include Sekundarstufe I.',
+)
+assert.deepEqual(
+  abi26PersonalConfig[GLOBAL_STAGE_SCOPE_CONFIG_IDS.sek2],
+  { selected: true },
+  'Abi26 personal curriculum must include Sekundarstufe II.',
 )
 
 const canonicalMathLandscape = JSON.parse(
