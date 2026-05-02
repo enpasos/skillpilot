@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useState } from 'react'
-import { Link, useLocation } from 'react-router-dom'
-import { ArrowRight, Copy, ExternalLink, RefreshCcw, Send } from 'lucide-react'
+import { useLocation } from 'react-router-dom'
+import { ArrowRight, BookOpenCheck, Copy, ExternalLink, LayoutDashboard, MessageCircle, RefreshCcw, Send } from 'lucide-react'
 import {
   ABI26_CAMPAIGN_SLUG,
   ABI26_FEEDBACK_URL,
@@ -63,6 +63,7 @@ export const Abi26MatheStartView: React.FC = () => {
     () => (skillpilotId ? buildAbi26StartPrompt(skillpilotId, context) : ''),
     [skillpilotId, context],
   )
+  const courseLevelLabel = courseLevel === 'LK' ? 'Leistungskurs' : 'Grundkurs'
 
   useEffect(() => {
     // Campaign entry should always start in German.
@@ -215,24 +216,43 @@ export const Abi26MatheStartView: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-chat-bg text-text-primary px-4 py-8 sm:px-6">
-      <div className="mx-auto w-full max-w-3xl space-y-6">
-        <div className="rounded-2xl border border-border-color bg-white/80 dark:bg-slate-900/70 p-6 shadow-sm">
+      <div className="mx-auto w-full max-w-4xl space-y-6">
+        <div className="rounded-lg border border-border-color bg-white/80 p-6 shadow-sm dark:bg-slate-900/70 sm:p-7">
           <div className="inline-flex items-center gap-2 rounded-full border border-sky-300/60 bg-sky-50 px-3 py-1 text-xs font-semibold text-sky-700 dark:border-sky-500/30 dark:bg-sky-900/20 dark:text-sky-300">
             <Send size={14} />
-            Abi 2026 Mathe Hessen
+            Hessen Mathematik Abi 2026
           </div>
-          <h1 className="mt-4 text-3xl font-bold tracking-tight text-slate-800 dark:text-slate-100 sm:text-4xl">In 60 Sekunden zu deinem Mathe-Abi-Cockpit</h1>
-          <p className="mt-4 text-sm text-text-secondary leading-relaxed">Du probierst hier in Ruhe aus: erst ID erstellen, dann optional im nächsten Schritt ins Cockpit oder zu SkillPilot GPT.</p>
-          <div className="mt-4 rounded-lg border border-border-color bg-slate-50 px-3 py-3 text-xs text-text-secondary dark:bg-slate-800/40">
-            <p className="font-semibold text-text-primary">Was dich hier erwartet</p>
-            <ul className="mt-2 list-disc pl-5 space-y-1">
-              <li>Pseudonyme SkillPilot-ID ohne Registrierung</li>
-              <li>Vorkonfiguriertes Abi-Setup für Hessen Mathematik</li>
-              <li>Danach zwei getrennte Optionen: Cockpit oder SkillPilot GPT (jeweils neues Tab)</li>
-            </ul>
+          <h1 className="mt-4 max-w-3xl text-3xl font-bold tracking-tight text-slate-800 dark:text-slate-100 sm:text-4xl">
+            Hessische Mathe-Abiaufgaben ausprobieren
+          </h1>
+          <p className="mt-4 max-w-3xl text-base leading-relaxed text-text-secondary">
+            Wähle Grundkurs oder Leistungskurs. SkillPilot bereitet dir dann das Abi-2026-Klausurbeispiel
+            vor, ohne Registrierung und ohne Namen oder E-Mail-Adresse.
+          </p>
+
+          <div className="mt-6 grid gap-4 md:grid-cols-2">
+            <div className="flex gap-3">
+              <LayoutDashboard className="mt-1 shrink-0 text-sky-600 dark:text-sky-300" size={22} />
+              <div>
+                <h2 className="text-sm font-bold text-slate-800 dark:text-slate-100">Cockpit</h2>
+                <p className="mt-1 text-sm leading-relaxed text-text-secondary">
+                  Deine Browser-Übersicht: Klausurbeispiel, Lernziel, Fortschritt und nächster sinnvoller Schritt.
+                </p>
+              </div>
+            </div>
+            <div className="flex gap-3">
+              <MessageCircle className="mt-1 shrink-0 text-sky-600 dark:text-sky-300" size={22} />
+              <div>
+                <h2 className="text-sm font-bold text-slate-800 dark:text-slate-100">SkillPilot Chat</h2>
+                <p className="mt-1 text-sm leading-relaxed text-text-secondary">
+                  Der KI-Trainer in ChatGPT: Fragen stellen, Rechenwege erklären lassen oder ein Foto deiner Lösung hochladen.
+                </p>
+              </div>
+            </div>
           </div>
-          <p className="mt-3 rounded-lg border border-emerald-300/40 bg-emerald-50 px-3 py-2 text-xs text-emerald-900 dark:border-emerald-600/30 dark:bg-emerald-900/20 dark:text-emerald-200">
-            SkillPilot ist kostenlos, Open Source, Verbesserungsvorschläge willkommen.
+
+          <p className="mt-5 text-sm text-text-secondary">
+            Beide Ansichten nutzen dieselbe anonyme Start-ID, damit Cockpit und Chat denselben Stand sehen.
           </p>
           {hasInvalidTrack && (
             <p className="mt-3 rounded-lg border border-amber-300/40 bg-amber-50 px-3 py-2 text-xs text-amber-900 dark:border-amber-500/30 dark:bg-amber-900/20 dark:text-amber-200">
@@ -241,30 +261,40 @@ export const Abi26MatheStartView: React.FC = () => {
           )}
         </div>
 
-        <div className="rounded-2xl border border-border-color bg-white/80 dark:bg-slate-900/70 p-6 shadow-sm">
-          <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100">Schnellpersonalisierung für Dich</h2>
-          <div className="flex flex-wrap items-center gap-2 text-xs text-text-secondary">
-            <span className="rounded-full border border-border-color px-2 py-1">Bundesland: {formatFilterDisplayLabel(ABI26_ROOT_FILTER_ID, 'de')}</span>
-            <span className="rounded-full border border-border-color px-2 py-1">Bereich: Gymnasiale Oberstufe</span>
-            <span className="rounded-full border border-border-color px-2 py-1">Fach: Mathematik</span>
-            <span className="rounded-full border border-border-color px-2 py-1">Fokus: Abi 2026 / Klausurbeispiel 1</span>
+        <div className="rounded-lg border border-border-color bg-white/80 p-6 shadow-sm dark:bg-slate-900/70">
+          <h2 className="flex items-center gap-2 text-xl font-bold text-slate-800 dark:text-slate-100">
+            <BookOpenCheck size={22} className="text-sky-600 dark:text-sky-300" />
+            Kursniveau wählen
+          </h2>
+          <p className="mt-2 text-sm leading-relaxed text-text-secondary">
+            Die Aufgabe ist fest voreingestellt: das hessische Abi-2026-Klausurbeispiel 1.
+            Du wählst hier nur, ob du mit der GK- oder LK-Version starten willst.
+          </p>
+          <div className="mt-3 flex flex-wrap items-center gap-2 text-xs text-text-secondary">
+            <span className="rounded-full border border-border-color px-2 py-1">{formatFilterDisplayLabel(ABI26_ROOT_FILTER_ID, 'de')}</span>
+            <span className="rounded-full border border-border-color px-2 py-1">Mathematik</span>
+            <span className="rounded-full border border-border-color px-2 py-1">Abi 2026</span>
+            <span className="rounded-full border border-border-color px-2 py-1">Klausurbeispiel 1</span>
           </div>
 
           <div className="mt-5">
-            <p className="text-xs font-semibold uppercase tracking-wide text-text-secondary">Kursniveau</p>
-            <div className="mt-2 flex gap-2">
+            <p className="text-sm font-semibold text-slate-800 dark:text-slate-100">Kursniveau</p>
+            <div className="mt-2 grid gap-2 sm:grid-cols-2">
               {TRACK_OPTIONS.map((option) => (
                 <button
                   key={option}
                   type="button"
                   onClick={() => setCourseLevel(option)}
-                  className={`rounded-full border px-4 py-2 text-sm font-semibold transition-colors ${
+                  className={`rounded-lg border px-4 py-3 text-left text-sm transition-colors ${
                     courseLevel === option
-                      ? 'border-sky-500 bg-sky-600 text-white'
+                      ? 'border-sky-500 bg-sky-600 text-white shadow-sm'
                       : 'border-border-color bg-white text-text-primary hover:border-sky-400 dark:bg-slate-800'
                   }`}
                 >
-                  {option}
+                  <span className="block font-bold">{option}</span>
+                  <span className={`mt-1 block text-xs ${courseLevel === option ? 'text-sky-50' : 'text-text-secondary'}`}>
+                    {option === 'LK' ? 'Leistungskurs-Aufgaben' : 'Grundkurs-Aufgaben'}
+                  </span>
                 </button>
               ))}
             </div>
@@ -279,11 +309,11 @@ export const Abi26MatheStartView: React.FC = () => {
             {loading ? (
               <>
                 <RefreshCcw size={16} className="animate-spin" />
-                SkillPilot-ID wird erstellt ...
+                Start wird vorbereitet ...
               </>
             ) : (
               <>
-                Kostenlose SkillPilot-ID erstellen
+                Kostenlosen Start vorbereiten
                 <ArrowRight size={16} />
               </>
             )}
@@ -306,7 +336,10 @@ export const Abi26MatheStartView: React.FC = () => {
           {skillpilotId && (
             <div className="mt-4 space-y-3 rounded-lg border border-border-color bg-slate-50 p-4 dark:bg-slate-800/40">
               <div>
-                <p className="text-xs uppercase tracking-wide text-text-secondary">Deine SkillPilot-ID</p>
+                <p className="text-sm font-semibold text-slate-800 dark:text-slate-100">Dein Start ist vorbereitet</p>
+                <p className="mt-1 text-xs text-text-secondary">
+                  Diese ID ist nur ein anonymer Schlüssel für deinen Lernstand. Du brauchst kein Konto.
+                </p>
                 <div className="mt-1 flex items-center justify-between gap-3 rounded-md border border-border-color bg-white px-3 py-2 font-mono text-sm dark:bg-slate-900">
                   <span className="break-all">{skillpilotId}</span>
                   <button
@@ -319,22 +352,23 @@ export const Abi26MatheStartView: React.FC = () => {
                   </button>
                 </div>
               </div>
-              <div className="rounded-md border border-border-color bg-white px-3 py-2 text-xs text-text-secondary dark:bg-slate-900">
-                <p className="font-semibold text-text-primary">Vorkonfiguriert für dich:</p>
-                <ul className="mt-1 list-disc pl-5 space-y-1">
-                  <li>Curriculum: Mathematik Oberstufe Hessen (KC 2024)</li>
-                  <li>Kursniveau: {courseLevel}</li>
-                  <li>Scope: Abiturprüfung Mathematik</li>
-                  <li>Fokus: Klausurbeispiel 1</li>
-                  <li>Sprache: Deutsch</li>
-                </ul>
+              <div className="grid gap-2 text-xs text-text-secondary sm:grid-cols-2">
+                <div className="rounded-md border border-border-color bg-white px-3 py-2 dark:bg-slate-900">
+                  Hessen Mathematik
+                </div>
+                <div className="rounded-md border border-border-color bg-white px-3 py-2 dark:bg-slate-900">
+                  {courseLevelLabel}
+                </div>
+                <div className="rounded-md border border-border-color bg-white px-3 py-2 dark:bg-slate-900">
+                  Abi 2026 Klausurbeispiel 1
+                </div>
+                <div className="rounded-md border border-border-color bg-white px-3 py-2 dark:bg-slate-900">
+                  Deutsch
+                </div>
               </div>
               <p className="text-xs text-text-secondary">
-                Du entscheidest jetzt selbst, ob du ins Cockpit oder direkt in den Chat springst.
-                {' '}
-                Du kannst auch beides parallel öffnen: im Chat arbeiten und im Cockpit die Updates beobachten.
-                {' '}
-                Wenn du den Link auf deinem Handy öffnest, kannst du Aufgaben auf Papier lösen, mit dem Handy abfotografieren und einfach im Chat hochladen.
+                Empfohlen: Cockpit öffnen, dann den Chat daneben starten. Du kannst deine Lösung auch auf Papier
+                rechnen, fotografieren und im Chat hochladen.
               </p>
               {copiedState === 'id' && (
                 <p className="text-xs text-emerald-600 dark:text-emerald-400">ID wurde in die Zwischenablage kopiert.</p>
@@ -344,9 +378,15 @@ export const Abi26MatheStartView: React.FC = () => {
         </div>
 
         {skillpilotId && (
-          <div className="rounded-2xl border border-border-color bg-white/80 dark:bg-slate-900/70 p-6 shadow-sm">
-            <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100">1. Sprung ins Cockpit</h2>
-            <p className="mt-2 text-sm text-text-secondary">Öffnet dein vorkonfiguriertes Lern-Cockpit in einem neuen Browser-Tab.</p>
+          <div className="rounded-lg border border-border-color bg-white/80 p-6 shadow-sm dark:bg-slate-900/70">
+            <h2 className="flex items-center gap-2 text-xl font-bold text-slate-800 dark:text-slate-100">
+              <LayoutDashboard size={22} className="text-sky-600 dark:text-sky-300" />
+              Cockpit öffnen
+            </h2>
+            <p className="mt-2 text-sm leading-relaxed text-text-secondary">
+              Im Cockpit siehst du das voreingestellte Klausurbeispiel, dein aktuelles Lernziel und deinen Fortschritt.
+              Es bleibt als Übersicht offen, während du im Chat Fragen stellst oder Lösungen prüfen lässt.
+            </p>
             {cockpitUrl && (
               <a
                 href={cockpitUrl}
@@ -363,9 +403,15 @@ export const Abi26MatheStartView: React.FC = () => {
         )}
 
         {skillpilotId && (
-          <div className="rounded-2xl border border-border-color bg-white/80 dark:bg-slate-900/70 p-6 shadow-sm">
-            <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100">2. Sprung in SkillPilot GPT</h2>
-            <p className="mt-2 text-sm text-text-secondary">Kopiere den Startprompt mit deiner ID und öffne den Chat in einem neuen Browser-Tab.</p>
+          <div className="rounded-lg border border-border-color bg-white/80 p-6 shadow-sm dark:bg-slate-900/70">
+            <h2 className="flex items-center gap-2 text-xl font-bold text-slate-800 dark:text-slate-100">
+              <MessageCircle size={22} className="text-sky-600 dark:text-sky-300" />
+              SkillPilot Chat öffnen
+            </h2>
+            <p className="mt-2 text-sm leading-relaxed text-text-secondary">
+              Der Chat kennt deinen Lernstand erst, wenn du ihm deine Start-ID gibst. Kopiere dafür den Text unten,
+              öffne den SkillPilot Chat und füge ihn dort ein.
+            </p>
             <div className="mt-4 rounded-lg border border-border-color bg-slate-50 p-3 text-xs leading-relaxed text-text-secondary dark:bg-slate-800/40">
               <pre className="whitespace-pre-wrap font-mono">{startPrompt}</pre>
             </div>
@@ -385,26 +431,25 @@ export const Abi26MatheStartView: React.FC = () => {
                 onClick={handleGptStartClicked}
                 className="inline-flex items-center gap-2 rounded-full border border-border-color bg-white px-4 py-2 text-sm font-semibold text-text-primary hover:border-sky-400 dark:bg-slate-800"
               >
-                SkillPilot GPT im neuen Tab öffnen
+                ChatGPT öffnen
                 <ExternalLink size={14} />
               </a>
             </div>
-            <p className="mt-2 text-xs text-text-secondary">Der Button kopiert den kompletten Starttext in die Zwischenablage. Danach im SkillPilot GPT einfach einfügen.</p>
+            <p className="mt-2 text-xs text-text-secondary">
+              Im Chat kannst du dir Hinweise geben lassen, Teilaufgaben üben oder ein Foto deiner Rechnung hochladen.
+            </p>
             {copiedState === 'prompt' && (
               <p className="mt-2 text-xs text-emerald-600 dark:text-emerald-400">Startprompt wurde kopiert.</p>
             )}
           </div>
         )}
 
-        <div className="flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-border-color bg-white/80 dark:bg-slate-900/70 p-4 text-xs text-text-secondary">
-          <span>Kostenlos, Open Source, Verbesserungsvorschläge willkommen.</span>
+        <div className="flex flex-wrap items-center justify-between gap-3 rounded-lg border border-border-color bg-white/80 p-4 text-xs text-text-secondary dark:bg-slate-900/70">
+          <span>Ohne Registrierung. Deine Start-ID enthält keinen Namen und keine E-Mail-Adresse.</span>
           <div className="flex items-center gap-3">
             <a href={ABI26_FEEDBACK_URL} target="_blank" rel="noopener noreferrer" className="hover:text-sky-500">
-              Feedback geben
+              Problem melden
             </a>
-            <Link to="/curricula" className="hover:text-sky-500">
-              Alle Curricula
-            </Link>
           </div>
         </div>
       </div>
