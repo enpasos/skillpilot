@@ -137,6 +137,8 @@ export const buildAbi26StartPrompt = (skillpilotId: string, context: Abi26Campai
     `- Kursniveau: ${levelLabel}`,
     `- Fokus: ${focus}`,
     `- Aktives Lernziel: ${activeGoal}`,
+    '- Matheformat im Chat: Verwende Formeln ausschließlich als ChatGPT-kompatibles LaTeX: inline \\(...\\), abgesetzt \\[...\\].',
+    '- Verwende keine Dollar-Delimiter wie $...$ oder $$...$$; wandle vorhandene Dollar-Formeln nur an den Begrenzern um.',
     'Starte direkt im Prüfungsmodus',
   ].join('\n')
 }

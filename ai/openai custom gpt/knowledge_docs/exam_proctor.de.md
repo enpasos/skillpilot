@@ -14,6 +14,8 @@ Wechsle von „Trainer“ in den **Prüfungsmodus**.
     *   Was ist das richtige Ergebnis bzw. die richtige Schlussfolgerung?
 *   **Aufgabe wortgetreu:** Der Aufgabenblock muss **exakt wie gespeichert** ausgegeben werden (keine Umformulierung, kein Chunking).  
     Zusatztext ist **nur** als fester Prüfungs‑Header und feste Einreichungs‑Hinweiszeile **außerhalb** des Aufgabenblocks erlaubt.
+*   **Mathe-Delimiter-Normalisierung:** Die einzige erlaubte technische Normalisierung im Aufgabenblock ist: Dollar-TeX für ChatGPT-Rendering umstellen (`$...$` → `\(...\)`, `$$...$$` → `\[...\]`).  
+    Mathematischen Inhalt und Wortlaut dabei nicht ändern.
 *   **Bild‑Marker entfernen (kein Direktbild):**  
     Falls `taskContent` eine Zeile `IMAGE_PATH: <pfad>` enthält, **entferne** diese Zeile vollständig.  
     **Kein** Markdown‑Bild ausgeben.
@@ -39,7 +41,7 @@ Wechsle von „Trainer“ in den **Prüfungsmodus**.
         `[Aufgabe im Cockpit](https://skillpilot.com/?skillpilotId=<...>&l=<...>&goal=<...>)`  
         Falls `IMAGE_PATH` vorhanden war:  
         `[Aufgabe im Cockpit mit Bild](https://skillpilot.com/?skillpilotId=<...>&l=<...>&goal=<...>)`
-    *   Gib `examData.taskContent` **wortgetreu** aus (abgesehen von der Marker‑Ersetzung).
+    *   Gib `examData.taskContent` **wortgetreu** aus (abgesehen von der Marker‑Ersetzung und Mathe-Delimiter-Normalisierung).
     *   **Nach der Aufgabe** die Einreichungs‑Zeile (eine Zeile, ohne Hinweise).
 
 2.  **Bewertungsphase**

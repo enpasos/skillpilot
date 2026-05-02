@@ -350,8 +350,8 @@ public class LearnerAiController {
         }
         return new com.skillpilot.backend.api.FrontierGoal(
                 goal.id(),
-                goal.title(),
-                goal.description(),
+                normalizeMathDelimitersForChat(goal.title()),
+                normalizeMathDelimitersForChat(goal.description()),
                 goal.type(),
                 goal.nodeKind(),
                 goal.reason(),
@@ -399,8 +399,8 @@ public class LearnerAiController {
 
         return new com.skillpilot.backend.api.FrontierGoal(
                 goal.id(),
-                goal.title(),
-                goal.description(),
+                normalizeMathDelimitersForChat(goal.title()),
+                normalizeMathDelimitersForChat(goal.description()),
                 goal.type(),
                 goal.nodeKind(),
                 goal.reason(),
@@ -480,36 +480,36 @@ public class LearnerAiController {
         if (content == null || content.isBlank()) {
             return content;
         }
-        String displayFixed = convertDisplayMathToDollars(content);
-        return convertInlineMathToDollars(displayFixed);
+        String displayFixed = convertDisplayDollarMathForChat(content);
+        return convertInlineDollarMathForChat(displayFixed);
     }
 
-    private String convertDisplayMathToDollars(String content) {
+    private String convertDisplayDollarMathForChat(String content) {
         if (content == null || content.isBlank()) {
             return content;
         }
-        Pattern pattern = Pattern.compile("(?s)\\\\\\[(.+?)\\\\\\]");
+        Pattern pattern = Pattern.compile("(?s)\\$\\$(.+?)\\$\\$");
         Matcher matcher = pattern.matcher(content);
         StringBuffer sb = new StringBuffer();
         while (matcher.find()) {
             String inner = matcher.group(1).trim();
-            String replacement = "$$\n" + inner + "\n$$";
+            String replacement = "\\[\n" + inner + "\n\\]";
             matcher.appendReplacement(sb, Matcher.quoteReplacement(replacement));
         }
         matcher.appendTail(sb);
         return sb.toString();
     }
 
-    private String convertInlineMathToDollars(String content) {
+    private String convertInlineDollarMathForChat(String content) {
         if (content == null || content.isBlank()) {
             return content;
         }
-        Pattern pattern = Pattern.compile("\\\\\\((.+?)\\\\\\)");
+        Pattern pattern = Pattern.compile("(?<!\\\\)\\$(?!\\$)([^$\\n]+?)(?<!\\\\)\\$");
         Matcher matcher = pattern.matcher(content);
         StringBuffer sb = new StringBuffer();
         while (matcher.find()) {
             String inner = matcher.group(1).trim();
-            String replacement = "$" + inner + "$";
+            String replacement = "\\(" + inner + "\\)";
             matcher.appendReplacement(sb, Matcher.quoteReplacement(replacement));
         }
         matcher.appendTail(sb);

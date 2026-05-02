@@ -179,15 +179,18 @@ class LearnerAiControllerTest {
     }
 
     @Test
-    void normalizeMathDelimitersForChat_usesDollarLatexDelimitersForChat() throws Exception {
-        String raw = "Inline \\(Q=900\\\\,\\\\mathrm{kJ}\\) and block \\[\\\\eta=\\\\frac{W}{Q}\\].";
+    void normalizeMathDelimitersForChat_usesChatGptLatexDelimiters() throws Exception {
+        String raw = "Inline $Q=900\\\\,\\\\mathrm{kJ}$ and block $$\n\\\\eta=\\\\frac{W}{Q}\n$$. "
+                + "Existing \\(x\\) and \\[y\\] stay valid.";
 
         String normalized = invokeNormalizeMathDelimitersForChat(raw);
 
-        assertThat(normalized).contains("$Q=900\\\\,\\\\mathrm{kJ}$");
-        assertThat(normalized).contains("$$\n\\\\eta=\\\\frac{W}{Q}\n$$");
-        assertThat(normalized).doesNotContain("\\\\(");
-        assertThat(normalized).doesNotContain("\\\\[");
+        assertThat(normalized).contains("\\(Q=900\\\\,\\\\mathrm{kJ}\\)");
+        assertThat(normalized).contains("\\[\n\\\\eta=\\\\frac{W}{Q}\n\\]");
+        assertThat(normalized).contains("\\(x\\)");
+        assertThat(normalized).contains("\\[y\\]");
+        assertThat(normalized).doesNotContain("$Q=900");
+        assertThat(normalized).doesNotContain("$$");
     }
 
     @Test
@@ -244,8 +247,11 @@ class LearnerAiControllerTest {
         UnifiedLearnerStateResponse state = controller.getLearnerState(skillpilotId);
 
         assertThat(state.activeGoal()).isNotNull();
+        assertThat(state.activeGoal().description()).contains("\\(x\\)");
         assertThat(state.activeGoal().examData()).isNotNull();
         assertThat(state.activeGoal().examData().getTaskContent()).contains("Task body");
+        assertThat(state.activeGoal().examData().getTaskContent()).contains("\\(x\\)");
+        assertThat(state.activeGoal().examData().getTaskContent()).doesNotContain("$x$");
         assertThat(state.stateMachine().activeGoal()).isNotNull();
         assertThat(state.stateMachine().activeGoal().examData()).isNotNull();
         assertThat(state.frontier()).hasSize(1);
@@ -292,12 +298,12 @@ class LearnerAiControllerTest {
 
     private static FrontierGoal examGoal(String goalId) {
         ExamData examData = new ExamData();
-        examData.setTaskContent("Task body");
+        examData.setTaskContent("Task body $x$");
         examData.setSolutionContent("Solution body");
         return new FrontierGoal(
                 goalId,
                 "Exam Goal",
-                "Description",
+                "Description $x$",
                 "atomic",
                 "exam",
                 "Ready",

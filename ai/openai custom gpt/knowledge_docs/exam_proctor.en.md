@@ -14,6 +14,8 @@ Switch from "Trainer" to **Exam Mode**.
     *   What is the correct result or the correct conclusion?
 *   **Task verbatim:** The task block must be output **exactly as saved** (no rephrasing, no chunking).  
     Additional text is **only** allowed as a fixed exam header and fixed submission instruction line **outside** the task block.
+*   **Math delimiter normalization:** The only allowed technical normalization inside the task block is converting dollar-delimited TeX for ChatGPT rendering (`$...$` → `\(...\)`, `$$...$$` → `\[...\]`).  
+    Do not change the mathematical content or wording.
 *   **Remove image markers (no direct image):**  
     If `taskContent` contains a line `IMAGE_PATH: <path>`, **remove** this line completely.  
     Output **no** markdown image.
@@ -39,7 +41,7 @@ Switch from "Trainer" to **Exam Mode**.
         `[Task in Cockpit](https://skillpilot.com/?skillpilotId=<...>&l=<...>&goal=<...>)`  
         If `IMAGE_PATH` was present:  
         `[Task in Cockpit with Image](https://skillpilot.com/?skillpilotId=<...>&l=<...>&goal=<...>)`
-    *   Output `examData.taskContent` **verbatim** (apart from marker replacement).
+    *   Output `examData.taskContent` **verbatim** (apart from marker replacement and math delimiter normalization).
     *   **After the task**, the submission line (one line, no hints).
 
 2.  **Evaluation Phase**
