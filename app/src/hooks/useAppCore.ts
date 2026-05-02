@@ -58,6 +58,7 @@ export function useAppCore({ role, setLearnerMeta, skillpilotId }: AppCoreOption
   const [searchParams, setSearchParams] = useSearchParams()
   const pendingSearchRef = React.useRef<string | null>(null)
   const pendingSelectedGoalNavigationRef = React.useRef<string | null>(null)
+  const pendingFilterFromUrlRef = React.useRef<string | null>(null)
   const currentSearchString = location.search.startsWith('?') ? location.search.slice(1) : location.search
 
   const replaceSearchParamsIfNeeded = useCallback((next: URLSearchParams) => {
@@ -175,12 +176,21 @@ export function useAppCore({ role, setLearnerMeta, skillpilotId }: AppCoreOption
     if (!currentLandscapeEntry) return
     const nextFilter = normalizeActiveFilter(searchParams.get('f'), currentLandscapeEntry.meta.filters ?? [])
     if (nextFilter !== activeFilter) {
+      pendingFilterFromUrlRef.current = nextFilter
       setActiveFilter(nextFilter)
     }
   }, [activeFilter, currentLandscapeEntry, searchParams, setActiveFilter])
 
   useEffect(() => {
     if (!currentLandscapeEntry) return
+    const pendingFilterFromUrl = pendingFilterFromUrlRef.current
+    if (pendingFilterFromUrl) {
+      if (activeFilter !== pendingFilterFromUrl) {
+        return
+      }
+      pendingFilterFromUrlRef.current = null
+    }
+
     const availableFilters = currentLandscapeEntry.meta.filters ?? []
     const normalizedFilter = normalizeActiveFilter(activeFilter, availableFilters)
     if (normalizedFilter !== activeFilter) {
