@@ -8,6 +8,13 @@ import {
 } from '../src/utils/compositionViewRuntime'
 import { normalizeLearnerProjectedEntries } from '../src/utils/learnerTreeProjection'
 import { buildDirectChildrenMap } from '../src/utils/treeProjectionRuntime'
+import {
+  ABI26_MATH_LANDSCAPE_ID,
+  ABI26_ROOT_CURRICULUM_ID,
+  ABI26_ROOT_FILTER_ID,
+  buildAbi26CockpitUrl,
+  buildAbi26PersonalCurriculumConfig,
+} from '../src/utils/abi26MatheCampaign'
 
 const explicitRouteSelection = getNextVisibleLearnerGoalSelection({
   currentGoalId: 'root-goal',
@@ -99,6 +106,51 @@ assert.equal(
   explicitRouteInsidePlannedScopeStaysStable,
   null,
   'An explicit route inside the current planned scope must remain stable.',
+)
+
+const abi26CockpitUrl = buildAbi26CockpitUrl({
+  slug: 'abi26-he-mathe-k1',
+  source: 'bluesky',
+  campaign: 'abi26-he-mathe-k1',
+  medium: 'social',
+  courseLevel: 'LK',
+}, 'learner-123')
+const abi26CockpitParams = new URLSearchParams(abi26CockpitUrl.split('?')[1] ?? '')
+
+assert.equal(
+  abi26CockpitParams.get('l'),
+  ABI26_ROOT_CURRICULUM_ID,
+  'Abi26 cockpit links must open the canonical Gymnasium root.',
+)
+assert.equal(
+  abi26CockpitParams.get('f'),
+  ABI26_ROOT_FILTER_ID,
+  'Abi26 cockpit links must use f for the root jurisdiction filter, not the course profile.',
+)
+assert.equal(
+  abi26CockpitParams.get('courseLevel'),
+  'LK',
+  'Abi26 cockpit links must carry the course profile separately from the root filter.',
+)
+
+const abi26PersonalConfig = buildAbi26PersonalCurriculumConfig('GK', {
+  existing: { selected: false, filterId: 'keep' },
+})
+
+assert.deepEqual(
+  abi26PersonalConfig[ABI26_ROOT_CURRICULUM_ID],
+  { selected: true, filterId: ABI26_ROOT_FILTER_ID },
+  'Abi26 personal curriculum must select the Hesse root filter.',
+)
+assert.deepEqual(
+  abi26PersonalConfig[ABI26_MATH_LANDSCAPE_ID],
+  { selected: true, filterId: 'GK' },
+  'Abi26 personal curriculum must apply GK/LK on the mathematics child landscape.',
+)
+assert.deepEqual(
+  abi26PersonalConfig.existing,
+  { selected: false, filterId: 'keep' },
+  'Abi26 personal curriculum updates must preserve unrelated scope entries.',
 )
 
 const canonicalMathLandscape = JSON.parse(

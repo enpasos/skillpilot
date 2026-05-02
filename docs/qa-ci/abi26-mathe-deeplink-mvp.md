@@ -28,9 +28,12 @@ Nach Klick auf `Kostenlose SkillPilot-ID erstellen`:
 1. Neue pseudonyme SkillPilot-ID wird erzeugt (`POST /api/ui/learners`).
 2. Curriculum wird gesetzt auf Hessen Oberstufe Mathematik (`PUT /api/ui/learners/{id}/curriculum`).
 3. Scope wird gesetzt auf:
-   - GK: `Abiturprüfung Mathematik` (`f204141c-c20b-504d-808c-6bcb426ce453`)
-   - LK: `Abiturprüfung Mathematik (LK)` (`be43163c-b2fb-5296-a1be-c97de53ee868`)
+   - GK: `Abiturprüfung Mathematik` (`9ad83149-3cb7-5b87-a617-3eae3715a50c`)
+   - LK: `Abiturprüfung Mathematik (LK)` (`464a6024-a2f8-53b4-84e0-d7b9df22a0b1`)
 4. Cockpit wird mit UTM-/Campaign-Parametern geoeffnet.
+   - `l` zeigt auf `Gymnasium (DE)`.
+   - `f` bleibt der Root-/Bundeslandfilter `DE-HE`.
+   - `courseLevel`/`track` traegt das Kursniveau `GK` oder `LK`.
 
 ## Events (MVP)
 

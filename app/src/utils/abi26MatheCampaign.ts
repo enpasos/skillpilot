@@ -12,6 +12,8 @@ export interface Abi26CampaignContext {
   skillpilotId?: string
 }
 
+export type Abi26PersonalCurriculumConfig = Record<string, { selected: boolean; filterId?: string }>
+
 export const ABI26_CAMPAIGN_SLUG = 'abi26-he-mathe-k1'
 export const ABI26_ROOT_CURRICULUM_ID = CANONICAL_GYMNASIUM_ROOT_ID
 export const ABI26_MATH_LANDSCAPE_ID = '68a8ac50-f5f5-4e24-8aa9-5e408ca01ced'
@@ -83,11 +85,30 @@ export const loadAbi26CampaignContext = (): Abi26CampaignContext | null => {
   }
 }
 
+export const buildAbi26PersonalCurriculumConfig = (
+  courseLevel: Abi26CourseLevel,
+  baseConfig: Abi26PersonalCurriculumConfig = {},
+): Abi26PersonalCurriculumConfig => ({
+  ...baseConfig,
+  [ABI26_ROOT_CURRICULUM_ID]: {
+    ...baseConfig[ABI26_ROOT_CURRICULUM_ID],
+    selected: true,
+    filterId: ABI26_ROOT_FILTER_ID,
+  },
+  [ABI26_MATH_LANDSCAPE_ID]: {
+    ...baseConfig[ABI26_MATH_LANDSCAPE_ID],
+    selected: true,
+    filterId: courseLevel,
+  },
+})
+
 export const buildAbi26CockpitUrl = (context: Abi26CampaignContext, skillpilotId: string) => {
   const focusGoalId = ABI26_FOCUS_GOAL_BY_LEVEL[context.courseLevel]
   const params = new URLSearchParams()
   params.set('l', ABI26_ROOT_CURRICULUM_ID)
-  params.set('f', context.courseLevel)
+  params.set('f', ABI26_ROOT_FILTER_ID)
+  params.set('courseLevel', context.courseLevel)
+  params.set('track', context.courseLevel)
   params.set('source', context.source)
   params.set('campaign', context.campaign)
   params.set('medium', context.medium)

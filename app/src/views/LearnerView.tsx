@@ -28,6 +28,8 @@ import {
 } from '../utils/legacyCutover'
 import {
   ABI26_CAMPAIGN_SLUG,
+  ABI26_ROOT_CURRICULUM_ID,
+  buildAbi26PersonalCurriculumConfig,
   extractAbi26CampaignContext,
   loadAbi26CampaignContext,
   saveAbi26CampaignContext,
@@ -270,15 +272,32 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     const campaignQuery = queryParams.get('campaign') || queryParams.get('utm_campaign') || queryParams.get('start')
     return campaignQuery === ABI26_CAMPAIGN_SLUG
   }, [queryParams])
+  const hasExplicitCampaignCourseLevel = useMemo(() => {
+    const rawCourseLevel = queryParams.get('courseLevel') || queryParams.get('track') || queryParams.get('f')
+    const normalizedCourseLevel = rawCourseLevel?.trim().toUpperCase()
+    return normalizedCourseLevel === 'GK' || normalizedCourseLevel === 'LK'
+  }, [queryParams])
   const hasPersistedCampaignForLearner =
     persistedCampaignContext?.slug === ABI26_CAMPAIGN_SLUG &&
     persistedCampaignContext.skillpilotId === skillpilotId
   const isAbi26CampaignSession = hasAbi26Marker || hasPersistedCampaignForLearner
   const campaignContext = useMemo(() => {
-    if (hasAbi26Marker) return { ...queryCampaignContext, skillpilotId }
+    if (hasAbi26Marker) {
+      if (!hasExplicitCampaignCourseLevel && hasPersistedCampaignForLearner && persistedCampaignContext) {
+        return persistedCampaignContext
+      }
+      return { ...queryCampaignContext, skillpilotId }
+    }
     if (hasPersistedCampaignForLearner && persistedCampaignContext) return persistedCampaignContext
     return null
-  }, [hasAbi26Marker, queryCampaignContext, hasPersistedCampaignForLearner, persistedCampaignContext, skillpilotId])
+  }, [
+    hasAbi26Marker,
+    hasExplicitCampaignCourseLevel,
+    hasPersistedCampaignForLearner,
+    persistedCampaignContext,
+    queryCampaignContext,
+    skillpilotId,
+  ])
 
   const currentRouteGoalId = routeGoalId ?? ''
   const selectedId = currentRouteGoalId || currentGoal?.id || rootGoals[0]?.id || ''
@@ -1429,22 +1448,25 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   useEffect(() => {
     if (!isAbi26CampaignSession || !campaignContext || !rootLandscapeId) return
     if (hasAppliedCampaignFilterRef.current) return
+    if (isPersonalConfigHydrating) return
+    if (rootLandscapeId !== ABI26_ROOT_CURRICULUM_ID) return
 
-    const current = personalConfig[rootLandscapeId]
-    if (current?.filterId) {
+    const nextConfig = buildAbi26PersonalCurriculumConfig(campaignContext.courseLevel, personalConfig)
+    if (personalCurriculumConfigsEqual(personalConfig, nextConfig)) {
       hasAppliedCampaignFilterRef.current = true
       return
     }
 
     hasAppliedCampaignFilterRef.current = true
-    void handleConfigChange({
-      ...personalConfig,
-      [rootLandscapeId]: {
-        selected: current?.selected ?? true,
-        filterId: campaignContext.courseLevel,
-      },
-    })
-  }, [isAbi26CampaignSession, campaignContext, rootLandscapeId, personalConfig, handleConfigChange])
+    void handleConfigChange(nextConfig)
+  }, [
+    campaignContext,
+    handleConfigChange,
+    isAbi26CampaignSession,
+    isPersonalConfigHydrating,
+    personalConfig,
+    rootLandscapeId,
+  ])
 
   useEffect(() => {
     hasAppliedCampaignFilterRef.current = false

@@ -6,11 +6,11 @@ import {
   ABI26_FEEDBACK_URL,
   ABI26_FOCUS_GOAL_BY_LEVEL,
   ABI26_GPT_URL,
-  ABI26_MATH_LANDSCAPE_ID,
   ABI26_ROOT_CURRICULUM_ID,
   ABI26_ROOT_FILTER_ID,
   ABI26_SCOPE_BY_LEVEL,
   buildAbi26CockpitUrl,
+  buildAbi26PersonalCurriculumConfig,
   buildAbi26StartPrompt,
   extractAbi26CampaignContext,
   saveAbi26CampaignContext,
@@ -117,10 +117,7 @@ export const Abi26MatheStartView: React.FC = () => {
         throw new Error('Das Cockpit konnte nicht vorkonfiguriert werden (Scope).')
       }
 
-      const personalConfig: Record<string, { selected: boolean; filterId: string }> = {
-        [ABI26_ROOT_CURRICULUM_ID]: { selected: true, filterId: ABI26_ROOT_FILTER_ID },
-        [ABI26_MATH_LANDSCAPE_ID]: { selected: true, filterId: courseLevel },
-      }
+      const personalConfig = buildAbi26PersonalCurriculumConfig(courseLevel)
 
       const personalCurriculumRes = await fetch(
         toApi(`/api/ui/learners/${encodeURIComponent(id)}/personal-curriculum`),
