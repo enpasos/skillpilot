@@ -23,7 +23,6 @@ export function isCompleteMastery(value: number): boolean {
 export function masteryColorClass(value: number): string {
   const v = clampMastery(value)
   if (isCompleteMastery(v)) return 'bg-mastery-high'
-  if (v >= 0.4) return 'bg-mastery-medium'
-  if (v > 0) return 'bg-mastery-low'
+  if (v > 0) return 'bg-mastery-medium'
   return 'bg-mastery-none'
 }

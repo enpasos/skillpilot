@@ -11,7 +11,7 @@ interface AggregatedMasteryBarProps {
 
 export const AggregatedMasteryBar: React.FC<AggregatedMasteryBarProps> = ({ distribution, total }) => {
   if (total === 0) {
-    return <div className="h-2 bg-slate-700 rounded-full" />
+    return <div className="h-2 bg-slate-200 dark:bg-slate-700 rounded-full" />
   }
 
   const notStartedPercent = (distribution.notStarted / total) * 100
@@ -19,9 +19,9 @@ export const AggregatedMasteryBar: React.FC<AggregatedMasteryBarProps> = ({ dist
   const masteredPercent = (distribution.mastered / total) * 100
 
   return (
-    <div className="flex h-2 rounded-full overflow-hidden bg-slate-700">
+    <div className="flex h-2 rounded-full overflow-hidden bg-slate-200 dark:bg-slate-700">
       <div
-        className="bg-red-500"
+        className="bg-slate-300 dark:bg-slate-500"
         style={{ width: `${notStartedPercent}%` }}
         title={`${distribution.notStarted} Schüler: Nicht begonnen`}
       />

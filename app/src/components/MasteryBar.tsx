@@ -5,7 +5,7 @@ export const MasteryBar = ({ value }: { value: number }) => {
   const barClass = `h-full rounded-full ${masteryColorClass(value)}`
 
   return (
-    <div className="w-full h-2 rounded-full bg-slate-800 overflow-hidden">
+    <div className="w-full h-2 rounded-full bg-slate-200 dark:bg-slate-800 overflow-hidden">
       <div className={barClass} style={{ width }} />
     </div>
   )

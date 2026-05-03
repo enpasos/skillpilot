@@ -2035,7 +2035,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
             <h2 className="font-bold text-sky-600 dark:text-sky-400 truncate">{t.learner.myGoals}</h2>
             <div className="text-xs flex items-center gap-2 mt-1">
               <button
-                className="flex items-center gap-1 font-bold text-red-500 hover:text-red-400 transition-colors"
+                className="flex items-center gap-1 font-bold text-slate-500 hover:text-slate-600 dark:text-slate-400 dark:hover:text-slate-300 transition-colors"
 	                onClick={revealScope}
 	                disabled={plannedGoals.size === 0}
 	                title={plannedGoals.size > 0

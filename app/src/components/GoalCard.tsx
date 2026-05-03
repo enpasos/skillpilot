@@ -203,6 +203,7 @@ export const GoalCard: React.FC<GoalCardProps> = ({
   const isAtomic = !goal.contains || goal.contains.length === 0
   const mastered = isMastered(masteryValue)
   const complete = isCompleteMastery(masteryValue)
+  const hasProgress = masteryValue > 0
   const canSetActive = Boolean(!readOnly && onSetActive && isAtomic && !mastered && (isFrontier || isActive))
   const activeActionLabel = isActive
     ? copy.activeActionReveal
@@ -244,7 +245,7 @@ export const GoalCard: React.FC<GoalCardProps> = ({
 
   // Determine Status Icon
   let StatusIcon = Target
-  let iconColor = "text-red-500"
+  let iconColor = "text-slate-400 dark:text-slate-500"
   let strokeWidth = 2
 
   if (mastered) {
@@ -256,6 +257,8 @@ export const GoalCard: React.FC<GoalCardProps> = ({
     iconColor = "text-amber-500"
   } else if (isPlanned) {
     iconColor = "text-amber-400"
+  } else if (hasProgress) {
+    iconColor = "text-amber-500"
   }
 
   return (
@@ -284,7 +287,7 @@ export const GoalCard: React.FC<GoalCardProps> = ({
               <button
                 type="button"
                 onClick={() => (isActive ? onRevealActive?.() : onSetActive?.(goal.id))}
-                className={`shrink-0 transition-colors cursor-pointer ${isActive ? 'text-amber-500 hover:text-amber-400' : 'text-red-500 hover:text-red-400'}`}
+                className={`shrink-0 transition-colors cursor-pointer ${isActive ? 'text-amber-500 hover:text-amber-400' : 'text-slate-400 hover:text-amber-500 dark:text-slate-500 dark:hover:text-amber-400'}`}
                 title={activeActionLabel}
                 aria-label={activeActionLabel}
               >

@@ -221,6 +221,7 @@ const TreeNode: React.FC<TreeNodeProps> = ({
   const hasChildren = renderedChildren.length > 0
   const mastered = isMastered(mastery)
   const complete = isCompleteMastery(mastery)
+  const hasProgress = mastery > 0
   const isPlanned = plannedGoals.has(goal.id)
   const isSelected = selectedId === goal.id
   const isSyntheticStructureNode = isSyntheticProgramUnit(goal)
@@ -323,9 +324,9 @@ const TreeNode: React.FC<TreeNodeProps> = ({
               ? 'text-slate-300 dark:text-slate-600'
               : complete
                 ? 'text-emerald-500'
-                : mastered
+                : hasProgress
                   ? 'text-amber-500'
-                : 'text-red-500'
+                : 'text-slate-400 dark:text-slate-500'
               }`}
           >
             {mastered ? (
