@@ -30,8 +30,8 @@ The dashboard reports one conservative maturity level per curriculum and, where 
 | Level | Meaning |
 | --- | --- |
 | `M0` | Basic graph quality is visible: the curriculum loads, core graph checks pass, and type metadata is consistent. |
-| `M1` | Every configured learner-facing QA scope has full effective route coverage from motivation to terminal autonomy. |
-| `M2` | Every configured QA scope has been migrated to direct atomic route coverage and no longer relies on scoped cluster-level `requires`. |
+| `M1` | Bundesland projections have full atom-level coverage for every declared jurisdiction. |
+| `M2` | Every configured learner-facing QA scope has a clean route from motivation through atomic learning goals to terminal autonomy. |
 | `M3` | Terminal autonomy goals in every configured QA scope are exam-mode-capable via `examData` or an explicit reviewed exception convention. |
 | `M4` | Review/readiness layer is clean: semantic atomicity is current, composition views exist, and no active or obsolete applicability warning debt remains. |
 
@@ -45,7 +45,8 @@ The first rule catalog is versioned as `curriculum-quality-v1`.
 | --- | --- | --- |
 | `CQR-001` | `M0` | Basic graph integrity: IDs, local/global references, self-reference guards, and direct DAG checks. |
 | `CQR-002` | `M0` | Explicit `type` metadata matches structural atomic/cluster classification. |
-| `CQR-101` | `M1` | Effective full route coverage through `R_eff`: motivation anchor -> selected atomic goals -> terminal autonomy. |
+| `CQR-003` | `M1` | Bundesland atomic coverage: every declared jurisdiction projection exposes the full canonical atomic goal set. |
+| `CQR-101` | `M2` | Effective full route coverage through `R_eff`: motivation anchor -> selected atomic goals -> terminal autonomy. |
 | `CQR-102` | `M2` | Direct atomic route coverage through authored atomic `requires`. |
 | `CQR-103` | `M2` | No route-scope cluster-level `requires` remain for ordinary sequencing. |
 | `CQR-201` | `M3` | Terminal autonomy goals have `examData`. |
@@ -55,9 +56,24 @@ The first rule catalog is versioned as `curriculum-quality-v1`.
 
 `CQR-*` rules are dashboard/readiness rules. They complement `GVR-*`, `APV-*`, and `CPV-*` validators documented in `docs/qa-ci/graph-validation-rules.md`; they do not replace those validator families.
 
+## Bundesland Coverage
+
+The dashboard also persists and renders Bundesland coverage derived from the Applicability compiler.
+
+For each canonical curriculum and each declared jurisdiction, the snapshot stores:
+
+- visible goals,
+- visible atomic goals,
+- visible cluster goals,
+- projection errors,
+- projection warnings,
+- atomic coverage percentage against the full canonical atomic goal count.
+
+The table value `Bundeslaender` is `cleanJurisdictions / totalJurisdictions`, where a jurisdiction is complete only when the full canonical atomic goal set is visible and the projection has no warnings or errors. Lower values such as `1/392 atomare Ziele` remain visible in the detail panel as partial coverage, but they no longer satisfy the M1 milestone.
+
 ## Current Route Profiles
 
-The currently required mathematics route profiles are:
+The currently required route profiles are:
 
 - `canonical-math-sek1`
 - landscape: `Mathematik (Gymnasium, DE)`
@@ -71,6 +87,18 @@ The currently required mathematics route profiles are:
 - scope: `Sekundarstufe II`
 - motivation anchor: `Warum Mathematik? – Denken, Muster & Zukunft`
 - terminal autonomy targets: the atomic exam-mode goals under `Übungen E-Phase`, `Übungen Q1`, `Übungen Q2`, `Übungen Q3`, `Übungen Q4`, and `Übungen Prozesskompetenzen`
+
+- `canonical-physics-sek1`
+- landscape: `Physik (Gymnasium, DE)`
+- scope: `Sekundarstufe I`
+- motivation anchor: `Warum Physik?`
+- terminal autonomy target: atomic exam-mode goals under `Übungen Sekundarstufe I Physik`
+
+- `canonical-physics-sek2`
+- landscape: `Physik (Gymnasium, DE)`
+- scope: `Sekundarstufe II`
+- motivation anchor: `Warum Physik?`
+- terminal autonomy targets: atomic exam-mode goals under `Übungen E-Phase`, `Übungen Q1`, `Übungen Q2`, `Übungen Q3`, and `Übungen Q4`
 
 The Sek I scope mirrors the existing `GVR-011` / `GVR-012` rollout profile. The Sek II scope carries the same dashboard contract for the upper-secondary part of the shared canonical mathematics curriculum.
 

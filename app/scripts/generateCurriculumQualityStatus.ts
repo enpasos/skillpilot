@@ -3,7 +3,8 @@ import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from 
 import { dirname, join, relative, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import type { LearningGoal, LearningLandscape } from '../src/landscapeTypes'
-import type { ApplicabilityFinding } from './applicabilityCompiler'
+import { JURISDICTION_LABELS } from '../src/utils/jurisdictionMetadata'
+import type { ApplicabilityCompilationResult, ApplicabilityFinding } from './applicabilityCompiler'
 import { buildApplicabilityCompilation } from './applicabilityCompiler'
 
 type RuleStatus = 'pass' | 'warn' | 'fail' | 'not_configured'
@@ -34,6 +35,34 @@ interface ScopeStatus {
   rules: RuleResult[]
 }
 
+type JurisdictionCoverageStatus = 'covered' | 'partial' | 'error' | 'none'
+
+interface JurisdictionCoverageEntry {
+  jurisdiction: string
+  labelDe: string
+  labelEn: string
+  visibleGoals: number
+  visibleAtomicGoals: number
+  visibleClusterGoals: number
+  errors: number
+  warnings: number
+  atomicCoveragePercent: number
+  status: JurisdictionCoverageStatus
+}
+
+interface JurisdictionCoverage {
+  dimension: 'jurisdiction'
+  totalJurisdictions: number
+  totalAtomicGoals: number
+  coveredJurisdictions: number
+  cleanJurisdictions: number
+  partialJurisdictions: number
+  errorJurisdictions: number
+  maxVisibleAtomicGoals: number
+  maxAtomicCoveragePercent: number
+  jurisdictions: JurisdictionCoverageEntry[]
+}
+
 interface CurriculumStatus {
   landscapeId: string
   title: string
@@ -44,6 +73,7 @@ interface CurriculumStatus {
   goals: number
   atomicGoals: number
   clusterGoals: number
+  jurisdictionCoverage?: JurisdictionCoverage
   scopes: ScopeStatus[]
   rules: RuleResult[]
 }
@@ -139,6 +169,16 @@ const CANONICAL_GYM_MATH_SEK2_PRACTICE_CLUSTER_IDS = [
   '57f07e66-800c-5f7e-99ab-11dd6e520eb1',
   'd2560dc7-f29a-5e51-ba8c-ec2ca0fb8cc1',
 ]
+const CANONICAL_GYM_PHYSICS_LANDSCAPE_ID = '7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a'
+const CANONICAL_GYM_PHYSICS_MOTIVATION_GOAL_ID = '5c44b9ba-9b05-4774-95d5-073230d3fc4f'
+const CANONICAL_GYM_PHYSICS_SEK1_PRACTICE_CLUSTER_ID = '21ab0854-4d67-5233-9495-ae208e152a3c'
+const CANONICAL_GYM_PHYSICS_SEK2_PRACTICE_CLUSTER_IDS = [
+  '424b07df-bf66-5d7f-99f5-f28b32ad1f22',
+  '549a427d-f10a-5537-990e-6fdd7466848b',
+  '9dd7c596-a751-523c-acba-916f73e900a5',
+  'b47a2a23-b56d-5433-9036-075d6bb7c782',
+  '85bbad98-2f48-5d64-85c4-ab6cf67f24c2',
+]
 
 const ruleCatalog: QualityRuleDefinition[] = [
   {
@@ -156,10 +196,17 @@ const ruleCatalog: QualityRuleDefinition[] = [
     description: 'Stored type metadata agrees with structural atomic/cluster classification.',
   },
   {
+    id: 'CQR-003',
+    label: 'Bundesland atomic coverage',
+    category: 'applicability',
+    maturityTarget: 'M1',
+    description: 'Compiled Bundesland projections expose the full canonical atomic goal set for every declared jurisdiction.',
+  },
+  {
     id: 'CQR-101',
     label: 'Effective full route coverage',
     category: 'route',
-    maturityTarget: 'M1',
+    maturityTarget: 'M2',
     description: 'Configured route scopes connect motivation anchors to terminal autonomy goals through effective requires.',
   },
   {
@@ -225,6 +272,30 @@ const routeProfiles: RouteProfile[] = [
     terminalAutonomyClusterIds: CANONICAL_GYM_MATH_SEK2_PRACTICE_CLUSTER_IDS,
     goalSelector: (goal) => isAtomicGoal(goal) && isCanonicalGymMathSek2Goal(goal) && !isMemoryGoal(goal),
     clusterSelector: isCanonicalGymMathSek2Goal,
+  },
+  {
+    profileId: 'canonical-physics-sek1',
+    landscapeId: CANONICAL_GYM_PHYSICS_LANDSCAPE_ID,
+    label: 'Sekundarstufe I',
+    motivationAnchorGoalIds: [CANONICAL_GYM_PHYSICS_MOTIVATION_GOAL_ID],
+    terminalAutonomyClusterIds: [CANONICAL_GYM_PHYSICS_SEK1_PRACTICE_CLUSTER_ID],
+    goalSelector: (goal) => isAtomicGoal(goal)
+      && isCanonicalGymPhysicsSek1Goal(goal)
+      && !isMemoryGoal(goal)
+      && !isPracticeOrAssessmentGoal(goal),
+    clusterSelector: isCanonicalGymPhysicsSek1Goal,
+  },
+  {
+    profileId: 'canonical-physics-sek2',
+    landscapeId: CANONICAL_GYM_PHYSICS_LANDSCAPE_ID,
+    label: 'Sekundarstufe II',
+    motivationAnchorGoalIds: [CANONICAL_GYM_PHYSICS_MOTIVATION_GOAL_ID],
+    terminalAutonomyClusterIds: CANONICAL_GYM_PHYSICS_SEK2_PRACTICE_CLUSTER_IDS,
+    goalSelector: (goal) => isAtomicGoal(goal)
+      && isCanonicalGymPhysicsSek2Goal(goal)
+      && !isMemoryGoal(goal)
+      && !isPracticeOrAssessmentGoal(goal),
+    clusterSelector: isCanonicalGymPhysicsSek2Goal,
   },
 ]
 
@@ -297,6 +368,21 @@ function isCanonicalGymMathSek2Goal(goal: LearningGoal): boolean {
 
   const topicCode = goal.dimensionTags?.topicCode ?? goal.themenfeld ?? ''
   return topicCode.includes('SEK2')
+}
+
+function isPracticeOrAssessmentGoal(goal: LearningGoal): boolean {
+  return (goal.tags ?? []).includes('Practice') || (goal.tags ?? []).includes('Assessment')
+}
+
+function isCanonicalGymPhysicsSek1Goal(goal: LearningGoal): boolean {
+  if (goal.id === CANONICAL_GYM_PHYSICS_MOTIVATION_GOAL_ID) return true
+  return goal.tags?.includes('SekI') ?? false
+}
+
+function isCanonicalGymPhysicsSek2Goal(goal: LearningGoal): boolean {
+  if (goal.id === CANONICAL_GYM_PHYSICS_MOTIVATION_GOAL_ID) return true
+  const legacyPhase = (goal as { phase?: string }).phase
+  return ['E', 'Q1', 'Q2', 'Q3', 'Q4'].includes(goal.dimensionTags?.phase ?? legacyPhase ?? '')
 }
 
 function parseReference(raw: string, currentLandscapeId: string): { landscapeId: string; goalId: string } {
@@ -835,7 +921,9 @@ function readAcceptedWarningEntries(): AcceptedWarningEntry[] {
   return Array.isArray(registry.acceptedWarnings) ? registry.acceptedWarnings : []
 }
 
-function readApplicabilityWarningMetricsByLandscapeId(): Map<string, Record<string, number>> {
+function readApplicabilityWarningMetricsByLandscapeId(
+  applicabilityCompilation: ApplicabilityCompilationResult,
+): Map<string, Record<string, number>> {
   const acceptedEntries = readAcceptedWarningEntries()
   const acceptedKeys = new Set(acceptedEntries.map(applicabilityWarningKey))
   const currentWarningKeys = new Set<string>()
@@ -855,7 +943,7 @@ function readApplicabilityWarningMetricsByLandscapeId(): Map<string, Record<stri
 
   const warningFindings = Array.from(
     new Map(
-      buildApplicabilityCompilation().reports
+      applicabilityCompilation.reports
         .flatMap((report) => report.findings)
         .filter((finding) => finding.severity === 'warning')
         .map((finding) => [
@@ -892,6 +980,66 @@ function readApplicabilityWarningMetricsByLandscapeId(): Map<string, Record<stri
   return counts
 }
 
+function roundPercent(numerator: number, denominator: number): number {
+  if (denominator <= 0) return 0
+  return Math.round((numerator / denominator) * 1000) / 10
+}
+
+function readJurisdictionCoverageByLandscapeId(
+  applicabilityCompilation: ApplicabilityCompilationResult,
+): Map<string, JurisdictionCoverage> {
+  const coverageByLandscapeId = new Map<string, JurisdictionCoverage>()
+
+  applicabilityCompilation.reports.forEach((report) => {
+    const totalAtomicGoals = report.goals.filter((goal) => goal.goalType === 'atomic').length
+    const jurisdictions = report.projections.map((projection) => {
+      const visibleGoals = report.goals.filter((goal) =>
+        (goal.compiledApplicability.jurisdiction ?? []).includes(projection.value))
+      const visibleAtomicGoals = visibleGoals.filter((goal) => goal.goalType === 'atomic').length
+      const visibleClusterGoals = Math.max(0, projection.visibleGoals - visibleAtomicGoals)
+      const labels = JURISDICTION_LABELS[projection.value]
+      const hasAtomicCoverage = visibleAtomicGoals > 0
+      const hasFullAtomicCoverage = totalAtomicGoals > 0 && visibleAtomicGoals === totalAtomicGoals
+      const status: JurisdictionCoverageStatus = projection.errors > 0
+        ? 'error'
+        : !hasAtomicCoverage
+          ? 'none'
+          : !hasFullAtomicCoverage || projection.warnings > 0
+            ? 'partial'
+            : 'covered'
+
+      return {
+        jurisdiction: projection.value,
+        labelDe: labels.de,
+        labelEn: labels.en,
+        visibleGoals: projection.visibleGoals,
+        visibleAtomicGoals,
+        visibleClusterGoals,
+        errors: projection.errors,
+        warnings: projection.warnings,
+        atomicCoveragePercent: roundPercent(visibleAtomicGoals, totalAtomicGoals),
+        status,
+      } satisfies JurisdictionCoverageEntry
+    })
+
+    const maxVisibleAtomicGoals = Math.max(0, ...jurisdictions.map((entry) => entry.visibleAtomicGoals))
+    coverageByLandscapeId.set(report.landscapeId, {
+      dimension: 'jurisdiction',
+      totalJurisdictions: jurisdictions.length,
+      totalAtomicGoals,
+      coveredJurisdictions: jurisdictions.filter((entry) => entry.visibleAtomicGoals > 0).length,
+      cleanJurisdictions: jurisdictions.filter((entry) => entry.status === 'covered').length,
+      partialJurisdictions: jurisdictions.filter((entry) => entry.status === 'partial').length,
+      errorJurisdictions: jurisdictions.filter((entry) => entry.status === 'error').length,
+      maxVisibleAtomicGoals,
+      maxAtomicCoveragePercent: roundPercent(maxVisibleAtomicGoals, totalAtomicGoals),
+      jurisdictions,
+    })
+  })
+
+  return coverageByLandscapeId
+}
+
 function evaluateCompositionViews(count: number): RuleResult {
   return makeRule(
     'CQR-401',
@@ -921,6 +1069,56 @@ function evaluateApplicabilityWarnings(metrics: Record<string, number> | undefin
   )
 }
 
+function evaluateJurisdictionCoverage(coverage: JurisdictionCoverage | undefined): RuleResult {
+  if (!coverage) {
+    return makeRule('CQR-003', 'not_configured', 'No Bundesland coverage projection is available for this curriculum.')
+  }
+
+  const uncovered = coverage.jurisdictions.filter((entry) => entry.visibleAtomicGoals === 0)
+  const incomplete = coverage.jurisdictions.filter((entry) => entry.visibleAtomicGoals < coverage.totalAtomicGoals)
+  const warninged = coverage.jurisdictions.filter((entry) => entry.warnings > 0)
+  const errored = coverage.jurisdictions.filter((entry) => entry.errors > 0)
+  const minVisibleAtomicGoals = Math.min(...coverage.jurisdictions.map((entry) => entry.visibleAtomicGoals))
+  const fullCoverageJurisdictions = coverage.jurisdictions.filter((entry) =>
+    coverage.totalAtomicGoals > 0
+      && entry.visibleAtomicGoals === coverage.totalAtomicGoals
+      && entry.warnings === 0
+      && entry.errors === 0).length
+  const status: RuleStatus = errored.length > 0
+    ? 'fail'
+    : fullCoverageJurisdictions < coverage.totalJurisdictions
+      ? 'warn'
+      : 'pass'
+
+  return makeRule(
+    'CQR-003',
+    status,
+    status === 'pass'
+      ? `All ${coverage.totalJurisdictions} declared Bundesland projection(s) expose full atom-level curriculum coverage.`
+      : `${fullCoverageJurisdictions}/${coverage.totalJurisdictions} declared Bundesland projection(s) expose full atom-level curriculum coverage.`,
+    {
+      totalJurisdictions: coverage.totalJurisdictions,
+      coveredJurisdictions: coverage.coveredJurisdictions,
+      fullCoverageJurisdictions,
+      uncoveredJurisdictions: uncovered.length,
+      incompleteJurisdictions: incomplete.length,
+      warningedJurisdictions: warninged.length,
+      cleanJurisdictions: coverage.cleanJurisdictions,
+      partialJurisdictions: coverage.partialJurisdictions,
+      errorJurisdictions: coverage.errorJurisdictions,
+      minVisibleAtomicGoals,
+      maxVisibleAtomicGoals: coverage.maxVisibleAtomicGoals,
+      totalAtomicGoals: coverage.totalAtomicGoals,
+    },
+    [
+      ...errored.map((entry) => `${entry.jurisdiction}: ${entry.errors} projection error(s), ${entry.visibleAtomicGoals} visible atomic goal(s)`),
+      ...warninged.map((entry) => `${entry.jurisdiction}: ${entry.warnings} projection warning(s), ${entry.visibleAtomicGoals}/${coverage.totalAtomicGoals} visible atomic goal(s)`),
+      ...incomplete.map((entry) => `${entry.jurisdiction}: ${entry.visibleAtomicGoals}/${coverage.totalAtomicGoals} visible atomic goal(s)`),
+      ...uncovered.map((entry) => `${entry.jurisdiction}: no visible atomic goals`),
+    ],
+  )
+}
+
 function deriveScopeMaturity(rules: RuleResult[]): MaturityLevel {
   if (rules.find((rule) => rule.id === 'CQR-101')?.status !== 'pass') return 'M0'
   if (rules.find((rule) => rule.id === 'CQR-102')?.status !== 'pass') return 'M1'
@@ -933,10 +1131,11 @@ function deriveCurriculumMaturity(curriculumRules: RuleResult[], scopes: ScopeSt
   const graphReady = curriculumRules.find((rule) => rule.id === 'CQR-001')?.status === 'pass'
     && curriculumRules.find((rule) => rule.id === 'CQR-002')?.status === 'pass'
   if (!graphReady) return 'M0'
+  if (curriculumRules.find((rule) => rule.id === 'CQR-003')?.status !== 'pass') return 'M0'
 
   const routeScopes = scopes.filter((scope) => scope.rules.some((rule) => rule.id === 'CQR-101'))
-  if (routeScopes.length === 0) return 'M0'
-  if (!routeScopes.every((scope) => scope.rules.find((rule) => rule.id === 'CQR-101')?.status === 'pass')) return 'M0'
+  if (routeScopes.length === 0) return 'M1'
+  if (!routeScopes.every((scope) => scope.rules.find((rule) => rule.id === 'CQR-101')?.status === 'pass')) return 'M1'
   if (!routeScopes.every((scope) => scope.maturity === 'M2' || scope.maturity === 'M3')) return 'M1'
   if (!routeScopes.every((scope) => scope.maturity === 'M3')) return 'M2'
 
@@ -964,13 +1163,26 @@ function renderMarkdown(status: StatusDocument): string {
   lines.push('')
   lines.push('## Curricula')
   lines.push('')
-  lines.push('| Curriculum | Maturity | Goals | Atomic | QA scopes | Warn | Fail |')
-  lines.push('| --- | --- | ---: | ---: | ---: | ---: | ---: |')
+  lines.push('| Curriculum | Maturity | Goals | Atomic | Bundeslaender | QA scopes | Warn | Fail |')
+  lines.push('| --- | --- | ---: | ---: | ---: | ---: | ---: | ---: |')
   status.curricula.forEach((curriculum) => {
     const allRules = [...curriculum.rules, ...curriculum.scopes.flatMap((scope) => scope.rules)]
     const warnCount = allRules.filter((rule) => rule.status === 'warn').length
     const failCount = allRules.filter((rule) => rule.status === 'fail').length
-    lines.push(`| ${curriculum.title} | ${curriculum.maturity} | ${curriculum.goals} | ${curriculum.atomicGoals} | ${curriculum.scopes.length} | ${warnCount} | ${failCount} |`)
+    const jurisdictionCoverage = curriculum.jurisdictionCoverage
+      ? `${curriculum.jurisdictionCoverage.cleanJurisdictions}/${curriculum.jurisdictionCoverage.totalJurisdictions}`
+      : '-'
+    lines.push(`| ${curriculum.title} | ${curriculum.maturity} | ${curriculum.goals} | ${curriculum.atomicGoals} | ${jurisdictionCoverage} | ${curriculum.scopes.length} | ${warnCount} | ${failCount} |`)
+  })
+  lines.push('')
+  lines.push('## Bundesland Coverage')
+  lines.push('')
+  lines.push('| Curriculum | Complete | Visible | Partial | Error | Max atomic coverage |')
+  lines.push('| --- | ---: | ---: | ---: | ---: | ---: |')
+  status.curricula.forEach((curriculum) => {
+    const coverage = curriculum.jurisdictionCoverage
+    if (!coverage) return
+    lines.push(`| ${curriculum.title} | ${coverage.cleanJurisdictions}/${coverage.totalJurisdictions} | ${coverage.coveredJurisdictions} | ${coverage.partialJurisdictions} | ${coverage.errorJurisdictions} | ${coverage.maxVisibleAtomicGoals}/${coverage.totalAtomicGoals} (${coverage.maxAtomicCoveragePercent}%) |`)
   })
   lines.push('')
   lines.push('## Rule Catalog')
@@ -985,9 +1197,11 @@ function renderMarkdown(status: StatusDocument): string {
 }
 
 function main() {
+  const applicabilityCompilation = buildApplicabilityCompilation()
   const semanticConfigsByLandscapeId = readSemanticConfigs()
   const compositionViewCountsByLandscapeId = readCompositionViewCountsByLandscapeId()
-  const applicabilityWarningMetricsByLandscapeId = readApplicabilityWarningMetricsByLandscapeId()
+  const applicabilityWarningMetricsByLandscapeId = readApplicabilityWarningMetricsByLandscapeId(applicabilityCompilation)
+  const jurisdictionCoverageByLandscapeId = readJurisdictionCoverageByLandscapeId(applicabilityCompilation)
 
   const canonicalFiles = collectFiles(canonicalRoot, (fileName) => /\.json$/i.test(fileName) && !/_deck/i.test(fileName))
   const loadedLandscapes = canonicalFiles.map((file) => ({
@@ -1002,6 +1216,7 @@ function main() {
       const curriculumRules: RuleResult[] = [
         evaluateGraphIntegrity(landscape, globalGoalIds),
         evaluateTypeConsistency(landscape),
+        evaluateJurisdictionCoverage(jurisdictionCoverageByLandscapeId.get(landscape.landscapeId)),
         evaluateSemanticAtomicity(landscape, semanticConfigsByLandscapeId.get(landscape.landscapeId) ?? []),
         evaluateCompositionViews(compositionViewCountsByLandscapeId.get(landscape.landscapeId) ?? 0),
         evaluateApplicabilityWarnings(applicabilityWarningMetricsByLandscapeId.get(landscape.landscapeId)),
@@ -1026,6 +1241,7 @@ function main() {
         goals: landscape.goals.length,
         atomicGoals,
         clusterGoals: landscape.goals.length - atomicGoals,
+        jurisdictionCoverage: jurisdictionCoverageByLandscapeId.get(landscape.landscapeId),
         scopes,
         rules: curriculumRules,
       } satisfies CurriculumStatus

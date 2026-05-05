@@ -8,6 +8,7 @@ import {
   Gauge,
   Home,
   ListChecks,
+  MapPinned,
   RefreshCw,
   Search,
   XCircle,
@@ -34,6 +35,34 @@ interface ScopeStatus {
   rules: RuleResult[]
 }
 
+type JurisdictionCoverageStatus = 'covered' | 'partial' | 'error' | 'none'
+
+interface JurisdictionCoverageEntry {
+  jurisdiction: string
+  labelDe: string
+  labelEn: string
+  visibleGoals: number
+  visibleAtomicGoals: number
+  visibleClusterGoals: number
+  errors: number
+  warnings: number
+  atomicCoveragePercent: number
+  status: JurisdictionCoverageStatus
+}
+
+interface JurisdictionCoverage {
+  dimension: 'jurisdiction'
+  totalJurisdictions: number
+  totalAtomicGoals: number
+  coveredJurisdictions: number
+  cleanJurisdictions: number
+  partialJurisdictions: number
+  errorJurisdictions: number
+  maxVisibleAtomicGoals: number
+  maxAtomicCoveragePercent: number
+  jurisdictions: JurisdictionCoverageEntry[]
+}
+
 interface CurriculumStatus {
   landscapeId: string
   title: string
@@ -44,6 +73,7 @@ interface CurriculumStatus {
   goals: number
   atomicGoals: number
   clusterGoals: number
+  jurisdictionCoverage?: JurisdictionCoverage
   scopes: ScopeStatus[]
   rules: RuleResult[]
 }
@@ -85,6 +115,12 @@ const COPY = {
     notConfigured: 'Nicht konfiguriert',
     goals: 'Ziele',
     atomic: 'Atomar',
+    jurisdictionCoverage: 'Bundesland-Abdeckung',
+    jurisdictions: 'Bundesländer',
+    cleanJurisdictions: 'Sauber',
+    partialJurisdictions: 'Teilweise',
+    errorJurisdictions: 'Fehlerhaft',
+    maxAtomicCoverage: 'Max. Atomabdeckung',
     routeScopes: 'QA-Scopes',
     rules: 'Regeln',
     details: 'Details',
@@ -115,6 +151,12 @@ const COPY = {
     notConfigured: 'Not configured',
     goals: 'Goals',
     atomic: 'Atomic',
+    jurisdictionCoverage: 'Jurisdiction coverage',
+    jurisdictions: 'Jurisdictions',
+    cleanJurisdictions: 'Clean',
+    partialJurisdictions: 'Partial',
+    errorJurisdictions: 'Error',
+    maxAtomicCoverage: 'Max atomic coverage',
     routeScopes: 'QA scopes',
     rules: 'Rules',
     details: 'Details',
@@ -153,6 +195,13 @@ const maturityClass: Record<MaturityLevel, string> = {
 
 const maturityLevels: Array<'all' | MaturityLevel> = ['all', 'M0', 'M1', 'M2', 'M3', 'M4']
 
+const coverageStatusClass: Record<JurisdictionCoverageStatus, string> = {
+  covered: 'border-emerald-200 bg-emerald-50 text-emerald-700 dark:border-emerald-900/60 dark:bg-emerald-950/30 dark:text-emerald-300',
+  partial: 'border-amber-200 bg-amber-50 text-amber-700 dark:border-amber-900/60 dark:bg-amber-950/30 dark:text-amber-300',
+  error: 'border-red-200 bg-red-50 text-red-700 dark:border-red-900/60 dark:bg-red-950/30 dark:text-red-300',
+  none: 'border-slate-200 bg-slate-100 text-slate-500 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-400',
+}
+
 function collectRules(curriculum: CurriculumStatus): RuleResult[] {
   return [
     ...curriculum.rules,
@@ -171,6 +220,12 @@ function formatDate(value: string, language: 'de' | 'en'): string {
     dateStyle: 'medium',
     timeStyle: 'short',
   }).format(date)
+}
+
+function formatPercent(value: number, language: 'de' | 'en'): string {
+  return new Intl.NumberFormat(language === 'de' ? 'de-DE' : 'en-US', {
+    maximumFractionDigits: 1,
+  }).format(value)
 }
 
 const StatusBadge: React.FC<{ status: RuleStatus; label: string }> = ({ status, label }) => {
@@ -300,7 +355,7 @@ export const CurriculumQualityDashboardView: React.FC = () => {
         ) : null}
 
         {summary ? (
-          <section className="grid grid-cols-2 gap-3 md:grid-cols-4 xl:grid-cols-8">
+          <section className="grid grid-cols-2 gap-3 md:grid-cols-4 xl:grid-cols-9">
             <div className="rounded-2xl border border-border-color bg-white/70 p-4 dark:bg-slate-900/70">
               <div className="text-xs font-semibold uppercase tracking-wide text-text-secondary">{copy.curricula}</div>
               <div className="mt-2 text-2xl font-bold">{summary.curricula}</div>
@@ -317,7 +372,7 @@ export const CurriculumQualityDashboardView: React.FC = () => {
               <div className="text-xs font-semibold uppercase tracking-wide text-text-secondary">{copy.notConfigured}</div>
               <div className="mt-2 text-2xl font-bold text-slate-600 dark:text-slate-300">{summary.ruleStatus.not_configured}</div>
             </div>
-            {(['M0', 'M1', 'M2', 'M3'] as MaturityLevel[]).map((level) => (
+            {(['M0', 'M1', 'M2', 'M3', 'M4'] as MaturityLevel[]).map((level) => (
               <div key={level} className="rounded-2xl border border-border-color bg-white/70 p-4 dark:bg-slate-900/70">
                 <div className="text-xs font-semibold uppercase tracking-wide text-text-secondary">{level}</div>
                 <div className="mt-2 text-2xl font-bold">{summary.maturity[level]}</div>
@@ -357,13 +412,14 @@ export const CurriculumQualityDashboardView: React.FC = () => {
             </div>
 
             <div className="overflow-x-auto">
-              <table className="w-full min-w-[760px] text-left text-sm">
+              <table className="w-full min-w-[860px] text-left text-sm">
                 <thead className="border-b border-border-color text-xs uppercase tracking-wide text-text-secondary">
                   <tr>
                     <th className="py-2 pr-3">{copy.curricula}</th>
                     <th className="py-2 pr-3">{copy.maturity}</th>
                     <th className="py-2 pr-3 text-right">{copy.goals}</th>
                     <th className="py-2 pr-3 text-right">{copy.atomic}</th>
+                    <th className="py-2 pr-3 text-right">{copy.jurisdictions}</th>
                     <th className="py-2 pr-3 text-right">{copy.routeScopes}</th>
                     <th className="py-2 pr-3 text-right">{copy.warnings}</th>
                     <th className="py-2 text-right">{copy.failures}</th>
@@ -385,6 +441,11 @@ export const CurriculumQualityDashboardView: React.FC = () => {
                       <td className="py-3 pr-3"><MaturityBadge level={curriculum.maturity} /></td>
                       <td className="py-3 pr-3 text-right tabular-nums">{curriculum.goals}</td>
                       <td className="py-3 pr-3 text-right tabular-nums">{curriculum.atomicGoals}</td>
+                      <td className="py-3 pr-3 text-right tabular-nums">
+                        {curriculum.jurisdictionCoverage
+                          ? `${curriculum.jurisdictionCoverage.cleanJurisdictions}/${curriculum.jurisdictionCoverage.totalJurisdictions}`
+                          : '—'}
+                      </td>
                       <td className="py-3 pr-3 text-right tabular-nums">{curriculum.scopes.length}</td>
                       <td className="py-3 pr-3 text-right tabular-nums text-amber-600 dark:text-amber-300">{countStatus(curriculum, 'warn')}</td>
                       <td className="py-3 text-right tabular-nums text-red-600 dark:text-red-300">{countStatus(curriculum, 'fail')}</td>
@@ -420,6 +481,68 @@ export const CurriculumQualityDashboardView: React.FC = () => {
                     <div className="mt-1 text-lg font-semibold">{selectedCurriculum.scopes.length}</div>
                   </div>
                 </div>
+
+                {selectedCurriculum.jurisdictionCoverage ? (
+                  <div>
+                    <h3 className="mb-2 flex items-center gap-2 text-sm font-semibold uppercase tracking-wide text-text-secondary">
+                      <MapPinned size={15} />
+                      <span>{copy.jurisdictionCoverage}</span>
+                    </h3>
+                    <div className="mb-3 grid grid-cols-2 gap-2 text-sm">
+                      <div className="rounded-xl border border-border-color p-3">
+                        <div className="text-xs text-text-secondary">{copy.jurisdictions}</div>
+                        <div className="mt-1 text-lg font-semibold">
+                          {selectedCurriculum.jurisdictionCoverage.cleanJurisdictions}/{selectedCurriculum.jurisdictionCoverage.totalJurisdictions}
+                        </div>
+                      </div>
+                      <div className="rounded-xl border border-border-color p-3">
+                        <div className="text-xs text-text-secondary">{copy.maxAtomicCoverage}</div>
+                        <div className="mt-1 text-lg font-semibold">
+                          {selectedCurriculum.jurisdictionCoverage.maxVisibleAtomicGoals}/{selectedCurriculum.jurisdictionCoverage.totalAtomicGoals}
+                          <span className="ml-1 text-xs text-text-secondary">
+                            ({formatPercent(selectedCurriculum.jurisdictionCoverage.maxAtomicCoveragePercent, language)}%)
+                          </span>
+                        </div>
+                      </div>
+                      <div className="rounded-xl border border-border-color p-3">
+                        <div className="text-xs text-text-secondary">{copy.cleanJurisdictions}</div>
+                        <div className="mt-1 text-lg font-semibold text-emerald-600 dark:text-emerald-300">
+                          {selectedCurriculum.jurisdictionCoverage.cleanJurisdictions}
+                        </div>
+                      </div>
+                      <div className="rounded-xl border border-border-color p-3">
+                        <div className="text-xs text-text-secondary">{copy.partialJurisdictions}</div>
+                        <div className="mt-1 text-lg font-semibold text-amber-600 dark:text-amber-300">
+                          {selectedCurriculum.jurisdictionCoverage.partialJurisdictions}
+                        </div>
+                      </div>
+                    </div>
+                    <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
+                      {selectedCurriculum.jurisdictionCoverage.jurisdictions.map((entry) => (
+                        <div
+                          key={entry.jurisdiction}
+                          className={`rounded-lg border px-2.5 py-2 text-xs ${coverageStatusClass[entry.status]}`}
+                          title={language === 'de' ? entry.labelDe : entry.labelEn}
+                        >
+                          <div className="flex items-center justify-between gap-2">
+                            <span className="font-semibold">{entry.jurisdiction}</span>
+                            <span className="tabular-nums">{formatPercent(entry.atomicCoveragePercent, language)}%</span>
+                          </div>
+                          <div className="mt-1 tabular-nums">
+                            {entry.visibleAtomicGoals}/{selectedCurriculum.jurisdictionCoverage?.totalAtomicGoals ?? 0} {copy.atomic}
+                          </div>
+                          {entry.errors > 0 || entry.warnings > 0 ? (
+                            <div className="mt-1 tabular-nums">
+                              {entry.errors > 0 ? `${entry.errors} ${copy.failures}` : ''}
+                              {entry.errors > 0 && entry.warnings > 0 ? ' · ' : ''}
+                              {entry.warnings > 0 ? `${entry.warnings} ${copy.warnings}` : ''}
+                            </div>
+                          ) : null}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                ) : null}
 
                 {selectedCurriculum.scopes.length > 0 ? (
                   <div>

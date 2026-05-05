@@ -24,6 +24,25 @@ npm run quality:curriculum-status
 Ein Curriculum ist im Dashboard eine kanonische `LearningLandscape`-JSON-Datei aus `curricula/DE/Gymnasium/canonical/`.
 Das Dashboard bewertet nicht einzelne Bundeslandquellen, sondern die kanonische Landschaft, die daraus entstanden ist.
 
+### Bundesland-Abdeckung
+
+Die Bundesland-Abdeckung ist eine fruehe Qualitaetssicht auf die Frage:
+
+> Fuer welche Bundeslaender hat die kanonische Landschaft bereits atomar sichtbare Lehrplanabdeckung?
+
+Die Daten kommen aus dem Applicability-Compiler. Fuer jedes deklarierte Bundesland, z. B. `DE-HE` oder `DE-BY`, wird eine gefilterte Projektion des kanonischen Curriculums betrachtet.
+
+Im Dashboard bedeuten die Werte:
+
+- `Bundeslaender`: Anzahl der Bundeslaender mit voller atomarer Zielabdeckung ohne Projektionswarnungen im Verhaeltnis zu allen deklarierten Bundeslaendern.
+- `Max. Atomabdeckung`: groesste atomare Zielabdeckung unter allen Bundesland-Projektionen.
+- Gruen: die Bundesland-Projektion hat die volle atomare Abdeckung und keine Applicability-Warnungen.
+- Gelb: die Bundesland-Projektion ist nur teilweise atomar sichtbar oder hat mindestens eine Applicability-Warnung.
+- Grau: fuer dieses Bundesland ist noch kein atomarer Zielanteil sichtbar.
+- Rot: die Bundesland-Projektion hat einen Applicability-Fehler.
+
+Wichtig: `16/16` im Dashboard bedeutet jetzt, dass alle 16 Bundesland-Projektionen die volle kanonische atomare Zielmenge sehen und keine Projektionswarnungen haben. Teilwerte wie `1/647` bleiben sichtbar, erfuellen den Meilenstein aber nicht.
+
 ### Ziel
 
 Ein Ziel ist ein `LearningGoal`.
@@ -58,12 +77,14 @@ Wichtig:
 - Sie zaehlt nur die im Generator registrierten QA-Profile.
 - Ein Curriculum ohne QA-Scope bleibt im Dashboard `M0`, auch wenn seine reine Graphstruktur technisch valide ist.
 
-Aktuell sind fuer Mathematik zwei Pflicht-Scopes registriert:
+Aktuell sind fuer Mathematik und Physik jeweils zwei Pflicht-Scopes registriert:
 
 | Scope-ID | Label | Ausgewaehlte atomare Ziele | Motivationsanker | Terminale Autonomie |
 | --- | --- | ---: | --- | --- |
 | `canonical-math-sek1` | Sekundarstufe I | 218 | `Warum Mathematik? - Entdecken, Muster & Alltag` | `Sek-I-Abschlussaufgaben Mathematik` unter `Uebungen Sekundarstufe I` |
 | `canonical-math-sek2` | Sekundarstufe II | 397 | `Warum Mathematik? - Denken, Muster & Zukunft` | atomare Klausur-/Uebungsziele unter `Uebungen E-Phase`, `Uebungen Q1`, `Uebungen Q2`, `Uebungen Q3`, `Uebungen Q4` und `Uebungen Prozesskompetenzen` |
+| `canonical-physics-sek1` | Sekundarstufe I | 44 | `Warum Physik?` | atomare Klausur-/Uebungsziele unter `Uebungen Sekundarstufe I Physik` |
+| `canonical-physics-sek2` | Sekundarstufe II | 278 | `Warum Physik?` | atomare Klausur-/Uebungsziele unter `Uebungen E-Phase`, `Uebungen Q1`, `Uebungen Q2`, `Uebungen Q3` und `Uebungen Q4` |
 
 Damit bedeutet `QA-Scopes = 2` bei Mathematik:
 
@@ -189,10 +210,10 @@ Ein Curriculum kann `M0` bis `M4` erreichen.
 
 | Curriculum-Reife | Exakte Bedingung |
 | --- | --- |
-| `M0` | Mindestens eine Grundbedingung fehlt: `CQR-001` oder `CQR-002` ist nicht `pass`, oder es gibt keinen QA-Scope, oder mindestens ein QA-Scope besteht `CQR-101` nicht. |
-| `M1` | Graph und Typen sind sauber, alle QA-Scopes bestehen `CQR-101`, aber mindestens ein QA-Scope ist noch `M1`. Praktisch heisst das: effektive Routen sind vorhanden, aber die atomare Routenschicht oder Cluster-`requires` sind noch nicht bereinigt. |
-| `M2` | Graph und Typen sind sauber, alle QA-Scopes sind mindestens `M2`, aber noch nicht alle sind `M3`. Praktisch heisst das: direkte atomare Routen sind sauber, aber terminale `examData` ist noch nicht komplett. |
-| `M3` | Graph und Typen sind sauber, alle QA-Scopes sind `M3`, aber mindestens eine M4-Review-Regel (`CQR-301`, `CQR-401`, `CQR-501`) ist noch nicht `pass`. |
+| `M0` | Mindestens eine Grundbedingung fehlt: `CQR-001` oder `CQR-002` ist nicht `pass`, oder `CQR-003` erreicht die volle Bundeslandabdeckung noch nicht. |
+| `M1` | Graph, Typen und Bundesland-Abdeckung sind sauber. Routen-Scopes fehlen noch, oder mindestens ein QA-Scope besteht `CQR-101` noch nicht. |
+| `M2` | Bundeslandabdeckung ist sauber und alle QA-Scopes sind route-seitig sauber: `CQR-101`, `CQR-102` und `CQR-103` sind je Scope `pass`; mindestens ein Scope ist aber noch nicht exam-mode-faehig. |
+| `M3` | Graph, Typen und Bundesland-Abdeckung sind sauber, alle QA-Scopes sind `M3`, aber mindestens eine M4-Review-Regel (`CQR-301`, `CQR-401`, `CQR-501`) ist noch nicht `pass`. |
 | `M4` | Alle QA-Scopes sind `M3` und zusaetzlich `CQR-301`, `CQR-401` und `CQR-501` sind `pass`. |
 
 Wichtige Konsequenz:
@@ -258,6 +279,50 @@ Reifeziel:
 
 - Grundlage fuer `M0`.
 
+### `CQR-003` - Bundesland full atomic coverage
+
+Ziel:
+
+> Jede deklarierte Bundesland-Projektion des Curriculums hat die volle kanonische atomare Zielmenge.
+
+Geprueft wird:
+
+- Der Applicability-Compiler erzeugt pro Curriculum Projektionen fuer die deklarierten Bundeslaender.
+- Pro Bundesland wird gezaehlt, wie viele Ziele und atomare Ziele in dieser Projektion sichtbar sind.
+- Ein Bundesland gilt fuer diese Meilensteinregel nur dann als vollstaendig, wenn alle kanonischen atomaren Ziele sichtbar sind.
+- Projektionswarnungen machen die Bundeslandkarte gelb und verhindern `CQR-003 pass`.
+- Applicability-Fehler in einer Projektion fuehren zu `fail`.
+
+Metriken:
+
+- `totalJurisdictions`: Anzahl deklarierter Bundeslaender.
+- `coveredJurisdictions`: Anzahl Bundeslaender mit mindestens einem sichtbaren atomaren Ziel.
+- `fullCoverageJurisdictions`: Anzahl Bundeslaender mit voller atomarer Zielabdeckung ohne Projektionswarnungen oder Fehler.
+- `uncoveredJurisdictions`: Anzahl Bundeslaender ohne sichtbares atomares Ziel.
+- `incompleteJurisdictions`: Anzahl Bundeslaender, deren sichtbare atomare Zielzahl kleiner als `totalAtomicGoals` ist.
+- `warningedJurisdictions`: Anzahl Bundeslaender mit Projektionswarnungen.
+- `cleanJurisdictions`: Bundeslaender mit atomarer Abdeckung ohne Applicability-Warnungen.
+- `partialJurisdictions`: Bundeslaender mit atomarer Abdeckung und Applicability-Warnungen.
+- `errorJurisdictions`: Bundeslaender mit Applicability-Fehlern.
+- `minVisibleAtomicGoals`: kleinste atomare Zielzahl in einer Bundesland-Projektion.
+- `maxVisibleAtomicGoals`: groesste atomare Zielzahl in einer Bundesland-Projektion.
+- `totalAtomicGoals`: atomare Zielzahl der kanonischen Gesamtlandschaft.
+
+Status:
+
+- `pass`, wenn alle deklarierten Bundeslaender die volle kanonische atomare Zielmenge sehen und keine Projektion Warnungen oder Fehler hat.
+- `warn`, wenn mindestens ein Bundesland nur teilweise sichtbar ist, gar keine atomaren Ziele sieht oder Projektionswarnungen hat.
+- `fail`, wenn mindestens eine Bundesland-Projektion Applicability-Fehler hat.
+- `not_configured`, wenn keine Coverage-Projektion fuer das Curriculum vorliegt.
+
+Reifeziel:
+
+- Erster fachlicher Meilenstein `M1`.
+
+Interpretation:
+
+`CQR-003 pass` bedeutet: Die kanonische Landschaft ist fuer alle deklarierten Bundeslaender voll atomar sichtbar. Es bedeutet weiterhin nicht, dass landesspezifische Abweichungen didaktisch perfekt ausmodelliert sind; solche Unterschiede gehoeren in Mappings, Composition Views und spaetere engere Overlays.
+
 ### `CQR-101` - Effective full route coverage
 
 Ziel:
@@ -285,8 +350,8 @@ Status:
 
 Reifeziel:
 
-- Mindestbedingung fuer `M1`.
-- Wenn ein konfigurierter Scope diese Regel nicht besteht, bleibt das Curriculum `M0`.
+- Bestandteil des Routenmeilensteins `M2`.
+- Wenn ein konfigurierter Scope diese Regel nicht besteht, bleibt das Curriculum nach erfolgreicher Bundeslandabdeckung bei `M1`.
 
 ### `CQR-102` - Atomic direct route coverage
 
