@@ -1,0 +1,1432 @@
+{
+  "schemaVersion": 1,
+  "rulesVersion": "curriculum-quality-v1",
+  "generatedAt": "2026-05-05T11:07:17.813Z",
+  "generatedBy": "app/scripts/generateCurriculumQualityStatus.ts",
+  "sources": {
+    "canonicalRoot": "curricula/DE/Gymnasium/canonical",
+    "semanticAtomicityRoot": "curricula/DE/Gymnasium/quality/semantic-atomicity",
+    "compositionViewRoot": "curricula/DE/Gymnasium/composition-views",
+    "acceptedWarningsPath": "docs/qa-ci/applicability-accepted-warnings.json"
+  },
+  "summary": {
+    "curricula": 21,
+    "maturity": {
+      "M0": 20,
+      "M1": 0,
+      "M2": 0,
+      "M3": 0,
+      "M4": 1
+    },
+    "ruleStatus": {
+      "pass": 74,
+      "warn": 1,
+      "fail": 0,
+      "not_configured": 58
+    }
+  },
+  "ruleCatalog": [
+    {
+      "id": "CQR-001",
+      "label": "Basic graph integrity",
+      "category": "graph",
+      "maturityTarget": "M0",
+      "description": "Goal IDs, local references, self-reference guards, and direct DAG checks are clean."
+    },
+    {
+      "id": "CQR-002",
+      "label": "Explicit type consistency",
+      "category": "graph",
+      "maturityTarget": "M0",
+      "description": "Stored type metadata agrees with structural atomic/cluster classification."
+    },
+    {
+      "id": "CQR-101",
+      "label": "Effective full route coverage",
+      "category": "route",
+      "maturityTarget": "M1",
+      "description": "Configured route scopes connect motivation anchors to terminal autonomy goals through effective requires."
+    },
+    {
+      "id": "CQR-102",
+      "label": "Atomic direct route coverage",
+      "category": "route",
+      "maturityTarget": "M2",
+      "description": "Configured route scopes connect motivation anchors to terminal autonomy goals through direct atomic requires."
+    },
+    {
+      "id": "CQR-103",
+      "label": "No scoped cluster requires",
+      "category": "route",
+      "maturityTarget": "M2",
+      "description": "Configured route scopes no longer depend on cluster-level requires for ordinary didactic sequencing."
+    },
+    {
+      "id": "CQR-201",
+      "label": "Terminal autonomy exam data",
+      "category": "assessment",
+      "maturityTarget": "M3",
+      "description": "Terminal autonomy goals in configured scopes are exam-mode-capable or explicitly reviewed."
+    },
+    {
+      "id": "CQR-301",
+      "label": "Semantic atomicity review freshness",
+      "category": "review",
+      "maturityTarget": "M4",
+      "description": "Configured semantic-atomicity ledgers are complete, current, and free of unresolved review queue entries."
+    },
+    {
+      "id": "CQR-401",
+      "label": "Composition view availability",
+      "category": "view",
+      "maturityTarget": "M4",
+      "description": "The curriculum has at least one reviewed learner-facing composition view."
+    },
+    {
+      "id": "CQR-501",
+      "label": "Applicability warning debt",
+      "category": "applicability",
+      "maturityTarget": "M4",
+      "description": "Active applicability warnings are resolved and accepted warning records still match current findings."
+    }
+  ],
+  "curricula": [
+    {
+      "landscapeId": "08a43a1b-d97e-522c-9dfa-c950a493364e",
+      "title": "Biologie (Gymnasium, DE)",
+      "subject": "Biologie",
+      "frameworkId": "canonical-gymnasium-biology",
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_BIOLOGIE.de.json",
+      "maturity": "M0",
+      "goals": 216,
+      "atomicGoals": 182,
+      "clusterGoals": 34,
+      "scopes": [],
+      "rules": [
+        {
+          "id": "CQR-001",
+          "status": "pass",
+          "summary": "Basic graph integrity checks pass.",
+          "metrics": {
+            "goals": 216,
+            "localReferenceIssues": 0
+          }
+        },
+        {
+          "id": "CQR-002",
+          "status": "pass",
+          "summary": "Explicit type metadata matches graph structure.",
+          "metrics": {
+            "mismatches": 0
+          }
+        },
+        {
+          "id": "CQR-301",
+          "status": "not_configured",
+          "summary": "No semantic atomicity review config is registered for this curriculum."
+        },
+        {
+          "id": "CQR-401",
+          "status": "not_configured",
+          "summary": "No composition view is registered for this curriculum.",
+          "metrics": {
+            "compositionViews": 0
+          }
+        },
+        {
+          "id": "CQR-501",
+          "status": "pass",
+          "summary": "21 accepted applicability warning(s) are current and no active applicability warning debt is visible.",
+          "metrics": {
+            "activeWarnings": 0,
+            "acceptedWarnings": 21,
+            "obsoleteAcceptedWarnings": 0
+          }
+        },
+        {
+          "id": "CQR-101",
+          "status": "not_configured",
+          "summary": "No explicit route-coverage profile is registered for this curriculum."
+        }
+      ]
+    },
+    {
+      "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+      "title": "Chemie (Gymnasium, DE)",
+      "subject": "Chemie",
+      "frameworkId": "canonical-gymnasium-chemistry",
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+      "maturity": "M0",
+      "goals": 217,
+      "atomicGoals": 177,
+      "clusterGoals": 40,
+      "scopes": [],
+      "rules": [
+        {
+          "id": "CQR-001",
+          "status": "pass",
+          "summary": "Basic graph integrity checks pass.",
+          "metrics": {
+            "goals": 217,
+            "localReferenceIssues": 0
+          }
+        },
+        {
+          "id": "CQR-002",
+          "status": "pass",
+          "summary": "Explicit type metadata matches graph structure.",
+          "metrics": {
+            "mismatches": 0
+          }
+        },
+        {
+          "id": "CQR-301",
+          "status": "not_configured",
+          "summary": "No semantic atomicity review config is registered for this curriculum."
+        },
+        {
+          "id": "CQR-401",
+          "status": "not_configured",
+          "summary": "No composition view is registered for this curriculum.",
+          "metrics": {
+            "compositionViews": 0
+          }
+        },
+        {
+          "id": "CQR-501",
+          "status": "pass",
+          "summary": "0 accepted applicability warning(s) are current and no active applicability warning debt is visible.",
+          "metrics": {
+            "activeWarnings": 0,
+            "acceptedWarnings": 0,
+            "obsoleteAcceptedWarnings": 0
+          }
+        },
+        {
+          "id": "CQR-101",
+          "status": "not_configured",
+          "summary": "No explicit route-coverage profile is registered for this curriculum."
+        }
+      ]
+    },
+    {
+      "landscapeId": "8fdb83f5-b42a-5b36-ab5d-64edd4b2ab80",
+      "title": "Chinesisch (Gymnasium, DE)",
+      "subject": "Chinesisch",
+      "frameworkId": "canonical-gymnasium-chinese",
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHINESISCH.de.json",
+      "maturity": "M0",
+      "goals": 192,
+      "atomicGoals": 181,
+      "clusterGoals": 11,
+      "scopes": [],
+      "rules": [
+        {
+          "id": "CQR-001",
+          "status": "pass",
+          "summary": "Basic graph integrity checks pass.",
+          "metrics": {
+            "goals": 192,
+            "localReferenceIssues": 0
+          }
+        },
+        {
+          "id": "CQR-002",
+          "status": "pass",
+          "summary": "Explicit type metadata matches graph structure.",
+          "metrics": {
+            "mismatches": 0
+          }
+        },
+        {
+          "id": "CQR-301",
+          "status": "not_configured",
+          "summary": "No semantic atomicity review config is registered for this curriculum."
+        },
+        {
+          "id": "CQR-401",
+          "status": "not_configured",
+          "summary": "No composition view is registered for this curriculum.",
+          "metrics": {
+            "compositionViews": 0
+          }
+        },
+        {
+          "id": "CQR-501",
+          "status": "pass",
+          "summary": "16 accepted applicability warning(s) are current and no active applicability warning debt is visible.",
+          "metrics": {
+            "activeWarnings": 0,
+            "acceptedWarnings": 16,
+            "obsoleteAcceptedWarnings": 0
+          }
+        },
+        {
+          "id": "CQR-101",
+          "status": "not_configured",
+          "summary": "No explicit route-coverage profile is registered for this curriculum."
+        }
+      ]
+    },
+    {
+      "landscapeId": "67bd301b-e11a-582d-94ba-4f4b1a4cefff",
+      "title": "Deutsch (Gymnasium, DE)",
+      "subject": "Deutsch",
+      "frameworkId": "canonical-gymnasium-german",
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_DEUTSCH.de.json",
+      "maturity": "M0",
+      "goals": 181,
+      "atomicGoals": 144,
+      "clusterGoals": 37,
+      "scopes": [],
+      "rules": [
+        {
+          "id": "CQR-001",
+          "status": "pass",
+          "summary": "Basic graph integrity checks pass.",
+          "metrics": {
+            "goals": 181,
+            "localReferenceIssues": 0
+          }
+        },
+        {
+          "id": "CQR-002",
+          "status": "pass",
+          "summary": "Explicit type metadata matches graph structure.",
+          "metrics": {
+            "mismatches": 0
+          }
+        },
+        {
+          "id": "CQR-301",
+          "status": "not_configured",
+          "summary": "No semantic atomicity review config is registered for this curriculum."
+        },
+        {
+          "id": "CQR-401",
+          "status": "not_configured",
+          "summary": "No composition view is registered for this curriculum.",
+          "metrics": {
+            "compositionViews": 0
+          }
+        },
+        {
+          "id": "CQR-501",
+          "status": "pass",
+          "summary": "0 accepted applicability warning(s) are current and no active applicability warning debt is visible.",
+          "metrics": {
+            "activeWarnings": 0,
+            "acceptedWarnings": 0,
+            "obsoleteAcceptedWarnings": 0
+          }
+        },
+        {
+          "id": "CQR-101",
+          "status": "not_configured",
+          "summary": "No explicit route-coverage profile is registered for this curriculum."
+        }
+      ]
+    },
+    {
+      "landscapeId": "c8c84073-46ae-57ec-898a-882d08d7a72f",
+      "title": "Englisch (Gymnasium, DE)",
+      "subject": "Englisch",
+      "frameworkId": "canonical-gymnasium-english",
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_ENGLISCH.de.json",
+      "maturity": "M0",
+      "goals": 130,
+      "atomicGoals": 104,
+      "clusterGoals": 26,
+      "scopes": [],
+      "rules": [
+        {
+          "id": "CQR-001",
+          "status": "pass",
+          "summary": "Basic graph integrity checks pass.",
+          "metrics": {
+            "goals": 130,
+            "localReferenceIssues": 0
+          }
+        },
+        {
+          "id": "CQR-002",
+          "status": "pass",
+          "summary": "Explicit type metadata matches graph structure.",
+          "metrics": {
+            "mismatches": 0
+          }
+        },
+        {
+          "id": "CQR-301",
+          "status": "not_configured",
+          "summary": "No semantic atomicity review config is registered for this curriculum."
+        },
+        {
+          "id": "CQR-401",
+          "status": "not_configured",
+          "summary": "No composition view is registered for this curriculum.",
+          "metrics": {
+            "compositionViews": 0
+          }
+        },
+        {
+          "id": "CQR-501",
+          "status": "pass",
+          "summary": "0 accepted applicability warning(s) are current and no active applicability warning debt is visible.",
+          "metrics": {
+            "activeWarnings": 0,
+            "acceptedWarnings": 0,
+            "obsoleteAcceptedWarnings": 0
+          }
+        },
+        {
+          "id": "CQR-101",
+          "status": "not_configured",
+          "summary": "No explicit route-coverage profile is registered for this curriculum."
+        }
+      ]
+    },
+    {
+      "landscapeId": "96a915cc-4fd6-5dc2-8cee-aaf3ab8c2977",
+      "title": "Französisch (Gymnasium, DE)",
+      "subject": "Französisch",
+      "frameworkId": "canonical-gymnasium-french",
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_FRANZOESISCH.de.json",
+      "maturity": "M0",
+      "goals": 331,
+      "atomicGoals": 275,
+      "clusterGoals": 56,
+      "scopes": [],
+      "rules": [
+        {
+          "id": "CQR-001",
+          "status": "pass",
+          "summary": "Basic graph integrity checks pass.",
+          "metrics": {
+            "goals": 331,
+            "localReferenceIssues": 0
+          }
+        },
+        {
+          "id": "CQR-002",
+          "status": "pass",
+          "summary": "Explicit type metadata matches graph structure.",
+          "metrics": {
+            "mismatches": 0
+          }
+        },
+        {
+          "id": "CQR-301",
+          "status": "not_configured",
+          "summary": "No semantic atomicity review config is registered for this curriculum."
+        },
+        {
+          "id": "CQR-401",
+          "status": "not_configured",
+          "summary": "No composition view is registered for this curriculum.",
+          "metrics": {
+            "compositionViews": 0
+          }
+        },
+        {
+          "id": "CQR-501",
+          "status": "pass",
+          "summary": "0 accepted applicability warning(s) are current and no active applicability warning debt is visible.",
+          "metrics": {
+            "activeWarnings": 0,
+            "acceptedWarnings": 0,
+            "obsoleteAcceptedWarnings": 0
+          }
+        },
+        {
+          "id": "CQR-101",
+          "status": "not_configured",
+          "summary": "No explicit route-coverage profile is registered for this curriculum."
+        }
+      ]
+    },
+    {
+      "landscapeId": "92406d94-e3c1-58ec-b7c6-12122278d25a",
+      "title": "Geschichte (Gymnasium, DE)",
+      "subject": "Geschichte",
+      "frameworkId": "canonical-gymnasium-history",
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_GESCHICHTE.de.json",
+      "maturity": "M0",
+      "goals": 210,
+      "atomicGoals": 171,
+      "clusterGoals": 39,
+      "scopes": [],
+      "rules": [
+        {
+          "id": "CQR-001",
+          "status": "pass",
+          "summary": "Basic graph integrity checks pass.",
+          "metrics": {
+            "goals": 210,
+            "localReferenceIssues": 0
+          }
+        },
+        {
+          "id": "CQR-002",
+          "status": "pass",
+          "summary": "Explicit type metadata matches graph structure.",
+          "metrics": {
+            "mismatches": 0
+          }
+        },
+        {
+          "id": "CQR-301",
+          "status": "not_configured",
+          "summary": "No semantic atomicity review config is registered for this curriculum."
+        },
+        {
+          "id": "CQR-401",
+          "status": "not_configured",
+          "summary": "No composition view is registered for this curriculum.",
+          "metrics": {
+            "compositionViews": 0
+          }
+        },
+        {
+          "id": "CQR-501",
+          "status": "pass",
+          "summary": "40 accepted applicability warning(s) are current and no active applicability warning debt is visible.",
+          "metrics": {
+            "activeWarnings": 0,
+            "acceptedWarnings": 40,
+            "obsoleteAcceptedWarnings": 0
+          }
+        },
+        {
+          "id": "CQR-101",
+          "status": "not_configured",
+          "summary": "No explicit route-coverage profile is registered for this curriculum."
+        }
+      ]
+    },
+    {
+      "landscapeId": "70a2cb55-127b-5c6e-b518-4a1c9f4f77a0",
+      "title": "Griechisch (Gymnasium, DE)",
+      "subject": "Griechisch",
+      "frameworkId": "canonical-gymnasium-greek",
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_GRIECHISCH.de.json",
+      "maturity": "M0",
+      "goals": 198,
+      "atomicGoals": 185,
+      "clusterGoals": 13,
+      "scopes": [],
+      "rules": [
+        {
+          "id": "CQR-001",
+          "status": "pass",
+          "summary": "Basic graph integrity checks pass.",
+          "metrics": {
+            "goals": 198,
+            "localReferenceIssues": 0
+          }
+        },
+        {
+          "id": "CQR-002",
+          "status": "pass",
+          "summary": "Explicit type metadata matches graph structure.",
+          "metrics": {
+            "mismatches": 0
+          }
+        },
+        {
+          "id": "CQR-301",
+          "status": "not_configured",
+          "summary": "No semantic atomicity review config is registered for this curriculum."
+        },
+        {
+          "id": "CQR-401",
+          "status": "not_configured",
+          "summary": "No composition view is registered for this curriculum.",
+          "metrics": {
+            "compositionViews": 0
+          }
+        },
+        {
+          "id": "CQR-501",
+          "status": "pass",
+          "summary": "0 accepted applicability warning(s) are current and no active applicability warning debt is visible.",
+          "metrics": {
+            "activeWarnings": 0,
+            "acceptedWarnings": 0,
+            "obsoleteAcceptedWarnings": 0
+          }
+        },
+        {
+          "id": "CQR-101",
+          "status": "not_configured",
+          "summary": "No explicit route-coverage profile is registered for this curriculum."
+        }
+      ]
+    },
+    {
+      "landscapeId": "a0e13c56-c25f-4742-9272-3a1a603ee52e",
+      "title": "Gymnasium (DE)",
+      "subject": "Gymnasium (Deutschland)",
+      "frameworkId": "canonical-gymnasium-overview",
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_OVERVIEW.de.json",
+      "maturity": "M0",
+      "goals": 1,
+      "atomicGoals": 0,
+      "clusterGoals": 1,
+      "scopes": [],
+      "rules": [
+        {
+          "id": "CQR-001",
+          "status": "pass",
+          "summary": "Basic graph integrity checks pass.",
+          "metrics": {
+            "goals": 1,
+            "localReferenceIssues": 0
+          }
+        },
+        {
+          "id": "CQR-002",
+          "status": "pass",
+          "summary": "Explicit type metadata matches graph structure.",
+          "metrics": {
+            "mismatches": 0
+          }
+        },
+        {
+          "id": "CQR-301",
+          "status": "not_configured",
+          "summary": "No semantic atomicity review config is registered for this curriculum."
+        },
+        {
+          "id": "CQR-401",
+          "status": "pass",
+          "summary": "3 composition view(s) are registered.",
+          "metrics": {
+            "compositionViews": 3
+          }
+        },
+        {
+          "id": "CQR-501",
+          "status": "pass",
+          "summary": "0 accepted applicability warning(s) are current and no active applicability warning debt is visible.",
+          "metrics": {
+            "activeWarnings": 0,
+            "acceptedWarnings": 0,
+            "obsoleteAcceptedWarnings": 0
+          }
+        },
+        {
+          "id": "CQR-101",
+          "status": "not_configured",
+          "summary": "No explicit route-coverage profile is registered for this curriculum."
+        }
+      ]
+    },
+    {
+      "landscapeId": "7d51b38c-a149-5407-bddc-d2ce7878b020",
+      "title": "Informatik (Gymnasium, DE)",
+      "subject": "Informatik",
+      "frameworkId": "canonical-gymnasium-informatics",
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_INFORMATIK.de.json",
+      "maturity": "M0",
+      "goals": 221,
+      "atomicGoals": 180,
+      "clusterGoals": 41,
+      "scopes": [],
+      "rules": [
+        {
+          "id": "CQR-001",
+          "status": "pass",
+          "summary": "Basic graph integrity checks pass.",
+          "metrics": {
+            "goals": 221,
+            "localReferenceIssues": 0
+          }
+        },
+        {
+          "id": "CQR-002",
+          "status": "pass",
+          "summary": "Explicit type metadata matches graph structure.",
+          "metrics": {
+            "mismatches": 0
+          }
+        },
+        {
+          "id": "CQR-301",
+          "status": "not_configured",
+          "summary": "No semantic atomicity review config is registered for this curriculum."
+        },
+        {
+          "id": "CQR-401",
+          "status": "not_configured",
+          "summary": "No composition view is registered for this curriculum.",
+          "metrics": {
+            "compositionViews": 0
+          }
+        },
+        {
+          "id": "CQR-501",
+          "status": "pass",
+          "summary": "0 accepted applicability warning(s) are current and no active applicability warning debt is visible.",
+          "metrics": {
+            "activeWarnings": 0,
+            "acceptedWarnings": 0,
+            "obsoleteAcceptedWarnings": 0
+          }
+        },
+        {
+          "id": "CQR-101",
+          "status": "not_configured",
+          "summary": "No explicit route-coverage profile is registered for this curriculum."
+        }
+      ]
+    },
+    {
+      "landscapeId": "25c6b527-10d6-5d92-9d76-fab23585f29b",
+      "title": "Italienisch (Gymnasium, DE)",
+      "subject": "Italienisch",
+      "frameworkId": "canonical-gymnasium-italian",
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_ITALIENISCH.de.json",
+      "maturity": "M0",
+      "goals": 8,
+      "atomicGoals": 7,
+      "clusterGoals": 1,
+      "scopes": [],
+      "rules": [
+        {
+          "id": "CQR-001",
+          "status": "pass",
+          "summary": "Basic graph integrity checks pass.",
+          "metrics": {
+            "goals": 8,
+            "localReferenceIssues": 0
+          }
+        },
+        {
+          "id": "CQR-002",
+          "status": "pass",
+          "summary": "Explicit type metadata matches graph structure.",
+          "metrics": {
+            "mismatches": 0
+          }
+        },
+        {
+          "id": "CQR-301",
+          "status": "not_configured",
+          "summary": "No semantic atomicity review config is registered for this curriculum."
+        },
+        {
+          "id": "CQR-401",
+          "status": "not_configured",
+          "summary": "No composition view is registered for this curriculum.",
+          "metrics": {
+            "compositionViews": 0
+          }
+        },
+        {
+          "id": "CQR-501",
+          "status": "pass",
+          "summary": "0 accepted applicability warning(s) are current and no active applicability warning debt is visible.",
+          "metrics": {
+            "activeWarnings": 0,
+            "acceptedWarnings": 0,
+            "obsoleteAcceptedWarnings": 0
+          }
+        },
+        {
+          "id": "CQR-101",
+          "status": "not_configured",
+          "summary": "No explicit route-coverage profile is registered for this curriculum."
+        }
+      ]
+    },
+    {
+      "landscapeId": "668cf206-941e-51f8-8704-3e8938631235",
+      "title": "Latein (Gymnasium, DE)",
+      "subject": "Latein",
+      "frameworkId": "canonical-gymnasium-latin",
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_LATEIN.de.json",
+      "maturity": "M0",
+      "goals": 142,
+      "atomicGoals": 109,
+      "clusterGoals": 33,
+      "scopes": [],
+      "rules": [
+        {
+          "id": "CQR-001",
+          "status": "pass",
+          "summary": "Basic graph integrity checks pass.",
+          "metrics": {
+            "goals": 142,
+            "localReferenceIssues": 0
+          }
+        },
+        {
+          "id": "CQR-002",
+          "status": "pass",
+          "summary": "Explicit type metadata matches graph structure.",
+          "metrics": {
+            "mismatches": 0
+          }
+        },
+        {
+          "id": "CQR-301",
+          "status": "not_configured",
+          "summary": "No semantic atomicity review config is registered for this curriculum."
+        },
+        {
+          "id": "CQR-401",
+          "status": "not_configured",
+          "summary": "No composition view is registered for this curriculum.",
+          "metrics": {
+            "compositionViews": 0
+          }
+        },
+        {
+          "id": "CQR-501",
+          "status": "pass",
+          "summary": "0 accepted applicability warning(s) are current and no active applicability warning debt is visible.",
+          "metrics": {
+            "activeWarnings": 0,
+            "acceptedWarnings": 0,
+            "obsoleteAcceptedWarnings": 0
+          }
+        },
+        {
+          "id": "CQR-101",
+          "status": "not_configured",
+          "summary": "No explicit route-coverage profile is registered for this curriculum."
+        }
+      ]
+    },
+    {
+      "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+      "title": "Mathematik (Gymnasium, DE)",
+      "subject": "Mathematik",
+      "frameworkId": "canonical-gymnasium-math",
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+      "maturity": "M4",
+      "goals": 836,
+      "atomicGoals": 647,
+      "clusterGoals": 189,
+      "scopes": [
+        {
+          "scopeId": "canonical-math-sek1",
+          "label": "Sekundarstufe I",
+          "selectedAtomicGoals": 218,
+          "maturity": "M3",
+          "rules": [
+            {
+              "id": "CQR-101",
+              "status": "pass",
+              "summary": "Effective route coverage is complete for the configured scope.",
+              "metrics": {
+                "selectedAtomicGoals": 218,
+                "missingMotivationPath": 0,
+                "missingTerminalPath": 0
+              }
+            },
+            {
+              "id": "CQR-102",
+              "status": "pass",
+              "summary": "Direct atomic route coverage is complete for the configured scope.",
+              "metrics": {
+                "selectedAtomicGoals": 218,
+                "missingDirectMotivationPath": 0,
+                "missingDirectTerminalPath": 0
+              }
+            },
+            {
+              "id": "CQR-103",
+              "status": "pass",
+              "summary": "No scoped cluster-level requires remain.",
+              "metrics": {
+                "scopedClusterRequires": 0
+              }
+            },
+            {
+              "id": "CQR-201",
+              "status": "pass",
+              "summary": "All configured terminal autonomy goals have examData.",
+              "metrics": {
+                "terminalAutonomyGoals": 7,
+                "terminalAutonomyGoalsWithExamData": 7,
+                "terminalAutonomyGoalsWithoutExamData": 0
+              }
+            }
+          ]
+        },
+        {
+          "scopeId": "canonical-math-sek2",
+          "label": "Sekundarstufe II",
+          "selectedAtomicGoals": 397,
+          "maturity": "M3",
+          "rules": [
+            {
+              "id": "CQR-101",
+              "status": "pass",
+              "summary": "Effective route coverage is complete for the configured scope.",
+              "metrics": {
+                "selectedAtomicGoals": 397,
+                "missingMotivationPath": 0,
+                "missingTerminalPath": 0
+              }
+            },
+            {
+              "id": "CQR-102",
+              "status": "pass",
+              "summary": "Direct atomic route coverage is complete for the configured scope.",
+              "metrics": {
+                "selectedAtomicGoals": 397,
+                "missingDirectMotivationPath": 0,
+                "missingDirectTerminalPath": 0
+              }
+            },
+            {
+              "id": "CQR-103",
+              "status": "pass",
+              "summary": "No scoped cluster-level requires remain.",
+              "metrics": {
+                "scopedClusterRequires": 0
+              }
+            },
+            {
+              "id": "CQR-201",
+              "status": "pass",
+              "summary": "All configured terminal autonomy goals have examData.",
+              "metrics": {
+                "terminalAutonomyGoals": 32,
+                "terminalAutonomyGoalsWithExamData": 32,
+                "terminalAutonomyGoalsWithoutExamData": 0
+              }
+            }
+          ]
+        }
+      ],
+      "rules": [
+        {
+          "id": "CQR-001",
+          "status": "pass",
+          "summary": "Basic graph integrity checks pass.",
+          "metrics": {
+            "goals": 836,
+            "localReferenceIssues": 0
+          }
+        },
+        {
+          "id": "CQR-002",
+          "status": "pass",
+          "summary": "Explicit type metadata matches graph structure.",
+          "metrics": {
+            "mismatches": 0
+          }
+        },
+        {
+          "id": "CQR-301",
+          "status": "pass",
+          "summary": "Semantic atomicity review ledgers are current and fully accepted.",
+          "metrics": {
+            "configs": 2,
+            "leafGoals": 578,
+            "atomic": 578,
+            "needsDeveloperReview": 0,
+            "nonAtomic": 0,
+            "missing": 0,
+            "stale": 0,
+            "obsolete": 0
+          }
+        },
+        {
+          "id": "CQR-401",
+          "status": "pass",
+          "summary": "70 composition view(s) are registered.",
+          "metrics": {
+            "compositionViews": 70
+          }
+        },
+        {
+          "id": "CQR-501",
+          "status": "pass",
+          "summary": "832 accepted applicability warning(s) are current and no active applicability warning debt is visible.",
+          "metrics": {
+            "activeWarnings": 0,
+            "acceptedWarnings": 832,
+            "obsoleteAcceptedWarnings": 0
+          }
+        }
+      ]
+    },
+    {
+      "landscapeId": "f620c251-c1e1-41c1-b4e1-b10950b43608",
+      "title": "Musik (Gymnasium, DE)",
+      "subject": "Musik",
+      "frameworkId": "canonical-gymnasium-music",
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MUSIK.de.json",
+      "maturity": "M0",
+      "goals": 76,
+      "atomicGoals": 52,
+      "clusterGoals": 24,
+      "scopes": [],
+      "rules": [
+        {
+          "id": "CQR-001",
+          "status": "pass",
+          "summary": "Basic graph integrity checks pass.",
+          "metrics": {
+            "goals": 76,
+            "localReferenceIssues": 0
+          }
+        },
+        {
+          "id": "CQR-002",
+          "status": "pass",
+          "summary": "Explicit type metadata matches graph structure.",
+          "metrics": {
+            "mismatches": 0
+          }
+        },
+        {
+          "id": "CQR-301",
+          "status": "not_configured",
+          "summary": "No semantic atomicity review config is registered for this curriculum."
+        },
+        {
+          "id": "CQR-401",
+          "status": "not_configured",
+          "summary": "No composition view is registered for this curriculum.",
+          "metrics": {
+            "compositionViews": 0
+          }
+        },
+        {
+          "id": "CQR-501",
+          "status": "pass",
+          "summary": "0 accepted applicability warning(s) are current and no active applicability warning debt is visible.",
+          "metrics": {
+            "activeWarnings": 0,
+            "acceptedWarnings": 0,
+            "obsoleteAcceptedWarnings": 0
+          }
+        },
+        {
+          "id": "CQR-101",
+          "status": "not_configured",
+          "summary": "No explicit route-coverage profile is registered for this curriculum."
+        }
+      ]
+    },
+    {
+      "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+      "title": "Physik (Gymnasium, DE)",
+      "subject": "Physik",
+      "frameworkId": "canonical-gymnasium-physics",
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+      "maturity": "M0",
+      "goals": 468,
+      "atomicGoals": 386,
+      "clusterGoals": 82,
+      "scopes": [],
+      "rules": [
+        {
+          "id": "CQR-001",
+          "status": "pass",
+          "summary": "Basic graph integrity checks pass.",
+          "metrics": {
+            "goals": 468,
+            "localReferenceIssues": 0
+          }
+        },
+        {
+          "id": "CQR-002",
+          "status": "pass",
+          "summary": "Explicit type metadata matches graph structure.",
+          "metrics": {
+            "mismatches": 0
+          }
+        },
+        {
+          "id": "CQR-301",
+          "status": "not_configured",
+          "summary": "No semantic atomicity review config is registered for this curriculum."
+        },
+        {
+          "id": "CQR-401",
+          "status": "pass",
+          "summary": "13 composition view(s) are registered.",
+          "metrics": {
+            "compositionViews": 13
+          }
+        },
+        {
+          "id": "CQR-501",
+          "status": "warn",
+          "summary": "319 active and 8 obsolete accepted applicability warning(s) need review.",
+          "metrics": {
+            "activeWarnings": 319,
+            "acceptedWarnings": 69,
+            "obsoleteAcceptedWarnings": 8
+          }
+        },
+        {
+          "id": "CQR-101",
+          "status": "not_configured",
+          "summary": "No explicit route-coverage profile is registered for this curriculum."
+        }
+      ]
+    },
+    {
+      "landscapeId": "51b60137-46e8-5498-973e-ea38bb32f327",
+      "title": "Politik und Wirtschaft (Gymnasium, DE)",
+      "subject": "Politik und Wirtschaft",
+      "frameworkId": "canonical-gymnasium-politics-economics",
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_POLITIKWIRTSCHAFT.de.json",
+      "maturity": "M0",
+      "goals": 208,
+      "atomicGoals": 175,
+      "clusterGoals": 33,
+      "scopes": [],
+      "rules": [
+        {
+          "id": "CQR-001",
+          "status": "pass",
+          "summary": "Basic graph integrity checks pass.",
+          "metrics": {
+            "goals": 208,
+            "localReferenceIssues": 0
+          }
+        },
+        {
+          "id": "CQR-002",
+          "status": "pass",
+          "summary": "Explicit type metadata matches graph structure.",
+          "metrics": {
+            "mismatches": 0
+          }
+        },
+        {
+          "id": "CQR-301",
+          "status": "not_configured",
+          "summary": "No semantic atomicity review config is registered for this curriculum."
+        },
+        {
+          "id": "CQR-401",
+          "status": "not_configured",
+          "summary": "No composition view is registered for this curriculum.",
+          "metrics": {
+            "compositionViews": 0
+          }
+        },
+        {
+          "id": "CQR-501",
+          "status": "pass",
+          "summary": "12 accepted applicability warning(s) are current and no active applicability warning debt is visible.",
+          "metrics": {
+            "activeWarnings": 0,
+            "acceptedWarnings": 12,
+            "obsoleteAcceptedWarnings": 0
+          }
+        },
+        {
+          "id": "CQR-101",
+          "status": "not_configured",
+          "summary": "No explicit route-coverage profile is registered for this curriculum."
+        }
+      ]
+    },
+    {
+      "landscapeId": "f145785b-0c44-5246-af66-8a153d202cb9",
+      "title": "Polnisch (Gymnasium, DE)",
+      "subject": "Polnisch",
+      "frameworkId": "canonical-gymnasium-polish",
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_POLNISCH.de.json",
+      "maturity": "M0",
+      "goals": 5,
+      "atomicGoals": 4,
+      "clusterGoals": 1,
+      "scopes": [],
+      "rules": [
+        {
+          "id": "CQR-001",
+          "status": "pass",
+          "summary": "Basic graph integrity checks pass.",
+          "metrics": {
+            "goals": 5,
+            "localReferenceIssues": 0
+          }
+        },
+        {
+          "id": "CQR-002",
+          "status": "pass",
+          "summary": "Explicit type metadata matches graph structure.",
+          "metrics": {
+            "mismatches": 0
+          }
+        },
+        {
+          "id": "CQR-301",
+          "status": "not_configured",
+          "summary": "No semantic atomicity review config is registered for this curriculum."
+        },
+        {
+          "id": "CQR-401",
+          "status": "not_configured",
+          "summary": "No composition view is registered for this curriculum.",
+          "metrics": {
+            "compositionViews": 0
+          }
+        },
+        {
+          "id": "CQR-501",
+          "status": "pass",
+          "summary": "0 accepted applicability warning(s) are current and no active applicability warning debt is visible.",
+          "metrics": {
+            "activeWarnings": 0,
+            "acceptedWarnings": 0,
+            "obsoleteAcceptedWarnings": 0
+          }
+        },
+        {
+          "id": "CQR-101",
+          "status": "not_configured",
+          "summary": "No explicit route-coverage profile is registered for this curriculum."
+        }
+      ]
+    },
+    {
+      "landscapeId": "242ba9bd-7ec7-5ec3-a15e-4f0f2b01aa37",
+      "title": "Russisch (Gymnasium, DE)",
+      "subject": "Russisch",
+      "frameworkId": "canonical-gymnasium-russian",
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_RUSSISCH.de.json",
+      "maturity": "M0",
+      "goals": 8,
+      "atomicGoals": 7,
+      "clusterGoals": 1,
+      "scopes": [],
+      "rules": [
+        {
+          "id": "CQR-001",
+          "status": "pass",
+          "summary": "Basic graph integrity checks pass.",
+          "metrics": {
+            "goals": 8,
+            "localReferenceIssues": 0
+          }
+        },
+        {
+          "id": "CQR-002",
+          "status": "pass",
+          "summary": "Explicit type metadata matches graph structure.",
+          "metrics": {
+            "mismatches": 0
+          }
+        },
+        {
+          "id": "CQR-301",
+          "status": "not_configured",
+          "summary": "No semantic atomicity review config is registered for this curriculum."
+        },
+        {
+          "id": "CQR-401",
+          "status": "not_configured",
+          "summary": "No composition view is registered for this curriculum.",
+          "metrics": {
+            "compositionViews": 0
+          }
+        },
+        {
+          "id": "CQR-501",
+          "status": "pass",
+          "summary": "0 accepted applicability warning(s) are current and no active applicability warning debt is visible.",
+          "metrics": {
+            "activeWarnings": 0,
+            "acceptedWarnings": 0,
+            "obsoleteAcceptedWarnings": 0
+          }
+        },
+        {
+          "id": "CQR-101",
+          "status": "not_configured",
+          "summary": "No explicit route-coverage profile is registered for this curriculum."
+        }
+      ]
+    },
+    {
+      "landscapeId": "90eedebf-9ea8-5247-85dd-31c147f907c3",
+      "title": "Spanisch (Gymnasium, DE)",
+      "subject": "Spanisch",
+      "frameworkId": "canonical-gymnasium-spanish",
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_SPANISCH.de.json",
+      "maturity": "M0",
+      "goals": 83,
+      "atomicGoals": 59,
+      "clusterGoals": 24,
+      "scopes": [],
+      "rules": [
+        {
+          "id": "CQR-001",
+          "status": "pass",
+          "summary": "Basic graph integrity checks pass.",
+          "metrics": {
+            "goals": 83,
+            "localReferenceIssues": 0
+          }
+        },
+        {
+          "id": "CQR-002",
+          "status": "pass",
+          "summary": "Explicit type metadata matches graph structure.",
+          "metrics": {
+            "mismatches": 0
+          }
+        },
+        {
+          "id": "CQR-301",
+          "status": "not_configured",
+          "summary": "No semantic atomicity review config is registered for this curriculum."
+        },
+        {
+          "id": "CQR-401",
+          "status": "not_configured",
+          "summary": "No composition view is registered for this curriculum.",
+          "metrics": {
+            "compositionViews": 0
+          }
+        },
+        {
+          "id": "CQR-501",
+          "status": "pass",
+          "summary": "0 accepted applicability warning(s) are current and no active applicability warning debt is visible.",
+          "metrics": {
+            "activeWarnings": 0,
+            "acceptedWarnings": 0,
+            "obsoleteAcceptedWarnings": 0
+          }
+        },
+        {
+          "id": "CQR-101",
+          "status": "not_configured",
+          "summary": "No explicit route-coverage profile is registered for this curriculum."
+        }
+      ]
+    },
+    {
+      "landscapeId": "0900df4c-beeb-5542-86f9-bd479c94746a",
+      "title": "Tschechisch (Gymnasium, DE)",
+      "subject": "Tschechisch",
+      "frameworkId": "canonical-gymnasium-czech",
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_TSCHECHISCH.de.json",
+      "maturity": "M0",
+      "goals": 5,
+      "atomicGoals": 4,
+      "clusterGoals": 1,
+      "scopes": [],
+      "rules": [
+        {
+          "id": "CQR-001",
+          "status": "pass",
+          "summary": "Basic graph integrity checks pass.",
+          "metrics": {
+            "goals": 5,
+            "localReferenceIssues": 0
+          }
+        },
+        {
+          "id": "CQR-002",
+          "status": "pass",
+          "summary": "Explicit type metadata matches graph structure.",
+          "metrics": {
+            "mismatches": 0
+          }
+        },
+        {
+          "id": "CQR-301",
+          "status": "not_configured",
+          "summary": "No semantic atomicity review config is registered for this curriculum."
+        },
+        {
+          "id": "CQR-401",
+          "status": "not_configured",
+          "summary": "No composition view is registered for this curriculum.",
+          "metrics": {
+            "compositionViews": 0
+          }
+        },
+        {
+          "id": "CQR-501",
+          "status": "pass",
+          "summary": "0 accepted applicability warning(s) are current and no active applicability warning debt is visible.",
+          "metrics": {
+            "activeWarnings": 0,
+            "acceptedWarnings": 0,
+            "obsoleteAcceptedWarnings": 0
+          }
+        },
+        {
+          "id": "CQR-101",
+          "status": "not_configured",
+          "summary": "No explicit route-coverage profile is registered for this curriculum."
+        }
+      ]
+    },
+    {
+      "landscapeId": "605bdaf6-32d5-56fd-8d92-5a80c2fd2901",
+      "title": "Wirtschaftswissenschaften (Gymnasium, DE)",
+      "subject": "Wirtschaftswissenschaften",
+      "frameworkId": "canonical-gymnasium-economics",
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_WIRTSCHAFT.de.json",
+      "maturity": "M0",
+      "goals": 225,
+      "atomicGoals": 193,
+      "clusterGoals": 32,
+      "scopes": [],
+      "rules": [
+        {
+          "id": "CQR-001",
+          "status": "pass",
+          "summary": "Basic graph integrity checks pass.",
+          "metrics": {
+            "goals": 225,
+            "localReferenceIssues": 0
+          }
+        },
+        {
+          "id": "CQR-002",
+          "status": "pass",
+          "summary": "Explicit type metadata matches graph structure.",
+          "metrics": {
+            "mismatches": 0
+          }
+        },
+        {
+          "id": "CQR-301",
+          "status": "not_configured",
+          "summary": "No semantic atomicity review config is registered for this curriculum."
+        },
+        {
+          "id": "CQR-401",
+          "status": "not_configured",
+          "summary": "No composition view is registered for this curriculum.",
+          "metrics": {
+            "compositionViews": 0
+          }
+        },
+        {
+          "id": "CQR-501",
+          "status": "pass",
+          "summary": "8 accepted applicability warning(s) are current and no active applicability warning debt is visible.",
+          "metrics": {
+            "activeWarnings": 0,
+            "acceptedWarnings": 8,
+            "obsoleteAcceptedWarnings": 0
+          }
+        },
+        {
+          "id": "CQR-101",
+          "status": "not_configured",
+          "summary": "No explicit route-coverage profile is registered for this curriculum."
+        }
+      ]
+    }
+  ]
+}

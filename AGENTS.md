@@ -320,13 +320,14 @@ When adding new goals (especially atomic ones), follow these conventions:
 
 ### 7.1 Semantic atomicity review
 
-Technical leaf nodes (`contains: []`) are not automatically semantically atomic.
+Technical content leaf nodes (`contains: []`) are not automatically semantically atomic.
 
 Rule:
 
-* A leaf goal is semantically atomic only if it contains exactly one content learning goal.
+* A content leaf goal is semantically atomic only if it contains exactly one content learning goal.
 * Broad titles/descriptions that combine independent routines such as “A, B und C bestimmen” should be split or sent to developer review.
 * Some combinations such as “berechnen und deuten” may still be one semantic goal; this must be judged from the content, not from keywords alone.
+* Non-content leaves such as motivation anchors, SRS/memorization decks, terminal practice nodes, and `examData` assessment nodes are out of scope for semantic content atomicity; they are covered by their own QA lanes.
 
 Process:
 

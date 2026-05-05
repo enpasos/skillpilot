@@ -45,6 +45,8 @@ Steps:
 The graph rule catalog is documented in:
 
 - `docs/qa-ci/graph-validation-rules.md`
+- `docs/qa-ci/curriculum-quality-dashboard.md` for the generated Workbench quality-status view
+- `docs/qa-ci/curriculum-quality-maturity-and-routes.md` for detailed `M0`-`M4`, QA-scope, route, and `CQR-*` semantics
 
 `validate:graph` supports two enforcement profiles:
 
@@ -63,6 +65,15 @@ Current scope note:
 - the current CI scope for `validate:view-filters` is the reviewed canonical DE Gymnasium set (`Mathematik`, `Physik`, `Chemie`, `Biologie`, `Informatik`, `Deutsch`, `Englisch`, `Französisch`, `Griechisch`, `Chinesisch`, `Geschichte`, `Politik und Wirtschaft`, `Musik`, `Latein`, `Spanisch`, `Wirtschaft`, `Overview`)
 - the validator can be widened locally via `APPLICABILITY_VALIDATION_SCOPE=all npm run validate:view-filters`, but CI does not enforce that broader scope yet
 - reviewed residual `APV-201` / `APV-202` cases are tracked in `docs/qa-ci/applicability-accepted-warnings.json` and are reported as accepted warnings, not active warnings
+
+Optional local status snapshot:
+
+```bash
+cd app
+npm run quality:curriculum-status
+```
+
+This writes `docs/qa-ci/status/curriculum-quality-status.json` and `.md`, which are read by the local Workbench route `/quality-dashboard`.
 
 ### 3. `backend-ci`
 

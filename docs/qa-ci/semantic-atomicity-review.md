@@ -1,13 +1,21 @@
 # Semantic Atomicity Review
 
-This QA lane checks whether technical leaf goals are also semantically atomic.
+This QA lane checks whether technical content leaf goals are also semantically atomic.
 
 Rule version `semantic-atomicity-v1`:
 
-- A technical leaf goal is semantically atomic only if it contains exactly one content learning goal.
+- A technical content leaf goal is semantically atomic only if it contains exactly one content learning goal.
 - It should name one assessable competence, not a list of independent routines.
 - Conjunctions such as "berechnen und deuten" are not automatically wrong; they are review signals.
 - The decision is semantic, not algorithmic. Scripts only track coverage and staleness.
+
+The review scope intentionally excludes non-content leaves:
+
+- terminal practice / assessment nodes (`Practice`, `Assessment`, or `examData`)
+- motivation / orientation anchors (`Motivation`, `Orientation`)
+- memorization/SRS deck leaves (`memorization` or `srs-deck:*`)
+
+These nodes are validated in their own lanes, for example route coverage, terminal autonomy, SRS, or assessment-data checks.
 
 ## Review Statuses
 

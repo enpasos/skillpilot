@@ -1,5 +1,3 @@
-# Graph Validation Rules
-
 This is the single source of truth for algorithmic graph validation in CI.
 
 - Validator implementation: `app/scripts/validateGraph.ts`

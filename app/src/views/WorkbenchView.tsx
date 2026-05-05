@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { ArrowRight, Blocks, BookOpenText, Home, Layers3, ListChecks, Network, Wrench } from 'lucide-react'
+import { ArrowRight, Blocks, BookOpenText, Gauge, Home, Layers3, ListChecks, Network, Wrench } from 'lucide-react'
 import { LanguageToggle } from '../components/LanguageToggle'
 import { useLanguage } from '../contexts/LanguageContext'
 
@@ -98,6 +98,14 @@ const TOOL_DEFINITIONS: Record<'de' | 'en', WorkbenchTool[]> = {
       group: 'maintenance',
       icon: ListChecks,
     },
+    {
+      title: 'Curriculum Quality Dashboard',
+      path: '/quality-dashboard',
+      description: 'Zeigt generierte Qualitätsstände, Reifegrade und offene Regelverletzungen pro Curriculum.',
+      scope: 'persistierte QA-Status-Snapshots unter docs/qa-ci/status',
+      group: 'maintenance',
+      icon: Gauge,
+    },
   ],
   en: [
     {
@@ -139,6 +147,14 @@ const TOOL_DEFINITIONS: Record<'de' | 'en', WorkbenchTool[]> = {
       scope: 'review ledgers, developer queue, and fingerprint status for technical leaf goals',
       group: 'maintenance',
       icon: ListChecks,
+    },
+    {
+      title: 'Curriculum Quality Dashboard',
+      path: '/quality-dashboard',
+      description: 'Shows generated quality status, maturity levels, and open rule findings per curriculum.',
+      scope: 'persisted QA status snapshots under docs/qa-ci/status',
+      group: 'maintenance',
+      icon: Gauge,
     },
   ],
 }

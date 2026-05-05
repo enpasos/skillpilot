@@ -15,6 +15,7 @@ const CURRICULA_ROOT = path.resolve(REPO_ROOT, 'curricula')
 const CANONICAL_GYMNASIUM_ROOT = path.resolve(CURRICULA_ROOT, 'DE', 'Gymnasium', 'canonical')
 const COMPOSITION_VIEW_ROOT = path.resolve(CURRICULA_ROOT, 'DE', 'Gymnasium', 'composition-views')
 const SEMANTIC_ATOMICITY_ROOT = path.resolve(CURRICULA_ROOT, 'DE', 'Gymnasium', 'quality', 'semantic-atomicity')
+const QUALITY_STATUS_PATH = path.resolve(REPO_ROOT, 'docs', 'qa-ci', 'status', 'curriculum-quality-status.json')
 const PUBLIC_DATA_ROOT = path.resolve(APP_ROOT, 'public', 'data')
 
 const toPosixPath = (value: string): string => value.split(path.sep).join('/')
@@ -529,6 +530,7 @@ const deckEditorDevPlugin = {
         && !requestUrl.pathname.startsWith('/__canonical-cluster-editor')
         && !requestUrl.pathname.startsWith('/__composition-view-editor')
         && !requestUrl.pathname.startsWith('/__semantic-atomicity-review')
+        && !requestUrl.pathname.startsWith('/__quality-dashboard')
         && !requestUrl.pathname.startsWith('/__authoring')
         && requestUrl.pathname !== '/api/ui/composition-views/match'
       ) {
@@ -537,6 +539,28 @@ const deckEditorDevPlugin = {
       }
 
       void (async () => {
+        if (requestUrl.pathname === '/__quality-dashboard/status') {
+          if (req.method !== 'GET') {
+            sendJson(res, 405, { error: 'Method not allowed' })
+            return
+          }
+
+          if (!existsSync(QUALITY_STATUS_PATH)) {
+            sendJson(res, 404, {
+              error: 'Curriculum quality status not generated.',
+              command: 'npm run quality:curriculum-status',
+            })
+            return
+          }
+
+          const status = JSON.parse(await fs.readFile(QUALITY_STATUS_PATH, 'utf8'))
+          sendJson(res, 200, {
+            path: toPosixPath(path.relative(REPO_ROOT, QUALITY_STATUS_PATH)),
+            status,
+          })
+          return
+        }
+
         if (requestUrl.pathname === '/__canonical-cluster-editor/list') {
           if (req.method !== 'GET') {
             sendJson(res, 405, { error: 'Method not allowed' })

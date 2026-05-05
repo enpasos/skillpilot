@@ -124,6 +124,16 @@ function isLeaf(goal: LearningGoal): boolean {
   return !Array.isArray(goal.contains) || goal.contains.length === 0
 }
 
+function isSemanticAtomicityRelevantGoal(goal: LearningGoal): boolean {
+  const tags = new Set(goal.tags ?? [])
+  if (tags.has('Practice') || tags.has('Assessment')) return false
+  if (tags.has('Motivation') || tags.has('Orientation')) return false
+  if (tags.has('memorization')) return false
+  if ((goal.tags ?? []).some((tag) => tag.startsWith('srs-deck:'))) return false
+  if ((goal as { examData?: unknown }).examData) return false
+  return true
+}
+
 function collectScopeGoalIds(rootGoalIds: string[], goalById: Map<string, LearningGoal>): Set<string> {
   const result = new Set<string>()
   const visiting = new Set<string>()
@@ -214,7 +224,7 @@ function main() {
   const scopeGoalIds = collectConfiguredScopeGoalIds(config, goalById)
   const leafGoals = Array.from(scopeGoalIds)
     .map((goalId) => goalById.get(goalId))
-    .filter((goal): goal is LearningGoal => !!goal && isLeaf(goal))
+    .filter((goal): goal is LearningGoal => !!goal && isLeaf(goal) && isSemanticAtomicityRelevantGoal(goal))
     .sort((left, right) => left.title.localeCompare(right.title, 'de'))
   const leafGoalIds = new Set(leafGoals.map((goal) => goal.id))
   const fingerprintsByGoalId = new Map(leafGoals.map((goal) => [goal.id, fingerprintGoal(goal, config.ruleVersion)]))
@@ -256,7 +266,7 @@ function main() {
   console.log(`# Semantic Atomicity Review: ${config.reviewId}`)
   console.log(`Scope: ${config.scope.label}`)
   console.log(`Rule: ${config.ruleVersion}`)
-  console.log(`Leaf goals in scope: ${leafGoals.length}`)
+  console.log(`Content leaf goals in scope: ${leafGoals.length}`)
   console.log(`Current reviewed atomic: ${byStatus.get('atomic')?.length ?? 0}`)
   console.log(`Current needs developer review: ${byStatus.get('needs_developer_review')?.length ?? 0}`)
   console.log(`Current non-atomic: ${byStatus.get('non_atomic')?.length ?? 0}`)
