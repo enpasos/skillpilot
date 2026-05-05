@@ -230,6 +230,8 @@ const TreeNode: React.FC<TreeNodeProps> = ({
 
   // Propagate: If I am in the subtree (passed from parent) OR I am the start of the plan
   const selfInSubtree = isInPlannedSubtree || isPlanned
+  const targetIconClassName =
+    hasActivePlan && selfInSubtree ? 'text-red-500 dark:text-red-400' : undefined
 
   // Active Plan Strategy:
   const isDimmed = hasActivePlan && !selfInSubtree
@@ -334,7 +336,7 @@ const TreeNode: React.FC<TreeNodeProps> = ({
             ) : activeGoalId === goal.id ? (
               <Send size={16} className="text-amber-500" />
             ) : (
-              <Target size={16} />
+              <Target size={16} className={targetIconClassName} />
             )}
           </div>
         )}

@@ -2043,7 +2043,11 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
 	                  : t.learner.totalInContext
 	                }
 	              >
-                {stats.totalAtomic} <Target size={16} />
+                {stats.totalAtomic}{' '}
+                <Target
+                  size={16}
+                  className={plannedGoals.size > 0 ? 'text-red-500 dark:text-red-400' : undefined}
+                />
               </button>
               <MoveRight size={12} className="text-slate-400" />
               <button
