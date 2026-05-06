@@ -42,6 +42,30 @@ interface MappingListResponse {
   documents: MappingDocumentSummary[]
 }
 
+const shouldPreferMappingDocument = (
+  candidate: MappingDocumentSummary,
+  current: MappingDocumentSummary,
+): boolean => {
+  const candidateIsReview = candidate.mappingPath.endsWith('.review.json')
+  const currentIsReview = current.mappingPath.endsWith('.review.json')
+  if (candidateIsReview !== currentIsReview) return candidateIsReview
+  if (candidate.mappingCount !== current.mappingCount) return candidate.mappingCount > current.mappingCount
+  return candidate.mappingPath.localeCompare(current.mappingPath) < 0
+}
+
+const deduplicateMappingDocuments = (
+  documents: MappingDocumentSummary[],
+): MappingDocumentSummary[] => {
+  const documentsBySourceLandscapeId = new Map<string, MappingDocumentSummary>()
+  documents.forEach((document) => {
+    const current = documentsBySourceLandscapeId.get(document.sourceLandscapeId)
+    if (!current || shouldPreferMappingDocument(document, current)) {
+      documentsBySourceLandscapeId.set(document.sourceLandscapeId, document)
+    }
+  })
+  return [...documentsBySourceLandscapeId.values()]
+}
+
 interface SourceMapping {
   canonicalGoalId: string
   matchType: string
@@ -323,14 +347,15 @@ export const CurriculumMappingWorkbenchView: React.FC = () => {
       const response = await fetch('/__curriculum-mapping-workbench/list')
       if (!response.ok) throw new Error(response.statusText)
       const data = await response.json() as MappingListResponse
-      setDocuments(data.documents)
+      const deduplicatedDocuments = deduplicateMappingDocuments(data.documents)
+      setDocuments(deduplicatedDocuments)
       setSelectedSourceLandscapeId((current) => {
-        if (current && data.documents.some((entry) => entry.sourceLandscapeId === current)) return current
-        return data.documents.find((entry) =>
+        if (current && deduplicatedDocuments.some((entry) => entry.sourceLandscapeId === current)) return current
+        return deduplicatedDocuments.find((entry) =>
           entry.subject === 'Mathematik'
           && entry.jurisdiction === 'DE-HE'
           && entry.stage === 'SekII')?.sourceLandscapeId
-          ?? data.documents[0]?.sourceLandscapeId
+          ?? deduplicatedDocuments[0]?.sourceLandscapeId
           ?? ''
       })
     } catch (nextError) {

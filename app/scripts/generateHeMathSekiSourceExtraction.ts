@@ -1,6 +1,6 @@
 import { execFileSync } from 'node:child_process'
 import { createHash } from 'node:crypto'
-import { existsSync, mkdirSync, writeFileSync } from 'node:fs'
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import path from 'node:path'
 
 const appRoot = process.cwd()
@@ -13,6 +13,14 @@ const leitfadenPdfPath = path.resolve(repoRoot, 'curricula/DE/Gymnasium/input/HE
 const outputPath = path.resolve(
   repoRoot,
   'curricula/DE/Gymnasium/input/HE/lower-secondary/source-extraction/DE_HE_MATHEMATIK_SEKI_KC_G9.source-extraction.json',
+)
+const canonicalMathPath = path.resolve(
+  repoRoot,
+  'curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json',
+)
+const mappingReviewPath = path.resolve(
+  repoRoot,
+  'curricula/DE/Gymnasium/mapping/DE-HE/lower-secondary/hessen_math_lower_secondary_source_extraction_to_canonical_math.review.json',
 )
 
 type PipelineState = 'complete' | 'incomplete' | 'blocked'
@@ -40,7 +48,7 @@ type SourceGoal = {
   sourceSpan: string
   parentBulletText: string
   sourceRef: string
-  granularity: 'officialContentFocus'
+  granularity: 'officialContentFocus' | 'legacyGradeTopicFocus' | 'competencyExpectation'
   tags: string[]
   requires: string[]
   contains: string[]
@@ -71,8 +79,52 @@ type KcContentPassageSpec = {
   items: string[]
 }
 
+type KcCompetencySpec = {
+  section: 'KC-7.1' | 'KC-7.2' | 'KC-6'
+  stage: 'J5_6' | 'J7_8' | 'J9_10'
+  stageLabel: string
+  page: number
+  area: string
+  items: string[]
+}
+
+type MappingReviewDecision = {
+  sourceGoalId?: unknown
+  decision?: unknown
+  canonicalGoalIds?: unknown
+}
+
+type MappingReviewDocument = {
+  decisions?: MappingReviewDecision[]
+  mappings?: Array<{
+    legacyGoalId?: unknown
+    canonicalGoalId?: unknown
+  }>
+}
+
+type CanonicalMathDocument = {
+  goals?: Array<{
+    id?: unknown
+  }>
+}
+
 const toPosix = (value: string): string => value.split(path.sep).join('/')
 const repoPath = (absolutePath: string): string => toPosix(path.relative(repoRoot, absolutePath))
+const mappingReviewRelativePath = repoPath(mappingReviewPath)
+
+const readJsonIfExists = <T>(filePath: string): T | null => {
+  if (!existsSync(filePath)) return null
+  try {
+    return JSON.parse(readFileSync(filePath, 'utf8')) as T
+  } catch {
+    return null
+  }
+}
+
+const asStringArray = (value: unknown): string[] =>
+  Array.isArray(value)
+    ? value.filter((entry): entry is string => typeof entry === 'string' && entry.trim().length > 0)
+    : []
 
 const sourceDocuments = [
   {
@@ -519,6 +571,257 @@ const kcContentSpecs: KcContentPassageSpec[] = [
   },
 ]
 
+const kcCompetencySpecs: KcCompetencySpec[] = [
+  {
+    section: 'KC-7.1',
+    stage: 'J5_6',
+    stageLabel: 'Ende der Jahrgangsstufe 6',
+    page: 22,
+    area: 'Darstellen',
+    items: [
+      'erkennen Grundstrukturen und Grundmuster in der Lebensumwelt wieder und stellen sie sachgerecht dar',
+      'entwickeln Darstellungen',
+      'verwenden unterschiedliche Darstellungsformen und beschreiben Beziehungen zwischen ihnen',
+      'vergleichen Darstellungen miteinander und bewerten diese',
+    ],
+  },
+  {
+    section: 'KC-7.1',
+    stage: 'J5_6',
+    stageLabel: 'Ende der Jahrgangsstufe 6',
+    page: 22,
+    area: 'Kommunizieren',
+    items: [
+      'beschreiben Vorgehensweisen',
+      'vollziehen mathematische Argumentationen anderer nach und überprüfen sie',
+      'präsentieren, erläutern und überprüfen Arbeitsergebnisse sowie die zugrunde liegenden Überlegungen und Strategien',
+      'verwenden die eingeführten Fachbegriffe und Darstellungen',
+    ],
+  },
+  {
+    section: 'KC-7.1',
+    stage: 'J5_6',
+    stageLabel: 'Ende der Jahrgangsstufe 6',
+    page: 22,
+    area: 'Argumentieren',
+    items: [
+      'hinterfragen und verdeutlichen mathematische Sachverhalte und überprüfen diese',
+      'äußern begründete Vermutungen über mathematische Zusammenhänge und stellen Vergleiche an',
+      'setzen mathematische Begriffe und deren anschauliche Konkretisierung zueinander in Beziehung',
+      'beschreiben, vergleichen und bewerten unterschiedliche Verfahren, Lösungswege und Argumentationen',
+    ],
+  },
+  {
+    section: 'KC-7.1',
+    stage: 'J5_6',
+    stageLabel: 'Ende der Jahrgangsstufe 6',
+    page: 23,
+    area: 'Umgehen mit symbolischen, formalen und technischen Elementen',
+    items: [
+      'deuten Variable als Platzhalter in Gleichungen zur symbolischen Darstellung mathematischer Probleme und von Sachsituationen',
+      'übersetzen in Sachzusammenhängen Fachsprache in Umgangssprache und umgekehrt und verwenden geeignete Symbole',
+      'erstellen einfache Tabellen und Diagramme und entnehmen diesen Daten und Werte',
+      'führen Lösungs- und Kontrollverfahren aus',
+      'nutzen angemessen die Werkzeugkiste mit Messgeräten, Lineal, Geodreieck und Zirkel',
+    ],
+  },
+  {
+    section: 'KC-7.1',
+    stage: 'J5_6',
+    stageLabel: 'Ende der Jahrgangsstufe 6',
+    page: 23,
+    area: 'Problemlösen',
+    items: [
+      'erfassen in Problemsituationen mögliche mathematische Fragestellungen, formulieren diese in eigenen Worten und entwickeln Lösungsideen',
+      'wenden heuristische Problemlösestrategien und mathematische Verfahren zur Lösung einfacher Alltagsprobleme an',
+      'entnehmen einer anwendungsbezogenen Problemstellung die zu ihrer Lösung relevanten Daten',
+      'interpretieren Ergebnisse mit Blick auf das zu lösende Problem',
+      'reflektieren Lösungswege',
+    ],
+  },
+  {
+    section: 'KC-7.1',
+    stage: 'J5_6',
+    stageLabel: 'Ende der Jahrgangsstufe 6',
+    page: 23,
+    area: 'Modellieren',
+    items: [
+      'entnehmen Sachtexten und Darstellungen aus der Lebenswirklichkeit Informationen',
+      'übersetzen Sachprobleme der Realität in mathematische Modelle',
+      'arbeiten innerhalb des gewählten mathematischen Modells',
+      'interpretieren die im mathematischen Modell gewonnenen Lösungen in der Realsituation und überprüfen sie',
+      'bewerten das gewählte Modell',
+      'formulieren zu Termen, Gleichungen und bildlichen Darstellungen Sachaufgaben',
+    ],
+  },
+  {
+    section: 'KC-7.2',
+    stage: 'J7_8',
+    stageLabel: 'Ende der Jahrgangsstufe 8',
+    page: 24,
+    area: 'Darstellen',
+    items: [
+      'erkennen Grundstrukturen und Grundmuster in der Lebensumwelt wieder und stellen sie sachgerecht dar',
+      'entwickeln Darstellungen',
+      'erstellen differenzierte und übersichtliche Darstellungsformen und wechseln zwischen ihnen',
+      'vergleichen Darstellungen miteinander und bewerten diese',
+    ],
+  },
+  {
+    section: 'KC-7.2',
+    stage: 'J7_8',
+    stageLabel: 'Ende der Jahrgangsstufe 8',
+    page: 24,
+    area: 'Kommunizieren',
+    items: [
+      'beschreiben Vorgehensweisen',
+      'vergleichen, diskutieren und bewerten unterschiedliche Lösungswege, Argumentationen und Ergebnisse sachgerecht',
+      'präsentieren, erläutern und überprüfen Arbeitsergebnisse sowie die zugrunde liegenden Überlegungen und Strategien',
+      'verwenden die eingeführten Fachbegriffe und Darstellungen',
+    ],
+  },
+  {
+    section: 'KC-7.2',
+    stage: 'J7_8',
+    stageLabel: 'Ende der Jahrgangsstufe 8',
+    page: 24,
+    area: 'Argumentieren',
+    items: [
+      'begründen mathematische Sachverhalte, Regeln und Rechenverfahren und überprüfen diese',
+      'äußern begründete Vermutungen über mathematische Zusammenhänge und stellen Vergleiche an',
+      'setzen mathematische Begriffe und deren anschauliche Konkretisierung zueinander in Beziehung',
+      'vollziehen mathematische Argumentationen nach, bewerten sie und begründen sachgerecht',
+    ],
+  },
+  {
+    section: 'KC-7.2',
+    stage: 'J7_8',
+    stageLabel: 'Ende der Jahrgangsstufe 8',
+    page: 25,
+    area: 'Umgehen mit symbolischen, formalen und technischen Elementen',
+    items: [
+      'stellen einfache Sachzusammenhänge durch Funktionen dar',
+      'übersetzen in Sachzusammenhängen Fachsprache in Umgangssprache und umgekehrt und verwenden geeignete Symbole',
+      'nutzen Software zur Darstellung und Manipulation funktionaler Zusammenhänge',
+      'führen Lösungs- und Kontrollverfahren aus',
+      'setzen mathematische Werkzeuge sinnvoll und verständig ein',
+    ],
+  },
+  {
+    section: 'KC-7.2',
+    stage: 'J7_8',
+    stageLabel: 'Ende der Jahrgangsstufe 8',
+    page: 25,
+    area: 'Problemlösen',
+    items: [
+      'erfassen in Problemsituationen mögliche mathematische Fragestellungen, formulieren diese in eigenen Worten und entwickeln Lösungsideen',
+      'wenden heuristische Problemlösestrategien und mathematische Verfahren bewusst zur Lösung einfacher Alltagsprobleme an',
+      'nutzen unterschiedliche Darstellungsformen und Verfahrensweisen zur Problemlösung',
+      'entnehmen einer anwendungsbezogenen Problemstellung die zu ihrer Lösung relevanten Daten',
+      'interpretieren Ergebnisse mit Blick auf das zu lösende Problem',
+      'reflektieren Lösungswege',
+    ],
+  },
+  {
+    section: 'KC-7.2',
+    stage: 'J7_8',
+    stageLabel: 'Ende der Jahrgangsstufe 8',
+    page: 25,
+    area: 'Modellieren',
+    items: [
+      'entnehmen Sachtexten und Darstellungen aus der Lebenswirklichkeit relevante Informationen',
+      'übersetzen Realsituationen in mathematische Modelle',
+      'arbeiten innerhalb des gewählten mathematischen Modells',
+      'interpretieren die im mathematischen Modell gewonnenen Lösungen in der Realsituation und modifizieren ggf. das verwendete Modell',
+      'bewerten das gewählte Modell',
+      'geben für mathematische Modelle typische Realsituationen an',
+    ],
+  },
+  {
+    section: 'KC-6',
+    stage: 'J9_10',
+    stageLabel: 'Ende der Jahrgangsstufe 9/10',
+    page: 17,
+    area: 'Darstellen',
+    items: [
+      'wählen die Darstellungsform adressatengerecht und sachangemessen aus und bereiten sie präsentationsgerecht auf',
+      'entwickeln Darstellungen',
+      'erkennen Beziehungen zwischen verschiedenen Darstellungsformen und wechseln zwischen ihnen',
+      'interpretieren und bewerten Darstellungen',
+    ],
+  },
+  {
+    section: 'KC-6',
+    stage: 'J9_10',
+    stageLabel: 'Ende der Jahrgangsstufe 9/10',
+    page: 17,
+    area: 'Kommunizieren',
+    items: [
+      'beschreiben Vorgehensweisen',
+      'stellen unterschiedliche Lösungswege vor, erläutern, vergleichen und bewerten diese',
+      'dokumentieren Überlegungen, Lösungswege bzw. Ergebnisse, stellen diese adressatengerecht dar und präsentieren sie, auch unter Nutzung geeigneter Medien',
+      'verwenden die Fachsprache adressatengerecht',
+    ],
+  },
+  {
+    section: 'KC-6',
+    stage: 'J9_10',
+    stageLabel: 'Ende der Jahrgangsstufe 9/10',
+    page: 17,
+    area: 'Argumentieren',
+    items: [
+      'stellen Fragen nach Verallgemeinerung und Spezifikation mathematischer Sachverhalte und prüfen diese auf Korrektheit',
+      'äußern begründete Vermutungen über mathematische Zusammenhänge und stellen Vergleiche an',
+      'analysieren, erläutern und begründen mathematische Aussagen und Verfahren auch durch mehrschrittige Argumentationsketten',
+      'vollziehen mathematische Argumentationen nach, bewerten sie und begründen sachgerecht',
+    ],
+  },
+  {
+    section: 'KC-6',
+    stage: 'J9_10',
+    stageLabel: 'Ende der Jahrgangsstufe 9/10',
+    page: 17,
+    area: 'Umgehen mit symbolischen, formalen und technischen Elementen',
+    items: [
+      'arbeiten formal mit Variablen, Termen und Gleichungen',
+      'übersetzen in Sachzusammenhängen Fachsprache in Umgangssprache und umgekehrt und verwenden geeignete Symbole',
+      'erstellen Tabellen und Diagramme und entnehmen diesen Daten und Werte',
+      'führen Lösungs- und Kontrollverfahren aus',
+      'setzen mathematische Werkzeuge wie Formelsammlungen, Taschenrechner, Software, Messgeräte sinnvoll und verständig ein',
+    ],
+  },
+  {
+    section: 'KC-6',
+    stage: 'J9_10',
+    stageLabel: 'Ende der Jahrgangsstufe 9/10',
+    page: 18,
+    area: 'Problemlösen',
+    items: [
+      'erfassen in Problemsituationen mögliche mathematische Fragestellungen, formulieren diese in eigenen Worten und entwickeln Lösungsideen',
+      'wählen geeignete heuristische Hilfsmittel, Strategien und Prinzipien zum Problemlösen aus, wenden sie an und bewerten Lösungswege',
+      'nutzen unterschiedliche Darstellungsformen und Verfahrensweisen zur Problemlösung',
+      'entnehmen Problemstellungen die relevanten Größen und beschreiben die Abhängigkeit zwischen ihnen',
+      'interpretieren Ergebnisse mit Blick auf das zu lösende Problem',
+      'reflektieren Lösungswege',
+    ],
+  },
+  {
+    section: 'KC-6',
+    stage: 'J9_10',
+    stageLabel: 'Ende der Jahrgangsstufe 9/10',
+    page: 18,
+    area: 'Modellieren',
+    items: [
+      'entnehmen Informationen aus komplexen, nicht vertrauten Situationen und aus unterschiedlichen Informationsquellen',
+      'übersetzen mit Hilfe mathematischer Begriffe den Bereich oder die Situation, die modelliert werden soll, in bekannte mathematische Strukturen und Zusammenhänge unter Berücksichtigung von Einflussfaktoren und Abhängigkeiten',
+      'arbeiten innerhalb des gewählten mathematischen Modells und übersetzen die Ergebnisse zurück in die Realsituation',
+      'prüfen und interpretieren Ergebnisse in Realsituationen unter Einbeziehung einer kritischen Einschätzung des gewählten Modells',
+      'bewerten das gewählte Modell',
+      'geben für mathematische Modelle typische Realsituationen an',
+    ],
+  },
+]
+
 const kcPassageId = (spec: KcContentPassageSpec): string => `kc-7-3-${slug(spec.rowCode)}-${spec.stage.toLowerCase()}`
 const kcTopicCode = (spec: KcContentPassageSpec): string => `KC-7.3.${spec.rowCode}.${spec.stage}`
 
@@ -557,11 +860,129 @@ const buildKcContentSourceGoals = (): SourceGoal[] =>
         granularity: 'officialContentFocus',
         tags: [
           'source:DE-HE',
+          'sourceDocument:KC',
           'subject:Mathematik',
           'stage:SekI',
           `kc:7.3`,
           `contentField:${slug(spec.rowTitle)}`,
           `gradeBand:${spec.stage}`,
+        ],
+        requires: [],
+        contains: [],
+        type: 'atomic',
+      } satisfies SourceGoal
+    })
+  })
+
+const kcCompetencyPassageId = (spec: KcCompetencySpec): string =>
+  `kc-${spec.section.toLowerCase().replace(/^kc-/u, '').replace(/\./gu, '-')}-${slug(spec.area)}`
+const kcCompetencyTopicCode = (spec: KcCompetencySpec): string =>
+  `${spec.section}.${slug(spec.area).toUpperCase()}.${spec.stage}`
+
+const buildKcCompetencyPassages = (): Passage[] =>
+  kcCompetencySpecs.map((spec) => ({
+    id: kcCompetencyPassageId(spec),
+    topicCode: kcCompetencyTopicCode(spec),
+    title: `${spec.section} ${spec.area} · ${spec.stageLabel}`,
+    text: [
+      `Kompetenzbereich: ${spec.area}`,
+      `Kompetenzerwartung: ${spec.stageLabel}`,
+      '',
+      ...spec.items.map((item) => `- ${latexify(item)}`),
+    ].join('\n'),
+    page: spec.page,
+    sourcePath: repoPath(kcPdfPath),
+    sourceDocumentKey: 'KC',
+    goalBearing: true,
+  }))
+
+const buildKcCompetencySourceGoals = (): SourceGoal[] =>
+  kcCompetencySpecs.flatMap((spec) => {
+    const passageId = kcCompetencyPassageId(spec)
+    return spec.items.map((item, index) => {
+      const renderedItem = latexify(item)
+      return {
+        id: stableSourceGoalId(passageId, index, item),
+        passageId,
+        topicCode: kcCompetencyTopicCode(spec),
+        title: compactTitle(item),
+        description: `Die lernende Person kann die im Kerncurriculum ausgewiesene prozessbezogene Kompetenzerwartung "${renderedItem}" im Bereich ${spec.area} (${spec.stageLabel}) fachgerecht ausführen.`,
+        sourceText: renderedItem,
+        sourceSpan: renderedItem,
+        parentBulletText: renderedItem,
+        sourceRef: `Kerncurriculum Mathematik Sek I Gymnasium, ${spec.section}, ${spec.area}, ${spec.stageLabel}`,
+        granularity: 'competencyExpectation',
+        tags: [
+          'source:DE-HE',
+          'sourceDocument:KC',
+          'subject:Mathematik',
+          'stage:SekI',
+          `kc:${spec.section.replace(/^KC-/u, '')}`,
+          `competencyArea:${slug(spec.area)}`,
+          `gradeBand:${spec.stage}`,
+        ],
+        requires: [],
+        contains: [],
+        type: 'atomic',
+      } satisfies SourceGoal
+    })
+  })
+
+const isG9SourceGoalLine = (line: string): boolean =>
+  line.length >= 14
+  && !line.includes('Bildungsgang Gymnasium')
+  && !line.includes('Unterrichtsfach Mathematik')
+  && !g9ChromeLinePattern.test(line)
+
+const compactG9SourceGoalLines = (text: string): string[] => {
+  const lines = text
+    .split(/\n/u)
+    .map(normalizeLine)
+    .filter(isG9SourceGoalLine)
+  const chunks: string[] = []
+
+  for (const line of lines) {
+    const previous = chunks[chunks.length - 1]
+    const shouldJoin = Boolean(previous)
+      && (
+        /^[a-zäöüß(]/u.test(line)
+        || /^[-–]/u.test(line)
+        || line.length < 22
+        || /[,(/-]\s*$/u.test(previous ?? '')
+      )
+    if (shouldJoin) {
+      chunks[chunks.length - 1] = `${previous} ${line}`
+    } else {
+      chunks.push(line)
+    }
+  }
+
+  return chunks
+}
+
+const buildG9SourceGoals = (passagesToExtract: Passage[]): SourceGoal[] =>
+  passagesToExtract.flatMap((passage) => {
+    const grade = passage.topicCode.match(/^G9-(\d+)/u)?.[1] ?? 'unknown'
+    return compactG9SourceGoalLines(passage.text).map((line, index) => {
+      const renderedLine = latexify(line)
+      return {
+        id: stableSourceGoalId(passage.id, index, line),
+        passageId: passage.id,
+        topicCode: passage.topicCode,
+        title: compactTitle(line),
+        description: `Die lernende Person kann den im G9-Lehrplan ausgewiesenen Schwerpunkt "${renderedLine}" im Kontext ${passage.title} fachgerecht bearbeiten.`,
+        sourceText: renderedLine,
+        sourceSpan: renderedLine,
+        parentBulletText: renderedLine,
+        sourceRef: `Lehrplan Gymnasium G9 Mathematik, ${passage.title}`,
+        granularity: 'legacyGradeTopicFocus',
+        tags: [
+          'source:DE-HE',
+          'sourceDocument:G9',
+          'subject:Mathematik',
+          'stage:SekI',
+          'legacy:G9',
+          `grade:${grade}`,
         ],
         requires: [],
         contains: [],
@@ -703,6 +1124,32 @@ const sourceTextPresenceDetails = (kcText: string, goals: SourceGoal[]): string[
     .map((goal) => `${goal.id}: ${goal.sourceText}`)
 }
 
+const plainSourceText = (value: string): string =>
+  value
+    .replace(/\$\\pi\$/gu, 'π')
+    .replace(/\$\\sin\$/gu, 'sin')
+    .replace(/\$\\cos\$/gu, 'cos')
+    .replace(/\$\\tan\$/gu, 'tan')
+    .replace(/\$2\\times2\$/gu, '2×2')
+
+const sourceGoalsMissingInReferencedPassages = (allPassages: Passage[], goals: SourceGoal[]): string[] => {
+  const passageById = new Map(allPassages.map((passage) => [passage.id, passage]))
+  return goals
+    .filter((goal) => {
+      const passage = passageById.get(goal.passageId)
+      if (!passage) return false
+      const searchablePassageText = normalizeForSearch(passage.text)
+      const tokens = normalizeForSearch(plainSourceText(goal.sourceText))
+        .replace(/[^\p{L}\p{N}×]+/gu, ' ')
+        .split(/\s+/u)
+        .filter((token) => token.length >= 4 || /^(ggT|kgV|sin|cos|tan|2×2)$/u.test(token))
+      if (tokens.length === 0) return false
+      const presentTokens = tokens.filter((token) => searchablePassageText.includes(token))
+      return presentTokens.length / tokens.length < 0.6
+    })
+    .map((goal) => `${goal.id}: ${goal.passageId}`)
+}
+
 const buildCheck = (id: string, label: string, passed: boolean, details: string): PipelineCheck => ({
   id,
   label,
@@ -714,11 +1161,16 @@ const kcText = readPdfText(kcPdfPath, sourceDocuments[0].url)
 const g9Text = readPdfText(g9PdfPath, sourceDocuments[1].url)
 const leitfadenText = readPdfText(leitfadenPdfPath, sourceDocuments[2].url)
 
-const kcPassages = buildKcContentPassages()
+const kcContentPassages = buildKcContentPassages()
+const kcCompetencyPassages = buildKcCompetencyPassages()
 const g9Passages = extractG9Passages(g9Text)
 const leitfadenPassages = buildLeitfadenPassages()
-const sourceGoals = buildKcContentSourceGoals()
-const passages = [...kcPassages, ...g9Passages, ...leitfadenPassages]
+const sourceGoals = [
+  ...buildKcContentSourceGoals(),
+  ...buildKcCompetencySourceGoals(),
+  ...buildG9SourceGoals(g9Passages),
+]
+const passages = [...kcContentPassages, ...kcCompetencyPassages, ...g9Passages, ...leitfadenPassages]
 
 const expectedG9TopicCodes = [
   'G9-5.1',
@@ -747,20 +1199,35 @@ const expectedG9TopicCodes = [
   'G9-10.4',
   'G9-10.5',
 ]
-const expectedKcTopicCodes = kcContentSpecs.map(kcTopicCode)
+const expectedKcContentTopicCodes = kcContentSpecs.map(kcTopicCode)
+const expectedKcCompetencyTopicCodes = kcCompetencySpecs.map(kcCompetencyTopicCode)
+const expectedKcTopicCodes = [...expectedKcContentTopicCodes, ...expectedKcCompetencyTopicCodes]
 const passageTopicCodes = new Set(passages.map((passage) => passage.topicCode))
 const missingG9TopicCodes = expectedG9TopicCodes.filter((topicCode) => !passageTopicCodes.has(topicCode))
-const missingKcTopicCodes = expectedKcTopicCodes.filter((topicCode) => !passageTopicCodes.has(topicCode))
+const missingKcContentTopicCodes = expectedKcContentTopicCodes.filter((topicCode) => !passageTopicCodes.has(topicCode))
+const missingKcCompetencyTopicCodes = expectedKcCompetencyTopicCodes.filter((topicCode) => !passageTopicCodes.has(topicCode))
 const duplicateSourceGoalIds = [...new Set(sourceGoals
   .map((goal) => goal.id)
   .filter((goalId, index, all) => all.indexOf(goalId) !== index))]
 const passageIds = new Set(passages.map((passage) => passage.id))
 const sourceGoalsWithoutPassage = sourceGoals.filter((goal) => !passageIds.has(goal.passageId)).map((goal) => goal.id)
+const kcContentSourceGoals = sourceGoals.filter((goal) => goal.granularity === 'officialContentFocus')
+const kcCompetencySourceGoals = sourceGoals.filter((goal) => goal.granularity === 'competencyExpectation')
+const g9SourceGoals = sourceGoals.filter((goal) => goal.granularity === 'legacyGradeTopicFocus')
 const goalBearingPassagesWithoutSourceGoals = passages
   .filter((passage) => passage.goalBearing)
   .filter((passage) => !sourceGoals.some((goal) => goal.passageId === passage.id))
   .map((passage) => passage.id)
-const sourceGoalsMissingInKcText = sourceTextPresenceDetails(kcText, sourceGoals)
+const sourceGoalsMissingInKcText = sourceTextPresenceDetails(kcText, [...kcContentSourceGoals, ...kcCompetencySourceGoals])
+const sourceGoalsMissingInPassages = sourceGoalsMissingInReferencedPassages(passages, sourceGoals)
+const competencyCoverageKeys = new Set(kcCompetencySourceGoals.map((goal) => {
+  const areaTag = goal.tags.find((tag) => tag.startsWith('competencyArea:')) ?? ''
+  const gradeBandTag = goal.tags.find((tag) => tag.startsWith('gradeBand:')) ?? ''
+  return `${goal.topicCode}:${areaTag}:${gradeBandTag}`
+}))
+const missingCompetencySpecs = kcCompetencySpecs
+  .filter((spec) => !competencyCoverageKeys.has(`${kcCompetencyTopicCode(spec)}:competencyArea:${slug(spec.area)}:gradeBand:${spec.stage}`))
+  .map((spec) => `${spec.section} ${spec.area} ${spec.stage}`)
 const encodingArtifacts = [
   ...passages.filter((passage) => hasEncodingArtifact(`${passage.title}\n${passage.text}`)).map((passage) => passage.id),
   ...sourceGoals.filter((goal) => hasEncodingArtifact(`${goal.title}\n${goal.description}\n${goal.sourceText}`)).map((goal) => goal.id),
@@ -780,8 +1247,14 @@ const mapping1Checks = [
   buildCheck(
     'kc-content-passages-present',
     'KC 7.3 Schwerpunktsetzungen sind als Passagen erfasst',
-    missingKcTopicCodes.length === 0,
-    `Erfasst: ${expectedKcTopicCodes.length - missingKcTopicCodes.length}/${expectedKcTopicCodes.length}; fehlend: ${missingKcTopicCodes.join(', ') || '-'}`,
+    missingKcContentTopicCodes.length === 0,
+    `Erfasst: ${expectedKcContentTopicCodes.length - missingKcContentTopicCodes.length}/${expectedKcContentTopicCodes.length}; fehlend: ${missingKcContentTopicCodes.join(', ') || '-'}`,
+  ),
+  buildCheck(
+    'kc-competency-passages-present',
+    'KC 7.1/7.2/6 Kompetenzerwartungen sind als Passagen erfasst',
+    missingKcCompetencyTopicCodes.length === 0,
+    `Erfasst: ${expectedKcCompetencyTopicCodes.length - missingKcCompetencyTopicCodes.length}/${expectedKcCompetencyTopicCodes.length}; fehlend: ${missingKcCompetencyTopicCodes.join(', ') || '-'}`,
   ),
   buildCheck(
     'g9-topic-passages-present',
@@ -808,8 +1281,8 @@ const mapping2Checks = [
   buildCheck(
     'kc-content-source-goals-created',
     'Aus KC-7.3-Schwerpunktsetzungen wurden Source-Ziele erzeugt',
-    sourceGoals.length > 0,
-    `${sourceGoals.length} KC-Inhalts-Source-Ziele`,
+    kcContentSourceGoals.length === kcContentSpecs.reduce((sum, spec) => sum + spec.items.length, 0),
+    `${kcContentSourceGoals.length} KC-Inhalts-Source-Ziele`,
   ),
   buildCheck(
     'source-goal-ids-unique',
@@ -824,6 +1297,12 @@ const mapping2Checks = [
     `Ohne Passage: ${sourceGoalsWithoutPassage.slice(0, 10).join(', ') || '-'}`,
   ),
   buildCheck(
+    'source-goals-verbatim-in-passages',
+    'Source-Ziele sind in ihren Originalpassagen wiederauffindbar',
+    sourceGoalsMissingInPassages.length === 0,
+    `Nicht in Passage gefunden: ${sourceGoalsMissingInPassages.slice(0, 8).join('; ') || '-'}`,
+  ),
+  buildCheck(
     'source-goals-verbatim-in-kc',
     'KC-Source-Ziele sind im Kerncurriculum-Text wiederauffindbar',
     sourceGoalsMissingInKcText.length === 0,
@@ -832,18 +1311,74 @@ const mapping2Checks = [
   buildCheck(
     'g9-source-goals-created',
     'Aus G9-Jahrgangspassagen wurden granulare Source-Ziele erzeugt',
-    goalBearingPassagesWithoutSourceGoals.filter((id) => id.startsWith('g9-')).length === 0,
-    `G9-Passagen ohne Source-Ziele: ${goalBearingPassagesWithoutSourceGoals.filter((id) => id.startsWith('g9-')).slice(0, 12).join(', ') || '-'}`,
+    goalBearingPassagesWithoutSourceGoals.filter((id) => id.startsWith('g9-')).length === 0 && g9SourceGoals.length > 0,
+    `G9-Source-Ziele: ${g9SourceGoals.length}; Passagen ohne Source-Ziele: ${goalBearingPassagesWithoutSourceGoals.filter((id) => id.startsWith('g9-')).slice(0, 12).join(', ') || '-'}`,
   ),
   buildCheck(
     'competency-source-goals-created',
     'Kompetenzerwartungen aus KC 7.1/7.2/6 wurden als Source-Ziele erzeugt',
-    false,
-    'Noch offen: Prozess-/Kompetenzbereiche Darstellen, Kommunizieren, Argumentieren, Umgehen mit Symbolen/Werkzeugen, Problemlösen, Modellieren.',
+    missingCompetencySpecs.length === 0 && kcCompetencySourceGoals.length > 0,
+    `Kompetenz-Source-Ziele: ${kcCompetencySourceGoals.length}; fehlend: ${missingCompetencySpecs.join(', ') || '-'}`,
   ),
 ]
 const mapping2Complete = mapping1Complete && mapping2Checks.every((check) => check.passed)
 
+const mappingReview = readJsonIfExists<MappingReviewDocument>(mappingReviewPath)
+const canonicalMath = readJsonIfExists<CanonicalMathDocument>(canonicalMathPath)
+const sourceGoalIdSet = new Set(sourceGoals.map((goal) => goal.id))
+const canonicalGoalIdSet = new Set(
+  (canonicalMath?.goals ?? [])
+    .map((goal) => goal.id)
+    .filter((goalId): goalId is string => typeof goalId === 'string' && goalId.trim().length > 0),
+)
+const mappingReviewDecisions = (mappingReview?.decisions ?? [])
+  .filter((decision) => typeof decision.sourceGoalId === 'string')
+  .map((decision) => ({
+    sourceGoalId: String(decision.sourceGoalId),
+    decision: String(decision.decision ?? ''),
+    canonicalGoalIds: asStringArray(decision.canonicalGoalIds),
+  }))
+const validMappingReviewDecisions = mappingReviewDecisions
+  .filter((decision) => sourceGoalIdSet.has(decision.sourceGoalId))
+const reviewedSourceGoalIds = new Set(validMappingReviewDecisions.map((decision) => decision.sourceGoalId))
+const mappedSourceGoalIds = new Set(
+  validMappingReviewDecisions
+    .filter((decision) => decision.decision === 'mapped' && decision.canonicalGoalIds.length > 0)
+    .map((decision) => decision.sourceGoalId),
+)
+const needsCanonicalGoalIds = validMappingReviewDecisions
+  .filter((decision) => decision.decision === 'needs_canonical_goal')
+  .map((decision) => decision.sourceGoalId)
+const needsViewPlacementReviewIds = validMappingReviewDecisions
+  .filter((decision) => decision.decision === 'needs_view_placement_review')
+  .map((decision) => decision.sourceGoalId)
+const duplicateMappingReviewDecisionIds = Array.from(
+  mappingReviewDecisions.reduce((counts, decision) => {
+    counts.set(decision.sourceGoalId, (counts.get(decision.sourceGoalId) ?? 0) + 1)
+    return counts
+  }, new Map<string, number>()),
+)
+  .filter(([, count]) => count > 1)
+  .map(([sourceGoalId]) => sourceGoalId)
+const invalidMappingReviewSourceGoalIds = mappingReviewDecisions
+  .map((decision) => decision.sourceGoalId)
+  .filter((sourceGoalId) => !sourceGoalIdSet.has(sourceGoalId))
+const invalidMappingReviewTargetGoalIds = Array.from(new Set(
+  validMappingReviewDecisions
+    .flatMap((decision) => decision.canonicalGoalIds)
+    .filter((canonicalGoalId) => !canonicalGoalIdSet.has(canonicalGoalId)),
+))
+const mappingEntries = mappingReview?.mappings ?? []
+const invalidMappingEntrySourceGoalIds = Array.from(new Set(
+  mappingEntries
+    .map((entry) => String(entry.legacyGoalId ?? ''))
+    .filter((goalId) => !sourceGoalIdSet.has(goalId)),
+))
+const invalidMappingEntryTargetGoalIds = Array.from(new Set(
+  mappingEntries
+    .map((entry) => String(entry.canonicalGoalId ?? ''))
+    .filter((goalId) => !canonicalGoalIdSet.has(goalId)),
+))
 const mapping3Checks = [
   buildCheck(
     'mapping-2-complete',
@@ -853,7 +1388,46 @@ const mapping3Checks = [
       ? 'Source-Ziel-Basis ist bereit für Mapping auf SkillPilot-Ziele.'
       : 'Mapping auf SkillPilot-Ziele bleibt blockiert, bis alle Source-Ziele vollständig erzeugt sind.',
   ),
+  buildCheck(
+    'm3-review-file-present',
+    'M3-Review-Datei ist vorhanden',
+    mappingReview !== null,
+    mappingReview !== null ? mappingReviewRelativePath : `Fehlt: ${mappingReviewRelativePath}`,
+  ),
+  buildCheck(
+    'm3-review-decisions-reference-source-goals',
+    'M3-Review-Entscheidungen referenzieren gültige Source-Ziele',
+    duplicateMappingReviewDecisionIds.length === 0 && invalidMappingReviewSourceGoalIds.length === 0,
+    `Doppelte Entscheidungen: ${duplicateMappingReviewDecisionIds.join(', ') || '-'}; unbekannte Source-Ziele: ${invalidMappingReviewSourceGoalIds.slice(0, 8).join(', ') || '-'}`,
+  ),
+  buildCheck(
+    'm3-review-targets-exist',
+    'M3-Review-Ziele referenzieren vorhandene Canonical-Ziele',
+    invalidMappingReviewTargetGoalIds.length === 0 && invalidMappingEntryTargetGoalIds.length === 0,
+    `Unbekannte Review-Targets: ${invalidMappingReviewTargetGoalIds.slice(0, 8).join(', ') || '-'}; unbekannte Mapping-Targets: ${invalidMappingEntryTargetGoalIds.slice(0, 8).join(', ') || '-'}`,
+  ),
+  buildCheck(
+    'm3-mapping-entries-reference-source-goals',
+    'Persistierte Mapping-Einträge referenzieren gültige Source-Ziele',
+    invalidMappingEntrySourceGoalIds.length === 0,
+    `Unbekannte Mapping-Source-Ziele: ${invalidMappingEntrySourceGoalIds.slice(0, 8).join(', ') || '-'}`,
+  ),
+  buildCheck(
+    'm3-all-source-goals-reviewed',
+    'Alle Source-Ziele haben eine fachliche M3-Entscheidung',
+    reviewedSourceGoalIds.size === sourceGoals.length,
+    `${reviewedSourceGoalIds.size}/${sourceGoals.length} Source-Ziele reviewed; gemappt: ${mappedSourceGoalIds.size}; Canonical-Lücken: ${needsCanonicalGoalIds.length}; Placement-Review: ${needsViewPlacementReviewIds.length}`,
+  ),
+  buildCheck(
+    'm3-all-source-goals-covered-by-canonical',
+    'Alle akzeptierten Source-Ziele sind durch SkillPilot-Ziele abgedeckt',
+    mappedSourceGoalIds.size === sourceGoals.length
+      && needsCanonicalGoalIds.length === 0
+      && needsViewPlacementReviewIds.length === 0,
+    `Abgedeckt: ${mappedSourceGoalIds.size}/${sourceGoals.length}; offene Canonical-Lücken: ${needsCanonicalGoalIds.slice(0, 8).join(', ') || '-'}; Placement-Review: ${needsViewPlacementReviewIds.slice(0, 8).join(', ') || '-'}`,
+  ),
 ]
+const mapping3Complete = mapping2Complete && mapping3Checks.every((check) => check.passed)
 
 const pipelineSteps: PipelineStep[] = [
   {
@@ -873,7 +1447,7 @@ const pipelineSteps: PipelineStep[] = [
   {
     id: 'MAPPING-3',
     label: 'Source-Ziele auf SkillPilot-Ziele gemappt',
-    status: mapping2Complete ? 'incomplete' : 'blocked',
+    status: mapping2Complete ? (mapping3Complete ? 'complete' : 'incomplete') : 'blocked',
     dependsOn: ['MAPPING-1', 'MAPPING-2'],
     checks: mapping3Checks,
   },
@@ -890,7 +1464,7 @@ const output = {
   sourceDocuments,
   method: {
     passageExtraction: 'pdftotext -layout; KC 7.3 content-field cells are persisted as goal-bearing original passages; G9 topic blocks 5.1-10.5 are extracted from verbindliche Unterrichtsinhalte; Leitfaden passages document the processing policy.',
-    sourceGoalExtraction: 'current pass extracts one source goal per literal KC 7.3 content focus; G9 topic granulation and KC process-competency source goals are intentionally still open.',
+    sourceGoalExtraction: 'extracts one source goal per literal KC 7.3 content focus, one source goal per KC 7.1/7.2/6 competency expectation bullet, and granular source goals from the verbindliche G9 topic lines.',
   },
   expectedTopicCodes: [...expectedKcTopicCodes, ...expectedG9TopicCodes],
   pipelineStatus: {

@@ -91,8 +91,8 @@ That means the official text extraction and source-goal creation are currently c
 For Hessen Mathematik Sek I the current expected state is intentionally different:
 
 - `MAPPING-1 = complete`: the primary Kerncurriculum, the G9 Lehrplan passages, and the implementation Leitfaden are visible as official/source-supporting passages.
-- `MAPPING-2 = incomplete`: KC 7.3 content-field source goals exist, but G9 passage granulation and KC process-competency source goals are still open.
-- `MAPPING-3 = blocked`: SkillPilot mapping starts only after MAPPING-2 is complete.
+- `MAPPING-2 = complete`: the persisted extraction now contains 99 KC 7.3 content-field source goals, 86 KC 7.1/7.2/6 competency-expectation source goals, and 241 granular G9 topic-line source goals.
+- `MAPPING-3 = complete`: the review lane now maps all 426/426 reviewed source goals to canonical SkillPilot goals, covering all KC 7.3 content-field source goals (`Zahlen`, `Operationen`, `Ebene Figuren`, `Körper`, `Beziehungen geometrischer Objekte`, `Umgang mit Größen`, `Messvorgänge`, `Zuordnungen`, `Funktionen und Gleichungen`, `statistische Erhebungen`, `Umgang mit dem Zufall`), all KC 7.1/7.2/6 competency expectations, and all granular G9 Jahrgänge 5-10 topic-line source goals; no source-goal mapping gaps remain in this lane.
 
 ## Bundesland Coverage
 

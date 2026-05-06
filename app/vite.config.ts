@@ -714,6 +714,50 @@ const inferStageFromSourceEntry = (entry: Record<string, unknown>): string => {
 const mappingEntryList = (mapping: Record<string, unknown>): Array<Record<string, unknown>> =>
   Array.isArray(mapping.mappings) ? mapping.mappings.map(asRecord) : []
 
+type CurriculumMappingListRow = {
+  sourceLandscapeId: string
+  sourceTitle: string
+  subject: string
+  jurisdiction: string
+  stage: string
+  sourcePath: string
+  sourceGoalCount: number
+  targetLandscapeId: string
+  targetTitle: string
+  targetPath: string
+  mappingPath: string
+  mappingCount: number
+  referenceLinks: Array<{ label: string, url: string, path: string }>
+  mappingHasSourceExtractionPath: boolean
+}
+
+const shouldPreferCurriculumMappingListRow = (
+  candidate: CurriculumMappingListRow,
+  current: CurriculumMappingListRow,
+): boolean => {
+  if (candidate.mappingHasSourceExtractionPath !== current.mappingHasSourceExtractionPath) {
+    return candidate.mappingHasSourceExtractionPath
+  }
+  const candidateIsReview = candidate.mappingPath.endsWith('.review.json')
+  const currentIsReview = current.mappingPath.endsWith('.review.json')
+  if (candidateIsReview !== currentIsReview) return candidateIsReview
+  if (candidate.mappingCount !== current.mappingCount) return candidate.mappingCount > current.mappingCount
+  return candidate.mappingPath.localeCompare(current.mappingPath) < 0
+}
+
+const deduplicateCurriculumMappingListRows = (
+  rows: CurriculumMappingListRow[],
+): CurriculumMappingListRow[] => {
+  const rowsBySourceLandscapeId = new Map<string, CurriculumMappingListRow>()
+  rows.forEach((row) => {
+    const current = rowsBySourceLandscapeId.get(row.sourceLandscapeId)
+    if (!current || shouldPreferCurriculumMappingListRow(row, current)) {
+      rowsBySourceLandscapeId.set(row.sourceLandscapeId, row)
+    }
+  })
+  return [...rowsBySourceLandscapeId.values()]
+}
+
 const normalizeReferenceToken = (value: string): string =>
   value
     .normalize('NFKD')
@@ -1153,11 +1197,13 @@ const buildCurriculumMappingList = async () => {
       mappingPath,
       mappingCount,
       referenceLinks: await readSourceReferenceLinks(sourceEntry, subject),
+      mappingHasSourceExtractionPath: typeof mapping.sourceExtractionPath === 'string',
     }
   }))
 
-  const documents = rows
+  const documents = deduplicateCurriculumMappingListRows(rows
     .filter((entry): entry is NonNullable<typeof entry> => entry !== null)
+  )
     .sort((left, right) =>
       (left.subject || left.sourceTitle).localeCompare(right.subject || right.sourceTitle, 'de-DE')
       || left.jurisdiction.localeCompare(right.jurisdiction)

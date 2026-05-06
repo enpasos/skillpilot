@@ -1,6 +1,6 @@
 # Curriculum Quality Status
 
-Generated: 2026-05-06T05:11:27.181Z
+Generated: 2026-05-06T08:31:27.082Z
 Rules version: curriculum-quality-v1
 
 ## Summary
@@ -31,9 +31,9 @@ Rules version: curriculum-quality-v1
 | Informatik (Gymnasium, DE) | M0 | 221 | 180 | 0/2 | 0/16 | 0 | 0 | 2 |
 | Italienisch (Gymnasium, DE) | M0 | 8 | 7 | 0/1 | 0/16 | 0 | 0 | 2 |
 | Latein (Gymnasium, DE) | M0 | 142 | 109 | 0/2 | 0/16 | 0 | 0 | 2 |
-| Mathematik (Gymnasium, DE) | M0 | 932 | 743 | 1/31 | 0/16 | 2 | 3 | 3 |
+| Mathematik (Gymnasium, DE) | M0 | 932 | 743 | 2/31 | 0/16 | 2 | 3 | 4 |
 | Musik (Gymnasium, DE) | M0 | 76 | 52 | 0/2 | 0/16 | 0 | 0 | 2 |
-| Physik (Gymnasium, DE) | M0 | 475 | 392 | 0/24 | 0/16 | 2 | 0 | 2 |
+| Physik (Gymnasium, DE) | M0 | 475 | 392 | 0/24 | 0/16 | 2 | 2 | 2 |
 | Politik und Wirtschaft (Gymnasium, DE) | M0 | 208 | 175 | 0/2 | 0/16 | 0 | 0 | 2 |
 | Polnisch (Gymnasium, DE) | M0 | 5 | 4 | 0/1 | 0/16 | 0 | 0 | 2 |
 | Russisch (Gymnasium, DE) | M0 | 8 | 7 | 0/1 | 0/16 | 0 | 0 | 2 |
@@ -80,7 +80,7 @@ Rules version: curriculum-quality-v1
 | Mathematik (Gymnasium, DE) | Mathematik Oberstufe (Bremen, Pilot-Quellsnapshot) | DE-HB | 0/3 | MAPPING-1 | 0 | 0 |
 | Mathematik (Gymnasium, DE) | Mathematik Sekundarstufe I (Bremen, Pilot-Quellsnapshot) | DE-HB | 0/3 | MAPPING-1 | 0 | 0 |
 | Mathematik (Gymnasium, DE) | Mathematik Oberstufe (Hessen, KC 2024) | DE-HE | 3/3 | - | 25 | 316 |
-| Mathematik (Gymnasium, DE) | Mathematik Sekundarstufe I (Hessen, G9) | DE-HE | 1/3 | MAPPING-2 | 54 | 99 |
+| Mathematik (Gymnasium, DE) | Mathematik Sekundarstufe I (Hessen, G9) | DE-HE | 3/3 | - | 72 | 426 |
 | Mathematik (Gymnasium, DE) | Mathematik Sekundarstufe I (Hamburg, erster Quellsnapshot) | DE-HH | 0/3 | MAPPING-1 | 0 | 0 |
 | Mathematik (Gymnasium, DE) | Mathematik Studienstufe (Hamburg, erster Quellsnapshot) | DE-HH | 0/3 | MAPPING-1 | 0 | 0 |
 | Mathematik (Gymnasium, DE) | Mathematik Qualifikationsphase (Mecklenburg-Vorpommern, erster Quellsnapshot) | DE-MV | 0/3 | MAPPING-1 | 0 | 0 |
@@ -153,9 +153,9 @@ Rules version: curriculum-quality-v1
 | Informatik (Gymnasium, DE) | 0/16 | 180 | 180 | 2 | 0 | 483 | 0 | 0 | 0 | 0 | 58 | 399 | 0 | 2 | 174 (96.7%) |
 | Italienisch (Gymnasium, DE) | 0/16 | 7 | 7 | 1 | 0 | 8 | 0 | 0 | 0 | 0 | 0 | 7 | 0 | 1 | 7 (100%) |
 | Latein (Gymnasium, DE) | 0/16 | 109 | 109 | 2 | 0 | 1035 | 0 | 0 | 0 | 0 | 0 | 942 | 0 | 2 | 109 (100%) |
-| Mathematik (Gymnasium, DE) | 0/16 | 655 | 743 | 16 | 1656 | 2254 | 1279 | 401 | 1183 | 321 | 9012 | 655 | 0 | 16 | 486 (74.3%) |
+| Mathematik (Gymnasium, DE) | 0/16 | 655 | 743 | 16 | 1656 | 2254 | 1279 | 401 | 1183 | 321 | 8912 | 655 | 0 | 16 | 586 (89.6%) |
 | Musik (Gymnasium, DE) | 0/16 | 52 | 52 | 2 | 0 | 329 | 0 | 0 | 0 | 0 | 0 | 257 | 0 | 2 | 52 (100%) |
-| Physik (Gymnasium, DE) | 0/16 | 326 | 392 | 9 | 642 | 1411 | 451 | 13 | 505 | 10 | 746 | 777 | 0 | 16 | 288 (90.6%) |
+| Physik (Gymnasium, DE) | 0/16 | 326 | 392 | 9 | 642 | 1411 | 451 | 13 | 505 | 10 | 760 | 777 | 0 | 16 | 288 (90.6%) |
 | Politik und Wirtschaft (Gymnasium, DE) | 0/16 | 175 | 175 | 2 | 0 | 607 | 0 | 0 | 0 | 0 | 12 | 521 | 0 | 2 | 175 (100%) |
 | Polnisch (Gymnasium, DE) | 0/16 | 4 | 4 | 1 | 0 | 5 | 0 | 0 | 0 | 0 | 0 | 4 | 0 | 1 | 4 (100%) |
 | Russisch (Gymnasium, DE) | 0/16 | 7 | 7 | 1 | 0 | 8 | 0 | 0 | 0 | 0 | 0 | 7 | 0 | 1 | 7 (100%) |

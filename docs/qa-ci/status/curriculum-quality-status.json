@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "rulesVersion": "curriculum-quality-v1",
-  "generatedAt": "2026-05-06T05:11:27.181Z",
+  "generatedAt": "2026-05-06T08:31:27.082Z",
   "generatedBy": "app/scripts/generateCurriculumQualityStatus.ts",
   "sources": {
     "canonicalRoot": "curricula/DE/Gymnasium/canonical",
@@ -25,9 +25,9 @@
       "M5": 0
     },
     "ruleStatus": {
-      "pass": 81,
-      "warn": 5,
-      "fail": 41,
+      "pass": 78,
+      "warn": 7,
+      "fail": 42,
       "not_configured": 76
     }
   },
@@ -9676,10 +9676,10 @@
         "partialJurisdictions": 0,
         "errorJurisdictions": 16,
         "maxVisibleAtomicGoals": 655,
-        "maxSourceBackedAtomicGoals": 486,
+        "maxSourceBackedAtomicGoals": 586,
         "maxAtomicCoveragePercent": 100,
-        "maxSourceBackedCoveragePercent": 74.3,
-        "unsupportedAssignedAtomicGoals": 9012,
+        "maxSourceBackedCoveragePercent": 89.6,
+        "unsupportedAssignedAtomicGoals": 8912,
         "surrogateBackedAtomicGoals": 0,
         "partialSourceLinkedAtomicGoals": 346,
         "sourceAtomicGoals": 1670,
@@ -9698,7 +9698,7 @@
             "jurisdiction": "DE-BW",
             "labelDe": "Baden-Württemberg",
             "labelEn": "Baden-Wuerttemberg",
-            "visibleGoals": 294,
+            "visibleGoals": 293,
             "visibleAtomicGoals": 527,
             "visibleClusterGoals": 0,
             "viewAtomicGoals": 527,
@@ -9728,13 +9728,13 @@
             "jurisdiction": "DE-HE",
             "labelDe": "Hessen",
             "labelEn": "Hesse",
-            "visibleGoals": 821,
+            "visibleGoals": 896,
             "visibleAtomicGoals": 654,
-            "visibleClusterGoals": 167,
+            "visibleClusterGoals": 242,
             "viewAtomicGoals": 654,
-            "sourceBackedAtomicGoals": 486,
+            "sourceBackedAtomicGoals": 586,
             "surrogateBackedAtomicGoals": 0,
-            "unsupportedAssignedAtomicGoals": 168,
+            "unsupportedAssignedAtomicGoals": 68,
             "partialSourceLinkedAtomicGoals": 0,
             "sourceAtomicGoals": 460,
             "sourceMappedToViewAtomicGoals": 399,
@@ -9750,7 +9750,7 @@
             "errors": 0,
             "warnings": 0,
             "atomicCoveragePercent": 99.8,
-            "sourceBackedCoveragePercent": 74.3,
+            "sourceBackedCoveragePercent": 89.6,
             "sourceReverseCoveragePercent": 86.7,
             "status": "error"
           },
@@ -9758,7 +9758,7 @@
             "jurisdiction": "DE-BY",
             "labelDe": "Bayern",
             "labelEn": "Bavaria",
-            "visibleGoals": 418,
+            "visibleGoals": 417,
             "visibleAtomicGoals": 655,
             "visibleClusterGoals": 0,
             "viewAtomicGoals": 655,
@@ -9878,7 +9878,7 @@
             "jurisdiction": "DE-NW",
             "labelDe": "Nordrhein-Westfalen",
             "labelEn": "North Rhine-Westphalia",
-            "visibleGoals": 312,
+            "visibleGoals": 310,
             "visibleAtomicGoals": 618,
             "visibleClusterGoals": 0,
             "viewAtomicGoals": 618,
@@ -9908,7 +9908,7 @@
             "jurisdiction": "DE-SH",
             "labelDe": "Schleswig-Holstein",
             "labelEn": "Schleswig-Holstein",
-            "visibleGoals": 297,
+            "visibleGoals": 295,
             "visibleAtomicGoals": 608,
             "visibleClusterGoals": 0,
             "viewAtomicGoals": 608,
@@ -9938,7 +9938,7 @@
             "jurisdiction": "DE-HB",
             "labelDe": "Bremen",
             "labelEn": "Bremen",
-            "visibleGoals": 171,
+            "visibleGoals": 169,
             "visibleAtomicGoals": 655,
             "visibleClusterGoals": 0,
             "viewAtomicGoals": 655,
@@ -10178,9 +10178,9 @@
       },
       "mappingPipeline": {
         "totalSources": 31,
-        "completeSources": 1,
+        "completeSources": 2,
         "incompleteSources": 0,
-        "blockedSources": 30,
+        "blockedSources": 29,
         "maxCompletedSteps": 3,
         "totalSteps": 3,
         "currentStep": "MAPPING-1",
@@ -10859,11 +10859,11 @@
             "title": "Mathematik Sekundarstufe I (Hessen, G9)",
             "jurisdiction": "DE-HE",
             "path": "curricula/DE/Gymnasium/input/HE/lower-secondary/source-extraction/DE_HE_MATHEMATIK_SEKI_KC_G9.source-extraction.json",
-            "currentStep": "MAPPING-2",
-            "completedSteps": 1,
+            "currentStep": "",
+            "completedSteps": 3,
             "totalSteps": 3,
-            "sourceGoals": 99,
-            "passages": 54,
+            "sourceGoals": 426,
+            "passages": 72,
             "steps": [
               {
                 "id": "MAPPING-1",
@@ -10882,6 +10882,12 @@
                     "label": "KC 7.3 Schwerpunktsetzungen sind als Passagen erfasst",
                     "passed": true,
                     "details": "Erfasst: 27/27; fehlend: -"
+                  },
+                  {
+                    "id": "kc-competency-passages-present",
+                    "label": "KC 7.1/7.2/6 Kompetenzerwartungen sind als Passagen erfasst",
+                    "passed": true,
+                    "details": "Erfasst: 18/18; fehlend: -"
                   },
                   {
                     "id": "g9-topic-passages-present",
@@ -10906,7 +10912,7 @@
               {
                 "id": "MAPPING-2",
                 "label": "Source-Ziele aus Lehrplanpassagen erstellt",
-                "status": "incomplete",
+                "status": "complete",
                 "dependsOn": [
                   "MAPPING-1"
                 ],
@@ -10930,6 +10936,12 @@
                     "details": "Ohne Passage: -"
                   },
                   {
+                    "id": "source-goals-verbatim-in-passages",
+                    "label": "Source-Ziele sind in ihren Originalpassagen wiederauffindbar",
+                    "passed": true,
+                    "details": "Nicht in Passage gefunden: -"
+                  },
+                  {
                     "id": "source-goals-verbatim-in-kc",
                     "label": "KC-Source-Ziele sind im Kerncurriculum-Text wiederauffindbar",
                     "passed": true,
@@ -10938,21 +10950,21 @@
                   {
                     "id": "g9-source-goals-created",
                     "label": "Aus G9-Jahrgangspassagen wurden granulare Source-Ziele erzeugt",
-                    "passed": false,
-                    "details": "G9-Passagen ohne Source-Ziele: g9-5-1, g9-5-2, g9-5-3, g9-6-1, g9-6-2, g9-7-1, g9-7-2, g9-7-3, g9-7-4, g9-8-1, g9-8-2, g9-8-3"
+                    "passed": true,
+                    "details": "G9-Source-Ziele: 241; Passagen ohne Source-Ziele: -"
                   },
                   {
                     "id": "competency-source-goals-created",
                     "label": "Kompetenzerwartungen aus KC 7.1/7.2/6 wurden als Source-Ziele erzeugt",
-                    "passed": false,
-                    "details": "Noch offen: Prozess-/Kompetenzbereiche Darstellen, Kommunizieren, Argumentieren, Umgehen mit Symbolen/Werkzeugen, Problemlösen, Modellieren."
+                    "passed": true,
+                    "details": "Kompetenz-Source-Ziele: 86; fehlend: -"
                   }
                 ]
               },
               {
                 "id": "MAPPING-3",
                 "label": "Source-Ziele auf SkillPilot-Ziele gemappt",
-                "status": "blocked",
+                "status": "complete",
                 "dependsOn": [
                   "MAPPING-1",
                   "MAPPING-2"
@@ -10961,8 +10973,44 @@
                   {
                     "id": "mapping-2-complete",
                     "label": "MAPPING-2 ist vollständig abgeschlossen",
-                    "passed": false,
-                    "details": "Mapping auf SkillPilot-Ziele bleibt blockiert, bis alle Source-Ziele vollständig erzeugt sind."
+                    "passed": true,
+                    "details": "Source-Ziel-Basis ist bereit für Mapping auf SkillPilot-Ziele."
+                  },
+                  {
+                    "id": "m3-review-file-present",
+                    "label": "M3-Review-Datei ist vorhanden",
+                    "passed": true,
+                    "details": "curricula/DE/Gymnasium/mapping/DE-HE/lower-secondary/hessen_math_lower_secondary_source_extraction_to_canonical_math.review.json"
+                  },
+                  {
+                    "id": "m3-review-decisions-reference-source-goals",
+                    "label": "M3-Review-Entscheidungen referenzieren gültige Source-Ziele",
+                    "passed": true,
+                    "details": "Doppelte Entscheidungen: -; unbekannte Source-Ziele: -"
+                  },
+                  {
+                    "id": "m3-review-targets-exist",
+                    "label": "M3-Review-Ziele referenzieren vorhandene Canonical-Ziele",
+                    "passed": true,
+                    "details": "Unbekannte Review-Targets: -; unbekannte Mapping-Targets: -"
+                  },
+                  {
+                    "id": "m3-mapping-entries-reference-source-goals",
+                    "label": "Persistierte Mapping-Einträge referenzieren gültige Source-Ziele",
+                    "passed": true,
+                    "details": "Unbekannte Mapping-Source-Ziele: -"
+                  },
+                  {
+                    "id": "m3-all-source-goals-reviewed",
+                    "label": "Alle Source-Ziele haben eine fachliche M3-Entscheidung",
+                    "passed": true,
+                    "details": "426/426 Source-Ziele reviewed; gemappt: 426; Canonical-Lücken: 0; Placement-Review: 0"
+                  },
+                  {
+                    "id": "m3-all-source-goals-covered-by-canonical",
+                    "label": "Alle akzeptierten Source-Ziele sind durch SkillPilot-Ziele abgedeckt",
+                    "passed": true,
+                    "details": "Abgedeckt: 426/426; offene Canonical-Lücken: -; Placement-Review: -"
                   }
                 ]
               }
@@ -12345,7 +12393,7 @@
             "incompleteJurisdictions": 16,
             "unsupportedAssignmentJurisdictions": 16,
             "sourceUnmappedJurisdictions": 12,
-            "unsupportedAssignedAtomicGoals": 9012,
+            "unsupportedAssignedAtomicGoals": 8912,
             "unmappedSourceAtomicGoals": 655,
             "sourceAtomicGoals": 1670,
             "sourceMappedToViewAtomicGoals": 1015,
@@ -12361,12 +12409,12 @@
             "errorJurisdictions": 16,
             "minSourceBackedAtomicGoals": 2,
             "maxVisibleAtomicGoals": 655,
-            "maxSourceBackedAtomicGoals": 486,
+            "maxSourceBackedAtomicGoals": 586,
             "totalAtomicGoals": 655
           },
           "details": [
             "DE-BW: 503 assigned atomic goal(s) without source-backed Lehrplan evidence",
-            "DE-HE: 168 assigned atomic goal(s) without source-backed Lehrplan evidence",
+            "DE-HE: 68 assigned atomic goal(s) without source-backed Lehrplan evidence",
             "DE-BY: 519 assigned atomic goal(s) without source-backed Lehrplan evidence",
             "DE-BB: 587 assigned atomic goal(s) without source-backed Lehrplan evidence",
             "DE-BE: 611 assigned atomic goal(s) without source-backed Lehrplan evidence",
@@ -12389,23 +12437,45 @@
         },
         {
           "id": "CQR-004",
-          "status": "pass",
-          "summary": "Course-level mapping is clean for 383 source-to-canonical mapping edge(s); unspecified source goals default to GK/LK unless explicitly reviewed.",
+          "status": "fail",
+          "summary": "850 course-level mapping issue(s); unspecified source goals default to GK/LK unless explicitly reviewed as LK-only.",
           "metrics": {
-            "configuredMappingFiles": 1,
-            "sourceGoals": 316,
-            "sourceGoalsWithCourseLevel": 316,
-            "gkLkSourceGoals": 262,
+            "configuredMappingFiles": 2,
+            "sourceGoals": 742,
+            "sourceGoalsWithCourseLevel": 742,
+            "gkLkSourceGoals": 688,
             "lkSourceGoals": 54,
             "unspecifiedSourceGoals": 62,
-            "checkedMappingEdges": 383,
-            "defaultedUnspecifiedMappingEdges": 74,
+            "checkedMappingEdges": 1450,
+            "defaultedUnspecifiedMappingEdges": 1141,
             "reviewedCourseLevelExceptions": 0,
-            "mismatches": 0,
+            "mismatches": 850,
             "missingSourceGoals": 0,
             "missingTargetGoals": 0,
             "unmappedCourseLevelSourceGoals": 0
-          }
+          },
+          "details": [
+            "he-math-seki-kc-7-3-zahlen-j5-6-01-39e504d8 (unspecified -> GK+LK) maps to Natürliche Zahlen darstellen und am Zahlenstrahl verorten [cf474eab-1379-4877-907e-58b0892ce734] with tags -",
+            "he-math-seki-kc-7-3-zahlen-j5-6-02-e7908a82 (unspecified -> GK+LK) maps to Positive und negative Zahlen an der Zahlengeraden veranschaulichen [199fe2ed-2576-4611-b8de-fd56fb9f78fc] with tags -",
+            "he-math-seki-kc-7-3-zahlen-j5-6-03-c57b0832 (unspecified -> GK+LK) maps to Brüche als Zahlen, Anteile und Quotienten deuten [6b0075bb-f71c-59f6-ab98-fb894568cc26] with tags -",
+            "he-math-seki-kc-7-3-zahlen-j5-6-04-1a312a79 (unspecified -> GK+LK) maps to Brüche und Dezimalbrüche ineinander umwandeln [ca8b2e67-7d14-5baf-8404-26820fe3d548] with tags -",
+            "he-math-seki-kc-7-3-zahlen-j5-6-05-86bf3221 (unspecified -> GK+LK) maps to Prozentangaben in Texten deuten und prüfen [72b6bfa5-8e34-4029-8f85-0277207c485e] with tags -",
+            "he-math-seki-kc-7-3-zahlen-j5-6-06-714ebec7 (unspecified -> GK+LK) maps to Natürliche Zahlen ordnen und vergleichen [9ef6c4fa-b97a-5d7a-86c1-96690f02d916] with tags -",
+            "he-math-seki-kc-7-3-zahlen-j5-6-06-714ebec7 (unspecified -> GK+LK) maps to Brüche erweitern, kürzen und vergleichen [a075ae99-7669-563d-807a-f91b119c020a] with tags -",
+            "he-math-seki-kc-7-3-zahlen-j5-6-07-0a028bac (unspecified -> GK+LK) maps to Natürliche Zahlen runden [fe07241a-b779-5f35-a82d-7aa51ae74f42] with tags -",
+            "he-math-seki-kc-7-3-zahlen-j5-6-07-0a028bac (unspecified -> GK+LK) maps to Dezimalzahlen auf der Zahlengeraden, im Stellenwertsystem und als Bruch darstellen [2f565855-bcd6-4da5-bc80-4b72a2d93d50] with tags -",
+            "he-math-seki-kc-7-3-zahlen-j5-6-08-9a9f4d25 (unspecified -> GK+LK) maps to Teilbarkeitsregeln prüfen und Primfaktorzerlegungen angeben [f2d4a7de-57c3-5749-bbb4-6cd4b57b7562] with tags -",
+            "he-math-seki-kc-7-3-zahlen-j5-6-09-c9bdf81d (unspecified -> GK+LK) maps to Natürliche Zahlen darstellen und am Zahlenstrahl verorten [cf474eab-1379-4877-907e-58b0892ce734] with tags -",
+            "he-math-seki-kc-7-3-zahlen-j5-6-09-c9bdf81d (unspecified -> GK+LK) maps to Bruchdarstellungen verwenden und wechseln [f6a54a49-b6cf-4ab7-a185-aa08bfcb6c97] with tags -",
+            "he-math-seki-kc-7-3-zahlen-j5-6-09-c9bdf81d (unspecified -> GK+LK) maps to Diagramme lesen [5e7d5ff2-b92c-4989-85bc-8d87ad7edadd] with tags -",
+            "he-math-seki-kc-7-3-zahlen-j7-8-01-3670397a (unspecified -> GK+LK) maps to Rationale Zahlen darstellen und berechnen [de39c9fe-5940-4320-aca8-2be85d6ada8f] with tags -",
+            "he-math-seki-kc-7-3-zahlen-j7-8-02-1e930168 (unspecified -> GK+LK) maps to Irrationalität von Wurzelzahlen begründen und reelle Zahlen einordnen [7676b0f9-340d-4a91-ab1f-92745a8f88db] with tags -",
+            "he-math-seki-kc-7-3-zahlen-j7-8-02-1e930168 (unspecified -> GK+LK) maps to Quadratwurzeln und Wurzelterme verstehen und nutzen [8a0b0baf-c7e6-43df-a470-f56050ecaa46] with tags -",
+            "he-math-seki-kc-7-3-zahlen-j7-8-03-dbe12b24 (unspecified -> GK+LK) maps to Rationale Zahlen an der Zahlengeraden darstellen und ordnen [c9e01667-24c4-56a2-8cf4-dfb6c360d7b9] with tags -",
+            "he-math-seki-kc-7-3-zahlen-j7-8-03-dbe12b24 (unspecified -> GK+LK) maps to Dezimalzahlen auf der Zahlengeraden, im Stellenwertsystem und als Bruch darstellen [2f565855-bcd6-4da5-bc80-4b72a2d93d50] with tags -",
+            "he-math-seki-kc-7-3-zahlen-j7-8-04-6d560183 (unspecified -> GK+LK) maps to Rationale Zahlen an der Zahlengeraden darstellen und ordnen [c9e01667-24c4-56a2-8cf4-dfb6c360d7b9] with tags -",
+            "he-math-seki-kc-7-3-zahlen-j7-8-04-6d560183 (unspecified -> GK+LK) maps to Irrationalität von Wurzelzahlen begründen und reelle Zahlen einordnen [7676b0f9-340d-4a91-ab1f-92745a8f88db] with tags -"
+          ]
         },
         {
           "id": "CQR-301",
@@ -12455,9 +12525,9 @@
         {
           "id": "CQR-501",
           "status": "warn",
-          "summary": "36 active and 0 obsolete accepted applicability warning(s) need review.",
+          "summary": "106 active and 0 obsolete accepted applicability warning(s) need review.",
           "metrics": {
-            "activeWarnings": 36,
+            "activeWarnings": 106,
             "acceptedWarnings": 399,
             "obsoleteAcceptedWarnings": 0
           }
@@ -13277,7 +13347,7 @@
         "maxSourceBackedAtomicGoals": 288,
         "maxAtomicCoveragePercent": 97.5,
         "maxSourceBackedCoveragePercent": 90.6,
-        "unsupportedAssignedAtomicGoals": 746,
+        "unsupportedAssignedAtomicGoals": 760,
         "surrogateBackedAtomicGoals": 0,
         "partialSourceLinkedAtomicGoals": 174,
         "sourceAtomicGoals": 1146,
@@ -13326,9 +13396,9 @@
             "jurisdiction": "DE-HE",
             "labelDe": "Hessen",
             "labelEn": "Hesse",
-            "visibleGoals": 437,
+            "visibleGoals": 438,
             "visibleAtomicGoals": 318,
-            "visibleClusterGoals": 119,
+            "visibleClusterGoals": 120,
             "viewAtomicGoals": 318,
             "sourceBackedAtomicGoals": 288,
             "surrogateBackedAtomicGoals": 0,
@@ -13626,13 +13696,13 @@
             "jurisdiction": "DE-RP",
             "labelDe": "Rheinland-Pfalz",
             "labelEn": "Rhineland-Palatinate",
-            "visibleGoals": 181,
-            "visibleAtomicGoals": 127,
-            "visibleClusterGoals": 54,
-            "viewAtomicGoals": 127,
+            "visibleGoals": 198,
+            "visibleAtomicGoals": 141,
+            "visibleClusterGoals": 57,
+            "viewAtomicGoals": 141,
             "sourceBackedAtomicGoals": 1,
             "surrogateBackedAtomicGoals": 0,
-            "unsupportedAssignedAtomicGoals": 126,
+            "unsupportedAssignedAtomicGoals": 140,
             "partialSourceLinkedAtomicGoals": 59,
             "sourceAtomicGoals": 87,
             "sourceMappedToViewAtomicGoals": 0,
@@ -13647,8 +13717,8 @@
             "sourceUncoveredOriginalGoals": 107,
             "errors": 0,
             "warnings": 60,
-            "atomicCoveragePercent": 39,
-            "sourceBackedCoveragePercent": 0.8,
+            "atomicCoveragePercent": 43.3,
+            "sourceBackedCoveragePercent": 0.7,
             "sourceReverseCoveragePercent": 0,
             "status": "error"
           },
@@ -15206,7 +15276,7 @@
           "scopeId": "canonical-physics-sek1",
           "label": "Sekundarstufe I",
           "selectedAtomicGoals": 44,
-          "maturity": "M3",
+          "maturity": "M1",
           "rules": [
             {
               "id": "CQR-101",
@@ -15230,11 +15300,14 @@
             },
             {
               "id": "CQR-103",
-              "status": "pass",
-              "summary": "No scoped cluster-level requires remain.",
+              "status": "warn",
+              "summary": "1 scoped cluster-level requires remain.",
               "metrics": {
-                "scopedClusterRequires": 0
-              }
+                "scopedClusterRequires": 1
+              },
+              "details": [
+                "Druck und Auftrieb (Sek I) [84096c02-0767-4725-8956-37ce7e4b9bbf] has 1 requires"
+              ]
             },
             {
               "id": "CQR-201",
@@ -15347,7 +15420,7 @@
             "incompleteJurisdictions": 16,
             "unsupportedAssignmentJurisdictions": 16,
             "sourceUnmappedJurisdictions": 16,
-            "unsupportedAssignedAtomicGoals": 746,
+            "unsupportedAssignedAtomicGoals": 760,
             "unmappedSourceAtomicGoals": 777,
             "sourceAtomicGoals": 1146,
             "sourceMappedToViewAtomicGoals": 369,
@@ -15378,7 +15451,7 @@
             "DE-HB: 1 assigned atomic goal(s) without source-backed Lehrplan evidence",
             "DE-HH: 1 assigned atomic goal(s) without source-backed Lehrplan evidence",
             "DE-MV: 1 assigned atomic goal(s) without source-backed Lehrplan evidence",
-            "DE-RP: 126 assigned atomic goal(s) without source-backed Lehrplan evidence",
+            "DE-RP: 140 assigned atomic goal(s) without source-backed Lehrplan evidence",
             "DE-SL: 1 assigned atomic goal(s) without source-backed Lehrplan evidence",
             "DE-SN: 1 assigned atomic goal(s) without source-backed Lehrplan evidence",
             "DE-ST: 1 assigned atomic goal(s) without source-backed Lehrplan evidence",
@@ -15419,10 +15492,10 @@
         },
         {
           "id": "CQR-501",
-          "status": "pass",
-          "summary": "178 accepted applicability warning(s) are current and no active applicability warning debt is visible.",
+          "status": "warn",
+          "summary": "16 active and 0 obsolete accepted applicability warning(s) need review.",
           "metrics": {
-            "activeWarnings": 0,
+            "activeWarnings": 16,
             "acceptedWarnings": 178,
             "obsoleteAcceptedWarnings": 0
           }
