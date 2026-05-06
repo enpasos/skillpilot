@@ -19,7 +19,7 @@
       "titleEn": "Mathematics Secondary Level I",
       "description": "Pilot-Subset der baden-wuerttembergischen Mathematik-Kompetenzen der Sekundarstufe I mit Fokus auf dem breiten Klassen-5/6-Grundstreifen, dem ersten gemeinsamen Funktionskorridor, der ersten breiten Klassen-7/8-Verbreiterung zu Algebra, Geometrie sowie Daten und Zufall, dem daran anschliessenden 9/10-Funktionszug mit trigonometrischen Funktionen und Ableitungsbegriff, dem breiten spaeten-Sek-I-Geometriekorridor zu Trigonometrie, Kreisfiguren und Koerpern sowie dem ersten spaeten-Sek-I-Stochastikkorridor zu bedingten Wahrscheinlichkeiten, Zufallsgroessen und Binomialverteilungen.",
       "descriptionEn": "Pilot subset of Baden-Wuerttemberg lower-secondary mathematics competencies with a focus on the broad grades-5/6 foundation strip, the first shared functions corridor, the first broad grades-7/8 widening across algebra, geometry, and data, the attached grades-9/10 functions follow-on with trigonometric functions and the derivative concept, the broad late-lower-secondary geometry corridor on trigonometry, circle figures, and solids, and the first late-lower-secondary stochastics corridor on conditional probabilities, random variables, and binomial distributions.",
-      "weight": 66,
+      "weight": 67,
       "tags": [
         "Sek1",
         "PilotSubset",
@@ -85,7 +85,7 @@
       "titleEn": "Grades 5/6: Number, Measurement, Geometry, and Data",
       "description": "Breiter Baden-Wuerttemberg-Cluster fuer den ersten vollstaendig archivierten 5/6-Grundstreifen zu Zahl - Variable - Operation, Messen, Raum und Form sowie Daten und Zufall.",
       "descriptionEn": "Broad Baden-Wuerttemberg cluster for the first fully archived grades-5/6 foundation strip across number and operations, measurement, geometry, and data.",
-      "weight": 21,
+      "weight": 22,
       "tags": [
         "Sek1",
         "JG5_6",
@@ -118,7 +118,7 @@
       "titleEn": "Strand Number, Variable, and Operations (Grades 5/6)",
       "description": "Grundstreifen fuer tragfaehige Zahlvorstellungen, sichere Rechenroutinen, Zahlterme und erste Aufgaben mit Unbekannten in den Klassen 5/6.",
       "descriptionEn": "Foundation strip for robust number concepts, secure calculation routines, numeric expressions, and first tasks with unknowns in grades 5/6.",
-      "weight": 8,
+      "weight": 9,
       "tags": [
         "Sek1",
         "JG5_6",
@@ -176,16 +176,19 @@
       "id": "95fd94a8-d86e-42ff-b2b9-4b7fdffe5fc7",
       "title": "Natuerliche und ganze Zahlen addieren und subtrahieren",
       "titleEn": "Add and subtract natural and whole numbers",
-      "description": "Die Schuelerinnen und Schueler addieren und subtrahieren natuerliche und ganze Zahlen sicher und deuten die Ergebnisse in einfachen Realsituationen.",
-      "descriptionEn": "Students add and subtract natural and whole numbers reliably and interpret the results in simple real-world situations.",
-      "weight": 1,
+      "description": "Retained Split-Cluster fuer die archivierte BW-Quelle; die konkreten Additions- und Subtraktionsroutinen liegen in den Kind-Source-Zielen.",
+      "descriptionEn": "Retained split cluster for the archived BW source row; concrete addition and subtraction routines live in child source goals.",
+      "weight": 2,
       "tags": [
         "Sek1",
         "JG5_6",
         "Zahl",
         "Rechnen"
       ],
-      "contains": [],
+      "contains": [
+        "c160a2f6-1674-4b1f-87dc-deb3aab0b8f4",
+        "f67315a1-ef27-4d2e-8be3-50ee0566ce81"
+      ],
       "requires": [],
       "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.1.1 Leitidee Zahl - Variable - Operation (4), (11)-(12), S. 17-18.",
       "dimensionTags": {
@@ -196,7 +199,59 @@
         "phase": "JG5_6",
         "area": "Zahl - Variable - Operation"
       },
-      "type": "atomic"
+      "type": "cluster"
+    },
+    {
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "JG5_6",
+        "Zahl",
+        "Rechnen"
+      ],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.1.1 Leitidee Zahl - Variable - Operation (4), (11)-(12), S. 17-18.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG5_6",
+        "area": "Zahl - Variable - Operation"
+      },
+      "type": "atomic",
+      "id": "c160a2f6-1674-4b1f-87dc-deb3aab0b8f4",
+      "title": "Natuerliche und ganze Zahlen addieren",
+      "titleEn": "Add natural numbers and integers",
+      "description": "Die Schuelerinnen und Schueler addieren natuerliche und ganze Zahlen sicher und deuten Ergebnisse an der Zahlengeraden oder in einfachen Realsituationen.",
+      "descriptionEn": "Students reliably add natural numbers and integers and interpret results on the number line or in simple real-world situations.",
+      "requires": []
+    },
+    {
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "JG5_6",
+        "Zahl",
+        "Rechnen"
+      ],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.1.1 Leitidee Zahl - Variable - Operation (4), (11)-(12), S. 17-18.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG5_6",
+        "area": "Zahl - Variable - Operation"
+      },
+      "type": "atomic",
+      "id": "f67315a1-ef27-4d2e-8be3-50ee0566ce81",
+      "title": "Natuerliche und ganze Zahlen subtrahieren",
+      "titleEn": "Subtract natural numbers and integers",
+      "description": "Die Schuelerinnen und Schueler subtrahieren natuerliche und ganze Zahlen sicher, nutzen Umkehraufgaben und deuten Ergebnisse in einfachen Realsituationen.",
+      "descriptionEn": "Students reliably subtract natural numbers and integers, use inverse operations, and interpret results in simple real-world situations.",
+      "requires": [
+        "c160a2f6-1674-4b1f-87dc-deb3aab0b8f4"
+      ]
     },
     {
       "id": "f12f1550-76ef-43e9-b8de-ff3949445af1",
@@ -831,7 +886,7 @@
       "titleEn": "First Functions Corridor",
       "description": "Pilot-Cluster fuer den ersten baden-wuerttembergischen Funktionszug von einfachen Zusammenhaengen ueber proportionale Zuordnungen bis zu linearen Funktionen.",
       "descriptionEn": "Pilot cluster for the first Baden-Wuerttemberg functions corridor from simple relations through proportional mappings to linear functions.",
-      "weight": 11,
+      "weight": 17,
       "tags": [
         "Sek1",
         "PilotSubset",
@@ -861,7 +916,7 @@
       "titleEn": "Grades 5/6: Simple Functional Relations",
       "description": "Fruehe Kompetenzen zu einfachen Zusammenhaengen, Darstellungswechseln, proportionalen Situationen und Koordinatensystemen.",
       "descriptionEn": "Early competencies on simple relations, representation changes, proportional situations, and coordinate systems.",
-      "weight": 4,
+      "weight": 6,
       "tags": [
         "Sek1",
         "JG5_6",
@@ -891,7 +946,7 @@
       "titleEn": "Grades 7/8: Functional Representations and Linear Functions",
       "description": "Aufbauender Funktionszug zu Darstellungswechseln, funktionalen Zuordnungen, Proportionalitaet und linearen Funktionen.",
       "descriptionEn": "Follow-on functions corridor on representation changes, functional mappings, proportionality, and linear functions.",
-      "weight": 7,
+      "weight": 11,
       "tags": [
         "Sek1",
         "JG7_8",
@@ -951,8 +1006,43 @@
       "id": "332b3bd1-afc0-4266-a977-49ef0843e5b1",
       "title": "Einfache funktionale Zusammenhaenge darstellen und zwischen Darstellungsformen wechseln",
       "titleEn": "Represent Simple Functional Relations and Switch Between Representations",
-      "description": "Die Schuelerinnen und Schueler stellen einfache funktionale Zusammenhaenge verbal, tabellarisch, ikonisch und graphisch dar und wechseln zwischen den Darstellungsformen.",
-      "descriptionEn": "Students represent simple functional relations verbally, in tables, iconically, and graphically and switch between these representations.",
+      "description": "Retained Split-Cluster fuer den baden-wuerttembergischen JG5/6-Darstellungsauftrag zu einfachen funktionalen Zusammenhaengen.",
+      "descriptionEn": "Retained split cluster for the Baden-Wuerttemberg grades-5/6 representation requirement for simple functional relations.",
+      "weight": 3,
+      "tags": [
+        "Sek1",
+        "JG5_6",
+        "Funktionen",
+        "Darstellungen"
+      ],
+      "contains": [
+        "dbdf56f9-f11b-40ea-9546-40b3b036091c",
+        "520d6ab8-b663-4acf-a4b6-8dcb8274ecf1",
+        "d730b8a9-cbfe-46ee-9c57-63eba4642c34"
+      ],
+      "requires": [
+        "83041ef8-6480-435c-aeb6-a09cb4af5ec2"
+      ],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.1.4 Leitidee Funktionaler Zusammenhang (4), S. 22.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG5_6",
+        "area": "Funktionaler Zusammenhang"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "dbdf56f9-f11b-40ea-9546-40b3b036091c",
+      "title": "Zuordnungstabellen zu einfachen funktionalen Zusammenhaengen erstellen",
+      "titleEn": "Create Tables for Simple Functional Relations",
+      "description": "Die Schuelerinnen und Schueler erstellen zu einfachen funktionalen Zusammenhaengen passende Tabellen und beschriften die Darstellungen nachvollziehbar.",
+      "descriptionEn": "Students create suitable tables for simple functional relations and label the representations clearly.",
+      "requires": [
+        "83041ef8-6480-435c-aeb6-a09cb4af5ec2"
+      ],
       "weight": 1,
       "tags": [
         "Sek1",
@@ -961,9 +1051,62 @@
         "Darstellungen"
       ],
       "contains": [],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.1.4 Leitidee Funktionaler Zusammenhang (4), S. 22.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG5_6",
+        "area": "Funktionaler Zusammenhang"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "520d6ab8-b663-4acf-a4b6-8dcb8274ecf1",
+      "title": "Einfache funktionale Zusammenhaenge tabellarisch und graphisch deuten",
+      "titleEn": "Interpret Simple Functional Relations in Tables and Graphs",
+      "description": "Die Schuelerinnen und Schueler stellen einfache funktionale Zusammenhaenge tabellarisch und graphisch dar und deuten die Zuordnung in Worten.",
+      "descriptionEn": "Students represent simple functional relations in tables and graphs and interpret the relation verbally.",
       "requires": [
-        "83041ef8-6480-435c-aeb6-a09cb4af5ec2"
+        "dbdf56f9-f11b-40ea-9546-40b3b036091c"
       ],
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "JG5_6",
+        "Funktionen",
+        "Darstellungen"
+      ],
+      "contains": [],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.1.4 Leitidee Funktionaler Zusammenhang (4), S. 22.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG5_6",
+        "area": "Funktionaler Zusammenhang"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "d730b8a9-cbfe-46ee-9c57-63eba4642c34",
+      "title": "Zwischen verbalen, tabellarischen, ikonischen und graphischen Darstellungen wechseln",
+      "titleEn": "Switch Between Verbal, Tabular, Iconic, and Graphical Representations",
+      "description": "Die Schuelerinnen und Schueler uebertragen einfache funktionale Zusammenhaenge zwischen verbalen, tabellarischen, ikonischen und graphischen Darstellungsformen.",
+      "descriptionEn": "Students translate simple functional relations between verbal, tabular, iconic, and graphical representations.",
+      "requires": [
+        "520d6ab8-b663-4acf-a4b6-8dcb8274ecf1"
+      ],
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "JG5_6",
+        "Funktionen",
+        "Darstellungen"
+      ],
+      "contains": [],
       "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.1.4 Leitidee Funktionaler Zusammenhang (4), S. 22.",
       "dimensionTags": {
         "framework": "bw-bp2016-gym-math",
@@ -1035,7 +1178,7 @@
       "titleEn": "Represent Relations Using Tables, Equations, Graphs, or Text and Switch Between Representations",
       "description": "Retained Split-Cluster fuer den baden-wuerttembergischen JG7/8-Repraesentationszug zu Darstellungen und Darstellungswechseln.",
       "descriptionEn": "Retained split cluster for the Baden-Wuerttemberg grades-7/8 representation corridor covering representations and representation changes.",
-      "weight": 2,
+      "weight": 6,
       "tags": [
         "Sek1",
         "JG7_8",
@@ -1096,6 +1239,152 @@
       "titleEn": "Switch Appropriately Between Representations",
       "description": "Die Schuelerinnen und Schueler wechseln situationsgerecht zwischen Tabellen, Gleichungen, Graphen und Texten.",
       "descriptionEn": "Students switch appropriately between tables, equations, graphs, and texts.",
+      "weight": 5,
+      "tags": [
+        "Sek1",
+        "JG7_8",
+        "Funktionen",
+        "Darstellungen"
+      ],
+      "contains": [
+        "c6fae583-f8d3-4fa7-9da7-12f0d2f23315",
+        "683d5ae2-2983-45be-a0d5-5abb192285b3",
+        "087b87bd-c402-41de-bff1-05575d278288",
+        "931b066c-7f70-4cb6-b983-730fa80e8b6e",
+        "36edc0af-21f2-4eed-9b30-121a507d8fbd"
+      ],
+      "requires": [
+        "5e889254-5088-4c9f-ac62-e94d95113644"
+      ],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.2.4 Leitidee Funktionaler Zusammenhang (1), S. 28.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG7_8",
+        "area": "Funktionaler Zusammenhang"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "c6fae583-f8d3-4fa7-9da7-12f0d2f23315",
+      "title": "Aus Gleichungen oder Termen Graphen erstellen",
+      "titleEn": "Create Graphs from Equations or Terms",
+      "description": "Die Schuelerinnen und Schueler erstellen aus Gleichungen oder Termen passende Graphen.",
+      "descriptionEn": "Students create appropriate graphs from equations or terms.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "JG7_8",
+        "Funktionen",
+        "Darstellungen"
+      ],
+      "contains": [],
+      "requires": [
+        "5e889254-5088-4c9f-ac62-e94d95113644"
+      ],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.2.4 Leitidee Funktionaler Zusammenhang (1), S. 28.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG7_8",
+        "area": "Funktionaler Zusammenhang"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "683d5ae2-2983-45be-a0d5-5abb192285b3",
+      "title": "Term- und Gleichungsmerkmale aus Graphen ableiten",
+      "titleEn": "Infer Term and Equation Features from Graphs",
+      "description": "Die Schuelerinnen und Schueler leiten Merkmale von Termen oder Gleichungen aus Graphen ab.",
+      "descriptionEn": "Students infer features of terms or equations from graphs.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "JG7_8",
+        "Funktionen",
+        "Darstellungen"
+      ],
+      "contains": [],
+      "requires": [
+        "5e889254-5088-4c9f-ac62-e94d95113644"
+      ],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.2.4 Leitidee Funktionaler Zusammenhang (1), S. 28.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG7_8",
+        "area": "Funktionaler Zusammenhang"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "087b87bd-c402-41de-bff1-05575d278288",
+      "title": "Funktionsgleichungen aus Graphen bestimmen",
+      "titleEn": "Determine Function Equations from Graphs",
+      "description": "Die Schuelerinnen und Schueler bestimmen zu passenden Graphen Funktionsgleichungen.",
+      "descriptionEn": "Students determine function equations for suitable graphs.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "JG7_8",
+        "Funktionen",
+        "Darstellungen"
+      ],
+      "contains": [],
+      "requires": [
+        "5e889254-5088-4c9f-ac62-e94d95113644"
+      ],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.2.4 Leitidee Funktionaler Zusammenhang (1), S. 28.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG7_8",
+        "area": "Funktionaler Zusammenhang"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "931b066c-7f70-4cb6-b983-730fa80e8b6e",
+      "title": "Zwischen Tabelle, Graph und Term wechseln",
+      "titleEn": "Switch Between Table, Graph, and Term",
+      "description": "Die Schuelerinnen und Schueler wechseln situationsgerecht zwischen Tabellen, Graphen und Termen.",
+      "descriptionEn": "Students switch appropriately between tables, graphs, and terms.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "JG7_8",
+        "Funktionen",
+        "Darstellungen"
+      ],
+      "contains": [],
+      "requires": [
+        "5e889254-5088-4c9f-ac62-e94d95113644"
+      ],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.2.4 Leitidee Funktionaler Zusammenhang (1), S. 28.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG7_8",
+        "area": "Funktionaler Zusammenhang"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "36edc0af-21f2-4eed-9b30-121a507d8fbd",
+      "title": "Darstellungswechsel situationsgerecht begruenden und pruefen",
+      "titleEn": "Justify and Check Representation Changes Appropriately",
+      "description": "Die Schuelerinnen und Schueler begruenden und pruefen situationsgerechte Wechsel zwischen Tabellen, Gleichungen, Graphen und Texten.",
+      "descriptionEn": "Students justify and check appropriate changes between tables, equations, graphs, and texts.",
       "weight": 1,
       "tags": [
         "Sek1",
@@ -1591,7 +1880,7 @@
       "titleEn": "Grades 7/8: Algebra, Geometry, and Data",
       "description": "Breiter Baden-Wuerttemberg-Cluster fuer die erste 7/8-Verbreiterung jenseits des aktiven Funktionskorridors mit Algebra und Gleichungen, Geometrie sowie Daten und Zufall.",
       "descriptionEn": "Broad Baden-Wuerttemberg cluster for the first grades-7/8 widening beyond the active functions corridor across algebra and equations, geometry, and data and chance.",
-      "weight": 11,
+      "weight": 17,
       "tags": [
         "Sek1",
         "JG7_8",
@@ -1624,7 +1913,7 @@
       "titleEn": "Strand Number, Variable, and Operations (Grades 7/8, Widening)",
       "description": "Breiter 7/8-Streifen fuer Prozent- und Zinsrechnung, Formelumstellungen, Wurzeln, quadratische Gleichungen, lineare Gleichungssysteme und graphisch gedeutete Gleichungen und Ungleichungen.",
       "descriptionEn": "Broad grades-7/8 strip for percentage and interest calculations, formula rearrangements, roots, quadratic equations, linear systems, and graph-based interpretations of equations and inequalities.",
-      "weight": 6,
+      "weight": 11,
       "tags": [
         "Sek1",
         "JG7_8",
@@ -1656,19 +1945,21 @@
       "id": "57e5d7b8-eac3-4ee3-a496-c61e0c2667b7",
       "title": "Mit Prozenten, Zinsen und linearen Gleichungen umgehen",
       "titleEn": "Work with percentages, interest, and linear equations",
-      "description": "Die Schuelerinnen und Schueler identifizieren Prozentwert, Grundwert und Prozentsatz, berechnen Zinsen und Zinseszinsen und loesen lineare Gleichungen systematisch durch Aequivalenzumformungen.",
-      "descriptionEn": "Students identify percentage values, base values, and rates, calculate interest and compound interest, and solve linear equations systematically using equivalent transformations.",
-      "weight": 1,
+      "description": "Retained Split-Cluster fuer die archivierte BW-Quelle; Prozentgrundaufgaben, Zinsrechnung und lineares Gleichungsloesen liegen in getrennten Kind-Source-Zielen.",
+      "descriptionEn": "Retained split cluster for the archived BW source row; percentage basics, interest calculations, and linear equation solving live in separate child source goals.",
+      "weight": 3,
       "tags": [
         "Sek1",
         "JG7_8",
         "Algebra",
         "Prozent"
       ],
-      "contains": [],
-      "requires": [
-        "286a5ac0-d9ed-4d64-8ddd-51fb2238e35d"
+      "contains": [
+        "ba1e2ca6-a154-4985-8f66-2a21820949f6",
+        "081f238b-5d77-4247-9980-fb780640000a",
+        "aa20473c-7a86-4aff-85db-06171ab25fc8"
       ],
+      "requires": [],
       "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.2.1 Leitidee Zahl - Variable - Operation (2)-(4), (19), S. 24-25.",
       "dimensionTags": {
         "framework": "bw-bp2016-gym-math",
@@ -1678,7 +1969,89 @@
         "phase": "JG7_8",
         "area": "Zahl - Variable - Operation"
       },
-      "type": "atomic"
+      "type": "cluster"
+    },
+    {
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "JG7_8",
+        "Algebra",
+        "Prozent"
+      ],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.2.1 Leitidee Zahl - Variable - Operation (2)-(4), S. 24-25.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG7_8",
+        "area": "Zahl - Variable - Operation"
+      },
+      "type": "atomic",
+      "id": "ba1e2ca6-a154-4985-8f66-2a21820949f6",
+      "title": "Prozentwert, Grundwert und Prozentsatz bestimmen",
+      "titleEn": "Determine percentage value, base value, and rate",
+      "description": "Die Schuelerinnen und Schueler identifizieren Prozentwert, Grundwert und Prozentsatz und loesen Grundaufgaben der Prozentrechnung in vertrauten Sachzusammenhaengen.",
+      "descriptionEn": "Students identify percentage value, base value, and rate and solve basic percentage problems in familiar contexts.",
+      "requires": [
+        "53620c4f-af82-4ac6-bc89-529bec03ad26"
+      ]
+    },
+    {
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "JG7_8",
+        "Algebra",
+        "Prozent",
+        "Zins"
+      ],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.2.1 Leitidee Zahl - Variable - Operation (2)-(4), S. 24-25.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG7_8",
+        "area": "Zahl - Variable - Operation"
+      },
+      "type": "atomic",
+      "id": "081f238b-5d77-4247-9980-fb780640000a",
+      "title": "Zinsen und Zinseszinsen berechnen",
+      "titleEn": "Calculate interest and compound interest",
+      "description": "Die Schuelerinnen und Schueler berechnen Zinsen und einfache Zinseszinsen in vertrauten Sachzusammenhaengen und deuten die Ergebnisse als Prozentanwendungen.",
+      "descriptionEn": "Students calculate interest and simple compound interest in familiar contexts and interpret the results as percentage applications.",
+      "requires": [
+        "ba1e2ca6-a154-4985-8f66-2a21820949f6"
+      ]
+    },
+    {
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "JG7_8",
+        "Algebra",
+        "Gleichungen"
+      ],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.2.1 Leitidee Zahl - Variable - Operation (19), S. 25.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG7_8",
+        "area": "Zahl - Variable - Operation"
+      },
+      "type": "atomic",
+      "id": "aa20473c-7a86-4aff-85db-06171ab25fc8",
+      "title": "Lineare Gleichungen systematisch durch Aequivalenzumformungen loesen",
+      "titleEn": "Solve linear equations systematically using equivalent transformations",
+      "description": "Die Schuelerinnen und Schueler loesen lineare Gleichungen systematisch durch Aequivalenzumformungen und pruefen Loesungen durch Einsetzen.",
+      "descriptionEn": "Students solve linear equations systematically using equivalent transformations and check solutions by substitution.",
+      "requires": [
+        "286a5ac0-d9ed-4d64-8ddd-51fb2238e35d"
+      ]
     },
     {
       "id": "665d6a1a-a732-43cd-80fb-b60cfbad1e89",
@@ -1714,6 +2087,123 @@
       "titleEn": "Work with roots, irrational numbers, and real numbers",
       "description": "Die Schuelerinnen und Schueler erklaeren Quadrat- und Kubikwurzeln, vereinfachen einfache Wurzelterme, beschreiben die Notwendigkeit reeller Zahlen und bestimmen Wurzeln auch naeherungsweise iterativ.",
       "descriptionEn": "Students explain square and cube roots, simplify elementary radical expressions, describe the need for real numbers, and also determine roots approximately using iterative procedures.",
+      "weight": 4,
+      "tags": [
+        "Sek1",
+        "JG7_8",
+        "Algebra",
+        "Wurzeln"
+      ],
+      "contains": [
+        "a8948447-3259-4aef-9071-0cd762fd9209",
+        "29f5bdde-c932-4bc5-b8ce-7e89ea409849",
+        "b404b3ec-d0a9-405e-a66b-172a5d852a3d",
+        "5f1fc0e6-dec0-4865-9185-8b91c3291cf0"
+      ],
+      "requires": [
+        "286a5ac0-d9ed-4d64-8ddd-51fb2238e35d"
+      ],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.2.1 Leitidee Zahl - Variable - Operation (11)-(18), S. 24-25.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG7_8",
+        "area": "Zahl - Variable - Operation"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "a8948447-3259-4aef-9071-0cd762fd9209",
+      "title": "Quadratwurzeln erklaeren und Werte naeherungsweise bestimmen",
+      "titleEn": "Explain square roots and determine values approximately",
+      "description": "Die Schuelerinnen und Schueler erklaeren Quadratwurzeln und bestimmen geeignete Wurzelwerte exakt oder naeherungsweise.",
+      "descriptionEn": "Students explain square roots and determine suitable root values exactly or approximately.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "JG7_8",
+        "Algebra",
+        "Wurzeln"
+      ],
+      "contains": [],
+      "requires": [
+        "286a5ac0-d9ed-4d64-8ddd-51fb2238e35d"
+      ],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.2.1 Leitidee Zahl - Variable - Operation (11)-(18), S. 24-25.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG7_8",
+        "area": "Zahl - Variable - Operation"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "29f5bdde-c932-4bc5-b8ce-7e89ea409849",
+      "title": "Einfache Wurzelterme vereinfachen",
+      "titleEn": "Simplify elementary radical expressions",
+      "description": "Die Schuelerinnen und Schueler vereinfachen einfache Wurzelterme mit bekannten Quadratzahlen und Rechengesetzen.",
+      "descriptionEn": "Students simplify elementary radical expressions using known square numbers and calculation laws.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "JG7_8",
+        "Algebra",
+        "Wurzeln"
+      ],
+      "contains": [],
+      "requires": [
+        "286a5ac0-d9ed-4d64-8ddd-51fb2238e35d"
+      ],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.2.1 Leitidee Zahl - Variable - Operation (11)-(18), S. 24-25.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG7_8",
+        "area": "Zahl - Variable - Operation"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "b404b3ec-d0a9-405e-a66b-172a5d852a3d",
+      "title": "Irrationale Wurzelzahlen und reelle Zahlen einordnen",
+      "titleEn": "Classify irrational root numbers and real numbers",
+      "description": "Die Schuelerinnen und Schueler beschreiben an Wurzelzahlen die Notwendigkeit reeller Zahlen und ordnen rationale und irrationale Zahlen ein.",
+      "descriptionEn": "Students use root numbers to describe why real numbers are needed and classify rational and irrational numbers.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "JG7_8",
+        "Algebra",
+        "Wurzeln"
+      ],
+      "contains": [],
+      "requires": [
+        "286a5ac0-d9ed-4d64-8ddd-51fb2238e35d"
+      ],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.2.1 Leitidee Zahl - Variable - Operation (11)-(18), S. 24-25.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG7_8",
+        "area": "Zahl - Variable - Operation"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "5f1fc0e6-dec0-4865-9185-8b91c3291cf0",
+      "title": "Wurzeln iterativ naeherungsweise bestimmen",
+      "titleEn": "Determine roots approximately with iterative procedures",
+      "description": "Die Schuelerinnen und Schueler bestimmen Wurzelwerte mit iterativen Verfahren naeherungsweise.",
+      "descriptionEn": "Students determine root values approximately using iterative procedures.",
       "weight": 1,
       "tags": [
         "Sek1",
@@ -1943,7 +2433,7 @@
       "titleEn": "Strand Data and Chance (Grades 7/8)",
       "description": "Breiter 7/8-Streifen fuer Quartile und Boxplots sowie fuer alltagsnahe Wahrscheinlichkeit, Laplace-Experimente und Baumdiagramme.",
       "descriptionEn": "Broad grades-7/8 strip for quartiles and box plots as well as everyday probability, Laplace experiments, and tree diagrams.",
-      "weight": 2,
+      "weight": 3,
       "tags": [
         "Sek1",
         "JG7_8",
@@ -2003,18 +2493,79 @@
       "titleEn": "Describe random experiments, determine Laplace probabilities, and use tree diagrams",
       "description": "Die Schuelerinnen und Schueler erklaeren alltagsnahe Wahrscheinlichkeitsaussagen, beschreiben Ergebnisse und Ereignisse, werten Zufallsexperimente aus, bestimmen Wahrscheinlichkeiten in Laplace-Situationen und nutzen Baumdiagramme sowie Pfadregeln bei mehrstufigen Experimenten.",
       "descriptionEn": "Students explain everyday probability statements, describe outcomes and events, analyze random experiments, determine probabilities in Laplace situations, and use tree diagrams and path rules for multi-stage experiments.",
-      "weight": 1,
+      "weight": 2,
       "tags": [
         "Sek1",
         "JG7_8",
         "Zufall",
         "Wahrscheinlichkeit"
       ],
-      "contains": [],
+      "contains": [
+        "e7bfdebd-c11a-4b9e-bfc6-edd36257001b",
+        "50e91829-683f-49a4-8af1-33278a637759"
+      ],
       "requires": [
         "43bcccb1-27f7-4779-9b28-de1a02d17d01"
       ],
       "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.2.5 Leitidee Daten und Zufall (5)-(14), S. 29-30.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG7_8",
+        "area": "Daten und Zufall"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "e7bfdebd-c11a-4b9e-bfc6-edd36257001b",
+      "title": "Laplace-Wahrscheinlichkeiten in Zufallsexperimenten bestimmen",
+      "titleEn": "Determine Laplace probabilities in random experiments",
+      "description": "Die Schuelerinnen und Schueler beschreiben Ergebnisse und Ereignisse in alltagsnahen Zufallsexperimenten, werten Laplace-Situationen aus und bestimmen zugehoerige Wahrscheinlichkeiten.",
+      "descriptionEn": "Students describe outcomes and events in everyday random experiments, analyze Laplace situations, and determine the corresponding probabilities.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "JG7_8",
+        "Zufall",
+        "Wahrscheinlichkeit",
+        "Laplace"
+      ],
+      "contains": [],
+      "requires": [
+        "43bcccb1-27f7-4779-9b28-de1a02d17d01"
+      ],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.2.5 Leitidee Daten und Zufall (5)-(10), S. 29-30.",
+      "dimensionTags": {
+        "framework": "bw-bp2016-gym-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "JG7_8",
+        "area": "Daten und Zufall"
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "50e91829-683f-49a4-8af1-33278a637759",
+      "title": "Baumdiagramme und Pfadregeln bei mehrstufigen Experimenten nutzen",
+      "titleEn": "Use tree diagrams and path rules for multi-stage experiments",
+      "description": "Die Schuelerinnen und Schueler strukturieren mehrstufige Zufallsexperimente mit Baumdiagrammen und bestimmen Wahrscheinlichkeiten mithilfe von Pfadregeln.",
+      "descriptionEn": "Students structure multi-stage random experiments with tree diagrams and determine probabilities using path rules.",
+      "weight": 1,
+      "tags": [
+        "Sek1",
+        "JG7_8",
+        "Zufall",
+        "Wahrscheinlichkeit",
+        "Baumdiagramm"
+      ],
+      "contains": [],
+      "requires": [
+        "e7bfdebd-c11a-4b9e-bfc6-edd36257001b"
+      ],
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium, 3.2.5 Leitidee Daten und Zufall (11)-(14), S. 30.",
       "dimensionTags": {
         "framework": "bw-bp2016-gym-math",
         "demandLevel": "AB2",

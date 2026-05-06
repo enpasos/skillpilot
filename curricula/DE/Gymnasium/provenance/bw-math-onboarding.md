@@ -19,14 +19,31 @@ Activation state:
   - `curricula/DE/Gymnasium/input/BW/BP2016BW_ALLG_GYM_M.pdf`
 - the lower-secondary and upper-secondary provenance notes now point at that shared archived PDF
 - the lower-secondary `sourceLandscapeId` is now active in `source-landscape-registry.json`
-- the lower-secondary lane now contributes its first archived source goal memberships to `source-goal-membership-registry.json`
-- the lower-secondary lane now contributes its first archived atomic closures to `source-goal-closure-registry.json`
+- the lower-secondary lane now contributes all 120 archived source snapshot goals to `source-goal-membership-registry.json`
+- the lower-secondary lane now contributes atomic closures for all 120 source snapshot goals, covering all 88 source atomics, to `source-goal-closure-registry.json`
+- the broad Klassen-5/6 source row for adding and subtracting natural and integer numbers is now retained as a parent corridor and split into two archived child leaves:
+  - both child leaves map `exact` to the shared canonical addition and subtraction atoms
+- the broad Klassen-7/8 Wurzel source row is now retained as a parent corridor and split into four archived child leaves:
+  - three child leaves map `exact` to the shared canonical square-root, irrational/reelle-Zahlen, and iterative-approximation atoms
+  - the simple-Wurzelterm child remains a deliberate `partial` bridge because the canonical target is narrower around fully radicable expressions and Betragsbehandlung
+- the broad Klassen-7/8 Darstellungswechsel source row is now retained as a parent corridor and split into five archived child leaves:
+  - four child leaves map `exact` to graph-from-term/equation, graph-to-term/equation, equation-from-graph, and table/graph/term switching atoms
+  - the situationsgerechtes-Begruenden child remains a deliberate `partial` bridge because the source row says situationsgerecht wechseln, but the canonical atom adds explicit justification and checking
+- the broad Klassen-7/8 Prozent/Zins/Gleichungs source row is now retained as a parent corridor and split into three archived child leaves:
+  - the Prozentgrundaufgaben and lineare-Gleichungen child leaves map `exact` to shared canonical atoms
+  - the Zinsrechnung child remains a deliberate `partial` bridge because the BW source row names Zinseszins while the canonical target is explicitly the simple interest context
+- the broad Klassen-7/8 Zufall/Laplace/Baumdiagramm source row is now retained as a parent corridor and split into two archived child leaves:
+  - both child leaves map `exact` to the shared canonical Laplace-experiment and Baumdiagramm/Pfadregel atoms
+- the broad Klassen-5/6 source row for simple functional representations is now retained as a parent corridor and split into three archived child leaves:
+  - two child leaves map `exact` to table creation and simple-assignment analysis atoms
+  - the verbal/tabular/iconic/graphical switching child remains a deliberate `partial` bridge because the canonical atom uses table/graph/term switching while the BW source row names no term representation at this level
 - the first active Baden-Wuerttemberg lower-secondary source snapshot now lives at:
   - `curricula/DE/Gymnasium/input/BW/lower-secondary/source-json/DE_BAW_S_GYM_1_MATHEMATIK.de.json.snapshot`
-- the imported lower-secondary pilot subset currently covers:
+- the imported lower-secondary source snapshot currently covers:
   - the curriculum-wide orientation layer from `1.1 Bildungswert des Faches Mathematik`
-  - `3.1.4 Leitidee Funktionaler Zusammenhang` in `Klassen 5/6`
-  - `3.2.4 Leitidee Funktionaler Zusammenhang` in `Klassen 7/8`
+  - `Klassen 5/6`: Zahl - Variable - Operation, Messen, Raum und Form, Daten und Zufall, and the first functional-correlation corridor
+  - `Klassen 7/8`: algebraic terms, geometry, data and chance, and linear/functional representations
+  - `Klassen 9/10`: trigonometry, circle/solid geometry, powers and functions, exponential/trigonometric/differential-function links, conditional probability, binomial distributions, coordinate geometry, and vectors
 - the upper-secondary `sourceLandscapeId` is now active in `source-landscape-registry.json`
 - the upper-secondary lane now contributes its first archived source goal memberships to `source-goal-membership-registry.json`
 - the upper-secondary lane now contributes its first archived atomic closures to `source-goal-closure-registry.json`
@@ -51,5 +68,5 @@ Operational rule from here:
 - keep these reserved `sourceLandscapeId` values stable while the first Baden-Wuerttemberg mathematics source snapshots are prepared
 - activate the shared provenance registries only after real archived source-landscape JSON snapshots with stable source goal IDs exist
 - prefer the active BW widening only on still-unmapped upper-secondary source parents or on intentionally imported retained non-core sections
-- do not reopen the already fully mapped lower-secondary pilot subset unless a new retained BW source slice is imported intentionally
-- keep BW stable as a broad reviewed comparison lane; widen it only if an intentionally imported retained non-core BW source slice is added later
+- keep the lower-secondary pilot subset stable except for retained source splits that turn broad archived rows into honest child evidence
+- keep BW stable as a broad reviewed comparison lane; widen it only if an intentionally imported retained non-core BW source slice or a reviewed retained split is added later

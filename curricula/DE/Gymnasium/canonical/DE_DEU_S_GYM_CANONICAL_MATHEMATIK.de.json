@@ -895,7 +895,7 @@
       "description": "Gemeinsame Wurzel für Mathematik am Gymnasium in Deutschland. Die Baseline bündelt einen kanonischen Mathematik-Graphen über Sekundarstufe I und II mit Jahrgangsankern, fachlichen Korridoren und anschlussfähigen Oberstufenzielen.",
       "descriptionEn": "Shared root for mathematics at Gymnasium in Germany. The baseline bundles one canonical mathematics graph across lower and upper secondary with year anchors, content corridors, and upper-secondary continuation goals.",
       "core": true,
-      "weight": 623,
+      "weight": 634,
       "tags": [
         "root",
         "canonical",
@@ -986,7 +986,7 @@
       "description": "Kanonischer Jahrgangsstufenanker für J5 der gymnasialen Sekundarstufe I in Mathematik. Hier hängen frühe Zahl-, Geometrie-, Größen- und Flächengrundlagen an.",
       "descriptionEn": "Canonical year anchor for year 5 in lower-secondary Gymnasium mathematics. Early number, geometry, quantity, and area foundations attach here.",
       "core": true,
-      "weight": 32,
+      "weight": 34,
       "tags": [
         "canonical",
         "phase:SekI",
@@ -1043,7 +1043,7 @@
       "description": "Kanonischer Cluster für den J5-Einstieg in Zahlvorstellungen und elementare Rechenroutinen. Der Cluster bündelt Zahlendarstellungen, Grundoperationen, erste Gleichungen, Rechengesetze, heuristische Problemlösestrategien sowie grundlegende Strukturen zu Teilbarkeit, Potenzen, Termen und Zählprinzipien.",
       "descriptionEn": "Canonical cluster for the year-5 entry into number sense and elementary calculation routines. It bundles number representations, basic operations, first equations, arithmetic laws, heuristic problem-solving strategies, and foundational structures for divisibility, powers, expressions, and counting principles.",
       "core": true,
-      "weight": 18,
+      "weight": 19,
       "tags": [
         "canonical"
       ],
@@ -1065,6 +1065,7 @@
         "cf474eab-1379-4877-907e-58b0892ce734",
         "9ef6c4fa-b97a-5d7a-86c1-96690f02d916",
         "d825f7ce-e19b-594a-8181-eff199c21d93",
+        "e82d8d3a-9012-5482-afe6-ab0d727a49bb",
         "d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe",
         "4b67bed9-06da-40b2-a306-24e9e7dfd390",
         "3fde4db5-9e92-5f3a-98e1-d386a42b9e01",
@@ -1408,6 +1409,45 @@
         ]
       },
       "type": "atomic"
+    },
+    {
+      "id": "e82d8d3a-9012-5482-afe6-ab0d727a49bb",
+      "shortKey": "canonical_math_sek1_j5_check_calculations_with_inverse_operations",
+      "title": "Rechnungen mit Umkehroperationen überprüfen",
+      "titleEn": "Check calculations using inverse operations",
+      "description": "Die lernende Person kann Ergebnisse einfacher Rechnungen mithilfe passender Umkehroperationen überprüfen und Fehler in Rechenwegen erkennen.",
+      "descriptionEn": "The learner can check results of simple calculations using suitable inverse operations and identify errors in calculation paths.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K2.1",
+          "K5.2"
+        ],
+        "guidingIdeas": [
+          "L1"
+        ],
+        "phase": "J5",
+        "area": "Arithmetic",
+        "topicCode": "CANONICAL.MATH.SEK1.J5.1B.CHECK"
+      },
+      "contains": [],
+      "requires": [
+        "d825f7ce-e19b-594a-8181-eff199c21d93"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BW"
+        ]
+      },
+      "type": "atomic",
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium 2016, 3.1.1, Kompetenz 21, S. 17",
+      "semanticAtomic": true
     },
     {
       "id": "ca834a7d-5a66-4876-b24c-143b1464d937",
@@ -2603,7 +2643,7 @@
       "description": "Kanonischer Cluster für den J5-Ausbau bei Größen, proportionalen Alltagssituationen, ersten Schätzstrategien und Flächenvorstellungen. Der Cluster differenziert Rechnen mit Größen, Dreisatz und Maßstab, Bezugsgrößen-Schätzen sowie die sichere Unterscheidung von Umfang und Flächeninhalt.",
       "descriptionEn": "Canonical cluster for the year-5 expansion of quantities, proportional everyday situations, first estimation strategies, and area concepts. It differentiates calculation with quantities, rule of three and scale, benchmark-based estimation, and a secure distinction between perimeter and area.",
       "core": true,
-      "weight": 5,
+      "weight": 6,
       "tags": [
         "canonical"
       ],
@@ -2625,7 +2665,8 @@
         "ca623958-c204-5d1b-bdd0-3f76765674cb",
         "ca9093cd-9ccf-5fb4-9dd8-bf4f92af4e70",
         "03a87896-088d-4b21-a37b-d0604d784540",
-        "d6c3fb37-ece6-5b56-9221-1eeb21845877"
+        "d6c3fb37-ece6-5b56-9221-1eeb21845877",
+        "0bd7dc9b-c7f9-52e6-b374-a019edfd821c"
       ],
       "requires": [],
       "applicability": {
@@ -2824,6 +2865,47 @@
       "type": "atomic"
     },
     {
+      "id": "0bd7dc9b-c7f9-52e6-b374-a019edfd821c",
+      "shortKey": "canonical_math_sek1_j5_explain_rectangle_area_by_measuring",
+      "title": "Rechteckflächenformel aus dem Messprinzip erklären",
+      "titleEn": "Explain the rectangle area formula from the measuring principle",
+      "description": "Die lernende Person kann die Formel für den Flächeninhalt eines Rechtecks aus dem Grundprinzip des Messens mit Einheitsquadraten erklären.",
+      "descriptionEn": "The learner can explain the formula for the area of a rectangle from the measuring principle using unit squares.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K1.2",
+          "K3.1"
+        ],
+        "guidingIdeas": [
+          "L2"
+        ],
+        "phase": "J5",
+        "area": "Measurement",
+        "topicCode": "CANONICAL.MATH.SEK1.J5.3E.RECTANGLE_MEASURE"
+      },
+      "contains": [],
+      "requires": [
+        "f2e42af5-67a6-477e-82ea-e65b09cc6cb3",
+        "d6c3fb37-ece6-5b56-9221-1eeb21845877",
+        "65365dce-f33f-49d8-9516-42f75883aa86"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BW"
+        ]
+      },
+      "type": "atomic",
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium 2016, 3.1.2, Kompetenz 11, S. 19",
+      "semanticAtomic": true
+    },
+    {
       "id": "8f7bb79b-f014-4bb6-8dce-7e3f1c92e893",
       "shortKey": "canonical_math_sek1_j6_anchor",
       "title": "Jahrgangsstufe 6",
@@ -2831,7 +2913,7 @@
       "description": "Kanonischer Jahrgangsstufenanker für J6 der gymnasialen Sekundarstufe I in Mathematik. Hier hängen rationale Zahlvorstellungen, Flächen- und Volumenideen sowie Prozent- und Datenroutinen an.",
       "descriptionEn": "Canonical year anchor for year 6 in lower-secondary Gymnasium mathematics. Rational-number concepts, area and volume ideas, and percentage and data routines attach here.",
       "core": true,
-      "weight": 22,
+      "weight": 31,
       "tags": [
         "canonical",
         "phase:SekI",
@@ -2852,7 +2934,9 @@
       "contains": [
         "de39c9fe-5940-4320-aca8-2be85d6ada8f",
         "e07fa2ee-c26f-4032-9140-358a4f6c1457",
-        "32c9955e-c0e7-4085-8a9a-9341376a453b"
+        "32c9955e-c0e7-4085-8a9a-9341376a453b",
+        "ec12d2db-4ea0-5941-9dda-6dfa20595e75",
+        "bfca2b3d-c62c-52e0-bdf6-7d51f004383b"
       ],
       "requires": [],
       "applicability": {
@@ -2886,7 +2970,7 @@
       "description": "Kanonischer Cluster für den J6-Ausbau zu Brüchen, Dezimalbrüchen und rationalen Zahlen. Der Cluster bündelt Grundvorstellungen zu Brüchen, Darstellungswechsel, rationale Arithmetik, Potenzen, Termstrukturen sowie Grundlagen zu vorzeichenbehafteten Zahlen.",
       "descriptionEn": "Canonical cluster for the year-6 expansion into fractions, decimal numbers, and rational numbers. It bundles basic fraction concepts, representation changes, rational arithmetic, powers, expression structures, and basics for signed numbers.",
       "core": true,
-      "weight": 13,
+      "weight": 15,
       "tags": [
         "canonical"
       ],
@@ -2909,9 +2993,11 @@
         "a075ae99-7669-563d-807a-f91b119c020a",
         "ca8b2e67-7d14-5baf-8404-26820fe3d548",
         "c9e01667-24c4-56a2-8cf4-dfb6c360d7b9",
+        "ec9f2ed4-c9e6-5fb3-a073-75b53127e55d",
         "f6a54a49-b6cf-4ab7-a185-aa08bfcb6c97",
         "2f565855-bcd6-4da5-bc80-4b72a2d93d50",
         "199fe2ed-2576-4611-b8de-fd56fb9f78fc",
+        "44cb7404-114e-5b14-b33a-ddee41952d46",
         "4eeab7d5-eeb3-579b-845e-1c52ffe9e89f",
         "ee48e811-4c9c-5080-9836-8403fc9f0810",
         "26f668a0-6425-5466-9cf7-6295dd189005",
@@ -3149,6 +3235,46 @@
       "type": "atomic"
     },
     {
+      "id": "ec9f2ed4-c9e6-5fb3-a073-75b53127e55d",
+      "shortKey": "canonical_math_sek1_j6_density_of_rational_numbers",
+      "title": "Dichtheit der rationalen Zahlen erläutern",
+      "titleEn": "Explain the density of rational numbers",
+      "description": "Die lernende Person kann erläutern, dass zwischen zwei verschiedenen rationalen Zahlen stets beliebig viele weitere rationale Zahlen liegen, und Beispiele dafür angeben.",
+      "descriptionEn": "The learner can explain that between any two distinct rational numbers there are always infinitely many further rational numbers and provide examples.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K1.2",
+          "K3.1"
+        ],
+        "guidingIdeas": [
+          "L1"
+        ],
+        "phase": "J6",
+        "area": "Arithmetic",
+        "topicCode": "CANONICAL.MATH.SEK1.J6.1D.DENSITY"
+      },
+      "contains": [],
+      "requires": [
+        "a075ae99-7669-563d-807a-f91b119c020a",
+        "c9e01667-24c4-56a2-8cf4-dfb6c360d7b9"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BW"
+        ]
+      },
+      "type": "atomic",
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium 2016, 3.1.1, Kompetenz 8, S. 17",
+      "semanticAtomic": true
+    },
+    {
       "id": "f6a54a49-b6cf-4ab7-a185-aa08bfcb6c97",
       "shortKey": "canonical_math_fraction_representations_use_and_switch",
       "title": "Bruchdarstellungen verwenden und wechseln",
@@ -3299,6 +3425,45 @@
         ]
       },
       "type": "atomic"
+    },
+    {
+      "id": "44cb7404-114e-5b14-b33a-ddee41952d46",
+      "shortKey": "canonical_math_sek1_j6_absolute_value_of_number",
+      "title": "Betrag einer Zahl angeben",
+      "titleEn": "State the absolute value of a number",
+      "description": "Die lernende Person kann den Betrag einer Zahl bestimmen und ihn als Abstand der Zahl von 0 auf der Zahlengeraden deuten.",
+      "descriptionEn": "The learner can determine the absolute value of a number and interpret it as the distance of the number from 0 on the number line.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "K3.1",
+          "K4.1"
+        ],
+        "guidingIdeas": [
+          "L1"
+        ],
+        "phase": "J6",
+        "area": "Arithmetic",
+        "topicCode": "CANONICAL.MATH.SEK1.J6.1NI-D"
+      },
+      "contains": [],
+      "requires": [
+        "199fe2ed-2576-4611-b8de-fd56fb9f78fc"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BW"
+        ]
+      },
+      "type": "atomic",
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium 2016, 3.1.1, Kompetenz 7, S. 17",
+      "semanticAtomic": true
     },
     {
       "id": "4eeab7d5-eeb3-579b-845e-1c52ffe9e89f",
@@ -3983,6 +4148,377 @@
         ]
       },
       "type": "atomic"
+    },
+    {
+      "id": "ec12d2db-4ea0-5941-9dda-6dfa20595e75",
+      "shortKey": "canonical_math_sek1_j6_circle_space_transformations",
+      "title": "Kreis-, Körper- und Abbildungsvorstellungen entwickeln",
+      "titleEn": "Develop circle, solid, and transformation concepts",
+      "description": "Kanonischer J6-Cluster für frühe Kreisvorstellungen, elementare Körper, räumliche Darstellungen sowie Achsen- und Punktspiegelungen. Der Cluster nimmt BW-spezifische Grundvorstellungen auf, die im gemeinsamen Sek-I-Graphen noch nicht passgenau atomar repräsentiert waren.",
+      "descriptionEn": "Canonical year-6 cluster for early circle concepts, elementary solids, spatial representations, and axis and point reflections. The cluster captures Baden-Wuerttemberg-specific foundational concepts that were not yet represented as precise atomic goals in the shared lower-secondary graph.",
+      "core": true,
+      "weight": 5,
+      "tags": [
+        "canonical"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K3.1",
+          "K4.1"
+        ],
+        "guidingIdeas": [
+          "L2",
+          "L3"
+        ],
+        "phase": "J6",
+        "area": "Geometry",
+        "topicCode": "CANONICAL.MATH.SEK1.J6.4"
+      },
+      "contains": [
+        "8a691345-3216-522c-a898-d65e8e94db28",
+        "c823b5a2-82e3-5e22-9c27-c0f41cc5eac6",
+        "1335dff9-db1e-5dd6-aa55-3938b6d3b0ec",
+        "59098969-0a35-5a58-94f2-1cfcdf191cf5",
+        "11c88ea2-8502-5008-bec2-3e491c75ace4"
+      ],
+      "requires": [],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BW"
+        ]
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "8a691345-3216-522c-a898-d65e8e94db28",
+      "shortKey": "canonical_math_sek1_j6_explain_pi_as_circle_ratio",
+      "title": "Zahl Pi als Verhältnis am Kreis erklären",
+      "titleEn": "Explain pi as a circle ratio",
+      "description": "Die lernende Person kann die Zahl Pi als Verhältnis von Umfang und Durchmesser eines Kreises erklären und dieses Verhältnis an Kreisbeispielen deuten.",
+      "descriptionEn": "The learner can explain pi as the ratio of a circle circumference to its diameter and interpret this ratio using circle examples.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K1.2",
+          "K3.1"
+        ],
+        "guidingIdeas": [
+          "L2"
+        ],
+        "phase": "J6",
+        "area": "Geometry",
+        "topicCode": "CANONICAL.MATH.SEK1.J6.4A.PI_RATIO"
+      },
+      "contains": [],
+      "requires": [
+        "25593605-5e13-55cc-9a05-8f3d737e15e9",
+        "d6c3fb37-ece6-5b56-9221-1eeb21845877",
+        "65365dce-f33f-49d8-9516-42f75883aa86"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BW"
+        ]
+      },
+      "type": "atomic",
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium 2016, 3.1.2, Kompetenz 10, S. 19",
+      "semanticAtomic": true
+    },
+    {
+      "id": "c823b5a2-82e3-5e22-9c27-c0f41cc5eac6",
+      "shortKey": "canonical_math_sek1_j6_identify_basic_solids",
+      "title": "Elementare Körper erkennen und benennen",
+      "titleEn": "Identify and name elementary solids",
+      "description": "Die lernende Person kann Quader, Würfel, Prisma, Zylinder, Pyramide, Kegel und Kugel in Darstellungen oder Modellen erkennen und fachsprachlich benennen.",
+      "descriptionEn": "The learner can identify cuboids, cubes, prisms, cylinders, pyramids, cones, and spheres in representations or models and name them using appropriate terminology.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "K3.1",
+          "K4.1"
+        ],
+        "guidingIdeas": [
+          "L3"
+        ],
+        "phase": "J6",
+        "area": "Geometry",
+        "topicCode": "CANONICAL.MATH.SEK1.J6.4B.SOLIDS_NAME"
+      },
+      "contains": [],
+      "requires": [
+        "2231c29b-eb4e-51ae-9cb1-eb033bf16099",
+        "65365dce-f33f-49d8-9516-42f75883aa86"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BW"
+        ]
+      },
+      "type": "atomic",
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium 2016, 3.1.3, Kompetenz 7, S. 20",
+      "semanticAtomic": true
+    },
+    {
+      "id": "1335dff9-db1e-5dd6-aa55-3938b6d3b0ec",
+      "shortKey": "canonical_math_sek1_j6_perform_axis_point_reflections",
+      "title": "Achsenspiegelungen und Punktspiegelungen durchführen",
+      "titleEn": "Perform axis and point reflections",
+      "description": "Die lernende Person kann Figuren oder Punkte an einer Geraden beziehungsweise an einem Punkt spiegeln und die Bildpunkte sorgfältig konstruieren.",
+      "descriptionEn": "The learner can reflect figures or points across a line or a point and construct the image points carefully.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K3.1",
+          "K5.1"
+        ],
+        "guidingIdeas": [
+          "L3"
+        ],
+        "phase": "J6",
+        "area": "Geometry",
+        "topicCode": "CANONICAL.MATH.SEK1.J6.4C.REFLECTIONS"
+      },
+      "contains": [],
+      "requires": [
+        "2231c29b-eb4e-51ae-9cb1-eb033bf16099",
+        "2331caf2-ccb2-5492-9fc6-48763b848bae",
+        "65365dce-f33f-49d8-9516-42f75883aa86"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BW"
+        ]
+      },
+      "type": "atomic",
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium 2016, 3.1.3, Kompetenz 13, S. 20",
+      "semanticAtomic": true
+    },
+    {
+      "id": "59098969-0a35-5a58-94f2-1cfcdf191cf5",
+      "shortKey": "canonical_math_sek1_j6_draw_cuboid_cube_representations",
+      "title": "Quader- und Würfeldarstellungen zeichnen",
+      "titleEn": "Draw cuboid and cube representations",
+      "description": "Die lernende Person kann Netze, Schrägbilder sowie Grund- und Aufrisse von Quadern und Würfeln zeichnen.",
+      "descriptionEn": "The learner can draw nets, oblique drawings, and top, front, or side views of cuboids and cubes.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K3.1",
+          "K4.1"
+        ],
+        "guidingIdeas": [
+          "L3"
+        ],
+        "phase": "J6",
+        "area": "Geometry",
+        "topicCode": "CANONICAL.MATH.SEK1.J6.4D.CUBOID_REPRESENT"
+      },
+      "contains": [],
+      "requires": [
+        "c823b5a2-82e3-5e22-9c27-c0f41cc5eac6",
+        "d98849c7-bd0b-50d4-90aa-6293a3adb211",
+        "65365dce-f33f-49d8-9516-42f75883aa86"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BW"
+        ]
+      },
+      "type": "atomic",
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium 2016, 3.1.3, Kompetenz 14, S. 20",
+      "semanticAtomic": true
+    },
+    {
+      "id": "11c88ea2-8502-5008-bec2-3e491c75ace4",
+      "shortKey": "canonical_math_sek1_j6_connect_solid_representations",
+      "title": "Darstellungsformen gerader Körper verknüpfen",
+      "titleEn": "Connect representation forms of right solids",
+      "description": "Die lernende Person kann Zusammenhänge zwischen Netz, Schrägbild und Modell bei geraden Körpern herstellen und fachsprachlich erläutern.",
+      "descriptionEn": "The learner can connect nets, oblique drawings, and models of right solids and explain the relationships using appropriate terminology.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K1.2",
+          "K3.1",
+          "K4.1"
+        ],
+        "guidingIdeas": [
+          "L3"
+        ],
+        "phase": "J6",
+        "area": "Geometry",
+        "topicCode": "CANONICAL.MATH.SEK1.J6.4E.SOLID_REPRESENTATIONS"
+      },
+      "contains": [],
+      "requires": [
+        "c823b5a2-82e3-5e22-9c27-c0f41cc5eac6",
+        "59098969-0a35-5a58-94f2-1cfcdf191cf5",
+        "65365dce-f33f-49d8-9516-42f75883aa86"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BW"
+        ]
+      },
+      "type": "atomic",
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium 2016, 3.1.3, Kompetenz 15, S. 20",
+      "semanticAtomic": true
+    },
+    {
+      "id": "bfca2b3d-c62c-52e0-bdf6-7d51f004383b",
+      "shortKey": "canonical_math_sek1_j6_patterns_dynamic_relationships",
+      "title": "Muster und dynamische Größenbeziehungen beschreiben",
+      "titleEn": "Describe patterns and dynamic quantity relationships",
+      "description": "Kanonischer J6-Brückencluster für frühe funktionale Vorstellungen. Er verbindet Muster und Zahlenfolgen mit anschaulichen Veränderungszusammenhängen zwischen Länge, Umfang, Flächeninhalt und Volumen.",
+      "descriptionEn": "Canonical year-6 bridge cluster for early functional concepts. It connects patterns and number sequences with visual change relationships between length, perimeter, area, and volume.",
+      "core": true,
+      "weight": 2,
+      "tags": [
+        "canonical"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K2.1",
+          "K3.1",
+          "K4.1"
+        ],
+        "guidingIdeas": [
+          "L2",
+          "L4"
+        ],
+        "phase": "J6",
+        "area": "Analysis",
+        "topicCode": "CANONICAL.MATH.SEK1.J6.5"
+      },
+      "contains": [
+        "8cb18560-3a2b-593e-b634-9d768566cba9",
+        "3d49cd27-3a84-50eb-ac35-f0b0bee80df2"
+      ],
+      "requires": [],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BW"
+        ]
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "8cb18560-3a2b-593e-b634-9d768566cba9",
+      "shortKey": "canonical_math_sek1_j6_recognize_describe_continue_patterns",
+      "title": "Muster und Zahlenfolgen erkennen, beschreiben und fortsetzen",
+      "titleEn": "Recognize, describe, and continue patterns and number sequences",
+      "description": "Die lernende Person kann Muster, insbesondere Zahlenfolgen, erkennen, verbal beschreiben und regelgeleitet fortsetzen.",
+      "descriptionEn": "The learner can recognize patterns, especially number sequences, describe them verbally, and continue them according to a rule.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K2.1",
+          "K3.1"
+        ],
+        "guidingIdeas": [
+          "L4"
+        ],
+        "phase": "J6",
+        "area": "Analysis",
+        "topicCode": "CANONICAL.MATH.SEK1.J6.5A.PATTERNS"
+      },
+      "contains": [],
+      "requires": [
+        "9ef6c4fa-b97a-5d7a-86c1-96690f02d916",
+        "65365dce-f33f-49d8-9516-42f75883aa86"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BW"
+        ]
+      },
+      "type": "atomic",
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium 2016, 3.1.4, Kompetenz 2, S. 22",
+      "semanticAtomic": true
+    },
+    {
+      "id": "3d49cd27-3a84-50eb-ac35-f0b0bee80df2",
+      "shortKey": "canonical_math_sek1_j6_explain_dynamic_measurement_relationships",
+      "title": "Dynamische Zusammenhänge zwischen Größen erläutern",
+      "titleEn": "Explain dynamic relationships between quantities",
+      "description": "Die lernende Person kann in einfachen Situationen anschaulich erläutern, wie Änderungen einer Länge mit Änderungen von Umfang, Flächeninhalt oder Volumen zusammenhängen.",
+      "descriptionEn": "The learner can visually explain in simple situations how changes in a length relate to changes in perimeter, area, or volume.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K1.2",
+          "K3.1",
+          "K4.1"
+        ],
+        "guidingIdeas": [
+          "L2",
+          "L4"
+        ],
+        "phase": "J6",
+        "area": "Analysis",
+        "topicCode": "CANONICAL.MATH.SEK1.J6.5B.DYNAMIC_MEASURES"
+      },
+      "contains": [],
+      "requires": [
+        "d6c3fb37-ece6-5b56-9221-1eeb21845877",
+        "87c55be5-06a9-41e2-a0d4-c60f7c8b8078",
+        "1f89d69e-ead1-424b-8221-fae37fdea2bc",
+        "65365dce-f33f-49d8-9516-42f75883aa86"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BW"
+        ]
+      },
+      "type": "atomic",
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium 2016, 3.1.4, Kompetenz 6, S. 22",
+      "semanticAtomic": true
     },
     {
       "id": "32c9955e-c0e7-4085-8a9a-9341376a453b",
@@ -4756,7 +5292,7 @@
       "description": "Cluster für einen späteren Sek-I-Unterkorridor zu Variablen und Termen. Der Korridor bündelt das Einführen von Variablen in Sachsituationen mit dem Aufstellen, Deuten und Umformen von Termen als algebraische Grundidee für den Anschluss an Gleichungen und Funktionen.",
       "descriptionEn": "Cluster for a later lower-secondary sub-corridor on variables and expressions. The corridor bundles introducing variables in real-world situations with setting up, interpreting, and transforming expressions as algebraic groundwork for equations and functions.",
       "core": true,
-      "weight": 5,
+      "weight": 6,
       "tags": [
         "canonical",
         "phase:SekI",
@@ -4782,7 +5318,8 @@
         "c9112f89-ffaf-40f3-af1f-86a04b5ad4ee",
         "2c4830e6-a8d5-48d0-9202-3b7d18a419c2",
         "0afe00fe-8cbc-4ed4-8b50-84494067e362",
-        "fd860da9-73ba-47cd-a1a8-452424915a80"
+        "fd860da9-73ba-47cd-a1a8-452424915a80",
+        "a6469c01-6ca3-5eb2-a82c-94f3d0560b32"
       ],
       "requires": [],
       "competencyRefs": [
@@ -5650,7 +6187,7 @@
       "description": "Cluster für den späteren Sek-I-Zahlkorridor von ganzen und rationalen Zahlen über Prozent- und Zinsrechnung bis zu Potenzen, Quadratwurzeln und reellen Zahlen. Der Korridor verbindet Zahlbereichserweiterungen und Zahlendarstellungen mit Prozentrechnung in Sachzusammenhängen, Potenzschreibweisen sowie ersten Wurzel- und Reellzahlvorstellungen.",
       "descriptionEn": "Cluster for the later lower-secondary number corridor from signed and rational numbers through percent calculations and simple interest to powers, square roots, and real numbers. The corridor connects number-set extensions and representations with percentage calculations in contextual problems, power notation, and first ideas of radicals and real numbers.",
       "core": true,
-      "weight": 7,
+      "weight": 6,
       "tags": [
         "canonical",
         "phase:SekI",
@@ -5776,7 +6313,7 @@
       "description": "Cluster für den späteren Sek-I-Unterkorridor zu Prozentrechnung und einfacher Zinsrechnung. Der Korridor verbindet Grundaufgaben der Prozentrechnung mit ersten expliziten Zinsanwendungen in Sachzusammenhängen.",
       "descriptionEn": "Cluster for the later lower-secondary sub-corridor on percentage calculations and simple interest. The corridor connects basic percentage problems with first explicit interest applications in contextual settings.",
       "core": true,
-      "weight": 3,
+      "weight": 4,
       "tags": [
         "canonical",
         "phase:SekI",
@@ -5800,7 +6337,8 @@
       "contains": [
         "71d43fcc-d787-4874-ae4a-2336364e9c0a",
         "bd8fd6d5-7155-45a5-96f0-008a4e9acb3a",
-        "804d7443-9976-5d81-a47d-1601f42f7e0e"
+        "804d7443-9976-5d81-a47d-1601f42f7e0e",
+        "5452659b-f262-5735-a5f9-5834cb079ab1"
       ],
       "requires": [],
       "competencyRefs": [
@@ -6068,7 +6606,7 @@
       "description": "Cluster für einen späteren Sek-I-Unterkorridor zu Symmetrie, geometrischen Abbildungen, Ähnlichkeit und Strahlensatz. Der Korridor verbindet Symmetrie- und Winkelargumente mit Bildvorstellungen, Verhältnis- und Größentreue sowie konstruktiven Anwendungen von Ähnlichkeit.",
       "descriptionEn": "Cluster for a later lower-secondary sub-corridor on symmetry, geometric transformations, similarity, and the intercept theorem. The corridor connects symmetry and angle reasoning with image relations, ratio and size preservation, and constructive uses of similarity.",
       "core": true,
-      "weight": 4,
+      "weight": 5,
       "tags": [
         "canonical",
         "phase:SekI",
@@ -6093,7 +6631,8 @@
         "8da730f1-8947-498d-9e78-7fb20b00a994",
         "6833664b-bd8b-44a2-95bc-c0b78ff89e31",
         "2041f4ec-620d-4a20-9922-6ebf16f8f8fa",
-        "ffd1ae26-c461-4439-9b18-d835c8f38e1a"
+        "ffd1ae26-c461-4439-9b18-d835c8f38e1a",
+        "a4246bef-647c-582f-aaa5-8ccd3120e7ef"
       ],
       "requires": [],
       "competencyRefs": [
@@ -6125,7 +6664,7 @@
       "description": "Cluster für den späteren Sek-I-Korridor zur Kreisgeometrie. Der Korridor verbindet Lage- und Winkelbeziehungen am Kreis mit dem Satz des Thales und einfachen geometrischen Begründungen.",
       "descriptionEn": "Cluster for the later lower-secondary corridor on circle geometry. The corridor connects positional and angle relations on circles with Thales' theorem and simple geometric justifications.",
       "core": true,
-      "weight": 2,
+      "weight": 4,
       "tags": [
         "canonical",
         "phase:SekI",
@@ -6148,7 +6687,9 @@
       },
       "contains": [
         "21342eb9-9cfd-4fbf-b28e-60aa2b48f702",
-        "36728db8-da44-4add-97b8-0fdd7cfd9c41"
+        "36728db8-da44-4add-97b8-0fdd7cfd9c41",
+        "cf8c5677-f3c5-5563-8f0a-68443fbab7bf",
+        "797c4b05-96c4-59a7-85b2-f2690e22918f"
       ],
       "requires": [],
       "competencyRefs": [
@@ -6416,7 +6957,7 @@
       "description": "Kanonischer Cluster für den späten Sek-I-Korridor zu trigonometrischen Funktionen in J10. Der Korridor bündelt periodische Graphdeutung, Einheitskreis- und Bogenmassvorstellungen sowie einfache Parameterdeutungen, ohne den exponentiellen Zweig desselben Jahrgangskorridors mitzunehmen.",
       "descriptionEn": "Canonical cluster for the later lower-secondary corridor on trigonometric functions in year 10. The corridor bundles periodic graph interpretation, unit-circle and radian ideas, and simple parameter interpretation without including the exponential branch of the same year-level corridor.",
       "core": true,
-      "weight": 1,
+      "weight": 2,
       "tags": [
         "canonical",
         "phase:SekI",
@@ -6461,7 +7002,8 @@
       "contains": [
         "46bdcc16-418f-417a-89cf-033d7ae6c8cc",
         "82597dfb-0ec6-4a77-abaf-e1d6bdd12041",
-        "895a60ea-606a-4e77-a5af-ecc13d68e8fb"
+        "895a60ea-606a-4e77-a5af-ecc13d68e8fb",
+        "429f4f7e-7f43-5de1-9ddf-522e05343da7"
       ],
       "requires": [],
       "competencyRefs": [
@@ -6651,7 +7193,7 @@
       "description": "Kanonischer Cluster für den späten Sek-I-Korridor zu Exponentialfunktionen in J10. Der Korridor bündelt Wachstumskontexte, Parameterdeutung und Vorstellungen zu Verdoppelungszeit, Halbwertszeit und asymptotischem Verhalten, ohne den separaten Gleichungs- und Logarithmenzweig desselben Jahrgangskorridors mitzunehmen.",
       "descriptionEn": "Canonical cluster for the later lower-secondary corridor on exponential functions in year 10. The corridor bundles growth contexts, parameter interpretation, and ideas of doubling time, half-life, and asymptotic behaviour without including the separate equations and logarithms branch of the same year-level corridor.",
       "core": true,
-      "weight": 1,
+      "weight": 2,
       "tags": [
         "canonical",
         "phase:SekI",
@@ -6695,7 +7237,8 @@
       "contains": [
         "31207307-0cf9-4a56-bf14-90196dc2b3d4",
         "c74d0c7e-44e2-46ab-8f95-b8dc45fcfae7",
-        "aa334054-d145-4ece-a796-f5b8159ef76f"
+        "aa334054-d145-4ece-a796-f5b8159ef76f",
+        "367a59ce-a388-5c93-b6f9-a3b0c6c3b45e"
       ],
       "requires": [],
       "competencyRefs": [
@@ -7118,7 +7661,7 @@
       "description": "Cluster für den sichtbaren Sek-I-Korridor zu Variablen, Termen und äquivalenten Umformungen. Der Korridor verbindet Variablenbedeutung, Termaufbau, Termdeutung und systematische Umformungen als algebraische Basissprache vor dem späteren Gleichungsarbeiten.",
       "descriptionEn": "Cluster for the visible lower-secondary corridor on variables, expressions, and equivalent transformations. The corridor connects variable meaning, expression building, interpretation, and systematic transformations as the algebraic base language before later equation work.",
       "core": true,
-      "weight": 6,
+      "weight": 7,
       "tags": [
         "canonical",
         "phase:SekI",
@@ -7230,7 +7773,7 @@
       "description": "Cluster für den sichtbaren Sek-I-Korridor zu linearen Gleichungen, Lösbarkeit und algebraischem Modellieren. Der Korridor bündelt Gleichungslösen, Verhältnisgleichungen, Ungleichungen, erste Modellierungsübersetzungen und lineare Gleichungssysteme; ein separates A5 bleibt bewusst noch offen.",
       "descriptionEn": "Cluster for the visible lower-secondary corridor on linear equations, solvability, and algebraic modelling. The corridor bundles equation solving, ratio equations, inequalities, first modelling translations, and systems of linear equations; a separate A5 deliberately remains open.",
       "core": true,
-      "weight": 6,
+      "weight": 7,
       "tags": [
         "canonical",
         "phase:SekI",
@@ -7258,7 +7801,8 @@
         "e6eb42c7-454f-49bf-b598-64d2935d2735",
         "fa0b6b69-ce54-4711-90e6-26f27249cd71",
         "546bf0b3-6921-416b-a2ef-8fd37d429dc7",
-        "e42c208d-9555-43cc-92f5-5bb4c0688726"
+        "e42c208d-9555-43cc-92f5-5bb4c0688726",
+        "39fa30f2-e1ae-5c36-be56-793b77906abb"
       ],
       "requires": [],
       "competencyRefs": [
@@ -7359,7 +7903,7 @@
       "description": "Cluster für Größenvorstellungen, proportionale und umgekehrt proportionale Zusammenhänge sowie trigonometrische Anwendungen aus der gymnasialen Sekundarstufe I. Der Korridor verbindet Einheiten und Maßstab, Prozentrechnung, proportionale Zuordnungen, Ähnlichkeit, Dreieckstrigonometrie und den Übergang zu Sinus- und Kosinusfunktionen und ist zusätzlich an die kanonischen Jahrgangsanker J5 bis J10 angebunden.",
       "descriptionEn": "Cluster for measurement concepts, proportional and inverse-proportional relations, and trigonometric applications from lower-secondary Gymnasium mathematics. The corridor connects units and scale, percentage calculations, proportional mappings, similarity, triangle trigonometry, and the transition to sine and cosine functions and is additionally attached to the canonical year anchors J5 to J10.",
       "core": true,
-      "weight": 19,
+      "weight": 20,
       "tags": [
         "canonical",
         "phase:SekI",
@@ -7391,7 +7935,8 @@
         "fa72cf74-a31e-402e-90d7-422c118f4a5b",
         "ffd1ae26-c461-4439-9b18-d835c8f38e1a",
         "219ce079-6bfd-4827-8b66-5dd199e44686",
-        "5d17ebb4-4e27-4f9c-8d0b-3520f34b2e11"
+        "5d17ebb4-4e27-4f9c-8d0b-3520f34b2e11",
+        "a4246bef-647c-582f-aaa5-8ccd3120e7ef"
       ],
       "requires": [],
       "competencyRefs": [
@@ -8053,7 +8598,7 @@
       "description": "Kanonischer Jahrgangsstufenanker für J10 der gymnasialen Sekundarstufe I in Mathematik. Hier hängen exponentielle, stochastische, trigonometrische, polynomiale, differentialrechnerische, vektorbezogene und raumgeometrische Anschlussziele an.",
       "descriptionEn": "Canonical year anchor for year 10 in lower-secondary Gymnasium mathematics. Exponential, stochastic, trigonometric, polynomial, differential-calculus-related, vector-based, and spatial-geometry continuation goals attach here.",
       "core": true,
-      "weight": 30,
+      "weight": 33,
       "tags": [
         "canonical",
         "phase:SekI",
@@ -8096,7 +8641,10 @@
         "50612a57-7b9d-45fd-bc08-e95556444760",
         "6248bbd7-c7e8-4f91-b3dc-de885cf5abce",
         "978d6880-006e-4595-b260-461d9d2c4717",
-        "0fd96c54-c629-45aa-a640-e2718890ddf9"
+        "0fd96c54-c629-45aa-a640-e2718890ddf9",
+        "e68f9d5b-9cba-53d6-aedd-22f5f57d612e",
+        "367a59ce-a388-5c93-b6f9-a3b0c6c3b45e",
+        "429f4f7e-7f43-5de1-9ddf-522e05343da7"
       ],
       "requires": [],
       "applicability": {
@@ -9374,7 +9922,7 @@
       "description": "Kanonischer Cluster für den späten Sek-I-Folgekorridor zur Differentialrechnung in J10. Der Cluster bündelt den Übergang von mittleren zu momentanen Änderungsraten, formale Ableitungsregeln, erste Untersuchungen mit der ersten Ableitung, Tangenten- und Wendestellendeutungen sowie einfache Ableitungen trigonometrischer Funktionen.",
       "descriptionEn": "Canonical cluster for the late lower-secondary differential-calculus follow-on corridor in year 10. It bundles the transition from average to instantaneous rates of change, formal differentiation rules, first investigations using the first derivative, interpretations of tangents and inflection points, and simple derivatives of trigonometric functions.",
       "core": true,
-      "weight": 7,
+      "weight": 8,
       "tags": [
         "canonical",
         "modality:visual",
@@ -9421,7 +9969,8 @@
         "b43a1e45-f05c-4d78-8453-f6fa677dc24c",
         "06bdbecb-53e0-5ac3-992f-d6fd20555b59",
         "ad66009f-55fb-563f-ace0-dbfeae7c76c3",
-        "f9fdb733-5838-4983-888a-05624eabbe17"
+        "f9fdb733-5838-4983-888a-05624eabbe17",
+        "f76d00dc-6b31-59cd-b01a-3610eadc9908"
       ],
       "requires": [],
       "type": "cluster"
@@ -9962,7 +10511,7 @@
       "description": "Kanonischer Jahrgangsstufenanker für J8 der gymnasialen Sekundarstufe I in Mathematik. Er bindet hier lineare, gebrochen-rationale, stochastische, körpergeometrische und gleichungssystembezogene Anschlussziele an.",
       "descriptionEn": "Canonical year anchor for year 8 in lower-secondary Gymnasium mathematics. It attaches linear, elementary rational-function, stochastic, solid-geometry, and system-of-equations bridge goals here.",
       "core": true,
-      "weight": 15,
+      "weight": 18,
       "tags": [
         "canonical",
         "phase:SekI",
@@ -9992,7 +10541,10 @@
         "e42c208d-9555-43cc-92f5-5bb4c0688726",
         "5ab17678-bba7-4e6b-9aff-5a909e24d40e",
         "415bd48b-8a76-4d4f-bfdd-d085573e7ac3",
-        "f65ab452-1884-57b0-9be3-c7d9e4944891"
+        "f65ab452-1884-57b0-9be3-c7d9e4944891",
+        "5452659b-f262-5735-a5f9-5834cb079ab1",
+        "cf8c5677-f3c5-5563-8f0a-68443fbab7bf",
+        "797c4b05-96c4-59a7-85b2-f2690e22918f"
       ],
       "requires": [],
       "applicability": {
@@ -10022,7 +10574,7 @@
       "description": "Kanonischer Jahrgangsstufenanker für J9 der gymnasialen Sekundarstufe I in Mathematik. Er bindet hier quadratische, stochastische, ähnlichkeitstheoretische, potenzbezogene, trigonometrische und koordinatengeometrische Anschlussziele an.",
       "descriptionEn": "Canonical year anchor for year 9 in lower-secondary Gymnasium mathematics. It attaches quadratic, stochastic, similarity-based, power-related, trigonometric, and coordinate-geometry bridge goals here.",
       "core": true,
-      "weight": 36,
+      "weight": 37,
       "tags": [
         "canonical",
         "phase:SekI",
@@ -10049,7 +10601,8 @@
         "4d78bbcc-89b8-47f0-aa45-516199e4da5d",
         "219ce079-6bfd-4827-8b66-5dd199e44686",
         "5a9702f4-7e4d-457d-b98c-f0bafcd1e386",
-        "78bcc25b-e48c-471b-9236-6c3b23d48a8b"
+        "78bcc25b-e48c-471b-9236-6c3b23d48a8b",
+        "a4246bef-647c-582f-aaa5-8ccd3120e7ef"
       ],
       "requires": [],
       "applicability": {
@@ -10455,7 +11008,7 @@
       "description": "Die lernende Person kann Median, Quartile und Spannweite aus Datensätzen bestimmen, Boxplots erstellen und Datenverteilungen mithilfe von Kenngrößen und Boxplots verständlich vergleichen und interpretieren.",
       "descriptionEn": "The learner can determine the median, quartiles and range from data sets, create box plots and compare and interpret data distributions clearly using indicators and box plots.",
       "core": true,
-      "weight": 3,
+      "weight": 4,
       "tags": [
         "canonical"
       ],
@@ -10476,7 +11029,8 @@
       "contains": [
         "2242c379-ddbb-4f03-8aed-13f49a4674e8",
         "3e0c9bce-2528-4cf1-9b1f-c79146b0a5f2",
-        "b819973b-4cad-48a4-9f7e-f74b5e75ea6c"
+        "b819973b-4cad-48a4-9f7e-f74b5e75ea6c",
+        "bc1a4cba-a8a8-5e59-9f3f-1e8fe7918004"
       ],
       "requires": [],
       "applicability": {
@@ -12798,7 +13352,7 @@
       "description": "Kanonischer Cluster für den J9-Wurzelkorridor. Der Cluster trennt Grundvorstellungen zu Quadratwurzeln, Irrationalität, iterative Approximation sowie algebraische Umformungen von Wurzeltermen.",
       "descriptionEn": "Canonical cluster for the year-9 square-root corridor. It separates basic square-root concepts, irrationality, iterative approximation, and algebraic transformations of radical expressions.",
       "core": true,
-      "weight": 9,
+      "weight": 10,
       "tags": [
         "canonical"
       ],
@@ -12825,7 +13379,8 @@
         "7fad6a57-cda1-5dee-a55e-877be64ba992",
         "68505a32-3b1d-57b2-a495-00b4097eb50d",
         "62e0a4e3-d1d3-46a2-982d-6b99dca6d3fb",
-        "e131c594-c45e-5718-9f33-7ae39ddc82ad"
+        "e131c594-c45e-5718-9f33-7ae39ddc82ad",
+        "47d8d47c-7c59-5394-9098-11d9ad3723f1"
       ],
       "requires": [],
       "applicability": {
@@ -13530,7 +14085,7 @@
       "description": "Kanonischer Cluster für Potenzgesetze sowie Potenz-/Wurzelfunktionsbilder im späten Sek-I-Korridor. Der Cluster trennt zwischen den Rechenregeln zu Potenzen, der breiteren graphischen Untersuchung von Potenz- und Wurzelfunktionen und dem schmaleren NRW-Zug zu Potenzfunktionen mit ganzzahligen Exponenten.",
       "descriptionEn": "Canonical cluster for exponent rules as well as power/root-function representations in the late lower-secondary corridor. The cluster distinguishes between calculation rules for powers, the broader graphical investigation of power and root functions, and the narrower NRW lane on power functions with integer exponents.",
       "core": true,
-      "weight": 4,
+      "weight": 5,
       "tags": [
         "canonical",
         "modality:visual",
@@ -13580,7 +14135,8 @@
         "6596405a-9728-41df-9163-53670ec2a937",
         "66077296-a8f8-4645-938b-7c3424cb2f14",
         "eb28b403-f9fc-57ea-a793-b4555596fdd7",
-        "30c013ac-5164-4c3c-8bc1-9a10b2f49533"
+        "30c013ac-5164-4c3c-8bc1-9a10b2f49533",
+        "88abc886-cce8-55cf-b86c-eb4ba45a92d7"
       ],
       "requires": [],
       "type": "cluster"
@@ -14755,7 +15311,7 @@
       "description": "Kanonischer Cluster für den Grundlagenstrang zu quadratischen Funktionen in J9 an der expliziten Grenze zum quadratischen Gleichungslösen. Er bündelt Scheitelpunktarbeit, Graphdeutung und Darstellungswechsel sichtbar mit einem separaten Gleichungszweig, statt alles in einem unscharfen Teilkorridor zu verschmelzen.",
       "descriptionEn": "Canonical cluster for the foundational year-9 strand on quadratic functions at the explicit boundary to solving quadratic equations. It visibly combines vertex work, graph interpretation, and switching representations with a separate equation branch instead of collapsing everything into one blurry subcorridor.",
       "core": true,
-      "weight": 6,
+      "weight": 7,
       "tags": [
         "canonical",
         "modality:visual",
@@ -14805,7 +15361,8 @@
       "contains": [
         "c23705d2-57fc-4260-80d8-2d340203a173",
         "f9443306-709d-49dc-9747-853f37cfe4fa",
-        "9023226b-fc17-412b-807c-2bb45cd551d5"
+        "9023226b-fc17-412b-807c-2bb45cd551d5",
+        "39fa30f2-e1ae-5c36-be56-793b77906abb"
       ],
       "requires": [],
       "type": "cluster"
@@ -20713,8 +21270,10 @@
         "03a87896-088d-4b21-a37b-d0604d784540",
         "9ef6c4fa-b97a-5d7a-86c1-96690f02d916",
         "d825f7ce-e19b-594a-8181-eff199c21d93",
+        "e82d8d3a-9012-5482-afe6-ab0d727a49bb",
         "d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe",
-        "3fde4db5-9e92-5f3a-98e1-d386a42b9e01"
+        "3fde4db5-9e92-5f3a-98e1-d386a42b9e01",
+        "0bd7dc9b-c7f9-52e6-b374-a019edfd821c"
       ],
       "phase": "J5",
       "type": "atomic",
@@ -20789,8 +21348,10 @@
         "6b0075bb-f71c-59f6-ab98-fb894568cc26",
         "a075ae99-7669-563d-807a-f91b119c020a",
         "c9e01667-24c4-56a2-8cf4-dfb6c360d7b9",
+        "ec9f2ed4-c9e6-5fb3-a073-75b53127e55d",
         "2f565855-bcd6-4da5-bc80-4b72a2d93d50",
         "199fe2ed-2576-4611-b8de-fd56fb9f78fc",
+        "44cb7404-114e-5b14-b33a-ddee41952d46",
         "4eeab7d5-eeb3-579b-845e-1c52ffe9e89f",
         "ee48e811-4c9c-5080-9836-8403fc9f0810",
         "26f668a0-6425-5466-9cf7-6295dd189005",
@@ -20803,7 +21364,14 @@
         "0c2ddfcd-1399-41ad-aaed-4f061812602a",
         "05012547-7263-5bfa-9e7c-df970745a011",
         "b41cb496-dad5-596e-9c23-cdcbdab3ec2e",
-        "f6a54a49-b6cf-4ab7-a185-aa08bfcb6c97"
+        "f6a54a49-b6cf-4ab7-a185-aa08bfcb6c97",
+        "8a691345-3216-522c-a898-d65e8e94db28",
+        "c823b5a2-82e3-5e22-9c27-c0f41cc5eac6",
+        "1335dff9-db1e-5dd6-aa55-3938b6d3b0ec",
+        "59098969-0a35-5a58-94f2-1cfcdf191cf5",
+        "11c88ea2-8502-5008-bec2-3e491c75ace4",
+        "8cb18560-3a2b-593e-b634-9d768566cba9",
+        "3d49cd27-3a84-50eb-ac35-f0b0bee80df2"
       ],
       "phase": "J6",
       "type": "atomic",
@@ -20884,7 +21452,9 @@
         "b819973b-4cad-48a4-9f7e-f74b5e75ea6c",
         "0afe00fe-8cbc-4ed4-8b50-84494067e362",
         "d668c22d-caeb-5e91-8980-721c931a2bcf",
-        "804d7443-9976-5d81-a47d-1601f42f7e0e"
+        "804d7443-9976-5d81-a47d-1601f42f7e0e",
+        "a6469c01-6ca3-5eb2-a82c-94f3d0560b32",
+        "bc1a4cba-a8a8-5e59-9f3f-1e8fe7918004"
       ],
       "phase": "J7",
       "type": "atomic",
@@ -20976,7 +21546,10 @@
         "15512e77-31e3-5222-8a6b-84791618e5ce",
         "76478e47-5ff9-5de1-b601-5e6e436ad855",
         "415bd48b-8a76-4d4f-bfdd-d085573e7ac3",
-        "f65ab452-1884-57b0-9be3-c7d9e4944891"
+        "f65ab452-1884-57b0-9be3-c7d9e4944891",
+        "5452659b-f262-5735-a5f9-5834cb079ab1",
+        "cf8c5677-f3c5-5563-8f0a-68443fbab7bf",
+        "797c4b05-96c4-59a7-85b2-f2690e22918f"
       ],
       "phase": "J8",
       "type": "atomic",
@@ -21073,7 +21646,11 @@
         "e131c594-c45e-5718-9f33-7ae39ddc82ad",
         "eb28b403-f9fc-57ea-a793-b4555596fdd7",
         "1bc118c3-1f05-5f2a-b125-418017180d75",
-        "d1352ce0-9502-5039-9af6-318fe385b6fd"
+        "d1352ce0-9502-5039-9af6-318fe385b6fd",
+        "47d8d47c-7c59-5394-9098-11d9ad3723f1",
+        "39fa30f2-e1ae-5c36-be56-793b77906abb",
+        "a4246bef-647c-582f-aaa5-8ccd3120e7ef",
+        "88abc886-cce8-55cf-b86c-eb4ba45a92d7"
       ],
       "phase": "J9",
       "type": "atomic",
@@ -21170,7 +21747,13 @@
         "283ec44e-747c-55e3-9a61-4a4cc70ebfab",
         "06bdbecb-53e0-5ac3-992f-d6fd20555b59",
         "ad66009f-55fb-563f-ace0-dbfeae7c76c3",
-        "7b860649-373e-5523-9843-ec96b3537f1f"
+        "7b860649-373e-5523-9843-ec96b3537f1f",
+        "14d0e697-3fb0-5074-a08c-7e01ca9bbda8",
+        "d0db87c4-36f5-5ac6-8428-da96d31b253a",
+        "2bd88d66-5daf-53bb-aa02-4c010963679d",
+        "367a59ce-a388-5c93-b6f9-a3b0c6c3b45e",
+        "429f4f7e-7f43-5de1-9ddf-522e05343da7",
+        "f76d00dc-6b31-59cd-b01a-3610eadc9908"
       ],
       "phase": "J10",
       "type": "atomic",
@@ -43674,6 +44257,660 @@
         ]
       },
       "type": "atomic",
+      "semanticAtomic": true
+    },
+    {
+      "id": "5452659b-f262-5735-a5f9-5834cb079ab1",
+      "shortKey": "canonical_math_sek1_j8_spreadsheet_interest_parameters_estimate",
+      "title": "Zinssatz, Tilgung/Sparrate und Laufzeit tabellarisch näherungsweise bestimmen",
+      "titleEn": "Estimate interest rate, payment or savings rate, and duration using a spreadsheet",
+      "description": "Die lernende Person kann mit einer Tabellenkalkulation Zinssatz, Tilgung oder Sparrate und Laufzeit in einfachen Finanzsituationen näherungsweise bestimmen und das Ergebnis im Kontext prüfen.",
+      "descriptionEn": "The learner can use a spreadsheet to estimate interest rate, repayment or savings rate, and duration in simple financial situations and check the result in context.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical",
+        "tool:spreadsheet"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K2.1",
+          "K4.1",
+          "K5.2"
+        ],
+        "guidingIdeas": [
+          "L1",
+          "L5"
+        ],
+        "phase": "J8",
+        "area": "Arithmetic",
+        "topicCode": "CANONICAL.MATH.SEK1.J8.INTEREST.SPREADSHEET_PARAMETERS"
+      },
+      "contains": [],
+      "requires": [
+        "bd8fd6d5-7155-45a5-96f0-008a4e9acb3a",
+        "804d7443-9976-5d81-a47d-1601f42f7e0e",
+        "71d43fcc-d787-4874-ae4a-2336364e9c0a"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BW"
+        ]
+      },
+      "type": "atomic",
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium 2016, 3.2.1, Kompetenz 4, S. 24.",
+      "semanticAtomic": true
+    },
+    {
+      "id": "a6469c01-6ca3-5eb2-a82c-94f3d0560b32",
+      "shortKey": "canonical_math_sek1_j7_evaluate_variable_terms_by_substitution",
+      "title": "Termwerte durch Einsetzen berechnen",
+      "titleEn": "Evaluate algebraic expressions by substitution",
+      "description": "Die lernende Person kann in Terme mit Variablen konkrete Werte einsetzen, die Termwerte korrekt berechnen und die Rechnung nachvollziehbar notieren.",
+      "descriptionEn": "The learner can substitute concrete values into algebraic expressions, calculate the resulting values correctly, and record the calculation transparently.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "K4.1",
+          "K5.1"
+        ],
+        "guidingIdeas": [
+          "L1"
+        ],
+        "phase": "J7",
+        "area": "Algebra",
+        "topicCode": "CANONICAL.MATH.SEK1.J7.TERMS.SUBSTITUTION"
+      },
+      "contains": [],
+      "requires": [
+        "c9112f89-ffaf-40f3-af1f-86a04b5ad4ee",
+        "0a6dab2e-1bbb-5587-adb0-456d3991c327"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BW"
+        ]
+      },
+      "type": "atomic",
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium 2016, 3.2.1, Kompetenz 6, S. 24.",
+      "semanticAtomic": true
+    },
+    {
+      "id": "47d8d47c-7c59-5394-9098-11d9ad3723f1",
+      "shortKey": "canonical_math_sek1_j9_cube_roots_by_definition",
+      "title": "Kubikwurzeln über die Wurzeldefinition bestimmen",
+      "titleEn": "Determine cube roots using the root definition",
+      "description": "Die lernende Person kann die Wurzeldefinition auf Kubikwurzeln anwenden und einfache Kubikwurzeln exakt oder näherungsweise bestimmen.",
+      "descriptionEn": "The learner can apply the root definition to cube roots and determine simple cube roots exactly or approximately.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "K1.1",
+          "K5.1"
+        ],
+        "guidingIdeas": [
+          "L1"
+        ],
+        "phase": "J9",
+        "area": "Algebra",
+        "topicCode": "CANONICAL.MATH.SEK1.J9.ROOTS.CUBE_ROOTS"
+      },
+      "contains": [],
+      "requires": [
+        "f8704a7b-e93d-4e32-b0f9-1b171545fe28",
+        "6596405a-9728-41df-9163-53670ec2a937"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BW"
+        ]
+      },
+      "type": "atomic",
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium 2016, 3.2.1, Kompetenz 15, S. 24.",
+      "semanticAtomic": true
+    },
+    {
+      "id": "39fa30f2-e1ae-5c36-be56-793b77906abb",
+      "shortKey": "canonical_math_sek1_j9_zero_product_equations_solve",
+      "title": "Gleichungen mit dem Satz vom Nullprodukt lösen",
+      "titleEn": "Solve equations using the zero-product property",
+      "description": "Die lernende Person kann faktorisierte Gleichungen mit dem Satz vom Nullprodukt lösen und die Lösungen durch Einsetzen prüfen.",
+      "descriptionEn": "The learner can solve factorized equations using the zero-product property and check the solutions by substitution.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K1.1",
+          "K4.1",
+          "K5.1"
+        ],
+        "guidingIdeas": [
+          "L1"
+        ],
+        "phase": "J9",
+        "area": "Algebra",
+        "topicCode": "CANONICAL.MATH.SEK1.J9.EQUATIONS.ZERO_PRODUCT"
+      },
+      "contains": [],
+      "requires": [
+        "325771e1-602d-4bca-a199-a8f39a2d3dee",
+        "959cc50b-6c81-4fa1-800f-4804a707b1ee",
+        "e322310f-f33a-485d-bc23-2412a6b8fa12"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BW"
+        ]
+      },
+      "type": "atomic",
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium 2016, 3.2.1, Kompetenz 22, S. 24.",
+      "semanticAtomic": true
+    },
+    {
+      "id": "cf8c5677-f3c5-5563-8f0a-68443fbab7bf",
+      "shortKey": "canonical_math_sek1_j8_loci_constructions_solve_problems",
+      "title": "Geometrische Probleme mit Ortslinien konstruieren",
+      "titleEn": "Solve geometric problems using loci constructions",
+      "description": "Die lernende Person kann geometrische Probleme mithilfe von Ortslinien wie Kreislinie, Mittelsenkrechte, Winkelhalbierende, Mittelparallele und Thaleskreis zeichnerisch lösen, optional mit dynamischer Geometriesoftware, und die Lösung beschreiben.",
+      "descriptionEn": "The learner can solve geometric problems by drawing loci such as circles, perpendicular bisectors, angle bisectors, midlines, and Thales circles, optionally using dynamic geometry software, and describe the solution.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical",
+        "tool:dynamic-geometry"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K2.1",
+          "K3.1",
+          "K4.1",
+          "K5.2"
+        ],
+        "guidingIdeas": [
+          "L2"
+        ],
+        "phase": "J8",
+        "area": "Geometry",
+        "topicCode": "CANONICAL.MATH.SEK1.J8.GEOMETRY.LOCI_CONSTRUCTIONS"
+      },
+      "contains": [],
+      "requires": [
+        "c31d3a7a-778b-5ae3-9aa4-7b5674047f83",
+        "cba4cad7-926d-5035-a7dd-d450afccccb3",
+        "36728db8-da44-4add-97b8-0fdd7cfd9c41"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BW"
+        ]
+      },
+      "type": "atomic",
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium 2016, 3.2.3, Kompetenz 8, S. 26.",
+      "semanticAtomic": true
+    },
+    {
+      "id": "797c4b05-96c4-59a7-85b2-f2690e22918f",
+      "shortKey": "canonical_math_sek1_j8_construct_circle_tangents",
+      "title": "Tangenten an Kreise konstruieren",
+      "titleEn": "Construct tangents to circles",
+      "description": "Die lernende Person kann Tangenten an Kreise in Berührpunkten und von Punkten außerhalb des Kreises konstruieren und die Konstruktionsidee geometrisch begründen.",
+      "descriptionEn": "The learner can construct tangents to circles at points on the circle and from points outside the circle and justify the construction idea geometrically.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K1.1",
+          "K2.1",
+          "K4.1"
+        ],
+        "guidingIdeas": [
+          "L2"
+        ],
+        "phase": "J8",
+        "area": "Geometry",
+        "topicCode": "CANONICAL.MATH.SEK1.J8.GEOMETRY.CIRCLE_TANGENTS"
+      },
+      "contains": [],
+      "requires": [
+        "c31d3a7a-778b-5ae3-9aa4-7b5674047f83",
+        "21342eb9-9cfd-4fbf-b28e-60aa2b48f702",
+        "36728db8-da44-4add-97b8-0fdd7cfd9c41"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BW"
+        ]
+      },
+      "type": "atomic",
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium 2016, 3.2.3, Kompetenz 10, S. 26.",
+      "semanticAtomic": true
+    },
+    {
+      "id": "a4246bef-647c-582f-aaa5-8ccd3120e7ef",
+      "shortKey": "canonical_math_sek1_j9_second_intercept_theorem_nonconverse_counterexample",
+      "title": "Nichtumkehrbarkeit des zweiten Strahlensatzes mit Gegenbeispiel begründen",
+      "titleEn": "Justify the non-converse of the second intercept theorem with a counterexample",
+      "description": "Die lernende Person kann erklären, dass die Umkehrung des zweiten Strahlensatzes im Allgemeinen nicht gilt, und dies an einem geeigneten Gegenbeispiel begründen.",
+      "descriptionEn": "The learner can explain that the converse of the second intercept theorem does not generally hold and justify this with a suitable counterexample.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [
+          "K1.2",
+          "K3.2"
+        ],
+        "guidingIdeas": [
+          "L2"
+        ],
+        "phase": "J9",
+        "area": "Geometry",
+        "topicCode": "CANONICAL.MATH.SEK1.J9.GEOMETRY.INTERCEPT_THEOREM.NONCONVERSE"
+      },
+      "contains": [],
+      "requires": [
+        "ffd1ae26-c461-4439-9b18-d835c8f38e1a"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BW"
+        ]
+      },
+      "type": "atomic",
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium 2016, 3.2.3, Kompetenz 13, S. 26.",
+      "semanticAtomic": true
+    },
+    {
+      "id": "e68f9d5b-9cba-53d6-aedd-22f5f57d612e",
+      "shortKey": "canonical_math_sek1_j10_power_root_equation_methods",
+      "title": "Potenz-, Wurzel- und Substitutionsgleichungen lösen",
+      "titleEn": "Solve power, radical, and substitution-based equations",
+      "description": "Kanonischer J10-Cluster für späte Sek-I-Gleichungsverfahren zu Wurzelgleichungen, Potenzgleichungen und Substitutionen.",
+      "descriptionEn": "Canonical year-10 cluster for late lower-secondary equation methods involving radical equations, power equations, and substitutions.",
+      "core": true,
+      "weight": 3,
+      "tags": [
+        "canonical"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K1.1",
+          "K4.1",
+          "K5.1"
+        ],
+        "guidingIdeas": [
+          "L1"
+        ],
+        "phase": "J10",
+        "area": "Algebra",
+        "topicCode": "CANONICAL.MATH.SEK1.J10.EQUATION_METHODS"
+      },
+      "contains": [
+        "14d0e697-3fb0-5074-a08c-7e01ca9bbda8",
+        "d0db87c4-36f5-5ac6-8428-da96d31b253a",
+        "2bd88d66-5daf-53bb-aa02-4c010963679d"
+      ],
+      "requires": [],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BW"
+        ]
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "bc1a4cba-a8a8-5e59-9f3f-1e8fe7918004",
+      "shortKey": "canonical_math_sek1_j7_extract_statistical_data_from_secondary_sources",
+      "title": "Statistische Daten aus Sekundärquellen entnehmen",
+      "titleEn": "Extract statistical data from secondary sources",
+      "description": "Die lernende Person kann zu einer statistischen Fragestellung passende Daten aus Sekundärquellen entnehmen, die Quelle benennen und die Daten für eine Auswertung strukturieren.",
+      "descriptionEn": "The learner can extract suitable data from secondary sources for a statistical question, name the source, and structure the data for analysis.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K2.1",
+          "K4.1",
+          "K5.1"
+        ],
+        "guidingIdeas": [
+          "L5"
+        ],
+        "phase": "J7",
+        "area": "Data",
+        "topicCode": "CANONICAL.MATH.SEK1.J7.DATA.SECONDARY_SOURCES"
+      },
+      "contains": [],
+      "requires": [
+        "91571d3f-3651-4477-ba21-320fc4077453"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BW"
+        ]
+      },
+      "type": "atomic",
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium 2016, 3.2.5, Kompetenz 1, S. 29.",
+      "semanticAtomic": true
+    },
+    {
+      "id": "88abc886-cce8-55cf-b86c-eb4ba45a92d7",
+      "shortKey": "canonical_math_sek1_j9_rational_exponents_as_roots_and_fractions",
+      "title": "Potenzen mit rationalen Exponenten als Wurzel- und Bruchausdrücke deuten",
+      "titleEn": "Interpret powers with rational exponents as roots and fractional expressions",
+      "description": "Die lernende Person kann Potenzen mit rationalen Exponenten als Wurzel- oder Bruchausdrücke deuten und sicher zwischen diesen Darstellungsformen wechseln.",
+      "descriptionEn": "The learner can interpret powers with rational exponents as radical or fractional expressions and switch reliably between these forms.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K4.1",
+          "K5.1"
+        ],
+        "guidingIdeas": [
+          "L1"
+        ],
+        "phase": "J9",
+        "area": "Algebra",
+        "topicCode": "CANONICAL.MATH.SEK1.J9.POWERS.RATIONAL_EXPONENTS"
+      },
+      "contains": [],
+      "requires": [
+        "6596405a-9728-41df-9163-53670ec2a937",
+        "f8704a7b-e93d-4e32-b0f9-1b171545fe28",
+        "68505a32-3b1d-57b2-a495-00b4097eb50d"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BW"
+        ]
+      },
+      "type": "atomic",
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium 2016, 3.3.1, Kompetenz 2, S. 31.",
+      "semanticAtomic": true
+    },
+    {
+      "id": "14d0e697-3fb0-5074-a08c-7e01ca9bbda8",
+      "shortKey": "canonical_math_sek1_j10_solve_radical_equations_one_squaring",
+      "title": "Wurzelgleichungen durch einmaliges Quadrieren lösen",
+      "titleEn": "Solve radical equations by one squaring step",
+      "description": "Die lernende Person kann Wurzelgleichungen lösen, bei denen einmaliges Quadrieren zielführend ist, und mögliche Scheinlösungen durch Einsetzen prüfen.",
+      "descriptionEn": "The learner can solve radical equations where one squaring step is suitable and check possible extraneous solutions by substitution.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K4.1",
+          "K5.1"
+        ],
+        "guidingIdeas": [
+          "L1"
+        ],
+        "phase": "J10",
+        "area": "Algebra",
+        "topicCode": "CANONICAL.MATH.SEK1.J10.EQUATIONS.RADICAL_ONE_SQUARING"
+      },
+      "contains": [],
+      "requires": [
+        "f8704a7b-e93d-4e32-b0f9-1b171545fe28",
+        "39fa30f2-e1ae-5c36-be56-793b77906abb"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BW"
+        ]
+      },
+      "type": "atomic",
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium 2016, 3.3.1, Kompetenz 4, S. 31.",
+      "semanticAtomic": true
+    },
+    {
+      "id": "d0db87c4-36f5-5ac6-8428-da96d31b253a",
+      "shortKey": "canonical_math_sek1_j10_solve_power_equations",
+      "title": "Potenzgleichungen lösen",
+      "titleEn": "Solve power equations",
+      "description": "Die lernende Person kann einfache Potenzgleichungen mit geeigneten Umkehroperationen, Wurzel- oder Potenzschreibweisen lösen und die Lösungen prüfen.",
+      "descriptionEn": "The learner can solve simple power equations using suitable inverse operations, radical or power notation, and check the solutions.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K4.1",
+          "K5.1"
+        ],
+        "guidingIdeas": [
+          "L1"
+        ],
+        "phase": "J10",
+        "area": "Algebra",
+        "topicCode": "CANONICAL.MATH.SEK1.J10.EQUATIONS.POWER_EQUATIONS"
+      },
+      "contains": [],
+      "requires": [
+        "88abc886-cce8-55cf-b86c-eb4ba45a92d7",
+        "39fa30f2-e1ae-5c36-be56-793b77906abb"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BW"
+        ]
+      },
+      "type": "atomic",
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium 2016, 3.3.1, Kompetenz 5, S. 31.",
+      "semanticAtomic": true
+    },
+    {
+      "id": "2bd88d66-5daf-53bb-aa02-4c010963679d",
+      "shortKey": "canonical_math_sek1_j10_use_substitution_to_solve_equations",
+      "title": "Substitution zum Lösen von Gleichungen anwenden",
+      "titleEn": "Use substitution to solve equations",
+      "description": "Die lernende Person kann Gleichungen durch eine geeignete Substitution auf eine bekannte Gleichungsform zurückführen, die Rücksubstitution durchführen und die Lösungen prüfen.",
+      "descriptionEn": "The learner can use a suitable substitution to reduce equations to a known equation form, back-substitute, and check the solutions.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K2.1",
+          "K4.1",
+          "K5.1"
+        ],
+        "guidingIdeas": [
+          "L1"
+        ],
+        "phase": "J10",
+        "area": "Algebra",
+        "topicCode": "CANONICAL.MATH.SEK1.J10.EQUATIONS.SUBSTITUTION"
+      },
+      "contains": [],
+      "requires": [
+        "9023226b-fc17-412b-807c-2bb45cd551d5",
+        "d0db87c4-36f5-5ac6-8428-da96d31b253a"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BW"
+        ]
+      },
+      "type": "atomic",
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium 2016, 3.3.1, Kompetenz 8, S. 31.",
+      "semanticAtomic": true
+    },
+    {
+      "id": "367a59ce-a388-5c93-b6f9-a3b0c6c3b45e",
+      "shortKey": "canonical_math_sek1_j10_explain_compound_interest_terms",
+      "title": "Begriffe des Zinseszinses erläutern",
+      "titleEn": "Explain compound-interest terminology",
+      "description": "Die lernende Person kann Zinssatz, Anfangskapital, Endkapital, Laufzeit und Zinseszins in Wachstums- und Finanzsituationen fachsprachlich erläutern.",
+      "descriptionEn": "The learner can explain interest rate, initial capital, final capital, duration, and compound interest using correct terminology in growth and financial contexts.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "K4.1"
+        ],
+        "guidingIdeas": [
+          "L1",
+          "L5"
+        ],
+        "phase": "J10",
+        "area": "Arithmetic",
+        "topicCode": "CANONICAL.MATH.SEK1.J10.INTEREST.COMPOUND_TERMS"
+      },
+      "contains": [],
+      "requires": [
+        "5452659b-f262-5735-a5f9-5834cb079ab1",
+        "42e19186-6769-41ac-a7bf-ab39bdb50661"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BW"
+        ]
+      },
+      "type": "atomic",
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium 2016, 3.3.1, Kompetenz 10, S. 31.",
+      "semanticAtomic": true
+    },
+    {
+      "id": "429f4f7e-7f43-5de1-9ddf-522e05343da7",
+      "shortKey": "canonical_math_sek1_j10_derive_basic_trigonometric_identities",
+      "title": "Grundlegende trigonometrische Beziehungen herleiten",
+      "titleEn": "Derive basic trigonometric identities",
+      "description": "Die lernende Person kann die Beziehungen sin²(α)+cos²(α)=1, sin(90°−α)=cos(α) und tan(α)=sin(α)/cos(α) anschaulich oder rechnerisch herleiten.",
+      "descriptionEn": "The learner can derive the identities sin²(α)+cos²(α)=1, sin(90°−α)=cos(α), and tan(α)=sin(α)/cos(α) visually or algebraically.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K1.1",
+          "K3.1",
+          "K4.1"
+        ],
+        "guidingIdeas": [
+          "L2"
+        ],
+        "phase": "J10",
+        "area": "Geometry",
+        "topicCode": "CANONICAL.MATH.SEK1.J10.TRIGONOMETRY.IDENTITIES"
+      },
+      "contains": [],
+      "requires": [
+        "c8818eae-0c4d-4fa1-9085-04a9c95a668b",
+        "5d17ebb4-4e27-4f9c-8d0b-3520f34b2e11"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BW"
+        ]
+      },
+      "type": "atomic",
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium 2016, 3.3.3, Kompetenz 7, S. 33.",
+      "semanticAtomic": true
+    },
+    {
+      "id": "f76d00dc-6b31-59cd-b01a-3610eadc9908",
+      "shortKey": "canonical_math_sek1_j10_monotonicity_theorem_nonconverse",
+      "title": "Monotoniesatz erläutern und Nichtumkehrbarkeit begründen",
+      "titleEn": "Explain the monotonicity theorem and justify its non-converse",
+      "description": "Die lernende Person kann den Monotoniesatz für Ableitungen erläutern, ihn zur Monotonieuntersuchung nutzen und begründen, warum die Umkehrung im Allgemeinen nicht gilt.",
+      "descriptionEn": "The learner can explain the monotonicity theorem for derivatives, use it to investigate monotonicity, and justify why its converse does not generally hold.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [
+          "K1.2",
+          "K3.2"
+        ],
+        "guidingIdeas": [
+          "L4"
+        ],
+        "phase": "J10",
+        "area": "Analysis",
+        "topicCode": "CANONICAL.MATH.SEK1.J10.CALCULUS.MONOTONICITY_THEOREM"
+      },
+      "contains": [],
+      "requires": [
+        "9f2fc0d1-e1e7-4051-ba70-87ba1dd8dd1c",
+        "1ce8af38-082a-477b-af48-b924c92761bf"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BW"
+        ]
+      },
+      "type": "atomic",
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium 2016, 3.3.4, Kompetenz 21, S. 35.",
       "semanticAtomic": true
     }
   ]

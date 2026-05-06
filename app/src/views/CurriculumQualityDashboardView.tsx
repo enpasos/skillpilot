@@ -121,11 +121,18 @@ interface MappingPipelineSourceStatus {
   title: string
   jurisdiction: string
   path: string
+  sourceKind?: 'source-extraction' | 'legacy-snapshot' | 'missing-extraction'
   currentStep: string
   completedSteps: number
   totalSteps: number
   sourceGoals: number
   passages: number
+  mappedSourceGoals?: number
+  unmappedSourceGoals?: number
+  extraMappedGoals?: number
+  exactMappings?: number
+  partialMappings?: number
+  otherMappings?: number
   steps: MappingPipelineStep[]
 }
 
@@ -199,7 +206,7 @@ const COPY = {
     partialSource: 'partiell',
     visibleAssigned: 'sichtbar',
     sourceReverse: 'Lehrplan -> Sicht',
-    unmappedSource: 'Lehrplan ungemappt',
+    unmappedSource: 'inhaltlich offen',
     sourceOriginal: 'Originalziele',
     sourceIngestionComplete: 'Originalziele vollständig erfasst',
     sourceOriginalRegistered: 'Originalziele registriert',
@@ -215,10 +222,26 @@ const COPY = {
     deViewAtomic: 'DE-Sicht atomar',
     jurisdictionCoverage: 'Bundesland-Abdeckung',
     mappingPipeline: 'Bearbeitungspipeline',
-    pipelineProgress: 'Quellen vollständig',
+    pipelineProgress: 'Passage-Extraktion abgeschlossen',
+    sourceExtractionProgress: 'Passage-Extraktion',
+    legacySnapshotProgress: 'Snapshot-Diagnosen',
+    missingExtractionProgress: 'keine Extraction',
     currentPipelineStep: 'Nächster offener Schritt',
     passages: 'Passagen',
     sourceGoals: 'Source-Ziele',
+    sourceKindExtraction: 'Passage-Extraktion',
+    sourceKindLegacySnapshot: 'Snapshot-Diagnose',
+    sourceKindMissing: 'keine Extraction',
+    noPassageEvidence: 'nicht pipelinefähig: keine Passage-Extraktion',
+    mappingInventory: 'inhaltlich abgedeckt',
+    exactMappings: 'passgenau',
+    partialMappings: 'über Teil-/Sammelziel',
+    otherMappings: 'sonstige',
+    qualitySeals: 'Qualitätssiegel',
+    inventoryCompleteSeal: 'Lehrplan vollständig abgedeckt',
+    passageBackedSeal: 'Passagenbelegt',
+    exactMappingSeal: 'nur passgenaue Zuordnung',
+    nonExactMappingsNote: 'Alle Source-Ziele sind inhaltlich abgedeckt; partial beschreibt nur die Zuordnungsform, nicht eine offene Lücke.',
     complete: 'abgeschlossen',
     incomplete: 'offen',
     blocked: 'blockiert',
@@ -263,7 +286,7 @@ const COPY = {
     partialSource: 'partial',
     visibleAssigned: 'visible',
     sourceReverse: 'source -> view',
-    unmappedSource: 'source unmapped',
+    unmappedSource: 'content open',
     sourceOriginal: 'source originals',
     sourceIngestionComplete: 'source originals fully captured',
     sourceOriginalRegistered: 'source originals registered',
@@ -279,10 +302,26 @@ const COPY = {
     deViewAtomic: 'DE view atomic',
     jurisdictionCoverage: 'Jurisdiction coverage',
     mappingPipeline: 'Processing pipeline',
-    pipelineProgress: 'Complete sources',
+    pipelineProgress: 'Passage extraction complete',
+    sourceExtractionProgress: 'Passage extraction',
+    legacySnapshotProgress: 'Snapshot diagnostics',
+    missingExtractionProgress: 'no extraction',
     currentPipelineStep: 'Next open step',
     passages: 'Passages',
     sourceGoals: 'Source goals',
+    sourceKindExtraction: 'Passage extraction',
+    sourceKindLegacySnapshot: 'Snapshot diagnostic',
+    sourceKindMissing: 'no extraction',
+    noPassageEvidence: 'not pipeline-capable: no passage extraction',
+    mappingInventory: 'content covered',
+    exactMappings: 'direct fit',
+    partialMappings: 'via partial/aggregate goal',
+    otherMappings: 'other',
+    qualitySeals: 'quality seals',
+    inventoryCompleteSeal: 'source fully covered',
+    passageBackedSeal: 'passage-backed',
+    exactMappingSeal: 'direct-fit mapping only',
+    nonExactMappingsNote: 'All source goals are content-covered; partial describes mapping shape, not an open gap.',
     complete: 'complete',
     incomplete: 'open',
     blocked: 'blocked',
@@ -341,6 +380,33 @@ const pipelineStatusClass: Record<MappingPipelineStepState, string> = {
   complete: 'border-emerald-200 bg-emerald-50 text-emerald-700 dark:border-emerald-900/60 dark:bg-emerald-950/30 dark:text-emerald-300',
   incomplete: 'border-amber-200 bg-amber-50 text-amber-700 dark:border-amber-900/60 dark:bg-amber-950/30 dark:text-amber-300',
   blocked: 'border-red-200 bg-red-50 text-red-700 dark:border-red-900/60 dark:bg-red-950/30 dark:text-red-300',
+}
+
+const pipelineSourceKindCounts = (pipeline: MappingPipelineStatus) => {
+  const counts = {
+    sourceExtractionComplete: 0,
+    sourceExtractionTotal: 0,
+    legacySnapshotComplete: 0,
+    legacySnapshotTotal: 0,
+    missingExtractionComplete: 0,
+    missingExtractionTotal: 0,
+  }
+
+  pipeline.sources.forEach((source) => {
+    const isComplete = source.completedSteps === source.totalSteps
+    if (source.sourceKind === 'source-extraction') {
+      counts.sourceExtractionTotal += 1
+      if (isComplete) counts.sourceExtractionComplete += 1
+    } else if (source.sourceKind === 'legacy-snapshot') {
+      counts.legacySnapshotTotal += 1
+      if (isComplete) counts.legacySnapshotComplete += 1
+    } else {
+      counts.missingExtractionTotal += 1
+      if (isComplete) counts.missingExtractionComplete += 1
+    }
+  })
+
+  return counts
 }
 
 function collectRules(curriculum: CurriculumStatus): RuleResult[] {
@@ -430,6 +496,9 @@ export const CurriculumQualityDashboardView: React.FC = () => {
       ?? payload.status.curricula[0]
       ?? null
   }, [filteredCurricula, payload, selectedId])
+  const selectedPipelineCounts = selectedCurriculum?.mappingPipeline
+    ? pipelineSourceKindCounts(selectedCurriculum.mappingPipeline)
+    : null
 
   const summary = payload?.status.summary
   const pipelineStatusLabel = (status: MappingPipelineStepState) => ({
@@ -584,7 +653,10 @@ export const CurriculumQualityDashboardView: React.FC = () => {
                       <td className="py-3 pr-3 text-right tabular-nums">{curriculum.atomicGoals}</td>
                       <td className="py-3 pr-3 text-right tabular-nums">
                         {curriculum.mappingPipeline
-                          ? `${curriculum.mappingPipeline.completeSources}/${curriculum.mappingPipeline.totalSources}`
+                          ? (() => {
+                            const counts = pipelineSourceKindCounts(curriculum.mappingPipeline)
+                            return `${counts.sourceExtractionComplete}/${counts.sourceExtractionTotal}`
+                          })()
                           : '—'}
                       </td>
                       <td className="py-3 pr-3 text-right tabular-nums">
@@ -638,7 +710,9 @@ export const CurriculumQualityDashboardView: React.FC = () => {
                       <div className="rounded-xl border border-border-color p-3">
                         <div className="text-xs text-text-secondary">{copy.pipelineProgress}</div>
                         <div className="mt-1 text-lg font-semibold">
-                          {selectedCurriculum.mappingPipeline.completeSources}/{selectedCurriculum.mappingPipeline.totalSources}
+                          {selectedPipelineCounts
+                            ? `${selectedPipelineCounts.sourceExtractionComplete}/${selectedPipelineCounts.sourceExtractionTotal}`
+                            : '—'}
                         </div>
                       </div>
                       <div className="rounded-xl border border-border-color p-3">
@@ -649,30 +723,122 @@ export const CurriculumQualityDashboardView: React.FC = () => {
                     <div className="space-y-2">
                       {selectedCurriculum.mappingPipeline.sources.map((source) => (
                         <div key={source.sourceLandscapeId} className="rounded-xl border border-border-color p-3">
-                          <div className="flex items-start justify-between gap-2">
-                            <div className="min-w-0">
-                              <div className="font-semibold">{source.jurisdiction || '—'} · {source.title}</div>
-                              <div className="mt-1 truncate font-mono text-[11px] text-text-secondary">{source.path}</div>
-                            </div>
-                            <span className="shrink-0 rounded-full border border-border-color px-2 py-0.5 text-xs font-semibold tabular-nums">
-                              {source.completedSteps}/{source.totalSteps}
-                            </span>
-                          </div>
-                          <div className="mt-2 flex flex-wrap gap-1.5">
-                            {source.steps.map((step) => (
-                              <span
-                                key={`${source.sourceLandscapeId}-${step.id}`}
-                                className={`rounded-full border px-2 py-0.5 text-[11px] font-semibold ${pipelineStatusClass[step.status]}`}
-                                title={`${step.label}: ${pipelineStatusLabel(step.status)}`}
-                              >
-                                {step.id} {pipelineStatusLabel(step.status)}
-                              </span>
-                            ))}
-                          </div>
-                          <div className="mt-2 flex flex-wrap gap-2 text-xs text-text-secondary">
-                            <span>{source.passages} {copy.passages}</span>
-                            <span>{source.sourceGoals} {copy.sourceGoals}</span>
-                          </div>
+                          {(() => {
+                            const mappedSourceGoals = source.mappedSourceGoals ?? source.sourceGoals - (source.unmappedSourceGoals ?? 0)
+                            const hasMappingMetrics = source.mappedSourceGoals !== undefined
+                              || source.exactMappings !== undefined
+                              || source.partialMappings !== undefined
+                              || source.unmappedSourceGoals !== undefined
+                            const hasPartialMappings = (source.partialMappings ?? 0) > 0
+                            const isSourceExtraction = source.sourceKind === 'source-extraction'
+                            const inventoryComplete = isSourceExtraction
+                              && source.sourceGoals > 0
+                              && mappedSourceGoals === source.sourceGoals
+                              && (source.unmappedSourceGoals ?? 0) === 0
+                              && (source.extraMappedGoals ?? 0) === 0
+                            const exactOnly = inventoryComplete
+                              && mappedSourceGoals > 0
+                              && (source.exactMappings ?? 0) === mappedSourceGoals
+                              && (source.partialMappings ?? 0) === 0
+                              && (source.otherMappings ?? 0) === 0
+                            const passageBacked = isSourceExtraction
+                              && source.passages > 0
+                              && source.completedSteps === source.totalSteps
+                            const exactShare = mappedSourceGoals > 0
+                              ? Math.round(((source.exactMappings ?? 0) / mappedSourceGoals) * 100)
+                              : 0
+                            const partialShare = mappedSourceGoals > 0
+                              ? Math.round(((source.partialMappings ?? 0) / mappedSourceGoals) * 100)
+                              : 0
+                            const seals = [
+                              inventoryComplete ? copy.inventoryCompleteSeal : null,
+                              passageBacked ? copy.passageBackedSeal : null,
+                              exactOnly ? copy.exactMappingSeal : null,
+                            ].filter(Boolean) as string[]
+
+                            return (
+                              <>
+                                <div className="flex items-start justify-between gap-2">
+                                  <div className="min-w-0">
+                                    <div className="font-semibold">{source.jurisdiction || '—'} · {source.title}</div>
+                                    <div className="mt-1 truncate font-mono text-[11px] text-text-secondary">{source.path}</div>
+                                  </div>
+                                  <span className="shrink-0 rounded-full border border-border-color px-2 py-0.5 text-xs font-semibold tabular-nums">
+                                    {source.completedSteps}/{source.totalSteps}
+                                  </span>
+                                </div>
+                                <div className="mt-2 flex flex-wrap gap-1.5">
+                                  <span className="rounded-full border border-border-color bg-gray-100 px-2 py-0.5 text-[11px] font-semibold text-text-secondary dark:bg-slate-800">
+                                    {source.sourceKind === 'legacy-snapshot'
+                                      ? copy.sourceKindLegacySnapshot
+                                      : source.sourceKind === 'missing-extraction'
+                                        ? copy.sourceKindMissing
+                                        : copy.sourceKindExtraction}
+                                  </span>
+                                  {source.steps.map((step) => (
+                                    <span
+                                      key={`${source.sourceLandscapeId}-${step.id}`}
+                                      className={`rounded-full border px-2 py-0.5 text-[11px] font-semibold ${pipelineStatusClass[step.status]}`}
+                                      title={`${step.label}: ${pipelineStatusLabel(step.status)}`}
+                                    >
+                                      {step.id} · {step.label} {pipelineStatusLabel(step.status)}
+                                    </span>
+                                  ))}
+                                </div>
+                                {seals.length > 0 ? (
+                                  <div className="mt-2">
+                                    <div className="text-[11px] font-semibold uppercase tracking-wide text-text-secondary">{copy.qualitySeals}</div>
+                                    <div className="mt-1 flex flex-wrap gap-1.5">
+                                      {seals.map((seal) => (
+                                        <span
+                                          key={`${source.sourceLandscapeId}-${seal}`}
+                                          className="rounded-full border border-emerald-200 bg-emerald-50 px-2 py-0.5 text-[11px] font-semibold text-emerald-700 dark:border-emerald-900/60 dark:bg-emerald-950/30 dark:text-emerald-300"
+                                        >
+                                          {seal}
+                                        </span>
+                                      ))}
+                                    </div>
+                                  </div>
+                                ) : null}
+                                {hasMappingMetrics ? (
+                                  <div className="mt-2 grid grid-cols-2 gap-1.5 text-xs sm:grid-cols-4">
+                                    <div className="rounded-lg border border-border-color px-2 py-1">
+                                      <div className="text-text-secondary">{copy.mappingInventory}</div>
+                                      <div className="font-semibold tabular-nums">{mappedSourceGoals}/{source.sourceGoals}</div>
+                                    </div>
+                                    <div className="rounded-lg border border-emerald-200 bg-emerald-50 px-2 py-1 text-emerald-700 dark:border-emerald-900/60 dark:bg-emerald-950/30 dark:text-emerald-300">
+                                      <div>{copy.exactMappings}</div>
+                                      <div className="font-semibold tabular-nums">{source.exactMappings ?? 0} ({exactShare}%)</div>
+                                    </div>
+                                    <div className={`rounded-lg border px-2 py-1 ${
+                                      hasPartialMappings
+                                        ? 'border-sky-200 bg-sky-50 text-sky-700 dark:border-sky-900/60 dark:bg-sky-950/30 dark:text-sky-300'
+                                        : 'border-border-color text-text-secondary'
+                                    }`}>
+                                      <div>{copy.partialMappings}</div>
+                                      <div className="font-semibold tabular-nums">{source.partialMappings ?? 0} ({partialShare}%)</div>
+                                    </div>
+                                    <div className="rounded-lg border border-border-color px-2 py-1">
+                                      <div className="text-text-secondary">{copy.unmappedSource}</div>
+                                      <div className="font-semibold tabular-nums">{source.unmappedSourceGoals ?? 0}</div>
+                                    </div>
+                                  </div>
+                                ) : null}
+                                {inventoryComplete && hasPartialMappings ? (
+                                  <div className="mt-2 rounded-lg border border-sky-200 bg-sky-50 px-2 py-1 text-xs text-sky-700 dark:border-sky-900/60 dark:bg-sky-950/30 dark:text-sky-300">
+                                    {copy.nonExactMappingsNote}
+                                  </div>
+                                ) : null}
+                                <div className="mt-2 flex flex-wrap gap-2 text-xs text-text-secondary">
+                                  <span>{source.passages} {copy.passages}</span>
+                                  <span>{source.sourceGoals} {copy.sourceGoals}</span>
+                                  {source.sourceKind === 'legacy-snapshot' ? <span>{copy.noPassageEvidence}</span> : null}
+                                  {(source.otherMappings ?? 0) > 0 ? <span>{source.otherMappings} {copy.otherMappings}</span> : null}
+                                  {(source.extraMappedGoals ?? 0) > 0 ? <span>{source.extraMappedGoals} extra</span> : null}
+                                </div>
+                              </>
+                            )
+                          })()}
                         </div>
                       ))}
                     </div>

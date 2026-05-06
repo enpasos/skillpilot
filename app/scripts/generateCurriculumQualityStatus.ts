@@ -120,16 +120,71 @@ interface MappingPipelineStep {
   checks: MappingPipelineCheck[]
 }
 
+function normalizeSourceExtractionPipelineSteps(
+  steps: MappingPipelineStep[],
+  coverage: {
+    totalSourceGoals: number
+    mappedSourceGoals: number
+    unmappedSourceGoals: number
+    explicitNeedsCanonicalGoal: number
+    unreviewedSourceGoals: number
+  },
+): MappingPipelineStep[] {
+  const {
+    totalSourceGoals,
+    mappedSourceGoals,
+    unmappedSourceGoals,
+    explicitNeedsCanonicalGoal,
+    unreviewedSourceGoals,
+  } = coverage
+
+  return steps.map((step) => {
+    if (step.id !== 'MAPPING-3') return step
+
+    const fullyCovered = unmappedSourceGoals <= 0
+
+    const checks = step.checks
+      .filter((check) => check.id !== 'm3-all-source-goals-exactly-mapped')
+      .map((check) => {
+        if (check.id === 'm3-all-source-goals-covered-by-canonical') {
+          return {
+            ...check,
+            label: 'Alle Source-Ziele sind durch SkillPilot-Ziele abgedeckt',
+            passed: fullyCovered,
+            details: `Abgedeckt: ${mappedSourceGoals}/${totalSourceGoals}; verbleibend: ${explicitNeedsCanonicalGoal} explizite Canonical-Gaps, ${unreviewedSourceGoals} unreviewed.`,
+          }
+        }
+
+        return check
+      })
+
+    return {
+      ...step,
+      status: fullyCovered
+        ? 'complete'
+        : step.status === 'blocked' ? step.status : 'incomplete',
+      checks,
+    }
+  })
+}
+
 interface MappingPipelineSourceStatus {
   sourceLandscapeId: string
   title: string
   jurisdiction: string
   path: string
+  sourceKind: 'source-extraction' | 'legacy-snapshot' | 'missing-extraction'
   currentStep: string
   completedSteps: number
   totalSteps: number
   sourceGoals: number
   passages: number
+  mappedSourceGoals?: number
+  unmappedSourceGoals?: number
+  extraMappedGoals?: number
+  exactMappings?: number
+  partialMappings?: number
+  otherMappings?: number
   steps: MappingPipelineStep[]
 }
 
@@ -278,6 +333,7 @@ interface SourceLandscapeRegistryEntry {
 interface SourceExtractionDocument {
   sourceLandscapeId?: string
   extractionId?: string
+  title?: string
   subject?: string
   jurisdiction?: string
   stage?: string
@@ -1733,6 +1789,15 @@ function readSourceExtractionPipelinesByLandscapeId(): Map<string, MappingPipeli
   const result = new Map<string, MappingPipelineSourceStatus>()
   const registryEntriesById = readSourceLandscapeRegistryEntriesById()
   const files = collectFiles(sourceExtractionRoot, (fileName) => /\.source-extraction\.json$/i.test(fileName))
+  const mappingFilesBySourceExtractionPath = new Map<string, Array<GoalMappingFile & { file: string }>>()
+
+  readAllGoalMappingFiles().forEach((mappingFile) => {
+    if (typeof mappingFile.sourceExtractionPath !== 'string' || !mappingFile.sourceExtractionPath.trim()) return
+    const sourceExtractionPath = mappingFile.sourceExtractionPath.replace(/\\/g, '/')
+    const mappingFiles = mappingFilesBySourceExtractionPath.get(sourceExtractionPath) ?? []
+    mappingFiles.push(mappingFile)
+    mappingFilesBySourceExtractionPath.set(sourceExtractionPath, mappingFiles)
+  })
 
   files.forEach((file) => {
     try {
@@ -1747,18 +1812,84 @@ function readSourceExtractionPipelinesByLandscapeId(): Map<string, MappingPipeli
       if (steps.length === 0) return
 
       const registryEntry = registryEntriesById.get(extraction.sourceLandscapeId)
-      const completedSteps = steps.filter((step) => step.status === 'complete').length
+      const sourceGoals = Array.isArray(extraction.sourceGoals) ? extraction.sourceGoals : []
+      const sourceGoalIds = new Set(
+        sourceGoals
+          .map((sourceGoal) => sourceGoal.id)
+          .filter((sourceGoalId): sourceGoalId is string => typeof sourceGoalId === 'string' && sourceGoalId.trim().length > 0),
+      )
+      const repoPath = toRepoPath(file)
+      const mappingFilesForExtraction = mappingFilesBySourceExtractionPath.get(repoPath) ?? []
+      const mappingEntries = mappingFilesForExtraction
+        .flatMap((mappingFile) => mappingFile.mappings ?? [])
+        .filter((mapping): mapping is GoalMappingEntry & { legacyGoalId: string } =>
+          typeof mapping.legacyGoalId === 'string' && mapping.legacyGoalId.trim().length > 0)
+      const decisionEntries = mappingFilesForExtraction
+        .flatMap((mappingFile) => mappingFile.decisions ?? [])
+        .filter((decision): decision is SourceMappingReviewDecision & { sourceGoalId: string; decision: string } =>
+          typeof decision.sourceGoalId === 'string'
+          && decision.sourceGoalId.trim().length > 0
+          && typeof decision.decision === 'string'
+          && decision.decision.trim().length > 0)
+      const mappedSourceGoalIds = new Set(mappingEntries.map((mapping) => mapping.legacyGoalId))
+      const validMappedSourceGoalIds = new Set(Array.from(mappedSourceGoalIds).filter((sourceGoalId) => sourceGoalIds.has(sourceGoalId)))
+      const extraMappedGoalIds = Array.from(mappedSourceGoalIds).filter((sourceGoalId) => !sourceGoalIds.has(sourceGoalId))
+      const matchTypesBySourceGoalId = new Map<string, Set<string>>()
+      mappingEntries.forEach((mapping) => {
+        if (!sourceGoalIds.has(mapping.legacyGoalId)) return
+        const matchTypes = matchTypesBySourceGoalId.get(mapping.legacyGoalId) ?? new Set<string>()
+        if (typeof mapping.matchType === 'string' && mapping.matchType.trim().length > 0) {
+          matchTypes.add(mapping.matchType)
+        }
+        matchTypesBySourceGoalId.set(mapping.legacyGoalId, matchTypes)
+      })
+      const exactMappings = Array.from(validMappedSourceGoalIds).filter((sourceGoalId) =>
+        matchTypesBySourceGoalId.get(sourceGoalId)?.has('exact')).length
+      const partialMappings = Array.from(validMappedSourceGoalIds).filter((sourceGoalId) => {
+        const matchTypes = matchTypesBySourceGoalId.get(sourceGoalId)
+        return !matchTypes?.has('exact') && matchTypes?.has('partial')
+      }).length
+      const otherMappings = Math.max(0, validMappedSourceGoalIds.size - exactMappings - partialMappings)
+      const unmappedSourceGoals = Math.max(0, sourceGoalIds.size - validMappedSourceGoalIds.size)
+      const reviewedSourceGoalIds = new Set(
+        decisionEntries
+          .map((decision) => decision.sourceGoalId)
+          .filter((sourceGoalId) => sourceGoalIds.has(sourceGoalId)),
+      )
+      const explicitNeedsCanonicalGoal = decisionEntries.filter((decision) =>
+        sourceGoalIds.has(decision.sourceGoalId)
+        && decision.decision === 'needsCanonicalGoal'
+        && !validMappedSourceGoalIds.has(decision.sourceGoalId)).length
+      const unreviewedSourceGoals = Math.max(0, sourceGoalIds.size - reviewedSourceGoalIds.size)
+      const normalizedSteps = normalizeSourceExtractionPipelineSteps(steps, {
+        totalSourceGoals: sourceGoalIds.size,
+        mappedSourceGoals: validMappedSourceGoalIds.size,
+        unmappedSourceGoals,
+        explicitNeedsCanonicalGoal,
+        unreviewedSourceGoals,
+      })
+      const completedSteps = normalizedSteps.filter((step) => step.status === 'complete').length
+      const currentStep = normalizedSteps.find((step) => step.status !== 'complete')?.id
+        ?? extraction.pipelineStatus?.currentStep
+        ?? ''
       result.set(extraction.sourceLandscapeId, {
         sourceLandscapeId: extraction.sourceLandscapeId,
-        title: registryEntry?.title ?? extraction.extractionId ?? extraction.sourceLandscapeId,
+        title: extraction.title ?? registryEntry?.title ?? extraction.extractionId ?? extraction.sourceLandscapeId,
         jurisdiction: normalizeJurisdiction(registryEntry?.jurisdiction ?? extraction.jurisdiction) ?? String(registryEntry?.jurisdiction ?? extraction.jurisdiction ?? ''),
-        path: toRepoPath(file),
-        currentStep: extraction.pipelineStatus?.currentStep ?? steps.find((step) => step.status !== 'complete')?.id ?? '',
+        path: repoPath,
+        sourceKind: 'source-extraction',
+        currentStep,
         completedSteps,
         totalSteps: steps.length,
-        sourceGoals: Array.isArray(extraction.sourceGoals) ? extraction.sourceGoals.length : 0,
+        sourceGoals: sourceGoals.length,
         passages: Array.isArray(extraction.passages) ? extraction.passages.length : 0,
-        steps,
+        mappedSourceGoals: validMappedSourceGoalIds.size,
+        unmappedSourceGoals,
+        extraMappedGoals: extraMappedGoalIds.length,
+        exactMappings,
+        partialMappings,
+        otherMappings,
+        steps: normalizedSteps,
       })
     } catch {
       // A malformed diagnostic extraction should not prevent the rest of the quality dashboard from rendering.
@@ -1775,6 +1906,9 @@ function createMissingSourceExtractionPipeline(
   if (typeof mappingFile.sourceLandscapeId !== 'string' || !mappingFile.sourceLandscapeId.trim()) return null
   const registryEntry = registryEntriesById.get(mappingFile.sourceLandscapeId)
   const jurisdiction = normalizeJurisdiction(registryEntry?.jurisdiction) ?? String(registryEntry?.jurisdiction ?? '')
+  const sourceSnapshotPipeline = createSourceSnapshotMappingPipeline(mappingFile, registryEntry, jurisdiction)
+  if (sourceSnapshotPipeline) return sourceSnapshotPipeline
+
   const steps: MappingPipelineStep[] = [
     {
       id: 'MAPPING-1',
@@ -1825,11 +1959,132 @@ function createMissingSourceExtractionPipeline(
     title: registryEntry?.title ?? mappingFile.sourceLandscapeId,
     jurisdiction,
     path: mappingFile.file,
+    sourceKind: 'missing-extraction',
     currentStep: 'MAPPING-1',
     completedSteps: 0,
     totalSteps: steps.length,
     sourceGoals: 0,
     passages: 0,
+    steps,
+  }
+}
+
+function createSourceSnapshotMappingPipeline(
+  mappingFile: GoalMappingFile & { file: string },
+  registryEntry: SourceLandscapeRegistryEntry | undefined,
+  jurisdiction: string,
+): MappingPipelineSourceStatus | null {
+  const candidatePaths = [registryEntry?.sourcePath, registryEntry?.archiveSourcePath]
+    .filter((candidate): candidate is string => typeof candidate === 'string' && candidate.trim().length > 0)
+    .map((candidate) => resolve(repoRoot, candidate))
+  const sourcePath = candidatePaths.find((candidate) => existsSync(candidate))
+  if (!sourcePath) return null
+
+  let sourceLandscape: LearningLandscape
+  try {
+    sourceLandscape = loadJson<LearningLandscape>(sourcePath)
+  } catch {
+    return null
+  }
+
+  const sourceGoalIds = (sourceLandscape.goals ?? [])
+    .map((goal) => goal.id)
+    .filter((goalId): goalId is string => typeof goalId === 'string' && goalId.trim().length > 0)
+  if (sourceGoalIds.length === 0) return null
+
+  const sourceGoalIdSet = new Set(sourceGoalIds)
+  const mappingEntries = mappingFile.mappings ?? []
+  const mappedGoalIds = new Set(
+    mappingEntries
+      .map((mapping) => mapping.legacyGoalId)
+      .filter((goalId): goalId is string => typeof goalId === 'string' && goalId.trim().length > 0),
+  )
+  const missingSourceGoalIds = sourceGoalIds.filter((goalId) => !mappedGoalIds.has(goalId))
+  const extraMappedGoalIds = Array.from(mappedGoalIds).filter((goalId) => !sourceGoalIdSet.has(goalId))
+  const mappingComplete = missingSourceGoalIds.length === 0 && extraMappedGoalIds.length === 0
+  const exactMappings = mappingEntries.filter((mapping) => mapping.matchType === 'exact').length
+  const partialMappings = mappingEntries.filter((mapping) => mapping.matchType === 'partial').length
+  const otherMappings = mappingEntries.filter((mapping) => (
+    typeof mapping.matchType === 'string'
+    && mapping.matchType.length > 0
+    && mapping.matchType !== 'exact'
+    && mapping.matchType !== 'partial'
+  )).length
+
+  const detailsFor = (goalIds: string[], noun: string): string => {
+    if (goalIds.length === 0) return `Keine ${noun}.`
+    const sample = goalIds.slice(0, 8).join(', ')
+    const suffix = goalIds.length > 8 ? `, ... (+${goalIds.length - 8})` : ''
+    return `${goalIds.length} ${noun}: ${sample}${suffix}`
+  }
+
+  const steps: MappingPipelineStep[] = [
+    {
+      id: 'MAPPING-1',
+      label: 'Original-Lehrplanpassagen extrahiert',
+      status: 'incomplete',
+      dependsOn: [],
+      checks: [
+        {
+          id: 'source-extraction-file-present',
+          label: 'Keine geprüfte Passage-Extraction',
+          passed: false,
+          details: `Snapshot-Diagnose ist registriert: ${toRepoPath(sourcePath)}. Diese Spur zählt nicht als abgeschlossene MAPPING-Pipeline, weil keine einzeln extrahierten Originalpassagen vorliegen.`,
+        },
+      ],
+    },
+    {
+      id: 'MAPPING-2',
+      label: 'Source-Ziele aus Lehrplanpassagen erstellt',
+      status: 'blocked',
+      dependsOn: ['MAPPING-1'],
+      checks: [
+        {
+          id: 'mapping-1-complete',
+          label: 'MAPPING-1 abgeschlossen',
+          passed: false,
+          details: 'Snapshot-Goals aus einem Archiv ersetzen keine geprüfte Herleitung aus Original-Lehrplanpassagen.',
+        },
+      ],
+    },
+    {
+      id: 'MAPPING-3',
+      label: 'Source-Ziele auf SkillPilot-Ziele gemappt',
+      status: 'blocked',
+      dependsOn: ['MAPPING-2'],
+      checks: [
+        {
+          id: 'mapping-2-complete',
+          label: 'MAPPING-2 abgeschlossen',
+          passed: false,
+          details: mappingComplete
+            ? `${sourceGoalIds.length}/${sourceGoalIds.length} Snapshot-Goal(s) sind in ${mappingFile.file} inventarisiert, werden ohne MAPPING-1/2-Review aber nicht als abgeschlossenes Pipeline-Mapping gewertet.`
+            : [
+              detailsFor(missingSourceGoalIds, 'ungemappte Snapshot-Goal(s)'),
+              detailsFor(extraMappedGoalIds, 'Mapping-Goal(s) ohne Snapshot-Eintrag'),
+            ].join(' '),
+        },
+      ],
+    },
+  ]
+
+  return {
+    sourceLandscapeId: mappingFile.sourceLandscapeId!,
+    title: registryEntry?.title ?? sourceLandscape.title ?? mappingFile.sourceLandscapeId!,
+    jurisdiction,
+    path: mappingFile.file,
+    sourceKind: 'legacy-snapshot',
+    currentStep: 'MAPPING-1',
+    completedSteps: 0,
+    totalSteps: steps.length,
+    sourceGoals: sourceGoalIds.length,
+    passages: 0,
+    mappedSourceGoals: mappedGoalIds.size,
+    unmappedSourceGoals: missingSourceGoalIds.length,
+    extraMappedGoals: extraMappedGoalIds.length,
+    exactMappings,
+    partialMappings,
+    otherMappings,
     steps,
   }
 }
@@ -2433,6 +2688,18 @@ function deriveCurriculumMaturity(curriculumRules: RuleResult[], scopes: ScopeSt
 
 function renderMarkdown(status: StatusDocument): string {
   const lines: string[] = []
+  const sourceKindLabel = (sourceKind: MappingPipelineSourceStatus['sourceKind']): string => {
+    if (sourceKind === 'source-extraction') return 'Passage extraction'
+    if (sourceKind === 'legacy-snapshot') return 'Snapshot diagnostic'
+    return 'No extraction'
+  }
+  const sourceExtractionProgress = (pipeline?: MappingPipelineStatus): string => {
+    if (!pipeline) return '-'
+    const sourceExtractionSources = pipeline.sources.filter((source) => source.sourceKind === 'source-extraction')
+    const completed = sourceExtractionSources.filter((source) => source.completedSteps === source.totalSteps).length
+    return `${completed}/${sourceExtractionSources.length}`
+  }
+
   lines.push('# Curriculum Quality Status')
   lines.push('')
   lines.push(`Generated: ${status.generatedAt}`)
@@ -2449,7 +2716,7 @@ function renderMarkdown(status: StatusDocument): string {
   lines.push('')
   lines.push('## Curricula')
   lines.push('')
-  lines.push('| Curriculum | Maturity | Goals | Atomic | Pipeline | Bundeslaender | QA scopes | Warn | Fail |')
+  lines.push('| Curriculum | Maturity | Goals | Atomic | Passage extraction | Bundeslaender | QA scopes | Warn | Fail |')
   lines.push('| --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |')
   status.curricula.forEach((curriculum) => {
     const allRules = [...curriculum.rules, ...curriculum.scopes.flatMap((scope) => scope.rules)]
@@ -2458,19 +2725,22 @@ function renderMarkdown(status: StatusDocument): string {
     const jurisdictionCoverage = curriculum.jurisdictionCoverage
       ? `${curriculum.jurisdictionCoverage.cleanJurisdictions}/${curriculum.jurisdictionCoverage.totalJurisdictions}`
       : '-'
-    const pipeline = curriculum.mappingPipeline
-      ? `${curriculum.mappingPipeline.completeSources}/${curriculum.mappingPipeline.totalSources}`
-      : '-'
+    const pipeline = sourceExtractionProgress(curriculum.mappingPipeline)
     lines.push(`| ${curriculum.title} | ${curriculum.maturity} | ${curriculum.goals} | ${curriculum.atomicGoals} | ${pipeline} | ${jurisdictionCoverage} | ${curriculum.scopes.length} | ${warnCount} | ${failCount} |`)
   })
   lines.push('')
   lines.push('## Mapping Pipeline')
   lines.push('')
-  lines.push('| Curriculum | Source | Jurisdiction | Complete | Current step | Passages | Source goals |')
-  lines.push('| --- | --- | --- | ---: | --- | ---: | ---: |')
+  lines.push('| Curriculum | Source | Jurisdiction | Source kind | Complete | Current step | Passages | Source goals | Exact | Partial | Exact share | Evidence note |')
+  lines.push('| --- | --- | --- | --- | ---: | --- | ---: | ---: | ---: | ---: | ---: | --- |')
   status.curricula.forEach((curriculum) => {
     curriculum.mappingPipeline?.sources.forEach((source) => {
-      lines.push(`| ${curriculum.title} | ${source.title} | ${source.jurisdiction || '-'} | ${source.completedSteps}/${source.totalSteps} | ${source.currentStep || '-'} | ${source.passages} | ${source.sourceGoals} |`)
+      const evidenceNote = source.sourceKind === 'legacy-snapshot' ? 'not pipeline-capable: no passage extraction' : ''
+      const mappedSourceGoals = source.mappedSourceGoals ?? Math.max(0, source.sourceGoals - (source.unmappedSourceGoals ?? 0))
+      const exactShare = mappedSourceGoals > 0
+        ? Math.round(((source.exactMappings ?? 0) / mappedSourceGoals) * 100)
+        : 0
+      lines.push(`| ${curriculum.title} | ${source.title} | ${source.jurisdiction || '-'} | ${sourceKindLabel(source.sourceKind)} | ${source.completedSteps}/${source.totalSteps} | ${source.currentStep || '-'} | ${source.passages} | ${source.sourceGoals} | ${source.exactMappings ?? 0} | ${source.partialMappings ?? 0} | ${exactShare}% | ${evidenceNote} |`)
     })
   })
   lines.push('')

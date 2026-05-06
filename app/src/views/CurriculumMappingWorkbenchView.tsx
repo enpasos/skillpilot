@@ -66,6 +66,47 @@ const deduplicateMappingDocuments = (
   return [...documentsBySourceLandscapeId.values()]
 }
 
+const SOURCE_LANDSCAPE_QUERY_PARAM = 'sourceLandscapeId'
+const SELECTED_SOURCE_LANDSCAPE_STORAGE_KEY = 'skillpilot.curriculumMappingWorkbench.sourceLandscapeId'
+
+const readRequestedSourceLandscapeId = (): string => {
+  if (typeof window === 'undefined') return ''
+  return new URLSearchParams(window.location.search).get(SOURCE_LANDSCAPE_QUERY_PARAM)?.trim() ?? ''
+}
+
+const readStoredSourceLandscapeId = (): string => {
+  if (typeof window === 'undefined') return ''
+  return window.localStorage.getItem(SELECTED_SOURCE_LANDSCAPE_STORAGE_KEY)?.trim() ?? ''
+}
+
+const persistSelectedSourceLandscapeId = (sourceLandscapeId: string) => {
+  if (typeof window === 'undefined' || !sourceLandscapeId) return
+  window.localStorage.setItem(SELECTED_SOURCE_LANDSCAPE_STORAGE_KEY, sourceLandscapeId)
+  const nextUrl = new URL(window.location.href)
+  nextUrl.searchParams.set(SOURCE_LANDSCAPE_QUERY_PARAM, sourceLandscapeId)
+  window.history.replaceState(null, '', `${nextUrl.pathname}${nextUrl.search}${nextUrl.hash}`)
+}
+
+const pickInitialSourceLandscapeId = (
+  documents: MappingDocumentSummary[],
+  current: string,
+): string => {
+  if (current && documents.some((entry) => entry.sourceLandscapeId === current)) return current
+
+  const requested = readRequestedSourceLandscapeId()
+  if (requested && documents.some((entry) => entry.sourceLandscapeId === requested)) return requested
+
+  const stored = readStoredSourceLandscapeId()
+  if (stored && documents.some((entry) => entry.sourceLandscapeId === stored)) return stored
+
+  return documents.find((entry) =>
+    entry.subject === 'Mathematik'
+    && entry.jurisdiction === 'DE-HE'
+    && entry.stage === 'SekII')?.sourceLandscapeId
+    ?? documents[0]?.sourceLandscapeId
+    ?? ''
+}
+
 interface SourceMapping {
   canonicalGoalId: string
   matchType: string
@@ -349,15 +390,7 @@ export const CurriculumMappingWorkbenchView: React.FC = () => {
       const data = await response.json() as MappingListResponse
       const deduplicatedDocuments = deduplicateMappingDocuments(data.documents)
       setDocuments(deduplicatedDocuments)
-      setSelectedSourceLandscapeId((current) => {
-        if (current && deduplicatedDocuments.some((entry) => entry.sourceLandscapeId === current)) return current
-        return deduplicatedDocuments.find((entry) =>
-          entry.subject === 'Mathematik'
-          && entry.jurisdiction === 'DE-HE'
-          && entry.stage === 'SekII')?.sourceLandscapeId
-          ?? deduplicatedDocuments[0]?.sourceLandscapeId
-          ?? ''
-      })
+      setSelectedSourceLandscapeId((current) => pickInitialSourceLandscapeId(deduplicatedDocuments, current))
     } catch (nextError) {
       setError(nextError instanceof Error ? nextError.message : copy.missingLocalEndpoint)
     }
@@ -377,6 +410,9 @@ export const CurriculumMappingWorkbenchView: React.FC = () => {
       }
       const data = await response.json() as MappingPayload
       setPayload(data)
+      setMappingStage((current) => current === 'official-source' && data.source.officialPassages.length === 0
+        ? 'source-canonical'
+        : current)
       setSelectedOfficialPassageId('')
       setSelectedSourceGoalId('')
       setSelectedCanonicalGoalId('')
@@ -1045,7 +1081,9 @@ export const CurriculumMappingWorkbenchView: React.FC = () => {
               <select
                 value={selectedSourceLandscapeId}
                 onChange={(event) => {
-                  setSelectedSourceLandscapeId(event.target.value)
+                  const nextSourceLandscapeId = event.target.value
+                  setSelectedSourceLandscapeId(nextSourceLandscapeId)
+                  persistSelectedSourceLandscapeId(nextSourceLandscapeId)
                   setSelectedViewPath('')
                 }}
                 className="w-full rounded-lg border border-border-color bg-white px-3 py-2 text-sm dark:bg-slate-950"

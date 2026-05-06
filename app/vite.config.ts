@@ -42,6 +42,7 @@ type OfficialSourcePassage = {
 
 type SourceExtraction = {
   path: string
+  title: string
   passages: OfficialSourcePassage[]
   sourceGoals: Array<Record<string, unknown>>
   pipelineStatus: Record<string, unknown> | null
@@ -1073,18 +1074,55 @@ const readSourceExtraction = async (
       const sourceGoals = Array.isArray(extraction.sourceGoals)
         ? extraction.sourceGoals.map(asRecord).filter((goal) => typeof goal.id === 'string')
         : []
-      if (passages.length === 0 || sourceGoals.length === 0) continue
+      const pipelineStatus = Object.keys(asRecord(extraction.pipelineStatus)).length > 0
+        ? asRecord(extraction.pipelineStatus)
+        : null
+      if ((passages.length === 0 || sourceGoals.length === 0) && pipelineStatus === null) continue
       return {
         path: relativePath,
+        title: normalizeGermanText(String(extraction.title ?? '')),
         passages,
         sourceGoals,
-        pipelineStatus: Object.keys(asRecord(extraction.pipelineStatus)).length > 0
-          ? asRecord(extraction.pipelineStatus)
-          : null,
+        pipelineStatus,
       }
     } catch {
       continue
     }
+  }
+
+  return null
+}
+
+const readQualityPipelineStatusForSourcePath = async (
+  sourcePath: string,
+): Promise<Record<string, unknown> | null> => {
+  if (!sourcePath || !existsSync(QUALITY_STATUS_PATH)) return null
+
+  try {
+    const status = await readJsonFile(QUALITY_STATUS_PATH)
+    const curricula = Array.isArray(status.curricula)
+      ? status.curricula.map(asRecord)
+      : []
+
+    for (const curriculum of curricula) {
+      const mappingPipeline = asRecord(curriculum.mappingPipeline)
+      const sources = Array.isArray(mappingPipeline.sources)
+        ? mappingPipeline.sources.map(asRecord)
+        : []
+      const source = sources.find((entry) => String(entry.path ?? '') === sourcePath)
+      if (!source) continue
+
+      const steps = Array.isArray(source.steps) ? source.steps : []
+      if (steps.length === 0) return null
+
+      return {
+        version: 1,
+        currentStep: String(source.currentStep ?? ''),
+        steps,
+      }
+    }
+  } catch {
+    return null
   }
 
   return null
@@ -1185,7 +1223,7 @@ const buildCurriculumMappingList = async () => {
 
     return {
       sourceLandscapeId,
-      sourceTitle: String(sourceEntry.title ?? sourceLandscapeId),
+      sourceTitle: sourceExtraction?.title || String(sourceEntry.title ?? sourceLandscapeId),
       subject,
       jurisdiction: String(sourceEntry.jurisdiction ?? ''),
       stage: inferStageFromSourceEntry(sourceEntry),
@@ -1429,6 +1467,9 @@ const buildCurriculumMappingPayload = async (sourceLandscapeId: string, requeste
   const sourceExtraction = await readSourceExtraction(sourceEntry, sourceLandscapeId)
   const usingSourceExtraction = sourceExtraction !== null
   const sourceGoals = sourceExtraction?.sourceGoals ?? snapshotSourceGoals
+  const pipelineStatus = sourceExtraction
+    ? await readQualityPipelineStatusForSourcePath(sourceExtraction.path) ?? sourceExtraction.pipelineStatus
+    : null
   const sourceGoalIdSet = new Set(sourceGoals.map((goal) => String(goal.id ?? '')).filter(Boolean))
   const canonicalGoalById = new Map(canonicalGoals.map((goal) => [String(goal.id ?? ''), goal]))
   const sourceTopicCodeByGoalId = buildSourceTopicCodeByGoalId(sourceGoals)
@@ -1565,13 +1606,13 @@ const buildCurriculumMappingPayload = async (sourceLandscapeId: string, requeste
   return {
     source: {
       landscapeId: sourceLandscapeId,
-      title: String(sourceLandscape.title ?? sourceEntry.title ?? sourceLandscapeId),
+      title: sourceExtraction?.title || String(sourceLandscape.title ?? sourceEntry.title ?? sourceLandscapeId),
       subject,
       jurisdiction,
       stage,
       path: sourceExtraction?.path ?? sourcePath.relativePath,
       referenceLinks: await readSourceReferenceLinks(sourceEntry, subject),
-      pipelineStatus: sourceExtraction?.pipelineStatus ?? null,
+      pipelineStatus,
       officialPassages: officialPassagesWithSourceGoalIds,
       rootGoalIds: usingSourceExtraction ? sourceRows.map((goal) => goal.id) : getRootGoalIds(sourceGoals),
       goals: sourceRows,
