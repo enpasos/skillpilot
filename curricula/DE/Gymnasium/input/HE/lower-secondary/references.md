@@ -14,6 +14,8 @@ Starting point: https://kultus.hessen.de/unterricht/kerncurricula-und-lehrplaene
 - g9-kunst.pdf: https://kultus.hessen.de/sites/kultus.hessen.de/files/2021-06/g9-kunst.pdf
 - g9-latein.pdf: https://kultus.hessen.de/sites/kultus.hessen.de/files/2021-06/g9-latein.pdf
 - g9-mathematik.pdf: https://kultus.hessen.de/sites/kultus.hessen.de/files/2021-06/g9-mathematik.pdf
+- kerncurriculum_mathematik_gymnasium.pdf: https://kultus.hessen.de/sites/kultus.hessen.de/files/2021-07/kerncurriculum_mathematik_gymnasium.pdf
+- leitfaden_mathematik_sekundarstufe_i.pdf: https://kultus.hessen.de/sites/kultus.hessen.de/files/2021-07/leitfaden_mathematik_sekundarstufe_i.pdf
 - g9-musik.pdf: https://kultus.hessen.de/sites/kultus.hessen.de/files/2021-06/g9-musik.pdf
 - g9-physik.pdf: https://kultus.hessen.de/sites/kultus.hessen.de/files/2021-06/g9-physik.pdf
 - g9-politik-und-wirtschaft.pdf: https://kultus.hessen.de/sites/kultus.hessen.de/files/2021-06/g9-politik-und-wirtschaft.pdf

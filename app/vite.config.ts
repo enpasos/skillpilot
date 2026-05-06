@@ -1,7 +1,9 @@
 import { createHash } from 'node:crypto'
+import { execFile } from 'node:child_process'
 import path from 'node:path'
 import { existsSync, promises as fs } from 'node:fs'
 import type { IncomingMessage, ServerResponse } from 'node:http'
+import { promisify } from 'node:util'
 import { defineConfig, loadEnv, type ViteDevServer } from 'vite'
 import react from '@vitejs/plugin-react'
 import { VitePWA } from 'vite-plugin-pwa'
@@ -15,10 +17,64 @@ const CURRICULA_ROOT = path.resolve(REPO_ROOT, 'curricula')
 const CANONICAL_GYMNASIUM_ROOT = path.resolve(CURRICULA_ROOT, 'DE', 'Gymnasium', 'canonical')
 const COMPOSITION_VIEW_ROOT = path.resolve(CURRICULA_ROOT, 'DE', 'Gymnasium', 'composition-views')
 const SEMANTIC_ATOMICITY_ROOT = path.resolve(CURRICULA_ROOT, 'DE', 'Gymnasium', 'quality', 'semantic-atomicity')
+const GYMNASIUM_MAPPING_ROOT = path.resolve(CURRICULA_ROOT, 'DE', 'Gymnasium', 'mapping')
+const SOURCE_LANDSCAPE_REGISTRY_PATH = path.resolve(CURRICULA_ROOT, 'DE', 'Gymnasium', 'provenance', 'source-landscape-registry.json')
+const SOURCE_GOAL_MEMBERSHIP_REGISTRY_PATH = path.resolve(CURRICULA_ROOT, 'DE', 'Gymnasium', 'provenance', 'source-goal-membership-registry.json')
+const SOURCE_GOAL_CLOSURE_REGISTRY_PATH = path.resolve(CURRICULA_ROOT, 'DE', 'Gymnasium', 'provenance', 'source-goal-closure-registry.json')
 const QUALITY_STATUS_PATH = path.resolve(REPO_ROOT, 'docs', 'qa-ci', 'status', 'curriculum-quality-status.json')
 const PUBLIC_DATA_ROOT = path.resolve(APP_ROOT, 'public', 'data')
+const execFileAsync = promisify(execFile)
+
+type LocalSourcePdf = {
+  absolutePath: string
+  relativePath: string
+}
+
+type OfficialSourcePassage = {
+  id: string
+  topicCode: string
+  title: string
+  text: string
+  page: number
+  sourcePath: string
+  sourceGoalIds?: string[]
+}
+
+type SourceExtraction = {
+  path: string
+  passages: OfficialSourcePassage[]
+  sourceGoals: Array<Record<string, unknown>>
+  pipelineStatus: Record<string, unknown> | null
+}
+
+const officialSourcePassageCache = new Map<string, Promise<OfficialSourcePassage[]>>()
 
 const toPosixPath = (value: string): string => value.split(path.sep).join('/')
+
+const normalizeGermanText = (value: string): string =>
+  value
+    .replace(/Ã„/gu, 'Ä')
+    .replace(/Ã–/gu, 'Ö')
+    .replace(/Ãœ/gu, 'Ü')
+    .replace(/Ã¤/gu, 'ä')
+    .replace(/Ã¶/gu, 'ö')
+    .replace(/Ã¼/gu, 'ü')
+    .replace(/ÃŸ/gu, 'ß')
+    .replace(/Â°/gu, '°')
+    .replace(/Â²/gu, '²')
+    .replace(/Â³/gu, '³')
+    .replace(/Â·/gu, '·')
+    .replace(/Â /gu, ' ')
+    .replace(/Â/gu, '')
+    .replace(/â€“/gu, '–')
+    .replace(/â€”/gu, '—')
+    .replace(/â€ž/gu, '„')
+    .replace(/â€œ/gu, '“')
+    .replace(/â€˜/gu, '‘')
+    .replace(/â€™/gu, '’')
+    .replace(/â†’/gu, '→')
+    .replace(/âˆž/gu, '∞')
+    .normalize('NFC')
 
 const asRecord = (value: unknown): Record<string, unknown> => {
   if (typeof value === 'object' && value !== null && !Array.isArray(value)) {
@@ -497,6 +553,1008 @@ const readCanonicalLandscapeSummaries = async (): Promise<Array<{ path: string, 
   return summaries.filter((entry): entry is { path: string, landscapeId: string, title: string } => entry !== null)
 }
 
+const collectMappingFiles = async (directory: string, result: string[]): Promise<void> => {
+  const entries = await fs.readdir(directory, { withFileTypes: true })
+
+  for (const entry of entries) {
+    const absolutePath = path.join(directory, entry.name)
+
+    if (entry.isDirectory()) {
+      await collectMappingFiles(absolutePath, result)
+      continue
+    }
+
+    if (!entry.isFile()) continue
+    if (!LANDSCAPE_JSON_FILE_PATTERN.test(entry.name)) continue
+    if (!isPathInside(absolutePath, GYMNASIUM_MAPPING_ROOT)) continue
+
+    const relativeToRepo = path.relative(REPO_ROOT, absolutePath)
+    result.push(toPosixPath(relativeToRepo))
+  }
+}
+
+const readJsonFile = async (absolutePath: string): Promise<Record<string, unknown>> => {
+  const content = await fs.readFile(absolutePath, 'utf8')
+  return asRecord(JSON.parse(content))
+}
+
+const repoRelativePathCandidates = (candidatePath: string): string[] => {
+  const sanitizedPath = candidatePath.trim().replace(/\\/g, '/').replace(/^\/+/, '')
+  if (!sanitizedPath) return []
+
+  const candidates = [sanitizedPath]
+  const inputWithIsoMatch = sanitizedPath.match(/^(.*\/input\/)DE-([A-Z]{2})(\/.*)$/u)
+  if (inputWithIsoMatch) {
+    candidates.push(`${inputWithIsoMatch[1]}${inputWithIsoMatch[2]}${inputWithIsoMatch[3]}`)
+  }
+  return [...new Set(candidates)]
+}
+
+const resolveReadableRepoFile = (candidatePath: string): { absolutePath: string, relativePath: string } | null => {
+  for (const relativePath of repoRelativePathCandidates(candidatePath)) {
+    const absolutePath = path.resolve(REPO_ROOT, relativePath)
+    if (!isPathInside(absolutePath, REPO_ROOT)) continue
+    if (!existsSync(absolutePath)) continue
+    return {
+      absolutePath,
+      relativePath: toPosixPath(path.relative(REPO_ROOT, absolutePath)),
+    }
+  }
+  return null
+}
+
+const asStringArray = (value: unknown): string[] =>
+  Array.isArray(value) ? value.filter((entry): entry is string => typeof entry === 'string') : []
+
+const readSourceLandscapeRegistry = async (): Promise<Array<Record<string, unknown>>> => {
+  if (!existsSync(SOURCE_LANDSCAPE_REGISTRY_PATH)) return []
+  const registry = await readJsonFile(SOURCE_LANDSCAPE_REGISTRY_PATH)
+  return Array.isArray(registry.entries) ? registry.entries.map(asRecord) : []
+}
+
+const readSourceMembershipByLandscapeId = async (): Promise<Map<string, Set<string>>> => {
+  const result = new Map<string, Set<string>>()
+  if (!existsSync(SOURCE_GOAL_MEMBERSHIP_REGISTRY_PATH)) return result
+  const registry = await readJsonFile(SOURCE_GOAL_MEMBERSHIP_REGISTRY_PATH)
+  const landscapes = Array.isArray(registry.landscapes) ? registry.landscapes.map(asRecord) : []
+
+  landscapes.forEach((entry) => {
+    const landscapeId = typeof entry.landscapeId === 'string' ? entry.landscapeId : ''
+    if (!landscapeId) return
+    result.set(landscapeId, new Set(asStringArray(entry.goalIds)))
+  })
+
+  return result
+}
+
+const readSourceClosureByLandscapeId = async (): Promise<Map<string, Map<string, string[]>>> => {
+  const result = new Map<string, Map<string, string[]>>()
+  if (!existsSync(SOURCE_GOAL_CLOSURE_REGISTRY_PATH)) return result
+  const registry = await readJsonFile(SOURCE_GOAL_CLOSURE_REGISTRY_PATH)
+  const landscapes = Array.isArray(registry.landscapes) ? registry.landscapes.map(asRecord) : []
+
+  landscapes.forEach((entry) => {
+    const landscapeId = typeof entry.landscapeId === 'string' ? entry.landscapeId : ''
+    if (!landscapeId) return
+    const rawClosures = asRecord(entry.goalAtomicClosures)
+    const closures = new Map<string, string[]>()
+    Object.entries(rawClosures).forEach(([goalId, atomicGoalIds]) => {
+      closures.set(goalId, asStringArray(atomicGoalIds))
+    })
+    result.set(landscapeId, closures)
+  })
+
+  return result
+}
+
+const readMappingFiles = async (): Promise<Array<{ path: string, mapping: Record<string, unknown> }>> => {
+  const files: string[] = []
+  try {
+    await collectMappingFiles(GYMNASIUM_MAPPING_ROOT, files)
+  } catch (error) {
+    const message = error instanceof Error ? error.message : ''
+    if (!message.includes('ENOENT')) throw error
+  }
+
+  const mappings = await Promise.all(files.map(async (relativePath) => {
+    try {
+      const mapping = await readJsonFile(path.resolve(REPO_ROOT, relativePath))
+      if (typeof mapping.sourceLandscapeId !== 'string') return null
+      if (typeof mapping.targetLandscapeId !== 'string') return null
+      if (!Array.isArray(mapping.mappings)) return null
+      return { path: relativePath, mapping }
+    } catch {
+      return null
+    }
+  }))
+
+  return mappings.filter((entry): entry is { path: string, mapping: Record<string, unknown> } => entry !== null)
+}
+
+const readCanonicalLandscapeById = async (
+  landscapeId: string,
+): Promise<{ path: string, landscape: Record<string, unknown> } | null> => {
+  const files: string[] = []
+  await collectCanonicalLandscapeFiles(CANONICAL_GYMNASIUM_ROOT, files)
+
+  for (const relativePath of files) {
+    const landscape = await readJsonFile(path.resolve(REPO_ROOT, relativePath))
+    if (landscape.landscapeId === landscapeId && isLandscapePayload(landscape)) {
+      return { path: relativePath, landscape }
+    }
+  }
+
+  return null
+}
+
+const inferStageFromSourceEntry = (entry: Record<string, unknown>): string => {
+  const text = [
+    entry.title,
+    entry.sourcePath,
+    entry.archiveSourcePath,
+    entry.archivePath,
+  ].map((value) => String(value ?? '')).join(' ').toLocaleLowerCase('de-DE')
+
+  if (text.includes('lower-secondary') || text.includes('sekundarstufe i') || text.includes('sek i') || text.includes('_gym_1_')) {
+    return 'SekI'
+  }
+  if (
+    text.includes('upper-secondary')
+    || text.includes('oberstufe')
+    || text.includes('kursstufe')
+    || text.includes('sekundarstufe ii')
+    || text.includes('sek ii')
+    || text.includes('_gym_2_')
+  ) {
+    return 'SekII'
+  }
+  return ''
+}
+
+const mappingEntryList = (mapping: Record<string, unknown>): Array<Record<string, unknown>> =>
+  Array.isArray(mapping.mappings) ? mapping.mappings.map(asRecord) : []
+
+const normalizeReferenceToken = (value: string): string =>
+  value
+    .normalize('NFKD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLocaleLowerCase('de-DE')
+    .replace(/ä/g, 'ae')
+    .replace(/ö/g, 'oe')
+    .replace(/ü/g, 'ue')
+    .replace(/ß/g, 'ss')
+
+const subjectReferenceTokens = (subject: string): string[] => {
+  const normalized = normalizeReferenceToken(subject)
+  if (normalized.includes('mathematik')) return ['mathematik', 'mathe']
+  if (normalized.includes('physik')) return ['physik', 'physics']
+  if (normalized.includes('chemie')) return ['chemie', 'chemistry']
+  if (normalized.includes('biologie')) return ['biologie', 'biology']
+  return normalized ? [normalized] : []
+}
+
+const readSourceReferenceLinks = async (
+  sourceEntry: Record<string, unknown>,
+  subject: string,
+): Promise<Array<{ label: string, url: string, path: string }>> => {
+  const rawArchivePath = String(sourceEntry.archivePath ?? '')
+  const rawSourcePath = String(sourceEntry.archiveSourcePath ?? sourceEntry.sourcePath ?? '')
+  const referencePathCandidates = [
+    rawArchivePath ? `${rawArchivePath.replace(/\/+$/u, '')}/references.md` : '',
+    rawSourcePath ? `${path.posix.dirname(rawSourcePath.replace(/\\/g, '/'))}/../references.md` : '',
+  ].filter(Boolean)
+
+  const referenceFile = referencePathCandidates
+    .map((candidatePath) => resolveReadableRepoFile(candidatePath))
+    .find((entry): entry is NonNullable<typeof entry> => entry !== null)
+  if (!referenceFile) return []
+
+  const content = await fs.readFile(referenceFile.absolutePath, 'utf8')
+  const links: Array<{ label: string, url: string, path: string }> = []
+  const linkPattern = /(?:-\s*)?([^:\n]+?):\s*(https?:\/\/\S+)/gu
+  let match: RegExpExecArray | null
+  while ((match = linkPattern.exec(content)) !== null) {
+    const label = match[1]?.trim() ?? ''
+    const url = match[2]?.trim() ?? ''
+    if (!label || !url) continue
+    links.push({
+      label,
+      url,
+      path: referenceFile.relativePath,
+    })
+  }
+
+  const tokens = subjectReferenceTokens(subject)
+  const subjectLinks = links.filter((entry) => {
+    const label = normalizeReferenceToken(entry.label)
+    const url = normalizeReferenceToken(entry.url)
+    return tokens.some((token) => label.includes(token) || url.includes(token))
+  })
+
+  return (subjectLinks.length > 0 ? subjectLinks : links.slice(0, 3))
+    .filter((entry, index, all) => all.findIndex((candidate) => candidate.url === entry.url) === index)
+}
+
+const resolveReadableRepoDirectory = (candidatePath: string): { absolutePath: string, relativePath: string } | null => {
+  for (const relativePath of repoRelativePathCandidates(candidatePath)) {
+    const absolutePath = path.resolve(REPO_ROOT, relativePath)
+    if (!isPathInside(absolutePath, REPO_ROOT)) continue
+    if (!existsSync(absolutePath)) continue
+    return {
+      absolutePath,
+      relativePath: toPosixPath(path.relative(REPO_ROOT, absolutePath)),
+    }
+  }
+  return null
+}
+
+const sourceDirectoryCandidates = (sourceEntry: Record<string, unknown>): string[] => {
+  const rawArchivePath = String(sourceEntry.archivePath ?? '')
+  const rawSourcePath = String(sourceEntry.archiveSourcePath ?? sourceEntry.sourcePath ?? '').replace(/\\/g, '/')
+  const candidates = [
+    rawArchivePath,
+    rawSourcePath ? path.posix.dirname(rawSourcePath) : '',
+  ].filter(Boolean)
+
+  if (rawSourcePath) {
+    const sourceDirectory = path.posix.dirname(rawSourcePath)
+    if (path.posix.basename(sourceDirectory) === 'source-json') {
+      candidates.push(path.posix.dirname(sourceDirectory))
+    }
+  }
+
+  return [...new Set(candidates.map((candidate) => candidate.replace(/\/+$/u, '')).filter(Boolean))]
+}
+
+const readLocalSourcePdf = async (
+  sourceEntry: Record<string, unknown>,
+  subject: string,
+): Promise<LocalSourcePdf | null> => {
+  const referenceLinks = await readSourceReferenceLinks(sourceEntry, subject)
+  const directories = sourceDirectoryCandidates(sourceEntry)
+    .map((candidatePath) => resolveReadableRepoDirectory(candidatePath))
+    .filter((entry): entry is NonNullable<typeof entry> => entry !== null)
+
+  for (const link of referenceLinks) {
+    const fileName = path.posix.basename(new URL(link.url).pathname)
+    for (const directory of directories) {
+      const candidate = resolveReadableRepoFile(`${directory.relativePath}/${fileName}`)
+      if (candidate && /\.pdf$/iu.test(candidate.relativePath)) return candidate
+    }
+  }
+
+  const tokens = subjectReferenceTokens(subject)
+  for (const directory of directories) {
+    let entries: Array<{ name: string, isFile: () => boolean }>
+    try {
+      entries = await fs.readdir(directory.absolutePath, { withFileTypes: true })
+    } catch {
+      continue
+    }
+    const matchingPdf = entries
+      .filter((entry) => entry.isFile() && /\.pdf$/iu.test(entry.name))
+      .find((entry) => {
+        const normalizedName = normalizeReferenceToken(entry.name)
+        return tokens.some((token) => normalizedName.includes(token))
+      })
+    if (matchingPdf) {
+      const absolutePath = path.join(directory.absolutePath, matchingPdf.name)
+      return {
+        absolutePath,
+        relativePath: toPosixPath(path.relative(REPO_ROOT, absolutePath)),
+      }
+    }
+  }
+
+  return null
+}
+
+const pdfChromeLinePattern = /^(?:HMKB|Kerncurriculum|[A-Za-z]+(?: [A-Za-z]+)* gymnasiale Oberstufe|\d+)$/u
+const officialTopicHeadingPattern = /^\s*((?:E|Q[1-4])(?:\.\d+){1,2}[a-z]?)\s+(.+?)\s*$/u
+
+const normalizeOfficialPdfLine = (line: string): string =>
+  normalizeGermanText(line)
+    .replace(/\s+/gu, ' ')
+    .replace(/\u00a0/gu, ' ')
+    .trim()
+
+const isPdfChromeLine = (line: string): boolean => {
+  const normalized = normalizeOfficialPdfLine(line)
+  if (!normalized) return false
+  if (pdfChromeLinePattern.test(normalized)) return true
+  return normalized === 'Mathematik gymnasiale Oberstufe'
+    || normalized === 'Physik gymnasiale Oberstufe'
+    || normalized === 'Biologie gymnasiale Oberstufe'
+    || normalized === 'Chemie gymnasiale Oberstufe'
+}
+
+const formatOfficialPassageText = (lines: string[]): string => {
+  const filteredLines = lines
+    .map((line) => line.replace(/\r/gu, ''))
+    .filter((line) => !isPdfChromeLine(line))
+    .join('\n')
+    .replace(/(\p{L})- *\n\s*(\p{Ll})/gu, '$1$2')
+    .split(/\n/u)
+    .map((line) => normalizeOfficialPdfLine(line))
+
+  const paragraphs: string[] = []
+  let current = ''
+
+  const flush = () => {
+    if (current.trim()) paragraphs.push(current.trim())
+    current = ''
+  }
+
+  for (const line of filteredLines) {
+    if (!line) {
+      flush()
+      continue
+    }
+    if (/^[–-]\s/u.test(line)) {
+      flush()
+      current = line
+      continue
+    }
+    if (!current) {
+      current = line
+      continue
+    }
+    current = `${current}${current.endsWith(':') ? '\n  ' : ' '}${line}`
+  }
+  flush()
+
+  return paragraphs.join('\n')
+}
+
+const parseOfficialPdfPassages = (rawText: string, sourcePath: string): OfficialSourcePassage[] => {
+  const pages = rawText.split(/\f/u)
+  const candidates: OfficialSourcePassage[] = []
+  let current: { topicCode: string, title: string, page: number, lines: string[] } | null = null
+
+  const flush = () => {
+    if (!current) return
+    const text = formatOfficialPassageText(current.lines)
+    if (text.length >= 80 && /(^|\n)[–-]\s/u.test(text)) {
+      candidates.push({
+        id: `official:${current.topicCode}`,
+        topicCode: current.topicCode,
+        title: `${current.topicCode} ${current.title}`,
+        text,
+        page: current.page,
+        sourcePath,
+      })
+    }
+    current = null
+  }
+
+  pages.forEach((page, pageIndex) => {
+    page.split(/\n/u).forEach((line) => {
+      const headingMatch = line.match(officialTopicHeadingPattern)
+      if (headingMatch) {
+        flush()
+        current = {
+          topicCode: headingMatch[1] ?? '',
+          title: normalizeOfficialPdfLine(headingMatch[2] ?? ''),
+          page: pageIndex + 1,
+          lines: [],
+        }
+        return
+      }
+      if (current) current.lines.push(line)
+    })
+  })
+  flush()
+
+  const byTopicCode = new Map<string, OfficialSourcePassage>()
+  candidates.forEach((candidate) => {
+    const previous = byTopicCode.get(candidate.topicCode)
+    if (!previous || candidate.text.length > previous.text.length) {
+      byTopicCode.set(candidate.topicCode, candidate)
+    }
+  })
+
+  return [...byTopicCode.values()].sort((left, right) => {
+    const phaseOrder = (code: string) => code.startsWith('E') ? 0 : Number(code.match(/^Q(\d)/u)?.[1] ?? 9)
+    return phaseOrder(left.topicCode) - phaseOrder(right.topicCode)
+      || left.topicCode.localeCompare(right.topicCode, 'de-DE', { numeric: true })
+  })
+}
+
+const readOfficialSourcePassages = async (
+  sourceEntry: Record<string, unknown>,
+  subject: string,
+): Promise<OfficialSourcePassage[]> => {
+  const pdf = await readLocalSourcePdf(sourceEntry, subject)
+  if (!pdf) return []
+
+  const cached = officialSourcePassageCache.get(pdf.absolutePath)
+  if (cached) return cached
+
+  const readPromise = execFileAsync('pdftotext', ['-layout', pdf.absolutePath, '-'])
+    .then(({ stdout }) => parseOfficialPdfPassages(stdout, pdf.relativePath))
+    .catch(() => [])
+  officialSourcePassageCache.set(pdf.absolutePath, readPromise)
+  return readPromise
+}
+
+const SOURCE_EXTRACTION_FILE_PATTERN = /\.source-extraction\.json$/iu
+
+const readSourceExtraction = async (
+  sourceEntry: Record<string, unknown>,
+  sourceLandscapeId: string,
+): Promise<SourceExtraction | null> => {
+  const candidateDirectories = sourceDirectoryCandidates(sourceEntry)
+    .flatMap((candidatePath) => [
+      `${candidatePath.replace(/\/+$/u, '')}/source-extraction`,
+      candidatePath,
+    ])
+    .map((candidatePath) => resolveReadableRepoDirectory(candidatePath))
+    .filter((entry): entry is NonNullable<typeof entry> => entry !== null)
+
+  const seenDirectories = new Set<string>()
+  const candidateFiles: string[] = []
+  for (const directory of candidateDirectories) {
+    if (seenDirectories.has(directory.relativePath)) continue
+    seenDirectories.add(directory.relativePath)
+
+    let entries: Array<{ name: string, isFile: () => boolean }>
+    try {
+      entries = await fs.readdir(directory.absolutePath, { withFileTypes: true })
+    } catch {
+      continue
+    }
+
+    entries.forEach((entry) => {
+      if (!entry.isFile()) return
+      if (!SOURCE_EXTRACTION_FILE_PATTERN.test(entry.name)) return
+      candidateFiles.push(toPosixPath(path.relative(REPO_ROOT, path.join(directory.absolutePath, entry.name))))
+    })
+  }
+
+  for (const relativePath of candidateFiles.sort()) {
+    try {
+      const extraction = await readJsonFile(path.resolve(REPO_ROOT, relativePath))
+      if (String(extraction.sourceLandscapeId ?? '') !== sourceLandscapeId) continue
+      const passages = Array.isArray(extraction.passages)
+        ? extraction.passages.map(asRecord).map((passage) => ({
+          id: String(passage.id ?? ''),
+          topicCode: String(passage.topicCode ?? ''),
+          title: normalizeGermanText(String(passage.title ?? '')),
+          text: normalizeGermanText(String(passage.text ?? '')),
+          page: Number(passage.page ?? 0),
+          sourcePath: normalizeGermanText(String(passage.sourcePath ?? '')),
+          sourceGoalIds: asStringArray(passage.sourceGoalIds),
+        })).filter((passage) => passage.id && passage.text)
+        : []
+      const sourceGoals = Array.isArray(extraction.sourceGoals)
+        ? extraction.sourceGoals.map(asRecord).filter((goal) => typeof goal.id === 'string')
+        : []
+      if (passages.length === 0 || sourceGoals.length === 0) continue
+      return {
+        path: relativePath,
+        passages,
+        sourceGoals,
+        pipelineStatus: Object.keys(asRecord(extraction.pipelineStatus)).length > 0
+          ? asRecord(extraction.pipelineStatus)
+          : null,
+      }
+    } catch {
+      continue
+    }
+  }
+
+  return null
+}
+
+const sourceTopicCodePattern = /\b((?:E|Q[1-4])(?:\.\d+){1,2}[a-z]?)\b/u
+
+const directSourceTopicCode = (goal: Record<string, unknown>): string => {
+  const dimensionTags = asRecord(goal.dimensionTags)
+  const candidates = [
+    goal.topicCode,
+    dimensionTags.topicCode,
+    dimensionTags.sourceTopicCode,
+    goal.sourceRef,
+    goal.title,
+  ]
+
+  for (const candidate of candidates) {
+    const match = String(candidate ?? '').match(sourceTopicCodePattern)
+    if (match?.[1]) return match[1]
+  }
+
+  return ''
+}
+
+const buildSourceTopicCodeByGoalId = (
+  sourceGoals: Array<Record<string, unknown>>,
+): Map<string, string> => {
+  const goalById = new Map(sourceGoals.map((goal) => [String(goal.id ?? ''), goal]))
+  const parentIdsByChild = buildParentIdsByChild(sourceGoals)
+  const topicCodeByGoalId = new Map<string, string>()
+
+  const resolveTopicCode = (goalId: string, visiting = new Set<string>()): string => {
+    if (topicCodeByGoalId.has(goalId)) return topicCodeByGoalId.get(goalId) ?? ''
+    if (visiting.has(goalId)) return ''
+    const goal = goalById.get(goalId)
+    if (!goal) return ''
+
+    const direct = directSourceTopicCode(goal)
+    if (direct) {
+      topicCodeByGoalId.set(goalId, direct)
+      return direct
+    }
+
+    const nextVisiting = new Set(visiting)
+    nextVisiting.add(goalId)
+    const parentTopicCodes = (parentIdsByChild.get(goalId) ?? [])
+      .map((parentId) => resolveTopicCode(parentId, nextVisiting))
+      .filter(Boolean)
+    const resolved = parentTopicCodes[0] ?? ''
+    topicCodeByGoalId.set(goalId, resolved)
+    return resolved
+  }
+
+  sourceGoals.forEach((goal) => {
+    const goalId = String(goal.id ?? '')
+    if (goalId) resolveTopicCode(goalId)
+  })
+
+  return topicCodeByGoalId
+}
+
+const buildCurriculumMappingList = async () => {
+  const sourceEntries = await readSourceLandscapeRegistry()
+  const sourceEntryById = new Map(sourceEntries.map((entry) => [String(entry.landscapeId ?? ''), entry]))
+  const mappingFiles = await readMappingFiles()
+  const canonicalSummaries = await readCanonicalLandscapeSummaries()
+  const canonicalById = new Map(canonicalSummaries.map((entry) => [entry.landscapeId, entry]))
+
+  const rows = await Promise.all(mappingFiles.map(async ({ path: mappingPath, mapping }) => {
+    const sourceLandscapeId = String(mapping.sourceLandscapeId ?? '')
+    const sourceEntry = sourceEntryById.get(sourceLandscapeId)
+    const targetLandscapeId = String(mapping.targetLandscapeId ?? '')
+    const target = canonicalById.get(targetLandscapeId)
+    if (!sourceEntry || !target) return null
+
+    const readableSource = resolveReadableRepoFile(
+      String(sourceEntry.archiveSourcePath ?? sourceEntry.sourcePath ?? ''),
+    )
+    let subject = ''
+    let sourceGoalCount = 0
+    if (readableSource) {
+      try {
+        const sourceLandscape = await readJsonFile(readableSource.absolutePath)
+        subject = typeof sourceLandscape.subject === 'string' ? sourceLandscape.subject : ''
+        sourceGoalCount = Array.isArray(sourceLandscape.goals) ? sourceLandscape.goals.length : 0
+      } catch {
+        subject = ''
+      }
+    }
+    const sourceExtraction = await readSourceExtraction(sourceEntry, sourceLandscapeId)
+    let mappingCount = mappingEntryList(mapping).length
+    if (sourceExtraction) {
+      sourceGoalCount = sourceExtraction.sourceGoals.length
+      const extractedSourceGoalIds = new Set(sourceExtraction.sourceGoals.map((goal) => String(goal.id ?? '')).filter(Boolean))
+      mappingCount = mappingEntryList(mapping).filter((entry) => extractedSourceGoalIds.has(String(entry.legacyGoalId ?? ''))).length
+    }
+
+    return {
+      sourceLandscapeId,
+      sourceTitle: String(sourceEntry.title ?? sourceLandscapeId),
+      subject,
+      jurisdiction: String(sourceEntry.jurisdiction ?? ''),
+      stage: inferStageFromSourceEntry(sourceEntry),
+      sourcePath: sourceExtraction?.path ?? readableSource?.relativePath ?? String(sourceEntry.archiveSourcePath ?? sourceEntry.sourcePath ?? ''),
+      sourceGoalCount,
+      targetLandscapeId,
+      targetTitle: target.title,
+      targetPath: target.path,
+      mappingPath,
+      mappingCount,
+      referenceLinks: await readSourceReferenceLinks(sourceEntry, subject),
+    }
+  }))
+
+  const documents = rows
+    .filter((entry): entry is NonNullable<typeof entry> => entry !== null)
+    .sort((left, right) =>
+      (left.subject || left.sourceTitle).localeCompare(right.subject || right.sourceTitle, 'de-DE')
+      || left.jurisdiction.localeCompare(right.jurisdiction)
+      || left.stage.localeCompare(right.stage)
+      || left.sourceTitle.localeCompare(right.sourceTitle, 'de-DE'))
+
+  return { documents }
+}
+
+const buildParentIdsByChild = (goals: Array<Record<string, unknown>>): Map<string, string[]> => {
+  const parentIdsByChild = new Map<string, string[]>()
+  goals.forEach((goal) => {
+    const parentId = typeof goal.id === 'string' ? goal.id : ''
+    if (!parentId) return
+    asStringArray(goal.contains).forEach((childId) => {
+      const parentIds = parentIdsByChild.get(childId) ?? []
+      parentIds.push(parentId)
+      parentIdsByChild.set(childId, parentIds)
+    })
+  })
+  return parentIdsByChild
+}
+
+const getRootGoalIds = (goals: Array<Record<string, unknown>>): string[] => {
+  const parentIdsByChild = buildParentIdsByChild(goals)
+  const taggedRootIds = goals
+    .filter((goal) => asStringArray(goal.tags).includes('root'))
+    .map((goal) => String(goal.id ?? ''))
+    .filter(Boolean)
+  if (taggedRootIds.length > 0) return taggedRootIds
+
+  return goals
+    .map((goal) => String(goal.id ?? ''))
+    .filter((goalId) => goalId && !parentIdsByChild.has(goalId))
+}
+
+const collectGoalDescendantIds = (
+  goalId: string,
+  goalById: Map<string, Record<string, unknown>>,
+  visiting = new Set<string>(),
+): Set<string> => {
+  const result = new Set<string>([goalId])
+  if (visiting.has(goalId)) return result
+  const goal = goalById.get(goalId)
+  if (!goal) return result
+
+  const nextVisiting = new Set(visiting)
+  nextVisiting.add(goalId)
+  asStringArray(goal.contains).forEach((childId) => {
+    collectGoalDescendantIds(childId, goalById, nextVisiting).forEach((descendantId) => result.add(descendantId))
+  })
+
+  return result
+}
+
+const findMappingCompositionViewOptions = async ({
+  targetLandscapeId,
+  jurisdiction,
+  stage,
+}: {
+  targetLandscapeId: string
+  jurisdiction: string
+  stage: string
+}) => {
+  const files: string[] = []
+  try {
+    await collectCompositionViewFiles(COMPOSITION_VIEW_ROOT, files)
+  } catch (error) {
+    const message = error instanceof Error ? error.message : ''
+    if (!message.includes('ENOENT')) throw error
+  }
+
+  const options = await Promise.all(files.map(async (relativePath) => {
+    try {
+      const view = await readJsonFile(path.resolve(REPO_ROOT, relativePath))
+      if (!isCompositionViewPayload(view)) return null
+      if (view.landscapeId !== targetLandscapeId) return null
+      const scope = asRecord(view.scope)
+      if (jurisdiction && scope.jurisdiction !== jurisdiction) return null
+      if (stage && scope.stage !== stage) return null
+      const courseProfile = typeof scope.courseProfile === 'string' ? scope.courseProfile : ''
+      return {
+        path: relativePath,
+        viewId: String(view.viewId ?? relativePath),
+        label: [
+          typeof scope.jurisdiction === 'string' ? scope.jurisdiction : '',
+          typeof scope.stage === 'string' ? scope.stage : '',
+          courseProfile,
+        ].filter(Boolean).join(' · ') || String(view.viewId ?? relativePath),
+        courseProfile,
+      }
+    } catch {
+      return null
+    }
+  }))
+
+  return options
+    .filter((entry): entry is NonNullable<typeof entry> => entry !== null)
+    .sort((left, right) =>
+      (left.courseProfile === 'GK' ? 0 : left.courseProfile === 'LK' ? 1 : 2)
+      - (right.courseProfile === 'GK' ? 0 : right.courseProfile === 'LK' ? 1 : 2)
+      || left.path.localeCompare(right.path))
+}
+
+const buildCanonicalTreeNode = ({
+  goalId,
+  goalById,
+  allMappedSourceIdsByCanonicalGoalId,
+  mappedSourceIdsByCanonicalDescendantId,
+  displayLabel,
+  visiting = new Set<string>(),
+}: {
+  goalId: string
+  goalById: Map<string, Record<string, unknown>>
+  allMappedSourceIdsByCanonicalGoalId: Map<string, string[]>
+  mappedSourceIdsByCanonicalDescendantId: Map<string, string[]>
+  displayLabel?: string
+  visiting?: Set<string>
+}): Record<string, unknown> | null => {
+  if (visiting.has(goalId)) return null
+  const goal = goalById.get(goalId)
+  if (!goal) return null
+
+  const nextVisiting = new Set(visiting)
+  nextVisiting.add(goalId)
+  const children = asStringArray(goal.contains)
+    .map((childId) => buildCanonicalTreeNode({
+      goalId: childId,
+      goalById,
+      allMappedSourceIdsByCanonicalGoalId,
+      mappedSourceIdsByCanonicalDescendantId,
+      visiting: nextVisiting,
+    }))
+    .filter((entry): entry is Record<string, unknown> => entry !== null)
+
+  return {
+    id: `goal:${goalId}`,
+    kind: 'goal',
+    goalId,
+    title: displayLabel || String(goal.title ?? goalId),
+    originalTitle: String(goal.title ?? goalId),
+    description: String(goal.description ?? ''),
+    sourceRef: String(goal.sourceRef ?? ''),
+    type: String(goal.type ?? (asStringArray(goal.contains).length > 0 ? 'cluster' : 'atomic')),
+    tags: asStringArray(goal.tags),
+    mappedSourceGoalIds: allMappedSourceIdsByCanonicalGoalId.get(goalId) ?? [],
+    coveredSourceGoalIds: mappedSourceIdsByCanonicalDescendantId.get(goalId) ?? [],
+    children,
+  }
+}
+
+const buildCompositionTreeNode = ({
+  node,
+  goalById,
+  allMappedSourceIdsByCanonicalGoalId,
+  mappedSourceIdsByCanonicalDescendantId,
+}: {
+  node: Record<string, unknown>
+  goalById: Map<string, Record<string, unknown>>
+  allMappedSourceIdsByCanonicalGoalId: Map<string, string[]>
+  mappedSourceIdsByCanonicalDescendantId: Map<string, string[]>
+}): Record<string, unknown> | null => {
+  const kind = String(node.kind ?? '')
+
+  if (kind === 'structure') {
+    const nodeId = String(node.id ?? '')
+    const children = (Array.isArray(node.children) ? node.children.map(asRecord) : [])
+      .map((child) => buildCompositionTreeNode({
+        node: child,
+        goalById,
+        allMappedSourceIdsByCanonicalGoalId,
+        mappedSourceIdsByCanonicalDescendantId,
+      }))
+      .filter((entry): entry is Record<string, unknown> => entry !== null)
+    return {
+      id: `structure:${nodeId || String(node.label ?? 'structure')}`,
+      kind: 'structure',
+      title: String(node.label ?? (nodeId || 'Struktur')),
+      children,
+    }
+  }
+
+  if (kind === 'canonicalSubtree' || kind === 'goalEntry') {
+    const goalId = String(node.goalId ?? '')
+    if (!goalId) return null
+    return buildCanonicalTreeNode({
+      goalId,
+      goalById,
+      allMappedSourceIdsByCanonicalGoalId,
+      mappedSourceIdsByCanonicalDescendantId,
+      displayLabel: typeof node.displayLabel === 'string' ? node.displayLabel : undefined,
+    })
+  }
+
+  return null
+}
+
+const buildCurriculumMappingPayload = async (sourceLandscapeId: string, requestedViewPath: string) => {
+  const sourceEntries = await readSourceLandscapeRegistry()
+  const sourceEntry = sourceEntries.find((entry) => entry.landscapeId === sourceLandscapeId)
+  if (!sourceEntry) {
+    return { error: 'Unknown source landscape.' }
+  }
+
+  const sourcePath = resolveReadableRepoFile(String(sourceEntry.archiveSourcePath ?? sourceEntry.sourcePath ?? ''))
+  if (!sourcePath) {
+    return { error: 'Source snapshot is not readable.' }
+  }
+
+  const mappingFiles = (await readMappingFiles()).filter(({ mapping }) => mapping.sourceLandscapeId === sourceLandscapeId)
+  const firstMapping = mappingFiles[0]?.mapping
+  const targetLandscapeId = String(firstMapping?.targetLandscapeId ?? '')
+  const canonicalEntry = await readCanonicalLandscapeById(targetLandscapeId)
+  if (!firstMapping || !canonicalEntry) {
+    return { error: 'No readable mapping into a canonical target landscape was found.' }
+  }
+
+  const sourceLandscape = await readJsonFile(sourcePath.absolutePath)
+  const canonicalLandscape = canonicalEntry.landscape
+  const snapshotSourceGoals = Array.isArray(sourceLandscape.goals) ? sourceLandscape.goals.map(asRecord) : []
+  const canonicalGoals = Array.isArray(canonicalLandscape.goals) ? canonicalLandscape.goals.map(asRecord) : []
+  const subject = String(sourceLandscape.subject ?? '')
+  const sourceExtraction = await readSourceExtraction(sourceEntry, sourceLandscapeId)
+  const usingSourceExtraction = sourceExtraction !== null
+  const sourceGoals = sourceExtraction?.sourceGoals ?? snapshotSourceGoals
+  const sourceGoalIdSet = new Set(sourceGoals.map((goal) => String(goal.id ?? '')).filter(Boolean))
+  const canonicalGoalById = new Map(canonicalGoals.map((goal) => [String(goal.id ?? ''), goal]))
+  const sourceTopicCodeByGoalId = buildSourceTopicCodeByGoalId(sourceGoals)
+  const officialPassages = sourceExtraction?.passages ?? await readOfficialSourcePassages(sourceEntry, subject)
+  const officialPassageByTopicCode = new Map(officialPassages.map((passage) => [passage.topicCode, passage]))
+  const officialPassageById = new Map(officialPassages.map((passage) => [passage.id, passage]))
+  const membershipByLandscapeId = await readSourceMembershipByLandscapeId()
+  const closureByLandscapeId = await readSourceClosureByLandscapeId()
+  const registeredSourceGoalIds = membershipByLandscapeId.get(sourceLandscapeId) ?? new Set<string>()
+  const closureByGoalId = closureByLandscapeId.get(sourceLandscapeId) ?? new Map<string, string[]>()
+
+  const mappingEntries = mappingFiles.flatMap(({ path: mappingPath, mapping }) =>
+    mappingEntryList(mapping).map((entry) => ({
+      mappingPath,
+      legacyGoalId: String(entry.legacyGoalId ?? ''),
+      canonicalGoalId: String(entry.canonicalGoalId ?? ''),
+      matchType: String(entry.matchType ?? 'unspecified'),
+    })).filter((entry) => entry.legacyGoalId && entry.canonicalGoalId && sourceGoalIdSet.has(entry.legacyGoalId)))
+
+  const mappingsBySourceGoalId = new Map<string, Array<{ canonicalGoalId: string, matchType: string, mappingPath: string }>>()
+  const sourceGoalIdsByCanonicalGoalId = new Map<string, string[]>()
+  mappingEntries.forEach((entry) => {
+    const sourceMappings = mappingsBySourceGoalId.get(entry.legacyGoalId) ?? []
+    sourceMappings.push({
+      canonicalGoalId: entry.canonicalGoalId,
+      matchType: entry.matchType,
+      mappingPath: entry.mappingPath,
+    })
+    mappingsBySourceGoalId.set(entry.legacyGoalId, sourceMappings)
+
+    const sourceIds = sourceGoalIdsByCanonicalGoalId.get(entry.canonicalGoalId) ?? []
+    sourceIds.push(entry.legacyGoalId)
+    sourceGoalIdsByCanonicalGoalId.set(entry.canonicalGoalId, [...new Set(sourceIds)])
+  })
+
+  const canonicalDescendantsByGoalId = new Map<string, Set<string>>()
+  canonicalGoals.forEach((goal) => {
+    const goalId = String(goal.id ?? '')
+    if (!goalId) return
+    canonicalDescendantsByGoalId.set(goalId, collectGoalDescendantIds(goalId, canonicalGoalById))
+  })
+
+  const mappedSourceIdsByCanonicalDescendantId = new Map<string, string[]>()
+  canonicalDescendantsByGoalId.forEach((descendantIds, goalId) => {
+    const sourceIds = new Set<string>()
+    descendantIds.forEach((descendantId) => {
+      ;(sourceGoalIdsByCanonicalGoalId.get(descendantId) ?? []).forEach((sourceId) => sourceIds.add(sourceId))
+    })
+    mappedSourceIdsByCanonicalDescendantId.set(goalId, [...sourceIds])
+  })
+
+  const sourceRows = sourceGoals.map((goal) => {
+    const goalId = String(goal.id ?? '')
+    const directMappings = mappingsBySourceGoalId.get(goalId) ?? []
+    const closureAtomicGoalIds = usingSourceExtraction ? [goalId] : closureByGoalId.get(goalId) ?? []
+    const closureMappings = closureAtomicGoalIds.flatMap((atomicGoalId) => mappingsBySourceGoalId.get(atomicGoalId) ?? [])
+    const allCanonicalGoalIds = [...new Set([...directMappings, ...closureMappings].map((entry) => entry.canonicalGoalId))]
+    const topicCode = sourceTopicCodeByGoalId.get(goalId) ?? ''
+    const extractionPassageId = typeof goal.passageId === 'string' ? goal.passageId : ''
+    const officialPassage = extractionPassageId
+      ? officialPassageById.get(extractionPassageId)
+      : officialPassageByTopicCode.get(topicCode)
+    const childrenIds = asStringArray(goal.contains)
+    return {
+      id: goalId,
+      title: normalizeGermanText(String(goal.title ?? goalId)),
+      description: normalizeGermanText(String(goal.description ?? '')),
+      sourceText: normalizeGermanText(String(goal.sourceText ?? '')),
+      sourceSpan: normalizeGermanText(String(goal.sourceSpan ?? '')),
+      parentBulletText: normalizeGermanText(String(goal.parentBulletText ?? '')),
+      sourceRef: normalizeGermanText(String(goal.sourceRef ?? '')),
+      topicCode,
+      passageId: extractionPassageId,
+      granularity: String(goal.granularity ?? ''),
+      tags: asStringArray(goal.tags),
+      requires: asStringArray(goal.requires),
+      childrenIds,
+      type: String(goal.type ?? (childrenIds.length > 0 ? 'cluster' : 'atomic')),
+      registered: usingSourceExtraction || registeredSourceGoalIds.has(goalId),
+      closureAtomicGoalIds,
+      directMappings,
+      closureCanonicalGoalIds: [...new Set(closureMappings.map((entry) => entry.canonicalGoalId))],
+      canonicalGoalIds: allCanonicalGoalIds,
+      matchTypes: [...new Set([...directMappings, ...closureMappings].map((entry) => entry.matchType))],
+      officialPassageIds: officialPassage ? [officialPassage.id] : [],
+    }
+  })
+  const sourceGoalIdsByOfficialPassageId = new Map<string, string[]>()
+  sourceRows.forEach((sourceRow) => {
+    sourceRow.officialPassageIds.forEach((passageId) => {
+      const sourceGoalIds = sourceGoalIdsByOfficialPassageId.get(passageId) ?? []
+      sourceGoalIds.push(sourceRow.id)
+      sourceGoalIdsByOfficialPassageId.set(passageId, sourceGoalIds)
+    })
+  })
+  const officialPassagesWithSourceGoalIds = officialPassages.map((passage) => ({
+    ...passage,
+    sourceGoalIds: sourceGoalIdsByOfficialPassageId.get(passage.id) ?? [],
+  }))
+
+  const jurisdiction = String(sourceEntry.jurisdiction ?? '')
+  const stage = inferStageFromSourceEntry(sourceEntry)
+  const viewOptions = await findMappingCompositionViewOptions({
+    targetLandscapeId,
+    jurisdiction,
+    stage,
+  })
+  const selectedViewOption = viewOptions.find((entry) => entry.path === requestedViewPath) ?? viewOptions[0] ?? null
+  const selectedView = selectedViewOption
+    ? await readJsonFile(path.resolve(REPO_ROOT, selectedViewOption.path))
+    : null
+  const canonicalRoots = selectedView && isCompositionViewPayload(selectedView)
+    ? (Array.isArray(selectedView.rootNodes) ? selectedView.rootNodes.map(asRecord) : [])
+      .map((node) => buildCompositionTreeNode({
+        node,
+        goalById: canonicalGoalById,
+        allMappedSourceIdsByCanonicalGoalId: sourceGoalIdsByCanonicalGoalId,
+        mappedSourceIdsByCanonicalDescendantId,
+      }))
+      .filter((entry): entry is Record<string, unknown> => entry !== null)
+    : getRootGoalIds(canonicalGoals)
+      .map((goalId) => buildCanonicalTreeNode({
+        goalId,
+        goalById: canonicalGoalById,
+        allMappedSourceIdsByCanonicalGoalId: sourceGoalIdsByCanonicalGoalId,
+        mappedSourceIdsByCanonicalDescendantId,
+      }))
+      .filter((entry): entry is Record<string, unknown> => entry !== null)
+
+  const registeredCount = sourceRows.filter((goal) => goal.registered).length
+  const directMappedCount = sourceRows.filter((goal) => goal.directMappings.length > 0).length
+  const closureMappedCount = sourceRows.filter((goal) => goal.canonicalGoalIds.length > 0).length
+
+  return {
+    source: {
+      landscapeId: sourceLandscapeId,
+      title: String(sourceLandscape.title ?? sourceEntry.title ?? sourceLandscapeId),
+      subject,
+      jurisdiction,
+      stage,
+      path: sourceExtraction?.path ?? sourcePath.relativePath,
+      referenceLinks: await readSourceReferenceLinks(sourceEntry, subject),
+      pipelineStatus: sourceExtraction?.pipelineStatus ?? null,
+      officialPassages: officialPassagesWithSourceGoalIds,
+      rootGoalIds: usingSourceExtraction ? sourceRows.map((goal) => goal.id) : getRootGoalIds(sourceGoals),
+      goals: sourceRows,
+      stats: {
+        totalGoals: sourceRows.length,
+        registeredGoals: registeredCount,
+        unregisteredGoals: sourceRows.length - registeredCount,
+        directlyMappedGoals: directMappedCount,
+        closureMappedGoals: closureMappedCount,
+      },
+    },
+    target: {
+      landscapeId: targetLandscapeId,
+      title: String(canonicalLandscape.title ?? targetLandscapeId),
+      path: canonicalEntry.path,
+      rootNodes: canonicalRoots,
+      viewOptions,
+      selectedViewPath: selectedViewOption?.path ?? '',
+      selectedViewLabel: selectedViewOption?.label ?? '',
+    },
+    mappings: {
+      count: mappingEntries.length,
+      exact: mappingEntries.filter((entry) => entry.matchType === 'exact').length,
+      partial: mappingEntries.filter((entry) => entry.matchType === 'partial').length,
+      mappingPaths: mappingFiles.map((entry) => entry.path),
+    },
+  }
+}
+
 const sendJson = (res: ServerResponse, statusCode: number, payload: unknown): void => {
   res.statusCode = statusCode
   res.setHeader('Content-Type', 'application/json; charset=utf-8')
@@ -531,6 +1589,7 @@ const deckEditorDevPlugin = {
         && !requestUrl.pathname.startsWith('/__composition-view-editor')
         && !requestUrl.pathname.startsWith('/__semantic-atomicity-review')
         && !requestUrl.pathname.startsWith('/__quality-dashboard')
+        && !requestUrl.pathname.startsWith('/__curriculum-mapping-workbench')
         && !requestUrl.pathname.startsWith('/__authoring')
         && requestUrl.pathname !== '/api/ui/composition-views/match'
       ) {
@@ -558,6 +1617,39 @@ const deckEditorDevPlugin = {
             path: toPosixPath(path.relative(REPO_ROOT, QUALITY_STATUS_PATH)),
             status,
           })
+          return
+        }
+
+        if (requestUrl.pathname === '/__curriculum-mapping-workbench/list') {
+          if (req.method !== 'GET') {
+            sendJson(res, 405, { error: 'Method not allowed' })
+            return
+          }
+
+          sendJson(res, 200, await buildCurriculumMappingList())
+          return
+        }
+
+        if (requestUrl.pathname === '/__curriculum-mapping-workbench/load') {
+          if (req.method !== 'GET') {
+            sendJson(res, 405, { error: 'Method not allowed' })
+            return
+          }
+
+          const sourceLandscapeId = requestUrl.searchParams.get('sourceLandscapeId') ?? ''
+          const viewPath = requestUrl.searchParams.get('viewPath') ?? ''
+          if (!sourceLandscapeId.trim()) {
+            sendJson(res, 400, { error: 'Missing sourceLandscapeId.' })
+            return
+          }
+
+          const payload = await buildCurriculumMappingPayload(sourceLandscapeId, viewPath)
+          if ('error' in payload) {
+            sendJson(res, 404, payload)
+            return
+          }
+
+          sendJson(res, 200, payload)
           return
         }
 

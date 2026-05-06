@@ -142,6 +142,8 @@ class LearnerServiceCrossSubjectPilotTest {
     private static final String LEGACY_SEK1_PHYSICS_INSTRUMENTS_ID = "8690086e-dfbf-4dd1-a996-e34b7e7db712";
     private static final String LEGACY_MATH_FUNCTION_CONCEPT_ID = "0903db01-4377-4a79-8f29-aceffea68f24";
     private static final String LEGACY_MATH_READ_VALUES_ID = "cd46ce36-883e-4e68-8bfd-2bbdc0ecce9d";
+    private static final String CANONICAL_MATH_FUNCTION_CONCEPT_ID = "09f47964-2cd0-410e-93ee-9632b582fc91";
+    private static final String CANONICAL_MATH_READ_VALUES_ID = "a8c42ee9-2898-4247-819f-c235032ac78a";
     private static final String LEGACY_SEK1_LINEAR_FUNCTIONS_ID = "faafd111-21a1-4f67-945a-6bff60b3e19b";
     private static final String CANONICAL_PHYSICS_SEK1_MECHANICS_CLUSTER_ID = "9645f0d8-43a3-5f29-873c-daa5ace638db";
     private static final String CANONICAL_PHYSICS_SEK1_DENSITY_ID = "e41356c1-968b-435a-af25-b663f080ae5a";
@@ -598,12 +600,12 @@ class LearnerServiceCrossSubjectPilotTest {
     }
 
     @Test
-    void projectedSek1PhysicsMasteryUnlocksCanonicalPhysicsDiagramAnalysis() {
+    void projectedSek1PhysicsAndCanonicalMathMasteryUnlocksCanonicalPhysicsDiagramAnalysis() {
         when(masteryRepository.findByLearner_SkillpilotId(LEARNER_ID))
                 .thenReturn(List.of(
                         new Mastery(learner, LEGACY_PHYSICS_WHY_ID, 1.0),
-                        new Mastery(learner, LEGACY_MATH_FUNCTION_CONCEPT_ID, 1.0),
-                        new Mastery(learner, LEGACY_MATH_READ_VALUES_ID, 1.0),
+                        new Mastery(learner, CANONICAL_MATH_FUNCTION_CONCEPT_ID, 1.0),
+                        new Mastery(learner, CANONICAL_MATH_READ_VALUES_ID, 1.0),
                         new Mastery(learner, LEGACY_SEK1_PHYSICS_MOTION_ID, 1.0)));
 
         List<FrontierGoal> frontier = learnerService.getRichFrontier(LEARNER_ID);
@@ -952,12 +954,12 @@ class LearnerServiceCrossSubjectPilotTest {
     }
 
     @Test
-    void canonicalPhysicsPilotLearnerStateUnlocksDiagramGoalFromProjectedLegacyMathAndPhysicsMastery() {
+    void canonicalPhysicsPilotLearnerStateUnlocksDiagramGoalFromCanonicalMathAndProjectedPhysicsMastery() {
         when(masteryRepository.findByLearner_SkillpilotId(LEARNER_ID))
                 .thenReturn(List.of(
                         new Mastery(learner, LEGACY_PHYSICS_WHY_ID, 1.0),
-                        new Mastery(learner, LEGACY_MATH_FUNCTION_CONCEPT_ID, 1.0),
-                        new Mastery(learner, LEGACY_MATH_READ_VALUES_ID, 1.0)));
+                        new Mastery(learner, CANONICAL_MATH_FUNCTION_CONCEPT_ID, 1.0),
+                        new Mastery(learner, CANONICAL_MATH_READ_VALUES_ID, 1.0)));
         learner.setPersonalCurriculum(CANONICAL_PHYSICS_GK_PERSONAL_CONFIG);
 
         UnifiedLearnerStateResponse state = learnerService.getLearnerState(LEARNER_ID);

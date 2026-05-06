@@ -28,20 +28,49 @@ Das Dashboard bewertet nicht einzelne Bundeslandquellen, sondern die kanonische 
 
 Die Bundesland-Abdeckung ist eine fruehe Qualitaetssicht auf die Frage:
 
-> Fuer welche Bundeslaender hat die kanonische Landschaft bereits atomar sichtbare Lehrplanabdeckung?
+> Ist die learner-facing Bundesland-Sicht fachlich genau durch den jeweiligen Bundesland-Lehrplan gedeckt?
 
-Die Daten kommen aus dem Applicability-Compiler. Fuer jedes deklarierte Bundesland, z. B. `DE-HE` oder `DE-BY`, wird eine gefilterte Projektion des kanonischen Curriculums betrachtet.
+Das Dashboard zaehlt dafuer atomare Knoten in Composition Views. Atomar bedeutet hier: ein Ziel ohne `contains`.
+Uebungs-, Memory- und Assessment-Knoten zaehlen ausdruecklich mit, wenn sie atomar sind und in der jeweiligen Sicht gerendert werden.
+
+Es gibt drei verschiedene Atomzahlen, die nicht vermischt werden duerfen:
+
+- `Roh-Atomar`: alle atomaren Leaf-Knoten in der kanonischen JSON-Datei.
+- `DE-Sicht atomar`: die Vereinigung aller atomaren Knoten aus den nationalen `de-de-*` Composition Views. Das ist die aktuelle kanonische Referenzmenge fuer die Deutschland-Sicht.
+- `Bundesland-Sicht atomar`: die Vereinigung aller atomaren Knoten aus den Composition Views eines Bundeslands, z. B. `de-bw-*`.
+
+Fuer Mathematik ist die DE-Sicht aktuell kleiner als die rohe JSON-Leaf-Menge. Das ist kein Fehler: die rohe Datei kann technische, legacy- oder noch nicht learner-facing eingebundene Atome enthalten. Die Qualitaetsregel fuer Bundeslaender bewertet aber die gerenderte Sicht, nicht blind alle rohen Leaves.
+
+Fuer jedes deklarierte Bundesland, z. B. `DE-HE` oder `DE-BY`, prueft `CQR-003` zwei Richtungen:
+
+1. Sicht -> Quelle: Jeder atomare Knoten der Bundesland-Sicht braucht einen direkten oder akzeptierten indirekten Lehrplanbeleg fuer genau dieses Bundesland.
+2. Quelle -> Sicht: Jedes im Source-Registry erfasste Originalziel des Bundeslands muss ueber seine atomare Source-Closure vollstaendig auf kanonische atomare Knoten mappen, die in der Bundesland-Sicht enthalten sind.
+
+Zusaetzlich prueft der Generator, ob atomare Ziele aus vorhandenen Source-Snapshots ueberhaupt im Source-Membership-/Closure-Ledger registriert sind. Damit werden Pilot-Snapshots sichtbar, bei denen bereits extrahierte Lehrplanatome noch nicht in die eigentliche Abdeckungsrechnung aufgenommen wurden.
+
+Grenze dieser Pruefung: Sie beweist Vollstaendigkeit nur gegen die im Repository vorhandenen und parsebaren Source-Snapshots. Ob ein offizieller PDF-Lehrplan selbst vollstaendig extrahiert wurde, muss ueber einen vollstaendigen Source-Snapshot oder eine zusaetzliche Extract-Ledger-Pruefung abgesichert werden.
+
+Damit ist Bundeslandabdeckung nicht "alle kanonischen Ziele gelten ueberall", sondern eine bidirektionale Passungspruefung zwischen Lehrplanquelle und kanonischer Bundesland-Sicht.
 
 Im Dashboard bedeuten die Werte:
 
-- `Bundeslaender`: Anzahl der Bundeslaender mit voller atomarer Zielabdeckung ohne Projektionswarnungen im Verhaeltnis zu allen deklarierten Bundeslaendern.
-- `Max. Atomabdeckung`: groesste atomare Zielabdeckung unter allen Bundesland-Projektionen.
-- Gruen: die Bundesland-Projektion hat die volle atomare Abdeckung und keine Applicability-Warnungen.
-- Gelb: die Bundesland-Projektion ist nur teilweise atomar sichtbar oder hat mindestens eine Applicability-Warnung.
-- Grau: fuer dieses Bundesland ist noch kein atomarer Zielanteil sichtbar.
-- Rot: die Bundesland-Projektion hat einen Applicability-Fehler.
+- `Bundeslaender`: Anzahl der Bundeslaender, deren Sicht voll belegt ist und deren registrierte Source-Atome voll in die Sicht mappen, im Verhaeltnis zu allen deklarierten Bundeslaendern.
+- `DE-Sicht atomar`: nationale atomare Referenzmenge der Composition Views.
+- `Roh-Atomar`: alle atomaren Leaf-Knoten der kanonischen JSON-Datei; diese Zahl ist Diagnose, aber nicht der Bundesland-Nenner.
+- Pro Bundesland `belegt`: source-backed atomare Knoten der Bundesland-Sicht im Verhaeltnis zu allen atomaren Knoten dieser Bundesland-Sicht.
+- Pro Bundesland `sichtbar`: atomare Knoten der Bundesland-Sicht.
+- Pro Bundesland `Lehrplan -> Sicht`: registrierte Source-Atome, die in die Bundesland-Sicht mappen, im Verhaeltnis zu allen registrierten Source-Atomen dieses Bundeslands.
+- Pro Bundesland `Originalziele voll`: registrierte Source-Originalziele, deren atomare Source-Closure vollstaendig in die Bundesland-Sicht mappt.
+- Pro Bundesland `Source-Atome extrahiert`: atomare Ziele, die aus vorhandenen Source-Snapshots gelesen wurden.
+- Pro Bundesland `Source-Atome unregistriert`: extrahierte Source-Atome, die noch nicht ueber Membership/Closure in die Abdeckungsrechnung eingehen.
+- `nicht belegt`: atomare Bundesland-Sicht-Knoten ohne ausreichenden Lehrplanbeleg.
+- `Lehrplan ungemappt`: registrierte Source-Atome ohne Mapping in die Bundesland-Sicht.
+- Gruen: beide Richtungen sind vollstaendig, es gibt keine nicht belegten Sicht-Atome und keine Warnungen oder Fehler.
+- Gelb: es gibt Teilabdeckung oder Warnungen, aber keine harte falsche Zuordnung.
+- Grau: fuer dieses Bundesland ist noch kein atomarer Zielanteil sichtbar oder belegt.
+- Rot: es gibt nicht belegte Sicht-Atome, ungemappte Source-Atome oder Applicability-Fehler.
 
-Wichtig: `16/16` im Dashboard bedeutet jetzt, dass alle 16 Bundesland-Projektionen die volle kanonische atomare Zielmenge sehen und keine Projektionswarnungen haben. Teilwerte wie `1/647` bleiben sichtbar, erfuellen den Meilenstein aber nicht.
+Wichtig: `16/16` im Dashboard bedeutet nur dann echte Abdeckung, wenn die Zahlen aus beiden Richtungen vollstaendig sind. Eine pauschale Applicability-Entscheidung, ein Override oder ein "passt schon"-Overlay kann `CQR-003` nicht erfuellen.
 
 ### Ziel
 
@@ -189,7 +218,7 @@ Die Dashboard-Spalten `Warnungen` und `Fehler` zaehlen alle Regeln mit diesem St
 - globale Curriculumregeln,
 - plus alle Regeln der zugehoerigen QA-Scopes.
 
-## Reifegrade M0 bis M4
+## Reifegrade M0 bis M5
 
 Die Reifegrade sind kumulativ und konservativ. Ein hoeherer Reifegrad setzt alle relevanten niedrigeren Bedingungen voraus.
 
@@ -206,24 +235,58 @@ Ein einzelner QA-Scope kann maximal `M3` erreichen.
 
 ### Curriculum-Reife
 
-Ein Curriculum kann `M0` bis `M4` erreichen.
+Ein Curriculum kann `M0` bis `M5` erreichen.
 
 | Curriculum-Reife | Exakte Bedingung |
 | --- | --- |
-| `M0` | Mindestens eine Grundbedingung fehlt: `CQR-001` oder `CQR-002` ist nicht `pass`, oder `CQR-003` erreicht die volle Bundeslandabdeckung noch nicht. |
-| `M1` | Graph, Typen und Bundesland-Abdeckung sind sauber. Routen-Scopes fehlen noch, oder mindestens ein QA-Scope besteht `CQR-101` noch nicht. |
-| `M2` | Bundeslandabdeckung ist sauber und alle QA-Scopes sind route-seitig sauber: `CQR-101`, `CQR-102` und `CQR-103` sind je Scope `pass`; mindestens ein Scope ist aber noch nicht exam-mode-faehig. |
-| `M3` | Graph, Typen und Bundesland-Abdeckung sind sauber, alle QA-Scopes sind `M3`, aber mindestens eine M4-Review-Regel (`CQR-301`, `CQR-401`, `CQR-501`) ist noch nicht `pass`. |
-| `M4` | Alle QA-Scopes sind `M3` und zusaetzlich `CQR-301`, `CQR-401` und `CQR-501` sind `pass`. |
+| `M0` | Mindestens eine Grundbedingung fehlt: `CQR-001` oder `CQR-002` ist nicht `pass`, oder die Source-Snapshot-Erfassung (`CQR-000`) ist noch nicht sauber. |
+| `M1` | Source-Snapshots sind lesbar und ihre extrahierten Original-/Source-Ziele sind in Membership/Closure registriert; die Bundesland-View-Abdeckung (`CQR-003`) oder die GK/LK-Mapping-Konsistenz (`CQR-004`) ist aber noch nicht sauber. |
+| `M2` | Source-Ingestion, quellenbelegte Bundeslandabdeckung und GK/LK-Mapping-Konsistenz sind sauber. Routen-Scopes fehlen noch, oder mindestens ein QA-Scope besteht `CQR-101` noch nicht. |
+| `M3` | Bundeslandabdeckung ist sauber und alle QA-Scopes sind route-seitig sauber: `CQR-101`, `CQR-102` und `CQR-103` sind je Scope `pass`; mindestens ein Scope ist aber noch nicht exam-mode-faehig. |
+| `M4` | Graph, Source-Ingestion, Bundeslandabdeckung und alle QA-Scopes sind `M3`, aber mindestens eine Review-Regel (`CQR-301`, `CQR-401`, `CQR-501`) ist noch nicht `pass`. |
+| `M5` | Alle QA-Scopes sind `M3` und zusaetzlich `CQR-301`, `CQR-401` und `CQR-501` sind `pass`. |
 
 Wichtige Konsequenz:
 
-`M4` bedeutet nicht, dass es keine fachliche Verbesserung mehr geben kann.
+`M5` bedeutet nicht, dass es keine fachliche Verbesserung mehr geben kann.
 Es bedeutet:
 
-> Fuer alle konfigurierten Pflicht-QA-Scopes ist die Route von Motivation ueber atomare Lernziele bis zur terminalen Anwendung geschlossen; die Review- und Sichtbarkeitsschulden des Dashboards sind im aktuellen Snapshot bereinigt.
+> Die Originalquellen sind erfasst, die Bundesland-Sichten sind beidseitig belegt, fuer alle konfigurierten Pflicht-QA-Scopes ist die Route von Motivation ueber atomare Lernziele bis zur terminalen Anwendung geschlossen, und die Review- und Sichtbarkeitsschulden des Dashboards sind im aktuellen Snapshot bereinigt.
 
 ## CQR-Regeln im Detail
+
+### `CQR-000` - Source snapshot ingestion
+
+Ziel:
+
+> Die Originalziele bzw. Source-Snapshot-Ziele eines Bundeslands sind zuerst ueberhaupt vollstaendig erfasst.
+
+Geprueft wird:
+
+- Der Generator liest die registrierten Source-Snapshots aus `source-landscape-registry.json`.
+- Aus jedem lesbaren Source-Snapshot werden alle Source-Ziele sowie die atomaren Source-Ziele bestimmt.
+- `source-goal-membership-registry.json` und `source-goal-closure-registry.json` muessen diese extrahierten Ziele registrieren.
+- Wenn ein Source-Snapshot nicht lesbar ist, aber bereits Source-Originalziele registriert sind, gilt die Ingestion als nicht sauber.
+- Wenn ein extrahiertes Source-Ziel oder Source-Atom nicht in Membership/Closure vorkommt, ist die Source-Erfassung unvollstaendig.
+
+Metriken:
+
+- `sourceExtractedGoals`: aus vorhandenen Source-Snapshots gelesene Source-Ziele.
+- `sourceOriginalGoals`: in Membership/Closure registrierte Source-Originalziele.
+- `sourceUnregisteredGoals`: extrahierte Source-Ziele, die nicht registriert sind.
+- `sourceExtractedAtomicGoals`: aus Source-Snapshots gelesene atomare Source-Ziele.
+- `sourceUnregisteredAtomicGoals`: extrahierte atomare Source-Ziele, die nicht registriert sind.
+- `completeSourceJurisdictions`: Bundeslaender, deren Source-Snapshots lesbar und vollstaendig registriert sind.
+
+Status:
+
+- `pass`, wenn alle deklarierten Bundeslaender lesbare Source-Snapshots haben und keine extrahierten Ziele unregistriert sind.
+- `warn`, wenn mindestens ein Bundesland noch gar keine Source-Snapshot-Ziele hat, aber keine bereits extrahierten Ziele fehlen.
+- `fail`, wenn ein registrierter Source-Snapshot nicht lesbar ist oder extrahierte Ziele nicht in Membership/Closure registriert sind.
+
+Reifeziel:
+
+- Erster fachlicher Meilenstein `M1`.
 
 ### `CQR-001` - Basic graph integrity
 
@@ -279,49 +342,123 @@ Reifeziel:
 
 - Grundlage fuer `M0`.
 
-### `CQR-003` - Bundesland full atomic coverage
+### `CQR-003` - Bundesland source-backed view coverage
 
 Ziel:
 
-> Jede deklarierte Bundesland-Projektion des Curriculums hat die volle kanonische atomare Zielmenge.
+> Jede deklarierte Bundesland-Sicht ist atomar voll aus dem jeweiligen Lehrplan belegbar, und jedes registrierte Originalziel des Bundeslands ist in dieser Sicht vollstaendig abgebildet.
 
 Geprueft wird:
 
-- Der Applicability-Compiler erzeugt pro Curriculum Projektionen fuer die deklarierten Bundeslaender.
-- Pro Bundesland wird gezaehlt, wie viele Ziele und atomare Ziele in dieser Projektion sichtbar sind.
-- Ein Bundesland gilt fuer diese Meilensteinregel nur dann als vollstaendig, wenn alle kanonischen atomaren Ziele sichtbar sind.
+- Die atomare Zielmenge eines Bundeslands kommt primaer aus den `de-<land>-*` Composition Views.
+- Die nationale Referenzmenge kommt aus den `de-de-*` Composition Views.
+- Falls fuer ein Curriculum noch keine Composition Views existieren, faellt der Generator auf die rohe atomare JSON-Menge zurueck. Dieser Fallback ist eine Uebergangshilfe, kein Zielzustand.
+- Pro Bundesland wird getrennt gezaehlt, wie viele atomare Sicht-Knoten vorhanden sind und wie viele davon quellenbelegt sind.
+- Als direkt quellenbelegt zaehlen Evidence-Eintraege mit `kind: "provenance"` oder einem nicht partiellen `kind: "mapping"` fuer genau dieses Bundesland.
+- Als akzeptierter Ersatzbeleg zaehlt nur ein explizit reviewter `requires-closure`-Surrogat-Eintrag. Er ist fuer logische Luecken im `requires`-Fluss gedacht, nicht fuer neue Themen.
+- `kind: "override"`, `kind: "child-union"`, automatische `kind: "requires-closure"` und partielle Mappings zaehlen nicht als Lehrplanbeleg fuer diese Regel.
+- Wenn ein atomares Ziel in einer Bundesland-Sicht erscheint, aber keinen direkten oder akzeptierten indirekten Beleg fuer dieses Bundesland hat, ist das eine nicht ableitbare Zuordnung und fuehrt zu `fail`.
+- Rueckwaerts werden die registrierten Source-Landschaften, Source-Memberships und Source-Closures gelesen. Jedes registrierte Source-Originalziel hat eine atomare Source-Closure; alle Atome dieser Closure muessen ueber nicht partielle Mappings in kanonische atomare Knoten fuehren, die in der Bundesland-Sicht enthalten sind.
+- Wenn ein registriertes Source-Atom nicht in die Bundesland-Sicht mappt, ist die Lehrplanabdeckung unvollstaendig und fuehrt zu `fail`.
+- Wenn ein vorhandener Source-Snapshot weitere atomare Source-Ziele enthaelt, die nicht in Membership/Closure registriert sind, ist die Source-Erfassung unvollstaendig und fuehrt zu `fail`.
 - Projektionswarnungen machen die Bundeslandkarte gelb und verhindern `CQR-003 pass`.
 - Applicability-Fehler in einer Projektion fuehren zu `fail`.
 
 Metriken:
 
 - `totalJurisdictions`: Anzahl deklarierter Bundeslaender.
-- `coveredJurisdictions`: Anzahl Bundeslaender mit mindestens einem sichtbaren atomaren Ziel.
-- `fullCoverageJurisdictions`: Anzahl Bundeslaender mit voller atomarer Zielabdeckung ohne Projektionswarnungen oder Fehler.
-- `uncoveredJurisdictions`: Anzahl Bundeslaender ohne sichtbares atomares Ziel.
-- `incompleteJurisdictions`: Anzahl Bundeslaender, deren sichtbare atomare Zielzahl kleiner als `totalAtomicGoals` ist.
-- `warningedJurisdictions`: Anzahl Bundeslaender mit Projektionswarnungen.
-- `cleanJurisdictions`: Bundeslaender mit atomarer Abdeckung ohne Applicability-Warnungen.
-- `partialJurisdictions`: Bundeslaender mit atomarer Abdeckung und Applicability-Warnungen.
-- `errorJurisdictions`: Bundeslaender mit Applicability-Fehlern.
-- `minVisibleAtomicGoals`: kleinste atomare Zielzahl in einer Bundesland-Projektion.
-- `maxVisibleAtomicGoals`: groesste atomare Zielzahl in einer Bundesland-Projektion.
-- `totalAtomicGoals`: atomare Zielzahl der kanonischen Gesamtlandschaft.
+- `totalAtomicGoals`: atomare Zielzahl der nationalen DE-Composition-View-Sicht.
+- `rawAtomicGoals`: atomare Leaf-Zielzahl der kanonischen JSON-Datei.
+- Pro Bundesland `viewAtomicGoals`: atomare Zielzahl der Bundesland-Composition-View-Sicht.
+- Pro Bundesland `sourceBackedAtomicGoals`: atomare Sicht-Ziele mit direktem oder akzeptiertem indirektem Lehrplanbeleg.
+- Pro Bundesland `surrogateBackedAtomicGoals`: atomare Sicht-Ziele, die nur ueber reviewten Ersatzbeleg zaehlen.
+- Pro Bundesland `unsupportedAssignedAtomicGoals`: atomare Sicht-Ziele ohne ausreichenden Lehrplanbeleg.
+- Pro Bundesland `partialSourceLinkedAtomicGoals`: atomare Sicht-Ziele mit nur partiellem Mapping; diese sind sichtbar, aber nicht voll belegt.
+- Pro Bundesland `sourceAtomicGoals`: registrierte atomare Source-Lehrplanziele.
+- Pro Bundesland `sourceMappedToViewAtomicGoals`: registrierte Source-Atome, deren Mapping in die Bundesland-Sicht fuehrt.
+- Pro Bundesland `unmappedSourceAtomicGoals`: registrierte Source-Atome ohne Mapping in die Bundesland-Sicht.
+- Pro Bundesland `sourceExtractedAtomicGoals`: aus vorhandenen Source-Snapshots gelesene atomare Source-Ziele.
+- Pro Bundesland `sourceUnregisteredAtomicGoals`: extrahierte Source-Atome, die nicht in Membership/Closure registriert sind.
+- Pro Bundesland `sourceOriginalGoals`: registrierte Source-Originalziele.
+- Pro Bundesland `sourceFullyCoveredOriginalGoals`: registrierte Source-Originalziele, deren atomare Closure vollstaendig in die Bundesland-Sicht mappt.
+- Pro Bundesland `sourcePartiallyCoveredOriginalGoals`: registrierte Source-Originalziele, deren atomare Closure teilweise in die Bundesland-Sicht mappt.
+- Pro Bundesland `sourceUncoveredOriginalGoals`: registrierte Source-Originalziele ohne Mapping in die Bundesland-Sicht.
+- Pro Bundesland `sourceBackedCoveragePercent`: `sourceBackedAtomicGoals / viewAtomicGoals`.
+- Pro Bundesland `sourceReverseCoveragePercent`: `sourceMappedToViewAtomicGoals / sourceAtomicGoals`.
+- `cleanJurisdictions`: Bundeslaender mit voller beidseitiger Abdeckung ohne Warnungen, Fehler oder nicht belegte Zuordnungen.
+- `partialJurisdictions`: Bundeslaender mit Teilabdeckung oder Warnungen, aber ohne harte Fehler.
+- `errorJurisdictions`: Bundeslaender mit Applicability-Fehlern, nicht belegten Sicht-Atomen oder ungemappten Source-Atomen.
+- `unsupportedAssignedAtomicGoals`: Summe nicht belegter atomarer Sicht-Zuordnungen ueber alle Bundeslaender.
+- `unmappedSourceAtomicGoals`: Summe registrierter Source-Atome ohne Mapping in die jeweilige Bundesland-Sicht.
+- `sourceExtractedGoals`: Summe extrahierter Source-Snapshot-Ziele.
+- `sourceUnregisteredGoals`: Summe extrahierter Source-Snapshot-Ziele, die noch nicht in Membership/Closure registriert sind.
+- `sourceUnregisteredAtomicGoals`: Summe extrahierter Source-Atome, die noch nicht in Membership/Closure registriert sind.
 
 Status:
 
-- `pass`, wenn alle deklarierten Bundeslaender die volle kanonische atomare Zielmenge sehen und keine Projektion Warnungen oder Fehler hat.
-- `warn`, wenn mindestens ein Bundesland nur teilweise sichtbar ist, gar keine atomaren Ziele sieht oder Projektionswarnungen hat.
-- `fail`, wenn mindestens eine Bundesland-Projektion Applicability-Fehler hat.
+- `pass`, wenn alle deklarierten Bundeslaender alle atomaren Sicht-Ziele quellenbelegt haben, alle registrierten Source-Originalziele vollstaendig in die Sicht mappen und keine Projektion Warnungen, Fehler oder nicht belegte Zuordnungen hat.
+- `warn`, wenn mindestens ein Bundesland nur teilweise quellenbelegt ist, gar keine quellenbelegten atomaren Ziele hat oder Projektionswarnungen hat, aber keine harte falsche Zuordnung vorliegt.
+- `fail`, wenn mindestens eine Bundesland-Projektion Applicability-Fehler hat, mindestens eine atomare Sicht-Zuordnung ohne ausreichenden Beleg existiert oder mindestens ein registriertes Source-Atom nicht in die Sicht mappt.
 - `not_configured`, wenn keine Coverage-Projektion fuer das Curriculum vorliegt.
 
 Reifeziel:
 
-- Erster fachlicher Meilenstein `M1`.
+- Zweiter fachlicher Meilenstein `M2`.
 
 Interpretation:
 
-`CQR-003 pass` bedeutet: Die kanonische Landschaft ist fuer alle deklarierten Bundeslaender voll atomar sichtbar. Es bedeutet weiterhin nicht, dass landesspezifische Abweichungen didaktisch perfekt ausmodelliert sind; solche Unterschiede gehoeren in Mappings, Composition Views und spaetere engere Overlays.
+`CQR-003 pass` bedeutet: Die Bundesland-Sicht ist weder zu klein noch zu gross gegenueber den erfassten Lehrplanquellen. Es fehlen keine registrierten Lehrplaninhalte, jedes registrierte Originalziel ist durch atomare View-Ziele vollstaendig abgedeckt, und es sind keine atomaren Sicht-Ziele enthalten, die sich nicht aus dem Bundesland-Lehrplan oder einem explizit reviewten logischen Ersatzbeleg ableiten lassen.
+
+Ein akzeptiertes `APV-201`-Overlay kann eine Projektion fuer Runtime- oder Kompatibilitaetszwecke sichtbar halten. Es zaehlt aber nicht als Bundeslandabdeckung. Akzeptierte Warnungen bei `CQR-501` ersetzen deshalb nie die fachliche Vollstaendigkeits- und Negativpruefung von `CQR-003`.
+
+Fuer Mathematik und Physik wird zusaetzlich ein detaillierter Audit-Snapshot erzeugt:
+
+- `docs/qa-ci/status/curriculum-source-coverage-audit.json`
+- `docs/qa-ci/status/curriculum-source-coverage-audit.md`
+
+Dieser Audit listet pro Bundesland die fehlenden quellenbelegten Atomziele und die sichtbaren atomaren Zuordnungen ohne Lehrplanbeleg vollstaendig maschinenlesbar auf.
+
+### `CQR-004` - Course-level mapping consistency
+
+Ziel:
+
+> GK/LK-Markierungen aus der Originalquelle duerfen beim Mapping auf SkillPilot nicht verloren gehen oder heimlich verschaerft werden.
+
+Geprueft wird:
+
+- Die Regel laeuft fuer persistierte `source-extraction`-Mappings, die eine `sourceExtractionPath` auf ein Extraktionsartefakt mit `sourceGoals[].courseLevel` besitzen.
+- Ein Source-Ziel mit `courseLevel: "LK"` muss auf kanonische Ziele mappen, die mindestens das Tag `LK` tragen.
+- Ein Source-Ziel mit `courseLevel: "GK_LK"` muss auf kanonische Ziele mappen, die beide Tags `GK` und `LK` tragen.
+- Ein Source-Ziel mit `courseLevel: "unspecified"` wird fachlich konservativ als `GK_LK` behandelt, weil die Originalquelle an dieser Stelle kein LK-only-Niveau markiert.
+- Eine LK-only-Zuordnung fuer `unspecified` ist nur erlaubt, wenn die Mapping-Review eine explizite `courseLevelDecision` mit nicht leerer Begruendung dokumentiert. Diese Ausnahme ist sichtbar und wird in `reviewedCourseLevelExceptions` gezaehlt.
+- Partielle Mapping-Kanten werden nicht als akzeptierte Kursniveau-Abdeckung gezaehlt; sie muessen zuerst fachlich entschieden werden.
+
+Metriken:
+
+- `sourceGoals`: Source-Ziele im verknuepften Extraktionsartefakt.
+- `sourceGoalsWithCourseLevel`: Source-Ziele, fuer die eine Kursniveau-Erwartung bestimmt werden konnte.
+- `gkLkSourceGoals`: Source-Ziele mit erwarteter GK/LK-Abdeckung.
+- `lkSourceGoals`: Source-Ziele mit LK-only-Erwartung.
+- `unspecifiedSourceGoals`: Source-Ziele, deren Originalniveau nicht explizit markiert war.
+- `checkedMappingEdges`: gepruefte Source-zu-SkillPilot-Mapping-Kanten.
+- `defaultedUnspecifiedMappingEdges`: Kanten, bei denen `unspecified` als GK/LK geprueft wurde.
+- `reviewedCourseLevelExceptions`: explizit begruendete Niveau-Ausnahmen.
+- `mismatches`: Mapping-Kanten, deren kanonisches Ziel die erwarteten `GK`/`LK`-Tags nicht traegt.
+- `missingSourceGoals`, `missingTargetGoals`, `unmappedCourseLevelSourceGoals`: technische oder fachliche Luecken in den geprueften Artefakten.
+
+Status:
+
+- `pass`, wenn alle geprueften Mapping-Kanten kursniveau-kompatibel sind und kein kursniveau-relevantes Source-Ziel ungemappt bleibt.
+- `fail`, wenn eine Kante auf ein Ziel mit fehlenden `GK`/`LK`-Tags zeigt, ein Ziel fehlt oder ein kursniveau-relevantes Source-Ziel ungemappt ist.
+- `not_configured`, wenn fuer das Curriculum noch kein persistiertes Source-Extraction-Mapping mit Kursniveau-Metadaten vorliegt.
+
+Reifeziel:
+
+- Teil des fachlichen Meilensteins `M2`. Ein `fail` verhindert, dass die Bundesland-/Source-Abdeckung als sauber gilt.
+
+Interpretation:
+
+`CQR-004 pass` bedeutet nicht, dass GK- und LK-Didaktik schon perfekt ausdifferenziert sind. Es bedeutet enger: Das aktuell reviewte Source-zu-SkillPilot-Mapping respektiert die im Original erkennbare Kursniveau-Semantik und macht fachliche Ausnahmen sichtbar.
 
 ### `CQR-101` - Effective full route coverage
 
@@ -350,8 +487,8 @@ Status:
 
 Reifeziel:
 
-- Bestandteil des Routenmeilensteins `M2`.
-- Wenn ein konfigurierter Scope diese Regel nicht besteht, bleibt das Curriculum nach erfolgreicher Bundeslandabdeckung bei `M1`.
+- Bestandteil des Routenmeilensteins `M3`.
+- Wenn ein konfigurierter Scope diese Regel nicht besteht, bleibt das Curriculum nach erfolgreicher Bundeslandabdeckung bei `M2`.
 
 ### `CQR-102` - Atomic direct route coverage
 
@@ -380,7 +517,7 @@ Status:
 
 Reifeziel:
 
-- Teil von `M2`.
+- Teil von `M3`.
 
 Interpretation:
 
@@ -408,7 +545,7 @@ Status:
 
 Reifeziel:
 
-- Teil von `M2`.
+- Teil von `M3`.
 
 Interpretation:
 
@@ -486,7 +623,7 @@ Status:
 
 Reifeziel:
 
-- Teil von `M4`.
+- Teil von `M5`.
 
 ### `CQR-401` - Composition view availability
 
@@ -510,7 +647,7 @@ Status:
 
 Reifeziel:
 
-- Teil von `M4`.
+- Teil von `M5`.
 
 Interpretation:
 
@@ -544,7 +681,7 @@ Status:
 
 Reifeziel:
 
-- Teil von `M4`.
+- Teil von `M5`.
 
 Interpretation:
 

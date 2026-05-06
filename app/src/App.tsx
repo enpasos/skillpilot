@@ -36,6 +36,7 @@ const PUBLIC_PATHS = new Set([
   '/composition-view-editor',
   '/semantic-atomicity-review',
   '/quality-dashboard',
+  '/curriculum-mapping-workbench',
 ])
 const GOAL_VIEWS = new Set(['learner', 'trainer', 'explorer'])
 const MAX_DESCRIPTION_LENGTH = 160
@@ -60,6 +61,7 @@ const CanonicalClusterEditorView = lazy(() => import('./views/CanonicalClusterEd
 const CompositionViewEditorView = lazy(() => import('./views/CompositionViewEditorView').then((module) => ({ default: module.CompositionViewEditorView })))
 const SemanticAtomicityReviewView = lazy(() => import('./views/SemanticAtomicityReviewView').then((module) => ({ default: module.SemanticAtomicityReviewView })))
 const CurriculumQualityDashboardView = lazy(() => import('./views/CurriculumQualityDashboardView').then((module) => ({ default: module.CurriculumQualityDashboardView })))
+const CurriculumMappingWorkbenchView = lazy(() => import('./views/CurriculumMappingWorkbenchView').then((module) => ({ default: module.CurriculumMappingWorkbenchView })))
 
 const normalizeText = (text: string) => text.replace(/\s+/g, ' ').trim()
 
@@ -523,6 +525,11 @@ const App: React.FC = () => {
         description = language === 'en'
           ? 'Local dashboard for generated curriculum quality status snapshots.'
           : 'Lokales Dashboard für generierte Curriculum-Qualitätsstände.'
+      } else if (path === '/curriculum-mapping-workbench') {
+        title = `Curriculum Mapping | ${baseTitle}`
+        description = language === 'en'
+          ? 'Local two-pane audit view from curriculum source snapshots to SkillPilot trees.'
+          : 'Lokale Zwei-Fenster-Auditsicht von Curriculum-Source-Snapshots zu SkillPilot-Trees.'
       } else if (path === '/start' || path.startsWith('/start/')) {
         title = `Abi 2026 Mathe Hessen | ${baseTitle}`
         description = language === 'en'
@@ -640,6 +647,7 @@ const App: React.FC = () => {
           <Route path="/composition-view-editor" element={<CompositionViewEditorView />} />
           <Route path="/semantic-atomicity-review" element={<SemanticAtomicityReviewView />} />
           <Route path="/quality-dashboard" element={<CurriculumQualityDashboardView />} />
+          <Route path="/curriculum-mapping-workbench" element={<CurriculumMappingWorkbenchView />} />
           <Route path="/start/abi26-he-mathe-k1" element={<Abi26MatheStartView />} />
           <Route path="/start/:campaignId" element={<Abi26MatheStartView />} />
         </Routes>

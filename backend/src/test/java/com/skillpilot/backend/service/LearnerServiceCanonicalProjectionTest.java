@@ -69,6 +69,7 @@ class LearnerServiceCanonicalProjectionTest {
     private static final String LEGACY_ANALYSIS_CLUSTER_ID = "a6ee6304-8c26-4eda-b56e-676655e703c2";
     private static final String CANONICAL_ANALYSIS_CLUSTER_ID = "a668ea17-9226-4074-8f8e-051acbe839eb";
     private static final String LEGACY_FUNCTION_CONCEPT_ID = "0903db01-4377-4a79-8f29-aceffea68f24";
+    private static final String LEGACY_SYMMETRY_ID = "8f42b49d-a2fb-45f5-9da3-97ec96b8113e";
     private static final String LEGACY_SEK1_CHEMISTRY_CLUSTER_ID = "8feb6b0f-d39c-4daf-9a13-9cb00413ff55";
     private static final String LEGACY_SEK1_CHEMISTRY_WHY_ID = "88c81951-4fbe-5e68-96b1-f5e9834e9c9d";
     private static final String LEGACY_SEK1_CHEMISTRY_WORKING_METHODS_ID = "8476c11a-9c9a-4d4c-b1eb-9977d9fe4558";
@@ -247,12 +248,12 @@ class LearnerServiceCanonicalProjectionTest {
     @Test
     void getMasteryProjectsExactLegacyMasteryIntoCanonicalPilotGoals() {
         when(masteryRepository.findByLearner_SkillpilotId(LEARNER_ID))
-                .thenReturn(List.of(new Mastery(learner, LEGACY_FUNCTION_CONCEPT_ID, 1.0)));
+                .thenReturn(List.of(new Mastery(learner, LEGACY_SYMMETRY_ID, 1.0)));
 
         Map<String, Double> mastery = learnerService.getMastery(LEARNER_ID);
 
-        assertThat(mastery).containsEntry(CANONICAL_FUNCTION_CONCEPT_ID, 1.0);
-        assertThat(mastery).containsEntry(LEGACY_FUNCTION_CONCEPT_ID, 1.0);
+        assertThat(mastery).containsEntry(CANONICAL_SYMMETRY_ID, 1.0);
+        assertThat(mastery).containsEntry(LEGACY_SYMMETRY_ID, 1.0);
     }
 
     @Test
@@ -458,7 +459,7 @@ class LearnerServiceCanonicalProjectionTest {
     @Test
     void canonicalPilotFrontierUsesProjectedLegacyMastery() {
         when(masteryRepository.findByLearner_SkillpilotId(LEARNER_ID))
-                .thenReturn(List.of(new Mastery(learner, LEGACY_FUNCTION_CONCEPT_ID, 1.0)));
+                .thenReturn(List.of(new Mastery(learner, LEGACY_BAYERN_FUNCTION_CONCEPT_ID, 1.0)));
 
         List<FrontierGoal> frontier = learnerService.getRichFrontier(LEARNER_ID);
 
@@ -681,7 +682,7 @@ class LearnerServiceCanonicalProjectionTest {
     @Test
     void canonicalPilotLearnerStateUsesProjectedMasteryWithoutLegacyLeakage() {
         when(masteryRepository.findByLearner_SkillpilotId(LEARNER_ID))
-                .thenReturn(List.of(new Mastery(learner, LEGACY_FUNCTION_CONCEPT_ID, 1.0)));
+                .thenReturn(List.of(new Mastery(learner, LEGACY_BAYERN_FUNCTION_CONCEPT_ID, 1.0)));
         learner.setPersonalCurriculum(CANONICAL_MATH_GK_PERSONAL_CONFIG);
 
         UnifiedLearnerStateResponse state = learnerService.getLearnerState(LEARNER_ID);
@@ -692,7 +693,7 @@ class LearnerServiceCanonicalProjectionTest {
         assertThat(state.stateMachine().goalOptions())
                 .extracting(FrontierGoal::id)
                 .contains(CANONICAL_CALCULATE_VALUES_ID, CANONICAL_READ_VALUES_ID, CANONICAL_SYMMETRY_ID)
-                .doesNotContain(CANONICAL_FUNCTION_CONCEPT_ID, LEGACY_FUNCTION_CONCEPT_ID);
+                .doesNotContain(CANONICAL_FUNCTION_CONCEPT_ID, LEGACY_BAYERN_FUNCTION_CONCEPT_ID);
     }
 
     @Test
@@ -942,13 +943,13 @@ class LearnerServiceCanonicalProjectionTest {
         when(masteryRepository.findByLearner_SkillpilotId(LEARNER_ID))
                 .thenReturn(List.of(
                         masteryEntry(CANONICAL_FUNCTION_CONCEPT_ID, 1.0, canonicalTs),
-                        masteryEntry(LEGACY_FUNCTION_CONCEPT_ID, 1.0, legacyTs)));
+                        masteryEntry(LEGACY_BAYERN_FUNCTION_CONCEPT_ID, 1.0, legacyTs)));
 
         Map<String, MasteryEntryDTO> mastery = learnerService.getMasteryWithTimestamps(LEARNER_ID);
 
         assertThat(mastery)
                 .containsEntry(CANONICAL_FUNCTION_CONCEPT_ID, new MasteryEntryDTO(1.0, legacyTs))
-                .containsEntry(LEGACY_FUNCTION_CONCEPT_ID, new MasteryEntryDTO(1.0, legacyTs));
+                .containsEntry(LEGACY_BAYERN_FUNCTION_CONCEPT_ID, new MasteryEntryDTO(1.0, legacyTs));
     }
 
     @Test

@@ -5,11 +5,13 @@ It is intended to be reachable on GitHub Pages at `/skillpilot/qa-ci/`.
 
 ## Curriculum Quality
 
-- [Curriculum Quality: Reifegrade, QA-Scopes und CQR-Regeln](curriculum-quality-maturity-and-routes.md)  
-  Detailed meaning of `M0` to `M4`, QA scopes, routes, terminal autonomy, and `CQR-*` rules.
-- [Curriculum Quality Dashboard](curriculum-quality-dashboard.md)  
+- [Curriculum Quality: Reifegrade, QA-Scopes und CQR-Regeln](curriculum-quality-maturity-and-routes.md)
+  Detailed meaning of `M0` to `M5`, QA scopes, routes, terminal autonomy, and `CQR-*` rules.
+- [Curriculum Quality Dashboard](curriculum-quality-dashboard.md)
   Persisted status layer used by the local Workbench dashboard.
-- [Current Curriculum Quality Status](status/curriculum-quality-status.md)  
+- [Curriculum Mapping Workbench](curriculum-mapping-workbench.md)
+  Two-pane audit surface from source snapshots to learner-facing SkillPilot trees.
+- [Current Curriculum Quality Status](status/curriculum-quality-status.md)
   Generated snapshot consumed by the dashboard.
 
 ## Graph Validation

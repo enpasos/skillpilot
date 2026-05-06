@@ -228,7 +228,14 @@ public class GoalMappingService {
                 && root.hasNonNull("sourceLandscapeId")
                 && root.hasNonNull("targetLandscapeId")
                 && root.has("mappings")
-                && root.get("mappings").isArray();
+                && root.get("mappings").isArray()
+                && !isSourceExtractionReviewFile(root);
+    }
+
+    private boolean isSourceExtractionReviewFile(JsonNode root) {
+        return root.hasNonNull("reviewId")
+                || root.hasNonNull("sourceExtractionPath")
+                || root.has("decisions");
     }
 
     private boolean isGoalMapFile(Path path) {

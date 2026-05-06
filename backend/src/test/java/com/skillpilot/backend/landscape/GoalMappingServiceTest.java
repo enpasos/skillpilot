@@ -121,6 +121,58 @@ class GoalMappingServiceTest {
     }
 
     @Test
+    void ignoresSourceExtractionReviewFilesWithOneSourceToManyDecisions() throws IOException {
+        writeJson(tempDir.resolve("mapping/runtime.json"), """
+                {
+                  "version": 1,
+                  "sourceLandscapeId": "legacy-math",
+                  "targetLandscapeId": "canonical-math",
+                  "mappings": [
+                    {
+                      "legacyGoalId": "legacy-runtime",
+                      "canonicalGoalId": "canon-runtime",
+                      "matchType": "exact"
+                    }
+                  ]
+                }
+                """);
+        writeJson(tempDir.resolve("mapping/source_extraction.review.json"), """
+                {
+                  "version": 1,
+                  "reviewId": "source-extraction-review",
+                  "sourceLandscapeId": "source-extraction-math",
+                  "targetLandscapeId": "canonical-math",
+                  "sourceExtractionPath": "curricula/source-extraction.json",
+                  "mappings": [
+                    {
+                      "legacyGoalId": "source-goal-1",
+                      "canonicalGoalId": "canon-1",
+                      "matchType": "exact"
+                    },
+                    {
+                      "legacyGoalId": "source-goal-1",
+                      "canonicalGoalId": "canon-2",
+                      "matchType": "exact"
+                    }
+                  ],
+                  "decisions": [
+                    {
+                      "sourceGoalId": "source-goal-1",
+                      "decision": "mapped",
+                      "canonicalGoalIds": ["canon-1", "canon-2"]
+                    }
+                  ]
+                }
+                """);
+
+        GoalMappingService service = createService(tempDir);
+
+        assertThat(service.getAllMappings()).hasSize(1);
+        assertThat(service.findByLegacyGoalId("legacy-runtime")).isPresent();
+        assertThat(service.findByLegacyGoalId("source-goal-1")).isEmpty();
+    }
+
+    @Test
     void rejectsUnsupportedMatchTypes() throws IOException {
         writeJson(tempDir.resolve("mapping/invalid.json"), """
                 {

@@ -111,6 +111,8 @@ public class LearnerControllerIntegrationTest {
             }
             """;
     private static final String CANONICAL_MATH_ANALYSIS_CLUSTER_ID = "a668ea17-9226-4074-8f8e-051acbe839eb";
+    private static final String CANONICAL_MATH_FUNCTION_CONCEPT_ID = "09f47964-2cd0-410e-93ee-9632b582fc91";
+    private static final String CANONICAL_MATH_WHY_ID = "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2";
     private static final String CANONICAL_MATH_CALCULATE_VALUES_ID = "c65ecabf-d00b-4e2d-99ae-b64692325ffb";
     private static final String CANONICAL_MATH_READ_VALUES_ID = "a8c42ee9-2898-4247-819f-c235032ac78a";
     private static final String CANONICAL_MATH_SYMMETRY_ID = "d8c9eb57-1614-4c1d-829a-618134def352";
@@ -243,8 +245,10 @@ public class LearnerControllerIntegrationTest {
     private static final String LEGACY_POLITICS_ECONOMICS_E_PHASE_CLUSTER_ID = "e8dcf1ec-fdda-4528-ab67-212810d973a9";
     private static final String LEGACY_POLITICS_ECONOMICS_WHY_ID = "3bee27bb-2277-4a7a-a66e-5038d6ee1781";
     private static final String LEGACY_MATH_ANALYSIS_CLUSTER_ID = "a6ee6304-8c26-4eda-b56e-676655e703c2";
+    private static final String LEGACY_MATH_ASSUMPTIONS_ID = "3f089297-03ce-42a6-9817-fcb31f75d66a";
     private static final String LEGACY_MATH_FUNCTION_CONCEPT_ID = "0903db01-4377-4a79-8f29-aceffea68f24";
     private static final String LEGACY_MATH_READ_VALUES_ID = "cd46ce36-883e-4e68-8bfd-2bbdc0ecce9d";
+    private static final String LEGACY_MATH_SYMMETRY_ID = "8f42b49d-a2fb-45f5-9da3-97ec96b8113e";
     private static final String LEGACY_MATH_LK_PROOF_STRATEGIES_ID = "b3cd4a12-509f-46bb-b077-6d517a7aab76";
     private static final String LEGACY_MATH_MEMORY_E_PHASE_ID = "cef2c3f7-af4f-41db-809f-805957a66be3";
     private static final String CANONICAL_MATH_MEMORY_E_PHASE_ID = "77259806-add7-5fcb-b89c-376e1b0c88d6";
@@ -427,8 +431,8 @@ public class LearnerControllerIntegrationTest {
         learnerRepository.save(learner);
 
         masteryRepository.saveAll(List.of(
-                new Mastery(learner, LEGACY_MATH_FUNCTION_CONCEPT_ID, 1.0),
-                new Mastery(learner, LEGACY_MATH_READ_VALUES_ID, 1.0)));
+                new Mastery(learner, LEGACY_MATH_ASSUMPTIONS_ID, 1.0),
+                new Mastery(learner, LEGACY_MATH_SYMMETRY_ID, 1.0)));
 
         var response = curriculaService.registerChampion(
                 new ChampionRegistrationRequest(
@@ -492,7 +496,7 @@ public class LearnerControllerIntegrationTest {
         learnerRepository.save(learner);
 
         masteryRepository.saveAll(List.of(
-                new Mastery(learner, LEGACY_MATH_FUNCTION_CONCEPT_ID, 1.0),
+                new Mastery(learner, LEGACY_MATH_SYMMETRY_ID, 1.0),
                 new Mastery(learner, LEGACY_MATH_LK_PROOF_STRATEGIES_ID, 1.0)));
 
         var response = curriculaService.registerChampion(
@@ -521,7 +525,7 @@ public class LearnerControllerIntegrationTest {
         learnerRepository.save(learner);
 
         masteryRepository.saveAll(List.of(
-                new Mastery(learner, LEGACY_MATH_FUNCTION_CONCEPT_ID, 1.0),
+                new Mastery(learner, LEGACY_MATH_SYMMETRY_ID, 1.0),
                 new Mastery(learner, LEGACY_MATH_LK_PROOF_STRATEGIES_ID, 1.0)));
 
         var response = curriculaService.registerChampion(
@@ -839,10 +843,19 @@ public class LearnerControllerIntegrationTest {
         assertThat(planned).hasSize(1);
         assertThat(planned.get(0).path("id").asText()).isEqualTo(CANONICAL_MATH_ANALYSIS_CLUSTER_ID);
         assertThat(jsonIds(goalOptions))
-                .contains(CANONICAL_MATH_CALCULATE_VALUES_ID, CANONICAL_MATH_READ_VALUES_ID, CANONICAL_MATH_SYMMETRY_ID)
-                .doesNotContain(LEGACY_MATH_FUNCTION_CONCEPT_ID, LEGACY_MATH_ANALYSIS_CLUSTER_ID);
+                .contains(CANONICAL_MATH_FUNCTION_CONCEPT_ID)
+                .doesNotContain(
+                        CANONICAL_MATH_CALCULATE_VALUES_ID,
+                        CANONICAL_MATH_READ_VALUES_ID,
+                        CANONICAL_MATH_SYMMETRY_ID,
+                        LEGACY_MATH_FUNCTION_CONCEPT_ID,
+                        LEGACY_MATH_ANALYSIS_CLUSTER_ID);
         assertThat(jsonIds(frontier))
-                .contains(CANONICAL_MATH_CALCULATE_VALUES_ID, CANONICAL_MATH_READ_VALUES_ID, CANONICAL_MATH_SYMMETRY_ID);
+                .contains(CANONICAL_MATH_FUNCTION_CONCEPT_ID)
+                .doesNotContain(
+                        CANONICAL_MATH_CALCULATE_VALUES_ID,
+                        CANONICAL_MATH_READ_VALUES_ID,
+                        CANONICAL_MATH_SYMMETRY_ID);
 
         assertThat(response.body())
                 .doesNotContain(LEGACY_MATH_FUNCTION_CONCEPT_ID);
@@ -956,9 +969,8 @@ public class LearnerControllerIntegrationTest {
         assertThat(planned).hasSize(1);
         assertThat(planned.get(0).path("id").asText()).isEqualTo(CANONICAL_PHYSICS_CLUSTER_ID);
         assertThat(jsonIds(goalOptions))
-                .contains(CANONICAL_PHYSICS_DIAGRAMS_ID)
-                .doesNotContain(LEGACY_PHYSICS_WHY_ID, LEGACY_MATH_FUNCTION_CONCEPT_ID, LEGACY_MATH_READ_VALUES_ID);
-        assertThat(jsonIds(frontier)).contains(CANONICAL_PHYSICS_DIAGRAMS_ID);
+                .doesNotContain(CANONICAL_PHYSICS_DIAGRAMS_ID, LEGACY_PHYSICS_WHY_ID, LEGACY_MATH_FUNCTION_CONCEPT_ID, LEGACY_MATH_READ_VALUES_ID);
+        assertThat(jsonIds(frontier)).doesNotContain(CANONICAL_PHYSICS_DIAGRAMS_ID);
 
         assertThat(response.body())
                 .doesNotContain(LEGACY_PHYSICS_WHY_ID)
@@ -2711,11 +2723,12 @@ public class LearnerControllerIntegrationTest {
         assertThat(body.path("stateMachine").path("requiredAction").asText()).isEqualTo("setActiveGoal");
         assertThat(jsonIds(goalOptions))
                 .contains(
-                        CANONICAL_MATH_CALCULATE_VALUES_ID,
-                        CANONICAL_MATH_SYMMETRY_ID,
-                        CANONICAL_PHYSICS_DIAGRAMS_ID)
+                        CANONICAL_MATH_WHY_ID)
                 .doesNotContain(
+                        CANONICAL_MATH_CALCULATE_VALUES_ID,
                         CANONICAL_MATH_READ_VALUES_ID,
+                        CANONICAL_MATH_SYMMETRY_ID,
+                        CANONICAL_PHYSICS_DIAGRAMS_ID,
                         LEGACY_MATH_ANALYSIS_CLUSTER_ID,
                         LEGACY_PHYSICS_CLUSTER_ID,
                         LEGACY_MATH_FUNCTION_CONCEPT_ID,
@@ -2723,10 +2736,12 @@ public class LearnerControllerIntegrationTest {
                         LEGACY_PHYSICS_WHY_ID);
         assertThat(jsonIds(frontier))
                 .contains(
+                        CANONICAL_MATH_WHY_ID)
+                .doesNotContain(
                         CANONICAL_MATH_CALCULATE_VALUES_ID,
+                        CANONICAL_MATH_READ_VALUES_ID,
                         CANONICAL_MATH_SYMMETRY_ID,
-                        CANONICAL_PHYSICS_DIAGRAMS_ID)
-                .doesNotContain(CANONICAL_MATH_READ_VALUES_ID);
+                        CANONICAL_PHYSICS_DIAGRAMS_ID);
 
         assertThat(response.body())
                 .doesNotContain(LEGACY_MATH_ANALYSIS_CLUSTER_ID)

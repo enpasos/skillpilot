@@ -17,7 +17,7 @@ import { LanguageToggle } from '../components/LanguageToggle'
 import { useLanguage } from '../contexts/LanguageContext'
 
 type RuleStatus = 'pass' | 'warn' | 'fail' | 'not_configured'
-type MaturityLevel = 'M0' | 'M1' | 'M2' | 'M3' | 'M4'
+type MaturityLevel = 'M0' | 'M1' | 'M2' | 'M3' | 'M4' | 'M5'
 
 interface RuleResult {
   id: string
@@ -44,9 +44,27 @@ interface JurisdictionCoverageEntry {
   visibleGoals: number
   visibleAtomicGoals: number
   visibleClusterGoals: number
+  viewAtomicGoals?: number
+  sourceBackedAtomicGoals: number
+  surrogateBackedAtomicGoals: number
+  unsupportedAssignedAtomicGoals: number
+  partialSourceLinkedAtomicGoals: number
+  sourceAtomicGoals?: number
+  sourceMappedToViewAtomicGoals?: number
+  unmappedSourceAtomicGoals?: number
+  sourceExtractedGoals?: number
+  sourceUnregisteredGoals?: number
+  sourceExtractedAtomicGoals?: number
+  sourceUnregisteredAtomicGoals?: number
+  sourceOriginalGoals?: number
+  sourceFullyCoveredOriginalGoals?: number
+  sourcePartiallyCoveredOriginalGoals?: number
+  sourceUncoveredOriginalGoals?: number
   errors: number
   warnings: number
   atomicCoveragePercent: number
+  sourceBackedCoveragePercent: number
+  sourceReverseCoveragePercent?: number
   status: JurisdictionCoverageStatus
 }
 
@@ -54,13 +72,72 @@ interface JurisdictionCoverage {
   dimension: 'jurisdiction'
   totalJurisdictions: number
   totalAtomicGoals: number
+  rawAtomicGoals?: number
   coveredJurisdictions: number
+  sourceBackedJurisdictions: number
   cleanJurisdictions: number
   partialJurisdictions: number
   errorJurisdictions: number
   maxVisibleAtomicGoals: number
+  maxSourceBackedAtomicGoals: number
   maxAtomicCoveragePercent: number
+  maxSourceBackedCoveragePercent: number
+  unsupportedAssignedAtomicGoals: number
+  surrogateBackedAtomicGoals: number
+  partialSourceLinkedAtomicGoals: number
+  sourceAtomicGoals?: number
+  sourceMappedToViewAtomicGoals?: number
+  unmappedSourceAtomicGoals?: number
+  sourceExtractedGoals?: number
+  sourceUnregisteredGoals?: number
+  sourceExtractedAtomicGoals?: number
+  sourceUnregisteredAtomicGoals?: number
+  sourceOriginalGoals?: number
+  sourceFullyCoveredOriginalGoals?: number
+  sourcePartiallyCoveredOriginalGoals?: number
+  sourceUncoveredOriginalGoals?: number
   jurisdictions: JurisdictionCoverageEntry[]
+}
+
+type MappingPipelineStepState = 'complete' | 'incomplete' | 'blocked'
+
+interface MappingPipelineCheck {
+  id: string
+  label: string
+  passed: boolean
+  details: string
+}
+
+interface MappingPipelineStep {
+  id: string
+  label: string
+  status: MappingPipelineStepState
+  dependsOn: string[]
+  checks: MappingPipelineCheck[]
+}
+
+interface MappingPipelineSourceStatus {
+  sourceLandscapeId: string
+  title: string
+  jurisdiction: string
+  path: string
+  currentStep: string
+  completedSteps: number
+  totalSteps: number
+  sourceGoals: number
+  passages: number
+  steps: MappingPipelineStep[]
+}
+
+interface MappingPipelineStatus {
+  totalSources: number
+  completeSources: number
+  incompleteSources: number
+  blockedSources: number
+  maxCompletedSteps: number
+  totalSteps: number
+  currentStep: string
+  sources: MappingPipelineSourceStatus[]
 }
 
 interface CurriculumStatus {
@@ -74,6 +151,7 @@ interface CurriculumStatus {
   atomicGoals: number
   clusterGoals: number
   jurisdictionCoverage?: JurisdictionCoverage
+  mappingPipeline?: MappingPipelineStatus
   scopes: ScopeStatus[]
   rules: RuleResult[]
 }
@@ -115,12 +193,40 @@ const COPY = {
     notConfigured: 'Nicht konfiguriert',
     goals: 'Ziele',
     atomic: 'Atomar',
+    sourceBacked: 'belegt',
+    surrogateBacked: 'Ersatzbeleg',
+    unsupported: 'ohne Lehrplanbeleg',
+    partialSource: 'partiell',
+    visibleAssigned: 'sichtbar',
+    sourceReverse: 'Lehrplan -> Sicht',
+    unmappedSource: 'Lehrplan ungemappt',
+    sourceOriginal: 'Originalziele',
+    sourceIngestionComplete: 'Originalziele vollständig erfasst',
+    sourceOriginalRegistered: 'Originalziele registriert',
+    sourceOriginalCovered: 'Originalziele voll abgedeckt',
+    sourceOriginalExtracted: 'Originalziele im Snapshot',
+    sourceExtractedGoals: 'Snapshot-Knoten lesbar',
+    sourceUnregisteredGoals: 'Snapshot-Ziele unregistriert',
+    sourceExtracted: 'Source-Atome extrahiert',
+    sourceUnregistered: 'Source-Atome unregistriert',
+    yes: 'ja',
+    no: 'nein',
+    rawAtomic: 'Roh-Atomar',
+    deViewAtomic: 'DE-Sicht atomar',
     jurisdictionCoverage: 'Bundesland-Abdeckung',
+    mappingPipeline: 'Bearbeitungspipeline',
+    pipelineProgress: 'Quellen vollständig',
+    currentPipelineStep: 'Nächster offener Schritt',
+    passages: 'Passagen',
+    sourceGoals: 'Source-Ziele',
+    complete: 'abgeschlossen',
+    incomplete: 'offen',
+    blocked: 'blockiert',
     jurisdictions: 'Bundesländer',
     cleanJurisdictions: 'Sauber',
     partialJurisdictions: 'Teilweise',
     errorJurisdictions: 'Fehlerhaft',
-    maxAtomicCoverage: 'Max. Atomabdeckung',
+    maxAtomicCoverage: 'Max. belegte Atomabdeckung',
     routeScopes: 'QA-Scopes',
     rules: 'Regeln',
     details: 'Details',
@@ -151,12 +257,40 @@ const COPY = {
     notConfigured: 'Not configured',
     goals: 'Goals',
     atomic: 'Atomic',
+    sourceBacked: 'source-backed',
+    surrogateBacked: 'surrogate',
+    unsupported: 'without curriculum evidence',
+    partialSource: 'partial',
+    visibleAssigned: 'visible',
+    sourceReverse: 'source -> view',
+    unmappedSource: 'source unmapped',
+    sourceOriginal: 'source originals',
+    sourceIngestionComplete: 'source originals fully captured',
+    sourceOriginalRegistered: 'source originals registered',
+    sourceOriginalCovered: 'source originals fully covered',
+    sourceOriginalExtracted: 'source originals in snapshot',
+    sourceExtractedGoals: 'snapshot nodes readable',
+    sourceUnregisteredGoals: 'snapshot goals unregistered',
+    sourceExtracted: 'extracted source atoms',
+    sourceUnregistered: 'unregistered source atoms',
+    yes: 'yes',
+    no: 'no',
+    rawAtomic: 'Raw atomic',
+    deViewAtomic: 'DE view atomic',
     jurisdictionCoverage: 'Jurisdiction coverage',
+    mappingPipeline: 'Processing pipeline',
+    pipelineProgress: 'Complete sources',
+    currentPipelineStep: 'Next open step',
+    passages: 'Passages',
+    sourceGoals: 'Source goals',
+    complete: 'complete',
+    incomplete: 'open',
+    blocked: 'blocked',
     jurisdictions: 'Jurisdictions',
     cleanJurisdictions: 'Clean',
     partialJurisdictions: 'Partial',
     errorJurisdictions: 'Error',
-    maxAtomicCoverage: 'Max atomic coverage',
+    maxAtomicCoverage: 'Max source-backed atomic coverage',
     routeScopes: 'QA scopes',
     rules: 'Rules',
     details: 'Details',
@@ -191,15 +325,22 @@ const maturityClass: Record<MaturityLevel, string> = {
   M2: 'border-cyan-200 bg-cyan-50 text-cyan-700 dark:border-cyan-900/60 dark:bg-cyan-950/30 dark:text-cyan-300',
   M3: 'border-emerald-200 bg-emerald-50 text-emerald-700 dark:border-emerald-900/60 dark:bg-emerald-950/30 dark:text-emerald-300',
   M4: 'border-violet-200 bg-violet-50 text-violet-700 dark:border-violet-900/60 dark:bg-violet-950/30 dark:text-violet-300',
+  M5: 'border-fuchsia-200 bg-fuchsia-50 text-fuchsia-700 dark:border-fuchsia-900/60 dark:bg-fuchsia-950/30 dark:text-fuchsia-300',
 }
 
-const maturityLevels: Array<'all' | MaturityLevel> = ['all', 'M0', 'M1', 'M2', 'M3', 'M4']
+const maturityLevels: Array<'all' | MaturityLevel> = ['all', 'M0', 'M1', 'M2', 'M3', 'M4', 'M5']
 
 const coverageStatusClass: Record<JurisdictionCoverageStatus, string> = {
   covered: 'border-emerald-200 bg-emerald-50 text-emerald-700 dark:border-emerald-900/60 dark:bg-emerald-950/30 dark:text-emerald-300',
   partial: 'border-amber-200 bg-amber-50 text-amber-700 dark:border-amber-900/60 dark:bg-amber-950/30 dark:text-amber-300',
   error: 'border-red-200 bg-red-50 text-red-700 dark:border-red-900/60 dark:bg-red-950/30 dark:text-red-300',
   none: 'border-slate-200 bg-slate-100 text-slate-500 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-400',
+}
+
+const pipelineStatusClass: Record<MappingPipelineStepState, string> = {
+  complete: 'border-emerald-200 bg-emerald-50 text-emerald-700 dark:border-emerald-900/60 dark:bg-emerald-950/30 dark:text-emerald-300',
+  incomplete: 'border-amber-200 bg-amber-50 text-amber-700 dark:border-amber-900/60 dark:bg-amber-950/30 dark:text-amber-300',
+  blocked: 'border-red-200 bg-red-50 text-red-700 dark:border-red-900/60 dark:bg-red-950/30 dark:text-red-300',
 }
 
 function collectRules(curriculum: CurriculumStatus): RuleResult[] {
@@ -220,12 +361,6 @@ function formatDate(value: string, language: 'de' | 'en'): string {
     dateStyle: 'medium',
     timeStyle: 'short',
   }).format(date)
-}
-
-function formatPercent(value: number, language: 'de' | 'en'): string {
-  return new Intl.NumberFormat(language === 'de' ? 'de-DE' : 'en-US', {
-    maximumFractionDigits: 1,
-  }).format(value)
 }
 
 const StatusBadge: React.FC<{ status: RuleStatus; label: string }> = ({ status, label }) => {
@@ -297,6 +432,11 @@ export const CurriculumQualityDashboardView: React.FC = () => {
   }, [filteredCurricula, payload, selectedId])
 
   const summary = payload?.status.summary
+  const pipelineStatusLabel = (status: MappingPipelineStepState) => ({
+    complete: copy.complete,
+    incomplete: copy.incomplete,
+    blocked: copy.blocked,
+  }[status])
 
   return (
     <div className="min-h-screen bg-chat-bg p-4 text-text-primary md:p-6">
@@ -355,7 +495,7 @@ export const CurriculumQualityDashboardView: React.FC = () => {
         ) : null}
 
         {summary ? (
-          <section className="grid grid-cols-2 gap-3 md:grid-cols-4 xl:grid-cols-9">
+          <section className="grid grid-cols-2 gap-3 md:grid-cols-4 xl:grid-cols-10">
             <div className="rounded-2xl border border-border-color bg-white/70 p-4 dark:bg-slate-900/70">
               <div className="text-xs font-semibold uppercase tracking-wide text-text-secondary">{copy.curricula}</div>
               <div className="mt-2 text-2xl font-bold">{summary.curricula}</div>
@@ -372,10 +512,10 @@ export const CurriculumQualityDashboardView: React.FC = () => {
               <div className="text-xs font-semibold uppercase tracking-wide text-text-secondary">{copy.notConfigured}</div>
               <div className="mt-2 text-2xl font-bold text-slate-600 dark:text-slate-300">{summary.ruleStatus.not_configured}</div>
             </div>
-            {(['M0', 'M1', 'M2', 'M3', 'M4'] as MaturityLevel[]).map((level) => (
+            {(['M0', 'M1', 'M2', 'M3', 'M4', 'M5'] as MaturityLevel[]).map((level) => (
               <div key={level} className="rounded-2xl border border-border-color bg-white/70 p-4 dark:bg-slate-900/70">
                 <div className="text-xs font-semibold uppercase tracking-wide text-text-secondary">{level}</div>
-                <div className="mt-2 text-2xl font-bold">{summary.maturity[level]}</div>
+                <div className="mt-2 text-2xl font-bold">{summary.maturity[level] ?? 0}</div>
               </div>
             ))}
           </section>
@@ -412,13 +552,14 @@ export const CurriculumQualityDashboardView: React.FC = () => {
             </div>
 
             <div className="overflow-x-auto">
-              <table className="w-full min-w-[860px] text-left text-sm">
+              <table className="w-full min-w-[980px] text-left text-sm">
                 <thead className="border-b border-border-color text-xs uppercase tracking-wide text-text-secondary">
                   <tr>
                     <th className="py-2 pr-3">{copy.curricula}</th>
                     <th className="py-2 pr-3">{copy.maturity}</th>
                     <th className="py-2 pr-3 text-right">{copy.goals}</th>
                     <th className="py-2 pr-3 text-right">{copy.atomic}</th>
+                    <th className="py-2 pr-3 text-right">{copy.mappingPipeline}</th>
                     <th className="py-2 pr-3 text-right">{copy.jurisdictions}</th>
                     <th className="py-2 pr-3 text-right">{copy.routeScopes}</th>
                     <th className="py-2 pr-3 text-right">{copy.warnings}</th>
@@ -441,6 +582,11 @@ export const CurriculumQualityDashboardView: React.FC = () => {
                       <td className="py-3 pr-3"><MaturityBadge level={curriculum.maturity} /></td>
                       <td className="py-3 pr-3 text-right tabular-nums">{curriculum.goals}</td>
                       <td className="py-3 pr-3 text-right tabular-nums">{curriculum.atomicGoals}</td>
+                      <td className="py-3 pr-3 text-right tabular-nums">
+                        {curriculum.mappingPipeline
+                          ? `${curriculum.mappingPipeline.completeSources}/${curriculum.mappingPipeline.totalSources}`
+                          : '—'}
+                      </td>
                       <td className="py-3 pr-3 text-right tabular-nums">
                         {curriculum.jurisdictionCoverage
                           ? `${curriculum.jurisdictionCoverage.cleanJurisdictions}/${curriculum.jurisdictionCoverage.totalJurisdictions}`
@@ -482,6 +628,57 @@ export const CurriculumQualityDashboardView: React.FC = () => {
                   </div>
                 </div>
 
+                {selectedCurriculum.mappingPipeline ? (
+                  <div>
+                    <h3 className="mb-2 flex items-center gap-2 text-sm font-semibold uppercase tracking-wide text-text-secondary">
+                      <ListChecks size={15} />
+                      <span>{copy.mappingPipeline}</span>
+                    </h3>
+                    <div className="mb-3 grid grid-cols-2 gap-2 text-sm">
+                      <div className="rounded-xl border border-border-color p-3">
+                        <div className="text-xs text-text-secondary">{copy.pipelineProgress}</div>
+                        <div className="mt-1 text-lg font-semibold">
+                          {selectedCurriculum.mappingPipeline.completeSources}/{selectedCurriculum.mappingPipeline.totalSources}
+                        </div>
+                      </div>
+                      <div className="rounded-xl border border-border-color p-3">
+                        <div className="text-xs text-text-secondary">{copy.currentPipelineStep}</div>
+                        <div className="mt-1 text-lg font-semibold">{selectedCurriculum.mappingPipeline.currentStep || '—'}</div>
+                      </div>
+                    </div>
+                    <div className="space-y-2">
+                      {selectedCurriculum.mappingPipeline.sources.map((source) => (
+                        <div key={source.sourceLandscapeId} className="rounded-xl border border-border-color p-3">
+                          <div className="flex items-start justify-between gap-2">
+                            <div className="min-w-0">
+                              <div className="font-semibold">{source.jurisdiction || '—'} · {source.title}</div>
+                              <div className="mt-1 truncate font-mono text-[11px] text-text-secondary">{source.path}</div>
+                            </div>
+                            <span className="shrink-0 rounded-full border border-border-color px-2 py-0.5 text-xs font-semibold tabular-nums">
+                              {source.completedSteps}/{source.totalSteps}
+                            </span>
+                          </div>
+                          <div className="mt-2 flex flex-wrap gap-1.5">
+                            {source.steps.map((step) => (
+                              <span
+                                key={`${source.sourceLandscapeId}-${step.id}`}
+                                className={`rounded-full border px-2 py-0.5 text-[11px] font-semibold ${pipelineStatusClass[step.status]}`}
+                                title={`${step.label}: ${pipelineStatusLabel(step.status)}`}
+                              >
+                                {step.id} {pipelineStatusLabel(step.status)}
+                              </span>
+                            ))}
+                          </div>
+                          <div className="mt-2 flex flex-wrap gap-2 text-xs text-text-secondary">
+                            <span>{source.passages} {copy.passages}</span>
+                            <span>{source.sourceGoals} {copy.sourceGoals}</span>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                ) : null}
+
                 {selectedCurriculum.jurisdictionCoverage ? (
                   <div>
                     <h3 className="mb-2 flex items-center gap-2 text-sm font-semibold uppercase tracking-wide text-text-secondary">
@@ -496,12 +693,14 @@ export const CurriculumQualityDashboardView: React.FC = () => {
                         </div>
                       </div>
                       <div className="rounded-xl border border-border-color p-3">
-                        <div className="text-xs text-text-secondary">{copy.maxAtomicCoverage}</div>
+                        <div className="text-xs text-text-secondary">{copy.deViewAtomic}</div>
                         <div className="mt-1 text-lg font-semibold">
-                          {selectedCurriculum.jurisdictionCoverage.maxVisibleAtomicGoals}/{selectedCurriculum.jurisdictionCoverage.totalAtomicGoals}
-                          <span className="ml-1 text-xs text-text-secondary">
-                            ({formatPercent(selectedCurriculum.jurisdictionCoverage.maxAtomicCoveragePercent, language)}%)
-                          </span>
+                          {selectedCurriculum.jurisdictionCoverage.totalAtomicGoals}
+                          {selectedCurriculum.jurisdictionCoverage.rawAtomicGoals ? (
+                            <span className="ml-1 text-xs text-text-secondary">
+                              ({selectedCurriculum.jurisdictionCoverage.rawAtomicGoals} {copy.rawAtomic})
+                            </span>
+                          ) : null}
                         </div>
                       </div>
                       <div className="rounded-xl border border-border-color p-3">
@@ -518,7 +717,10 @@ export const CurriculumQualityDashboardView: React.FC = () => {
                       </div>
                     </div>
                     <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
-                      {selectedCurriculum.jurisdictionCoverage.jurisdictions.map((entry) => (
+                      {selectedCurriculum.jurisdictionCoverage.jurisdictions.map((entry) => {
+                        const sourceIngestionComplete = (entry.sourceExtractedAtomicGoals ?? 0) > 0
+                          && (entry.sourceUnregisteredAtomicGoals ?? 0) === 0
+                        return (
                         <div
                           key={entry.jurisdiction}
                           className={`rounded-lg border px-2.5 py-2 text-xs ${coverageStatusClass[entry.status]}`}
@@ -526,11 +728,64 @@ export const CurriculumQualityDashboardView: React.FC = () => {
                         >
                           <div className="flex items-center justify-between gap-2">
                             <span className="font-semibold">{entry.jurisdiction}</span>
-                            <span className="tabular-nums">{formatPercent(entry.atomicCoveragePercent, language)}%</span>
+                            <span className={`font-semibold tabular-nums ${sourceIngestionComplete ? 'text-emerald-700 dark:text-emerald-300' : 'text-red-700 dark:text-red-300'}`}>
+                              {sourceIngestionComplete ? copy.yes : copy.no}
+                            </span>
                           </div>
+                          <div className="mt-1 font-semibold">
+                            {copy.sourceIngestionComplete}: {sourceIngestionComplete ? copy.yes : copy.no}
+                          </div>
+                          {((entry.sourceExtractedAtomicGoals ?? 0) > 0 || (entry.sourceOriginalGoals ?? 0) > 0) ? (
+                            <div className="mt-1 tabular-nums">
+                              {entry.sourceExtractedAtomicGoals ?? 0} {copy.sourceOriginalExtracted}
+                            </div>
+                          ) : null}
+                          {(entry.sourceOriginalGoals ?? 0) > 0 ? (
+                            <div className="mt-1 tabular-nums">
+                              {entry.sourceOriginalGoals} {copy.sourceOriginalRegistered}
+                            </div>
+                          ) : null}
+                          {sourceIngestionComplete && (entry.sourceOriginalGoals ?? 0) > 0 ? (
+                            <div className="mt-1 tabular-nums">
+                              {entry.sourceFullyCoveredOriginalGoals ?? 0}/{entry.sourceOriginalGoals} {copy.sourceOriginalCovered}
+                            </div>
+                          ) : null}
+                          {(entry.sourceUnregisteredAtomicGoals ?? 0) > 0 ? (
+                            <div className="mt-1 tabular-nums">
+                              {entry.sourceUnregisteredAtomicGoals} {copy.sourceUnregistered}
+                            </div>
+                          ) : null}
+                          {(entry.sourceAtomicGoals ?? 0) > 0 ? (
+                            <div className="mt-1 tabular-nums">
+                              {entry.sourceMappedToViewAtomicGoals ?? 0}/{entry.sourceAtomicGoals} {copy.sourceReverse}
+                            </div>
+                          ) : null}
                           <div className="mt-1 tabular-nums">
-                            {entry.visibleAtomicGoals}/{selectedCurriculum.jurisdictionCoverage?.totalAtomicGoals ?? 0} {copy.atomic}
+                            {entry.sourceBackedAtomicGoals ?? entry.visibleAtomicGoals}/{entry.viewAtomicGoals ?? entry.visibleAtomicGoals} {copy.sourceBacked}
                           </div>
+                          <div className="mt-1 tabular-nums text-current/80">
+                            {entry.viewAtomicGoals ?? entry.visibleAtomicGoals} {copy.visibleAssigned}
+                          </div>
+                          {(entry.unsupportedAssignedAtomicGoals ?? 0) > 0 ? (
+                            <div className="mt-1 tabular-nums">
+                              {entry.unsupportedAssignedAtomicGoals} {copy.unsupported}
+                            </div>
+                          ) : null}
+                          {(entry.unmappedSourceAtomicGoals ?? 0) > 0 ? (
+                            <div className="mt-1 tabular-nums">
+                              {entry.unmappedSourceAtomicGoals} {copy.unmappedSource}
+                            </div>
+                          ) : null}
+                          {(entry.surrogateBackedAtomicGoals ?? 0) > 0 ? (
+                            <div className="mt-1 tabular-nums">
+                              {entry.surrogateBackedAtomicGoals} {copy.surrogateBacked}
+                            </div>
+                          ) : null}
+                          {(entry.partialSourceLinkedAtomicGoals ?? 0) > 0 ? (
+                            <div className="mt-1 tabular-nums">
+                              {entry.partialSourceLinkedAtomicGoals} {copy.partialSource}
+                            </div>
+                          ) : null}
                           {entry.errors > 0 || entry.warnings > 0 ? (
                             <div className="mt-1 tabular-nums">
                               {entry.errors > 0 ? `${entry.errors} ${copy.failures}` : ''}
@@ -539,7 +794,8 @@ export const CurriculumQualityDashboardView: React.FC = () => {
                             </div>
                           ) : null}
                         </div>
-                      ))}
+                        )
+                      })}
                     </div>
                   </div>
                 ) : null}

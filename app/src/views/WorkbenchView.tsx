@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { ArrowRight, Blocks, BookOpenText, Gauge, Home, Layers3, ListChecks, Network, Wrench } from 'lucide-react'
+import { ArrowRight, Blocks, BookOpenText, Gauge, Home, Layers3, ListChecks, Network, Split, Wrench } from 'lucide-react'
 import { LanguageToggle } from '../components/LanguageToggle'
 import { useLanguage } from '../contexts/LanguageContext'
 
@@ -106,6 +106,14 @@ const TOOL_DEFINITIONS: Record<'de' | 'en', WorkbenchTool[]> = {
       group: 'maintenance',
       icon: Gauge,
     },
+    {
+      title: 'Curriculum Mapping Workbench',
+      path: '/curriculum-mapping-workbench',
+      description: 'Zeigt Source-Snapshot und SkillPilot-Tree nebeneinander und macht Mapping-Belege bidirektional anklickbar.',
+      scope: 'Source-Snapshots, Mapping-Dateien, Source-Closure und learner-facing Composition Views',
+      group: 'maintenance',
+      icon: Split,
+    },
   ],
   en: [
     {
@@ -155,6 +163,14 @@ const TOOL_DEFINITIONS: Record<'de' | 'en', WorkbenchTool[]> = {
       scope: 'persisted QA status snapshots under docs/qa-ci/status',
       group: 'maintenance',
       icon: Gauge,
+    },
+    {
+      title: 'Curriculum Mapping Workbench',
+      path: '/curriculum-mapping-workbench',
+      description: 'Shows source snapshot and SkillPilot tree side by side with bidirectional evidence navigation.',
+      scope: 'source snapshots, mapping files, source closure, and learner-facing composition views',
+      group: 'maintenance',
+      icon: Split,
     },
   ],
 }
