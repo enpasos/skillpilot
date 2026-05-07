@@ -1,6 +1,6 @@
 # Curriculum Quality Status
 
-Generated: 2026-05-07T09:40:37.400Z
+Generated: 2026-05-07T12:40:57.507Z
 Rules version: curriculum-quality-v1
 
 ## Summary
@@ -31,7 +31,7 @@ Rules version: curriculum-quality-v1
 | Informatik (Gymnasium, DE) | M0 | 221 | 180 | 0/2 | 0/16 | 0 | 0 | 2 |
 | Italienisch (Gymnasium, DE) | M0 | 8 | 7 | 0/1 | 0/16 | 0 | 0 | 2 |
 | Latein (Gymnasium, DE) | M0 | 142 | 109 | 0/2 | 0/16 | 0 | 0 | 2 |
-| Mathematik (Gymnasium, DE) | M0 | 979 | 786 | 5/31 | 0/16 | 2 | 4 | 4 |
+| Mathematik (Gymnasium, DE) | M0 | 979 | 786 | 9/31 | 0/16 | 2 | 4 | 4 |
 | Musik (Gymnasium, DE) | M0 | 76 | 52 | 0/2 | 0/16 | 0 | 0 | 2 |
 | Physik (Gymnasium, DE) | M0 | 475 | 392 | 0/24 | 0/16 | 2 | 2 | 2 |
 | Politik und Wirtschaft (Gymnasium, DE) | M0 | 208 | 175 | 0/2 | 0/16 | 0 | 0 | 2 |
@@ -70,10 +70,10 @@ Rules version: curriculum-quality-v1
 | Italienisch (Gymnasium, DE) | Italienisch (Gymnasium) | DE-BY | No extraction | 0/3 | MAPPING-1 | 0 | 0 | 0 | 0 | 0% |  |
 | Latein (Gymnasium, DE) | Latein (Gymnasium) | DE-BY | No extraction | 0/3 | MAPPING-1 | 0 | 0 | 0 | 0 | 0% |  |
 | Latein (Gymnasium, DE) | Latein Oberstufe (Hessen, KC 2024) | DE-HE | No extraction | 0/3 | MAPPING-1 | 0 | 0 | 0 | 0 | 0% |  |
-| Mathematik (Gymnasium, DE) | Mathematik Oberstufe (Brandenburg, Pilot-Quellsnapshot) | DE-BB | Snapshot diagnostic | 0/3 | MAPPING-1 | 0 | 91 | 78 | 13 | 86% | not pipeline-capable: no passage extraction |
-| Mathematik (Gymnasium, DE) | Mathematik Sekundarstufe I (Brandenburg, Pilot-Quellsnapshot) | DE-BB | Snapshot diagnostic | 0/3 | MAPPING-1 | 0 | 68 | 26 | 42 | 38% | not pipeline-capable: no passage extraction |
-| Mathematik (Gymnasium, DE) | Mathematik Oberstufe (Berlin, Pilot-Quellsnapshot) | DE-BE | Snapshot diagnostic | 0/3 | MAPPING-1 | 0 | 120 | 38 | 82 | 32% | not pipeline-capable: no passage extraction |
-| Mathematik (Gymnasium, DE) | Mathematik Sekundarstufe I (Berlin, Pilot-Quellsnapshot) | DE-BE | Snapshot diagnostic | 0/3 | MAPPING-1 | 0 | 67 | 2 | 65 | 3% | not pipeline-capable: no passage extraction |
+| Mathematik (Gymnasium, DE) | DE-BB - Mathematik Oberstufe (Brandenburg, GOST 2022 Source-Extraction) | DE-BB | 1/1 original source(s) | 4/4 | - | 14 | 196 | 40 | 156 | 20% |  |
+| Mathematik (Gymnasium, DE) | DE-BB - Mathematik Sekundarstufe I (Brandenburg, RLP 1-10 Source-Extraction) | DE-BB | 1/1 original source(s) | 4/4 | - | 19 | 289 | 45 | 244 | 16% |  |
+| Mathematik (Gymnasium, DE) | DE-BE - Mathematik Oberstufe (Berlin, GO 2014 Source-Extraction) | DE-BE | 1/1 original source(s) | 4/4 | - | 15 | 195 | 18 | 177 | 9% |  |
+| Mathematik (Gymnasium, DE) | DE-BE - Mathematik Sekundarstufe I (Berlin, RLP 1-10 Source-Extraction) | DE-BE | 1/1 original source(s) | 4/4 | - | 19 | 289 | 45 | 244 | 16% |  |
 | Mathematik (Gymnasium, DE) | DE-BW - Mathematik Kursstufe (Baden-Wuerttemberg, BP2016 Source-Extraction) | DE-BW | 1/1 original source(s) | 3/3 | - | 16 | 221 | 71 | 150 | 32% |  |
 | Mathematik (Gymnasium, DE) | Mathematik Sekundarstufe I (Baden-Wuerttemberg, BP2016 Source-Extraction) | DE-BW | 1/1 original source(s) | 3/3 | - | 20 | 278 | 95 | 183 | 34% |  |
 | Mathematik (Gymnasium, DE) | DE-BY - Mathematik Gymnasium (Bayern, LehrplanPLUS Source-Extraction) | DE-BY | 12/12 original source(s) | 3/3 | - | 66 | 293 | 157 | 136 | 54% |  |
@@ -153,7 +153,7 @@ Rules version: curriculum-quality-v1
 | Informatik (Gymnasium, DE) | 0/16 | 180 | 180 | 2 | 0 | 483 | 0 | 0 | 0 | 0 | 58 | 399 | 0 | 2 | 174 (96.7%) |
 | Italienisch (Gymnasium, DE) | 0/16 | 7 | 7 | 1 | 0 | 8 | 0 | 0 | 0 | 0 | 0 | 7 | 0 | 1 | 7 (100%) |
 | Latein (Gymnasium, DE) | 0/16 | 109 | 109 | 2 | 0 | 1035 | 0 | 0 | 0 | 0 | 0 | 942 | 0 | 2 | 109 (100%) |
-| Mathematik (Gymnasium, DE) | 0/16 | 687 | 786 | 16 | 3000 | 3064 | 1671 | 95 | 2578 | 95 | 9303 | 1075 | 0 | 16 | 586 (85.4%) |
+| Mathematik (Gymnasium, DE) | 0/16 | 687 | 786 | 16 | 3623 | 3064 | 1671 | 1064 | 3297 | 1064 | 9282 | 1075 | 0 | 16 | 586 (85.4%) |
 | Musik (Gymnasium, DE) | 0/16 | 52 | 52 | 2 | 0 | 329 | 0 | 0 | 0 | 0 | 0 | 257 | 0 | 2 | 52 (100%) |
 | Physik (Gymnasium, DE) | 0/16 | 326 | 392 | 9 | 642 | 1411 | 451 | 13 | 505 | 10 | 760 | 777 | 0 | 16 | 288 (90.6%) |
 | Politik und Wirtschaft (Gymnasium, DE) | 0/16 | 175 | 175 | 2 | 0 | 607 | 0 | 0 | 0 | 0 | 12 | 521 | 0 | 2 | 175 (100%) |

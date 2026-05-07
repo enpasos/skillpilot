@@ -244,6 +244,8 @@ interface MappingPipelineSourceStatus {
   sourceLandscapeId: string
   title: string
   jurisdiction: string
+  subject?: string
+  stage?: string
   path: string
   sourceKind: 'source-extraction' | 'legacy-snapshot' | 'missing-extraction'
   sourceDocuments?: MappingPipelineSourceDocumentStatus[]
@@ -259,6 +261,81 @@ interface MappingPipelineSourceStatus {
   partialMappings?: number
   otherMappings?: number
   steps: MappingPipelineStep[]
+}
+
+const SOURCE_GOAL_COUNT_DEVIATION_THRESHOLD = 0.3
+const SOURCE_GOAL_COUNT_BASELINE_JURISDICTIONS = new Set(['DE-HE', 'DE-BW'])
+
+function median(values: number[]): number {
+  const sorted = [...values].sort((a, b) => a - b)
+  if (sorted.length === 0) return 0
+  const middle = Math.floor(sorted.length / 2)
+  return sorted.length % 2 === 0
+    ? (sorted[middle - 1] + sorted[middle]) / 2
+    : sorted[middle]
+}
+
+function sourceGoalCountGroupKey(source: MappingPipelineSourceStatus): string | null {
+  if (source.sourceKind !== 'source-extraction') return null
+  const subject = source.subject?.trim().toLowerCase()
+  const stage = source.stage?.trim().toLowerCase()
+  if (!subject || !stage) return null
+  return `${subject}:${stage}`
+}
+
+function appendSourceGoalCountPeerChecks(sources: Map<string, MappingPipelineSourceStatus>): void {
+  const sourceExtractionStatuses = Array.from(sources.values())
+    .filter((source) => source.sourceKind === 'source-extraction' && source.sourceGoals > 0)
+  const baselineByGroup = new Map<string, number[]>()
+
+  sourceExtractionStatuses
+    .filter((source) =>
+      source.currentStep === ''
+      && source.completedSteps === source.totalSteps
+      && SOURCE_GOAL_COUNT_BASELINE_JURISDICTIONS.has(source.jurisdiction))
+    .forEach((source) => {
+      const key = sourceGoalCountGroupKey(source)
+      if (!key) return
+      const counts = baselineByGroup.get(key) ?? []
+      counts.push(source.sourceGoals)
+      baselineByGroup.set(key, counts)
+    })
+
+  sourceExtractionStatuses
+    .filter((source) => !SOURCE_GOAL_COUNT_BASELINE_JURISDICTIONS.has(source.jurisdiction))
+    .forEach((source) => {
+      const key = sourceGoalCountGroupKey(source)
+      if (!key) return
+      const peerCounts = baselineByGroup.get(key) ?? []
+      if (peerCounts.length < 2) return
+
+      const baseline = median(peerCounts)
+      const lowerBound = baseline * (1 - SOURCE_GOAL_COUNT_DEVIATION_THRESHOLD)
+      const upperBound = baseline * (1 + SOURCE_GOAL_COUNT_DEVIATION_THRESHOLD)
+      const withinRange = source.sourceGoals >= lowerBound && source.sourceGoals <= upperBound
+      const percent = baseline === 0 ? 0 : Math.round(((source.sourceGoals - baseline) / baseline) * 100)
+      const details = `${source.sourceGoals} Source-Ziele; Vergleich HE/BW (${peerCounts.join('/')}) Median ${Math.round(baseline)}; zulässiger 30%-Korridor ${Math.ceil(lowerBound)}-${Math.floor(upperBound)}; Abweichung ${percent}%.`
+      const nextSteps = source.steps.map((step) => {
+        if (step.id !== 'MAPPING-2') return step
+        const checks = step.checks.filter((check) => check.id !== 'source-goal-count-peer-baseline')
+        checks.push({
+          id: 'source-goal-count-peer-baseline',
+          label: 'Source-Ziel-Anzahl liegt im geprüften HE/BW-Plausibilitätskorridor',
+          passed: withinRange,
+          details,
+        })
+        return {
+          ...step,
+          status: withinRange ? step.status : 'incomplete',
+          checks,
+        }
+      })
+      source.steps = nextSteps
+      source.completedSteps = nextSteps.filter((step) => step.status === 'complete').length
+      source.currentStep = source.completedSteps === nextSteps.length
+        ? ''
+        : nextSteps.find((step) => step.status !== 'complete')?.id ?? source.currentStep
+    })
 }
 
 interface MappingPipelineStatus {
@@ -2020,6 +2097,8 @@ function readSourceExtractionPipelinesByLandscapeId(): Map<string, MappingPipeli
         sourceLandscapeId: extraction.sourceLandscapeId,
         title: extraction.title ?? registryEntry?.title ?? extraction.extractionId ?? extraction.sourceLandscapeId,
         jurisdiction: normalizeJurisdiction(registryEntry?.jurisdiction ?? extraction.jurisdiction) ?? String(registryEntry?.jurisdiction ?? extraction.jurisdiction ?? ''),
+        subject: typeof extraction.subject === 'string' ? extraction.subject : undefined,
+        stage: typeof extraction.stage === 'string' ? extraction.stage : undefined,
         path: repoPath,
         sourceKind: 'source-extraction',
         sourceDocuments: sourceDocumentsForExtraction(extraction),
@@ -2041,6 +2120,7 @@ function readSourceExtractionPipelinesByLandscapeId(): Map<string, MappingPipeli
     }
   })
 
+  appendSourceGoalCountPeerChecks(result)
   return result
 }
 

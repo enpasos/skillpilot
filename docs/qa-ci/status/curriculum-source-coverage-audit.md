@@ -1,6 +1,6 @@
 # Curriculum Source Coverage Audit
 
-Generated: 2026-05-07T09:40:31.995Z
+Generated: 2026-05-07T12:40:52.743Z
 
 This audit separates inhaltliche Abdeckung from passgenaue Zuordnung. `provenance`, reviewed `mapping` entries including `partial`, and explicitly reviewed requires-closure surrogate entries count as Lehrplan evidence; `partial` mappings remain visible as quality warnings. `override`, `child-union`, and automatic `requires-closure` do not count as source coverage.
 
@@ -15,8 +15,8 @@ Atomic goals: 786
 | DE-BW | error | 332/786 (42.2%) | 0 | 454 | 514 | 182 | 165 | 165 | 0 |
 | DE-HE | error | 655/786 (83.3%) | 0 | 131 | 719 | 64 | 0 | 0 | 0 |
 | DE-BY | error | 192/786 (24.4%) | 0 | 594 | 351 | 159 | 31 | 31 | 0 |
-| DE-BB | error | 99/786 (12.6%) | 0 | 687 | 200 | 101 | 9 | 9 | 0 |
-| DE-BE | error | 107/786 (13.6%) | 0 | 679 | 260 | 153 | 75 | 75 | 0 |
+| DE-BB | error | 136/786 (17.3%) | 0 | 650 | 370 | 234 | 38 | 38 | 0 |
+| DE-BE | error | 167/786 (21.2%) | 0 | 619 | 399 | 232 | 121 | 121 | 0 |
 | DE-NI | error | 104/786 (13.2%) | 0 | 682 | 227 | 123 | 88 | 88 | 0 |
 | DE-NW | error | 100/786 (12.7%) | 0 | 686 | 217 | 117 | 28 | 28 | 0 |
 | DE-SH | error | 85/786 (10.8%) | 0 | 701 | 197 | 112 | 61 | 61 | 0 |
@@ -39,7 +39,7 @@ Atomic goals: 392
 | DE-HE | error | 355/392 (90.6%) | 0 | 37 | 356 | 1 | 0 | 0 | 0 |
 | DE-BY | error | 33/392 (8.4%) | 0 | 359 | 82 | 49 | 11 | 14 | 0 |
 | DE-BB | error | 16/392 (4.1%) | 0 | 376 | 35 | 19 | 13 | 15 | 0 |
-| DE-BE | error | 16/392 (4.1%) | 0 | 376 | 35 | 19 | 13 | 17 | 0 |
+| DE-BE | error | 16/392 (4.1%) | 0 | 376 | 35 | 19 | 13 | 18 | 0 |
 | DE-NI | error | 42/392 (10.7%) | 0 | 350 | 87 | 45 | 40 | 47 | 0 |
 | DE-NW | error | 20/392 (5.1%) | 0 | 372 | 74 | 54 | 8 | 16 | 0 |
 | DE-SH | error | 18/392 (4.6%) | 0 | 374 | 42 | 24 | 17 | 22 | 0 |
