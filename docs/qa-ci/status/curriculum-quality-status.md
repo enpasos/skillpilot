@@ -1,6 +1,6 @@
 # Curriculum Quality Status
 
-Generated: 2026-05-07T08:02:08.397Z
+Generated: 2026-05-07T09:40:37.400Z
 Rules version: curriculum-quality-v1
 
 ## Summary
@@ -19,27 +19,27 @@ Rules version: curriculum-quality-v1
 
 | Curriculum | Maturity | Goals | Atomic | Passage extraction | Bundeslaender | QA scopes | Warn | Fail |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| Biologie (Gymnasium, DE) | M0 | 216 | 182 | 0/0 | 0/16 | 0 | 0 | 2 |
-| Chemie (Gymnasium, DE) | M0 | 217 | 177 | 0/0 | 0/16 | 0 | 0 | 2 |
-| Chinesisch (Gymnasium, DE) | M0 | 192 | 181 | 0/0 | 0/16 | 0 | 0 | 2 |
-| Deutsch (Gymnasium, DE) | M0 | 181 | 144 | 0/0 | 0/16 | 0 | 0 | 2 |
-| Englisch (Gymnasium, DE) | M0 | 130 | 104 | 0/0 | 0/16 | 0 | 0 | 2 |
-| Französisch (Gymnasium, DE) | M0 | 331 | 275 | 0/0 | 0/16 | 0 | 0 | 2 |
-| Geschichte (Gymnasium, DE) | M0 | 210 | 171 | 0/0 | 0/16 | 0 | 0 | 2 |
-| Griechisch (Gymnasium, DE) | M0 | 198 | 185 | 0/0 | 0/16 | 0 | 0 | 2 |
+| Biologie (Gymnasium, DE) | M0 | 216 | 182 | 0/3 | 0/16 | 0 | 0 | 2 |
+| Chemie (Gymnasium, DE) | M0 | 217 | 177 | 0/4 | 0/16 | 0 | 0 | 2 |
+| Chinesisch (Gymnasium, DE) | M0 | 192 | 181 | 0/2 | 0/16 | 0 | 0 | 2 |
+| Deutsch (Gymnasium, DE) | M0 | 181 | 144 | 0/2 | 0/16 | 0 | 0 | 2 |
+| Englisch (Gymnasium, DE) | M0 | 130 | 104 | 0/2 | 0/16 | 0 | 0 | 2 |
+| Französisch (Gymnasium, DE) | M0 | 331 | 275 | 0/3 | 0/16 | 0 | 0 | 2 |
+| Geschichte (Gymnasium, DE) | M0 | 210 | 171 | 0/2 | 0/16 | 0 | 0 | 2 |
+| Griechisch (Gymnasium, DE) | M0 | 198 | 185 | 0/2 | 0/16 | 0 | 0 | 2 |
 | Gymnasium (DE) | M0 | 1 | 0 | - | 0/16 | 0 | 2 | 0 |
-| Informatik (Gymnasium, DE) | M0 | 221 | 180 | 0/0 | 0/16 | 0 | 0 | 2 |
-| Italienisch (Gymnasium, DE) | M0 | 8 | 7 | 0/0 | 0/16 | 0 | 0 | 2 |
-| Latein (Gymnasium, DE) | M0 | 142 | 109 | 0/0 | 0/16 | 0 | 0 | 2 |
-| Mathematik (Gymnasium, DE) | M0 | 962 | 770 | 4/4 | 0/16 | 2 | 3 | 4 |
-| Musik (Gymnasium, DE) | M0 | 76 | 52 | 0/0 | 0/16 | 0 | 0 | 2 |
-| Physik (Gymnasium, DE) | M0 | 475 | 392 | 0/0 | 0/16 | 2 | 2 | 2 |
-| Politik und Wirtschaft (Gymnasium, DE) | M0 | 208 | 175 | 0/0 | 0/16 | 0 | 0 | 2 |
-| Polnisch (Gymnasium, DE) | M0 | 5 | 4 | 0/0 | 0/16 | 0 | 0 | 2 |
-| Russisch (Gymnasium, DE) | M0 | 8 | 7 | 0/0 | 0/16 | 0 | 0 | 2 |
-| Spanisch (Gymnasium, DE) | M0 | 83 | 59 | 0/0 | 0/16 | 0 | 0 | 2 |
-| Tschechisch (Gymnasium, DE) | M0 | 5 | 4 | 0/0 | 0/16 | 0 | 0 | 2 |
-| Wirtschaftswissenschaften (Gymnasium, DE) | M0 | 225 | 193 | 0/0 | 0/16 | 0 | 0 | 2 |
+| Informatik (Gymnasium, DE) | M0 | 221 | 180 | 0/2 | 0/16 | 0 | 0 | 2 |
+| Italienisch (Gymnasium, DE) | M0 | 8 | 7 | 0/1 | 0/16 | 0 | 0 | 2 |
+| Latein (Gymnasium, DE) | M0 | 142 | 109 | 0/2 | 0/16 | 0 | 0 | 2 |
+| Mathematik (Gymnasium, DE) | M0 | 979 | 786 | 5/31 | 0/16 | 2 | 4 | 4 |
+| Musik (Gymnasium, DE) | M0 | 76 | 52 | 0/2 | 0/16 | 0 | 0 | 2 |
+| Physik (Gymnasium, DE) | M0 | 475 | 392 | 0/24 | 0/16 | 2 | 2 | 2 |
+| Politik und Wirtschaft (Gymnasium, DE) | M0 | 208 | 175 | 0/2 | 0/16 | 0 | 0 | 2 |
+| Polnisch (Gymnasium, DE) | M0 | 5 | 4 | 0/1 | 0/16 | 0 | 0 | 2 |
+| Russisch (Gymnasium, DE) | M0 | 8 | 7 | 0/1 | 0/16 | 0 | 0 | 2 |
+| Spanisch (Gymnasium, DE) | M0 | 83 | 59 | 0/2 | 0/16 | 0 | 0 | 2 |
+| Tschechisch (Gymnasium, DE) | M0 | 5 | 4 | 0/1 | 0/16 | 0 | 0 | 2 |
+| Wirtschaftswissenschaften (Gymnasium, DE) | M0 | 225 | 193 | 0/2 | 0/16 | 0 | 0 | 2 |
 
 ## Mapping Pipeline
 
@@ -76,7 +76,7 @@ Rules version: curriculum-quality-v1
 | Mathematik (Gymnasium, DE) | Mathematik Sekundarstufe I (Berlin, Pilot-Quellsnapshot) | DE-BE | Snapshot diagnostic | 0/3 | MAPPING-1 | 0 | 67 | 2 | 65 | 3% | not pipeline-capable: no passage extraction |
 | Mathematik (Gymnasium, DE) | DE-BW - Mathematik Kursstufe (Baden-Wuerttemberg, BP2016 Source-Extraction) | DE-BW | 1/1 original source(s) | 3/3 | - | 16 | 221 | 71 | 150 | 32% |  |
 | Mathematik (Gymnasium, DE) | Mathematik Sekundarstufe I (Baden-Wuerttemberg, BP2016 Source-Extraction) | DE-BW | 1/1 original source(s) | 3/3 | - | 20 | 278 | 95 | 183 | 34% |  |
-| Mathematik (Gymnasium, DE) | Mathematik (Gymnasium) | DE-BY | No extraction | 0/3 | MAPPING-1 | 0 | 0 | 0 | 0 | 0% |  |
+| Mathematik (Gymnasium, DE) | DE-BY - Mathematik Gymnasium (Bayern, LehrplanPLUS Source-Extraction) | DE-BY | 12/12 original source(s) | 3/3 | - | 66 | 293 | 157 | 136 | 54% |  |
 | Mathematik (Gymnasium, DE) | Mathematik Oberstufe (Bremen, Pilot-Quellsnapshot) | DE-HB | Snapshot diagnostic | 0/3 | MAPPING-1 | 0 | 56 | 1 | 50 | 2% | not pipeline-capable: no passage extraction |
 | Mathematik (Gymnasium, DE) | Mathematik Sekundarstufe I (Bremen, Pilot-Quellsnapshot) | DE-HB | Snapshot diagnostic | 0/3 | MAPPING-1 | 0 | 18 | 2 | 15 | 12% | not pipeline-capable: no passage extraction |
 | Mathematik (Gymnasium, DE) | Mathematik Oberstufe (Hessen, KC 2024) | DE-HE | 1/1 original source(s) | 3/3 | - | 25 | 316 | 316 | 0 | 100% |  |
@@ -153,7 +153,7 @@ Rules version: curriculum-quality-v1
 | Informatik (Gymnasium, DE) | 0/16 | 180 | 180 | 2 | 0 | 483 | 0 | 0 | 0 | 0 | 58 | 399 | 0 | 2 | 174 (96.7%) |
 | Italienisch (Gymnasium, DE) | 0/16 | 7 | 7 | 1 | 0 | 8 | 0 | 0 | 0 | 0 | 0 | 7 | 0 | 1 | 7 (100%) |
 | Latein (Gymnasium, DE) | 0/16 | 109 | 109 | 2 | 0 | 1035 | 0 | 0 | 0 | 0 | 0 | 942 | 0 | 2 | 109 (100%) |
-| Mathematik (Gymnasium, DE) | 0/16 | 671 | 770 | 16 | 2707 | 3064 | 1645 | 95 | 2285 | 95 | 9069 | 1098 | 0 | 16 | 586 (87.5%) |
+| Mathematik (Gymnasium, DE) | 0/16 | 687 | 786 | 16 | 3000 | 3064 | 1671 | 95 | 2578 | 95 | 9303 | 1075 | 0 | 16 | 586 (85.4%) |
 | Musik (Gymnasium, DE) | 0/16 | 52 | 52 | 2 | 0 | 329 | 0 | 0 | 0 | 0 | 0 | 257 | 0 | 2 | 52 (100%) |
 | Physik (Gymnasium, DE) | 0/16 | 326 | 392 | 9 | 642 | 1411 | 451 | 13 | 505 | 10 | 760 | 777 | 0 | 16 | 288 (90.6%) |
 | Politik und Wirtschaft (Gymnasium, DE) | 0/16 | 175 | 175 | 2 | 0 | 607 | 0 | 0 | 0 | 0 | 12 | 521 | 0 | 2 | 175 (100%) |

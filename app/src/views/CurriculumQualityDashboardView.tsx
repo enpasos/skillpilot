@@ -230,8 +230,10 @@ const COPY = {
     rawAtomic: 'Roh-Atomar',
     deViewAtomic: 'DE-Sicht atomar',
     jurisdictionCoverage: 'Bundesland-Abdeckung',
+    jurisdictionCoverageDeferred: 'Bundesland-Abdeckung ausgeblendet',
+    jurisdictionCoverageDeferredDetail: 'Erst sinnvoll, wenn alle Quellen dieselbe Mapping-Stufe haben. Aktueller TODO ist die Umstellung der übrigen Quellen auf Passage-Extraction.',
     mappingPipeline: 'Bearbeitungspipeline',
-    pipelineProgress: 'Passage-Extraktion abgeschlossen',
+    pipelineProgress: 'Passage-Extraction bereit',
     sourceExtractionProgress: 'Passage-Extraktion',
     legacySnapshotProgress: 'Snapshot-Diagnosen',
     missingExtractionProgress: 'keine Extraction',
@@ -245,12 +247,12 @@ const COPY = {
     sourceKindLegacySnapshot: 'Snapshot-Diagnose',
     sourceKindMissing: 'keine Extraction',
     noPassageEvidence: 'nicht pipelinefähig: keine Passage-Extraktion',
-    mappingInventory: 'inhaltlich abgedeckt',
+    mappingInventory: 'Source-Inventar gemappt',
     exactMappings: 'passgenau',
     partialMappings: 'über Teil-/Sammelziel',
     otherMappings: 'sonstige',
     qualitySeals: 'Qualitätssiegel',
-    inventoryCompleteSeal: 'Lehrplan vollständig abgedeckt',
+    inventoryCompleteSeal: 'Source-Inventar vollständig',
     passageBackedSeal: 'Passagenbelegt',
     exactMappingSeal: 'nur passgenaue Zuordnung',
     nonExactMappingsNote: 'Alle Source-Ziele sind inhaltlich abgedeckt; partial beschreibt nur die Zuordnungsform, nicht eine offene Lücke.',
@@ -313,8 +315,10 @@ const COPY = {
     rawAtomic: 'Raw atomic',
     deViewAtomic: 'DE view atomic',
     jurisdictionCoverage: 'Jurisdiction coverage',
+    jurisdictionCoverageDeferred: 'Jurisdiction coverage hidden',
+    jurisdictionCoverageDeferredDetail: 'Useful only once all sources are on the same mapping stage. The current TODO is moving the remaining sources to passage extraction.',
     mappingPipeline: 'Processing pipeline',
-    pipelineProgress: 'Passage extraction complete',
+    pipelineProgress: 'passage extraction ready',
     sourceExtractionProgress: 'Passage extraction',
     legacySnapshotProgress: 'Snapshot diagnostics',
     missingExtractionProgress: 'no extraction',
@@ -328,12 +332,12 @@ const COPY = {
     sourceKindLegacySnapshot: 'Snapshot diagnostic',
     sourceKindMissing: 'no extraction',
     noPassageEvidence: 'not pipeline-capable: no passage extraction',
-    mappingInventory: 'content covered',
+    mappingInventory: 'source inventory mapped',
     exactMappings: 'direct fit',
     partialMappings: 'via partial/aggregate goal',
     otherMappings: 'other',
     qualitySeals: 'quality seals',
-    inventoryCompleteSeal: 'source fully covered',
+    inventoryCompleteSeal: 'source inventory complete',
     passageBackedSeal: 'passage-backed',
     exactMappingSeal: 'direct-fit mapping only',
     nonExactMappingsNote: 'All source goals are content-covered; partial describes mapping shape, not an open gap.',
@@ -399,6 +403,7 @@ const pipelineStatusClass: Record<MappingPipelineStepState, string> = {
 
 const pipelineSourceKindCounts = (pipeline: MappingPipelineStatus) => {
   const counts = {
+    sourceExtractionReady: 0,
     sourceExtractionComplete: 0,
     sourceExtractionTotal: 0,
     legacySnapshotComplete: 0,
@@ -411,6 +416,8 @@ const pipelineSourceKindCounts = (pipeline: MappingPipelineStatus) => {
     const isComplete = source.completedSteps === source.totalSteps
     if (source.sourceKind === 'source-extraction') {
       counts.sourceExtractionTotal += 1
+      const hasReadyPassageExtraction = source.steps.some((step) => step.id === 'MAPPING-1' && step.status === 'complete')
+      if (hasReadyPassageExtraction) counts.sourceExtractionReady += 1
       if (isComplete) counts.sourceExtractionComplete += 1
     } else if (source.sourceKind === 'legacy-snapshot') {
       counts.legacySnapshotTotal += 1
@@ -514,6 +521,10 @@ export const CurriculumQualityDashboardView: React.FC = () => {
   const selectedPipelineCounts = selectedCurriculum?.mappingPipeline
     ? pipelineSourceKindCounts(selectedCurriculum.mappingPipeline)
     : null
+  const selectedMappingSourcesTotal = selectedCurriculum?.mappingPipeline?.totalSources ?? 0
+  const selectedPassageExtractionReady = selectedPipelineCounts?.sourceExtractionReady ?? 0
+  const selectedJurisdictionCoverageReady = !selectedCurriculum?.mappingPipeline
+    || (selectedMappingSourcesTotal > 0 && selectedPassageExtractionReady === selectedMappingSourcesTotal)
 
   const summary = payload?.status.summary
   const pipelineStatusLabel = (status: MappingPipelineStepState) => ({
@@ -670,7 +681,7 @@ export const CurriculumQualityDashboardView: React.FC = () => {
                         {curriculum.mappingPipeline
                           ? (() => {
                             const counts = pipelineSourceKindCounts(curriculum.mappingPipeline)
-                            return `${counts.sourceExtractionComplete}/${counts.sourceExtractionTotal}`
+                            return `${counts.sourceExtractionReady}/${curriculum.mappingPipeline.totalSources}`
                           })()
                           : '—'}
                       </td>
@@ -726,7 +737,7 @@ export const CurriculumQualityDashboardView: React.FC = () => {
                         <div className="text-xs text-text-secondary">{copy.pipelineProgress}</div>
                         <div className="mt-1 text-lg font-semibold">
                           {selectedPipelineCounts
-                            ? `${selectedPipelineCounts.sourceExtractionComplete}/${selectedPipelineCounts.sourceExtractionTotal}`
+                            ? `${selectedPassageExtractionReady}/${selectedMappingSourcesTotal}`
                             : '—'}
                         </div>
                       </div>
@@ -892,7 +903,25 @@ export const CurriculumQualityDashboardView: React.FC = () => {
                   </div>
                 ) : null}
 
-                {selectedCurriculum.jurisdictionCoverage ? (
+                {selectedCurriculum.jurisdictionCoverage && !selectedJurisdictionCoverageReady && selectedPipelineCounts ? (
+                  <div>
+                    <h3 className="mb-2 flex items-center gap-2 text-sm font-semibold uppercase tracking-wide text-text-secondary">
+                      <MapPinned size={15} />
+                      <span>{copy.jurisdictionCoverage}</span>
+                    </h3>
+                    <div className="rounded-xl border border-sky-200 bg-sky-50 p-3 text-sm text-sky-700 dark:border-sky-900/60 dark:bg-sky-950/30 dark:text-sky-300">
+                      <div className="font-semibold">{copy.jurisdictionCoverageDeferred}</div>
+                      <div className="mt-1 text-xs">{copy.jurisdictionCoverageDeferredDetail}</div>
+                      <div className="mt-2 flex flex-wrap gap-2 text-xs tabular-nums">
+                        <span>{selectedPipelineCounts.sourceExtractionReady}/{selectedMappingSourcesTotal} {copy.sourceExtractionProgress}</span>
+                        <span>{selectedPipelineCounts.legacySnapshotTotal} {copy.sourceKindLegacySnapshot}</span>
+                        <span>{selectedPipelineCounts.missingExtractionTotal} {copy.sourceKindMissing}</span>
+                      </div>
+                    </div>
+                  </div>
+                ) : null}
+
+                {selectedCurriculum.jurisdictionCoverage && selectedJurisdictionCoverageReady ? (
                   <div>
                     <h3 className="mb-2 flex items-center gap-2 text-sm font-semibold uppercase tracking-wide text-text-secondary">
                       <MapPinned size={15} />

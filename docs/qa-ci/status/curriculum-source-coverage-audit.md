@@ -1,6 +1,6 @@
 # Curriculum Source Coverage Audit
 
-Generated: 2026-05-07T08:02:03.615Z
+Generated: 2026-05-07T09:40:31.995Z
 
 This audit separates inhaltliche Abdeckung from passgenaue Zuordnung. `provenance`, reviewed `mapping` entries including `partial`, and explicitly reviewed requires-closure surrogate entries count as Lehrplan evidence; `partial` mappings remain visible as quality warnings. `override`, `child-union`, and automatic `requires-closure` do not count as source coverage.
 
@@ -8,26 +8,26 @@ This file is a raw Applicability compiler audit. The Workbench `Curriculum Quali
 
 ## Mathematik (Gymnasium, DE)
 
-Atomic goals: 770
+Atomic goals: 786
 
 | Bundesland | Status | Source-backed | Surrogate | Missing | Visible | Unsupported visible | Partial source links | Warnings | Errors |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| DE-BW | error | 324/770 (42.1%) | 0 | 446 | 514 | 190 | 158 | 158 | 0 |
-| DE-HE | error | 655/770 (85.1%) | 0 | 115 | 719 | 64 | 0 | 0 | 0 |
-| DE-BY | error | 165/770 (21.4%) | 0 | 605 | 301 | 136 | 26 | 26 | 0 |
-| DE-BB | error | 99/770 (12.9%) | 0 | 671 | 200 | 101 | 9 | 9 | 0 |
-| DE-BE | error | 107/770 (13.9%) | 0 | 663 | 260 | 153 | 75 | 75 | 0 |
-| DE-NI | error | 104/770 (13.5%) | 0 | 666 | 227 | 123 | 88 | 88 | 0 |
-| DE-NW | error | 100/770 (13%) | 0 | 670 | 217 | 117 | 28 | 28 | 0 |
-| DE-SH | error | 85/770 (11%) | 0 | 685 | 197 | 112 | 61 | 61 | 0 |
-| DE-HB | error | 20/770 (2.6%) | 0 | 750 | 113 | 93 | 18 | 18 | 0 |
-| DE-HH | error | 10/770 (1.3%) | 0 | 760 | 76 | 66 | 8 | 8 | 0 |
-| DE-MV | error | 6/770 (0.8%) | 0 | 764 | 62 | 56 | 4 | 4 | 0 |
-| DE-RP | error | 3/770 (0.4%) | 0 | 767 | 52 | 49 | 1 | 1 | 0 |
-| DE-SL | error | 4/770 (0.5%) | 0 | 766 | 53 | 49 | 2 | 2 | 0 |
-| DE-SN | error | 16/770 (2.1%) | 0 | 754 | 91 | 75 | 11 | 11 | 0 |
-| DE-ST | partial | 2/770 (0.3%) | 0 | 768 | 2 | 0 | 0 | 0 | 0 |
-| DE-TH | partial | 2/770 (0.3%) | 0 | 768 | 2 | 0 | 0 | 0 | 0 |
+| DE-BW | error | 332/786 (42.2%) | 0 | 454 | 514 | 182 | 165 | 165 | 0 |
+| DE-HE | error | 655/786 (83.3%) | 0 | 131 | 719 | 64 | 0 | 0 | 0 |
+| DE-BY | error | 192/786 (24.4%) | 0 | 594 | 351 | 159 | 31 | 31 | 0 |
+| DE-BB | error | 99/786 (12.6%) | 0 | 687 | 200 | 101 | 9 | 9 | 0 |
+| DE-BE | error | 107/786 (13.6%) | 0 | 679 | 260 | 153 | 75 | 75 | 0 |
+| DE-NI | error | 104/786 (13.2%) | 0 | 682 | 227 | 123 | 88 | 88 | 0 |
+| DE-NW | error | 100/786 (12.7%) | 0 | 686 | 217 | 117 | 28 | 28 | 0 |
+| DE-SH | error | 85/786 (10.8%) | 0 | 701 | 197 | 112 | 61 | 61 | 0 |
+| DE-HB | error | 20/786 (2.5%) | 0 | 766 | 113 | 93 | 18 | 18 | 0 |
+| DE-HH | error | 10/786 (1.3%) | 0 | 776 | 76 | 66 | 8 | 8 | 0 |
+| DE-MV | error | 6/786 (0.8%) | 0 | 780 | 62 | 56 | 4 | 4 | 0 |
+| DE-RP | error | 3/786 (0.4%) | 0 | 783 | 52 | 49 | 1 | 1 | 0 |
+| DE-SL | error | 4/786 (0.5%) | 0 | 782 | 53 | 49 | 2 | 2 | 0 |
+| DE-SN | error | 16/786 (2%) | 0 | 770 | 91 | 75 | 11 | 11 | 0 |
+| DE-ST | partial | 2/786 (0.3%) | 0 | 784 | 2 | 0 | 0 | 0 | 0 |
+| DE-TH | partial | 2/786 (0.3%) | 0 | 784 | 2 | 0 | 0 | 0 | 0 |
 
 ## Physik (Gymnasium, DE)
 

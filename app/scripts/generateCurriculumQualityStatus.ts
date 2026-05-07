@@ -173,6 +173,7 @@ function normalizeSourceExtractionPipelineSteps(
     unmappedSourceGoals: number
     explicitNeedsCanonicalGoal: number
     unreviewedSourceGoals: number
+    hasM3ReviewFile: boolean
   },
 ): MappingPipelineStep[] {
   const {
@@ -181,16 +182,37 @@ function normalizeSourceExtractionPipelineSteps(
     unmappedSourceGoals,
     explicitNeedsCanonicalGoal,
     unreviewedSourceGoals,
+    hasM3ReviewFile,
   } = coverage
 
   return steps.map((step) => {
     if (step.id !== 'MAPPING-3') return step
 
     const fullyCovered = unmappedSourceGoals <= 0
+    const fullyReviewed = unreviewedSourceGoals <= 0
+    const m3Complete = hasM3ReviewFile && fullyReviewed && fullyCovered && explicitNeedsCanonicalGoal <= 0
 
     const checks = step.checks
       .filter((check) => check.id !== 'm3-all-source-goals-exactly-mapped')
       .map((check) => {
+        if (check.id === 'm3-review-file-present') {
+          return {
+            ...check,
+            passed: hasM3ReviewFile,
+            details: hasM3ReviewFile
+              ? 'Review-Datei mit sourceExtractionPath fuer diese Source-Extraction ist vorhanden.'
+              : check.details,
+          }
+        }
+
+        if (check.id === 'm3-all-source-goals-reviewed') {
+          return {
+            ...check,
+            passed: fullyReviewed,
+            details: `${Math.max(0, totalSourceGoals - unreviewedSourceGoals)}/${totalSourceGoals} Source-Ziele reviewed; offen: ${unreviewedSourceGoals}.`,
+          }
+        }
+
         if (check.id === 'm3-all-source-goals-covered-by-canonical' || check.id === 'm3-all-source-goals-covered') {
           const blockedByUpstreamReview = step.status === 'blocked'
           return {
@@ -212,7 +234,7 @@ function normalizeSourceExtractionPipelineSteps(
       ...step,
       status: step.status === 'blocked'
         ? step.status
-        : fullyCovered ? 'complete' : 'incomplete',
+        : m3Complete ? 'complete' : 'incomplete',
       checks,
     }
   })
@@ -1986,6 +2008,7 @@ function readSourceExtractionPipelinesByLandscapeId(): Map<string, MappingPipeli
         unmappedSourceGoals,
         explicitNeedsCanonicalGoal,
         unreviewedSourceGoals,
+        hasM3ReviewFile: mappingFilesForExtraction.length > 0,
       })
       const completedSteps = normalizedSteps.filter((step) => step.status === 'complete').length
       const currentStep = completedSteps === normalizedSteps.length
@@ -2822,8 +2845,9 @@ function renderMarkdown(status: StatusDocument): string {
   const sourceExtractionProgress = (pipeline?: MappingPipelineStatus): string => {
     if (!pipeline) return '-'
     const sourceExtractionSources = pipeline.sources.filter((source) => source.sourceKind === 'source-extraction')
-    const completed = sourceExtractionSources.filter((source) => source.completedSteps === source.totalSteps).length
-    return `${completed}/${sourceExtractionSources.length}`
+    const ready = sourceExtractionSources.filter((source) =>
+      source.steps.some((step) => step.id === 'MAPPING-1' && step.status === 'complete')).length
+    return `${ready}/${pipeline.totalSources}`
   }
 
   lines.push('# Curriculum Quality Status')
