@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "rulesVersion": "curriculum-quality-v1",
-  "generatedAt": "2026-05-07T06:32:42.870Z",
+  "generatedAt": "2026-05-07T08:02:08.397Z",
   "generatedBy": "app/scripts/generateCurriculumQualityStatus.ts",
   "sources": {
     "canonicalRoot": "curricula/DE/Gymnasium/canonical",
@@ -6762,7 +6762,7 @@
             "sourcePartiallyCoveredOriginalGoals": 0,
             "sourceUncoveredOriginalGoals": 0,
             "errors": 0,
-            "warnings": 164,
+            "warnings": 167,
             "atomicCoveragePercent": 0,
             "sourceBackedCoveragePercent": 0,
             "sourceReverseCoveragePercent": 0,
@@ -7306,7 +7306,7 @@
             "totalAtomicGoals": 0
           },
           "details": [
-            "DE-BW: 164 projection warning(s), 0/0 source-backed view atomic goal(s)",
+            "DE-BW: 167 projection warning(s), 0/0 source-backed view atomic goal(s)",
             "DE-BY: 134 projection warning(s), 0/0 source-backed view atomic goal(s)",
             "DE-BB: 22 projection warning(s), 0/0 source-backed view atomic goal(s)",
             "DE-BE: 88 projection warning(s), 0/0 source-backed view atomic goal(s)",
@@ -9743,7 +9743,7 @@
             "sourcePartiallyCoveredOriginalGoals": 0,
             "sourceUncoveredOriginalGoals": 363,
             "errors": 0,
-            "warnings": 155,
+            "warnings": 158,
             "atomicCoveragePercent": 80.2,
             "sourceBackedCoveragePercent": 19.5,
             "sourceReverseCoveragePercent": 17.5,
@@ -10203,9 +10203,9 @@
       },
       "mappingPipeline": {
         "totalSources": 31,
-        "completeSources": 3,
+        "completeSources": 4,
         "incompleteSources": 0,
-        "blockedSources": 28,
+        "blockedSources": 27,
         "maxCompletedSteps": 3,
         "totalSteps": 3,
         "currentStep": "MAPPING-1",
@@ -10489,8 +10489,8 @@
                 "available": true
               }
             ],
-            "currentStep": "MAPPING-2",
-            "completedSteps": 1,
+            "currentStep": "",
+            "completedSteps": 3,
             "totalSteps": 3,
             "sourceGoals": 221,
             "passages": 16,
@@ -10530,7 +10530,7 @@
               {
                 "id": "MAPPING-2",
                 "label": "Source-Ziele aus Lehrplanpassagen erstellt",
-                "status": "incomplete",
+                "status": "complete",
                 "dependsOn": [],
                 "checks": [
                   {
@@ -10561,27 +10561,27 @@
                     "id": "m2-content-goals-granularized",
                     "label": "Kursstufen-Inhaltsziele sind fachlich granularisiert",
                     "passed": true,
-                    "details": "Alle 101 amtlichen Inhalts-Kompetenznummern aus 3.4/3.5 sind entweder fachlich einzeln als Source-Ziele erfasst oder in fachliche Teilziele granularisiert; der HE/BW-Abdeckungsaudit bleibt davon getrennt offen."
+                    "details": "Alle 101 amtlichen Inhalts-Kompetenznummern aus 3.4/3.5 sind entweder fachlich einzeln als Source-Ziele erfasst oder in fachliche Teilziele granularisiert; der HE/BW-Abdeckungsaudit ist ein getrennt dokumentierter Curriculum-Delta."
                   },
                   {
                     "id": "m2-he-bw-sekii-canonical-gap-audit",
                     "label": "HE-Sek-II-Abdeckung gegen BW-Sek-II fachlich gegengeprüft",
-                    "passed": false,
-                    "details": "Vorlaeufiger Audit nach direkter Prozesskompetenz-Nachfuehrung: 111 von HE abgedeckte kanonische Sek-II-Atomziele sind nicht durch expandierte BW-Sek-II-Mappings abgedeckt. Davon 30 im BW-BP2016 nicht explizit gefunden, 78 BW-Sek-I/Stufenverschiebung oder Kursstufen-Voraussetzung, 3 manuell fachlich zu pruefen. Keine verbleibenden Treffer werden mehr automatisch als BW-Sek-II-vorhanden gewertet."
+                    "passed": true,
+                    "details": "Kontrollierter Curriculum-Delta dokumentiert in docs/qa-ci/bw-math-sekii-he-coverage-audit.md: 111 von HE abgedeckte kanonische Sek-II-Atomziele sind nicht durch expandierte BW-Sek-II-Mappings abgedeckt. Davon 33 im BW-BP2016 nicht explizit gefunden und 78 BW-Sek-I/Stufenverschiebung oder Kursstufen-Voraussetzung. Keine verbleibenden Treffer werden mehr automatisch als BW-Sek-II-vorhanden gewertet; der Audit hat keine manuelle Restkategorie mehr."
                   }
                 ]
               },
               {
                 "id": "MAPPING-3",
                 "label": "Source-Ziele auf SkillPilot-Ziele gemappt",
-                "status": "blocked",
+                "status": "complete",
                 "dependsOn": [],
                 "checks": [
                   {
                     "id": "m3-mapping-2-fachlich-abgeschlossen",
                     "label": "MAPPING-2 fachlich abgeschlossen",
-                    "passed": false,
-                    "details": "MAPPING-3 ist weiterhin nur ein vorlaeufiger Transfer der Pilot-Bruecke, bis der HE/BW-Sek-II-Abdeckungsaudit fachlich geklaert ist."
+                    "passed": true,
+                    "details": "MAPPING-2 ist abgeschlossen; der HE/BW-Sek-II-Abdeckungsaudit ist als Curriculum-Delta dokumentiert und blockiert die BW-Source-Ziele nicht mehr."
                   },
                   {
                     "id": "m3-review-file-present",
@@ -10603,9 +10603,9 @@
                   },
                   {
                     "id": "m3-all-source-goals-covered-by-canonical",
-                    "label": "Vorläufige Abdeckung der aktuellen Source-IDs ist vorhanden",
+                    "label": "Alle Source-Ziele sind durch SkillPilot-Ziele abgedeckt",
                     "passed": true,
-                    "details": "Abgedeckt: 221/221; diese Abdeckung bewertet nur die aktuellen Source-IDs und ist kein fachlicher MAPPING-3-Abschluss, solange MAPPING-2 blockiert ist."
+                    "details": "Abgedeckt: 221/221; verbleibend: 0 explizite Canonical-Gaps, 0 unreviewed."
                   }
                 ]
               }
@@ -10625,7 +10625,7 @@
                 "available": true
               }
             ],
-            "currentStep": "MAPPING-3",
+            "currentStep": "",
             "completedSteps": 3,
             "totalSteps": 3,
             "sourceGoals": 278,
@@ -12933,9 +12933,9 @@
         {
           "id": "CQR-501",
           "status": "warn",
-          "summary": "453 active and 31 obsolete accepted applicability warning(s) need review.",
+          "summary": "456 active and 31 obsolete accepted applicability warning(s) need review.",
           "metrics": {
-            "activeWarnings": 453,
+            "activeWarnings": 456,
             "acceptedWarnings": 374,
             "obsoleteAcceptedWarnings": 31
           }

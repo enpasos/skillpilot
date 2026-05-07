@@ -11,6 +11,8 @@ It is intended to be reachable on GitHub Pages at `/skillpilot/qa-ci/`.
   Persisted status layer used by the local Workbench dashboard.
 - [Curriculum Mapping Workbench](curriculum-mapping-workbench.md)
   Two-pane audit surface from source snapshots to learner-facing SkillPilot trees.
+- [BW Mathematik Sek II: HE Coverage Audit](bw-math-sekii-he-coverage-audit.md)
+  Fachliche Kontrolle der BW-Kursstufen-Abdeckung gegen Hessen Sek II.
 - [Current Curriculum Quality Status](status/curriculum-quality-status.md)
   Generated snapshot consumed by the dashboard.
 

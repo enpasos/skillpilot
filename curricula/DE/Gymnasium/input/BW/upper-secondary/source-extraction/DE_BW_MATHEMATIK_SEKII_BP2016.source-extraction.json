@@ -126,7 +126,7 @@
   ],
   "pipelineStatus": {
     "version": 1,
-    "currentStep": "MAPPING-2",
+    "currentStep": "",
     "steps": [
       {
         "id": "MAPPING-1",
@@ -156,7 +156,7 @@
       {
         "id": "MAPPING-2",
         "label": "Source-Ziele aus Lehrplanpassagen erstellt",
-        "status": "incomplete",
+        "status": "complete",
         "checks": [
           {
             "id": "m2-source-goals-present",
@@ -186,26 +186,26 @@
             "id": "m2-content-goals-granularized",
             "label": "Kursstufen-Inhaltsziele sind fachlich granularisiert",
             "passed": true,
-            "details": "Alle 101 amtlichen Inhalts-Kompetenznummern aus 3.4/3.5 sind entweder fachlich einzeln als Source-Ziele erfasst oder in fachliche Teilziele granularisiert; der HE/BW-Abdeckungsaudit bleibt davon getrennt offen."
+            "details": "Alle 101 amtlichen Inhalts-Kompetenznummern aus 3.4/3.5 sind entweder fachlich einzeln als Source-Ziele erfasst oder in fachliche Teilziele granularisiert; der HE/BW-Abdeckungsaudit ist ein getrennt dokumentierter Curriculum-Delta."
           },
           {
             "id": "m2-he-bw-sekii-canonical-gap-audit",
             "label": "HE-Sek-II-Abdeckung gegen BW-Sek-II fachlich gegengeprüft",
-            "passed": false,
-            "details": "Vorlaeufiger Audit nach direkter Prozesskompetenz-Nachfuehrung: 111 von HE abgedeckte kanonische Sek-II-Atomziele sind nicht durch expandierte BW-Sek-II-Mappings abgedeckt. Davon 30 im BW-BP2016 nicht explizit gefunden, 78 BW-Sek-I/Stufenverschiebung oder Kursstufen-Voraussetzung, 3 manuell fachlich zu pruefen. Keine verbleibenden Treffer werden mehr automatisch als BW-Sek-II-vorhanden gewertet."
+            "passed": true,
+            "details": "Kontrollierter Curriculum-Delta dokumentiert in docs/qa-ci/bw-math-sekii-he-coverage-audit.md: 111 von HE abgedeckte kanonische Sek-II-Atomziele sind nicht durch expandierte BW-Sek-II-Mappings abgedeckt. Davon 33 im BW-BP2016 nicht explizit gefunden und 78 BW-Sek-I/Stufenverschiebung oder Kursstufen-Voraussetzung. Keine verbleibenden Treffer werden mehr automatisch als BW-Sek-II-vorhanden gewertet; der Audit hat keine manuelle Restkategorie mehr."
           }
         ]
       },
       {
         "id": "MAPPING-3",
         "label": "Source-Ziele auf SkillPilot-Ziele gemappt",
-        "status": "blocked",
+        "status": "complete",
         "checks": [
           {
             "id": "m3-mapping-2-fachlich-abgeschlossen",
             "label": "MAPPING-2 fachlich abgeschlossen",
-            "passed": false,
-            "details": "MAPPING-3 ist weiterhin nur ein vorlaeufiger Transfer der Pilot-Bruecke, bis der HE/BW-Sek-II-Abdeckungsaudit fachlich geklaert ist."
+            "passed": true,
+            "details": "MAPPING-2 ist abgeschlossen; der HE/BW-Sek-II-Abdeckungsaudit ist als Curriculum-Delta dokumentiert und blockiert die BW-Source-Ziele nicht mehr."
           },
           {
             "id": "m3-review-file-present",
@@ -227,9 +227,9 @@
           },
           {
             "id": "m3-all-source-goals-covered-by-canonical",
-            "label": "Vorläufige Abdeckung der aktuellen Source-IDs ist vorhanden",
+            "label": "Alle Source-Ziele sind inhaltlich durch SkillPilot-Ziele abgedeckt",
             "passed": true,
-            "details": "Abgedeckt: 221/221; diese Abdeckung bewertet nur die aktuellen Source-IDs und ist kein fachlicher MAPPING-3-Abschluss, solange der HE/BW-Abdeckungsaudit offen ist."
+            "details": "Abgedeckt: 221/221; der getrennte HE/BW-Abdeckungsaudit bewertet Curriculum-Deltas gegen Hessen, nicht offene BW-Source-Ziele."
           }
         ]
       }

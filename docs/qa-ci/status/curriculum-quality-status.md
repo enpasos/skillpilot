@@ -1,6 +1,6 @@
 # Curriculum Quality Status
 
-Generated: 2026-05-07T06:32:42.870Z
+Generated: 2026-05-07T08:02:08.397Z
 Rules version: curriculum-quality-v1
 
 ## Summary
@@ -31,7 +31,7 @@ Rules version: curriculum-quality-v1
 | Informatik (Gymnasium, DE) | M0 | 221 | 180 | 0/0 | 0/16 | 0 | 0 | 2 |
 | Italienisch (Gymnasium, DE) | M0 | 8 | 7 | 0/0 | 0/16 | 0 | 0 | 2 |
 | Latein (Gymnasium, DE) | M0 | 142 | 109 | 0/0 | 0/16 | 0 | 0 | 2 |
-| Mathematik (Gymnasium, DE) | M0 | 962 | 770 | 3/4 | 0/16 | 2 | 3 | 4 |
+| Mathematik (Gymnasium, DE) | M0 | 962 | 770 | 4/4 | 0/16 | 2 | 3 | 4 |
 | Musik (Gymnasium, DE) | M0 | 76 | 52 | 0/0 | 0/16 | 0 | 0 | 2 |
 | Physik (Gymnasium, DE) | M0 | 475 | 392 | 0/0 | 0/16 | 2 | 2 | 2 |
 | Politik und Wirtschaft (Gymnasium, DE) | M0 | 208 | 175 | 0/0 | 0/16 | 0 | 0 | 2 |
@@ -74,8 +74,8 @@ Rules version: curriculum-quality-v1
 | Mathematik (Gymnasium, DE) | Mathematik Sekundarstufe I (Brandenburg, Pilot-Quellsnapshot) | DE-BB | Snapshot diagnostic | 0/3 | MAPPING-1 | 0 | 68 | 26 | 42 | 38% | not pipeline-capable: no passage extraction |
 | Mathematik (Gymnasium, DE) | Mathematik Oberstufe (Berlin, Pilot-Quellsnapshot) | DE-BE | Snapshot diagnostic | 0/3 | MAPPING-1 | 0 | 120 | 38 | 82 | 32% | not pipeline-capable: no passage extraction |
 | Mathematik (Gymnasium, DE) | Mathematik Sekundarstufe I (Berlin, Pilot-Quellsnapshot) | DE-BE | Snapshot diagnostic | 0/3 | MAPPING-1 | 0 | 67 | 2 | 65 | 3% | not pipeline-capable: no passage extraction |
-| Mathematik (Gymnasium, DE) | DE-BW - Mathematik Kursstufe (Baden-Wuerttemberg, BP2016 Source-Extraction) | DE-BW | 1/1 original source(s) | 1/3 | MAPPING-2 | 16 | 221 | 71 | 150 | 32% |  |
-| Mathematik (Gymnasium, DE) | Mathematik Sekundarstufe I (Baden-Wuerttemberg, BP2016 Source-Extraction) | DE-BW | 1/1 original source(s) | 3/3 | MAPPING-3 | 20 | 278 | 95 | 183 | 34% |  |
+| Mathematik (Gymnasium, DE) | DE-BW - Mathematik Kursstufe (Baden-Wuerttemberg, BP2016 Source-Extraction) | DE-BW | 1/1 original source(s) | 3/3 | - | 16 | 221 | 71 | 150 | 32% |  |
+| Mathematik (Gymnasium, DE) | Mathematik Sekundarstufe I (Baden-Wuerttemberg, BP2016 Source-Extraction) | DE-BW | 1/1 original source(s) | 3/3 | - | 20 | 278 | 95 | 183 | 34% |  |
 | Mathematik (Gymnasium, DE) | Mathematik (Gymnasium) | DE-BY | No extraction | 0/3 | MAPPING-1 | 0 | 0 | 0 | 0 | 0% |  |
 | Mathematik (Gymnasium, DE) | Mathematik Oberstufe (Bremen, Pilot-Quellsnapshot) | DE-HB | Snapshot diagnostic | 0/3 | MAPPING-1 | 0 | 56 | 1 | 50 | 2% | not pipeline-capable: no passage extraction |
 | Mathematik (Gymnasium, DE) | Mathematik Sekundarstufe I (Bremen, Pilot-Quellsnapshot) | DE-HB | Snapshot diagnostic | 0/3 | MAPPING-1 | 0 | 18 | 2 | 15 | 12% | not pipeline-capable: no passage extraction |

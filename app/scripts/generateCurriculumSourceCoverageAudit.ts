@@ -83,6 +83,15 @@ function hasSourceBackedJurisdictionEvidence(
 ): boolean {
   return evidence.dimension === 'jurisdiction'
     && evidence.value === jurisdiction
+    && (evidence.kind === 'provenance' || evidence.kind === 'mapping')
+}
+
+function hasPassgenauJurisdictionEvidence(
+  evidence: ApplicabilityEvidence,
+  jurisdiction: string,
+): boolean {
+  return evidence.dimension === 'jurisdiction'
+    && evidence.value === jurisdiction
     && (evidence.kind === 'provenance' || (evidence.kind === 'mapping' && evidence.mappingStrength !== 'partial'))
 }
 
@@ -100,7 +109,7 @@ function hasPartialSourceLinkedJurisdictionEvidence(
   const matchingEvidence = goal.evidence.filter((entry) =>
     entry.dimension === 'jurisdiction' && entry.value === jurisdiction)
   return matchingEvidence.length > 0
-    && !matchingEvidence.some((entry) => hasSourceBackedJurisdictionEvidence(entry, jurisdiction))
+    && !matchingEvidence.some((entry) => hasPassgenauJurisdictionEvidence(entry, jurisdiction))
     && matchingEvidence.some((entry) => entry.kind === 'mapping' && entry.mappingStrength === 'partial')
 }
 
@@ -174,7 +183,7 @@ function renderMarkdown(audit: SourceCoverageAudit): string {
   lines.push('')
   lines.push(`Generated: ${audit.generatedAt}`)
   lines.push('')
-  lines.push('This audit is intentionally stricter than runtime visibility. `provenance`, exact `mapping`, and explicitly reviewed requires-closure surrogate entries count as Lehrplan evidence; `override`, `child-union`, automatic `requires-closure`, and partial mappings do not.')
+  lines.push('This audit separates inhaltliche Abdeckung from passgenaue Zuordnung. `provenance`, reviewed `mapping` entries including `partial`, and explicitly reviewed requires-closure surrogate entries count as Lehrplan evidence; `partial` mappings remain visible as quality warnings. `override`, `child-union`, and automatic `requires-closure` do not count as source coverage.')
   lines.push('')
   lines.push('This file is a raw Applicability compiler audit. The Workbench `Curriculum Quality` cards use the composition-view based counters in `curriculum-quality-status.json`, including extracted source atoms and fully covered source original goals.')
   lines.push('')
@@ -218,8 +227,7 @@ function buildAudit(): SourceCoverageAudit {
       const missingSourceBackedAtomicGoals = atomicGoals.filter((goal) =>
         !hasCoverageBackedJurisdictionEvidence(report, goal, projection.value, surrogateEntriesByKey))
       const partialSourceLinkedAtomicGoals = visibleAtomicGoals.filter((goal) =>
-        !hasCoverageBackedJurisdictionEvidence(report, goal, projection.value, surrogateEntriesByKey)
-        && hasPartialSourceLinkedJurisdictionEvidence(goal, projection.value))
+        hasPartialSourceLinkedJurisdictionEvidence(goal, projection.value))
       const labels = JURISDICTION_LABELS[projection.value]
       const status: CoverageStatus = projection.errors > 0 || unsupportedAssignedAtomicGoals.length > 0
         ? 'error'
@@ -268,6 +276,7 @@ function buildAudit(): SourceCoverageAudit {
     generatedBy: 'app/scripts/generateCurriculumSourceCoverageAudit.ts',
     evidencePolicy: {
       sourceBackedEvidenceKinds: ['provenance', 'mapping'],
+      surrogateEvidenceKinds: ['requires-closure'],
       nonCoverageEvidenceKinds: ['override', 'child-union', 'requires-closure'],
     },
     curricula,

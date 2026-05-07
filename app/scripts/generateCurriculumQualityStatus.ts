@@ -1988,9 +1988,11 @@ function readSourceExtractionPipelinesByLandscapeId(): Map<string, MappingPipeli
         unreviewedSourceGoals,
       })
       const completedSteps = normalizedSteps.filter((step) => step.status === 'complete').length
-      const currentStep = normalizedSteps.find((step) => step.status !== 'complete')?.id
-        ?? extraction.pipelineStatus?.currentStep
-        ?? ''
+      const currentStep = completedSteps === normalizedSteps.length
+        ? ''
+        : normalizedSteps.find((step) => step.status !== 'complete')?.id
+          ?? extraction.pipelineStatus?.currentStep
+          ?? ''
       result.set(extraction.sourceLandscapeId, {
         sourceLandscapeId: extraction.sourceLandscapeId,
         title: extraction.title ?? registryEntry?.title ?? extraction.extractionId ?? extraction.sourceLandscapeId,

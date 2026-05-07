@@ -127,10 +127,10 @@ The table value `Bundeslaender` is `cleanJurisdictions / totalJurisdictions`. A 
 
 The extraction check has one hard boundary: it can only verify source inventories that exist in the repository and can be parsed. If the official Lehrplan has not yet been turned into a complete source extraction or retained source snapshot, the dashboard cannot infer the missing official goals automatically; that remains explicit source-ingestion work.
 
-Only these evidence kinds count directly for `CQR-003`:
+Only these evidence kinds count directly for `CQR-003` content coverage:
 
 - `provenance`: direct canonical-goal provenance from a registered source curriculum.
-- `mapping`: reviewed exact mapping from a source curriculum goal to the canonical goal.
+- `mapping`: reviewed mapping from a source curriculum goal to the canonical goal, including reviewed `partial` mappings when the source goal is still content-covered.
 - reviewed surrogate evidence: an explicitly accepted requires-closure surrogate entry for a real logical prerequisite gap.
 
 These evidence kinds do **not** count as Lehrplan coverage for `CQR-003`:
@@ -138,9 +138,8 @@ These evidence kinds do **not** count as Lehrplan coverage for `CQR-003`:
 - `override`: manual visibility/applicability overlay.
 - `child-union`: cluster inference from visible children.
 - automatic `requires-closure`: prerequisite visibility inference without an explicit surrogate review.
-- partial mappings.
 
-An accepted `APV-201` override warning may keep a projection operationally visible, but it does not satisfy Bundesland coverage. Lower values such as `28/77 belegt` remain visible in the detail panel as partial evidence. Values such as `419 nicht belegt` are explicitly treated as unsupported assignments, not as coverage.
+Reviewed `partial` mappings still remain visible as passgenauigkeit warnings. They are content coverage, but not a passgenaue one-to-one source/canonical relation. An accepted `APV-201` override warning may keep a projection operationally visible, but it does not satisfy Bundesland coverage. Lower values such as `28/77 belegt` remain visible in the detail panel as partial evidence. Values such as `419 nicht belegt` are explicitly treated as unsupported assignments, not as coverage.
 
 ## Current Route Profiles
 

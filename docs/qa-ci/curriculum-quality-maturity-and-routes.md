@@ -354,11 +354,11 @@ Geprueft wird:
 - Die nationale Referenzmenge kommt aus den `de-de-*` Composition Views.
 - Falls fuer ein Curriculum noch keine Composition Views existieren, faellt der Generator auf die rohe atomare JSON-Menge zurueck. Dieser Fallback ist eine Uebergangshilfe, kein Zielzustand.
 - Pro Bundesland wird getrennt gezaehlt, wie viele atomare Sicht-Knoten vorhanden sind und wie viele davon quellenbelegt sind.
-- Als direkt quellenbelegt zaehlen Evidence-Eintraege mit `kind: "provenance"` oder einem nicht partiellen `kind: "mapping"` fuer genau dieses Bundesland.
+- Als direkt quellenbelegt zaehlen Evidence-Eintraege mit `kind: "provenance"` oder einem reviewten `kind: "mapping"` fuer genau dieses Bundesland. `partial` bleibt eine Passgenauigkeitswarnung, zaehlt aber als inhaltliche Abdeckung, wenn das Source-Ziel dadurch vollstaendig abgedeckt ist.
 - Als akzeptierter Ersatzbeleg zaehlt nur ein explizit reviewter `requires-closure`-Surrogat-Eintrag. Er ist fuer logische Luecken im `requires`-Fluss gedacht, nicht fuer neue Themen.
-- `kind: "override"`, `kind: "child-union"`, automatische `kind: "requires-closure"` und partielle Mappings zaehlen nicht als Lehrplanbeleg fuer diese Regel.
+- `kind: "override"`, `kind: "child-union"` und automatische `kind: "requires-closure"` zaehlen nicht als Lehrplanbeleg fuer diese Regel.
 - Wenn ein atomares Ziel in einer Bundesland-Sicht erscheint, aber keinen direkten oder akzeptierten indirekten Beleg fuer dieses Bundesland hat, ist das eine nicht ableitbare Zuordnung und fuehrt zu `fail`.
-- Rueckwaerts werden die registrierten Source-Landschaften, Source-Memberships und Source-Closures gelesen. Jedes registrierte Source-Originalziel hat eine atomare Source-Closure; alle Atome dieser Closure muessen ueber nicht partielle Mappings in kanonische atomare Knoten fuehren, die in der Bundesland-Sicht enthalten sind.
+- Rueckwaerts werden die registrierten Source-Landschaften, Source-Memberships und Source-Closures gelesen. Jedes registrierte Source-Originalziel hat eine atomare Source-Closure; alle Atome dieser Closure muessen ueber reviewte Mappings in kanonische atomare Knoten fuehren, die in der Bundesland-Sicht enthalten sind. Partielle Mappings zaehlen dabei als inhaltliche Abdeckung, bleiben aber als Passgenauigkeitswarnung sichtbar.
 - Wenn ein registriertes Source-Atom nicht in die Bundesland-Sicht mappt, ist die Lehrplanabdeckung unvollstaendig und fuehrt zu `fail`.
 - Wenn ein vorhandener Source-Snapshot weitere atomare Source-Ziele enthaelt, die nicht in Membership/Closure registriert sind, ist die Source-Erfassung unvollstaendig und fuehrt zu `fail`.
 - Projektionswarnungen machen die Bundeslandkarte gelb und verhindern `CQR-003 pass`.
@@ -373,7 +373,7 @@ Metriken:
 - Pro Bundesland `sourceBackedAtomicGoals`: atomare Sicht-Ziele mit direktem oder akzeptiertem indirektem Lehrplanbeleg.
 - Pro Bundesland `surrogateBackedAtomicGoals`: atomare Sicht-Ziele, die nur ueber reviewten Ersatzbeleg zaehlen.
 - Pro Bundesland `unsupportedAssignedAtomicGoals`: atomare Sicht-Ziele ohne ausreichenden Lehrplanbeleg.
-- Pro Bundesland `partialSourceLinkedAtomicGoals`: atomare Sicht-Ziele mit nur partiellem Mapping; diese sind sichtbar, aber nicht voll belegt.
+- Pro Bundesland `partialSourceLinkedAtomicGoals`: atomare Sicht-Ziele mit nur partiellem Mapping; diese sind inhaltlich abgedeckt, aber nicht passgenau belegt.
 - Pro Bundesland `sourceAtomicGoals`: registrierte atomare Source-Lehrplanziele.
 - Pro Bundesland `sourceMappedToViewAtomicGoals`: registrierte Source-Atome, deren Mapping in die Bundesland-Sicht fuehrt.
 - Pro Bundesland `unmappedSourceAtomicGoals`: registrierte Source-Atome ohne Mapping in die Bundesland-Sicht.

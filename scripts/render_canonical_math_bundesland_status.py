@@ -20,7 +20,7 @@ CANONICAL_GOAL_APPLICABILITY_OVERRIDE_REGISTRY_PATH = (
 )
 COMPOSITION_VIEW_MATH_DIR = REPO_ROOT / "curricula/DE/Gymnasium/composition-views/mathematik"
 ATOMIC_COUNT_SCRIPT_PATH = APP_ROOT / "scripts/reportCanonicalMathStateAtomCounts.ts"
-APP_TSX_PATH = APP_ROOT / "node_modules/.bin/tsx"
+APP_TSX_PACKAGE_PATH = APP_ROOT / "node_modules/tsx"
 ATOMIC_COUNT_METRICS = [
     ("sek1", "Sek I"),
     ("sek2Gk", "Sek II (GK)"),
@@ -144,9 +144,9 @@ def canonical_jurisdictions(repo_root: Path, landscape_rel_path: str) -> set[str
 
 
 def load_atomic_count_report() -> dict:
-    if not APP_TSX_PATH.exists():
+    if not APP_TSX_PACKAGE_PATH.exists():
         raise FileNotFoundError(
-            f"Missing tsx runtime for atomic count report: {APP_TSX_PATH.relative_to(REPO_ROOT)}"
+            f"Missing tsx runtime for atomic count report: {APP_TSX_PACKAGE_PATH.relative_to(REPO_ROOT)}"
         )
     if not ATOMIC_COUNT_SCRIPT_PATH.exists():
         raise FileNotFoundError(
@@ -154,7 +154,7 @@ def load_atomic_count_report() -> dict:
         )
 
     completed = subprocess.run(
-        [str(APP_TSX_PATH), str(ATOMIC_COUNT_SCRIPT_PATH.relative_to(APP_ROOT))],
+        ["node", "--import", "tsx", str(ATOMIC_COUNT_SCRIPT_PATH.relative_to(APP_ROOT))],
         cwd=APP_ROOT,
         check=True,
         capture_output=True,
@@ -201,6 +201,15 @@ def build_count_gate_next_step(
         f"do not treat the lane as `cutover_ready` until all stage counts stay within `+-{int(tolerance_percent)}%` "
         f"of {reference_label}."
     )
+
+
+def merge_count_gate_next_step(generic_next_step: str, state_next_step: str) -> str:
+    normalized = state_next_step.strip()
+    if not normalized:
+        return generic_next_step
+    if normalized.startswith("Keep ") or normalized.startswith("Maintain "):
+        return generic_next_step
+    return f"{generic_next_step} State-specific handling: {normalized}"
 
 
 def render() -> str:
@@ -309,11 +318,14 @@ def render() -> str:
                     effective_priority = cutover_gate_full_failure_priority
             elif isinstance(cutover_gate_partial_failure_priority, str):
                 effective_priority = cutover_gate_partial_failure_priority
-            effective_next_step = build_count_gate_next_step(
-                state["displayName"],
-                count_issue_metric_labels,
-                str(reference_label),
-                tolerance_percent,
+            effective_next_step = merge_count_gate_next_step(
+                build_count_gate_next_step(
+                    state["displayName"],
+                    count_issue_metric_labels,
+                    str(reference_label),
+                    tolerance_percent,
+                ),
+                state["nextStep"],
             )
             count_gate_status = "blocked"
 
