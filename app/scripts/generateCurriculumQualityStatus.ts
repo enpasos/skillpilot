@@ -310,11 +310,13 @@ function appendSourceGoalCountPeerChecks(sources: Map<string, MappingPipelineSou
       if (peerCounts.length < 2) return
 
       const baseline = median(peerCounts)
-      const lowerBound = baseline * (1 - SOURCE_GOAL_COUNT_DEVIATION_THRESHOLD)
-      const upperBound = baseline * (1 + SOURCE_GOAL_COUNT_DEVIATION_THRESHOLD)
+      const minPeerCount = Math.min(...peerCounts)
+      const maxPeerCount = Math.max(...peerCounts)
+      const lowerBound = minPeerCount * (1 - SOURCE_GOAL_COUNT_DEVIATION_THRESHOLD)
+      const upperBound = maxPeerCount * (1 + SOURCE_GOAL_COUNT_DEVIATION_THRESHOLD)
       const withinRange = source.sourceGoals >= lowerBound && source.sourceGoals <= upperBound
       const percent = baseline === 0 ? 0 : Math.round(((source.sourceGoals - baseline) / baseline) * 100)
-      const details = `${source.sourceGoals} Source-Ziele; Vergleich HE/BW (${peerCounts.join('/')}) Median ${Math.round(baseline)}; zulässiger 30%-Korridor ${Math.ceil(lowerBound)}-${Math.floor(upperBound)}; Abweichung ${percent}%.`
+      const details = `${source.sourceGoals} Source-Ziele; Vergleich HE/BW (${peerCounts.join('/')}) Median ${Math.round(baseline)}; zulässiger 30%-Spannenkorridor ${Math.ceil(lowerBound)}-${Math.floor(upperBound)}; Abweichung vom Median ${percent}%.`
       const nextSteps = source.steps.map((step) => {
         if (step.id !== 'MAPPING-2') return step
         const checks = step.checks.filter((check) => check.id !== 'source-goal-count-peer-baseline')
