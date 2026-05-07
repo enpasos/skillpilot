@@ -120,6 +120,51 @@ interface MappingPipelineStep {
   checks: MappingPipelineCheck[]
 }
 
+interface MappingPipelineSourceDocumentStatus {
+  key?: string
+  title: string
+  path?: string
+  official?: boolean
+  available: boolean
+}
+
+function isRecord(value: unknown): value is Record<string, unknown> {
+  return typeof value === 'object' && value !== null && !Array.isArray(value)
+}
+
+function normalizeMappingPipelineCheck(value: unknown): MappingPipelineCheck | null {
+  if (!isRecord(value) || typeof value.id !== 'string' || typeof value.label !== 'string') return null
+  const rawStatus = String(value.status ?? '').toLowerCase()
+  const passed = typeof value.passed === 'boolean'
+    ? value.passed
+    : rawStatus === 'pass' || rawStatus === 'passed' || rawStatus === 'complete'
+
+  return {
+    id: value.id,
+    label: value.label,
+    passed,
+    details: String(value.details ?? ''),
+  }
+}
+
+function normalizeMappingPipelineStep(value: unknown): MappingPipelineStep | null {
+  if (!isRecord(value) || typeof value.id !== 'string' || typeof value.label !== 'string') return null
+  if (value.status !== 'complete' && value.status !== 'incomplete' && value.status !== 'blocked') return null
+  const checks = Array.isArray(value.checks)
+    ? value.checks.map(normalizeMappingPipelineCheck).filter((check): check is MappingPipelineCheck => check !== null)
+    : []
+
+  return {
+    id: value.id,
+    label: value.label,
+    status: value.status,
+    dependsOn: Array.isArray(value.dependsOn)
+      ? value.dependsOn.filter((entry): entry is string => typeof entry === 'string')
+      : [],
+    checks,
+  }
+}
+
 function normalizeSourceExtractionPipelineSteps(
   steps: MappingPipelineStep[],
   coverage: {
@@ -146,12 +191,17 @@ function normalizeSourceExtractionPipelineSteps(
     const checks = step.checks
       .filter((check) => check.id !== 'm3-all-source-goals-exactly-mapped')
       .map((check) => {
-        if (check.id === 'm3-all-source-goals-covered-by-canonical') {
+        if (check.id === 'm3-all-source-goals-covered-by-canonical' || check.id === 'm3-all-source-goals-covered') {
+          const blockedByUpstreamReview = step.status === 'blocked'
           return {
             ...check,
-            label: 'Alle Source-Ziele sind durch SkillPilot-Ziele abgedeckt',
+            label: blockedByUpstreamReview
+              ? 'Vorläufige Abdeckung der aktuellen Source-IDs ist vorhanden'
+              : 'Alle Source-Ziele sind durch SkillPilot-Ziele abgedeckt',
             passed: fullyCovered,
-            details: `Abgedeckt: ${mappedSourceGoals}/${totalSourceGoals}; verbleibend: ${explicitNeedsCanonicalGoal} explizite Canonical-Gaps, ${unreviewedSourceGoals} unreviewed.`,
+            details: blockedByUpstreamReview
+              ? `Abgedeckt: ${mappedSourceGoals}/${totalSourceGoals}; diese Abdeckung bewertet nur die aktuellen Source-IDs und ist kein fachlicher MAPPING-3-Abschluss, solange MAPPING-2 blockiert ist.`
+              : `Abgedeckt: ${mappedSourceGoals}/${totalSourceGoals}; verbleibend: ${explicitNeedsCanonicalGoal} explizite Canonical-Gaps, ${unreviewedSourceGoals} unreviewed.`,
           }
         }
 
@@ -160,9 +210,9 @@ function normalizeSourceExtractionPipelineSteps(
 
     return {
       ...step,
-      status: fullyCovered
-        ? 'complete'
-        : step.status === 'blocked' ? step.status : 'incomplete',
+      status: step.status === 'blocked'
+        ? step.status
+        : fullyCovered ? 'complete' : 'incomplete',
       checks,
     }
   })
@@ -174,6 +224,7 @@ interface MappingPipelineSourceStatus {
   jurisdiction: string
   path: string
   sourceKind: 'source-extraction' | 'legacy-snapshot' | 'missing-extraction'
+  sourceDocuments?: MappingPipelineSourceDocumentStatus[]
   currentStep: string
   completedSteps: number
   totalSteps: number
@@ -320,6 +371,7 @@ interface SourceExtractionGoal {
   sourceSpan?: string
   sourceRef?: string
   courseLevel?: string
+  contains?: string[]
 }
 
 interface SourceLandscapeRegistryEntry {
@@ -337,11 +389,23 @@ interface SourceExtractionDocument {
   subject?: string
   jurisdiction?: string
   stage?: string
+  sourceDocument?: {
+    key?: string
+    title?: string
+    path?: string
+    official?: boolean
+  }
+  sourceDocuments?: Array<{
+    key?: string
+    title?: string
+    path?: string
+    official?: boolean
+  }>
   passages?: unknown[]
   sourceGoals?: SourceExtractionGoal[]
   pipelineStatus?: {
     currentStep?: string
-    steps?: MappingPipelineStep[]
+    steps?: unknown[]
   }
 }
 
@@ -420,10 +484,10 @@ const CANONICAL_GYM_PHYSICS_SEK2_PRACTICE_CLUSTER_IDS = [
 const ruleCatalog: QualityRuleDefinition[] = [
   {
     id: 'CQR-000',
-    label: 'Source snapshot ingestion',
+    label: 'Source inventory ingestion',
     category: 'applicability',
     maturityTarget: 'M1',
-    description: 'Original source snapshots are readable and their extracted goals are registered in the source membership/closure ledger.',
+    description: 'Original source inventories are readable and their extracted goals are registered in the source membership/closure ledger.',
   },
   {
     id: 'CQR-001',
@@ -556,6 +620,38 @@ function toRepoPath(path: string): string {
 
 function loadJson<T>(path: string): T {
   return JSON.parse(readFileSync(path, 'utf8')) as T
+}
+
+function sourceDocumentsForExtraction(extraction: SourceExtractionDocument): MappingPipelineSourceDocumentStatus[] {
+  const rawDocuments = Array.isArray(extraction.sourceDocuments) && extraction.sourceDocuments.length > 0
+    ? extraction.sourceDocuments
+    : extraction.sourceDocument
+      ? [extraction.sourceDocument]
+      : []
+
+  return rawDocuments
+    .map((document) => {
+      const title = typeof document.title === 'string' && document.title.trim()
+        ? document.title.trim()
+        : typeof document.key === 'string' && document.key.trim()
+          ? document.key.trim()
+          : typeof document.path === 'string' && document.path.trim()
+            ? document.path.trim()
+            : ''
+      if (!title) return null
+      const sourcePath = typeof document.path === 'string' && document.path.trim()
+        ? document.path.trim().replace(/\\/g, '/')
+        : undefined
+      const absolutePath = sourcePath ? resolve(repoRoot, sourcePath) : undefined
+      return {
+        key: typeof document.key === 'string' && document.key.trim() ? document.key.trim() : undefined,
+        title,
+        path: absolutePath ? toRepoPath(absolutePath) : undefined,
+        official: document.official,
+        available: absolutePath ? existsSync(absolutePath) : false,
+      }
+    })
+    .filter((document): document is MappingPipelineSourceDocumentStatus => document !== null)
 }
 
 function collectFiles(root: string, predicate: (fileName: string) => boolean): string[] {
@@ -1452,11 +1548,36 @@ function readSourceLandscapeRegistryEntriesById(): Map<string, SourceLandscapeRe
   return result
 }
 
-function readExtractedSourceAtomicGoalIdsByLandscapeId(): Map<string, Set<string>> {
-  const allSourceGoalIdsByLandscapeId = readExtractedSourceGoalIdsByLandscapeId()
+function readSourceExtractionGoalIdsByLandscapeId(atomicOnly: boolean): Map<string, Set<string>> {
   const result = new Map<string, Set<string>>()
+  if (!existsSync(sourceExtractionRoot)) return result
+
+  const files = collectFiles(sourceExtractionRoot, (fileName) => /\.source-extraction\.json$/i.test(fileName))
+  files.forEach((file) => {
+    try {
+      const extraction = loadJson<SourceExtractionDocument>(file)
+      if (typeof extraction.sourceLandscapeId !== 'string' || !extraction.sourceLandscapeId.trim()) return
+      const goalIds = new Set(
+        (extraction.sourceGoals ?? [])
+          .filter((goal) => !atomicOnly || !Array.isArray(goal.contains) || goal.contains.length === 0)
+          .map((goal) => goal.id)
+          .filter((goalId): goalId is string => typeof goalId === 'string' && goalId.trim().length > 0),
+      )
+      if (goalIds.size > 0) result.set(extraction.sourceLandscapeId, goalIds)
+    } catch {
+      // Diagnostic source-extraction files should not block the quality dashboard.
+    }
+  })
+
+  return result
+}
+
+function readExtractedSourceAtomicGoalIdsByLandscapeId(): Map<string, Set<string>> {
+  const result = readSourceExtractionGoalIdsByLandscapeId(true)
+  const allSourceGoalIdsByLandscapeId = readExtractedSourceGoalIdsByLandscapeId()
   const registryEntriesById = readSourceLandscapeRegistryEntriesById()
   for (const [landscapeId, allGoalIds] of allSourceGoalIdsByLandscapeId.entries()) {
+    if (result.has(landscapeId)) continue
     const entry = registryEntriesById.get(landscapeId)
     const candidatePaths = [entry?.sourcePath, entry?.archiveSourcePath]
       .filter((candidate): candidate is string => typeof candidate === 'string' && candidate.trim().length > 0)
@@ -1481,9 +1602,10 @@ function readExtractedSourceAtomicGoalIdsByLandscapeId(): Map<string, Set<string
 }
 
 function readExtractedSourceGoalIdsByLandscapeId(): Map<string, Set<string>> {
-  const result = new Map<string, Set<string>>()
+  const result = readSourceExtractionGoalIdsByLandscapeId(false)
   const registryEntriesById = readSourceLandscapeRegistryEntriesById()
   for (const [landscapeId, entry] of registryEntriesById.entries()) {
+    if (result.has(landscapeId)) continue
     const candidatePaths = [entry.sourcePath, entry.archiveSourcePath]
       .filter((candidate): candidate is string => typeof candidate === 'string' && candidate.trim().length > 0)
       .map((candidate) => resolve(repoRoot, candidate))
@@ -1804,11 +1926,8 @@ function readSourceExtractionPipelinesByLandscapeId(): Map<string, MappingPipeli
       const extraction = loadJson<SourceExtractionDocument>(file)
       if (typeof extraction.sourceLandscapeId !== 'string' || !extraction.sourceLandscapeId.trim()) return
       const steps = (extraction.pipelineStatus?.steps ?? [])
-        .filter((step): step is MappingPipelineStep =>
-          typeof step.id === 'string'
-          && typeof step.label === 'string'
-          && (step.status === 'complete' || step.status === 'incomplete' || step.status === 'blocked')
-          && Array.isArray(step.checks))
+        .map(normalizeMappingPipelineStep)
+        .filter((step): step is MappingPipelineStep => step !== null)
       if (steps.length === 0) return
 
       const registryEntry = registryEntriesById.get(extraction.sourceLandscapeId)
@@ -1878,6 +1997,7 @@ function readSourceExtractionPipelinesByLandscapeId(): Map<string, MappingPipeli
         jurisdiction: normalizeJurisdiction(registryEntry?.jurisdiction ?? extraction.jurisdiction) ?? String(registryEntry?.jurisdiction ?? extraction.jurisdiction ?? ''),
         path: repoPath,
         sourceKind: 'source-extraction',
+        sourceDocuments: sourceDocumentsForExtraction(extraction),
         currentStep,
         completedSteps,
         totalSteps: steps.length,
@@ -2541,7 +2661,7 @@ function evaluateSourceSnapshotIngestion(coverage: JurisdictionCoverage | undefi
     return makeRule('CQR-000', 'not_configured', 'No source-ingestion projection is available for this curriculum.')
   }
 
-  const missingSnapshots = coverage.jurisdictions.filter((entry) =>
+  const missingSourceInventories = coverage.jurisdictions.filter((entry) =>
     entry.sourceOriginalGoals > 0 && entry.sourceExtractedGoals === 0)
   const unregistered = coverage.jurisdictions.filter((entry) =>
     entry.sourceUnregisteredGoals > 0 || entry.sourceUnregisteredAtomicGoals > 0)
@@ -2551,7 +2671,7 @@ function evaluateSourceSnapshotIngestion(coverage: JurisdictionCoverage | undefi
     entry.sourceExtractedGoals > 0
       && entry.sourceUnregisteredGoals === 0
       && entry.sourceUnregisteredAtomicGoals === 0).length
-  const status: RuleStatus = missingSnapshots.length > 0 || unregistered.length > 0
+  const status: RuleStatus = missingSourceInventories.length > 0 || unregistered.length > 0
     ? 'fail'
     : completeJurisdictions < coverage.totalJurisdictions
       ? 'warn'
@@ -2561,13 +2681,13 @@ function evaluateSourceSnapshotIngestion(coverage: JurisdictionCoverage | undefi
     'CQR-000',
     status,
     status === 'pass'
-      ? `All ${coverage.totalJurisdictions} declared Bundesland source snapshots are readable and fully registered.`
-      : `${completeJurisdictions}/${coverage.totalJurisdictions} declared Bundesland source snapshots are readable and fully registered.`,
+      ? `All ${coverage.totalJurisdictions} declared Bundesland source inventories are readable and fully registered.`
+      : `${completeJurisdictions}/${coverage.totalJurisdictions} declared Bundesland source inventories are readable and fully registered.`,
     {
       totalJurisdictions: coverage.totalJurisdictions,
       completeSourceJurisdictions: completeJurisdictions,
       emptySourceJurisdictions: empty.length,
-      missingReadableSourceSnapshotJurisdictions: missingSnapshots.length,
+      missingReadableSourceInventoryJurisdictions: missingSourceInventories.length,
       sourceExtractedGoals: coverage.sourceExtractedGoals,
       sourceOriginalGoals: coverage.sourceOriginalGoals,
       sourceUnregisteredGoals: coverage.sourceUnregisteredGoals,
@@ -2575,11 +2695,11 @@ function evaluateSourceSnapshotIngestion(coverage: JurisdictionCoverage | undefi
       sourceUnregisteredAtomicGoals: coverage.sourceUnregisteredAtomicGoals,
     },
     [
-      ...missingSnapshots.map((entry) =>
-        `${entry.jurisdiction}: ${entry.sourceOriginalGoals} source original goal(s) are registered, but no readable source snapshot goals were extracted`),
+      ...missingSourceInventories.map((entry) =>
+        `${entry.jurisdiction}: ${entry.sourceOriginalGoals} source original goal(s) are registered, but no readable source inventory goals were extracted`),
       ...unregistered.map((entry) =>
         `${entry.jurisdiction}: ${entry.sourceUnregisteredGoals} extracted source goal(s) and ${entry.sourceUnregisteredAtomicGoals} extracted source atom(s) are not registered in membership/closure`),
-      ...empty.map((entry) => `${entry.jurisdiction}: no source snapshot goals are registered or extracted`),
+      ...empty.map((entry) => `${entry.jurisdiction}: no source inventory goals are registered or extracted`),
     ],
   )
 }
@@ -2688,9 +2808,13 @@ function deriveCurriculumMaturity(curriculumRules: RuleResult[], scopes: ScopeSt
 
 function renderMarkdown(status: StatusDocument): string {
   const lines: string[] = []
-  const sourceKindLabel = (sourceKind: MappingPipelineSourceStatus['sourceKind']): string => {
-    if (sourceKind === 'source-extraction') return 'Passage extraction'
-    if (sourceKind === 'legacy-snapshot') return 'Snapshot diagnostic'
+  const sourceEvidenceLabel = (source: MappingPipelineSourceStatus): string => {
+    if (source.sourceKind === 'source-extraction') {
+      const documents = source.sourceDocuments ?? []
+      const available = documents.filter((document) => document.available).length
+      return documents.length > 0 ? `${available}/${documents.length} original source(s)` : '0 original source(s)'
+    }
+    if (source.sourceKind === 'legacy-snapshot') return 'Snapshot diagnostic'
     return 'No extraction'
   }
   const sourceExtractionProgress = (pipeline?: MappingPipelineStatus): string => {
@@ -2731,7 +2855,7 @@ function renderMarkdown(status: StatusDocument): string {
   lines.push('')
   lines.push('## Mapping Pipeline')
   lines.push('')
-  lines.push('| Curriculum | Source | Jurisdiction | Source kind | Complete | Current step | Passages | Source goals | Exact | Partial | Exact share | Evidence note |')
+  lines.push('| Curriculum | Source | Jurisdiction | Original sources | Complete | Current step | Passages | Source goals | Exact | Partial | Exact share | Evidence note |')
   lines.push('| --- | --- | --- | --- | ---: | --- | ---: | ---: | ---: | ---: | ---: | --- |')
   status.curricula.forEach((curriculum) => {
     curriculum.mappingPipeline?.sources.forEach((source) => {
@@ -2740,7 +2864,7 @@ function renderMarkdown(status: StatusDocument): string {
       const exactShare = mappedSourceGoals > 0
         ? Math.round(((source.exactMappings ?? 0) / mappedSourceGoals) * 100)
         : 0
-      lines.push(`| ${curriculum.title} | ${source.title} | ${source.jurisdiction || '-'} | ${sourceKindLabel(source.sourceKind)} | ${source.completedSteps}/${source.totalSteps} | ${source.currentStep || '-'} | ${source.passages} | ${source.sourceGoals} | ${source.exactMappings ?? 0} | ${source.partialMappings ?? 0} | ${exactShare}% | ${evidenceNote} |`)
+      lines.push(`| ${curriculum.title} | ${source.title} | ${source.jurisdiction || '-'} | ${sourceEvidenceLabel(source)} | ${source.completedSteps}/${source.totalSteps} | ${source.currentStep || '-'} | ${source.passages} | ${source.sourceGoals} | ${source.exactMappings ?? 0} | ${source.partialMappings ?? 0} | ${exactShare}% | ${evidenceNote} |`)
     })
   })
   lines.push('')

@@ -34,7 +34,7 @@ The dashboard reports one conservative maturity level per curriculum and, where 
 | Level | Meaning |
 | --- | --- |
 | `M0` | Basic graph quality is visible, but source-ingestion is not yet complete. |
-| `M1` | Original source snapshots are readable and their extracted goals are registered in the source membership/closure ledger. |
+| `M1` | Original source inventories are readable and their extracted goals are registered in the source membership/closure ledger. |
 | `M2` | Bundesland composition-view atoms are fully source-backed, and registered source original goals are fully covered by the Bundesland view. |
 | `M3` | Every configured learner-facing QA scope has a clean route from motivation through atomic learning goals to terminal autonomy. |
 | `M4` | Terminal autonomy goals in every configured QA scope are exam-mode-capable via `examData` or an explicit reviewed exception convention. |
@@ -48,7 +48,7 @@ The first rule catalog is versioned as `curriculum-quality-v1`.
 
 | Rule | Target | Meaning |
 | --- | --- | --- |
-| `CQR-000` | `M1` | Source snapshot ingestion: original source snapshots are readable and their extracted goals are registered. |
+| `CQR-000` | `M1` | Source inventory ingestion: original source inventories are readable and their extracted goals are registered. |
 | `CQR-001` | `M0` | Basic graph integrity: IDs, local/global references, self-reference guards, and direct DAG checks. |
 | `CQR-002` | `M0` | Explicit `type` metadata matches structural atomic/cluster classification. |
 | `CQR-003` | `M2` | Bundesland atomic coverage: every declared jurisdiction view has full source-backed atomic coverage, no unsupported assigned atom, and no registered source original goal missing from the view mapping. |
@@ -108,7 +108,7 @@ For each canonical curriculum and each declared jurisdiction, the snapshot store
 - registered source Lehrplan atoms,
 - source Lehrplan atoms that map into the Bundesland view,
 - source Lehrplan atoms not mapped into the Bundesland view,
-- extracted source atoms from registered source snapshots,
+- extracted source atoms from registered source inventories,
 - extracted source atoms missing from the source membership/closure ledger,
 - registered source original goals,
 - registered source original goals fully covered by Bundesland view atoms,
@@ -123,9 +123,9 @@ The table value `Bundeslaender` is `cleanJurisdictions / totalJurisdictions`. A 
 - every Bundesland view atom is backed by accepted Lehrplan evidence,
 - no Bundesland view atom is assigned without such evidence,
 - every registered source original goal is fully covered by canonical atoms rendered in that Bundesland view,
-- every extracted source atom from available source snapshots is registered in the source membership/closure ledger.
+- every extracted source atom from available source inventories is registered in the source membership/closure ledger.
 
-The extraction check has one hard boundary: it can only verify source snapshots that exist in the repository and can be parsed. If the official Lehrplan has not yet been turned into a complete source snapshot, the dashboard cannot infer the missing official goals automatically; that remains explicit source-ingestion work.
+The extraction check has one hard boundary: it can only verify source inventories that exist in the repository and can be parsed. If the official Lehrplan has not yet been turned into a complete source extraction or retained source snapshot, the dashboard cannot infer the missing official goals automatically; that remains explicit source-ingestion work.
 
 Only these evidence kinds count directly for `CQR-003`:
 

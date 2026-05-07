@@ -1,6 +1,6 @@
 # Curriculum Quality Status
 
-Generated: 2026-05-06T19:49:50.921Z
+Generated: 2026-05-07T06:32:42.870Z
 Rules version: curriculum-quality-v1
 
 ## Summary
@@ -31,7 +31,7 @@ Rules version: curriculum-quality-v1
 | Informatik (Gymnasium, DE) | M0 | 221 | 180 | 0/0 | 0/16 | 0 | 0 | 2 |
 | Italienisch (Gymnasium, DE) | M0 | 8 | 7 | 0/0 | 0/16 | 0 | 0 | 2 |
 | Latein (Gymnasium, DE) | M0 | 142 | 109 | 0/0 | 0/16 | 0 | 0 | 2 |
-| Mathematik (Gymnasium, DE) | M0 | 961 | 769 | 3/3 | 0/16 | 2 | 3 | 4 |
+| Mathematik (Gymnasium, DE) | M0 | 962 | 770 | 3/4 | 0/16 | 2 | 3 | 4 |
 | Musik (Gymnasium, DE) | M0 | 76 | 52 | 0/0 | 0/16 | 0 | 0 | 2 |
 | Physik (Gymnasium, DE) | M0 | 475 | 392 | 0/0 | 0/16 | 2 | 2 | 2 |
 | Politik und Wirtschaft (Gymnasium, DE) | M0 | 208 | 175 | 0/0 | 0/16 | 0 | 0 | 2 |
@@ -43,7 +43,7 @@ Rules version: curriculum-quality-v1
 
 ## Mapping Pipeline
 
-| Curriculum | Source | Jurisdiction | Source kind | Complete | Current step | Passages | Source goals | Exact | Partial | Exact share | Evidence note |
+| Curriculum | Source | Jurisdiction | Original sources | Complete | Current step | Passages | Source goals | Exact | Partial | Exact share | Evidence note |
 | --- | --- | --- | --- | ---: | --- | ---: | ---: | ---: | ---: | ---: | --- |
 | Biologie (Gymnasium, DE) | Biologie (Gymnasium) | DE-BY | No extraction | 0/3 | MAPPING-1 | 0 | 0 | 0 | 0 | 0% |  |
 | Biologie (Gymnasium, DE) | Biologie Oberstufe (Hessen, KC 2024) | DE-HE | No extraction | 0/3 | MAPPING-1 | 0 | 0 | 0 | 0 | 0% |  |
@@ -74,13 +74,13 @@ Rules version: curriculum-quality-v1
 | Mathematik (Gymnasium, DE) | Mathematik Sekundarstufe I (Brandenburg, Pilot-Quellsnapshot) | DE-BB | Snapshot diagnostic | 0/3 | MAPPING-1 | 0 | 68 | 26 | 42 | 38% | not pipeline-capable: no passage extraction |
 | Mathematik (Gymnasium, DE) | Mathematik Oberstufe (Berlin, Pilot-Quellsnapshot) | DE-BE | Snapshot diagnostic | 0/3 | MAPPING-1 | 0 | 120 | 38 | 82 | 32% | not pipeline-capable: no passage extraction |
 | Mathematik (Gymnasium, DE) | Mathematik Sekundarstufe I (Berlin, Pilot-Quellsnapshot) | DE-BE | Snapshot diagnostic | 0/3 | MAPPING-1 | 0 | 67 | 2 | 65 | 3% | not pipeline-capable: no passage extraction |
-| Mathematik (Gymnasium, DE) | Mathematik Kursstufe (Baden-Wuerttemberg, Pilot-Quellsnapshot) | DE-BW | Snapshot diagnostic | 0/3 | MAPPING-1 | 0 | 89 | 23 | 66 | 26% | not pipeline-capable: no passage extraction |
-| Mathematik (Gymnasium, DE) | Mathematik Sekundarstufe I (Baden-Wuerttemberg, BP2016 Source-Extraction) | DE-BW | Passage extraction | 3/3 | MAPPING-3 | 20 | 278 | 95 | 183 | 34% |  |
+| Mathematik (Gymnasium, DE) | DE-BW - Mathematik Kursstufe (Baden-Wuerttemberg, BP2016 Source-Extraction) | DE-BW | 1/1 original source(s) | 1/3 | MAPPING-2 | 16 | 221 | 71 | 150 | 32% |  |
+| Mathematik (Gymnasium, DE) | Mathematik Sekundarstufe I (Baden-Wuerttemberg, BP2016 Source-Extraction) | DE-BW | 1/1 original source(s) | 3/3 | MAPPING-3 | 20 | 278 | 95 | 183 | 34% |  |
 | Mathematik (Gymnasium, DE) | Mathematik (Gymnasium) | DE-BY | No extraction | 0/3 | MAPPING-1 | 0 | 0 | 0 | 0 | 0% |  |
 | Mathematik (Gymnasium, DE) | Mathematik Oberstufe (Bremen, Pilot-Quellsnapshot) | DE-HB | Snapshot diagnostic | 0/3 | MAPPING-1 | 0 | 56 | 1 | 50 | 2% | not pipeline-capable: no passage extraction |
 | Mathematik (Gymnasium, DE) | Mathematik Sekundarstufe I (Bremen, Pilot-Quellsnapshot) | DE-HB | Snapshot diagnostic | 0/3 | MAPPING-1 | 0 | 18 | 2 | 15 | 12% | not pipeline-capable: no passage extraction |
-| Mathematik (Gymnasium, DE) | Mathematik Oberstufe (Hessen, KC 2024) | DE-HE | Passage extraction | 3/3 | - | 25 | 316 | 316 | 0 | 100% |  |
-| Mathematik (Gymnasium, DE) | Mathematik Sekundarstufe I (Hessen, G9) | DE-HE | Passage extraction | 3/3 | - | 72 | 426 | 426 | 0 | 100% |  |
+| Mathematik (Gymnasium, DE) | Mathematik Oberstufe (Hessen, KC 2024) | DE-HE | 1/1 original source(s) | 3/3 | - | 25 | 316 | 316 | 0 | 100% |  |
+| Mathematik (Gymnasium, DE) | Mathematik Sekundarstufe I (Hessen, G9) | DE-HE | 3/3 original source(s) | 3/3 | - | 72 | 426 | 426 | 0 | 100% |  |
 | Mathematik (Gymnasium, DE) | Mathematik Sekundarstufe I (Hamburg, erster Quellsnapshot) | DE-HH | Snapshot diagnostic | 0/3 | MAPPING-1 | 0 | 37 | 5 | 32 | 14% | not pipeline-capable: no passage extraction |
 | Mathematik (Gymnasium, DE) | Mathematik Studienstufe (Hamburg, erster Quellsnapshot) | DE-HH | Snapshot diagnostic | 0/3 | MAPPING-1 | 0 | 39 | 2 | 37 | 5% | not pipeline-capable: no passage extraction |
 | Mathematik (Gymnasium, DE) | Mathematik Qualifikationsphase (Mecklenburg-Vorpommern, erster Quellsnapshot) | DE-MV | Snapshot diagnostic | 0/3 | MAPPING-1 | 0 | 15 | 1 | 14 | 7% | not pipeline-capable: no passage extraction |
@@ -153,7 +153,7 @@ Rules version: curriculum-quality-v1
 | Informatik (Gymnasium, DE) | 0/16 | 180 | 180 | 2 | 0 | 483 | 0 | 0 | 0 | 0 | 58 | 399 | 0 | 2 | 174 (96.7%) |
 | Italienisch (Gymnasium, DE) | 0/16 | 7 | 7 | 1 | 0 | 8 | 0 | 0 | 0 | 0 | 0 | 7 | 0 | 1 | 7 (100%) |
 | Latein (Gymnasium, DE) | 0/16 | 109 | 109 | 2 | 0 | 1035 | 0 | 0 | 0 | 0 | 0 | 942 | 0 | 2 | 109 (100%) |
-| Mathematik (Gymnasium, DE) | 0/16 | 670 | 769 | 16 | 1675 | 2356 | 1324 | 318 | 1196 | 259 | 9074 | 689 | 0 | 16 | 586 (87.6%) |
+| Mathematik (Gymnasium, DE) | 0/16 | 671 | 770 | 16 | 2707 | 3064 | 1645 | 95 | 2285 | 95 | 9069 | 1098 | 0 | 16 | 586 (87.5%) |
 | Musik (Gymnasium, DE) | 0/16 | 52 | 52 | 2 | 0 | 329 | 0 | 0 | 0 | 0 | 0 | 257 | 0 | 2 | 52 (100%) |
 | Physik (Gymnasium, DE) | 0/16 | 326 | 392 | 9 | 642 | 1411 | 451 | 13 | 505 | 10 | 760 | 777 | 0 | 16 | 288 (90.6%) |
 | Politik und Wirtschaft (Gymnasium, DE) | 0/16 | 175 | 175 | 2 | 0 | 607 | 0 | 0 | 0 | 0 | 12 | 521 | 0 | 2 | 175 (100%) |
@@ -167,7 +167,7 @@ Rules version: curriculum-quality-v1
 
 | Rule | Target | Category | Description |
 | --- | --- | --- | --- |
-| CQR-000 | M1 | applicability | Original source snapshots are readable and their extracted goals are registered in the source membership/closure ledger. |
+| CQR-000 | M1 | applicability | Original source inventories are readable and their extracted goals are registered in the source membership/closure ledger. |
 | CQR-001 | M0 | graph | Goal IDs, local references, self-reference guards, and direct DAG checks are clean. |
 | CQR-002 | M0 | graph | Stored type metadata agrees with structural atomic/cluster classification. |
 | CQR-003 | M2 | applicability | Bundesland composition-view atoms are source-backed and registered source original goals are fully covered by view atoms. |

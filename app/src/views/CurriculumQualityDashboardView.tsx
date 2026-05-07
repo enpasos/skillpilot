@@ -116,12 +116,21 @@ interface MappingPipelineStep {
   checks: MappingPipelineCheck[]
 }
 
+interface MappingPipelineSourceDocument {
+  key?: string
+  title: string
+  path?: string
+  official?: boolean
+  available: boolean
+}
+
 interface MappingPipelineSourceStatus {
   sourceLandscapeId: string
   title: string
   jurisdiction: string
   path: string
   sourceKind?: 'source-extraction' | 'legacy-snapshot' | 'missing-extraction'
+  sourceDocuments?: MappingPipelineSourceDocument[]
   currentStep: string
   completedSteps: number
   totalSteps: number
@@ -227,6 +236,9 @@ const COPY = {
     legacySnapshotProgress: 'Snapshot-Diagnosen',
     missingExtractionProgress: 'keine Extraction',
     currentPipelineStep: 'Nächster offener Schritt',
+    originalSourcesProvided: 'Originalquellen bereitgestellt',
+    originalSourcesMissing: 'Originalquellen fehlen',
+    originalSources: 'Originalquellen',
     passages: 'Passagen',
     sourceGoals: 'Source-Ziele',
     sourceKindExtraction: 'Passage-Extraktion',
@@ -307,6 +319,9 @@ const COPY = {
     legacySnapshotProgress: 'Snapshot diagnostics',
     missingExtractionProgress: 'no extraction',
     currentPipelineStep: 'Next open step',
+    originalSourcesProvided: 'Original sources provided',
+    originalSourcesMissing: 'Original sources missing',
+    originalSources: 'Original sources',
     passages: 'Passages',
     sourceGoals: 'Source goals',
     sourceKindExtraction: 'Passage extraction',
@@ -731,6 +746,12 @@ export const CurriculumQualityDashboardView: React.FC = () => {
                               || source.unmappedSourceGoals !== undefined
                             const hasPartialMappings = (source.partialMappings ?? 0) > 0
                             const isSourceExtraction = source.sourceKind === 'source-extraction'
+                            const sourceDocuments = source.sourceDocuments ?? []
+                            const availableSourceDocuments = sourceDocuments.filter((document) => document.available).length
+                            const sourceDocumentsReady = sourceDocuments.length > 0 && availableSourceDocuments === sourceDocuments.length
+                            const sourceDocumentsTitle = sourceDocuments
+                              .map((document) => `${document.title}${document.path ? ` · ${document.path}` : ''}`)
+                              .join('\n')
                             const inventoryComplete = isSourceExtraction
                               && source.sourceGoals > 0
                               && mappedSourceGoals === source.sourceGoals
@@ -768,13 +789,27 @@ export const CurriculumQualityDashboardView: React.FC = () => {
                                   </span>
                                 </div>
                                 <div className="mt-2 flex flex-wrap gap-1.5">
-                                  <span className="rounded-full border border-border-color bg-gray-100 px-2 py-0.5 text-[11px] font-semibold text-text-secondary dark:bg-slate-800">
-                                    {source.sourceKind === 'legacy-snapshot'
-                                      ? copy.sourceKindLegacySnapshot
-                                      : source.sourceKind === 'missing-extraction'
-                                        ? copy.sourceKindMissing
-                                        : copy.sourceKindExtraction}
-                                  </span>
+                                  {isSourceExtraction ? (
+                                    <span
+                                      className={`rounded-full border px-2 py-0.5 text-[11px] font-semibold ${
+                                        sourceDocumentsReady
+                                          ? 'border-emerald-200 bg-emerald-50 text-emerald-700 dark:border-emerald-900/60 dark:bg-emerald-950/30 dark:text-emerald-300'
+                                          : 'border-amber-200 bg-amber-50 text-amber-700 dark:border-amber-900/60 dark:bg-amber-950/30 dark:text-amber-300'
+                                      }`}
+                                      title={sourceDocumentsTitle || undefined}
+                                    >
+                                      {sourceDocumentsReady ? copy.originalSourcesProvided : copy.originalSourcesMissing}
+                                      {sourceDocuments.length > 0 ? ` · ${availableSourceDocuments}/${sourceDocuments.length}` : ''}
+                                    </span>
+                                  ) : (
+                                    <span className="rounded-full border border-border-color bg-gray-100 px-2 py-0.5 text-[11px] font-semibold text-text-secondary dark:bg-slate-800">
+                                      {source.sourceKind === 'legacy-snapshot'
+                                        ? copy.sourceKindLegacySnapshot
+                                        : source.sourceKind === 'missing-extraction'
+                                          ? copy.sourceKindMissing
+                                          : copy.sourceKindExtraction}
+                                    </span>
+                                  )}
                                   {source.steps.map((step) => (
                                     <span
                                       key={`${source.sourceLandscapeId}-${step.id}`}
@@ -796,6 +831,18 @@ export const CurriculumQualityDashboardView: React.FC = () => {
                                         >
                                           {seal}
                                         </span>
+                                      ))}
+                                    </div>
+                                  </div>
+                                ) : null}
+                                {isSourceExtraction && sourceDocuments.length > 0 ? (
+                                  <div className="mt-2 rounded-lg border border-border-color px-2 py-1 text-[11px] text-text-secondary">
+                                    <div className="font-semibold uppercase tracking-wide">{copy.originalSources}</div>
+                                    <div className="mt-1 space-y-0.5">
+                                      {sourceDocuments.map((document) => (
+                                        <div key={`${source.sourceLandscapeId}-${document.path ?? document.title}`} className="truncate font-mono">
+                                          {document.path ?? document.title}
+                                        </div>
                                       ))}
                                     </div>
                                   </div>

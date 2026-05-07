@@ -84,6 +84,50 @@ const asRecord = (value: unknown): Record<string, unknown> => {
   return {}
 }
 
+const normalizeMappingPipelineCheck = (value: unknown): Record<string, unknown> | null => {
+  const record = asRecord(value)
+  if (typeof record.id !== 'string' || typeof record.label !== 'string') return null
+
+  const rawStatus = String(record.status ?? '').toLowerCase()
+  const passed = typeof record.passed === 'boolean'
+    ? record.passed
+    : rawStatus === 'pass' || rawStatus === 'passed' || rawStatus === 'complete'
+
+  return {
+    ...record,
+    passed,
+    details: String(record.details ?? ''),
+  }
+}
+
+const normalizeMappingPipelineStep = (value: unknown): Record<string, unknown> | null => {
+  const record = asRecord(value)
+  if (typeof record.id !== 'string' || typeof record.label !== 'string') return null
+  if (record.status !== 'complete' && record.status !== 'incomplete' && record.status !== 'blocked') return null
+
+  return {
+    ...record,
+    dependsOn: asStringArray(record.dependsOn),
+    checks: Array.isArray(record.checks)
+      ? record.checks.map(normalizeMappingPipelineCheck).filter((check): check is Record<string, unknown> => check !== null)
+      : [],
+  }
+}
+
+const normalizeMappingPipelineStatus = (value: unknown): Record<string, unknown> | null => {
+  const record = asRecord(value)
+  if (Object.keys(record).length === 0) return null
+  const steps = Array.isArray(record.steps)
+    ? record.steps.map(normalizeMappingPipelineStep).filter((step): step is Record<string, unknown> => step !== null)
+    : []
+
+  return {
+    ...record,
+    currentStep: String(record.currentStep ?? ''),
+    steps,
+  }
+}
+
 const isPathInside = (candidatePath: string, parentPath: string): boolean => {
   const relative = path.relative(parentPath, candidatePath)
   if (!relative) return true
@@ -1074,9 +1118,7 @@ const readSourceExtraction = async (
       const sourceGoals = Array.isArray(extraction.sourceGoals)
         ? extraction.sourceGoals.map(asRecord).filter((goal) => typeof goal.id === 'string')
         : []
-      const pipelineStatus = Object.keys(asRecord(extraction.pipelineStatus)).length > 0
-        ? asRecord(extraction.pipelineStatus)
-        : null
+      const pipelineStatus = normalizeMappingPipelineStatus(extraction.pipelineStatus)
       if ((passages.length === 0 || sourceGoals.length === 0) && pipelineStatus === null) continue
       return {
         path: relativePath,
@@ -1115,11 +1157,11 @@ const readQualityPipelineStatusForSourcePath = async (
       const steps = Array.isArray(source.steps) ? source.steps : []
       if (steps.length === 0) return null
 
-      return {
+      return normalizeMappingPipelineStatus({
         version: 1,
         currentStep: String(source.currentStep ?? ''),
         steps,
-      }
+      })
     }
   } catch {
     return null
