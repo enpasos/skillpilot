@@ -220,8 +220,8 @@ const COPY = {
     sourceIngestionComplete: 'Originalziele vollständig erfasst',
     sourceOriginalRegistered: 'Originalziele registriert',
     sourceOriginalCovered: 'Originalziele voll abgedeckt',
-    sourceOriginalExtracted: 'Originalziele im Snapshot',
-    sourceExtractedGoals: 'Snapshot-Knoten lesbar',
+    sourceOriginalExtracted: 'Source-Ziele extrahiert',
+    sourceExtractedGoals: 'Source-Ziele lesbar',
     sourceUnregisteredGoals: 'Snapshot-Ziele unregistriert',
     sourceExtracted: 'Source-Atome extrahiert',
     sourceUnregistered: 'Source-Atome unregistriert',
@@ -229,10 +229,10 @@ const COPY = {
     no: 'nein',
     rawAtomic: 'Roh-Atomar',
     deViewAtomic: 'DE-Sicht atomar',
-    jurisdictionCoverage: 'Bundesland-Abdeckung',
+    jurisdictionCoverage: 'Bundesland-Sichten',
     jurisdictionCoverageDeferred: 'Bundesland-Abdeckung ausgeblendet',
     jurisdictionCoverageDeferredDetail: 'Erst sinnvoll, wenn alle Quellen dieselbe Mapping-Stufe haben. Aktueller TODO ist die Umstellung der übrigen Quellen auf Passage-Extraction.',
-    mappingPipeline: 'Bearbeitungspipeline',
+    mappingPipeline: 'Passage-Extraction',
     pipelineProgress: 'Passage-Extraction bereit',
     sourceExtractionProgress: 'Passage-Extraktion',
     legacySnapshotProgress: 'Snapshot-Diagnosen',
@@ -259,10 +259,10 @@ const COPY = {
     complete: 'abgeschlossen',
     incomplete: 'offen',
     blocked: 'blockiert',
-    jurisdictions: 'Bundesländer',
+    jurisdictions: 'Saubere Sichten',
     cleanJurisdictions: 'Sauber',
-    partialJurisdictions: 'Teilweise',
-    errorJurisdictions: 'Fehlerhaft',
+    partialJurisdictions: 'Teilweise sauber',
+    errorJurisdictions: 'Mit TODO',
     maxAtomicCoverage: 'Max. belegte Atomabdeckung',
     routeScopes: 'QA-Scopes',
     rules: 'Regeln',
@@ -305,8 +305,8 @@ const COPY = {
     sourceIngestionComplete: 'source originals fully captured',
     sourceOriginalRegistered: 'source originals registered',
     sourceOriginalCovered: 'source originals fully covered',
-    sourceOriginalExtracted: 'source originals in snapshot',
-    sourceExtractedGoals: 'snapshot nodes readable',
+    sourceOriginalExtracted: 'source goals extracted',
+    sourceExtractedGoals: 'source goals readable',
     sourceUnregisteredGoals: 'snapshot goals unregistered',
     sourceExtracted: 'extracted source atoms',
     sourceUnregistered: 'unregistered source atoms',
@@ -314,10 +314,10 @@ const COPY = {
     no: 'no',
     rawAtomic: 'Raw atomic',
     deViewAtomic: 'DE view atomic',
-    jurisdictionCoverage: 'Jurisdiction coverage',
+    jurisdictionCoverage: 'Jurisdiction views',
     jurisdictionCoverageDeferred: 'Jurisdiction coverage hidden',
     jurisdictionCoverageDeferredDetail: 'Useful only once all sources are on the same mapping stage. The current TODO is moving the remaining sources to passage extraction.',
-    mappingPipeline: 'Processing pipeline',
+    mappingPipeline: 'Passage extraction',
     pipelineProgress: 'passage extraction ready',
     sourceExtractionProgress: 'Passage extraction',
     legacySnapshotProgress: 'Snapshot diagnostics',
@@ -344,10 +344,10 @@ const COPY = {
     complete: 'complete',
     incomplete: 'open',
     blocked: 'blocked',
-    jurisdictions: 'Jurisdictions',
+    jurisdictions: 'Clean views',
     cleanJurisdictions: 'Clean',
-    partialJurisdictions: 'Partial',
-    errorJurisdictions: 'Error',
+    partialJurisdictions: 'Partly clean',
+    errorJurisdictions: 'With TODO',
     maxAtomicCoverage: 'Max source-backed atomic coverage',
     routeScopes: 'QA scopes',
     rules: 'Rules',
@@ -687,7 +687,19 @@ export const CurriculumQualityDashboardView: React.FC = () => {
                       </td>
                       <td className="py-3 pr-3 text-right tabular-nums">
                         {curriculum.jurisdictionCoverage
-                          ? `${curriculum.jurisdictionCoverage.cleanJurisdictions}/${curriculum.jurisdictionCoverage.totalJurisdictions}`
+                          ? (
+                            <span
+                              className={
+                                curriculum.jurisdictionCoverage.cleanJurisdictions === curriculum.jurisdictionCoverage.totalJurisdictions
+                                  ? 'font-semibold text-emerald-600 dark:text-emerald-300'
+                                  : curriculum.jurisdictionCoverage.cleanJurisdictions > 0
+                                    ? 'font-semibold text-amber-600 dark:text-amber-300'
+                                    : 'font-semibold text-red-600 dark:text-red-300'
+                              }
+                            >
+                              {curriculum.jurisdictionCoverage.cleanJurisdictions}/{curriculum.jurisdictionCoverage.totalJurisdictions}
+                            </span>
+                          )
                           : '—'}
                       </td>
                       <td className="py-3 pr-3 text-right tabular-nums">{curriculum.scopes.length}</td>

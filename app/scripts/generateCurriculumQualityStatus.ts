@@ -834,6 +834,15 @@ function isPracticeOrAssessmentGoal(goal: LearningGoal): boolean {
   return (goal.tags ?? []).includes('Practice') || (goal.tags ?? []).includes('Assessment')
 }
 
+function isCurriculumSourceCoverageGoal(goal: LearningGoal | undefined): boolean {
+  if (!goal) return true
+  if (isMemoryGoal(goal) || isPracticeOrAssessmentGoal(goal)) return false
+  const tags = goal.tags ?? []
+  if (tags.includes('Motivation') || tags.includes('Orientation')) return false
+  if ((goal as { examData?: unknown }).examData) return false
+  return true
+}
+
 function isCanonicalGymPhysicsSek1Goal(goal: LearningGoal): boolean {
   if (goal.id === CANONICAL_GYM_PHYSICS_MOTIVATION_GOAL_ID) return true
   return goal.tags?.includes('SekI') ?? false
@@ -1457,7 +1466,7 @@ function isSourceBackedJurisdictionEvidence(
 ): boolean {
   return evidence.dimension === 'jurisdiction'
     && evidence.value === jurisdiction
-    && (evidence.kind === 'provenance' || (evidence.kind === 'mapping' && evidence.mappingStrength !== 'partial'))
+    && (evidence.kind === 'provenance' || evidence.kind === 'mapping')
 }
 
 function isPartialSourceLinkedJurisdictionEvidence(
@@ -2613,6 +2622,8 @@ function readJurisdictionCoverageByLandscapeId(
 
   applicabilityCompilation.reports.forEach((report) => {
     const rawAtomicGoals = report.goals.filter((goal) => goal.goalType === 'atomic')
+    const landscape = readLandscapeForReport(report)
+    const canonicalGoalById = new Map((landscape?.goals ?? []).map((goal) => [goal.id, goal]))
     const {
       canonicalViewAtomicGoalIds,
       viewAtomicGoalIdsByJurisdiction,
@@ -2624,14 +2635,19 @@ function readJurisdictionCoverageByLandscapeId(
     const canonicalAtomicGoalIds = canonicalViewAtomicGoalIds.size > 0
       ? canonicalViewAtomicGoalIds
       : new Set(rawAtomicGoals.map((goal) => goal.goalId))
-    const totalAtomicGoals = canonicalAtomicGoalIds.size
+    const sourceCoverageAtomicGoalIds = new Set(
+      Array.from(canonicalAtomicGoalIds).filter((goalId) =>
+        isCurriculumSourceCoverageGoal(canonicalGoalById.get(goalId))),
+    )
+    const totalAtomicGoals = sourceCoverageAtomicGoalIds.size
     const jurisdictions = report.projections.map((projection) => {
       const visibleGoals = report.goals.filter((goal) =>
         (goal.compiledApplicability.jurisdiction ?? []).includes(projection.value))
       const viewAtomicGoalIds = viewAtomicGoalIdsByJurisdiction.get(projection.value)
-      const visibleAtomicGoalReports = viewAtomicGoalIds && viewAtomicGoalIds.size > 0
+      const visibleAtomicGoalReports = (viewAtomicGoalIds && viewAtomicGoalIds.size > 0
         ? rawAtomicGoals.filter((goal) => viewAtomicGoalIds.has(goal.goalId))
-        : visibleGoals.filter((goal) => goal.goalType === 'atomic' && canonicalAtomicGoalIds.has(goal.goalId))
+        : visibleGoals.filter((goal) => goal.goalType === 'atomic' && canonicalAtomicGoalIds.has(goal.goalId)))
+        .filter((goal) => sourceCoverageAtomicGoalIds.has(goal.goalId))
       const visibleAtomicGoals = visibleAtomicGoalReports.length
       const visibleClusterGoals = Math.max(0, projection.visibleGoals - visibleAtomicGoals)
       const sourceBackedAtomicGoals = visibleAtomicGoalReports.filter((goal) =>

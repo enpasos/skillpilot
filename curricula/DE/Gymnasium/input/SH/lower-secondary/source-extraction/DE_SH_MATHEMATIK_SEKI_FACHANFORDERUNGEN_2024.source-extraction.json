@@ -28,7 +28,7 @@
   ],
   "method": {
     "passageExtraction": "completed: official Schleswig-Holstein 2024 Fachanforderungen tables were extracted from the local combined mathematics PDF; the old pilot Quellsnapshot is diagnostic only.",
-    "sourceGoalExtraction": "completed: 338 source goals were derived from 123 official inhaltsbezogene Kompetenz rows and 215 official verbindliche Themen/Inhalte rows.",
+    "sourceGoalExtraction": "completed: 346 source goals were derived from official Schleswig-Holstein 2024 content rows, binding topic/content rows, and process competency sections.",
     "unitOfWork": "One visible official competency expectation in the left table column or one official binding topic/content item in the middle table column becomes one source goal. Continuation lines are joined.",
     "legacySnapshotPolicy": "The old Schleswig-Holstein pilot source snapshots are retained as diagnostic material and are not counted as source extraction."
   },
@@ -37,7 +37,8 @@
     "SH-SEKI-L2-GROSSEN-UND-MESSEN",
     "SH-SEKI-L3-STRUKTUREN-UND-FUNKTIONALER-ZUSAMMENHANG",
     "SH-SEKI-L4-RAUM-UND-FORM",
-    "SH-SEKI-L5-DATEN-UND-ZUFALL"
+    "SH-SEKI-L5-DATEN-UND-ZUFALL",
+    "SH-SEKI-PROZESSKOMPETENZEN"
   ],
   "pipelineStatus": {
     "version": 1,
@@ -59,7 +60,7 @@
             "id": "official-passages-present",
             "label": "Originalpassagen aus amtlichem PDF sind erfasst",
             "passed": true,
-            "details": "5/5 official Schleswig-Holstein Leitideen table passages extracted from PDF text."
+            "details": "6/6 official Schleswig-Holstein source passages extracted from PDF text, including content Leitideen and process competencies."
           },
           {
             "id": "snapshot-not-counted",
@@ -81,13 +82,13 @@
             "id": "mapping-1-complete",
             "label": "MAPPING-1 abgeschlossen",
             "passed": true,
-            "details": "5/5 official Schleswig-Holstein Leitideen table passages extracted from PDF text."
+            "details": "6/6 official Schleswig-Holstein source passages extracted from PDF text, including content Leitideen and process competencies."
           },
           {
             "id": "source-goals-derived-from-passages",
             "label": "Source-Ziele aus Lehrplanpassagen erzeugt",
             "passed": true,
-            "details": "338 source goals from 123 official competency rows and 215 official binding topic/content rows; old snapshot goals are not counted."
+            "details": "346 source goals from official content rows, binding topic/content rows, and process competency sections; old snapshot goals are not counted."
           },
           {
             "id": "source-goal-ids-unique",
@@ -115,7 +116,7 @@
             "id": "mapping-2-complete",
             "label": "MAPPING-2 abgeschlossen",
             "passed": true,
-            "details": "338 Source-Ziele liegen vor; MAPPING-3 läuft gegen diese Source-Extraction-IDs."
+            "details": "346 Source-Ziele liegen vor; MAPPING-3 läuft gegen diese Source-Extraction-IDs."
           },
           {
             "id": "m3-review-file-present",
@@ -127,19 +128,19 @@
             "id": "m3-review-decisions-reference-source-goals",
             "label": "M3-Review-Entscheidungen referenzieren gültige Source-Ziele",
             "passed": true,
-            "details": "Reviewed Source-Ziele: 338/338."
+            "details": "Reviewed Source-Ziele: 346/346."
           },
           {
             "id": "m3-all-source-goals-reviewed",
             "label": "Alle Source-Ziele haben eine fachliche M3-Entscheidung",
             "passed": true,
-            "details": "338/338 Source-Ziele reviewed; offen: 0."
+            "details": "346/346 Source-Ziele reviewed; offen: 0."
           },
           {
             "id": "m3-all-source-goals-covered",
             "label": "Alle Source-Ziele sind inhaltlich durch SkillPilot-Ziele abgedeckt",
             "passed": true,
-            "details": "Abgedeckt: 338/338; verbleibend: 0 explizite Canonical-Gaps, 0 unreviewed."
+            "details": "Abgedeckt: 346/346; verbleibend: 0 explizite Canonical-Gaps, 0 unreviewed."
           }
         ]
       }
@@ -537,6 +538,25 @@
         "de-sh-mathematik-seki-fachanforderungen-2024-sh-seki-l5-daten-und-zufall-T051-aa984ae01d",
         "de-sh-mathematik-seki-fachanforderungen-2024-sh-seki-l5-daten-und-zufall-T052-446054b393",
         "de-sh-mathematik-seki-fachanforderungen-2024-sh-seki-l5-daten-und-zufall-T053-a68ccd38c8"
+      ]
+    },
+    {
+      "id": "de-sh-mathematik-seki-fachanforderungen-2024-sh-seki-prozesskompetenzen",
+      "topicCode": "SH-SEKI-PROZESSKOMPETENZEN",
+      "title": "Prozessbezogene Kompetenzen Sekundarstufe I",
+      "sourcePath": "curricula/DE/Gymnasium/input/SH/Fachanforderungen_Mathematik_Sekundarstufe_2024_barrierearm.pdf",
+      "sourceDocumentKey": "SH_GYM_MATHEMATIK_FACHANFORDERUNGEN_2024",
+      "sourceRef": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, S. 22-25",
+      "text": "Prozessbezogene Kompetenzen Sekundarstufe I\n- Mathematisch argumentieren: vertraute Argumentationen wiedergeben, Vermutungen aufstellen und hinterfragen, mehrschrittige Argumentationen entwickeln, Lösungswege begründen und Argumentationen beurteilen.\n- Mathematisch kommunizieren: mathematische Sachverhalte mit eigenen Worten und Fachbegriffen formulieren, Informationen aus mathematikhaltigen Texten entnehmen, Lösungswege darstellen und auf Äußerungen anderer eingehen.\n- Probleme mathematisch lösen: Problemstellungen formulieren, geeignete Heurismen auswählen, eigene Lösungsstrategien entwickeln, Ergebnisse auf Plausibilität prüfen und Lösungswege vergleichen.\n- Mathematisch modellieren: Sachsituationen strukturieren, mathematische Modelle auswählen oder entwickeln, Mathematisierungen vornehmen, Ergebnisse interpretieren und Modelle kritisch beurteilen.\n- Mathematisch darstellen: vertraute Darstellungen nutzen und erzeugen, Darstellungen passend zur Problemstellung auswählen, zwischen Darstellungen wechseln und Darstellungen nach Zweck und Aussagekraft beurteilen.\n- Mit mathematischen Objekten umgehen: Routineverfahren verwenden, mit Zahlen, Größen, Symbolen, Variablen, Termen, Formeln, Gleichungen und Funktionen umgehen, Verfahren kontrollieren und ihre Effizienz beurteilen.\n- Mit Medien mathematisch arbeiten: analoge und digitale Mathematikwerkzeuge zum Problemlösen, Entdecken, Modellieren, Datenverarbeiten, Kontrollieren und Darstellungswechseln nutzen sowie Möglichkeiten und Grenzen der Medien beurteilen.",
+      "sourceGoalIds": [
+        "de-sh-mathematik-seki-fachanforderungen-2024-sh-seki-prozesskompetenzen-p1-mathematisch-argumentieren-e665ff98e7",
+        "de-sh-mathematik-seki-fachanforderungen-2024-sh-seki-prozesskompetenzen-p2-mathematisch-kommunizieren-f51b07727c",
+        "de-sh-mathematik-seki-fachanforderungen-2024-sh-seki-prozesskompetenzen-p3-probleme-mathematisch-loesen-a54d5e1186",
+        "de-sh-mathematik-seki-fachanforderungen-2024-sh-seki-prozesskompetenzen-p3-muster-und-beziehungen-erkennen-a0790b057f",
+        "de-sh-mathematik-seki-fachanforderungen-2024-sh-seki-prozesskompetenzen-p4-mathematisch-modellieren-37600a561e",
+        "de-sh-mathematik-seki-fachanforderungen-2024-sh-seki-prozesskompetenzen-p5-mathematisch-darstellen-73c0c7dcad",
+        "de-sh-mathematik-seki-fachanforderungen-2024-sh-seki-prozesskompetenzen-p6-mit-mathematischen-objekten-umgehen-8793bf288f",
+        "de-sh-mathematik-seki-fachanforderungen-2024-sh-seki-prozesskompetenzen-p7-mit-medien-mathematisch-arbeiten-56afbbf82d"
       ]
     }
   ],
@@ -8989,6 +9009,214 @@
         "section:L5",
         "area:Daten und Zufall",
         "sourceMode:binding-topic"
+      ]
+    },
+    {
+      "id": "de-sh-mathematik-seki-fachanforderungen-2024-sh-seki-prozesskompetenzen-p1-mathematisch-argumentieren-e665ff98e7",
+      "passageId": "de-sh-mathematik-seki-fachanforderungen-2024-sh-seki-prozesskompetenzen",
+      "topicCode": "SH-SEKI-PROZESSKOMPETENZEN-P1-MATHEMATISCH-ARGUMENTIEREN",
+      "rowIndex": 339,
+      "title": "Mathematisch argumentieren",
+      "description": "Die lernende Person kann mathematisch argumentieren: vertraute Argumentationen wiedergeben, Vermutungen aufstellen und hinterfragen, mehrschrittige Argumentationen entwickeln, Lösungswege begründen und Argumentationen beurteilen..",
+      "sourceText": "Mathematisch argumentieren: vertraute Argumentationen wiedergeben, Vermutungen aufstellen und hinterfragen, mehrschrittige Argumentationen entwickeln, Lösungswege begründen und Argumentationen beurteilen.",
+      "sourceSpan": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, S. 22-25, Zeile 1040",
+      "sourceRef": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, S. 22-25",
+      "sourcePage": 22,
+      "sourceLine": 1040,
+      "category": "process-competency-standard",
+      "granularity": "officialProcessCompetencySection",
+      "phase": "5-10",
+      "courseLevel": "ALL",
+      "tags": [
+        "source:DE-SH",
+        "stage:SekI",
+        "sourceDocument:SH_GYM_MATHEMATIK_FACHANFORDERUNGEN_2024",
+        "section:process-competencies",
+        "section:P1",
+        "area:Prozesskompetenzen",
+        "sourceMode:process-competency"
+      ]
+    },
+    {
+      "id": "de-sh-mathematik-seki-fachanforderungen-2024-sh-seki-prozesskompetenzen-p2-mathematisch-kommunizieren-f51b07727c",
+      "passageId": "de-sh-mathematik-seki-fachanforderungen-2024-sh-seki-prozesskompetenzen",
+      "topicCode": "SH-SEKI-PROZESSKOMPETENZEN-P2-MATHEMATISCH-KOMMUNIZIEREN",
+      "rowIndex": 340,
+      "title": "Mathematisch kommunizieren",
+      "description": "Die lernende Person kann mathematisch kommunizieren: mathematische Sachverhalte mit eigenen Worten und Fachbegriffen formulieren, Informationen aus mathematikhaltigen Texten entnehmen, Lösungswege darstellen und auf Äußerungen anderer eingehen..",
+      "sourceText": "Mathematisch kommunizieren: mathematische Sachverhalte mit eigenen Worten und Fachbegriffen formulieren, Informationen aus mathematikhaltigen Texten entnehmen, Lösungswege darstellen und auf Äußerungen anderer eingehen.",
+      "sourceSpan": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, S. 22-25, Zeile 1081",
+      "sourceRef": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, S. 22-25",
+      "sourcePage": 22,
+      "sourceLine": 1081,
+      "category": "process-competency-standard",
+      "granularity": "officialProcessCompetencySection",
+      "phase": "5-10",
+      "courseLevel": "ALL",
+      "tags": [
+        "source:DE-SH",
+        "stage:SekI",
+        "sourceDocument:SH_GYM_MATHEMATIK_FACHANFORDERUNGEN_2024",
+        "section:process-competencies",
+        "section:P2",
+        "area:Prozesskompetenzen",
+        "sourceMode:process-competency"
+      ]
+    },
+    {
+      "id": "de-sh-mathematik-seki-fachanforderungen-2024-sh-seki-prozesskompetenzen-p3-probleme-mathematisch-loesen-a54d5e1186",
+      "passageId": "de-sh-mathematik-seki-fachanforderungen-2024-sh-seki-prozesskompetenzen",
+      "topicCode": "SH-SEKI-PROZESSKOMPETENZEN-P3-PROBLEME-MATHEMATISCH-LOESEN",
+      "rowIndex": 341,
+      "title": "Probleme mathematisch lösen",
+      "description": "Die lernende Person kann probleme mathematisch lösen: Problemstellungen formulieren, geeignete Heurismen auswählen, eigene Lösungsstrategien entwickeln, Ergebnisse auf Plausibilität prüfen und Lösungswege vergleichen..",
+      "sourceText": "Probleme mathematisch lösen: Problemstellungen formulieren, geeignete Heurismen auswählen, eigene Lösungsstrategien entwickeln, Ergebnisse auf Plausibilität prüfen und Lösungswege vergleichen.",
+      "sourceSpan": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, S. 22-25, Zeile 1110",
+      "sourceRef": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, S. 22-25",
+      "sourcePage": 23,
+      "sourceLine": 1110,
+      "category": "process-competency-standard",
+      "granularity": "officialProcessCompetencySection",
+      "phase": "5-10",
+      "courseLevel": "ALL",
+      "tags": [
+        "source:DE-SH",
+        "stage:SekI",
+        "sourceDocument:SH_GYM_MATHEMATIK_FACHANFORDERUNGEN_2024",
+        "section:process-competencies",
+        "section:P3",
+        "area:Prozesskompetenzen",
+        "sourceMode:process-competency"
+      ]
+    },
+    {
+      "id": "de-sh-mathematik-seki-fachanforderungen-2024-sh-seki-prozesskompetenzen-p3-muster-und-beziehungen-erkennen-a0790b057f",
+      "passageId": "de-sh-mathematik-seki-fachanforderungen-2024-sh-seki-prozesskompetenzen",
+      "topicCode": "SH-SEKI-PROZESSKOMPETENZEN-P3-MUSTER-UND-BEZIEHUNGEN-ERKENNEN",
+      "rowIndex": 341.1,
+      "title": "Muster und Beziehungen erkennen",
+      "description": "Die lernende Person kann Muster und Beziehungen in Problemsituationen erkennen.",
+      "sourceText": "erkennen Muster und Beziehungen",
+      "sourceSpan": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, S. 58, Zeile 6405",
+      "sourceRef": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, S. 58",
+      "sourcePage": 58,
+      "sourceLine": 6405,
+      "category": "process-competency-standard",
+      "granularity": "officialProcessCompetencyExpectation",
+      "phase": "5-10",
+      "courseLevel": "ALL",
+      "tags": [
+        "source:DE-SH",
+        "stage:SekI",
+        "sourceDocument:SH_GYM_MATHEMATIK_FACHANFORDERUNGEN_2024",
+        "section:process-competencies",
+        "section:P3",
+        "area:Prozesskompetenzen",
+        "sourceMode:process-competency"
+      ]
+    },
+    {
+      "id": "de-sh-mathematik-seki-fachanforderungen-2024-sh-seki-prozesskompetenzen-p4-mathematisch-modellieren-37600a561e",
+      "passageId": "de-sh-mathematik-seki-fachanforderungen-2024-sh-seki-prozesskompetenzen",
+      "topicCode": "SH-SEKI-PROZESSKOMPETENZEN-P4-MATHEMATISCH-MODELLIEREN",
+      "rowIndex": 342,
+      "title": "Mathematisch modellieren",
+      "description": "Die lernende Person kann mathematisch modellieren: Sachsituationen strukturieren, mathematische Modelle auswählen oder entwickeln, Mathematisierungen vornehmen, Ergebnisse interpretieren und Modelle kritisch beurteilen..",
+      "sourceText": "Mathematisch modellieren: Sachsituationen strukturieren, mathematische Modelle auswählen oder entwickeln, Mathematisierungen vornehmen, Ergebnisse interpretieren und Modelle kritisch beurteilen.",
+      "sourceSpan": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, S. 22-25, Zeile 1103",
+      "sourceRef": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, S. 22-25",
+      "sourcePage": 23,
+      "sourceLine": 1103,
+      "category": "process-competency-standard",
+      "granularity": "officialProcessCompetencySection",
+      "phase": "5-10",
+      "courseLevel": "ALL",
+      "tags": [
+        "source:DE-SH",
+        "stage:SekI",
+        "sourceDocument:SH_GYM_MATHEMATIK_FACHANFORDERUNGEN_2024",
+        "section:process-competencies",
+        "section:P4",
+        "area:Prozesskompetenzen",
+        "sourceMode:process-competency"
+      ]
+    },
+    {
+      "id": "de-sh-mathematik-seki-fachanforderungen-2024-sh-seki-prozesskompetenzen-p5-mathematisch-darstellen-73c0c7dcad",
+      "passageId": "de-sh-mathematik-seki-fachanforderungen-2024-sh-seki-prozesskompetenzen",
+      "topicCode": "SH-SEKI-PROZESSKOMPETENZEN-P5-MATHEMATISCH-DARSTELLEN",
+      "rowIndex": 343,
+      "title": "Mathematisch darstellen",
+      "description": "Die lernende Person kann mathematisch darstellen: vertraute Darstellungen nutzen und erzeugen, Darstellungen passend zur Problemstellung auswählen, zwischen Darstellungen wechseln und Darstellungen nach Zweck und Aussagekraft beurteilen..",
+      "sourceText": "Mathematisch darstellen: vertraute Darstellungen nutzen und erzeugen, Darstellungen passend zur Problemstellung auswählen, zwischen Darstellungen wechseln und Darstellungen nach Zweck und Aussagekraft beurteilen.",
+      "sourceSpan": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, S. 22-25, Zeile 1166",
+      "sourceRef": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, S. 22-25",
+      "sourcePage": 24,
+      "sourceLine": 1166,
+      "category": "process-competency-standard",
+      "granularity": "officialProcessCompetencySection",
+      "phase": "5-10",
+      "courseLevel": "ALL",
+      "tags": [
+        "source:DE-SH",
+        "stage:SekI",
+        "sourceDocument:SH_GYM_MATHEMATIK_FACHANFORDERUNGEN_2024",
+        "section:process-competencies",
+        "section:P5",
+        "area:Prozesskompetenzen",
+        "sourceMode:process-competency"
+      ]
+    },
+    {
+      "id": "de-sh-mathematik-seki-fachanforderungen-2024-sh-seki-prozesskompetenzen-p6-mit-mathematischen-objekten-umgehen-8793bf288f",
+      "passageId": "de-sh-mathematik-seki-fachanforderungen-2024-sh-seki-prozesskompetenzen",
+      "topicCode": "SH-SEKI-PROZESSKOMPETENZEN-P6-MIT-MATHEMATISCHEN-OBJEKTEN-UMGEHEN",
+      "rowIndex": 344,
+      "title": "Mit mathematischen Objekten umgehen",
+      "description": "Die lernende Person kann mit mathematischen Objekten umgehen: Routineverfahren verwenden, mit Zahlen, Größen, Symbolen, Variablen, Termen, Formeln, Gleichungen und Funktionen umgehen, Verfahren kontrollieren und ihre Effizienz beurteilen..",
+      "sourceText": "Mit mathematischen Objekten umgehen: Routineverfahren verwenden, mit Zahlen, Größen, Symbolen, Variablen, Termen, Formeln, Gleichungen und Funktionen umgehen, Verfahren kontrollieren und ihre Effizienz beurteilen.",
+      "sourceSpan": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, S. 22-25, Zeile 1160",
+      "sourceRef": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, S. 22-25",
+      "sourcePage": 24,
+      "sourceLine": 1160,
+      "category": "process-competency-standard",
+      "granularity": "officialProcessCompetencySection",
+      "phase": "5-10",
+      "courseLevel": "ALL",
+      "tags": [
+        "source:DE-SH",
+        "stage:SekI",
+        "sourceDocument:SH_GYM_MATHEMATIK_FACHANFORDERUNGEN_2024",
+        "section:process-competencies",
+        "section:P6",
+        "area:Prozesskompetenzen",
+        "sourceMode:process-competency"
+      ]
+    },
+    {
+      "id": "de-sh-mathematik-seki-fachanforderungen-2024-sh-seki-prozesskompetenzen-p7-mit-medien-mathematisch-arbeiten-56afbbf82d",
+      "passageId": "de-sh-mathematik-seki-fachanforderungen-2024-sh-seki-prozesskompetenzen",
+      "topicCode": "SH-SEKI-PROZESSKOMPETENZEN-P7-MIT-MEDIEN-MATHEMATISCH-ARBEITEN",
+      "rowIndex": 345,
+      "title": "Mit Medien mathematisch arbeiten",
+      "description": "Die lernende Person kann mit Medien mathematisch arbeiten: analoge und digitale Mathematikwerkzeuge zum Problemlösen, Entdecken, Modellieren, Datenverarbeiten, Kontrollieren und Darstellungswechseln nutzen sowie Möglichkeiten und Grenzen der Medien beurteilen..",
+      "sourceText": "Mit Medien mathematisch arbeiten: analoge und digitale Mathematikwerkzeuge zum Problemlösen, Entdecken, Modellieren, Datenverarbeiten, Kontrollieren und Darstellungswechseln nutzen sowie Möglichkeiten und Grenzen der Medien beurteilen.",
+      "sourceSpan": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, S. 22-25, Zeile 1207",
+      "sourceRef": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, S. 22-25",
+      "sourcePage": 25,
+      "sourceLine": 1207,
+      "category": "process-competency-standard",
+      "granularity": "officialProcessCompetencySection",
+      "phase": "5-10",
+      "courseLevel": "ALL",
+      "tags": [
+        "source:DE-SH",
+        "stage:SekI",
+        "sourceDocument:SH_GYM_MATHEMATIK_FACHANFORDERUNGEN_2024",
+        "section:process-competencies",
+        "section:P7",
+        "area:Prozesskompetenzen",
+        "sourceMode:process-competency"
       ]
     }
   ]

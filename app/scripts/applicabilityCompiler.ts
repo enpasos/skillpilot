@@ -70,6 +70,11 @@ interface LoadedMappingFile {
   mappings: GoalMappingEntry[]
 }
 
+interface MappingEvidenceReference {
+  mappingFile: LoadedMappingFile
+  targetGoalId: string
+}
+
 interface LoadedSourceLandscapeRegistryEntry {
   landscapeId: string
   jurisdiction: KnownJurisdiction | null
@@ -675,7 +680,9 @@ export function buildApplicabilityCompilation(): ApplicabilityCompilationResult 
     for (const entry of mappingFile.mappings) {
       if (!entry.canonicalGoalId) continue
       const files = goalMap.get(entry.canonicalGoalId) ?? []
-      files.push(mappingFile)
+      if (!files.includes(mappingFile)) {
+        files.push(mappingFile)
+      }
       goalMap.set(entry.canonicalGoalId, files)
     }
     mappingEvidenceByTarget.set(mappingFile.targetLandscapeId, goalMap)
@@ -736,6 +743,75 @@ export function buildApplicabilityCompilation(): ApplicabilityCompilationResult 
       return (goal.contains ?? [])
         .map((ref) => resolveCanonicalReference(ref, landscapeId))
         .filter((ref) => canonicalLandscapeById.get(ref.landscapeId)?.goalById.has(ref.goalId) ?? false)
+    }
+
+    const atomicDescendantKeysByGoalKey = new Map<string, Set<string>>()
+
+    const getAtomicDescendantKeys = (
+      landscapeId: string,
+      goalId: string,
+      visiting = new Set<string>(),
+    ): Set<string> => {
+      const key = goalKey(landscapeId, goalId)
+      const cached = atomicDescendantKeysByGoalKey.get(key)
+      if (cached) return cached
+      if (visiting.has(key)) return new Set()
+      visiting.add(key)
+
+      const sourceLandscape = canonicalLandscapeById.get(landscapeId)
+      const goal = sourceLandscape?.goalById.get(goalId)
+      const descendants = new Set<string>()
+
+      if (goal) {
+        if (isAtomicGoal(goal)) {
+          descendants.add(key)
+        } else {
+          for (const childRef of getGoalChildRefs(sourceLandscape, landscapeId, goal)) {
+            getAtomicDescendantKeys(childRef.landscapeId, childRef.goalId, visiting)
+              .forEach((descendantKey) => descendants.add(descendantKey))
+          }
+        }
+      }
+
+      visiting.delete(key)
+      atomicDescendantKeysByGoalKey.set(key, descendants)
+      return descendants
+    }
+
+    const getMappingEvidenceReferencesForAtomicGoal = (
+      landscapeId: string,
+      goalId: string,
+    ): MappingEvidenceReference[] => {
+      const goalMap = mappingEvidenceByTarget.get(landscapeId)
+      if (!goalMap) return []
+
+      const atomicGoalKey = goalKey(landscapeId, goalId)
+      const references: MappingEvidenceReference[] = []
+      const seenReferences = new Set<string>()
+
+      const addReferences = (targetGoalId: string, files: LoadedMappingFile[]) => {
+        for (const mappingFile of files) {
+          const referenceKey = `${mappingFile.file}|${targetGoalId}`
+          if (seenReferences.has(referenceKey)) continue
+          seenReferences.add(referenceKey)
+          references.push({ mappingFile, targetGoalId })
+        }
+      }
+
+      for (const [targetGoalId, files] of goalMap.entries()) {
+        if (targetGoalId === goalId) {
+          addReferences(targetGoalId, files)
+          continue
+        }
+
+        const targetGoal = canonicalLandscapeById.get(landscapeId)?.goalById.get(targetGoalId)
+        if (!targetGoal || isAtomicGoal(targetGoal)) continue
+        if (getAtomicDescendantKeys(landscapeId, targetGoalId).has(atomicGoalKey)) {
+          addReferences(targetGoalId, files)
+        }
+      }
+
+      return references
     }
 
     const addJurisdictionApplicability = (
@@ -886,8 +962,7 @@ export function buildApplicabilityCompilation(): ApplicabilityCompilationResult 
         })
       }
 
-      const mappingFilesForGoal = mappingEvidenceByTarget.get(landscapeId)?.get(goal.id) ?? []
-      for (const mappingFile of mappingFilesForGoal) {
+      for (const { mappingFile, targetGoalId } of getMappingEvidenceReferencesForAtomicGoal(landscapeId, goal.id)) {
         if (!mappingFile.jurisdiction) {
           findings.push({
             code: 'APV-003',
@@ -904,7 +979,7 @@ export function buildApplicabilityCompilation(): ApplicabilityCompilationResult 
           continue
         }
         const matchTypes = mappingFile.mappings
-          .filter((entry) => entry.canonicalGoalId === goal.id)
+          .filter((entry) => entry.canonicalGoalId === targetGoalId)
           .map((entry) => (entry.matchType === 'partial' ? 'partial' : 'exact'))
         const strongest = matchTypes.includes('exact') ? 'exact' : 'partial'
 

@@ -1,6 +1,6 @@
 # Curriculum Quality Status
 
-Generated: 2026-05-08T04:37:59.530Z
+Generated: 2026-05-08T07:38:40.488Z
 Rules version: curriculum-quality-v1
 
 ## Summary
@@ -19,27 +19,27 @@ Rules version: curriculum-quality-v1
 
 | Curriculum | Maturity | Goals | Atomic | Passage extraction | Bundeslaender | QA scopes | Warn | Fail |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| Biologie (Gymnasium, DE) | M0 | 216 | 182 | 0/3 | 0/16 | 0 | 0 | 2 |
-| Chemie (Gymnasium, DE) | M0 | 217 | 177 | 0/4 | 0/16 | 0 | 0 | 2 |
-| Chinesisch (Gymnasium, DE) | M0 | 192 | 181 | 0/2 | 0/16 | 0 | 0 | 2 |
-| Deutsch (Gymnasium, DE) | M0 | 181 | 144 | 0/2 | 0/16 | 0 | 0 | 2 |
-| Englisch (Gymnasium, DE) | M0 | 130 | 104 | 0/2 | 0/16 | 0 | 0 | 2 |
-| Französisch (Gymnasium, DE) | M0 | 331 | 275 | 0/3 | 0/16 | 0 | 0 | 2 |
-| Geschichte (Gymnasium, DE) | M0 | 210 | 171 | 0/2 | 0/16 | 0 | 0 | 2 |
-| Griechisch (Gymnasium, DE) | M0 | 198 | 185 | 0/2 | 0/16 | 0 | 0 | 2 |
+| Biologie (Gymnasium, DE) | M0 | 216 | 182 | 0/3 | 0/16 | 0 | 1 | 2 |
+| Chemie (Gymnasium, DE) | M0 | 217 | 177 | 0/4 | 0/16 | 0 | 1 | 2 |
+| Chinesisch (Gymnasium, DE) | M0 | 192 | 181 | 0/2 | 0/16 | 0 | 1 | 2 |
+| Deutsch (Gymnasium, DE) | M0 | 181 | 144 | 0/2 | 0/16 | 0 | 1 | 2 |
+| Englisch (Gymnasium, DE) | M0 | 130 | 104 | 0/2 | 0/16 | 0 | 1 | 2 |
+| Französisch (Gymnasium, DE) | M0 | 331 | 275 | 0/3 | 0/16 | 0 | 1 | 2 |
+| Geschichte (Gymnasium, DE) | M0 | 210 | 171 | 0/2 | 0/16 | 0 | 1 | 2 |
+| Griechisch (Gymnasium, DE) | M0 | 198 | 185 | 0/2 | 0/16 | 0 | 1 | 2 |
 | Gymnasium (DE) | M0 | 1 | 0 | - | 0/16 | 0 | 2 | 0 |
-| Informatik (Gymnasium, DE) | M0 | 221 | 180 | 0/2 | 0/16 | 0 | 0 | 2 |
+| Informatik (Gymnasium, DE) | M0 | 221 | 180 | 0/2 | 0/16 | 0 | 1 | 2 |
 | Italienisch (Gymnasium, DE) | M0 | 8 | 7 | 0/1 | 0/16 | 0 | 0 | 2 |
-| Latein (Gymnasium, DE) | M0 | 142 | 109 | 0/2 | 0/16 | 0 | 0 | 2 |
+| Latein (Gymnasium, DE) | M0 | 142 | 109 | 0/2 | 0/16 | 0 | 1 | 2 |
 | Mathematik (Gymnasium, DE) | M1 | 979 | 786 | 31/31 | 0/16 | 2 | 4 | 3 |
-| Musik (Gymnasium, DE) | M0 | 76 | 52 | 0/2 | 0/16 | 0 | 0 | 2 |
+| Musik (Gymnasium, DE) | M0 | 76 | 52 | 0/2 | 0/16 | 0 | 1 | 2 |
 | Physik (Gymnasium, DE) | M0 | 475 | 392 | 0/24 | 0/16 | 2 | 2 | 2 |
-| Politik und Wirtschaft (Gymnasium, DE) | M0 | 208 | 175 | 0/2 | 0/16 | 0 | 0 | 2 |
+| Politik und Wirtschaft (Gymnasium, DE) | M0 | 208 | 175 | 0/2 | 0/16 | 0 | 1 | 2 |
 | Polnisch (Gymnasium, DE) | M0 | 5 | 4 | 0/1 | 0/16 | 0 | 0 | 2 |
 | Russisch (Gymnasium, DE) | M0 | 8 | 7 | 0/1 | 0/16 | 0 | 0 | 2 |
-| Spanisch (Gymnasium, DE) | M0 | 83 | 59 | 0/2 | 0/16 | 0 | 0 | 2 |
+| Spanisch (Gymnasium, DE) | M0 | 83 | 59 | 0/2 | 0/16 | 0 | 1 | 2 |
 | Tschechisch (Gymnasium, DE) | M0 | 5 | 4 | 0/1 | 0/16 | 0 | 0 | 2 |
-| Wirtschaftswissenschaften (Gymnasium, DE) | M0 | 225 | 193 | 0/2 | 0/16 | 0 | 0 | 2 |
+| Wirtschaftswissenschaften (Gymnasium, DE) | M0 | 225 | 193 | 0/2 | 0/16 | 0 | 1 | 2 |
 
 ## Mapping Pipeline
 
@@ -91,8 +91,8 @@ Rules version: curriculum-quality-v1
 | Mathematik (Gymnasium, DE) | DE-NW - Mathematik Sekundarstufe I (Nordrhein-Westfalen, KLP 2019 Source-Extraction) | DE-NW | 1/1 original source(s) | 3/3 | - | 17 | 207 | 38 | 169 | 18% |  |
 | Mathematik (Gymnasium, DE) | DE-RP - Mathematik Gymnasiale Oberstufe (Rheinland-Pfalz, MSS 2015 Source-Extraction) | DE-RP | 1/1 original source(s) | 3/3 | - | 23 | 192 | 0 | 192 | 0% |  |
 | Mathematik (Gymnasium, DE) | DE-RP - Mathematik Sekundarstufe I (Rheinland-Pfalz, Rahmenlehrplan 2007 Source-Extraction) | DE-RP | 1/1 original source(s) | 3/3 | - | 25 | 253 | 61 | 192 | 24% |  |
-| Mathematik (Gymnasium, DE) | DE-SH - Mathematik Oberstufe (Schleswig-Holstein, Fachanforderungen 2024 Source-Extraction) | DE-SH | 1/1 original source(s) | 3/3 | - | 5 | 268 | 0 | 268 | 0% |  |
-| Mathematik (Gymnasium, DE) | DE-SH - Mathematik Sekundarstufe I (Schleswig-Holstein, Fachanforderungen 2024 Source-Extraction) | DE-SH | 1/1 original source(s) | 3/3 | - | 5 | 338 | 128 | 210 | 38% |  |
+| Mathematik (Gymnasium, DE) | DE-SH - Mathematik Oberstufe (Schleswig-Holstein, Fachanforderungen 2024 Source-Extraction) | DE-SH | 1/1 original source(s) | 3/3 | - | 6 | 274 | 0 | 274 | 0% |  |
+| Mathematik (Gymnasium, DE) | DE-SH - Mathematik Sekundarstufe I (Schleswig-Holstein, Fachanforderungen 2024 Source-Extraction) | DE-SH | 1/1 original source(s) | 3/3 | - | 6 | 346 | 128 | 218 | 37% |  |
 | Mathematik (Gymnasium, DE) | DE-SL - Mathematik Gymnasiale Oberstufe (Saarland, GOS 2014/2019 Source-Extraction) | DE-SL | 3/3 original source(s) | 3/3 | - | 23 | 743 | 0 | 743 | 0% |  |
 | Mathematik (Gymnasium, DE) | DE-SL - Mathematik Sekundarstufe I (Saarland, Gymnasium G9 2023-2026 Source-Extraction) | DE-SL | 5/5 original source(s) | 3/3 | - | 37 | 818 | 175 | 643 | 21% |  |
 | Mathematik (Gymnasium, DE) | DE-SN - Mathematik Jahrgangsstufen 11/12 (Sachsen, Lehrplan Gymnasium 2019 Source-Extraction) | DE-SN | 1/1 original source(s) | 3/3 | - | 31 | 241 | 0 | 241 | 0% |  |
@@ -141,27 +141,27 @@ Rules version: curriculum-quality-v1
 
 | Curriculum | Complete | DE view atoms | Raw atoms | Source-backed states | Extracted source goals | Registered source originals | Fully covered originals | Unregistered source goals | Extracted source atoms | Unregistered source atoms | Unsupported assignments | Unmapped source atoms | Partial | Error | Max source-backed view coverage |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| Biologie (Gymnasium, DE) | 0/16 | 182 | 182 | 2 | 0 | 694 | 0 | 0 | 0 | 0 | 23 | 603 | 0 | 2 | 182 (100%) |
-| Chemie (Gymnasium, DE) | 0/16 | 177 | 177 | 2 | 0 | 931 | 0 | 0 | 0 | 0 | 1 | 929 | 0 | 2 | 177 (100%) |
-| Chinesisch (Gymnasium, DE) | 0/16 | 181 | 181 | 2 | 0 | 436 | 0 | 0 | 0 | 0 | 16 | 411 | 0 | 2 | 181 (100%) |
-| Deutsch (Gymnasium, DE) | 0/16 | 144 | 144 | 2 | 0 | 650 | 0 | 0 | 0 | 0 | 11 | 568 | 0 | 2 | 133 (100%) |
-| Englisch (Gymnasium, DE) | 0/16 | 104 | 104 | 2 | 0 | 141 | 0 | 0 | 0 | 0 | 0 | 119 | 0 | 2 | 104 (100%) |
-| Französisch (Gymnasium, DE) | 0/16 | 275 | 275 | 2 | 0 | 338 | 0 | 0 | 0 | 0 | 0 | 286 | 0 | 2 | 275 (100%) |
-| Geschichte (Gymnasium, DE) | 0/16 | 171 | 171 | 2 | 0 | 437 | 0 | 0 | 0 | 0 | 40 | 388 | 0 | 2 | 171 (100%) |
-| Griechisch (Gymnasium, DE) | 0/16 | 185 | 185 | 2 | 0 | 769 | 0 | 0 | 0 | 0 | 0 | 726 | 0 | 2 | 185 (100%) |
+| Biologie (Gymnasium, DE) | 0/16 | 160 | 182 | 2 | 0 | 694 | 0 | 0 | 0 | 0 | 0 | 603 | 0 | 2 | 160 (100%) |
+| Chemie (Gymnasium, DE) | 0/16 | 155 | 177 | 2 | 0 | 931 | 0 | 0 | 0 | 0 | 0 | 929 | 0 | 2 | 155 (100%) |
+| Chinesisch (Gymnasium, DE) | 0/16 | 170 | 181 | 2 | 0 | 436 | 0 | 0 | 0 | 0 | 0 | 411 | 0 | 2 | 170 (100%) |
+| Deutsch (Gymnasium, DE) | 0/16 | 127 | 144 | 2 | 0 | 650 | 0 | 0 | 0 | 0 | 0 | 568 | 0 | 2 | 127 (100%) |
+| Englisch (Gymnasium, DE) | 0/16 | 89 | 104 | 2 | 0 | 141 | 0 | 0 | 0 | 0 | 0 | 119 | 0 | 2 | 89 (100%) |
+| Französisch (Gymnasium, DE) | 0/16 | 260 | 275 | 2 | 0 | 338 | 0 | 0 | 0 | 0 | 0 | 286 | 0 | 2 | 260 (100%) |
+| Geschichte (Gymnasium, DE) | 0/16 | 156 | 171 | 2 | 0 | 437 | 0 | 0 | 0 | 0 | 0 | 388 | 0 | 2 | 156 (100%) |
+| Griechisch (Gymnasium, DE) | 0/16 | 170 | 185 | 2 | 0 | 769 | 0 | 0 | 0 | 0 | 0 | 726 | 0 | 2 | 170 (100%) |
 | Gymnasium (DE) | 0/16 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0%) |
-| Informatik (Gymnasium, DE) | 0/16 | 180 | 180 | 2 | 0 | 483 | 0 | 0 | 0 | 0 | 58 | 399 | 0 | 2 | 174 (96.7%) |
-| Italienisch (Gymnasium, DE) | 0/16 | 7 | 7 | 1 | 0 | 8 | 0 | 0 | 0 | 0 | 0 | 7 | 0 | 1 | 7 (100%) |
-| Latein (Gymnasium, DE) | 0/16 | 109 | 109 | 2 | 0 | 1035 | 0 | 0 | 0 | 0 | 0 | 942 | 0 | 2 | 109 (100%) |
-| Mathematik (Gymnasium, DE) | 0/16 | 687 | 786 | 16 | 9608 | 9608 | 8171 | 0 | 9608 | 0 | 9156 | 1437 | 0 | 16 | 586 (85.4%) |
-| Musik (Gymnasium, DE) | 0/16 | 52 | 52 | 2 | 0 | 329 | 0 | 0 | 0 | 0 | 0 | 257 | 0 | 2 | 52 (100%) |
-| Physik (Gymnasium, DE) | 0/16 | 326 | 392 | 9 | 642 | 1424 | 492 | 0 | 505 | 0 | 760 | 755 | 0 | 16 | 288 (90.6%) |
-| Politik und Wirtschaft (Gymnasium, DE) | 0/16 | 175 | 175 | 2 | 0 | 607 | 0 | 0 | 0 | 0 | 12 | 521 | 0 | 2 | 175 (100%) |
-| Polnisch (Gymnasium, DE) | 0/16 | 4 | 4 | 1 | 0 | 5 | 0 | 0 | 0 | 0 | 0 | 4 | 0 | 1 | 4 (100%) |
-| Russisch (Gymnasium, DE) | 0/16 | 7 | 7 | 1 | 0 | 8 | 0 | 0 | 0 | 0 | 0 | 7 | 0 | 1 | 7 (100%) |
-| Spanisch (Gymnasium, DE) | 0/16 | 59 | 59 | 2 | 0 | 91 | 0 | 0 | 0 | 0 | 0 | 66 | 0 | 2 | 59 (100%) |
-| Tschechisch (Gymnasium, DE) | 0/16 | 4 | 4 | 1 | 0 | 5 | 0 | 0 | 0 | 0 | 0 | 4 | 0 | 1 | 4 (100%) |
-| Wirtschaftswissenschaften (Gymnasium, DE) | 0/16 | 193 | 193 | 2 | 0 | 452 | 0 | 0 | 0 | 0 | 29 | 378 | 0 | 2 | 193 (100%) |
+| Informatik (Gymnasium, DE) | 0/16 | 161 | 180 | 2 | 0 | 483 | 0 | 0 | 0 | 0 | 0 | 399 | 0 | 2 | 161 (100%) |
+| Italienisch (Gymnasium, DE) | 0/16 | 6 | 7 | 1 | 0 | 8 | 0 | 0 | 0 | 0 | 0 | 7 | 0 | 1 | 6 (100%) |
+| Latein (Gymnasium, DE) | 0/16 | 94 | 109 | 2 | 0 | 1035 | 0 | 0 | 0 | 0 | 0 | 942 | 0 | 2 | 94 (100%) |
+| Mathematik (Gymnasium, DE) | 0/16 | 619 | 786 | 16 | 9622 | 9622 | 8195 | 0 | 9622 | 0 | 171 | 1427 | 0 | 16 | 619 (100%) |
+| Musik (Gymnasium, DE) | 0/16 | 38 | 52 | 2 | 0 | 329 | 0 | 0 | 0 | 0 | 0 | 257 | 0 | 2 | 38 (100%) |
+| Physik (Gymnasium, DE) | 0/16 | 320 | 392 | 16 | 642 | 1424 | 492 | 0 | 505 | 0 | 232 | 755 | 0 | 16 | 312 (100%) |
+| Politik und Wirtschaft (Gymnasium, DE) | 0/16 | 155 | 175 | 2 | 0 | 607 | 0 | 0 | 0 | 0 | 0 | 521 | 0 | 2 | 155 (100%) |
+| Polnisch (Gymnasium, DE) | 0/16 | 3 | 4 | 1 | 0 | 5 | 0 | 0 | 0 | 0 | 0 | 4 | 0 | 1 | 3 (100%) |
+| Russisch (Gymnasium, DE) | 0/16 | 6 | 7 | 1 | 0 | 8 | 0 | 0 | 0 | 0 | 0 | 7 | 0 | 1 | 6 (100%) |
+| Spanisch (Gymnasium, DE) | 0/16 | 44 | 59 | 2 | 0 | 91 | 0 | 0 | 0 | 0 | 0 | 66 | 0 | 2 | 44 (100%) |
+| Tschechisch (Gymnasium, DE) | 0/16 | 3 | 4 | 1 | 0 | 5 | 0 | 0 | 0 | 0 | 0 | 4 | 0 | 1 | 3 (100%) |
+| Wirtschaftswissenschaften (Gymnasium, DE) | 0/16 | 173 | 193 | 2 | 0 | 452 | 0 | 0 | 0 | 0 | 4 | 378 | 0 | 2 | 173 (100%) |
 
 ## Rule Catalog
 
