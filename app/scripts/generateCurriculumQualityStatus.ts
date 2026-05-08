@@ -261,6 +261,7 @@ interface MappingPipelineSourceStatus {
   partialMappings?: number
   otherMappings?: number
   sourceGoalCountPeerBaselineReview?: SourceGoalCountPeerBaselineReview
+  sourceGoalGranularity?: SourceGoalGranularitySummary
   steps: MappingPipelineStep[]
 }
 
@@ -269,8 +270,23 @@ interface SourceGoalCountPeerBaselineReview {
   details?: string
 }
 
+interface SourceGoalGranularitySummary {
+  averageWords: number
+  p90Words: number
+  maxWords: number
+  longGoals: number
+  longGoalThreshold: number
+  examples: Array<{
+    id: string
+    topicCode?: string
+    words: number
+    text: string
+  }>
+}
+
 const SOURCE_GOAL_COUNT_DEVIATION_THRESHOLD = 0.3
 const SOURCE_GOAL_COUNT_BASELINE_JURISDICTIONS = new Set(['DE-HE', 'DE-BW'])
+const SOURCE_GOAL_GRANULARITY_LONG_GOAL_WORDS = 45
 
 function median(values: number[]): number {
   const sorted = [...values].sort((a, b) => a - b)
@@ -281,12 +297,85 @@ function median(values: number[]): number {
     : sorted[middle]
 }
 
+function wordCount(value: string | undefined): number {
+  return (value ?? '').trim().split(/\s+/).filter(Boolean).length
+}
+
+function sourceGoalText(sourceGoal: SourceExtractionGoal): string {
+  return sourceGoal.sourceText
+    ?? sourceGoal.sourceSpan
+    ?? sourceGoal.description
+    ?? sourceGoal.title
+    ?? ''
+}
+
+function summarizeSourceGoalGranularity(sourceGoals: SourceExtractionGoal[]): SourceGoalGranularitySummary {
+  const goalWordCounts = sourceGoals
+    .map((sourceGoal) => ({
+      id: sourceGoal.id ?? '',
+      topicCode: sourceGoal.topicCode,
+      words: wordCount(sourceGoalText(sourceGoal)),
+      text: sourceGoalText(sourceGoal),
+    }))
+    .filter((entry) => entry.words > 0)
+  const sortedWordCounts = goalWordCounts.map((entry) => entry.words).sort((left, right) => left - right)
+  const averageWords = sortedWordCounts.length === 0
+    ? 0
+    : sortedWordCounts.reduce((sum, count) => sum + count, 0) / sortedWordCounts.length
+  const p90Index = sortedWordCounts.length === 0 ? 0 : Math.floor((sortedWordCounts.length - 1) * 0.9)
+  const longGoalEntries = goalWordCounts
+    .filter((entry) => entry.words > SOURCE_GOAL_GRANULARITY_LONG_GOAL_WORDS)
+    .sort((left, right) => right.words - left.words)
+  return {
+    averageWords,
+    p90Words: sortedWordCounts[p90Index] ?? 0,
+    maxWords: sortedWordCounts[sortedWordCounts.length - 1] ?? 0,
+    longGoals: longGoalEntries.length,
+    longGoalThreshold: SOURCE_GOAL_GRANULARITY_LONG_GOAL_WORDS,
+    examples: longGoalEntries.slice(0, 5).map((entry) => ({
+      id: entry.id,
+      topicCode: entry.topicCode,
+      words: entry.words,
+      text: entry.text.length > 160 ? `${entry.text.slice(0, 157)}...` : entry.text,
+    })),
+  }
+}
+
 function sourceGoalCountGroupKey(source: MappingPipelineSourceStatus): string | null {
   if (source.sourceKind !== 'source-extraction') return null
   const subject = source.subject?.trim().toLowerCase()
-  const stage = source.stage?.trim().toLowerCase()
-  if (!subject || !stage) return null
-  return `${subject}:${stage}`
+  const stageKeys = sourceGoalCountStageKeys(source.stage)
+  if (!subject || stageKeys.length !== 1) return null
+  return `${subject}:${stageKeys[0]}`
+}
+
+function sourceGoalCountStageKeys(stage: string | undefined): string[] {
+  return (stage ?? '')
+    .trim()
+    .toLowerCase()
+    .split(/[+/,;&]+/)
+    .map((entry) => entry.trim())
+    .filter(Boolean)
+}
+
+function sourceGoalCountBaselineParts(
+  source: MappingPipelineSourceStatus,
+  baselineByGroup: Map<string, number[]>,
+): Array<{ stage: string, peerCounts: number[], baseline: number }> {
+  const subject = source.subject?.trim().toLowerCase()
+  const stageKeys = sourceGoalCountStageKeys(source.stage)
+  if (!subject || stageKeys.length === 0) return []
+
+  return stageKeys
+    .map((stage) => {
+      const peerCounts = baselineByGroup.get(`${subject}:${stage}`) ?? []
+      return {
+        stage,
+        peerCounts,
+        baseline: peerCounts.length >= 2 ? median(peerCounts) : 0,
+      }
+    })
+    .filter((part) => part.peerCounts.length >= 2)
 }
 
 function appendSourceGoalCountPeerChecks(sources: Map<string, MappingPipelineSourceStatus>): void {
@@ -310,12 +399,11 @@ function appendSourceGoalCountPeerChecks(sources: Map<string, MappingPipelineSou
   sourceExtractionStatuses
     .filter((source) => !SOURCE_GOAL_COUNT_BASELINE_JURISDICTIONS.has(source.jurisdiction))
     .forEach((source) => {
-      const key = sourceGoalCountGroupKey(source)
-      if (!key) return
-      const peerCounts = baselineByGroup.get(key) ?? []
-      if (peerCounts.length < 2) return
+      const stageKeys = sourceGoalCountStageKeys(source.stage)
+      const baselineParts = sourceGoalCountBaselineParts(source, baselineByGroup)
+      if (baselineParts.length !== stageKeys.length || baselineParts.length === 0) return
 
-      const baseline = median(peerCounts)
+      const baseline = baselineParts.reduce((sum, part) => sum + part.baseline, 0)
       const lowerBound = baseline * (1 - SOURCE_GOAL_COUNT_DEVIATION_THRESHOLD)
       const upperBound = baseline * (1 + SOURCE_GOAL_COUNT_DEVIATION_THRESHOLD)
       const withinRange = source.sourceGoals >= lowerBound && source.sourceGoals <= upperBound
@@ -325,16 +413,35 @@ function appendSourceGoalCountPeerChecks(sources: Map<string, MappingPipelineSou
         ? ` Kritisch gepruefte Abweichung: ${source.sourceGoalCountPeerBaselineReview.details}`
         : ''
       const passed = withinRange || acceptedDeviation
-      const details = `${source.sourceGoals} Source-Ziele; Vergleich HE/BW (${peerCounts.join('/')}) Median ${Math.round(baseline)}; zulässiger 30%-Median-Korridor ${Math.ceil(lowerBound)}-${Math.floor(upperBound)}; Abweichung vom Median ${percent}%.${reviewDetails}`
+      const baselineDetails = baselineParts
+        .map((part) => `${part.stage.toUpperCase()} (${part.peerCounts.join('/')})`)
+        .join(' + ')
+      const details = `${source.sourceGoals} Source-Ziele; Vergleich HE/BW ${baselineDetails}; Median ${Math.round(baseline)}; zulässiger 30%-Median-Korridor ${Math.ceil(lowerBound)}-${Math.floor(upperBound)}; Abweichung vom Median ${percent}%.${reviewDetails}`
       const nextSteps = source.steps.map((step) => {
         if (step.id !== 'MAPPING-2') return step
         const checks = step.checks.filter((check) => check.id !== 'source-goal-count-peer-baseline')
+          .filter((check) => check.id !== 'source-goal-granularity-peer-audit')
         checks.push({
           id: 'source-goal-count-peer-baseline',
           label: 'Source-Ziel-Anzahl ist gegen den geprüften HE/BW-Median plausibilisiert',
           passed,
           details,
         })
+        if (!passed && source.sourceGoalGranularity) {
+          const granularity = source.sourceGoalGranularity
+          const examples = granularity.examples
+            .map((example) => {
+              const prefix = example.topicCode ? `${example.topicCode} ` : ''
+              return `${prefix}${example.id} (${example.words} Woerter): ${example.text}`
+            })
+            .join(' | ')
+          checks.push({
+            id: 'source-goal-granularity-peer-audit',
+            label: 'Source-Ziele sind ausreichend granular statt als Sammelziele modelliert',
+            passed: granularity.longGoals === 0,
+            details: `${granularity.longGoals}/${source.sourceGoals} Source-Ziele haben mehr als ${granularity.longGoalThreshold} Woerter; Durchschnitt ${Math.round(granularity.averageWords)} Woerter, P90 ${granularity.p90Words}, Maximum ${granularity.maxWords}. ${examples ? `Beispiele: ${examples}` : ''}`.trim(),
+          })
+        }
         return {
           ...step,
           status: passed ? step.status : 'incomplete',
@@ -477,8 +584,10 @@ interface SourceMappingReviewDecision {
 interface SourceExtractionGoal {
   id?: string
   title?: string
+  description?: string
   topicCode?: string
   sourceSpan?: string
+  sourceText?: string
   sourceRef?: string
   courseLevel?: string
   contains?: string[]
@@ -828,6 +937,12 @@ function isCanonicalGymMathSek2Goal(goal: LearningGoal): boolean {
 
   const topicCode = goal.dimensionTags?.topicCode ?? goal.themenfeld ?? ''
   return topicCode.includes('SEK2')
+}
+
+function isCanonicalGymMathGoal(goal: LearningGoal): boolean {
+  return goal.dimensionTags?.framework === 'canonical-gymnasium-math'
+    || isCanonicalGymMathSek1Goal(goal)
+    || isCanonicalGymMathSek2Goal(goal)
 }
 
 function isPracticeOrAssessmentGoal(goal: LearningGoal): boolean {
@@ -1836,6 +1951,21 @@ function readCanonicalGoalCourseLevels(goal: LearningGoal | undefined): Set<Cour
   return levels
 }
 
+function readEffectiveCanonicalGoalCourseLevels(goal: LearningGoal | undefined): Set<CourseLevelTag> {
+  const explicitLevels = readCanonicalGoalCourseLevels(goal)
+  if (!goal || explicitLevels.size > 0) return explicitLevels
+
+  const semanticText = `${goal.title ?? ''} ${goal.description ?? ''}`.toUpperCase()
+  const inferredLevels = new Set<CourseLevelTag>()
+  if (/\bGK\b/.test(semanticText) || semanticText.includes('GRUNDKURS')) inferredLevels.add('GK')
+  if (/\bLK\b/.test(semanticText) || semanticText.includes('LEISTUNGSKURS')) inferredLevels.add('LK')
+  if (inferredLevels.size > 0) return inferredLevels
+
+  if (!isCanonicalGymMathGoal(goal)) return explicitLevels
+
+  return new Set<CourseLevelTag>(['GK', 'LK'])
+}
+
 function hasNonEmptyRationale(...candidates: unknown[]): boolean {
   return candidates.some((candidate) => typeof candidate === 'string' && candidate.trim().length > 0)
 }
@@ -1890,23 +2020,23 @@ function expectedCourseLevelsForSourceGoal(
   mapping: GoalMappingEntry,
   decisionBySourceGoalId: Map<string, SourceMappingReviewDecision>,
 ): { levels: Set<CourseLevelTag>; defaultedFromUnspecified: boolean; reviewedException: boolean } | null {
+  if (!isUpperSecondarySourceGoal(sourceGoal)) return null
+
   const rawCourseLevel = typeof sourceGoal.courseLevel === 'string'
     ? sourceGoal.courseLevel.trim()
     : ''
   const normalized = rawCourseLevel.toUpperCase()
+  const reviewedDecision = readReviewedCourseLevelDecision(sourceGoal, mapping, decisionBySourceGoalId)
+
+  if (reviewedDecision) {
+    return {
+      levels: reviewedDecision.levels,
+      defaultedFromUnspecified: false,
+      reviewedException: reviewedDecision.reviewedException,
+    }
+  }
 
   if (normalized === 'UNSPECIFIED' || normalized === '') {
-    const reviewedDecision = readReviewedCourseLevelDecision(sourceGoal, mapping, decisionBySourceGoalId)
-    if (reviewedDecision) {
-      return {
-        levels: reviewedDecision.levels,
-        defaultedFromUnspecified: false,
-        reviewedException: reviewedDecision.reviewedException,
-      }
-    }
-    if (!isUpperSecondarySourceGoal(sourceGoal)) {
-      return null
-    }
     return {
       levels: new Set<CourseLevelTag>(['GK', 'LK']),
       defaultedFromUnspecified: true,
@@ -1981,8 +2111,9 @@ function evaluateCourseLevelMappingConsistency(landscape: LearningLandscape): Ru
         .map((decision) => [decision.sourceGoalId, decision]),
     )
 
-    sourceGoals += sourceGoalById.size
-    sourceGoalById.forEach((sourceGoal) => {
+    const upperSecondarySourceGoals = Array.from(sourceGoalById.values()).filter(isUpperSecondarySourceGoal)
+    sourceGoals += upperSecondarySourceGoals.length
+    upperSecondarySourceGoals.forEach((sourceGoal) => {
       const expected = expectedCourseLevelsForSourceGoal(sourceGoal, {}, decisionBySourceGoalId)
       if (!expected) return
       sourceGoalsWithCourseLevel += 1
@@ -1990,6 +2121,8 @@ function evaluateCourseLevelMappingConsistency(landscape: LearningLandscape): Ru
       if (!expected.levels.has('GK') && expected.levels.has('LK')) lkSourceGoals += 1
       if (String(sourceGoal.courseLevel ?? '').trim().toUpperCase() === 'UNSPECIFIED') unspecifiedSourceGoals += 1
       if (!mappedSourceGoalIds.has(sourceGoal.id!)) {
+        const decision = decisionBySourceGoalId.get(sourceGoal.id!)
+        if (decision?.decision === 'needsCanonicalGoal') return
         unmappedCourseLevelSourceGoals += 1
         if (details.length < 20) details.push(`${sourceGoal.id}: no canonical mapping exists for course-level checked source goal`)
       }
@@ -2020,9 +2153,10 @@ function evaluateCourseLevelMappingConsistency(landscape: LearningLandscape): Ru
       if (expected.defaultedFromUnspecified) defaultedUnspecifiedMappingEdges += 1
       if (expected.reviewedException) reviewedCourseLevelExceptions += 1
 
-      const targetLevels = readCanonicalGoalCourseLevels(targetGoal)
+      const targetLevels = readEffectiveCanonicalGoalCourseLevels(targetGoal)
       const compatible = Array.from(expected.levels).every((level) => targetLevels.has(level))
       if (!compatible) {
+        if (expected.reviewedException) return
         const message = `${sourceGoal.id} (${sourceGoal.courseLevel ?? 'unspecified'} -> ${formatCourseLevelSet(expected.levels)}) maps to ${formatGoal(targetGoal, targetGoal.id)} with tags ${formatCourseLevelSet(targetLevels)}`
         mismatches.push(message)
         if (details.length < 20) details.push(message)
@@ -2035,7 +2169,7 @@ function evaluateCourseLevelMappingConsistency(landscape: LearningLandscape): Ru
     'CQR-004',
     issueCount === 0 ? 'pass' : 'fail',
     issueCount === 0
-      ? `Course-level mapping is clean for ${checkedMappingEdges} upper-secondary source-to-canonical mapping edge(s); unspecified upper-secondary source goals default to GK/LK unless explicitly reviewed.`
+      ? `Course-level mapping is clean for ${checkedMappingEdges} upper-secondary source-to-canonical mapping edge(s), including ${reviewedCourseLevelExceptions} reviewed course-level exception(s); unspecified upper-secondary source goals default to GK/LK unless explicitly reviewed.`
       : `${issueCount} upper-secondary course-level mapping issue(s); unspecified upper-secondary source goals default to GK/LK unless explicitly reviewed as LK-only.`,
     {
       configuredMappingFiles: configuredMappingFiles.length,
@@ -2164,6 +2298,7 @@ function readSourceExtractionPipelinesByLandscapeId(): Map<string, MappingPipeli
         partialMappings,
         otherMappings,
         sourceGoalCountPeerBaselineReview: extraction.qualityReview?.sourceGoalCountPeerBaseline,
+        sourceGoalGranularity: summarizeSourceGoalGranularity(sourceGoals),
         steps: normalizedSteps,
       })
     } catch {

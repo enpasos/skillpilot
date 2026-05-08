@@ -895,7 +895,7 @@
       "description": "Gemeinsame Wurzel für Mathematik am Gymnasium in Deutschland. Die Baseline bündelt einen kanonischen Mathematik-Graphen über Sekundarstufe I und II mit Jahrgangsankern, fachlichen Korridoren und anschlussfähigen Oberstufenzielen.",
       "descriptionEn": "Shared root for mathematics at Gymnasium in Germany. The baseline bundles one canonical mathematics graph across lower and upper secondary with year anchors, content corridors, and upper-secondary continuation goals.",
       "core": true,
-      "weight": 634,
+      "weight": 640,
       "tags": [
         "root",
         "canonical",
@@ -953,7 +953,8 @@
         "3e937f39-1187-58b3-96c3-ec39278c0e3c",
         "6c8a677b-ede8-5c2c-86d8-0ef0be8ace28",
         "464a6024-a2f8-53b4-84e0-d7b9df22a0b1",
-        "9ad83149-3cb7-5b87-a617-3eae3715a50c"
+        "9ad83149-3cb7-5b87-a617-3eae3715a50c",
+        "320bc921-06df-4500-96fd-93f9f6fee9b4"
       ],
       "requires": [],
       "applicability": {
@@ -2684,6 +2685,222 @@
         ]
       },
       "type": "cluster"
+    },
+    {
+      "id": "320bc921-06df-4500-96fd-93f9f6fee9b4",
+      "shortKey": "canonical_math_sek1_sh_tools_derived_quantities",
+      "title": "Werkzeuge und abgeleitete Größen situationsgerecht nutzen",
+      "titleEn": "Use tools and derived quantities appropriately (Lower Secondary)",
+      "description": "Cluster für schleswig-holsteinische Sek-I-Ziele zu situationsgerechter Taschenrechnernutzung, Messungen mit analogen und digitalen Mitteln sowie Geschwindigkeit und Dichte als abgeleitete Größen.",
+      "descriptionEn": "Cluster for Schleswig-Holstein lower-secondary goals on appropriate calculator use, measurements with analogue and digital tools, and speed and density as derived quantities.",
+      "core": true,
+      "weight": 4,
+      "tags": [
+        "canonical",
+        "phase:SekI",
+        "area:Measurement",
+        "area:Tools"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "K2",
+          "K3",
+          "K5"
+        ],
+        "guidingIdeas": [
+          "L1",
+          "L2"
+        ],
+        "phase": "GLOBAL",
+        "area": "Measurement",
+        "topicCode": "CANONICAL.MATH.SEK1.SH.TOOLS_DERIVED_QUANTITIES"
+      },
+      "contains": [
+        "314854a0-4e97-462e-9486-9fd83652e91d",
+        "c3cce9a1-9adc-4470-b2d8-aea81d6d7b65",
+        "37bf2eb6-75a0-44c1-a988-ca0e203cb072",
+        "2345ae25-5805-4c72-b830-32e63cc6262a"
+      ],
+      "requires": [],
+      "competencyRefs": [
+        "PROCESS.K2",
+        "PROCESS.K3",
+        "PROCESS.K5"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-SH"
+        ]
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "314854a0-4e97-462e-9486-9fd83652e91d",
+      "shortKey": "canonical_math_sek1_use_calculator_appropriately",
+      "title": "Taschenrechner situationsgerecht nutzen",
+      "titleEn": "Use calculators appropriately",
+      "description": "Die lernende Person kann den Taschenrechner in geeigneten Rechen- und Sachsituationen situationsgerecht einsetzen, Ergebnisse plausibilisieren und einfache Kontrollrechnungen nutzen.",
+      "descriptionEn": "The learner can use a calculator appropriately in suitable arithmetic and contextual situations, check plausibility, and use simple cross-checks.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical",
+        "tool:calculator"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "K2.1",
+          "K3.1",
+          "K5.1"
+        ],
+        "guidingIdeas": [
+          "L1"
+        ],
+        "phase": "J7",
+        "area": "Arithmetic",
+        "topicCode": "CANONICAL.MATH.SEK1.SH.TOOLS.CALCULATOR"
+      },
+      "contains": [],
+      "requires": [
+        "ca623958-c204-5d1b-bdd0-3f76765674cb",
+        "65365dce-f33f-49d8-9516-42f75883aa86"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-SH"
+        ]
+      },
+      "type": "atomic",
+      "semanticAtomic": true
+    },
+    {
+      "id": "c3cce9a1-9adc-4470-b2d8-aea81d6d7b65",
+      "shortKey": "canonical_math_sek1_measure_environment_sources",
+      "title": "Messungen in Umwelt und Quellenmaterial durchführen",
+      "titleEn": "Measure in the environment and use source material",
+      "description": "Die lernende Person kann in alltagsnahen Situationen gezielt Messungen durchführen, geeignete analoge oder digitale Messmittel nutzen und Maßangaben aus Quellenmaterial entnehmen.",
+      "descriptionEn": "The learner can carry out targeted measurements in everyday situations, use suitable analogue or digital measuring tools, and extract measurements from source material.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical",
+        "tool:digital-measurement"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "K2.1",
+          "K3.1",
+          "K4.1",
+          "K5.1"
+        ],
+        "guidingIdeas": [
+          "L2"
+        ],
+        "phase": "J7",
+        "area": "Measurement",
+        "topicCode": "CANONICAL.MATH.SEK1.SH.MEASUREMENT.SOURCES"
+      },
+      "contains": [],
+      "requires": [
+        "f2e42af5-67a6-477e-82ea-e65b09cc6cb3",
+        "65365dce-f33f-49d8-9516-42f75883aa86"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-SH"
+        ]
+      },
+      "type": "atomic",
+      "semanticAtomic": true
+    },
+    {
+      "id": "37bf2eb6-75a0-44c1-a988-ca0e203cb072",
+      "shortKey": "canonical_math_sek1_speed_derived_quantity",
+      "title": "Geschwindigkeit als abgeleitete Größe verwenden",
+      "titleEn": "Use speed as a derived quantity",
+      "description": "Die lernende Person kann Geschwindigkeit als Verhältnis von Weg und Zeit deuten, passende Einheiten umrechnen und einfache Sachaufgaben zu Geschwindigkeit lösen.",
+      "descriptionEn": "The learner can interpret speed as a ratio of distance and time, convert suitable units, and solve simple contextual speed problems.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "K2.1",
+          "K3.1",
+          "K4.1"
+        ],
+        "guidingIdeas": [
+          "L2",
+          "L4"
+        ],
+        "phase": "J7",
+        "area": "Measurement",
+        "topicCode": "CANONICAL.MATH.SEK1.SH.MEASUREMENT.SPEED"
+      },
+      "contains": [],
+      "requires": [
+        "ca623958-c204-5d1b-bdd0-3f76765674cb",
+        "f2e42af5-67a6-477e-82ea-e65b09cc6cb3",
+        "65365dce-f33f-49d8-9516-42f75883aa86"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-SH"
+        ]
+      },
+      "type": "atomic",
+      "semanticAtomic": true
+    },
+    {
+      "id": "2345ae25-5805-4c72-b830-32e63cc6262a",
+      "shortKey": "canonical_math_sek1_density_derived_quantity",
+      "title": "Dichte als abgeleitete Größe verwenden",
+      "titleEn": "Use density as a derived quantity",
+      "description": "Die lernende Person kann Dichte als Verhältnis von Masse und Volumen deuten, passende Einheiten verwenden und einfache Sachaufgaben zu Dichte lösen.",
+      "descriptionEn": "The learner can interpret density as a ratio of mass and volume, use suitable units, and solve simple contextual density problems.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "K2.1",
+          "K3.1",
+          "K4.1"
+        ],
+        "guidingIdeas": [
+          "L2"
+        ],
+        "phase": "J7",
+        "area": "Measurement",
+        "topicCode": "CANONICAL.MATH.SEK1.SH.MEASUREMENT.DENSITY"
+      },
+      "contains": [],
+      "requires": [
+        "ca623958-c204-5d1b-bdd0-3f76765674cb",
+        "1f89d69e-ead1-424b-8221-fae37fdea2bc",
+        "65365dce-f33f-49d8-9516-42f75883aa86"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-SH"
+        ]
+      },
+      "type": "atomic",
+      "semanticAtomic": true
     },
     {
       "id": "ca623958-c204-5d1b-bdd0-3f76765674cb",
@@ -9701,7 +9918,8 @@
           "DE-BY",
           "DE-HE",
           "DE-NI",
-          "DE-NW"
+          "DE-NW",
+          "DE-SH"
         ]
       },
       "type": "atomic",
@@ -10012,7 +10230,8 @@
       ],
       "applicability": {
         "jurisdiction": [
-          "DE-BW"
+          "DE-BW",
+          "DE-SH"
         ]
       },
       "type": "atomic",
@@ -10164,7 +10383,8 @@
       ],
       "applicability": {
         "jurisdiction": [
-          "DE-BW"
+          "DE-BW",
+          "DE-SH"
         ]
       },
       "type": "atomic",
@@ -10205,7 +10425,13 @@
         "65365dce-f33f-49d8-9516-42f75883aa86"
       ],
       "type": "atomic",
-      "semanticAtomic": true
+      "semanticAtomic": true,
+      "applicability": {
+        "jurisdiction": [
+          "DE-BE",
+          "DE-SH"
+        ]
+      }
     },
     {
       "id": "ad66009f-55fb-563f-ace0-dbfeae7c76c3",
@@ -19928,7 +20154,8 @@
       },
       "applicability": {
         "jurisdiction": [
-          "DE-HE"
+          "DE-HE",
+          "DE-SH"
         ]
       },
       "type": "atomic"
@@ -21473,7 +21700,11 @@
         "d668c22d-caeb-5e91-8980-721c931a2bcf",
         "804d7443-9976-5d81-a47d-1601f42f7e0e",
         "a6469c01-6ca3-5eb2-a82c-94f3d0560b32",
-        "bc1a4cba-a8a8-5e59-9f3f-1e8fe7918004"
+        "bc1a4cba-a8a8-5e59-9f3f-1e8fe7918004",
+        "314854a0-4e97-462e-9486-9fd83652e91d",
+        "c3cce9a1-9adc-4470-b2d8-aea81d6d7b65",
+        "37bf2eb6-75a0-44c1-a988-ca0e203cb072",
+        "2345ae25-5805-4c72-b830-32e63cc6262a"
       ],
       "phase": "J7",
       "type": "atomic",
@@ -24503,7 +24734,8 @@
       "sourceRef": "HKM Kerncurriculum Mathematik gymnasiale Oberstufe, E.1, S. 31",
       "applicability": {
         "jurisdiction": [
-          "DE-HE"
+          "DE-HE",
+          "DE-SH"
         ]
       },
       "type": "atomic",
@@ -24543,7 +24775,8 @@
       "sourceRef": "HKM Kerncurriculum Mathematik gymnasiale Oberstufe, E.1, S. 31",
       "applicability": {
         "jurisdiction": [
-          "DE-HE"
+          "DE-HE",
+          "DE-SH"
         ]
       },
       "type": "atomic",
@@ -24884,7 +25117,8 @@
         "jurisdiction": [
           "DE-BY",
           "DE-HE",
-          "DE-NI"
+          "DE-NI",
+          "DE-SH"
         ]
       },
       "type": "atomic",
@@ -24969,7 +25203,8 @@
       "sourceRef": "HKM Kerncurriculum Mathematik gymnasiale Oberstufe, E.2, S. 32",
       "applicability": {
         "jurisdiction": [
-          "DE-HE"
+          "DE-HE",
+          "DE-SH"
         ]
       },
       "type": "atomic",
@@ -25008,7 +25243,8 @@
       "sourceRef": "HKM Kerncurriculum Mathematik gymnasiale Oberstufe, E.2, S. 32",
       "applicability": {
         "jurisdiction": [
-          "DE-HE"
+          "DE-HE",
+          "DE-SH"
         ]
       },
       "type": "atomic",
@@ -25131,7 +25367,8 @@
       "sourceRef": "HKM Kerncurriculum Mathematik gymnasiale Oberstufe, E.2, S. 32",
       "applicability": {
         "jurisdiction": [
-          "DE-HE"
+          "DE-HE",
+          "DE-SH"
         ]
       },
       "type": "atomic",
@@ -25214,7 +25451,8 @@
       "applicability": {
         "jurisdiction": [
           "DE-BW",
-          "DE-HE"
+          "DE-HE",
+          "DE-SH"
         ]
       },
       "type": "atomic",
@@ -26421,7 +26659,8 @@
           "DE-BY",
           "DE-HE",
           "DE-NI",
-          "DE-NW"
+          "DE-NW",
+          "DE-SH"
         ]
       },
       "type": "atomic",
@@ -26465,7 +26704,8 @@
           "DE-BY",
           "DE-HE",
           "DE-NI",
-          "DE-NW"
+          "DE-NW",
+          "DE-SH"
         ]
       },
       "type": "atomic",
@@ -26748,7 +26988,8 @@
       "applicability": {
         "jurisdiction": [
           "DE-HE",
-          "DE-NW"
+          "DE-NW",
+          "DE-SH"
         ]
       },
       "type": "atomic",
@@ -27113,7 +27354,8 @@
       "applicability": {
         "jurisdiction": [
           "DE-BB",
-          "DE-HE"
+          "DE-HE",
+          "DE-SH"
         ]
       },
       "type": "atomic",
@@ -27153,7 +27395,8 @@
       "applicability": {
         "jurisdiction": [
           "DE-HE",
-          "DE-NW"
+          "DE-NW",
+          "DE-SH"
         ]
       },
       "type": "atomic",
@@ -27239,7 +27482,8 @@
       "applicability": {
         "jurisdiction": [
           "DE-HE",
-          "DE-NW"
+          "DE-NW",
+          "DE-SH"
         ]
       },
       "type": "atomic",
@@ -27407,7 +27651,8 @@
       "applicability": {
         "jurisdiction": [
           "DE-BB",
-          "DE-HE"
+          "DE-HE",
+          "DE-SH"
         ]
       },
       "type": "atomic",
@@ -27446,7 +27691,8 @@
         "jurisdiction": [
           "DE-BB",
           "DE-BY",
-          "DE-HE"
+          "DE-HE",
+          "DE-SH"
         ]
       },
       "type": "atomic"
@@ -27606,7 +27852,8 @@
         "jurisdiction": [
           "DE-BW",
           "DE-HE",
-          "DE-NW"
+          "DE-NW",
+          "DE-SH"
         ]
       },
       "type": "atomic",
@@ -27648,6 +27895,7 @@
           "DE-HH",
           "DE-NI",
           "DE-RP",
+          "DE-SH",
           "DE-SL"
         ]
       },
@@ -27692,6 +27940,7 @@
           "DE-HH",
           "DE-NI",
           "DE-RP",
+          "DE-SH",
           "DE-SL"
         ]
       },
@@ -27731,7 +27980,8 @@
           "DE-BW",
           "DE-BY",
           "DE-HE",
-          "DE-NW"
+          "DE-NW",
+          "DE-SH"
         ]
       },
       "type": "atomic",
@@ -27811,6 +28061,7 @@
           "DE-HH",
           "DE-NI",
           "DE-RP",
+          "DE-SH",
           "DE-SL"
         ]
       },
@@ -28469,7 +28720,8 @@
         "jurisdiction": [
           "DE-HE",
           "DE-NI",
-          "DE-NW"
+          "DE-NW",
+          "DE-SH"
         ]
       },
       "type": "atomic",
@@ -28590,7 +28842,8 @@
       "applicability": {
         "jurisdiction": [
           "DE-HE",
-          "DE-NI"
+          "DE-NI",
+          "DE-SH"
         ]
       },
       "type": "atomic"
@@ -29295,7 +29548,8 @@
           "DE-BB",
           "DE-BE",
           "DE-HE",
-          "DE-NI"
+          "DE-NI",
+          "DE-SH"
         ]
       },
       "type": "atomic",
@@ -29451,7 +29705,8 @@
       },
       "applicability": {
         "jurisdiction": [
-          "DE-HE"
+          "DE-HE",
+          "DE-SH"
         ]
       },
       "type": "atomic"
@@ -29542,7 +29797,8 @@
         "jurisdiction": [
           "DE-HB",
           "DE-HE",
-          "DE-NI"
+          "DE-NI",
+          "DE-SH"
         ]
       },
       "type": "atomic",
@@ -29904,7 +30160,8 @@
       "applicability": {
         "jurisdiction": [
           "DE-HB",
-          "DE-HE"
+          "DE-HE",
+          "DE-SH"
         ]
       },
       "type": "atomic",
@@ -30415,7 +30672,8 @@
       },
       "applicability": {
         "jurisdiction": [
-          "DE-HE"
+          "DE-HE",
+          "DE-SH"
         ]
       },
       "type": "atomic",
@@ -31445,7 +31703,8 @@
       "applicability": {
         "jurisdiction": [
           "DE-BB",
-          "DE-HE"
+          "DE-HE",
+          "DE-SH"
         ]
       },
       "type": "atomic"
@@ -32498,6 +32757,7 @@
       },
       "applicability": {
         "jurisdiction": [
+          "DE-BB",
           "DE-HE",
           "DE-NI"
         ]
@@ -32798,7 +33058,8 @@
       "applicability": {
         "jurisdiction": [
           "DE-HE",
-          "DE-NW"
+          "DE-NW",
+          "DE-SH"
         ]
       },
       "type": "atomic",
@@ -33687,7 +33948,8 @@
           "DE-HB",
           "DE-HE",
           "DE-NI",
-          "DE-NW"
+          "DE-NW",
+          "DE-SH"
         ]
       },
       "type": "atomic",
@@ -33729,7 +33991,8 @@
           "DE-HB",
           "DE-HE",
           "DE-NI",
-          "DE-NW"
+          "DE-NW",
+          "DE-SH"
         ]
       },
       "type": "atomic",
@@ -34007,7 +34270,8 @@
           "DE-BY",
           "DE-HE",
           "DE-NI",
-          "DE-NW"
+          "DE-NW",
+          "DE-SH"
         ]
       },
       "type": "atomic",
@@ -34098,7 +34362,7 @@
       "titleEn": "Points, Vectors, and Motion in Space",
       "description": "Punkte und Vektoren im Raum koordinatisieren, elementare Vektoroperationen nutzen, Bewegungen mit Vektoren beschreiben und erste Körper- bzw. Figurenvorstellungen im Raum fachsprachlich deuten.",
       "descriptionEn": "Coordinate points and vectors in space, use elementary vector operations, describe motions with vectors, and interpret first ideas of bodies and figures in space using appropriate technical language.",
-      "weight": 24,
+      "weight": 26,
       "tags": [
         "GK",
         "LK"
@@ -34111,6 +34375,8 @@
         "d9d8cd76-01fb-5f7a-b733-17f81d854af7",
         "eb6bfdd9-3cbe-51b5-9798-a741bdc2782e",
         "f37b0a72-9e23-51c7-aad5-438c17a56899",
+        "72dfc164-455d-4b63-85f0-96e803c9a1d5",
+        "6fc9246a-9448-4cdb-b627-cf20ea1c65d3",
         "54cfe5ce-693e-5d4a-ac1b-009570fbbc11",
         "fb7a4fa0-03b5-53b4-bd86-608480b748a1",
         "68d4faef-1a56-5898-9c31-80b7d5d2e430",
@@ -34282,7 +34548,8 @@
           "DE-HB",
           "DE-HE",
           "DE-HH",
-          "DE-NW"
+          "DE-NW",
+          "DE-SH"
         ]
       },
       "type": "atomic"
@@ -34366,7 +34633,8 @@
         "jurisdiction": [
           "DE-BB",
           "DE-BW",
-          "DE-HE"
+          "DE-HE",
+          "DE-SH"
         ]
       },
       "type": "atomic"
@@ -34404,6 +34672,7 @@
       "applicability": {
         "jurisdiction": [
           "DE-BB",
+          "DE-BE",
           "DE-BW",
           "DE-BY",
           "DE-HB",
@@ -34445,6 +34714,8 @@
       },
       "applicability": {
         "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
           "DE-HE",
           "DE-NI"
         ]
@@ -35356,7 +35627,8 @@
           "DE-HB",
           "DE-HE",
           "DE-NI",
-          "DE-NW"
+          "DE-NW",
+          "DE-SH"
         ]
       },
       "type": "atomic",
@@ -35658,7 +35930,8 @@
           "DE-BY",
           "DE-HB",
           "DE-HE",
-          "DE-NW"
+          "DE-NW",
+          "DE-SH"
         ]
       },
       "type": "atomic",
@@ -35916,7 +36189,8 @@
           "DE-BW",
           "DE-BY",
           "DE-HE",
-          "DE-NW"
+          "DE-NW",
+          "DE-SH"
         ]
       },
       "type": "atomic",
@@ -35959,7 +36233,8 @@
           "DE-BY",
           "DE-HB",
           "DE-HE",
-          "DE-NI"
+          "DE-NI",
+          "DE-SH"
         ]
       },
       "type": "atomic",
@@ -36038,7 +36313,8 @@
       "applicability": {
         "jurisdiction": [
           "DE-BB",
-          "DE-HE"
+          "DE-HE",
+          "DE-SH"
         ]
       },
       "type": "atomic",
@@ -39919,7 +40195,8 @@
       "examples": [],
       "applicability": {
         "jurisdiction": [
-          "DE-HE"
+          "DE-HE",
+          "DE-SH"
         ]
       },
       "examData": {
@@ -40417,7 +40694,9 @@
         "9441bb35-2a2f-4edc-9d8a-bc58c257054d",
         "b559e2ea-60ef-4b3f-a37c-669b867ace29",
         "8675a3d8-9aaa-4f35-b4ed-383d1c93ea24",
-        "ced4f794-9b42-4be4-bde5-7d44f134a140"
+        "ced4f794-9b42-4be4-bde5-7d44f134a140",
+        "24f21c0c-b506-56ec-ad17-39b209af4585",
+        "5042fd2b-bab2-50be-8144-c9ccf5618615"
       ],
       "contains": [],
       "examples": [],
@@ -40652,7 +40931,8 @@
         "12f4b957-da3d-53d5-a924-45a634ab8d44",
         "90662398-a0fd-45bf-9ce9-2abbc20428ed",
         "31be24f0-3ab1-54d2-856d-fa9b7f36552f",
-        "649b673c-1a74-5dc5-af01-b4c9e090b90d"
+        "649b673c-1a74-5dc5-af01-b4c9e090b90d",
+        "bfc2bf06-9b37-4912-a8eb-25fb5d489d72"
       ],
       "contains": [],
       "examples": [],
@@ -40851,7 +41131,12 @@
         "972cc7e8-be9c-444c-ba45-98e817b3cf14",
         "71683f37-24de-4e0f-badd-858b56fa4d64",
         "91e2f564-3bc8-4924-af85-2a3fa84c1471",
-        "899ed286-0cc2-4d6d-ba46-7d4e40a11f41"
+        "899ed286-0cc2-4d6d-ba46-7d4e40a11f41",
+        "3bf1ce9e-f4d3-502e-9d6e-94f7b7f697d4",
+        "6517427b-cf4e-5ebf-9a76-e1035617687c",
+        "a12bef54-7595-5f48-a7a8-9cfe1d8e9729",
+        "62a1c6f2-1775-5a19-98e0-ed3dd722039f",
+        "858f7863-50cd-5b4c-9654-a0766f2b2d53"
       ],
       "contains": [],
       "examples": [],
@@ -40944,7 +41229,22 @@
         "5da12e3a-9abb-4134-a0a3-f44aa8de0a03",
         "164eb50f-1a5e-44a2-932e-561862e1378e",
         "8eb14d81-353a-4909-9464-61be7b1ba5b8",
-        "ed5d869b-af4e-4b80-b34d-a2338e16ce34"
+        "ed5d869b-af4e-4b80-b34d-a2338e16ce34",
+        "d9d8cd76-01fb-5f7a-b733-17f81d854af7",
+        "eb6bfdd9-3cbe-51b5-9798-a741bdc2782e",
+        "f37b0a72-9e23-51c7-aad5-438c17a56899",
+        "72dfc164-455d-4b63-85f0-96e803c9a1d5",
+        "6fc9246a-9448-4cdb-b627-cf20ea1c65d3",
+        "54cfe5ce-693e-5d4a-ac1b-009570fbbc11",
+        "fb7a4fa0-03b5-53b4-bd86-608480b748a1",
+        "69eda7f9-1898-5220-932d-e7bec839b7af",
+        "2ac2e902-a6ad-53c9-b139-d1c63d823023",
+        "d379e28b-d9d5-5cab-b383-318e0499c0c7",
+        "bff7aa8b-1007-5c95-a148-a1b82f47da18",
+        "63dae16c-8cc0-5400-bc0b-b2e9e7d28ffa",
+        "4af3dfb9-7e15-5da5-8b86-0aac6c80e266",
+        "dd14916c-1bd5-57be-8867-250866066d55",
+        "ef1524f1-0b2f-59f7-a001-5ab3e3dececb"
       ],
       "contains": [],
       "examples": [],
@@ -41023,7 +41323,25 @@
         "fa02cf14-0411-4fe3-8be7-a62c69743e26",
         "f613634b-39fb-5021-9970-790ef34c9932",
         "0f4f9957-8afe-4aab-9dd8-c26c9aee2afd",
-        "18be713b-7d90-4f01-b60a-5582ac4df0e8"
+        "18be713b-7d90-4f01-b60a-5582ac4df0e8",
+        "68d4faef-1a56-5898-9c31-80b7d5d2e430",
+        "27cfa1b3-be6f-5f81-b9a2-ae3bad9c14b6",
+        "436532fe-cee6-5a13-a4be-05522435937b",
+        "6481fc23-d923-5ffc-ba49-f499328f43b8",
+        "7aa1abee-d6ec-528a-b110-f2260b0cda51",
+        "a9fde754-51b4-58d7-85e5-5e36160581e6",
+        "58f613da-03be-5c6a-90a9-ff0958aa7849",
+        "bda6a659-9640-53a5-8be0-24705ab623ef",
+        "5f90df42-8a71-534d-b995-b8f7dcaf1661",
+        "79c4cd21-af64-5925-968e-9bc1f74cd0ad",
+        "d8e56cfc-a58d-5529-ab9f-e5187e31dd34",
+        "c2c49659-5917-5be5-a3bd-e46f1b17126f",
+        "dd042c27-d513-5352-9de9-2a5923a98e69",
+        "54541d08-61cc-5a6d-b6d9-d0270a7d1949",
+        "7bb3c312-f714-55e6-a31f-f31605a93760",
+        "edaf0bb4-e12e-5a6c-b484-91124ba209f3",
+        "fd4b7145-5c28-5b33-bf2e-0ca68f29f2fc",
+        "eb112b6f-4cc4-58af-975a-f1ea61b727f0"
       ],
       "contains": [],
       "examples": [],
@@ -41103,7 +41421,11 @@
         "ce198bc9-b014-52ba-814f-25cc3e020668",
         "4bc6cc77-3d20-5d27-a74a-8efb0a038d17",
         "f378917f-2ca7-4c68-bd66-3f9457095dd5",
-        "b5062446-332f-4a67-aaf7-3bfa3e5aded9"
+        "b5062446-332f-4a67-aaf7-3bfa3e5aded9",
+        "03685f87-7570-5bb3-b1c7-134124abb317",
+        "6aa593a3-6690-581d-9b7d-37cac78187a1",
+        "0de1e45c-aea9-5e53-932a-027dcf509efa",
+        "922d89fc-1cbd-56e9-ac5d-5cb59085de6c"
       ],
       "contains": [],
       "examples": [],
@@ -41176,7 +41498,13 @@
       },
       "requires": [
         "168d8879-0412-5524-94c5-c1d8169dbd65",
-        "803d910d-96d1-5118-b9ca-29e93d0da76d"
+        "803d910d-96d1-5118-b9ca-29e93d0da76d",
+        "7bd8f022-5002-5610-994c-a9cec1890558",
+        "4c494716-567b-59c2-855c-6ea45635c666",
+        "55039f9c-4ebc-5115-add5-fae95b915e46",
+        "35558905-753d-5fcb-b25e-7f85ffdbff56",
+        "d3c42193-f1b7-5c6d-a991-bf034d99359f",
+        "5748633c-113f-5ea8-9041-24da55919de7"
       ],
       "contains": [],
       "examples": [],
@@ -41700,7 +42028,15 @@
         "fcf9af67-7abd-5f69-a22a-b436297d44c5",
         "d144a855-9139-55c7-a801-e8b85dab5f01",
         "20843e23-cfc5-5ff8-96e0-e05a4f746fae",
-        "1bdac3d8-6b6f-5e27-9c9e-9addf198aa99"
+        "1bdac3d8-6b6f-5e27-9c9e-9addf198aa99",
+        "ccfd4e60-5728-568f-adb7-0b932d8e5aac",
+        "0e8417d7-effb-5314-93ba-a571b01726ce",
+        "e33e75e3-eae5-5a09-862f-d1a11176373f",
+        "49f9059a-876c-5051-8146-d008b5cc691c",
+        "46a5ede1-db97-5f9d-87ab-cedaf8094058",
+        "b66d13c5-187e-530b-b4d3-efc7506a7f34",
+        "13c9dd61-1d76-5966-8aad-48dbacade333",
+        "20cca111-6a1f-5234-b9db-cc789f91da95"
       ],
       "contains": [],
       "examples": [],
@@ -41770,7 +42106,15 @@
         "phase": "Q4"
       },
       "requires": [
-        "613871f6-ccb2-51fe-aba2-0dd17b86a89e"
+        "613871f6-ccb2-51fe-aba2-0dd17b86a89e",
+        "08b80080-4895-55df-8ca6-4e8c5eb0f9f5",
+        "1675fdde-cba7-5456-ae70-a846e1924a68",
+        "27bdc580-ba17-5399-bf02-48f354846d1d",
+        "e75ec65a-9692-5871-b90b-fbebe38ae0c3",
+        "3a8ab786-b7e3-5c22-9eb3-1875103898e2",
+        "d8305a49-6d45-52aa-ab88-9163c3b9f198",
+        "21fa0c22-976e-59b3-a871-899f0c0177f3",
+        "ae3483e3-4712-56a1-a881-2e1f8a1a8df9"
       ],
       "contains": [],
       "examples": [],
@@ -41840,7 +42184,12 @@
       },
       "requires": [
         "5922affd-b1f9-5ad9-963e-25d3734c3b72",
-        "eda8580e-1f10-5dbd-9aaf-92367f40a6bd"
+        "eda8580e-1f10-5dbd-9aaf-92367f40a6bd",
+        "36f16d92-7430-50c3-8696-cf486470f771",
+        "a7fb1a7a-8315-5bcb-842e-48293293dfcc",
+        "cea13aa9-f102-5c22-b2f0-81767d000f41",
+        "8e18154d-41d6-592e-ba98-537edad338e8",
+        "9b339361-7719-573d-a913-432246c502ee"
       ],
       "contains": [],
       "examples": [],
@@ -42121,7 +42470,8 @@
       },
       "requires": [
         "4a630596-6e2f-593e-bac6-2a6d8fa58e2f",
-        "519660d0-85e5-57a6-a219-d0a253336649"
+        "519660d0-85e5-57a6-a219-d0a253336649",
+        "ead1f5ce-fdf4-5591-8982-395001017848"
       ],
       "contains": [],
       "examples": [],
@@ -42277,7 +42627,12 @@
         "07be4b71-b7e0-5dd1-be0c-9f590f3db3f3",
         "c97a33d9-d5e4-56c5-ae4c-822bc4f54898",
         "fbcb4ad3-786d-5365-94ba-b105660694a5",
-        "619f29f5-7f44-5654-9692-01b250997d52"
+        "619f29f5-7f44-5654-9692-01b250997d52",
+        "0ffa6e50-011d-5702-8c5e-85d708eda2e8",
+        "9220b6b6-c023-501b-ad8f-e42e4f51d979",
+        "474fe553-d868-50d9-a19b-761e64f21c0d",
+        "97b03cce-6641-5ec9-a6d2-f31838e2dbb9",
+        "cdde4164-0d23-52e4-b1e8-9f412a48c999"
       ],
       "contains": [],
       "examples": [],
@@ -42833,6 +43188,7 @@
         "jurisdiction": [
           "DE-BB",
           "DE-BE",
+          "DE-HB",
           "DE-HE",
           "DE-NW"
         ]
@@ -42937,7 +43293,8 @@
       "contains": [],
       "applicability": {
         "jurisdiction": [
-          "DE-HE"
+          "DE-HE",
+          "DE-SH"
         ]
       },
       "type": "atomic",
@@ -43017,7 +43374,90 @@
       "contains": [],
       "applicability": {
         "jurisdiction": [
-          "DE-HE"
+          "DE-HE",
+          "DE-SH"
+        ]
+      },
+      "type": "atomic",
+      "semanticAtomic": true
+    },
+    {
+      "id": "72dfc164-455d-4b63-85f0-96e803c9a1d5",
+      "shortKey": "canonical_math_sek2_form_and_interpret_linear_combinations",
+      "title": "Linearkombinationen von Vektoren bilden und deuten",
+      "titleEn": "Form and interpret linear combinations of vectors",
+      "description": "Die lernende Person kann Vektoren als Linearkombination gegebener Vektoren darstellen, passende Koeffizienten bestimmen und die Darstellung geometrisch deuten.",
+      "descriptionEn": "The learner can represent vectors as linear combinations of given vectors, determine suitable coefficients, and interpret the representation geometrically.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical"
+      ],
+      "contains": [],
+      "requires": [
+        "f37b0a72-9e23-51c7-aad5-438c17a56899"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K1.1",
+          "K4.1"
+        ],
+        "guidingIdeas": [
+          "L1",
+          "L3"
+        ],
+        "phase": "Q2",
+        "area": "LinearAlgebra",
+        "topicCode": "CANONICAL.MATH.SEK2.SPACE.VECTORS.LINEAR_COMBINATIONS"
+      },
+      "sourceRef": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, Leitidee 1, S. 62",
+      "applicability": {
+        "jurisdiction": [
+          "DE-SH"
+        ]
+      },
+      "type": "atomic",
+      "semanticAtomic": true
+    },
+    {
+      "id": "6fc9246a-9448-4cdb-b627-cf20ea1c65d3",
+      "shortKey": "canonical_math_sek2_check_linear_dependence_independence",
+      "title": "Lineare Abhängigkeit und Unabhängigkeit von Vektoren prüfen",
+      "titleEn": "Check linear dependence and independence of vectors",
+      "description": "Die lernende Person kann entscheiden, ob Vektoren linear abhängig oder unabhängig sind, die Entscheidung rechnerisch begründen und die geometrische Bedeutung erläutern.",
+      "descriptionEn": "The learner can decide whether vectors are linearly dependent or independent, justify the decision algebraically, and explain the geometric meaning.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical"
+      ],
+      "contains": [],
+      "requires": [
+        "72dfc164-455d-4b63-85f0-96e803c9a1d5"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K1.1",
+          "K4.1"
+        ],
+        "guidingIdeas": [
+          "L1",
+          "L3"
+        ],
+        "phase": "Q2",
+        "area": "LinearAlgebra",
+        "topicCode": "CANONICAL.MATH.SEK2.SPACE.VECTORS.LINEAR_DEPENDENCE"
+      },
+      "sourceRef": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, Leitidee 1, S. 62",
+      "applicability": {
+        "jurisdiction": [
+          "DE-SH"
         ]
       },
       "type": "atomic",
@@ -43220,7 +43660,8 @@
       "applicability": {
         "jurisdiction": [
           "DE-BW",
-          "DE-HE"
+          "DE-HE",
+          "DE-SH"
         ]
       },
       "type": "atomic",
@@ -43503,7 +43944,8 @@
       "contains": [],
       "applicability": {
         "jurisdiction": [
-          "DE-HE"
+          "DE-HE",
+          "DE-SH"
         ]
       },
       "type": "atomic",
@@ -43543,7 +43985,8 @@
       "contains": [],
       "applicability": {
         "jurisdiction": [
-          "DE-HE"
+          "DE-HE",
+          "DE-SH"
         ]
       },
       "type": "atomic",
@@ -44035,7 +44478,8 @@
       "applicability": {
         "jurisdiction": [
           "DE-BW",
-          "DE-HE"
+          "DE-HE",
+          "DE-SH"
         ]
       },
       "type": "atomic",
@@ -44077,7 +44521,8 @@
       "applicability": {
         "jurisdiction": [
           "DE-BW",
-          "DE-HE"
+          "DE-HE",
+          "DE-SH"
         ]
       },
       "type": "atomic",
@@ -44117,7 +44562,8 @@
       "contains": [],
       "applicability": {
         "jurisdiction": [
-          "DE-HE"
+          "DE-HE",
+          "DE-SH"
         ]
       },
       "type": "atomic",
@@ -44158,7 +44604,8 @@
       "contains": [],
       "applicability": {
         "jurisdiction": [
-          "DE-HE"
+          "DE-HE",
+          "DE-SH"
         ]
       },
       "type": "atomic",
@@ -44406,7 +44853,8 @@
       ],
       "applicability": {
         "jurisdiction": [
-          "DE-BW"
+          "DE-BW",
+          "DE-HB"
         ]
       },
       "type": "atomic",
@@ -44528,7 +44976,8 @@
       ],
       "applicability": {
         "jurisdiction": [
-          "DE-BW"
+          "DE-BW",
+          "DE-SH"
         ]
       },
       "type": "atomic",
@@ -45391,9 +45840,7 @@
         "97b03cce-6641-5ec9-a6d2-f31838e2dbb9",
         "cdde4164-0d23-52e4-b1e8-9f412a48c999"
       ],
-      "requires": [
-        "393fb5de-e275-5a84-ad8b-723b323944de"
-      ],
+      "requires": [],
       "applicability": {
         "jurisdiction": [
           "DE-BY"
@@ -45432,6 +45879,7 @@
       },
       "contains": [],
       "requires": [
+        "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
         "393fb5de-e275-5a84-ad8b-723b323944de"
       ],
       "applicability": {

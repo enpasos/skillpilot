@@ -1,6 +1,6 @@
 # Curriculum Quality Status
 
-Generated: 2026-05-08T07:38:40.488Z
+Generated: 2026-05-08T17:22:20.144Z
 Rules version: curriculum-quality-v1
 
 ## Summary
@@ -31,7 +31,7 @@ Rules version: curriculum-quality-v1
 | Informatik (Gymnasium, DE) | M0 | 221 | 180 | 0/2 | 0/16 | 0 | 1 | 2 |
 | Italienisch (Gymnasium, DE) | M0 | 8 | 7 | 0/1 | 0/16 | 0 | 0 | 2 |
 | Latein (Gymnasium, DE) | M0 | 142 | 109 | 0/2 | 0/16 | 0 | 1 | 2 |
-| Mathematik (Gymnasium, DE) | M1 | 979 | 786 | 31/31 | 0/16 | 2 | 4 | 3 |
+| Mathematik (Gymnasium, DE) | M1 | 986 | 792 | 31/31 | 2/16 | 2 | 2 | 1 |
 | Musik (Gymnasium, DE) | M0 | 76 | 52 | 0/2 | 0/16 | 0 | 1 | 2 |
 | Physik (Gymnasium, DE) | M0 | 475 | 392 | 0/24 | 0/16 | 2 | 2 | 2 |
 | Politik und Wirtschaft (Gymnasium, DE) | M0 | 208 | 175 | 0/2 | 0/16 | 0 | 1 | 2 |
@@ -76,7 +76,7 @@ Rules version: curriculum-quality-v1
 | Mathematik (Gymnasium, DE) | DE-BE - Mathematik Sekundarstufe I (Berlin, RLP 1-10 Source-Extraction) | DE-BE | 1/1 original source(s) | 4/4 | - | 19 | 289 | 45 | 244 | 16% |  |
 | Mathematik (Gymnasium, DE) | DE-BW - Mathematik Kursstufe (Baden-Wuerttemberg, BP2016 Source-Extraction) | DE-BW | 1/1 original source(s) | 3/3 | - | 16 | 221 | 71 | 150 | 32% |  |
 | Mathematik (Gymnasium, DE) | Mathematik Sekundarstufe I (Baden-Wuerttemberg, BP2016 Source-Extraction) | DE-BW | 1/1 original source(s) | 3/3 | - | 20 | 278 | 95 | 183 | 34% |  |
-| Mathematik (Gymnasium, DE) | DE-BY - Mathematik Gymnasium (Bayern, LehrplanPLUS Source-Extraction) | DE-BY | 12/12 original source(s) | 3/3 | - | 66 | 293 | 157 | 136 | 54% |  |
+| Mathematik (Gymnasium, DE) | DE-BY - Mathematik Gymnasium (Bayern, LehrplanPLUS Source-Extraction) | DE-BY | 12/12 original source(s) | 3/3 | - | 66 | 468 | 262 | 206 | 56% |  |
 | Mathematik (Gymnasium, DE) | Mathematik Gymnasiale Oberstufe (Bremen, Bildungsplan 2022 Source-Extraction) | DE-HB | 1/1 original source(s) | 3/3 | - | 122 | 275 | 0 | 275 | 0% |  |
 | Mathematik (Gymnasium, DE) | Mathematik Sekundarstufe I (Bremen, Bildungsplan 2006 mit 2022-Einschraenkung Source-Extraction) | DE-HB | 2/2 original source(s) | 3/3 | - | 11 | 256 | 76 | 180 | 30% |  |
 | Mathematik (Gymnasium, DE) | Mathematik Oberstufe (Hessen, KC 2024) | DE-HE | 1/1 original source(s) | 3/3 | - | 25 | 316 | 316 | 0 | 100% |  |
@@ -91,7 +91,7 @@ Rules version: curriculum-quality-v1
 | Mathematik (Gymnasium, DE) | DE-NW - Mathematik Sekundarstufe I (Nordrhein-Westfalen, KLP 2019 Source-Extraction) | DE-NW | 1/1 original source(s) | 3/3 | - | 17 | 207 | 38 | 169 | 18% |  |
 | Mathematik (Gymnasium, DE) | DE-RP - Mathematik Gymnasiale Oberstufe (Rheinland-Pfalz, MSS 2015 Source-Extraction) | DE-RP | 1/1 original source(s) | 3/3 | - | 23 | 192 | 0 | 192 | 0% |  |
 | Mathematik (Gymnasium, DE) | DE-RP - Mathematik Sekundarstufe I (Rheinland-Pfalz, Rahmenlehrplan 2007 Source-Extraction) | DE-RP | 1/1 original source(s) | 3/3 | - | 25 | 253 | 61 | 192 | 24% |  |
-| Mathematik (Gymnasium, DE) | DE-SH - Mathematik Oberstufe (Schleswig-Holstein, Fachanforderungen 2024 Source-Extraction) | DE-SH | 1/1 original source(s) | 3/3 | - | 6 | 274 | 0 | 274 | 0% |  |
+| Mathematik (Gymnasium, DE) | DE-SH - Mathematik Oberstufe (Schleswig-Holstein, Fachanforderungen 2024 Source-Extraction) | DE-SH | 1/1 original source(s) | 3/3 | - | 6 | 274 | 74 | 200 | 27% |  |
 | Mathematik (Gymnasium, DE) | DE-SH - Mathematik Sekundarstufe I (Schleswig-Holstein, Fachanforderungen 2024 Source-Extraction) | DE-SH | 1/1 original source(s) | 3/3 | - | 6 | 346 | 128 | 218 | 37% |  |
 | Mathematik (Gymnasium, DE) | DE-SL - Mathematik Gymnasiale Oberstufe (Saarland, GOS 2014/2019 Source-Extraction) | DE-SL | 3/3 original source(s) | 3/3 | - | 23 | 743 | 0 | 743 | 0% |  |
 | Mathematik (Gymnasium, DE) | DE-SL - Mathematik Sekundarstufe I (Saarland, Gymnasium G9 2023-2026 Source-Extraction) | DE-SL | 5/5 original source(s) | 3/3 | - | 37 | 818 | 175 | 643 | 21% |  |
@@ -153,7 +153,7 @@ Rules version: curriculum-quality-v1
 | Informatik (Gymnasium, DE) | 0/16 | 161 | 180 | 2 | 0 | 483 | 0 | 0 | 0 | 0 | 0 | 399 | 0 | 2 | 161 (100%) |
 | Italienisch (Gymnasium, DE) | 0/16 | 6 | 7 | 1 | 0 | 8 | 0 | 0 | 0 | 0 | 0 | 7 | 0 | 1 | 6 (100%) |
 | Latein (Gymnasium, DE) | 0/16 | 94 | 109 | 2 | 0 | 1035 | 0 | 0 | 0 | 0 | 0 | 942 | 0 | 2 | 94 (100%) |
-| Mathematik (Gymnasium, DE) | 0/16 | 619 | 786 | 16 | 9622 | 9622 | 8195 | 0 | 9622 | 0 | 171 | 1427 | 0 | 16 | 619 (100%) |
+| Mathematik (Gymnasium, DE) | 2/16 | 621 | 792 | 16 | 9797 | 9797 | 8691 | 0 | 9797 | 0 | 147 | 1106 | 3 | 11 | 621 (100%) |
 | Musik (Gymnasium, DE) | 0/16 | 38 | 52 | 2 | 0 | 329 | 0 | 0 | 0 | 0 | 0 | 257 | 0 | 2 | 38 (100%) |
 | Physik (Gymnasium, DE) | 0/16 | 320 | 392 | 16 | 642 | 1424 | 492 | 0 | 505 | 0 | 232 | 755 | 0 | 16 | 312 (100%) |
 | Politik und Wirtschaft (Gymnasium, DE) | 0/16 | 155 | 175 | 2 | 0 | 607 | 0 | 0 | 0 | 0 | 0 | 521 | 0 | 2 | 155 (100%) |
