@@ -25,10 +25,16 @@
     }
   ],
   "method": {
-    "passageExtraction": "completed: official Rheinland-Pfalz Sek-I Leitideen tables were extracted from the local 2007 Rahmenlehrplan PDF for Orientierungsstufe, Klassenstufen 7/8 and Klassenstufen 9/10 Mittlerer Schulabschluss; the Berufsreife-only chapter is intentionally excluded for the Gymnasium mapping lane.",
-    "sourceGoalExtraction": "completed: 234 source goals were derived from official Leitideen content-table rows and subitems; the old 30-goal snapshot is diagnostic only."
+    "passageExtraction": "completed: official Rheinland-Pfalz Sek-I general mathematical competencies and Leitideen tables were extracted from the local 2007 Rahmenlehrplan PDF for Orientierungsstufe, Klassenstufen 7/8 and Klassenstufen 9/10 Mittlerer Schulabschluss; the Berufsreife-only chapter is intentionally excluded for the Gymnasium mapping lane.",
+    "sourceGoalExtraction": "completed: 253 source goals were derived from official K1-K6 process bullets, Leitideen content-table rows and subitems; the old 30-goal snapshot is diagnostic only."
   },
   "expectedTopicCodes": [
+    "RP-SEKI-PROCESS-K1",
+    "RP-SEKI-PROCESS-K2",
+    "RP-SEKI-PROCESS-K3",
+    "RP-SEKI-PROCESS-K4",
+    "RP-SEKI-PROCESS-K5",
+    "RP-SEKI-PROCESS-K6",
     "RP-SEKI-OS-L1-NATUERLICHE-ZAHLEN",
     "RP-SEKI-OS-L1-GANZE-ZAHLEN",
     "RP-SEKI-OS-L1-BRUCHZAHLEN",
@@ -69,7 +75,7 @@
             "id": "official-passages-present",
             "label": "Originalpassagen aus amtlichem PDF sind erfasst",
             "passed": true,
-            "details": "19/19 official RP Sek-I Leitideen passage groups extracted from PDF text."
+            "details": "25/25 official RP Sek-I process and Leitideen passage groups extracted from PDF text."
           },
           {
             "id": "snapshot-not-counted",
@@ -91,13 +97,13 @@
             "id": "mapping-1-complete",
             "label": "MAPPING-1 abgeschlossen",
             "passed": true,
-            "details": "19/19 official RP Sek-I Leitideen passage groups extracted from PDF text."
+            "details": "25/25 official RP Sek-I process and Leitideen passage groups extracted from PDF text."
           },
           {
             "id": "source-goals-derived-from-passages",
             "label": "Source-Ziele aus Lehrplanpassagen erzeugt",
             "passed": true,
-            "details": "234 source goals from official Leitideen content-table rows and subitems; old snapshot goals are not counted."
+            "details": "253 source goals from official K1-K6 process bullets, Leitideen content-table rows and subitems; old snapshot goals are not counted."
           },
           {
             "id": "source-goal-ids-unique",
@@ -125,7 +131,7 @@
             "id": "mapping-2-complete",
             "label": "MAPPING-2 abgeschlossen",
             "passed": true,
-            "details": "234 Source-Ziele liegen vor; MAPPING-3 läuft gegen diese Source-Extraction-IDs."
+            "details": "253 Source-Ziele liegen vor; MAPPING-3 läuft gegen diese Source-Extraction-IDs."
           },
           {
             "id": "m3-review-file-present",
@@ -137,25 +143,110 @@
             "id": "m3-review-decisions-reference-source-goals",
             "label": "M3-Review-Entscheidungen referenzieren gültige Source-Ziele",
             "passed": true,
-            "details": "Reviewed Source-Ziele: 234/234."
+            "details": "Reviewed Source-Ziele: 253/253."
           },
           {
             "id": "m3-all-source-goals-reviewed",
             "label": "Alle Source-Ziele haben eine fachliche M3-Entscheidung",
             "passed": true,
-            "details": "234/234 Source-Ziele reviewed; offen: 0."
+            "details": "253/253 Source-Ziele reviewed; offen: 0."
           },
           {
             "id": "m3-all-source-goals-covered",
             "label": "Alle Source-Ziele sind inhaltlich durch SkillPilot-Ziele abgedeckt",
             "passed": true,
-            "details": "Abgedeckt: 234/234; verbleibend: 0 explizite Canonical-Gaps, 0 unreviewed."
+            "details": "Abgedeckt: 253/253; verbleibend: 0 explizite Canonical-Gaps, 0 unreviewed."
           }
         ]
       }
     ]
   },
   "passages": [
+    {
+      "id": "de-rp-mathematik-seki-rahmenlehrplan-2007-rp-seki-process-k1",
+      "topicCode": "RP-SEKI-PROCESS-K1",
+      "title": "Allgemeine mathematische Kompetenz K1: Mathematisch argumentieren",
+      "sourcePath": "curricula/DE/Gymnasium/input/RP/Mathematik_Sekundarstufe_I.pdf",
+      "sourceDocumentKey": "RP_GYM_SEKI_MATHEMATIK_RAHMENLEHRPLAN_2007",
+      "sourceRef": "Rahmenlehrplan Mathematik Klassenstufen 5 bis 9/10, Rheinland-Pfalz, Mai 2007, S. 7",
+      "text": "Allgemeine mathematische Kompetenz K1: Mathematisch argumentieren\n- Fragen stellen, die für die Mathematik charakteristisch sind (\"Gibt es … ?\", \"Wie verändert sich … ?\", \"Ist das immer so … ?\"), und Vermutungen begründet äußern,\n- mathematische Argumentationen entwickeln (wie Erläuterungen, Begründungen, Beweise),\n- Lösungswege beschreiben und begründen.",
+      "sourceGoalIds": [
+        "de-rp-mathematik-seki-rahmenlehrplan-2007-rp-seki-process-k1-001-7cbc006c08",
+        "de-rp-mathematik-seki-rahmenlehrplan-2007-rp-seki-process-k1-002-efcf324364",
+        "de-rp-mathematik-seki-rahmenlehrplan-2007-rp-seki-process-k1-003-9f26741c5d"
+      ]
+    },
+    {
+      "id": "de-rp-mathematik-seki-rahmenlehrplan-2007-rp-seki-process-k2",
+      "topicCode": "RP-SEKI-PROCESS-K2",
+      "title": "Allgemeine mathematische Kompetenz K2: Probleme mathematisch lösen",
+      "sourcePath": "curricula/DE/Gymnasium/input/RP/Mathematik_Sekundarstufe_I.pdf",
+      "sourceDocumentKey": "RP_GYM_SEKI_MATHEMATIK_RAHMENLEHRPLAN_2007",
+      "sourceRef": "Rahmenlehrplan Mathematik Klassenstufen 5 bis 9/10, Rheinland-Pfalz, Mai 2007, S. 7",
+      "text": "Allgemeine mathematische Kompetenz K2: Probleme mathematisch lösen\n- vorgegebene und selbst formulierte Probleme bearbeiten,\n- geeignete heuristische Hilfsmittel, Strategien und Prinzipien zum Problemlösen auswählen und anwenden,\n- die Plausibilität der Ergebnisse überprüfen sowie das Finden von Lösungsideen und die Lösungswege reflektieren.",
+      "sourceGoalIds": [
+        "de-rp-mathematik-seki-rahmenlehrplan-2007-rp-seki-process-k2-001-d188fef0c8",
+        "de-rp-mathematik-seki-rahmenlehrplan-2007-rp-seki-process-k2-002-939ef18c21",
+        "de-rp-mathematik-seki-rahmenlehrplan-2007-rp-seki-process-k2-003-66b2076403"
+      ]
+    },
+    {
+      "id": "de-rp-mathematik-seki-rahmenlehrplan-2007-rp-seki-process-k3",
+      "topicCode": "RP-SEKI-PROCESS-K3",
+      "title": "Allgemeine mathematische Kompetenz K3: Mathematisch modellieren",
+      "sourcePath": "curricula/DE/Gymnasium/input/RP/Mathematik_Sekundarstufe_I.pdf",
+      "sourceDocumentKey": "RP_GYM_SEKI_MATHEMATIK_RAHMENLEHRPLAN_2007",
+      "sourceRef": "Rahmenlehrplan Mathematik Klassenstufen 5 bis 9/10, Rheinland-Pfalz, Mai 2007, S. 7",
+      "text": "Allgemeine mathematische Kompetenz K3: Mathematisch modellieren\n- den Bereich oder die Situation, die modelliert werden sollen, in mathematische Begriffe, Strukturen und Relationen übersetzen,\n- in dem jeweiligen mathematischen Modell arbeiten,\n- Ergebnisse in dem entsprechenden Bereich oder der entsprechenden Situation interpretieren und prüfen. 4 Allgemeines Vorwort",
+      "sourceGoalIds": [
+        "de-rp-mathematik-seki-rahmenlehrplan-2007-rp-seki-process-k3-001-4d67865367",
+        "de-rp-mathematik-seki-rahmenlehrplan-2007-rp-seki-process-k3-002-1d9c959a77",
+        "de-rp-mathematik-seki-rahmenlehrplan-2007-rp-seki-process-k3-003-3868fea845"
+      ]
+    },
+    {
+      "id": "de-rp-mathematik-seki-rahmenlehrplan-2007-rp-seki-process-k4",
+      "topicCode": "RP-SEKI-PROCESS-K4",
+      "title": "Allgemeine mathematische Kompetenz K4: Mathematische Darstellungen verwenden",
+      "sourcePath": "curricula/DE/Gymnasium/input/RP/Mathematik_Sekundarstufe_I.pdf",
+      "sourceDocumentKey": "RP_GYM_SEKI_MATHEMATIK_RAHMENLEHRPLAN_2007",
+      "sourceRef": "Rahmenlehrplan Mathematik Klassenstufen 5 bis 9/10, Rheinland-Pfalz, Mai 2007, S. 8",
+      "text": "Allgemeine mathematische Kompetenz K4: Mathematische Darstellungen verwenden\n- verschiedene Formen der Darstellung von mathematischen Objekten und Situationen anwenden, interpretieren und unterscheiden,\n- Beziehungen zwischen Darstellungsformen erkennen,\n- unterschiedliche Darstellungsformen je nach Situation und Zweck auswählen und zwischen ihnen wechseln.",
+      "sourceGoalIds": [
+        "de-rp-mathematik-seki-rahmenlehrplan-2007-rp-seki-process-k4-001-a7a17faf82",
+        "de-rp-mathematik-seki-rahmenlehrplan-2007-rp-seki-process-k4-002-6040a89304",
+        "de-rp-mathematik-seki-rahmenlehrplan-2007-rp-seki-process-k4-003-3dec5ce9fb"
+      ]
+    },
+    {
+      "id": "de-rp-mathematik-seki-rahmenlehrplan-2007-rp-seki-process-k5",
+      "topicCode": "RP-SEKI-PROCESS-K5",
+      "title": "Allgemeine mathematische Kompetenz K5: Mit symbolischen, formalen und technischen Elementen der Mathematik umgehen",
+      "sourcePath": "curricula/DE/Gymnasium/input/RP/Mathematik_Sekundarstufe_I.pdf",
+      "sourceDocumentKey": "RP_GYM_SEKI_MATHEMATIK_RAHMENLEHRPLAN_2007",
+      "sourceRef": "Rahmenlehrplan Mathematik Klassenstufen 5 bis 9/10, Rheinland-Pfalz, Mai 2007, S. 8",
+      "text": "Allgemeine mathematische Kompetenz K5: Mit symbolischen, formalen und technischen Elementen der Mathematik umgehen\n- mit Variablen, Termen, Gleichungen, Funktionen, Diagrammen und Tabellen arbeiten,\n- symbolische und formale Sprache in natürliche Sprache übersetzen und umgekehrt,\n- Lösungs- und Kontrollverfahren ausführen,\n- mathematische Werkzeuge (wie Formelsammlungen, Taschenrechner, Software) sinnvoll und verständig einsetzen.",
+      "sourceGoalIds": [
+        "de-rp-mathematik-seki-rahmenlehrplan-2007-rp-seki-process-k5-001-a1ac7bfdec",
+        "de-rp-mathematik-seki-rahmenlehrplan-2007-rp-seki-process-k5-002-0f25c399f6",
+        "de-rp-mathematik-seki-rahmenlehrplan-2007-rp-seki-process-k5-003-0be4f9508a",
+        "de-rp-mathematik-seki-rahmenlehrplan-2007-rp-seki-process-k5-004-8bf2abea70"
+      ]
+    },
+    {
+      "id": "de-rp-mathematik-seki-rahmenlehrplan-2007-rp-seki-process-k6",
+      "topicCode": "RP-SEKI-PROCESS-K6",
+      "title": "Allgemeine mathematische Kompetenz K6: Kommunizieren",
+      "sourcePath": "curricula/DE/Gymnasium/input/RP/Mathematik_Sekundarstufe_I.pdf",
+      "sourceDocumentKey": "RP_GYM_SEKI_MATHEMATIK_RAHMENLEHRPLAN_2007",
+      "sourceRef": "Rahmenlehrplan Mathematik Klassenstufen 5 bis 9/10, Rheinland-Pfalz, Mai 2007, S. 8",
+      "text": "Allgemeine mathematische Kompetenz K6: Kommunizieren\n- Überlegungen, Lösungswege und Ergebnisse dokumentieren, verständlich darstellen und präsentieren, auch unter Nutzung geeigneter Medien,\n- die Fachsprache adressatengerecht verwenden,\n- Äußerungen von anderen und Texte zu mathematischen Inhalten verstehen und überprüfen.",
+      "sourceGoalIds": [
+        "de-rp-mathematik-seki-rahmenlehrplan-2007-rp-seki-process-k6-001-dcfc44d592",
+        "de-rp-mathematik-seki-rahmenlehrplan-2007-rp-seki-process-k6-002-e52032b1c9",
+        "de-rp-mathematik-seki-rahmenlehrplan-2007-rp-seki-process-k6-003-15955f8f3b"
+      ]
+    },
     {
       "id": "de-rp-mathematik-seki-rahmenlehrplan-2007-rp-seki-os-l1-natuerliche-zahlen",
       "topicCode": "RP-SEKI-OS-L1-NATUERLICHE-ZAHLEN",
@@ -601,6 +692,386 @@
     }
   ],
   "sourceGoals": [
+    {
+      "id": "de-rp-mathematik-seki-rahmenlehrplan-2007-rp-seki-process-k1-001-7cbc006c08",
+      "passageId": "de-rp-mathematik-seki-rahmenlehrplan-2007-rp-seki-process-k1",
+      "topicCode": "RP-SEKI-PROCESS-K1",
+      "bulletIndex": 1,
+      "title": "Fragen stellen, die für die Mathematik charakteristisch sind (\"Gibt es … ?\", \"Wie verändert sich … ?\", \"Ist das immer so … ?\"), und Vermutungen begründet äußern,",
+      "description": "Die lernende Person kann fragen stellen, die für die Mathematik charakteristisch sind (\"Gibt es … ?\", \"Wie verändert sich … ?\", \"Ist das immer so … ?\"), und Vermutungen begründet äußern.",
+      "sourceText": "Fragen stellen, die für die Mathematik charakteristisch sind (\"Gibt es … ?\", \"Wie verändert sich … ?\", \"Ist das immer so … ?\"), und Vermutungen begründet äußern,",
+      "sourceSpan": "S. 7, Allgemeine mathematische Kompetenz K1: Mathematisch argumentieren",
+      "sourceRef": "Rahmenlehrplan Mathematik Klassenstufen 5 bis 9/10, Rheinland-Pfalz, Mai 2007, S. 7",
+      "category": "process-competency",
+      "granularity": "generalBildungsstandardProcessCompetency",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "source:DE-RP",
+        "stage:SekI",
+        "processCompetency:K1",
+        "sourceDocument:RP_GYM_SEKI_MATHEMATIK_RAHMENLEHRPLAN_2007"
+      ]
+    },
+    {
+      "id": "de-rp-mathematik-seki-rahmenlehrplan-2007-rp-seki-process-k1-002-efcf324364",
+      "passageId": "de-rp-mathematik-seki-rahmenlehrplan-2007-rp-seki-process-k1",
+      "topicCode": "RP-SEKI-PROCESS-K1",
+      "bulletIndex": 2,
+      "title": "mathematische Argumentationen entwickeln (wie Erläuterungen, Begründungen, Beweise),",
+      "description": "Die lernende Person kann mathematische Argumentationen entwickeln (wie Erläuterungen, Begründungen, Beweise).",
+      "sourceText": "mathematische Argumentationen entwickeln (wie Erläuterungen, Begründungen, Beweise),",
+      "sourceSpan": "S. 7, Allgemeine mathematische Kompetenz K1: Mathematisch argumentieren",
+      "sourceRef": "Rahmenlehrplan Mathematik Klassenstufen 5 bis 9/10, Rheinland-Pfalz, Mai 2007, S. 7",
+      "category": "process-competency",
+      "granularity": "generalBildungsstandardProcessCompetency",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "source:DE-RP",
+        "stage:SekI",
+        "processCompetency:K1",
+        "sourceDocument:RP_GYM_SEKI_MATHEMATIK_RAHMENLEHRPLAN_2007"
+      ]
+    },
+    {
+      "id": "de-rp-mathematik-seki-rahmenlehrplan-2007-rp-seki-process-k1-003-9f26741c5d",
+      "passageId": "de-rp-mathematik-seki-rahmenlehrplan-2007-rp-seki-process-k1",
+      "topicCode": "RP-SEKI-PROCESS-K1",
+      "bulletIndex": 3,
+      "title": "Lösungswege beschreiben und begründen.",
+      "description": "Die lernende Person kann lösungswege beschreiben und begründen.",
+      "sourceText": "Lösungswege beschreiben und begründen.",
+      "sourceSpan": "S. 7, Allgemeine mathematische Kompetenz K1: Mathematisch argumentieren",
+      "sourceRef": "Rahmenlehrplan Mathematik Klassenstufen 5 bis 9/10, Rheinland-Pfalz, Mai 2007, S. 7",
+      "category": "process-competency",
+      "granularity": "generalBildungsstandardProcessCompetency",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "source:DE-RP",
+        "stage:SekI",
+        "processCompetency:K1",
+        "sourceDocument:RP_GYM_SEKI_MATHEMATIK_RAHMENLEHRPLAN_2007"
+      ]
+    },
+    {
+      "id": "de-rp-mathematik-seki-rahmenlehrplan-2007-rp-seki-process-k2-001-d188fef0c8",
+      "passageId": "de-rp-mathematik-seki-rahmenlehrplan-2007-rp-seki-process-k2",
+      "topicCode": "RP-SEKI-PROCESS-K2",
+      "bulletIndex": 1,
+      "title": "vorgegebene und selbst formulierte Probleme bearbeiten,",
+      "description": "Die lernende Person kann vorgegebene und selbst formulierte Probleme bearbeiten.",
+      "sourceText": "vorgegebene und selbst formulierte Probleme bearbeiten,",
+      "sourceSpan": "S. 7, Allgemeine mathematische Kompetenz K2: Probleme mathematisch lösen",
+      "sourceRef": "Rahmenlehrplan Mathematik Klassenstufen 5 bis 9/10, Rheinland-Pfalz, Mai 2007, S. 7",
+      "category": "process-competency",
+      "granularity": "generalBildungsstandardProcessCompetency",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "source:DE-RP",
+        "stage:SekI",
+        "processCompetency:K2",
+        "sourceDocument:RP_GYM_SEKI_MATHEMATIK_RAHMENLEHRPLAN_2007"
+      ]
+    },
+    {
+      "id": "de-rp-mathematik-seki-rahmenlehrplan-2007-rp-seki-process-k2-002-939ef18c21",
+      "passageId": "de-rp-mathematik-seki-rahmenlehrplan-2007-rp-seki-process-k2",
+      "topicCode": "RP-SEKI-PROCESS-K2",
+      "bulletIndex": 2,
+      "title": "geeignete heuristische Hilfsmittel, Strategien und Prinzipien zum Problemlösen auswählen und anwenden,",
+      "description": "Die lernende Person kann geeignete heuristische Hilfsmittel, Strategien und Prinzipien zum Problemlösen auswählen und anwenden.",
+      "sourceText": "geeignete heuristische Hilfsmittel, Strategien und Prinzipien zum Problemlösen auswählen und anwenden,",
+      "sourceSpan": "S. 7, Allgemeine mathematische Kompetenz K2: Probleme mathematisch lösen",
+      "sourceRef": "Rahmenlehrplan Mathematik Klassenstufen 5 bis 9/10, Rheinland-Pfalz, Mai 2007, S. 7",
+      "category": "process-competency",
+      "granularity": "generalBildungsstandardProcessCompetency",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "source:DE-RP",
+        "stage:SekI",
+        "processCompetency:K2",
+        "sourceDocument:RP_GYM_SEKI_MATHEMATIK_RAHMENLEHRPLAN_2007"
+      ]
+    },
+    {
+      "id": "de-rp-mathematik-seki-rahmenlehrplan-2007-rp-seki-process-k2-003-66b2076403",
+      "passageId": "de-rp-mathematik-seki-rahmenlehrplan-2007-rp-seki-process-k2",
+      "topicCode": "RP-SEKI-PROCESS-K2",
+      "bulletIndex": 3,
+      "title": "die Plausibilität der Ergebnisse überprüfen sowie das Finden von Lösungsideen und die Lösungswege reflektieren.",
+      "description": "Die lernende Person kann die Plausibilität der Ergebnisse überprüfen sowie das Finden von Lösungsideen und die Lösungswege reflektieren.",
+      "sourceText": "die Plausibilität der Ergebnisse überprüfen sowie das Finden von Lösungsideen und die Lösungswege reflektieren.",
+      "sourceSpan": "S. 7, Allgemeine mathematische Kompetenz K2: Probleme mathematisch lösen",
+      "sourceRef": "Rahmenlehrplan Mathematik Klassenstufen 5 bis 9/10, Rheinland-Pfalz, Mai 2007, S. 7",
+      "category": "process-competency",
+      "granularity": "generalBildungsstandardProcessCompetency",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "source:DE-RP",
+        "stage:SekI",
+        "processCompetency:K2",
+        "sourceDocument:RP_GYM_SEKI_MATHEMATIK_RAHMENLEHRPLAN_2007"
+      ]
+    },
+    {
+      "id": "de-rp-mathematik-seki-rahmenlehrplan-2007-rp-seki-process-k3-001-4d67865367",
+      "passageId": "de-rp-mathematik-seki-rahmenlehrplan-2007-rp-seki-process-k3",
+      "topicCode": "RP-SEKI-PROCESS-K3",
+      "bulletIndex": 1,
+      "title": "den Bereich oder die Situation, die modelliert werden sollen, in mathematische Begriffe, Strukturen und Relationen übersetzen,",
+      "description": "Die lernende Person kann den Bereich oder die Situation, die modelliert werden sollen, in mathematische Begriffe, Strukturen und Relationen übersetzen.",
+      "sourceText": "den Bereich oder die Situation, die modelliert werden sollen, in mathematische Begriffe, Strukturen und Relationen übersetzen,",
+      "sourceSpan": "S. 7, Allgemeine mathematische Kompetenz K3: Mathematisch modellieren",
+      "sourceRef": "Rahmenlehrplan Mathematik Klassenstufen 5 bis 9/10, Rheinland-Pfalz, Mai 2007, S. 7",
+      "category": "process-competency",
+      "granularity": "generalBildungsstandardProcessCompetency",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "source:DE-RP",
+        "stage:SekI",
+        "processCompetency:K3",
+        "sourceDocument:RP_GYM_SEKI_MATHEMATIK_RAHMENLEHRPLAN_2007"
+      ]
+    },
+    {
+      "id": "de-rp-mathematik-seki-rahmenlehrplan-2007-rp-seki-process-k3-002-1d9c959a77",
+      "passageId": "de-rp-mathematik-seki-rahmenlehrplan-2007-rp-seki-process-k3",
+      "topicCode": "RP-SEKI-PROCESS-K3",
+      "bulletIndex": 2,
+      "title": "in dem jeweiligen mathematischen Modell arbeiten,",
+      "description": "Die lernende Person kann in dem jeweiligen mathematischen Modell arbeiten.",
+      "sourceText": "in dem jeweiligen mathematischen Modell arbeiten,",
+      "sourceSpan": "S. 7, Allgemeine mathematische Kompetenz K3: Mathematisch modellieren",
+      "sourceRef": "Rahmenlehrplan Mathematik Klassenstufen 5 bis 9/10, Rheinland-Pfalz, Mai 2007, S. 7",
+      "category": "process-competency",
+      "granularity": "generalBildungsstandardProcessCompetency",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "source:DE-RP",
+        "stage:SekI",
+        "processCompetency:K3",
+        "sourceDocument:RP_GYM_SEKI_MATHEMATIK_RAHMENLEHRPLAN_2007"
+      ]
+    },
+    {
+      "id": "de-rp-mathematik-seki-rahmenlehrplan-2007-rp-seki-process-k3-003-3868fea845",
+      "passageId": "de-rp-mathematik-seki-rahmenlehrplan-2007-rp-seki-process-k3",
+      "topicCode": "RP-SEKI-PROCESS-K3",
+      "bulletIndex": 3,
+      "title": "Ergebnisse in dem entsprechenden Bereich oder der entsprechenden Situation interpretieren und prüfen. 4 Allgemeines Vorwort",
+      "description": "Die lernende Person kann ergebnisse in dem entsprechenden Bereich oder der entsprechenden Situation interpretieren und prüfen. 4 Allgemeines Vorwort.",
+      "sourceText": "Ergebnisse in dem entsprechenden Bereich oder der entsprechenden Situation interpretieren und prüfen. 4 Allgemeines Vorwort",
+      "sourceSpan": "S. 7, Allgemeine mathematische Kompetenz K3: Mathematisch modellieren",
+      "sourceRef": "Rahmenlehrplan Mathematik Klassenstufen 5 bis 9/10, Rheinland-Pfalz, Mai 2007, S. 7",
+      "category": "process-competency",
+      "granularity": "generalBildungsstandardProcessCompetency",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "source:DE-RP",
+        "stage:SekI",
+        "processCompetency:K3",
+        "sourceDocument:RP_GYM_SEKI_MATHEMATIK_RAHMENLEHRPLAN_2007"
+      ]
+    },
+    {
+      "id": "de-rp-mathematik-seki-rahmenlehrplan-2007-rp-seki-process-k4-001-a7a17faf82",
+      "passageId": "de-rp-mathematik-seki-rahmenlehrplan-2007-rp-seki-process-k4",
+      "topicCode": "RP-SEKI-PROCESS-K4",
+      "bulletIndex": 1,
+      "title": "verschiedene Formen der Darstellung von mathematischen Objekten und Situationen anwenden, interpretieren und unterscheiden,",
+      "description": "Die lernende Person kann verschiedene Formen der Darstellung von mathematischen Objekten und Situationen anwenden, interpretieren und unterscheiden.",
+      "sourceText": "verschiedene Formen der Darstellung von mathematischen Objekten und Situationen anwenden, interpretieren und unterscheiden,",
+      "sourceSpan": "S. 8, Allgemeine mathematische Kompetenz K4: Mathematische Darstellungen verwenden",
+      "sourceRef": "Rahmenlehrplan Mathematik Klassenstufen 5 bis 9/10, Rheinland-Pfalz, Mai 2007, S. 8",
+      "category": "process-competency",
+      "granularity": "generalBildungsstandardProcessCompetency",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "source:DE-RP",
+        "stage:SekI",
+        "processCompetency:K4",
+        "sourceDocument:RP_GYM_SEKI_MATHEMATIK_RAHMENLEHRPLAN_2007"
+      ]
+    },
+    {
+      "id": "de-rp-mathematik-seki-rahmenlehrplan-2007-rp-seki-process-k4-002-6040a89304",
+      "passageId": "de-rp-mathematik-seki-rahmenlehrplan-2007-rp-seki-process-k4",
+      "topicCode": "RP-SEKI-PROCESS-K4",
+      "bulletIndex": 2,
+      "title": "Beziehungen zwischen Darstellungsformen erkennen,",
+      "description": "Die lernende Person kann beziehungen zwischen Darstellungsformen erkennen.",
+      "sourceText": "Beziehungen zwischen Darstellungsformen erkennen,",
+      "sourceSpan": "S. 8, Allgemeine mathematische Kompetenz K4: Mathematische Darstellungen verwenden",
+      "sourceRef": "Rahmenlehrplan Mathematik Klassenstufen 5 bis 9/10, Rheinland-Pfalz, Mai 2007, S. 8",
+      "category": "process-competency",
+      "granularity": "generalBildungsstandardProcessCompetency",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "source:DE-RP",
+        "stage:SekI",
+        "processCompetency:K4",
+        "sourceDocument:RP_GYM_SEKI_MATHEMATIK_RAHMENLEHRPLAN_2007"
+      ]
+    },
+    {
+      "id": "de-rp-mathematik-seki-rahmenlehrplan-2007-rp-seki-process-k4-003-3dec5ce9fb",
+      "passageId": "de-rp-mathematik-seki-rahmenlehrplan-2007-rp-seki-process-k4",
+      "topicCode": "RP-SEKI-PROCESS-K4",
+      "bulletIndex": 3,
+      "title": "unterschiedliche Darstellungsformen je nach Situation und Zweck auswählen und zwischen ihnen wechseln.",
+      "description": "Die lernende Person kann unterschiedliche Darstellungsformen je nach Situation und Zweck auswählen und zwischen ihnen wechseln.",
+      "sourceText": "unterschiedliche Darstellungsformen je nach Situation und Zweck auswählen und zwischen ihnen wechseln.",
+      "sourceSpan": "S. 8, Allgemeine mathematische Kompetenz K4: Mathematische Darstellungen verwenden",
+      "sourceRef": "Rahmenlehrplan Mathematik Klassenstufen 5 bis 9/10, Rheinland-Pfalz, Mai 2007, S. 8",
+      "category": "process-competency",
+      "granularity": "generalBildungsstandardProcessCompetency",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "source:DE-RP",
+        "stage:SekI",
+        "processCompetency:K4",
+        "sourceDocument:RP_GYM_SEKI_MATHEMATIK_RAHMENLEHRPLAN_2007"
+      ]
+    },
+    {
+      "id": "de-rp-mathematik-seki-rahmenlehrplan-2007-rp-seki-process-k5-001-a1ac7bfdec",
+      "passageId": "de-rp-mathematik-seki-rahmenlehrplan-2007-rp-seki-process-k5",
+      "topicCode": "RP-SEKI-PROCESS-K5",
+      "bulletIndex": 1,
+      "title": "mit Variablen, Termen, Gleichungen, Funktionen, Diagrammen und Tabellen arbeiten,",
+      "description": "Die lernende Person kann mit Variablen, Termen, Gleichungen, Funktionen, Diagrammen und Tabellen arbeiten.",
+      "sourceText": "mit Variablen, Termen, Gleichungen, Funktionen, Diagrammen und Tabellen arbeiten,",
+      "sourceSpan": "S. 8, Allgemeine mathematische Kompetenz K5: Mit symbolischen, formalen und technischen Elementen der Mathematik umgehen",
+      "sourceRef": "Rahmenlehrplan Mathematik Klassenstufen 5 bis 9/10, Rheinland-Pfalz, Mai 2007, S. 8",
+      "category": "process-competency",
+      "granularity": "generalBildungsstandardProcessCompetency",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "source:DE-RP",
+        "stage:SekI",
+        "processCompetency:K5",
+        "sourceDocument:RP_GYM_SEKI_MATHEMATIK_RAHMENLEHRPLAN_2007"
+      ]
+    },
+    {
+      "id": "de-rp-mathematik-seki-rahmenlehrplan-2007-rp-seki-process-k5-002-0f25c399f6",
+      "passageId": "de-rp-mathematik-seki-rahmenlehrplan-2007-rp-seki-process-k5",
+      "topicCode": "RP-SEKI-PROCESS-K5",
+      "bulletIndex": 2,
+      "title": "symbolische und formale Sprache in natürliche Sprache übersetzen und umgekehrt,",
+      "description": "Die lernende Person kann symbolische und formale Sprache in natürliche Sprache übersetzen und umgekehrt.",
+      "sourceText": "symbolische und formale Sprache in natürliche Sprache übersetzen und umgekehrt,",
+      "sourceSpan": "S. 8, Allgemeine mathematische Kompetenz K5: Mit symbolischen, formalen und technischen Elementen der Mathematik umgehen",
+      "sourceRef": "Rahmenlehrplan Mathematik Klassenstufen 5 bis 9/10, Rheinland-Pfalz, Mai 2007, S. 8",
+      "category": "process-competency",
+      "granularity": "generalBildungsstandardProcessCompetency",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "source:DE-RP",
+        "stage:SekI",
+        "processCompetency:K5",
+        "sourceDocument:RP_GYM_SEKI_MATHEMATIK_RAHMENLEHRPLAN_2007"
+      ]
+    },
+    {
+      "id": "de-rp-mathematik-seki-rahmenlehrplan-2007-rp-seki-process-k5-003-0be4f9508a",
+      "passageId": "de-rp-mathematik-seki-rahmenlehrplan-2007-rp-seki-process-k5",
+      "topicCode": "RP-SEKI-PROCESS-K5",
+      "bulletIndex": 3,
+      "title": "Lösungs- und Kontrollverfahren ausführen,",
+      "description": "Die lernende Person kann lösungs- und Kontrollverfahren ausführen.",
+      "sourceText": "Lösungs- und Kontrollverfahren ausführen,",
+      "sourceSpan": "S. 8, Allgemeine mathematische Kompetenz K5: Mit symbolischen, formalen und technischen Elementen der Mathematik umgehen",
+      "sourceRef": "Rahmenlehrplan Mathematik Klassenstufen 5 bis 9/10, Rheinland-Pfalz, Mai 2007, S. 8",
+      "category": "process-competency",
+      "granularity": "generalBildungsstandardProcessCompetency",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "source:DE-RP",
+        "stage:SekI",
+        "processCompetency:K5",
+        "sourceDocument:RP_GYM_SEKI_MATHEMATIK_RAHMENLEHRPLAN_2007"
+      ]
+    },
+    {
+      "id": "de-rp-mathematik-seki-rahmenlehrplan-2007-rp-seki-process-k5-004-8bf2abea70",
+      "passageId": "de-rp-mathematik-seki-rahmenlehrplan-2007-rp-seki-process-k5",
+      "topicCode": "RP-SEKI-PROCESS-K5",
+      "bulletIndex": 4,
+      "title": "mathematische Werkzeuge (wie Formelsammlungen, Taschenrechner, Software) sinnvoll und verständig einsetzen.",
+      "description": "Die lernende Person kann mathematische Werkzeuge (wie Formelsammlungen, Taschenrechner, Software) sinnvoll und verständig einsetzen.",
+      "sourceText": "mathematische Werkzeuge (wie Formelsammlungen, Taschenrechner, Software) sinnvoll und verständig einsetzen.",
+      "sourceSpan": "S. 8, Allgemeine mathematische Kompetenz K5: Mit symbolischen, formalen und technischen Elementen der Mathematik umgehen",
+      "sourceRef": "Rahmenlehrplan Mathematik Klassenstufen 5 bis 9/10, Rheinland-Pfalz, Mai 2007, S. 8",
+      "category": "process-competency",
+      "granularity": "generalBildungsstandardProcessCompetency",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "source:DE-RP",
+        "stage:SekI",
+        "processCompetency:K5",
+        "sourceDocument:RP_GYM_SEKI_MATHEMATIK_RAHMENLEHRPLAN_2007"
+      ]
+    },
+    {
+      "id": "de-rp-mathematik-seki-rahmenlehrplan-2007-rp-seki-process-k6-001-dcfc44d592",
+      "passageId": "de-rp-mathematik-seki-rahmenlehrplan-2007-rp-seki-process-k6",
+      "topicCode": "RP-SEKI-PROCESS-K6",
+      "bulletIndex": 1,
+      "title": "Überlegungen, Lösungswege und Ergebnisse dokumentieren, verständlich darstellen und präsentieren, auch unter Nutzung geeigneter Medien,",
+      "description": "Die lernende Person kann überlegungen, Lösungswege und Ergebnisse dokumentieren, verständlich darstellen und präsentieren, auch unter Nutzung geeigneter Medien.",
+      "sourceText": "Überlegungen, Lösungswege und Ergebnisse dokumentieren, verständlich darstellen und präsentieren, auch unter Nutzung geeigneter Medien,",
+      "sourceSpan": "S. 8, Allgemeine mathematische Kompetenz K6: Kommunizieren",
+      "sourceRef": "Rahmenlehrplan Mathematik Klassenstufen 5 bis 9/10, Rheinland-Pfalz, Mai 2007, S. 8",
+      "category": "process-competency",
+      "granularity": "generalBildungsstandardProcessCompetency",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "source:DE-RP",
+        "stage:SekI",
+        "processCompetency:K6",
+        "sourceDocument:RP_GYM_SEKI_MATHEMATIK_RAHMENLEHRPLAN_2007"
+      ]
+    },
+    {
+      "id": "de-rp-mathematik-seki-rahmenlehrplan-2007-rp-seki-process-k6-002-e52032b1c9",
+      "passageId": "de-rp-mathematik-seki-rahmenlehrplan-2007-rp-seki-process-k6",
+      "topicCode": "RP-SEKI-PROCESS-K6",
+      "bulletIndex": 2,
+      "title": "die Fachsprache adressatengerecht verwenden,",
+      "description": "Die lernende Person kann die Fachsprache adressatengerecht verwenden.",
+      "sourceText": "die Fachsprache adressatengerecht verwenden,",
+      "sourceSpan": "S. 8, Allgemeine mathematische Kompetenz K6: Kommunizieren",
+      "sourceRef": "Rahmenlehrplan Mathematik Klassenstufen 5 bis 9/10, Rheinland-Pfalz, Mai 2007, S. 8",
+      "category": "process-competency",
+      "granularity": "generalBildungsstandardProcessCompetency",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "source:DE-RP",
+        "stage:SekI",
+        "processCompetency:K6",
+        "sourceDocument:RP_GYM_SEKI_MATHEMATIK_RAHMENLEHRPLAN_2007"
+      ]
+    },
+    {
+      "id": "de-rp-mathematik-seki-rahmenlehrplan-2007-rp-seki-process-k6-003-15955f8f3b",
+      "passageId": "de-rp-mathematik-seki-rahmenlehrplan-2007-rp-seki-process-k6",
+      "topicCode": "RP-SEKI-PROCESS-K6",
+      "bulletIndex": 3,
+      "title": "Äußerungen von anderen und Texte zu mathematischen Inhalten verstehen und überprüfen.",
+      "description": "Die lernende Person kann äußerungen von anderen und Texte zu mathematischen Inhalten verstehen und überprüfen.",
+      "sourceText": "Äußerungen von anderen und Texte zu mathematischen Inhalten verstehen und überprüfen.",
+      "sourceSpan": "S. 8, Allgemeine mathematische Kompetenz K6: Kommunizieren",
+      "sourceRef": "Rahmenlehrplan Mathematik Klassenstufen 5 bis 9/10, Rheinland-Pfalz, Mai 2007, S. 8",
+      "category": "process-competency",
+      "granularity": "generalBildungsstandardProcessCompetency",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "source:DE-RP",
+        "stage:SekI",
+        "processCompetency:K6",
+        "sourceDocument:RP_GYM_SEKI_MATHEMATIK_RAHMENLEHRPLAN_2007"
+      ]
+    },
     {
       "id": "de-rp-mathematik-seki-rahmenlehrplan-2007-rp-seki-os-l1-natuerliche-zahlen-001-0af5ab0fec",
       "passageId": "de-rp-mathematik-seki-rahmenlehrplan-2007-rp-seki-os-l1-natuerliche-zahlen",

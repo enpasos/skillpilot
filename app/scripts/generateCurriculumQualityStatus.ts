@@ -260,7 +260,13 @@ interface MappingPipelineSourceStatus {
   exactMappings?: number
   partialMappings?: number
   otherMappings?: number
+  sourceGoalCountPeerBaselineReview?: SourceGoalCountPeerBaselineReview
   steps: MappingPipelineStep[]
+}
+
+interface SourceGoalCountPeerBaselineReview {
+  accepted?: boolean
+  details?: string
 }
 
 const SOURCE_GOAL_COUNT_DEVIATION_THRESHOLD = 0.3
@@ -310,25 +316,28 @@ function appendSourceGoalCountPeerChecks(sources: Map<string, MappingPipelineSou
       if (peerCounts.length < 2) return
 
       const baseline = median(peerCounts)
-      const minPeerCount = Math.min(...peerCounts)
-      const maxPeerCount = Math.max(...peerCounts)
-      const lowerBound = minPeerCount * (1 - SOURCE_GOAL_COUNT_DEVIATION_THRESHOLD)
-      const upperBound = maxPeerCount * (1 + SOURCE_GOAL_COUNT_DEVIATION_THRESHOLD)
+      const lowerBound = baseline * (1 - SOURCE_GOAL_COUNT_DEVIATION_THRESHOLD)
+      const upperBound = baseline * (1 + SOURCE_GOAL_COUNT_DEVIATION_THRESHOLD)
       const withinRange = source.sourceGoals >= lowerBound && source.sourceGoals <= upperBound
+      const acceptedDeviation = !withinRange && source.sourceGoalCountPeerBaselineReview?.accepted === true
       const percent = baseline === 0 ? 0 : Math.round(((source.sourceGoals - baseline) / baseline) * 100)
-      const details = `${source.sourceGoals} Source-Ziele; Vergleich HE/BW (${peerCounts.join('/')}) Median ${Math.round(baseline)}; zulässiger 30%-Spannenkorridor ${Math.ceil(lowerBound)}-${Math.floor(upperBound)}; Abweichung vom Median ${percent}%.`
+      const reviewDetails = acceptedDeviation && source.sourceGoalCountPeerBaselineReview?.details
+        ? ` Kritisch gepruefte Abweichung: ${source.sourceGoalCountPeerBaselineReview.details}`
+        : ''
+      const passed = withinRange || acceptedDeviation
+      const details = `${source.sourceGoals} Source-Ziele; Vergleich HE/BW (${peerCounts.join('/')}) Median ${Math.round(baseline)}; zulässiger 30%-Median-Korridor ${Math.ceil(lowerBound)}-${Math.floor(upperBound)}; Abweichung vom Median ${percent}%.${reviewDetails}`
       const nextSteps = source.steps.map((step) => {
         if (step.id !== 'MAPPING-2') return step
         const checks = step.checks.filter((check) => check.id !== 'source-goal-count-peer-baseline')
         checks.push({
           id: 'source-goal-count-peer-baseline',
-          label: 'Source-Ziel-Anzahl liegt im geprüften HE/BW-Plausibilitätskorridor',
-          passed: withinRange,
+          label: 'Source-Ziel-Anzahl ist gegen den geprüften HE/BW-Median plausibilisiert',
+          passed,
           details,
         })
         return {
           ...step,
-          status: withinRange ? step.status : 'incomplete',
+          status: passed ? step.status : 'incomplete',
           checks,
         }
       })
@@ -504,6 +513,9 @@ interface SourceExtractionDocument {
   }>
   passages?: unknown[]
   sourceGoals?: SourceExtractionGoal[]
+  qualityReview?: {
+    sourceGoalCountPeerBaseline?: SourceGoalCountPeerBaselineReview
+  }
   pipelineStatus?: {
     currentStep?: string
     steps?: unknown[]
@@ -616,7 +628,7 @@ const ruleCatalog: QualityRuleDefinition[] = [
     label: 'Course-level mapping consistency',
     category: 'applicability',
     maturityTarget: 'M2',
-    description: 'GK/LK source-goal levels map only to canonical goals with compatible GK/LK tags; unspecified source goals default to GK/LK unless an LK-only decision is explicitly reviewed.',
+    description: 'Upper-secondary GK/LK source-goal levels map only to canonical goals with compatible GK/LK tags; unspecified upper-secondary source goals default to GK/LK unless an LK-only decision is explicitly reviewed.',
   },
   {
     id: 'CQR-101',
@@ -1840,6 +1852,30 @@ function readReviewedCourseLevelDecision(
   return reviewedException ? { levels, reviewedException } : null
 }
 
+function isUpperSecondarySourceGoal(sourceGoal: SourceExtractionGoal): boolean {
+  const values = [
+    sourceGoal.stage,
+    sourceGoal.phase,
+    sourceGoal.sourcePath,
+    sourceGoal.sourceRef,
+    sourceGoal.passageId,
+    sourceGoal.id,
+  ]
+    .filter((value): value is string => typeof value === 'string')
+    .map((value) => value.toLowerCase())
+
+  return values.some((value) =>
+    value.includes('upper-secondary')
+    || value.includes('sekii')
+    || value.includes('sek ii')
+    || value.includes('oberstufe')
+    || value.includes('kursstufe')
+    || value.includes('qualifikationsphase')
+    || value.includes('studienstufe')
+    || value.includes('gost')
+    || value.includes('mss'))
+}
+
 function expectedCourseLevelsForSourceGoal(
   sourceGoal: SourceExtractionGoal,
   mapping: GoalMappingEntry,
@@ -1858,6 +1894,9 @@ function expectedCourseLevelsForSourceGoal(
         defaultedFromUnspecified: false,
         reviewedException: reviewedDecision.reviewedException,
       }
+    }
+    if (!isUpperSecondarySourceGoal(sourceGoal)) {
+      return null
     }
     return {
       levels: new Set<CourseLevelTag>(['GK', 'LK']),
@@ -1987,8 +2026,8 @@ function evaluateCourseLevelMappingConsistency(landscape: LearningLandscape): Ru
     'CQR-004',
     issueCount === 0 ? 'pass' : 'fail',
     issueCount === 0
-      ? `Course-level mapping is clean for ${checkedMappingEdges} source-to-canonical mapping edge(s); unspecified source goals default to GK/LK unless explicitly reviewed.`
-      : `${issueCount} course-level mapping issue(s); unspecified source goals default to GK/LK unless explicitly reviewed as LK-only.`,
+      ? `Course-level mapping is clean for ${checkedMappingEdges} upper-secondary source-to-canonical mapping edge(s); unspecified upper-secondary source goals default to GK/LK unless explicitly reviewed.`
+      : `${issueCount} upper-secondary course-level mapping issue(s); unspecified upper-secondary source goals default to GK/LK unless explicitly reviewed as LK-only.`,
     {
       configuredMappingFiles: configuredMappingFiles.length,
       sourceGoals,
@@ -2115,6 +2154,7 @@ function readSourceExtractionPipelinesByLandscapeId(): Map<string, MappingPipeli
         exactMappings,
         partialMappings,
         otherMappings,
+        sourceGoalCountPeerBaselineReview: extraction.qualityReview?.sourceGoalCountPeerBaseline,
         steps: normalizedSteps,
       })
     } catch {
@@ -2492,7 +2532,10 @@ function readReverseSourceCoverageByJurisdiction(
       ;(sourceExtractedAtomicGoalIdsByLandscapeId.get(sourceLandscapeId) ?? new Set<string>())
         .forEach((goalId) => sourceExtractedAtomicGoalIds.add(sourceGoalKey(sourceLandscapeId, goalId)))
 
-      const membershipGoalIds = sourceGoalMembershipByLandscapeId.get(sourceLandscapeId)
+      const extractedMembershipGoalIds = sourceExtractedGoalIdsByLandscapeId.get(sourceLandscapeId)
+      const membershipGoalIds = extractedMembershipGoalIds && extractedMembershipGoalIds.size > 0
+        ? extractedMembershipGoalIds
+        : sourceGoalMembershipByLandscapeId.get(sourceLandscapeId)
         ?? new Set((mappingsByJurisdiction.get(jurisdiction) ?? [])
           .filter((mapping) => mapping.sourceLandscapeId === sourceLandscapeId)
           .map((mapping) => mapping.legacyGoalId)
@@ -2513,7 +2556,7 @@ function readReverseSourceCoverageByJurisdiction(
 
     const mappedSourceAtomicGoalIds = new Set<string>()
     for (const mapping of mappingsByJurisdiction.get(jurisdiction) ?? []) {
-      if (mapping.matchType === 'partial' || !mapping.legacyGoalId) continue
+      if (!mapping.legacyGoalId) continue
       if (!targetIntersectsView(mapping.canonicalGoalId, viewAtomicGoalIds, canonicalAtomicDescendantsByGoalId)) {
         continue
       }

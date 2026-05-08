@@ -1,6 +1,6 @@
 # Curriculum Quality Status
 
-Generated: 2026-05-07T15:11:38.112Z
+Generated: 2026-05-08T04:37:59.530Z
 Rules version: curriculum-quality-v1
 
 ## Summary
@@ -8,8 +8,8 @@ Rules version: curriculum-quality-v1
 | Metric | Value |
 | --- | ---: |
 | Curricula | 21 |
-| M0 | 21 |
-| M1 | 0 |
+| M0 | 20 |
+| M1 | 1 |
 | M2 | 0 |
 | M3 | 0 |
 | M4 | 0 |
@@ -31,7 +31,7 @@ Rules version: curriculum-quality-v1
 | Informatik (Gymnasium, DE) | M0 | 221 | 180 | 0/2 | 0/16 | 0 | 0 | 2 |
 | Italienisch (Gymnasium, DE) | M0 | 8 | 7 | 0/1 | 0/16 | 0 | 0 | 2 |
 | Latein (Gymnasium, DE) | M0 | 142 | 109 | 0/2 | 0/16 | 0 | 0 | 2 |
-| Mathematik (Gymnasium, DE) | M0 | 979 | 786 | 27/31 | 0/16 | 2 | 4 | 4 |
+| Mathematik (Gymnasium, DE) | M1 | 979 | 786 | 31/31 | 0/16 | 2 | 4 | 3 |
 | Musik (Gymnasium, DE) | M0 | 76 | 52 | 0/2 | 0/16 | 0 | 0 | 2 |
 | Physik (Gymnasium, DE) | M0 | 475 | 392 | 0/24 | 0/16 | 2 | 2 | 2 |
 | Politik und Wirtschaft (Gymnasium, DE) | M0 | 208 | 175 | 0/2 | 0/16 | 0 | 0 | 2 |
@@ -85,22 +85,22 @@ Rules version: curriculum-quality-v1
 | Mathematik (Gymnasium, DE) | Mathematik Studienstufe (Hamburg, Bildungsplan 2022 Source-Extraction) | DE-HH | 1/1 original source(s) | 3/3 | - | 15 | 189 | 0 | 189 | 0% |  |
 | Mathematik (Gymnasium, DE) | DE-MV - Mathematik Qualifikationsphase (Mecklenburg-Vorpommern, Rahmenplan 2019 Source-Extraction) | DE-MV | 1/1 original source(s) | 3/3 | - | 15 | 219 | 0 | 219 | 0% |  |
 | Mathematik (Gymnasium, DE) | DE-MV - Mathematik Sekundarstufe I (Mecklenburg-Vorpommern, Rahmenplaene 2020/2019 Source-Extraction) | DE-MV | 2/2 original source(s) | 3/3 | - | 33 | 369 | 131 | 238 | 36% |  |
-| Mathematik (Gymnasium, DE) | DE-NI - Mathematik Gymnasiale Oberstufe (Niedersachsen, Kerncurriculum 2019 Source-Extraction) | DE-NI | 1/1 original source(s) | 3/3 | - | 21 | 185 | 0 | 185 | 0% |  |
+| Mathematik (Gymnasium, DE) | DE-NI - Mathematik Gymnasiale Oberstufe (Niedersachsen, Kerncurriculum 2019 Source-Extraction) | DE-NI | 1/1 original source(s) | 3/3 | - | 25 | 220 | 0 | 220 | 0% |  |
 | Mathematik (Gymnasium, DE) | DE-NI - Mathematik Sekundarstufe I (Niedersachsen, Kerncurriculum Source-Extraction) | DE-NI | 1/1 original source(s) | 3/3 | - | 28 | 361 | 112 | 249 | 31% |  |
 | Mathematik (Gymnasium, DE) | DE-NW - Mathematik Gymnasiale Oberstufe (Nordrhein-Westfalen, KLP 2023 Source-Extraction) | DE-NW | 1/1 original source(s) | 3/3 | - | 13 | 235 | 0 | 235 | 0% |  |
 | Mathematik (Gymnasium, DE) | DE-NW - Mathematik Sekundarstufe I (Nordrhein-Westfalen, KLP 2019 Source-Extraction) | DE-NW | 1/1 original source(s) | 3/3 | - | 17 | 207 | 38 | 169 | 18% |  |
 | Mathematik (Gymnasium, DE) | DE-RP - Mathematik Gymnasiale Oberstufe (Rheinland-Pfalz, MSS 2015 Source-Extraction) | DE-RP | 1/1 original source(s) | 3/3 | - | 23 | 192 | 0 | 192 | 0% |  |
-| Mathematik (Gymnasium, DE) | DE-RP - Mathematik Sekundarstufe I (Rheinland-Pfalz, Rahmenlehrplan 2007 Source-Extraction) | DE-RP | 1/1 original source(s) | 3/3 | - | 19 | 234 | 54 | 180 | 23% |  |
-| Mathematik (Gymnasium, DE) | Mathematik Oberstufe (Schleswig-Holstein, Pilot-Quellsnapshot) | DE-SH | Snapshot diagnostic | 0/3 | MAPPING-1 | 0 | 41 | 29 | 12 | 71% | not pipeline-capable: no passage extraction |
-| Mathematik (Gymnasium, DE) | Mathematik Sekundarstufe I (Schleswig-Holstein, Pilot-Quellsnapshot) | DE-SH | Snapshot diagnostic | 0/3 | MAPPING-1 | 0 | 108 | 1 | 107 | 1% | not pipeline-capable: no passage extraction |
-| Mathematik (Gymnasium, DE) | DE-SL - Mathematik Gymnasiale Oberstufe (Saarland, GOS 2014/2019 Source-Extraction) | DE-SL | 3/3 original source(s) | 3/3 | - | 23 | 194 | 0 | 194 | 0% |  |
-| Mathematik (Gymnasium, DE) | DE-SL - Mathematik Sekundarstufe I (Saarland, Gymnasium G9 2023-2026 Source-Extraction) | DE-SL | 5/5 original source(s) | 3/3 | - | 37 | 220 | 4 | 216 | 2% |  |
-| Mathematik (Gymnasium, DE) | DE-SN - Mathematik Jahrgangsstufen 11/12 (Sachsen, Lehrplan Gymnasium 2019 Source-Extraction) | DE-SN | 1/1 original source(s) | 3/3 | - | 17 | 170 | 0 | 170 | 0% |  |
-| Mathematik (Gymnasium, DE) | DE-SN - Mathematik Sekundarstufe I (Sachsen, Lehrplan Gymnasium 2019 Source-Extraction) | DE-SN | 1/1 original source(s) | 3/3 | - | 29 | 247 | 53 | 194 | 21% |  |
+| Mathematik (Gymnasium, DE) | DE-RP - Mathematik Sekundarstufe I (Rheinland-Pfalz, Rahmenlehrplan 2007 Source-Extraction) | DE-RP | 1/1 original source(s) | 3/3 | - | 25 | 253 | 61 | 192 | 24% |  |
+| Mathematik (Gymnasium, DE) | DE-SH - Mathematik Oberstufe (Schleswig-Holstein, Fachanforderungen 2024 Source-Extraction) | DE-SH | 1/1 original source(s) | 3/3 | - | 5 | 268 | 0 | 268 | 0% |  |
+| Mathematik (Gymnasium, DE) | DE-SH - Mathematik Sekundarstufe I (Schleswig-Holstein, Fachanforderungen 2024 Source-Extraction) | DE-SH | 1/1 original source(s) | 3/3 | - | 5 | 338 | 128 | 210 | 38% |  |
+| Mathematik (Gymnasium, DE) | DE-SL - Mathematik Gymnasiale Oberstufe (Saarland, GOS 2014/2019 Source-Extraction) | DE-SL | 3/3 original source(s) | 3/3 | - | 23 | 743 | 0 | 743 | 0% |  |
+| Mathematik (Gymnasium, DE) | DE-SL - Mathematik Sekundarstufe I (Saarland, Gymnasium G9 2023-2026 Source-Extraction) | DE-SL | 5/5 original source(s) | 3/3 | - | 37 | 818 | 175 | 643 | 21% |  |
+| Mathematik (Gymnasium, DE) | DE-SN - Mathematik Jahrgangsstufen 11/12 (Sachsen, Lehrplan Gymnasium 2019 Source-Extraction) | DE-SN | 1/1 original source(s) | 3/3 | - | 31 | 241 | 0 | 241 | 0% |  |
+| Mathematik (Gymnasium, DE) | DE-SN - Mathematik Sekundarstufe I (Sachsen, Lehrplan Gymnasium 2019 Source-Extraction) | DE-SN | 1/1 original source(s) | 3/3 | - | 47 | 327 | 75 | 252 | 23% |  |
 | Mathematik (Gymnasium, DE) | DE-ST - Mathematik Qualifikationsphase (Sachsen-Anhalt, Fachlehrplan Gymnasium 2019 Source-Extraction) | DE-ST | 1/1 original source(s) | 3/3 | - | 15 | 188 | 0 | 188 | 0% |  |
 | Mathematik (Gymnasium, DE) | DE-ST - Mathematik Sekundarstufe I (Sachsen-Anhalt, Fachlehrplan Gymnasium 2019 Source-Extraction) | DE-ST | 1/1 original source(s) | 3/3 | - | 32 | 424 | 137 | 287 | 32% |  |
-| Mathematik (Gymnasium, DE) | Mathematik Gymnasiale Oberstufe (Thueringen, erster Quellsnapshot) | DE-TH | Snapshot diagnostic | 0/3 | MAPPING-1 | 0 | 15 | 1 | 14 | 7% | not pipeline-capable: no passage extraction |
-| Mathematik (Gymnasium, DE) | Mathematik Sekundarstufe I (Thueringen, erster Quellsnapshot) | DE-TH | No extraction | 0/3 | MAPPING-1 | 0 | 0 | 0 | 0 | 0% |  |
+| Mathematik (Gymnasium, DE) | DE-TH - Mathematik Gymnasiale Oberstufe (Thueringen, Lehrplan Gymnasium 2018/2025 Source-Extraction) | DE-TH | 2/2 original source(s) | 3/3 | - | 8 | 189 | 0 | 189 | 0% |  |
+| Mathematik (Gymnasium, DE) | DE-TH - Mathematik Sekundarstufe I (Thueringen, Lehrplan Gymnasium 2018/2025 Source-Extraction) | DE-TH | 2/2 original source(s) | 3/3 | - | 17 | 356 | 83 | 273 | 23% |  |
 | Musik (Gymnasium, DE) | Musik (Gymnasium) | DE-BY | No extraction | 0/3 | MAPPING-1 | 0 | 0 | 0 | 0 | 0% |  |
 | Musik (Gymnasium, DE) | Musik Oberstufe (Hessen, KC 2024) | DE-HE | No extraction | 0/3 | MAPPING-1 | 0 | 0 | 0 | 0 | 0% |  |
 | Physik (Gymnasium, DE) | Physik Oberstufe (Brandenburg, Pilot-Quellsnapshot) | DE-BB | Snapshot diagnostic | 0/3 | MAPPING-1 | 0 | 31 | 3 | 24 | 11% | not pipeline-capable: no passage extraction |
@@ -153,9 +153,9 @@ Rules version: curriculum-quality-v1
 | Informatik (Gymnasium, DE) | 0/16 | 180 | 180 | 2 | 0 | 483 | 0 | 0 | 0 | 0 | 58 | 399 | 0 | 2 | 174 (96.7%) |
 | Italienisch (Gymnasium, DE) | 0/16 | 7 | 7 | 1 | 0 | 8 | 0 | 0 | 0 | 0 | 0 | 7 | 0 | 1 | 7 (100%) |
 | Latein (Gymnasium, DE) | 0/16 | 109 | 109 | 2 | 0 | 1035 | 0 | 0 | 0 | 0 | 0 | 942 | 0 | 2 | 109 (100%) |
-| Mathematik (Gymnasium, DE) | 0/16 | 687 | 786 | 16 | 7269 | 3064 | 1671 | 5666 | 7213 | 5666 | 9229 | 1075 | 0 | 16 | 586 (85.4%) |
+| Mathematik (Gymnasium, DE) | 0/16 | 687 | 786 | 16 | 9608 | 9608 | 8171 | 0 | 9608 | 0 | 9156 | 1437 | 0 | 16 | 586 (85.4%) |
 | Musik (Gymnasium, DE) | 0/16 | 52 | 52 | 2 | 0 | 329 | 0 | 0 | 0 | 0 | 0 | 257 | 0 | 2 | 52 (100%) |
-| Physik (Gymnasium, DE) | 0/16 | 326 | 392 | 9 | 642 | 1411 | 451 | 13 | 505 | 10 | 760 | 777 | 0 | 16 | 288 (90.6%) |
+| Physik (Gymnasium, DE) | 0/16 | 326 | 392 | 9 | 642 | 1424 | 492 | 0 | 505 | 0 | 760 | 755 | 0 | 16 | 288 (90.6%) |
 | Politik und Wirtschaft (Gymnasium, DE) | 0/16 | 175 | 175 | 2 | 0 | 607 | 0 | 0 | 0 | 0 | 12 | 521 | 0 | 2 | 175 (100%) |
 | Polnisch (Gymnasium, DE) | 0/16 | 4 | 4 | 1 | 0 | 5 | 0 | 0 | 0 | 0 | 0 | 4 | 0 | 1 | 4 (100%) |
 | Russisch (Gymnasium, DE) | 0/16 | 7 | 7 | 1 | 0 | 8 | 0 | 0 | 0 | 0 | 0 | 7 | 0 | 1 | 7 (100%) |
@@ -171,7 +171,7 @@ Rules version: curriculum-quality-v1
 | CQR-001 | M0 | graph | Goal IDs, local references, self-reference guards, and direct DAG checks are clean. |
 | CQR-002 | M0 | graph | Stored type metadata agrees with structural atomic/cluster classification. |
 | CQR-003 | M2 | applicability | Bundesland composition-view atoms are source-backed and registered source original goals are fully covered by view atoms. |
-| CQR-004 | M2 | applicability | GK/LK source-goal levels map only to canonical goals with compatible GK/LK tags; unspecified source goals default to GK/LK unless an LK-only decision is explicitly reviewed. |
+| CQR-004 | M2 | applicability | Upper-secondary GK/LK source-goal levels map only to canonical goals with compatible GK/LK tags; unspecified upper-secondary source goals default to GK/LK unless an LK-only decision is explicitly reviewed. |
 | CQR-101 | M3 | route | Configured route scopes connect motivation anchors to terminal autonomy goals through effective requires. |
 | CQR-102 | M3 | route | Configured route scopes connect motivation anchors to terminal autonomy goals through direct atomic requires. |
 | CQR-103 | M3 | route | Configured route scopes no longer depend on cluster-level requires for ordinary didactic sequencing. |
