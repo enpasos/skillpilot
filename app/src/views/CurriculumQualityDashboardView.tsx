@@ -75,6 +75,7 @@ interface JurisdictionCoverage {
   rawAtomicGoals?: number
   coveredJurisdictions: number
   sourceBackedJurisdictions: number
+  sourceCompleteJurisdictions?: number
   cleanJurisdictions: number
   partialJurisdictions: number
   errorJurisdictions: number
@@ -259,9 +260,9 @@ const COPY = {
     complete: 'abgeschlossen',
     incomplete: 'offen',
     blocked: 'blockiert',
-    jurisdictions: 'Saubere Sichten',
-    cleanJurisdictions: 'Sauber',
-    partialJurisdictions: 'Teilweise sauber',
+    jurisdictions: 'Lehrplan -> Sicht komplett',
+    cleanJurisdictions: 'Warnungsfrei',
+    partialJurisdictions: 'Mit Warnhinweisen',
     errorJurisdictions: 'Mit TODO',
     maxAtomicCoverage: 'Max. belegte Atomabdeckung',
     routeScopes: 'QA-Scopes',
@@ -344,9 +345,9 @@ const COPY = {
     complete: 'complete',
     incomplete: 'open',
     blocked: 'blocked',
-    jurisdictions: 'Clean views',
-    cleanJurisdictions: 'Clean',
-    partialJurisdictions: 'Partly clean',
+    jurisdictions: 'source -> view complete',
+    cleanJurisdictions: 'Warning-free',
+    partialJurisdictions: 'With warnings',
     errorJurisdictions: 'With TODO',
     maxAtomicCoverage: 'Max source-backed atomic coverage',
     routeScopes: 'QA scopes',
@@ -687,19 +688,23 @@ export const CurriculumQualityDashboardView: React.FC = () => {
                       </td>
                       <td className="py-3 pr-3 text-right tabular-nums">
                         {curriculum.jurisdictionCoverage
-                          ? (
-                            <span
-                              className={
-                                curriculum.jurisdictionCoverage.cleanJurisdictions === curriculum.jurisdictionCoverage.totalJurisdictions
-                                  ? 'font-semibold text-emerald-600 dark:text-emerald-300'
-                                  : curriculum.jurisdictionCoverage.cleanJurisdictions > 0
-                                    ? 'font-semibold text-amber-600 dark:text-amber-300'
-                                    : 'font-semibold text-red-600 dark:text-red-300'
-                              }
-                            >
-                              {curriculum.jurisdictionCoverage.cleanJurisdictions}/{curriculum.jurisdictionCoverage.totalJurisdictions}
-                            </span>
-                          )
+                          ? (() => {
+                            const completeJurisdictions = curriculum.jurisdictionCoverage.sourceCompleteJurisdictions
+                              ?? curriculum.jurisdictionCoverage.cleanJurisdictions
+                            return (
+                              <span
+                                className={
+                                  completeJurisdictions === curriculum.jurisdictionCoverage.totalJurisdictions
+                                    ? 'font-semibold text-emerald-600 dark:text-emerald-300'
+                                    : completeJurisdictions > 0
+                                      ? 'font-semibold text-amber-600 dark:text-amber-300'
+                                      : 'font-semibold text-red-600 dark:text-red-300'
+                                }
+                              >
+                                {completeJurisdictions}/{curriculum.jurisdictionCoverage.totalJurisdictions}
+                              </span>
+                            )
+                          })()
                           : '—'}
                       </td>
                       <td className="py-3 pr-3 text-right tabular-nums">{curriculum.scopes.length}</td>
@@ -943,7 +948,8 @@ export const CurriculumQualityDashboardView: React.FC = () => {
                       <div className="rounded-xl border border-border-color p-3">
                         <div className="text-xs text-text-secondary">{copy.jurisdictions}</div>
                         <div className="mt-1 text-lg font-semibold">
-                          {selectedCurriculum.jurisdictionCoverage.cleanJurisdictions}/{selectedCurriculum.jurisdictionCoverage.totalJurisdictions}
+                          {selectedCurriculum.jurisdictionCoverage.sourceCompleteJurisdictions
+                            ?? selectedCurriculum.jurisdictionCoverage.cleanJurisdictions}/{selectedCurriculum.jurisdictionCoverage.totalJurisdictions}
                         </div>
                       </div>
                       <div className="rounded-xl border border-border-color p-3">

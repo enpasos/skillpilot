@@ -79,6 +79,7 @@ interface JurisdictionCoverage {
   rawAtomicGoals: number
   coveredJurisdictions: number
   sourceBackedJurisdictions: number
+  sourceCompleteJurisdictions: number
   cleanJurisdictions: number
   partialJurisdictions: number
   errorJurisdictions: number
@@ -1505,6 +1506,31 @@ function readAcceptedWarningEntries(): AcceptedWarningEntry[] {
   return Array.isArray(registry.acceptedWarnings) ? registry.acceptedWarnings : []
 }
 
+function metricKeyPart(value: string): string {
+  return value.replace(/[^A-Za-z0-9]+/g, '_').replace(/^_+|_+$/g, '')
+}
+
+function metricLabel(value: string): string {
+  return value.replace(/_/g, '-')
+}
+
+function incrementMetric(metrics: Record<string, number>, key: string, amount = 1) {
+  metrics[key] = (metrics[key] ?? 0) + amount
+}
+
+function addApplicabilityWarningBreakdown(
+  metrics: Record<string, number>,
+  prefix: 'active' | 'accepted' | 'obsolete',
+  warning: Pick<AcceptedWarningEntry, 'code' | 'dimension' | 'value'>,
+) {
+  incrementMetric(metrics, `${prefix}Code_${metricKeyPart(warning.code)}`)
+  if (warning.dimension === 'jurisdiction' && warning.value) {
+    incrementMetric(metrics, `${prefix}Jurisdiction_${metricKeyPart(warning.value)}`)
+  } else {
+    incrementMetric(metrics, `${prefix}GlobalWarnings`)
+  }
+}
+
 function readSurrogateEvidenceEntries(): SurrogateEvidenceEntry[] {
   if (!existsSync(surrogateEvidencePath)) return []
   const registry = loadJson<{ entries?: SurrogateEvidenceEntry[] }>(surrogateEvidencePath)
@@ -1557,14 +1583,18 @@ function readApplicabilityWarningMetricsByLandscapeId(
     const metrics = ensureMetrics(finding.landscapeId)
     if (acceptedKeys.has(key)) {
       metrics.acceptedWarnings += 1
+      addApplicabilityWarningBreakdown(metrics, 'accepted', finding)
     } else {
       metrics.activeWarnings += 1
+      addApplicabilityWarningBreakdown(metrics, 'active', finding)
     }
   })
 
   acceptedEntries.forEach((entry) => {
     if (!entry.landscapeId || currentWarningKeys.has(applicabilityWarningKey(entry))) return
-    ensureMetrics(entry.landscapeId).obsoleteAcceptedWarnings += 1
+    const metrics = ensureMetrics(entry.landscapeId)
+    metrics.obsoleteAcceptedWarnings += 1
+    addApplicabilityWarningBreakdown(metrics, 'obsolete', entry)
   })
 
   return counts
@@ -2875,6 +2905,15 @@ function readJurisdictionCoverageByLandscapeId(
       0,
       ...jurisdictions.map((entry) => entry.sourceBackedCoveragePercent),
     )
+    const sourceCompleteJurisdictions = jurisdictions.filter((entry) =>
+      entry.visibleAtomicGoals > 0
+        && entry.sourceBackedAtomicGoals === entry.visibleAtomicGoals
+        && entry.unsupportedAssignedAtomicGoals === 0
+        && entry.unmappedSourceAtomicGoals === 0
+        && entry.sourceUnregisteredGoals === 0
+        && entry.sourceUnregisteredAtomicGoals === 0
+        && !(entry.sourceOriginalGoals > 0 && entry.sourceExtractedGoals === 0)
+        && entry.errors === 0).length
     coverageByLandscapeId.set(report.landscapeId, {
       dimension: 'jurisdiction',
       totalJurisdictions: jurisdictions.length,
@@ -2882,6 +2921,7 @@ function readJurisdictionCoverageByLandscapeId(
       rawAtomicGoals: rawAtomicGoals.length,
       coveredJurisdictions: jurisdictions.filter((entry) => entry.visibleAtomicGoals > 0).length,
       sourceBackedJurisdictions: jurisdictions.filter((entry) => entry.sourceBackedAtomicGoals > 0).length,
+      sourceCompleteJurisdictions,
       cleanJurisdictions: jurisdictions.filter((entry) => entry.status === 'covered').length,
       partialJurisdictions: jurisdictions.filter((entry) => entry.status === 'partial').length,
       errorJurisdictions: jurisdictions.filter((entry) => entry.status === 'error').length,
@@ -2937,23 +2977,69 @@ function evaluateCompositionViews(count: number): RuleResult {
   )
 }
 
-function evaluateApplicabilityWarnings(metrics: Record<string, number> | undefined): RuleResult {
-  const activeWarnings = metrics?.activeWarnings ?? 0
+function evaluateApplicabilityWarnings(
+  metrics: Record<string, number> | undefined,
+  coverage: JurisdictionCoverage | undefined,
+): RuleResult {
+  const rawActiveWarnings = metrics?.activeWarnings ?? 0
+  const rawActivePartialOnlyWarnings = metrics?.activeCode_APV_202 ?? 0
+  const canTreatPartialOnlyWarningsAsDiagnostic = !!coverage
+    && coverage.totalJurisdictions > 0
+    && coverage.sourceCompleteJurisdictions === coverage.totalJurisdictions
+    && coverage.unsupportedAssignedAtomicGoals === 0
+    && coverage.unmappedSourceAtomicGoals === 0
+  const diagnosticPartialOnlyWarnings = canTreatPartialOnlyWarningsAsDiagnostic
+    ? rawActivePartialOnlyWarnings
+    : 0
+  const activeWarnings = rawActiveWarnings - diagnosticPartialOnlyWarnings
   const acceptedWarnings = metrics?.acceptedWarnings ?? 0
   const obsoleteAcceptedWarnings = metrics?.obsoleteAcceptedWarnings ?? 0
   const unresolvedWarnings = activeWarnings + obsoleteAcceptedWarnings
+  const topMetricDetails = (
+    prefix: string,
+    label: string,
+    limit: number,
+    excludedKeys: string[] = [],
+  ): string[] => Object.entries(metrics ?? {})
+    .filter(([key]) => key.startsWith(prefix))
+    .filter(([key]) => !excludedKeys.includes(key.slice(prefix.length)))
+    .sort(([, left], [, right]) => right - left)
+    .slice(0, limit)
+    .map(([key, count]) => `${label} ${metricLabel(key.slice(prefix.length))}: ${count}`)
+
+  const details = [
+    ...(diagnosticPartialOnlyWarnings > 0
+      ? [`non-blocking partial-only applicability diagnostics APV-202: ${diagnosticPartialOnlyWarnings}`]
+      : []),
+    ...topMetricDetails(
+      'activeCode_',
+      'active warning type',
+      5,
+      canTreatPartialOnlyWarningsAsDiagnostic ? ['APV_202'] : [],
+    ),
+    ...topMetricDetails(
+      'activeJurisdiction_',
+      'active warning jurisdiction',
+      canTreatPartialOnlyWarningsAsDiagnostic ? 0 : 10,
+    ),
+    ...topMetricDetails('acceptedCode_', 'accepted current warning type', 3),
+    ...topMetricDetails('obsoleteCode_', 'obsolete accepted warning type', 3),
+  ]
 
   return makeRule(
     'CQR-501',
     unresolvedWarnings === 0 ? 'pass' : 'warn',
     unresolvedWarnings === 0
       ? `${acceptedWarnings} accepted applicability warning(s) are current and no active applicability warning debt is visible.`
-      : `${activeWarnings} active and ${obsoleteAcceptedWarnings} obsolete accepted applicability warning(s) need review.`,
+      : `${activeWarnings} active and ${obsoleteAcceptedWarnings} obsolete accepted applicability warning(s) need review${diagnosticPartialOnlyWarnings > 0 ? `; ${diagnosticPartialOnlyWarnings} partial-only diagnostic warning(s) are non-blocking because source-to-view coverage is complete` : ''}.`,
     {
       activeWarnings,
+      rawActiveWarnings,
+      diagnosticPartialOnlyWarnings,
       acceptedWarnings,
       obsoleteAcceptedWarnings,
     },
+    details,
   )
 }
 
@@ -3019,13 +3105,7 @@ function evaluateJurisdictionCoverage(coverage: JurisdictionCoverage | undefined
   const minSourceBackedAtomicGoals = coverage.jurisdictions.length > 0
     ? Math.min(...coverage.jurisdictions.map((entry) => entry.sourceBackedAtomicGoals))
     : 0
-  const fullCoverageJurisdictions = coverage.jurisdictions.filter((entry) =>
-    entry.visibleAtomicGoals > 0
-      && entry.sourceBackedAtomicGoals === entry.visibleAtomicGoals
-      && entry.unsupportedAssignedAtomicGoals === 0
-      && entry.unmappedSourceAtomicGoals === 0
-      && entry.warnings === 0
-      && entry.errors === 0).length
+  const fullCoverageJurisdictions = coverage.sourceCompleteJurisdictions
   const status: RuleStatus = errored.length > 0
     || unsupported.length > 0
     || sourceUnmapped.length > 0
@@ -3044,6 +3124,7 @@ function evaluateJurisdictionCoverage(coverage: JurisdictionCoverage | undefined
       totalJurisdictions: coverage.totalJurisdictions,
       coveredJurisdictions: coverage.coveredJurisdictions,
       sourceBackedJurisdictions: coverage.sourceBackedJurisdictions,
+      sourceCompleteJurisdictions: coverage.sourceCompleteJurisdictions,
       fullCoverageJurisdictions,
       uncoveredJurisdictions: uncovered.length,
       incompleteJurisdictions: incomplete.length,
@@ -3072,7 +3153,6 @@ function evaluateJurisdictionCoverage(coverage: JurisdictionCoverage | undefined
       ...errored.map((entry) => `${entry.jurisdiction}: ${entry.errors} projection error(s), ${entry.sourceBackedAtomicGoals}/${entry.visibleAtomicGoals} source-backed view atomic goal(s)`),
       ...unsupported.map((entry) => `${entry.jurisdiction}: ${entry.unsupportedAssignedAtomicGoals} assigned atomic goal(s) without source-backed Lehrplan evidence`),
       ...sourceUnmapped.map((entry) => `${entry.jurisdiction}: ${entry.unmappedSourceAtomicGoals} source Lehrplan atom(s) do not map into the Bundesland view`),
-      ...warninged.map((entry) => `${entry.jurisdiction}: ${entry.warnings} projection warning(s), ${entry.sourceBackedAtomicGoals}/${entry.visibleAtomicGoals} source-backed view atomic goal(s)`),
       ...incomplete.map((entry) => `${entry.jurisdiction}: ${entry.sourceBackedAtomicGoals}/${entry.visibleAtomicGoals} source-backed view atomic goal(s)`),
       ...uncovered.map((entry) => `${entry.jurisdiction}: no source-backed atomic goals`),
     ],
@@ -3149,7 +3229,7 @@ function renderMarkdown(status: StatusDocument): string {
     const warnCount = allRules.filter((rule) => rule.status === 'warn').length
     const failCount = allRules.filter((rule) => rule.status === 'fail').length
     const jurisdictionCoverage = curriculum.jurisdictionCoverage
-      ? `${curriculum.jurisdictionCoverage.cleanJurisdictions}/${curriculum.jurisdictionCoverage.totalJurisdictions}`
+      ? `${curriculum.jurisdictionCoverage.sourceCompleteJurisdictions}/${curriculum.jurisdictionCoverage.totalJurisdictions}`
       : '-'
     const pipeline = sourceExtractionProgress(curriculum.mappingPipeline)
     lines.push(`| ${curriculum.title} | ${curriculum.maturity} | ${curriculum.goals} | ${curriculum.atomicGoals} | ${pipeline} | ${jurisdictionCoverage} | ${curriculum.scopes.length} | ${warnCount} | ${failCount} |`)
@@ -3177,7 +3257,7 @@ function renderMarkdown(status: StatusDocument): string {
   status.curricula.forEach((curriculum) => {
     const coverage = curriculum.jurisdictionCoverage
     if (!coverage) return
-    lines.push(`| ${curriculum.title} | ${coverage.cleanJurisdictions}/${coverage.totalJurisdictions} | ${coverage.totalAtomicGoals} | ${coverage.rawAtomicGoals} | ${coverage.sourceBackedJurisdictions} | ${coverage.sourceExtractedGoals} | ${coverage.sourceOriginalGoals} | ${coverage.sourceFullyCoveredOriginalGoals} | ${coverage.sourceUnregisteredGoals} | ${coverage.sourceExtractedAtomicGoals} | ${coverage.sourceUnregisteredAtomicGoals} | ${coverage.unsupportedAssignedAtomicGoals} | ${coverage.unmappedSourceAtomicGoals} | ${coverage.partialJurisdictions} | ${coverage.errorJurisdictions} | ${coverage.maxSourceBackedAtomicGoals} (${coverage.maxSourceBackedCoveragePercent}%) |`)
+    lines.push(`| ${curriculum.title} | ${coverage.sourceCompleteJurisdictions}/${coverage.totalJurisdictions} | ${coverage.totalAtomicGoals} | ${coverage.rawAtomicGoals} | ${coverage.sourceBackedJurisdictions} | ${coverage.sourceExtractedGoals} | ${coverage.sourceOriginalGoals} | ${coverage.sourceFullyCoveredOriginalGoals} | ${coverage.sourceUnregisteredGoals} | ${coverage.sourceExtractedAtomicGoals} | ${coverage.sourceUnregisteredAtomicGoals} | ${coverage.unsupportedAssignedAtomicGoals} | ${coverage.unmappedSourceAtomicGoals} | ${coverage.partialJurisdictions} | ${coverage.errorJurisdictions} | ${coverage.maxSourceBackedAtomicGoals} (${coverage.maxSourceBackedCoveragePercent}%) |`)
   })
   lines.push('')
   lines.push('## Rule Catalog')
@@ -3209,15 +3289,19 @@ function main() {
   const curricula = loadedLandscapes
     .map(({ file, landscape }) => {
       const atomicGoals = landscape.goals.filter(isAtomicGoal).length
+      const jurisdictionCoverage = jurisdictionCoverageByLandscapeId.get(landscape.landscapeId)
       const curriculumRules: RuleResult[] = [
         evaluateGraphIntegrity(landscape, globalGoalIds),
         evaluateTypeConsistency(landscape),
-        evaluateSourceSnapshotIngestion(jurisdictionCoverageByLandscapeId.get(landscape.landscapeId)),
-        evaluateJurisdictionCoverage(jurisdictionCoverageByLandscapeId.get(landscape.landscapeId)),
+        evaluateSourceSnapshotIngestion(jurisdictionCoverage),
+        evaluateJurisdictionCoverage(jurisdictionCoverage),
         evaluateCourseLevelMappingConsistency(landscape),
         evaluateSemanticAtomicity(landscape, semanticConfigsByLandscapeId.get(landscape.landscapeId) ?? []),
         evaluateCompositionViews(compositionViewCountsByLandscapeId.get(landscape.landscapeId) ?? 0),
-        evaluateApplicabilityWarnings(applicabilityWarningMetricsByLandscapeId.get(landscape.landscapeId)),
+        evaluateApplicabilityWarnings(
+          applicabilityWarningMetricsByLandscapeId.get(landscape.landscapeId),
+          jurisdictionCoverage,
+        ),
       ]
       const scopedProfiles = routeProfiles.filter((profile) => profile.landscapeId === landscape.landscapeId)
       const scopes = scopedProfiles.map((profile) => evaluateRouteProfile(landscape, profile))
