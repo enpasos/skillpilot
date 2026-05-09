@@ -45,6 +45,8 @@ interface MathScopeMatch {
 }
 
 const CANONICAL_DE_MATH_ID = '68a8ac50-f5f5-4e24-8aa9-5e408ca01ced'
+const CANONICAL_MATH_SEK1_MOTIVATION_GOAL_ID = '65365dce-f33f-49d8-9516-42f75883aa86'
+const CANONICAL_MATH_SEK1_PRACTICE_CLUSTER_ID = 'bfc4fe23-bfa4-4836-9bd2-793f4305d682'
 const CANONICAL_MATH_FALLBACK_POLICY_PATH = 'curricula/DE/Gymnasium/provenance/canonical-math-composition-fallback-policy.json'
 const CANONICAL_DE_MATH_VIEW_ID_PATTERN = /^de-de-gym-(?:seki|sekii-math-(?:gk|lk)|math-(?:gk|lk))$/u
 const NAKED_PHASE_LABEL_PATTERN = /^(?:E-Phase|Q[1-4])$/u
@@ -373,6 +375,58 @@ const collectGenericTreeFindings = (
   return findings
 }
 
+const collectSourceGoalIds = (rootNodes: CompiledCompositionPreviewNode[]): Set<string> => {
+  const sourceGoalIds = new Set<string>()
+  const visit = (node: CompiledCompositionPreviewNode) => {
+    if (node.sourceGoalId) {
+      sourceGoalIds.add(node.sourceGoalId)
+    }
+    node.children.forEach(visit)
+  }
+  rootNodes.forEach(visit)
+  return sourceGoalIds
+}
+
+const collectCanonicalMathSek1RouteEndpointFindings = (
+  view: ReturnType<typeof normalizeCompositionView>,
+  landscape: CanonicalAuthoringLandscape | null,
+  rootNodes: CompiledCompositionPreviewNode[],
+): CompositionViewFinding[] => {
+  if (view.landscapeId !== CANONICAL_DE_MATH_ID) return []
+  if (view.scope.stage !== 'SekI' && view.scope.stage !== 'CrossStage') return []
+  if (!landscape) return []
+
+  const goalById = new Map(landscape.goals.map((goal) => [goal.id, goal]))
+  const practiceGoalIds = (goalById.get(CANONICAL_MATH_SEK1_PRACTICE_CLUSTER_ID)?.contains ?? [])
+    .filter((goalId) => {
+      const goal = goalById.get(goalId)
+      return goal && goal.contains.length === 0
+    })
+  const visibleGoalIds = collectSourceGoalIds(rootNodes)
+  const findings: CompositionViewFinding[] = []
+
+  if (!visibleGoalIds.has(CANONICAL_MATH_SEK1_MOTIVATION_GOAL_ID)) {
+    findings.push({
+      code: 'CPV-210',
+      severity: 'error',
+      goalId: CANONICAL_MATH_SEK1_MOTIVATION_GOAL_ID,
+      message: 'Sek-I-Route ist learner-facing nicht vollständig: Motivationsanker fehlt in der Composition View.',
+    })
+  }
+
+  const missingPracticeGoalIds = practiceGoalIds.filter((goalId) => !visibleGoalIds.has(goalId))
+  if (missingPracticeGoalIds.length > 0) {
+    findings.push({
+      code: 'CPV-211',
+      severity: 'error',
+      goalId: CANONICAL_MATH_SEK1_PRACTICE_CLUSTER_ID,
+      message: `Sek-I-Route ist learner-facing nicht vollständig: ${missingPracticeGoalIds.length}/${practiceGoalIds.length} Übungs-/Abschlussziel(e) fehlen in der Composition View.`,
+    })
+  }
+
+  return findings
+}
+
 const scriptDir = dirname(fileURLToPath(import.meta.url))
 const repoRoot = resolve(scriptDir, '../..')
 const canonicalRoot = resolve(repoRoot, 'curricula/DE/Gymnasium/canonical')
@@ -463,6 +517,11 @@ for (const viewPath of compositionViewFiles) {
         && CANONICAL_DE_MATH_VIEW_ID_PATTERN.test(normalizedView.viewId)
         ? collectCanonicalMathTreeFindings(result.compiledRootNodes)
         : []),
+      ...collectCanonicalMathSek1RouteEndpointFindings(
+        normalizedView,
+        canonicalMatch?.landscape ?? null,
+        result.compiledRootNodes,
+      ),
     ]
 
     ;[...result.findings, ...additionalFindings].forEach((finding) => {

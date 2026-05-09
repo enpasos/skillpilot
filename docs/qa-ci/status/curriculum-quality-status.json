@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "rulesVersion": "curriculum-quality-v1",
-  "generatedAt": "2026-05-09T05:53:03.901Z",
+  "generatedAt": "2026-05-09T06:33:54.518Z",
   "generatedBy": "app/scripts/generateCurriculumQualityStatus.ts",
   "sources": {
     "canonicalRoot": "curricula/DE/Gymnasium/canonical",
@@ -25,7 +25,7 @@
       "M5": 1
     },
     "ruleStatus": {
-      "pass": 71,
+      "pass": 72,
       "warn": 18,
       "fail": 38,
       "not_configured": 76
@@ -87,6 +87,13 @@
       "category": "route",
       "maturityTarget": "M3",
       "description": "Configured route scopes no longer depend on cluster-level requires for ordinary didactic sequencing."
+    },
+    {
+      "id": "CQR-104",
+      "label": "Route endpoint composition visibility",
+      "category": "route",
+      "maturityTarget": "M3",
+      "description": "Configured route scopes expose motivation anchors and terminal autonomy goals in relevant learner-facing composition views."
     },
     {
       "id": "CQR-201",
@@ -15387,6 +15394,18 @@
               "summary": "No scoped cluster-level requires remain.",
               "metrics": {
                 "scopedClusterRequires": 0
+              }
+            },
+            {
+              "id": "CQR-104",
+              "status": "pass",
+              "summary": "Route endpoints are visible in all relevant composition views.",
+              "metrics": {
+                "relevantCompositionViews": 36,
+                "requiredMotivationAnchors": 1,
+                "requiredTerminalAutonomyGoals": 7,
+                "viewsMissingMotivationAnchors": 0,
+                "viewsMissingTerminalAutonomyGoals": 0
               }
             },
             {

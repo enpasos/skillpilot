@@ -1,6 +1,6 @@
 # Curriculum Quality Status
 
-Generated: 2026-05-09T05:53:03.901Z
+Generated: 2026-05-09T06:33:54.518Z
 Rules version: curriculum-quality-v1
 
 ## Summary
@@ -175,6 +175,7 @@ Rules version: curriculum-quality-v1
 | CQR-101 | M3 | route | Configured route scopes connect motivation anchors to terminal autonomy goals through effective requires. |
 | CQR-102 | M3 | route | Configured route scopes connect motivation anchors to terminal autonomy goals through direct atomic requires. |
 | CQR-103 | M3 | route | Configured route scopes no longer depend on cluster-level requires for ordinary didactic sequencing. |
+| CQR-104 | M3 | route | Configured route scopes expose motivation anchors and terminal autonomy goals in relevant learner-facing composition views. |
 | CQR-201 | M4 | assessment | Terminal autonomy goals in configured scopes are exam-mode-capable or explicitly reviewed. |
 | CQR-301 | M5 | review | Configured semantic-atomicity ledgers are complete, current, and free of unresolved review queue entries. |
 | CQR-401 | M5 | view | The curriculum has at least one reviewed learner-facing composition view. |

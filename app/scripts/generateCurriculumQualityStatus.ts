@@ -659,6 +659,7 @@ interface RouteProfile {
   motivationAnchorGoalIds: string[]
   terminalGoalIds?: string[]
   terminalAutonomyClusterIds: string[]
+  compositionViewStage?: 'SekI' | 'SekII'
   goalSelector: (goal: LearningGoal) => boolean
   clusterSelector: (goal: LearningGoal) => boolean
 }
@@ -763,6 +764,13 @@ const ruleCatalog: QualityRuleDefinition[] = [
     description: 'Configured route scopes no longer depend on cluster-level requires for ordinary didactic sequencing.',
   },
   {
+    id: 'CQR-104',
+    label: 'Route endpoint composition visibility',
+    category: 'route',
+    maturityTarget: 'M3',
+    description: 'Configured route scopes expose motivation anchors and terminal autonomy goals in relevant learner-facing composition views.',
+  },
+  {
     id: 'CQR-201',
     label: 'Terminal autonomy exam data',
     category: 'assessment',
@@ -800,6 +808,7 @@ const routeProfiles: RouteProfile[] = [
     motivationAnchorGoalIds: [CANONICAL_GYM_MATH_SEK1_MOTIVATION_GOAL_ID],
     terminalGoalIds: [CANONICAL_GYM_MATH_SEK1_CAPSTONE_GOAL_ID],
     terminalAutonomyClusterIds: [CANONICAL_GYM_MATH_SEK1_PRACTICE_CLUSTER_ID],
+    compositionViewStage: 'SekI',
     goalSelector: (goal) => isAtomicGoal(goal) && isCanonicalGymMathSek1Goal(goal),
     clusterSelector: isCanonicalGymMathSek1Goal,
   },
@@ -1227,6 +1236,61 @@ function evaluateTypeConsistency(landscape: LearningLandscape): RuleResult {
   )
 }
 
+function evaluateRouteEndpointCompositionVisibility(
+  landscape: LearningLandscape,
+  profile: RouteProfile,
+  terminalAutonomyGoals: LearningGoal[],
+): RuleResult | null {
+  if (!profile.compositionViewStage) return null
+
+  const viewFiles = readCompositionViewFilesForLandscapeId(profile.landscapeId)
+    .filter((file) => {
+      const view = normalizeCompositionView(loadJson<unknown>(file))
+      return view.landscapeId === profile.landscapeId
+        && (view.scope.stage === profile.compositionViewStage || view.scope.stage === 'CrossStage')
+    })
+
+  const terminalGoalIds = terminalAutonomyGoals.map((goal) => goal.id)
+  const missingMotivationViewFiles: string[] = []
+  const missingTerminalViewFiles: string[] = []
+
+  viewFiles.forEach((file) => {
+    const visibleAtomicGoalIds = collectRenderedAtomicGoalIdsFromCompositionView(landscape, file)
+    const hasMotivationAnchors = profile.motivationAnchorGoalIds.every((goalId) => visibleAtomicGoalIds.has(goalId))
+    const hasTerminalGoals = terminalGoalIds.every((goalId) => visibleAtomicGoalIds.has(goalId))
+    if (!hasMotivationAnchors) {
+      missingMotivationViewFiles.push(file)
+    }
+    if (!hasTerminalGoals) {
+      missingTerminalViewFiles.push(file)
+    }
+  })
+
+  const pass = viewFiles.length > 0
+    && missingMotivationViewFiles.length === 0
+    && missingTerminalViewFiles.length === 0
+
+  return makeRule(
+    'CQR-104',
+    pass ? 'pass' : 'fail',
+    pass
+      ? 'Route endpoints are visible in all relevant composition views.'
+      : 'Route endpoints are missing from at least one relevant learner-facing composition view.',
+    {
+      relevantCompositionViews: viewFiles.length,
+      requiredMotivationAnchors: profile.motivationAnchorGoalIds.length,
+      requiredTerminalAutonomyGoals: terminalGoalIds.length,
+      viewsMissingMotivationAnchors: missingMotivationViewFiles.length,
+      viewsMissingTerminalAutonomyGoals: missingTerminalViewFiles.length,
+    },
+    [
+      ...(viewFiles.length === 0 ? ['No relevant composition view found for configured route scope.'] : []),
+      ...missingMotivationViewFiles.map((file) => `Missing motivation anchor(s): ${toRepoPath(file)}`),
+      ...missingTerminalViewFiles.map((file) => `Missing terminal autonomy goal(s): ${toRepoPath(file)}`),
+    ],
+  )
+}
+
 function evaluateRouteProfile(landscape: LearningLandscape, profile: RouteProfile): ScopeStatus {
   const goalById = new Map(landscape.goals.map((goal) => [goal.id, goal]))
   const selectedGoals = landscape.goals.filter(profile.goalSelector)
@@ -1257,6 +1321,11 @@ function evaluateRouteProfile(landscape: LearningLandscape, profile: RouteProfil
     !isAtomicGoal(goal) && profile.clusterSelector(goal) && (goal.requires?.length ?? 0) > 0)
 
   const terminalAutonomyGoalsWithoutExamData = terminalAutonomyGoals.filter((goal) => !goal.examData)
+  const routeEndpointCompositionVisibility = evaluateRouteEndpointCompositionVisibility(
+    landscape,
+    profile,
+    terminalAutonomyGoals,
+  )
 
   const rules: RuleResult[] = [
     makeRule(
@@ -1300,6 +1369,7 @@ function evaluateRouteProfile(landscape: LearningLandscape, profile: RouteProfil
       { scopedClusterRequires: scopedClusterRequires.length },
       scopedClusterRequires.map((goal) => `${formatGoal(goal, goal.id)} has ${goal.requires.length} requires`),
     ),
+    ...(routeEndpointCompositionVisibility ? [routeEndpointCompositionVisibility] : []),
     makeRule(
       'CQR-201',
       terminalAutonomyGoalsWithoutExamData.length === 0 ? 'pass' : 'warn',
@@ -1705,12 +1775,16 @@ function readLandscapeForReport(report: CoverageReport): LearningLandscape | nul
   return loadJson<LearningLandscape>(absolutePath)
 }
 
-function readCompositionViewFilesForReport(report: CoverageReport): string[] {
-  const directoryName = compositionViewDirectoryByLandscapeId.get(report.landscapeId)
+function readCompositionViewFilesForLandscapeId(landscapeId: string): string[] {
+  const directoryName = compositionViewDirectoryByLandscapeId.get(landscapeId)
   if (!directoryName) return []
   const directory = resolve(compositionViewRoot, directoryName)
   if (!existsSync(directory)) return []
   return collectFiles(directory, (fileName) => fileName.endsWith('.view.json'))
+}
+
+function readCompositionViewFilesForReport(report: CoverageReport): string[] {
+  return readCompositionViewFilesForLandscapeId(report.landscapeId)
 }
 
 function collectRenderedAtomicGoalIdsFromCompositionView(
@@ -3171,6 +3245,8 @@ function deriveScopeMaturity(rules: RuleResult[]): MaturityLevel {
   if (rules.find((rule) => rule.id === 'CQR-101')?.status !== 'pass') return 'M0'
   if (rules.find((rule) => rule.id === 'CQR-102')?.status !== 'pass') return 'M1'
   if (rules.find((rule) => rule.id === 'CQR-103')?.status !== 'pass') return 'M1'
+  const routeEndpointVisibility = rules.find((rule) => rule.id === 'CQR-104')
+  if (routeEndpointVisibility && routeEndpointVisibility.status !== 'pass') return 'M2'
   if (rules.find((rule) => rule.id === 'CQR-201')?.status !== 'pass') return 'M2'
   return 'M3'
 }
