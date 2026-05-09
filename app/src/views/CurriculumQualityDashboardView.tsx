@@ -62,6 +62,7 @@ interface JurisdictionCoverageEntry {
   sourceUncoveredOriginalGoals?: number
   errors: number
   warnings: number
+  diagnosticPartialOnlyWarnings?: number
   atomicCoveragePercent: number
   sourceBackedCoveragePercent: number
   sourceReverseCoveragePercent?: number
@@ -214,6 +215,7 @@ const COPY = {
     surrogateBacked: 'Ersatzbeleg',
     unsupported: 'ohne Lehrplanbeleg',
     partialSource: 'partiell',
+    diagnosticPartialOnly: '1:n-Zuordnungen',
     visibleAssigned: 'sichtbar',
     sourceReverse: 'Lehrplan -> Sicht',
     unmappedSource: 'inhaltlich offen',
@@ -249,20 +251,20 @@ const COPY = {
     sourceKindMissing: 'keine Extraction',
     noPassageEvidence: 'nicht pipelinefähig: keine Passage-Extraktion',
     mappingInventory: 'Source-Inventar gemappt',
-    exactMappings: 'passgenau',
-    partialMappings: 'über Teil-/Sammelziel',
+    exactMappings: '1:1-Zuordnungen',
+    partialMappings: '1:n-Zuordnungen',
     otherMappings: 'sonstige',
     qualitySeals: 'Qualitätssiegel',
     inventoryCompleteSeal: 'Source-Inventar vollständig',
     passageBackedSeal: 'Passagenbelegt',
-    exactMappingSeal: 'nur passgenaue Zuordnung',
-    nonExactMappingsNote: 'Alle Source-Ziele sind inhaltlich abgedeckt; partial beschreibt nur die Zuordnungsform, nicht eine offene Lücke.',
+    exactMappingSeal: 'Zuordnungsform geprüft',
+    nonExactMappingsNote: 'Alle Source-Ziele sind inhaltlich abgedeckt; 1:1 und 1:n beschreiben nur die Zuordnungsform, nicht eine offene Lücke.',
     complete: 'abgeschlossen',
     incomplete: 'offen',
     blocked: 'blockiert',
     jurisdictions: 'Lehrplan -> Sicht komplett',
-    cleanJurisdictions: 'Warnungsfrei',
-    partialJurisdictions: 'Mit Warnhinweisen',
+    cleanJurisdictions: 'Vollständig',
+    partialJurisdictions: 'Mit offenen Hinweisen',
     errorJurisdictions: 'Mit TODO',
     maxAtomicCoverage: 'Max. belegte Atomabdeckung',
     routeScopes: 'QA-Scopes',
@@ -299,6 +301,7 @@ const COPY = {
     surrogateBacked: 'surrogate',
     unsupported: 'without curriculum evidence',
     partialSource: 'partial',
+    diagnosticPartialOnly: '1:n mappings',
     visibleAssigned: 'visible',
     sourceReverse: 'source -> view',
     unmappedSource: 'content open',
@@ -334,20 +337,20 @@ const COPY = {
     sourceKindMissing: 'no extraction',
     noPassageEvidence: 'not pipeline-capable: no passage extraction',
     mappingInventory: 'source inventory mapped',
-    exactMappings: 'direct fit',
-    partialMappings: 'via partial/aggregate goal',
+    exactMappings: '1:1 mappings',
+    partialMappings: '1:n mappings',
     otherMappings: 'other',
     qualitySeals: 'quality seals',
     inventoryCompleteSeal: 'source inventory complete',
     passageBackedSeal: 'passage-backed',
-    exactMappingSeal: 'direct-fit mapping only',
-    nonExactMappingsNote: 'All source goals are content-covered; partial describes mapping shape, not an open gap.',
+    exactMappingSeal: 'mapping shape reviewed',
+    nonExactMappingsNote: 'All source goals are content-covered; 1:1 and 1:n describe mapping shape, not an open gap.',
     complete: 'complete',
     incomplete: 'open',
     blocked: 'blocked',
     jurisdictions: 'source -> view complete',
-    cleanJurisdictions: 'Warning-free',
-    partialJurisdictions: 'With warnings',
+    cleanJurisdictions: 'Complete',
+    partialJurisdictions: 'With open findings',
     errorJurisdictions: 'With TODO',
     maxAtomicCoverage: 'Max source-backed atomic coverage',
     routeScopes: 'QA scopes',
@@ -1051,6 +1054,11 @@ export const CurriculumQualityDashboardView: React.FC = () => {
                               {entry.errors > 0 ? `${entry.errors} ${copy.failures}` : ''}
                               {entry.errors > 0 && entry.warnings > 0 ? ' · ' : ''}
                               {entry.warnings > 0 ? `${entry.warnings} ${copy.warnings}` : ''}
+                            </div>
+                          ) : null}
+                          {(entry.diagnosticPartialOnlyWarnings ?? 0) > 0 ? (
+                            <div className="mt-1 tabular-nums text-current/80">
+                              {entry.diagnosticPartialOnlyWarnings} {copy.diagnosticPartialOnly}
                             </div>
                           ) : null}
                         </div>

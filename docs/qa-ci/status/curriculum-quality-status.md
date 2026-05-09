@@ -1,6 +1,6 @@
 # Curriculum Quality Status
 
-Generated: 2026-05-09T05:30:37.804Z
+Generated: 2026-05-09T05:53:03.901Z
 Rules version: curriculum-quality-v1
 
 ## Summary
@@ -153,7 +153,7 @@ Rules version: curriculum-quality-v1
 | Informatik (Gymnasium, DE) | 0/16 | 161 | 180 | 2 | 0 | 483 | 0 | 0 | 0 | 0 | 0 | 399 | 0 | 2 | 161 (100%) |
 | Italienisch (Gymnasium, DE) | 0/16 | 6 | 7 | 1 | 0 | 8 | 0 | 0 | 0 | 0 | 0 | 7 | 0 | 1 | 6 (100%) |
 | Latein (Gymnasium, DE) | 0/16 | 94 | 109 | 2 | 0 | 1035 | 0 | 0 | 0 | 0 | 0 | 942 | 0 | 2 | 94 (100%) |
-| Mathematik (Gymnasium, DE) | 16/16 | 648 | 825 | 16 | 9797 | 9797 | 9797 | 0 | 9797 | 0 | 0 | 0 | 13 | 0 | 648 (100%) |
+| Mathematik (Gymnasium, DE) | 16/16 | 648 | 825 | 16 | 9797 | 9797 | 9797 | 0 | 9797 | 0 | 0 | 0 | 0 | 0 | 648 (100%) |
 | Musik (Gymnasium, DE) | 0/16 | 38 | 52 | 2 | 0 | 329 | 0 | 0 | 0 | 0 | 0 | 257 | 0 | 2 | 38 (100%) |
 | Physik (Gymnasium, DE) | 0/16 | 320 | 392 | 16 | 642 | 1424 | 492 | 0 | 505 | 0 | 232 | 755 | 0 | 16 | 312 (100%) |
 | Politik und Wirtschaft (Gymnasium, DE) | 0/16 | 155 | 175 | 2 | 0 | 607 | 0 | 0 | 0 | 0 | 0 | 521 | 0 | 2 | 155 (100%) |

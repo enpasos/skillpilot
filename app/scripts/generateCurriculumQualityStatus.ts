@@ -66,6 +66,7 @@ interface JurisdictionCoverageEntry {
   sourceUncoveredOriginalGoals: number
   errors: number
   warnings: number
+  diagnosticPartialOnlyWarnings: number
   atomicCoveragePercent: number
   sourceBackedCoveragePercent: number
   sourceReverseCoveragePercent: number
@@ -2806,6 +2807,12 @@ function readJurisdictionCoverageByLandscapeId(
     )
     const totalAtomicGoals = sourceCoverageAtomicGoalIds.size
     const jurisdictions = report.projections.map((projection) => {
+      const projectionFindings = report.findings.filter((finding) =>
+        finding.dimension === 'jurisdiction' && finding.value === projection.value)
+      const diagnosticPartialOnlyWarnings = projectionFindings.filter((finding) =>
+        finding.severity === 'warning' && finding.code === 'APV-202').length
+      const blockingWarnings = projectionFindings.filter((finding) =>
+        finding.severity === 'warning' && finding.code !== 'APV-202').length
       const visibleGoals = report.goals.filter((goal) =>
         (goal.compiledApplicability.jurisdiction ?? []).includes(projection.value))
       const viewAtomicGoalIds = viewAtomicGoalIdsByJurisdiction.get(projection.value)
@@ -2859,7 +2866,7 @@ function readJurisdictionCoverageByLandscapeId(
           : !hasFullSourceBackedAtomicCoverage
               || !hasFullReverseSourceCoverage
               || !hasFullSourceRegistration
-              || projection.warnings > 0
+              || blockingWarnings > 0
             ? 'partial'
             : 'covered'
 
@@ -2887,7 +2894,8 @@ function readJurisdictionCoverageByLandscapeId(
         sourcePartiallyCoveredOriginalGoals: reverseSourceCoverage.sourcePartiallyCoveredOriginalGoals,
         sourceUncoveredOriginalGoals: reverseSourceCoverage.sourceUncoveredOriginalGoals,
         errors: projection.errors,
-        warnings: projection.warnings,
+        warnings: blockingWarnings,
+        diagnosticPartialOnlyWarnings,
         atomicCoveragePercent: roundPercent(visibleAtomicGoals, totalAtomicGoals),
         sourceBackedCoveragePercent: roundPercent(sourceBackedAtomicGoals, visibleAtomicGoals),
         sourceReverseCoveragePercent: roundPercent(
