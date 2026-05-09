@@ -117,14 +117,15 @@ Current stable finding families:
 | `APV-102` | A visible goal requires a prerequisite that is invisible in the projected filtered graph. | `error` |
 | `APV-103` | A visible goal is not reachable from the projected root. | `error` |
 | `APV-201` | An explicit applicability-override path is used, either embedded or via the canonical override registry. | `warning` |
-| `APV-202` | Applicability is backed only by `partial` mappings. | `warning` |
+| `APV-202` | Applicability is backed only by `partial` mappings. | `diagnostic` |
 | `APV-203` | Compiled applicability differs from currently committed applicability metadata. | `warning` |
 
 Accepted-warning handling:
 
-- `APV-201` and `APV-202` may remain in reviewed pilots when no cleaner exact source alignment exists yet.
-- Such cases must be explicitly listed in `docs/qa-ci/applicability-accepted-warnings.json` with a short rationale.
-- `validate:view-filters` continues to print these findings for auditability, but separates them from active warnings in its summary output.
+- `APV-201` may remain in reviewed pilots when no cleaner exact source alignment exists yet.
+- Such warning cases must be explicitly listed in `docs/qa-ci/applicability-accepted-warnings.json` with a short rationale.
+- `APV-202` is high-cardinality mapping-shape diagnostics, not a warning: it says a projected visibility decision is backed only by partial mapping evidence. Since `1:n` / partial coverage can be fachlich complete, `validate:view-filters` reports `APV-202` as diagnostic findings and keeps warning debt separate.
+- `validate:view-filters` prints compact summaries by default. Set `APPLICABILITY_VERBOSE_WARNINGS=1` to print every individual warning line for audit/debug work.
 
 ## Composition-view validator (`validate:composition-views`)
 

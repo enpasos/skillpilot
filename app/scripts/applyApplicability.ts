@@ -23,6 +23,10 @@ const REVIEWED_CANONICAL_LANDSCAPE_IDS = [
   'f620c251-c1e1-41c1-b4e1-b10950b43608', // Music
   '668cf206-941e-51f8-8704-3e8938631235', // Latin
   '90eedebf-9ea8-5247-85dd-31c147f907c3', // Spanish
+  '25c6b527-10d6-5d92-9d76-fab23585f29b', // Italian
+  '242ba9bd-7ec7-5ec3-a15e-4f0f2b01aa37', // Russian
+  'f145785b-0c44-5246-af66-8a153d202cb9', // Polish
+  '0900df4c-beeb-5542-86f9-bd479c94746a', // Czech
   '605bdaf6-32d5-56fd-8d92-5a80c2fd2901', // Economics
   'a0e13c56-c25f-4742-9272-3a1a603ee52e', // Overview
 ] as const

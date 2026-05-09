@@ -1,6 +1,6 @@
 # Curriculum Quality Status
 
-Generated: 2026-05-09T06:33:54.518Z
+Generated: 2026-05-09T07:14:53.744Z
 Rules version: curriculum-quality-v1
 
 ## Summary
@@ -19,27 +19,27 @@ Rules version: curriculum-quality-v1
 
 | Curriculum | Maturity | Goals | Atomic | Passage extraction | Bundeslaender | QA scopes | Warn | Fail |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| Biologie (Gymnasium, DE) | M0 | 216 | 182 | 0/3 | 0/16 | 0 | 1 | 2 |
-| Chemie (Gymnasium, DE) | M0 | 217 | 177 | 0/4 | 0/16 | 0 | 1 | 2 |
-| Chinesisch (Gymnasium, DE) | M0 | 192 | 181 | 0/2 | 0/16 | 0 | 1 | 2 |
-| Deutsch (Gymnasium, DE) | M0 | 181 | 144 | 0/2 | 0/16 | 0 | 1 | 2 |
-| Englisch (Gymnasium, DE) | M0 | 130 | 104 | 0/2 | 0/16 | 0 | 1 | 2 |
-| Französisch (Gymnasium, DE) | M0 | 331 | 275 | 0/3 | 0/16 | 0 | 1 | 2 |
-| Geschichte (Gymnasium, DE) | M0 | 210 | 171 | 0/2 | 0/16 | 0 | 1 | 2 |
-| Griechisch (Gymnasium, DE) | M0 | 198 | 185 | 0/2 | 0/16 | 0 | 1 | 2 |
+| Biologie (Gymnasium, DE) | M0 | 216 | 182 | 0/3 | 0/16 | 0 | 0 | 2 |
+| Chemie (Gymnasium, DE) | M0 | 217 | 177 | 0/4 | 0/16 | 0 | 0 | 2 |
+| Chinesisch (Gymnasium, DE) | M0 | 192 | 181 | 0/2 | 0/16 | 0 | 0 | 2 |
+| Deutsch (Gymnasium, DE) | M0 | 181 | 144 | 0/2 | 0/16 | 0 | 0 | 2 |
+| Englisch (Gymnasium, DE) | M0 | 130 | 104 | 0/2 | 0/16 | 0 | 0 | 2 |
+| Französisch (Gymnasium, DE) | M0 | 331 | 275 | 0/3 | 0/16 | 0 | 0 | 2 |
+| Geschichte (Gymnasium, DE) | M0 | 210 | 171 | 0/2 | 0/16 | 0 | 0 | 2 |
+| Griechisch (Gymnasium, DE) | M0 | 198 | 185 | 0/2 | 0/16 | 0 | 0 | 2 |
 | Gymnasium (DE) | M0 | 1 | 0 | - | 0/16 | 0 | 2 | 0 |
-| Informatik (Gymnasium, DE) | M0 | 221 | 180 | 0/2 | 0/16 | 0 | 1 | 2 |
+| Informatik (Gymnasium, DE) | M0 | 221 | 180 | 0/2 | 0/16 | 0 | 0 | 2 |
 | Italienisch (Gymnasium, DE) | M0 | 8 | 7 | 0/1 | 0/16 | 0 | 0 | 2 |
-| Latein (Gymnasium, DE) | M0 | 142 | 109 | 0/2 | 0/16 | 0 | 1 | 2 |
+| Latein (Gymnasium, DE) | M0 | 142 | 109 | 0/2 | 0/16 | 0 | 0 | 2 |
 | Mathematik (Gymnasium, DE) | M5 | 1037 | 825 | 31/31 | 16/16 | 2 | 0 | 0 |
-| Musik (Gymnasium, DE) | M0 | 76 | 52 | 0/2 | 0/16 | 0 | 1 | 2 |
-| Physik (Gymnasium, DE) | M0 | 475 | 392 | 0/24 | 0/16 | 2 | 2 | 2 |
-| Politik und Wirtschaft (Gymnasium, DE) | M0 | 208 | 175 | 0/2 | 0/16 | 0 | 1 | 2 |
+| Musik (Gymnasium, DE) | M0 | 76 | 52 | 0/2 | 0/16 | 0 | 0 | 2 |
+| Physik (Gymnasium, DE) | M0 | 475 | 392 | 0/24 | 0/16 | 2 | 1 | 2 |
+| Politik und Wirtschaft (Gymnasium, DE) | M0 | 208 | 175 | 0/2 | 0/16 | 0 | 0 | 2 |
 | Polnisch (Gymnasium, DE) | M0 | 5 | 4 | 0/1 | 0/16 | 0 | 0 | 2 |
 | Russisch (Gymnasium, DE) | M0 | 8 | 7 | 0/1 | 0/16 | 0 | 0 | 2 |
-| Spanisch (Gymnasium, DE) | M0 | 83 | 59 | 0/2 | 0/16 | 0 | 1 | 2 |
+| Spanisch (Gymnasium, DE) | M0 | 83 | 59 | 0/2 | 0/16 | 0 | 0 | 2 |
 | Tschechisch (Gymnasium, DE) | M0 | 5 | 4 | 0/1 | 0/16 | 0 | 0 | 2 |
-| Wirtschaftswissenschaften (Gymnasium, DE) | M0 | 225 | 193 | 0/2 | 0/16 | 0 | 1 | 2 |
+| Wirtschaftswissenschaften (Gymnasium, DE) | M0 | 225 | 193 | 0/2 | 0/16 | 0 | 0 | 2 |
 
 ## Mapping Pipeline
 

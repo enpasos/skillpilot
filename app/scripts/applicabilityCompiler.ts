@@ -16,7 +16,7 @@ const reportDir = join(repoRoot, 'tmp', 'applicability')
 
 const SUPPORTED_DIMENSION = 'jurisdiction' as const
 type SupportedJurisdiction = KnownJurisdiction
-type FindingSeverity = 'error' | 'warning'
+type FindingSeverity = 'error' | 'warning' | 'diagnostic'
 type FindingCode =
   | 'APV-001'
   | 'APV-002'
@@ -151,6 +151,7 @@ interface ProjectionReport {
   visibleGoals: number
   errors: number
   warnings: number
+  diagnostics: number
 }
 
 export interface LandscapeApplicabilityReport {
@@ -162,6 +163,7 @@ export interface LandscapeApplicabilityReport {
     goals: number
     errors: number
     warnings: number
+    diagnostics: number
   }
   goals: GoalApplicabilityReport[]
   projections: ProjectionReport[]
@@ -177,6 +179,7 @@ export interface ApplicabilityCompilationResult {
     goals: number
     errors: number
     warnings: number
+    diagnostics: number
     reports: Array<{
       landscapeId: string
       title: string
@@ -184,6 +187,7 @@ export interface ApplicabilityCompilationResult {
       goals: number
       errors: number
       warnings: number
+      diagnostics: number
       projections: ProjectionReport[]
     }>
   }
@@ -1029,7 +1033,7 @@ export function buildApplicabilityCompilation(): ApplicabilityCompilationResult 
         ) {
           findings.push({
             code: 'APV-202',
-            severity: 'warning',
+            severity: 'diagnostic',
             landscapeId,
             goalId: goal.id,
             title: goal.title,
@@ -1288,6 +1292,7 @@ export function buildApplicabilityCompilation(): ApplicabilityCompilationResult 
         visibleGoals: reportGoals.filter((goal) => (goal.compiledApplicability[SUPPORTED_DIMENSION] ?? []).includes(value)).length,
         errors: projectionFindings.filter((finding) => finding.severity === 'error').length,
         warnings: projectionFindings.filter((finding) => finding.severity === 'warning').length,
+        diagnostics: projectionFindings.filter((finding) => finding.severity === 'diagnostic').length,
       }
     })
 
@@ -1300,6 +1305,7 @@ export function buildApplicabilityCompilation(): ApplicabilityCompilationResult 
         goals: reportGoals.length,
         errors: sortedFindings.filter((finding) => finding.severity === 'error').length,
         warnings: sortedFindings.filter((finding) => finding.severity === 'warning').length,
+        diagnostics: sortedFindings.filter((finding) => finding.severity === 'diagnostic').length,
       },
       goals: reportGoals,
       projections,
@@ -1318,6 +1324,7 @@ export function buildApplicabilityCompilation(): ApplicabilityCompilationResult 
       goals: sortedReports.reduce((sum, report) => sum + report.summary.goals, 0),
       errors: sortedReports.reduce((sum, report) => sum + report.summary.errors, 0),
       warnings: sortedReports.reduce((sum, report) => sum + report.summary.warnings, 0),
+      diagnostics: sortedReports.reduce((sum, report) => sum + report.summary.diagnostics, 0),
       reports: sortedReports.map((report) => ({
         landscapeId: report.landscapeId,
         title: report.title,
@@ -1325,6 +1332,7 @@ export function buildApplicabilityCompilation(): ApplicabilityCompilationResult 
         goals: report.summary.goals,
         errors: report.summary.errors,
         warnings: report.summary.warnings,
+        diagnostics: report.summary.diagnostics,
         projections: report.projections,
       })),
     },

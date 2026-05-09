@@ -64,7 +64,7 @@ Current scope note:
 - it also enforces the Hessen Sek-I repo-handoff boundary: active tooling/runtime/test surfaces may mention the lower-secondary legacy tree only from the explicit allowlist in `curricula/DE/Gymnasium/provenance/hessen-lower-secondary-retirement-registry.json`
 - the current CI scope for `validate:view-filters` is the reviewed canonical DE Gymnasium set (`Mathematik`, `Physik`, `Chemie`, `Biologie`, `Informatik`, `Deutsch`, `Englisch`, `Französisch`, `Griechisch`, `Chinesisch`, `Geschichte`, `Politik und Wirtschaft`, `Musik`, `Latein`, `Spanisch`, `Wirtschaft`, `Overview`)
 - the validator can be widened locally via `APPLICABILITY_VALIDATION_SCOPE=all npm run validate:view-filters`, but CI does not enforce that broader scope yet
-- reviewed residual `APV-201` / `APV-202` cases are tracked in `docs/qa-ci/applicability-accepted-warnings.json` and are reported as accepted warnings, not active warnings
+- reviewed residual `APV-201` warning cases are tracked in `docs/qa-ci/applicability-accepted-warnings.json` and are reported as accepted warnings, not active warnings; `APV-202` is reported as a diagnostic finding, not as warning debt
 
 Optional local status snapshot:
 

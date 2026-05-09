@@ -667,10 +667,12 @@ Geprueft wird:
 - Aktive Warnungen sind aktuelle Findings ohne akzeptierten Registry-Eintrag.
 - Accepted Warnungen sind aktuelle Findings mit akzeptiertem Registry-Eintrag.
 - Obsolete accepted Warnungen sind Registry-Eintraege, fuer die es aktuell kein passendes Finding mehr gibt.
+- `APV-202` wird als Diagnose-Finding gezaehlt, nicht als Warnung, weil `partial` / `1:n` eine Zuordnungsform und nicht automatisch eine offene fachliche Luecke ist.
 
 Metriken:
 
 - `activeWarnings`: aktuelle nicht akzeptierte Applicability-Warnungen.
+- `diagnosticPartialOnlyWarnings`: aktuelle `APV-202`-Diagnose-Findings.
 - `acceptedWarnings`: aktuelle akzeptierte Applicability-Warnungen.
 - `obsoleteAcceptedWarnings`: akzeptierte Warnungen, die nicht mehr zu aktuellen Findings passen.
 

@@ -45,6 +45,57 @@ function loadAcceptedWarnings(): Map<string, AcceptedWarningEntry> {
   )
 }
 
+function incrementCount(map: Map<string, number>, key: string) {
+  map.set(key, (map.get(key) ?? 0) + 1)
+}
+
+function countBy<T>(items: T[], keyFor: (item: T) => string): Array<[string, number]> {
+  const counts = new Map<string, number>()
+  items.forEach((item) => incrementCount(counts, keyFor(item)))
+  return Array.from(counts.entries()).sort(([, left], [, right]) => right - left)
+}
+
+function formatFinding(
+  finding: ViewValidationFinding,
+  acceptedEntry: AcceptedWarningEntry | undefined,
+  extraTag?: string,
+): string {
+  const tag = finding.severity === 'error' ? '❌' : finding.severity === 'diagnostic' || acceptedEntry ? 'ℹ️' : '⚠️'
+  const goalPart = finding.goalId ? ` ${finding.goalId}` : ''
+  const projectionPart = finding.dimension && finding.value ? ` [${finding.dimension}=${finding.value}]` : ''
+  const acceptedPart = acceptedEntry ? ' [accepted]' : ''
+  const extraPart = extraTag ? ` [${extraTag}]` : ''
+  const rationalePart = acceptedEntry?.rationale ? ` (${acceptedEntry.rationale})` : ''
+  return `${tag}${acceptedPart}${extraPart} [${finding.landscapeId}] [${finding.code}]${projectionPart}${goalPart} ${finding.message}${rationalePart}`
+}
+
+function printFindingSample(
+  label: string,
+  findings: ViewValidationFinding[],
+  acceptedWarnings: Map<string, AcceptedWarningEntry>,
+  limit: number,
+  extraTag?: string,
+) {
+  if (findings.length === 0) return
+  console.log(`\n${label}:`)
+  findings.slice(0, limit).forEach((finding) => {
+    console.log(formatFinding(finding, acceptedWarnings.get(findingKey(finding)), extraTag))
+  })
+  if (findings.length > limit) {
+    console.log(`... ${findings.length - limit} more; see ${getApplicabilityReportDir()} for the complete report.`)
+  }
+}
+
+function printBreakdown(label: string, entries: Array<[string, number]>, limit: number) {
+  if (entries.length === 0) return
+  const summary = entries
+    .slice(0, limit)
+    .map(([key, count]) => `${key}: ${count}`)
+    .join(', ')
+  const suffix = entries.length > limit ? `, ... ${entries.length - limit} more` : ''
+  console.log(`${label}: ${summary}${suffix}`)
+}
+
 const result = buildApplicabilityCompilation()
 writeApplicabilityReports(result)
 const acceptedWarnings = loadAcceptedWarnings()
@@ -95,23 +146,43 @@ const findings = Array.from(
 )
 const errors = findings.filter((finding) => finding.severity === 'error')
 const warnings = findings.filter((finding) => finding.severity === 'warning')
+const diagnostics = findings.filter((finding) => finding.severity === 'diagnostic')
 const activeWarnings = warnings.filter((finding) => !acceptedWarnings.has(findingKey(finding)))
 const acceptedWarningFindings = warnings.filter((finding) => acceptedWarnings.has(findingKey(finding)))
+const verboseWarnings = process.env.APPLICABILITY_VERBOSE_WARNINGS === '1'
 
-for (const finding of findings) {
-  const acceptedEntry = finding.severity === 'warning' ? acceptedWarnings.get(findingKey(finding)) : undefined
-  const tag = finding.severity === 'error' ? '❌' : acceptedEntry ? 'ℹ️' : '⚠️'
-  const goalPart = finding.goalId ? ` ${finding.goalId}` : ''
-  const projectionPart = finding.dimension && finding.value ? ` [${finding.dimension}=${finding.value}]` : ''
-  const acceptedPart = acceptedEntry ? ' [accepted]' : ''
-  const rationalePart = acceptedEntry?.rationale ? ` (${acceptedEntry.rationale})` : ''
-  console.log(`${tag}${acceptedPart} [${finding.landscapeId}] [${finding.code}]${projectionPart}${goalPart} ${finding.message}${rationalePart}`)
+if (verboseWarnings) {
+  for (const finding of findings) {
+    console.log(formatFinding(finding, finding.severity === 'warning' ? acceptedWarnings.get(findingKey(finding)) : undefined))
+  }
+} else {
+  printFindingSample('Errors', errors, acceptedWarnings, Number.MAX_SAFE_INTEGER)
+  printFindingSample('Warnings', activeWarnings, acceptedWarnings, 50)
 }
 
 if (findings.length === 0) {
   console.log(`✅ ${selectedReports.length} projected-view landscape report(s) passed validation.`)
 } else {
-  console.log(`\n${errors.length} error(s), ${activeWarnings.length} warning(s), ${acceptedWarningFindings.length} accepted warning(s).`)
+  console.log(`\n${errors.length} error(s), ${activeWarnings.length} warning(s), ${diagnostics.length} diagnostic finding(s), ${acceptedWarningFindings.length} accepted warning(s).`)
+  if (!verboseWarnings && diagnostics.length > 0) {
+    console.log('Diagnostic findings are not warning debt. APV-202 means applicability is backed only by partial mappings; this is useful for mapping-shape review, but not by itself a source-coverage gap.')
+  }
+  if (!verboseWarnings && (activeWarnings.length > 0 || diagnostics.length > 0 || acceptedWarningFindings.length > 0)) {
+    const reportTitleByLandscapeId = new Map(selectedReports.map((report) => [report.landscapeId, report.title]))
+    printBreakdown('Warning types', countBy(activeWarnings, (finding) => finding.code), 10)
+    printBreakdown(
+      'Warning landscapes',
+      countBy(activeWarnings, (finding) => reportTitleByLandscapeId.get(finding.landscapeId) ?? finding.landscapeId),
+      10,
+    )
+    printBreakdown('Diagnostic finding types', countBy(diagnostics, (finding) => finding.code), 10)
+    printBreakdown(
+      'Diagnostic finding landscapes',
+      countBy(diagnostics, (finding) => reportTitleByLandscapeId.get(finding.landscapeId) ?? finding.landscapeId),
+      10,
+    )
+    printBreakdown('Accepted warning types', countBy(acceptedWarningFindings, (finding) => finding.code), 10)
+  }
 }
 
 if (process.env.APPLICABILITY_VALIDATION_SCOPE !== 'all') {

@@ -1591,7 +1591,7 @@ function incrementMetric(metrics: Record<string, number>, key: string, amount = 
 
 function addApplicabilityWarningBreakdown(
   metrics: Record<string, number>,
-  prefix: 'active' | 'accepted' | 'obsolete',
+  prefix: 'active' | 'accepted' | 'obsolete' | 'diagnostic',
   warning: Pick<AcceptedWarningEntry, 'code' | 'dimension' | 'value'>,
 ) {
   incrementMetric(metrics, `${prefix}Code_${metricKeyPart(warning.code)}`)
@@ -1612,7 +1612,8 @@ function readApplicabilityWarningMetricsByLandscapeId(
   applicabilityCompilation: ApplicabilityCompilationResult,
 ): Map<string, Record<string, number>> {
   const acceptedEntries = readAcceptedWarningEntries()
-  const acceptedKeys = new Set(acceptedEntries.map(applicabilityWarningKey))
+  const acceptedWarningEntries = acceptedEntries.filter((entry) => entry.code !== 'APV-202')
+  const acceptedKeys = new Set(acceptedWarningEntries.map(applicabilityWarningKey))
   const currentWarningKeys = new Set<string>()
   const counts = new Map<string, Record<string, number>>()
 
@@ -1623,6 +1624,7 @@ function readApplicabilityWarningMetricsByLandscapeId(
       activeWarnings: 0,
       acceptedWarnings: 0,
       obsoleteAcceptedWarnings: 0,
+      diagnostics: 0,
     }
     counts.set(landscapeId, metrics)
     return metrics
@@ -1633,6 +1635,26 @@ function readApplicabilityWarningMetricsByLandscapeId(
       applicabilityCompilation.reports
         .flatMap((report) => report.findings)
         .filter((finding) => finding.severity === 'warning')
+        .map((finding) => [
+          [
+            finding.severity,
+            finding.code,
+            finding.landscapeId,
+            finding.goalId ?? '',
+            finding.dimension ?? '',
+            finding.value ?? '',
+            finding.message,
+          ].join('|'),
+          finding,
+        ]),
+    ).values(),
+  )
+
+  const diagnosticFindings = Array.from(
+    new Map(
+      applicabilityCompilation.reports
+        .flatMap((report) => report.findings)
+        .filter((finding) => finding.severity === 'diagnostic')
         .map((finding) => [
           [
             finding.severity,
@@ -1661,7 +1683,13 @@ function readApplicabilityWarningMetricsByLandscapeId(
     }
   })
 
-  acceptedEntries.forEach((entry) => {
+  diagnosticFindings.forEach((finding) => {
+    const metrics = ensureMetrics(finding.landscapeId)
+    metrics.diagnostics += 1
+    addApplicabilityWarningBreakdown(metrics, 'diagnostic', finding)
+  })
+
+  acceptedWarningEntries.forEach((entry) => {
     if (!entry.landscapeId || currentWarningKeys.has(applicabilityWarningKey(entry))) return
     const metrics = ensureMetrics(entry.landscapeId)
     metrics.obsoleteAcceptedWarnings += 1
@@ -2884,9 +2912,9 @@ function readJurisdictionCoverageByLandscapeId(
       const projectionFindings = report.findings.filter((finding) =>
         finding.dimension === 'jurisdiction' && finding.value === projection.value)
       const diagnosticPartialOnlyWarnings = projectionFindings.filter((finding) =>
-        finding.severity === 'warning' && finding.code === 'APV-202').length
+        finding.severity === 'diagnostic' && finding.code === 'APV-202').length
       const blockingWarnings = projectionFindings.filter((finding) =>
-        finding.severity === 'warning' && finding.code !== 'APV-202').length
+        finding.severity === 'warning').length
       const visibleGoals = report.goals.filter((goal) =>
         (goal.compiledApplicability.jurisdiction ?? []).includes(projection.value))
       const viewAtomicGoalIds = viewAtomicGoalIdsByJurisdiction.get(projection.value)
@@ -3061,19 +3089,10 @@ function evaluateCompositionViews(count: number): RuleResult {
 
 function evaluateApplicabilityWarnings(
   metrics: Record<string, number> | undefined,
-  coverage: JurisdictionCoverage | undefined,
 ): RuleResult {
-  const rawActiveWarnings = metrics?.activeWarnings ?? 0
-  const rawActivePartialOnlyWarnings = metrics?.activeCode_APV_202 ?? 0
-  const canTreatPartialOnlyWarningsAsDiagnostic = !!coverage
-    && coverage.totalJurisdictions > 0
-    && coverage.sourceCompleteJurisdictions === coverage.totalJurisdictions
-    && coverage.unsupportedAssignedAtomicGoals === 0
-    && coverage.unmappedSourceAtomicGoals === 0
-  const diagnosticPartialOnlyWarnings = canTreatPartialOnlyWarningsAsDiagnostic
-    ? rawActivePartialOnlyWarnings
-    : 0
-  const activeWarnings = rawActiveWarnings - diagnosticPartialOnlyWarnings
+  const activeWarnings = metrics?.activeWarnings ?? 0
+  const rawActiveWarnings = activeWarnings
+  const diagnosticPartialOnlyWarnings = metrics?.diagnosticCode_APV_202 ?? 0
   const acceptedWarnings = metrics?.acceptedWarnings ?? 0
   const obsoleteAcceptedWarnings = metrics?.obsoleteAcceptedWarnings ?? 0
   const unresolvedWarnings = activeWarnings + obsoleteAcceptedWarnings
@@ -3097,13 +3116,13 @@ function evaluateApplicabilityWarnings(
       'activeCode_',
       'active warning type',
       5,
-      canTreatPartialOnlyWarningsAsDiagnostic ? ['APV_202'] : [],
     ),
     ...topMetricDetails(
       'activeJurisdiction_',
       'active warning jurisdiction',
-      canTreatPartialOnlyWarningsAsDiagnostic ? 0 : 10,
+      10,
     ),
+    ...topMetricDetails('diagnosticCode_', 'diagnostic finding type', 3),
     ...topMetricDetails('acceptedCode_', 'accepted current warning type', 3),
     ...topMetricDetails('obsoleteCode_', 'obsolete accepted warning type', 3),
   ]
@@ -3112,8 +3131,10 @@ function evaluateApplicabilityWarnings(
     'CQR-501',
     unresolvedWarnings === 0 ? 'pass' : 'warn',
     unresolvedWarnings === 0
-      ? `${acceptedWarnings} accepted applicability warning(s) are current and no active applicability warning debt is visible.`
-      : `${activeWarnings} active and ${obsoleteAcceptedWarnings} obsolete accepted applicability warning(s) need review${diagnosticPartialOnlyWarnings > 0 ? `; ${diagnosticPartialOnlyWarnings} partial-only diagnostic warning(s) are non-blocking because source-to-view coverage is complete` : ''}.`,
+      ? acceptedWarnings > 0
+        ? `${acceptedWarnings} accepted applicability warning(s) are current and no active applicability warning debt is visible.`
+        : 'No active applicability warning debt is visible.'
+      : `${activeWarnings} active and ${obsoleteAcceptedWarnings} obsolete accepted applicability warning(s) need review${diagnosticPartialOnlyWarnings > 0 ? `; ${diagnosticPartialOnlyWarnings} partial-only diagnostic finding(s) are non-blocking` : ''}.`,
     {
       activeWarnings,
       rawActiveWarnings,
@@ -3382,10 +3403,7 @@ function main() {
         evaluateCourseLevelMappingConsistency(landscape),
         evaluateSemanticAtomicity(landscape, semanticConfigsByLandscapeId.get(landscape.landscapeId) ?? []),
         evaluateCompositionViews(compositionViewCountsByLandscapeId.get(landscape.landscapeId) ?? 0),
-        evaluateApplicabilityWarnings(
-          applicabilityWarningMetricsByLandscapeId.get(landscape.landscapeId),
-          jurisdictionCoverage,
-        ),
+        evaluateApplicabilityWarnings(applicabilityWarningMetricsByLandscapeId.get(landscape.landscapeId)),
       ]
       const scopedProfiles = routeProfiles.filter((profile) => profile.landscapeId === landscape.landscapeId)
       const scopes = scopedProfiles.map((profile) => evaluateRouteProfile(landscape, profile))
