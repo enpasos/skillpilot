@@ -5,7 +5,7 @@
 
 > **Hinweis für Leser:innen von [Aifyer](https://aifyer.com/ki-lernbegleitung/):**
 > SkillPilot ist die Referenzimplementierung zum Konzept einer schulisch verantworteten KI-Lernbegleitung entlang der Lehrpläne.
-> Für Mathematik am deutschen Gymnasium bildet SkillPilot die Lehrpläne aller 16 Bundesländer als Source-Extraction und bundeslandspezifische Sichten auf ein gemeinsames kanonisches Curriculum ab; aktuell arbeiten wir an der Qualitätssicherung.
+> Für Mathematik am deutschen Gymnasium bildet SkillPilot die Lehrpläne aller 16 Bundesländer als Source-Extraction und bundeslandspezifische Sichten auf ein gemeinsames kanonisches Curriculum ab.
 > Die entstehende Wissenslandschaft kann bereits mit dem SkillPilot Tutor genutzt werden.
 > Physik ist der nächste fachliche Schwerpunkt.
 
