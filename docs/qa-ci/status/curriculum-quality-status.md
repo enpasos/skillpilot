@@ -1,6 +1,6 @@
 # Curriculum Quality Status
 
-Generated: 2026-05-09T07:14:53.744Z
+Generated: 2026-05-10T02:28:42.664Z
 Rules version: curriculum-quality-v1
 
 ## Summary
@@ -8,8 +8,8 @@ Rules version: curriculum-quality-v1
 | Metric | Value |
 | --- | ---: |
 | Curricula | 21 |
-| M0 | 20 |
-| M1 | 0 |
+| M0 | 19 |
+| M1 | 1 |
 | M2 | 0 |
 | M3 | 0 |
 | M4 | 0 |
@@ -33,7 +33,7 @@ Rules version: curriculum-quality-v1
 | Latein (Gymnasium, DE) | M0 | 142 | 109 | 0/2 | 0/16 | 0 | 0 | 2 |
 | Mathematik (Gymnasium, DE) | M5 | 1037 | 825 | 31/31 | 16/16 | 2 | 0 | 0 |
 | Musik (Gymnasium, DE) | M0 | 76 | 52 | 0/2 | 0/16 | 0 | 0 | 2 |
-| Physik (Gymnasium, DE) | M0 | 475 | 392 | 0/24 | 0/16 | 2 | 1 | 2 |
+| Physik (Gymnasium, DE) | M1 | 583 | 495 | 12/25 | 9/16 | 2 | 2 | 1 |
 | Politik und Wirtschaft (Gymnasium, DE) | M0 | 208 | 175 | 0/2 | 0/16 | 0 | 0 | 2 |
 | Polnisch (Gymnasium, DE) | M0 | 5 | 4 | 0/1 | 0/16 | 0 | 0 | 2 |
 | Russisch (Gymnasium, DE) | M0 | 8 | 7 | 0/1 | 0/16 | 0 | 0 | 2 |
@@ -103,22 +103,23 @@ Rules version: curriculum-quality-v1
 | Mathematik (Gymnasium, DE) | DE-TH - Mathematik Sekundarstufe I (Thueringen, Lehrplan Gymnasium 2018/2025 Source-Extraction) | DE-TH | 2/2 original source(s) | 3/3 | - | 17 | 356 | 83 | 273 | 23% |  |
 | Musik (Gymnasium, DE) | Musik (Gymnasium) | DE-BY | No extraction | 0/3 | MAPPING-1 | 0 | 0 | 0 | 0 | 0% |  |
 | Musik (Gymnasium, DE) | Musik Oberstufe (Hessen, KC 2024) | DE-HE | No extraction | 0/3 | MAPPING-1 | 0 | 0 | 0 | 0 | 0% |  |
-| Physik (Gymnasium, DE) | Physik Oberstufe (Brandenburg, Pilot-Quellsnapshot) | DE-BB | Snapshot diagnostic | 0/3 | MAPPING-1 | 0 | 31 | 3 | 24 | 11% | not pipeline-capable: no passage extraction |
-| Physik (Gymnasium, DE) | Physik Oberstufe (Berlin, Pilot-Quellsnapshot) | DE-BE | Snapshot diagnostic | 0/3 | MAPPING-1 | 0 | 31 | 3 | 24 | 11% | not pipeline-capable: no passage extraction |
-| Physik (Gymnasium, DE) | Physik Kursstufe (Baden-Wuerttemberg, Pilot-Quellsnapshot) | DE-BW | Snapshot diagnostic | 0/3 | MAPPING-1 | 0 | 70 | 39 | 25 | 61% | not pipeline-capable: no passage extraction |
-| Physik (Gymnasium, DE) | Physik (Gymnasium) | DE-BY | No extraction | 0/3 | MAPPING-1 | 0 | 0 | 0 | 0 | 0% |  |
-| Physik (Gymnasium, DE) | Physik Oberstufe (Bremen, Pilot-Quellsnapshot) | DE-HB | Snapshot diagnostic | 0/3 | MAPPING-1 | 0 | 16 | 0 | 7 | 0% | not pipeline-capable: no passage extraction |
+| Physik (Gymnasium, DE) | DE-BB - Physik Oberstufe (Brandenburg, RLP GOST 2022 Source-Extraction) | DE-BB | 1/1 original source(s) | 3/3 | - | 20 | 175 | 0 | 175 | 0% |  |
+| Physik (Gymnasium, DE) | DE-BE - Physik Oberstufe (Berlin, RLP GOST 2022 Source-Extraction) | DE-BE | 1/1 original source(s) | 3/3 | - | 20 | 175 | 0 | 175 | 0% |  |
+| Physik (Gymnasium, DE) | Physik Kursstufe (Baden-Wuerttemberg, BP2016 V2 Source-Extraction) | DE-BW | 1/1 original source(s) | 3/3 | - | 24 | 164 | 64 | 100 | 39% |  |
+| Physik (Gymnasium, DE) | Physik Sekundarstufe I (Baden-Wuerttemberg, BP2016 V2 Source-Extraction) | DE-BW | 1/1 original source(s) | 3/3 | - | 14 | 101 | 39 | 62 | 39% |  |
+| Physik (Gymnasium, DE) | DE-BY - Physik Gymnasium (Bayern, LehrplanPLUS Source-Extraction) | DE-BY | 1/1 original source(s) | 3/3 | - | 42 | 296 | 21 | 275 | 7% |  |
+| Physik (Gymnasium, DE) | Physik Oberstufe (Bremen, Bildungsplan 2022 Source-Extraction) | DE-HB | 1/1 original source(s) | 3/3 | - | 10 | 214 | 146 | 68 | 68% |  |
 | Physik (Gymnasium, DE) | Physik Sekundarstufe I (Bremen, Pilot-Quellsnapshot) | DE-HB | Snapshot diagnostic | 0/3 | MAPPING-1 | 0 | 11 | 0 | 9 | 0% | not pipeline-capable: no passage extraction |
-| Physik (Gymnasium, DE) | Physik Oberstufe (Hessen, KC 2024) | DE-HE | No extraction | 0/3 | MAPPING-1 | 0 | 0 | 0 | 0 | 0% |  |
-| Physik (Gymnasium, DE) | Physik Sekundarstufe I (Hessen, G9) | DE-HE | No extraction | 0/3 | MAPPING-1 | 0 | 0 | 0 | 0 | 0% |  |
-| Physik (Gymnasium, DE) | Physik Sekundarstufe I (Hamburg, erster Quellsnapshot) | DE-HH | Snapshot diagnostic | 0/3 | MAPPING-1 | 0 | 11 | 0 | 8 | 0% | not pipeline-capable: no passage extraction |
-| Physik (Gymnasium, DE) | Physik Studienstufe (Hamburg, erster Quellsnapshot) | DE-HH | Snapshot diagnostic | 0/3 | MAPPING-1 | 0 | 16 | 0 | 6 | 0% | not pipeline-capable: no passage extraction |
+| Physik (Gymnasium, DE) | Physik Oberstufe (Hessen, KC 2024) | DE-HE | 1/1 original source(s) | 3/3 | - | 21 | 274 | 198 | 76 | 72% |  |
+| Physik (Gymnasium, DE) | Physik Sekundarstufe I (Hessen, G9) | DE-HE | 1/1 original source(s) | 3/3 | - | 12 | 48 | 39 | 9 | 81% |  |
+| Physik (Gymnasium, DE) | Physik Sekundarstufe I (Hamburg, Bildungsplan 2022 Source-Extraction) | DE-HH | 1/1 original source(s) | 3/3 | - | 8 | 128 | 65 | 63 | 51% |  |
+| Physik (Gymnasium, DE) | Physik Studienstufe (Hamburg, Bildungsplan 2022 Source-Extraction) | DE-HH | 1/1 original source(s) | 3/3 | - | 10 | 154 | 91 | 63 | 59% |  |
 | Physik (Gymnasium, DE) | Physik Sekundarbereich II (Mecklenburg-Vorpommern, erster Quellsnapshot) | DE-MV | Snapshot diagnostic | 0/3 | MAPPING-1 | 0 | 15 | 0 | 5 | 0% | not pipeline-capable: no passage extraction |
 | Physik (Gymnasium, DE) | Physik Sekundarstufe I (Mecklenburg-Vorpommern, erster Quellsnapshot) | DE-MV | Snapshot diagnostic | 0/3 | MAPPING-1 | 0 | 21 | 0 | 13 | 0% | not pipeline-capable: no passage extraction |
-| Physik (Gymnasium, DE) | Physik Oberstufe (Niedersachsen, Pilot-Quellsnapshot) | DE-NI | Snapshot diagnostic | 0/3 | MAPPING-1 | 0 | 60 | 1 | 55 | 2% | not pipeline-capable: no passage extraction |
+| Physik (Gymnasium, DE) | Physik Oberstufe (Niedersachsen, KC 2022 Source-Extraction) | DE-NI | 1/1 original source(s) | 3/3 | - | 19 | 154 | 92 | 62 | 60% |  |
 | Physik (Gymnasium, DE) | Physik Oberstufe (Nordrhein-Westfalen, Pilot-Quellsnapshot) | DE-NW | Snapshot diagnostic | 0/3 | MAPPING-1 | 0 | 37 | 12 | 16 | 43% | not pipeline-capable: no passage extraction |
 | Physik (Gymnasium, DE) | Physik Qualifikationsphase (Rheinland-Pfalz, reviewed Einstiegsschnitt) | DE-RP | Snapshot diagnostic | 0/3 | MAPPING-1 | 0 | 120 | 1 | 111 | 1% | not pipeline-capable: no passage extraction |
-| Physik (Gymnasium, DE) | Physik Oberstufe (Schleswig-Holstein, Pilot-Quellsnapshot) | DE-SH | Snapshot diagnostic | 0/3 | MAPPING-1 | 0 | 27 | 1 | 23 | 4% | not pipeline-capable: no passage extraction |
+| Physik (Gymnasium, DE) | Physik Oberstufe (Schleswig-Holstein, Fachanforderungen 2022 Source-Extraction) | DE-SH | 1/1 original source(s) | 3/3 | - | 15 | 169 | 90 | 79 | 53% |  |
 | Physik (Gymnasium, DE) | Physik Gymnasiale Oberstufe (Saarland, erster Quellsnapshot) | DE-SL | Snapshot diagnostic | 0/3 | MAPPING-1 | 0 | 15 | 0 | 11 | 0% | not pipeline-capable: no passage extraction |
 | Physik (Gymnasium, DE) | Physik Sekundarstufe I (Saarland, erster Quellsnapshot) | DE-SL | Snapshot diagnostic | 0/3 | MAPPING-1 | 0 | 18 | 0 | 13 | 0% | not pipeline-capable: no passage extraction |
 | Physik (Gymnasium, DE) | Physik Jahrgangsstufen 11/12 (Sachsen, erster Quellsnapshot) | DE-SN | Snapshot diagnostic | 0/3 | MAPPING-1 | 0 | 32 | 0 | 21 | 0% | not pipeline-capable: no passage extraction |
@@ -155,7 +156,7 @@ Rules version: curriculum-quality-v1
 | Latein (Gymnasium, DE) | 0/16 | 94 | 109 | 2 | 0 | 1035 | 0 | 0 | 0 | 0 | 0 | 942 | 0 | 2 | 94 (100%) |
 | Mathematik (Gymnasium, DE) | 16/16 | 648 | 825 | 16 | 9797 | 9797 | 9797 | 0 | 9797 | 0 | 0 | 0 | 0 | 0 | 648 (100%) |
 | Musik (Gymnasium, DE) | 0/16 | 38 | 52 | 2 | 0 | 329 | 0 | 0 | 0 | 0 | 0 | 257 | 0 | 2 | 38 (100%) |
-| Physik (Gymnasium, DE) | 0/16 | 320 | 392 | 16 | 642 | 1424 | 492 | 0 | 505 | 0 | 232 | 755 | 0 | 16 | 312 (100%) |
+| Physik (Gymnasium, DE) | 9/16 | 387 | 495 | 16 | 2432 | 2432 | 2063 | 0 | 2348 | 0 | 0 | 292 | 0 | 7 | 379 (100%) |
 | Politik und Wirtschaft (Gymnasium, DE) | 0/16 | 155 | 175 | 2 | 0 | 607 | 0 | 0 | 0 | 0 | 0 | 521 | 0 | 2 | 155 (100%) |
 | Polnisch (Gymnasium, DE) | 0/16 | 3 | 4 | 1 | 0 | 5 | 0 | 0 | 0 | 0 | 0 | 4 | 0 | 1 | 3 (100%) |
 | Russisch (Gymnasium, DE) | 0/16 | 6 | 7 | 1 | 0 | 8 | 0 | 0 | 0 | 0 | 0 | 7 | 0 | 1 | 6 (100%) |

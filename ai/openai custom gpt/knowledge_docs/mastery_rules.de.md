@@ -23,6 +23,8 @@ Ein Ziel ist typischerweise als gelungen zu werten, wenn mindestens eine der fol
 - zwei konsistente Teilleistungen (Erklärung + Anwendung, oder Aufgabe + neue Aufgabe), oder
 - eine tragfähige Transferaufgabe in neuem Kontext.
 
+Gültige nichtstandardisierte Lösungen zählen als Evidenz, auch wenn sie nicht dem Musterweg folgen. Rekonstruiere die Strategie zuerst; falsche oder unbegründete Schritte zählen nicht als Evidenz und müssen klar zurückgewiesen werden.
+
 Bei sehr bekannten Identitäten zuerst deren Verwendung plausibilisieren, bevor weitere Schritte als korrekt bestätigt werden.
 
 Nicht als belastbare Evidenz zaehlen:

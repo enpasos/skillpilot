@@ -41,36 +41,22 @@ Current use:
 
 ## Physics
 
-Current status on `2026-04-16`:
+Current status on `2026-05-10`:
 
-- repository-backed mapping fixture now exists:
-  `sh_physics_upper_secondary_to_canonical_physics.json`
-- reserved `sourceLandscapeId`:
-  `f1a2c733-b994-4db3-9dd6-54ffe544002b`
-- current mapping count: `23`
-- the first Schleswig-Holstein upper-secondary physics source snapshot is now active:
-  `curricula/DE/Gymnasium/input/SH/upper-secondary/source-json/DE_SHL_S_GYM_2_PHYSIK.de.json.snapshot`
+- the pilot snapshot is superseded by an official source extraction from:
+  `curricula/DE/Gymnasium/input/SH/Fachanforderungen_Physik_Sekundarstufe_2022_barrierearm.pdf`
+- source extraction:
+  `curricula/DE/Gymnasium/input/SH/upper-secondary/source-extraction/DE_SH_PHYSIK_SEKII_FACHANFORDERUNGEN_2022.source-extraction.json`
+- M3 review:
+  `sh_physics_upper_secondary_source_extraction_to_canonical_physics.review.json`
+- source goals: `169`
+- passages: `15`
+- mapping rows: `254`
+- status: MAPPING-1, MAPPING-2 and MAPPING-3 complete.
 
-Current use:
+Current QA result:
 
-- canonical Gymnasium `Physik`
-- one shared orientation anchor is mapped
-- one structural Sek-II field anchor `Elektrische und magnetische Felder` is mapped
-- one first reviewed SH field-concept corridor `Das Feldkonzept zur Beschreibung von Wechselwirkungen` is mapped
-- one first reviewed SH static-fields follow-on corridor on `Koerper in statischen Feldern` is mapped
-- one second reviewed SH follow-on on Elektronenmessung und technischen Anwendungen derselben SH-Quellflaeche is mapped
-- one third reviewed SH follow-on on Kreisbewegungen derselben SH-Quellflaeche is mapped
-- the current SH physics cut stays intentionally conservative:
-  - partial bridge from the SH source root onto the canonical physics root
-  - exact bridge on the shared motivation/orientation anchor
-  - partial bridge from the structural SH field anchor onto the shared canonical `Q1 Elektrisches und magnetisches Feld`
-  - partial bridge from the retained SH field-concept parent onto the shared canonical cluster `Elektrisches Feld`
-  - partial bridges from the retained SH leaves onto existing shared field-concept atoms for charge phenomena, Coulomb interaction, field-line sketches, and superposition
-  - partial bridges from the retained SH static-fields leaves onto existing shared canonical atoms for charges in electric fields, Lorentzkraft, Bewegungen in homogenen Feldern, and work/energy in electric fields
-  - partial bridges from the retained SH electron-measurement/application leaves onto existing shared canonical atoms for Millikan, Fadenstrahlrohr, Hall-Effekt, and Teilchenbeschleuniger
-  - partial bridges from the retained SH circle-motion leaves onto existing shared canonical atoms for Bahn- und Winkelgeschwindigkeit, Zentripetalkraft, and Kreisbewegung mit Zentripetalkraft
-  - one additional partial bridge from the adjacent SH `Drehimpuls und Drehimpulserhaltung` leaf onto the shared canonical atom `Drehimpuls als Erhaltungsgröße`
-  - one additional partial bridge from the adjacent SH `Massenspektrometer` leaf onto the shared canonical atom `Massenspektrometer als Feldanwendung beschreiben`
-- no Schleswig-Holstein-specific canonical physics atom is introduced in this step
-- no committed Schleswig-Holstein applicability cut is introduced in this step
-- next step: treat the SH lane as complete at the current reviewed pilot-cut level; the active retained lane is now semantically closed and should reopen only if a later source revision changes visible scope or another later retained source lane creates a genuinely shared Physics gap
+- `169/169` SH source goals are registered.
+- `169/169` SH source goals map into the DE-SH composition view.
+- `0` SH source goals remain uncovered.
+- `partial` means 1:n or subtree coverage, not an open content gap.

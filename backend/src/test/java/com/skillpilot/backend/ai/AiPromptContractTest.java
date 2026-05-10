@@ -53,6 +53,30 @@ class AiPromptContractTest {
                 "never directly");
     }
 
+    @Test
+    void prompts_reconstructUnusualSolutionsBeforeCorrecting() throws Exception {
+        assertContainsUuidContract(
+                Path.of("..", "ai", "openai custom gpt", "system_instructions.de.md"),
+                "zuerst rekonstruieren",
+                "Kreative",
+                "falsche oder unbegründete Schritte");
+        assertContainsUuidContract(
+                Path.of("..", "ai", "openai custom gpt", "system_instructions.en.md"),
+                "reconstruct first",
+                "creative strategies",
+                "wrong or unjustified steps");
+        assertContainsUuidContract(
+                Path.of("..", "ai", "openai custom gpt", "knowledge_docs", "trainer.de.md"),
+                "Ungewöhnliche Lösungswege",
+                "Korrigiere nur den tatsächlich falschen Schritt",
+                "lehne ihn klar ab");
+        assertContainsUuidContract(
+                Path.of("..", "ai", "openai custom gpt", "knowledge_docs", "trainer.en.md"),
+                "Unusual solution paths",
+                "Correct only the actually wrong step",
+                "reject it clearly");
+    }
+
     private static void assertContainsUuidContract(Path path, String... fragments) throws IOException {
         String text = Files.readString(path);
         for (String fragment : fragments) {

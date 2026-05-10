@@ -27,27 +27,25 @@ Current use:
 
 ## Physics
 
-Current status on `2026-04-15`:
+Current status on `2026-05-10`:
 
-- repository-backed mapping fixture now exists:
-  `be_physics_upper_secondary_to_canonical_physics.json`
+- repository-backed Source-Extraction and M3 review now exist:
+  `curricula/DE/Gymnasium/input/BE/upper-secondary/source-extraction/DE_BE_PHYSIK_SEKII_RLP_GOST_2022.source-extraction.json`
+  `be_physics_upper_secondary_source_extraction_to_canonical_physics.review.json`
 - reserved `sourceLandscapeId`:
   `8e54a9e6-dd9d-4f5d-a632-734b4ef5c754`
-- current mapping count: `26`
+- current Source-Ziel count: `175`
 - the first Berlin upper-secondary physics source PDF is now archived locally:
   `curricula/DE/Gymnasium/input/BE/upper-secondary/Teil_C_RLP_GOST_2022_Physik.pdf`
-- the first Berlin upper-secondary physics source snapshot is now active:
+- the earlier Berlin upper-secondary physics source snapshot is retained only as historical pilot bridge:
   `curricula/DE/Gymnasium/input/BE/upper-secondary/source-json/DE_BER_S_GYM_2_PHYSIK.de.json.snapshot`
 
 Current use:
 
 - canonical Gymnasium `Physik`
-- one shared orientation anchor is mapped
-- one structural `Q1` field anchor is mapped
-- one first reviewed Berlin `Q1` electric-field / capacitor corridor is mapped
-- one first reviewed Berlin `3.2.1` magnetic-field / Lorentz-force follow-on is mapped
-- one first reviewed Berlin retained `3.2.2` charged-particle-motion follow-on is mapped
-- one explicit LK follow-on on crossed fields / Hall-Effekt / Elektronenstrahlroehre is now mapped conservatively where shared targets already exist
-- the retained `c0` and `Relativitaet` clauses now bridge conservatively onto the shared canonical excursus `Exkurs: Relativistische Massenzunahme (Linearbeschleuniger)`
-- the former shared BE/BB residue `beliebige Eintrittswinkel` now bridges conservatively onto the shared canonical atom `Ladungsträger in Magnetfeldern bei beliebigem Eintrittswinkel beschreiben`
-- next step: keep Berlin stable; the active retained lane is now semantically closed on the current reviewed cut and should reopen only if a later source revision changes visible scope or another later retained source lane creates a genuinely shared Physics gap
+- standards `2.2.1` through `2.3.4` and sections `3.1.1` through `3.2.7` from the official RLP GOST 2022 PDF are extracted as source goals
+- the old `31`-goal pilot snapshot was treated as an under-coverage signal and replaced by the official source-extraction lane
+- content, process-standard, basiskonzept, and experiment rows are mapped to the shared canonical Physics graph; `partial` in the review denotes subtree or 1:n coverage, not an open fachliche gap
+- no Berlin-specific canonical Physics atom is introduced in this step
+- DE-BE GK/LK composition views are generated from the reviewed canonical Physics view shape so the source mappings have a visible jurisdictional target
+- next step: validate dashboard status and then move on to the next open Physics Bundesland

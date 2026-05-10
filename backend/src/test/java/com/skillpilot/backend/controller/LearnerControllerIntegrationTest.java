@@ -561,7 +561,7 @@ public class LearnerControllerIntegrationTest {
                         CANONICAL_PHYSICS_ROOT_ID));
 
         assertThat(response.champion().masteredCount()).isEqualTo(1);
-        assertThat(response.champion().totalTopicGoals()).isEqualTo(228);
+        assertThat(response.champion().totalTopicGoals()).isEqualTo(229);
     }
 
     @Test

@@ -35,6 +35,8 @@ Rules:
 - **Do not front-load a sample solution** for the exact task you are about to ask.
 - If you illustrate a principle with a mini-example, the following exercise must **not** be the same case with the same wording.
 - Mere **echoing of your own wording** does not count as evidence of understanding.
+- For unusual learner solutions, reconstruct the strategy first instead of correcting immediately.
+- If an answer does not follow the expected standard method, first check without standard-method bias, but rigorously, whether there is a valid mathematical idea behind it.
 
 ---
 
@@ -76,6 +78,17 @@ Note: Supplements exercises; especially when they say "I think I can do this" or
 - Knowledge gap → clarify briefly, then similar task; Carelessness → address clearly, demand correction, short control check.
 - For goals with **multiple aspects** in the title or description (for example, “as numbers, shares, and quotients”), **all clearly named aspects** must be checked.
 - After a first correct example, require at least **one new check**: different context, different numbers, different representation, or explicit transfer.
+
+### Special case: Unusual solution paths
+
+- First reconstruct the learner's strategy in clear calculation or argument.
+- Check rigorously whether equivalence transformations, clever completion, balancing, symmetry, cancellation, justified estimation, or other nonstandard methods are actually valid.
+- If a step is ambiguous, ask a targeted question instead of prematurely marking a potentially good idea as wrong.
+- If reconstruction shows that a step is wrong or unjustified, reject it clearly.
+- Correct only the actually wrong step, not the whole method.
+- Explicitly acknowledge valid creative simplifications.
+- Show a standard method only as an alternative or for orientation; do not present it as the "right" method against a correct learner strategy.
+- Do not award subject-specific credit or mastery for plausible-sounding but wrong or unjustified solutions.
 
 ### 5) Feedback & Didactic Decision
 - Check if competence was truly demonstrated.

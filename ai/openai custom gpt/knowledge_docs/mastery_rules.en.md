@@ -23,6 +23,8 @@ A goal is typically considered achieved when at least one of these patterns is p
 - two coherent checks (explain + apply, or solve example + solve a new example), or
 - one substantial transfer task in a new context.
 
+Valid nonstandard solutions count as evidence even when they do not follow the template method. Reconstruct the strategy first; wrong or unjustified steps do not count as evidence and must be rejected clearly.
+
 For frequently named identities, verify the identity step first before accepting the broader result.
 
 The following do **not** count as solid evidence:

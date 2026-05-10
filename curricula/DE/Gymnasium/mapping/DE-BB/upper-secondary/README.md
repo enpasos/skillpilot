@@ -37,28 +37,25 @@ Current use:
 
 ## Physics
 
-Current status on `2026-04-15`:
+Current status on `2026-05-10`:
 
-- repository-backed mapping fixture now exists:
-  `bb_physics_upper_secondary_to_canonical_physics.json`
+- repository-backed Source-Extraction and M3 review now exist:
+  `curricula/DE/Gymnasium/input/BB/upper-secondary/source-extraction/DE_BB_PHYSIK_SEKII_RLP_GOST_2022.source-extraction.json`
+  `bb_physics_upper_secondary_source_extraction_to_canonical_physics.review.json`
 - reserved `sourceLandscapeId`:
   `6759f46a-5642-41f7-8dc7-71fd1c335855`
-- current mapping count: `26`
+- current Source-Ziel count: `175`
 - the first Brandenburg upper-secondary physics source PDF is now archived locally:
   `curricula/DE/Gymnasium/input/BB/upper-secondary/Teil_C_RLP_GOST_2022_Physik.pdf`
-- the first Brandenburg upper-secondary physics source snapshot is now active:
+- the earlier upper-secondary physics source snapshot is retained only as historical pilot bridge:
   `curricula/DE/Gymnasium/input/BB/upper-secondary/source-json/DE_BRA_S_GYM_2_PHYSIK.de.json.snapshot`
 
 Current use:
 
 - canonical Gymnasium `Physik`
-- one shared orientation anchor is mapped
-- one structural `Q1` field anchor is mapped
-- one first reviewed `Q1` electric-field / capacitor corridor is mapped
-- one first reviewed retained `3.2.1` magnetic-field / Lorentz-force follow-on is mapped
-- one first reviewed retained `3.2.2` charged-particle-motion follow-on is mapped
-- the retained `c0` and `Relativitaet` clauses now bridge conservatively onto the shared canonical excursus `Exkurs: Relativistische Massenzunahme (Linearbeschleuniger)`
-- the former shared `beliebige Eintrittswinkel` clause now bridges conservatively onto the shared canonical atom `Ladungsträger in Magnetfeldern bei beliebigem Eintrittswinkel beschreiben`
+- standards `2.2.1` through `2.3.4` and sections `3.1.1` through `3.2.7` from the official RLP GOST 2022 PDF are extracted as source goals
+- the old `31`-goal pilot snapshot was treated as an under-coverage signal and replaced by the official source-extraction lane
+- content and experiment rows are mapped to the shared canonical Physics graph; `partial` in the review denotes subtree or 1:n coverage, not an open fachliche gap
 - no Brandenburg-specific canonical Physics atom is introduced in this step
-- no committed Brandenburg applicability cut is introduced in this step
-- next step: keep Brandenburg stable on the reviewed retained `3.2.1` -> `3.2.2` route; the active retained lane is now semantically closed on the current reviewed cut and should reopen only if a later source revision changes visible scope or another later retained source lane creates a genuinely shared Physics gap
+- DE-BB GK/LK composition views are generated from the reviewed canonical Physics view shape so the source mappings have a visible jurisdictional target
+- next step: validate dashboard status and then move on to the next open Physics Bundesland
