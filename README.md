@@ -3,9 +3,10 @@
 [![CI](https://github.com/enpasos/skillpilot/actions/workflows/ci.yml/badge.svg)](https://github.com/enpasos/skillpilot/actions/workflows/ci.yml)
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
-> **Hinweis für Leser:innen von [AIfyer](https://aifyer.com/ki-lernbegleitung/):**
+> **Hinweis für Leser:innen von [Aifyer](https://aifyer.com/ki-lernbegleitung/):**
 > SkillPilot ist die Referenzimplementierung zum Konzept einer schulisch verantworteten KI-Lernbegleitung entlang der Lehrpläne.
 > Für Mathematik am deutschen Gymnasium bildet SkillPilot die Lehrpläne aller 16 Bundesländer als Source-Extraction und bundeslandspezifische Sichten auf ein gemeinsames kanonisches Curriculum ab; aktuell arbeiten wir an der Qualitätssicherung.
+> Die entstehende Wissenslandschaft kann bereits mit dem SkillPilot Tutor genutzt werden.
 > Physik ist der nächste fachliche Schwerpunkt.
 
 SkillGraph Processing structures curricula and competence models into dependency-aware learning landscapes that can be validated, explored, and used by humans or AI agents.
