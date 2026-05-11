@@ -34,3 +34,30 @@
   stabil halten
 - die Aktivierung ist dokumentiert in `curricula/DE/Gymnasium/provenance/st-physics-onboarding.md`
 - vor jedem topic-spezifischen ST-Physik-Mapping erst die restlichen neu archivierten Bundeslaender ebenfalls auf `P2` bringen
+
+## Chemie
+### Sekundarstufe I und II (Klassen 7-12)
+- **Archivierter Fachlehrplan Chemie Gymnasium (Stand: 01.08.2022)**:
+  - archived file: `curricula/DE/Gymnasium/input/ST/FLP_Chemie_Gym_01082022_swd.pdf`
+  - official source: `https://lisa.sachsen-anhalt.de/fileadmin/Bibliothek/Politik_und_Verwaltung/MK/LISA/Unterricht/Lehrplaene/Gym/Anpassung_2022/FLP_Chemie_Gym_01082022_swd.pdf`
+  - note: this is the current retained Chemistry source for the first source-extraction pass; it covers Schuljahrgaenge `7/8`, `9`, `10 (Einfuehrungsphase)`, and `11/12 (Qualifikationsphase)`.
+- **Archivierter Fachlehrplan Chemie Gymnasium (Stand: 01.07.2019)**:
+  - archived file: `curricula/DE/Gymnasium/input/ST/Chemie_FLP_Gym_01_07_2019.pdf`
+  - official source: `https://lisa.sachsen-anhalt.de/fileadmin/Bibliothek/Politik_und_Verwaltung/MK/LISA/Unterricht/Lehrplaene/Gym/Anpassung/Chemie_FLP_Gym_01_07_2019.pdf`
+  - note: retained as the previous baseline for delta checks against the 2022 adaptation.
+- **Offizielle Lehrplan-Uebersicht**:
+  - `https://lisa.sachsen-anhalt.de/unterricht/lehrplaene`
+
+### Chemie-Naechste Schritte
+- die archivierte Sachsen-Anhalt-Chemiequelle jetzt als aktive retained Source-Lane mit source extractions stabil halten:
+  - `lower-secondary/source-extraction/DE_ST_CHEMIE_SEKI_FACHLEHRPLAN_GYMNASIUM_2022.source-extraction.json`
+  - `upper-secondary/source-extraction/DE_ST_CHEMIE_SEKII_FACHLEHRPLAN_GYMNASIUM_2022.source-extraction.json`
+- die Aktivierung ist dokumentiert in `curricula/DE/Gymnasium/provenance/st-chemistry-onboarding.md`
+- die reviewed Mapping-Dateien fuer die beiden Source-Extraction-IDs stabil halten:
+  - `curricula/DE/Gymnasium/mapping/DE-ST/lower-secondary/st_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.review.json`
+  - `curricula/DE/Gymnasium/mapping/DE-ST/upper-secondary/st_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json`
+- die kompilierte `DE-ST`-Applicability in der kanonischen Chemie-Landschaft stabil halten
+- die source-backed Sachsen-Anhalt-Chemie-Composition-Views stabil halten:
+  - `curricula/DE/Gymnasium/composition-views/chemie/de-st-gk.view.json`
+  - `curricula/DE/Gymnasium/composition-views/chemie/de-st-lk.view.json`
+- als naechstes die noch fehlenden Chemie-Source-Lanes fuer Mecklenburg-Vorpommern, Rheinland-Pfalz, Saarland, Sachsen und Thueringen onboarden

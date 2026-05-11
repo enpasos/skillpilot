@@ -62,6 +62,9 @@ class LearnerAiControllerTest {
         UnifiedLearnerStateResponse before = learnerState(skillpilotId, "setActiveGoal");
         UnifiedLearnerStateResponse after = learnerState(skillpilotId, "setMastery");
         MasteryUpdateResponse masteryResponse = new MasteryUpdateResponse(
+                true,
+                goalId,
+                1.0,
                 List.of(),
                 List.of("getFrontier"),
                 "FRONTIER",
@@ -106,6 +109,9 @@ class LearnerAiControllerTest {
         FrontierGoal currentGoal = simpleGoal(goalId, "Current Goal");
         UnifiedLearnerStateResponse before = learnerState(skillpilotId, "teachActiveGoal", currentGoal);
         MasteryUpdateResponse masteryResponse = new MasteryUpdateResponse(
+                true,
+                goalId,
+                1.0,
                 List.of(),
                 List.of("getFrontier"),
                 "FRONTIER",
@@ -119,6 +125,11 @@ class LearnerAiControllerTest {
         var response = controller.setMastery(skillpilotId, new MasteryUpdateRequest(null, goalId));
 
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
+        assertThat(response.getBody()).isInstanceOf(MasteryUpdateResponse.class);
+        MasteryUpdateResponse body = (MasteryUpdateResponse) response.getBody();
+        assertThat(body.saved()).isTrue();
+        assertThat(body.savedGoalId()).isEqualTo(goalId);
+        assertThat(body.savedMastery()).isEqualTo(1.0);
 
         verify(learnerService).assertWritableLearningSession(skillpilotId);
         verify(learnerService).getLearnerState(skillpilotId);
@@ -150,6 +161,9 @@ class LearnerAiControllerTest {
 
         UnifiedLearnerStateResponse before = learnerState(skillpilotId, "setMastery", currentGoal);
         MasteryUpdateResponse masteryResponse = new MasteryUpdateResponse(
+                true,
+                currentGoalId,
+                1.0,
                 List.of(nextGoal),
                 List.of("setMastery"),
                 "TEACHING",
@@ -167,6 +181,9 @@ class LearnerAiControllerTest {
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
         assertThat(response.getBody()).isInstanceOf(MasteryUpdateResponse.class);
         MasteryUpdateResponse body = (MasteryUpdateResponse) response.getBody();
+        assertThat(body.saved()).isTrue();
+        assertThat(body.savedGoalId()).isEqualTo(currentGoalId);
+        assertThat(body.savedMastery()).isEqualTo(1.0);
         assertThat(body.activeGoal()).isNotNull();
         assertThat(body.activeGoal().id()).isEqualTo(nextGoalId);
         assertThat(body.stateMachine()).isNotNull();

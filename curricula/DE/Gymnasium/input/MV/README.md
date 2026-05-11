@@ -26,6 +26,35 @@
   - upper-secondary: `11-12`
 - Noch keine aktiven MV-Snapshots in `source-json/`.
 
+## Chemie
+### Archivierte offizielle Quellen
+
+- **Gymnasium / Gesamtschule Chemie 8-10 (2021)**:
+  - lokale Datei: `Chemie_Sekundarstufe_I_2021.pdf`
+  - offizielle Quelle: `https://www.bildung-mv.de/export/sites/bildungsserver/.galleries/dokumente/unterricht/rahmenplaene/Anlage_9_RP_CHE_AHR-7-10_final1.pdf`
+- **Qualifikationsphase Chemie 11/12 (2022, Erprobungsfassung)**:
+  - lokale Datei: `Chemie_Gymnasium_11_12_Erprobungsfassung.pdf`
+  - offizielle Quelle: `https://www.bildung-mv.de/export/sites/bildungsserver/.galleries/dokumente/unterricht/rahmenplaene/RP_CHE_SEK2_erprobungsfassung.pdf`
+
+### Offizielle Fachseite
+
+- **Chemie - Rahmenplaene MV**:
+  - `https://www.bildung-mv.de/unterricht/rahmenplaene/rahmenplaene-fuer-die-allgemein-bildenden-faecher/chemie/`
+
+### Einordnung fuer den kanonischen DE-Gymnasium-Rollout
+
+- Die MV-Chemie-Source-Lanes sind als M1/M2/M3-Source-to-Canonical-Spuren aktiv und geprueft:
+  - `lower-secondary/source-extraction/DE_MV_CHEMIE_SEKI_RAHMENPLAN_2021.source-extraction.json`
+  - `upper-secondary/source-extraction/DE_MV_CHEMIE_SEKII_RAHMENPLAN_ERPROBUNGSFASSUNG_2022.source-extraction.json`
+- Die Review-Mappings liegen unter:
+  - `curricula/DE/Gymnasium/mapping/DE-MV/lower-secondary/mv_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.review.json`
+  - `curricula/DE/Gymnasium/mapping/DE-MV/upper-secondary/mv_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json`
+- Die learner-facing Composition Views liegen unter:
+  - `curricula/DE/Gymnasium/composition-views/chemie/de-mv-gk.view.json`
+  - `curricula/DE/Gymnasium/composition-views/chemie/de-mv-lk.view.json`
+- Die kanonische Chemie-Landschaft enthaelt die persistierte `DE-MV`-Applicability fuer diese Projektion.
+- Naechster Chemie-Schritt: `DE-MV` stabil halten; Erweiterungen nur durch einen horizontalen All-State-Chemie-Themenpass oder echte Rahmenplanrevision.
+
 ## Physik
 ### Sekundarstufe I (Klassen 7-10)
 - **Archivierte offizielle Quelle**: `Physik_Gymnasium_7_10_2022.pdf`

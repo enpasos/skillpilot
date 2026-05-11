@@ -299,6 +299,9 @@ public class LearnerAiController {
                         rewriteExamData(sm.activeGoal(), assetBase));
 
         return new MasteryUpdateResponse(
+                response.saved(),
+                response.savedGoalId(),
+                response.savedMastery(),
                 frontier,
                 response.nextAllowedActions(),
                 response.learningState(),

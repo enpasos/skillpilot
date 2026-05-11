@@ -10,7 +10,7 @@ type SourceGoal = {
   topicCode: string
   title: string
   sourceText: string
-  sourceSpan: {
+  sourceSpan: string | {
     label: string
   }
   courseLevel: CourseLevel
@@ -73,6 +73,48 @@ const specs: ReviewSpec[] = [
     reviewPath:
       'curricula/DE/Gymnasium/mapping/DE-SH/upper-secondary/sh_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json',
     stageLabel: 'SH Chemie Sek II',
+  },
+  {
+    sourceExtractionPath:
+      'curricula/DE/Gymnasium/input/ST/lower-secondary/source-extraction/DE_ST_CHEMIE_SEKI_FACHLEHRPLAN_GYMNASIUM_2022.source-extraction.json',
+    reviewPath:
+      'curricula/DE/Gymnasium/mapping/DE-ST/lower-secondary/st_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.review.json',
+    stageLabel: 'ST Chemie Sek I',
+  },
+  {
+    sourceExtractionPath:
+      'curricula/DE/Gymnasium/input/ST/upper-secondary/source-extraction/DE_ST_CHEMIE_SEKII_FACHLEHRPLAN_GYMNASIUM_2022.source-extraction.json',
+    reviewPath:
+      'curricula/DE/Gymnasium/mapping/DE-ST/upper-secondary/st_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json',
+    stageLabel: 'ST Chemie Sek II',
+  },
+  {
+    sourceExtractionPath:
+      'curricula/DE/Gymnasium/input/MV/lower-secondary/source-extraction/DE_MV_CHEMIE_SEKI_RAHMENPLAN_2021.source-extraction.json',
+    reviewPath:
+      'curricula/DE/Gymnasium/mapping/DE-MV/lower-secondary/mv_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.review.json',
+    stageLabel: 'MV Chemie Sek I',
+  },
+  {
+    sourceExtractionPath:
+      'curricula/DE/Gymnasium/input/MV/upper-secondary/source-extraction/DE_MV_CHEMIE_SEKII_RAHMENPLAN_ERPROBUNGSFASSUNG_2022.source-extraction.json',
+    reviewPath:
+      'curricula/DE/Gymnasium/mapping/DE-MV/upper-secondary/mv_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json',
+    stageLabel: 'MV Chemie Sek II',
+  },
+  {
+    sourceExtractionPath:
+      'curricula/DE/Gymnasium/input/RP/lower-secondary/source-extraction/DE_RP_CHEMIE_SEKI_RAHMENLEHRPLAN_2014.source-extraction.json',
+    reviewPath:
+      'curricula/DE/Gymnasium/mapping/DE-RP/lower-secondary/rp_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.review.json',
+    stageLabel: 'RP Chemie Sek I',
+  },
+  {
+    sourceExtractionPath:
+      'curricula/DE/Gymnasium/input/RP/upper-secondary/source-extraction/DE_RP_CHEMIE_SEKII_MSS_2022.source-extraction.json',
+    reviewPath:
+      'curricula/DE/Gymnasium/mapping/DE-RP/upper-secondary/rp_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json',
+    stageLabel: 'RP Chemie Sek II',
   },
 ]
 
@@ -278,6 +320,17 @@ const target = {
   edta: 'e22a34d4-ac1e-5afe-8f77-0dfa4fd9f44f',
 }
 
+const courseLevelMappingExceptions = new Map<string, { courseLevelDecision: 'LK'; courseLevelRationale: string }>([
+  [
+    'de-sh-chemie-sekii-fachanforderungen-2022-3-2-chemie-der-funktionalen-stoffe-und-materialien-019-d04cf222|b208b1a5-c609-53a1-8add-979417a93b7d',
+    {
+      courseLevelDecision: 'LK',
+      courseLevelRationale:
+        'Reviewed LK-specific mapping edge: this exact source-to-canonical edge covers the LK-only facet of the source goal.',
+    },
+  ],
+])
+
 const absoluteRepoPath = (repoRelativePath: string): string => path.resolve(repoRoot, repoRelativePath)
 
 function readJson<T>(relativePath: string): T {
@@ -302,19 +355,25 @@ function add(ids: Set<string>, ...goalIds: string[]): void {
   for (const goalId of goalIds) ids.add(goalId)
 }
 
+function sourceSpanLabel(sourceSpan: SourceGoal['sourceSpan']): string {
+  if (typeof sourceSpan === 'string') return sourceSpan
+  return sourceSpan.label
+}
+
 function inferProcessIds(goal: SourceGoal, text: string, ids: Set<string>): void {
-  if (goal.topicCode.includes('erkenntnisgewinnung')) {
+  const processContext = `${goal.topicCode} ${text}`
+  if (/erkenntnisgewinnung/u.test(processContext)) {
     add(ids, target.hypothesis, target.data)
     if (/modell|theorie/u.test(text)) add(ids, target.models)
     if (/versuch|untersuch|mess|labor|gerat|blindversuch|design/u.test(text)) add(ids, target.methods, target.safety)
     if (/daten|tabelle|graph|diagramm|mathematische/u.test(text)) add(ids, target.data)
   }
-  if (goal.topicCode.includes('kommunikation')) {
+  if (/kommunikation/u.test(processContext)) {
     add(ids, target.sources, target.language)
     if (/argument|diskussion/u.test(text)) add(ids, target.decisions)
     if (/symbol|diagramm|formel|reaktionsschema/u.test(text)) add(ids, target.language, target.data)
   }
-  if (goal.topicCode.includes('bewertung')) {
+  if (/bewertung/u.test(processContext)) {
     add(ids, target.decisions, target.society)
     if (/fakten|kenntnisse/u.test(text)) add(ids, target.sources)
   }
@@ -475,7 +534,7 @@ function buildReview(spec: ReviewSpec, canonicalGoalIds: Set<string>) {
     return {
       sourceGoalId: goal.id,
       topicCode: goal.topicCode,
-      sourceSpan: goal.sourceSpan.label,
+      sourceSpan: sourceSpanLabel(goal.sourceSpan),
       decision: 'mapped',
       canonicalGoalIds: canonicalGoalIdsForSource,
       rationale:
@@ -488,12 +547,16 @@ function buildReview(spec: ReviewSpec, canonicalGoalIds: Set<string>) {
   })
 
   const mappings = decisions.flatMap((decision) =>
-    decision.canonicalGoalIds.map((canonicalGoalId) => ({
-      legacyGoalId: decision.sourceGoalId,
-      canonicalGoalId,
-      matchType: decision.canonicalGoalIds.length === 1 ? 'exact' : 'partial',
-      reviewDecisionId: decision.sourceGoalId,
-    })),
+    decision.canonicalGoalIds.map((canonicalGoalId) => {
+      const courseLevelException = courseLevelMappingExceptions.get(`${decision.sourceGoalId}|${canonicalGoalId}`)
+      return {
+        legacyGoalId: decision.sourceGoalId,
+        canonicalGoalId,
+        matchType: decision.canonicalGoalIds.length === 1 ? 'exact' : 'partial',
+        reviewDecisionId: decision.sourceGoalId,
+        ...(courseLevelException ?? {}),
+      }
+    }),
   )
 
   return {

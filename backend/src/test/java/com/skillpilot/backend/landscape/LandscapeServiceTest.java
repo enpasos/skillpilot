@@ -47,6 +47,8 @@ class LandscapeServiceTest {
         private static final String NRW_LOWER_MATH_ID = "c862423f-d0ac-4a65-8ad2-9a6e560313a8";
         private static final String NRW_UPPER_MATH_ID = "d3a068ca-90c6-4d7f-ab6b-4d8b43085cb1";
         private static final String NRW_UPPER_PHYSICS_ID = "8abb46ff-072b-41b7-9d70-0334cb5a1a6c";
+        private static final String SACHSEN_ANHALT_CHEMISTRY_LOWER_ID = "f9e8b305-d604-55c5-82b0-77a734925371";
+        private static final String SACHSEN_ANHALT_CHEMISTRY_UPPER_ID = "86a99136-152f-5da7-84f2-3a0ed9f53697";
         private static final String NRW_LOWER_FUNCTION_CLUSTER_ID = "f43fd248-195e-4168-bf70-ce92f864738f";
         private static final String NRW_UPPER_ANALYSIS_CLUSTER_ID = "31305eea-edf2-41b3-b312-bb1bc92f8fb7";
         private static final String NRW_UPPER_PHYSICS_ENTRY_CLUSTER_ID = "8cf56a06-2097-436b-80a0-86d2977ce171";
@@ -328,6 +330,30 @@ class LandscapeServiceTest {
                 assertThat(landscapeService.isLegacyHiddenByDefaultLandscape(NRW_LOWER_MATH_ID)).isTrue();
                 assertThat(landscapeService.isLegacyHiddenByDefaultLandscape(NRW_UPPER_MATH_ID)).isTrue();
                 assertThat(landscapeService.isLegacyHiddenByDefaultLandscape(NRW_UPPER_PHYSICS_ID)).isTrue();
+        }
+
+        @Test
+        void loadsSachsenAnhaltChemistrySourceExtractionsFromRealRegistry() {
+                LandscapeProperties properties = new LandscapeProperties();
+                properties.setDirectory("../curricula");
+                ObjectMapper objectMapper = new ObjectMapper();
+                LandscapeService landscapeService = new LandscapeService(properties, objectMapper);
+
+                LearningLandscape lower = landscapeService.getById(SACHSEN_ANHALT_CHEMISTRY_LOWER_ID);
+                LearningLandscape upper = landscapeService.getById(SACHSEN_ANHALT_CHEMISTRY_UPPER_ID);
+
+                assertThat(lower).isNotNull();
+                assertThat(upper).isNotNull();
+                assertThat(lower.getTitle())
+                                .isEqualTo("DE-ST - Chemie Sekundarstufe I (Sachsen-Anhalt, Fachlehrplan Gymnasium 2022 Source-Extraction)");
+                assertThat(upper.getTitle())
+                                .isEqualTo("DE-ST - Chemie Sekundarstufe II (Sachsen-Anhalt, Fachlehrplan Gymnasium 2022 Source-Extraction)");
+                assertThat(lower.getGoals()).hasSize(270);
+                assertThat(upper.getGoals()).hasSize(324);
+                assertThat(landscapeService.resolveSourceLandscapeJurisdiction(SACHSEN_ANHALT_CHEMISTRY_LOWER_ID))
+                                .isEqualTo("DE-ST");
+                assertThat(landscapeService.resolveSourceLandscapeJurisdiction(SACHSEN_ANHALT_CHEMISTRY_UPPER_ID))
+                                .isEqualTo("DE-ST");
         }
 
         @Test

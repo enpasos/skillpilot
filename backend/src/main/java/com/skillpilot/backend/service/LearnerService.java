@@ -1127,6 +1127,9 @@ public class LearnerService {
                 } else if (currentMastery >= 0.9) {
                     UnifiedLearnerStateResponse state = getLearnerState(skillpilotId);
                     return new MasteryUpdateResponse(
+                            true,
+                            effectiveGoalId,
+                            currentMastery,
                             state.frontier(),
                             state.nextAllowedActions(),
                             state.learningState(),
@@ -1164,6 +1167,9 @@ public class LearnerService {
         UnifiedLearnerStateResponse state = getLearnerState(skillpilotId);
         eventPublisher.publishEvent(new LearnerStateChangedEvent(this, skillpilotId, "MASTERY_UPDATE"));
         return new MasteryUpdateResponse(
+                true,
+                effectiveGoalId,
+                masteryValue,
                 state.frontier(),
                 state.nextAllowedActions(),
                 state.learningState(),

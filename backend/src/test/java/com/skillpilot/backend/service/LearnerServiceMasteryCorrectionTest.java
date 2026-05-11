@@ -3,11 +3,13 @@ package com.skillpilot.backend.service;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.skillpilot.backend.api.MasteryUpdateRequest;
+import com.skillpilot.backend.api.MasteryUpdateResponse;
 import com.skillpilot.backend.domain.Learner;
 import com.skillpilot.backend.domain.LearningState;
 import com.skillpilot.backend.domain.Mastery;
@@ -88,6 +90,18 @@ class LearnerServiceMasteryCorrectionTest {
 
         assertThat(existingMastery.getValue()).isEqualTo(0.0);
         verify(masteryRepository).save(existingMastery);
+    }
+
+    @Test
+    void setMastery_confirmsAlreadyMasteredGoalOutsideFrontierWithoutAmbiguousStateOnlyResponse() {
+        MasteryUpdateResponse response = learnerService.setMastery(
+                LEARNER_ID,
+                new MasteryUpdateRequest(Map.of(GOAL_ID, 1.0), GOAL_ID));
+
+        assertThat(response.saved()).isTrue();
+        assertThat(response.savedGoalId()).isEqualTo(GOAL_ID);
+        assertThat(response.savedMastery()).isEqualTo(1.0);
+        verify(masteryRepository, never()).save(any(Mastery.class));
     }
 
     @Test

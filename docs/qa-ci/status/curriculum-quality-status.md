@@ -1,6 +1,6 @@
 # Curriculum Quality Status
 
-Generated: 2026-05-11T15:57:07.804Z
+Generated: 2026-05-11T18:21:33.801Z
 Rules version: curriculum-quality-v1
 
 ## Summary
@@ -20,7 +20,7 @@ Rules version: curriculum-quality-v1
 | Curriculum | Maturity | Goals | Atomic | Passage extraction | Bundeslaender | QA scopes | Warn | Fail |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Biologie (Gymnasium, DE) | M0 | 216 | 182 | 0/3 | 0/16 | 0 | 0 | 2 |
-| Chemie (Gymnasium, DE) | M0 | 415 | 366 | 17/17 | 10/16 | 0 | 2 | 0 |
+| Chemie (Gymnasium, DE) | M0 | 415 | 366 | 23/23 | 13/16 | 0 | 2 | 0 |
 | Chinesisch (Gymnasium, DE) | M0 | 192 | 181 | 0/2 | 0/16 | 0 | 1 | 1 |
 | Deutsch (Gymnasium, DE) | M0 | 181 | 144 | 0/2 | 0/16 | 0 | 1 | 1 |
 | Englisch (Gymnasium, DE) | M0 | 130 | 104 | 0/2 | 0/16 | 0 | 1 | 1 |
@@ -59,12 +59,18 @@ Rules version: curriculum-quality-v1
 | Chemie (Gymnasium, DE) | Chemie Sekundarstufe I (Hessen, G9 Source-Extraction) | DE-HE | 1/1 original source(s) | 3/3 | - | 9 | 122 | 67 | 55 | 55% |  |
 | Chemie (Gymnasium, DE) | DE-HH - Chemie Sekundarstufe I (Hamburg, Bildungsplan Source-Extraction) | DE-HH | 1/1 original source(s) | 3/3 | - | 7 | 65 | 40 | 25 | 62% |  |
 | Chemie (Gymnasium, DE) | DE-HH - Chemie Studienstufe (Hamburg, Bildungsplan 2022 Source-Extraction) | DE-HH | 1/1 original source(s) | 3/3 | - | 12 | 97 | 18 | 79 | 19% |  |
+| Chemie (Gymnasium, DE) | DE-MV - Chemie Qualifikationsphase (Mecklenburg-Vorpommern, Rahmenplan 2022 Erprobungsfassung Source-Extraction) | DE-MV | 1/1 original source(s) | 3/3 | - | 12 | 122 | 18 | 104 | 15% |  |
+| Chemie (Gymnasium, DE) | DE-MV - Chemie Sekundarstufe I (Mecklenburg-Vorpommern, Rahmenplan 2021 Source-Extraction) | DE-MV | 1/1 original source(s) | 3/3 | - | 11 | 114 | 34 | 80 | 30% |  |
 | Chemie (Gymnasium, DE) | DE-NI - Chemie Oberstufe (Niedersachsen, KC 2022 Source-Extraction) | DE-NI | 1/1 original source(s) | 3/3 | - | 21 | 333 | 82 | 251 | 25% |  |
 | Chemie (Gymnasium, DE) | DE-NI - Chemie Sekundarstufe I (Niedersachsen, KC 2015 Source-Extraction) | DE-NI | 1/1 original source(s) | 3/3 | - | 14 | 196 | 23 | 173 | 12% |  |
 | Chemie (Gymnasium, DE) | DE-NW - Chemie Oberstufe (Nordrhein-Westfalen, KLP 2022 Source-Extraction) | DE-NW | 1/1 original source(s) | 3/3 | - | 30 | 154 | 2 | 152 | 1% |  |
 | Chemie (Gymnasium, DE) | DE-NW - Chemie Sekundarstufe I (Nordrhein-Westfalen, KLP 2019 Source-Extraction) | DE-NW | 1/1 original source(s) | 3/3 | - | 30 | 79 | 1 | 78 | 1% |  |
+| Chemie (Gymnasium, DE) | DE-RP - Chemie Mainzer Studienstufe (Rheinland-Pfalz, Lehrplan 2022 Source-Extraction) | DE-RP | 1/1 original source(s) | 3/3 | - | 63 | 325 | 97 | 228 | 30% |  |
+| Chemie (Gymnasium, DE) | DE-RP - Chemie Sekundarstufe I (Rheinland-Pfalz, Lehrplan BCP 2014 Source-Extraction) | DE-RP | 1/1 original source(s) | 3/3 | - | 12 | 65 | 23 | 42 | 35% |  |
 | Chemie (Gymnasium, DE) | DE-SH - Chemie Oberstufe (Schleswig-Holstein, Fachanforderungen 2022 Source-Extraction) | DE-SH | 1/1 original source(s) | 3/3 | - | 7 | 165 | 46 | 119 | 28% |  |
 | Chemie (Gymnasium, DE) | DE-SH - Chemie Sekundarstufe I (Schleswig-Holstein, Fachanforderungen 2022 Source-Extraction) | DE-SH | 1/1 original source(s) | 3/3 | - | 8 | 156 | 27 | 129 | 17% |  |
+| Chemie (Gymnasium, DE) | DE-ST - Chemie Sekundarstufe I (Sachsen-Anhalt, Fachlehrplan Gymnasium 2022 Source-Extraction) | DE-ST | 2/2 original source(s) | 3/3 | - | 12 | 270 | 55 | 215 | 20% |  |
+| Chemie (Gymnasium, DE) | DE-ST - Chemie Sekundarstufe II (Sachsen-Anhalt, Fachlehrplan Gymnasium 2022 Source-Extraction) | DE-ST | 2/2 original source(s) | 3/3 | - | 15 | 324 | 40 | 284 | 12% |  |
 | Chinesisch (Gymnasium, DE) | Chinesisch (Gymnasium) | DE-BY | No extraction | 0/3 | MAPPING-1 | 0 | 0 | 0 | 0 | 0% |  |
 | Chinesisch (Gymnasium, DE) | Chinesisch Oberstufe (Hessen, KC 2024) | DE-HE | No extraction | 0/3 | MAPPING-1 | 0 | 0 | 0 | 0 | 0% |  |
 | Deutsch (Gymnasium, DE) | Deutsch (Gymnasium) | DE-BY | No extraction | 0/3 | MAPPING-1 | 0 | 0 | 0 | 0 | 0% |  |
@@ -156,7 +162,7 @@ Rules version: curriculum-quality-v1
 | Curriculum | Complete | DE view atoms | Raw atoms | Source-backed states | Extracted source goals | Registered source originals | Fully covered originals | Unregistered source goals | Extracted source atoms | Unregistered source atoms | Unsupported assignments | Unmapped source atoms | Partial | Error | Max source-backed view coverage |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Biologie (Gymnasium, DE) | 0/16 | 160 | 182 | 2 | 0 | 694 | 620 | 0 | 0 | 0 | 0 | 56 | 0 | 2 | 160 (100%) |
-| Chemie (Gymnasium, DE) | 10/16 | 304 | 366 | 10 | 2592 | 2592 | 2592 | 0 | 2592 | 0 | 0 | 0 | 0 | 0 | 302 (100%) |
+| Chemie (Gymnasium, DE) | 13/16 | 304 | 366 | 13 | 3812 | 3812 | 3812 | 0 | 3812 | 0 | 0 | 0 | 0 | 0 | 302 (100%) |
 | Chinesisch (Gymnasium, DE) | 0/16 | 170 | 181 | 2 | 0 | 436 | 436 | 0 | 0 | 0 | 0 | 0 | 0 | 2 | 170 (100%) |
 | Deutsch (Gymnasium, DE) | 0/16 | 127 | 144 | 2 | 0 | 650 | 650 | 0 | 0 | 0 | 0 | 0 | 0 | 2 | 127 (100%) |
 | Englisch (Gymnasium, DE) | 0/16 | 89 | 104 | 2 | 0 | 141 | 141 | 0 | 0 | 0 | 0 | 0 | 0 | 2 | 89 (100%) |

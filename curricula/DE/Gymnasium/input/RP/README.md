@@ -19,6 +19,63 @@
   - Gymnasiale Oberstufe / MSS: [Bildungsserver RLP - Gymnasiale Oberstufe und Abitur in RLP](https://bildung.rlp.de/mathematik/projekte-und-themen/sekundarstufe-ii/abitur)
   - Lehrpläne: [Bildung RLP - Lehrpläne](https://bildung.rlp.de/lehrplaene)
 
+## Chemie
+### Archivierte offizielle Quellen
+
+- **Biologie, Chemie, Physik Klassenstufen 7-10 (2014)**:
+  - lokale Datei: `Chemie_Sekundarstufe_I_Biologie_Physik_Chemie_2014.pdf`
+  - offizielle Quelle: `https://bildung.rlp.de/lehrplaene/?tx_rlpbase_download%5Bitem%5D=56515&type=432522`
+- **Chemie Grund- und Leistungsfach in der gymnasialen Oberstufe / Mainzer Studienstufe (2022)**:
+  - lokale Datei: `Chemie_Sekundarstufe_II_MSS_2022.pdf`
+  - offizielle Quelle: `https://bildung.rlp.de/lehrplaene/?tx_rlpbase_download%5Bitem%5D=67901&type=432522`
+
+### Offizielle Fachseite
+
+- **Chemie - Richtlinien / Lehrplaene RLP**:
+  - `https://bildung.rlp.de/chemie/vorgaben/richtlinien`
+
+### Einordnung fuer den kanonischen DE-Gymnasium-Rollout
+
+- Die RP-Chemie-Source-Lanes sind als M1/M2/M3-Source-to-Canonical-Spuren aktiv und geprueft:
+  - `lower-secondary/source-extraction/DE_RP_CHEMIE_SEKI_RAHMENLEHRPLAN_2014.source-extraction.json`
+  - `upper-secondary/source-extraction/DE_RP_CHEMIE_SEKII_MSS_2022.source-extraction.json`
+- Die Review-Mappings liegen unter:
+  - `curricula/DE/Gymnasium/mapping/DE-RP/lower-secondary/rp_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.review.json`
+  - `curricula/DE/Gymnasium/mapping/DE-RP/upper-secondary/rp_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json`
+- Die learner-facing Composition Views liegen unter:
+  - `curricula/DE/Gymnasium/composition-views/chemie/de-rp-gk.view.json`
+  - `curricula/DE/Gymnasium/composition-views/chemie/de-rp-lk.view.json`
+- Die kanonische Chemie-Landschaft enthaelt die persistierte `DE-RP`-Applicability fuer diese Projektion.
+- Naechster Chemie-Schritt: `DE-RP` stabil halten; Erweiterungen nur durch einen horizontalen All-State-Chemie-Themenpass oder echte Lehrplanrevision.
+
+## Chemie
+### Archivierte offizielle Quellen
+
+- **Biologie, Chemie, Physik Klassenstufen 7-10 (2014)**:
+  - lokale Datei: `Chemie_Sekundarstufe_I_Biologie_Physik_Chemie_2014.pdf`
+  - offizielle Quelle: `https://bildung.rlp.de/lehrplaene/?tx_rlpbase_download%5Bitem%5D=56515&type=432522`
+- **Chemie Grund- und Leistungsfach, Mainzer Studienstufe (2022)**:
+  - lokale Datei: `Chemie_Sekundarstufe_II_MSS_2022.pdf`
+  - offizielle Quelle: `https://bildung.rlp.de/lehrplaene/?tx_rlpbase_download%5Bitem%5D=67901&type=432522`
+
+### Offizielle Fachseite
+
+- **Chemie - Lehrplaene/Richtlinien RLP**:
+  - `https://bildung.rlp.de/chemie/vorgaben/richtlinien`
+
+### Einordnung fuer den kanonischen DE-Gymnasium-Rollout
+
+- Die RP-Chemie-Source-Lanes sind als M1/M2/M3-Source-to-Canonical-Spuren aktiv und geprueft:
+  - `lower-secondary/source-extraction/DE_RP_CHEMIE_SEKI_RAHMENLEHRPLAN_2014.source-extraction.json`
+  - `upper-secondary/source-extraction/DE_RP_CHEMIE_SEKII_MSS_2022.source-extraction.json`
+- Die Review-Mappings liegen unter:
+  - `curricula/DE/Gymnasium/mapping/DE-RP/lower-secondary/rp_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.review.json`
+  - `curricula/DE/Gymnasium/mapping/DE-RP/upper-secondary/rp_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json`
+- Die learner-facing Composition Views liegen unter:
+  - `curricula/DE/Gymnasium/composition-views/chemie/de-rp-gk.view.json`
+  - `curricula/DE/Gymnasium/composition-views/chemie/de-rp-lk.view.json`
+- Naechster Chemie-Schritt: `DE-RP` stabil halten; Erweiterungen nur durch einen horizontalen All-State-Chemie-Themenpass oder echte Lehrplanrevision.
+
 ## Physik
 ### Sekundarstufe I (Klassen 5-10)
 - **Lehrplan naturwissenschaftliche Fächer (Biologie, Chemie, Physik)**: [Bildungsserver RLP - Physik Sek I](https://physik.bildung-rp.de/)
