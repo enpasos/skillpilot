@@ -1,6 +1,6 @@
 # Curriculum Quality Status
 
-Generated: 2026-05-11T15:12:08.686Z
+Generated: 2026-05-11T15:57:07.804Z
 Rules version: curriculum-quality-v1
 
 ## Summary
@@ -20,7 +20,7 @@ Rules version: curriculum-quality-v1
 | Curriculum | Maturity | Goals | Atomic | Passage extraction | Bundeslaender | QA scopes | Warn | Fail |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Biologie (Gymnasium, DE) | M0 | 216 | 182 | 0/3 | 0/16 | 0 | 0 | 2 |
-| Chemie (Gymnasium, DE) | M0 | 415 | 366 | 17/17 | 2/16 | 0 | 2 | 2 |
+| Chemie (Gymnasium, DE) | M0 | 415 | 366 | 17/17 | 10/16 | 0 | 2 | 0 |
 | Chinesisch (Gymnasium, DE) | M0 | 192 | 181 | 0/2 | 0/16 | 0 | 1 | 1 |
 | Deutsch (Gymnasium, DE) | M0 | 181 | 144 | 0/2 | 0/16 | 0 | 1 | 1 |
 | Englisch (Gymnasium, DE) | M0 | 130 | 104 | 0/2 | 0/16 | 0 | 1 | 1 |
@@ -156,7 +156,7 @@ Rules version: curriculum-quality-v1
 | Curriculum | Complete | DE view atoms | Raw atoms | Source-backed states | Extracted source goals | Registered source originals | Fully covered originals | Unregistered source goals | Extracted source atoms | Unregistered source atoms | Unsupported assignments | Unmapped source atoms | Partial | Error | Max source-backed view coverage |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Biologie (Gymnasium, DE) | 0/16 | 160 | 182 | 2 | 0 | 694 | 620 | 0 | 0 | 0 | 0 | 56 | 0 | 2 | 160 (100%) |
-| Chemie (Gymnasium, DE) | 2/16 | 304 | 366 | 10 | 1466 | 1466 | 1466 | 0 | 1466 | 0 | 337 | 0 | 0 | 8 | 302 (100%) |
+| Chemie (Gymnasium, DE) | 10/16 | 304 | 366 | 10 | 2592 | 2592 | 2592 | 0 | 2592 | 0 | 0 | 0 | 0 | 0 | 302 (100%) |
 | Chinesisch (Gymnasium, DE) | 0/16 | 170 | 181 | 2 | 0 | 436 | 436 | 0 | 0 | 0 | 0 | 0 | 0 | 2 | 170 (100%) |
 | Deutsch (Gymnasium, DE) | 0/16 | 127 | 144 | 2 | 0 | 650 | 650 | 0 | 0 | 0 | 0 | 0 | 0 | 2 | 127 (100%) |
 | Englisch (Gymnasium, DE) | 0/16 | 89 | 104 | 2 | 0 | 141 | 141 | 0 | 0 | 0 | 0 | 0 | 0 | 2 | 89 (100%) |
