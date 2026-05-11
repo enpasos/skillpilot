@@ -15,3 +15,21 @@ Scope:
 Archived locally at:
 
 - `curricula/DE/Gymnasium/input/NW/upper-secondary/gost_klp_m_2023_06_07.pdf`
+
+### Chemie Source PDF (download link)
+
+Starting point:
+https://lehrplannavigator.nrw.de/sekundarstufe-ii/kernlehrplaene-fuer-die-gymnasiale-oberstufe-ab-20222023/chemie
+
+- `gost_klp_ch_2022_06_07.pdf`:
+  https://lehrplannavigator.nrw.de/system/files/media/document/file/gost_klp_ch_2022_06_07.pdf
+
+Scope:
+
+- Nordrhein-Westfalen
+- Gymnasiale Oberstufe
+- Chemie
+
+Archived locally at:
+
+- `curricula/DE/Gymnasium/input/NW/upper-secondary/gost_klp_ch_2022_06_07.pdf`

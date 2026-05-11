@@ -2,6 +2,23 @@
 
 This lane now carries the active Niedersachsen lower-secondary Gymnasium mappings into the shared DE-level canonical mathematics landscape.
 
+## Chemie
+
+Current chemistry status on `2026-05-11`:
+
+- source extraction:
+  `curricula/DE/Gymnasium/input/NI/lower-secondary/source-extraction/DE_NI_CHEMIE_SEKI_KC2015.source-extraction.json`
+- M3 review:
+  `ni_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.review.json`
+- source:
+  `curricula/DE/Gymnasium/input/NI/lower-secondary/kc_naturwissenschaften_gymnasium_sek_i_2015.pdf`
+- MAPPING-1 complete: 14 official chemistry Basiskonzept competence-table passages from pages 51-64
+- MAPPING-2 complete: 196 source goals from the official competency bullets
+- MAPPING-3 complete: 196/196 source goals reviewed against canonical SkillPilot chemistry targets; 23 passgenau, 173 ueber 1:n-Zuordnungen, 0 offene Canonical-Gaps
+- local count audit: 196 is intentionally accepted despite the HE/BW baseline deviation because Niedersachsen spells out Fachwissen, Erkenntnisgewinnung, Kommunikation, and Bewertung as separate competency bullets; appendix and implementation examples are excluded
+
+## Mathematik
+
 Current status on `2026-04-05`:
 
 - repository-backed mapping fixture:

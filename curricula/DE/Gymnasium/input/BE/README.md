@@ -44,3 +44,16 @@ Das LISUM gibt gemeinsame Rahmenlehrpläne für Berlin und Brandenburg heraus.
 - **Rahmenlehrplan gymnasiale Oberstufe Teil C Physik (ab 2022/23)**: [Bildungsserver BE/BB - Physik Sek II](https://bildungsserver.berlin-brandenburg.de/rlp-online/gymnasiale-oberstufe/teil-c-faecher/physik)
 - Hinweis:
   gemeinsamer BE/BB-Rahmenlehrplan, der hier zunaechst als Berliner retained source lane mit schmaler Berlin-spezifischer Mapping-Lane aktiviert ist
+
+## Chemie
+### Sekundarstufe II (Gymnasiale Oberstufe)
+- Archiviert:
+  `curricula/DE/Gymnasium/input/BE/upper-secondary/Teil_C_RLP_GOST_2022_Chemie.pdf`
+- Aktive Source-Extraction:
+  `curricula/DE/Gymnasium/input/BE/upper-secondary/source-extraction/DE_BE_CHEMIE_SEKII_RLP_GOST_2022.source-extraction.json`
+- Aktiver Umfang:
+  MAPPING-1 und MAPPING-2 aus dem amtlichen BE/BB-RLP-GOST-Teil-C-PDF; 23 Passagen aus `2.2.1` bis `3.2.9`, 203 Source-Ziele aus den Inhaltszeilen der E-/Q-Themenfelder
+- M3-Status:
+  abgeschlossen; 203/203 Source-Ziele reviewed, 100 direkt und 103 ueber 1:n-Zuordnungen inhaltlich abgedeckt
+- Offizielle Quelle:
+  `https://bildungsserver.berlin-brandenburg.de/fileadmin/bbb/unterricht/rahmenlehrplaene/gymnasiale_oberstufe/curricula/2022/Teil_C_RLP_GOST_2022_Chemie.pdf`

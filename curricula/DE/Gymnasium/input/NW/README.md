@@ -3,6 +3,7 @@
 Current local archive status on `2026-04-10`:
 
 - mathematics source PDFs for Sek I and Sek II are now archived locally
+- chemistry source PDFs for Sek I and Sek II are now archived locally
 - first NRW mathematics source snapshots are now archived locally as pilot subsets under `lower-secondary/source-json/` and `upper-secondary/source-json/`
 - first NRW upper-secondary physics source snapshot is now archived locally as a pilot subset under `upper-secondary/source-json/`
 - first canonical NRW work should start from the locally retained source artifacts and snapshot goal IDs, not from the public links alone
@@ -27,3 +28,14 @@ Current local archive status on `2026-04-10`:
 ### Sekundarstufe II (Gymnasiale Oberstufe)
 - **Neuer Kernlehrplan Physik in NRW (2022)**: [Schulentwicklung NRW (QUA-LiS) - Lehrplannavigator Sek II](https://www.schulentwicklung.nrw.de/lehrplaene/lehrplannavigator-s-ii/gymnasiale-oberstufe/physik/)
 - Pilot source snapshot: `upper-secondary/source-json/DE_NRW_S_GYM_2_PHYSIK.de.json.snapshot`
+
+## Chemie
+### Sekundarstufe I (Klassen 5-10)
+- **Kernlehrplan Chemie Sekundarstufe I Gymnasium (2019)**: [Lehrplannavigator NRW - Chemie Gymnasium](https://lehrplannavigator.nrw.de/sekundarstufe-i/kernlehrplaene-fuer-das-gymnasium-ab-20192020/chemie)
+- Archived source PDF: `lower-secondary/g9_ch_klp_3415_2019_06_23.pdf`
+- Source references: `lower-secondary/references.md`
+
+### Sekundarstufe II (Gymnasiale Oberstufe)
+- **Kernlehrplan Chemie gymnasiale Oberstufe (2022/2023)**: [Lehrplannavigator NRW - Chemie Gymnasiale Oberstufe](https://lehrplannavigator.nrw.de/sekundarstufe-ii/kernlehrplaene-fuer-die-gymnasiale-oberstufe-ab-20222023/chemie)
+- Archived source PDF: `upper-secondary/gost_klp_ch_2022_06_07.pdf`
+- Source references: `upper-secondary/references.md`

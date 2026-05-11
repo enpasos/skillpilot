@@ -7,6 +7,19 @@
 ### Sekundarstufe II (Gymnasiale Oberstufe)
 - **Bildungsplan Mathematik GyO**: [LIS Bremen - Lehrpläne](https://www.lis.bremen.de/schulqualitaet/lehrplaene-und-richtlinien-4384)
 
+## Chemie
+### Sekundarstufe I (Klassen 5-9)
+- **Archivierte offizielle PDFs**
+  - `Naturwissenschaften_Gymnasium_5_10_2006.pdf`
+  - `Naturwissenschaften_Gymnasium_5_9_Einschraenkungen_2022.pdf`
+- **Öffentliche Quellen**
+  - Lehrpläne: [LIS Bremen - Sekundarbereich I](https://www.lis.bremen.de/schulqualitaet/bildungsplaene/sekundarbereich-i-21953)
+  - Direkte PDF-Quelle Bildungsplan: [LIS Bremen - Naturwissenschaften, Biologie, Chemie, Physik Gymnasium 2006](https://www.lis.bremen.de/sixcms/media.php/13/06-12-06_nat_gy.pdf)
+  - Direkte PDF-Quelle Einschränkungen: [LIS Bremen - Hinweise zur eingeschränkten Gültigkeit 2022](https://www.lis.bremen.de/sixcms/media.php/13/Gy_Naturwiss_2006_inhalt_Einschr%C3%A4nkungen.pdf)
+- **Source-Extraction**
+  - `lower-secondary/source-extraction/DE_HB_CHEMIE_SEKI_BILDUNGSPLAN_2006_2022.source-extraction.json`
+  - Die Sek-I-Spur umfasst nur die vier nach Anlage 239/2022 weitergeltenden Chemie-Themen; Energie und Energieträger sowie Natur- und Kunststoffe sind Oberstufenstoff.
+
 ## Physik
 ### Sekundarstufe I (Klassen 5-10)
 - **Archivierte offizielle PDFs**

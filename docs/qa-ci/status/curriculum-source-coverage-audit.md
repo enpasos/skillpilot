@@ -1,6 +1,6 @@
 # Curriculum Source Coverage Audit
 
-Generated: 2026-05-08T17:24:09.716Z
+Generated: 2026-05-11T15:11:38.684Z
 
 This audit separates inhaltliche Abdeckung from passgenaue Zuordnung. `provenance`, reviewed `mapping` entries including `partial`, and explicitly reviewed requires-closure surrogate entries count as Lehrplan evidence; `partial` mappings remain visible as quality warnings. `override`, `child-union`, and automatic `requires-closure` do not count as source coverage.
 
@@ -8,47 +8,47 @@ This file is a raw Applicability compiler audit. The Workbench `Curriculum Quali
 
 ## Mathematik (Gymnasium, DE)
 
-Atomic goals: 792
+Atomic goals: 825
 
 | Bundesland | Status | Source-backed | Surrogate | Missing | Visible | Unsupported visible | Partial source links | Warnings | Errors |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| DE-BW | partial | 792/792 (100%) | 0 | 0 | 792 | 0 | 603 | 603 | 0 |
-| DE-HE | covered | 792/792 (100%) | 0 | 0 | 792 | 0 | 0 | 0 | 0 |
-| DE-BY | error | 535/792 (67.6%) | 0 | 257 | 568 | 33 | 347 | 347 | 0 |
-| DE-BB | covered | 792/792 (100%) | 0 | 0 | 792 | 0 | 0 | 0 | 0 |
-| DE-BE | covered | 792/792 (100%) | 0 | 0 | 792 | 0 | 0 | 0 | 0 |
-| DE-NI | partial | 792/792 (100%) | 0 | 0 | 792 | 0 | 725 | 725 | 0 |
-| DE-NW | partial | 792/792 (100%) | 0 | 0 | 792 | 0 | 663 | 663 | 0 |
-| DE-SH | error | 706/792 (89.1%) | 0 | 86 | 711 | 5 | 498 | 498 | 0 |
-| DE-HB | error | 725/792 (91.5%) | 0 | 67 | 735 | 10 | 647 | 647 | 0 |
-| DE-HH | partial | 792/792 (100%) | 0 | 0 | 792 | 0 | 660 | 660 | 0 |
-| DE-MV | partial | 792/792 (100%) | 0 | 0 | 792 | 0 | 732 | 732 | 0 |
-| DE-RP | partial | 792/792 (100%) | 0 | 0 | 792 | 0 | 747 | 747 | 0 |
-| DE-SL | partial | 792/792 (100%) | 0 | 0 | 792 | 0 | 741 | 741 | 0 |
-| DE-SN | partial | 792/792 (100%) | 0 | 0 | 792 | 0 | 733 | 733 | 0 |
-| DE-ST | partial | 792/792 (100%) | 0 | 0 | 792 | 0 | 745 | 745 | 0 |
-| DE-TH | partial | 792/792 (100%) | 0 | 0 | 792 | 0 | 759 | 759 | 0 |
+| DE-BW | covered | 825/825 (100%) | 0 | 0 | 825 | 0 | 632 | 0 | 0 |
+| DE-HE | covered | 825/825 (100%) | 0 | 0 | 825 | 0 | 0 | 0 | 0 |
+| DE-BY | error | 567/825 (68.7%) | 0 | 258 | 600 | 33 | 366 | 0 | 0 |
+| DE-BB | covered | 825/825 (100%) | 0 | 0 | 825 | 0 | 0 | 0 | 0 |
+| DE-BE | covered | 825/825 (100%) | 0 | 0 | 825 | 0 | 0 | 0 | 0 |
+| DE-NI | covered | 825/825 (100%) | 0 | 0 | 825 | 0 | 758 | 0 | 0 |
+| DE-NW | covered | 825/825 (100%) | 0 | 0 | 825 | 0 | 688 | 0 | 0 |
+| DE-SH | error | 733/825 (88.8%) | 0 | 92 | 742 | 9 | 521 | 0 | 0 |
+| DE-HB | error | 758/825 (91.9%) | 0 | 67 | 768 | 10 | 678 | 0 | 0 |
+| DE-HH | covered | 825/825 (100%) | 0 | 0 | 825 | 0 | 687 | 0 | 0 |
+| DE-MV | covered | 825/825 (100%) | 0 | 0 | 825 | 0 | 763 | 0 | 0 |
+| DE-RP | covered | 825/825 (100%) | 0 | 0 | 825 | 0 | 778 | 0 | 0 |
+| DE-SL | covered | 825/825 (100%) | 0 | 0 | 825 | 0 | 772 | 0 | 0 |
+| DE-SN | covered | 825/825 (100%) | 0 | 0 | 825 | 0 | 764 | 0 | 0 |
+| DE-ST | covered | 825/825 (100%) | 0 | 0 | 825 | 0 | 776 | 0 | 0 |
+| DE-TH | covered | 825/825 (100%) | 0 | 0 | 825 | 0 | 790 | 0 | 0 |
 
 ## Physik (Gymnasium, DE)
 
-Atomic goals: 392
+Atomic goals: 497
 
 | Bundesland | Status | Source-backed | Surrogate | Missing | Visible | Unsupported visible | Partial source links | Warnings | Errors |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| DE-BW | partial | 392/392 (100%) | 0 | 0 | 392 | 0 | 364 | 375 | 0 |
-| DE-HE | covered | 392/392 (100%) | 0 | 0 | 392 | 0 | 0 | 0 | 0 |
-| DE-BY | error | 95/392 (24.2%) | 0 | 297 | 133 | 38 | 73 | 79 | 0 |
-| DE-BB | partial | 392/392 (100%) | 0 | 0 | 392 | 0 | 389 | 389 | 0 |
-| DE-BE | partial | 392/392 (100%) | 0 | 0 | 392 | 0 | 389 | 389 | 0 |
-| DE-NI | partial | 392/392 (100%) | 0 | 0 | 392 | 0 | 390 | 410 | 0 |
-| DE-NW | partial | 392/392 (100%) | 0 | 0 | 392 | 0 | 380 | 400 | 0 |
-| DE-SH | partial | 392/392 (100%) | 0 | 0 | 392 | 0 | 391 | 408 | 0 |
-| DE-HB | partial | 392/392 (100%) | 0 | 0 | 392 | 0 | 392 | 402 | 0 |
-| DE-HH | partial | 392/392 (100%) | 0 | 0 | 392 | 0 | 392 | 407 | 0 |
-| DE-MV | partial | 392/392 (100%) | 0 | 0 | 392 | 0 | 392 | 413 | 0 |
-| DE-RP | partial | 392/392 (100%) | 0 | 0 | 392 | 0 | 391 | 412 | 0 |
-| DE-SL | partial | 392/392 (100%) | 0 | 0 | 392 | 0 | 392 | 413 | 0 |
-| DE-SN | partial | 392/392 (100%) | 0 | 0 | 392 | 0 | 392 | 413 | 0 |
-| DE-ST | partial | 392/392 (100%) | 0 | 0 | 392 | 0 | 392 | 413 | 0 |
-| DE-TH | partial | 392/392 (100%) | 0 | 0 | 392 | 0 | 392 | 413 | 0 |
+| DE-BW | covered | 497/497 (100%) | 0 | 0 | 497 | 0 | 420 | 0 | 0 |
+| DE-HE | covered | 497/497 (100%) | 0 | 0 | 497 | 0 | 0 | 0 | 0 |
+| DE-BY | error | 331/497 (66.6%) | 0 | 166 | 395 | 64 | 298 | 0 | 0 |
+| DE-BB | covered | 497/497 (100%) | 0 | 0 | 497 | 0 | 494 | 0 | 0 |
+| DE-BE | covered | 497/497 (100%) | 0 | 0 | 497 | 0 | 494 | 0 | 0 |
+| DE-NI | covered | 497/497 (100%) | 0 | 0 | 497 | 0 | 274 | 0 | 0 |
+| DE-NW | covered | 497/497 (100%) | 0 | 0 | 497 | 0 | 438 | 0 | 0 |
+| DE-SH | covered | 497/497 (100%) | 0 | 0 | 497 | 0 | 326 | 0 | 0 |
+| DE-HB | covered | 497/497 (100%) | 0 | 0 | 497 | 0 | 241 | 0 | 0 |
+| DE-HH | covered | 497/497 (100%) | 0 | 0 | 497 | 0 | 309 | 0 | 0 |
+| DE-MV | covered | 497/497 (100%) | 0 | 0 | 497 | 0 | 487 | 0 | 0 |
+| DE-RP | covered | 497/497 (100%) | 0 | 0 | 497 | 0 | 496 | 0 | 0 |
+| DE-SL | covered | 497/497 (100%) | 0 | 0 | 497 | 0 | 487 | 0 | 0 |
+| DE-SN | covered | 497/497 (100%) | 0 | 0 | 497 | 0 | 420 | 0 | 0 |
+| DE-ST | covered | 497/497 (100%) | 0 | 0 | 497 | 0 | 497 | 0 | 0 |
+| DE-TH | covered | 497/497 (100%) | 0 | 0 | 497 | 0 | 497 | 0 | 0 |
 

@@ -25,3 +25,14 @@
   stabil halten
 - die Aktivierung ist dokumentiert in `curricula/DE/Gymnasium/provenance/hh-physics-onboarding.md`
 - vor jedem topic-spezifischen HH-Physik-Mapping erst die restlichen neu archivierten Bundeslaender ebenfalls auf `P2` bringen
+
+## Chemie
+### Sekundarstufe I (Klassen 5-10)
+- **Archivierte offizielle Quelle**: `chemie-gym-seki-data.pdf`
+- **Offizielle Quelle**: [Bildungsplan Gymnasium Sekundarstufe I - Chemie](https://www.hamburg.de/resource/blob/123422/efa77dbec7a94ae3682ad7e62346147d/chemie-gym-seki-data.pdf)
+- **Aktive Source-Extraction**: `lower-secondary/source-extraction/DE_HH_CHEMIE_SEKI_BILDUNGSPLAN.source-extraction.json`
+
+### Sekundarstufe II (Studienstufe)
+- **Archivierte offizielle Quelle**: `chemie-gyo-2022-data.pdf`
+- **Offizielle Quelle**: [Bildungsplan Studienstufe Chemie](https://www.hamburg.de/resource/blob/123042/e19828c45238e198fc9cfc2a73777685/chemie-gyo-2022-data.pdf)
+- **Aktive Source-Extraction**: `upper-secondary/source-extraction/DE_HH_CHEMIE_SEKII_BILDUNGSPLAN_2022.source-extraction.json`

@@ -47,3 +47,16 @@ Das LISUM gibt gemeinsame Rahmenlehrpläne für Berlin und Brandenburg heraus.
 - die Brandenburg-Lane auf dem jetzt reviewed retained `3.2.1` -> `3.2.2`-Korridor stabil halten
 - die gemeinsame BE/BB-Residue-Frage `c0` / `Relativitaet` / `Eintrittswinkel` nur dann neu bewerten, wenn sie wirklich jointly reviewable wird
 - keine Brandenburg-spezifischen Physik-Composition-Views oder einen verfruehten Applicability-Cut erzwingen
+
+## Chemie
+### Sekundarstufe II (Gymnasiale Oberstufe)
+- Archiviert:
+  `curricula/DE/Gymnasium/input/BB/upper-secondary/Teil_C_RLP_GOST_2022_Chemie.pdf`
+- Aktive Source-Extraction:
+  `curricula/DE/Gymnasium/input/BB/upper-secondary/source-extraction/DE_BB_CHEMIE_SEKII_RLP_GOST_2022.source-extraction.json`
+- Aktiver Umfang:
+  MAPPING-1 und MAPPING-2 aus dem amtlichen BE/BB-RLP-GOST-Teil-C-PDF; 23 Passagen aus `2.2.1` bis `3.2.9`, 203 Source-Ziele aus den Inhaltszeilen der E-/Q-Themenfelder
+- M3-Status:
+  abgeschlossen; 203/203 Source-Ziele reviewed, 100 direkt und 103 ueber 1:n-Zuordnungen inhaltlich abgedeckt
+- Offizielle Quelle:
+  `https://bildungsserver.berlin-brandenburg.de/fileadmin/bbb/unterricht/rahmenlehrplaene/gymnasiale_oberstufe/curricula/2022/Teil_C_RLP_GOST_2022_Chemie.pdf`

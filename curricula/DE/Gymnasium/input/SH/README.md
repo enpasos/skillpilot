@@ -31,3 +31,18 @@
   `curricula/DE/Gymnasium/input/SH/upper-secondary/source-json/DE_SHL_S_GYM_2_PHYSIK.de.json.snapshot`
 - Hinweis:
   der aktive retained SH-Physik-Slice konzentriert sich aktuell auf den offiziellen Sek-II-Themenstreifen `Elektrische und magnetische Felder` mit dem reviewed Einstiegskorridor `Das Feldkonzept zur Beschreibung von Wechselwirkungen`, einem ersten statischen-Felder-Follow-on fuer Kraefte, Teilchenbewegung und Beschleunigungsenergie, einem zweiten Follow-on fuer Millikanversuch, Fadenstrahlrohr, Hall-Effekt und technische Anwendungen sowie einem dritten Follow-on fuer Kreisbewegung; `Massenspektrometer` und `Drehimpuls` sind dort jetzt als explizite source-led Mikroreste dokumentiert
+
+## Chemie
+### Sekundarstufe I und II
+- Archiviert:
+  `curricula/DE/Gymnasium/input/SH/Fachanforderungen_Chemie_Sekundarstufe_2022_barrierearm.pdf`
+- Offizielle Quelle:
+  `https://fachportal.lernnetz.de/sh/faecher/chemie/fachanforderungen.html`
+- Hinweis:
+  die 2022er Fachanforderungen liegen als gemeinsame Sek-I/Sek-II-Chemiequelle vor; die Source-Extraction teilt die Prozess- und Inhaltskompetenzen sowie die verbindlichen Oberstufen-Sachgebiete in getrennte `lower-secondary`- und `upper-secondary`-Lanes auf
+- Stage-Referenzen:
+  `curricula/DE/Gymnasium/input/SH/lower-secondary/references.md`
+  `curricula/DE/Gymnasium/input/SH/upper-secondary/references.md`
+- Aktive source-extraction-Dateien:
+  `curricula/DE/Gymnasium/input/SH/lower-secondary/source-extraction/DE_SH_CHEMIE_SEKI_FACHANFORDERUNGEN_2022.source-extraction.json`
+  `curricula/DE/Gymnasium/input/SH/upper-secondary/source-extraction/DE_SH_CHEMIE_SEKII_FACHANFORDERUNGEN_2022.source-extraction.json`

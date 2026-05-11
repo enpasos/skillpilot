@@ -1,6 +1,6 @@
 # Curriculum Quality Status
 
-Generated: 2026-05-11T03:33:48.258Z
+Generated: 2026-05-11T15:12:08.686Z
 Rules version: curriculum-quality-v1
 
 ## Summary
@@ -20,7 +20,7 @@ Rules version: curriculum-quality-v1
 | Curriculum | Maturity | Goals | Atomic | Passage extraction | Bundeslaender | QA scopes | Warn | Fail |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Biologie (Gymnasium, DE) | M0 | 216 | 182 | 0/3 | 0/16 | 0 | 0 | 2 |
-| Chemie (Gymnasium, DE) | M0 | 266 | 222 | 4/4 | 1/16 | 0 | 2 | 2 |
+| Chemie (Gymnasium, DE) | M0 | 415 | 366 | 17/17 | 2/16 | 0 | 2 | 2 |
 | Chinesisch (Gymnasium, DE) | M0 | 192 | 181 | 0/2 | 0/16 | 0 | 1 | 1 |
 | Deutsch (Gymnasium, DE) | M0 | 181 | 144 | 0/2 | 0/16 | 0 | 1 | 1 |
 | Englisch (Gymnasium, DE) | M0 | 130 | 104 | 0/2 | 0/16 | 0 | 1 | 1 |
@@ -48,10 +48,23 @@ Rules version: curriculum-quality-v1
 | Biologie (Gymnasium, DE) | Biologie (Gymnasium) | DE-BY | No extraction | 0/3 | MAPPING-1 | 0 | 0 | 0 | 0 | 0% |  |
 | Biologie (Gymnasium, DE) | Biologie Oberstufe (Hessen, KC 2024) | DE-HE | No extraction | 0/3 | MAPPING-1 | 0 | 0 | 0 | 0 | 0% |  |
 | Biologie (Gymnasium, DE) | Biologie Sekundarstufe I (Hessen, G9) | DE-HE | No extraction | 0/3 | MAPPING-1 | 0 | 0 | 0 | 0 | 0% |  |
-| Chemie (Gymnasium, DE) | DE-BY - Biologisch-chemisches Praktikum Gymnasium (Bayern, LehrplanPLUS Source-Extraction) | DE-BY | 1/1 original source(s) | 2/3 | MAPPING-3 | 14 | 52 | 0 | 52 | 0% |  |
-| Chemie (Gymnasium, DE) | DE-BY - Chemie Gymnasium (Bayern, LehrplanPLUS Source-Extraction) | DE-BY | 1/1 original source(s) | 2/3 | MAPPING-3 | 54 | 559 | 69 | 12 | 85% |  |
+| Chemie (Gymnasium, DE) | DE-BB - Chemie Oberstufe (Brandenburg, RLP GOST 2022 Source-Extraction) | DE-BB | 1/1 original source(s) | 3/3 | - | 23 | 203 | 100 | 103 | 49% |  |
+| Chemie (Gymnasium, DE) | DE-BE - Chemie Oberstufe (Berlin, RLP GOST 2022 Source-Extraction) | DE-BE | 1/1 original source(s) | 3/3 | - | 23 | 203 | 100 | 103 | 49% |  |
+| Chemie (Gymnasium, DE) | Chemie Kursstufe (Baden-Wuerttemberg, BP2016 V2 Source-Extraction) | DE-BW | 1/1 original source(s) | 3/3 | - | 13 | 126 | 64 | 62 | 51% |  |
+| Chemie (Gymnasium, DE) | Chemie Sekundarstufe I (Baden-Wuerttemberg, BP2016 V2 Source-Extraction) | DE-BW | 1/1 original source(s) | 3/3 | - | 6 | 65 | 27 | 38 | 42% |  |
+| Chemie (Gymnasium, DE) | DE-BY - Biologisch-chemisches Praktikum Gymnasium (Bayern, LehrplanPLUS Source-Extraction) | DE-BY | 1/1 original source(s) | 3/3 | - | 14 | 52 | 52 | 0 | 100% |  |
+| Chemie (Gymnasium, DE) | DE-BY - Chemie Gymnasium (Bayern, LehrplanPLUS Source-Extraction) | DE-BY | 1/1 original source(s) | 3/3 | - | 54 | 332 | 277 | 55 | 83% |  |
+| Chemie (Gymnasium, DE) | DE-HB - Chemie Sekundarstufe I (Bremen, Bildungsplan 2006/2022 Source-Extraction) | DE-HB | 2/2 original source(s) | 3/3 | - | 4 | 42 | 0 | 42 | 0% |  |
 | Chemie (Gymnasium, DE) | Chemie Oberstufe (Hessen, KC 2024 Source-Extraction) | DE-HE | 1/1 original source(s) | 3/3 | - | 22 | 202 | 134 | 68 | 66% |  |
 | Chemie (Gymnasium, DE) | Chemie Sekundarstufe I (Hessen, G9 Source-Extraction) | DE-HE | 1/1 original source(s) | 3/3 | - | 9 | 122 | 67 | 55 | 55% |  |
+| Chemie (Gymnasium, DE) | DE-HH - Chemie Sekundarstufe I (Hamburg, Bildungsplan Source-Extraction) | DE-HH | 1/1 original source(s) | 3/3 | - | 7 | 65 | 40 | 25 | 62% |  |
+| Chemie (Gymnasium, DE) | DE-HH - Chemie Studienstufe (Hamburg, Bildungsplan 2022 Source-Extraction) | DE-HH | 1/1 original source(s) | 3/3 | - | 12 | 97 | 18 | 79 | 19% |  |
+| Chemie (Gymnasium, DE) | DE-NI - Chemie Oberstufe (Niedersachsen, KC 2022 Source-Extraction) | DE-NI | 1/1 original source(s) | 3/3 | - | 21 | 333 | 82 | 251 | 25% |  |
+| Chemie (Gymnasium, DE) | DE-NI - Chemie Sekundarstufe I (Niedersachsen, KC 2015 Source-Extraction) | DE-NI | 1/1 original source(s) | 3/3 | - | 14 | 196 | 23 | 173 | 12% |  |
+| Chemie (Gymnasium, DE) | DE-NW - Chemie Oberstufe (Nordrhein-Westfalen, KLP 2022 Source-Extraction) | DE-NW | 1/1 original source(s) | 3/3 | - | 30 | 154 | 2 | 152 | 1% |  |
+| Chemie (Gymnasium, DE) | DE-NW - Chemie Sekundarstufe I (Nordrhein-Westfalen, KLP 2019 Source-Extraction) | DE-NW | 1/1 original source(s) | 3/3 | - | 30 | 79 | 1 | 78 | 1% |  |
+| Chemie (Gymnasium, DE) | DE-SH - Chemie Oberstufe (Schleswig-Holstein, Fachanforderungen 2022 Source-Extraction) | DE-SH | 1/1 original source(s) | 3/3 | - | 7 | 165 | 46 | 119 | 28% |  |
+| Chemie (Gymnasium, DE) | DE-SH - Chemie Sekundarstufe I (Schleswig-Holstein, Fachanforderungen 2022 Source-Extraction) | DE-SH | 1/1 original source(s) | 3/3 | - | 8 | 156 | 27 | 129 | 17% |  |
 | Chinesisch (Gymnasium, DE) | Chinesisch (Gymnasium) | DE-BY | No extraction | 0/3 | MAPPING-1 | 0 | 0 | 0 | 0 | 0% |  |
 | Chinesisch (Gymnasium, DE) | Chinesisch Oberstufe (Hessen, KC 2024) | DE-HE | No extraction | 0/3 | MAPPING-1 | 0 | 0 | 0 | 0 | 0% |  |
 | Deutsch (Gymnasium, DE) | Deutsch (Gymnasium) | DE-BY | No extraction | 0/3 | MAPPING-1 | 0 | 0 | 0 | 0 | 0% |  |
@@ -143,7 +156,7 @@ Rules version: curriculum-quality-v1
 | Curriculum | Complete | DE view atoms | Raw atoms | Source-backed states | Extracted source goals | Registered source originals | Fully covered originals | Unregistered source goals | Extracted source atoms | Unregistered source atoms | Unsupported assignments | Unmapped source atoms | Partial | Error | Max source-backed view coverage |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Biologie (Gymnasium, DE) | 0/16 | 160 | 182 | 2 | 0 | 694 | 620 | 0 | 0 | 0 | 0 | 56 | 0 | 2 | 160 (100%) |
-| Chemie (Gymnasium, DE) | 1/16 | 195 | 222 | 2 | 935 | 935 | 389 | 0 | 935 | 0 | 0 | 546 | 0 | 1 | 193 (100%) |
+| Chemie (Gymnasium, DE) | 2/16 | 304 | 366 | 10 | 1466 | 1466 | 1466 | 0 | 1466 | 0 | 337 | 0 | 0 | 8 | 302 (100%) |
 | Chinesisch (Gymnasium, DE) | 0/16 | 170 | 181 | 2 | 0 | 436 | 436 | 0 | 0 | 0 | 0 | 0 | 0 | 2 | 170 (100%) |
 | Deutsch (Gymnasium, DE) | 0/16 | 127 | 144 | 2 | 0 | 650 | 650 | 0 | 0 | 0 | 0 | 0 | 0 | 2 | 127 (100%) |
 | Englisch (Gymnasium, DE) | 0/16 | 89 | 104 | 2 | 0 | 141 | 141 | 0 | 0 | 0 | 0 | 0 | 0 | 2 | 89 (100%) |

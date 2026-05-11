@@ -919,14 +919,19 @@ public class LearnerService {
         if (provenanceMappedGoalId != null) {
             return provenanceMappedGoalId;
         }
-        ResolvedGoalMapping mapping = goalMappingService.findByLegacyGoalId(goalId).orElse(null);
-        if (mapping == null) {
+        List<ResolvedGoalMapping> mappings = goalMappingService.findAllByLegacyGoalId(goalId);
+        if (mappings.isEmpty()) {
             return goalId;
         }
-        if (!allowPartial && !"exact".equals(mapping.matchType())) {
-            return goalId;
+        for (ResolvedGoalMapping mapping : mappings) {
+            if (!allowPartial && !"exact".equals(mapping.matchType())) {
+                continue;
+            }
+            if (visibleGoals.containsKey(mapping.canonicalGoalId())) {
+                return mapping.canonicalGoalId();
+            }
         }
-        return visibleGoals.containsKey(mapping.canonicalGoalId()) ? mapping.canonicalGoalId() : goalId;
+        return goalId;
     }
 
     private String resolveGoalIdInVisibleGoals(String goalId, Map<String, LearningGoal> visibleGoals,
@@ -2396,8 +2401,12 @@ public class LearnerService {
         if (landscapeId.equals(resolvedLandscapeId)) {
             return true;
         }
-        ResolvedGoalMapping mapping = goalMappingService.findByLegacyGoalId(goalId).orElse(null);
-        return mapping != null && landscapeId.equals(mapping.sourceLandscapeId());
+        for (ResolvedGoalMapping mapping : goalMappingService.findAllByLegacyGoalId(goalId)) {
+            if (landscapeId.equals(mapping.sourceLandscapeId())) {
+                return true;
+            }
+        }
+        return false;
     }
 
     private Map<String, Object> createSelectionConfig(boolean selected, String filterId) {
@@ -2437,9 +2446,14 @@ public class LearnerService {
                 normalizedGoalIds.add(provenanceMappedId);
                 continue;
             }
-            ResolvedGoalMapping mapping = goalMappingService.findByLegacyGoalId(goalId).orElse(null);
-            if (mapping != null && visibleGoals.containsKey(mapping.canonicalGoalId())) {
-                normalizedGoalIds.add(mapping.canonicalGoalId());
+            boolean mappedToVisibleGoal = false;
+            for (ResolvedGoalMapping mapping : goalMappingService.findAllByLegacyGoalId(goalId)) {
+                if (visibleGoals.containsKey(mapping.canonicalGoalId())) {
+                    normalizedGoalIds.add(mapping.canonicalGoalId());
+                    mappedToVisibleGoal = true;
+                }
+            }
+            if (mappedToVisibleGoal) {
                 continue;
             }
             if (visibleGoals.containsKey(goalId)) {

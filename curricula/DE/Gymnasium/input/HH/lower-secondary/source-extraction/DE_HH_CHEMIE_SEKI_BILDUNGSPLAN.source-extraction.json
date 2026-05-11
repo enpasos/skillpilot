@@ -1,0 +1,1976 @@
+{
+  "schemaVersion": 1,
+  "extractionId": "DE-HH-CHEMIE-SEKI-BILDUNGSPLAN-2014-2018",
+  "title": "DE-HH - Chemie Sekundarstufe I (Hamburg, Bildungsplan Source-Extraction)",
+  "sourceLandscapeId": "22c22040-850c-5242-8ebe-ce7d9a505696",
+  "jurisdiction": "DE-HH",
+  "subject": "Chemie",
+  "stage": "SekI",
+  "sourceDocument": {
+    "key": "HH-CHEMIE-GYM-SEKI",
+    "title": "Hamburg Bildungsplan Gymnasium Sekundarstufe I Chemie",
+    "path": "curricula/DE/Gymnasium/input/HH/chemie-gym-seki-data.pdf",
+    "url": "https://www.hamburg.de/resource/blob/123422/efa77dbec7a94ae3682ad7e62346147d/chemie-gym-seki-data.pdf",
+    "official": true
+  },
+  "method": {
+    "passageExtraction": "Hamburger Sek-I-Bildungsplan: Mindestanforderungen, Basiskonzepte und verbindliche Inhalte wurden aus den amtlichen PDF-Passagen S. 19-22 transkribiert und gruppiert.",
+    "sourceGoalExtraction": "ein Source-Ziel pro konkret benannter Kompetenz-, Inhalts- oder Kerncurriculum-Bullet; Kontext-, Leitperspektiven- und Umsetzungshilfe-Abschnitte werden nicht als eigenstaendige fachliche Source-Ziele gezaehlt."
+  },
+  "qualityReview": {
+    "sourceGoalCountPeerBaseline": {
+      "accepted": true,
+      "details": "65 Source-Ziele; Hamburg Sek I ist als kompakter Bildungsplan formuliert und liegt damit nah an den geprüften kompakten Chemie-Sek-I-Inventaren BW (65) und NRW (79)."
+    }
+  },
+  "expectedTopicCodes": [
+    "3.1-UF-J8",
+    "3.1-UF-J10",
+    "3.1-EG",
+    "3.1-K",
+    "3.1-B",
+    "3.2-BASIS",
+    "3.2-INHALTE"
+  ],
+  "pipelineStatus": {
+    "currentStep": "MAPPING-3",
+    "steps": [
+      {
+        "id": "MAPPING-1",
+        "label": "Original-Lehrplanpassagen extrahiert",
+        "status": "complete",
+        "dependsOn": [],
+        "checks": [
+          {
+            "id": "source-document-present",
+            "label": "Amtliches Hamburger Chemie-PDF liegt lokal vor",
+            "passed": true,
+            "details": "curricula/DE/Gymnasium/input/HH/chemie-gym-seki-data.pdf"
+          },
+          {
+            "id": "expected-topic-coverage",
+            "label": "Alle vorgesehenen Hamburger Chemie-Passagegruppen wurden extrahiert",
+            "passed": true,
+            "details": "7/7 Passagegruppen."
+          },
+          {
+            "id": "official-source-extraction",
+            "label": "Passage-Extraction basiert auf amtlicher PDF-Quelle statt Legacy-Snapshot",
+            "passed": true,
+            "details": "Quelle: curricula/DE/Gymnasium/input/HH/chemie-gym-seki-data.pdf"
+          }
+        ]
+      },
+      {
+        "id": "MAPPING-2",
+        "label": "Source-Ziele aus Lehrplanpassagen erstellt",
+        "status": "complete",
+        "dependsOn": [
+          "MAPPING-1"
+        ],
+        "checks": [
+          {
+            "id": "source-goals-created",
+            "label": "Source-Ziele aus den Hamburger Chemie-Lehrplanpassagen erzeugt",
+            "passed": true,
+            "details": "65 Source-Ziele"
+          },
+          {
+            "id": "source-goal-count-peer-baseline",
+            "label": "Source-Ziel-Anzahl ist gegen gepruefte Chemie-Inventare plausibilisiert",
+            "passed": true,
+            "details": "65 Source-Ziele; Hamburg Sek I ist als kompakter Bildungsplan formuliert und liegt damit nah an den geprüften kompakten Chemie-Sek-I-Inventaren BW (65) und NRW (79)."
+          },
+          {
+            "id": "source-goal-ids-unique",
+            "label": "Source-Ziel-IDs sind eindeutig",
+            "passed": true,
+            "details": "Doppelte IDs: -"
+          },
+          {
+            "id": "source-goals-reference-passages",
+            "label": "Jedes Source-Ziel referenziert eine vorhandene Originalpassage",
+            "passed": true,
+            "details": "Ohne Passage: -"
+          }
+        ]
+      },
+      {
+        "id": "MAPPING-3",
+        "label": "Source-Ziele auf SkillPilot-Ziele gemappt",
+        "status": "incomplete",
+        "dependsOn": [
+          "MAPPING-1",
+          "MAPPING-2"
+        ],
+        "checks": [
+          {
+            "id": "mapping-2-complete",
+            "label": "MAPPING-2 abgeschlossen",
+            "passed": true,
+            "details": "65 Source-Ziele liegen vor; MAPPING-3 muss nun fachlich reviewed werden."
+          },
+          {
+            "id": "m3-review-file-present",
+            "label": "M3-Review-Datei ist vorhanden",
+            "passed": true,
+            "details": "curricula/DE/Gymnasium/mapping/DE-HH/lower-secondary/hh_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.review.json"
+          },
+          {
+            "id": "m3-review-decisions-reference-source-goals",
+            "label": "M3-Review-Entscheidungen referenzieren gueltige Source-Ziele",
+            "passed": false,
+            "details": "Wird aus der Review-Datei berechnet."
+          },
+          {
+            "id": "m3-review-targets-exist",
+            "label": "M3-Review-Ziele referenzieren vorhandene Canonical-Ziele",
+            "passed": false,
+            "details": "Wird aus der Review-Datei berechnet."
+          },
+          {
+            "id": "m3-all-source-goals-reviewed",
+            "label": "Alle Source-Ziele haben eine fachliche M3-Entscheidung",
+            "passed": false,
+            "details": "MAPPING-3 ist noch nicht fachlich reviewed."
+          },
+          {
+            "id": "m3-all-source-goals-covered-by-canonical",
+            "label": "Alle Source-Ziele sind inhaltlich durch SkillPilot-Ziele abgedeckt",
+            "passed": false,
+            "details": "MAPPING-3 ist noch nicht fachlich reviewed."
+          }
+        ]
+      }
+    ]
+  },
+  "passages": [
+    {
+      "id": "de-hh-chemie-seki-bildungsplan-2014-2018:3-1-uf-j8",
+      "sourceDocumentKey": "HH-CHEMIE-GYM-SEKI",
+      "topicCode": "3.1-UF-J8",
+      "title": "3.1-UF-J8 Umgang mit Fachwissen bis Jahrgangsstufe 8",
+      "page": 19,
+      "rawText": "- bedeutsame Stoffe mit ihren typischen Eigenschaften nennen und beschreiben\n- den submikroskopischen Bau ausgewaehlter Stoffe modellhaft beschreiben\n- den Bau von Atomen mithilfe eines einfachen Atommodells beschreiben\n- geeignete Modelle zur Deutung von Stoffeigenschaften auf Teilchenebene nutzen\n- Phaenomene der Stoff- und Energieumwandlung bei chemischen Reaktionen beschreiben\n- Wortgleichungen fuer chemische Reaktionen erstellen\n- Beispiele fuer Element- und Stoffkreislaeufe in Natur und Technik als Systeme chemischer Reaktionen beschreiben",
+      "sourceGoalIds": [
+        "de-hh-chemie-seki-bildungsplan-2014-2018-3-1-uf-j8-001-f7279aae",
+        "de-hh-chemie-seki-bildungsplan-2014-2018-3-1-uf-j8-002-c15a1df8",
+        "de-hh-chemie-seki-bildungsplan-2014-2018-3-1-uf-j8-003-ea1fcb93",
+        "de-hh-chemie-seki-bildungsplan-2014-2018-3-1-uf-j8-004-c12a7432",
+        "de-hh-chemie-seki-bildungsplan-2014-2018-3-1-uf-j8-005-01af9e6c",
+        "de-hh-chemie-seki-bildungsplan-2014-2018-3-1-uf-j8-006-f879149d",
+        "de-hh-chemie-seki-bildungsplan-2014-2018-3-1-uf-j8-007-8c057e2c"
+      ]
+    },
+    {
+      "id": "de-hh-chemie-seki-bildungsplan-2014-2018:3-1-uf-j10",
+      "sourceDocumentKey": "HH-CHEMIE-GYM-SEKI",
+      "topicCode": "3.1-UF-J10",
+      "title": "3.1-UF-J10 Umgang mit Fachwissen fuer den Uebergang in die Studienstufe",
+      "page": 19,
+      "rawText": "- bedeutsame anorganische und organische Stoffe mit ihren typischen Eigenschaften nennen und beschreiben\n- die Vielfalt der Stoffe auf der Basis unterschiedlicher Kombinationen und Anordnungen von Teilchen erklaeren\n- aus Stoffeigenschaften auf Verwendungsmöglichkeiten sowie damit verbundene Vor- und Nachteile schliessen\n- die Umkehrbarkeit chemischer Reaktionen beschreiben\n- Stoff- und Energieumwandlungen hinsichtlich Teilchenveraenderung und Umbau chemischer Bindungen deuten\n- die Beeinflussbarkeit chemischer Reaktionen durch Katalysatoren beschreiben\n- den Bau von Atomen mithilfe geeigneter differenzierter Atommodelle beschreiben\n- Bindungsmodelle zur Interpretation von Molekuelen, Gittern, raeumlichen Strukturen und zwischenmolekularen Wechselwirkungen verwenden\n- Ordnungsprinzipien fuer Stoffe mit Eigenschaften oder charakteristischen Merkmalen der Teilchenzusammensetzung und -struktur beschreiben und begruenden\n- Reaktionsschemata und Reaktionsgleichungen mit Atom-Erhaltung und konstanten Atomzahlenverhaeltnissen erstellen\n- in ausgewaehlten Donator-Akzeptor-Reaktionen die Teilchenuebertragung kennzeichnen und die Reaktionsart bestimmen\n- Möglichkeiten der Steuerung chemischer Reaktionen durch Variation von Reaktionsbedingungen beschreiben\n- angeben, dass sich bei chemischen Reaktionen der Energieinhalt des Reaktionssystems durch Austausch mit der Umgebung veraendert\n- energetische Erscheinungen bei chemischen Reaktionen auf die Umwandlung gespeicherter Energie in andere Energieformen zurueckfuehren",
+      "sourceGoalIds": [
+        "de-hh-chemie-seki-bildungsplan-2014-2018-3-1-uf-j10-008-693924f7",
+        "de-hh-chemie-seki-bildungsplan-2014-2018-3-1-uf-j10-009-726a1279",
+        "de-hh-chemie-seki-bildungsplan-2014-2018-3-1-uf-j10-010-84a725c6",
+        "de-hh-chemie-seki-bildungsplan-2014-2018-3-1-uf-j10-011-c353c206",
+        "de-hh-chemie-seki-bildungsplan-2014-2018-3-1-uf-j10-012-da87b9a0",
+        "de-hh-chemie-seki-bildungsplan-2014-2018-3-1-uf-j10-013-5c716f47",
+        "de-hh-chemie-seki-bildungsplan-2014-2018-3-1-uf-j10-014-59976bc2",
+        "de-hh-chemie-seki-bildungsplan-2014-2018-3-1-uf-j10-015-74e0d692",
+        "de-hh-chemie-seki-bildungsplan-2014-2018-3-1-uf-j10-016-074abd62",
+        "de-hh-chemie-seki-bildungsplan-2014-2018-3-1-uf-j10-017-da29206c",
+        "de-hh-chemie-seki-bildungsplan-2014-2018-3-1-uf-j10-018-4fd6ca92",
+        "de-hh-chemie-seki-bildungsplan-2014-2018-3-1-uf-j10-019-8f22f889",
+        "de-hh-chemie-seki-bildungsplan-2014-2018-3-1-uf-j10-020-b9d047ab",
+        "de-hh-chemie-seki-bildungsplan-2014-2018-3-1-uf-j10-021-5bd3e4b9"
+      ]
+    },
+    {
+      "id": "de-hh-chemie-seki-bildungsplan-2014-2018:3-1-eg",
+      "sourceDocumentKey": "HH-CHEMIE-GYM-SEKI",
+      "topicCode": "3.1-EG",
+      "title": "3.1-EG Erkenntnisgewinnung",
+      "page": 20,
+      "rawText": "- qualitative und einfache quantitative experimentelle und andere Untersuchungen durchfuehren und protokollieren\n- beim Experimentieren Sicherheits- und Umweltaspekte beachten\n- geeignete Untersuchungen zur Ueberpruefung von Vermutungen und Hypothesen planen\n- geeignete Modelle nutzen, um chemische Fragestellungen zu bearbeiten\n- chemische Fragestellungen erkennen und entwickeln, die mit chemischen Kenntnissen und Untersuchungen zu beantworten sind\n- bei Untersuchungen und Experimenten relevante Daten erheben oder recherchieren\n- in Daten Trends, Strukturen und Beziehungen finden, erklaeren und Schlussfolgerungen ziehen\n- Verknuepfungen zwischen gesellschaftlichen Entwicklungen und Erkenntnissen der Chemie exemplarisch aufzeigen",
+      "sourceGoalIds": [
+        "de-hh-chemie-seki-bildungsplan-2014-2018-3-1-eg-022-ee4f9f5b",
+        "de-hh-chemie-seki-bildungsplan-2014-2018-3-1-eg-023-47f20f42",
+        "de-hh-chemie-seki-bildungsplan-2014-2018-3-1-eg-024-bb287364",
+        "de-hh-chemie-seki-bildungsplan-2014-2018-3-1-eg-025-07d33ac0",
+        "de-hh-chemie-seki-bildungsplan-2014-2018-3-1-eg-026-a5e539f2",
+        "de-hh-chemie-seki-bildungsplan-2014-2018-3-1-eg-027-2615a936",
+        "de-hh-chemie-seki-bildungsplan-2014-2018-3-1-eg-028-e83f745d",
+        "de-hh-chemie-seki-bildungsplan-2014-2018-3-1-eg-029-38ea88f9"
+      ]
+    },
+    {
+      "id": "de-hh-chemie-seki-bildungsplan-2014-2018:3-1-k",
+      "sourceDocumentKey": "HH-CHEMIE-GYM-SEKI",
+      "topicCode": "3.1-K",
+      "title": "3.1-K Kommunikation",
+      "page": 20,
+      "rawText": "- zu einem chemischen Sachverhalt in unterschiedlichen Quellen recherchieren\n- den Verlauf und die Ergebnisse von Untersuchungen und Diskussionen in angemessener Form protokollieren\n- fachlich korrekt und folgerichtig argumentieren\n- themenbezogene und aussagekraeftige Informationen auswaehlen\n- chemische Sachverhalte unter Verwendung der Fachsprache und mithilfe von Modellen und Darstellungen beschreiben, veranschaulichen oder erklaeren\n- den Verlauf und die Ergebnisse der eigenen Arbeit dokumentieren und praesentieren\n- Darstellungen in Medien hinsichtlich ihrer fachlichen Richtigkeit pruefen\n- Zusammenhaenge zwischen chemischen Sachverhalten und Alltagserscheinungen herstellen und zwischen Fach- und Alltagssprache uebersetzen\n- Arbeitsergebnisse situationsgerecht und adressatenbezogen dokumentieren und praesentieren\n- Standpunkte zu chemischen Sachverhalten vertreten und Einwaende selbstkritisch reflektieren\n- Teamarbeit planen, strukturieren, reflektieren und praesentieren",
+      "sourceGoalIds": [
+        "de-hh-chemie-seki-bildungsplan-2014-2018-3-1-k-030-ac5327a6",
+        "de-hh-chemie-seki-bildungsplan-2014-2018-3-1-k-031-f8f8fb58",
+        "de-hh-chemie-seki-bildungsplan-2014-2018-3-1-k-032-c99fa4fe",
+        "de-hh-chemie-seki-bildungsplan-2014-2018-3-1-k-033-8610b593",
+        "de-hh-chemie-seki-bildungsplan-2014-2018-3-1-k-034-2ba4639f",
+        "de-hh-chemie-seki-bildungsplan-2014-2018-3-1-k-035-99773b8f",
+        "de-hh-chemie-seki-bildungsplan-2014-2018-3-1-k-036-5d014713",
+        "de-hh-chemie-seki-bildungsplan-2014-2018-3-1-k-037-5fd22541",
+        "de-hh-chemie-seki-bildungsplan-2014-2018-3-1-k-038-3c306b89",
+        "de-hh-chemie-seki-bildungsplan-2014-2018-3-1-k-039-bbbcfea8",
+        "de-hh-chemie-seki-bildungsplan-2014-2018-3-1-k-040-0591750f"
+      ]
+    },
+    {
+      "id": "de-hh-chemie-seki-bildungsplan-2014-2018:3-1-b",
+      "sourceDocumentKey": "HH-CHEMIE-GYM-SEKI",
+      "topicCode": "3.1-B",
+      "title": "3.1-B Bewertung",
+      "page": 20,
+      "rawText": "- Fragestellungen mit engem Bezug zu anderen Unterrichtsfaechern erkennen und diese Bezuege aufzeigen\n- fachtypische und vernetzte Kenntnisse nutzen, um lebenspraktisch bedeutsame Zusammenhaenge zu erschliessen\n- Anwendungsbereiche und Berufsfelder darstellen, in denen chemische Kenntnisse bedeutsam sind\n- aktuelle lebensweltbezogene Fragestellungen entwickeln, die mit fachwissenschaftlichen Erkenntnissen der Chemie beantwortet werden koennen\n- gesellschaftsrelevante Aussagen aus unterschiedlichen Perspektiven diskutieren und bewerten\n- chemische Sachverhalte in Problemzusammenhaenge einbinden, Loesungsstrategien entwickeln und anwenden",
+      "sourceGoalIds": [
+        "de-hh-chemie-seki-bildungsplan-2014-2018-3-1-b-041-afcefc45",
+        "de-hh-chemie-seki-bildungsplan-2014-2018-3-1-b-042-02b65ff0",
+        "de-hh-chemie-seki-bildungsplan-2014-2018-3-1-b-043-d3b8bf8d",
+        "de-hh-chemie-seki-bildungsplan-2014-2018-3-1-b-044-6e8eaf0b",
+        "de-hh-chemie-seki-bildungsplan-2014-2018-3-1-b-045-19356f9e",
+        "de-hh-chemie-seki-bildungsplan-2014-2018-3-1-b-046-be6cbe91"
+      ]
+    },
+    {
+      "id": "de-hh-chemie-seki-bildungsplan-2014-2018:3-2-basis",
+      "sourceDocumentKey": "HH-CHEMIE-GYM-SEKI",
+      "topicCode": "3.2-BASIS",
+      "title": "3.2-BASIS Basiskonzepte",
+      "page": 21,
+      "rawText": "- Stoff-Teilchen-Beziehungen und Struktur-Eigenschafts-Beziehungen als Basiskonzept nutzen\n- chemische Reaktionen als Neuanordnungen zugrunde liegender Atome beschreiben\n- energetische Betrachtungen bei Stoffumwandlungen als Basiskonzept nutzen",
+      "sourceGoalIds": [
+        "de-hh-chemie-seki-bildungsplan-2014-2018-3-2-basis-047-8e2eaecb",
+        "de-hh-chemie-seki-bildungsplan-2014-2018-3-2-basis-048-e75a7e01",
+        "de-hh-chemie-seki-bildungsplan-2014-2018-3-2-basis-049-15b80656"
+      ]
+    },
+    {
+      "id": "de-hh-chemie-seki-bildungsplan-2014-2018:3-2-inhalte",
+      "sourceDocumentKey": "HH-CHEMIE-GYM-SEKI",
+      "topicCode": "3.2-INHALTE",
+      "title": "3.2-INHALTE Verbindliche Inhalte",
+      "page": 22,
+      "rawText": "- Sicherheit im Chemieraum und Umgang mit Gefahrstoffen beherrschen\n- Reinstoffe und Gemische als Stoffe und ihre Eigenschaften beschreiben\n- Aggregatzustaende und Teilchenmodell zur Beschreibung von Stoffen verwenden\n- Stofftrennungen in Kontexten wie Kochsalzgewinnung, Trinkwassergewinnung, Extraktion oder Abfallsortierung einordnen\n- Stoffumwandlungen und Energieumsatz bei chemischen Reaktionen beschreiben\n- Element- und Verbindungsbegriff sowie Reaktionsgleichungen verwenden\n- chemische Reaktionen in Kontexten wie Korrosion, Feuer, Brandbekaempfung und Metallgewinnung anwenden\n- Schalenmodell und Kugelwolkenmodell als Atommodelle verwenden\n- Hauptgruppen und Perioden im Periodensystem nutzen\n- Ionenbindung und Atombindung als Modelle chemischer Bindung beschreiben\n- Elektronegativitaet und Polaritaet zur Deutung von Bindungen und Stoffeigenschaften nutzen\n- Oxidation und Reduktion als Elektronenuebertragung beschreiben\n- Saeure-Base-Reaktionen als Protonenuebertragung beschreiben\n- pH-Wert und Indikatoren in alltagsnahen Saeure-Base-Kontexten verwenden\n- Alkane und Alkanole ueber homologe Reihen, Gewinnung und Ethanol als Rauschmittel beschreiben\n- Kunststoffe als makromolekulare Substanzen mit Bildungsreaktion, Herstellung, Verarbeitung und Recycling beschreiben",
+      "sourceGoalIds": [
+        "de-hh-chemie-seki-bildungsplan-2014-2018-3-2-inhalte-050-2b068aaa",
+        "de-hh-chemie-seki-bildungsplan-2014-2018-3-2-inhalte-051-1d1a812f",
+        "de-hh-chemie-seki-bildungsplan-2014-2018-3-2-inhalte-052-eb27809c",
+        "de-hh-chemie-seki-bildungsplan-2014-2018-3-2-inhalte-053-4ee38e23",
+        "de-hh-chemie-seki-bildungsplan-2014-2018-3-2-inhalte-054-70db9a52",
+        "de-hh-chemie-seki-bildungsplan-2014-2018-3-2-inhalte-055-f7b69c8a",
+        "de-hh-chemie-seki-bildungsplan-2014-2018-3-2-inhalte-056-2ee4dee0",
+        "de-hh-chemie-seki-bildungsplan-2014-2018-3-2-inhalte-057-e406664b",
+        "de-hh-chemie-seki-bildungsplan-2014-2018-3-2-inhalte-058-4dbd8731",
+        "de-hh-chemie-seki-bildungsplan-2014-2018-3-2-inhalte-059-b842723f",
+        "de-hh-chemie-seki-bildungsplan-2014-2018-3-2-inhalte-060-64d11887",
+        "de-hh-chemie-seki-bildungsplan-2014-2018-3-2-inhalte-061-d4c1dc4f",
+        "de-hh-chemie-seki-bildungsplan-2014-2018-3-2-inhalte-062-2c997828",
+        "de-hh-chemie-seki-bildungsplan-2014-2018-3-2-inhalte-063-00085375",
+        "de-hh-chemie-seki-bildungsplan-2014-2018-3-2-inhalte-064-4ba24dc7",
+        "de-hh-chemie-seki-bildungsplan-2014-2018-3-2-inhalte-065-661f957a"
+      ]
+    }
+  ],
+  "sourceGoals": [
+    {
+      "id": "de-hh-chemie-seki-bildungsplan-2014-2018-3-1-uf-j8-001-f7279aae",
+      "passageId": "de-hh-chemie-seki-bildungsplan-2014-2018:3-1-uf-j8",
+      "topicCode": "3.1-UF-J8",
+      "title": "bedeutsame Stoffe mit ihren typischen Eigenschaften nennen und beschreiben",
+      "description": "Die lernende Person kann bedeutsame Stoffe mit ihren typischen Eigenschaften nennen und beschreiben.",
+      "sourceDocumentKey": "HH-CHEMIE-GYM-SEKI",
+      "sourceRef": "Hamburg Bildungsplan Gymnasium Sekundarstufe I Chemie, 3.1-UF-J8, S. 19.",
+      "sourceText": "bedeutsame Stoffe mit ihren typischen Eigenschaften nennen und beschreiben",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-seki-bildungsplan-2014-2018:3-1-uf-j8",
+        "label": "3.1-UF-J8, S. 19: bedeutsame Stoffe mit ihren typischen Eigenschaften nennen und beschreiben"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekI",
+        "section:3-1-uf-j8",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "3.1-UF-J8"
+      }
+    },
+    {
+      "id": "de-hh-chemie-seki-bildungsplan-2014-2018-3-1-uf-j8-002-c15a1df8",
+      "passageId": "de-hh-chemie-seki-bildungsplan-2014-2018:3-1-uf-j8",
+      "topicCode": "3.1-UF-J8",
+      "title": "den submikroskopischen Bau ausgewaehlter Stoffe modellhaft beschreiben",
+      "description": "Die lernende Person kann den submikroskopischen Bau ausgewaehlter Stoffe modellhaft beschreiben.",
+      "sourceDocumentKey": "HH-CHEMIE-GYM-SEKI",
+      "sourceRef": "Hamburg Bildungsplan Gymnasium Sekundarstufe I Chemie, 3.1-UF-J8, S. 19.",
+      "sourceText": "den submikroskopischen Bau ausgewaehlter Stoffe modellhaft beschreiben",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-seki-bildungsplan-2014-2018:3-1-uf-j8",
+        "label": "3.1-UF-J8, S. 19: den submikroskopischen Bau ausgewaehlter Stoffe modellhaft beschreiben"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekI",
+        "section:3-1-uf-j8",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "3.1-UF-J8"
+      }
+    },
+    {
+      "id": "de-hh-chemie-seki-bildungsplan-2014-2018-3-1-uf-j8-003-ea1fcb93",
+      "passageId": "de-hh-chemie-seki-bildungsplan-2014-2018:3-1-uf-j8",
+      "topicCode": "3.1-UF-J8",
+      "title": "den Bau von Atomen mithilfe eines einfachen Atommodells beschreiben",
+      "description": "Die lernende Person kann den Bau von Atomen mithilfe eines einfachen Atommodells beschreiben.",
+      "sourceDocumentKey": "HH-CHEMIE-GYM-SEKI",
+      "sourceRef": "Hamburg Bildungsplan Gymnasium Sekundarstufe I Chemie, 3.1-UF-J8, S. 19.",
+      "sourceText": "den Bau von Atomen mithilfe eines einfachen Atommodells beschreiben",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-seki-bildungsplan-2014-2018:3-1-uf-j8",
+        "label": "3.1-UF-J8, S. 19: den Bau von Atomen mithilfe eines einfachen Atommodells beschreiben"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekI",
+        "section:3-1-uf-j8",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "3.1-UF-J8"
+      }
+    },
+    {
+      "id": "de-hh-chemie-seki-bildungsplan-2014-2018-3-1-uf-j8-004-c12a7432",
+      "passageId": "de-hh-chemie-seki-bildungsplan-2014-2018:3-1-uf-j8",
+      "topicCode": "3.1-UF-J8",
+      "title": "geeignete Modelle zur Deutung von Stoffeigenschaften auf Teilchenebene nutzen",
+      "description": "Die lernende Person kann geeignete Modelle zur Deutung von Stoffeigenschaften auf Teilchenebene nutzen.",
+      "sourceDocumentKey": "HH-CHEMIE-GYM-SEKI",
+      "sourceRef": "Hamburg Bildungsplan Gymnasium Sekundarstufe I Chemie, 3.1-UF-J8, S. 19.",
+      "sourceText": "geeignete Modelle zur Deutung von Stoffeigenschaften auf Teilchenebene nutzen",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-seki-bildungsplan-2014-2018:3-1-uf-j8",
+        "label": "3.1-UF-J8, S. 19: geeignete Modelle zur Deutung von Stoffeigenschaften auf Teilchenebene nutzen"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekI",
+        "section:3-1-uf-j8",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "3.1-UF-J8"
+      }
+    },
+    {
+      "id": "de-hh-chemie-seki-bildungsplan-2014-2018-3-1-uf-j8-005-01af9e6c",
+      "passageId": "de-hh-chemie-seki-bildungsplan-2014-2018:3-1-uf-j8",
+      "topicCode": "3.1-UF-J8",
+      "title": "Phaenomene der Stoff- und Energieumwandlung bei chemischen Reaktionen beschreiben",
+      "description": "Die lernende Person kann Phaenomene der Stoff- und Energieumwandlung bei chemischen Reaktionen beschreiben.",
+      "sourceDocumentKey": "HH-CHEMIE-GYM-SEKI",
+      "sourceRef": "Hamburg Bildungsplan Gymnasium Sekundarstufe I Chemie, 3.1-UF-J8, S. 19.",
+      "sourceText": "Phaenomene der Stoff- und Energieumwandlung bei chemischen Reaktionen beschreiben",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-seki-bildungsplan-2014-2018:3-1-uf-j8",
+        "label": "3.1-UF-J8, S. 19: Phaenomene der Stoff- und Energieumwandlung bei chemischen Reaktionen beschreiben"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekI",
+        "section:3-1-uf-j8",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "3.1-UF-J8"
+      }
+    },
+    {
+      "id": "de-hh-chemie-seki-bildungsplan-2014-2018-3-1-uf-j8-006-f879149d",
+      "passageId": "de-hh-chemie-seki-bildungsplan-2014-2018:3-1-uf-j8",
+      "topicCode": "3.1-UF-J8",
+      "title": "Wortgleichungen fuer chemische Reaktionen erstellen",
+      "description": "Die lernende Person kann Wortgleichungen fuer chemische Reaktionen erstellen.",
+      "sourceDocumentKey": "HH-CHEMIE-GYM-SEKI",
+      "sourceRef": "Hamburg Bildungsplan Gymnasium Sekundarstufe I Chemie, 3.1-UF-J8, S. 19.",
+      "sourceText": "Wortgleichungen fuer chemische Reaktionen erstellen",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-seki-bildungsplan-2014-2018:3-1-uf-j8",
+        "label": "3.1-UF-J8, S. 19: Wortgleichungen fuer chemische Reaktionen erstellen"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekI",
+        "section:3-1-uf-j8",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "3.1-UF-J8"
+      }
+    },
+    {
+      "id": "de-hh-chemie-seki-bildungsplan-2014-2018-3-1-uf-j8-007-8c057e2c",
+      "passageId": "de-hh-chemie-seki-bildungsplan-2014-2018:3-1-uf-j8",
+      "topicCode": "3.1-UF-J8",
+      "title": "Beispiele fuer Element- und Stoffkreislaeufe in Natur und Technik als Systeme chemischer Reaktionen beschreiben",
+      "description": "Die lernende Person kann Beispiele fuer Element- und Stoffkreislaeufe in Natur und Technik als Systeme chemischer Reaktionen beschreiben.",
+      "sourceDocumentKey": "HH-CHEMIE-GYM-SEKI",
+      "sourceRef": "Hamburg Bildungsplan Gymnasium Sekundarstufe I Chemie, 3.1-UF-J8, S. 19.",
+      "sourceText": "Beispiele fuer Element- und Stoffkreislaeufe in Natur und Technik als Systeme chemischer Reaktionen beschreiben",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-seki-bildungsplan-2014-2018:3-1-uf-j8",
+        "label": "3.1-UF-J8, S. 19: Beispiele fuer Element- und Stoffkreislaeufe in Natur und Technik als Systeme chemischer Reaktionen beschreiben"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekI",
+        "section:3-1-uf-j8",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "3.1-UF-J8"
+      }
+    },
+    {
+      "id": "de-hh-chemie-seki-bildungsplan-2014-2018-3-1-uf-j10-008-693924f7",
+      "passageId": "de-hh-chemie-seki-bildungsplan-2014-2018:3-1-uf-j10",
+      "topicCode": "3.1-UF-J10",
+      "title": "bedeutsame anorganische und organische Stoffe mit ihren typischen Eigenschaften nennen und beschreiben",
+      "description": "Die lernende Person kann bedeutsame anorganische und organische Stoffe mit ihren typischen Eigenschaften nennen und beschreiben.",
+      "sourceDocumentKey": "HH-CHEMIE-GYM-SEKI",
+      "sourceRef": "Hamburg Bildungsplan Gymnasium Sekundarstufe I Chemie, 3.1-UF-J10, S. 19.",
+      "sourceText": "bedeutsame anorganische und organische Stoffe mit ihren typischen Eigenschaften nennen und beschreiben",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-seki-bildungsplan-2014-2018:3-1-uf-j10",
+        "label": "3.1-UF-J10, S. 19: bedeutsame anorganische und organische Stoffe mit ihren typischen Eigenschaften nennen und beschreiben"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekI",
+        "section:3-1-uf-j10",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "3.1-UF-J10"
+      }
+    },
+    {
+      "id": "de-hh-chemie-seki-bildungsplan-2014-2018-3-1-uf-j10-009-726a1279",
+      "passageId": "de-hh-chemie-seki-bildungsplan-2014-2018:3-1-uf-j10",
+      "topicCode": "3.1-UF-J10",
+      "title": "die Vielfalt der Stoffe auf der Basis unterschiedlicher Kombinationen und Anordnungen von Teilchen erklaeren",
+      "description": "Die lernende Person kann die Vielfalt der Stoffe auf der Basis unterschiedlicher Kombinationen und Anordnungen von Teilchen erklaeren.",
+      "sourceDocumentKey": "HH-CHEMIE-GYM-SEKI",
+      "sourceRef": "Hamburg Bildungsplan Gymnasium Sekundarstufe I Chemie, 3.1-UF-J10, S. 19.",
+      "sourceText": "die Vielfalt der Stoffe auf der Basis unterschiedlicher Kombinationen und Anordnungen von Teilchen erklaeren",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-seki-bildungsplan-2014-2018:3-1-uf-j10",
+        "label": "3.1-UF-J10, S. 19: die Vielfalt der Stoffe auf der Basis unterschiedlicher Kombinationen und Anordnungen von Teilchen erklaeren"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekI",
+        "section:3-1-uf-j10",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "3.1-UF-J10"
+      }
+    },
+    {
+      "id": "de-hh-chemie-seki-bildungsplan-2014-2018-3-1-uf-j10-010-84a725c6",
+      "passageId": "de-hh-chemie-seki-bildungsplan-2014-2018:3-1-uf-j10",
+      "topicCode": "3.1-UF-J10",
+      "title": "aus Stoffeigenschaften auf Verwendungsmöglichkeiten sowie damit verbundene Vor- und Nachteile schliessen",
+      "description": "Die lernende Person kann aus Stoffeigenschaften auf Verwendungsmöglichkeiten sowie damit verbundene Vor- und Nachteile schliessen.",
+      "sourceDocumentKey": "HH-CHEMIE-GYM-SEKI",
+      "sourceRef": "Hamburg Bildungsplan Gymnasium Sekundarstufe I Chemie, 3.1-UF-J10, S. 19.",
+      "sourceText": "aus Stoffeigenschaften auf Verwendungsmöglichkeiten sowie damit verbundene Vor- und Nachteile schliessen",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-seki-bildungsplan-2014-2018:3-1-uf-j10",
+        "label": "3.1-UF-J10, S. 19: aus Stoffeigenschaften auf Verwendungsmöglichkeiten sowie damit verbundene Vor- und Nachteile schliessen"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekI",
+        "section:3-1-uf-j10",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "3.1-UF-J10"
+      }
+    },
+    {
+      "id": "de-hh-chemie-seki-bildungsplan-2014-2018-3-1-uf-j10-011-c353c206",
+      "passageId": "de-hh-chemie-seki-bildungsplan-2014-2018:3-1-uf-j10",
+      "topicCode": "3.1-UF-J10",
+      "title": "die Umkehrbarkeit chemischer Reaktionen beschreiben",
+      "description": "Die lernende Person kann die Umkehrbarkeit chemischer Reaktionen beschreiben.",
+      "sourceDocumentKey": "HH-CHEMIE-GYM-SEKI",
+      "sourceRef": "Hamburg Bildungsplan Gymnasium Sekundarstufe I Chemie, 3.1-UF-J10, S. 19.",
+      "sourceText": "die Umkehrbarkeit chemischer Reaktionen beschreiben",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-seki-bildungsplan-2014-2018:3-1-uf-j10",
+        "label": "3.1-UF-J10, S. 19: die Umkehrbarkeit chemischer Reaktionen beschreiben"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekI",
+        "section:3-1-uf-j10",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "3.1-UF-J10"
+      }
+    },
+    {
+      "id": "de-hh-chemie-seki-bildungsplan-2014-2018-3-1-uf-j10-012-da87b9a0",
+      "passageId": "de-hh-chemie-seki-bildungsplan-2014-2018:3-1-uf-j10",
+      "topicCode": "3.1-UF-J10",
+      "title": "Stoff- und Energieumwandlungen hinsichtlich Teilchenveraenderung und Umbau chemischer Bindungen deuten",
+      "description": "Die lernende Person kann Stoff- und Energieumwandlungen hinsichtlich Teilchenveraenderung und Umbau chemischer Bindungen deuten.",
+      "sourceDocumentKey": "HH-CHEMIE-GYM-SEKI",
+      "sourceRef": "Hamburg Bildungsplan Gymnasium Sekundarstufe I Chemie, 3.1-UF-J10, S. 19.",
+      "sourceText": "Stoff- und Energieumwandlungen hinsichtlich Teilchenveraenderung und Umbau chemischer Bindungen deuten",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-seki-bildungsplan-2014-2018:3-1-uf-j10",
+        "label": "3.1-UF-J10, S. 19: Stoff- und Energieumwandlungen hinsichtlich Teilchenveraenderung und Umbau chemischer Bindungen deuten"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekI",
+        "section:3-1-uf-j10",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "3.1-UF-J10"
+      }
+    },
+    {
+      "id": "de-hh-chemie-seki-bildungsplan-2014-2018-3-1-uf-j10-013-5c716f47",
+      "passageId": "de-hh-chemie-seki-bildungsplan-2014-2018:3-1-uf-j10",
+      "topicCode": "3.1-UF-J10",
+      "title": "die Beeinflussbarkeit chemischer Reaktionen durch Katalysatoren beschreiben",
+      "description": "Die lernende Person kann die Beeinflussbarkeit chemischer Reaktionen durch Katalysatoren beschreiben.",
+      "sourceDocumentKey": "HH-CHEMIE-GYM-SEKI",
+      "sourceRef": "Hamburg Bildungsplan Gymnasium Sekundarstufe I Chemie, 3.1-UF-J10, S. 19.",
+      "sourceText": "die Beeinflussbarkeit chemischer Reaktionen durch Katalysatoren beschreiben",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-seki-bildungsplan-2014-2018:3-1-uf-j10",
+        "label": "3.1-UF-J10, S. 19: die Beeinflussbarkeit chemischer Reaktionen durch Katalysatoren beschreiben"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekI",
+        "section:3-1-uf-j10",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "3.1-UF-J10"
+      }
+    },
+    {
+      "id": "de-hh-chemie-seki-bildungsplan-2014-2018-3-1-uf-j10-014-59976bc2",
+      "passageId": "de-hh-chemie-seki-bildungsplan-2014-2018:3-1-uf-j10",
+      "topicCode": "3.1-UF-J10",
+      "title": "den Bau von Atomen mithilfe geeigneter differenzierter Atommodelle beschreiben",
+      "description": "Die lernende Person kann den Bau von Atomen mithilfe geeigneter differenzierter Atommodelle beschreiben.",
+      "sourceDocumentKey": "HH-CHEMIE-GYM-SEKI",
+      "sourceRef": "Hamburg Bildungsplan Gymnasium Sekundarstufe I Chemie, 3.1-UF-J10, S. 19.",
+      "sourceText": "den Bau von Atomen mithilfe geeigneter differenzierter Atommodelle beschreiben",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-seki-bildungsplan-2014-2018:3-1-uf-j10",
+        "label": "3.1-UF-J10, S. 19: den Bau von Atomen mithilfe geeigneter differenzierter Atommodelle beschreiben"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekI",
+        "section:3-1-uf-j10",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "3.1-UF-J10"
+      }
+    },
+    {
+      "id": "de-hh-chemie-seki-bildungsplan-2014-2018-3-1-uf-j10-015-74e0d692",
+      "passageId": "de-hh-chemie-seki-bildungsplan-2014-2018:3-1-uf-j10",
+      "topicCode": "3.1-UF-J10",
+      "title": "Bindungsmodelle zur Interpretation von Molekuelen, Gittern, raeumlichen Strukturen und zwischenmolekularen Wechselwirkungen verwenden",
+      "description": "Die lernende Person kann Bindungsmodelle zur Interpretation von Molekuelen, Gittern, raeumlichen Strukturen und zwischenmolekularen Wechselwirkungen verwenden.",
+      "sourceDocumentKey": "HH-CHEMIE-GYM-SEKI",
+      "sourceRef": "Hamburg Bildungsplan Gymnasium Sekundarstufe I Chemie, 3.1-UF-J10, S. 19.",
+      "sourceText": "Bindungsmodelle zur Interpretation von Molekuelen, Gittern, raeumlichen Strukturen und zwischenmolekularen Wechselwirkungen verwenden",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-seki-bildungsplan-2014-2018:3-1-uf-j10",
+        "label": "3.1-UF-J10, S. 19: Bindungsmodelle zur Interpretation von Molekuelen, Gittern, raeumlichen Strukturen und zwischenmolekularen Wechselwirkungen verwenden"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekI",
+        "section:3-1-uf-j10",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "3.1-UF-J10"
+      }
+    },
+    {
+      "id": "de-hh-chemie-seki-bildungsplan-2014-2018-3-1-uf-j10-016-074abd62",
+      "passageId": "de-hh-chemie-seki-bildungsplan-2014-2018:3-1-uf-j10",
+      "topicCode": "3.1-UF-J10",
+      "title": "Ordnungsprinzipien fuer Stoffe mit Eigenschaften oder charakteristischen Merkmalen der Teilchenzusammensetzung und -struktur beschreiben und begruenden",
+      "description": "Die lernende Person kann Ordnungsprinzipien fuer Stoffe mit Eigenschaften oder charakteristischen Merkmalen der Teilchenzusammensetzung und -struktur beschreiben und begruenden.",
+      "sourceDocumentKey": "HH-CHEMIE-GYM-SEKI",
+      "sourceRef": "Hamburg Bildungsplan Gymnasium Sekundarstufe I Chemie, 3.1-UF-J10, S. 19.",
+      "sourceText": "Ordnungsprinzipien fuer Stoffe mit Eigenschaften oder charakteristischen Merkmalen der Teilchenzusammensetzung und -struktur beschreiben und begruenden",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-seki-bildungsplan-2014-2018:3-1-uf-j10",
+        "label": "3.1-UF-J10, S. 19: Ordnungsprinzipien fuer Stoffe mit Eigenschaften oder charakteristischen Merkmalen der Teilchenzusammensetzung und -struktur beschreiben und begruenden"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekI",
+        "section:3-1-uf-j10",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "3.1-UF-J10"
+      }
+    },
+    {
+      "id": "de-hh-chemie-seki-bildungsplan-2014-2018-3-1-uf-j10-017-da29206c",
+      "passageId": "de-hh-chemie-seki-bildungsplan-2014-2018:3-1-uf-j10",
+      "topicCode": "3.1-UF-J10",
+      "title": "Reaktionsschemata und Reaktionsgleichungen mit Atom-Erhaltung und konstanten Atomzahlenverhaeltnissen erstellen",
+      "description": "Die lernende Person kann Reaktionsschemata und Reaktionsgleichungen mit Atom-Erhaltung und konstanten Atomzahlenverhaeltnissen erstellen.",
+      "sourceDocumentKey": "HH-CHEMIE-GYM-SEKI",
+      "sourceRef": "Hamburg Bildungsplan Gymnasium Sekundarstufe I Chemie, 3.1-UF-J10, S. 19.",
+      "sourceText": "Reaktionsschemata und Reaktionsgleichungen mit Atom-Erhaltung und konstanten Atomzahlenverhaeltnissen erstellen",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-seki-bildungsplan-2014-2018:3-1-uf-j10",
+        "label": "3.1-UF-J10, S. 19: Reaktionsschemata und Reaktionsgleichungen mit Atom-Erhaltung und konstanten Atomzahlenverhaeltnissen erstellen"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekI",
+        "section:3-1-uf-j10",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "3.1-UF-J10"
+      }
+    },
+    {
+      "id": "de-hh-chemie-seki-bildungsplan-2014-2018-3-1-uf-j10-018-4fd6ca92",
+      "passageId": "de-hh-chemie-seki-bildungsplan-2014-2018:3-1-uf-j10",
+      "topicCode": "3.1-UF-J10",
+      "title": "in ausgewaehlten Donator-Akzeptor-Reaktionen die Teilchenuebertragung kennzeichnen und die Reaktionsart bestimmen",
+      "description": "Die lernende Person kann in ausgewaehlten Donator-Akzeptor-Reaktionen die Teilchenuebertragung kennzeichnen und die Reaktionsart bestimmen.",
+      "sourceDocumentKey": "HH-CHEMIE-GYM-SEKI",
+      "sourceRef": "Hamburg Bildungsplan Gymnasium Sekundarstufe I Chemie, 3.1-UF-J10, S. 19.",
+      "sourceText": "in ausgewaehlten Donator-Akzeptor-Reaktionen die Teilchenuebertragung kennzeichnen und die Reaktionsart bestimmen",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-seki-bildungsplan-2014-2018:3-1-uf-j10",
+        "label": "3.1-UF-J10, S. 19: in ausgewaehlten Donator-Akzeptor-Reaktionen die Teilchenuebertragung kennzeichnen und die Reaktionsart bestimmen"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekI",
+        "section:3-1-uf-j10",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "3.1-UF-J10"
+      }
+    },
+    {
+      "id": "de-hh-chemie-seki-bildungsplan-2014-2018-3-1-uf-j10-019-8f22f889",
+      "passageId": "de-hh-chemie-seki-bildungsplan-2014-2018:3-1-uf-j10",
+      "topicCode": "3.1-UF-J10",
+      "title": "Möglichkeiten der Steuerung chemischer Reaktionen durch Variation von Reaktionsbedingungen beschreiben",
+      "description": "Die lernende Person kann Möglichkeiten der Steuerung chemischer Reaktionen durch Variation von Reaktionsbedingungen beschreiben.",
+      "sourceDocumentKey": "HH-CHEMIE-GYM-SEKI",
+      "sourceRef": "Hamburg Bildungsplan Gymnasium Sekundarstufe I Chemie, 3.1-UF-J10, S. 19.",
+      "sourceText": "Möglichkeiten der Steuerung chemischer Reaktionen durch Variation von Reaktionsbedingungen beschreiben",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-seki-bildungsplan-2014-2018:3-1-uf-j10",
+        "label": "3.1-UF-J10, S. 19: Möglichkeiten der Steuerung chemischer Reaktionen durch Variation von Reaktionsbedingungen beschreiben"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekI",
+        "section:3-1-uf-j10",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "3.1-UF-J10"
+      }
+    },
+    {
+      "id": "de-hh-chemie-seki-bildungsplan-2014-2018-3-1-uf-j10-020-b9d047ab",
+      "passageId": "de-hh-chemie-seki-bildungsplan-2014-2018:3-1-uf-j10",
+      "topicCode": "3.1-UF-J10",
+      "title": "angeben, dass sich bei chemischen Reaktionen der Energieinhalt des Reaktionssystems durch Austausch mit der Umgebung veraendert",
+      "description": "Die lernende Person kann angeben, dass sich bei chemischen Reaktionen der Energieinhalt des Reaktionssystems durch Austausch mit der Umgebung veraendert.",
+      "sourceDocumentKey": "HH-CHEMIE-GYM-SEKI",
+      "sourceRef": "Hamburg Bildungsplan Gymnasium Sekundarstufe I Chemie, 3.1-UF-J10, S. 19.",
+      "sourceText": "angeben, dass sich bei chemischen Reaktionen der Energieinhalt des Reaktionssystems durch Austausch mit der Umgebung veraendert",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-seki-bildungsplan-2014-2018:3-1-uf-j10",
+        "label": "3.1-UF-J10, S. 19: angeben, dass sich bei chemischen Reaktionen der Energieinhalt des Reaktionssystems durch Austausch mit der Umgebung veraendert"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekI",
+        "section:3-1-uf-j10",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "3.1-UF-J10"
+      }
+    },
+    {
+      "id": "de-hh-chemie-seki-bildungsplan-2014-2018-3-1-uf-j10-021-5bd3e4b9",
+      "passageId": "de-hh-chemie-seki-bildungsplan-2014-2018:3-1-uf-j10",
+      "topicCode": "3.1-UF-J10",
+      "title": "energetische Erscheinungen bei chemischen Reaktionen auf die Umwandlung gespeicherter Energie in andere Energieformen zurueckfuehren",
+      "description": "Die lernende Person kann energetische Erscheinungen bei chemischen Reaktionen auf die Umwandlung gespeicherter Energie in andere Energieformen zurueckfuehren.",
+      "sourceDocumentKey": "HH-CHEMIE-GYM-SEKI",
+      "sourceRef": "Hamburg Bildungsplan Gymnasium Sekundarstufe I Chemie, 3.1-UF-J10, S. 19.",
+      "sourceText": "energetische Erscheinungen bei chemischen Reaktionen auf die Umwandlung gespeicherter Energie in andere Energieformen zurueckfuehren",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-seki-bildungsplan-2014-2018:3-1-uf-j10",
+        "label": "3.1-UF-J10, S. 19: energetische Erscheinungen bei chemischen Reaktionen auf die Umwandlung gespeicherter Energie in andere Energieformen zurueckfuehren"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekI",
+        "section:3-1-uf-j10",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "3.1-UF-J10"
+      }
+    },
+    {
+      "id": "de-hh-chemie-seki-bildungsplan-2014-2018-3-1-eg-022-ee4f9f5b",
+      "passageId": "de-hh-chemie-seki-bildungsplan-2014-2018:3-1-eg",
+      "topicCode": "3.1-EG",
+      "title": "qualitative und einfache quantitative experimentelle und andere Untersuchungen durchfuehren und protokollieren",
+      "description": "Die lernende Person kann qualitative und einfache quantitative experimentelle und andere Untersuchungen durchfuehren und protokollieren.",
+      "sourceDocumentKey": "HH-CHEMIE-GYM-SEKI",
+      "sourceRef": "Hamburg Bildungsplan Gymnasium Sekundarstufe I Chemie, 3.1-EG, S. 20.",
+      "sourceText": "qualitative und einfache quantitative experimentelle und andere Untersuchungen durchfuehren und protokollieren",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-seki-bildungsplan-2014-2018:3-1-eg",
+        "label": "3.1-EG, S. 20: qualitative und einfache quantitative experimentelle und andere Untersuchungen durchfuehren und protokollieren"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekI",
+        "section:3-1-eg",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "3.1-EG"
+      }
+    },
+    {
+      "id": "de-hh-chemie-seki-bildungsplan-2014-2018-3-1-eg-023-47f20f42",
+      "passageId": "de-hh-chemie-seki-bildungsplan-2014-2018:3-1-eg",
+      "topicCode": "3.1-EG",
+      "title": "beim Experimentieren Sicherheits- und Umweltaspekte beachten",
+      "description": "Die lernende Person kann beim Experimentieren Sicherheits- und Umweltaspekte beachten.",
+      "sourceDocumentKey": "HH-CHEMIE-GYM-SEKI",
+      "sourceRef": "Hamburg Bildungsplan Gymnasium Sekundarstufe I Chemie, 3.1-EG, S. 20.",
+      "sourceText": "beim Experimentieren Sicherheits- und Umweltaspekte beachten",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-seki-bildungsplan-2014-2018:3-1-eg",
+        "label": "3.1-EG, S. 20: beim Experimentieren Sicherheits- und Umweltaspekte beachten"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekI",
+        "section:3-1-eg",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "3.1-EG"
+      }
+    },
+    {
+      "id": "de-hh-chemie-seki-bildungsplan-2014-2018-3-1-eg-024-bb287364",
+      "passageId": "de-hh-chemie-seki-bildungsplan-2014-2018:3-1-eg",
+      "topicCode": "3.1-EG",
+      "title": "geeignete Untersuchungen zur Ueberpruefung von Vermutungen und Hypothesen planen",
+      "description": "Die lernende Person kann geeignete Untersuchungen zur Ueberpruefung von Vermutungen und Hypothesen planen.",
+      "sourceDocumentKey": "HH-CHEMIE-GYM-SEKI",
+      "sourceRef": "Hamburg Bildungsplan Gymnasium Sekundarstufe I Chemie, 3.1-EG, S. 20.",
+      "sourceText": "geeignete Untersuchungen zur Ueberpruefung von Vermutungen und Hypothesen planen",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-seki-bildungsplan-2014-2018:3-1-eg",
+        "label": "3.1-EG, S. 20: geeignete Untersuchungen zur Ueberpruefung von Vermutungen und Hypothesen planen"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekI",
+        "section:3-1-eg",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "3.1-EG"
+      }
+    },
+    {
+      "id": "de-hh-chemie-seki-bildungsplan-2014-2018-3-1-eg-025-07d33ac0",
+      "passageId": "de-hh-chemie-seki-bildungsplan-2014-2018:3-1-eg",
+      "topicCode": "3.1-EG",
+      "title": "geeignete Modelle nutzen, um chemische Fragestellungen zu bearbeiten",
+      "description": "Die lernende Person kann geeignete Modelle nutzen, um chemische Fragestellungen zu bearbeiten.",
+      "sourceDocumentKey": "HH-CHEMIE-GYM-SEKI",
+      "sourceRef": "Hamburg Bildungsplan Gymnasium Sekundarstufe I Chemie, 3.1-EG, S. 20.",
+      "sourceText": "geeignete Modelle nutzen, um chemische Fragestellungen zu bearbeiten",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-seki-bildungsplan-2014-2018:3-1-eg",
+        "label": "3.1-EG, S. 20: geeignete Modelle nutzen, um chemische Fragestellungen zu bearbeiten"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekI",
+        "section:3-1-eg",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "3.1-EG"
+      }
+    },
+    {
+      "id": "de-hh-chemie-seki-bildungsplan-2014-2018-3-1-eg-026-a5e539f2",
+      "passageId": "de-hh-chemie-seki-bildungsplan-2014-2018:3-1-eg",
+      "topicCode": "3.1-EG",
+      "title": "chemische Fragestellungen erkennen und entwickeln, die mit chemischen Kenntnissen und Untersuchungen zu beantworten sind",
+      "description": "Die lernende Person kann chemische Fragestellungen erkennen und entwickeln, die mit chemischen Kenntnissen und Untersuchungen zu beantworten sind.",
+      "sourceDocumentKey": "HH-CHEMIE-GYM-SEKI",
+      "sourceRef": "Hamburg Bildungsplan Gymnasium Sekundarstufe I Chemie, 3.1-EG, S. 20.",
+      "sourceText": "chemische Fragestellungen erkennen und entwickeln, die mit chemischen Kenntnissen und Untersuchungen zu beantworten sind",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-seki-bildungsplan-2014-2018:3-1-eg",
+        "label": "3.1-EG, S. 20: chemische Fragestellungen erkennen und entwickeln, die mit chemischen Kenntnissen und Untersuchungen zu beantworten sind"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekI",
+        "section:3-1-eg",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "3.1-EG"
+      }
+    },
+    {
+      "id": "de-hh-chemie-seki-bildungsplan-2014-2018-3-1-eg-027-2615a936",
+      "passageId": "de-hh-chemie-seki-bildungsplan-2014-2018:3-1-eg",
+      "topicCode": "3.1-EG",
+      "title": "bei Untersuchungen und Experimenten relevante Daten erheben oder recherchieren",
+      "description": "Die lernende Person kann bei Untersuchungen und Experimenten relevante Daten erheben oder recherchieren.",
+      "sourceDocumentKey": "HH-CHEMIE-GYM-SEKI",
+      "sourceRef": "Hamburg Bildungsplan Gymnasium Sekundarstufe I Chemie, 3.1-EG, S. 20.",
+      "sourceText": "bei Untersuchungen und Experimenten relevante Daten erheben oder recherchieren",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-seki-bildungsplan-2014-2018:3-1-eg",
+        "label": "3.1-EG, S. 20: bei Untersuchungen und Experimenten relevante Daten erheben oder recherchieren"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekI",
+        "section:3-1-eg",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "3.1-EG"
+      }
+    },
+    {
+      "id": "de-hh-chemie-seki-bildungsplan-2014-2018-3-1-eg-028-e83f745d",
+      "passageId": "de-hh-chemie-seki-bildungsplan-2014-2018:3-1-eg",
+      "topicCode": "3.1-EG",
+      "title": "in Daten Trends, Strukturen und Beziehungen finden, erklaeren und Schlussfolgerungen ziehen",
+      "description": "Die lernende Person kann in Daten Trends, Strukturen und Beziehungen finden, erklaeren und Schlussfolgerungen ziehen.",
+      "sourceDocumentKey": "HH-CHEMIE-GYM-SEKI",
+      "sourceRef": "Hamburg Bildungsplan Gymnasium Sekundarstufe I Chemie, 3.1-EG, S. 20.",
+      "sourceText": "in Daten Trends, Strukturen und Beziehungen finden, erklaeren und Schlussfolgerungen ziehen",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-seki-bildungsplan-2014-2018:3-1-eg",
+        "label": "3.1-EG, S. 20: in Daten Trends, Strukturen und Beziehungen finden, erklaeren und Schlussfolgerungen ziehen"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekI",
+        "section:3-1-eg",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "3.1-EG"
+      }
+    },
+    {
+      "id": "de-hh-chemie-seki-bildungsplan-2014-2018-3-1-eg-029-38ea88f9",
+      "passageId": "de-hh-chemie-seki-bildungsplan-2014-2018:3-1-eg",
+      "topicCode": "3.1-EG",
+      "title": "Verknuepfungen zwischen gesellschaftlichen Entwicklungen und Erkenntnissen der Chemie exemplarisch aufzeigen",
+      "description": "Die lernende Person kann Verknuepfungen zwischen gesellschaftlichen Entwicklungen und Erkenntnissen der Chemie exemplarisch aufzeigen.",
+      "sourceDocumentKey": "HH-CHEMIE-GYM-SEKI",
+      "sourceRef": "Hamburg Bildungsplan Gymnasium Sekundarstufe I Chemie, 3.1-EG, S. 20.",
+      "sourceText": "Verknuepfungen zwischen gesellschaftlichen Entwicklungen und Erkenntnissen der Chemie exemplarisch aufzeigen",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-seki-bildungsplan-2014-2018:3-1-eg",
+        "label": "3.1-EG, S. 20: Verknuepfungen zwischen gesellschaftlichen Entwicklungen und Erkenntnissen der Chemie exemplarisch aufzeigen"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekI",
+        "section:3-1-eg",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "3.1-EG"
+      }
+    },
+    {
+      "id": "de-hh-chemie-seki-bildungsplan-2014-2018-3-1-k-030-ac5327a6",
+      "passageId": "de-hh-chemie-seki-bildungsplan-2014-2018:3-1-k",
+      "topicCode": "3.1-K",
+      "title": "zu einem chemischen Sachverhalt in unterschiedlichen Quellen recherchieren",
+      "description": "Die lernende Person kann zu einem chemischen Sachverhalt in unterschiedlichen Quellen recherchieren.",
+      "sourceDocumentKey": "HH-CHEMIE-GYM-SEKI",
+      "sourceRef": "Hamburg Bildungsplan Gymnasium Sekundarstufe I Chemie, 3.1-K, S. 20.",
+      "sourceText": "zu einem chemischen Sachverhalt in unterschiedlichen Quellen recherchieren",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-seki-bildungsplan-2014-2018:3-1-k",
+        "label": "3.1-K, S. 20: zu einem chemischen Sachverhalt in unterschiedlichen Quellen recherchieren"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekI",
+        "section:3-1-k",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "3.1-K"
+      }
+    },
+    {
+      "id": "de-hh-chemie-seki-bildungsplan-2014-2018-3-1-k-031-f8f8fb58",
+      "passageId": "de-hh-chemie-seki-bildungsplan-2014-2018:3-1-k",
+      "topicCode": "3.1-K",
+      "title": "den Verlauf und die Ergebnisse von Untersuchungen und Diskussionen in angemessener Form protokollieren",
+      "description": "Die lernende Person kann den Verlauf und die Ergebnisse von Untersuchungen und Diskussionen in angemessener Form protokollieren.",
+      "sourceDocumentKey": "HH-CHEMIE-GYM-SEKI",
+      "sourceRef": "Hamburg Bildungsplan Gymnasium Sekundarstufe I Chemie, 3.1-K, S. 20.",
+      "sourceText": "den Verlauf und die Ergebnisse von Untersuchungen und Diskussionen in angemessener Form protokollieren",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-seki-bildungsplan-2014-2018:3-1-k",
+        "label": "3.1-K, S. 20: den Verlauf und die Ergebnisse von Untersuchungen und Diskussionen in angemessener Form protokollieren"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekI",
+        "section:3-1-k",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "3.1-K"
+      }
+    },
+    {
+      "id": "de-hh-chemie-seki-bildungsplan-2014-2018-3-1-k-032-c99fa4fe",
+      "passageId": "de-hh-chemie-seki-bildungsplan-2014-2018:3-1-k",
+      "topicCode": "3.1-K",
+      "title": "fachlich korrekt und folgerichtig argumentieren",
+      "description": "Die lernende Person kann fachlich korrekt und folgerichtig argumentieren.",
+      "sourceDocumentKey": "HH-CHEMIE-GYM-SEKI",
+      "sourceRef": "Hamburg Bildungsplan Gymnasium Sekundarstufe I Chemie, 3.1-K, S. 20.",
+      "sourceText": "fachlich korrekt und folgerichtig argumentieren",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-seki-bildungsplan-2014-2018:3-1-k",
+        "label": "3.1-K, S. 20: fachlich korrekt und folgerichtig argumentieren"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekI",
+        "section:3-1-k",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "3.1-K"
+      }
+    },
+    {
+      "id": "de-hh-chemie-seki-bildungsplan-2014-2018-3-1-k-033-8610b593",
+      "passageId": "de-hh-chemie-seki-bildungsplan-2014-2018:3-1-k",
+      "topicCode": "3.1-K",
+      "title": "themenbezogene und aussagekraeftige Informationen auswaehlen",
+      "description": "Die lernende Person kann themenbezogene und aussagekraeftige Informationen auswaehlen.",
+      "sourceDocumentKey": "HH-CHEMIE-GYM-SEKI",
+      "sourceRef": "Hamburg Bildungsplan Gymnasium Sekundarstufe I Chemie, 3.1-K, S. 20.",
+      "sourceText": "themenbezogene und aussagekraeftige Informationen auswaehlen",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-seki-bildungsplan-2014-2018:3-1-k",
+        "label": "3.1-K, S. 20: themenbezogene und aussagekraeftige Informationen auswaehlen"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekI",
+        "section:3-1-k",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "3.1-K"
+      }
+    },
+    {
+      "id": "de-hh-chemie-seki-bildungsplan-2014-2018-3-1-k-034-2ba4639f",
+      "passageId": "de-hh-chemie-seki-bildungsplan-2014-2018:3-1-k",
+      "topicCode": "3.1-K",
+      "title": "chemische Sachverhalte unter Verwendung der Fachsprache und mithilfe von Modellen und Darstellungen beschreiben, veranschaulichen oder erklaeren",
+      "description": "Die lernende Person kann chemische Sachverhalte unter Verwendung der Fachsprache und mithilfe von Modellen und Darstellungen beschreiben, veranschaulichen oder erklaeren.",
+      "sourceDocumentKey": "HH-CHEMIE-GYM-SEKI",
+      "sourceRef": "Hamburg Bildungsplan Gymnasium Sekundarstufe I Chemie, 3.1-K, S. 20.",
+      "sourceText": "chemische Sachverhalte unter Verwendung der Fachsprache und mithilfe von Modellen und Darstellungen beschreiben, veranschaulichen oder erklaeren",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-seki-bildungsplan-2014-2018:3-1-k",
+        "label": "3.1-K, S. 20: chemische Sachverhalte unter Verwendung der Fachsprache und mithilfe von Modellen und Darstellungen beschreiben, veranschaulichen oder erklaeren"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekI",
+        "section:3-1-k",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "3.1-K"
+      }
+    },
+    {
+      "id": "de-hh-chemie-seki-bildungsplan-2014-2018-3-1-k-035-99773b8f",
+      "passageId": "de-hh-chemie-seki-bildungsplan-2014-2018:3-1-k",
+      "topicCode": "3.1-K",
+      "title": "den Verlauf und die Ergebnisse der eigenen Arbeit dokumentieren und praesentieren",
+      "description": "Die lernende Person kann den Verlauf und die Ergebnisse der eigenen Arbeit dokumentieren und praesentieren.",
+      "sourceDocumentKey": "HH-CHEMIE-GYM-SEKI",
+      "sourceRef": "Hamburg Bildungsplan Gymnasium Sekundarstufe I Chemie, 3.1-K, S. 20.",
+      "sourceText": "den Verlauf und die Ergebnisse der eigenen Arbeit dokumentieren und praesentieren",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-seki-bildungsplan-2014-2018:3-1-k",
+        "label": "3.1-K, S. 20: den Verlauf und die Ergebnisse der eigenen Arbeit dokumentieren und praesentieren"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekI",
+        "section:3-1-k",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "3.1-K"
+      }
+    },
+    {
+      "id": "de-hh-chemie-seki-bildungsplan-2014-2018-3-1-k-036-5d014713",
+      "passageId": "de-hh-chemie-seki-bildungsplan-2014-2018:3-1-k",
+      "topicCode": "3.1-K",
+      "title": "Darstellungen in Medien hinsichtlich ihrer fachlichen Richtigkeit pruefen",
+      "description": "Die lernende Person kann Darstellungen in Medien hinsichtlich ihrer fachlichen Richtigkeit pruefen.",
+      "sourceDocumentKey": "HH-CHEMIE-GYM-SEKI",
+      "sourceRef": "Hamburg Bildungsplan Gymnasium Sekundarstufe I Chemie, 3.1-K, S. 20.",
+      "sourceText": "Darstellungen in Medien hinsichtlich ihrer fachlichen Richtigkeit pruefen",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-seki-bildungsplan-2014-2018:3-1-k",
+        "label": "3.1-K, S. 20: Darstellungen in Medien hinsichtlich ihrer fachlichen Richtigkeit pruefen"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekI",
+        "section:3-1-k",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "3.1-K"
+      }
+    },
+    {
+      "id": "de-hh-chemie-seki-bildungsplan-2014-2018-3-1-k-037-5fd22541",
+      "passageId": "de-hh-chemie-seki-bildungsplan-2014-2018:3-1-k",
+      "topicCode": "3.1-K",
+      "title": "Zusammenhaenge zwischen chemischen Sachverhalten und Alltagserscheinungen herstellen und zwischen Fach- und Alltagssprache uebersetzen",
+      "description": "Die lernende Person kann Zusammenhaenge zwischen chemischen Sachverhalten und Alltagserscheinungen herstellen und zwischen Fach- und Alltagssprache uebersetzen.",
+      "sourceDocumentKey": "HH-CHEMIE-GYM-SEKI",
+      "sourceRef": "Hamburg Bildungsplan Gymnasium Sekundarstufe I Chemie, 3.1-K, S. 20.",
+      "sourceText": "Zusammenhaenge zwischen chemischen Sachverhalten und Alltagserscheinungen herstellen und zwischen Fach- und Alltagssprache uebersetzen",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-seki-bildungsplan-2014-2018:3-1-k",
+        "label": "3.1-K, S. 20: Zusammenhaenge zwischen chemischen Sachverhalten und Alltagserscheinungen herstellen und zwischen Fach- und Alltagssprache uebersetzen"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekI",
+        "section:3-1-k",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "3.1-K"
+      }
+    },
+    {
+      "id": "de-hh-chemie-seki-bildungsplan-2014-2018-3-1-k-038-3c306b89",
+      "passageId": "de-hh-chemie-seki-bildungsplan-2014-2018:3-1-k",
+      "topicCode": "3.1-K",
+      "title": "Arbeitsergebnisse situationsgerecht und adressatenbezogen dokumentieren und praesentieren",
+      "description": "Die lernende Person kann Arbeitsergebnisse situationsgerecht und adressatenbezogen dokumentieren und praesentieren.",
+      "sourceDocumentKey": "HH-CHEMIE-GYM-SEKI",
+      "sourceRef": "Hamburg Bildungsplan Gymnasium Sekundarstufe I Chemie, 3.1-K, S. 20.",
+      "sourceText": "Arbeitsergebnisse situationsgerecht und adressatenbezogen dokumentieren und praesentieren",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-seki-bildungsplan-2014-2018:3-1-k",
+        "label": "3.1-K, S. 20: Arbeitsergebnisse situationsgerecht und adressatenbezogen dokumentieren und praesentieren"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekI",
+        "section:3-1-k",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "3.1-K"
+      }
+    },
+    {
+      "id": "de-hh-chemie-seki-bildungsplan-2014-2018-3-1-k-039-bbbcfea8",
+      "passageId": "de-hh-chemie-seki-bildungsplan-2014-2018:3-1-k",
+      "topicCode": "3.1-K",
+      "title": "Standpunkte zu chemischen Sachverhalten vertreten und Einwaende selbstkritisch reflektieren",
+      "description": "Die lernende Person kann Standpunkte zu chemischen Sachverhalten vertreten und Einwaende selbstkritisch reflektieren.",
+      "sourceDocumentKey": "HH-CHEMIE-GYM-SEKI",
+      "sourceRef": "Hamburg Bildungsplan Gymnasium Sekundarstufe I Chemie, 3.1-K, S. 20.",
+      "sourceText": "Standpunkte zu chemischen Sachverhalten vertreten und Einwaende selbstkritisch reflektieren",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-seki-bildungsplan-2014-2018:3-1-k",
+        "label": "3.1-K, S. 20: Standpunkte zu chemischen Sachverhalten vertreten und Einwaende selbstkritisch reflektieren"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekI",
+        "section:3-1-k",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "3.1-K"
+      }
+    },
+    {
+      "id": "de-hh-chemie-seki-bildungsplan-2014-2018-3-1-k-040-0591750f",
+      "passageId": "de-hh-chemie-seki-bildungsplan-2014-2018:3-1-k",
+      "topicCode": "3.1-K",
+      "title": "Teamarbeit planen, strukturieren, reflektieren und praesentieren",
+      "description": "Die lernende Person kann Teamarbeit planen, strukturieren, reflektieren und praesentieren.",
+      "sourceDocumentKey": "HH-CHEMIE-GYM-SEKI",
+      "sourceRef": "Hamburg Bildungsplan Gymnasium Sekundarstufe I Chemie, 3.1-K, S. 20.",
+      "sourceText": "Teamarbeit planen, strukturieren, reflektieren und praesentieren",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-seki-bildungsplan-2014-2018:3-1-k",
+        "label": "3.1-K, S. 20: Teamarbeit planen, strukturieren, reflektieren und praesentieren"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekI",
+        "section:3-1-k",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "3.1-K"
+      }
+    },
+    {
+      "id": "de-hh-chemie-seki-bildungsplan-2014-2018-3-1-b-041-afcefc45",
+      "passageId": "de-hh-chemie-seki-bildungsplan-2014-2018:3-1-b",
+      "topicCode": "3.1-B",
+      "title": "Fragestellungen mit engem Bezug zu anderen Unterrichtsfaechern erkennen und diese Bezuege aufzeigen",
+      "description": "Die lernende Person kann Fragestellungen mit engem Bezug zu anderen Unterrichtsfaechern erkennen und diese Bezuege aufzeigen.",
+      "sourceDocumentKey": "HH-CHEMIE-GYM-SEKI",
+      "sourceRef": "Hamburg Bildungsplan Gymnasium Sekundarstufe I Chemie, 3.1-B, S. 20.",
+      "sourceText": "Fragestellungen mit engem Bezug zu anderen Unterrichtsfaechern erkennen und diese Bezuege aufzeigen",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-seki-bildungsplan-2014-2018:3-1-b",
+        "label": "3.1-B, S. 20: Fragestellungen mit engem Bezug zu anderen Unterrichtsfaechern erkennen und diese Bezuege aufzeigen"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekI",
+        "section:3-1-b",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "3.1-B"
+      }
+    },
+    {
+      "id": "de-hh-chemie-seki-bildungsplan-2014-2018-3-1-b-042-02b65ff0",
+      "passageId": "de-hh-chemie-seki-bildungsplan-2014-2018:3-1-b",
+      "topicCode": "3.1-B",
+      "title": "fachtypische und vernetzte Kenntnisse nutzen, um lebenspraktisch bedeutsame Zusammenhaenge zu erschliessen",
+      "description": "Die lernende Person kann fachtypische und vernetzte Kenntnisse nutzen, um lebenspraktisch bedeutsame Zusammenhaenge zu erschliessen.",
+      "sourceDocumentKey": "HH-CHEMIE-GYM-SEKI",
+      "sourceRef": "Hamburg Bildungsplan Gymnasium Sekundarstufe I Chemie, 3.1-B, S. 20.",
+      "sourceText": "fachtypische und vernetzte Kenntnisse nutzen, um lebenspraktisch bedeutsame Zusammenhaenge zu erschliessen",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-seki-bildungsplan-2014-2018:3-1-b",
+        "label": "3.1-B, S. 20: fachtypische und vernetzte Kenntnisse nutzen, um lebenspraktisch bedeutsame Zusammenhaenge zu erschliessen"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekI",
+        "section:3-1-b",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "3.1-B"
+      }
+    },
+    {
+      "id": "de-hh-chemie-seki-bildungsplan-2014-2018-3-1-b-043-d3b8bf8d",
+      "passageId": "de-hh-chemie-seki-bildungsplan-2014-2018:3-1-b",
+      "topicCode": "3.1-B",
+      "title": "Anwendungsbereiche und Berufsfelder darstellen, in denen chemische Kenntnisse bedeutsam sind",
+      "description": "Die lernende Person kann Anwendungsbereiche und Berufsfelder darstellen, in denen chemische Kenntnisse bedeutsam sind.",
+      "sourceDocumentKey": "HH-CHEMIE-GYM-SEKI",
+      "sourceRef": "Hamburg Bildungsplan Gymnasium Sekundarstufe I Chemie, 3.1-B, S. 20.",
+      "sourceText": "Anwendungsbereiche und Berufsfelder darstellen, in denen chemische Kenntnisse bedeutsam sind",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-seki-bildungsplan-2014-2018:3-1-b",
+        "label": "3.1-B, S. 20: Anwendungsbereiche und Berufsfelder darstellen, in denen chemische Kenntnisse bedeutsam sind"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekI",
+        "section:3-1-b",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "3.1-B"
+      }
+    },
+    {
+      "id": "de-hh-chemie-seki-bildungsplan-2014-2018-3-1-b-044-6e8eaf0b",
+      "passageId": "de-hh-chemie-seki-bildungsplan-2014-2018:3-1-b",
+      "topicCode": "3.1-B",
+      "title": "aktuelle lebensweltbezogene Fragestellungen entwickeln, die mit fachwissenschaftlichen Erkenntnissen der Chemie beantwortet werden koennen",
+      "description": "Die lernende Person kann aktuelle lebensweltbezogene Fragestellungen entwickeln, die mit fachwissenschaftlichen Erkenntnissen der Chemie beantwortet werden koennen.",
+      "sourceDocumentKey": "HH-CHEMIE-GYM-SEKI",
+      "sourceRef": "Hamburg Bildungsplan Gymnasium Sekundarstufe I Chemie, 3.1-B, S. 20.",
+      "sourceText": "aktuelle lebensweltbezogene Fragestellungen entwickeln, die mit fachwissenschaftlichen Erkenntnissen der Chemie beantwortet werden koennen",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-seki-bildungsplan-2014-2018:3-1-b",
+        "label": "3.1-B, S. 20: aktuelle lebensweltbezogene Fragestellungen entwickeln, die mit fachwissenschaftlichen Erkenntnissen der Chemie beantwortet werden koennen"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekI",
+        "section:3-1-b",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "3.1-B"
+      }
+    },
+    {
+      "id": "de-hh-chemie-seki-bildungsplan-2014-2018-3-1-b-045-19356f9e",
+      "passageId": "de-hh-chemie-seki-bildungsplan-2014-2018:3-1-b",
+      "topicCode": "3.1-B",
+      "title": "gesellschaftsrelevante Aussagen aus unterschiedlichen Perspektiven diskutieren und bewerten",
+      "description": "Die lernende Person kann gesellschaftsrelevante Aussagen aus unterschiedlichen Perspektiven diskutieren und bewerten.",
+      "sourceDocumentKey": "HH-CHEMIE-GYM-SEKI",
+      "sourceRef": "Hamburg Bildungsplan Gymnasium Sekundarstufe I Chemie, 3.1-B, S. 20.",
+      "sourceText": "gesellschaftsrelevante Aussagen aus unterschiedlichen Perspektiven diskutieren und bewerten",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-seki-bildungsplan-2014-2018:3-1-b",
+        "label": "3.1-B, S. 20: gesellschaftsrelevante Aussagen aus unterschiedlichen Perspektiven diskutieren und bewerten"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekI",
+        "section:3-1-b",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "3.1-B"
+      }
+    },
+    {
+      "id": "de-hh-chemie-seki-bildungsplan-2014-2018-3-1-b-046-be6cbe91",
+      "passageId": "de-hh-chemie-seki-bildungsplan-2014-2018:3-1-b",
+      "topicCode": "3.1-B",
+      "title": "chemische Sachverhalte in Problemzusammenhaenge einbinden, Loesungsstrategien entwickeln und anwenden",
+      "description": "Die lernende Person kann chemische Sachverhalte in Problemzusammenhaenge einbinden, Loesungsstrategien entwickeln und anwenden.",
+      "sourceDocumentKey": "HH-CHEMIE-GYM-SEKI",
+      "sourceRef": "Hamburg Bildungsplan Gymnasium Sekundarstufe I Chemie, 3.1-B, S. 20.",
+      "sourceText": "chemische Sachverhalte in Problemzusammenhaenge einbinden, Loesungsstrategien entwickeln und anwenden",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-seki-bildungsplan-2014-2018:3-1-b",
+        "label": "3.1-B, S. 20: chemische Sachverhalte in Problemzusammenhaenge einbinden, Loesungsstrategien entwickeln und anwenden"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekI",
+        "section:3-1-b",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "3.1-B"
+      }
+    },
+    {
+      "id": "de-hh-chemie-seki-bildungsplan-2014-2018-3-2-basis-047-8e2eaecb",
+      "passageId": "de-hh-chemie-seki-bildungsplan-2014-2018:3-2-basis",
+      "topicCode": "3.2-BASIS",
+      "title": "Stoff-Teilchen-Beziehungen und Struktur-Eigenschafts-Beziehungen als Basiskonzept nutzen",
+      "description": "Die lernende Person kann Stoff-Teilchen-Beziehungen und Struktur-Eigenschafts-Beziehungen als Basiskonzept nutzen.",
+      "sourceDocumentKey": "HH-CHEMIE-GYM-SEKI",
+      "sourceRef": "Hamburg Bildungsplan Gymnasium Sekundarstufe I Chemie, 3.2-BASIS, S. 21.",
+      "sourceText": "Stoff-Teilchen-Beziehungen und Struktur-Eigenschafts-Beziehungen als Basiskonzept nutzen",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-seki-bildungsplan-2014-2018:3-2-basis",
+        "label": "3.2-BASIS, S. 21: Stoff-Teilchen-Beziehungen und Struktur-Eigenschafts-Beziehungen als Basiskonzept nutzen"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekI",
+        "section:3-2-basis",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "3.2-BASIS"
+      }
+    },
+    {
+      "id": "de-hh-chemie-seki-bildungsplan-2014-2018-3-2-basis-048-e75a7e01",
+      "passageId": "de-hh-chemie-seki-bildungsplan-2014-2018:3-2-basis",
+      "topicCode": "3.2-BASIS",
+      "title": "chemische Reaktionen als Neuanordnungen zugrunde liegender Atome beschreiben",
+      "description": "Die lernende Person kann chemische Reaktionen als Neuanordnungen zugrunde liegender Atome beschreiben.",
+      "sourceDocumentKey": "HH-CHEMIE-GYM-SEKI",
+      "sourceRef": "Hamburg Bildungsplan Gymnasium Sekundarstufe I Chemie, 3.2-BASIS, S. 21.",
+      "sourceText": "chemische Reaktionen als Neuanordnungen zugrunde liegender Atome beschreiben",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-seki-bildungsplan-2014-2018:3-2-basis",
+        "label": "3.2-BASIS, S. 21: chemische Reaktionen als Neuanordnungen zugrunde liegender Atome beschreiben"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekI",
+        "section:3-2-basis",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "3.2-BASIS"
+      }
+    },
+    {
+      "id": "de-hh-chemie-seki-bildungsplan-2014-2018-3-2-basis-049-15b80656",
+      "passageId": "de-hh-chemie-seki-bildungsplan-2014-2018:3-2-basis",
+      "topicCode": "3.2-BASIS",
+      "title": "energetische Betrachtungen bei Stoffumwandlungen als Basiskonzept nutzen",
+      "description": "Die lernende Person kann energetische Betrachtungen bei Stoffumwandlungen als Basiskonzept nutzen.",
+      "sourceDocumentKey": "HH-CHEMIE-GYM-SEKI",
+      "sourceRef": "Hamburg Bildungsplan Gymnasium Sekundarstufe I Chemie, 3.2-BASIS, S. 21.",
+      "sourceText": "energetische Betrachtungen bei Stoffumwandlungen als Basiskonzept nutzen",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-seki-bildungsplan-2014-2018:3-2-basis",
+        "label": "3.2-BASIS, S. 21: energetische Betrachtungen bei Stoffumwandlungen als Basiskonzept nutzen"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekI",
+        "section:3-2-basis",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "3.2-BASIS"
+      }
+    },
+    {
+      "id": "de-hh-chemie-seki-bildungsplan-2014-2018-3-2-inhalte-050-2b068aaa",
+      "passageId": "de-hh-chemie-seki-bildungsplan-2014-2018:3-2-inhalte",
+      "topicCode": "3.2-INHALTE",
+      "title": "Sicherheit im Chemieraum und Umgang mit Gefahrstoffen beherrschen",
+      "description": "Die lernende Person kann Sicherheit im Chemieraum und Umgang mit Gefahrstoffen beherrschen.",
+      "sourceDocumentKey": "HH-CHEMIE-GYM-SEKI",
+      "sourceRef": "Hamburg Bildungsplan Gymnasium Sekundarstufe I Chemie, 3.2-INHALTE, S. 22.",
+      "sourceText": "Sicherheit im Chemieraum und Umgang mit Gefahrstoffen beherrschen",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-seki-bildungsplan-2014-2018:3-2-inhalte",
+        "label": "3.2-INHALTE, S. 22: Sicherheit im Chemieraum und Umgang mit Gefahrstoffen beherrschen"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekI",
+        "section:3-2-inhalte",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "3.2-INHALTE"
+      }
+    },
+    {
+      "id": "de-hh-chemie-seki-bildungsplan-2014-2018-3-2-inhalte-051-1d1a812f",
+      "passageId": "de-hh-chemie-seki-bildungsplan-2014-2018:3-2-inhalte",
+      "topicCode": "3.2-INHALTE",
+      "title": "Reinstoffe und Gemische als Stoffe und ihre Eigenschaften beschreiben",
+      "description": "Die lernende Person kann Reinstoffe und Gemische als Stoffe und ihre Eigenschaften beschreiben.",
+      "sourceDocumentKey": "HH-CHEMIE-GYM-SEKI",
+      "sourceRef": "Hamburg Bildungsplan Gymnasium Sekundarstufe I Chemie, 3.2-INHALTE, S. 22.",
+      "sourceText": "Reinstoffe und Gemische als Stoffe und ihre Eigenschaften beschreiben",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-seki-bildungsplan-2014-2018:3-2-inhalte",
+        "label": "3.2-INHALTE, S. 22: Reinstoffe und Gemische als Stoffe und ihre Eigenschaften beschreiben"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekI",
+        "section:3-2-inhalte",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "3.2-INHALTE"
+      }
+    },
+    {
+      "id": "de-hh-chemie-seki-bildungsplan-2014-2018-3-2-inhalte-052-eb27809c",
+      "passageId": "de-hh-chemie-seki-bildungsplan-2014-2018:3-2-inhalte",
+      "topicCode": "3.2-INHALTE",
+      "title": "Aggregatzustaende und Teilchenmodell zur Beschreibung von Stoffen verwenden",
+      "description": "Die lernende Person kann Aggregatzustaende und Teilchenmodell zur Beschreibung von Stoffen verwenden.",
+      "sourceDocumentKey": "HH-CHEMIE-GYM-SEKI",
+      "sourceRef": "Hamburg Bildungsplan Gymnasium Sekundarstufe I Chemie, 3.2-INHALTE, S. 22.",
+      "sourceText": "Aggregatzustaende und Teilchenmodell zur Beschreibung von Stoffen verwenden",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-seki-bildungsplan-2014-2018:3-2-inhalte",
+        "label": "3.2-INHALTE, S. 22: Aggregatzustaende und Teilchenmodell zur Beschreibung von Stoffen verwenden"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekI",
+        "section:3-2-inhalte",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "3.2-INHALTE"
+      }
+    },
+    {
+      "id": "de-hh-chemie-seki-bildungsplan-2014-2018-3-2-inhalte-053-4ee38e23",
+      "passageId": "de-hh-chemie-seki-bildungsplan-2014-2018:3-2-inhalte",
+      "topicCode": "3.2-INHALTE",
+      "title": "Stofftrennungen in Kontexten wie Kochsalzgewinnung, Trinkwassergewinnung, Extraktion oder Abfallsortierung einordnen",
+      "description": "Die lernende Person kann Stofftrennungen in Kontexten wie Kochsalzgewinnung, Trinkwassergewinnung, Extraktion oder Abfallsortierung einordnen.",
+      "sourceDocumentKey": "HH-CHEMIE-GYM-SEKI",
+      "sourceRef": "Hamburg Bildungsplan Gymnasium Sekundarstufe I Chemie, 3.2-INHALTE, S. 22.",
+      "sourceText": "Stofftrennungen in Kontexten wie Kochsalzgewinnung, Trinkwassergewinnung, Extraktion oder Abfallsortierung einordnen",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-seki-bildungsplan-2014-2018:3-2-inhalte",
+        "label": "3.2-INHALTE, S. 22: Stofftrennungen in Kontexten wie Kochsalzgewinnung, Trinkwassergewinnung, Extraktion oder Abfallsortierung einordnen"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekI",
+        "section:3-2-inhalte",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "3.2-INHALTE"
+      }
+    },
+    {
+      "id": "de-hh-chemie-seki-bildungsplan-2014-2018-3-2-inhalte-054-70db9a52",
+      "passageId": "de-hh-chemie-seki-bildungsplan-2014-2018:3-2-inhalte",
+      "topicCode": "3.2-INHALTE",
+      "title": "Stoffumwandlungen und Energieumsatz bei chemischen Reaktionen beschreiben",
+      "description": "Die lernende Person kann Stoffumwandlungen und Energieumsatz bei chemischen Reaktionen beschreiben.",
+      "sourceDocumentKey": "HH-CHEMIE-GYM-SEKI",
+      "sourceRef": "Hamburg Bildungsplan Gymnasium Sekundarstufe I Chemie, 3.2-INHALTE, S. 22.",
+      "sourceText": "Stoffumwandlungen und Energieumsatz bei chemischen Reaktionen beschreiben",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-seki-bildungsplan-2014-2018:3-2-inhalte",
+        "label": "3.2-INHALTE, S. 22: Stoffumwandlungen und Energieumsatz bei chemischen Reaktionen beschreiben"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekI",
+        "section:3-2-inhalte",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "3.2-INHALTE"
+      }
+    },
+    {
+      "id": "de-hh-chemie-seki-bildungsplan-2014-2018-3-2-inhalte-055-f7b69c8a",
+      "passageId": "de-hh-chemie-seki-bildungsplan-2014-2018:3-2-inhalte",
+      "topicCode": "3.2-INHALTE",
+      "title": "Element- und Verbindungsbegriff sowie Reaktionsgleichungen verwenden",
+      "description": "Die lernende Person kann Element- und Verbindungsbegriff sowie Reaktionsgleichungen verwenden.",
+      "sourceDocumentKey": "HH-CHEMIE-GYM-SEKI",
+      "sourceRef": "Hamburg Bildungsplan Gymnasium Sekundarstufe I Chemie, 3.2-INHALTE, S. 22.",
+      "sourceText": "Element- und Verbindungsbegriff sowie Reaktionsgleichungen verwenden",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-seki-bildungsplan-2014-2018:3-2-inhalte",
+        "label": "3.2-INHALTE, S. 22: Element- und Verbindungsbegriff sowie Reaktionsgleichungen verwenden"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekI",
+        "section:3-2-inhalte",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "3.2-INHALTE"
+      }
+    },
+    {
+      "id": "de-hh-chemie-seki-bildungsplan-2014-2018-3-2-inhalte-056-2ee4dee0",
+      "passageId": "de-hh-chemie-seki-bildungsplan-2014-2018:3-2-inhalte",
+      "topicCode": "3.2-INHALTE",
+      "title": "chemische Reaktionen in Kontexten wie Korrosion, Feuer, Brandbekaempfung und Metallgewinnung anwenden",
+      "description": "Die lernende Person kann chemische Reaktionen in Kontexten wie Korrosion, Feuer, Brandbekaempfung und Metallgewinnung anwenden.",
+      "sourceDocumentKey": "HH-CHEMIE-GYM-SEKI",
+      "sourceRef": "Hamburg Bildungsplan Gymnasium Sekundarstufe I Chemie, 3.2-INHALTE, S. 22.",
+      "sourceText": "chemische Reaktionen in Kontexten wie Korrosion, Feuer, Brandbekaempfung und Metallgewinnung anwenden",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-seki-bildungsplan-2014-2018:3-2-inhalte",
+        "label": "3.2-INHALTE, S. 22: chemische Reaktionen in Kontexten wie Korrosion, Feuer, Brandbekaempfung und Metallgewinnung anwenden"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekI",
+        "section:3-2-inhalte",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "3.2-INHALTE"
+      }
+    },
+    {
+      "id": "de-hh-chemie-seki-bildungsplan-2014-2018-3-2-inhalte-057-e406664b",
+      "passageId": "de-hh-chemie-seki-bildungsplan-2014-2018:3-2-inhalte",
+      "topicCode": "3.2-INHALTE",
+      "title": "Schalenmodell und Kugelwolkenmodell als Atommodelle verwenden",
+      "description": "Die lernende Person kann Schalenmodell und Kugelwolkenmodell als Atommodelle verwenden.",
+      "sourceDocumentKey": "HH-CHEMIE-GYM-SEKI",
+      "sourceRef": "Hamburg Bildungsplan Gymnasium Sekundarstufe I Chemie, 3.2-INHALTE, S. 22.",
+      "sourceText": "Schalenmodell und Kugelwolkenmodell als Atommodelle verwenden",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-seki-bildungsplan-2014-2018:3-2-inhalte",
+        "label": "3.2-INHALTE, S. 22: Schalenmodell und Kugelwolkenmodell als Atommodelle verwenden"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekI",
+        "section:3-2-inhalte",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "3.2-INHALTE"
+      }
+    },
+    {
+      "id": "de-hh-chemie-seki-bildungsplan-2014-2018-3-2-inhalte-058-4dbd8731",
+      "passageId": "de-hh-chemie-seki-bildungsplan-2014-2018:3-2-inhalte",
+      "topicCode": "3.2-INHALTE",
+      "title": "Hauptgruppen und Perioden im Periodensystem nutzen",
+      "description": "Die lernende Person kann Hauptgruppen und Perioden im Periodensystem nutzen.",
+      "sourceDocumentKey": "HH-CHEMIE-GYM-SEKI",
+      "sourceRef": "Hamburg Bildungsplan Gymnasium Sekundarstufe I Chemie, 3.2-INHALTE, S. 22.",
+      "sourceText": "Hauptgruppen und Perioden im Periodensystem nutzen",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-seki-bildungsplan-2014-2018:3-2-inhalte",
+        "label": "3.2-INHALTE, S. 22: Hauptgruppen und Perioden im Periodensystem nutzen"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekI",
+        "section:3-2-inhalte",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "3.2-INHALTE"
+      }
+    },
+    {
+      "id": "de-hh-chemie-seki-bildungsplan-2014-2018-3-2-inhalte-059-b842723f",
+      "passageId": "de-hh-chemie-seki-bildungsplan-2014-2018:3-2-inhalte",
+      "topicCode": "3.2-INHALTE",
+      "title": "Ionenbindung und Atombindung als Modelle chemischer Bindung beschreiben",
+      "description": "Die lernende Person kann Ionenbindung und Atombindung als Modelle chemischer Bindung beschreiben.",
+      "sourceDocumentKey": "HH-CHEMIE-GYM-SEKI",
+      "sourceRef": "Hamburg Bildungsplan Gymnasium Sekundarstufe I Chemie, 3.2-INHALTE, S. 22.",
+      "sourceText": "Ionenbindung und Atombindung als Modelle chemischer Bindung beschreiben",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-seki-bildungsplan-2014-2018:3-2-inhalte",
+        "label": "3.2-INHALTE, S. 22: Ionenbindung und Atombindung als Modelle chemischer Bindung beschreiben"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekI",
+        "section:3-2-inhalte",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "3.2-INHALTE"
+      }
+    },
+    {
+      "id": "de-hh-chemie-seki-bildungsplan-2014-2018-3-2-inhalte-060-64d11887",
+      "passageId": "de-hh-chemie-seki-bildungsplan-2014-2018:3-2-inhalte",
+      "topicCode": "3.2-INHALTE",
+      "title": "Elektronegativitaet und Polaritaet zur Deutung von Bindungen und Stoffeigenschaften nutzen",
+      "description": "Die lernende Person kann Elektronegativitaet und Polaritaet zur Deutung von Bindungen und Stoffeigenschaften nutzen.",
+      "sourceDocumentKey": "HH-CHEMIE-GYM-SEKI",
+      "sourceRef": "Hamburg Bildungsplan Gymnasium Sekundarstufe I Chemie, 3.2-INHALTE, S. 22.",
+      "sourceText": "Elektronegativitaet und Polaritaet zur Deutung von Bindungen und Stoffeigenschaften nutzen",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-seki-bildungsplan-2014-2018:3-2-inhalte",
+        "label": "3.2-INHALTE, S. 22: Elektronegativitaet und Polaritaet zur Deutung von Bindungen und Stoffeigenschaften nutzen"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekI",
+        "section:3-2-inhalte",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "3.2-INHALTE"
+      }
+    },
+    {
+      "id": "de-hh-chemie-seki-bildungsplan-2014-2018-3-2-inhalte-061-d4c1dc4f",
+      "passageId": "de-hh-chemie-seki-bildungsplan-2014-2018:3-2-inhalte",
+      "topicCode": "3.2-INHALTE",
+      "title": "Oxidation und Reduktion als Elektronenuebertragung beschreiben",
+      "description": "Die lernende Person kann Oxidation und Reduktion als Elektronenuebertragung beschreiben.",
+      "sourceDocumentKey": "HH-CHEMIE-GYM-SEKI",
+      "sourceRef": "Hamburg Bildungsplan Gymnasium Sekundarstufe I Chemie, 3.2-INHALTE, S. 22.",
+      "sourceText": "Oxidation und Reduktion als Elektronenuebertragung beschreiben",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-seki-bildungsplan-2014-2018:3-2-inhalte",
+        "label": "3.2-INHALTE, S. 22: Oxidation und Reduktion als Elektronenuebertragung beschreiben"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekI",
+        "section:3-2-inhalte",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "3.2-INHALTE"
+      }
+    },
+    {
+      "id": "de-hh-chemie-seki-bildungsplan-2014-2018-3-2-inhalte-062-2c997828",
+      "passageId": "de-hh-chemie-seki-bildungsplan-2014-2018:3-2-inhalte",
+      "topicCode": "3.2-INHALTE",
+      "title": "Saeure-Base-Reaktionen als Protonenuebertragung beschreiben",
+      "description": "Die lernende Person kann Saeure-Base-Reaktionen als Protonenuebertragung beschreiben.",
+      "sourceDocumentKey": "HH-CHEMIE-GYM-SEKI",
+      "sourceRef": "Hamburg Bildungsplan Gymnasium Sekundarstufe I Chemie, 3.2-INHALTE, S. 22.",
+      "sourceText": "Saeure-Base-Reaktionen als Protonenuebertragung beschreiben",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-seki-bildungsplan-2014-2018:3-2-inhalte",
+        "label": "3.2-INHALTE, S. 22: Saeure-Base-Reaktionen als Protonenuebertragung beschreiben"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekI",
+        "section:3-2-inhalte",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "3.2-INHALTE"
+      }
+    },
+    {
+      "id": "de-hh-chemie-seki-bildungsplan-2014-2018-3-2-inhalte-063-00085375",
+      "passageId": "de-hh-chemie-seki-bildungsplan-2014-2018:3-2-inhalte",
+      "topicCode": "3.2-INHALTE",
+      "title": "pH-Wert und Indikatoren in alltagsnahen Saeure-Base-Kontexten verwenden",
+      "description": "Die lernende Person kann pH-Wert und Indikatoren in alltagsnahen Saeure-Base-Kontexten verwenden.",
+      "sourceDocumentKey": "HH-CHEMIE-GYM-SEKI",
+      "sourceRef": "Hamburg Bildungsplan Gymnasium Sekundarstufe I Chemie, 3.2-INHALTE, S. 22.",
+      "sourceText": "pH-Wert und Indikatoren in alltagsnahen Saeure-Base-Kontexten verwenden",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-seki-bildungsplan-2014-2018:3-2-inhalte",
+        "label": "3.2-INHALTE, S. 22: pH-Wert und Indikatoren in alltagsnahen Saeure-Base-Kontexten verwenden"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekI",
+        "section:3-2-inhalte",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "3.2-INHALTE"
+      }
+    },
+    {
+      "id": "de-hh-chemie-seki-bildungsplan-2014-2018-3-2-inhalte-064-4ba24dc7",
+      "passageId": "de-hh-chemie-seki-bildungsplan-2014-2018:3-2-inhalte",
+      "topicCode": "3.2-INHALTE",
+      "title": "Alkane und Alkanole ueber homologe Reihen, Gewinnung und Ethanol als Rauschmittel beschreiben",
+      "description": "Die lernende Person kann Alkane und Alkanole ueber homologe Reihen, Gewinnung und Ethanol als Rauschmittel beschreiben.",
+      "sourceDocumentKey": "HH-CHEMIE-GYM-SEKI",
+      "sourceRef": "Hamburg Bildungsplan Gymnasium Sekundarstufe I Chemie, 3.2-INHALTE, S. 22.",
+      "sourceText": "Alkane und Alkanole ueber homologe Reihen, Gewinnung und Ethanol als Rauschmittel beschreiben",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-seki-bildungsplan-2014-2018:3-2-inhalte",
+        "label": "3.2-INHALTE, S. 22: Alkane und Alkanole ueber homologe Reihen, Gewinnung und Ethanol als Rauschmittel beschreiben"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekI",
+        "section:3-2-inhalte",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "3.2-INHALTE"
+      }
+    },
+    {
+      "id": "de-hh-chemie-seki-bildungsplan-2014-2018-3-2-inhalte-065-661f957a",
+      "passageId": "de-hh-chemie-seki-bildungsplan-2014-2018:3-2-inhalte",
+      "topicCode": "3.2-INHALTE",
+      "title": "Kunststoffe als makromolekulare Substanzen mit Bildungsreaktion, Herstellung, Verarbeitung und Recycling beschreiben",
+      "description": "Die lernende Person kann Kunststoffe als makromolekulare Substanzen mit Bildungsreaktion, Herstellung, Verarbeitung und Recycling beschreiben.",
+      "sourceDocumentKey": "HH-CHEMIE-GYM-SEKI",
+      "sourceRef": "Hamburg Bildungsplan Gymnasium Sekundarstufe I Chemie, 3.2-INHALTE, S. 22.",
+      "sourceText": "Kunststoffe als makromolekulare Substanzen mit Bildungsreaktion, Herstellung, Verarbeitung und Recycling beschreiben",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-seki-bildungsplan-2014-2018:3-2-inhalte",
+        "label": "3.2-INHALTE, S. 22: Kunststoffe als makromolekulare Substanzen mit Bildungsreaktion, Herstellung, Verarbeitung und Recycling beschreiben"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekI",
+        "section:3-2-inhalte",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "3.2-INHALTE"
+      }
+    }
+  ]
+}

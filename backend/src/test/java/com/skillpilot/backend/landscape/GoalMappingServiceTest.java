@@ -121,6 +121,40 @@ class GoalMappingServiceTest {
     }
 
     @Test
+    void allowsOneLegacyGoalToMapPartiallyToMultipleCanonicalGoals() throws IOException {
+        writeJson(tempDir.resolve("mapping/one_to_many_partial.json"), """
+                {
+                  "version": 1,
+                  "sourceLandscapeId": "legacy-chemistry",
+                  "targetLandscapeId": "canonical-chemistry",
+                  "mappings": [
+                    {
+                      "legacyGoalId": "legacy-practicum",
+                      "canonicalGoalId": "canon-analysis",
+                      "matchType": "partial"
+                    },
+                    {
+                      "legacyGoalId": "legacy-practicum",
+                      "canonicalGoalId": "canon-synthesis",
+                      "matchType": "partial"
+                    }
+                  ]
+                }
+                """);
+
+        GoalMappingService service = createService(tempDir);
+
+        assertThat(service.getAllMappings()).hasSize(2);
+        assertThat(service.findAllByLegacyGoalId("legacy-practicum"))
+                .extracting(ResolvedGoalMapping::canonicalGoalId)
+                .containsExactly("canon-analysis", "canon-synthesis");
+        assertThat(service.findByLegacyGoalId("legacy-practicum"))
+                .get()
+                .extracting(ResolvedGoalMapping::canonicalGoalId)
+                .isEqualTo("canon-analysis");
+    }
+
+    @Test
     void ignoresSourceExtractionReviewFilesWithOneSourceToManyDecisions() throws IOException {
         writeJson(tempDir.resolve("mapping/runtime.json"), """
                 {

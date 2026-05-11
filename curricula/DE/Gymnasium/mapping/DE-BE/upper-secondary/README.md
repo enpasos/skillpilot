@@ -49,3 +49,24 @@ Current use:
 - no Berlin-specific canonical Physics atom is introduced in this step
 - DE-BE GK/LK composition views are generated from the reviewed canonical Physics view shape so the source mappings have a visible jurisdictional target
 - next step: validate dashboard status and then move on to the next open Physics Bundesland
+
+## Chemistry
+
+Current status on `2026-05-11`:
+
+- repository-backed Source-Extraction and M3 handoff now exist:
+  `curricula/DE/Gymnasium/input/BE/upper-secondary/source-extraction/DE_BE_CHEMIE_SEKII_RLP_GOST_2022.source-extraction.json`
+  `be_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json`
+- reserved `sourceLandscapeId`:
+  `4bb4be30-3d9c-5e5b-9c9f-64fb0bc80c0c`
+- current Source-Ziel count: `203`
+- the first Berlin upper-secondary chemistry source PDF is now archived locally:
+  `curricula/DE/Gymnasium/input/BE/upper-secondary/Teil_C_RLP_GOST_2022_Chemie.pdf`
+
+Current use:
+
+- canonical Gymnasium `Chemie`
+- standards `2.2.1` through `2.2.4`, basiskonzept sections `2.3.1` through `2.3.3`, and sections `3.1.1` through `3.2.9` from the official RLP GOST 2022 PDF are extracted as passages
+- only the Inhaltszeilen from sections `3.1.1` through `3.2.9` are counted as Source-Ziele; standards, basiskonzepte, experiments, Fachbegriffe, Kontexte, and exemplarische Kompetenzentwicklungsbeitraege remain passage context
+- M3 is complete for the current source extraction: 203/203 Source-Ziele reviewed, 100 direct mappings and 103 1:n mappings; `partial` denotes the coverage form, not an open fachliche gap
+- no Berlin-specific canonical Chemistry atom is introduced in this step

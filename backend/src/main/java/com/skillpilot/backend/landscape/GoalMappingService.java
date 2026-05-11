@@ -12,7 +12,6 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Optional;
-import java.util.stream.Collectors;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -31,6 +30,7 @@ public class GoalMappingService {
 
     private volatile List<ResolvedGoalMapping> cachedMappings = Collections.emptyList();
     private volatile Map<String, ResolvedGoalMapping> cachedByLegacyGoalId = Collections.emptyMap();
+    private volatile Map<String, List<ResolvedGoalMapping>> cachedAllByLegacyGoalId = Collections.emptyMap();
     private volatile long lastLoadedFingerprint = -1L;
     private volatile long lastReloadCheck = 0L;
     private final Object reloadLock = new Object();
@@ -52,6 +52,14 @@ public class GoalMappingService {
             return Optional.empty();
         }
         return Optional.ofNullable(cachedByLegacyGoalId.get(legacyGoalId));
+    }
+
+    public List<ResolvedGoalMapping> findAllByLegacyGoalId(String legacyGoalId) {
+        ensureFresh();
+        if (!StringUtils.hasText(legacyGoalId)) {
+            return Collections.emptyList();
+        }
+        return cachedAllByLegacyGoalId.getOrDefault(legacyGoalId, Collections.emptyList());
     }
 
     public List<ResolvedGoalMapping> getMappingsForSourceLandscape(String sourceLandscapeId) {
@@ -112,12 +120,14 @@ public class GoalMappingService {
             log.warn("Goal mapping directory does not exist: {}", dir);
             cachedMappings = Collections.emptyList();
             cachedByLegacyGoalId = Collections.emptyMap();
+            cachedAllByLegacyGoalId = Collections.emptyMap();
             lastLoadedFingerprint = -1L;
             return;
         }
 
         List<ResolvedGoalMapping> loadedMappings = new ArrayList<>();
         Map<String, ResolvedGoalMapping> byLegacyGoalId = new LinkedHashMap<>();
+        Map<String, List<ResolvedGoalMapping>> allByLegacyGoalId = new LinkedHashMap<>();
         long fingerprint = 1L;
 
         try {
@@ -150,20 +160,31 @@ public class GoalMappingService {
                 validateMappingFile(mappingFile, file);
                 List<ResolvedGoalMapping> resolved = mappingFile.getMappings().stream()
                         .map(entry -> toResolvedMapping(mappingFile, entry, file))
-                        .collect(Collectors.toList());
+                        .toList();
 
                 for (ResolvedGoalMapping mapping : resolved) {
-                    ResolvedGoalMapping existing = byLegacyGoalId.get(mapping.legacyGoalId());
-                    if (existing == null) {
+                    List<ResolvedGoalMapping> existingMappings = allByLegacyGoalId.computeIfAbsent(
+                            mapping.legacyGoalId(), ignored -> new ArrayList<>());
+                    if (existingMappings.isEmpty()) {
+                        existingMappings.add(mapping);
                         byLegacyGoalId.put(mapping.legacyGoalId(), mapping);
                         loadedMappings.add(mapping);
                         continue;
                     }
-                    if (!existing.equals(mapping)) {
-                        throw new IllegalStateException(
-                                "Conflicting goal mappings for legacyGoalId %s between %s and %s"
-                                        .formatted(mapping.legacyGoalId(), existing.sourceFile(), mapping.sourceFile()));
+
+                    if (existingMappings.contains(mapping)) {
+                        continue;
                     }
+
+                    for (ResolvedGoalMapping existing : existingMappings) {
+                        if ("exact".equals(existing.matchType()) || "exact".equals(mapping.matchType())) {
+                            throw new IllegalStateException(
+                                    "Conflicting goal mappings for legacyGoalId %s between %s and %s"
+                                            .formatted(mapping.legacyGoalId(), existing.sourceFile(), mapping.sourceFile()));
+                        }
+                    }
+                    existingMappings.add(mapping);
+                    loadedMappings.add(mapping);
                 }
             }
         } catch (IOException e) {
@@ -172,8 +193,18 @@ public class GoalMappingService {
 
         cachedMappings = Collections.unmodifiableList(loadedMappings);
         cachedByLegacyGoalId = Collections.unmodifiableMap(byLegacyGoalId);
+        cachedAllByLegacyGoalId = immutableMappingLists(allByLegacyGoalId);
         lastLoadedFingerprint = fingerprint;
         log.info("Loaded {} goal mappings from {}", loadedMappings.size(), dir);
+    }
+
+    private Map<String, List<ResolvedGoalMapping>> immutableMappingLists(
+            Map<String, List<ResolvedGoalMapping>> mappingsByLegacyGoalId) {
+        Map<String, List<ResolvedGoalMapping>> result = new LinkedHashMap<>();
+        for (Map.Entry<String, List<ResolvedGoalMapping>> entry : mappingsByLegacyGoalId.entrySet()) {
+            result.put(entry.getKey(), List.copyOf(entry.getValue()));
+        }
+        return Collections.unmodifiableMap(result);
     }
 
     private void validateMappingFile(GoalMappingFile mappingFile, Path file) {
