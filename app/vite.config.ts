@@ -43,6 +43,9 @@ type OfficialSourcePassage = {
 type SourceExtraction = {
   path: string
   title: string
+  subject: string
+  jurisdiction: string
+  stage: string
   passages: OfficialSourcePassage[]
   sourceGoals: Array<Record<string, unknown>>
   pipelineStatus: Record<string, unknown> | null
@@ -1123,6 +1126,9 @@ const readSourceExtraction = async (
       return {
         path: relativePath,
         title: normalizeGermanText(String(extraction.title ?? '')),
+        subject: normalizeGermanText(String(extraction.subject ?? '')),
+        jurisdiction: normalizeGermanText(String(extraction.jurisdiction ?? '')),
+        stage: normalizeGermanText(String(extraction.stage ?? '')),
         passages,
         sourceGoals,
         pipelineStatus,
@@ -1256,6 +1262,7 @@ const buildCurriculumMappingList = async () => {
       }
     }
     const sourceExtraction = await readSourceExtraction(sourceEntry, sourceLandscapeId)
+    subject = sourceExtraction?.subject || subject
     let mappingCount = mappingEntryList(mapping).length
     if (sourceExtraction) {
       sourceGoalCount = sourceExtraction.sourceGoals.length
@@ -1267,8 +1274,8 @@ const buildCurriculumMappingList = async () => {
       sourceLandscapeId,
       sourceTitle: sourceExtraction?.title || String(sourceEntry.title ?? sourceLandscapeId),
       subject,
-      jurisdiction: String(sourceEntry.jurisdiction ?? ''),
-      stage: inferStageFromSourceEntry(sourceEntry),
+      jurisdiction: sourceExtraction?.jurisdiction || String(sourceEntry.jurisdiction ?? ''),
+      stage: sourceExtraction?.stage || inferStageFromSourceEntry(sourceEntry),
       sourcePath: sourceExtraction?.path ?? readableSource?.relativePath ?? String(sourceEntry.archiveSourcePath ?? sourceEntry.sourcePath ?? ''),
       sourceGoalCount,
       targetLandscapeId,
@@ -1488,11 +1495,6 @@ const buildCurriculumMappingPayload = async (sourceLandscapeId: string, requeste
     return { error: 'Unknown source landscape.' }
   }
 
-  const sourcePath = resolveReadableRepoFile(String(sourceEntry.archiveSourcePath ?? sourceEntry.sourcePath ?? ''))
-  if (!sourcePath) {
-    return { error: 'Source snapshot is not readable.' }
-  }
-
   const mappingFiles = (await readMappingFiles()).filter(({ mapping }) => mapping.sourceLandscapeId === sourceLandscapeId)
   const firstMapping = mappingFiles[0]?.mapping
   const targetLandscapeId = String(firstMapping?.targetLandscapeId ?? '')
@@ -1501,12 +1503,23 @@ const buildCurriculumMappingPayload = async (sourceLandscapeId: string, requeste
     return { error: 'No readable mapping into a canonical target landscape was found.' }
   }
 
-  const sourceLandscape = await readJsonFile(sourcePath.absolutePath)
+  const sourceExtraction = await readSourceExtraction(sourceEntry, sourceLandscapeId)
+  const sourcePath = resolveReadableRepoFile(String(sourceEntry.archiveSourcePath ?? sourceEntry.sourcePath ?? ''))
+  let sourceLandscape: Record<string, unknown> = {}
+  if (sourcePath?.relativePath.endsWith('.json')) {
+    try {
+      sourceLandscape = await readJsonFile(sourcePath.absolutePath)
+    } catch {
+      if (!sourceExtraction) return { error: 'Source snapshot is not readable as JSON.' }
+    }
+  } else if (!sourceExtraction) {
+    return { error: 'Source snapshot is not readable.' }
+  }
+
   const canonicalLandscape = canonicalEntry.landscape
   const snapshotSourceGoals = Array.isArray(sourceLandscape.goals) ? sourceLandscape.goals.map(asRecord) : []
   const canonicalGoals = Array.isArray(canonicalLandscape.goals) ? canonicalLandscape.goals.map(asRecord) : []
-  const subject = String(sourceLandscape.subject ?? '')
-  const sourceExtraction = await readSourceExtraction(sourceEntry, sourceLandscapeId)
+  const subject = sourceExtraction?.subject || String(sourceLandscape.subject ?? '')
   const usingSourceExtraction = sourceExtraction !== null
   const sourceGoals = sourceExtraction?.sourceGoals ?? snapshotSourceGoals
   const pipelineStatus = sourceExtraction
@@ -1612,8 +1625,8 @@ const buildCurriculumMappingPayload = async (sourceLandscapeId: string, requeste
     sourceGoalIds: sourceGoalIdsByOfficialPassageId.get(passage.id) ?? [],
   }))
 
-  const jurisdiction = String(sourceEntry.jurisdiction ?? '')
-  const stage = inferStageFromSourceEntry(sourceEntry)
+  const jurisdiction = sourceExtraction?.jurisdiction || String(sourceEntry.jurisdiction ?? '')
+  const stage = sourceExtraction?.stage || inferStageFromSourceEntry(sourceEntry)
   const viewOptions = await findMappingCompositionViewOptions({
     targetLandscapeId,
     jurisdiction,
@@ -1652,7 +1665,7 @@ const buildCurriculumMappingPayload = async (sourceLandscapeId: string, requeste
       subject,
       jurisdiction,
       stage,
-      path: sourceExtraction?.path ?? sourcePath.relativePath,
+      path: sourceExtraction?.path ?? sourcePath?.relativePath ?? '',
       referenceLinks: await readSourceReferenceLinks(sourceEntry, subject),
       pipelineStatus,
       officialPassages: officialPassagesWithSourceGoalIds,

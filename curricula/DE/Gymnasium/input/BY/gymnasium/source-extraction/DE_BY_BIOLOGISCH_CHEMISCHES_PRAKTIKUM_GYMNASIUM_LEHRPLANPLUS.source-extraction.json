@@ -1,0 +1,1625 @@
+{
+  "schemaVersion": 1,
+  "extractionId": "DE-BY-BIOLOGISCH-CHEMISCHES-PRAKTIKUM-GYMNASIUM-LEHRPLANPLUS",
+  "title": "DE-BY - Biologisch-chemisches Praktikum Gymnasium (Bayern, LehrplanPLUS Source-Extraction)",
+  "sourceLandscapeId": "55e02c7e-ddca-4b30-a895-dc27c5f107ca",
+  "jurisdiction": "DE-BY",
+  "subject": "Biologisch-chemisches Praktikum",
+  "stage": "SekII",
+  "sourceDocument": {
+    "key": "LEHRPLANPLUS_BCP_GYMNASIUM",
+    "title": "LehrplanPLUS Gymnasium Bayern - Biologisch-chemisches Praktikum",
+    "path": "curricula/DE/Gymnasium/input/BY/gymnasium/Biologisch-chemisches_Praktikum.json",
+    "role": "binding-core",
+    "official": true,
+    "url": "https://www.lehrplanplus.bayern.de/schulart/gymnasium/fach/biologisch-chemisches-praktikum"
+  },
+  "sourceDocuments": [
+    {
+      "key": "LEHRPLANPLUS_BCP_GYMNASIUM",
+      "title": "LehrplanPLUS Gymnasium Bayern - Biologisch-chemisches Praktikum",
+      "path": "curricula/DE/Gymnasium/input/BY/gymnasium/Biologisch-chemisches_Praktikum.json",
+      "role": "binding-core",
+      "official": true,
+      "url": "https://www.lehrplanplus.bayern.de/schulart/gymnasium/fach/biologisch-chemisches-praktikum"
+    }
+  ],
+  "method": {
+    "sourceAcquisition": "Die strukturierte lokale LehrplanPLUS-Biologisch-chemisches Praktikum-Quelle fuer Gymnasium Bayern ist registriert; die offizielle LehrplanPLUS-Fachseite ist als Kontroll-URL hinterlegt.",
+    "passageExtraction": "Aus der strukturierten LehrplanPLUS-Biologisch-chemisches Praktikum-Quelle wurden alle zieltragenden Lernbereichsabschnitte als Passage-Einheiten persistiert; synthetische Jahrgangs- und Motivationsknoten werden nicht als Lehrplanpassagen gewertet.",
+    "sourceGoalExtraction": "Alle in den Passage-Einheiten enthaltenen Kompetenzerwartungen mit Zieltext wurden als Source-Ziele persistiert."
+  },
+  "expectedTopicCodes": [
+    "BcP12.1",
+    "BcP12.2",
+    "BcP12.3",
+    "BcP12.4",
+    "BcP12.5",
+    "BcP12.6",
+    "BcP12.7",
+    "BcP13.1",
+    "BcP13.2",
+    "BcP13.3",
+    "BcP13.4",
+    "BcP13.5",
+    "BcP13.6",
+    "BcP13.7"
+  ],
+  "pipelineStatus": {
+    "version": 1,
+    "currentStep": "MAPPING-3",
+    "steps": [
+      {
+        "id": "MAPPING-1",
+        "label": "Original-Lehrplanpassagen extrahiert",
+        "status": "complete",
+        "dependsOn": [],
+        "checks": [
+          {
+            "id": "source-document-present",
+            "label": "Strukturierte LehrplanPLUS-Biologisch-chemisches Praktikum-Quelle liegt lokal vor",
+            "passed": true,
+            "details": "curricula/DE/Gymnasium/input/BY/gymnasium/Biologisch-chemisches_Praktikum.json"
+          },
+          {
+            "id": "topic-passages-extracted",
+            "label": "Alle zieltragenden LehrplanPLUS-Biologisch-chemisches Praktikum-Lernbereiche sind als Passagen extrahiert",
+            "passed": true,
+            "details": "Erfasst: 14/14 Passagen."
+          },
+          {
+            "id": "no-legacy-snapshot-counted",
+            "label": "Kein alter Pilot-Quellsnapshot wird als Passage-Extraction gewertet",
+            "passed": true,
+            "details": "Verwendet wird curricula/DE/Gymnasium/input/BY/gymnasium/Biologisch-chemisches_Praktikum.json als strukturierte LehrplanPLUS-Quelle; alte Mappingdateien werden nur als M3-Seed verwendet."
+          }
+        ]
+      },
+      {
+        "id": "MAPPING-2",
+        "label": "Source-Ziele aus Lehrplanpassagen erstellt",
+        "status": "complete",
+        "dependsOn": [
+          "MAPPING-1"
+        ],
+        "checks": [
+          {
+            "id": "source-goals-created",
+            "label": "Aus den LehrplanPLUS-Kompetenzerwartungen wurden Source-Ziele erzeugt",
+            "passed": true,
+            "details": "52/52 Source-Ziele"
+          },
+          {
+            "id": "source-goal-ids-unique",
+            "label": "Source-Ziel-IDs sind eindeutig",
+            "passed": true,
+            "details": "Doppelte IDs: -"
+          },
+          {
+            "id": "source-goals-reference-passages",
+            "label": "Jedes Source-Ziel referenziert eine vorhandene Originalpassage",
+            "passed": true,
+            "details": "Ohne Passage: -"
+          },
+          {
+            "id": "source-goal-text-present",
+            "label": "Jedes Source-Ziel enthält den LehrplanPLUS-Originaltext",
+            "passed": true,
+            "details": "Ohne Text: -"
+          }
+        ]
+      },
+      {
+        "id": "MAPPING-3",
+        "label": "Source-Ziele auf SkillPilot-Ziele gemappt",
+        "status": "incomplete",
+        "dependsOn": [
+          "MAPPING-1",
+          "MAPPING-2"
+        ],
+        "checks": [
+          {
+            "id": "mapping-2-complete",
+            "label": "MAPPING-2 abgeschlossen",
+            "passed": true,
+            "details": "52 Source-Ziele liegen vor; MAPPING-3 kann gegen diese Source-Extraction-IDs laufen."
+          },
+          {
+            "id": "m3-review-file-present",
+            "label": "M3-Review-Datei ist vorhanden",
+            "passed": true,
+            "details": "curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_biologisch_chemisches_praktikum_source_extraction_to_canonical_chemistry.review.json"
+          },
+          {
+            "id": "m3-review-decisions-reference-source-goals",
+            "label": "M3-Review-Entscheidungen referenzieren gültige Source-Ziele",
+            "passed": false,
+            "details": "Noch keine fachlichen M3-Review-Entscheidungen; die Datei enthält nur Seed-Mappingkanten."
+          },
+          {
+            "id": "m3-review-targets-exist",
+            "label": "M3-Review-Ziele referenzieren vorhandene Canonical-Ziele",
+            "passed": false,
+            "details": "Wird nach fachlicher M3-Review gegen den kanonischen Chemiegraphen geprüft."
+          },
+          {
+            "id": "m3-all-source-goals-reviewed",
+            "label": "Alle Source-Ziele haben eine fachliche M3-Entscheidung",
+            "passed": false,
+            "details": "0/52 Source-Ziele fachlich reviewed."
+          },
+          {
+            "id": "m3-all-source-goals-covered-by-canonical",
+            "label": "Alle Source-Ziele sind durch SkillPilot-Ziele abgedeckt",
+            "passed": false,
+            "details": "Offen: Seed-Mappingkanten sind noch keine abgeschlossene fachliche Abdeckung."
+          }
+        ]
+      }
+    ]
+  },
+  "passages": [
+    {
+      "id": "8e98b3ef-4689-5dbe-91db-6604741aade8",
+      "topicCode": "BcP12.1",
+      "title": "BcP12/13 Lernbereich 1: Allgemeine naturwissenschaftliche Kompetenzen und Arbeitsweisen",
+      "text": "1) recherchieren das Gefahrenpotenzial von Laborchemikalien und leiten daraus Maßnahmen zum sicherheitsgerechten Umgang, zu persönlichen Schutzmaßnahmen und zur umweltgerechten Entsorgung ab.\n2) stellen theoriebasiert Hypothesen zu biologischen und chemischen Fragestellungen aus verschiedenen Forschungs- und Anwendungsbereichen auf, planen ausgehend von diesen auch unter Verwendung von Modellen überwiegend selbstständig naturwissenschaftliche Untersuchungen und führen diese durch.\n3) beurteilen die Validität von erhobenen Daten, benennen mögliche Ursachen für Mess- und Verfahrensfehler und optimieren davon ausgehend das Untersuchungsdesign.\n4) setzen fachgemäße Arbeitsmethoden und -techniken bei der selbständigen, sicherheitsgerechten Durchführung qualitativer und quantitativer naturwissenschaftlicher Untersuchungen oder bei der Herstellung von biologischen Präparaten sowie der Synthese und Isolierung von Stoffen ein.\n5) überführen Untersuchungsergebnisse in eine sach-, adressaten- und situationsgerechte Darstellungsform und reflektieren die Eignung dieser Darstellungsform.\n6) bewerten aus ethischer, sozialer, ökologischer und ökonomischer Perspektive mittelbare und unmittelbare Folgen von naturwissenschaftlichen Untersuchungen sowie die Folgen der Herstellung von biologischen Präparaten und der Synthese und Isolierung von Stoffen.",
+      "sourcePath": "curricula/DE/Gymnasium/input/BY/gymnasium/Biologisch-chemisches_Praktikum.json",
+      "sourceUrl": "https://www.lehrplanplus.bayern.de/schulart/gymnasium/fach/biologisch-chemisches-praktikum",
+      "rawText": "BcP12/13 Lernbereich 1: Allgemeine naturwissenschaftliche Kompetenzen und Arbeitsweisen",
+      "sourceGoalIds": [
+        "ecfb66fd-8b1f-5b94-ac70-d1702a992973",
+        "0dd47818-b7cb-5b54-80e6-f4b6f56cdd1b",
+        "96af2104-9a0e-55c7-a5f8-9e093939ae01",
+        "90c8f1ca-9779-50b9-bcdf-a8dd44b8c9c6",
+        "d1c742dc-1cc9-5ef6-bd23-fae98f40cfff",
+        "f5fa9d1c-b61c-57ba-ab62-215bfd46e538"
+      ]
+    },
+    {
+      "id": "6c06cf95-75fb-509c-b7de-54d6a267a4ca",
+      "topicCode": "BcP12.2",
+      "title": "BcP12/13 Lernbereich 2: Verfahren zur Isolierung von Stoffen",
+      "text": "1) wählen anhand der physikalischen und chemischen Eigenschaften von Stoffen geeignete Verfahren aus, um Stoffe aus Stoffgemischen zu isolieren.\n2) führen Verfahren zur Isolierung von Stoffen sicherheitsgerecht durch, überprüfen die Reinheit sowie Ausbeute von isolierten Stoffen und dokumentieren ihre Tätigkeit.",
+      "sourcePath": "curricula/DE/Gymnasium/input/BY/gymnasium/Biologisch-chemisches_Praktikum.json",
+      "sourceUrl": "https://www.lehrplanplus.bayern.de/schulart/gymnasium/fach/biologisch-chemisches-praktikum",
+      "rawText": "BcP12/13 Lernbereich 2: Verfahren zur Isolierung von Stoffen",
+      "sourceGoalIds": [
+        "8a92da4c-2064-5e78-a417-544ebaa99118",
+        "16192309-b2d6-5087-8d04-a07f571c7257"
+      ]
+    },
+    {
+      "id": "ba614684-e5f0-562a-89ae-52c8f44a73a6",
+      "topicCode": "BcP12.3",
+      "title": "BcP12/13 Lernbereich 3: Analyseverfahren",
+      "text": "1) untersuchen Stoffgemische mit geeigneten Analyseverfahren, um deren Zusammensetzung qualitativ und quantitativ zu ermitteln.\n2) wählen geeignete Analyseverfahren aus, um unbekannte Reinstoffe zu identifizieren.\n3) führen Analyseverfahren sicherheitsgerecht durch und dokumentieren ihre Tätigkeit.",
+      "sourcePath": "curricula/DE/Gymnasium/input/BY/gymnasium/Biologisch-chemisches_Praktikum.json",
+      "sourceUrl": "https://www.lehrplanplus.bayern.de/schulart/gymnasium/fach/biologisch-chemisches-praktikum",
+      "rawText": "BcP12/13 Lernbereich 3: Analyseverfahren",
+      "sourceGoalIds": [
+        "2593fa34-24e6-5aaf-9438-953ddff429f9",
+        "1298b179-8b44-5eba-80fd-dafa7ef4473c",
+        "75026111-0315-52e6-8f6a-65e26e2a3857"
+      ]
+    },
+    {
+      "id": "5b9633b4-692b-5269-a76d-998ebfa8810b",
+      "topicCode": "BcP12.4",
+      "title": "BcP12/13 Lernbereich 4: Herstellung, Prüfung und Verwendung von Grund- und Werkstoffen",
+      "text": "1) wenden biotechnologische und chemische Verfahren zur Synthese von Stoffen an.\n2) führen präparative Verfahren sicherheitsgerecht durch und dokumentieren ihre Tätigkeit.\n3) wählen Verfahren aus und wenden diese an, um synthetisierte Stoffe zu reinigen, und setzen Analyseverfahren ein, um die Reinheit und Ausbeute eines selbst hergestellten Präparates zu überprüfen.\n4) setzen alltagsrelevante Techniken zur Zubereitung und Veredelung von Lebensmitteln ein und erklären die biologischen und chemischen Grundlagen der Verfahren.\n5) stellen Arznei- oder Körperpflegemittel her und erklären die chemischen Grundlagen der Herstellung.\n6) stellen Werk- und Baustoffe her und beurteilen deren Einsatzmöglichkeiten, indem sie deren Eigenschaften unter gleichen Bedingungen überprüfen.\n7) kombinieren ausgewählte Werk- und Baustoffe zu funktionellen Systemen und zeigen mögliche Anwendungen in Alltag und Technik auf.",
+      "sourcePath": "curricula/DE/Gymnasium/input/BY/gymnasium/Biologisch-chemisches_Praktikum.json",
+      "sourceUrl": "https://www.lehrplanplus.bayern.de/schulart/gymnasium/fach/biologisch-chemisches-praktikum",
+      "rawText": "BcP12/13 Lernbereich 4: Herstellung, Prüfung und Verwendung von Grund- und Werkstoffen",
+      "sourceGoalIds": [
+        "af074023-4396-5348-8d18-a5fa198f304b",
+        "4d5d5597-4007-59a9-9333-28bb754e292b",
+        "a31715d0-b071-521c-a06b-030c9ff6ee27",
+        "2e7e1642-0a1c-5a86-bd8c-c47f150827e4",
+        "356da26a-9452-5859-a017-9c9cacbcd262",
+        "eeae95a6-2b03-5fbf-b1a4-ee7653314d8b",
+        "4c81c061-4249-5c3f-b068-6c2a27009892"
+      ]
+    },
+    {
+      "id": "db97469f-cce5-5705-a91f-7fe9a23b09a2",
+      "topicCode": "BcP12.5",
+      "title": "BcP12/13 Lernbereich 5: Mikroskopieren",
+      "text": "1) wählen Verfahren zur Herstellung mikroskopischer Präparate und anschließenden mikroskopischen Untersuchung von u. a. Mikroorganismen, Geweben und Zellen aus, um den mikroskopischen Aufbau verschiedener Funktionseinheiten von Lebewesen auf zellulärer Ebene zu untersuchen.\n2) untersuchen Stoffe und Materialien mithilfe mikroskopischer Methoden, um charakteristische Eigenschaften zu identifizieren.\n3) präparieren und mikroskopieren sicherheitsgerecht, dokumentieren ihre Tätigkeit und erstellen beschriftete Zeichnungen der betrachteten Strukturen, um sich so einen Zugang zur Welt des mikroskopisch Kleinen zu erschließen.",
+      "sourcePath": "curricula/DE/Gymnasium/input/BY/gymnasium/Biologisch-chemisches_Praktikum.json",
+      "sourceUrl": "https://www.lehrplanplus.bayern.de/schulart/gymnasium/fach/biologisch-chemisches-praktikum",
+      "rawText": "BcP12/13 Lernbereich 5: Mikroskopieren",
+      "sourceGoalIds": [
+        "9c1808d9-3f10-56bb-885c-2839264bf266",
+        "b66e0cdb-4e8a-58f2-9ee3-64f9ebea2321",
+        "ae915657-3ce5-5563-8ccc-7fd65c6b06b7"
+      ]
+    },
+    {
+      "id": "b0355ef0-7d92-5b77-8cb6-b2555d4eb5ca",
+      "topicCode": "BcP12.6",
+      "title": "BcP12/13 Lernbereich 6: Untersuchungen und Beobachtungen zu grundlegenden Anforderungen an Lebewesen",
+      "text": "1) planen hypothesengeleitet Untersuchungen zu den grundlegenden Anforderungen an Lebewesen, führen sie durch und dokumentieren sie, um u. a. die Beeinflussbarkeit von Enzymreaktionen und die Reizbarkeit von Lebewesen zu beschreiben.\n2) führen Untersuchungen an Lebewesen sicherheits-, art- und naturschutzgerecht durch.",
+      "sourcePath": "curricula/DE/Gymnasium/input/BY/gymnasium/Biologisch-chemisches_Praktikum.json",
+      "sourceUrl": "https://www.lehrplanplus.bayern.de/schulart/gymnasium/fach/biologisch-chemisches-praktikum",
+      "rawText": "BcP12/13 Lernbereich 6: Untersuchungen und Beobachtungen zu grundlegenden Anforderungen an Lebewesen",
+      "sourceGoalIds": [
+        "806a49a8-22cc-53d7-8097-fe872bac90da",
+        "96bcf5fb-bf77-53b8-b5f1-03ffbe26a53e"
+      ]
+    },
+    {
+      "id": "2a836309-a8e5-5564-81c9-7e6e60b4f327",
+      "topicCode": "BcP12.7",
+      "title": "BcP12/13 Lernbereich 7: Ökologische Untersuchungen",
+      "text": "1) bestimmen auch im Freiland Lebewesen mithilfe von Bestimmungsliteratur und erweitern dabei ihre Artenkenntnis.\n2) planen hypothesengeleitet ökologische Freilanduntersuchungen und führen sie durch, um die Lebensgemeinschaft sowie die abiotischen Standortfaktoren verschiedener Lebensräume qualitativ und quantitativ zu charakterisieren.\n3) führen ökologische Laboruntersuchungen oder manipulative Freilanduntersuchungen durch und erforschen so den Einfluss von Umweltfaktoren auf Lebewesen, um die Eignung von Lebensräumen für Lebewesen zu beurteilen.",
+      "sourcePath": "curricula/DE/Gymnasium/input/BY/gymnasium/Biologisch-chemisches_Praktikum.json",
+      "sourceUrl": "https://www.lehrplanplus.bayern.de/schulart/gymnasium/fach/biologisch-chemisches-praktikum",
+      "rawText": "BcP12/13 Lernbereich 7: Ökologische Untersuchungen",
+      "sourceGoalIds": [
+        "5f3656df-6d88-5db9-b0bf-5dd274382334",
+        "e615708a-bf0d-5570-9d5b-828746272d0d",
+        "7949c6ee-f0b4-55e8-b6d0-3e85de43a1a1"
+      ]
+    },
+    {
+      "id": "cd404ef0-6b20-53da-ab47-92574339aa6d",
+      "topicCode": "BcP13.1",
+      "title": "BcP12/13 Lernbereich 1: Allgemeine naturwissenschaftliche Kompetenzen und Arbeitsweisen",
+      "text": "1) recherchieren das Gefahrenpotenzial von Laborchemikalien und leiten daraus Maßnahmen zum sicherheitsgerechten Umgang, zu persönlichen Schutzmaßnahmen und zur umweltgerechten Entsorgung ab.\n2) stellen theoriebasiert Hypothesen zu biologischen und chemischen Fragestellungen aus verschiedenen Forschungs- und Anwendungsbereichen auf, planen ausgehend von diesen auch unter Verwendung von Modellen überwiegend selbstständig naturwissenschaftliche Untersuchungen und führen diese durch.\n3) beurteilen die Validität von erhobenen Daten, benennen mögliche Ursachen für Mess- und Verfahrensfehler und optimieren davon ausgehend das Untersuchungsdesign.\n4) setzen fachgemäße Arbeitsmethoden und -techniken bei der selbständigen, sicherheitsgerechten Durchführung qualitativer und quantitativer naturwissenschaftlicher Untersuchungen oder bei der Herstellung von biologischen Präparaten sowie der Synthese und Isolierung von Stoffen ein.\n5) überführen Untersuchungsergebnisse in eine sach-, adressaten- und situationsgerechte Darstellungsform und reflektieren die Eignung dieser Darstellungsform.\n6) bewerten aus ethischer, sozialer, ökologischer und ökonomischer Perspektive mittelbare und unmittelbare Folgen von naturwissenschaftlichen Untersuchungen sowie die Folgen der Herstellung von biologischen Präparaten und der Synthese und Isolierung von Stoffen.",
+      "sourcePath": "curricula/DE/Gymnasium/input/BY/gymnasium/Biologisch-chemisches_Praktikum.json",
+      "sourceUrl": "https://www.lehrplanplus.bayern.de/schulart/gymnasium/fach/biologisch-chemisches-praktikum",
+      "rawText": "BcP12/13 Lernbereich 1: Allgemeine naturwissenschaftliche Kompetenzen und Arbeitsweisen",
+      "sourceGoalIds": [
+        "bfdb04d2-8e4c-5534-bf78-effafc048578",
+        "69c470c3-36c7-5ec1-89b7-0b48fe82def8",
+        "29b0a638-ade9-549d-a561-85a1a27e2769",
+        "931377b6-c9f2-5000-b31f-428792134fa6",
+        "5fc4d8e8-4fad-5e5b-aaa5-fd44b6473ae3",
+        "85ceb1de-a3b3-57b5-86af-ebba3130d6d0"
+      ]
+    },
+    {
+      "id": "034be878-f020-5f1c-8641-f603f275cbee",
+      "topicCode": "BcP13.2",
+      "title": "BcP12/13 Lernbereich 2: Verfahren zur Isolierung von Stoffen",
+      "text": "1) wählen anhand der physikalischen und chemischen Eigenschaften von Stoffen geeignete Verfahren aus, um Stoffe aus Stoffgemischen zu isolieren.\n2) führen Verfahren zur Isolierung von Stoffen sicherheitsgerecht durch, überprüfen die Reinheit sowie Ausbeute von isolierten Stoffen und dokumentieren ihre Tätigkeit.",
+      "sourcePath": "curricula/DE/Gymnasium/input/BY/gymnasium/Biologisch-chemisches_Praktikum.json",
+      "sourceUrl": "https://www.lehrplanplus.bayern.de/schulart/gymnasium/fach/biologisch-chemisches-praktikum",
+      "rawText": "BcP12/13 Lernbereich 2: Verfahren zur Isolierung von Stoffen",
+      "sourceGoalIds": [
+        "68ddb267-01ce-5e32-8167-2a8b0faeb320",
+        "51eac1e5-9ff0-5ac5-817b-1f0c094fb117"
+      ]
+    },
+    {
+      "id": "d85ddf51-c8a4-521f-b67e-a921d595b731",
+      "topicCode": "BcP13.3",
+      "title": "BcP12/13 Lernbereich 3: Analyseverfahren",
+      "text": "1) untersuchen Stoffgemische mit geeigneten Analyseverfahren, um deren Zusammensetzung qualitativ und quantitativ zu ermitteln.\n2) wählen geeignete Analyseverfahren aus, um unbekannte Reinstoffe zu identifizieren.\n3) führen Analyseverfahren sicherheitsgerecht durch und dokumentieren ihre Tätigkeit.",
+      "sourcePath": "curricula/DE/Gymnasium/input/BY/gymnasium/Biologisch-chemisches_Praktikum.json",
+      "sourceUrl": "https://www.lehrplanplus.bayern.de/schulart/gymnasium/fach/biologisch-chemisches-praktikum",
+      "rawText": "BcP12/13 Lernbereich 3: Analyseverfahren",
+      "sourceGoalIds": [
+        "05dcd367-5c48-5f97-a67d-8b942626cba5",
+        "861529a5-a2de-5c85-b7cb-ab1f8612f7d1",
+        "44db5f22-cc6e-5037-9190-292c94a852bf"
+      ]
+    },
+    {
+      "id": "543c1d23-649c-5740-aff2-c5ec864e93de",
+      "topicCode": "BcP13.4",
+      "title": "BcP12/13 Lernbereich 4: Herstellung, Prüfung und Verwendung von Grund- und Werkstoffen",
+      "text": "1) wenden biotechnologische und chemische Verfahren zur Synthese von Stoffen an.\n2) führen präparative Verfahren sicherheitsgerecht durch und dokumentieren ihre Tätigkeit.\n3) wählen Verfahren aus und wenden diese an, um synthetisierte Stoffe zu reinigen, und setzen Analyseverfahren ein, um die Reinheit und Ausbeute eines selbst hergestellten Präparates zu überprüfen.\n4) setzen alltagsrelevante Techniken zur Zubereitung und Veredelung von Lebensmitteln ein und erklären die biologischen und chemischen Grundlagen der Verfahren.\n5) stellen Arznei- oder Körperpflegemittel her und erklären die chemischen Grundlagen der Herstellung.\n6) stellen Werk- und Baustoffe her und beurteilen deren Einsatzmöglichkeiten, indem sie deren Eigenschaften unter gleichen Bedingungen überprüfen.\n7) kombinieren ausgewählte Werk- und Baustoffe zu funktionellen Systemen und zeigen mögliche Anwendungen in Alltag und Technik auf.",
+      "sourcePath": "curricula/DE/Gymnasium/input/BY/gymnasium/Biologisch-chemisches_Praktikum.json",
+      "sourceUrl": "https://www.lehrplanplus.bayern.de/schulart/gymnasium/fach/biologisch-chemisches-praktikum",
+      "rawText": "BcP12/13 Lernbereich 4: Herstellung, Prüfung und Verwendung von Grund- und Werkstoffen",
+      "sourceGoalIds": [
+        "816b1a6f-1534-59b3-ae46-06b08e1b7aca",
+        "0a46d248-e340-5f51-b9b6-67489b0e2548",
+        "4892eb10-0c07-598d-93dd-c3277a5a6a1c",
+        "1dc77e5a-24f2-5efc-a6e2-8c4a920162fe",
+        "8e4fc3b2-bfa4-5c67-b107-7997fc89cc45",
+        "3e146174-d54f-5e4d-ae04-cd5a4727760c",
+        "558f8c3d-b881-5cb6-bff3-f147848518f1"
+      ]
+    },
+    {
+      "id": "c56cb89f-f41e-525b-bd9e-0bc8c152caa1",
+      "topicCode": "BcP13.5",
+      "title": "BcP12/13 Lernbereich 5: Mikroskopieren",
+      "text": "1) wählen Verfahren zur Herstellung mikroskopischer Präparate und anschließenden mikroskopischen Untersuchung von u. a. Mikroorganismen, Geweben und Zellen aus, um den mikroskopischen Aufbau verschiedener Funktionseinheiten von Lebewesen auf zellulärer Ebene zu untersuchen.\n2) untersuchen Stoffe und Materialien mithilfe mikroskopischer Methoden, um charakteristische Eigenschaften zu identifizieren.\n3) präparieren und mikroskopieren sicherheitsgerecht, dokumentieren ihre Tätigkeit und erstellen beschriftete Zeichnungen der betrachteten Strukturen, um sich so einen Zugang zur Welt des mikroskopisch Kleinen zu erschließen.",
+      "sourcePath": "curricula/DE/Gymnasium/input/BY/gymnasium/Biologisch-chemisches_Praktikum.json",
+      "sourceUrl": "https://www.lehrplanplus.bayern.de/schulart/gymnasium/fach/biologisch-chemisches-praktikum",
+      "rawText": "BcP12/13 Lernbereich 5: Mikroskopieren",
+      "sourceGoalIds": [
+        "9be83d32-7f3e-50c6-ae44-092e769ab98e",
+        "87752f17-7152-53da-835e-dcbcd6d447e2",
+        "cd8acf10-d748-5f58-b6c8-2b97bd708494"
+      ]
+    },
+    {
+      "id": "b940c6fa-fee9-5705-bd12-31dfaf47e673",
+      "topicCode": "BcP13.6",
+      "title": "BcP12/13 Lernbereich 6: Untersuchungen und Beobachtungen zu grundlegenden Anforderungen an Lebewesen",
+      "text": "1) planen hypothesengeleitet Untersuchungen zu den grundlegenden Anforderungen an Lebewesen, führen sie durch und dokumentieren sie, um u. a. die Beeinflussbarkeit von Enzymreaktionen und die Reizbarkeit von Lebewesen zu beschreiben.\n2) führen Untersuchungen an Lebewesen sicherheits-, art- und naturschutzgerecht durch.",
+      "sourcePath": "curricula/DE/Gymnasium/input/BY/gymnasium/Biologisch-chemisches_Praktikum.json",
+      "sourceUrl": "https://www.lehrplanplus.bayern.de/schulart/gymnasium/fach/biologisch-chemisches-praktikum",
+      "rawText": "BcP12/13 Lernbereich 6: Untersuchungen und Beobachtungen zu grundlegenden Anforderungen an Lebewesen",
+      "sourceGoalIds": [
+        "766296f6-2b0a-5ad5-8222-a831477584be",
+        "1fe13e20-7e59-5b75-899b-b255719b3085"
+      ]
+    },
+    {
+      "id": "d961ee51-fc8b-516a-90bc-394cd2e425cf",
+      "topicCode": "BcP13.7",
+      "title": "BcP12/13 Lernbereich 7: Ökologische Untersuchungen",
+      "text": "1) bestimmen auch im Freiland Lebewesen mithilfe von Bestimmungsliteratur und erweitern dabei ihre Artenkenntnis.\n2) planen hypothesengeleitet ökologische Freilanduntersuchungen und führen sie durch, um die Lebensgemeinschaft sowie die abiotischen Standortfaktoren verschiedener Lebensräume qualitativ und quantitativ zu charakterisieren.\n3) führen ökologische Laboruntersuchungen oder manipulative Freilanduntersuchungen durch und erforschen so den Einfluss von Umweltfaktoren auf Lebewesen, um die Eignung von Lebensräumen für Lebewesen zu beurteilen.",
+      "sourcePath": "curricula/DE/Gymnasium/input/BY/gymnasium/Biologisch-chemisches_Praktikum.json",
+      "sourceUrl": "https://www.lehrplanplus.bayern.de/schulart/gymnasium/fach/biologisch-chemisches-praktikum",
+      "rawText": "BcP12/13 Lernbereich 7: Ökologische Untersuchungen",
+      "sourceGoalIds": [
+        "3ba4193f-a551-5fb6-8eff-27065300d4d4",
+        "fe3af01c-434f-5750-8e21-6d5fdeff2358",
+        "96979728-26a4-5adc-af97-730b822d9102"
+      ]
+    }
+  ],
+  "sourceGoals": [
+    {
+      "id": "ecfb66fd-8b1f-5b94-ac70-d1702a992973",
+      "passageId": "8e98b3ef-4689-5dbe-91db-6604741aade8",
+      "topicCode": "BcP12.1",
+      "bulletIndex": 1,
+      "aspectIndex": 1,
+      "title": "recherchieren das Gefahrenpotenzial von Laborchemikalien und leiten daraus Maßnahmen zum sicherheits...",
+      "description": "recherchieren das Gefahrenpotenzial von Laborchemikalien und leiten daraus Maßnahmen zum sicherheitsgerechten Umgang, zu persönlichen Schutzmaßnahmen und zur umweltgerechten Entsorgung ab.",
+      "sourceText": "recherchieren das Gefahrenpotenzial von Laborchemikalien und leiten daraus Maßnahmen zum sicherheitsgerechten Umgang, zu persönlichen Schutzmaßnahmen und zur umweltgerechten Entsorgung ab.",
+      "sourceSpan": "BcP12.1.1",
+      "parentBulletText": "recherchieren das Gefahrenpotenzial von Laborchemikalien und leiten daraus Maßnahmen zum sicherheitsgerechten Umgang, zu persönlichen Schutzmaßnahmen und zur umweltgerechten Entsorgung ab.",
+      "sourceRef": "LehrplanPLUS Bayern Gymnasium Biologisch-chemisches Praktikum, BcP12.1.1",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetency",
+      "tags": [
+        "jurisdiction:DE-BY",
+        "stage:SekII",
+        "courseLevel:unspecified",
+        "topic:BcP12.1"
+      ],
+      "rawSourceText": "recherchieren das Gefahrenpotenzial von Laborchemikalien und leiten daraus Maßnahmen zum sicherheitsgerechten Umgang, zu persönlichen Schutzmaßnahmen und zur umweltgerechten Entsorgung ab.",
+      "rawSourceSpan": "BcP12.1.1",
+      "rawParentBulletText": "recherchieren das Gefahrenpotenzial von Laborchemikalien und leiten daraus Maßnahmen zum sicherheitsgerechten Umgang, zu persönlichen Schutzmaßnahmen und zur umweltgerechten Entsorgung ab."
+    },
+    {
+      "id": "0dd47818-b7cb-5b54-80e6-f4b6f56cdd1b",
+      "passageId": "8e98b3ef-4689-5dbe-91db-6604741aade8",
+      "topicCode": "BcP12.1",
+      "bulletIndex": 2,
+      "aspectIndex": 1,
+      "title": "stellen theoriebasiert Hypothesen zu biologischen und chemischen Fragestellungen aus verschiedenen F...",
+      "description": "stellen theoriebasiert Hypothesen zu biologischen und chemischen Fragestellungen aus verschiedenen Forschungs- und Anwendungsbereichen auf, planen ausgehend von diesen auch unter Verwendung von Modellen überwiegend selbstständig naturwissenschaftliche Untersuchungen und führen diese durch.",
+      "sourceText": "stellen theoriebasiert Hypothesen zu biologischen und chemischen Fragestellungen aus verschiedenen Forschungs- und Anwendungsbereichen auf, planen ausgehend von diesen auch unter Verwendung von Modellen überwiegend selbstständig naturwissenschaftliche Untersuchungen und führen diese durch.",
+      "sourceSpan": "BcP12.1.2",
+      "parentBulletText": "stellen theoriebasiert Hypothesen zu biologischen und chemischen Fragestellungen aus verschiedenen Forschungs- und Anwendungsbereichen auf, planen ausgehend von diesen auch unter Verwendung von Modellen überwiegend selbstständig naturwissenschaftliche Untersuchungen und führen diese durch.",
+      "sourceRef": "LehrplanPLUS Bayern Gymnasium Biologisch-chemisches Praktikum, BcP12.1.2",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetency",
+      "tags": [
+        "jurisdiction:DE-BY",
+        "stage:SekII",
+        "courseLevel:unspecified",
+        "topic:BcP12.1"
+      ],
+      "rawSourceText": "stellen theoriebasiert Hypothesen zu biologischen und chemischen Fragestellungen aus verschiedenen Forschungs- und Anwendungsbereichen auf, planen ausgehend von diesen auch unter Verwendung von Modellen überwiegend selbstständig naturwissenschaftliche Untersuchungen und führen diese durch.",
+      "rawSourceSpan": "BcP12.1.2",
+      "rawParentBulletText": "stellen theoriebasiert Hypothesen zu biologischen und chemischen Fragestellungen aus verschiedenen Forschungs- und Anwendungsbereichen auf, planen ausgehend von diesen auch unter Verwendung von Modellen überwiegend selbstständig naturwissenschaftliche Untersuchungen und führen diese durch."
+    },
+    {
+      "id": "96af2104-9a0e-55c7-a5f8-9e093939ae01",
+      "passageId": "8e98b3ef-4689-5dbe-91db-6604741aade8",
+      "topicCode": "BcP12.1",
+      "bulletIndex": 3,
+      "aspectIndex": 1,
+      "title": "beurteilen die Validität von erhobenen Daten, benennen mögliche Ursachen für Mess- und Verfahrensfeh...",
+      "description": "beurteilen die Validität von erhobenen Daten, benennen mögliche Ursachen für Mess- und Verfahrensfehler und optimieren davon ausgehend das Untersuchungsdesign.",
+      "sourceText": "beurteilen die Validität von erhobenen Daten, benennen mögliche Ursachen für Mess- und Verfahrensfehler und optimieren davon ausgehend das Untersuchungsdesign.",
+      "sourceSpan": "BcP12.1.3",
+      "parentBulletText": "beurteilen die Validität von erhobenen Daten, benennen mögliche Ursachen für Mess- und Verfahrensfehler und optimieren davon ausgehend das Untersuchungsdesign.",
+      "sourceRef": "LehrplanPLUS Bayern Gymnasium Biologisch-chemisches Praktikum, BcP12.1.3",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetency",
+      "tags": [
+        "jurisdiction:DE-BY",
+        "stage:SekII",
+        "courseLevel:unspecified",
+        "topic:BcP12.1"
+      ],
+      "rawSourceText": "beurteilen die Validität von erhobenen Daten, benennen mögliche Ursachen für Mess- und Verfahrensfehler und optimieren davon ausgehend das Untersuchungsdesign.",
+      "rawSourceSpan": "BcP12.1.3",
+      "rawParentBulletText": "beurteilen die Validität von erhobenen Daten, benennen mögliche Ursachen für Mess- und Verfahrensfehler und optimieren davon ausgehend das Untersuchungsdesign."
+    },
+    {
+      "id": "90c8f1ca-9779-50b9-bcdf-a8dd44b8c9c6",
+      "passageId": "8e98b3ef-4689-5dbe-91db-6604741aade8",
+      "topicCode": "BcP12.1",
+      "bulletIndex": 4,
+      "aspectIndex": 1,
+      "title": "setzen fachgemäße Arbeitsmethoden und -techniken bei der selbständigen, sicherheitsgerechten Durchfü...",
+      "description": "setzen fachgemäße Arbeitsmethoden und -techniken bei der selbständigen, sicherheitsgerechten Durchführung qualitativer und quantitativer naturwissenschaftlicher Untersuchungen oder bei der Herstellung von biologischen Präparaten sowie der Synthese und Isolierung von Stoffen ein.",
+      "sourceText": "setzen fachgemäße Arbeitsmethoden und -techniken bei der selbständigen, sicherheitsgerechten Durchführung qualitativer und quantitativer naturwissenschaftlicher Untersuchungen oder bei der Herstellung von biologischen Präparaten sowie der Synthese und Isolierung von Stoffen ein.",
+      "sourceSpan": "BcP12.1.4",
+      "parentBulletText": "setzen fachgemäße Arbeitsmethoden und -techniken bei der selbständigen, sicherheitsgerechten Durchführung qualitativer und quantitativer naturwissenschaftlicher Untersuchungen oder bei der Herstellung von biologischen Präparaten sowie der Synthese und Isolierung von Stoffen ein.",
+      "sourceRef": "LehrplanPLUS Bayern Gymnasium Biologisch-chemisches Praktikum, BcP12.1.4",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetency",
+      "tags": [
+        "jurisdiction:DE-BY",
+        "stage:SekII",
+        "courseLevel:unspecified",
+        "topic:BcP12.1"
+      ],
+      "rawSourceText": "setzen fachgemäße Arbeitsmethoden und -techniken bei der selbständigen, sicherheitsgerechten Durchführung qualitativer und quantitativer naturwissenschaftlicher Untersuchungen oder bei der Herstellung von biologischen Präparaten sowie der Synthese und Isolierung von Stoffen ein.",
+      "rawSourceSpan": "BcP12.1.4",
+      "rawParentBulletText": "setzen fachgemäße Arbeitsmethoden und -techniken bei der selbständigen, sicherheitsgerechten Durchführung qualitativer und quantitativer naturwissenschaftlicher Untersuchungen oder bei der Herstellung von biologischen Präparaten sowie der Synthese und Isolierung von Stoffen ein."
+    },
+    {
+      "id": "d1c742dc-1cc9-5ef6-bd23-fae98f40cfff",
+      "passageId": "8e98b3ef-4689-5dbe-91db-6604741aade8",
+      "topicCode": "BcP12.1",
+      "bulletIndex": 5,
+      "aspectIndex": 1,
+      "title": "überführen Untersuchungsergebnisse in eine sach-, adressaten- und situationsgerechte Darstellungsfor...",
+      "description": "überführen Untersuchungsergebnisse in eine sach-, adressaten- und situationsgerechte Darstellungsform und reflektieren die Eignung dieser Darstellungsform.",
+      "sourceText": "überführen Untersuchungsergebnisse in eine sach-, adressaten- und situationsgerechte Darstellungsform und reflektieren die Eignung dieser Darstellungsform.",
+      "sourceSpan": "BcP12.1.5",
+      "parentBulletText": "überführen Untersuchungsergebnisse in eine sach-, adressaten- und situationsgerechte Darstellungsform und reflektieren die Eignung dieser Darstellungsform.",
+      "sourceRef": "LehrplanPLUS Bayern Gymnasium Biologisch-chemisches Praktikum, BcP12.1.5",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetency",
+      "tags": [
+        "jurisdiction:DE-BY",
+        "stage:SekII",
+        "courseLevel:unspecified",
+        "topic:BcP12.1"
+      ],
+      "rawSourceText": "überführen Untersuchungsergebnisse in eine sach-, adressaten- und situationsgerechte Darstellungsform und reflektieren die Eignung dieser Darstellungsform.",
+      "rawSourceSpan": "BcP12.1.5",
+      "rawParentBulletText": "überführen Untersuchungsergebnisse in eine sach-, adressaten- und situationsgerechte Darstellungsform und reflektieren die Eignung dieser Darstellungsform."
+    },
+    {
+      "id": "f5fa9d1c-b61c-57ba-ab62-215bfd46e538",
+      "passageId": "8e98b3ef-4689-5dbe-91db-6604741aade8",
+      "topicCode": "BcP12.1",
+      "bulletIndex": 6,
+      "aspectIndex": 1,
+      "title": "bewerten aus ethischer, sozialer, ökologischer und ökonomischer Perspektive mittelbare und unmittelb...",
+      "description": "bewerten aus ethischer, sozialer, ökologischer und ökonomischer Perspektive mittelbare und unmittelbare Folgen von naturwissenschaftlichen Untersuchungen sowie die Folgen der Herstellung von biologischen Präparaten und der Synthese und Isolierung von Stoffen.",
+      "sourceText": "bewerten aus ethischer, sozialer, ökologischer und ökonomischer Perspektive mittelbare und unmittelbare Folgen von naturwissenschaftlichen Untersuchungen sowie die Folgen der Herstellung von biologischen Präparaten und der Synthese und Isolierung von Stoffen.",
+      "sourceSpan": "BcP12.1.6",
+      "parentBulletText": "bewerten aus ethischer, sozialer, ökologischer und ökonomischer Perspektive mittelbare und unmittelbare Folgen von naturwissenschaftlichen Untersuchungen sowie die Folgen der Herstellung von biologischen Präparaten und der Synthese und Isolierung von Stoffen.",
+      "sourceRef": "LehrplanPLUS Bayern Gymnasium Biologisch-chemisches Praktikum, BcP12.1.6",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetency",
+      "tags": [
+        "jurisdiction:DE-BY",
+        "stage:SekII",
+        "courseLevel:unspecified",
+        "topic:BcP12.1"
+      ],
+      "rawSourceText": "bewerten aus ethischer, sozialer, ökologischer und ökonomischer Perspektive mittelbare und unmittelbare Folgen von naturwissenschaftlichen Untersuchungen sowie die Folgen der Herstellung von biologischen Präparaten und der Synthese und Isolierung von Stoffen.",
+      "rawSourceSpan": "BcP12.1.6",
+      "rawParentBulletText": "bewerten aus ethischer, sozialer, ökologischer und ökonomischer Perspektive mittelbare und unmittelbare Folgen von naturwissenschaftlichen Untersuchungen sowie die Folgen der Herstellung von biologischen Präparaten und der Synthese und Isolierung von Stoffen."
+    },
+    {
+      "id": "8a92da4c-2064-5e78-a417-544ebaa99118",
+      "passageId": "6c06cf95-75fb-509c-b7de-54d6a267a4ca",
+      "topicCode": "BcP12.2",
+      "bulletIndex": 1,
+      "aspectIndex": 1,
+      "title": "wählen anhand der physikalischen und chemischen Eigenschaften von Stoffen geeignete Verfahren aus, u...",
+      "description": "wählen anhand der physikalischen und chemischen Eigenschaften von Stoffen geeignete Verfahren aus, um Stoffe aus Stoffgemischen zu isolieren.",
+      "sourceText": "wählen anhand der physikalischen und chemischen Eigenschaften von Stoffen geeignete Verfahren aus, um Stoffe aus Stoffgemischen zu isolieren.",
+      "sourceSpan": "BcP12.2.1",
+      "parentBulletText": "wählen anhand der physikalischen und chemischen Eigenschaften von Stoffen geeignete Verfahren aus, um Stoffe aus Stoffgemischen zu isolieren.",
+      "sourceRef": "LehrplanPLUS Bayern Gymnasium Biologisch-chemisches Praktikum, BcP12.2.1",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetency",
+      "tags": [
+        "jurisdiction:DE-BY",
+        "stage:SekII",
+        "courseLevel:unspecified",
+        "topic:BcP12.2"
+      ],
+      "rawSourceText": "wählen anhand der physikalischen und chemischen Eigenschaften von Stoffen geeignete Verfahren aus, um Stoffe aus Stoffgemischen zu isolieren.",
+      "rawSourceSpan": "BcP12.2.1",
+      "rawParentBulletText": "wählen anhand der physikalischen und chemischen Eigenschaften von Stoffen geeignete Verfahren aus, um Stoffe aus Stoffgemischen zu isolieren."
+    },
+    {
+      "id": "16192309-b2d6-5087-8d04-a07f571c7257",
+      "passageId": "6c06cf95-75fb-509c-b7de-54d6a267a4ca",
+      "topicCode": "BcP12.2",
+      "bulletIndex": 2,
+      "aspectIndex": 1,
+      "title": "führen Verfahren zur Isolierung von Stoffen sicherheitsgerecht durch, überprüfen die Reinheit sowie ...",
+      "description": "führen Verfahren zur Isolierung von Stoffen sicherheitsgerecht durch, überprüfen die Reinheit sowie Ausbeute von isolierten Stoffen und dokumentieren ihre Tätigkeit.",
+      "sourceText": "führen Verfahren zur Isolierung von Stoffen sicherheitsgerecht durch, überprüfen die Reinheit sowie Ausbeute von isolierten Stoffen und dokumentieren ihre Tätigkeit.",
+      "sourceSpan": "BcP12.2.2",
+      "parentBulletText": "führen Verfahren zur Isolierung von Stoffen sicherheitsgerecht durch, überprüfen die Reinheit sowie Ausbeute von isolierten Stoffen und dokumentieren ihre Tätigkeit.",
+      "sourceRef": "LehrplanPLUS Bayern Gymnasium Biologisch-chemisches Praktikum, BcP12.2.2",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetency",
+      "tags": [
+        "jurisdiction:DE-BY",
+        "stage:SekII",
+        "courseLevel:unspecified",
+        "topic:BcP12.2"
+      ],
+      "rawSourceText": "führen Verfahren zur Isolierung von Stoffen sicherheitsgerecht durch, überprüfen die Reinheit sowie Ausbeute von isolierten Stoffen und dokumentieren ihre Tätigkeit.",
+      "rawSourceSpan": "BcP12.2.2",
+      "rawParentBulletText": "führen Verfahren zur Isolierung von Stoffen sicherheitsgerecht durch, überprüfen die Reinheit sowie Ausbeute von isolierten Stoffen und dokumentieren ihre Tätigkeit."
+    },
+    {
+      "id": "2593fa34-24e6-5aaf-9438-953ddff429f9",
+      "passageId": "ba614684-e5f0-562a-89ae-52c8f44a73a6",
+      "topicCode": "BcP12.3",
+      "bulletIndex": 1,
+      "aspectIndex": 1,
+      "title": "untersuchen Stoffgemische mit geeigneten Analyseverfahren, um deren Zusammensetzung qualitativ und q...",
+      "description": "untersuchen Stoffgemische mit geeigneten Analyseverfahren, um deren Zusammensetzung qualitativ und quantitativ zu ermitteln.",
+      "sourceText": "untersuchen Stoffgemische mit geeigneten Analyseverfahren, um deren Zusammensetzung qualitativ und quantitativ zu ermitteln.",
+      "sourceSpan": "BcP12.3.1",
+      "parentBulletText": "untersuchen Stoffgemische mit geeigneten Analyseverfahren, um deren Zusammensetzung qualitativ und quantitativ zu ermitteln.",
+      "sourceRef": "LehrplanPLUS Bayern Gymnasium Biologisch-chemisches Praktikum, BcP12.3.1",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetency",
+      "tags": [
+        "jurisdiction:DE-BY",
+        "stage:SekII",
+        "courseLevel:unspecified",
+        "topic:BcP12.3"
+      ],
+      "rawSourceText": "untersuchen Stoffgemische mit geeigneten Analyseverfahren, um deren Zusammensetzung qualitativ und quantitativ zu ermitteln.",
+      "rawSourceSpan": "BcP12.3.1",
+      "rawParentBulletText": "untersuchen Stoffgemische mit geeigneten Analyseverfahren, um deren Zusammensetzung qualitativ und quantitativ zu ermitteln."
+    },
+    {
+      "id": "1298b179-8b44-5eba-80fd-dafa7ef4473c",
+      "passageId": "ba614684-e5f0-562a-89ae-52c8f44a73a6",
+      "topicCode": "BcP12.3",
+      "bulletIndex": 2,
+      "aspectIndex": 1,
+      "title": "wählen geeignete Analyseverfahren aus, um unbekannte Reinstoffe zu identifizieren.",
+      "description": "wählen geeignete Analyseverfahren aus, um unbekannte Reinstoffe zu identifizieren.",
+      "sourceText": "wählen geeignete Analyseverfahren aus, um unbekannte Reinstoffe zu identifizieren.",
+      "sourceSpan": "BcP12.3.2",
+      "parentBulletText": "wählen geeignete Analyseverfahren aus, um unbekannte Reinstoffe zu identifizieren.",
+      "sourceRef": "LehrplanPLUS Bayern Gymnasium Biologisch-chemisches Praktikum, BcP12.3.2",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetency",
+      "tags": [
+        "jurisdiction:DE-BY",
+        "stage:SekII",
+        "courseLevel:unspecified",
+        "topic:BcP12.3"
+      ],
+      "rawSourceText": "wählen geeignete Analyseverfahren aus, um unbekannte Reinstoffe zu identifizieren.",
+      "rawSourceSpan": "BcP12.3.2",
+      "rawParentBulletText": "wählen geeignete Analyseverfahren aus, um unbekannte Reinstoffe zu identifizieren."
+    },
+    {
+      "id": "75026111-0315-52e6-8f6a-65e26e2a3857",
+      "passageId": "ba614684-e5f0-562a-89ae-52c8f44a73a6",
+      "topicCode": "BcP12.3",
+      "bulletIndex": 3,
+      "aspectIndex": 1,
+      "title": "führen Analyseverfahren sicherheitsgerecht durch und dokumentieren ihre Tätigkeit.",
+      "description": "führen Analyseverfahren sicherheitsgerecht durch und dokumentieren ihre Tätigkeit.",
+      "sourceText": "führen Analyseverfahren sicherheitsgerecht durch und dokumentieren ihre Tätigkeit.",
+      "sourceSpan": "BcP12.3.3",
+      "parentBulletText": "führen Analyseverfahren sicherheitsgerecht durch und dokumentieren ihre Tätigkeit.",
+      "sourceRef": "LehrplanPLUS Bayern Gymnasium Biologisch-chemisches Praktikum, BcP12.3.3",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetency",
+      "tags": [
+        "jurisdiction:DE-BY",
+        "stage:SekII",
+        "courseLevel:unspecified",
+        "topic:BcP12.3"
+      ],
+      "rawSourceText": "führen Analyseverfahren sicherheitsgerecht durch und dokumentieren ihre Tätigkeit.",
+      "rawSourceSpan": "BcP12.3.3",
+      "rawParentBulletText": "führen Analyseverfahren sicherheitsgerecht durch und dokumentieren ihre Tätigkeit."
+    },
+    {
+      "id": "af074023-4396-5348-8d18-a5fa198f304b",
+      "passageId": "5b9633b4-692b-5269-a76d-998ebfa8810b",
+      "topicCode": "BcP12.4",
+      "bulletIndex": 1,
+      "aspectIndex": 1,
+      "title": "wenden biotechnologische und chemische Verfahren zur Synthese von Stoffen an.",
+      "description": "wenden biotechnologische und chemische Verfahren zur Synthese von Stoffen an.",
+      "sourceText": "wenden biotechnologische und chemische Verfahren zur Synthese von Stoffen an.",
+      "sourceSpan": "BcP12.4.1",
+      "parentBulletText": "wenden biotechnologische und chemische Verfahren zur Synthese von Stoffen an.",
+      "sourceRef": "LehrplanPLUS Bayern Gymnasium Biologisch-chemisches Praktikum, BcP12.4.1",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetency",
+      "tags": [
+        "jurisdiction:DE-BY",
+        "stage:SekII",
+        "courseLevel:unspecified",
+        "topic:BcP12.4"
+      ],
+      "rawSourceText": "wenden biotechnologische und chemische Verfahren zur Synthese von Stoffen an.",
+      "rawSourceSpan": "BcP12.4.1",
+      "rawParentBulletText": "wenden biotechnologische und chemische Verfahren zur Synthese von Stoffen an."
+    },
+    {
+      "id": "4d5d5597-4007-59a9-9333-28bb754e292b",
+      "passageId": "5b9633b4-692b-5269-a76d-998ebfa8810b",
+      "topicCode": "BcP12.4",
+      "bulletIndex": 2,
+      "aspectIndex": 1,
+      "title": "führen präparative Verfahren sicherheitsgerecht durch und dokumentieren ihre Tätigkeit.",
+      "description": "führen präparative Verfahren sicherheitsgerecht durch und dokumentieren ihre Tätigkeit.",
+      "sourceText": "führen präparative Verfahren sicherheitsgerecht durch und dokumentieren ihre Tätigkeit.",
+      "sourceSpan": "BcP12.4.2",
+      "parentBulletText": "führen präparative Verfahren sicherheitsgerecht durch und dokumentieren ihre Tätigkeit.",
+      "sourceRef": "LehrplanPLUS Bayern Gymnasium Biologisch-chemisches Praktikum, BcP12.4.2",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetency",
+      "tags": [
+        "jurisdiction:DE-BY",
+        "stage:SekII",
+        "courseLevel:unspecified",
+        "topic:BcP12.4"
+      ],
+      "rawSourceText": "führen präparative Verfahren sicherheitsgerecht durch und dokumentieren ihre Tätigkeit.",
+      "rawSourceSpan": "BcP12.4.2",
+      "rawParentBulletText": "führen präparative Verfahren sicherheitsgerecht durch und dokumentieren ihre Tätigkeit."
+    },
+    {
+      "id": "a31715d0-b071-521c-a06b-030c9ff6ee27",
+      "passageId": "5b9633b4-692b-5269-a76d-998ebfa8810b",
+      "topicCode": "BcP12.4",
+      "bulletIndex": 3,
+      "aspectIndex": 1,
+      "title": "wählen Verfahren aus und wenden diese an, um synthetisierte Stoffe zu reinigen, und setzen Analyseve...",
+      "description": "wählen Verfahren aus und wenden diese an, um synthetisierte Stoffe zu reinigen, und setzen Analyseverfahren ein, um die Reinheit und Ausbeute eines selbst hergestellten Präparates zu überprüfen.",
+      "sourceText": "wählen Verfahren aus und wenden diese an, um synthetisierte Stoffe zu reinigen, und setzen Analyseverfahren ein, um die Reinheit und Ausbeute eines selbst hergestellten Präparates zu überprüfen.",
+      "sourceSpan": "BcP12.4.3",
+      "parentBulletText": "wählen Verfahren aus und wenden diese an, um synthetisierte Stoffe zu reinigen, und setzen Analyseverfahren ein, um die Reinheit und Ausbeute eines selbst hergestellten Präparates zu überprüfen.",
+      "sourceRef": "LehrplanPLUS Bayern Gymnasium Biologisch-chemisches Praktikum, BcP12.4.3",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetency",
+      "tags": [
+        "jurisdiction:DE-BY",
+        "stage:SekII",
+        "courseLevel:unspecified",
+        "topic:BcP12.4"
+      ],
+      "rawSourceText": "wählen Verfahren aus und wenden diese an, um synthetisierte Stoffe zu reinigen, und setzen Analyseverfahren ein, um die Reinheit und Ausbeute eines selbst hergestellten Präparates zu überprüfen.",
+      "rawSourceSpan": "BcP12.4.3",
+      "rawParentBulletText": "wählen Verfahren aus und wenden diese an, um synthetisierte Stoffe zu reinigen, und setzen Analyseverfahren ein, um die Reinheit und Ausbeute eines selbst hergestellten Präparates zu überprüfen."
+    },
+    {
+      "id": "2e7e1642-0a1c-5a86-bd8c-c47f150827e4",
+      "passageId": "5b9633b4-692b-5269-a76d-998ebfa8810b",
+      "topicCode": "BcP12.4",
+      "bulletIndex": 4,
+      "aspectIndex": 1,
+      "title": "setzen alltagsrelevante Techniken zur Zubereitung und Veredelung von Lebensmitteln ein und erklären ...",
+      "description": "setzen alltagsrelevante Techniken zur Zubereitung und Veredelung von Lebensmitteln ein und erklären die biologischen und chemischen Grundlagen der Verfahren.",
+      "sourceText": "setzen alltagsrelevante Techniken zur Zubereitung und Veredelung von Lebensmitteln ein und erklären die biologischen und chemischen Grundlagen der Verfahren.",
+      "sourceSpan": "BcP12.4.4",
+      "parentBulletText": "setzen alltagsrelevante Techniken zur Zubereitung und Veredelung von Lebensmitteln ein und erklären die biologischen und chemischen Grundlagen der Verfahren.",
+      "sourceRef": "LehrplanPLUS Bayern Gymnasium Biologisch-chemisches Praktikum, BcP12.4.4",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetency",
+      "tags": [
+        "jurisdiction:DE-BY",
+        "stage:SekII",
+        "courseLevel:unspecified",
+        "topic:BcP12.4"
+      ],
+      "rawSourceText": "setzen alltagsrelevante Techniken zur Zubereitung und Veredelung von Lebensmitteln ein und erklären die biologischen und chemischen Grundlagen der Verfahren.",
+      "rawSourceSpan": "BcP12.4.4",
+      "rawParentBulletText": "setzen alltagsrelevante Techniken zur Zubereitung und Veredelung von Lebensmitteln ein und erklären die biologischen und chemischen Grundlagen der Verfahren."
+    },
+    {
+      "id": "356da26a-9452-5859-a017-9c9cacbcd262",
+      "passageId": "5b9633b4-692b-5269-a76d-998ebfa8810b",
+      "topicCode": "BcP12.4",
+      "bulletIndex": 5,
+      "aspectIndex": 1,
+      "title": "stellen Arznei- oder Körperpflegemittel her und erklären die chemischen Grundlagen der Herstellung.",
+      "description": "stellen Arznei- oder Körperpflegemittel her und erklären die chemischen Grundlagen der Herstellung.",
+      "sourceText": "stellen Arznei- oder Körperpflegemittel her und erklären die chemischen Grundlagen der Herstellung.",
+      "sourceSpan": "BcP12.4.5",
+      "parentBulletText": "stellen Arznei- oder Körperpflegemittel her und erklären die chemischen Grundlagen der Herstellung.",
+      "sourceRef": "LehrplanPLUS Bayern Gymnasium Biologisch-chemisches Praktikum, BcP12.4.5",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetency",
+      "tags": [
+        "jurisdiction:DE-BY",
+        "stage:SekII",
+        "courseLevel:unspecified",
+        "topic:BcP12.4"
+      ],
+      "rawSourceText": "stellen Arznei- oder Körperpflegemittel her und erklären die chemischen Grundlagen der Herstellung.",
+      "rawSourceSpan": "BcP12.4.5",
+      "rawParentBulletText": "stellen Arznei- oder Körperpflegemittel her und erklären die chemischen Grundlagen der Herstellung."
+    },
+    {
+      "id": "eeae95a6-2b03-5fbf-b1a4-ee7653314d8b",
+      "passageId": "5b9633b4-692b-5269-a76d-998ebfa8810b",
+      "topicCode": "BcP12.4",
+      "bulletIndex": 6,
+      "aspectIndex": 1,
+      "title": "stellen Werk- und Baustoffe her und beurteilen deren Einsatzmöglichkeiten, indem sie deren Eigenscha...",
+      "description": "stellen Werk- und Baustoffe her und beurteilen deren Einsatzmöglichkeiten, indem sie deren Eigenschaften unter gleichen Bedingungen überprüfen.",
+      "sourceText": "stellen Werk- und Baustoffe her und beurteilen deren Einsatzmöglichkeiten, indem sie deren Eigenschaften unter gleichen Bedingungen überprüfen.",
+      "sourceSpan": "BcP12.4.6",
+      "parentBulletText": "stellen Werk- und Baustoffe her und beurteilen deren Einsatzmöglichkeiten, indem sie deren Eigenschaften unter gleichen Bedingungen überprüfen.",
+      "sourceRef": "LehrplanPLUS Bayern Gymnasium Biologisch-chemisches Praktikum, BcP12.4.6",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetency",
+      "tags": [
+        "jurisdiction:DE-BY",
+        "stage:SekII",
+        "courseLevel:unspecified",
+        "topic:BcP12.4"
+      ],
+      "rawSourceText": "stellen Werk- und Baustoffe her und beurteilen deren Einsatzmöglichkeiten, indem sie deren Eigenschaften unter gleichen Bedingungen überprüfen.",
+      "rawSourceSpan": "BcP12.4.6",
+      "rawParentBulletText": "stellen Werk- und Baustoffe her und beurteilen deren Einsatzmöglichkeiten, indem sie deren Eigenschaften unter gleichen Bedingungen überprüfen."
+    },
+    {
+      "id": "4c81c061-4249-5c3f-b068-6c2a27009892",
+      "passageId": "5b9633b4-692b-5269-a76d-998ebfa8810b",
+      "topicCode": "BcP12.4",
+      "bulletIndex": 7,
+      "aspectIndex": 1,
+      "title": "kombinieren ausgewählte Werk- und Baustoffe zu funktionellen Systemen und zeigen mögliche Anwendunge...",
+      "description": "kombinieren ausgewählte Werk- und Baustoffe zu funktionellen Systemen und zeigen mögliche Anwendungen in Alltag und Technik auf.",
+      "sourceText": "kombinieren ausgewählte Werk- und Baustoffe zu funktionellen Systemen und zeigen mögliche Anwendungen in Alltag und Technik auf.",
+      "sourceSpan": "BcP12.4.7",
+      "parentBulletText": "kombinieren ausgewählte Werk- und Baustoffe zu funktionellen Systemen und zeigen mögliche Anwendungen in Alltag und Technik auf.",
+      "sourceRef": "LehrplanPLUS Bayern Gymnasium Biologisch-chemisches Praktikum, BcP12.4.7",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetency",
+      "tags": [
+        "jurisdiction:DE-BY",
+        "stage:SekII",
+        "courseLevel:unspecified",
+        "topic:BcP12.4"
+      ],
+      "rawSourceText": "kombinieren ausgewählte Werk- und Baustoffe zu funktionellen Systemen und zeigen mögliche Anwendungen in Alltag und Technik auf.",
+      "rawSourceSpan": "BcP12.4.7",
+      "rawParentBulletText": "kombinieren ausgewählte Werk- und Baustoffe zu funktionellen Systemen und zeigen mögliche Anwendungen in Alltag und Technik auf."
+    },
+    {
+      "id": "9c1808d9-3f10-56bb-885c-2839264bf266",
+      "passageId": "db97469f-cce5-5705-a91f-7fe9a23b09a2",
+      "topicCode": "BcP12.5",
+      "bulletIndex": 1,
+      "aspectIndex": 1,
+      "title": "wählen Verfahren zur Herstellung mikroskopischer Präparate und anschließenden mikroskopischen Unters...",
+      "description": "wählen Verfahren zur Herstellung mikroskopischer Präparate und anschließenden mikroskopischen Untersuchung von u. a. Mikroorganismen, Geweben und Zellen aus, um den mikroskopischen Aufbau verschiedener Funktionseinheiten von Lebewesen auf zellulärer Ebene zu untersuchen.",
+      "sourceText": "wählen Verfahren zur Herstellung mikroskopischer Präparate und anschließenden mikroskopischen Untersuchung von u. a. Mikroorganismen, Geweben und Zellen aus, um den mikroskopischen Aufbau verschiedener Funktionseinheiten von Lebewesen auf zellulärer Ebene zu untersuchen.",
+      "sourceSpan": "BcP12.5.1",
+      "parentBulletText": "wählen Verfahren zur Herstellung mikroskopischer Präparate und anschließenden mikroskopischen Untersuchung von u. a. Mikroorganismen, Geweben und Zellen aus, um den mikroskopischen Aufbau verschiedener Funktionseinheiten von Lebewesen auf zellulärer Ebene zu untersuchen.",
+      "sourceRef": "LehrplanPLUS Bayern Gymnasium Biologisch-chemisches Praktikum, BcP12.5.1",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetency",
+      "tags": [
+        "jurisdiction:DE-BY",
+        "stage:SekII",
+        "courseLevel:unspecified",
+        "topic:BcP12.5"
+      ],
+      "rawSourceText": "wählen Verfahren zur Herstellung mikroskopischer Präparate und anschließenden mikroskopischen Untersuchung von u. a. Mikroorganismen, Geweben und Zellen aus, um den mikroskopischen Aufbau verschiedener Funktionseinheiten von Lebewesen auf zellulärer Ebene zu untersuchen.",
+      "rawSourceSpan": "BcP12.5.1",
+      "rawParentBulletText": "wählen Verfahren zur Herstellung mikroskopischer Präparate und anschließenden mikroskopischen Untersuchung von u. a. Mikroorganismen, Geweben und Zellen aus, um den mikroskopischen Aufbau verschiedener Funktionseinheiten von Lebewesen auf zellulärer Ebene zu untersuchen."
+    },
+    {
+      "id": "b66e0cdb-4e8a-58f2-9ee3-64f9ebea2321",
+      "passageId": "db97469f-cce5-5705-a91f-7fe9a23b09a2",
+      "topicCode": "BcP12.5",
+      "bulletIndex": 2,
+      "aspectIndex": 1,
+      "title": "untersuchen Stoffe und Materialien mithilfe mikroskopischer Methoden, um charakteristische Eigenscha...",
+      "description": "untersuchen Stoffe und Materialien mithilfe mikroskopischer Methoden, um charakteristische Eigenschaften zu identifizieren.",
+      "sourceText": "untersuchen Stoffe und Materialien mithilfe mikroskopischer Methoden, um charakteristische Eigenschaften zu identifizieren.",
+      "sourceSpan": "BcP12.5.2",
+      "parentBulletText": "untersuchen Stoffe und Materialien mithilfe mikroskopischer Methoden, um charakteristische Eigenschaften zu identifizieren.",
+      "sourceRef": "LehrplanPLUS Bayern Gymnasium Biologisch-chemisches Praktikum, BcP12.5.2",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetency",
+      "tags": [
+        "jurisdiction:DE-BY",
+        "stage:SekII",
+        "courseLevel:unspecified",
+        "topic:BcP12.5"
+      ],
+      "rawSourceText": "untersuchen Stoffe und Materialien mithilfe mikroskopischer Methoden, um charakteristische Eigenschaften zu identifizieren.",
+      "rawSourceSpan": "BcP12.5.2",
+      "rawParentBulletText": "untersuchen Stoffe und Materialien mithilfe mikroskopischer Methoden, um charakteristische Eigenschaften zu identifizieren."
+    },
+    {
+      "id": "ae915657-3ce5-5563-8ccc-7fd65c6b06b7",
+      "passageId": "db97469f-cce5-5705-a91f-7fe9a23b09a2",
+      "topicCode": "BcP12.5",
+      "bulletIndex": 3,
+      "aspectIndex": 1,
+      "title": "präparieren und mikroskopieren sicherheitsgerecht, dokumentieren ihre Tätigkeit und erstellen beschr...",
+      "description": "präparieren und mikroskopieren sicherheitsgerecht, dokumentieren ihre Tätigkeit und erstellen beschriftete Zeichnungen der betrachteten Strukturen, um sich so einen Zugang zur Welt des mikroskopisch Kleinen zu erschließen.",
+      "sourceText": "präparieren und mikroskopieren sicherheitsgerecht, dokumentieren ihre Tätigkeit und erstellen beschriftete Zeichnungen der betrachteten Strukturen, um sich so einen Zugang zur Welt des mikroskopisch Kleinen zu erschließen.",
+      "sourceSpan": "BcP12.5.3",
+      "parentBulletText": "präparieren und mikroskopieren sicherheitsgerecht, dokumentieren ihre Tätigkeit und erstellen beschriftete Zeichnungen der betrachteten Strukturen, um sich so einen Zugang zur Welt des mikroskopisch Kleinen zu erschließen.",
+      "sourceRef": "LehrplanPLUS Bayern Gymnasium Biologisch-chemisches Praktikum, BcP12.5.3",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetency",
+      "tags": [
+        "jurisdiction:DE-BY",
+        "stage:SekII",
+        "courseLevel:unspecified",
+        "topic:BcP12.5"
+      ],
+      "rawSourceText": "präparieren und mikroskopieren sicherheitsgerecht, dokumentieren ihre Tätigkeit und erstellen beschriftete Zeichnungen der betrachteten Strukturen, um sich so einen Zugang zur Welt des mikroskopisch Kleinen zu erschließen.",
+      "rawSourceSpan": "BcP12.5.3",
+      "rawParentBulletText": "präparieren und mikroskopieren sicherheitsgerecht, dokumentieren ihre Tätigkeit und erstellen beschriftete Zeichnungen der betrachteten Strukturen, um sich so einen Zugang zur Welt des mikroskopisch Kleinen zu erschließen."
+    },
+    {
+      "id": "806a49a8-22cc-53d7-8097-fe872bac90da",
+      "passageId": "b0355ef0-7d92-5b77-8cb6-b2555d4eb5ca",
+      "topicCode": "BcP12.6",
+      "bulletIndex": 1,
+      "aspectIndex": 1,
+      "title": "planen hypothesengeleitet Untersuchungen zu den grundlegenden Anforderungen an Lebewesen, führen sie...",
+      "description": "planen hypothesengeleitet Untersuchungen zu den grundlegenden Anforderungen an Lebewesen, führen sie durch und dokumentieren sie, um u. a. die Beeinflussbarkeit von Enzymreaktionen und die Reizbarkeit von Lebewesen zu beschreiben.",
+      "sourceText": "planen hypothesengeleitet Untersuchungen zu den grundlegenden Anforderungen an Lebewesen, führen sie durch und dokumentieren sie, um u. a. die Beeinflussbarkeit von Enzymreaktionen und die Reizbarkeit von Lebewesen zu beschreiben.",
+      "sourceSpan": "BcP12.6.1",
+      "parentBulletText": "planen hypothesengeleitet Untersuchungen zu den grundlegenden Anforderungen an Lebewesen, führen sie durch und dokumentieren sie, um u. a. die Beeinflussbarkeit von Enzymreaktionen und die Reizbarkeit von Lebewesen zu beschreiben.",
+      "sourceRef": "LehrplanPLUS Bayern Gymnasium Biologisch-chemisches Praktikum, BcP12.6.1",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetency",
+      "tags": [
+        "jurisdiction:DE-BY",
+        "stage:SekII",
+        "courseLevel:unspecified",
+        "topic:BcP12.6"
+      ],
+      "rawSourceText": "planen hypothesengeleitet Untersuchungen zu den grundlegenden Anforderungen an Lebewesen, führen sie durch und dokumentieren sie, um u. a. die Beeinflussbarkeit von Enzymreaktionen und die Reizbarkeit von Lebewesen zu beschreiben.",
+      "rawSourceSpan": "BcP12.6.1",
+      "rawParentBulletText": "planen hypothesengeleitet Untersuchungen zu den grundlegenden Anforderungen an Lebewesen, führen sie durch und dokumentieren sie, um u. a. die Beeinflussbarkeit von Enzymreaktionen und die Reizbarkeit von Lebewesen zu beschreiben."
+    },
+    {
+      "id": "96bcf5fb-bf77-53b8-b5f1-03ffbe26a53e",
+      "passageId": "b0355ef0-7d92-5b77-8cb6-b2555d4eb5ca",
+      "topicCode": "BcP12.6",
+      "bulletIndex": 2,
+      "aspectIndex": 1,
+      "title": "führen Untersuchungen an Lebewesen sicherheits-, art- und naturschutzgerecht durch.",
+      "description": "führen Untersuchungen an Lebewesen sicherheits-, art- und naturschutzgerecht durch.",
+      "sourceText": "führen Untersuchungen an Lebewesen sicherheits-, art- und naturschutzgerecht durch.",
+      "sourceSpan": "BcP12.6.2",
+      "parentBulletText": "führen Untersuchungen an Lebewesen sicherheits-, art- und naturschutzgerecht durch.",
+      "sourceRef": "LehrplanPLUS Bayern Gymnasium Biologisch-chemisches Praktikum, BcP12.6.2",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetency",
+      "tags": [
+        "jurisdiction:DE-BY",
+        "stage:SekII",
+        "courseLevel:unspecified",
+        "topic:BcP12.6"
+      ],
+      "rawSourceText": "führen Untersuchungen an Lebewesen sicherheits-, art- und naturschutzgerecht durch.",
+      "rawSourceSpan": "BcP12.6.2",
+      "rawParentBulletText": "führen Untersuchungen an Lebewesen sicherheits-, art- und naturschutzgerecht durch."
+    },
+    {
+      "id": "5f3656df-6d88-5db9-b0bf-5dd274382334",
+      "passageId": "2a836309-a8e5-5564-81c9-7e6e60b4f327",
+      "topicCode": "BcP12.7",
+      "bulletIndex": 1,
+      "aspectIndex": 1,
+      "title": "bestimmen auch im Freiland Lebewesen mithilfe von Bestimmungsliteratur und erweitern dabei ihre Arte...",
+      "description": "bestimmen auch im Freiland Lebewesen mithilfe von Bestimmungsliteratur und erweitern dabei ihre Artenkenntnis.",
+      "sourceText": "bestimmen auch im Freiland Lebewesen mithilfe von Bestimmungsliteratur und erweitern dabei ihre Artenkenntnis.",
+      "sourceSpan": "BcP12.7.1",
+      "parentBulletText": "bestimmen auch im Freiland Lebewesen mithilfe von Bestimmungsliteratur und erweitern dabei ihre Artenkenntnis.",
+      "sourceRef": "LehrplanPLUS Bayern Gymnasium Biologisch-chemisches Praktikum, BcP12.7.1",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetency",
+      "tags": [
+        "jurisdiction:DE-BY",
+        "stage:SekII",
+        "courseLevel:unspecified",
+        "topic:BcP12.7"
+      ],
+      "rawSourceText": "bestimmen auch im Freiland Lebewesen mithilfe von Bestimmungsliteratur und erweitern dabei ihre Artenkenntnis.",
+      "rawSourceSpan": "BcP12.7.1",
+      "rawParentBulletText": "bestimmen auch im Freiland Lebewesen mithilfe von Bestimmungsliteratur und erweitern dabei ihre Artenkenntnis."
+    },
+    {
+      "id": "e615708a-bf0d-5570-9d5b-828746272d0d",
+      "passageId": "2a836309-a8e5-5564-81c9-7e6e60b4f327",
+      "topicCode": "BcP12.7",
+      "bulletIndex": 2,
+      "aspectIndex": 1,
+      "title": "planen hypothesengeleitet ökologische Freilanduntersuchungen und führen sie durch, um die Lebensgeme...",
+      "description": "planen hypothesengeleitet ökologische Freilanduntersuchungen und führen sie durch, um die Lebensgemeinschaft sowie die abiotischen Standortfaktoren verschiedener Lebensräume qualitativ und quantitativ zu charakterisieren.",
+      "sourceText": "planen hypothesengeleitet ökologische Freilanduntersuchungen und führen sie durch, um die Lebensgemeinschaft sowie die abiotischen Standortfaktoren verschiedener Lebensräume qualitativ und quantitativ zu charakterisieren.",
+      "sourceSpan": "BcP12.7.2",
+      "parentBulletText": "planen hypothesengeleitet ökologische Freilanduntersuchungen und führen sie durch, um die Lebensgemeinschaft sowie die abiotischen Standortfaktoren verschiedener Lebensräume qualitativ und quantitativ zu charakterisieren.",
+      "sourceRef": "LehrplanPLUS Bayern Gymnasium Biologisch-chemisches Praktikum, BcP12.7.2",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetency",
+      "tags": [
+        "jurisdiction:DE-BY",
+        "stage:SekII",
+        "courseLevel:unspecified",
+        "topic:BcP12.7"
+      ],
+      "rawSourceText": "planen hypothesengeleitet ökologische Freilanduntersuchungen und führen sie durch, um die Lebensgemeinschaft sowie die abiotischen Standortfaktoren verschiedener Lebensräume qualitativ und quantitativ zu charakterisieren.",
+      "rawSourceSpan": "BcP12.7.2",
+      "rawParentBulletText": "planen hypothesengeleitet ökologische Freilanduntersuchungen und führen sie durch, um die Lebensgemeinschaft sowie die abiotischen Standortfaktoren verschiedener Lebensräume qualitativ und quantitativ zu charakterisieren."
+    },
+    {
+      "id": "7949c6ee-f0b4-55e8-b6d0-3e85de43a1a1",
+      "passageId": "2a836309-a8e5-5564-81c9-7e6e60b4f327",
+      "topicCode": "BcP12.7",
+      "bulletIndex": 3,
+      "aspectIndex": 1,
+      "title": "führen ökologische Laboruntersuchungen oder manipulative Freilanduntersuchungen durch und erforschen...",
+      "description": "führen ökologische Laboruntersuchungen oder manipulative Freilanduntersuchungen durch und erforschen so den Einfluss von Umweltfaktoren auf Lebewesen, um die Eignung von Lebensräumen für Lebewesen zu beurteilen.",
+      "sourceText": "führen ökologische Laboruntersuchungen oder manipulative Freilanduntersuchungen durch und erforschen so den Einfluss von Umweltfaktoren auf Lebewesen, um die Eignung von Lebensräumen für Lebewesen zu beurteilen.",
+      "sourceSpan": "BcP12.7.3",
+      "parentBulletText": "führen ökologische Laboruntersuchungen oder manipulative Freilanduntersuchungen durch und erforschen so den Einfluss von Umweltfaktoren auf Lebewesen, um die Eignung von Lebensräumen für Lebewesen zu beurteilen.",
+      "sourceRef": "LehrplanPLUS Bayern Gymnasium Biologisch-chemisches Praktikum, BcP12.7.3",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetency",
+      "tags": [
+        "jurisdiction:DE-BY",
+        "stage:SekII",
+        "courseLevel:unspecified",
+        "topic:BcP12.7"
+      ],
+      "rawSourceText": "führen ökologische Laboruntersuchungen oder manipulative Freilanduntersuchungen durch und erforschen so den Einfluss von Umweltfaktoren auf Lebewesen, um die Eignung von Lebensräumen für Lebewesen zu beurteilen.",
+      "rawSourceSpan": "BcP12.7.3",
+      "rawParentBulletText": "führen ökologische Laboruntersuchungen oder manipulative Freilanduntersuchungen durch und erforschen so den Einfluss von Umweltfaktoren auf Lebewesen, um die Eignung von Lebensräumen für Lebewesen zu beurteilen."
+    },
+    {
+      "id": "bfdb04d2-8e4c-5534-bf78-effafc048578",
+      "passageId": "cd404ef0-6b20-53da-ab47-92574339aa6d",
+      "topicCode": "BcP13.1",
+      "bulletIndex": 1,
+      "aspectIndex": 1,
+      "title": "recherchieren das Gefahrenpotenzial von Laborchemikalien und leiten daraus Maßnahmen zum sicherheits...",
+      "description": "recherchieren das Gefahrenpotenzial von Laborchemikalien und leiten daraus Maßnahmen zum sicherheitsgerechten Umgang, zu persönlichen Schutzmaßnahmen und zur umweltgerechten Entsorgung ab.",
+      "sourceText": "recherchieren das Gefahrenpotenzial von Laborchemikalien und leiten daraus Maßnahmen zum sicherheitsgerechten Umgang, zu persönlichen Schutzmaßnahmen und zur umweltgerechten Entsorgung ab.",
+      "sourceSpan": "BcP13.1.1",
+      "parentBulletText": "recherchieren das Gefahrenpotenzial von Laborchemikalien und leiten daraus Maßnahmen zum sicherheitsgerechten Umgang, zu persönlichen Schutzmaßnahmen und zur umweltgerechten Entsorgung ab.",
+      "sourceRef": "LehrplanPLUS Bayern Gymnasium Biologisch-chemisches Praktikum, BcP13.1.1",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetency",
+      "tags": [
+        "jurisdiction:DE-BY",
+        "stage:SekII",
+        "courseLevel:unspecified",
+        "topic:BcP13.1"
+      ],
+      "rawSourceText": "recherchieren das Gefahrenpotenzial von Laborchemikalien und leiten daraus Maßnahmen zum sicherheitsgerechten Umgang, zu persönlichen Schutzmaßnahmen und zur umweltgerechten Entsorgung ab.",
+      "rawSourceSpan": "BcP13.1.1",
+      "rawParentBulletText": "recherchieren das Gefahrenpotenzial von Laborchemikalien und leiten daraus Maßnahmen zum sicherheitsgerechten Umgang, zu persönlichen Schutzmaßnahmen und zur umweltgerechten Entsorgung ab."
+    },
+    {
+      "id": "69c470c3-36c7-5ec1-89b7-0b48fe82def8",
+      "passageId": "cd404ef0-6b20-53da-ab47-92574339aa6d",
+      "topicCode": "BcP13.1",
+      "bulletIndex": 2,
+      "aspectIndex": 1,
+      "title": "stellen theoriebasiert Hypothesen zu biologischen und chemischen Fragestellungen aus verschiedenen F...",
+      "description": "stellen theoriebasiert Hypothesen zu biologischen und chemischen Fragestellungen aus verschiedenen Forschungs- und Anwendungsbereichen auf, planen ausgehend von diesen auch unter Verwendung von Modellen überwiegend selbstständig naturwissenschaftliche Untersuchungen und führen diese durch.",
+      "sourceText": "stellen theoriebasiert Hypothesen zu biologischen und chemischen Fragestellungen aus verschiedenen Forschungs- und Anwendungsbereichen auf, planen ausgehend von diesen auch unter Verwendung von Modellen überwiegend selbstständig naturwissenschaftliche Untersuchungen und führen diese durch.",
+      "sourceSpan": "BcP13.1.2",
+      "parentBulletText": "stellen theoriebasiert Hypothesen zu biologischen und chemischen Fragestellungen aus verschiedenen Forschungs- und Anwendungsbereichen auf, planen ausgehend von diesen auch unter Verwendung von Modellen überwiegend selbstständig naturwissenschaftliche Untersuchungen und führen diese durch.",
+      "sourceRef": "LehrplanPLUS Bayern Gymnasium Biologisch-chemisches Praktikum, BcP13.1.2",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetency",
+      "tags": [
+        "jurisdiction:DE-BY",
+        "stage:SekII",
+        "courseLevel:unspecified",
+        "topic:BcP13.1"
+      ],
+      "rawSourceText": "stellen theoriebasiert Hypothesen zu biologischen und chemischen Fragestellungen aus verschiedenen Forschungs- und Anwendungsbereichen auf, planen ausgehend von diesen auch unter Verwendung von Modellen überwiegend selbstständig naturwissenschaftliche Untersuchungen und führen diese durch.",
+      "rawSourceSpan": "BcP13.1.2",
+      "rawParentBulletText": "stellen theoriebasiert Hypothesen zu biologischen und chemischen Fragestellungen aus verschiedenen Forschungs- und Anwendungsbereichen auf, planen ausgehend von diesen auch unter Verwendung von Modellen überwiegend selbstständig naturwissenschaftliche Untersuchungen und führen diese durch."
+    },
+    {
+      "id": "29b0a638-ade9-549d-a561-85a1a27e2769",
+      "passageId": "cd404ef0-6b20-53da-ab47-92574339aa6d",
+      "topicCode": "BcP13.1",
+      "bulletIndex": 3,
+      "aspectIndex": 1,
+      "title": "beurteilen die Validität von erhobenen Daten, benennen mögliche Ursachen für Mess- und Verfahrensfeh...",
+      "description": "beurteilen die Validität von erhobenen Daten, benennen mögliche Ursachen für Mess- und Verfahrensfehler und optimieren davon ausgehend das Untersuchungsdesign.",
+      "sourceText": "beurteilen die Validität von erhobenen Daten, benennen mögliche Ursachen für Mess- und Verfahrensfehler und optimieren davon ausgehend das Untersuchungsdesign.",
+      "sourceSpan": "BcP13.1.3",
+      "parentBulletText": "beurteilen die Validität von erhobenen Daten, benennen mögliche Ursachen für Mess- und Verfahrensfehler und optimieren davon ausgehend das Untersuchungsdesign.",
+      "sourceRef": "LehrplanPLUS Bayern Gymnasium Biologisch-chemisches Praktikum, BcP13.1.3",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetency",
+      "tags": [
+        "jurisdiction:DE-BY",
+        "stage:SekII",
+        "courseLevel:unspecified",
+        "topic:BcP13.1"
+      ],
+      "rawSourceText": "beurteilen die Validität von erhobenen Daten, benennen mögliche Ursachen für Mess- und Verfahrensfehler und optimieren davon ausgehend das Untersuchungsdesign.",
+      "rawSourceSpan": "BcP13.1.3",
+      "rawParentBulletText": "beurteilen die Validität von erhobenen Daten, benennen mögliche Ursachen für Mess- und Verfahrensfehler und optimieren davon ausgehend das Untersuchungsdesign."
+    },
+    {
+      "id": "931377b6-c9f2-5000-b31f-428792134fa6",
+      "passageId": "cd404ef0-6b20-53da-ab47-92574339aa6d",
+      "topicCode": "BcP13.1",
+      "bulletIndex": 4,
+      "aspectIndex": 1,
+      "title": "setzen fachgemäße Arbeitsmethoden und -techniken bei der selbständigen, sicherheitsgerechten Durchfü...",
+      "description": "setzen fachgemäße Arbeitsmethoden und -techniken bei der selbständigen, sicherheitsgerechten Durchführung qualitativer und quantitativer naturwissenschaftlicher Untersuchungen oder bei der Herstellung von biologischen Präparaten sowie der Synthese und Isolierung von Stoffen ein.",
+      "sourceText": "setzen fachgemäße Arbeitsmethoden und -techniken bei der selbständigen, sicherheitsgerechten Durchführung qualitativer und quantitativer naturwissenschaftlicher Untersuchungen oder bei der Herstellung von biologischen Präparaten sowie der Synthese und Isolierung von Stoffen ein.",
+      "sourceSpan": "BcP13.1.4",
+      "parentBulletText": "setzen fachgemäße Arbeitsmethoden und -techniken bei der selbständigen, sicherheitsgerechten Durchführung qualitativer und quantitativer naturwissenschaftlicher Untersuchungen oder bei der Herstellung von biologischen Präparaten sowie der Synthese und Isolierung von Stoffen ein.",
+      "sourceRef": "LehrplanPLUS Bayern Gymnasium Biologisch-chemisches Praktikum, BcP13.1.4",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetency",
+      "tags": [
+        "jurisdiction:DE-BY",
+        "stage:SekII",
+        "courseLevel:unspecified",
+        "topic:BcP13.1"
+      ],
+      "rawSourceText": "setzen fachgemäße Arbeitsmethoden und -techniken bei der selbständigen, sicherheitsgerechten Durchführung qualitativer und quantitativer naturwissenschaftlicher Untersuchungen oder bei der Herstellung von biologischen Präparaten sowie der Synthese und Isolierung von Stoffen ein.",
+      "rawSourceSpan": "BcP13.1.4",
+      "rawParentBulletText": "setzen fachgemäße Arbeitsmethoden und -techniken bei der selbständigen, sicherheitsgerechten Durchführung qualitativer und quantitativer naturwissenschaftlicher Untersuchungen oder bei der Herstellung von biologischen Präparaten sowie der Synthese und Isolierung von Stoffen ein."
+    },
+    {
+      "id": "5fc4d8e8-4fad-5e5b-aaa5-fd44b6473ae3",
+      "passageId": "cd404ef0-6b20-53da-ab47-92574339aa6d",
+      "topicCode": "BcP13.1",
+      "bulletIndex": 5,
+      "aspectIndex": 1,
+      "title": "überführen Untersuchungsergebnisse in eine sach-, adressaten- und situationsgerechte Darstellungsfor...",
+      "description": "überführen Untersuchungsergebnisse in eine sach-, adressaten- und situationsgerechte Darstellungsform und reflektieren die Eignung dieser Darstellungsform.",
+      "sourceText": "überführen Untersuchungsergebnisse in eine sach-, adressaten- und situationsgerechte Darstellungsform und reflektieren die Eignung dieser Darstellungsform.",
+      "sourceSpan": "BcP13.1.5",
+      "parentBulletText": "überführen Untersuchungsergebnisse in eine sach-, adressaten- und situationsgerechte Darstellungsform und reflektieren die Eignung dieser Darstellungsform.",
+      "sourceRef": "LehrplanPLUS Bayern Gymnasium Biologisch-chemisches Praktikum, BcP13.1.5",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetency",
+      "tags": [
+        "jurisdiction:DE-BY",
+        "stage:SekII",
+        "courseLevel:unspecified",
+        "topic:BcP13.1"
+      ],
+      "rawSourceText": "überführen Untersuchungsergebnisse in eine sach-, adressaten- und situationsgerechte Darstellungsform und reflektieren die Eignung dieser Darstellungsform.",
+      "rawSourceSpan": "BcP13.1.5",
+      "rawParentBulletText": "überführen Untersuchungsergebnisse in eine sach-, adressaten- und situationsgerechte Darstellungsform und reflektieren die Eignung dieser Darstellungsform."
+    },
+    {
+      "id": "85ceb1de-a3b3-57b5-86af-ebba3130d6d0",
+      "passageId": "cd404ef0-6b20-53da-ab47-92574339aa6d",
+      "topicCode": "BcP13.1",
+      "bulletIndex": 6,
+      "aspectIndex": 1,
+      "title": "bewerten aus ethischer, sozialer, ökologischer und ökonomischer Perspektive mittelbare und unmittelb...",
+      "description": "bewerten aus ethischer, sozialer, ökologischer und ökonomischer Perspektive mittelbare und unmittelbare Folgen von naturwissenschaftlichen Untersuchungen sowie die Folgen der Herstellung von biologischen Präparaten und der Synthese und Isolierung von Stoffen.",
+      "sourceText": "bewerten aus ethischer, sozialer, ökologischer und ökonomischer Perspektive mittelbare und unmittelbare Folgen von naturwissenschaftlichen Untersuchungen sowie die Folgen der Herstellung von biologischen Präparaten und der Synthese und Isolierung von Stoffen.",
+      "sourceSpan": "BcP13.1.6",
+      "parentBulletText": "bewerten aus ethischer, sozialer, ökologischer und ökonomischer Perspektive mittelbare und unmittelbare Folgen von naturwissenschaftlichen Untersuchungen sowie die Folgen der Herstellung von biologischen Präparaten und der Synthese und Isolierung von Stoffen.",
+      "sourceRef": "LehrplanPLUS Bayern Gymnasium Biologisch-chemisches Praktikum, BcP13.1.6",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetency",
+      "tags": [
+        "jurisdiction:DE-BY",
+        "stage:SekII",
+        "courseLevel:unspecified",
+        "topic:BcP13.1"
+      ],
+      "rawSourceText": "bewerten aus ethischer, sozialer, ökologischer und ökonomischer Perspektive mittelbare und unmittelbare Folgen von naturwissenschaftlichen Untersuchungen sowie die Folgen der Herstellung von biologischen Präparaten und der Synthese und Isolierung von Stoffen.",
+      "rawSourceSpan": "BcP13.1.6",
+      "rawParentBulletText": "bewerten aus ethischer, sozialer, ökologischer und ökonomischer Perspektive mittelbare und unmittelbare Folgen von naturwissenschaftlichen Untersuchungen sowie die Folgen der Herstellung von biologischen Präparaten und der Synthese und Isolierung von Stoffen."
+    },
+    {
+      "id": "68ddb267-01ce-5e32-8167-2a8b0faeb320",
+      "passageId": "034be878-f020-5f1c-8641-f603f275cbee",
+      "topicCode": "BcP13.2",
+      "bulletIndex": 1,
+      "aspectIndex": 1,
+      "title": "wählen anhand der physikalischen und chemischen Eigenschaften von Stoffen geeignete Verfahren aus, u...",
+      "description": "wählen anhand der physikalischen und chemischen Eigenschaften von Stoffen geeignete Verfahren aus, um Stoffe aus Stoffgemischen zu isolieren.",
+      "sourceText": "wählen anhand der physikalischen und chemischen Eigenschaften von Stoffen geeignete Verfahren aus, um Stoffe aus Stoffgemischen zu isolieren.",
+      "sourceSpan": "BcP13.2.1",
+      "parentBulletText": "wählen anhand der physikalischen und chemischen Eigenschaften von Stoffen geeignete Verfahren aus, um Stoffe aus Stoffgemischen zu isolieren.",
+      "sourceRef": "LehrplanPLUS Bayern Gymnasium Biologisch-chemisches Praktikum, BcP13.2.1",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetency",
+      "tags": [
+        "jurisdiction:DE-BY",
+        "stage:SekII",
+        "courseLevel:unspecified",
+        "topic:BcP13.2"
+      ],
+      "rawSourceText": "wählen anhand der physikalischen und chemischen Eigenschaften von Stoffen geeignete Verfahren aus, um Stoffe aus Stoffgemischen zu isolieren.",
+      "rawSourceSpan": "BcP13.2.1",
+      "rawParentBulletText": "wählen anhand der physikalischen und chemischen Eigenschaften von Stoffen geeignete Verfahren aus, um Stoffe aus Stoffgemischen zu isolieren."
+    },
+    {
+      "id": "51eac1e5-9ff0-5ac5-817b-1f0c094fb117",
+      "passageId": "034be878-f020-5f1c-8641-f603f275cbee",
+      "topicCode": "BcP13.2",
+      "bulletIndex": 2,
+      "aspectIndex": 1,
+      "title": "führen Verfahren zur Isolierung von Stoffen sicherheitsgerecht durch, überprüfen die Reinheit sowie ...",
+      "description": "führen Verfahren zur Isolierung von Stoffen sicherheitsgerecht durch, überprüfen die Reinheit sowie Ausbeute von isolierten Stoffen und dokumentieren ihre Tätigkeit.",
+      "sourceText": "führen Verfahren zur Isolierung von Stoffen sicherheitsgerecht durch, überprüfen die Reinheit sowie Ausbeute von isolierten Stoffen und dokumentieren ihre Tätigkeit.",
+      "sourceSpan": "BcP13.2.2",
+      "parentBulletText": "führen Verfahren zur Isolierung von Stoffen sicherheitsgerecht durch, überprüfen die Reinheit sowie Ausbeute von isolierten Stoffen und dokumentieren ihre Tätigkeit.",
+      "sourceRef": "LehrplanPLUS Bayern Gymnasium Biologisch-chemisches Praktikum, BcP13.2.2",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetency",
+      "tags": [
+        "jurisdiction:DE-BY",
+        "stage:SekII",
+        "courseLevel:unspecified",
+        "topic:BcP13.2"
+      ],
+      "rawSourceText": "führen Verfahren zur Isolierung von Stoffen sicherheitsgerecht durch, überprüfen die Reinheit sowie Ausbeute von isolierten Stoffen und dokumentieren ihre Tätigkeit.",
+      "rawSourceSpan": "BcP13.2.2",
+      "rawParentBulletText": "führen Verfahren zur Isolierung von Stoffen sicherheitsgerecht durch, überprüfen die Reinheit sowie Ausbeute von isolierten Stoffen und dokumentieren ihre Tätigkeit."
+    },
+    {
+      "id": "05dcd367-5c48-5f97-a67d-8b942626cba5",
+      "passageId": "d85ddf51-c8a4-521f-b67e-a921d595b731",
+      "topicCode": "BcP13.3",
+      "bulletIndex": 1,
+      "aspectIndex": 1,
+      "title": "untersuchen Stoffgemische mit geeigneten Analyseverfahren, um deren Zusammensetzung qualitativ und q...",
+      "description": "untersuchen Stoffgemische mit geeigneten Analyseverfahren, um deren Zusammensetzung qualitativ und quantitativ zu ermitteln.",
+      "sourceText": "untersuchen Stoffgemische mit geeigneten Analyseverfahren, um deren Zusammensetzung qualitativ und quantitativ zu ermitteln.",
+      "sourceSpan": "BcP13.3.1",
+      "parentBulletText": "untersuchen Stoffgemische mit geeigneten Analyseverfahren, um deren Zusammensetzung qualitativ und quantitativ zu ermitteln.",
+      "sourceRef": "LehrplanPLUS Bayern Gymnasium Biologisch-chemisches Praktikum, BcP13.3.1",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetency",
+      "tags": [
+        "jurisdiction:DE-BY",
+        "stage:SekII",
+        "courseLevel:unspecified",
+        "topic:BcP13.3"
+      ],
+      "rawSourceText": "untersuchen Stoffgemische mit geeigneten Analyseverfahren, um deren Zusammensetzung qualitativ und quantitativ zu ermitteln.",
+      "rawSourceSpan": "BcP13.3.1",
+      "rawParentBulletText": "untersuchen Stoffgemische mit geeigneten Analyseverfahren, um deren Zusammensetzung qualitativ und quantitativ zu ermitteln."
+    },
+    {
+      "id": "861529a5-a2de-5c85-b7cb-ab1f8612f7d1",
+      "passageId": "d85ddf51-c8a4-521f-b67e-a921d595b731",
+      "topicCode": "BcP13.3",
+      "bulletIndex": 2,
+      "aspectIndex": 1,
+      "title": "wählen geeignete Analyseverfahren aus, um unbekannte Reinstoffe zu identifizieren.",
+      "description": "wählen geeignete Analyseverfahren aus, um unbekannte Reinstoffe zu identifizieren.",
+      "sourceText": "wählen geeignete Analyseverfahren aus, um unbekannte Reinstoffe zu identifizieren.",
+      "sourceSpan": "BcP13.3.2",
+      "parentBulletText": "wählen geeignete Analyseverfahren aus, um unbekannte Reinstoffe zu identifizieren.",
+      "sourceRef": "LehrplanPLUS Bayern Gymnasium Biologisch-chemisches Praktikum, BcP13.3.2",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetency",
+      "tags": [
+        "jurisdiction:DE-BY",
+        "stage:SekII",
+        "courseLevel:unspecified",
+        "topic:BcP13.3"
+      ],
+      "rawSourceText": "wählen geeignete Analyseverfahren aus, um unbekannte Reinstoffe zu identifizieren.",
+      "rawSourceSpan": "BcP13.3.2",
+      "rawParentBulletText": "wählen geeignete Analyseverfahren aus, um unbekannte Reinstoffe zu identifizieren."
+    },
+    {
+      "id": "44db5f22-cc6e-5037-9190-292c94a852bf",
+      "passageId": "d85ddf51-c8a4-521f-b67e-a921d595b731",
+      "topicCode": "BcP13.3",
+      "bulletIndex": 3,
+      "aspectIndex": 1,
+      "title": "führen Analyseverfahren sicherheitsgerecht durch und dokumentieren ihre Tätigkeit.",
+      "description": "führen Analyseverfahren sicherheitsgerecht durch und dokumentieren ihre Tätigkeit.",
+      "sourceText": "führen Analyseverfahren sicherheitsgerecht durch und dokumentieren ihre Tätigkeit.",
+      "sourceSpan": "BcP13.3.3",
+      "parentBulletText": "führen Analyseverfahren sicherheitsgerecht durch und dokumentieren ihre Tätigkeit.",
+      "sourceRef": "LehrplanPLUS Bayern Gymnasium Biologisch-chemisches Praktikum, BcP13.3.3",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetency",
+      "tags": [
+        "jurisdiction:DE-BY",
+        "stage:SekII",
+        "courseLevel:unspecified",
+        "topic:BcP13.3"
+      ],
+      "rawSourceText": "führen Analyseverfahren sicherheitsgerecht durch und dokumentieren ihre Tätigkeit.",
+      "rawSourceSpan": "BcP13.3.3",
+      "rawParentBulletText": "führen Analyseverfahren sicherheitsgerecht durch und dokumentieren ihre Tätigkeit."
+    },
+    {
+      "id": "816b1a6f-1534-59b3-ae46-06b08e1b7aca",
+      "passageId": "543c1d23-649c-5740-aff2-c5ec864e93de",
+      "topicCode": "BcP13.4",
+      "bulletIndex": 1,
+      "aspectIndex": 1,
+      "title": "wenden biotechnologische und chemische Verfahren zur Synthese von Stoffen an.",
+      "description": "wenden biotechnologische und chemische Verfahren zur Synthese von Stoffen an.",
+      "sourceText": "wenden biotechnologische und chemische Verfahren zur Synthese von Stoffen an.",
+      "sourceSpan": "BcP13.4.1",
+      "parentBulletText": "wenden biotechnologische und chemische Verfahren zur Synthese von Stoffen an.",
+      "sourceRef": "LehrplanPLUS Bayern Gymnasium Biologisch-chemisches Praktikum, BcP13.4.1",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetency",
+      "tags": [
+        "jurisdiction:DE-BY",
+        "stage:SekII",
+        "courseLevel:unspecified",
+        "topic:BcP13.4"
+      ],
+      "rawSourceText": "wenden biotechnologische und chemische Verfahren zur Synthese von Stoffen an.",
+      "rawSourceSpan": "BcP13.4.1",
+      "rawParentBulletText": "wenden biotechnologische und chemische Verfahren zur Synthese von Stoffen an."
+    },
+    {
+      "id": "0a46d248-e340-5f51-b9b6-67489b0e2548",
+      "passageId": "543c1d23-649c-5740-aff2-c5ec864e93de",
+      "topicCode": "BcP13.4",
+      "bulletIndex": 2,
+      "aspectIndex": 1,
+      "title": "führen präparative Verfahren sicherheitsgerecht durch und dokumentieren ihre Tätigkeit.",
+      "description": "führen präparative Verfahren sicherheitsgerecht durch und dokumentieren ihre Tätigkeit.",
+      "sourceText": "führen präparative Verfahren sicherheitsgerecht durch und dokumentieren ihre Tätigkeit.",
+      "sourceSpan": "BcP13.4.2",
+      "parentBulletText": "führen präparative Verfahren sicherheitsgerecht durch und dokumentieren ihre Tätigkeit.",
+      "sourceRef": "LehrplanPLUS Bayern Gymnasium Biologisch-chemisches Praktikum, BcP13.4.2",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetency",
+      "tags": [
+        "jurisdiction:DE-BY",
+        "stage:SekII",
+        "courseLevel:unspecified",
+        "topic:BcP13.4"
+      ],
+      "rawSourceText": "führen präparative Verfahren sicherheitsgerecht durch und dokumentieren ihre Tätigkeit.",
+      "rawSourceSpan": "BcP13.4.2",
+      "rawParentBulletText": "führen präparative Verfahren sicherheitsgerecht durch und dokumentieren ihre Tätigkeit."
+    },
+    {
+      "id": "4892eb10-0c07-598d-93dd-c3277a5a6a1c",
+      "passageId": "543c1d23-649c-5740-aff2-c5ec864e93de",
+      "topicCode": "BcP13.4",
+      "bulletIndex": 3,
+      "aspectIndex": 1,
+      "title": "wählen Verfahren aus und wenden diese an, um synthetisierte Stoffe zu reinigen, und setzen Analyseve...",
+      "description": "wählen Verfahren aus und wenden diese an, um synthetisierte Stoffe zu reinigen, und setzen Analyseverfahren ein, um die Reinheit und Ausbeute eines selbst hergestellten Präparates zu überprüfen.",
+      "sourceText": "wählen Verfahren aus und wenden diese an, um synthetisierte Stoffe zu reinigen, und setzen Analyseverfahren ein, um die Reinheit und Ausbeute eines selbst hergestellten Präparates zu überprüfen.",
+      "sourceSpan": "BcP13.4.3",
+      "parentBulletText": "wählen Verfahren aus und wenden diese an, um synthetisierte Stoffe zu reinigen, und setzen Analyseverfahren ein, um die Reinheit und Ausbeute eines selbst hergestellten Präparates zu überprüfen.",
+      "sourceRef": "LehrplanPLUS Bayern Gymnasium Biologisch-chemisches Praktikum, BcP13.4.3",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetency",
+      "tags": [
+        "jurisdiction:DE-BY",
+        "stage:SekII",
+        "courseLevel:unspecified",
+        "topic:BcP13.4"
+      ],
+      "rawSourceText": "wählen Verfahren aus und wenden diese an, um synthetisierte Stoffe zu reinigen, und setzen Analyseverfahren ein, um die Reinheit und Ausbeute eines selbst hergestellten Präparates zu überprüfen.",
+      "rawSourceSpan": "BcP13.4.3",
+      "rawParentBulletText": "wählen Verfahren aus und wenden diese an, um synthetisierte Stoffe zu reinigen, und setzen Analyseverfahren ein, um die Reinheit und Ausbeute eines selbst hergestellten Präparates zu überprüfen."
+    },
+    {
+      "id": "1dc77e5a-24f2-5efc-a6e2-8c4a920162fe",
+      "passageId": "543c1d23-649c-5740-aff2-c5ec864e93de",
+      "topicCode": "BcP13.4",
+      "bulletIndex": 4,
+      "aspectIndex": 1,
+      "title": "setzen alltagsrelevante Techniken zur Zubereitung und Veredelung von Lebensmitteln ein und erklären ...",
+      "description": "setzen alltagsrelevante Techniken zur Zubereitung und Veredelung von Lebensmitteln ein und erklären die biologischen und chemischen Grundlagen der Verfahren.",
+      "sourceText": "setzen alltagsrelevante Techniken zur Zubereitung und Veredelung von Lebensmitteln ein und erklären die biologischen und chemischen Grundlagen der Verfahren.",
+      "sourceSpan": "BcP13.4.4",
+      "parentBulletText": "setzen alltagsrelevante Techniken zur Zubereitung und Veredelung von Lebensmitteln ein und erklären die biologischen und chemischen Grundlagen der Verfahren.",
+      "sourceRef": "LehrplanPLUS Bayern Gymnasium Biologisch-chemisches Praktikum, BcP13.4.4",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetency",
+      "tags": [
+        "jurisdiction:DE-BY",
+        "stage:SekII",
+        "courseLevel:unspecified",
+        "topic:BcP13.4"
+      ],
+      "rawSourceText": "setzen alltagsrelevante Techniken zur Zubereitung und Veredelung von Lebensmitteln ein und erklären die biologischen und chemischen Grundlagen der Verfahren.",
+      "rawSourceSpan": "BcP13.4.4",
+      "rawParentBulletText": "setzen alltagsrelevante Techniken zur Zubereitung und Veredelung von Lebensmitteln ein und erklären die biologischen und chemischen Grundlagen der Verfahren."
+    },
+    {
+      "id": "8e4fc3b2-bfa4-5c67-b107-7997fc89cc45",
+      "passageId": "543c1d23-649c-5740-aff2-c5ec864e93de",
+      "topicCode": "BcP13.4",
+      "bulletIndex": 5,
+      "aspectIndex": 1,
+      "title": "stellen Arznei- oder Körperpflegemittel her und erklären die chemischen Grundlagen der Herstellung.",
+      "description": "stellen Arznei- oder Körperpflegemittel her und erklären die chemischen Grundlagen der Herstellung.",
+      "sourceText": "stellen Arznei- oder Körperpflegemittel her und erklären die chemischen Grundlagen der Herstellung.",
+      "sourceSpan": "BcP13.4.5",
+      "parentBulletText": "stellen Arznei- oder Körperpflegemittel her und erklären die chemischen Grundlagen der Herstellung.",
+      "sourceRef": "LehrplanPLUS Bayern Gymnasium Biologisch-chemisches Praktikum, BcP13.4.5",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetency",
+      "tags": [
+        "jurisdiction:DE-BY",
+        "stage:SekII",
+        "courseLevel:unspecified",
+        "topic:BcP13.4"
+      ],
+      "rawSourceText": "stellen Arznei- oder Körperpflegemittel her und erklären die chemischen Grundlagen der Herstellung.",
+      "rawSourceSpan": "BcP13.4.5",
+      "rawParentBulletText": "stellen Arznei- oder Körperpflegemittel her und erklären die chemischen Grundlagen der Herstellung."
+    },
+    {
+      "id": "3e146174-d54f-5e4d-ae04-cd5a4727760c",
+      "passageId": "543c1d23-649c-5740-aff2-c5ec864e93de",
+      "topicCode": "BcP13.4",
+      "bulletIndex": 6,
+      "aspectIndex": 1,
+      "title": "stellen Werk- und Baustoffe her und beurteilen deren Einsatzmöglichkeiten, indem sie deren Eigenscha...",
+      "description": "stellen Werk- und Baustoffe her und beurteilen deren Einsatzmöglichkeiten, indem sie deren Eigenschaften unter gleichen Bedingungen überprüfen.",
+      "sourceText": "stellen Werk- und Baustoffe her und beurteilen deren Einsatzmöglichkeiten, indem sie deren Eigenschaften unter gleichen Bedingungen überprüfen.",
+      "sourceSpan": "BcP13.4.6",
+      "parentBulletText": "stellen Werk- und Baustoffe her und beurteilen deren Einsatzmöglichkeiten, indem sie deren Eigenschaften unter gleichen Bedingungen überprüfen.",
+      "sourceRef": "LehrplanPLUS Bayern Gymnasium Biologisch-chemisches Praktikum, BcP13.4.6",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetency",
+      "tags": [
+        "jurisdiction:DE-BY",
+        "stage:SekII",
+        "courseLevel:unspecified",
+        "topic:BcP13.4"
+      ],
+      "rawSourceText": "stellen Werk- und Baustoffe her und beurteilen deren Einsatzmöglichkeiten, indem sie deren Eigenschaften unter gleichen Bedingungen überprüfen.",
+      "rawSourceSpan": "BcP13.4.6",
+      "rawParentBulletText": "stellen Werk- und Baustoffe her und beurteilen deren Einsatzmöglichkeiten, indem sie deren Eigenschaften unter gleichen Bedingungen überprüfen."
+    },
+    {
+      "id": "558f8c3d-b881-5cb6-bff3-f147848518f1",
+      "passageId": "543c1d23-649c-5740-aff2-c5ec864e93de",
+      "topicCode": "BcP13.4",
+      "bulletIndex": 7,
+      "aspectIndex": 1,
+      "title": "kombinieren ausgewählte Werk- und Baustoffe zu funktionellen Systemen und zeigen mögliche Anwendunge...",
+      "description": "kombinieren ausgewählte Werk- und Baustoffe zu funktionellen Systemen und zeigen mögliche Anwendungen in Alltag und Technik auf.",
+      "sourceText": "kombinieren ausgewählte Werk- und Baustoffe zu funktionellen Systemen und zeigen mögliche Anwendungen in Alltag und Technik auf.",
+      "sourceSpan": "BcP13.4.7",
+      "parentBulletText": "kombinieren ausgewählte Werk- und Baustoffe zu funktionellen Systemen und zeigen mögliche Anwendungen in Alltag und Technik auf.",
+      "sourceRef": "LehrplanPLUS Bayern Gymnasium Biologisch-chemisches Praktikum, BcP13.4.7",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetency",
+      "tags": [
+        "jurisdiction:DE-BY",
+        "stage:SekII",
+        "courseLevel:unspecified",
+        "topic:BcP13.4"
+      ],
+      "rawSourceText": "kombinieren ausgewählte Werk- und Baustoffe zu funktionellen Systemen und zeigen mögliche Anwendungen in Alltag und Technik auf.",
+      "rawSourceSpan": "BcP13.4.7",
+      "rawParentBulletText": "kombinieren ausgewählte Werk- und Baustoffe zu funktionellen Systemen und zeigen mögliche Anwendungen in Alltag und Technik auf."
+    },
+    {
+      "id": "9be83d32-7f3e-50c6-ae44-092e769ab98e",
+      "passageId": "c56cb89f-f41e-525b-bd9e-0bc8c152caa1",
+      "topicCode": "BcP13.5",
+      "bulletIndex": 1,
+      "aspectIndex": 1,
+      "title": "wählen Verfahren zur Herstellung mikroskopischer Präparate und anschließenden mikroskopischen Unters...",
+      "description": "wählen Verfahren zur Herstellung mikroskopischer Präparate und anschließenden mikroskopischen Untersuchung von u. a. Mikroorganismen, Geweben und Zellen aus, um den mikroskopischen Aufbau verschiedener Funktionseinheiten von Lebewesen auf zellulärer Ebene zu untersuchen.",
+      "sourceText": "wählen Verfahren zur Herstellung mikroskopischer Präparate und anschließenden mikroskopischen Untersuchung von u. a. Mikroorganismen, Geweben und Zellen aus, um den mikroskopischen Aufbau verschiedener Funktionseinheiten von Lebewesen auf zellulärer Ebene zu untersuchen.",
+      "sourceSpan": "BcP13.5.1",
+      "parentBulletText": "wählen Verfahren zur Herstellung mikroskopischer Präparate und anschließenden mikroskopischen Untersuchung von u. a. Mikroorganismen, Geweben und Zellen aus, um den mikroskopischen Aufbau verschiedener Funktionseinheiten von Lebewesen auf zellulärer Ebene zu untersuchen.",
+      "sourceRef": "LehrplanPLUS Bayern Gymnasium Biologisch-chemisches Praktikum, BcP13.5.1",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetency",
+      "tags": [
+        "jurisdiction:DE-BY",
+        "stage:SekII",
+        "courseLevel:unspecified",
+        "topic:BcP13.5"
+      ],
+      "rawSourceText": "wählen Verfahren zur Herstellung mikroskopischer Präparate und anschließenden mikroskopischen Untersuchung von u. a. Mikroorganismen, Geweben und Zellen aus, um den mikroskopischen Aufbau verschiedener Funktionseinheiten von Lebewesen auf zellulärer Ebene zu untersuchen.",
+      "rawSourceSpan": "BcP13.5.1",
+      "rawParentBulletText": "wählen Verfahren zur Herstellung mikroskopischer Präparate und anschließenden mikroskopischen Untersuchung von u. a. Mikroorganismen, Geweben und Zellen aus, um den mikroskopischen Aufbau verschiedener Funktionseinheiten von Lebewesen auf zellulärer Ebene zu untersuchen."
+    },
+    {
+      "id": "87752f17-7152-53da-835e-dcbcd6d447e2",
+      "passageId": "c56cb89f-f41e-525b-bd9e-0bc8c152caa1",
+      "topicCode": "BcP13.5",
+      "bulletIndex": 2,
+      "aspectIndex": 1,
+      "title": "untersuchen Stoffe und Materialien mithilfe mikroskopischer Methoden, um charakteristische Eigenscha...",
+      "description": "untersuchen Stoffe und Materialien mithilfe mikroskopischer Methoden, um charakteristische Eigenschaften zu identifizieren.",
+      "sourceText": "untersuchen Stoffe und Materialien mithilfe mikroskopischer Methoden, um charakteristische Eigenschaften zu identifizieren.",
+      "sourceSpan": "BcP13.5.2",
+      "parentBulletText": "untersuchen Stoffe und Materialien mithilfe mikroskopischer Methoden, um charakteristische Eigenschaften zu identifizieren.",
+      "sourceRef": "LehrplanPLUS Bayern Gymnasium Biologisch-chemisches Praktikum, BcP13.5.2",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetency",
+      "tags": [
+        "jurisdiction:DE-BY",
+        "stage:SekII",
+        "courseLevel:unspecified",
+        "topic:BcP13.5"
+      ],
+      "rawSourceText": "untersuchen Stoffe und Materialien mithilfe mikroskopischer Methoden, um charakteristische Eigenschaften zu identifizieren.",
+      "rawSourceSpan": "BcP13.5.2",
+      "rawParentBulletText": "untersuchen Stoffe und Materialien mithilfe mikroskopischer Methoden, um charakteristische Eigenschaften zu identifizieren."
+    },
+    {
+      "id": "cd8acf10-d748-5f58-b6c8-2b97bd708494",
+      "passageId": "c56cb89f-f41e-525b-bd9e-0bc8c152caa1",
+      "topicCode": "BcP13.5",
+      "bulletIndex": 3,
+      "aspectIndex": 1,
+      "title": "präparieren und mikroskopieren sicherheitsgerecht, dokumentieren ihre Tätigkeit und erstellen beschr...",
+      "description": "präparieren und mikroskopieren sicherheitsgerecht, dokumentieren ihre Tätigkeit und erstellen beschriftete Zeichnungen der betrachteten Strukturen, um sich so einen Zugang zur Welt des mikroskopisch Kleinen zu erschließen.",
+      "sourceText": "präparieren und mikroskopieren sicherheitsgerecht, dokumentieren ihre Tätigkeit und erstellen beschriftete Zeichnungen der betrachteten Strukturen, um sich so einen Zugang zur Welt des mikroskopisch Kleinen zu erschließen.",
+      "sourceSpan": "BcP13.5.3",
+      "parentBulletText": "präparieren und mikroskopieren sicherheitsgerecht, dokumentieren ihre Tätigkeit und erstellen beschriftete Zeichnungen der betrachteten Strukturen, um sich so einen Zugang zur Welt des mikroskopisch Kleinen zu erschließen.",
+      "sourceRef": "LehrplanPLUS Bayern Gymnasium Biologisch-chemisches Praktikum, BcP13.5.3",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetency",
+      "tags": [
+        "jurisdiction:DE-BY",
+        "stage:SekII",
+        "courseLevel:unspecified",
+        "topic:BcP13.5"
+      ],
+      "rawSourceText": "präparieren und mikroskopieren sicherheitsgerecht, dokumentieren ihre Tätigkeit und erstellen beschriftete Zeichnungen der betrachteten Strukturen, um sich so einen Zugang zur Welt des mikroskopisch Kleinen zu erschließen.",
+      "rawSourceSpan": "BcP13.5.3",
+      "rawParentBulletText": "präparieren und mikroskopieren sicherheitsgerecht, dokumentieren ihre Tätigkeit und erstellen beschriftete Zeichnungen der betrachteten Strukturen, um sich so einen Zugang zur Welt des mikroskopisch Kleinen zu erschließen."
+    },
+    {
+      "id": "766296f6-2b0a-5ad5-8222-a831477584be",
+      "passageId": "b940c6fa-fee9-5705-bd12-31dfaf47e673",
+      "topicCode": "BcP13.6",
+      "bulletIndex": 1,
+      "aspectIndex": 1,
+      "title": "planen hypothesengeleitet Untersuchungen zu den grundlegenden Anforderungen an Lebewesen, führen sie...",
+      "description": "planen hypothesengeleitet Untersuchungen zu den grundlegenden Anforderungen an Lebewesen, führen sie durch und dokumentieren sie, um u. a. die Beeinflussbarkeit von Enzymreaktionen und die Reizbarkeit von Lebewesen zu beschreiben.",
+      "sourceText": "planen hypothesengeleitet Untersuchungen zu den grundlegenden Anforderungen an Lebewesen, führen sie durch und dokumentieren sie, um u. a. die Beeinflussbarkeit von Enzymreaktionen und die Reizbarkeit von Lebewesen zu beschreiben.",
+      "sourceSpan": "BcP13.6.1",
+      "parentBulletText": "planen hypothesengeleitet Untersuchungen zu den grundlegenden Anforderungen an Lebewesen, führen sie durch und dokumentieren sie, um u. a. die Beeinflussbarkeit von Enzymreaktionen und die Reizbarkeit von Lebewesen zu beschreiben.",
+      "sourceRef": "LehrplanPLUS Bayern Gymnasium Biologisch-chemisches Praktikum, BcP13.6.1",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetency",
+      "tags": [
+        "jurisdiction:DE-BY",
+        "stage:SekII",
+        "courseLevel:unspecified",
+        "topic:BcP13.6"
+      ],
+      "rawSourceText": "planen hypothesengeleitet Untersuchungen zu den grundlegenden Anforderungen an Lebewesen, führen sie durch und dokumentieren sie, um u. a. die Beeinflussbarkeit von Enzymreaktionen und die Reizbarkeit von Lebewesen zu beschreiben.",
+      "rawSourceSpan": "BcP13.6.1",
+      "rawParentBulletText": "planen hypothesengeleitet Untersuchungen zu den grundlegenden Anforderungen an Lebewesen, führen sie durch und dokumentieren sie, um u. a. die Beeinflussbarkeit von Enzymreaktionen und die Reizbarkeit von Lebewesen zu beschreiben."
+    },
+    {
+      "id": "1fe13e20-7e59-5b75-899b-b255719b3085",
+      "passageId": "b940c6fa-fee9-5705-bd12-31dfaf47e673",
+      "topicCode": "BcP13.6",
+      "bulletIndex": 2,
+      "aspectIndex": 1,
+      "title": "führen Untersuchungen an Lebewesen sicherheits-, art- und naturschutzgerecht durch.",
+      "description": "führen Untersuchungen an Lebewesen sicherheits-, art- und naturschutzgerecht durch.",
+      "sourceText": "führen Untersuchungen an Lebewesen sicherheits-, art- und naturschutzgerecht durch.",
+      "sourceSpan": "BcP13.6.2",
+      "parentBulletText": "führen Untersuchungen an Lebewesen sicherheits-, art- und naturschutzgerecht durch.",
+      "sourceRef": "LehrplanPLUS Bayern Gymnasium Biologisch-chemisches Praktikum, BcP13.6.2",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetency",
+      "tags": [
+        "jurisdiction:DE-BY",
+        "stage:SekII",
+        "courseLevel:unspecified",
+        "topic:BcP13.6"
+      ],
+      "rawSourceText": "führen Untersuchungen an Lebewesen sicherheits-, art- und naturschutzgerecht durch.",
+      "rawSourceSpan": "BcP13.6.2",
+      "rawParentBulletText": "führen Untersuchungen an Lebewesen sicherheits-, art- und naturschutzgerecht durch."
+    },
+    {
+      "id": "3ba4193f-a551-5fb6-8eff-27065300d4d4",
+      "passageId": "d961ee51-fc8b-516a-90bc-394cd2e425cf",
+      "topicCode": "BcP13.7",
+      "bulletIndex": 1,
+      "aspectIndex": 1,
+      "title": "bestimmen auch im Freiland Lebewesen mithilfe von Bestimmungsliteratur und erweitern dabei ihre Arte...",
+      "description": "bestimmen auch im Freiland Lebewesen mithilfe von Bestimmungsliteratur und erweitern dabei ihre Artenkenntnis.",
+      "sourceText": "bestimmen auch im Freiland Lebewesen mithilfe von Bestimmungsliteratur und erweitern dabei ihre Artenkenntnis.",
+      "sourceSpan": "BcP13.7.1",
+      "parentBulletText": "bestimmen auch im Freiland Lebewesen mithilfe von Bestimmungsliteratur und erweitern dabei ihre Artenkenntnis.",
+      "sourceRef": "LehrplanPLUS Bayern Gymnasium Biologisch-chemisches Praktikum, BcP13.7.1",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetency",
+      "tags": [
+        "jurisdiction:DE-BY",
+        "stage:SekII",
+        "courseLevel:unspecified",
+        "topic:BcP13.7"
+      ],
+      "rawSourceText": "bestimmen auch im Freiland Lebewesen mithilfe von Bestimmungsliteratur und erweitern dabei ihre Artenkenntnis.",
+      "rawSourceSpan": "BcP13.7.1",
+      "rawParentBulletText": "bestimmen auch im Freiland Lebewesen mithilfe von Bestimmungsliteratur und erweitern dabei ihre Artenkenntnis."
+    },
+    {
+      "id": "fe3af01c-434f-5750-8e21-6d5fdeff2358",
+      "passageId": "d961ee51-fc8b-516a-90bc-394cd2e425cf",
+      "topicCode": "BcP13.7",
+      "bulletIndex": 2,
+      "aspectIndex": 1,
+      "title": "planen hypothesengeleitet ökologische Freilanduntersuchungen und führen sie durch, um die Lebensgeme...",
+      "description": "planen hypothesengeleitet ökologische Freilanduntersuchungen und führen sie durch, um die Lebensgemeinschaft sowie die abiotischen Standortfaktoren verschiedener Lebensräume qualitativ und quantitativ zu charakterisieren.",
+      "sourceText": "planen hypothesengeleitet ökologische Freilanduntersuchungen und führen sie durch, um die Lebensgemeinschaft sowie die abiotischen Standortfaktoren verschiedener Lebensräume qualitativ und quantitativ zu charakterisieren.",
+      "sourceSpan": "BcP13.7.2",
+      "parentBulletText": "planen hypothesengeleitet ökologische Freilanduntersuchungen und führen sie durch, um die Lebensgemeinschaft sowie die abiotischen Standortfaktoren verschiedener Lebensräume qualitativ und quantitativ zu charakterisieren.",
+      "sourceRef": "LehrplanPLUS Bayern Gymnasium Biologisch-chemisches Praktikum, BcP13.7.2",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetency",
+      "tags": [
+        "jurisdiction:DE-BY",
+        "stage:SekII",
+        "courseLevel:unspecified",
+        "topic:BcP13.7"
+      ],
+      "rawSourceText": "planen hypothesengeleitet ökologische Freilanduntersuchungen und führen sie durch, um die Lebensgemeinschaft sowie die abiotischen Standortfaktoren verschiedener Lebensräume qualitativ und quantitativ zu charakterisieren.",
+      "rawSourceSpan": "BcP13.7.2",
+      "rawParentBulletText": "planen hypothesengeleitet ökologische Freilanduntersuchungen und führen sie durch, um die Lebensgemeinschaft sowie die abiotischen Standortfaktoren verschiedener Lebensräume qualitativ und quantitativ zu charakterisieren."
+    },
+    {
+      "id": "96979728-26a4-5adc-af97-730b822d9102",
+      "passageId": "d961ee51-fc8b-516a-90bc-394cd2e425cf",
+      "topicCode": "BcP13.7",
+      "bulletIndex": 3,
+      "aspectIndex": 1,
+      "title": "führen ökologische Laboruntersuchungen oder manipulative Freilanduntersuchungen durch und erforschen...",
+      "description": "führen ökologische Laboruntersuchungen oder manipulative Freilanduntersuchungen durch und erforschen so den Einfluss von Umweltfaktoren auf Lebewesen, um die Eignung von Lebensräumen für Lebewesen zu beurteilen.",
+      "sourceText": "führen ökologische Laboruntersuchungen oder manipulative Freilanduntersuchungen durch und erforschen so den Einfluss von Umweltfaktoren auf Lebewesen, um die Eignung von Lebensräumen für Lebewesen zu beurteilen.",
+      "sourceSpan": "BcP13.7.3",
+      "parentBulletText": "führen ökologische Laboruntersuchungen oder manipulative Freilanduntersuchungen durch und erforschen so den Einfluss von Umweltfaktoren auf Lebewesen, um die Eignung von Lebensräumen für Lebewesen zu beurteilen.",
+      "sourceRef": "LehrplanPLUS Bayern Gymnasium Biologisch-chemisches Praktikum, BcP13.7.3",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetency",
+      "tags": [
+        "jurisdiction:DE-BY",
+        "stage:SekII",
+        "courseLevel:unspecified",
+        "topic:BcP13.7"
+      ],
+      "rawSourceText": "führen ökologische Laboruntersuchungen oder manipulative Freilanduntersuchungen durch und erforschen so den Einfluss von Umweltfaktoren auf Lebewesen, um die Eignung von Lebensräumen für Lebewesen zu beurteilen.",
+      "rawSourceSpan": "BcP13.7.3",
+      "rawParentBulletText": "führen ökologische Laboruntersuchungen oder manipulative Freilanduntersuchungen durch und erforschen so den Einfluss von Umweltfaktoren auf Lebewesen, um die Eignung von Lebensräumen für Lebewesen zu beurteilen."
+    }
+  ],
+  "qualityReview": {
+    "sourceGoalCountPeerBaseline": {
+      "accepted": false,
+      "details": "BcP ist ein eigenes bayerisches Profilfach und darf nicht als vollstaendiger Ersatz fuer Chemie-Sek-II-Coverage gelesen werden."
+    }
+  }
+}

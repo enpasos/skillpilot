@@ -172,19 +172,25 @@ function normalizeSourceExtractionPipelineSteps(
   coverage: {
     totalSourceGoals: number
     mappedSourceGoals: number
+    reviewedMappedSourceGoals: number
     unmappedSourceGoals: number
     explicitNeedsCanonicalGoal: number
     unreviewedSourceGoals: number
     hasM3ReviewFile: boolean
+    extraDecisionGoals: number
+    invalidMappedTargetGoals: number
   },
 ): MappingPipelineStep[] {
   const {
     totalSourceGoals,
     mappedSourceGoals,
+    reviewedMappedSourceGoals,
     unmappedSourceGoals,
     explicitNeedsCanonicalGoal,
     unreviewedSourceGoals,
     hasM3ReviewFile,
+    extraDecisionGoals,
+    invalidMappedTargetGoals,
   } = coverage
 
   return steps.map((step) => {
@@ -192,7 +198,11 @@ function normalizeSourceExtractionPipelineSteps(
 
     const fullyCovered = unmappedSourceGoals <= 0
     const fullyReviewed = unreviewedSourceGoals <= 0
-    const m3Complete = hasM3ReviewFile && fullyReviewed && fullyCovered && explicitNeedsCanonicalGoal <= 0
+    const fachlichCovered = hasM3ReviewFile
+      && fullyReviewed
+      && fullyCovered
+      && explicitNeedsCanonicalGoal <= 0
+    const m3Complete = fachlichCovered
 
     const checks = step.checks
       .filter((check) => check.id !== 'm3-all-source-goals-exactly-mapped')
@@ -203,6 +213,26 @@ function normalizeSourceExtractionPipelineSteps(
             passed: hasM3ReviewFile,
             details: hasM3ReviewFile
               ? 'Review-Datei mit sourceExtractionPath fuer diese Source-Extraction ist vorhanden.'
+              : check.details,
+          }
+        }
+
+        if (check.id === 'm3-review-decisions-reference-source-goals') {
+          return {
+            ...check,
+            passed: hasM3ReviewFile && extraDecisionGoals === 0,
+            details: hasM3ReviewFile
+              ? `Review-Entscheidungen mit unbekannter Source-ID: ${extraDecisionGoals}.`
+              : check.details,
+          }
+        }
+
+        if (check.id === 'm3-review-targets-exist') {
+          return {
+            ...check,
+            passed: hasM3ReviewFile && invalidMappedTargetGoals === 0,
+            details: hasM3ReviewFile
+              ? `Unbekannte Canonical-Ziele in Mappings: ${invalidMappedTargetGoals}.`
               : check.details,
           }
         }
@@ -222,10 +252,10 @@ function normalizeSourceExtractionPipelineSteps(
             label: blockedByUpstreamReview
               ? 'Vorläufige Abdeckung der aktuellen Source-IDs ist vorhanden'
               : 'Alle Source-Ziele sind durch SkillPilot-Ziele abgedeckt',
-            passed: fullyCovered,
+            passed: blockedByUpstreamReview ? fullyCovered : fachlichCovered,
             details: blockedByUpstreamReview
               ? `Abgedeckt: ${mappedSourceGoals}/${totalSourceGoals}; diese Abdeckung bewertet nur die aktuellen Source-IDs und ist kein fachlicher MAPPING-3-Abschluss, solange MAPPING-2 blockiert ist.`
-              : `Abgedeckt: ${mappedSourceGoals}/${totalSourceGoals}; verbleibend: ${explicitNeedsCanonicalGoal} explizite Canonical-Gaps, ${unreviewedSourceGoals} unreviewed.`,
+              : `Fachlich abgedeckt: ${reviewedMappedSourceGoals}/${totalSourceGoals}; Mappings: ${mappedSourceGoals}/${totalSourceGoals}; verbleibend: ${explicitNeedsCanonicalGoal} explizite Canonical-Gaps, ${unreviewedSourceGoals} unreviewed.`,
           }
         }
 
@@ -705,6 +735,7 @@ const CANONICAL_GYM_PHYSICS_SEK2_PRACTICE_CLUSTER_IDS = [
   'b47a2a23-b56d-5433-9036-075d6bb7c782',
   '85bbad98-2f48-5d64-85c4-ab6cf67f24c2',
 ]
+const CANONICAL_GYM_CHEMISTRY_LANDSCAPE_ID = 'c436b994-8f44-5134-b9f8-0c9f5d6a5ba0'
 
 const ruleCatalog: QualityRuleDefinition[] = [
   {
@@ -1795,6 +1826,7 @@ function hasCoverageBackedJurisdictionEvidence(
 const compositionViewDirectoryByLandscapeId = new Map<string, string>([
   [CANONICAL_GYM_MATH_LANDSCAPE_ID, 'mathematik'],
   [CANONICAL_GYM_PHYSICS_LANDSCAPE_ID, 'physik'],
+  [CANONICAL_GYM_CHEMISTRY_LANDSCAPE_ID, 'chemie'],
 ])
 
 function readLandscapeForReport(report: CoverageReport): LearningLandscape | null {
@@ -2327,6 +2359,17 @@ function readSourceExtractionPipelinesByLandscapeId(): Map<string, MappingPipeli
   const result = new Map<string, MappingPipelineSourceStatus>()
   const registryEntriesById = readSourceLandscapeRegistryEntriesById()
   const files = collectFiles(sourceExtractionRoot, (fileName) => /\.source-extraction\.json$/i.test(fileName))
+  const knownCanonicalGoalIds = new Set(
+    collectFiles(canonicalRoot, (fileName) => /\.json$/i.test(fileName) && !/_deck/i.test(fileName))
+      .flatMap((file) => {
+        try {
+          const landscape = loadJson<LearningLandscape>(file)
+          return landscape.goals.map((goal) => goal.id)
+        } catch {
+          return []
+        }
+      }),
+  )
   const mappingFilesBySourceExtractionPath = new Map<string, Array<GoalMappingFile & { file: string }>>()
 
   readAllGoalMappingFiles().forEach((mappingFile) => {
@@ -2369,6 +2412,13 @@ function readSourceExtractionPipelinesByLandscapeId(): Map<string, MappingPipeli
       const mappedSourceGoalIds = new Set(mappingEntries.map((mapping) => mapping.legacyGoalId))
       const validMappedSourceGoalIds = new Set(Array.from(mappedSourceGoalIds).filter((sourceGoalId) => sourceGoalIds.has(sourceGoalId)))
       const extraMappedGoalIds = Array.from(mappedSourceGoalIds).filter((sourceGoalId) => !sourceGoalIds.has(sourceGoalId))
+      const extraDecisionGoalIds = decisionEntries
+        .map((decision) => decision.sourceGoalId)
+        .filter((sourceGoalId) => !sourceGoalIds.has(sourceGoalId))
+      const invalidMappedTargetGoalIds = mappingEntries
+        .map((mapping) => mapping.canonicalGoalId)
+        .filter((canonicalGoalId): canonicalGoalId is string => typeof canonicalGoalId === 'string' && canonicalGoalId.trim().length > 0)
+        .filter((canonicalGoalId) => !knownCanonicalGoalIds.has(canonicalGoalId))
       const matchTypesBySourceGoalId = new Map<string, Set<string>>()
       mappingEntries.forEach((mapping) => {
         if (!sourceGoalIds.has(mapping.legacyGoalId)) return
@@ -2391,6 +2441,9 @@ function readSourceExtractionPipelinesByLandscapeId(): Map<string, MappingPipeli
           .map((decision) => decision.sourceGoalId)
           .filter((sourceGoalId) => sourceGoalIds.has(sourceGoalId)),
       )
+      const reviewedMappedSourceGoalIds = new Set(
+        Array.from(reviewedSourceGoalIds).filter((sourceGoalId) => validMappedSourceGoalIds.has(sourceGoalId)),
+      )
       const explicitNeedsCanonicalGoal = decisionEntries.filter((decision) =>
         sourceGoalIds.has(decision.sourceGoalId)
         && decision.decision === 'needsCanonicalGoal'
@@ -2399,10 +2452,13 @@ function readSourceExtractionPipelinesByLandscapeId(): Map<string, MappingPipeli
       const normalizedSteps = normalizeSourceExtractionPipelineSteps(steps, {
         totalSourceGoals: sourceGoalIds.size,
         mappedSourceGoals: validMappedSourceGoalIds.size,
+        reviewedMappedSourceGoals: reviewedMappedSourceGoalIds.size,
         unmappedSourceGoals,
         explicitNeedsCanonicalGoal,
         unreviewedSourceGoals,
         hasM3ReviewFile: mappingFilesForExtraction.length > 0,
+        extraDecisionGoals: extraDecisionGoalIds.length,
+        invalidMappedTargetGoals: invalidMappedTargetGoalIds.length,
       })
       const completedSteps = normalizedSteps.filter((step) => step.status === 'complete').length
       const currentStep = completedSteps === normalizedSteps.length
@@ -2761,13 +2817,22 @@ function readReverseSourceCoverageByJurisdiction(
   const sourceGoalClosureByLandscapeId = readSourceGoalClosureByLandscapeId()
   const sourceExtractedGoalIdsByLandscapeId = readExtractedSourceGoalIdsByLandscapeId()
   const sourceExtractedAtomicGoalIdsByLandscapeId = readExtractedSourceAtomicGoalIdsByLandscapeId()
+  const sourceExtractionLandscapeIds = new Set(sourceExtractedGoalIdsByLandscapeId.keys())
   const canonicalAtomicDescendantsByGoalId = buildCanonicalAtomicDescendantsByGoalId(report)
+  const landscape = readLandscapeForReport(report)
+  const canonicalGoalById = new Map((landscape?.goals ?? []).map((goal) => [goal.id, goal]))
   const mappingFiles = readGoalMappingFilesForReport(report)
   const mappingsByJurisdiction = new Map<string, Array<GoalMappingEntry & { sourceLandscapeId: string }>>()
   const sourceLandscapeIdsByJurisdiction = new Map<string, Set<string>>()
 
   for (const mappingFile of mappingFiles) {
     if (typeof mappingFile.sourceLandscapeId !== 'string') continue
+    if (
+      sourceExtractionLandscapeIds.has(mappingFile.sourceLandscapeId)
+      && (typeof mappingFile.sourceExtractionPath !== 'string' || mappingFile.sourceExtractionPath.trim().length === 0)
+    ) {
+      continue
+    }
     const jurisdiction = sourceLandscapeJurisdictionById.get(mappingFile.sourceLandscapeId)
     if (!jurisdiction) continue
     const sourceLandscapeIds = sourceLandscapeIdsByJurisdiction.get(jurisdiction) ?? new Set<string>()
@@ -2775,7 +2840,22 @@ function readReverseSourceCoverageByJurisdiction(
     sourceLandscapeIdsByJurisdiction.set(jurisdiction, sourceLandscapeIds)
 
     const entries = mappingsByJurisdiction.get(jurisdiction) ?? []
+    const reviewedCoveredSourceGoalIds = typeof mappingFile.sourceExtractionPath === 'string'
+      && mappingFile.sourceExtractionPath.trim().length > 0
+      ? new Set(
+        (mappingFile.decisions ?? [])
+          .filter((decision) => decision.decision === 'mapped')
+          .map((decision) => decision.sourceGoalId)
+          .filter((sourceGoalId): sourceGoalId is string => typeof sourceGoalId === 'string' && sourceGoalId.trim().length > 0),
+      )
+      : null
     for (const mapping of mappingFile.mappings ?? []) {
+      if (
+        reviewedCoveredSourceGoalIds
+        && (!mapping.legacyGoalId || !reviewedCoveredSourceGoalIds.has(mapping.legacyGoalId))
+      ) {
+        continue
+      }
       entries.push({ ...mapping, sourceLandscapeId: mappingFile.sourceLandscapeId })
     }
     mappingsByJurisdiction.set(jurisdiction, entries)
@@ -2796,12 +2876,26 @@ function readReverseSourceCoverageByJurisdiction(
   }>()
 
   for (const [jurisdiction, sourceLandscapeIds] of sourceLandscapeIdsByJurisdiction.entries()) {
-    const viewAtomicGoalIds = viewAtomicGoalIdsByJurisdiction.get(jurisdiction) ?? new Set<string>()
+    const explicitViewAtomicGoalIds = viewAtomicGoalIdsByJurisdiction.get(jurisdiction)
+    const viewAtomicGoalIds = explicitViewAtomicGoalIds && explicitViewAtomicGoalIds.size > 0
+      ? explicitViewAtomicGoalIds
+      : new Set(
+        report.goals
+          .filter((goal) =>
+            goal.goalType === 'atomic'
+            && (goal.compiledApplicability.jurisdiction ?? []).includes(jurisdiction)
+            && isCurriculumSourceCoverageGoal(canonicalGoalById.get(goal.goalId)))
+          .map((goal) => goal.goalId),
+      )
     const sourceExtractedGoalIds = new Set<string>()
     const sourceExtractedAtomicGoalIds = new Set<string>()
     const sourceAtomicGoalIds = new Set<string>()
     const sourceOriginalGoalIds = new Set<string>()
     const atomicClosureBySourceOriginalGoalId = new Map<string, Set<string>>()
+    const expandForCoverage = (sourceLandscapeId: string, goalId: string): Set<string> =>
+      sourceExtractionLandscapeIds.has(sourceLandscapeId)
+        ? new Set([goalId])
+        : expandSourceAtomicGoalIds(sourceLandscapeId, goalId, sourceGoalClosureByLandscapeId)
 
     for (const sourceLandscapeId of sourceLandscapeIds) {
       ;(sourceExtractedGoalIdsByLandscapeId.get(sourceLandscapeId) ?? new Set<string>())
@@ -2820,12 +2914,11 @@ function readReverseSourceCoverageByJurisdiction(
       membershipGoalIds.forEach((goalId) => {
         const sourceOriginalGoalId = sourceGoalKey(sourceLandscapeId, goalId)
         const atomicClosure = new Set<string>()
-        expandSourceAtomicGoalIds(sourceLandscapeId, goalId, sourceGoalClosureByLandscapeId)
-          .forEach((atomicGoalId) => {
-            const atomicGoalKey = sourceGoalKey(sourceLandscapeId, atomicGoalId)
-            sourceAtomicGoalIds.add(atomicGoalKey)
-            atomicClosure.add(atomicGoalKey)
-          })
+        expandForCoverage(sourceLandscapeId, goalId).forEach((atomicGoalId) => {
+          const atomicGoalKey = sourceGoalKey(sourceLandscapeId, atomicGoalId)
+          sourceAtomicGoalIds.add(atomicGoalKey)
+          atomicClosure.add(atomicGoalKey)
+        })
         sourceOriginalGoalIds.add(sourceOriginalGoalId)
         atomicClosureBySourceOriginalGoalId.set(sourceOriginalGoalId, atomicClosure)
       })
@@ -2837,7 +2930,7 @@ function readReverseSourceCoverageByJurisdiction(
       if (!targetIntersectsView(mapping.canonicalGoalId, viewAtomicGoalIds, canonicalAtomicDescendantsByGoalId)) {
         continue
       }
-      expandSourceAtomicGoalIds(mapping.sourceLandscapeId, mapping.legacyGoalId, sourceGoalClosureByLandscapeId)
+      expandForCoverage(mapping.sourceLandscapeId, mapping.legacyGoalId)
         .forEach((atomicGoalId) => mappedSourceAtomicGoalIds.add(sourceGoalKey(mapping.sourceLandscapeId, atomicGoalId)))
     }
 

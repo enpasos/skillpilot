@@ -829,18 +829,10 @@ public class LandscapeService {
                 }
 
                 try {
-                    JsonNode snapshotRoot = objectMapper.readTree(snapshotFile.toFile());
-                    if (snapshotRoot == null || !snapshotRoot.isObject()) {
-                        log.warn("Skipping archived source snapshot {}: invalid JSON object", snapshotFile);
+                    LearningLandscape landscape = readArchivedSourceLandscape(snapshotFile, entry, dir, landscapeId);
+                    if (landscape == null) {
                         continue;
                     }
-                    boolean hasLandscapeId = snapshotRoot.hasNonNull("landscapeId") || snapshotRoot.hasNonNull("id");
-                    if (!hasLandscapeId || !snapshotRoot.has("goals") || !snapshotRoot.get("goals").isArray()) {
-                        log.warn("Skipping archived source snapshot {}: not a landscape payload", snapshotFile);
-                        continue;
-                    }
-
-                    LearningLandscape landscape = objectMapper.treeToValue(snapshotRoot, LearningLandscape.class);
                     if (!StringUtils.hasText(landscape.getLandscapeId())) {
                         log.warn("Skipping archived source snapshot without landscapeId: {}", snapshotFile);
                         continue;
@@ -864,6 +856,123 @@ public class LandscapeService {
             throw new IllegalStateException("Failed to load archived source landscapes from " + registryFile, e);
         }
         return maxLastModified;
+    }
+
+    private LearningLandscape readArchivedSourceLandscape(
+            Path snapshotFile,
+            JsonNode registryEntry,
+            Path curriculaDir,
+            String expectedLandscapeId) {
+        if (isJsonLikePath(snapshotFile)) {
+            try {
+                JsonNode snapshotRoot = objectMapper.readTree(snapshotFile.toFile());
+                LearningLandscape sourceExtractionLandscape = sourceExtractionToLandscape(snapshotRoot, expectedLandscapeId);
+                if (sourceExtractionLandscape != null) {
+                    return sourceExtractionLandscape;
+                }
+                if (snapshotRoot == null || !snapshotRoot.isObject()) {
+                    log.warn("Skipping archived source snapshot {}: invalid JSON object", snapshotFile);
+                    return null;
+                }
+                boolean hasLandscapeId = snapshotRoot.hasNonNull("landscapeId") || snapshotRoot.hasNonNull("id");
+                if (!hasLandscapeId || !snapshotRoot.has("goals") || !snapshotRoot.get("goals").isArray()) {
+                    log.warn("Skipping archived source snapshot {}: not a landscape payload", snapshotFile);
+                    return null;
+                }
+
+                return objectMapper.treeToValue(snapshotRoot, LearningLandscape.class);
+            } catch (Exception e) {
+                log.error("Failed to read archived source landscape {}", snapshotFile, e);
+                return null;
+            }
+        }
+
+        LearningLandscape sourceExtractionLandscape = findSourceExtractionLandscape(
+                registryEntry,
+                curriculaDir,
+                snapshotFile,
+                expectedLandscapeId);
+        if (sourceExtractionLandscape != null) {
+            return sourceExtractionLandscape;
+        }
+
+        log.debug("Skipping archived source snapshot {}: not a JSON landscape or source-extraction payload", snapshotFile);
+        return null;
+    }
+
+    private boolean isJsonLikePath(Path path) {
+        String filename = path.getFileName().toString().toLowerCase(Locale.ROOT);
+        return filename.endsWith(".json") || filename.endsWith(".json.snapshot");
+    }
+
+    private LearningLandscape findSourceExtractionLandscape(
+            JsonNode registryEntry,
+            Path curriculaDir,
+            Path archiveSourceFile,
+            String expectedLandscapeId) {
+        List<Path> roots = new ArrayList<>();
+        String archivePath = readRegistryText(registryEntry, "archivePath");
+        if (StringUtils.hasText(archivePath)) {
+            Path archiveDir = resolveRegistryRepoPath(curriculaDir, archivePath);
+            roots.add(archiveDir.resolve("source-extraction"));
+        }
+        Path archiveParent = archiveSourceFile.getParent();
+        if (archiveParent != null) {
+            roots.add(archiveParent.resolve("source-extraction"));
+        }
+
+        Set<Path> visited = new LinkedHashSet<>();
+        for (Path root : roots) {
+            Path normalizedRoot = root.normalize();
+            if (!visited.add(normalizedRoot) || !Files.isDirectory(normalizedRoot)) {
+                continue;
+            }
+            try (java.util.stream.Stream<Path> stream = Files.walk(normalizedRoot)) {
+                List<Path> candidates = stream
+                        .filter(Files::isRegularFile)
+                        .filter(this::isJsonLikePath)
+                        .filter(path -> path.getFileName().toString().endsWith(".source-extraction.json"))
+                        .collect(Collectors.toList());
+                for (Path candidate : candidates) {
+                    try {
+                        LearningLandscape landscape = sourceExtractionToLandscape(
+                                objectMapper.readTree(candidate.toFile()),
+                                expectedLandscapeId);
+                        if (landscape != null) {
+                            return landscape;
+                        }
+                    } catch (Exception e) {
+                        log.debug("Could not read source-extraction candidate {}", candidate, e);
+                    }
+                }
+            } catch (IOException e) {
+                log.debug("Could not scan source-extraction directory {}", normalizedRoot, e);
+            }
+        }
+        return null;
+    }
+
+    private LearningLandscape sourceExtractionToLandscape(JsonNode root, String expectedLandscapeId) {
+        if (root == null || !root.isObject() || !root.hasNonNull("sourceLandscapeId")
+                || !root.has("sourceGoals") || !root.get("sourceGoals").isArray()) {
+            return null;
+        }
+        String sourceLandscapeId = root.get("sourceLandscapeId").asText();
+        if (!expectedLandscapeId.equals(sourceLandscapeId)) {
+            return null;
+        }
+
+        LearningLandscape landscape = new LearningLandscape();
+        landscape.setLandscapeId(sourceLandscapeId);
+        landscape.setTitle(readRegistryText(root, "title"));
+        landscape.setSubject(readRegistryText(root, "subject"));
+        landscape.setCountry("DE");
+        landscape.setRegion(normalizeBundeslandCode(readRegistryText(root, "jurisdiction")));
+        landscape.setGoals(objectMapper.convertValue(
+                root.get("sourceGoals"),
+                new TypeReference<List<LearningGoal>>() {
+                }));
+        return landscape;
     }
 
     private Path resolveRegistryRepoPath(Path curriculaDir, String repoRelativePath) {

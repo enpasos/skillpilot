@@ -239,6 +239,9 @@ const COPY = {
     home: 'Startseite',
     refresh: 'Aktualisieren',
     sourceDocument: 'Lehrplan-Snapshot',
+    subjectFilter: 'Fachfilter',
+    allSubjects: 'Alle Fächer',
+    loadedSources: 'Lehrpläne geladen',
     treeView: 'SkillPilot-Tree',
     sourceWindow: 'Offizieller Lehrplan + Snapshot',
     treeWindow: 'Treeansicht',
@@ -289,6 +292,9 @@ const COPY = {
     home: 'Home',
     refresh: 'Refresh',
     sourceDocument: 'Curriculum snapshot',
+    subjectFilter: 'Subject filter',
+    allSubjects: 'All subjects',
+    loadedSources: 'curricula loaded',
     treeView: 'SkillPilot tree',
     sourceWindow: 'Official curriculum + snapshot',
     treeWindow: 'Tree view',
@@ -373,6 +379,7 @@ export const CurriculumMappingWorkbenchView: React.FC = () => {
   const copy = COPY[language]
   const [documents, setDocuments] = useState<MappingDocumentSummary[]>([])
   const [selectedSourceLandscapeId, setSelectedSourceLandscapeId] = useState('')
+  const [subjectFilter, setSubjectFilter] = useState('')
   const [selectedViewPath, setSelectedViewPath] = useState('')
   const [mappingStage, setMappingStage] = useState<MappingStage>('official-source')
   const [payload, setPayload] = useState<MappingPayload | null>(null)
@@ -451,6 +458,41 @@ export const CurriculumMappingWorkbenchView: React.FC = () => {
   const selectedSourceGoal = selectedSourceGoalId ? sourceGoalById.get(selectedSourceGoalId) ?? null : null
   const selectedCanonicalNode = selectedCanonicalGoalId ? canonicalNodeByGoalId.get(selectedCanonicalGoalId) ?? null : null
   const selectedOfficialPassage = selectedOfficialPassageId ? officialPassageById.get(selectedOfficialPassageId) ?? null : null
+  const selectedDocument = documents.find((entry) => entry.sourceLandscapeId === selectedSourceLandscapeId)
+
+  const documentSubjects = useMemo(
+    () => [...new Set(documents.map((entry) => entry.subject).filter(Boolean))]
+      .sort((left, right) => left.localeCompare(right, 'de-DE')),
+    [documents],
+  )
+
+  const documentsForSelection = useMemo(
+    () => subjectFilter
+      ? documents.filter((entry) => entry.subject === subjectFilter)
+      : documents,
+    [documents, subjectFilter],
+  )
+
+  const selectedSubjectDocumentCount = selectedDocument?.subject
+    ? documents.filter((entry) => entry.subject === selectedDocument.subject).length
+    : 0
+
+  const documentCountLabel = selectedDocument?.subject && selectedSubjectDocumentCount > 0
+    ? `${documents.length} ${copy.loadedSources} · ${selectedDocument.subject}: ${selectedSubjectDocumentCount}`
+    : `${documents.length} ${copy.loadedSources}`
+
+  const changeSubjectFilter = (nextSubjectFilter: string) => {
+    setSubjectFilter(nextSubjectFilter)
+    const nextDocuments = nextSubjectFilter
+      ? documents.filter((entry) => entry.subject === nextSubjectFilter)
+      : documents
+    if (nextDocuments.length > 0 && !nextDocuments.some((entry) => entry.sourceLandscapeId === selectedSourceLandscapeId)) {
+      const nextSourceLandscapeId = nextDocuments[0].sourceLandscapeId
+      setSelectedSourceLandscapeId(nextSourceLandscapeId)
+      persistSelectedSourceLandscapeId(nextSourceLandscapeId)
+      setSelectedViewPath('')
+    }
+  }
 
   useEffect(() => {
     if (mappingStage !== 'official-source' || !payload) return
@@ -523,7 +565,6 @@ export const CurriculumMappingWorkbenchView: React.FC = () => {
     }, 0)
   }, [selectedCanonicalNode])
 
-  const selectedDocument = documents.find((entry) => entry.sourceLandscapeId === selectedSourceLandscapeId)
   const pipelineStatusLabel = (status: MappingPipelineStep['status']) => ({
     complete: copy.complete,
     incomplete: copy.incomplete,
@@ -1075,7 +1116,22 @@ export const CurriculumMappingWorkbenchView: React.FC = () => {
         ) : null}
 
         <section className="rounded-2xl border border-border-color bg-white/70 p-4 dark:bg-slate-900/70">
-          <div className="grid grid-cols-1 gap-3 xl:grid-cols-[1.4fr_1fr_1fr]">
+          <div className="grid grid-cols-1 gap-3 xl:grid-cols-[0.55fr_1.35fr_1fr_1fr]">
+            <label className="text-sm">
+              <span className="mb-1 block text-xs font-semibold uppercase tracking-wide text-text-secondary">{copy.subjectFilter}</span>
+              <select
+                value={subjectFilter}
+                onChange={(event) => changeSubjectFilter(event.target.value)}
+                className="w-full rounded-lg border border-border-color bg-white px-3 py-2 text-sm dark:bg-slate-950"
+              >
+                <option value="">{copy.allSubjects}</option>
+                {documentSubjects.map((subject) => (
+                  <option key={subject} value={subject}>
+                    {subject} ({documents.filter((entry) => entry.subject === subject).length})
+                  </option>
+                ))}
+              </select>
+            </label>
             <label className="text-sm">
               <span className="mb-1 block text-xs font-semibold uppercase tracking-wide text-text-secondary">{copy.sourceDocument}</span>
               <select
@@ -1088,7 +1144,7 @@ export const CurriculumMappingWorkbenchView: React.FC = () => {
                 }}
                 className="w-full rounded-lg border border-border-color bg-white px-3 py-2 text-sm dark:bg-slate-950"
               >
-                {documents.map((entry) => (
+                {documentsForSelection.map((entry) => (
                   <option key={`${entry.sourceLandscapeId}:${entry.mappingPath}`} value={entry.sourceLandscapeId}>
                     {[entry.subject, entry.jurisdiction, entry.stage, entry.sourceTitle]
                       .filter(Boolean)
@@ -1096,6 +1152,7 @@ export const CurriculumMappingWorkbenchView: React.FC = () => {
                   </option>
                 ))}
               </select>
+              <span className="mt-1 block text-xs text-text-secondary">{documentCountLabel}</span>
             </label>
             <label className="text-sm">
               <span className="mb-1 block text-xs font-semibold uppercase tracking-wide text-text-secondary">{copy.compositionView}</span>

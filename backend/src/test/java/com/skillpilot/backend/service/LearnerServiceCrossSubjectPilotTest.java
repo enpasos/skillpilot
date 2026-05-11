@@ -1052,10 +1052,14 @@ class LearnerServiceCrossSubjectPilotTest {
     }
 
     @Test
-    void canonicalPhysicsPilotPressureClusterAndTemperatureGoalDependOnReviewedMechanicsAndHeatBridges() {
+    void canonicalPhysicsPilotPressureRouteDependsOnReviewedAtomicMechanicsAndHeatBridges() {
         LearningLandscape landscape = landscapeService.getById(CANONICAL_PHYSICS_ID);
         LearningGoal pressureCluster = landscape.getGoals().stream()
                 .filter(goal -> CANONICAL_PHYSICS_SEK1_PRESSURE_CLUSTER_ID.equals(goal.getId()))
+                .findFirst()
+                .orElseThrow();
+        LearningGoal pressureGoal = landscape.getGoals().stream()
+                .filter(goal -> CANONICAL_PHYSICS_SEK1_PRESSURE_ID.equals(goal.getId()))
                 .findFirst()
                 .orElseThrow();
         LearningGoal pressureTemperatureGoal = landscape.getGoals().stream()
@@ -1063,7 +1067,8 @@ class LearnerServiceCrossSubjectPilotTest {
                 .findFirst()
                 .orElseThrow();
 
-        assertThat(pressureCluster.getRequires()).containsExactly(CANONICAL_PHYSICS_SEK1_MECHANICS_CLUSTER_ID);
+        assertThat(pressureCluster.getRequires()).isEmpty();
+        assertThat(pressureGoal.getRequires()).containsExactly(CANONICAL_PHYSICS_SEK1_FORCE_PROPERTIES_ID);
         assertThat(pressureTemperatureGoal.getRequires())
                 .containsExactly(CANONICAL_PHYSICS_SEK1_PRESSURE_ID, CANONICAL_PHYSICS_SEK1_HEAT_CLUSTER_ID);
     }
