@@ -815,6 +815,16 @@ public class LandscapeService {
 
                 Path snapshotFile = resolveRegistryRepoPath(dir, archiveSourcePath);
                 if (!Files.isRegularFile(snapshotFile)) {
+                    LearningLandscape sourceExtractionLandscape = findSourceExtractionLandscape(
+                            entry,
+                            dir,
+                            snapshotFile,
+                            landscapeId);
+                    if (sourceExtractionLandscape != null) {
+                        loaded.add(sourceExtractionLandscape);
+                        loadedLandscapeIds.add(landscapeId);
+                        continue;
+                    }
                     log.warn("Archived source landscape snapshot not found for {}: {}", landscapeId, snapshotFile);
                     continue;
                 }

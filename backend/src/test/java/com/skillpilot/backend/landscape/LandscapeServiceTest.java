@@ -10,6 +10,7 @@ import java.nio.file.Path;
 import java.util.List;
 import java.util.stream.StreamSupport;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.io.TempDir;
 
 class LandscapeServiceTest {
 
@@ -327,6 +328,63 @@ class LandscapeServiceTest {
                 assertThat(landscapeService.isLegacyHiddenByDefaultLandscape(NRW_LOWER_MATH_ID)).isTrue();
                 assertThat(landscapeService.isLegacyHiddenByDefaultLandscape(NRW_UPPER_MATH_ID)).isTrue();
                 assertThat(landscapeService.isLegacyHiddenByDefaultLandscape(NRW_UPPER_PHYSICS_ID)).isTrue();
+        }
+
+        @Test
+        void loadsSourceExtractionWhenArchivedSourcePathIsMissing(@TempDir Path curriculaDir) throws Exception {
+                String sourceLandscapeId = "source-extraction-fallback-fixture";
+                Path provenanceDir = curriculaDir.resolve("DE/Gymnasium/provenance");
+                Path sourceExtractionDir = curriculaDir.resolve("DE/Gymnasium/input/NW/upper-secondary/source-extraction");
+                Files.createDirectories(provenanceDir);
+                Files.createDirectories(sourceExtractionDir);
+                Files.writeString(
+                                provenanceDir.resolve("source-landscape-registry.json"),
+                                """
+                                                {
+                                                  "version": 1,
+                                                  "entries": [
+                                                    {
+                                                      "landscapeId": "source-extraction-fallback-fixture",
+                                                      "title": "Missing PDF Source",
+                                                      "jurisdiction": "DE-NW",
+                                                      "sourcePath": "curricula/DE/Gymnasium/input/NW/upper-secondary/missing.pdf",
+                                                      "archiveSourcePath": "curricula/DE/Gymnasium/input/NW/upper-secondary/missing.pdf",
+                                                      "archivePath": "curricula/DE/Gymnasium/input/NW/upper-secondary/"
+                                                    }
+                                                  ]
+                                                }
+                                                """);
+                Files.writeString(
+                                sourceExtractionDir.resolve("fixture.source-extraction.json"),
+                                """
+                                                {
+                                                  "schemaVersion": 1,
+                                                  "sourceLandscapeId": "source-extraction-fallback-fixture",
+                                                  "jurisdiction": "DE-NW",
+                                                  "subject": "Physik",
+                                                  "title": "Fallback Source Extraction",
+                                                  "sourceGoals": [
+                                                    {
+                                                      "id": "source-goal-1",
+                                                      "title": "Source goal",
+                                                      "description": "Die lernende Person kann ein Source-Ziel bearbeiten.",
+                                                      "contains": [],
+                                                      "requires": []
+                                                    }
+                                                  ]
+                                                }
+                                                """);
+
+                LandscapeProperties properties = new LandscapeProperties();
+                properties.setDirectory(curriculaDir.toString());
+                LandscapeService landscapeService = new LandscapeService(properties, new ObjectMapper());
+
+                LearningLandscape loaded = landscapeService.getById(sourceLandscapeId);
+
+                assertThat(loaded).isNotNull();
+                assertThat(loaded.getTitle()).isEqualTo("Fallback Source Extraction");
+                assertThat(loaded.getGoals()).extracting(LearningGoal::getId).containsExactly("source-goal-1");
+                assertThat(landscapeService.resolveSourceLandscapeJurisdiction(sourceLandscapeId)).isEqualTo("DE-NW");
         }
 
         @Test
