@@ -32,6 +32,8 @@ const extractionPath =
   'curricula/DE/Gymnasium/input/HB/lower-secondary/source-extraction/DE_HB_CHEMIE_SEKI_BILDUNGSPLAN_2006_2022.source-extraction.json'
 const reviewPath =
   'curricula/DE/Gymnasium/mapping/DE-HB/lower-secondary/hb_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.review.json'
+const runtimeMappingPath =
+  'curricula/DE/Gymnasium/mapping/DE-HB/lower-secondary/hb_chemistry_lower_secondary_to_canonical_chemistry.json'
 const registryPath = 'curricula/DE/Gymnasium/provenance/source-landscape-registry.json'
 
 const target = {
@@ -426,12 +428,22 @@ const review = {
   decisions,
 }
 
+const runtimeMapping = {
+  version: 1,
+  sourceLandscapeId,
+  targetLandscapeId,
+  mappings,
+}
+
 const extractionAbsolutePath = path.resolve(repoRoot, extractionPath)
 const reviewAbsolutePath = path.resolve(repoRoot, reviewPath)
+const runtimeMappingAbsolutePath = path.resolve(repoRoot, runtimeMappingPath)
 mkdirSync(path.dirname(extractionAbsolutePath), { recursive: true })
 mkdirSync(path.dirname(reviewAbsolutePath), { recursive: true })
+mkdirSync(path.dirname(runtimeMappingAbsolutePath), { recursive: true })
 writeFileSync(extractionAbsolutePath, `${JSON.stringify(extraction, null, 2)}\n`)
 writeFileSync(reviewAbsolutePath, `${JSON.stringify(review, null, 2)}\n`)
+writeFileSync(runtimeMappingAbsolutePath, `${JSON.stringify(runtimeMapping, null, 2)}\n`)
 
 const registryAbsolutePath = path.resolve(repoRoot, registryPath)
 const registry = JSON.parse(readFileSync(registryAbsolutePath, 'utf8')) as Registry
@@ -467,6 +479,7 @@ writeFileSync(
     `- Quelle Einschränkung: \`${restrictionPdfPath}\``,
     `- Source-Extraction: \`${extractionPath}\``,
     `- M3-Review: \`${reviewPath}\``,
+    `- Runtime-Mapping: \`${runtimeMappingPath}\``,
     `- Source-Ziele: ${sourceGoals.length}`,
     `- Passagen: ${passages.length}`,
     '- Status: MAPPING-1, MAPPING-2 und MAPPING-3 abgeschlossen.',
@@ -478,4 +491,5 @@ writeFileSync(
 
 console.log(`Wrote ${repoPath(extractionAbsolutePath)} (${sourceGoals.length} source goals)`)
 console.log(`Wrote ${repoPath(reviewAbsolutePath)} (${mappings.length} mapping rows)`)
+console.log(`Wrote ${repoPath(runtimeMappingAbsolutePath)} (${mappings.length} runtime mapping rows)`)
 console.log('Updated Bremen Sek-I chemistry registry entry')

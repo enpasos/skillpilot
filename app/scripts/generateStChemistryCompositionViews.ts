@@ -12,7 +12,7 @@ type MappingFile = {
 }
 
 type CourseProfile = 'GK' | 'LK'
-type Jurisdiction = 'DE-ST' | 'DE-MV' | 'DE-RP'
+type Jurisdiction = 'DE-ST' | 'DE-MV' | 'DE-RP' | 'DE-SL' | 'DE-SN' | 'DE-TH'
 
 type StateConfig = {
   jurisdiction: Jurisdiction
@@ -79,6 +79,33 @@ const stateConfigs: StateConfig[] = [
     mappingPaths: [
       'curricula/DE/Gymnasium/mapping/DE-RP/lower-secondary/rp_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.review.json',
       'curricula/DE/Gymnasium/mapping/DE-RP/upper-secondary/rp_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json',
+    ],
+  },
+  {
+    jurisdiction: 'DE-SL',
+    slug: 'de-sl',
+    displayName: 'DE-SL',
+    mappingPaths: [
+      'curricula/DE/Gymnasium/mapping/DE-SL/lower-secondary/sl_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.review.json',
+      'curricula/DE/Gymnasium/mapping/DE-SL/upper-secondary/sl_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json',
+    ],
+  },
+  {
+    jurisdiction: 'DE-SN',
+    slug: 'de-sn',
+    displayName: 'DE-SN',
+    mappingPaths: [
+      'curricula/DE/Gymnasium/mapping/DE-SN/lower-secondary/sn_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.review.json',
+      'curricula/DE/Gymnasium/mapping/DE-SN/upper-secondary/sn_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json',
+    ],
+  },
+  {
+    jurisdiction: 'DE-TH',
+    slug: 'de-th',
+    displayName: 'DE-TH',
+    mappingPaths: [
+      'curricula/DE/Gymnasium/mapping/DE-TH/lower-secondary/th_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.review.json',
+      'curricula/DE/Gymnasium/mapping/DE-TH/upper-secondary/th_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json',
     ],
   },
 ]
