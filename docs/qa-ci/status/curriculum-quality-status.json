@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "rulesVersion": "curriculum-quality-v1",
-  "generatedAt": "2026-05-12T13:38:43.004Z",
+  "generatedAt": "2026-05-12T16:02:08.696Z",
   "generatedBy": "app/scripts/generateCurriculumQualityStatus.ts",
   "sources": {
     "canonicalRoot": "curricula/DE/Gymnasium/canonical",
@@ -25,8 +25,8 @@
       "M5": 3
     },
     "ruleStatus": {
-      "pass": 101,
-      "warn": 18,
+      "pass": 100,
+      "warn": 19,
       "fail": 18,
       "not_configured": 70
     }
@@ -132,38 +132,38 @@
       "frameworkId": "canonical-gymnasium-biology",
       "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_BIOLOGIE.de.json",
       "maturity": "M0",
-      "goals": 280,
-      "atomicGoals": 238,
-      "clusterGoals": 42,
+      "goals": 316,
+      "atomicGoals": 267,
+      "clusterGoals": 49,
       "jurisdictionCoverage": {
         "dimension": "jurisdiction",
         "totalJurisdictions": 16,
-        "totalAtomicGoals": 216,
-        "rawAtomicGoals": 238,
+        "totalAtomicGoals": 245,
+        "rawAtomicGoals": 267,
         "coveredJurisdictions": 2,
         "sourceBackedJurisdictions": 2,
         "sourceCompleteJurisdictions": 1,
         "cleanJurisdictions": 1,
         "partialJurisdictions": 0,
         "errorJurisdictions": 1,
-        "maxVisibleAtomicGoals": 216,
-        "maxSourceBackedAtomicGoals": 216,
+        "maxVisibleAtomicGoals": 245,
+        "maxSourceBackedAtomicGoals": 245,
         "maxAtomicCoveragePercent": 100,
         "maxSourceBackedCoveragePercent": 100,
         "unsupportedAssignedAtomicGoals": 0,
         "surrogateBackedAtomicGoals": 0,
         "partialSourceLinkedAtomicGoals": 0,
         "sourceAtomicGoals": 438,
-        "sourceMappedToViewAtomicGoals": 216,
-        "unmappedSourceAtomicGoals": 222,
+        "sourceMappedToViewAtomicGoals": 307,
+        "unmappedSourceAtomicGoals": 131,
         "sourceExtractedGoals": 438,
         "sourceUnregisteredGoals": 0,
         "sourceExtractedAtomicGoals": 438,
         "sourceUnregisteredAtomicGoals": 0,
         "sourceOriginalGoals": 438,
-        "sourceFullyCoveredOriginalGoals": 216,
+        "sourceFullyCoveredOriginalGoals": 307,
         "sourcePartiallyCoveredOriginalGoals": 0,
-        "sourceUncoveredOriginalGoals": 222,
+        "sourceUncoveredOriginalGoals": 131,
         "jurisdictions": [
           {
             "jurisdiction": "DE-BW",
@@ -200,11 +200,11 @@
             "jurisdiction": "DE-HE",
             "labelDe": "Hessen",
             "labelEn": "Hesse",
-            "visibleGoals": 280,
-            "visibleAtomicGoals": 216,
-            "visibleClusterGoals": 64,
-            "viewAtomicGoals": 216,
-            "sourceBackedAtomicGoals": 216,
+            "visibleGoals": 316,
+            "visibleAtomicGoals": 245,
+            "visibleClusterGoals": 71,
+            "viewAtomicGoals": 245,
+            "sourceBackedAtomicGoals": 245,
             "surrogateBackedAtomicGoals": 0,
             "unsupportedAssignedAtomicGoals": 0,
             "partialSourceLinkedAtomicGoals": 0,
@@ -231,31 +231,31 @@
             "jurisdiction": "DE-BY",
             "labelDe": "Bayern",
             "labelEn": "Bavaria",
-            "visibleGoals": 280,
-            "visibleAtomicGoals": 216,
-            "visibleClusterGoals": 64,
-            "viewAtomicGoals": 216,
-            "sourceBackedAtomicGoals": 216,
+            "visibleGoals": 316,
+            "visibleAtomicGoals": 245,
+            "visibleClusterGoals": 71,
+            "viewAtomicGoals": 245,
+            "sourceBackedAtomicGoals": 245,
             "surrogateBackedAtomicGoals": 0,
             "unsupportedAssignedAtomicGoals": 0,
             "partialSourceLinkedAtomicGoals": 0,
             "sourceAtomicGoals": 222,
-            "sourceMappedToViewAtomicGoals": 0,
-            "unmappedSourceAtomicGoals": 222,
+            "sourceMappedToViewAtomicGoals": 91,
+            "unmappedSourceAtomicGoals": 131,
             "sourceExtractedGoals": 222,
             "sourceUnregisteredGoals": 0,
             "sourceExtractedAtomicGoals": 222,
             "sourceUnregisteredAtomicGoals": 0,
             "sourceOriginalGoals": 222,
-            "sourceFullyCoveredOriginalGoals": 0,
+            "sourceFullyCoveredOriginalGoals": 91,
             "sourcePartiallyCoveredOriginalGoals": 0,
-            "sourceUncoveredOriginalGoals": 222,
+            "sourceUncoveredOriginalGoals": 131,
             "errors": 0,
             "warnings": 0,
             "diagnosticPartialOnlyWarnings": 0,
             "atomicCoveragePercent": 100,
             "sourceBackedCoveragePercent": 100,
-            "sourceReverseCoveragePercent": 0,
+            "sourceReverseCoveragePercent": 41,
             "status": "error"
           },
           {
@@ -694,11 +694,11 @@
             "totalSteps": 3,
             "sourceGoals": 222,
             "passages": 32,
-            "mappedSourceGoals": 62,
-            "unmappedSourceGoals": 160,
+            "mappedSourceGoals": 91,
+            "unmappedSourceGoals": 131,
             "extraMappedGoals": 0,
-            "exactMappings": 42,
-            "partialMappings": 20,
+            "exactMappings": 72,
+            "partialMappings": 19,
             "otherMappings": 0,
             "sourceGoalCountPeerBaselineReview": {
               "accepted": true,
@@ -810,13 +810,13 @@
                     "id": "m3-all-source-goals-reviewed",
                     "label": "Alle Source-Ziele haben eine fachliche M3-Entscheidung",
                     "passed": false,
-                    "details": "0/222 Source-Ziele reviewed; offen: 222."
+                    "details": "91/222 Source-Ziele reviewed; offen: 131."
                   },
                   {
                     "id": "m3-all-source-goals-covered-by-canonical",
                     "label": "Alle Source-Ziele sind durch SkillPilot-Ziele abgedeckt",
                     "passed": false,
-                    "details": "Fachlich abgedeckt: 0/222; Mappings: 62/222; verbleibend: 0 explizite Canonical-Gaps, 222 unreviewed."
+                    "details": "Fachlich abgedeckt: 91/222; Mappings: 91/222; verbleibend: 0 explizite Canonical-Gaps, 131 unreviewed."
                   }
                 ]
               }
@@ -1119,7 +1119,7 @@
           "status": "pass",
           "summary": "Basic graph integrity checks pass.",
           "metrics": {
-            "goals": 280,
+            "goals": 316,
             "localReferenceIssues": 0
           }
         },
@@ -1178,13 +1178,13 @@
             "unsupportedAssignmentJurisdictions": 0,
             "sourceUnmappedJurisdictions": 1,
             "unsupportedAssignedAtomicGoals": 0,
-            "unmappedSourceAtomicGoals": 222,
+            "unmappedSourceAtomicGoals": 131,
             "sourceAtomicGoals": 438,
-            "sourceMappedToViewAtomicGoals": 216,
+            "sourceMappedToViewAtomicGoals": 307,
             "sourceOriginalGoals": 438,
-            "sourceFullyCoveredOriginalGoals": 216,
+            "sourceFullyCoveredOriginalGoals": 307,
             "sourcePartiallyCoveredOriginalGoals": 0,
-            "sourceUncoveredOriginalGoals": 222,
+            "sourceUncoveredOriginalGoals": 131,
             "surrogateBackedAtomicGoals": 0,
             "partialSourceLinkedAtomicGoals": 0,
             "warningedJurisdictions": 0,
@@ -1192,12 +1192,12 @@
             "partialJurisdictions": 0,
             "errorJurisdictions": 1,
             "minSourceBackedAtomicGoals": 0,
-            "maxVisibleAtomicGoals": 216,
-            "maxSourceBackedAtomicGoals": 216,
-            "totalAtomicGoals": 216
+            "maxVisibleAtomicGoals": 245,
+            "maxSourceBackedAtomicGoals": 245,
+            "totalAtomicGoals": 245
           },
           "details": [
-            "DE-BY: 222 source Lehrplan atom(s) do not map into the Bundesland view",
+            "DE-BY: 131 source Lehrplan atom(s) do not map into the Bundesland view",
             "DE-BW: no source-backed atomic goals",
             "DE-BB: no source-backed atomic goals",
             "DE-BE: no source-backed atomic goals",
@@ -1249,15 +1249,18 @@
         },
         {
           "id": "CQR-501",
-          "status": "pass",
-          "summary": "No active applicability warning debt is visible.",
+          "status": "warn",
+          "summary": "36 active and 0 obsolete accepted applicability warning(s) need review.",
           "metrics": {
-            "activeWarnings": 0,
-            "rawActiveWarnings": 0,
+            "activeWarnings": 36,
+            "rawActiveWarnings": 36,
             "diagnosticPartialOnlyWarnings": 0,
             "acceptedWarnings": 0,
             "obsoleteAcceptedWarnings": 0
-          }
+          },
+          "details": [
+            "active warning type APV-203: 36"
+          ]
         },
         {
           "id": "CQR-101",

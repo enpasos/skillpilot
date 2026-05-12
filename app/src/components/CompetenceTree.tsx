@@ -10,6 +10,7 @@ import { isWildcardFilter } from '../utils/goalFilters'
 import { isCourseProfileFilterId } from '../utils/personalCurriculumStageScope'
 import { formatFilterDisplayLabel, formatJurisdictionScopedTitle, type LabelLanguage } from '../utils/filterLabels'
 import { normalizeJurisdictionCode } from '../utils/jurisdictionMetadata'
+import { buildGoalContainsClosure, buildRenderedScopeDescendantCountMap } from '../utils/plannedScope'
 import {
   buildVisibleChildrenMap,
   getAudienceGoalTitle,
@@ -105,6 +106,8 @@ interface TreeNodeProps {
   sortedChildrenByParent: Map<string, string[]>
   masteryByGoalId: Map<string, number>
   plannedGoals: Set<string>
+  plannedScopeGoalIds: Set<string>
+  plannedScopeDescendantCounts: Map<string, number>
   onTogglePlan: (id: string) => void
   readOnly?: boolean
   onSelect: (id: string) => void
@@ -149,6 +152,8 @@ const TreeNode: React.FC<TreeNodeProps> = ({
   sortedChildrenByParent,
   masteryByGoalId,
   plannedGoals,
+  plannedScopeGoalIds,
+  plannedScopeDescendantCounts,
   onTogglePlan,
   readOnly = false,
   onSelect,
@@ -223,20 +228,25 @@ const TreeNode: React.FC<TreeNodeProps> = ({
   const complete = isCompleteMastery(mastery)
   const hasProgress = mastery > 0
   const isPlanned = plannedGoals.has(goal.id)
+  const isInPlannedScope = plannedScopeGoalIds.has(goal.id)
   const isSelected = selectedId === goal.id
   const isSyntheticStructureNode = isSyntheticProgramUnit(goal)
   const hidePlanControlForCluster = !allowClusterPlanning && hasChildren && !isPlanned
   // Frontier highlighting is intentionally disabled (we only mark active goal + mastery).
 
-  // Propagate: If I am in the subtree (passed from parent) OR I am the start of the plan
-  const selfInSubtree = isInPlannedSubtree || isPlanned
+  // Propagate: exact planned nodes start a subtree; hidden canonical scope roots
+  // still mark their visible descendants through plannedScopeGoalIds.
+  const selfInSubtree = isInPlannedSubtree || isPlanned || isInPlannedScope
   const targetIconClassName =
     hasActivePlan && selfInSubtree ? 'text-red-500 dark:text-red-400' : undefined
 
   // Active Plan Strategy:
-  const isDimmed = hasActivePlan && !selfInSubtree
+  const plannedCount = aggregatedPlannedGoals?.get(goal.id) ?? plannedScopeDescendantCounts.get(goal.id) ?? 0
+  const hasPlannedGoalInRenderedSubtree = plannedCount > 0
+  const isDimmed = hasActivePlan && !selfInSubtree && !hasPlannedGoalInRenderedSubtree
 
-  const plannedCount = aggregatedPlannedGoals?.get(goal.id) ?? 0
+  const showDescendantPlanMarker =
+    !aggregatedPlannedGoals && !isPlanned && hasPlannedGoalInRenderedSubtree
 
   const personalFilterId = (goal.landscapeId ? personalConfig?.[goal.landscapeId]?.filterId : undefined)
     ?? personalConfig?.[goal.id]?.filterId
@@ -372,6 +382,10 @@ const TreeNode: React.FC<TreeNodeProps> = ({
               </>
             )}
           </div>
+        ) : showDescendantPlanMarker ? (
+          <div className="flex items-center justify-center w-6 h-6 shrink-0 text-red-500">
+            <SquareX size={16} />
+          </div>
         ) : hidePlanControlForCluster ? (
           <div className="w-6 h-6 shrink-0" aria-hidden="true" />
         ) : (
@@ -411,6 +425,8 @@ const TreeNode: React.FC<TreeNodeProps> = ({
                 sortedChildrenByParent={sortedChildrenByParent}
                 masteryByGoalId={masteryByGoalId}
                 plannedGoals={plannedGoals}
+                plannedScopeGoalIds={plannedScopeGoalIds}
+                plannedScopeDescendantCounts={plannedScopeDescendantCounts}
                 onTogglePlan={onTogglePlan}
                 readOnly={readOnly}
                 onSelect={onSelect}
@@ -447,6 +463,7 @@ interface CompetenceTreeProps {
   allGoals: Map<string, UiGoal>
   getMastery: (goalId: string) => number
   plannedGoals: Set<string>
+  plannedScopeGoalIds?: Set<string>
   onTogglePlan: (id: string) => void
   readOnly?: boolean
   onSelect: (id: string) => void
@@ -478,6 +495,7 @@ export const CompetenceTree: React.FC<CompetenceTreeProps> = ({
   hideTechnicalStructureUi = false,
   allowClusterPlanning = true,
   visibleChildrenByParentOverride,
+  plannedScopeGoalIds: plannedScopeGoalIdsOverride,
   useRawGoalTitles = false,
   ...props
 }) => {
@@ -503,6 +521,14 @@ export const CompetenceTree: React.FC<CompetenceTreeProps> = ({
     () => buildAggregatedMasteryMap(props.allGoals, visibleChildrenByParent, props.getMastery),
     [props.allGoals, props.getMastery, visibleChildrenByParent],
   )
+  const plannedScopeGoalIds = React.useMemo(
+    () => plannedScopeGoalIdsOverride ?? buildGoalContainsClosure(props.plannedGoals, props.allGoals),
+    [plannedScopeGoalIdsOverride, props.allGoals, props.plannedGoals],
+  )
+  const plannedScopeDescendantCounts = React.useMemo(
+    () => buildRenderedScopeDescendantCountMap(props.allGoals, sortedChildrenByParent, plannedScopeGoalIds),
+    [props.allGoals, plannedScopeGoalIds, sortedChildrenByParent],
+  )
 
   return (
     <div className="flex flex-col gap-1 overflow-y-auto max-h-full pr-2">
@@ -513,6 +539,8 @@ export const CompetenceTree: React.FC<CompetenceTreeProps> = ({
           visibleChildrenByParent={visibleChildrenByParent}
           sortedChildrenByParent={sortedChildrenByParent}
           masteryByGoalId={masteryByGoalId}
+          plannedScopeGoalIds={plannedScopeGoalIds}
+          plannedScopeDescendantCounts={plannedScopeDescendantCounts}
           activeFilter={activeFilter}
           structureMode={structureMode}
           hideTechnicalStructureUi={hideTechnicalStructureUi}

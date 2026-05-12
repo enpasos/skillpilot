@@ -8,6 +8,7 @@ import {
 } from '../src/utils/compositionViewRuntime'
 import { normalizeLearnerProjectedEntries } from '../src/utils/learnerTreeProjection'
 import { buildDirectChildrenMap } from '../src/utils/treeProjectionRuntime'
+import { buildGoalContainsClosure, buildRenderedScopeDescendantCountMap } from '../src/utils/plannedScope'
 import {
   ABI26_MATH_LANDSCAPE_ID,
   ABI26_ROOT_CURRICULUM_ID,
@@ -170,7 +171,12 @@ const canonicalMathLandscape = JSON.parse(
 const genericMathSekIView = JSON.parse(
   readFileSync('../curricula/DE/Gymnasium/composition-views/mathematik/de-de-seki.view.json', 'utf8'),
 )
+const bavariaMathGkView = JSON.parse(
+  readFileSync('../curricula/DE/Gymnasium/composition-views/mathematik/de-by-gk.view.json', 'utf8'),
+)
 const canonicalMathPrismGoalId = '59d5a330-61be-4590-ab46-cf7cefecd144'
+const canonicalMathJ8GoalId = 'd64516eb-9dd2-4808-91d0-0040ccdc281f'
+const canonicalMathJ8AxisInterceptGoalId = '0c8b59cb-62c0-5cc7-afd0-7e6e89cbee43'
 
 const compositionProjectedMathEntries = applyCompositionViewProjection(
   prepareLandscapeEntries([canonicalMathLandscape]),
@@ -226,6 +232,35 @@ assert.ok(
 assert.ok(
   !visiblePrismPathTitles.some((title) => title.startsWith('Jahrgangsstufe 5')),
   'The supplemental route-goal path must not leak the later mathematics prism goal into J5.',
+)
+
+const bavariaProjectedMathEntries = normalizeLearnerProjectedEntries(
+  applyCompositionViewProjection(
+    prepareLandscapeEntries([canonicalMathLandscape]),
+    bavariaMathGkView,
+  ),
+)
+const bavariaMathGoalById = new Map(bavariaProjectedMathEntries[0].goals.map((goal) => [goal.id, goal] as const))
+const bavariaMathChildrenByParent = buildDirectChildrenMap(bavariaMathGoalById)
+const bavariaVisibleJ8StructureId = 'composition:de-by-gym-math-gk:structure:gk-sek-i-j8'
+const bavariaPlannedJ8ScopeGoalIds = buildGoalContainsClosure([canonicalMathJ8GoalId], bavariaMathGoalById)
+const bavariaScopeDescendantCounts = buildRenderedScopeDescendantCountMap(
+  bavariaMathGoalById,
+  bavariaMathChildrenByParent,
+  bavariaPlannedJ8ScopeGoalIds,
+)
+
+assert.ok(
+  bavariaPlannedJ8ScopeGoalIds.has(canonicalMathJ8AxisInterceptGoalId),
+  'The canonical J8 scope closure must include the active rational-function J8 goal.',
+)
+assert.ok(
+  !bavariaPlannedJ8ScopeGoalIds.has(bavariaVisibleJ8StructureId),
+  'The planned canonical J8 scope should not depend on the synthetic composition-view J8 node ID.',
+)
+assert.ok(
+  (bavariaScopeDescendantCounts.get(bavariaVisibleJ8StructureId) ?? 0) > 0,
+  'A hidden canonical J8 planned scope must mark the visible Bavaria GK Jahrgangsstufe 8 structure.',
 )
 
 console.log('✅ Learner goal selection regression checks passed.')
