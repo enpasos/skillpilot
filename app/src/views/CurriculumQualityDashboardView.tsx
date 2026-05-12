@@ -230,6 +230,8 @@ const COPY = {
     unmappedSource: 'inhaltlich offen',
     sourceOriginal: 'Originalziele',
     sourceIngestionComplete: 'Originalziele vollständig erfasst',
+    sourceExtractionMissing: 'Source-Extraction fehlt',
+    sourceInventoryEmpty: 'kein Source-Inventar',
     sourceOriginalRegistered: 'Originalziele registriert',
     sourceOriginalCovered: 'Originalziele voll abgedeckt',
     sourceOriginalExtracted: 'Source-Ziele extrahiert',
@@ -323,6 +325,8 @@ const COPY = {
     unmappedSource: 'content open',
     sourceOriginal: 'source originals',
     sourceIngestionComplete: 'source originals fully captured',
+    sourceExtractionMissing: 'source extraction missing',
+    sourceInventoryEmpty: 'no source inventory',
     sourceOriginalRegistered: 'source originals registered',
     sourceOriginalCovered: 'source originals fully covered',
     sourceOriginalExtracted: 'source goals extracted',
@@ -1107,8 +1111,13 @@ export const CurriculumQualityDashboardView: React.FC = () => {
                     </div>
                     <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
                       {selectedCurriculum.jurisdictionCoverage.jurisdictions.map((entry) => {
+                        const hasRegisteredOriginals = (entry.sourceOriginalGoals ?? 0) > 0
+                        const hasReadableSourceExtraction = (entry.sourceExtractedAtomicGoals ?? 0) > 0
+                          || (entry.sourceExtractedGoals ?? 0) > 0
                         const sourceIngestionComplete = (entry.sourceExtractedAtomicGoals ?? 0) > 0
                           && (entry.sourceUnregisteredAtomicGoals ?? 0) === 0
+                        const sourceExtractionMissing = hasRegisteredOriginals && !hasReadableSourceExtraction
+                        const sourceInventoryEmpty = !hasRegisteredOriginals && !hasReadableSourceExtraction
                         return (
                         <div
                           key={entry.jurisdiction}
@@ -1124,6 +1133,16 @@ export const CurriculumQualityDashboardView: React.FC = () => {
                           <div className="mt-1 font-semibold">
                             {copy.sourceIngestionComplete}: {sourceIngestionComplete ? copy.yes : copy.no}
                           </div>
+                          {sourceExtractionMissing ? (
+                            <div className="mt-1 font-semibold text-amber-700 dark:text-amber-300">
+                              {copy.sourceExtractionMissing}
+                            </div>
+                          ) : null}
+                          {sourceInventoryEmpty ? (
+                            <div className="mt-1 font-semibold text-red-700 dark:text-red-300">
+                              {copy.sourceInventoryEmpty}
+                            </div>
+                          ) : null}
                           {((entry.sourceExtractedAtomicGoals ?? 0) > 0 || (entry.sourceOriginalGoals ?? 0) > 0) ? (
                             <div className="mt-1 tabular-nums">
                               {entry.sourceExtractedAtomicGoals ?? 0} {copy.sourceOriginalExtracted}
