@@ -743,6 +743,7 @@ const CANONICAL_GYM_CHEMISTRY_SEK2_PRACTICE_CLUSTER_IDS = [
   'e0f19114-9609-500d-8194-da7ee9bff72e',
   '8ee41a31-2b8e-5dd5-9496-86aab61cdf27',
   'b5f0201a-bc5b-5159-a36c-0925f198c32f',
+  '5964272f-e835-5a24-b2b1-c162be6b75cb',
 ]
 
 const ruleCatalog: QualityRuleDefinition[] = [
