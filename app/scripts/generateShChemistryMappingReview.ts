@@ -116,6 +116,48 @@ const specs: ReviewSpec[] = [
       'curricula/DE/Gymnasium/mapping/DE-RP/upper-secondary/rp_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json',
     stageLabel: 'RP Chemie Sek II',
   },
+  {
+    sourceExtractionPath:
+      'curricula/DE/Gymnasium/input/SL/lower-secondary/source-extraction/DE_SL_CHEMIE_SEKI_GYM9_2024_2025.source-extraction.json',
+    reviewPath:
+      'curricula/DE/Gymnasium/mapping/DE-SL/lower-secondary/sl_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.review.json',
+    stageLabel: 'SL Chemie Sek I',
+  },
+  {
+    sourceExtractionPath:
+      'curricula/DE/Gymnasium/input/SL/upper-secondary/source-extraction/DE_SL_CHEMIE_SEKII_GOS_2023_2025.source-extraction.json',
+    reviewPath:
+      'curricula/DE/Gymnasium/mapping/DE-SL/upper-secondary/sl_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json',
+    stageLabel: 'SL Chemie Sek II',
+  },
+  {
+    sourceExtractionPath:
+      'curricula/DE/Gymnasium/input/SN/lower-secondary/source-extraction/DE_SN_CHEMIE_SEKI_LEHRPLAN_GYMNASIUM_2025.source-extraction.json',
+    reviewPath:
+      'curricula/DE/Gymnasium/mapping/DE-SN/lower-secondary/sn_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.review.json',
+    stageLabel: 'SN Chemie Sek I',
+  },
+  {
+    sourceExtractionPath:
+      'curricula/DE/Gymnasium/input/SN/upper-secondary/source-extraction/DE_SN_CHEMIE_SEKII_LEHRPLAN_GYMNASIUM_2025.source-extraction.json',
+    reviewPath:
+      'curricula/DE/Gymnasium/mapping/DE-SN/upper-secondary/sn_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json',
+    stageLabel: 'SN Chemie Sek II',
+  },
+  {
+    sourceExtractionPath:
+      'curricula/DE/Gymnasium/input/TH/lower-secondary/source-extraction/DE_TH_CHEMIE_SEKI_LEHRPLAN_GYMNASIUM_2024.source-extraction.json',
+    reviewPath:
+      'curricula/DE/Gymnasium/mapping/DE-TH/lower-secondary/th_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.review.json',
+    stageLabel: 'TH Chemie Sek I',
+  },
+  {
+    sourceExtractionPath:
+      'curricula/DE/Gymnasium/input/TH/upper-secondary/source-extraction/DE_TH_CHEMIE_SEKII_LEHRPLAN_GYMNASIUM_2024.source-extraction.json',
+    reviewPath:
+      'curricula/DE/Gymnasium/mapping/DE-TH/upper-secondary/th_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json',
+    stageLabel: 'TH Chemie Sek II',
+  },
 ]
 
 const target = {
@@ -389,7 +431,7 @@ function inferCanonicalGoalIds(goal: SourceGoal): string[] {
     add(ids, target.substances, target.mixtures, target.classifyStructure, target.solubility)
   }
   if (/trennverfahren|filtration|destillation|chromatograph|isolieren|reinigen/u.test(text)) add(ids, target.separation)
-  if (/teilchenmodell|aggregatzustand|aggregatzustandsander/u.test(text)) add(ids, target.particles)
+  if (/teilchenmodell|aggregatzustand|aggregatzustandsander|diffusion/u.test(text)) add(ids, target.particles)
   if (/luft|sauerstoff|wasserstoff|kohlenstoffdioxid|gas|nachweis/u.test(text)) add(ids, target.gases)
   if (/chemische reaktion|stoffumwandlung|kennzeichen chemischer reaktionen/u.test(text)) add(ids, target.reactionVsPhysical)
   if (/verbrennung|brand|brennbar|zundtemperatur/u.test(text)) add(ids, target.combustion, target.safety)
@@ -400,22 +442,27 @@ function inferCanonicalGoalIds(goal: SourceGoal): string[] {
   if (/massenerhaltung|erhaltung der masse|massenverhaltnis/u.test(text)) add(ids, target.massConservation)
   if (/element|chemische verbindung|verbindungen und gemische/u.test(text)) add(ids, target.elementCompoundMixture)
   if (/dalton/u.test(text)) add(ids, target.dalton)
-  if (/rutherford|kern-hulle|atommodell|schalenmodell|energiestufenmodell|isotop|atomare masse|ionisierungsenergie/u.test(text)) {
+  if (
+    /rutherford|thomson|bohr|kern-hulle|atommodell|schalenmodell|energiestufenmodell|isotop|atomare masse|atommasse|massenzahl|nukleonenzahl|kernladungszahl|symbolschreibweise|proton|neutron|elektron|ionisierungsenergie/u.test(text)
+  ) {
     add(ids, target.atomModel, target.atomSublevels)
   }
   if (/periodensystem|pse|hauptgruppe|elementfamilie|alkalimetall|halogen/u.test(text)) add(ids, target.pse)
-  if (/ionenbindung|ionengitter|ionenbildung|\bion\b|\bionen\b|salz|edelgasregel/u.test(text)) {
+  if (/ionenbindung|ionengitter|ionenbildung|\bion\b|\bionen\b|salz|saurerest|hydroxid|edelgasregel/u.test(text)) {
     add(ids, target.ions, target.ionsNobleGas, target.ionBinding)
   }
   if (/metallbindung|bindung in metallen|metallgewinnung|metall mit sauerstoff|edle und unedle metalle/u.test(text)) {
     add(ids, target.metalModel, target.oxidationReductionSimple, target.redoxSeries)
   }
-  if (/elektronenpaarbindung|valenzstrich|lewis/u.test(text)) add(ids, target.electronPair, target.valence, target.lewis)
+  if (/elektronenpaarbindung|molekulverbindung|molekulbindung|molekulformel|valenzstrich|lewis/u.test(text)) {
+    add(ids, target.electronPair, target.valence, target.lewis, target.moleculeRepresentations)
+  }
   if (/molekulgeometrie|epa|elektronenpaarabstoss/u.test(text)) add(ids, target.molecularGeometry)
   if (/elektronegativitat|polar|dipol|intermolekulare kraft|wasserstoffbrucken|van-der-waals/u.test(text)) {
     add(ids, target.polarity, target.intermolecularForces, target.intermolecular)
   }
   if (/reaktionsgleichung|reaktionsschema|formel|nomenklatur|iupac|benenn/u.test(text)) add(ids, target.language, target.equations)
+  if (/formel|wertigkeit|nomenklatur|iupac|benenn/u.test(text)) add(ids, target.formulas)
   if (/redox|oxidation|reduktion|elektronenubertragung|oxidationszahl|donator|akzeptor/u.test(text)) {
     add(ids, target.redoxTerms, target.oxidationNumbers, target.redoxVsAcidBase)
   }
@@ -512,8 +559,12 @@ function inferCanonicalGoalIds(goal: SourceGoal): string[] {
     add(ids, target.pharma, target.painkillers, target.dosageForms)
   }
   if (/acetylsalicyl|aspirin/u.test(text)) add(ids, target.aspirinExtraction)
-  if (/labor|praparation|syntheseplanung|herstellen/u.test(text)) add(ids, target.advancedLab)
-  if (/gefahr|sicherheit|entsorgen/u.test(text)) add(ids, target.safety)
+  if (/labor|praparation|syntheseplanung|herstellen|versuchsprotokoll|experiment als methode/u.test(text)) {
+    add(ids, target.advancedLab, target.methods)
+  }
+  if (/gasbrenner|schutzbrille|fachraum|gefahr|ghs|gefahrenpiktogramm|sicherheit|entsorgen/u.test(text)) {
+    add(ids, target.safety)
+  }
   if (/quelle|information|brauchbarkeit|vollstandigkeit|qualitat einer informationsquelle/u.test(text)) add(ids, target.sources)
   if (/argument|bewertung|kriterien|handlungsoption|entscheidung|gesellschaftlich|personlich relevant/u.test(text)) {
     add(ids, target.decisions, target.society)
