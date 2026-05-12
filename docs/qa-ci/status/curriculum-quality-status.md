@@ -1,6 +1,6 @@
 # Curriculum Quality Status
 
-Generated: 2026-05-12T12:45:02.201Z
+Generated: 2026-05-12T13:38:43.004Z
 Rules version: curriculum-quality-v1
 
 ## Summary
@@ -19,7 +19,7 @@ Rules version: curriculum-quality-v1
 
 | Curriculum | Maturity | Goals | Atomic | Passage extraction | Bundeslaender | QA scopes | Warn | Fail |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| Biologie (Gymnasium, DE) | M0 | 216 | 182 | 3/3 | 0/16 | 0 | 1 | 1 |
+| Biologie (Gymnasium, DE) | M0 | 280 | 238 | 3/3 | 1/16 | 0 | 1 | 1 |
 | Chemie (Gymnasium, DE) | M5 | 467 | 399 | 32/32 | 16/16 | 1 | 0 | 0 |
 | Chinesisch (Gymnasium, DE) | M0 | 192 | 181 | 0/2 | 0/16 | 0 | 1 | 1 |
 | Deutsch (Gymnasium, DE) | M0 | 181 | 144 | 0/2 | 0/16 | 0 | 1 | 1 |
@@ -47,7 +47,7 @@ Rules version: curriculum-quality-v1
 | --- | --- | --- | --- | ---: | --- | ---: | ---: | ---: | ---: | ---: | --- |
 | Biologie (Gymnasium, DE) | DE-BY - Biologie Gymnasium (Bayern, LehrplanPLUS Source-Extraction) | DE-BY | 1/1 original source(s) | 2/3 | MAPPING-3 | 32 | 222 | 42 | 20 | 68% |  |
 | Biologie (Gymnasium, DE) | Biologie Oberstufe (Hessen, KC 2024 Source-Extraction) | DE-HE | 1/1 original source(s) | 3/3 | - | 19 | 150 | 150 | 0 | 100% |  |
-| Biologie (Gymnasium, DE) | Biologie Sekundarstufe I (Hessen, G9 Source-Extraction) | DE-HE | 1/1 original source(s) | 2/3 | MAPPING-3 | 16 | 66 | 10 | 0 | 100% |  |
+| Biologie (Gymnasium, DE) | Biologie Sekundarstufe I (Hessen, G9 Source-Extraction) | DE-HE | 1/1 original source(s) | 3/3 | - | 16 | 66 | 66 | 0 | 100% |  |
 | Chemie (Gymnasium, DE) | DE-BB - Chemie Oberstufe (Brandenburg, RLP GOST 2022 Source-Extraction) | DE-BB | 1/1 original source(s) | 3/3 | - | 23 | 203 | 100 | 103 | 49% |  |
 | Chemie (Gymnasium, DE) | DE-BB - Chemie Sekundarstufe I (Brandenburg, RLP 2015 Source-Extraction) | DE-BB | 1/1 original source(s) | 3/3 | - | 12 | 68 | 0 | 68 | 0% |  |
 | Chemie (Gymnasium, DE) | DE-BE - Chemie Oberstufe (Berlin, RLP GOST 2022 Source-Extraction) | DE-BE | 1/1 original source(s) | 3/3 | - | 23 | 203 | 100 | 103 | 49% |  |
@@ -170,7 +170,7 @@ Rules version: curriculum-quality-v1
 
 | Curriculum | Complete | DE view atoms | Raw atoms | Source-backed states | Extracted source goals | Registered source originals | Fully covered originals | Unregistered source goals | Extracted source atoms | Unregistered source atoms | Unsupported assignments | Unmapped source atoms | Partial | Error | Max source-backed view coverage |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| Biologie (Gymnasium, DE) | 0/16 | 160 | 182 | 2 | 438 | 438 | 160 | 0 | 438 | 0 | 0 | 278 | 0 | 2 | 160 (100%) |
+| Biologie (Gymnasium, DE) | 1/16 | 216 | 238 | 2 | 438 | 438 | 216 | 0 | 438 | 0 | 0 | 222 | 0 | 1 | 216 (100%) |
 | Chemie (Gymnasium, DE) | 16/16 | 336 | 399 | 16 | 5865 | 5865 | 5865 | 0 | 5865 | 0 | 0 | 0 | 0 | 0 | 334 (100%) |
 | Chinesisch (Gymnasium, DE) | 0/16 | 170 | 181 | 2 | 0 | 436 | 436 | 0 | 0 | 0 | 0 | 0 | 0 | 2 | 170 (100%) |
 | Deutsch (Gymnasium, DE) | 0/16 | 127 | 144 | 2 | 0 | 650 | 650 | 0 | 0 | 0 | 0 | 0 | 0 | 2 | 127 (100%) |
