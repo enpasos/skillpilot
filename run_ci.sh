@@ -36,6 +36,8 @@ echo "--> Validating Hessen Upper-Secondary Archive Paths"
 SKILLPILOT_DISABLE_RG=1 python3 scripts/validate_hessen_upper_secondary_archive_paths.py
 echo "--> Validating Hessen Upper-Secondary Legacy References"
 SKILLPILOT_DISABLE_RG=1 python3 scripts/validate_hessen_upper_secondary_legacy_refs.py
+echo "--> Validating Hessen Chemistry Exam Pipeline"
+python3 scripts/validate_chemistry_exam_pipeline.py
 echo "--> Validating Hessen Lower-Secondary Archive Paths"
 SKILLPILOT_DISABLE_RG=1 python3 scripts/validate_hessen_lower_secondary_archive_paths.py
 echo "--> Validating Hessen Lower-Secondary Legacy References"

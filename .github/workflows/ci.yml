@@ -83,6 +83,8 @@ jobs:
         run: cd .. && python scripts/validate_hessen_upper_secondary_archive_paths.py
       - name: Validate Hessen Upper-Secondary Legacy References
         run: cd .. && python scripts/validate_hessen_upper_secondary_legacy_refs.py
+      - name: Validate Hessen Chemistry Exam Pipeline
+        run: cd .. && python scripts/validate_chemistry_exam_pipeline.py
       - name: Validate Hessen Lower-Secondary Archive Paths
         run: cd .. && python scripts/validate_hessen_lower_secondary_archive_paths.py
       - name: Validate Hessen Lower-Secondary Legacy References

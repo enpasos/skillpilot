@@ -37,10 +37,11 @@ Steps:
 6. `python scripts/validate_goal_ids_uuid.py`
 7. `python scripts/validate_hessen_upper_secondary_archive_paths.py`
 8. `python scripts/validate_hessen_upper_secondary_legacy_refs.py`
-9. `python scripts/validate_hessen_lower_secondary_archive_paths.py`
-10. `python scripts/validate_hessen_lower_secondary_legacy_refs.py`
-11. `python scripts/validate_bavaria_gymnasium_archive_paths.py`
-12. `python scripts/validate_bavaria_gymnasium_legacy_refs.py`
+9. `python scripts/validate_chemistry_exam_pipeline.py`
+10. `python scripts/validate_hessen_lower_secondary_archive_paths.py`
+11. `python scripts/validate_hessen_lower_secondary_legacy_refs.py`
+12. `python scripts/validate_bavaria_gymnasium_archive_paths.py`
+13. `python scripts/validate_bavaria_gymnasium_legacy_refs.py`
 
 The graph rule catalog is documented in:
 
@@ -60,6 +61,7 @@ Current scope note:
 - it additionally validates explicit learner-facing composition-view files via `validate:composition-views`
 - it additionally enforces the Hessen Oberstufe retained-asset boundary: under `curricula/DE/Gymnasium/input/DE-HE/abi`, legacy `Gymnasiale_Oberstufe` path strings may only remain inside allowlisted raw archival provenance files from `curricula/DE/Gymnasium/input/DE-HE/retained-asset-registry.json`
 - it also enforces the Hessen Oberstufe repo-handoff boundary: the retired legacy tree must stay absent from the active repo, and active tooling/runtime/test surfaces may mention it only from the explicit allowlist in `curricula/DE/Gymnasium/provenance/hessen-upper-secondary-retirement-registry.json`
+- it validates the Hessen 2026 chemistry exam pipeline artifacts (`slot_matrix.json`, `coverage_requirements.json`, `task_bank.json`, and source-landscape release anchors)
 - it now also enforces the Hessen Sek-I retained-asset boundary: under `curricula/DE/Gymnasium/input/DE-HE/lower-secondary`, legacy `Gymnasium_9_Mittelstufe` path strings are forbidden in retained operational archive content
 - it also enforces the Hessen Sek-I repo-handoff boundary: active tooling/runtime/test surfaces may mention the lower-secondary legacy tree only from the explicit allowlist in `curricula/DE/Gymnasium/provenance/hessen-lower-secondary-retirement-registry.json`
 - the current CI scope for `validate:view-filters` is the reviewed canonical DE Gymnasium set (`Mathematik`, `Physik`, `Chemie`, `Biologie`, `Informatik`, `Deutsch`, `Englisch`, `Französisch`, `Griechisch`, `Chinesisch`, `Geschichte`, `Politik und Wirtschaft`, `Musik`, `Latein`, `Spanisch`, `Wirtschaft`, `Overview`)
@@ -98,5 +100,5 @@ bash run_ci.sh
 This runs:
 
 1. app checks (`validate:graph`, `validate:view-filters`, `validate:composition-views`, `lint`, `build`)
-2. repo-level data checks (`validate_schemas.py`, `validate_goal_ids_uuid.py`, `validate_hessen_upper_secondary_archive_paths.py`, `validate_hessen_upper_secondary_legacy_refs.py`, `validate_hessen_lower_secondary_archive_paths.py`, `validate_hessen_lower_secondary_legacy_refs.py`, `validate_bavaria_gymnasium_archive_paths.py`, `validate_bavaria_gymnasium_legacy_refs.py`)
+2. repo-level data checks (`validate_schemas.py`, `validate_goal_ids_uuid.py`, `validate_hessen_upper_secondary_archive_paths.py`, `validate_hessen_upper_secondary_legacy_refs.py`, `validate_chemistry_exam_pipeline.py`, `validate_hessen_lower_secondary_archive_paths.py`, `validate_hessen_lower_secondary_legacy_refs.py`, `validate_bavaria_gymnasium_archive_paths.py`, `validate_bavaria_gymnasium_legacy_refs.py`)
 3. backend checks (`./gradlew clean check --no-daemon`)

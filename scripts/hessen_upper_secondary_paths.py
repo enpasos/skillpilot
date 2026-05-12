@@ -99,7 +99,7 @@ def resolve_hessen_upper_secondary_landscape_directory(subject_key: str) -> Path
 
 def resolve_hessen_upper_secondary_abi_directory(subject_key: str) -> Path:
     subject = _subject_registry(subject_key)
-    return ROOT / _tooling_registry()["abiArchivePath"] / subject["abiDirectory"]
+    return ROOT / _normalize_tooling_path(_tooling_registry()["abiArchivePath"]) / subject["abiDirectory"]
 
 
 def resolve_hessen_upper_secondary_mapping_path(subject_key: str) -> Path:
