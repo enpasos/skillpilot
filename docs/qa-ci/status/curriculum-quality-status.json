@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "rulesVersion": "curriculum-quality-v1",
-  "generatedAt": "2026-05-12T10:30:49.339Z",
+  "generatedAt": "2026-05-12T11:46:05.495Z",
   "generatedBy": "app/scripts/generateCurriculumQualityStatus.ts",
   "sources": {
     "canonicalRoot": "curricula/DE/Gymnasium/canonical",
@@ -25,10 +25,10 @@
       "M5": 3
     },
     "ruleStatus": {
-      "pass": 100,
+      "pass": 101,
       "warn": 17,
       "fail": 19,
-      "not_configured": 71
+      "not_configured": 70
     }
   },
   "ruleCatalog": [
@@ -153,17 +153,17 @@
         "unsupportedAssignedAtomicGoals": 0,
         "surrogateBackedAtomicGoals": 0,
         "partialSourceLinkedAtomicGoals": 0,
-        "sourceAtomicGoals": 603,
-        "sourceMappedToViewAtomicGoals": 547,
-        "unmappedSourceAtomicGoals": 56,
-        "sourceExtractedGoals": 0,
+        "sourceAtomicGoals": 462,
+        "sourceMappedToViewAtomicGoals": 184,
+        "unmappedSourceAtomicGoals": 278,
+        "sourceExtractedGoals": 222,
         "sourceUnregisteredGoals": 0,
-        "sourceExtractedAtomicGoals": 0,
+        "sourceExtractedAtomicGoals": 222,
         "sourceUnregisteredAtomicGoals": 0,
-        "sourceOriginalGoals": 694,
-        "sourceFullyCoveredOriginalGoals": 620,
+        "sourceOriginalGoals": 515,
+        "sourceFullyCoveredOriginalGoals": 219,
         "sourcePartiallyCoveredOriginalGoals": 3,
-        "sourceUncoveredOriginalGoals": 71,
+        "sourceUncoveredOriginalGoals": 293,
         "jurisdictions": [
           {
             "jurisdiction": "DE-BW",
@@ -239,23 +239,23 @@
             "surrogateBackedAtomicGoals": 0,
             "unsupportedAssignedAtomicGoals": 0,
             "partialSourceLinkedAtomicGoals": 0,
-            "sourceAtomicGoals": 363,
-            "sourceMappedToViewAtomicGoals": 363,
-            "unmappedSourceAtomicGoals": 0,
-            "sourceExtractedGoals": 0,
+            "sourceAtomicGoals": 222,
+            "sourceMappedToViewAtomicGoals": 0,
+            "unmappedSourceAtomicGoals": 222,
+            "sourceExtractedGoals": 222,
             "sourceUnregisteredGoals": 0,
-            "sourceExtractedAtomicGoals": 0,
+            "sourceExtractedAtomicGoals": 222,
             "sourceUnregisteredAtomicGoals": 0,
-            "sourceOriginalGoals": 401,
-            "sourceFullyCoveredOriginalGoals": 401,
+            "sourceOriginalGoals": 222,
+            "sourceFullyCoveredOriginalGoals": 0,
             "sourcePartiallyCoveredOriginalGoals": 0,
-            "sourceUncoveredOriginalGoals": 0,
+            "sourceUncoveredOriginalGoals": 222,
             "errors": 0,
             "warnings": 0,
             "diagnosticPartialOnlyWarnings": 0,
             "atomicCoveragePercent": 100,
             "sourceBackedCoveragePercent": 100,
-            "sourceReverseCoveragePercent": 100,
+            "sourceReverseCoveragePercent": 0,
             "status": "error"
           },
           {
@@ -666,67 +666,157 @@
       "mappingPipeline": {
         "totalSources": 3,
         "completeSources": 0,
-        "incompleteSources": 0,
-        "blockedSources": 3,
-        "maxCompletedSteps": 0,
+        "incompleteSources": 1,
+        "blockedSources": 2,
+        "maxCompletedSteps": 2,
         "totalSteps": 3,
-        "currentStep": "MAPPING-1",
+        "currentStep": "MAPPING-3",
         "sources": [
           {
             "sourceLandscapeId": "357a7003-b636-570e-a0bd-6bb63518d2f6",
-            "title": "Biologie (Gymnasium)",
+            "title": "DE-BY - Biologie Gymnasium (Bayern, LehrplanPLUS Source-Extraction)",
             "jurisdiction": "DE-BY",
-            "path": "curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_biology_to_canonical_biology.json",
-            "sourceKind": "missing-extraction",
-            "currentStep": "MAPPING-1",
-            "completedSteps": 0,
+            "subject": "Biologie",
+            "stage": "SekI+SekII",
+            "path": "curricula/DE/Gymnasium/input/BY/gymnasium/source-extraction/DE_BY_BIOLOGIE_GYMNASIUM_LEHRPLANPLUS.source-extraction.json",
+            "sourceKind": "source-extraction",
+            "sourceDocuments": [
+              {
+                "key": "LEHRPLANPLUS_BIOLOGIE_GYMNASIUM",
+                "title": "LehrplanPLUS Gymnasium Bayern - Biologie",
+                "path": "curricula/DE/Gymnasium/input/BY/gymnasium/Biologie.json",
+                "official": true,
+                "available": true
+              }
+            ],
+            "currentStep": "MAPPING-3",
+            "completedSteps": 2,
             "totalSteps": 3,
-            "sourceGoals": 0,
-            "passages": 0,
+            "sourceGoals": 222,
+            "passages": 32,
+            "mappedSourceGoals": 62,
+            "unmappedSourceGoals": 160,
+            "extraMappedGoals": 0,
+            "exactMappings": 42,
+            "partialMappings": 20,
+            "otherMappings": 0,
+            "sourceGoalCountPeerBaselineReview": {
+              "accepted": true,
+              "details": "Identische Kompetenzformulierungen aus parallelen GA/EA-Profilen wurden auf 222 repraesentative Source-Ziele normalisiert; 32 Originalpassagen und 362 Fundstellen bleiben ueber sourceOccurrences erhalten."
+            },
+            "sourceGoalGranularity": {
+              "averageWords": 21.382882882882882,
+              "p90Words": 32,
+              "maxWords": 43,
+              "longGoals": 0,
+              "longGoalThreshold": 45,
+              "examples": []
+            },
             "steps": [
               {
                 "id": "MAPPING-1",
                 "label": "Original-Lehrplanpassagen extrahiert",
-                "status": "incomplete",
+                "status": "complete",
                 "dependsOn": [],
                 "checks": [
                   {
-                    "id": "source-extraction-file-present",
-                    "label": "Persistiertes Source-Extraction-Artefakt vorhanden",
-                    "passed": false,
-                    "details": "Für diese Source-Landschaft ist noch keine geprüfte source-extraction-Datei registriert."
+                    "id": "source-document-present",
+                    "label": "Strukturierte LehrplanPLUS-Biologie-Quelle liegt lokal vor",
+                    "passed": true,
+                    "details": "curricula/DE/Gymnasium/input/BY/gymnasium/Biologie.json"
+                  },
+                  {
+                    "id": "topic-passages-extracted",
+                    "label": "Alle zieltragenden LehrplanPLUS-Biologie-Lernbereiche sind als Passagen extrahiert",
+                    "passed": true,
+                    "details": "Erfasst: 32/32 Passagen."
+                  },
+                  {
+                    "id": "no-legacy-snapshot-counted",
+                    "label": "Kein alter Pilot-Quellsnapshot wird als Passage-Extraction gewertet",
+                    "passed": true,
+                    "details": "Verwendet wird curricula/DE/Gymnasium/input/BY/gymnasium/Biologie.json als strukturierte LehrplanPLUS-Quelle; alte Mappingdateien werden nur als M3-Seed verwendet."
                   }
                 ]
               },
               {
                 "id": "MAPPING-2",
                 "label": "Source-Ziele aus Lehrplanpassagen erstellt",
-                "status": "blocked",
+                "status": "complete",
                 "dependsOn": [
                   "MAPPING-1"
                 ],
                 "checks": [
                   {
-                    "id": "mapping-1-complete",
-                    "label": "MAPPING-1 abgeschlossen",
-                    "passed": false,
-                    "details": "Source-Ziele dürfen erst nach vollständig extrahierten Originalpassagen als abgeschlossen gelten."
+                    "id": "source-goals-created",
+                    "label": "Aus den LehrplanPLUS-Kompetenzerwartungen wurden Source-Ziele erzeugt",
+                    "passed": true,
+                    "details": "222/362 normalisierte Source-Ziele"
+                  },
+                  {
+                    "id": "source-goal-ids-unique",
+                    "label": "Source-Ziel-IDs sind eindeutig",
+                    "passed": true,
+                    "details": "Doppelte IDs: -"
+                  },
+                  {
+                    "id": "source-goals-reference-passages",
+                    "label": "Jedes Source-Ziel referenziert eine vorhandene Originalpassage",
+                    "passed": true,
+                    "details": "Ohne Passage: -"
+                  },
+                  {
+                    "id": "source-goal-text-present",
+                    "label": "Jedes Source-Ziel enthält den LehrplanPLUS-Originaltext",
+                    "passed": true,
+                    "details": "Ohne Text: -"
                   }
                 ]
               },
               {
                 "id": "MAPPING-3",
                 "label": "Source-Ziele auf SkillPilot-Ziele gemappt",
-                "status": "blocked",
+                "status": "incomplete",
                 "dependsOn": [
+                  "MAPPING-1",
                   "MAPPING-2"
                 ],
                 "checks": [
                   {
                     "id": "mapping-2-complete",
                     "label": "MAPPING-2 abgeschlossen",
+                    "passed": true,
+                    "details": "222 Source-Ziele liegen vor; MAPPING-3 kann gegen diese Source-Extraction-IDs laufen."
+                  },
+                  {
+                    "id": "m3-review-file-present",
+                    "label": "M3-Review-Datei ist vorhanden",
+                    "passed": true,
+                    "details": "Review-Datei mit sourceExtractionPath fuer diese Source-Extraction ist vorhanden."
+                  },
+                  {
+                    "id": "m3-review-decisions-reference-source-goals",
+                    "label": "M3-Review-Entscheidungen referenzieren gültige Source-Ziele",
+                    "passed": true,
+                    "details": "Review-Entscheidungen mit unbekannter Source-ID: 0."
+                  },
+                  {
+                    "id": "m3-review-targets-exist",
+                    "label": "M3-Review-Ziele referenzieren vorhandene Canonical-Ziele",
+                    "passed": true,
+                    "details": "Unbekannte Canonical-Ziele in Mappings: 0."
+                  },
+                  {
+                    "id": "m3-all-source-goals-reviewed",
+                    "label": "Alle Source-Ziele haben eine fachliche M3-Entscheidung",
                     "passed": false,
-                    "details": "Das Mapping auf SkillPilot-Ziele darf erst nach geprüften Source-Zielen als abgeschlossen gelten."
+                    "details": "0/222 Source-Ziele reviewed; offen: 222."
+                  },
+                  {
+                    "id": "m3-all-source-goals-covered-by-canonical",
+                    "label": "Alle Source-Ziele sind durch SkillPilot-Ziele abgedeckt",
+                    "passed": false,
+                    "details": "Fachlich abgedeckt: 0/222; Mappings: 62/222; verbleibend: 0 explizite Canonical-Gaps, 222 unreviewed."
                   }
                 ]
               }
@@ -876,21 +966,20 @@
         {
           "id": "CQR-000",
           "status": "fail",
-          "summary": "0/16 declared Bundesland source inventories are readable and fully registered.",
+          "summary": "1/16 declared Bundesland source inventories are readable and fully registered.",
           "metrics": {
             "totalJurisdictions": 16,
-            "completeSourceJurisdictions": 0,
+            "completeSourceJurisdictions": 1,
             "emptySourceJurisdictions": 14,
-            "missingReadableSourceInventoryJurisdictions": 2,
-            "sourceExtractedGoals": 0,
-            "sourceOriginalGoals": 694,
+            "missingReadableSourceInventoryJurisdictions": 1,
+            "sourceExtractedGoals": 222,
+            "sourceOriginalGoals": 515,
             "sourceUnregisteredGoals": 0,
-            "sourceExtractedAtomicGoals": 0,
+            "sourceExtractedAtomicGoals": 222,
             "sourceUnregisteredAtomicGoals": 0
           },
           "details": [
             "DE-HE: 293 source original goal(s) are registered, but no readable source inventory goals were extracted",
-            "DE-BY: 401 source original goal(s) are registered, but no readable source inventory goals were extracted",
             "DE-BW: no source inventory goals are registered or extracted",
             "DE-BB: no source inventory goals are registered or extracted",
             "DE-BE: no source inventory goals are registered or extracted",
@@ -920,15 +1009,15 @@
             "uncoveredJurisdictions": 14,
             "incompleteJurisdictions": 0,
             "unsupportedAssignmentJurisdictions": 0,
-            "sourceUnmappedJurisdictions": 1,
+            "sourceUnmappedJurisdictions": 2,
             "unsupportedAssignedAtomicGoals": 0,
-            "unmappedSourceAtomicGoals": 56,
-            "sourceAtomicGoals": 603,
-            "sourceMappedToViewAtomicGoals": 547,
-            "sourceOriginalGoals": 694,
-            "sourceFullyCoveredOriginalGoals": 620,
+            "unmappedSourceAtomicGoals": 278,
+            "sourceAtomicGoals": 462,
+            "sourceMappedToViewAtomicGoals": 184,
+            "sourceOriginalGoals": 515,
+            "sourceFullyCoveredOriginalGoals": 219,
             "sourcePartiallyCoveredOriginalGoals": 3,
-            "sourceUncoveredOriginalGoals": 71,
+            "sourceUncoveredOriginalGoals": 293,
             "surrogateBackedAtomicGoals": 0,
             "partialSourceLinkedAtomicGoals": 0,
             "warningedJurisdictions": 0,
@@ -942,6 +1031,7 @@
           },
           "details": [
             "DE-HE: 56 source Lehrplan atom(s) do not map into the Bundesland view",
+            "DE-BY: 222 source Lehrplan atom(s) do not map into the Bundesland view",
             "DE-BW: no source-backed atomic goals",
             "DE-BB: no source-backed atomic goals",
             "DE-BE: no source-backed atomic goals",
@@ -960,8 +1050,23 @@
         },
         {
           "id": "CQR-004",
-          "status": "not_configured",
-          "summary": "No persisted source-extraction mapping with GK/LK course-level metadata is configured for this curriculum."
+          "status": "pass",
+          "summary": "Course-level mapping is clean for 0 upper-secondary source-to-canonical mapping edge(s), including 0 reviewed course-level exception(s); unspecified upper-secondary source goals default to GK/LK unless explicitly reviewed.",
+          "metrics": {
+            "configuredMappingFiles": 1,
+            "sourceGoals": 0,
+            "sourceGoalsWithCourseLevel": 0,
+            "gkLkSourceGoals": 0,
+            "lkSourceGoals": 0,
+            "unspecifiedSourceGoals": 0,
+            "checkedMappingEdges": 0,
+            "defaultedUnspecifiedMappingEdges": 0,
+            "reviewedCourseLevelExceptions": 0,
+            "mismatches": 0,
+            "missingSourceGoals": 0,
+            "missingTargetGoals": 0,
+            "unmappedCourseLevelSourceGoals": 0
+          }
         },
         {
           "id": "CQR-301",
