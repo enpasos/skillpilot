@@ -1508,7 +1508,8 @@
       "contains": [],
       "requires": [
         "1f30d81c-8a26-5675-8c0a-1cb82e96d3ba",
-        "9aec52cb-1f7d-5343-b5f9-a8e72ddd25fa",
+        "e5aefd51-2de4-590c-903f-286d043a8c30",
+        "3fb7dea4-f832-5e23-b518-68b13a655b92",
         "667bc303-e9b8-570b-84f1-61cc8bdfd006"
       ],
       "dimensionTags": {
@@ -6156,7 +6157,8 @@
       "requires": [
         "e9d74940-1e0e-4511-9718-4851f49ad7a5",
         "bbe038e9-86ed-5ec6-ab33-316758ddb16d",
-        "15e73664-8c3f-5aa6-ac65-b455fc3ed6d6"
+        "448815cc-4127-54b7-96bf-e54b3d2a38c5",
+        "9b56d01e-c2d7-51d8-b78e-237592c1ed20"
       ],
       "extendedData": {
         "provenance": {
@@ -9070,7 +9072,7 @@
       "titleEn": "Q1.1 Chemical Bonding & Structures",
       "description": "Intramolekulare Bindungen und intermolekulare Kräfte analysieren und mit Reaktionsmechanismen verknüpfen.",
       "descriptionEn": "Analyze intramolecular bonds and intermolecular forces and link them to reaction mechanisms.",
-      "weight": 16,
+      "weight": 28,
       "tags": [
         "GK",
         "LK"
@@ -9141,6 +9143,63 @@
       "titleEn": "Use bonding models confidently",
       "description": "Die lernende Person kann Metall-, Ionen- und Elektronenpaarbindungen sowie Molekülgeometrien und einfache Bindungswinkel mit dem EPA-Modell erläutern.",
       "descriptionEn": "The learner can explain metallic, ionic, and covalent bonds as well as molecular geometries and simple bond angles using the VSEPR model.",
+      "weight": 2,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "contains": [
+        "448815cc-4127-54b7-96bf-e54b3d2a38c5",
+        "9b56d01e-c2d7-51d8-b78e-237592c1ed20"
+      ],
+      "requires": [
+        "950c73c6-4ed1-488a-9267-1142e95e0055"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-chemistry",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [
+          "BC_AUFBAU"
+        ],
+        "phase": "Q1"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "2f391ba2-ba1e-40e4-a8d2-dff049516c13",
+          "sourceLandscapeTitle": "Chemie Oberstufe (Hessen, KC 2024)",
+          "sourceGoalId": "aee971bb-ffe4-446c-a857-e199252ef6f3"
+        }
+      },
+      "type": "cluster",
+      "examples": []
+    },
+    {
+      "id": "448815cc-4127-54b7-96bf-e54b3d2a38c5",
+      "title": "Bindungstypen sicher erläutern",
+      "titleEn": "Explain bonding types confidently",
+      "description": "Die lernende Person kann Metall-, Ionen- und Elektronenpaarbindungen fachlich sicher erläutern.",
+      "descriptionEn": "The learner can confidently explain metallic, ionic, and covalent bonding.",
       "weight": 1,
       "tags": [
         "GK",
@@ -9187,7 +9246,63 @@
         }
       },
       "type": "atomic",
-      "examples": []
+      "examples": [],
+      "shortKey": "canonical_chemistry_q1_bonding_types_explain"
+    },
+    {
+      "id": "9b56d01e-c2d7-51d8-b78e-237592c1ed20",
+      "title": "Molekülgeometrien mit dem EPA-Modell erklären",
+      "titleEn": "Explain molecular geometries with the VSEPR model",
+      "description": "Die lernende Person kann Molekülgeometrien und einfache Bindungswinkel mit dem EPA-Modell erläutern.",
+      "descriptionEn": "The learner can explain molecular geometries and simple bond angles using the VSEPR model.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "448815cc-4127-54b7-96bf-e54b3d2a38c5"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-chemistry",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [
+          "BC_AUFBAU"
+        ],
+        "phase": "Q1"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "2f391ba2-ba1e-40e4-a8d2-dff049516c13",
+          "sourceLandscapeTitle": "Chemie Oberstufe (Hessen, KC 2024)",
+          "sourceGoalId": "aee971bb-ffe4-446c-a857-e199252ef6f3"
+        }
+      },
+      "type": "atomic",
+      "examples": [],
+      "shortKey": "canonical_chemistry_q1_vsepr_geometry_angles"
     },
     {
       "id": "eb7537dd-d11b-50e9-a6d7-51a78e96fc4e",
@@ -9202,7 +9317,8 @@
       ],
       "contains": [],
       "requires": [
-        "15e73664-8c3f-5aa6-ac65-b455fc3ed6d6"
+        "448815cc-4127-54b7-96bf-e54b3d2a38c5",
+        "9b56d01e-c2d7-51d8-b78e-237592c1ed20"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-chemistry",
@@ -9303,6 +9419,65 @@
       "titleEn": "Describe reaction types",
       "description": "Die lernende Person kann typische Reaktionen gesättigter und ungesättigter Kohlenwasserstoff-Moleküle mit Halogen-Molekülen vergleichen, radikalische Substitutionen und elektrophile Additionen mechanistisch darstellen, Änderungen der Bindungsverhältnisse im Reaktionsverlauf deuten und geeignete Nachweismethoden angeben.",
       "descriptionEn": "The learner can compare typical reactions of saturated and unsaturated hydrocarbon molecules with halogen molecules, represent radical substitutions and electrophilic additions mechanistically, interpret changes in bonding relationships during the reaction pathway, and state suitable detection methods.",
+      "weight": 4,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "contains": [
+        "17acbdec-5274-510f-8588-0eac164ebbe5",
+        "e5aefd51-2de4-590c-903f-286d043a8c30",
+        "3fb7dea4-f832-5e23-b518-68b13a655b92",
+        "622f09e5-a5bb-5ccf-919f-bae990c7c116"
+      ],
+      "requires": [
+        "5a30273a-98d5-5163-bb16-c250b7ed4e7f"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-chemistry",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [
+          "BC_REAKTION"
+        ],
+        "phase": "Q1"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "2f391ba2-ba1e-40e4-a8d2-dff049516c13",
+          "sourceLandscapeTitle": "Chemie Oberstufe (Hessen, KC 2024)",
+          "sourceGoalId": "da6b3030-da29-428f-9ebd-e0a6512c7155"
+        }
+      },
+      "type": "cluster",
+      "examples": []
+    },
+    {
+      "id": "17acbdec-5274-510f-8588-0eac164ebbe5",
+      "title": "Halogenreaktionen von Kohlenwasserstoffen vergleichen",
+      "titleEn": "Compare halogen reactions of hydrocarbons",
+      "description": "Die lernende Person kann typische Reaktionen gesättigter und ungesättigter Kohlenwasserstoff-Moleküle mit Halogen-Molekülen vergleichen.",
+      "descriptionEn": "The learner can compare typical reactions of saturated and unsaturated hydrocarbon molecules with halogen molecules.",
       "weight": 1,
       "tags": [
         "GK",
@@ -9349,7 +9524,172 @@
         }
       },
       "type": "atomic",
-      "examples": []
+      "examples": [],
+      "shortKey": "canonical_chemistry_q1_hydrocarbon_halogen_reactions_compare"
+    },
+    {
+      "id": "e5aefd51-2de4-590c-903f-286d043a8c30",
+      "title": "Radikalische Substitution mechanistisch darstellen",
+      "titleEn": "Represent radical substitution mechanistically",
+      "description": "Die lernende Person kann radikalische Substitutionen mechanistisch darstellen.",
+      "descriptionEn": "The learner can represent radical substitutions mechanistically.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "17acbdec-5274-510f-8588-0eac164ebbe5"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-chemistry",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [
+          "BC_REAKTION"
+        ],
+        "phase": "Q1"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "2f391ba2-ba1e-40e4-a8d2-dff049516c13",
+          "sourceLandscapeTitle": "Chemie Oberstufe (Hessen, KC 2024)",
+          "sourceGoalId": "da6b3030-da29-428f-9ebd-e0a6512c7155"
+        }
+      },
+      "type": "atomic",
+      "examples": [],
+      "shortKey": "canonical_chemistry_q1_radical_substitution_mechanism"
+    },
+    {
+      "id": "3fb7dea4-f832-5e23-b518-68b13a655b92",
+      "title": "Elektrophile Addition mechanistisch darstellen",
+      "titleEn": "Represent electrophilic addition mechanistically",
+      "description": "Die lernende Person kann elektrophile Additionen an ungesättigten Kohlenwasserstoffen mechanistisch darstellen.",
+      "descriptionEn": "The learner can represent electrophilic additions to unsaturated hydrocarbons mechanistically.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "17acbdec-5274-510f-8588-0eac164ebbe5"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-chemistry",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [
+          "BC_REAKTION"
+        ],
+        "phase": "Q1"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "2f391ba2-ba1e-40e4-a8d2-dff049516c13",
+          "sourceLandscapeTitle": "Chemie Oberstufe (Hessen, KC 2024)",
+          "sourceGoalId": "da6b3030-da29-428f-9ebd-e0a6512c7155"
+        }
+      },
+      "type": "atomic",
+      "examples": [],
+      "shortKey": "canonical_chemistry_q1_electrophilic_addition_mechanism"
+    },
+    {
+      "id": "622f09e5-a5bb-5ccf-919f-bae990c7c116",
+      "title": "Bindungsänderungen und Nachweise bei Halogenreaktionen deuten",
+      "titleEn": "Interpret bond changes and tests in halogen reactions",
+      "description": "Die lernende Person kann Änderungen der Bindungsverhältnisse im Verlauf von Halogenreaktionen deuten und geeignete Nachweismethoden angeben.",
+      "descriptionEn": "The learner can interpret changes in bonding relationships during halogen reactions and state suitable detection methods.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "e5aefd51-2de4-590c-903f-286d043a8c30",
+        "3fb7dea4-f832-5e23-b518-68b13a655b92"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-chemistry",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [
+          "BC_REAKTION"
+        ],
+        "phase": "Q1"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "2f391ba2-ba1e-40e4-a8d2-dff049516c13",
+          "sourceLandscapeTitle": "Chemie Oberstufe (Hessen, KC 2024)",
+          "sourceGoalId": "da6b3030-da29-428f-9ebd-e0a6512c7155"
+        }
+      },
+      "type": "atomic",
+      "examples": [],
+      "shortKey": "canonical_chemistry_q1_reaction_bond_changes_detection"
     },
     {
       "id": "ac700167-001f-5ff8-9a7d-85909f5daa4f",
@@ -9357,13 +9697,74 @@
       "titleEn": "Analyze aromatics in depth (LK)",
       "description": "Die lernende Person kann die Reaktivität aromatischer Systeme begründen, deren Bindungsverhältnisse auch unter energetischen Aspekten mit Mesomeriemodell und erweitertem Orbitalmodell beschreiben und elektrophile Substitutionen am Ring modellieren.",
       "descriptionEn": "The learner can explain the resonance mechanism in benzene and model electrophilic substitution on the ring.",
+      "weight": 3,
+      "tags": [
+        "LK"
+      ],
+      "contains": [
+        "b8d3b453-d638-5518-aab0-d84ec2e8567c",
+        "f0f67a7a-b06a-50b9-8edc-1f2a0d97520d",
+        "17ab1148-7383-5cab-8b91-73aff795f1e4"
+      ],
+      "requires": [
+        "e5aefd51-2de4-590c-903f-286d043a8c30",
+        "3fb7dea4-f832-5e23-b518-68b13a655b92",
+        "f85b4651-50ea-5b42-b193-3465c05257a7"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-chemistry",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [
+          "BC_AUFBAU",
+          "BC_REAKTION"
+        ],
+        "phase": "Q1"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "2f391ba2-ba1e-40e4-a8d2-dff049516c13",
+          "sourceLandscapeTitle": "Chemie Oberstufe (Hessen, KC 2024)",
+          "sourceGoalId": "3006abb6-a992-48fb-a464-a70fa8b7a4b8"
+        }
+      },
+      "type": "cluster",
+      "examples": []
+    },
+    {
+      "id": "b8d3b453-d638-5518-aab0-d84ec2e8567c",
+      "title": "Reaktivität aromatischer Systeme begründen",
+      "titleEn": "Explain aromatic reactivity",
+      "description": "Die lernende Person kann die Reaktivität aromatischer Systeme fachlich begründen.",
+      "descriptionEn": "The learner can explain the reactivity of aromatic systems.",
       "weight": 1,
       "tags": [
         "LK"
       ],
       "contains": [],
       "requires": [
-        "9aec52cb-1f7d-5343-b5f9-a8e72ddd25fa",
+        "e5aefd51-2de4-590c-903f-286d043a8c30",
+        "3fb7dea4-f832-5e23-b518-68b13a655b92",
         "f85b4651-50ea-5b42-b193-3465c05257a7"
       ],
       "dimensionTags": {
@@ -9404,7 +9805,118 @@
         }
       },
       "type": "atomic",
-      "examples": []
+      "examples": [],
+      "shortKey": "canonical_chemistry_q1_aromatic_reactivity_explain"
+    },
+    {
+      "id": "f0f67a7a-b06a-50b9-8edc-1f2a0d97520d",
+      "title": "Bindungsverhältnisse aromatischer Systeme modellieren",
+      "titleEn": "Model bonding in aromatic systems",
+      "description": "Die lernende Person kann Bindungsverhältnisse aromatischer Systeme auch unter energetischen Aspekten mit Mesomeriemodell und erweitertem Orbitalmodell beschreiben.",
+      "descriptionEn": "The learner can describe bonding in aromatic systems, including energetic aspects, using resonance and extended orbital models.",
+      "weight": 1,
+      "tags": [
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "b8d3b453-d638-5518-aab0-d84ec2e8567c"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-chemistry",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [
+          "BC_AUFBAU",
+          "BC_REAKTION"
+        ],
+        "phase": "Q1"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "2f391ba2-ba1e-40e4-a8d2-dff049516c13",
+          "sourceLandscapeTitle": "Chemie Oberstufe (Hessen, KC 2024)",
+          "sourceGoalId": "3006abb6-a992-48fb-a464-a70fa8b7a4b8"
+        }
+      },
+      "type": "atomic",
+      "examples": [],
+      "shortKey": "canonical_chemistry_q1_aromatic_bonding_models"
+    },
+    {
+      "id": "17ab1148-7383-5cab-8b91-73aff795f1e4",
+      "title": "Elektrophile Substitution am Aromaten modellieren",
+      "titleEn": "Model electrophilic substitution on aromatics",
+      "description": "Die lernende Person kann elektrophile Substitutionen am aromatischen Ring modellieren.",
+      "descriptionEn": "The learner can model electrophilic substitutions on aromatic rings.",
+      "weight": 1,
+      "tags": [
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "f0f67a7a-b06a-50b9-8edc-1f2a0d97520d"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-chemistry",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [
+          "BC_AUFBAU",
+          "BC_REAKTION"
+        ],
+        "phase": "Q1"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "2f391ba2-ba1e-40e4-a8d2-dff049516c13",
+          "sourceLandscapeTitle": "Chemie Oberstufe (Hessen, KC 2024)",
+          "sourceGoalId": "3006abb6-a992-48fb-a464-a70fa8b7a4b8"
+        }
+      },
+      "type": "atomic",
+      "examples": [],
+      "shortKey": "canonical_chemistry_q1_aromatic_electrophilic_substitution_model"
     },
     {
       "id": "8519f683-7c31-50da-be59-649997a6fc47",
@@ -9759,6 +10271,57 @@
       "titleEn": "Justify electron probability using quantum models",
       "description": "Die lernende Person kann die Antreffwahrscheinlichkeit für Elektronen mit der Heisenbergschen Unbestimmtheitsrelation begründen und das Doppelspaltexperiment mithilfe des Welle-Teilchen-Dualismus historisch und fachlich einordnen.",
       "descriptionEn": "The learner can justify electron probability using Heisenberg's uncertainty principle and classify the double-slit experiment using electron wave-particle duality in a historical and scientific context.",
+      "weight": 2,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekII"
+      ],
+      "contains": [
+        "73547696-e225-5f14-839b-c77f54c32bae",
+        "2bc1a15b-a677-5612-a564-33e826d11327"
+      ],
+      "requires": [
+        "49235cbe-6658-5e7e-8bd4-398416bcebdc"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-chemistry",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "PK2_MODELLIEREN",
+          "PK4_KOMMUNIZIEREN"
+        ],
+        "guidingIdeas": [
+          "BC_AUFBAU"
+        ],
+        "phase": "GLOBAL",
+        "area": "Chemische Bindung",
+        "topicCode": "CANONICAL.CHEMISTRY.SEKII.QUANTUM_ELECTRON_PROBABILITY"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BY",
+          "DE-HE"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "ff1ca997-b6cc-5ece-8e13-5498b4bbf808",
+          "sourceLandscapeTitle": "Chemie Gymnasium (Bayern, LehrplanPLUS)",
+          "sourceGoalId": "4c49c23a-7bbf-5ca5-b42b-5ec745403a38"
+        }
+      },
+      "type": "cluster",
+      "examples": []
+    },
+    {
+      "id": "73547696-e225-5f14-839b-c77f54c32bae",
+      "shortKey": "canonical_chemistry_q1_electron_probability_heisenberg",
+      "title": "Antreffwahrscheinlichkeit mit Unbestimmtheit begründen",
+      "titleEn": "Justify electron probability with uncertainty",
+      "description": "Die lernende Person kann die Antreffwahrscheinlichkeit für Elektronen mit der Heisenbergschen Unbestimmtheitsrelation begründen.",
+      "descriptionEn": "The learner can justify electron probability with Heisenberg uncertainty.",
       "weight": 1,
       "tags": [
         "GK",
@@ -9769,6 +10332,54 @@
       "contains": [],
       "requires": [
         "49235cbe-6658-5e7e-8bd4-398416bcebdc"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-chemistry",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "PK2_MODELLIEREN",
+          "PK4_KOMMUNIZIEREN"
+        ],
+        "guidingIdeas": [
+          "BC_AUFBAU"
+        ],
+        "phase": "GLOBAL",
+        "area": "Chemische Bindung",
+        "topicCode": "CANONICAL.CHEMISTRY.SEKII.QUANTUM_ELECTRON_PROBABILITY"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BY",
+          "DE-HE"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "ff1ca997-b6cc-5ece-8e13-5498b4bbf808",
+          "sourceLandscapeTitle": "Chemie Gymnasium (Bayern, LehrplanPLUS)",
+          "sourceGoalId": "4c49c23a-7bbf-5ca5-b42b-5ec745403a38"
+        }
+      },
+      "type": "atomic",
+      "examples": []
+    },
+    {
+      "id": "2bc1a15b-a677-5612-a564-33e826d11327",
+      "shortKey": "canonical_chemistry_q1_double_slit_wave_particle_duality",
+      "title": "Doppelspaltexperiment quantenmodellhaft einordnen",
+      "titleEn": "Classify the double-slit experiment with quantum models",
+      "description": "Die lernende Person kann das Doppelspaltexperiment mithilfe des Welle-Teilchen-Dualismus historisch und fachlich einordnen.",
+      "descriptionEn": "The learner can classify the double-slit experiment historically and scientifically using wave-particle duality.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekII"
+      ],
+      "contains": [],
+      "requires": [
+        "73547696-e225-5f14-839b-c77f54c32bae"
       ],
       "dimensionTags": {
         "framework": "canonical-gymnasium-chemistry",
@@ -9816,7 +10427,7 @@
       ],
       "contains": [],
       "requires": [
-        "7d84f40f-d1da-5b78-8c1b-4d02091e77b4",
+        "73547696-e225-5f14-839b-c77f54c32bae",
         "3bc48951-025c-5144-99b1-924db611a5f9"
       ],
       "dimensionTags": {
@@ -9856,6 +10467,57 @@
       "titleEn": "Connect wave functions and molecular-orbital energy schemes",
       "description": "Die lernende Person kann zweidimensionale Darstellungen von Wellenfunktionen bei Wasserstoff-Atomen und beim Wasserstoff-Molekül mit räumlichen Wahrscheinlichkeitsdichten verknüpfen und aus Energieniveauschemata die Existenz einfacher zweiatomiger Moleküle oder Molekül-Ionen der zweiten Periode ableiten.",
       "descriptionEn": "The learner can connect two-dimensional representations of wave functions in hydrogen atoms and hydrogen molecules with spatial probability densities and infer the existence of simple diatomic molecules or molecular ions of the second period from energy-level schemes.",
+      "weight": 2,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekII"
+      ],
+      "contains": [
+        "fbc5a920-05d6-53c8-9fc0-a5f4e57f2c6d",
+        "386e28af-505a-5eb9-87fe-9c6946f10433"
+      ],
+      "requires": [
+        "0acc8cd2-be6d-567e-a023-1d9e90475510"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-chemistry",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "PK2_MODELLIEREN",
+          "PK4_KOMMUNIZIEREN"
+        ],
+        "guidingIdeas": [
+          "BC_AUFBAU"
+        ],
+        "phase": "GLOBAL",
+        "area": "Chemische Bindung",
+        "topicCode": "CANONICAL.CHEMISTRY.SEKII.WAVEFUNCTION_MO_ENERGY_SCHEMES"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BY",
+          "DE-HE"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "ff1ca997-b6cc-5ece-8e13-5498b4bbf808",
+          "sourceLandscapeTitle": "Chemie Gymnasium (Bayern, LehrplanPLUS)",
+          "sourceGoalId": "3221e78d-2d6b-524f-a22e-07f4f559f7c4"
+        }
+      },
+      "type": "cluster",
+      "examples": []
+    },
+    {
+      "id": "fbc5a920-05d6-53c8-9fc0-a5f4e57f2c6d",
+      "shortKey": "canonical_chemistry_q1_wavefunctions_probability_density",
+      "title": "Wellenfunktionen mit Wahrscheinlichkeitsdichten verknüpfen",
+      "titleEn": "Connect wavefunctions with probability densities",
+      "description": "Die lernende Person kann zweidimensionale Darstellungen von Wellenfunktionen bei Wasserstoff-Atomen und beim Wasserstoff-Molekül mit räumlichen Wahrscheinlichkeitsdichten verknüpfen.",
+      "descriptionEn": "The learner can connect two-dimensional representations of wavefunctions in hydrogen atoms and hydrogen molecules with spatial probability densities.",
       "weight": 1,
       "tags": [
         "GK",
@@ -9866,6 +10528,54 @@
       "contains": [],
       "requires": [
         "0acc8cd2-be6d-567e-a023-1d9e90475510"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-chemistry",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "PK2_MODELLIEREN",
+          "PK4_KOMMUNIZIEREN"
+        ],
+        "guidingIdeas": [
+          "BC_AUFBAU"
+        ],
+        "phase": "GLOBAL",
+        "area": "Chemische Bindung",
+        "topicCode": "CANONICAL.CHEMISTRY.SEKII.WAVEFUNCTION_MO_ENERGY_SCHEMES"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BY",
+          "DE-HE"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "ff1ca997-b6cc-5ece-8e13-5498b4bbf808",
+          "sourceLandscapeTitle": "Chemie Gymnasium (Bayern, LehrplanPLUS)",
+          "sourceGoalId": "3221e78d-2d6b-524f-a22e-07f4f559f7c4"
+        }
+      },
+      "type": "atomic",
+      "examples": []
+    },
+    {
+      "id": "386e28af-505a-5eb9-87fe-9c6946f10433",
+      "shortKey": "canonical_chemistry_q1_mo_energy_schemas_diatomic_existence",
+      "title": "MO-Energieniveauschemata zur Molekülexistenz auswerten",
+      "titleEn": "Evaluate MO energy diagrams for molecular existence",
+      "description": "Die lernende Person kann aus Energieniveauschemata die Existenz einfacher zweiatomiger Moleküle oder Molekül-Ionen der zweiten Periode ableiten.",
+      "descriptionEn": "The learner can infer the existence of simple diatomic molecules or molecular ions of the second period from energy level diagrams.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekII"
+      ],
+      "contains": [],
+      "requires": [
+        "fbc5a920-05d6-53c8-9fc0-a5f4e57f2c6d"
       ],
       "dimensionTags": {
         "framework": "canonical-gymnasium-chemistry",
@@ -9913,7 +10623,7 @@
       ],
       "contains": [],
       "requires": [
-        "c0c0f6e4-56be-5196-9408-20efc4504783"
+        "386e28af-505a-5eb9-87fe-9c6946f10433"
       ],
       "dimensionTags": {
         "framework": "canonical-gymnasium-chemistry",
@@ -9962,7 +10672,8 @@
       "contains": [],
       "requires": [
         "70bcb6bd-b7f8-5e23-b466-f9bc270a9c67",
-        "15e73664-8c3f-5aa6-ac65-b455fc3ed6d6"
+        "448815cc-4127-54b7-96bf-e54b3d2a38c5",
+        "9b56d01e-c2d7-51d8-b78e-237592c1ed20"
       ],
       "dimensionTags": {
         "framework": "canonical-gymnasium-chemistry",
@@ -9997,10 +10708,62 @@
     {
       "id": "18f09dab-e25b-59e7-951d-f9ff85e85207",
       "shortKey": "canonical_chemistry_upper_hybridization_molecular_modelling_compare",
-      "title": "Hybridisierungsmodell und Molecular Modelling vergleichen",
-      "titleEn": "Compare hybridization model and molecular modelling",
+      "title": "Hybridisierungsmodell und Molecular Modelling nutzen",
+      "titleEn": "Use hybridization model and molecular modelling",
       "description": "Die lernende Person kann einfache organische Moleküle mit dem Hybridisierungsmodell und durch computerbasiertes Molecular Modelling darstellen und die Ergebnisse hinsichtlich Aussagekraft, Vor- und Nachteilen der Modelle vergleichen.",
       "descriptionEn": "The learner can represent simple organic molecules using the hybridization model and computer-based molecular modelling and compare the results with respect to explanatory power and the advantages and disadvantages of the models.",
+      "weight": 3,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekII"
+      ],
+      "contains": [
+        "c98683ae-3309-581e-b02b-b10ad703d8a0",
+        "707998c1-872d-582d-a2d6-14e7d967cbdb",
+        "321d801d-28e4-54a2-bd31-8c07bda2f392"
+      ],
+      "requires": [
+        "37b4081a-244a-58d8-b448-88ed83344210"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-chemistry",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "PK2_MODELLIEREN",
+          "PK4_KOMMUNIZIEREN"
+        ],
+        "guidingIdeas": [
+          "BC_AUFBAU"
+        ],
+        "phase": "GLOBAL",
+        "area": "Chemische Bindung",
+        "topicCode": "CANONICAL.CHEMISTRY.SEKII.HYBRIDIZATION_MOLECULAR_MODELLING"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BY",
+          "DE-HE"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "ff1ca997-b6cc-5ece-8e13-5498b4bbf808",
+          "sourceLandscapeTitle": "Chemie Gymnasium (Bayern, LehrplanPLUS)",
+          "sourceGoalId": "7c41f91f-9c71-58fc-af06-58d8260cde7c"
+        }
+      },
+      "type": "cluster",
+      "examples": []
+    },
+    {
+      "id": "c98683ae-3309-581e-b02b-b10ad703d8a0",
+      "shortKey": "canonical_chemistry_q1_organic_molecules_hybridization_model",
+      "title": "Organische Moleküle mit dem Hybridisierungsmodell darstellen",
+      "titleEn": "Represent organic molecules with the hybridization model",
+      "description": "Die lernende Person kann einfache organische Moleküle mit dem Hybridisierungsmodell darstellen.",
+      "descriptionEn": "The learner can represent simple organic molecules using the hybridization model.",
       "weight": 1,
       "tags": [
         "GK",
@@ -10011,6 +10774,103 @@
       "contains": [],
       "requires": [
         "37b4081a-244a-58d8-b448-88ed83344210"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-chemistry",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "PK2_MODELLIEREN",
+          "PK4_KOMMUNIZIEREN"
+        ],
+        "guidingIdeas": [
+          "BC_AUFBAU"
+        ],
+        "phase": "GLOBAL",
+        "area": "Chemische Bindung",
+        "topicCode": "CANONICAL.CHEMISTRY.SEKII.HYBRIDIZATION_MOLECULAR_MODELLING"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BY",
+          "DE-HE"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "ff1ca997-b6cc-5ece-8e13-5498b4bbf808",
+          "sourceLandscapeTitle": "Chemie Gymnasium (Bayern, LehrplanPLUS)",
+          "sourceGoalId": "7c41f91f-9c71-58fc-af06-58d8260cde7c"
+        }
+      },
+      "type": "atomic",
+      "examples": []
+    },
+    {
+      "id": "707998c1-872d-582d-a2d6-14e7d967cbdb",
+      "shortKey": "canonical_chemistry_q1_organic_molecules_molecular_modelling",
+      "title": "Organische Moleküle mit Molecular Modelling darstellen",
+      "titleEn": "Represent organic molecules with molecular modelling",
+      "description": "Die lernende Person kann einfache organische Moleküle durch computerbasiertes Molecular Modelling darstellen.",
+      "descriptionEn": "The learner can represent simple organic molecules using computer-based molecular modelling.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekII"
+      ],
+      "contains": [],
+      "requires": [
+        "37b4081a-244a-58d8-b448-88ed83344210"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-chemistry",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "PK2_MODELLIEREN",
+          "PK4_KOMMUNIZIEREN"
+        ],
+        "guidingIdeas": [
+          "BC_AUFBAU"
+        ],
+        "phase": "GLOBAL",
+        "area": "Chemische Bindung",
+        "topicCode": "CANONICAL.CHEMISTRY.SEKII.HYBRIDIZATION_MOLECULAR_MODELLING"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BY",
+          "DE-HE"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "ff1ca997-b6cc-5ece-8e13-5498b4bbf808",
+          "sourceLandscapeTitle": "Chemie Gymnasium (Bayern, LehrplanPLUS)",
+          "sourceGoalId": "7c41f91f-9c71-58fc-af06-58d8260cde7c"
+        }
+      },
+      "type": "atomic",
+      "examples": []
+    },
+    {
+      "id": "321d801d-28e4-54a2-bd31-8c07bda2f392",
+      "shortKey": "canonical_chemistry_q1_hybridization_molecular_modelling_compare",
+      "title": "Hybridisierungsmodell und Molecular Modelling vergleichen",
+      "titleEn": "Compare the hybridization model and molecular modelling",
+      "description": "Die lernende Person kann Darstellungen organischer Moleküle aus Hybridisierungsmodell und Molecular Modelling hinsichtlich Aussagekraft, Vor- und Nachteilen vergleichen.",
+      "descriptionEn": "The learner can compare representations of organic molecules from the hybridization model and molecular modelling with respect to explanatory power, advantages, and disadvantages.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekII"
+      ],
+      "contains": [],
+      "requires": [
+        "c98683ae-3309-581e-b02b-b10ad703d8a0",
+        "707998c1-872d-582d-a2d6-14e7d967cbdb"
       ],
       "dimensionTags": {
         "framework": "canonical-gymnasium-chemistry",
@@ -10059,7 +10919,8 @@
       "contains": [],
       "requires": [
         "37b4081a-244a-58d8-b448-88ed83344210",
-        "15e73664-8c3f-5aa6-ac65-b455fc3ed6d6"
+        "448815cc-4127-54b7-96bf-e54b3d2a38c5",
+        "9b56d01e-c2d7-51d8-b78e-237592c1ed20"
       ],
       "dimensionTags": {
         "framework": "canonical-gymnasium-chemistry",
@@ -10107,7 +10968,8 @@
       ],
       "contains": [],
       "requires": [
-        "15e73664-8c3f-5aa6-ac65-b455fc3ed6d6",
+        "448815cc-4127-54b7-96bf-e54b3d2a38c5",
+        "9b56d01e-c2d7-51d8-b78e-237592c1ed20",
         "eb7537dd-d11b-50e9-a6d7-51a78e96fc4e",
         "5a30273a-98d5-5163-bb16-c250b7ed4e7f"
       ],
@@ -13418,7 +14280,8 @@
       ],
       "contains": [],
       "requires": [
-        "9aec52cb-1f7d-5343-b5f9-a8e72ddd25fa"
+        "e5aefd51-2de4-590c-903f-286d043a8c30",
+        "3fb7dea4-f832-5e23-b518-68b13a655b92"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-chemistry",
@@ -13747,7 +14610,8 @@
       ],
       "contains": [],
       "requires": [
-        "9aec52cb-1f7d-5343-b5f9-a8e72ddd25fa"
+        "e5aefd51-2de4-590c-903f-286d043a8c30",
+        "3fb7dea4-f832-5e23-b518-68b13a655b92"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-chemistry",
@@ -14991,7 +15855,8 @@
       },
       "contains": [],
       "requires": [
-        "15e73664-8c3f-5aa6-ac65-b455fc3ed6d6",
+        "448815cc-4127-54b7-96bf-e54b3d2a38c5",
+        "9b56d01e-c2d7-51d8-b78e-237592c1ed20",
         "973c12d9-d863-5292-8c68-9c80cdacf9e2"
       ],
       "type": "atomic",
@@ -15096,7 +15961,7 @@
       },
       "contains": [],
       "requires": [
-        "eae2a380-601c-53ed-be30-03c69c1f4f54",
+        "85342c52-9722-54b0-8fbb-513d9d648363",
         "62149f36-87c0-5a2d-8a78-e7d4203f58c2",
         "8761cfd2-aa1a-56f1-9272-9cf66ef4b271"
       ],
@@ -17554,7 +18419,63 @@
       "titleEn": "Classify stereochemistry",
       "description": "Die lernende Person kann asymmetrische Kohlenstoff-Atome als Stereozentren erkennen, Moleküle Stereoisomerietypen zuordnen sowie Konstitution, Konfiguration (R/S, E/Z) und Konformation unterscheiden und darstellen.",
       "descriptionEn": "The learner can identify asymmetric carbon atoms as stereocenters, assign molecules to stereoisomer types, and distinguish and represent constitution, configuration (R/S, E/Z), and conformation.",
-      "weight": 1.1,
+      "weight": 3,
+      "tags": [
+        "LK"
+      ],
+      "contains": [
+        "b92bfa45-b500-5647-8fd2-a14b708aaf59",
+        "9decc36b-a69a-5599-a9f0-fcebdf0203d8",
+        "85342c52-9722-54b0-8fbb-513d9d648363"
+      ],
+      "requires": [
+        "5a30273a-98d5-5163-bb16-c250b7ed4e7f"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-chemistry",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [
+          "BC_AUFBAU"
+        ],
+        "phase": "Q1"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "2f391ba2-ba1e-40e4-a8d2-dff049516c13",
+          "sourceLandscapeTitle": "Chemie Oberstufe (Hessen, KC 2024)",
+          "sourceGoalId": "53e0ff42-55e9-4fb5-9cc7-8c2006f51789"
+        }
+      },
+      "type": "cluster",
+      "examples": []
+    },
+    {
+      "id": "b92bfa45-b500-5647-8fd2-a14b708aaf59",
+      "title": "Stereozentren erkennen",
+      "titleEn": "Identify stereocenters",
+      "description": "Die lernende Person kann asymmetrische Kohlenstoff-Atome als Stereozentren erkennen.",
+      "descriptionEn": "The learner can identify asymmetric carbon atoms as stereocenters.",
+      "weight": 1,
       "tags": [
         "LK"
       ],
@@ -17598,7 +18519,114 @@
         }
       },
       "type": "atomic",
-      "examples": []
+      "examples": [],
+      "shortKey": "canonical_chemistry_q1_stereocenters_identify"
+    },
+    {
+      "id": "9decc36b-a69a-5599-a9f0-fcebdf0203d8",
+      "title": "Stereoisomerietypen zuordnen",
+      "titleEn": "Assign stereoisomer types",
+      "description": "Die lernende Person kann Moleküle geeigneten Stereoisomerietypen zuordnen.",
+      "descriptionEn": "The learner can assign molecules to appropriate types of stereoisomerism.",
+      "weight": 1,
+      "tags": [
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "b92bfa45-b500-5647-8fd2-a14b708aaf59"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-chemistry",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [
+          "BC_AUFBAU"
+        ],
+        "phase": "Q1"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "2f391ba2-ba1e-40e4-a8d2-dff049516c13",
+          "sourceLandscapeTitle": "Chemie Oberstufe (Hessen, KC 2024)",
+          "sourceGoalId": "53e0ff42-55e9-4fb5-9cc7-8c2006f51789"
+        }
+      },
+      "type": "atomic",
+      "examples": [],
+      "shortKey": "canonical_chemistry_q1_stereoisomer_types_assign"
+    },
+    {
+      "id": "85342c52-9722-54b0-8fbb-513d9d648363",
+      "title": "Konfiguration und Konformation unterscheiden",
+      "titleEn": "Distinguish configuration and conformation",
+      "description": "Die lernende Person kann Konstitution, Konfiguration (R/S, E/Z) und Konformation unterscheiden und darstellen.",
+      "descriptionEn": "The learner can distinguish and represent constitution, configuration (R/S, E/Z), and conformation.",
+      "weight": 1,
+      "tags": [
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "9decc36b-a69a-5599-a9f0-fcebdf0203d8"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-chemistry",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [
+          "BC_AUFBAU"
+        ],
+        "phase": "Q1"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "2f391ba2-ba1e-40e4-a8d2-dff049516c13",
+          "sourceLandscapeTitle": "Chemie Oberstufe (Hessen, KC 2024)",
+          "sourceGoalId": "53e0ff42-55e9-4fb5-9cc7-8c2006f51789"
+        }
+      },
+      "type": "atomic",
+      "examples": [],
+      "shortKey": "canonical_chemistry_q1_configuration_conformation_distinguish"
     },
     {
       "id": "466bd2e9-39a5-5221-b620-945934adce00",
@@ -22073,7 +23101,7 @@
       ],
       "contains": [],
       "requires": [
-        "ac700167-001f-5ff8-9a7d-85909f5daa4f"
+        "17ab1148-7383-5cab-8b91-73aff795f1e4"
       ],
       "dimensionTags": {
         "framework": "canonical-gymnasium-chemistry",

@@ -736,6 +736,14 @@ const CANONICAL_GYM_PHYSICS_SEK2_PRACTICE_CLUSTER_IDS = [
   '85bbad98-2f48-5d64-85c4-ab6cf67f24c2',
 ]
 const CANONICAL_GYM_CHEMISTRY_LANDSCAPE_ID = 'c436b994-8f44-5134-b9f8-0c9f5d6a5ba0'
+const CANONICAL_GYM_CHEMISTRY_MOTIVATION_GOAL_ID = 'a9c22adc-b543-5b0c-a2d8-3189facdff08'
+const CANONICAL_GYM_CHEMISTRY_SEK2_PRACTICE_CLUSTER_IDS = [
+  '9abac0f3-308d-536d-8454-56ed4fd98312',
+  '4beeb141-2a59-5093-b599-e513403221b0',
+  'e0f19114-9609-500d-8194-da7ee9bff72e',
+  '8ee41a31-2b8e-5dd5-9496-86aab61cdf27',
+  'b5f0201a-bc5b-5159-a36c-0925f198c32f',
+]
 
 const ruleCatalog: QualityRuleDefinition[] = [
   {
@@ -876,6 +884,18 @@ const routeProfiles: RouteProfile[] = [
       && !isPracticeOrAssessmentGoal(goal),
     clusterSelector: isCanonicalGymPhysicsSek2Goal,
   },
+  {
+    profileId: 'canonical-chemistry-sek2',
+    landscapeId: CANONICAL_GYM_CHEMISTRY_LANDSCAPE_ID,
+    label: 'Sekundarstufe II',
+    motivationAnchorGoalIds: [CANONICAL_GYM_CHEMISTRY_MOTIVATION_GOAL_ID],
+    terminalAutonomyClusterIds: CANONICAL_GYM_CHEMISTRY_SEK2_PRACTICE_CLUSTER_IDS,
+    goalSelector: (goal) => isAtomicGoal(goal)
+      && isCanonicalGymChemistrySek2Goal(goal)
+      && !isMemoryGoal(goal)
+      && !isPracticeOrAssessmentGoal(goal),
+    clusterSelector: isCanonicalGymChemistrySek2Goal,
+  },
 ]
 
 function toRepoPath(path: string): string {
@@ -1007,6 +1027,13 @@ function isCanonicalGymPhysicsSek1Goal(goal: LearningGoal): boolean {
 
 function isCanonicalGymPhysicsSek2Goal(goal: LearningGoal): boolean {
   if (goal.id === CANONICAL_GYM_PHYSICS_MOTIVATION_GOAL_ID) return true
+  const legacyPhase = (goal as { phase?: string }).phase
+  return ['E', 'Q1', 'Q2', 'Q3', 'Q4'].includes(goal.dimensionTags?.phase ?? legacyPhase ?? '')
+}
+
+function isCanonicalGymChemistrySek2Goal(goal: LearningGoal): boolean {
+  if (goal.id === CANONICAL_GYM_CHEMISTRY_MOTIVATION_GOAL_ID) return true
+  if (goal.tags?.includes('SekII')) return true
   const legacyPhase = (goal as { phase?: string }).phase
   return ['E', 'Q1', 'Q2', 'Q3', 'Q4'].includes(goal.dimensionTags?.phase ?? legacyPhase ?? '')
 }
