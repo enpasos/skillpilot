@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "rulesVersion": "curriculum-quality-v1",
-  "generatedAt": "2026-05-12T12:15:34.799Z",
+  "generatedAt": "2026-05-12T12:45:02.201Z",
   "generatedBy": "app/scripts/generateCurriculumQualityStatus.ts",
   "sources": {
     "canonicalRoot": "curricula/DE/Gymnasium/canonical",
@@ -154,16 +154,16 @@
         "surrogateBackedAtomicGoals": 0,
         "partialSourceLinkedAtomicGoals": 0,
         "sourceAtomicGoals": 438,
-        "sourceMappedToViewAtomicGoals": 0,
-        "unmappedSourceAtomicGoals": 438,
+        "sourceMappedToViewAtomicGoals": 160,
+        "unmappedSourceAtomicGoals": 278,
         "sourceExtractedGoals": 438,
         "sourceUnregisteredGoals": 0,
         "sourceExtractedAtomicGoals": 438,
         "sourceUnregisteredAtomicGoals": 0,
         "sourceOriginalGoals": 438,
-        "sourceFullyCoveredOriginalGoals": 0,
+        "sourceFullyCoveredOriginalGoals": 160,
         "sourcePartiallyCoveredOriginalGoals": 0,
-        "sourceUncoveredOriginalGoals": 438,
+        "sourceUncoveredOriginalGoals": 278,
         "jurisdictions": [
           {
             "jurisdiction": "DE-BW",
@@ -209,22 +209,22 @@
             "unsupportedAssignedAtomicGoals": 0,
             "partialSourceLinkedAtomicGoals": 0,
             "sourceAtomicGoals": 216,
-            "sourceMappedToViewAtomicGoals": 0,
-            "unmappedSourceAtomicGoals": 216,
+            "sourceMappedToViewAtomicGoals": 160,
+            "unmappedSourceAtomicGoals": 56,
             "sourceExtractedGoals": 216,
             "sourceUnregisteredGoals": 0,
             "sourceExtractedAtomicGoals": 216,
             "sourceUnregisteredAtomicGoals": 0,
             "sourceOriginalGoals": 216,
-            "sourceFullyCoveredOriginalGoals": 0,
+            "sourceFullyCoveredOriginalGoals": 160,
             "sourcePartiallyCoveredOriginalGoals": 0,
-            "sourceUncoveredOriginalGoals": 216,
+            "sourceUncoveredOriginalGoals": 56,
             "errors": 0,
             "warnings": 0,
             "diagnosticPartialOnlyWarnings": 0,
             "atomicCoveragePercent": 100,
             "sourceBackedCoveragePercent": 100,
-            "sourceReverseCoveragePercent": 0,
+            "sourceReverseCoveragePercent": 74.1,
             "status": "error"
           },
           {
@@ -665,10 +665,10 @@
       },
       "mappingPipeline": {
         "totalSources": 3,
-        "completeSources": 0,
-        "incompleteSources": 3,
+        "completeSources": 1,
+        "incompleteSources": 2,
         "blockedSources": 0,
-        "maxCompletedSteps": 2,
+        "maxCompletedSteps": 3,
         "totalSteps": 3,
         "currentStep": "MAPPING-3",
         "sources": [
@@ -839,8 +839,8 @@
                 "available": true
               }
             ],
-            "currentStep": "MAPPING-3",
-            "completedSteps": 2,
+            "currentStep": "",
+            "completedSteps": 3,
             "totalSteps": 3,
             "sourceGoals": 150,
             "passages": 19,
@@ -926,7 +926,7 @@
               {
                 "id": "MAPPING-3",
                 "label": "Source-Ziele auf SkillPilot-Ziele gemappt",
-                "status": "incomplete",
+                "status": "complete",
                 "dependsOn": [
                   "MAPPING-1",
                   "MAPPING-2"
@@ -934,7 +934,7 @@
                 "checks": [
                   {
                     "id": "m3-review-file-present",
-                    "label": "M3-Review-Datei ist als Arbeitsgrundlage vorhanden",
+                    "label": "M3-Review-Datei ist vorhanden",
                     "passed": true,
                     "details": "Review-Datei mit sourceExtractionPath fuer diese Source-Extraction ist vorhanden."
                   },
@@ -945,10 +945,22 @@
                     "details": "Review-Entscheidungen mit unbekannter Source-ID: 0."
                   },
                   {
+                    "id": "m3-review-targets-exist",
+                    "label": "M3-Review-Ziele referenzieren vorhandene Canonical-Ziele",
+                    "passed": true,
+                    "details": "Unbekannte Canonical-Ziele in Mappings: 0."
+                  },
+                  {
                     "id": "m3-all-source-goals-reviewed",
                     "label": "Alle Source-Ziele haben eine fachliche M3-Entscheidung",
-                    "passed": false,
-                    "details": "0/150 Source-Ziele reviewed; offen: 150."
+                    "passed": true,
+                    "details": "150/150 Source-Ziele reviewed; offen: 0."
+                  },
+                  {
+                    "id": "m3-all-source-goals-covered-by-canonical",
+                    "label": "Alle Source-Ziele sind durch SkillPilot-Ziele abgedeckt",
+                    "passed": true,
+                    "details": "Fachlich abgedeckt: 150/150; Mappings: 150/150; verbleibend: 0 explizite Canonical-Gaps, 0 unreviewed."
                   }
                 ]
               }
@@ -1066,7 +1078,7 @@
                 "checks": [
                   {
                     "id": "m3-review-file-present",
-                    "label": "M3-Review-Datei ist als Arbeitsgrundlage vorhanden",
+                    "label": "M3-Review-Datei ist vorhanden",
                     "passed": true,
                     "details": "Review-Datei mit sourceExtractionPath fuer diese Source-Extraction ist vorhanden."
                   },
@@ -1077,10 +1089,22 @@
                     "details": "Review-Entscheidungen mit unbekannter Source-ID: 0."
                   },
                   {
+                    "id": "m3-review-targets-exist",
+                    "label": "M3-Review-Ziele referenzieren vorhandene Canonical-Ziele",
+                    "passed": true,
+                    "details": "Unbekannte Canonical-Ziele in Mappings: 0."
+                  },
+                  {
                     "id": "m3-all-source-goals-reviewed",
                     "label": "Alle Source-Ziele haben eine fachliche M3-Entscheidung",
+                    "passed": true,
+                    "details": "66/66 Source-Ziele reviewed; offen: 0."
+                  },
+                  {
+                    "id": "m3-all-source-goals-covered-by-canonical",
+                    "label": "Alle Source-Ziele sind durch SkillPilot-Ziele abgedeckt",
                     "passed": false,
-                    "details": "0/66 Source-Ziele reviewed; offen: 66."
+                    "details": "Fachlich abgedeckt: 10/66; Mappings: 10/66; verbleibend: 56 explizite Canonical-Gaps, 0 unreviewed."
                   }
                 ]
               }
@@ -1154,13 +1178,13 @@
             "unsupportedAssignmentJurisdictions": 0,
             "sourceUnmappedJurisdictions": 2,
             "unsupportedAssignedAtomicGoals": 0,
-            "unmappedSourceAtomicGoals": 438,
+            "unmappedSourceAtomicGoals": 278,
             "sourceAtomicGoals": 438,
-            "sourceMappedToViewAtomicGoals": 0,
+            "sourceMappedToViewAtomicGoals": 160,
             "sourceOriginalGoals": 438,
-            "sourceFullyCoveredOriginalGoals": 0,
+            "sourceFullyCoveredOriginalGoals": 160,
             "sourcePartiallyCoveredOriginalGoals": 0,
-            "sourceUncoveredOriginalGoals": 438,
+            "sourceUncoveredOriginalGoals": 278,
             "surrogateBackedAtomicGoals": 0,
             "partialSourceLinkedAtomicGoals": 0,
             "warningedJurisdictions": 0,
@@ -1173,7 +1197,7 @@
             "totalAtomicGoals": 160
           },
           "details": [
-            "DE-HE: 216 source Lehrplan atom(s) do not map into the Bundesland view",
+            "DE-HE: 56 source Lehrplan atom(s) do not map into the Bundesland view",
             "DE-BY: 222 source Lehrplan atom(s) do not map into the Bundesland view",
             "DE-BW: no source-backed atomic goals",
             "DE-BB: no source-backed atomic goals",
