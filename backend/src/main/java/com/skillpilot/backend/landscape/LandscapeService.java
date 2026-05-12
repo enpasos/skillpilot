@@ -1188,6 +1188,7 @@ public class LandscapeService {
         ensureFresh();
         return landscapeId != null
                 && (COMPATIBILITY_ONLY_LANDSCAPE_IDS.contains(landscapeId)
+                        || sourceLandscapeJurisdictionById.containsKey(landscapeId)
                         || isLegacyBavariaGymnasiumLandscape(landscapeId));
     }
 
