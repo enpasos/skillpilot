@@ -1,6 +1,6 @@
 # Canonical Gymnasium Chemistry Bundeslaender Status
 
-Snapshot: `2026-05-11T23:39:34Z`
+Snapshot: `2026-05-12T01:05:00Z`
 
 This file is generated from:
 
@@ -8,6 +8,7 @@ This file is generated from:
 - `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json`
 - `docs/qa-ci/status/curriculum-quality-status.json`
 - Chemistry `*.source-extraction.json` files under `curricula/DE/Gymnasium/input`
+- `curricula/DE/Gymnasium/provenance/chemistry-evidence-watch-manifest.json`
 - `scripts/render_canonical_chemistry_bundesland_status.py`
 
 ## Headline
@@ -26,6 +27,15 @@ This file is generated from:
 - States operationally cutover-ready (`P6`): `16/16`
 - Active canonical corridors: `1/6`
 - Priority `backlog`: `16`
+
+## Evidence watch
+
+- Manifest: `curricula/DE/Gymnasium/provenance/chemistry-evidence-watch-manifest.json`
+- Status view: `docs/dev/canonical-gymnasium-chemistry-evidence-watch-status.md`
+- Delta view: `docs/dev/canonical-gymnasium-chemistry-evidence-watch-delta.md`
+- Local run: `./scripts/run_canonical_chemistry_evidence_watch.sh`
+- Scheduled workflow: `.github/workflows/canonical_chemistry_evidence_watch.yml`
+- Interpretation: file-level deltas are maintenance signals; active rollout reopens only when the watch manifest's documented reopen rules are satisfied.
 
 ## Steering model
 
@@ -52,7 +62,7 @@ This file is generated from:
 | `CHEM.REMAINING_SOURCE_ONBOARDING` Remaining Chemistry source onboarding tranche | `completed` | `DE-MV`, `DE-RP`, `DE-SL`, `DE-SN`, `DE-ST`, `DE-TH` | All tracked Chemistry Bundesland source lanes are source-backed and clean on P4; keep the source onboarding tranche closed unless an official source revision changes evidence. |
 | `CHEM.HORIZONTAL_TOPIC_GAP_REVIEW` Horizontal all-state Chemistry topic-gap review | `completed` | `DE-BB`, `DE-BE`, `DE-BW`, `DE-BY`, `DE-HB`, `DE-HE`, `DE-HH`, `DE-MV`, `DE-NI`, `DE-NW`, `DE-RP`, `DE-SH`, `DE-SL`, `DE-SN`, `DE-ST`, `DE-TH` | F4 is closed: 710 broad cluster-target mappings were reviewed or accepted as package evidence, with no shared canonical atom gap proven. |
 | `CHEM.P5_BROADENING_AND_CUTOVER_MAINTENANCE` P5 broad coverage and cutover maintenance | `completed` | - | All tracked Chemistry Bundesland lanes are cutover-ready on P6; reopen this corridor only if a source revision or runtime regression creates a non-cutover maintenance lane. |
-| `CHEM.P6_CUTOVER_READY_MAINTENANCE` P6 cutover-ready Chemistry maintenance | `active` | `DE-BB`, `DE-BE`, `DE-BW`, `DE-BY`, `DE-HB`, `DE-HE`, `DE-HH`, `DE-MV`, `DE-NI`, `DE-NW`, `DE-RP`, `DE-SH`, `DE-SL`, `DE-SN`, `DE-ST`, `DE-TH` | Keep cutover-ready Chemistry states on maintenance only: refresh retained source evidence, runtime mappings, archive-only fences, composition views, and learner migration checks together when a source revision changes visible scope. |
+| `CHEM.P6_CUTOVER_READY_MAINTENANCE` P6 cutover-ready Chemistry maintenance | `active` | `DE-BB`, `DE-BE`, `DE-BW`, `DE-BY`, `DE-HB`, `DE-HE`, `DE-HH`, `DE-MV`, `DE-NI`, `DE-NW`, `DE-RP`, `DE-SH`, `DE-SL`, `DE-SN`, `DE-ST`, `DE-TH` | Chemistry is now in P6 maintenance / evidence-watch mode with no open canonical residue lane. Use the machine-readable watch manifest `curricula/DE/Gymnasium/provenance/chemistry-evidence-watch-manifest.json`, the rendered watch status `docs/dev/canonical-gymnasium-chemistry-evidence-watch-status.md`, the baseline-driven delta view `docs/dev/canonical-gymnasium-chemistry-evidence-watch-delta.md`, the fixed run path `./scripts/run_canonical_chemistry_evidence_watch.sh`, and the scheduled workflow `.github/workflows/canonical_chemistry_evidence_watch.yml` as the operational watch surface. Keep cutover-ready Chemistry states on maintenance only: refresh retained source evidence, runtime mappings, archive-only fences, composition views, and learner migration checks together only when a source revision or watched file delta changes visible scope. |
 
 ## Program phases
 
@@ -63,7 +73,7 @@ This file is generated from:
 | `F2` Ten-state source-backed projection pass | `completed` |
 | `F3` Remaining state source onboarding | `completed` |
 | `F4` Horizontal all-state Chemistry topic pass | `completed` |
-| `F5` Cutover and maintenance | `active` |
+| `F5` Cutover, maintenance, and evidence watch | `active` |
 
 ## State phase scale
 
