@@ -1,10 +1,17 @@
 {
   "version": 1,
-  "updatedAt": "2026-05-11T23:39:34Z",
+  "updatedAt": "2026-05-12T01:05:00Z",
   "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
   "quickViewPath": "docs/dev/canonical-gymnasium-chemistry-bundeslaender-status.md",
   "qualityStatusPath": "docs/qa-ci/status/curriculum-quality-status.json",
   "renderCommand": "python3 scripts/render_canonical_chemistry_bundesland_status.py",
+  "evidenceWatch": {
+    "manifestPath": "curricula/DE/Gymnasium/provenance/chemistry-evidence-watch-manifest.json",
+    "statusViewPath": "docs/dev/canonical-gymnasium-chemistry-evidence-watch-status.md",
+    "deltaViewPath": "docs/dev/canonical-gymnasium-chemistry-evidence-watch-delta.md",
+    "runCommand": "./scripts/run_canonical_chemistry_evidence_watch.sh",
+    "workflowPath": ".github/workflows/canonical_chemistry_evidence_watch.yml"
+  },
   "phaseScale": [
     {
       "id": "P0",
@@ -77,7 +84,7 @@
     },
     {
       "id": "F5",
-      "title": "Cutover and maintenance",
+      "title": "Cutover, maintenance, and evidence watch",
       "status": "active"
     }
   ],
@@ -194,7 +201,7 @@
         "DE-ST",
         "DE-TH"
       ],
-      "nextStep": "Keep cutover-ready Chemistry states on maintenance only: refresh retained source evidence, runtime mappings, archive-only fences, composition views, and learner migration checks together when a source revision changes visible scope."
+      "nextStep": "Chemistry is now in P6 maintenance / evidence-watch mode with no open canonical residue lane. Use the machine-readable watch manifest `curricula/DE/Gymnasium/provenance/chemistry-evidence-watch-manifest.json`, the rendered watch status `docs/dev/canonical-gymnasium-chemistry-evidence-watch-status.md`, the baseline-driven delta view `docs/dev/canonical-gymnasium-chemistry-evidence-watch-delta.md`, the fixed run path `./scripts/run_canonical_chemistry_evidence_watch.sh`, and the scheduled workflow `.github/workflows/canonical_chemistry_evidence_watch.yml` as the operational watch surface. Keep cutover-ready Chemistry states on maintenance only: refresh retained source evidence, runtime mappings, archive-only fences, composition views, and learner migration checks together only when a source revision or watched file delta changes visible scope."
     }
   ],
   "states": [
