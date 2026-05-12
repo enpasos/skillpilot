@@ -805,7 +805,6 @@ public class LearnerService {
         }
 
         Map<String, Double> projected = new HashMap<>(masteryMap);
-        Set<String> visibleGoalIds = goals.keySet();
         boolean changed = false;
 
         for (ResolvedGoalMapping mapping : goalMappingService.getAllMappings()) {
@@ -815,18 +814,17 @@ public class LearnerService {
             if (!mappingMatchesProjectionStateFilter(mapping, stateFilterId)) {
                 continue;
             }
-            if (!visibleGoalIds.contains(mapping.canonicalGoalId())) {
-                continue;
-            }
             Double legacyMastery = masteryMap.get(mapping.legacyGoalId());
             if (legacyMastery == null) {
                 continue;
             }
 
-            double current = projected.getOrDefault(mapping.canonicalGoalId(), 0.0);
-            if (legacyMastery > current) {
-                projected.put(mapping.canonicalGoalId(), legacyMastery);
-                changed = true;
+            for (String canonicalGoalId : resolveCanonicalProjectionTargetIds(mapping.canonicalGoalId(), goals)) {
+                double current = projected.getOrDefault(canonicalGoalId, 0.0);
+                if (legacyMastery > current) {
+                    projected.put(canonicalGoalId, legacyMastery);
+                    changed = true;
+                }
             }
         }
 
@@ -841,7 +839,6 @@ public class LearnerService {
         }
 
         Map<String, MasteryEntryDTO> projected = new HashMap<>(masteryMap);
-        Set<String> visibleGoalIds = goals.keySet();
         boolean changed = false;
 
         for (ResolvedGoalMapping mapping : goalMappingService.getAllMappings()) {
@@ -851,22 +848,107 @@ public class LearnerService {
             if (!mappingMatchesProjectionStateFilter(mapping, stateFilterId)) {
                 continue;
             }
-            if (!visibleGoalIds.contains(mapping.canonicalGoalId())) {
-                continue;
-            }
             MasteryEntryDTO legacyEntry = masteryMap.get(mapping.legacyGoalId());
             if (legacyEntry == null) {
                 continue;
             }
 
-            MasteryEntryDTO current = projected.get(mapping.canonicalGoalId());
-            if (shouldReplaceProjectedEntry(current, legacyEntry)) {
-                projected.put(mapping.canonicalGoalId(), legacyEntry);
-                changed = true;
+            for (String canonicalGoalId : resolveCanonicalProjectionTargetIds(mapping.canonicalGoalId(), goals)) {
+                MasteryEntryDTO current = projected.get(canonicalGoalId);
+                if (shouldReplaceProjectedEntry(current, legacyEntry)) {
+                    projected.put(canonicalGoalId, legacyEntry);
+                    changed = true;
+                }
             }
         }
 
         return changed ? projected : masteryMap;
+    }
+
+    private List<String> resolveCanonicalProjectionTargetIds(String canonicalGoalId, Map<String, LearningGoal> visibleGoals) {
+        if (canonicalGoalId == null || canonicalGoalId.isBlank()) {
+            return Collections.emptyList();
+        }
+
+        LinkedHashSet<String> targetIds = new LinkedHashSet<>();
+        if (isProjectionTargetVisible(canonicalGoalId, visibleGoals)) {
+            targetIds.add(canonicalGoalId);
+        }
+        collectSplitProjectionTargetIds(canonicalGoalId, canonicalGoalId, visibleGoals, targetIds, new HashSet<>());
+        return new ArrayList<>(targetIds);
+    }
+
+    private void collectSplitProjectionTargetIds(
+            String splitParentGoalId,
+            String currentGoalId,
+            Map<String, LearningGoal> visibleGoals,
+            LinkedHashSet<String> targetIds,
+            Set<String> visiting) {
+        if (splitParentGoalId == null || currentGoalId == null || !visiting.add(currentGoalId)) {
+            return;
+        }
+
+        try {
+            LearningGoal current = resolveProjectionGoal(currentGoalId, visibleGoals);
+            if (current == null || current.getContains() == null || current.getContains().isEmpty()) {
+                return;
+            }
+
+            for (String childRef : current.getContains()) {
+                String childId = resolveProjectionGoalRef(childRef, visibleGoals);
+                if (childId == null || childId.isBlank()) {
+                    continue;
+                }
+                LearningGoal child = resolveProjectionGoal(childId, visibleGoals);
+                if (child == null) {
+                    continue;
+                }
+
+                String splitFromCanonicalGoalId = landscapeService.resolveGoalProvenanceValue(
+                        child,
+                        "splitFromCanonicalGoalId");
+                if (splitParentGoalId.equals(splitFromCanonicalGoalId)
+                        && isProjectionTargetVisible(child.getId(), visibleGoals)) {
+                    targetIds.add(child.getId());
+                }
+
+                collectSplitProjectionTargetIds(splitParentGoalId, child.getId(), visibleGoals, targetIds, visiting);
+            }
+        } finally {
+            visiting.remove(currentGoalId);
+        }
+    }
+
+    private LearningGoal resolveProjectionGoal(String goalId, Map<String, LearningGoal> visibleGoals) {
+        if (goalId == null || goalId.isBlank()) {
+            return null;
+        }
+        if (visibleGoals != null && !visibleGoals.isEmpty() && visibleGoals.containsKey(goalId)) {
+            return visibleGoals.get(goalId);
+        }
+        return landscapeService.getGoalDefinition(goalId);
+    }
+
+    private String resolveProjectionGoalRef(String goalRef, Map<String, LearningGoal> visibleGoals) {
+        if (goalRef == null || goalRef.isBlank()) {
+            return null;
+        }
+        if (visibleGoals != null && !visibleGoals.isEmpty()) {
+            String visibleGoalId = resolveGoalRef(goalRef, visibleGoals);
+            if (visibleGoalId != null) {
+                return visibleGoalId;
+            }
+        }
+
+        LearningGoal goal = landscapeService.getGoalDefinition(goalRef);
+        if (goal == null && goalRef.contains(":")) {
+            goal = landscapeService.getGoalDefinition(goalRef.substring(goalRef.indexOf(':') + 1));
+        }
+        return goal == null ? null : goal.getId();
+    }
+
+    private boolean isProjectionTargetVisible(String goalId, Map<String, LearningGoal> visibleGoals) {
+        return visibleGoals == null || visibleGoals.isEmpty() || visibleGoals.containsKey(goalId);
     }
 
     private boolean mappingMatchesProjectionStateFilter(ResolvedGoalMapping mapping, String stateFilterId) {
@@ -3871,25 +3953,27 @@ public class LearnerService {
                 continue;
             }
 
-            Mastery canonicalMastery = masteryByGoalKey.get(mapping.canonicalGoalId());
-            MasteryEntryDTO currentEntry = canonicalMastery == null
-                    ? null
-                    : new MasteryEntryDTO(canonicalMastery.getValue(), canonicalMastery.getUpdatedAt());
             MasteryEntryDTO candidateEntry = new MasteryEntryDTO(legacyMastery.getValue(), legacyMastery.getUpdatedAt());
-            if (!shouldReplaceProjectedEntry(currentEntry, candidateEntry)) {
-                continue;
-            }
+            for (String canonicalGoalId : resolveCanonicalProjectionTargetIds(mapping.canonicalGoalId(), null)) {
+                Mastery canonicalMastery = masteryByGoalKey.get(canonicalGoalId);
+                MasteryEntryDTO currentEntry = canonicalMastery == null
+                        ? null
+                        : new MasteryEntryDTO(canonicalMastery.getValue(), canonicalMastery.getUpdatedAt());
+                if (!shouldReplaceProjectedEntry(currentEntry, candidateEntry)) {
+                    continue;
+                }
 
-            if (canonicalMastery == null) {
-                canonicalMastery = new Mastery(learner, mapping.canonicalGoalId(), legacyMastery.getValue());
-            } else {
-                canonicalMastery.setValue(legacyMastery.getValue());
+                if (canonicalMastery == null) {
+                    canonicalMastery = new Mastery(learner, canonicalGoalId, legacyMastery.getValue());
+                } else {
+                    canonicalMastery.setValue(legacyMastery.getValue());
+                }
+                masteryRepository.saveAndFlush(canonicalMastery);
+                if (legacyMastery.getUpdatedAt() != null) {
+                    masteryRepository.updateTimestamp(skillpilotId, canonicalGoalId, legacyMastery.getUpdatedAt());
+                }
+                masteryByGoalKey.put(canonicalGoalId, canonicalMastery);
             }
-            masteryRepository.saveAndFlush(canonicalMastery);
-            if (legacyMastery.getUpdatedAt() != null) {
-                masteryRepository.updateTimestamp(skillpilotId, mapping.canonicalGoalId(), legacyMastery.getUpdatedAt());
-            }
-            masteryByGoalKey.put(mapping.canonicalGoalId(), canonicalMastery);
         }
     }
 
