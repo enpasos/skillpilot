@@ -52,7 +52,7 @@
   ],
   "pipelineStatus": {
     "version": 1,
-    "currentStep": "MAPPING-3",
+    "currentStep": "",
     "steps": [
       {
         "id": "MAPPING-1",
@@ -117,7 +117,7 @@
       {
         "id": "MAPPING-3",
         "label": "Source-Ziele auf SkillPilot-Ziele gemappt",
-        "status": "incomplete",
+        "status": "complete",
         "dependsOn": [
           "MAPPING-1",
           "MAPPING-2"
@@ -125,7 +125,7 @@
         "checks": [
           {
             "id": "m3-review-file-present",
-            "label": "M3-Review-Datei ist als Arbeitsgrundlage vorhanden",
+            "label": "M3-Review-Datei ist vorhanden",
             "passed": true,
             "details": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_biology_upper_secondary_source_extraction_to_canonical_biology.review.json"
           },
@@ -133,13 +133,25 @@
             "id": "m3-review-decisions-reference-source-goals",
             "label": "M3-Review-Entscheidungen referenzieren gueltige Source-Ziele",
             "passed": true,
-            "details": "Noch keine fachlichen M3-Entscheidungen erfasst; Seed-Mappings aus der Legacy-Migration sind separat abgelegt."
+            "details": "Reviewed Source-Ziele: 150/150."
+          },
+          {
+            "id": "m3-review-targets-exist",
+            "label": "M3-Review-Ziele referenzieren vorhandene Canonical-Ziele",
+            "passed": true,
+            "details": "Unbekannte Canonical-Ziele: -"
           },
           {
             "id": "m3-all-source-goals-reviewed",
             "label": "Alle Source-Ziele haben eine fachliche M3-Entscheidung",
-            "passed": false,
-            "details": "Reviewed Source-Ziele: 0/150."
+            "passed": true,
+            "details": "150/150 Source-Ziele reviewed; offen: 0."
+          },
+          {
+            "id": "m3-all-source-goals-covered-by-canonical",
+            "label": "Alle Source-Ziele sind inhaltlich durch SkillPilot-Ziele abgedeckt",
+            "passed": true,
+            "details": "Abgedeckt: 150/150; verbleibend: 0 explizite Canonical-Gaps, 0 unreviewed."
           }
         ]
       }

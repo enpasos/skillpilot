@@ -122,7 +122,7 @@
         "checks": [
           {
             "id": "m3-review-file-present",
-            "label": "M3-Review-Datei ist als Arbeitsgrundlage vorhanden",
+            "label": "M3-Review-Datei ist vorhanden",
             "passed": true,
             "details": "curricula/DE/Gymnasium/mapping/DE-HE/lower-secondary/hessen_biology_lower_secondary_source_extraction_to_canonical_biology.review.json"
           },
@@ -130,13 +130,25 @@
             "id": "m3-review-decisions-reference-source-goals",
             "label": "M3-Review-Entscheidungen referenzieren gueltige Source-Ziele",
             "passed": true,
-            "details": "Noch keine fachlichen M3-Entscheidungen erfasst; Seed-Mappings aus der Legacy-Migration sind separat abgelegt."
+            "details": "Reviewed Source-Ziele: 66/66."
+          },
+          {
+            "id": "m3-review-targets-exist",
+            "label": "M3-Review-Ziele referenzieren vorhandene Canonical-Ziele",
+            "passed": true,
+            "details": "Unbekannte Canonical-Ziele: -"
           },
           {
             "id": "m3-all-source-goals-reviewed",
             "label": "Alle Source-Ziele haben eine fachliche M3-Entscheidung",
+            "passed": true,
+            "details": "66/66 Source-Ziele reviewed; offen: 0."
+          },
+          {
+            "id": "m3-all-source-goals-covered-by-canonical",
+            "label": "Alle Source-Ziele sind durch SkillPilot-Ziele abgedeckt",
             "passed": false,
-            "details": "Reviewed Source-Ziele: 0/66."
+            "details": "Fachlich abgedeckt: 10/66; Mappings: 10/66; verbleibend: 56 explizite Canonical-Gaps, 0 unreviewed."
           }
         ]
       }
