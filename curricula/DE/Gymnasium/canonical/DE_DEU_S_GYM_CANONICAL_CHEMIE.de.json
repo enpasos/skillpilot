@@ -2137,7 +2137,7 @@
       "titleEn": "Chemical Reactions and Energy Turnover (Lower Secondary)",
       "description": "Cluster für Reaktionsmerkmale, einfache Oxidations- und Reduktionsvorgänge, Verbrennung, Energieprofile, Bindungsenergie, Energieumsatz, Massenerhaltung, Redox-/Säure-Base-Abgrenzung und Bedeutung von Redoxreaktionen aus der gymnasialen Sekundarstufe I.",
       "descriptionEn": "Cluster for reaction characteristics, simple oxidation and reduction processes, combustion, energy profiles, bond energy, energy turnover, mass conservation, redox/acid-base distinction, and the significance of redox reactions from lower secondary Gymnasium chemistry.",
-      "weight": 10,
+      "weight": 16,
       "tags": [
         "GK",
         "LK",
@@ -2333,18 +2333,22 @@
     {
       "id": "bb707fda-504c-4699-a78c-d0a6c320658f",
       "shortKey": "canonical_chemistry_sek1_combustion_air_water",
-      "title": "Luft, Wasser und Verbrennung chemisch deuten",
-      "titleEn": "Interpret air, water, and combustion chemically",
-      "description": "Die lernende Person kann die Zusammensetzung von Luft, einfache Verbrennungsvorgänge und die Wirkung geeigneter Löschmittel fachlich deuten.",
-      "descriptionEn": "The learner can interpret the composition of air, simple combustion processes, and the effect of suitable extinguishing agents.",
-      "weight": 1,
+      "title": "Luft, Verbrennung und Löschmittel chemisch deuten",
+      "titleEn": "Interpret air, combustion, and extinguishing agents chemically",
+      "description": "Cluster für Luftzusammensetzung, einfache Verbrennungsvorgänge und die Wirkung geeigneter Löschmittel in der gymnasialen Sekundarstufe I.",
+      "descriptionEn": "Cluster for air composition, simple combustion processes, and the effect of suitable extinguishing agents in lower secondary chemistry.",
+      "weight": 3,
       "tags": [
         "GK",
         "LK",
         "canonical",
         "SekI"
       ],
-      "contains": [],
+      "contains": [
+        "2dae4132-40a9-5ee3-ac0c-11c5d1302f36",
+        "fa203f3a-0e81-5bcb-a4c8-e4374b7f04a3",
+        "350a394f-e0d4-5e42-8e9a-39da9df33518"
+      ],
       "requires": [
         "8d4ef102-e6a6-4d2e-bb6b-e707d3f2e566"
       ],
@@ -2388,6 +2392,201 @@
           "sourceLandscapeId": "bea90c22-b9c5-4c0c-9b10-89d875f50772",
           "sourceLandscapeTitle": "Chemie Sekundarstufe I (Hessen, G9)",
           "sourceGoalId": "8933dbfb-1d50-41fc-8e59-3ec9b65ed482"
+        }
+      },
+      "type": "cluster",
+      "examples": []
+    },
+    {
+      "id": "2dae4132-40a9-5ee3-ac0c-11c5d1302f36",
+      "shortKey": "canonical_chemistry_sek1_air_composition_combustion",
+      "title": "Luftzusammensetzung für Verbrennungen beschreiben",
+      "titleEn": "Describe air composition for combustion processes",
+      "description": "Die lernende Person kann die Zusammensetzung von Luft fachlich beschreiben und Sauerstoff als reaktionswirksamen Bestandteil bei Verbrennungen einordnen.",
+      "descriptionEn": "The learner can describe the composition of air and classify oxygen as the reactive component in combustion processes.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekI"
+      ],
+      "contains": [],
+      "requires": [
+        "8d4ef102-e6a6-4d2e-bb6b-e707d3f2e566"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-chemistry",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "PK2_MODELLIEREN",
+          "PK4_KOMMUNIZIEREN"
+        ],
+        "guidingIdeas": [
+          "BC_REAKTION",
+          "BC_ENERGIE"
+        ],
+        "phase": "GLOBAL",
+        "area": "Reaktionen",
+        "topicCode": "CANONICAL.CHEMISTRY.SEK1.COMBUSTION.AIR_COMPOSITION"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "bea90c22-b9c5-4c0c-9b10-89d875f50772",
+          "sourceLandscapeTitle": "Chemie Sekundarstufe I (Hessen, G9)",
+          "sourceGoalId": "8933dbfb-1d50-41fc-8e59-3ec9b65ed482",
+          "splitFromCanonicalGoalId": "bb707fda-504c-4699-a78c-d0a6c320658f",
+          "splitReviewId": "canonical-chemistry-sek1-reactions-energy"
+        }
+      },
+      "type": "atomic",
+      "examples": []
+    },
+    {
+      "id": "fa203f3a-0e81-5bcb-a4c8-e4374b7f04a3",
+      "shortKey": "canonical_chemistry_sek1_combustion_processes_simple",
+      "title": "Einfache Verbrennungsvorgänge chemisch deuten",
+      "titleEn": "Interpret simple combustion processes chemically",
+      "description": "Die lernende Person kann einfache Verbrennungsvorgänge als chemische Reaktionen deuten und beteiligte Stoffe sowie beobachtbare Reaktionsmerkmale fachlich verknüpfen.",
+      "descriptionEn": "The learner can interpret simple combustion processes as chemical reactions and connect involved substances with observable reaction features.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekI"
+      ],
+      "contains": [],
+      "requires": [
+        "2dae4132-40a9-5ee3-ac0c-11c5d1302f36"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-chemistry",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "PK2_MODELLIEREN",
+          "PK4_KOMMUNIZIEREN"
+        ],
+        "guidingIdeas": [
+          "BC_REAKTION",
+          "BC_ENERGIE"
+        ],
+        "phase": "GLOBAL",
+        "area": "Reaktionen",
+        "topicCode": "CANONICAL.CHEMISTRY.SEK1.COMBUSTION.PROCESSES"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "bea90c22-b9c5-4c0c-9b10-89d875f50772",
+          "sourceLandscapeTitle": "Chemie Sekundarstufe I (Hessen, G9)",
+          "sourceGoalId": "8933dbfb-1d50-41fc-8e59-3ec9b65ed482",
+          "splitFromCanonicalGoalId": "bb707fda-504c-4699-a78c-d0a6c320658f",
+          "splitReviewId": "canonical-chemistry-sek1-reactions-energy"
+        }
+      },
+      "type": "atomic",
+      "examples": []
+    },
+    {
+      "id": "350a394f-e0d4-5e42-8e9a-39da9df33518",
+      "shortKey": "canonical_chemistry_sek1_extinguishing_agents_effect",
+      "title": "Wirkung geeigneter Löschmittel erklären",
+      "titleEn": "Explain the effect of suitable extinguishing agents",
+      "description": "Die lernende Person kann die Wirkung geeigneter Löschmittel bei einfachen Bränden über das Unterbrechen von Verbrennungsbedingungen fachlich erklären.",
+      "descriptionEn": "The learner can explain the effect of suitable extinguishing agents in simple fires by referring to the interruption of combustion conditions.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekI"
+      ],
+      "contains": [],
+      "requires": [
+        "fa203f3a-0e81-5bcb-a4c8-e4374b7f04a3"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-chemistry",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "PK2_MODELLIEREN",
+          "PK4_KOMMUNIZIEREN"
+        ],
+        "guidingIdeas": [
+          "BC_REAKTION",
+          "BC_ENERGIE"
+        ],
+        "phase": "GLOBAL",
+        "area": "Reaktionen",
+        "topicCode": "CANONICAL.CHEMISTRY.SEK1.COMBUSTION.EXTINGUISHING_AGENTS"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "bea90c22-b9c5-4c0c-9b10-89d875f50772",
+          "sourceLandscapeTitle": "Chemie Sekundarstufe I (Hessen, G9)",
+          "sourceGoalId": "8933dbfb-1d50-41fc-8e59-3ec9b65ed482",
+          "splitFromCanonicalGoalId": "bb707fda-504c-4699-a78c-d0a6c320658f",
+          "splitReviewId": "canonical-chemistry-sek1-reactions-energy"
         }
       },
       "type": "atomic",
@@ -2872,6 +3071,74 @@
       "examples": []
     },
     {
+      "weight": 3,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekI"
+      ],
+      "contains": [
+        "4dab7d52-5b89-52ab-a425-17a7707f44c8",
+        "0503c975-3934-5206-962e-b1c247de0c12",
+        "9198b4cf-e454-562f-83f0-b1b74e68765d"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "type": "cluster",
+      "id": "871eabde-6e19-59d3-bc7c-60977a9837db",
+      "shortKey": "canonical_chemistry_sek1_fuels_co2_balance_carbon_cycle",
+      "title": "Brennstoffe und Energieträger bewerten",
+      "titleEn": "Evaluate fuels and energy carriers",
+      "description": "Cluster für den Vergleich von Brennstoffen nach CO2-Bilanz und Reaktionswärme, die Erklärung fossilen CO2-Anstiegs und die kriteriengeleitete Bewertung von Energieträgern.",
+      "descriptionEn": "Cluster for comparing fuels by CO2 balance and heat of reaction, explaining fossil CO2 increase, and evaluating energy carriers using criteria.",
+      "requires": [
+        "fa203f3a-0e81-5bcb-a4c8-e4374b7f04a3",
+        "1286f2fe-89b7-4454-8e11-85b6abd6e278"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-chemistry",
+        "demandLevel": "AB3",
+        "processCompetencies": [
+          "PK2_MODELLIEREN",
+          "PK5_BEWERTEN"
+        ],
+        "guidingIdeas": [
+          "BC_REAKTION",
+          "BC_ENERGIE"
+        ],
+        "phase": "GLOBAL",
+        "area": "Reaktionen",
+        "topicCode": "CANONICAL.CHEMISTRY.SEK1.FUELS_CO2_BALANCE_CARBON_CYCLE"
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "ff1ca997-b6cc-5ece-8e13-5498b4bbf808",
+          "sourceLandscapeTitle": "Chemie Gymnasium (Bayern, LehrplanPLUS)",
+          "sourceGoalId": "495cea26-06df-5a54-aa76-a80d47629e62"
+        }
+      },
+      "examples": []
+    },
+    {
       "weight": 1,
       "tags": [
         "GK",
@@ -2901,14 +3168,14 @@
         ]
       },
       "type": "atomic",
-      "id": "871eabde-6e19-59d3-bc7c-60977a9837db",
-      "shortKey": "canonical_chemistry_sek1_fuels_co2_balance_carbon_cycle",
-      "title": "Brennstoffe nach CO2-Bilanz und Reaktionswärme bewerten",
-      "titleEn": "Evaluate fuels by CO2 balance and heat of reaction",
-      "description": "Die lernende Person kann CO2-Bilanz und Reaktionswärme verschiedener Brennstoffe vergleichen, Energieträger bewerten und den fossilen CO2-Anstieg mit dem Kohlenstoffatom-Kreislauf begründen.",
-      "descriptionEn": "The learner can compare CO2 balances and heats of reaction for different fuels, evaluate energy carriers, and explain fossil CO2 increase using the carbon atom cycle.",
+      "id": "4dab7d52-5b89-52ab-a425-17a7707f44c8",
+      "shortKey": "canonical_chemistry_sek1_fuels_co2_heat_compare",
+      "title": "CO2-Bilanz und Reaktionswärme von Brennstoffen vergleichen",
+      "titleEn": "Compare fuels by CO2 balance and heat of reaction",
+      "description": "Die lernende Person kann CO2-Bilanzen und Reaktionswärmen verschiedener Brennstoffe vergleichen und als Kriterien für die fachliche Bewertung von Energieträgern nutzen.",
+      "descriptionEn": "The learner can compare CO2 balances and heats of reaction for different fuels and use them as criteria for evaluating energy carriers.",
       "requires": [
-        "bb707fda-504c-4699-a78c-d0a6c320658f",
+        "fa203f3a-0e81-5bcb-a4c8-e4374b7f04a3",
         "1286f2fe-89b7-4454-8e11-85b6abd6e278"
       ],
       "dimensionTags": {
@@ -2924,13 +3191,146 @@
         ],
         "phase": "GLOBAL",
         "area": "Reaktionen",
-        "topicCode": "CANONICAL.CHEMISTRY.SEK1.FUELS_CO2_BALANCE_CARBON_CYCLE"
+        "topicCode": "CANONICAL.CHEMISTRY.SEK1.FUELS.CO2_HEAT_COMPARE"
       },
       "extendedData": {
         "provenance": {
           "sourceLandscapeId": "ff1ca997-b6cc-5ece-8e13-5498b4bbf808",
           "sourceLandscapeTitle": "Chemie Gymnasium (Bayern, LehrplanPLUS)",
-          "sourceGoalId": "495cea26-06df-5a54-aa76-a80d47629e62"
+          "sourceGoalId": "495cea26-06df-5a54-aa76-a80d47629e62",
+          "splitFromCanonicalGoalId": "871eabde-6e19-59d3-bc7c-60977a9837db",
+          "splitReviewId": "canonical-chemistry-sek1-reactions-energy"
+        }
+      },
+      "examples": []
+    },
+    {
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekI"
+      ],
+      "contains": [],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "type": "atomic",
+      "id": "0503c975-3934-5206-962e-b1c247de0c12",
+      "shortKey": "canonical_chemistry_sek1_fossil_co2_carbon_cycle",
+      "title": "Fossilen CO2-Anstieg mit dem Kohlenstoffkreislauf begründen",
+      "titleEn": "Explain fossil CO2 increase with the carbon cycle",
+      "description": "Die lernende Person kann den fossilen CO2-Anstieg mit dem Kreislauf von Kohlenstoffatomen und der Nutzung fossiler Brennstoffe fachlich begründen.",
+      "descriptionEn": "The learner can explain the increase in fossil CO2 using the carbon atom cycle and the use of fossil fuels.",
+      "requires": [
+        "4dab7d52-5b89-52ab-a425-17a7707f44c8"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-chemistry",
+        "demandLevel": "AB3",
+        "processCompetencies": [
+          "PK2_MODELLIEREN",
+          "PK5_BEWERTEN"
+        ],
+        "guidingIdeas": [
+          "BC_REAKTION",
+          "BC_ENERGIE"
+        ],
+        "phase": "GLOBAL",
+        "area": "Reaktionen",
+        "topicCode": "CANONICAL.CHEMISTRY.SEK1.FUELS.FOSSIL_CO2_CARBON_CYCLE"
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "ff1ca997-b6cc-5ece-8e13-5498b4bbf808",
+          "sourceLandscapeTitle": "Chemie Gymnasium (Bayern, LehrplanPLUS)",
+          "sourceGoalId": "495cea26-06df-5a54-aa76-a80d47629e62",
+          "splitFromCanonicalGoalId": "871eabde-6e19-59d3-bc7c-60977a9837db",
+          "splitReviewId": "canonical-chemistry-sek1-reactions-energy"
+        }
+      },
+      "examples": []
+    },
+    {
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekI"
+      ],
+      "contains": [],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "type": "atomic",
+      "id": "9198b4cf-e454-562f-83f0-b1b74e68765d",
+      "shortKey": "canonical_chemistry_sek1_energy_carriers_evaluate",
+      "title": "Energieträger kriteriengeleitet bewerten",
+      "titleEn": "Evaluate energy carriers using criteria",
+      "description": "Die lernende Person kann Energieträger auf Grundlage chemischer, ökologischer und nutzungsbezogener Kriterien begründet bewerten.",
+      "descriptionEn": "The learner can evaluate energy carriers based on chemical, ecological, and usage-related criteria.",
+      "requires": [
+        "4dab7d52-5b89-52ab-a425-17a7707f44c8",
+        "0503c975-3934-5206-962e-b1c247de0c12"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-chemistry",
+        "demandLevel": "AB3",
+        "processCompetencies": [
+          "PK2_MODELLIEREN",
+          "PK5_BEWERTEN"
+        ],
+        "guidingIdeas": [
+          "BC_REAKTION",
+          "BC_ENERGIE"
+        ],
+        "phase": "GLOBAL",
+        "area": "Reaktionen",
+        "topicCode": "CANONICAL.CHEMISTRY.SEK1.FUELS.ENERGY_CARRIERS_EVALUATE"
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "ff1ca997-b6cc-5ece-8e13-5498b4bbf808",
+          "sourceLandscapeTitle": "Chemie Gymnasium (Bayern, LehrplanPLUS)",
+          "sourceGoalId": "495cea26-06df-5a54-aa76-a80d47629e62",
+          "splitFromCanonicalGoalId": "871eabde-6e19-59d3-bc7c-60977a9837db",
+          "splitReviewId": "canonical-chemistry-sek1-reactions-energy"
         }
       },
       "examples": []
@@ -8268,7 +8668,7 @@
       "descriptionEn": "The learner can assign important petroleum products to applications in everyday life and technology and assess ecological consequences of their use with justification.",
       "requires": [
         "8ceb1749-fce0-584f-a2b8-0a309282329a",
-        "871eabde-6e19-59d3-bc7c-60977a9837db"
+        "9198b4cf-e454-562f-83f0-b1b74e68765d"
       ],
       "extendedData": {
         "provenance": {
@@ -23969,7 +24369,7 @@
         "canonical"
       ],
       "requires": [
-        "bb707fda-504c-4699-a78c-d0a6c320658f",
+        "fa203f3a-0e81-5bcb-a4c8-e4374b7f04a3",
         "1286f2fe-89b7-4454-8e11-85b6abd6e278"
       ],
       "contains": [],
