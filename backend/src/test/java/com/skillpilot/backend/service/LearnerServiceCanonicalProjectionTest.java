@@ -171,6 +171,7 @@ class LearnerServiceCanonicalProjectionTest {
     private static final String CANONICAL_CHEMISTRY_GALVANIC_ID = "f0939f88-a6af-5334-ac4d-5d54732af25a";
     private static final String CANONICAL_CHEMISTRY_UPPER_ELECTROLYSIS_ID = "fd7977bf-1d8e-5c5e-9c37-bd76bb2ffeef";
     private static final String CANONICAL_CHEMISTRY_BOND_MODELS_ID = "15e73664-8c3f-5aa6-ac65-b455fc3ed6d6";
+    private static final String CANONICAL_CHEMISTRY_BOND_TYPES_ID = "448815cc-4127-54b7-96bf-e54b3d2a38c5";
     private static final String CANONICAL_BIOLOGY_SEK1_CLUSTER_ID = "b530a382-2786-5794-8821-3e01a62d88fd";
     private static final String CANONICAL_BIOLOGY_SEK1_SCIENCE_ID = "8d35381e-d646-512c-b0c2-bb90c4974208";
     private static final String CANONICAL_BIOLOGY_SEK1_CHARACTERISTICS_ID = "55bdfb1d-5c14-5b1c-bc8e-4ab428ef59ba";
@@ -548,11 +549,14 @@ class LearnerServiceCanonicalProjectionTest {
     }
 
     @Test
-    void canonicalChemistryBondModelsDependOnProjectedSek1IonicBondingBridge() {
-        LearningGoal goal = landscapeService.getGoalDefinition(CANONICAL_CHEMISTRY_BOND_MODELS_ID);
+    void canonicalChemistryBondModelEntrypointDependsOnProjectedSek1IonicBondingBridge() {
+        LearningGoal cluster = landscapeService.getGoalDefinition(CANONICAL_CHEMISTRY_BOND_MODELS_ID);
+        LearningGoal entrypoint = landscapeService.getGoalDefinition(CANONICAL_CHEMISTRY_BOND_TYPES_ID);
 
-        assertThat(goal).isNotNull();
-        assertThat(goal.getRequires())
+        assertThat(cluster).isNotNull();
+        assertThat(cluster.getRequires()).isEmpty();
+        assertThat(entrypoint).isNotNull();
+        assertThat(entrypoint.getRequires())
                 .contains(CANONICAL_CHEMISTRY_SEK1_IONIC_BONDING_ID);
     }
 
