@@ -176,7 +176,7 @@ This file is generated from:
 | `curricula/DE/Gymnasium/mapping/DE-TH/lower-secondary/th_chemistry_lower_secondary_to_canonical_chemistry.json` | `yes` | `9d7e465d5199` | `2026-05-11T23:38:28Z` |
 | `curricula/DE/Gymnasium/mapping/DE-TH/upper-secondary/th_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json` | `yes` | `e3310405c9d2` | `2026-05-11T20:16:54Z` |
 | `curricula/DE/Gymnasium/mapping/DE-TH/upper-secondary/th_chemistry_upper_secondary_to_canonical_chemistry.json` | `yes` | `96b6c8283587` | `2026-05-11T23:38:28Z` |
-| `curricula/DE/Gymnasium/provenance/chemistry-bundesland-rollout-tracker.json` | `yes` | `4a02266a50b7` | `2026-05-11T23:39:34Z` |
+| `curricula/DE/Gymnasium/provenance/chemistry-bundesland-rollout-tracker.json` | `yes` | `8d5b1a12a19a` | `2026-05-12T01:06:36Z` |
 
 ## `chemistry_canonical_and_tracker_watch`
 
@@ -191,7 +191,7 @@ This file is generated from:
 | File | Exists | SHA256-12 | Last modified (UTC) |
 | --- | --- | --- | --- |
 | `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json` | `yes` | `caf2314e8166` | `2026-05-11T23:54:30Z` |
-| `curricula/DE/Gymnasium/provenance/chemistry-bundesland-rollout-tracker.json` | `yes` | `4a02266a50b7` | `2026-05-11T23:39:34Z` |
+| `curricula/DE/Gymnasium/provenance/chemistry-bundesland-rollout-tracker.json` | `yes` | `8d5b1a12a19a` | `2026-05-12T01:06:36Z` |
 
 ## `chemistry_source_evidence_watch`
 

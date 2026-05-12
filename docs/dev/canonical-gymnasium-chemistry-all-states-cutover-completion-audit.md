@@ -32,6 +32,11 @@ All 16 tracked states are source-backed, projection-clean, and operationally cut
   - `curricula/DE/Gymnasium/provenance/source-landscape-registry.json`
 - Learner-facing composition views:
   - `curricula/DE/Gymnasium/composition-views/chemie/*.view.json`
+- Evidence watch:
+  - `curricula/DE/Gymnasium/provenance/chemistry-evidence-watch-manifest.json`
+  - `docs/dev/canonical-gymnasium-chemistry-evidence-watch-status.md`
+  - `docs/dev/canonical-gymnasium-chemistry-evidence-watch-delta.md`
+  - `.github/workflows/canonical_chemistry_evidence_watch.yml`
 
 ## Runtime Notes
 
@@ -47,6 +52,8 @@ Retained state source-extraction landscapes are archive-only compatibility surfa
 
 Keep all states on P6 maintenance. When an official source revision changes a visible scope, refresh the source extraction, reviewed mapping, runtime mapping, source-only archive fence, and relevant composition views together.
 
+Use `./scripts/run_canonical_chemistry_evidence_watch.sh` as the fixed local maintenance gate. A file-level watch delta is a signal for review, not an automatic rollout reopen; reopen active Chemistry rollout only when the manifest's documented reopen rule for the affected target is satisfied.
+
 ## Verification
 
 Current focused verification path:
@@ -56,6 +63,7 @@ Current focused verification path:
   --tests com.skillpilot.backend.landscape.LandscapeServiceTest \
   --tests com.skillpilot.backend.landscape.GoalMappingRepositoryFixtureTest
 python3 scripts/render_canonical_chemistry_bundesland_status.py
+./scripts/run_canonical_chemistry_evidence_watch.sh
 python3 scripts/validate_schemas.py
 (cd app && npm run validate:graph)
 (cd app && npm run validate:composition-views)
