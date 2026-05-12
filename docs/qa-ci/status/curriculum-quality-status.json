@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "rulesVersion": "curriculum-quality-v1",
-  "generatedAt": "2026-05-12T11:46:05.495Z",
+  "generatedAt": "2026-05-12T12:15:34.799Z",
   "generatedBy": "app/scripts/generateCurriculumQualityStatus.ts",
   "sources": {
     "canonicalRoot": "curricula/DE/Gymnasium/canonical",
@@ -26,8 +26,8 @@
     },
     "ruleStatus": {
       "pass": 101,
-      "warn": 17,
-      "fail": 19,
+      "warn": 18,
+      "fail": 18,
       "not_configured": 70
     }
   },
@@ -153,17 +153,17 @@
         "unsupportedAssignedAtomicGoals": 0,
         "surrogateBackedAtomicGoals": 0,
         "partialSourceLinkedAtomicGoals": 0,
-        "sourceAtomicGoals": 462,
-        "sourceMappedToViewAtomicGoals": 184,
-        "unmappedSourceAtomicGoals": 278,
-        "sourceExtractedGoals": 222,
+        "sourceAtomicGoals": 438,
+        "sourceMappedToViewAtomicGoals": 0,
+        "unmappedSourceAtomicGoals": 438,
+        "sourceExtractedGoals": 438,
         "sourceUnregisteredGoals": 0,
-        "sourceExtractedAtomicGoals": 222,
+        "sourceExtractedAtomicGoals": 438,
         "sourceUnregisteredAtomicGoals": 0,
-        "sourceOriginalGoals": 515,
-        "sourceFullyCoveredOriginalGoals": 219,
-        "sourcePartiallyCoveredOriginalGoals": 3,
-        "sourceUncoveredOriginalGoals": 293,
+        "sourceOriginalGoals": 438,
+        "sourceFullyCoveredOriginalGoals": 0,
+        "sourcePartiallyCoveredOriginalGoals": 0,
+        "sourceUncoveredOriginalGoals": 438,
         "jurisdictions": [
           {
             "jurisdiction": "DE-BW",
@@ -208,23 +208,23 @@
             "surrogateBackedAtomicGoals": 0,
             "unsupportedAssignedAtomicGoals": 0,
             "partialSourceLinkedAtomicGoals": 0,
-            "sourceAtomicGoals": 240,
-            "sourceMappedToViewAtomicGoals": 184,
-            "unmappedSourceAtomicGoals": 56,
-            "sourceExtractedGoals": 0,
+            "sourceAtomicGoals": 216,
+            "sourceMappedToViewAtomicGoals": 0,
+            "unmappedSourceAtomicGoals": 216,
+            "sourceExtractedGoals": 216,
             "sourceUnregisteredGoals": 0,
-            "sourceExtractedAtomicGoals": 0,
+            "sourceExtractedAtomicGoals": 216,
             "sourceUnregisteredAtomicGoals": 0,
-            "sourceOriginalGoals": 293,
-            "sourceFullyCoveredOriginalGoals": 219,
-            "sourcePartiallyCoveredOriginalGoals": 3,
-            "sourceUncoveredOriginalGoals": 71,
+            "sourceOriginalGoals": 216,
+            "sourceFullyCoveredOriginalGoals": 0,
+            "sourcePartiallyCoveredOriginalGoals": 0,
+            "sourceUncoveredOriginalGoals": 216,
             "errors": 0,
             "warnings": 0,
             "diagnosticPartialOnlyWarnings": 0,
             "atomicCoveragePercent": 100,
             "sourceBackedCoveragePercent": 100,
-            "sourceReverseCoveragePercent": 76.7,
+            "sourceReverseCoveragePercent": 0,
             "status": "error"
           },
           {
@@ -666,8 +666,8 @@
       "mappingPipeline": {
         "totalSources": 3,
         "completeSources": 0,
-        "incompleteSources": 1,
-        "blockedSources": 2,
+        "incompleteSources": 3,
+        "blockedSources": 0,
         "maxCompletedSteps": 2,
         "totalSteps": 3,
         "currentStep": "MAPPING-3",
@@ -824,59 +824,131 @@
           },
           {
             "sourceLandscapeId": "3e56aa75-c76c-4de5-883b-0aac98297846",
-            "title": "Biologie Oberstufe (Hessen, KC 2024)",
+            "title": "Biologie Oberstufe (Hessen, KC 2024 Source-Extraction)",
             "jurisdiction": "DE-HE",
-            "path": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_biology_upper_secondary_to_canonical_biology.json",
-            "sourceKind": "missing-extraction",
-            "currentStep": "MAPPING-1",
-            "completedSteps": 0,
+            "subject": "Biologie",
+            "stage": "SekII",
+            "path": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-extraction/DE_HE_BIOLOGIE_SEKII_KC2024.source-extraction.json",
+            "sourceKind": "source-extraction",
+            "sourceDocuments": [
+              {
+                "key": "KC2024_BIOLOGIE_SEKII",
+                "title": "Kerncurriculum Biologie gymnasiale Oberstufe Hessen 2024",
+                "path": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-json/DE_HES_S_GYM_2_BIOLOGIE.de.json.snapshot",
+                "official": true,
+                "available": true
+              }
+            ],
+            "currentStep": "MAPPING-3",
+            "completedSteps": 2,
             "totalSteps": 3,
-            "sourceGoals": 0,
-            "passages": 0,
+            "sourceGoals": 150,
+            "passages": 19,
+            "mappedSourceGoals": 150,
+            "unmappedSourceGoals": 0,
+            "extraMappedGoals": 0,
+            "exactMappings": 150,
+            "partialMappings": 0,
+            "otherMappings": 0,
+            "sourceGoalCountPeerBaselineReview": {
+              "accepted": true,
+              "details": "19 fachliche Oberstufen-Themenpassagen mit 150 direkten Kompetenzzielen; Motivation, Uebungen und Abiturvorschlaege bleiben ausserhalb des Source-Inventars."
+            },
+            "sourceGoalGranularity": {
+              "averageWords": 11.086666666666666,
+              "p90Words": 14,
+              "maxWords": 18,
+              "longGoals": 0,
+              "longGoalThreshold": 45,
+              "examples": []
+            },
             "steps": [
               {
                 "id": "MAPPING-1",
                 "label": "Original-Lehrplanpassagen extrahiert",
-                "status": "incomplete",
+                "status": "complete",
                 "dependsOn": [],
                 "checks": [
                   {
-                    "id": "source-extraction-file-present",
-                    "label": "Persistiertes Source-Extraction-Artefakt vorhanden",
-                    "passed": false,
-                    "details": "Für diese Source-Landschaft ist noch keine geprüfte source-extraction-Datei registriert."
+                    "id": "source-document-present",
+                    "label": "Strukturierte Hessen-Biologie-Quelle liegt lokal vor",
+                    "passed": true,
+                    "details": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-json/DE_HES_S_GYM_2_BIOLOGIE.de.json.snapshot"
+                  },
+                  {
+                    "id": "topic-passages-extracted",
+                    "label": "Alle fachlichen Biologie-Themenpassagen sind extrahiert",
+                    "passed": true,
+                    "details": "Erfasst: 19/19 Passagen."
+                  },
+                  {
+                    "id": "non-curricular-nodes-excluded",
+                    "label": "Motivation, Uebungen und Pruefungsvorschlaege werden nicht als Source-Lehrplanpassagen gewertet",
+                    "passed": true,
+                    "details": "Das Source-Inventar enthaelt nur direkte Kompetenzziele fachlicher Themenpassagen."
                   }
                 ]
               },
               {
                 "id": "MAPPING-2",
                 "label": "Source-Ziele aus Lehrplanpassagen erstellt",
-                "status": "blocked",
+                "status": "complete",
                 "dependsOn": [
                   "MAPPING-1"
                 ],
                 "checks": [
                   {
-                    "id": "mapping-1-complete",
-                    "label": "MAPPING-1 abgeschlossen",
-                    "passed": false,
-                    "details": "Source-Ziele dürfen erst nach vollständig extrahierten Originalpassagen als abgeschlossen gelten."
+                    "id": "source-goals-created",
+                    "label": "Aus den Biologie-Themenpassagen wurden granulare Source-Ziele erzeugt",
+                    "passed": true,
+                    "details": "150 Source-Ziele."
+                  },
+                  {
+                    "id": "passage-to-source-goal-coverage",
+                    "label": "Jede Passage hat mindestens ein Source-Ziel",
+                    "passed": true,
+                    "details": "Passagen ohne Source-Ziele: -."
+                  },
+                  {
+                    "id": "source-goal-ids-unique",
+                    "label": "Source-Ziel-IDs sind eindeutig",
+                    "passed": true,
+                    "details": "Doppelte IDs: -."
+                  },
+                  {
+                    "id": "source-goal-trace-complete",
+                    "label": "Jedes Source-Ziel hat Passage, Source-Span, Parent-Bullet und Quellenreferenz",
+                    "passed": true,
+                    "details": "Unvollstaendige Source-Ziele: -"
                   }
                 ]
               },
               {
                 "id": "MAPPING-3",
                 "label": "Source-Ziele auf SkillPilot-Ziele gemappt",
-                "status": "blocked",
+                "status": "incomplete",
                 "dependsOn": [
+                  "MAPPING-1",
                   "MAPPING-2"
                 ],
                 "checks": [
                   {
-                    "id": "mapping-2-complete",
-                    "label": "MAPPING-2 abgeschlossen",
+                    "id": "m3-review-file-present",
+                    "label": "M3-Review-Datei ist als Arbeitsgrundlage vorhanden",
+                    "passed": true,
+                    "details": "Review-Datei mit sourceExtractionPath fuer diese Source-Extraction ist vorhanden."
+                  },
+                  {
+                    "id": "m3-review-decisions-reference-source-goals",
+                    "label": "M3-Review-Entscheidungen referenzieren gueltige Source-Ziele",
+                    "passed": true,
+                    "details": "Review-Entscheidungen mit unbekannter Source-ID: 0."
+                  },
+                  {
+                    "id": "m3-all-source-goals-reviewed",
+                    "label": "Alle Source-Ziele haben eine fachliche M3-Entscheidung",
                     "passed": false,
-                    "details": "Das Mapping auf SkillPilot-Ziele darf erst nach geprüften Source-Zielen als abgeschlossen gelten."
+                    "details": "0/150 Source-Ziele reviewed; offen: 150."
                   }
                 ]
               }
@@ -884,59 +956,131 @@
           },
           {
             "sourceLandscapeId": "71438941-0ceb-46ee-ad31-773cee700779",
-            "title": "Biologie Sekundarstufe I (Hessen, G9)",
+            "title": "Biologie Sekundarstufe I (Hessen, G9 Source-Extraction)",
             "jurisdiction": "DE-HE",
-            "path": "curricula/DE/Gymnasium/mapping/DE-HE/lower-secondary/hessen_biology_lower_secondary_to_canonical_biology.json",
-            "sourceKind": "missing-extraction",
-            "currentStep": "MAPPING-1",
-            "completedSteps": 0,
+            "subject": "Biologie",
+            "stage": "SekI",
+            "path": "curricula/DE/Gymnasium/input/HE/lower-secondary/source-extraction/DE_HE_BIOLOGIE_SEKI_G9.source-extraction.json",
+            "sourceKind": "source-extraction",
+            "sourceDocuments": [
+              {
+                "key": "G9_BIOLOGIE_SEKI",
+                "title": "Lehrplan Biologie Gymnasium Hessen G9",
+                "path": "curricula/DE/Gymnasium/input/HE/lower-secondary/source-json/DE_HES_S_GYM_1_BIOLOGIE.de.json.snapshot",
+                "official": true,
+                "available": true
+              }
+            ],
+            "currentStep": "MAPPING-3",
+            "completedSteps": 2,
             "totalSteps": 3,
-            "sourceGoals": 0,
-            "passages": 0,
+            "sourceGoals": 66,
+            "passages": 16,
+            "mappedSourceGoals": 10,
+            "unmappedSourceGoals": 56,
+            "extraMappedGoals": 0,
+            "exactMappings": 10,
+            "partialMappings": 0,
+            "otherMappings": 0,
+            "sourceGoalCountPeerBaselineReview": {
+              "accepted": true,
+              "details": "16 fachliche Sek-I-Themenpassagen mit 66 direkten Kompetenzzielen; Orientierungsknoten bleibt ausserhalb des Source-Inventars."
+            },
+            "sourceGoalGranularity": {
+              "averageWords": 11.333333333333334,
+              "p90Words": 13,
+              "maxWords": 17,
+              "longGoals": 0,
+              "longGoalThreshold": 45,
+              "examples": []
+            },
             "steps": [
               {
                 "id": "MAPPING-1",
                 "label": "Original-Lehrplanpassagen extrahiert",
-                "status": "incomplete",
+                "status": "complete",
                 "dependsOn": [],
                 "checks": [
                   {
-                    "id": "source-extraction-file-present",
-                    "label": "Persistiertes Source-Extraction-Artefakt vorhanden",
-                    "passed": false,
-                    "details": "Für diese Source-Landschaft ist noch keine geprüfte source-extraction-Datei registriert."
+                    "id": "source-document-present",
+                    "label": "Strukturierte Hessen-Biologie-Quelle liegt lokal vor",
+                    "passed": true,
+                    "details": "curricula/DE/Gymnasium/input/HE/lower-secondary/source-json/DE_HES_S_GYM_1_BIOLOGIE.de.json.snapshot"
+                  },
+                  {
+                    "id": "topic-passages-extracted",
+                    "label": "Alle fachlichen Biologie-Themenpassagen sind extrahiert",
+                    "passed": true,
+                    "details": "Erfasst: 16/16 Passagen."
+                  },
+                  {
+                    "id": "non-curricular-nodes-excluded",
+                    "label": "Motivation, Uebungen und Pruefungsvorschlaege werden nicht als Source-Lehrplanpassagen gewertet",
+                    "passed": true,
+                    "details": "Das Source-Inventar enthaelt nur direkte Kompetenzziele fachlicher Themenpassagen."
                   }
                 ]
               },
               {
                 "id": "MAPPING-2",
                 "label": "Source-Ziele aus Lehrplanpassagen erstellt",
-                "status": "blocked",
+                "status": "complete",
                 "dependsOn": [
                   "MAPPING-1"
                 ],
                 "checks": [
                   {
-                    "id": "mapping-1-complete",
-                    "label": "MAPPING-1 abgeschlossen",
-                    "passed": false,
-                    "details": "Source-Ziele dürfen erst nach vollständig extrahierten Originalpassagen als abgeschlossen gelten."
+                    "id": "source-goals-created",
+                    "label": "Aus den Biologie-Themenpassagen wurden granulare Source-Ziele erzeugt",
+                    "passed": true,
+                    "details": "66 Source-Ziele."
+                  },
+                  {
+                    "id": "passage-to-source-goal-coverage",
+                    "label": "Jede Passage hat mindestens ein Source-Ziel",
+                    "passed": true,
+                    "details": "Passagen ohne Source-Ziele: -."
+                  },
+                  {
+                    "id": "source-goal-ids-unique",
+                    "label": "Source-Ziel-IDs sind eindeutig",
+                    "passed": true,
+                    "details": "Doppelte IDs: -."
+                  },
+                  {
+                    "id": "source-goal-trace-complete",
+                    "label": "Jedes Source-Ziel hat Passage, Source-Span, Parent-Bullet und Quellenreferenz",
+                    "passed": true,
+                    "details": "Unvollstaendige Source-Ziele: -"
                   }
                 ]
               },
               {
                 "id": "MAPPING-3",
                 "label": "Source-Ziele auf SkillPilot-Ziele gemappt",
-                "status": "blocked",
+                "status": "incomplete",
                 "dependsOn": [
+                  "MAPPING-1",
                   "MAPPING-2"
                 ],
                 "checks": [
                   {
-                    "id": "mapping-2-complete",
-                    "label": "MAPPING-2 abgeschlossen",
+                    "id": "m3-review-file-present",
+                    "label": "M3-Review-Datei ist als Arbeitsgrundlage vorhanden",
+                    "passed": true,
+                    "details": "Review-Datei mit sourceExtractionPath fuer diese Source-Extraction ist vorhanden."
+                  },
+                  {
+                    "id": "m3-review-decisions-reference-source-goals",
+                    "label": "M3-Review-Entscheidungen referenzieren gueltige Source-Ziele",
+                    "passed": true,
+                    "details": "Review-Entscheidungen mit unbekannter Source-ID: 0."
+                  },
+                  {
+                    "id": "m3-all-source-goals-reviewed",
+                    "label": "Alle Source-Ziele haben eine fachliche M3-Entscheidung",
                     "passed": false,
-                    "details": "Das Mapping auf SkillPilot-Ziele darf erst nach geprüften Source-Zielen als abgeschlossen gelten."
+                    "details": "0/66 Source-Ziele reviewed; offen: 66."
                   }
                 ]
               }
@@ -965,21 +1109,20 @@
         },
         {
           "id": "CQR-000",
-          "status": "fail",
-          "summary": "1/16 declared Bundesland source inventories are readable and fully registered.",
+          "status": "warn",
+          "summary": "2/16 declared Bundesland source inventories are readable and fully registered.",
           "metrics": {
             "totalJurisdictions": 16,
-            "completeSourceJurisdictions": 1,
+            "completeSourceJurisdictions": 2,
             "emptySourceJurisdictions": 14,
-            "missingReadableSourceInventoryJurisdictions": 1,
-            "sourceExtractedGoals": 222,
-            "sourceOriginalGoals": 515,
+            "missingReadableSourceInventoryJurisdictions": 0,
+            "sourceExtractedGoals": 438,
+            "sourceOriginalGoals": 438,
             "sourceUnregisteredGoals": 0,
-            "sourceExtractedAtomicGoals": 222,
+            "sourceExtractedAtomicGoals": 438,
             "sourceUnregisteredAtomicGoals": 0
           },
           "details": [
-            "DE-HE: 293 source original goal(s) are registered, but no readable source inventory goals were extracted",
             "DE-BW: no source inventory goals are registered or extracted",
             "DE-BB: no source inventory goals are registered or extracted",
             "DE-BE: no source inventory goals are registered or extracted",
@@ -1011,13 +1154,13 @@
             "unsupportedAssignmentJurisdictions": 0,
             "sourceUnmappedJurisdictions": 2,
             "unsupportedAssignedAtomicGoals": 0,
-            "unmappedSourceAtomicGoals": 278,
-            "sourceAtomicGoals": 462,
-            "sourceMappedToViewAtomicGoals": 184,
-            "sourceOriginalGoals": 515,
-            "sourceFullyCoveredOriginalGoals": 219,
-            "sourcePartiallyCoveredOriginalGoals": 3,
-            "sourceUncoveredOriginalGoals": 293,
+            "unmappedSourceAtomicGoals": 438,
+            "sourceAtomicGoals": 438,
+            "sourceMappedToViewAtomicGoals": 0,
+            "sourceOriginalGoals": 438,
+            "sourceFullyCoveredOriginalGoals": 0,
+            "sourcePartiallyCoveredOriginalGoals": 0,
+            "sourceUncoveredOriginalGoals": 438,
             "surrogateBackedAtomicGoals": 0,
             "partialSourceLinkedAtomicGoals": 0,
             "warningedJurisdictions": 0,
@@ -1030,7 +1173,7 @@
             "totalAtomicGoals": 160
           },
           "details": [
-            "DE-HE: 56 source Lehrplan atom(s) do not map into the Bundesland view",
+            "DE-HE: 216 source Lehrplan atom(s) do not map into the Bundesland view",
             "DE-BY: 222 source Lehrplan atom(s) do not map into the Bundesland view",
             "DE-BW: no source-backed atomic goals",
             "DE-BB: no source-backed atomic goals",
@@ -1051,15 +1194,15 @@
         {
           "id": "CQR-004",
           "status": "pass",
-          "summary": "Course-level mapping is clean for 0 upper-secondary source-to-canonical mapping edge(s), including 0 reviewed course-level exception(s); unspecified upper-secondary source goals default to GK/LK unless explicitly reviewed.",
+          "summary": "Course-level mapping is clean for 150 upper-secondary source-to-canonical mapping edge(s), including 0 reviewed course-level exception(s); unspecified upper-secondary source goals default to GK/LK unless explicitly reviewed.",
           "metrics": {
-            "configuredMappingFiles": 1,
-            "sourceGoals": 0,
-            "sourceGoalsWithCourseLevel": 0,
-            "gkLkSourceGoals": 0,
-            "lkSourceGoals": 0,
+            "configuredMappingFiles": 3,
+            "sourceGoals": 150,
+            "sourceGoalsWithCourseLevel": 150,
+            "gkLkSourceGoals": 69,
+            "lkSourceGoals": 81,
             "unspecifiedSourceGoals": 0,
-            "checkedMappingEdges": 0,
+            "checkedMappingEdges": 150,
             "defaultedUnspecifiedMappingEdges": 0,
             "reviewedCourseLevelExceptions": 0,
             "mismatches": 0,
