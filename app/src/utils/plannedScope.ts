@@ -1,4 +1,5 @@
 import type { UiGoal } from '../goalTypes'
+import { isSyntheticProgramUnit } from './treeProjectionRuntime'
 
 export const buildGoalContainsClosure = (
   rootGoalIds: Iterable<string>,
@@ -53,4 +54,68 @@ export const buildRenderedScopeDescendantCountMap = (
   })
 
   return countsByGoalId
+}
+
+export const buildRenderedScopeMarkerGoalIds = (
+  allGoals: Map<string, UiGoal>,
+  renderedChildrenByParent: Map<string, string[]>,
+  scopedGoalIds: Set<string>,
+) => {
+  const statsByGoalId = new Map<string, { scopedConcrete: number; unscopedConcrete: number }>()
+  const parentIdsByChild = new Map<string, Set<string>>()
+  const visiting = new Set<string>()
+
+  renderedChildrenByParent.forEach((childIds, parentId) => {
+    childIds.forEach((childId) => {
+      const parentIds = parentIdsByChild.get(childId) ?? new Set<string>()
+      parentIds.add(parentId)
+      parentIdsByChild.set(childId, parentIds)
+    })
+  })
+
+  const compute = (goalId: string): { scopedConcrete: number; unscopedConcrete: number } => {
+    const cached = statsByGoalId.get(goalId)
+    if (cached) return cached
+    if (visiting.has(goalId)) return { scopedConcrete: 0, unscopedConcrete: 0 }
+
+    visiting.add(goalId)
+    const goal = allGoals.get(goalId)
+    const isSynthetic = !!goal && isSyntheticProgramUnit(goal)
+    const isScoped = scopedGoalIds.has(goalId)
+    const stats = {
+      scopedConcrete: goal && !isSynthetic && isScoped ? 1 : 0,
+      unscopedConcrete: goal && !isSynthetic && !isScoped ? 1 : 0,
+    }
+
+    renderedChildrenByParent.get(goalId)?.forEach((childId) => {
+      const childStats = compute(childId)
+      stats.scopedConcrete += childStats.scopedConcrete
+      stats.unscopedConcrete += childStats.unscopedConcrete
+    })
+
+    visiting.delete(goalId)
+    statsByGoalId.set(goalId, stats)
+    return stats
+  }
+
+  const isFullyCoveredScopeRepresentative = (goalId: string) => {
+    const stats = compute(goalId)
+    return stats.scopedConcrete > 0 && stats.unscopedConcrete === 0
+  }
+
+  const markerGoalIds = new Set<string>()
+  allGoals.forEach((_, goalId) => {
+    if (scopedGoalIds.has(goalId)) return
+    if (!isFullyCoveredScopeRepresentative(goalId)) return
+
+    const parentIds = parentIdsByChild.get(goalId) ?? new Set<string>()
+    const hasFullyCoveredParent = Array.from(parentIds).some((parentId) =>
+      isFullyCoveredScopeRepresentative(parentId),
+    )
+    if (!hasFullyCoveredParent) {
+      markerGoalIds.add(goalId)
+    }
+  })
+
+  return markerGoalIds
 }
