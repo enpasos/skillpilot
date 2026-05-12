@@ -42,6 +42,7 @@ import { dispatchLearnerUiRefresh } from '../utils/learnerUiEvents'
 import { formatFilterDisplayLabel } from '../utils/filterLabels'
 import { getLearnerViewCopy } from '../utils/learnerViewCopy'
 import { getNextVisibleLearnerGoalSelection } from '../utils/learnerGoalSelection'
+import { buildGoalContainsClosure } from '../utils/plannedScope'
 import { normalizeLearnerVisibleChildrenMap } from '../utils/learnerTreeProjection'
 import {
   buildDirectChildrenMap,
@@ -599,23 +600,8 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
       return new Set<string>()
     }
 
-    const scope = new Set<string>()
-    const stack = Array.from(plannedGoals)
-    while (stack.length > 0) {
-      const goalId = stack.pop()
-      if (!goalId || scope.has(goalId)) continue
-      scope.add(goalId)
-
-      const childIds = getRenderedChildIds(goalId, goalIndexAll, learnerVisibleChildrenByParent)
-      childIds.forEach((childId) => {
-        if (!scope.has(childId)) {
-          stack.push(childId)
-        }
-      })
-    }
-
-    return scope
-  }, [goalIndexAll, learnerVisibleChildrenByParent, plannedGoals])
+    return buildGoalContainsClosure(plannedGoals, goalIndexAll)
+  }, [goalIndexAll, plannedGoals])
 
   useEffect(() => {
     const nextVisibleGoalId = getNextVisibleLearnerGoalSelection({
@@ -705,31 +691,20 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     // Local calculation for scope mode or fallback
     let totalAtomic = 0
     let masteredAtomic = 0
-    const visited = new Set<string>()
-
-    const countRecursive = (id: string) => {
-      if (visited.has(id)) return
-      visited.add(id)
-
-      if (!visibleGoals.has(id)) return
-
-      const g = goalIndexAll.get(id)
-      if (!g) return
-
-      // Atomic Goal
-      if (!g.contains || g.contains.length === 0) {
-        totalAtomic++
-        if (isMastered(getEffectiveMastery(id))) {
-          masteredAtomic++
-        }
-      } else {
-        g.contains.forEach(childId => countRecursive(childId))
-      }
-    }
 
     if (plannedGoals.size > 0) {
-      // Focus Mode: Count only within planned subtrees
-      plannedGoals.forEach(id => countRecursive(id))
+      // Focus Mode: count visible atomic goals that belong to the canonical scope
+      // even when the planned root is hidden by a composition-view projection.
+      visibleGoals.forEach(id => {
+        if (!plannedScopeGoalIds.has(id)) return
+        const g = goalIndexAll.get(id)
+        if (g && (!g.contains || g.contains.length === 0)) {
+          totalAtomic++
+          if (isMastered(getEffectiveMastery(id))) {
+            masteredAtomic++
+          }
+        }
+      })
     } else {
       // Global Mode: Local fallback if backend stats not available
       visibleGoals.forEach(id => {
@@ -744,7 +719,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     }
 
     return { totalAtomic, masteredAtomic }
-  }, [plannedGoals, goalIndexAll, visibleGoals, getEffectiveMastery, backendStats, personalConfig, effectiveActiveFilter])
+  }, [plannedGoals, goalIndexAll, visibleGoals, plannedScopeGoalIds, getEffectiveMastery, backendStats, personalConfig, effectiveActiveFilter])
 
 
   // Reveal Active Goal Logic
@@ -760,14 +735,29 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   // Reveal Scope (Planned Goals) Logic
   const revealScope = useCallback(() => {
     if (effectiveLearnerParentMap.size === 0 || plannedGoals.size === 0) return
-    // Get the first (and typically only) planned goal as target
-    const targetId = Array.from(plannedGoals)[0]
+    // Prefer a visible representative of the scope. Canonical planned roots can
+    // be hidden by composition views while their descendants are still visible.
+    const targetId =
+      effectiveActiveGoalId && plannedScopeGoalIds.has(effectiveActiveGoalId) && visibleGoals.has(effectiveActiveGoalId)
+        ? effectiveActiveGoalId
+        : Array.from(plannedGoals).find((goalId) => visibleGoals.has(goalId))
+          ?? Array.from(plannedScopeGoalIds).find((goalId) => visibleGoals.has(goalId))
+          ?? Array.from(plannedGoals)[0]
     if (!targetId) return
     setExpandedGoalIds(buildCollapsedFocusPath(targetId))
     if (targetId !== currentRouteGoalId) {
       onSelectGoal(targetId)
     }
-  }, [buildCollapsedFocusPath, currentRouteGoalId, effectiveLearnerParentMap, plannedGoals, onSelectGoal])
+  }, [
+    buildCollapsedFocusPath,
+    currentRouteGoalId,
+    effectiveActiveGoalId,
+    effectiveLearnerParentMap,
+    plannedGoals,
+    plannedScopeGoalIds,
+    visibleGoals,
+    onSelectGoal,
+  ])
 
   // Auto-reveal scope on start if no active goal exists but scope is set
   const hasAutoRevealedScope = useRef(false)
@@ -2119,6 +2109,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
               allGoals={goalIndexAll}
               getMastery={getEffectiveMastery}
               plannedGoals={plannedGoals}
+              plannedScopeGoalIds={plannedScopeGoalIds}
               onTogglePlan={togglePlan}
               readOnly={isCompatibilityAuditOnly}
               onSelect={onSelectGoal}
