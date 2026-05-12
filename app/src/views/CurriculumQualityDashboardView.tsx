@@ -27,6 +27,14 @@ interface RuleResult {
   details?: string[]
 }
 
+interface RuleCatalogEntry {
+  id: string
+  label: string
+  category: string
+  maturityTarget: MaturityLevel
+  description: string
+}
+
 interface ScopeStatus {
   scopeId: string
   label: string
@@ -179,6 +187,7 @@ interface QualityStatusDocument {
   rulesVersion: string
   generatedAt: string
   generatedBy: string
+  ruleCatalog: RuleCatalogEntry[]
   summary: {
     curricula: number
     maturity: Record<MaturityLevel, number>
@@ -236,6 +245,11 @@ const COPY = {
     jurisdictionCoverageDeferred: 'Bundesland-Abdeckung ausgeblendet',
     jurisdictionCoverageDeferredDetail: 'Erst sinnvoll, wenn alle Quellen dieselbe Mapping-Stufe haben. Aktueller TODO ist die Umstellung der übrigen Quellen auf Passage-Extraction.',
     mappingPipeline: 'Passage-Extraction',
+    nextMaturityGate: 'Nächster Meilenstein',
+    blockedBy: 'Blockiert durch',
+    openBlockers: 'offen',
+    gateHint: 'Der Reifegrad steigt erst, wenn alle Regeln der nächsten Stufe bestanden sind. Grüne Regeln aus späteren Stufen zählen erst nach den offenen Vorstufen.',
+    gateReady: 'Für die nächste Stufe ist kein offener Blocker sichtbar.',
     pipelineProgress: 'Passage-Extraction bereit',
     sourceExtractionProgress: 'Passage-Extraktion',
     legacySnapshotProgress: 'Snapshot-Diagnosen',
@@ -322,6 +336,11 @@ const COPY = {
     jurisdictionCoverageDeferred: 'Jurisdiction coverage hidden',
     jurisdictionCoverageDeferredDetail: 'Useful only once all sources are on the same mapping stage. The current TODO is moving the remaining sources to passage extraction.',
     mappingPipeline: 'Passage extraction',
+    nextMaturityGate: 'Next milestone',
+    blockedBy: 'Blocked by',
+    openBlockers: 'open',
+    gateHint: 'Maturity only advances when every rule in the next level passes. Green rules from later levels count after open earlier gates are closed.',
+    gateReady: 'No open blocker is visible for the next level.',
     pipelineProgress: 'passage extraction ready',
     sourceExtractionProgress: 'Passage extraction',
     legacySnapshotProgress: 'Snapshot diagnostics',
@@ -390,7 +409,8 @@ const maturityClass: Record<MaturityLevel, string> = {
   M5: 'border-fuchsia-200 bg-fuchsia-50 text-fuchsia-700 dark:border-fuchsia-900/60 dark:bg-fuchsia-950/30 dark:text-fuchsia-300',
 }
 
-const maturityLevels: Array<'all' | MaturityLevel> = ['all', 'M0', 'M1', 'M2', 'M3', 'M4', 'M5']
+const maturityOrder: MaturityLevel[] = ['M0', 'M1', 'M2', 'M3', 'M4', 'M5']
+const maturityLevels: Array<'all' | MaturityLevel> = ['all', ...maturityOrder]
 
 const coverageStatusClass: Record<JurisdictionCoverageStatus, string> = {
   covered: 'border-emerald-200 bg-emerald-50 text-emerald-700 dark:border-emerald-900/60 dark:bg-emerald-950/30 dark:text-emerald-300',
@@ -444,6 +464,28 @@ function collectRules(curriculum: CurriculumStatus): RuleResult[] {
 
 function countStatus(curriculum: CurriculumStatus, status: RuleStatus): number {
   return collectRules(curriculum).filter((rule) => rule.status === status).length
+}
+
+function getMaturityGate(curriculum: CurriculumStatus, ruleCatalog: RuleCatalogEntry[]) {
+  const currentIndex = maturityOrder.indexOf(curriculum.maturity)
+  if (currentIndex < 0 || currentIndex >= maturityOrder.length - 1) return null
+
+  const catalogById = new Map(ruleCatalog.map((rule) => [rule.id, rule]))
+  const ruleResults = collectRules(curriculum)
+
+  for (let index = currentIndex + 1; index < maturityOrder.length; index += 1) {
+    const nextLevel = maturityOrder[index]
+    const blockers = ruleResults.filter((rule) => {
+      const catalogEntry = catalogById.get(rule.id)
+      return catalogEntry?.maturityTarget === nextLevel && rule.status !== 'pass'
+    })
+
+    if (blockers.length > 0 || index === currentIndex + 1) {
+      return { nextLevel, blockers }
+    }
+  }
+
+  return null
 }
 
 function formatDate(value: string, language: 'de' | 'en'): string {
@@ -529,6 +571,10 @@ export const CurriculumQualityDashboardView: React.FC = () => {
   const selectedPassageExtractionReady = selectedPipelineCounts?.sourceExtractionReady ?? 0
   const selectedJurisdictionCoverageReady = !selectedCurriculum?.mappingPipeline
     || (selectedMappingSourcesTotal > 0 && selectedPassageExtractionReady === selectedMappingSourcesTotal)
+  const selectedMaturityGate = useMemo(() => {
+    if (!payload || !selectedCurriculum) return null
+    return getMaturityGate(selectedCurriculum, payload.status.ruleCatalog)
+  }, [payload, selectedCurriculum])
 
   const summary = payload?.status.summary
   const pipelineStatusLabel = (status: MappingPipelineStepState) => ({
@@ -745,6 +791,46 @@ export const CurriculumQualityDashboardView: React.FC = () => {
                     <div className="mt-1 text-lg font-semibold">{selectedCurriculum.scopes.length}</div>
                   </div>
                 </div>
+
+                {selectedMaturityGate ? (
+                  <div
+                    className={`rounded-xl border p-3 text-sm ${
+                      selectedMaturityGate.blockers.length > 0
+                        ? 'border-amber-200 bg-amber-50 text-amber-800 dark:border-amber-900/60 dark:bg-amber-950/30 dark:text-amber-200'
+                        : 'border-emerald-200 bg-emerald-50 text-emerald-700 dark:border-emerald-900/60 dark:bg-emerald-950/30 dark:text-emerald-300'
+                    }`}
+                  >
+                    <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
+                      <div>
+                        <h3 className="flex items-center gap-2 text-sm font-semibold uppercase tracking-wide">
+                          <Gauge size={15} />
+                          <span>{copy.nextMaturityGate}</span>
+                        </h3>
+                        <div className="mt-2 flex items-center gap-2">
+                          <MaturityBadge level={selectedCurriculum.maturity} />
+                          <span className="text-xs font-semibold text-current/70">→</span>
+                          <MaturityBadge level={selectedMaturityGate.nextLevel} />
+                        </div>
+                      </div>
+                      {selectedMaturityGate.blockers.length > 0 ? (
+                        <span className="rounded-full border border-current/20 px-2.5 py-1 text-xs font-semibold">
+                          {selectedMaturityGate.blockers.length} {copy.openBlockers}
+                        </span>
+                      ) : null}
+                    </div>
+                    <p className="mt-2 text-xs text-current/80">{copy.gateHint}</p>
+                    {selectedMaturityGate.blockers.length > 0 ? (
+                      <div className="mt-3 space-y-2">
+                        <div className="text-xs font-semibold uppercase tracking-wide">{copy.blockedBy}</div>
+                        {selectedMaturityGate.blockers.map((rule) => (
+                          <RuleRow key={`maturity-gate-${rule.id}`} rule={rule} labels={copy.labels} />
+                        ))}
+                      </div>
+                    ) : (
+                      <div className="mt-3 text-xs font-semibold">{copy.gateReady}</div>
+                    )}
+                  </div>
+                ) : null}
 
                 {selectedCurriculum.mappingPipeline ? (
                   <div>
