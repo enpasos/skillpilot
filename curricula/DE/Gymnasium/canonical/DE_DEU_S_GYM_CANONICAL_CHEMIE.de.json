@@ -136,7 +136,7 @@
       "titleEn": "Chemistry Foundations (Lower Secondary)",
       "description": "Cluster für grundlegende Arbeitsweisen, Gefahrenerkennung, Stoffeigenschaften, Elemente, Verbindungen, Gemische, Trennverfahren, Gasnachweise, Stoffgemisch-Quantifizierung, Lösungen, Wasser-Eigenschaften, Salzlösungen, Säure-Base-Lösungen, Protonenübergänge und Neutralisationen aus der gymnasialen Sekundarstufe I.",
       "descriptionEn": "Cluster for foundational working methods, hazard recognition, substance properties, elements, compounds, mixtures, separation methods, gas detection, mixture quantification, solutions, water properties, salt solutions, acid-base solutions, proton transfers, and neutralization from lower secondary Gymnasium chemistry.",
-      "weight": 16,
+      "weight": 26,
       "tags": [
         "GK",
         "LK",
@@ -216,17 +216,20 @@
       "id": "266a2b2a-9ee2-52f6-ae09-59343da9a60b",
       "shortKey": "canonical_chemistry_sek1_working_methods",
       "title": "Arbeitsweisen der Chemie anwenden",
-      "titleEn": "Apply working methods of chemistry",
-      "description": "Die lernende Person kann grundlegende Arbeitsweisen und Sicherheitsregeln im Chemielabor anwenden.",
-      "descriptionEn": "The learner can apply basic working methods and safety rules in the chemistry laboratory.",
-      "weight": 1,
+      "titleEn": "Apply chemistry working methods",
+      "description": "Cluster für grundlegende chemische Laborarbeitsweisen und allgemeine Sicherheitsregeln in der Sekundarstufe I.",
+      "descriptionEn": "Cluster for basic chemistry laboratory methods and general safety rules in lower secondary.",
+      "weight": 2,
       "tags": [
         "GK",
         "LK",
         "canonical",
         "SekI"
       ],
-      "contains": [],
+      "contains": [
+        "416dfd33-8b43-5c49-903c-9847b95e4208",
+        "13d4f336-ab16-54a7-9479-c920b458f385"
+      ],
       "requires": [
         "a9c22adc-b543-5b0c-a2d8-3189facdff08"
       ],
@@ -268,6 +271,132 @@
           "sourceLandscapeId": "bea90c22-b9c5-4c0c-9b10-89d875f50772",
           "sourceLandscapeTitle": "Chemie Sekundarstufe I (Hessen, G9)",
           "sourceGoalId": "8476c11a-9c9a-4d4c-b1eb-9977d9fe4558"
+        }
+      },
+      "type": "cluster",
+      "examples": []
+    },
+    {
+      "id": "416dfd33-8b43-5c49-903c-9847b95e4208",
+      "shortKey": "canonical_chemistry_sek1_lab_methods_basic",
+      "title": "Grundlegende Laborarbeitsweisen anwenden",
+      "titleEn": "Apply basic laboratory methods",
+      "description": "Die lernende Person kann grundlegende chemische Laborarbeitsweisen sachgerecht ausführen und Beobachtungen geordnet dokumentieren.",
+      "descriptionEn": "The learner can carry out basic chemistry laboratory methods appropriately and document observations in an organized way.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekI"
+      ],
+      "contains": [],
+      "requires": [
+        "a9c22adc-b543-5b0c-a2d8-3189facdff08"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-chemistry",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "PK1_EXPERIMENTIEREN"
+        ],
+        "guidingIdeas": [
+          "BC_REAKTION"
+        ],
+        "phase": "GLOBAL",
+        "area": "Grundlagen",
+        "topicCode": "CANONICAL.CHEMISTRY.SEK1.WORKING_METHODS.LAB_METHODS"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "bea90c22-b9c5-4c0c-9b10-89d875f50772",
+          "sourceLandscapeTitle": "Chemie Sekundarstufe I (Hessen, G9)",
+          "sourceGoalId": "8476c11a-9c9a-4d4c-b1eb-9977d9fe4558",
+          "splitFromCanonicalGoalId": "266a2b2a-9ee2-52f6-ae09-59343da9a60b",
+          "splitReviewId": "canonical-chemistry-sek1-foundations"
+        }
+      },
+      "type": "atomic",
+      "examples": []
+    },
+    {
+      "id": "13d4f336-ab16-54a7-9479-c920b458f385",
+      "shortKey": "canonical_chemistry_sek1_lab_safety_rules_basic",
+      "title": "Allgemeine Sicherheitsregeln im Chemielabor anwenden",
+      "titleEn": "Apply general laboratory safety rules",
+      "description": "Die lernende Person kann grundlegende Sicherheitsregeln im Chemielabor situationsbezogen anwenden.",
+      "descriptionEn": "The learner can apply basic safety rules in the chemistry laboratory in context.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekI"
+      ],
+      "contains": [],
+      "requires": [
+        "416dfd33-8b43-5c49-903c-9847b95e4208"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-chemistry",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "PK1_EXPERIMENTIEREN"
+        ],
+        "guidingIdeas": [
+          "BC_REAKTION"
+        ],
+        "phase": "GLOBAL",
+        "area": "Grundlagen",
+        "topicCode": "CANONICAL.CHEMISTRY.SEK1.WORKING_METHODS.SAFETY_RULES"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "bea90c22-b9c5-4c0c-9b10-89d875f50772",
+          "sourceLandscapeTitle": "Chemie Sekundarstufe I (Hessen, G9)",
+          "sourceGoalId": "8476c11a-9c9a-4d4c-b1eb-9977d9fe4558",
+          "splitFromCanonicalGoalId": "266a2b2a-9ee2-52f6-ae09-59343da9a60b",
+          "splitReviewId": "canonical-chemistry-sek1-foundations"
         }
       },
       "type": "atomic",
@@ -338,18 +467,22 @@
     {
       "id": "c7d4d9f7-d23f-44fc-bf22-3872e0f2b9a0",
       "shortKey": "canonical_chemistry_sek1_hazard_symbols_safety",
-      "title": "Gefahrensymbole deuten und Sicherheitsregeln anwenden",
-      "titleEn": "Interpret hazard symbols and apply safety rules",
-      "description": "Die lernende Person kann Gefahrstoffkennzeichnungen recherchieren, Gefahrstoffsymbole deuten sowie grundlegende Aspekte zu Gefahren und Sicherheit in Labor und Alltag beurteilen, Regeln für sicheren Umgang und umweltgerechte Entsorgung von Chemikalien fachgerecht ableiten und dadurch begründete Handlungsoptionen zur Minimierung von Gefahrenpotenzialen entwickeln.",
-      "descriptionEn": "The learner can research hazard labels, interpret hazard symbols, assess basic aspects of hazards and safety in laboratory and everyday contexts, derive rules for safe handling and environmentally appropriate disposal of chemicals, and develop justified action options to minimize hazards.",
-      "weight": 1,
+      "title": "Gefahrensymbole und Sicherheit beurteilen",
+      "titleEn": "Assess hazard symbols and safety",
+      "description": "Cluster für Gefahrstoffkennzeichnungen, sicheren Umgang, Entsorgung und Risikominimierung bei Chemikalien.",
+      "descriptionEn": "Cluster for hazard labels, safe handling, disposal, and risk minimization for chemicals.",
+      "weight": 3,
       "tags": [
         "GK",
         "LK",
         "canonical",
         "SekI"
       ],
-      "contains": [],
+      "contains": [
+        "9e656697-fc05-5aa9-9aca-871af2e89eb7",
+        "7be6f951-a614-52dc-94d3-2ce0d33765ff",
+        "ebaae4f5-cc13-5493-98b1-10e1abeb638f"
+      ],
       "requires": [
         "266a2b2a-9ee2-52f6-ae09-59343da9a60b"
       ],
@@ -392,6 +525,198 @@
           "sourceLandscapeId": "bea90c22-b9c5-4c0c-9b10-89d875f50772",
           "sourceLandscapeTitle": "Chemie Sekundarstufe I (Hessen, G9)",
           "sourceGoalId": "3b6a4f7c-178c-4b0a-b786-f7e11693ea6d"
+        }
+      },
+      "type": "cluster",
+      "examples": []
+    },
+    {
+      "id": "9e656697-fc05-5aa9-9aca-871af2e89eb7",
+      "shortKey": "canonical_chemistry_sek1_hazard_symbols_interpret",
+      "title": "Gefahrstoffsymbole und Kennzeichnungen deuten",
+      "titleEn": "Interpret hazard symbols and labels",
+      "description": "Die lernende Person kann Gefahrstoffkennzeichnungen recherchieren und Gefahrstoffsymbole fachgerecht deuten.",
+      "descriptionEn": "The learner can research hazard labels and interpret hazard symbols accurately.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekI"
+      ],
+      "contains": [],
+      "requires": [
+        "266a2b2a-9ee2-52f6-ae09-59343da9a60b"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-chemistry",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "PK1_EXPERIMENTIEREN",
+          "PK4_KOMMUNIZIEREN"
+        ],
+        "guidingIdeas": [
+          "BC_REAKTION"
+        ],
+        "phase": "GLOBAL",
+        "area": "Grundlagen",
+        "topicCode": "CANONICAL.CHEMISTRY.SEK1.SAFETY.HAZARD_SYMBOLS"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "bea90c22-b9c5-4c0c-9b10-89d875f50772",
+          "sourceLandscapeTitle": "Chemie Sekundarstufe I (Hessen, G9)",
+          "sourceGoalId": "3b6a4f7c-178c-4b0a-b786-f7e11693ea6d",
+          "splitFromCanonicalGoalId": "c7d4d9f7-d23f-44fc-bf22-3872e0f2b9a0",
+          "splitReviewId": "canonical-chemistry-sek1-foundations"
+        }
+      },
+      "type": "atomic",
+      "examples": []
+    },
+    {
+      "id": "7be6f951-a614-52dc-94d3-2ce0d33765ff",
+      "shortKey": "canonical_chemistry_sek1_chemical_handling_disposal",
+      "title": "Umgang und Entsorgung von Chemikalien begründen",
+      "titleEn": "Justify handling and disposal of chemicals",
+      "description": "Die lernende Person kann Regeln für sicheren Umgang und umweltgerechte Entsorgung von Chemikalien fachgerecht ableiten.",
+      "descriptionEn": "The learner can derive rules for safe handling and environmentally appropriate disposal of chemicals.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekI"
+      ],
+      "contains": [],
+      "requires": [
+        "9e656697-fc05-5aa9-9aca-871af2e89eb7"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-chemistry",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "PK1_EXPERIMENTIEREN",
+          "PK4_KOMMUNIZIEREN"
+        ],
+        "guidingIdeas": [
+          "BC_REAKTION"
+        ],
+        "phase": "GLOBAL",
+        "area": "Grundlagen",
+        "topicCode": "CANONICAL.CHEMISTRY.SEK1.SAFETY.HANDLING_DISPOSAL"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "bea90c22-b9c5-4c0c-9b10-89d875f50772",
+          "sourceLandscapeTitle": "Chemie Sekundarstufe I (Hessen, G9)",
+          "sourceGoalId": "3b6a4f7c-178c-4b0a-b786-f7e11693ea6d",
+          "splitFromCanonicalGoalId": "c7d4d9f7-d23f-44fc-bf22-3872e0f2b9a0",
+          "splitReviewId": "canonical-chemistry-sek1-foundations"
+        }
+      },
+      "type": "atomic",
+      "examples": []
+    },
+    {
+      "id": "ebaae4f5-cc13-5493-98b1-10e1abeb638f",
+      "shortKey": "canonical_chemistry_sek1_risk_minimization_options",
+      "title": "Gefahrenpotenziale beurteilen und reduzieren",
+      "titleEn": "Assess and reduce hazard potential",
+      "description": "Die lernende Person kann Gefahrenpotenziale chemischer Stoffe beurteilen und begründete Handlungsoptionen zur Risikominimierung entwickeln.",
+      "descriptionEn": "The learner can assess the hazard potential of chemical substances and develop justified options for reducing risk.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekI"
+      ],
+      "contains": [],
+      "requires": [
+        "7be6f951-a614-52dc-94d3-2ce0d33765ff"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-chemistry",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "PK1_EXPERIMENTIEREN",
+          "PK4_KOMMUNIZIEREN"
+        ],
+        "guidingIdeas": [
+          "BC_REAKTION"
+        ],
+        "phase": "GLOBAL",
+        "area": "Grundlagen",
+        "topicCode": "CANONICAL.CHEMISTRY.SEK1.SAFETY.RISK_MINIMIZATION"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "bea90c22-b9c5-4c0c-9b10-89d875f50772",
+          "sourceLandscapeTitle": "Chemie Sekundarstufe I (Hessen, G9)",
+          "sourceGoalId": "3b6a4f7c-178c-4b0a-b786-f7e11693ea6d",
+          "splitFromCanonicalGoalId": "c7d4d9f7-d23f-44fc-bf22-3872e0f2b9a0",
+          "splitReviewId": "canonical-chemistry-sek1-foundations"
         }
       },
       "type": "atomic",
@@ -6605,6 +6930,74 @@
       "examples": []
     },
     {
+      "weight": 3,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekI"
+      ],
+      "contains": [
+        "597ac03c-d25f-5c34-a87c-52c059c87295",
+        "d8bdf486-7295-5393-b6f7-54f6e485c848",
+        "9751b6d8-cde3-527b-b37c-babb6cee79d2"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "ff1ca997-b6cc-5ece-8e13-5498b4bbf808",
+          "sourceLandscapeTitle": "Chemie Gymnasium (Bayern, LehrplanPLUS)",
+          "sourceGoalId": "7b5310e2-3b69-5a45-8966-f8523ea42fb9"
+        }
+      },
+      "type": "cluster",
+      "id": "08b44b8f-e407-5a1f-82dc-e70e598022cf",
+      "shortKey": "canonical_chemistry_sek1_acid_base_particle_structure_reversibility",
+      "title": "Säure-Base-Eignung und Protonenübergänge erklären",
+      "titleEn": "Explain acid-base suitability and proton transfers",
+      "description": "Cluster für strukturelle Säure-Base-Eignung, reversible Protonenübergänge und die Beeinflussung ausgewählter Säure-Base-Reaktionen.",
+      "descriptionEn": "Cluster for structural acid-base suitability, reversible proton transfers, and influencing selected acid-base reactions.",
+      "requires": [
+        "1c1420c2-a8e2-520f-8015-6df637a973bd",
+        "95dc0ee5-a0af-5682-af32-d66e36fbeb50"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-chemistry",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "PK2_MODELLIEREN",
+          "PK4_KOMMUNIZIEREN"
+        ],
+        "guidingIdeas": [
+          "BC_REAKTION",
+          "BC_AUFBAU"
+        ],
+        "phase": "GLOBAL",
+        "area": "Säure-Base-Chemie",
+        "topicCode": "CANONICAL.CHEMISTRY.SEK1.ACID_BASE_PARTICLE_STRUCTURE_REVERSIBILITY"
+      },
+      "examples": []
+    },
+    {
       "weight": 1,
       "tags": [
         "GK",
@@ -6637,16 +7030,18 @@
         "provenance": {
           "sourceLandscapeId": "ff1ca997-b6cc-5ece-8e13-5498b4bbf808",
           "sourceLandscapeTitle": "Chemie Gymnasium (Bayern, LehrplanPLUS)",
-          "sourceGoalId": "7b5310e2-3b69-5a45-8966-f8523ea42fb9"
+          "sourceGoalId": "7b5310e2-3b69-5a45-8966-f8523ea42fb9",
+          "splitFromCanonicalGoalId": "08b44b8f-e407-5a1f-82dc-e70e598022cf",
+          "splitReviewId": "canonical-chemistry-sek1-foundations"
         }
       },
       "type": "atomic",
-      "id": "08b44b8f-e407-5a1f-82dc-e70e598022cf",
-      "shortKey": "canonical_chemistry_sek1_acid_base_particle_structure_reversibility",
-      "title": "Säure-Base-Eignung von Teilchen strukturell begründen",
-      "titleEn": "Justify acid-base capability of particles structurally",
-      "description": "Die lernende Person kann in Formeldarstellungen strukturelle Voraussetzungen für die Eignung eines Teilchens als Säure oder Base erkennen, die Reversibilität von Protonenübergängen aus experimentellen Beobachtungen ableiten und die Beeinflussung ausgewählter Säure-Base-Reaktionen damit erklären.",
-      "descriptionEn": "The learner can identify structural prerequisites in formulas for a particle to act as an acid or base and derive the reversibility of proton transfers from them.",
+      "id": "597ac03c-d25f-5c34-a87c-52c059c87295",
+      "shortKey": "canonical_chemistry_sek1_acid_base_particle_structure_eligibility",
+      "title": "Säure-Base-Eignung von Teilchenstrukturen erkennen",
+      "titleEn": "Identify acid-base suitability in particle structures",
+      "description": "Die lernende Person kann in Formeldarstellungen strukturelle Voraussetzungen für die Eignung eines Teilchens als Säure oder Base erkennen.",
+      "descriptionEn": "The learner can identify structural prerequisites for a particle to act as an acid or a base from formula representations.",
       "requires": [
         "1c1420c2-a8e2-520f-8015-6df637a973bd",
         "95dc0ee5-a0af-5682-af32-d66e36fbeb50"
@@ -6664,7 +7059,139 @@
         ],
         "phase": "GLOBAL",
         "area": "Säure-Base-Chemie",
-        "topicCode": "CANONICAL.CHEMISTRY.SEK1.ACID_BASE_PARTICLE_STRUCTURE_REVERSIBILITY"
+        "topicCode": "CANONICAL.CHEMISTRY.SEK1.ACID_BASE.PARTICLE_STRUCTURE_ELIGIBILITY"
+      },
+      "examples": []
+    },
+    {
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekI"
+      ],
+      "contains": [],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "ff1ca997-b6cc-5ece-8e13-5498b4bbf808",
+          "sourceLandscapeTitle": "Chemie Gymnasium (Bayern, LehrplanPLUS)",
+          "sourceGoalId": "7b5310e2-3b69-5a45-8966-f8523ea42fb9",
+          "splitFromCanonicalGoalId": "08b44b8f-e407-5a1f-82dc-e70e598022cf",
+          "splitReviewId": "canonical-chemistry-sek1-foundations"
+        }
+      },
+      "type": "atomic",
+      "id": "d8bdf486-7295-5393-b6f7-54f6e485c848",
+      "shortKey": "canonical_chemistry_sek1_acid_base_proton_transfer_reversibility",
+      "title": "Reversibilität von Protonenübergängen ableiten",
+      "titleEn": "Derive reversibility of proton transfers",
+      "description": "Die lernende Person kann die Reversibilität von Protonenübergängen aus experimentellen Beobachtungen ableiten.",
+      "descriptionEn": "The learner can derive the reversibility of proton transfers from experimental observations.",
+      "requires": [
+        "1c1420c2-a8e2-520f-8015-6df637a973bd",
+        "95dc0ee5-a0af-5682-af32-d66e36fbeb50"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-chemistry",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "PK2_MODELLIEREN",
+          "PK4_KOMMUNIZIEREN"
+        ],
+        "guidingIdeas": [
+          "BC_REAKTION",
+          "BC_AUFBAU"
+        ],
+        "phase": "GLOBAL",
+        "area": "Säure-Base-Chemie",
+        "topicCode": "CANONICAL.CHEMISTRY.SEK1.ACID_BASE.PROTON_TRANSFER_REVERSIBILITY"
+      },
+      "examples": []
+    },
+    {
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekI"
+      ],
+      "contains": [],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "ff1ca997-b6cc-5ece-8e13-5498b4bbf808",
+          "sourceLandscapeTitle": "Chemie Gymnasium (Bayern, LehrplanPLUS)",
+          "sourceGoalId": "7b5310e2-3b69-5a45-8966-f8523ea42fb9",
+          "splitFromCanonicalGoalId": "08b44b8f-e407-5a1f-82dc-e70e598022cf",
+          "splitReviewId": "canonical-chemistry-sek1-foundations"
+        }
+      },
+      "type": "atomic",
+      "id": "9751b6d8-cde3-527b-b37c-babb6cee79d2",
+      "shortKey": "canonical_chemistry_sek1_acid_base_reaction_influence_explain",
+      "title": "Beeinflussung von Säure-Base-Reaktionen erklären",
+      "titleEn": "Explain influences on acid-base reactions",
+      "description": "Die lernende Person kann die Beeinflussung ausgewählter Säure-Base-Reaktionen mit Protonenübergängen erklären.",
+      "descriptionEn": "The learner can explain how selected acid-base reactions involving proton transfers can be influenced.",
+      "requires": [
+        "597ac03c-d25f-5c34-a87c-52c059c87295",
+        "d8bdf486-7295-5393-b6f7-54f6e485c848"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-chemistry",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "PK2_MODELLIEREN",
+          "PK4_KOMMUNIZIEREN"
+        ],
+        "guidingIdeas": [
+          "BC_REAKTION",
+          "BC_AUFBAU"
+        ],
+        "phase": "GLOBAL",
+        "area": "Säure-Base-Chemie",
+        "topicCode": "CANONICAL.CHEMISTRY.SEK1.ACID_BASE.REACTION_INFLUENCE"
       },
       "examples": []
     },
@@ -22925,10 +23452,85 @@
     {
       "id": "10ce2814-8796-5633-9bed-f6990d039b91",
       "shortKey": "canonical_chemistry_sek1_particle_model_diffusion_solution",
-      "title": "Teilchenmodell für Diffusion und Lösungsvorgänge nutzen",
-      "titleEn": "Use the particle model for diffusion and dissolving processes",
-      "description": "Die lernende Person kann Aggregatzustände, Lösungsvorgänge, Diffusion und Brownsche Bewegung mit dem Teilchenmodell beschreiben und zwischen Stoffebene und Teilchenebene wechseln.",
-      "descriptionEn": "The learner can describe states of matter, dissolving processes, diffusion and Brownian motion using the particle model and switch between substance level and particle level.",
+      "title": "Teilchenmodell für Stoff- und Lösungsvorgänge nutzen",
+      "titleEn": "Use the particle model for substances and dissolution processes",
+      "description": "Cluster für Teilchenmodell-Deutungen von Aggregatzuständen, Lösungsvorgängen, Diffusion, Brownscher Bewegung und Ebenenwechseln.",
+      "descriptionEn": "Cluster for particle-model interpretations of states of matter, dissolution processes, diffusion, Brownian motion, and switching between representational levels.",
+      "phase": "GLOBAL",
+      "area": "Stoffe und Teilchen",
+      "level": 2,
+      "core": true,
+      "weight": 4,
+      "tags": [
+        "GK",
+        "LK",
+        "SekI",
+        "canonical"
+      ],
+      "requires": [
+        "326d45bf-9f77-57d5-a054-93e76b034dd5",
+        "53fd1bfd-facb-54ae-b2dc-f667ed1414fc"
+      ],
+      "contains": [
+        "988888bb-1f88-55f9-9a44-f3f60469a297",
+        "5338b54c-68bc-5892-907c-e025351ffde6",
+        "5dd180f1-f1c8-5f76-9c9a-ea3fc3d921bf",
+        "78109f6d-c415-52c4-8314-07c0dd888a80"
+      ],
+      "examples": [],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "type": "cluster",
+      "topicCode": "Chemie Sek I - Teilchenmodell",
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-chemistry",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "PK2_MODELLIEREN",
+          "PK4_KOMMUNIZIEREN"
+        ],
+        "guidingIdeas": [
+          "BC_AUFBAU"
+        ],
+        "phase": "GLOBAL",
+        "area": "Stoffe und Teilchen",
+        "topicCode": "Chemie Sek I - Teilchenmodell"
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeTitle": "Chemie Sekundarstufe I (Baden-Wuerttemberg, BP2016 V2 Source-Extraction)",
+          "sourceGoalId": "bw-chem-seki-3-2-1-2-b03-a01-1f9ce38a",
+          "sourceGoalTitle": "BW 3.2.1.2 (3): mithilfe eines geeigneten Teilchenmodells (Stoffteilchen) Aggregatzustände, Lösungsvorgänge, Dif...",
+          "sourceRef": "Bildungsplan 2016 Gymnasium Chemie Baden-Wuerttemberg, 3.2.1.2 (3), S. 15.",
+          "sourceSpan": "3.2.1.2 (3)"
+        }
+      }
+    },
+    {
+      "id": "988888bb-1f88-55f9-9a44-f3f60469a297",
+      "shortKey": "canonical_chemistry_sek1_particle_model_states",
+      "title": "Aggregatzustände mit dem Teilchenmodell beschreiben",
+      "titleEn": "Describe states of matter with the particle model",
+      "description": "Die lernende Person kann Aggregatzustände und Zustandsänderungen mit dem Teilchenmodell beschreiben.",
+      "descriptionEn": "The learner can describe states of matter and changes of state using the particle model.",
       "phase": "GLOBAL",
       "area": "Stoffe und Teilchen",
       "level": 2,
@@ -22941,8 +23543,7 @@
         "canonical"
       ],
       "requires": [
-        "326d45bf-9f77-57d5-a054-93e76b034dd5",
-        "53fd1bfd-facb-54ae-b2dc-f667ed1414fc"
+        "326d45bf-9f77-57d5-a054-93e76b034dd5"
       ],
       "contains": [],
       "examples": [],
@@ -22980,7 +23581,7 @@
         ],
         "phase": "GLOBAL",
         "area": "Stoffe und Teilchen",
-        "topicCode": "Chemie Sek I - Teilchenmodell"
+        "topicCode": "CANONICAL.CHEMISTRY.SEK1.PARTICLE_MODEL.STATES"
       },
       "extendedData": {
         "provenance": {
@@ -22988,7 +23589,223 @@
           "sourceGoalId": "bw-chem-seki-3-2-1-2-b03-a01-1f9ce38a",
           "sourceGoalTitle": "BW 3.2.1.2 (3): mithilfe eines geeigneten Teilchenmodells (Stoffteilchen) Aggregatzustände, Lösungsvorgänge, Dif...",
           "sourceRef": "Bildungsplan 2016 Gymnasium Chemie Baden-Wuerttemberg, 3.2.1.2 (3), S. 15.",
-          "sourceSpan": "3.2.1.2 (3)"
+          "sourceSpan": "3.2.1.2 (3)",
+          "splitFromCanonicalGoalId": "10ce2814-8796-5633-9bed-f6990d039b91",
+          "splitReviewId": "canonical-chemistry-sek1-foundations"
+        }
+      }
+    },
+    {
+      "id": "5338b54c-68bc-5892-907c-e025351ffde6",
+      "shortKey": "canonical_chemistry_sek1_particle_model_solution_processes",
+      "title": "Lösungsvorgänge mit dem Teilchenmodell beschreiben",
+      "titleEn": "Describe dissolution processes with the particle model",
+      "description": "Die lernende Person kann Lösungsvorgänge mit dem Teilchenmodell beschreiben.",
+      "descriptionEn": "The learner can describe dissolution processes using the particle model.",
+      "phase": "GLOBAL",
+      "area": "Stoffe und Teilchen",
+      "level": 2,
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "SekI",
+        "canonical"
+      ],
+      "requires": [
+        "53fd1bfd-facb-54ae-b2dc-f667ed1414fc",
+        "988888bb-1f88-55f9-9a44-f3f60469a297"
+      ],
+      "contains": [],
+      "examples": [],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "type": "atomic",
+      "topicCode": "Chemie Sek I - Teilchenmodell",
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-chemistry",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "PK2_MODELLIEREN",
+          "PK4_KOMMUNIZIEREN"
+        ],
+        "guidingIdeas": [
+          "BC_AUFBAU"
+        ],
+        "phase": "GLOBAL",
+        "area": "Stoffe und Teilchen",
+        "topicCode": "CANONICAL.CHEMISTRY.SEK1.PARTICLE_MODEL.SOLUTION_PROCESSES"
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeTitle": "Chemie Sekundarstufe I (Baden-Wuerttemberg, BP2016 V2 Source-Extraction)",
+          "sourceGoalId": "bw-chem-seki-3-2-1-2-b03-a01-1f9ce38a",
+          "sourceGoalTitle": "BW 3.2.1.2 (3): mithilfe eines geeigneten Teilchenmodells (Stoffteilchen) Aggregatzustände, Lösungsvorgänge, Dif...",
+          "sourceRef": "Bildungsplan 2016 Gymnasium Chemie Baden-Wuerttemberg, 3.2.1.2 (3), S. 15.",
+          "sourceSpan": "3.2.1.2 (3)",
+          "splitFromCanonicalGoalId": "10ce2814-8796-5633-9bed-f6990d039b91",
+          "splitReviewId": "canonical-chemistry-sek1-foundations"
+        }
+      }
+    },
+    {
+      "id": "5dd180f1-f1c8-5f76-9c9a-ea3fc3d921bf",
+      "shortKey": "canonical_chemistry_sek1_particle_model_diffusion_brownian_motion",
+      "title": "Diffusion und Brownsche Bewegung mit dem Teilchenmodell deuten",
+      "titleEn": "Interpret diffusion and Brownian motion with the particle model",
+      "description": "Die lernende Person kann Diffusion und Brownsche Bewegung mit dem Teilchenmodell deuten.",
+      "descriptionEn": "The learner can interpret diffusion and Brownian motion using the particle model.",
+      "phase": "GLOBAL",
+      "area": "Stoffe und Teilchen",
+      "level": 2,
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "SekI",
+        "canonical"
+      ],
+      "requires": [
+        "988888bb-1f88-55f9-9a44-f3f60469a297"
+      ],
+      "contains": [],
+      "examples": [],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "type": "atomic",
+      "topicCode": "Chemie Sek I - Teilchenmodell",
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-chemistry",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "PK2_MODELLIEREN",
+          "PK4_KOMMUNIZIEREN"
+        ],
+        "guidingIdeas": [
+          "BC_AUFBAU"
+        ],
+        "phase": "GLOBAL",
+        "area": "Stoffe und Teilchen",
+        "topicCode": "CANONICAL.CHEMISTRY.SEK1.PARTICLE_MODEL.DIFFUSION_BROWNIAN_MOTION"
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeTitle": "Chemie Sekundarstufe I (Baden-Wuerttemberg, BP2016 V2 Source-Extraction)",
+          "sourceGoalId": "bw-chem-seki-3-2-1-2-b03-a01-1f9ce38a",
+          "sourceGoalTitle": "BW 3.2.1.2 (3): mithilfe eines geeigneten Teilchenmodells (Stoffteilchen) Aggregatzustände, Lösungsvorgänge, Dif...",
+          "sourceRef": "Bildungsplan 2016 Gymnasium Chemie Baden-Wuerttemberg, 3.2.1.2 (3), S. 15.",
+          "sourceSpan": "3.2.1.2 (3)",
+          "splitFromCanonicalGoalId": "10ce2814-8796-5633-9bed-f6990d039b91",
+          "splitReviewId": "canonical-chemistry-sek1-foundations"
+        }
+      }
+    },
+    {
+      "id": "78109f6d-c415-52c4-8314-07c0dd888a80",
+      "shortKey": "canonical_chemistry_sek1_particle_model_level_switching",
+      "title": "Zwischen Stoffebene und Teilchenebene wechseln",
+      "titleEn": "Switch between substance and particle levels",
+      "description": "Die lernende Person kann bei chemischen Phänomenen zwischen Stoffebene und Teilchenebene wechseln.",
+      "descriptionEn": "The learner can switch between the substance level and the particle level when explaining chemical phenomena.",
+      "phase": "GLOBAL",
+      "area": "Stoffe und Teilchen",
+      "level": 2,
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "SekI",
+        "canonical"
+      ],
+      "requires": [
+        "988888bb-1f88-55f9-9a44-f3f60469a297"
+      ],
+      "contains": [],
+      "examples": [],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "type": "atomic",
+      "topicCode": "Chemie Sek I - Teilchenmodell",
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-chemistry",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "PK2_MODELLIEREN",
+          "PK4_KOMMUNIZIEREN"
+        ],
+        "guidingIdeas": [
+          "BC_AUFBAU"
+        ],
+        "phase": "GLOBAL",
+        "area": "Stoffe und Teilchen",
+        "topicCode": "CANONICAL.CHEMISTRY.SEK1.PARTICLE_MODEL.LEVEL_SWITCHING"
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeTitle": "Chemie Sekundarstufe I (Baden-Wuerttemberg, BP2016 V2 Source-Extraction)",
+          "sourceGoalId": "bw-chem-seki-3-2-1-2-b03-a01-1f9ce38a",
+          "sourceGoalTitle": "BW 3.2.1.2 (3): mithilfe eines geeigneten Teilchenmodells (Stoffteilchen) Aggregatzustände, Lösungsvorgänge, Dif...",
+          "sourceRef": "Bildungsplan 2016 Gymnasium Chemie Baden-Wuerttemberg, 3.2.1.2 (3), S. 15.",
+          "sourceSpan": "3.2.1.2 (3)",
+          "splitFromCanonicalGoalId": "10ce2814-8796-5633-9bed-f6990d039b91",
+          "splitReviewId": "canonical-chemistry-sek1-foundations"
         }
       }
     },
