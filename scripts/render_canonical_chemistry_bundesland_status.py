@@ -95,6 +95,7 @@ def render() -> str:
     states = tracker["states"]
     canonical_corridors = tracker.get("canonicalCorridors", [])
     steering_model = tracker.get("steeringModel", {})
+    evidence_watch = tracker.get("evidenceWatch", {})
     priority_order = {"active": 0, "next_wave": 1, "backlog": 2}
 
     rows = []
@@ -159,6 +160,9 @@ def render() -> str:
     lines.append(f"- `{tracker['landscapePath']}`")
     lines.append(f"- `{QUALITY_STATUS_PATH.relative_to(REPO_ROOT)}`")
     lines.append(f"- Chemistry `*.source-extraction.json` files under `{SOURCE_EXTRACTION_ROOT.relative_to(REPO_ROOT)}`")
+    manifest_path = evidence_watch.get("manifestPath")
+    if isinstance(manifest_path, str):
+        lines.append(f"- `{manifest_path}`")
     lines.append(f"- `{Path(__file__).relative_to(REPO_ROOT)}`")
     lines.append("")
     lines.append("## Headline")
@@ -197,6 +201,29 @@ def render() -> str:
     for priority in sorted(priority_counts, key=lambda value: priority_order.get(value, 99)):
         lines.append(f"- Priority `{priority}`: `{priority_counts[priority]}`")
     lines.append("")
+
+    if evidence_watch:
+        lines.append("## Evidence watch")
+        lines.append("")
+        status_view_path = evidence_watch.get("statusViewPath")
+        delta_view_path = evidence_watch.get("deltaViewPath")
+        run_command = evidence_watch.get("runCommand")
+        workflow_path = evidence_watch.get("workflowPath")
+        if isinstance(manifest_path, str):
+            lines.append(f"- Manifest: `{manifest_path}`")
+        if isinstance(status_view_path, str):
+            lines.append(f"- Status view: `{status_view_path}`")
+        if isinstance(delta_view_path, str):
+            lines.append(f"- Delta view: `{delta_view_path}`")
+        if isinstance(run_command, str):
+            lines.append(f"- Local run: `{run_command}`")
+        if isinstance(workflow_path, str):
+            lines.append(f"- Scheduled workflow: `{workflow_path}`")
+        lines.append(
+            "- Interpretation: file-level deltas are maintenance signals; active rollout reopens only when "
+            "the watch manifest's documented reopen rules are satisfied."
+        )
+        lines.append("")
 
     if steering_model:
         lines.append("## Steering model")
