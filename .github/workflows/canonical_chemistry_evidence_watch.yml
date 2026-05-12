@@ -1,0 +1,65 @@
+name: Canonical Chemistry Evidence Watch
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '47 5 * * *'
+  push:
+    branches: [ main ]
+    paths:
+      - '.github/workflows/canonical_chemistry_evidence_watch.yml'
+      - 'scripts/canonical_chemistry_evidence_watch.py'
+      - 'scripts/run_canonical_chemistry_evidence_watch.sh'
+      - 'curricula/DE/Gymnasium/provenance/chemistry-evidence-watch-manifest.json'
+      - 'curricula/DE/Gymnasium/provenance/chemistry-evidence-watch-baseline.json'
+      - 'curricula/DE/Gymnasium/provenance/chemistry-bundesland-rollout-tracker.json'
+      - 'curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json'
+      - 'curricula/DE/Gymnasium/input/**/source-extraction/*CHEM*.source-extraction.json'
+      - 'curricula/DE/Gymnasium/input/**/source-json/*CHEMIE*.json.snapshot'
+      - 'curricula/DE/Gymnasium/mapping/**/*canonical_chemistry*.json'
+      - 'curricula/DE/Gymnasium/composition-views/chemie/*.view.json'
+  pull_request:
+    branches: [ main ]
+    paths:
+      - '.github/workflows/canonical_chemistry_evidence_watch.yml'
+      - 'scripts/canonical_chemistry_evidence_watch.py'
+      - 'scripts/run_canonical_chemistry_evidence_watch.sh'
+      - 'curricula/DE/Gymnasium/provenance/chemistry-evidence-watch-manifest.json'
+      - 'curricula/DE/Gymnasium/provenance/chemistry-evidence-watch-baseline.json'
+      - 'curricula/DE/Gymnasium/provenance/chemistry-bundesland-rollout-tracker.json'
+      - 'curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json'
+      - 'curricula/DE/Gymnasium/input/**/source-extraction/*CHEM*.source-extraction.json'
+      - 'curricula/DE/Gymnasium/input/**/source-json/*CHEMIE*.json.snapshot'
+      - 'curricula/DE/Gymnasium/mapping/**/*canonical_chemistry*.json'
+      - 'curricula/DE/Gymnasium/composition-views/chemie/*.view.json'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  chemistry-evidence-watch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Use Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.11'
+
+      - name: Run canonical chemistry evidence watch
+        run: ./scripts/run_canonical_chemistry_evidence_watch.sh
+
+      - name: Upload evidence-watch artifacts
+        if: always()
+        uses: actions/upload-artifact@v6
+        with:
+          name: canonical-chemistry-evidence-watch
+          path: |
+            docs/dev/canonical-gymnasium-chemistry-evidence-watch-status.md
+            docs/dev/canonical-gymnasium-chemistry-evidence-watch-delta.md

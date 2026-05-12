@@ -1,0 +1,140 @@
+{
+  "version": 1,
+  "updatedAt": "2026-05-12T00:00:00Z",
+  "mode": "maintenance_evidence_watch",
+  "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+  "trackerPath": "curricula/DE/Gymnasium/provenance/chemistry-bundesland-rollout-tracker.json",
+  "baselinePath": "curricula/DE/Gymnasium/provenance/chemistry-evidence-watch-baseline.json",
+  "baselineCommand": "python3 scripts/canonical_chemistry_evidence_watch.py capture-baseline",
+  "statusViewPath": "docs/dev/canonical-gymnasium-chemistry-evidence-watch-status.md",
+  "statusCommand": "python3 scripts/canonical_chemistry_evidence_watch.py render-status",
+  "deltaViewPath": "docs/dev/canonical-gymnasium-chemistry-evidence-watch-delta.md",
+  "deltaCommand": "python3 scripts/canonical_chemistry_evidence_watch.py render-delta",
+  "checkCommand": "python3 scripts/canonical_chemistry_evidence_watch.py check-delta",
+  "runCommand": "./scripts/run_canonical_chemistry_evidence_watch.sh",
+  "workflowPath": ".github/workflows/canonical_chemistry_evidence_watch.yml",
+  "watchTargets": [
+    {
+      "id": "chemistry_canonical_and_tracker_watch",
+      "kind": "canonical_runtime_contract",
+      "states": [
+        "DE-BB",
+        "DE-BE",
+        "DE-BW",
+        "DE-BY",
+        "DE-HB",
+        "DE-HE",
+        "DE-HH",
+        "DE-MV",
+        "DE-NI",
+        "DE-NW",
+        "DE-RP",
+        "DE-SH",
+        "DE-SL",
+        "DE-SN",
+        "DE-ST",
+        "DE-TH"
+      ],
+      "candidateRows": [
+        "P6 cutover-ready canonical Chemistry graph",
+        "P6 all-state rollout tracker"
+      ],
+      "paths": [
+        "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+        "curricula/DE/Gymnasium/provenance/chemistry-bundesland-rollout-tracker.json"
+      ],
+      "reopenRule": "Reopen Chemistry P6 maintenance only if a canonical graph or tracker delta changes visible scope, source-backed projection status, runtime mapping coverage, or composition-view eligibility."
+    },
+    {
+      "id": "chemistry_source_evidence_watch",
+      "kind": "all_state_source_evidence",
+      "states": [
+        "DE-BB",
+        "DE-BE",
+        "DE-BW",
+        "DE-BY",
+        "DE-HB",
+        "DE-HE",
+        "DE-HH",
+        "DE-MV",
+        "DE-NI",
+        "DE-NW",
+        "DE-RP",
+        "DE-SH",
+        "DE-SL",
+        "DE-SN",
+        "DE-ST",
+        "DE-TH"
+      ],
+      "candidateRows": [
+        "source-extraction inventories for all Chemistry state lanes",
+        "retained Hessen source-json Chemistry snapshots"
+      ],
+      "pathGlobs": [
+        "curricula/DE/Gymnasium/input/**/source-extraction/*CHEM*.source-extraction.json",
+        "curricula/DE/Gymnasium/input/**/source-json/*CHEMIE*.json.snapshot"
+      ],
+      "reopenRule": "Reopen a state lane only if a watched source evidence delta changes the extracted Chemistry learning-goal set or introduces a source-backed visible scope that is not covered by the existing P6 projection."
+    },
+    {
+      "id": "chemistry_mapping_watch",
+      "kind": "all_state_mapping_contract",
+      "states": [
+        "DE-BB",
+        "DE-BE",
+        "DE-BW",
+        "DE-BY",
+        "DE-HB",
+        "DE-HE",
+        "DE-HH",
+        "DE-MV",
+        "DE-NI",
+        "DE-NW",
+        "DE-RP",
+        "DE-SH",
+        "DE-SL",
+        "DE-SN",
+        "DE-ST",
+        "DE-TH"
+      ],
+      "candidateRows": [
+        "reviewed source-extraction to canonical Chemistry mappings",
+        "runtime legacy-to-canonical Chemistry mappings"
+      ],
+      "pathGlobs": [
+        "curricula/DE/Gymnasium/mapping/**/*canonical_chemistry*.json"
+      ],
+      "reopenRule": "Reopen mapping maintenance only if a watched mapping delta changes source-to-canonical coverage, runtime legacy translation, unsupported assigned-goal handling, or projected learner-facing totals."
+    },
+    {
+      "id": "chemistry_composition_view_watch",
+      "kind": "all_state_composition_view_contract",
+      "states": [
+        "DE-BB",
+        "DE-BE",
+        "DE-BW",
+        "DE-BY",
+        "DE-HB",
+        "DE-HE",
+        "DE-HH",
+        "DE-MV",
+        "DE-NI",
+        "DE-NW",
+        "DE-RP",
+        "DE-SH",
+        "DE-SL",
+        "DE-SN",
+        "DE-ST",
+        "DE-TH"
+      ],
+      "candidateRows": [
+        "country-level Chemistry composition views",
+        "state-level GK/LK Chemistry composition views"
+      ],
+      "pathGlobs": [
+        "curricula/DE/Gymnasium/composition-views/chemie/*.view.json"
+      ],
+      "reopenRule": "Reopen composition-view maintenance only if a view delta changes the single-occurrence learner-facing tree, GK/LK eligibility, or a state-specific visible Chemistry scope."
+    }
+  ]
+}
