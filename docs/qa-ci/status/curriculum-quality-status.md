@@ -1,6 +1,6 @@
 # Curriculum Quality Status
 
-Generated: 2026-05-12T09:54:33.132Z
+Generated: 2026-05-12T10:30:49.339Z
 Rules version: curriculum-quality-v1
 
 ## Summary
@@ -10,17 +10,17 @@ Rules version: curriculum-quality-v1
 | Curricula | 21 |
 | M0 | 18 |
 | M1 | 0 |
-| M2 | 1 |
+| M2 | 0 |
 | M3 | 0 |
 | M4 | 0 |
-| M5 | 2 |
+| M5 | 3 |
 
 ## Curricula
 
 | Curriculum | Maturity | Goals | Atomic | Passage extraction | Bundeslaender | QA scopes | Warn | Fail |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Biologie (Gymnasium, DE) | M0 | 216 | 182 | 0/3 | 0/16 | 0 | 0 | 2 |
-| Chemie (Gymnasium, DE) | M2 | 467 | 399 | 32/32 | 16/16 | 1 | 2 | 0 |
+| Chemie (Gymnasium, DE) | M5 | 467 | 399 | 32/32 | 16/16 | 1 | 0 | 0 |
 | Chinesisch (Gymnasium, DE) | M0 | 192 | 181 | 0/2 | 0/16 | 0 | 1 | 1 |
 | Deutsch (Gymnasium, DE) | M0 | 181 | 144 | 0/2 | 0/16 | 0 | 1 | 1 |
 | Englisch (Gymnasium, DE) | M0 | 130 | 104 | 0/2 | 0/16 | 0 | 1 | 1 |

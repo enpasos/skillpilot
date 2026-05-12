@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "rulesVersion": "curriculum-quality-v1",
-  "generatedAt": "2026-05-12T09:54:33.132Z",
+  "generatedAt": "2026-05-12T10:30:49.339Z",
   "generatedBy": "app/scripts/generateCurriculumQualityStatus.ts",
   "sources": {
     "canonicalRoot": "curricula/DE/Gymnasium/canonical",
@@ -19,14 +19,14 @@
     "maturity": {
       "M0": 18,
       "M1": 0,
-      "M2": 1,
+      "M2": 0,
       "M3": 0,
       "M4": 0,
-      "M5": 2
+      "M5": 3
     },
     "ruleStatus": {
-      "pass": 98,
-      "warn": 19,
+      "pass": 100,
+      "warn": 17,
       "fail": 19,
       "not_configured": 71
     }
@@ -1001,7 +1001,7 @@
       "subject": "Chemie",
       "frameworkId": "canonical-gymnasium-chemistry",
       "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
-      "maturity": "M2",
+      "maturity": "M5",
       "goals": 467,
       "atomicGoals": 399,
       "clusterGoals": 68,
@@ -6452,7 +6452,7 @@
           "scopeId": "canonical-chemistry-sek2",
           "label": "Sekundarstufe II",
           "selectedAtomicGoals": 276,
-          "maturity": "M1",
+          "maturity": "M3",
           "rules": [
             {
               "id": "CQR-101",
@@ -6466,65 +6466,21 @@
             },
             {
               "id": "CQR-102",
-              "status": "warn",
-              "summary": "Direct atomic route coverage still needs migration work.",
+              "status": "pass",
+              "summary": "Direct atomic route coverage is complete for the configured scope.",
               "metrics": {
                 "selectedAtomicGoals": 276,
-                "missingDirectMotivationPath": 209,
+                "missingDirectMotivationPath": 0,
                 "missingDirectTerminalPath": 0
-              },
-              "details": [
-                "No direct atomic motivation path: Stoffe nach Struktur und Eigenschaften ordnen [02dc29ae-4046-556a-b048-d64a0feb8f16]",
-                "No direct atomic motivation path: Chemische Sachverhalte fachlich diskutieren [1f354a60-be44-512b-8f8b-f67c8c456035]",
-                "No direct atomic motivation path: Einflüsse auf naturwissenschaftliches Wissen bewerten [b3c9c4b8-5575-5200-86cf-26c14ebcc3d8]",
-                "No direct atomic motivation path: Unterenergiestufen aus Spektren und Ionisierungsenergien ableiten [49235cbe-6658-5e7e-8bd4-398416bcebdc]",
-                "No direct atomic motivation path: Quantenzahlen und Besetzungsregeln zur PSE-Anordnung nutzen [3bc48951-025c-5144-99b1-924db611a5f9]",
-                "No direct atomic motivation path: Ionenladungen von Nebengruppenelementen orbitalenergetisch begründen [a138d7bf-163a-59e0-a50a-8438ef4f5168]",
-                "No direct atomic motivation path: Alkane, Alkene und Alkine beschreiben [dd58c029-176f-5d99-923e-1c1fda6cf58e]",
-                "No direct atomic motivation path: Eigenschaften über Wechselwirkungen erklären [3d3231f9-039d-5ce5-9e8e-af219c7fee08]",
-                "No direct atomic motivation path: Radikalische Substitution nachvollziehen [3be2d0b7-c22f-57d4-886a-10fc04a629f5]",
-                "No direct atomic motivation path: Ethanol-Eigenschaften aus der Hydroxygruppe ableiten [e1214210-406e-5075-b83c-086b3972ed66]",
-                "No direct atomic motivation path: Gesundheitliche und gesellschaftliche Alkoholrisiken beurteilen [cd9ec99b-b694-5673-863c-55528e31250a]",
-                "No direct atomic motivation path: Rohstoffvorkommen reflektieren [2be9e61a-88ea-56fe-8294-ee46e3c9a8ef]",
-                "No direct atomic motivation path: Funktionelle Gruppen qualitativ nachweisen [3de28598-672f-5753-8a45-8f559c2f9dc2]",
-                "No direct atomic motivation path: Fraktionierung und Cracken erklären [8ceb1749-fce0-584f-a2b8-0a309282329a]",
-                "No direct atomic motivation path: Brennstoffe vergleichen [8ece9beb-9458-5ea1-8e45-9be04670f464]",
-                "No direct atomic motivation path: Fossile und nachwachsende Rohstoffe nachhaltig bewerten [a0e8f0f2-24e2-5945-a511-597d32e73796]",
-                "No direct atomic motivation path: Maßnahmen zu organischen Rohstoffen quellenkritisch ableiten [8b98d8ba-65c6-58d7-92f0-45f4b2456573]",
-                "No direct atomic motivation path: Innere Energie und Enthalpie in Reaktionssystemen abgrenzen [4928d5d1-e790-5883-9349-3b03a1c63b99]",
-                "No direct atomic motivation path: Reaktionsenthalpien aus Bindungsverhältnissen begründen [3e433dae-99f9-5a95-ad63-d5fa0b5f6836]",
-                "No direct atomic motivation path: Standard-Reaktionsenthalpien aus Bildungsenthalpien berechnen [4663fd80-1618-5211-8020-18f4b80979fc]"
-              ]
+              }
             },
             {
               "id": "CQR-103",
-              "status": "warn",
-              "summary": "27 scoped cluster-level requires remain.",
+              "status": "pass",
+              "summary": "No scoped cluster-level requires remain.",
               "metrics": {
-                "scopedClusterRequires": 27
-              },
-              "details": [
-                "Oberstufen-Atombau und Periodensystem [6e050336-6322-52e2-b40e-c26e5a95a613] has 1 requires",
-                "Einführungsphase Reaktionsgrundlagen [323a222e-5db8-53c5-b2dc-6f9c1d0d277c] has 1 requires",
-                "Ethanol gesundheitlich und gesellschaftlich einordnen [dd843c85-bf60-58c3-861b-fb531ba69b17] has 1 requires",
-                "Stoffgruppen [a0893975-1677-5dae-bbfb-675789be4f17] has 1 requires",
-                "Bindungsmodelle sicher nutzen [15e73664-8c3f-5aa6-ac65-b455fc3ed6d6] has 1 requires",
-                "Reaktionstypen beschreiben [9aec52cb-1f7d-5343-b5f9-a8e72ddd25fa] has 1 requires",
-                "Aromaten vertieft analysieren (LK) [ac700167-001f-5ff8-9a7d-85909f5daa4f] has 3 requires",
-                "Alkanole klassifizieren [0aaf0cc6-b059-56ef-9284-4cb7a0c5bff5] has 1 requires",
-                "Antreffwahrscheinlichkeit quantenmodellhaft begründen [7d84f40f-d1da-5b78-8c1b-4d02091e77b4] has 1 requires",
-                "Wellenfunktionen und MO-Energieniveauschemata verknüpfen [c0c0f6e4-56be-5196-9408-20efc4504783] has 1 requires",
-                "Hybridisierungsmodell und Molecular Modelling nutzen [18f09dab-e25b-59e7-951d-f9ff85e85207] has 1 requires",
-                "Nukleophile Substitution anwenden [c2d3f72b-e28a-5cae-b52a-7ffaa39d17c2] has 1 requires",
-                "Oxidation von Alkanolen vergleichen [61446285-4415-5bd9-9fdc-c19bb9ec1b02] has 1 requires",
-                "Mehrfunktionelle Säuren und Esterhydrolyse vertiefen (LK) [60719b87-f311-5d3e-8e80-7265ec80cb5b] has 1 requires",
-                "Naturstoffe und Synthesechemie [ae683d59-06a5-59be-87b5-b8648fd138c8] has 1 requires",
-                "Q2 Pharmazie [4a98bbee-41cb-5aef-91c6-f18d7bf2a214] has 2 requires",
-                "Chemisches Gleichgewicht [633f4fd4-1c36-5377-8fe6-44d8eeac3c56] has 1 requires",
-                "Energie und Nachhaltigkeit [f4fa58e7-5c6c-58dd-82db-19e7e0abe822] has 1 requires",
-                "Stereochemie einordnen [eae2a380-601c-53ed-be30-03c69c1f4f54] has 1 requires",
-                "Übungen E-Phase [9abac0f3-308d-536d-8454-56ed4fd98312] has 1 requires"
-              ]
+                "scopedClusterRequires": 0
+              }
             },
             {
               "id": "CQR-201",
