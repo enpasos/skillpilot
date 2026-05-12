@@ -111,3 +111,43 @@ Operational note:
 - the active snapshot/provenance activation is documented in:
   - `curricula/DE/Gymnasium/provenance/sl-physics-onboarding.md`
 - the next meaningful step is no longer local source intake, but the first structural-anchor pass across the now-complete newly archived Physics state set.
+
+## Chemie
+
+Archived official source inputs on `2026-05-11`:
+
+### Sekundarstufe I
+- `Chemie_Gymnasium_G9_Klasse_8_2024_red_2025.pdf`
+  - Chemie Klassenstufe `8` im neunjährigen Gymnasium, redaktionell `2025`
+- `Chemie_Gymnasium_G9_Klasse_9_2025.pdf`
+  - Chemie Klassenstufe `9` im neunjährigen Gymnasium
+
+### Gymnasiale Oberstufe
+- `Chemie_GOS_Einfuehrungsphase_naturwissenschaftlicher_Zweig_2024.pdf`
+  - Chemie Einführungsphase der gymnasialen Oberstufe, naturwissenschaftlicher Zweig
+- `Chemie_GOS_Einfuehrungsphase_sprachlicher_Zweig_2024.pdf`
+  - Chemie Einführungsphase der gymnasialen Oberstufe, sprachlicher Zweig
+- `Chemie_GOS_Grundkurs_2023_ab_2027_red_2025.pdf`
+  - Chemie Grundkurs der gymnasialen Oberstufe, ab Abitur `2027`, redaktionell `2025`
+- `Chemie_GOS_Leistungskurs_2023_ab_2027_red_2025.pdf`
+  - Chemie Leistungskurs der gymnasialen Oberstufe, ab Abitur `2027`, redaktionell `2025`
+
+Official source anchors:
+
+- gymnasiale Sek-I landing page:
+  - `https://www.saarland.de/mbk/DE/portale/bildungsserver/unterricht-und-bildungsthemen/lehrplaenehandreichungen/lehrplaeneallgemeinbildende/gymnasium`
+- gymnasiale Oberstufe landing page:
+  - `https://www.saarland.de/mbk/DE/portale/bildungsserver/unterricht-und-bildungsthemen/lehrplaenehandreichungen/lehrplaeneallgemeinbildende/gymnasiale-oberstufe-GOS/lehrplaene_GOS_node`
+
+Operational note:
+
+- `DE-SL` now has a real archived lower-secondary plus upper-secondary Chemistry bundle.
+- The first retained lower-secondary and upper-secondary Chemistry source extractions now live at:
+  - `curricula/DE/Gymnasium/input/SL/lower-secondary/source-extraction/DE_SL_CHEMIE_SEKI_GYM9_2024_2025.source-extraction.json`
+  - `curricula/DE/Gymnasium/input/SL/upper-secondary/source-extraction/DE_SL_CHEMIE_SEKII_GOS_2023_2025.source-extraction.json`
+- Saarland Chemistry M3 status:
+  - Sek I: `complete`
+  - Sek II: `complete`
+- Saarland Chemistry composition views:
+  - `active`
+- The next meaningful step is keeping Saarland Chemistry stable while Sachsen and Thueringen source onboarding continues.

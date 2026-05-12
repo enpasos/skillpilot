@@ -30,3 +30,26 @@
   stabil halten
 - die Aktivierung ist dokumentiert in `curricula/DE/Gymnasium/provenance/sn-physics-onboarding.md`
 - vor jedem topic-spezifischen SN-Physik-Mapping erst die restlichen neu archivierten Bundeslaender ebenfalls auf `P2` bringen
+
+## Chemie
+
+Archived official source input on `2026-05-11`:
+
+- `lehrplan-gymnasium-chemie-sachsen-2025.pdf`
+  - Lehrplan Gymnasium Chemie Sachsen `2004/2007/2009/2011/2019/2022/2025`
+  - Klassenstufen `7-10` und Jahrgangsstufen `11/12`
+  - direct PDF source: `https://www.schulportal.sachsen.de/lplandb/lehrplan/file/521/lnuYavMOfLLQRd2MlehG`
+  - public Lehrplandatenbank overview: `https://www.schulportal.sachsen.de/lplandb/lehrplan/521`
+
+Operational note:
+
+- `DE-SN` now has a real archived lower-secondary plus upper-secondary Chemistry source bundle from the shared official Gymnasium PDF.
+- The first retained lower-secondary and upper-secondary Chemistry source extractions now live at:
+  - `curricula/DE/Gymnasium/input/SN/lower-secondary/source-extraction/DE_SN_CHEMIE_SEKI_LEHRPLAN_GYMNASIUM_2025.source-extraction.json`
+  - `curricula/DE/Gymnasium/input/SN/upper-secondary/source-extraction/DE_SN_CHEMIE_SEKII_LEHRPLAN_GYMNASIUM_2025.source-extraction.json`
+- Sachsen Chemistry M3 status:
+  - Sek I: `complete` (176 Source-Ziele)
+  - Sek II: `complete` (302 Source-Ziele)
+- Sachsen Chemistry composition views:
+  - `active`
+- The next meaningful step is keeping Sachsen Chemistry stable while Thueringen source onboarding continues.

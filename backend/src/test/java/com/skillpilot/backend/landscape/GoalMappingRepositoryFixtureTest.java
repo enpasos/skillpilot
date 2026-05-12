@@ -33,32 +33,62 @@ class GoalMappingRepositoryFixtureTest {
     private static final String NRW_MATH_SEK1_LANDSCAPE_ID = "c862423f-d0ac-4a65-8ad2-9a6e560313a8";
     private static final String NRW_MATH_UPPER_SECONDARY_LANDSCAPE_ID = "d3a068ca-90c6-4d7f-ab6b-4d8b43085cb1";
     private static final String NRW_PHYSICS_UPPER_SECONDARY_LANDSCAPE_ID = "8abb46ff-072b-41b7-9d70-0334cb5a1a6c";
+    private static final String NRW_CHEMISTRY_SEK1_LANDSCAPE_ID = "b6869844-53a0-5ba9-8217-614bdba432fd";
+    private static final String NRW_CHEMISTRY_UPPER_SECONDARY_LANDSCAPE_ID = "9d80e7cf-2087-5eda-841a-e02e707b5ba9";
     private static final String BREMEN_PHYSICS_SEK1_LANDSCAPE_ID = "6cf49ad5-537a-45ee-848c-b114fd3c57df";
     private static final String BREMEN_PHYSICS_UPPER_SECONDARY_LANDSCAPE_ID = "10228ad5-6cc9-4e93-8436-c47f8b0b488a";
+    private static final String BREMEN_CHEMISTRY_SEK1_LANDSCAPE_ID = "b7e7ae4c-9e68-4231-bc73-da0da1efd9b4";
+    private static final String BREMEN_CHEMISTRY_UPPER_SECONDARY_LANDSCAPE_ID = "98a4a027-3df3-5797-8664-c731d31942d5";
     private static final String HAMBURG_PHYSICS_SEK1_LANDSCAPE_ID = "cc3245a5-2980-4019-aa51-84904e073195";
     private static final String HAMBURG_PHYSICS_UPPER_SECONDARY_LANDSCAPE_ID = "b400d5b6-7b13-4a64-881d-7416dcf01785";
+    private static final String HAMBURG_CHEMISTRY_SEK1_LANDSCAPE_ID = "22c22040-850c-5242-8ebe-ce7d9a505696";
+    private static final String HAMBURG_CHEMISTRY_UPPER_SECONDARY_LANDSCAPE_ID = "7516a41d-2eb2-5ce4-8f38-31570f0ffa81";
     private static final String MECKLENBURG_VORPOMMERN_PHYSICS_SEK1_LANDSCAPE_ID = "27da5587-bef3-49ad-9fec-3907253b85bd";
     private static final String MECKLENBURG_VORPOMMERN_PHYSICS_UPPER_SECONDARY_LANDSCAPE_ID = "f66821d1-64a5-428d-a826-36990b6f1e0f";
+    private static final String MECKLENBURG_VORPOMMERN_CHEMISTRY_SEK1_LANDSCAPE_ID = "e19d84c3-efa8-5b74-8c78-b284fc65b26c";
+    private static final String MECKLENBURG_VORPOMMERN_CHEMISTRY_UPPER_SECONDARY_LANDSCAPE_ID = "4f98d47b-8536-5021-8bf1-09761eff8050";
     private static final String NIEDERSACHSEN_MATH_SEK1_LANDSCAPE_ID = "2b995085-dc5e-47c6-a563-9dcfc01fb74d";
     private static final String NIEDERSACHSEN_MATH_UPPER_SECONDARY_LANDSCAPE_ID = "fcb04661-6ea2-4030-a9b2-97e6cc03daf8";
     private static final String NIEDERSACHSEN_PHYSICS_UPPER_SECONDARY_LANDSCAPE_ID = "730a6dbb-7ddb-486b-8ac8-dd9e58e3d113";
+    private static final String NIEDERSACHSEN_CHEMISTRY_SEK1_LANDSCAPE_ID = "d1d18318-e66f-44dc-8e82-52f8aa0b0ac1";
+    private static final String NIEDERSACHSEN_CHEMISTRY_UPPER_SECONDARY_LANDSCAPE_ID = "865026c1-fec9-5e1d-91ae-d24a47e8c219";
     private static final String BADEN_WUERTTEMBERG_MATH_SEK1_LANDSCAPE_ID = "6232b783-199c-4c50-92f2-9fb31277e619";
     private static final String BADEN_WUERTTEMBERG_MATH_UPPER_SECONDARY_LANDSCAPE_ID = "fa8f864a-aac5-486d-8e77-40df2af038a3";
     private static final String BADEN_WUERTTEMBERG_PHYSICS_UPPER_SECONDARY_LANDSCAPE_ID = "eee2dc63-f96b-42c3-a2c9-b906432ccf5d";
+    private static final String BADEN_WUERTTEMBERG_CHEMISTRY_SEK1_LANDSCAPE_ID = "ac4d5c1c-b2c9-5724-b0bc-64b9d666ad87";
+    private static final String BADEN_WUERTTEMBERG_CHEMISTRY_UPPER_SECONDARY_LANDSCAPE_ID = "880ae6cd-852f-5861-b3ae-2326e3ac7dec";
+    private static final String BERLIN_CHEMISTRY_SEK1_LANDSCAPE_ID = "2af9b757-11db-461a-812e-d1c1b4d6e104";
+    private static final String BERLIN_CHEMISTRY_UPPER_SECONDARY_LANDSCAPE_ID = "4bb4be30-3d9c-5e5b-9c9f-64fb0bc80c0c";
     private static final String BERLIN_PHYSICS_UPPER_SECONDARY_LANDSCAPE_ID = "8e54a9e6-dd9d-4f5d-a632-734b4ef5c754";
     private static final String SAARLAND_PHYSICS_SEK1_LANDSCAPE_ID = "e5f66ad7-8f49-41f5-b8b2-52ab9a0ebcac";
     private static final String SAARLAND_PHYSICS_UPPER_SECONDARY_LANDSCAPE_ID = "36092b29-547c-4018-8f47-97f04d786ba1";
+    private static final String SAARLAND_CHEMISTRY_SEK1_LANDSCAPE_ID = "c8d559dc-e8de-52a7-851a-6e411907daf6";
+    private static final String SAARLAND_CHEMISTRY_UPPER_SECONDARY_LANDSCAPE_ID = "7aae5eef-c2ae-5365-8091-955d96b89ad8";
     private static final String SAXONY_PHYSICS_SEK1_LANDSCAPE_ID = "d2e1fbb7-9e42-49a7-a07b-a7973156da12";
     private static final String SAXONY_PHYSICS_UPPER_SECONDARY_LANDSCAPE_ID = "e1213911-abd2-4a1e-88ca-7a78a58c2189";
+    private static final String SAXONY_CHEMISTRY_SEK1_LANDSCAPE_ID = "1e86b8e6-3a95-5df3-8622-8c2afbb989e1";
+    private static final String SAXONY_CHEMISTRY_UPPER_SECONDARY_LANDSCAPE_ID = "4629b4f3-95eb-5166-8b6b-056632d0f270";
     private static final String SAXONY_ANHALT_PHYSICS_SEK1_LANDSCAPE_ID = "3eedae6b-7e62-4e6e-a96c-78cd6df4c4aa";
     private static final String SAXONY_ANHALT_PHYSICS_UPPER_SECONDARY_LANDSCAPE_ID = "85f23183-91d4-4eb0-ad51-aa3a03b240a8";
+    private static final String SAXONY_ANHALT_CHEMISTRY_SEK1_LANDSCAPE_ID = "f9e8b305-d604-55c5-82b0-77a734925371";
+    private static final String SAXONY_ANHALT_CHEMISTRY_UPPER_SECONDARY_LANDSCAPE_ID =
+            "86a99136-152f-5da7-84f2-3a0ed9f53697";
     private static final String THUERINGIA_PHYSICS_SEK1_LANDSCAPE_ID = "2b1b8596-f8c5-44ba-9dec-4cccb834769a";
     private static final String THUERINGIA_PHYSICS_UPPER_SECONDARY_LANDSCAPE_ID = "8b6387d0-7fc8-40e4-89ca-e5049b5bc42f";
+    private static final String THUERINGIA_CHEMISTRY_SEK1_LANDSCAPE_ID = "d416f737-fb4c-585f-85a5-cd9a94c20cbe";
+    private static final String THUERINGIA_CHEMISTRY_UPPER_SECONDARY_LANDSCAPE_ID =
+            "6a601059-052b-5a4b-8aff-a121bc2cf968";
     private static final String SCHLESWIG_HOLSTEIN_MATH_UPPER_SECONDARY_LANDSCAPE_ID = "01ffba7d-7588-4221-bd2b-1a692839809a";
     private static final String SCHLESWIG_HOLSTEIN_PHYSICS_UPPER_SECONDARY_LANDSCAPE_ID = "f1a2c733-b994-4db3-9dd6-54ffe544002b";
+    private static final String SCHLESWIG_HOLSTEIN_CHEMISTRY_SEK1_LANDSCAPE_ID = "869de671-5a4f-57bc-83bf-40f77c746a69";
+    private static final String SCHLESWIG_HOLSTEIN_CHEMISTRY_UPPER_SECONDARY_LANDSCAPE_ID = "5dd72a26-67b0-5b2c-8a81-8ad179a6634e";
     private static final String BRANDENBURG_MATH_UPPER_SECONDARY_LANDSCAPE_ID = "c36ba9b3-4d11-4b19-a278-cd6c3c3fcc71";
+    private static final String BRANDENBURG_CHEMISTRY_SEK1_LANDSCAPE_ID = "9b66c555-7231-40a0-a493-9ffff8bde46c";
+    private static final String BRANDENBURG_CHEMISTRY_UPPER_SECONDARY_LANDSCAPE_ID = "6a3e6947-d950-5619-8db8-2ab9a6ac55c6";
     private static final String BRANDENBURG_PHYSICS_UPPER_SECONDARY_LANDSCAPE_ID = "6759f46a-5642-41f7-8dc7-71fd1c335855";
     private static final String RHEINLAND_PFALZ_PHYSICS_UPPER_SECONDARY_LANDSCAPE_ID = "eb32f91f-5f6f-4e13-a969-f53a0e92431f";
+    private static final String RHEINLAND_PFALZ_CHEMISTRY_SEK1_LANDSCAPE_ID = "4eb03df6-9416-5dc8-8957-a9cd3d5ce6a9";
+    private static final String RHEINLAND_PFALZ_CHEMISTRY_UPPER_SECONDARY_LANDSCAPE_ID = "7995e414-2401-5987-89e8-f4dfd816bd68";
     private static final String BAYERN_MATH_LANDSCAPE_ID = "c1600692-e543-5cf2-a399-6bd96e6b817f";
     private static final String BAYERN_PHYSICS_LANDSCAPE_ID = "42c2f7e3-91b4-5de8-bef0-d563440e9d52";
     private static final String BAYERN_CHEMISTRY_LANDSCAPE_ID = "ff1ca997-b6cc-5ece-8e13-5498b4bbf808";
@@ -147,58 +177,114 @@ class GoalMappingRepositoryFixtureTest {
             NRW_UPPER_SECONDARY_MAPPING_DIR.resolve("nrw_math_upper_secondary_to_canonical_math.json");
     private static final Path NRW_PHYSICS_UPPER_SECONDARY_MAPPING_FILE =
             NRW_UPPER_SECONDARY_MAPPING_DIR.resolve("nrw_physics_upper_secondary_to_canonical_physics.json");
+    private static final Path NRW_CHEMISTRY_SEK1_MAPPING_FILE =
+            NRW_LOWER_SECONDARY_MAPPING_DIR.resolve("nrw_chemistry_lower_secondary_to_canonical_chemistry.json");
+    private static final Path NRW_CHEMISTRY_UPPER_SECONDARY_MAPPING_FILE =
+            NRW_UPPER_SECONDARY_MAPPING_DIR.resolve("nrw_chemistry_upper_secondary_to_canonical_chemistry.json");
     private static final Path BREMEN_PHYSICS_SEK1_MAPPING_FILE =
             BREMEN_LOWER_SECONDARY_MAPPING_DIR.resolve("hb_physics_lower_secondary_to_canonical_physics.json");
     private static final Path BREMEN_PHYSICS_UPPER_SECONDARY_MAPPING_FILE =
             BREMEN_UPPER_SECONDARY_MAPPING_DIR.resolve("hb_physics_upper_secondary_to_canonical_physics.json");
+    private static final Path BREMEN_CHEMISTRY_SEK1_MAPPING_FILE =
+            BREMEN_LOWER_SECONDARY_MAPPING_DIR.resolve("hb_chemistry_lower_secondary_to_canonical_chemistry.json");
+    private static final Path BREMEN_CHEMISTRY_UPPER_SECONDARY_MAPPING_FILE =
+            BREMEN_UPPER_SECONDARY_MAPPING_DIR.resolve("hb_chemistry_upper_secondary_to_canonical_chemistry.json");
     private static final Path HAMBURG_PHYSICS_SEK1_MAPPING_FILE =
             HAMBURG_LOWER_SECONDARY_MAPPING_DIR.resolve("hh_physics_lower_secondary_to_canonical_physics.json");
     private static final Path HAMBURG_PHYSICS_UPPER_SECONDARY_MAPPING_FILE =
             HAMBURG_UPPER_SECONDARY_MAPPING_DIR.resolve("hh_physics_upper_secondary_to_canonical_physics.json");
+    private static final Path HAMBURG_CHEMISTRY_SEK1_MAPPING_FILE =
+            HAMBURG_LOWER_SECONDARY_MAPPING_DIR.resolve("hh_chemistry_lower_secondary_to_canonical_chemistry.json");
+    private static final Path HAMBURG_CHEMISTRY_UPPER_SECONDARY_MAPPING_FILE =
+            HAMBURG_UPPER_SECONDARY_MAPPING_DIR.resolve("hh_chemistry_upper_secondary_to_canonical_chemistry.json");
     private static final Path MECKLENBURG_VORPOMMERN_PHYSICS_SEK1_MAPPING_FILE =
             MECKLENBURG_VORPOMMERN_LOWER_SECONDARY_MAPPING_DIR.resolve("mv_physics_lower_secondary_to_canonical_physics.json");
     private static final Path MECKLENBURG_VORPOMMERN_PHYSICS_UPPER_SECONDARY_MAPPING_FILE = MECKLENBURG_VORPOMMERN_UPPER_SECONDARY_MAPPING_DIR.resolve(
             "mv_physics_upper_secondary_to_canonical_physics.json");
+    private static final Path MECKLENBURG_VORPOMMERN_CHEMISTRY_SEK1_MAPPING_FILE =
+            MECKLENBURG_VORPOMMERN_LOWER_SECONDARY_MAPPING_DIR.resolve("mv_chemistry_lower_secondary_to_canonical_chemistry.json");
+    private static final Path MECKLENBURG_VORPOMMERN_CHEMISTRY_UPPER_SECONDARY_MAPPING_FILE =
+            MECKLENBURG_VORPOMMERN_UPPER_SECONDARY_MAPPING_DIR.resolve("mv_chemistry_upper_secondary_to_canonical_chemistry.json");
     private static final Path SAARLAND_PHYSICS_SEK1_MAPPING_FILE =
             SAARLAND_LOWER_SECONDARY_MAPPING_DIR.resolve("sl_physics_lower_secondary_to_canonical_physics.json");
     private static final Path SAARLAND_PHYSICS_UPPER_SECONDARY_MAPPING_FILE =
             SAARLAND_UPPER_SECONDARY_MAPPING_DIR.resolve("sl_physics_upper_secondary_to_canonical_physics.json");
+    private static final Path SAARLAND_CHEMISTRY_SEK1_MAPPING_FILE =
+            SAARLAND_LOWER_SECONDARY_MAPPING_DIR.resolve("sl_chemistry_lower_secondary_to_canonical_chemistry.json");
+    private static final Path SAARLAND_CHEMISTRY_UPPER_SECONDARY_MAPPING_FILE =
+            SAARLAND_UPPER_SECONDARY_MAPPING_DIR.resolve("sl_chemistry_upper_secondary_to_canonical_chemistry.json");
     private static final Path SAXONY_PHYSICS_SEK1_MAPPING_FILE =
             SAXONY_LOWER_SECONDARY_MAPPING_DIR.resolve("sn_physics_lower_secondary_to_canonical_physics.json");
     private static final Path SAXONY_PHYSICS_UPPER_SECONDARY_MAPPING_FILE =
             SAXONY_UPPER_SECONDARY_MAPPING_DIR.resolve("sn_physics_upper_secondary_to_canonical_physics.json");
+    private static final Path SAXONY_CHEMISTRY_SEK1_MAPPING_FILE =
+            SAXONY_LOWER_SECONDARY_MAPPING_DIR.resolve("sn_chemistry_lower_secondary_to_canonical_chemistry.json");
+    private static final Path SAXONY_CHEMISTRY_UPPER_SECONDARY_MAPPING_FILE =
+            SAXONY_UPPER_SECONDARY_MAPPING_DIR.resolve("sn_chemistry_upper_secondary_to_canonical_chemistry.json");
     private static final Path SAXONY_ANHALT_PHYSICS_SEK1_MAPPING_FILE =
             SAXONY_ANHALT_LOWER_SECONDARY_MAPPING_DIR.resolve("st_physics_lower_secondary_to_canonical_physics.json");
     private static final Path SAXONY_ANHALT_PHYSICS_UPPER_SECONDARY_MAPPING_FILE =
             SAXONY_ANHALT_UPPER_SECONDARY_MAPPING_DIR.resolve("st_physics_upper_secondary_to_canonical_physics.json");
+    private static final Path SAXONY_ANHALT_CHEMISTRY_SEK1_MAPPING_FILE =
+            SAXONY_ANHALT_LOWER_SECONDARY_MAPPING_DIR.resolve("st_chemistry_lower_secondary_to_canonical_chemistry.json");
+    private static final Path SAXONY_ANHALT_CHEMISTRY_UPPER_SECONDARY_MAPPING_FILE = SAXONY_ANHALT_UPPER_SECONDARY_MAPPING_DIR
+            .resolve("st_chemistry_upper_secondary_to_canonical_chemistry.json");
     private static final Path THUERINGIA_PHYSICS_SEK1_MAPPING_FILE =
             THUERINGIA_LOWER_SECONDARY_MAPPING_DIR.resolve("th_physics_lower_secondary_to_canonical_physics.json");
     private static final Path THUERINGIA_PHYSICS_UPPER_SECONDARY_MAPPING_FILE =
             THUERINGIA_UPPER_SECONDARY_MAPPING_DIR.resolve("th_physics_upper_secondary_to_canonical_physics.json");
+    private static final Path THUERINGIA_CHEMISTRY_SEK1_MAPPING_FILE =
+            THUERINGIA_LOWER_SECONDARY_MAPPING_DIR.resolve("th_chemistry_lower_secondary_to_canonical_chemistry.json");
+    private static final Path THUERINGIA_CHEMISTRY_UPPER_SECONDARY_MAPPING_FILE =
+            THUERINGIA_UPPER_SECONDARY_MAPPING_DIR.resolve("th_chemistry_upper_secondary_to_canonical_chemistry.json");
     private static final Path NIEDERSACHSEN_SEK1_MAPPING_FILE =
             NIEDERSACHSEN_LOWER_SECONDARY_MAPPING_DIR.resolve("ni_math_lower_secondary_to_canonical_math.json");
     private static final Path NIEDERSACHSEN_UPPER_SECONDARY_MAPPING_FILE =
             NIEDERSACHSEN_UPPER_SECONDARY_MAPPING_DIR.resolve("ni_math_upper_secondary_to_canonical_math.json");
     private static final Path NIEDERSACHSEN_PHYSICS_UPPER_SECONDARY_MAPPING_FILE =
             NIEDERSACHSEN_UPPER_SECONDARY_MAPPING_DIR.resolve("ni_physics_upper_secondary_to_canonical_physics.json");
+    private static final Path NIEDERSACHSEN_CHEMISTRY_SEK1_MAPPING_FILE =
+            NIEDERSACHSEN_LOWER_SECONDARY_MAPPING_DIR.resolve("ni_chemistry_lower_secondary_to_canonical_chemistry.json");
+    private static final Path NIEDERSACHSEN_CHEMISTRY_UPPER_SECONDARY_MAPPING_FILE =
+            NIEDERSACHSEN_UPPER_SECONDARY_MAPPING_DIR.resolve("ni_chemistry_upper_secondary_to_canonical_chemistry.json");
     private static final Path BADEN_WUERTTEMBERG_SEK1_MAPPING_FILE =
             BADEN_WUERTTEMBERG_LOWER_SECONDARY_MAPPING_DIR.resolve("bw_math_lower_secondary_to_canonical_math.json");
     private static final Path BADEN_WUERTTEMBERG_UPPER_SECONDARY_MAPPING_FILE =
             BADEN_WUERTTEMBERG_UPPER_SECONDARY_MAPPING_DIR.resolve("bw_math_upper_secondary_to_canonical_math.json");
     private static final Path BADEN_WUERTTEMBERG_PHYSICS_UPPER_SECONDARY_MAPPING_FILE =
             BADEN_WUERTTEMBERG_UPPER_SECONDARY_MAPPING_DIR.resolve("bw_physics_upper_secondary_to_canonical_physics.json");
+    private static final Path BADEN_WUERTTEMBERG_CHEMISTRY_SEK1_MAPPING_FILE =
+            BADEN_WUERTTEMBERG_LOWER_SECONDARY_MAPPING_DIR.resolve("bw_chemistry_lower_secondary_to_canonical_chemistry.json");
+    private static final Path BADEN_WUERTTEMBERG_CHEMISTRY_UPPER_SECONDARY_MAPPING_FILE =
+            BADEN_WUERTTEMBERG_UPPER_SECONDARY_MAPPING_DIR.resolve("bw_chemistry_upper_secondary_to_canonical_chemistry.json");
     private static final Path BERLIN_PHYSICS_UPPER_SECONDARY_MAPPING_FILE =
             Path.of("../curricula/DE/Gymnasium/mapping/DE-BE/upper-secondary/be_physics_upper_secondary_to_canonical_physics.json");
+    private static final Path BERLIN_CHEMISTRY_SEK1_MAPPING_FILE =
+            Path.of("../curricula/DE/Gymnasium/mapping/DE-BE/lower-secondary/be_chemistry_lower_secondary_to_canonical_chemistry.json");
+    private static final Path BERLIN_CHEMISTRY_UPPER_SECONDARY_MAPPING_FILE =
+            Path.of("../curricula/DE/Gymnasium/mapping/DE-BE/upper-secondary/be_chemistry_upper_secondary_to_canonical_chemistry.json");
     private static final Path SCHLESWIG_HOLSTEIN_UPPER_SECONDARY_MAPPING_FILE =
             Path.of("../curricula/DE/Gymnasium/mapping/DE-SH/upper-secondary/sh_math_upper_secondary_to_canonical_math.json");
     private static final Path SCHLESWIG_HOLSTEIN_PHYSICS_UPPER_SECONDARY_MAPPING_FILE =
             Path.of("../curricula/DE/Gymnasium/mapping/DE-SH/upper-secondary/sh_physics_upper_secondary_to_canonical_physics.json");
+    private static final Path SCHLESWIG_HOLSTEIN_CHEMISTRY_SEK1_MAPPING_FILE =
+            Path.of("../curricula/DE/Gymnasium/mapping/DE-SH/lower-secondary/sh_chemistry_lower_secondary_to_canonical_chemistry.json");
+    private static final Path SCHLESWIG_HOLSTEIN_CHEMISTRY_UPPER_SECONDARY_MAPPING_FILE =
+            Path.of("../curricula/DE/Gymnasium/mapping/DE-SH/upper-secondary/sh_chemistry_upper_secondary_to_canonical_chemistry.json");
     private static final Path BRANDENBURG_UPPER_SECONDARY_MAPPING_FILE =
             Path.of("../curricula/DE/Gymnasium/mapping/DE-BB/upper-secondary/bb_math_upper_secondary_to_canonical_math.json");
     private static final Path BRANDENBURG_PHYSICS_UPPER_SECONDARY_MAPPING_FILE =
             Path.of("../curricula/DE/Gymnasium/mapping/DE-BB/upper-secondary/bb_physics_upper_secondary_to_canonical_physics.json");
+    private static final Path BRANDENBURG_CHEMISTRY_SEK1_MAPPING_FILE =
+            Path.of("../curricula/DE/Gymnasium/mapping/DE-BB/lower-secondary/bb_chemistry_lower_secondary_to_canonical_chemistry.json");
+    private static final Path BRANDENBURG_CHEMISTRY_UPPER_SECONDARY_MAPPING_FILE =
+            Path.of("../curricula/DE/Gymnasium/mapping/DE-BB/upper-secondary/bb_chemistry_upper_secondary_to_canonical_chemistry.json");
     private static final Path RHEINLAND_PFALZ_PHYSICS_UPPER_SECONDARY_MAPPING_FILE =
             Path.of("../curricula/DE/Gymnasium/mapping/DE-RP/upper-secondary/rp_physics_upper_secondary_to_canonical_physics.json");
+    private static final Path RHEINLAND_PFALZ_CHEMISTRY_SEK1_MAPPING_FILE =
+            Path.of("../curricula/DE/Gymnasium/mapping/DE-RP/lower-secondary/rp_chemistry_lower_secondary_to_canonical_chemistry.json");
+    private static final Path RHEINLAND_PFALZ_CHEMISTRY_UPPER_SECONDARY_MAPPING_FILE =
+            Path.of("../curricula/DE/Gymnasium/mapping/DE-RP/upper-secondary/rp_chemistry_upper_secondary_to_canonical_chemistry.json");
     private static final Path BAYERN_MAPPING_FILE = BAVARIA_GYMNASIUM_MAPPING_DIR.resolve("bavaria_math_to_canonical_math.json");
     private static final Path BAYERN_PHYSICS_MAPPING_FILE = BAVARIA_GYMNASIUM_MAPPING_DIR.resolve("bavaria_physics_to_canonical_physics.json");
     private static final Path BAYERN_CHEMISTRY_MAPPING_FILE =
@@ -754,6 +840,32 @@ class GoalMappingRepositoryFixtureTest {
     }
 
     @Test
+    void parsesRepositoryBackedCanonicalChemistryNiedersachsenSek1MappingFixture() throws Exception {
+        GoalMappingFile file = new ObjectMapper()
+                .readValue(NIEDERSACHSEN_CHEMISTRY_SEK1_MAPPING_FILE.toFile(), GoalMappingFile.class);
+
+        assertThat(file.getVersion()).isEqualTo(1);
+        assertThat(file.getSourceLandscapeId()).isEqualTo(NIEDERSACHSEN_CHEMISTRY_SEK1_LANDSCAPE_ID);
+        assertThat(file.getTargetLandscapeId()).isEqualTo(CANONICAL_CHEMISTRY_ID);
+        assertThat(file.getMappings()).hasSize(672);
+        assertThat(file.getMappings()).filteredOn(entry -> "exact".equals(entry.getMatchType())).hasSize(23);
+        assertThat(file.getMappings()).filteredOn(entry -> "partial".equals(entry.getMatchType())).hasSize(649);
+    }
+
+    @Test
+    void parsesRepositoryBackedCanonicalChemistryNiedersachsenUpperSecondaryMappingFixture() throws Exception {
+        GoalMappingFile file = new ObjectMapper()
+                .readValue(NIEDERSACHSEN_CHEMISTRY_UPPER_SECONDARY_MAPPING_FILE.toFile(), GoalMappingFile.class);
+
+        assertThat(file.getVersion()).isEqualTo(1);
+        assertThat(file.getSourceLandscapeId()).isEqualTo(NIEDERSACHSEN_CHEMISTRY_UPPER_SECONDARY_LANDSCAPE_ID);
+        assertThat(file.getTargetLandscapeId()).isEqualTo(CANONICAL_CHEMISTRY_ID);
+        assertThat(file.getMappings()).hasSize(768);
+        assertThat(file.getMappings()).filteredOn(entry -> "exact".equals(entry.getMatchType())).hasSize(82);
+        assertThat(file.getMappings()).filteredOn(entry -> "partial".equals(entry.getMatchType())).hasSize(686);
+    }
+
+    @Test
     void parsesRepositoryBackedCanonicalPhysicsBerlinUpperSecondaryMappingFixture() throws Exception {
         GoalMappingFile file =
                 new ObjectMapper().readValue(BERLIN_PHYSICS_UPPER_SECONDARY_MAPPING_FILE.toFile(), GoalMappingFile.class);
@@ -1024,6 +1136,32 @@ class GoalMappingRepositoryFixtureTest {
     }
 
     @Test
+    void parsesRepositoryBackedCanonicalChemistrySchleswigHolsteinSek1MappingFixture() throws Exception {
+        GoalMappingFile file = new ObjectMapper()
+                .readValue(SCHLESWIG_HOLSTEIN_CHEMISTRY_SEK1_MAPPING_FILE.toFile(), GoalMappingFile.class);
+
+        assertThat(file.getVersion()).isEqualTo(1);
+        assertThat(file.getSourceLandscapeId()).isEqualTo(SCHLESWIG_HOLSTEIN_CHEMISTRY_SEK1_LANDSCAPE_ID);
+        assertThat(file.getTargetLandscapeId()).isEqualTo(CANONICAL_CHEMISTRY_ID);
+        assertThat(file.getMappings()).hasSize(454);
+        assertThat(file.getMappings()).filteredOn(entry -> "exact".equals(entry.getMatchType())).hasSize(27);
+        assertThat(file.getMappings()).filteredOn(entry -> "partial".equals(entry.getMatchType())).hasSize(427);
+    }
+
+    @Test
+    void parsesRepositoryBackedCanonicalChemistrySchleswigHolsteinUpperSecondaryMappingFixture() throws Exception {
+        GoalMappingFile file = new ObjectMapper()
+                .readValue(SCHLESWIG_HOLSTEIN_CHEMISTRY_UPPER_SECONDARY_MAPPING_FILE.toFile(), GoalMappingFile.class);
+
+        assertThat(file.getVersion()).isEqualTo(1);
+        assertThat(file.getSourceLandscapeId()).isEqualTo(SCHLESWIG_HOLSTEIN_CHEMISTRY_UPPER_SECONDARY_LANDSCAPE_ID);
+        assertThat(file.getTargetLandscapeId()).isEqualTo(CANONICAL_CHEMISTRY_ID);
+        assertThat(file.getMappings()).hasSize(565);
+        assertThat(file.getMappings()).filteredOn(entry -> "exact".equals(entry.getMatchType())).hasSize(46);
+        assertThat(file.getMappings()).filteredOn(entry -> "partial".equals(entry.getMatchType())).hasSize(519);
+    }
+
+    @Test
     void parsesRepositoryBackedCanonicalPhysicsRheinlandPfalzUpperSecondaryMappingFixture() throws Exception {
         GoalMappingFile file = new ObjectMapper()
                 .readValue(RHEINLAND_PFALZ_PHYSICS_UPPER_SECONDARY_MAPPING_FILE.toFile(), GoalMappingFile.class);
@@ -1149,6 +1287,32 @@ class GoalMappingRepositoryFixtureTest {
                         Tuple.tuple("rp-phys-sek2-flow-phenomena-and-flow-types", "a658b54c-94ac-4e9c-93e3-defe1f2508a1", "partial"),
                         Tuple.tuple("rp-phys-sek2-continuity-bernoulli-stokes-reynolds", "333ca92b-a92c-46a9-86be-dea8ddbd43e0", "partial"),
                         Tuple.tuple("rp-phys-sek2-sinking-velocities-practicum", "333ca92b-a92c-46a9-86be-dea8ddbd43e0", "partial"));
+    }
+
+    @Test
+    void parsesRepositoryBackedCanonicalChemistryRheinlandPfalzSek1MappingFixture() throws Exception {
+        GoalMappingFile file = new ObjectMapper()
+                .readValue(RHEINLAND_PFALZ_CHEMISTRY_SEK1_MAPPING_FILE.toFile(), GoalMappingFile.class);
+
+        assertThat(file.getVersion()).isEqualTo(1);
+        assertThat(file.getSourceLandscapeId()).isEqualTo(RHEINLAND_PFALZ_CHEMISTRY_SEK1_LANDSCAPE_ID);
+        assertThat(file.getTargetLandscapeId()).isEqualTo(CANONICAL_CHEMISTRY_ID);
+        assertThat(file.getMappings()).hasSize(277);
+        assertThat(file.getMappings()).filteredOn(entry -> "exact".equals(entry.getMatchType())).hasSize(23);
+        assertThat(file.getMappings()).filteredOn(entry -> "partial".equals(entry.getMatchType())).hasSize(254);
+    }
+
+    @Test
+    void parsesRepositoryBackedCanonicalChemistryRheinlandPfalzUpperSecondaryMappingFixture() throws Exception {
+        GoalMappingFile file = new ObjectMapper()
+                .readValue(RHEINLAND_PFALZ_CHEMISTRY_UPPER_SECONDARY_MAPPING_FILE.toFile(), GoalMappingFile.class);
+
+        assertThat(file.getVersion()).isEqualTo(1);
+        assertThat(file.getSourceLandscapeId()).isEqualTo(RHEINLAND_PFALZ_CHEMISTRY_UPPER_SECONDARY_LANDSCAPE_ID);
+        assertThat(file.getTargetLandscapeId()).isEqualTo(CANONICAL_CHEMISTRY_ID);
+        assertThat(file.getMappings()).hasSize(1264);
+        assertThat(file.getMappings()).filteredOn(entry -> "exact".equals(entry.getMatchType())).hasSize(97);
+        assertThat(file.getMappings()).filteredOn(entry -> "partial".equals(entry.getMatchType())).hasSize(1167);
     }
 
     @Test
@@ -1366,6 +1530,121 @@ class GoalMappingRepositoryFixtureTest {
     }
 
     @Test
+    void parsesRepositoryBackedCanonicalChemistryBadenWuerttembergSek1MappingFixture() throws Exception {
+        GoalMappingFile file = new ObjectMapper()
+                .readValue(BADEN_WUERTTEMBERG_CHEMISTRY_SEK1_MAPPING_FILE.toFile(), GoalMappingFile.class);
+
+        assertThat(file.getVersion()).isEqualTo(1);
+        assertThat(file.getSourceLandscapeId()).isEqualTo(BADEN_WUERTTEMBERG_CHEMISTRY_SEK1_LANDSCAPE_ID);
+        assertThat(file.getTargetLandscapeId()).isEqualTo(CANONICAL_CHEMISTRY_ID);
+        assertThat(file.getMappings()).hasSize(124);
+        assertThat(file.getMappings()).filteredOn(entry -> "exact".equals(entry.getMatchType())).hasSize(27);
+        assertThat(file.getMappings()).filteredOn(entry -> "partial".equals(entry.getMatchType())).hasSize(97);
+    }
+
+    @Test
+    void parsesRepositoryBackedCanonicalChemistryBadenWuerttembergUpperSecondaryMappingFixture() throws Exception {
+        GoalMappingFile file = new ObjectMapper()
+                .readValue(BADEN_WUERTTEMBERG_CHEMISTRY_UPPER_SECONDARY_MAPPING_FILE.toFile(), GoalMappingFile.class);
+
+        assertThat(file.getVersion()).isEqualTo(1);
+        assertThat(file.getSourceLandscapeId()).isEqualTo(BADEN_WUERTTEMBERG_CHEMISTRY_UPPER_SECONDARY_LANDSCAPE_ID);
+        assertThat(file.getTargetLandscapeId()).isEqualTo(CANONICAL_CHEMISTRY_ID);
+        assertThat(file.getMappings()).hasSize(213);
+        assertThat(file.getMappings()).filteredOn(entry -> "exact".equals(entry.getMatchType())).hasSize(64);
+        assertThat(file.getMappings()).filteredOn(entry -> "partial".equals(entry.getMatchType())).hasSize(149);
+    }
+
+    @Test
+    void parsesRepositoryBackedCanonicalChemistryBrandenburgSek1MappingFixture() throws Exception {
+        GoalMappingFile file = new ObjectMapper()
+                .readValue(BRANDENBURG_CHEMISTRY_SEK1_MAPPING_FILE.toFile(), GoalMappingFile.class);
+
+        assertThat(file.getVersion()).isEqualTo(1);
+        assertThat(file.getSourceLandscapeId()).isEqualTo(BRANDENBURG_CHEMISTRY_SEK1_LANDSCAPE_ID);
+        assertThat(file.getTargetLandscapeId()).isEqualTo(CANONICAL_CHEMISTRY_ID);
+        assertThat(file.getMappings()).hasSize(191);
+        assertThat(file.getMappings()).filteredOn(entry -> "exact".equals(entry.getMatchType())).isEmpty();
+        assertThat(file.getMappings()).filteredOn(entry -> "partial".equals(entry.getMatchType())).hasSize(191);
+    }
+
+    @Test
+    void parsesRepositoryBackedCanonicalChemistryBrandenburgUpperSecondaryMappingFixture() throws Exception {
+        GoalMappingFile file = new ObjectMapper()
+                .readValue(BRANDENBURG_CHEMISTRY_UPPER_SECONDARY_MAPPING_FILE.toFile(), GoalMappingFile.class);
+
+        assertThat(file.getVersion()).isEqualTo(1);
+        assertThat(file.getSourceLandscapeId()).isEqualTo(BRANDENBURG_CHEMISTRY_UPPER_SECONDARY_LANDSCAPE_ID);
+        assertThat(file.getTargetLandscapeId()).isEqualTo(CANONICAL_CHEMISTRY_ID);
+        assertThat(file.getMappings()).hasSize(316);
+        assertThat(file.getMappings()).filteredOn(entry -> "exact".equals(entry.getMatchType())).hasSize(100);
+        assertThat(file.getMappings()).filteredOn(entry -> "partial".equals(entry.getMatchType())).hasSize(216);
+    }
+
+    @Test
+    void parsesRepositoryBackedCanonicalChemistryBerlinSek1MappingFixture() throws Exception {
+        GoalMappingFile file = new ObjectMapper()
+                .readValue(BERLIN_CHEMISTRY_SEK1_MAPPING_FILE.toFile(), GoalMappingFile.class);
+
+        assertThat(file.getVersion()).isEqualTo(1);
+        assertThat(file.getSourceLandscapeId()).isEqualTo(BERLIN_CHEMISTRY_SEK1_LANDSCAPE_ID);
+        assertThat(file.getTargetLandscapeId()).isEqualTo(CANONICAL_CHEMISTRY_ID);
+        assertThat(file.getMappings()).hasSize(191);
+        assertThat(file.getMappings()).filteredOn(entry -> "exact".equals(entry.getMatchType())).isEmpty();
+        assertThat(file.getMappings()).filteredOn(entry -> "partial".equals(entry.getMatchType())).hasSize(191);
+    }
+
+    @Test
+    void parsesRepositoryBackedCanonicalChemistryBerlinUpperSecondaryMappingFixture() throws Exception {
+        GoalMappingFile file = new ObjectMapper()
+                .readValue(BERLIN_CHEMISTRY_UPPER_SECONDARY_MAPPING_FILE.toFile(), GoalMappingFile.class);
+
+        assertThat(file.getVersion()).isEqualTo(1);
+        assertThat(file.getSourceLandscapeId()).isEqualTo(BERLIN_CHEMISTRY_UPPER_SECONDARY_LANDSCAPE_ID);
+        assertThat(file.getTargetLandscapeId()).isEqualTo(CANONICAL_CHEMISTRY_ID);
+        assertThat(file.getMappings()).hasSize(316);
+        assertThat(file.getMappings()).filteredOn(entry -> "exact".equals(entry.getMatchType())).hasSize(100);
+        assertThat(file.getMappings()).filteredOn(entry -> "partial".equals(entry.getMatchType())).hasSize(216);
+    }
+
+    @Test
+    void parsesRepositoryBackedCanonicalChemistryBremenSek1MappingFixture() throws Exception {
+        GoalMappingFile file = new ObjectMapper().readValue(BREMEN_CHEMISTRY_SEK1_MAPPING_FILE.toFile(), GoalMappingFile.class);
+
+        assertThat(file.getVersion()).isEqualTo(1);
+        assertThat(file.getSourceLandscapeId()).isEqualTo(BREMEN_CHEMISTRY_SEK1_LANDSCAPE_ID);
+        assertThat(file.getTargetLandscapeId()).isEqualTo(CANONICAL_CHEMISTRY_ID);
+        assertThat(file.getMappings()).hasSize(123);
+        assertThat(file.getMappings()).filteredOn(entry -> "exact".equals(entry.getMatchType())).isEmpty();
+        assertThat(file.getMappings()).filteredOn(entry -> "partial".equals(entry.getMatchType())).hasSize(123);
+        assertThat(file.getMappings())
+                .extracting(GoalMappingEntry::getLegacyGoalId, GoalMappingEntry::getCanonicalGoalId, GoalMappingEntry::getMatchType)
+                .contains(
+                        Tuple.tuple("hb-chemistry-seki-bp2006-2022-3-1-luft-feuer-001-f3d42bd4", "42a84bca-d27e-581f-a43a-eee424f0504d", "partial"),
+                        Tuple.tuple("hb-chemistry-seki-bp2006-2022-3-1-luft-feuer-001-f3d42bd4", "bb707fda-504c-4699-a78c-d0a6c320658f", "partial"),
+                        Tuple.tuple("hb-chemistry-seki-bp2006-2022-3-2-wasser-loesungsmittel-038-cf2b32df", "53fd1bfd-facb-54ae-b2dc-f667ed1414fc", "partial"));
+    }
+
+    @Test
+    void parsesRepositoryBackedCanonicalChemistryBremenUpperSecondaryMappingFixture() throws Exception {
+        GoalMappingFile file =
+                new ObjectMapper().readValue(BREMEN_CHEMISTRY_UPPER_SECONDARY_MAPPING_FILE.toFile(), GoalMappingFile.class);
+
+        assertThat(file.getVersion()).isEqualTo(1);
+        assertThat(file.getSourceLandscapeId()).isEqualTo(BREMEN_CHEMISTRY_UPPER_SECONDARY_LANDSCAPE_ID);
+        assertThat(file.getTargetLandscapeId()).isEqualTo(CANONICAL_CHEMISTRY_ID);
+        assertThat(file.getMappings()).hasSize(254);
+        assertThat(file.getMappings()).filteredOn(entry -> "exact".equals(entry.getMatchType())).hasSize(6);
+        assertThat(file.getMappings()).filteredOn(entry -> "partial".equals(entry.getMatchType())).hasSize(248);
+        assertThat(file.getMappings())
+                .extracting(GoalMappingEntry::getLegacyGoalId, GoalMappingEntry::getCanonicalGoalId, GoalMappingEntry::getMatchType)
+                .contains(
+                        Tuple.tuple("hb-chemistry-sekii-gyo2022-3-1-prozess-001-c3d5aff1", "91238ba1-5c63-50c7-a4fd-9bbe492c6b61", "partial"),
+                        Tuple.tuple("hb-chemistry-sekii-gyo2022-3-1-prozess-002-dc69edad", "277a3c20-6082-5a95-be08-c1e386efe79b", "exact"),
+                        Tuple.tuple("hb-chemistry-sekii-gyo2022-3-3-4-3-aromaten-085-0cafff1f", "4bdbdf32-3021-5a0a-b412-b611166b2d21", "partial"));
+    }
+
+    @Test
     void parsesRepositoryBackedCanonicalPhysicsHamburgSek1MappingFixture() throws Exception {
         GoalMappingFile file = new ObjectMapper().readValue(HAMBURG_PHYSICS_SEK1_MAPPING_FILE.toFile(), GoalMappingFile.class);
 
@@ -1408,6 +1687,31 @@ class GoalMappingRepositoryFixtureTest {
                         Tuple.tuple("hh-phys-sek2-oscillations-waves", "fcefb129-ad4c-50a2-9762-a910caa1af16", "partial"),
                         Tuple.tuple("hh-phys-sek2-quantum-matter", "5d960c58-f363-5dc1-b012-e6363b4b31cf", "partial"),
                         Tuple.tuple("hh-phys-sek2-gravitation-astrophysics", "b59cb1ef-05c2-5b09-abb3-8b6903ca0fd6", "partial"));
+    }
+
+    @Test
+    void parsesRepositoryBackedCanonicalChemistryHamburgSek1MappingFixture() throws Exception {
+        GoalMappingFile file = new ObjectMapper().readValue(HAMBURG_CHEMISTRY_SEK1_MAPPING_FILE.toFile(), GoalMappingFile.class);
+
+        assertThat(file.getVersion()).isEqualTo(1);
+        assertThat(file.getSourceLandscapeId()).isEqualTo(HAMBURG_CHEMISTRY_SEK1_LANDSCAPE_ID);
+        assertThat(file.getTargetLandscapeId()).isEqualTo(CANONICAL_CHEMISTRY_ID);
+        assertThat(file.getMappings()).hasSize(131);
+        assertThat(file.getMappings()).filteredOn(entry -> "exact".equals(entry.getMatchType())).hasSize(40);
+        assertThat(file.getMappings()).filteredOn(entry -> "partial".equals(entry.getMatchType())).hasSize(91);
+    }
+
+    @Test
+    void parsesRepositoryBackedCanonicalChemistryHamburgUpperSecondaryMappingFixture() throws Exception {
+        GoalMappingFile file =
+                new ObjectMapper().readValue(HAMBURG_CHEMISTRY_UPPER_SECONDARY_MAPPING_FILE.toFile(), GoalMappingFile.class);
+
+        assertThat(file.getVersion()).isEqualTo(1);
+        assertThat(file.getSourceLandscapeId()).isEqualTo(HAMBURG_CHEMISTRY_UPPER_SECONDARY_LANDSCAPE_ID);
+        assertThat(file.getTargetLandscapeId()).isEqualTo(CANONICAL_CHEMISTRY_ID);
+        assertThat(file.getMappings()).hasSize(395);
+        assertThat(file.getMappings()).filteredOn(entry -> "exact".equals(entry.getMatchType())).hasSize(18);
+        assertThat(file.getMappings()).filteredOn(entry -> "partial".equals(entry.getMatchType())).hasSize(377);
     }
 
     @Test
@@ -1457,6 +1761,32 @@ class GoalMappingRepositoryFixtureTest {
                         Tuple.tuple("mv-phys-sek2-fields", "0735269d-703d-57ab-8861-6f7e1c5e2b8a", "partial"),
                         Tuple.tuple("mv-phys-sek2-oscillations-waves", "fcefb129-ad4c-50a2-9762-a910caa1af16", "partial"),
                         Tuple.tuple("mv-phys-sek2-quantum-matter", "5d960c58-f363-5dc1-b012-e6363b4b31cf", "partial"));
+    }
+
+    @Test
+    void parsesRepositoryBackedCanonicalChemistryMecklenburgVorpommernSek1MappingFixture() throws Exception {
+        GoalMappingFile file =
+                new ObjectMapper().readValue(MECKLENBURG_VORPOMMERN_CHEMISTRY_SEK1_MAPPING_FILE.toFile(), GoalMappingFile.class);
+
+        assertThat(file.getVersion()).isEqualTo(1);
+        assertThat(file.getSourceLandscapeId()).isEqualTo(MECKLENBURG_VORPOMMERN_CHEMISTRY_SEK1_LANDSCAPE_ID);
+        assertThat(file.getTargetLandscapeId()).isEqualTo(CANONICAL_CHEMISTRY_ID);
+        assertThat(file.getMappings()).hasSize(447);
+        assertThat(file.getMappings()).filteredOn(entry -> "exact".equals(entry.getMatchType())).hasSize(34);
+        assertThat(file.getMappings()).filteredOn(entry -> "partial".equals(entry.getMatchType())).hasSize(413);
+    }
+
+    @Test
+    void parsesRepositoryBackedCanonicalChemistryMecklenburgVorpommernUpperSecondaryMappingFixture() throws Exception {
+        GoalMappingFile file = new ObjectMapper()
+                .readValue(MECKLENBURG_VORPOMMERN_CHEMISTRY_UPPER_SECONDARY_MAPPING_FILE.toFile(), GoalMappingFile.class);
+
+        assertThat(file.getVersion()).isEqualTo(1);
+        assertThat(file.getSourceLandscapeId()).isEqualTo(MECKLENBURG_VORPOMMERN_CHEMISTRY_UPPER_SECONDARY_LANDSCAPE_ID);
+        assertThat(file.getTargetLandscapeId()).isEqualTo(CANONICAL_CHEMISTRY_ID);
+        assertThat(file.getMappings()).hasSize(552);
+        assertThat(file.getMappings()).filteredOn(entry -> "exact".equals(entry.getMatchType())).hasSize(18);
+        assertThat(file.getMappings()).filteredOn(entry -> "partial".equals(entry.getMatchType())).hasSize(534);
     }
 
     @Test
@@ -1512,6 +1842,32 @@ class GoalMappingRepositoryFixtureTest {
                         Tuple.tuple("sl-phys-lk-induction", "fcefb129-ad4c-50a2-9762-a910caa1af16", "partial"),
                         Tuple.tuple("sl-phys-lk-oscillations-waves", "fcefb129-ad4c-50a2-9762-a910caa1af16", "partial"),
                         Tuple.tuple("sl-phys-lk-quanta-atoms", "5d960c58-f363-5dc1-b012-e6363b4b31cf", "partial"));
+    }
+
+    @Test
+    void parsesRepositoryBackedCanonicalChemistrySaarlandSek1MappingFixture() throws Exception {
+        GoalMappingFile file =
+                new ObjectMapper().readValue(SAARLAND_CHEMISTRY_SEK1_MAPPING_FILE.toFile(), GoalMappingFile.class);
+
+        assertThat(file.getVersion()).isEqualTo(1);
+        assertThat(file.getSourceLandscapeId()).isEqualTo(SAARLAND_CHEMISTRY_SEK1_LANDSCAPE_ID);
+        assertThat(file.getTargetLandscapeId()).isEqualTo(CANONICAL_CHEMISTRY_ID);
+        assertThat(file.getMappings()).hasSize(601);
+        assertThat(file.getMappings()).filteredOn(entry -> "exact".equals(entry.getMatchType())).hasSize(62);
+        assertThat(file.getMappings()).filteredOn(entry -> "partial".equals(entry.getMatchType())).hasSize(539);
+    }
+
+    @Test
+    void parsesRepositoryBackedCanonicalChemistrySaarlandUpperSecondaryMappingFixture() throws Exception {
+        GoalMappingFile file = new ObjectMapper()
+                .readValue(SAARLAND_CHEMISTRY_UPPER_SECONDARY_MAPPING_FILE.toFile(), GoalMappingFile.class);
+
+        assertThat(file.getVersion()).isEqualTo(1);
+        assertThat(file.getSourceLandscapeId()).isEqualTo(SAARLAND_CHEMISTRY_UPPER_SECONDARY_LANDSCAPE_ID);
+        assertThat(file.getTargetLandscapeId()).isEqualTo(CANONICAL_CHEMISTRY_ID);
+        assertThat(file.getMappings()).hasSize(3155);
+        assertThat(file.getMappings()).filteredOn(entry -> "exact".equals(entry.getMatchType())).hasSize(137);
+        assertThat(file.getMappings()).filteredOn(entry -> "partial".equals(entry.getMatchType())).hasSize(3018);
     }
 
     @Test
@@ -1576,6 +1932,32 @@ class GoalMappingRepositoryFixtureTest {
                         Tuple.tuple("sn-phys-lk12-atomic-physics", "5482bc19-3836-51a5-ba98-fbf5e265b908", "partial"),
                         Tuple.tuple("sn-phys-lk12-atomic-nuclei", "5482bc19-3836-51a5-ba98-fbf5e265b908", "partial"),
                         Tuple.tuple("sn-phys-lk12-thermodynamics", "942de15b-32f1-5713-80e5-e7aeb8749fc4", "partial"));
+    }
+
+    @Test
+    void parsesRepositoryBackedCanonicalChemistrySaxonySek1MappingFixture() throws Exception {
+        GoalMappingFile file =
+                new ObjectMapper().readValue(SAXONY_CHEMISTRY_SEK1_MAPPING_FILE.toFile(), GoalMappingFile.class);
+
+        assertThat(file.getVersion()).isEqualTo(1);
+        assertThat(file.getSourceLandscapeId()).isEqualTo(SAXONY_CHEMISTRY_SEK1_LANDSCAPE_ID);
+        assertThat(file.getTargetLandscapeId()).isEqualTo(CANONICAL_CHEMISTRY_ID);
+        assertThat(file.getMappings()).hasSize(845);
+        assertThat(file.getMappings()).filteredOn(entry -> "exact".equals(entry.getMatchType())).hasSize(48);
+        assertThat(file.getMappings()).filteredOn(entry -> "partial".equals(entry.getMatchType())).hasSize(797);
+    }
+
+    @Test
+    void parsesRepositoryBackedCanonicalChemistrySaxonyUpperSecondaryMappingFixture() throws Exception {
+        GoalMappingFile file =
+                new ObjectMapper().readValue(SAXONY_CHEMISTRY_UPPER_SECONDARY_MAPPING_FILE.toFile(), GoalMappingFile.class);
+
+        assertThat(file.getVersion()).isEqualTo(1);
+        assertThat(file.getSourceLandscapeId()).isEqualTo(SAXONY_CHEMISTRY_UPPER_SECONDARY_LANDSCAPE_ID);
+        assertThat(file.getTargetLandscapeId()).isEqualTo(CANONICAL_CHEMISTRY_ID);
+        assertThat(file.getMappings()).hasSize(1747);
+        assertThat(file.getMappings()).filteredOn(entry -> "exact".equals(entry.getMatchType())).hasSize(38);
+        assertThat(file.getMappings()).filteredOn(entry -> "partial".equals(entry.getMatchType())).hasSize(1709);
     }
 
     @Test
@@ -1650,6 +2032,32 @@ class GoalMappingRepositoryFixtureTest {
     }
 
     @Test
+    void parsesRepositoryBackedCanonicalChemistrySaxonyAnhaltSek1MappingFixture() throws Exception {
+        GoalMappingFile file =
+                new ObjectMapper().readValue(SAXONY_ANHALT_CHEMISTRY_SEK1_MAPPING_FILE.toFile(), GoalMappingFile.class);
+
+        assertThat(file.getVersion()).isEqualTo(1);
+        assertThat(file.getSourceLandscapeId()).isEqualTo(SAXONY_ANHALT_CHEMISTRY_SEK1_LANDSCAPE_ID);
+        assertThat(file.getTargetLandscapeId()).isEqualTo(CANONICAL_CHEMISTRY_ID);
+        assertThat(file.getMappings()).hasSize(1024);
+        assertThat(file.getMappings()).filteredOn(entry -> "exact".equals(entry.getMatchType())).hasSize(55);
+        assertThat(file.getMappings()).filteredOn(entry -> "partial".equals(entry.getMatchType())).hasSize(969);
+    }
+
+    @Test
+    void parsesRepositoryBackedCanonicalChemistrySaxonyAnhaltUpperSecondaryMappingFixture() throws Exception {
+        GoalMappingFile file = new ObjectMapper()
+                .readValue(SAXONY_ANHALT_CHEMISTRY_UPPER_SECONDARY_MAPPING_FILE.toFile(), GoalMappingFile.class);
+
+        assertThat(file.getVersion()).isEqualTo(1);
+        assertThat(file.getSourceLandscapeId()).isEqualTo(SAXONY_ANHALT_CHEMISTRY_UPPER_SECONDARY_LANDSCAPE_ID);
+        assertThat(file.getTargetLandscapeId()).isEqualTo(CANONICAL_CHEMISTRY_ID);
+        assertThat(file.getMappings()).hasSize(1453);
+        assertThat(file.getMappings()).filteredOn(entry -> "exact".equals(entry.getMatchType())).hasSize(40);
+        assertThat(file.getMappings()).filteredOn(entry -> "partial".equals(entry.getMatchType())).hasSize(1413);
+    }
+
+    @Test
     void parsesRepositoryBackedCanonicalPhysicsThueringenSek1MappingFixture() throws Exception {
         GoalMappingFile file = new ObjectMapper().readValue(THUERINGIA_PHYSICS_SEK1_MAPPING_FILE.toFile(), GoalMappingFile.class);
 
@@ -1698,6 +2106,32 @@ class GoalMappingRepositoryFixtureTest {
     }
 
     @Test
+    void parsesRepositoryBackedCanonicalChemistryThueringenSek1MappingFixture() throws Exception {
+        GoalMappingFile file =
+                new ObjectMapper().readValue(THUERINGIA_CHEMISTRY_SEK1_MAPPING_FILE.toFile(), GoalMappingFile.class);
+
+        assertThat(file.getVersion()).isEqualTo(1);
+        assertThat(file.getSourceLandscapeId()).isEqualTo(THUERINGIA_CHEMISTRY_SEK1_LANDSCAPE_ID);
+        assertThat(file.getTargetLandscapeId()).isEqualTo(CANONICAL_CHEMISTRY_ID);
+        assertThat(file.getMappings()).hasSize(999);
+        assertThat(file.getMappings()).filteredOn(entry -> "exact".equals(entry.getMatchType())).hasSize(56);
+        assertThat(file.getMappings()).filteredOn(entry -> "partial".equals(entry.getMatchType())).hasSize(943);
+    }
+
+    @Test
+    void parsesRepositoryBackedCanonicalChemistryThueringenUpperSecondaryMappingFixture() throws Exception {
+        GoalMappingFile file = new ObjectMapper()
+                .readValue(THUERINGIA_CHEMISTRY_UPPER_SECONDARY_MAPPING_FILE.toFile(), GoalMappingFile.class);
+
+        assertThat(file.getVersion()).isEqualTo(1);
+        assertThat(file.getSourceLandscapeId()).isEqualTo(THUERINGIA_CHEMISTRY_UPPER_SECONDARY_LANDSCAPE_ID);
+        assertThat(file.getTargetLandscapeId()).isEqualTo(CANONICAL_CHEMISTRY_ID);
+        assertThat(file.getMappings()).hasSize(1008);
+        assertThat(file.getMappings()).filteredOn(entry -> "exact".equals(entry.getMatchType())).hasSize(39);
+        assertThat(file.getMappings()).filteredOn(entry -> "partial".equals(entry.getMatchType())).hasSize(969);
+    }
+
+    @Test
     void parsesRepositoryBackedCanonicalNrwUpperSecondaryPhysicsMappingFixture() throws Exception {
         GoalMappingFile file =
                 new ObjectMapper().readValue(NRW_PHYSICS_UPPER_SECONDARY_MAPPING_FILE.toFile(), GoalMappingFile.class);
@@ -1740,6 +2174,31 @@ class GoalMappingRepositoryFixtureTest {
                         Tuple.tuple("7353846c-3bbb-4fd9-9f96-9bc8f9332b9b", "2a6703e0-2a6f-4ebf-a5c6-7aa05a4b86eb", "partial"),
                         Tuple.tuple("950a23da-4714-4b21-84bb-ceec26f88616", "bb5c5eab-2fc1-5336-b8cf-14d147695487", "partial"),
                         Tuple.tuple("4fafb71a-589d-4923-a174-a2a54ebec3eb", "7e719cc2-0866-5267-a252-e7e7ac0d03f1", "partial"));
+    }
+
+    @Test
+    void parsesRepositoryBackedCanonicalChemistryNrwSek1MappingFixture() throws Exception {
+        GoalMappingFile file = new ObjectMapper().readValue(NRW_CHEMISTRY_SEK1_MAPPING_FILE.toFile(), GoalMappingFile.class);
+
+        assertThat(file.getVersion()).isEqualTo(1);
+        assertThat(file.getSourceLandscapeId()).isEqualTo(NRW_CHEMISTRY_SEK1_LANDSCAPE_ID);
+        assertThat(file.getTargetLandscapeId()).isEqualTo(CANONICAL_CHEMISTRY_ID);
+        assertThat(file.getMappings()).hasSize(596);
+        assertThat(file.getMappings()).filteredOn(entry -> "exact".equals(entry.getMatchType())).hasSize(1);
+        assertThat(file.getMappings()).filteredOn(entry -> "partial".equals(entry.getMatchType())).hasSize(595);
+    }
+
+    @Test
+    void parsesRepositoryBackedCanonicalChemistryNrwUpperSecondaryMappingFixture() throws Exception {
+        GoalMappingFile file =
+                new ObjectMapper().readValue(NRW_CHEMISTRY_UPPER_SECONDARY_MAPPING_FILE.toFile(), GoalMappingFile.class);
+
+        assertThat(file.getVersion()).isEqualTo(1);
+        assertThat(file.getSourceLandscapeId()).isEqualTo(NRW_CHEMISTRY_UPPER_SECONDARY_LANDSCAPE_ID);
+        assertThat(file.getTargetLandscapeId()).isEqualTo(CANONICAL_CHEMISTRY_ID);
+        assertThat(file.getMappings()).hasSize(1420);
+        assertThat(file.getMappings()).filteredOn(entry -> "exact".equals(entry.getMatchType())).hasSize(2);
+        assertThat(file.getMappings()).filteredOn(entry -> "partial".equals(entry.getMatchType())).hasSize(1418);
     }
 
     @Test
@@ -2022,48 +2481,132 @@ class GoalMappingRepositoryFixtureTest {
         assertThat(service.getMappingsForSourceLandscape(HESSEN_MATH_SEK1_LANDSCAPE_ID))
                 .isNotEmpty()
                 .allMatch(mapping -> CANONICAL_MATH_ID.equals(mapping.targetLandscapeId()));
+        assertThat(service.getMappingsForSourceLandscape(NRW_CHEMISTRY_SEK1_LANDSCAPE_ID))
+                .isNotEmpty()
+                .allMatch(mapping -> CANONICAL_CHEMISTRY_ID.equals(mapping.targetLandscapeId()));
+        assertThat(service.getMappingsForSourceLandscape(NRW_CHEMISTRY_UPPER_SECONDARY_LANDSCAPE_ID))
+                .isNotEmpty()
+                .allMatch(mapping -> CANONICAL_CHEMISTRY_ID.equals(mapping.targetLandscapeId()));
         assertThat(service.getMappingsForSourceLandscape(BREMEN_PHYSICS_SEK1_LANDSCAPE_ID))
                 .isNotEmpty()
                 .allMatch(mapping -> CANONICAL_PHYSICS_ID.equals(mapping.targetLandscapeId()));
         assertThat(service.getMappingsForSourceLandscape(BREMEN_PHYSICS_UPPER_SECONDARY_LANDSCAPE_ID))
                 .isNotEmpty()
                 .allMatch(mapping -> CANONICAL_PHYSICS_ID.equals(mapping.targetLandscapeId()));
+        assertThat(service.getMappingsForSourceLandscape(BREMEN_CHEMISTRY_SEK1_LANDSCAPE_ID))
+                .isNotEmpty()
+                .allMatch(mapping -> CANONICAL_CHEMISTRY_ID.equals(mapping.targetLandscapeId()));
+        assertThat(service.getMappingsForSourceLandscape(BREMEN_CHEMISTRY_UPPER_SECONDARY_LANDSCAPE_ID))
+                .isNotEmpty()
+                .allMatch(mapping -> CANONICAL_CHEMISTRY_ID.equals(mapping.targetLandscapeId()));
+        assertThat(service.getMappingsForSourceLandscape(BRANDENBURG_CHEMISTRY_SEK1_LANDSCAPE_ID))
+                .isNotEmpty()
+                .allMatch(mapping -> CANONICAL_CHEMISTRY_ID.equals(mapping.targetLandscapeId()));
+        assertThat(service.getMappingsForSourceLandscape(BRANDENBURG_CHEMISTRY_UPPER_SECONDARY_LANDSCAPE_ID))
+                .isNotEmpty()
+                .allMatch(mapping -> CANONICAL_CHEMISTRY_ID.equals(mapping.targetLandscapeId()));
+        assertThat(service.getMappingsForSourceLandscape(BERLIN_CHEMISTRY_SEK1_LANDSCAPE_ID))
+                .isNotEmpty()
+                .allMatch(mapping -> CANONICAL_CHEMISTRY_ID.equals(mapping.targetLandscapeId()));
+        assertThat(service.getMappingsForSourceLandscape(BERLIN_CHEMISTRY_UPPER_SECONDARY_LANDSCAPE_ID))
+                .isNotEmpty()
+                .allMatch(mapping -> CANONICAL_CHEMISTRY_ID.equals(mapping.targetLandscapeId()));
+        assertThat(service.getMappingsForSourceLandscape(BADEN_WUERTTEMBERG_CHEMISTRY_SEK1_LANDSCAPE_ID))
+                .isNotEmpty()
+                .allMatch(mapping -> CANONICAL_CHEMISTRY_ID.equals(mapping.targetLandscapeId()));
+        assertThat(service.getMappingsForSourceLandscape(BADEN_WUERTTEMBERG_CHEMISTRY_UPPER_SECONDARY_LANDSCAPE_ID))
+                .isNotEmpty()
+                .allMatch(mapping -> CANONICAL_CHEMISTRY_ID.equals(mapping.targetLandscapeId()));
         assertThat(service.getMappingsForSourceLandscape(HAMBURG_PHYSICS_SEK1_LANDSCAPE_ID))
                 .isNotEmpty()
                 .allMatch(mapping -> CANONICAL_PHYSICS_ID.equals(mapping.targetLandscapeId()));
         assertThat(service.getMappingsForSourceLandscape(HAMBURG_PHYSICS_UPPER_SECONDARY_LANDSCAPE_ID))
                 .isNotEmpty()
                 .allMatch(mapping -> CANONICAL_PHYSICS_ID.equals(mapping.targetLandscapeId()));
+        assertThat(service.getMappingsForSourceLandscape(HAMBURG_CHEMISTRY_SEK1_LANDSCAPE_ID))
+                .isNotEmpty()
+                .allMatch(mapping -> CANONICAL_CHEMISTRY_ID.equals(mapping.targetLandscapeId()));
+        assertThat(service.getMappingsForSourceLandscape(HAMBURG_CHEMISTRY_UPPER_SECONDARY_LANDSCAPE_ID))
+                .isNotEmpty()
+                .allMatch(mapping -> CANONICAL_CHEMISTRY_ID.equals(mapping.targetLandscapeId()));
         assertThat(service.getMappingsForSourceLandscape(MECKLENBURG_VORPOMMERN_PHYSICS_SEK1_LANDSCAPE_ID))
                 .isNotEmpty()
                 .allMatch(mapping -> CANONICAL_PHYSICS_ID.equals(mapping.targetLandscapeId()));
         assertThat(service.getMappingsForSourceLandscape(MECKLENBURG_VORPOMMERN_PHYSICS_UPPER_SECONDARY_LANDSCAPE_ID))
                 .isNotEmpty()
                 .allMatch(mapping -> CANONICAL_PHYSICS_ID.equals(mapping.targetLandscapeId()));
+        assertThat(service.getMappingsForSourceLandscape(MECKLENBURG_VORPOMMERN_CHEMISTRY_SEK1_LANDSCAPE_ID))
+                .isNotEmpty()
+                .allMatch(mapping -> CANONICAL_CHEMISTRY_ID.equals(mapping.targetLandscapeId()));
+        assertThat(service.getMappingsForSourceLandscape(MECKLENBURG_VORPOMMERN_CHEMISTRY_UPPER_SECONDARY_LANDSCAPE_ID))
+                .isNotEmpty()
+                .allMatch(mapping -> CANONICAL_CHEMISTRY_ID.equals(mapping.targetLandscapeId()));
+        assertThat(service.getMappingsForSourceLandscape(NIEDERSACHSEN_CHEMISTRY_SEK1_LANDSCAPE_ID))
+                .isNotEmpty()
+                .allMatch(mapping -> CANONICAL_CHEMISTRY_ID.equals(mapping.targetLandscapeId()));
+        assertThat(service.getMappingsForSourceLandscape(NIEDERSACHSEN_CHEMISTRY_UPPER_SECONDARY_LANDSCAPE_ID))
+                .isNotEmpty()
+                .allMatch(mapping -> CANONICAL_CHEMISTRY_ID.equals(mapping.targetLandscapeId()));
+        assertThat(service.getMappingsForSourceLandscape(SCHLESWIG_HOLSTEIN_CHEMISTRY_SEK1_LANDSCAPE_ID))
+                .isNotEmpty()
+                .allMatch(mapping -> CANONICAL_CHEMISTRY_ID.equals(mapping.targetLandscapeId()));
+        assertThat(service.getMappingsForSourceLandscape(SCHLESWIG_HOLSTEIN_CHEMISTRY_UPPER_SECONDARY_LANDSCAPE_ID))
+                .isNotEmpty()
+                .allMatch(mapping -> CANONICAL_CHEMISTRY_ID.equals(mapping.targetLandscapeId()));
+        assertThat(service.getMappingsForSourceLandscape(RHEINLAND_PFALZ_CHEMISTRY_SEK1_LANDSCAPE_ID))
+                .isNotEmpty()
+                .allMatch(mapping -> CANONICAL_CHEMISTRY_ID.equals(mapping.targetLandscapeId()));
+        assertThat(service.getMappingsForSourceLandscape(RHEINLAND_PFALZ_CHEMISTRY_UPPER_SECONDARY_LANDSCAPE_ID))
+                .isNotEmpty()
+                .allMatch(mapping -> CANONICAL_CHEMISTRY_ID.equals(mapping.targetLandscapeId()));
         assertThat(service.getMappingsForSourceLandscape(SAARLAND_PHYSICS_SEK1_LANDSCAPE_ID))
                 .isNotEmpty()
                 .allMatch(mapping -> CANONICAL_PHYSICS_ID.equals(mapping.targetLandscapeId()));
         assertThat(service.getMappingsForSourceLandscape(SAARLAND_PHYSICS_UPPER_SECONDARY_LANDSCAPE_ID))
                 .isNotEmpty()
                 .allMatch(mapping -> CANONICAL_PHYSICS_ID.equals(mapping.targetLandscapeId()));
+        assertThat(service.getMappingsForSourceLandscape(SAARLAND_CHEMISTRY_SEK1_LANDSCAPE_ID))
+                .isNotEmpty()
+                .allMatch(mapping -> CANONICAL_CHEMISTRY_ID.equals(mapping.targetLandscapeId()));
+        assertThat(service.getMappingsForSourceLandscape(SAARLAND_CHEMISTRY_UPPER_SECONDARY_LANDSCAPE_ID))
+                .isNotEmpty()
+                .allMatch(mapping -> CANONICAL_CHEMISTRY_ID.equals(mapping.targetLandscapeId()));
         assertThat(service.getMappingsForSourceLandscape(SAXONY_PHYSICS_SEK1_LANDSCAPE_ID))
                 .isNotEmpty()
                 .allMatch(mapping -> CANONICAL_PHYSICS_ID.equals(mapping.targetLandscapeId()));
         assertThat(service.getMappingsForSourceLandscape(SAXONY_PHYSICS_UPPER_SECONDARY_LANDSCAPE_ID))
                 .isNotEmpty()
                 .allMatch(mapping -> CANONICAL_PHYSICS_ID.equals(mapping.targetLandscapeId()));
+        assertThat(service.getMappingsForSourceLandscape(SAXONY_CHEMISTRY_SEK1_LANDSCAPE_ID))
+                .isNotEmpty()
+                .allMatch(mapping -> CANONICAL_CHEMISTRY_ID.equals(mapping.targetLandscapeId()));
+        assertThat(service.getMappingsForSourceLandscape(SAXONY_CHEMISTRY_UPPER_SECONDARY_LANDSCAPE_ID))
+                .isNotEmpty()
+                .allMatch(mapping -> CANONICAL_CHEMISTRY_ID.equals(mapping.targetLandscapeId()));
         assertThat(service.getMappingsForSourceLandscape(SAXONY_ANHALT_PHYSICS_SEK1_LANDSCAPE_ID))
                 .isNotEmpty()
                 .allMatch(mapping -> CANONICAL_PHYSICS_ID.equals(mapping.targetLandscapeId()));
         assertThat(service.getMappingsForSourceLandscape(SAXONY_ANHALT_PHYSICS_UPPER_SECONDARY_LANDSCAPE_ID))
                 .isNotEmpty()
                 .allMatch(mapping -> CANONICAL_PHYSICS_ID.equals(mapping.targetLandscapeId()));
+        assertThat(service.getMappingsForSourceLandscape(SAXONY_ANHALT_CHEMISTRY_SEK1_LANDSCAPE_ID))
+                .isNotEmpty()
+                .allMatch(mapping -> CANONICAL_CHEMISTRY_ID.equals(mapping.targetLandscapeId()));
+        assertThat(service.getMappingsForSourceLandscape(SAXONY_ANHALT_CHEMISTRY_UPPER_SECONDARY_LANDSCAPE_ID))
+                .isNotEmpty()
+                .allMatch(mapping -> CANONICAL_CHEMISTRY_ID.equals(mapping.targetLandscapeId()));
         assertThat(service.getMappingsForSourceLandscape(THUERINGIA_PHYSICS_SEK1_LANDSCAPE_ID))
                 .isNotEmpty()
                 .allMatch(mapping -> CANONICAL_PHYSICS_ID.equals(mapping.targetLandscapeId()));
         assertThat(service.getMappingsForSourceLandscape(THUERINGIA_PHYSICS_UPPER_SECONDARY_LANDSCAPE_ID))
                 .isNotEmpty()
                 .allMatch(mapping -> CANONICAL_PHYSICS_ID.equals(mapping.targetLandscapeId()));
+        assertThat(service.getMappingsForSourceLandscape(THUERINGIA_CHEMISTRY_SEK1_LANDSCAPE_ID))
+                .isNotEmpty()
+                .allMatch(mapping -> CANONICAL_CHEMISTRY_ID.equals(mapping.targetLandscapeId()));
+        assertThat(service.getMappingsForSourceLandscape(THUERINGIA_CHEMISTRY_UPPER_SECONDARY_LANDSCAPE_ID))
+                .isNotEmpty()
+                .allMatch(mapping -> CANONICAL_CHEMISTRY_ID.equals(mapping.targetLandscapeId()));
         assertThat(service.getMappingsForSourceLandscape(HESSEN_PHYSICS_SEK1_LANDSCAPE_ID))
                 .isNotEmpty()
                 .allMatch(mapping -> CANONICAL_PHYSICS_ID.equals(mapping.targetLandscapeId()));

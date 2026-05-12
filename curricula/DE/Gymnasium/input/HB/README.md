@@ -20,6 +20,15 @@
   - `lower-secondary/source-extraction/DE_HB_CHEMIE_SEKI_BILDUNGSPLAN_2006_2022.source-extraction.json`
   - Die Sek-I-Spur umfasst nur die vier nach Anlage 239/2022 weitergeltenden Chemie-Themen; Energie und Energieträger sowie Natur- und Kunststoffe sind Oberstufenstoff.
 
+### Sekundarstufe II (Gymnasiale Oberstufe)
+- **Archivierte offizielle PDFs**
+  - `GyO_Chemie_2022.pdf`
+- **Öffentliche Quellen**
+  - Lehrpläne: [LIS Bremen - Lehrpläne](https://www.lis.bremen.de/schulqualitaet/lehrplaene-und-richtlinien-4384)
+  - Direkte PDF-Quelle: [LIS Bremen - Gymnasiale Oberstufe Chemie](https://www.lis.bremen.de/sixcms/media.php/13/GyO_Chemie_2022.pdf)
+- **Source-Extraction**
+  - `upper-secondary/source-extraction/DE_HB_CHEMIE_SEKII_GYO_2022.source-extraction.json`
+  - Die Sek-II-Spur umfasst E-Phase, verbindliche Q-Themen, Wahlthemen und das LK-Pflichtthema Aromatische Systeme nach Kapitel 3.4.
 ## Physik
 ### Sekundarstufe I (Klassen 5-10)
 - **Archivierte offizielle PDFs**

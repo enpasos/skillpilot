@@ -276,6 +276,12 @@ public class LearnerControllerIntegrationTest {
             "23135ca7-9f40-593a-9542-aeadb070ab92";
     private static final String CANONICAL_SEK1_CHEMISTRY_REACTIONS_CLUSTER_ID =
             "a00d302b-7762-4b9d-a6d7-de0c58b35540";
+    private static final String BREMEN_CHEMISTRY_LOWER_SOURCE_ID =
+            "b7e7ae4c-9e68-4231-bc73-da0da1efd9b4";
+    private static final String BREMEN_CHEMISTRY_UPPER_SOURCE_ID =
+            "98a4a027-3df3-5797-8664-c731d31942d5";
+    private static final String BREMEN_CHEMISTRY_LOWER_SOURCE_GOAL_ID =
+            "hb-chemistry-seki-bp2006-2022-3-1-luft-feuer-001-f3d42bd4";
     private static final String LEGACY_BAYERN_ENGLISH_YEAR11_CLUSTER_ID =
             "bb82312d-72b3-581e-b2a8-4ff7d5a5c0e1";
     private static final String LEGACY_BAYERN_ENGLISH_WHY_ID =
@@ -3858,6 +3864,69 @@ public class LearnerControllerIntegrationTest {
 
         assertThat(curriculumResponse.statusCode()).isEqualTo(HttpStatus.CONFLICT.value());
         assertThat(learnerRepository.findById("retired-ai-selection").orElseThrow().getSelectedCurriculum()).isNull();
+    }
+
+    @Test
+    void retainedBremenChemistrySourceExtractionsCannotBeSelectedViaUiEndpoint() throws Exception {
+        Learner learner = new Learner();
+        learner.setSkillpilotId("retained-bremen-chemistry-selection");
+        learnerRepository.save(learner);
+
+        HttpResponse<String> lowerResponse = sendJsonRequest(
+                "PUT",
+                "/api/ui/learners/retained-bremen-chemistry-selection/curriculum",
+                """
+                        {
+                          "curriculumId": "%s"
+                        }
+                        """.formatted(BREMEN_CHEMISTRY_LOWER_SOURCE_ID));
+        assertThat(lowerResponse.statusCode()).isEqualTo(HttpStatus.CONFLICT.value());
+        assertThat(learnerRepository.findById("retained-bremen-chemistry-selection").orElseThrow().getSelectedCurriculum())
+                .isNull();
+
+        HttpResponse<String> upperResponse = sendJsonRequest(
+                "PUT",
+                "/api/ui/learners/retained-bremen-chemistry-selection/curriculum",
+                """
+                        {
+                          "curriculumId": "%s"
+                        }
+                        """.formatted(BREMEN_CHEMISTRY_UPPER_SOURCE_ID));
+        assertThat(upperResponse.statusCode()).isEqualTo(HttpStatus.CONFLICT.value());
+        assertThat(learnerRepository.findById("retained-bremen-chemistry-selection").orElseThrow().getSelectedCurriculum())
+                .isNull();
+    }
+
+    @Test
+    void retainedBremenChemistrySourceExtractionSessionRejectsLearningWrites() throws Exception {
+        Learner learner = new Learner();
+        learner.setSkillpilotId("readonly-bremen-chemistry-source-learning");
+        learner.setSelectedCurriculum(BREMEN_CHEMISTRY_LOWER_SOURCE_ID);
+        learnerRepository.save(learner);
+
+        HttpResponse<String> activeGoalResponse = sendJsonRequest(
+                "POST",
+                "/api/ui/learners/readonly-bremen-chemistry-source-learning/active-goal",
+                """
+                        {
+                          "goalId": "%s"
+                        }
+                        """.formatted(BREMEN_CHEMISTRY_LOWER_SOURCE_GOAL_ID));
+        assertThat(activeGoalResponse.statusCode()).isEqualTo(HttpStatus.CONFLICT.value());
+        assertThat(learnerRepository.findById("readonly-bremen-chemistry-source-learning").orElseThrow().getActiveGoalId())
+                .isNull();
+
+        HttpResponse<String> plannedResponse = sendJsonRequest(
+                "PUT",
+                "/api/ui/learners/readonly-bremen-chemistry-source-learning/planned",
+                """
+                        {
+                          "goals": ["%s"]
+                        }
+                        """.formatted(BREMEN_CHEMISTRY_LOWER_SOURCE_GOAL_ID));
+        assertThat(plannedResponse.statusCode()).isEqualTo(HttpStatus.CONFLICT.value());
+        assertThat(plannedGoalRepository.findByLearner_SkillpilotId("readonly-bremen-chemistry-source-learning"))
+                .isEmpty();
     }
 
     @Test

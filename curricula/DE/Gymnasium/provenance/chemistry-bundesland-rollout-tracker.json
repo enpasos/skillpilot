@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-05-11T18:21:56Z",
+  "updatedAt": "2026-05-11T23:39:34Z",
   "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
   "quickViewPath": "docs/dev/canonical-gymnasium-chemistry-bundeslaender-status.md",
   "qualityStatusPath": "docs/qa-ci/status/curriculum-quality-status.json",
@@ -68,17 +68,17 @@
     {
       "id": "F3",
       "title": "Remaining state source onboarding",
-      "status": "active"
+      "status": "completed"
     },
     {
       "id": "F4",
       "title": "Horizontal all-state Chemistry topic pass",
-      "status": "pending"
+      "status": "completed"
     },
     {
       "id": "F5",
       "title": "Cutover and maintenance",
-      "status": "pending"
+      "status": "active"
     }
   ],
   "steeringModel": {
@@ -130,7 +130,7 @@
     {
       "id": "CHEM.REMAINING_SOURCE_ONBOARDING",
       "title": "Remaining Chemistry source onboarding tranche",
-      "status": "active",
+      "status": "completed",
       "focusStates": [
         "DE-MV",
         "DE-RP",
@@ -139,7 +139,62 @@
         "DE-ST",
         "DE-TH"
       ],
-      "nextStep": "Keep Mecklenburg-Vorpommern, Rheinland-Pfalz, and Sachsen-Anhalt stable on their source-backed P4 Chemistry projections. Archive official Chemistry sources for Saarland, Sachsen, and Thueringen next; broaden covered states only through a later horizontal all-state Chemistry topic pass or a real source revision."
+      "nextStep": "All tracked Chemistry Bundesland source lanes are source-backed and clean on P4; keep the source onboarding tranche closed unless an official source revision changes evidence."
+    },
+    {
+      "id": "CHEM.HORIZONTAL_TOPIC_GAP_REVIEW",
+      "title": "Horizontal all-state Chemistry topic-gap review",
+      "status": "completed",
+      "focusStates": [
+        "DE-BB",
+        "DE-BE",
+        "DE-BW",
+        "DE-BY",
+        "DE-HB",
+        "DE-HE",
+        "DE-HH",
+        "DE-MV",
+        "DE-NI",
+        "DE-NW",
+        "DE-RP",
+        "DE-SH",
+        "DE-SL",
+        "DE-SN",
+        "DE-ST",
+        "DE-TH"
+      ],
+      "nextStep": "F4 is closed: 710 broad cluster-target mappings were reviewed or accepted as package evidence, with no shared canonical atom gap proven."
+    },
+    {
+      "id": "CHEM.P5_BROADENING_AND_CUTOVER_MAINTENANCE",
+      "title": "P5 broad coverage and cutover maintenance",
+      "status": "completed",
+      "focusStates": [],
+      "nextStep": "All tracked Chemistry Bundesland lanes are cutover-ready on P6; reopen this corridor only if a source revision or runtime regression creates a non-cutover maintenance lane."
+    },
+    {
+      "id": "CHEM.P6_CUTOVER_READY_MAINTENANCE",
+      "title": "P6 cutover-ready Chemistry maintenance",
+      "status": "active",
+      "focusStates": [
+        "DE-BB",
+        "DE-BE",
+        "DE-BW",
+        "DE-BY",
+        "DE-HB",
+        "DE-HE",
+        "DE-HH",
+        "DE-MV",
+        "DE-NI",
+        "DE-NW",
+        "DE-RP",
+        "DE-SH",
+        "DE-SL",
+        "DE-SN",
+        "DE-ST",
+        "DE-TH"
+      ],
+      "nextStep": "Keep cutover-ready Chemistry states on maintenance only: refresh retained source evidence, runtime mappings, archive-only fences, composition views, and learner migration checks together when a source revision changes visible scope."
     }
   ],
   "states": [
@@ -147,41 +202,43 @@
       "jurisdiction": "DE-BB",
       "repoStateKey": "BB",
       "displayName": "Brandenburg",
-      "phase": "P4",
-      "priority": "next_wave",
-      "sourceStage": "subtree_adopted",
+      "phase": "P6",
+      "priority": "backlog",
+      "sourceStage": "cutover_ready",
       "mappingFiles": [
+        "curricula/DE/Gymnasium/mapping/DE-BB/lower-secondary/bb_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.review.json",
         "curricula/DE/Gymnasium/mapping/DE-BB/upper-secondary/bb_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json"
       ],
-      "notes": "Upper-secondary Chemistry is source-backed and clean; lower-secondary source onboarding is not yet represented in this lane.",
-      "nextStep": "Keep the current upper-secondary Berlin-Brandenburg projection stable, then add a lower-secondary Chemistry source lane only from official local material before broadening the state view."
+      "notes": "Lower-secondary and upper-secondary Chemistry inventories are source-backed and clean; the official Berlin-Brandenburg Chemistry source lanes have runtime mapping files for Backend GoalMappingService discovery, and retained source extractions are archive-only compatibility surfaces.",
+      "nextStep": "Keep Brandenburg on P6 maintenance: refresh source extractions, runtime mappings, source-only archive fences, and DE-BB Chemistry composition views together if Berlin-Brandenburg Chemistry source material changes."
     },
     {
       "jurisdiction": "DE-BE",
       "repoStateKey": "BE",
       "displayName": "Berlin",
-      "phase": "P4",
-      "priority": "next_wave",
-      "sourceStage": "subtree_adopted",
+      "phase": "P6",
+      "priority": "backlog",
+      "sourceStage": "cutover_ready",
       "mappingFiles": [
+        "curricula/DE/Gymnasium/mapping/DE-BE/lower-secondary/be_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.review.json",
         "curricula/DE/Gymnasium/mapping/DE-BE/upper-secondary/be_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json"
       ],
-      "notes": "Upper-secondary Chemistry is source-backed and clean; lower-secondary source onboarding is not yet represented in this lane.",
-      "nextStep": "Keep the current upper-secondary Berlin-Brandenburg projection stable, then add a lower-secondary Chemistry source lane only from official local material before broadening the state view."
+      "notes": "Lower-secondary and upper-secondary Chemistry inventories are source-backed and clean; the official Berlin-Brandenburg Chemistry source lanes have runtime mapping files for Backend GoalMappingService discovery, and retained source extractions are archive-only compatibility surfaces.",
+      "nextStep": "Keep Berlin on P6 maintenance: refresh source extractions, runtime mappings, source-only archive fences, and DE-BE Chemistry composition views together if Berlin-Brandenburg Chemistry source material changes."
     },
     {
       "jurisdiction": "DE-BW",
       "repoStateKey": "BW",
       "displayName": "Baden-Wuerttemberg",
-      "phase": "P5",
+      "phase": "P6",
       "priority": "backlog",
-      "sourceStage": "subtree_adopted",
+      "sourceStage": "cutover_ready",
       "mappingFiles": [
         "curricula/DE/Gymnasium/mapping/DE-BW/lower-secondary/bw_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.review.json",
         "curricula/DE/Gymnasium/mapping/DE-BW/upper-secondary/bw_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json"
       ],
-      "notes": "Lower-secondary and upper-secondary Chemistry inventories are source-backed and currently clean.",
-      "nextStep": "Keep Baden-Wuerttemberg on maintenance only unless a source revision or all-state Chemistry topic pass exposes a genuine shared canonical gap."
+      "notes": "Lower-secondary and upper-secondary Chemistry inventories are source-backed and clean; Baden-Wuerttemberg Chemistry source lanes have runtime mapping files for Backend GoalMappingService discovery, and retained source extractions are archive-only compatibility surfaces.",
+      "nextStep": "Keep Baden-Wuerttemberg on P6 maintenance: refresh source extractions, runtime mappings, source-only archive fences, and DE-BW Chemistry composition views together if BW Chemistry source material changes."
     },
     {
       "jurisdiction": "DE-BY",
@@ -201,14 +258,15 @@
       "jurisdiction": "DE-HB",
       "repoStateKey": "HB",
       "displayName": "Bremen",
-      "phase": "P4",
-      "priority": "next_wave",
-      "sourceStage": "subtree_adopted",
+      "phase": "P6",
+      "priority": "backlog",
+      "sourceStage": "cutover_ready",
       "mappingFiles": [
-        "curricula/DE/Gymnasium/mapping/DE-HB/lower-secondary/hb_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.review.json"
+        "curricula/DE/Gymnasium/mapping/DE-HB/lower-secondary/hb_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.review.json",
+        "curricula/DE/Gymnasium/mapping/DE-HB/upper-secondary/hb_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json"
       ],
-      "notes": "The declared Bremen lower-secondary Chemistry source lane is clean; no upper-secondary Chemistry lane is registered yet.",
-      "nextStep": "Keep the current lower-secondary Bremen projection stable, then onboard official upper-secondary Chemistry material before broadening the state view."
+      "notes": "Lower-secondary and upper-secondary Chemistry inventories are source-backed and clean; F5 added the official Bremer GyO Chemistry 2022 source lane, F6 materialized runtime mapping files for Backend GoalMappingService discovery, and F7 classifies the retained Bremen source extractions as archive-only compatibility surfaces.",
+      "nextStep": "Keep Bremen on P6 maintenance: refresh source extractions, runtime mappings, source-only archive fences, and DE-HB Chemistry composition views together if Bremen source material changes."
     },
     {
       "jurisdiction": "DE-HE",
@@ -228,132 +286,141 @@
       "jurisdiction": "DE-HH",
       "repoStateKey": "HH",
       "displayName": "Hamburg",
-      "phase": "P5",
+      "phase": "P6",
       "priority": "backlog",
-      "sourceStage": "subtree_adopted",
+      "sourceStage": "cutover_ready",
       "mappingFiles": [
         "curricula/DE/Gymnasium/mapping/DE-HH/lower-secondary/hh_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.review.json",
         "curricula/DE/Gymnasium/mapping/DE-HH/upper-secondary/hh_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json"
       ],
-      "notes": "Lower-secondary and Studienstufe Chemistry inventories are source-backed and currently clean.",
-      "nextStep": "Keep Hamburg on maintenance only unless a source revision or all-state Chemistry topic pass exposes a genuine shared canonical gap."
+      "notes": "Lower-secondary and upper-secondary Chemistry inventories are source-backed and clean; Hamburg Chemistry source lanes have runtime mapping files for Backend GoalMappingService discovery, and retained source extractions are archive-only compatibility surfaces.",
+      "nextStep": "Keep Hamburg on P6 maintenance: refresh source extractions, runtime mappings, source-only archive fences, and DE-HH Chemistry composition views together if Hamburg Chemistry source material changes."
     },
     {
       "jurisdiction": "DE-MV",
       "repoStateKey": "MV",
       "displayName": "Mecklenburg-Vorpommern",
-      "phase": "P4",
-      "priority": "next_wave",
-      "sourceStage": "subtree_adopted",
+      "phase": "P6",
+      "priority": "backlog",
+      "sourceStage": "cutover_ready",
       "mappingFiles": [
         "curricula/DE/Gymnasium/mapping/DE-MV/lower-secondary/mv_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.review.json",
         "curricula/DE/Gymnasium/mapping/DE-MV/upper-secondary/mv_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json"
       ],
-      "notes": "Official MV Chemistry Sek-I and Sek-II PDFs, source extractions, registry entries, reviewed source-to-canonical mappings, compiled applicability, and DE-MV GK/LK composition views are active and clean for 236 source goals.",
-      "nextStep": "Keep the Mecklenburg-Vorpommern Chemistry projection stable; broaden it only through a later horizontal all-state Chemistry topic pass or if a source revision changes the retained Rahmenplan evidence."
+      "notes": "Lower-secondary and upper-secondary Chemistry inventories are source-backed and clean; Mecklenburg-Vorpommern Chemistry source lanes have runtime mapping files for Backend GoalMappingService discovery, and retained source extractions are archive-only compatibility surfaces.",
+      "nextStep": "Keep Mecklenburg-Vorpommern on P6 maintenance: refresh source extractions, runtime mappings, source-only archive fences, and DE-MV Chemistry composition views together if MV Chemistry source material changes."
     },
     {
       "jurisdiction": "DE-NI",
       "repoStateKey": "NI",
       "displayName": "Niedersachsen",
-      "phase": "P5",
+      "phase": "P6",
       "priority": "backlog",
-      "sourceStage": "subtree_adopted",
+      "sourceStage": "cutover_ready",
       "mappingFiles": [
         "curricula/DE/Gymnasium/mapping/DE-NI/lower-secondary/ni_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.review.json",
         "curricula/DE/Gymnasium/mapping/DE-NI/upper-secondary/ni_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json"
       ],
-      "notes": "Lower-secondary and upper-secondary Chemistry inventories are source-backed and currently clean.",
-      "nextStep": "Keep Niedersachsen on maintenance only unless a source revision or all-state Chemistry topic pass exposes a genuine shared canonical gap."
+      "notes": "Lower-secondary and upper-secondary Chemistry inventories are source-backed and clean; Niedersachsen Chemistry source lanes have runtime mapping files for Backend GoalMappingService discovery, and retained source extractions are archive-only compatibility surfaces.",
+      "nextStep": "Keep Niedersachsen on P6 maintenance: refresh source extractions, runtime mappings, source-only archive fences, and DE-NI Chemistry composition views together if Niedersachsen Chemistry source material changes."
     },
     {
       "jurisdiction": "DE-NW",
       "repoStateKey": "NW",
       "displayName": "Nordrhein-Westfalen",
-      "phase": "P5",
+      "phase": "P6",
       "priority": "backlog",
-      "sourceStage": "subtree_adopted",
+      "sourceStage": "cutover_ready",
       "mappingFiles": [
         "curricula/DE/Gymnasium/mapping/DE-NW/lower-secondary/nrw_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.review.json",
         "curricula/DE/Gymnasium/mapping/DE-NW/upper-secondary/nrw_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json"
       ],
-      "notes": "Lower-secondary and upper-secondary Chemistry inventories are source-backed and currently clean.",
-      "nextStep": "Keep Nordrhein-Westfalen on maintenance only unless a source revision or all-state Chemistry topic pass exposes a genuine shared canonical gap."
+      "notes": "Lower-secondary and upper-secondary Chemistry inventories are source-backed and clean; Nordrhein-Westfalen Chemistry source lanes have runtime mapping files for Backend GoalMappingService discovery, and retained source extractions are archive-only compatibility surfaces.",
+      "nextStep": "Keep Nordrhein-Westfalen on P6 maintenance: refresh source extractions, runtime mappings, source-only archive fences, and DE-NW Chemistry composition views together if NRW Chemistry source material changes."
     },
     {
       "jurisdiction": "DE-RP",
       "repoStateKey": "RP",
       "displayName": "Rheinland-Pfalz",
-      "phase": "P4",
-      "priority": "next_wave",
-      "sourceStage": "subtree_adopted",
+      "phase": "P6",
+      "priority": "backlog",
+      "sourceStage": "cutover_ready",
       "mappingFiles": [
         "curricula/DE/Gymnasium/mapping/DE-RP/lower-secondary/rp_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.review.json",
         "curricula/DE/Gymnasium/mapping/DE-RP/upper-secondary/rp_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json"
       ],
-      "notes": "Official RP Chemistry Sek-I and MSS PDFs, source extractions, registry entries, reviewed source-to-canonical mappings, compiled applicability, and DE-RP GK/LK composition views are active and clean for 390 source goals.",
-      "nextStep": "Keep the Rheinland-Pfalz Chemistry projection stable; broaden it only through a later horizontal all-state Chemistry topic pass or if a source revision changes the retained Lehrplan evidence."
+      "notes": "Lower-secondary and upper-secondary Chemistry inventories are source-backed and clean; Rheinland-Pfalz Chemistry source lanes have runtime mapping files for Backend GoalMappingService discovery, and retained source extractions are archive-only compatibility surfaces.",
+      "nextStep": "Keep Rheinland-Pfalz on P6 maintenance: refresh source extractions, runtime mappings, source-only archive fences, and DE-RP Chemistry composition views together if Rheinland-Pfalz Chemistry source material changes."
     },
     {
       "jurisdiction": "DE-SH",
       "repoStateKey": "SH",
       "displayName": "Schleswig-Holstein",
-      "phase": "P5",
+      "phase": "P6",
       "priority": "backlog",
-      "sourceStage": "subtree_adopted",
+      "sourceStage": "cutover_ready",
       "mappingFiles": [
         "curricula/DE/Gymnasium/mapping/DE-SH/lower-secondary/sh_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.review.json",
         "curricula/DE/Gymnasium/mapping/DE-SH/upper-secondary/sh_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json"
       ],
-      "notes": "Lower-secondary and upper-secondary Chemistry inventories are source-backed and currently clean.",
-      "nextStep": "Keep Schleswig-Holstein on maintenance only unless a source revision or all-state Chemistry topic pass exposes a genuine shared canonical gap."
+      "notes": "Lower-secondary and upper-secondary Chemistry inventories are source-backed and clean; Schleswig-Holstein Chemistry source lanes have runtime mapping files for Backend GoalMappingService discovery, and retained source extractions are archive-only compatibility surfaces.",
+      "nextStep": "Keep Schleswig-Holstein on P6 maintenance: refresh source extractions, runtime mappings, source-only archive fences, and DE-SH Chemistry composition views together if Schleswig-Holstein Chemistry source material changes."
     },
     {
       "jurisdiction": "DE-SL",
       "repoStateKey": "SL",
       "displayName": "Saarland",
-      "phase": "P0",
-      "priority": "active",
-      "sourceStage": "source_onboarding_pending",
-      "mappingFiles": [],
-      "notes": "No local Chemistry source inventory is registered or extracted.",
-      "nextStep": "Archive official Saarland Chemistry source material for the relevant Gymnasium stages, then create source extraction, registry, mappings, applicability, and learner-facing projection artifacts."
+      "phase": "P6",
+      "priority": "backlog",
+      "sourceStage": "cutover_ready",
+      "mappingFiles": [
+        "curricula/DE/Gymnasium/mapping/DE-SL/lower-secondary/sl_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.review.json",
+        "curricula/DE/Gymnasium/mapping/DE-SL/upper-secondary/sl_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json"
+      ],
+      "notes": "Lower-secondary and upper-secondary Chemistry inventories are source-backed and clean; Saarland Chemistry source lanes have runtime mapping files for Backend GoalMappingService discovery, and retained source extractions are archive-only compatibility surfaces.",
+      "nextStep": "Keep Saarland on P6 maintenance: refresh source extractions, runtime mappings, source-only archive fences, and DE-SL Chemistry composition views together if Saarland Chemistry source material changes."
     },
     {
       "jurisdiction": "DE-SN",
       "repoStateKey": "SN",
       "displayName": "Sachsen",
-      "phase": "P0",
-      "priority": "active",
-      "sourceStage": "source_onboarding_pending",
-      "mappingFiles": [],
-      "notes": "No local Chemistry source inventory is registered or extracted.",
-      "nextStep": "Archive official Sachsen Chemistry source material for the relevant Gymnasium stages, then create source extraction, registry, mappings, applicability, and learner-facing projection artifacts."
+      "phase": "P6",
+      "priority": "backlog",
+      "sourceStage": "cutover_ready",
+      "mappingFiles": [
+        "curricula/DE/Gymnasium/mapping/DE-SN/lower-secondary/sn_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.review.json",
+        "curricula/DE/Gymnasium/mapping/DE-SN/upper-secondary/sn_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json"
+      ],
+      "notes": "Lower-secondary and upper-secondary Chemistry inventories are source-backed and clean; Sachsen Chemistry source lanes have runtime mapping files for Backend GoalMappingService discovery, and retained source extractions are archive-only compatibility surfaces.",
+      "nextStep": "Keep Sachsen on P6 maintenance: refresh source extractions, runtime mappings, source-only archive fences, and DE-SN Chemistry composition views together if Sachsen Chemistry source material changes."
     },
     {
       "jurisdiction": "DE-ST",
       "repoStateKey": "ST",
       "displayName": "Sachsen-Anhalt",
-      "phase": "P4",
-      "priority": "next_wave",
-      "sourceStage": "subtree_adopted",
+      "phase": "P6",
+      "priority": "backlog",
+      "sourceStage": "cutover_ready",
       "mappingFiles": [
         "curricula/DE/Gymnasium/mapping/DE-ST/lower-secondary/st_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.review.json",
         "curricula/DE/Gymnasium/mapping/DE-ST/upper-secondary/st_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json"
       ],
-      "notes": "Official Chemistry source PDFs, lower-/upper-secondary source extractions, registry entries, reviewed source-to-canonical mappings, compiled applicability, and DE-ST GK/LK composition views are active and clean.",
-      "nextStep": "Keep the Sachsen-Anhalt Chemistry projection stable; broaden it only through a later horizontal all-state Chemistry topic pass or if a source revision changes the retained Fachlehrplan evidence."
+      "notes": "Lower-secondary and upper-secondary Chemistry inventories are source-backed and clean; Sachsen-Anhalt Chemistry source lanes have runtime mapping files for Backend GoalMappingService discovery, and retained source extractions are archive-only compatibility surfaces.",
+      "nextStep": "Keep Sachsen-Anhalt on P6 maintenance: refresh source extractions, runtime mappings, source-only archive fences, and DE-ST Chemistry composition views together if Sachsen-Anhalt Chemistry source material changes."
     },
     {
       "jurisdiction": "DE-TH",
       "repoStateKey": "TH",
       "displayName": "Thueringen",
-      "phase": "P0",
-      "priority": "active",
-      "sourceStage": "source_onboarding_pending",
-      "mappingFiles": [],
-      "notes": "No local Chemistry source inventory is registered or extracted.",
-      "nextStep": "Archive official Thueringen Chemistry source material for the relevant Gymnasium stages, then create source extraction, registry, mappings, applicability, and learner-facing projection artifacts."
+      "phase": "P6",
+      "priority": "backlog",
+      "sourceStage": "cutover_ready",
+      "mappingFiles": [
+        "curricula/DE/Gymnasium/mapping/DE-TH/lower-secondary/th_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.review.json",
+        "curricula/DE/Gymnasium/mapping/DE-TH/upper-secondary/th_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json"
+      ],
+      "notes": "Lower-secondary and upper-secondary Chemistry inventories are source-backed and clean; Thueringen Chemistry source lanes have runtime mapping files for Backend GoalMappingService discovery, and retained source extractions are archive-only compatibility surfaces.",
+      "nextStep": "Keep Thueringen on P6 maintenance: refresh source extractions, runtime mappings, source-only archive fences, and DE-TH Chemistry composition views together if Thueringen Chemistry source material changes."
     }
   ]
 }

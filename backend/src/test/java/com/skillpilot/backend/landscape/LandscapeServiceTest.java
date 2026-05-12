@@ -47,8 +47,34 @@ class LandscapeServiceTest {
         private static final String NRW_LOWER_MATH_ID = "c862423f-d0ac-4a65-8ad2-9a6e560313a8";
         private static final String NRW_UPPER_MATH_ID = "d3a068ca-90c6-4d7f-ab6b-4d8b43085cb1";
         private static final String NRW_UPPER_PHYSICS_ID = "8abb46ff-072b-41b7-9d70-0334cb5a1a6c";
+        private static final String NRW_CHEMISTRY_LOWER_ID = "b6869844-53a0-5ba9-8217-614bdba432fd";
+        private static final String NRW_CHEMISTRY_UPPER_ID = "9d80e7cf-2087-5eda-841a-e02e707b5ba9";
+        private static final String RHEINLAND_PFALZ_CHEMISTRY_LOWER_ID = "4eb03df6-9416-5dc8-8957-a9cd3d5ce6a9";
+        private static final String RHEINLAND_PFALZ_CHEMISTRY_UPPER_ID = "7995e414-2401-5987-89e8-f4dfd816bd68";
+        private static final String NIEDERSACHSEN_CHEMISTRY_LOWER_ID = "d1d18318-e66f-44dc-8e82-52f8aa0b0ac1";
+        private static final String NIEDERSACHSEN_CHEMISTRY_UPPER_ID = "865026c1-fec9-5e1d-91ae-d24a47e8c219";
+        private static final String BRANDENBURG_CHEMISTRY_LOWER_ID = "9b66c555-7231-40a0-a493-9ffff8bde46c";
+        private static final String BRANDENBURG_CHEMISTRY_UPPER_ID = "6a3e6947-d950-5619-8db8-2ab9a6ac55c6";
+        private static final String BERLIN_CHEMISTRY_LOWER_ID = "2af9b757-11db-461a-812e-d1c1b4d6e104";
+        private static final String BERLIN_CHEMISTRY_UPPER_ID = "4bb4be30-3d9c-5e5b-9c9f-64fb0bc80c0c";
+        private static final String BREMEN_CHEMISTRY_LOWER_ID = "b7e7ae4c-9e68-4231-bc73-da0da1efd9b4";
+        private static final String BREMEN_CHEMISTRY_UPPER_ID = "98a4a027-3df3-5797-8664-c731d31942d5";
+        private static final String BADEN_WUERTTEMBERG_CHEMISTRY_LOWER_ID = "ac4d5c1c-b2c9-5724-b0bc-64b9d666ad87";
+        private static final String BADEN_WUERTTEMBERG_CHEMISTRY_UPPER_ID = "880ae6cd-852f-5861-b3ae-2326e3ac7dec";
+        private static final String HAMBURG_CHEMISTRY_LOWER_ID = "22c22040-850c-5242-8ebe-ce7d9a505696";
+        private static final String HAMBURG_CHEMISTRY_UPPER_ID = "7516a41d-2eb2-5ce4-8f38-31570f0ffa81";
+        private static final String MECKLENBURG_VORPOMMERN_CHEMISTRY_LOWER_ID = "e19d84c3-efa8-5b74-8c78-b284fc65b26c";
+        private static final String MECKLENBURG_VORPOMMERN_CHEMISTRY_UPPER_ID = "4f98d47b-8536-5021-8bf1-09761eff8050";
+        private static final String SAXONY_CHEMISTRY_LOWER_ID = "1e86b8e6-3a95-5df3-8622-8c2afbb989e1";
+        private static final String SAXONY_CHEMISTRY_UPPER_ID = "4629b4f3-95eb-5166-8b6b-056632d0f270";
         private static final String SACHSEN_ANHALT_CHEMISTRY_LOWER_ID = "f9e8b305-d604-55c5-82b0-77a734925371";
         private static final String SACHSEN_ANHALT_CHEMISTRY_UPPER_ID = "86a99136-152f-5da7-84f2-3a0ed9f53697";
+        private static final String THUERINGIA_CHEMISTRY_LOWER_ID = "d416f737-fb4c-585f-85a5-cd9a94c20cbe";
+        private static final String THUERINGIA_CHEMISTRY_UPPER_ID = "6a601059-052b-5a4b-8aff-a121bc2cf968";
+        private static final String SAARLAND_CHEMISTRY_LOWER_ID = "c8d559dc-e8de-52a7-851a-6e411907daf6";
+        private static final String SAARLAND_CHEMISTRY_UPPER_ID = "7aae5eef-c2ae-5365-8091-955d96b89ad8";
+        private static final String SCHLESWIG_HOLSTEIN_CHEMISTRY_LOWER_ID = "869de671-5a4f-57bc-83bf-40f77c746a69";
+        private static final String SCHLESWIG_HOLSTEIN_CHEMISTRY_UPPER_ID = "5dd72a26-67b0-5b2c-8a81-8ad179a6634e";
         private static final String NRW_LOWER_FUNCTION_CLUSTER_ID = "f43fd248-195e-4168-bf70-ce92f864738f";
         private static final String NRW_UPPER_ANALYSIS_CLUSTER_ID = "31305eea-edf2-41b3-b312-bb1bc92f8fb7";
         private static final String NRW_UPPER_PHYSICS_ENTRY_CLUSTER_ID = "8cf56a06-2097-436b-80a0-86d2977ce171";
@@ -333,6 +359,282 @@ class LandscapeServiceTest {
         }
 
         @Test
+        void loadsNrwChemistrySourceExtractionsFromRealRegistry() {
+                LandscapeProperties properties = new LandscapeProperties();
+                properties.setDirectory("../curricula");
+                ObjectMapper objectMapper = new ObjectMapper();
+                LandscapeService landscapeService = new LandscapeService(properties, objectMapper);
+
+                LearningLandscape lower = landscapeService.getById(NRW_CHEMISTRY_LOWER_ID);
+                LearningLandscape upper = landscapeService.getById(NRW_CHEMISTRY_UPPER_ID);
+
+                assertThat(lower).isNotNull();
+                assertThat(upper).isNotNull();
+                assertThat(lower.getTitle())
+                                .isEqualTo("DE-NW - Chemie Sekundarstufe I (Nordrhein-Westfalen, KLP 2019 Source-Extraction)");
+                assertThat(upper.getTitle())
+                                .isEqualTo("DE-NW - Chemie Oberstufe (Nordrhein-Westfalen, KLP 2022 Source-Extraction)");
+                assertThat(lower.getGoals()).hasSize(79);
+                assertThat(upper.getGoals()).hasSize(154);
+                assertThat(landscapeService.resolveSourceLandscapeJurisdiction(NRW_CHEMISTRY_LOWER_ID))
+                                .isEqualTo("DE-NW");
+                assertThat(landscapeService.resolveSourceLandscapeJurisdiction(NRW_CHEMISTRY_UPPER_ID))
+                                .isEqualTo("DE-NW");
+                assertThat(landscapeService.isCompatibilityOnlyLandscape(NRW_CHEMISTRY_LOWER_ID)).isTrue();
+                assertThat(landscapeService.isCompatibilityOnlyLandscape(NRW_CHEMISTRY_UPPER_ID)).isTrue();
+        }
+
+        @Test
+        void loadsRheinlandPfalzChemistrySourceExtractionsFromRealRegistry() {
+                LandscapeProperties properties = new LandscapeProperties();
+                properties.setDirectory("../curricula");
+                ObjectMapper objectMapper = new ObjectMapper();
+                LandscapeService landscapeService = new LandscapeService(properties, objectMapper);
+
+                LearningLandscape lower = landscapeService.getById(RHEINLAND_PFALZ_CHEMISTRY_LOWER_ID);
+                LearningLandscape upper = landscapeService.getById(RHEINLAND_PFALZ_CHEMISTRY_UPPER_ID);
+
+                assertThat(lower).isNotNull();
+                assertThat(upper).isNotNull();
+                assertThat(lower.getTitle())
+                                .isEqualTo("DE-RP - Chemie Sekundarstufe I (Rheinland-Pfalz, Lehrplan BCP 2014 Source-Extraction)");
+                assertThat(upper.getTitle())
+                                .isEqualTo("DE-RP - Chemie Mainzer Studienstufe (Rheinland-Pfalz, Lehrplan 2022 Source-Extraction)");
+                assertThat(lower.getGoals()).hasSize(65);
+                assertThat(upper.getGoals()).hasSize(325);
+                assertThat(landscapeService.resolveSourceLandscapeJurisdiction(RHEINLAND_PFALZ_CHEMISTRY_LOWER_ID))
+                                .isEqualTo("DE-RP");
+                assertThat(landscapeService.resolveSourceLandscapeJurisdiction(RHEINLAND_PFALZ_CHEMISTRY_UPPER_ID))
+                                .isEqualTo("DE-RP");
+                assertThat(landscapeService.isCompatibilityOnlyLandscape(RHEINLAND_PFALZ_CHEMISTRY_LOWER_ID)).isTrue();
+                assertThat(landscapeService.isCompatibilityOnlyLandscape(RHEINLAND_PFALZ_CHEMISTRY_UPPER_ID)).isTrue();
+        }
+
+        @Test
+        void loadsNiedersachsenChemistrySourceExtractionsFromRealRegistry() {
+                LandscapeProperties properties = new LandscapeProperties();
+                properties.setDirectory("../curricula");
+                ObjectMapper objectMapper = new ObjectMapper();
+                LandscapeService landscapeService = new LandscapeService(properties, objectMapper);
+
+                LearningLandscape lower = landscapeService.getById(NIEDERSACHSEN_CHEMISTRY_LOWER_ID);
+                LearningLandscape upper = landscapeService.getById(NIEDERSACHSEN_CHEMISTRY_UPPER_ID);
+
+                assertThat(lower).isNotNull();
+                assertThat(upper).isNotNull();
+                assertThat(lower.getTitle())
+                                .isEqualTo("DE-NI - Chemie Sekundarstufe I (Niedersachsen, KC 2015 Source-Extraction)");
+                assertThat(upper.getTitle())
+                                .isEqualTo("DE-NI - Chemie Oberstufe (Niedersachsen, KC 2022 Source-Extraction)");
+                assertThat(lower.getGoals()).hasSize(196);
+                assertThat(upper.getGoals()).hasSize(333);
+                assertThat(landscapeService.resolveSourceLandscapeJurisdiction(NIEDERSACHSEN_CHEMISTRY_LOWER_ID))
+                                .isEqualTo("DE-NI");
+                assertThat(landscapeService.resolveSourceLandscapeJurisdiction(NIEDERSACHSEN_CHEMISTRY_UPPER_ID))
+                                .isEqualTo("DE-NI");
+                assertThat(landscapeService.isCompatibilityOnlyLandscape(NIEDERSACHSEN_CHEMISTRY_LOWER_ID)).isTrue();
+                assertThat(landscapeService.isCompatibilityOnlyLandscape(NIEDERSACHSEN_CHEMISTRY_UPPER_ID)).isTrue();
+        }
+
+        @Test
+        void loadsBerlinBrandenburgChemistrySourceExtractionsFromRealRegistry() {
+                LandscapeProperties properties = new LandscapeProperties();
+                properties.setDirectory("../curricula");
+                ObjectMapper objectMapper = new ObjectMapper();
+                LandscapeService landscapeService = new LandscapeService(properties, objectMapper);
+
+                LearningLandscape brandenburgLower = landscapeService.getById(BRANDENBURG_CHEMISTRY_LOWER_ID);
+                LearningLandscape brandenburgUpper = landscapeService.getById(BRANDENBURG_CHEMISTRY_UPPER_ID);
+                LearningLandscape berlinLower = landscapeService.getById(BERLIN_CHEMISTRY_LOWER_ID);
+                LearningLandscape berlinUpper = landscapeService.getById(BERLIN_CHEMISTRY_UPPER_ID);
+
+                assertThat(brandenburgLower).isNotNull();
+                assertThat(brandenburgUpper).isNotNull();
+                assertThat(berlinLower).isNotNull();
+                assertThat(berlinUpper).isNotNull();
+                assertThat(brandenburgLower.getTitle())
+                                .isEqualTo("DE-BB - Chemie Sekundarstufe I (Brandenburg, RLP 2015 Source-Extraction)");
+                assertThat(brandenburgUpper.getTitle())
+                                .isEqualTo("DE-BB - Chemie Oberstufe (Brandenburg, RLP GOST 2022 Source-Extraction)");
+                assertThat(berlinLower.getTitle())
+                                .isEqualTo("DE-BE - Chemie Sekundarstufe I (Berlin, RLP 2015 Source-Extraction)");
+                assertThat(berlinUpper.getTitle())
+                                .isEqualTo("DE-BE - Chemie Oberstufe (Berlin, RLP GOST 2022 Source-Extraction)");
+                assertThat(brandenburgLower.getGoals()).hasSize(68);
+                assertThat(brandenburgUpper.getGoals()).hasSize(203);
+                assertThat(berlinLower.getGoals()).hasSize(68);
+                assertThat(berlinUpper.getGoals()).hasSize(203);
+                assertThat(landscapeService.resolveSourceLandscapeJurisdiction(BRANDENBURG_CHEMISTRY_LOWER_ID))
+                                .isEqualTo("DE-BB");
+                assertThat(landscapeService.resolveSourceLandscapeJurisdiction(BRANDENBURG_CHEMISTRY_UPPER_ID))
+                                .isEqualTo("DE-BB");
+                assertThat(landscapeService.resolveSourceLandscapeJurisdiction(BERLIN_CHEMISTRY_LOWER_ID))
+                                .isEqualTo("DE-BE");
+                assertThat(landscapeService.resolveSourceLandscapeJurisdiction(BERLIN_CHEMISTRY_UPPER_ID))
+                                .isEqualTo("DE-BE");
+                assertThat(landscapeService.isCompatibilityOnlyLandscape(BRANDENBURG_CHEMISTRY_LOWER_ID)).isTrue();
+                assertThat(landscapeService.isCompatibilityOnlyLandscape(BRANDENBURG_CHEMISTRY_UPPER_ID)).isTrue();
+                assertThat(landscapeService.isCompatibilityOnlyLandscape(BERLIN_CHEMISTRY_LOWER_ID)).isTrue();
+                assertThat(landscapeService.isCompatibilityOnlyLandscape(BERLIN_CHEMISTRY_UPPER_ID)).isTrue();
+        }
+
+        @Test
+        void loadsBremenChemistrySourceExtractionsFromRealRegistry() {
+                LandscapeProperties properties = new LandscapeProperties();
+                properties.setDirectory("../curricula");
+                ObjectMapper objectMapper = new ObjectMapper();
+                LandscapeService landscapeService = new LandscapeService(properties, objectMapper);
+
+                LearningLandscape lower = landscapeService.getById(BREMEN_CHEMISTRY_LOWER_ID);
+                LearningLandscape upper = landscapeService.getById(BREMEN_CHEMISTRY_UPPER_ID);
+
+                assertThat(lower).isNotNull();
+                assertThat(upper).isNotNull();
+                assertThat(lower.getTitle())
+                                .isEqualTo("DE-HB - Chemie Sekundarstufe I (Bremen, Bildungsplan 2006/2022 Source-Extraction)");
+                assertThat(upper.getTitle())
+                                .isEqualTo("DE-HB - Chemie Gymnasiale Oberstufe (Bremen, Bildungsplan 2022 Source-Extraction)");
+                assertThat(lower.getGoals()).hasSize(42);
+                assertThat(upper.getGoals()).hasSize(88);
+                assertThat(landscapeService.resolveSourceLandscapeJurisdiction(BREMEN_CHEMISTRY_LOWER_ID))
+                                .isEqualTo("DE-HB");
+                assertThat(landscapeService.resolveSourceLandscapeJurisdiction(BREMEN_CHEMISTRY_UPPER_ID))
+                                .isEqualTo("DE-HB");
+                assertThat(landscapeService.isCompatibilityOnlyLandscape(BREMEN_CHEMISTRY_LOWER_ID)).isTrue();
+                assertThat(landscapeService.isCompatibilityOnlyLandscape(BREMEN_CHEMISTRY_UPPER_ID)).isTrue();
+        }
+
+        @Test
+        void loadsBadenWuerttembergChemistrySourceExtractionsFromRealRegistry() {
+                LandscapeProperties properties = new LandscapeProperties();
+                properties.setDirectory("../curricula");
+                ObjectMapper objectMapper = new ObjectMapper();
+                LandscapeService landscapeService = new LandscapeService(properties, objectMapper);
+
+                LearningLandscape lower = landscapeService.getById(BADEN_WUERTTEMBERG_CHEMISTRY_LOWER_ID);
+                LearningLandscape upper = landscapeService.getById(BADEN_WUERTTEMBERG_CHEMISTRY_UPPER_ID);
+
+                assertThat(lower).isNotNull();
+                assertThat(upper).isNotNull();
+                assertThat(lower.getTitle())
+                                .isEqualTo("Chemie Sekundarstufe I (Baden-Wuerttemberg, BP2016 V2 Source-Extraction)");
+                assertThat(upper.getTitle())
+                                .isEqualTo("Chemie Kursstufe (Baden-Wuerttemberg, BP2016 V2 Source-Extraction)");
+                assertThat(lower.getGoals()).hasSize(65);
+                assertThat(upper.getGoals()).hasSize(126);
+                assertThat(landscapeService.resolveSourceLandscapeJurisdiction(BADEN_WUERTTEMBERG_CHEMISTRY_LOWER_ID))
+                                .isEqualTo("DE-BW");
+                assertThat(landscapeService.resolveSourceLandscapeJurisdiction(BADEN_WUERTTEMBERG_CHEMISTRY_UPPER_ID))
+                                .isEqualTo("DE-BW");
+                assertThat(landscapeService.isCompatibilityOnlyLandscape(BADEN_WUERTTEMBERG_CHEMISTRY_LOWER_ID)).isTrue();
+                assertThat(landscapeService.isCompatibilityOnlyLandscape(BADEN_WUERTTEMBERG_CHEMISTRY_UPPER_ID)).isTrue();
+        }
+
+        @Test
+        void loadsHamburgChemistrySourceExtractionsFromRealRegistry() {
+                LandscapeProperties properties = new LandscapeProperties();
+                properties.setDirectory("../curricula");
+                ObjectMapper objectMapper = new ObjectMapper();
+                LandscapeService landscapeService = new LandscapeService(properties, objectMapper);
+
+                LearningLandscape lower = landscapeService.getById(HAMBURG_CHEMISTRY_LOWER_ID);
+                LearningLandscape upper = landscapeService.getById(HAMBURG_CHEMISTRY_UPPER_ID);
+
+                assertThat(lower).isNotNull();
+                assertThat(upper).isNotNull();
+                assertThat(lower.getTitle())
+                                .isEqualTo("DE-HH - Chemie Sekundarstufe I (Hamburg, Bildungsplan Source-Extraction)");
+                assertThat(upper.getTitle())
+                                .isEqualTo("DE-HH - Chemie Studienstufe (Hamburg, Bildungsplan 2022 Source-Extraction)");
+                assertThat(lower.getGoals()).hasSize(65);
+                assertThat(upper.getGoals()).hasSize(97);
+                assertThat(landscapeService.resolveSourceLandscapeJurisdiction(HAMBURG_CHEMISTRY_LOWER_ID))
+                                .isEqualTo("DE-HH");
+                assertThat(landscapeService.resolveSourceLandscapeJurisdiction(HAMBURG_CHEMISTRY_UPPER_ID))
+                                .isEqualTo("DE-HH");
+                assertThat(landscapeService.isCompatibilityOnlyLandscape(HAMBURG_CHEMISTRY_LOWER_ID)).isTrue();
+                assertThat(landscapeService.isCompatibilityOnlyLandscape(HAMBURG_CHEMISTRY_UPPER_ID)).isTrue();
+        }
+
+        @Test
+        void loadsMecklenburgVorpommernChemistrySourceExtractionsFromRealRegistry() {
+                LandscapeProperties properties = new LandscapeProperties();
+                properties.setDirectory("../curricula");
+                ObjectMapper objectMapper = new ObjectMapper();
+                LandscapeService landscapeService = new LandscapeService(properties, objectMapper);
+
+                LearningLandscape lower = landscapeService.getById(MECKLENBURG_VORPOMMERN_CHEMISTRY_LOWER_ID);
+                LearningLandscape upper = landscapeService.getById(MECKLENBURG_VORPOMMERN_CHEMISTRY_UPPER_ID);
+
+                assertThat(lower).isNotNull();
+                assertThat(upper).isNotNull();
+                assertThat(lower.getTitle())
+                                .isEqualTo("DE-MV - Chemie Sekundarstufe I (Mecklenburg-Vorpommern, Rahmenplan 2021 Source-Extraction)");
+                assertThat(upper.getTitle())
+                                .isEqualTo("DE-MV - Chemie Qualifikationsphase (Mecklenburg-Vorpommern, Rahmenplan 2022 Erprobungsfassung Source-Extraction)");
+                assertThat(lower.getGoals()).hasSize(114);
+                assertThat(upper.getGoals()).hasSize(122);
+                assertThat(landscapeService.resolveSourceLandscapeJurisdiction(MECKLENBURG_VORPOMMERN_CHEMISTRY_LOWER_ID))
+                                .isEqualTo("DE-MV");
+                assertThat(landscapeService.resolveSourceLandscapeJurisdiction(MECKLENBURG_VORPOMMERN_CHEMISTRY_UPPER_ID))
+                                .isEqualTo("DE-MV");
+                assertThat(landscapeService.isCompatibilityOnlyLandscape(MECKLENBURG_VORPOMMERN_CHEMISTRY_LOWER_ID)).isTrue();
+                assertThat(landscapeService.isCompatibilityOnlyLandscape(MECKLENBURG_VORPOMMERN_CHEMISTRY_UPPER_ID)).isTrue();
+        }
+
+        @Test
+        void loadsSchleswigHolsteinChemistrySourceExtractionsFromRealRegistry() {
+                LandscapeProperties properties = new LandscapeProperties();
+                properties.setDirectory("../curricula");
+                ObjectMapper objectMapper = new ObjectMapper();
+                LandscapeService landscapeService = new LandscapeService(properties, objectMapper);
+
+                LearningLandscape lower = landscapeService.getById(SCHLESWIG_HOLSTEIN_CHEMISTRY_LOWER_ID);
+                LearningLandscape upper = landscapeService.getById(SCHLESWIG_HOLSTEIN_CHEMISTRY_UPPER_ID);
+
+                assertThat(lower).isNotNull();
+                assertThat(upper).isNotNull();
+                assertThat(lower.getTitle())
+                                .isEqualTo("DE-SH - Chemie Sekundarstufe I (Schleswig-Holstein, Fachanforderungen 2022 Source-Extraction)");
+                assertThat(upper.getTitle())
+                                .isEqualTo("DE-SH - Chemie Oberstufe (Schleswig-Holstein, Fachanforderungen 2022 Source-Extraction)");
+                assertThat(lower.getGoals()).hasSize(156);
+                assertThat(upper.getGoals()).hasSize(165);
+                assertThat(landscapeService.resolveSourceLandscapeJurisdiction(SCHLESWIG_HOLSTEIN_CHEMISTRY_LOWER_ID))
+                                .isEqualTo("DE-SH");
+                assertThat(landscapeService.resolveSourceLandscapeJurisdiction(SCHLESWIG_HOLSTEIN_CHEMISTRY_UPPER_ID))
+                                .isEqualTo("DE-SH");
+                assertThat(landscapeService.isCompatibilityOnlyLandscape(SCHLESWIG_HOLSTEIN_CHEMISTRY_LOWER_ID)).isTrue();
+                assertThat(landscapeService.isCompatibilityOnlyLandscape(SCHLESWIG_HOLSTEIN_CHEMISTRY_UPPER_ID)).isTrue();
+        }
+
+        @Test
+        void loadsSaxonyChemistrySourceExtractionsFromRealRegistry() {
+                LandscapeProperties properties = new LandscapeProperties();
+                properties.setDirectory("../curricula");
+                ObjectMapper objectMapper = new ObjectMapper();
+                LandscapeService landscapeService = new LandscapeService(properties, objectMapper);
+
+                LearningLandscape lower = landscapeService.getById(SAXONY_CHEMISTRY_LOWER_ID);
+                LearningLandscape upper = landscapeService.getById(SAXONY_CHEMISTRY_UPPER_ID);
+
+                assertThat(lower).isNotNull();
+                assertThat(upper).isNotNull();
+                assertThat(lower.getTitle())
+                                .isEqualTo("DE-SN - Chemie Sekundarstufe I (Sachsen, Lehrplan Gymnasium 2025 Source-Extraction)");
+                assertThat(upper.getTitle())
+                                .isEqualTo("DE-SN - Chemie Jahrgangsstufen 11/12 (Sachsen, Lehrplan Gymnasium 2025 Source-Extraction)");
+                assertThat(lower.getGoals()).hasSize(176);
+                assertThat(upper.getGoals()).hasSize(302);
+                assertThat(landscapeService.resolveSourceLandscapeJurisdiction(SAXONY_CHEMISTRY_LOWER_ID))
+                                .isEqualTo("DE-SN");
+                assertThat(landscapeService.resolveSourceLandscapeJurisdiction(SAXONY_CHEMISTRY_UPPER_ID))
+                                .isEqualTo("DE-SN");
+                assertThat(landscapeService.isCompatibilityOnlyLandscape(SAXONY_CHEMISTRY_LOWER_ID)).isTrue();
+                assertThat(landscapeService.isCompatibilityOnlyLandscape(SAXONY_CHEMISTRY_UPPER_ID)).isTrue();
+        }
+
+        @Test
         void loadsSachsenAnhaltChemistrySourceExtractionsFromRealRegistry() {
                 LandscapeProperties properties = new LandscapeProperties();
                 properties.setDirectory("../curricula");
@@ -354,6 +656,60 @@ class LandscapeServiceTest {
                                 .isEqualTo("DE-ST");
                 assertThat(landscapeService.resolveSourceLandscapeJurisdiction(SACHSEN_ANHALT_CHEMISTRY_UPPER_ID))
                                 .isEqualTo("DE-ST");
+                assertThat(landscapeService.isCompatibilityOnlyLandscape(SACHSEN_ANHALT_CHEMISTRY_LOWER_ID)).isTrue();
+                assertThat(landscapeService.isCompatibilityOnlyLandscape(SACHSEN_ANHALT_CHEMISTRY_UPPER_ID)).isTrue();
+        }
+
+        @Test
+        void loadsThueringenChemistrySourceExtractionsFromRealRegistry() {
+                LandscapeProperties properties = new LandscapeProperties();
+                properties.setDirectory("../curricula");
+                ObjectMapper objectMapper = new ObjectMapper();
+                LandscapeService landscapeService = new LandscapeService(properties, objectMapper);
+
+                LearningLandscape lower = landscapeService.getById(THUERINGIA_CHEMISTRY_LOWER_ID);
+                LearningLandscape upper = landscapeService.getById(THUERINGIA_CHEMISTRY_UPPER_ID);
+
+                assertThat(lower).isNotNull();
+                assertThat(upper).isNotNull();
+                assertThat(lower.getTitle())
+                                .isEqualTo("DE-TH - Chemie Sekundarstufe I (Thueringen, Lehrplan Gymnasium 2024 Source-Extraction)");
+                assertThat(upper.getTitle())
+                                .isEqualTo("DE-TH - Chemie Qualifikationsphase (Thueringen, Lehrplan Gymnasium 2024 Source-Extraction)");
+                assertThat(lower.getGoals()).hasSize(224);
+                assertThat(upper.getGoals()).hasSize(225);
+                assertThat(landscapeService.resolveSourceLandscapeJurisdiction(THUERINGIA_CHEMISTRY_LOWER_ID))
+                                .isEqualTo("DE-TH");
+                assertThat(landscapeService.resolveSourceLandscapeJurisdiction(THUERINGIA_CHEMISTRY_UPPER_ID))
+                                .isEqualTo("DE-TH");
+                assertThat(landscapeService.isCompatibilityOnlyLandscape(THUERINGIA_CHEMISTRY_LOWER_ID)).isTrue();
+                assertThat(landscapeService.isCompatibilityOnlyLandscape(THUERINGIA_CHEMISTRY_UPPER_ID)).isTrue();
+        }
+
+        @Test
+        void loadsSaarlandChemistrySourceExtractionsFromRealRegistry() {
+                LandscapeProperties properties = new LandscapeProperties();
+                properties.setDirectory("../curricula");
+                ObjectMapper objectMapper = new ObjectMapper();
+                LandscapeService landscapeService = new LandscapeService(properties, objectMapper);
+
+                LearningLandscape lower = landscapeService.getById(SAARLAND_CHEMISTRY_LOWER_ID);
+                LearningLandscape upper = landscapeService.getById(SAARLAND_CHEMISTRY_UPPER_ID);
+
+                assertThat(lower).isNotNull();
+                assertThat(upper).isNotNull();
+                assertThat(lower.getTitle())
+                                .isEqualTo("DE-SL - Chemie Sekundarstufe I (Saarland, Gymnasium G9 2024/2025 Source-Extraction)");
+                assertThat(upper.getTitle())
+                                .isEqualTo("DE-SL - Chemie Gymnasiale Oberstufe (Saarland, GOS 2023/2025 Source-Extraction)");
+                assertThat(lower.getGoals()).hasSize(190);
+                assertThat(upper.getGoals()).hasSize(712);
+                assertThat(landscapeService.resolveSourceLandscapeJurisdiction(SAARLAND_CHEMISTRY_LOWER_ID))
+                                .isEqualTo("DE-SL");
+                assertThat(landscapeService.resolveSourceLandscapeJurisdiction(SAARLAND_CHEMISTRY_UPPER_ID))
+                                .isEqualTo("DE-SL");
+                assertThat(landscapeService.isCompatibilityOnlyLandscape(SAARLAND_CHEMISTRY_LOWER_ID)).isTrue();
+                assertThat(landscapeService.isCompatibilityOnlyLandscape(SAARLAND_CHEMISTRY_UPPER_ID)).isTrue();
         }
 
         @Test

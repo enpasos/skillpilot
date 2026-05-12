@@ -46,6 +46,18 @@ Das LISUM gibt gemeinsame Rahmenlehrpläne für Berlin und Brandenburg heraus.
   gemeinsamer BE/BB-Rahmenlehrplan, der hier zunaechst als Berliner retained source lane mit schmaler Berlin-spezifischer Mapping-Lane aktiviert ist
 
 ## Chemie
+### Sekundarstufe I (Jahrgangsstufen 7-10)
+- Archiviert:
+  `curricula/DE/Gymnasium/input/BE/lower-secondary/Teil_C_Chemie_2015_11_10.pdf`
+- Aktive Source-Extraction:
+  `curricula/DE/Gymnasium/input/BE/lower-secondary/source-extraction/DE_BE_CHEMIE_SEKI_RLP_2015.source-extraction.json`
+- Aktiver Umfang:
+  MAPPING-1 und MAPPING-2 aus dem amtlichen gemeinsamen BE/BB-RLP-Teil-C-PDF; 12 Passagen aus `3.1` bis `3.12`, 68 Source-Ziele aus den Inhaltszeilen der Sek-I-Themenfelder
+- M3-Status:
+  abgeschlossen; 68/68 Source-Ziele reviewed, 0 direkt und 68 ueber 1:n-Zuordnungen inhaltlich abgedeckt
+- Offizielle Quelle:
+  `https://bildungsserver.berlin-brandenburg.de/fileadmin/bbb/unterricht/rahmenlehrplaene/Rahmenlehrplanprojekt/amtliche_Fassung/Teil_C_Chemie_2015_11_10.pdf`
+
 ### Sekundarstufe II (Gymnasiale Oberstufe)
 - Archiviert:
   `curricula/DE/Gymnasium/input/BE/upper-secondary/Teil_C_RLP_GOST_2022_Chemie.pdf`
@@ -57,3 +69,8 @@ Das LISUM gibt gemeinsame Rahmenlehrpläne für Berlin und Brandenburg heraus.
   abgeschlossen; 203/203 Source-Ziele reviewed, 100 direkt und 103 ueber 1:n-Zuordnungen inhaltlich abgedeckt
 - Offizielle Quelle:
   `https://bildungsserver.berlin-brandenburg.de/fileadmin/bbb/unterricht/rahmenlehrplaene/gymnasiale_oberstufe/curricula/2022/Teil_C_RLP_GOST_2022_Chemie.pdf`
+
+### Chemie-Naechste Schritte
+- die gemeinsame BB/BE-Sek-I- und Sek-II-Quellenlage stabil halten
+- keine zusaetzliche BB/BE-spezifische Chemie-Composition-View erzwingen, solange der gemeinsame LISUM-RLP ausreicht
+- Folgearbeit auf echte retained Residues oder Cutover-Maintenance beschraenken
