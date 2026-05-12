@@ -8,7 +8,11 @@ import {
 } from '../src/utils/compositionViewRuntime'
 import { normalizeLearnerProjectedEntries } from '../src/utils/learnerTreeProjection'
 import { buildDirectChildrenMap } from '../src/utils/treeProjectionRuntime'
-import { buildGoalContainsClosure, buildRenderedScopeDescendantCountMap } from '../src/utils/plannedScope'
+import {
+  buildGoalContainsClosure,
+  buildRenderedScopeDescendantCountMap,
+  buildRenderedScopeMarkerGoalIds,
+} from '../src/utils/plannedScope'
 import {
   ABI26_MATH_LANDSCAPE_ID,
   ABI26_ROOT_CURRICULUM_ID,
@@ -249,6 +253,11 @@ const bavariaScopeDescendantCounts = buildRenderedScopeDescendantCountMap(
   bavariaMathChildrenByParent,
   bavariaPlannedJ8ScopeGoalIds,
 )
+const bavariaScopeMarkerGoalIds = buildRenderedScopeMarkerGoalIds(
+  bavariaMathGoalById,
+  bavariaMathChildrenByParent,
+  bavariaPlannedJ8ScopeGoalIds,
+)
 
 assert.ok(
   bavariaPlannedJ8ScopeGoalIds.has(canonicalMathJ8AxisInterceptGoalId),
@@ -261,6 +270,15 @@ assert.ok(
 assert.ok(
   (bavariaScopeDescendantCounts.get(bavariaVisibleJ8StructureId) ?? 0) > 0,
   'A hidden canonical J8 planned scope must mark the visible Bavaria GK Jahrgangsstufe 8 structure.',
+)
+assert.deepStrictEqual(
+  Array.from(bavariaScopeMarkerGoalIds),
+  [bavariaVisibleJ8StructureId],
+  'A hidden canonical J8 planned scope must produce exactly one visible scope marker on Jahrgangsstufe 8.',
+)
+assert.ok(
+  !bavariaScopeMarkerGoalIds.has(canonicalMathJ8AxisInterceptGoalId),
+  'A hidden canonical J8 planned scope must not mark every scoped descendant as a separate planned goal.',
 )
 
 console.log('✅ Learner goal selection regression checks passed.')
