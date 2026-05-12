@@ -31,6 +31,20 @@ The current pilot is:
 - Review ledger: `curricula/DE/Gymnasium/quality/semantic-atomicity/canonical-math-j8-linear-functions-pilot.review.jsonl`
 - Scope root: `Lineare Funktionen rechnerisch untersuchen`
 
+Additional subject lanes currently in use:
+
+- Chemistry Sek I foundations:
+  - Config: `curricula/DE/Gymnasium/quality/semantic-atomicity/canonical-chemistry-sek1-foundations.config.json`
+  - Review ledger: `curricula/DE/Gymnasium/quality/semantic-atomicity/canonical-chemistry-sek1-foundations.review.jsonl`
+  - Scope root: `Chemische Grundlagen (Sek I)`
+  - Initial review result: 14 accepted atomic leaves, 4 explicit non-atomic split candidates.
+- Full canonical physics:
+  - Config: `curricula/DE/Gymnasium/quality/semantic-atomicity/canonical-physics-full.config.json`
+  - Review ledger: `curricula/DE/Gymnasium/quality/semantic-atomicity/canonical-physics-full.review.jsonl`
+- Full canonical mathematics:
+  - Config: `curricula/DE/Gymnasium/quality/semantic-atomicity/canonical-math-full.config.json`
+  - Review ledger: `curricula/DE/Gymnasium/quality/semantic-atomicity/canonical-math-full.review.jsonl`
+
 Run:
 
 ```bash
