@@ -1,6 +1,6 @@
 # Curriculum Quality Status
 
-Generated: 2026-05-12T05:53:33.767Z
+Generated: 2026-05-12T06:13:23.036Z
 Rules version: curriculum-quality-v1
 
 ## Summary
