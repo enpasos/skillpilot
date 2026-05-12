@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "rulesVersion": "curriculum-quality-v1",
-  "generatedAt": "2026-05-11T21:40:13.837Z",
+  "generatedAt": "2026-05-12T01:27:13.522Z",
   "generatedBy": "app/scripts/generateCurriculumQualityStatus.ts",
   "sources": {
     "canonicalRoot": "curricula/DE/Gymnasium/canonical",
@@ -25,10 +25,10 @@
       "M5": 2
     },
     "ruleStatus": {
-      "pass": 94,
+      "pass": 95,
       "warn": 18,
       "fail": 19,
-      "not_configured": 73
+      "not_configured": 72
     }
   },
   "ruleCatalog": [
@@ -6538,8 +6538,18 @@
         },
         {
           "id": "CQR-301",
-          "status": "not_configured",
-          "summary": "No semantic atomicity review config is registered for this curriculum."
+          "status": "warn",
+          "summary": "Semantic atomicity review still has missing, stale, or unresolved entries.",
+          "metrics": {
+            "configs": 1,
+            "leafGoals": 18,
+            "atomic": 14,
+            "needsDeveloperReview": 0,
+            "nonAtomic": 4,
+            "missing": 0,
+            "stale": 0,
+            "obsolete": 0
+          }
         },
         {
           "id": "CQR-401",
@@ -6551,18 +6561,17 @@
         },
         {
           "id": "CQR-501",
-          "status": "warn",
-          "summary": "302 active and 0 obsolete accepted applicability warning(s) need review; 2017 partial-only diagnostic finding(s) are non-blocking.",
+          "status": "pass",
+          "summary": "No active applicability warning debt is visible.",
           "metrics": {
-            "activeWarnings": 302,
-            "rawActiveWarnings": 302,
+            "activeWarnings": 0,
+            "rawActiveWarnings": 0,
             "diagnosticPartialOnlyWarnings": 2017,
             "acceptedWarnings": 0,
             "obsoleteAcceptedWarnings": 0
           },
           "details": [
             "non-blocking partial-only applicability diagnostics APV-202: 2017",
-            "active warning type APV-203: 302",
             "diagnostic finding type APV-202: 2017"
           ]
         },
