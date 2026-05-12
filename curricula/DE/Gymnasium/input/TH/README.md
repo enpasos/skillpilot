@@ -30,3 +30,28 @@
   - `upper-secondary/source-json/DE_THU_S_GYM_2_PHYSIK.de.json.snapshot`
 - die Aktivierung ist dokumentiert in `curricula/DE/Gymnasium/provenance/th-physics-onboarding.md`
 - vor irgendeinem topic-spezifischen Thueringen-Mapping erst die restlichen neu archivierten Physiklaender ebenfalls auf `P2` ziehen
+
+## Chemie
+
+Archived official source input on `2026-05-11`:
+
+- `LP_GY_Chemie_2024.pdf`
+  - Thueringer Lehrplan Chemie fuer den Erwerb der allgemeinen Hochschulreife `2024`
+  - Klassenstufen `7-10`, gesonderte Einfuehrungsphase fuer Lernende mit Realschulabschluss und Qualifikationsphase
+  - direct PDF source: `https://www.schulportal-thueringen.de/tip/resources/medien/63707?dateiname=Chemie_Lehrplan_AHR_2024-11-13.pdf`
+- `LP_GY_Chemie_2012.pdf`
+  - retained transition/reference copy of the prior Thueringen Gymnasium Chemistry plan
+  - direct PDF source: `https://www.schulportal-thueringen.de/tip/resources/medien/14475?dateiname=Lp_Chemie_Gymnasium_20_08_2013.pdf`
+
+Operational note:
+
+- `DE-TH` now has a real archived lower-secondary plus upper-secondary Chemistry source bundle from the official 2024 Gymnasium PDF.
+- The retained lower-secondary and upper-secondary Chemistry source extractions now live at:
+  - `curricula/DE/Gymnasium/input/TH/lower-secondary/source-extraction/DE_TH_CHEMIE_SEKI_LEHRPLAN_GYMNASIUM_2024.source-extraction.json`
+  - `curricula/DE/Gymnasium/input/TH/upper-secondary/source-extraction/DE_TH_CHEMIE_SEKII_LEHRPLAN_GYMNASIUM_2024.source-extraction.json`
+- Thueringen Chemistry M3 status:
+  - Sek I: `complete` (224 Source-Ziele)
+  - Sek II: `complete` (225 Source-Ziele)
+- Thueringen Chemistry composition views:
+  - `active`
+- The next meaningful step is a horizontal Chemistry quality pass now that all 16 Bundesland source lanes are source-backed.
