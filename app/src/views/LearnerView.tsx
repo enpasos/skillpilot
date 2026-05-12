@@ -82,6 +82,18 @@ type PersonalCurriculumPreferences = {
   strictMode: boolean
 }
 
+type BackendStats = {
+  masteredAtomic: number
+  totalAtomic: number
+  personalizedMasteredAtomic?: number
+  personalizedTotalAtomic?: number
+  plannedGoalKey?: string
+}
+
+const goalIdsKey = (goalIds: Iterable<string>) => (
+  Array.from(goalIds).filter(Boolean).sort().join('|')
+)
+
 const normalizePersonalConfig = (
   input: PersonalCurriculumConfig,
   availableLandscapes: { landscapeId: string; filters?: { id: string; label: string }[]; compatibilityOnly?: boolean }[],
@@ -228,12 +240,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   const [frontierOptions, setFrontierOptions] = useState<FrontierGoal[]>([])
   const [stateActiveGoalId, setStateActiveGoalId] = useState<string | null>(null)
   const [stateRequiredAction, setStateRequiredAction] = useState<string | null>(null)
-  const [backendStats, setBackendStats] = useState<{
-    masteredAtomic: number
-    totalAtomic: number
-    personalizedMasteredAtomic?: number
-    personalizedTotalAtomic?: number
-  } | null>(null)
+  const [backendStats, setBackendStats] = useState<BackendStats | null>(null)
   const [isSetupOpen, setIsSetupOpen] = useState(false)
   const [personalConfig, setPersonalConfig] = useState<PersonalCurriculumConfig>({})
   const [isPersonalConfigHydrating, setIsPersonalConfigHydrating] = useState<boolean>(!!skillpilotId)
@@ -683,9 +690,15 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   const stats = useMemo(() => {
     const hasPersonalConfig = Object.keys(personalConfig).length > 0
     const hasActiveFilter = !!effectiveActiveFilter && !isWildcardFilter(effectiveActiveFilter)
+    const plannedKey = goalIdsKey(plannedGoals)
 
     // In global mode (no planned goals), prefer backend stats only when no filters are active
     if (plannedGoals.size === 0 && backendStats && !hasPersonalConfig && !hasActiveFilter) {
+      return backendStats
+    }
+
+    // Composition-view structure scopes are expanded by the backend, not by visibleGoals.
+    if (plannedGoals.size > 0 && backendStats?.plannedGoalKey === plannedKey) {
       return backendStats
     }
 
@@ -941,8 +954,13 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
           } else {
             setFrontierOptions([])
           }
+          const backendPlannedGoalIds = data.goals?.planned && Array.isArray(data.goals.planned)
+            ? (data.goals.planned as Array<{ id?: string }>)
+              .map((goal) => goal.id)
+              .filter((id: string | undefined): id is string => Boolean(id))
+            : []
           if (data.goals?.planned && Array.isArray(data.goals.planned)) {
-            setPlannedGoals(new Set(data.goals.planned.map((goal: { id?: string }) => goal.id).filter(Boolean)))
+            setPlannedGoals(new Set(backendPlannedGoalIds))
           }
           setStateActiveGoalId(backendActiveGoalId)
           setLearnerData(prev => prev ? { ...prev, activeGoalId: backendActiveGoalId ?? undefined } : prev)
@@ -954,6 +972,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
               totalAtomic: data.goals.total_count ?? 0,
               personalizedMasteredAtomic: data.goals.personalized?.mastered_atomic,
               personalizedTotalAtomic: data.goals.personalized?.total_atomic,
+              plannedGoalKey: goalIdsKey(backendPlannedGoalIds),
             })
           }
           clearReportedLoadError('learner-initial-load')
@@ -1392,12 +1411,14 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
       setStateActiveGoalId(data.activeGoal?.id ?? data.stateMachine?.activeGoal?.id ?? null)
       setStateRequiredAction(data.stateMachine?.requiredAction ?? null)
       if (data.goals) {
-        setPlannedGoals(new Set((data.goals.planned ?? []).map((goal: FrontierGoal) => goal.id)))
+        const backendPlannedGoalIds = (data.goals.planned ?? []).map((goal: FrontierGoal) => goal.id).filter(Boolean)
+        setPlannedGoals(new Set(backendPlannedGoalIds))
         setBackendStats({
           masteredAtomic: data.goals.mastered_count ?? 0,
           totalAtomic: data.goals.total_count ?? 0,
           personalizedMasteredAtomic: data.goals.personalized?.mastered_atomic,
           personalizedTotalAtomic: data.goals.personalized?.total_atomic,
+          plannedGoalKey: goalIdsKey(backendPlannedGoalIds),
         })
       }
 
