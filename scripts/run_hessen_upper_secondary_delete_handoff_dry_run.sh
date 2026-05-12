@@ -17,6 +17,7 @@ run_checks() {
   python3 scripts/validate_hessen_upper_secondary_legacy_refs.py
   python3 scripts/validate_math_exam_pipeline.py
   python3 scripts/validate_physics_exam_pipeline.py
+  python3 scripts/validate_chemistry_exam_pipeline.py
 
   cd "$ROOT_DIR/app"
   ./node_modules/.bin/tsx ../scripts/deploy_curriculum_decks.ts
