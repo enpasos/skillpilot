@@ -238,6 +238,25 @@ assert.ok(
   'The supplemental route-goal path must not leak the later mathematics prism goal into J5.',
 )
 
+const genericVisibleJ8StructureId = 'composition:de-de-gym-seki-math:structure:j8'
+const genericJ8FractionsStructureId = 'composition:de-de-gym-seki-math:structure:j8-fractions'
+const genericJ8ScopeGoalIds = buildGoalContainsClosure([canonicalMathJ8GoalId], mathGoalById)
+const genericJ8ScopeMarkerGoalIds = buildRenderedScopeMarkerGoalIds(
+  mathGoalById,
+  mathChildrenByParent,
+  genericJ8ScopeGoalIds,
+)
+
+assert.deepStrictEqual(
+  Array.from(genericJ8ScopeMarkerGoalIds),
+  [genericVisibleJ8StructureId],
+  'A hidden canonical J8 planned scope must mark the visible generic Sek-I Jahrgangsstufe 8 structure, not a partial child cluster.',
+)
+assert.ok(
+  !genericJ8ScopeMarkerGoalIds.has(genericJ8FractionsStructureId),
+  'A hidden canonical J8 planned scope must not collapse to the Bruchterme child cluster in the generic Sek-I view.',
+)
+
 const bavariaProjectedMathEntries = normalizeLearnerProjectedEntries(
   applyCompositionViewProjection(
     prepareLandscapeEntries([canonicalMathLandscape]),

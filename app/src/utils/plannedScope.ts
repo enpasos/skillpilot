@@ -1,5 +1,5 @@
 import type { UiGoal } from '../goalTypes'
-import { isSyntheticProgramUnit } from './treeProjectionRuntime'
+import { isCompositionStructureNode, isSyntheticProgramUnit } from './treeProjectionRuntime'
 
 export const buildGoalContainsClosure = (
   rootGoalIds: Iterable<string>,
@@ -81,10 +81,11 @@ export const buildRenderedScopeMarkerGoalIds = (
     visiting.add(goalId)
     const goal = allGoals.get(goalId)
     const isSynthetic = !!goal && isSyntheticProgramUnit(goal)
+    const isRenderedLeaf = (renderedChildrenByParent.get(goalId) ?? []).length === 0
     const isScoped = scopedGoalIds.has(goalId)
     const stats = {
-      scopedConcrete: goal && !isSynthetic && isScoped ? 1 : 0,
-      unscopedConcrete: goal && !isSynthetic && !isScoped ? 1 : 0,
+      scopedConcrete: goal && !isSynthetic && isRenderedLeaf && isScoped ? 1 : 0,
+      unscopedConcrete: goal && !isSynthetic && isRenderedLeaf && !isScoped ? 1 : 0,
     }
 
     renderedChildrenByParent.get(goalId)?.forEach((childId) => {
@@ -103,19 +104,35 @@ export const buildRenderedScopeMarkerGoalIds = (
     return stats.scopedConcrete > 0 && stats.unscopedConcrete === 0
   }
 
+  const hasFullyCoveredAncestor = (goalId: string, visited: Set<string> = new Set()): boolean => {
+    if (visited.has(goalId)) return false
+    const nextVisited = new Set(visited)
+    nextVisited.add(goalId)
+
+    const parentIds = parentIdsByChild.get(goalId) ?? new Set<string>()
+    return Array.from(parentIds).some((parentId) =>
+      isFullyCoveredScopeRepresentative(parentId) || hasFullyCoveredAncestor(parentId, nextVisited),
+    )
+  }
+
   const markerGoalIds = new Set<string>()
   allGoals.forEach((_, goalId) => {
     if (scopedGoalIds.has(goalId)) return
     if (!isFullyCoveredScopeRepresentative(goalId)) return
 
-    const parentIds = parentIdsByChild.get(goalId) ?? new Set<string>()
-    const hasFullyCoveredParent = Array.from(parentIds).some((parentId) =>
-      isFullyCoveredScopeRepresentative(parentId),
-    )
-    if (!hasFullyCoveredParent) {
+    if (!hasFullyCoveredAncestor(goalId)) {
       markerGoalIds.add(goalId)
     }
   })
+
+  const compositionStructureMarkerGoalIds = Array.from(markerGoalIds).filter((goalId) => {
+    const goal = allGoals.get(goalId)
+    return !!goal && isCompositionStructureNode(goal)
+  })
+
+  if (compositionStructureMarkerGoalIds.length > 0) {
+    return new Set(compositionStructureMarkerGoalIds)
+  }
 
   return markerGoalIds
 }
