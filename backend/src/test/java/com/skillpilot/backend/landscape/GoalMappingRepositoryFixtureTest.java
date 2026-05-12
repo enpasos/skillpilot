@@ -2249,10 +2249,16 @@ class GoalMappingRepositoryFixtureTest {
         assertThat(file.getVersion()).isEqualTo(1);
         assertThat(file.getSourceLandscapeId()).isEqualTo(HESSEN_BIOLOGY_SEK1_LANDSCAPE_ID);
         assertThat(file.getTargetLandscapeId()).isEqualTo(CANONICAL_BIOLOGY_ID);
-        assertThat(file.getMappings()).hasSize(14);
+        assertThat(file.getMappings()).hasSize(70);
         assertThat(file.getMappings())
                 .extracting(GoalMappingEntry::getMatchType)
                 .contains("exact", "partial");
+        assertThat(file.getMappings())
+                .extracting(GoalMappingEntry::getLegacyGoalId, GoalMappingEntry::getCanonicalGoalId, GoalMappingEntry::getMatchType)
+                .contains(
+                        Tuple.tuple("e711881c-c08a-4718-ab32-29c326c6377b", "5f39afac-897c-5ed3-95b5-89ccf66b2532", "exact"),
+                        Tuple.tuple("6f5bee3f-9ecb-4928-96c2-3bb214bb923d", "1d8d64b6-b2d8-526a-8e24-23e8b6e9eb30", "exact"),
+                        Tuple.tuple("538f0166-f4c0-440a-842e-61bbbdc11fb2", "1b7f08a1-33df-5779-af66-430c91d699b7", "exact"));
     }
 
     @Test
