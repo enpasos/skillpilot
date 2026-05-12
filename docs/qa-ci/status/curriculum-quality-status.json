@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "rulesVersion": "curriculum-quality-v1",
-  "generatedAt": "2026-05-12T09:17:07.026Z",
+  "generatedAt": "2026-05-12T09:54:33.132Z",
   "generatedBy": "app/scripts/generateCurriculumQualityStatus.ts",
   "sources": {
     "canonicalRoot": "curricula/DE/Gymnasium/canonical",
@@ -25,9 +25,9 @@
       "M5": 2
     },
     "ruleStatus": {
-      "pass": 97,
+      "pass": 98,
       "warn": 19,
-      "fail": 20,
+      "fail": 19,
       "not_configured": 71
     }
   },
@@ -1002,14 +1002,14 @@
       "frameworkId": "canonical-gymnasium-chemistry",
       "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
       "maturity": "M2",
-      "goals": 465,
-      "atomicGoals": 398,
-      "clusterGoals": 67,
+      "goals": 467,
+      "atomicGoals": 399,
+      "clusterGoals": 68,
       "jurisdictionCoverage": {
         "dimension": "jurisdiction",
         "totalJurisdictions": 16,
         "totalAtomicGoals": 336,
-        "rawAtomicGoals": 398,
+        "rawAtomicGoals": 399,
         "coveredJurisdictions": 16,
         "sourceBackedJurisdictions": 16,
         "sourceCompleteJurisdictions": 16,
@@ -1070,9 +1070,9 @@
             "jurisdiction": "DE-HE",
             "labelDe": "Hessen",
             "labelEn": "Hesse",
-            "visibleGoals": 465,
+            "visibleGoals": 467,
             "visibleAtomicGoals": 334,
-            "visibleClusterGoals": 131,
+            "visibleClusterGoals": 133,
             "viewAtomicGoals": 334,
             "sourceBackedAtomicGoals": 334,
             "surrogateBackedAtomicGoals": 0,
@@ -1101,9 +1101,9 @@
             "jurisdiction": "DE-BY",
             "labelDe": "Bayern",
             "labelEn": "Bavaria",
-            "visibleGoals": 465,
+            "visibleGoals": 467,
             "visibleAtomicGoals": 334,
-            "visibleClusterGoals": 131,
+            "visibleClusterGoals": 133,
             "viewAtomicGoals": 334,
             "sourceBackedAtomicGoals": 334,
             "surrogateBackedAtomicGoals": 0,
@@ -6452,39 +6452,17 @@
           "scopeId": "canonical-chemistry-sek2",
           "label": "Sekundarstufe II",
           "selectedAtomicGoals": 276,
-          "maturity": "M0",
+          "maturity": "M1",
           "rules": [
             {
               "id": "CQR-101",
-              "status": "fail",
-              "summary": "Effective route coverage has missing route segments.",
+              "status": "pass",
+              "summary": "Effective route coverage is complete for the configured scope.",
               "metrics": {
                 "selectedAtomicGoals": 276,
-                "missingMotivationPath": 7,
-                "missingTerminalPath": 209
-              },
-              "details": [
-                "No effective motivation path: Emission und Absorption zur Farbigkeit unterscheiden [54bc6ca0-b770-5f10-ac54-bcc1d04298f5]",
-                "No effective motivation path: Farbigkeit durch delokalisierte Elektronen erklären [87d8cc68-fe82-5273-9e43-c18b566ecb6c]",
-                "No effective motivation path: Absorbiertes und reflektiertes Licht verknüpfen [c8f51eac-c131-58a8-8d00-0fcbbe4bc18c]",
-                "No effective motivation path: Farbstoffe im Alltag und Gesundheit bewerten [61da9d34-cb35-5c2c-ac8e-83f48b6a4fd3]",
-                "No effective motivation path: Substituenteneffekte in Farbstoff-Molekülen erklären [64b03eff-a967-54a1-ace3-89cb7650a65c]",
-                "No effective motivation path: Absorptionsspektren von Farbstoffen auswerten [f0ba30a8-84b3-5915-bf85-6c3a176064d2]",
-                "No effective motivation path: Indikatorfarbstoffe über Strukturänderungen erklären [34da1a4c-5082-54c8-9084-a94826fd36cd]",
-                "No effective terminal path: Stoffe nach Struktur und Eigenschaften ordnen [02dc29ae-4046-556a-b048-d64a0feb8f16]",
-                "No effective terminal path: Reaktionstypen mechanismisch einordnen [7a05a1ce-45d3-571e-be51-afcd8dfd33ca]",
-                "No effective terminal path: Stoffkreisläufe mit Reaktionen und physikalischen Vorgängen beschreiben [c0f1bf09-5a70-5006-b1e9-e91f786a63bf]",
-                "No effective terminal path: Chemische Sachverhalte fachlich diskutieren [1f354a60-be44-512b-8f8b-f67c8c456035]",
-                "No effective terminal path: Einflüsse auf naturwissenschaftliches Wissen bewerten [b3c9c4b8-5575-5200-86cf-26c14ebcc3d8]",
-                "No effective terminal path: Unterenergiestufen aus Spektren und Ionisierungsenergien ableiten [49235cbe-6658-5e7e-8bd4-398416bcebdc]",
-                "No effective terminal path: Quantenzahlen und Besetzungsregeln zur PSE-Anordnung nutzen [3bc48951-025c-5144-99b1-924db611a5f9]",
-                "No effective terminal path: Ionenladungen von Nebengruppenelementen orbitalenergetisch begründen [a138d7bf-163a-59e0-a50a-8438ef4f5168]",
-                "No effective terminal path: Eigenschaften über Wechselwirkungen erklären [3d3231f9-039d-5ce5-9e8e-af219c7fee08]",
-                "No effective terminal path: Radikalische Substitution nachvollziehen [3be2d0b7-c22f-57d4-886a-10fc04a629f5]",
-                "No effective terminal path: Ethanol-Eigenschaften aus der Hydroxygruppe ableiten [e1214210-406e-5075-b83c-086b3972ed66]",
-                "No effective terminal path: Gesundheitliche und gesellschaftliche Alkoholrisiken beurteilen [cd9ec99b-b694-5673-863c-55528e31250a]",
-                "No effective terminal path: Funktionelle Gruppen qualitativ nachweisen [3de28598-672f-5753-8a45-8f559c2f9dc2]"
-              ]
+                "missingMotivationPath": 0,
+                "missingTerminalPath": 0
+              }
             },
             {
               "id": "CQR-102",
@@ -6493,7 +6471,7 @@
               "metrics": {
                 "selectedAtomicGoals": 276,
                 "missingDirectMotivationPath": 209,
-                "missingDirectTerminalPath": 209
+                "missingDirectTerminalPath": 0
               },
               "details": [
                 "No direct atomic motivation path: Stoffe nach Struktur und Eigenschaften ordnen [02dc29ae-4046-556a-b048-d64a0feb8f16]",
@@ -6521,9 +6499,9 @@
             {
               "id": "CQR-103",
               "status": "warn",
-              "summary": "26 scoped cluster-level requires remain.",
+              "summary": "27 scoped cluster-level requires remain.",
               "metrics": {
-                "scopedClusterRequires": 26
+                "scopedClusterRequires": 27
               },
               "details": [
                 "Oberstufen-Atombau und Periodensystem [6e050336-6322-52e2-b40e-c26e5a95a613] has 1 requires",
@@ -6553,8 +6531,8 @@
               "status": "pass",
               "summary": "All configured terminal autonomy goals have examData.",
               "metrics": {
-                "terminalAutonomyGoals": 13,
-                "terminalAutonomyGoalsWithExamData": 13,
+                "terminalAutonomyGoals": 14,
+                "terminalAutonomyGoalsWithExamData": 14,
                 "terminalAutonomyGoalsWithoutExamData": 0
               }
             }
@@ -6567,7 +6545,7 @@
           "status": "pass",
           "summary": "Basic graph integrity checks pass.",
           "metrics": {
-            "goals": 465,
+            "goals": 467,
             "localReferenceIssues": 0
           }
         },
