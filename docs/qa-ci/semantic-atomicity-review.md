@@ -37,7 +37,7 @@ Additional subject lanes currently in use:
   - Config: `curricula/DE/Gymnasium/quality/semantic-atomicity/canonical-chemistry-sek1-foundations.config.json`
   - Review ledger: `curricula/DE/Gymnasium/quality/semantic-atomicity/canonical-chemistry-sek1-foundations.review.jsonl`
   - Scope root: `Chemische Grundlagen (Sek I)`
-  - Initial review result: 14 accepted atomic leaves, 4 explicit non-atomic split candidates.
+  - Current review result: 26 accepted atomic leaves after resolving the first four split candidates.
 - Full canonical physics:
   - Config: `curricula/DE/Gymnasium/quality/semantic-atomicity/canonical-physics-full.config.json`
   - Review ledger: `curricula/DE/Gymnasium/quality/semantic-atomicity/canonical-physics-full.review.jsonl`
