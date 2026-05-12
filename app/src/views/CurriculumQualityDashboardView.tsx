@@ -248,6 +248,8 @@ const COPY = {
     nextMaturityGate: 'Nächster Meilenstein',
     blockedBy: 'Blockiert durch',
     openBlockers: 'offen',
+    gateClearShort: 'bereit',
+    gateNoNext: 'M5 erreicht',
     gateHint: 'Der Reifegrad steigt erst, wenn alle Regeln der nächsten Stufe bestanden sind. Grüne Regeln aus späteren Stufen zählen erst nach den offenen Vorstufen.',
     gateReady: 'Für die nächste Stufe ist kein offener Blocker sichtbar.',
     pipelineProgress: 'Passage-Extraction bereit',
@@ -339,6 +341,8 @@ const COPY = {
     nextMaturityGate: 'Next milestone',
     blockedBy: 'Blocked by',
     openBlockers: 'open',
+    gateClearShort: 'ready',
+    gateNoNext: 'M5 reached',
     gateHint: 'Maturity only advances when every rule in the next level passes. Green rules from later levels count after open earlier gates are closed.',
     gateReady: 'No open blocker is visible for the next level.',
     pipelineProgress: 'passage extraction ready',
@@ -697,11 +701,12 @@ export const CurriculumQualityDashboardView: React.FC = () => {
             </div>
 
             <div className="overflow-x-auto">
-              <table className="w-full min-w-[980px] text-left text-sm">
+              <table className="w-full min-w-[1120px] text-left text-sm">
                 <thead className="border-b border-border-color text-xs uppercase tracking-wide text-text-secondary">
                   <tr>
                     <th className="py-2 pr-3">{copy.curricula}</th>
                     <th className="py-2 pr-3">{copy.maturity}</th>
+                    <th className="py-2 pr-3">{copy.nextMaturityGate}</th>
                     <th className="py-2 pr-3 text-right">{copy.goals}</th>
                     <th className="py-2 pr-3 text-right">{copy.atomic}</th>
                     <th className="py-2 pr-3 text-right">{copy.mappingPipeline}</th>
@@ -712,55 +717,90 @@ export const CurriculumQualityDashboardView: React.FC = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {filteredCurricula.map((curriculum) => (
-                    <tr
-                      key={curriculum.landscapeId}
-                      className={`cursor-pointer border-b border-border-color/70 transition-colors hover:bg-slate-100/70 dark:hover:bg-slate-800/60 ${
-                        selectedCurriculum?.landscapeId === curriculum.landscapeId ? 'bg-sky-50/70 dark:bg-sky-950/20' : ''
-                      }`}
-                      onClick={() => setSelectedId(curriculum.landscapeId)}
-                    >
-                      <td className="max-w-[280px] py-3 pr-3">
-                        <div className="truncate font-semibold">{curriculum.title}</div>
-                        <div className="truncate text-xs text-text-secondary">{curriculum.path}</div>
-                      </td>
-                      <td className="py-3 pr-3"><MaturityBadge level={curriculum.maturity} /></td>
-                      <td className="py-3 pr-3 text-right tabular-nums">{curriculum.goals}</td>
-                      <td className="py-3 pr-3 text-right tabular-nums">{curriculum.atomicGoals}</td>
-                      <td className="py-3 pr-3 text-right tabular-nums">
-                        {curriculum.mappingPipeline
-                          ? (() => {
-                            const counts = pipelineSourceKindCounts(curriculum.mappingPipeline)
-                            return `${counts.sourceExtractionReady}/${curriculum.mappingPipeline.totalSources}`
-                          })()
-                          : '—'}
-                      </td>
-                      <td className="py-3 pr-3 text-right tabular-nums">
-                        {curriculum.jurisdictionCoverage
-                          ? (() => {
-                            const completeJurisdictions = curriculum.jurisdictionCoverage.sourceCompleteJurisdictions
-                              ?? curriculum.jurisdictionCoverage.cleanJurisdictions
-                            return (
-                              <span
-                                className={
-                                  completeJurisdictions === curriculum.jurisdictionCoverage.totalJurisdictions
-                                    ? 'font-semibold text-emerald-600 dark:text-emerald-300'
-                                    : completeJurisdictions > 0
-                                      ? 'font-semibold text-amber-600 dark:text-amber-300'
-                                      : 'font-semibold text-red-600 dark:text-red-300'
-                                }
-                              >
-                                {completeJurisdictions}/{curriculum.jurisdictionCoverage.totalJurisdictions}
-                              </span>
-                            )
-                          })()
-                          : '—'}
-                      </td>
-                      <td className="py-3 pr-3 text-right tabular-nums">{curriculum.scopes.length}</td>
-                      <td className="py-3 pr-3 text-right tabular-nums text-amber-600 dark:text-amber-300">{countStatus(curriculum, 'warn')}</td>
-                      <td className="py-3 text-right tabular-nums text-red-600 dark:text-red-300">{countStatus(curriculum, 'fail')}</td>
-                    </tr>
-                  ))}
+                  {filteredCurricula.map((curriculum) => {
+                    const rowMaturityGate = payload ? getMaturityGate(curriculum, payload.status.ruleCatalog) : null
+                    const blockerIds = rowMaturityGate?.blockers.map((rule) => rule.id) ?? []
+                    const visibleBlockerIds = blockerIds.slice(0, 3)
+
+                    return (
+                      <tr
+                        key={curriculum.landscapeId}
+                        className={`cursor-pointer border-b border-border-color/70 transition-colors hover:bg-slate-100/70 dark:hover:bg-slate-800/60 ${
+                          selectedCurriculum?.landscapeId === curriculum.landscapeId ? 'bg-sky-50/70 dark:bg-sky-950/20' : ''
+                        }`}
+                        onClick={() => setSelectedId(curriculum.landscapeId)}
+                      >
+                        <td className="max-w-[280px] py-3 pr-3">
+                          <div className="truncate font-semibold">{curriculum.title}</div>
+                          <div className="truncate text-xs text-text-secondary">{curriculum.path}</div>
+                        </td>
+                        <td className="py-3 pr-3"><MaturityBadge level={curriculum.maturity} /></td>
+                        <td className="py-3 pr-3">
+                          {rowMaturityGate ? (
+                            <div className="flex min-w-[185px] flex-col gap-1.5">
+                              <div className="flex items-center gap-1.5">
+                                <span className="text-xs font-semibold text-text-secondary">{curriculum.maturity} -&gt;</span>
+                                <MaturityBadge level={rowMaturityGate.nextLevel} />
+                              </div>
+                              {blockerIds.length > 0 ? (
+                                <div
+                                  className="flex items-center gap-1 text-xs font-semibold text-amber-700 dark:text-amber-300"
+                                  title={blockerIds.join(', ')}
+                                >
+                                  <AlertTriangle size={13} className="shrink-0" />
+                                  <span className="truncate">
+                                    {blockerIds.length} {copy.openBlockers}: {visibleBlockerIds.join(', ')}
+                                    {blockerIds.length > visibleBlockerIds.length ? ` +${blockerIds.length - visibleBlockerIds.length}` : ''}
+                                  </span>
+                                </div>
+                              ) : (
+                                <div className="flex items-center gap-1 text-xs font-semibold text-emerald-700 dark:text-emerald-300">
+                                  <CheckCircle2 size={13} className="shrink-0" />
+                                  <span>{copy.gateClearShort}</span>
+                                </div>
+                              )}
+                            </div>
+                          ) : (
+                            <span className="text-xs font-semibold text-text-secondary">{copy.gateNoNext}</span>
+                          )}
+                        </td>
+                        <td className="py-3 pr-3 text-right tabular-nums">{curriculum.goals}</td>
+                        <td className="py-3 pr-3 text-right tabular-nums">{curriculum.atomicGoals}</td>
+                        <td className="py-3 pr-3 text-right tabular-nums">
+                          {curriculum.mappingPipeline
+                            ? (() => {
+                              const counts = pipelineSourceKindCounts(curriculum.mappingPipeline)
+                              return `${counts.sourceExtractionReady}/${curriculum.mappingPipeline.totalSources}`
+                            })()
+                            : '—'}
+                        </td>
+                        <td className="py-3 pr-3 text-right tabular-nums">
+                          {curriculum.jurisdictionCoverage
+                            ? (() => {
+                              const completeJurisdictions = curriculum.jurisdictionCoverage.sourceCompleteJurisdictions
+                                ?? curriculum.jurisdictionCoverage.cleanJurisdictions
+                              return (
+                                <span
+                                  className={
+                                    completeJurisdictions === curriculum.jurisdictionCoverage.totalJurisdictions
+                                      ? 'font-semibold text-emerald-600 dark:text-emerald-300'
+                                      : completeJurisdictions > 0
+                                        ? 'font-semibold text-amber-600 dark:text-amber-300'
+                                        : 'font-semibold text-red-600 dark:text-red-300'
+                                  }
+                                >
+                                  {completeJurisdictions}/{curriculum.jurisdictionCoverage.totalJurisdictions}
+                                </span>
+                              )
+                            })()
+                            : '—'}
+                        </td>
+                        <td className="py-3 pr-3 text-right tabular-nums">{curriculum.scopes.length}</td>
+                        <td className="py-3 pr-3 text-right tabular-nums text-amber-600 dark:text-amber-300">{countStatus(curriculum, 'warn')}</td>
+                        <td className="py-3 text-right tabular-nums text-red-600 dark:text-red-300">{countStatus(curriculum, 'fail')}</td>
+                      </tr>
+                    )
+                  })}
                 </tbody>
               </table>
             </div>
