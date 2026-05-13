@@ -1,0 +1,925 @@
+{
+  "schemaVersion": 1,
+  "extractionId": "DE-NI-POWI-SEKI-WIRTSCHAFT",
+  "sourceLandscapeId": "52a4052e-a170-5877-8346-56605704020b",
+  "targetLandscapeId": "605bdaf6-32d5-56fd-8d92-5a80c2fd2901",
+  "jurisdiction": "DE-NI",
+  "subject": "Politik-Wirtschaft / Wirtschaft",
+  "stage": "SekI",
+  "title": "Politik-Wirtschaft Sekundarstufe I - wirtschaftliche Inhaltsbereiche (Niedersachsen, KC 2015 Source-Extraction)",
+  "sourceDocument": {
+    "key": "NI-POWI-SEKI-2015",
+    "title": "Kerncurriculum Politik-Wirtschaft für das Gymnasium Schuljahrgänge 8-10 Niedersachsen 2015",
+    "path": "curricula/DE/Gymnasium/input/NI/lower-secondary/pw_gym_si_kc_druck.pdf",
+    "official": true
+  },
+  "method": {
+    "passageExtraction": "pdftotext -layout; economics-relevant Politik-Wirtschaft competency blocks selected from official Niedersachsen KC",
+    "sourceGoalExtraction": "one source goal per listed economic competency expectation; original wording retained in sourceText",
+    "scopeNote": "Only economically relevant portions of the integrated subject Politik-Wirtschaft are routed to canonical Wirtschaft."
+  },
+  "qualityReview": {
+    "sourceGoalCountPeerBaseline": {
+      "accepted": true,
+      "details": "NI Sek I ist ein integriertes Politik-Wirtschaft-KC. Wirtschaftliche Tabellenanteile wurden vollständig übernommen; rein politische Entscheidungsprozess-Kompetenzen bleiben im Politik-und-Wirtschaft-Kanon."
+    }
+  },
+  "expectedTopicCodes": [
+    "SI-8-KOMMUNALHAUSHALT",
+    "SI-8-KONSUM",
+    "SI-10-UNTERNEHMEN-ARBEIT",
+    "SI-10-SOZIALE-MARKTWIRTSCHAFT",
+    "SI-10-EU-WIRTSCHAFT"
+  ],
+  "pipelineStatus": {
+    "currentStep": "MAPPING-3",
+    "steps": [
+      {
+        "id": "MAPPING-1",
+        "label": "Original-Lehrplanpassagen extrahiert",
+        "status": "complete",
+        "dependsOn": [],
+        "checks": [
+          {
+            "id": "source-document-present",
+            "label": "Amtliche Niedersachsen-Politik-Wirtschaft-Quelle liegt lokal vor",
+            "passed": true,
+            "details": "PDF liegt lokal vor."
+          },
+          {
+            "id": "economic-topic-selection",
+            "label": "Wirtschaftlich relevante Inhaltsbereiche aus Politik-Wirtschaft wurden selektiert",
+            "passed": true,
+            "details": "Politische Passagen werden nicht automatisch in den Wirtschaftskanon übernommen."
+          }
+        ]
+      },
+      {
+        "id": "MAPPING-2",
+        "label": "Source-Ziele aus Lehrplanpassagen erstellt",
+        "status": "complete",
+        "dependsOn": [
+          "MAPPING-1"
+        ],
+        "checks": [
+          {
+            "id": "source-goals-created",
+            "label": "Aus den ausgewählten Niedersachsen-Passagen wurden Source-Ziele erzeugt",
+            "passed": true,
+            "details": "30 Source-Ziele."
+          },
+          {
+            "id": "source-goal-trace-complete",
+            "label": "Jedes Source-Ziel hat Passage, Source-Span und Quellenreferenz",
+            "passed": true,
+            "details": "Unvollständige Source-Ziele: -"
+          }
+        ]
+      },
+      {
+        "id": "MAPPING-3",
+        "label": "Source-Ziele auf SkillPilot-Ziele gemappt",
+        "status": "incomplete",
+        "dependsOn": [
+          "MAPPING-1",
+          "MAPPING-2"
+        ],
+        "checks": [
+          {
+            "id": "mapping-2-complete",
+            "label": "MAPPING-2 abgeschlossen",
+            "passed": true,
+            "details": "30 Source-Ziele liegen vor; MAPPING-3 läuft gegen diese Source-Extraction-IDs."
+          },
+          {
+            "id": "m3-review-file-present",
+            "label": "M3-Review-Datei ist vorhanden",
+            "passed": true,
+            "details": "curricula/DE/Gymnasium/mapping/DE-NI/lower-secondary/ni_powi_lower_secondary_economics_source_extraction_to_canonical_wirtschaft.review.json"
+          },
+          {
+            "id": "m3-all-source-goals-reviewed",
+            "label": "Alle Source-Ziele haben eine fachliche M3-Entscheidung",
+            "passed": false,
+            "details": "Noch offen: 30."
+          },
+          {
+            "id": "m3-all-source-goals-covered-by-canonical",
+            "label": "Alle Source-Ziele sind durch SkillPilot-Ziele abgedeckt",
+            "passed": false,
+            "details": "M3 noch nicht gestartet."
+          }
+        ]
+      }
+    ]
+  },
+  "passages": [
+    {
+      "id": "de-ni-powi-seki-wirtschaft:si-8-kommunalhaushalt",
+      "topicCode": "SI-8-KOMMUNALHAUSHALT",
+      "title": "Schuljahrgang 8: kommunale Haushaltspolitik",
+      "text": "(1) Rahmenbedingungen kommunaler Haushaltspolitik beschreiben.\n(2) Zu wirtschaftlichen Bedingungen und Möglichkeiten von Kommunen Stellung nehmen.",
+      "page": 14,
+      "sourcePath": "curricula/DE/Gymnasium/input/NI/lower-secondary/pw_gym_si_kc_druck.pdf",
+      "rawText": "Rahmenbedingungen kommunaler Haushaltspolitik beschreiben.\nZu wirtschaftlichen Bedingungen und Möglichkeiten von Kommunen Stellung nehmen.",
+      "sourceGoalIds": [
+        "de-ni-powi-seki-wirtschaft-si-8-kommunalhaushalt-g01-f2fb40b4",
+        "de-ni-powi-seki-wirtschaft-si-8-kommunalhaushalt-g02-fbf00fb9"
+      ]
+    },
+    {
+      "id": "de-ni-powi-seki-wirtschaft:si-8-konsum",
+      "topicCode": "SI-8-KONSUM",
+      "title": "Schuljahrgang 8: Konsumentscheidungen Jugendlicher",
+      "text": "(1) Einkommensquellen und Möglichkeiten der Einkommensverwendung beschreiben.\n(2) Einen einfachen Wirtschaftskreislauf erklären.\n(3) Einflussfaktoren auf das Konsumverhalten Jugendlicher beschreiben.\n(4) Marketingstrategien anhand von Werbung erklären.\n(5) Rechtliche Rahmenbedingungen für den Konsum Jugendlicher beschreiben.\n(6) Einen jugendspezifischen Fall mithilfe von Gesetzestexten rechtlich einordnen.\n(7) Konsumentscheidungen Jugendlicher kriterienorientiert auch im Hinblick auf soziale, ökonomische und ökologische Konsumrisiken überprüfen.\n(8) Funktionen von Märkten und Preisen beschreiben.\n(9) Die Preisbildung mithilfe des Marktmodells erläutern.\n(10) Wesentliche Ergebnisse von Marktprozessen überprüfen.",
+      "page": 14,
+      "sourcePath": "curricula/DE/Gymnasium/input/NI/lower-secondary/pw_gym_si_kc_druck.pdf",
+      "rawText": "Einkommensquellen und Möglichkeiten der Einkommensverwendung beschreiben.\nEinen einfachen Wirtschaftskreislauf erklären.\nEinflussfaktoren auf das Konsumverhalten Jugendlicher beschreiben.\nMarketingstrategien anhand von Werbung erklären.\nRechtliche Rahmenbedingungen für den Konsum Jugendlicher beschreiben.\nEinen jugendspezifischen Fall mithilfe von Gesetzestexten rechtlich einordnen.\nKonsumentscheidungen Jugendlicher kriterienorientiert auch im Hinblick auf soziale, ökonomische und ökologische Konsumrisiken überprüfen.\nFunktionen von Märkten und Preisen beschreiben.\nDie Preisbildung mithilfe des Marktmodells erläutern.\nWesentliche Ergebnisse von Marktprozessen überprüfen.",
+      "sourceGoalIds": [
+        "de-ni-powi-seki-wirtschaft-si-8-konsum-g01-61031671",
+        "de-ni-powi-seki-wirtschaft-si-8-konsum-g02-bcaa9a9a",
+        "de-ni-powi-seki-wirtschaft-si-8-konsum-g03-82e3b689",
+        "de-ni-powi-seki-wirtschaft-si-8-konsum-g04-38fd6566",
+        "de-ni-powi-seki-wirtschaft-si-8-konsum-g05-8f5ec02e",
+        "de-ni-powi-seki-wirtschaft-si-8-konsum-g06-275938d5",
+        "de-ni-powi-seki-wirtschaft-si-8-konsum-g07-ec62cec8",
+        "de-ni-powi-seki-wirtschaft-si-8-konsum-g08-38a35f96",
+        "de-ni-powi-seki-wirtschaft-si-8-konsum-g09-01e3c1c6",
+        "de-ni-powi-seki-wirtschaft-si-8-konsum-g10-dc5fb290"
+      ]
+    },
+    {
+      "id": "de-ni-powi-seki-wirtschaft:si-10-unternehmen-arbeit",
+      "topicCode": "SI-10-UNTERNEHMEN-ARBEIT",
+      "title": "Schuljahrgang 10: Unternehmen und Arbeitsbeziehungen",
+      "text": "(1) Die Bedeutung von Arbeit für das Individuum beschreiben.\n(2) Anforderungsprofile vor dem Hintergrund der Bedürfnisse von Arbeitnehmern analysieren.\n(3) Anforderungen der Arbeitswelt auch im Hinblick auf die eigene Berufs- und/oder Studienfachwahl erörtern.\n(4) Betriebliche Grundfunktionen und ökonomische, soziale sowie ökologische Ziele von Unternehmen vor dem Hintergrund staatlicher Regelungen beschreiben.\n(5) Zielsetzungen von Unternehmen am Beispiel eines Unternehmensleitbildes erläutern.\n(6) Zielsetzungen von Unternehmen vor dem Hintergrund unterschiedlicher Interessen erörtern.\n(7) Elemente der Regelung von Arbeitsbeziehungen einschließlich Arbeits- und Tarifrecht sowie Mitbestimmung beschreiben.\n(8) Interessen von Arbeitnehmern und Arbeitgebern anhand eines Konfliktes herausarbeiten.\n(9) Lösungsmöglichkeiten eines Konfliktes aus der Arbeitswelt erörtern.",
+      "page": 16,
+      "sourcePath": "curricula/DE/Gymnasium/input/NI/lower-secondary/pw_gym_si_kc_druck.pdf",
+      "rawText": "Die Bedeutung von Arbeit für das Individuum beschreiben.\nAnforderungsprofile vor dem Hintergrund der Bedürfnisse von Arbeitnehmern analysieren.\nAnforderungen der Arbeitswelt auch im Hinblick auf die eigene Berufs- und/oder Studienfachwahl erörtern.\nBetriebliche Grundfunktionen und ökonomische, soziale sowie ökologische Ziele von Unternehmen vor dem Hintergrund staatlicher Regelungen beschreiben.\nZielsetzungen von Unternehmen am Beispiel eines Unternehmensleitbildes erläutern.\nZielsetzungen von Unternehmen vor dem Hintergrund unterschiedlicher Interessen erörtern.\nElemente der Regelung von Arbeitsbeziehungen einschließlich Arbeits- und Tarifrecht sowie Mitbestimmung beschreiben.\nInteressen von Arbeitnehmern und Arbeitgebern anhand eines Konfliktes herausarbeiten.\nLösungsmöglichkeiten eines Konfliktes aus der Arbeitswelt erörtern.",
+      "sourceGoalIds": [
+        "de-ni-powi-seki-wirtschaft-si-10-unternehmen-arbeit-g01-b31da282",
+        "de-ni-powi-seki-wirtschaft-si-10-unternehmen-arbeit-g02-ddd9fdc6",
+        "de-ni-powi-seki-wirtschaft-si-10-unternehmen-arbeit-g03-4daa5312",
+        "de-ni-powi-seki-wirtschaft-si-10-unternehmen-arbeit-g04-85b8370d",
+        "de-ni-powi-seki-wirtschaft-si-10-unternehmen-arbeit-g05-2339c3f4",
+        "de-ni-powi-seki-wirtschaft-si-10-unternehmen-arbeit-g06-e1cf799a",
+        "de-ni-powi-seki-wirtschaft-si-10-unternehmen-arbeit-g07-2ab70106",
+        "de-ni-powi-seki-wirtschaft-si-10-unternehmen-arbeit-g08-77907a07",
+        "de-ni-powi-seki-wirtschaft-si-10-unternehmen-arbeit-g09-c6089bc3"
+      ]
+    },
+    {
+      "id": "de-ni-powi-seki-wirtschaft:si-10-soziale-marktwirtschaft",
+      "topicCode": "SI-10-SOZIALE-MARKTWIRTSCHAFT",
+      "title": "Schuljahrgang 10: Verfassungsprinzipien und Wirtschaftsordnung",
+      "text": "(1) Grundlegende Prinzipien der Sozialen Marktwirtschaft beschreiben.\n(2) Funktionen des Staates auch mithilfe des erweiterten Wirtschaftskreislaufs erklären.\n(3) Möglichkeiten und Grenzen staatlichen Handelns in der Sozialen Marktwirtschaft erörtern.",
+      "page": 16,
+      "sourcePath": "curricula/DE/Gymnasium/input/NI/lower-secondary/pw_gym_si_kc_druck.pdf",
+      "rawText": "Grundlegende Prinzipien der Sozialen Marktwirtschaft beschreiben.\nFunktionen des Staates auch mithilfe des erweiterten Wirtschaftskreislaufs erklären.\nMöglichkeiten und Grenzen staatlichen Handelns in der Sozialen Marktwirtschaft erörtern.",
+      "sourceGoalIds": [
+        "de-ni-powi-seki-wirtschaft-si-10-soziale-marktwirtschaft-g01-93bee08b",
+        "de-ni-powi-seki-wirtschaft-si-10-soziale-marktwirtschaft-g02-a0f307c4",
+        "de-ni-powi-seki-wirtschaft-si-10-soziale-marktwirtschaft-g03-7a06a38a"
+      ]
+    },
+    {
+      "id": "de-ni-powi-seki-wirtschaft:si-10-eu-wirtschaft",
+      "topicCode": "SI-10-EU-WIRTSCHAFT",
+      "title": "Schuljahrgang 10: Europäische Union wirtschaftlich betrachtet",
+      "text": "(1) Motive sowie politische und ökonomische Ausgestaltung der europäischen Integration beschreiben.\n(2) Szenarien für die zukünftige Entwicklung der Europäischen Union erläutern.\n(3) Zur Bedeutung der politischen und ökonomischen Integration Europas Stellung nehmen.\n(4) Die politische und ökonomische Rolle der EU im Kontext internationaler Beziehungen beschreiben.\n(5) Eine aktuelle internationale Problemstellung politisch und ökonomisch analysieren.\n(6) Handlungsmöglichkeiten der EU in Bezug auf eine aktuelle internationale Problemstellung erörtern.",
+      "page": 17,
+      "sourcePath": "curricula/DE/Gymnasium/input/NI/lower-secondary/pw_gym_si_kc_druck.pdf",
+      "rawText": "Motive sowie politische und ökonomische Ausgestaltung der europäischen Integration beschreiben.\nSzenarien für die zukünftige Entwicklung der Europäischen Union erläutern.\nZur Bedeutung der politischen und ökonomischen Integration Europas Stellung nehmen.\nDie politische und ökonomische Rolle der EU im Kontext internationaler Beziehungen beschreiben.\nEine aktuelle internationale Problemstellung politisch und ökonomisch analysieren.\nHandlungsmöglichkeiten der EU in Bezug auf eine aktuelle internationale Problemstellung erörtern.",
+      "sourceGoalIds": [
+        "de-ni-powi-seki-wirtschaft-si-10-eu-wirtschaft-g01-e43b021d",
+        "de-ni-powi-seki-wirtschaft-si-10-eu-wirtschaft-g02-eda3ef9b",
+        "de-ni-powi-seki-wirtschaft-si-10-eu-wirtschaft-g03-604175a5",
+        "de-ni-powi-seki-wirtschaft-si-10-eu-wirtschaft-g04-a338e227",
+        "de-ni-powi-seki-wirtschaft-si-10-eu-wirtschaft-g05-37015329",
+        "de-ni-powi-seki-wirtschaft-si-10-eu-wirtschaft-g06-316865c0"
+      ]
+    }
+  ],
+  "sourceGoals": [
+    {
+      "id": "de-ni-powi-seki-wirtschaft-si-8-kommunalhaushalt-g01-f2fb40b4",
+      "passageId": "de-ni-powi-seki-wirtschaft:si-8-kommunalhaushalt",
+      "topicCode": "SI-8-KOMMUNALHAUSHALT",
+      "bulletIndex": 1,
+      "aspectIndex": 1,
+      "title": "NI SI-8-KOMMUNALHAUSHALT (1): Rahmenbedingungen kommunaler Haushaltspolitik beschreiben.",
+      "description": "Source-Ziel aus Schuljahrgang 8: kommunale Haushaltspolitik: Rahmenbedingungen kommunaler Haushaltspolitik beschreiben.",
+      "sourceText": "Rahmenbedingungen kommunaler Haushaltspolitik beschreiben.",
+      "sourceSpan": "SI-8-KOMMUNALHAUSHALT (1)",
+      "parentBulletText": "Rahmenbedingungen kommunaler Haushaltspolitik beschreiben.",
+      "sourceRef": "Kerncurriculum Politik-Wirtschaft für das Gymnasium Schuljahrgänge 8-10 Niedersachsen 2015, Schuljahrgang 8: kommunale Haushaltspolitik, S. 14.",
+      "courseLevel": "SekI",
+      "granularity": "officialCompetency",
+      "tags": [
+        "jurisdiction:DE-NI",
+        "subject:Wirtschaft",
+        "stage:SekI",
+        "topic:SI-8-KOMMUNALHAUSHALT"
+      ],
+      "rawSourceText": "Rahmenbedingungen kommunaler Haushaltspolitik beschreiben.",
+      "rawSourceSpan": "SI-8-KOMMUNALHAUSHALT (1)",
+      "rawParentBulletText": "Rahmenbedingungen kommunaler Haushaltspolitik beschreiben."
+    },
+    {
+      "id": "de-ni-powi-seki-wirtschaft-si-8-kommunalhaushalt-g02-fbf00fb9",
+      "passageId": "de-ni-powi-seki-wirtschaft:si-8-kommunalhaushalt",
+      "topicCode": "SI-8-KOMMUNALHAUSHALT",
+      "bulletIndex": 2,
+      "aspectIndex": 1,
+      "title": "NI SI-8-KOMMUNALHAUSHALT (2): Zu wirtschaftlichen Bedingungen und Möglichkeiten von Kommunen Stellung nehmen.",
+      "description": "Source-Ziel aus Schuljahrgang 8: kommunale Haushaltspolitik: Zu wirtschaftlichen Bedingungen und Möglichkeiten von Kommunen Stellung nehmen.",
+      "sourceText": "Zu wirtschaftlichen Bedingungen und Möglichkeiten von Kommunen Stellung nehmen.",
+      "sourceSpan": "SI-8-KOMMUNALHAUSHALT (2)",
+      "parentBulletText": "Zu wirtschaftlichen Bedingungen und Möglichkeiten von Kommunen Stellung nehmen.",
+      "sourceRef": "Kerncurriculum Politik-Wirtschaft für das Gymnasium Schuljahrgänge 8-10 Niedersachsen 2015, Schuljahrgang 8: kommunale Haushaltspolitik, S. 14.",
+      "courseLevel": "SekI",
+      "granularity": "officialCompetency",
+      "tags": [
+        "jurisdiction:DE-NI",
+        "subject:Wirtschaft",
+        "stage:SekI",
+        "topic:SI-8-KOMMUNALHAUSHALT"
+      ],
+      "rawSourceText": "Zu wirtschaftlichen Bedingungen und Möglichkeiten von Kommunen Stellung nehmen.",
+      "rawSourceSpan": "SI-8-KOMMUNALHAUSHALT (2)",
+      "rawParentBulletText": "Zu wirtschaftlichen Bedingungen und Möglichkeiten von Kommunen Stellung nehmen."
+    },
+    {
+      "id": "de-ni-powi-seki-wirtschaft-si-8-konsum-g01-61031671",
+      "passageId": "de-ni-powi-seki-wirtschaft:si-8-konsum",
+      "topicCode": "SI-8-KONSUM",
+      "bulletIndex": 1,
+      "aspectIndex": 1,
+      "title": "NI SI-8-KONSUM (1): Einkommensquellen und Möglichkeiten der Einkommensverwendung beschreiben.",
+      "description": "Source-Ziel aus Schuljahrgang 8: Konsumentscheidungen Jugendlicher: Einkommensquellen und Möglichkeiten der Einkommensverwendung beschreiben.",
+      "sourceText": "Einkommensquellen und Möglichkeiten der Einkommensverwendung beschreiben.",
+      "sourceSpan": "SI-8-KONSUM (1)",
+      "parentBulletText": "Einkommensquellen und Möglichkeiten der Einkommensverwendung beschreiben.",
+      "sourceRef": "Kerncurriculum Politik-Wirtschaft für das Gymnasium Schuljahrgänge 8-10 Niedersachsen 2015, Schuljahrgang 8: Konsumentscheidungen Jugendlicher, S. 14.",
+      "courseLevel": "SekI",
+      "granularity": "officialCompetency",
+      "tags": [
+        "jurisdiction:DE-NI",
+        "subject:Wirtschaft",
+        "stage:SekI",
+        "topic:SI-8-KONSUM"
+      ],
+      "rawSourceText": "Einkommensquellen und Möglichkeiten der Einkommensverwendung beschreiben.",
+      "rawSourceSpan": "SI-8-KONSUM (1)",
+      "rawParentBulletText": "Einkommensquellen und Möglichkeiten der Einkommensverwendung beschreiben."
+    },
+    {
+      "id": "de-ni-powi-seki-wirtschaft-si-8-konsum-g02-bcaa9a9a",
+      "passageId": "de-ni-powi-seki-wirtschaft:si-8-konsum",
+      "topicCode": "SI-8-KONSUM",
+      "bulletIndex": 2,
+      "aspectIndex": 1,
+      "title": "NI SI-8-KONSUM (2): Einen einfachen Wirtschaftskreislauf erklären.",
+      "description": "Source-Ziel aus Schuljahrgang 8: Konsumentscheidungen Jugendlicher: Einen einfachen Wirtschaftskreislauf erklären.",
+      "sourceText": "Einen einfachen Wirtschaftskreislauf erklären.",
+      "sourceSpan": "SI-8-KONSUM (2)",
+      "parentBulletText": "Einen einfachen Wirtschaftskreislauf erklären.",
+      "sourceRef": "Kerncurriculum Politik-Wirtschaft für das Gymnasium Schuljahrgänge 8-10 Niedersachsen 2015, Schuljahrgang 8: Konsumentscheidungen Jugendlicher, S. 14.",
+      "courseLevel": "SekI",
+      "granularity": "officialCompetency",
+      "tags": [
+        "jurisdiction:DE-NI",
+        "subject:Wirtschaft",
+        "stage:SekI",
+        "topic:SI-8-KONSUM"
+      ],
+      "rawSourceText": "Einen einfachen Wirtschaftskreislauf erklären.",
+      "rawSourceSpan": "SI-8-KONSUM (2)",
+      "rawParentBulletText": "Einen einfachen Wirtschaftskreislauf erklären."
+    },
+    {
+      "id": "de-ni-powi-seki-wirtschaft-si-8-konsum-g03-82e3b689",
+      "passageId": "de-ni-powi-seki-wirtschaft:si-8-konsum",
+      "topicCode": "SI-8-KONSUM",
+      "bulletIndex": 3,
+      "aspectIndex": 1,
+      "title": "NI SI-8-KONSUM (3): Einflussfaktoren auf das Konsumverhalten Jugendlicher beschreiben.",
+      "description": "Source-Ziel aus Schuljahrgang 8: Konsumentscheidungen Jugendlicher: Einflussfaktoren auf das Konsumverhalten Jugendlicher beschreiben.",
+      "sourceText": "Einflussfaktoren auf das Konsumverhalten Jugendlicher beschreiben.",
+      "sourceSpan": "SI-8-KONSUM (3)",
+      "parentBulletText": "Einflussfaktoren auf das Konsumverhalten Jugendlicher beschreiben.",
+      "sourceRef": "Kerncurriculum Politik-Wirtschaft für das Gymnasium Schuljahrgänge 8-10 Niedersachsen 2015, Schuljahrgang 8: Konsumentscheidungen Jugendlicher, S. 14.",
+      "courseLevel": "SekI",
+      "granularity": "officialCompetency",
+      "tags": [
+        "jurisdiction:DE-NI",
+        "subject:Wirtschaft",
+        "stage:SekI",
+        "topic:SI-8-KONSUM"
+      ],
+      "rawSourceText": "Einflussfaktoren auf das Konsumverhalten Jugendlicher beschreiben.",
+      "rawSourceSpan": "SI-8-KONSUM (3)",
+      "rawParentBulletText": "Einflussfaktoren auf das Konsumverhalten Jugendlicher beschreiben."
+    },
+    {
+      "id": "de-ni-powi-seki-wirtschaft-si-8-konsum-g04-38fd6566",
+      "passageId": "de-ni-powi-seki-wirtschaft:si-8-konsum",
+      "topicCode": "SI-8-KONSUM",
+      "bulletIndex": 4,
+      "aspectIndex": 1,
+      "title": "NI SI-8-KONSUM (4): Marketingstrategien anhand von Werbung erklären.",
+      "description": "Source-Ziel aus Schuljahrgang 8: Konsumentscheidungen Jugendlicher: Marketingstrategien anhand von Werbung erklären.",
+      "sourceText": "Marketingstrategien anhand von Werbung erklären.",
+      "sourceSpan": "SI-8-KONSUM (4)",
+      "parentBulletText": "Marketingstrategien anhand von Werbung erklären.",
+      "sourceRef": "Kerncurriculum Politik-Wirtschaft für das Gymnasium Schuljahrgänge 8-10 Niedersachsen 2015, Schuljahrgang 8: Konsumentscheidungen Jugendlicher, S. 14.",
+      "courseLevel": "SekI",
+      "granularity": "officialCompetency",
+      "tags": [
+        "jurisdiction:DE-NI",
+        "subject:Wirtschaft",
+        "stage:SekI",
+        "topic:SI-8-KONSUM"
+      ],
+      "rawSourceText": "Marketingstrategien anhand von Werbung erklären.",
+      "rawSourceSpan": "SI-8-KONSUM (4)",
+      "rawParentBulletText": "Marketingstrategien anhand von Werbung erklären."
+    },
+    {
+      "id": "de-ni-powi-seki-wirtschaft-si-8-konsum-g05-8f5ec02e",
+      "passageId": "de-ni-powi-seki-wirtschaft:si-8-konsum",
+      "topicCode": "SI-8-KONSUM",
+      "bulletIndex": 5,
+      "aspectIndex": 1,
+      "title": "NI SI-8-KONSUM (5): Rechtliche Rahmenbedingungen für den Konsum Jugendlicher beschreiben.",
+      "description": "Source-Ziel aus Schuljahrgang 8: Konsumentscheidungen Jugendlicher: Rechtliche Rahmenbedingungen für den Konsum Jugendlicher beschreiben.",
+      "sourceText": "Rechtliche Rahmenbedingungen für den Konsum Jugendlicher beschreiben.",
+      "sourceSpan": "SI-8-KONSUM (5)",
+      "parentBulletText": "Rechtliche Rahmenbedingungen für den Konsum Jugendlicher beschreiben.",
+      "sourceRef": "Kerncurriculum Politik-Wirtschaft für das Gymnasium Schuljahrgänge 8-10 Niedersachsen 2015, Schuljahrgang 8: Konsumentscheidungen Jugendlicher, S. 14.",
+      "courseLevel": "SekI",
+      "granularity": "officialCompetency",
+      "tags": [
+        "jurisdiction:DE-NI",
+        "subject:Wirtschaft",
+        "stage:SekI",
+        "topic:SI-8-KONSUM"
+      ],
+      "rawSourceText": "Rechtliche Rahmenbedingungen für den Konsum Jugendlicher beschreiben.",
+      "rawSourceSpan": "SI-8-KONSUM (5)",
+      "rawParentBulletText": "Rechtliche Rahmenbedingungen für den Konsum Jugendlicher beschreiben."
+    },
+    {
+      "id": "de-ni-powi-seki-wirtschaft-si-8-konsum-g06-275938d5",
+      "passageId": "de-ni-powi-seki-wirtschaft:si-8-konsum",
+      "topicCode": "SI-8-KONSUM",
+      "bulletIndex": 6,
+      "aspectIndex": 1,
+      "title": "NI SI-8-KONSUM (6): Einen jugendspezifischen Fall mithilfe von Gesetzestexten rechtlich einordnen.",
+      "description": "Source-Ziel aus Schuljahrgang 8: Konsumentscheidungen Jugendlicher: Einen jugendspezifischen Fall mithilfe von Gesetzestexten rechtlich einordnen.",
+      "sourceText": "Einen jugendspezifischen Fall mithilfe von Gesetzestexten rechtlich einordnen.",
+      "sourceSpan": "SI-8-KONSUM (6)",
+      "parentBulletText": "Einen jugendspezifischen Fall mithilfe von Gesetzestexten rechtlich einordnen.",
+      "sourceRef": "Kerncurriculum Politik-Wirtschaft für das Gymnasium Schuljahrgänge 8-10 Niedersachsen 2015, Schuljahrgang 8: Konsumentscheidungen Jugendlicher, S. 14.",
+      "courseLevel": "SekI",
+      "granularity": "officialCompetency",
+      "tags": [
+        "jurisdiction:DE-NI",
+        "subject:Wirtschaft",
+        "stage:SekI",
+        "topic:SI-8-KONSUM"
+      ],
+      "rawSourceText": "Einen jugendspezifischen Fall mithilfe von Gesetzestexten rechtlich einordnen.",
+      "rawSourceSpan": "SI-8-KONSUM (6)",
+      "rawParentBulletText": "Einen jugendspezifischen Fall mithilfe von Gesetzestexten rechtlich einordnen."
+    },
+    {
+      "id": "de-ni-powi-seki-wirtschaft-si-8-konsum-g07-ec62cec8",
+      "passageId": "de-ni-powi-seki-wirtschaft:si-8-konsum",
+      "topicCode": "SI-8-KONSUM",
+      "bulletIndex": 7,
+      "aspectIndex": 1,
+      "title": "NI SI-8-KONSUM (7): Konsumentscheidungen Jugendlicher kriterienorientiert auch im Hinblick auf soziale, ökonomische und ökologische Konsumrisiken überprüfen.",
+      "description": "Source-Ziel aus Schuljahrgang 8: Konsumentscheidungen Jugendlicher: Konsumentscheidungen Jugendlicher kriterienorientiert auch im Hinblick auf soziale, ökonomische und ökologische Konsumrisiken überprüfen.",
+      "sourceText": "Konsumentscheidungen Jugendlicher kriterienorientiert auch im Hinblick auf soziale, ökonomische und ökologische Konsumrisiken überprüfen.",
+      "sourceSpan": "SI-8-KONSUM (7)",
+      "parentBulletText": "Konsumentscheidungen Jugendlicher kriterienorientiert auch im Hinblick auf soziale, ökonomische und ökologische Konsumrisiken überprüfen.",
+      "sourceRef": "Kerncurriculum Politik-Wirtschaft für das Gymnasium Schuljahrgänge 8-10 Niedersachsen 2015, Schuljahrgang 8: Konsumentscheidungen Jugendlicher, S. 14.",
+      "courseLevel": "SekI",
+      "granularity": "officialCompetency",
+      "tags": [
+        "jurisdiction:DE-NI",
+        "subject:Wirtschaft",
+        "stage:SekI",
+        "topic:SI-8-KONSUM"
+      ],
+      "rawSourceText": "Konsumentscheidungen Jugendlicher kriterienorientiert auch im Hinblick auf soziale, ökonomische und ökologische Konsumrisiken überprüfen.",
+      "rawSourceSpan": "SI-8-KONSUM (7)",
+      "rawParentBulletText": "Konsumentscheidungen Jugendlicher kriterienorientiert auch im Hinblick auf soziale, ökonomische und ökologische Konsumrisiken überprüfen."
+    },
+    {
+      "id": "de-ni-powi-seki-wirtschaft-si-8-konsum-g08-38a35f96",
+      "passageId": "de-ni-powi-seki-wirtschaft:si-8-konsum",
+      "topicCode": "SI-8-KONSUM",
+      "bulletIndex": 8,
+      "aspectIndex": 1,
+      "title": "NI SI-8-KONSUM (8): Funktionen von Märkten und Preisen beschreiben.",
+      "description": "Source-Ziel aus Schuljahrgang 8: Konsumentscheidungen Jugendlicher: Funktionen von Märkten und Preisen beschreiben.",
+      "sourceText": "Funktionen von Märkten und Preisen beschreiben.",
+      "sourceSpan": "SI-8-KONSUM (8)",
+      "parentBulletText": "Funktionen von Märkten und Preisen beschreiben.",
+      "sourceRef": "Kerncurriculum Politik-Wirtschaft für das Gymnasium Schuljahrgänge 8-10 Niedersachsen 2015, Schuljahrgang 8: Konsumentscheidungen Jugendlicher, S. 14.",
+      "courseLevel": "SekI",
+      "granularity": "officialCompetency",
+      "tags": [
+        "jurisdiction:DE-NI",
+        "subject:Wirtschaft",
+        "stage:SekI",
+        "topic:SI-8-KONSUM"
+      ],
+      "rawSourceText": "Funktionen von Märkten und Preisen beschreiben.",
+      "rawSourceSpan": "SI-8-KONSUM (8)",
+      "rawParentBulletText": "Funktionen von Märkten und Preisen beschreiben."
+    },
+    {
+      "id": "de-ni-powi-seki-wirtschaft-si-8-konsum-g09-01e3c1c6",
+      "passageId": "de-ni-powi-seki-wirtschaft:si-8-konsum",
+      "topicCode": "SI-8-KONSUM",
+      "bulletIndex": 9,
+      "aspectIndex": 1,
+      "title": "NI SI-8-KONSUM (9): Die Preisbildung mithilfe des Marktmodells erläutern.",
+      "description": "Source-Ziel aus Schuljahrgang 8: Konsumentscheidungen Jugendlicher: Die Preisbildung mithilfe des Marktmodells erläutern.",
+      "sourceText": "Die Preisbildung mithilfe des Marktmodells erläutern.",
+      "sourceSpan": "SI-8-KONSUM (9)",
+      "parentBulletText": "Die Preisbildung mithilfe des Marktmodells erläutern.",
+      "sourceRef": "Kerncurriculum Politik-Wirtschaft für das Gymnasium Schuljahrgänge 8-10 Niedersachsen 2015, Schuljahrgang 8: Konsumentscheidungen Jugendlicher, S. 14.",
+      "courseLevel": "SekI",
+      "granularity": "officialCompetency",
+      "tags": [
+        "jurisdiction:DE-NI",
+        "subject:Wirtschaft",
+        "stage:SekI",
+        "topic:SI-8-KONSUM"
+      ],
+      "rawSourceText": "Die Preisbildung mithilfe des Marktmodells erläutern.",
+      "rawSourceSpan": "SI-8-KONSUM (9)",
+      "rawParentBulletText": "Die Preisbildung mithilfe des Marktmodells erläutern."
+    },
+    {
+      "id": "de-ni-powi-seki-wirtschaft-si-8-konsum-g10-dc5fb290",
+      "passageId": "de-ni-powi-seki-wirtschaft:si-8-konsum",
+      "topicCode": "SI-8-KONSUM",
+      "bulletIndex": 10,
+      "aspectIndex": 1,
+      "title": "NI SI-8-KONSUM (10): Wesentliche Ergebnisse von Marktprozessen überprüfen.",
+      "description": "Source-Ziel aus Schuljahrgang 8: Konsumentscheidungen Jugendlicher: Wesentliche Ergebnisse von Marktprozessen überprüfen.",
+      "sourceText": "Wesentliche Ergebnisse von Marktprozessen überprüfen.",
+      "sourceSpan": "SI-8-KONSUM (10)",
+      "parentBulletText": "Wesentliche Ergebnisse von Marktprozessen überprüfen.",
+      "sourceRef": "Kerncurriculum Politik-Wirtschaft für das Gymnasium Schuljahrgänge 8-10 Niedersachsen 2015, Schuljahrgang 8: Konsumentscheidungen Jugendlicher, S. 14.",
+      "courseLevel": "SekI",
+      "granularity": "officialCompetency",
+      "tags": [
+        "jurisdiction:DE-NI",
+        "subject:Wirtschaft",
+        "stage:SekI",
+        "topic:SI-8-KONSUM"
+      ],
+      "rawSourceText": "Wesentliche Ergebnisse von Marktprozessen überprüfen.",
+      "rawSourceSpan": "SI-8-KONSUM (10)",
+      "rawParentBulletText": "Wesentliche Ergebnisse von Marktprozessen überprüfen."
+    },
+    {
+      "id": "de-ni-powi-seki-wirtschaft-si-10-unternehmen-arbeit-g01-b31da282",
+      "passageId": "de-ni-powi-seki-wirtschaft:si-10-unternehmen-arbeit",
+      "topicCode": "SI-10-UNTERNEHMEN-ARBEIT",
+      "bulletIndex": 1,
+      "aspectIndex": 1,
+      "title": "NI SI-10-UNTERNEHMEN-ARBEIT (1): Die Bedeutung von Arbeit für das Individuum beschreiben.",
+      "description": "Source-Ziel aus Schuljahrgang 10: Unternehmen und Arbeitsbeziehungen: Die Bedeutung von Arbeit für das Individuum beschreiben.",
+      "sourceText": "Die Bedeutung von Arbeit für das Individuum beschreiben.",
+      "sourceSpan": "SI-10-UNTERNEHMEN-ARBEIT (1)",
+      "parentBulletText": "Die Bedeutung von Arbeit für das Individuum beschreiben.",
+      "sourceRef": "Kerncurriculum Politik-Wirtschaft für das Gymnasium Schuljahrgänge 8-10 Niedersachsen 2015, Schuljahrgang 10: Unternehmen und Arbeitsbeziehungen, S. 16.",
+      "courseLevel": "SekI",
+      "granularity": "officialCompetency",
+      "tags": [
+        "jurisdiction:DE-NI",
+        "subject:Wirtschaft",
+        "stage:SekI",
+        "topic:SI-10-UNTERNEHMEN-ARBEIT"
+      ],
+      "rawSourceText": "Die Bedeutung von Arbeit für das Individuum beschreiben.",
+      "rawSourceSpan": "SI-10-UNTERNEHMEN-ARBEIT (1)",
+      "rawParentBulletText": "Die Bedeutung von Arbeit für das Individuum beschreiben."
+    },
+    {
+      "id": "de-ni-powi-seki-wirtschaft-si-10-unternehmen-arbeit-g02-ddd9fdc6",
+      "passageId": "de-ni-powi-seki-wirtschaft:si-10-unternehmen-arbeit",
+      "topicCode": "SI-10-UNTERNEHMEN-ARBEIT",
+      "bulletIndex": 2,
+      "aspectIndex": 1,
+      "title": "NI SI-10-UNTERNEHMEN-ARBEIT (2): Anforderungsprofile vor dem Hintergrund der Bedürfnisse von Arbeitnehmern analysieren.",
+      "description": "Source-Ziel aus Schuljahrgang 10: Unternehmen und Arbeitsbeziehungen: Anforderungsprofile vor dem Hintergrund der Bedürfnisse von Arbeitnehmern analysieren.",
+      "sourceText": "Anforderungsprofile vor dem Hintergrund der Bedürfnisse von Arbeitnehmern analysieren.",
+      "sourceSpan": "SI-10-UNTERNEHMEN-ARBEIT (2)",
+      "parentBulletText": "Anforderungsprofile vor dem Hintergrund der Bedürfnisse von Arbeitnehmern analysieren.",
+      "sourceRef": "Kerncurriculum Politik-Wirtschaft für das Gymnasium Schuljahrgänge 8-10 Niedersachsen 2015, Schuljahrgang 10: Unternehmen und Arbeitsbeziehungen, S. 16.",
+      "courseLevel": "SekI",
+      "granularity": "officialCompetency",
+      "tags": [
+        "jurisdiction:DE-NI",
+        "subject:Wirtschaft",
+        "stage:SekI",
+        "topic:SI-10-UNTERNEHMEN-ARBEIT"
+      ],
+      "rawSourceText": "Anforderungsprofile vor dem Hintergrund der Bedürfnisse von Arbeitnehmern analysieren.",
+      "rawSourceSpan": "SI-10-UNTERNEHMEN-ARBEIT (2)",
+      "rawParentBulletText": "Anforderungsprofile vor dem Hintergrund der Bedürfnisse von Arbeitnehmern analysieren."
+    },
+    {
+      "id": "de-ni-powi-seki-wirtschaft-si-10-unternehmen-arbeit-g03-4daa5312",
+      "passageId": "de-ni-powi-seki-wirtschaft:si-10-unternehmen-arbeit",
+      "topicCode": "SI-10-UNTERNEHMEN-ARBEIT",
+      "bulletIndex": 3,
+      "aspectIndex": 1,
+      "title": "NI SI-10-UNTERNEHMEN-ARBEIT (3): Anforderungen der Arbeitswelt auch im Hinblick auf die eigene Berufs- und/oder Studienfachwahl erörtern.",
+      "description": "Source-Ziel aus Schuljahrgang 10: Unternehmen und Arbeitsbeziehungen: Anforderungen der Arbeitswelt auch im Hinblick auf die eigene Berufs- und/oder Studienfachwahl erörtern.",
+      "sourceText": "Anforderungen der Arbeitswelt auch im Hinblick auf die eigene Berufs- und/oder Studienfachwahl erörtern.",
+      "sourceSpan": "SI-10-UNTERNEHMEN-ARBEIT (3)",
+      "parentBulletText": "Anforderungen der Arbeitswelt auch im Hinblick auf die eigene Berufs- und/oder Studienfachwahl erörtern.",
+      "sourceRef": "Kerncurriculum Politik-Wirtschaft für das Gymnasium Schuljahrgänge 8-10 Niedersachsen 2015, Schuljahrgang 10: Unternehmen und Arbeitsbeziehungen, S. 16.",
+      "courseLevel": "SekI",
+      "granularity": "officialCompetency",
+      "tags": [
+        "jurisdiction:DE-NI",
+        "subject:Wirtschaft",
+        "stage:SekI",
+        "topic:SI-10-UNTERNEHMEN-ARBEIT"
+      ],
+      "rawSourceText": "Anforderungen der Arbeitswelt auch im Hinblick auf die eigene Berufs- und/oder Studienfachwahl erörtern.",
+      "rawSourceSpan": "SI-10-UNTERNEHMEN-ARBEIT (3)",
+      "rawParentBulletText": "Anforderungen der Arbeitswelt auch im Hinblick auf die eigene Berufs- und/oder Studienfachwahl erörtern."
+    },
+    {
+      "id": "de-ni-powi-seki-wirtschaft-si-10-unternehmen-arbeit-g04-85b8370d",
+      "passageId": "de-ni-powi-seki-wirtschaft:si-10-unternehmen-arbeit",
+      "topicCode": "SI-10-UNTERNEHMEN-ARBEIT",
+      "bulletIndex": 4,
+      "aspectIndex": 1,
+      "title": "NI SI-10-UNTERNEHMEN-ARBEIT (4): Betriebliche Grundfunktionen und ökonomische, soziale sowie ökologische Ziele von Unternehmen vor dem Hintergrund staatlicher Regelungen beschreiben.",
+      "description": "Source-Ziel aus Schuljahrgang 10: Unternehmen und Arbeitsbeziehungen: Betriebliche Grundfunktionen und ökonomische, soziale sowie ökologische Ziele von Unternehmen vor dem Hintergrund staatlicher Regelungen beschreiben.",
+      "sourceText": "Betriebliche Grundfunktionen und ökonomische, soziale sowie ökologische Ziele von Unternehmen vor dem Hintergrund staatlicher Regelungen beschreiben.",
+      "sourceSpan": "SI-10-UNTERNEHMEN-ARBEIT (4)",
+      "parentBulletText": "Betriebliche Grundfunktionen und ökonomische, soziale sowie ökologische Ziele von Unternehmen vor dem Hintergrund staatlicher Regelungen beschreiben.",
+      "sourceRef": "Kerncurriculum Politik-Wirtschaft für das Gymnasium Schuljahrgänge 8-10 Niedersachsen 2015, Schuljahrgang 10: Unternehmen und Arbeitsbeziehungen, S. 16.",
+      "courseLevel": "SekI",
+      "granularity": "officialCompetency",
+      "tags": [
+        "jurisdiction:DE-NI",
+        "subject:Wirtschaft",
+        "stage:SekI",
+        "topic:SI-10-UNTERNEHMEN-ARBEIT"
+      ],
+      "rawSourceText": "Betriebliche Grundfunktionen und ökonomische, soziale sowie ökologische Ziele von Unternehmen vor dem Hintergrund staatlicher Regelungen beschreiben.",
+      "rawSourceSpan": "SI-10-UNTERNEHMEN-ARBEIT (4)",
+      "rawParentBulletText": "Betriebliche Grundfunktionen und ökonomische, soziale sowie ökologische Ziele von Unternehmen vor dem Hintergrund staatlicher Regelungen beschreiben."
+    },
+    {
+      "id": "de-ni-powi-seki-wirtschaft-si-10-unternehmen-arbeit-g05-2339c3f4",
+      "passageId": "de-ni-powi-seki-wirtschaft:si-10-unternehmen-arbeit",
+      "topicCode": "SI-10-UNTERNEHMEN-ARBEIT",
+      "bulletIndex": 5,
+      "aspectIndex": 1,
+      "title": "NI SI-10-UNTERNEHMEN-ARBEIT (5): Zielsetzungen von Unternehmen am Beispiel eines Unternehmensleitbildes erläutern.",
+      "description": "Source-Ziel aus Schuljahrgang 10: Unternehmen und Arbeitsbeziehungen: Zielsetzungen von Unternehmen am Beispiel eines Unternehmensleitbildes erläutern.",
+      "sourceText": "Zielsetzungen von Unternehmen am Beispiel eines Unternehmensleitbildes erläutern.",
+      "sourceSpan": "SI-10-UNTERNEHMEN-ARBEIT (5)",
+      "parentBulletText": "Zielsetzungen von Unternehmen am Beispiel eines Unternehmensleitbildes erläutern.",
+      "sourceRef": "Kerncurriculum Politik-Wirtschaft für das Gymnasium Schuljahrgänge 8-10 Niedersachsen 2015, Schuljahrgang 10: Unternehmen und Arbeitsbeziehungen, S. 16.",
+      "courseLevel": "SekI",
+      "granularity": "officialCompetency",
+      "tags": [
+        "jurisdiction:DE-NI",
+        "subject:Wirtschaft",
+        "stage:SekI",
+        "topic:SI-10-UNTERNEHMEN-ARBEIT"
+      ],
+      "rawSourceText": "Zielsetzungen von Unternehmen am Beispiel eines Unternehmensleitbildes erläutern.",
+      "rawSourceSpan": "SI-10-UNTERNEHMEN-ARBEIT (5)",
+      "rawParentBulletText": "Zielsetzungen von Unternehmen am Beispiel eines Unternehmensleitbildes erläutern."
+    },
+    {
+      "id": "de-ni-powi-seki-wirtschaft-si-10-unternehmen-arbeit-g06-e1cf799a",
+      "passageId": "de-ni-powi-seki-wirtschaft:si-10-unternehmen-arbeit",
+      "topicCode": "SI-10-UNTERNEHMEN-ARBEIT",
+      "bulletIndex": 6,
+      "aspectIndex": 1,
+      "title": "NI SI-10-UNTERNEHMEN-ARBEIT (6): Zielsetzungen von Unternehmen vor dem Hintergrund unterschiedlicher Interessen erörtern.",
+      "description": "Source-Ziel aus Schuljahrgang 10: Unternehmen und Arbeitsbeziehungen: Zielsetzungen von Unternehmen vor dem Hintergrund unterschiedlicher Interessen erörtern.",
+      "sourceText": "Zielsetzungen von Unternehmen vor dem Hintergrund unterschiedlicher Interessen erörtern.",
+      "sourceSpan": "SI-10-UNTERNEHMEN-ARBEIT (6)",
+      "parentBulletText": "Zielsetzungen von Unternehmen vor dem Hintergrund unterschiedlicher Interessen erörtern.",
+      "sourceRef": "Kerncurriculum Politik-Wirtschaft für das Gymnasium Schuljahrgänge 8-10 Niedersachsen 2015, Schuljahrgang 10: Unternehmen und Arbeitsbeziehungen, S. 16.",
+      "courseLevel": "SekI",
+      "granularity": "officialCompetency",
+      "tags": [
+        "jurisdiction:DE-NI",
+        "subject:Wirtschaft",
+        "stage:SekI",
+        "topic:SI-10-UNTERNEHMEN-ARBEIT"
+      ],
+      "rawSourceText": "Zielsetzungen von Unternehmen vor dem Hintergrund unterschiedlicher Interessen erörtern.",
+      "rawSourceSpan": "SI-10-UNTERNEHMEN-ARBEIT (6)",
+      "rawParentBulletText": "Zielsetzungen von Unternehmen vor dem Hintergrund unterschiedlicher Interessen erörtern."
+    },
+    {
+      "id": "de-ni-powi-seki-wirtschaft-si-10-unternehmen-arbeit-g07-2ab70106",
+      "passageId": "de-ni-powi-seki-wirtschaft:si-10-unternehmen-arbeit",
+      "topicCode": "SI-10-UNTERNEHMEN-ARBEIT",
+      "bulletIndex": 7,
+      "aspectIndex": 1,
+      "title": "NI SI-10-UNTERNEHMEN-ARBEIT (7): Elemente der Regelung von Arbeitsbeziehungen einschließlich Arbeits- und Tarifrecht sowie Mitbestimmung beschreiben.",
+      "description": "Source-Ziel aus Schuljahrgang 10: Unternehmen und Arbeitsbeziehungen: Elemente der Regelung von Arbeitsbeziehungen einschließlich Arbeits- und Tarifrecht sowie Mitbestimmung beschreiben.",
+      "sourceText": "Elemente der Regelung von Arbeitsbeziehungen einschließlich Arbeits- und Tarifrecht sowie Mitbestimmung beschreiben.",
+      "sourceSpan": "SI-10-UNTERNEHMEN-ARBEIT (7)",
+      "parentBulletText": "Elemente der Regelung von Arbeitsbeziehungen einschließlich Arbeits- und Tarifrecht sowie Mitbestimmung beschreiben.",
+      "sourceRef": "Kerncurriculum Politik-Wirtschaft für das Gymnasium Schuljahrgänge 8-10 Niedersachsen 2015, Schuljahrgang 10: Unternehmen und Arbeitsbeziehungen, S. 16.",
+      "courseLevel": "SekI",
+      "granularity": "officialCompetency",
+      "tags": [
+        "jurisdiction:DE-NI",
+        "subject:Wirtschaft",
+        "stage:SekI",
+        "topic:SI-10-UNTERNEHMEN-ARBEIT"
+      ],
+      "rawSourceText": "Elemente der Regelung von Arbeitsbeziehungen einschließlich Arbeits- und Tarifrecht sowie Mitbestimmung beschreiben.",
+      "rawSourceSpan": "SI-10-UNTERNEHMEN-ARBEIT (7)",
+      "rawParentBulletText": "Elemente der Regelung von Arbeitsbeziehungen einschließlich Arbeits- und Tarifrecht sowie Mitbestimmung beschreiben."
+    },
+    {
+      "id": "de-ni-powi-seki-wirtschaft-si-10-unternehmen-arbeit-g08-77907a07",
+      "passageId": "de-ni-powi-seki-wirtschaft:si-10-unternehmen-arbeit",
+      "topicCode": "SI-10-UNTERNEHMEN-ARBEIT",
+      "bulletIndex": 8,
+      "aspectIndex": 1,
+      "title": "NI SI-10-UNTERNEHMEN-ARBEIT (8): Interessen von Arbeitnehmern und Arbeitgebern anhand eines Konfliktes herausarbeiten.",
+      "description": "Source-Ziel aus Schuljahrgang 10: Unternehmen und Arbeitsbeziehungen: Interessen von Arbeitnehmern und Arbeitgebern anhand eines Konfliktes herausarbeiten.",
+      "sourceText": "Interessen von Arbeitnehmern und Arbeitgebern anhand eines Konfliktes herausarbeiten.",
+      "sourceSpan": "SI-10-UNTERNEHMEN-ARBEIT (8)",
+      "parentBulletText": "Interessen von Arbeitnehmern und Arbeitgebern anhand eines Konfliktes herausarbeiten.",
+      "sourceRef": "Kerncurriculum Politik-Wirtschaft für das Gymnasium Schuljahrgänge 8-10 Niedersachsen 2015, Schuljahrgang 10: Unternehmen und Arbeitsbeziehungen, S. 16.",
+      "courseLevel": "SekI",
+      "granularity": "officialCompetency",
+      "tags": [
+        "jurisdiction:DE-NI",
+        "subject:Wirtschaft",
+        "stage:SekI",
+        "topic:SI-10-UNTERNEHMEN-ARBEIT"
+      ],
+      "rawSourceText": "Interessen von Arbeitnehmern und Arbeitgebern anhand eines Konfliktes herausarbeiten.",
+      "rawSourceSpan": "SI-10-UNTERNEHMEN-ARBEIT (8)",
+      "rawParentBulletText": "Interessen von Arbeitnehmern und Arbeitgebern anhand eines Konfliktes herausarbeiten."
+    },
+    {
+      "id": "de-ni-powi-seki-wirtschaft-si-10-unternehmen-arbeit-g09-c6089bc3",
+      "passageId": "de-ni-powi-seki-wirtschaft:si-10-unternehmen-arbeit",
+      "topicCode": "SI-10-UNTERNEHMEN-ARBEIT",
+      "bulletIndex": 9,
+      "aspectIndex": 1,
+      "title": "NI SI-10-UNTERNEHMEN-ARBEIT (9): Lösungsmöglichkeiten eines Konfliktes aus der Arbeitswelt erörtern.",
+      "description": "Source-Ziel aus Schuljahrgang 10: Unternehmen und Arbeitsbeziehungen: Lösungsmöglichkeiten eines Konfliktes aus der Arbeitswelt erörtern.",
+      "sourceText": "Lösungsmöglichkeiten eines Konfliktes aus der Arbeitswelt erörtern.",
+      "sourceSpan": "SI-10-UNTERNEHMEN-ARBEIT (9)",
+      "parentBulletText": "Lösungsmöglichkeiten eines Konfliktes aus der Arbeitswelt erörtern.",
+      "sourceRef": "Kerncurriculum Politik-Wirtschaft für das Gymnasium Schuljahrgänge 8-10 Niedersachsen 2015, Schuljahrgang 10: Unternehmen und Arbeitsbeziehungen, S. 16.",
+      "courseLevel": "SekI",
+      "granularity": "officialCompetency",
+      "tags": [
+        "jurisdiction:DE-NI",
+        "subject:Wirtschaft",
+        "stage:SekI",
+        "topic:SI-10-UNTERNEHMEN-ARBEIT"
+      ],
+      "rawSourceText": "Lösungsmöglichkeiten eines Konfliktes aus der Arbeitswelt erörtern.",
+      "rawSourceSpan": "SI-10-UNTERNEHMEN-ARBEIT (9)",
+      "rawParentBulletText": "Lösungsmöglichkeiten eines Konfliktes aus der Arbeitswelt erörtern."
+    },
+    {
+      "id": "de-ni-powi-seki-wirtschaft-si-10-soziale-marktwirtschaft-g01-93bee08b",
+      "passageId": "de-ni-powi-seki-wirtschaft:si-10-soziale-marktwirtschaft",
+      "topicCode": "SI-10-SOZIALE-MARKTWIRTSCHAFT",
+      "bulletIndex": 1,
+      "aspectIndex": 1,
+      "title": "NI SI-10-SOZIALE-MARKTWIRTSCHAFT (1): Grundlegende Prinzipien der Sozialen Marktwirtschaft beschreiben.",
+      "description": "Source-Ziel aus Schuljahrgang 10: Verfassungsprinzipien und Wirtschaftsordnung: Grundlegende Prinzipien der Sozialen Marktwirtschaft beschreiben.",
+      "sourceText": "Grundlegende Prinzipien der Sozialen Marktwirtschaft beschreiben.",
+      "sourceSpan": "SI-10-SOZIALE-MARKTWIRTSCHAFT (1)",
+      "parentBulletText": "Grundlegende Prinzipien der Sozialen Marktwirtschaft beschreiben.",
+      "sourceRef": "Kerncurriculum Politik-Wirtschaft für das Gymnasium Schuljahrgänge 8-10 Niedersachsen 2015, Schuljahrgang 10: Verfassungsprinzipien und Wirtschaftsordnung, S. 16.",
+      "courseLevel": "SekI",
+      "granularity": "officialCompetency",
+      "tags": [
+        "jurisdiction:DE-NI",
+        "subject:Wirtschaft",
+        "stage:SekI",
+        "topic:SI-10-SOZIALE-MARKTWIRTSCHAFT"
+      ],
+      "rawSourceText": "Grundlegende Prinzipien der Sozialen Marktwirtschaft beschreiben.",
+      "rawSourceSpan": "SI-10-SOZIALE-MARKTWIRTSCHAFT (1)",
+      "rawParentBulletText": "Grundlegende Prinzipien der Sozialen Marktwirtschaft beschreiben."
+    },
+    {
+      "id": "de-ni-powi-seki-wirtschaft-si-10-soziale-marktwirtschaft-g02-a0f307c4",
+      "passageId": "de-ni-powi-seki-wirtschaft:si-10-soziale-marktwirtschaft",
+      "topicCode": "SI-10-SOZIALE-MARKTWIRTSCHAFT",
+      "bulletIndex": 2,
+      "aspectIndex": 1,
+      "title": "NI SI-10-SOZIALE-MARKTWIRTSCHAFT (2): Funktionen des Staates auch mithilfe des erweiterten Wirtschaftskreislaufs erklären.",
+      "description": "Source-Ziel aus Schuljahrgang 10: Verfassungsprinzipien und Wirtschaftsordnung: Funktionen des Staates auch mithilfe des erweiterten Wirtschaftskreislaufs erklären.",
+      "sourceText": "Funktionen des Staates auch mithilfe des erweiterten Wirtschaftskreislaufs erklären.",
+      "sourceSpan": "SI-10-SOZIALE-MARKTWIRTSCHAFT (2)",
+      "parentBulletText": "Funktionen des Staates auch mithilfe des erweiterten Wirtschaftskreislaufs erklären.",
+      "sourceRef": "Kerncurriculum Politik-Wirtschaft für das Gymnasium Schuljahrgänge 8-10 Niedersachsen 2015, Schuljahrgang 10: Verfassungsprinzipien und Wirtschaftsordnung, S. 16.",
+      "courseLevel": "SekI",
+      "granularity": "officialCompetency",
+      "tags": [
+        "jurisdiction:DE-NI",
+        "subject:Wirtschaft",
+        "stage:SekI",
+        "topic:SI-10-SOZIALE-MARKTWIRTSCHAFT"
+      ],
+      "rawSourceText": "Funktionen des Staates auch mithilfe des erweiterten Wirtschaftskreislaufs erklären.",
+      "rawSourceSpan": "SI-10-SOZIALE-MARKTWIRTSCHAFT (2)",
+      "rawParentBulletText": "Funktionen des Staates auch mithilfe des erweiterten Wirtschaftskreislaufs erklären."
+    },
+    {
+      "id": "de-ni-powi-seki-wirtschaft-si-10-soziale-marktwirtschaft-g03-7a06a38a",
+      "passageId": "de-ni-powi-seki-wirtschaft:si-10-soziale-marktwirtschaft",
+      "topicCode": "SI-10-SOZIALE-MARKTWIRTSCHAFT",
+      "bulletIndex": 3,
+      "aspectIndex": 1,
+      "title": "NI SI-10-SOZIALE-MARKTWIRTSCHAFT (3): Möglichkeiten und Grenzen staatlichen Handelns in der Sozialen Marktwirtschaft erörtern.",
+      "description": "Source-Ziel aus Schuljahrgang 10: Verfassungsprinzipien und Wirtschaftsordnung: Möglichkeiten und Grenzen staatlichen Handelns in der Sozialen Marktwirtschaft erörtern.",
+      "sourceText": "Möglichkeiten und Grenzen staatlichen Handelns in der Sozialen Marktwirtschaft erörtern.",
+      "sourceSpan": "SI-10-SOZIALE-MARKTWIRTSCHAFT (3)",
+      "parentBulletText": "Möglichkeiten und Grenzen staatlichen Handelns in der Sozialen Marktwirtschaft erörtern.",
+      "sourceRef": "Kerncurriculum Politik-Wirtschaft für das Gymnasium Schuljahrgänge 8-10 Niedersachsen 2015, Schuljahrgang 10: Verfassungsprinzipien und Wirtschaftsordnung, S. 16.",
+      "courseLevel": "SekI",
+      "granularity": "officialCompetency",
+      "tags": [
+        "jurisdiction:DE-NI",
+        "subject:Wirtschaft",
+        "stage:SekI",
+        "topic:SI-10-SOZIALE-MARKTWIRTSCHAFT"
+      ],
+      "rawSourceText": "Möglichkeiten und Grenzen staatlichen Handelns in der Sozialen Marktwirtschaft erörtern.",
+      "rawSourceSpan": "SI-10-SOZIALE-MARKTWIRTSCHAFT (3)",
+      "rawParentBulletText": "Möglichkeiten und Grenzen staatlichen Handelns in der Sozialen Marktwirtschaft erörtern."
+    },
+    {
+      "id": "de-ni-powi-seki-wirtschaft-si-10-eu-wirtschaft-g01-e43b021d",
+      "passageId": "de-ni-powi-seki-wirtschaft:si-10-eu-wirtschaft",
+      "topicCode": "SI-10-EU-WIRTSCHAFT",
+      "bulletIndex": 1,
+      "aspectIndex": 1,
+      "title": "NI SI-10-EU-WIRTSCHAFT (1): Motive sowie politische und ökonomische Ausgestaltung der europäischen Integration beschreiben.",
+      "description": "Source-Ziel aus Schuljahrgang 10: Europäische Union wirtschaftlich betrachtet: Motive sowie politische und ökonomische Ausgestaltung der europäischen Integration beschreiben.",
+      "sourceText": "Motive sowie politische und ökonomische Ausgestaltung der europäischen Integration beschreiben.",
+      "sourceSpan": "SI-10-EU-WIRTSCHAFT (1)",
+      "parentBulletText": "Motive sowie politische und ökonomische Ausgestaltung der europäischen Integration beschreiben.",
+      "sourceRef": "Kerncurriculum Politik-Wirtschaft für das Gymnasium Schuljahrgänge 8-10 Niedersachsen 2015, Schuljahrgang 10: Europäische Union wirtschaftlich betrachtet, S. 17.",
+      "courseLevel": "SekI",
+      "granularity": "officialCompetency",
+      "tags": [
+        "jurisdiction:DE-NI",
+        "subject:Wirtschaft",
+        "stage:SekI",
+        "topic:SI-10-EU-WIRTSCHAFT"
+      ],
+      "rawSourceText": "Motive sowie politische und ökonomische Ausgestaltung der europäischen Integration beschreiben.",
+      "rawSourceSpan": "SI-10-EU-WIRTSCHAFT (1)",
+      "rawParentBulletText": "Motive sowie politische und ökonomische Ausgestaltung der europäischen Integration beschreiben."
+    },
+    {
+      "id": "de-ni-powi-seki-wirtschaft-si-10-eu-wirtschaft-g02-eda3ef9b",
+      "passageId": "de-ni-powi-seki-wirtschaft:si-10-eu-wirtschaft",
+      "topicCode": "SI-10-EU-WIRTSCHAFT",
+      "bulletIndex": 2,
+      "aspectIndex": 1,
+      "title": "NI SI-10-EU-WIRTSCHAFT (2): Szenarien für die zukünftige Entwicklung der Europäischen Union erläutern.",
+      "description": "Source-Ziel aus Schuljahrgang 10: Europäische Union wirtschaftlich betrachtet: Szenarien für die zukünftige Entwicklung der Europäischen Union erläutern.",
+      "sourceText": "Szenarien für die zukünftige Entwicklung der Europäischen Union erläutern.",
+      "sourceSpan": "SI-10-EU-WIRTSCHAFT (2)",
+      "parentBulletText": "Szenarien für die zukünftige Entwicklung der Europäischen Union erläutern.",
+      "sourceRef": "Kerncurriculum Politik-Wirtschaft für das Gymnasium Schuljahrgänge 8-10 Niedersachsen 2015, Schuljahrgang 10: Europäische Union wirtschaftlich betrachtet, S. 17.",
+      "courseLevel": "SekI",
+      "granularity": "officialCompetency",
+      "tags": [
+        "jurisdiction:DE-NI",
+        "subject:Wirtschaft",
+        "stage:SekI",
+        "topic:SI-10-EU-WIRTSCHAFT"
+      ],
+      "rawSourceText": "Szenarien für die zukünftige Entwicklung der Europäischen Union erläutern.",
+      "rawSourceSpan": "SI-10-EU-WIRTSCHAFT (2)",
+      "rawParentBulletText": "Szenarien für die zukünftige Entwicklung der Europäischen Union erläutern."
+    },
+    {
+      "id": "de-ni-powi-seki-wirtschaft-si-10-eu-wirtschaft-g03-604175a5",
+      "passageId": "de-ni-powi-seki-wirtschaft:si-10-eu-wirtschaft",
+      "topicCode": "SI-10-EU-WIRTSCHAFT",
+      "bulletIndex": 3,
+      "aspectIndex": 1,
+      "title": "NI SI-10-EU-WIRTSCHAFT (3): Zur Bedeutung der politischen und ökonomischen Integration Europas Stellung nehmen.",
+      "description": "Source-Ziel aus Schuljahrgang 10: Europäische Union wirtschaftlich betrachtet: Zur Bedeutung der politischen und ökonomischen Integration Europas Stellung nehmen.",
+      "sourceText": "Zur Bedeutung der politischen und ökonomischen Integration Europas Stellung nehmen.",
+      "sourceSpan": "SI-10-EU-WIRTSCHAFT (3)",
+      "parentBulletText": "Zur Bedeutung der politischen und ökonomischen Integration Europas Stellung nehmen.",
+      "sourceRef": "Kerncurriculum Politik-Wirtschaft für das Gymnasium Schuljahrgänge 8-10 Niedersachsen 2015, Schuljahrgang 10: Europäische Union wirtschaftlich betrachtet, S. 17.",
+      "courseLevel": "SekI",
+      "granularity": "officialCompetency",
+      "tags": [
+        "jurisdiction:DE-NI",
+        "subject:Wirtschaft",
+        "stage:SekI",
+        "topic:SI-10-EU-WIRTSCHAFT"
+      ],
+      "rawSourceText": "Zur Bedeutung der politischen und ökonomischen Integration Europas Stellung nehmen.",
+      "rawSourceSpan": "SI-10-EU-WIRTSCHAFT (3)",
+      "rawParentBulletText": "Zur Bedeutung der politischen und ökonomischen Integration Europas Stellung nehmen."
+    },
+    {
+      "id": "de-ni-powi-seki-wirtschaft-si-10-eu-wirtschaft-g04-a338e227",
+      "passageId": "de-ni-powi-seki-wirtschaft:si-10-eu-wirtschaft",
+      "topicCode": "SI-10-EU-WIRTSCHAFT",
+      "bulletIndex": 4,
+      "aspectIndex": 1,
+      "title": "NI SI-10-EU-WIRTSCHAFT (4): Die politische und ökonomische Rolle der EU im Kontext internationaler Beziehungen beschreiben.",
+      "description": "Source-Ziel aus Schuljahrgang 10: Europäische Union wirtschaftlich betrachtet: Die politische und ökonomische Rolle der EU im Kontext internationaler Beziehungen beschreiben.",
+      "sourceText": "Die politische und ökonomische Rolle der EU im Kontext internationaler Beziehungen beschreiben.",
+      "sourceSpan": "SI-10-EU-WIRTSCHAFT (4)",
+      "parentBulletText": "Die politische und ökonomische Rolle der EU im Kontext internationaler Beziehungen beschreiben.",
+      "sourceRef": "Kerncurriculum Politik-Wirtschaft für das Gymnasium Schuljahrgänge 8-10 Niedersachsen 2015, Schuljahrgang 10: Europäische Union wirtschaftlich betrachtet, S. 17.",
+      "courseLevel": "SekI",
+      "granularity": "officialCompetency",
+      "tags": [
+        "jurisdiction:DE-NI",
+        "subject:Wirtschaft",
+        "stage:SekI",
+        "topic:SI-10-EU-WIRTSCHAFT"
+      ],
+      "rawSourceText": "Die politische und ökonomische Rolle der EU im Kontext internationaler Beziehungen beschreiben.",
+      "rawSourceSpan": "SI-10-EU-WIRTSCHAFT (4)",
+      "rawParentBulletText": "Die politische und ökonomische Rolle der EU im Kontext internationaler Beziehungen beschreiben."
+    },
+    {
+      "id": "de-ni-powi-seki-wirtschaft-si-10-eu-wirtschaft-g05-37015329",
+      "passageId": "de-ni-powi-seki-wirtschaft:si-10-eu-wirtschaft",
+      "topicCode": "SI-10-EU-WIRTSCHAFT",
+      "bulletIndex": 5,
+      "aspectIndex": 1,
+      "title": "NI SI-10-EU-WIRTSCHAFT (5): Eine aktuelle internationale Problemstellung politisch und ökonomisch analysieren.",
+      "description": "Source-Ziel aus Schuljahrgang 10: Europäische Union wirtschaftlich betrachtet: Eine aktuelle internationale Problemstellung politisch und ökonomisch analysieren.",
+      "sourceText": "Eine aktuelle internationale Problemstellung politisch und ökonomisch analysieren.",
+      "sourceSpan": "SI-10-EU-WIRTSCHAFT (5)",
+      "parentBulletText": "Eine aktuelle internationale Problemstellung politisch und ökonomisch analysieren.",
+      "sourceRef": "Kerncurriculum Politik-Wirtschaft für das Gymnasium Schuljahrgänge 8-10 Niedersachsen 2015, Schuljahrgang 10: Europäische Union wirtschaftlich betrachtet, S. 17.",
+      "courseLevel": "SekI",
+      "granularity": "officialCompetency",
+      "tags": [
+        "jurisdiction:DE-NI",
+        "subject:Wirtschaft",
+        "stage:SekI",
+        "topic:SI-10-EU-WIRTSCHAFT"
+      ],
+      "rawSourceText": "Eine aktuelle internationale Problemstellung politisch und ökonomisch analysieren.",
+      "rawSourceSpan": "SI-10-EU-WIRTSCHAFT (5)",
+      "rawParentBulletText": "Eine aktuelle internationale Problemstellung politisch und ökonomisch analysieren."
+    },
+    {
+      "id": "de-ni-powi-seki-wirtschaft-si-10-eu-wirtschaft-g06-316865c0",
+      "passageId": "de-ni-powi-seki-wirtschaft:si-10-eu-wirtschaft",
+      "topicCode": "SI-10-EU-WIRTSCHAFT",
+      "bulletIndex": 6,
+      "aspectIndex": 1,
+      "title": "NI SI-10-EU-WIRTSCHAFT (6): Handlungsmöglichkeiten der EU in Bezug auf eine aktuelle internationale Problemstellung erörtern.",
+      "description": "Source-Ziel aus Schuljahrgang 10: Europäische Union wirtschaftlich betrachtet: Handlungsmöglichkeiten der EU in Bezug auf eine aktuelle internationale Problemstellung erörtern.",
+      "sourceText": "Handlungsmöglichkeiten der EU in Bezug auf eine aktuelle internationale Problemstellung erörtern.",
+      "sourceSpan": "SI-10-EU-WIRTSCHAFT (6)",
+      "parentBulletText": "Handlungsmöglichkeiten der EU in Bezug auf eine aktuelle internationale Problemstellung erörtern.",
+      "sourceRef": "Kerncurriculum Politik-Wirtschaft für das Gymnasium Schuljahrgänge 8-10 Niedersachsen 2015, Schuljahrgang 10: Europäische Union wirtschaftlich betrachtet, S. 17.",
+      "courseLevel": "SekI",
+      "granularity": "officialCompetency",
+      "tags": [
+        "jurisdiction:DE-NI",
+        "subject:Wirtschaft",
+        "stage:SekI",
+        "topic:SI-10-EU-WIRTSCHAFT"
+      ],
+      "rawSourceText": "Handlungsmöglichkeiten der EU in Bezug auf eine aktuelle internationale Problemstellung erörtern.",
+      "rawSourceSpan": "SI-10-EU-WIRTSCHAFT (6)",
+      "rawParentBulletText": "Handlungsmöglichkeiten der EU in Bezug auf eine aktuelle internationale Problemstellung erörtern."
+    }
+  ]
+}

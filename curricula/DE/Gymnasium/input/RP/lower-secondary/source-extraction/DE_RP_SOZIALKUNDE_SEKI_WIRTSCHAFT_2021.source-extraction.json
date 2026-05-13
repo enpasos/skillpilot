@@ -1,0 +1,501 @@
+{
+  "schemaVersion": 1,
+  "extractionId": "DE-RP-SOZIALKUNDE-SEKI-WIRTSCHAFT",
+  "sourceLandscapeId": "9c48c1bd-c476-5288-838a-058fb677cd52",
+  "targetLandscapeId": "605bdaf6-32d5-56fd-8d92-5a80c2fd2901",
+  "jurisdiction": "DE-RP",
+  "subject": "Wirtschaft",
+  "stage": "SekI",
+  "title": "Sozialkunde Sekundarstufe I - Wirtschaft (Rheinland-Pfalz, Lehrplan 2021 Source-Extraction)",
+  "sourceDocument": {
+    "key": "RP-SOZIALKUNDE-SEK-I-2021",
+    "title": "Lehrplan gesellschaftswissenschaftliche Faecher Sekundarstufe I Rheinland-Pfalz, Fachlehrplan Sozialkunde",
+    "path": "curricula/DE/Gymnasium/input/RP/Ek_G_Sk_Sek_I_LP_2021.pdf",
+    "url": "https://bildung.rlp.de/fileadmin/user_upload/demokratie.bildung.rlp.de/Downloads/Ek_G_Sk_Sek_I__LP_2021_.pdf",
+    "official": true
+  },
+  "method": {
+    "passageExtraction": "pdftotext -layout; wirtschaftlich relevante Sozialkunde-Lernfelder und Pflicht-/Wahlpflichtinhalte aus amtlichen RP-Lehrplaenen selektiert",
+    "sourceGoalExtraction": "one normalized source goal per official content item, competence statement, or tightly coupled Fachbegriff cluster",
+    "scopeNote": "Rheinland-Pfalz fuehrt Wirtschaft in der Sek I im Fach Sozialkunde; nur das wirtschaftsbezogene Lernfeld II.1 und seine Erweiterungen werden in den Wirtschaftskanon geroutet."
+  },
+  "qualityReview": {
+    "sourceGoalCountPeerBaseline": {
+      "accepted": true,
+      "details": "RP Sek I buendelt Wirtschaft in einem kompakten Sozialkunde-Lernfeld II.1 plus Erweiterungen. Die Zielzahl ist niedriger als bei eigenstaendigen Wirtschaftsfaechern, aber alle wirtschaftlichen Pflicht- und Erweiterungsinhalte sind extrahiert."
+    }
+  },
+  "expectedTopicCodes": [
+    "SEKI-II1-WIRTSCHAFT-BASIS",
+    "SEKI-II1-WIRTSCHAFT-ERWEITERUNG"
+  ],
+  "pipelineStatus": {
+    "currentStep": "MAPPING-3",
+    "steps": [
+      {
+        "id": "ORIGINALQUELLEN",
+        "label": "Originalquellen bereitgestellt",
+        "status": "complete",
+        "dependsOn": [],
+        "checks": [
+          {
+            "id": "source-document-present",
+            "label": "Amtlicher RP-Sozialkunde-Lehrplan liegt lokal vor",
+            "passed": true,
+            "details": "curricula/DE/Gymnasium/input/RP/Ek_G_Sk_Sek_I_LP_2021.pdf"
+          }
+        ]
+      },
+      {
+        "id": "MAPPING-1",
+        "label": "Original-Lehrplanpassagen extrahiert",
+        "status": "complete",
+        "dependsOn": [
+          "ORIGINALQUELLEN"
+        ],
+        "checks": [
+          {
+            "id": "passages-extracted",
+            "label": "Wirtschaftliche RP-Lernfelder wurden als Passagen erfasst",
+            "passed": true,
+            "details": "2 Passagen."
+          }
+        ]
+      },
+      {
+        "id": "MAPPING-2",
+        "label": "Source-Ziele aus Lehrplanpassagen erstellt",
+        "status": "complete",
+        "dependsOn": [
+          "MAPPING-1"
+        ],
+        "checks": [
+          {
+            "id": "source-goals-created",
+            "label": "Aus den RP-Passagen wurden Source-Ziele erzeugt",
+            "passed": true,
+            "details": "15 Source-Ziele."
+          }
+        ]
+      },
+      {
+        "id": "MAPPING-3",
+        "label": "Source-Ziele auf SkillPilot-Ziele gemappt",
+        "status": "complete",
+        "dependsOn": [
+          "MAPPING-1",
+          "MAPPING-2"
+        ],
+        "checks": [
+          {
+            "id": "m3-review-file-present",
+            "label": "M3-Review-Datei ist vorhanden",
+            "passed": true,
+            "details": "curricula/DE/Gymnasium/mapping/DE-RP/lower-secondary/rp_sozialkunde_lower_secondary_economics_source_extraction_to_canonical_wirtschaft.review.json"
+          }
+        ]
+      }
+    ]
+  },
+  "passages": [
+    {
+      "id": "de-rp-sozialkunde-seki-wirtschaft:seki-ii1-wirtschaft-basis",
+      "topicCode": "SEKI-II1-WIRTSCHAFT-BASIS",
+      "title": "II.1 Wirtschaft - Basis",
+      "text": "(1) Jugendliche als Konsumenten auf globalen Maerkten analysieren.\n(2) Konsequenzen von Kaufentscheidungen wie Schuldenfalle, Kinderarbeit, fairer Handel und Nachhaltigkeit beurteilen.\n(3) Preisbildung, Markt, Wettbewerb, Wirtschaftskreislauf und weltweite Vernetzung erklaeren.\n(4) Arbeitswelt im Wandel durch Digitalisierung, Kuenstliche Intelligenz und lebenslanges Lernen beurteilen.\n(5) Ziele des Wirtschaftens wie Wachstum, Wohlstand, Geldwertstabilitaet, soziale Gerechtigkeit, oekologische Vertraeglichkeit und SDGs abwaegen.\n(6) Rolle und Instrumente des Staates in einer sozialen und oekologischen Marktwirtschaft beurteilen.\n(7) Preisbildung und Lieferketten an einem Produkt aus der eigenen Lebenswelt analysieren.\n(8) Marktwirtschaft und wirtschaftspolitisches Handeln hinsichtlich Freiheit, Gerechtigkeit und oekologischer Vertraeglichkeit bewerten.\n(9) Eigenes Konsumverhalten im Spannungsverhaeltnis oekonomischer und oekologisch-nachhaltiger Ziele reflektieren.",
+      "page": 158,
+      "sourcePath": "curricula/DE/Gymnasium/input/RP/Ek_G_Sk_Sek_I_LP_2021.pdf",
+      "rawText": "Jugendliche als Konsumenten auf globalen Maerkten analysieren.\nKonsequenzen von Kaufentscheidungen wie Schuldenfalle, Kinderarbeit, fairer Handel und Nachhaltigkeit beurteilen.\nPreisbildung, Markt, Wettbewerb, Wirtschaftskreislauf und weltweite Vernetzung erklaeren.\nArbeitswelt im Wandel durch Digitalisierung, Kuenstliche Intelligenz und lebenslanges Lernen beurteilen.\nZiele des Wirtschaftens wie Wachstum, Wohlstand, Geldwertstabilitaet, soziale Gerechtigkeit, oekologische Vertraeglichkeit und SDGs abwaegen.\nRolle und Instrumente des Staates in einer sozialen und oekologischen Marktwirtschaft beurteilen.\nPreisbildung und Lieferketten an einem Produkt aus der eigenen Lebenswelt analysieren.\nMarktwirtschaft und wirtschaftspolitisches Handeln hinsichtlich Freiheit, Gerechtigkeit und oekologischer Vertraeglichkeit bewerten.\nEigenes Konsumverhalten im Spannungsverhaeltnis oekonomischer und oekologisch-nachhaltiger Ziele reflektieren.",
+      "sourceGoalIds": [
+        "de-rp-sozialkunde-seki-wirtschaft-seki-ii1-wirtschaft-basis-g01-04e98d55",
+        "de-rp-sozialkunde-seki-wirtschaft-seki-ii1-wirtschaft-basis-g02-6cc08f35",
+        "de-rp-sozialkunde-seki-wirtschaft-seki-ii1-wirtschaft-basis-g03-c525243b",
+        "de-rp-sozialkunde-seki-wirtschaft-seki-ii1-wirtschaft-basis-g04-172d323f",
+        "de-rp-sozialkunde-seki-wirtschaft-seki-ii1-wirtschaft-basis-g05-c22c7414",
+        "de-rp-sozialkunde-seki-wirtschaft-seki-ii1-wirtschaft-basis-g06-a1a23216",
+        "de-rp-sozialkunde-seki-wirtschaft-seki-ii1-wirtschaft-basis-g07-a85e113b",
+        "de-rp-sozialkunde-seki-wirtschaft-seki-ii1-wirtschaft-basis-g08-55e875b4",
+        "de-rp-sozialkunde-seki-wirtschaft-seki-ii1-wirtschaft-basis-g09-aafc8fab"
+      ]
+    },
+    {
+      "id": "de-rp-sozialkunde-seki-wirtschaft:seki-ii1-wirtschaft-erweiterung",
+      "topicCode": "SEKI-II1-WIRTSCHAFT-ERWEITERUNG",
+      "title": "II.1 Wirtschaft - Erweiterung und Vertiefung",
+      "text": "(1) Aushandeln von Loehnen und Gehaeltern mit Tarifautonomie und Tarifkonflikt einordnen.\n(2) Ein Fallbeispiel zum Verbraucherschutz rechtlich und oekonomisch analysieren.\n(3) Erfolgreiche Jungunternehmerinnen und Jungunternehmer am Standort untersuchen.\n(4) Zukunftsfaehige Handlungsalternativen wie fairer Handel und Sharing Economy bewerten.\n(5) Verbraucherzentrale, lokale Nachhaltigkeitsprojekte und Schuelerfirmen als wirtschaftliche Praxisorte auswerten.\n(6) Grundbegriffe Oekonomie, Angebot, Nachfrage, Wettbewerb, Sozialstaat, Tarifpartner, Globalisierung und Nachhaltigkeit fachsprachlich verwenden.",
+      "page": 158,
+      "sourcePath": "curricula/DE/Gymnasium/input/RP/Ek_G_Sk_Sek_I_LP_2021.pdf",
+      "rawText": "Aushandeln von Loehnen und Gehaeltern mit Tarifautonomie und Tarifkonflikt einordnen.\nEin Fallbeispiel zum Verbraucherschutz rechtlich und oekonomisch analysieren.\nErfolgreiche Jungunternehmerinnen und Jungunternehmer am Standort untersuchen.\nZukunftsfaehige Handlungsalternativen wie fairer Handel und Sharing Economy bewerten.\nVerbraucherzentrale, lokale Nachhaltigkeitsprojekte und Schuelerfirmen als wirtschaftliche Praxisorte auswerten.\nGrundbegriffe Oekonomie, Angebot, Nachfrage, Wettbewerb, Sozialstaat, Tarifpartner, Globalisierung und Nachhaltigkeit fachsprachlich verwenden.",
+      "sourceGoalIds": [
+        "de-rp-sozialkunde-seki-wirtschaft-seki-ii1-wirtschaft-erweiterung-g01-eb9a632a",
+        "de-rp-sozialkunde-seki-wirtschaft-seki-ii1-wirtschaft-erweiterung-g02-0ea6d4ba",
+        "de-rp-sozialkunde-seki-wirtschaft-seki-ii1-wirtschaft-erweiterung-g03-aaec085e",
+        "de-rp-sozialkunde-seki-wirtschaft-seki-ii1-wirtschaft-erweiterung-g04-f2ae2c7c",
+        "de-rp-sozialkunde-seki-wirtschaft-seki-ii1-wirtschaft-erweiterung-g05-1d9916bd",
+        "de-rp-sozialkunde-seki-wirtschaft-seki-ii1-wirtschaft-erweiterung-g06-fc9adc62"
+      ]
+    }
+  ],
+  "sourceGoals": [
+    {
+      "id": "de-rp-sozialkunde-seki-wirtschaft-seki-ii1-wirtschaft-basis-g01-04e98d55",
+      "passageId": "de-rp-sozialkunde-seki-wirtschaft:seki-ii1-wirtschaft-basis",
+      "topicCode": "SEKI-II1-WIRTSCHAFT-BASIS",
+      "bulletIndex": 1,
+      "aspectIndex": 1,
+      "title": "RP SEKI-II1-WIRTSCHAFT-BASIS (1): Jugendliche als Konsumenten auf globalen Maerkten analysieren.",
+      "description": "Source-Ziel aus II.1 Wirtschaft - Basis: Jugendliche als Konsumenten auf globalen Maerkten analysieren.",
+      "sourceText": "Jugendliche als Konsumenten auf globalen Maerkten analysieren.",
+      "sourceSpan": "SEKI-II1-WIRTSCHAFT-BASIS (1)",
+      "parentBulletText": "Jugendliche als Konsumenten auf globalen Maerkten analysieren.",
+      "sourceRef": "Lehrplan gesellschaftswissenschaftliche Faecher Sekundarstufe I Rheinland-Pfalz, Fachlehrplan Sozialkunde, II.1 Wirtschaft - Basis, S. 158.",
+      "courseLevel": "SekI",
+      "granularity": "officialContentOrStandard",
+      "tags": [
+        "jurisdiction:DE-RP",
+        "subject:Wirtschaft",
+        "stage:SekI",
+        "topic:SEKI-II1-WIRTSCHAFT-BASIS"
+      ],
+      "rawSourceText": "Jugendliche als Konsumenten auf globalen Maerkten analysieren.",
+      "rawSourceSpan": "SEKI-II1-WIRTSCHAFT-BASIS (1)",
+      "rawParentBulletText": "Jugendliche als Konsumenten auf globalen Maerkten analysieren."
+    },
+    {
+      "id": "de-rp-sozialkunde-seki-wirtschaft-seki-ii1-wirtschaft-basis-g02-6cc08f35",
+      "passageId": "de-rp-sozialkunde-seki-wirtschaft:seki-ii1-wirtschaft-basis",
+      "topicCode": "SEKI-II1-WIRTSCHAFT-BASIS",
+      "bulletIndex": 2,
+      "aspectIndex": 1,
+      "title": "RP SEKI-II1-WIRTSCHAFT-BASIS (2): Konsequenzen von Kaufentscheidungen wie Schuldenfalle, Kinderarbeit, fairer Handel und Nachhaltigkeit beurteilen.",
+      "description": "Source-Ziel aus II.1 Wirtschaft - Basis: Konsequenzen von Kaufentscheidungen wie Schuldenfalle, Kinderarbeit, fairer Handel und Nachhaltigkeit beurteilen.",
+      "sourceText": "Konsequenzen von Kaufentscheidungen wie Schuldenfalle, Kinderarbeit, fairer Handel und Nachhaltigkeit beurteilen.",
+      "sourceSpan": "SEKI-II1-WIRTSCHAFT-BASIS (2)",
+      "parentBulletText": "Konsequenzen von Kaufentscheidungen wie Schuldenfalle, Kinderarbeit, fairer Handel und Nachhaltigkeit beurteilen.",
+      "sourceRef": "Lehrplan gesellschaftswissenschaftliche Faecher Sekundarstufe I Rheinland-Pfalz, Fachlehrplan Sozialkunde, II.1 Wirtschaft - Basis, S. 158.",
+      "courseLevel": "SekI",
+      "granularity": "officialContentOrStandard",
+      "tags": [
+        "jurisdiction:DE-RP",
+        "subject:Wirtschaft",
+        "stage:SekI",
+        "topic:SEKI-II1-WIRTSCHAFT-BASIS"
+      ],
+      "rawSourceText": "Konsequenzen von Kaufentscheidungen wie Schuldenfalle, Kinderarbeit, fairer Handel und Nachhaltigkeit beurteilen.",
+      "rawSourceSpan": "SEKI-II1-WIRTSCHAFT-BASIS (2)",
+      "rawParentBulletText": "Konsequenzen von Kaufentscheidungen wie Schuldenfalle, Kinderarbeit, fairer Handel und Nachhaltigkeit beurteilen."
+    },
+    {
+      "id": "de-rp-sozialkunde-seki-wirtschaft-seki-ii1-wirtschaft-basis-g03-c525243b",
+      "passageId": "de-rp-sozialkunde-seki-wirtschaft:seki-ii1-wirtschaft-basis",
+      "topicCode": "SEKI-II1-WIRTSCHAFT-BASIS",
+      "bulletIndex": 3,
+      "aspectIndex": 1,
+      "title": "RP SEKI-II1-WIRTSCHAFT-BASIS (3): Preisbildung, Markt, Wettbewerb, Wirtschaftskreislauf und weltweite Vernetzung erklaeren.",
+      "description": "Source-Ziel aus II.1 Wirtschaft - Basis: Preisbildung, Markt, Wettbewerb, Wirtschaftskreislauf und weltweite Vernetzung erklaeren.",
+      "sourceText": "Preisbildung, Markt, Wettbewerb, Wirtschaftskreislauf und weltweite Vernetzung erklaeren.",
+      "sourceSpan": "SEKI-II1-WIRTSCHAFT-BASIS (3)",
+      "parentBulletText": "Preisbildung, Markt, Wettbewerb, Wirtschaftskreislauf und weltweite Vernetzung erklaeren.",
+      "sourceRef": "Lehrplan gesellschaftswissenschaftliche Faecher Sekundarstufe I Rheinland-Pfalz, Fachlehrplan Sozialkunde, II.1 Wirtschaft - Basis, S. 158.",
+      "courseLevel": "SekI",
+      "granularity": "officialContentOrStandard",
+      "tags": [
+        "jurisdiction:DE-RP",
+        "subject:Wirtschaft",
+        "stage:SekI",
+        "topic:SEKI-II1-WIRTSCHAFT-BASIS"
+      ],
+      "rawSourceText": "Preisbildung, Markt, Wettbewerb, Wirtschaftskreislauf und weltweite Vernetzung erklaeren.",
+      "rawSourceSpan": "SEKI-II1-WIRTSCHAFT-BASIS (3)",
+      "rawParentBulletText": "Preisbildung, Markt, Wettbewerb, Wirtschaftskreislauf und weltweite Vernetzung erklaeren."
+    },
+    {
+      "id": "de-rp-sozialkunde-seki-wirtschaft-seki-ii1-wirtschaft-basis-g04-172d323f",
+      "passageId": "de-rp-sozialkunde-seki-wirtschaft:seki-ii1-wirtschaft-basis",
+      "topicCode": "SEKI-II1-WIRTSCHAFT-BASIS",
+      "bulletIndex": 4,
+      "aspectIndex": 1,
+      "title": "RP SEKI-II1-WIRTSCHAFT-BASIS (4): Arbeitswelt im Wandel durch Digitalisierung, Kuenstliche Intelligenz und lebenslanges Lernen beurteilen.",
+      "description": "Source-Ziel aus II.1 Wirtschaft - Basis: Arbeitswelt im Wandel durch Digitalisierung, Kuenstliche Intelligenz und lebenslanges Lernen beurteilen.",
+      "sourceText": "Arbeitswelt im Wandel durch Digitalisierung, Kuenstliche Intelligenz und lebenslanges Lernen beurteilen.",
+      "sourceSpan": "SEKI-II1-WIRTSCHAFT-BASIS (4)",
+      "parentBulletText": "Arbeitswelt im Wandel durch Digitalisierung, Kuenstliche Intelligenz und lebenslanges Lernen beurteilen.",
+      "sourceRef": "Lehrplan gesellschaftswissenschaftliche Faecher Sekundarstufe I Rheinland-Pfalz, Fachlehrplan Sozialkunde, II.1 Wirtschaft - Basis, S. 158.",
+      "courseLevel": "SekI",
+      "granularity": "officialContentOrStandard",
+      "tags": [
+        "jurisdiction:DE-RP",
+        "subject:Wirtschaft",
+        "stage:SekI",
+        "topic:SEKI-II1-WIRTSCHAFT-BASIS"
+      ],
+      "rawSourceText": "Arbeitswelt im Wandel durch Digitalisierung, Kuenstliche Intelligenz und lebenslanges Lernen beurteilen.",
+      "rawSourceSpan": "SEKI-II1-WIRTSCHAFT-BASIS (4)",
+      "rawParentBulletText": "Arbeitswelt im Wandel durch Digitalisierung, Kuenstliche Intelligenz und lebenslanges Lernen beurteilen."
+    },
+    {
+      "id": "de-rp-sozialkunde-seki-wirtschaft-seki-ii1-wirtschaft-basis-g05-c22c7414",
+      "passageId": "de-rp-sozialkunde-seki-wirtschaft:seki-ii1-wirtschaft-basis",
+      "topicCode": "SEKI-II1-WIRTSCHAFT-BASIS",
+      "bulletIndex": 5,
+      "aspectIndex": 1,
+      "title": "RP SEKI-II1-WIRTSCHAFT-BASIS (5): Ziele des Wirtschaftens wie Wachstum, Wohlstand, Geldwertstabilitaet, soziale Gerechtigkeit, oekologische Vertraeglichkeit und SDGs abwaegen.",
+      "description": "Source-Ziel aus II.1 Wirtschaft - Basis: Ziele des Wirtschaftens wie Wachstum, Wohlstand, Geldwertstabilitaet, soziale Gerechtigkeit, oekologische Vertraeglichkeit und SDGs abwaegen.",
+      "sourceText": "Ziele des Wirtschaftens wie Wachstum, Wohlstand, Geldwertstabilitaet, soziale Gerechtigkeit, oekologische Vertraeglichkeit und SDGs abwaegen.",
+      "sourceSpan": "SEKI-II1-WIRTSCHAFT-BASIS (5)",
+      "parentBulletText": "Ziele des Wirtschaftens wie Wachstum, Wohlstand, Geldwertstabilitaet, soziale Gerechtigkeit, oekologische Vertraeglichkeit und SDGs abwaegen.",
+      "sourceRef": "Lehrplan gesellschaftswissenschaftliche Faecher Sekundarstufe I Rheinland-Pfalz, Fachlehrplan Sozialkunde, II.1 Wirtschaft - Basis, S. 158.",
+      "courseLevel": "SekI",
+      "granularity": "officialContentOrStandard",
+      "tags": [
+        "jurisdiction:DE-RP",
+        "subject:Wirtschaft",
+        "stage:SekI",
+        "topic:SEKI-II1-WIRTSCHAFT-BASIS"
+      ],
+      "rawSourceText": "Ziele des Wirtschaftens wie Wachstum, Wohlstand, Geldwertstabilitaet, soziale Gerechtigkeit, oekologische Vertraeglichkeit und SDGs abwaegen.",
+      "rawSourceSpan": "SEKI-II1-WIRTSCHAFT-BASIS (5)",
+      "rawParentBulletText": "Ziele des Wirtschaftens wie Wachstum, Wohlstand, Geldwertstabilitaet, soziale Gerechtigkeit, oekologische Vertraeglichkeit und SDGs abwaegen."
+    },
+    {
+      "id": "de-rp-sozialkunde-seki-wirtschaft-seki-ii1-wirtschaft-basis-g06-a1a23216",
+      "passageId": "de-rp-sozialkunde-seki-wirtschaft:seki-ii1-wirtschaft-basis",
+      "topicCode": "SEKI-II1-WIRTSCHAFT-BASIS",
+      "bulletIndex": 6,
+      "aspectIndex": 1,
+      "title": "RP SEKI-II1-WIRTSCHAFT-BASIS (6): Rolle und Instrumente des Staates in einer sozialen und oekologischen Marktwirtschaft beurteilen.",
+      "description": "Source-Ziel aus II.1 Wirtschaft - Basis: Rolle und Instrumente des Staates in einer sozialen und oekologischen Marktwirtschaft beurteilen.",
+      "sourceText": "Rolle und Instrumente des Staates in einer sozialen und oekologischen Marktwirtschaft beurteilen.",
+      "sourceSpan": "SEKI-II1-WIRTSCHAFT-BASIS (6)",
+      "parentBulletText": "Rolle und Instrumente des Staates in einer sozialen und oekologischen Marktwirtschaft beurteilen.",
+      "sourceRef": "Lehrplan gesellschaftswissenschaftliche Faecher Sekundarstufe I Rheinland-Pfalz, Fachlehrplan Sozialkunde, II.1 Wirtschaft - Basis, S. 158.",
+      "courseLevel": "SekI",
+      "granularity": "officialContentOrStandard",
+      "tags": [
+        "jurisdiction:DE-RP",
+        "subject:Wirtschaft",
+        "stage:SekI",
+        "topic:SEKI-II1-WIRTSCHAFT-BASIS"
+      ],
+      "rawSourceText": "Rolle und Instrumente des Staates in einer sozialen und oekologischen Marktwirtschaft beurteilen.",
+      "rawSourceSpan": "SEKI-II1-WIRTSCHAFT-BASIS (6)",
+      "rawParentBulletText": "Rolle und Instrumente des Staates in einer sozialen und oekologischen Marktwirtschaft beurteilen."
+    },
+    {
+      "id": "de-rp-sozialkunde-seki-wirtschaft-seki-ii1-wirtschaft-basis-g07-a85e113b",
+      "passageId": "de-rp-sozialkunde-seki-wirtschaft:seki-ii1-wirtschaft-basis",
+      "topicCode": "SEKI-II1-WIRTSCHAFT-BASIS",
+      "bulletIndex": 7,
+      "aspectIndex": 1,
+      "title": "RP SEKI-II1-WIRTSCHAFT-BASIS (7): Preisbildung und Lieferketten an einem Produkt aus der eigenen Lebenswelt analysieren.",
+      "description": "Source-Ziel aus II.1 Wirtschaft - Basis: Preisbildung und Lieferketten an einem Produkt aus der eigenen Lebenswelt analysieren.",
+      "sourceText": "Preisbildung und Lieferketten an einem Produkt aus der eigenen Lebenswelt analysieren.",
+      "sourceSpan": "SEKI-II1-WIRTSCHAFT-BASIS (7)",
+      "parentBulletText": "Preisbildung und Lieferketten an einem Produkt aus der eigenen Lebenswelt analysieren.",
+      "sourceRef": "Lehrplan gesellschaftswissenschaftliche Faecher Sekundarstufe I Rheinland-Pfalz, Fachlehrplan Sozialkunde, II.1 Wirtschaft - Basis, S. 158.",
+      "courseLevel": "SekI",
+      "granularity": "officialContentOrStandard",
+      "tags": [
+        "jurisdiction:DE-RP",
+        "subject:Wirtschaft",
+        "stage:SekI",
+        "topic:SEKI-II1-WIRTSCHAFT-BASIS"
+      ],
+      "rawSourceText": "Preisbildung und Lieferketten an einem Produkt aus der eigenen Lebenswelt analysieren.",
+      "rawSourceSpan": "SEKI-II1-WIRTSCHAFT-BASIS (7)",
+      "rawParentBulletText": "Preisbildung und Lieferketten an einem Produkt aus der eigenen Lebenswelt analysieren."
+    },
+    {
+      "id": "de-rp-sozialkunde-seki-wirtschaft-seki-ii1-wirtschaft-basis-g08-55e875b4",
+      "passageId": "de-rp-sozialkunde-seki-wirtschaft:seki-ii1-wirtschaft-basis",
+      "topicCode": "SEKI-II1-WIRTSCHAFT-BASIS",
+      "bulletIndex": 8,
+      "aspectIndex": 1,
+      "title": "RP SEKI-II1-WIRTSCHAFT-BASIS (8): Marktwirtschaft und wirtschaftspolitisches Handeln hinsichtlich Freiheit, Gerechtigkeit und oekologischer Vertraeglichkeit bewerten.",
+      "description": "Source-Ziel aus II.1 Wirtschaft - Basis: Marktwirtschaft und wirtschaftspolitisches Handeln hinsichtlich Freiheit, Gerechtigkeit und oekologischer Vertraeglichkeit bewerten.",
+      "sourceText": "Marktwirtschaft und wirtschaftspolitisches Handeln hinsichtlich Freiheit, Gerechtigkeit und oekologischer Vertraeglichkeit bewerten.",
+      "sourceSpan": "SEKI-II1-WIRTSCHAFT-BASIS (8)",
+      "parentBulletText": "Marktwirtschaft und wirtschaftspolitisches Handeln hinsichtlich Freiheit, Gerechtigkeit und oekologischer Vertraeglichkeit bewerten.",
+      "sourceRef": "Lehrplan gesellschaftswissenschaftliche Faecher Sekundarstufe I Rheinland-Pfalz, Fachlehrplan Sozialkunde, II.1 Wirtschaft - Basis, S. 158.",
+      "courseLevel": "SekI",
+      "granularity": "officialContentOrStandard",
+      "tags": [
+        "jurisdiction:DE-RP",
+        "subject:Wirtschaft",
+        "stage:SekI",
+        "topic:SEKI-II1-WIRTSCHAFT-BASIS"
+      ],
+      "rawSourceText": "Marktwirtschaft und wirtschaftspolitisches Handeln hinsichtlich Freiheit, Gerechtigkeit und oekologischer Vertraeglichkeit bewerten.",
+      "rawSourceSpan": "SEKI-II1-WIRTSCHAFT-BASIS (8)",
+      "rawParentBulletText": "Marktwirtschaft und wirtschaftspolitisches Handeln hinsichtlich Freiheit, Gerechtigkeit und oekologischer Vertraeglichkeit bewerten."
+    },
+    {
+      "id": "de-rp-sozialkunde-seki-wirtschaft-seki-ii1-wirtschaft-basis-g09-aafc8fab",
+      "passageId": "de-rp-sozialkunde-seki-wirtschaft:seki-ii1-wirtschaft-basis",
+      "topicCode": "SEKI-II1-WIRTSCHAFT-BASIS",
+      "bulletIndex": 9,
+      "aspectIndex": 1,
+      "title": "RP SEKI-II1-WIRTSCHAFT-BASIS (9): Eigenes Konsumverhalten im Spannungsverhaeltnis oekonomischer und oekologisch-nachhaltiger Ziele reflektieren.",
+      "description": "Source-Ziel aus II.1 Wirtschaft - Basis: Eigenes Konsumverhalten im Spannungsverhaeltnis oekonomischer und oekologisch-nachhaltiger Ziele reflektieren.",
+      "sourceText": "Eigenes Konsumverhalten im Spannungsverhaeltnis oekonomischer und oekologisch-nachhaltiger Ziele reflektieren.",
+      "sourceSpan": "SEKI-II1-WIRTSCHAFT-BASIS (9)",
+      "parentBulletText": "Eigenes Konsumverhalten im Spannungsverhaeltnis oekonomischer und oekologisch-nachhaltiger Ziele reflektieren.",
+      "sourceRef": "Lehrplan gesellschaftswissenschaftliche Faecher Sekundarstufe I Rheinland-Pfalz, Fachlehrplan Sozialkunde, II.1 Wirtschaft - Basis, S. 158.",
+      "courseLevel": "SekI",
+      "granularity": "officialContentOrStandard",
+      "tags": [
+        "jurisdiction:DE-RP",
+        "subject:Wirtschaft",
+        "stage:SekI",
+        "topic:SEKI-II1-WIRTSCHAFT-BASIS"
+      ],
+      "rawSourceText": "Eigenes Konsumverhalten im Spannungsverhaeltnis oekonomischer und oekologisch-nachhaltiger Ziele reflektieren.",
+      "rawSourceSpan": "SEKI-II1-WIRTSCHAFT-BASIS (9)",
+      "rawParentBulletText": "Eigenes Konsumverhalten im Spannungsverhaeltnis oekonomischer und oekologisch-nachhaltiger Ziele reflektieren."
+    },
+    {
+      "id": "de-rp-sozialkunde-seki-wirtschaft-seki-ii1-wirtschaft-erweiterung-g01-eb9a632a",
+      "passageId": "de-rp-sozialkunde-seki-wirtschaft:seki-ii1-wirtschaft-erweiterung",
+      "topicCode": "SEKI-II1-WIRTSCHAFT-ERWEITERUNG",
+      "bulletIndex": 1,
+      "aspectIndex": 1,
+      "title": "RP SEKI-II1-WIRTSCHAFT-ERWEITERUNG (1): Aushandeln von Loehnen und Gehaeltern mit Tarifautonomie und Tarifkonflikt einordnen.",
+      "description": "Source-Ziel aus II.1 Wirtschaft - Erweiterung und Vertiefung: Aushandeln von Loehnen und Gehaeltern mit Tarifautonomie und Tarifkonflikt einordnen.",
+      "sourceText": "Aushandeln von Loehnen und Gehaeltern mit Tarifautonomie und Tarifkonflikt einordnen.",
+      "sourceSpan": "SEKI-II1-WIRTSCHAFT-ERWEITERUNG (1)",
+      "parentBulletText": "Aushandeln von Loehnen und Gehaeltern mit Tarifautonomie und Tarifkonflikt einordnen.",
+      "sourceRef": "Lehrplan gesellschaftswissenschaftliche Faecher Sekundarstufe I Rheinland-Pfalz, Fachlehrplan Sozialkunde, II.1 Wirtschaft - Erweiterung und Vertiefung, S. 158.",
+      "courseLevel": "SekI",
+      "granularity": "officialContentOrStandard",
+      "tags": [
+        "jurisdiction:DE-RP",
+        "subject:Wirtschaft",
+        "stage:SekI",
+        "topic:SEKI-II1-WIRTSCHAFT-ERWEITERUNG"
+      ],
+      "rawSourceText": "Aushandeln von Loehnen und Gehaeltern mit Tarifautonomie und Tarifkonflikt einordnen.",
+      "rawSourceSpan": "SEKI-II1-WIRTSCHAFT-ERWEITERUNG (1)",
+      "rawParentBulletText": "Aushandeln von Loehnen und Gehaeltern mit Tarifautonomie und Tarifkonflikt einordnen."
+    },
+    {
+      "id": "de-rp-sozialkunde-seki-wirtschaft-seki-ii1-wirtschaft-erweiterung-g02-0ea6d4ba",
+      "passageId": "de-rp-sozialkunde-seki-wirtschaft:seki-ii1-wirtschaft-erweiterung",
+      "topicCode": "SEKI-II1-WIRTSCHAFT-ERWEITERUNG",
+      "bulletIndex": 2,
+      "aspectIndex": 1,
+      "title": "RP SEKI-II1-WIRTSCHAFT-ERWEITERUNG (2): Ein Fallbeispiel zum Verbraucherschutz rechtlich und oekonomisch analysieren.",
+      "description": "Source-Ziel aus II.1 Wirtschaft - Erweiterung und Vertiefung: Ein Fallbeispiel zum Verbraucherschutz rechtlich und oekonomisch analysieren.",
+      "sourceText": "Ein Fallbeispiel zum Verbraucherschutz rechtlich und oekonomisch analysieren.",
+      "sourceSpan": "SEKI-II1-WIRTSCHAFT-ERWEITERUNG (2)",
+      "parentBulletText": "Ein Fallbeispiel zum Verbraucherschutz rechtlich und oekonomisch analysieren.",
+      "sourceRef": "Lehrplan gesellschaftswissenschaftliche Faecher Sekundarstufe I Rheinland-Pfalz, Fachlehrplan Sozialkunde, II.1 Wirtschaft - Erweiterung und Vertiefung, S. 158.",
+      "courseLevel": "SekI",
+      "granularity": "officialContentOrStandard",
+      "tags": [
+        "jurisdiction:DE-RP",
+        "subject:Wirtschaft",
+        "stage:SekI",
+        "topic:SEKI-II1-WIRTSCHAFT-ERWEITERUNG"
+      ],
+      "rawSourceText": "Ein Fallbeispiel zum Verbraucherschutz rechtlich und oekonomisch analysieren.",
+      "rawSourceSpan": "SEKI-II1-WIRTSCHAFT-ERWEITERUNG (2)",
+      "rawParentBulletText": "Ein Fallbeispiel zum Verbraucherschutz rechtlich und oekonomisch analysieren."
+    },
+    {
+      "id": "de-rp-sozialkunde-seki-wirtschaft-seki-ii1-wirtschaft-erweiterung-g03-aaec085e",
+      "passageId": "de-rp-sozialkunde-seki-wirtschaft:seki-ii1-wirtschaft-erweiterung",
+      "topicCode": "SEKI-II1-WIRTSCHAFT-ERWEITERUNG",
+      "bulletIndex": 3,
+      "aspectIndex": 1,
+      "title": "RP SEKI-II1-WIRTSCHAFT-ERWEITERUNG (3): Erfolgreiche Jungunternehmerinnen und Jungunternehmer am Standort untersuchen.",
+      "description": "Source-Ziel aus II.1 Wirtschaft - Erweiterung und Vertiefung: Erfolgreiche Jungunternehmerinnen und Jungunternehmer am Standort untersuchen.",
+      "sourceText": "Erfolgreiche Jungunternehmerinnen und Jungunternehmer am Standort untersuchen.",
+      "sourceSpan": "SEKI-II1-WIRTSCHAFT-ERWEITERUNG (3)",
+      "parentBulletText": "Erfolgreiche Jungunternehmerinnen und Jungunternehmer am Standort untersuchen.",
+      "sourceRef": "Lehrplan gesellschaftswissenschaftliche Faecher Sekundarstufe I Rheinland-Pfalz, Fachlehrplan Sozialkunde, II.1 Wirtschaft - Erweiterung und Vertiefung, S. 158.",
+      "courseLevel": "SekI",
+      "granularity": "officialContentOrStandard",
+      "tags": [
+        "jurisdiction:DE-RP",
+        "subject:Wirtschaft",
+        "stage:SekI",
+        "topic:SEKI-II1-WIRTSCHAFT-ERWEITERUNG"
+      ],
+      "rawSourceText": "Erfolgreiche Jungunternehmerinnen und Jungunternehmer am Standort untersuchen.",
+      "rawSourceSpan": "SEKI-II1-WIRTSCHAFT-ERWEITERUNG (3)",
+      "rawParentBulletText": "Erfolgreiche Jungunternehmerinnen und Jungunternehmer am Standort untersuchen."
+    },
+    {
+      "id": "de-rp-sozialkunde-seki-wirtschaft-seki-ii1-wirtschaft-erweiterung-g04-f2ae2c7c",
+      "passageId": "de-rp-sozialkunde-seki-wirtschaft:seki-ii1-wirtschaft-erweiterung",
+      "topicCode": "SEKI-II1-WIRTSCHAFT-ERWEITERUNG",
+      "bulletIndex": 4,
+      "aspectIndex": 1,
+      "title": "RP SEKI-II1-WIRTSCHAFT-ERWEITERUNG (4): Zukunftsfaehige Handlungsalternativen wie fairer Handel und Sharing Economy bewerten.",
+      "description": "Source-Ziel aus II.1 Wirtschaft - Erweiterung und Vertiefung: Zukunftsfaehige Handlungsalternativen wie fairer Handel und Sharing Economy bewerten.",
+      "sourceText": "Zukunftsfaehige Handlungsalternativen wie fairer Handel und Sharing Economy bewerten.",
+      "sourceSpan": "SEKI-II1-WIRTSCHAFT-ERWEITERUNG (4)",
+      "parentBulletText": "Zukunftsfaehige Handlungsalternativen wie fairer Handel und Sharing Economy bewerten.",
+      "sourceRef": "Lehrplan gesellschaftswissenschaftliche Faecher Sekundarstufe I Rheinland-Pfalz, Fachlehrplan Sozialkunde, II.1 Wirtschaft - Erweiterung und Vertiefung, S. 158.",
+      "courseLevel": "SekI",
+      "granularity": "officialContentOrStandard",
+      "tags": [
+        "jurisdiction:DE-RP",
+        "subject:Wirtschaft",
+        "stage:SekI",
+        "topic:SEKI-II1-WIRTSCHAFT-ERWEITERUNG"
+      ],
+      "rawSourceText": "Zukunftsfaehige Handlungsalternativen wie fairer Handel und Sharing Economy bewerten.",
+      "rawSourceSpan": "SEKI-II1-WIRTSCHAFT-ERWEITERUNG (4)",
+      "rawParentBulletText": "Zukunftsfaehige Handlungsalternativen wie fairer Handel und Sharing Economy bewerten."
+    },
+    {
+      "id": "de-rp-sozialkunde-seki-wirtschaft-seki-ii1-wirtschaft-erweiterung-g05-1d9916bd",
+      "passageId": "de-rp-sozialkunde-seki-wirtschaft:seki-ii1-wirtschaft-erweiterung",
+      "topicCode": "SEKI-II1-WIRTSCHAFT-ERWEITERUNG",
+      "bulletIndex": 5,
+      "aspectIndex": 1,
+      "title": "RP SEKI-II1-WIRTSCHAFT-ERWEITERUNG (5): Verbraucherzentrale, lokale Nachhaltigkeitsprojekte und Schuelerfirmen als wirtschaftliche Praxisorte auswerten.",
+      "description": "Source-Ziel aus II.1 Wirtschaft - Erweiterung und Vertiefung: Verbraucherzentrale, lokale Nachhaltigkeitsprojekte und Schuelerfirmen als wirtschaftliche Praxisorte auswerten.",
+      "sourceText": "Verbraucherzentrale, lokale Nachhaltigkeitsprojekte und Schuelerfirmen als wirtschaftliche Praxisorte auswerten.",
+      "sourceSpan": "SEKI-II1-WIRTSCHAFT-ERWEITERUNG (5)",
+      "parentBulletText": "Verbraucherzentrale, lokale Nachhaltigkeitsprojekte und Schuelerfirmen als wirtschaftliche Praxisorte auswerten.",
+      "sourceRef": "Lehrplan gesellschaftswissenschaftliche Faecher Sekundarstufe I Rheinland-Pfalz, Fachlehrplan Sozialkunde, II.1 Wirtschaft - Erweiterung und Vertiefung, S. 158.",
+      "courseLevel": "SekI",
+      "granularity": "officialContentOrStandard",
+      "tags": [
+        "jurisdiction:DE-RP",
+        "subject:Wirtschaft",
+        "stage:SekI",
+        "topic:SEKI-II1-WIRTSCHAFT-ERWEITERUNG"
+      ],
+      "rawSourceText": "Verbraucherzentrale, lokale Nachhaltigkeitsprojekte und Schuelerfirmen als wirtschaftliche Praxisorte auswerten.",
+      "rawSourceSpan": "SEKI-II1-WIRTSCHAFT-ERWEITERUNG (5)",
+      "rawParentBulletText": "Verbraucherzentrale, lokale Nachhaltigkeitsprojekte und Schuelerfirmen als wirtschaftliche Praxisorte auswerten."
+    },
+    {
+      "id": "de-rp-sozialkunde-seki-wirtschaft-seki-ii1-wirtschaft-erweiterung-g06-fc9adc62",
+      "passageId": "de-rp-sozialkunde-seki-wirtschaft:seki-ii1-wirtschaft-erweiterung",
+      "topicCode": "SEKI-II1-WIRTSCHAFT-ERWEITERUNG",
+      "bulletIndex": 6,
+      "aspectIndex": 1,
+      "title": "RP SEKI-II1-WIRTSCHAFT-ERWEITERUNG (6): Grundbegriffe Oekonomie, Angebot, Nachfrage, Wettbewerb, Sozialstaat, Tarifpartner, Globalisierung und Nachhaltigkeit fachsprachlich verwenden.",
+      "description": "Source-Ziel aus II.1 Wirtschaft - Erweiterung und Vertiefung: Grundbegriffe Oekonomie, Angebot, Nachfrage, Wettbewerb, Sozialstaat, Tarifpartner, Globalisierung und Nachhaltigkeit fachsprachlich verwenden.",
+      "sourceText": "Grundbegriffe Oekonomie, Angebot, Nachfrage, Wettbewerb, Sozialstaat, Tarifpartner, Globalisierung und Nachhaltigkeit fachsprachlich verwenden.",
+      "sourceSpan": "SEKI-II1-WIRTSCHAFT-ERWEITERUNG (6)",
+      "parentBulletText": "Grundbegriffe Oekonomie, Angebot, Nachfrage, Wettbewerb, Sozialstaat, Tarifpartner, Globalisierung und Nachhaltigkeit fachsprachlich verwenden.",
+      "sourceRef": "Lehrplan gesellschaftswissenschaftliche Faecher Sekundarstufe I Rheinland-Pfalz, Fachlehrplan Sozialkunde, II.1 Wirtschaft - Erweiterung und Vertiefung, S. 158.",
+      "courseLevel": "SekI",
+      "granularity": "officialContentOrStandard",
+      "tags": [
+        "jurisdiction:DE-RP",
+        "subject:Wirtschaft",
+        "stage:SekI",
+        "topic:SEKI-II1-WIRTSCHAFT-ERWEITERUNG"
+      ],
+      "rawSourceText": "Grundbegriffe Oekonomie, Angebot, Nachfrage, Wettbewerb, Sozialstaat, Tarifpartner, Globalisierung und Nachhaltigkeit fachsprachlich verwenden.",
+      "rawSourceSpan": "SEKI-II1-WIRTSCHAFT-ERWEITERUNG (6)",
+      "rawParentBulletText": "Grundbegriffe Oekonomie, Angebot, Nachfrage, Wettbewerb, Sozialstaat, Tarifpartner, Globalisierung und Nachhaltigkeit fachsprachlich verwenden."
+    }
+  ]
+}

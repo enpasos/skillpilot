@@ -375,10 +375,17 @@ function summarizeSourceGoalGranularity(sourceGoals: SourceExtractionGoal[]): So
 
 function sourceGoalCountGroupKey(source: MappingPipelineSourceStatus): string | null {
   if (source.sourceKind !== 'source-extraction') return null
-  const subject = source.subject?.trim().toLowerCase()
+  const subject = normalizedSourceGoalCountSubject(source.subject)
   const stageKeys = sourceGoalCountStageKeys(source.stage)
   if (!subject || stageKeys.length !== 1) return null
   return `${subject}:${stageKeys[0]}`
+}
+
+function normalizedSourceGoalCountSubject(subject: string | undefined): string | null {
+  const normalized = subject?.trim().toLowerCase()
+  if (!normalized) return null
+  if (normalized.includes('wirtschaft')) return 'wirtschaft'
+  return normalized
 }
 
 function sourceGoalCountStageKeys(stage: string | undefined): string[] {
@@ -394,7 +401,7 @@ function sourceGoalCountBaselineParts(
   source: MappingPipelineSourceStatus,
   baselineByGroup: Map<string, number[]>,
 ): Array<{ stage: string, peerCounts: number[], baseline: number }> {
-  const subject = source.subject?.trim().toLowerCase()
+  const subject = normalizedSourceGoalCountSubject(source.subject)
   const stageKeys = sourceGoalCountStageKeys(source.stage)
   if (!subject || stageKeys.length === 0) return []
 
@@ -404,10 +411,10 @@ function sourceGoalCountBaselineParts(
       return {
         stage,
         peerCounts,
-        baseline: peerCounts.length >= 2 ? median(peerCounts) : 0,
+        baseline: peerCounts.length >= 1 ? median(peerCounts) : 0,
       }
     })
-    .filter((part) => part.peerCounts.length >= 2)
+    .filter((part) => part.peerCounts.length >= 1)
 }
 
 function appendSourceGoalCountPeerChecks(sources: Map<string, MappingPipelineSourceStatus>): void {
@@ -755,6 +762,15 @@ const CANONICAL_GYM_BIOLOGY_SEK2_PRACTICE_CLUSTER_IDS = [
   '950cbe9f-8e63-5bbb-a1ce-74c8ada43247',
   '5c731e13-f055-50ff-977c-877763d2d28b',
 ]
+const CANONICAL_GYM_ECONOMICS_LANDSCAPE_ID = '605bdaf6-32d5-56fd-8d92-5a80c2fd2901'
+const CANONICAL_GYM_ECONOMICS_MOTIVATION_GOAL_ID = '6bf2d1cc-e745-50dd-a617-71c06a6c6945'
+const CANONICAL_GYM_ECONOMICS_PRACTICE_CLUSTER_IDS = [
+  '14c05eec-87af-5fd6-832a-4f5d9d280e66',
+  '1f0ed7e7-5f8b-512a-8d94-4bf05a065bbc',
+  'a1c0e891-cb5b-56ef-9aa7-ac782e2099c3',
+  '0fb8833c-4017-5052-819a-ecb5f6ebb36f',
+  '5113c64b-405d-5f4b-bae9-70fe530b5e69',
+]
 
 const ruleCatalog: QualityRuleDefinition[] = [
   {
@@ -919,6 +935,25 @@ const routeProfiles: RouteProfile[] = [
       && !isPracticeOrAssessmentGoal(goal),
     clusterSelector: isCanonicalGymBiologySek2Goal,
   },
+  {
+    profileId: 'canonical-economics-crossstage',
+    landscapeId: CANONICAL_GYM_ECONOMICS_LANDSCAPE_ID,
+    label: 'Sekundarstufe I/II',
+    motivationAnchorGoalIds: [CANONICAL_GYM_ECONOMICS_MOTIVATION_GOAL_ID],
+    terminalAutonomyClusterIds: CANONICAL_GYM_ECONOMICS_PRACTICE_CLUSTER_IDS,
+    compositionViewStage: 'CrossStage',
+    goalSelector: (goal) => isAtomicGoal(goal)
+      && isCanonicalGymEconomicsGoal(goal)
+      && !isMemoryGoal(goal)
+      && !isPracticeOrAssessmentGoal(goal)
+      && !goal.tags?.includes('Motivation')
+      && !goal.tags?.includes('Orientation'),
+    clusterSelector: (goal) => isCanonicalGymEconomicsGoal(goal)
+      && !isPracticeOrAssessmentGoal(goal)
+      && goal.dimensionTags?.phase !== 'Abitur'
+      && (goal as { phase?: string }).phase !== 'Abitur'
+      && !goal.tags?.includes('Abitur'),
+  },
 ]
 
 function toRepoPath(path: string): string {
@@ -1066,6 +1101,15 @@ function isCanonicalGymBiologySek2Goal(goal: LearningGoal): boolean {
   if (goal.tags?.includes('SekII')) return true
   const legacyPhase = (goal as { phase?: string }).phase
   return ['E', 'Q1', 'Q2', 'Q3', 'Q4'].includes(goal.dimensionTags?.phase ?? legacyPhase ?? '')
+}
+
+function isCanonicalGymEconomicsGoal(goal: LearningGoal): boolean {
+  if (goal.id === CANONICAL_GYM_ECONOMICS_MOTIVATION_GOAL_ID) return true
+  if (goal.dimensionTags?.framework === 'canonical-gymnasium-economics') return true
+  if (goal.tags?.includes('subject:economics')) return true
+  if (goal.tags?.includes('subject:Wirtschaft')) return true
+  const legacyPhase = (goal as { phase?: string }).phase
+  return ['E', 'Q1', 'Q2', 'Q3', 'Q4', 'Katalog'].includes(goal.dimensionTags?.phase ?? legacyPhase ?? '')
 }
 
 function parseReference(raw: string, currentLandscapeId: string): { landscapeId: string; goalId: string } {
@@ -1851,23 +1895,30 @@ function hasReviewedRequiresClosureSurrogateEvidence(
   goal: CoverageGoalReport,
   jurisdiction: string,
   surrogateEntriesByKey: Map<string, SurrogateEvidenceEntry[]>,
+  visitedGoalIds: Set<string> = new Set(),
 ): boolean {
   const entries = surrogateEntriesByKey.get(surrogateEvidenceKey(report.landscapeId, goal.goalId, jurisdiction)) ?? []
   if (entries.length === 0) return false
 
-  const sourceBackedRequiredGoalIds = new Set(
-    report.goals
-      .filter((candidate) => hasDirectSourceBackedJurisdictionEvidence(candidate, jurisdiction))
-      .map((candidate) => candidate.goalId),
-  )
+  const goalById = new Map(report.goals.map((candidate) => [candidate.goalId, candidate]))
 
-  return entries.some((entry) =>
-    goal.evidence.some((evidence) =>
+  return entries.some((entry) => {
+    const requiredByGoalId = entry.requiredByGoalId!
+    const requiredByGoal = goalById.get(requiredByGoalId)
+    if (!requiredByGoal || visitedGoalIds.has(requiredByGoalId)) return false
+    return goal.evidence.some((evidence) =>
       evidence.kind === 'requires-closure'
       && evidence.dimension === 'jurisdiction'
       && evidence.value === jurisdiction
-      && evidence.source === `required by ${entry.requiredByGoalId}`)
-    && sourceBackedRequiredGoalIds.has(entry.requiredByGoalId!))
+      && evidence.source === `required by ${requiredByGoalId}`)
+      && hasCoverageBackedJurisdictionEvidence(
+        report,
+        requiredByGoal,
+        jurisdiction,
+        surrogateEntriesByKey,
+        new Set([...visitedGoalIds, goal.goalId]),
+      )
+  })
 }
 
 function hasCoverageBackedJurisdictionEvidence(
@@ -1875,9 +1926,10 @@ function hasCoverageBackedJurisdictionEvidence(
   goal: CoverageGoalReport,
   jurisdiction: string,
   surrogateEntriesByKey: Map<string, SurrogateEvidenceEntry[]>,
+  visitedGoalIds: Set<string> = new Set(),
 ): boolean {
   return hasDirectSourceBackedJurisdictionEvidence(goal, jurisdiction)
-    || hasReviewedRequiresClosureSurrogateEvidence(report, goal, jurisdiction, surrogateEntriesByKey)
+    || hasReviewedRequiresClosureSurrogateEvidence(report, goal, jurisdiction, surrogateEntriesByKey, visitedGoalIds)
 }
 
 const compositionViewDirectoryByLandscapeId = new Map<string, string>([
@@ -1885,6 +1937,7 @@ const compositionViewDirectoryByLandscapeId = new Map<string, string>([
   [CANONICAL_GYM_PHYSICS_LANDSCAPE_ID, 'physik'],
   [CANONICAL_GYM_CHEMISTRY_LANDSCAPE_ID, 'chemie'],
   [CANONICAL_GYM_BIOLOGY_LANDSCAPE_ID, 'biologie'],
+  [CANONICAL_GYM_ECONOMICS_LANDSCAPE_ID, 'wirtschaft'],
 ])
 
 function readLandscapeForReport(report: CoverageReport): LearningLandscape | null {

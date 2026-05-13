@@ -1,0 +1,740 @@
+{
+  "schemaVersion": 1,
+  "extractionId": "DE-SL-SOZIALKUNDE-9-WIRTSCHAFT",
+  "sourceLandscapeId": "4fc26764-7d00-5665-853b-012774b12f62",
+  "targetLandscapeId": "605bdaf6-32d5-56fd-8d92-5a80c2fd2901",
+  "jurisdiction": "DE-SL",
+  "subject": "Wirtschaft",
+  "stage": "SekI",
+  "title": "Sozialkunde 9 - Wirtschaft und Arbeitswelt (Saarland, Gymnasium Source-Extraction)",
+  "sourceDocument": {
+    "key": "SL-SOZIALKUNDE-9-GYMNASIUM-2012",
+    "title": "Lehrplan Sozialkunde Gymnasium Klassenstufe 9 Saarland, Unterrichtseinheit Wirtschaft und Arbeitswelt",
+    "path": "https://www.saarland.de/SharedDocs/Downloads/DE/mbk/Lehrpl%C3%A4ne/Lehrplaene_Gymnasium/Sozialkunde/Sozialkunde_9_Gym_2012.pdf?__blob=publicationFile&v=4",
+    "url": "https://www.saarland.de/SharedDocs/Downloads/DE/mbk/Lehrpl%C3%A4ne/Lehrplaene_Gymnasium/Sozialkunde/Sozialkunde_9_Gym_2012.pdf?__blob=publicationFile&v=4",
+    "note": "Official Saarland PDF URL; direct PDF mirroring is blocked by the state CDN challenge in this environment.",
+    "official": true
+  },
+  "method": {
+    "passageExtraction": "Official Saarland Lehrplan pages and indexed PDF text snippets; direct PDF mirroring is blocked by the state CDN challenge in this environment.",
+    "sourceGoalExtraction": "one normalized source goal per explicit competence line, content item, or tightly coupled official topic corridor",
+    "scopeNote": "Saarland Gymnasium Sek I routes economic content through Sozialkunde 9, Unterrichtseinheit Wirtschaft und Arbeitswelt."
+  },
+  "qualityReview": {
+    "sourceGoalCountPeerBaseline": {
+      "accepted": true,
+      "details": "SL Gymnasium Sek I fuehrt Wirtschaft nicht als eigenes Pflichtfach, sondern im Sozialkunde-9-Thema Wirtschaft und Arbeitswelt. Die kompaktere Zielzahl ist fachlich plausibel und bildet die amtlich indexierten Kompetenzen der Einheit ab."
+    }
+  },
+  "expectedTopicCodes": [
+    "SK9-WIRTSCHAFTEN-GRUNDLAGEN",
+    "SK9-MARKT-GELD-KAUFEN",
+    "SK9-ARBEITSWELT-KONSUM"
+  ],
+  "pipelineStatus": {
+    "currentStep": "MAPPING-3",
+    "steps": [
+      {
+        "id": "ORIGINALQUELLEN",
+        "label": "Originalquellen bereitgestellt",
+        "status": "complete",
+        "dependsOn": [],
+        "checks": [
+          {
+            "id": "official-source-url-present",
+            "label": "Amtliche Saarland-Quellen sind als offizielle URLs registriert",
+            "passed": true,
+            "details": "https://www.saarland.de/SharedDocs/Downloads/DE/mbk/Lehrpl%C3%A4ne/Lehrplaene_Gymnasium/Sozialkunde/Sozialkunde_9_Gym_2012.pdf?__blob=publicationFile&v=4"
+          }
+        ]
+      },
+      {
+        "id": "MAPPING-1",
+        "label": "Original-Lehrplanpassagen extrahiert",
+        "status": "complete",
+        "dependsOn": [
+          "ORIGINALQUELLEN"
+        ],
+        "checks": [
+          {
+            "id": "passages-extracted",
+            "label": "Wirtschaftliche Saarland-Passagen wurden als Passagen erfasst",
+            "passed": true,
+            "details": "3 Passagen."
+          }
+        ]
+      },
+      {
+        "id": "MAPPING-2",
+        "label": "Source-Ziele aus Lehrplanpassagen erstellt",
+        "status": "complete",
+        "dependsOn": [
+          "MAPPING-1"
+        ],
+        "checks": [
+          {
+            "id": "source-goals-created",
+            "label": "Aus den Saarland-Passagen wurden Source-Ziele erzeugt",
+            "passed": true,
+            "details": "20 Source-Ziele."
+          }
+        ]
+      },
+      {
+        "id": "MAPPING-3",
+        "label": "Source-Ziele auf SkillPilot-Ziele gemappt",
+        "status": "complete",
+        "dependsOn": [
+          "MAPPING-1",
+          "MAPPING-2"
+        ],
+        "checks": [
+          {
+            "id": "m3-review-file-present",
+            "label": "M3-Review-Datei ist vorhanden",
+            "passed": true,
+            "details": "curricula/DE/Gymnasium/mapping/DE-SL/lower-secondary/sl_sozialkunde_9_economics_source_extraction_to_canonical_wirtschaft.review.json"
+          }
+        ]
+      }
+    ]
+  },
+  "passages": [
+    {
+      "id": "de-sl-sozialkunde-9-wirtschaft:sk9-wirtschaften-grundlagen",
+      "topicCode": "SK9-WIRTSCHAFTEN-GRUNDLAGEN",
+      "title": "Sozialkunde 9: Notwendigkeit des Wirtschaftens und Produktionsfaktoren",
+      "text": "(1) Beduerfnisse und Gueter als Grundlage wirtschaftlichen Handelns unterscheiden.\n(2) Maximalprinzip und Minimalprinzip als oekonomische Prinzipien erklaeren.\n(3) Produktionsfaktoren Natur, Arbeit und Kapital definieren und differenzieren.\n(4) Gueterproduktion als Kombinationsprozess der Produktionsfaktoren erlaeutern.\n(5) Formen der Arbeitsteilung unterscheiden und volkswirtschaftlich beurteilen.",
+      "page": 24,
+      "sourcePath": "https://www.saarland.de/SharedDocs/Downloads/DE/mbk/Lehrpl%C3%A4ne/Lehrplaene_Gymnasium/Sozialkunde/Sozialkunde_9_Gym_2012.pdf?__blob=publicationFile&v=4",
+      "rawText": "Beduerfnisse und Gueter als Grundlage wirtschaftlichen Handelns unterscheiden.\nMaximalprinzip und Minimalprinzip als oekonomische Prinzipien erklaeren.\nProduktionsfaktoren Natur, Arbeit und Kapital definieren und differenzieren.\nGueterproduktion als Kombinationsprozess der Produktionsfaktoren erlaeutern.\nFormen der Arbeitsteilung unterscheiden und volkswirtschaftlich beurteilen.",
+      "sourceGoalIds": [
+        "de-sl-sozialkunde-9-wirtschaft-sk9-wirtschaften-grundlagen-g01-694e48b4",
+        "de-sl-sozialkunde-9-wirtschaft-sk9-wirtschaften-grundlagen-g02-524e6aa9",
+        "de-sl-sozialkunde-9-wirtschaft-sk9-wirtschaften-grundlagen-g03-ce024253",
+        "de-sl-sozialkunde-9-wirtschaft-sk9-wirtschaften-grundlagen-g04-07a858f4",
+        "de-sl-sozialkunde-9-wirtschaft-sk9-wirtschaften-grundlagen-g05-85fa9ac7"
+      ]
+    },
+    {
+      "id": "de-sl-sozialkunde-9-wirtschaft:sk9-markt-geld-kaufen",
+      "topicCode": "SK9-MARKT-GELD-KAUFEN",
+      "title": "Sozialkunde 9: Tausch, Kauf, Maerkte, Zahlungsformen und Zahlungsmittel",
+      "text": "(1) Tausch, Kauf und Geld als Folge arbeitsteiliger Wirtschaft begruenden.\n(2) Markt, Marktarten und vollkommene beziehungsweise unvollkommene Maerkte unterscheiden.\n(3) Marktformen Polypol, Oligopol und Monopol erlaeutern.\n(4) Angebots- und Nachfragefunktionen beschreiben und grafisch darstellen.\n(5) Kaeufermarkt und Verkaeufermarkt unterscheiden.\n(6) Gleichgewichtspreis rechnerisch und grafisch bestimmen.\n(7) Preismechanismus im Polypol durch Veraenderungen von Angebot und Nachfrage erklaeren.\n(8) Geldfunktionen als Tausch- und Zahlungsmittel, Recheneinheit und Wertaufbewahrungsmittel unterscheiden.\n(9) Geldformen und Zahlungsarten unterscheiden und beurteilen.\n(10) Kaufen im Internet mit Chancen, Risiken und Verbraucherrechten bewerten.",
+      "page": 25,
+      "sourcePath": "https://www.saarland.de/SharedDocs/Downloads/DE/mbk/Lehrpl%C3%A4ne/Lehrplaene_Gymnasium/Sozialkunde/Sozialkunde_9_Gym_2012.pdf?__blob=publicationFile&v=4",
+      "rawText": "Tausch, Kauf und Geld als Folge arbeitsteiliger Wirtschaft begruenden.\nMarkt, Marktarten und vollkommene beziehungsweise unvollkommene Maerkte unterscheiden.\nMarktformen Polypol, Oligopol und Monopol erlaeutern.\nAngebots- und Nachfragefunktionen beschreiben und grafisch darstellen.\nKaeufermarkt und Verkaeufermarkt unterscheiden.\nGleichgewichtspreis rechnerisch und grafisch bestimmen.\nPreismechanismus im Polypol durch Veraenderungen von Angebot und Nachfrage erklaeren.\nGeldfunktionen als Tausch- und Zahlungsmittel, Recheneinheit und Wertaufbewahrungsmittel unterscheiden.\nGeldformen und Zahlungsarten unterscheiden und beurteilen.\nKaufen im Internet mit Chancen, Risiken und Verbraucherrechten bewerten.",
+      "sourceGoalIds": [
+        "de-sl-sozialkunde-9-wirtschaft-sk9-markt-geld-kaufen-g01-9366f0d0",
+        "de-sl-sozialkunde-9-wirtschaft-sk9-markt-geld-kaufen-g02-f1e1b1a0",
+        "de-sl-sozialkunde-9-wirtschaft-sk9-markt-geld-kaufen-g03-edbc987c",
+        "de-sl-sozialkunde-9-wirtschaft-sk9-markt-geld-kaufen-g04-453895ba",
+        "de-sl-sozialkunde-9-wirtschaft-sk9-markt-geld-kaufen-g05-aecc2d33",
+        "de-sl-sozialkunde-9-wirtschaft-sk9-markt-geld-kaufen-g06-4147aeef",
+        "de-sl-sozialkunde-9-wirtschaft-sk9-markt-geld-kaufen-g07-3818e1f5",
+        "de-sl-sozialkunde-9-wirtschaft-sk9-markt-geld-kaufen-g08-c0236680",
+        "de-sl-sozialkunde-9-wirtschaft-sk9-markt-geld-kaufen-g09-144b9ab0",
+        "de-sl-sozialkunde-9-wirtschaft-sk9-markt-geld-kaufen-g10-5aebca92"
+      ]
+    },
+    {
+      "id": "de-sl-sozialkunde-9-wirtschaft:sk9-arbeitswelt-konsum",
+      "topicCode": "SK9-ARBEITSWELT-KONSUM",
+      "title": "Sozialkunde 9: Wirtschaft und Arbeitswelt als Orientierung",
+      "text": "(1) Eigene Konsumentscheidungen als Teilnehmerin oder Teilnehmer des Wirtschaftsgeschehens kritisch hinterfragen.\n(2) Auswirkungen von Arbeitsteilung auf Arbeitnehmer, Arbeitgeber und Verbraucher beurteilen.\n(3) Fortschritte in der Produktionstechnik aus Texten erarbeiten und bewerten.\n(4) Arbeitswelt und Berufsorientierung mit Qualifikation und Lebensperspektiven verbinden.\n(5) Wirtschaftliche Entscheidungen mit Verbraucherinteressen und gesellschaftlicher Verantwortung abwaegen.",
+      "page": 26,
+      "sourcePath": "https://www.saarland.de/SharedDocs/Downloads/DE/mbk/Lehrpl%C3%A4ne/Lehrplaene_Gymnasium/Sozialkunde/Sozialkunde_9_Gym_2012.pdf?__blob=publicationFile&v=4",
+      "rawText": "Eigene Konsumentscheidungen als Teilnehmerin oder Teilnehmer des Wirtschaftsgeschehens kritisch hinterfragen.\nAuswirkungen von Arbeitsteilung auf Arbeitnehmer, Arbeitgeber und Verbraucher beurteilen.\nFortschritte in der Produktionstechnik aus Texten erarbeiten und bewerten.\nArbeitswelt und Berufsorientierung mit Qualifikation und Lebensperspektiven verbinden.\nWirtschaftliche Entscheidungen mit Verbraucherinteressen und gesellschaftlicher Verantwortung abwaegen.",
+      "sourceGoalIds": [
+        "de-sl-sozialkunde-9-wirtschaft-sk9-arbeitswelt-konsum-g01-614ada10",
+        "de-sl-sozialkunde-9-wirtschaft-sk9-arbeitswelt-konsum-g02-982dca5e",
+        "de-sl-sozialkunde-9-wirtschaft-sk9-arbeitswelt-konsum-g03-8dffc832",
+        "de-sl-sozialkunde-9-wirtschaft-sk9-arbeitswelt-konsum-g04-a4a512f7",
+        "de-sl-sozialkunde-9-wirtschaft-sk9-arbeitswelt-konsum-g05-66fd25fb"
+      ]
+    }
+  ],
+  "sourceGoals": [
+    {
+      "id": "de-sl-sozialkunde-9-wirtschaft-sk9-wirtschaften-grundlagen-g01-694e48b4",
+      "passageId": "de-sl-sozialkunde-9-wirtschaft:sk9-wirtschaften-grundlagen",
+      "topicCode": "SK9-WIRTSCHAFTEN-GRUNDLAGEN",
+      "bulletIndex": 1,
+      "aspectIndex": 1,
+      "title": "SL SK9-WIRTSCHAFTEN-GRUNDLAGEN (1): Beduerfnisse und Gueter als Grundlage wirtschaftlichen Handelns unterscheiden.",
+      "description": "Source-Ziel aus Sozialkunde 9: Notwendigkeit des Wirtschaftens und Produktionsfaktoren: Beduerfnisse und Gueter als Grundlage wirtschaftlichen Handelns unterscheiden.",
+      "sourceText": "Beduerfnisse und Gueter als Grundlage wirtschaftlichen Handelns unterscheiden.",
+      "sourceSpan": "SK9-WIRTSCHAFTEN-GRUNDLAGEN (1)",
+      "parentBulletText": "Beduerfnisse und Gueter als Grundlage wirtschaftlichen Handelns unterscheiden.",
+      "sourceRef": "Lehrplan Sozialkunde Gymnasium Klassenstufe 9 Saarland, Unterrichtseinheit Wirtschaft und Arbeitswelt, Sozialkunde 9: Notwendigkeit des Wirtschaftens und Produktionsfaktoren, S. 24.",
+      "courseLevel": "SekI",
+      "granularity": "officialContentOrStandard",
+      "tags": [
+        "jurisdiction:DE-SL",
+        "subject:Wirtschaft",
+        "stage:SekI",
+        "topic:SK9-WIRTSCHAFTEN-GRUNDLAGEN"
+      ],
+      "rawSourceText": "Beduerfnisse und Gueter als Grundlage wirtschaftlichen Handelns unterscheiden.",
+      "rawSourceSpan": "SK9-WIRTSCHAFTEN-GRUNDLAGEN (1)",
+      "rawParentBulletText": "Beduerfnisse und Gueter als Grundlage wirtschaftlichen Handelns unterscheiden.",
+      "canonicalGoalIds": [
+        "f72eef5b-97dc-52b2-8879-838a7c6600be",
+        "5b5ed3cb-7c2c-5b0f-a515-c967d8d23644"
+      ]
+    },
+    {
+      "id": "de-sl-sozialkunde-9-wirtschaft-sk9-wirtschaften-grundlagen-g02-524e6aa9",
+      "passageId": "de-sl-sozialkunde-9-wirtschaft:sk9-wirtschaften-grundlagen",
+      "topicCode": "SK9-WIRTSCHAFTEN-GRUNDLAGEN",
+      "bulletIndex": 2,
+      "aspectIndex": 1,
+      "title": "SL SK9-WIRTSCHAFTEN-GRUNDLAGEN (2): Maximalprinzip und Minimalprinzip als oekonomische Prinzipien erklaeren.",
+      "description": "Source-Ziel aus Sozialkunde 9: Notwendigkeit des Wirtschaftens und Produktionsfaktoren: Maximalprinzip und Minimalprinzip als oekonomische Prinzipien erklaeren.",
+      "sourceText": "Maximalprinzip und Minimalprinzip als oekonomische Prinzipien erklaeren.",
+      "sourceSpan": "SK9-WIRTSCHAFTEN-GRUNDLAGEN (2)",
+      "parentBulletText": "Maximalprinzip und Minimalprinzip als oekonomische Prinzipien erklaeren.",
+      "sourceRef": "Lehrplan Sozialkunde Gymnasium Klassenstufe 9 Saarland, Unterrichtseinheit Wirtschaft und Arbeitswelt, Sozialkunde 9: Notwendigkeit des Wirtschaftens und Produktionsfaktoren, S. 24.",
+      "courseLevel": "SekI",
+      "granularity": "officialContentOrStandard",
+      "tags": [
+        "jurisdiction:DE-SL",
+        "subject:Wirtschaft",
+        "stage:SekI",
+        "topic:SK9-WIRTSCHAFTEN-GRUNDLAGEN"
+      ],
+      "rawSourceText": "Maximalprinzip und Minimalprinzip als oekonomische Prinzipien erklaeren.",
+      "rawSourceSpan": "SK9-WIRTSCHAFTEN-GRUNDLAGEN (2)",
+      "rawParentBulletText": "Maximalprinzip und Minimalprinzip als oekonomische Prinzipien erklaeren.",
+      "canonicalGoalIds": [
+        "f72eef5b-97dc-52b2-8879-838a7c6600be",
+        "5b5ed3cb-7c2c-5b0f-a515-c967d8d23644",
+        "26ebbe6e-6512-520d-80a4-2e7e80f29f72"
+      ]
+    },
+    {
+      "id": "de-sl-sozialkunde-9-wirtschaft-sk9-wirtschaften-grundlagen-g03-ce024253",
+      "passageId": "de-sl-sozialkunde-9-wirtschaft:sk9-wirtschaften-grundlagen",
+      "topicCode": "SK9-WIRTSCHAFTEN-GRUNDLAGEN",
+      "bulletIndex": 3,
+      "aspectIndex": 1,
+      "title": "SL SK9-WIRTSCHAFTEN-GRUNDLAGEN (3): Produktionsfaktoren Natur, Arbeit und Kapital definieren und differenzieren.",
+      "description": "Source-Ziel aus Sozialkunde 9: Notwendigkeit des Wirtschaftens und Produktionsfaktoren: Produktionsfaktoren Natur, Arbeit und Kapital definieren und differenzieren.",
+      "sourceText": "Produktionsfaktoren Natur, Arbeit und Kapital definieren und differenzieren.",
+      "sourceSpan": "SK9-WIRTSCHAFTEN-GRUNDLAGEN (3)",
+      "parentBulletText": "Produktionsfaktoren Natur, Arbeit und Kapital definieren und differenzieren.",
+      "sourceRef": "Lehrplan Sozialkunde Gymnasium Klassenstufe 9 Saarland, Unterrichtseinheit Wirtschaft und Arbeitswelt, Sozialkunde 9: Notwendigkeit des Wirtschaftens und Produktionsfaktoren, S. 24.",
+      "courseLevel": "SekI",
+      "granularity": "officialContentOrStandard",
+      "tags": [
+        "jurisdiction:DE-SL",
+        "subject:Wirtschaft",
+        "stage:SekI",
+        "topic:SK9-WIRTSCHAFTEN-GRUNDLAGEN"
+      ],
+      "rawSourceText": "Produktionsfaktoren Natur, Arbeit und Kapital definieren und differenzieren.",
+      "rawSourceSpan": "SK9-WIRTSCHAFTEN-GRUNDLAGEN (3)",
+      "rawParentBulletText": "Produktionsfaktoren Natur, Arbeit und Kapital definieren und differenzieren.",
+      "canonicalGoalIds": [
+        "6d4a38df-527c-534b-8c0a-c6b546dae5b1",
+        "2ccb9f7e-1512-5970-85a1-71ec42734eb9",
+        "ae7b709c-6139-5b05-8615-197bff511d9f"
+      ]
+    },
+    {
+      "id": "de-sl-sozialkunde-9-wirtschaft-sk9-wirtschaften-grundlagen-g04-07a858f4",
+      "passageId": "de-sl-sozialkunde-9-wirtschaft:sk9-wirtschaften-grundlagen",
+      "topicCode": "SK9-WIRTSCHAFTEN-GRUNDLAGEN",
+      "bulletIndex": 4,
+      "aspectIndex": 1,
+      "title": "SL SK9-WIRTSCHAFTEN-GRUNDLAGEN (4): Gueterproduktion als Kombinationsprozess der Produktionsfaktoren erlaeutern.",
+      "description": "Source-Ziel aus Sozialkunde 9: Notwendigkeit des Wirtschaftens und Produktionsfaktoren: Gueterproduktion als Kombinationsprozess der Produktionsfaktoren erlaeutern.",
+      "sourceText": "Gueterproduktion als Kombinationsprozess der Produktionsfaktoren erlaeutern.",
+      "sourceSpan": "SK9-WIRTSCHAFTEN-GRUNDLAGEN (4)",
+      "parentBulletText": "Gueterproduktion als Kombinationsprozess der Produktionsfaktoren erlaeutern.",
+      "sourceRef": "Lehrplan Sozialkunde Gymnasium Klassenstufe 9 Saarland, Unterrichtseinheit Wirtschaft und Arbeitswelt, Sozialkunde 9: Notwendigkeit des Wirtschaftens und Produktionsfaktoren, S. 24.",
+      "courseLevel": "SekI",
+      "granularity": "officialContentOrStandard",
+      "tags": [
+        "jurisdiction:DE-SL",
+        "subject:Wirtschaft",
+        "stage:SekI",
+        "topic:SK9-WIRTSCHAFTEN-GRUNDLAGEN"
+      ],
+      "rawSourceText": "Gueterproduktion als Kombinationsprozess der Produktionsfaktoren erlaeutern.",
+      "rawSourceSpan": "SK9-WIRTSCHAFTEN-GRUNDLAGEN (4)",
+      "rawParentBulletText": "Gueterproduktion als Kombinationsprozess der Produktionsfaktoren erlaeutern.",
+      "canonicalGoalIds": [
+        "2ccb9f7e-1512-5970-85a1-71ec42734eb9",
+        "aa9db8f6-c81e-5247-8f84-5f2b968ab2c4",
+        "b215bd82-2b6b-5b00-8a0b-85c7ff249bc2"
+      ]
+    },
+    {
+      "id": "de-sl-sozialkunde-9-wirtschaft-sk9-wirtschaften-grundlagen-g05-85fa9ac7",
+      "passageId": "de-sl-sozialkunde-9-wirtschaft:sk9-wirtschaften-grundlagen",
+      "topicCode": "SK9-WIRTSCHAFTEN-GRUNDLAGEN",
+      "bulletIndex": 5,
+      "aspectIndex": 1,
+      "title": "SL SK9-WIRTSCHAFTEN-GRUNDLAGEN (5): Formen der Arbeitsteilung unterscheiden und volkswirtschaftlich beurteilen.",
+      "description": "Source-Ziel aus Sozialkunde 9: Notwendigkeit des Wirtschaftens und Produktionsfaktoren: Formen der Arbeitsteilung unterscheiden und volkswirtschaftlich beurteilen.",
+      "sourceText": "Formen der Arbeitsteilung unterscheiden und volkswirtschaftlich beurteilen.",
+      "sourceSpan": "SK9-WIRTSCHAFTEN-GRUNDLAGEN (5)",
+      "parentBulletText": "Formen der Arbeitsteilung unterscheiden und volkswirtschaftlich beurteilen.",
+      "sourceRef": "Lehrplan Sozialkunde Gymnasium Klassenstufe 9 Saarland, Unterrichtseinheit Wirtschaft und Arbeitswelt, Sozialkunde 9: Notwendigkeit des Wirtschaftens und Produktionsfaktoren, S. 24.",
+      "courseLevel": "SekI",
+      "granularity": "officialContentOrStandard",
+      "tags": [
+        "jurisdiction:DE-SL",
+        "subject:Wirtschaft",
+        "stage:SekI",
+        "topic:SK9-WIRTSCHAFTEN-GRUNDLAGEN"
+      ],
+      "rawSourceText": "Formen der Arbeitsteilung unterscheiden und volkswirtschaftlich beurteilen.",
+      "rawSourceSpan": "SK9-WIRTSCHAFTEN-GRUNDLAGEN (5)",
+      "rawParentBulletText": "Formen der Arbeitsteilung unterscheiden und volkswirtschaftlich beurteilen.",
+      "canonicalGoalIds": [
+        "ae7b709c-6139-5b05-8615-197bff511d9f",
+        "641dee8e-9658-5db1-89eb-2353f8322a8a",
+        "11c57203-1619-5bba-8905-9c10d7f77d57"
+      ]
+    },
+    {
+      "id": "de-sl-sozialkunde-9-wirtschaft-sk9-markt-geld-kaufen-g01-9366f0d0",
+      "passageId": "de-sl-sozialkunde-9-wirtschaft:sk9-markt-geld-kaufen",
+      "topicCode": "SK9-MARKT-GELD-KAUFEN",
+      "bulletIndex": 1,
+      "aspectIndex": 1,
+      "title": "SL SK9-MARKT-GELD-KAUFEN (1): Tausch, Kauf und Geld als Folge arbeitsteiliger Wirtschaft begruenden.",
+      "description": "Source-Ziel aus Sozialkunde 9: Tausch, Kauf, Maerkte, Zahlungsformen und Zahlungsmittel: Tausch, Kauf und Geld als Folge arbeitsteiliger Wirtschaft begruenden.",
+      "sourceText": "Tausch, Kauf und Geld als Folge arbeitsteiliger Wirtschaft begruenden.",
+      "sourceSpan": "SK9-MARKT-GELD-KAUFEN (1)",
+      "parentBulletText": "Tausch, Kauf und Geld als Folge arbeitsteiliger Wirtschaft begruenden.",
+      "sourceRef": "Lehrplan Sozialkunde Gymnasium Klassenstufe 9 Saarland, Unterrichtseinheit Wirtschaft und Arbeitswelt, Sozialkunde 9: Tausch, Kauf, Maerkte, Zahlungsformen und Zahlungsmittel, S. 25.",
+      "courseLevel": "SekI",
+      "granularity": "officialContentOrStandard",
+      "tags": [
+        "jurisdiction:DE-SL",
+        "subject:Wirtschaft",
+        "stage:SekI",
+        "topic:SK9-MARKT-GELD-KAUFEN"
+      ],
+      "rawSourceText": "Tausch, Kauf und Geld als Folge arbeitsteiliger Wirtschaft begruenden.",
+      "rawSourceSpan": "SK9-MARKT-GELD-KAUFEN (1)",
+      "rawParentBulletText": "Tausch, Kauf und Geld als Folge arbeitsteiliger Wirtschaft begruenden.",
+      "canonicalGoalIds": [
+        "f72eef5b-97dc-52b2-8879-838a7c6600be",
+        "40676995-14fc-55a9-89ae-440b2ee3ab33",
+        "e2ac2cc2-894a-5e61-8acb-f5d88811739d"
+      ]
+    },
+    {
+      "id": "de-sl-sozialkunde-9-wirtschaft-sk9-markt-geld-kaufen-g02-f1e1b1a0",
+      "passageId": "de-sl-sozialkunde-9-wirtschaft:sk9-markt-geld-kaufen",
+      "topicCode": "SK9-MARKT-GELD-KAUFEN",
+      "bulletIndex": 2,
+      "aspectIndex": 1,
+      "title": "SL SK9-MARKT-GELD-KAUFEN (2): Markt, Marktarten und vollkommene beziehungsweise unvollkommene Maerkte unterscheiden.",
+      "description": "Source-Ziel aus Sozialkunde 9: Tausch, Kauf, Maerkte, Zahlungsformen und Zahlungsmittel: Markt, Marktarten und vollkommene beziehungsweise unvollkommene Maerkte unterscheiden.",
+      "sourceText": "Markt, Marktarten und vollkommene beziehungsweise unvollkommene Maerkte unterscheiden.",
+      "sourceSpan": "SK9-MARKT-GELD-KAUFEN (2)",
+      "parentBulletText": "Markt, Marktarten und vollkommene beziehungsweise unvollkommene Maerkte unterscheiden.",
+      "sourceRef": "Lehrplan Sozialkunde Gymnasium Klassenstufe 9 Saarland, Unterrichtseinheit Wirtschaft und Arbeitswelt, Sozialkunde 9: Tausch, Kauf, Maerkte, Zahlungsformen und Zahlungsmittel, S. 25.",
+      "courseLevel": "SekI",
+      "granularity": "officialContentOrStandard",
+      "tags": [
+        "jurisdiction:DE-SL",
+        "subject:Wirtschaft",
+        "stage:SekI",
+        "topic:SK9-MARKT-GELD-KAUFEN"
+      ],
+      "rawSourceText": "Markt, Marktarten und vollkommene beziehungsweise unvollkommene Maerkte unterscheiden.",
+      "rawSourceSpan": "SK9-MARKT-GELD-KAUFEN (2)",
+      "rawParentBulletText": "Markt, Marktarten und vollkommene beziehungsweise unvollkommene Maerkte unterscheiden.",
+      "canonicalGoalIds": [
+        "8ad94aeb-81ad-58ce-8792-c691f97efd53",
+        "98136a27-120d-5278-b9b9-d833c0ea5fc0",
+        "cb21bcbe-755d-5b0d-b02a-be22c9d26e43"
+      ]
+    },
+    {
+      "id": "de-sl-sozialkunde-9-wirtschaft-sk9-markt-geld-kaufen-g03-edbc987c",
+      "passageId": "de-sl-sozialkunde-9-wirtschaft:sk9-markt-geld-kaufen",
+      "topicCode": "SK9-MARKT-GELD-KAUFEN",
+      "bulletIndex": 3,
+      "aspectIndex": 1,
+      "title": "SL SK9-MARKT-GELD-KAUFEN (3): Marktformen Polypol, Oligopol und Monopol erlaeutern.",
+      "description": "Source-Ziel aus Sozialkunde 9: Tausch, Kauf, Maerkte, Zahlungsformen und Zahlungsmittel: Marktformen Polypol, Oligopol und Monopol erlaeutern.",
+      "sourceText": "Marktformen Polypol, Oligopol und Monopol erlaeutern.",
+      "sourceSpan": "SK9-MARKT-GELD-KAUFEN (3)",
+      "parentBulletText": "Marktformen Polypol, Oligopol und Monopol erlaeutern.",
+      "sourceRef": "Lehrplan Sozialkunde Gymnasium Klassenstufe 9 Saarland, Unterrichtseinheit Wirtschaft und Arbeitswelt, Sozialkunde 9: Tausch, Kauf, Maerkte, Zahlungsformen und Zahlungsmittel, S. 25.",
+      "courseLevel": "SekI",
+      "granularity": "officialContentOrStandard",
+      "tags": [
+        "jurisdiction:DE-SL",
+        "subject:Wirtschaft",
+        "stage:SekI",
+        "topic:SK9-MARKT-GELD-KAUFEN"
+      ],
+      "rawSourceText": "Marktformen Polypol, Oligopol und Monopol erlaeutern.",
+      "rawSourceSpan": "SK9-MARKT-GELD-KAUFEN (3)",
+      "rawParentBulletText": "Marktformen Polypol, Oligopol und Monopol erlaeutern.",
+      "canonicalGoalIds": [
+        "98136a27-120d-5278-b9b9-d833c0ea5fc0",
+        "cb21bcbe-755d-5b0d-b02a-be22c9d26e43",
+        "af709beb-2a7e-5df0-bc91-f8f0e0cb99f8"
+      ]
+    },
+    {
+      "id": "de-sl-sozialkunde-9-wirtschaft-sk9-markt-geld-kaufen-g04-453895ba",
+      "passageId": "de-sl-sozialkunde-9-wirtschaft:sk9-markt-geld-kaufen",
+      "topicCode": "SK9-MARKT-GELD-KAUFEN",
+      "bulletIndex": 4,
+      "aspectIndex": 1,
+      "title": "SL SK9-MARKT-GELD-KAUFEN (4): Angebots- und Nachfragefunktionen beschreiben und grafisch darstellen.",
+      "description": "Source-Ziel aus Sozialkunde 9: Tausch, Kauf, Maerkte, Zahlungsformen und Zahlungsmittel: Angebots- und Nachfragefunktionen beschreiben und grafisch darstellen.",
+      "sourceText": "Angebots- und Nachfragefunktionen beschreiben und grafisch darstellen.",
+      "sourceSpan": "SK9-MARKT-GELD-KAUFEN (4)",
+      "parentBulletText": "Angebots- und Nachfragefunktionen beschreiben und grafisch darstellen.",
+      "sourceRef": "Lehrplan Sozialkunde Gymnasium Klassenstufe 9 Saarland, Unterrichtseinheit Wirtschaft und Arbeitswelt, Sozialkunde 9: Tausch, Kauf, Maerkte, Zahlungsformen und Zahlungsmittel, S. 25.",
+      "courseLevel": "SekI",
+      "granularity": "officialContentOrStandard",
+      "tags": [
+        "jurisdiction:DE-SL",
+        "subject:Wirtschaft",
+        "stage:SekI",
+        "topic:SK9-MARKT-GELD-KAUFEN"
+      ],
+      "rawSourceText": "Angebots- und Nachfragefunktionen beschreiben und grafisch darstellen.",
+      "rawSourceSpan": "SK9-MARKT-GELD-KAUFEN (4)",
+      "rawParentBulletText": "Angebots- und Nachfragefunktionen beschreiben und grafisch darstellen.",
+      "canonicalGoalIds": [
+        "8ad94aeb-81ad-58ce-8792-c691f97efd53",
+        "50e07b86-428c-5f9c-8c7e-0d0669343af5",
+        "3bcb976d-3e45-5c62-81ac-5ed909df202b"
+      ]
+    },
+    {
+      "id": "de-sl-sozialkunde-9-wirtschaft-sk9-markt-geld-kaufen-g05-aecc2d33",
+      "passageId": "de-sl-sozialkunde-9-wirtschaft:sk9-markt-geld-kaufen",
+      "topicCode": "SK9-MARKT-GELD-KAUFEN",
+      "bulletIndex": 5,
+      "aspectIndex": 1,
+      "title": "SL SK9-MARKT-GELD-KAUFEN (5): Kaeufermarkt und Verkaeufermarkt unterscheiden.",
+      "description": "Source-Ziel aus Sozialkunde 9: Tausch, Kauf, Maerkte, Zahlungsformen und Zahlungsmittel: Kaeufermarkt und Verkaeufermarkt unterscheiden.",
+      "sourceText": "Kaeufermarkt und Verkaeufermarkt unterscheiden.",
+      "sourceSpan": "SK9-MARKT-GELD-KAUFEN (5)",
+      "parentBulletText": "Kaeufermarkt und Verkaeufermarkt unterscheiden.",
+      "sourceRef": "Lehrplan Sozialkunde Gymnasium Klassenstufe 9 Saarland, Unterrichtseinheit Wirtschaft und Arbeitswelt, Sozialkunde 9: Tausch, Kauf, Maerkte, Zahlungsformen und Zahlungsmittel, S. 25.",
+      "courseLevel": "SekI",
+      "granularity": "officialContentOrStandard",
+      "tags": [
+        "jurisdiction:DE-SL",
+        "subject:Wirtschaft",
+        "stage:SekI",
+        "topic:SK9-MARKT-GELD-KAUFEN"
+      ],
+      "rawSourceText": "Kaeufermarkt und Verkaeufermarkt unterscheiden.",
+      "rawSourceSpan": "SK9-MARKT-GELD-KAUFEN (5)",
+      "rawParentBulletText": "Kaeufermarkt und Verkaeufermarkt unterscheiden.",
+      "canonicalGoalIds": [
+        "8ad94aeb-81ad-58ce-8792-c691f97efd53",
+        "50e07b86-428c-5f9c-8c7e-0d0669343af5",
+        "3bcb976d-3e45-5c62-81ac-5ed909df202b"
+      ]
+    },
+    {
+      "id": "de-sl-sozialkunde-9-wirtschaft-sk9-markt-geld-kaufen-g06-4147aeef",
+      "passageId": "de-sl-sozialkunde-9-wirtschaft:sk9-markt-geld-kaufen",
+      "topicCode": "SK9-MARKT-GELD-KAUFEN",
+      "bulletIndex": 6,
+      "aspectIndex": 1,
+      "title": "SL SK9-MARKT-GELD-KAUFEN (6): Gleichgewichtspreis rechnerisch und grafisch bestimmen.",
+      "description": "Source-Ziel aus Sozialkunde 9: Tausch, Kauf, Maerkte, Zahlungsformen und Zahlungsmittel: Gleichgewichtspreis rechnerisch und grafisch bestimmen.",
+      "sourceText": "Gleichgewichtspreis rechnerisch und grafisch bestimmen.",
+      "sourceSpan": "SK9-MARKT-GELD-KAUFEN (6)",
+      "parentBulletText": "Gleichgewichtspreis rechnerisch und grafisch bestimmen.",
+      "sourceRef": "Lehrplan Sozialkunde Gymnasium Klassenstufe 9 Saarland, Unterrichtseinheit Wirtschaft und Arbeitswelt, Sozialkunde 9: Tausch, Kauf, Maerkte, Zahlungsformen und Zahlungsmittel, S. 25.",
+      "courseLevel": "SekI",
+      "granularity": "officialContentOrStandard",
+      "tags": [
+        "jurisdiction:DE-SL",
+        "subject:Wirtschaft",
+        "stage:SekI",
+        "topic:SK9-MARKT-GELD-KAUFEN"
+      ],
+      "rawSourceText": "Gleichgewichtspreis rechnerisch und grafisch bestimmen.",
+      "rawSourceSpan": "SK9-MARKT-GELD-KAUFEN (6)",
+      "rawParentBulletText": "Gleichgewichtspreis rechnerisch und grafisch bestimmen.",
+      "canonicalGoalIds": [
+        "50e07b86-428c-5f9c-8c7e-0d0669343af5",
+        "3bcb976d-3e45-5c62-81ac-5ed909df202b"
+      ]
+    },
+    {
+      "id": "de-sl-sozialkunde-9-wirtschaft-sk9-markt-geld-kaufen-g07-3818e1f5",
+      "passageId": "de-sl-sozialkunde-9-wirtschaft:sk9-markt-geld-kaufen",
+      "topicCode": "SK9-MARKT-GELD-KAUFEN",
+      "bulletIndex": 7,
+      "aspectIndex": 1,
+      "title": "SL SK9-MARKT-GELD-KAUFEN (7): Preismechanismus im Polypol durch Veraenderungen von Angebot und Nachfrage erklaeren.",
+      "description": "Source-Ziel aus Sozialkunde 9: Tausch, Kauf, Maerkte, Zahlungsformen und Zahlungsmittel: Preismechanismus im Polypol durch Veraenderungen von Angebot und Nachfrage erklaeren.",
+      "sourceText": "Preismechanismus im Polypol durch Veraenderungen von Angebot und Nachfrage erklaeren.",
+      "sourceSpan": "SK9-MARKT-GELD-KAUFEN (7)",
+      "parentBulletText": "Preismechanismus im Polypol durch Veraenderungen von Angebot und Nachfrage erklaeren.",
+      "sourceRef": "Lehrplan Sozialkunde Gymnasium Klassenstufe 9 Saarland, Unterrichtseinheit Wirtschaft und Arbeitswelt, Sozialkunde 9: Tausch, Kauf, Maerkte, Zahlungsformen und Zahlungsmittel, S. 25.",
+      "courseLevel": "SekI",
+      "granularity": "officialContentOrStandard",
+      "tags": [
+        "jurisdiction:DE-SL",
+        "subject:Wirtschaft",
+        "stage:SekI",
+        "topic:SK9-MARKT-GELD-KAUFEN"
+      ],
+      "rawSourceText": "Preismechanismus im Polypol durch Veraenderungen von Angebot und Nachfrage erklaeren.",
+      "rawSourceSpan": "SK9-MARKT-GELD-KAUFEN (7)",
+      "rawParentBulletText": "Preismechanismus im Polypol durch Veraenderungen von Angebot und Nachfrage erklaeren.",
+      "canonicalGoalIds": [
+        "50e07b86-428c-5f9c-8c7e-0d0669343af5",
+        "3bcb976d-3e45-5c62-81ac-5ed909df202b",
+        "98136a27-120d-5278-b9b9-d833c0ea5fc0"
+      ]
+    },
+    {
+      "id": "de-sl-sozialkunde-9-wirtschaft-sk9-markt-geld-kaufen-g08-c0236680",
+      "passageId": "de-sl-sozialkunde-9-wirtschaft:sk9-markt-geld-kaufen",
+      "topicCode": "SK9-MARKT-GELD-KAUFEN",
+      "bulletIndex": 8,
+      "aspectIndex": 1,
+      "title": "SL SK9-MARKT-GELD-KAUFEN (8): Geldfunktionen als Tausch- und Zahlungsmittel, Recheneinheit und Wertaufbewahrungsmittel unterscheiden.",
+      "description": "Source-Ziel aus Sozialkunde 9: Tausch, Kauf, Maerkte, Zahlungsformen und Zahlungsmittel: Geldfunktionen als Tausch- und Zahlungsmittel, Recheneinheit und Wertaufbewahrungsmittel unterscheiden.",
+      "sourceText": "Geldfunktionen als Tausch- und Zahlungsmittel, Recheneinheit und Wertaufbewahrungsmittel unterscheiden.",
+      "sourceSpan": "SK9-MARKT-GELD-KAUFEN (8)",
+      "parentBulletText": "Geldfunktionen als Tausch- und Zahlungsmittel, Recheneinheit und Wertaufbewahrungsmittel unterscheiden.",
+      "sourceRef": "Lehrplan Sozialkunde Gymnasium Klassenstufe 9 Saarland, Unterrichtseinheit Wirtschaft und Arbeitswelt, Sozialkunde 9: Tausch, Kauf, Maerkte, Zahlungsformen und Zahlungsmittel, S. 25.",
+      "courseLevel": "SekI",
+      "granularity": "officialContentOrStandard",
+      "tags": [
+        "jurisdiction:DE-SL",
+        "subject:Wirtschaft",
+        "stage:SekI",
+        "topic:SK9-MARKT-GELD-KAUFEN"
+      ],
+      "rawSourceText": "Geldfunktionen als Tausch- und Zahlungsmittel, Recheneinheit und Wertaufbewahrungsmittel unterscheiden.",
+      "rawSourceSpan": "SK9-MARKT-GELD-KAUFEN (8)",
+      "rawParentBulletText": "Geldfunktionen als Tausch- und Zahlungsmittel, Recheneinheit und Wertaufbewahrungsmittel unterscheiden.",
+      "canonicalGoalIds": [
+        "40676995-14fc-55a9-89ae-440b2ee3ab33",
+        "e2ac2cc2-894a-5e61-8acb-f5d88811739d"
+      ]
+    },
+    {
+      "id": "de-sl-sozialkunde-9-wirtschaft-sk9-markt-geld-kaufen-g09-144b9ab0",
+      "passageId": "de-sl-sozialkunde-9-wirtschaft:sk9-markt-geld-kaufen",
+      "topicCode": "SK9-MARKT-GELD-KAUFEN",
+      "bulletIndex": 9,
+      "aspectIndex": 1,
+      "title": "SL SK9-MARKT-GELD-KAUFEN (9): Geldformen und Zahlungsarten unterscheiden und beurteilen.",
+      "description": "Source-Ziel aus Sozialkunde 9: Tausch, Kauf, Maerkte, Zahlungsformen und Zahlungsmittel: Geldformen und Zahlungsarten unterscheiden und beurteilen.",
+      "sourceText": "Geldformen und Zahlungsarten unterscheiden und beurteilen.",
+      "sourceSpan": "SK9-MARKT-GELD-KAUFEN (9)",
+      "parentBulletText": "Geldformen und Zahlungsarten unterscheiden und beurteilen.",
+      "sourceRef": "Lehrplan Sozialkunde Gymnasium Klassenstufe 9 Saarland, Unterrichtseinheit Wirtschaft und Arbeitswelt, Sozialkunde 9: Tausch, Kauf, Maerkte, Zahlungsformen und Zahlungsmittel, S. 25.",
+      "courseLevel": "SekI",
+      "granularity": "officialContentOrStandard",
+      "tags": [
+        "jurisdiction:DE-SL",
+        "subject:Wirtschaft",
+        "stage:SekI",
+        "topic:SK9-MARKT-GELD-KAUFEN"
+      ],
+      "rawSourceText": "Geldformen und Zahlungsarten unterscheiden und beurteilen.",
+      "rawSourceSpan": "SK9-MARKT-GELD-KAUFEN (9)",
+      "rawParentBulletText": "Geldformen und Zahlungsarten unterscheiden und beurteilen.",
+      "canonicalGoalIds": [
+        "40676995-14fc-55a9-89ae-440b2ee3ab33",
+        "e2ac2cc2-894a-5e61-8acb-f5d88811739d",
+        "5b5ed3cb-7c2c-5b0f-a515-c967d8d23644"
+      ]
+    },
+    {
+      "id": "de-sl-sozialkunde-9-wirtschaft-sk9-markt-geld-kaufen-g10-5aebca92",
+      "passageId": "de-sl-sozialkunde-9-wirtschaft:sk9-markt-geld-kaufen",
+      "topicCode": "SK9-MARKT-GELD-KAUFEN",
+      "bulletIndex": 10,
+      "aspectIndex": 1,
+      "title": "SL SK9-MARKT-GELD-KAUFEN (10): Kaufen im Internet mit Chancen, Risiken und Verbraucherrechten bewerten.",
+      "description": "Source-Ziel aus Sozialkunde 9: Tausch, Kauf, Maerkte, Zahlungsformen und Zahlungsmittel: Kaufen im Internet mit Chancen, Risiken und Verbraucherrechten bewerten.",
+      "sourceText": "Kaufen im Internet mit Chancen, Risiken und Verbraucherrechten bewerten.",
+      "sourceSpan": "SK9-MARKT-GELD-KAUFEN (10)",
+      "parentBulletText": "Kaufen im Internet mit Chancen, Risiken und Verbraucherrechten bewerten.",
+      "sourceRef": "Lehrplan Sozialkunde Gymnasium Klassenstufe 9 Saarland, Unterrichtseinheit Wirtschaft und Arbeitswelt, Sozialkunde 9: Tausch, Kauf, Maerkte, Zahlungsformen und Zahlungsmittel, S. 25.",
+      "courseLevel": "SekI",
+      "granularity": "officialContentOrStandard",
+      "tags": [
+        "jurisdiction:DE-SL",
+        "subject:Wirtschaft",
+        "stage:SekI",
+        "topic:SK9-MARKT-GELD-KAUFEN"
+      ],
+      "rawSourceText": "Kaufen im Internet mit Chancen, Risiken und Verbraucherrechten bewerten.",
+      "rawSourceSpan": "SK9-MARKT-GELD-KAUFEN (10)",
+      "rawParentBulletText": "Kaufen im Internet mit Chancen, Risiken und Verbraucherrechten bewerten.",
+      "canonicalGoalIds": [
+        "5b5ed3cb-7c2c-5b0f-a515-c967d8d23644",
+        "c386592a-b259-538c-9929-25775af99b83",
+        "a2eda0df-6c5e-5fb5-bc64-8f6127eae50b",
+        "c4faf50c-8778-5540-8276-87840cc81e05",
+        "1f5c3e82-dc4a-54cc-838e-66e4d434a7b5",
+        "e2ac2cc2-894a-5e61-8acb-f5d88811739d"
+      ]
+    },
+    {
+      "id": "de-sl-sozialkunde-9-wirtschaft-sk9-arbeitswelt-konsum-g01-614ada10",
+      "passageId": "de-sl-sozialkunde-9-wirtschaft:sk9-arbeitswelt-konsum",
+      "topicCode": "SK9-ARBEITSWELT-KONSUM",
+      "bulletIndex": 1,
+      "aspectIndex": 1,
+      "title": "SL SK9-ARBEITSWELT-KONSUM (1): Eigene Konsumentscheidungen als Teilnehmerin oder Teilnehmer des Wirtschaftsgeschehens kritisch hinterfragen.",
+      "description": "Source-Ziel aus Sozialkunde 9: Wirtschaft und Arbeitswelt als Orientierung: Eigene Konsumentscheidungen als Teilnehmerin oder Teilnehmer des Wirtschaftsgeschehens kritisch hinterfragen.",
+      "sourceText": "Eigene Konsumentscheidungen als Teilnehmerin oder Teilnehmer des Wirtschaftsgeschehens kritisch hinterfragen.",
+      "sourceSpan": "SK9-ARBEITSWELT-KONSUM (1)",
+      "parentBulletText": "Eigene Konsumentscheidungen als Teilnehmerin oder Teilnehmer des Wirtschaftsgeschehens kritisch hinterfragen.",
+      "sourceRef": "Lehrplan Sozialkunde Gymnasium Klassenstufe 9 Saarland, Unterrichtseinheit Wirtschaft und Arbeitswelt, Sozialkunde 9: Wirtschaft und Arbeitswelt als Orientierung, S. 26.",
+      "courseLevel": "SekI",
+      "granularity": "officialContentOrStandard",
+      "tags": [
+        "jurisdiction:DE-SL",
+        "subject:Wirtschaft",
+        "stage:SekI",
+        "topic:SK9-ARBEITSWELT-KONSUM"
+      ],
+      "rawSourceText": "Eigene Konsumentscheidungen als Teilnehmerin oder Teilnehmer des Wirtschaftsgeschehens kritisch hinterfragen.",
+      "rawSourceSpan": "SK9-ARBEITSWELT-KONSUM (1)",
+      "rawParentBulletText": "Eigene Konsumentscheidungen als Teilnehmerin oder Teilnehmer des Wirtschaftsgeschehens kritisch hinterfragen.",
+      "canonicalGoalIds": [
+        "5b5ed3cb-7c2c-5b0f-a515-c967d8d23644",
+        "a60e0541-80e1-5f94-86fd-073f5a00bee8",
+        "bac0f1d3-e671-5c2b-bd6d-2947f1fe6d9b"
+      ]
+    },
+    {
+      "id": "de-sl-sozialkunde-9-wirtschaft-sk9-arbeitswelt-konsum-g02-982dca5e",
+      "passageId": "de-sl-sozialkunde-9-wirtschaft:sk9-arbeitswelt-konsum",
+      "topicCode": "SK9-ARBEITSWELT-KONSUM",
+      "bulletIndex": 2,
+      "aspectIndex": 1,
+      "title": "SL SK9-ARBEITSWELT-KONSUM (2): Auswirkungen von Arbeitsteilung auf Arbeitnehmer, Arbeitgeber und Verbraucher beurteilen.",
+      "description": "Source-Ziel aus Sozialkunde 9: Wirtschaft und Arbeitswelt als Orientierung: Auswirkungen von Arbeitsteilung auf Arbeitnehmer, Arbeitgeber und Verbraucher beurteilen.",
+      "sourceText": "Auswirkungen von Arbeitsteilung auf Arbeitnehmer, Arbeitgeber und Verbraucher beurteilen.",
+      "sourceSpan": "SK9-ARBEITSWELT-KONSUM (2)",
+      "parentBulletText": "Auswirkungen von Arbeitsteilung auf Arbeitnehmer, Arbeitgeber und Verbraucher beurteilen.",
+      "sourceRef": "Lehrplan Sozialkunde Gymnasium Klassenstufe 9 Saarland, Unterrichtseinheit Wirtschaft und Arbeitswelt, Sozialkunde 9: Wirtschaft und Arbeitswelt als Orientierung, S. 26.",
+      "courseLevel": "SekI",
+      "granularity": "officialContentOrStandard",
+      "tags": [
+        "jurisdiction:DE-SL",
+        "subject:Wirtschaft",
+        "stage:SekI",
+        "topic:SK9-ARBEITSWELT-KONSUM"
+      ],
+      "rawSourceText": "Auswirkungen von Arbeitsteilung auf Arbeitnehmer, Arbeitgeber und Verbraucher beurteilen.",
+      "rawSourceSpan": "SK9-ARBEITSWELT-KONSUM (2)",
+      "rawParentBulletText": "Auswirkungen von Arbeitsteilung auf Arbeitnehmer, Arbeitgeber und Verbraucher beurteilen.",
+      "canonicalGoalIds": [
+        "9cb6bd3b-1ecf-57af-8127-853fc969d7f5",
+        "7c72848d-8bc9-58e2-a690-fd17ac650a88",
+        "e90586d8-8e0a-5355-87d0-4ecd90dbe021",
+        "5b5ed3cb-7c2c-5b0f-a515-c967d8d23644"
+      ]
+    },
+    {
+      "id": "de-sl-sozialkunde-9-wirtschaft-sk9-arbeitswelt-konsum-g03-8dffc832",
+      "passageId": "de-sl-sozialkunde-9-wirtschaft:sk9-arbeitswelt-konsum",
+      "topicCode": "SK9-ARBEITSWELT-KONSUM",
+      "bulletIndex": 3,
+      "aspectIndex": 1,
+      "title": "SL SK9-ARBEITSWELT-KONSUM (3): Fortschritte in der Produktionstechnik aus Texten erarbeiten und bewerten.",
+      "description": "Source-Ziel aus Sozialkunde 9: Wirtschaft und Arbeitswelt als Orientierung: Fortschritte in der Produktionstechnik aus Texten erarbeiten und bewerten.",
+      "sourceText": "Fortschritte in der Produktionstechnik aus Texten erarbeiten und bewerten.",
+      "sourceSpan": "SK9-ARBEITSWELT-KONSUM (3)",
+      "parentBulletText": "Fortschritte in der Produktionstechnik aus Texten erarbeiten und bewerten.",
+      "sourceRef": "Lehrplan Sozialkunde Gymnasium Klassenstufe 9 Saarland, Unterrichtseinheit Wirtschaft und Arbeitswelt, Sozialkunde 9: Wirtschaft und Arbeitswelt als Orientierung, S. 26.",
+      "courseLevel": "SekI",
+      "granularity": "officialContentOrStandard",
+      "tags": [
+        "jurisdiction:DE-SL",
+        "subject:Wirtschaft",
+        "stage:SekI",
+        "topic:SK9-ARBEITSWELT-KONSUM"
+      ],
+      "rawSourceText": "Fortschritte in der Produktionstechnik aus Texten erarbeiten und bewerten.",
+      "rawSourceSpan": "SK9-ARBEITSWELT-KONSUM (3)",
+      "rawParentBulletText": "Fortschritte in der Produktionstechnik aus Texten erarbeiten und bewerten.",
+      "canonicalGoalIds": [
+        "2ccb9f7e-1512-5970-85a1-71ec42734eb9",
+        "21dd1fce-730a-5470-bcc3-76195941ee83",
+        "ae7b709c-6139-5b05-8615-197bff511d9f"
+      ]
+    },
+    {
+      "id": "de-sl-sozialkunde-9-wirtschaft-sk9-arbeitswelt-konsum-g04-a4a512f7",
+      "passageId": "de-sl-sozialkunde-9-wirtschaft:sk9-arbeitswelt-konsum",
+      "topicCode": "SK9-ARBEITSWELT-KONSUM",
+      "bulletIndex": 4,
+      "aspectIndex": 1,
+      "title": "SL SK9-ARBEITSWELT-KONSUM (4): Arbeitswelt und Berufsorientierung mit Qualifikation und Lebensperspektiven verbinden.",
+      "description": "Source-Ziel aus Sozialkunde 9: Wirtschaft und Arbeitswelt als Orientierung: Arbeitswelt und Berufsorientierung mit Qualifikation und Lebensperspektiven verbinden.",
+      "sourceText": "Arbeitswelt und Berufsorientierung mit Qualifikation und Lebensperspektiven verbinden.",
+      "sourceSpan": "SK9-ARBEITSWELT-KONSUM (4)",
+      "parentBulletText": "Arbeitswelt und Berufsorientierung mit Qualifikation und Lebensperspektiven verbinden.",
+      "sourceRef": "Lehrplan Sozialkunde Gymnasium Klassenstufe 9 Saarland, Unterrichtseinheit Wirtschaft und Arbeitswelt, Sozialkunde 9: Wirtschaft und Arbeitswelt als Orientierung, S. 26.",
+      "courseLevel": "SekI",
+      "granularity": "officialContentOrStandard",
+      "tags": [
+        "jurisdiction:DE-SL",
+        "subject:Wirtschaft",
+        "stage:SekI",
+        "topic:SK9-ARBEITSWELT-KONSUM"
+      ],
+      "rawSourceText": "Arbeitswelt und Berufsorientierung mit Qualifikation und Lebensperspektiven verbinden.",
+      "rawSourceSpan": "SK9-ARBEITSWELT-KONSUM (4)",
+      "rawParentBulletText": "Arbeitswelt und Berufsorientierung mit Qualifikation und Lebensperspektiven verbinden.",
+      "canonicalGoalIds": [
+        "9cb6bd3b-1ecf-57af-8127-853fc969d7f5",
+        "8dee6c0a-0f76-5717-87b6-04ec89229371",
+        "980a3f45-b0ad-500d-8d5b-975948362b68"
+      ]
+    },
+    {
+      "id": "de-sl-sozialkunde-9-wirtschaft-sk9-arbeitswelt-konsum-g05-66fd25fb",
+      "passageId": "de-sl-sozialkunde-9-wirtschaft:sk9-arbeitswelt-konsum",
+      "topicCode": "SK9-ARBEITSWELT-KONSUM",
+      "bulletIndex": 5,
+      "aspectIndex": 1,
+      "title": "SL SK9-ARBEITSWELT-KONSUM (5): Wirtschaftliche Entscheidungen mit Verbraucherinteressen und gesellschaftlicher Verantwortung abwaegen.",
+      "description": "Source-Ziel aus Sozialkunde 9: Wirtschaft und Arbeitswelt als Orientierung: Wirtschaftliche Entscheidungen mit Verbraucherinteressen und gesellschaftlicher Verantwortung abwaegen.",
+      "sourceText": "Wirtschaftliche Entscheidungen mit Verbraucherinteressen und gesellschaftlicher Verantwortung abwaegen.",
+      "sourceSpan": "SK9-ARBEITSWELT-KONSUM (5)",
+      "parentBulletText": "Wirtschaftliche Entscheidungen mit Verbraucherinteressen und gesellschaftlicher Verantwortung abwaegen.",
+      "sourceRef": "Lehrplan Sozialkunde Gymnasium Klassenstufe 9 Saarland, Unterrichtseinheit Wirtschaft und Arbeitswelt, Sozialkunde 9: Wirtschaft und Arbeitswelt als Orientierung, S. 26.",
+      "courseLevel": "SekI",
+      "granularity": "officialContentOrStandard",
+      "tags": [
+        "jurisdiction:DE-SL",
+        "subject:Wirtschaft",
+        "stage:SekI",
+        "topic:SK9-ARBEITSWELT-KONSUM"
+      ],
+      "rawSourceText": "Wirtschaftliche Entscheidungen mit Verbraucherinteressen und gesellschaftlicher Verantwortung abwaegen.",
+      "rawSourceSpan": "SK9-ARBEITSWELT-KONSUM (5)",
+      "rawParentBulletText": "Wirtschaftliche Entscheidungen mit Verbraucherinteressen und gesellschaftlicher Verantwortung abwaegen.",
+      "canonicalGoalIds": [
+        "a60e0541-80e1-5f94-86fd-073f5a00bee8",
+        "bac0f1d3-e671-5c2b-bd6d-2947f1fe6d9b",
+        "a56d5e8d-fd09-5961-ad88-34cfdef00baa"
+      ]
+    }
+  ]
+}

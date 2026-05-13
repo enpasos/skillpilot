@@ -9,6 +9,7 @@ Current local archive status on `2026-04-11`:
 - the official Baden-Wuerttemberg Gymnasium physics export PDF is now archived locally as well
 - the first upper-secondary Physics source snapshot is now archived locally and activated in the shared DE-level provenance registries
 - the official Baden-Wuerttemberg Gymnasium chemistry export PDF is now archived locally as well
+- the official Baden-Wuerttemberg Gymnasium WBS and Wirtschaft export PDFs are now archived locally as well
 
 ## Mathematik
 ### Sekundarstufe I (Klassen 5-10)
@@ -43,3 +44,14 @@ Current local archive status on `2026-04-11`:
 - **Bildungsplan 2016 (Basisfach/Leistungsfach, Fassung 2022)**: [Landesbildungsserver BW - Chemie Gymnasium](https://www.bildungsplaene-bw.de/,Lde/LS/BP2016BW/ALLG/GYM/CH.V2)
 - Archived source PDF: `BP2016BW_ALLG_GYM_CH_V2.pdf`
 - Source extraction: `upper-secondary/source-extraction/DE_BW_CHEMIE_SEKII_BP2016_V2.source-extraction.json`
+
+## Wirtschaft
+### Sekundarstufe I (Klassen 8-10)
+- **Bildungsplan 2016**: [Landesbildungsserver BW - Wirtschaft / Berufs- und Studienorientierung Gymnasium](https://www.bildungsplaene-bw.de/,Lde/LS/BP2016BW/ALLG/GYM/WBS)
+- Archived source PDF: `BP2016BW_ALLG_GYM_WBS.pdf`
+- Source extraction: `lower-secondary/source-extraction/DE_BW_WBS_SEKI_BP2016.source-extraction.json`
+
+### Sekundarstufe II (Kursstufe, Klassen 11-12)
+- **Bildungsplan 2016**: [Landesbildungsserver BW - Wirtschaft Gymnasium](https://www.bildungsplaene-bw.de/,Lde/LS/BP2016BW/ALLG/GYM/WI)
+- Archived source PDF: `BP2016BW_ALLG_GYM_WI.pdf`
+- Source extraction: `upper-secondary/source-extraction/DE_BW_WIRTSCHAFT_SEKII_BP2016.source-extraction.json`

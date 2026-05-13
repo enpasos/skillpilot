@@ -20,3 +20,26 @@ Archived locally at:
 Generated source extraction:
 
 - `curricula/DE/Gymnasium/input/ST/lower-secondary/source-extraction/DE_ST_BIOLOGIE_SEKI_FACHLEHRPLAN_GYMNASIUM_2022.source-extraction.json`
+
+## Wirtschaft
+
+Starting point:
+https://lisa.sachsen-anhalt.de/unterricht/lehrplaene
+
+- `FLP_Wirtschaftslehre_Gymnasium_01082024.pdf`:
+  https://lisa.sachsen-anhalt.de/fileadmin/Bibliothek/Politik_und_Verwaltung/MK/LISA/Unterricht/Lehrplaene/Gym/FLP_Wirtschaftslehre_010824_LTd.pdf
+
+Scope:
+
+- Sachsen-Anhalt
+- Gymnasium
+- Wirtschaftslehre
+- lower-secondary extraction target: Schuljahrgänge 9 und 10 aus dem amtlichen Fachlehrplan Wirtschaftslehre Gymnasium
+
+Archived locally at:
+
+- `curricula/DE/Gymnasium/input/ST/FLP_Wirtschaftslehre_Gymnasium_01082024.pdf`
+
+Generated source extraction:
+
+- `curricula/DE/Gymnasium/input/ST/lower-secondary/source-extraction/DE_ST_WIRTSCHAFTSLEHRE_SEKI_FACHLEHRPLAN_GYMNASIUM_2024.source-extraction.json`

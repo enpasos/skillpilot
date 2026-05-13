@@ -1136,6 +1136,7 @@ export function buildApplicabilityCompilation(): ApplicabilityCompilationResult 
       applicabilityChanged = false
 
       for (const goal of canonical.landscape.goals) {
+        if (!isAtomicGoal(goal)) continue
         const currentApplicability = compiledByGoalId.get(goalKey(canonical.landscape.landscapeId, goal.id))
         const jurisdictions = currentApplicability?.[SUPPORTED_DIMENSION] ?? []
         if (jurisdictions.length === 0) continue
@@ -1203,21 +1204,23 @@ export function buildApplicabilityCompilation(): ApplicabilityCompilationResult 
           }
         }
 
-        for (const rawReq of goal.requires ?? []) {
-          const req = resolveCanonicalReference(rawReq)
-          const targetApplicability = compiledByGoalId.get(goalKey(req.landscapeId, req.goalId))
-          if (!targetApplicability) continue
-          if (!(targetApplicability[SUPPORTED_DIMENSION] ?? []).includes(value)) {
-            findings.push({
-              code: 'APV-102',
-              severity: 'error',
-              landscapeId: canonical.landscape.landscapeId,
-              goalId: goal.id,
-              title: goal.title,
-              dimension: SUPPORTED_DIMENSION,
-              value,
-              message: `Visible goal requires invisible prerequisite ${req.goalId} in projection ${SUPPORTED_DIMENSION}=${value}.`,
-            })
+        if (isAtomicGoal(goal)) {
+          for (const rawReq of goal.requires ?? []) {
+            const req = resolveCanonicalReference(rawReq)
+            const targetApplicability = compiledByGoalId.get(goalKey(req.landscapeId, req.goalId))
+            if (!targetApplicability) continue
+            if (!(targetApplicability[SUPPORTED_DIMENSION] ?? []).includes(value)) {
+              findings.push({
+                code: 'APV-102',
+                severity: 'error',
+                landscapeId: canonical.landscape.landscapeId,
+                goalId: goal.id,
+                title: goal.title,
+                dimension: SUPPORTED_DIMENSION,
+                value,
+                message: `Visible goal requires invisible prerequisite ${req.goalId} in projection ${SUPPORTED_DIMENSION}=${value}.`,
+              })
+            }
           }
         }
       }

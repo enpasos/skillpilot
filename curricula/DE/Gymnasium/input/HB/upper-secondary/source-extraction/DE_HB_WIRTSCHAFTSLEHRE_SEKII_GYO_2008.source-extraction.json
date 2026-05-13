@@ -1,0 +1,834 @@
+{
+  "schemaVersion": 1,
+  "extractionId": "DE-HB-WIRTSCHAFTSLEHRE-SEKII",
+  "sourceLandscapeId": "fa489d6c-c81e-5e96-8414-786d750e3bd5",
+  "targetLandscapeId": "605bdaf6-32d5-56fd-8d92-5a80c2fd2901",
+  "jurisdiction": "DE-HB",
+  "subject": "Wirtschaft",
+  "stage": "SekII",
+  "title": "Wirtschaftslehre Gymnasiale Oberstufe (Bremen, Bildungsplan 2008 Source-Extraction)",
+  "sourceDocument": {
+    "key": "HB-WIRTSCHAFTSLEHRE-GYO-2008",
+    "title": "Bildungsplan Wirtschaftslehre Gymnasiale Oberstufe Bremen",
+    "path": "curricula/DE/Gymnasium/input/HB/GyO_Wirtschaftslehre_2008.pdf",
+    "url": "https://www.lis.bremen.de/sixcms/media.php/13/GyO_Wirtschaftslehre_2008.pdf",
+    "official": true
+  },
+  "method": {
+    "passageExtraction": "pdftotext -layout; wirtschaftlich relevante Themen/Inhalte und themenbezogene Standards aus amtlichen Bremer Bildungsplaenen selektiert",
+    "sourceGoalExtraction": "one normalized source goal per official content item or tightly coupled themenbezogener Standard",
+    "scopeNote": "Die Bremer Wirtschaftslehre-Qualifikationsphase wird als eigenstaendige Wirtschaft-Source-Extraction geroutet."
+  },
+  "qualityReview": {
+    "sourceGoalCountPeerBaseline": {
+      "accepted": true,
+      "details": "HB Sek II ist thematisch auf Q1 bis Q4 konzentriert und formuliert Standards kompakt. Die Source-Ziele bilden alle verbindlichen themenbezogenen Standards ab."
+    }
+  },
+  "expectedTopicCodes": [
+    "Q1-MARKTWIRTSCHAFT-PREISBILDUNG",
+    "Q2-GELD-WAEHRUNG-FINANZMAERKTE",
+    "Q3-KONJUNKTUR-BESCHAEFTIGUNG",
+    "Q4-GLOBALISIERUNG-AUSSENWIRTSCHAFT"
+  ],
+  "pipelineStatus": {
+    "currentStep": "MAPPING-3",
+    "steps": [
+      {
+        "id": "MAPPING-1",
+        "label": "Original-Lehrplanpassagen extrahiert",
+        "status": "complete",
+        "dependsOn": [],
+        "checks": [
+          {
+            "id": "source-document-present",
+            "label": "Amtliche HB-Wirtschaft-Quelle liegt lokal vor",
+            "passed": true,
+            "details": "curricula/DE/Gymnasium/input/HB/GyO_Wirtschaftslehre_2008.pdf"
+          }
+        ]
+      },
+      {
+        "id": "MAPPING-2",
+        "label": "Source-Ziele aus Lehrplanpassagen erstellt",
+        "status": "complete",
+        "dependsOn": [
+          "MAPPING-1"
+        ],
+        "checks": [
+          {
+            "id": "source-goals-created",
+            "label": "Aus den ausgewählten HB-Passagen wurden Source-Ziele erzeugt",
+            "passed": true,
+            "details": "28 Source-Ziele."
+          }
+        ]
+      },
+      {
+        "id": "MAPPING-3",
+        "label": "Source-Ziele auf SkillPilot-Ziele gemappt",
+        "status": "incomplete",
+        "dependsOn": [
+          "MAPPING-1",
+          "MAPPING-2"
+        ],
+        "checks": [
+          {
+            "id": "m3-review-file-present",
+            "label": "M3-Review-Datei ist vorhanden",
+            "passed": true,
+            "details": "curricula/DE/Gymnasium/mapping/DE-HB/upper-secondary/hb_wirtschaftslehre_upper_secondary_source_extraction_to_canonical_wirtschaft.review.json"
+          }
+        ]
+      }
+    ]
+  },
+  "passages": [
+    {
+      "id": "de-hb-wirtschaftslehre-sekii:q1-marktwirtschaft-preisbildung",
+      "topicCode": "Q1-MARKTWIRTSCHAFT-PREISBILDUNG",
+      "title": "Q1: Wirtschaftsordnung und Preisbildung in der Sozialen Marktwirtschaft",
+      "text": "(1) Grundelemente der Marktwirtschaft im Zusammenspiel von Angebot und Nachfrage erklären.\n(2) Preisbildung auf verschiedenen Märkten analysieren und ihre Allokationsfunktion erörtern.\n(3) Einflussmöglichkeiten des Staates auf Preisbildung und Wohlstandsverteilung beurteilen.\n(4) Marktmacht durch Monopole, Kartelle und Großkonzerne analysieren.\n(5) Fusionen, Übernahmen und Zusammenschlüsse sowie Fusions- und Kartellrecht zur Wettbewerbssicherung beurteilen.\n(6) Konzentration auf nationalen und internationalen Märkten unter dem Gesichtspunkt von Marktmacht analysieren.",
+      "page": 6,
+      "sourcePath": "curricula/DE/Gymnasium/input/HB/GyO_Wirtschaftslehre_2008.pdf",
+      "rawText": "Grundelemente der Marktwirtschaft im Zusammenspiel von Angebot und Nachfrage erklären.\nPreisbildung auf verschiedenen Märkten analysieren und ihre Allokationsfunktion erörtern.\nEinflussmöglichkeiten des Staates auf Preisbildung und Wohlstandsverteilung beurteilen.\nMarktmacht durch Monopole, Kartelle und Großkonzerne analysieren.\nFusionen, Übernahmen und Zusammenschlüsse sowie Fusions- und Kartellrecht zur Wettbewerbssicherung beurteilen.\nKonzentration auf nationalen und internationalen Märkten unter dem Gesichtspunkt von Marktmacht analysieren.",
+      "sourceGoalIds": [
+        "de-hb-wirtschaftslehre-sekii-q1-marktwirtschaft-preisbildung-g01-cddd40f2",
+        "de-hb-wirtschaftslehre-sekii-q1-marktwirtschaft-preisbildung-g02-7e70cc31",
+        "de-hb-wirtschaftslehre-sekii-q1-marktwirtschaft-preisbildung-g03-bdb946e5",
+        "de-hb-wirtschaftslehre-sekii-q1-marktwirtschaft-preisbildung-g04-6d635604",
+        "de-hb-wirtschaftslehre-sekii-q1-marktwirtschaft-preisbildung-g05-ccab3c71",
+        "de-hb-wirtschaftslehre-sekii-q1-marktwirtschaft-preisbildung-g06-e50a6358"
+      ]
+    },
+    {
+      "id": "de-hb-wirtschaftslehre-sekii:q2-geld-waehrung-finanzmaerkte",
+      "topicCode": "Q2-GELD-WAEHRUNG-FINANZMAERKTE",
+      "title": "Q2: Geld- und Währungspolitik auf nationalen und internationalen Märkten",
+      "text": "(1) Entstehung und Funktionen des Geldes im geschichtlichen Kontext erläutern.\n(2) Bedeutung von Geldwertstabilität und Binnenwert des Geldes beurteilen.\n(3) Ursachen inflationärer Prozesse erkennen und im Zusammenhang darstellen.\n(4) Funktionsweise des Zentralbankensystems analysieren.\n(5) Wirkungen von Geldpolitik auf Stabilität, Wachstum und Beschäftigung beurteilen.\n(6) Wechselkurse und internationale Währungspolitik für Handelsbeziehungen analysieren.\n(7) Aktuelle Probleme internationaler Finanzmärkte und Folgen für verflochtene Volkswirtschaften beurteilen.\n(8) Zahlungsbilanz und Teilbilanzen auf wirtschaftliche Transaktionen anwenden.",
+      "page": 6,
+      "sourcePath": "curricula/DE/Gymnasium/input/HB/GyO_Wirtschaftslehre_2008.pdf",
+      "rawText": "Entstehung und Funktionen des Geldes im geschichtlichen Kontext erläutern.\nBedeutung von Geldwertstabilität und Binnenwert des Geldes beurteilen.\nUrsachen inflationärer Prozesse erkennen und im Zusammenhang darstellen.\nFunktionsweise des Zentralbankensystems analysieren.\nWirkungen von Geldpolitik auf Stabilität, Wachstum und Beschäftigung beurteilen.\nWechselkurse und internationale Währungspolitik für Handelsbeziehungen analysieren.\nAktuelle Probleme internationaler Finanzmärkte und Folgen für verflochtene Volkswirtschaften beurteilen.\nZahlungsbilanz und Teilbilanzen auf wirtschaftliche Transaktionen anwenden.",
+      "sourceGoalIds": [
+        "de-hb-wirtschaftslehre-sekii-q2-geld-waehrung-finanzmaerkte-g01-88981ec2",
+        "de-hb-wirtschaftslehre-sekii-q2-geld-waehrung-finanzmaerkte-g02-280ef9c5",
+        "de-hb-wirtschaftslehre-sekii-q2-geld-waehrung-finanzmaerkte-g03-99024d95",
+        "de-hb-wirtschaftslehre-sekii-q2-geld-waehrung-finanzmaerkte-g04-936ba41f",
+        "de-hb-wirtschaftslehre-sekii-q2-geld-waehrung-finanzmaerkte-g05-548b55a7",
+        "de-hb-wirtschaftslehre-sekii-q2-geld-waehrung-finanzmaerkte-g06-162cc8f6",
+        "de-hb-wirtschaftslehre-sekii-q2-geld-waehrung-finanzmaerkte-g07-654b03af",
+        "de-hb-wirtschaftslehre-sekii-q2-geld-waehrung-finanzmaerkte-g08-2638cb7c"
+      ]
+    },
+    {
+      "id": "de-hb-wirtschaftslehre-sekii:q3-konjunktur-beschaeftigung",
+      "topicCode": "Q3-KONJUNKTUR-BESCHAEFTIGUNG",
+      "title": "Q3: Wirtschaftspolitische Konzepte zur Beeinflussung von Konjunktur und Beschäftigung",
+      "text": "(1) Konjunkturverläufe, Konjunkturzyklen und Konjunkturindikatoren anhand aktueller Daten beurteilen.\n(2) Wirtschaftstheoretische Konzepte von Klassik über Keynes bis Neoklassik und Monetarismus vergleichen.\n(3) Wirkungsweisen wirtschaftspolitischer Konzepte zur Beeinflussung von Konjunktur und Beschäftigung beurteilen.\n(4) Maßnahmen des Staates zur Konjunktur- und Beschäftigungspolitik ökonomischen Theorien zuordnen.\n(5) Wirtschaftspolitische Grundpositionen verschiedener Parteien des Deutschen Bundestages untersuchen.\n(6) Widerstreitende Konzepte zur Lösung ökonomischer Probleme in Fachpresse und Literatur analysieren.",
+      "page": 7,
+      "sourcePath": "curricula/DE/Gymnasium/input/HB/GyO_Wirtschaftslehre_2008.pdf",
+      "rawText": "Konjunkturverläufe, Konjunkturzyklen und Konjunkturindikatoren anhand aktueller Daten beurteilen.\nWirtschaftstheoretische Konzepte von Klassik über Keynes bis Neoklassik und Monetarismus vergleichen.\nWirkungsweisen wirtschaftspolitischer Konzepte zur Beeinflussung von Konjunktur und Beschäftigung beurteilen.\nMaßnahmen des Staates zur Konjunktur- und Beschäftigungspolitik ökonomischen Theorien zuordnen.\nWirtschaftspolitische Grundpositionen verschiedener Parteien des Deutschen Bundestages untersuchen.\nWiderstreitende Konzepte zur Lösung ökonomischer Probleme in Fachpresse und Literatur analysieren.",
+      "sourceGoalIds": [
+        "de-hb-wirtschaftslehre-sekii-q3-konjunktur-beschaeftigung-g01-4251ff4e",
+        "de-hb-wirtschaftslehre-sekii-q3-konjunktur-beschaeftigung-g02-ca822f1b",
+        "de-hb-wirtschaftslehre-sekii-q3-konjunktur-beschaeftigung-g03-49478642",
+        "de-hb-wirtschaftslehre-sekii-q3-konjunktur-beschaeftigung-g04-cdaac63a",
+        "de-hb-wirtschaftslehre-sekii-q3-konjunktur-beschaeftigung-g05-5cdad3a6",
+        "de-hb-wirtschaftslehre-sekii-q3-konjunktur-beschaeftigung-g06-715a87f2"
+      ]
+    },
+    {
+      "id": "de-hb-wirtschaftslehre-sekii:q4-globalisierung-aussenwirtschaft",
+      "topicCode": "Q4-GLOBALISIERUNG-AUSSENWIRTSCHAFT",
+      "title": "Q4: Internationale Wirtschaftsbeziehungen und Globalisierung",
+      "text": "(1) Grundlagen der Freihandelstheorie und Erklärungsansätze internationaler Arbeitsteilung erläutern.\n(2) Definition, Voraussetzungen und Bedingungen der Globalisierung erklären.\n(3) Probleme zunehmender Globalisierung auf Güter- und Finanzmärkten analysieren.\n(4) Wirtschaftliche und gesellschaftliche Folgen der Globalisierung beurteilen.\n(5) Wirtschaftstheoretische Einschätzungen zu Folgen der Globalisierung vergleichen.\n(6) Daten zu Handelsbeziehungen Deutschlands darstellen und interpretieren.\n(7) Vor- und Nachteile protektionistischer Handelsmaßnahmen erläutern.\n(8) Gestaltungsansätze für Globalisierungsprozesse hinsichtlich politischer Realisierbarkeit diskutieren.",
+      "page": 7,
+      "sourcePath": "curricula/DE/Gymnasium/input/HB/GyO_Wirtschaftslehre_2008.pdf",
+      "rawText": "Grundlagen der Freihandelstheorie und Erklärungsansätze internationaler Arbeitsteilung erläutern.\nDefinition, Voraussetzungen und Bedingungen der Globalisierung erklären.\nProbleme zunehmender Globalisierung auf Güter- und Finanzmärkten analysieren.\nWirtschaftliche und gesellschaftliche Folgen der Globalisierung beurteilen.\nWirtschaftstheoretische Einschätzungen zu Folgen der Globalisierung vergleichen.\nDaten zu Handelsbeziehungen Deutschlands darstellen und interpretieren.\nVor- und Nachteile protektionistischer Handelsmaßnahmen erläutern.\nGestaltungsansätze für Globalisierungsprozesse hinsichtlich politischer Realisierbarkeit diskutieren.",
+      "sourceGoalIds": [
+        "de-hb-wirtschaftslehre-sekii-q4-globalisierung-aussenwirtschaft-g01-449b04d4",
+        "de-hb-wirtschaftslehre-sekii-q4-globalisierung-aussenwirtschaft-g02-f8ae273c",
+        "de-hb-wirtschaftslehre-sekii-q4-globalisierung-aussenwirtschaft-g03-6096d328",
+        "de-hb-wirtschaftslehre-sekii-q4-globalisierung-aussenwirtschaft-g04-10bcabed",
+        "de-hb-wirtschaftslehre-sekii-q4-globalisierung-aussenwirtschaft-g05-be7b82e4",
+        "de-hb-wirtschaftslehre-sekii-q4-globalisierung-aussenwirtschaft-g06-8288e8e5",
+        "de-hb-wirtschaftslehre-sekii-q4-globalisierung-aussenwirtschaft-g07-4399b323",
+        "de-hb-wirtschaftslehre-sekii-q4-globalisierung-aussenwirtschaft-g08-bcc7c9f1"
+      ]
+    }
+  ],
+  "sourceGoals": [
+    {
+      "id": "de-hb-wirtschaftslehre-sekii-q1-marktwirtschaft-preisbildung-g01-cddd40f2",
+      "passageId": "de-hb-wirtschaftslehre-sekii:q1-marktwirtschaft-preisbildung",
+      "topicCode": "Q1-MARKTWIRTSCHAFT-PREISBILDUNG",
+      "bulletIndex": 1,
+      "aspectIndex": 1,
+      "title": "HB Q1-MARKTWIRTSCHAFT-PREISBILDUNG (1): Grundelemente der Marktwirtschaft im Zusammenspiel von Angebot und Nachfrage erklären.",
+      "description": "Source-Ziel aus Q1: Wirtschaftsordnung und Preisbildung in der Sozialen Marktwirtschaft: Grundelemente der Marktwirtschaft im Zusammenspiel von Angebot und Nachfrage erklären.",
+      "sourceText": "Grundelemente der Marktwirtschaft im Zusammenspiel von Angebot und Nachfrage erklären.",
+      "sourceSpan": "Q1-MARKTWIRTSCHAFT-PREISBILDUNG (1)",
+      "parentBulletText": "Grundelemente der Marktwirtschaft im Zusammenspiel von Angebot und Nachfrage erklären.",
+      "sourceRef": "Bildungsplan Wirtschaftslehre Gymnasiale Oberstufe Bremen, Q1: Wirtschaftsordnung und Preisbildung in der Sozialen Marktwirtschaft, S. 6.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialContentOrStandard",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Wirtschaft",
+        "stage:SekII",
+        "topic:Q1-MARKTWIRTSCHAFT-PREISBILDUNG"
+      ],
+      "rawSourceText": "Grundelemente der Marktwirtschaft im Zusammenspiel von Angebot und Nachfrage erklären.",
+      "rawSourceSpan": "Q1-MARKTWIRTSCHAFT-PREISBILDUNG (1)",
+      "rawParentBulletText": "Grundelemente der Marktwirtschaft im Zusammenspiel von Angebot und Nachfrage erklären."
+    },
+    {
+      "id": "de-hb-wirtschaftslehre-sekii-q1-marktwirtschaft-preisbildung-g02-7e70cc31",
+      "passageId": "de-hb-wirtschaftslehre-sekii:q1-marktwirtschaft-preisbildung",
+      "topicCode": "Q1-MARKTWIRTSCHAFT-PREISBILDUNG",
+      "bulletIndex": 2,
+      "aspectIndex": 1,
+      "title": "HB Q1-MARKTWIRTSCHAFT-PREISBILDUNG (2): Preisbildung auf verschiedenen Märkten analysieren und ihre Allokationsfunktion erörtern.",
+      "description": "Source-Ziel aus Q1: Wirtschaftsordnung und Preisbildung in der Sozialen Marktwirtschaft: Preisbildung auf verschiedenen Märkten analysieren und ihre Allokationsfunktion erörtern.",
+      "sourceText": "Preisbildung auf verschiedenen Märkten analysieren und ihre Allokationsfunktion erörtern.",
+      "sourceSpan": "Q1-MARKTWIRTSCHAFT-PREISBILDUNG (2)",
+      "parentBulletText": "Preisbildung auf verschiedenen Märkten analysieren und ihre Allokationsfunktion erörtern.",
+      "sourceRef": "Bildungsplan Wirtschaftslehre Gymnasiale Oberstufe Bremen, Q1: Wirtschaftsordnung und Preisbildung in der Sozialen Marktwirtschaft, S. 6.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialContentOrStandard",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Wirtschaft",
+        "stage:SekII",
+        "topic:Q1-MARKTWIRTSCHAFT-PREISBILDUNG"
+      ],
+      "rawSourceText": "Preisbildung auf verschiedenen Märkten analysieren und ihre Allokationsfunktion erörtern.",
+      "rawSourceSpan": "Q1-MARKTWIRTSCHAFT-PREISBILDUNG (2)",
+      "rawParentBulletText": "Preisbildung auf verschiedenen Märkten analysieren und ihre Allokationsfunktion erörtern."
+    },
+    {
+      "id": "de-hb-wirtschaftslehre-sekii-q1-marktwirtschaft-preisbildung-g03-bdb946e5",
+      "passageId": "de-hb-wirtschaftslehre-sekii:q1-marktwirtschaft-preisbildung",
+      "topicCode": "Q1-MARKTWIRTSCHAFT-PREISBILDUNG",
+      "bulletIndex": 3,
+      "aspectIndex": 1,
+      "title": "HB Q1-MARKTWIRTSCHAFT-PREISBILDUNG (3): Einflussmöglichkeiten des Staates auf Preisbildung und Wohlstandsverteilung beurteilen.",
+      "description": "Source-Ziel aus Q1: Wirtschaftsordnung und Preisbildung in der Sozialen Marktwirtschaft: Einflussmöglichkeiten des Staates auf Preisbildung und Wohlstandsverteilung beurteilen.",
+      "sourceText": "Einflussmöglichkeiten des Staates auf Preisbildung und Wohlstandsverteilung beurteilen.",
+      "sourceSpan": "Q1-MARKTWIRTSCHAFT-PREISBILDUNG (3)",
+      "parentBulletText": "Einflussmöglichkeiten des Staates auf Preisbildung und Wohlstandsverteilung beurteilen.",
+      "sourceRef": "Bildungsplan Wirtschaftslehre Gymnasiale Oberstufe Bremen, Q1: Wirtschaftsordnung und Preisbildung in der Sozialen Marktwirtschaft, S. 6.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialContentOrStandard",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Wirtschaft",
+        "stage:SekII",
+        "topic:Q1-MARKTWIRTSCHAFT-PREISBILDUNG"
+      ],
+      "rawSourceText": "Einflussmöglichkeiten des Staates auf Preisbildung und Wohlstandsverteilung beurteilen.",
+      "rawSourceSpan": "Q1-MARKTWIRTSCHAFT-PREISBILDUNG (3)",
+      "rawParentBulletText": "Einflussmöglichkeiten des Staates auf Preisbildung und Wohlstandsverteilung beurteilen."
+    },
+    {
+      "id": "de-hb-wirtschaftslehre-sekii-q1-marktwirtschaft-preisbildung-g04-6d635604",
+      "passageId": "de-hb-wirtschaftslehre-sekii:q1-marktwirtschaft-preisbildung",
+      "topicCode": "Q1-MARKTWIRTSCHAFT-PREISBILDUNG",
+      "bulletIndex": 4,
+      "aspectIndex": 1,
+      "title": "HB Q1-MARKTWIRTSCHAFT-PREISBILDUNG (4): Marktmacht durch Monopole, Kartelle und Großkonzerne analysieren.",
+      "description": "Source-Ziel aus Q1: Wirtschaftsordnung und Preisbildung in der Sozialen Marktwirtschaft: Marktmacht durch Monopole, Kartelle und Großkonzerne analysieren.",
+      "sourceText": "Marktmacht durch Monopole, Kartelle und Großkonzerne analysieren.",
+      "sourceSpan": "Q1-MARKTWIRTSCHAFT-PREISBILDUNG (4)",
+      "parentBulletText": "Marktmacht durch Monopole, Kartelle und Großkonzerne analysieren.",
+      "sourceRef": "Bildungsplan Wirtschaftslehre Gymnasiale Oberstufe Bremen, Q1: Wirtschaftsordnung und Preisbildung in der Sozialen Marktwirtschaft, S. 6.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialContentOrStandard",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Wirtschaft",
+        "stage:SekII",
+        "topic:Q1-MARKTWIRTSCHAFT-PREISBILDUNG"
+      ],
+      "rawSourceText": "Marktmacht durch Monopole, Kartelle und Großkonzerne analysieren.",
+      "rawSourceSpan": "Q1-MARKTWIRTSCHAFT-PREISBILDUNG (4)",
+      "rawParentBulletText": "Marktmacht durch Monopole, Kartelle und Großkonzerne analysieren."
+    },
+    {
+      "id": "de-hb-wirtschaftslehre-sekii-q1-marktwirtschaft-preisbildung-g05-ccab3c71",
+      "passageId": "de-hb-wirtschaftslehre-sekii:q1-marktwirtschaft-preisbildung",
+      "topicCode": "Q1-MARKTWIRTSCHAFT-PREISBILDUNG",
+      "bulletIndex": 5,
+      "aspectIndex": 1,
+      "title": "HB Q1-MARKTWIRTSCHAFT-PREISBILDUNG (5): Fusionen, Übernahmen und Zusammenschlüsse sowie Fusions- und Kartellrecht zur Wettbewerbssicherung beurteilen.",
+      "description": "Source-Ziel aus Q1: Wirtschaftsordnung und Preisbildung in der Sozialen Marktwirtschaft: Fusionen, Übernahmen und Zusammenschlüsse sowie Fusions- und Kartellrecht zur Wettbewerbssicherung beurteilen.",
+      "sourceText": "Fusionen, Übernahmen und Zusammenschlüsse sowie Fusions- und Kartellrecht zur Wettbewerbssicherung beurteilen.",
+      "sourceSpan": "Q1-MARKTWIRTSCHAFT-PREISBILDUNG (5)",
+      "parentBulletText": "Fusionen, Übernahmen und Zusammenschlüsse sowie Fusions- und Kartellrecht zur Wettbewerbssicherung beurteilen.",
+      "sourceRef": "Bildungsplan Wirtschaftslehre Gymnasiale Oberstufe Bremen, Q1: Wirtschaftsordnung und Preisbildung in der Sozialen Marktwirtschaft, S. 6.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialContentOrStandard",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Wirtschaft",
+        "stage:SekII",
+        "topic:Q1-MARKTWIRTSCHAFT-PREISBILDUNG"
+      ],
+      "rawSourceText": "Fusionen, Übernahmen und Zusammenschlüsse sowie Fusions- und Kartellrecht zur Wettbewerbssicherung beurteilen.",
+      "rawSourceSpan": "Q1-MARKTWIRTSCHAFT-PREISBILDUNG (5)",
+      "rawParentBulletText": "Fusionen, Übernahmen und Zusammenschlüsse sowie Fusions- und Kartellrecht zur Wettbewerbssicherung beurteilen."
+    },
+    {
+      "id": "de-hb-wirtschaftslehre-sekii-q1-marktwirtschaft-preisbildung-g06-e50a6358",
+      "passageId": "de-hb-wirtschaftslehre-sekii:q1-marktwirtschaft-preisbildung",
+      "topicCode": "Q1-MARKTWIRTSCHAFT-PREISBILDUNG",
+      "bulletIndex": 6,
+      "aspectIndex": 1,
+      "title": "HB Q1-MARKTWIRTSCHAFT-PREISBILDUNG (6): Konzentration auf nationalen und internationalen Märkten unter dem Gesichtspunkt von Marktmacht analysieren.",
+      "description": "Source-Ziel aus Q1: Wirtschaftsordnung und Preisbildung in der Sozialen Marktwirtschaft: Konzentration auf nationalen und internationalen Märkten unter dem Gesichtspunkt von Marktmacht analysieren.",
+      "sourceText": "Konzentration auf nationalen und internationalen Märkten unter dem Gesichtspunkt von Marktmacht analysieren.",
+      "sourceSpan": "Q1-MARKTWIRTSCHAFT-PREISBILDUNG (6)",
+      "parentBulletText": "Konzentration auf nationalen und internationalen Märkten unter dem Gesichtspunkt von Marktmacht analysieren.",
+      "sourceRef": "Bildungsplan Wirtschaftslehre Gymnasiale Oberstufe Bremen, Q1: Wirtschaftsordnung und Preisbildung in der Sozialen Marktwirtschaft, S. 6.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialContentOrStandard",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Wirtschaft",
+        "stage:SekII",
+        "topic:Q1-MARKTWIRTSCHAFT-PREISBILDUNG"
+      ],
+      "rawSourceText": "Konzentration auf nationalen und internationalen Märkten unter dem Gesichtspunkt von Marktmacht analysieren.",
+      "rawSourceSpan": "Q1-MARKTWIRTSCHAFT-PREISBILDUNG (6)",
+      "rawParentBulletText": "Konzentration auf nationalen und internationalen Märkten unter dem Gesichtspunkt von Marktmacht analysieren."
+    },
+    {
+      "id": "de-hb-wirtschaftslehre-sekii-q2-geld-waehrung-finanzmaerkte-g01-88981ec2",
+      "passageId": "de-hb-wirtschaftslehre-sekii:q2-geld-waehrung-finanzmaerkte",
+      "topicCode": "Q2-GELD-WAEHRUNG-FINANZMAERKTE",
+      "bulletIndex": 1,
+      "aspectIndex": 1,
+      "title": "HB Q2-GELD-WAEHRUNG-FINANZMAERKTE (1): Entstehung und Funktionen des Geldes im geschichtlichen Kontext erläutern.",
+      "description": "Source-Ziel aus Q2: Geld- und Währungspolitik auf nationalen und internationalen Märkten: Entstehung und Funktionen des Geldes im geschichtlichen Kontext erläutern.",
+      "sourceText": "Entstehung und Funktionen des Geldes im geschichtlichen Kontext erläutern.",
+      "sourceSpan": "Q2-GELD-WAEHRUNG-FINANZMAERKTE (1)",
+      "parentBulletText": "Entstehung und Funktionen des Geldes im geschichtlichen Kontext erläutern.",
+      "sourceRef": "Bildungsplan Wirtschaftslehre Gymnasiale Oberstufe Bremen, Q2: Geld- und Währungspolitik auf nationalen und internationalen Märkten, S. 6.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialContentOrStandard",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Wirtschaft",
+        "stage:SekII",
+        "topic:Q2-GELD-WAEHRUNG-FINANZMAERKTE"
+      ],
+      "rawSourceText": "Entstehung und Funktionen des Geldes im geschichtlichen Kontext erläutern.",
+      "rawSourceSpan": "Q2-GELD-WAEHRUNG-FINANZMAERKTE (1)",
+      "rawParentBulletText": "Entstehung und Funktionen des Geldes im geschichtlichen Kontext erläutern."
+    },
+    {
+      "id": "de-hb-wirtschaftslehre-sekii-q2-geld-waehrung-finanzmaerkte-g02-280ef9c5",
+      "passageId": "de-hb-wirtschaftslehre-sekii:q2-geld-waehrung-finanzmaerkte",
+      "topicCode": "Q2-GELD-WAEHRUNG-FINANZMAERKTE",
+      "bulletIndex": 2,
+      "aspectIndex": 1,
+      "title": "HB Q2-GELD-WAEHRUNG-FINANZMAERKTE (2): Bedeutung von Geldwertstabilität und Binnenwert des Geldes beurteilen.",
+      "description": "Source-Ziel aus Q2: Geld- und Währungspolitik auf nationalen und internationalen Märkten: Bedeutung von Geldwertstabilität und Binnenwert des Geldes beurteilen.",
+      "sourceText": "Bedeutung von Geldwertstabilität und Binnenwert des Geldes beurteilen.",
+      "sourceSpan": "Q2-GELD-WAEHRUNG-FINANZMAERKTE (2)",
+      "parentBulletText": "Bedeutung von Geldwertstabilität und Binnenwert des Geldes beurteilen.",
+      "sourceRef": "Bildungsplan Wirtschaftslehre Gymnasiale Oberstufe Bremen, Q2: Geld- und Währungspolitik auf nationalen und internationalen Märkten, S. 6.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialContentOrStandard",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Wirtschaft",
+        "stage:SekII",
+        "topic:Q2-GELD-WAEHRUNG-FINANZMAERKTE"
+      ],
+      "rawSourceText": "Bedeutung von Geldwertstabilität und Binnenwert des Geldes beurteilen.",
+      "rawSourceSpan": "Q2-GELD-WAEHRUNG-FINANZMAERKTE (2)",
+      "rawParentBulletText": "Bedeutung von Geldwertstabilität und Binnenwert des Geldes beurteilen."
+    },
+    {
+      "id": "de-hb-wirtschaftslehre-sekii-q2-geld-waehrung-finanzmaerkte-g03-99024d95",
+      "passageId": "de-hb-wirtschaftslehre-sekii:q2-geld-waehrung-finanzmaerkte",
+      "topicCode": "Q2-GELD-WAEHRUNG-FINANZMAERKTE",
+      "bulletIndex": 3,
+      "aspectIndex": 1,
+      "title": "HB Q2-GELD-WAEHRUNG-FINANZMAERKTE (3): Ursachen inflationärer Prozesse erkennen und im Zusammenhang darstellen.",
+      "description": "Source-Ziel aus Q2: Geld- und Währungspolitik auf nationalen und internationalen Märkten: Ursachen inflationärer Prozesse erkennen und im Zusammenhang darstellen.",
+      "sourceText": "Ursachen inflationärer Prozesse erkennen und im Zusammenhang darstellen.",
+      "sourceSpan": "Q2-GELD-WAEHRUNG-FINANZMAERKTE (3)",
+      "parentBulletText": "Ursachen inflationärer Prozesse erkennen und im Zusammenhang darstellen.",
+      "sourceRef": "Bildungsplan Wirtschaftslehre Gymnasiale Oberstufe Bremen, Q2: Geld- und Währungspolitik auf nationalen und internationalen Märkten, S. 6.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialContentOrStandard",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Wirtschaft",
+        "stage:SekII",
+        "topic:Q2-GELD-WAEHRUNG-FINANZMAERKTE"
+      ],
+      "rawSourceText": "Ursachen inflationärer Prozesse erkennen und im Zusammenhang darstellen.",
+      "rawSourceSpan": "Q2-GELD-WAEHRUNG-FINANZMAERKTE (3)",
+      "rawParentBulletText": "Ursachen inflationärer Prozesse erkennen und im Zusammenhang darstellen."
+    },
+    {
+      "id": "de-hb-wirtschaftslehre-sekii-q2-geld-waehrung-finanzmaerkte-g04-936ba41f",
+      "passageId": "de-hb-wirtschaftslehre-sekii:q2-geld-waehrung-finanzmaerkte",
+      "topicCode": "Q2-GELD-WAEHRUNG-FINANZMAERKTE",
+      "bulletIndex": 4,
+      "aspectIndex": 1,
+      "title": "HB Q2-GELD-WAEHRUNG-FINANZMAERKTE (4): Funktionsweise des Zentralbankensystems analysieren.",
+      "description": "Source-Ziel aus Q2: Geld- und Währungspolitik auf nationalen und internationalen Märkten: Funktionsweise des Zentralbankensystems analysieren.",
+      "sourceText": "Funktionsweise des Zentralbankensystems analysieren.",
+      "sourceSpan": "Q2-GELD-WAEHRUNG-FINANZMAERKTE (4)",
+      "parentBulletText": "Funktionsweise des Zentralbankensystems analysieren.",
+      "sourceRef": "Bildungsplan Wirtschaftslehre Gymnasiale Oberstufe Bremen, Q2: Geld- und Währungspolitik auf nationalen und internationalen Märkten, S. 6.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialContentOrStandard",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Wirtschaft",
+        "stage:SekII",
+        "topic:Q2-GELD-WAEHRUNG-FINANZMAERKTE"
+      ],
+      "rawSourceText": "Funktionsweise des Zentralbankensystems analysieren.",
+      "rawSourceSpan": "Q2-GELD-WAEHRUNG-FINANZMAERKTE (4)",
+      "rawParentBulletText": "Funktionsweise des Zentralbankensystems analysieren."
+    },
+    {
+      "id": "de-hb-wirtschaftslehre-sekii-q2-geld-waehrung-finanzmaerkte-g05-548b55a7",
+      "passageId": "de-hb-wirtschaftslehre-sekii:q2-geld-waehrung-finanzmaerkte",
+      "topicCode": "Q2-GELD-WAEHRUNG-FINANZMAERKTE",
+      "bulletIndex": 5,
+      "aspectIndex": 1,
+      "title": "HB Q2-GELD-WAEHRUNG-FINANZMAERKTE (5): Wirkungen von Geldpolitik auf Stabilität, Wachstum und Beschäftigung beurteilen.",
+      "description": "Source-Ziel aus Q2: Geld- und Währungspolitik auf nationalen und internationalen Märkten: Wirkungen von Geldpolitik auf Stabilität, Wachstum und Beschäftigung beurteilen.",
+      "sourceText": "Wirkungen von Geldpolitik auf Stabilität, Wachstum und Beschäftigung beurteilen.",
+      "sourceSpan": "Q2-GELD-WAEHRUNG-FINANZMAERKTE (5)",
+      "parentBulletText": "Wirkungen von Geldpolitik auf Stabilität, Wachstum und Beschäftigung beurteilen.",
+      "sourceRef": "Bildungsplan Wirtschaftslehre Gymnasiale Oberstufe Bremen, Q2: Geld- und Währungspolitik auf nationalen und internationalen Märkten, S. 6.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialContentOrStandard",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Wirtschaft",
+        "stage:SekII",
+        "topic:Q2-GELD-WAEHRUNG-FINANZMAERKTE"
+      ],
+      "rawSourceText": "Wirkungen von Geldpolitik auf Stabilität, Wachstum und Beschäftigung beurteilen.",
+      "rawSourceSpan": "Q2-GELD-WAEHRUNG-FINANZMAERKTE (5)",
+      "rawParentBulletText": "Wirkungen von Geldpolitik auf Stabilität, Wachstum und Beschäftigung beurteilen."
+    },
+    {
+      "id": "de-hb-wirtschaftslehre-sekii-q2-geld-waehrung-finanzmaerkte-g06-162cc8f6",
+      "passageId": "de-hb-wirtschaftslehre-sekii:q2-geld-waehrung-finanzmaerkte",
+      "topicCode": "Q2-GELD-WAEHRUNG-FINANZMAERKTE",
+      "bulletIndex": 6,
+      "aspectIndex": 1,
+      "title": "HB Q2-GELD-WAEHRUNG-FINANZMAERKTE (6): Wechselkurse und internationale Währungspolitik für Handelsbeziehungen analysieren.",
+      "description": "Source-Ziel aus Q2: Geld- und Währungspolitik auf nationalen und internationalen Märkten: Wechselkurse und internationale Währungspolitik für Handelsbeziehungen analysieren.",
+      "sourceText": "Wechselkurse und internationale Währungspolitik für Handelsbeziehungen analysieren.",
+      "sourceSpan": "Q2-GELD-WAEHRUNG-FINANZMAERKTE (6)",
+      "parentBulletText": "Wechselkurse und internationale Währungspolitik für Handelsbeziehungen analysieren.",
+      "sourceRef": "Bildungsplan Wirtschaftslehre Gymnasiale Oberstufe Bremen, Q2: Geld- und Währungspolitik auf nationalen und internationalen Märkten, S. 6.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialContentOrStandard",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Wirtschaft",
+        "stage:SekII",
+        "topic:Q2-GELD-WAEHRUNG-FINANZMAERKTE"
+      ],
+      "rawSourceText": "Wechselkurse und internationale Währungspolitik für Handelsbeziehungen analysieren.",
+      "rawSourceSpan": "Q2-GELD-WAEHRUNG-FINANZMAERKTE (6)",
+      "rawParentBulletText": "Wechselkurse und internationale Währungspolitik für Handelsbeziehungen analysieren."
+    },
+    {
+      "id": "de-hb-wirtschaftslehre-sekii-q2-geld-waehrung-finanzmaerkte-g07-654b03af",
+      "passageId": "de-hb-wirtschaftslehre-sekii:q2-geld-waehrung-finanzmaerkte",
+      "topicCode": "Q2-GELD-WAEHRUNG-FINANZMAERKTE",
+      "bulletIndex": 7,
+      "aspectIndex": 1,
+      "title": "HB Q2-GELD-WAEHRUNG-FINANZMAERKTE (7): Aktuelle Probleme internationaler Finanzmärkte und Folgen für verflochtene Volkswirtschaften beurteilen.",
+      "description": "Source-Ziel aus Q2: Geld- und Währungspolitik auf nationalen und internationalen Märkten: Aktuelle Probleme internationaler Finanzmärkte und Folgen für verflochtene Volkswirtschaften beurteilen.",
+      "sourceText": "Aktuelle Probleme internationaler Finanzmärkte und Folgen für verflochtene Volkswirtschaften beurteilen.",
+      "sourceSpan": "Q2-GELD-WAEHRUNG-FINANZMAERKTE (7)",
+      "parentBulletText": "Aktuelle Probleme internationaler Finanzmärkte und Folgen für verflochtene Volkswirtschaften beurteilen.",
+      "sourceRef": "Bildungsplan Wirtschaftslehre Gymnasiale Oberstufe Bremen, Q2: Geld- und Währungspolitik auf nationalen und internationalen Märkten, S. 6.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialContentOrStandard",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Wirtschaft",
+        "stage:SekII",
+        "topic:Q2-GELD-WAEHRUNG-FINANZMAERKTE"
+      ],
+      "rawSourceText": "Aktuelle Probleme internationaler Finanzmärkte und Folgen für verflochtene Volkswirtschaften beurteilen.",
+      "rawSourceSpan": "Q2-GELD-WAEHRUNG-FINANZMAERKTE (7)",
+      "rawParentBulletText": "Aktuelle Probleme internationaler Finanzmärkte und Folgen für verflochtene Volkswirtschaften beurteilen."
+    },
+    {
+      "id": "de-hb-wirtschaftslehre-sekii-q2-geld-waehrung-finanzmaerkte-g08-2638cb7c",
+      "passageId": "de-hb-wirtschaftslehre-sekii:q2-geld-waehrung-finanzmaerkte",
+      "topicCode": "Q2-GELD-WAEHRUNG-FINANZMAERKTE",
+      "bulletIndex": 8,
+      "aspectIndex": 1,
+      "title": "HB Q2-GELD-WAEHRUNG-FINANZMAERKTE (8): Zahlungsbilanz und Teilbilanzen auf wirtschaftliche Transaktionen anwenden.",
+      "description": "Source-Ziel aus Q2: Geld- und Währungspolitik auf nationalen und internationalen Märkten: Zahlungsbilanz und Teilbilanzen auf wirtschaftliche Transaktionen anwenden.",
+      "sourceText": "Zahlungsbilanz und Teilbilanzen auf wirtschaftliche Transaktionen anwenden.",
+      "sourceSpan": "Q2-GELD-WAEHRUNG-FINANZMAERKTE (8)",
+      "parentBulletText": "Zahlungsbilanz und Teilbilanzen auf wirtschaftliche Transaktionen anwenden.",
+      "sourceRef": "Bildungsplan Wirtschaftslehre Gymnasiale Oberstufe Bremen, Q2: Geld- und Währungspolitik auf nationalen und internationalen Märkten, S. 6.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialContentOrStandard",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Wirtschaft",
+        "stage:SekII",
+        "topic:Q2-GELD-WAEHRUNG-FINANZMAERKTE"
+      ],
+      "rawSourceText": "Zahlungsbilanz und Teilbilanzen auf wirtschaftliche Transaktionen anwenden.",
+      "rawSourceSpan": "Q2-GELD-WAEHRUNG-FINANZMAERKTE (8)",
+      "rawParentBulletText": "Zahlungsbilanz und Teilbilanzen auf wirtschaftliche Transaktionen anwenden."
+    },
+    {
+      "id": "de-hb-wirtschaftslehre-sekii-q3-konjunktur-beschaeftigung-g01-4251ff4e",
+      "passageId": "de-hb-wirtschaftslehre-sekii:q3-konjunktur-beschaeftigung",
+      "topicCode": "Q3-KONJUNKTUR-BESCHAEFTIGUNG",
+      "bulletIndex": 1,
+      "aspectIndex": 1,
+      "title": "HB Q3-KONJUNKTUR-BESCHAEFTIGUNG (1): Konjunkturverläufe, Konjunkturzyklen und Konjunkturindikatoren anhand aktueller Daten beurteilen.",
+      "description": "Source-Ziel aus Q3: Wirtschaftspolitische Konzepte zur Beeinflussung von Konjunktur und Beschäftigung: Konjunkturverläufe, Konjunkturzyklen und Konjunkturindikatoren anhand aktueller Daten beurteilen.",
+      "sourceText": "Konjunkturverläufe, Konjunkturzyklen und Konjunkturindikatoren anhand aktueller Daten beurteilen.",
+      "sourceSpan": "Q3-KONJUNKTUR-BESCHAEFTIGUNG (1)",
+      "parentBulletText": "Konjunkturverläufe, Konjunkturzyklen und Konjunkturindikatoren anhand aktueller Daten beurteilen.",
+      "sourceRef": "Bildungsplan Wirtschaftslehre Gymnasiale Oberstufe Bremen, Q3: Wirtschaftspolitische Konzepte zur Beeinflussung von Konjunktur und Beschäftigung, S. 7.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialContentOrStandard",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Wirtschaft",
+        "stage:SekII",
+        "topic:Q3-KONJUNKTUR-BESCHAEFTIGUNG"
+      ],
+      "rawSourceText": "Konjunkturverläufe, Konjunkturzyklen und Konjunkturindikatoren anhand aktueller Daten beurteilen.",
+      "rawSourceSpan": "Q3-KONJUNKTUR-BESCHAEFTIGUNG (1)",
+      "rawParentBulletText": "Konjunkturverläufe, Konjunkturzyklen und Konjunkturindikatoren anhand aktueller Daten beurteilen."
+    },
+    {
+      "id": "de-hb-wirtschaftslehre-sekii-q3-konjunktur-beschaeftigung-g02-ca822f1b",
+      "passageId": "de-hb-wirtschaftslehre-sekii:q3-konjunktur-beschaeftigung",
+      "topicCode": "Q3-KONJUNKTUR-BESCHAEFTIGUNG",
+      "bulletIndex": 2,
+      "aspectIndex": 1,
+      "title": "HB Q3-KONJUNKTUR-BESCHAEFTIGUNG (2): Wirtschaftstheoretische Konzepte von Klassik über Keynes bis Neoklassik und Monetarismus vergleichen.",
+      "description": "Source-Ziel aus Q3: Wirtschaftspolitische Konzepte zur Beeinflussung von Konjunktur und Beschäftigung: Wirtschaftstheoretische Konzepte von Klassik über Keynes bis Neoklassik und Monetarismus vergleichen.",
+      "sourceText": "Wirtschaftstheoretische Konzepte von Klassik über Keynes bis Neoklassik und Monetarismus vergleichen.",
+      "sourceSpan": "Q3-KONJUNKTUR-BESCHAEFTIGUNG (2)",
+      "parentBulletText": "Wirtschaftstheoretische Konzepte von Klassik über Keynes bis Neoklassik und Monetarismus vergleichen.",
+      "sourceRef": "Bildungsplan Wirtschaftslehre Gymnasiale Oberstufe Bremen, Q3: Wirtschaftspolitische Konzepte zur Beeinflussung von Konjunktur und Beschäftigung, S. 7.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialContentOrStandard",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Wirtschaft",
+        "stage:SekII",
+        "topic:Q3-KONJUNKTUR-BESCHAEFTIGUNG"
+      ],
+      "rawSourceText": "Wirtschaftstheoretische Konzepte von Klassik über Keynes bis Neoklassik und Monetarismus vergleichen.",
+      "rawSourceSpan": "Q3-KONJUNKTUR-BESCHAEFTIGUNG (2)",
+      "rawParentBulletText": "Wirtschaftstheoretische Konzepte von Klassik über Keynes bis Neoklassik und Monetarismus vergleichen."
+    },
+    {
+      "id": "de-hb-wirtschaftslehre-sekii-q3-konjunktur-beschaeftigung-g03-49478642",
+      "passageId": "de-hb-wirtschaftslehre-sekii:q3-konjunktur-beschaeftigung",
+      "topicCode": "Q3-KONJUNKTUR-BESCHAEFTIGUNG",
+      "bulletIndex": 3,
+      "aspectIndex": 1,
+      "title": "HB Q3-KONJUNKTUR-BESCHAEFTIGUNG (3): Wirkungsweisen wirtschaftspolitischer Konzepte zur Beeinflussung von Konjunktur und Beschäftigung beurteilen.",
+      "description": "Source-Ziel aus Q3: Wirtschaftspolitische Konzepte zur Beeinflussung von Konjunktur und Beschäftigung: Wirkungsweisen wirtschaftspolitischer Konzepte zur Beeinflussung von Konjunktur und Beschäftigung beurteilen.",
+      "sourceText": "Wirkungsweisen wirtschaftspolitischer Konzepte zur Beeinflussung von Konjunktur und Beschäftigung beurteilen.",
+      "sourceSpan": "Q3-KONJUNKTUR-BESCHAEFTIGUNG (3)",
+      "parentBulletText": "Wirkungsweisen wirtschaftspolitischer Konzepte zur Beeinflussung von Konjunktur und Beschäftigung beurteilen.",
+      "sourceRef": "Bildungsplan Wirtschaftslehre Gymnasiale Oberstufe Bremen, Q3: Wirtschaftspolitische Konzepte zur Beeinflussung von Konjunktur und Beschäftigung, S. 7.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialContentOrStandard",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Wirtschaft",
+        "stage:SekII",
+        "topic:Q3-KONJUNKTUR-BESCHAEFTIGUNG"
+      ],
+      "rawSourceText": "Wirkungsweisen wirtschaftspolitischer Konzepte zur Beeinflussung von Konjunktur und Beschäftigung beurteilen.",
+      "rawSourceSpan": "Q3-KONJUNKTUR-BESCHAEFTIGUNG (3)",
+      "rawParentBulletText": "Wirkungsweisen wirtschaftspolitischer Konzepte zur Beeinflussung von Konjunktur und Beschäftigung beurteilen."
+    },
+    {
+      "id": "de-hb-wirtschaftslehre-sekii-q3-konjunktur-beschaeftigung-g04-cdaac63a",
+      "passageId": "de-hb-wirtschaftslehre-sekii:q3-konjunktur-beschaeftigung",
+      "topicCode": "Q3-KONJUNKTUR-BESCHAEFTIGUNG",
+      "bulletIndex": 4,
+      "aspectIndex": 1,
+      "title": "HB Q3-KONJUNKTUR-BESCHAEFTIGUNG (4): Maßnahmen des Staates zur Konjunktur- und Beschäftigungspolitik ökonomischen Theorien zuordnen.",
+      "description": "Source-Ziel aus Q3: Wirtschaftspolitische Konzepte zur Beeinflussung von Konjunktur und Beschäftigung: Maßnahmen des Staates zur Konjunktur- und Beschäftigungspolitik ökonomischen Theorien zuordnen.",
+      "sourceText": "Maßnahmen des Staates zur Konjunktur- und Beschäftigungspolitik ökonomischen Theorien zuordnen.",
+      "sourceSpan": "Q3-KONJUNKTUR-BESCHAEFTIGUNG (4)",
+      "parentBulletText": "Maßnahmen des Staates zur Konjunktur- und Beschäftigungspolitik ökonomischen Theorien zuordnen.",
+      "sourceRef": "Bildungsplan Wirtschaftslehre Gymnasiale Oberstufe Bremen, Q3: Wirtschaftspolitische Konzepte zur Beeinflussung von Konjunktur und Beschäftigung, S. 7.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialContentOrStandard",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Wirtschaft",
+        "stage:SekII",
+        "topic:Q3-KONJUNKTUR-BESCHAEFTIGUNG"
+      ],
+      "rawSourceText": "Maßnahmen des Staates zur Konjunktur- und Beschäftigungspolitik ökonomischen Theorien zuordnen.",
+      "rawSourceSpan": "Q3-KONJUNKTUR-BESCHAEFTIGUNG (4)",
+      "rawParentBulletText": "Maßnahmen des Staates zur Konjunktur- und Beschäftigungspolitik ökonomischen Theorien zuordnen."
+    },
+    {
+      "id": "de-hb-wirtschaftslehre-sekii-q3-konjunktur-beschaeftigung-g05-5cdad3a6",
+      "passageId": "de-hb-wirtschaftslehre-sekii:q3-konjunktur-beschaeftigung",
+      "topicCode": "Q3-KONJUNKTUR-BESCHAEFTIGUNG",
+      "bulletIndex": 5,
+      "aspectIndex": 1,
+      "title": "HB Q3-KONJUNKTUR-BESCHAEFTIGUNG (5): Wirtschaftspolitische Grundpositionen verschiedener Parteien des Deutschen Bundestages untersuchen.",
+      "description": "Source-Ziel aus Q3: Wirtschaftspolitische Konzepte zur Beeinflussung von Konjunktur und Beschäftigung: Wirtschaftspolitische Grundpositionen verschiedener Parteien des Deutschen Bundestages untersuchen.",
+      "sourceText": "Wirtschaftspolitische Grundpositionen verschiedener Parteien des Deutschen Bundestages untersuchen.",
+      "sourceSpan": "Q3-KONJUNKTUR-BESCHAEFTIGUNG (5)",
+      "parentBulletText": "Wirtschaftspolitische Grundpositionen verschiedener Parteien des Deutschen Bundestages untersuchen.",
+      "sourceRef": "Bildungsplan Wirtschaftslehre Gymnasiale Oberstufe Bremen, Q3: Wirtschaftspolitische Konzepte zur Beeinflussung von Konjunktur und Beschäftigung, S. 7.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialContentOrStandard",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Wirtschaft",
+        "stage:SekII",
+        "topic:Q3-KONJUNKTUR-BESCHAEFTIGUNG"
+      ],
+      "rawSourceText": "Wirtschaftspolitische Grundpositionen verschiedener Parteien des Deutschen Bundestages untersuchen.",
+      "rawSourceSpan": "Q3-KONJUNKTUR-BESCHAEFTIGUNG (5)",
+      "rawParentBulletText": "Wirtschaftspolitische Grundpositionen verschiedener Parteien des Deutschen Bundestages untersuchen."
+    },
+    {
+      "id": "de-hb-wirtschaftslehre-sekii-q3-konjunktur-beschaeftigung-g06-715a87f2",
+      "passageId": "de-hb-wirtschaftslehre-sekii:q3-konjunktur-beschaeftigung",
+      "topicCode": "Q3-KONJUNKTUR-BESCHAEFTIGUNG",
+      "bulletIndex": 6,
+      "aspectIndex": 1,
+      "title": "HB Q3-KONJUNKTUR-BESCHAEFTIGUNG (6): Widerstreitende Konzepte zur Lösung ökonomischer Probleme in Fachpresse und Literatur analysieren.",
+      "description": "Source-Ziel aus Q3: Wirtschaftspolitische Konzepte zur Beeinflussung von Konjunktur und Beschäftigung: Widerstreitende Konzepte zur Lösung ökonomischer Probleme in Fachpresse und Literatur analysieren.",
+      "sourceText": "Widerstreitende Konzepte zur Lösung ökonomischer Probleme in Fachpresse und Literatur analysieren.",
+      "sourceSpan": "Q3-KONJUNKTUR-BESCHAEFTIGUNG (6)",
+      "parentBulletText": "Widerstreitende Konzepte zur Lösung ökonomischer Probleme in Fachpresse und Literatur analysieren.",
+      "sourceRef": "Bildungsplan Wirtschaftslehre Gymnasiale Oberstufe Bremen, Q3: Wirtschaftspolitische Konzepte zur Beeinflussung von Konjunktur und Beschäftigung, S. 7.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialContentOrStandard",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Wirtschaft",
+        "stage:SekII",
+        "topic:Q3-KONJUNKTUR-BESCHAEFTIGUNG"
+      ],
+      "rawSourceText": "Widerstreitende Konzepte zur Lösung ökonomischer Probleme in Fachpresse und Literatur analysieren.",
+      "rawSourceSpan": "Q3-KONJUNKTUR-BESCHAEFTIGUNG (6)",
+      "rawParentBulletText": "Widerstreitende Konzepte zur Lösung ökonomischer Probleme in Fachpresse und Literatur analysieren."
+    },
+    {
+      "id": "de-hb-wirtschaftslehre-sekii-q4-globalisierung-aussenwirtschaft-g01-449b04d4",
+      "passageId": "de-hb-wirtschaftslehre-sekii:q4-globalisierung-aussenwirtschaft",
+      "topicCode": "Q4-GLOBALISIERUNG-AUSSENWIRTSCHAFT",
+      "bulletIndex": 1,
+      "aspectIndex": 1,
+      "title": "HB Q4-GLOBALISIERUNG-AUSSENWIRTSCHAFT (1): Grundlagen der Freihandelstheorie und Erklärungsansätze internationaler Arbeitsteilung erläutern.",
+      "description": "Source-Ziel aus Q4: Internationale Wirtschaftsbeziehungen und Globalisierung: Grundlagen der Freihandelstheorie und Erklärungsansätze internationaler Arbeitsteilung erläutern.",
+      "sourceText": "Grundlagen der Freihandelstheorie und Erklärungsansätze internationaler Arbeitsteilung erläutern.",
+      "sourceSpan": "Q4-GLOBALISIERUNG-AUSSENWIRTSCHAFT (1)",
+      "parentBulletText": "Grundlagen der Freihandelstheorie und Erklärungsansätze internationaler Arbeitsteilung erläutern.",
+      "sourceRef": "Bildungsplan Wirtschaftslehre Gymnasiale Oberstufe Bremen, Q4: Internationale Wirtschaftsbeziehungen und Globalisierung, S. 7.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialContentOrStandard",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Wirtschaft",
+        "stage:SekII",
+        "topic:Q4-GLOBALISIERUNG-AUSSENWIRTSCHAFT"
+      ],
+      "rawSourceText": "Grundlagen der Freihandelstheorie und Erklärungsansätze internationaler Arbeitsteilung erläutern.",
+      "rawSourceSpan": "Q4-GLOBALISIERUNG-AUSSENWIRTSCHAFT (1)",
+      "rawParentBulletText": "Grundlagen der Freihandelstheorie und Erklärungsansätze internationaler Arbeitsteilung erläutern."
+    },
+    {
+      "id": "de-hb-wirtschaftslehre-sekii-q4-globalisierung-aussenwirtschaft-g02-f8ae273c",
+      "passageId": "de-hb-wirtschaftslehre-sekii:q4-globalisierung-aussenwirtschaft",
+      "topicCode": "Q4-GLOBALISIERUNG-AUSSENWIRTSCHAFT",
+      "bulletIndex": 2,
+      "aspectIndex": 1,
+      "title": "HB Q4-GLOBALISIERUNG-AUSSENWIRTSCHAFT (2): Definition, Voraussetzungen und Bedingungen der Globalisierung erklären.",
+      "description": "Source-Ziel aus Q4: Internationale Wirtschaftsbeziehungen und Globalisierung: Definition, Voraussetzungen und Bedingungen der Globalisierung erklären.",
+      "sourceText": "Definition, Voraussetzungen und Bedingungen der Globalisierung erklären.",
+      "sourceSpan": "Q4-GLOBALISIERUNG-AUSSENWIRTSCHAFT (2)",
+      "parentBulletText": "Definition, Voraussetzungen und Bedingungen der Globalisierung erklären.",
+      "sourceRef": "Bildungsplan Wirtschaftslehre Gymnasiale Oberstufe Bremen, Q4: Internationale Wirtschaftsbeziehungen und Globalisierung, S. 7.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialContentOrStandard",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Wirtschaft",
+        "stage:SekII",
+        "topic:Q4-GLOBALISIERUNG-AUSSENWIRTSCHAFT"
+      ],
+      "rawSourceText": "Definition, Voraussetzungen und Bedingungen der Globalisierung erklären.",
+      "rawSourceSpan": "Q4-GLOBALISIERUNG-AUSSENWIRTSCHAFT (2)",
+      "rawParentBulletText": "Definition, Voraussetzungen und Bedingungen der Globalisierung erklären."
+    },
+    {
+      "id": "de-hb-wirtschaftslehre-sekii-q4-globalisierung-aussenwirtschaft-g03-6096d328",
+      "passageId": "de-hb-wirtschaftslehre-sekii:q4-globalisierung-aussenwirtschaft",
+      "topicCode": "Q4-GLOBALISIERUNG-AUSSENWIRTSCHAFT",
+      "bulletIndex": 3,
+      "aspectIndex": 1,
+      "title": "HB Q4-GLOBALISIERUNG-AUSSENWIRTSCHAFT (3): Probleme zunehmender Globalisierung auf Güter- und Finanzmärkten analysieren.",
+      "description": "Source-Ziel aus Q4: Internationale Wirtschaftsbeziehungen und Globalisierung: Probleme zunehmender Globalisierung auf Güter- und Finanzmärkten analysieren.",
+      "sourceText": "Probleme zunehmender Globalisierung auf Güter- und Finanzmärkten analysieren.",
+      "sourceSpan": "Q4-GLOBALISIERUNG-AUSSENWIRTSCHAFT (3)",
+      "parentBulletText": "Probleme zunehmender Globalisierung auf Güter- und Finanzmärkten analysieren.",
+      "sourceRef": "Bildungsplan Wirtschaftslehre Gymnasiale Oberstufe Bremen, Q4: Internationale Wirtschaftsbeziehungen und Globalisierung, S. 7.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialContentOrStandard",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Wirtschaft",
+        "stage:SekII",
+        "topic:Q4-GLOBALISIERUNG-AUSSENWIRTSCHAFT"
+      ],
+      "rawSourceText": "Probleme zunehmender Globalisierung auf Güter- und Finanzmärkten analysieren.",
+      "rawSourceSpan": "Q4-GLOBALISIERUNG-AUSSENWIRTSCHAFT (3)",
+      "rawParentBulletText": "Probleme zunehmender Globalisierung auf Güter- und Finanzmärkten analysieren."
+    },
+    {
+      "id": "de-hb-wirtschaftslehre-sekii-q4-globalisierung-aussenwirtschaft-g04-10bcabed",
+      "passageId": "de-hb-wirtschaftslehre-sekii:q4-globalisierung-aussenwirtschaft",
+      "topicCode": "Q4-GLOBALISIERUNG-AUSSENWIRTSCHAFT",
+      "bulletIndex": 4,
+      "aspectIndex": 1,
+      "title": "HB Q4-GLOBALISIERUNG-AUSSENWIRTSCHAFT (4): Wirtschaftliche und gesellschaftliche Folgen der Globalisierung beurteilen.",
+      "description": "Source-Ziel aus Q4: Internationale Wirtschaftsbeziehungen und Globalisierung: Wirtschaftliche und gesellschaftliche Folgen der Globalisierung beurteilen.",
+      "sourceText": "Wirtschaftliche und gesellschaftliche Folgen der Globalisierung beurteilen.",
+      "sourceSpan": "Q4-GLOBALISIERUNG-AUSSENWIRTSCHAFT (4)",
+      "parentBulletText": "Wirtschaftliche und gesellschaftliche Folgen der Globalisierung beurteilen.",
+      "sourceRef": "Bildungsplan Wirtschaftslehre Gymnasiale Oberstufe Bremen, Q4: Internationale Wirtschaftsbeziehungen und Globalisierung, S. 7.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialContentOrStandard",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Wirtschaft",
+        "stage:SekII",
+        "topic:Q4-GLOBALISIERUNG-AUSSENWIRTSCHAFT"
+      ],
+      "rawSourceText": "Wirtschaftliche und gesellschaftliche Folgen der Globalisierung beurteilen.",
+      "rawSourceSpan": "Q4-GLOBALISIERUNG-AUSSENWIRTSCHAFT (4)",
+      "rawParentBulletText": "Wirtschaftliche und gesellschaftliche Folgen der Globalisierung beurteilen."
+    },
+    {
+      "id": "de-hb-wirtschaftslehre-sekii-q4-globalisierung-aussenwirtschaft-g05-be7b82e4",
+      "passageId": "de-hb-wirtschaftslehre-sekii:q4-globalisierung-aussenwirtschaft",
+      "topicCode": "Q4-GLOBALISIERUNG-AUSSENWIRTSCHAFT",
+      "bulletIndex": 5,
+      "aspectIndex": 1,
+      "title": "HB Q4-GLOBALISIERUNG-AUSSENWIRTSCHAFT (5): Wirtschaftstheoretische Einschätzungen zu Folgen der Globalisierung vergleichen.",
+      "description": "Source-Ziel aus Q4: Internationale Wirtschaftsbeziehungen und Globalisierung: Wirtschaftstheoretische Einschätzungen zu Folgen der Globalisierung vergleichen.",
+      "sourceText": "Wirtschaftstheoretische Einschätzungen zu Folgen der Globalisierung vergleichen.",
+      "sourceSpan": "Q4-GLOBALISIERUNG-AUSSENWIRTSCHAFT (5)",
+      "parentBulletText": "Wirtschaftstheoretische Einschätzungen zu Folgen der Globalisierung vergleichen.",
+      "sourceRef": "Bildungsplan Wirtschaftslehre Gymnasiale Oberstufe Bremen, Q4: Internationale Wirtschaftsbeziehungen und Globalisierung, S. 7.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialContentOrStandard",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Wirtschaft",
+        "stage:SekII",
+        "topic:Q4-GLOBALISIERUNG-AUSSENWIRTSCHAFT"
+      ],
+      "rawSourceText": "Wirtschaftstheoretische Einschätzungen zu Folgen der Globalisierung vergleichen.",
+      "rawSourceSpan": "Q4-GLOBALISIERUNG-AUSSENWIRTSCHAFT (5)",
+      "rawParentBulletText": "Wirtschaftstheoretische Einschätzungen zu Folgen der Globalisierung vergleichen."
+    },
+    {
+      "id": "de-hb-wirtschaftslehre-sekii-q4-globalisierung-aussenwirtschaft-g06-8288e8e5",
+      "passageId": "de-hb-wirtschaftslehre-sekii:q4-globalisierung-aussenwirtschaft",
+      "topicCode": "Q4-GLOBALISIERUNG-AUSSENWIRTSCHAFT",
+      "bulletIndex": 6,
+      "aspectIndex": 1,
+      "title": "HB Q4-GLOBALISIERUNG-AUSSENWIRTSCHAFT (6): Daten zu Handelsbeziehungen Deutschlands darstellen und interpretieren.",
+      "description": "Source-Ziel aus Q4: Internationale Wirtschaftsbeziehungen und Globalisierung: Daten zu Handelsbeziehungen Deutschlands darstellen und interpretieren.",
+      "sourceText": "Daten zu Handelsbeziehungen Deutschlands darstellen und interpretieren.",
+      "sourceSpan": "Q4-GLOBALISIERUNG-AUSSENWIRTSCHAFT (6)",
+      "parentBulletText": "Daten zu Handelsbeziehungen Deutschlands darstellen und interpretieren.",
+      "sourceRef": "Bildungsplan Wirtschaftslehre Gymnasiale Oberstufe Bremen, Q4: Internationale Wirtschaftsbeziehungen und Globalisierung, S. 7.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialContentOrStandard",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Wirtschaft",
+        "stage:SekII",
+        "topic:Q4-GLOBALISIERUNG-AUSSENWIRTSCHAFT"
+      ],
+      "rawSourceText": "Daten zu Handelsbeziehungen Deutschlands darstellen und interpretieren.",
+      "rawSourceSpan": "Q4-GLOBALISIERUNG-AUSSENWIRTSCHAFT (6)",
+      "rawParentBulletText": "Daten zu Handelsbeziehungen Deutschlands darstellen und interpretieren."
+    },
+    {
+      "id": "de-hb-wirtschaftslehre-sekii-q4-globalisierung-aussenwirtschaft-g07-4399b323",
+      "passageId": "de-hb-wirtschaftslehre-sekii:q4-globalisierung-aussenwirtschaft",
+      "topicCode": "Q4-GLOBALISIERUNG-AUSSENWIRTSCHAFT",
+      "bulletIndex": 7,
+      "aspectIndex": 1,
+      "title": "HB Q4-GLOBALISIERUNG-AUSSENWIRTSCHAFT (7): Vor- und Nachteile protektionistischer Handelsmaßnahmen erläutern.",
+      "description": "Source-Ziel aus Q4: Internationale Wirtschaftsbeziehungen und Globalisierung: Vor- und Nachteile protektionistischer Handelsmaßnahmen erläutern.",
+      "sourceText": "Vor- und Nachteile protektionistischer Handelsmaßnahmen erläutern.",
+      "sourceSpan": "Q4-GLOBALISIERUNG-AUSSENWIRTSCHAFT (7)",
+      "parentBulletText": "Vor- und Nachteile protektionistischer Handelsmaßnahmen erläutern.",
+      "sourceRef": "Bildungsplan Wirtschaftslehre Gymnasiale Oberstufe Bremen, Q4: Internationale Wirtschaftsbeziehungen und Globalisierung, S. 7.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialContentOrStandard",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Wirtschaft",
+        "stage:SekII",
+        "topic:Q4-GLOBALISIERUNG-AUSSENWIRTSCHAFT"
+      ],
+      "rawSourceText": "Vor- und Nachteile protektionistischer Handelsmaßnahmen erläutern.",
+      "rawSourceSpan": "Q4-GLOBALISIERUNG-AUSSENWIRTSCHAFT (7)",
+      "rawParentBulletText": "Vor- und Nachteile protektionistischer Handelsmaßnahmen erläutern."
+    },
+    {
+      "id": "de-hb-wirtschaftslehre-sekii-q4-globalisierung-aussenwirtschaft-g08-bcc7c9f1",
+      "passageId": "de-hb-wirtschaftslehre-sekii:q4-globalisierung-aussenwirtschaft",
+      "topicCode": "Q4-GLOBALISIERUNG-AUSSENWIRTSCHAFT",
+      "bulletIndex": 8,
+      "aspectIndex": 1,
+      "title": "HB Q4-GLOBALISIERUNG-AUSSENWIRTSCHAFT (8): Gestaltungsansätze für Globalisierungsprozesse hinsichtlich politischer Realisierbarkeit diskutieren.",
+      "description": "Source-Ziel aus Q4: Internationale Wirtschaftsbeziehungen und Globalisierung: Gestaltungsansätze für Globalisierungsprozesse hinsichtlich politischer Realisierbarkeit diskutieren.",
+      "sourceText": "Gestaltungsansätze für Globalisierungsprozesse hinsichtlich politischer Realisierbarkeit diskutieren.",
+      "sourceSpan": "Q4-GLOBALISIERUNG-AUSSENWIRTSCHAFT (8)",
+      "parentBulletText": "Gestaltungsansätze für Globalisierungsprozesse hinsichtlich politischer Realisierbarkeit diskutieren.",
+      "sourceRef": "Bildungsplan Wirtschaftslehre Gymnasiale Oberstufe Bremen, Q4: Internationale Wirtschaftsbeziehungen und Globalisierung, S. 7.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialContentOrStandard",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Wirtschaft",
+        "stage:SekII",
+        "topic:Q4-GLOBALISIERUNG-AUSSENWIRTSCHAFT"
+      ],
+      "rawSourceText": "Gestaltungsansätze für Globalisierungsprozesse hinsichtlich politischer Realisierbarkeit diskutieren.",
+      "rawSourceSpan": "Q4-GLOBALISIERUNG-AUSSENWIRTSCHAFT (8)",
+      "rawParentBulletText": "Gestaltungsansätze für Globalisierungsprozesse hinsichtlich politischer Realisierbarkeit diskutieren."
+    }
+  ]
+}

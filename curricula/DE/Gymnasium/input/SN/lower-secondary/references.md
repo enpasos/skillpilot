@@ -20,3 +20,26 @@ Archived locally at:
 Generated source extraction:
 
 - `curricula/DE/Gymnasium/input/SN/lower-secondary/source-extraction/DE_SN_BIOLOGIE_SEKI_LEHRPLAN_GYMNASIUM_2025.source-extraction.json`
+
+## Wirtschaft
+
+Starting point:
+https://www.schulportal.sachsen.de/lplandb/lehrplan/76
+
+- `lehrplan-gymnasium-grw-sachsen-2019.pdf`:
+  https://www.schulportal.sachsen.de/lplandb/lehrplan/file/76/1IrLTgST5OTPa55GLt6b
+
+Scope:
+
+- Sachsen
+- Gymnasium
+- Gemeinschaftskunde/Rechtserziehung/Wirtschaft
+- lower-secondary extraction target: wirtschaftliche Inhaltsbereiche aus Klassenstufe 8 und 10 des amtlichen Gymnasium-Lehrplans
+
+Archived locally at:
+
+- `curricula/DE/Gymnasium/input/SN/lehrplan-gymnasium-grw-sachsen-2019.pdf`
+
+Generated source extraction:
+
+- `curricula/DE/Gymnasium/input/SN/lower-secondary/source-extraction/DE_SN_GRW_SEKI_WIRTSCHAFT_LEHRPLAN_GYMNASIUM_2024.source-extraction.json`
