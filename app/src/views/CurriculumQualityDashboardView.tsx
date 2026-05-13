@@ -211,6 +211,15 @@ const COPY = {
     refresh: 'Aktualisieren',
     search: 'Curriculum suchen',
     maturity: 'Reifegrad',
+    maturityLegendTitle: 'Reifegrade',
+    maturityLegend: {
+      M0: 'Noch kein belastbarer QA-Stand.',
+      M1: 'Quellen und Bearbeitungspipeline sind sichtbar.',
+      M2: 'Source-Ziele sind extrahiert und rückverfolgbar.',
+      M3: 'Source-Ziele sind fachlich durch SkillPilot-Ziele abgedeckt.',
+      M4: 'Bundesland-Sichten und QA-Scopes sind geprüft.',
+      M5: 'CI-fähiger Qualitätsstand ohne offene Fehler.',
+    },
     all: 'Alle',
     generated: 'Generiert',
     source: 'Statusdatei',
@@ -306,6 +315,15 @@ const COPY = {
     refresh: 'Refresh',
     search: 'Search curriculum',
     maturity: 'Maturity',
+    maturityLegendTitle: 'Maturity levels',
+    maturityLegend: {
+      M0: 'No reliable QA baseline yet.',
+      M1: 'Sources and processing pipeline are visible.',
+      M2: 'Source goals are extracted and traceable.',
+      M3: 'Source goals are covered by SkillPilot goals.',
+      M4: 'Jurisdiction views and QA scopes are validated.',
+      M5: 'CI-ready quality level without open failures.',
+    },
     all: 'All',
     generated: 'Generated',
     source: 'Status file',
@@ -609,6 +627,17 @@ export const CurriculumQualityDashboardView: React.FC = () => {
                   <span>{copy.source}: {payload.path}</span>
                 </div>
               ) : null}
+              <div className="mt-4">
+                <div className="text-xs font-semibold uppercase tracking-wide text-text-secondary">{copy.maturityLegendTitle}</div>
+                <dl className="mt-2 grid gap-x-4 gap-y-1.5 text-xs text-text-secondary sm:grid-cols-2 lg:grid-cols-3">
+                  {maturityOrder.map((level) => (
+                    <div key={level} className="flex min-w-0 items-baseline gap-2">
+                      <dt className="shrink-0 font-semibold text-text-primary">{level}</dt>
+                      <dd className="min-w-0">{copy.maturityLegend[level]}</dd>
+                    </div>
+                  ))}
+                </dl>
+              </div>
             </div>
 
             <div className="flex flex-wrap items-center gap-2 self-start">

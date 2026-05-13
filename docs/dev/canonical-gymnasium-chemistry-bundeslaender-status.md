@@ -91,22 +91,22 @@ This file is generated from:
 
 | State | Operational phase | Score | Visible atoms | Source atoms | Extracted source goals | Extraction files | Source mapped | Unsupported | Mappings | Source status | Source stage | Priority |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | --- | --- | --- |
-| `DE-BB` Brandenburg | `P6` State cutover ready | `100%` | `151` | `271` | `271` | `2` | `271` | `0` | `507` | `clean` | `cutover_ready` | `backlog` |
-| `DE-BE` Berlin | `P6` State cutover ready | `100%` | `151` | `271` | `271` | `2` | `271` | `0` | `507` | `clean` | `cutover_ready` | `backlog` |
-| `DE-BW` Baden-Wuerttemberg | `P6` State cutover ready | `100%` | `151` | `191` | `191` | `2` | `191` | `0` | `337` | `clean` | `cutover_ready` | `backlog` |
-| `DE-BY` Bayern | `P6` State cutover ready | `100%` | `302` | `384` | `332` | `1` | `384` | `0` | `468` | `clean` | `cutover_ready` | `backlog` |
-| `DE-HB` Bremen | `P6` State cutover ready | `100%` | `175` | `130` | `130` | `2` | `130` | `0` | `377` | `clean` | `cutover_ready` | `backlog` |
-| `DE-HE` Hessen | `P6` State cutover ready | `100%` | `302` | `324` | `324` | `2` | `324` | `0` | `473` | `clean` | `cutover_ready` | `backlog` |
-| `DE-HH` Hamburg | `P6` State cutover ready | `100%` | `128` | `162` | `162` | `2` | `162` | `0` | `526` | `clean` | `cutover_ready` | `backlog` |
-| `DE-MV` Mecklenburg-Vorpommern | `P6` State cutover ready | `100%` | `138` | `236` | `236` | `2` | `236` | `0` | `999` | `clean` | `cutover_ready` | `backlog` |
-| `DE-NI` Niedersachsen | `P6` State cutover ready | `100%` | `201` | `529` | `529` | `2` | `529` | `0` | `1440` | `clean` | `cutover_ready` | `backlog` |
-| `DE-NW` Nordrhein-Westfalen | `P6` State cutover ready | `100%` | `106` | `233` | `233` | `2` | `233` | `0` | `2016` | `clean` | `cutover_ready` | `backlog` |
-| `DE-RP` Rheinland-Pfalz | `P6` State cutover ready | `100%` | `150` | `390` | `390` | `2` | `390` | `0` | `1541` | `clean` | `cutover_ready` | `backlog` |
-| `DE-SH` Schleswig-Holstein | `P6` State cutover ready | `100%` | `153` | `321` | `321` | `2` | `321` | `0` | `1019` | `clean` | `cutover_ready` | `backlog` |
-| `DE-SL` Saarland | `P6` State cutover ready | `100%` | `150` | `902` | `902` | `2` | `902` | `0` | `3756` | `clean` | `cutover_ready` | `backlog` |
-| `DE-SN` Sachsen | `P6` State cutover ready | `100%` | `154` | `478` | `478` | `2` | `478` | `0` | `2592` | `clean` | `cutover_ready` | `backlog` |
-| `DE-ST` Sachsen-Anhalt | `P6` State cutover ready | `100%` | `134` | `594` | `594` | `2` | `594` | `0` | `2477` | `clean` | `cutover_ready` | `backlog` |
-| `DE-TH` Thueringen | `P6` State cutover ready | `100%` | `144` | `449` | `449` | `2` | `449` | `0` | `2007` | `clean` | `cutover_ready` | `backlog` |
+| `DE-BB` Brandenburg | `P6` State cutover ready | `100%` | `143` | `271` | `271` | `2` | `271` | `0` | `507` | `clean` | `cutover_ready` | `backlog` |
+| `DE-BE` Berlin | `P6` State cutover ready | `100%` | `143` | `271` | `271` | `2` | `271` | `0` | `507` | `clean` | `cutover_ready` | `backlog` |
+| `DE-BW` Baden-Wuerttemberg | `P6` State cutover ready | `100%` | `143` | `191` | `191` | `2` | `191` | `0` | `337` | `clean` | `cutover_ready` | `backlog` |
+| `DE-BY` Bayern | `P6` State cutover ready | `100%` | `334` | `384` | `332` | `1` | `384` | `0` | `468` | `clean` | `cutover_ready` | `backlog` |
+| `DE-HB` Bremen | `P6` State cutover ready | `100%` | `163` | `130` | `130` | `2` | `130` | `0` | `377` | `clean` | `cutover_ready` | `backlog` |
+| `DE-HE` Hessen | `P6` State cutover ready | `100%` | `334` | `324` | `324` | `2` | `324` | `0` | `473` | `clean` | `cutover_ready` | `backlog` |
+| `DE-HH` Hamburg | `P6` State cutover ready | `100%` | `118` | `162` | `162` | `2` | `162` | `0` | `526` | `clean` | `cutover_ready` | `backlog` |
+| `DE-MV` Mecklenburg-Vorpommern | `P6` State cutover ready | `100%` | `128` | `236` | `236` | `2` | `236` | `0` | `999` | `clean` | `cutover_ready` | `backlog` |
+| `DE-NI` Niedersachsen | `P6` State cutover ready | `100%` | `190` | `529` | `529` | `2` | `529` | `0` | `1440` | `clean` | `cutover_ready` | `backlog` |
+| `DE-NW` Nordrhein-Westfalen | `P6` State cutover ready | `100%` | `99` | `233` | `233` | `2` | `233` | `0` | `2016` | `clean` | `cutover_ready` | `backlog` |
+| `DE-RP` Rheinland-Pfalz | `P6` State cutover ready | `100%` | `140` | `390` | `390` | `2` | `390` | `0` | `1541` | `clean` | `cutover_ready` | `backlog` |
+| `DE-SH` Schleswig-Holstein | `P6` State cutover ready | `100%` | `143` | `321` | `321` | `2` | `321` | `0` | `1019` | `clean` | `cutover_ready` | `backlog` |
+| `DE-SL` Saarland | `P6` State cutover ready | `100%` | `141` | `902` | `902` | `2` | `902` | `0` | `3756` | `clean` | `cutover_ready` | `backlog` |
+| `DE-SN` Sachsen | `P6` State cutover ready | `100%` | `144` | `478` | `478` | `2` | `478` | `0` | `2592` | `clean` | `cutover_ready` | `backlog` |
+| `DE-ST` Sachsen-Anhalt | `P6` State cutover ready | `100%` | `124` | `594` | `594` | `2` | `594` | `0` | `2477` | `clean` | `cutover_ready` | `backlog` |
+| `DE-TH` Thueringen | `P6` State cutover ready | `100%` | `134` | `449` | `449` | `2` | `449` | `0` | `2007` | `clean` | `cutover_ready` | `backlog` |
 
 ## Immediate queue
 

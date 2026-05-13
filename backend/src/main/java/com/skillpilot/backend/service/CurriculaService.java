@@ -1,11 +1,13 @@
 package com.skillpilot.backend.service;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.skillpilot.backend.api.ChampionRegistrationRequest;
 import com.skillpilot.backend.api.ChampionRegistrationResponse;
 import com.skillpilot.backend.api.CurriculaSnapshot;
 import com.skillpilot.backend.api.CurriculumChampionProfile;
 import com.skillpilot.backend.api.CurriculumOverview;
+import com.skillpilot.backend.api.CurriculumQualityOverview;
 import com.skillpilot.backend.api.MasteryEntryDTO;
 import com.skillpilot.backend.api.TopicSummary;
 import com.skillpilot.backend.domain.CurriculumChampion;
@@ -20,6 +22,8 @@ import com.skillpilot.backend.repository.LearnerRepository;
 import com.skillpilot.backend.repository.MasteryRepository;
 import com.skillpilot.backend.util.BundeslandCodeNormalizer;
 import jakarta.annotation.PostConstruct;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -49,6 +53,11 @@ public class CurriculaService {
     private static final String CANONICAL_GYMNASIUM_ROOT_ID = "a0e13c56-c25f-4742-9272-3a1a603ee52e";
     private static final String STAGE_SCOPE_SEK1_ID = "__skillpilot_stage_scope_sek1__";
     private static final String STAGE_SCOPE_SEK2_ID = "__skillpilot_stage_scope_sek2__";
+    private static final String CANONICAL_GYMNASIUM_OVERVIEW_FRAMEWORK_ID = "canonical-gymnasium-overview";
+    private static final String CANONICAL_GYMNASIUM_FRAMEWORK_PREFIX = "canonical-gymnasium";
+    private static final List<Path> CURRICULUM_QUALITY_STATUS_PATHS = List.of(
+            Path.of("docs", "qa-ci", "status", "curriculum-quality-status.json"),
+            Path.of("..", "docs", "qa-ci", "status", "curriculum-quality-status.json"));
     private static final Pattern GITHUB_ID_PATTERN = Pattern.compile("^[A-Za-z0-9-]{1,39}$");
     private static final Pattern WHY_TOPIC_PATTERN = Pattern.compile("^\\s*(warum|why)\\b.*",
             Pattern.CASE_INSENSITIVE | Pattern.UNICODE_CASE);
@@ -156,6 +165,7 @@ public class CurriculaService {
     public CurriculaSnapshot getSnapshot() {
         CurriculaMetricsSnapshot snapshot = metricsSnapshot.get();
         List<LandscapeSummary> baseCurricula = landscapeService.getBaseCurricula();
+        CurriculumQualitySnapshot qualitySnapshot = loadCurriculumQualitySnapshot();
         Map<String, Set<String>> goalToRoots = snapshot.goalToRoots();
         Map<String, List<Mastery>> masteryCache = new HashMap<>();
         List<CurriculumOverview> result = new ArrayList<>();
@@ -173,6 +183,8 @@ public class CurriculaService {
                     .map(TopicSummary::titleEn)
                     .toList();
             LearningLandscape landscape = landscapeService.getById(curriculumId);
+            CurriculumQualityEntry qualityEntry = qualitySnapshot.byLandscapeId().get(curriculumId);
+            List<CurriculumQualityOverview> subjectQuality = buildSubjectQuality(curriculumId, topLevelTopics, qualitySnapshot);
             String titleEn = null;
             String descriptionEn = null;
             if (landscape != null) {
@@ -196,6 +208,12 @@ public class CurriculaService {
                     summary.getRegion(),
                     metrics.totalAtomicGoals(),
                     metrics.totalMastered(),
+                    qualityEntry != null ? qualityEntry.maturity() : null,
+                    qualityEntry != null ? qualityEntry.goals() : 0,
+                    qualityEntry != null ? qualityEntry.atomicGoals() : 0,
+                    qualityEntry != null ? qualityEntry.warnings() : 0,
+                    qualityEntry != null ? qualityEntry.failures() : 0,
+                    subjectQuality,
                     topLevelTopics,
                     topLevelTopicsEn,
                     champions));
@@ -203,6 +221,127 @@ public class CurriculaService {
 
         result.sort(Comparator.comparing(CurriculumOverview::title, String.CASE_INSENSITIVE_ORDER));
         return new CurriculaSnapshot(result, snapshot.defaultCurriculumId(), snapshot.lastUpdatedAt());
+    }
+
+    private CurriculumQualitySnapshot loadCurriculumQualitySnapshot() {
+        Path statusPath = CURRICULUM_QUALITY_STATUS_PATHS.stream()
+                .filter(Files::isRegularFile)
+                .findFirst()
+                .orElse(null);
+        if (statusPath == null) {
+            return CurriculumQualitySnapshot.empty();
+        }
+
+        try {
+            JsonNode root = objectMapper.readTree(statusPath.toFile());
+            JsonNode curricula = root.path("curricula");
+            if (!curricula.isArray()) {
+                return CurriculumQualitySnapshot.empty();
+            }
+
+            Map<String, CurriculumQualityEntry> byLandscapeId = new LinkedHashMap<>();
+            Map<String, CurriculumQualityEntry> canonicalSubjects = new LinkedHashMap<>();
+            for (JsonNode curriculum : curricula) {
+                String landscapeId = text(curriculum, "landscapeId");
+                String subject = text(curriculum, "subject");
+                String maturity = text(curriculum, "maturity");
+                if (landscapeId == null || subject == null || maturity == null) {
+                    continue;
+                }
+
+                CurriculumQualityEntry entry = new CurriculumQualityEntry(
+                        landscapeId,
+                        subject,
+                        maturity,
+                        curriculum.path("goals").asLong(0),
+                        curriculum.path("atomicGoals").asLong(0),
+                        countRuleStatus(curriculum, "warn"),
+                        countRuleStatus(curriculum, "fail"));
+                byLandscapeId.put(landscapeId, entry);
+
+                String frameworkId = text(curriculum, "frameworkId");
+                if (frameworkId != null
+                        && frameworkId.startsWith(CANONICAL_GYMNASIUM_FRAMEWORK_PREFIX)
+                        && !CANONICAL_GYMNASIUM_OVERVIEW_FRAMEWORK_ID.equals(frameworkId)) {
+                    canonicalSubjects.put(normalizeSubject(subject), entry);
+                }
+            }
+
+            return new CurriculumQualitySnapshot(
+                    Collections.unmodifiableMap(byLandscapeId),
+                    Collections.unmodifiableMap(canonicalSubjects));
+        } catch (Exception e) {
+            log.warn("Failed to load curriculum quality status from {}", statusPath, e);
+            return CurriculumQualitySnapshot.empty();
+        }
+    }
+
+    private List<CurriculumQualityOverview> buildSubjectQuality(
+            String curriculumId,
+            List<String> topLevelTopics,
+            CurriculumQualitySnapshot qualitySnapshot) {
+        if (!CANONICAL_GYMNASIUM_ROOT_ID.equals(curriculumId)) {
+            return Collections.emptyList();
+        }
+
+        List<CurriculumQualityOverview> qualities = new ArrayList<>();
+        Set<String> seenSubjects = new LinkedHashSet<>();
+        for (String topic : topLevelTopics) {
+            CurriculumQualityEntry entry = qualitySnapshot.canonicalSubjects().get(normalizeSubject(topic));
+            if (entry == null || !seenSubjects.add(normalizeSubject(entry.subject()))) {
+                continue;
+            }
+            qualities.add(toQualityOverview(entry));
+        }
+
+        return qualities;
+    }
+
+    private CurriculumQualityOverview toQualityOverview(CurriculumQualityEntry entry) {
+        return new CurriculumQualityOverview(
+                entry.subject(),
+                entry.maturity(),
+                entry.goals(),
+                entry.atomicGoals(),
+                entry.warnings(),
+                entry.failures());
+    }
+
+    private int countRuleStatus(JsonNode curriculum, String status) {
+        int count = countRuleStatusInArray(curriculum.path("rules"), status);
+        JsonNode scopes = curriculum.path("scopes");
+        if (scopes.isArray()) {
+            for (JsonNode scope : scopes) {
+                count += countRuleStatusInArray(scope.path("rules"), status);
+            }
+        }
+        return count;
+    }
+
+    private int countRuleStatusInArray(JsonNode rules, String status) {
+        if (!rules.isArray()) {
+            return 0;
+        }
+        int count = 0;
+        for (JsonNode rule : rules) {
+            if (status.equals(text(rule, "status"))) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    private String text(JsonNode node, String fieldName) {
+        JsonNode value = node.path(fieldName);
+        if (!value.isTextual()) {
+            return null;
+        }
+        String text = value.asText().trim();
+        return text.isEmpty() ? null : text;
+    }
+
+    private String normalizeSubject(String value) {
+        return value == null ? "" : value.trim().toLowerCase(java.util.Locale.ROOT);
     }
 
     public List<CurriculumChampionProfile> getChampionsByGithubId(String githubId) {
@@ -908,6 +1047,25 @@ public class CurriculaService {
             Map<String, Set<String>> goalToRoots,
             String defaultCurriculumId,
             Instant lastUpdatedAt) {
+    }
+
+    private record CurriculumQualityEntry(
+            String landscapeId,
+            String subject,
+            String maturity,
+            long goals,
+            long atomicGoals,
+            int warnings,
+            int failures) {
+    }
+
+    private record CurriculumQualitySnapshot(
+            Map<String, CurriculumQualityEntry> byLandscapeId,
+            Map<String, CurriculumQualityEntry> canonicalSubjects) {
+
+        private static CurriculumQualitySnapshot empty() {
+            return new CurriculumQualitySnapshot(Collections.emptyMap(), Collections.emptyMap());
+        }
     }
 
     public List<com.skillpilot.backend.api.TopicSummary> getTopics(String curriculumId) {
