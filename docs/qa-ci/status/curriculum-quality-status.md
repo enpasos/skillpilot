@@ -1,6 +1,6 @@
 # Curriculum Quality Status
 
-Generated: 2026-05-13T00:15:59.087Z
+Generated: 2026-05-13T00:38:38.914Z
 Rules version: curriculum-quality-v1
 
 ## Summary
@@ -28,7 +28,7 @@ Rules version: curriculum-quality-v1
 | Geschichte (Gymnasium, DE) | M0 | 210 | 171 | 0/2 | 0/16 | 0 | 1 | 1 |
 | Griechisch (Gymnasium, DE) | M0 | 198 | 185 | 0/2 | 0/16 | 0 | 1 | 1 |
 | Gymnasium (DE) | M0 | 1 | 0 | - | 0/16 | 0 | 2 | 0 |
-| Informatik (Gymnasium, DE) | M0 | 221 | 180 | 0/2 | 0/16 | 0 | 1 | 1 |
+| Informatik (Gymnasium, DE) | M0 | 221 | 180 | 2/2 | 2/16 | 0 | 2 | 0 |
 | Italienisch (Gymnasium, DE) | M0 | 8 | 7 | 0/1 | 0/16 | 0 | 1 | 1 |
 | Latein (Gymnasium, DE) | M0 | 142 | 109 | 0/2 | 0/16 | 0 | 1 | 1 |
 | Mathematik (Gymnasium, DE) | M5 | 1037 | 825 | 31/31 | 16/16 | 2 | 0 | 0 |
@@ -107,8 +107,8 @@ Rules version: curriculum-quality-v1
 | Geschichte (Gymnasium, DE) | Geschichte Oberstufe (Hessen, KC 2024) | DE-HE | No extraction | 0/3 | MAPPING-1 | 0 | 0 | 0 | 0 | 0% |  |
 | Griechisch (Gymnasium, DE) | Griechisch (Gymnasium) | DE-BY | No extraction | 0/3 | MAPPING-1 | 0 | 0 | 0 | 0 | 0% |  |
 | Griechisch (Gymnasium, DE) | Griechisch Oberstufe (Hessen, KC 2024) | DE-HE | No extraction | 0/3 | MAPPING-1 | 0 | 0 | 0 | 0 | 0% |  |
-| Informatik (Gymnasium, DE) | Informatik (Gymnasium) | DE-BY | No extraction | 0/3 | MAPPING-1 | 0 | 0 | 0 | 0 | 0% |  |
-| Informatik (Gymnasium, DE) | Informatik Oberstufe (Hessen, KC 2024) | DE-HE | No extraction | 0/3 | MAPPING-1 | 0 | 0 | 0 | 0 | 0% |  |
+| Informatik (Gymnasium, DE) | Informatik (Gymnasium) | DE-BY | 1/1 original source(s) | 3/3 | - | 49 | 224 | 65 | 159 | 29% |  |
+| Informatik (Gymnasium, DE) | Informatik Oberstufe (Hessen, KC 2024) | DE-HE | 1/1 original source(s) | 3/3 | - | 35 | 155 | 155 | 0 | 100% |  |
 | Italienisch (Gymnasium, DE) | Italienisch (Gymnasium) | DE-BY | No extraction | 0/3 | MAPPING-1 | 0 | 0 | 0 | 0 | 0% |  |
 | Latein (Gymnasium, DE) | Latein (Gymnasium) | DE-BY | No extraction | 0/3 | MAPPING-1 | 0 | 0 | 0 | 0 | 0% |  |
 | Latein (Gymnasium, DE) | Latein Oberstufe (Hessen, KC 2024) | DE-HE | No extraction | 0/3 | MAPPING-1 | 0 | 0 | 0 | 0 | 0% |  |
@@ -193,7 +193,7 @@ Rules version: curriculum-quality-v1
 | Geschichte (Gymnasium, DE) | 0/16 | 156 | 171 | 2 | 0 | 437 | 437 | 0 | 0 | 0 | 0 | 0 | 0 | 2 | 156 (100%) |
 | Griechisch (Gymnasium, DE) | 0/16 | 170 | 185 | 2 | 0 | 769 | 769 | 0 | 0 | 0 | 0 | 0 | 0 | 2 | 170 (100%) |
 | Gymnasium (DE) | 0/16 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0%) |
-| Informatik (Gymnasium, DE) | 0/16 | 161 | 180 | 2 | 0 | 483 | 483 | 0 | 0 | 0 | 0 | 0 | 0 | 2 | 161 (100%) |
+| Informatik (Gymnasium, DE) | 2/16 | 161 | 180 | 2 | 379 | 379 | 379 | 0 | 379 | 0 | 0 | 0 | 0 | 0 | 161 (100%) |
 | Italienisch (Gymnasium, DE) | 0/16 | 6 | 7 | 1 | 0 | 8 | 8 | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 6 (100%) |
 | Latein (Gymnasium, DE) | 0/16 | 94 | 109 | 2 | 0 | 1035 | 1035 | 0 | 0 | 0 | 0 | 0 | 0 | 2 | 94 (100%) |
 | Mathematik (Gymnasium, DE) | 16/16 | 648 | 825 | 16 | 9797 | 9797 | 9797 | 0 | 9797 | 0 | 0 | 0 | 0 | 0 | 648 (100%) |
