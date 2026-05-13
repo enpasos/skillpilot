@@ -1,6 +1,6 @@
 # Curriculum Quality Status
 
-Generated: 2026-05-13T00:54:11.351Z
+Generated: 2026-05-13T00:57:16.254Z
 Rules version: curriculum-quality-v1
 
 ## Summary
@@ -21,7 +21,7 @@ Rules version: curriculum-quality-v1
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Biologie (Gymnasium, DE) | M5 | 429 | 378 | 17/17 | 16/16 | 1 | 0 | 0 |
 | Chemie (Gymnasium, DE) | M5 | 467 | 399 | 32/32 | 16/16 | 1 | 0 | 0 |
-| Chinesisch (Gymnasium, DE) | M0 | 192 | 181 | 0/2 | 0/16 | 0 | 1 | 1 |
+| Chinesisch (Gymnasium, DE) | M0 | 192 | 181 | 2/2 | 2/16 | 0 | 2 | 0 |
 | Deutsch (Gymnasium, DE) | M0 | 181 | 144 | 2/2 | 2/16 | 0 | 2 | 0 |
 | Englisch (Gymnasium, DE) | M0 | 130 | 104 | 2/2 | 2/16 | 0 | 2 | 0 |
 | Französisch (Gymnasium, DE) | M0 | 331 | 275 | 3/3 | 2/16 | 0 | 2 | 0 |
@@ -94,8 +94,8 @@ Rules version: curriculum-quality-v1
 | Chemie (Gymnasium, DE) | DE-ST - Chemie Sekundarstufe II (Sachsen-Anhalt, Fachlehrplan Gymnasium 2022 Source-Extraction) | DE-ST | 2/2 original source(s) | 3/3 | - | 15 | 324 | 40 | 284 | 12% |  |
 | Chemie (Gymnasium, DE) | DE-TH - Chemie Qualifikationsphase (Thueringen, Lehrplan Gymnasium 2024 Source-Extraction) | DE-TH | 1/1 original source(s) | 3/3 | - | 55 | 225 | 39 | 186 | 17% |  |
 | Chemie (Gymnasium, DE) | DE-TH - Chemie Sekundarstufe I (Thueringen, Lehrplan Gymnasium 2024 Source-Extraction) | DE-TH | 1/1 original source(s) | 3/3 | - | 24 | 224 | 56 | 168 | 25% |  |
-| Chinesisch (Gymnasium, DE) | Chinesisch (Gymnasium) | DE-BY | No extraction | 0/3 | MAPPING-1 | 0 | 0 | 0 | 0 | 0% |  |
-| Chinesisch (Gymnasium, DE) | Chinesisch Oberstufe (Hessen, KC 2024) | DE-HE | No extraction | 0/3 | MAPPING-1 | 0 | 0 | 0 | 0 | 0% |  |
+| Chinesisch (Gymnasium, DE) | Chinesisch (Gymnasium) | DE-BY | 1/1 original source(s) | 3/3 | - | 19 | 229 | 14 | 215 | 6% |  |
+| Chinesisch (Gymnasium, DE) | Chinesisch Oberstufe (Hessen, KC 2024) | DE-HE | 1/1 original source(s) | 3/3 | - | 6 | 170 | 170 | 0 | 100% |  |
 | Deutsch (Gymnasium, DE) | Deutsch (Gymnasium) | DE-BY | 1/1 original source(s) | 3/3 | - | 49 | 434 | 11 | 423 | 3% |  |
 | Deutsch (Gymnasium, DE) | Deutsch Oberstufe (Hessen, KC 2024) | DE-HE | 1/1 original source(s) | 3/3 | - | 33 | 116 | 116 | 0 | 100% |  |
 | Englisch (Gymnasium, DE) | Englisch (Gymnasium) | DE-BY | 1/1 original source(s) | 3/3 | - | 1 | 9 | 1 | 8 | 11% |  |
@@ -186,7 +186,7 @@ Rules version: curriculum-quality-v1
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Biologie (Gymnasium, DE) | 16/16 | 357 | 378 | 16 | 999 | 999 | 999 | 0 | 999 | 0 | 0 | 0 | 0 | 0 | 355 (100%) |
 | Chemie (Gymnasium, DE) | 16/16 | 336 | 399 | 16 | 5865 | 5865 | 5865 | 0 | 5865 | 0 | 0 | 0 | 0 | 0 | 334 (100%) |
-| Chinesisch (Gymnasium, DE) | 0/16 | 170 | 181 | 2 | 0 | 436 | 436 | 0 | 0 | 0 | 0 | 0 | 0 | 2 | 170 (100%) |
+| Chinesisch (Gymnasium, DE) | 2/16 | 170 | 181 | 2 | 399 | 399 | 399 | 0 | 399 | 0 | 0 | 0 | 0 | 0 | 170 (100%) |
 | Deutsch (Gymnasium, DE) | 2/16 | 127 | 144 | 2 | 550 | 550 | 550 | 0 | 550 | 0 | 0 | 0 | 0 | 0 | 127 (100%) |
 | Englisch (Gymnasium, DE) | 2/16 | 89 | 104 | 2 | 103 | 103 | 103 | 0 | 103 | 0 | 0 | 0 | 0 | 0 | 89 (100%) |
 | Französisch (Gymnasium, DE) | 2/16 | 260 | 275 | 2 | 269 | 269 | 269 | 0 | 269 | 0 | 0 | 0 | 0 | 0 | 260 (100%) |
