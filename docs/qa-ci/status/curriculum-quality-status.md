@@ -1,6 +1,6 @@
 # Curriculum Quality Status
 
-Generated: 2026-05-12T16:02:08.696Z
+Generated: 2026-05-13T00:15:59.087Z
 Rules version: curriculum-quality-v1
 
 ## Summary
@@ -8,18 +8,18 @@ Rules version: curriculum-quality-v1
 | Metric | Value |
 | --- | ---: |
 | Curricula | 21 |
-| M0 | 18 |
+| M0 | 17 |
 | M1 | 0 |
 | M2 | 0 |
 | M3 | 0 |
 | M4 | 0 |
-| M5 | 3 |
+| M5 | 4 |
 
 ## Curricula
 
 | Curriculum | Maturity | Goals | Atomic | Passage extraction | Bundeslaender | QA scopes | Warn | Fail |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| Biologie (Gymnasium, DE) | M0 | 316 | 267 | 3/3 | 1/16 | 0 | 2 | 1 |
+| Biologie (Gymnasium, DE) | M5 | 429 | 378 | 17/17 | 16/16 | 1 | 0 | 0 |
 | Chemie (Gymnasium, DE) | M5 | 467 | 399 | 32/32 | 16/16 | 1 | 0 | 0 |
 | Chinesisch (Gymnasium, DE) | M0 | 192 | 181 | 0/2 | 0/16 | 0 | 1 | 1 |
 | Deutsch (Gymnasium, DE) | M0 | 181 | 144 | 0/2 | 0/16 | 0 | 1 | 1 |
@@ -45,9 +45,23 @@ Rules version: curriculum-quality-v1
 
 | Curriculum | Source | Jurisdiction | Original sources | Complete | Current step | Passages | Source goals | Exact | Partial | Exact share | Evidence note |
 | --- | --- | --- | --- | ---: | --- | ---: | ---: | ---: | ---: | ---: | --- |
-| Biologie (Gymnasium, DE) | DE-BY - Biologie Gymnasium (Bayern, LehrplanPLUS Source-Extraction) | DE-BY | 1/1 original source(s) | 2/3 | MAPPING-3 | 32 | 222 | 72 | 19 | 79% |  |
+| Biologie (Gymnasium, DE) | Biologie Sekundarstufe I (Brandenburg, gemeinsamer BE/BB-Rahmenlehrplan 2015 Source-Extraction) | DE-BB | 1/1 original source(s) | 3/3 | - | 0 | 33 | 0 | 0 | 0% |  |
+| Biologie (Gymnasium, DE) | Biologie Sekundarstufe I (Berlin, gemeinsamer BE/BB-Rahmenlehrplan 2015 Source-Extraction) | DE-BE | 1/1 original source(s) | 3/3 | - | 0 | 33 | 0 | 0 | 0% |  |
+| Biologie (Gymnasium, DE) | DE-BW - Biologie Sekundarstufe I (Bildungsplan 2016 Gymnasium, V2 2022 Source-Extraction) | DE-BW | 2/2 original source(s) | 3/3 | - | 15 | 111 | 1 | 110 | 1% |  |
+| Biologie (Gymnasium, DE) | DE-BY - Biologie Gymnasium (Bayern, LehrplanPLUS Source-Extraction) | DE-BY | 1/1 original source(s) | 3/3 | - | 32 | 222 | 192 | 30 | 86% |  |
+| Biologie (Gymnasium, DE) | DE-HB - Biologie Sekundarstufe I (Bremen, Bildungsplan 2006/2022 Source-Extraction) | DE-HB | 2/2 original source(s) | 3/3 | - | 6 | 70 | 2 | 68 | 3% |  |
 | Biologie (Gymnasium, DE) | Biologie Oberstufe (Hessen, KC 2024 Source-Extraction) | DE-HE | 1/1 original source(s) | 3/3 | - | 19 | 150 | 150 | 0 | 100% |  |
 | Biologie (Gymnasium, DE) | Biologie Sekundarstufe I (Hessen, G9 Source-Extraction) | DE-HE | 1/1 original source(s) | 3/3 | - | 16 | 66 | 66 | 0 | 100% |  |
+| Biologie (Gymnasium, DE) | Biologie Sekundarstufe I (Hamburg Bildungsplan Gymnasium 2011 Source-Extraction) | DE-HH | 1/1 original source(s) | 3/3 | - | 0 | 7 | 0 | 7 | 0% |  |
+| Biologie (Gymnasium, DE) | Biologie Sekundarstufe I (Mecklenburg-Vorpommern Rahmenplan 2022 Source-Extraction) | DE-MV | 1/1 original source(s) | 3/3 | - | 0 | 12 | 0 | 12 | 0% |  |
+| Biologie (Gymnasium, DE) | DE-NI - Biologie Sekundarstufe I (Niedersachsen, KC 2015 Source-Extraction) | DE-NI | 1/1 original source(s) | 3/3 | - | 18 | 124 | 4 | 120 | 3% |  |
+| Biologie (Gymnasium, DE) | Biologie Sekundarstufe I (Nordrhein-Westfalen KLP Gymnasium 2019 Source-Extraction) | DE-NW | 1/1 original source(s) | 3/3 | - | 0 | 11 | 0 | 0 | 0% |  |
+| Biologie (Gymnasium, DE) | DE-RP - Biologie Sekundarstufe I (Rheinland-Pfalz, Lehrplan BCP 2014 Source-Extraction) | DE-RP | 1/1 original source(s) | 3/3 | - | 12 | 47 | 2 | 45 | 4% |  |
+| Biologie (Gymnasium, DE) | Biologie Sekundarstufe I (Schleswig-Holstein Fachanforderungen 2023 Source-Extraction) | DE-SH | 1/1 original source(s) | 3/3 | - | 0 | 9 | 0 | 0 | 0% |  |
+| Biologie (Gymnasium, DE) | DE-SL - Biologie Sekundarstufe I (Saarland, Naturwissenschaften 5/6 2012 Source-Extraction) | DE-SL | 1/1 original source(s) | 3/3 | - | 9 | 75 | 1 | 74 | 1% |  |
+| Biologie (Gymnasium, DE) | Biologie Sekundarstufe I (Sachsen Lehrplan Gymnasium 2025 Source-Extraction) | DE-SN | 1/1 original source(s) | 3/3 | - | 0 | 10 | 0 | 10 | 0% |  |
+| Biologie (Gymnasium, DE) | Biologie Sekundarstufe I (Sachsen-Anhalt Fachlehrplan Gymnasium 2022 Source-Extraction) | DE-ST | 1/1 original source(s) | 3/3 | - | 0 | 11 | 0 | 11 | 0% |  |
+| Biologie (Gymnasium, DE) | Biologie Sekundarstufe I (Thueringen Lehrplan Gymnasium 2024 Source-Extraction) | DE-TH | 1/1 original source(s) | 3/3 | - | 0 | 8 | 0 | 8 | 0% |  |
 | Chemie (Gymnasium, DE) | DE-BB - Chemie Oberstufe (Brandenburg, RLP GOST 2022 Source-Extraction) | DE-BB | 1/1 original source(s) | 3/3 | - | 23 | 203 | 100 | 103 | 49% |  |
 | Chemie (Gymnasium, DE) | DE-BB - Chemie Sekundarstufe I (Brandenburg, RLP 2015 Source-Extraction) | DE-BB | 1/1 original source(s) | 3/3 | - | 12 | 68 | 0 | 68 | 0% |  |
 | Chemie (Gymnasium, DE) | DE-BE - Chemie Oberstufe (Berlin, RLP GOST 2022 Source-Extraction) | DE-BE | 1/1 original source(s) | 3/3 | - | 23 | 203 | 100 | 103 | 49% |  |
@@ -170,7 +184,7 @@ Rules version: curriculum-quality-v1
 
 | Curriculum | Complete | DE view atoms | Raw atoms | Source-backed states | Extracted source goals | Registered source originals | Fully covered originals | Unregistered source goals | Extracted source atoms | Unregistered source atoms | Unsupported assignments | Unmapped source atoms | Partial | Error | Max source-backed view coverage |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| Biologie (Gymnasium, DE) | 1/16 | 245 | 267 | 2 | 438 | 438 | 307 | 0 | 438 | 0 | 0 | 131 | 0 | 1 | 245 (100%) |
+| Biologie (Gymnasium, DE) | 16/16 | 357 | 378 | 16 | 999 | 999 | 999 | 0 | 999 | 0 | 0 | 0 | 0 | 0 | 355 (100%) |
 | Chemie (Gymnasium, DE) | 16/16 | 336 | 399 | 16 | 5865 | 5865 | 5865 | 0 | 5865 | 0 | 0 | 0 | 0 | 0 | 334 (100%) |
 | Chinesisch (Gymnasium, DE) | 0/16 | 170 | 181 | 2 | 0 | 436 | 436 | 0 | 0 | 0 | 0 | 0 | 0 | 2 | 170 (100%) |
 | Deutsch (Gymnasium, DE) | 0/16 | 127 | 144 | 2 | 0 | 650 | 650 | 0 | 0 | 0 | 0 | 0 | 0 | 2 | 127 (100%) |

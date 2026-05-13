@@ -1,0 +1,310 @@
+{
+  "schemaVersion": 1,
+  "sourceLandscapeId": "4282f314-e1bd-527c-8c35-38d989ffe53e",
+  "title": "Biologie Sekundarstufe I (Sachsen-Anhalt Fachlehrplan Gymnasium 2022 Source-Extraction)",
+  "subject": "Biologie",
+  "schoolType": "Gymnasium",
+  "stage": "Sekundarstufe I",
+  "jurisdiction": "DE-ST",
+  "sourceDocument": {
+    "key": "DE-ST-BIOLOGIE-GYMNASIUM-FACHLEHRPLAN-2022",
+    "title": "Fachlehrplan Biologie Gymnasium Sachsen-Anhalt 2022",
+    "url": "https://lisa.sachsen-anhalt.de/fileadmin/Bibliothek/Politik_und_Verwaltung/MK/LISA/Unterricht/Lehrplaene/Gym/Anpassung_2022/FLP_Biologie_Gym_01082022_swd.pdf",
+    "path": "curricula/DE/Gymnasium/input/ST/FLP_Biologie_Gym_01082022_swd.pdf",
+    "localPath": "curricula/DE/Gymnasium/input/ST/FLP_Biologie_Gym_01082022_swd.pdf",
+    "official": true,
+    "effectiveFrom": "2022-08-01",
+    "publisher": "Landesinstitut für Schulqualität und Lehrerbildung Sachsen-Anhalt"
+  },
+  "extractionNotes": "Reviewed source extraction from the official Sachsen-Anhalt Gymnasium Biology Fachlehrplan. Source goals follow the lower-secondary school-year competence areas and map to existing canonical Biology atomics without duplicating canonical goals.",
+  "qualityReview": {
+    "sourceGoalCountPeerBaseline": {
+      "accepted": true,
+      "details": "11 Source-Ziele; Sachsen-Anhalt Biologie Sek I ist als Schuljahrgang-5/6-bis-10-Fachlehrplan mit Kompetenzschwerpunkten formuliert."
+    }
+  },
+  "pipelineStatus": {
+    "currentStep": "",
+    "steps": [
+      {
+        "id": "MAPPING-1",
+        "label": "Original-Lehrplanpassagen extrahiert",
+        "status": "complete",
+        "dependsOn": [],
+        "checks": [
+          {
+            "id": "source-document-present",
+            "label": "Amtliches Sachsen-Anhalt-Biologie-PDF liegt lokal vor",
+            "passed": true,
+            "details": "curricula/DE/Gymnasium/input/ST/FLP_Biologie_Gym_01082022_swd.pdf"
+          },
+          {
+            "id": "expected-topic-coverage",
+            "label": "Alle sachsen-anhaltischen Biologie-Sek-I-Lernbereiche wurden extrahiert",
+            "passed": true,
+            "details": "11/11 Bereiche: Prozessstandards, Schuljahrgaenge 5/6 Lebewesen-Wirbeltiere-Pubertaet-Samenpflanzen, 7/8 Zellen-Mikroorganismen-Wirbellose-Humanbiologie-Pflanzen, 9 Mensch/Umwelt und Oekosystem Wald, 10 Genetik/Evolution."
+          },
+          {
+            "id": "official-source-extraction",
+            "label": "Passage-Extraction basiert auf amtlicher PDF-Quelle",
+            "passed": true,
+            "details": "https://lisa.sachsen-anhalt.de/fileadmin/Bibliothek/Politik_und_Verwaltung/MK/LISA/Unterricht/Lehrplaene/Gym/Anpassung_2022/FLP_Biologie_Gym_01082022_swd.pdf"
+          }
+        ]
+      },
+      {
+        "id": "MAPPING-2",
+        "label": "Source-Ziele aus Lehrplanpassagen erstellt",
+        "status": "complete",
+        "dependsOn": [
+          "MAPPING-1"
+        ],
+        "checks": [
+          {
+            "id": "source-goals-created",
+            "label": "Source-Ziele aus den Sachsen-Anhalt-Biologie-Lehrplanpassagen erzeugt",
+            "passed": true,
+            "details": "11 Source-Ziele"
+          },
+          {
+            "id": "source-goal-count-peer-baseline",
+            "label": "Source-Ziel-Anzahl ist gegen die Sachsen-Dokumentstruktur plausibilisiert",
+            "passed": true,
+            "details": "Ein Source-Ziel pro fachlich gebündeltem Schuljahrgangs- bzw. Kompetenzschwerpunktblock."
+          },
+          {
+            "id": "source-goal-ids-unique",
+            "label": "Source-Ziel-IDs sind eindeutig",
+            "passed": true,
+            "details": "Doppelte IDs: -"
+          }
+        ]
+      },
+      {
+        "id": "MAPPING-3",
+        "label": "Source-Ziele auf SkillPilot-Ziele gemappt",
+        "status": "complete",
+        "dependsOn": [
+          "MAPPING-1",
+          "MAPPING-2"
+        ],
+        "checks": [
+          {
+            "id": "mapping-2-complete",
+            "label": "MAPPING-2 abgeschlossen",
+            "passed": true,
+            "details": "11 Source-Ziele liegen vor."
+          },
+          {
+            "id": "m3-review-file-present",
+            "label": "M3-Review-Datei ist vorhanden",
+            "passed": true,
+            "details": "curricula/DE/Gymnasium/mapping/DE-ST/lower-secondary/st_biology_lower_secondary_source_extraction_to_canonical_biology.review.json"
+          },
+          {
+            "id": "m3-review-decisions-reference-source-goals",
+            "label": "M3-Review-Entscheidungen referenzieren gueltige Source-Ziele",
+            "passed": true,
+            "details": "Wird aus der Review-Datei berechnet."
+          },
+          {
+            "id": "m3-review-targets-exist",
+            "label": "M3-Review-Ziele referenzieren vorhandene Canonical-Ziele",
+            "passed": true,
+            "details": "Wird aus der Review-Datei berechnet."
+          },
+          {
+            "id": "m3-all-source-goals-reviewed",
+            "label": "Alle Source-Ziele haben eine fachliche M3-Entscheidung",
+            "passed": true,
+            "details": "Wird aus der Review-Datei berechnet."
+          },
+          {
+            "id": "m3-all-source-goals-covered-by-canonical",
+            "label": "Alle Source-Ziele sind inhaltlich durch SkillPilot-Ziele abgedeckt",
+            "passed": true,
+            "details": "Wird aus der Review-Datei berechnet."
+          }
+        ]
+      }
+    ]
+  },
+  "sourceGoals": [
+    {
+      "id": "st-biology-seki-fachlehrplan-2022-pb-01-biologische-fach-erkenntnis-kommunikations-und-bewertungskompetenzen-anwenden",
+      "title": "Biologische Fach-, Erkenntnis-, Kommunikations- und Bewertungskompetenzen anwenden",
+      "description": "Die lernende Person kann biologische Phaenomene mit Basiskonzepten erschliessen, fachlich untersuchen, modellieren, kommunizieren und biologische Entscheidungen kriteriengeleitet sowie nachhaltig bewerten.",
+      "type": "atomic",
+      "sourceRef": "Fachlehrplan Biologie Gymnasium Sachsen-Anhalt 2022, Ziele und Aufgaben des Faches Biologie, S. 1-3",
+      "sourceDocumentKey": "DE-ST-BIOLOGIE-GYMNASIUM-FACHLEHRPLAN-2022",
+      "sourcePath": "curricula/DE/Gymnasium/input/ST/FLP_Biologie_Gym_01082022_swd.pdf",
+      "tags": [
+        "source-extraction",
+        "subject:Biologie",
+        "phase:SekI",
+        "jurisdiction:DE-ST",
+        "topic:PB"
+      ]
+    },
+    {
+      "id": "st-biology-seki-fachlehrplan-2022-sj56-lebende-systeme-wirbeltiere-02-lebende-systeme-wirbeltierklassen-angepasstheit-und-naturschutz-erklaeren",
+      "title": "Lebende Systeme, Wirbeltierklassen, Angepasstheit und Naturschutz erklaeren",
+      "description": "Die lernende Person kann Merkmale lebender Systeme, Ordnungskriterien, artgerechte Tierhaltung, Wirbeltierklassen, Angepasstheiten, Fortpflanzung, Entwicklung, Nahrungsbeziehungen, Verwandtschaft und Naturschutz an Beispielen erklaeren.",
+      "type": "atomic",
+      "sourceRef": "Fachlehrplan Biologie Gymnasium Sachsen-Anhalt 2022, Schuljahrgaenge 5/6, Kompetenzschwerpunkte Biologie als Lehre von den lebenden Systemen und Angepasstheit der Wirbeltiere",
+      "sourceDocumentKey": "DE-ST-BIOLOGIE-GYMNASIUM-FACHLEHRPLAN-2022",
+      "sourcePath": "curricula/DE/Gymnasium/input/ST/FLP_Biologie_Gym_01082022_swd.pdf",
+      "tags": [
+        "source-extraction",
+        "subject:Biologie",
+        "phase:SekI",
+        "jurisdiction:DE-ST",
+        "topic:SJ56-LEBENDE-SYSTEME-WIRBELTIERE"
+      ]
+    },
+    {
+      "id": "st-biology-seki-fachlehrplan-2022-sj56-pubertaet-samenpflanzen-03-pubertaet-sexuelle-selbstbestimmung-samenpflanzen-und-kulturpflanzen-erklaeren",
+      "title": "Pubertaet, sexuelle Selbstbestimmung, Samenpflanzen und Kulturpflanzen erklaeren",
+      "description": "Die lernende Person kann Pubertaet, Menstruationszyklus, sexuelle Selbstbestimmung, Medienbilder, Bau und Entwicklung von Samenpflanzen, Keimungsbedingungen, Fortpflanzung, Kulturpflanzen, Speicherstoffe und nachhaltige Landwirtschaft erklaeren und bewerten.",
+      "type": "atomic",
+      "sourceRef": "Fachlehrplan Biologie Gymnasium Sachsen-Anhalt 2022, Schuljahrgaenge 5/6, Kompetenzschwerpunkte Pubertaet und Samenpflanzen",
+      "sourceDocumentKey": "DE-ST-BIOLOGIE-GYMNASIUM-FACHLEHRPLAN-2022",
+      "sourcePath": "curricula/DE/Gymnasium/input/ST/FLP_Biologie_Gym_01082022_swd.pdf",
+      "tags": [
+        "source-extraction",
+        "subject:Biologie",
+        "phase:SekI",
+        "jurisdiction:DE-ST",
+        "topic:SJ56-PUBERTAET-SAMENPFLANZEN"
+      ]
+    },
+    {
+      "id": "st-biology-seki-fachlehrplan-2022-sj78-zellen-mikroorganismen-04-zellen-zellprozesse-mikroorganismen-gaerung-und-infektionsschutz-erklaeren",
+      "title": "Zellen, Zellprozesse, Mikroorganismen, Gaerung und Infektionsschutz erklaeren",
+      "description": "Die lernende Person kann Pflanzen-, Tier-, Bakterien- und Hefezellen, Zellorganellen, Zellteilung, Einzeller, Vielzeller, Bakterien, Hefen, Zersetzung, Biotechnologie, Lebensmittelkonservierung, Infektionsschutz und alkoholische Gaerung erklaeren.",
+      "type": "atomic",
+      "sourceRef": "Fachlehrplan Biologie Gymnasium Sachsen-Anhalt 2022, Schuljahrgaenge 7/8, Kompetenzschwerpunkte zellulaere Strukturen und Mikroorganismen",
+      "sourceDocumentKey": "DE-ST-BIOLOGIE-GYMNASIUM-FACHLEHRPLAN-2022",
+      "sourcePath": "curricula/DE/Gymnasium/input/ST/FLP_Biologie_Gym_01082022_swd.pdf",
+      "tags": [
+        "source-extraction",
+        "subject:Biologie",
+        "phase:SekI",
+        "jurisdiction:DE-ST",
+        "topic:SJ78-ZELLEN-MIKROORGANISMEN"
+      ]
+    },
+    {
+      "id": "st-biology-seki-fachlehrplan-2022-sj78-wirbellose-05-wirbellose-biodiversitaet-angepasstheit-nahrungsbeziehungen-und-naturschutz-erklaeren",
+      "title": "Wirbellose, Biodiversitaet, Angepasstheit, Nahrungsbeziehungen und Naturschutz erklaeren",
+      "description": "Die lernende Person kann Biodiversitaet wirbelloser Tiere, systematische Gruppen, Bau, Lebensweise, Angepasstheit, Metamorphose, Populationen, Nahrungsbeziehungen, Schaedelingsbekaempfung und Naturschutz bewerten.",
+      "type": "atomic",
+      "sourceRef": "Fachlehrplan Biologie Gymnasium Sachsen-Anhalt 2022, Schuljahrgaenge 7/8, Kompetenzschwerpunkt Angepasstheit von wirbellosen Tieren",
+      "sourceDocumentKey": "DE-ST-BIOLOGIE-GYMNASIUM-FACHLEHRPLAN-2022",
+      "sourcePath": "curricula/DE/Gymnasium/input/ST/FLP_Biologie_Gym_01082022_swd.pdf",
+      "tags": [
+        "source-extraction",
+        "subject:Biologie",
+        "phase:SekI",
+        "jurisdiction:DE-ST",
+        "topic:SJ78-WIRBELLOSE"
+      ]
+    },
+    {
+      "id": "st-biology-seki-fachlehrplan-2022-sj78-mensch-systemebenen-06-menschliche-systemebenen-stoffwechsel-immunisierung-und-fortpflanzung-erklaeren",
+      "title": "Menschliche Systemebenen, Stoffwechsel, Immunisierung und Fortpflanzung erklaeren",
+      "description": "Die lernende Person kann Zellen, Gewebe, Organe und Organsysteme des Menschen, Verdauung, Ernaehrung, Atmung, Blut, Kreislauf, Zellatmung, Immunisierung, Fortpflanzung, Schwangerschaft, Verhuetung und Gesundheitsverhalten erklaeren und bewerten.",
+      "type": "atomic",
+      "sourceRef": "Fachlehrplan Biologie Gymnasium Sachsen-Anhalt 2022, Schuljahrgaenge 7/8, Kompetenzschwerpunkt System und Systemebenen am Beispiel des Menschen",
+      "sourceDocumentKey": "DE-ST-BIOLOGIE-GYMNASIUM-FACHLEHRPLAN-2022",
+      "sourcePath": "curricula/DE/Gymnasium/input/ST/FLP_Biologie_Gym_01082022_swd.pdf",
+      "tags": [
+        "source-extraction",
+        "subject:Biologie",
+        "phase:SekI",
+        "jurisdiction:DE-ST",
+        "topic:SJ78-MENSCH-SYSTEMEBENEN"
+      ]
+    },
+    {
+      "id": "st-biology-seki-fachlehrplan-2022-sj78-samenpflanzen-systemebenen-07-samenpflanzen-als-system-stofftransport-fotosynthese-und-umweltbezug-erklaeren",
+      "title": "Samenpflanzen als System, Stofftransport, Fotosynthese und Umweltbezug erklaeren",
+      "description": "Die lernende Person kann Zelle, Gewebe und Organe von Samenpflanzen, Stoff- und Energiewechsel, Wasserhaushalt, Diffusion, Osmose, Fotosynthese, Dissimilation, Düngung und die Bedeutung von Pflanzen fuer Natur und Mensch erklaeren.",
+      "type": "atomic",
+      "sourceRef": "Fachlehrplan Biologie Gymnasium Sachsen-Anhalt 2022, Schuljahrgaenge 7/8, Kompetenzschwerpunkt System und Systemebenen am Beispiel von Samenpflanzen",
+      "sourceDocumentKey": "DE-ST-BIOLOGIE-GYMNASIUM-FACHLEHRPLAN-2022",
+      "sourcePath": "curricula/DE/Gymnasium/input/ST/FLP_Biologie_Gym_01082022_swd.pdf",
+      "tags": [
+        "source-extraction",
+        "subject:Biologie",
+        "phase:SekI",
+        "jurisdiction:DE-ST",
+        "topic:SJ78-SAMENPFLANZEN-SYSTEMEBENEN"
+      ]
+    },
+    {
+      "id": "st-biology-seki-fachlehrplan-2022-sj9-mensch-umwelt-08-reizbarkeit-sinnesorgane-nerven-und-hormonsystem-sucht-und-stress-erklaeren",
+      "title": "Reizbarkeit, Sinnesorgane, Nerven- und Hormonsystem, Sucht und Stress erklaeren",
+      "description": "Die lernende Person kann Reiz-Reaktions-Beziehungen, Nervensysteme, Gehirn, Auge, Sinnesorgane, Reflexe, Verhalten, Nerven- und Hormonsystem, Blutzuckerregulation, Diabetes, Stress, Alkohol und weitere Suchtmittel erklaeren und gesundheitsbezogen bewerten.",
+      "type": "atomic",
+      "sourceRef": "Fachlehrplan Biologie Gymnasium Sachsen-Anhalt 2022, Schuljahrgang 9, Kompetenzschwerpunkt Wechselwirkungen zwischen Mensch und Umwelt",
+      "sourceDocumentKey": "DE-ST-BIOLOGIE-GYMNASIUM-FACHLEHRPLAN-2022",
+      "sourcePath": "curricula/DE/Gymnasium/input/ST/FLP_Biologie_Gym_01082022_swd.pdf",
+      "tags": [
+        "source-extraction",
+        "subject:Biologie",
+        "phase:SekI",
+        "jurisdiction:DE-ST",
+        "topic:SJ9-MENSCH-UMWELT"
+      ]
+    },
+    {
+      "id": "st-biology-seki-fachlehrplan-2022-sj9-oekosystem-wald-09-oekosystem-wald-umweltfaktoren-stoffkreislauf-biodiversitaet-und-nachhaltigkeit-erklaeren",
+      "title": "Oekosystem Wald, Umweltfaktoren, Stoffkreislauf, Biodiversitaet und Nachhaltigkeit erklaeren",
+      "description": "Die lernende Person kann Systemebenen, biotische und abiotische Faktoren, Lebensgemeinschaft Wald, Nahrungsbeziehungen, Stoffkreislauf, Energiefluss, Populationen, Klimabezug, Neobiota, Biodiversitaet, Naturschutz und oekologischen Fussabdruck erklaeren und bewerten.",
+      "type": "atomic",
+      "sourceRef": "Fachlehrplan Biologie Gymnasium Sachsen-Anhalt 2022, Schuljahrgang 9, Kompetenzschwerpunkt Oekosystem Wald",
+      "sourceDocumentKey": "DE-ST-BIOLOGIE-GYMNASIUM-FACHLEHRPLAN-2022",
+      "sourcePath": "curricula/DE/Gymnasium/input/ST/FLP_Biologie_Gym_01082022_swd.pdf",
+      "tags": [
+        "source-extraction",
+        "subject:Biologie",
+        "phase:SekI",
+        "jurisdiction:DE-ST",
+        "topic:SJ9-OEKOSYSTEM-WALD"
+      ]
+    },
+    {
+      "id": "st-biology-seki-fachlehrplan-2022-sj10-genetik-10-genetik-vererbung-proteinbiosynthese-mutation-humangenetik-und-gentechnik-erklaeren",
+      "title": "Genetik, Vererbung, Proteinbiosynthese, Mutation, Humangenetik und Gentechnik erklaeren",
+      "description": "Die lernende Person kann DNA, Replikation, Chromosomen, Mitose, Meiose, Proteinbiosynthese, Mendelsche Regeln, Blutgruppen, Geschlechtsvererbung, Mutation, Modifikation, Krebs, Erbkrankheiten, humangenetische Beratung und Gentechnik erklaeren und beurteilen.",
+      "type": "atomic",
+      "sourceRef": "Fachlehrplan Biologie Gymnasium Sachsen-Anhalt 2022, Schuljahrgang 10, Kompetenzschwerpunkt Vererbungsvorgaenge",
+      "sourceDocumentKey": "DE-ST-BIOLOGIE-GYMNASIUM-FACHLEHRPLAN-2022",
+      "sourcePath": "curricula/DE/Gymnasium/input/ST/FLP_Biologie_Gym_01082022_swd.pdf",
+      "tags": [
+        "source-extraction",
+        "subject:Biologie",
+        "phase:SekI",
+        "jurisdiction:DE-ST",
+        "topic:SJ10-GENETIK"
+      ]
+    },
+    {
+      "id": "st-biology-seki-fachlehrplan-2022-sj10-evolution-11-evolution-evolutionsbelege-artbegriff-darwintheorie-und-menschwerdung-erklaeren",
+      "title": "Evolution, Evolutionsbelege, Artbegriff, Darwintheorie und Menschwerdung erklaeren",
+      "description": "Die lernende Person kann Evolution als Grundprinzip, biologischen Artbegriff, ultimate und proximate Erklaerungen, Variation, Selektion, Rekombination, Mutation, Modifikation, Fossilien, Mosaikformen, homologe Organe, Darwins Theorie, eine weitere Evolutionstheorie, Stammesgeschichte des Menschen und Missbrauch des Darwinismus erklaeren und beurteilen.",
+      "type": "atomic",
+      "sourceRef": "Fachlehrplan Biologie Gymnasium Sachsen-Anhalt 2022, Schuljahrgang 10, Kompetenzschwerpunkt Evolution",
+      "sourceDocumentKey": "DE-ST-BIOLOGIE-GYMNASIUM-FACHLEHRPLAN-2022",
+      "sourcePath": "curricula/DE/Gymnasium/input/ST/FLP_Biologie_Gym_01082022_swd.pdf",
+      "tags": [
+        "source-extraction",
+        "subject:Biologie",
+        "phase:SekI",
+        "jurisdiction:DE-ST",
+        "topic:SJ10-EVOLUTION"
+      ]
+    }
+  ]
+}

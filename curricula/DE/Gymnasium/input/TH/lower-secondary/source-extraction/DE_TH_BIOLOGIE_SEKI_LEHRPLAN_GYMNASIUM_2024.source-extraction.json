@@ -1,0 +1,262 @@
+{
+  "schemaVersion": 1,
+  "sourceLandscapeId": "9ba41959-3580-5872-8230-af955a70ece0",
+  "title": "Biologie Sekundarstufe I (Thueringen Lehrplan Gymnasium 2024 Source-Extraction)",
+  "subject": "Biologie",
+  "schoolType": "Gymnasium",
+  "stage": "Sekundarstufe I",
+  "jurisdiction": "DE-TH",
+  "sourceDocument": {
+    "key": "DE-TH-BIOLOGIE-GYMNASIUM-LEHRPLAN-2024",
+    "title": "Thueringer Lehrplan Biologie fuer den Erwerb der allgemeinen Hochschulreife 2024",
+    "url": "https://www.schulportal-thueringen.de/tip/resources/medien/63705?dateiname=Biologie_Lehrplan_AHR_2024-11-13.pdf",
+    "path": "curricula/DE/Gymnasium/input/TH/LP_GY_Biologie_2024.pdf",
+    "localPath": "curricula/DE/Gymnasium/input/TH/LP_GY_Biologie_2024.pdf",
+    "official": true,
+    "effectiveFrom": "2025-08-01",
+    "publisher": "Thueringer Ministerium fuer Bildung, Jugend und Sport"
+  },
+  "extractionNotes": "Reviewed source extraction from the official Thueringen Gymnasium Biology 2024 Lehrplan. Source goals follow the lower-secondary 7/8 and 9/10 competence areas and map to existing canonical Biology atomics without duplicating canonical goals.",
+  "qualityReview": {
+    "sourceGoalCountPeerBaseline": {
+      "accepted": true,
+      "details": "8 Source-Ziele; Thueringen Biologie Sek I ist als Doppeljahrgang-7/8- und 9/10-Lehrplan mit sieben Inhaltsbereichen plus allgemeinem Kompetenzmodell formuliert."
+    }
+  },
+  "pipelineStatus": {
+    "currentStep": "",
+    "steps": [
+      {
+        "id": "MAPPING-1",
+        "label": "Original-Lehrplanpassagen extrahiert",
+        "status": "complete",
+        "dependsOn": [],
+        "checks": [
+          {
+            "id": "source-document-present",
+            "label": "Amtliches Thueringen-Biologie-PDF liegt lokal vor",
+            "passed": true,
+            "details": "curricula/DE/Gymnasium/input/TH/LP_GY_Biologie_2024.pdf"
+          },
+          {
+            "id": "expected-topic-coverage",
+            "label": "Alle thueringischen Biologie-Sek-I-Inhaltsbereiche wurden extrahiert",
+            "passed": true,
+            "details": "8/8 Bereiche: Kompetenzmodell, Klassenstufen 7/8 Wirbellose-Zellen-Mensch und Klassenstufen 9/10 Pflanzen/Pilze-Stoffwechsel, Oekologie, Genetik, Evolution."
+          },
+          {
+            "id": "official-source-extraction",
+            "label": "Passage-Extraction basiert auf amtlicher PDF-Quelle",
+            "passed": true,
+            "details": "https://www.schulportal-thueringen.de/tip/resources/medien/63705?dateiname=Biologie_Lehrplan_AHR_2024-11-13.pdf"
+          }
+        ]
+      },
+      {
+        "id": "MAPPING-2",
+        "label": "Source-Ziele aus Lehrplanpassagen erstellt",
+        "status": "complete",
+        "dependsOn": [
+          "MAPPING-1"
+        ],
+        "checks": [
+          {
+            "id": "source-goals-created",
+            "label": "Source-Ziele aus den Thueringen-Biologie-Lehrplanpassagen erzeugt",
+            "passed": true,
+            "details": "8 Source-Ziele"
+          },
+          {
+            "id": "source-goal-count-peer-baseline",
+            "label": "Source-Ziel-Anzahl ist gegen die Thueringen-Dokumentstruktur plausibilisiert",
+            "passed": true,
+            "details": "Ein Source-Ziel pro fachlich gebuendeltem Kompetenzmodell- bzw. Inhaltsbereich."
+          },
+          {
+            "id": "source-goal-ids-unique",
+            "label": "Source-Ziel-IDs sind eindeutig",
+            "passed": true,
+            "details": "Doppelte IDs: -"
+          }
+        ]
+      },
+      {
+        "id": "MAPPING-3",
+        "label": "Source-Ziele auf SkillPilot-Ziele gemappt",
+        "status": "complete",
+        "dependsOn": [
+          "MAPPING-1",
+          "MAPPING-2"
+        ],
+        "checks": [
+          {
+            "id": "mapping-2-complete",
+            "label": "MAPPING-2 abgeschlossen",
+            "passed": true,
+            "details": "8 Source-Ziele liegen vor."
+          },
+          {
+            "id": "m3-review-file-present",
+            "label": "M3-Review-Datei ist vorhanden",
+            "passed": true,
+            "details": "curricula/DE/Gymnasium/mapping/DE-TH/lower-secondary/th_biology_lower_secondary_source_extraction_to_canonical_biology.review.json"
+          },
+          {
+            "id": "m3-review-decisions-reference-source-goals",
+            "label": "M3-Review-Entscheidungen referenzieren gueltige Source-Ziele",
+            "passed": true,
+            "details": "Wird aus der Review-Datei berechnet."
+          },
+          {
+            "id": "m3-review-targets-exist",
+            "label": "M3-Review-Ziele referenzieren vorhandene Canonical-Ziele",
+            "passed": true,
+            "details": "Wird aus der Review-Datei berechnet."
+          },
+          {
+            "id": "m3-all-source-goals-reviewed",
+            "label": "Alle Source-Ziele haben eine fachliche M3-Entscheidung",
+            "passed": true,
+            "details": "Wird aus der Review-Datei berechnet."
+          },
+          {
+            "id": "m3-all-source-goals-covered-by-canonical",
+            "label": "Alle Source-Ziele sind inhaltlich durch SkillPilot-Ziele abgedeckt",
+            "passed": true,
+            "details": "Wird aus der Review-Datei berechnet."
+          }
+        ]
+      }
+    ]
+  },
+  "sourceGoals": [
+    {
+      "id": "th-biology-seki-lehrplan-2024-pb-01-biologische-fach-erkenntnis-kommunikations-und-bewertungskompetenzen-anwenden",
+      "title": "Biologische Fach-, Erkenntnis-, Kommunikations- und Bewertungskompetenzen anwenden",
+      "description": "Die lernende Person kann biologische Sachverhalte mit Basiskonzepten erschliessen, empirisch untersuchen, modellieren, fachsprachlich kommunizieren und Kriterien fuer gesundheits-, umwelt- und gesellschaftsbezogene Bewertungen nutzen.",
+      "type": "atomic",
+      "sourceRef": "Thueringer Lehrplan Biologie AHR 2024, Kompetenzmodell und Fachkompetenz, S. 1-13",
+      "sourceDocumentKey": "DE-TH-BIOLOGIE-GYMNASIUM-LEHRPLAN-2024",
+      "sourcePath": "curricula/DE/Gymnasium/input/TH/LP_GY_Biologie_2024.pdf",
+      "tags": [
+        "source-extraction",
+        "subject:Biologie",
+        "phase:SekI",
+        "jurisdiction:DE-TH",
+        "topic:PB"
+      ]
+    },
+    {
+      "id": "th-biology-seki-lehrplan-2024-k78-wirbellose-02-wirbellose-insekten-angepasstheit-und-schutzmassnahmen-erklaeren",
+      "title": "Wirbellose, Insekten, Angepasstheit und Schutzmassnahmen erklaeren",
+      "description": "Die lernende Person kann Wirbellose anhand des Stuetzsystems und weiterer Merkmale von Wirbeltieren abgrenzen, Gruppen und Insektenordnungen begruendet zuordnen, Angepasstheiten, Metamorphose, Insektenstaaten und die Bedeutung sowie den Schutz von Wirbellosen in Lebensraeumen erklaeren und bewerten.",
+      "type": "atomic",
+      "sourceRef": "Thueringer Lehrplan Biologie AHR 2024, Klassenstufen 7/8, Wirbellose in ihren Lebensraeumen, S. 14-15",
+      "sourceDocumentKey": "DE-TH-BIOLOGIE-GYMNASIUM-LEHRPLAN-2024",
+      "sourcePath": "curricula/DE/Gymnasium/input/TH/LP_GY_Biologie_2024.pdf",
+      "tags": [
+        "source-extraction",
+        "subject:Biologie",
+        "phase:SekI",
+        "jurisdiction:DE-TH",
+        "topic:K78-WIRBELLOSE"
+      ]
+    },
+    {
+      "id": "th-biology-seki-lehrplan-2024-k78-zellen-03-zellen-einzeller-vielzeller-bakterien-und-viren-unterscheiden",
+      "title": "Zellen, Einzeller, Vielzeller, Bakterien und Viren unterscheiden",
+      "description": "Die lernende Person kann Merkmale des Lebens, pflanzliche und tierische Zellen, Zellbestandteile und Funktionen, autotrophe und heterotrophe Ernaehrungsweisen, Einzeller, Vielzeller, Viren und Bakterien erklaeren, mikroskopisch untersuchen und Modellgrenzen reflektieren.",
+      "type": "atomic",
+      "sourceRef": "Thueringer Lehrplan Biologie AHR 2024, Klassenstufen 7/8, Zellen als Lebensbausteine, S. 15",
+      "sourceDocumentKey": "DE-TH-BIOLOGIE-GYMNASIUM-LEHRPLAN-2024",
+      "sourcePath": "curricula/DE/Gymnasium/input/TH/LP_GY_Biologie_2024.pdf",
+      "tags": [
+        "source-extraction",
+        "subject:Biologie",
+        "phase:SekI",
+        "jurisdiction:DE-TH",
+        "topic:K78-ZELLEN"
+      ]
+    },
+    {
+      "id": "th-biology-seki-lehrplan-2024-k78-mensch-04-menschliche-fortpflanzung-nerven-stoffwechsel-abwehr-und-kreislaufsysteme-erklaeren",
+      "title": "Menschliche Fortpflanzung, Nerven-, Stoffwechsel-, Abwehr- und Kreislaufsysteme erklaeren",
+      "description": "Die lernende Person kann Pubertaet, Sexualitaet, Schwangerschaft, Verhuetung, Sinnes- und Nervensystem, Verdauung, Blutzuckerregulation, Atmung, Ausscheidung, Blut, Herz-Kreislauf-System, Immunabwehr und das Zusammenwirken menschlicher Organsysteme erklaeren und gesundheitsbezogen bewerten.",
+      "type": "atomic",
+      "sourceRef": "Thueringer Lehrplan Biologie AHR 2024, Klassenstufen 7/8, Biologie des Menschen, S. 16-18",
+      "sourceDocumentKey": "DE-TH-BIOLOGIE-GYMNASIUM-LEHRPLAN-2024",
+      "sourcePath": "curricula/DE/Gymnasium/input/TH/LP_GY_Biologie_2024.pdf",
+      "tags": [
+        "source-extraction",
+        "subject:Biologie",
+        "phase:SekI",
+        "jurisdiction:DE-TH",
+        "topic:K78-MENSCH"
+      ]
+    },
+    {
+      "id": "th-biology-seki-lehrplan-2024-k910-stoffwechsel-pilze-pflanzen-05-pflanzenphysiologie-fotosynthese-zellatmung-pilze-und-gaerung-erklaeren",
+      "title": "Pflanzenphysiologie, Fotosynthese, Zellatmung, Pilze und Gaerung erklaeren",
+      "description": "Die lernende Person kann Stoffaufnahme und Stofftransport in Sprosspflanzen, Blattbau, Fotosynthese, Bildung organischer Stoffe, Zellatmung, Lagerungseinfluesse, Bau und Stoffwechsel von Pilzen, Hefe-Gaerung sowie Assimilation und Dissimilation systematisch erklaeren und experimentell untersuchen.",
+      "type": "atomic",
+      "sourceRef": "Thueringer Lehrplan Biologie AHR 2024, Klassenstufen 9/10, Stoff- und Energiewechselprozesse von Pilzen und gruenen Pflanzen, S. 20-21",
+      "sourceDocumentKey": "DE-TH-BIOLOGIE-GYMNASIUM-LEHRPLAN-2024",
+      "sourcePath": "curricula/DE/Gymnasium/input/TH/LP_GY_Biologie_2024.pdf",
+      "tags": [
+        "source-extraction",
+        "subject:Biologie",
+        "phase:SekI",
+        "jurisdiction:DE-TH",
+        "topic:K910-STOFFWECHSEL-PILZE-PFLANZEN"
+      ]
+    },
+    {
+      "id": "th-biology-seki-lehrplan-2024-k910-oekologie-06-oekologische-faktoren-oekosysteme-stabilitaet-und-nachhaltigkeit-erklaeren",
+      "title": "Oekologische Faktoren, Oekosysteme, Stabilitaet und Nachhaltigkeit erklaeren",
+      "description": "Die lernende Person kann abiotische und biotische Umweltfaktoren, Toleranzbereiche, Angepasstheiten, Raeuber-Beute-Beziehungen, Symbiose, Parasitismus, Oekosystemmerkmale, Stoffkreislauf, Energiefluss, Selbstregulation, anthropogene Einfluesse, Renaturierung und oekologische Nachhaltigkeit erklaeren und bewerten.",
+      "type": "atomic",
+      "sourceRef": "Thueringer Lehrplan Biologie AHR 2024, Klassenstufen 9/10, Oekologie, S. 21-22",
+      "sourceDocumentKey": "DE-TH-BIOLOGIE-GYMNASIUM-LEHRPLAN-2024",
+      "sourcePath": "curricula/DE/Gymnasium/input/TH/LP_GY_Biologie_2024.pdf",
+      "tags": [
+        "source-extraction",
+        "subject:Biologie",
+        "phase:SekI",
+        "jurisdiction:DE-TH",
+        "topic:K910-OEKOLOGIE"
+      ]
+    },
+    {
+      "id": "th-biology-seki-lehrplan-2024-k910-genetik-07-genetische-information-vererbung-proteinbiosynthese-variabilitaet-und-gentechnik-erklaeren",
+      "title": "Genetische Information, Vererbung, Proteinbiosynthese, Variabilitaet und Gentechnik erklaeren",
+      "description": "Die lernende Person kann Chromatin, Chromosomen, Karyogramme, DNA und RNA, Replikation, Mitose, Meiose, Mendelsche Regeln, Proteinbiosynthese, Rekombination, Mutation, Modifikation, Erbkrankheiten, Praenataldiagnostik, Modellorganismen und gentechnische Anwendungen erklaeren und bewerten.",
+      "type": "atomic",
+      "sourceRef": "Thueringer Lehrplan Biologie AHR 2024, Klassenstufen 9/10, Genetik, S. 22-23",
+      "sourceDocumentKey": "DE-TH-BIOLOGIE-GYMNASIUM-LEHRPLAN-2024",
+      "sourcePath": "curricula/DE/Gymnasium/input/TH/LP_GY_Biologie_2024.pdf",
+      "tags": [
+        "source-extraction",
+        "subject:Biologie",
+        "phase:SekI",
+        "jurisdiction:DE-TH",
+        "topic:K910-GENETIK"
+      ]
+    },
+    {
+      "id": "th-biology-seki-lehrplan-2024-k910-evolution-08-synthetische-evolutionstheorie-evolutionsbelege-und-evolution-des-menschen-erklaeren",
+      "title": "Synthetische Evolutionstheorie, Evolutionsbelege und Evolution des Menschen erklaeren",
+      "description": "Die lernende Person kann Artbildung nach der Synthetischen Evolutionstheorie, Mutation, Rekombination, Selektion, Gendrift, Isolation, Angepasstheit, Darwins Bedeutung, Fossilien, Homologien, Konvergenzen, Mosaikformen, archaeogenetische DNA-Vergleiche, Hominisation, kulturelle und soziale Evolution sowie die Widerlegung des Konzepts menschlicher Rassen erklaeren.",
+      "type": "atomic",
+      "sourceRef": "Thueringer Lehrplan Biologie AHR 2024, Klassenstufen 9/10, Evolution, S. 24-25",
+      "sourceDocumentKey": "DE-TH-BIOLOGIE-GYMNASIUM-LEHRPLAN-2024",
+      "sourcePath": "curricula/DE/Gymnasium/input/TH/LP_GY_Biologie_2024.pdf",
+      "tags": [
+        "source-extraction",
+        "subject:Biologie",
+        "phase:SekI",
+        "jurisdiction:DE-TH",
+        "topic:K910-EVOLUTION"
+      ]
+    }
+  ]
+}

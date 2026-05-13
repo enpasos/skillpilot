@@ -1,0 +1,294 @@
+{
+  "schemaVersion": 1,
+  "sourceLandscapeId": "bfa29aab-c913-51c3-8bec-bfd2eb227a38",
+  "title": "Biologie Sekundarstufe I (Sachsen Lehrplan Gymnasium 2025 Source-Extraction)",
+  "subject": "Biologie",
+  "schoolType": "Gymnasium",
+  "stage": "Sekundarstufe I",
+  "jurisdiction": "DE-SN",
+  "sourceDocument": {
+    "key": "DE-SN-BIOLOGIE-GYMNASIUM-LEHRPLAN-2025",
+    "title": "Lehrplan Gymnasium Biologie Sachsen 2004/2007/2009/2011/2017/2019/2022/2025",
+    "url": "https://www.schulportal.sachsen.de/lplandb/lehrplan/file/522/OF2Vfum2JVmFeuc2FOuf",
+    "path": "curricula/DE/Gymnasium/input/SN/lehrplan-gymnasium-biologie-sachsen-2025.pdf",
+    "localPath": "curricula/DE/Gymnasium/input/SN/lehrplan-gymnasium-biologie-sachsen-2025.pdf",
+    "official": true,
+    "effectiveFrom": "2025-08-01",
+    "publisher": "Sächsisches Staatsministerium für Kultus"
+  },
+  "extractionNotes": "Reviewed source extraction from the official Sachsen Gymnasium Biology Lehrplan. Source goals follow the lower-secondary class-level learning areas and map to existing canonical Biology atomics without duplicating canonical goals.",
+  "qualityReview": {
+    "sourceGoalCountPeerBaseline": {
+      "accepted": true,
+      "details": "10 Source-Ziele; Sachsen Biologie Sek I ist als Klassenstufen-5-bis-10-Lehrplan mit verbindlichen Lernbereichen formuliert."
+    }
+  },
+  "pipelineStatus": {
+    "currentStep": "",
+    "steps": [
+      {
+        "id": "MAPPING-1",
+        "label": "Original-Lehrplanpassagen extrahiert",
+        "status": "complete",
+        "dependsOn": [],
+        "checks": [
+          {
+            "id": "source-document-present",
+            "label": "Amtliches Sachsen-Biologie-PDF liegt lokal vor",
+            "passed": true,
+            "details": "curricula/DE/Gymnasium/input/SN/lehrplan-gymnasium-biologie-sachsen-2025.pdf"
+          },
+          {
+            "id": "expected-topic-coverage",
+            "label": "Alle sächsischen Biologie-Sek-I-Lernbereiche wurden extrahiert",
+            "passed": true,
+            "details": "10/10 Bereiche: Prozessstandards, Klassen 5/6 Organismen-Zellen-Oekologie, Klassen 7/8 Humanbiologie, Klasse 9 Pflanzen/Oekosystem, Klasse 10 Genetik/Evolution."
+          },
+          {
+            "id": "official-source-extraction",
+            "label": "Passage-Extraction basiert auf amtlicher PDF-Quelle",
+            "passed": true,
+            "details": "https://www.schulportal.sachsen.de/lplandb/lehrplan/file/522/OF2Vfum2JVmFeuc2FOuf"
+          }
+        ]
+      },
+      {
+        "id": "MAPPING-2",
+        "label": "Source-Ziele aus Lehrplanpassagen erstellt",
+        "status": "complete",
+        "dependsOn": [
+          "MAPPING-1"
+        ],
+        "checks": [
+          {
+            "id": "source-goals-created",
+            "label": "Source-Ziele aus den Sachsen-Biologie-Lehrplanpassagen erzeugt",
+            "passed": true,
+            "details": "10 Source-Ziele"
+          },
+          {
+            "id": "source-goal-count-peer-baseline",
+            "label": "Source-Ziel-Anzahl ist gegen die Sachsen-Dokumentstruktur plausibilisiert",
+            "passed": true,
+            "details": "Ein Source-Ziel pro fachlich gebündeltem Klassenstufen- bzw. Lernbereichsblock."
+          },
+          {
+            "id": "source-goal-ids-unique",
+            "label": "Source-Ziel-IDs sind eindeutig",
+            "passed": true,
+            "details": "Doppelte IDs: -"
+          }
+        ]
+      },
+      {
+        "id": "MAPPING-3",
+        "label": "Source-Ziele auf SkillPilot-Ziele gemappt",
+        "status": "complete",
+        "dependsOn": [
+          "MAPPING-1",
+          "MAPPING-2"
+        ],
+        "checks": [
+          {
+            "id": "mapping-2-complete",
+            "label": "MAPPING-2 abgeschlossen",
+            "passed": true,
+            "details": "10 Source-Ziele liegen vor."
+          },
+          {
+            "id": "m3-review-file-present",
+            "label": "M3-Review-Datei ist vorhanden",
+            "passed": true,
+            "details": "curricula/DE/Gymnasium/mapping/DE-SN/lower-secondary/sn_biology_lower_secondary_source_extraction_to_canonical_biology.review.json"
+          },
+          {
+            "id": "m3-review-decisions-reference-source-goals",
+            "label": "M3-Review-Entscheidungen referenzieren gueltige Source-Ziele",
+            "passed": true,
+            "details": "Wird aus der Review-Datei berechnet."
+          },
+          {
+            "id": "m3-review-targets-exist",
+            "label": "M3-Review-Ziele referenzieren vorhandene Canonical-Ziele",
+            "passed": true,
+            "details": "Wird aus der Review-Datei berechnet."
+          },
+          {
+            "id": "m3-all-source-goals-reviewed",
+            "label": "Alle Source-Ziele haben eine fachliche M3-Entscheidung",
+            "passed": true,
+            "details": "Wird aus der Review-Datei berechnet."
+          },
+          {
+            "id": "m3-all-source-goals-covered-by-canonical",
+            "label": "Alle Source-Ziele sind inhaltlich durch SkillPilot-Ziele abgedeckt",
+            "passed": true,
+            "details": "Wird aus der Review-Datei berechnet."
+          }
+        ]
+      }
+    ]
+  },
+  "sourceGoals": [
+    {
+      "id": "sn-biology-seki-lehrplan-2025-pb-01-biologische-fach-erkenntnis-kommunikations-und-bewertungskompetenzen-anwenden",
+      "title": "Biologische Fach-, Erkenntnis-, Kommunikations- und Bewertungskompetenzen anwenden",
+      "description": "Die lernende Person kann biologische Phaenomene mit Basiskonzepten erschliessen, fachlich untersuchen, modellieren, kommunizieren und biologische Entscheidungen kriteriengeleitet sowie nachhaltig bewerten.",
+      "type": "atomic",
+      "sourceRef": "Lehrplan Gymnasium Biologie Sachsen 2004/2007/2009/2011/2017/2019/2022/2025, Ziele und Aufgaben des Faches Biologie, S. 1-3",
+      "sourceDocumentKey": "DE-SN-BIOLOGIE-GYMNASIUM-LEHRPLAN-2025",
+      "sourcePath": "curricula/DE/Gymnasium/input/SN/lehrplan-gymnasium-biologie-sachsen-2025.pdf",
+      "tags": [
+        "source-extraction",
+        "subject:Biologie",
+        "phase:SekI",
+        "jurisdiction:DE-SN",
+        "topic:PB"
+      ]
+    },
+    {
+      "id": "sn-biology-seki-lehrplan-2025-k5-wirbeltiere-02-merkmale-des-lebens-wirbeltiere-lebensraeume-und-systematisierung-erklaeren",
+      "title": "Merkmale des Lebens, Wirbeltiere, Lebensraeume und Systematisierung erklaeren",
+      "description": "Die lernende Person kann Merkmale des Lebens, Wirbeltiergruppen, Angepasstheiten, Fortpflanzung, Entwicklung, Nahrungsbeziehungen, Artenkenntnis, Systematisierung sowie Tier- und Lebensraumschutz an einheimischen Beispielen erklaeren.",
+      "type": "atomic",
+      "sourceRef": "Lehrplan Gymnasium Biologie Sachsen 2025, Klassenstufe 5, Lernbereiche 1-7",
+      "sourceDocumentKey": "DE-SN-BIOLOGIE-GYMNASIUM-LEHRPLAN-2025",
+      "sourcePath": "curricula/DE/Gymnasium/input/SN/lehrplan-gymnasium-biologie-sachsen-2025.pdf",
+      "tags": [
+        "source-extraction",
+        "subject:Biologie",
+        "phase:SekI",
+        "jurisdiction:DE-SN",
+        "topic:K5-WIRBELTIERE"
+      ]
+    },
+    {
+      "id": "sn-biology-seki-lehrplan-2025-k6-pflanzen-wirbellose-zellen-wald-03-samenpflanzen-wirbellose-wald-zellen-und-systematisierung-erklaeren",
+      "title": "Samenpflanzen, Wirbellose, Wald, Zellen und Systematisierung erklaeren",
+      "description": "Die lernende Person kann Samenpflanzen, Keimung, Pflanzenorgane, Wirbellose, Lebensgemeinschaft Wald, Bestimmung, mikroskopische Zellstrukturen und pflanzliche sowie tierische Zellen beschreiben und vergleichen.",
+      "type": "atomic",
+      "sourceRef": "Lehrplan Gymnasium Biologie Sachsen 2025, Klassenstufe 6, Lernbereiche 1-5",
+      "sourceDocumentKey": "DE-SN-BIOLOGIE-GYMNASIUM-LEHRPLAN-2025",
+      "sourcePath": "curricula/DE/Gymnasium/input/SN/lehrplan-gymnasium-biologie-sachsen-2025.pdf",
+      "tags": [
+        "source-extraction",
+        "subject:Biologie",
+        "phase:SekI",
+        "jurisdiction:DE-SN",
+        "topic:K6-PFLANZEN-WIRBELLOSE-ZELLEN-WALD"
+      ]
+    },
+    {
+      "id": "sn-biology-seki-lehrplan-2025-k7-bakterien-blut-immun-04-bakterien-viren-blutkreislauf-und-immunbiologie-erklaeren",
+      "title": "Bakterien, Viren, Blutkreislauf und Immunbiologie erklaeren",
+      "description": "Die lernende Person kann Bakterien und Viren strukturell einordnen, Vermehrung, Bedeutung und Infektionen beschreiben sowie Blut, Blutgefaesse, Herz-Kreislauf-System, Immunreaktion und Immunisierung erklaeren.",
+      "type": "atomic",
+      "sourceRef": "Lehrplan Gymnasium Biologie Sachsen 2025, Klassenstufe 7, Lernbereiche 1-2",
+      "sourceDocumentKey": "DE-SN-BIOLOGIE-GYMNASIUM-LEHRPLAN-2025",
+      "sourcePath": "curricula/DE/Gymnasium/input/SN/lehrplan-gymnasium-biologie-sachsen-2025.pdf",
+      "tags": [
+        "source-extraction",
+        "subject:Biologie",
+        "phase:SekI",
+        "jurisdiction:DE-SN",
+        "topic:K7-BAKTERIEN-BLUT-IMMUN"
+      ]
+    },
+    {
+      "id": "sn-biology-seki-lehrplan-2025-k7-ernaehrung-bewegung-05-ernaehrung-verdauung-ausscheidung-atmung-und-bewegungssystem-erklaeren",
+      "title": "Ernaehrung, Verdauung, Ausscheidung, Atmung und Bewegungssystem erklaeren",
+      "description": "Die lernende Person kann Nahrungsbestandteile, gesunde Ernaehrung, Verdauung, Enzymwirkung, Resorption, Atmungssystem, Haut, Niere sowie Skelett, Knochen, Gelenke, Muskulatur und Gesunderhaltung durch Bewegung erklaeren.",
+      "type": "atomic",
+      "sourceRef": "Lehrplan Gymnasium Biologie Sachsen 2025, Klassenstufe 7, Lernbereiche 3-4",
+      "sourceDocumentKey": "DE-SN-BIOLOGIE-GYMNASIUM-LEHRPLAN-2025",
+      "sourcePath": "curricula/DE/Gymnasium/input/SN/lehrplan-gymnasium-biologie-sachsen-2025.pdf",
+      "tags": [
+        "source-extraction",
+        "subject:Biologie",
+        "phase:SekI",
+        "jurisdiction:DE-SN",
+        "topic:K7-ERNÄHRUNG-BEWEGUNG"
+      ]
+    },
+    {
+      "id": "sn-biology-seki-lehrplan-2025-k8-sinne-hormone-sexualitaet-06-sinnesorgane-nervensystem-hormonsystem-sucht-und-sexualitaet-erklaeren",
+      "title": "Sinnesorgane, Nervensystem, Hormonsystem, Sucht und Sexualitaet erklaeren",
+      "description": "Die lernende Person kann Auge, Sinneswahrnehmung, Nervensystem, Synapse, Reflexe, Hormone, Regelkreise, Blutzuckerregulation, Suchtgefahren, Sexualitaet, Schwangerschaft, Verhuetung und sexuelle Gesundheit erklaeren und bewerten.",
+      "type": "atomic",
+      "sourceRef": "Lehrplan Gymnasium Biologie Sachsen 2025, Klassenstufe 8, Lernbereiche 1-2",
+      "sourceDocumentKey": "DE-SN-BIOLOGIE-GYMNASIUM-LEHRPLAN-2025",
+      "sourcePath": "curricula/DE/Gymnasium/input/SN/lehrplan-gymnasium-biologie-sachsen-2025.pdf",
+      "tags": [
+        "source-extraction",
+        "subject:Biologie",
+        "phase:SekI",
+        "jurisdiction:DE-SN",
+        "topic:K8-SINNE-HORMONE-SEXUALITÄT"
+      ]
+    },
+    {
+      "id": "sn-biology-seki-lehrplan-2025-k9-samenpflanzen-07-anatomie-und-physiologie-der-samenpflanzen-erklaeren",
+      "title": "Anatomie und Physiologie der Samenpflanzen erklaeren",
+      "description": "Die lernende Person kann Organisationsstufen, Pflanzenorgane, Mikroskopie, Stofftransport, Diffusion, Osmose, Fotosynthese, Zellatmung, Assimilation, Dissimilation und die Bedeutung von Pflanzen als Produzenten erklaeren.",
+      "type": "atomic",
+      "sourceRef": "Lehrplan Gymnasium Biologie Sachsen 2025, Klassenstufe 9, Lernbereich 1",
+      "sourceDocumentKey": "DE-SN-BIOLOGIE-GYMNASIUM-LEHRPLAN-2025",
+      "sourcePath": "curricula/DE/Gymnasium/input/SN/lehrplan-gymnasium-biologie-sachsen-2025.pdf",
+      "tags": [
+        "source-extraction",
+        "subject:Biologie",
+        "phase:SekI",
+        "jurisdiction:DE-SN",
+        "topic:K9-SAMENPFLANZEN"
+      ]
+    },
+    {
+      "id": "sn-biology-seki-lehrplan-2025-k9-oekosystem-08-oekosysteme-umweltfaktoren-stoffkreislauf-und-nachhaltigkeit-erklaeren",
+      "title": "Oekosysteme, Umweltfaktoren, Stoffkreislauf und Nachhaltigkeit erklaeren",
+      "description": "Die lernende Person kann stehende Gewaesser als Oekosysteme, Lebensgemeinschaften, Nahrungsbeziehungen, oekologische Nischen, Sukzession, abiotische und biotische Faktoren, Kohlenstoffkreislauf, Klimawandel, Energiefluss und menschliche Einfluesse untersuchen und bewerten.",
+      "type": "atomic",
+      "sourceRef": "Lehrplan Gymnasium Biologie Sachsen 2025, Klassenstufe 9, Lernbereich 2",
+      "sourceDocumentKey": "DE-SN-BIOLOGIE-GYMNASIUM-LEHRPLAN-2025",
+      "sourcePath": "curricula/DE/Gymnasium/input/SN/lehrplan-gymnasium-biologie-sachsen-2025.pdf",
+      "tags": [
+        "source-extraction",
+        "subject:Biologie",
+        "phase:SekI",
+        "jurisdiction:DE-SN",
+        "topic:K9-ÖKOSYSTEM"
+      ]
+    },
+    {
+      "id": "sn-biology-seki-lehrplan-2025-k10-genetik-09-genetik-molekulare-grundlagen-humangenetik-und-gentechnik-erklaeren",
+      "title": "Genetik, molekulare Grundlagen, Humangenetik und Gentechnik erklaeren",
+      "description": "Die lernende Person kann Genotyp und Phaenotyp, Mutation, Modifikation, Mendelsche Regeln, Chromosomen, DNA, RNA, Mitose, Meiose, Replikation, Proteinbiosynthese, Mutationen, Humangenetik, Stammbaumanalysen, Erbkrankheiten und gentechnische Anwendungen erklaeren und beurteilen.",
+      "type": "atomic",
+      "sourceRef": "Lehrplan Gymnasium Biologie Sachsen 2025, Klassenstufe 10, Lernbereich 1",
+      "sourceDocumentKey": "DE-SN-BIOLOGIE-GYMNASIUM-LEHRPLAN-2025",
+      "sourcePath": "curricula/DE/Gymnasium/input/SN/lehrplan-gymnasium-biologie-sachsen-2025.pdf",
+      "tags": [
+        "source-extraction",
+        "subject:Biologie",
+        "phase:SekI",
+        "jurisdiction:DE-SN",
+        "topic:K10-GENETIK"
+      ]
+    },
+    {
+      "id": "sn-biology-seki-lehrplan-2025-k10-evolution-10-artenvielfalt-evolution-evolutionsbelege-und-stammesgeschichte-des-menschen-erklaeren",
+      "title": "Artenvielfalt, Evolution, Evolutionsbelege und Stammesgeschichte des Menschen erklaeren",
+      "description": "Die lernende Person kann Evolutionstheorien, Art- und Populationsbegriff, Mutation, Rekombination, Selektion, Isolation, Artbildung, Progression, Fossilien, Homologien, Zwischenformen sowie die Stammesgeschichte und kulturelle Evolution des Menschen erklaeren.",
+      "type": "atomic",
+      "sourceRef": "Lehrplan Gymnasium Biologie Sachsen 2025, Klassenstufe 10, Lernbereiche 2-3",
+      "sourceDocumentKey": "DE-SN-BIOLOGIE-GYMNASIUM-LEHRPLAN-2025",
+      "sourcePath": "curricula/DE/Gymnasium/input/SN/lehrplan-gymnasium-biologie-sachsen-2025.pdf",
+      "tags": [
+        "source-extraction",
+        "subject:Biologie",
+        "phase:SekI",
+        "jurisdiction:DE-SN",
+        "topic:K10-EVOLUTION"
+      ]
+    }
+  ]
+}

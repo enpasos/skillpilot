@@ -745,6 +745,16 @@ const CANONICAL_GYM_CHEMISTRY_SEK2_PRACTICE_CLUSTER_IDS = [
   'b5f0201a-bc5b-5159-a36c-0925f198c32f',
   '5964272f-e835-5a24-b2b1-c162be6b75cb',
 ]
+const CANONICAL_GYM_BIOLOGY_LANDSCAPE_ID = '08a43a1b-d97e-522c-9dfa-c950a493364e'
+const CANONICAL_GYM_BIOLOGY_MOTIVATION_GOAL_ID = '2d451684-6e53-565e-a987-f362da919d2c'
+const CANONICAL_GYM_BIOLOGY_SEK2_PRACTICE_CLUSTER_IDS = [
+  '625aa68d-71cd-597f-b4c1-e1066eed2830',
+  '0136a8bd-f945-5e7d-b8de-db156581869f',
+  '28788f27-f079-5d78-936f-b7684760ff31',
+  'dc4edb9a-8c9f-5700-84e5-b5f52b7e0d36',
+  '950cbe9f-8e63-5bbb-a1ce-74c8ada43247',
+  '5c731e13-f055-50ff-977c-877763d2d28b',
+]
 
 const ruleCatalog: QualityRuleDefinition[] = [
   {
@@ -897,6 +907,18 @@ const routeProfiles: RouteProfile[] = [
       && !isPracticeOrAssessmentGoal(goal),
     clusterSelector: isCanonicalGymChemistrySek2Goal,
   },
+  {
+    profileId: 'canonical-biology-sek2',
+    landscapeId: CANONICAL_GYM_BIOLOGY_LANDSCAPE_ID,
+    label: 'Sekundarstufe II',
+    motivationAnchorGoalIds: [CANONICAL_GYM_BIOLOGY_MOTIVATION_GOAL_ID],
+    terminalAutonomyClusterIds: CANONICAL_GYM_BIOLOGY_SEK2_PRACTICE_CLUSTER_IDS,
+    goalSelector: (goal) => isAtomicGoal(goal)
+      && isCanonicalGymBiologySek2Goal(goal)
+      && !isMemoryGoal(goal)
+      && !isPracticeOrAssessmentGoal(goal),
+    clusterSelector: isCanonicalGymBiologySek2Goal,
+  },
 ]
 
 function toRepoPath(path: string): string {
@@ -1034,6 +1056,13 @@ function isCanonicalGymPhysicsSek2Goal(goal: LearningGoal): boolean {
 
 function isCanonicalGymChemistrySek2Goal(goal: LearningGoal): boolean {
   if (goal.id === CANONICAL_GYM_CHEMISTRY_MOTIVATION_GOAL_ID) return true
+  if (goal.tags?.includes('SekII')) return true
+  const legacyPhase = (goal as { phase?: string }).phase
+  return ['E', 'Q1', 'Q2', 'Q3', 'Q4'].includes(goal.dimensionTags?.phase ?? legacyPhase ?? '')
+}
+
+function isCanonicalGymBiologySek2Goal(goal: LearningGoal): boolean {
+  if (goal.id === CANONICAL_GYM_BIOLOGY_MOTIVATION_GOAL_ID) return true
   if (goal.tags?.includes('SekII')) return true
   const legacyPhase = (goal as { phase?: string }).phase
   return ['E', 'Q1', 'Q2', 'Q3', 'Q4'].includes(goal.dimensionTags?.phase ?? legacyPhase ?? '')
@@ -1855,6 +1884,7 @@ const compositionViewDirectoryByLandscapeId = new Map<string, string>([
   [CANONICAL_GYM_MATH_LANDSCAPE_ID, 'mathematik'],
   [CANONICAL_GYM_PHYSICS_LANDSCAPE_ID, 'physik'],
   [CANONICAL_GYM_CHEMISTRY_LANDSCAPE_ID, 'chemie'],
+  [CANONICAL_GYM_BIOLOGY_LANDSCAPE_ID, 'biologie'],
 ])
 
 function readLandscapeForReport(report: CoverageReport): LearningLandscape | null {

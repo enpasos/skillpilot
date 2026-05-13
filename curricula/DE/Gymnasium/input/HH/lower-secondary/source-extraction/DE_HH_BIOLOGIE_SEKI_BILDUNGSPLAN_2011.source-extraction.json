@@ -1,0 +1,246 @@
+{
+  "schemaVersion": 1,
+  "sourceLandscapeId": "a888e177-da7a-5466-8f93-6d39231be0ea",
+  "title": "Biologie Sekundarstufe I (Hamburg Bildungsplan Gymnasium 2011 Source-Extraction)",
+  "subject": "Biologie",
+  "schoolType": "Gymnasium",
+  "stage": "Sekundarstufe I",
+  "jurisdiction": "DE-HH",
+  "sourceDocument": {
+    "key": "DE-HH-BIOLOGIE-SEKI-BILDUNGSPLAN-2011",
+    "title": "Bildungsplan Gymnasium Sekundarstufe I: Biologie, Hamburg 2011",
+    "url": "https://www.hamburg.de/resource/blob/123418/3f001f63072b1ee4259a0f2630229083/biologie-gym-seki-data.pdf",
+    "path": "curricula/DE/Gymnasium/input/HH/biologie-gym-seki-data.pdf",
+    "localPath": "curricula/DE/Gymnasium/input/HH/biologie-gym-seki-data.pdf",
+    "official": true,
+    "effectiveFrom": "2011-08-01",
+    "publisher": "Freie und Hansestadt Hamburg, Behörde für Schule und Berufsbildung"
+  },
+  "extractionNotes": "Reviewed source extraction from the Hamburg Gymnasium Biology lower-secondary Bildungsplan. Source goals preserve the official competence and content-domain structure and map to existing canonical Biology atomics without duplicating canonical goals.",
+  "qualityReview": {
+    "sourceGoalCountPeerBaseline": {
+      "accepted": true,
+      "details": "7 fachbereichsnahe Source-Ziele; Hamburg Biologie Sek I ist als kompakter Bildungsplan mit sechs Inhaltsbereichen plus prozessbezogenen Kompetenzen formuliert."
+    }
+  },
+  "pipelineStatus": {
+    "currentStep": "",
+    "steps": [
+      {
+        "id": "MAPPING-1",
+        "label": "Original-Lehrplanpassagen extrahiert",
+        "status": "complete",
+        "dependsOn": [],
+        "checks": [
+          {
+            "id": "source-document-present",
+            "label": "Amtliches Hamburger Biologie-PDF liegt lokal vor",
+            "passed": true,
+            "details": "curricula/DE/Gymnasium/input/HH/biologie-gym-seki-data.pdf"
+          },
+          {
+            "id": "expected-topic-coverage",
+            "label": "Alle Hamburger Biologie-Inhaltsbereiche wurden extrahiert",
+            "passed": true,
+            "details": "7/7 Bereiche: Prozesskompetenzen, Zellen, Organismen, Lebensräume, Vererbung, Stammesgeschichte, Biologie des Menschen."
+          },
+          {
+            "id": "official-source-extraction",
+            "label": "Passage-Extraction basiert auf amtlicher PDF-Quelle",
+            "passed": true,
+            "details": "https://www.hamburg.de/resource/blob/123418/3f001f63072b1ee4259a0f2630229083/biologie-gym-seki-data.pdf"
+          }
+        ]
+      },
+      {
+        "id": "MAPPING-2",
+        "label": "Source-Ziele aus Lehrplanpassagen erstellt",
+        "status": "complete",
+        "dependsOn": [
+          "MAPPING-1"
+        ],
+        "checks": [
+          {
+            "id": "source-goals-created",
+            "label": "Source-Ziele aus den Hamburger Biologie-Lehrplanpassagen erzeugt",
+            "passed": true,
+            "details": "7 Source-Ziele"
+          },
+          {
+            "id": "source-goal-count-peer-baseline",
+            "label": "Source-Ziel-Anzahl ist gegen die Hamburger Dokumentstruktur plausibilisiert",
+            "passed": true,
+            "details": "Kompakte Bereichsstruktur statt feingranularer Bullet-Inventarisierung."
+          },
+          {
+            "id": "source-goal-ids-unique",
+            "label": "Source-Ziel-IDs sind eindeutig",
+            "passed": true,
+            "details": "Doppelte IDs: -"
+          }
+        ]
+      },
+      {
+        "id": "MAPPING-3",
+        "label": "Source-Ziele auf SkillPilot-Ziele gemappt",
+        "status": "complete",
+        "dependsOn": [
+          "MAPPING-1",
+          "MAPPING-2"
+        ],
+        "checks": [
+          {
+            "id": "mapping-2-complete",
+            "label": "MAPPING-2 abgeschlossen",
+            "passed": true,
+            "details": "7 Source-Ziele liegen vor."
+          },
+          {
+            "id": "m3-review-file-present",
+            "label": "M3-Review-Datei ist vorhanden",
+            "passed": true,
+            "details": "curricula/DE/Gymnasium/mapping/DE-HH/lower-secondary/hh_biology_lower_secondary_source_extraction_to_canonical_biology.review.json"
+          },
+          {
+            "id": "m3-review-decisions-reference-source-goals",
+            "label": "M3-Review-Entscheidungen referenzieren gueltige Source-Ziele",
+            "passed": true,
+            "details": "Wird aus der Review-Datei berechnet."
+          },
+          {
+            "id": "m3-review-targets-exist",
+            "label": "M3-Review-Ziele referenzieren vorhandene Canonical-Ziele",
+            "passed": true,
+            "details": "Wird aus der Review-Datei berechnet."
+          },
+          {
+            "id": "m3-all-source-goals-reviewed",
+            "label": "Alle Source-Ziele haben eine fachliche M3-Entscheidung",
+            "passed": true,
+            "details": "Wird aus der Review-Datei berechnet."
+          },
+          {
+            "id": "m3-all-source-goals-covered-by-canonical",
+            "label": "Alle Source-Ziele sind inhaltlich durch SkillPilot-Ziele abgedeckt",
+            "passed": true,
+            "details": "Wird aus der Review-Datei berechnet."
+          }
+        ]
+      }
+    ]
+  },
+  "sourceGoals": [
+    {
+      "id": "hh-biology-seki-bildungsplan-2011-pb-01-biologische-fach-erkenntnis-kommunikations-und-bewertungskompetenzen-anwenden",
+      "title": "Biologische Fach-, Erkenntnis-, Kommunikations- und Bewertungskompetenzen anwenden",
+      "description": "Die lernende Person kann biologische Phänomene fachlich erklären, Untersuchungen durchführen und auswerten, Modelle und Quellen nutzen, Ergebnisse kommunizieren und biologische Sachverhalte kriteriengeleitet bewerten.",
+      "type": "atomic",
+      "sourceRef": "Bildungsplan Hamburg Gymnasium Sekundarstufe I Biologie 2011, Abschnitt 2.3 und 3.1, Kompetenzbereiche Fachwissen, Erkenntnisgewinnung, Kommunikation, Bewertung",
+      "sourceDocumentKey": "DE-HH-BIOLOGIE-SEKI-BILDUNGSPLAN-2011",
+      "sourcePath": "curricula/DE/Gymnasium/input/HH/biologie-gym-seki-data.pdf",
+      "tags": [
+        "source-extraction",
+        "subject:Biologie",
+        "phase:SekI",
+        "jurisdiction:DE-HH",
+        "topic:PB"
+      ]
+    },
+    {
+      "id": "hh-biology-seki-bildungsplan-2011-z-02-zellen-zellorganellen-fotosynthese-zellteilung-und-mikroorganismen-erklaren",
+      "title": "Zellen, Zellorganellen, Fotosynthese, Zellteilung und Mikroorganismen erklären",
+      "description": "Die lernende Person kann Pflanzen-, Tier- und Bakterienzellen vergleichen, Zellbestandteile und Zellteilung erklären, mikroskopieren, Fotosynthese untersuchen und Bakterien sowie Hefen in lebensweltlichen Kontexten einordnen.",
+      "type": "atomic",
+      "sourceRef": "Bildungsplan Hamburg Gymnasium Sekundarstufe I Biologie 2011, Abschnitt 3.1/3.2, Inhaltsbereich Zellen",
+      "sourceDocumentKey": "DE-HH-BIOLOGIE-SEKI-BILDUNGSPLAN-2011",
+      "sourcePath": "curricula/DE/Gymnasium/input/HH/biologie-gym-seki-data.pdf",
+      "tags": [
+        "source-extraction",
+        "subject:Biologie",
+        "phase:SekI",
+        "jurisdiction:DE-HH",
+        "topic:Z"
+      ]
+    },
+    {
+      "id": "hh-biology-seki-bildungsplan-2011-o-03-organismen-gliedertiere-pflanzen-und-angepasstheiten-vergleichen",
+      "title": "Organismen, Gliedertiere, Pflanzen und Angepasstheiten vergleichen",
+      "description": "Die lernende Person kann Baupläne von Gliedertieren, Insekten, Spinnen, Regenwürmern, grünen Pflanzen, Symbionten und Parasiten beschreiben und Angepasstheiten von Organismen an Lebensräume vergleichen.",
+      "type": "atomic",
+      "sourceRef": "Bildungsplan Hamburg Gymnasium Sekundarstufe I Biologie 2011, Abschnitt 3.1/3.2, Inhaltsbereich Organismen",
+      "sourceDocumentKey": "DE-HH-BIOLOGIE-SEKI-BILDUNGSPLAN-2011",
+      "sourcePath": "curricula/DE/Gymnasium/input/HH/biologie-gym-seki-data.pdf",
+      "tags": [
+        "source-extraction",
+        "subject:Biologie",
+        "phase:SekI",
+        "jurisdiction:DE-HH",
+        "topic:O"
+      ]
+    },
+    {
+      "id": "hh-biology-seki-bildungsplan-2011-l-04-lebensraume-okosysteme-stoffkreislaufe-und-nachhaltigkeit-erklaren",
+      "title": "Lebensräume, Ökosysteme, Stoffkreisläufe und Nachhaltigkeit erklären",
+      "description": "Die lernende Person kann Tier- und Pflanzenarten in Lebensräumen bestimmen, Ökosysteme, Nahrungspflanzen, Stoffkreisläufe, Regulation, Klimaschutz, menschliche Eingriffe und nachhaltige Entwicklung erklären und bewerten.",
+      "type": "atomic",
+      "sourceRef": "Bildungsplan Hamburg Gymnasium Sekundarstufe I Biologie 2011, Abschnitt 3.1/3.2, Inhaltsbereich Lebensräume",
+      "sourceDocumentKey": "DE-HH-BIOLOGIE-SEKI-BILDUNGSPLAN-2011",
+      "sourcePath": "curricula/DE/Gymnasium/input/HH/biologie-gym-seki-data.pdf",
+      "tags": [
+        "source-extraction",
+        "subject:Biologie",
+        "phase:SekI",
+        "jurisdiction:DE-HH",
+        "topic:L"
+      ]
+    },
+    {
+      "id": "hh-biology-seki-bildungsplan-2011-v-05-dna-chromosomen-mendel-genetik-mutation-und-genetische-anwendungen-erklaren",
+      "title": "DNA, Chromosomen, Mendel-Genetik, Mutation und genetische Anwendungen erklären",
+      "description": "Die lernende Person kann Aufbau und Funktion der Träger des Erbmaterials, Chromosom, Gen und Allel, Zellteilung, Keimzellenbildung, Mutation, Mendelsche Regeln, Erbgänge, Stammbäume und genetische Anwendungen erklären und beurteilen.",
+      "type": "atomic",
+      "sourceRef": "Bildungsplan Hamburg Gymnasium Sekundarstufe I Biologie 2011, Abschnitt 3.1/3.2, Inhaltsbereich Vererbung",
+      "sourceDocumentKey": "DE-HH-BIOLOGIE-SEKI-BILDUNGSPLAN-2011",
+      "sourcePath": "curricula/DE/Gymnasium/input/HH/biologie-gym-seki-data.pdf",
+      "tags": [
+        "source-extraction",
+        "subject:Biologie",
+        "phase:SekI",
+        "jurisdiction:DE-HH",
+        "topic:V"
+      ]
+    },
+    {
+      "id": "hh-biology-seki-bildungsplan-2011-s-06-evolution-artenvielfalt-verwandtschaft-und-herkunft-des-menschen-erklaren",
+      "title": "Evolution, Artenvielfalt, Verwandtschaft und Herkunft des Menschen erklären",
+      "description": "Die lernende Person kann Dokumente der Evolution, Entstehung der Artenvielfalt, stammesgeschichtliche Verwandtschaft, Fortpflanzungsformen und die Herkunft des Menschen erklären.",
+      "type": "atomic",
+      "sourceRef": "Bildungsplan Hamburg Gymnasium Sekundarstufe I Biologie 2011, Abschnitt 3.1/3.2, Inhaltsbereich Stammesgeschichte",
+      "sourceDocumentKey": "DE-HH-BIOLOGIE-SEKI-BILDUNGSPLAN-2011",
+      "sourcePath": "curricula/DE/Gymnasium/input/HH/biologie-gym-seki-data.pdf",
+      "tags": [
+        "source-extraction",
+        "subject:Biologie",
+        "phase:SekI",
+        "jurisdiction:DE-HH",
+        "topic:S"
+      ]
+    },
+    {
+      "id": "hh-biology-seki-bildungsplan-2011-m-07-biologie-des-menschen-gesundheit-sexualitat-immunsystem-und-nervensystem-erklaren",
+      "title": "Biologie des Menschen, Gesundheit, Sexualität, Immunsystem und Nervensystem erklären",
+      "description": "Die lernende Person kann Sinnesorgane, Nervensystem, Verdauung, Blut, Atmung, Kreislauf, Hormone, Fortpflanzung, Schwangerschaft, Verhütung, Infektionskrankheiten, HIV/AIDS, Selbstschutz des Körpers, Drogenwirkungen und Gesundheit erklären und bewerten.",
+      "type": "atomic",
+      "sourceRef": "Bildungsplan Hamburg Gymnasium Sekundarstufe I Biologie 2011, Abschnitt 3.1/3.2, Inhaltsbereich Biologie des Menschen",
+      "sourceDocumentKey": "DE-HH-BIOLOGIE-SEKI-BILDUNGSPLAN-2011",
+      "sourcePath": "curricula/DE/Gymnasium/input/HH/biologie-gym-seki-data.pdf",
+      "tags": [
+        "source-extraction",
+        "subject:Biologie",
+        "phase:SekI",
+        "jurisdiction:DE-HH",
+        "topic:M"
+      ]
+    }
+  ]
+}

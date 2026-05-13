@@ -55,6 +55,27 @@
 - Die kanonische Chemie-Landschaft enthaelt die persistierte `DE-MV`-Applicability fuer diese Projektion.
 - Naechster Chemie-Schritt: `DE-MV` stabil halten; Erweiterungen nur durch einen horizontalen All-State-Chemie-Themenpass oder echte Rahmenplanrevision.
 
+## Biologie
+### Archivierte offizielle Quellen
+
+- **Gymnasium / Gesamtschule Biologie 7-10 (2022, Erprobungsfassung)**:
+  - lokale Datei: `Biologie_Gymnasium_Gesamtschule_7_10.pdf`
+  - offizielle Quelle: `https://www.bildung-mv.de/export/sites/bildungsserver/.galleries/dokumente/unterricht/rahmenplaene/RP_BIO_Gym_Ges_7-10.pdf`
+
+### Offizielle Fachseite
+
+- **Biologie - Rahmenplaene MV**:
+  - `https://www.bildung-mv.de/unterricht/rahmenplaene/rahmenplaene-fuer-die-allgemein-bildenden-faecher/biologie/`
+
+### Einordnung fuer den kanonischen DE-Gymnasium-Rollout
+
+- Die MV-Biologie-Source-Lane ist als M1/M2/M3-Source-to-Canonical-Spur aktiv und geprueft:
+  - `lower-secondary/source-extraction/DE_MV_BIOLOGIE_SEKI_RAHMENPLAN_2022.source-extraction.json`
+- Die Review-Mappings liegen unter:
+  - `curricula/DE/Gymnasium/mapping/DE-MV/lower-secondary/mv_biology_lower_secondary_source_extraction_to_canonical_biology.review.json`
+- Die kanonische Biologie-Landschaft enthaelt die persistierte `DE-MV`-Applicability fuer diese Projektion.
+- Naechster Biologie-Schritt: die noch offenen Bundesland-Slots `DE-SN`, `DE-ST` und `DE-TH` mit source-backed Biologie-Atomics versorgen.
+
 ## Physik
 ### Sekundarstufe I (Klassen 7-10)
 - **Archivierte offizielle Quelle**: `Physik_Gymnasium_7_10_2022.pdf`

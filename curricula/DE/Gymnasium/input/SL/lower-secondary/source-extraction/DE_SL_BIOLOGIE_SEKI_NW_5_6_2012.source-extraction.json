@@ -1,0 +1,2627 @@
+{
+  "schemaVersion": 1,
+  "extractionId": "DE-SL-BIOLOGIE-SEKI-NW-5-6-2012",
+  "title": "DE-SL - Biologie Sekundarstufe I (Saarland, Naturwissenschaften 5/6 2012 Source-Extraction)",
+  "sourceLandscapeId": "2280368c-3b81-5a74-8cac-c0bc6cc4ce7a",
+  "jurisdiction": "DE-SL",
+  "subject": "Biologie",
+  "stage": "SekI",
+  "sourceDocument": {
+    "key": "SL-NW-GYM-5-6-2012-BIOLOGIE",
+    "title": "Lehrplan Naturwissenschaften Gymnasium Klassenstufen 5 und 6 Saarland 2012",
+    "path": "curricula/DE/Gymnasium/input/SL/NW_5und6_Gym_2012.pdf",
+    "official": true
+  },
+  "sourceDocuments": [
+    {
+      "key": "SL-NW-GYM-5-6-2012-BIOLOGIE",
+      "title": "Lehrplan Naturwissenschaften Gymnasium Klassenstufen 5 und 6 Saarland 2012",
+      "path": "curricula/DE/Gymnasium/input/SL/NW_5und6_Gym_2012.pdf",
+      "official": true
+    }
+  ],
+  "method": {
+    "passageExtraction": "pdftotext; Biologie-relevante Themenfelder aus dem integrierten Saarland-Lehrplan Naturwissenschaften 5/6 wurden nach amtlichen Themenfeldüberschriften segmentiert.",
+    "sourceGoalExtraction": "Ein Source-Ziel pro fachlich eigenständiger biologischer Kompetenz bzw. eng zusammengehörigem Kompetenzbündel; rein physikalische oder chemische Teilziele des integrierten Naturwissenschaften-Lehrplans bleiben außerhalb dieser Biologie-Spur."
+  },
+  "expectedTopicCodes": [
+    "GL5",
+    "BEW5",
+    "ERN5",
+    "MAM5",
+    "PFL5",
+    "KEIM6",
+    "WIRT6",
+    "SEX6",
+    "ATM6"
+  ],
+  "qualityReview": {
+    "sourceGoalCountPeerBaseline": {
+      "accepted": true,
+      "details": "75 Source-Ziele aus neun Biologie-relevanten Naturwissenschaften-5/6-Themenfeldern; die Spur ist bewusst auf Klassenstufen 5/6 begrenzt, weil lokal keine Saarland-Biologie-7-10-Quelle archiviert ist."
+    }
+  },
+  "pipelineStatus": {
+    "version": 1,
+    "currentStep": null,
+    "steps": [
+      {
+        "id": "MAPPING-1",
+        "label": "Original-Lehrplanpassagen extrahiert",
+        "status": "complete",
+        "dependsOn": [],
+        "checks": [
+          {
+            "id": "source-document-present",
+            "label": "Amtliche Saarland-Naturwissenschaften-5/6-Quelle liegt lokal vor",
+            "passed": true,
+            "details": "curricula/DE/Gymnasium/input/SL/NW_5und6_Gym_2012.pdf"
+          },
+          {
+            "id": "expected-topic-coverage",
+            "label": "Biologie-relevante Saarland-5/6-Themen sind als Lehrplanpassagen vorhanden",
+            "passed": true,
+            "details": "9/9 Themenfelder."
+          }
+        ]
+      },
+      {
+        "id": "MAPPING-2",
+        "label": "Source-Ziele aus Lehrplanpassagen erstellt",
+        "status": "complete",
+        "dependsOn": [
+          "MAPPING-1"
+        ],
+        "checks": [
+          {
+            "id": "source-goals-created",
+            "label": "Aus den Saarland-Naturwissenschaften-5/6-Biologiepassagen wurden Source-Ziele erzeugt",
+            "passed": true,
+            "details": "75 Source-Ziele"
+          },
+          {
+            "id": "source-goal-ids-unique",
+            "label": "Source-Ziel-IDs sind eindeutig",
+            "passed": true,
+            "details": "Doppelte IDs: -"
+          },
+          {
+            "id": "scope-boundary-reviewed",
+            "label": "Die Klassenstufen-5/6-Grenze ist explizit dokumentiert",
+            "passed": true,
+            "details": "Die lokal archivierte Saarland-Quelle deckt Naturwissenschaften 5/6 ab; spätere Biologie-Jahrgänge bleiben bis zur Quellenarchivierung unbeansprucht."
+          }
+        ]
+      },
+      {
+        "id": "MAPPING-3",
+        "label": "Source-Ziele auf SkillPilot-Ziele gemappt",
+        "status": "complete",
+        "dependsOn": [
+          "MAPPING-1",
+          "MAPPING-2"
+        ],
+        "checks": [
+          {
+            "id": "mapping-2-complete",
+            "label": "MAPPING-2 abgeschlossen",
+            "passed": true,
+            "details": "75 Source-Ziele liegen vor; MAPPING-3 ist vollständig reviewed."
+          },
+          {
+            "id": "m3-all-source-goals-covered-by-canonical",
+            "label": "Alle Source-Ziele sind durch SkillPilot-Ziele abgedeckt",
+            "passed": true,
+            "details": "75/75 Source-Ziele fachlich abgedeckt; 0 Canonical-Gaps."
+          }
+        ]
+      }
+    ]
+  },
+  "passages": [
+    {
+      "id": "sl-biology-seki-nw56-2012-gl5",
+      "topicCode": "GL5",
+      "title": "Grundlagen der Naturwissenschaften",
+      "sourceRef": "Saarland Lehrplan Naturwissenschaften Gymnasium Klassenstufen 5/6 2012, Grundlagen der Naturwissenschaften, Klassenstufe 5, S. 14.",
+      "sourceDocumentKey": "SL-NW-GYM-5-6-2012-BIOLOGIE",
+      "page": 14,
+      "grade": "5"
+    },
+    {
+      "id": "sl-biology-seki-nw56-2012-bew5",
+      "topicCode": "BEW5",
+      "title": "Der Mensch als System: Bewegung",
+      "sourceRef": "Saarland Lehrplan Naturwissenschaften Gymnasium Klassenstufen 5/6 2012, Der Mensch als System: Bewegung, Klassenstufe 5, S. 17.",
+      "sourceDocumentKey": "SL-NW-GYM-5-6-2012-BIOLOGIE",
+      "page": 17,
+      "grade": "5"
+    },
+    {
+      "id": "sl-biology-seki-nw56-2012-ern5",
+      "topicCode": "ERN5",
+      "title": "Der Mensch als System: Ernährung",
+      "sourceRef": "Saarland Lehrplan Naturwissenschaften Gymnasium Klassenstufen 5/6 2012, Der Mensch als System: Ernährung, Klassenstufe 5, S. 19.",
+      "sourceDocumentKey": "SL-NW-GYM-5-6-2012-BIOLOGIE",
+      "page": 19,
+      "grade": "5"
+    },
+    {
+      "id": "sl-biology-seki-nw56-2012-mam5",
+      "topicCode": "MAM5",
+      "title": "Säugetiere in ihrem Lebensraum",
+      "sourceRef": "Saarland Lehrplan Naturwissenschaften Gymnasium Klassenstufen 5/6 2012, Säugetiere in ihrem Lebensraum, Klassenstufe 5, S. 22.",
+      "sourceDocumentKey": "SL-NW-GYM-5-6-2012-BIOLOGIE",
+      "page": 22,
+      "grade": "5"
+    },
+    {
+      "id": "sl-biology-seki-nw56-2012-pfl5",
+      "topicCode": "PFL5",
+      "title": "Samenpflanzen: Bau und Fortpflanzung",
+      "sourceRef": "Saarland Lehrplan Naturwissenschaften Gymnasium Klassenstufen 5/6 2012, Samenpflanzen: Bau und Fortpflanzung, Klassenstufe 5, S. 25.",
+      "sourceDocumentKey": "SL-NW-GYM-5-6-2012-BIOLOGIE",
+      "page": 25,
+      "grade": "5"
+    },
+    {
+      "id": "sl-biology-seki-nw56-2012-keim6",
+      "topicCode": "KEIM6",
+      "title": "Samenpflanzen: Keimung und Stoffwechsel",
+      "sourceRef": "Saarland Lehrplan Naturwissenschaften Gymnasium Klassenstufen 5/6 2012, Samenpflanzen: Keimung und Stoffwechsel, Klassenstufe 6, S. 30.",
+      "sourceDocumentKey": "SL-NW-GYM-5-6-2012-BIOLOGIE",
+      "page": 30,
+      "grade": "6"
+    },
+    {
+      "id": "sl-biology-seki-nw56-2012-wirt6",
+      "topicCode": "WIRT6",
+      "title": "Wirbeltiere in ihrem Lebensraum",
+      "sourceRef": "Saarland Lehrplan Naturwissenschaften Gymnasium Klassenstufen 5/6 2012, Wirbeltiere in ihrem Lebensraum, Klassenstufe 6, S. 32.",
+      "sourceDocumentKey": "SL-NW-GYM-5-6-2012-BIOLOGIE",
+      "page": 32,
+      "grade": "6"
+    },
+    {
+      "id": "sl-biology-seki-nw56-2012-sex6",
+      "topicCode": "SEX6",
+      "title": "Der Mensch als System: Erwachsen werden I",
+      "sourceRef": "Saarland Lehrplan Naturwissenschaften Gymnasium Klassenstufen 5/6 2012, Der Mensch als System: Erwachsen werden I, Klassenstufe 6, S. 34.",
+      "sourceDocumentKey": "SL-NW-GYM-5-6-2012-BIOLOGIE",
+      "page": 34,
+      "grade": "6"
+    },
+    {
+      "id": "sl-biology-seki-nw56-2012-atm6",
+      "topicCode": "ATM6",
+      "title": "Der Mensch als System: Atmung und Blutkreislauf",
+      "sourceRef": "Saarland Lehrplan Naturwissenschaften Gymnasium Klassenstufen 5/6 2012, Der Mensch als System: Atmung und Blutkreislauf, Klassenstufe 6, S. 36.",
+      "sourceDocumentKey": "SL-NW-GYM-5-6-2012-BIOLOGIE",
+      "page": 36,
+      "grade": "6"
+    }
+  ],
+  "sourceGoals": [
+    {
+      "id": "sl-biology-seki-nw56-2012-gl5-001-8dd50ce2",
+      "passageId": "sl-biology-seki-nw56-2012-gl5",
+      "topicCode": "GL5",
+      "topicTitle": "Grundlagen der Naturwissenschaften",
+      "headingTitle": "Kennzeichen des Lebens",
+      "title": "Verhaltensregeln beim Sammeln und Beobachten biologischer Objekte nennen.",
+      "description": "Die lernende Person kann Verhaltensregeln beim Sammeln und Beobachten biologischer Objekte nennen.",
+      "sourceDocumentKey": "SL-NW-GYM-5-6-2012-BIOLOGIE",
+      "sourceRef": "Saarland Lehrplan Naturwissenschaften Gymnasium Klassenstufen 5/6 2012, Grundlagen der Naturwissenschaften, Klassenstufe 5, S. 14.",
+      "sourceText": "Verhaltensregeln beim Sammeln und Beobachten biologischer Objekte nennen.",
+      "sourceSpan": {
+        "passageId": "sl-biology-seki-nw56-2012-gl5",
+        "label": "Kennzeichen des Lebens: Verhaltensregeln beim Sammeln und Beobachten biologischer Objekte nennen."
+      },
+      "sourceSpanText": "Grundlagen der Naturwissenschaften, Klassenstufe 5, Source-Ziel 1",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-SL",
+        "stage:SekI",
+        "grade:5"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "8d35381e-d646-512c-b0c2-bb90c4974208",
+          "2d451684-6e53-565e-a987-f362da919d2c",
+          "0f1549f6-8341-53b0-8161-5eaeb2b37809"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "sl-biology-seki-nw56-2012-gl5-002-5ac98a62",
+      "passageId": "sl-biology-seki-nw56-2012-gl5",
+      "topicCode": "GL5",
+      "topicTitle": "Grundlagen der Naturwissenschaften",
+      "headingTitle": "Kennzeichen des Lebens",
+      "title": "Objekte aus belebter und unbelebter Natur sammeln, nach Kriterien ordnen und tabellarisch darstellen.",
+      "description": "Die lernende Person kann Objekte aus belebter und unbelebter Natur sammeln, nach Kriterien ordnen und tabellarisch darstellen.",
+      "sourceDocumentKey": "SL-NW-GYM-5-6-2012-BIOLOGIE",
+      "sourceRef": "Saarland Lehrplan Naturwissenschaften Gymnasium Klassenstufen 5/6 2012, Grundlagen der Naturwissenschaften, Klassenstufe 5, S. 14.",
+      "sourceText": "Objekte aus belebter und unbelebter Natur sammeln, nach Kriterien ordnen und tabellarisch darstellen.",
+      "sourceSpan": {
+        "passageId": "sl-biology-seki-nw56-2012-gl5",
+        "label": "Kennzeichen des Lebens: Objekte aus belebter und unbelebter Natur sammeln, nach Kriterien ordnen und tabellarisch darstellen."
+      },
+      "sourceSpanText": "Grundlagen der Naturwissenschaften, Klassenstufe 5, Source-Ziel 2",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-SL",
+        "stage:SekI",
+        "grade:5"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "55bdfb1d-5c14-5b1c-bc8e-4ab428ef59ba",
+          "0f1549f6-8341-53b0-8161-5eaeb2b37809"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "sl-biology-seki-nw56-2012-gl5-003-27cb9576",
+      "passageId": "sl-biology-seki-nw56-2012-gl5",
+      "topicCode": "GL5",
+      "topicTitle": "Grundlagen der Naturwissenschaften",
+      "headingTitle": "Kennzeichen des Lebens",
+      "title": "Lupe und Mikroskop als Vergrößerungsgeräte begründen und ihre wesentlichen Bestandteile nennen.",
+      "description": "Die lernende Person kann Lupe und Mikroskop als Vergrößerungsgeräte begründen und ihre wesentlichen Bestandteile nennen.",
+      "sourceDocumentKey": "SL-NW-GYM-5-6-2012-BIOLOGIE",
+      "sourceRef": "Saarland Lehrplan Naturwissenschaften Gymnasium Klassenstufen 5/6 2012, Grundlagen der Naturwissenschaften, Klassenstufe 5, S. 14.",
+      "sourceText": "Lupe und Mikroskop als Vergrößerungsgeräte begründen und ihre wesentlichen Bestandteile nennen.",
+      "sourceSpan": {
+        "passageId": "sl-biology-seki-nw56-2012-gl5",
+        "label": "Kennzeichen des Lebens: Lupe und Mikroskop als Vergrößerungsgeräte begründen und ihre wesentlichen Bestandteile nennen."
+      },
+      "sourceSpanText": "Grundlagen der Naturwissenschaften, Klassenstufe 5, Source-Ziel 3",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-SL",
+        "stage:SekI",
+        "grade:5"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "91df35c7-e384-50d6-bb3a-37e74a6086f1"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "sl-biology-seki-nw56-2012-gl5-004-457dd9ee",
+      "passageId": "sl-biology-seki-nw56-2012-gl5",
+      "topicCode": "GL5",
+      "topicTitle": "Grundlagen der Naturwissenschaften",
+      "headingTitle": "Kennzeichen des Lebens",
+      "title": "Mikroskopische Präparate untersuchen und bei verschiedenen Vergrößerungen sichtbare Details ermitteln.",
+      "description": "Die lernende Person kann Mikroskopische Präparate untersuchen und bei verschiedenen Vergrößerungen sichtbare Details ermitteln.",
+      "sourceDocumentKey": "SL-NW-GYM-5-6-2012-BIOLOGIE",
+      "sourceRef": "Saarland Lehrplan Naturwissenschaften Gymnasium Klassenstufen 5/6 2012, Grundlagen der Naturwissenschaften, Klassenstufe 5, S. 14.",
+      "sourceText": "Mikroskopische Präparate untersuchen und bei verschiedenen Vergrößerungen sichtbare Details ermitteln.",
+      "sourceSpan": {
+        "passageId": "sl-biology-seki-nw56-2012-gl5",
+        "label": "Kennzeichen des Lebens: Mikroskopische Präparate untersuchen und bei verschiedenen Vergrößerungen sichtbare Details ermitteln."
+      },
+      "sourceSpanText": "Grundlagen der Naturwissenschaften, Klassenstufe 5, Source-Ziel 4",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-SL",
+        "stage:SekI",
+        "grade:5"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "91df35c7-e384-50d6-bb3a-37e74a6086f1",
+          "0f1549f6-8341-53b0-8161-5eaeb2b37809"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "sl-biology-seki-nw56-2012-gl5-005-c300c330",
+      "passageId": "sl-biology-seki-nw56-2012-gl5",
+      "topicCode": "GL5",
+      "topicTitle": "Grundlagen der Naturwissenschaften",
+      "headingTitle": "Kennzeichen des Lebens",
+      "title": "Die Zelle als Grundbaueinheit aller Lebewesen angeben.",
+      "description": "Die lernende Person kann Die Zelle als Grundbaueinheit aller Lebewesen angeben.",
+      "sourceDocumentKey": "SL-NW-GYM-5-6-2012-BIOLOGIE",
+      "sourceRef": "Saarland Lehrplan Naturwissenschaften Gymnasium Klassenstufen 5/6 2012, Grundlagen der Naturwissenschaften, Klassenstufe 5, S. 14.",
+      "sourceText": "Die Zelle als Grundbaueinheit aller Lebewesen angeben.",
+      "sourceSpan": {
+        "passageId": "sl-biology-seki-nw56-2012-gl5",
+        "label": "Kennzeichen des Lebens: Die Zelle als Grundbaueinheit aller Lebewesen angeben."
+      },
+      "sourceSpanText": "Grundlagen der Naturwissenschaften, Klassenstufe 5, Source-Ziel 5",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-SL",
+        "stage:SekI",
+        "grade:5"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "11e90f71-a9a4-5a57-b619-ad5d81e81f96",
+          "7c6bf0cc-6ed8-56b1-b44a-642f7a069a5f"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "sl-biology-seki-nw56-2012-gl5-006-085423a5",
+      "passageId": "sl-biology-seki-nw56-2012-gl5",
+      "topicCode": "GL5",
+      "topicTitle": "Grundlagen der Naturwissenschaften",
+      "headingTitle": "Kennzeichen des Lebens",
+      "title": "Unterschiede zwischen pflanzlichen und tierlichen Zellverbänden mikroskopisch ermitteln.",
+      "description": "Die lernende Person kann Unterschiede zwischen pflanzlichen und tierlichen Zellverbänden mikroskopisch ermitteln.",
+      "sourceDocumentKey": "SL-NW-GYM-5-6-2012-BIOLOGIE",
+      "sourceRef": "Saarland Lehrplan Naturwissenschaften Gymnasium Klassenstufen 5/6 2012, Grundlagen der Naturwissenschaften, Klassenstufe 5, S. 14.",
+      "sourceText": "Unterschiede zwischen pflanzlichen und tierlichen Zellverbänden mikroskopisch ermitteln.",
+      "sourceSpan": {
+        "passageId": "sl-biology-seki-nw56-2012-gl5",
+        "label": "Kennzeichen des Lebens: Unterschiede zwischen pflanzlichen und tierlichen Zellverbänden mikroskopisch ermitteln."
+      },
+      "sourceSpanText": "Grundlagen der Naturwissenschaften, Klassenstufe 5, Source-Ziel 6",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-SL",
+        "stage:SekI",
+        "grade:5"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "b1dff57f-329e-5264-b2b9-2db71a0b2172",
+          "7c6bf0cc-6ed8-56b1-b44a-642f7a069a5f",
+          "1c3470ae-83f8-52e9-98ae-b0a712755b66"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "sl-biology-seki-nw56-2012-gl5-007-b8d3dada",
+      "passageId": "sl-biology-seki-nw56-2012-gl5",
+      "topicCode": "GL5",
+      "topicTitle": "Grundlagen der Naturwissenschaften",
+      "headingTitle": "Kennzeichen des Lebens",
+      "title": "Ein plastisches Zellmodell anfertigen und Zellbestandteile beschriften.",
+      "description": "Die lernende Person kann Ein plastisches Zellmodell anfertigen und Zellbestandteile beschriften.",
+      "sourceDocumentKey": "SL-NW-GYM-5-6-2012-BIOLOGIE",
+      "sourceRef": "Saarland Lehrplan Naturwissenschaften Gymnasium Klassenstufen 5/6 2012, Grundlagen der Naturwissenschaften, Klassenstufe 5, S. 14.",
+      "sourceText": "Ein plastisches Zellmodell anfertigen und Zellbestandteile beschriften.",
+      "sourceSpan": {
+        "passageId": "sl-biology-seki-nw56-2012-gl5",
+        "label": "Kennzeichen des Lebens: Ein plastisches Zellmodell anfertigen und Zellbestandteile beschriften."
+      },
+      "sourceSpanText": "Grundlagen der Naturwissenschaften, Klassenstufe 5, Source-Ziel 7",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-SL",
+        "stage:SekI",
+        "grade:5"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "713e062d-2bb9-5fbc-8040-129387c7d3ca",
+          "e0d04e58-1591-5230-bfa6-5c685b56d25b"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "sl-biology-seki-nw56-2012-gl5-008-e12deb0b",
+      "passageId": "sl-biology-seki-nw56-2012-gl5",
+      "topicCode": "GL5",
+      "topicTitle": "Grundlagen der Naturwissenschaften",
+      "headingTitle": "Kennzeichen des Lebens",
+      "title": "Den allgemeinen Zellaufbau und Besonderheiten der Pflanzenzelle beschreiben.",
+      "description": "Die lernende Person kann Den allgemeinen Zellaufbau und Besonderheiten der Pflanzenzelle beschreiben.",
+      "sourceDocumentKey": "SL-NW-GYM-5-6-2012-BIOLOGIE",
+      "sourceRef": "Saarland Lehrplan Naturwissenschaften Gymnasium Klassenstufen 5/6 2012, Grundlagen der Naturwissenschaften, Klassenstufe 5, S. 14.",
+      "sourceText": "Den allgemeinen Zellaufbau und Besonderheiten der Pflanzenzelle beschreiben.",
+      "sourceSpan": {
+        "passageId": "sl-biology-seki-nw56-2012-gl5",
+        "label": "Kennzeichen des Lebens: Den allgemeinen Zellaufbau und Besonderheiten der Pflanzenzelle beschreiben."
+      },
+      "sourceSpanText": "Grundlagen der Naturwissenschaften, Klassenstufe 5, Source-Ziel 8",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-SL",
+        "stage:SekI",
+        "grade:5"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "e0d04e58-1591-5230-bfa6-5c685b56d25b",
+          "b1dff57f-329e-5264-b2b9-2db71a0b2172"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "sl-biology-seki-nw56-2012-gl5-009-091f2ffe",
+      "passageId": "sl-biology-seki-nw56-2012-gl5",
+      "topicCode": "GL5",
+      "topicTitle": "Grundlagen der Naturwissenschaften",
+      "headingTitle": "Grundlagen des Lebens",
+      "title": "Kennzeichen des Lebens nennen.",
+      "description": "Die lernende Person kann Kennzeichen des Lebens nennen.",
+      "sourceDocumentKey": "SL-NW-GYM-5-6-2012-BIOLOGIE",
+      "sourceRef": "Saarland Lehrplan Naturwissenschaften Gymnasium Klassenstufen 5/6 2012, Grundlagen der Naturwissenschaften, Klassenstufe 5, S. 14.",
+      "sourceText": "Kennzeichen des Lebens nennen.",
+      "sourceSpan": {
+        "passageId": "sl-biology-seki-nw56-2012-gl5",
+        "label": "Grundlagen des Lebens: Kennzeichen des Lebens nennen."
+      },
+      "sourceSpanText": "Grundlagen der Naturwissenschaften, Klassenstufe 5, Source-Ziel 9",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-SL",
+        "stage:SekI",
+        "grade:5"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "55bdfb1d-5c14-5b1c-bc8e-4ab428ef59ba",
+          "11e90f71-a9a4-5a57-b619-ad5d81e81f96"
+        ],
+        "matchType": "exact"
+      }
+    },
+    {
+      "id": "sl-biology-seki-nw56-2012-gl5-010-b2c07da3",
+      "passageId": "sl-biology-seki-nw56-2012-gl5",
+      "topicCode": "GL5",
+      "topicTitle": "Grundlagen der Naturwissenschaften",
+      "headingTitle": "Grundlagen des Lebens",
+      "title": "Begründen, warum Lebewesen andere Lebewesen und unbelebte Stoffe zum Überleben brauchen.",
+      "description": "Die lernende Person kann Begründen, warum Lebewesen andere Lebewesen und unbelebte Stoffe zum Überleben brauchen.",
+      "sourceDocumentKey": "SL-NW-GYM-5-6-2012-BIOLOGIE",
+      "sourceRef": "Saarland Lehrplan Naturwissenschaften Gymnasium Klassenstufen 5/6 2012, Grundlagen der Naturwissenschaften, Klassenstufe 5, S. 14.",
+      "sourceText": "Begründen, warum Lebewesen andere Lebewesen und unbelebte Stoffe zum Überleben brauchen.",
+      "sourceSpan": {
+        "passageId": "sl-biology-seki-nw56-2012-gl5",
+        "label": "Grundlagen des Lebens: Begründen, warum Lebewesen andere Lebewesen und unbelebte Stoffe zum Überleben brauchen."
+      },
+      "sourceSpanText": "Grundlagen der Naturwissenschaften, Klassenstufe 5, Source-Ziel 10",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-SL",
+        "stage:SekI",
+        "grade:5"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "55bdfb1d-5c14-5b1c-bc8e-4ab428ef59ba"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "sl-biology-seki-nw56-2012-bew5-001-6936fdc5",
+      "passageId": "sl-biology-seki-nw56-2012-bew5",
+      "topicCode": "BEW5",
+      "topicTitle": "Der Mensch als System: Bewegung",
+      "headingTitle": "Aufbau und Funktion des Skeletts",
+      "title": "Schädel-, Rumpf- und Extremitätenskelett unterscheiden, wichtige Knochen benennen und Funktionen von Knochen angeben.",
+      "description": "Die lernende Person kann Schädel-, Rumpf- und Extremitätenskelett unterscheiden, wichtige Knochen benennen und Funktionen von Knochen angeben.",
+      "sourceDocumentKey": "SL-NW-GYM-5-6-2012-BIOLOGIE",
+      "sourceRef": "Saarland Lehrplan Naturwissenschaften Gymnasium Klassenstufen 5/6 2012, Der Mensch als System: Bewegung, Klassenstufe 5, S. 17.",
+      "sourceText": "Schädel-, Rumpf- und Extremitätenskelett unterscheiden, wichtige Knochen benennen und Funktionen von Knochen angeben.",
+      "sourceSpan": {
+        "passageId": "sl-biology-seki-nw56-2012-bew5",
+        "label": "Aufbau und Funktion des Skeletts: Schädel-, Rumpf- und Extremitätenskelett unterscheiden, wichtige Knochen benennen und Funktionen von Knochen angeben."
+      },
+      "sourceSpanText": "Der Mensch als System: Bewegung, Klassenstufe 5, Source-Ziel 1",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-SL",
+        "stage:SekI",
+        "grade:5"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "bdbb1a13-f448-5536-86ab-894805e2f6be",
+          "dc1c2eff-5e42-50f1-ab75-b180b4f58907"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "sl-biology-seki-nw56-2012-bew5-002-d3727ce5",
+      "passageId": "sl-biology-seki-nw56-2012-bew5",
+      "topicCode": "BEW5",
+      "topicTitle": "Der Mensch als System: Bewegung",
+      "headingTitle": "Aufbau und Funktion des Skeletts",
+      "title": "Körperlängen messen, tabellarisch darstellen, Mittelwerte berechnen und Häufigkeitsdiagramme erstellen.",
+      "description": "Die lernende Person kann Körperlängen messen, tabellarisch darstellen, Mittelwerte berechnen und Häufigkeitsdiagramme erstellen.",
+      "sourceDocumentKey": "SL-NW-GYM-5-6-2012-BIOLOGIE",
+      "sourceRef": "Saarland Lehrplan Naturwissenschaften Gymnasium Klassenstufen 5/6 2012, Der Mensch als System: Bewegung, Klassenstufe 5, S. 17.",
+      "sourceText": "Körperlängen messen, tabellarisch darstellen, Mittelwerte berechnen und Häufigkeitsdiagramme erstellen.",
+      "sourceSpan": {
+        "passageId": "sl-biology-seki-nw56-2012-bew5",
+        "label": "Aufbau und Funktion des Skeletts: Körperlängen messen, tabellarisch darstellen, Mittelwerte berechnen und Häufigkeitsdiagramme erstellen."
+      },
+      "sourceSpanText": "Der Mensch als System: Bewegung, Klassenstufe 5, Source-Ziel 2",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-SL",
+        "stage:SekI",
+        "grade:5"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "0f1549f6-8341-53b0-8161-5eaeb2b37809",
+          "2eaabe90-46bf-555e-876b-d853434a322d"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "sl-biology-seki-nw56-2012-bew5-003-f202b7cc",
+      "passageId": "sl-biology-seki-nw56-2012-bew5",
+      "topicCode": "BEW5",
+      "topicTitle": "Der Mensch als System: Bewegung",
+      "headingTitle": "Aufbau und Zusammensetzung des Knochens",
+      "title": "Röhren- und Plattenknochen hinsichtlich Form und Funktion unterscheiden sowie Bau und Stabilität von Röhrenknochen erklären.",
+      "description": "Die lernende Person kann Röhren- und Plattenknochen hinsichtlich Form und Funktion unterscheiden sowie Bau und Stabilität von Röhrenknochen erklären.",
+      "sourceDocumentKey": "SL-NW-GYM-5-6-2012-BIOLOGIE",
+      "sourceRef": "Saarland Lehrplan Naturwissenschaften Gymnasium Klassenstufen 5/6 2012, Der Mensch als System: Bewegung, Klassenstufe 5, S. 17.",
+      "sourceText": "Röhren- und Plattenknochen hinsichtlich Form und Funktion unterscheiden sowie Bau und Stabilität von Röhrenknochen erklären.",
+      "sourceSpan": {
+        "passageId": "sl-biology-seki-nw56-2012-bew5",
+        "label": "Aufbau und Zusammensetzung des Knochens: Röhren- und Plattenknochen hinsichtlich Form und Funktion unterscheiden sowie Bau und Stabilität von Röhrenknochen erklären."
+      },
+      "sourceSpanText": "Der Mensch als System: Bewegung, Klassenstufe 5, Source-Ziel 3",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-SL",
+        "stage:SekI",
+        "grade:5"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "bdbb1a13-f448-5536-86ab-894805e2f6be",
+          "dc1c2eff-5e42-50f1-ab75-b180b4f58907"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "sl-biology-seki-nw56-2012-bew5-004-e3e7d88d",
+      "passageId": "sl-biology-seki-nw56-2012-bew5",
+      "topicCode": "BEW5",
+      "topicTitle": "Der Mensch als System: Bewegung",
+      "headingTitle": "Aufbau und Zusammensetzung des Knochens",
+      "title": "Knochenknorpel und Knochenerde experimentell Eigenschaften zuordnen.",
+      "description": "Die lernende Person kann Knochenknorpel und Knochenerde experimentell Eigenschaften zuordnen.",
+      "sourceDocumentKey": "SL-NW-GYM-5-6-2012-BIOLOGIE",
+      "sourceRef": "Saarland Lehrplan Naturwissenschaften Gymnasium Klassenstufen 5/6 2012, Der Mensch als System: Bewegung, Klassenstufe 5, S. 17.",
+      "sourceText": "Knochenknorpel und Knochenerde experimentell Eigenschaften zuordnen.",
+      "sourceSpan": {
+        "passageId": "sl-biology-seki-nw56-2012-bew5",
+        "label": "Aufbau und Zusammensetzung des Knochens: Knochenknorpel und Knochenerde experimentell Eigenschaften zuordnen."
+      },
+      "sourceSpanText": "Der Mensch als System: Bewegung, Klassenstufe 5, Source-Ziel 4",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-SL",
+        "stage:SekI",
+        "grade:5"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "26aa47b7-e5cc-5131-8980-0ec3271758b6",
+          "2eaabe90-46bf-555e-876b-d853434a322d"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "sl-biology-seki-nw56-2012-bew5-005-c5eeb363",
+      "passageId": "sl-biology-seki-nw56-2012-bew5",
+      "topicCode": "BEW5",
+      "topicTitle": "Der Mensch als System: Bewegung",
+      "headingTitle": "Gelenke",
+      "title": "Bau und Funktion eines Gelenks sowie Kugel- und Scharniergelenke erklären und mit technischen Gelenken vergleichen.",
+      "description": "Die lernende Person kann Bau und Funktion eines Gelenks sowie Kugel- und Scharniergelenke erklären und mit technischen Gelenken vergleichen.",
+      "sourceDocumentKey": "SL-NW-GYM-5-6-2012-BIOLOGIE",
+      "sourceRef": "Saarland Lehrplan Naturwissenschaften Gymnasium Klassenstufen 5/6 2012, Der Mensch als System: Bewegung, Klassenstufe 5, S. 17.",
+      "sourceText": "Bau und Funktion eines Gelenks sowie Kugel- und Scharniergelenke erklären und mit technischen Gelenken vergleichen.",
+      "sourceSpan": {
+        "passageId": "sl-biology-seki-nw56-2012-bew5",
+        "label": "Gelenke: Bau und Funktion eines Gelenks sowie Kugel- und Scharniergelenke erklären und mit technischen Gelenken vergleichen."
+      },
+      "sourceSpanText": "Der Mensch als System: Bewegung, Klassenstufe 5, Source-Ziel 5",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-SL",
+        "stage:SekI",
+        "grade:5"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "dc1c2eff-5e42-50f1-ab75-b180b4f58907",
+          "713e062d-2bb9-5fbc-8040-129387c7d3ca"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "sl-biology-seki-nw56-2012-bew5-006-3135368b",
+      "passageId": "sl-biology-seki-nw56-2012-bew5",
+      "topicCode": "BEW5",
+      "topicTitle": "Der Mensch als System: Bewegung",
+      "headingTitle": "Muskulatur",
+      "title": "Aufbau von Skelettmuskeln, Muskelansatzpunkte und antagonistische Muskelpaare beschreiben.",
+      "description": "Die lernende Person kann Aufbau von Skelettmuskeln, Muskelansatzpunkte und antagonistische Muskelpaare beschreiben.",
+      "sourceDocumentKey": "SL-NW-GYM-5-6-2012-BIOLOGIE",
+      "sourceRef": "Saarland Lehrplan Naturwissenschaften Gymnasium Klassenstufen 5/6 2012, Der Mensch als System: Bewegung, Klassenstufe 5, S. 17.",
+      "sourceText": "Aufbau von Skelettmuskeln, Muskelansatzpunkte und antagonistische Muskelpaare beschreiben.",
+      "sourceSpan": {
+        "passageId": "sl-biology-seki-nw56-2012-bew5",
+        "label": "Muskulatur: Aufbau von Skelettmuskeln, Muskelansatzpunkte und antagonistische Muskelpaare beschreiben."
+      },
+      "sourceSpanText": "Der Mensch als System: Bewegung, Klassenstufe 5, Source-Ziel 6",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-SL",
+        "stage:SekI",
+        "grade:5"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "dc1c2eff-5e42-50f1-ab75-b180b4f58907"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "sl-biology-seki-nw56-2012-bew5-007-883821a6",
+      "passageId": "sl-biology-seki-nw56-2012-bew5",
+      "topicCode": "BEW5",
+      "topicTitle": "Der Mensch als System: Bewegung",
+      "headingTitle": "Muskulatur",
+      "title": "Mit einem Modell erklären, wie antagonistische Muskeln Knochenbewegung im Gelenk ermöglichen.",
+      "description": "Die lernende Person kann Mit einem Modell erklären, wie antagonistische Muskeln Knochenbewegung im Gelenk ermöglichen.",
+      "sourceDocumentKey": "SL-NW-GYM-5-6-2012-BIOLOGIE",
+      "sourceRef": "Saarland Lehrplan Naturwissenschaften Gymnasium Klassenstufen 5/6 2012, Der Mensch als System: Bewegung, Klassenstufe 5, S. 17.",
+      "sourceText": "Mit einem Modell erklären, wie antagonistische Muskeln Knochenbewegung im Gelenk ermöglichen.",
+      "sourceSpan": {
+        "passageId": "sl-biology-seki-nw56-2012-bew5",
+        "label": "Muskulatur: Mit einem Modell erklären, wie antagonistische Muskeln Knochenbewegung im Gelenk ermöglichen."
+      },
+      "sourceSpanText": "Der Mensch als System: Bewegung, Klassenstufe 5, Source-Ziel 7",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-SL",
+        "stage:SekI",
+        "grade:5"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "dc1c2eff-5e42-50f1-ab75-b180b4f58907",
+          "713e062d-2bb9-5fbc-8040-129387c7d3ca"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "sl-biology-seki-nw56-2012-ern5-001-e588ad4b",
+      "passageId": "sl-biology-seki-nw56-2012-ern5",
+      "topicCode": "ERN5",
+      "topicTitle": "Der Mensch als System: Ernährung",
+      "headingTitle": "Energiebereitstellung",
+      "title": "Energie als Arbeitsfähigkeit verstehen und Energiebedarf bei Aktivitäten sowie Energiegehalt von Lebensmitteln vergleichen.",
+      "description": "Die lernende Person kann Energie als Arbeitsfähigkeit verstehen und Energiebedarf bei Aktivitäten sowie Energiegehalt von Lebensmitteln vergleichen.",
+      "sourceDocumentKey": "SL-NW-GYM-5-6-2012-BIOLOGIE",
+      "sourceRef": "Saarland Lehrplan Naturwissenschaften Gymnasium Klassenstufen 5/6 2012, Der Mensch als System: Ernährung, Klassenstufe 5, S. 19.",
+      "sourceText": "Energie als Arbeitsfähigkeit verstehen und Energiebedarf bei Aktivitäten sowie Energiegehalt von Lebensmitteln vergleichen.",
+      "sourceSpan": {
+        "passageId": "sl-biology-seki-nw56-2012-ern5",
+        "label": "Energiebereitstellung: Energie als Arbeitsfähigkeit verstehen und Energiebedarf bei Aktivitäten sowie Energiegehalt von Lebensmitteln vergleichen."
+      },
+      "sourceSpanText": "Der Mensch als System: Ernährung, Klassenstufe 5, Source-Ziel 1",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-SL",
+        "stage:SekI",
+        "grade:5"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "2c60c8ad-04d3-5395-8a27-400646eb1612",
+          "73624d0c-bc6f-5b5d-baf5-099ca62fab79"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "sl-biology-seki-nw56-2012-ern5-002-7a0cadf5",
+      "passageId": "sl-biology-seki-nw56-2012-ern5",
+      "topicCode": "ERN5",
+      "topicTitle": "Der Mensch als System: Ernährung",
+      "headingTitle": "Nährstoffe",
+      "title": "Grundnährstoffe und weitere wichtige Nahrungsbestandteile nennen.",
+      "description": "Die lernende Person kann Grundnährstoffe und weitere wichtige Nahrungsbestandteile nennen.",
+      "sourceDocumentKey": "SL-NW-GYM-5-6-2012-BIOLOGIE",
+      "sourceRef": "Saarland Lehrplan Naturwissenschaften Gymnasium Klassenstufen 5/6 2012, Der Mensch als System: Ernährung, Klassenstufe 5, S. 19.",
+      "sourceText": "Grundnährstoffe und weitere wichtige Nahrungsbestandteile nennen.",
+      "sourceSpan": {
+        "passageId": "sl-biology-seki-nw56-2012-ern5",
+        "label": "Nährstoffe: Grundnährstoffe und weitere wichtige Nahrungsbestandteile nennen."
+      },
+      "sourceSpanText": "Der Mensch als System: Ernährung, Klassenstufe 5, Source-Ziel 2",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-SL",
+        "stage:SekI",
+        "grade:5"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "bb6fb806-ee15-5881-8529-2425cadfb5a1",
+          "c25a1bc9-c664-53d7-b2d8-500741da773c"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "sl-biology-seki-nw56-2012-ern5-003-3d459688",
+      "passageId": "sl-biology-seki-nw56-2012-ern5",
+      "topicCode": "ERN5",
+      "topicTitle": "Der Mensch als System: Ernährung",
+      "headingTitle": "Nährstoffe",
+      "title": "Fettfleckprobe, Stärkenachweis und Eiweißnachweis durchführen oder protokollieren.",
+      "description": "Die lernende Person kann Fettfleckprobe, Stärkenachweis und Eiweißnachweis durchführen oder protokollieren.",
+      "sourceDocumentKey": "SL-NW-GYM-5-6-2012-BIOLOGIE",
+      "sourceRef": "Saarland Lehrplan Naturwissenschaften Gymnasium Klassenstufen 5/6 2012, Der Mensch als System: Ernährung, Klassenstufe 5, S. 19.",
+      "sourceText": "Fettfleckprobe, Stärkenachweis und Eiweißnachweis durchführen oder protokollieren.",
+      "sourceSpan": {
+        "passageId": "sl-biology-seki-nw56-2012-ern5",
+        "label": "Nährstoffe: Fettfleckprobe, Stärkenachweis und Eiweißnachweis durchführen oder protokollieren."
+      },
+      "sourceSpanText": "Der Mensch als System: Ernährung, Klassenstufe 5, Source-Ziel 3",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-SL",
+        "stage:SekI",
+        "grade:5"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "26aa47b7-e5cc-5131-8980-0ec3271758b6",
+          "bb6fb806-ee15-5881-8529-2425cadfb5a1"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "sl-biology-seki-nw56-2012-ern5-004-d9e7ca1c",
+      "passageId": "sl-biology-seki-nw56-2012-ern5",
+      "topicCode": "ERN5",
+      "topicTitle": "Der Mensch als System: Ernährung",
+      "headingTitle": "Nährstoffe",
+      "title": "Die Zusammensetzung wichtiger Lebensmittel hinsichtlich ihres Nährstoffgehalts beschreiben.",
+      "description": "Die lernende Person kann Die Zusammensetzung wichtiger Lebensmittel hinsichtlich ihres Nährstoffgehalts beschreiben.",
+      "sourceDocumentKey": "SL-NW-GYM-5-6-2012-BIOLOGIE",
+      "sourceRef": "Saarland Lehrplan Naturwissenschaften Gymnasium Klassenstufen 5/6 2012, Der Mensch als System: Ernährung, Klassenstufe 5, S. 19.",
+      "sourceText": "Die Zusammensetzung wichtiger Lebensmittel hinsichtlich ihres Nährstoffgehalts beschreiben.",
+      "sourceSpan": {
+        "passageId": "sl-biology-seki-nw56-2012-ern5",
+        "label": "Nährstoffe: Die Zusammensetzung wichtiger Lebensmittel hinsichtlich ihres Nährstoffgehalts beschreiben."
+      },
+      "sourceSpanText": "Der Mensch als System: Ernährung, Klassenstufe 5, Source-Ziel 4",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-SL",
+        "stage:SekI",
+        "grade:5"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "c25a1bc9-c664-53d7-b2d8-500741da773c",
+          "73624d0c-bc6f-5b5d-baf5-099ca62fab79"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "sl-biology-seki-nw56-2012-ern5-005-8bad7cf9",
+      "passageId": "sl-biology-seki-nw56-2012-ern5",
+      "topicCode": "ERN5",
+      "topicTitle": "Der Mensch als System: Ernährung",
+      "headingTitle": "Verdauung",
+      "title": "Regeln zur Zahngesundheit nennen, den Weg der Nahrung beschreiben und Funktionen der Verdauungsorgane angeben.",
+      "description": "Die lernende Person kann Regeln zur Zahngesundheit nennen, den Weg der Nahrung beschreiben und Funktionen der Verdauungsorgane angeben.",
+      "sourceDocumentKey": "SL-NW-GYM-5-6-2012-BIOLOGIE",
+      "sourceRef": "Saarland Lehrplan Naturwissenschaften Gymnasium Klassenstufen 5/6 2012, Der Mensch als System: Ernährung, Klassenstufe 5, S. 19.",
+      "sourceText": "Regeln zur Zahngesundheit nennen, den Weg der Nahrung beschreiben und Funktionen der Verdauungsorgane angeben.",
+      "sourceSpan": {
+        "passageId": "sl-biology-seki-nw56-2012-ern5",
+        "label": "Verdauung: Regeln zur Zahngesundheit nennen, den Weg der Nahrung beschreiben und Funktionen der Verdauungsorgane angeben."
+      },
+      "sourceSpanText": "Der Mensch als System: Ernährung, Klassenstufe 5, Source-Ziel 5",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-SL",
+        "stage:SekI",
+        "grade:5"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "4b3b0cd7-47d2-5213-b1ce-4e829ccbb6a2",
+          "c25a1bc9-c664-53d7-b2d8-500741da773c",
+          "6de6ad3b-1099-5f51-848d-96de4119ed01"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "sl-biology-seki-nw56-2012-ern5-006-de59f8cb",
+      "passageId": "sl-biology-seki-nw56-2012-ern5",
+      "topicCode": "ERN5",
+      "topicTitle": "Der Mensch als System: Ernährung",
+      "headingTitle": "Stoffwechsel",
+      "title": "Stoffwechsel als Aufnahme, Umwandlung und Abgabe von Stoffen beschreiben und Bau- und Energiestoffwechsel unterscheiden.",
+      "description": "Die lernende Person kann Stoffwechsel als Aufnahme, Umwandlung und Abgabe von Stoffen beschreiben und Bau- und Energiestoffwechsel unterscheiden.",
+      "sourceDocumentKey": "SL-NW-GYM-5-6-2012-BIOLOGIE",
+      "sourceRef": "Saarland Lehrplan Naturwissenschaften Gymnasium Klassenstufen 5/6 2012, Der Mensch als System: Ernährung, Klassenstufe 5, S. 19.",
+      "sourceText": "Stoffwechsel als Aufnahme, Umwandlung und Abgabe von Stoffen beschreiben und Bau- und Energiestoffwechsel unterscheiden.",
+      "sourceSpan": {
+        "passageId": "sl-biology-seki-nw56-2012-ern5",
+        "label": "Stoffwechsel: Stoffwechsel als Aufnahme, Umwandlung und Abgabe von Stoffen beschreiben und Bau- und Energiestoffwechsel unterscheiden."
+      },
+      "sourceSpanText": "Der Mensch als System: Ernährung, Klassenstufe 5, Source-Ziel 6",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-SL",
+        "stage:SekI",
+        "grade:5"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "2c60c8ad-04d3-5395-8a27-400646eb1612",
+          "c25a1bc9-c664-53d7-b2d8-500741da773c"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "sl-biology-seki-nw56-2012-ern5-007-920abf0b",
+      "passageId": "sl-biology-seki-nw56-2012-ern5",
+      "topicCode": "ERN5",
+      "topicTitle": "Der Mensch als System: Ernährung",
+      "headingTitle": "Gesunde Ernährung",
+      "title": "Regeln vollwertiger Ernährung und ernährungsbedingte Krankheiten erläutern.",
+      "description": "Die lernende Person kann Regeln vollwertiger Ernährung und ernährungsbedingte Krankheiten erläutern.",
+      "sourceDocumentKey": "SL-NW-GYM-5-6-2012-BIOLOGIE",
+      "sourceRef": "Saarland Lehrplan Naturwissenschaften Gymnasium Klassenstufen 5/6 2012, Der Mensch als System: Ernährung, Klassenstufe 5, S. 19.",
+      "sourceText": "Regeln vollwertiger Ernährung und ernährungsbedingte Krankheiten erläutern.",
+      "sourceSpan": {
+        "passageId": "sl-biology-seki-nw56-2012-ern5",
+        "label": "Gesunde Ernährung: Regeln vollwertiger Ernährung und ernährungsbedingte Krankheiten erläutern."
+      },
+      "sourceSpanText": "Der Mensch als System: Ernährung, Klassenstufe 5, Source-Ziel 7",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-SL",
+        "stage:SekI",
+        "grade:5"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "73624d0c-bc6f-5b5d-baf5-099ca62fab79",
+          "6de6ad3b-1099-5f51-848d-96de4119ed01"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "sl-biology-seki-nw56-2012-ern5-008-8a151487",
+      "passageId": "sl-biology-seki-nw56-2012-ern5",
+      "topicCode": "ERN5",
+      "topicTitle": "Der Mensch als System: Ernährung",
+      "headingTitle": "Gesunde Ernährung",
+      "title": "Energie- und Nährstoffbilanz der eigenen Ernährung und Bewegung beurteilen.",
+      "description": "Die lernende Person kann Energie- und Nährstoffbilanz der eigenen Ernährung und Bewegung beurteilen.",
+      "sourceDocumentKey": "SL-NW-GYM-5-6-2012-BIOLOGIE",
+      "sourceRef": "Saarland Lehrplan Naturwissenschaften Gymnasium Klassenstufen 5/6 2012, Der Mensch als System: Ernährung, Klassenstufe 5, S. 19.",
+      "sourceText": "Energie- und Nährstoffbilanz der eigenen Ernährung und Bewegung beurteilen.",
+      "sourceSpan": {
+        "passageId": "sl-biology-seki-nw56-2012-ern5",
+        "label": "Gesunde Ernährung: Energie- und Nährstoffbilanz der eigenen Ernährung und Bewegung beurteilen."
+      },
+      "sourceSpanText": "Der Mensch als System: Ernährung, Klassenstufe 5, Source-Ziel 8",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-SL",
+        "stage:SekI",
+        "grade:5"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "73624d0c-bc6f-5b5d-baf5-099ca62fab79",
+          "6de6ad3b-1099-5f51-848d-96de4119ed01"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "sl-biology-seki-nw56-2012-mam5-001-38911161",
+      "passageId": "sl-biology-seki-nw56-2012-mam5",
+      "topicCode": "MAM5",
+      "topicTitle": "Säugetiere in ihrem Lebensraum",
+      "headingTitle": "Hauskatze oder Haushund",
+      "title": "Fleischfressergebiss, Beinskelett, Krallen, Verhalten und bevorzugte Sinnesorgane von Hund oder Katze beschreiben.",
+      "description": "Die lernende Person kann Fleischfressergebiss, Beinskelett, Krallen, Verhalten und bevorzugte Sinnesorgane von Hund oder Katze beschreiben.",
+      "sourceDocumentKey": "SL-NW-GYM-5-6-2012-BIOLOGIE",
+      "sourceRef": "Saarland Lehrplan Naturwissenschaften Gymnasium Klassenstufen 5/6 2012, Säugetiere in ihrem Lebensraum, Klassenstufe 5, S. 22.",
+      "sourceText": "Fleischfressergebiss, Beinskelett, Krallen, Verhalten und bevorzugte Sinnesorgane von Hund oder Katze beschreiben.",
+      "sourceSpan": {
+        "passageId": "sl-biology-seki-nw56-2012-mam5",
+        "label": "Hauskatze oder Haushund: Fleischfressergebiss, Beinskelett, Krallen, Verhalten und bevorzugte Sinnesorgane von Hund oder Katze beschreiben."
+      },
+      "sourceSpanText": "Säugetiere in ihrem Lebensraum, Klassenstufe 5, Source-Ziel 1",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-SL",
+        "stage:SekI",
+        "grade:5"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "bdbb1a13-f448-5536-86ab-894805e2f6be",
+          "ac69483b-6a77-573d-a7c0-add32bb867e2",
+          "4b3b0cd7-47d2-5213-b1ce-4e829ccbb6a2",
+          "9263ee6c-bf62-531c-bb09-78a4a51b8ed7"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "sl-biology-seki-nw56-2012-mam5-002-80fc34b4",
+      "passageId": "sl-biology-seki-nw56-2012-mam5",
+      "topicCode": "MAM5",
+      "topicTitle": "Säugetiere in ihrem Lebensraum",
+      "headingTitle": "Hauskatze oder Haushund",
+      "title": "Lebensweise eines Haus- oder Wildtiers recherchieren und präsentieren.",
+      "description": "Die lernende Person kann Lebensweise eines Haus- oder Wildtiers recherchieren und präsentieren.",
+      "sourceDocumentKey": "SL-NW-GYM-5-6-2012-BIOLOGIE",
+      "sourceRef": "Saarland Lehrplan Naturwissenschaften Gymnasium Klassenstufen 5/6 2012, Säugetiere in ihrem Lebensraum, Klassenstufe 5, S. 22.",
+      "sourceText": "Lebensweise eines Haus- oder Wildtiers recherchieren und präsentieren.",
+      "sourceSpan": {
+        "passageId": "sl-biology-seki-nw56-2012-mam5",
+        "label": "Hauskatze oder Haushund: Lebensweise eines Haus- oder Wildtiers recherchieren und präsentieren."
+      },
+      "sourceSpanText": "Säugetiere in ihrem Lebensraum, Klassenstufe 5, Source-Ziel 2",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-SL",
+        "stage:SekI",
+        "grade:5"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "5a47f591-f2ac-5457-872a-22c89c2dbe93"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "sl-biology-seki-nw56-2012-mam5-003-19f32d85",
+      "passageId": "sl-biology-seki-nw56-2012-mam5",
+      "topicCode": "MAM5",
+      "topicTitle": "Säugetiere in ihrem Lebensraum",
+      "headingTitle": "Hauskatze oder Haushund",
+      "title": "Gebiss- und Beinskelettmerkmale mit Funktionen und Fortbewegungsweisen vergleichen.",
+      "description": "Die lernende Person kann Gebiss- und Beinskelettmerkmale mit Funktionen und Fortbewegungsweisen vergleichen.",
+      "sourceDocumentKey": "SL-NW-GYM-5-6-2012-BIOLOGIE",
+      "sourceRef": "Saarland Lehrplan Naturwissenschaften Gymnasium Klassenstufen 5/6 2012, Säugetiere in ihrem Lebensraum, Klassenstufe 5, S. 22.",
+      "sourceText": "Gebiss- und Beinskelettmerkmale mit Funktionen und Fortbewegungsweisen vergleichen.",
+      "sourceSpan": {
+        "passageId": "sl-biology-seki-nw56-2012-mam5",
+        "label": "Hauskatze oder Haushund: Gebiss- und Beinskelettmerkmale mit Funktionen und Fortbewegungsweisen vergleichen."
+      },
+      "sourceSpanText": "Säugetiere in ihrem Lebensraum, Klassenstufe 5, Source-Ziel 3",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-SL",
+        "stage:SekI",
+        "grade:5"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "bdbb1a13-f448-5536-86ab-894805e2f6be",
+          "ac69483b-6a77-573d-a7c0-add32bb867e2",
+          "dc1c2eff-5e42-50f1-ab75-b180b4f58907"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "sl-biology-seki-nw56-2012-mam5-004-92480401",
+      "passageId": "sl-biology-seki-nw56-2012-mam5",
+      "topicCode": "MAM5",
+      "topicTitle": "Säugetiere in ihrem Lebensraum",
+      "headingTitle": "Rind oder Pferd",
+      "title": "Anatomische Besonderheiten von Rind oder Pferd beschreiben und mit Hund oder Katze vergleichen.",
+      "description": "Die lernende Person kann Anatomische Besonderheiten von Rind oder Pferd beschreiben und mit Hund oder Katze vergleichen.",
+      "sourceDocumentKey": "SL-NW-GYM-5-6-2012-BIOLOGIE",
+      "sourceRef": "Saarland Lehrplan Naturwissenschaften Gymnasium Klassenstufen 5/6 2012, Säugetiere in ihrem Lebensraum, Klassenstufe 5, S. 22.",
+      "sourceText": "Anatomische Besonderheiten von Rind oder Pferd beschreiben und mit Hund oder Katze vergleichen.",
+      "sourceSpan": {
+        "passageId": "sl-biology-seki-nw56-2012-mam5",
+        "label": "Rind oder Pferd: Anatomische Besonderheiten von Rind oder Pferd beschreiben und mit Hund oder Katze vergleichen."
+      },
+      "sourceSpanText": "Säugetiere in ihrem Lebensraum, Klassenstufe 5, Source-Ziel 4",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-SL",
+        "stage:SekI",
+        "grade:5"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "bdbb1a13-f448-5536-86ab-894805e2f6be",
+          "ac69483b-6a77-573d-a7c0-add32bb867e2",
+          "4b3b0cd7-47d2-5213-b1ce-4e829ccbb6a2"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "sl-biology-seki-nw56-2012-mam5-005-a11f6f01",
+      "passageId": "sl-biology-seki-nw56-2012-mam5",
+      "topicCode": "MAM5",
+      "topicTitle": "Säugetiere in ihrem Lebensraum",
+      "headingTitle": "Tierzucht und Tierhaltung",
+      "title": "Wildformen, Züchtung gewünschter Merkmale und Kriterien artgerechter Haltung erläutern.",
+      "description": "Die lernende Person kann Wildformen, Züchtung gewünschter Merkmale und Kriterien artgerechter Haltung erläutern.",
+      "sourceDocumentKey": "SL-NW-GYM-5-6-2012-BIOLOGIE",
+      "sourceRef": "Saarland Lehrplan Naturwissenschaften Gymnasium Klassenstufen 5/6 2012, Säugetiere in ihrem Lebensraum, Klassenstufe 5, S. 22.",
+      "sourceText": "Wildformen, Züchtung gewünschter Merkmale und Kriterien artgerechter Haltung erläutern.",
+      "sourceSpan": {
+        "passageId": "sl-biology-seki-nw56-2012-mam5",
+        "label": "Tierzucht und Tierhaltung: Wildformen, Züchtung gewünschter Merkmale und Kriterien artgerechter Haltung erläutern."
+      },
+      "sourceSpanText": "Säugetiere in ihrem Lebensraum, Klassenstufe 5, Source-Ziel 5",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-SL",
+        "stage:SekI",
+        "grade:5"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "bac3e333-d044-559e-8d8e-b8eff4af2b56",
+          "06e91b97-e7cc-5698-a854-8a946a4bb7d0",
+          "7eeb9de9-9a8e-5932-8f60-183367c87d09"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "sl-biology-seki-nw56-2012-mam5-006-6ecb941b",
+      "passageId": "sl-biology-seki-nw56-2012-mam5",
+      "topicCode": "MAM5",
+      "topicTitle": "Säugetiere in ihrem Lebensraum",
+      "headingTitle": "Tierzucht und Tierhaltung",
+      "title": "Zuchtmerkmale und Haltungsbedingungen von Haus- und Nutztieren bewerten.",
+      "description": "Die lernende Person kann Zuchtmerkmale und Haltungsbedingungen von Haus- und Nutztieren bewerten.",
+      "sourceDocumentKey": "SL-NW-GYM-5-6-2012-BIOLOGIE",
+      "sourceRef": "Saarland Lehrplan Naturwissenschaften Gymnasium Klassenstufen 5/6 2012, Säugetiere in ihrem Lebensraum, Klassenstufe 5, S. 22.",
+      "sourceText": "Zuchtmerkmale und Haltungsbedingungen von Haus- und Nutztieren bewerten.",
+      "sourceSpan": {
+        "passageId": "sl-biology-seki-nw56-2012-mam5",
+        "label": "Tierzucht und Tierhaltung: Zuchtmerkmale und Haltungsbedingungen von Haus- und Nutztieren bewerten."
+      },
+      "sourceSpanText": "Säugetiere in ihrem Lebensraum, Klassenstufe 5, Source-Ziel 6",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-SL",
+        "stage:SekI",
+        "grade:5"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "06e91b97-e7cc-5698-a854-8a946a4bb7d0",
+          "7eeb9de9-9a8e-5932-8f60-183367c87d09"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "sl-biology-seki-nw56-2012-mam5-007-77f514e5",
+      "passageId": "sl-biology-seki-nw56-2012-mam5",
+      "topicCode": "MAM5",
+      "topicTitle": "Säugetiere in ihrem Lebensraum",
+      "headingTitle": "Säugetiere erobern Lebensräume",
+      "title": "Angepasstheit von Fledermaus oder Blauwal und Überlebensstrategien in kalten Lebensräumen beschreiben.",
+      "description": "Die lernende Person kann Angepasstheit von Fledermaus oder Blauwal und Überlebensstrategien in kalten Lebensräumen beschreiben.",
+      "sourceDocumentKey": "SL-NW-GYM-5-6-2012-BIOLOGIE",
+      "sourceRef": "Saarland Lehrplan Naturwissenschaften Gymnasium Klassenstufen 5/6 2012, Säugetiere in ihrem Lebensraum, Klassenstufe 5, S. 22.",
+      "sourceText": "Angepasstheit von Fledermaus oder Blauwal und Überlebensstrategien in kalten Lebensräumen beschreiben.",
+      "sourceSpan": {
+        "passageId": "sl-biology-seki-nw56-2012-mam5",
+        "label": "Säugetiere erobern Lebensräume: Angepasstheit von Fledermaus oder Blauwal und Überlebensstrategien in kalten Lebensräumen beschreiben."
+      },
+      "sourceSpanText": "Säugetiere in ihrem Lebensraum, Klassenstufe 5, Source-Ziel 7",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-SL",
+        "stage:SekI",
+        "grade:5"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "ac69483b-6a77-573d-a7c0-add32bb867e2",
+          "7eeb9de9-9a8e-5932-8f60-183367c87d09"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "sl-biology-seki-nw56-2012-mam5-008-a36f1fff",
+      "passageId": "sl-biology-seki-nw56-2012-mam5",
+      "topicCode": "MAM5",
+      "topicTitle": "Säugetiere in ihrem Lebensraum",
+      "headingTitle": "Säugetiere erobern Lebensräume",
+      "title": "Gemeinsamkeiten der Säugetiere zusammenfassen und menschliche Eingriffe in Lebensräume beurteilen.",
+      "description": "Die lernende Person kann Gemeinsamkeiten der Säugetiere zusammenfassen und menschliche Eingriffe in Lebensräume beurteilen.",
+      "sourceDocumentKey": "SL-NW-GYM-5-6-2012-BIOLOGIE",
+      "sourceRef": "Saarland Lehrplan Naturwissenschaften Gymnasium Klassenstufen 5/6 2012, Säugetiere in ihrem Lebensraum, Klassenstufe 5, S. 22.",
+      "sourceText": "Gemeinsamkeiten der Säugetiere zusammenfassen und menschliche Eingriffe in Lebensräume beurteilen.",
+      "sourceSpan": {
+        "passageId": "sl-biology-seki-nw56-2012-mam5",
+        "label": "Säugetiere erobern Lebensräume: Gemeinsamkeiten der Säugetiere zusammenfassen und menschliche Eingriffe in Lebensräume beurteilen."
+      },
+      "sourceSpanText": "Säugetiere in ihrem Lebensraum, Klassenstufe 5, Source-Ziel 8",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-SL",
+        "stage:SekI",
+        "grade:5"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "bdbb1a13-f448-5536-86ab-894805e2f6be",
+          "5f39afac-897c-5ed3-95b5-89ccf66b2532",
+          "c1aea082-30c0-558f-8d0a-fb810c1dc51b",
+          "7eeb9de9-9a8e-5932-8f60-183367c87d09"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "sl-biology-seki-nw56-2012-mam5-009-0ecaa084",
+      "passageId": "sl-biology-seki-nw56-2012-mam5",
+      "topicCode": "MAM5",
+      "topicTitle": "Säugetiere in ihrem Lebensraum",
+      "headingTitle": "Säugetiere erobern Lebensräume",
+      "title": "Isolationswirkung von Fell experimentell untersuchen und Temperatur-Zeit-Diagramme auswerten.",
+      "description": "Die lernende Person kann Isolationswirkung von Fell experimentell untersuchen und Temperatur-Zeit-Diagramme auswerten.",
+      "sourceDocumentKey": "SL-NW-GYM-5-6-2012-BIOLOGIE",
+      "sourceRef": "Saarland Lehrplan Naturwissenschaften Gymnasium Klassenstufen 5/6 2012, Säugetiere in ihrem Lebensraum, Klassenstufe 5, S. 22.",
+      "sourceText": "Isolationswirkung von Fell experimentell untersuchen und Temperatur-Zeit-Diagramme auswerten.",
+      "sourceSpan": {
+        "passageId": "sl-biology-seki-nw56-2012-mam5",
+        "label": "Säugetiere erobern Lebensräume: Isolationswirkung von Fell experimentell untersuchen und Temperatur-Zeit-Diagramme auswerten."
+      },
+      "sourceSpanText": "Säugetiere in ihrem Lebensraum, Klassenstufe 5, Source-Ziel 9",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-SL",
+        "stage:SekI",
+        "grade:5"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "26aa47b7-e5cc-5131-8980-0ec3271758b6",
+          "0f1549f6-8341-53b0-8161-5eaeb2b37809"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "sl-biology-seki-nw56-2012-pfl5-001-0977172f",
+      "passageId": "sl-biology-seki-nw56-2012-pfl5",
+      "topicCode": "PFL5",
+      "topicTitle": "Samenpflanzen: Bau und Fortpflanzung",
+      "headingTitle": "Pflanzenfamilien",
+      "title": "Pflanzenorgane und deren Funktionen nennen sowie Pflanzenfamilien und das Natürliche System einordnen.",
+      "description": "Die lernende Person kann Pflanzenorgane und deren Funktionen nennen sowie Pflanzenfamilien und das Natürliche System einordnen.",
+      "sourceDocumentKey": "SL-NW-GYM-5-6-2012-BIOLOGIE",
+      "sourceRef": "Saarland Lehrplan Naturwissenschaften Gymnasium Klassenstufen 5/6 2012, Samenpflanzen: Bau und Fortpflanzung, Klassenstufe 5, S. 25.",
+      "sourceText": "Pflanzenorgane und deren Funktionen nennen sowie Pflanzenfamilien und das Natürliche System einordnen.",
+      "sourceSpan": {
+        "passageId": "sl-biology-seki-nw56-2012-pfl5",
+        "label": "Pflanzenfamilien: Pflanzenorgane und deren Funktionen nennen sowie Pflanzenfamilien und das Natürliche System einordnen."
+      },
+      "sourceSpanText": "Samenpflanzen: Bau und Fortpflanzung, Klassenstufe 5, Source-Ziel 1",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-SL",
+        "stage:SekI",
+        "grade:5"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "892a1d3a-9923-5ac2-affa-f2d5c38e3c54",
+          "350c8fab-5f95-5cf0-b8a9-dbc5f425b6fd",
+          "0380f992-723a-513d-8c3f-8ca7f8e0394f"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "sl-biology-seki-nw56-2012-pfl5-002-478d62f8",
+      "passageId": "sl-biology-seki-nw56-2012-pfl5",
+      "topicCode": "PFL5",
+      "topicTitle": "Samenpflanzen: Bau und Fortpflanzung",
+      "headingTitle": "Pflanzenfamilien",
+      "title": "Blüten untersuchen, vergleichen, skizzieren und heimische Blütenpflanzen mit Bestimmungsschlüsseln bestimmen.",
+      "description": "Die lernende Person kann Blüten untersuchen, vergleichen, skizzieren und heimische Blütenpflanzen mit Bestimmungsschlüsseln bestimmen.",
+      "sourceDocumentKey": "SL-NW-GYM-5-6-2012-BIOLOGIE",
+      "sourceRef": "Saarland Lehrplan Naturwissenschaften Gymnasium Klassenstufen 5/6 2012, Samenpflanzen: Bau und Fortpflanzung, Klassenstufe 5, S. 25.",
+      "sourceText": "Blüten untersuchen, vergleichen, skizzieren und heimische Blütenpflanzen mit Bestimmungsschlüsseln bestimmen.",
+      "sourceSpan": {
+        "passageId": "sl-biology-seki-nw56-2012-pfl5",
+        "label": "Pflanzenfamilien: Blüten untersuchen, vergleichen, skizzieren und heimische Blütenpflanzen mit Bestimmungsschlüsseln bestimmen."
+      },
+      "sourceSpanText": "Samenpflanzen: Bau und Fortpflanzung, Klassenstufe 5, Source-Ziel 2",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-SL",
+        "stage:SekI",
+        "grade:5"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "be06115e-96e8-537e-b18a-313056e6cbe8",
+          "0380f992-723a-513d-8c3f-8ca7f8e0394f",
+          "0f1549f6-8341-53b0-8161-5eaeb2b37809"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "sl-biology-seki-nw56-2012-pfl5-003-b5650cc6",
+      "passageId": "sl-biology-seki-nw56-2012-pfl5",
+      "topicCode": "PFL5",
+      "topicTitle": "Samenpflanzen: Bau und Fortpflanzung",
+      "headingTitle": "Fortpflanzung und Vermehrung",
+      "title": "Blütenbestandteile, Geschlechtszellen, Bestäubung, Befruchtung, Früchte und Samen erklären.",
+      "description": "Die lernende Person kann Blütenbestandteile, Geschlechtszellen, Bestäubung, Befruchtung, Früchte und Samen erklären.",
+      "sourceDocumentKey": "SL-NW-GYM-5-6-2012-BIOLOGIE",
+      "sourceRef": "Saarland Lehrplan Naturwissenschaften Gymnasium Klassenstufen 5/6 2012, Samenpflanzen: Bau und Fortpflanzung, Klassenstufe 5, S. 25.",
+      "sourceText": "Blütenbestandteile, Geschlechtszellen, Bestäubung, Befruchtung, Früchte und Samen erklären.",
+      "sourceSpan": {
+        "passageId": "sl-biology-seki-nw56-2012-pfl5",
+        "label": "Fortpflanzung und Vermehrung: Blütenbestandteile, Geschlechtszellen, Bestäubung, Befruchtung, Früchte und Samen erklären."
+      },
+      "sourceSpanText": "Samenpflanzen: Bau und Fortpflanzung, Klassenstufe 5, Source-Ziel 3",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-SL",
+        "stage:SekI",
+        "grade:5"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "be06115e-96e8-537e-b18a-313056e6cbe8",
+          "a6f2bcaf-df2d-5144-aa8f-49396b12d31b",
+          "4e12ba43-a58c-5611-8c43-3cc0c8465e33"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "sl-biology-seki-nw56-2012-pfl5-004-c265b417",
+      "passageId": "sl-biology-seki-nw56-2012-pfl5",
+      "topicCode": "PFL5",
+      "topicTitle": "Samenpflanzen: Bau und Fortpflanzung",
+      "headingTitle": "Fortpflanzung und Vermehrung",
+      "title": "Fruchtformen, Verbreitungsarten und ungeschlechtliche Vermehrung von Pflanzen beschreiben.",
+      "description": "Die lernende Person kann Fruchtformen, Verbreitungsarten und ungeschlechtliche Vermehrung von Pflanzen beschreiben.",
+      "sourceDocumentKey": "SL-NW-GYM-5-6-2012-BIOLOGIE",
+      "sourceRef": "Saarland Lehrplan Naturwissenschaften Gymnasium Klassenstufen 5/6 2012, Samenpflanzen: Bau und Fortpflanzung, Klassenstufe 5, S. 25.",
+      "sourceText": "Fruchtformen, Verbreitungsarten und ungeschlechtliche Vermehrung von Pflanzen beschreiben.",
+      "sourceSpan": {
+        "passageId": "sl-biology-seki-nw56-2012-pfl5",
+        "label": "Fortpflanzung und Vermehrung: Fruchtformen, Verbreitungsarten und ungeschlechtliche Vermehrung von Pflanzen beschreiben."
+      },
+      "sourceSpanText": "Samenpflanzen: Bau und Fortpflanzung, Klassenstufe 5, Source-Ziel 4",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-SL",
+        "stage:SekI",
+        "grade:5"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "a6f2bcaf-df2d-5144-aa8f-49396b12d31b",
+          "4e12ba43-a58c-5611-8c43-3cc0c8465e33",
+          "9d931642-2287-5277-adb2-082403ad25af"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "sl-biology-seki-nw56-2012-pfl5-005-3ff521ca",
+      "passageId": "sl-biology-seki-nw56-2012-pfl5",
+      "topicCode": "PFL5",
+      "topicTitle": "Samenpflanzen: Bau und Fortpflanzung",
+      "headingTitle": "Kulturgräser",
+      "title": "Bau von Kulturgräsern und Getreidekörnern beschreiben und die Bedeutung des Stärkevorrats erklären.",
+      "description": "Die lernende Person kann Bau von Kulturgräsern und Getreidekörnern beschreiben und die Bedeutung des Stärkevorrats erklären.",
+      "sourceDocumentKey": "SL-NW-GYM-5-6-2012-BIOLOGIE",
+      "sourceRef": "Saarland Lehrplan Naturwissenschaften Gymnasium Klassenstufen 5/6 2012, Samenpflanzen: Bau und Fortpflanzung, Klassenstufe 5, S. 25.",
+      "sourceText": "Bau von Kulturgräsern und Getreidekörnern beschreiben und die Bedeutung des Stärkevorrats erklären.",
+      "sourceSpan": {
+        "passageId": "sl-biology-seki-nw56-2012-pfl5",
+        "label": "Kulturgräser: Bau von Kulturgräsern und Getreidekörnern beschreiben und die Bedeutung des Stärkevorrats erklären."
+      },
+      "sourceSpanText": "Samenpflanzen: Bau und Fortpflanzung, Klassenstufe 5, Source-Ziel 5",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-SL",
+        "stage:SekI",
+        "grade:5"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "350c8fab-5f95-5cf0-b8a9-dbc5f425b6fd",
+          "892a1d3a-9923-5ac2-affa-f2d5c38e3c54",
+          "19f806d2-d4e3-5ad4-98a8-1d61bdd81e3d"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "sl-biology-seki-nw56-2012-pfl5-006-96996615",
+      "passageId": "sl-biology-seki-nw56-2012-pfl5",
+      "topicCode": "PFL5",
+      "topicTitle": "Samenpflanzen: Bau und Fortpflanzung",
+      "headingTitle": "Kulturgräser",
+      "title": "Stärke im Getreidekorn experimentell nachweisen und Bedeutung von Wild- und Kulturgräsern recherchieren.",
+      "description": "Die lernende Person kann Stärke im Getreidekorn experimentell nachweisen und Bedeutung von Wild- und Kulturgräsern recherchieren.",
+      "sourceDocumentKey": "SL-NW-GYM-5-6-2012-BIOLOGIE",
+      "sourceRef": "Saarland Lehrplan Naturwissenschaften Gymnasium Klassenstufen 5/6 2012, Samenpflanzen: Bau und Fortpflanzung, Klassenstufe 5, S. 25.",
+      "sourceText": "Stärke im Getreidekorn experimentell nachweisen und Bedeutung von Wild- und Kulturgräsern recherchieren.",
+      "sourceSpan": {
+        "passageId": "sl-biology-seki-nw56-2012-pfl5",
+        "label": "Kulturgräser: Stärke im Getreidekorn experimentell nachweisen und Bedeutung von Wild- und Kulturgräsern recherchieren."
+      },
+      "sourceSpanText": "Samenpflanzen: Bau und Fortpflanzung, Klassenstufe 5, Source-Ziel 6",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-SL",
+        "stage:SekI",
+        "grade:5"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "26aa47b7-e5cc-5131-8980-0ec3271758b6",
+          "5a47f591-f2ac-5457-872a-22c89c2dbe93",
+          "350c8fab-5f95-5cf0-b8a9-dbc5f425b6fd"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "sl-biology-seki-nw56-2012-keim6-001-7c4f66b7",
+      "passageId": "sl-biology-seki-nw56-2012-keim6",
+      "topicCode": "KEIM6",
+      "topicTitle": "Samenpflanzen: Keimung und Stoffwechsel",
+      "headingTitle": "Bau und Keimung von Samen",
+      "title": "Bestandteile eines Samens und ihre Funktionen nennen.",
+      "description": "Die lernende Person kann Bestandteile eines Samens und ihre Funktionen nennen.",
+      "sourceDocumentKey": "SL-NW-GYM-5-6-2012-BIOLOGIE",
+      "sourceRef": "Saarland Lehrplan Naturwissenschaften Gymnasium Klassenstufen 5/6 2012, Samenpflanzen: Keimung und Stoffwechsel, Klassenstufe 6, S. 30.",
+      "sourceText": "Bestandteile eines Samens und ihre Funktionen nennen.",
+      "sourceSpan": {
+        "passageId": "sl-biology-seki-nw56-2012-keim6",
+        "label": "Bau und Keimung von Samen: Bestandteile eines Samens und ihre Funktionen nennen."
+      },
+      "sourceSpanText": "Samenpflanzen: Keimung und Stoffwechsel, Klassenstufe 6, Source-Ziel 1",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-SL",
+        "stage:SekI",
+        "grade:6"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "19f806d2-d4e3-5ad4-98a8-1d61bdd81e3d",
+          "892a1d3a-9923-5ac2-affa-f2d5c38e3c54"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "sl-biology-seki-nw56-2012-keim6-002-a349ee30",
+      "passageId": "sl-biology-seki-nw56-2012-keim6",
+      "topicCode": "KEIM6",
+      "topicTitle": "Samenpflanzen: Keimung und Stoffwechsel",
+      "headingTitle": "Bau und Keimung von Samen",
+      "title": "Wasser und Wärme als Keimungsfaktoren angeben, Quellung erklären und Keimungsstadien beschreiben.",
+      "description": "Die lernende Person kann Wasser und Wärme als Keimungsfaktoren angeben, Quellung erklären und Keimungsstadien beschreiben.",
+      "sourceDocumentKey": "SL-NW-GYM-5-6-2012-BIOLOGIE",
+      "sourceRef": "Saarland Lehrplan Naturwissenschaften Gymnasium Klassenstufen 5/6 2012, Samenpflanzen: Keimung und Stoffwechsel, Klassenstufe 6, S. 30.",
+      "sourceText": "Wasser und Wärme als Keimungsfaktoren angeben, Quellung erklären und Keimungsstadien beschreiben.",
+      "sourceSpan": {
+        "passageId": "sl-biology-seki-nw56-2012-keim6",
+        "label": "Bau und Keimung von Samen: Wasser und Wärme als Keimungsfaktoren angeben, Quellung erklären und Keimungsstadien beschreiben."
+      },
+      "sourceSpanText": "Samenpflanzen: Keimung und Stoffwechsel, Klassenstufe 6, Source-Ziel 2",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-SL",
+        "stage:SekI",
+        "grade:6"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "19f806d2-d4e3-5ad4-98a8-1d61bdd81e3d"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "sl-biology-seki-nw56-2012-keim6-003-66515f2f",
+      "passageId": "sl-biology-seki-nw56-2012-keim6",
+      "topicCode": "KEIM6",
+      "topicTitle": "Samenpflanzen: Keimung und Stoffwechsel",
+      "headingTitle": "Bau und Keimung von Samen",
+      "title": "Samenbau untersuchen, Schemazeichnungen anfertigen und Keimungsexperimente planen, durchführen und protokollieren.",
+      "description": "Die lernende Person kann Samenbau untersuchen, Schemazeichnungen anfertigen und Keimungsexperimente planen, durchführen und protokollieren.",
+      "sourceDocumentKey": "SL-NW-GYM-5-6-2012-BIOLOGIE",
+      "sourceRef": "Saarland Lehrplan Naturwissenschaften Gymnasium Klassenstufen 5/6 2012, Samenpflanzen: Keimung und Stoffwechsel, Klassenstufe 6, S. 30.",
+      "sourceText": "Samenbau untersuchen, Schemazeichnungen anfertigen und Keimungsexperimente planen, durchführen und protokollieren.",
+      "sourceSpan": {
+        "passageId": "sl-biology-seki-nw56-2012-keim6",
+        "label": "Bau und Keimung von Samen: Samenbau untersuchen, Schemazeichnungen anfertigen und Keimungsexperimente planen, durchführen und protokollieren."
+      },
+      "sourceSpanText": "Samenpflanzen: Keimung und Stoffwechsel, Klassenstufe 6, Source-Ziel 3",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-SL",
+        "stage:SekI",
+        "grade:6"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "19f806d2-d4e3-5ad4-98a8-1d61bdd81e3d",
+          "d97f6957-fbc9-569c-8648-f7df5eb9dfd8",
+          "26aa47b7-e5cc-5131-8980-0ec3271758b6",
+          "0f1549f6-8341-53b0-8161-5eaeb2b37809"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "sl-biology-seki-nw56-2012-keim6-004-0849f2f5",
+      "passageId": "sl-biology-seki-nw56-2012-keim6",
+      "topicCode": "KEIM6",
+      "topicTitle": "Samenpflanzen: Keimung und Stoffwechsel",
+      "headingTitle": "Stoffwechselprozesse bei Pflanzen",
+      "title": "Funktionen des Laubblatts bei Gasaustausch, Verdunstung und Fotosynthese angeben.",
+      "description": "Die lernende Person kann Funktionen des Laubblatts bei Gasaustausch, Verdunstung und Fotosynthese angeben.",
+      "sourceDocumentKey": "SL-NW-GYM-5-6-2012-BIOLOGIE",
+      "sourceRef": "Saarland Lehrplan Naturwissenschaften Gymnasium Klassenstufen 5/6 2012, Samenpflanzen: Keimung und Stoffwechsel, Klassenstufe 6, S. 30.",
+      "sourceText": "Funktionen des Laubblatts bei Gasaustausch, Verdunstung und Fotosynthese angeben.",
+      "sourceSpan": {
+        "passageId": "sl-biology-seki-nw56-2012-keim6",
+        "label": "Stoffwechselprozesse bei Pflanzen: Funktionen des Laubblatts bei Gasaustausch, Verdunstung und Fotosynthese angeben."
+      },
+      "sourceSpanText": "Samenpflanzen: Keimung und Stoffwechsel, Klassenstufe 6, Source-Ziel 4",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-SL",
+        "stage:SekI",
+        "grade:6"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "892a1d3a-9923-5ac2-affa-f2d5c38e3c54",
+          "0d96a802-2a8d-5445-a7fa-02387f6b1f2d",
+          "8678d0b5-8b74-5b01-8143-91bfea1e4482"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "sl-biology-seki-nw56-2012-keim6-005-d46f2e68",
+      "passageId": "sl-biology-seki-nw56-2012-keim6",
+      "topicCode": "KEIM6",
+      "topicTitle": "Samenpflanzen: Keimung und Stoffwechsel",
+      "headingTitle": "Stoffwechselprozesse bei Pflanzen",
+      "title": "Wassertransport oder Verdunstung experimentell untersuchen.",
+      "description": "Die lernende Person kann Wassertransport oder Verdunstung experimentell untersuchen.",
+      "sourceDocumentKey": "SL-NW-GYM-5-6-2012-BIOLOGIE",
+      "sourceRef": "Saarland Lehrplan Naturwissenschaften Gymnasium Klassenstufen 5/6 2012, Samenpflanzen: Keimung und Stoffwechsel, Klassenstufe 6, S. 30.",
+      "sourceText": "Wassertransport oder Verdunstung experimentell untersuchen.",
+      "sourceSpan": {
+        "passageId": "sl-biology-seki-nw56-2012-keim6",
+        "label": "Stoffwechselprozesse bei Pflanzen: Wassertransport oder Verdunstung experimentell untersuchen."
+      },
+      "sourceSpanText": "Samenpflanzen: Keimung und Stoffwechsel, Klassenstufe 6, Source-Ziel 5",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-SL",
+        "stage:SekI",
+        "grade:6"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "d97f6957-fbc9-569c-8648-f7df5eb9dfd8",
+          "26aa47b7-e5cc-5131-8980-0ec3271758b6"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "sl-biology-seki-nw56-2012-keim6-006-b3eca0d0",
+      "passageId": "sl-biology-seki-nw56-2012-keim6",
+      "topicCode": "KEIM6",
+      "topicTitle": "Samenpflanzen: Keimung und Stoffwechsel",
+      "headingTitle": "Stoffwechselprozesse bei Pflanzen",
+      "title": "Fotosynthese als Stoffwechselprozess zum Aufbau energiereicher Stoffe beschreiben.",
+      "description": "Die lernende Person kann Fotosynthese als Stoffwechselprozess zum Aufbau energiereicher Stoffe beschreiben.",
+      "sourceDocumentKey": "SL-NW-GYM-5-6-2012-BIOLOGIE",
+      "sourceRef": "Saarland Lehrplan Naturwissenschaften Gymnasium Klassenstufen 5/6 2012, Samenpflanzen: Keimung und Stoffwechsel, Klassenstufe 6, S. 30.",
+      "sourceText": "Fotosynthese als Stoffwechselprozess zum Aufbau energiereicher Stoffe beschreiben.",
+      "sourceSpan": {
+        "passageId": "sl-biology-seki-nw56-2012-keim6",
+        "label": "Stoffwechselprozesse bei Pflanzen: Fotosynthese als Stoffwechselprozess zum Aufbau energiereicher Stoffe beschreiben."
+      },
+      "sourceSpanText": "Samenpflanzen: Keimung und Stoffwechsel, Klassenstufe 6, Source-Ziel 6",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-SL",
+        "stage:SekI",
+        "grade:6"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "0d96a802-2a8d-5445-a7fa-02387f6b1f2d",
+          "8678d0b5-8b74-5b01-8143-91bfea1e4482"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "sl-biology-seki-nw56-2012-keim6-007-9f848f90",
+      "passageId": "sl-biology-seki-nw56-2012-keim6",
+      "topicCode": "KEIM6",
+      "topicTitle": "Samenpflanzen: Keimung und Stoffwechsel",
+      "headingTitle": "Stoffwechselprozesse bei Pflanzen",
+      "title": "Stärkeproduktion und Sauerstoffentwicklung bei Pflanzen experimentell nachweisen.",
+      "description": "Die lernende Person kann Stärkeproduktion und Sauerstoffentwicklung bei Pflanzen experimentell nachweisen.",
+      "sourceDocumentKey": "SL-NW-GYM-5-6-2012-BIOLOGIE",
+      "sourceRef": "Saarland Lehrplan Naturwissenschaften Gymnasium Klassenstufen 5/6 2012, Samenpflanzen: Keimung und Stoffwechsel, Klassenstufe 6, S. 30.",
+      "sourceText": "Stärkeproduktion und Sauerstoffentwicklung bei Pflanzen experimentell nachweisen.",
+      "sourceSpan": {
+        "passageId": "sl-biology-seki-nw56-2012-keim6",
+        "label": "Stoffwechselprozesse bei Pflanzen: Stärkeproduktion und Sauerstoffentwicklung bei Pflanzen experimentell nachweisen."
+      },
+      "sourceSpanText": "Samenpflanzen: Keimung und Stoffwechsel, Klassenstufe 6, Source-Ziel 7",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-SL",
+        "stage:SekI",
+        "grade:6"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "e6f128c8-b38e-5167-9367-77e079a994c3",
+          "fc89ed54-1a78-55a9-8e54-751d6d46dad6",
+          "26aa47b7-e5cc-5131-8980-0ec3271758b6"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "sl-biology-seki-nw56-2012-keim6-008-b281e628",
+      "passageId": "sl-biology-seki-nw56-2012-keim6",
+      "topicCode": "KEIM6",
+      "topicTitle": "Samenpflanzen: Keimung und Stoffwechsel",
+      "headingTitle": "Stoffwechselprozesse bei Pflanzen",
+      "title": "Fotosynthese mit Chlorophyll, Lichtenergie und Blattgrünkörnern sowie ihre Wortgleichung beschreiben.",
+      "description": "Die lernende Person kann Fotosynthese mit Chlorophyll, Lichtenergie und Blattgrünkörnern sowie ihre Wortgleichung beschreiben.",
+      "sourceDocumentKey": "SL-NW-GYM-5-6-2012-BIOLOGIE",
+      "sourceRef": "Saarland Lehrplan Naturwissenschaften Gymnasium Klassenstufen 5/6 2012, Samenpflanzen: Keimung und Stoffwechsel, Klassenstufe 6, S. 30.",
+      "sourceText": "Fotosynthese mit Chlorophyll, Lichtenergie und Blattgrünkörnern sowie ihre Wortgleichung beschreiben.",
+      "sourceSpan": {
+        "passageId": "sl-biology-seki-nw56-2012-keim6",
+        "label": "Stoffwechselprozesse bei Pflanzen: Fotosynthese mit Chlorophyll, Lichtenergie und Blattgrünkörnern sowie ihre Wortgleichung beschreiben."
+      },
+      "sourceSpanText": "Samenpflanzen: Keimung und Stoffwechsel, Klassenstufe 6, Source-Ziel 8",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-SL",
+        "stage:SekI",
+        "grade:6"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "fc89ed54-1a78-55a9-8e54-751d6d46dad6",
+          "576d59e2-397a-5654-b853-7c0c4870fbd3"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "sl-biology-seki-nw56-2012-keim6-009-be00451d",
+      "passageId": "sl-biology-seki-nw56-2012-keim6",
+      "topicCode": "KEIM6",
+      "topicTitle": "Samenpflanzen: Keimung und Stoffwechsel",
+      "headingTitle": "Stoffwechselprozesse bei Pflanzen",
+      "title": "Bedeutung der Fotosyntheseprodukte für Kohlenstoffdioxid-, Sauerstoffhaushalt und Leben auf der Erde erläutern.",
+      "description": "Die lernende Person kann Bedeutung der Fotosyntheseprodukte für Kohlenstoffdioxid-, Sauerstoffhaushalt und Leben auf der Erde erläutern.",
+      "sourceDocumentKey": "SL-NW-GYM-5-6-2012-BIOLOGIE",
+      "sourceRef": "Saarland Lehrplan Naturwissenschaften Gymnasium Klassenstufen 5/6 2012, Samenpflanzen: Keimung und Stoffwechsel, Klassenstufe 6, S. 30.",
+      "sourceText": "Bedeutung der Fotosyntheseprodukte für Kohlenstoffdioxid-, Sauerstoffhaushalt und Leben auf der Erde erläutern.",
+      "sourceSpan": {
+        "passageId": "sl-biology-seki-nw56-2012-keim6",
+        "label": "Stoffwechselprozesse bei Pflanzen: Bedeutung der Fotosyntheseprodukte für Kohlenstoffdioxid-, Sauerstoffhaushalt und Leben auf der Erde erläutern."
+      },
+      "sourceSpanText": "Samenpflanzen: Keimung und Stoffwechsel, Klassenstufe 6, Source-Ziel 9",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-SL",
+        "stage:SekI",
+        "grade:6"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "8678d0b5-8b74-5b01-8143-91bfea1e4482"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "sl-biology-seki-nw56-2012-keim6-010-2db61e36",
+      "passageId": "sl-biology-seki-nw56-2012-keim6",
+      "topicCode": "KEIM6",
+      "topicTitle": "Samenpflanzen: Keimung und Stoffwechsel",
+      "headingTitle": "Stoffwechselprozesse bei Pflanzen",
+      "title": "Zellatmung bei Pflanze, Tier und Mensch beschreiben, ihre Wortgleichung angeben und mit Fotosynthese verknüpfen.",
+      "description": "Die lernende Person kann Zellatmung bei Pflanze, Tier und Mensch beschreiben, ihre Wortgleichung angeben und mit Fotosynthese verknüpfen.",
+      "sourceDocumentKey": "SL-NW-GYM-5-6-2012-BIOLOGIE",
+      "sourceRef": "Saarland Lehrplan Naturwissenschaften Gymnasium Klassenstufen 5/6 2012, Samenpflanzen: Keimung und Stoffwechsel, Klassenstufe 6, S. 30.",
+      "sourceText": "Zellatmung bei Pflanze, Tier und Mensch beschreiben, ihre Wortgleichung angeben und mit Fotosynthese verknüpfen.",
+      "sourceSpan": {
+        "passageId": "sl-biology-seki-nw56-2012-keim6",
+        "label": "Stoffwechselprozesse bei Pflanzen: Zellatmung bei Pflanze, Tier und Mensch beschreiben, ihre Wortgleichung angeben und mit Fotosynthese verknüpfen."
+      },
+      "sourceSpanText": "Samenpflanzen: Keimung und Stoffwechsel, Klassenstufe 6, Source-Ziel 10",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-SL",
+        "stage:SekI",
+        "grade:6"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "8678d0b5-8b74-5b01-8143-91bfea1e4482"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "sl-biology-seki-nw56-2012-keim6-011-60c3a3c1",
+      "passageId": "sl-biology-seki-nw56-2012-keim6",
+      "topicCode": "KEIM6",
+      "topicTitle": "Samenpflanzen: Keimung und Stoffwechsel",
+      "headingTitle": "Stoffwechselprozesse bei Pflanzen",
+      "title": "Das Priestley-Experiment beschreiben, erläutern und historisch-ethisch bewerten.",
+      "description": "Die lernende Person kann Das Priestley-Experiment beschreiben, erläutern und historisch-ethisch bewerten.",
+      "sourceDocumentKey": "SL-NW-GYM-5-6-2012-BIOLOGIE",
+      "sourceRef": "Saarland Lehrplan Naturwissenschaften Gymnasium Klassenstufen 5/6 2012, Samenpflanzen: Keimung und Stoffwechsel, Klassenstufe 6, S. 30.",
+      "sourceText": "Das Priestley-Experiment beschreiben, erläutern und historisch-ethisch bewerten.",
+      "sourceSpan": {
+        "passageId": "sl-biology-seki-nw56-2012-keim6",
+        "label": "Stoffwechselprozesse bei Pflanzen: Das Priestley-Experiment beschreiben, erläutern und historisch-ethisch bewerten."
+      },
+      "sourceSpanText": "Samenpflanzen: Keimung und Stoffwechsel, Klassenstufe 6, Source-Ziel 11",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-SL",
+        "stage:SekI",
+        "grade:6"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "6ae33a8e-874c-53ee-858f-c64f1848cfbc"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "sl-biology-seki-nw56-2012-wirt6-001-1c1d96d0",
+      "passageId": "sl-biology-seki-nw56-2012-wirt6",
+      "topicCode": "WIRT6",
+      "topicTitle": "Wirbeltiere in ihrem Lebensraum",
+      "headingTitle": "Fische, Amphibien, Reptilien, Vögel",
+      "title": "Beispiele für Wirbeltiere nennen und nach Körperbedeckung den Wirbeltierklassen zuordnen.",
+      "description": "Die lernende Person kann Beispiele für Wirbeltiere nennen und nach Körperbedeckung den Wirbeltierklassen zuordnen.",
+      "sourceDocumentKey": "SL-NW-GYM-5-6-2012-BIOLOGIE",
+      "sourceRef": "Saarland Lehrplan Naturwissenschaften Gymnasium Klassenstufen 5/6 2012, Wirbeltiere in ihrem Lebensraum, Klassenstufe 6, S. 32.",
+      "sourceText": "Beispiele für Wirbeltiere nennen und nach Körperbedeckung den Wirbeltierklassen zuordnen.",
+      "sourceSpan": {
+        "passageId": "sl-biology-seki-nw56-2012-wirt6",
+        "label": "Fische, Amphibien, Reptilien, Vögel: Beispiele für Wirbeltiere nennen und nach Körperbedeckung den Wirbeltierklassen zuordnen."
+      },
+      "sourceSpanText": "Wirbeltiere in ihrem Lebensraum, Klassenstufe 6, Source-Ziel 1",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-SL",
+        "stage:SekI",
+        "grade:6"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "bdbb1a13-f448-5536-86ab-894805e2f6be"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "sl-biology-seki-nw56-2012-wirt6-002-e7f10931",
+      "passageId": "sl-biology-seki-nw56-2012-wirt6",
+      "topicCode": "WIRT6",
+      "topicTitle": "Wirbeltiere in ihrem Lebensraum",
+      "headingTitle": "Fische, Amphibien, Reptilien, Vögel",
+      "title": "Atmungs- und Fortbewegungssysteme der Wirbeltierklassen beschreiben und vergleichen.",
+      "description": "Die lernende Person kann Atmungs- und Fortbewegungssysteme der Wirbeltierklassen beschreiben und vergleichen.",
+      "sourceDocumentKey": "SL-NW-GYM-5-6-2012-BIOLOGIE",
+      "sourceRef": "Saarland Lehrplan Naturwissenschaften Gymnasium Klassenstufen 5/6 2012, Wirbeltiere in ihrem Lebensraum, Klassenstufe 6, S. 32.",
+      "sourceText": "Atmungs- und Fortbewegungssysteme der Wirbeltierklassen beschreiben und vergleichen.",
+      "sourceSpan": {
+        "passageId": "sl-biology-seki-nw56-2012-wirt6",
+        "label": "Fische, Amphibien, Reptilien, Vögel: Atmungs- und Fortbewegungssysteme der Wirbeltierklassen beschreiben und vergleichen."
+      },
+      "sourceSpanText": "Wirbeltiere in ihrem Lebensraum, Klassenstufe 6, Source-Ziel 2",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-SL",
+        "stage:SekI",
+        "grade:6"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "ac69483b-6a77-573d-a7c0-add32bb867e2",
+          "7eeb9de9-9a8e-5932-8f60-183367c87d09",
+          "8a56672b-b662-5bcd-9f43-8ffc4abc4f01",
+          "6e2dae03-9ea9-5466-b93e-13adcfb01245"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "sl-biology-seki-nw56-2012-wirt6-003-33725906",
+      "passageId": "sl-biology-seki-nw56-2012-wirt6",
+      "topicCode": "WIRT6",
+      "topicTitle": "Wirbeltiere in ihrem Lebensraum",
+      "headingTitle": "Fische, Amphibien, Reptilien, Vögel",
+      "title": "Körperbau, Lebensweise und Angepasstheit eines Wirbeltiers recherchieren und referieren.",
+      "description": "Die lernende Person kann Körperbau, Lebensweise und Angepasstheit eines Wirbeltiers recherchieren und referieren.",
+      "sourceDocumentKey": "SL-NW-GYM-5-6-2012-BIOLOGIE",
+      "sourceRef": "Saarland Lehrplan Naturwissenschaften Gymnasium Klassenstufen 5/6 2012, Wirbeltiere in ihrem Lebensraum, Klassenstufe 6, S. 32.",
+      "sourceText": "Körperbau, Lebensweise und Angepasstheit eines Wirbeltiers recherchieren und referieren.",
+      "sourceSpan": {
+        "passageId": "sl-biology-seki-nw56-2012-wirt6",
+        "label": "Fische, Amphibien, Reptilien, Vögel: Körperbau, Lebensweise und Angepasstheit eines Wirbeltiers recherchieren und referieren."
+      },
+      "sourceSpanText": "Wirbeltiere in ihrem Lebensraum, Klassenstufe 6, Source-Ziel 3",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-SL",
+        "stage:SekI",
+        "grade:6"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "5a47f591-f2ac-5457-872a-22c89c2dbe93",
+          "ac69483b-6a77-573d-a7c0-add32bb867e2",
+          "7eeb9de9-9a8e-5932-8f60-183367c87d09"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "sl-biology-seki-nw56-2012-wirt6-004-ebd35430",
+      "passageId": "sl-biology-seki-nw56-2012-wirt6",
+      "topicCode": "WIRT6",
+      "topicTitle": "Wirbeltiere in ihrem Lebensraum",
+      "headingTitle": "Fische, Amphibien, Reptilien, Vögel",
+      "title": "Wasserwiderstand und Gaslöslichkeit experimentell untersuchen und Fischatmung erklären.",
+      "description": "Die lernende Person kann Wasserwiderstand und Gaslöslichkeit experimentell untersuchen und Fischatmung erklären.",
+      "sourceDocumentKey": "SL-NW-GYM-5-6-2012-BIOLOGIE",
+      "sourceRef": "Saarland Lehrplan Naturwissenschaften Gymnasium Klassenstufen 5/6 2012, Wirbeltiere in ihrem Lebensraum, Klassenstufe 6, S. 32.",
+      "sourceText": "Wasserwiderstand und Gaslöslichkeit experimentell untersuchen und Fischatmung erklären.",
+      "sourceSpan": {
+        "passageId": "sl-biology-seki-nw56-2012-wirt6",
+        "label": "Fische, Amphibien, Reptilien, Vögel: Wasserwiderstand und Gaslöslichkeit experimentell untersuchen und Fischatmung erklären."
+      },
+      "sourceSpanText": "Wirbeltiere in ihrem Lebensraum, Klassenstufe 6, Source-Ziel 4",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-SL",
+        "stage:SekI",
+        "grade:6"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "26aa47b7-e5cc-5131-8980-0ec3271758b6",
+          "2eaabe90-46bf-555e-876b-d853434a322d",
+          "8a56672b-b662-5bcd-9f43-8ffc4abc4f01",
+          "6e2dae03-9ea9-5466-b93e-13adcfb01245"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "sl-biology-seki-nw56-2012-wirt6-005-de19d3be",
+      "passageId": "sl-biology-seki-nw56-2012-wirt6",
+      "topicCode": "WIRT6",
+      "topicTitle": "Wirbeltiere in ihrem Lebensraum",
+      "headingTitle": "Individual- und Stammesentwicklung",
+      "title": "Fortpflanzungsarten und Individualentwicklung bei Wirbeltieren vergleichen.",
+      "description": "Die lernende Person kann Fortpflanzungsarten und Individualentwicklung bei Wirbeltieren vergleichen.",
+      "sourceDocumentKey": "SL-NW-GYM-5-6-2012-BIOLOGIE",
+      "sourceRef": "Saarland Lehrplan Naturwissenschaften Gymnasium Klassenstufen 5/6 2012, Wirbeltiere in ihrem Lebensraum, Klassenstufe 6, S. 32.",
+      "sourceText": "Fortpflanzungsarten und Individualentwicklung bei Wirbeltieren vergleichen.",
+      "sourceSpan": {
+        "passageId": "sl-biology-seki-nw56-2012-wirt6",
+        "label": "Individual- und Stammesentwicklung: Fortpflanzungsarten und Individualentwicklung bei Wirbeltieren vergleichen."
+      },
+      "sourceSpanText": "Wirbeltiere in ihrem Lebensraum, Klassenstufe 6, Source-Ziel 5",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-SL",
+        "stage:SekI",
+        "grade:6"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "4e12ba43-a58c-5611-8c43-3cc0c8465e33",
+          "66967754-3934-58b3-b79e-d0f867dae070",
+          "ac7f0a5a-dff6-570b-b0fd-10cb0f33be29"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "sl-biology-seki-nw56-2012-wirt6-006-7c38d667",
+      "passageId": "sl-biology-seki-nw56-2012-wirt6",
+      "topicCode": "WIRT6",
+      "topicTitle": "Wirbeltiere in ihrem Lebensraum",
+      "headingTitle": "Individual- und Stammesentwicklung",
+      "title": "Individual- und Stammesentwicklung unterscheiden und die Froschentwicklung als Indiz für Wirbeltierverwandtschaft deuten.",
+      "description": "Die lernende Person kann Individual- und Stammesentwicklung unterscheiden und die Froschentwicklung als Indiz für Wirbeltierverwandtschaft deuten.",
+      "sourceDocumentKey": "SL-NW-GYM-5-6-2012-BIOLOGIE",
+      "sourceRef": "Saarland Lehrplan Naturwissenschaften Gymnasium Klassenstufen 5/6 2012, Wirbeltiere in ihrem Lebensraum, Klassenstufe 6, S. 32.",
+      "sourceText": "Individual- und Stammesentwicklung unterscheiden und die Froschentwicklung als Indiz für Wirbeltierverwandtschaft deuten.",
+      "sourceSpan": {
+        "passageId": "sl-biology-seki-nw56-2012-wirt6",
+        "label": "Individual- und Stammesentwicklung: Individual- und Stammesentwicklung unterscheiden und die Froschentwicklung als Indiz für Wirbeltierverwandtschaft deuten."
+      },
+      "sourceSpanText": "Wirbeltiere in ihrem Lebensraum, Klassenstufe 6, Source-Ziel 6",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-SL",
+        "stage:SekI",
+        "grade:6"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "66967754-3934-58b3-b79e-d0f867dae070"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "sl-biology-seki-nw56-2012-wirt6-007-b5c478bc",
+      "passageId": "sl-biology-seki-nw56-2012-wirt6",
+      "topicCode": "WIRT6",
+      "topicTitle": "Wirbeltiere in ihrem Lebensraum",
+      "headingTitle": "Artenschutz und Tierschutz",
+      "title": "Haltungsbedingungen von Nutztieren unter naturwissenschaftlichen, ethischen und wirtschaftlichen Gesichtspunkten bewerten.",
+      "description": "Die lernende Person kann Haltungsbedingungen von Nutztieren unter naturwissenschaftlichen, ethischen und wirtschaftlichen Gesichtspunkten bewerten.",
+      "sourceDocumentKey": "SL-NW-GYM-5-6-2012-BIOLOGIE",
+      "sourceRef": "Saarland Lehrplan Naturwissenschaften Gymnasium Klassenstufen 5/6 2012, Wirbeltiere in ihrem Lebensraum, Klassenstufe 6, S. 32.",
+      "sourceText": "Haltungsbedingungen von Nutztieren unter naturwissenschaftlichen, ethischen und wirtschaftlichen Gesichtspunkten bewerten.",
+      "sourceSpan": {
+        "passageId": "sl-biology-seki-nw56-2012-wirt6",
+        "label": "Artenschutz und Tierschutz: Haltungsbedingungen von Nutztieren unter naturwissenschaftlichen, ethischen und wirtschaftlichen Gesichtspunkten bewerten."
+      },
+      "sourceSpanText": "Wirbeltiere in ihrem Lebensraum, Klassenstufe 6, Source-Ziel 7",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-SL",
+        "stage:SekI",
+        "grade:6"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "06e91b97-e7cc-5698-a854-8a946a4bb7d0",
+          "7eeb9de9-9a8e-5932-8f60-183367c87d09"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "sl-biology-seki-nw56-2012-wirt6-008-3ce9af5e",
+      "passageId": "sl-biology-seki-nw56-2012-wirt6",
+      "topicCode": "WIRT6",
+      "topicTitle": "Wirbeltiere in ihrem Lebensraum",
+      "headingTitle": "Artenschutz und Tierschutz",
+      "title": "Eingriffe des Menschen in die Natur und erforderliche Artenschutzmaßnahmen beschreiben.",
+      "description": "Die lernende Person kann Eingriffe des Menschen in die Natur und erforderliche Artenschutzmaßnahmen beschreiben.",
+      "sourceDocumentKey": "SL-NW-GYM-5-6-2012-BIOLOGIE",
+      "sourceRef": "Saarland Lehrplan Naturwissenschaften Gymnasium Klassenstufen 5/6 2012, Wirbeltiere in ihrem Lebensraum, Klassenstufe 6, S. 32.",
+      "sourceText": "Eingriffe des Menschen in die Natur und erforderliche Artenschutzmaßnahmen beschreiben.",
+      "sourceSpan": {
+        "passageId": "sl-biology-seki-nw56-2012-wirt6",
+        "label": "Artenschutz und Tierschutz: Eingriffe des Menschen in die Natur und erforderliche Artenschutzmaßnahmen beschreiben."
+      },
+      "sourceSpanText": "Wirbeltiere in ihrem Lebensraum, Klassenstufe 6, Source-Ziel 8",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-SL",
+        "stage:SekI",
+        "grade:6"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "cd1fa548-9b27-54df-89be-6a6ee3629eb9",
+          "5f39afac-897c-5ed3-95b5-89ccf66b2532",
+          "c1aea082-30c0-558f-8d0a-fb810c1dc51b",
+          "ac7f0a5a-dff6-570b-b0fd-10cb0f33be29"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "sl-biology-seki-nw56-2012-sex6-001-0fbcd1a3",
+      "passageId": "sl-biology-seki-nw56-2012-sex6",
+      "topicCode": "SEX6",
+      "topicTitle": "Der Mensch als System: Erwachsen werden I",
+      "headingTitle": "Erwachsen werden",
+      "title": "Körperliche Veränderungen während der Pubertät und primäre und sekundäre Geschlechtsmerkmale beschreiben.",
+      "description": "Die lernende Person kann Körperliche Veränderungen während der Pubertät und primäre und sekundäre Geschlechtsmerkmale beschreiben.",
+      "sourceDocumentKey": "SL-NW-GYM-5-6-2012-BIOLOGIE",
+      "sourceRef": "Saarland Lehrplan Naturwissenschaften Gymnasium Klassenstufen 5/6 2012, Der Mensch als System: Erwachsen werden I, Klassenstufe 6, S. 34.",
+      "sourceText": "Körperliche Veränderungen während der Pubertät und primäre und sekundäre Geschlechtsmerkmale beschreiben.",
+      "sourceSpan": {
+        "passageId": "sl-biology-seki-nw56-2012-sex6",
+        "label": "Erwachsen werden: Körperliche Veränderungen während der Pubertät und primäre und sekundäre Geschlechtsmerkmale beschreiben."
+      },
+      "sourceSpanText": "Der Mensch als System: Erwachsen werden I, Klassenstufe 6, Source-Ziel 1",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-SL",
+        "stage:SekI",
+        "grade:6"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "91f62a7b-3b6a-5918-94ca-3f345f1f6584",
+          "3c0f5267-4837-5c99-aa6d-bfb41ff70980"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "sl-biology-seki-nw56-2012-sex6-002-9c3d837f",
+      "passageId": "sl-biology-seki-nw56-2012-sex6",
+      "topicCode": "SEX6",
+      "topicTitle": "Der Mensch als System: Erwachsen werden I",
+      "headingTitle": "Erwachsen werden",
+      "title": "Weibliche und männliche Geschlechtsorgane, Eizelle, Spermium und den weiblichen Zyklus beschreiben.",
+      "description": "Die lernende Person kann Weibliche und männliche Geschlechtsorgane, Eizelle, Spermium und den weiblichen Zyklus beschreiben.",
+      "sourceDocumentKey": "SL-NW-GYM-5-6-2012-BIOLOGIE",
+      "sourceRef": "Saarland Lehrplan Naturwissenschaften Gymnasium Klassenstufen 5/6 2012, Der Mensch als System: Erwachsen werden I, Klassenstufe 6, S. 34.",
+      "sourceText": "Weibliche und männliche Geschlechtsorgane, Eizelle, Spermium und den weiblichen Zyklus beschreiben.",
+      "sourceSpan": {
+        "passageId": "sl-biology-seki-nw56-2012-sex6",
+        "label": "Erwachsen werden: Weibliche und männliche Geschlechtsorgane, Eizelle, Spermium und den weiblichen Zyklus beschreiben."
+      },
+      "sourceSpanText": "Der Mensch als System: Erwachsen werden I, Klassenstufe 6, Source-Ziel 2",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-SL",
+        "stage:SekI",
+        "grade:6"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "a6f2bcaf-df2d-5144-aa8f-49396b12d31b",
+          "249f4c5d-fd23-57c7-ac62-773d62c33b49",
+          "91f62a7b-3b6a-5918-94ca-3f345f1f6584"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "sl-biology-seki-nw56-2012-sex6-003-6720fbe9",
+      "passageId": "sl-biology-seki-nw56-2012-sex6",
+      "topicCode": "SEX6",
+      "topicTitle": "Der Mensch als System: Erwachsen werden I",
+      "headingTitle": "Erwachsen werden",
+      "title": "Geschlechtsverkehr, Befruchtung sowie den Weg von Eizelle und Spermium beschreiben.",
+      "description": "Die lernende Person kann Geschlechtsverkehr, Befruchtung sowie den Weg von Eizelle und Spermium beschreiben.",
+      "sourceDocumentKey": "SL-NW-GYM-5-6-2012-BIOLOGIE",
+      "sourceRef": "Saarland Lehrplan Naturwissenschaften Gymnasium Klassenstufen 5/6 2012, Der Mensch als System: Erwachsen werden I, Klassenstufe 6, S. 34.",
+      "sourceText": "Geschlechtsverkehr, Befruchtung sowie den Weg von Eizelle und Spermium beschreiben.",
+      "sourceSpan": {
+        "passageId": "sl-biology-seki-nw56-2012-sex6",
+        "label": "Erwachsen werden: Geschlechtsverkehr, Befruchtung sowie den Weg von Eizelle und Spermium beschreiben."
+      },
+      "sourceSpanText": "Der Mensch als System: Erwachsen werden I, Klassenstufe 6, Source-Ziel 3",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-SL",
+        "stage:SekI",
+        "grade:6"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "a6f2bcaf-df2d-5144-aa8f-49396b12d31b"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "sl-biology-seki-nw56-2012-sex6-004-20a8641b",
+      "passageId": "sl-biology-seki-nw56-2012-sex6",
+      "topicCode": "SEX6",
+      "topicTitle": "Der Mensch als System: Erwachsen werden I",
+      "headingTitle": "Erwachsen werden",
+      "title": "Vor- und Nachteile von Pille und Kondom nennen und Folgen ungeschützten Geschlechtsverkehrs beurteilen.",
+      "description": "Die lernende Person kann Vor- und Nachteile von Pille und Kondom nennen und Folgen ungeschützten Geschlechtsverkehrs beurteilen.",
+      "sourceDocumentKey": "SL-NW-GYM-5-6-2012-BIOLOGIE",
+      "sourceRef": "Saarland Lehrplan Naturwissenschaften Gymnasium Klassenstufen 5/6 2012, Der Mensch als System: Erwachsen werden I, Klassenstufe 6, S. 34.",
+      "sourceText": "Vor- und Nachteile von Pille und Kondom nennen und Folgen ungeschützten Geschlechtsverkehrs beurteilen.",
+      "sourceSpan": {
+        "passageId": "sl-biology-seki-nw56-2012-sex6",
+        "label": "Erwachsen werden: Vor- und Nachteile von Pille und Kondom nennen und Folgen ungeschützten Geschlechtsverkehrs beurteilen."
+      },
+      "sourceSpanText": "Der Mensch als System: Erwachsen werden I, Klassenstufe 6, Source-Ziel 4",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-SL",
+        "stage:SekI",
+        "grade:6"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "3ee4b55c-81c3-5826-9d26-1a8c22cbd0b8"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "sl-biology-seki-nw56-2012-sex6-005-11379bdf",
+      "passageId": "sl-biology-seki-nw56-2012-sex6",
+      "topicCode": "SEX6",
+      "topicTitle": "Der Mensch als System: Erwachsen werden I",
+      "headingTitle": "Erwachsen werden",
+      "title": "Sexualität, Partnerschaft, Rollenbilder und sexuelle Orientierungen respektvoll diskutieren.",
+      "description": "Die lernende Person kann Sexualität, Partnerschaft, Rollenbilder und sexuelle Orientierungen respektvoll diskutieren.",
+      "sourceDocumentKey": "SL-NW-GYM-5-6-2012-BIOLOGIE",
+      "sourceRef": "Saarland Lehrplan Naturwissenschaften Gymnasium Klassenstufen 5/6 2012, Der Mensch als System: Erwachsen werden I, Klassenstufe 6, S. 34.",
+      "sourceText": "Sexualität, Partnerschaft, Rollenbilder und sexuelle Orientierungen respektvoll diskutieren.",
+      "sourceSpan": {
+        "passageId": "sl-biology-seki-nw56-2012-sex6",
+        "label": "Erwachsen werden: Sexualität, Partnerschaft, Rollenbilder und sexuelle Orientierungen respektvoll diskutieren."
+      },
+      "sourceSpanText": "Der Mensch als System: Erwachsen werden I, Klassenstufe 6, Source-Ziel 5",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-SL",
+        "stage:SekI",
+        "grade:6"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "4b7fdc2c-9dbe-5439-8d84-295abc240eec",
+          "d6727804-a8d4-5438-9b98-4aea8e7f4f80"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "sl-biology-seki-nw56-2012-sex6-006-b7961c2e",
+      "passageId": "sl-biology-seki-nw56-2012-sex6",
+      "topicCode": "SEX6",
+      "topicTitle": "Der Mensch als System: Erwachsen werden I",
+      "headingTitle": "Erwachsen werden",
+      "title": "Sexuelle Belästigung und Missbrauch als Gewalt und Verletzung der Selbstbestimmung bewerten und Präventionsmaßnahmen diskutieren.",
+      "description": "Die lernende Person kann Sexuelle Belästigung und Missbrauch als Gewalt und Verletzung der Selbstbestimmung bewerten und Präventionsmaßnahmen diskutieren.",
+      "sourceDocumentKey": "SL-NW-GYM-5-6-2012-BIOLOGIE",
+      "sourceRef": "Saarland Lehrplan Naturwissenschaften Gymnasium Klassenstufen 5/6 2012, Der Mensch als System: Erwachsen werden I, Klassenstufe 6, S. 34.",
+      "sourceText": "Sexuelle Belästigung und Missbrauch als Gewalt und Verletzung der Selbstbestimmung bewerten und Präventionsmaßnahmen diskutieren.",
+      "sourceSpan": {
+        "passageId": "sl-biology-seki-nw56-2012-sex6",
+        "label": "Erwachsen werden: Sexuelle Belästigung und Missbrauch als Gewalt und Verletzung der Selbstbestimmung bewerten und Präventionsmaßnahmen diskutieren."
+      },
+      "sourceSpanText": "Der Mensch als System: Erwachsen werden I, Klassenstufe 6, Source-Ziel 6",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-SL",
+        "stage:SekI",
+        "grade:6"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "6add2bde-b647-577d-a899-6fd62497656a"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "sl-biology-seki-nw56-2012-atm6-001-f0527458",
+      "passageId": "sl-biology-seki-nw56-2012-atm6",
+      "topicCode": "ATM6",
+      "topicTitle": "Der Mensch als System: Atmung und Blutkreislauf",
+      "headingTitle": "Atmung",
+      "title": "Bau und Funktion der Atmungsorgane, Gasaustausch und Oberflächenvergrößerung der Lungenbläschen erläutern.",
+      "description": "Die lernende Person kann Bau und Funktion der Atmungsorgane, Gasaustausch und Oberflächenvergrößerung der Lungenbläschen erläutern.",
+      "sourceDocumentKey": "SL-NW-GYM-5-6-2012-BIOLOGIE",
+      "sourceRef": "Saarland Lehrplan Naturwissenschaften Gymnasium Klassenstufen 5/6 2012, Der Mensch als System: Atmung und Blutkreislauf, Klassenstufe 6, S. 36.",
+      "sourceText": "Bau und Funktion der Atmungsorgane, Gasaustausch und Oberflächenvergrößerung der Lungenbläschen erläutern.",
+      "sourceSpan": {
+        "passageId": "sl-biology-seki-nw56-2012-atm6",
+        "label": "Atmung: Bau und Funktion der Atmungsorgane, Gasaustausch und Oberflächenvergrößerung der Lungenbläschen erläutern."
+      },
+      "sourceSpanText": "Der Mensch als System: Atmung und Blutkreislauf, Klassenstufe 6, Source-Ziel 1",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-SL",
+        "stage:SekI",
+        "grade:6"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "d773ac89-37ef-51cd-a6ee-a75a6b10c43b",
+          "848fcbe0-dc25-53eb-a1a8-38313b65cf6d",
+          "6e2dae03-9ea9-5466-b93e-13adcfb01245"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "sl-biology-seki-nw56-2012-atm6-002-8c218b13",
+      "passageId": "sl-biology-seki-nw56-2012-atm6",
+      "topicCode": "ATM6",
+      "topicTitle": "Der Mensch als System: Atmung und Blutkreislauf",
+      "headingTitle": "Atmung",
+      "title": "Äußere Atmung und Zellatmung verknüpfen und Zusammensetzung eingeatmeter und ausgeatmeter Luft vergleichen.",
+      "description": "Die lernende Person kann Äußere Atmung und Zellatmung verknüpfen und Zusammensetzung eingeatmeter und ausgeatmeter Luft vergleichen.",
+      "sourceDocumentKey": "SL-NW-GYM-5-6-2012-BIOLOGIE",
+      "sourceRef": "Saarland Lehrplan Naturwissenschaften Gymnasium Klassenstufen 5/6 2012, Der Mensch als System: Atmung und Blutkreislauf, Klassenstufe 6, S. 36.",
+      "sourceText": "Äußere Atmung und Zellatmung verknüpfen und Zusammensetzung eingeatmeter und ausgeatmeter Luft vergleichen.",
+      "sourceSpan": {
+        "passageId": "sl-biology-seki-nw56-2012-atm6",
+        "label": "Atmung: Äußere Atmung und Zellatmung verknüpfen und Zusammensetzung eingeatmeter und ausgeatmeter Luft vergleichen."
+      },
+      "sourceSpanText": "Der Mensch als System: Atmung und Blutkreislauf, Klassenstufe 6, Source-Ziel 2",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-SL",
+        "stage:SekI",
+        "grade:6"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "d773ac89-37ef-51cd-a6ee-a75a6b10c43b",
+          "8678d0b5-8b74-5b01-8143-91bfea1e4482"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "sl-biology-seki-nw56-2012-atm6-003-334c0aed",
+      "passageId": "sl-biology-seki-nw56-2012-atm6",
+      "topicCode": "ATM6",
+      "topicTitle": "Der Mensch als System: Atmung und Blutkreislauf",
+      "headingTitle": "Atmung",
+      "title": "Kohlenstoffdioxid in ausgeatmeter Luft nachweisen und Brust- und Bauchatmung vergleichen.",
+      "description": "Die lernende Person kann Kohlenstoffdioxid in ausgeatmeter Luft nachweisen und Brust- und Bauchatmung vergleichen.",
+      "sourceDocumentKey": "SL-NW-GYM-5-6-2012-BIOLOGIE",
+      "sourceRef": "Saarland Lehrplan Naturwissenschaften Gymnasium Klassenstufen 5/6 2012, Der Mensch als System: Atmung und Blutkreislauf, Klassenstufe 6, S. 36.",
+      "sourceText": "Kohlenstoffdioxid in ausgeatmeter Luft nachweisen und Brust- und Bauchatmung vergleichen.",
+      "sourceSpan": {
+        "passageId": "sl-biology-seki-nw56-2012-atm6",
+        "label": "Atmung: Kohlenstoffdioxid in ausgeatmeter Luft nachweisen und Brust- und Bauchatmung vergleichen."
+      },
+      "sourceSpanText": "Der Mensch als System: Atmung und Blutkreislauf, Klassenstufe 6, Source-Ziel 3",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-SL",
+        "stage:SekI",
+        "grade:6"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "26aa47b7-e5cc-5131-8980-0ec3271758b6",
+          "d773ac89-37ef-51cd-a6ee-a75a6b10c43b"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "sl-biology-seki-nw56-2012-atm6-004-87936490",
+      "passageId": "sl-biology-seki-nw56-2012-atm6",
+      "topicCode": "ATM6",
+      "topicTitle": "Der Mensch als System: Atmung und Blutkreislauf",
+      "headingTitle": "Atmung",
+      "title": "Atemfrequenz und körperliche Anstrengung experimentell untersuchen.",
+      "description": "Die lernende Person kann Atemfrequenz und körperliche Anstrengung experimentell untersuchen.",
+      "sourceDocumentKey": "SL-NW-GYM-5-6-2012-BIOLOGIE",
+      "sourceRef": "Saarland Lehrplan Naturwissenschaften Gymnasium Klassenstufen 5/6 2012, Der Mensch als System: Atmung und Blutkreislauf, Klassenstufe 6, S. 36.",
+      "sourceText": "Atemfrequenz und körperliche Anstrengung experimentell untersuchen.",
+      "sourceSpan": {
+        "passageId": "sl-biology-seki-nw56-2012-atm6",
+        "label": "Atmung: Atemfrequenz und körperliche Anstrengung experimentell untersuchen."
+      },
+      "sourceSpanText": "Der Mensch als System: Atmung und Blutkreislauf, Klassenstufe 6, Source-Ziel 4",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-SL",
+        "stage:SekI",
+        "grade:6"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "26aa47b7-e5cc-5131-8980-0ec3271758b6",
+          "0f1549f6-8341-53b0-8161-5eaeb2b37809",
+          "d773ac89-37ef-51cd-a6ee-a75a6b10c43b"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "sl-biology-seki-nw56-2012-atm6-005-d0ffcdfd",
+      "passageId": "sl-biology-seki-nw56-2012-atm6",
+      "topicCode": "ATM6",
+      "topicTitle": "Der Mensch als System: Atmung und Blutkreislauf",
+      "headingTitle": "Atmung",
+      "title": "Gesundheitsschädigungen durch Rauchen beschreiben und Folgen aktiven und passiven Rauchens bewerten.",
+      "description": "Die lernende Person kann Gesundheitsschädigungen durch Rauchen beschreiben und Folgen aktiven und passiven Rauchens bewerten.",
+      "sourceDocumentKey": "SL-NW-GYM-5-6-2012-BIOLOGIE",
+      "sourceRef": "Saarland Lehrplan Naturwissenschaften Gymnasium Klassenstufen 5/6 2012, Der Mensch als System: Atmung und Blutkreislauf, Klassenstufe 6, S. 36.",
+      "sourceText": "Gesundheitsschädigungen durch Rauchen beschreiben und Folgen aktiven und passiven Rauchens bewerten.",
+      "sourceSpan": {
+        "passageId": "sl-biology-seki-nw56-2012-atm6",
+        "label": "Atmung: Gesundheitsschädigungen durch Rauchen beschreiben und Folgen aktiven und passiven Rauchens bewerten."
+      },
+      "sourceSpanText": "Der Mensch als System: Atmung und Blutkreislauf, Klassenstufe 6, Source-Ziel 5",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-SL",
+        "stage:SekI",
+        "grade:6"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "668c01c7-0887-5a54-84ff-648facd8e962",
+          "6de6ad3b-1099-5f51-848d-96de4119ed01"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "sl-biology-seki-nw56-2012-atm6-006-7de9377e",
+      "passageId": "sl-biology-seki-nw56-2012-atm6",
+      "topicCode": "ATM6",
+      "topicTitle": "Der Mensch als System: Atmung und Blutkreislauf",
+      "headingTitle": "Blutkreislauf",
+      "title": "Bestandteile des Blutes und deren Funktionen beschreiben.",
+      "description": "Die lernende Person kann Bestandteile des Blutes und deren Funktionen beschreiben.",
+      "sourceDocumentKey": "SL-NW-GYM-5-6-2012-BIOLOGIE",
+      "sourceRef": "Saarland Lehrplan Naturwissenschaften Gymnasium Klassenstufen 5/6 2012, Der Mensch als System: Atmung und Blutkreislauf, Klassenstufe 6, S. 36.",
+      "sourceText": "Bestandteile des Blutes und deren Funktionen beschreiben.",
+      "sourceSpan": {
+        "passageId": "sl-biology-seki-nw56-2012-atm6",
+        "label": "Blutkreislauf: Bestandteile des Blutes und deren Funktionen beschreiben."
+      },
+      "sourceSpanText": "Der Mensch als System: Atmung und Blutkreislauf, Klassenstufe 6, Source-Ziel 6",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-SL",
+        "stage:SekI",
+        "grade:6"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "480146f6-4749-52e3-a5e5-d08629e0c38f",
+          "3e913f00-c3d7-5bbe-a73e-36bdc0d4a6e8"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "sl-biology-seki-nw56-2012-atm6-007-aacb82e0",
+      "passageId": "sl-biology-seki-nw56-2012-atm6",
+      "topicCode": "ATM6",
+      "topicTitle": "Der Mensch als System: Atmung und Blutkreislauf",
+      "headingTitle": "Blutkreislauf",
+      "title": "Lungen- und Körperkreislauf, Bau und Arbeitsweise des Herzens und Modelle der Herzarbeit erläutern.",
+      "description": "Die lernende Person kann Lungen- und Körperkreislauf, Bau und Arbeitsweise des Herzens und Modelle der Herzarbeit erläutern.",
+      "sourceDocumentKey": "SL-NW-GYM-5-6-2012-BIOLOGIE",
+      "sourceRef": "Saarland Lehrplan Naturwissenschaften Gymnasium Klassenstufen 5/6 2012, Der Mensch als System: Atmung und Blutkreislauf, Klassenstufe 6, S. 36.",
+      "sourceText": "Lungen- und Körperkreislauf, Bau und Arbeitsweise des Herzens und Modelle der Herzarbeit erläutern.",
+      "sourceSpan": {
+        "passageId": "sl-biology-seki-nw56-2012-atm6",
+        "label": "Blutkreislauf: Lungen- und Körperkreislauf, Bau und Arbeitsweise des Herzens und Modelle der Herzarbeit erläutern."
+      },
+      "sourceSpanText": "Der Mensch als System: Atmung und Blutkreislauf, Klassenstufe 6, Source-Ziel 7",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-SL",
+        "stage:SekI",
+        "grade:6"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "d773ac89-37ef-51cd-a6ee-a75a6b10c43b",
+          "848fcbe0-dc25-53eb-a1a8-38313b65cf6d",
+          "498f082d-742c-5f21-9d09-16feeb4276a6",
+          "713e062d-2bb9-5fbc-8040-129387c7d3ca"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "sl-biology-seki-nw56-2012-atm6-008-620d1e0e",
+      "passageId": "sl-biology-seki-nw56-2012-atm6",
+      "topicCode": "ATM6",
+      "topicTitle": "Der Mensch als System: Atmung und Blutkreislauf",
+      "headingTitle": "Blutkreislauf",
+      "title": "Herzschlagfrequenz, Blutdruck und körperliche Anstrengung untersuchen und erklären.",
+      "description": "Die lernende Person kann Herzschlagfrequenz, Blutdruck und körperliche Anstrengung untersuchen und erklären.",
+      "sourceDocumentKey": "SL-NW-GYM-5-6-2012-BIOLOGIE",
+      "sourceRef": "Saarland Lehrplan Naturwissenschaften Gymnasium Klassenstufen 5/6 2012, Der Mensch als System: Atmung und Blutkreislauf, Klassenstufe 6, S. 36.",
+      "sourceText": "Herzschlagfrequenz, Blutdruck und körperliche Anstrengung untersuchen und erklären.",
+      "sourceSpan": {
+        "passageId": "sl-biology-seki-nw56-2012-atm6",
+        "label": "Blutkreislauf: Herzschlagfrequenz, Blutdruck und körperliche Anstrengung untersuchen und erklären."
+      },
+      "sourceSpanText": "Der Mensch als System: Atmung und Blutkreislauf, Klassenstufe 6, Source-Ziel 8",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-SL",
+        "stage:SekI",
+        "grade:6"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "498f082d-742c-5f21-9d09-16feeb4276a6",
+          "26aa47b7-e5cc-5131-8980-0ec3271758b6",
+          "0f1549f6-8341-53b0-8161-5eaeb2b37809"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "sl-biology-seki-nw56-2012-atm6-009-c5d02039",
+      "passageId": "sl-biology-seki-nw56-2012-atm6",
+      "topicCode": "ATM6",
+      "topicTitle": "Der Mensch als System: Atmung und Blutkreislauf",
+      "headingTitle": "Blutkreislauf",
+      "title": "Herz-Kreislauf-Erkrankungen und Maßnahmen zur Gesunderhaltung erläutern und bewerten.",
+      "description": "Die lernende Person kann Herz-Kreislauf-Erkrankungen und Maßnahmen zur Gesunderhaltung erläutern und bewerten.",
+      "sourceDocumentKey": "SL-NW-GYM-5-6-2012-BIOLOGIE",
+      "sourceRef": "Saarland Lehrplan Naturwissenschaften Gymnasium Klassenstufen 5/6 2012, Der Mensch als System: Atmung und Blutkreislauf, Klassenstufe 6, S. 36.",
+      "sourceText": "Herz-Kreislauf-Erkrankungen und Maßnahmen zur Gesunderhaltung erläutern und bewerten.",
+      "sourceSpan": {
+        "passageId": "sl-biology-seki-nw56-2012-atm6",
+        "label": "Blutkreislauf: Herz-Kreislauf-Erkrankungen und Maßnahmen zur Gesunderhaltung erläutern und bewerten."
+      },
+      "sourceSpanText": "Der Mensch als System: Atmung und Blutkreislauf, Klassenstufe 6, Source-Ziel 9",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-SL",
+        "stage:SekI",
+        "grade:6"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "668c01c7-0887-5a54-84ff-648facd8e962",
+          "6de6ad3b-1099-5f51-848d-96de4119ed01"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "sl-biology-seki-nw56-2012-atm6-010-96e66d6b",
+      "passageId": "sl-biology-seki-nw56-2012-atm6",
+      "topicCode": "ATM6",
+      "topicTitle": "Der Mensch als System: Atmung und Blutkreislauf",
+      "headingTitle": "Der Mensch als System",
+      "title": "Bedeutung von Atmungs-, Kreislauf- und Verdauungssystem für die Zellatmung erklären und Systemebenen zuordnen.",
+      "description": "Die lernende Person kann Bedeutung von Atmungs-, Kreislauf- und Verdauungssystem für die Zellatmung erklären und Systemebenen zuordnen.",
+      "sourceDocumentKey": "SL-NW-GYM-5-6-2012-BIOLOGIE",
+      "sourceRef": "Saarland Lehrplan Naturwissenschaften Gymnasium Klassenstufen 5/6 2012, Der Mensch als System: Atmung und Blutkreislauf, Klassenstufe 6, S. 36.",
+      "sourceText": "Bedeutung von Atmungs-, Kreislauf- und Verdauungssystem für die Zellatmung erklären und Systemebenen zuordnen.",
+      "sourceSpan": {
+        "passageId": "sl-biology-seki-nw56-2012-atm6",
+        "label": "Der Mensch als System: Bedeutung von Atmungs-, Kreislauf- und Verdauungssystem für die Zellatmung erklären und Systemebenen zuordnen."
+      },
+      "sourceSpanText": "Der Mensch als System: Atmung und Blutkreislauf, Klassenstufe 6, Source-Ziel 10",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-SL",
+        "stage:SekI",
+        "grade:6"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "2c60c8ad-04d3-5395-8a27-400646eb1612",
+          "8678d0b5-8b74-5b01-8143-91bfea1e4482"
+        ],
+        "matchType": "partial"
+      }
+    }
+  ]
+}
