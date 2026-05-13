@@ -25,6 +25,17 @@ interface ChampionEntry {
   registeredAt?: string
 }
 
+type MaturityLevel = 'M0' | 'M1' | 'M2' | 'M3' | 'M4' | 'M5'
+
+interface CurriculumSubjectQuality {
+  subject: string
+  maturity: MaturityLevel
+  goals: number
+  atomicGoals: number
+  warnings: number
+  failures: number
+}
+
 interface TopicSummary {
   id: string
   title: string
@@ -42,6 +53,12 @@ interface CurriculumEntry {
   region?: string
   totalAtomicGoals: number
   totalMastered: number
+  qualityMaturity?: MaturityLevel | null
+  qualityGoals?: number
+  qualityAtomicGoals?: number
+  qualityWarnings?: number
+  qualityFailures?: number
+  subjectQuality?: CurriculumSubjectQuality[]
   topLevelTopics?: string[]
   topLevelTopicsEn?: string[]
   champions: ChampionEntry[]
@@ -66,6 +83,76 @@ interface DeregisterCurriculumGroup {
 type ValidationStatus = 'idle' | 'checking' | 'valid' | 'invalid'
 type ChampionFilter = 'with' | 'without' | 'all'
 type CategoryFilter = 'all' | 'school' | 'uni' | 'other'
+
+const CANONICAL_GYMNASIUM_ROOT_ID = 'a0e13c56-c25f-4742-9272-3a1a603ee52e'
+
+const maturityOrder: MaturityLevel[] = ['M0', 'M1', 'M2', 'M3', 'M4', 'M5']
+
+const maturityClass: Record<MaturityLevel, string> = {
+  M0: 'border-slate-200 bg-slate-100 text-slate-700 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200',
+  M1: 'border-sky-200 bg-sky-50 text-sky-700 dark:border-sky-900/60 dark:bg-sky-950/30 dark:text-sky-300',
+  M2: 'border-cyan-200 bg-cyan-50 text-cyan-700 dark:border-cyan-900/60 dark:bg-cyan-950/30 dark:text-cyan-300',
+  M3: 'border-emerald-200 bg-emerald-50 text-emerald-700 dark:border-emerald-900/60 dark:bg-emerald-950/30 dark:text-emerald-300',
+  M4: 'border-violet-200 bg-violet-50 text-violet-700 dark:border-violet-900/60 dark:bg-violet-950/30 dark:text-violet-300',
+  M5: 'border-fuchsia-200 bg-fuchsia-50 text-fuchsia-700 dark:border-fuchsia-900/60 dark:bg-fuchsia-950/30 dark:text-fuchsia-300',
+}
+
+const maturityCopy = {
+  de: {
+    label: 'Reifegrad',
+    subjectStatusTitle: 'Qualitätsreife pro Fach',
+    goals: 'Ziele',
+    atomicGoals: 'atomar',
+    warnings: 'Warnungen',
+    failures: 'Fehler',
+    legendTitle: 'Was bedeuten M0-M5?',
+    legend: {
+      M0: 'Noch kein belastbarer QA-Stand.',
+      M1: 'Quellen und Bearbeitungspipeline sind sichtbar.',
+      M2: 'Source-Ziele sind extrahiert und rückverfolgbar.',
+      M3: 'Source-Ziele sind fachlich durch SkillPilot-Ziele abgedeckt.',
+      M4: 'Bundesland-Sichten und QA-Scopes sind geprüft.',
+      M5: 'CI-fähiger Qualitätsstand ohne offene Fehler.',
+    },
+  },
+  en: {
+    label: 'Maturity',
+    subjectStatusTitle: 'Quality maturity by subject',
+    goals: 'goals',
+    atomicGoals: 'atomic',
+    warnings: 'warnings',
+    failures: 'failures',
+    legendTitle: 'What do M0-M5 mean?',
+    legend: {
+      M0: 'No reliable QA baseline yet.',
+      M1: 'Sources and processing pipeline are visible.',
+      M2: 'Source goals are extracted and traceable.',
+      M3: 'Source goals are covered by SkillPilot goals.',
+      M4: 'Jurisdiction views and QA scopes are validated.',
+      M5: 'CI-ready quality level without open failures.',
+    },
+  },
+} as const
+
+const normalizeSubjectLabel = (value?: string | null): string =>
+  (value ?? '').trim().toLocaleLowerCase('de-DE')
+
+const isMaturityLevel = (value: unknown): value is MaturityLevel =>
+  maturityOrder.includes(value as MaturityLevel)
+
+const getQualityTooltip = (
+  quality: CurriculumSubjectQuality,
+  copy: typeof maturityCopy.de | typeof maturityCopy.en,
+): string => {
+  const details = [
+    `${copy.label}: ${quality.maturity}`,
+    `${copy.goals}: ${quality.goals}`,
+    `${copy.atomicGoals}: ${quality.atomicGoals}`,
+    `${copy.warnings}: ${quality.warnings}`,
+    `${copy.failures}: ${quality.failures}`,
+  ]
+  return `${details.join(' · ')} · ${copy.legend[quality.maturity]}`
+}
 
 export const CurriculaView: React.FC = () => {
   const [data, setData] = useState<CurriculaData | null>(null)
@@ -94,6 +181,7 @@ export const CurriculaView: React.FC = () => {
   const localizedLanguage = language === 'en' ? 'en' : 'de'
   const championCopy = getCurriculaChampionCopy(localizedLanguage)
   const curriculaViewCopy = getCurriculaViewCopy(localizedLanguage)
+  const qualityCopy = maturityCopy[localizedLanguage]
   const getCurriculumTitle = useCallback((curriculum: CurriculumEntry) => {
     return language === 'en'
       ? (curriculum.titleEn || curriculum.title)
@@ -122,6 +210,29 @@ export const CurriculaView: React.FC = () => {
     if (!champion.totalTopicGoals || champion.totalTopicGoals <= 0) return false
     return champion.masteredCount >= champion.totalTopicGoals
   }, [])
+  const getSubjectQuality = useCallback((curriculum: CurriculumEntry, subject?: string | null) => {
+    const normalizedSubject = normalizeSubjectLabel(subject)
+    if (!normalizedSubject) return null
+    return (curriculum.subjectQuality ?? []).find(
+      (quality) => normalizeSubjectLabel(quality.subject) === normalizedSubject,
+    ) ?? null
+  }, [])
+  const getCurriculumQuality = useCallback((curriculum: CurriculumEntry): CurriculumSubjectQuality | null => {
+    if (!isMaturityLevel(curriculum.qualityMaturity)) {
+      return null
+    }
+    return {
+      subject: curriculum.subject || getCurriculumTitle(curriculum),
+      maturity: curriculum.qualityMaturity,
+      goals: curriculum.qualityGoals ?? 0,
+      atomicGoals: curriculum.qualityAtomicGoals ?? 0,
+      warnings: curriculum.qualityWarnings ?? 0,
+      failures: curriculum.qualityFailures ?? 0,
+    }
+  }, [getCurriculumTitle])
+  const isCanonicalGymnasiumOverview = useCallback((curriculum: CurriculumEntry) => (
+    curriculum.curriculumId === CANONICAL_GYMNASIUM_ROOT_ID
+  ), [])
   const deregisterGroups = useMemo<DeregisterCurriculumGroup[]>(() => {
     const groups = new Map<string, DeregisterCurriculumGroup>()
 
@@ -906,11 +1017,21 @@ export const CurriculaView: React.FC = () => {
                         !champion.topicTitle && isChampionCertified(champion)
                     )
                     const curriculumTitle = getCurriculumTitle(curriculum)
+                    const curriculumQuality = getCurriculumQuality(curriculum)
+                    const showCurriculumQuality = curriculumQuality && !isCanonicalGymnasiumOverview(curriculum)
                     return (
-                      <div className="text-lg font-semibold text-text-primary flex items-center gap-2">
+                      <div className="text-lg font-semibold text-text-primary flex flex-wrap items-center gap-2">
                         <span>{curriculumTitle}</span>
                         {hasCurriculumCertificate && (
                           <BadgeCheck className="h-5 w-5 text-emerald-600 dark:text-emerald-400" />
+                        )}
+                        {showCurriculumQuality && (
+                          <span
+                            className={`inline-flex items-center rounded-full border px-2 py-0.5 text-xs font-semibold ${maturityClass[curriculumQuality.maturity]}`}
+                            title={getQualityTooltip(curriculumQuality, qualityCopy)}
+                          >
+                            {curriculumQuality.maturity}
+                          </span>
                         )}
                       </div>
                     )
@@ -939,6 +1060,45 @@ export const CurriculaView: React.FC = () => {
                     </div>
                   </div>
 
+                  {isCanonicalGymnasiumOverview(curriculum) && (curriculum.subjectQuality?.length ?? 0) > 0 && (
+                    <div className="mt-4 rounded-xl border border-border-color bg-white/60 p-3 dark:bg-slate-900/30">
+                      <div className="text-xs uppercase tracking-wider text-text-secondary">
+                        {qualityCopy.subjectStatusTitle}
+                      </div>
+                      <div className="mt-3 grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
+                        {curriculum.subjectQuality?.map((quality) => (
+                          <div
+                            key={quality.subject}
+                            className="flex items-center justify-between gap-2 rounded-lg border border-border-color bg-white/70 px-3 py-2 text-xs dark:bg-slate-900/40"
+                            title={getQualityTooltip(quality, qualityCopy)}
+                          >
+                            <span className="min-w-0 truncate font-medium text-text-primary">
+                              {quality.subject}
+                            </span>
+                            <span className={`shrink-0 rounded-full border px-2 py-0.5 font-semibold ${maturityClass[quality.maturity]}`}>
+                              {quality.maturity}
+                            </span>
+                          </div>
+                        ))}
+                      </div>
+                      <div className="mt-3 border-t border-border-color pt-3">
+                        <div className="text-xs uppercase tracking-wider text-text-secondary">
+                          {qualityCopy.legendTitle}
+                        </div>
+                        <div className="mt-2 grid gap-2 text-xs text-text-secondary sm:grid-cols-2">
+                          {maturityOrder.map((level) => (
+                            <div key={level} className="flex items-start gap-2">
+                              <span className={`shrink-0 rounded-full border px-2 py-0.5 font-semibold ${maturityClass[level]}`}>
+                                {level}
+                              </span>
+                              <span>{qualityCopy.legend[level]}</span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
                   {/* Topics Preview */}
                   <div className="mt-4 border-t border-border-color pt-3">
                     <div className="text-xs uppercase tracking-wider text-text-secondary mb-2">
@@ -957,6 +1117,10 @@ export const CurriculaView: React.FC = () => {
                             (champion) =>
                               getChampionTopicTitle(champion) === topic && isChampionCertified(champion),
                           )
+                          const quality = getSubjectQuality(curriculum, topic)
+                            ?? (isCanonicalGymnasiumOverview(curriculum)
+                              ? curriculum.subjectQuality?.[idx] ?? null
+                              : null)
                           const pillClass = certified
                             ? 'bg-emerald-50 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300 ring-emerald-700/10 dark:ring-emerald-300/20 font-semibold'
                             : 'bg-sky-50 dark:bg-sky-900/30 text-sky-700 dark:text-sky-300 ring-sky-700/10 dark:ring-sky-300/20'
@@ -964,8 +1128,14 @@ export const CurriculaView: React.FC = () => {
                             <span
                               key={idx}
                               className={`inline-flex items-center gap-1.5 rounded-md px-2 py-1 text-xs ${pillClass} ring-1 ring-inset`}
+                              title={quality ? getQualityTooltip(quality, qualityCopy) : undefined}
                             >
                               {topic}
+                              {quality && (
+                                <span className={`rounded-full border px-1.5 py-0 text-[10px] font-semibold ${maturityClass[quality.maturity]}`}>
+                                  {quality.maturity}
+                                </span>
+                              )}
                               {certified && (
                                 <BadgeCheck className="h-4 w-4 text-emerald-600 dark:text-emerald-400" />
                               )}
@@ -991,7 +1161,12 @@ export const CurriculaView: React.FC = () => {
                       </div>
                     ) : (
                       <div className="mt-3 space-y-3">
-                        {curriculum.champions.map((champion, index) => (
+                        {curriculum.champions.map((champion, index) => {
+                          const championTopicTitle = getChampionTopicTitle(champion)
+                          const championQuality = championTopicTitle
+                            ? getSubjectQuality(curriculum, championTopicTitle) ?? getSubjectQuality(curriculum, champion.topicTitle)
+                            : getCurriculumQuality(curriculum)
+                          return (
                           <div
                             key={`${curriculum.curriculumId}-${champion.githubId}-${index}`}
                             className="flex flex-col gap-3 rounded-xl border border-border-color bg-white/70 dark:bg-slate-900/40 p-3"
@@ -1010,14 +1185,20 @@ export const CurriculaView: React.FC = () => {
                                   <Trophy className="h-4 w-4 text-amber-500" />
                                 )}
                               </div>
-                              {getChampionTopicTitle(champion) && (
+                              {championTopicTitle && (
                                 <span
                                   className={`inline-flex items-center gap-1.5 rounded-md px-2 py-1 text-xs font-medium ring-1 ring-inset ${isChampionCertified(champion)
                                     ? 'bg-emerald-50 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300 ring-emerald-700/10 dark:ring-emerald-300/20'
                                     : 'bg-sky-50 dark:bg-sky-900/30 text-sky-700 dark:text-sky-300 ring-sky-700/10 dark:ring-sky-300/20'
                                     }`}
+                                  title={championQuality ? getQualityTooltip(championQuality, qualityCopy) : undefined}
                                 >
-                                  {getChampionTopicTitle(champion)}
+                                  {championTopicTitle}
+                                  {championQuality && (
+                                    <span className={`rounded-full border px-1.5 py-0 text-[10px] font-semibold ${maturityClass[championQuality.maturity]}`}>
+                                      {championQuality.maturity}
+                                    </span>
+                                  )}
                                   {isChampionCertified(champion) && (
                                     <BadgeCheck className="h-4 w-4 text-emerald-600 dark:text-emerald-400" />
                                   )}
@@ -1037,6 +1218,19 @@ export const CurriculaView: React.FC = () => {
                                   {champion.totalTopicGoals ? ` / ${champion.totalTopicGoals}` : ''}
                                 </span>
                               </div>
+                              {championQuality && (
+                                <div className="flex flex-col">
+                                  <span
+                                    className="uppercase tracking-wider"
+                                    title={getQualityTooltip(championQuality, qualityCopy)}
+                                  >
+                                    {qualityCopy.label}
+                                  </span>
+                                  <span className={`mt-0.5 inline-flex w-fit rounded-full border px-2 py-0.5 text-xs font-semibold ${maturityClass[championQuality.maturity]}`}>
+                                    {championQuality.maturity}
+                                  </span>
+                                </div>
+                              )}
                               <div className="flex flex-col">
                                 <span className="uppercase tracking-wider" title={championCopy.issuesTooltip}>
                                   {t.curriculaPage.table.issues}
@@ -1055,7 +1249,8 @@ export const CurriculaView: React.FC = () => {
                               </div>
                             </div>
                           </div>
-                        ))}
+                          )
+                        })}
                       </div>
                     )}
                   </div>

@@ -1,6 +1,6 @@
 # Curriculum Quality Status
 
-Generated: 2026-05-13T01:11:48.800Z
+Generated: 2026-05-13T07:20:06.625Z
 Rules version: curriculum-quality-v1
 
 ## Summary
@@ -39,7 +39,7 @@ Rules version: curriculum-quality-v1
 | Russisch (Gymnasium, DE) | M0 | 8 | 7 | 0/1 | 0/16 | 0 | 1 | 1 |
 | Spanisch (Gymnasium, DE) | M0 | 83 | 59 | 2/2 | 2/16 | 0 | 2 | 0 |
 | Tschechisch (Gymnasium, DE) | M0 | 5 | 4 | 0/1 | 0/16 | 0 | 1 | 1 |
-| Wirtschaftswissenschaften (Gymnasium, DE) | M0 | 225 | 193 | 0/2 | 0/16 | 0 | 0 | 2 |
+| Wirtschaftswissenschaften (Gymnasium, DE) | M0 | 247 | 214 | 2/2 | 1/16 | 0 | 2 | 2 |
 
 ## Mapping Pipeline
 
@@ -177,8 +177,8 @@ Rules version: curriculum-quality-v1
 | Spanisch (Gymnasium, DE) | Spanisch (Gymnasium) | DE-BY | 1/1 original source(s) | 3/3 | - | 1 | 6 | 1 | 5 | 17% |  |
 | Spanisch (Gymnasium, DE) | Spanisch Oberstufe (Hessen, KC 2024) | DE-HE | 1/1 original source(s) | 3/3 | - | 24 | 44 | 44 | 0 | 100% |  |
 | Tschechisch (Gymnasium, DE) | Tschechisch (Gymnasium) | DE-BY | No extraction | 0/3 | MAPPING-1 | 0 | 0 | 0 | 0 | 0% |  |
-| Wirtschaftswissenschaften (Gymnasium, DE) | Wirtschaft und Recht (Gymnasium) | DE-BY | No extraction | 0/3 | MAPPING-1 | 0 | 0 | 0 | 0 | 0% |  |
-| Wirtschaftswissenschaften (Gymnasium, DE) | Wirtschaftswissenschaften Oberstufe (Hessen, KC 2024) | DE-HE | No extraction | 0/3 | MAPPING-1 | 0 | 0 | 0 | 0 | 0% |  |
+| Wirtschaftswissenschaften (Gymnasium, DE) | Wirtschaft und Recht (Bayern, LehrplanPLUS Source-Extraction) | DE-BY | 1/1 original source(s) | 2/3 | MAPPING-3 | 35 | 184 | 30 | 8 | 79% |  |
+| Wirtschaftswissenschaften (Gymnasium, DE) | Wirtschaftswissenschaften Oberstufe (Hessen, KC 2024) | DE-HE | 2/2 original source(s) | 3/3 | - | 20 | 173 | 173 | 0 | 100% |  |
 
 ## Bundesland Coverage
 
@@ -204,7 +204,7 @@ Rules version: curriculum-quality-v1
 | Russisch (Gymnasium, DE) | 0/16 | 6 | 7 | 1 | 0 | 8 | 8 | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 6 (100%) |
 | Spanisch (Gymnasium, DE) | 2/16 | 44 | 59 | 2 | 50 | 50 | 50 | 0 | 50 | 0 | 0 | 0 | 0 | 0 | 44 (100%) |
 | Tschechisch (Gymnasium, DE) | 0/16 | 3 | 4 | 1 | 0 | 5 | 5 | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 3 (100%) |
-| Wirtschaftswissenschaften (Gymnasium, DE) | 0/16 | 173 | 193 | 2 | 0 | 452 | 276 | 0 | 0 | 0 | 4 | 140 | 0 | 2 | 173 (100%) |
+| Wirtschaftswissenschaften (Gymnasium, DE) | 1/16 | 194 | 214 | 2 | 357 | 357 | 211 | 0 | 357 | 0 | 4 | 146 | 0 | 1 | 194 (100%) |
 
 ## Rule Catalog
 

@@ -13,6 +13,12 @@ public record CurriculumOverview(
                 String region,
                 long totalAtomicGoals,
                 long totalMastered,
+                String qualityMaturity,
+                long qualityGoals,
+                long qualityAtomicGoals,
+                int qualityWarnings,
+                int qualityFailures,
+                List<CurriculumQualityOverview> subjectQuality,
                 List<String> topLevelTopics,
                 List<String> topLevelTopicsEn,
                 List<CurriculumChampionProfile> champions) {
