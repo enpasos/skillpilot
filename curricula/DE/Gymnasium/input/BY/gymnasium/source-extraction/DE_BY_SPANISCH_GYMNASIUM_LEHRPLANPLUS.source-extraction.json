@@ -1,0 +1,305 @@
+{
+  "schemaVersion": 1,
+  "extractionId": "DE_BY_SPANISCH_GYMNASIUM_LEHRPLANPLUS",
+  "sourceLandscapeId": "8dba4715-f75e-5339-9e99-02236e4b80dd",
+  "title": "Spanisch (Gymnasium)",
+  "jurisdiction": "DE-BY",
+  "subject": "Spanisch",
+  "stage": "SekI+SekII",
+  "sourceDocument": {
+    "title": "LehrplanPLUS Bayern Gymnasium Spanisch",
+    "path": "curricula/DE/Gymnasium/input/BY/gymnasium/Spanisch.json",
+    "url": "https://www.lehrplanplus.bayern.de/schulart/gymnasium/fach/spanisch"
+  },
+  "sourceDocuments": [
+    {
+      "title": "LehrplanPLUS Bayern Gymnasium Spanisch",
+      "path": "curricula/DE/Gymnasium/input/BY/gymnasium/Spanisch.json",
+      "url": "https://www.lehrplanplus.bayern.de/schulart/gymnasium/fach/spanisch"
+    }
+  ],
+  "method": "Source snapshot converted into reviewed mapping pipeline artifact; existing source-goal registry and seed mappings remain the evidence base.",
+  "expectedTopicCodes": [
+    "BY-ES"
+  ],
+  "pipelineStatus": {
+    "version": 1,
+    "currentStep": "",
+    "steps": [
+      {
+        "id": "MAPPING-1",
+        "label": "Original-Lehrplanpassagen extrahiert",
+        "status": "complete",
+        "dependsOn": [],
+        "checks": [
+          {
+            "id": "source-document-present",
+            "label": "Strukturierte Spanisch-Quelle liegt lokal vor",
+            "passed": true,
+            "details": "curricula/DE/Gymnasium/input/BY/gymnasium/Spanisch.json"
+          },
+          {
+            "id": "topic-passages-extracted",
+            "label": "Spanisch-Quellpassagen sind aus dem vorhandenen Snapshot extrahiert",
+            "passed": true,
+            "details": "Erfasst: 1/1 Passagen."
+          }
+        ]
+      },
+      {
+        "id": "MAPPING-2",
+        "label": "Source-Ziele aus Lehrplanpassagen erstellt",
+        "status": "complete",
+        "dependsOn": [
+          "MAPPING-1"
+        ],
+        "checks": [
+          {
+            "id": "source-goals-created",
+            "label": "Aus den Spanisch-Passagen wurden Source-Ziele erzeugt",
+            "passed": true,
+            "details": "6 Source-Ziele."
+          },
+          {
+            "id": "passage-to-source-goal-coverage",
+            "label": "Jede Passage hat mindestens ein Source-Ziel oder dient als Strukturpassage",
+            "passed": true,
+            "details": "Passage-Zuordnung wurde aus der bestehenden Source-Hierarchie abgeleitet."
+          },
+          {
+            "id": "source-goal-ids-unique",
+            "label": "Source-Ziel-IDs sind eindeutig",
+            "passed": true,
+            "details": "Doppelte IDs: -."
+          },
+          {
+            "id": "source-goal-trace-complete",
+            "label": "Jedes Source-Ziel hat Passage, Source-Span und Quellenreferenz",
+            "passed": true,
+            "details": "Unvollstaendige Source-Ziele: -"
+          }
+        ]
+      },
+      {
+        "id": "MAPPING-3",
+        "label": "Source-Ziele auf SkillPilot-Ziele gemappt",
+        "status": "complete",
+        "dependsOn": [
+          "MAPPING-1",
+          "MAPPING-2"
+        ],
+        "checks": [
+          {
+            "id": "m3-review-file-present",
+            "label": "M3-Review-Datei ist vorhanden",
+            "passed": true,
+            "details": "curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_spanish_source_extraction_to_canonical_spanish.review.json"
+          },
+          {
+            "id": "m3-review-decisions-reference-source-goals",
+            "label": "M3-Review-Entscheidungen referenzieren gueltige Source-Ziele",
+            "passed": true,
+            "details": "Reviewed Source-Ziele: 6/6."
+          },
+          {
+            "id": "m3-review-targets-exist",
+            "label": "M3-Review-Ziele referenzieren vorhandene Canonical-Ziele",
+            "passed": true,
+            "details": "Unbekannte Canonical-Ziele: -"
+          },
+          {
+            "id": "m3-all-source-goals-reviewed",
+            "label": "Alle Source-Ziele haben eine fachliche M3-Entscheidung",
+            "passed": true,
+            "details": "6/6 Source-Ziele reviewed; offen: 0."
+          },
+          {
+            "id": "m3-all-source-goals-covered-by-canonical",
+            "label": "Alle Source-Ziele sind inhaltlich durch SkillPilot-Ziele abgedeckt",
+            "passed": true,
+            "details": "Abgedeckt: 6/6; verbleibend: 0 explizite Canonical-Gaps, 0 unreviewed."
+          }
+        ]
+      }
+    ]
+  },
+  "passages": [
+    {
+      "id": "by-es:9c473dcf-ca94-5733-a7ac-b82072e3357b",
+      "topicCode": "BY-ES",
+      "title": "Spanisch (Gymnasium)",
+      "text": "1) Jahrgangsstufe 8\n2) Jahrgangsstufe 9\n3) Jahrgangsstufe 10\n4) Jahrgangsstufe 11\n5) Jahrgangsstufe 12\n6) Jahrgangsstufe 13",
+      "sourcePath": "curricula/DE/Gymnasium/input/BY/gymnasium/Spanisch.json",
+      "sourceUrl": "https://www.lehrplanplus.bayern.de/schulart/gymnasium/fach/spanisch",
+      "rawText": "Spanisch (Gymnasium)",
+      "sourceGoalIds": [
+        "f8d78a75-66ef-5d45-923f-bb9e6fcdcdd5",
+        "f374e910-3fd9-5a04-99c6-4010ab592518",
+        "0ad9079d-0c0e-5fbb-9815-4ca034fcd9fa",
+        "8af1354d-41d8-5247-bd13-ed687280e2df",
+        "f8033ff3-68b4-5c19-8081-06d9553c7b55",
+        "a2693a9e-37df-5e57-b9c0-f375f232ade3"
+      ]
+    }
+  ],
+  "sourceGoals": [
+    {
+      "id": "f8d78a75-66ef-5d45-923f-bb9e6fcdcdd5",
+      "passageId": "by-es:9c473dcf-ca94-5733-a7ac-b82072e3357b",
+      "topicCode": "J8",
+      "bulletIndex": 1,
+      "aspectIndex": 1,
+      "title": "Jahrgangsstufe 8",
+      "description": "Jahrgangsstufe 8",
+      "sourceText": "Jahrgangsstufe 8",
+      "sourceSpan": "J8.1",
+      "parentBulletText": "Jahrgangsstufe 8",
+      "sourceRef": "LehrplanPLUS Bayern Gymnasium Spanisch, J8",
+      "courseLevel": "unspecified",
+      "granularity": "sourceSnapshotGoal",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-BY",
+        "stage:SekI",
+        "courseLevel:unspecified",
+        "topic:J8"
+      ],
+      "rawSourceText": "Jahrgangsstufe 8",
+      "rawSourceSpan": "J8.1",
+      "rawParentBulletText": "Jahrgangsstufe 8"
+    },
+    {
+      "id": "f374e910-3fd9-5a04-99c6-4010ab592518",
+      "passageId": "by-es:9c473dcf-ca94-5733-a7ac-b82072e3357b",
+      "topicCode": "J9",
+      "bulletIndex": 2,
+      "aspectIndex": 1,
+      "title": "Jahrgangsstufe 9",
+      "description": "Jahrgangsstufe 9",
+      "sourceText": "Jahrgangsstufe 9",
+      "sourceSpan": "J9.2",
+      "parentBulletText": "Jahrgangsstufe 9",
+      "sourceRef": "LehrplanPLUS Bayern Gymnasium Spanisch, J9",
+      "courseLevel": "unspecified",
+      "granularity": "sourceSnapshotGoal",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-BY",
+        "stage:SekI",
+        "courseLevel:unspecified",
+        "topic:J9"
+      ],
+      "rawSourceText": "Jahrgangsstufe 9",
+      "rawSourceSpan": "J9.2",
+      "rawParentBulletText": "Jahrgangsstufe 9"
+    },
+    {
+      "id": "0ad9079d-0c0e-5fbb-9815-4ca034fcd9fa",
+      "passageId": "by-es:9c473dcf-ca94-5733-a7ac-b82072e3357b",
+      "topicCode": "J10",
+      "bulletIndex": 3,
+      "aspectIndex": 1,
+      "title": "Jahrgangsstufe 10",
+      "description": "Jahrgangsstufe 10",
+      "sourceText": "Jahrgangsstufe 10",
+      "sourceSpan": "J10.3",
+      "parentBulletText": "Jahrgangsstufe 10",
+      "sourceRef": "LehrplanPLUS Bayern Gymnasium Spanisch, J10",
+      "courseLevel": "unspecified",
+      "granularity": "sourceSnapshotGoal",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-BY",
+        "stage:SekI",
+        "courseLevel:unspecified",
+        "topic:J10"
+      ],
+      "rawSourceText": "Jahrgangsstufe 10",
+      "rawSourceSpan": "J10.3",
+      "rawParentBulletText": "Jahrgangsstufe 10"
+    },
+    {
+      "id": "8af1354d-41d8-5247-bd13-ed687280e2df",
+      "passageId": "by-es:9c473dcf-ca94-5733-a7ac-b82072e3357b",
+      "topicCode": "J11",
+      "bulletIndex": 4,
+      "aspectIndex": 1,
+      "title": "Jahrgangsstufe 11",
+      "description": "Jahrgangsstufe 11",
+      "sourceText": "Jahrgangsstufe 11",
+      "sourceSpan": "J11.4",
+      "parentBulletText": "Jahrgangsstufe 11",
+      "sourceRef": "LehrplanPLUS Bayern Gymnasium Spanisch, J11",
+      "courseLevel": "unspecified",
+      "granularity": "sourceSnapshotGoal",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-BY",
+        "stage:SekI",
+        "courseLevel:unspecified",
+        "topic:J11"
+      ],
+      "rawSourceText": "Jahrgangsstufe 11",
+      "rawSourceSpan": "J11.4",
+      "rawParentBulletText": "Jahrgangsstufe 11"
+    },
+    {
+      "id": "f8033ff3-68b4-5c19-8081-06d9553c7b55",
+      "passageId": "by-es:9c473dcf-ca94-5733-a7ac-b82072e3357b",
+      "topicCode": "J12",
+      "bulletIndex": 5,
+      "aspectIndex": 1,
+      "title": "Jahrgangsstufe 12",
+      "description": "Jahrgangsstufe 12",
+      "sourceText": "Jahrgangsstufe 12",
+      "sourceSpan": "J12.5",
+      "parentBulletText": "Jahrgangsstufe 12",
+      "sourceRef": "LehrplanPLUS Bayern Gymnasium Spanisch, J12",
+      "courseLevel": "unspecified",
+      "granularity": "sourceSnapshotGoal",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-BY",
+        "stage:SekI",
+        "courseLevel:unspecified",
+        "topic:J12"
+      ],
+      "rawSourceText": "Jahrgangsstufe 12",
+      "rawSourceSpan": "J12.5",
+      "rawParentBulletText": "Jahrgangsstufe 12"
+    },
+    {
+      "id": "a2693a9e-37df-5e57-b9c0-f375f232ade3",
+      "passageId": "by-es:9c473dcf-ca94-5733-a7ac-b82072e3357b",
+      "topicCode": "J13",
+      "bulletIndex": 6,
+      "aspectIndex": 1,
+      "title": "Jahrgangsstufe 13",
+      "description": "Jahrgangsstufe 13",
+      "sourceText": "Jahrgangsstufe 13",
+      "sourceSpan": "J13.6",
+      "parentBulletText": "Jahrgangsstufe 13",
+      "sourceRef": "LehrplanPLUS Bayern Gymnasium Spanisch, J13",
+      "courseLevel": "unspecified",
+      "granularity": "sourceSnapshotGoal",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-BY",
+        "stage:SekI",
+        "courseLevel:unspecified",
+        "topic:J13"
+      ],
+      "rawSourceText": "Jahrgangsstufe 13",
+      "rawSourceSpan": "J13.6",
+      "rawParentBulletText": "Jahrgangsstufe 13"
+    }
+  ],
+  "qualityReview": {
+    "sourceGoalCountPeerBaseline": {
+      "status": "accepted",
+      "expectedSourceGoals": 6,
+      "actualSourceGoals": 6,
+      "rationale": "Converted from the existing committed source landscape snapshot; non-curricular motivation/practice/assessment nodes are excluded from source coverage."
+    }
+  }
+}
