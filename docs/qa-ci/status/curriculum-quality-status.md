@@ -1,6 +1,6 @@
 # Curriculum Quality Status
 
-Generated: 2026-05-13T01:06:06.006Z
+Generated: 2026-05-13T01:08:53.769Z
 Rules version: curriculum-quality-v1
 
 ## Summary
@@ -37,7 +37,7 @@ Rules version: curriculum-quality-v1
 | Politik und Wirtschaft (Gymnasium, DE) | M0 | 208 | 175 | 0/2 | 0/16 | 0 | 1 | 1 |
 | Polnisch (Gymnasium, DE) | M0 | 5 | 4 | 0/1 | 0/16 | 0 | 1 | 1 |
 | Russisch (Gymnasium, DE) | M0 | 8 | 7 | 0/1 | 0/16 | 0 | 1 | 1 |
-| Spanisch (Gymnasium, DE) | M0 | 83 | 59 | 0/2 | 0/16 | 0 | 1 | 1 |
+| Spanisch (Gymnasium, DE) | M0 | 83 | 59 | 2/2 | 2/16 | 0 | 2 | 0 |
 | Tschechisch (Gymnasium, DE) | M0 | 5 | 4 | 0/1 | 0/16 | 0 | 1 | 1 |
 | Wirtschaftswissenschaften (Gymnasium, DE) | M0 | 225 | 193 | 0/2 | 0/16 | 0 | 0 | 2 |
 
@@ -174,8 +174,8 @@ Rules version: curriculum-quality-v1
 | Politik und Wirtschaft (Gymnasium, DE) | Politik und Wirtschaft Oberstufe (Hessen, KC 2024) | DE-HE | No extraction | 0/3 | MAPPING-1 | 0 | 0 | 0 | 0 | 0% |  |
 | Polnisch (Gymnasium, DE) | Polnisch (Gymnasium) | DE-BY | No extraction | 0/3 | MAPPING-1 | 0 | 0 | 0 | 0 | 0% |  |
 | Russisch (Gymnasium, DE) | Russisch (Gymnasium) | DE-BY | No extraction | 0/3 | MAPPING-1 | 0 | 0 | 0 | 0 | 0% |  |
-| Spanisch (Gymnasium, DE) | Spanisch (Gymnasium) | DE-BY | No extraction | 0/3 | MAPPING-1 | 0 | 0 | 0 | 0 | 0% |  |
-| Spanisch (Gymnasium, DE) | Spanisch Oberstufe (Hessen, KC 2024) | DE-HE | No extraction | 0/3 | MAPPING-1 | 0 | 0 | 0 | 0 | 0% |  |
+| Spanisch (Gymnasium, DE) | Spanisch (Gymnasium) | DE-BY | 1/1 original source(s) | 3/3 | - | 1 | 6 | 1 | 5 | 17% |  |
+| Spanisch (Gymnasium, DE) | Spanisch Oberstufe (Hessen, KC 2024) | DE-HE | 1/1 original source(s) | 3/3 | - | 24 | 44 | 44 | 0 | 100% |  |
 | Tschechisch (Gymnasium, DE) | Tschechisch (Gymnasium) | DE-BY | No extraction | 0/3 | MAPPING-1 | 0 | 0 | 0 | 0 | 0% |  |
 | Wirtschaftswissenschaften (Gymnasium, DE) | Wirtschaft und Recht (Gymnasium) | DE-BY | No extraction | 0/3 | MAPPING-1 | 0 | 0 | 0 | 0 | 0% |  |
 | Wirtschaftswissenschaften (Gymnasium, DE) | Wirtschaftswissenschaften Oberstufe (Hessen, KC 2024) | DE-HE | No extraction | 0/3 | MAPPING-1 | 0 | 0 | 0 | 0 | 0% |  |
@@ -202,7 +202,7 @@ Rules version: curriculum-quality-v1
 | Politik und Wirtschaft (Gymnasium, DE) | 0/16 | 155 | 175 | 2 | 0 | 607 | 607 | 0 | 0 | 0 | 0 | 0 | 0 | 2 | 155 (100%) |
 | Polnisch (Gymnasium, DE) | 0/16 | 3 | 4 | 1 | 0 | 5 | 5 | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 3 (100%) |
 | Russisch (Gymnasium, DE) | 0/16 | 6 | 7 | 1 | 0 | 8 | 8 | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 6 (100%) |
-| Spanisch (Gymnasium, DE) | 0/16 | 44 | 59 | 2 | 0 | 91 | 91 | 0 | 0 | 0 | 0 | 0 | 0 | 2 | 44 (100%) |
+| Spanisch (Gymnasium, DE) | 2/16 | 44 | 59 | 2 | 50 | 50 | 50 | 0 | 50 | 0 | 0 | 0 | 0 | 0 | 44 (100%) |
 | Tschechisch (Gymnasium, DE) | 0/16 | 3 | 4 | 1 | 0 | 5 | 5 | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 3 (100%) |
 | Wirtschaftswissenschaften (Gymnasium, DE) | 0/16 | 173 | 193 | 2 | 0 | 452 | 276 | 0 | 0 | 0 | 4 | 140 | 0 | 2 | 173 (100%) |
 
