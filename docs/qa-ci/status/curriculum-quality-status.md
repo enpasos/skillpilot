@@ -1,6 +1,6 @@
 # Curriculum Quality Status
 
-Generated: 2026-05-13T00:57:16.254Z
+Generated: 2026-05-13T01:00:02.428Z
 Rules version: curriculum-quality-v1
 
 ## Summary
@@ -25,7 +25,7 @@ Rules version: curriculum-quality-v1
 | Deutsch (Gymnasium, DE) | M0 | 181 | 144 | 2/2 | 2/16 | 0 | 2 | 0 |
 | Englisch (Gymnasium, DE) | M0 | 130 | 104 | 2/2 | 2/16 | 0 | 2 | 0 |
 | Französisch (Gymnasium, DE) | M0 | 331 | 275 | 3/3 | 2/16 | 0 | 2 | 0 |
-| Geschichte (Gymnasium, DE) | M0 | 210 | 171 | 0/2 | 0/16 | 0 | 1 | 1 |
+| Geschichte (Gymnasium, DE) | M0 | 210 | 171 | 2/2 | 2/16 | 0 | 2 | 0 |
 | Griechisch (Gymnasium, DE) | M0 | 198 | 185 | 0/2 | 0/16 | 0 | 1 | 1 |
 | Gymnasium (DE) | M0 | 1 | 0 | - | 0/16 | 0 | 2 | 0 |
 | Informatik (Gymnasium, DE) | M0 | 221 | 180 | 2/2 | 2/16 | 0 | 2 | 0 |
@@ -103,8 +103,8 @@ Rules version: curriculum-quality-v1
 | Französisch (Gymnasium, DE) | Französisch (Gymnasium) | DE-BY | 1/1 original source(s) | 3/3 | - | 1 | 9 | 7 | 2 | 78% |  |
 | Französisch (Gymnasium, DE) | Französisch Oberstufe (Hessen, KC 2024) | DE-HE | 1/1 original source(s) | 3/3 | - | 8 | 152 | 152 | 0 | 100% |  |
 | Französisch (Gymnasium, DE) | Französisch Sekundarstufe I (Hessen, G9) | DE-HE | 1/1 original source(s) | 3/3 | - | 43 | 108 | 108 | 0 | 100% |  |
-| Geschichte (Gymnasium, DE) | Geschichte (Gymnasium) | DE-BY | No extraction | 0/3 | MAPPING-1 | 0 | 0 | 0 | 0 | 0% |  |
-| Geschichte (Gymnasium, DE) | Geschichte Oberstufe (Hessen, KC 2024) | DE-HE | No extraction | 0/3 | MAPPING-1 | 0 | 0 | 0 | 0 | 0% |  |
+| Geschichte (Gymnasium, DE) | Geschichte (Gymnasium) | DE-BY | 1/1 original source(s) | 3/3 | - | 36 | 190 | 0 | 190 | 0% |  |
+| Geschichte (Gymnasium, DE) | Geschichte Oberstufe (Hessen, KC 2024) | DE-HE | 1/1 original source(s) | 3/3 | - | 13 | 182 | 182 | 0 | 100% |  |
 | Griechisch (Gymnasium, DE) | Griechisch (Gymnasium) | DE-BY | No extraction | 0/3 | MAPPING-1 | 0 | 0 | 0 | 0 | 0% |  |
 | Griechisch (Gymnasium, DE) | Griechisch Oberstufe (Hessen, KC 2024) | DE-HE | No extraction | 0/3 | MAPPING-1 | 0 | 0 | 0 | 0 | 0% |  |
 | Informatik (Gymnasium, DE) | Informatik (Gymnasium) | DE-BY | 1/1 original source(s) | 3/3 | - | 49 | 224 | 65 | 159 | 29% |  |
@@ -190,7 +190,7 @@ Rules version: curriculum-quality-v1
 | Deutsch (Gymnasium, DE) | 2/16 | 127 | 144 | 2 | 550 | 550 | 550 | 0 | 550 | 0 | 0 | 0 | 0 | 0 | 127 (100%) |
 | Englisch (Gymnasium, DE) | 2/16 | 89 | 104 | 2 | 103 | 103 | 103 | 0 | 103 | 0 | 0 | 0 | 0 | 0 | 89 (100%) |
 | Französisch (Gymnasium, DE) | 2/16 | 260 | 275 | 2 | 269 | 269 | 269 | 0 | 269 | 0 | 0 | 0 | 0 | 0 | 260 (100%) |
-| Geschichte (Gymnasium, DE) | 0/16 | 156 | 171 | 2 | 0 | 437 | 437 | 0 | 0 | 0 | 0 | 0 | 0 | 2 | 156 (100%) |
+| Geschichte (Gymnasium, DE) | 2/16 | 156 | 171 | 2 | 372 | 372 | 372 | 0 | 372 | 0 | 0 | 0 | 0 | 0 | 156 (100%) |
 | Griechisch (Gymnasium, DE) | 0/16 | 170 | 185 | 2 | 0 | 769 | 769 | 0 | 0 | 0 | 0 | 0 | 0 | 2 | 170 (100%) |
 | Gymnasium (DE) | 0/16 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0%) |
 | Informatik (Gymnasium, DE) | 2/16 | 161 | 180 | 2 | 379 | 379 | 379 | 0 | 379 | 0 | 0 | 0 | 0 | 0 | 161 (100%) |
