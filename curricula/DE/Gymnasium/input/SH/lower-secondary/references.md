@@ -68,3 +68,27 @@ Archived locally at:
 Generated source extraction:
 
 - `curricula/DE/Gymnasium/input/SH/lower-secondary/source-extraction/DE_SH_BIOLOGIE_SEKI_FACHANFORDERUNGEN_2023.source-extraction.json`
+
+## Wirtschaft/Politik
+
+Starting point:
+https://fachportal.lernnetz.de/sh/faecher/wirtschaft-politik/fachanforderungen.html
+
+- `Fachanforderungen_Wirtschaft_Politik_Sekundarstufe_2016_barrierearm.pdf`:
+  https://fachportal.lernnetz.de/files/Fachanforderungen%20und%20Leitf%C3%A4den/Sek.%20I_II/Fachanforderungen_barrierefrei/Fachanforderungen_WiPo_SEK_barrierearm.pdf
+
+Scope:
+
+- Schleswig-Holstein
+- Gymnasium
+- Wirtschaft/Politik
+- lower-secondary extraction target: economic content areas from the official combined Sek-I/Sek-II Fachanforderungen
+- note: only economics-relevant content from the integrated Wirtschaft/Politik subject is routed to canonical Wirtschaft
+
+Archived locally at:
+
+- `curricula/DE/Gymnasium/input/SH/Fachanforderungen_Wirtschaft_Politik_Sekundarstufe_2016_barrierearm.pdf`
+
+Generated source extraction:
+
+- `curricula/DE/Gymnasium/input/SH/lower-secondary/source-extraction/DE_SH_WIRTSCHAFT_POLITIK_SEKI_FACHANFORDERUNGEN_2016.source-extraction.json`

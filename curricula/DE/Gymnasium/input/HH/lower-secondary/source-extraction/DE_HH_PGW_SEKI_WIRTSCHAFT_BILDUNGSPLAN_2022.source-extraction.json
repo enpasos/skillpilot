@@ -1,0 +1,884 @@
+{
+  "schemaVersion": 1,
+  "extractionId": "DE-HH-PGW-SEKI-WIRTSCHAFT",
+  "sourceLandscapeId": "09d4648c-089b-5358-838c-059c111b797d",
+  "targetLandscapeId": "605bdaf6-32d5-56fd-8d92-5a80c2fd2901",
+  "jurisdiction": "DE-HH",
+  "subject": "Politik/Gesellschaft/Wirtschaft",
+  "stage": "SekI",
+  "title": "PGW Sekundarstufe I - wirtschaftliche Inhaltsfelder (Hamburg, Bildungsplan Source-Extraction)",
+  "sourceDocument": {
+    "key": "HH-PGW-SEKI-2022",
+    "title": "Bildungsplan Gymnasium Sekundarstufe I Politik/Gesellschaft/Wirtschaft Hamburg",
+    "path": "curricula/DE/Gymnasium/input/HH/pgw-gym-seki-2022-data.pdf",
+    "url": "https://www.hamburg.de/resource/blob/123480/ec95895152120f9d437cdb3c9f987879/pgw-gym-seki-data.pdf",
+    "official": true
+  },
+  "method": {
+    "passageExtraction": "pdftotext -layout; wirtschaftlich relevante PGW-Inhaltsfelder und Anforderungen aus dem amtlichen Hamburger Bildungsplan selektiert",
+    "sourceGoalExtraction": "one normalized source goal per economic content item or requirement; compact official list split where multiple assessable economic goals are bundled",
+    "scopeNote": "Das integrierte Fach PGW wird nur mit wirtschaftlichen Inhaltsfeldern in den kanonischen Wirtschaftskanon geroutet."
+  },
+  "qualityReview": {
+    "sourceGoalCountPeerBaseline": {
+      "accepted": true,
+      "details": "HH Sek I ist im amtlichen Bildungsplan kompakt als Inhaltsfeld formuliert. Die Source-Ziele wurden aus Inhaltsliste und wirtschaftsbezogenen Mindestanforderungen granularisiert; die niedrigere Zahl ist fachlich plausibel dokumentiert."
+    }
+  },
+  "expectedTopicCodes": [
+    "SI-PGW-WIRTSCHAFT-KONSUM",
+    "SI-PGW-WIRTSCHAFT-UNTERNEHMEN-ARBEIT",
+    "SI-PGW-WIRTSCHAFT-POLITIK",
+    "SI-PGW-WIRTSCHAFT-GLOBAL"
+  ],
+  "pipelineStatus": {
+    "currentStep": "MAPPING-3",
+    "steps": [
+      {
+        "id": "MAPPING-1",
+        "label": "Original-Lehrplanpassagen extrahiert",
+        "status": "complete",
+        "dependsOn": [],
+        "checks": [
+          {
+            "id": "source-document-present",
+            "label": "Amtliche HH-PGW-Quelle liegt lokal vor",
+            "passed": true,
+            "details": "curricula/DE/Gymnasium/input/HH/pgw-gym-seki-2022-data.pdf"
+          }
+        ]
+      },
+      {
+        "id": "MAPPING-2",
+        "label": "Source-Ziele aus Lehrplanpassagen erstellt",
+        "status": "complete",
+        "dependsOn": [
+          "MAPPING-1"
+        ],
+        "checks": [
+          {
+            "id": "source-goals-created",
+            "label": "Aus den ausgewählten HH-Passagen wurden Source-Ziele erzeugt",
+            "passed": true,
+            "details": "30 Source-Ziele."
+          }
+        ]
+      },
+      {
+        "id": "MAPPING-3",
+        "label": "Source-Ziele auf SkillPilot-Ziele gemappt",
+        "status": "incomplete",
+        "dependsOn": [
+          "MAPPING-1",
+          "MAPPING-2"
+        ],
+        "checks": [
+          {
+            "id": "m3-review-file-present",
+            "label": "M3-Review-Datei ist vorhanden",
+            "passed": true,
+            "details": "curricula/DE/Gymnasium/mapping/DE-HH/lower-secondary/hh_pgw_lower_secondary_economics_source_extraction_to_canonical_wirtschaft.review.json"
+          }
+        ]
+      }
+    ]
+  },
+  "passages": [
+    {
+      "id": "de-hh-pgw-seki-wirtschaft:si-pgw-wirtschaft-konsum",
+      "topicCode": "SI-PGW-WIRTSCHAFT-KONSUM",
+      "title": "Marktteilnehmer als Konsumenten",
+      "text": "(1) Privathaushalt und Märkte als wirtschaftliche Handlungsräume erklären.\n(2) Einkommen und Verbrauch privater Haushalte unterscheiden.\n(3) Sparen und Kredit als Finanzentscheidungen privater Haushalte erläutern.\n(4) Vorsorge und Verschuldung als Folgen langfristiger Finanzentscheidungen beurteilen.\n(5) Den Wirtschaftskreislauf zur Analyse privaten Konsums nutzen.\n(6) Werbung und Medien als Einflussfaktoren auf Konsumentscheidungen analysieren.\n(7) Eigenes Konsumverhalten ökonomisch begründen.\n(8) Konsumentscheidungen nach rationalen ökonomischen Kriterien treffen.\n(9) Kriterien für den Kauf von Konsumgütern entwickeln.\n(10) Konsumentscheidungen unter Nachhaltigkeitsgesichtspunkten hinterfragen.",
+      "page": 28,
+      "sourcePath": "curricula/DE/Gymnasium/input/HH/pgw-gym-seki-2022-data.pdf",
+      "rawText": "Privathaushalt und Märkte als wirtschaftliche Handlungsräume erklären.\nEinkommen und Verbrauch privater Haushalte unterscheiden.\nSparen und Kredit als Finanzentscheidungen privater Haushalte erläutern.\nVorsorge und Verschuldung als Folgen langfristiger Finanzentscheidungen beurteilen.\nDen Wirtschaftskreislauf zur Analyse privaten Konsums nutzen.\nWerbung und Medien als Einflussfaktoren auf Konsumentscheidungen analysieren.\nEigenes Konsumverhalten ökonomisch begründen.\nKonsumentscheidungen nach rationalen ökonomischen Kriterien treffen.\nKriterien für den Kauf von Konsumgütern entwickeln.\nKonsumentscheidungen unter Nachhaltigkeitsgesichtspunkten hinterfragen.",
+      "sourceGoalIds": [
+        "de-hh-pgw-seki-wirtschaft-si-pgw-wirtschaft-konsum-g01-97b3f8fe",
+        "de-hh-pgw-seki-wirtschaft-si-pgw-wirtschaft-konsum-g02-c1341b7f",
+        "de-hh-pgw-seki-wirtschaft-si-pgw-wirtschaft-konsum-g03-f361f274",
+        "de-hh-pgw-seki-wirtschaft-si-pgw-wirtschaft-konsum-g04-593182f9",
+        "de-hh-pgw-seki-wirtschaft-si-pgw-wirtschaft-konsum-g05-3b4435ca",
+        "de-hh-pgw-seki-wirtschaft-si-pgw-wirtschaft-konsum-g06-dde3d150",
+        "de-hh-pgw-seki-wirtschaft-si-pgw-wirtschaft-konsum-g07-a05778a5",
+        "de-hh-pgw-seki-wirtschaft-si-pgw-wirtschaft-konsum-g08-81b06906",
+        "de-hh-pgw-seki-wirtschaft-si-pgw-wirtschaft-konsum-g09-3320c452",
+        "de-hh-pgw-seki-wirtschaft-si-pgw-wirtschaft-konsum-g10-eafe435c"
+      ]
+    },
+    {
+      "id": "de-hh-pgw-seki-wirtschaft:si-pgw-wirtschaft-unternehmen-arbeit",
+      "topicCode": "SI-PGW-WIRTSCHAFT-UNTERNEHMEN-ARBEIT",
+      "title": "Unternehmen und Arbeitnehmer in der Marktgesellschaft",
+      "text": "(1) Unternehmen und Betriebe als Akteure der Marktgesellschaft beschreiben.\n(2) Produktionsfaktoren in Unternehmen erläutern.\n(3) Entrepreneurship als unternehmerische Handlungsform darstellen.\n(4) Arbeit und Berufswelt im Umbruch analysieren.\n(5) Interessenvertretung in der Arbeitswelt erklären.\n(6) Konfliktregelung in der Arbeitswelt beurteilen.\n(7) Einen Berufspraktikumsplatz kriterienorientiert auswählen.\n(8) Berufsorientierung mit Anforderungen in Berufsausbildung und Studium verbinden.\n(9) Eigenverantwortung für Bildungs- und Berufswegeplanung übernehmen.",
+      "page": 28,
+      "sourcePath": "curricula/DE/Gymnasium/input/HH/pgw-gym-seki-2022-data.pdf",
+      "rawText": "Unternehmen und Betriebe als Akteure der Marktgesellschaft beschreiben.\nProduktionsfaktoren in Unternehmen erläutern.\nEntrepreneurship als unternehmerische Handlungsform darstellen.\nArbeit und Berufswelt im Umbruch analysieren.\nInteressenvertretung in der Arbeitswelt erklären.\nKonfliktregelung in der Arbeitswelt beurteilen.\nEinen Berufspraktikumsplatz kriterienorientiert auswählen.\nBerufsorientierung mit Anforderungen in Berufsausbildung und Studium verbinden.\nEigenverantwortung für Bildungs- und Berufswegeplanung übernehmen.",
+      "sourceGoalIds": [
+        "de-hh-pgw-seki-wirtschaft-si-pgw-wirtschaft-unternehmen-arbeit-g01-a00a9bc6",
+        "de-hh-pgw-seki-wirtschaft-si-pgw-wirtschaft-unternehmen-arbeit-g02-28b83f32",
+        "de-hh-pgw-seki-wirtschaft-si-pgw-wirtschaft-unternehmen-arbeit-g03-7d2155e4",
+        "de-hh-pgw-seki-wirtschaft-si-pgw-wirtschaft-unternehmen-arbeit-g04-c2ba46f3",
+        "de-hh-pgw-seki-wirtschaft-si-pgw-wirtschaft-unternehmen-arbeit-g05-229841fb",
+        "de-hh-pgw-seki-wirtschaft-si-pgw-wirtschaft-unternehmen-arbeit-g06-c2ab8482",
+        "de-hh-pgw-seki-wirtschaft-si-pgw-wirtschaft-unternehmen-arbeit-g07-076387fe",
+        "de-hh-pgw-seki-wirtschaft-si-pgw-wirtschaft-unternehmen-arbeit-g08-7032bb06",
+        "de-hh-pgw-seki-wirtschaft-si-pgw-wirtschaft-unternehmen-arbeit-g09-0195cb09"
+      ]
+    },
+    {
+      "id": "de-hh-pgw-seki-wirtschaft:si-pgw-wirtschaft-politik",
+      "topicCode": "SI-PGW-WIRTSCHAFT-POLITIK",
+      "title": "Wirtschaftsgesellschaft und Wirtschaftspolitik",
+      "text": "(1) Indikatoren der Wirtschaftsentwicklung auswerten.\n(2) Wettbewerb im europäischen Markt analysieren.\n(3) Wirtschaftspolitische Maßnahmen am Beispiel Wettbewerbspolitik beurteilen.\n(4) Grundprinzipien der Marktwirtschaft erläutern.\n(5) Marktmechanismen in einfachen wirtschaftlichen Problemen anwenden.\n(6) Einen einfachen Wirtschaftskreislauf darstellen.\n(7) Kategorien wie Kosten, Nutzen, Preis und Markt zur Analyse wirtschaftlicher Entscheidungen nutzen.\n(8) Wirtschaftsordnungen als grundlegende gesellschaftliche Ordnungsvorstellungen vergleichen.",
+      "page": 28,
+      "sourcePath": "curricula/DE/Gymnasium/input/HH/pgw-gym-seki-2022-data.pdf",
+      "rawText": "Indikatoren der Wirtschaftsentwicklung auswerten.\nWettbewerb im europäischen Markt analysieren.\nWirtschaftspolitische Maßnahmen am Beispiel Wettbewerbspolitik beurteilen.\nGrundprinzipien der Marktwirtschaft erläutern.\nMarktmechanismen in einfachen wirtschaftlichen Problemen anwenden.\nEinen einfachen Wirtschaftskreislauf darstellen.\nKategorien wie Kosten, Nutzen, Preis und Markt zur Analyse wirtschaftlicher Entscheidungen nutzen.\nWirtschaftsordnungen als grundlegende gesellschaftliche Ordnungsvorstellungen vergleichen.",
+      "sourceGoalIds": [
+        "de-hh-pgw-seki-wirtschaft-si-pgw-wirtschaft-politik-g01-880b988b",
+        "de-hh-pgw-seki-wirtschaft-si-pgw-wirtschaft-politik-g02-87b59738",
+        "de-hh-pgw-seki-wirtschaft-si-pgw-wirtschaft-politik-g03-35f07c22",
+        "de-hh-pgw-seki-wirtschaft-si-pgw-wirtschaft-politik-g04-cd8bc4fd",
+        "de-hh-pgw-seki-wirtschaft-si-pgw-wirtschaft-politik-g05-48cb217c",
+        "de-hh-pgw-seki-wirtschaft-si-pgw-wirtschaft-politik-g06-1b18f004",
+        "de-hh-pgw-seki-wirtschaft-si-pgw-wirtschaft-politik-g07-80c0e50f",
+        "de-hh-pgw-seki-wirtschaft-si-pgw-wirtschaft-politik-g08-2a241e6c"
+      ]
+    },
+    {
+      "id": "de-hh-pgw-seki-wirtschaft:si-pgw-wirtschaft-global",
+      "topicCode": "SI-PGW-WIRTSCHAFT-GLOBAL",
+      "title": "Globale Probleme mit wirtschaftlicher Dimension",
+      "text": "(1) Klimawandel als globales Problem mit wirtschaftlicher Dimension analysieren.\n(2) Internationale Lösungswege für globale Umweltprobleme wirtschaftlich beurteilen.\n(3) Globale Probleme anhand wirtschaftlicher Interessen und Zielkonflikte erschließen.",
+      "page": 28,
+      "sourcePath": "curricula/DE/Gymnasium/input/HH/pgw-gym-seki-2022-data.pdf",
+      "rawText": "Klimawandel als globales Problem mit wirtschaftlicher Dimension analysieren.\nInternationale Lösungswege für globale Umweltprobleme wirtschaftlich beurteilen.\nGlobale Probleme anhand wirtschaftlicher Interessen und Zielkonflikte erschließen.",
+      "sourceGoalIds": [
+        "de-hh-pgw-seki-wirtschaft-si-pgw-wirtschaft-global-g01-2b927180",
+        "de-hh-pgw-seki-wirtschaft-si-pgw-wirtschaft-global-g02-fd465f6d",
+        "de-hh-pgw-seki-wirtschaft-si-pgw-wirtschaft-global-g03-0ad9a0b4"
+      ]
+    }
+  ],
+  "sourceGoals": [
+    {
+      "id": "de-hh-pgw-seki-wirtschaft-si-pgw-wirtschaft-konsum-g01-97b3f8fe",
+      "passageId": "de-hh-pgw-seki-wirtschaft:si-pgw-wirtschaft-konsum",
+      "topicCode": "SI-PGW-WIRTSCHAFT-KONSUM",
+      "bulletIndex": 1,
+      "aspectIndex": 1,
+      "title": "HH SI-PGW-WIRTSCHAFT-KONSUM (1): Privathaushalt und Märkte als wirtschaftliche Handlungsräume erklären.",
+      "description": "Source-Ziel aus Marktteilnehmer als Konsumenten: Privathaushalt und Märkte als wirtschaftliche Handlungsräume erklären.",
+      "sourceText": "Privathaushalt und Märkte als wirtschaftliche Handlungsräume erklären.",
+      "sourceSpan": "SI-PGW-WIRTSCHAFT-KONSUM (1)",
+      "parentBulletText": "Privathaushalt und Märkte als wirtschaftliche Handlungsräume erklären.",
+      "sourceRef": "Bildungsplan Gymnasium Sekundarstufe I Politik/Gesellschaft/Wirtschaft Hamburg, Marktteilnehmer als Konsumenten, S. 28.",
+      "courseLevel": "SekI",
+      "granularity": "officialContentOrRequirement",
+      "tags": [
+        "jurisdiction:DE-HH",
+        "subject:Wirtschaft",
+        "stage:SekI",
+        "topic:SI-PGW-WIRTSCHAFT-KONSUM"
+      ],
+      "rawSourceText": "Privathaushalt und Märkte als wirtschaftliche Handlungsräume erklären.",
+      "rawSourceSpan": "SI-PGW-WIRTSCHAFT-KONSUM (1)",
+      "rawParentBulletText": "Privathaushalt und Märkte als wirtschaftliche Handlungsräume erklären."
+    },
+    {
+      "id": "de-hh-pgw-seki-wirtschaft-si-pgw-wirtschaft-konsum-g02-c1341b7f",
+      "passageId": "de-hh-pgw-seki-wirtschaft:si-pgw-wirtschaft-konsum",
+      "topicCode": "SI-PGW-WIRTSCHAFT-KONSUM",
+      "bulletIndex": 2,
+      "aspectIndex": 1,
+      "title": "HH SI-PGW-WIRTSCHAFT-KONSUM (2): Einkommen und Verbrauch privater Haushalte unterscheiden.",
+      "description": "Source-Ziel aus Marktteilnehmer als Konsumenten: Einkommen und Verbrauch privater Haushalte unterscheiden.",
+      "sourceText": "Einkommen und Verbrauch privater Haushalte unterscheiden.",
+      "sourceSpan": "SI-PGW-WIRTSCHAFT-KONSUM (2)",
+      "parentBulletText": "Einkommen und Verbrauch privater Haushalte unterscheiden.",
+      "sourceRef": "Bildungsplan Gymnasium Sekundarstufe I Politik/Gesellschaft/Wirtschaft Hamburg, Marktteilnehmer als Konsumenten, S. 28.",
+      "courseLevel": "SekI",
+      "granularity": "officialContentOrRequirement",
+      "tags": [
+        "jurisdiction:DE-HH",
+        "subject:Wirtschaft",
+        "stage:SekI",
+        "topic:SI-PGW-WIRTSCHAFT-KONSUM"
+      ],
+      "rawSourceText": "Einkommen und Verbrauch privater Haushalte unterscheiden.",
+      "rawSourceSpan": "SI-PGW-WIRTSCHAFT-KONSUM (2)",
+      "rawParentBulletText": "Einkommen und Verbrauch privater Haushalte unterscheiden."
+    },
+    {
+      "id": "de-hh-pgw-seki-wirtschaft-si-pgw-wirtschaft-konsum-g03-f361f274",
+      "passageId": "de-hh-pgw-seki-wirtschaft:si-pgw-wirtschaft-konsum",
+      "topicCode": "SI-PGW-WIRTSCHAFT-KONSUM",
+      "bulletIndex": 3,
+      "aspectIndex": 1,
+      "title": "HH SI-PGW-WIRTSCHAFT-KONSUM (3): Sparen und Kredit als Finanzentscheidungen privater Haushalte erläutern.",
+      "description": "Source-Ziel aus Marktteilnehmer als Konsumenten: Sparen und Kredit als Finanzentscheidungen privater Haushalte erläutern.",
+      "sourceText": "Sparen und Kredit als Finanzentscheidungen privater Haushalte erläutern.",
+      "sourceSpan": "SI-PGW-WIRTSCHAFT-KONSUM (3)",
+      "parentBulletText": "Sparen und Kredit als Finanzentscheidungen privater Haushalte erläutern.",
+      "sourceRef": "Bildungsplan Gymnasium Sekundarstufe I Politik/Gesellschaft/Wirtschaft Hamburg, Marktteilnehmer als Konsumenten, S. 28.",
+      "courseLevel": "SekI",
+      "granularity": "officialContentOrRequirement",
+      "tags": [
+        "jurisdiction:DE-HH",
+        "subject:Wirtschaft",
+        "stage:SekI",
+        "topic:SI-PGW-WIRTSCHAFT-KONSUM"
+      ],
+      "rawSourceText": "Sparen und Kredit als Finanzentscheidungen privater Haushalte erläutern.",
+      "rawSourceSpan": "SI-PGW-WIRTSCHAFT-KONSUM (3)",
+      "rawParentBulletText": "Sparen und Kredit als Finanzentscheidungen privater Haushalte erläutern."
+    },
+    {
+      "id": "de-hh-pgw-seki-wirtschaft-si-pgw-wirtschaft-konsum-g04-593182f9",
+      "passageId": "de-hh-pgw-seki-wirtschaft:si-pgw-wirtschaft-konsum",
+      "topicCode": "SI-PGW-WIRTSCHAFT-KONSUM",
+      "bulletIndex": 4,
+      "aspectIndex": 1,
+      "title": "HH SI-PGW-WIRTSCHAFT-KONSUM (4): Vorsorge und Verschuldung als Folgen langfristiger Finanzentscheidungen beurteilen.",
+      "description": "Source-Ziel aus Marktteilnehmer als Konsumenten: Vorsorge und Verschuldung als Folgen langfristiger Finanzentscheidungen beurteilen.",
+      "sourceText": "Vorsorge und Verschuldung als Folgen langfristiger Finanzentscheidungen beurteilen.",
+      "sourceSpan": "SI-PGW-WIRTSCHAFT-KONSUM (4)",
+      "parentBulletText": "Vorsorge und Verschuldung als Folgen langfristiger Finanzentscheidungen beurteilen.",
+      "sourceRef": "Bildungsplan Gymnasium Sekundarstufe I Politik/Gesellschaft/Wirtschaft Hamburg, Marktteilnehmer als Konsumenten, S. 28.",
+      "courseLevel": "SekI",
+      "granularity": "officialContentOrRequirement",
+      "tags": [
+        "jurisdiction:DE-HH",
+        "subject:Wirtschaft",
+        "stage:SekI",
+        "topic:SI-PGW-WIRTSCHAFT-KONSUM"
+      ],
+      "rawSourceText": "Vorsorge und Verschuldung als Folgen langfristiger Finanzentscheidungen beurteilen.",
+      "rawSourceSpan": "SI-PGW-WIRTSCHAFT-KONSUM (4)",
+      "rawParentBulletText": "Vorsorge und Verschuldung als Folgen langfristiger Finanzentscheidungen beurteilen."
+    },
+    {
+      "id": "de-hh-pgw-seki-wirtschaft-si-pgw-wirtschaft-konsum-g05-3b4435ca",
+      "passageId": "de-hh-pgw-seki-wirtschaft:si-pgw-wirtschaft-konsum",
+      "topicCode": "SI-PGW-WIRTSCHAFT-KONSUM",
+      "bulletIndex": 5,
+      "aspectIndex": 1,
+      "title": "HH SI-PGW-WIRTSCHAFT-KONSUM (5): Den Wirtschaftskreislauf zur Analyse privaten Konsums nutzen.",
+      "description": "Source-Ziel aus Marktteilnehmer als Konsumenten: Den Wirtschaftskreislauf zur Analyse privaten Konsums nutzen.",
+      "sourceText": "Den Wirtschaftskreislauf zur Analyse privaten Konsums nutzen.",
+      "sourceSpan": "SI-PGW-WIRTSCHAFT-KONSUM (5)",
+      "parentBulletText": "Den Wirtschaftskreislauf zur Analyse privaten Konsums nutzen.",
+      "sourceRef": "Bildungsplan Gymnasium Sekundarstufe I Politik/Gesellschaft/Wirtschaft Hamburg, Marktteilnehmer als Konsumenten, S. 28.",
+      "courseLevel": "SekI",
+      "granularity": "officialContentOrRequirement",
+      "tags": [
+        "jurisdiction:DE-HH",
+        "subject:Wirtschaft",
+        "stage:SekI",
+        "topic:SI-PGW-WIRTSCHAFT-KONSUM"
+      ],
+      "rawSourceText": "Den Wirtschaftskreislauf zur Analyse privaten Konsums nutzen.",
+      "rawSourceSpan": "SI-PGW-WIRTSCHAFT-KONSUM (5)",
+      "rawParentBulletText": "Den Wirtschaftskreislauf zur Analyse privaten Konsums nutzen."
+    },
+    {
+      "id": "de-hh-pgw-seki-wirtschaft-si-pgw-wirtschaft-konsum-g06-dde3d150",
+      "passageId": "de-hh-pgw-seki-wirtschaft:si-pgw-wirtschaft-konsum",
+      "topicCode": "SI-PGW-WIRTSCHAFT-KONSUM",
+      "bulletIndex": 6,
+      "aspectIndex": 1,
+      "title": "HH SI-PGW-WIRTSCHAFT-KONSUM (6): Werbung und Medien als Einflussfaktoren auf Konsumentscheidungen analysieren.",
+      "description": "Source-Ziel aus Marktteilnehmer als Konsumenten: Werbung und Medien als Einflussfaktoren auf Konsumentscheidungen analysieren.",
+      "sourceText": "Werbung und Medien als Einflussfaktoren auf Konsumentscheidungen analysieren.",
+      "sourceSpan": "SI-PGW-WIRTSCHAFT-KONSUM (6)",
+      "parentBulletText": "Werbung und Medien als Einflussfaktoren auf Konsumentscheidungen analysieren.",
+      "sourceRef": "Bildungsplan Gymnasium Sekundarstufe I Politik/Gesellschaft/Wirtschaft Hamburg, Marktteilnehmer als Konsumenten, S. 28.",
+      "courseLevel": "SekI",
+      "granularity": "officialContentOrRequirement",
+      "tags": [
+        "jurisdiction:DE-HH",
+        "subject:Wirtschaft",
+        "stage:SekI",
+        "topic:SI-PGW-WIRTSCHAFT-KONSUM"
+      ],
+      "rawSourceText": "Werbung und Medien als Einflussfaktoren auf Konsumentscheidungen analysieren.",
+      "rawSourceSpan": "SI-PGW-WIRTSCHAFT-KONSUM (6)",
+      "rawParentBulletText": "Werbung und Medien als Einflussfaktoren auf Konsumentscheidungen analysieren."
+    },
+    {
+      "id": "de-hh-pgw-seki-wirtschaft-si-pgw-wirtschaft-konsum-g07-a05778a5",
+      "passageId": "de-hh-pgw-seki-wirtschaft:si-pgw-wirtschaft-konsum",
+      "topicCode": "SI-PGW-WIRTSCHAFT-KONSUM",
+      "bulletIndex": 7,
+      "aspectIndex": 1,
+      "title": "HH SI-PGW-WIRTSCHAFT-KONSUM (7): Eigenes Konsumverhalten ökonomisch begründen.",
+      "description": "Source-Ziel aus Marktteilnehmer als Konsumenten: Eigenes Konsumverhalten ökonomisch begründen.",
+      "sourceText": "Eigenes Konsumverhalten ökonomisch begründen.",
+      "sourceSpan": "SI-PGW-WIRTSCHAFT-KONSUM (7)",
+      "parentBulletText": "Eigenes Konsumverhalten ökonomisch begründen.",
+      "sourceRef": "Bildungsplan Gymnasium Sekundarstufe I Politik/Gesellschaft/Wirtschaft Hamburg, Marktteilnehmer als Konsumenten, S. 28.",
+      "courseLevel": "SekI",
+      "granularity": "officialContentOrRequirement",
+      "tags": [
+        "jurisdiction:DE-HH",
+        "subject:Wirtschaft",
+        "stage:SekI",
+        "topic:SI-PGW-WIRTSCHAFT-KONSUM"
+      ],
+      "rawSourceText": "Eigenes Konsumverhalten ökonomisch begründen.",
+      "rawSourceSpan": "SI-PGW-WIRTSCHAFT-KONSUM (7)",
+      "rawParentBulletText": "Eigenes Konsumverhalten ökonomisch begründen."
+    },
+    {
+      "id": "de-hh-pgw-seki-wirtschaft-si-pgw-wirtschaft-konsum-g08-81b06906",
+      "passageId": "de-hh-pgw-seki-wirtschaft:si-pgw-wirtschaft-konsum",
+      "topicCode": "SI-PGW-WIRTSCHAFT-KONSUM",
+      "bulletIndex": 8,
+      "aspectIndex": 1,
+      "title": "HH SI-PGW-WIRTSCHAFT-KONSUM (8): Konsumentscheidungen nach rationalen ökonomischen Kriterien treffen.",
+      "description": "Source-Ziel aus Marktteilnehmer als Konsumenten: Konsumentscheidungen nach rationalen ökonomischen Kriterien treffen.",
+      "sourceText": "Konsumentscheidungen nach rationalen ökonomischen Kriterien treffen.",
+      "sourceSpan": "SI-PGW-WIRTSCHAFT-KONSUM (8)",
+      "parentBulletText": "Konsumentscheidungen nach rationalen ökonomischen Kriterien treffen.",
+      "sourceRef": "Bildungsplan Gymnasium Sekundarstufe I Politik/Gesellschaft/Wirtschaft Hamburg, Marktteilnehmer als Konsumenten, S. 28.",
+      "courseLevel": "SekI",
+      "granularity": "officialContentOrRequirement",
+      "tags": [
+        "jurisdiction:DE-HH",
+        "subject:Wirtschaft",
+        "stage:SekI",
+        "topic:SI-PGW-WIRTSCHAFT-KONSUM"
+      ],
+      "rawSourceText": "Konsumentscheidungen nach rationalen ökonomischen Kriterien treffen.",
+      "rawSourceSpan": "SI-PGW-WIRTSCHAFT-KONSUM (8)",
+      "rawParentBulletText": "Konsumentscheidungen nach rationalen ökonomischen Kriterien treffen."
+    },
+    {
+      "id": "de-hh-pgw-seki-wirtschaft-si-pgw-wirtschaft-konsum-g09-3320c452",
+      "passageId": "de-hh-pgw-seki-wirtschaft:si-pgw-wirtschaft-konsum",
+      "topicCode": "SI-PGW-WIRTSCHAFT-KONSUM",
+      "bulletIndex": 9,
+      "aspectIndex": 1,
+      "title": "HH SI-PGW-WIRTSCHAFT-KONSUM (9): Kriterien für den Kauf von Konsumgütern entwickeln.",
+      "description": "Source-Ziel aus Marktteilnehmer als Konsumenten: Kriterien für den Kauf von Konsumgütern entwickeln.",
+      "sourceText": "Kriterien für den Kauf von Konsumgütern entwickeln.",
+      "sourceSpan": "SI-PGW-WIRTSCHAFT-KONSUM (9)",
+      "parentBulletText": "Kriterien für den Kauf von Konsumgütern entwickeln.",
+      "sourceRef": "Bildungsplan Gymnasium Sekundarstufe I Politik/Gesellschaft/Wirtschaft Hamburg, Marktteilnehmer als Konsumenten, S. 28.",
+      "courseLevel": "SekI",
+      "granularity": "officialContentOrRequirement",
+      "tags": [
+        "jurisdiction:DE-HH",
+        "subject:Wirtschaft",
+        "stage:SekI",
+        "topic:SI-PGW-WIRTSCHAFT-KONSUM"
+      ],
+      "rawSourceText": "Kriterien für den Kauf von Konsumgütern entwickeln.",
+      "rawSourceSpan": "SI-PGW-WIRTSCHAFT-KONSUM (9)",
+      "rawParentBulletText": "Kriterien für den Kauf von Konsumgütern entwickeln."
+    },
+    {
+      "id": "de-hh-pgw-seki-wirtschaft-si-pgw-wirtschaft-konsum-g10-eafe435c",
+      "passageId": "de-hh-pgw-seki-wirtschaft:si-pgw-wirtschaft-konsum",
+      "topicCode": "SI-PGW-WIRTSCHAFT-KONSUM",
+      "bulletIndex": 10,
+      "aspectIndex": 1,
+      "title": "HH SI-PGW-WIRTSCHAFT-KONSUM (10): Konsumentscheidungen unter Nachhaltigkeitsgesichtspunkten hinterfragen.",
+      "description": "Source-Ziel aus Marktteilnehmer als Konsumenten: Konsumentscheidungen unter Nachhaltigkeitsgesichtspunkten hinterfragen.",
+      "sourceText": "Konsumentscheidungen unter Nachhaltigkeitsgesichtspunkten hinterfragen.",
+      "sourceSpan": "SI-PGW-WIRTSCHAFT-KONSUM (10)",
+      "parentBulletText": "Konsumentscheidungen unter Nachhaltigkeitsgesichtspunkten hinterfragen.",
+      "sourceRef": "Bildungsplan Gymnasium Sekundarstufe I Politik/Gesellschaft/Wirtschaft Hamburg, Marktteilnehmer als Konsumenten, S. 28.",
+      "courseLevel": "SekI",
+      "granularity": "officialContentOrRequirement",
+      "tags": [
+        "jurisdiction:DE-HH",
+        "subject:Wirtschaft",
+        "stage:SekI",
+        "topic:SI-PGW-WIRTSCHAFT-KONSUM"
+      ],
+      "rawSourceText": "Konsumentscheidungen unter Nachhaltigkeitsgesichtspunkten hinterfragen.",
+      "rawSourceSpan": "SI-PGW-WIRTSCHAFT-KONSUM (10)",
+      "rawParentBulletText": "Konsumentscheidungen unter Nachhaltigkeitsgesichtspunkten hinterfragen."
+    },
+    {
+      "id": "de-hh-pgw-seki-wirtschaft-si-pgw-wirtschaft-unternehmen-arbeit-g01-a00a9bc6",
+      "passageId": "de-hh-pgw-seki-wirtschaft:si-pgw-wirtschaft-unternehmen-arbeit",
+      "topicCode": "SI-PGW-WIRTSCHAFT-UNTERNEHMEN-ARBEIT",
+      "bulletIndex": 1,
+      "aspectIndex": 1,
+      "title": "HH SI-PGW-WIRTSCHAFT-UNTERNEHMEN-ARBEIT (1): Unternehmen und Betriebe als Akteure der Marktgesellschaft beschreiben.",
+      "description": "Source-Ziel aus Unternehmen und Arbeitnehmer in der Marktgesellschaft: Unternehmen und Betriebe als Akteure der Marktgesellschaft beschreiben.",
+      "sourceText": "Unternehmen und Betriebe als Akteure der Marktgesellschaft beschreiben.",
+      "sourceSpan": "SI-PGW-WIRTSCHAFT-UNTERNEHMEN-ARBEIT (1)",
+      "parentBulletText": "Unternehmen und Betriebe als Akteure der Marktgesellschaft beschreiben.",
+      "sourceRef": "Bildungsplan Gymnasium Sekundarstufe I Politik/Gesellschaft/Wirtschaft Hamburg, Unternehmen und Arbeitnehmer in der Marktgesellschaft, S. 28.",
+      "courseLevel": "SekI",
+      "granularity": "officialContentOrRequirement",
+      "tags": [
+        "jurisdiction:DE-HH",
+        "subject:Wirtschaft",
+        "stage:SekI",
+        "topic:SI-PGW-WIRTSCHAFT-UNTERNEHMEN-ARBEIT"
+      ],
+      "rawSourceText": "Unternehmen und Betriebe als Akteure der Marktgesellschaft beschreiben.",
+      "rawSourceSpan": "SI-PGW-WIRTSCHAFT-UNTERNEHMEN-ARBEIT (1)",
+      "rawParentBulletText": "Unternehmen und Betriebe als Akteure der Marktgesellschaft beschreiben."
+    },
+    {
+      "id": "de-hh-pgw-seki-wirtschaft-si-pgw-wirtschaft-unternehmen-arbeit-g02-28b83f32",
+      "passageId": "de-hh-pgw-seki-wirtschaft:si-pgw-wirtschaft-unternehmen-arbeit",
+      "topicCode": "SI-PGW-WIRTSCHAFT-UNTERNEHMEN-ARBEIT",
+      "bulletIndex": 2,
+      "aspectIndex": 1,
+      "title": "HH SI-PGW-WIRTSCHAFT-UNTERNEHMEN-ARBEIT (2): Produktionsfaktoren in Unternehmen erläutern.",
+      "description": "Source-Ziel aus Unternehmen und Arbeitnehmer in der Marktgesellschaft: Produktionsfaktoren in Unternehmen erläutern.",
+      "sourceText": "Produktionsfaktoren in Unternehmen erläutern.",
+      "sourceSpan": "SI-PGW-WIRTSCHAFT-UNTERNEHMEN-ARBEIT (2)",
+      "parentBulletText": "Produktionsfaktoren in Unternehmen erläutern.",
+      "sourceRef": "Bildungsplan Gymnasium Sekundarstufe I Politik/Gesellschaft/Wirtschaft Hamburg, Unternehmen und Arbeitnehmer in der Marktgesellschaft, S. 28.",
+      "courseLevel": "SekI",
+      "granularity": "officialContentOrRequirement",
+      "tags": [
+        "jurisdiction:DE-HH",
+        "subject:Wirtschaft",
+        "stage:SekI",
+        "topic:SI-PGW-WIRTSCHAFT-UNTERNEHMEN-ARBEIT"
+      ],
+      "rawSourceText": "Produktionsfaktoren in Unternehmen erläutern.",
+      "rawSourceSpan": "SI-PGW-WIRTSCHAFT-UNTERNEHMEN-ARBEIT (2)",
+      "rawParentBulletText": "Produktionsfaktoren in Unternehmen erläutern."
+    },
+    {
+      "id": "de-hh-pgw-seki-wirtschaft-si-pgw-wirtschaft-unternehmen-arbeit-g03-7d2155e4",
+      "passageId": "de-hh-pgw-seki-wirtschaft:si-pgw-wirtschaft-unternehmen-arbeit",
+      "topicCode": "SI-PGW-WIRTSCHAFT-UNTERNEHMEN-ARBEIT",
+      "bulletIndex": 3,
+      "aspectIndex": 1,
+      "title": "HH SI-PGW-WIRTSCHAFT-UNTERNEHMEN-ARBEIT (3): Entrepreneurship als unternehmerische Handlungsform darstellen.",
+      "description": "Source-Ziel aus Unternehmen und Arbeitnehmer in der Marktgesellschaft: Entrepreneurship als unternehmerische Handlungsform darstellen.",
+      "sourceText": "Entrepreneurship als unternehmerische Handlungsform darstellen.",
+      "sourceSpan": "SI-PGW-WIRTSCHAFT-UNTERNEHMEN-ARBEIT (3)",
+      "parentBulletText": "Entrepreneurship als unternehmerische Handlungsform darstellen.",
+      "sourceRef": "Bildungsplan Gymnasium Sekundarstufe I Politik/Gesellschaft/Wirtschaft Hamburg, Unternehmen und Arbeitnehmer in der Marktgesellschaft, S. 28.",
+      "courseLevel": "SekI",
+      "granularity": "officialContentOrRequirement",
+      "tags": [
+        "jurisdiction:DE-HH",
+        "subject:Wirtschaft",
+        "stage:SekI",
+        "topic:SI-PGW-WIRTSCHAFT-UNTERNEHMEN-ARBEIT"
+      ],
+      "rawSourceText": "Entrepreneurship als unternehmerische Handlungsform darstellen.",
+      "rawSourceSpan": "SI-PGW-WIRTSCHAFT-UNTERNEHMEN-ARBEIT (3)",
+      "rawParentBulletText": "Entrepreneurship als unternehmerische Handlungsform darstellen."
+    },
+    {
+      "id": "de-hh-pgw-seki-wirtschaft-si-pgw-wirtschaft-unternehmen-arbeit-g04-c2ba46f3",
+      "passageId": "de-hh-pgw-seki-wirtschaft:si-pgw-wirtschaft-unternehmen-arbeit",
+      "topicCode": "SI-PGW-WIRTSCHAFT-UNTERNEHMEN-ARBEIT",
+      "bulletIndex": 4,
+      "aspectIndex": 1,
+      "title": "HH SI-PGW-WIRTSCHAFT-UNTERNEHMEN-ARBEIT (4): Arbeit und Berufswelt im Umbruch analysieren.",
+      "description": "Source-Ziel aus Unternehmen und Arbeitnehmer in der Marktgesellschaft: Arbeit und Berufswelt im Umbruch analysieren.",
+      "sourceText": "Arbeit und Berufswelt im Umbruch analysieren.",
+      "sourceSpan": "SI-PGW-WIRTSCHAFT-UNTERNEHMEN-ARBEIT (4)",
+      "parentBulletText": "Arbeit und Berufswelt im Umbruch analysieren.",
+      "sourceRef": "Bildungsplan Gymnasium Sekundarstufe I Politik/Gesellschaft/Wirtschaft Hamburg, Unternehmen und Arbeitnehmer in der Marktgesellschaft, S. 28.",
+      "courseLevel": "SekI",
+      "granularity": "officialContentOrRequirement",
+      "tags": [
+        "jurisdiction:DE-HH",
+        "subject:Wirtschaft",
+        "stage:SekI",
+        "topic:SI-PGW-WIRTSCHAFT-UNTERNEHMEN-ARBEIT"
+      ],
+      "rawSourceText": "Arbeit und Berufswelt im Umbruch analysieren.",
+      "rawSourceSpan": "SI-PGW-WIRTSCHAFT-UNTERNEHMEN-ARBEIT (4)",
+      "rawParentBulletText": "Arbeit und Berufswelt im Umbruch analysieren."
+    },
+    {
+      "id": "de-hh-pgw-seki-wirtschaft-si-pgw-wirtschaft-unternehmen-arbeit-g05-229841fb",
+      "passageId": "de-hh-pgw-seki-wirtschaft:si-pgw-wirtschaft-unternehmen-arbeit",
+      "topicCode": "SI-PGW-WIRTSCHAFT-UNTERNEHMEN-ARBEIT",
+      "bulletIndex": 5,
+      "aspectIndex": 1,
+      "title": "HH SI-PGW-WIRTSCHAFT-UNTERNEHMEN-ARBEIT (5): Interessenvertretung in der Arbeitswelt erklären.",
+      "description": "Source-Ziel aus Unternehmen und Arbeitnehmer in der Marktgesellschaft: Interessenvertretung in der Arbeitswelt erklären.",
+      "sourceText": "Interessenvertretung in der Arbeitswelt erklären.",
+      "sourceSpan": "SI-PGW-WIRTSCHAFT-UNTERNEHMEN-ARBEIT (5)",
+      "parentBulletText": "Interessenvertretung in der Arbeitswelt erklären.",
+      "sourceRef": "Bildungsplan Gymnasium Sekundarstufe I Politik/Gesellschaft/Wirtschaft Hamburg, Unternehmen und Arbeitnehmer in der Marktgesellschaft, S. 28.",
+      "courseLevel": "SekI",
+      "granularity": "officialContentOrRequirement",
+      "tags": [
+        "jurisdiction:DE-HH",
+        "subject:Wirtschaft",
+        "stage:SekI",
+        "topic:SI-PGW-WIRTSCHAFT-UNTERNEHMEN-ARBEIT"
+      ],
+      "rawSourceText": "Interessenvertretung in der Arbeitswelt erklären.",
+      "rawSourceSpan": "SI-PGW-WIRTSCHAFT-UNTERNEHMEN-ARBEIT (5)",
+      "rawParentBulletText": "Interessenvertretung in der Arbeitswelt erklären."
+    },
+    {
+      "id": "de-hh-pgw-seki-wirtschaft-si-pgw-wirtschaft-unternehmen-arbeit-g06-c2ab8482",
+      "passageId": "de-hh-pgw-seki-wirtschaft:si-pgw-wirtschaft-unternehmen-arbeit",
+      "topicCode": "SI-PGW-WIRTSCHAFT-UNTERNEHMEN-ARBEIT",
+      "bulletIndex": 6,
+      "aspectIndex": 1,
+      "title": "HH SI-PGW-WIRTSCHAFT-UNTERNEHMEN-ARBEIT (6): Konfliktregelung in der Arbeitswelt beurteilen.",
+      "description": "Source-Ziel aus Unternehmen und Arbeitnehmer in der Marktgesellschaft: Konfliktregelung in der Arbeitswelt beurteilen.",
+      "sourceText": "Konfliktregelung in der Arbeitswelt beurteilen.",
+      "sourceSpan": "SI-PGW-WIRTSCHAFT-UNTERNEHMEN-ARBEIT (6)",
+      "parentBulletText": "Konfliktregelung in der Arbeitswelt beurteilen.",
+      "sourceRef": "Bildungsplan Gymnasium Sekundarstufe I Politik/Gesellschaft/Wirtschaft Hamburg, Unternehmen und Arbeitnehmer in der Marktgesellschaft, S. 28.",
+      "courseLevel": "SekI",
+      "granularity": "officialContentOrRequirement",
+      "tags": [
+        "jurisdiction:DE-HH",
+        "subject:Wirtschaft",
+        "stage:SekI",
+        "topic:SI-PGW-WIRTSCHAFT-UNTERNEHMEN-ARBEIT"
+      ],
+      "rawSourceText": "Konfliktregelung in der Arbeitswelt beurteilen.",
+      "rawSourceSpan": "SI-PGW-WIRTSCHAFT-UNTERNEHMEN-ARBEIT (6)",
+      "rawParentBulletText": "Konfliktregelung in der Arbeitswelt beurteilen."
+    },
+    {
+      "id": "de-hh-pgw-seki-wirtschaft-si-pgw-wirtschaft-unternehmen-arbeit-g07-076387fe",
+      "passageId": "de-hh-pgw-seki-wirtschaft:si-pgw-wirtschaft-unternehmen-arbeit",
+      "topicCode": "SI-PGW-WIRTSCHAFT-UNTERNEHMEN-ARBEIT",
+      "bulletIndex": 7,
+      "aspectIndex": 1,
+      "title": "HH SI-PGW-WIRTSCHAFT-UNTERNEHMEN-ARBEIT (7): Einen Berufspraktikumsplatz kriterienorientiert auswählen.",
+      "description": "Source-Ziel aus Unternehmen und Arbeitnehmer in der Marktgesellschaft: Einen Berufspraktikumsplatz kriterienorientiert auswählen.",
+      "sourceText": "Einen Berufspraktikumsplatz kriterienorientiert auswählen.",
+      "sourceSpan": "SI-PGW-WIRTSCHAFT-UNTERNEHMEN-ARBEIT (7)",
+      "parentBulletText": "Einen Berufspraktikumsplatz kriterienorientiert auswählen.",
+      "sourceRef": "Bildungsplan Gymnasium Sekundarstufe I Politik/Gesellschaft/Wirtschaft Hamburg, Unternehmen und Arbeitnehmer in der Marktgesellschaft, S. 28.",
+      "courseLevel": "SekI",
+      "granularity": "officialContentOrRequirement",
+      "tags": [
+        "jurisdiction:DE-HH",
+        "subject:Wirtschaft",
+        "stage:SekI",
+        "topic:SI-PGW-WIRTSCHAFT-UNTERNEHMEN-ARBEIT"
+      ],
+      "rawSourceText": "Einen Berufspraktikumsplatz kriterienorientiert auswählen.",
+      "rawSourceSpan": "SI-PGW-WIRTSCHAFT-UNTERNEHMEN-ARBEIT (7)",
+      "rawParentBulletText": "Einen Berufspraktikumsplatz kriterienorientiert auswählen."
+    },
+    {
+      "id": "de-hh-pgw-seki-wirtschaft-si-pgw-wirtschaft-unternehmen-arbeit-g08-7032bb06",
+      "passageId": "de-hh-pgw-seki-wirtschaft:si-pgw-wirtschaft-unternehmen-arbeit",
+      "topicCode": "SI-PGW-WIRTSCHAFT-UNTERNEHMEN-ARBEIT",
+      "bulletIndex": 8,
+      "aspectIndex": 1,
+      "title": "HH SI-PGW-WIRTSCHAFT-UNTERNEHMEN-ARBEIT (8): Berufsorientierung mit Anforderungen in Berufsausbildung und Studium verbinden.",
+      "description": "Source-Ziel aus Unternehmen und Arbeitnehmer in der Marktgesellschaft: Berufsorientierung mit Anforderungen in Berufsausbildung und Studium verbinden.",
+      "sourceText": "Berufsorientierung mit Anforderungen in Berufsausbildung und Studium verbinden.",
+      "sourceSpan": "SI-PGW-WIRTSCHAFT-UNTERNEHMEN-ARBEIT (8)",
+      "parentBulletText": "Berufsorientierung mit Anforderungen in Berufsausbildung und Studium verbinden.",
+      "sourceRef": "Bildungsplan Gymnasium Sekundarstufe I Politik/Gesellschaft/Wirtschaft Hamburg, Unternehmen und Arbeitnehmer in der Marktgesellschaft, S. 28.",
+      "courseLevel": "SekI",
+      "granularity": "officialContentOrRequirement",
+      "tags": [
+        "jurisdiction:DE-HH",
+        "subject:Wirtschaft",
+        "stage:SekI",
+        "topic:SI-PGW-WIRTSCHAFT-UNTERNEHMEN-ARBEIT"
+      ],
+      "rawSourceText": "Berufsorientierung mit Anforderungen in Berufsausbildung und Studium verbinden.",
+      "rawSourceSpan": "SI-PGW-WIRTSCHAFT-UNTERNEHMEN-ARBEIT (8)",
+      "rawParentBulletText": "Berufsorientierung mit Anforderungen in Berufsausbildung und Studium verbinden."
+    },
+    {
+      "id": "de-hh-pgw-seki-wirtschaft-si-pgw-wirtschaft-unternehmen-arbeit-g09-0195cb09",
+      "passageId": "de-hh-pgw-seki-wirtschaft:si-pgw-wirtschaft-unternehmen-arbeit",
+      "topicCode": "SI-PGW-WIRTSCHAFT-UNTERNEHMEN-ARBEIT",
+      "bulletIndex": 9,
+      "aspectIndex": 1,
+      "title": "HH SI-PGW-WIRTSCHAFT-UNTERNEHMEN-ARBEIT (9): Eigenverantwortung für Bildungs- und Berufswegeplanung übernehmen.",
+      "description": "Source-Ziel aus Unternehmen und Arbeitnehmer in der Marktgesellschaft: Eigenverantwortung für Bildungs- und Berufswegeplanung übernehmen.",
+      "sourceText": "Eigenverantwortung für Bildungs- und Berufswegeplanung übernehmen.",
+      "sourceSpan": "SI-PGW-WIRTSCHAFT-UNTERNEHMEN-ARBEIT (9)",
+      "parentBulletText": "Eigenverantwortung für Bildungs- und Berufswegeplanung übernehmen.",
+      "sourceRef": "Bildungsplan Gymnasium Sekundarstufe I Politik/Gesellschaft/Wirtschaft Hamburg, Unternehmen und Arbeitnehmer in der Marktgesellschaft, S. 28.",
+      "courseLevel": "SekI",
+      "granularity": "officialContentOrRequirement",
+      "tags": [
+        "jurisdiction:DE-HH",
+        "subject:Wirtschaft",
+        "stage:SekI",
+        "topic:SI-PGW-WIRTSCHAFT-UNTERNEHMEN-ARBEIT"
+      ],
+      "rawSourceText": "Eigenverantwortung für Bildungs- und Berufswegeplanung übernehmen.",
+      "rawSourceSpan": "SI-PGW-WIRTSCHAFT-UNTERNEHMEN-ARBEIT (9)",
+      "rawParentBulletText": "Eigenverantwortung für Bildungs- und Berufswegeplanung übernehmen."
+    },
+    {
+      "id": "de-hh-pgw-seki-wirtschaft-si-pgw-wirtschaft-politik-g01-880b988b",
+      "passageId": "de-hh-pgw-seki-wirtschaft:si-pgw-wirtschaft-politik",
+      "topicCode": "SI-PGW-WIRTSCHAFT-POLITIK",
+      "bulletIndex": 1,
+      "aspectIndex": 1,
+      "title": "HH SI-PGW-WIRTSCHAFT-POLITIK (1): Indikatoren der Wirtschaftsentwicklung auswerten.",
+      "description": "Source-Ziel aus Wirtschaftsgesellschaft und Wirtschaftspolitik: Indikatoren der Wirtschaftsentwicklung auswerten.",
+      "sourceText": "Indikatoren der Wirtschaftsentwicklung auswerten.",
+      "sourceSpan": "SI-PGW-WIRTSCHAFT-POLITIK (1)",
+      "parentBulletText": "Indikatoren der Wirtschaftsentwicklung auswerten.",
+      "sourceRef": "Bildungsplan Gymnasium Sekundarstufe I Politik/Gesellschaft/Wirtschaft Hamburg, Wirtschaftsgesellschaft und Wirtschaftspolitik, S. 28.",
+      "courseLevel": "SekI",
+      "granularity": "officialContentOrRequirement",
+      "tags": [
+        "jurisdiction:DE-HH",
+        "subject:Wirtschaft",
+        "stage:SekI",
+        "topic:SI-PGW-WIRTSCHAFT-POLITIK"
+      ],
+      "rawSourceText": "Indikatoren der Wirtschaftsentwicklung auswerten.",
+      "rawSourceSpan": "SI-PGW-WIRTSCHAFT-POLITIK (1)",
+      "rawParentBulletText": "Indikatoren der Wirtschaftsentwicklung auswerten."
+    },
+    {
+      "id": "de-hh-pgw-seki-wirtschaft-si-pgw-wirtschaft-politik-g02-87b59738",
+      "passageId": "de-hh-pgw-seki-wirtschaft:si-pgw-wirtschaft-politik",
+      "topicCode": "SI-PGW-WIRTSCHAFT-POLITIK",
+      "bulletIndex": 2,
+      "aspectIndex": 1,
+      "title": "HH SI-PGW-WIRTSCHAFT-POLITIK (2): Wettbewerb im europäischen Markt analysieren.",
+      "description": "Source-Ziel aus Wirtschaftsgesellschaft und Wirtschaftspolitik: Wettbewerb im europäischen Markt analysieren.",
+      "sourceText": "Wettbewerb im europäischen Markt analysieren.",
+      "sourceSpan": "SI-PGW-WIRTSCHAFT-POLITIK (2)",
+      "parentBulletText": "Wettbewerb im europäischen Markt analysieren.",
+      "sourceRef": "Bildungsplan Gymnasium Sekundarstufe I Politik/Gesellschaft/Wirtschaft Hamburg, Wirtschaftsgesellschaft und Wirtschaftspolitik, S. 28.",
+      "courseLevel": "SekI",
+      "granularity": "officialContentOrRequirement",
+      "tags": [
+        "jurisdiction:DE-HH",
+        "subject:Wirtschaft",
+        "stage:SekI",
+        "topic:SI-PGW-WIRTSCHAFT-POLITIK"
+      ],
+      "rawSourceText": "Wettbewerb im europäischen Markt analysieren.",
+      "rawSourceSpan": "SI-PGW-WIRTSCHAFT-POLITIK (2)",
+      "rawParentBulletText": "Wettbewerb im europäischen Markt analysieren."
+    },
+    {
+      "id": "de-hh-pgw-seki-wirtschaft-si-pgw-wirtschaft-politik-g03-35f07c22",
+      "passageId": "de-hh-pgw-seki-wirtschaft:si-pgw-wirtschaft-politik",
+      "topicCode": "SI-PGW-WIRTSCHAFT-POLITIK",
+      "bulletIndex": 3,
+      "aspectIndex": 1,
+      "title": "HH SI-PGW-WIRTSCHAFT-POLITIK (3): Wirtschaftspolitische Maßnahmen am Beispiel Wettbewerbspolitik beurteilen.",
+      "description": "Source-Ziel aus Wirtschaftsgesellschaft und Wirtschaftspolitik: Wirtschaftspolitische Maßnahmen am Beispiel Wettbewerbspolitik beurteilen.",
+      "sourceText": "Wirtschaftspolitische Maßnahmen am Beispiel Wettbewerbspolitik beurteilen.",
+      "sourceSpan": "SI-PGW-WIRTSCHAFT-POLITIK (3)",
+      "parentBulletText": "Wirtschaftspolitische Maßnahmen am Beispiel Wettbewerbspolitik beurteilen.",
+      "sourceRef": "Bildungsplan Gymnasium Sekundarstufe I Politik/Gesellschaft/Wirtschaft Hamburg, Wirtschaftsgesellschaft und Wirtschaftspolitik, S. 28.",
+      "courseLevel": "SekI",
+      "granularity": "officialContentOrRequirement",
+      "tags": [
+        "jurisdiction:DE-HH",
+        "subject:Wirtschaft",
+        "stage:SekI",
+        "topic:SI-PGW-WIRTSCHAFT-POLITIK"
+      ],
+      "rawSourceText": "Wirtschaftspolitische Maßnahmen am Beispiel Wettbewerbspolitik beurteilen.",
+      "rawSourceSpan": "SI-PGW-WIRTSCHAFT-POLITIK (3)",
+      "rawParentBulletText": "Wirtschaftspolitische Maßnahmen am Beispiel Wettbewerbspolitik beurteilen."
+    },
+    {
+      "id": "de-hh-pgw-seki-wirtschaft-si-pgw-wirtschaft-politik-g04-cd8bc4fd",
+      "passageId": "de-hh-pgw-seki-wirtschaft:si-pgw-wirtschaft-politik",
+      "topicCode": "SI-PGW-WIRTSCHAFT-POLITIK",
+      "bulletIndex": 4,
+      "aspectIndex": 1,
+      "title": "HH SI-PGW-WIRTSCHAFT-POLITIK (4): Grundprinzipien der Marktwirtschaft erläutern.",
+      "description": "Source-Ziel aus Wirtschaftsgesellschaft und Wirtschaftspolitik: Grundprinzipien der Marktwirtschaft erläutern.",
+      "sourceText": "Grundprinzipien der Marktwirtschaft erläutern.",
+      "sourceSpan": "SI-PGW-WIRTSCHAFT-POLITIK (4)",
+      "parentBulletText": "Grundprinzipien der Marktwirtschaft erläutern.",
+      "sourceRef": "Bildungsplan Gymnasium Sekundarstufe I Politik/Gesellschaft/Wirtschaft Hamburg, Wirtschaftsgesellschaft und Wirtschaftspolitik, S. 28.",
+      "courseLevel": "SekI",
+      "granularity": "officialContentOrRequirement",
+      "tags": [
+        "jurisdiction:DE-HH",
+        "subject:Wirtschaft",
+        "stage:SekI",
+        "topic:SI-PGW-WIRTSCHAFT-POLITIK"
+      ],
+      "rawSourceText": "Grundprinzipien der Marktwirtschaft erläutern.",
+      "rawSourceSpan": "SI-PGW-WIRTSCHAFT-POLITIK (4)",
+      "rawParentBulletText": "Grundprinzipien der Marktwirtschaft erläutern."
+    },
+    {
+      "id": "de-hh-pgw-seki-wirtschaft-si-pgw-wirtschaft-politik-g05-48cb217c",
+      "passageId": "de-hh-pgw-seki-wirtschaft:si-pgw-wirtschaft-politik",
+      "topicCode": "SI-PGW-WIRTSCHAFT-POLITIK",
+      "bulletIndex": 5,
+      "aspectIndex": 1,
+      "title": "HH SI-PGW-WIRTSCHAFT-POLITIK (5): Marktmechanismen in einfachen wirtschaftlichen Problemen anwenden.",
+      "description": "Source-Ziel aus Wirtschaftsgesellschaft und Wirtschaftspolitik: Marktmechanismen in einfachen wirtschaftlichen Problemen anwenden.",
+      "sourceText": "Marktmechanismen in einfachen wirtschaftlichen Problemen anwenden.",
+      "sourceSpan": "SI-PGW-WIRTSCHAFT-POLITIK (5)",
+      "parentBulletText": "Marktmechanismen in einfachen wirtschaftlichen Problemen anwenden.",
+      "sourceRef": "Bildungsplan Gymnasium Sekundarstufe I Politik/Gesellschaft/Wirtschaft Hamburg, Wirtschaftsgesellschaft und Wirtschaftspolitik, S. 28.",
+      "courseLevel": "SekI",
+      "granularity": "officialContentOrRequirement",
+      "tags": [
+        "jurisdiction:DE-HH",
+        "subject:Wirtschaft",
+        "stage:SekI",
+        "topic:SI-PGW-WIRTSCHAFT-POLITIK"
+      ],
+      "rawSourceText": "Marktmechanismen in einfachen wirtschaftlichen Problemen anwenden.",
+      "rawSourceSpan": "SI-PGW-WIRTSCHAFT-POLITIK (5)",
+      "rawParentBulletText": "Marktmechanismen in einfachen wirtschaftlichen Problemen anwenden."
+    },
+    {
+      "id": "de-hh-pgw-seki-wirtschaft-si-pgw-wirtschaft-politik-g06-1b18f004",
+      "passageId": "de-hh-pgw-seki-wirtschaft:si-pgw-wirtschaft-politik",
+      "topicCode": "SI-PGW-WIRTSCHAFT-POLITIK",
+      "bulletIndex": 6,
+      "aspectIndex": 1,
+      "title": "HH SI-PGW-WIRTSCHAFT-POLITIK (6): Einen einfachen Wirtschaftskreislauf darstellen.",
+      "description": "Source-Ziel aus Wirtschaftsgesellschaft und Wirtschaftspolitik: Einen einfachen Wirtschaftskreislauf darstellen.",
+      "sourceText": "Einen einfachen Wirtschaftskreislauf darstellen.",
+      "sourceSpan": "SI-PGW-WIRTSCHAFT-POLITIK (6)",
+      "parentBulletText": "Einen einfachen Wirtschaftskreislauf darstellen.",
+      "sourceRef": "Bildungsplan Gymnasium Sekundarstufe I Politik/Gesellschaft/Wirtschaft Hamburg, Wirtschaftsgesellschaft und Wirtschaftspolitik, S. 28.",
+      "courseLevel": "SekI",
+      "granularity": "officialContentOrRequirement",
+      "tags": [
+        "jurisdiction:DE-HH",
+        "subject:Wirtschaft",
+        "stage:SekI",
+        "topic:SI-PGW-WIRTSCHAFT-POLITIK"
+      ],
+      "rawSourceText": "Einen einfachen Wirtschaftskreislauf darstellen.",
+      "rawSourceSpan": "SI-PGW-WIRTSCHAFT-POLITIK (6)",
+      "rawParentBulletText": "Einen einfachen Wirtschaftskreislauf darstellen."
+    },
+    {
+      "id": "de-hh-pgw-seki-wirtschaft-si-pgw-wirtschaft-politik-g07-80c0e50f",
+      "passageId": "de-hh-pgw-seki-wirtschaft:si-pgw-wirtschaft-politik",
+      "topicCode": "SI-PGW-WIRTSCHAFT-POLITIK",
+      "bulletIndex": 7,
+      "aspectIndex": 1,
+      "title": "HH SI-PGW-WIRTSCHAFT-POLITIK (7): Kategorien wie Kosten, Nutzen, Preis und Markt zur Analyse wirtschaftlicher Entscheidungen nutzen.",
+      "description": "Source-Ziel aus Wirtschaftsgesellschaft und Wirtschaftspolitik: Kategorien wie Kosten, Nutzen, Preis und Markt zur Analyse wirtschaftlicher Entscheidungen nutzen.",
+      "sourceText": "Kategorien wie Kosten, Nutzen, Preis und Markt zur Analyse wirtschaftlicher Entscheidungen nutzen.",
+      "sourceSpan": "SI-PGW-WIRTSCHAFT-POLITIK (7)",
+      "parentBulletText": "Kategorien wie Kosten, Nutzen, Preis und Markt zur Analyse wirtschaftlicher Entscheidungen nutzen.",
+      "sourceRef": "Bildungsplan Gymnasium Sekundarstufe I Politik/Gesellschaft/Wirtschaft Hamburg, Wirtschaftsgesellschaft und Wirtschaftspolitik, S. 28.",
+      "courseLevel": "SekI",
+      "granularity": "officialContentOrRequirement",
+      "tags": [
+        "jurisdiction:DE-HH",
+        "subject:Wirtschaft",
+        "stage:SekI",
+        "topic:SI-PGW-WIRTSCHAFT-POLITIK"
+      ],
+      "rawSourceText": "Kategorien wie Kosten, Nutzen, Preis und Markt zur Analyse wirtschaftlicher Entscheidungen nutzen.",
+      "rawSourceSpan": "SI-PGW-WIRTSCHAFT-POLITIK (7)",
+      "rawParentBulletText": "Kategorien wie Kosten, Nutzen, Preis und Markt zur Analyse wirtschaftlicher Entscheidungen nutzen."
+    },
+    {
+      "id": "de-hh-pgw-seki-wirtschaft-si-pgw-wirtschaft-politik-g08-2a241e6c",
+      "passageId": "de-hh-pgw-seki-wirtschaft:si-pgw-wirtschaft-politik",
+      "topicCode": "SI-PGW-WIRTSCHAFT-POLITIK",
+      "bulletIndex": 8,
+      "aspectIndex": 1,
+      "title": "HH SI-PGW-WIRTSCHAFT-POLITIK (8): Wirtschaftsordnungen als grundlegende gesellschaftliche Ordnungsvorstellungen vergleichen.",
+      "description": "Source-Ziel aus Wirtschaftsgesellschaft und Wirtschaftspolitik: Wirtschaftsordnungen als grundlegende gesellschaftliche Ordnungsvorstellungen vergleichen.",
+      "sourceText": "Wirtschaftsordnungen als grundlegende gesellschaftliche Ordnungsvorstellungen vergleichen.",
+      "sourceSpan": "SI-PGW-WIRTSCHAFT-POLITIK (8)",
+      "parentBulletText": "Wirtschaftsordnungen als grundlegende gesellschaftliche Ordnungsvorstellungen vergleichen.",
+      "sourceRef": "Bildungsplan Gymnasium Sekundarstufe I Politik/Gesellschaft/Wirtschaft Hamburg, Wirtschaftsgesellschaft und Wirtschaftspolitik, S. 28.",
+      "courseLevel": "SekI",
+      "granularity": "officialContentOrRequirement",
+      "tags": [
+        "jurisdiction:DE-HH",
+        "subject:Wirtschaft",
+        "stage:SekI",
+        "topic:SI-PGW-WIRTSCHAFT-POLITIK"
+      ],
+      "rawSourceText": "Wirtschaftsordnungen als grundlegende gesellschaftliche Ordnungsvorstellungen vergleichen.",
+      "rawSourceSpan": "SI-PGW-WIRTSCHAFT-POLITIK (8)",
+      "rawParentBulletText": "Wirtschaftsordnungen als grundlegende gesellschaftliche Ordnungsvorstellungen vergleichen."
+    },
+    {
+      "id": "de-hh-pgw-seki-wirtschaft-si-pgw-wirtschaft-global-g01-2b927180",
+      "passageId": "de-hh-pgw-seki-wirtschaft:si-pgw-wirtschaft-global",
+      "topicCode": "SI-PGW-WIRTSCHAFT-GLOBAL",
+      "bulletIndex": 1,
+      "aspectIndex": 1,
+      "title": "HH SI-PGW-WIRTSCHAFT-GLOBAL (1): Klimawandel als globales Problem mit wirtschaftlicher Dimension analysieren.",
+      "description": "Source-Ziel aus Globale Probleme mit wirtschaftlicher Dimension: Klimawandel als globales Problem mit wirtschaftlicher Dimension analysieren.",
+      "sourceText": "Klimawandel als globales Problem mit wirtschaftlicher Dimension analysieren.",
+      "sourceSpan": "SI-PGW-WIRTSCHAFT-GLOBAL (1)",
+      "parentBulletText": "Klimawandel als globales Problem mit wirtschaftlicher Dimension analysieren.",
+      "sourceRef": "Bildungsplan Gymnasium Sekundarstufe I Politik/Gesellschaft/Wirtschaft Hamburg, Globale Probleme mit wirtschaftlicher Dimension, S. 28.",
+      "courseLevel": "SekI",
+      "granularity": "officialContentOrRequirement",
+      "tags": [
+        "jurisdiction:DE-HH",
+        "subject:Wirtschaft",
+        "stage:SekI",
+        "topic:SI-PGW-WIRTSCHAFT-GLOBAL"
+      ],
+      "rawSourceText": "Klimawandel als globales Problem mit wirtschaftlicher Dimension analysieren.",
+      "rawSourceSpan": "SI-PGW-WIRTSCHAFT-GLOBAL (1)",
+      "rawParentBulletText": "Klimawandel als globales Problem mit wirtschaftlicher Dimension analysieren."
+    },
+    {
+      "id": "de-hh-pgw-seki-wirtschaft-si-pgw-wirtschaft-global-g02-fd465f6d",
+      "passageId": "de-hh-pgw-seki-wirtschaft:si-pgw-wirtschaft-global",
+      "topicCode": "SI-PGW-WIRTSCHAFT-GLOBAL",
+      "bulletIndex": 2,
+      "aspectIndex": 1,
+      "title": "HH SI-PGW-WIRTSCHAFT-GLOBAL (2): Internationale Lösungswege für globale Umweltprobleme wirtschaftlich beurteilen.",
+      "description": "Source-Ziel aus Globale Probleme mit wirtschaftlicher Dimension: Internationale Lösungswege für globale Umweltprobleme wirtschaftlich beurteilen.",
+      "sourceText": "Internationale Lösungswege für globale Umweltprobleme wirtschaftlich beurteilen.",
+      "sourceSpan": "SI-PGW-WIRTSCHAFT-GLOBAL (2)",
+      "parentBulletText": "Internationale Lösungswege für globale Umweltprobleme wirtschaftlich beurteilen.",
+      "sourceRef": "Bildungsplan Gymnasium Sekundarstufe I Politik/Gesellschaft/Wirtschaft Hamburg, Globale Probleme mit wirtschaftlicher Dimension, S. 28.",
+      "courseLevel": "SekI",
+      "granularity": "officialContentOrRequirement",
+      "tags": [
+        "jurisdiction:DE-HH",
+        "subject:Wirtschaft",
+        "stage:SekI",
+        "topic:SI-PGW-WIRTSCHAFT-GLOBAL"
+      ],
+      "rawSourceText": "Internationale Lösungswege für globale Umweltprobleme wirtschaftlich beurteilen.",
+      "rawSourceSpan": "SI-PGW-WIRTSCHAFT-GLOBAL (2)",
+      "rawParentBulletText": "Internationale Lösungswege für globale Umweltprobleme wirtschaftlich beurteilen."
+    },
+    {
+      "id": "de-hh-pgw-seki-wirtschaft-si-pgw-wirtschaft-global-g03-0ad9a0b4",
+      "passageId": "de-hh-pgw-seki-wirtschaft:si-pgw-wirtschaft-global",
+      "topicCode": "SI-PGW-WIRTSCHAFT-GLOBAL",
+      "bulletIndex": 3,
+      "aspectIndex": 1,
+      "title": "HH SI-PGW-WIRTSCHAFT-GLOBAL (3): Globale Probleme anhand wirtschaftlicher Interessen und Zielkonflikte erschließen.",
+      "description": "Source-Ziel aus Globale Probleme mit wirtschaftlicher Dimension: Globale Probleme anhand wirtschaftlicher Interessen und Zielkonflikte erschließen.",
+      "sourceText": "Globale Probleme anhand wirtschaftlicher Interessen und Zielkonflikte erschließen.",
+      "sourceSpan": "SI-PGW-WIRTSCHAFT-GLOBAL (3)",
+      "parentBulletText": "Globale Probleme anhand wirtschaftlicher Interessen und Zielkonflikte erschließen.",
+      "sourceRef": "Bildungsplan Gymnasium Sekundarstufe I Politik/Gesellschaft/Wirtschaft Hamburg, Globale Probleme mit wirtschaftlicher Dimension, S. 28.",
+      "courseLevel": "SekI",
+      "granularity": "officialContentOrRequirement",
+      "tags": [
+        "jurisdiction:DE-HH",
+        "subject:Wirtschaft",
+        "stage:SekI",
+        "topic:SI-PGW-WIRTSCHAFT-GLOBAL"
+      ],
+      "rawSourceText": "Globale Probleme anhand wirtschaftlicher Interessen und Zielkonflikte erschließen.",
+      "rawSourceSpan": "SI-PGW-WIRTSCHAFT-GLOBAL (3)",
+      "rawParentBulletText": "Globale Probleme anhand wirtschaftlicher Interessen und Zielkonflikte erschließen."
+    }
+  ]
+}

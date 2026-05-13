@@ -112,7 +112,7 @@ const maturityCopy = {
       M2: 'Source-Ziele sind extrahiert und rückverfolgbar.',
       M3: 'Source-Ziele sind fachlich durch SkillPilot-Ziele abgedeckt.',
       M4: 'Bundesland-Sichten und QA-Scopes sind geprüft.',
-      M5: 'CI-fähiger Qualitätsstand ohne offene Fehler.',
+      M5: 'Schulgeeigneter QS-Stand: CI-fähig, ohne offene Fehler; Voraussetzung für Champions-QS in der Schule.',
     },
   },
   en: {
@@ -129,7 +129,7 @@ const maturityCopy = {
       M2: 'Source goals are extracted and traceable.',
       M3: 'Source goals are covered by SkillPilot goals.',
       M4: 'Jurisdiction views and QA scopes are validated.',
-      M5: 'CI-ready quality level without open failures.',
+      M5: 'School-ready QA level: CI-ready, no open failures; prerequisite for school-facing Champion QA.',
     },
   },
 } as const

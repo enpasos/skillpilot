@@ -33,3 +33,21 @@ Scope:
 Archived locally at:
 
 - `curricula/DE/Gymnasium/input/NW/upper-secondary/gost_klp_ch_2022_06_07.pdf`
+
+### Sozialwissenschaften/Wirtschaft Source PDF (download link)
+
+Starting point:
+https://lehrplannavigator.nrw.de/sekundarstufe-ii/kernlehrplaene-fuer-die-gymnasiale-oberstufe/sozialwissenschaften
+
+- `klp_gost_sowi.pdf`:
+  https://lehrplannavigator.nrw.de/system/files/media/document/file/klp_gost_sowi.pdf
+
+Scope:
+
+- Nordrhein-Westfalen
+- Gymnasiale Oberstufe
+- Sozialwissenschaften/Wirtschaft, wirtschaftliche Inhaltsbereiche
+
+Archived locally at:
+
+- `curricula/DE/Gymnasium/input/NW/upper-secondary/klp_gost_sowi.pdf`

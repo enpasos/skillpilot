@@ -20,3 +20,27 @@ Archived locally at:
 Generated source extraction:
 
 - `curricula/DE/Gymnasium/input/HH/lower-secondary/source-extraction/DE_HH_BIOLOGIE_SEKI_BILDUNGSPLAN_2011.source-extraction.json`
+
+## Politik/Gesellschaft/Wirtschaft
+
+Starting point:
+https://www.hamburg.de/politik-und-verwaltung/behoerden/schulbehoerde/veroeffentlichungen/bildungsplaene/gym-seki-123450
+
+- `pgw-gym-seki-2022-data.pdf`:
+  https://www.hamburg.de/resource/blob/123480/ec95895152120f9d437cdb3c9f987879/pgw-gym-seki-data.pdf
+
+Scope:
+
+- Hamburg
+- Gymnasium
+- Politik/Gesellschaft/Wirtschaft
+- lower-secondary extraction target: economic content fields and economic requirements from the official Gymnasium Sekundarstufe I PGW Bildungsplan
+- note: only economics-relevant content from the integrated PGW subject is routed to canonical Wirtschaft
+
+Archived locally at:
+
+- `curricula/DE/Gymnasium/input/HH/pgw-gym-seki-2022-data.pdf`
+
+Generated source extraction:
+
+- `curricula/DE/Gymnasium/input/HH/lower-secondary/source-extraction/DE_HH_PGW_SEKI_WIRTSCHAFT_BILDUNGSPLAN_2022.source-extraction.json`

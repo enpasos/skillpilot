@@ -44,3 +44,27 @@ Archived locally at:
 Generated source extraction:
 
 - `curricula/DE/Gymnasium/input/SH/upper-secondary/source-extraction/DE_SH_CHEMIE_SEKII_FACHANFORDERUNGEN_2022.source-extraction.json`
+
+## Wirtschaft/Politik
+
+Starting point:
+https://fachportal.lernnetz.de/sh/faecher/wirtschaft-politik/fachanforderungen.html
+
+- `Fachanforderungen_Wirtschaft_Politik_Sekundarstufe_2016_barrierearm.pdf`:
+  https://fachportal.lernnetz.de/files/Fachanforderungen%20und%20Leitf%C3%A4den/Sek.%20I_II/Fachanforderungen_barrierefrei/Fachanforderungen_WiPo_SEK_barrierearm.pdf
+
+Scope:
+
+- Schleswig-Holstein
+- Gymnasium
+- Wirtschaft/Politik
+- upper-secondary extraction target: E3, Q1.1, economic EU/social-state/globalization/ecology content from the official combined Sek-I/Sek-II Fachanforderungen
+- note: only economics-relevant content from the integrated Wirtschaft/Politik subject is routed to canonical Wirtschaft
+
+Archived locally at:
+
+- `curricula/DE/Gymnasium/input/SH/Fachanforderungen_Wirtschaft_Politik_Sekundarstufe_2016_barrierearm.pdf`
+
+Generated source extraction:
+
+- `curricula/DE/Gymnasium/input/SH/upper-secondary/source-extraction/DE_SH_WIRTSCHAFT_POLITIK_SEKII_FACHANFORDERUNGEN_2016.source-extraction.json`

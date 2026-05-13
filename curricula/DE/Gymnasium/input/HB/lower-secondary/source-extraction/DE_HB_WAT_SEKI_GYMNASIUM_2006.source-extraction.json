@@ -1,0 +1,859 @@
+{
+  "schemaVersion": 1,
+  "extractionId": "DE-HB-WAT-SEKI-WIRTSCHAFT",
+  "sourceLandscapeId": "2402c226-99ba-54c1-858c-b5f2d9c67429",
+  "targetLandscapeId": "605bdaf6-32d5-56fd-8d92-5a80c2fd2901",
+  "jurisdiction": "DE-HB",
+  "subject": "Wirtschaft",
+  "stage": "SekI",
+  "title": "Wirtschaft-Arbeit-Technik Sekundarstufe I (Bremen, Bildungsplan 2006 Source-Extraction)",
+  "sourceDocument": {
+    "key": "HB-WAT-GYMNASIUM-2006",
+    "title": "Bildungsplan Wirtschaft-Arbeit-Technik Gymnasium 5-10 Bremen",
+    "path": "curricula/DE/Gymnasium/input/HB/Gy_WAT_2006.pdf",
+    "url": "https://www.lis.bremen.de/sixcms/media.php/13/Gy_WAT_2006.pdf",
+    "official": true
+  },
+  "method": {
+    "passageExtraction": "pdftotext -layout; wirtschaftlich relevante Themen/Inhalte und themenbezogene Standards aus amtlichen Bremer Bildungsplaenen selektiert",
+    "sourceGoalExtraction": "one normalized source goal per official content item or tightly coupled themenbezogener Standard",
+    "scopeNote": "Das integrierte Fach Wirtschaft-Arbeit-Technik wird nur mit wirtschaftlichen Inhaltsbereichen in den kanonischen Wirtschaftskanon geroutet."
+  },
+  "qualityReview": {
+    "sourceGoalCountPeerBaseline": {
+      "accepted": true,
+      "details": "HB Sek I ist ein kompakter WAT-Bildungsplan. Die Source-Ziele wurden aus den vier verbindlichen Themenbereichen plus oekonomischen Inhaltsangeboten 9/10 granularisiert; die niedrigere Zielzahl ist fachlich plausibel."
+    }
+  },
+  "expectedTopicCodes": [
+    "SEKI-WAT-HAUSHALT-KONSUM",
+    "SEKI-WAT-UNTERNEHMEN-PRODUKTION",
+    "SEKI-WAT-INFRASTRUKTUREN",
+    "SEKI-WAT-BERUFSORIENTIERUNG"
+  ],
+  "pipelineStatus": {
+    "currentStep": "MAPPING-3",
+    "steps": [
+      {
+        "id": "MAPPING-1",
+        "label": "Original-Lehrplanpassagen extrahiert",
+        "status": "complete",
+        "dependsOn": [],
+        "checks": [
+          {
+            "id": "source-document-present",
+            "label": "Amtliche HB-Wirtschaft-Quelle liegt lokal vor",
+            "passed": true,
+            "details": "curricula/DE/Gymnasium/input/HB/Gy_WAT_2006.pdf"
+          }
+        ]
+      },
+      {
+        "id": "MAPPING-2",
+        "label": "Source-Ziele aus Lehrplanpassagen erstellt",
+        "status": "complete",
+        "dependsOn": [
+          "MAPPING-1"
+        ],
+        "checks": [
+          {
+            "id": "source-goals-created",
+            "label": "Aus den ausgewählten HB-Passagen wurden Source-Ziele erzeugt",
+            "passed": true,
+            "details": "29 Source-Ziele."
+          }
+        ]
+      },
+      {
+        "id": "MAPPING-3",
+        "label": "Source-Ziele auf SkillPilot-Ziele gemappt",
+        "status": "incomplete",
+        "dependsOn": [
+          "MAPPING-1",
+          "MAPPING-2"
+        ],
+        "checks": [
+          {
+            "id": "m3-review-file-present",
+            "label": "M3-Review-Datei ist vorhanden",
+            "passed": true,
+            "details": "curricula/DE/Gymnasium/mapping/DE-HB/lower-secondary/hb_wat_lower_secondary_economics_source_extraction_to_canonical_wirtschaft.review.json"
+          }
+        ]
+      }
+    ]
+  },
+  "passages": [
+    {
+      "id": "de-hb-wat-seki-wirtschaft:seki-wat-haushalt-konsum",
+      "topicCode": "SEKI-WAT-HAUSHALT-KONSUM",
+      "title": "Haushalt und Konsum",
+      "text": "(1) Physische, soziale, ökonomische und kulturelle Voraussetzungen des Wirtschaftens im privaten Haushalt erklären.\n(2) Daseinsvorsorge, Gesundheitsförderung und Verbraucherentscheidungen im privaten Haushalt wirtschaftlich einordnen.\n(3) Haushaltsmanagement als Einheit von Planen, Produzieren, Verwalten und Beratung nutzen.\n(4) Arbeitsteilung im Haushalt unter sozialen und ökonomischen Gesichtspunkten beurteilen.\n(5) Wirtschaften im privaten Haushalt im Spannungsfeld verfügbarer Mittel und Konsumansprüche beurteilen.\n(6) Nachhaltiges Wirtschaften im privaten Haushalt erklären und anwenden.\n(7) Voraussetzungen und Grenzen rationalen Verbraucherverhaltens beurteilen.\n(8) Verbraucherschutz und Verbraucherpolitik zwischen Wettbewerb, Information und Konsumentenschutz einordnen.",
+      "page": 6,
+      "sourcePath": "curricula/DE/Gymnasium/input/HB/Gy_WAT_2006.pdf",
+      "rawText": "Physische, soziale, ökonomische und kulturelle Voraussetzungen des Wirtschaftens im privaten Haushalt erklären.\nDaseinsvorsorge, Gesundheitsförderung und Verbraucherentscheidungen im privaten Haushalt wirtschaftlich einordnen.\nHaushaltsmanagement als Einheit von Planen, Produzieren, Verwalten und Beratung nutzen.\nArbeitsteilung im Haushalt unter sozialen und ökonomischen Gesichtspunkten beurteilen.\nWirtschaften im privaten Haushalt im Spannungsfeld verfügbarer Mittel und Konsumansprüche beurteilen.\nNachhaltiges Wirtschaften im privaten Haushalt erklären und anwenden.\nVoraussetzungen und Grenzen rationalen Verbraucherverhaltens beurteilen.\nVerbraucherschutz und Verbraucherpolitik zwischen Wettbewerb, Information und Konsumentenschutz einordnen.",
+      "sourceGoalIds": [
+        "de-hb-wat-seki-wirtschaft-seki-wat-haushalt-konsum-g01-8e953294",
+        "de-hb-wat-seki-wirtschaft-seki-wat-haushalt-konsum-g02-e9dfcaec",
+        "de-hb-wat-seki-wirtschaft-seki-wat-haushalt-konsum-g03-af350afc",
+        "de-hb-wat-seki-wirtschaft-seki-wat-haushalt-konsum-g04-9280a835",
+        "de-hb-wat-seki-wirtschaft-seki-wat-haushalt-konsum-g05-5a2c8470",
+        "de-hb-wat-seki-wirtschaft-seki-wat-haushalt-konsum-g06-ae22c0a9",
+        "de-hb-wat-seki-wirtschaft-seki-wat-haushalt-konsum-g07-d21a68ab",
+        "de-hb-wat-seki-wirtschaft-seki-wat-haushalt-konsum-g08-2156b8d8"
+      ]
+    },
+    {
+      "id": "de-hb-wat-seki-wirtschaft:seki-wat-unternehmen-produktion",
+      "topicCode": "SEKI-WAT-UNTERNEHMEN-PRODUKTION",
+      "title": "Unternehmen und Produktion",
+      "text": "(1) Arbeitsplätze, Arbeitsorganisation und Wirtschaftsbereiche beschreiben.\n(2) Arbeitsteilung und Spezialisierung in Haushalt, Betrieb und Volkswirtschaft erklären.\n(3) Arbeits- und Produktionsabläufe in Unternehmen analysieren.\n(4) Technisierung, Technisierungsstufen und Automatisierung als Veränderung von Produktion beurteilen.\n(5) Aufbau, Aufgaben und Funktionen von Betrieben und Unternehmen erläutern.\n(6) Ökologische Nachhaltigkeit der Produktion beurteilen.\n(7) Verteilung von Gütern und Einkommen in einer globalisierten Welt wirtschaftlich einordnen.\n(8) Ökonomisch Handelnde, ihre Funktionen, Ziele und Interessen unterscheiden.\n(9) Ursachen und Folgen von Arbeitslosigkeit analysieren.",
+      "page": 6,
+      "sourcePath": "curricula/DE/Gymnasium/input/HB/Gy_WAT_2006.pdf",
+      "rawText": "Arbeitsplätze, Arbeitsorganisation und Wirtschaftsbereiche beschreiben.\nArbeitsteilung und Spezialisierung in Haushalt, Betrieb und Volkswirtschaft erklären.\nArbeits- und Produktionsabläufe in Unternehmen analysieren.\nTechnisierung, Technisierungsstufen und Automatisierung als Veränderung von Produktion beurteilen.\nAufbau, Aufgaben und Funktionen von Betrieben und Unternehmen erläutern.\nÖkologische Nachhaltigkeit der Produktion beurteilen.\nVerteilung von Gütern und Einkommen in einer globalisierten Welt wirtschaftlich einordnen.\nÖkonomisch Handelnde, ihre Funktionen, Ziele und Interessen unterscheiden.\nUrsachen und Folgen von Arbeitslosigkeit analysieren.",
+      "sourceGoalIds": [
+        "de-hb-wat-seki-wirtschaft-seki-wat-unternehmen-produktion-g01-9111e3d6",
+        "de-hb-wat-seki-wirtschaft-seki-wat-unternehmen-produktion-g02-597c0067",
+        "de-hb-wat-seki-wirtschaft-seki-wat-unternehmen-produktion-g03-40cad89f",
+        "de-hb-wat-seki-wirtschaft-seki-wat-unternehmen-produktion-g04-b78cc4c3",
+        "de-hb-wat-seki-wirtschaft-seki-wat-unternehmen-produktion-g05-f60f523e",
+        "de-hb-wat-seki-wirtschaft-seki-wat-unternehmen-produktion-g06-40cd3e10",
+        "de-hb-wat-seki-wirtschaft-seki-wat-unternehmen-produktion-g07-018cc52c",
+        "de-hb-wat-seki-wirtschaft-seki-wat-unternehmen-produktion-g08-524fc235",
+        "de-hb-wat-seki-wirtschaft-seki-wat-unternehmen-produktion-g09-e1e3e71b"
+      ]
+    },
+    {
+      "id": "de-hb-wat-seki-wirtschaft:seki-wat-infrastrukturen",
+      "topicCode": "SEKI-WAT-INFRASTRUKTUREN",
+      "title": "Infrastrukturen, Ressourcen und globale Wirkungen",
+      "text": "(1) Entwicklung und Nutzung von Verkehrs-, Transport-, Informations- und Kommunikationsmitteln wirtschaftlich beurteilen.\n(2) Mobilitätskonzepte, Mobilitätsformen und eigene Verhaltensmuster unter ökonomischen und ökologischen Kriterien analysieren.\n(3) Beziehungen zwischen Produktionsbedingungen, Qualität und Preis erklären.\n(4) Individuelles und gesellschaftliches Verbraucherverhalten sowie notwendige Veränderungsprozesse beurteilen.\n(5) Gegenwärtige und zukünftige Folgen des Ressourcenverbrauchs wirtschaftlich und ökologisch bewerten.\n(6) Ökologische, soziale und ökonomische Auswirkungen einer globalisierten Welt analysieren.",
+      "page": 7,
+      "sourcePath": "curricula/DE/Gymnasium/input/HB/Gy_WAT_2006.pdf",
+      "rawText": "Entwicklung und Nutzung von Verkehrs-, Transport-, Informations- und Kommunikationsmitteln wirtschaftlich beurteilen.\nMobilitätskonzepte, Mobilitätsformen und eigene Verhaltensmuster unter ökonomischen und ökologischen Kriterien analysieren.\nBeziehungen zwischen Produktionsbedingungen, Qualität und Preis erklären.\nIndividuelles und gesellschaftliches Verbraucherverhalten sowie notwendige Veränderungsprozesse beurteilen.\nGegenwärtige und zukünftige Folgen des Ressourcenverbrauchs wirtschaftlich und ökologisch bewerten.\nÖkologische, soziale und ökonomische Auswirkungen einer globalisierten Welt analysieren.",
+      "sourceGoalIds": [
+        "de-hb-wat-seki-wirtschaft-seki-wat-infrastrukturen-g01-87c62479",
+        "de-hb-wat-seki-wirtschaft-seki-wat-infrastrukturen-g02-24ff43bc",
+        "de-hb-wat-seki-wirtschaft-seki-wat-infrastrukturen-g03-40231aef",
+        "de-hb-wat-seki-wirtschaft-seki-wat-infrastrukturen-g04-062e96bc",
+        "de-hb-wat-seki-wirtschaft-seki-wat-infrastrukturen-g05-7f0410c6",
+        "de-hb-wat-seki-wirtschaft-seki-wat-infrastrukturen-g06-fc3a0504"
+      ]
+    },
+    {
+      "id": "de-hb-wat-seki-wirtschaft:seki-wat-berufsorientierung",
+      "topicCode": "SEKI-WAT-BERUFSORIENTIERUNG",
+      "title": "Arbeits-, Berufsorientierung und Lebensplanung",
+      "text": "(1) Veränderungen von Berufsbildern und Tätigkeiten in der Arbeitswelt beschreiben.\n(2) Eigene Erwartungen, Interessen, Stärken und Schwächen für Berufsentscheidungen reflektieren.\n(3) Berufliche Eignung, Qualifikationsanforderungen und Lebensperspektiven Bildung-Beruf-Sozialstatus analysieren.\n(4) Informationen und Beratung zu Bildungsgängen, Berufen sowie regionalen Ausbildungs- und Studienmöglichkeiten nutzen.\n(5) Bewerbungs- und Einstellungsverfahren vorbereiten und auswerten.\n(6) Berufliche Anforderungen, Tätigkeiten am Arbeitsplatz, Jugendarbeitsschutz und Arbeitsschutz einordnen.",
+      "page": 7,
+      "sourcePath": "curricula/DE/Gymnasium/input/HB/Gy_WAT_2006.pdf",
+      "rawText": "Veränderungen von Berufsbildern und Tätigkeiten in der Arbeitswelt beschreiben.\nEigene Erwartungen, Interessen, Stärken und Schwächen für Berufsentscheidungen reflektieren.\nBerufliche Eignung, Qualifikationsanforderungen und Lebensperspektiven Bildung-Beruf-Sozialstatus analysieren.\nInformationen und Beratung zu Bildungsgängen, Berufen sowie regionalen Ausbildungs- und Studienmöglichkeiten nutzen.\nBewerbungs- und Einstellungsverfahren vorbereiten und auswerten.\nBerufliche Anforderungen, Tätigkeiten am Arbeitsplatz, Jugendarbeitsschutz und Arbeitsschutz einordnen.",
+      "sourceGoalIds": [
+        "de-hb-wat-seki-wirtschaft-seki-wat-berufsorientierung-g01-5702ab52",
+        "de-hb-wat-seki-wirtschaft-seki-wat-berufsorientierung-g02-da55a3f7",
+        "de-hb-wat-seki-wirtschaft-seki-wat-berufsorientierung-g03-988a73a9",
+        "de-hb-wat-seki-wirtschaft-seki-wat-berufsorientierung-g04-503b29aa",
+        "de-hb-wat-seki-wirtschaft-seki-wat-berufsorientierung-g05-58bbaf13",
+        "de-hb-wat-seki-wirtschaft-seki-wat-berufsorientierung-g06-bfe08957"
+      ]
+    }
+  ],
+  "sourceGoals": [
+    {
+      "id": "de-hb-wat-seki-wirtschaft-seki-wat-haushalt-konsum-g01-8e953294",
+      "passageId": "de-hb-wat-seki-wirtschaft:seki-wat-haushalt-konsum",
+      "topicCode": "SEKI-WAT-HAUSHALT-KONSUM",
+      "bulletIndex": 1,
+      "aspectIndex": 1,
+      "title": "HB SEKI-WAT-HAUSHALT-KONSUM (1): Physische, soziale, ökonomische und kulturelle Voraussetzungen des Wirtschaftens im privaten Haushalt erklären.",
+      "description": "Source-Ziel aus Haushalt und Konsum: Physische, soziale, ökonomische und kulturelle Voraussetzungen des Wirtschaftens im privaten Haushalt erklären.",
+      "sourceText": "Physische, soziale, ökonomische und kulturelle Voraussetzungen des Wirtschaftens im privaten Haushalt erklären.",
+      "sourceSpan": "SEKI-WAT-HAUSHALT-KONSUM (1)",
+      "parentBulletText": "Physische, soziale, ökonomische und kulturelle Voraussetzungen des Wirtschaftens im privaten Haushalt erklären.",
+      "sourceRef": "Bildungsplan Wirtschaft-Arbeit-Technik Gymnasium 5-10 Bremen, Haushalt und Konsum, S. 6.",
+      "courseLevel": "SekI",
+      "granularity": "officialContentOrStandard",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Wirtschaft",
+        "stage:SekI",
+        "topic:SEKI-WAT-HAUSHALT-KONSUM"
+      ],
+      "rawSourceText": "Physische, soziale, ökonomische und kulturelle Voraussetzungen des Wirtschaftens im privaten Haushalt erklären.",
+      "rawSourceSpan": "SEKI-WAT-HAUSHALT-KONSUM (1)",
+      "rawParentBulletText": "Physische, soziale, ökonomische und kulturelle Voraussetzungen des Wirtschaftens im privaten Haushalt erklären."
+    },
+    {
+      "id": "de-hb-wat-seki-wirtschaft-seki-wat-haushalt-konsum-g02-e9dfcaec",
+      "passageId": "de-hb-wat-seki-wirtschaft:seki-wat-haushalt-konsum",
+      "topicCode": "SEKI-WAT-HAUSHALT-KONSUM",
+      "bulletIndex": 2,
+      "aspectIndex": 1,
+      "title": "HB SEKI-WAT-HAUSHALT-KONSUM (2): Daseinsvorsorge, Gesundheitsförderung und Verbraucherentscheidungen im privaten Haushalt wirtschaftlich einordnen.",
+      "description": "Source-Ziel aus Haushalt und Konsum: Daseinsvorsorge, Gesundheitsförderung und Verbraucherentscheidungen im privaten Haushalt wirtschaftlich einordnen.",
+      "sourceText": "Daseinsvorsorge, Gesundheitsförderung und Verbraucherentscheidungen im privaten Haushalt wirtschaftlich einordnen.",
+      "sourceSpan": "SEKI-WAT-HAUSHALT-KONSUM (2)",
+      "parentBulletText": "Daseinsvorsorge, Gesundheitsförderung und Verbraucherentscheidungen im privaten Haushalt wirtschaftlich einordnen.",
+      "sourceRef": "Bildungsplan Wirtschaft-Arbeit-Technik Gymnasium 5-10 Bremen, Haushalt und Konsum, S. 6.",
+      "courseLevel": "SekI",
+      "granularity": "officialContentOrStandard",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Wirtschaft",
+        "stage:SekI",
+        "topic:SEKI-WAT-HAUSHALT-KONSUM"
+      ],
+      "rawSourceText": "Daseinsvorsorge, Gesundheitsförderung und Verbraucherentscheidungen im privaten Haushalt wirtschaftlich einordnen.",
+      "rawSourceSpan": "SEKI-WAT-HAUSHALT-KONSUM (2)",
+      "rawParentBulletText": "Daseinsvorsorge, Gesundheitsförderung und Verbraucherentscheidungen im privaten Haushalt wirtschaftlich einordnen."
+    },
+    {
+      "id": "de-hb-wat-seki-wirtschaft-seki-wat-haushalt-konsum-g03-af350afc",
+      "passageId": "de-hb-wat-seki-wirtschaft:seki-wat-haushalt-konsum",
+      "topicCode": "SEKI-WAT-HAUSHALT-KONSUM",
+      "bulletIndex": 3,
+      "aspectIndex": 1,
+      "title": "HB SEKI-WAT-HAUSHALT-KONSUM (3): Haushaltsmanagement als Einheit von Planen, Produzieren, Verwalten und Beratung nutzen.",
+      "description": "Source-Ziel aus Haushalt und Konsum: Haushaltsmanagement als Einheit von Planen, Produzieren, Verwalten und Beratung nutzen.",
+      "sourceText": "Haushaltsmanagement als Einheit von Planen, Produzieren, Verwalten und Beratung nutzen.",
+      "sourceSpan": "SEKI-WAT-HAUSHALT-KONSUM (3)",
+      "parentBulletText": "Haushaltsmanagement als Einheit von Planen, Produzieren, Verwalten und Beratung nutzen.",
+      "sourceRef": "Bildungsplan Wirtschaft-Arbeit-Technik Gymnasium 5-10 Bremen, Haushalt und Konsum, S. 6.",
+      "courseLevel": "SekI",
+      "granularity": "officialContentOrStandard",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Wirtschaft",
+        "stage:SekI",
+        "topic:SEKI-WAT-HAUSHALT-KONSUM"
+      ],
+      "rawSourceText": "Haushaltsmanagement als Einheit von Planen, Produzieren, Verwalten und Beratung nutzen.",
+      "rawSourceSpan": "SEKI-WAT-HAUSHALT-KONSUM (3)",
+      "rawParentBulletText": "Haushaltsmanagement als Einheit von Planen, Produzieren, Verwalten und Beratung nutzen."
+    },
+    {
+      "id": "de-hb-wat-seki-wirtschaft-seki-wat-haushalt-konsum-g04-9280a835",
+      "passageId": "de-hb-wat-seki-wirtschaft:seki-wat-haushalt-konsum",
+      "topicCode": "SEKI-WAT-HAUSHALT-KONSUM",
+      "bulletIndex": 4,
+      "aspectIndex": 1,
+      "title": "HB SEKI-WAT-HAUSHALT-KONSUM (4): Arbeitsteilung im Haushalt unter sozialen und ökonomischen Gesichtspunkten beurteilen.",
+      "description": "Source-Ziel aus Haushalt und Konsum: Arbeitsteilung im Haushalt unter sozialen und ökonomischen Gesichtspunkten beurteilen.",
+      "sourceText": "Arbeitsteilung im Haushalt unter sozialen und ökonomischen Gesichtspunkten beurteilen.",
+      "sourceSpan": "SEKI-WAT-HAUSHALT-KONSUM (4)",
+      "parentBulletText": "Arbeitsteilung im Haushalt unter sozialen und ökonomischen Gesichtspunkten beurteilen.",
+      "sourceRef": "Bildungsplan Wirtschaft-Arbeit-Technik Gymnasium 5-10 Bremen, Haushalt und Konsum, S. 6.",
+      "courseLevel": "SekI",
+      "granularity": "officialContentOrStandard",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Wirtschaft",
+        "stage:SekI",
+        "topic:SEKI-WAT-HAUSHALT-KONSUM"
+      ],
+      "rawSourceText": "Arbeitsteilung im Haushalt unter sozialen und ökonomischen Gesichtspunkten beurteilen.",
+      "rawSourceSpan": "SEKI-WAT-HAUSHALT-KONSUM (4)",
+      "rawParentBulletText": "Arbeitsteilung im Haushalt unter sozialen und ökonomischen Gesichtspunkten beurteilen."
+    },
+    {
+      "id": "de-hb-wat-seki-wirtschaft-seki-wat-haushalt-konsum-g05-5a2c8470",
+      "passageId": "de-hb-wat-seki-wirtschaft:seki-wat-haushalt-konsum",
+      "topicCode": "SEKI-WAT-HAUSHALT-KONSUM",
+      "bulletIndex": 5,
+      "aspectIndex": 1,
+      "title": "HB SEKI-WAT-HAUSHALT-KONSUM (5): Wirtschaften im privaten Haushalt im Spannungsfeld verfügbarer Mittel und Konsumansprüche beurteilen.",
+      "description": "Source-Ziel aus Haushalt und Konsum: Wirtschaften im privaten Haushalt im Spannungsfeld verfügbarer Mittel und Konsumansprüche beurteilen.",
+      "sourceText": "Wirtschaften im privaten Haushalt im Spannungsfeld verfügbarer Mittel und Konsumansprüche beurteilen.",
+      "sourceSpan": "SEKI-WAT-HAUSHALT-KONSUM (5)",
+      "parentBulletText": "Wirtschaften im privaten Haushalt im Spannungsfeld verfügbarer Mittel und Konsumansprüche beurteilen.",
+      "sourceRef": "Bildungsplan Wirtschaft-Arbeit-Technik Gymnasium 5-10 Bremen, Haushalt und Konsum, S. 6.",
+      "courseLevel": "SekI",
+      "granularity": "officialContentOrStandard",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Wirtschaft",
+        "stage:SekI",
+        "topic:SEKI-WAT-HAUSHALT-KONSUM"
+      ],
+      "rawSourceText": "Wirtschaften im privaten Haushalt im Spannungsfeld verfügbarer Mittel und Konsumansprüche beurteilen.",
+      "rawSourceSpan": "SEKI-WAT-HAUSHALT-KONSUM (5)",
+      "rawParentBulletText": "Wirtschaften im privaten Haushalt im Spannungsfeld verfügbarer Mittel und Konsumansprüche beurteilen."
+    },
+    {
+      "id": "de-hb-wat-seki-wirtschaft-seki-wat-haushalt-konsum-g06-ae22c0a9",
+      "passageId": "de-hb-wat-seki-wirtschaft:seki-wat-haushalt-konsum",
+      "topicCode": "SEKI-WAT-HAUSHALT-KONSUM",
+      "bulletIndex": 6,
+      "aspectIndex": 1,
+      "title": "HB SEKI-WAT-HAUSHALT-KONSUM (6): Nachhaltiges Wirtschaften im privaten Haushalt erklären und anwenden.",
+      "description": "Source-Ziel aus Haushalt und Konsum: Nachhaltiges Wirtschaften im privaten Haushalt erklären und anwenden.",
+      "sourceText": "Nachhaltiges Wirtschaften im privaten Haushalt erklären und anwenden.",
+      "sourceSpan": "SEKI-WAT-HAUSHALT-KONSUM (6)",
+      "parentBulletText": "Nachhaltiges Wirtschaften im privaten Haushalt erklären und anwenden.",
+      "sourceRef": "Bildungsplan Wirtschaft-Arbeit-Technik Gymnasium 5-10 Bremen, Haushalt und Konsum, S. 6.",
+      "courseLevel": "SekI",
+      "granularity": "officialContentOrStandard",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Wirtschaft",
+        "stage:SekI",
+        "topic:SEKI-WAT-HAUSHALT-KONSUM"
+      ],
+      "rawSourceText": "Nachhaltiges Wirtschaften im privaten Haushalt erklären und anwenden.",
+      "rawSourceSpan": "SEKI-WAT-HAUSHALT-KONSUM (6)",
+      "rawParentBulletText": "Nachhaltiges Wirtschaften im privaten Haushalt erklären und anwenden."
+    },
+    {
+      "id": "de-hb-wat-seki-wirtschaft-seki-wat-haushalt-konsum-g07-d21a68ab",
+      "passageId": "de-hb-wat-seki-wirtschaft:seki-wat-haushalt-konsum",
+      "topicCode": "SEKI-WAT-HAUSHALT-KONSUM",
+      "bulletIndex": 7,
+      "aspectIndex": 1,
+      "title": "HB SEKI-WAT-HAUSHALT-KONSUM (7): Voraussetzungen und Grenzen rationalen Verbraucherverhaltens beurteilen.",
+      "description": "Source-Ziel aus Haushalt und Konsum: Voraussetzungen und Grenzen rationalen Verbraucherverhaltens beurteilen.",
+      "sourceText": "Voraussetzungen und Grenzen rationalen Verbraucherverhaltens beurteilen.",
+      "sourceSpan": "SEKI-WAT-HAUSHALT-KONSUM (7)",
+      "parentBulletText": "Voraussetzungen und Grenzen rationalen Verbraucherverhaltens beurteilen.",
+      "sourceRef": "Bildungsplan Wirtschaft-Arbeit-Technik Gymnasium 5-10 Bremen, Haushalt und Konsum, S. 6.",
+      "courseLevel": "SekI",
+      "granularity": "officialContentOrStandard",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Wirtschaft",
+        "stage:SekI",
+        "topic:SEKI-WAT-HAUSHALT-KONSUM"
+      ],
+      "rawSourceText": "Voraussetzungen und Grenzen rationalen Verbraucherverhaltens beurteilen.",
+      "rawSourceSpan": "SEKI-WAT-HAUSHALT-KONSUM (7)",
+      "rawParentBulletText": "Voraussetzungen und Grenzen rationalen Verbraucherverhaltens beurteilen."
+    },
+    {
+      "id": "de-hb-wat-seki-wirtschaft-seki-wat-haushalt-konsum-g08-2156b8d8",
+      "passageId": "de-hb-wat-seki-wirtschaft:seki-wat-haushalt-konsum",
+      "topicCode": "SEKI-WAT-HAUSHALT-KONSUM",
+      "bulletIndex": 8,
+      "aspectIndex": 1,
+      "title": "HB SEKI-WAT-HAUSHALT-KONSUM (8): Verbraucherschutz und Verbraucherpolitik zwischen Wettbewerb, Information und Konsumentenschutz einordnen.",
+      "description": "Source-Ziel aus Haushalt und Konsum: Verbraucherschutz und Verbraucherpolitik zwischen Wettbewerb, Information und Konsumentenschutz einordnen.",
+      "sourceText": "Verbraucherschutz und Verbraucherpolitik zwischen Wettbewerb, Information und Konsumentenschutz einordnen.",
+      "sourceSpan": "SEKI-WAT-HAUSHALT-KONSUM (8)",
+      "parentBulletText": "Verbraucherschutz und Verbraucherpolitik zwischen Wettbewerb, Information und Konsumentenschutz einordnen.",
+      "sourceRef": "Bildungsplan Wirtschaft-Arbeit-Technik Gymnasium 5-10 Bremen, Haushalt und Konsum, S. 6.",
+      "courseLevel": "SekI",
+      "granularity": "officialContentOrStandard",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Wirtschaft",
+        "stage:SekI",
+        "topic:SEKI-WAT-HAUSHALT-KONSUM"
+      ],
+      "rawSourceText": "Verbraucherschutz und Verbraucherpolitik zwischen Wettbewerb, Information und Konsumentenschutz einordnen.",
+      "rawSourceSpan": "SEKI-WAT-HAUSHALT-KONSUM (8)",
+      "rawParentBulletText": "Verbraucherschutz und Verbraucherpolitik zwischen Wettbewerb, Information und Konsumentenschutz einordnen."
+    },
+    {
+      "id": "de-hb-wat-seki-wirtschaft-seki-wat-unternehmen-produktion-g01-9111e3d6",
+      "passageId": "de-hb-wat-seki-wirtschaft:seki-wat-unternehmen-produktion",
+      "topicCode": "SEKI-WAT-UNTERNEHMEN-PRODUKTION",
+      "bulletIndex": 1,
+      "aspectIndex": 1,
+      "title": "HB SEKI-WAT-UNTERNEHMEN-PRODUKTION (1): Arbeitsplätze, Arbeitsorganisation und Wirtschaftsbereiche beschreiben.",
+      "description": "Source-Ziel aus Unternehmen und Produktion: Arbeitsplätze, Arbeitsorganisation und Wirtschaftsbereiche beschreiben.",
+      "sourceText": "Arbeitsplätze, Arbeitsorganisation und Wirtschaftsbereiche beschreiben.",
+      "sourceSpan": "SEKI-WAT-UNTERNEHMEN-PRODUKTION (1)",
+      "parentBulletText": "Arbeitsplätze, Arbeitsorganisation und Wirtschaftsbereiche beschreiben.",
+      "sourceRef": "Bildungsplan Wirtschaft-Arbeit-Technik Gymnasium 5-10 Bremen, Unternehmen und Produktion, S. 6.",
+      "courseLevel": "SekI",
+      "granularity": "officialContentOrStandard",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Wirtschaft",
+        "stage:SekI",
+        "topic:SEKI-WAT-UNTERNEHMEN-PRODUKTION"
+      ],
+      "rawSourceText": "Arbeitsplätze, Arbeitsorganisation und Wirtschaftsbereiche beschreiben.",
+      "rawSourceSpan": "SEKI-WAT-UNTERNEHMEN-PRODUKTION (1)",
+      "rawParentBulletText": "Arbeitsplätze, Arbeitsorganisation und Wirtschaftsbereiche beschreiben."
+    },
+    {
+      "id": "de-hb-wat-seki-wirtschaft-seki-wat-unternehmen-produktion-g02-597c0067",
+      "passageId": "de-hb-wat-seki-wirtschaft:seki-wat-unternehmen-produktion",
+      "topicCode": "SEKI-WAT-UNTERNEHMEN-PRODUKTION",
+      "bulletIndex": 2,
+      "aspectIndex": 1,
+      "title": "HB SEKI-WAT-UNTERNEHMEN-PRODUKTION (2): Arbeitsteilung und Spezialisierung in Haushalt, Betrieb und Volkswirtschaft erklären.",
+      "description": "Source-Ziel aus Unternehmen und Produktion: Arbeitsteilung und Spezialisierung in Haushalt, Betrieb und Volkswirtschaft erklären.",
+      "sourceText": "Arbeitsteilung und Spezialisierung in Haushalt, Betrieb und Volkswirtschaft erklären.",
+      "sourceSpan": "SEKI-WAT-UNTERNEHMEN-PRODUKTION (2)",
+      "parentBulletText": "Arbeitsteilung und Spezialisierung in Haushalt, Betrieb und Volkswirtschaft erklären.",
+      "sourceRef": "Bildungsplan Wirtschaft-Arbeit-Technik Gymnasium 5-10 Bremen, Unternehmen und Produktion, S. 6.",
+      "courseLevel": "SekI",
+      "granularity": "officialContentOrStandard",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Wirtschaft",
+        "stage:SekI",
+        "topic:SEKI-WAT-UNTERNEHMEN-PRODUKTION"
+      ],
+      "rawSourceText": "Arbeitsteilung und Spezialisierung in Haushalt, Betrieb und Volkswirtschaft erklären.",
+      "rawSourceSpan": "SEKI-WAT-UNTERNEHMEN-PRODUKTION (2)",
+      "rawParentBulletText": "Arbeitsteilung und Spezialisierung in Haushalt, Betrieb und Volkswirtschaft erklären."
+    },
+    {
+      "id": "de-hb-wat-seki-wirtschaft-seki-wat-unternehmen-produktion-g03-40cad89f",
+      "passageId": "de-hb-wat-seki-wirtschaft:seki-wat-unternehmen-produktion",
+      "topicCode": "SEKI-WAT-UNTERNEHMEN-PRODUKTION",
+      "bulletIndex": 3,
+      "aspectIndex": 1,
+      "title": "HB SEKI-WAT-UNTERNEHMEN-PRODUKTION (3): Arbeits- und Produktionsabläufe in Unternehmen analysieren.",
+      "description": "Source-Ziel aus Unternehmen und Produktion: Arbeits- und Produktionsabläufe in Unternehmen analysieren.",
+      "sourceText": "Arbeits- und Produktionsabläufe in Unternehmen analysieren.",
+      "sourceSpan": "SEKI-WAT-UNTERNEHMEN-PRODUKTION (3)",
+      "parentBulletText": "Arbeits- und Produktionsabläufe in Unternehmen analysieren.",
+      "sourceRef": "Bildungsplan Wirtschaft-Arbeit-Technik Gymnasium 5-10 Bremen, Unternehmen und Produktion, S. 6.",
+      "courseLevel": "SekI",
+      "granularity": "officialContentOrStandard",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Wirtschaft",
+        "stage:SekI",
+        "topic:SEKI-WAT-UNTERNEHMEN-PRODUKTION"
+      ],
+      "rawSourceText": "Arbeits- und Produktionsabläufe in Unternehmen analysieren.",
+      "rawSourceSpan": "SEKI-WAT-UNTERNEHMEN-PRODUKTION (3)",
+      "rawParentBulletText": "Arbeits- und Produktionsabläufe in Unternehmen analysieren."
+    },
+    {
+      "id": "de-hb-wat-seki-wirtschaft-seki-wat-unternehmen-produktion-g04-b78cc4c3",
+      "passageId": "de-hb-wat-seki-wirtschaft:seki-wat-unternehmen-produktion",
+      "topicCode": "SEKI-WAT-UNTERNEHMEN-PRODUKTION",
+      "bulletIndex": 4,
+      "aspectIndex": 1,
+      "title": "HB SEKI-WAT-UNTERNEHMEN-PRODUKTION (4): Technisierung, Technisierungsstufen und Automatisierung als Veränderung von Produktion beurteilen.",
+      "description": "Source-Ziel aus Unternehmen und Produktion: Technisierung, Technisierungsstufen und Automatisierung als Veränderung von Produktion beurteilen.",
+      "sourceText": "Technisierung, Technisierungsstufen und Automatisierung als Veränderung von Produktion beurteilen.",
+      "sourceSpan": "SEKI-WAT-UNTERNEHMEN-PRODUKTION (4)",
+      "parentBulletText": "Technisierung, Technisierungsstufen und Automatisierung als Veränderung von Produktion beurteilen.",
+      "sourceRef": "Bildungsplan Wirtschaft-Arbeit-Technik Gymnasium 5-10 Bremen, Unternehmen und Produktion, S. 6.",
+      "courseLevel": "SekI",
+      "granularity": "officialContentOrStandard",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Wirtschaft",
+        "stage:SekI",
+        "topic:SEKI-WAT-UNTERNEHMEN-PRODUKTION"
+      ],
+      "rawSourceText": "Technisierung, Technisierungsstufen und Automatisierung als Veränderung von Produktion beurteilen.",
+      "rawSourceSpan": "SEKI-WAT-UNTERNEHMEN-PRODUKTION (4)",
+      "rawParentBulletText": "Technisierung, Technisierungsstufen und Automatisierung als Veränderung von Produktion beurteilen."
+    },
+    {
+      "id": "de-hb-wat-seki-wirtschaft-seki-wat-unternehmen-produktion-g05-f60f523e",
+      "passageId": "de-hb-wat-seki-wirtschaft:seki-wat-unternehmen-produktion",
+      "topicCode": "SEKI-WAT-UNTERNEHMEN-PRODUKTION",
+      "bulletIndex": 5,
+      "aspectIndex": 1,
+      "title": "HB SEKI-WAT-UNTERNEHMEN-PRODUKTION (5): Aufbau, Aufgaben und Funktionen von Betrieben und Unternehmen erläutern.",
+      "description": "Source-Ziel aus Unternehmen und Produktion: Aufbau, Aufgaben und Funktionen von Betrieben und Unternehmen erläutern.",
+      "sourceText": "Aufbau, Aufgaben und Funktionen von Betrieben und Unternehmen erläutern.",
+      "sourceSpan": "SEKI-WAT-UNTERNEHMEN-PRODUKTION (5)",
+      "parentBulletText": "Aufbau, Aufgaben und Funktionen von Betrieben und Unternehmen erläutern.",
+      "sourceRef": "Bildungsplan Wirtschaft-Arbeit-Technik Gymnasium 5-10 Bremen, Unternehmen und Produktion, S. 6.",
+      "courseLevel": "SekI",
+      "granularity": "officialContentOrStandard",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Wirtschaft",
+        "stage:SekI",
+        "topic:SEKI-WAT-UNTERNEHMEN-PRODUKTION"
+      ],
+      "rawSourceText": "Aufbau, Aufgaben und Funktionen von Betrieben und Unternehmen erläutern.",
+      "rawSourceSpan": "SEKI-WAT-UNTERNEHMEN-PRODUKTION (5)",
+      "rawParentBulletText": "Aufbau, Aufgaben und Funktionen von Betrieben und Unternehmen erläutern."
+    },
+    {
+      "id": "de-hb-wat-seki-wirtschaft-seki-wat-unternehmen-produktion-g06-40cd3e10",
+      "passageId": "de-hb-wat-seki-wirtschaft:seki-wat-unternehmen-produktion",
+      "topicCode": "SEKI-WAT-UNTERNEHMEN-PRODUKTION",
+      "bulletIndex": 6,
+      "aspectIndex": 1,
+      "title": "HB SEKI-WAT-UNTERNEHMEN-PRODUKTION (6): Ökologische Nachhaltigkeit der Produktion beurteilen.",
+      "description": "Source-Ziel aus Unternehmen und Produktion: Ökologische Nachhaltigkeit der Produktion beurteilen.",
+      "sourceText": "Ökologische Nachhaltigkeit der Produktion beurteilen.",
+      "sourceSpan": "SEKI-WAT-UNTERNEHMEN-PRODUKTION (6)",
+      "parentBulletText": "Ökologische Nachhaltigkeit der Produktion beurteilen.",
+      "sourceRef": "Bildungsplan Wirtschaft-Arbeit-Technik Gymnasium 5-10 Bremen, Unternehmen und Produktion, S. 6.",
+      "courseLevel": "SekI",
+      "granularity": "officialContentOrStandard",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Wirtschaft",
+        "stage:SekI",
+        "topic:SEKI-WAT-UNTERNEHMEN-PRODUKTION"
+      ],
+      "rawSourceText": "Ökologische Nachhaltigkeit der Produktion beurteilen.",
+      "rawSourceSpan": "SEKI-WAT-UNTERNEHMEN-PRODUKTION (6)",
+      "rawParentBulletText": "Ökologische Nachhaltigkeit der Produktion beurteilen."
+    },
+    {
+      "id": "de-hb-wat-seki-wirtschaft-seki-wat-unternehmen-produktion-g07-018cc52c",
+      "passageId": "de-hb-wat-seki-wirtschaft:seki-wat-unternehmen-produktion",
+      "topicCode": "SEKI-WAT-UNTERNEHMEN-PRODUKTION",
+      "bulletIndex": 7,
+      "aspectIndex": 1,
+      "title": "HB SEKI-WAT-UNTERNEHMEN-PRODUKTION (7): Verteilung von Gütern und Einkommen in einer globalisierten Welt wirtschaftlich einordnen.",
+      "description": "Source-Ziel aus Unternehmen und Produktion: Verteilung von Gütern und Einkommen in einer globalisierten Welt wirtschaftlich einordnen.",
+      "sourceText": "Verteilung von Gütern und Einkommen in einer globalisierten Welt wirtschaftlich einordnen.",
+      "sourceSpan": "SEKI-WAT-UNTERNEHMEN-PRODUKTION (7)",
+      "parentBulletText": "Verteilung von Gütern und Einkommen in einer globalisierten Welt wirtschaftlich einordnen.",
+      "sourceRef": "Bildungsplan Wirtschaft-Arbeit-Technik Gymnasium 5-10 Bremen, Unternehmen und Produktion, S. 6.",
+      "courseLevel": "SekI",
+      "granularity": "officialContentOrStandard",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Wirtschaft",
+        "stage:SekI",
+        "topic:SEKI-WAT-UNTERNEHMEN-PRODUKTION"
+      ],
+      "rawSourceText": "Verteilung von Gütern und Einkommen in einer globalisierten Welt wirtschaftlich einordnen.",
+      "rawSourceSpan": "SEKI-WAT-UNTERNEHMEN-PRODUKTION (7)",
+      "rawParentBulletText": "Verteilung von Gütern und Einkommen in einer globalisierten Welt wirtschaftlich einordnen."
+    },
+    {
+      "id": "de-hb-wat-seki-wirtschaft-seki-wat-unternehmen-produktion-g08-524fc235",
+      "passageId": "de-hb-wat-seki-wirtschaft:seki-wat-unternehmen-produktion",
+      "topicCode": "SEKI-WAT-UNTERNEHMEN-PRODUKTION",
+      "bulletIndex": 8,
+      "aspectIndex": 1,
+      "title": "HB SEKI-WAT-UNTERNEHMEN-PRODUKTION (8): Ökonomisch Handelnde, ihre Funktionen, Ziele und Interessen unterscheiden.",
+      "description": "Source-Ziel aus Unternehmen und Produktion: Ökonomisch Handelnde, ihre Funktionen, Ziele und Interessen unterscheiden.",
+      "sourceText": "Ökonomisch Handelnde, ihre Funktionen, Ziele und Interessen unterscheiden.",
+      "sourceSpan": "SEKI-WAT-UNTERNEHMEN-PRODUKTION (8)",
+      "parentBulletText": "Ökonomisch Handelnde, ihre Funktionen, Ziele und Interessen unterscheiden.",
+      "sourceRef": "Bildungsplan Wirtschaft-Arbeit-Technik Gymnasium 5-10 Bremen, Unternehmen und Produktion, S. 6.",
+      "courseLevel": "SekI",
+      "granularity": "officialContentOrStandard",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Wirtschaft",
+        "stage:SekI",
+        "topic:SEKI-WAT-UNTERNEHMEN-PRODUKTION"
+      ],
+      "rawSourceText": "Ökonomisch Handelnde, ihre Funktionen, Ziele und Interessen unterscheiden.",
+      "rawSourceSpan": "SEKI-WAT-UNTERNEHMEN-PRODUKTION (8)",
+      "rawParentBulletText": "Ökonomisch Handelnde, ihre Funktionen, Ziele und Interessen unterscheiden."
+    },
+    {
+      "id": "de-hb-wat-seki-wirtschaft-seki-wat-unternehmen-produktion-g09-e1e3e71b",
+      "passageId": "de-hb-wat-seki-wirtschaft:seki-wat-unternehmen-produktion",
+      "topicCode": "SEKI-WAT-UNTERNEHMEN-PRODUKTION",
+      "bulletIndex": 9,
+      "aspectIndex": 1,
+      "title": "HB SEKI-WAT-UNTERNEHMEN-PRODUKTION (9): Ursachen und Folgen von Arbeitslosigkeit analysieren.",
+      "description": "Source-Ziel aus Unternehmen und Produktion: Ursachen und Folgen von Arbeitslosigkeit analysieren.",
+      "sourceText": "Ursachen und Folgen von Arbeitslosigkeit analysieren.",
+      "sourceSpan": "SEKI-WAT-UNTERNEHMEN-PRODUKTION (9)",
+      "parentBulletText": "Ursachen und Folgen von Arbeitslosigkeit analysieren.",
+      "sourceRef": "Bildungsplan Wirtschaft-Arbeit-Technik Gymnasium 5-10 Bremen, Unternehmen und Produktion, S. 6.",
+      "courseLevel": "SekI",
+      "granularity": "officialContentOrStandard",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Wirtschaft",
+        "stage:SekI",
+        "topic:SEKI-WAT-UNTERNEHMEN-PRODUKTION"
+      ],
+      "rawSourceText": "Ursachen und Folgen von Arbeitslosigkeit analysieren.",
+      "rawSourceSpan": "SEKI-WAT-UNTERNEHMEN-PRODUKTION (9)",
+      "rawParentBulletText": "Ursachen und Folgen von Arbeitslosigkeit analysieren."
+    },
+    {
+      "id": "de-hb-wat-seki-wirtschaft-seki-wat-infrastrukturen-g01-87c62479",
+      "passageId": "de-hb-wat-seki-wirtschaft:seki-wat-infrastrukturen",
+      "topicCode": "SEKI-WAT-INFRASTRUKTUREN",
+      "bulletIndex": 1,
+      "aspectIndex": 1,
+      "title": "HB SEKI-WAT-INFRASTRUKTUREN (1): Entwicklung und Nutzung von Verkehrs-, Transport-, Informations- und Kommunikationsmitteln wirtschaftlich beurteilen.",
+      "description": "Source-Ziel aus Infrastrukturen, Ressourcen und globale Wirkungen: Entwicklung und Nutzung von Verkehrs-, Transport-, Informations- und Kommunikationsmitteln wirtschaftlich beurteilen.",
+      "sourceText": "Entwicklung und Nutzung von Verkehrs-, Transport-, Informations- und Kommunikationsmitteln wirtschaftlich beurteilen.",
+      "sourceSpan": "SEKI-WAT-INFRASTRUKTUREN (1)",
+      "parentBulletText": "Entwicklung und Nutzung von Verkehrs-, Transport-, Informations- und Kommunikationsmitteln wirtschaftlich beurteilen.",
+      "sourceRef": "Bildungsplan Wirtschaft-Arbeit-Technik Gymnasium 5-10 Bremen, Infrastrukturen, Ressourcen und globale Wirkungen, S. 7.",
+      "courseLevel": "SekI",
+      "granularity": "officialContentOrStandard",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Wirtschaft",
+        "stage:SekI",
+        "topic:SEKI-WAT-INFRASTRUKTUREN"
+      ],
+      "rawSourceText": "Entwicklung und Nutzung von Verkehrs-, Transport-, Informations- und Kommunikationsmitteln wirtschaftlich beurteilen.",
+      "rawSourceSpan": "SEKI-WAT-INFRASTRUKTUREN (1)",
+      "rawParentBulletText": "Entwicklung und Nutzung von Verkehrs-, Transport-, Informations- und Kommunikationsmitteln wirtschaftlich beurteilen."
+    },
+    {
+      "id": "de-hb-wat-seki-wirtschaft-seki-wat-infrastrukturen-g02-24ff43bc",
+      "passageId": "de-hb-wat-seki-wirtschaft:seki-wat-infrastrukturen",
+      "topicCode": "SEKI-WAT-INFRASTRUKTUREN",
+      "bulletIndex": 2,
+      "aspectIndex": 1,
+      "title": "HB SEKI-WAT-INFRASTRUKTUREN (2): Mobilitätskonzepte, Mobilitätsformen und eigene Verhaltensmuster unter ökonomischen und ökologischen Kriterien analysieren.",
+      "description": "Source-Ziel aus Infrastrukturen, Ressourcen und globale Wirkungen: Mobilitätskonzepte, Mobilitätsformen und eigene Verhaltensmuster unter ökonomischen und ökologischen Kriterien analysieren.",
+      "sourceText": "Mobilitätskonzepte, Mobilitätsformen und eigene Verhaltensmuster unter ökonomischen und ökologischen Kriterien analysieren.",
+      "sourceSpan": "SEKI-WAT-INFRASTRUKTUREN (2)",
+      "parentBulletText": "Mobilitätskonzepte, Mobilitätsformen und eigene Verhaltensmuster unter ökonomischen und ökologischen Kriterien analysieren.",
+      "sourceRef": "Bildungsplan Wirtschaft-Arbeit-Technik Gymnasium 5-10 Bremen, Infrastrukturen, Ressourcen und globale Wirkungen, S. 7.",
+      "courseLevel": "SekI",
+      "granularity": "officialContentOrStandard",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Wirtschaft",
+        "stage:SekI",
+        "topic:SEKI-WAT-INFRASTRUKTUREN"
+      ],
+      "rawSourceText": "Mobilitätskonzepte, Mobilitätsformen und eigene Verhaltensmuster unter ökonomischen und ökologischen Kriterien analysieren.",
+      "rawSourceSpan": "SEKI-WAT-INFRASTRUKTUREN (2)",
+      "rawParentBulletText": "Mobilitätskonzepte, Mobilitätsformen und eigene Verhaltensmuster unter ökonomischen und ökologischen Kriterien analysieren."
+    },
+    {
+      "id": "de-hb-wat-seki-wirtschaft-seki-wat-infrastrukturen-g03-40231aef",
+      "passageId": "de-hb-wat-seki-wirtschaft:seki-wat-infrastrukturen",
+      "topicCode": "SEKI-WAT-INFRASTRUKTUREN",
+      "bulletIndex": 3,
+      "aspectIndex": 1,
+      "title": "HB SEKI-WAT-INFRASTRUKTUREN (3): Beziehungen zwischen Produktionsbedingungen, Qualität und Preis erklären.",
+      "description": "Source-Ziel aus Infrastrukturen, Ressourcen und globale Wirkungen: Beziehungen zwischen Produktionsbedingungen, Qualität und Preis erklären.",
+      "sourceText": "Beziehungen zwischen Produktionsbedingungen, Qualität und Preis erklären.",
+      "sourceSpan": "SEKI-WAT-INFRASTRUKTUREN (3)",
+      "parentBulletText": "Beziehungen zwischen Produktionsbedingungen, Qualität und Preis erklären.",
+      "sourceRef": "Bildungsplan Wirtschaft-Arbeit-Technik Gymnasium 5-10 Bremen, Infrastrukturen, Ressourcen und globale Wirkungen, S. 7.",
+      "courseLevel": "SekI",
+      "granularity": "officialContentOrStandard",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Wirtschaft",
+        "stage:SekI",
+        "topic:SEKI-WAT-INFRASTRUKTUREN"
+      ],
+      "rawSourceText": "Beziehungen zwischen Produktionsbedingungen, Qualität und Preis erklären.",
+      "rawSourceSpan": "SEKI-WAT-INFRASTRUKTUREN (3)",
+      "rawParentBulletText": "Beziehungen zwischen Produktionsbedingungen, Qualität und Preis erklären."
+    },
+    {
+      "id": "de-hb-wat-seki-wirtschaft-seki-wat-infrastrukturen-g04-062e96bc",
+      "passageId": "de-hb-wat-seki-wirtschaft:seki-wat-infrastrukturen",
+      "topicCode": "SEKI-WAT-INFRASTRUKTUREN",
+      "bulletIndex": 4,
+      "aspectIndex": 1,
+      "title": "HB SEKI-WAT-INFRASTRUKTUREN (4): Individuelles und gesellschaftliches Verbraucherverhalten sowie notwendige Veränderungsprozesse beurteilen.",
+      "description": "Source-Ziel aus Infrastrukturen, Ressourcen und globale Wirkungen: Individuelles und gesellschaftliches Verbraucherverhalten sowie notwendige Veränderungsprozesse beurteilen.",
+      "sourceText": "Individuelles und gesellschaftliches Verbraucherverhalten sowie notwendige Veränderungsprozesse beurteilen.",
+      "sourceSpan": "SEKI-WAT-INFRASTRUKTUREN (4)",
+      "parentBulletText": "Individuelles und gesellschaftliches Verbraucherverhalten sowie notwendige Veränderungsprozesse beurteilen.",
+      "sourceRef": "Bildungsplan Wirtschaft-Arbeit-Technik Gymnasium 5-10 Bremen, Infrastrukturen, Ressourcen und globale Wirkungen, S. 7.",
+      "courseLevel": "SekI",
+      "granularity": "officialContentOrStandard",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Wirtschaft",
+        "stage:SekI",
+        "topic:SEKI-WAT-INFRASTRUKTUREN"
+      ],
+      "rawSourceText": "Individuelles und gesellschaftliches Verbraucherverhalten sowie notwendige Veränderungsprozesse beurteilen.",
+      "rawSourceSpan": "SEKI-WAT-INFRASTRUKTUREN (4)",
+      "rawParentBulletText": "Individuelles und gesellschaftliches Verbraucherverhalten sowie notwendige Veränderungsprozesse beurteilen."
+    },
+    {
+      "id": "de-hb-wat-seki-wirtschaft-seki-wat-infrastrukturen-g05-7f0410c6",
+      "passageId": "de-hb-wat-seki-wirtschaft:seki-wat-infrastrukturen",
+      "topicCode": "SEKI-WAT-INFRASTRUKTUREN",
+      "bulletIndex": 5,
+      "aspectIndex": 1,
+      "title": "HB SEKI-WAT-INFRASTRUKTUREN (5): Gegenwärtige und zukünftige Folgen des Ressourcenverbrauchs wirtschaftlich und ökologisch bewerten.",
+      "description": "Source-Ziel aus Infrastrukturen, Ressourcen und globale Wirkungen: Gegenwärtige und zukünftige Folgen des Ressourcenverbrauchs wirtschaftlich und ökologisch bewerten.",
+      "sourceText": "Gegenwärtige und zukünftige Folgen des Ressourcenverbrauchs wirtschaftlich und ökologisch bewerten.",
+      "sourceSpan": "SEKI-WAT-INFRASTRUKTUREN (5)",
+      "parentBulletText": "Gegenwärtige und zukünftige Folgen des Ressourcenverbrauchs wirtschaftlich und ökologisch bewerten.",
+      "sourceRef": "Bildungsplan Wirtschaft-Arbeit-Technik Gymnasium 5-10 Bremen, Infrastrukturen, Ressourcen und globale Wirkungen, S. 7.",
+      "courseLevel": "SekI",
+      "granularity": "officialContentOrStandard",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Wirtschaft",
+        "stage:SekI",
+        "topic:SEKI-WAT-INFRASTRUKTUREN"
+      ],
+      "rawSourceText": "Gegenwärtige und zukünftige Folgen des Ressourcenverbrauchs wirtschaftlich und ökologisch bewerten.",
+      "rawSourceSpan": "SEKI-WAT-INFRASTRUKTUREN (5)",
+      "rawParentBulletText": "Gegenwärtige und zukünftige Folgen des Ressourcenverbrauchs wirtschaftlich und ökologisch bewerten."
+    },
+    {
+      "id": "de-hb-wat-seki-wirtschaft-seki-wat-infrastrukturen-g06-fc3a0504",
+      "passageId": "de-hb-wat-seki-wirtschaft:seki-wat-infrastrukturen",
+      "topicCode": "SEKI-WAT-INFRASTRUKTUREN",
+      "bulletIndex": 6,
+      "aspectIndex": 1,
+      "title": "HB SEKI-WAT-INFRASTRUKTUREN (6): Ökologische, soziale und ökonomische Auswirkungen einer globalisierten Welt analysieren.",
+      "description": "Source-Ziel aus Infrastrukturen, Ressourcen und globale Wirkungen: Ökologische, soziale und ökonomische Auswirkungen einer globalisierten Welt analysieren.",
+      "sourceText": "Ökologische, soziale und ökonomische Auswirkungen einer globalisierten Welt analysieren.",
+      "sourceSpan": "SEKI-WAT-INFRASTRUKTUREN (6)",
+      "parentBulletText": "Ökologische, soziale und ökonomische Auswirkungen einer globalisierten Welt analysieren.",
+      "sourceRef": "Bildungsplan Wirtschaft-Arbeit-Technik Gymnasium 5-10 Bremen, Infrastrukturen, Ressourcen und globale Wirkungen, S. 7.",
+      "courseLevel": "SekI",
+      "granularity": "officialContentOrStandard",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Wirtschaft",
+        "stage:SekI",
+        "topic:SEKI-WAT-INFRASTRUKTUREN"
+      ],
+      "rawSourceText": "Ökologische, soziale und ökonomische Auswirkungen einer globalisierten Welt analysieren.",
+      "rawSourceSpan": "SEKI-WAT-INFRASTRUKTUREN (6)",
+      "rawParentBulletText": "Ökologische, soziale und ökonomische Auswirkungen einer globalisierten Welt analysieren."
+    },
+    {
+      "id": "de-hb-wat-seki-wirtschaft-seki-wat-berufsorientierung-g01-5702ab52",
+      "passageId": "de-hb-wat-seki-wirtschaft:seki-wat-berufsorientierung",
+      "topicCode": "SEKI-WAT-BERUFSORIENTIERUNG",
+      "bulletIndex": 1,
+      "aspectIndex": 1,
+      "title": "HB SEKI-WAT-BERUFSORIENTIERUNG (1): Veränderungen von Berufsbildern und Tätigkeiten in der Arbeitswelt beschreiben.",
+      "description": "Source-Ziel aus Arbeits-, Berufsorientierung und Lebensplanung: Veränderungen von Berufsbildern und Tätigkeiten in der Arbeitswelt beschreiben.",
+      "sourceText": "Veränderungen von Berufsbildern und Tätigkeiten in der Arbeitswelt beschreiben.",
+      "sourceSpan": "SEKI-WAT-BERUFSORIENTIERUNG (1)",
+      "parentBulletText": "Veränderungen von Berufsbildern und Tätigkeiten in der Arbeitswelt beschreiben.",
+      "sourceRef": "Bildungsplan Wirtschaft-Arbeit-Technik Gymnasium 5-10 Bremen, Arbeits-, Berufsorientierung und Lebensplanung, S. 7.",
+      "courseLevel": "SekI",
+      "granularity": "officialContentOrStandard",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Wirtschaft",
+        "stage:SekI",
+        "topic:SEKI-WAT-BERUFSORIENTIERUNG"
+      ],
+      "rawSourceText": "Veränderungen von Berufsbildern und Tätigkeiten in der Arbeitswelt beschreiben.",
+      "rawSourceSpan": "SEKI-WAT-BERUFSORIENTIERUNG (1)",
+      "rawParentBulletText": "Veränderungen von Berufsbildern und Tätigkeiten in der Arbeitswelt beschreiben."
+    },
+    {
+      "id": "de-hb-wat-seki-wirtschaft-seki-wat-berufsorientierung-g02-da55a3f7",
+      "passageId": "de-hb-wat-seki-wirtschaft:seki-wat-berufsorientierung",
+      "topicCode": "SEKI-WAT-BERUFSORIENTIERUNG",
+      "bulletIndex": 2,
+      "aspectIndex": 1,
+      "title": "HB SEKI-WAT-BERUFSORIENTIERUNG (2): Eigene Erwartungen, Interessen, Stärken und Schwächen für Berufsentscheidungen reflektieren.",
+      "description": "Source-Ziel aus Arbeits-, Berufsorientierung und Lebensplanung: Eigene Erwartungen, Interessen, Stärken und Schwächen für Berufsentscheidungen reflektieren.",
+      "sourceText": "Eigene Erwartungen, Interessen, Stärken und Schwächen für Berufsentscheidungen reflektieren.",
+      "sourceSpan": "SEKI-WAT-BERUFSORIENTIERUNG (2)",
+      "parentBulletText": "Eigene Erwartungen, Interessen, Stärken und Schwächen für Berufsentscheidungen reflektieren.",
+      "sourceRef": "Bildungsplan Wirtschaft-Arbeit-Technik Gymnasium 5-10 Bremen, Arbeits-, Berufsorientierung und Lebensplanung, S. 7.",
+      "courseLevel": "SekI",
+      "granularity": "officialContentOrStandard",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Wirtschaft",
+        "stage:SekI",
+        "topic:SEKI-WAT-BERUFSORIENTIERUNG"
+      ],
+      "rawSourceText": "Eigene Erwartungen, Interessen, Stärken und Schwächen für Berufsentscheidungen reflektieren.",
+      "rawSourceSpan": "SEKI-WAT-BERUFSORIENTIERUNG (2)",
+      "rawParentBulletText": "Eigene Erwartungen, Interessen, Stärken und Schwächen für Berufsentscheidungen reflektieren."
+    },
+    {
+      "id": "de-hb-wat-seki-wirtschaft-seki-wat-berufsorientierung-g03-988a73a9",
+      "passageId": "de-hb-wat-seki-wirtschaft:seki-wat-berufsorientierung",
+      "topicCode": "SEKI-WAT-BERUFSORIENTIERUNG",
+      "bulletIndex": 3,
+      "aspectIndex": 1,
+      "title": "HB SEKI-WAT-BERUFSORIENTIERUNG (3): Berufliche Eignung, Qualifikationsanforderungen und Lebensperspektiven Bildung-Beruf-Sozialstatus analysieren.",
+      "description": "Source-Ziel aus Arbeits-, Berufsorientierung und Lebensplanung: Berufliche Eignung, Qualifikationsanforderungen und Lebensperspektiven Bildung-Beruf-Sozialstatus analysieren.",
+      "sourceText": "Berufliche Eignung, Qualifikationsanforderungen und Lebensperspektiven Bildung-Beruf-Sozialstatus analysieren.",
+      "sourceSpan": "SEKI-WAT-BERUFSORIENTIERUNG (3)",
+      "parentBulletText": "Berufliche Eignung, Qualifikationsanforderungen und Lebensperspektiven Bildung-Beruf-Sozialstatus analysieren.",
+      "sourceRef": "Bildungsplan Wirtschaft-Arbeit-Technik Gymnasium 5-10 Bremen, Arbeits-, Berufsorientierung und Lebensplanung, S. 7.",
+      "courseLevel": "SekI",
+      "granularity": "officialContentOrStandard",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Wirtschaft",
+        "stage:SekI",
+        "topic:SEKI-WAT-BERUFSORIENTIERUNG"
+      ],
+      "rawSourceText": "Berufliche Eignung, Qualifikationsanforderungen und Lebensperspektiven Bildung-Beruf-Sozialstatus analysieren.",
+      "rawSourceSpan": "SEKI-WAT-BERUFSORIENTIERUNG (3)",
+      "rawParentBulletText": "Berufliche Eignung, Qualifikationsanforderungen und Lebensperspektiven Bildung-Beruf-Sozialstatus analysieren."
+    },
+    {
+      "id": "de-hb-wat-seki-wirtschaft-seki-wat-berufsorientierung-g04-503b29aa",
+      "passageId": "de-hb-wat-seki-wirtschaft:seki-wat-berufsorientierung",
+      "topicCode": "SEKI-WAT-BERUFSORIENTIERUNG",
+      "bulletIndex": 4,
+      "aspectIndex": 1,
+      "title": "HB SEKI-WAT-BERUFSORIENTIERUNG (4): Informationen und Beratung zu Bildungsgängen, Berufen sowie regionalen Ausbildungs- und Studienmöglichkeiten nutzen.",
+      "description": "Source-Ziel aus Arbeits-, Berufsorientierung und Lebensplanung: Informationen und Beratung zu Bildungsgängen, Berufen sowie regionalen Ausbildungs- und Studienmöglichkeiten nutzen.",
+      "sourceText": "Informationen und Beratung zu Bildungsgängen, Berufen sowie regionalen Ausbildungs- und Studienmöglichkeiten nutzen.",
+      "sourceSpan": "SEKI-WAT-BERUFSORIENTIERUNG (4)",
+      "parentBulletText": "Informationen und Beratung zu Bildungsgängen, Berufen sowie regionalen Ausbildungs- und Studienmöglichkeiten nutzen.",
+      "sourceRef": "Bildungsplan Wirtschaft-Arbeit-Technik Gymnasium 5-10 Bremen, Arbeits-, Berufsorientierung und Lebensplanung, S. 7.",
+      "courseLevel": "SekI",
+      "granularity": "officialContentOrStandard",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Wirtschaft",
+        "stage:SekI",
+        "topic:SEKI-WAT-BERUFSORIENTIERUNG"
+      ],
+      "rawSourceText": "Informationen und Beratung zu Bildungsgängen, Berufen sowie regionalen Ausbildungs- und Studienmöglichkeiten nutzen.",
+      "rawSourceSpan": "SEKI-WAT-BERUFSORIENTIERUNG (4)",
+      "rawParentBulletText": "Informationen und Beratung zu Bildungsgängen, Berufen sowie regionalen Ausbildungs- und Studienmöglichkeiten nutzen."
+    },
+    {
+      "id": "de-hb-wat-seki-wirtschaft-seki-wat-berufsorientierung-g05-58bbaf13",
+      "passageId": "de-hb-wat-seki-wirtschaft:seki-wat-berufsorientierung",
+      "topicCode": "SEKI-WAT-BERUFSORIENTIERUNG",
+      "bulletIndex": 5,
+      "aspectIndex": 1,
+      "title": "HB SEKI-WAT-BERUFSORIENTIERUNG (5): Bewerbungs- und Einstellungsverfahren vorbereiten und auswerten.",
+      "description": "Source-Ziel aus Arbeits-, Berufsorientierung und Lebensplanung: Bewerbungs- und Einstellungsverfahren vorbereiten und auswerten.",
+      "sourceText": "Bewerbungs- und Einstellungsverfahren vorbereiten und auswerten.",
+      "sourceSpan": "SEKI-WAT-BERUFSORIENTIERUNG (5)",
+      "parentBulletText": "Bewerbungs- und Einstellungsverfahren vorbereiten und auswerten.",
+      "sourceRef": "Bildungsplan Wirtschaft-Arbeit-Technik Gymnasium 5-10 Bremen, Arbeits-, Berufsorientierung und Lebensplanung, S. 7.",
+      "courseLevel": "SekI",
+      "granularity": "officialContentOrStandard",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Wirtschaft",
+        "stage:SekI",
+        "topic:SEKI-WAT-BERUFSORIENTIERUNG"
+      ],
+      "rawSourceText": "Bewerbungs- und Einstellungsverfahren vorbereiten und auswerten.",
+      "rawSourceSpan": "SEKI-WAT-BERUFSORIENTIERUNG (5)",
+      "rawParentBulletText": "Bewerbungs- und Einstellungsverfahren vorbereiten und auswerten."
+    },
+    {
+      "id": "de-hb-wat-seki-wirtschaft-seki-wat-berufsorientierung-g06-bfe08957",
+      "passageId": "de-hb-wat-seki-wirtschaft:seki-wat-berufsorientierung",
+      "topicCode": "SEKI-WAT-BERUFSORIENTIERUNG",
+      "bulletIndex": 6,
+      "aspectIndex": 1,
+      "title": "HB SEKI-WAT-BERUFSORIENTIERUNG (6): Berufliche Anforderungen, Tätigkeiten am Arbeitsplatz, Jugendarbeitsschutz und Arbeitsschutz einordnen.",
+      "description": "Source-Ziel aus Arbeits-, Berufsorientierung und Lebensplanung: Berufliche Anforderungen, Tätigkeiten am Arbeitsplatz, Jugendarbeitsschutz und Arbeitsschutz einordnen.",
+      "sourceText": "Berufliche Anforderungen, Tätigkeiten am Arbeitsplatz, Jugendarbeitsschutz und Arbeitsschutz einordnen.",
+      "sourceSpan": "SEKI-WAT-BERUFSORIENTIERUNG (6)",
+      "parentBulletText": "Berufliche Anforderungen, Tätigkeiten am Arbeitsplatz, Jugendarbeitsschutz und Arbeitsschutz einordnen.",
+      "sourceRef": "Bildungsplan Wirtschaft-Arbeit-Technik Gymnasium 5-10 Bremen, Arbeits-, Berufsorientierung und Lebensplanung, S. 7.",
+      "courseLevel": "SekI",
+      "granularity": "officialContentOrStandard",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Wirtschaft",
+        "stage:SekI",
+        "topic:SEKI-WAT-BERUFSORIENTIERUNG"
+      ],
+      "rawSourceText": "Berufliche Anforderungen, Tätigkeiten am Arbeitsplatz, Jugendarbeitsschutz und Arbeitsschutz einordnen.",
+      "rawSourceSpan": "SEKI-WAT-BERUFSORIENTIERUNG (6)",
+      "rawParentBulletText": "Berufliche Anforderungen, Tätigkeiten am Arbeitsplatz, Jugendarbeitsschutz und Arbeitsschutz einordnen."
+    }
+  ]
+}

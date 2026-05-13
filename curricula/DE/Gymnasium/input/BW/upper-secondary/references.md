@@ -37,3 +37,22 @@ Scope:
 Archived locally at:
 
 - `curricula/DE/Gymnasium/input/BW/BP2016BW_ALLG_GYM_PH.pdf`
+
+## Wirtschaft source PDF (download link)
+
+Starting point:
+https://www.bildungsplaene-bw.de/,Lde/LS/BP2016BW/ALLG/GYM/WI
+
+- `BP2016BW_ALLG_GYM_WI.pdf`:
+  https://www.bildungsplaene-bw.de/site/bildungsplan-rebrush2024/get/documents/lsbw/export-pdf/depot-pdf/ALLG/BP2016BW_ALLG_GYM_WI.pdf
+
+Scope:
+
+- Baden-Wuerttemberg
+- Gymnasium
+- Wirtschaft
+- upper-secondary extraction target: `Klassen 11/12`
+
+Archived locally at:
+
+- `curricula/DE/Gymnasium/input/BW/BP2016BW_ALLG_GYM_WI.pdf`
