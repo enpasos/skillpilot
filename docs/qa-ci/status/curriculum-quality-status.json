@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "rulesVersion": "curriculum-quality-v1",
-  "generatedAt": "2026-05-13T00:54:11.351Z",
+  "generatedAt": "2026-05-13T00:57:16.254Z",
   "generatedBy": "app/scripts/generateCurriculumQualityStatus.ts",
   "sources": {
     "canonicalRoot": "curricula/DE/Gymnasium/canonical",
@@ -25,10 +25,10 @@
       "M5": 4
     },
     "ruleStatus": {
-      "pass": 113,
-      "warn": 21,
-      "fail": 13,
-      "not_configured": 63
+      "pass": 114,
+      "warn": 22,
+      "fail": 12,
+      "not_configured": 62
     }
   },
   "ruleCatalog": [
@@ -8901,10 +8901,10 @@
         "rawAtomicGoals": 181,
         "coveredJurisdictions": 2,
         "sourceBackedJurisdictions": 2,
-        "sourceCompleteJurisdictions": 0,
-        "cleanJurisdictions": 0,
+        "sourceCompleteJurisdictions": 2,
+        "cleanJurisdictions": 2,
         "partialJurisdictions": 0,
-        "errorJurisdictions": 2,
+        "errorJurisdictions": 0,
         "maxVisibleAtomicGoals": 170,
         "maxSourceBackedAtomicGoals": 170,
         "maxAtomicCoveragePercent": 100,
@@ -8912,15 +8912,15 @@
         "unsupportedAssignedAtomicGoals": 0,
         "surrogateBackedAtomicGoals": 0,
         "partialSourceLinkedAtomicGoals": 0,
-        "sourceAtomicGoals": 411,
-        "sourceMappedToViewAtomicGoals": 411,
+        "sourceAtomicGoals": 399,
+        "sourceMappedToViewAtomicGoals": 399,
         "unmappedSourceAtomicGoals": 0,
-        "sourceExtractedGoals": 0,
+        "sourceExtractedGoals": 399,
         "sourceUnregisteredGoals": 0,
-        "sourceExtractedAtomicGoals": 0,
+        "sourceExtractedAtomicGoals": 399,
         "sourceUnregisteredAtomicGoals": 0,
-        "sourceOriginalGoals": 436,
-        "sourceFullyCoveredOriginalGoals": 436,
+        "sourceOriginalGoals": 399,
+        "sourceFullyCoveredOriginalGoals": 399,
         "sourcePartiallyCoveredOriginalGoals": 0,
         "sourceUncoveredOriginalGoals": 0,
         "jurisdictions": [
@@ -8967,15 +8967,15 @@
             "surrogateBackedAtomicGoals": 0,
             "unsupportedAssignedAtomicGoals": 0,
             "partialSourceLinkedAtomicGoals": 0,
-            "sourceAtomicGoals": 181,
-            "sourceMappedToViewAtomicGoals": 181,
+            "sourceAtomicGoals": 170,
+            "sourceMappedToViewAtomicGoals": 170,
             "unmappedSourceAtomicGoals": 0,
-            "sourceExtractedGoals": 0,
+            "sourceExtractedGoals": 170,
             "sourceUnregisteredGoals": 0,
-            "sourceExtractedAtomicGoals": 0,
+            "sourceExtractedAtomicGoals": 170,
             "sourceUnregisteredAtomicGoals": 0,
-            "sourceOriginalGoals": 187,
-            "sourceFullyCoveredOriginalGoals": 187,
+            "sourceOriginalGoals": 170,
+            "sourceFullyCoveredOriginalGoals": 170,
             "sourcePartiallyCoveredOriginalGoals": 0,
             "sourceUncoveredOriginalGoals": 0,
             "errors": 0,
@@ -8984,7 +8984,7 @@
             "atomicCoveragePercent": 100,
             "sourceBackedCoveragePercent": 100,
             "sourceReverseCoveragePercent": 100,
-            "status": "error"
+            "status": "covered"
           },
           {
             "jurisdiction": "DE-BY",
@@ -8998,15 +8998,15 @@
             "surrogateBackedAtomicGoals": 0,
             "unsupportedAssignedAtomicGoals": 0,
             "partialSourceLinkedAtomicGoals": 0,
-            "sourceAtomicGoals": 230,
-            "sourceMappedToViewAtomicGoals": 230,
+            "sourceAtomicGoals": 229,
+            "sourceMappedToViewAtomicGoals": 229,
             "unmappedSourceAtomicGoals": 0,
-            "sourceExtractedGoals": 0,
+            "sourceExtractedGoals": 229,
             "sourceUnregisteredGoals": 0,
-            "sourceExtractedAtomicGoals": 0,
+            "sourceExtractedAtomicGoals": 229,
             "sourceUnregisteredAtomicGoals": 0,
-            "sourceOriginalGoals": 249,
-            "sourceFullyCoveredOriginalGoals": 249,
+            "sourceOriginalGoals": 229,
+            "sourceFullyCoveredOriginalGoals": 229,
             "sourcePartiallyCoveredOriginalGoals": 0,
             "sourceUncoveredOriginalGoals": 0,
             "errors": 0,
@@ -9015,7 +9015,7 @@
             "atomicCoveragePercent": 100,
             "sourceBackedCoveragePercent": 100,
             "sourceReverseCoveragePercent": 100,
-            "status": "error"
+            "status": "covered"
           },
           {
             "jurisdiction": "DE-BB",
@@ -9424,68 +9424,177 @@
       },
       "mappingPipeline": {
         "totalSources": 2,
-        "completeSources": 0,
+        "completeSources": 2,
         "incompleteSources": 0,
-        "blockedSources": 2,
-        "maxCompletedSteps": 0,
+        "blockedSources": 0,
+        "maxCompletedSteps": 3,
         "totalSteps": 3,
-        "currentStep": "MAPPING-1",
+        "currentStep": "",
         "sources": [
           {
             "sourceLandscapeId": "40744ec5-7de1-5e41-9fc2-a1e774721644",
             "title": "Chinesisch (Gymnasium)",
             "jurisdiction": "DE-BY",
-            "path": "curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_chinese_to_canonical_chinese.json",
-            "sourceKind": "missing-extraction",
-            "currentStep": "MAPPING-1",
-            "completedSteps": 0,
+            "subject": "Chinesisch",
+            "stage": "SekI+SekII",
+            "path": "curricula/DE/Gymnasium/input/BY/gymnasium/source-extraction/DE_BY_CHINESISCH_GYMNASIUM_LEHRPLANPLUS.source-extraction.json",
+            "sourceKind": "source-extraction",
+            "sourceDocuments": [
+              {
+                "title": "LehrplanPLUS Bayern Gymnasium Chinesisch",
+                "path": "curricula/DE/Gymnasium/input/BY/gymnasium/Chinesisch.json",
+                "available": true
+              }
+            ],
+            "currentStep": "",
+            "completedSteps": 3,
             "totalSteps": 3,
-            "sourceGoals": 0,
-            "passages": 0,
+            "sourceGoals": 229,
+            "passages": 19,
+            "mappedSourceGoals": 229,
+            "unmappedSourceGoals": 0,
+            "extraMappedGoals": 0,
+            "exactMappings": 14,
+            "partialMappings": 215,
+            "otherMappings": 0,
+            "sourceGoalCountPeerBaselineReview": {
+              "status": "accepted",
+              "expectedSourceGoals": 229,
+              "actualSourceGoals": 229,
+              "rationale": "Converted from the existing committed source landscape snapshot; non-curricular motivation/practice/assessment nodes are excluded from source coverage."
+            },
+            "sourceGoalGranularity": {
+              "averageWords": 19.90829694323144,
+              "p90Words": 37,
+              "maxWords": 87,
+              "longGoals": 10,
+              "longGoalThreshold": 45,
+              "examples": [
+                {
+                  "id": "e8a11cc2-ff90-50a4-8fd7-c919bd5f6218",
+                  "topicCode": "J8",
+                  "words": 87,
+                  "text": "wenden die Grundlagen des chinesischen Satzbaus in einfachen Sätzen an (Stellung der Wörter und Satzglieder, Wortarten bzw. Wortfunktionen im Satz, Prinzip d..."
+                },
+                {
+                  "id": "0439ac62-6505-5c3f-8f7e-5be9067dcdf9",
+                  "topicCode": "J8",
+                  "words": 84,
+                  "text": "benennen und beschreiben Personen (beispielsweise Alter, Herkunft, Familie), Gegenstände, Tätigkeiten, Orte und Sachverhalte auf einfache Weise und setzen si..."
+                },
+                {
+                  "id": "b008865c-1af0-5cc5-bc16-10f705339dbf",
+                  "topicCode": "J9",
+                  "words": 78,
+                  "text": "benennen, beschreiben und vergleichen Personen, Gegenstände, Tätigkeiten, Orte und Sachverhalte genauer und anschaulicher und setzen sie zueinander in Bezieh..."
+                },
+                {
+                  "id": "2123cb00-cf2e-5350-ab7e-2034282991d0",
+                  "topicCode": "J9",
+                  "words": 68,
+                  "text": "stellen und beantworten Fragen, äußern Aufforderungen und Bitten und drücken einfache Empfehlungen, Vorschläge, Pläne, Wünsche aus. Dabei verwenden sie: Satz..."
+                },
+                {
+                  "id": "5451420d-e631-5838-bb31-a2287bbf1de6",
+                  "topicCode": "J8",
+                  "words": 64,
+                  "text": "verstehen für die Kommunikation im Unterricht notwendige Redemittel wie Lob und positive Bewertung der Leistungen (u. a. 很好, 对), Kritik an Leistungen und Ver..."
+                }
+              ]
+            },
             "steps": [
               {
                 "id": "MAPPING-1",
                 "label": "Original-Lehrplanpassagen extrahiert",
-                "status": "incomplete",
+                "status": "complete",
                 "dependsOn": [],
                 "checks": [
                   {
-                    "id": "source-extraction-file-present",
-                    "label": "Persistiertes Source-Extraction-Artefakt vorhanden",
-                    "passed": false,
-                    "details": "Für diese Source-Landschaft ist noch keine geprüfte source-extraction-Datei registriert."
+                    "id": "source-document-present",
+                    "label": "Strukturierte Chinesisch-Quelle liegt lokal vor",
+                    "passed": true,
+                    "details": "curricula/DE/Gymnasium/input/BY/gymnasium/Chinesisch.json"
+                  },
+                  {
+                    "id": "topic-passages-extracted",
+                    "label": "Chinesisch-Quellpassagen sind aus dem vorhandenen Snapshot extrahiert",
+                    "passed": true,
+                    "details": "Erfasst: 19/19 Passagen."
                   }
                 ]
               },
               {
                 "id": "MAPPING-2",
                 "label": "Source-Ziele aus Lehrplanpassagen erstellt",
-                "status": "blocked",
+                "status": "complete",
                 "dependsOn": [
                   "MAPPING-1"
                 ],
                 "checks": [
                   {
-                    "id": "mapping-1-complete",
-                    "label": "MAPPING-1 abgeschlossen",
-                    "passed": false,
-                    "details": "Source-Ziele dürfen erst nach vollständig extrahierten Originalpassagen als abgeschlossen gelten."
+                    "id": "source-goals-created",
+                    "label": "Aus den Chinesisch-Passagen wurden Source-Ziele erzeugt",
+                    "passed": true,
+                    "details": "229 Source-Ziele."
+                  },
+                  {
+                    "id": "passage-to-source-goal-coverage",
+                    "label": "Jede Passage hat mindestens ein Source-Ziel oder dient als Strukturpassage",
+                    "passed": true,
+                    "details": "Passage-Zuordnung wurde aus der bestehenden Source-Hierarchie abgeleitet."
+                  },
+                  {
+                    "id": "source-goal-ids-unique",
+                    "label": "Source-Ziel-IDs sind eindeutig",
+                    "passed": true,
+                    "details": "Doppelte IDs: -."
+                  },
+                  {
+                    "id": "source-goal-trace-complete",
+                    "label": "Jedes Source-Ziel hat Passage, Source-Span und Quellenreferenz",
+                    "passed": true,
+                    "details": "Unvollstaendige Source-Ziele: -"
                   }
                 ]
               },
               {
                 "id": "MAPPING-3",
                 "label": "Source-Ziele auf SkillPilot-Ziele gemappt",
-                "status": "blocked",
+                "status": "complete",
                 "dependsOn": [
+                  "MAPPING-1",
                   "MAPPING-2"
                 ],
                 "checks": [
                   {
-                    "id": "mapping-2-complete",
-                    "label": "MAPPING-2 abgeschlossen",
-                    "passed": false,
-                    "details": "Das Mapping auf SkillPilot-Ziele darf erst nach geprüften Source-Zielen als abgeschlossen gelten."
+                    "id": "m3-review-file-present",
+                    "label": "M3-Review-Datei ist vorhanden",
+                    "passed": true,
+                    "details": "Review-Datei mit sourceExtractionPath fuer diese Source-Extraction ist vorhanden."
+                  },
+                  {
+                    "id": "m3-review-decisions-reference-source-goals",
+                    "label": "M3-Review-Entscheidungen referenzieren gueltige Source-Ziele",
+                    "passed": true,
+                    "details": "Review-Entscheidungen mit unbekannter Source-ID: 0."
+                  },
+                  {
+                    "id": "m3-review-targets-exist",
+                    "label": "M3-Review-Ziele referenzieren vorhandene Canonical-Ziele",
+                    "passed": true,
+                    "details": "Unbekannte Canonical-Ziele in Mappings: 0."
+                  },
+                  {
+                    "id": "m3-all-source-goals-reviewed",
+                    "label": "Alle Source-Ziele haben eine fachliche M3-Entscheidung",
+                    "passed": true,
+                    "details": "229/229 Source-Ziele reviewed; offen: 0."
+                  },
+                  {
+                    "id": "m3-all-source-goals-covered-by-canonical",
+                    "label": "Alle Source-Ziele sind durch SkillPilot-Ziele abgedeckt",
+                    "passed": true,
+                    "details": "Fachlich abgedeckt: 229/229; Mappings: 229/229; verbleibend: 0 explizite Canonical-Gaps, 0 unreviewed."
                   }
                 ]
               }
@@ -9495,57 +9604,135 @@
             "sourceLandscapeId": "7651cbe2-5fb8-464d-b0c4-3e830cda41dd",
             "title": "Chinesisch Oberstufe (Hessen, KC 2024)",
             "jurisdiction": "DE-HE",
-            "path": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_chinese_upper_secondary_to_canonical_chinese.json",
-            "sourceKind": "missing-extraction",
-            "currentStep": "MAPPING-1",
-            "completedSteps": 0,
+            "subject": "Chinesisch",
+            "stage": "SekII",
+            "path": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-extraction/DE_HE_CHINESISCH_SEKII_KC2024.source-extraction.json",
+            "sourceKind": "source-extraction",
+            "sourceDocuments": [
+              {
+                "title": "Kerncurriculum Gymnasiale Oberstufe Chinesisch Hessen 2024",
+                "path": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-json/DE_HES_S_GYM_2_CHINESISCH.de.json.snapshot",
+                "available": true
+              }
+            ],
+            "currentStep": "",
+            "completedSteps": 3,
             "totalSteps": 3,
-            "sourceGoals": 0,
-            "passages": 0,
+            "sourceGoals": 170,
+            "passages": 6,
+            "mappedSourceGoals": 170,
+            "unmappedSourceGoals": 0,
+            "extraMappedGoals": 0,
+            "exactMappings": 170,
+            "partialMappings": 0,
+            "otherMappings": 0,
+            "sourceGoalCountPeerBaselineReview": {
+              "status": "accepted",
+              "expectedSourceGoals": 170,
+              "actualSourceGoals": 170,
+              "rationale": "Converted from the existing committed source landscape snapshot; non-curricular motivation/practice/assessment nodes are excluded from source coverage."
+            },
+            "sourceGoalGranularity": {
+              "averageWords": 12.523529411764706,
+              "p90Words": 15,
+              "maxWords": 16,
+              "longGoals": 0,
+              "longGoalThreshold": 45,
+              "examples": []
+            },
             "steps": [
               {
                 "id": "MAPPING-1",
                 "label": "Original-Lehrplanpassagen extrahiert",
-                "status": "incomplete",
+                "status": "complete",
                 "dependsOn": [],
                 "checks": [
                   {
-                    "id": "source-extraction-file-present",
-                    "label": "Persistiertes Source-Extraction-Artefakt vorhanden",
-                    "passed": false,
-                    "details": "Für diese Source-Landschaft ist noch keine geprüfte source-extraction-Datei registriert."
+                    "id": "source-document-present",
+                    "label": "Strukturierte Chinesisch-Quelle liegt lokal vor",
+                    "passed": true,
+                    "details": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-json/DE_HES_S_GYM_2_CHINESISCH.de.json.snapshot"
+                  },
+                  {
+                    "id": "topic-passages-extracted",
+                    "label": "Chinesisch-Quellpassagen sind aus dem vorhandenen Snapshot extrahiert",
+                    "passed": true,
+                    "details": "Erfasst: 6/6 Passagen."
                   }
                 ]
               },
               {
                 "id": "MAPPING-2",
                 "label": "Source-Ziele aus Lehrplanpassagen erstellt",
-                "status": "blocked",
+                "status": "complete",
                 "dependsOn": [
                   "MAPPING-1"
                 ],
                 "checks": [
                   {
-                    "id": "mapping-1-complete",
-                    "label": "MAPPING-1 abgeschlossen",
-                    "passed": false,
-                    "details": "Source-Ziele dürfen erst nach vollständig extrahierten Originalpassagen als abgeschlossen gelten."
+                    "id": "source-goals-created",
+                    "label": "Aus den Chinesisch-Passagen wurden Source-Ziele erzeugt",
+                    "passed": true,
+                    "details": "170 Source-Ziele."
+                  },
+                  {
+                    "id": "passage-to-source-goal-coverage",
+                    "label": "Jede Passage hat mindestens ein Source-Ziel oder dient als Strukturpassage",
+                    "passed": true,
+                    "details": "Passage-Zuordnung wurde aus der bestehenden Source-Hierarchie abgeleitet."
+                  },
+                  {
+                    "id": "source-goal-ids-unique",
+                    "label": "Source-Ziel-IDs sind eindeutig",
+                    "passed": true,
+                    "details": "Doppelte IDs: -."
+                  },
+                  {
+                    "id": "source-goal-trace-complete",
+                    "label": "Jedes Source-Ziel hat Passage, Source-Span und Quellenreferenz",
+                    "passed": true,
+                    "details": "Unvollstaendige Source-Ziele: -"
                   }
                 ]
               },
               {
                 "id": "MAPPING-3",
                 "label": "Source-Ziele auf SkillPilot-Ziele gemappt",
-                "status": "blocked",
+                "status": "complete",
                 "dependsOn": [
+                  "MAPPING-1",
                   "MAPPING-2"
                 ],
                 "checks": [
                   {
-                    "id": "mapping-2-complete",
-                    "label": "MAPPING-2 abgeschlossen",
-                    "passed": false,
-                    "details": "Das Mapping auf SkillPilot-Ziele darf erst nach geprüften Source-Zielen als abgeschlossen gelten."
+                    "id": "m3-review-file-present",
+                    "label": "M3-Review-Datei ist vorhanden",
+                    "passed": true,
+                    "details": "Review-Datei mit sourceExtractionPath fuer diese Source-Extraction ist vorhanden."
+                  },
+                  {
+                    "id": "m3-review-decisions-reference-source-goals",
+                    "label": "M3-Review-Entscheidungen referenzieren gueltige Source-Ziele",
+                    "passed": true,
+                    "details": "Review-Entscheidungen mit unbekannter Source-ID: 0."
+                  },
+                  {
+                    "id": "m3-review-targets-exist",
+                    "label": "M3-Review-Ziele referenzieren vorhandene Canonical-Ziele",
+                    "passed": true,
+                    "details": "Unbekannte Canonical-Ziele in Mappings: 0."
+                  },
+                  {
+                    "id": "m3-all-source-goals-reviewed",
+                    "label": "Alle Source-Ziele haben eine fachliche M3-Entscheidung",
+                    "passed": true,
+                    "details": "170/170 Source-Ziele reviewed; offen: 0."
+                  },
+                  {
+                    "id": "m3-all-source-goals-covered-by-canonical",
+                    "label": "Alle Source-Ziele sind durch SkillPilot-Ziele abgedeckt",
+                    "passed": true,
+                    "details": "Fachlich abgedeckt: 170/170; Mappings: 170/170; verbleibend: 0 explizite Canonical-Gaps, 0 unreviewed."
                   }
                 ]
               }
@@ -9574,22 +9761,20 @@
         },
         {
           "id": "CQR-000",
-          "status": "fail",
-          "summary": "0/16 declared Bundesland source inventories are readable and fully registered.",
+          "status": "warn",
+          "summary": "2/16 declared Bundesland source inventories are readable and fully registered.",
           "metrics": {
             "totalJurisdictions": 16,
-            "completeSourceJurisdictions": 0,
+            "completeSourceJurisdictions": 2,
             "emptySourceJurisdictions": 14,
-            "missingReadableSourceInventoryJurisdictions": 2,
-            "sourceExtractedGoals": 0,
-            "sourceOriginalGoals": 436,
+            "missingReadableSourceInventoryJurisdictions": 0,
+            "sourceExtractedGoals": 399,
+            "sourceOriginalGoals": 399,
             "sourceUnregisteredGoals": 0,
-            "sourceExtractedAtomicGoals": 0,
+            "sourceExtractedAtomicGoals": 399,
             "sourceUnregisteredAtomicGoals": 0
           },
           "details": [
-            "DE-HE: 187 source original goal(s) are registered, but no readable source inventory goals were extracted",
-            "DE-BY: 249 source original goal(s) are registered, but no readable source inventory goals were extracted",
             "DE-BW: no source inventory goals are registered or extracted",
             "DE-BB: no source inventory goals are registered or extracted",
             "DE-BE: no source inventory goals are registered or extracted",
@@ -9609,31 +9794,31 @@
         {
           "id": "CQR-003",
           "status": "warn",
-          "summary": "0/16 declared Bundesland projection(s) have source-backed atom-level view coverage, no unsupported assignments, and complete source-to-view mapping.",
+          "summary": "2/16 declared Bundesland projection(s) have source-backed atom-level view coverage, no unsupported assignments, and complete source-to-view mapping.",
           "metrics": {
             "totalJurisdictions": 16,
             "coveredJurisdictions": 2,
             "sourceBackedJurisdictions": 2,
-            "sourceCompleteJurisdictions": 0,
-            "fullCoverageJurisdictions": 0,
+            "sourceCompleteJurisdictions": 2,
+            "fullCoverageJurisdictions": 2,
             "uncoveredJurisdictions": 14,
             "incompleteJurisdictions": 0,
             "unsupportedAssignmentJurisdictions": 0,
             "sourceUnmappedJurisdictions": 0,
             "unsupportedAssignedAtomicGoals": 0,
             "unmappedSourceAtomicGoals": 0,
-            "sourceAtomicGoals": 411,
-            "sourceMappedToViewAtomicGoals": 411,
-            "sourceOriginalGoals": 436,
-            "sourceFullyCoveredOriginalGoals": 436,
+            "sourceAtomicGoals": 399,
+            "sourceMappedToViewAtomicGoals": 399,
+            "sourceOriginalGoals": 399,
+            "sourceFullyCoveredOriginalGoals": 399,
             "sourcePartiallyCoveredOriginalGoals": 0,
             "sourceUncoveredOriginalGoals": 0,
             "surrogateBackedAtomicGoals": 0,
             "partialSourceLinkedAtomicGoals": 0,
             "warningedJurisdictions": 0,
-            "cleanJurisdictions": 0,
+            "cleanJurisdictions": 2,
             "partialJurisdictions": 0,
-            "errorJurisdictions": 2,
+            "errorJurisdictions": 0,
             "minSourceBackedAtomicGoals": 0,
             "maxVisibleAtomicGoals": 170,
             "maxSourceBackedAtomicGoals": 170,
@@ -9658,8 +9843,23 @@
         },
         {
           "id": "CQR-004",
-          "status": "not_configured",
-          "summary": "No persisted source-extraction mapping with GK/LK course-level metadata is configured for this curriculum."
+          "status": "pass",
+          "summary": "Course-level mapping is clean for 170 upper-secondary source-to-canonical mapping edge(s), including 0 reviewed course-level exception(s); unspecified upper-secondary source goals default to GK/LK unless explicitly reviewed.",
+          "metrics": {
+            "configuredMappingFiles": 2,
+            "sourceGoals": 170,
+            "sourceGoalsWithCourseLevel": 170,
+            "gkLkSourceGoals": 143,
+            "lkSourceGoals": 27,
+            "unspecifiedSourceGoals": 0,
+            "checkedMappingEdges": 170,
+            "defaultedUnspecifiedMappingEdges": 0,
+            "reviewedCourseLevelExceptions": 0,
+            "mismatches": 0,
+            "missingSourceGoals": 0,
+            "missingTargetGoals": 0,
+            "unmappedCourseLevelSourceGoals": 0
+          }
         },
         {
           "id": "CQR-301",
