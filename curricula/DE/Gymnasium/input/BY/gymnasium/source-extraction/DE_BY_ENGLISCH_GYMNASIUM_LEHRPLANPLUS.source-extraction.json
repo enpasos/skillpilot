@@ -1,0 +1,383 @@
+{
+  "schemaVersion": 1,
+  "extractionId": "DE_BY_ENGLISCH_GYMNASIUM_LEHRPLANPLUS",
+  "sourceLandscapeId": "9da8e86b-92dc-5ba0-827e-339400af2b38",
+  "title": "Englisch (Gymnasium)",
+  "jurisdiction": "DE-BY",
+  "subject": "Englisch",
+  "stage": "SekI+SekII",
+  "sourceDocument": {
+    "title": "LehrplanPLUS Bayern Gymnasium Englisch",
+    "path": "curricula/DE/Gymnasium/input/BY/gymnasium/Englisch.json",
+    "url": "https://www.lehrplanplus.bayern.de/schulart/gymnasium/fach/englisch"
+  },
+  "sourceDocuments": [
+    {
+      "title": "LehrplanPLUS Bayern Gymnasium Englisch",
+      "path": "curricula/DE/Gymnasium/input/BY/gymnasium/Englisch.json",
+      "url": "https://www.lehrplanplus.bayern.de/schulart/gymnasium/fach/englisch"
+    }
+  ],
+  "method": "Source snapshot converted into reviewed mapping pipeline artifact; existing source-goal registry and seed mappings remain the evidence base.",
+  "expectedTopicCodes": [
+    "BY-EN"
+  ],
+  "pipelineStatus": {
+    "version": 1,
+    "currentStep": "",
+    "steps": [
+      {
+        "id": "MAPPING-1",
+        "label": "Original-Lehrplanpassagen extrahiert",
+        "status": "complete",
+        "dependsOn": [],
+        "checks": [
+          {
+            "id": "source-document-present",
+            "label": "Strukturierte Englisch-Quelle liegt lokal vor",
+            "passed": true,
+            "details": "curricula/DE/Gymnasium/input/BY/gymnasium/Englisch.json"
+          },
+          {
+            "id": "topic-passages-extracted",
+            "label": "Englisch-Quellpassagen sind aus dem vorhandenen Snapshot extrahiert",
+            "passed": true,
+            "details": "Erfasst: 1/1 Passagen."
+          }
+        ]
+      },
+      {
+        "id": "MAPPING-2",
+        "label": "Source-Ziele aus Lehrplanpassagen erstellt",
+        "status": "complete",
+        "dependsOn": [
+          "MAPPING-1"
+        ],
+        "checks": [
+          {
+            "id": "source-goals-created",
+            "label": "Aus den Englisch-Passagen wurden Source-Ziele erzeugt",
+            "passed": true,
+            "details": "9 Source-Ziele."
+          },
+          {
+            "id": "passage-to-source-goal-coverage",
+            "label": "Jede Passage hat mindestens ein Source-Ziel oder dient als Strukturpassage",
+            "passed": true,
+            "details": "Passage-Zuordnung wurde aus der bestehenden Source-Hierarchie abgeleitet."
+          },
+          {
+            "id": "source-goal-ids-unique",
+            "label": "Source-Ziel-IDs sind eindeutig",
+            "passed": true,
+            "details": "Doppelte IDs: -."
+          },
+          {
+            "id": "source-goal-trace-complete",
+            "label": "Jedes Source-Ziel hat Passage, Source-Span und Quellenreferenz",
+            "passed": true,
+            "details": "Unvollstaendige Source-Ziele: -"
+          }
+        ]
+      },
+      {
+        "id": "MAPPING-3",
+        "label": "Source-Ziele auf SkillPilot-Ziele gemappt",
+        "status": "complete",
+        "dependsOn": [
+          "MAPPING-1",
+          "MAPPING-2"
+        ],
+        "checks": [
+          {
+            "id": "m3-review-file-present",
+            "label": "M3-Review-Datei ist vorhanden",
+            "passed": true,
+            "details": "curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_english_source_extraction_to_canonical_english.review.json"
+          },
+          {
+            "id": "m3-review-decisions-reference-source-goals",
+            "label": "M3-Review-Entscheidungen referenzieren gueltige Source-Ziele",
+            "passed": true,
+            "details": "Reviewed Source-Ziele: 9/9."
+          },
+          {
+            "id": "m3-review-targets-exist",
+            "label": "M3-Review-Ziele referenzieren vorhandene Canonical-Ziele",
+            "passed": true,
+            "details": "Unbekannte Canonical-Ziele: -"
+          },
+          {
+            "id": "m3-all-source-goals-reviewed",
+            "label": "Alle Source-Ziele haben eine fachliche M3-Entscheidung",
+            "passed": true,
+            "details": "9/9 Source-Ziele reviewed; offen: 0."
+          },
+          {
+            "id": "m3-all-source-goals-covered-by-canonical",
+            "label": "Alle Source-Ziele sind inhaltlich durch SkillPilot-Ziele abgedeckt",
+            "passed": true,
+            "details": "Abgedeckt: 9/9; verbleibend: 0 explizite Canonical-Gaps, 0 unreviewed."
+          }
+        ]
+      }
+    ]
+  },
+  "passages": [
+    {
+      "id": "by-en:5330772f-046c-5b80-a2ef-4d82dad181eb",
+      "topicCode": "BY-EN",
+      "title": "Englisch (Gymnasium)",
+      "text": "1) Jahrgangsstufe 5\n2) Jahrgangsstufe 6\n3) Jahrgangsstufe 7\n4) Jahrgangsstufe 8\n5) Jahrgangsstufe 9\n6) Jahrgangsstufe 10\n7) Jahrgangsstufe 11\n8) Jahrgangsstufe 12\n9) Jahrgangsstufe 13",
+      "sourcePath": "curricula/DE/Gymnasium/input/BY/gymnasium/Englisch.json",
+      "sourceUrl": "https://www.lehrplanplus.bayern.de/schulart/gymnasium/fach/englisch",
+      "rawText": "Englisch (Gymnasium)",
+      "sourceGoalIds": [
+        "05d43ff6-5ea0-5652-a115-8e93f68ff3b2",
+        "3de89aa1-ba6b-54c6-a273-7afdb0dccaf2",
+        "1bb028b3-2a86-59b1-99e0-d2b334179fa2",
+        "7b4f64d1-d11c-5c4b-983b-16a775e846a5",
+        "afa0d746-0c6b-5ef3-b65a-cea2daece113",
+        "0b529884-5403-530d-9658-8678f86ea2b4",
+        "bb82312d-72b3-581e-b2a8-4ff7d5a5c0e1",
+        "a752527f-87c7-5bb3-a788-ef037c0b86b8",
+        "198ca50c-651d-59c6-82c7-7195d9ea0911"
+      ]
+    }
+  ],
+  "sourceGoals": [
+    {
+      "id": "05d43ff6-5ea0-5652-a115-8e93f68ff3b2",
+      "passageId": "by-en:5330772f-046c-5b80-a2ef-4d82dad181eb",
+      "topicCode": "J5",
+      "bulletIndex": 1,
+      "aspectIndex": 1,
+      "title": "Jahrgangsstufe 5",
+      "description": "Jahrgangsstufe 5",
+      "sourceText": "Jahrgangsstufe 5",
+      "sourceSpan": "J5.1",
+      "parentBulletText": "Jahrgangsstufe 5",
+      "sourceRef": "LehrplanPLUS Bayern Gymnasium Englisch, J5",
+      "courseLevel": "unspecified",
+      "granularity": "sourceSnapshotGoal",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-BY",
+        "stage:SekI",
+        "courseLevel:unspecified",
+        "topic:J5"
+      ],
+      "rawSourceText": "Jahrgangsstufe 5",
+      "rawSourceSpan": "J5.1",
+      "rawParentBulletText": "Jahrgangsstufe 5"
+    },
+    {
+      "id": "3de89aa1-ba6b-54c6-a273-7afdb0dccaf2",
+      "passageId": "by-en:5330772f-046c-5b80-a2ef-4d82dad181eb",
+      "topicCode": "J6",
+      "bulletIndex": 2,
+      "aspectIndex": 1,
+      "title": "Jahrgangsstufe 6",
+      "description": "Jahrgangsstufe 6",
+      "sourceText": "Jahrgangsstufe 6",
+      "sourceSpan": "J6.2",
+      "parentBulletText": "Jahrgangsstufe 6",
+      "sourceRef": "LehrplanPLUS Bayern Gymnasium Englisch, J6",
+      "courseLevel": "unspecified",
+      "granularity": "sourceSnapshotGoal",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-BY",
+        "stage:SekI",
+        "courseLevel:unspecified",
+        "topic:J6"
+      ],
+      "rawSourceText": "Jahrgangsstufe 6",
+      "rawSourceSpan": "J6.2",
+      "rawParentBulletText": "Jahrgangsstufe 6"
+    },
+    {
+      "id": "1bb028b3-2a86-59b1-99e0-d2b334179fa2",
+      "passageId": "by-en:5330772f-046c-5b80-a2ef-4d82dad181eb",
+      "topicCode": "J7",
+      "bulletIndex": 3,
+      "aspectIndex": 1,
+      "title": "Jahrgangsstufe 7",
+      "description": "Jahrgangsstufe 7",
+      "sourceText": "Jahrgangsstufe 7",
+      "sourceSpan": "J7.3",
+      "parentBulletText": "Jahrgangsstufe 7",
+      "sourceRef": "LehrplanPLUS Bayern Gymnasium Englisch, J7",
+      "courseLevel": "unspecified",
+      "granularity": "sourceSnapshotGoal",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-BY",
+        "stage:SekI",
+        "courseLevel:unspecified",
+        "topic:J7"
+      ],
+      "rawSourceText": "Jahrgangsstufe 7",
+      "rawSourceSpan": "J7.3",
+      "rawParentBulletText": "Jahrgangsstufe 7"
+    },
+    {
+      "id": "7b4f64d1-d11c-5c4b-983b-16a775e846a5",
+      "passageId": "by-en:5330772f-046c-5b80-a2ef-4d82dad181eb",
+      "topicCode": "J8",
+      "bulletIndex": 4,
+      "aspectIndex": 1,
+      "title": "Jahrgangsstufe 8",
+      "description": "Jahrgangsstufe 8",
+      "sourceText": "Jahrgangsstufe 8",
+      "sourceSpan": "J8.4",
+      "parentBulletText": "Jahrgangsstufe 8",
+      "sourceRef": "LehrplanPLUS Bayern Gymnasium Englisch, J8",
+      "courseLevel": "unspecified",
+      "granularity": "sourceSnapshotGoal",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-BY",
+        "stage:SekI",
+        "courseLevel:unspecified",
+        "topic:J8"
+      ],
+      "rawSourceText": "Jahrgangsstufe 8",
+      "rawSourceSpan": "J8.4",
+      "rawParentBulletText": "Jahrgangsstufe 8"
+    },
+    {
+      "id": "afa0d746-0c6b-5ef3-b65a-cea2daece113",
+      "passageId": "by-en:5330772f-046c-5b80-a2ef-4d82dad181eb",
+      "topicCode": "J9",
+      "bulletIndex": 5,
+      "aspectIndex": 1,
+      "title": "Jahrgangsstufe 9",
+      "description": "Jahrgangsstufe 9",
+      "sourceText": "Jahrgangsstufe 9",
+      "sourceSpan": "J9.5",
+      "parentBulletText": "Jahrgangsstufe 9",
+      "sourceRef": "LehrplanPLUS Bayern Gymnasium Englisch, J9",
+      "courseLevel": "unspecified",
+      "granularity": "sourceSnapshotGoal",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-BY",
+        "stage:SekI",
+        "courseLevel:unspecified",
+        "topic:J9"
+      ],
+      "rawSourceText": "Jahrgangsstufe 9",
+      "rawSourceSpan": "J9.5",
+      "rawParentBulletText": "Jahrgangsstufe 9"
+    },
+    {
+      "id": "0b529884-5403-530d-9658-8678f86ea2b4",
+      "passageId": "by-en:5330772f-046c-5b80-a2ef-4d82dad181eb",
+      "topicCode": "J10",
+      "bulletIndex": 6,
+      "aspectIndex": 1,
+      "title": "Jahrgangsstufe 10",
+      "description": "Jahrgangsstufe 10",
+      "sourceText": "Jahrgangsstufe 10",
+      "sourceSpan": "J10.6",
+      "parentBulletText": "Jahrgangsstufe 10",
+      "sourceRef": "LehrplanPLUS Bayern Gymnasium Englisch, J10",
+      "courseLevel": "unspecified",
+      "granularity": "sourceSnapshotGoal",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-BY",
+        "stage:SekI",
+        "courseLevel:unspecified",
+        "topic:J10"
+      ],
+      "rawSourceText": "Jahrgangsstufe 10",
+      "rawSourceSpan": "J10.6",
+      "rawParentBulletText": "Jahrgangsstufe 10"
+    },
+    {
+      "id": "bb82312d-72b3-581e-b2a8-4ff7d5a5c0e1",
+      "passageId": "by-en:5330772f-046c-5b80-a2ef-4d82dad181eb",
+      "topicCode": "J11",
+      "bulletIndex": 7,
+      "aspectIndex": 1,
+      "title": "Jahrgangsstufe 11",
+      "description": "Jahrgangsstufe 11",
+      "sourceText": "Jahrgangsstufe 11",
+      "sourceSpan": "J11.7",
+      "parentBulletText": "Jahrgangsstufe 11",
+      "sourceRef": "LehrplanPLUS Bayern Gymnasium Englisch, J11",
+      "courseLevel": "unspecified",
+      "granularity": "sourceSnapshotGoal",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-BY",
+        "stage:SekI",
+        "courseLevel:unspecified",
+        "topic:J11"
+      ],
+      "rawSourceText": "Jahrgangsstufe 11",
+      "rawSourceSpan": "J11.7",
+      "rawParentBulletText": "Jahrgangsstufe 11"
+    },
+    {
+      "id": "a752527f-87c7-5bb3-a788-ef037c0b86b8",
+      "passageId": "by-en:5330772f-046c-5b80-a2ef-4d82dad181eb",
+      "topicCode": "J12",
+      "bulletIndex": 8,
+      "aspectIndex": 1,
+      "title": "Jahrgangsstufe 12",
+      "description": "Jahrgangsstufe 12",
+      "sourceText": "Jahrgangsstufe 12",
+      "sourceSpan": "J12.8",
+      "parentBulletText": "Jahrgangsstufe 12",
+      "sourceRef": "LehrplanPLUS Bayern Gymnasium Englisch, J12",
+      "courseLevel": "unspecified",
+      "granularity": "sourceSnapshotGoal",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-BY",
+        "stage:SekI",
+        "courseLevel:unspecified",
+        "topic:J12"
+      ],
+      "rawSourceText": "Jahrgangsstufe 12",
+      "rawSourceSpan": "J12.8",
+      "rawParentBulletText": "Jahrgangsstufe 12"
+    },
+    {
+      "id": "198ca50c-651d-59c6-82c7-7195d9ea0911",
+      "passageId": "by-en:5330772f-046c-5b80-a2ef-4d82dad181eb",
+      "topicCode": "J13",
+      "bulletIndex": 9,
+      "aspectIndex": 1,
+      "title": "Jahrgangsstufe 13",
+      "description": "Jahrgangsstufe 13",
+      "sourceText": "Jahrgangsstufe 13",
+      "sourceSpan": "J13.9",
+      "parentBulletText": "Jahrgangsstufe 13",
+      "sourceRef": "LehrplanPLUS Bayern Gymnasium Englisch, J13",
+      "courseLevel": "unspecified",
+      "granularity": "sourceSnapshotGoal",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-BY",
+        "stage:SekI",
+        "courseLevel:unspecified",
+        "topic:J13"
+      ],
+      "rawSourceText": "Jahrgangsstufe 13",
+      "rawSourceSpan": "J13.9",
+      "rawParentBulletText": "Jahrgangsstufe 13"
+    }
+  ],
+  "qualityReview": {
+    "sourceGoalCountPeerBaseline": {
+      "status": "accepted",
+      "expectedSourceGoals": 9,
+      "actualSourceGoals": 9,
+      "rationale": "Converted from the existing committed source landscape snapshot; non-curricular motivation/practice/assessment nodes are excluded from source coverage."
+    }
+  }
+}

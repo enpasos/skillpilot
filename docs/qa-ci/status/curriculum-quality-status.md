@@ -1,6 +1,6 @@
 # Curriculum Quality Status
 
-Generated: 2026-05-13T00:44:12.471Z
+Generated: 2026-05-13T00:49:26.764Z
 Rules version: curriculum-quality-v1
 
 ## Summary
@@ -23,7 +23,7 @@ Rules version: curriculum-quality-v1
 | Chemie (Gymnasium, DE) | M5 | 467 | 399 | 32/32 | 16/16 | 1 | 0 | 0 |
 | Chinesisch (Gymnasium, DE) | M0 | 192 | 181 | 0/2 | 0/16 | 0 | 1 | 1 |
 | Deutsch (Gymnasium, DE) | M0 | 181 | 144 | 0/2 | 0/16 | 0 | 1 | 1 |
-| Englisch (Gymnasium, DE) | M0 | 130 | 104 | 0/2 | 0/16 | 0 | 1 | 1 |
+| Englisch (Gymnasium, DE) | M0 | 130 | 104 | 2/2 | 2/16 | 0 | 2 | 0 |
 | Französisch (Gymnasium, DE) | M0 | 331 | 275 | 3/3 | 2/16 | 0 | 2 | 0 |
 | Geschichte (Gymnasium, DE) | M0 | 210 | 171 | 0/2 | 0/16 | 0 | 1 | 1 |
 | Griechisch (Gymnasium, DE) | M0 | 198 | 185 | 0/2 | 0/16 | 0 | 1 | 1 |
@@ -98,8 +98,8 @@ Rules version: curriculum-quality-v1
 | Chinesisch (Gymnasium, DE) | Chinesisch Oberstufe (Hessen, KC 2024) | DE-HE | No extraction | 0/3 | MAPPING-1 | 0 | 0 | 0 | 0 | 0% |  |
 | Deutsch (Gymnasium, DE) | Deutsch (Gymnasium) | DE-BY | No extraction | 0/3 | MAPPING-1 | 0 | 0 | 0 | 0 | 0% |  |
 | Deutsch (Gymnasium, DE) | Deutsch Oberstufe (Hessen, KC 2024) | DE-HE | No extraction | 0/3 | MAPPING-1 | 0 | 0 | 0 | 0 | 0% |  |
-| Englisch (Gymnasium, DE) | Englisch (Gymnasium) | DE-BY | No extraction | 0/3 | MAPPING-1 | 0 | 0 | 0 | 0 | 0% |  |
-| Englisch (Gymnasium, DE) | Englisch Oberstufe (Hessen, KC 2024) | DE-HE | No extraction | 0/3 | MAPPING-1 | 0 | 0 | 0 | 0 | 0% |  |
+| Englisch (Gymnasium, DE) | Englisch (Gymnasium) | DE-BY | 1/1 original source(s) | 3/3 | - | 1 | 9 | 1 | 8 | 11% |  |
+| Englisch (Gymnasium, DE) | Englisch Oberstufe (Hessen, KC 2024) | DE-HE | 1/1 original source(s) | 3/3 | - | 21 | 94 | 94 | 0 | 100% |  |
 | Französisch (Gymnasium, DE) | Französisch (Gymnasium) | DE-BY | 1/1 original source(s) | 3/3 | - | 1 | 9 | 7 | 2 | 78% |  |
 | Französisch (Gymnasium, DE) | Französisch Oberstufe (Hessen, KC 2024) | DE-HE | 1/1 original source(s) | 3/3 | - | 8 | 152 | 152 | 0 | 100% |  |
 | Französisch (Gymnasium, DE) | Französisch Sekundarstufe I (Hessen, G9) | DE-HE | 1/1 original source(s) | 3/3 | - | 43 | 108 | 108 | 0 | 100% |  |
@@ -188,7 +188,7 @@ Rules version: curriculum-quality-v1
 | Chemie (Gymnasium, DE) | 16/16 | 336 | 399 | 16 | 5865 | 5865 | 5865 | 0 | 5865 | 0 | 0 | 0 | 0 | 0 | 334 (100%) |
 | Chinesisch (Gymnasium, DE) | 0/16 | 170 | 181 | 2 | 0 | 436 | 436 | 0 | 0 | 0 | 0 | 0 | 0 | 2 | 170 (100%) |
 | Deutsch (Gymnasium, DE) | 0/16 | 127 | 144 | 2 | 0 | 650 | 650 | 0 | 0 | 0 | 0 | 0 | 0 | 2 | 127 (100%) |
-| Englisch (Gymnasium, DE) | 0/16 | 89 | 104 | 2 | 0 | 141 | 141 | 0 | 0 | 0 | 0 | 0 | 0 | 2 | 89 (100%) |
+| Englisch (Gymnasium, DE) | 2/16 | 89 | 104 | 2 | 103 | 103 | 103 | 0 | 103 | 0 | 0 | 0 | 0 | 0 | 89 (100%) |
 | Französisch (Gymnasium, DE) | 2/16 | 260 | 275 | 2 | 269 | 269 | 269 | 0 | 269 | 0 | 0 | 0 | 0 | 0 | 260 (100%) |
 | Geschichte (Gymnasium, DE) | 0/16 | 156 | 171 | 2 | 0 | 437 | 437 | 0 | 0 | 0 | 0 | 0 | 0 | 2 | 156 (100%) |
 | Griechisch (Gymnasium, DE) | 0/16 | 170 | 185 | 2 | 0 | 769 | 769 | 0 | 0 | 0 | 0 | 0 | 0 | 2 | 170 (100%) |
