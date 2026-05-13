@@ -1,6 +1,6 @@
 # Curriculum Quality Status
 
-Generated: 2026-05-13T01:00:02.428Z
+Generated: 2026-05-13T01:03:08.079Z
 Rules version: curriculum-quality-v1
 
 ## Summary
@@ -32,7 +32,7 @@ Rules version: curriculum-quality-v1
 | Italienisch (Gymnasium, DE) | M0 | 8 | 7 | 0/1 | 0/16 | 0 | 1 | 1 |
 | Latein (Gymnasium, DE) | M0 | 142 | 109 | 0/2 | 0/16 | 0 | 1 | 1 |
 | Mathematik (Gymnasium, DE) | M5 | 1037 | 825 | 31/31 | 16/16 | 2 | 0 | 0 |
-| Musik (Gymnasium, DE) | M0 | 76 | 52 | 0/2 | 0/16 | 0 | 1 | 1 |
+| Musik (Gymnasium, DE) | M0 | 76 | 52 | 2/2 | 2/16 | 0 | 2 | 0 |
 | Physik (Gymnasium, DE) | M5 | 585 | 497 | 25/25 | 16/16 | 2 | 0 | 0 |
 | Politik und Wirtschaft (Gymnasium, DE) | M0 | 208 | 175 | 0/2 | 0/16 | 0 | 1 | 1 |
 | Polnisch (Gymnasium, DE) | M0 | 5 | 4 | 0/1 | 0/16 | 0 | 1 | 1 |
@@ -143,8 +143,8 @@ Rules version: curriculum-quality-v1
 | Mathematik (Gymnasium, DE) | DE-ST - Mathematik Sekundarstufe I (Sachsen-Anhalt, Fachlehrplan Gymnasium 2019 Source-Extraction) | DE-ST | 1/1 original source(s) | 3/3 | - | 32 | 424 | 137 | 287 | 32% |  |
 | Mathematik (Gymnasium, DE) | DE-TH - Mathematik Gymnasiale Oberstufe (Thueringen, Lehrplan Gymnasium 2018/2025 Source-Extraction) | DE-TH | 2/2 original source(s) | 3/3 | - | 8 | 189 | 0 | 189 | 0% |  |
 | Mathematik (Gymnasium, DE) | DE-TH - Mathematik Sekundarstufe I (Thueringen, Lehrplan Gymnasium 2018/2025 Source-Extraction) | DE-TH | 2/2 original source(s) | 3/3 | - | 17 | 356 | 83 | 273 | 23% |  |
-| Musik (Gymnasium, DE) | Musik (Gymnasium) | DE-BY | No extraction | 0/3 | MAPPING-1 | 0 | 0 | 0 | 0 | 0% |  |
-| Musik (Gymnasium, DE) | Musik Oberstufe (Hessen, KC 2024) | DE-HE | No extraction | 0/3 | MAPPING-1 | 0 | 0 | 0 | 0 | 0% |  |
+| Musik (Gymnasium, DE) | Musik (Gymnasium) | DE-BY | 1/1 original source(s) | 3/3 | - | 48 | 204 | 9 | 195 | 4% |  |
+| Musik (Gymnasium, DE) | Musik Oberstufe (Hessen, KC 2024) | DE-HE | 1/1 original source(s) | 3/3 | - | 24 | 38 | 38 | 0 | 100% |  |
 | Physik (Gymnasium, DE) | DE-BB - Physik Oberstufe (Brandenburg, RLP GOST 2022 Source-Extraction) | DE-BB | 1/1 original source(s) | 3/3 | - | 20 | 175 | 0 | 175 | 0% |  |
 | Physik (Gymnasium, DE) | DE-BE - Physik Oberstufe (Berlin, RLP GOST 2022 Source-Extraction) | DE-BE | 1/1 original source(s) | 3/3 | - | 20 | 175 | 0 | 175 | 0% |  |
 | Physik (Gymnasium, DE) | Physik Kursstufe (Baden-Wuerttemberg, BP2016 V2 Source-Extraction) | DE-BW | 1/1 original source(s) | 3/3 | - | 24 | 164 | 64 | 100 | 39% |  |
@@ -197,7 +197,7 @@ Rules version: curriculum-quality-v1
 | Italienisch (Gymnasium, DE) | 0/16 | 6 | 7 | 1 | 0 | 8 | 8 | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 6 (100%) |
 | Latein (Gymnasium, DE) | 0/16 | 94 | 109 | 2 | 0 | 1035 | 1035 | 0 | 0 | 0 | 0 | 0 | 0 | 2 | 94 (100%) |
 | Mathematik (Gymnasium, DE) | 16/16 | 648 | 825 | 16 | 9797 | 9797 | 9797 | 0 | 9797 | 0 | 0 | 0 | 0 | 0 | 648 (100%) |
-| Musik (Gymnasium, DE) | 0/16 | 38 | 52 | 2 | 0 | 329 | 329 | 0 | 0 | 0 | 0 | 0 | 0 | 2 | 38 (100%) |
+| Musik (Gymnasium, DE) | 2/16 | 38 | 52 | 2 | 242 | 242 | 242 | 0 | 242 | 0 | 0 | 0 | 0 | 0 | 38 (100%) |
 | Physik (Gymnasium, DE) | 16/16 | 389 | 497 | 16 | 6342 | 6342 | 6342 | 0 | 6342 | 0 | 0 | 0 | 0 | 0 | 381 (100%) |
 | Politik und Wirtschaft (Gymnasium, DE) | 0/16 | 155 | 175 | 2 | 0 | 607 | 607 | 0 | 0 | 0 | 0 | 0 | 0 | 2 | 155 (100%) |
 | Polnisch (Gymnasium, DE) | 0/16 | 3 | 4 | 1 | 0 | 5 | 5 | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 3 (100%) |

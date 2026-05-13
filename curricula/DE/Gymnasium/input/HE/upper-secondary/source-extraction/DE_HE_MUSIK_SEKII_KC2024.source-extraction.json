@@ -1,0 +1,1382 @@
+{
+  "schemaVersion": 1,
+  "extractionId": "DE_HE_MUSIK_SEKII_KC2024",
+  "sourceLandscapeId": "a8c23058-6998-49f2-9f3b-a85e951d5ab0",
+  "title": "Musik Oberstufe (Hessen, KC 2024)",
+  "jurisdiction": "DE-HE",
+  "subject": "Musik",
+  "stage": "SekII",
+  "sourceDocument": {
+    "title": "Kerncurriculum Gymnasiale Oberstufe Musik Hessen 2024",
+    "path": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-json/DE_HES_S_GYM_2_MUSIK.de.json.snapshot",
+    "url": "https://kultus.hessen.de/unterricht/kerncurricula/gymnasiale-oberstufe/musik"
+  },
+  "sourceDocuments": [
+    {
+      "title": "Kerncurriculum Gymnasiale Oberstufe Musik Hessen 2024",
+      "path": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-json/DE_HES_S_GYM_2_MUSIK.de.json.snapshot",
+      "url": "https://kultus.hessen.de/unterricht/kerncurricula/gymnasiale-oberstufe/musik"
+    }
+  ],
+  "method": "Source snapshot converted into reviewed mapping pipeline artifact; existing source-goal registry and seed mappings remain the evidence base.",
+  "expectedTopicCodes": [
+    "E",
+    "HE-MU-SEKII",
+    "Q1",
+    "Q2",
+    "Q3",
+    "Q4"
+  ],
+  "pipelineStatus": {
+    "version": 1,
+    "currentStep": "",
+    "steps": [
+      {
+        "id": "MAPPING-1",
+        "label": "Original-Lehrplanpassagen extrahiert",
+        "status": "complete",
+        "dependsOn": [],
+        "checks": [
+          {
+            "id": "source-document-present",
+            "label": "Strukturierte Musik-Quelle liegt lokal vor",
+            "passed": true,
+            "details": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-json/DE_HES_S_GYM_2_MUSIK.de.json.snapshot"
+          },
+          {
+            "id": "topic-passages-extracted",
+            "label": "Musik-Quellpassagen sind aus dem vorhandenen Snapshot extrahiert",
+            "passed": true,
+            "details": "Erfasst: 24/24 Passagen."
+          }
+        ]
+      },
+      {
+        "id": "MAPPING-2",
+        "label": "Source-Ziele aus Lehrplanpassagen erstellt",
+        "status": "complete",
+        "dependsOn": [
+          "MAPPING-1"
+        ],
+        "checks": [
+          {
+            "id": "source-goals-created",
+            "label": "Aus den Musik-Passagen wurden Source-Ziele erzeugt",
+            "passed": true,
+            "details": "38 Source-Ziele."
+          },
+          {
+            "id": "passage-to-source-goal-coverage",
+            "label": "Jede Passage hat mindestens ein Source-Ziel oder dient als Strukturpassage",
+            "passed": true,
+            "details": "Passage-Zuordnung wurde aus der bestehenden Source-Hierarchie abgeleitet."
+          },
+          {
+            "id": "source-goal-ids-unique",
+            "label": "Source-Ziel-IDs sind eindeutig",
+            "passed": true,
+            "details": "Doppelte IDs: -."
+          },
+          {
+            "id": "source-goal-trace-complete",
+            "label": "Jedes Source-Ziel hat Passage, Source-Span und Quellenreferenz",
+            "passed": true,
+            "details": "Unvollstaendige Source-Ziele: -"
+          }
+        ]
+      },
+      {
+        "id": "MAPPING-3",
+        "label": "Source-Ziele auf SkillPilot-Ziele gemappt",
+        "status": "complete",
+        "dependsOn": [
+          "MAPPING-1",
+          "MAPPING-2"
+        ],
+        "checks": [
+          {
+            "id": "m3-review-file-present",
+            "label": "M3-Review-Datei ist vorhanden",
+            "passed": true,
+            "details": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_music_upper_secondary_source_extraction_to_canonical_music.review.json"
+          },
+          {
+            "id": "m3-review-decisions-reference-source-goals",
+            "label": "M3-Review-Entscheidungen referenzieren gueltige Source-Ziele",
+            "passed": true,
+            "details": "Reviewed Source-Ziele: 38/38."
+          },
+          {
+            "id": "m3-review-targets-exist",
+            "label": "M3-Review-Ziele referenzieren vorhandene Canonical-Ziele",
+            "passed": true,
+            "details": "Unbekannte Canonical-Ziele: -"
+          },
+          {
+            "id": "m3-all-source-goals-reviewed",
+            "label": "Alle Source-Ziele haben eine fachliche M3-Entscheidung",
+            "passed": true,
+            "details": "38/38 Source-Ziele reviewed; offen: 0."
+          },
+          {
+            "id": "m3-all-source-goals-covered-by-canonical",
+            "label": "Alle Source-Ziele sind inhaltlich durch SkillPilot-Ziele abgedeckt",
+            "passed": true,
+            "details": "Abgedeckt: 38/38; verbleibend: 0 explizite Canonical-Gaps, 0 unreviewed."
+          }
+        ]
+      }
+    ]
+  },
+  "passages": [
+    {
+      "id": "he-mu-sekii:4691aa77-8d26-4bdd-a503-e0b229ca5273",
+      "topicCode": "HE-MU-SEKII",
+      "title": "Musik",
+      "text": "",
+      "sourcePath": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-json/DE_HES_S_GYM_2_MUSIK.de.json.snapshot",
+      "sourceUrl": "https://kultus.hessen.de/unterricht/kerncurricula/gymnasiale-oberstufe/musik",
+      "rawText": "Oberziel: Musik hörend, analysierend und gestaltend erschließen; Ausdruck, Kontext und Technik reflektieren. Grund- und Leistungskurs arbeiten an denselben Themenfeldern; das erhöhte Niveau im Leistungskurs wird über komplexere Werke, vertiefte Analyse, höhere Selbstständigkeit und anspruchsvollere Praxis realisiert, nicht über eigene zusätzliche Inhalte.",
+      "sourceGoalIds": []
+    },
+    {
+      "id": "he-mu-sekii:1f2736e0-7ce6-4ce3-b699-c087debea900",
+      "topicCode": "E",
+      "title": "E-Phase Musik",
+      "text": "",
+      "sourcePath": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-json/DE_HES_S_GYM_2_MUSIK.de.json.snapshot",
+      "sourceUrl": "https://kultus.hessen.de/unterricht/kerncurricula/gymnasiale-oberstufe/musik",
+      "rawText": "Grundlagen von Notation, Rhythmus, Höranalyse und Ensemblepraxis (B1/B2).",
+      "sourceGoalIds": []
+    },
+    {
+      "id": "he-mu-sekii:c4ab81c3-3614-48ca-8233-f854c70b28fc",
+      "topicCode": "E",
+      "title": "Notation, Rhythmus, Tonsprache",
+      "text": "1) Die lernende Person kann Notenwerte, Schlüssel, einfache Taktarten lesen und notieren.\n2) Die lernende Person kann Grundrhythmen klatschen/spielen, Tempo halten und einfache Patterns variieren.\n3) Die lernende Person kann Tonleitern, Dreiklänge/Tonika-Dominante erkennen und benennen.",
+      "sourcePath": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-json/DE_HES_S_GYM_2_MUSIK.de.json.snapshot",
+      "sourceUrl": "https://kultus.hessen.de/unterricht/kerncurricula/gymnasiale-oberstufe/musik",
+      "rawText": "Basis-Notation, Rhythmus, Tonarten und elementare Harmonik.",
+      "sourceGoalIds": [
+        "58dbb8e9-5af2-4fb9-8cfa-fb00dfb51679",
+        "a67e3d72-2822-4d6e-ade5-dbcba672b937",
+        "c6d072dc-5e2f-493f-8b82-208e26b625e1"
+      ]
+    },
+    {
+      "id": "he-mu-sekii:bba36552-c607-4c57-9b24-ebb6f8adedc6",
+      "topicCode": "E",
+      "title": "Hören und Erste Analyse",
+      "text": "1) Die lernende Person kann Instrumente, Dynamik und einfache Texturen in Gehörbeispielen benennen.\n2) Die lernende Person kann einfache Lied- und Periodenformen identifizieren und Gliederung beschreiben.\n3) Die lernende Person kann einfache stilistische Merkmale (z. B. Barock/Klassik/Pop) benennen und zuordnen.",
+      "sourcePath": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-json/DE_HES_S_GYM_2_MUSIK.de.json.snapshot",
+      "sourceUrl": "https://kultus.hessen.de/unterricht/kerncurricula/gymnasiale-oberstufe/musik",
+      "rawText": "Musik hörend erschließen und Grundformen erkennen.",
+      "sourceGoalIds": [
+        "853d8081-5193-45ea-bc9a-252944837a84",
+        "d8bf6eeb-b67d-477f-9780-ccfa027b046f",
+        "740752d1-1832-4f18-89c3-544b3e8d6328"
+      ]
+    },
+    {
+      "id": "he-mu-sekii:1ed60ab9-8a63-498c-8be8-d62ffea10335",
+      "topicCode": "E",
+      "title": "Ensemble und Vortrag",
+      "text": "1) Die lernende Person kann ein Stück vorbereiten, Probeziele festlegen und im Ensemble umsetzen.\n2) Die lernende Person kann ein kurzes Stück oder Song sicher darbieten (Instrument/Stimme) und Ausdruck gestalten.\n3) Die lernende Person kann eine Aufführung kurz schriftlich/mündlich reflektieren und Verbesserungen ableiten.",
+      "sourcePath": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-json/DE_HES_S_GYM_2_MUSIK.de.json.snapshot",
+      "sourceUrl": "https://kultus.hessen.de/unterricht/kerncurricula/gymnasiale-oberstufe/musik",
+      "rawText": "Musik einstudieren, präsentieren und reflektieren.",
+      "sourceGoalIds": [
+        "9a97b2c8-a62f-427d-8d86-20ab18fa4ab4",
+        "f5e3a3cd-0364-4235-ba4c-5e31ac90d5ff",
+        "15e6cecf-b39f-47e4-9f76-6a3cd32d5382"
+      ]
+    },
+    {
+      "id": "he-mu-sekii:c80fb19d-0bb2-4f2e-aa20-1793213bf31e",
+      "topicCode": "Q1",
+      "title": "Q1 Musik",
+      "text": "",
+      "sourcePath": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-json/DE_HES_S_GYM_2_MUSIK.de.json.snapshot",
+      "sourceUrl": "https://kultus.hessen.de/unterricht/kerncurricula/gymnasiale-oberstufe/musik",
+      "rawText": "Formen und Tonsprache (Barock/Klassik) analysieren und aufführen (B2).",
+      "sourceGoalIds": []
+    },
+    {
+      "id": "he-mu-sekii:976c1d14-ad33-496c-91c9-48453cccfe6c",
+      "topicCode": "Q1",
+      "title": "Formen und Harmonik",
+      "text": "1) Die lernende Person kann Exposition, Durchführung, Reprise in einfachen Sonatensätzen markieren.\n2) Die lernende Person kann typische Kadenzmodelle und einfache Modulationen erkennen und benennen.\n3) Die lernende Person kann eine kurze Partitur mit Instrumentation und wichtigen Stimmen sicher verfolgen.\n4) Die lernende Person kann einen Ausschnitt interpretierend darbieten und analytische Erkenntnisse einbeziehen.",
+      "sourcePath": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-json/DE_HES_S_GYM_2_MUSIK.de.json.snapshot",
+      "sourceUrl": "https://kultus.hessen.de/unterricht/kerncurricula/gymnasiale-oberstufe/musik",
+      "rawText": "Tanzsätze, Sonatenhauptsatz, Kadenzmodelle analysieren.",
+      "sourceGoalIds": [
+        "ab38c7f4-59a4-4ce0-a4cb-93774d4169d7",
+        "3882b5c0-b744-49be-a8a9-2eb864146b70",
+        "fd63917b-587d-4334-895b-f1bda8ecaad6",
+        "e8e94793-8f1e-45f1-9d9e-49c496ef4fec"
+      ]
+    },
+    {
+      "id": "he-mu-sekii:3ee7426c-7559-405f-9f9e-95c11b2b3f85",
+      "topicCode": "Q1",
+      "title": "Musik und Kontext (Barock/Klassik)",
+      "text": "1) Die lernende Person kann zentrale Gattungen (Kantate, Sonate, Sinfonie) historisch verorten und Merkmale nennen.\n2) Die lernende Person kann Aufführungskontexte (Kirche, Hof, bürgeröffentliche Konzerte) beschreiben und auf Beispiele beziehen.\n3) Die lernende Person kann zwei Werke aus Barock/Klassik vergleichen und Unterschiede in Form, Harmonik und Funktion herausarbeiten.",
+      "sourcePath": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-json/DE_HES_S_GYM_2_MUSIK.de.json.snapshot",
+      "sourceUrl": "https://kultus.hessen.de/unterricht/kerncurricula/gymnasiale-oberstufe/musik",
+      "rawText": "Gattungen, Funktionen und Musikerbilder historisch einordnen.",
+      "sourceGoalIds": [
+        "8e30a4d8-e08b-48e9-9430-bc1f39bdbf91",
+        "c54d197b-89e2-46fb-a3c2-b107decffc8f",
+        "c280a83f-ca18-4f3a-b7bb-fbbcf76375ea"
+      ]
+    },
+    {
+      "id": "he-mu-sekii:391a9c59-499a-4f27-b1c4-9e7d69a290a9",
+      "topicCode": "Q2",
+      "title": "Q2 Musik",
+      "text": "",
+      "sourcePath": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-json/DE_HES_S_GYM_2_MUSIK.de.json.snapshot",
+      "sourceUrl": "https://kultus.hessen.de/unterricht/kerncurricula/gymnasiale-oberstufe/musik",
+      "rawText": "Romantik, Moderne und Klangfarbe – Ausdruck, Harmonik, Rhythmus vertiefen (B2).",
+      "sourceGoalIds": []
+    },
+    {
+      "id": "he-mu-sekii:ebbb500d-3225-4dc7-ba4e-aeebfacd85d1",
+      "topicCode": "Q2",
+      "title": "Romantik: Ausdruck und Programmatik",
+      "text": "1) Die lernende Person kann chromatische Fortschreitungen, Spannungsbögen und orchestrale Farbgebung analysieren.\n2) Die lernende Person kann Binnenthemen/Programme erkennen und deren musikalische Umsetzung benennen.\n3) Die lernende Person kann zwei romantische Werke in Ausdruck und Programmatik vergleichen und schriftlich reflektieren.",
+      "sourcePath": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-json/DE_HES_S_GYM_2_MUSIK.de.json.snapshot",
+      "sourceUrl": "https://kultus.hessen.de/unterricht/kerncurricula/gymnasiale-oberstufe/musik",
+      "rawText": "Hohe Expressivität, erweiterte Harmonik, Programmmusik untersuchen.",
+      "sourceGoalIds": [
+        "c686c88d-f4b6-445f-80a4-5e6fd9c3fd9e",
+        "2562704c-acd3-4b4c-aa52-d2df2a25e156",
+        "73a0d898-4e5a-4383-81b2-bb65cf22e8cb"
+      ]
+    },
+    {
+      "id": "he-mu-sekii:248e7b88-b3f4-4905-8233-6373aaf062d0",
+      "topicCode": "Q2",
+      "title": "Moderne/Neue Musik",
+      "text": "1) Die lernende Person kann ungerade Taktarten, Polymetrik oder Patterns sicher erfassen und notieren.\n2) Die lernende Person kann Klangexperimente, Cluster oder serielle/aleatorische Elemente beschreiben.\n3) Die lernende Person kann Wirkung und Intention neuer Musik begründet reflektieren und schriftlich festhalten.",
+      "sourcePath": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-json/DE_HES_S_GYM_2_MUSIK.de.json.snapshot",
+      "sourceUrl": "https://kultus.hessen.de/unterricht/kerncurricula/gymnasiale-oberstufe/musik",
+      "rawText": "Rhythmus, Klangfarbe, neue Kompositionstechniken erschließen.",
+      "sourceGoalIds": [
+        "3d1c075f-c422-4ecf-915f-d6471f2daa97",
+        "fc2289dd-68e5-4d75-ab7d-c213ec721c9d",
+        "2a44233c-4aeb-4c55-bb4a-4811d0a61ed5"
+      ]
+    },
+    {
+      "id": "he-mu-sekii:84ee8951-f324-4e63-ba16-c1530b1162db",
+      "topicCode": "Q3",
+      "title": "Q3 Musik",
+      "text": "",
+      "sourcePath": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-json/DE_HES_S_GYM_2_MUSIK.de.json.snapshot",
+      "sourceUrl": "https://kultus.hessen.de/unterricht/kerncurricula/gymnasiale-oberstufe/musik",
+      "rawText": "Jazz/Pop, Arrangement, Recording – kreativ und analysierend (B2/C1).",
+      "sourceGoalIds": []
+    },
+    {
+      "id": "he-mu-sekii:5914397a-3960-4d46-b8ec-124de5d46508",
+      "topicCode": "Q3",
+      "title": "Jazz/Pop Stile",
+      "text": "1) Die lernende Person kann typische Groove-, Instrumentations- und Phrasierungsmerkmale zuordnen.\n2) Die lernende Person kann einfache Akkordfolgen/Leadsheets lesen und rhythmisch sicher begleiten.\n3) Die lernende Person kann über einfachen Changes improvisieren und Phrasen stilgerecht gestalten.\n4) Die lernende Person kann ein kurzes Arrangement im Ensemble aufführen und Groove/Balance sichern.",
+      "sourcePath": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-json/DE_HES_S_GYM_2_MUSIK.de.json.snapshot",
+      "sourceUrl": "https://kultus.hessen.de/unterricht/kerncurricula/gymnasiale-oberstufe/musik",
+      "rawText": "Rhythmus, Harmonik und Stilkriterien analysieren und anwenden.",
+      "sourceGoalIds": [
+        "931aa957-bbe2-48e0-872b-e56b49495be0",
+        "d5e6b66e-c6d2-4ac8-a006-df114cd420cf",
+        "c83e0e5c-26fd-41da-8d81-d1c6b6a95580",
+        "2e935861-78ea-4c63-aca6-eb0621a1b04f"
+      ]
+    },
+    {
+      "id": "he-mu-sekii:4dff5672-d019-48d5-a50e-7d20bd5d596f",
+      "topicCode": "Q3",
+      "title": "Musikproduktion und Medien",
+      "text": "1) Die lernende Person kann Ziel, Besetzung und Ablauf einer kleinen Aufnahme/Produktion planen.\n2) Die lernende Person kann eine einfache Aufnahme (z. B. DAW/Recorder) technisch sicher durchführen.\n3) Die lernende Person kann Lautstärken, Panorama und Effekt-Einsatz bewerten und anpassen.\n4) Die lernende Person kann das Ergebnis kritisch einschätzen und Verbesserungen begründen.",
+      "sourcePath": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-json/DE_HES_S_GYM_2_MUSIK.de.json.snapshot",
+      "sourceUrl": "https://kultus.hessen.de/unterricht/kerncurricula/gymnasiale-oberstufe/musik",
+      "rawText": "Aufnahme, Arrangement und mediale Aufbereitung planen und umsetzen.",
+      "sourceGoalIds": [
+        "cf12d3c5-5be3-444f-8429-bf3be33ecf50",
+        "1b5a4b50-ad24-4cb9-ac22-c07d18c90cbb",
+        "40f14740-4dce-4899-aaeb-5834907a820e",
+        "5abf17e9-c85c-4fef-b3df-f160d5edde3d"
+      ]
+    },
+    {
+      "id": "he-mu-sekii:3f9d2e60-a615-4523-af79-ec219520960c",
+      "topicCode": "Q4",
+      "title": "Q4 Musik",
+      "text": "",
+      "sourcePath": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-json/DE_HES_S_GYM_2_MUSIK.de.json.snapshot",
+      "sourceUrl": "https://kultus.hessen.de/unterricht/kerncurricula/gymnasiale-oberstufe/musik",
+      "rawText": "Projekt/Transfer und Abiturvorbereitung (C1).",
+      "sourceGoalIds": []
+    },
+    {
+      "id": "he-mu-sekii:bc05c42c-8653-43ae-939a-96d4f7844d9d",
+      "topicCode": "Q4",
+      "title": "Eigenes Musikprojekt",
+      "text": "1) Die lernende Person kann eine sinnvolle Fragestellung/Idee für ein Musikprojekt formulieren und planen.\n2) Die lernende Person kann das Projekt praktisch/analytisch umsetzen (z. B. Arrangement, Aufnahme, Recherche).\n3) Die lernende Person kann Projektergebnisse adressatengerecht präsentieren (Konzert, Vortrag, Audio).\n4) Die lernende Person kann Ergebnisse und Prozess schriftlich reflektieren und nächste Schritte ableiten.",
+      "sourcePath": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-json/DE_HES_S_GYM_2_MUSIK.de.json.snapshot",
+      "sourceUrl": "https://kultus.hessen.de/unterricht/kerncurricula/gymnasiale-oberstufe/musik",
+      "rawText": "Ein eigenes Projekt planen, durchführen und dokumentieren.",
+      "sourceGoalIds": [
+        "e79c34e9-a8c9-4b0b-b55a-f05f5651fd58",
+        "668508b7-b1c1-464a-aa0e-988d673a1894",
+        "89f4ccd8-d0be-4603-a6e2-6b09ec40433c",
+        "59a9e0c9-2c8f-47de-be77-85ab83f6dbae"
+      ]
+    },
+    {
+      "id": "he-mu-sekii:ae66dfe5-baf2-4d8d-82f6-fdb994ed635d",
+      "topicCode": "Q4",
+      "title": "Abiturvorbereitung Musik",
+      "text": "1) Die lernende Person kann prüfungsnahe Analyseaufgaben zu Notentext/Hörbeispiel bearbeiten.\n2) Die lernende Person kann prüfungsnahe Höraufgaben bearbeiten und Befunde strukturiert notieren.\n3) Die lernende Person kann musikspezifische Informationen zwischen Deutsch und ggf. Englisch adressatengerecht vermitteln.\n4) Die lernende Person kann einen prüfungsnahen Aufsatz (Analyse/Kommentar) strukturiert verfassen.",
+      "sourcePath": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-json/DE_HES_S_GYM_2_MUSIK.de.json.snapshot",
+      "sourceUrl": "https://kultus.hessen.de/unterricht/kerncurricula/gymnasiale-oberstufe/musik",
+      "rawText": "Analyse, Hören, Praxisteile und schriftliche Formate prüfungsnah trainieren.",
+      "sourceGoalIds": [
+        "64c71c2c-9871-4a31-9869-7c73beeadfd8",
+        "50a19fce-f125-4eb7-a497-6232c33e6e1d",
+        "5860b387-735e-4e25-aef9-9b6631d72368",
+        "e67b1a28-67be-4e1b-810d-41fe873ddf87"
+      ]
+    },
+    {
+      "id": "he-mu-sekii:9b2e4ab7-0466-5df8-8242-1a2307fcc0a9",
+      "topicCode": "E",
+      "title": "Übungen E-Phase",
+      "text": "",
+      "sourcePath": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-json/DE_HES_S_GYM_2_MUSIK.de.json.snapshot",
+      "sourceUrl": "https://kultus.hessen.de/unterricht/kerncurricula/gymnasiale-oberstufe/musik",
+      "rawText": "Phasenlokales Übungsziel: Die lernende Person kann materialgestützte Musikaufgaben der Einführungsphase selbstständig bearbeiten.",
+      "sourceGoalIds": []
+    },
+    {
+      "id": "he-mu-sekii:e45ad724-eb06-5f55-8871-e0ba3d26b9a6",
+      "topicCode": "Q1",
+      "title": "Übungen Q1",
+      "text": "",
+      "sourcePath": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-json/DE_HES_S_GYM_2_MUSIK.de.json.snapshot",
+      "sourceUrl": "https://kultus.hessen.de/unterricht/kerncurricula/gymnasiale-oberstufe/musik",
+      "rawText": "Phasenlokales Übungsziel: Die lernende Person kann Musikaufgaben zu Formprinzipien, Songformen und Kontexten der Q1 selbstständig bearbeiten.",
+      "sourceGoalIds": []
+    },
+    {
+      "id": "he-mu-sekii:33884d4a-bff3-5316-bbc5-8bdec7f37b74",
+      "topicCode": "Q2",
+      "title": "Übungen Q2",
+      "text": "",
+      "sourcePath": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-json/DE_HES_S_GYM_2_MUSIK.de.json.snapshot",
+      "sourceUrl": "https://kultus.hessen.de/unterricht/kerncurricula/gymnasiale-oberstufe/musik",
+      "rawText": "Phasenlokales Übungsziel: Die lernende Person kann materialgestützte Musikaufgaben zu visuellen Medien, Sprache und Malerei der Q2 selbstständig bearbeiten.",
+      "sourceGoalIds": []
+    },
+    {
+      "id": "he-mu-sekii:b9b9caac-b6bd-5bbb-bad1-0044841ccf72",
+      "topicCode": "Q3",
+      "title": "Übungen Q3",
+      "text": "",
+      "sourcePath": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-json/DE_HES_S_GYM_2_MUSIK.de.json.snapshot",
+      "sourceUrl": "https://kultus.hessen.de/unterricht/kerncurricula/gymnasiale-oberstufe/musik",
+      "rawText": "Phasenlokales Übungsziel: Die lernende Person kann Musikaufgaben zu Moderne, Musikgeschichte und Formwandel der Q3 selbstständig bearbeiten.",
+      "sourceGoalIds": []
+    },
+    {
+      "id": "he-mu-sekii:91f07fb2-4e0d-5bfa-a06b-70cca75ca5af",
+      "topicCode": "Q4",
+      "title": "Übungen Q4",
+      "text": "",
+      "sourcePath": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-json/DE_HES_S_GYM_2_MUSIK.de.json.snapshot",
+      "sourceUrl": "https://kultus.hessen.de/unterricht/kerncurricula/gymnasiale-oberstufe/musik",
+      "rawText": "Phasenlokales Übungsziel: Die lernende Person kann ein eigenständiges Musikprojekt kriteriengeleitet planen und reflektieren.",
+      "sourceGoalIds": []
+    },
+    {
+      "id": "he-mu-sekii:3a7dc918-925f-58c4-951b-06df281957bd",
+      "topicCode": "HE-MU-SEKII",
+      "title": "Abiturprüfung Musik (GK)",
+      "text": "",
+      "sourcePath": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-json/DE_HES_S_GYM_2_MUSIK.de.json.snapshot",
+      "sourceUrl": "https://kultus.hessen.de/unterricht/kerncurricula/gymnasiale-oberstufe/musik",
+      "rawText": "Release-Anker für die schriftliche Abiturprüfung Musik 2026 im Grundkurs. Die SkillPilot-Angebotsstruktur mit zwei Analysevorschlägen wird über diesen Knoten verankert.",
+      "sourceGoalIds": []
+    },
+    {
+      "id": "he-mu-sekii:b9212b49-c976-55ee-b80e-3083dfc4861f",
+      "topicCode": "HE-MU-SEKII",
+      "title": "Abiturprüfung Musik (LK)",
+      "text": "",
+      "sourcePath": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-json/DE_HES_S_GYM_2_MUSIK.de.json.snapshot",
+      "sourceUrl": "https://kultus.hessen.de/unterricht/kerncurricula/gymnasiale-oberstufe/musik",
+      "rawText": "Release-Anker für die schriftliche Abiturprüfung Musik 2026 im Leistungskurs. Die SkillPilot-Angebotsstruktur mit zwei Analysevorschlägen und einer Gestaltungsoption wird über diesen Knoten verankert.",
+      "sourceGoalIds": []
+    }
+  ],
+  "sourceGoals": [
+    {
+      "id": "58dbb8e9-5af2-4fb9-8cfa-fb00dfb51679",
+      "passageId": "he-mu-sekii:c4ab81c3-3614-48ca-8233-f854c70b28fc",
+      "topicCode": "E",
+      "bulletIndex": 1,
+      "aspectIndex": 1,
+      "title": "Notation sicher anwenden",
+      "description": "Die lernende Person kann Notenwerte, Schlüssel, einfache Taktarten lesen und notieren.",
+      "sourceText": "Die lernende Person kann Notenwerte, Schlüssel, einfache Taktarten lesen und notieren.",
+      "sourceSpan": "E.1",
+      "parentBulletText": "Die lernende Person kann Notenwerte, Schlüssel, einfache Taktarten lesen und notieren.",
+      "sourceRef": "Kerncurriculum Gymnasiale Oberstufe Musik Hessen 2024, E",
+      "courseLevel": "GK_LK",
+      "granularity": "sourceSnapshotGoal",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-HE",
+        "stage:SekII",
+        "courseLevel:GK_LK",
+        "topic:E"
+      ],
+      "rawSourceText": "Die lernende Person kann Notenwerte, Schlüssel, einfache Taktarten lesen und notieren.",
+      "rawSourceSpan": "E.1",
+      "rawParentBulletText": "Die lernende Person kann Notenwerte, Schlüssel, einfache Taktarten lesen und notieren."
+    },
+    {
+      "id": "a67e3d72-2822-4d6e-ade5-dbcba672b937",
+      "passageId": "he-mu-sekii:c4ab81c3-3614-48ca-8233-f854c70b28fc",
+      "topicCode": "E",
+      "bulletIndex": 2,
+      "aspectIndex": 1,
+      "title": "Rhythmus und Puls gestalten",
+      "description": "Die lernende Person kann Grundrhythmen klatschen/spielen, Tempo halten und einfache Patterns variieren.",
+      "sourceText": "Die lernende Person kann Grundrhythmen klatschen/spielen, Tempo halten und einfache Patterns variieren.",
+      "sourceSpan": "E.2",
+      "parentBulletText": "Die lernende Person kann Grundrhythmen klatschen/spielen, Tempo halten und einfache Patterns variieren.",
+      "sourceRef": "Kerncurriculum Gymnasiale Oberstufe Musik Hessen 2024, E",
+      "courseLevel": "GK_LK",
+      "granularity": "sourceSnapshotGoal",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-HE",
+        "stage:SekII",
+        "courseLevel:GK_LK",
+        "topic:E"
+      ],
+      "rawSourceText": "Die lernende Person kann Grundrhythmen klatschen/spielen, Tempo halten und einfache Patterns variieren.",
+      "rawSourceSpan": "E.2",
+      "rawParentBulletText": "Die lernende Person kann Grundrhythmen klatschen/spielen, Tempo halten und einfache Patterns variieren."
+    },
+    {
+      "id": "c6d072dc-5e2f-493f-8b82-208e26b625e1",
+      "passageId": "he-mu-sekii:c4ab81c3-3614-48ca-8233-f854c70b28fc",
+      "topicCode": "E",
+      "bulletIndex": 3,
+      "aspectIndex": 1,
+      "title": "Tonarten und Grundharmonik erkennen",
+      "description": "Die lernende Person kann Tonleitern, Dreiklänge/Tonika-Dominante erkennen und benennen.",
+      "sourceText": "Die lernende Person kann Tonleitern, Dreiklänge/Tonika-Dominante erkennen und benennen.",
+      "sourceSpan": "E.3",
+      "parentBulletText": "Die lernende Person kann Tonleitern, Dreiklänge/Tonika-Dominante erkennen und benennen.",
+      "sourceRef": "Kerncurriculum Gymnasiale Oberstufe Musik Hessen 2024, E",
+      "courseLevel": "GK_LK",
+      "granularity": "sourceSnapshotGoal",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-HE",
+        "stage:SekII",
+        "courseLevel:GK_LK",
+        "topic:E"
+      ],
+      "rawSourceText": "Die lernende Person kann Tonleitern, Dreiklänge/Tonika-Dominante erkennen und benennen.",
+      "rawSourceSpan": "E.3",
+      "rawParentBulletText": "Die lernende Person kann Tonleitern, Dreiklänge/Tonika-Dominante erkennen und benennen."
+    },
+    {
+      "id": "853d8081-5193-45ea-bc9a-252944837a84",
+      "passageId": "he-mu-sekii:bba36552-c607-4c57-9b24-ebb6f8adedc6",
+      "topicCode": "E",
+      "bulletIndex": 4,
+      "aspectIndex": 1,
+      "title": "Höreindrücke ordnen",
+      "description": "Die lernende Person kann Instrumente, Dynamik und einfache Texturen in Gehörbeispielen benennen.",
+      "sourceText": "Die lernende Person kann Instrumente, Dynamik und einfache Texturen in Gehörbeispielen benennen.",
+      "sourceSpan": "E.4",
+      "parentBulletText": "Die lernende Person kann Instrumente, Dynamik und einfache Texturen in Gehörbeispielen benennen.",
+      "sourceRef": "Kerncurriculum Gymnasiale Oberstufe Musik Hessen 2024, E",
+      "courseLevel": "GK_LK",
+      "granularity": "sourceSnapshotGoal",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-HE",
+        "stage:SekII",
+        "courseLevel:GK_LK",
+        "topic:E"
+      ],
+      "rawSourceText": "Die lernende Person kann Instrumente, Dynamik und einfache Texturen in Gehörbeispielen benennen.",
+      "rawSourceSpan": "E.4",
+      "rawParentBulletText": "Die lernende Person kann Instrumente, Dynamik und einfache Texturen in Gehörbeispielen benennen."
+    },
+    {
+      "id": "d8bf6eeb-b67d-477f-9780-ccfa027b046f",
+      "passageId": "he-mu-sekii:bba36552-c607-4c57-9b24-ebb6f8adedc6",
+      "topicCode": "E",
+      "bulletIndex": 5,
+      "aspectIndex": 1,
+      "title": "Grundformen erkennen",
+      "description": "Die lernende Person kann einfache Lied- und Periodenformen identifizieren und Gliederung beschreiben.",
+      "sourceText": "Die lernende Person kann einfache Lied- und Periodenformen identifizieren und Gliederung beschreiben.",
+      "sourceSpan": "E.5",
+      "parentBulletText": "Die lernende Person kann einfache Lied- und Periodenformen identifizieren und Gliederung beschreiben.",
+      "sourceRef": "Kerncurriculum Gymnasiale Oberstufe Musik Hessen 2024, E",
+      "courseLevel": "GK_LK",
+      "granularity": "sourceSnapshotGoal",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-HE",
+        "stage:SekII",
+        "courseLevel:GK_LK",
+        "topic:E"
+      ],
+      "rawSourceText": "Die lernende Person kann einfache Lied- und Periodenformen identifizieren und Gliederung beschreiben.",
+      "rawSourceSpan": "E.5",
+      "rawParentBulletText": "Die lernende Person kann einfache Lied- und Periodenformen identifizieren und Gliederung beschreiben."
+    },
+    {
+      "id": "740752d1-1832-4f18-89c3-544b3e8d6328",
+      "passageId": "he-mu-sekii:bba36552-c607-4c57-9b24-ebb6f8adedc6",
+      "topicCode": "E",
+      "bulletIndex": 6,
+      "aspectIndex": 1,
+      "title": "Stilmerkmale beschreiben",
+      "description": "Die lernende Person kann einfache stilistische Merkmale (z. B. Barock/Klassik/Pop) benennen und zuordnen.",
+      "sourceText": "Die lernende Person kann einfache stilistische Merkmale (z. B. Barock/Klassik/Pop) benennen und zuordnen.",
+      "sourceSpan": "E.6",
+      "parentBulletText": "Die lernende Person kann einfache stilistische Merkmale (z. B. Barock/Klassik/Pop) benennen und zuordnen.",
+      "sourceRef": "Kerncurriculum Gymnasiale Oberstufe Musik Hessen 2024, E",
+      "courseLevel": "GK_LK",
+      "granularity": "sourceSnapshotGoal",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-HE",
+        "stage:SekII",
+        "courseLevel:GK_LK",
+        "topic:E"
+      ],
+      "rawSourceText": "Die lernende Person kann einfache stilistische Merkmale (z. B. Barock/Klassik/Pop) benennen und zuordnen.",
+      "rawSourceSpan": "E.6",
+      "rawParentBulletText": "Die lernende Person kann einfache stilistische Merkmale (z. B. Barock/Klassik/Pop) benennen und zuordnen."
+    },
+    {
+      "id": "9a97b2c8-a62f-427d-8d86-20ab18fa4ab4",
+      "passageId": "he-mu-sekii:1ed60ab9-8a63-498c-8be8-d62ffea10335",
+      "topicCode": "E",
+      "bulletIndex": 7,
+      "aspectIndex": 1,
+      "title": "Proben organisieren",
+      "description": "Die lernende Person kann ein Stück vorbereiten, Probeziele festlegen und im Ensemble umsetzen.",
+      "sourceText": "Die lernende Person kann ein Stück vorbereiten, Probeziele festlegen und im Ensemble umsetzen.",
+      "sourceSpan": "E.7",
+      "parentBulletText": "Die lernende Person kann ein Stück vorbereiten, Probeziele festlegen und im Ensemble umsetzen.",
+      "sourceRef": "Kerncurriculum Gymnasiale Oberstufe Musik Hessen 2024, E",
+      "courseLevel": "GK_LK",
+      "granularity": "sourceSnapshotGoal",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-HE",
+        "stage:SekII",
+        "courseLevel:GK_LK",
+        "topic:E"
+      ],
+      "rawSourceText": "Die lernende Person kann ein Stück vorbereiten, Probeziele festlegen und im Ensemble umsetzen.",
+      "rawSourceSpan": "E.7",
+      "rawParentBulletText": "Die lernende Person kann ein Stück vorbereiten, Probeziele festlegen und im Ensemble umsetzen."
+    },
+    {
+      "id": "f5e3a3cd-0364-4235-ba4c-5e31ac90d5ff",
+      "passageId": "he-mu-sekii:1ed60ab9-8a63-498c-8be8-d62ffea10335",
+      "topicCode": "E",
+      "bulletIndex": 8,
+      "aspectIndex": 1,
+      "title": "Aufführung gestalten",
+      "description": "Die lernende Person kann ein kurzes Stück oder Song sicher darbieten (Instrument/Stimme) und Ausdruck gestalten.",
+      "sourceText": "Die lernende Person kann ein kurzes Stück oder Song sicher darbieten (Instrument/Stimme) und Ausdruck gestalten.",
+      "sourceSpan": "E.8",
+      "parentBulletText": "Die lernende Person kann ein kurzes Stück oder Song sicher darbieten (Instrument/Stimme) und Ausdruck gestalten.",
+      "sourceRef": "Kerncurriculum Gymnasiale Oberstufe Musik Hessen 2024, E",
+      "courseLevel": "GK_LK",
+      "granularity": "sourceSnapshotGoal",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-HE",
+        "stage:SekII",
+        "courseLevel:GK_LK",
+        "topic:E"
+      ],
+      "rawSourceText": "Die lernende Person kann ein kurzes Stück oder Song sicher darbieten (Instrument/Stimme) und Ausdruck gestalten.",
+      "rawSourceSpan": "E.8",
+      "rawParentBulletText": "Die lernende Person kann ein kurzes Stück oder Song sicher darbieten (Instrument/Stimme) und Ausdruck gestalten."
+    },
+    {
+      "id": "15e6cecf-b39f-47e4-9f76-6a3cd32d5382",
+      "passageId": "he-mu-sekii:1ed60ab9-8a63-498c-8be8-d62ffea10335",
+      "topicCode": "E",
+      "bulletIndex": 9,
+      "aspectIndex": 1,
+      "title": "Vortrag reflektieren",
+      "description": "Die lernende Person kann eine Aufführung kurz schriftlich/mündlich reflektieren und Verbesserungen ableiten.",
+      "sourceText": "Die lernende Person kann eine Aufführung kurz schriftlich/mündlich reflektieren und Verbesserungen ableiten.",
+      "sourceSpan": "E.9",
+      "parentBulletText": "Die lernende Person kann eine Aufführung kurz schriftlich/mündlich reflektieren und Verbesserungen ableiten.",
+      "sourceRef": "Kerncurriculum Gymnasiale Oberstufe Musik Hessen 2024, E",
+      "courseLevel": "GK_LK",
+      "granularity": "sourceSnapshotGoal",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-HE",
+        "stage:SekII",
+        "courseLevel:GK_LK",
+        "topic:E"
+      ],
+      "rawSourceText": "Die lernende Person kann eine Aufführung kurz schriftlich/mündlich reflektieren und Verbesserungen ableiten.",
+      "rawSourceSpan": "E.9",
+      "rawParentBulletText": "Die lernende Person kann eine Aufführung kurz schriftlich/mündlich reflektieren und Verbesserungen ableiten."
+    },
+    {
+      "id": "ab38c7f4-59a4-4ce0-a4cb-93774d4169d7",
+      "passageId": "he-mu-sekii:976c1d14-ad33-496c-91c9-48453cccfe6c",
+      "topicCode": "Q1",
+      "bulletIndex": 10,
+      "aspectIndex": 1,
+      "title": "Formteile identifizieren",
+      "description": "Die lernende Person kann Exposition, Durchführung, Reprise in einfachen Sonatensätzen markieren.",
+      "sourceText": "Die lernende Person kann Exposition, Durchführung, Reprise in einfachen Sonatensätzen markieren.",
+      "sourceSpan": "Q1.10",
+      "parentBulletText": "Die lernende Person kann Exposition, Durchführung, Reprise in einfachen Sonatensätzen markieren.",
+      "sourceRef": "Kerncurriculum Gymnasiale Oberstufe Musik Hessen 2024, Q1",
+      "courseLevel": "GK_LK",
+      "granularity": "sourceSnapshotGoal",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-HE",
+        "stage:SekII",
+        "courseLevel:GK_LK",
+        "topic:Q1"
+      ],
+      "rawSourceText": "Die lernende Person kann Exposition, Durchführung, Reprise in einfachen Sonatensätzen markieren.",
+      "rawSourceSpan": "Q1.10",
+      "rawParentBulletText": "Die lernende Person kann Exposition, Durchführung, Reprise in einfachen Sonatensätzen markieren."
+    },
+    {
+      "id": "3882b5c0-b744-49be-a8a9-2eb864146b70",
+      "passageId": "he-mu-sekii:976c1d14-ad33-496c-91c9-48453cccfe6c",
+      "topicCode": "Q1",
+      "bulletIndex": 11,
+      "aspectIndex": 1,
+      "title": "Kadenzen und Modulationen deuten",
+      "description": "Die lernende Person kann typische Kadenzmodelle und einfache Modulationen erkennen und benennen.",
+      "sourceText": "Die lernende Person kann typische Kadenzmodelle und einfache Modulationen erkennen und benennen.",
+      "sourceSpan": "Q1.11",
+      "parentBulletText": "Die lernende Person kann typische Kadenzmodelle und einfache Modulationen erkennen und benennen.",
+      "sourceRef": "Kerncurriculum Gymnasiale Oberstufe Musik Hessen 2024, Q1",
+      "courseLevel": "GK_LK",
+      "granularity": "sourceSnapshotGoal",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-HE",
+        "stage:SekII",
+        "courseLevel:GK_LK",
+        "topic:Q1"
+      ],
+      "rawSourceText": "Die lernende Person kann typische Kadenzmodelle und einfache Modulationen erkennen und benennen.",
+      "rawSourceSpan": "Q1.11",
+      "rawParentBulletText": "Die lernende Person kann typische Kadenzmodelle und einfache Modulationen erkennen und benennen."
+    },
+    {
+      "id": "fd63917b-587d-4334-895b-f1bda8ecaad6",
+      "passageId": "he-mu-sekii:976c1d14-ad33-496c-91c9-48453cccfe6c",
+      "topicCode": "Q1",
+      "bulletIndex": 12,
+      "aspectIndex": 1,
+      "title": "Partitur lesen",
+      "description": "Die lernende Person kann eine kurze Partitur mit Instrumentation und wichtigen Stimmen sicher verfolgen.",
+      "sourceText": "Die lernende Person kann eine kurze Partitur mit Instrumentation und wichtigen Stimmen sicher verfolgen.",
+      "sourceSpan": "Q1.12",
+      "parentBulletText": "Die lernende Person kann eine kurze Partitur mit Instrumentation und wichtigen Stimmen sicher verfolgen.",
+      "sourceRef": "Kerncurriculum Gymnasiale Oberstufe Musik Hessen 2024, Q1",
+      "courseLevel": "GK_LK",
+      "granularity": "sourceSnapshotGoal",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-HE",
+        "stage:SekII",
+        "courseLevel:GK_LK",
+        "topic:Q1"
+      ],
+      "rawSourceText": "Die lernende Person kann eine kurze Partitur mit Instrumentation und wichtigen Stimmen sicher verfolgen.",
+      "rawSourceSpan": "Q1.12",
+      "rawParentBulletText": "Die lernende Person kann eine kurze Partitur mit Instrumentation und wichtigen Stimmen sicher verfolgen."
+    },
+    {
+      "id": "e8e94793-8f1e-45f1-9d9e-49c496ef4fec",
+      "passageId": "he-mu-sekii:976c1d14-ad33-496c-91c9-48453cccfe6c",
+      "topicCode": "Q1",
+      "bulletIndex": 13,
+      "aspectIndex": 1,
+      "title": "Ausschnitt interpretierend aufführen",
+      "description": "Die lernende Person kann einen Ausschnitt interpretierend darbieten und analytische Erkenntnisse einbeziehen.",
+      "sourceText": "Die lernende Person kann einen Ausschnitt interpretierend darbieten und analytische Erkenntnisse einbeziehen.",
+      "sourceSpan": "Q1.13",
+      "parentBulletText": "Die lernende Person kann einen Ausschnitt interpretierend darbieten und analytische Erkenntnisse einbeziehen.",
+      "sourceRef": "Kerncurriculum Gymnasiale Oberstufe Musik Hessen 2024, Q1",
+      "courseLevel": "GK_LK",
+      "granularity": "sourceSnapshotGoal",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-HE",
+        "stage:SekII",
+        "courseLevel:GK_LK",
+        "topic:Q1"
+      ],
+      "rawSourceText": "Die lernende Person kann einen Ausschnitt interpretierend darbieten und analytische Erkenntnisse einbeziehen.",
+      "rawSourceSpan": "Q1.13",
+      "rawParentBulletText": "Die lernende Person kann einen Ausschnitt interpretierend darbieten und analytische Erkenntnisse einbeziehen."
+    },
+    {
+      "id": "8e30a4d8-e08b-48e9-9430-bc1f39bdbf91",
+      "passageId": "he-mu-sekii:3ee7426c-7559-405f-9f9e-95c11b2b3f85",
+      "topicCode": "Q1",
+      "bulletIndex": 14,
+      "aspectIndex": 1,
+      "title": "Gattungen beschreiben",
+      "description": "Die lernende Person kann zentrale Gattungen (Kantate, Sonate, Sinfonie) historisch verorten und Merkmale nennen.",
+      "sourceText": "Die lernende Person kann zentrale Gattungen (Kantate, Sonate, Sinfonie) historisch verorten und Merkmale nennen.",
+      "sourceSpan": "Q1.14",
+      "parentBulletText": "Die lernende Person kann zentrale Gattungen (Kantate, Sonate, Sinfonie) historisch verorten und Merkmale nennen.",
+      "sourceRef": "Kerncurriculum Gymnasiale Oberstufe Musik Hessen 2024, Q1",
+      "courseLevel": "GK_LK",
+      "granularity": "sourceSnapshotGoal",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-HE",
+        "stage:SekII",
+        "courseLevel:GK_LK",
+        "topic:Q1"
+      ],
+      "rawSourceText": "Die lernende Person kann zentrale Gattungen (Kantate, Sonate, Sinfonie) historisch verorten und Merkmale nennen.",
+      "rawSourceSpan": "Q1.14",
+      "rawParentBulletText": "Die lernende Person kann zentrale Gattungen (Kantate, Sonate, Sinfonie) historisch verorten und Merkmale nennen."
+    },
+    {
+      "id": "c54d197b-89e2-46fb-a3c2-b107decffc8f",
+      "passageId": "he-mu-sekii:3ee7426c-7559-405f-9f9e-95c11b2b3f85",
+      "topicCode": "Q1",
+      "bulletIndex": 15,
+      "aspectIndex": 1,
+      "title": "Funktionen der Musik einordnen",
+      "description": "Die lernende Person kann Aufführungskontexte (Kirche, Hof, bürgeröffentliche Konzerte) beschreiben und auf Beispiele beziehen.",
+      "sourceText": "Die lernende Person kann Aufführungskontexte (Kirche, Hof, bürgeröffentliche Konzerte) beschreiben und auf Beispiele beziehen.",
+      "sourceSpan": "Q1.15",
+      "parentBulletText": "Die lernende Person kann Aufführungskontexte (Kirche, Hof, bürgeröffentliche Konzerte) beschreiben und auf Beispiele beziehen.",
+      "sourceRef": "Kerncurriculum Gymnasiale Oberstufe Musik Hessen 2024, Q1",
+      "courseLevel": "GK_LK",
+      "granularity": "sourceSnapshotGoal",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-HE",
+        "stage:SekII",
+        "courseLevel:GK_LK",
+        "topic:Q1"
+      ],
+      "rawSourceText": "Die lernende Person kann Aufführungskontexte (Kirche, Hof, bürgeröffentliche Konzerte) beschreiben und auf Beispiele beziehen.",
+      "rawSourceSpan": "Q1.15",
+      "rawParentBulletText": "Die lernende Person kann Aufführungskontexte (Kirche, Hof, bürgeröffentliche Konzerte) beschreiben und auf Beispiele beziehen."
+    },
+    {
+      "id": "c280a83f-ca18-4f3a-b7bb-fbbcf76375ea",
+      "passageId": "he-mu-sekii:3ee7426c-7559-405f-9f9e-95c11b2b3f85",
+      "topicCode": "Q1",
+      "bulletIndex": 16,
+      "aspectIndex": 1,
+      "title": "Vergleichende Betrachtung",
+      "description": "Die lernende Person kann zwei Werke aus Barock/Klassik vergleichen und Unterschiede in Form, Harmonik und Funktion herausarbeiten.",
+      "sourceText": "Die lernende Person kann zwei Werke aus Barock/Klassik vergleichen und Unterschiede in Form, Harmonik und Funktion herausarbeiten.",
+      "sourceSpan": "Q1.16",
+      "parentBulletText": "Die lernende Person kann zwei Werke aus Barock/Klassik vergleichen und Unterschiede in Form, Harmonik und Funktion herausarbeiten.",
+      "sourceRef": "Kerncurriculum Gymnasiale Oberstufe Musik Hessen 2024, Q1",
+      "courseLevel": "GK_LK",
+      "granularity": "sourceSnapshotGoal",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-HE",
+        "stage:SekII",
+        "courseLevel:GK_LK",
+        "topic:Q1"
+      ],
+      "rawSourceText": "Die lernende Person kann zwei Werke aus Barock/Klassik vergleichen und Unterschiede in Form, Harmonik und Funktion herausarbeiten.",
+      "rawSourceSpan": "Q1.16",
+      "rawParentBulletText": "Die lernende Person kann zwei Werke aus Barock/Klassik vergleichen und Unterschiede in Form, Harmonik und Funktion herausarbeiten."
+    },
+    {
+      "id": "c686c88d-f4b6-445f-80a4-5e6fd9c3fd9e",
+      "passageId": "he-mu-sekii:ebbb500d-3225-4dc7-ba4e-aeebfacd85d1",
+      "topicCode": "Q2",
+      "bulletIndex": 17,
+      "aspectIndex": 1,
+      "title": "Erweiterte Harmonik und Dynamik deuten",
+      "description": "Die lernende Person kann chromatische Fortschreitungen, Spannungsbögen und orchestrale Farbgebung analysieren.",
+      "sourceText": "Die lernende Person kann chromatische Fortschreitungen, Spannungsbögen und orchestrale Farbgebung analysieren.",
+      "sourceSpan": "Q2.17",
+      "parentBulletText": "Die lernende Person kann chromatische Fortschreitungen, Spannungsbögen und orchestrale Farbgebung analysieren.",
+      "sourceRef": "Kerncurriculum Gymnasiale Oberstufe Musik Hessen 2024, Q2",
+      "courseLevel": "GK_LK",
+      "granularity": "sourceSnapshotGoal",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-HE",
+        "stage:SekII",
+        "courseLevel:GK_LK",
+        "topic:Q2"
+      ],
+      "rawSourceText": "Die lernende Person kann chromatische Fortschreitungen, Spannungsbögen und orchestrale Farbgebung analysieren.",
+      "rawSourceSpan": "Q2.17",
+      "rawParentBulletText": "Die lernende Person kann chromatische Fortschreitungen, Spannungsbögen und orchestrale Farbgebung analysieren."
+    },
+    {
+      "id": "2562704c-acd3-4b4c-aa52-d2df2a25e156",
+      "passageId": "he-mu-sekii:ebbb500d-3225-4dc7-ba4e-aeebfacd85d1",
+      "topicCode": "Q2",
+      "bulletIndex": 18,
+      "aspectIndex": 1,
+      "title": "Programmmusik verstehen",
+      "description": "Die lernende Person kann Binnenthemen/Programme erkennen und deren musikalische Umsetzung benennen.",
+      "sourceText": "Die lernende Person kann Binnenthemen/Programme erkennen und deren musikalische Umsetzung benennen.",
+      "sourceSpan": "Q2.18",
+      "parentBulletText": "Die lernende Person kann Binnenthemen/Programme erkennen und deren musikalische Umsetzung benennen.",
+      "sourceRef": "Kerncurriculum Gymnasiale Oberstufe Musik Hessen 2024, Q2",
+      "courseLevel": "GK_LK",
+      "granularity": "sourceSnapshotGoal",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-HE",
+        "stage:SekII",
+        "courseLevel:GK_LK",
+        "topic:Q2"
+      ],
+      "rawSourceText": "Die lernende Person kann Binnenthemen/Programme erkennen und deren musikalische Umsetzung benennen.",
+      "rawSourceSpan": "Q2.18",
+      "rawParentBulletText": "Die lernende Person kann Binnenthemen/Programme erkennen und deren musikalische Umsetzung benennen."
+    },
+    {
+      "id": "73a0d898-4e5a-4383-81b2-bb65cf22e8cb",
+      "passageId": "he-mu-sekii:ebbb500d-3225-4dc7-ba4e-aeebfacd85d1",
+      "topicCode": "Q2",
+      "bulletIndex": 19,
+      "aspectIndex": 1,
+      "title": "Romantische Deutungen vergleichen",
+      "description": "Die lernende Person kann zwei romantische Werke in Ausdruck und Programmatik vergleichen und schriftlich reflektieren.",
+      "sourceText": "Die lernende Person kann zwei romantische Werke in Ausdruck und Programmatik vergleichen und schriftlich reflektieren.",
+      "sourceSpan": "Q2.19",
+      "parentBulletText": "Die lernende Person kann zwei romantische Werke in Ausdruck und Programmatik vergleichen und schriftlich reflektieren.",
+      "sourceRef": "Kerncurriculum Gymnasiale Oberstufe Musik Hessen 2024, Q2",
+      "courseLevel": "GK_LK",
+      "granularity": "sourceSnapshotGoal",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-HE",
+        "stage:SekII",
+        "courseLevel:GK_LK",
+        "topic:Q2"
+      ],
+      "rawSourceText": "Die lernende Person kann zwei romantische Werke in Ausdruck und Programmatik vergleichen und schriftlich reflektieren.",
+      "rawSourceSpan": "Q2.19",
+      "rawParentBulletText": "Die lernende Person kann zwei romantische Werke in Ausdruck und Programmatik vergleichen und schriftlich reflektieren."
+    },
+    {
+      "id": "3d1c075f-c422-4ecf-915f-d6471f2daa97",
+      "passageId": "he-mu-sekii:248e7b88-b3f4-4905-8233-6373aaf062d0",
+      "topicCode": "Q2",
+      "bulletIndex": 20,
+      "aspectIndex": 1,
+      "title": "Komplexe Rhythmen analysieren",
+      "description": "Die lernende Person kann ungerade Taktarten, Polymetrik oder Patterns sicher erfassen und notieren.",
+      "sourceText": "Die lernende Person kann ungerade Taktarten, Polymetrik oder Patterns sicher erfassen und notieren.",
+      "sourceSpan": "Q2.20",
+      "parentBulletText": "Die lernende Person kann ungerade Taktarten, Polymetrik oder Patterns sicher erfassen und notieren.",
+      "sourceRef": "Kerncurriculum Gymnasiale Oberstufe Musik Hessen 2024, Q2",
+      "courseLevel": "GK_LK",
+      "granularity": "sourceSnapshotGoal",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-HE",
+        "stage:SekII",
+        "courseLevel:GK_LK",
+        "topic:Q2"
+      ],
+      "rawSourceText": "Die lernende Person kann ungerade Taktarten, Polymetrik oder Patterns sicher erfassen und notieren.",
+      "rawSourceSpan": "Q2.20",
+      "rawParentBulletText": "Die lernende Person kann ungerade Taktarten, Polymetrik oder Patterns sicher erfassen und notieren."
+    },
+    {
+      "id": "fc2289dd-68e5-4d75-ab7d-c213ec721c9d",
+      "passageId": "he-mu-sekii:248e7b88-b3f4-4905-8233-6373aaf062d0",
+      "topicCode": "Q2",
+      "bulletIndex": 21,
+      "aspectIndex": 1,
+      "title": "Klangfarbe und Technik deuten",
+      "description": "Die lernende Person kann Klangexperimente, Cluster oder serielle/aleatorische Elemente beschreiben.",
+      "sourceText": "Die lernende Person kann Klangexperimente, Cluster oder serielle/aleatorische Elemente beschreiben.",
+      "sourceSpan": "Q2.21",
+      "parentBulletText": "Die lernende Person kann Klangexperimente, Cluster oder serielle/aleatorische Elemente beschreiben.",
+      "sourceRef": "Kerncurriculum Gymnasiale Oberstufe Musik Hessen 2024, Q2",
+      "courseLevel": "GK_LK",
+      "granularity": "sourceSnapshotGoal",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-HE",
+        "stage:SekII",
+        "courseLevel:GK_LK",
+        "topic:Q2"
+      ],
+      "rawSourceText": "Die lernende Person kann Klangexperimente, Cluster oder serielle/aleatorische Elemente beschreiben.",
+      "rawSourceSpan": "Q2.21",
+      "rawParentBulletText": "Die lernende Person kann Klangexperimente, Cluster oder serielle/aleatorische Elemente beschreiben."
+    },
+    {
+      "id": "2a44233c-4aeb-4c55-bb4a-4811d0a61ed5",
+      "passageId": "he-mu-sekii:248e7b88-b3f4-4905-8233-6373aaf062d0",
+      "topicCode": "Q2",
+      "bulletIndex": 22,
+      "aspectIndex": 1,
+      "title": "Wirkung reflektieren",
+      "description": "Die lernende Person kann Wirkung und Intention neuer Musik begründet reflektieren und schriftlich festhalten.",
+      "sourceText": "Die lernende Person kann Wirkung und Intention neuer Musik begründet reflektieren und schriftlich festhalten.",
+      "sourceSpan": "Q2.22",
+      "parentBulletText": "Die lernende Person kann Wirkung und Intention neuer Musik begründet reflektieren und schriftlich festhalten.",
+      "sourceRef": "Kerncurriculum Gymnasiale Oberstufe Musik Hessen 2024, Q2",
+      "courseLevel": "GK_LK",
+      "granularity": "sourceSnapshotGoal",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-HE",
+        "stage:SekII",
+        "courseLevel:GK_LK",
+        "topic:Q2"
+      ],
+      "rawSourceText": "Die lernende Person kann Wirkung und Intention neuer Musik begründet reflektieren und schriftlich festhalten.",
+      "rawSourceSpan": "Q2.22",
+      "rawParentBulletText": "Die lernende Person kann Wirkung und Intention neuer Musik begründet reflektieren und schriftlich festhalten."
+    },
+    {
+      "id": "931aa957-bbe2-48e0-872b-e56b49495be0",
+      "passageId": "he-mu-sekii:5914397a-3960-4d46-b8ec-124de5d46508",
+      "topicCode": "Q3",
+      "bulletIndex": 23,
+      "aspectIndex": 1,
+      "title": "Stilkriterien Jazz/Pop erkennen",
+      "description": "Die lernende Person kann typische Groove-, Instrumentations- und Phrasierungsmerkmale zuordnen.",
+      "sourceText": "Die lernende Person kann typische Groove-, Instrumentations- und Phrasierungsmerkmale zuordnen.",
+      "sourceSpan": "Q3.23",
+      "parentBulletText": "Die lernende Person kann typische Groove-, Instrumentations- und Phrasierungsmerkmale zuordnen.",
+      "sourceRef": "Kerncurriculum Gymnasiale Oberstufe Musik Hessen 2024, Q3",
+      "courseLevel": "GK_LK",
+      "granularity": "sourceSnapshotGoal",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-HE",
+        "stage:SekII",
+        "courseLevel:GK_LK",
+        "topic:Q3"
+      ],
+      "rawSourceText": "Die lernende Person kann typische Groove-, Instrumentations- und Phrasierungsmerkmale zuordnen.",
+      "rawSourceSpan": "Q3.23",
+      "rawParentBulletText": "Die lernende Person kann typische Groove-, Instrumentations- und Phrasierungsmerkmale zuordnen."
+    },
+    {
+      "id": "d5e6b66e-c6d2-4ac8-a006-df114cd420cf",
+      "passageId": "he-mu-sekii:5914397a-3960-4d46-b8ec-124de5d46508",
+      "topicCode": "Q3",
+      "bulletIndex": 24,
+      "aspectIndex": 1,
+      "title": "Changes und Patterns anwenden",
+      "description": "Die lernende Person kann einfache Akkordfolgen/Leadsheets lesen und rhythmisch sicher begleiten.",
+      "sourceText": "Die lernende Person kann einfache Akkordfolgen/Leadsheets lesen und rhythmisch sicher begleiten.",
+      "sourceSpan": "Q3.24",
+      "parentBulletText": "Die lernende Person kann einfache Akkordfolgen/Leadsheets lesen und rhythmisch sicher begleiten.",
+      "sourceRef": "Kerncurriculum Gymnasiale Oberstufe Musik Hessen 2024, Q3",
+      "courseLevel": "GK_LK",
+      "granularity": "sourceSnapshotGoal",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-HE",
+        "stage:SekII",
+        "courseLevel:GK_LK",
+        "topic:Q3"
+      ],
+      "rawSourceText": "Die lernende Person kann einfache Akkordfolgen/Leadsheets lesen und rhythmisch sicher begleiten.",
+      "rawSourceSpan": "Q3.24",
+      "rawParentBulletText": "Die lernende Person kann einfache Akkordfolgen/Leadsheets lesen und rhythmisch sicher begleiten."
+    },
+    {
+      "id": "c83e0e5c-26fd-41da-8d81-d1c6b6a95580",
+      "passageId": "he-mu-sekii:5914397a-3960-4d46-b8ec-124de5d46508",
+      "topicCode": "Q3",
+      "bulletIndex": 25,
+      "aspectIndex": 1,
+      "title": "Improvisation erproben",
+      "description": "Die lernende Person kann über einfachen Changes improvisieren und Phrasen stilgerecht gestalten.",
+      "sourceText": "Die lernende Person kann über einfachen Changes improvisieren und Phrasen stilgerecht gestalten.",
+      "sourceSpan": "Q3.25",
+      "parentBulletText": "Die lernende Person kann über einfachen Changes improvisieren und Phrasen stilgerecht gestalten.",
+      "sourceRef": "Kerncurriculum Gymnasiale Oberstufe Musik Hessen 2024, Q3",
+      "courseLevel": "GK_LK",
+      "granularity": "sourceSnapshotGoal",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-HE",
+        "stage:SekII",
+        "courseLevel:GK_LK",
+        "topic:Q3"
+      ],
+      "rawSourceText": "Die lernende Person kann über einfachen Changes improvisieren und Phrasen stilgerecht gestalten.",
+      "rawSourceSpan": "Q3.25",
+      "rawParentBulletText": "Die lernende Person kann über einfachen Changes improvisieren und Phrasen stilgerecht gestalten."
+    },
+    {
+      "id": "2e935861-78ea-4c63-aca6-eb0621a1b04f",
+      "passageId": "he-mu-sekii:5914397a-3960-4d46-b8ec-124de5d46508",
+      "topicCode": "Q3",
+      "bulletIndex": 26,
+      "aspectIndex": 1,
+      "title": "Jazz/Pop-Arrangement darbieten",
+      "description": "Die lernende Person kann ein kurzes Arrangement im Ensemble aufführen und Groove/Balance sichern.",
+      "sourceText": "Die lernende Person kann ein kurzes Arrangement im Ensemble aufführen und Groove/Balance sichern.",
+      "sourceSpan": "Q3.26",
+      "parentBulletText": "Die lernende Person kann ein kurzes Arrangement im Ensemble aufführen und Groove/Balance sichern.",
+      "sourceRef": "Kerncurriculum Gymnasiale Oberstufe Musik Hessen 2024, Q3",
+      "courseLevel": "GK_LK",
+      "granularity": "sourceSnapshotGoal",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-HE",
+        "stage:SekII",
+        "courseLevel:GK_LK",
+        "topic:Q3"
+      ],
+      "rawSourceText": "Die lernende Person kann ein kurzes Arrangement im Ensemble aufführen und Groove/Balance sichern.",
+      "rawSourceSpan": "Q3.26",
+      "rawParentBulletText": "Die lernende Person kann ein kurzes Arrangement im Ensemble aufführen und Groove/Balance sichern."
+    },
+    {
+      "id": "cf12d3c5-5be3-444f-8429-bf3be33ecf50",
+      "passageId": "he-mu-sekii:4dff5672-d019-48d5-a50e-7d20bd5d596f",
+      "topicCode": "Q3",
+      "bulletIndex": 27,
+      "aspectIndex": 1,
+      "title": "Produktionsidee planen",
+      "description": "Die lernende Person kann Ziel, Besetzung und Ablauf einer kleinen Aufnahme/Produktion planen.",
+      "sourceText": "Die lernende Person kann Ziel, Besetzung und Ablauf einer kleinen Aufnahme/Produktion planen.",
+      "sourceSpan": "Q3.27",
+      "parentBulletText": "Die lernende Person kann Ziel, Besetzung und Ablauf einer kleinen Aufnahme/Produktion planen.",
+      "sourceRef": "Kerncurriculum Gymnasiale Oberstufe Musik Hessen 2024, Q3",
+      "courseLevel": "GK_LK",
+      "granularity": "sourceSnapshotGoal",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-HE",
+        "stage:SekII",
+        "courseLevel:GK_LK",
+        "topic:Q3"
+      ],
+      "rawSourceText": "Die lernende Person kann Ziel, Besetzung und Ablauf einer kleinen Aufnahme/Produktion planen.",
+      "rawSourceSpan": "Q3.27",
+      "rawParentBulletText": "Die lernende Person kann Ziel, Besetzung und Ablauf einer kleinen Aufnahme/Produktion planen."
+    },
+    {
+      "id": "1b5a4b50-ad24-4cb9-ac22-c07d18c90cbb",
+      "passageId": "he-mu-sekii:4dff5672-d019-48d5-a50e-7d20bd5d596f",
+      "topicCode": "Q3",
+      "bulletIndex": 28,
+      "aspectIndex": 1,
+      "title": "Aufnahme umsetzen",
+      "description": "Die lernende Person kann eine einfache Aufnahme (z. B. DAW/Recorder) technisch sicher durchführen.",
+      "sourceText": "Die lernende Person kann eine einfache Aufnahme (z. B. DAW/Recorder) technisch sicher durchführen.",
+      "sourceSpan": "Q3.28",
+      "parentBulletText": "Die lernende Person kann eine einfache Aufnahme (z. B. DAW/Recorder) technisch sicher durchführen.",
+      "sourceRef": "Kerncurriculum Gymnasiale Oberstufe Musik Hessen 2024, Q3",
+      "courseLevel": "GK_LK",
+      "granularity": "sourceSnapshotGoal",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-HE",
+        "stage:SekII",
+        "courseLevel:GK_LK",
+        "topic:Q3"
+      ],
+      "rawSourceText": "Die lernende Person kann eine einfache Aufnahme (z. B. DAW/Recorder) technisch sicher durchführen.",
+      "rawSourceSpan": "Q3.28",
+      "rawParentBulletText": "Die lernende Person kann eine einfache Aufnahme (z. B. DAW/Recorder) technisch sicher durchführen."
+    },
+    {
+      "id": "40f14740-4dce-4899-aaeb-5834907a820e",
+      "passageId": "he-mu-sekii:4dff5672-d019-48d5-a50e-7d20bd5d596f",
+      "topicCode": "Q3",
+      "bulletIndex": 29,
+      "aspectIndex": 1,
+      "title": "Mix/Arrangement beurteilen",
+      "description": "Die lernende Person kann Lautstärken, Panorama und Effekt-Einsatz bewerten und anpassen.",
+      "sourceText": "Die lernende Person kann Lautstärken, Panorama und Effekt-Einsatz bewerten und anpassen.",
+      "sourceSpan": "Q3.29",
+      "parentBulletText": "Die lernende Person kann Lautstärken, Panorama und Effekt-Einsatz bewerten und anpassen.",
+      "sourceRef": "Kerncurriculum Gymnasiale Oberstufe Musik Hessen 2024, Q3",
+      "courseLevel": "GK_LK",
+      "granularity": "sourceSnapshotGoal",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-HE",
+        "stage:SekII",
+        "courseLevel:GK_LK",
+        "topic:Q3"
+      ],
+      "rawSourceText": "Die lernende Person kann Lautstärken, Panorama und Effekt-Einsatz bewerten und anpassen.",
+      "rawSourceSpan": "Q3.29",
+      "rawParentBulletText": "Die lernende Person kann Lautstärken, Panorama und Effekt-Einsatz bewerten und anpassen."
+    },
+    {
+      "id": "5abf17e9-c85c-4fef-b3df-f160d5edde3d",
+      "passageId": "he-mu-sekii:4dff5672-d019-48d5-a50e-7d20bd5d596f",
+      "topicCode": "Q3",
+      "bulletIndex": 30,
+      "aspectIndex": 1,
+      "title": "Produkt reflektieren",
+      "description": "Die lernende Person kann das Ergebnis kritisch einschätzen und Verbesserungen begründen.",
+      "sourceText": "Die lernende Person kann das Ergebnis kritisch einschätzen und Verbesserungen begründen.",
+      "sourceSpan": "Q3.30",
+      "parentBulletText": "Die lernende Person kann das Ergebnis kritisch einschätzen und Verbesserungen begründen.",
+      "sourceRef": "Kerncurriculum Gymnasiale Oberstufe Musik Hessen 2024, Q3",
+      "courseLevel": "GK_LK",
+      "granularity": "sourceSnapshotGoal",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-HE",
+        "stage:SekII",
+        "courseLevel:GK_LK",
+        "topic:Q3"
+      ],
+      "rawSourceText": "Die lernende Person kann das Ergebnis kritisch einschätzen und Verbesserungen begründen.",
+      "rawSourceSpan": "Q3.30",
+      "rawParentBulletText": "Die lernende Person kann das Ergebnis kritisch einschätzen und Verbesserungen begründen."
+    },
+    {
+      "id": "e79c34e9-a8c9-4b0b-b55a-f05f5651fd58",
+      "passageId": "he-mu-sekii:bc05c42c-8653-43ae-939a-96d4f7844d9d",
+      "topicCode": "Q4",
+      "bulletIndex": 31,
+      "aspectIndex": 1,
+      "title": "Projektfrage entwickeln",
+      "description": "Die lernende Person kann eine sinnvolle Fragestellung/Idee für ein Musikprojekt formulieren und planen.",
+      "sourceText": "Die lernende Person kann eine sinnvolle Fragestellung/Idee für ein Musikprojekt formulieren und planen.",
+      "sourceSpan": "Q4.31",
+      "parentBulletText": "Die lernende Person kann eine sinnvolle Fragestellung/Idee für ein Musikprojekt formulieren und planen.",
+      "sourceRef": "Kerncurriculum Gymnasiale Oberstufe Musik Hessen 2024, Q4",
+      "courseLevel": "GK_LK",
+      "granularity": "sourceSnapshotGoal",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-HE",
+        "stage:SekII",
+        "courseLevel:GK_LK",
+        "topic:Q4"
+      ],
+      "rawSourceText": "Die lernende Person kann eine sinnvolle Fragestellung/Idee für ein Musikprojekt formulieren und planen.",
+      "rawSourceSpan": "Q4.31",
+      "rawParentBulletText": "Die lernende Person kann eine sinnvolle Fragestellung/Idee für ein Musikprojekt formulieren und planen."
+    },
+    {
+      "id": "668508b7-b1c1-464a-aa0e-988d673a1894",
+      "passageId": "he-mu-sekii:bc05c42c-8653-43ae-939a-96d4f7844d9d",
+      "topicCode": "Q4",
+      "bulletIndex": 32,
+      "aspectIndex": 1,
+      "title": "Projekt umsetzen",
+      "description": "Die lernende Person kann das Projekt praktisch/analytisch umsetzen (z. B. Arrangement, Aufnahme, Recherche).",
+      "sourceText": "Die lernende Person kann das Projekt praktisch/analytisch umsetzen (z. B. Arrangement, Aufnahme, Recherche).",
+      "sourceSpan": "Q4.32",
+      "parentBulletText": "Die lernende Person kann das Projekt praktisch/analytisch umsetzen (z. B. Arrangement, Aufnahme, Recherche).",
+      "sourceRef": "Kerncurriculum Gymnasiale Oberstufe Musik Hessen 2024, Q4",
+      "courseLevel": "GK_LK",
+      "granularity": "sourceSnapshotGoal",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-HE",
+        "stage:SekII",
+        "courseLevel:GK_LK",
+        "topic:Q4"
+      ],
+      "rawSourceText": "Die lernende Person kann das Projekt praktisch/analytisch umsetzen (z. B. Arrangement, Aufnahme, Recherche).",
+      "rawSourceSpan": "Q4.32",
+      "rawParentBulletText": "Die lernende Person kann das Projekt praktisch/analytisch umsetzen (z. B. Arrangement, Aufnahme, Recherche)."
+    },
+    {
+      "id": "89f4ccd8-d0be-4603-a6e2-6b09ec40433c",
+      "passageId": "he-mu-sekii:bc05c42c-8653-43ae-939a-96d4f7844d9d",
+      "topicCode": "Q4",
+      "bulletIndex": 33,
+      "aspectIndex": 1,
+      "title": "Ergebnisse präsentieren",
+      "description": "Die lernende Person kann Projektergebnisse adressatengerecht präsentieren (Konzert, Vortrag, Audio).",
+      "sourceText": "Die lernende Person kann Projektergebnisse adressatengerecht präsentieren (Konzert, Vortrag, Audio).",
+      "sourceSpan": "Q4.33",
+      "parentBulletText": "Die lernende Person kann Projektergebnisse adressatengerecht präsentieren (Konzert, Vortrag, Audio).",
+      "sourceRef": "Kerncurriculum Gymnasiale Oberstufe Musik Hessen 2024, Q4",
+      "courseLevel": "GK_LK",
+      "granularity": "sourceSnapshotGoal",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-HE",
+        "stage:SekII",
+        "courseLevel:GK_LK",
+        "topic:Q4"
+      ],
+      "rawSourceText": "Die lernende Person kann Projektergebnisse adressatengerecht präsentieren (Konzert, Vortrag, Audio).",
+      "rawSourceSpan": "Q4.33",
+      "rawParentBulletText": "Die lernende Person kann Projektergebnisse adressatengerecht präsentieren (Konzert, Vortrag, Audio)."
+    },
+    {
+      "id": "59a9e0c9-2c8f-47de-be77-85ab83f6dbae",
+      "passageId": "he-mu-sekii:bc05c42c-8653-43ae-939a-96d4f7844d9d",
+      "topicCode": "Q4",
+      "bulletIndex": 34,
+      "aspectIndex": 1,
+      "title": "Projekt reflektieren",
+      "description": "Die lernende Person kann Ergebnisse und Prozess schriftlich reflektieren und nächste Schritte ableiten.",
+      "sourceText": "Die lernende Person kann Ergebnisse und Prozess schriftlich reflektieren und nächste Schritte ableiten.",
+      "sourceSpan": "Q4.34",
+      "parentBulletText": "Die lernende Person kann Ergebnisse und Prozess schriftlich reflektieren und nächste Schritte ableiten.",
+      "sourceRef": "Kerncurriculum Gymnasiale Oberstufe Musik Hessen 2024, Q4",
+      "courseLevel": "GK_LK",
+      "granularity": "sourceSnapshotGoal",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-HE",
+        "stage:SekII",
+        "courseLevel:GK_LK",
+        "topic:Q4"
+      ],
+      "rawSourceText": "Die lernende Person kann Ergebnisse und Prozess schriftlich reflektieren und nächste Schritte ableiten.",
+      "rawSourceSpan": "Q4.34",
+      "rawParentBulletText": "Die lernende Person kann Ergebnisse und Prozess schriftlich reflektieren und nächste Schritte ableiten."
+    },
+    {
+      "id": "64c71c2c-9871-4a31-9869-7c73beeadfd8",
+      "passageId": "he-mu-sekii:ae66dfe5-baf2-4d8d-82f6-fdb994ed635d",
+      "topicCode": "Q4",
+      "bulletIndex": 35,
+      "aspectIndex": 1,
+      "title": "Prüfungsanalyse üben",
+      "description": "Die lernende Person kann prüfungsnahe Analyseaufgaben zu Notentext/Hörbeispiel bearbeiten.",
+      "sourceText": "Die lernende Person kann prüfungsnahe Analyseaufgaben zu Notentext/Hörbeispiel bearbeiten.",
+      "sourceSpan": "Q4.35",
+      "parentBulletText": "Die lernende Person kann prüfungsnahe Analyseaufgaben zu Notentext/Hörbeispiel bearbeiten.",
+      "sourceRef": "Kerncurriculum Gymnasiale Oberstufe Musik Hessen 2024, Q4",
+      "courseLevel": "GK_LK",
+      "granularity": "sourceSnapshotGoal",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-HE",
+        "stage:SekII",
+        "courseLevel:GK_LK",
+        "topic:Q4"
+      ],
+      "rawSourceText": "Die lernende Person kann prüfungsnahe Analyseaufgaben zu Notentext/Hörbeispiel bearbeiten.",
+      "rawSourceSpan": "Q4.35",
+      "rawParentBulletText": "Die lernende Person kann prüfungsnahe Analyseaufgaben zu Notentext/Hörbeispiel bearbeiten."
+    },
+    {
+      "id": "50a19fce-f125-4eb7-a497-6232c33e6e1d",
+      "passageId": "he-mu-sekii:ae66dfe5-baf2-4d8d-82f6-fdb994ed635d",
+      "topicCode": "Q4",
+      "bulletIndex": 36,
+      "aspectIndex": 1,
+      "title": "Hörverstehen prüfungsnah",
+      "description": "Die lernende Person kann prüfungsnahe Höraufgaben bearbeiten und Befunde strukturiert notieren.",
+      "sourceText": "Die lernende Person kann prüfungsnahe Höraufgaben bearbeiten und Befunde strukturiert notieren.",
+      "sourceSpan": "Q4.36",
+      "parentBulletText": "Die lernende Person kann prüfungsnahe Höraufgaben bearbeiten und Befunde strukturiert notieren.",
+      "sourceRef": "Kerncurriculum Gymnasiale Oberstufe Musik Hessen 2024, Q4",
+      "courseLevel": "GK_LK",
+      "granularity": "sourceSnapshotGoal",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-HE",
+        "stage:SekII",
+        "courseLevel:GK_LK",
+        "topic:Q4"
+      ],
+      "rawSourceText": "Die lernende Person kann prüfungsnahe Höraufgaben bearbeiten und Befunde strukturiert notieren.",
+      "rawSourceSpan": "Q4.36",
+      "rawParentBulletText": "Die lernende Person kann prüfungsnahe Höraufgaben bearbeiten und Befunde strukturiert notieren."
+    },
+    {
+      "id": "5860b387-735e-4e25-aef9-9b6631d72368",
+      "passageId": "he-mu-sekii:ae66dfe5-baf2-4d8d-82f6-fdb994ed635d",
+      "topicCode": "Q4",
+      "bulletIndex": 37,
+      "aspectIndex": 1,
+      "title": "Sprachmittlung Musik",
+      "description": "Die lernende Person kann musikspezifische Informationen zwischen Deutsch und ggf. Englisch adressatengerecht vermitteln.",
+      "sourceText": "Die lernende Person kann musikspezifische Informationen zwischen Deutsch und ggf. Englisch adressatengerecht vermitteln.",
+      "sourceSpan": "Q4.37",
+      "parentBulletText": "Die lernende Person kann musikspezifische Informationen zwischen Deutsch und ggf. Englisch adressatengerecht vermitteln.",
+      "sourceRef": "Kerncurriculum Gymnasiale Oberstufe Musik Hessen 2024, Q4",
+      "courseLevel": "GK_LK",
+      "granularity": "sourceSnapshotGoal",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-HE",
+        "stage:SekII",
+        "courseLevel:GK_LK",
+        "topic:Q4"
+      ],
+      "rawSourceText": "Die lernende Person kann musikspezifische Informationen zwischen Deutsch und ggf. Englisch adressatengerecht vermitteln.",
+      "rawSourceSpan": "Q4.37",
+      "rawParentBulletText": "Die lernende Person kann musikspezifische Informationen zwischen Deutsch und ggf. Englisch adressatengerecht vermitteln."
+    },
+    {
+      "id": "e67b1a28-67be-4e1b-810d-41fe873ddf87",
+      "passageId": "he-mu-sekii:ae66dfe5-baf2-4d8d-82f6-fdb994ed635d",
+      "topicCode": "Q4",
+      "bulletIndex": 38,
+      "aspectIndex": 1,
+      "title": "Schriftlicher Musikaufsatz",
+      "description": "Die lernende Person kann einen prüfungsnahen Aufsatz (Analyse/Kommentar) strukturiert verfassen.",
+      "sourceText": "Die lernende Person kann einen prüfungsnahen Aufsatz (Analyse/Kommentar) strukturiert verfassen.",
+      "sourceSpan": "Q4.38",
+      "parentBulletText": "Die lernende Person kann einen prüfungsnahen Aufsatz (Analyse/Kommentar) strukturiert verfassen.",
+      "sourceRef": "Kerncurriculum Gymnasiale Oberstufe Musik Hessen 2024, Q4",
+      "courseLevel": "GK_LK",
+      "granularity": "sourceSnapshotGoal",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-HE",
+        "stage:SekII",
+        "courseLevel:GK_LK",
+        "topic:Q4"
+      ],
+      "rawSourceText": "Die lernende Person kann einen prüfungsnahen Aufsatz (Analyse/Kommentar) strukturiert verfassen.",
+      "rawSourceSpan": "Q4.38",
+      "rawParentBulletText": "Die lernende Person kann einen prüfungsnahen Aufsatz (Analyse/Kommentar) strukturiert verfassen."
+    }
+  ],
+  "qualityReview": {
+    "sourceGoalCountPeerBaseline": {
+      "status": "accepted",
+      "expectedSourceGoals": 38,
+      "actualSourceGoals": 38,
+      "rationale": "Converted from the existing committed source landscape snapshot; non-curricular motivation/practice/assessment nodes are excluded from source coverage."
+    }
+  }
+}

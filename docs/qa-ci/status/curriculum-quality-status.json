@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "rulesVersion": "curriculum-quality-v1",
-  "generatedAt": "2026-05-13T01:00:02.428Z",
+  "generatedAt": "2026-05-13T01:03:08.079Z",
   "generatedBy": "app/scripts/generateCurriculumQualityStatus.ts",
   "sources": {
     "canonicalRoot": "curricula/DE/Gymnasium/canonical",
@@ -25,10 +25,10 @@
       "M5": 4
     },
     "ruleStatus": {
-      "pass": 115,
-      "warn": 23,
-      "fail": 11,
-      "not_configured": 61
+      "pass": 116,
+      "warn": 24,
+      "fail": 10,
+      "not_configured": 60
     }
   },
   "ruleCatalog": [
@@ -23742,10 +23742,10 @@
         "rawAtomicGoals": 52,
         "coveredJurisdictions": 2,
         "sourceBackedJurisdictions": 2,
-        "sourceCompleteJurisdictions": 0,
-        "cleanJurisdictions": 0,
+        "sourceCompleteJurisdictions": 2,
+        "cleanJurisdictions": 2,
         "partialJurisdictions": 0,
-        "errorJurisdictions": 2,
+        "errorJurisdictions": 0,
         "maxVisibleAtomicGoals": 38,
         "maxSourceBackedAtomicGoals": 38,
         "maxAtomicCoveragePercent": 100,
@@ -23753,15 +23753,15 @@
         "unsupportedAssignedAtomicGoals": 0,
         "surrogateBackedAtomicGoals": 0,
         "partialSourceLinkedAtomicGoals": 0,
-        "sourceAtomicGoals": 257,
-        "sourceMappedToViewAtomicGoals": 257,
+        "sourceAtomicGoals": 242,
+        "sourceMappedToViewAtomicGoals": 242,
         "unmappedSourceAtomicGoals": 0,
-        "sourceExtractedGoals": 0,
+        "sourceExtractedGoals": 242,
         "sourceUnregisteredGoals": 0,
-        "sourceExtractedAtomicGoals": 0,
+        "sourceExtractedAtomicGoals": 242,
         "sourceUnregisteredAtomicGoals": 0,
-        "sourceOriginalGoals": 329,
-        "sourceFullyCoveredOriginalGoals": 329,
+        "sourceOriginalGoals": 242,
+        "sourceFullyCoveredOriginalGoals": 242,
         "sourcePartiallyCoveredOriginalGoals": 0,
         "sourceUncoveredOriginalGoals": 0,
         "jurisdictions": [
@@ -23808,15 +23808,15 @@
             "surrogateBackedAtomicGoals": 0,
             "unsupportedAssignedAtomicGoals": 0,
             "partialSourceLinkedAtomicGoals": 0,
-            "sourceAtomicGoals": 52,
-            "sourceMappedToViewAtomicGoals": 52,
+            "sourceAtomicGoals": 38,
+            "sourceMappedToViewAtomicGoals": 38,
             "unmappedSourceAtomicGoals": 0,
-            "sourceExtractedGoals": 0,
+            "sourceExtractedGoals": 38,
             "sourceUnregisteredGoals": 0,
-            "sourceExtractedAtomicGoals": 0,
+            "sourceExtractedAtomicGoals": 38,
             "sourceUnregisteredAtomicGoals": 0,
-            "sourceOriginalGoals": 76,
-            "sourceFullyCoveredOriginalGoals": 76,
+            "sourceOriginalGoals": 38,
+            "sourceFullyCoveredOriginalGoals": 38,
             "sourcePartiallyCoveredOriginalGoals": 0,
             "sourceUncoveredOriginalGoals": 0,
             "errors": 0,
@@ -23825,7 +23825,7 @@
             "atomicCoveragePercent": 100,
             "sourceBackedCoveragePercent": 100,
             "sourceReverseCoveragePercent": 100,
-            "status": "error"
+            "status": "covered"
           },
           {
             "jurisdiction": "DE-BY",
@@ -23839,15 +23839,15 @@
             "surrogateBackedAtomicGoals": 0,
             "unsupportedAssignedAtomicGoals": 0,
             "partialSourceLinkedAtomicGoals": 0,
-            "sourceAtomicGoals": 205,
-            "sourceMappedToViewAtomicGoals": 205,
+            "sourceAtomicGoals": 204,
+            "sourceMappedToViewAtomicGoals": 204,
             "unmappedSourceAtomicGoals": 0,
-            "sourceExtractedGoals": 0,
+            "sourceExtractedGoals": 204,
             "sourceUnregisteredGoals": 0,
-            "sourceExtractedAtomicGoals": 0,
+            "sourceExtractedAtomicGoals": 204,
             "sourceUnregisteredAtomicGoals": 0,
-            "sourceOriginalGoals": 253,
-            "sourceFullyCoveredOriginalGoals": 253,
+            "sourceOriginalGoals": 204,
+            "sourceFullyCoveredOriginalGoals": 204,
             "sourcePartiallyCoveredOriginalGoals": 0,
             "sourceUncoveredOriginalGoals": 0,
             "errors": 0,
@@ -23856,7 +23856,7 @@
             "atomicCoveragePercent": 100,
             "sourceBackedCoveragePercent": 100,
             "sourceReverseCoveragePercent": 100,
-            "status": "error"
+            "status": "covered"
           },
           {
             "jurisdiction": "DE-BB",
@@ -24265,68 +24265,153 @@
       },
       "mappingPipeline": {
         "totalSources": 2,
-        "completeSources": 0,
+        "completeSources": 2,
         "incompleteSources": 0,
-        "blockedSources": 2,
-        "maxCompletedSteps": 0,
+        "blockedSources": 0,
+        "maxCompletedSteps": 3,
         "totalSteps": 3,
-        "currentStep": "MAPPING-1",
+        "currentStep": "",
         "sources": [
           {
             "sourceLandscapeId": "a00d70bf-3d3c-58fc-af4f-881b29635c2e",
             "title": "Musik (Gymnasium)",
             "jurisdiction": "DE-BY",
-            "path": "curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_music_to_canonical_music.json",
-            "sourceKind": "missing-extraction",
-            "currentStep": "MAPPING-1",
-            "completedSteps": 0,
+            "subject": "Musik",
+            "stage": "SekI+SekII",
+            "path": "curricula/DE/Gymnasium/input/BY/gymnasium/source-extraction/DE_BY_MUSIK_GYMNASIUM_LEHRPLANPLUS.source-extraction.json",
+            "sourceKind": "source-extraction",
+            "sourceDocuments": [
+              {
+                "title": "LehrplanPLUS Bayern Gymnasium Musik",
+                "path": "curricula/DE/Gymnasium/input/BY/gymnasium/Musik.json",
+                "available": true
+              }
+            ],
+            "currentStep": "",
+            "completedSteps": 3,
             "totalSteps": 3,
-            "sourceGoals": 0,
-            "passages": 0,
+            "sourceGoals": 204,
+            "passages": 48,
+            "mappedSourceGoals": 204,
+            "unmappedSourceGoals": 0,
+            "extraMappedGoals": 0,
+            "exactMappings": 9,
+            "partialMappings": 195,
+            "otherMappings": 0,
+            "sourceGoalCountPeerBaselineReview": {
+              "status": "accepted",
+              "expectedSourceGoals": 204,
+              "actualSourceGoals": 204,
+              "rationale": "Converted from the existing committed source landscape snapshot; non-curricular motivation/practice/assessment nodes are excluded from source coverage."
+            },
+            "sourceGoalGranularity": {
+              "averageWords": 20.03921568627451,
+              "p90Words": 29,
+              "maxWords": 125,
+              "longGoals": 1,
+              "longGoalThreshold": 45,
+              "examples": [
+                {
+                  "id": "5722fe5c-02d4-5fff-977b-11461ed963fe",
+                  "topicCode": "J11",
+                  "words": 125,
+                  "text": "setzen mindestens eine der drei folgenden Kompetenzerwartungen um: - Die Schülerinnen und Schüler wählen ein inner- oder außerschulisches Ensemble, analysier..."
+                }
+              ]
+            },
             "steps": [
               {
                 "id": "MAPPING-1",
                 "label": "Original-Lehrplanpassagen extrahiert",
-                "status": "incomplete",
+                "status": "complete",
                 "dependsOn": [],
                 "checks": [
                   {
-                    "id": "source-extraction-file-present",
-                    "label": "Persistiertes Source-Extraction-Artefakt vorhanden",
-                    "passed": false,
-                    "details": "Für diese Source-Landschaft ist noch keine geprüfte source-extraction-Datei registriert."
+                    "id": "source-document-present",
+                    "label": "Strukturierte Musik-Quelle liegt lokal vor",
+                    "passed": true,
+                    "details": "curricula/DE/Gymnasium/input/BY/gymnasium/Musik.json"
+                  },
+                  {
+                    "id": "topic-passages-extracted",
+                    "label": "Musik-Quellpassagen sind aus dem vorhandenen Snapshot extrahiert",
+                    "passed": true,
+                    "details": "Erfasst: 48/48 Passagen."
                   }
                 ]
               },
               {
                 "id": "MAPPING-2",
                 "label": "Source-Ziele aus Lehrplanpassagen erstellt",
-                "status": "blocked",
+                "status": "complete",
                 "dependsOn": [
                   "MAPPING-1"
                 ],
                 "checks": [
                   {
-                    "id": "mapping-1-complete",
-                    "label": "MAPPING-1 abgeschlossen",
-                    "passed": false,
-                    "details": "Source-Ziele dürfen erst nach vollständig extrahierten Originalpassagen als abgeschlossen gelten."
+                    "id": "source-goals-created",
+                    "label": "Aus den Musik-Passagen wurden Source-Ziele erzeugt",
+                    "passed": true,
+                    "details": "204 Source-Ziele."
+                  },
+                  {
+                    "id": "passage-to-source-goal-coverage",
+                    "label": "Jede Passage hat mindestens ein Source-Ziel oder dient als Strukturpassage",
+                    "passed": true,
+                    "details": "Passage-Zuordnung wurde aus der bestehenden Source-Hierarchie abgeleitet."
+                  },
+                  {
+                    "id": "source-goal-ids-unique",
+                    "label": "Source-Ziel-IDs sind eindeutig",
+                    "passed": true,
+                    "details": "Doppelte IDs: -."
+                  },
+                  {
+                    "id": "source-goal-trace-complete",
+                    "label": "Jedes Source-Ziel hat Passage, Source-Span und Quellenreferenz",
+                    "passed": true,
+                    "details": "Unvollstaendige Source-Ziele: -"
                   }
                 ]
               },
               {
                 "id": "MAPPING-3",
                 "label": "Source-Ziele auf SkillPilot-Ziele gemappt",
-                "status": "blocked",
+                "status": "complete",
                 "dependsOn": [
+                  "MAPPING-1",
                   "MAPPING-2"
                 ],
                 "checks": [
                   {
-                    "id": "mapping-2-complete",
-                    "label": "MAPPING-2 abgeschlossen",
-                    "passed": false,
-                    "details": "Das Mapping auf SkillPilot-Ziele darf erst nach geprüften Source-Zielen als abgeschlossen gelten."
+                    "id": "m3-review-file-present",
+                    "label": "M3-Review-Datei ist vorhanden",
+                    "passed": true,
+                    "details": "Review-Datei mit sourceExtractionPath fuer diese Source-Extraction ist vorhanden."
+                  },
+                  {
+                    "id": "m3-review-decisions-reference-source-goals",
+                    "label": "M3-Review-Entscheidungen referenzieren gueltige Source-Ziele",
+                    "passed": true,
+                    "details": "Review-Entscheidungen mit unbekannter Source-ID: 0."
+                  },
+                  {
+                    "id": "m3-review-targets-exist",
+                    "label": "M3-Review-Ziele referenzieren vorhandene Canonical-Ziele",
+                    "passed": true,
+                    "details": "Unbekannte Canonical-Ziele in Mappings: 0."
+                  },
+                  {
+                    "id": "m3-all-source-goals-reviewed",
+                    "label": "Alle Source-Ziele haben eine fachliche M3-Entscheidung",
+                    "passed": true,
+                    "details": "204/204 Source-Ziele reviewed; offen: 0."
+                  },
+                  {
+                    "id": "m3-all-source-goals-covered-by-canonical",
+                    "label": "Alle Source-Ziele sind durch SkillPilot-Ziele abgedeckt",
+                    "passed": true,
+                    "details": "Fachlich abgedeckt: 204/204; Mappings: 204/204; verbleibend: 0 explizite Canonical-Gaps, 0 unreviewed."
                   }
                 ]
               }
@@ -24336,57 +24421,135 @@
             "sourceLandscapeId": "a8c23058-6998-49f2-9f3b-a85e951d5ab0",
             "title": "Musik Oberstufe (Hessen, KC 2024)",
             "jurisdiction": "DE-HE",
-            "path": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_music_upper_secondary_to_canonical_music.json",
-            "sourceKind": "missing-extraction",
-            "currentStep": "MAPPING-1",
-            "completedSteps": 0,
+            "subject": "Musik",
+            "stage": "SekII",
+            "path": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-extraction/DE_HE_MUSIK_SEKII_KC2024.source-extraction.json",
+            "sourceKind": "source-extraction",
+            "sourceDocuments": [
+              {
+                "title": "Kerncurriculum Gymnasiale Oberstufe Musik Hessen 2024",
+                "path": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-json/DE_HES_S_GYM_2_MUSIK.de.json.snapshot",
+                "available": true
+              }
+            ],
+            "currentStep": "",
+            "completedSteps": 3,
             "totalSteps": 3,
-            "sourceGoals": 0,
-            "passages": 0,
+            "sourceGoals": 38,
+            "passages": 24,
+            "mappedSourceGoals": 38,
+            "unmappedSourceGoals": 0,
+            "extraMappedGoals": 0,
+            "exactMappings": 38,
+            "partialMappings": 0,
+            "otherMappings": 0,
+            "sourceGoalCountPeerBaselineReview": {
+              "status": "accepted",
+              "expectedSourceGoals": 38,
+              "actualSourceGoals": 38,
+              "rationale": "Converted from the existing committed source landscape snapshot; non-curricular motivation/practice/assessment nodes are excluded from source coverage."
+            },
+            "sourceGoalGranularity": {
+              "averageWords": 12.157894736842104,
+              "p90Words": 14,
+              "maxWords": 17,
+              "longGoals": 0,
+              "longGoalThreshold": 45,
+              "examples": []
+            },
             "steps": [
               {
                 "id": "MAPPING-1",
                 "label": "Original-Lehrplanpassagen extrahiert",
-                "status": "incomplete",
+                "status": "complete",
                 "dependsOn": [],
                 "checks": [
                   {
-                    "id": "source-extraction-file-present",
-                    "label": "Persistiertes Source-Extraction-Artefakt vorhanden",
-                    "passed": false,
-                    "details": "Für diese Source-Landschaft ist noch keine geprüfte source-extraction-Datei registriert."
+                    "id": "source-document-present",
+                    "label": "Strukturierte Musik-Quelle liegt lokal vor",
+                    "passed": true,
+                    "details": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-json/DE_HES_S_GYM_2_MUSIK.de.json.snapshot"
+                  },
+                  {
+                    "id": "topic-passages-extracted",
+                    "label": "Musik-Quellpassagen sind aus dem vorhandenen Snapshot extrahiert",
+                    "passed": true,
+                    "details": "Erfasst: 24/24 Passagen."
                   }
                 ]
               },
               {
                 "id": "MAPPING-2",
                 "label": "Source-Ziele aus Lehrplanpassagen erstellt",
-                "status": "blocked",
+                "status": "complete",
                 "dependsOn": [
                   "MAPPING-1"
                 ],
                 "checks": [
                   {
-                    "id": "mapping-1-complete",
-                    "label": "MAPPING-1 abgeschlossen",
-                    "passed": false,
-                    "details": "Source-Ziele dürfen erst nach vollständig extrahierten Originalpassagen als abgeschlossen gelten."
+                    "id": "source-goals-created",
+                    "label": "Aus den Musik-Passagen wurden Source-Ziele erzeugt",
+                    "passed": true,
+                    "details": "38 Source-Ziele."
+                  },
+                  {
+                    "id": "passage-to-source-goal-coverage",
+                    "label": "Jede Passage hat mindestens ein Source-Ziel oder dient als Strukturpassage",
+                    "passed": true,
+                    "details": "Passage-Zuordnung wurde aus der bestehenden Source-Hierarchie abgeleitet."
+                  },
+                  {
+                    "id": "source-goal-ids-unique",
+                    "label": "Source-Ziel-IDs sind eindeutig",
+                    "passed": true,
+                    "details": "Doppelte IDs: -."
+                  },
+                  {
+                    "id": "source-goal-trace-complete",
+                    "label": "Jedes Source-Ziel hat Passage, Source-Span und Quellenreferenz",
+                    "passed": true,
+                    "details": "Unvollstaendige Source-Ziele: -"
                   }
                 ]
               },
               {
                 "id": "MAPPING-3",
                 "label": "Source-Ziele auf SkillPilot-Ziele gemappt",
-                "status": "blocked",
+                "status": "complete",
                 "dependsOn": [
+                  "MAPPING-1",
                   "MAPPING-2"
                 ],
                 "checks": [
                   {
-                    "id": "mapping-2-complete",
-                    "label": "MAPPING-2 abgeschlossen",
-                    "passed": false,
-                    "details": "Das Mapping auf SkillPilot-Ziele darf erst nach geprüften Source-Zielen als abgeschlossen gelten."
+                    "id": "m3-review-file-present",
+                    "label": "M3-Review-Datei ist vorhanden",
+                    "passed": true,
+                    "details": "Review-Datei mit sourceExtractionPath fuer diese Source-Extraction ist vorhanden."
+                  },
+                  {
+                    "id": "m3-review-decisions-reference-source-goals",
+                    "label": "M3-Review-Entscheidungen referenzieren gueltige Source-Ziele",
+                    "passed": true,
+                    "details": "Review-Entscheidungen mit unbekannter Source-ID: 0."
+                  },
+                  {
+                    "id": "m3-review-targets-exist",
+                    "label": "M3-Review-Ziele referenzieren vorhandene Canonical-Ziele",
+                    "passed": true,
+                    "details": "Unbekannte Canonical-Ziele in Mappings: 0."
+                  },
+                  {
+                    "id": "m3-all-source-goals-reviewed",
+                    "label": "Alle Source-Ziele haben eine fachliche M3-Entscheidung",
+                    "passed": true,
+                    "details": "38/38 Source-Ziele reviewed; offen: 0."
+                  },
+                  {
+                    "id": "m3-all-source-goals-covered-by-canonical",
+                    "label": "Alle Source-Ziele sind durch SkillPilot-Ziele abgedeckt",
+                    "passed": true,
+                    "details": "Fachlich abgedeckt: 38/38; Mappings: 38/38; verbleibend: 0 explizite Canonical-Gaps, 0 unreviewed."
                   }
                 ]
               }
@@ -24415,22 +24578,20 @@
         },
         {
           "id": "CQR-000",
-          "status": "fail",
-          "summary": "0/16 declared Bundesland source inventories are readable and fully registered.",
+          "status": "warn",
+          "summary": "2/16 declared Bundesland source inventories are readable and fully registered.",
           "metrics": {
             "totalJurisdictions": 16,
-            "completeSourceJurisdictions": 0,
+            "completeSourceJurisdictions": 2,
             "emptySourceJurisdictions": 14,
-            "missingReadableSourceInventoryJurisdictions": 2,
-            "sourceExtractedGoals": 0,
-            "sourceOriginalGoals": 329,
+            "missingReadableSourceInventoryJurisdictions": 0,
+            "sourceExtractedGoals": 242,
+            "sourceOriginalGoals": 242,
             "sourceUnregisteredGoals": 0,
-            "sourceExtractedAtomicGoals": 0,
+            "sourceExtractedAtomicGoals": 242,
             "sourceUnregisteredAtomicGoals": 0
           },
           "details": [
-            "DE-HE: 76 source original goal(s) are registered, but no readable source inventory goals were extracted",
-            "DE-BY: 253 source original goal(s) are registered, but no readable source inventory goals were extracted",
             "DE-BW: no source inventory goals are registered or extracted",
             "DE-BB: no source inventory goals are registered or extracted",
             "DE-BE: no source inventory goals are registered or extracted",
@@ -24450,31 +24611,31 @@
         {
           "id": "CQR-003",
           "status": "warn",
-          "summary": "0/16 declared Bundesland projection(s) have source-backed atom-level view coverage, no unsupported assignments, and complete source-to-view mapping.",
+          "summary": "2/16 declared Bundesland projection(s) have source-backed atom-level view coverage, no unsupported assignments, and complete source-to-view mapping.",
           "metrics": {
             "totalJurisdictions": 16,
             "coveredJurisdictions": 2,
             "sourceBackedJurisdictions": 2,
-            "sourceCompleteJurisdictions": 0,
-            "fullCoverageJurisdictions": 0,
+            "sourceCompleteJurisdictions": 2,
+            "fullCoverageJurisdictions": 2,
             "uncoveredJurisdictions": 14,
             "incompleteJurisdictions": 0,
             "unsupportedAssignmentJurisdictions": 0,
             "sourceUnmappedJurisdictions": 0,
             "unsupportedAssignedAtomicGoals": 0,
             "unmappedSourceAtomicGoals": 0,
-            "sourceAtomicGoals": 257,
-            "sourceMappedToViewAtomicGoals": 257,
-            "sourceOriginalGoals": 329,
-            "sourceFullyCoveredOriginalGoals": 329,
+            "sourceAtomicGoals": 242,
+            "sourceMappedToViewAtomicGoals": 242,
+            "sourceOriginalGoals": 242,
+            "sourceFullyCoveredOriginalGoals": 242,
             "sourcePartiallyCoveredOriginalGoals": 0,
             "sourceUncoveredOriginalGoals": 0,
             "surrogateBackedAtomicGoals": 0,
             "partialSourceLinkedAtomicGoals": 0,
             "warningedJurisdictions": 0,
-            "cleanJurisdictions": 0,
+            "cleanJurisdictions": 2,
             "partialJurisdictions": 0,
-            "errorJurisdictions": 2,
+            "errorJurisdictions": 0,
             "minSourceBackedAtomicGoals": 0,
             "maxVisibleAtomicGoals": 38,
             "maxSourceBackedAtomicGoals": 38,
@@ -24499,8 +24660,23 @@
         },
         {
           "id": "CQR-004",
-          "status": "not_configured",
-          "summary": "No persisted source-extraction mapping with GK/LK course-level metadata is configured for this curriculum."
+          "status": "pass",
+          "summary": "Course-level mapping is clean for 38 upper-secondary source-to-canonical mapping edge(s), including 8 reviewed course-level exception(s); unspecified upper-secondary source goals default to GK/LK unless explicitly reviewed.",
+          "metrics": {
+            "configuredMappingFiles": 2,
+            "sourceGoals": 38,
+            "sourceGoalsWithCourseLevel": 38,
+            "gkLkSourceGoals": 30,
+            "lkSourceGoals": 8,
+            "unspecifiedSourceGoals": 0,
+            "checkedMappingEdges": 38,
+            "defaultedUnspecifiedMappingEdges": 0,
+            "reviewedCourseLevelExceptions": 8,
+            "mismatches": 0,
+            "missingSourceGoals": 0,
+            "missingTargetGoals": 0,
+            "unmappedCourseLevelSourceGoals": 0
+          }
         },
         {
           "id": "CQR-301",
