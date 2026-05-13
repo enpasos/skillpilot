@@ -44,3 +44,27 @@ Archived locally at:
 Generated source extraction:
 
 - `curricula/DE/Gymnasium/input/SH/lower-secondary/source-extraction/DE_SH_CHEMIE_SEKI_FACHANFORDERUNGEN_2022.source-extraction.json`
+
+## Biologie
+
+Starting point:
+https://fachportal.lernnetz.de/sh/faecher/biologie/fachanforderungen.html
+
+- `Fachanforderungen_Biologie_Sekundarstufe_2023_barrierearm.pdf`:
+  https://fachportal.lernnetz.de/sh/faecher/biologie/fachanforderungen.html?file=files/Fachanforderungen%20und%20Leitf%C3%A4den/Sekundarstufe/Fachanforderungen/Fachanforderungen%20Biologie%20Sekundarstufe%20%282023%2C%20barrierearm%29.pdf&cid=16888
+
+Scope:
+
+- Schleswig-Holstein
+- Gymnasium
+- Biologie
+- lower-secondary extraction target: Sek-I process competencies and Basiskonzept tables from the official 2023 Fachanforderungen
+- note: the official provider source is one combined Sek-I/Sek-II biology PDF
+
+Archived locally at:
+
+- `curricula/DE/Gymnasium/input/SH/Fachanforderungen_Biologie_Sekundarstufe_2023_barrierearm.pdf`
+
+Generated source extraction:
+
+- `curricula/DE/Gymnasium/input/SH/lower-secondary/source-extraction/DE_SH_BIOLOGIE_SEKI_FACHANFORDERUNGEN_2023.source-extraction.json`

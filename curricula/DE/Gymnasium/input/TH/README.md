@@ -31,6 +31,25 @@
 - die Aktivierung ist dokumentiert in `curricula/DE/Gymnasium/provenance/th-physics-onboarding.md`
 - vor irgendeinem topic-spezifischen Thueringen-Mapping erst die restlichen neu archivierten Physiklaender ebenfalls auf `P2` ziehen
 
+## Biologie
+
+Archived official source input on `2026-05-13`:
+
+- `LP_GY_Biologie_2024.pdf`
+  - Thueringer Lehrplan Biologie fuer den Erwerb der allgemeinen Hochschulreife `2024`
+  - Klassenstufen `7-10`, gesonderte Einfuehrungsphase fuer Lernende mit Realschulabschluss und Qualifikationsphase
+  - direct PDF source: `https://www.schulportal-thueringen.de/tip/resources/medien/63705?dateiname=Biologie_Lehrplan_AHR_2024-11-13.pdf`
+
+Operational note:
+
+- `DE-TH` now has a real archived lower-secondary Biology source bundle from the official 2024 Gymnasium PDF.
+- The retained lower-secondary Biology source extraction now lives at:
+  - `curricula/DE/Gymnasium/input/TH/lower-secondary/source-extraction/DE_TH_BIOLOGIE_SEKI_LEHRPLAN_GYMNASIUM_2024.source-extraction.json`
+- Thueringen Biology M3 status:
+  - Sek I: `complete` (8 Source-Ziele)
+- Thueringen Biology composition-view atom applicability is source-backed via:
+  - `curricula/DE/Gymnasium/mapping/DE-TH/lower-secondary/th_biology_lower_secondary_source_extraction_to_canonical_biology.review.json`
+
 ## Chemie
 
 Archived official source input on `2026-05-11`:

@@ -61,3 +61,13 @@
   - `curricula/DE/Gymnasium/composition-views/chemie/de-st-gk.view.json`
   - `curricula/DE/Gymnasium/composition-views/chemie/de-st-lk.view.json`
 - als naechstes die noch fehlenden Chemie-Source-Lanes fuer Mecklenburg-Vorpommern, Rheinland-Pfalz, Saarland, Sachsen und Thueringen onboarden
+
+## Biologie
+### Sekundarstufe I (Schuljahrgaenge 5/6-10)
+- **Archivierter Fachlehrplan Biologie Gymnasium (Stand: 01.08.2022)**:
+  - archived file: `curricula/DE/Gymnasium/input/ST/FLP_Biologie_Gym_01082022_swd.pdf`
+  - official source: `https://lisa.sachsen-anhalt.de/fileadmin/Bibliothek/Politik_und_Verwaltung/MK/LISA/Unterricht/Lehrplaene/Gym/Anpassung_2022/FLP_Biologie_Gym_01082022_swd.pdf`
+  - official overview: `https://lisa.sachsen-anhalt.de/unterricht/lehrplaene`
+  - source extraction: `curricula/DE/Gymnasium/input/ST/lower-secondary/source-extraction/DE_ST_BIOLOGIE_SEKI_FACHLEHRPLAN_GYMNASIUM_2022.source-extraction.json`
+  - reviewed mapping: `curricula/DE/Gymnasium/mapping/DE-ST/lower-secondary/st_biology_lower_secondary_source_extraction_to_canonical_biology.review.json`
+  - note: this retained Biology source covers Schuljahrgaenge `5/6`, `7/8`, `9`, and `10 (Einfuehrungsphase)`; the first lower-secondary source-extraction pass maps the official competence areas onto existing canonical Biology atomics.

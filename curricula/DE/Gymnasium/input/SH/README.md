@@ -46,3 +46,16 @@
 - Aktive source-extraction-Dateien:
   `curricula/DE/Gymnasium/input/SH/lower-secondary/source-extraction/DE_SH_CHEMIE_SEKI_FACHANFORDERUNGEN_2022.source-extraction.json`
   `curricula/DE/Gymnasium/input/SH/upper-secondary/source-extraction/DE_SH_CHEMIE_SEKII_FACHANFORDERUNGEN_2022.source-extraction.json`
+
+## Biologie
+### Sekundarstufe I und II
+- Archiviert:
+  `curricula/DE/Gymnasium/input/SH/Fachanforderungen_Biologie_Sekundarstufe_2023_barrierearm.pdf`
+- Offizielle Quelle:
+  `https://fachportal.lernnetz.de/sh/faecher/biologie/fachanforderungen.html`
+- Hinweis:
+  die 2023er Fachanforderungen liegen als gemeinsame Sek-I/Sek-II-Biologiequelle vor; die aktuelle Source-Extraction erfasst die Sek-I-Prozesskompetenzen und die Basiskonzept-Tabellen `Struktur und Funktion`, `Reproduktion`, `Kompartimentierung`, `Steuerung und Regelung`, `Stoff- und Energieumwandlung`, `Information und Kommunikation`, `Variabilitaet und Angepasstheit` sowie `Geschichte und Verwandtschaft`
+- Stage-Referenzen:
+  `curricula/DE/Gymnasium/input/SH/lower-secondary/references.md`
+- Aktive source-extraction-Datei:
+  `curricula/DE/Gymnasium/input/SH/lower-secondary/source-extraction/DE_SH_BIOLOGIE_SEKI_FACHANFORDERUNGEN_2023.source-extraction.json`

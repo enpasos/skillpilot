@@ -36,3 +36,10 @@
 - **Archivierte offizielle Quelle**: `chemie-gyo-2022-data.pdf`
 - **Offizielle Quelle**: [Bildungsplan Studienstufe Chemie](https://www.hamburg.de/resource/blob/123042/e19828c45238e198fc9cfc2a73777685/chemie-gyo-2022-data.pdf)
 - **Aktive Source-Extraction**: `upper-secondary/source-extraction/DE_HH_CHEMIE_SEKII_BILDUNGSPLAN_2022.source-extraction.json`
+
+## Biologie
+### Sekundarstufe I (Klassen 5-10)
+- **Archivierte offizielle Quelle**: `biologie-gym-seki-data.pdf`
+- **Offizielle Quelle**: [Bildungsplan Gymnasium Sekundarstufe I - Biologie](https://www.hamburg.de/resource/blob/123418/3f001f63072b1ee4259a0f2630229083/biologie-gym-seki-data.pdf)
+- **Aktive Source-Extraction**: `lower-secondary/source-extraction/DE_HH_BIOLOGIE_SEKI_BILDUNGSPLAN_2011.source-extraction.json`
+- **Hinweis**: Die Source-Extraction folgt den Hamburger Inhaltsbereichen `Zellen`, `Organismen`, `Lebensraeume`, `Vererbung`, `Stammesgeschichte` und `Biologie des Menschen` plus den prozessbezogenen Kompetenzbereichen.

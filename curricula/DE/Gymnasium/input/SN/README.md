@@ -53,3 +53,22 @@ Operational note:
 - Sachsen Chemistry composition views:
   - `active`
 - The next meaningful step is keeping Sachsen Chemistry stable while Thueringen source onboarding continues.
+
+## Biologie
+
+Archived official source input on `2026-05-13`:
+
+- `lehrplan-gymnasium-biologie-sachsen-2025.pdf`
+  - Lehrplan Gymnasium Biologie Sachsen `2004/2007/2009/2011/2017/2019/2022/2025`
+  - Klassenstufen `5-10` und Jahrgangsstufen `11/12`
+  - direct PDF source: `https://www.schulportal.sachsen.de/lplandb/lehrplan/file/522/OF2Vfum2JVmFeuc2FOuf`
+  - public Lehrplandatenbank overview: `https://www.schulportal.sachsen.de/lplandb/lehrplan/522`
+
+Operational note:
+
+- `DE-SN` now has a real archived lower-secondary Biology source bundle from the shared official Gymnasium PDF.
+- The retained lower-secondary Biology source extraction now lives at:
+  - `curricula/DE/Gymnasium/input/SN/lower-secondary/source-extraction/DE_SN_BIOLOGIE_SEKI_LEHRPLAN_GYMNASIUM_2025.source-extraction.json`
+- Sachsen Biology M3 status:
+  - Sek I: `complete` (10 Source-Ziele)
+- The next meaningful Biology step is adding the remaining open states `DE-ST` and `DE-TH`.

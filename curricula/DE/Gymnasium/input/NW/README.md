@@ -3,6 +3,7 @@
 Current local archive status on `2026-04-10`:
 
 - mathematics source PDFs for Sek I and Sek II are now archived locally
+- biology source PDF for Sek I is now archived locally
 - chemistry source PDFs for Sek I and Sek II are now archived locally
 - first NRW mathematics source snapshots are now archived locally as pilot subsets under `lower-secondary/source-json/` and `upper-secondary/source-json/`
 - first NRW upper-secondary physics source snapshot is now archived locally as a pilot subset under `upper-secondary/source-json/`
@@ -39,3 +40,9 @@ Current local archive status on `2026-04-10`:
 - **Kernlehrplan Chemie gymnasiale Oberstufe (2022/2023)**: [Lehrplannavigator NRW - Chemie Gymnasiale Oberstufe](https://lehrplannavigator.nrw.de/sekundarstufe-ii/kernlehrplaene-fuer-die-gymnasiale-oberstufe-ab-20222023/chemie)
 - Archived source PDF: `upper-secondary/gost_klp_ch_2022_06_07.pdf`
 - Source references: `upper-secondary/references.md`
+
+## Biologie
+### Sekundarstufe I (Klassen 5-10)
+- **Kernlehrplan Biologie Sekundarstufe I Gymnasium (2019)**: [Lehrplannavigator NRW - Biologie Gymnasium](https://lehrplannavigator.nrw.de/sekundarstufe-i/kernlehrplaene-fuer-das-gymnasium-ab-20192020/biologie)
+- Archived source PDF: `lower-secondary/g9_bi_klp_-3413_2019_06_23_0.pdf`
+- Source references: `lower-secondary/references.md`

@@ -1,0 +1,3820 @@
+{
+  "schemaVersion": 1,
+  "extractionId": "DE-BW-BIOLOGIE-SEKI-BP2016-V2",
+  "title": "DE-BW - Biologie Sekundarstufe I (Bildungsplan 2016 Gymnasium, V2 2022 Source-Extraction)",
+  "sourceLandscapeId": "4cf4d9ae-ec61-51aa-868a-493e799cc1fa",
+  "jurisdiction": "DE-BW",
+  "subject": "Biologie",
+  "stage": "SekI",
+  "sourceDocument": {
+    "key": "BW-BP2016-GYM-BIOLOGIE-V2-2022",
+    "title": "Bildungsplan 2016 Gymnasium Biologie - ueberarbeitete Fassung vom 08.03.2022",
+    "path": "curricula/DE/Gymnasium/input/BW/BP2016BW_ALLG_GYM_BIO_V2.pdf",
+    "official": true,
+    "url": "https://www.bildungsplaene-bw.de/%2CLde/BP2016BW_ALLG_GYM_BIO.V2"
+  },
+  "sourceDocuments": [
+    {
+      "key": "BW-BP2016-GYM-BIOLOGIE-V2-2022",
+      "title": "Bildungsplan 2016 Gymnasium Biologie - ueberarbeitete Fassung vom 08.03.2022",
+      "path": "curricula/DE/Gymnasium/input/BW/BP2016BW_ALLG_GYM_BIO_V2.pdf",
+      "official": true,
+      "url": "https://www.bildungsplaene-bw.de/%2CLde/BP2016BW_ALLG_GYM_BIO.V2"
+    },
+    {
+      "key": "BW-BP2016-GYM-BNT-2016",
+      "title": "Bildungsplan 2016 Gymnasium Biologie, Naturphaenomene und Technik (BNT)",
+      "path": "curricula/DE/Gymnasium/input/BW/BP2016BW_ALLG_GYM_BNT.pdf",
+      "official": true,
+      "url": "https://www.bildungsplaene-bw.de/%2CLde/BP2016BW_ALLG_GYM_BNT"
+    }
+  ],
+  "method": {
+    "passageExtraction": "Amtliche PDF-Exporte der Bildungsplaene; Prozesskompetenzen 2.1-2.3, Biologie 3.2-3.3 und ausgewählte biologische BNT-5/6-Prerequisites wurden aus lokal gecachten PDF-Texten extrahiert.",
+    "sourceGoalExtraction": "Ein Source-Ziel pro nummerierter Kompetenz bzw. eng zusammengehörigem Kompetenzbündel; BNT 5/6 ist nur fuer biologische requires-closure-Prerequisites dieser Projektion aufgenommen."
+  },
+  "expectedTopicCodes": [
+    "P21",
+    "P22",
+    "P23",
+    "BNT56-WIRB",
+    "BNT56-PFL",
+    "K78-ZS",
+    "K78-EV",
+    "K78-ABK",
+    "K78-FE",
+    "K78-IS",
+    "K78-OE",
+    "K910-EVO",
+    "K910-GEN",
+    "K910-IMM",
+    "K910-ZB"
+  ],
+  "qualityReview": {
+    "sourceGoalCountPeerBaseline": {
+      "accepted": true,
+      "details": "111 Source-Ziele aus Prozesskompetenzen, BNT-5/6-Prerequisites und den Biologie-Standards der Klassen 7/8 und 9/10."
+    }
+  },
+  "pipelineStatus": {
+    "version": 1,
+    "currentStep": null,
+    "steps": [
+      {
+        "id": "MAPPING-1",
+        "label": "Original-Lehrplanpassagen extrahiert",
+        "status": "complete",
+        "dependsOn": [],
+        "checks": [
+          {
+            "id": "source-document-present",
+            "label": "Amtliche BW-Biologie-Quelle liegt lokal vor",
+            "passed": true,
+            "details": "curricula/DE/Gymnasium/input/BW/BP2016BW_ALLG_GYM_BIO_V2.pdf"
+          },
+          {
+            "id": "expected-topic-coverage",
+            "label": "BW-Sek-I-Biologie-Themen sind als Lehrplanpassagen vorhanden",
+            "passed": true,
+            "details": "15/15 Abschnitte."
+          }
+        ]
+      },
+      {
+        "id": "MAPPING-2",
+        "label": "Source-Ziele aus Lehrplanpassagen erstellt",
+        "status": "complete",
+        "dependsOn": [
+          "MAPPING-1"
+        ],
+        "checks": [
+          {
+            "id": "source-goals-created",
+            "label": "Aus den BW-Sek-I-Biologiepassagen wurden Source-Ziele erzeugt",
+            "passed": true,
+            "details": "111 Source-Ziele"
+          },
+          {
+            "id": "source-goal-ids-unique",
+            "label": "Source-Ziel-IDs sind eindeutig",
+            "passed": true,
+            "details": "Doppelte IDs: -"
+          }
+        ]
+      },
+      {
+        "id": "MAPPING-3",
+        "label": "Source-Ziele auf SkillPilot-Ziele gemappt",
+        "status": "complete",
+        "dependsOn": [
+          "MAPPING-1",
+          "MAPPING-2"
+        ],
+        "checks": [
+          {
+            "id": "mapping-2-complete",
+            "label": "MAPPING-2 abgeschlossen",
+            "passed": true,
+            "details": "111 Source-Ziele liegen vor; MAPPING-3 ist vollständig reviewed."
+          },
+          {
+            "id": "m3-all-source-goals-covered-by-canonical",
+            "label": "Alle Source-Ziele sind durch SkillPilot-Ziele abgedeckt",
+            "passed": true,
+            "details": "111/111 Source-Ziele fachlich abgedeckt; 0 Canonical-Gaps."
+          }
+        ]
+      }
+    ]
+  },
+  "passages": [
+    {
+      "id": "bw-biology-seki-bp2016-v2-p21",
+      "topicCode": "P21",
+      "title": "2.1 Erkenntnisgewinnung",
+      "sourceRef": "Bildungsplan Baden-Wuerttemberg 2016 Gymnasium Biologie, ueberarbeitete Fassung 08.03.2022, 2.1 Erkenntnisgewinnung, S. 10.",
+      "sourceDocumentKey": "BW-BP2016-GYM-BIOLOGIE-V2-2022",
+      "page": 10,
+      "grade": "SekI"
+    },
+    {
+      "id": "bw-biology-seki-bp2016-v2-p22",
+      "topicCode": "P22",
+      "title": "2.2 Kommunikation",
+      "sourceRef": "Bildungsplan Baden-Wuerttemberg 2016 Gymnasium Biologie, ueberarbeitete Fassung 08.03.2022, 2.2 Kommunikation, S. 11.",
+      "sourceDocumentKey": "BW-BP2016-GYM-BIOLOGIE-V2-2022",
+      "page": 11,
+      "grade": "SekI"
+    },
+    {
+      "id": "bw-biology-seki-bp2016-v2-p23",
+      "topicCode": "P23",
+      "title": "2.3 Bewertung",
+      "sourceRef": "Bildungsplan Baden-Wuerttemberg 2016 Gymnasium Biologie, ueberarbeitete Fassung 08.03.2022, 2.3 Bewertung, S. 12.",
+      "sourceDocumentKey": "BW-BP2016-GYM-BIOLOGIE-V2-2022",
+      "page": 12,
+      "grade": "SekI"
+    },
+    {
+      "id": "bw-biology-seki-bp2016-v2-bnt56-wirb",
+      "topicCode": "BNT56-WIRB",
+      "title": "3.1.5 Wirbeltiere",
+      "sourceRef": "Bildungsplan Baden-Wuerttemberg 2016 Gymnasium BNT, 3.1.5 Wirbeltiere, S. 17.",
+      "sourceDocumentKey": "BW-BP2016-GYM-BNT-2016",
+      "page": 17,
+      "grade": "5/6"
+    },
+    {
+      "id": "bw-biology-seki-bp2016-v2-bnt56-pfl",
+      "topicCode": "BNT56-PFL",
+      "title": "3.1.8 Pflanzen",
+      "sourceRef": "Bildungsplan Baden-Wuerttemberg 2016 Gymnasium BNT, 3.1.8 Pflanzen, S. 21.",
+      "sourceDocumentKey": "BW-BP2016-GYM-BNT-2016",
+      "page": 21,
+      "grade": "5/6"
+    },
+    {
+      "id": "bw-biology-seki-bp2016-v2-k78-zs",
+      "topicCode": "K78-ZS",
+      "title": "3.2.1 Zelle und Stoffwechsel",
+      "sourceRef": "Bildungsplan Baden-Wuerttemberg 2016 Gymnasium Biologie, ueberarbeitete Fassung 08.03.2022, 3.2.1 Zelle und Stoffwechsel, S. 14.",
+      "sourceDocumentKey": "BW-BP2016-GYM-BIOLOGIE-V2-2022",
+      "page": 14,
+      "grade": "7/8"
+    },
+    {
+      "id": "bw-biology-seki-bp2016-v2-k78-ev",
+      "topicCode": "K78-EV",
+      "title": "3.2.2.1 Ernährung und Verdauung",
+      "sourceRef": "Bildungsplan Baden-Wuerttemberg 2016 Gymnasium Biologie, ueberarbeitete Fassung 08.03.2022, 3.2.2.1 Ernährung und Verdauung, S. 15.",
+      "sourceDocumentKey": "BW-BP2016-GYM-BIOLOGIE-V2-2022",
+      "page": 15,
+      "grade": "7/8"
+    },
+    {
+      "id": "bw-biology-seki-bp2016-v2-k78-abk",
+      "topicCode": "K78-ABK",
+      "title": "3.2.2.2 Atmung, Blut und Kreislaufsystem",
+      "sourceRef": "Bildungsplan Baden-Wuerttemberg 2016 Gymnasium Biologie, ueberarbeitete Fassung 08.03.2022, 3.2.2.2 Atmung, Blut und Kreislaufsystem, S. 16.",
+      "sourceDocumentKey": "BW-BP2016-GYM-BIOLOGIE-V2-2022",
+      "page": 16,
+      "grade": "7/8"
+    },
+    {
+      "id": "bw-biology-seki-bp2016-v2-k78-fe",
+      "topicCode": "K78-FE",
+      "title": "3.2.2.3 Fortpflanzung und Entwicklung",
+      "sourceRef": "Bildungsplan Baden-Wuerttemberg 2016 Gymnasium Biologie, ueberarbeitete Fassung 08.03.2022, 3.2.2.3 Fortpflanzung und Entwicklung, S. 17.",
+      "sourceDocumentKey": "BW-BP2016-GYM-BIOLOGIE-V2-2022",
+      "page": 17,
+      "grade": "7/8"
+    },
+    {
+      "id": "bw-biology-seki-bp2016-v2-k78-is",
+      "topicCode": "K78-IS",
+      "title": "3.2.2.4 Informationssysteme",
+      "sourceRef": "Bildungsplan Baden-Wuerttemberg 2016 Gymnasium Biologie, ueberarbeitete Fassung 08.03.2022, 3.2.2.4 Informationssysteme, S. 18.",
+      "sourceDocumentKey": "BW-BP2016-GYM-BIOLOGIE-V2-2022",
+      "page": 18,
+      "grade": "7/8"
+    },
+    {
+      "id": "bw-biology-seki-bp2016-v2-k78-oe",
+      "topicCode": "K78-OE",
+      "title": "3.2.3 Ökologie",
+      "sourceRef": "Bildungsplan Baden-Wuerttemberg 2016 Gymnasium Biologie, ueberarbeitete Fassung 08.03.2022, 3.2.3 Ökologie, S. 19.",
+      "sourceDocumentKey": "BW-BP2016-GYM-BIOLOGIE-V2-2022",
+      "page": 19,
+      "grade": "7/8"
+    },
+    {
+      "id": "bw-biology-seki-bp2016-v2-k910-evo",
+      "topicCode": "K910-EVO",
+      "title": "3.3.1 Evolution",
+      "sourceRef": "Bildungsplan Baden-Wuerttemberg 2016 Gymnasium Biologie, ueberarbeitete Fassung 08.03.2022, 3.3.1 Evolution, S. 21.",
+      "sourceDocumentKey": "BW-BP2016-GYM-BIOLOGIE-V2-2022",
+      "page": 21,
+      "grade": "9/10"
+    },
+    {
+      "id": "bw-biology-seki-bp2016-v2-k910-gen",
+      "topicCode": "K910-GEN",
+      "title": "3.3.2 Genetik",
+      "sourceRef": "Bildungsplan Baden-Wuerttemberg 2016 Gymnasium Biologie, ueberarbeitete Fassung 08.03.2022, 3.3.2 Genetik, S. 22.",
+      "sourceDocumentKey": "BW-BP2016-GYM-BIOLOGIE-V2-2022",
+      "page": 22,
+      "grade": "9/10"
+    },
+    {
+      "id": "bw-biology-seki-bp2016-v2-k910-imm",
+      "topicCode": "K910-IMM",
+      "title": "3.3.3 Immunbiologie",
+      "sourceRef": "Bildungsplan Baden-Wuerttemberg 2016 Gymnasium Biologie, ueberarbeitete Fassung 08.03.2022, 3.3.3 Immunbiologie, S. 23.",
+      "sourceDocumentKey": "BW-BP2016-GYM-BIOLOGIE-V2-2022",
+      "page": 23,
+      "grade": "9/10"
+    },
+    {
+      "id": "bw-biology-seki-bp2016-v2-k910-zb",
+      "topicCode": "K910-ZB",
+      "title": "3.3.4 Zellbiologie",
+      "sourceRef": "Bildungsplan Baden-Wuerttemberg 2016 Gymnasium Biologie, ueberarbeitete Fassung 08.03.2022, 3.3.4 Zellbiologie, S. 24.",
+      "sourceDocumentKey": "BW-BP2016-GYM-BIOLOGIE-V2-2022",
+      "page": 24,
+      "grade": "9/10"
+    }
+  ],
+  "sourceGoals": [
+    {
+      "id": "bw-biology-seki-bp2016-v2-p21-001-e6e16d25",
+      "passageId": "bw-biology-seki-bp2016-v2-p21",
+      "topicCode": "P21",
+      "topicTitle": "2.1 Erkenntnisgewinnung",
+      "headingTitle": "Biologische Arbeitstechniken",
+      "title": "Mikroskop bedienen, mikroskopische Präparate herstellen und darstellen.",
+      "description": "Die lernende Person kann Mikroskop bedienen, mikroskopische Präparate herstellen und darstellen.",
+      "sourceDocumentKey": "BW-BP2016-GYM-BIOLOGIE-V2-2022",
+      "sourceRef": "Bildungsplan Baden-Wuerttemberg 2016 Gymnasium Biologie, ueberarbeitete Fassung 08.03.2022, 2.1 Erkenntnisgewinnung, S. 10.",
+      "sourceText": "Mikroskop bedienen, mikroskopische Präparate herstellen und darstellen.",
+      "sourceSpan": {
+        "passageId": "bw-biology-seki-bp2016-v2-p21",
+        "label": "Biologische Arbeitstechniken: Mikroskop bedienen, mikroskopische Präparate herstellen und darstellen."
+      },
+      "sourceSpanText": "2.1 Erkenntnisgewinnung, Klassen SekI, Source-Ziel 1",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-BW",
+        "stage:SekI",
+        "grade:SekI"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "91df35c7-e384-50d6-bb3a-37e74a6086f1",
+          "26aa47b7-e5cc-5131-8980-0ec3271758b6"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "bw-biology-seki-bp2016-v2-p21-002-8d8a901b",
+      "passageId": "bw-biology-seki-bp2016-v2-p21",
+      "topicCode": "P21",
+      "topicTitle": "2.1 Erkenntnisgewinnung",
+      "headingTitle": "Biologische Arbeitstechniken",
+      "title": "Morphologie und Anatomie von Lebewesen und Organen untersuchen.",
+      "description": "Die lernende Person kann Morphologie und Anatomie von Lebewesen und Organen untersuchen.",
+      "sourceDocumentKey": "BW-BP2016-GYM-BIOLOGIE-V2-2022",
+      "sourceRef": "Bildungsplan Baden-Wuerttemberg 2016 Gymnasium Biologie, ueberarbeitete Fassung 08.03.2022, 2.1 Erkenntnisgewinnung, S. 10.",
+      "sourceText": "Morphologie und Anatomie von Lebewesen und Organen untersuchen.",
+      "sourceSpan": {
+        "passageId": "bw-biology-seki-bp2016-v2-p21",
+        "label": "Biologische Arbeitstechniken: Morphologie und Anatomie von Lebewesen und Organen untersuchen."
+      },
+      "sourceSpanText": "2.1 Erkenntnisgewinnung, Klassen SekI, Source-Ziel 2",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-BW",
+        "stage:SekI",
+        "grade:SekI"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "bdbb1a13-f448-5536-86ab-894805e2f6be",
+          "0f1549f6-8341-53b0-8161-5eaeb2b37809",
+          "26aa47b7-e5cc-5131-8980-0ec3271758b6"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "bw-biology-seki-bp2016-v2-p21-003-1bacbb5f",
+      "passageId": "bw-biology-seki-bp2016-v2-p21",
+      "topicCode": "P21",
+      "topicTitle": "2.1 Erkenntnisgewinnung",
+      "headingTitle": "Biologische Arbeitstechniken",
+      "title": "Lebewesen kriteriengeleitet vergleichen und klassifizieren.",
+      "description": "Die lernende Person kann Lebewesen kriteriengeleitet vergleichen und klassifizieren.",
+      "sourceDocumentKey": "BW-BP2016-GYM-BIOLOGIE-V2-2022",
+      "sourceRef": "Bildungsplan Baden-Wuerttemberg 2016 Gymnasium Biologie, ueberarbeitete Fassung 08.03.2022, 2.1 Erkenntnisgewinnung, S. 10.",
+      "sourceText": "Lebewesen kriteriengeleitet vergleichen und klassifizieren.",
+      "sourceSpan": {
+        "passageId": "bw-biology-seki-bp2016-v2-p21",
+        "label": "Biologische Arbeitstechniken: Lebewesen kriteriengeleitet vergleichen und klassifizieren."
+      },
+      "sourceSpanText": "2.1 Erkenntnisgewinnung, Klassen SekI, Source-Ziel 3",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-BW",
+        "stage:SekI",
+        "grade:SekI"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "55bdfb1d-5c14-5b1c-bc8e-4ab428ef59ba",
+          "0380f992-723a-513d-8c3f-8ca7f8e0394f",
+          "0f1549f6-8341-53b0-8161-5eaeb2b37809"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "bw-biology-seki-bp2016-v2-p21-004-1ef2b311",
+      "passageId": "bw-biology-seki-bp2016-v2-p21",
+      "topicCode": "P21",
+      "topicTitle": "2.1 Erkenntnisgewinnung",
+      "headingTitle": "Biologische Arbeitstechniken",
+      "title": "Mit Bestimmungshilfen häufig vorkommende Arten bestimmen.",
+      "description": "Die lernende Person kann Mit Bestimmungshilfen häufig vorkommende Arten bestimmen.",
+      "sourceDocumentKey": "BW-BP2016-GYM-BIOLOGIE-V2-2022",
+      "sourceRef": "Bildungsplan Baden-Wuerttemberg 2016 Gymnasium Biologie, ueberarbeitete Fassung 08.03.2022, 2.1 Erkenntnisgewinnung, S. 10.",
+      "sourceText": "Mit Bestimmungshilfen häufig vorkommende Arten bestimmen.",
+      "sourceSpan": {
+        "passageId": "bw-biology-seki-bp2016-v2-p21",
+        "label": "Biologische Arbeitstechniken: Mit Bestimmungshilfen häufig vorkommende Arten bestimmen."
+      },
+      "sourceSpanText": "2.1 Erkenntnisgewinnung, Klassen SekI, Source-Ziel 4",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-BW",
+        "stage:SekI",
+        "grade:SekI"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "0380f992-723a-513d-8c3f-8ca7f8e0394f"
+        ],
+        "matchType": "exact"
+      }
+    },
+    {
+      "id": "bw-biology-seki-bp2016-v2-p21-005-75806a53",
+      "passageId": "bw-biology-seki-bp2016-v2-p21",
+      "topicCode": "P21",
+      "topicTitle": "2.1 Erkenntnisgewinnung",
+      "headingTitle": "Experimente",
+      "title": "Fragestellungen und begründete Vermutungen zu biologischen Phänomenen formulieren.",
+      "description": "Die lernende Person kann Fragestellungen und begründete Vermutungen zu biologischen Phänomenen formulieren.",
+      "sourceDocumentKey": "BW-BP2016-GYM-BIOLOGIE-V2-2022",
+      "sourceRef": "Bildungsplan Baden-Wuerttemberg 2016 Gymnasium Biologie, ueberarbeitete Fassung 08.03.2022, 2.1 Erkenntnisgewinnung, S. 10.",
+      "sourceText": "Fragestellungen und begründete Vermutungen zu biologischen Phänomenen formulieren.",
+      "sourceSpan": {
+        "passageId": "bw-biology-seki-bp2016-v2-p21",
+        "label": "Experimente: Fragestellungen und begründete Vermutungen zu biologischen Phänomenen formulieren."
+      },
+      "sourceSpanText": "2.1 Erkenntnisgewinnung, Klassen SekI, Source-Ziel 5",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-BW",
+        "stage:SekI",
+        "grade:SekI"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "6ae33a8e-874c-53ee-858f-c64f1848cfbc",
+          "2d451684-6e53-565e-a987-f362da919d2c",
+          "d5548c48-7c0a-562e-b09b-b101c6ed732b",
+          "d97f6957-fbc9-569c-8648-f7df5eb9dfd8"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "bw-biology-seki-bp2016-v2-p21-006-66efa4d4",
+      "passageId": "bw-biology-seki-bp2016-v2-p21",
+      "topicCode": "P21",
+      "topicTitle": "2.1 Erkenntnisgewinnung",
+      "headingTitle": "Experimente",
+      "title": "Beobachtungen und Versuche durchführen und auswerten.",
+      "description": "Die lernende Person kann Beobachtungen und Versuche durchführen und auswerten.",
+      "sourceDocumentKey": "BW-BP2016-GYM-BIOLOGIE-V2-2022",
+      "sourceRef": "Bildungsplan Baden-Wuerttemberg 2016 Gymnasium Biologie, ueberarbeitete Fassung 08.03.2022, 2.1 Erkenntnisgewinnung, S. 10.",
+      "sourceText": "Beobachtungen und Versuche durchführen und auswerten.",
+      "sourceSpan": {
+        "passageId": "bw-biology-seki-bp2016-v2-p21",
+        "label": "Experimente: Beobachtungen und Versuche durchführen und auswerten."
+      },
+      "sourceSpanText": "2.1 Erkenntnisgewinnung, Klassen SekI, Source-Ziel 6",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-BW",
+        "stage:SekI",
+        "grade:SekI"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "26aa47b7-e5cc-5131-8980-0ec3271758b6",
+          "0f1549f6-8341-53b0-8161-5eaeb2b37809"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "bw-biology-seki-bp2016-v2-p21-007-341c968b",
+      "passageId": "bw-biology-seki-bp2016-v2-p21",
+      "topicCode": "P21",
+      "topicTitle": "2.1 Erkenntnisgewinnung",
+      "headingTitle": "Experimente",
+      "title": "Arbeitsgeräte benennen und sachgerecht damit umgehen.",
+      "description": "Die lernende Person kann Arbeitsgeräte benennen und sachgerecht damit umgehen.",
+      "sourceDocumentKey": "BW-BP2016-GYM-BIOLOGIE-V2-2022",
+      "sourceRef": "Bildungsplan Baden-Wuerttemberg 2016 Gymnasium Biologie, ueberarbeitete Fassung 08.03.2022, 2.1 Erkenntnisgewinnung, S. 10.",
+      "sourceText": "Arbeitsgeräte benennen und sachgerecht damit umgehen.",
+      "sourceSpan": {
+        "passageId": "bw-biology-seki-bp2016-v2-p21",
+        "label": "Experimente: Arbeitsgeräte benennen und sachgerecht damit umgehen."
+      },
+      "sourceSpanText": "2.1 Erkenntnisgewinnung, Klassen SekI, Source-Ziel 7",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-BW",
+        "stage:SekI",
+        "grade:SekI"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "26aa47b7-e5cc-5131-8980-0ec3271758b6",
+          "19bcea3a-af7a-5feb-b083-d11bd51303a0"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "bw-biology-seki-bp2016-v2-p21-008-e47995ab",
+      "passageId": "bw-biology-seki-bp2016-v2-p21",
+      "topicCode": "P21",
+      "topicTitle": "2.1 Erkenntnisgewinnung",
+      "headingTitle": "Experimente",
+      "title": "Hypothesen formulieren und zur Überprüfung geeignete Experimente planen.",
+      "description": "Die lernende Person kann Hypothesen formulieren und zur Überprüfung geeignete Experimente planen.",
+      "sourceDocumentKey": "BW-BP2016-GYM-BIOLOGIE-V2-2022",
+      "sourceRef": "Bildungsplan Baden-Wuerttemberg 2016 Gymnasium Biologie, ueberarbeitete Fassung 08.03.2022, 2.1 Erkenntnisgewinnung, S. 10.",
+      "sourceText": "Hypothesen formulieren und zur Überprüfung geeignete Experimente planen.",
+      "sourceSpan": {
+        "passageId": "bw-biology-seki-bp2016-v2-p21",
+        "label": "Experimente: Hypothesen formulieren und zur Überprüfung geeignete Experimente planen."
+      },
+      "sourceSpanText": "2.1 Erkenntnisgewinnung, Klassen SekI, Source-Ziel 8",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-BW",
+        "stage:SekI",
+        "grade:SekI"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "82acfbde-9ce8-5658-892e-4dcfb1c3a1f1",
+          "d97f6957-fbc9-569c-8648-f7df5eb9dfd8",
+          "fe8cb55a-00e9-5964-880a-2634125cfd41"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "bw-biology-seki-bp2016-v2-p21-009-0a735084",
+      "passageId": "bw-biology-seki-bp2016-v2-p21",
+      "topicCode": "P21",
+      "topicTitle": "2.1 Erkenntnisgewinnung",
+      "headingTitle": "Experimente",
+      "title": "Qualitative und einfache quantitative Experimente durchführen, protokollieren und auswerten.",
+      "description": "Die lernende Person kann Qualitative und einfache quantitative Experimente durchführen, protokollieren und auswerten.",
+      "sourceDocumentKey": "BW-BP2016-GYM-BIOLOGIE-V2-2022",
+      "sourceRef": "Bildungsplan Baden-Wuerttemberg 2016 Gymnasium Biologie, ueberarbeitete Fassung 08.03.2022, 2.1 Erkenntnisgewinnung, S. 10.",
+      "sourceText": "Qualitative und einfache quantitative Experimente durchführen, protokollieren und auswerten.",
+      "sourceSpan": {
+        "passageId": "bw-biology-seki-bp2016-v2-p21",
+        "label": "Experimente: Qualitative und einfache quantitative Experimente durchführen, protokollieren und auswerten."
+      },
+      "sourceSpanText": "2.1 Erkenntnisgewinnung, Klassen SekI, Source-Ziel 9",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-BW",
+        "stage:SekI",
+        "grade:SekI"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "26aa47b7-e5cc-5131-8980-0ec3271758b6",
+          "328fd9d3-d3c3-5731-a8da-a909143d3962",
+          "2eaabe90-46bf-555e-876b-d853434a322d"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "bw-biology-seki-bp2016-v2-p21-010-41062b67",
+      "passageId": "bw-biology-seki-bp2016-v2-p21",
+      "topicCode": "P21",
+      "topicTitle": "2.1 Erkenntnisgewinnung",
+      "headingTitle": "Experimente",
+      "title": "Aus Versuchsergebnissen allgemeine Aussagen ableiten.",
+      "description": "Die lernende Person kann Aus Versuchsergebnissen allgemeine Aussagen ableiten.",
+      "sourceDocumentKey": "BW-BP2016-GYM-BIOLOGIE-V2-2022",
+      "sourceRef": "Bildungsplan Baden-Wuerttemberg 2016 Gymnasium Biologie, ueberarbeitete Fassung 08.03.2022, 2.1 Erkenntnisgewinnung, S. 10.",
+      "sourceText": "Aus Versuchsergebnissen allgemeine Aussagen ableiten.",
+      "sourceSpan": {
+        "passageId": "bw-biology-seki-bp2016-v2-p21",
+        "label": "Experimente: Aus Versuchsergebnissen allgemeine Aussagen ableiten."
+      },
+      "sourceSpanText": "2.1 Erkenntnisgewinnung, Klassen SekI, Source-Ziel 10",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-BW",
+        "stage:SekI",
+        "grade:SekI"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "b66372fc-f72d-5686-9570-1939ed3fbd2a",
+          "2eaabe90-46bf-555e-876b-d853434a322d",
+          "4f741ece-e38e-5c6d-ae59-c0f017753177"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "bw-biology-seki-bp2016-v2-p21-011-83c86a82",
+      "passageId": "bw-biology-seki-bp2016-v2-p21",
+      "topicCode": "P21",
+      "topicTitle": "2.1 Erkenntnisgewinnung",
+      "headingTitle": "Modelle",
+      "title": "Struktur- und Funktionsmodelle zur Veranschaulichung anwenden.",
+      "description": "Die lernende Person kann Struktur- und Funktionsmodelle zur Veranschaulichung anwenden.",
+      "sourceDocumentKey": "BW-BP2016-GYM-BIOLOGIE-V2-2022",
+      "sourceRef": "Bildungsplan Baden-Wuerttemberg 2016 Gymnasium Biologie, ueberarbeitete Fassung 08.03.2022, 2.1 Erkenntnisgewinnung, S. 10.",
+      "sourceText": "Struktur- und Funktionsmodelle zur Veranschaulichung anwenden.",
+      "sourceSpan": {
+        "passageId": "bw-biology-seki-bp2016-v2-p21",
+        "label": "Modelle: Struktur- und Funktionsmodelle zur Veranschaulichung anwenden."
+      },
+      "sourceSpanText": "2.1 Erkenntnisgewinnung, Klassen SekI, Source-Ziel 11",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-BW",
+        "stage:SekI",
+        "grade:SekI"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "713e062d-2bb9-5fbc-8040-129387c7d3ca"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "bw-biology-seki-bp2016-v2-p21-012-738c39a0",
+      "passageId": "bw-biology-seki-bp2016-v2-p21",
+      "topicCode": "P21",
+      "topicTitle": "2.1 Erkenntnisgewinnung",
+      "headingTitle": "Modelle",
+      "title": "Ein Modell zur Erklärung eines Sachverhalts entwickeln und gegebenenfalls modifizieren.",
+      "description": "Die lernende Person kann Ein Modell zur Erklärung eines Sachverhalts entwickeln und gegebenenfalls modifizieren.",
+      "sourceDocumentKey": "BW-BP2016-GYM-BIOLOGIE-V2-2022",
+      "sourceRef": "Bildungsplan Baden-Wuerttemberg 2016 Gymnasium Biologie, ueberarbeitete Fassung 08.03.2022, 2.1 Erkenntnisgewinnung, S. 10.",
+      "sourceText": "Ein Modell zur Erklärung eines Sachverhalts entwickeln und gegebenenfalls modifizieren.",
+      "sourceSpan": {
+        "passageId": "bw-biology-seki-bp2016-v2-p21",
+        "label": "Modelle: Ein Modell zur Erklärung eines Sachverhalts entwickeln und gegebenenfalls modifizieren."
+      },
+      "sourceSpanText": "2.1 Erkenntnisgewinnung, Klassen SekI, Source-Ziel 12",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-BW",
+        "stage:SekI",
+        "grade:SekI"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "713e062d-2bb9-5fbc-8040-129387c7d3ca"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "bw-biology-seki-bp2016-v2-p21-013-ce9ae5cd",
+      "passageId": "bw-biology-seki-bp2016-v2-p21",
+      "topicCode": "P21",
+      "topicTitle": "2.1 Erkenntnisgewinnung",
+      "headingTitle": "Modelle",
+      "title": "Wechselwirkungen mithilfe von Modellen oder Simulationen erklären.",
+      "description": "Die lernende Person kann Wechselwirkungen mithilfe von Modellen oder Simulationen erklären.",
+      "sourceDocumentKey": "BW-BP2016-GYM-BIOLOGIE-V2-2022",
+      "sourceRef": "Bildungsplan Baden-Wuerttemberg 2016 Gymnasium Biologie, ueberarbeitete Fassung 08.03.2022, 2.1 Erkenntnisgewinnung, S. 10.",
+      "sourceText": "Wechselwirkungen mithilfe von Modellen oder Simulationen erklären.",
+      "sourceSpan": {
+        "passageId": "bw-biology-seki-bp2016-v2-p21",
+        "label": "Modelle: Wechselwirkungen mithilfe von Modellen oder Simulationen erklären."
+      },
+      "sourceSpanText": "2.1 Erkenntnisgewinnung, Klassen SekI, Source-Ziel 13",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-BW",
+        "stage:SekI",
+        "grade:SekI"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "713e062d-2bb9-5fbc-8040-129387c7d3ca"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "bw-biology-seki-bp2016-v2-p21-014-6c6742fc",
+      "passageId": "bw-biology-seki-bp2016-v2-p21",
+      "topicCode": "P21",
+      "topicTitle": "2.1 Erkenntnisgewinnung",
+      "headingTitle": "Modelle",
+      "title": "Speicherung und Weitergabe von Information mithilfe geeigneter Modelle beschreiben.",
+      "description": "Die lernende Person kann Speicherung und Weitergabe von Information mithilfe geeigneter Modelle beschreiben.",
+      "sourceDocumentKey": "BW-BP2016-GYM-BIOLOGIE-V2-2022",
+      "sourceRef": "Bildungsplan Baden-Wuerttemberg 2016 Gymnasium Biologie, ueberarbeitete Fassung 08.03.2022, 2.1 Erkenntnisgewinnung, S. 10.",
+      "sourceText": "Speicherung und Weitergabe von Information mithilfe geeigneter Modelle beschreiben.",
+      "sourceSpan": {
+        "passageId": "bw-biology-seki-bp2016-v2-p21",
+        "label": "Modelle: Speicherung und Weitergabe von Information mithilfe geeigneter Modelle beschreiben."
+      },
+      "sourceSpanText": "2.1 Erkenntnisgewinnung, Klassen SekI, Source-Ziel 14",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-BW",
+        "stage:SekI",
+        "grade:SekI"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "713e062d-2bb9-5fbc-8040-129387c7d3ca",
+          "0daa79f6-8f61-5506-98f9-65db83062ba8"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "bw-biology-seki-bp2016-v2-p21-015-d6044ddb",
+      "passageId": "bw-biology-seki-bp2016-v2-p21",
+      "topicCode": "P21",
+      "topicTitle": "2.1 Erkenntnisgewinnung",
+      "headingTitle": "Modelle",
+      "title": "Aussagekraft von Modellen beurteilen.",
+      "description": "Die lernende Person kann Aussagekraft von Modellen beurteilen.",
+      "sourceDocumentKey": "BW-BP2016-GYM-BIOLOGIE-V2-2022",
+      "sourceRef": "Bildungsplan Baden-Wuerttemberg 2016 Gymnasium Biologie, ueberarbeitete Fassung 08.03.2022, 2.1 Erkenntnisgewinnung, S. 10.",
+      "sourceText": "Aussagekraft von Modellen beurteilen.",
+      "sourceSpan": {
+        "passageId": "bw-biology-seki-bp2016-v2-p21",
+        "label": "Modelle: Aussagekraft von Modellen beurteilen."
+      },
+      "sourceSpanText": "2.1 Erkenntnisgewinnung, Klassen SekI, Source-Ziel 15",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-BW",
+        "stage:SekI",
+        "grade:SekI"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "713e062d-2bb9-5fbc-8040-129387c7d3ca",
+          "8375310d-1f7e-542d-9969-55ad4bd37f7c"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "bw-biology-seki-bp2016-v2-p22-001-ab01162e",
+      "passageId": "bw-biology-seki-bp2016-v2-p22",
+      "topicCode": "P22",
+      "topicTitle": "2.2 Kommunikation",
+      "headingTitle": "Informationen beschaffen",
+      "title": "Zu biologischen Themen in analogen und digitalen Quellen recherchieren.",
+      "description": "Die lernende Person kann Zu biologischen Themen in analogen und digitalen Quellen recherchieren.",
+      "sourceDocumentKey": "BW-BP2016-GYM-BIOLOGIE-V2-2022",
+      "sourceRef": "Bildungsplan Baden-Wuerttemberg 2016 Gymnasium Biologie, ueberarbeitete Fassung 08.03.2022, 2.2 Kommunikation, S. 11.",
+      "sourceText": "Zu biologischen Themen in analogen und digitalen Quellen recherchieren.",
+      "sourceSpan": {
+        "passageId": "bw-biology-seki-bp2016-v2-p22",
+        "label": "Informationen beschaffen: Zu biologischen Themen in analogen und digitalen Quellen recherchieren."
+      },
+      "sourceSpanText": "2.2 Kommunikation, Klassen SekI, Source-Ziel 1",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-BW",
+        "stage:SekI",
+        "grade:SekI"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "5a47f591-f2ac-5457-872a-22c89c2dbe93",
+          "38c0259a-cba2-5305-a352-20023afc2dfc"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "bw-biology-seki-bp2016-v2-p22-002-49078abc",
+      "passageId": "bw-biology-seki-bp2016-v2-p22",
+      "topicCode": "P22",
+      "topicTitle": "2.2 Kommunikation",
+      "headingTitle": "Informationen beschaffen",
+      "title": "Informationen zu biologischen Fragestellungen zielgerichtet auswerten und verarbeiten.",
+      "description": "Die lernende Person kann Informationen zu biologischen Fragestellungen zielgerichtet auswerten und verarbeiten.",
+      "sourceDocumentKey": "BW-BP2016-GYM-BIOLOGIE-V2-2022",
+      "sourceRef": "Bildungsplan Baden-Wuerttemberg 2016 Gymnasium Biologie, ueberarbeitete Fassung 08.03.2022, 2.2 Kommunikation, S. 11.",
+      "sourceText": "Informationen zu biologischen Fragestellungen zielgerichtet auswerten und verarbeiten.",
+      "sourceSpan": {
+        "passageId": "bw-biology-seki-bp2016-v2-p22",
+        "label": "Informationen beschaffen: Informationen zu biologischen Fragestellungen zielgerichtet auswerten und verarbeiten."
+      },
+      "sourceSpanText": "2.2 Kommunikation, Klassen SekI, Source-Ziel 2",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-BW",
+        "stage:SekI",
+        "grade:SekI"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "5a47f591-f2ac-5457-872a-22c89c2dbe93",
+          "12511dc3-b214-5f55-8d05-70cd2db784b9"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "bw-biology-seki-bp2016-v2-p22-003-95c5dc97",
+      "passageId": "bw-biology-seki-bp2016-v2-p22",
+      "topicCode": "P22",
+      "topicTitle": "2.2 Kommunikation",
+      "headingTitle": "Informationen beschaffen",
+      "title": "Informationen aus Texten, Bildern, Tabellen, Diagrammen oder Grafiken entnehmen.",
+      "description": "Die lernende Person kann Informationen aus Texten, Bildern, Tabellen, Diagrammen oder Grafiken entnehmen.",
+      "sourceDocumentKey": "BW-BP2016-GYM-BIOLOGIE-V2-2022",
+      "sourceRef": "Bildungsplan Baden-Wuerttemberg 2016 Gymnasium Biologie, ueberarbeitete Fassung 08.03.2022, 2.2 Kommunikation, S. 11.",
+      "sourceText": "Informationen aus Texten, Bildern, Tabellen, Diagrammen oder Grafiken entnehmen.",
+      "sourceSpan": {
+        "passageId": "bw-biology-seki-bp2016-v2-p22",
+        "label": "Informationen beschaffen: Informationen aus Texten, Bildern, Tabellen, Diagrammen oder Grafiken entnehmen."
+      },
+      "sourceSpanText": "2.2 Kommunikation, Klassen SekI, Source-Ziel 3",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-BW",
+        "stage:SekI",
+        "grade:SekI"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "5a47f591-f2ac-5457-872a-22c89c2dbe93",
+          "12511dc3-b214-5f55-8d05-70cd2db784b9"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "bw-biology-seki-bp2016-v2-p22-004-e86865c4",
+      "passageId": "bw-biology-seki-bp2016-v2-p22",
+      "topicCode": "P22",
+      "topicTitle": "2.2 Kommunikation",
+      "headingTitle": "Informationen beschaffen",
+      "title": "Biologische Sachverhalte unter Verwendung der Fachsprache beschreiben oder erklären.",
+      "description": "Die lernende Person kann Biologische Sachverhalte unter Verwendung der Fachsprache beschreiben oder erklären.",
+      "sourceDocumentKey": "BW-BP2016-GYM-BIOLOGIE-V2-2022",
+      "sourceRef": "Bildungsplan Baden-Wuerttemberg 2016 Gymnasium Biologie, ueberarbeitete Fassung 08.03.2022, 2.2 Kommunikation, S. 11.",
+      "sourceText": "Biologische Sachverhalte unter Verwendung der Fachsprache beschreiben oder erklären.",
+      "sourceSpan": {
+        "passageId": "bw-biology-seki-bp2016-v2-p22",
+        "label": "Informationen beschaffen: Biologische Sachverhalte unter Verwendung der Fachsprache beschreiben oder erklären."
+      },
+      "sourceSpanText": "2.2 Kommunikation, Klassen SekI, Source-Ziel 4",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-BW",
+        "stage:SekI",
+        "grade:SekI"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "1407c8fe-c13c-5847-aeb3-1fe0885926eb"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "bw-biology-seki-bp2016-v2-p22-005-7ee22cf4",
+      "passageId": "bw-biology-seki-bp2016-v2-p22",
+      "topicCode": "P22",
+      "topicTitle": "2.2 Kommunikation",
+      "headingTitle": "Informationen beschaffen",
+      "title": "Zusammenhänge zwischen Alltagssituationen und biologischen Sachverhalten herstellen und Fachsprache verwenden.",
+      "description": "Die lernende Person kann Zusammenhänge zwischen Alltagssituationen und biologischen Sachverhalten herstellen und Fachsprache verwenden.",
+      "sourceDocumentKey": "BW-BP2016-GYM-BIOLOGIE-V2-2022",
+      "sourceRef": "Bildungsplan Baden-Wuerttemberg 2016 Gymnasium Biologie, ueberarbeitete Fassung 08.03.2022, 2.2 Kommunikation, S. 11.",
+      "sourceText": "Zusammenhänge zwischen Alltagssituationen und biologischen Sachverhalten herstellen und Fachsprache verwenden.",
+      "sourceSpan": {
+        "passageId": "bw-biology-seki-bp2016-v2-p22",
+        "label": "Informationen beschaffen: Zusammenhänge zwischen Alltagssituationen und biologischen Sachverhalten herstellen und Fachsprache verwenden."
+      },
+      "sourceSpanText": "2.2 Kommunikation, Klassen SekI, Source-Ziel 5",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-BW",
+        "stage:SekI",
+        "grade:SekI"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "1407c8fe-c13c-5847-aeb3-1fe0885926eb",
+          "0beb4ca2-2437-557a-9db2-ccda1cbcfa0a"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "bw-biology-seki-bp2016-v2-p22-006-bf38deb5",
+      "passageId": "bw-biology-seki-bp2016-v2-p22",
+      "topicCode": "P22",
+      "topicTitle": "2.2 Kommunikation",
+      "headingTitle": "Informationen beschaffen",
+      "title": "Verlauf und Ergebnisse der Arbeit dokumentieren.",
+      "description": "Die lernende Person kann Verlauf und Ergebnisse der Arbeit dokumentieren.",
+      "sourceDocumentKey": "BW-BP2016-GYM-BIOLOGIE-V2-2022",
+      "sourceRef": "Bildungsplan Baden-Wuerttemberg 2016 Gymnasium Biologie, ueberarbeitete Fassung 08.03.2022, 2.2 Kommunikation, S. 11.",
+      "sourceText": "Verlauf und Ergebnisse der Arbeit dokumentieren.",
+      "sourceSpan": {
+        "passageId": "bw-biology-seki-bp2016-v2-p22",
+        "label": "Informationen beschaffen: Verlauf und Ergebnisse der Arbeit dokumentieren."
+      },
+      "sourceSpanText": "2.2 Kommunikation, Klassen SekI, Source-Ziel 6",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-BW",
+        "stage:SekI",
+        "grade:SekI"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "0f1549f6-8341-53b0-8161-5eaeb2b37809",
+          "12511dc3-b214-5f55-8d05-70cd2db784b9"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "bw-biology-seki-bp2016-v2-p22-007-3177c408",
+      "passageId": "bw-biology-seki-bp2016-v2-p22",
+      "topicCode": "P22",
+      "topicTitle": "2.2 Kommunikation",
+      "headingTitle": "Informationen beschaffen",
+      "title": "Komplexe biologische Sachverhalte mithilfe von Schemata, Grafiken, Modellen oder Diagrammen darstellen.",
+      "description": "Die lernende Person kann Komplexe biologische Sachverhalte mithilfe von Schemata, Grafiken, Modellen oder Diagrammen darstellen.",
+      "sourceDocumentKey": "BW-BP2016-GYM-BIOLOGIE-V2-2022",
+      "sourceRef": "Bildungsplan Baden-Wuerttemberg 2016 Gymnasium Biologie, ueberarbeitete Fassung 08.03.2022, 2.2 Kommunikation, S. 11.",
+      "sourceText": "Komplexe biologische Sachverhalte mithilfe von Schemata, Grafiken, Modellen oder Diagrammen darstellen.",
+      "sourceSpan": {
+        "passageId": "bw-biology-seki-bp2016-v2-p22",
+        "label": "Informationen beschaffen: Komplexe biologische Sachverhalte mithilfe von Schemata, Grafiken, Modellen oder Diagrammen darstellen."
+      },
+      "sourceSpanText": "2.2 Kommunikation, Klassen SekI, Source-Ziel 7",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-BW",
+        "stage:SekI",
+        "grade:SekI"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "12511dc3-b214-5f55-8d05-70cd2db784b9",
+          "6d931dd9-11cf-5275-8d91-1c844e7960dc"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "bw-biology-seki-bp2016-v2-p22-008-75e6b85e",
+      "passageId": "bw-biology-seki-bp2016-v2-p22",
+      "topicCode": "P22",
+      "topicTitle": "2.2 Kommunikation",
+      "headingTitle": "Informationen austauschen",
+      "title": "Adressatengerecht präsentieren.",
+      "description": "Die lernende Person kann Adressatengerecht präsentieren.",
+      "sourceDocumentKey": "BW-BP2016-GYM-BIOLOGIE-V2-2022",
+      "sourceRef": "Bildungsplan Baden-Wuerttemberg 2016 Gymnasium Biologie, ueberarbeitete Fassung 08.03.2022, 2.2 Kommunikation, S. 11.",
+      "sourceText": "Adressatengerecht präsentieren.",
+      "sourceSpan": {
+        "passageId": "bw-biology-seki-bp2016-v2-p22",
+        "label": "Informationen austauschen: Adressatengerecht präsentieren."
+      },
+      "sourceSpanText": "2.2 Kommunikation, Klassen SekI, Source-Ziel 8",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-BW",
+        "stage:SekI",
+        "grade:SekI"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "13874fa5-1370-5c51-990a-7dfb5f583c70",
+          "6d931dd9-11cf-5275-8d91-1c844e7960dc"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "bw-biology-seki-bp2016-v2-p22-009-c3022476",
+      "passageId": "bw-biology-seki-bp2016-v2-p22",
+      "topicCode": "P22",
+      "topicTitle": "2.2 Kommunikation",
+      "headingTitle": "Informationen austauschen",
+      "title": "Sich selbst und andere in ihrer Individualität wahrnehmen und respektieren.",
+      "description": "Die lernende Person kann Sich selbst und andere in ihrer Individualität wahrnehmen und respektieren.",
+      "sourceDocumentKey": "BW-BP2016-GYM-BIOLOGIE-V2-2022",
+      "sourceRef": "Bildungsplan Baden-Wuerttemberg 2016 Gymnasium Biologie, ueberarbeitete Fassung 08.03.2022, 2.2 Kommunikation, S. 11.",
+      "sourceText": "Sich selbst und andere in ihrer Individualität wahrnehmen und respektieren.",
+      "sourceSpan": {
+        "passageId": "bw-biology-seki-bp2016-v2-p22",
+        "label": "Informationen austauschen: Sich selbst und andere in ihrer Individualität wahrnehmen und respektieren."
+      },
+      "sourceSpanText": "2.2 Kommunikation, Klassen SekI, Source-Ziel 9",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-BW",
+        "stage:SekI",
+        "grade:SekI"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "d6727804-a8d4-5438-9b98-4aea8e7f4f80",
+          "6add2bde-b647-577d-a899-6fd62497656a"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "bw-biology-seki-bp2016-v2-p22-010-ca662eeb",
+      "passageId": "bw-biology-seki-bp2016-v2-p22",
+      "topicCode": "P22",
+      "topicTitle": "2.2 Kommunikation",
+      "headingTitle": "Informationen austauschen",
+      "title": "Standpunkt zu biologischen Sachverhalten fachlich begründet vertreten.",
+      "description": "Die lernende Person kann Standpunkt zu biologischen Sachverhalten fachlich begründet vertreten.",
+      "sourceDocumentKey": "BW-BP2016-GYM-BIOLOGIE-V2-2022",
+      "sourceRef": "Bildungsplan Baden-Wuerttemberg 2016 Gymnasium Biologie, ueberarbeitete Fassung 08.03.2022, 2.2 Kommunikation, S. 11.",
+      "sourceText": "Standpunkt zu biologischen Sachverhalten fachlich begründet vertreten.",
+      "sourceSpan": {
+        "passageId": "bw-biology-seki-bp2016-v2-p22",
+        "label": "Informationen austauschen: Standpunkt zu biologischen Sachverhalten fachlich begründet vertreten."
+      },
+      "sourceSpanText": "2.2 Kommunikation, Klassen SekI, Source-Ziel 10",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-BW",
+        "stage:SekI",
+        "grade:SekI"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "0a9ee5c0-6196-5d16-ac65-dc516a3e0d0f"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "bw-biology-seki-bp2016-v2-p22-011-fca35a5a",
+      "passageId": "bw-biology-seki-bp2016-v2-p22",
+      "topicCode": "P22",
+      "topicTitle": "2.2 Kommunikation",
+      "headingTitle": "Informationen austauschen",
+      "title": "Für Teamarbeit Verantwortung übernehmen, gemeinsam planen, strukturieren und reflektieren.",
+      "description": "Die lernende Person kann Für Teamarbeit Verantwortung übernehmen, gemeinsam planen, strukturieren und reflektieren.",
+      "sourceDocumentKey": "BW-BP2016-GYM-BIOLOGIE-V2-2022",
+      "sourceRef": "Bildungsplan Baden-Wuerttemberg 2016 Gymnasium Biologie, ueberarbeitete Fassung 08.03.2022, 2.2 Kommunikation, S. 11.",
+      "sourceText": "Für Teamarbeit Verantwortung übernehmen, gemeinsam planen, strukturieren und reflektieren.",
+      "sourceSpan": {
+        "passageId": "bw-biology-seki-bp2016-v2-p22",
+        "label": "Informationen austauschen: Für Teamarbeit Verantwortung übernehmen, gemeinsam planen, strukturieren und reflektieren."
+      },
+      "sourceSpanText": "2.2 Kommunikation, Klassen SekI, Source-Ziel 11",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-BW",
+        "stage:SekI",
+        "grade:SekI"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "13874fa5-1370-5c51-990a-7dfb5f583c70"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "bw-biology-seki-bp2016-v2-p23-001-2621702a",
+      "passageId": "bw-biology-seki-bp2016-v2-p23",
+      "topicCode": "P23",
+      "topicTitle": "2.3 Bewertung",
+      "headingTitle": "Einordnen",
+      "title": "In der Lebenswelt biologische Sachverhalte erkennen.",
+      "description": "Die lernende Person kann In der Lebenswelt biologische Sachverhalte erkennen.",
+      "sourceDocumentKey": "BW-BP2016-GYM-BIOLOGIE-V2-2022",
+      "sourceRef": "Bildungsplan Baden-Wuerttemberg 2016 Gymnasium Biologie, ueberarbeitete Fassung 08.03.2022, 2.3 Bewertung, S. 12.",
+      "sourceText": "In der Lebenswelt biologische Sachverhalte erkennen.",
+      "sourceSpan": {
+        "passageId": "bw-biology-seki-bp2016-v2-p23",
+        "label": "Einordnen: In der Lebenswelt biologische Sachverhalte erkennen."
+      },
+      "sourceSpanText": "2.3 Bewertung, Klassen SekI, Source-Ziel 1",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-BW",
+        "stage:SekI",
+        "grade:SekI"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "2d451684-6e53-565e-a987-f362da919d2c",
+          "8d35381e-d646-512c-b0c2-bb90c4974208",
+          "0beb4ca2-2437-557a-9db2-ccda1cbcfa0a"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "bw-biology-seki-bp2016-v2-p23-002-3df53d78",
+      "passageId": "bw-biology-seki-bp2016-v2-p23",
+      "topicCode": "P23",
+      "topicTitle": "2.3 Bewertung",
+      "headingTitle": "Einordnen",
+      "title": "Bezüge zu anderen Unterrichtsfächern herstellen.",
+      "description": "Die lernende Person kann Bezüge zu anderen Unterrichtsfächern herstellen.",
+      "sourceDocumentKey": "BW-BP2016-GYM-BIOLOGIE-V2-2022",
+      "sourceRef": "Bildungsplan Baden-Wuerttemberg 2016 Gymnasium Biologie, ueberarbeitete Fassung 08.03.2022, 2.3 Bewertung, S. 12.",
+      "sourceText": "Bezüge zu anderen Unterrichtsfächern herstellen.",
+      "sourceSpan": {
+        "passageId": "bw-biology-seki-bp2016-v2-p23",
+        "label": "Einordnen: Bezüge zu anderen Unterrichtsfächern herstellen."
+      },
+      "sourceSpanText": "2.3 Bewertung, Klassen SekI, Source-Ziel 2",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-BW",
+        "stage:SekI",
+        "grade:SekI"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "0beb4ca2-2437-557a-9db2-ccda1cbcfa0a",
+          "788cda1f-8ca3-5241-8d73-50d9952e9da3"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "bw-biology-seki-bp2016-v2-p23-003-30a020ba",
+      "passageId": "bw-biology-seki-bp2016-v2-p23",
+      "topicCode": "P23",
+      "topicTitle": "2.3 Bewertung",
+      "headingTitle": "Einordnen",
+      "title": "Aussagekraft von Darstellungen in Medien bewerten.",
+      "description": "Die lernende Person kann Aussagekraft von Darstellungen in Medien bewerten.",
+      "sourceDocumentKey": "BW-BP2016-GYM-BIOLOGIE-V2-2022",
+      "sourceRef": "Bildungsplan Baden-Wuerttemberg 2016 Gymnasium Biologie, ueberarbeitete Fassung 08.03.2022, 2.3 Bewertung, S. 12.",
+      "sourceText": "Aussagekraft von Darstellungen in Medien bewerten.",
+      "sourceSpan": {
+        "passageId": "bw-biology-seki-bp2016-v2-p23",
+        "label": "Einordnen: Aussagekraft von Darstellungen in Medien bewerten."
+      },
+      "sourceSpanText": "2.3 Bewertung, Klassen SekI, Source-Ziel 3",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-BW",
+        "stage:SekI",
+        "grade:SekI"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "38e1cc26-513e-5e71-9f7e-de2ce35ce19b"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "bw-biology-seki-bp2016-v2-p23-004-219bbdda",
+      "passageId": "bw-biology-seki-bp2016-v2-p23",
+      "topicCode": "P23",
+      "topicTitle": "2.3 Bewertung",
+      "headingTitle": "Einordnen",
+      "title": "Zwischen naturwissenschaftlichen und ethischen Aussagen unterscheiden.",
+      "description": "Die lernende Person kann Zwischen naturwissenschaftlichen und ethischen Aussagen unterscheiden.",
+      "sourceDocumentKey": "BW-BP2016-GYM-BIOLOGIE-V2-2022",
+      "sourceRef": "Bildungsplan Baden-Wuerttemberg 2016 Gymnasium Biologie, ueberarbeitete Fassung 08.03.2022, 2.3 Bewertung, S. 12.",
+      "sourceText": "Zwischen naturwissenschaftlichen und ethischen Aussagen unterscheiden.",
+      "sourceSpan": {
+        "passageId": "bw-biology-seki-bp2016-v2-p23",
+        "label": "Einordnen: Zwischen naturwissenschaftlichen und ethischen Aussagen unterscheiden."
+      },
+      "sourceSpanText": "2.3 Bewertung, Klassen SekI, Source-Ziel 4",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-BW",
+        "stage:SekI",
+        "grade:SekI"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "49ed2589-de3d-550e-8091-b8616c5536bc"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "bw-biology-seki-bp2016-v2-p23-005-b90fb836",
+      "passageId": "bw-biology-seki-bp2016-v2-p23",
+      "topicCode": "P23",
+      "topicTitle": "2.3 Bewertung",
+      "headingTitle": "Einordnen",
+      "title": "Aussagen zu naturwissenschaftlichen Themen kritisch prüfen.",
+      "description": "Die lernende Person kann Aussagen zu naturwissenschaftlichen Themen kritisch prüfen.",
+      "sourceDocumentKey": "BW-BP2016-GYM-BIOLOGIE-V2-2022",
+      "sourceRef": "Bildungsplan Baden-Wuerttemberg 2016 Gymnasium Biologie, ueberarbeitete Fassung 08.03.2022, 2.3 Bewertung, S. 12.",
+      "sourceText": "Aussagen zu naturwissenschaftlichen Themen kritisch prüfen.",
+      "sourceSpan": {
+        "passageId": "bw-biology-seki-bp2016-v2-p23",
+        "label": "Einordnen: Aussagen zu naturwissenschaftlichen Themen kritisch prüfen."
+      },
+      "sourceSpanText": "2.3 Bewertung, Klassen SekI, Source-Ziel 5",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-BW",
+        "stage:SekI",
+        "grade:SekI"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "38e1cc26-513e-5e71-9f7e-de2ce35ce19b",
+          "0a9ee5c0-6196-5d16-ac65-dc516a3e0d0f"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "bw-biology-seki-bp2016-v2-p23-006-20ce3c70",
+      "passageId": "bw-biology-seki-bp2016-v2-p23",
+      "topicCode": "P23",
+      "topicTitle": "2.3 Bewertung",
+      "headingTitle": "Einordnen",
+      "title": "Wirksamkeit von Lösungsstrategien bewerten.",
+      "description": "Die lernende Person kann Wirksamkeit von Lösungsstrategien bewerten.",
+      "sourceDocumentKey": "BW-BP2016-GYM-BIOLOGIE-V2-2022",
+      "sourceRef": "Bildungsplan Baden-Wuerttemberg 2016 Gymnasium Biologie, ueberarbeitete Fassung 08.03.2022, 2.3 Bewertung, S. 12.",
+      "sourceText": "Wirksamkeit von Lösungsstrategien bewerten.",
+      "sourceSpan": {
+        "passageId": "bw-biology-seki-bp2016-v2-p23",
+        "label": "Einordnen: Wirksamkeit von Lösungsstrategien bewerten."
+      },
+      "sourceSpanText": "2.3 Bewertung, Klassen SekI, Source-Ziel 6",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-BW",
+        "stage:SekI",
+        "grade:SekI"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "a2fdcc15-8a41-5406-9900-850829498b3b",
+          "f0969375-476b-5de3-91c0-3031de7c50d1"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "bw-biology-seki-bp2016-v2-p23-007-c45e041e",
+      "passageId": "bw-biology-seki-bp2016-v2-p23",
+      "topicCode": "P23",
+      "topicTitle": "2.3 Bewertung",
+      "headingTitle": "Ethisch bewerten",
+      "title": "Anwendungen und Folgen biologischer Forschungsergebnisse unter Perspektivenwechsel beschreiben.",
+      "description": "Die lernende Person kann Anwendungen und Folgen biologischer Forschungsergebnisse unter Perspektivenwechsel beschreiben.",
+      "sourceDocumentKey": "BW-BP2016-GYM-BIOLOGIE-V2-2022",
+      "sourceRef": "Bildungsplan Baden-Wuerttemberg 2016 Gymnasium Biologie, ueberarbeitete Fassung 08.03.2022, 2.3 Bewertung, S. 12.",
+      "sourceText": "Anwendungen und Folgen biologischer Forschungsergebnisse unter Perspektivenwechsel beschreiben.",
+      "sourceSpan": {
+        "passageId": "bw-biology-seki-bp2016-v2-p23",
+        "label": "Ethisch bewerten: Anwendungen und Folgen biologischer Forschungsergebnisse unter Perspektivenwechsel beschreiben."
+      },
+      "sourceSpanText": "2.3 Bewertung, Klassen SekI, Source-Ziel 7",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-BW",
+        "stage:SekI",
+        "grade:SekI"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "bc68d606-799a-5bb7-b55d-ded2bdd61791"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "bw-biology-seki-bp2016-v2-p23-008-0ab0a914",
+      "passageId": "bw-biology-seki-bp2016-v2-p23",
+      "topicCode": "P23",
+      "topicTitle": "2.3 Bewertung",
+      "headingTitle": "Ethisch bewerten",
+      "title": "Anwendungen und Folgen biologischer Forschungsergebnisse unter nachhaltiger Entwicklung beschreiben und beurteilen.",
+      "description": "Die lernende Person kann Anwendungen und Folgen biologischer Forschungsergebnisse unter nachhaltiger Entwicklung beschreiben und beurteilen.",
+      "sourceDocumentKey": "BW-BP2016-GYM-BIOLOGIE-V2-2022",
+      "sourceRef": "Bildungsplan Baden-Wuerttemberg 2016 Gymnasium Biologie, ueberarbeitete Fassung 08.03.2022, 2.3 Bewertung, S. 12.",
+      "sourceText": "Anwendungen und Folgen biologischer Forschungsergebnisse unter nachhaltiger Entwicklung beschreiben und beurteilen.",
+      "sourceSpan": {
+        "passageId": "bw-biology-seki-bp2016-v2-p23",
+        "label": "Ethisch bewerten: Anwendungen und Folgen biologischer Forschungsergebnisse unter nachhaltiger Entwicklung beschreiben und beurteilen."
+      },
+      "sourceSpanText": "2.3 Bewertung, Klassen SekI, Source-Ziel 8",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-BW",
+        "stage:SekI",
+        "grade:SekI"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "f2306104-e846-5c25-bfbf-5f3e33db623a",
+          "241825f3-c26c-5ddd-9c3b-1f0460384390"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "bw-biology-seki-bp2016-v2-p23-009-e6101357",
+      "passageId": "bw-biology-seki-bp2016-v2-p23",
+      "topicCode": "P23",
+      "topicTitle": "2.3 Bewertung",
+      "headingTitle": "Ethisch bewerten",
+      "title": "Anwendungen und Folgen biologischer Forschungsergebnisse unter dem Aspekt der Menschenwürde bewerten.",
+      "description": "Die lernende Person kann Anwendungen und Folgen biologischer Forschungsergebnisse unter dem Aspekt der Menschenwürde bewerten.",
+      "sourceDocumentKey": "BW-BP2016-GYM-BIOLOGIE-V2-2022",
+      "sourceRef": "Bildungsplan Baden-Wuerttemberg 2016 Gymnasium Biologie, ueberarbeitete Fassung 08.03.2022, 2.3 Bewertung, S. 12.",
+      "sourceText": "Anwendungen und Folgen biologischer Forschungsergebnisse unter dem Aspekt der Menschenwürde bewerten.",
+      "sourceSpan": {
+        "passageId": "bw-biology-seki-bp2016-v2-p23",
+        "label": "Ethisch bewerten: Anwendungen und Folgen biologischer Forschungsergebnisse unter dem Aspekt der Menschenwürde bewerten."
+      },
+      "sourceSpanText": "2.3 Bewertung, Klassen SekI, Source-Ziel 9",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-BW",
+        "stage:SekI",
+        "grade:SekI"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "9a0b6a24-2946-50ca-8a2a-703735650e5a"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "bw-biology-seki-bp2016-v2-p23-010-6a7d6152",
+      "passageId": "bw-biology-seki-bp2016-v2-p23",
+      "topicCode": "P23",
+      "topicTitle": "2.3 Bewertung",
+      "headingTitle": "Ethisch bewerten",
+      "title": "Anwendungen und Folgen biologischer Forschungsergebnisse unter Verantwortung für die Natur beurteilen.",
+      "description": "Die lernende Person kann Anwendungen und Folgen biologischer Forschungsergebnisse unter Verantwortung für die Natur beurteilen.",
+      "sourceDocumentKey": "BW-BP2016-GYM-BIOLOGIE-V2-2022",
+      "sourceRef": "Bildungsplan Baden-Wuerttemberg 2016 Gymnasium Biologie, ueberarbeitete Fassung 08.03.2022, 2.3 Bewertung, S. 12.",
+      "sourceText": "Anwendungen und Folgen biologischer Forschungsergebnisse unter Verantwortung für die Natur beurteilen.",
+      "sourceSpan": {
+        "passageId": "bw-biology-seki-bp2016-v2-p23",
+        "label": "Ethisch bewerten: Anwendungen und Folgen biologischer Forschungsergebnisse unter Verantwortung für die Natur beurteilen."
+      },
+      "sourceSpanText": "2.3 Bewertung, Klassen SekI, Source-Ziel 10",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-BW",
+        "stage:SekI",
+        "grade:SekI"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "f2306104-e846-5c25-bfbf-5f3e33db623a",
+          "c1aea082-30c0-558f-8d0a-fb810c1dc51b"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "bw-biology-seki-bp2016-v2-p23-011-53a34a82",
+      "passageId": "bw-biology-seki-bp2016-v2-p23",
+      "topicCode": "P23",
+      "topicTitle": "2.3 Bewertung",
+      "headingTitle": "Ethisch bewerten",
+      "title": "Eigene und andere Standpunkte begründen.",
+      "description": "Die lernende Person kann Eigene und andere Standpunkte begründen.",
+      "sourceDocumentKey": "BW-BP2016-GYM-BIOLOGIE-V2-2022",
+      "sourceRef": "Bildungsplan Baden-Wuerttemberg 2016 Gymnasium Biologie, ueberarbeitete Fassung 08.03.2022, 2.3 Bewertung, S. 12.",
+      "sourceText": "Eigene und andere Standpunkte begründen.",
+      "sourceSpan": {
+        "passageId": "bw-biology-seki-bp2016-v2-p23",
+        "label": "Ethisch bewerten: Eigene und andere Standpunkte begründen."
+      },
+      "sourceSpanText": "2.3 Bewertung, Klassen SekI, Source-Ziel 11",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-BW",
+        "stage:SekI",
+        "grade:SekI"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "0a9ee5c0-6196-5d16-ac65-dc516a3e0d0f"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "bw-biology-seki-bp2016-v2-p23-012-45e5d8bc",
+      "passageId": "bw-biology-seki-bp2016-v2-p23",
+      "topicCode": "P23",
+      "topicTitle": "2.3 Bewertung",
+      "headingTitle": "Ethisch bewerten",
+      "title": "Einfluss des Menschen auf Ökosysteme im Hinblick auf nachhaltige Entwicklung bewerten.",
+      "description": "Die lernende Person kann Einfluss des Menschen auf Ökosysteme im Hinblick auf nachhaltige Entwicklung bewerten.",
+      "sourceDocumentKey": "BW-BP2016-GYM-BIOLOGIE-V2-2022",
+      "sourceRef": "Bildungsplan Baden-Wuerttemberg 2016 Gymnasium Biologie, ueberarbeitete Fassung 08.03.2022, 2.3 Bewertung, S. 12.",
+      "sourceText": "Einfluss des Menschen auf Ökosysteme im Hinblick auf nachhaltige Entwicklung bewerten.",
+      "sourceSpan": {
+        "passageId": "bw-biology-seki-bp2016-v2-p23",
+        "label": "Ethisch bewerten: Einfluss des Menschen auf Ökosysteme im Hinblick auf nachhaltige Entwicklung bewerten."
+      },
+      "sourceSpanText": "2.3 Bewertung, Klassen SekI, Source-Ziel 12",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-BW",
+        "stage:SekI",
+        "grade:SekI"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "c1aea082-30c0-558f-8d0a-fb810c1dc51b",
+          "fdc82200-dfc1-53ec-a5b9-bd4cfaf1e35f"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "bw-biology-seki-bp2016-v2-p23-013-45038252",
+      "passageId": "bw-biology-seki-bp2016-v2-p23",
+      "topicCode": "P23",
+      "topicTitle": "2.3 Bewertung",
+      "headingTitle": "Ethisch bewerten",
+      "title": "Eigenes Handeln unter dem Aspekt der Nachhaltigkeit bewerten.",
+      "description": "Die lernende Person kann Eigenes Handeln unter dem Aspekt der Nachhaltigkeit bewerten.",
+      "sourceDocumentKey": "BW-BP2016-GYM-BIOLOGIE-V2-2022",
+      "sourceRef": "Bildungsplan Baden-Wuerttemberg 2016 Gymnasium Biologie, ueberarbeitete Fassung 08.03.2022, 2.3 Bewertung, S. 12.",
+      "sourceText": "Eigenes Handeln unter dem Aspekt der Nachhaltigkeit bewerten.",
+      "sourceSpan": {
+        "passageId": "bw-biology-seki-bp2016-v2-p23",
+        "label": "Ethisch bewerten: Eigenes Handeln unter dem Aspekt der Nachhaltigkeit bewerten."
+      },
+      "sourceSpanText": "2.3 Bewertung, Klassen SekI, Source-Ziel 13",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-BW",
+        "stage:SekI",
+        "grade:SekI"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "c1aea082-30c0-558f-8d0a-fb810c1dc51b"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "bw-biology-seki-bp2016-v2-p23-014-308a2848",
+      "passageId": "bw-biology-seki-bp2016-v2-p23",
+      "topicCode": "P23",
+      "topicTitle": "2.3 Bewertung",
+      "headingTitle": "Ethisch bewerten",
+      "title": "Eigenes Handeln unter dem Aspekt gesunder Lebensführung bewerten.",
+      "description": "Die lernende Person kann Eigenes Handeln unter dem Aspekt gesunder Lebensführung bewerten.",
+      "sourceDocumentKey": "BW-BP2016-GYM-BIOLOGIE-V2-2022",
+      "sourceRef": "Bildungsplan Baden-Wuerttemberg 2016 Gymnasium Biologie, ueberarbeitete Fassung 08.03.2022, 2.3 Bewertung, S. 12.",
+      "sourceText": "Eigenes Handeln unter dem Aspekt gesunder Lebensführung bewerten.",
+      "sourceSpan": {
+        "passageId": "bw-biology-seki-bp2016-v2-p23",
+        "label": "Ethisch bewerten: Eigenes Handeln unter dem Aspekt gesunder Lebensführung bewerten."
+      },
+      "sourceSpanText": "2.3 Bewertung, Klassen SekI, Source-Ziel 14",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-BW",
+        "stage:SekI",
+        "grade:SekI"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "6de6ad3b-1099-5f51-848d-96de4119ed01"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "bw-biology-seki-bp2016-v2-bnt56-wirb-001-f114456c",
+      "passageId": "bw-biology-seki-bp2016-v2-bnt56-wirb",
+      "topicCode": "BNT56-WIRB",
+      "topicTitle": "3.1.5 Wirbeltiere",
+      "headingTitle": "Wirbeltiere",
+      "title": "Lebensweise und Körperbau mehrerer Säugetiere beschreiben und vergleichen.",
+      "description": "Die lernende Person kann Lebensweise und Körperbau mehrerer Säugetiere beschreiben und vergleichen.",
+      "sourceDocumentKey": "BW-BP2016-GYM-BNT-2016",
+      "sourceRef": "Bildungsplan Baden-Wuerttemberg 2016 Gymnasium BNT, 3.1.5 Wirbeltiere, S. 17.",
+      "sourceText": "Lebensweise und Körperbau mehrerer Säugetiere beschreiben und vergleichen.",
+      "sourceSpan": {
+        "passageId": "bw-biology-seki-bp2016-v2-bnt56-wirb",
+        "label": "Wirbeltiere: Lebensweise und Körperbau mehrerer Säugetiere beschreiben und vergleichen."
+      },
+      "sourceSpanText": "3.1.5 Wirbeltiere, Klassen 5/6, Source-Ziel 1",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-BW",
+        "stage:SekI",
+        "grade:5/6"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "bdbb1a13-f448-5536-86ab-894805e2f6be",
+          "dc1c2eff-5e42-50f1-ab75-b180b4f58907",
+          "9263ee6c-bf62-531c-bb09-78a4a51b8ed7"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "bw-biology-seki-bp2016-v2-bnt56-wirb-002-2c38efc3",
+      "passageId": "bw-biology-seki-bp2016-v2-bnt56-wirb",
+      "topicCode": "BNT56-WIRB",
+      "topicTitle": "3.1.5 Wirbeltiere",
+      "headingTitle": "Wirbeltiere",
+      "title": "Angemessene Haltungsbedingungen und Tierhaltungsformen erklären und bewerten.",
+      "description": "Die lernende Person kann Angemessene Haltungsbedingungen und Tierhaltungsformen erklären und bewerten.",
+      "sourceDocumentKey": "BW-BP2016-GYM-BNT-2016",
+      "sourceRef": "Bildungsplan Baden-Wuerttemberg 2016 Gymnasium BNT, 3.1.5 Wirbeltiere, S. 17.",
+      "sourceText": "Angemessene Haltungsbedingungen und Tierhaltungsformen erklären und bewerten.",
+      "sourceSpan": {
+        "passageId": "bw-biology-seki-bp2016-v2-bnt56-wirb",
+        "label": "Wirbeltiere: Angemessene Haltungsbedingungen und Tierhaltungsformen erklären und bewerten."
+      },
+      "sourceSpanText": "3.1.5 Wirbeltiere, Klassen 5/6, Source-Ziel 2",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-BW",
+        "stage:SekI",
+        "grade:5/6"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "bac3e333-d044-559e-8d8e-b8eff4af2b56",
+          "7b09d025-8465-505e-b196-61e1811309db"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "bw-biology-seki-bp2016-v2-bnt56-wirb-003-e688a840",
+      "passageId": "bw-biology-seki-bp2016-v2-bnt56-wirb",
+      "topicCode": "BNT56-WIRB",
+      "topicTitle": "3.1.5 Wirbeltiere",
+      "headingTitle": "Wirbeltiere",
+      "title": "Körperbau und Lebensweise heimischer Säugetiere als Angepasstheit erläutern.",
+      "description": "Die lernende Person kann Körperbau und Lebensweise heimischer Säugetiere als Angepasstheit erläutern.",
+      "sourceDocumentKey": "BW-BP2016-GYM-BNT-2016",
+      "sourceRef": "Bildungsplan Baden-Wuerttemberg 2016 Gymnasium BNT, 3.1.5 Wirbeltiere, S. 17.",
+      "sourceText": "Körperbau und Lebensweise heimischer Säugetiere als Angepasstheit erläutern.",
+      "sourceSpan": {
+        "passageId": "bw-biology-seki-bp2016-v2-bnt56-wirb",
+        "label": "Wirbeltiere: Körperbau und Lebensweise heimischer Säugetiere als Angepasstheit erläutern."
+      },
+      "sourceSpanText": "3.1.5 Wirbeltiere, Klassen 5/6, Source-Ziel 3",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-BW",
+        "stage:SekI",
+        "grade:5/6"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "ac69483b-6a77-573d-a7c0-add32bb867e2",
+          "9263ee6c-bf62-531c-bb09-78a4a51b8ed7"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "bw-biology-seki-bp2016-v2-bnt56-wirb-004-730731a2",
+      "passageId": "bw-biology-seki-bp2016-v2-bnt56-wirb",
+      "topicCode": "BNT56-WIRB",
+      "topicTitle": "3.1.5 Wirbeltiere",
+      "headingTitle": "Wirbeltiere",
+      "title": "Typische Merkmale der Wirbeltiergruppen im Hinblick auf stammesgeschichtliche Verwandtschaft erläutern.",
+      "description": "Die lernende Person kann Typische Merkmale der Wirbeltiergruppen im Hinblick auf stammesgeschichtliche Verwandtschaft erläutern.",
+      "sourceDocumentKey": "BW-BP2016-GYM-BNT-2016",
+      "sourceRef": "Bildungsplan Baden-Wuerttemberg 2016 Gymnasium BNT, 3.1.5 Wirbeltiere, S. 17.",
+      "sourceText": "Typische Merkmale der Wirbeltiergruppen im Hinblick auf stammesgeschichtliche Verwandtschaft erläutern.",
+      "sourceSpan": {
+        "passageId": "bw-biology-seki-bp2016-v2-bnt56-wirb",
+        "label": "Wirbeltiere: Typische Merkmale der Wirbeltiergruppen im Hinblick auf stammesgeschichtliche Verwandtschaft erläutern."
+      },
+      "sourceSpanText": "3.1.5 Wirbeltiere, Klassen 5/6, Source-Ziel 4",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-BW",
+        "stage:SekI",
+        "grade:5/6"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "002543f9-2d14-5c57-99b4-fb4bf7e53734",
+          "7008979d-7890-5f7b-ad07-27b8bb597cbe"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "bw-biology-seki-bp2016-v2-bnt56-pfl-001-c0566062",
+      "passageId": "bw-biology-seki-bp2016-v2-bnt56-pfl",
+      "topicCode": "BNT56-PFL",
+      "topicTitle": "3.1.8 Pflanzen",
+      "headingTitle": "Pflanzen",
+      "title": "Keimungsexperimente planen, durchführen und auswerten.",
+      "description": "Die lernende Person kann Keimungsexperimente planen, durchführen und auswerten.",
+      "sourceDocumentKey": "BW-BP2016-GYM-BNT-2016",
+      "sourceRef": "Bildungsplan Baden-Wuerttemberg 2016 Gymnasium BNT, 3.1.8 Pflanzen, S. 21.",
+      "sourceText": "Keimungsexperimente planen, durchführen und auswerten.",
+      "sourceSpan": {
+        "passageId": "bw-biology-seki-bp2016-v2-bnt56-pfl",
+        "label": "Pflanzen: Keimungsexperimente planen, durchführen und auswerten."
+      },
+      "sourceSpanText": "3.1.8 Pflanzen, Klassen 5/6, Source-Ziel 1",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-BW",
+        "stage:SekI",
+        "grade:5/6"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "19f806d2-d4e3-5ad4-98a8-1d61bdd81e3d",
+          "26aa47b7-e5cc-5131-8980-0ec3271758b6"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "bw-biology-seki-bp2016-v2-k78-zs-001-a5d47618",
+      "passageId": "bw-biology-seki-bp2016-v2-k78-zs",
+      "topicCode": "K78-ZS",
+      "topicTitle": "3.2.1 Zelle und Stoffwechsel",
+      "headingTitle": "Zelle und Stoffwechsel",
+      "title": "Tierische und pflanzliche Zellen mikroskopisch zeichnen, beschreiben und vergleichen.",
+      "description": "Die lernende Person kann Tierische und pflanzliche Zellen mikroskopisch zeichnen, beschreiben und vergleichen.",
+      "sourceDocumentKey": "BW-BP2016-GYM-BIOLOGIE-V2-2022",
+      "sourceRef": "Bildungsplan Baden-Wuerttemberg 2016 Gymnasium Biologie, ueberarbeitete Fassung 08.03.2022, 3.2.1 Zelle und Stoffwechsel, S. 14.",
+      "sourceText": "Tierische und pflanzliche Zellen mikroskopisch zeichnen, beschreiben und vergleichen.",
+      "sourceSpan": {
+        "passageId": "bw-biology-seki-bp2016-v2-k78-zs",
+        "label": "Zelle und Stoffwechsel: Tierische und pflanzliche Zellen mikroskopisch zeichnen, beschreiben und vergleichen."
+      },
+      "sourceSpanText": "3.2.1 Zelle und Stoffwechsel, Klassen 7/8, Source-Ziel 1",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-BW",
+        "stage:SekI",
+        "grade:7/8"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "7c6bf0cc-6ed8-56b1-b44a-642f7a069a5f",
+          "b1dff57f-329e-5264-b2b9-2db71a0b2172",
+          "91df35c7-e384-50d6-bb3a-37e74a6086f1"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "bw-biology-seki-bp2016-v2-k78-zs-002-0ad3ae20",
+      "passageId": "bw-biology-seki-bp2016-v2-k78-zs",
+      "topicCode": "K78-ZS",
+      "topicTitle": "3.2.1 Zelle und Stoffwechsel",
+      "headingTitle": "Zelle und Stoffwechsel",
+      "title": "Zellteilung als Grundlage für das Wachstum von Organismen beschreiben.",
+      "description": "Die lernende Person kann Zellteilung als Grundlage für das Wachstum von Organismen beschreiben.",
+      "sourceDocumentKey": "BW-BP2016-GYM-BIOLOGIE-V2-2022",
+      "sourceRef": "Bildungsplan Baden-Wuerttemberg 2016 Gymnasium Biologie, ueberarbeitete Fassung 08.03.2022, 3.2.1 Zelle und Stoffwechsel, S. 14.",
+      "sourceText": "Zellteilung als Grundlage für das Wachstum von Organismen beschreiben.",
+      "sourceSpan": {
+        "passageId": "bw-biology-seki-bp2016-v2-k78-zs",
+        "label": "Zelle und Stoffwechsel: Zellteilung als Grundlage für das Wachstum von Organismen beschreiben."
+      },
+      "sourceSpanText": "3.2.1 Zelle und Stoffwechsel, Klassen 7/8, Source-Ziel 2",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-BW",
+        "stage:SekI",
+        "grade:7/8"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "8e4bfb9e-b176-5e7a-a7db-d6077d71237a"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "bw-biology-seki-bp2016-v2-k78-zs-003-2bb29dd0",
+      "passageId": "bw-biology-seki-bp2016-v2-k78-zs",
+      "topicCode": "K78-ZS",
+      "topicTitle": "3.2.1 Zelle und Stoffwechsel",
+      "headingTitle": "Zelle und Stoffwechsel",
+      "title": "Funktionen von Zellkern, Zellwand, Zellmembran, Chloroplast, Vakuole und Mitochondrium beschreiben.",
+      "description": "Die lernende Person kann Funktionen von Zellkern, Zellwand, Zellmembran, Chloroplast, Vakuole und Mitochondrium beschreiben.",
+      "sourceDocumentKey": "BW-BP2016-GYM-BIOLOGIE-V2-2022",
+      "sourceRef": "Bildungsplan Baden-Wuerttemberg 2016 Gymnasium Biologie, ueberarbeitete Fassung 08.03.2022, 3.2.1 Zelle und Stoffwechsel, S. 14.",
+      "sourceText": "Funktionen von Zellkern, Zellwand, Zellmembran, Chloroplast, Vakuole und Mitochondrium beschreiben.",
+      "sourceSpan": {
+        "passageId": "bw-biology-seki-bp2016-v2-k78-zs",
+        "label": "Zelle und Stoffwechsel: Funktionen von Zellkern, Zellwand, Zellmembran, Chloroplast, Vakuole und Mitochondrium beschreiben."
+      },
+      "sourceSpanText": "3.2.1 Zelle und Stoffwechsel, Klassen 7/8, Source-Ziel 3",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-BW",
+        "stage:SekI",
+        "grade:7/8"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "fc8c4b02-02f2-5ad6-b481-224d36121da1",
+          "e0d04e58-1591-5230-bfa6-5c685b56d25b"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "bw-biology-seki-bp2016-v2-k78-zs-004-1c7cea35",
+      "passageId": "bw-biology-seki-bp2016-v2-k78-zs",
+      "topicCode": "K78-ZS",
+      "topicTitle": "3.2.1 Zelle und Stoffwechsel",
+      "headingTitle": "Zelle und Stoffwechsel",
+      "title": "Bau eines Organs aus verschiedenen Geweben beschreiben und Struktur-Funktion-Zusammenhänge erklären.",
+      "description": "Die lernende Person kann Bau eines Organs aus verschiedenen Geweben beschreiben und Struktur-Funktion-Zusammenhänge erklären.",
+      "sourceDocumentKey": "BW-BP2016-GYM-BIOLOGIE-V2-2022",
+      "sourceRef": "Bildungsplan Baden-Wuerttemberg 2016 Gymnasium Biologie, ueberarbeitete Fassung 08.03.2022, 3.2.1 Zelle und Stoffwechsel, S. 14.",
+      "sourceText": "Bau eines Organs aus verschiedenen Geweben beschreiben und Struktur-Funktion-Zusammenhänge erklären.",
+      "sourceSpan": {
+        "passageId": "bw-biology-seki-bp2016-v2-k78-zs",
+        "label": "Zelle und Stoffwechsel: Bau eines Organs aus verschiedenen Geweben beschreiben und Struktur-Funktion-Zusammenhänge erklären."
+      },
+      "sourceSpanText": "3.2.1 Zelle und Stoffwechsel, Klassen 7/8, Source-Ziel 4",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-BW",
+        "stage:SekI",
+        "grade:7/8"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "19f806d2-d4e3-5ad4-98a8-1d61bdd81e3d",
+          "1c3470ae-83f8-52e9-98ae-b0a712755b66",
+          "892a1d3a-9923-5ac2-affa-f2d5c38e3c54"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "bw-biology-seki-bp2016-v2-k78-zs-005-4c485bfc",
+      "passageId": "bw-biology-seki-bp2016-v2-k78-zs",
+      "topicCode": "K78-ZS",
+      "topicTitle": "3.2.1 Zelle und Stoffwechsel",
+      "headingTitle": "Zelle und Stoffwechsel",
+      "title": "Experimente zur Fotosynthese planen, durchführen und auswerten.",
+      "description": "Die lernende Person kann Experimente zur Fotosynthese planen, durchführen und auswerten.",
+      "sourceDocumentKey": "BW-BP2016-GYM-BIOLOGIE-V2-2022",
+      "sourceRef": "Bildungsplan Baden-Wuerttemberg 2016 Gymnasium Biologie, ueberarbeitete Fassung 08.03.2022, 3.2.1 Zelle und Stoffwechsel, S. 14.",
+      "sourceText": "Experimente zur Fotosynthese planen, durchführen und auswerten.",
+      "sourceSpan": {
+        "passageId": "bw-biology-seki-bp2016-v2-k78-zs",
+        "label": "Zelle und Stoffwechsel: Experimente zur Fotosynthese planen, durchführen und auswerten."
+      },
+      "sourceSpanText": "3.2.1 Zelle und Stoffwechsel, Klassen 7/8, Source-Ziel 5",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-BW",
+        "stage:SekI",
+        "grade:7/8"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "d97f6957-fbc9-569c-8648-f7df5eb9dfd8",
+          "26aa47b7-e5cc-5131-8980-0ec3271758b6",
+          "fc89ed54-1a78-55a9-8e54-751d6d46dad6",
+          "0d96a802-2a8d-5445-a7fa-02387f6b1f2d",
+          "e6f128c8-b38e-5167-9367-77e079a994c3"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "bw-biology-seki-bp2016-v2-k78-zs-006-0270c884",
+      "passageId": "bw-biology-seki-bp2016-v2-k78-zs",
+      "topicCode": "K78-ZS",
+      "topicTitle": "3.2.1 Zelle und Stoffwechsel",
+      "headingTitle": "Zelle und Stoffwechsel",
+      "title": "Fotosynthese und Zellatmung mit Wortgleichungen beschreiben und ihre Bedeutung für Organismen erläutern.",
+      "description": "Die lernende Person kann Fotosynthese und Zellatmung mit Wortgleichungen beschreiben und ihre Bedeutung für Organismen erläutern.",
+      "sourceDocumentKey": "BW-BP2016-GYM-BIOLOGIE-V2-2022",
+      "sourceRef": "Bildungsplan Baden-Wuerttemberg 2016 Gymnasium Biologie, ueberarbeitete Fassung 08.03.2022, 3.2.1 Zelle und Stoffwechsel, S. 14.",
+      "sourceText": "Fotosynthese und Zellatmung mit Wortgleichungen beschreiben und ihre Bedeutung für Organismen erläutern.",
+      "sourceSpan": {
+        "passageId": "bw-biology-seki-bp2016-v2-k78-zs",
+        "label": "Zelle und Stoffwechsel: Fotosynthese und Zellatmung mit Wortgleichungen beschreiben und ihre Bedeutung für Organismen erläutern."
+      },
+      "sourceSpanText": "3.2.1 Zelle und Stoffwechsel, Klassen 7/8, Source-Ziel 6",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-BW",
+        "stage:SekI",
+        "grade:7/8"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "576d59e2-397a-5654-b853-7c0c4870fbd3",
+          "8f9dc189-e875-56dd-bd97-996c8bf0cdc4",
+          "f9597bb0-1b33-53df-8359-cdd43180307b",
+          "8678d0b5-8b74-5b01-8143-91bfea1e4482"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "bw-biology-seki-bp2016-v2-k78-ev-001-cabca8f1",
+      "passageId": "bw-biology-seki-bp2016-v2-k78-ev",
+      "topicCode": "K78-EV",
+      "topicTitle": "3.2.2.1 Ernährung und Verdauung",
+      "headingTitle": "Ernährung und Verdauung",
+      "title": "Bestandteile der Nahrung nennen.",
+      "description": "Die lernende Person kann Bestandteile der Nahrung nennen.",
+      "sourceDocumentKey": "BW-BP2016-GYM-BIOLOGIE-V2-2022",
+      "sourceRef": "Bildungsplan Baden-Wuerttemberg 2016 Gymnasium Biologie, ueberarbeitete Fassung 08.03.2022, 3.2.2.1 Ernährung und Verdauung, S. 15.",
+      "sourceText": "Bestandteile der Nahrung nennen.",
+      "sourceSpan": {
+        "passageId": "bw-biology-seki-bp2016-v2-k78-ev",
+        "label": "Ernährung und Verdauung: Bestandteile der Nahrung nennen."
+      },
+      "sourceSpanText": "3.2.2.1 Ernährung und Verdauung, Klassen 7/8, Source-Ziel 1",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-BW",
+        "stage:SekI",
+        "grade:7/8"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "bb6fb806-ee15-5881-8529-2425cadfb5a1",
+          "73624d0c-bc6f-5b5d-baf5-099ca62fab79"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "bw-biology-seki-bp2016-v2-k78-ev-002-dc13db30",
+      "passageId": "bw-biology-seki-bp2016-v2-k78-ev",
+      "topicCode": "K78-EV",
+      "topicTitle": "3.2.2.1 Ernährung und Verdauung",
+      "headingTitle": "Ernährung und Verdauung",
+      "title": "Bau von Kohlenhydraten, Fetten und Eiweißen aus Grundbausteinen mit Modellen beschreiben und Funktionen erläutern.",
+      "description": "Die lernende Person kann Bau von Kohlenhydraten, Fetten und Eiweißen aus Grundbausteinen mit Modellen beschreiben und Funktionen erläutern.",
+      "sourceDocumentKey": "BW-BP2016-GYM-BIOLOGIE-V2-2022",
+      "sourceRef": "Bildungsplan Baden-Wuerttemberg 2016 Gymnasium Biologie, ueberarbeitete Fassung 08.03.2022, 3.2.2.1 Ernährung und Verdauung, S. 15.",
+      "sourceText": "Bau von Kohlenhydraten, Fetten und Eiweißen aus Grundbausteinen mit Modellen beschreiben und Funktionen erläutern.",
+      "sourceSpan": {
+        "passageId": "bw-biology-seki-bp2016-v2-k78-ev",
+        "label": "Ernährung und Verdauung: Bau von Kohlenhydraten, Fetten und Eiweißen aus Grundbausteinen mit Modellen beschreiben und Funktionen erläutern."
+      },
+      "sourceSpanText": "3.2.2.1 Ernährung und Verdauung, Klassen 7/8, Source-Ziel 2",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-BW",
+        "stage:SekI",
+        "grade:7/8"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "bb6fb806-ee15-5881-8529-2425cadfb5a1",
+          "713e062d-2bb9-5fbc-8040-129387c7d3ca"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "bw-biology-seki-bp2016-v2-k78-ev-003-3eaca4f3",
+      "passageId": "bw-biology-seki-bp2016-v2-k78-ev",
+      "topicCode": "K78-EV",
+      "topicTitle": "3.2.2.1 Ernährung und Verdauung",
+      "headingTitle": "Ernährung und Verdauung",
+      "title": "Bedeutung von Vitaminen, Mineralstoffen, Ballaststoffen und Wasser beschreiben.",
+      "description": "Die lernende Person kann Bedeutung von Vitaminen, Mineralstoffen, Ballaststoffen und Wasser beschreiben.",
+      "sourceDocumentKey": "BW-BP2016-GYM-BIOLOGIE-V2-2022",
+      "sourceRef": "Bildungsplan Baden-Wuerttemberg 2016 Gymnasium Biologie, ueberarbeitete Fassung 08.03.2022, 3.2.2.1 Ernährung und Verdauung, S. 15.",
+      "sourceText": "Bedeutung von Vitaminen, Mineralstoffen, Ballaststoffen und Wasser beschreiben.",
+      "sourceSpan": {
+        "passageId": "bw-biology-seki-bp2016-v2-k78-ev",
+        "label": "Ernährung und Verdauung: Bedeutung von Vitaminen, Mineralstoffen, Ballaststoffen und Wasser beschreiben."
+      },
+      "sourceSpanText": "3.2.2.1 Ernährung und Verdauung, Klassen 7/8, Source-Ziel 3",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-BW",
+        "stage:SekI",
+        "grade:7/8"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "73624d0c-bc6f-5b5d-baf5-099ca62fab79"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "bw-biology-seki-bp2016-v2-k78-ev-004-7eb6cc4d",
+      "passageId": "bw-biology-seki-bp2016-v2-k78-ev",
+      "topicCode": "K78-EV",
+      "topicTitle": "3.2.2.1 Ernährung und Verdauung",
+      "headingTitle": "Ernährung und Verdauung",
+      "title": "Energiebedarf erläutern und rechnerisch ermitteln.",
+      "description": "Die lernende Person kann Energiebedarf erläutern und rechnerisch ermitteln.",
+      "sourceDocumentKey": "BW-BP2016-GYM-BIOLOGIE-V2-2022",
+      "sourceRef": "Bildungsplan Baden-Wuerttemberg 2016 Gymnasium Biologie, ueberarbeitete Fassung 08.03.2022, 3.2.2.1 Ernährung und Verdauung, S. 15.",
+      "sourceText": "Energiebedarf erläutern und rechnerisch ermitteln.",
+      "sourceSpan": {
+        "passageId": "bw-biology-seki-bp2016-v2-k78-ev",
+        "label": "Ernährung und Verdauung: Energiebedarf erläutern und rechnerisch ermitteln."
+      },
+      "sourceSpanText": "3.2.2.1 Ernährung und Verdauung, Klassen 7/8, Source-Ziel 4",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-BW",
+        "stage:SekI",
+        "grade:7/8"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "2c60c8ad-04d3-5395-8a27-400646eb1612",
+          "73624d0c-bc6f-5b5d-baf5-099ca62fab79"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "bw-biology-seki-bp2016-v2-k78-ev-005-33224380",
+      "passageId": "bw-biology-seki-bp2016-v2-k78-ev",
+      "topicCode": "K78-EV",
+      "topicTitle": "3.2.2.1 Ernährung und Verdauung",
+      "headingTitle": "Ernährung und Verdauung",
+      "title": "Informationen über Brennwert von Lebensmitteln in Bezug auf Energiebedarf auswerten.",
+      "description": "Die lernende Person kann Informationen über Brennwert von Lebensmitteln in Bezug auf Energiebedarf auswerten.",
+      "sourceDocumentKey": "BW-BP2016-GYM-BIOLOGIE-V2-2022",
+      "sourceRef": "Bildungsplan Baden-Wuerttemberg 2016 Gymnasium Biologie, ueberarbeitete Fassung 08.03.2022, 3.2.2.1 Ernährung und Verdauung, S. 15.",
+      "sourceText": "Informationen über Brennwert von Lebensmitteln in Bezug auf Energiebedarf auswerten.",
+      "sourceSpan": {
+        "passageId": "bw-biology-seki-bp2016-v2-k78-ev",
+        "label": "Ernährung und Verdauung: Informationen über Brennwert von Lebensmitteln in Bezug auf Energiebedarf auswerten."
+      },
+      "sourceSpanText": "3.2.2.1 Ernährung und Verdauung, Klassen 7/8, Source-Ziel 5",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-BW",
+        "stage:SekI",
+        "grade:7/8"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "5a47f591-f2ac-5457-872a-22c89c2dbe93",
+          "73624d0c-bc6f-5b5d-baf5-099ca62fab79"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "bw-biology-seki-bp2016-v2-k78-ev-006-2920ffb6",
+      "passageId": "bw-biology-seki-bp2016-v2-k78-ev",
+      "topicCode": "K78-EV",
+      "topicTitle": "3.2.2.1 Ernährung und Verdauung",
+      "headingTitle": "Ernährung und Verdauung",
+      "title": "Kriterien für gesunderhaltende Ernährung erläutern und geeignete Mahlzeiten planen.",
+      "description": "Die lernende Person kann Kriterien für gesunderhaltende Ernährung erläutern und geeignete Mahlzeiten planen.",
+      "sourceDocumentKey": "BW-BP2016-GYM-BIOLOGIE-V2-2022",
+      "sourceRef": "Bildungsplan Baden-Wuerttemberg 2016 Gymnasium Biologie, ueberarbeitete Fassung 08.03.2022, 3.2.2.1 Ernährung und Verdauung, S. 15.",
+      "sourceText": "Kriterien für gesunderhaltende Ernährung erläutern und geeignete Mahlzeiten planen.",
+      "sourceSpan": {
+        "passageId": "bw-biology-seki-bp2016-v2-k78-ev",
+        "label": "Ernährung und Verdauung: Kriterien für gesunderhaltende Ernährung erläutern und geeignete Mahlzeiten planen."
+      },
+      "sourceSpanText": "3.2.2.1 Ernährung und Verdauung, Klassen 7/8, Source-Ziel 6",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-BW",
+        "stage:SekI",
+        "grade:7/8"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "73624d0c-bc6f-5b5d-baf5-099ca62fab79",
+          "6de6ad3b-1099-5f51-848d-96de4119ed01"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "bw-biology-seki-bp2016-v2-k78-ev-007-fcc3ecaf",
+      "passageId": "bw-biology-seki-bp2016-v2-k78-ev",
+      "topicCode": "K78-EV",
+      "topicTitle": "3.2.2.1 Ernährung und Verdauung",
+      "headingTitle": "Ernährung und Verdauung",
+      "title": "Qualitätsmerkmale von Lebensmitteln im Hinblick auf Gesunderhaltung und globale Verantwortung bewerten.",
+      "description": "Die lernende Person kann Qualitätsmerkmale von Lebensmitteln im Hinblick auf Gesunderhaltung und globale Verantwortung bewerten.",
+      "sourceDocumentKey": "BW-BP2016-GYM-BIOLOGIE-V2-2022",
+      "sourceRef": "Bildungsplan Baden-Wuerttemberg 2016 Gymnasium Biologie, ueberarbeitete Fassung 08.03.2022, 3.2.2.1 Ernährung und Verdauung, S. 15.",
+      "sourceText": "Qualitätsmerkmale von Lebensmitteln im Hinblick auf Gesunderhaltung und globale Verantwortung bewerten.",
+      "sourceSpan": {
+        "passageId": "bw-biology-seki-bp2016-v2-k78-ev",
+        "label": "Ernährung und Verdauung: Qualitätsmerkmale von Lebensmitteln im Hinblick auf Gesunderhaltung und globale Verantwortung bewerten."
+      },
+      "sourceSpanText": "3.2.2.1 Ernährung und Verdauung, Klassen 7/8, Source-Ziel 7",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-BW",
+        "stage:SekI",
+        "grade:7/8"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "73624d0c-bc6f-5b5d-baf5-099ca62fab79",
+          "c1aea082-30c0-558f-8d0a-fb810c1dc51b"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "bw-biology-seki-bp2016-v2-k78-ev-008-5d79a210",
+      "passageId": "bw-biology-seki-bp2016-v2-k78-ev",
+      "topicCode": "K78-EV",
+      "topicTitle": "3.2.2.1 Ernährung und Verdauung",
+      "headingTitle": "Ernährung und Verdauung",
+      "title": "Essstörungen als Suchtverhalten beschreiben und Ursachen und Folgen erläutern.",
+      "description": "Die lernende Person kann Essstörungen als Suchtverhalten beschreiben und Ursachen und Folgen erläutern.",
+      "sourceDocumentKey": "BW-BP2016-GYM-BIOLOGIE-V2-2022",
+      "sourceRef": "Bildungsplan Baden-Wuerttemberg 2016 Gymnasium Biologie, ueberarbeitete Fassung 08.03.2022, 3.2.2.1 Ernährung und Verdauung, S. 15.",
+      "sourceText": "Essstörungen als Suchtverhalten beschreiben und Ursachen und Folgen erläutern.",
+      "sourceSpan": {
+        "passageId": "bw-biology-seki-bp2016-v2-k78-ev",
+        "label": "Ernährung und Verdauung: Essstörungen als Suchtverhalten beschreiben und Ursachen und Folgen erläutern."
+      },
+      "sourceSpanText": "3.2.2.1 Ernährung und Verdauung, Klassen 7/8, Source-Ziel 8",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-BW",
+        "stage:SekI",
+        "grade:7/8"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "6de6ad3b-1099-5f51-848d-96de4119ed01"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "bw-biology-seki-bp2016-v2-k78-ev-009-32785290",
+      "passageId": "bw-biology-seki-bp2016-v2-k78-ev",
+      "topicCode": "K78-EV",
+      "topicTitle": "3.2.2.1 Ernährung und Verdauung",
+      "headingTitle": "Ernährung und Verdauung",
+      "title": "Weg der Nahrung und Funktionen der Verdauungsorgane beschreiben und Struktur-Funktion-Zusammenhänge erläutern.",
+      "description": "Die lernende Person kann Weg der Nahrung und Funktionen der Verdauungsorgane beschreiben und Struktur-Funktion-Zusammenhänge erläutern.",
+      "sourceDocumentKey": "BW-BP2016-GYM-BIOLOGIE-V2-2022",
+      "sourceRef": "Bildungsplan Baden-Wuerttemberg 2016 Gymnasium Biologie, ueberarbeitete Fassung 08.03.2022, 3.2.2.1 Ernährung und Verdauung, S. 15.",
+      "sourceText": "Weg der Nahrung und Funktionen der Verdauungsorgane beschreiben und Struktur-Funktion-Zusammenhänge erläutern.",
+      "sourceSpan": {
+        "passageId": "bw-biology-seki-bp2016-v2-k78-ev",
+        "label": "Ernährung und Verdauung: Weg der Nahrung und Funktionen der Verdauungsorgane beschreiben und Struktur-Funktion-Zusammenhänge erläutern."
+      },
+      "sourceSpanText": "3.2.2.1 Ernährung und Verdauung, Klassen 7/8, Source-Ziel 9",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-BW",
+        "stage:SekI",
+        "grade:7/8"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "c25a1bc9-c664-53d7-b2d8-500741da773c",
+          "4b3b0cd7-47d2-5213-b1ce-4e829ccbb6a2",
+          "bf2abe42-07bb-5c35-9118-d6141076c299",
+          "7e26c129-91f7-52de-8114-2361411c80f8"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "bw-biology-seki-bp2016-v2-k78-ev-010-2355edcc",
+      "passageId": "bw-biology-seki-bp2016-v2-k78-ev",
+      "topicCode": "K78-EV",
+      "topicTitle": "3.2.2.1 Ernährung und Verdauung",
+      "headingTitle": "Ernährung und Verdauung",
+      "title": "Wirkungsweise von Verdauungsenzymen experimentell untersuchen und mit einfachen Modellen beschreiben.",
+      "description": "Die lernende Person kann Wirkungsweise von Verdauungsenzymen experimentell untersuchen und mit einfachen Modellen beschreiben.",
+      "sourceDocumentKey": "BW-BP2016-GYM-BIOLOGIE-V2-2022",
+      "sourceRef": "Bildungsplan Baden-Wuerttemberg 2016 Gymnasium Biologie, ueberarbeitete Fassung 08.03.2022, 3.2.2.1 Ernährung und Verdauung, S. 15.",
+      "sourceText": "Wirkungsweise von Verdauungsenzymen experimentell untersuchen und mit einfachen Modellen beschreiben.",
+      "sourceSpan": {
+        "passageId": "bw-biology-seki-bp2016-v2-k78-ev",
+        "label": "Ernährung und Verdauung: Wirkungsweise von Verdauungsenzymen experimentell untersuchen und mit einfachen Modellen beschreiben."
+      },
+      "sourceSpanText": "3.2.2.1 Ernährung und Verdauung, Klassen 7/8, Source-Ziel 10",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-BW",
+        "stage:SekI",
+        "grade:7/8"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "ed84c759-62e5-537f-90b8-4e8c2dbfd9bb",
+          "30a1d736-77ca-5087-b640-b756c249bc40"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "bw-biology-seki-bp2016-v2-k78-abk-001-47fb2958",
+      "passageId": "bw-biology-seki-bp2016-v2-k78-abk",
+      "topicCode": "K78-ABK",
+      "topicTitle": "3.2.2.2 Atmung, Blut und Kreislaufsystem",
+      "headingTitle": "Atmung, Blut und Kreislaufsystem",
+      "title": "Weg der Atemluft beschreiben und am Beispiel der Lunge erklären.",
+      "description": "Die lernende Person kann Weg der Atemluft beschreiben und am Beispiel der Lunge erklären.",
+      "sourceDocumentKey": "BW-BP2016-GYM-BIOLOGIE-V2-2022",
+      "sourceRef": "Bildungsplan Baden-Wuerttemberg 2016 Gymnasium Biologie, ueberarbeitete Fassung 08.03.2022, 3.2.2.2 Atmung, Blut und Kreislaufsystem, S. 16.",
+      "sourceText": "Weg der Atemluft beschreiben und am Beispiel der Lunge erklären.",
+      "sourceSpan": {
+        "passageId": "bw-biology-seki-bp2016-v2-k78-abk",
+        "label": "Atmung, Blut und Kreislaufsystem: Weg der Atemluft beschreiben und am Beispiel der Lunge erklären."
+      },
+      "sourceSpanText": "3.2.2.2 Atmung, Blut und Kreislaufsystem, Klassen 7/8, Source-Ziel 1",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-BW",
+        "stage:SekI",
+        "grade:7/8"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "d773ac89-37ef-51cd-a6ee-a75a6b10c43b",
+          "848fcbe0-dc25-53eb-a1a8-38313b65cf6d"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "bw-biology-seki-bp2016-v2-k78-abk-002-04b7f7b4",
+      "passageId": "bw-biology-seki-bp2016-v2-k78-abk",
+      "topicCode": "K78-ABK",
+      "topicTitle": "3.2.2.2 Atmung, Blut und Kreislaufsystem",
+      "headingTitle": "Atmung, Blut und Kreislaufsystem",
+      "title": "Zusammensetzung des Blutes beschreiben und Funktionen zellulärer Bestandteile nennen.",
+      "description": "Die lernende Person kann Zusammensetzung des Blutes beschreiben und Funktionen zellulärer Bestandteile nennen.",
+      "sourceDocumentKey": "BW-BP2016-GYM-BIOLOGIE-V2-2022",
+      "sourceRef": "Bildungsplan Baden-Wuerttemberg 2016 Gymnasium Biologie, ueberarbeitete Fassung 08.03.2022, 3.2.2.2 Atmung, Blut und Kreislaufsystem, S. 16.",
+      "sourceText": "Zusammensetzung des Blutes beschreiben und Funktionen zellulärer Bestandteile nennen.",
+      "sourceSpan": {
+        "passageId": "bw-biology-seki-bp2016-v2-k78-abk",
+        "label": "Atmung, Blut und Kreislaufsystem: Zusammensetzung des Blutes beschreiben und Funktionen zellulärer Bestandteile nennen."
+      },
+      "sourceSpanText": "3.2.2.2 Atmung, Blut und Kreislaufsystem, Klassen 7/8, Source-Ziel 2",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-BW",
+        "stage:SekI",
+        "grade:7/8"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "480146f6-4749-52e3-a5e5-d08629e0c38f",
+          "3e913f00-c3d7-5bbe-a73e-36bdc0d4a6e8"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "bw-biology-seki-bp2016-v2-k78-abk-003-dd1c5798",
+      "passageId": "bw-biology-seki-bp2016-v2-k78-abk",
+      "topicCode": "K78-ABK",
+      "topicTitle": "3.2.2.2 Atmung, Blut und Kreislaufsystem",
+      "headingTitle": "Atmung, Blut und Kreislaufsystem",
+      "title": "Kreislauf des Blutes beschreiben und Struktur und Funktion von Herz und Blutgefäßen erläutern.",
+      "description": "Die lernende Person kann Kreislauf des Blutes beschreiben und Struktur und Funktion von Herz und Blutgefäßen erläutern.",
+      "sourceDocumentKey": "BW-BP2016-GYM-BIOLOGIE-V2-2022",
+      "sourceRef": "Bildungsplan Baden-Wuerttemberg 2016 Gymnasium Biologie, ueberarbeitete Fassung 08.03.2022, 3.2.2.2 Atmung, Blut und Kreislaufsystem, S. 16.",
+      "sourceText": "Kreislauf des Blutes beschreiben und Struktur und Funktion von Herz und Blutgefäßen erläutern.",
+      "sourceSpan": {
+        "passageId": "bw-biology-seki-bp2016-v2-k78-abk",
+        "label": "Atmung, Blut und Kreislaufsystem: Kreislauf des Blutes beschreiben und Struktur und Funktion von Herz und Blutgefäßen erläutern."
+      },
+      "sourceSpanText": "3.2.2.2 Atmung, Blut und Kreislaufsystem, Klassen 7/8, Source-Ziel 3",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-BW",
+        "stage:SekI",
+        "grade:7/8"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "498f082d-742c-5f21-9d09-16feeb4276a6",
+          "d773ac89-37ef-51cd-a6ee-a75a6b10c43b"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "bw-biology-seki-bp2016-v2-k78-abk-004-dc47d184",
+      "passageId": "bw-biology-seki-bp2016-v2-k78-abk",
+      "topicCode": "K78-ABK",
+      "topicTitle": "3.2.2.2 Atmung, Blut und Kreislaufsystem",
+      "headingTitle": "Atmung, Blut und Kreislaufsystem",
+      "title": "Bau des Herzens untersuchen.",
+      "description": "Die lernende Person kann Bau des Herzens untersuchen.",
+      "sourceDocumentKey": "BW-BP2016-GYM-BIOLOGIE-V2-2022",
+      "sourceRef": "Bildungsplan Baden-Wuerttemberg 2016 Gymnasium Biologie, ueberarbeitete Fassung 08.03.2022, 3.2.2.2 Atmung, Blut und Kreislaufsystem, S. 16.",
+      "sourceText": "Bau des Herzens untersuchen.",
+      "sourceSpan": {
+        "passageId": "bw-biology-seki-bp2016-v2-k78-abk",
+        "label": "Atmung, Blut und Kreislaufsystem: Bau des Herzens untersuchen."
+      },
+      "sourceSpanText": "3.2.2.2 Atmung, Blut und Kreislaufsystem, Klassen 7/8, Source-Ziel 4",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-BW",
+        "stage:SekI",
+        "grade:7/8"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "498f082d-742c-5f21-9d09-16feeb4276a6",
+          "26aa47b7-e5cc-5131-8980-0ec3271758b6"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "bw-biology-seki-bp2016-v2-k78-abk-005-6cfc4f37",
+      "passageId": "bw-biology-seki-bp2016-v2-k78-abk",
+      "topicCode": "K78-ABK",
+      "topicTitle": "3.2.2.2 Atmung, Blut und Kreislaufsystem",
+      "headingTitle": "Atmung, Blut und Kreislaufsystem",
+      "title": "Atmung und Kreislauffunktionen in Abhängigkeit von Parametern untersuchen.",
+      "description": "Die lernende Person kann Atmung und Kreislauffunktionen in Abhängigkeit von Parametern untersuchen.",
+      "sourceDocumentKey": "BW-BP2016-GYM-BIOLOGIE-V2-2022",
+      "sourceRef": "Bildungsplan Baden-Wuerttemberg 2016 Gymnasium Biologie, ueberarbeitete Fassung 08.03.2022, 3.2.2.2 Atmung, Blut und Kreislaufsystem, S. 16.",
+      "sourceText": "Atmung und Kreislauffunktionen in Abhängigkeit von Parametern untersuchen.",
+      "sourceSpan": {
+        "passageId": "bw-biology-seki-bp2016-v2-k78-abk",
+        "label": "Atmung, Blut und Kreislaufsystem: Atmung und Kreislauffunktionen in Abhängigkeit von Parametern untersuchen."
+      },
+      "sourceSpanText": "3.2.2.2 Atmung, Blut und Kreislaufsystem, Klassen 7/8, Source-Ziel 5",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-BW",
+        "stage:SekI",
+        "grade:7/8"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "498f082d-742c-5f21-9d09-16feeb4276a6",
+          "26aa47b7-e5cc-5131-8980-0ec3271758b6"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "bw-biology-seki-bp2016-v2-k78-abk-006-d818eb5e",
+      "passageId": "bw-biology-seki-bp2016-v2-k78-abk",
+      "topicCode": "K78-ABK",
+      "topicTitle": "3.2.2.2 Atmung, Blut und Kreislaufsystem",
+      "headingTitle": "Atmung, Blut und Kreislaufsystem",
+      "title": "Gesundheitliche Gefahren des Rauchens beschreiben und Nichtrauchen begründen.",
+      "description": "Die lernende Person kann Gesundheitliche Gefahren des Rauchens beschreiben und Nichtrauchen begründen.",
+      "sourceDocumentKey": "BW-BP2016-GYM-BIOLOGIE-V2-2022",
+      "sourceRef": "Bildungsplan Baden-Wuerttemberg 2016 Gymnasium Biologie, ueberarbeitete Fassung 08.03.2022, 3.2.2.2 Atmung, Blut und Kreislaufsystem, S. 16.",
+      "sourceText": "Gesundheitliche Gefahren des Rauchens beschreiben und Nichtrauchen begründen.",
+      "sourceSpan": {
+        "passageId": "bw-biology-seki-bp2016-v2-k78-abk",
+        "label": "Atmung, Blut und Kreislaufsystem: Gesundheitliche Gefahren des Rauchens beschreiben und Nichtrauchen begründen."
+      },
+      "sourceSpanText": "3.2.2.2 Atmung, Blut und Kreislaufsystem, Klassen 7/8, Source-Ziel 6",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-BW",
+        "stage:SekI",
+        "grade:7/8"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "668c01c7-0887-5a54-84ff-648facd8e962",
+          "6de6ad3b-1099-5f51-848d-96de4119ed01"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "bw-biology-seki-bp2016-v2-k78-fe-001-8cc798b4",
+      "passageId": "bw-biology-seki-bp2016-v2-k78-fe",
+      "topicCode": "K78-FE",
+      "topicTitle": "3.2.2.3 Fortpflanzung und Entwicklung",
+      "headingTitle": "Fortpflanzung und Entwicklung",
+      "title": "Befruchtung und Entstehung eines Embryos aus einer befruchteten Eizelle beschreiben.",
+      "description": "Die lernende Person kann Befruchtung und Entstehung eines Embryos aus einer befruchteten Eizelle beschreiben.",
+      "sourceDocumentKey": "BW-BP2016-GYM-BIOLOGIE-V2-2022",
+      "sourceRef": "Bildungsplan Baden-Wuerttemberg 2016 Gymnasium Biologie, ueberarbeitete Fassung 08.03.2022, 3.2.2.3 Fortpflanzung und Entwicklung, S. 17.",
+      "sourceText": "Befruchtung und Entstehung eines Embryos aus einer befruchteten Eizelle beschreiben.",
+      "sourceSpan": {
+        "passageId": "bw-biology-seki-bp2016-v2-k78-fe",
+        "label": "Fortpflanzung und Entwicklung: Befruchtung und Entstehung eines Embryos aus einer befruchteten Eizelle beschreiben."
+      },
+      "sourceSpanText": "3.2.2.3 Fortpflanzung und Entwicklung, Klassen 7/8, Source-Ziel 1",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-BW",
+        "stage:SekI",
+        "grade:7/8"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "a6f2bcaf-df2d-5144-aa8f-49396b12d31b",
+          "2517be3f-e42f-5e41-889d-70f00dc24686"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "bw-biology-seki-bp2016-v2-k78-fe-002-403c5c5f",
+      "passageId": "bw-biology-seki-bp2016-v2-k78-fe",
+      "topicCode": "K78-FE",
+      "topicTitle": "3.2.2.3 Fortpflanzung und Entwicklung",
+      "headingTitle": "Fortpflanzung und Entwicklung",
+      "title": "Entwicklungsschritte der Schwangerschaft und Folgen äußerer Einflüsse beschreiben.",
+      "description": "Die lernende Person kann Entwicklungsschritte der Schwangerschaft und Folgen äußerer Einflüsse beschreiben.",
+      "sourceDocumentKey": "BW-BP2016-GYM-BIOLOGIE-V2-2022",
+      "sourceRef": "Bildungsplan Baden-Wuerttemberg 2016 Gymnasium Biologie, ueberarbeitete Fassung 08.03.2022, 3.2.2.3 Fortpflanzung und Entwicklung, S. 17.",
+      "sourceText": "Entwicklungsschritte der Schwangerschaft und Folgen äußerer Einflüsse beschreiben.",
+      "sourceSpan": {
+        "passageId": "bw-biology-seki-bp2016-v2-k78-fe",
+        "label": "Fortpflanzung und Entwicklung: Entwicklungsschritte der Schwangerschaft und Folgen äußerer Einflüsse beschreiben."
+      },
+      "sourceSpanText": "3.2.2.3 Fortpflanzung und Entwicklung, Klassen 7/8, Source-Ziel 2",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-BW",
+        "stage:SekI",
+        "grade:7/8"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "848334f3-c719-55d9-b5f4-42836e0d876a",
+          "c5435624-7b6a-5330-b8cc-0d3186e19911"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "bw-biology-seki-bp2016-v2-k78-fe-003-7e93b840",
+      "passageId": "bw-biology-seki-bp2016-v2-k78-fe",
+      "topicCode": "K78-FE",
+      "topicTitle": "3.2.2.3 Fortpflanzung und Entwicklung",
+      "headingTitle": "Fortpflanzung und Entwicklung",
+      "title": "Methoden der Empfängnisverhütung vergleichen und beurteilen.",
+      "description": "Die lernende Person kann Methoden der Empfängnisverhütung vergleichen und beurteilen.",
+      "sourceDocumentKey": "BW-BP2016-GYM-BIOLOGIE-V2-2022",
+      "sourceRef": "Bildungsplan Baden-Wuerttemberg 2016 Gymnasium Biologie, ueberarbeitete Fassung 08.03.2022, 3.2.2.3 Fortpflanzung und Entwicklung, S. 17.",
+      "sourceText": "Methoden der Empfängnisverhütung vergleichen und beurteilen.",
+      "sourceSpan": {
+        "passageId": "bw-biology-seki-bp2016-v2-k78-fe",
+        "label": "Fortpflanzung und Entwicklung: Methoden der Empfängnisverhütung vergleichen und beurteilen."
+      },
+      "sourceSpanText": "3.2.2.3 Fortpflanzung und Entwicklung, Klassen 7/8, Source-Ziel 3",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-BW",
+        "stage:SekI",
+        "grade:7/8"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "3ee4b55c-81c3-5826-9d26-1a8c22cbd0b8"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "bw-biology-seki-bp2016-v2-k78-fe-004-3ce2231b",
+      "passageId": "bw-biology-seki-bp2016-v2-k78-fe",
+      "topicCode": "K78-FE",
+      "topicTitle": "3.2.2.3 Fortpflanzung und Entwicklung",
+      "headingTitle": "Fortpflanzung und Entwicklung",
+      "title": "Bedeutung von Kondomen zum Schutz vor sexuell übertragbaren Infektionskrankheiten beschreiben.",
+      "description": "Die lernende Person kann Bedeutung von Kondomen zum Schutz vor sexuell übertragbaren Infektionskrankheiten beschreiben.",
+      "sourceDocumentKey": "BW-BP2016-GYM-BIOLOGIE-V2-2022",
+      "sourceRef": "Bildungsplan Baden-Wuerttemberg 2016 Gymnasium Biologie, ueberarbeitete Fassung 08.03.2022, 3.2.2.3 Fortpflanzung und Entwicklung, S. 17.",
+      "sourceText": "Bedeutung von Kondomen zum Schutz vor sexuell übertragbaren Infektionskrankheiten beschreiben.",
+      "sourceSpan": {
+        "passageId": "bw-biology-seki-bp2016-v2-k78-fe",
+        "label": "Fortpflanzung und Entwicklung: Bedeutung von Kondomen zum Schutz vor sexuell übertragbaren Infektionskrankheiten beschreiben."
+      },
+      "sourceSpanText": "3.2.2.3 Fortpflanzung und Entwicklung, Klassen 7/8, Source-Ziel 4",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-BW",
+        "stage:SekI",
+        "grade:7/8"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "7b09d025-8465-505e-b196-61e1811309db",
+          "63856e48-8ed9-5942-8a1d-1d53ad29416d",
+          "3ee4b55c-81c3-5826-9d26-1a8c22cbd0b8"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "bw-biology-seki-bp2016-v2-k78-fe-005-abc3590e",
+      "passageId": "bw-biology-seki-bp2016-v2-k78-fe",
+      "topicCode": "K78-FE",
+      "topicTitle": "3.2.2.3 Fortpflanzung und Entwicklung",
+      "headingTitle": "Fortpflanzung und Entwicklung",
+      "title": "Formen sexueller Orientierung und geschlechtlicher Identität wertfrei beschreiben.",
+      "description": "Die lernende Person kann Formen sexueller Orientierung und geschlechtlicher Identität wertfrei beschreiben.",
+      "sourceDocumentKey": "BW-BP2016-GYM-BIOLOGIE-V2-2022",
+      "sourceRef": "Bildungsplan Baden-Wuerttemberg 2016 Gymnasium Biologie, ueberarbeitete Fassung 08.03.2022, 3.2.2.3 Fortpflanzung und Entwicklung, S. 17.",
+      "sourceText": "Formen sexueller Orientierung und geschlechtlicher Identität wertfrei beschreiben.",
+      "sourceSpan": {
+        "passageId": "bw-biology-seki-bp2016-v2-k78-fe",
+        "label": "Fortpflanzung und Entwicklung: Formen sexueller Orientierung und geschlechtlicher Identität wertfrei beschreiben."
+      },
+      "sourceSpanText": "3.2.2.3 Fortpflanzung und Entwicklung, Klassen 7/8, Source-Ziel 5",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-BW",
+        "stage:SekI",
+        "grade:7/8"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "4b7fdc2c-9dbe-5439-8d84-295abc240eec",
+          "d6727804-a8d4-5438-9b98-4aea8e7f4f80",
+          "6add2bde-b647-577d-a899-6fd62497656a"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "bw-biology-seki-bp2016-v2-k78-fe-006-fbb8482b",
+      "passageId": "bw-biology-seki-bp2016-v2-k78-fe",
+      "topicCode": "K78-FE",
+      "topicTitle": "3.2.2.3 Fortpflanzung und Entwicklung",
+      "headingTitle": "Fortpflanzung und Entwicklung",
+      "title": "Bedeutung der Sexualität für Partnerschaft beschreiben.",
+      "description": "Die lernende Person kann Bedeutung der Sexualität für Partnerschaft beschreiben.",
+      "sourceDocumentKey": "BW-BP2016-GYM-BIOLOGIE-V2-2022",
+      "sourceRef": "Bildungsplan Baden-Wuerttemberg 2016 Gymnasium Biologie, ueberarbeitete Fassung 08.03.2022, 3.2.2.3 Fortpflanzung und Entwicklung, S. 17.",
+      "sourceText": "Bedeutung der Sexualität für Partnerschaft beschreiben.",
+      "sourceSpan": {
+        "passageId": "bw-biology-seki-bp2016-v2-k78-fe",
+        "label": "Fortpflanzung und Entwicklung: Bedeutung der Sexualität für Partnerschaft beschreiben."
+      },
+      "sourceSpanText": "3.2.2.3 Fortpflanzung und Entwicklung, Klassen 7/8, Source-Ziel 6",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-BW",
+        "stage:SekI",
+        "grade:7/8"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "4b7fdc2c-9dbe-5439-8d84-295abc240eec",
+          "d6727804-a8d4-5438-9b98-4aea8e7f4f80"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "bw-biology-seki-bp2016-v2-k78-is-001-aa8c850f",
+      "passageId": "bw-biology-seki-bp2016-v2-k78-is",
+      "topicCode": "K78-IS",
+      "topicTitle": "3.2.2.4 Informationssysteme",
+      "headingTitle": "Informationssysteme",
+      "title": "Reiz-Reaktions-Schema an einem Beispiel erläutern.",
+      "description": "Die lernende Person kann Reiz-Reaktions-Schema an einem Beispiel erläutern.",
+      "sourceDocumentKey": "BW-BP2016-GYM-BIOLOGIE-V2-2022",
+      "sourceRef": "Bildungsplan Baden-Wuerttemberg 2016 Gymnasium Biologie, ueberarbeitete Fassung 08.03.2022, 3.2.2.4 Informationssysteme, S. 18.",
+      "sourceText": "Reiz-Reaktions-Schema an einem Beispiel erläutern.",
+      "sourceSpan": {
+        "passageId": "bw-biology-seki-bp2016-v2-k78-is",
+        "label": "Informationssysteme: Reiz-Reaktions-Schema an einem Beispiel erläutern."
+      },
+      "sourceSpanText": "3.2.2.4 Informationssysteme, Klassen 7/8, Source-Ziel 1",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-BW",
+        "stage:SekI",
+        "grade:7/8"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "33262175-0139-5d8a-a3f2-641191459f71"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "bw-biology-seki-bp2016-v2-k78-is-002-27d62b49",
+      "passageId": "bw-biology-seki-bp2016-v2-k78-is",
+      "topicCode": "K78-IS",
+      "topicTitle": "3.2.2.4 Informationssysteme",
+      "headingTitle": "Informationssysteme",
+      "title": "Sinnesorgane ihren adäquaten Reizen zuordnen und Sinneszelle als Signalwandler beschreiben.",
+      "description": "Die lernende Person kann Sinnesorgane ihren adäquaten Reizen zuordnen und Sinneszelle als Signalwandler beschreiben.",
+      "sourceDocumentKey": "BW-BP2016-GYM-BIOLOGIE-V2-2022",
+      "sourceRef": "Bildungsplan Baden-Wuerttemberg 2016 Gymnasium Biologie, ueberarbeitete Fassung 08.03.2022, 3.2.2.4 Informationssysteme, S. 18.",
+      "sourceText": "Sinnesorgane ihren adäquaten Reizen zuordnen und Sinneszelle als Signalwandler beschreiben.",
+      "sourceSpan": {
+        "passageId": "bw-biology-seki-bp2016-v2-k78-is",
+        "label": "Informationssysteme: Sinnesorgane ihren adäquaten Reizen zuordnen und Sinneszelle als Signalwandler beschreiben."
+      },
+      "sourceSpanText": "3.2.2.4 Informationssysteme, Klassen 7/8, Source-Ziel 2",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-BW",
+        "stage:SekI",
+        "grade:7/8"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "eee09949-587f-51d2-8f51-aa6c40c71bbf"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "bw-biology-seki-bp2016-v2-k78-is-003-9274be12",
+      "passageId": "bw-biology-seki-bp2016-v2-k78-is",
+      "topicCode": "K78-IS",
+      "topicTitle": "3.2.2.4 Informationssysteme",
+      "headingTitle": "Informationssysteme",
+      "title": "Gefahren für Sinnesorgane erläutern und Schutzmaßnahmen nennen.",
+      "description": "Die lernende Person kann Gefahren für Sinnesorgane erläutern und Schutzmaßnahmen nennen.",
+      "sourceDocumentKey": "BW-BP2016-GYM-BIOLOGIE-V2-2022",
+      "sourceRef": "Bildungsplan Baden-Wuerttemberg 2016 Gymnasium Biologie, ueberarbeitete Fassung 08.03.2022, 3.2.2.4 Informationssysteme, S. 18.",
+      "sourceText": "Gefahren für Sinnesorgane erläutern und Schutzmaßnahmen nennen.",
+      "sourceSpan": {
+        "passageId": "bw-biology-seki-bp2016-v2-k78-is",
+        "label": "Informationssysteme: Gefahren für Sinnesorgane erläutern und Schutzmaßnahmen nennen."
+      },
+      "sourceSpanText": "3.2.2.4 Informationssysteme, Klassen 7/8, Source-Ziel 3",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-BW",
+        "stage:SekI",
+        "grade:7/8"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "967b666d-aed4-50d8-be73-70269cb306db",
+          "6de6ad3b-1099-5f51-848d-96de4119ed01"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "bw-biology-seki-bp2016-v2-k78-is-004-c77c6410",
+      "passageId": "bw-biology-seki-bp2016-v2-k78-is",
+      "topicCode": "K78-IS",
+      "topicTitle": "3.2.2.4 Informationssysteme",
+      "headingTitle": "Informationssysteme",
+      "title": "Bau des Auges beschreiben und Funktion der Bestandteile erläutern.",
+      "description": "Die lernende Person kann Bau des Auges beschreiben und Funktion der Bestandteile erläutern.",
+      "sourceDocumentKey": "BW-BP2016-GYM-BIOLOGIE-V2-2022",
+      "sourceRef": "Bildungsplan Baden-Wuerttemberg 2016 Gymnasium Biologie, ueberarbeitete Fassung 08.03.2022, 3.2.2.4 Informationssysteme, S. 18.",
+      "sourceText": "Bau des Auges beschreiben und Funktion der Bestandteile erläutern.",
+      "sourceSpan": {
+        "passageId": "bw-biology-seki-bp2016-v2-k78-is",
+        "label": "Informationssysteme: Bau des Auges beschreiben und Funktion der Bestandteile erläutern."
+      },
+      "sourceSpanText": "3.2.2.4 Informationssysteme, Klassen 7/8, Source-Ziel 4",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-BW",
+        "stage:SekI",
+        "grade:7/8"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "1d8d64b6-b2d8-526a-8e24-23e8b6e9eb30",
+          "9ac89f04-4483-5aac-8636-65c9d967048a"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "bw-biology-seki-bp2016-v2-k78-is-005-37cf45f9",
+      "passageId": "bw-biology-seki-bp2016-v2-k78-is",
+      "topicCode": "K78-IS",
+      "topicTitle": "3.2.2.4 Informationssysteme",
+      "headingTitle": "Informationssysteme",
+      "title": "Anatomische Ursachen für Fehlsichtigkeit beschreiben und Korrekturmöglichkeiten begründen.",
+      "description": "Die lernende Person kann Anatomische Ursachen für Fehlsichtigkeit beschreiben und Korrekturmöglichkeiten begründen.",
+      "sourceDocumentKey": "BW-BP2016-GYM-BIOLOGIE-V2-2022",
+      "sourceRef": "Bildungsplan Baden-Wuerttemberg 2016 Gymnasium Biologie, ueberarbeitete Fassung 08.03.2022, 3.2.2.4 Informationssysteme, S. 18.",
+      "sourceText": "Anatomische Ursachen für Fehlsichtigkeit beschreiben und Korrekturmöglichkeiten begründen.",
+      "sourceSpan": {
+        "passageId": "bw-biology-seki-bp2016-v2-k78-is",
+        "label": "Informationssysteme: Anatomische Ursachen für Fehlsichtigkeit beschreiben und Korrekturmöglichkeiten begründen."
+      },
+      "sourceSpanText": "3.2.2.4 Informationssysteme, Klassen 7/8, Source-Ziel 5",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-BW",
+        "stage:SekI",
+        "grade:7/8"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "1d8d64b6-b2d8-526a-8e24-23e8b6e9eb30",
+          "9ac89f04-4483-5aac-8636-65c9d967048a",
+          "967b666d-aed4-50d8-be73-70269cb306db"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "bw-biology-seki-bp2016-v2-k78-is-006-91e193a9",
+      "passageId": "bw-biology-seki-bp2016-v2-k78-is",
+      "topicCode": "K78-IS",
+      "topicTitle": "3.2.2.4 Informationssysteme",
+      "headingTitle": "Informationssysteme",
+      "title": "Wirkungsweise von Hormonen als Botenstoffe beschreiben.",
+      "description": "Die lernende Person kann Wirkungsweise von Hormonen als Botenstoffe beschreiben.",
+      "sourceDocumentKey": "BW-BP2016-GYM-BIOLOGIE-V2-2022",
+      "sourceRef": "Bildungsplan Baden-Wuerttemberg 2016 Gymnasium Biologie, ueberarbeitete Fassung 08.03.2022, 3.2.2.4 Informationssysteme, S. 18.",
+      "sourceText": "Wirkungsweise von Hormonen als Botenstoffe beschreiben.",
+      "sourceSpan": {
+        "passageId": "bw-biology-seki-bp2016-v2-k78-is",
+        "label": "Informationssysteme: Wirkungsweise von Hormonen als Botenstoffe beschreiben."
+      },
+      "sourceSpanText": "3.2.2.4 Informationssysteme, Klassen 7/8, Source-Ziel 6",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-BW",
+        "stage:SekI",
+        "grade:7/8"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "91f62a7b-3b6a-5918-94ca-3f345f1f6584",
+          "249f4c5d-fd23-57c7-ac62-773d62c33b49"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "bw-biology-seki-bp2016-v2-k78-is-007-cafe891e",
+      "passageId": "bw-biology-seki-bp2016-v2-k78-is",
+      "topicCode": "K78-IS",
+      "topicTitle": "3.2.2.4 Informationssysteme",
+      "headingTitle": "Informationssysteme",
+      "title": "Hormonelle Regelung des Blutzuckerspiegels am Funktionsmodell beschreiben.",
+      "description": "Die lernende Person kann Hormonelle Regelung des Blutzuckerspiegels am Funktionsmodell beschreiben.",
+      "sourceDocumentKey": "BW-BP2016-GYM-BIOLOGIE-V2-2022",
+      "sourceRef": "Bildungsplan Baden-Wuerttemberg 2016 Gymnasium Biologie, ueberarbeitete Fassung 08.03.2022, 3.2.2.4 Informationssysteme, S. 18.",
+      "sourceText": "Hormonelle Regelung des Blutzuckerspiegels am Funktionsmodell beschreiben.",
+      "sourceSpan": {
+        "passageId": "bw-biology-seki-bp2016-v2-k78-is",
+        "label": "Informationssysteme: Hormonelle Regelung des Blutzuckerspiegels am Funktionsmodell beschreiben."
+      },
+      "sourceSpanText": "3.2.2.4 Informationssysteme, Klassen 7/8, Source-Ziel 7",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-BW",
+        "stage:SekI",
+        "grade:7/8"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "1f3cdf59-05e0-5d45-ae74-3d2d1a2c31a5"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "bw-biology-seki-bp2016-v2-k78-is-008-4effa067",
+      "passageId": "bw-biology-seki-bp2016-v2-k78-is",
+      "topicCode": "K78-IS",
+      "topicTitle": "3.2.2.4 Informationssysteme",
+      "headingTitle": "Informationssysteme",
+      "title": "Ursachen von Diabetes mellitus nennen und Therapiemaßnahmen beschreiben.",
+      "description": "Die lernende Person kann Ursachen von Diabetes mellitus nennen und Therapiemaßnahmen beschreiben.",
+      "sourceDocumentKey": "BW-BP2016-GYM-BIOLOGIE-V2-2022",
+      "sourceRef": "Bildungsplan Baden-Wuerttemberg 2016 Gymnasium Biologie, ueberarbeitete Fassung 08.03.2022, 3.2.2.4 Informationssysteme, S. 18.",
+      "sourceText": "Ursachen von Diabetes mellitus nennen und Therapiemaßnahmen beschreiben.",
+      "sourceSpan": {
+        "passageId": "bw-biology-seki-bp2016-v2-k78-is",
+        "label": "Informationssysteme: Ursachen von Diabetes mellitus nennen und Therapiemaßnahmen beschreiben."
+      },
+      "sourceSpanText": "3.2.2.4 Informationssysteme, Klassen 7/8, Source-Ziel 8",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-BW",
+        "stage:SekI",
+        "grade:7/8"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "1f3cdf59-05e0-5d45-ae74-3d2d1a2c31a5",
+          "6de6ad3b-1099-5f51-848d-96de4119ed01"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "bw-biology-seki-bp2016-v2-k78-is-009-1caab529",
+      "passageId": "bw-biology-seki-bp2016-v2-k78-is",
+      "topicCode": "K78-IS",
+      "topicTitle": "3.2.2.4 Informationssysteme",
+      "headingTitle": "Informationssysteme",
+      "title": "Stressreaktion, Stressoren, körperliche Auswirkungen und Möglichkeiten der Stressbewältigung beschreiben und bewerten.",
+      "description": "Die lernende Person kann Stressreaktion, Stressoren, körperliche Auswirkungen und Möglichkeiten der Stressbewältigung beschreiben und bewerten.",
+      "sourceDocumentKey": "BW-BP2016-GYM-BIOLOGIE-V2-2022",
+      "sourceRef": "Bildungsplan Baden-Wuerttemberg 2016 Gymnasium Biologie, ueberarbeitete Fassung 08.03.2022, 3.2.2.4 Informationssysteme, S. 18.",
+      "sourceText": "Stressreaktion, Stressoren, körperliche Auswirkungen und Möglichkeiten der Stressbewältigung beschreiben und bewerten.",
+      "sourceSpan": {
+        "passageId": "bw-biology-seki-bp2016-v2-k78-is",
+        "label": "Informationssysteme: Stressreaktion, Stressoren, körperliche Auswirkungen und Möglichkeiten der Stressbewältigung beschreiben und bewerten."
+      },
+      "sourceSpanText": "3.2.2.4 Informationssysteme, Klassen 7/8, Source-Ziel 9",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-BW",
+        "stage:SekI",
+        "grade:7/8"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "6de6ad3b-1099-5f51-848d-96de4119ed01"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "bw-biology-seki-bp2016-v2-k78-oe-001-b788aba0",
+      "passageId": "bw-biology-seki-bp2016-v2-k78-oe",
+      "topicCode": "K78-OE",
+      "topicTitle": "3.2.3 Ökologie",
+      "headingTitle": "Ökologie",
+      "title": "Schulnahes Ökosystem untersuchen und ausgewählte Arten bestimmen.",
+      "description": "Die lernende Person kann Schulnahes Ökosystem untersuchen und ausgewählte Arten bestimmen.",
+      "sourceDocumentKey": "BW-BP2016-GYM-BIOLOGIE-V2-2022",
+      "sourceRef": "Bildungsplan Baden-Wuerttemberg 2016 Gymnasium Biologie, ueberarbeitete Fassung 08.03.2022, 3.2.3 Ökologie, S. 19.",
+      "sourceText": "Schulnahes Ökosystem untersuchen und ausgewählte Arten bestimmen.",
+      "sourceSpan": {
+        "passageId": "bw-biology-seki-bp2016-v2-k78-oe",
+        "label": "Ökologie: Schulnahes Ökosystem untersuchen und ausgewählte Arten bestimmen."
+      },
+      "sourceSpanText": "3.2.3 Ökologie, Klassen 7/8, Source-Ziel 1",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-BW",
+        "stage:SekI",
+        "grade:7/8"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "ac4a650d-45a9-519d-9e4d-1f87910f8844",
+          "ebf5730d-4e40-5d16-ae93-05106bcd2f70",
+          "f95b3b49-dacd-5d17-be2d-98b404b709c3",
+          "8e7f50cb-bad6-5356-b142-b7d026b7f374",
+          "0380f992-723a-513d-8c3f-8ca7f8e0394f"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "bw-biology-seki-bp2016-v2-k78-oe-002-46886939",
+      "passageId": "bw-biology-seki-bp2016-v2-k78-oe",
+      "topicCode": "K78-OE",
+      "topicTitle": "3.2.3 Ökologie",
+      "headingTitle": "Ökologie",
+      "title": "Angepasstheit von Arten an einen Umweltfaktor erläutern.",
+      "description": "Die lernende Person kann Angepasstheit von Arten an einen Umweltfaktor erläutern.",
+      "sourceDocumentKey": "BW-BP2016-GYM-BIOLOGIE-V2-2022",
+      "sourceRef": "Bildungsplan Baden-Wuerttemberg 2016 Gymnasium Biologie, ueberarbeitete Fassung 08.03.2022, 3.2.3 Ökologie, S. 19.",
+      "sourceText": "Angepasstheit von Arten an einen Umweltfaktor erläutern.",
+      "sourceSpan": {
+        "passageId": "bw-biology-seki-bp2016-v2-k78-oe",
+        "label": "Ökologie: Angepasstheit von Arten an einen Umweltfaktor erläutern."
+      },
+      "sourceSpanText": "3.2.3 Ökologie, Klassen 7/8, Source-Ziel 2",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-BW",
+        "stage:SekI",
+        "grade:7/8"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "ac69483b-6a77-573d-a7c0-add32bb867e2",
+          "8e7f50cb-bad6-5356-b142-b7d026b7f374",
+          "7eeb9de9-9a8e-5932-8f60-183367c87d09",
+          "5ef8ffbf-aed6-5952-910a-1553580bac54",
+          "5bfb8ede-235c-580f-b2c9-4eb84bba4d0a"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "bw-biology-seki-bp2016-v2-k78-oe-003-b733449a",
+      "passageId": "bw-biology-seki-bp2016-v2-k78-oe",
+      "topicCode": "K78-OE",
+      "topicTitle": "3.2.3 Ökologie",
+      "headingTitle": "Ökologie",
+      "title": "Nahrungskette und Nahrungsnetz vergleichen sowie Produzenten, Konsumenten und Destruenten darstellen.",
+      "description": "Die lernende Person kann Nahrungskette und Nahrungsnetz vergleichen sowie Produzenten, Konsumenten und Destruenten darstellen.",
+      "sourceDocumentKey": "BW-BP2016-GYM-BIOLOGIE-V2-2022",
+      "sourceRef": "Bildungsplan Baden-Wuerttemberg 2016 Gymnasium Biologie, ueberarbeitete Fassung 08.03.2022, 3.2.3 Ökologie, S. 19.",
+      "sourceText": "Nahrungskette und Nahrungsnetz vergleichen sowie Produzenten, Konsumenten und Destruenten darstellen.",
+      "sourceSpan": {
+        "passageId": "bw-biology-seki-bp2016-v2-k78-oe",
+        "label": "Ökologie: Nahrungskette und Nahrungsnetz vergleichen sowie Produzenten, Konsumenten und Destruenten darstellen."
+      },
+      "sourceSpanText": "3.2.3 Ökologie, Klassen 7/8, Source-Ziel 3",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-BW",
+        "stage:SekI",
+        "grade:7/8"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "a8af382c-0410-5aef-8908-b72b2fb8a476",
+          "ea5d75af-d97f-593a-bea4-722a41d12eb8"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "bw-biology-seki-bp2016-v2-k78-oe-004-1e660dd7",
+      "passageId": "bw-biology-seki-bp2016-v2-k78-oe",
+      "topicCode": "K78-OE",
+      "topicTitle": "3.2.3 Ökologie",
+      "headingTitle": "Ökologie",
+      "title": "Beziehungen zwischen Lebewesen darstellen.",
+      "description": "Die lernende Person kann Beziehungen zwischen Lebewesen darstellen.",
+      "sourceDocumentKey": "BW-BP2016-GYM-BIOLOGIE-V2-2022",
+      "sourceRef": "Bildungsplan Baden-Wuerttemberg 2016 Gymnasium Biologie, ueberarbeitete Fassung 08.03.2022, 3.2.3 Ökologie, S. 19.",
+      "sourceText": "Beziehungen zwischen Lebewesen darstellen.",
+      "sourceSpan": {
+        "passageId": "bw-biology-seki-bp2016-v2-k78-oe",
+        "label": "Ökologie: Beziehungen zwischen Lebewesen darstellen."
+      },
+      "sourceSpanText": "3.2.3 Ökologie, Klassen 7/8, Source-Ziel 4",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-BW",
+        "stage:SekI",
+        "grade:7/8"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "a8af382c-0410-5aef-8908-b72b2fb8a476",
+          "ea5d75af-d97f-593a-bea4-722a41d12eb8"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "bw-biology-seki-bp2016-v2-k78-oe-005-f364f5b5",
+      "passageId": "bw-biology-seki-bp2016-v2-k78-oe",
+      "topicCode": "K78-OE",
+      "topicTitle": "3.2.3 Ökologie",
+      "headingTitle": "Ökologie",
+      "title": "Abnahme der Biomasse entlang einer Nahrungskette erläutern.",
+      "description": "Die lernende Person kann Abnahme der Biomasse entlang einer Nahrungskette erläutern.",
+      "sourceDocumentKey": "BW-BP2016-GYM-BIOLOGIE-V2-2022",
+      "sourceRef": "Bildungsplan Baden-Wuerttemberg 2016 Gymnasium Biologie, ueberarbeitete Fassung 08.03.2022, 3.2.3 Ökologie, S. 19.",
+      "sourceText": "Abnahme der Biomasse entlang einer Nahrungskette erläutern.",
+      "sourceSpan": {
+        "passageId": "bw-biology-seki-bp2016-v2-k78-oe",
+        "label": "Ökologie: Abnahme der Biomasse entlang einer Nahrungskette erläutern."
+      },
+      "sourceSpanText": "3.2.3 Ökologie, Klassen 7/8, Source-Ziel 5",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-BW",
+        "stage:SekI",
+        "grade:7/8"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "ea5d75af-d97f-593a-bea4-722a41d12eb8"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "bw-biology-seki-bp2016-v2-k78-oe-006-a865c969",
+      "passageId": "bw-biology-seki-bp2016-v2-k78-oe",
+      "topicCode": "K78-OE",
+      "topicTitle": "3.2.3 Ökologie",
+      "headingTitle": "Ökologie",
+      "title": "Kohlenstoffkreislauf beschreiben und menschliche Einflüsse beurteilen.",
+      "description": "Die lernende Person kann Kohlenstoffkreislauf beschreiben und menschliche Einflüsse beurteilen.",
+      "sourceDocumentKey": "BW-BP2016-GYM-BIOLOGIE-V2-2022",
+      "sourceRef": "Bildungsplan Baden-Wuerttemberg 2016 Gymnasium Biologie, ueberarbeitete Fassung 08.03.2022, 3.2.3 Ökologie, S. 19.",
+      "sourceText": "Kohlenstoffkreislauf beschreiben und menschliche Einflüsse beurteilen.",
+      "sourceSpan": {
+        "passageId": "bw-biology-seki-bp2016-v2-k78-oe",
+        "label": "Ökologie: Kohlenstoffkreislauf beschreiben und menschliche Einflüsse beurteilen."
+      },
+      "sourceSpanText": "3.2.3 Ökologie, Klassen 7/8, Source-Ziel 6",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-BW",
+        "stage:SekI",
+        "grade:7/8"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "8e7c6b98-fb1a-5f08-8531-685a4ffba4ad",
+          "fdc82200-dfc1-53ec-a5b9-bd4cfaf1e35f"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "bw-biology-seki-bp2016-v2-k78-oe-007-14d30a0b",
+      "passageId": "bw-biology-seki-bp2016-v2-k78-oe",
+      "topicCode": "K78-OE",
+      "topicTitle": "3.2.3 Ökologie",
+      "headingTitle": "Ökologie",
+      "title": "Wert von Artenvielfalt darstellen und nachhaltige Natur- und Artenschutzmaßnahmen entwickeln.",
+      "description": "Die lernende Person kann Wert von Artenvielfalt darstellen und nachhaltige Natur- und Artenschutzmaßnahmen entwickeln.",
+      "sourceDocumentKey": "BW-BP2016-GYM-BIOLOGIE-V2-2022",
+      "sourceRef": "Bildungsplan Baden-Wuerttemberg 2016 Gymnasium Biologie, ueberarbeitete Fassung 08.03.2022, 3.2.3 Ökologie, S. 19.",
+      "sourceText": "Wert von Artenvielfalt darstellen und nachhaltige Natur- und Artenschutzmaßnahmen entwickeln.",
+      "sourceSpan": {
+        "passageId": "bw-biology-seki-bp2016-v2-k78-oe",
+        "label": "Ökologie: Wert von Artenvielfalt darstellen und nachhaltige Natur- und Artenschutzmaßnahmen entwickeln."
+      },
+      "sourceSpanText": "3.2.3 Ökologie, Klassen 7/8, Source-Ziel 7",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-BW",
+        "stage:SekI",
+        "grade:7/8"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "5f39afac-897c-5ed3-95b5-89ccf66b2532",
+          "b6b82292-471b-577e-bff9-9e7951b0a642",
+          "05ff76d0-5850-5984-9855-45e77f06a94e",
+          "ae3f50bf-33c7-535f-8d13-191ee330c0fa",
+          "c1aea082-30c0-558f-8d0a-fb810c1dc51b"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "bw-biology-seki-bp2016-v2-k910-evo-001-03bc9b98",
+      "passageId": "bw-biology-seki-bp2016-v2-k910-evo",
+      "topicCode": "K910-EVO",
+      "topicTitle": "3.3.1 Evolution",
+      "headingTitle": "Evolution",
+      "title": "Entstehung von Angepasstheiten im Sinne Darwins erläutern.",
+      "description": "Die lernende Person kann Entstehung von Angepasstheiten im Sinne Darwins erläutern.",
+      "sourceDocumentKey": "BW-BP2016-GYM-BIOLOGIE-V2-2022",
+      "sourceRef": "Bildungsplan Baden-Wuerttemberg 2016 Gymnasium Biologie, ueberarbeitete Fassung 08.03.2022, 3.3.1 Evolution, S. 21.",
+      "sourceText": "Entstehung von Angepasstheiten im Sinne Darwins erläutern.",
+      "sourceSpan": {
+        "passageId": "bw-biology-seki-bp2016-v2-k910-evo",
+        "label": "Evolution: Entstehung von Angepasstheiten im Sinne Darwins erläutern."
+      },
+      "sourceSpanText": "3.3.1 Evolution, Klassen 9/10, Source-Ziel 1",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-BW",
+        "stage:SekI",
+        "grade:9/10"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "7008979d-7890-5f7b-ad07-27b8bb597cbe"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "bw-biology-seki-bp2016-v2-k910-evo-002-40c23822",
+      "passageId": "bw-biology-seki-bp2016-v2-k910-evo",
+      "topicCode": "K910-EVO",
+      "topicTitle": "3.3.1 Evolution",
+      "headingTitle": "Evolution",
+      "title": "Stammesgeschichtliche Entwicklung anhand eines Beispiels erläutern.",
+      "description": "Die lernende Person kann Stammesgeschichtliche Entwicklung anhand eines Beispiels erläutern.",
+      "sourceDocumentKey": "BW-BP2016-GYM-BIOLOGIE-V2-2022",
+      "sourceRef": "Bildungsplan Baden-Wuerttemberg 2016 Gymnasium Biologie, ueberarbeitete Fassung 08.03.2022, 3.3.1 Evolution, S. 21.",
+      "sourceText": "Stammesgeschichtliche Entwicklung anhand eines Beispiels erläutern.",
+      "sourceSpan": {
+        "passageId": "bw-biology-seki-bp2016-v2-k910-evo",
+        "label": "Evolution: Stammesgeschichtliche Entwicklung anhand eines Beispiels erläutern."
+      },
+      "sourceSpanText": "3.3.1 Evolution, Klassen 9/10, Source-Ziel 2",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-BW",
+        "stage:SekI",
+        "grade:9/10"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "302c6d6d-bf10-5dbc-adda-65e4b5c63e49",
+          "7008979d-7890-5f7b-ad07-27b8bb597cbe"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "bw-biology-seki-bp2016-v2-k910-evo-003-a3b2b99e",
+      "passageId": "bw-biology-seki-bp2016-v2-k910-evo",
+      "topicCode": "K910-EVO",
+      "topicTitle": "3.3.1 Evolution",
+      "headingTitle": "Evolution",
+      "title": "Belege stammesgeschichtlicher Verwandtschaft erläutern.",
+      "description": "Die lernende Person kann Belege stammesgeschichtlicher Verwandtschaft erläutern.",
+      "sourceDocumentKey": "BW-BP2016-GYM-BIOLOGIE-V2-2022",
+      "sourceRef": "Bildungsplan Baden-Wuerttemberg 2016 Gymnasium Biologie, ueberarbeitete Fassung 08.03.2022, 3.3.1 Evolution, S. 21.",
+      "sourceText": "Belege stammesgeschichtlicher Verwandtschaft erläutern.",
+      "sourceSpan": {
+        "passageId": "bw-biology-seki-bp2016-v2-k910-evo",
+        "label": "Evolution: Belege stammesgeschichtlicher Verwandtschaft erläutern."
+      },
+      "sourceSpanText": "3.3.1 Evolution, Klassen 9/10, Source-Ziel 3",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-BW",
+        "stage:SekI",
+        "grade:9/10"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "7008979d-7890-5f7b-ad07-27b8bb597cbe",
+          "e3167331-f855-5030-9673-29f55a7b4230"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "bw-biology-seki-bp2016-v2-k910-evo-004-3223cfa0",
+      "passageId": "bw-biology-seki-bp2016-v2-k910-evo",
+      "topicCode": "K910-EVO",
+      "topicTitle": "3.3.1 Evolution",
+      "headingTitle": "Evolution",
+      "title": "Evolution zum modernen Menschen anhand ausgewählter Fossilfunde darstellen.",
+      "description": "Die lernende Person kann Evolution zum modernen Menschen anhand ausgewählter Fossilfunde darstellen.",
+      "sourceDocumentKey": "BW-BP2016-GYM-BIOLOGIE-V2-2022",
+      "sourceRef": "Bildungsplan Baden-Wuerttemberg 2016 Gymnasium Biologie, ueberarbeitete Fassung 08.03.2022, 3.3.1 Evolution, S. 21.",
+      "sourceText": "Evolution zum modernen Menschen anhand ausgewählter Fossilfunde darstellen.",
+      "sourceSpan": {
+        "passageId": "bw-biology-seki-bp2016-v2-k910-evo",
+        "label": "Evolution: Evolution zum modernen Menschen anhand ausgewählter Fossilfunde darstellen."
+      },
+      "sourceSpanText": "3.3.1 Evolution, Klassen 9/10, Source-Ziel 4",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-BW",
+        "stage:SekI",
+        "grade:9/10"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "302c6d6d-bf10-5dbc-adda-65e4b5c63e49"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "bw-biology-seki-bp2016-v2-k910-gen-001-5ba43626",
+      "passageId": "bw-biology-seki-bp2016-v2-k910-gen",
+      "topicCode": "K910-GEN",
+      "topicTitle": "3.3.2 Genetik",
+      "headingTitle": "Genetik",
+      "title": "Chromosomen als Träger der Erbinformation beschreiben.",
+      "description": "Die lernende Person kann Chromosomen als Träger der Erbinformation beschreiben.",
+      "sourceDocumentKey": "BW-BP2016-GYM-BIOLOGIE-V2-2022",
+      "sourceRef": "Bildungsplan Baden-Wuerttemberg 2016 Gymnasium Biologie, ueberarbeitete Fassung 08.03.2022, 3.3.2 Genetik, S. 22.",
+      "sourceText": "Chromosomen als Träger der Erbinformation beschreiben.",
+      "sourceSpan": {
+        "passageId": "bw-biology-seki-bp2016-v2-k910-gen",
+        "label": "Genetik: Chromosomen als Träger der Erbinformation beschreiben."
+      },
+      "sourceSpanText": "3.3.2 Genetik, Klassen 9/10, Source-Ziel 1",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-BW",
+        "stage:SekI",
+        "grade:9/10"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "0daa79f6-8f61-5506-98f9-65db83062ba8",
+          "74740709-fc77-5a54-88a6-bb14c3777941"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "bw-biology-seki-bp2016-v2-k910-gen-002-d1f3e8d1",
+      "passageId": "bw-biology-seki-bp2016-v2-k910-gen",
+      "topicCode": "K910-GEN",
+      "topicTitle": "3.3.2 Genetik",
+      "headingTitle": "Genetik",
+      "title": "Mitose und Zellteilung als Entstehung identischer Tochterzellen erklären.",
+      "description": "Die lernende Person kann Mitose und Zellteilung als Entstehung identischer Tochterzellen erklären.",
+      "sourceDocumentKey": "BW-BP2016-GYM-BIOLOGIE-V2-2022",
+      "sourceRef": "Bildungsplan Baden-Wuerttemberg 2016 Gymnasium Biologie, ueberarbeitete Fassung 08.03.2022, 3.3.2 Genetik, S. 22.",
+      "sourceText": "Mitose und Zellteilung als Entstehung identischer Tochterzellen erklären.",
+      "sourceSpan": {
+        "passageId": "bw-biology-seki-bp2016-v2-k910-gen",
+        "label": "Genetik: Mitose und Zellteilung als Entstehung identischer Tochterzellen erklären."
+      },
+      "sourceSpanText": "3.3.2 Genetik, Klassen 9/10, Source-Ziel 2",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-BW",
+        "stage:SekI",
+        "grade:9/10"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "ec88fc1d-ee0f-5a01-9464-dc358241050e",
+          "8e4bfb9e-b176-5e7a-a7db-d6077d71237a",
+          "1d2b1038-dcd5-529a-b085-9e14f1d58c76"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "bw-biology-seki-bp2016-v2-k910-gen-003-5c107b50",
+      "passageId": "bw-biology-seki-bp2016-v2-k910-gen",
+      "topicCode": "K910-GEN",
+      "topicTitle": "3.3.2 Genetik",
+      "headingTitle": "Genetik",
+      "title": "Struktur der DNA anhand eines einfachen Modells und Eigenschaften der DNA erläutern.",
+      "description": "Die lernende Person kann Struktur der DNA anhand eines einfachen Modells und Eigenschaften der DNA erläutern.",
+      "sourceDocumentKey": "BW-BP2016-GYM-BIOLOGIE-V2-2022",
+      "sourceRef": "Bildungsplan Baden-Wuerttemberg 2016 Gymnasium Biologie, ueberarbeitete Fassung 08.03.2022, 3.3.2 Genetik, S. 22.",
+      "sourceText": "Struktur der DNA anhand eines einfachen Modells und Eigenschaften der DNA erläutern.",
+      "sourceSpan": {
+        "passageId": "bw-biology-seki-bp2016-v2-k910-gen",
+        "label": "Genetik: Struktur der DNA anhand eines einfachen Modells und Eigenschaften der DNA erläutern."
+      },
+      "sourceSpanText": "3.3.2 Genetik, Klassen 9/10, Source-Ziel 3",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-BW",
+        "stage:SekI",
+        "grade:9/10"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "0daa79f6-8f61-5506-98f9-65db83062ba8"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "bw-biology-seki-bp2016-v2-k910-gen-004-4327e0dc",
+      "passageId": "bw-biology-seki-bp2016-v2-k910-gen",
+      "topicCode": "K910-GEN",
+      "topicTitle": "3.3.2 Genetik",
+      "headingTitle": "Genetik",
+      "title": "Meiose beschreiben und deren Bedeutung erklären.",
+      "description": "Die lernende Person kann Meiose beschreiben und deren Bedeutung erklären.",
+      "sourceDocumentKey": "BW-BP2016-GYM-BIOLOGIE-V2-2022",
+      "sourceRef": "Bildungsplan Baden-Wuerttemberg 2016 Gymnasium Biologie, ueberarbeitete Fassung 08.03.2022, 3.3.2 Genetik, S. 22.",
+      "sourceText": "Meiose beschreiben und deren Bedeutung erklären.",
+      "sourceSpan": {
+        "passageId": "bw-biology-seki-bp2016-v2-k910-gen",
+        "label": "Genetik: Meiose beschreiben und deren Bedeutung erklären."
+      },
+      "sourceSpanText": "3.3.2 Genetik, Klassen 9/10, Source-Ziel 4",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-BW",
+        "stage:SekI",
+        "grade:9/10"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "1d2b1038-dcd5-529a-b085-9e14f1d58c76",
+          "ab96bec3-ee34-5209-bcc9-5c7c8280429c"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "bw-biology-seki-bp2016-v2-k910-gen-005-3e8aa0c4",
+      "passageId": "bw-biology-seki-bp2016-v2-k910-gen",
+      "topicCode": "K910-GEN",
+      "topicTitle": "3.3.2 Genetik",
+      "headingTitle": "Genetik",
+      "title": "Geschlechtsbestimmung beim Menschen durch Geschlechtschromosomen erklären.",
+      "description": "Die lernende Person kann Geschlechtsbestimmung beim Menschen durch Geschlechtschromosomen erklären.",
+      "sourceDocumentKey": "BW-BP2016-GYM-BIOLOGIE-V2-2022",
+      "sourceRef": "Bildungsplan Baden-Wuerttemberg 2016 Gymnasium Biologie, ueberarbeitete Fassung 08.03.2022, 3.3.2 Genetik, S. 22.",
+      "sourceText": "Geschlechtsbestimmung beim Menschen durch Geschlechtschromosomen erklären.",
+      "sourceSpan": {
+        "passageId": "bw-biology-seki-bp2016-v2-k910-gen",
+        "label": "Genetik: Geschlechtsbestimmung beim Menschen durch Geschlechtschromosomen erklären."
+      },
+      "sourceSpanText": "3.3.2 Genetik, Klassen 9/10, Source-Ziel 5",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-BW",
+        "stage:SekI",
+        "grade:9/10"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "37147890-84e4-5ba7-80e1-92fbf2070d7c"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "bw-biology-seki-bp2016-v2-k910-gen-006-fc61aa53",
+      "passageId": "bw-biology-seki-bp2016-v2-k910-gen",
+      "topicCode": "K910-GEN",
+      "topicTitle": "3.3.2 Genetik",
+      "headingTitle": "Genetik",
+      "title": "Einfache Erbgänge über Genotyp und Phänotyp erklären und auf Familienstammbäume anwenden.",
+      "description": "Die lernende Person kann Einfache Erbgänge über Genotyp und Phänotyp erklären und auf Familienstammbäume anwenden.",
+      "sourceDocumentKey": "BW-BP2016-GYM-BIOLOGIE-V2-2022",
+      "sourceRef": "Bildungsplan Baden-Wuerttemberg 2016 Gymnasium Biologie, ueberarbeitete Fassung 08.03.2022, 3.3.2 Genetik, S. 22.",
+      "sourceText": "Einfache Erbgänge über Genotyp und Phänotyp erklären und auf Familienstammbäume anwenden.",
+      "sourceSpan": {
+        "passageId": "bw-biology-seki-bp2016-v2-k910-gen",
+        "label": "Genetik: Einfache Erbgänge über Genotyp und Phänotyp erklären und auf Familienstammbäume anwenden."
+      },
+      "sourceSpanText": "3.3.2 Genetik, Klassen 9/10, Source-Ziel 6",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-BW",
+        "stage:SekI",
+        "grade:9/10"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "b8fc739d-f5de-5f83-92fe-28dc6597add5",
+          "440854be-7f06-5678-91cb-ba8dcab56959"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "bw-biology-seki-bp2016-v2-k910-gen-007-929cbe46",
+      "passageId": "bw-biology-seki-bp2016-v2-k910-gen",
+      "topicCode": "K910-GEN",
+      "topicTitle": "3.3.2 Genetik",
+      "headingTitle": "Genetik",
+      "title": "Mutationen als Veränderungen genetischer Information beschreiben und Folgen an Beispielen erläutern.",
+      "description": "Die lernende Person kann Mutationen als Veränderungen genetischer Information beschreiben und Folgen an Beispielen erläutern.",
+      "sourceDocumentKey": "BW-BP2016-GYM-BIOLOGIE-V2-2022",
+      "sourceRef": "Bildungsplan Baden-Wuerttemberg 2016 Gymnasium Biologie, ueberarbeitete Fassung 08.03.2022, 3.3.2 Genetik, S. 22.",
+      "sourceText": "Mutationen als Veränderungen genetischer Information beschreiben und Folgen an Beispielen erläutern.",
+      "sourceSpan": {
+        "passageId": "bw-biology-seki-bp2016-v2-k910-gen",
+        "label": "Genetik: Mutationen als Veränderungen genetischer Information beschreiben und Folgen an Beispielen erläutern."
+      },
+      "sourceSpanText": "3.3.2 Genetik, Klassen 9/10, Source-Ziel 7",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-BW",
+        "stage:SekI",
+        "grade:9/10"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "8be0001b-4fe0-5ea1-9d61-b3c4bbb16660",
+          "0dd8380d-b542-5126-8d8e-f95d9ccded90",
+          "74740709-fc77-5a54-88a6-bb14c3777941"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "bw-biology-seki-bp2016-v2-k910-gen-008-889cead6",
+      "passageId": "bw-biology-seki-bp2016-v2-k910-gen",
+      "topicCode": "K910-GEN",
+      "topicTitle": "3.3.2 Genetik",
+      "headingTitle": "Genetik",
+      "title": "Einsatz der Gentechnik beschreiben und bewerten.",
+      "description": "Die lernende Person kann Einsatz der Gentechnik beschreiben und bewerten.",
+      "sourceDocumentKey": "BW-BP2016-GYM-BIOLOGIE-V2-2022",
+      "sourceRef": "Bildungsplan Baden-Wuerttemberg 2016 Gymnasium Biologie, ueberarbeitete Fassung 08.03.2022, 3.3.2 Genetik, S. 22.",
+      "sourceText": "Einsatz der Gentechnik beschreiben und bewerten.",
+      "sourceSpan": {
+        "passageId": "bw-biology-seki-bp2016-v2-k910-gen",
+        "label": "Genetik: Einsatz der Gentechnik beschreiben und bewerten."
+      },
+      "sourceSpanText": "3.3.2 Genetik, Klassen 9/10, Source-Ziel 8",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-BW",
+        "stage:SekI",
+        "grade:9/10"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "1b7f08a1-33df-5779-af66-430c91d699b7"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "bw-biology-seki-bp2016-v2-k910-imm-001-7b64adf6",
+      "passageId": "bw-biology-seki-bp2016-v2-k910-imm",
+      "topicCode": "K910-IMM",
+      "topicTitle": "3.3.3 Immunbiologie",
+      "headingTitle": "Immunbiologie",
+      "title": "Bau und Vermehrung von Bakterien und Viren beschreiben.",
+      "description": "Die lernende Person kann Bau und Vermehrung von Bakterien und Viren beschreiben.",
+      "sourceDocumentKey": "BW-BP2016-GYM-BIOLOGIE-V2-2022",
+      "sourceRef": "Bildungsplan Baden-Wuerttemberg 2016 Gymnasium Biologie, ueberarbeitete Fassung 08.03.2022, 3.3.3 Immunbiologie, S. 23.",
+      "sourceText": "Bau und Vermehrung von Bakterien und Viren beschreiben.",
+      "sourceSpan": {
+        "passageId": "bw-biology-seki-bp2016-v2-k910-imm",
+        "label": "Immunbiologie: Bau und Vermehrung von Bakterien und Viren beschreiben."
+      },
+      "sourceSpanText": "3.3.3 Immunbiologie, Klassen 9/10, Source-Ziel 1",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-BW",
+        "stage:SekI",
+        "grade:9/10"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "1abf08d7-6fc1-5705-b2d4-21cb44ceeba0",
+          "41467314-3611-5ee3-98c5-f1e8eca2efc2"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "bw-biology-seki-bp2016-v2-k910-imm-002-d6765d60",
+      "passageId": "bw-biology-seki-bp2016-v2-k910-imm",
+      "topicCode": "K910-IMM",
+      "topicTitle": "3.3.3 Immunbiologie",
+      "headingTitle": "Immunbiologie",
+      "title": "Verlauf einer Infektionskrankheit beschreiben.",
+      "description": "Die lernende Person kann Verlauf einer Infektionskrankheit beschreiben.",
+      "sourceDocumentKey": "BW-BP2016-GYM-BIOLOGIE-V2-2022",
+      "sourceRef": "Bildungsplan Baden-Wuerttemberg 2016 Gymnasium Biologie, ueberarbeitete Fassung 08.03.2022, 3.3.3 Immunbiologie, S. 23.",
+      "sourceText": "Verlauf einer Infektionskrankheit beschreiben.",
+      "sourceSpan": {
+        "passageId": "bw-biology-seki-bp2016-v2-k910-imm",
+        "label": "Immunbiologie: Verlauf einer Infektionskrankheit beschreiben."
+      },
+      "sourceSpanText": "3.3.3 Immunbiologie, Klassen 9/10, Source-Ziel 2",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-BW",
+        "stage:SekI",
+        "grade:9/10"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "41467314-3611-5ee3-98c5-f1e8eca2efc2"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "bw-biology-seki-bp2016-v2-k910-imm-003-e77cad2b",
+      "passageId": "bw-biology-seki-bp2016-v2-k910-imm",
+      "topicCode": "K910-IMM",
+      "topicTitle": "3.3.3 Immunbiologie",
+      "headingTitle": "Immunbiologie",
+      "title": "Infektionsbarrieren und angeborene Immunabwehr beschreiben und Infektionsvermeidung erläutern.",
+      "description": "Die lernende Person kann Infektionsbarrieren und angeborene Immunabwehr beschreiben und Infektionsvermeidung erläutern.",
+      "sourceDocumentKey": "BW-BP2016-GYM-BIOLOGIE-V2-2022",
+      "sourceRef": "Bildungsplan Baden-Wuerttemberg 2016 Gymnasium Biologie, ueberarbeitete Fassung 08.03.2022, 3.3.3 Immunbiologie, S. 23.",
+      "sourceText": "Infektionsbarrieren und angeborene Immunabwehr beschreiben und Infektionsvermeidung erläutern.",
+      "sourceSpan": {
+        "passageId": "bw-biology-seki-bp2016-v2-k910-imm",
+        "label": "Immunbiologie: Infektionsbarrieren und angeborene Immunabwehr beschreiben und Infektionsvermeidung erläutern."
+      },
+      "sourceSpanText": "3.3.3 Immunbiologie, Klassen 9/10, Source-Ziel 3",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-BW",
+        "stage:SekI",
+        "grade:9/10"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "dcc9d2e5-16f4-5813-ab66-7095c8a165a6",
+          "41467314-3611-5ee3-98c5-f1e8eca2efc2"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "bw-biology-seki-bp2016-v2-k910-imm-004-3feb166a",
+      "passageId": "bw-biology-seki-bp2016-v2-k910-imm",
+      "topicCode": "K910-IMM",
+      "topicTitle": "3.3.3 Immunbiologie",
+      "headingTitle": "Immunbiologie",
+      "title": "Erworbene Immunantwort und Entstehung von Immunität erklären.",
+      "description": "Die lernende Person kann Erworbene Immunantwort und Entstehung von Immunität erklären.",
+      "sourceDocumentKey": "BW-BP2016-GYM-BIOLOGIE-V2-2022",
+      "sourceRef": "Bildungsplan Baden-Wuerttemberg 2016 Gymnasium Biologie, ueberarbeitete Fassung 08.03.2022, 3.3.3 Immunbiologie, S. 23.",
+      "sourceText": "Erworbene Immunantwort und Entstehung von Immunität erklären.",
+      "sourceSpan": {
+        "passageId": "bw-biology-seki-bp2016-v2-k910-imm",
+        "label": "Immunbiologie: Erworbene Immunantwort und Entstehung von Immunität erklären."
+      },
+      "sourceSpanText": "3.3.3 Immunbiologie, Klassen 9/10, Source-Ziel 4",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-BW",
+        "stage:SekI",
+        "grade:9/10"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "1f65f78e-b528-5d88-ad00-8e8714a2303e"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "bw-biology-seki-bp2016-v2-k910-imm-005-dc2a3dfc",
+      "passageId": "bw-biology-seki-bp2016-v2-k910-imm",
+      "topicCode": "K910-IMM",
+      "topicTitle": "3.3.3 Immunbiologie",
+      "headingTitle": "Immunbiologie",
+      "title": "Immunisierung durch Impfung erklären und individuell sowie gesellschaftlich bewerten.",
+      "description": "Die lernende Person kann Immunisierung durch Impfung erklären und individuell sowie gesellschaftlich bewerten.",
+      "sourceDocumentKey": "BW-BP2016-GYM-BIOLOGIE-V2-2022",
+      "sourceRef": "Bildungsplan Baden-Wuerttemberg 2016 Gymnasium Biologie, ueberarbeitete Fassung 08.03.2022, 3.3.3 Immunbiologie, S. 23.",
+      "sourceText": "Immunisierung durch Impfung erklären und individuell sowie gesellschaftlich bewerten.",
+      "sourceSpan": {
+        "passageId": "bw-biology-seki-bp2016-v2-k910-imm",
+        "label": "Immunbiologie: Immunisierung durch Impfung erklären und individuell sowie gesellschaftlich bewerten."
+      },
+      "sourceSpanText": "3.3.3 Immunbiologie, Klassen 9/10, Source-Ziel 5",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-BW",
+        "stage:SekI",
+        "grade:9/10"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "c7e2d7e5-ce6b-53e0-806d-66ae4d7846dd"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "bw-biology-seki-bp2016-v2-k910-zb-001-e383a474",
+      "passageId": "bw-biology-seki-bp2016-v2-k910-zb",
+      "topicCode": "K910-ZB",
+      "topicTitle": "3.3.4 Zellbiologie",
+      "headingTitle": "Zellbiologie",
+      "title": "Pflanzliche und tierische Zellen im licht- und elektronenmikroskopischen Bild beschreiben und vergleichen.",
+      "description": "Die lernende Person kann Pflanzliche und tierische Zellen im licht- und elektronenmikroskopischen Bild beschreiben und vergleichen.",
+      "sourceDocumentKey": "BW-BP2016-GYM-BIOLOGIE-V2-2022",
+      "sourceRef": "Bildungsplan Baden-Wuerttemberg 2016 Gymnasium Biologie, ueberarbeitete Fassung 08.03.2022, 3.3.4 Zellbiologie, S. 24.",
+      "sourceText": "Pflanzliche und tierische Zellen im licht- und elektronenmikroskopischen Bild beschreiben und vergleichen.",
+      "sourceSpan": {
+        "passageId": "bw-biology-seki-bp2016-v2-k910-zb",
+        "label": "Zellbiologie: Pflanzliche und tierische Zellen im licht- und elektronenmikroskopischen Bild beschreiben und vergleichen."
+      },
+      "sourceSpanText": "3.3.4 Zellbiologie, Klassen 9/10, Source-Ziel 1",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-BW",
+        "stage:SekI",
+        "grade:9/10"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "7c6bf0cc-6ed8-56b1-b44a-642f7a069a5f",
+          "b1dff57f-329e-5264-b2b9-2db71a0b2172"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "bw-biology-seki-bp2016-v2-k910-zb-002-c58a1003",
+      "passageId": "bw-biology-seki-bp2016-v2-k910-zb",
+      "topicCode": "K910-ZB",
+      "topicTitle": "3.3.4 Zellbiologie",
+      "headingTitle": "Zellbiologie",
+      "title": "Zusammenwirken von Zellorganellen an einem Beispiel beschreiben.",
+      "description": "Die lernende Person kann Zusammenwirken von Zellorganellen an einem Beispiel beschreiben.",
+      "sourceDocumentKey": "BW-BP2016-GYM-BIOLOGIE-V2-2022",
+      "sourceRef": "Bildungsplan Baden-Wuerttemberg 2016 Gymnasium Biologie, ueberarbeitete Fassung 08.03.2022, 3.3.4 Zellbiologie, S. 24.",
+      "sourceText": "Zusammenwirken von Zellorganellen an einem Beispiel beschreiben.",
+      "sourceSpan": {
+        "passageId": "bw-biology-seki-bp2016-v2-k910-zb",
+        "label": "Zellbiologie: Zusammenwirken von Zellorganellen an einem Beispiel beschreiben."
+      },
+      "sourceSpanText": "3.3.4 Zellbiologie, Klassen 9/10, Source-Ziel 2",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-BW",
+        "stage:SekI",
+        "grade:9/10"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "fc8c4b02-02f2-5ad6-b481-224d36121da1"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "bw-biology-seki-bp2016-v2-k910-zb-003-6417ac94",
+      "passageId": "bw-biology-seki-bp2016-v2-k910-zb",
+      "topicCode": "K910-ZB",
+      "topicTitle": "3.3.4 Zellbiologie",
+      "headingTitle": "Zellbiologie",
+      "title": "Struktur-Funktion-Zusammenhang von Zellorganellen und differenzierten Zellen darstellen.",
+      "description": "Die lernende Person kann Struktur-Funktion-Zusammenhang von Zellorganellen und differenzierten Zellen darstellen.",
+      "sourceDocumentKey": "BW-BP2016-GYM-BIOLOGIE-V2-2022",
+      "sourceRef": "Bildungsplan Baden-Wuerttemberg 2016 Gymnasium Biologie, ueberarbeitete Fassung 08.03.2022, 3.3.4 Zellbiologie, S. 24.",
+      "sourceText": "Struktur-Funktion-Zusammenhang von Zellorganellen und differenzierten Zellen darstellen.",
+      "sourceSpan": {
+        "passageId": "bw-biology-seki-bp2016-v2-k910-zb",
+        "label": "Zellbiologie: Struktur-Funktion-Zusammenhang von Zellorganellen und differenzierten Zellen darstellen."
+      },
+      "sourceSpanText": "3.3.4 Zellbiologie, Klassen 9/10, Source-Ziel 3",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-BW",
+        "stage:SekI",
+        "grade:9/10"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "fc8c4b02-02f2-5ad6-b481-224d36121da1",
+          "1c3470ae-83f8-52e9-98ae-b0a712755b66"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "bw-biology-seki-bp2016-v2-k910-zb-004-67d665b2",
+      "passageId": "bw-biology-seki-bp2016-v2-k910-zb",
+      "topicCode": "K910-ZB",
+      "topicTitle": "3.3.4 Zellbiologie",
+      "headingTitle": "Zellbiologie",
+      "title": "Plasmolyse und Deplasmolyse lichtmikroskopisch beschreiben und durch Osmose erklären.",
+      "description": "Die lernende Person kann Plasmolyse und Deplasmolyse lichtmikroskopisch beschreiben und durch Osmose erklären.",
+      "sourceDocumentKey": "BW-BP2016-GYM-BIOLOGIE-V2-2022",
+      "sourceRef": "Bildungsplan Baden-Wuerttemberg 2016 Gymnasium Biologie, ueberarbeitete Fassung 08.03.2022, 3.3.4 Zellbiologie, S. 24.",
+      "sourceText": "Plasmolyse und Deplasmolyse lichtmikroskopisch beschreiben und durch Osmose erklären.",
+      "sourceSpan": {
+        "passageId": "bw-biology-seki-bp2016-v2-k910-zb",
+        "label": "Zellbiologie: Plasmolyse und Deplasmolyse lichtmikroskopisch beschreiben und durch Osmose erklären."
+      },
+      "sourceSpanText": "3.3.4 Zellbiologie, Klassen 9/10, Source-Ziel 4",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-BW",
+        "stage:SekI",
+        "grade:9/10"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "5c2ce7b1-30ba-5e9c-99de-1ffac126ec13",
+          "861fbc18-06a1-56e3-8619-fd47534d7a5d"
+        ],
+        "matchType": "partial"
+      }
+    },
+    {
+      "id": "bw-biology-seki-bp2016-v2-k910-zb-005-8bb2959b",
+      "passageId": "bw-biology-seki-bp2016-v2-k910-zb",
+      "topicCode": "K910-ZB",
+      "topicTitle": "3.3.4 Zellbiologie",
+      "headingTitle": "Zellbiologie",
+      "title": "Prokaryotische und eukaryotische Zellen vergleichen.",
+      "description": "Die lernende Person kann Prokaryotische und eukaryotische Zellen vergleichen.",
+      "sourceDocumentKey": "BW-BP2016-GYM-BIOLOGIE-V2-2022",
+      "sourceRef": "Bildungsplan Baden-Wuerttemberg 2016 Gymnasium Biologie, ueberarbeitete Fassung 08.03.2022, 3.3.4 Zellbiologie, S. 24.",
+      "sourceText": "Prokaryotische und eukaryotische Zellen vergleichen.",
+      "sourceSpan": {
+        "passageId": "bw-biology-seki-bp2016-v2-k910-zb",
+        "label": "Zellbiologie: Prokaryotische und eukaryotische Zellen vergleichen."
+      },
+      "sourceSpanText": "3.3.4 Zellbiologie, Klassen 9/10, Source-Ziel 5",
+      "courseLevel": "GK_LK",
+      "granularity": "source-atom",
+      "tags": [
+        "subject:Biologie",
+        "jurisdiction:DE-BW",
+        "stage:SekI",
+        "grade:9/10"
+      ],
+      "metadata": {
+        "canonicalTargets": [
+          "7c6bf0cc-6ed8-56b1-b44a-642f7a069a5f"
+        ],
+        "matchType": "partial"
+      }
+    }
+  ]
+}
