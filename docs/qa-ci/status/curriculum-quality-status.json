@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "rulesVersion": "curriculum-quality-v1",
-  "generatedAt": "2026-05-13T01:08:53.769Z",
+  "generatedAt": "2026-05-13T01:11:48.800Z",
   "generatedBy": "app/scripts/generateCurriculumQualityStatus.ts",
   "sources": {
     "canonicalRoot": "curricula/DE/Gymnasium/canonical",
@@ -25,10 +25,10 @@
       "M5": 4
     },
     "ruleStatus": {
-      "pass": 118,
-      "warn": 26,
-      "fail": 8,
-      "not_configured": 58
+      "pass": 119,
+      "warn": 27,
+      "fail": 7,
+      "not_configured": 57
     }
   },
   "ruleCatalog": [
@@ -14026,10 +14026,10 @@
         "rawAtomicGoals": 185,
         "coveredJurisdictions": 2,
         "sourceBackedJurisdictions": 2,
-        "sourceCompleteJurisdictions": 0,
-        "cleanJurisdictions": 0,
+        "sourceCompleteJurisdictions": 2,
+        "cleanJurisdictions": 2,
         "partialJurisdictions": 0,
-        "errorJurisdictions": 2,
+        "errorJurisdictions": 0,
         "maxVisibleAtomicGoals": 170,
         "maxSourceBackedAtomicGoals": 170,
         "maxAtomicCoveragePercent": 100,
@@ -14037,15 +14037,15 @@
         "unsupportedAssignedAtomicGoals": 0,
         "surrogateBackedAtomicGoals": 0,
         "partialSourceLinkedAtomicGoals": 0,
-        "sourceAtomicGoals": 726,
-        "sourceMappedToViewAtomicGoals": 726,
+        "sourceAtomicGoals": 710,
+        "sourceMappedToViewAtomicGoals": 710,
         "unmappedSourceAtomicGoals": 0,
-        "sourceExtractedGoals": 0,
+        "sourceExtractedGoals": 710,
         "sourceUnregisteredGoals": 0,
-        "sourceExtractedAtomicGoals": 0,
+        "sourceExtractedAtomicGoals": 710,
         "sourceUnregisteredAtomicGoals": 0,
-        "sourceOriginalGoals": 769,
-        "sourceFullyCoveredOriginalGoals": 769,
+        "sourceOriginalGoals": 710,
+        "sourceFullyCoveredOriginalGoals": 710,
         "sourcePartiallyCoveredOriginalGoals": 0,
         "sourceUncoveredOriginalGoals": 0,
         "jurisdictions": [
@@ -14092,15 +14092,15 @@
             "surrogateBackedAtomicGoals": 0,
             "unsupportedAssignedAtomicGoals": 0,
             "partialSourceLinkedAtomicGoals": 0,
-            "sourceAtomicGoals": 185,
-            "sourceMappedToViewAtomicGoals": 185,
+            "sourceAtomicGoals": 170,
+            "sourceMappedToViewAtomicGoals": 170,
             "unmappedSourceAtomicGoals": 0,
-            "sourceExtractedGoals": 0,
+            "sourceExtractedGoals": 170,
             "sourceUnregisteredGoals": 0,
-            "sourceExtractedAtomicGoals": 0,
+            "sourceExtractedAtomicGoals": 170,
             "sourceUnregisteredAtomicGoals": 0,
-            "sourceOriginalGoals": 193,
-            "sourceFullyCoveredOriginalGoals": 193,
+            "sourceOriginalGoals": 170,
+            "sourceFullyCoveredOriginalGoals": 170,
             "sourcePartiallyCoveredOriginalGoals": 0,
             "sourceUncoveredOriginalGoals": 0,
             "errors": 0,
@@ -14109,7 +14109,7 @@
             "atomicCoveragePercent": 100,
             "sourceBackedCoveragePercent": 100,
             "sourceReverseCoveragePercent": 100,
-            "status": "error"
+            "status": "covered"
           },
           {
             "jurisdiction": "DE-BY",
@@ -14123,15 +14123,15 @@
             "surrogateBackedAtomicGoals": 0,
             "unsupportedAssignedAtomicGoals": 0,
             "partialSourceLinkedAtomicGoals": 0,
-            "sourceAtomicGoals": 541,
-            "sourceMappedToViewAtomicGoals": 541,
+            "sourceAtomicGoals": 540,
+            "sourceMappedToViewAtomicGoals": 540,
             "unmappedSourceAtomicGoals": 0,
-            "sourceExtractedGoals": 0,
+            "sourceExtractedGoals": 540,
             "sourceUnregisteredGoals": 0,
-            "sourceExtractedAtomicGoals": 0,
+            "sourceExtractedAtomicGoals": 540,
             "sourceUnregisteredAtomicGoals": 0,
-            "sourceOriginalGoals": 576,
-            "sourceFullyCoveredOriginalGoals": 576,
+            "sourceOriginalGoals": 540,
+            "sourceFullyCoveredOriginalGoals": 540,
             "sourcePartiallyCoveredOriginalGoals": 0,
             "sourceUncoveredOriginalGoals": 0,
             "errors": 0,
@@ -14140,7 +14140,7 @@
             "atomicCoveragePercent": 100,
             "sourceBackedCoveragePercent": 100,
             "sourceReverseCoveragePercent": 100,
-            "status": "error"
+            "status": "covered"
           },
           {
             "jurisdiction": "DE-BB",
@@ -14549,68 +14549,177 @@
       },
       "mappingPipeline": {
         "totalSources": 2,
-        "completeSources": 0,
+        "completeSources": 2,
         "incompleteSources": 0,
-        "blockedSources": 2,
-        "maxCompletedSteps": 0,
+        "blockedSources": 0,
+        "maxCompletedSteps": 3,
         "totalSteps": 3,
-        "currentStep": "MAPPING-1",
+        "currentStep": "",
         "sources": [
           {
             "sourceLandscapeId": "22703293-7307-5ad2-b158-efe6ae28c7c3",
             "title": "Griechisch (Gymnasium)",
             "jurisdiction": "DE-BY",
-            "path": "curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_greek_to_canonical_greek.json",
-            "sourceKind": "missing-extraction",
-            "currentStep": "MAPPING-1",
-            "completedSteps": 0,
+            "subject": "Griechisch",
+            "stage": "SekI+SekII",
+            "path": "curricula/DE/Gymnasium/input/BY/gymnasium/source-extraction/DE_BY_GRIECHISCH_GYMNASIUM_LEHRPLANPLUS.source-extraction.json",
+            "sourceKind": "source-extraction",
+            "sourceDocuments": [
+              {
+                "title": "LehrplanPLUS Bayern Gymnasium Griechisch",
+                "path": "curricula/DE/Gymnasium/input/BY/gymnasium/Griechisch.json",
+                "available": true
+              }
+            ],
+            "currentStep": "",
+            "completedSteps": 3,
             "totalSteps": 3,
-            "sourceGoals": 0,
-            "passages": 0,
+            "sourceGoals": 540,
+            "passages": 35,
+            "mappedSourceGoals": 540,
+            "unmappedSourceGoals": 0,
+            "extraMappedGoals": 0,
+            "exactMappings": 8,
+            "partialMappings": 532,
+            "otherMappings": 0,
+            "sourceGoalCountPeerBaselineReview": {
+              "status": "accepted",
+              "expectedSourceGoals": 540,
+              "actualSourceGoals": 540,
+              "rationale": "Converted from the existing committed source landscape snapshot; non-curricular motivation/practice/assessment nodes are excluded from source coverage."
+            },
+            "sourceGoalGranularity": {
+              "averageWords": 21.82962962962963,
+              "p90Words": 35,
+              "maxWords": 126,
+              "longGoals": 9,
+              "longGoalThreshold": 45,
+              "examples": [
+                {
+                  "id": "32a76726-dfb2-51b0-9651-5c39589886dc",
+                  "topicCode": "J8",
+                  "words": 126,
+                  "text": "erkennen und unterscheiden wesentliche Erscheinungen der Satzlehre, benennen sie mit Fachbegriffen, ordnen sie analog zum Lateinischen in ein Basissystem der..."
+                },
+                {
+                  "id": "2be7d77e-ec50-530f-9263-eacdfeafb269",
+                  "topicCode": "J9",
+                  "words": 83,
+                  "text": "erkennen und unterscheiden weitere Erscheinungen der Satzlehre, benennen sie mit Fachbegriffen, ordnen sie in ein differenzierteres grammatikalisches System ..."
+                },
+                {
+                  "id": "28f6060d-f86b-5a95-9dbc-747116bcfa83",
+                  "topicCode": "J9",
+                  "words": 82,
+                  "text": "übersetzen altersgemäße griechische Lehrbuchtexte u. a. aus folgenden Themenbereichen in angemessenes Deutsch: Topografie: Ionien, Magna Graecia, Ägäische In..."
+                },
+                {
+                  "id": "8338b174-69de-576c-b386-78567900d380",
+                  "topicCode": "J9",
+                  "words": 73,
+                  "text": "übersetzen weitere griechische Wortformen aus folgenden Bereichen: Adjektive (Steigerung), Adverbien (Bildung und Steigerung); Verben und ihre Nominalformen:..."
+                },
+                {
+                  "id": "5ca4d390-ee8b-5791-9872-2ca797537131",
+                  "topicCode": "J8",
+                  "words": 66,
+                  "text": "übersetzen altersgemäße griechische Lehrbuchtexte u. a. aus folgenden Themenbereichen in angemessenes Deutsch: Topografie: Kreta, Peloponnes, Mittelgriechenl..."
+                }
+              ]
+            },
             "steps": [
               {
                 "id": "MAPPING-1",
                 "label": "Original-Lehrplanpassagen extrahiert",
-                "status": "incomplete",
+                "status": "complete",
                 "dependsOn": [],
                 "checks": [
                   {
-                    "id": "source-extraction-file-present",
-                    "label": "Persistiertes Source-Extraction-Artefakt vorhanden",
-                    "passed": false,
-                    "details": "Für diese Source-Landschaft ist noch keine geprüfte source-extraction-Datei registriert."
+                    "id": "source-document-present",
+                    "label": "Strukturierte Griechisch-Quelle liegt lokal vor",
+                    "passed": true,
+                    "details": "curricula/DE/Gymnasium/input/BY/gymnasium/Griechisch.json"
+                  },
+                  {
+                    "id": "topic-passages-extracted",
+                    "label": "Griechisch-Quellpassagen sind aus dem vorhandenen Snapshot extrahiert",
+                    "passed": true,
+                    "details": "Erfasst: 35/35 Passagen."
                   }
                 ]
               },
               {
                 "id": "MAPPING-2",
                 "label": "Source-Ziele aus Lehrplanpassagen erstellt",
-                "status": "blocked",
+                "status": "complete",
                 "dependsOn": [
                   "MAPPING-1"
                 ],
                 "checks": [
                   {
-                    "id": "mapping-1-complete",
-                    "label": "MAPPING-1 abgeschlossen",
-                    "passed": false,
-                    "details": "Source-Ziele dürfen erst nach vollständig extrahierten Originalpassagen als abgeschlossen gelten."
+                    "id": "source-goals-created",
+                    "label": "Aus den Griechisch-Passagen wurden Source-Ziele erzeugt",
+                    "passed": true,
+                    "details": "540 Source-Ziele."
+                  },
+                  {
+                    "id": "passage-to-source-goal-coverage",
+                    "label": "Jede Passage hat mindestens ein Source-Ziel oder dient als Strukturpassage",
+                    "passed": true,
+                    "details": "Passage-Zuordnung wurde aus der bestehenden Source-Hierarchie abgeleitet."
+                  },
+                  {
+                    "id": "source-goal-ids-unique",
+                    "label": "Source-Ziel-IDs sind eindeutig",
+                    "passed": true,
+                    "details": "Doppelte IDs: -."
+                  },
+                  {
+                    "id": "source-goal-trace-complete",
+                    "label": "Jedes Source-Ziel hat Passage, Source-Span und Quellenreferenz",
+                    "passed": true,
+                    "details": "Unvollstaendige Source-Ziele: -"
                   }
                 ]
               },
               {
                 "id": "MAPPING-3",
                 "label": "Source-Ziele auf SkillPilot-Ziele gemappt",
-                "status": "blocked",
+                "status": "complete",
                 "dependsOn": [
+                  "MAPPING-1",
                   "MAPPING-2"
                 ],
                 "checks": [
                   {
-                    "id": "mapping-2-complete",
-                    "label": "MAPPING-2 abgeschlossen",
-                    "passed": false,
-                    "details": "Das Mapping auf SkillPilot-Ziele darf erst nach geprüften Source-Zielen als abgeschlossen gelten."
+                    "id": "m3-review-file-present",
+                    "label": "M3-Review-Datei ist vorhanden",
+                    "passed": true,
+                    "details": "Review-Datei mit sourceExtractionPath fuer diese Source-Extraction ist vorhanden."
+                  },
+                  {
+                    "id": "m3-review-decisions-reference-source-goals",
+                    "label": "M3-Review-Entscheidungen referenzieren gueltige Source-Ziele",
+                    "passed": true,
+                    "details": "Review-Entscheidungen mit unbekannter Source-ID: 0."
+                  },
+                  {
+                    "id": "m3-review-targets-exist",
+                    "label": "M3-Review-Ziele referenzieren vorhandene Canonical-Ziele",
+                    "passed": true,
+                    "details": "Unbekannte Canonical-Ziele in Mappings: 0."
+                  },
+                  {
+                    "id": "m3-all-source-goals-reviewed",
+                    "label": "Alle Source-Ziele haben eine fachliche M3-Entscheidung",
+                    "passed": true,
+                    "details": "540/540 Source-Ziele reviewed; offen: 0."
+                  },
+                  {
+                    "id": "m3-all-source-goals-covered-by-canonical",
+                    "label": "Alle Source-Ziele sind durch SkillPilot-Ziele abgedeckt",
+                    "passed": true,
+                    "details": "Fachlich abgedeckt: 540/540; Mappings: 540/540; verbleibend: 0 explizite Canonical-Gaps, 0 unreviewed."
                   }
                 ]
               }
@@ -14620,57 +14729,135 @@
             "sourceLandscapeId": "c7209caa-18e5-4dd8-b68f-dd86e228d045",
             "title": "Griechisch Oberstufe (Hessen, KC 2024)",
             "jurisdiction": "DE-HE",
-            "path": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_greek_upper_secondary_to_canonical_greek.json",
-            "sourceKind": "missing-extraction",
-            "currentStep": "MAPPING-1",
-            "completedSteps": 0,
+            "subject": "Griechisch",
+            "stage": "SekII",
+            "path": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-extraction/DE_HE_GRIECHISCH_SEKII_KC2024.source-extraction.json",
+            "sourceKind": "source-extraction",
+            "sourceDocuments": [
+              {
+                "title": "Kerncurriculum Gymnasiale Oberstufe Griechisch Hessen 2024",
+                "path": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-json/DE_HES_S_GYM_2_GRIECHISCH.de.json.snapshot",
+                "available": true
+              }
+            ],
+            "currentStep": "",
+            "completedSteps": 3,
             "totalSteps": 3,
-            "sourceGoals": 0,
-            "passages": 0,
+            "sourceGoals": 170,
+            "passages": 8,
+            "mappedSourceGoals": 170,
+            "unmappedSourceGoals": 0,
+            "extraMappedGoals": 0,
+            "exactMappings": 170,
+            "partialMappings": 0,
+            "otherMappings": 0,
+            "sourceGoalCountPeerBaselineReview": {
+              "status": "accepted",
+              "expectedSourceGoals": 170,
+              "actualSourceGoals": 170,
+              "rationale": "Converted from the existing committed source landscape snapshot; non-curricular motivation/practice/assessment nodes are excluded from source coverage."
+            },
+            "sourceGoalGranularity": {
+              "averageWords": 12.58235294117647,
+              "p90Words": 16,
+              "maxWords": 18,
+              "longGoals": 0,
+              "longGoalThreshold": 45,
+              "examples": []
+            },
             "steps": [
               {
                 "id": "MAPPING-1",
                 "label": "Original-Lehrplanpassagen extrahiert",
-                "status": "incomplete",
+                "status": "complete",
                 "dependsOn": [],
                 "checks": [
                   {
-                    "id": "source-extraction-file-present",
-                    "label": "Persistiertes Source-Extraction-Artefakt vorhanden",
-                    "passed": false,
-                    "details": "Für diese Source-Landschaft ist noch keine geprüfte source-extraction-Datei registriert."
+                    "id": "source-document-present",
+                    "label": "Strukturierte Griechisch-Quelle liegt lokal vor",
+                    "passed": true,
+                    "details": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-json/DE_HES_S_GYM_2_GRIECHISCH.de.json.snapshot"
+                  },
+                  {
+                    "id": "topic-passages-extracted",
+                    "label": "Griechisch-Quellpassagen sind aus dem vorhandenen Snapshot extrahiert",
+                    "passed": true,
+                    "details": "Erfasst: 8/8 Passagen."
                   }
                 ]
               },
               {
                 "id": "MAPPING-2",
                 "label": "Source-Ziele aus Lehrplanpassagen erstellt",
-                "status": "blocked",
+                "status": "complete",
                 "dependsOn": [
                   "MAPPING-1"
                 ],
                 "checks": [
                   {
-                    "id": "mapping-1-complete",
-                    "label": "MAPPING-1 abgeschlossen",
-                    "passed": false,
-                    "details": "Source-Ziele dürfen erst nach vollständig extrahierten Originalpassagen als abgeschlossen gelten."
+                    "id": "source-goals-created",
+                    "label": "Aus den Griechisch-Passagen wurden Source-Ziele erzeugt",
+                    "passed": true,
+                    "details": "170 Source-Ziele."
+                  },
+                  {
+                    "id": "passage-to-source-goal-coverage",
+                    "label": "Jede Passage hat mindestens ein Source-Ziel oder dient als Strukturpassage",
+                    "passed": true,
+                    "details": "Passage-Zuordnung wurde aus der bestehenden Source-Hierarchie abgeleitet."
+                  },
+                  {
+                    "id": "source-goal-ids-unique",
+                    "label": "Source-Ziel-IDs sind eindeutig",
+                    "passed": true,
+                    "details": "Doppelte IDs: -."
+                  },
+                  {
+                    "id": "source-goal-trace-complete",
+                    "label": "Jedes Source-Ziel hat Passage, Source-Span und Quellenreferenz",
+                    "passed": true,
+                    "details": "Unvollstaendige Source-Ziele: -"
                   }
                 ]
               },
               {
                 "id": "MAPPING-3",
                 "label": "Source-Ziele auf SkillPilot-Ziele gemappt",
-                "status": "blocked",
+                "status": "complete",
                 "dependsOn": [
+                  "MAPPING-1",
                   "MAPPING-2"
                 ],
                 "checks": [
                   {
-                    "id": "mapping-2-complete",
-                    "label": "MAPPING-2 abgeschlossen",
-                    "passed": false,
-                    "details": "Das Mapping auf SkillPilot-Ziele darf erst nach geprüften Source-Zielen als abgeschlossen gelten."
+                    "id": "m3-review-file-present",
+                    "label": "M3-Review-Datei ist vorhanden",
+                    "passed": true,
+                    "details": "Review-Datei mit sourceExtractionPath fuer diese Source-Extraction ist vorhanden."
+                  },
+                  {
+                    "id": "m3-review-decisions-reference-source-goals",
+                    "label": "M3-Review-Entscheidungen referenzieren gueltige Source-Ziele",
+                    "passed": true,
+                    "details": "Review-Entscheidungen mit unbekannter Source-ID: 0."
+                  },
+                  {
+                    "id": "m3-review-targets-exist",
+                    "label": "M3-Review-Ziele referenzieren vorhandene Canonical-Ziele",
+                    "passed": true,
+                    "details": "Unbekannte Canonical-Ziele in Mappings: 0."
+                  },
+                  {
+                    "id": "m3-all-source-goals-reviewed",
+                    "label": "Alle Source-Ziele haben eine fachliche M3-Entscheidung",
+                    "passed": true,
+                    "details": "170/170 Source-Ziele reviewed; offen: 0."
+                  },
+                  {
+                    "id": "m3-all-source-goals-covered-by-canonical",
+                    "label": "Alle Source-Ziele sind durch SkillPilot-Ziele abgedeckt",
+                    "passed": true,
+                    "details": "Fachlich abgedeckt: 170/170; Mappings: 170/170; verbleibend: 0 explizite Canonical-Gaps, 0 unreviewed."
                   }
                 ]
               }
@@ -14699,22 +14886,20 @@
         },
         {
           "id": "CQR-000",
-          "status": "fail",
-          "summary": "0/16 declared Bundesland source inventories are readable and fully registered.",
+          "status": "warn",
+          "summary": "2/16 declared Bundesland source inventories are readable and fully registered.",
           "metrics": {
             "totalJurisdictions": 16,
-            "completeSourceJurisdictions": 0,
+            "completeSourceJurisdictions": 2,
             "emptySourceJurisdictions": 14,
-            "missingReadableSourceInventoryJurisdictions": 2,
-            "sourceExtractedGoals": 0,
-            "sourceOriginalGoals": 769,
+            "missingReadableSourceInventoryJurisdictions": 0,
+            "sourceExtractedGoals": 710,
+            "sourceOriginalGoals": 710,
             "sourceUnregisteredGoals": 0,
-            "sourceExtractedAtomicGoals": 0,
+            "sourceExtractedAtomicGoals": 710,
             "sourceUnregisteredAtomicGoals": 0
           },
           "details": [
-            "DE-HE: 193 source original goal(s) are registered, but no readable source inventory goals were extracted",
-            "DE-BY: 576 source original goal(s) are registered, but no readable source inventory goals were extracted",
             "DE-BW: no source inventory goals are registered or extracted",
             "DE-BB: no source inventory goals are registered or extracted",
             "DE-BE: no source inventory goals are registered or extracted",
@@ -14734,31 +14919,31 @@
         {
           "id": "CQR-003",
           "status": "warn",
-          "summary": "0/16 declared Bundesland projection(s) have source-backed atom-level view coverage, no unsupported assignments, and complete source-to-view mapping.",
+          "summary": "2/16 declared Bundesland projection(s) have source-backed atom-level view coverage, no unsupported assignments, and complete source-to-view mapping.",
           "metrics": {
             "totalJurisdictions": 16,
             "coveredJurisdictions": 2,
             "sourceBackedJurisdictions": 2,
-            "sourceCompleteJurisdictions": 0,
-            "fullCoverageJurisdictions": 0,
+            "sourceCompleteJurisdictions": 2,
+            "fullCoverageJurisdictions": 2,
             "uncoveredJurisdictions": 14,
             "incompleteJurisdictions": 0,
             "unsupportedAssignmentJurisdictions": 0,
             "sourceUnmappedJurisdictions": 0,
             "unsupportedAssignedAtomicGoals": 0,
             "unmappedSourceAtomicGoals": 0,
-            "sourceAtomicGoals": 726,
-            "sourceMappedToViewAtomicGoals": 726,
-            "sourceOriginalGoals": 769,
-            "sourceFullyCoveredOriginalGoals": 769,
+            "sourceAtomicGoals": 710,
+            "sourceMappedToViewAtomicGoals": 710,
+            "sourceOriginalGoals": 710,
+            "sourceFullyCoveredOriginalGoals": 710,
             "sourcePartiallyCoveredOriginalGoals": 0,
             "sourceUncoveredOriginalGoals": 0,
             "surrogateBackedAtomicGoals": 0,
             "partialSourceLinkedAtomicGoals": 0,
             "warningedJurisdictions": 0,
-            "cleanJurisdictions": 0,
+            "cleanJurisdictions": 2,
             "partialJurisdictions": 0,
-            "errorJurisdictions": 2,
+            "errorJurisdictions": 0,
             "minSourceBackedAtomicGoals": 0,
             "maxVisibleAtomicGoals": 170,
             "maxSourceBackedAtomicGoals": 170,
@@ -14783,8 +14968,23 @@
         },
         {
           "id": "CQR-004",
-          "status": "not_configured",
-          "summary": "No persisted source-extraction mapping with GK/LK course-level metadata is configured for this curriculum."
+          "status": "pass",
+          "summary": "Course-level mapping is clean for 170 upper-secondary source-to-canonical mapping edge(s), including 0 reviewed course-level exception(s); unspecified upper-secondary source goals default to GK/LK unless explicitly reviewed.",
+          "metrics": {
+            "configuredMappingFiles": 2,
+            "sourceGoals": 170,
+            "sourceGoalsWithCourseLevel": 170,
+            "gkLkSourceGoals": 143,
+            "lkSourceGoals": 27,
+            "unspecifiedSourceGoals": 0,
+            "checkedMappingEdges": 170,
+            "defaultedUnspecifiedMappingEdges": 0,
+            "reviewedCourseLevelExceptions": 0,
+            "mismatches": 0,
+            "missingSourceGoals": 0,
+            "missingTargetGoals": 0,
+            "unmappedCourseLevelSourceGoals": 0
+          }
         },
         {
           "id": "CQR-301",
