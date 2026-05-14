@@ -824,6 +824,16 @@ const CANONICAL_GYM_GERMAN_MOTIVATION_GOAL_ID = 'eff86a92-e048-5494-b561-6ecdda1
 const CANONICAL_GYM_GERMAN_PRACTICE_CLUSTER_IDS = [
   '9d602daf-f4ce-513f-a425-b67240b5c309',
 ]
+const CANONICAL_GYM_LATIN_LANDSCAPE_ID = '668cf206-941e-51f8-8704-3e8938631235'
+const CANONICAL_GYM_LATIN_MOTIVATION_GOAL_ID = '551f2d6c-a030-57cc-9dbd-af30b2c3972a'
+const CANONICAL_GYM_LATIN_PRACTICE_CLUSTER_IDS = [
+  'bfd9bf1e-5751-5f40-f29a-edfab8cea4bf',
+  'e82cc731-ebf4-588f-9fea-f0d31f7ad0e7',
+  'f87f482c-8046-57cd-894f-5141ed7cb385',
+  'c561c31d-a58d-5b77-84fd-6e0a3e478d73',
+  '23f878bb-2080-5b98-8ade-e6e24679ece0',
+  'd603f0a7-4c3a-55db-895e-4b19e9e7db8d',
+]
 
 const ruleCatalog: QualityRuleDefinition[] = [
   {
@@ -1096,6 +1106,29 @@ const routeProfiles: RouteProfile[] = [
       && (goal as { phase?: string }).phase !== 'Abitur'
       && !goal.tags?.includes('Abitur'),
   },
+  {
+    profileId: 'canonical-latin-crossstage',
+    landscapeId: CANONICAL_GYM_LATIN_LANDSCAPE_ID,
+    label: 'Sekundarstufe I/II',
+    motivationAnchorGoalIds: [CANONICAL_GYM_LATIN_MOTIVATION_GOAL_ID],
+    terminalAutonomyClusterIds: CANONICAL_GYM_LATIN_PRACTICE_CLUSTER_IDS,
+    compositionViewStage: 'CrossStage',
+    goalSelector: (goal) => isAtomicGoal(goal)
+      && isCanonicalGymLatinGoal(goal)
+      && !isMemoryGoal(goal)
+      && !isPracticeOrAssessmentGoal(goal)
+      && !(goal as { examData?: unknown }).examData
+      && !goal.tags?.includes('Motivation')
+      && !goal.tags?.includes('Orientation')
+      && goal.dimensionTags?.phase !== 'Abitur'
+      && (goal as { phase?: string }).phase !== 'Abitur',
+    clusterSelector: (goal) => isCanonicalGymLatinGoal(goal)
+      && !isPracticeOrAssessmentGoal(goal)
+      && !/^Übungen\b/.test(goal.title)
+      && goal.dimensionTags?.phase !== 'Abitur'
+      && (goal as { phase?: string }).phase !== 'Abitur'
+      && !goal.tags?.includes('Abitur'),
+  },
 ]
 
 function toRepoPath(path: string): string {
@@ -1295,6 +1328,15 @@ function isCanonicalGymGermanGoal(goal: LearningGoal): boolean {
   if (goal.tags?.includes('SekI') || goal.tags?.includes('SekII')) return true
   const legacyPhase = (goal as { phase?: string }).phase
   return ['E', 'Q1', 'Q2', 'Q3', 'Q4', 'GLOBAL', 'SekI'].includes(goal.dimensionTags?.phase ?? legacyPhase ?? '')
+}
+
+function isCanonicalGymLatinGoal(goal: LearningGoal): boolean {
+  if (goal.id === CANONICAL_GYM_LATIN_MOTIVATION_GOAL_ID) return true
+  if (goal.dimensionTags?.framework === 'canonical-gymnasium-latin') return true
+  if (goal.tags?.includes('subject:latin')) return true
+  if (goal.tags?.includes('subject:Latein')) return true
+  const legacyPhase = (goal as { phase?: string }).phase
+  return ['E', 'Q1', 'Q2', 'Q3', 'Q4', 'GLOBAL'].includes(goal.dimensionTags?.phase ?? legacyPhase ?? '')
 }
 
 function parseReference(raw: string, currentLandscapeId: string): { landscapeId: string; goalId: string } {
@@ -2127,6 +2169,7 @@ const compositionViewDirectoryByLandscapeId = new Map<string, string>([
   [CANONICAL_GYM_INFORMATICS_LANDSCAPE_ID, 'informatik'],
   [CANONICAL_GYM_HISTORY_LANDSCAPE_ID, 'geschichte'],
   [CANONICAL_GYM_GERMAN_LANDSCAPE_ID, 'deutsch'],
+  [CANONICAL_GYM_LATIN_LANDSCAPE_ID, 'latein'],
 ])
 
 function readLandscapeForReport(report: CoverageReport): LearningLandscape | null {

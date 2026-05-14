@@ -1,0 +1,1093 @@
+{
+  "schemaVersion": 1,
+  "extractionId": "DE_HB_LATEIN_SEKI_GYM_3FS_2007",
+  "sourceLandscapeId": "16f704be-1a3c-559a-3f39-a53ed9adf44b",
+  "targetLandscapeId": "668cf206-941e-51f8-8704-3e8938631235",
+  "title": "Latein Sekundarstufe I (Bremen, Gymnasium 3. Fremdsprache 2007 Source-Extraction)",
+  "jurisdiction": "DE-HB",
+  "subject": "Latein",
+  "stage": "SekI",
+  "sourceDocument": {
+    "key": "HB-GYM-LATEIN-3FS-2007",
+    "title": "Bremen Bildungsplan Latein als dritte Fremdsprache, Gymnasium Jahrgangsstufe 8-10, 2007",
+    "path": "curricula/DE/Gymnasium/input/HB/latein/Gy_Latein_3_Fremdspr_2007.pdf",
+    "url": "https://www.lis.bremen.de/sixcms/media.php/13/Gy_Latein_3._Fremdspr_2007.pdf"
+  },
+  "method": {
+    "extractor": "generateHbLatinSourceExtraction.ts",
+    "description": "Extrahiert Aufgaben/Ziele, Themen/Inhalte und Standards aus dem amtlichen Bremer Gymnasium-Bildungsplan Latein als dritte Fremdsprache."
+  },
+  "qualityReview": {
+    "sourceGoalCountPeerBaseline": {
+      "status": "accepted",
+      "accepted": true,
+      "rationale": "Bremen Latein wird aus expliziten Aufgaben/Zielen, Themen/Inhalten und Standards der amtlichen Gymnasium-Bildungsplaene extrahiert. Die getrennte Fuehrung von 2. Fremdsprache, 3. Fremdsprache und GyO verhindert kuenstliche Verdichtung."
+    }
+  },
+  "pipelineStatus": {
+    "currentStep": "",
+    "steps": [
+      {
+        "id": "ORIGINALQUELLEN",
+        "label": "Originalquellen bereitgestellt",
+        "status": "complete",
+        "dependsOn": [],
+        "checks": [
+          {
+            "id": "source-document-present",
+            "label": "Amtliches Bremer Bildungsplan-PDF liegt lokal vor",
+            "passed": true,
+            "details": "curricula/DE/Gymnasium/input/HB/latein/Gy_Latein_3_Fremdspr_2007.pdf"
+          }
+        ]
+      },
+      {
+        "id": "MAPPING-1",
+        "label": "Original-Lehrplanpassagen extrahiert",
+        "status": "complete",
+        "dependsOn": [
+          "ORIGINALQUELLEN"
+        ],
+        "checks": [
+          {
+            "id": "passage-groups-extracted",
+            "label": "Kompetenz-, Themen- und Standardgruppen extrahiert",
+            "passed": true,
+            "details": "11 Passagegruppen"
+          }
+        ]
+      },
+      {
+        "id": "MAPPING-2",
+        "label": "Source-Ziele aus Lehrplanpassagen erstellt",
+        "status": "complete",
+        "dependsOn": [
+          "MAPPING-1"
+        ],
+        "checks": [
+          {
+            "id": "source-goals-created",
+            "label": "Source-Ziele aus amtlichen Kompetenz- und Inhaltsaussagen erzeugt",
+            "passed": true,
+            "details": "32 Source-Ziele"
+          }
+        ]
+      },
+      {
+        "id": "MAPPING-3",
+        "label": "Source-Ziele auf SkillPilot-Ziele gemappt",
+        "status": "complete",
+        "dependsOn": [
+          "MAPPING-2"
+        ],
+        "checks": [
+          {
+            "id": "all-source-goals-covered",
+            "label": "Alle Source-Ziele sind inhaltlich durch SkillPilot-Ziele abgedeckt",
+            "passed": true,
+            "details": "0 explizite Canonical-Gaps"
+          }
+        ]
+      }
+    ]
+  },
+  "passages": [
+    {
+      "id": "de-hb-latein-seki-gym-3fs-2007-jahrgangsstufe-8-10-aufgaben-und-ziele-sprache",
+      "sourceDocumentKey": "HB-GYM-LATEIN-3FS-2007",
+      "topicCode": "de-hb-latein-seki-gym-3fs-2007-jahrgangsstufe-8-10-aufgaben-und-ziele-sprache",
+      "title": "Jahrgangsstufe 8-10 · Aufgaben und Ziele · Sprache",
+      "rawText": "- Übersetzung lateinischer Texte ins Deutsche, wobei durch die Übersetzung das Ver-ständnis des Textes deutlich werden soll (Zielsprachen orientiert)\n- Entwicklung der Kenntnis sprachtypischer Phänomene auch durch aktive Sprachan-wendung, um Latein auch als gesprochene und lebendige Sprache zu erfahren\n- Interpretation lateinischer Texte und deren Inhalte und Abgleich mit heutigen Wert-vorstellungen, um zur Reflexion der eigenen Realität angeregt zu werden\n- Steigerung der sprachlichen Kompetenz wie Ausdrucksweise, Textanalyse und Sprachreflexion durch die Auseinandersetzung mit lateinischen Texten\n- Erarbeitung und Abstrahierung wesentlicher Sprachelemente (Subjekt, Prädikat, Ob-jekte, Attribute, adverbiale Bestimmungen etc.) anhand des strukturierten Aufbaus der lateinischen Grammatik, um einen leichteren Zugang zu anderen Fremdsprachen zu erlangen\n- Entwicklung des Sinn entnehmenden Lesens und der korrekten Textinterpretation durch die genaue Beschäftigung mit lateinischen Texten.",
+      "sourceGoalIds": [
+        "de-hb-latein-seki-gym-3fs-2007-001-89891aca",
+        "de-hb-latein-seki-gym-3fs-2007-002-949f42be",
+        "de-hb-latein-seki-gym-3fs-2007-003-a4ea2c2d",
+        "de-hb-latein-seki-gym-3fs-2007-004-9910306b",
+        "de-hb-latein-seki-gym-3fs-2007-005-c38c60e8",
+        "de-hb-latein-seki-gym-3fs-2007-006-8dbdac9c"
+      ]
+    },
+    {
+      "id": "de-hb-latein-seki-gym-3fs-2007-sprachlehrgangsphase-themen-und-inhalte-einfuhrung-in-die-la",
+      "sourceDocumentKey": "HB-GYM-LATEIN-3FS-2007",
+      "topicCode": "de-hb-latein-seki-gym-3fs-2007-sprachlehrgangsphase-themen-und-inhalte-einfuhrung-in-die-la",
+      "title": "Sprachlehrgangsphase · Themen und Inhalte · Einführung in die la",
+      "rawText": "- Deklinationen und Konjugationen 8",
+      "sourceGoalIds": [
+        "de-hb-latein-seki-gym-3fs-2007-007-7d8d9c2b"
+      ]
+    },
+    {
+      "id": "de-hb-latein-seki-gym-3fs-2007-sprachlehrgangsphase-themen-und-inhalte-teinische-sprache",
+      "sourceDocumentKey": "HB-GYM-LATEIN-3FS-2007",
+      "topicCode": "de-hb-latein-seki-gym-3fs-2007-sprachlehrgangsphase-themen-und-inhalte-teinische-sprache",
+      "title": "Sprachlehrgangsphase · Themen und Inhalte · teinische Sprache",
+      "rawText": "- Übersetzung und Beschreibung einfacher Satzstruktu-ren\n- Basiswortschatz\n- Übersetzungs-und Vokabellernmethodik",
+      "sourceGoalIds": [
+        "de-hb-latein-seki-gym-3fs-2007-008-b25edf52",
+        "de-hb-latein-seki-gym-3fs-2007-009-586c962d",
+        "de-hb-latein-seki-gym-3fs-2007-010-cf212119"
+      ]
+    },
+    {
+      "id": "de-hb-latein-seki-gym-3fs-2007-sprachlehrgangsphase-themen-und-inhalte-vertiefung-und-erwei",
+      "sourceDocumentKey": "HB-GYM-LATEIN-3FS-2007",
+      "topicCode": "de-hb-latein-seki-gym-3fs-2007-sprachlehrgangsphase-themen-und-inhalte-vertiefung-und-erwei",
+      "title": "Sprachlehrgangsphase · Themen und Inhalte · Vertiefung und Erwei",
+      "rawText": "- Morphologie und Syntax der lateinischen Sprache 9",
+      "sourceGoalIds": [
+        "de-hb-latein-seki-gym-3fs-2007-011-6bffb13a"
+      ]
+    },
+    {
+      "id": "de-hb-latein-seki-gym-3fs-2007-sprachlehrgangsphase-themen-und-inhalte-terung-der-lateinischen",
+      "sourceDocumentKey": "HB-GYM-LATEIN-3FS-2007",
+      "topicCode": "de-hb-latein-seki-gym-3fs-2007-sprachlehrgangsphase-themen-und-inhalte-terung-der-lateinischen",
+      "title": "Sprachlehrgangsphase · Themen und Inhalte · terung der lateinischen",
+      "rawText": "- Erkennen und Decodierung komplexerer Satzstruktu-Sprachkenntnisse ren\n- Übersetzung einfacher lateinischer Texte\n- Wortschatzarbeit\n- Übersetzungsmethodik\n- Interpretieren und Deuten kürzerer, überschaubarer lateinischer Texte",
+      "sourceGoalIds": [
+        "de-hb-latein-seki-gym-3fs-2007-012-60efa331",
+        "de-hb-latein-seki-gym-3fs-2007-013-cd09cfa5",
+        "de-hb-latein-seki-gym-3fs-2007-014-bdcb0dde",
+        "de-hb-latein-seki-gym-3fs-2007-015-f14a0e17",
+        "de-hb-latein-seki-gym-3fs-2007-016-9fdff549"
+      ]
+    },
+    {
+      "id": "de-hb-latein-seki-gym-3fs-2007-lekturephase-themen-und-inhalte-geschichtsschreibung",
+      "sourceDocumentKey": "HB-GYM-LATEIN-3FS-2007",
+      "topicCode": "de-hb-latein-seki-gym-3fs-2007-lekturephase-themen-und-inhalte-geschichtsschreibung",
+      "title": "Lektürephase · Themen und Inhalte · Geschichtsschreibung",
+      "rawText": "- Übersetzung adaptierter Originaltexte",
+      "sourceGoalIds": [
+        "de-hb-latein-seki-gym-3fs-2007-017-3dedebb6"
+      ]
+    },
+    {
+      "id": "de-hb-latein-seki-gym-3fs-2007-lekturephase-themen-und-inhalte-und-politik",
+      "sourceDocumentKey": "HB-GYM-LATEIN-3FS-2007",
+      "topicCode": "de-hb-latein-seki-gym-3fs-2007-lekturephase-themen-und-inhalte-und-politik",
+      "title": "Lektürephase · Themen und Inhalte · und Politik",
+      "rawText": "- Arbeit mit dem Wörterbuch",
+      "sourceGoalIds": [
+        "de-hb-latein-seki-gym-3fs-2007-018-abba1c8c"
+      ]
+    },
+    {
+      "id": "de-hb-latein-seki-gym-3fs-2007-lekturephase-themen-und-inhalte-die-romische-gesell",
+      "sourceDocumentKey": "HB-GYM-LATEIN-3FS-2007",
+      "topicCode": "de-hb-latein-seki-gym-3fs-2007-lekturephase-themen-und-inhalte-die-romische-gesell",
+      "title": "Lektürephase · Themen und Inhalte · Die römische Gesell",
+      "rawText": "- Kennenlernen einzelner antiker Autoren",
+      "sourceGoalIds": [
+        "de-hb-latein-seki-gym-3fs-2007-019-f0c28cf9"
+      ]
+    },
+    {
+      "id": "de-hb-latein-seki-gym-3fs-2007-lekturephase-themen-und-inhalte-schaft-der-republik-und",
+      "sourceDocumentKey": "HB-GYM-LATEIN-3FS-2007",
+      "topicCode": "de-hb-latein-seki-gym-3fs-2007-lekturephase-themen-und-inhalte-schaft-der-republik-und",
+      "title": "Lektürephase · Themen und Inhalte · schaft der Republik und",
+      "rawText": "- Anwendung und Differenzierung grammatischer der Kaiserzeit Kenntnisse Christen und Römer\n- Interpretation und Analyse größerer Texteinheiten\n- Einführung in verschiedene Textgattungen\n- Aufbau eines lektürebezogenen Wortschatzes",
+      "sourceGoalIds": [
+        "de-hb-latein-seki-gym-3fs-2007-020-5bb01b18",
+        "de-hb-latein-seki-gym-3fs-2007-021-3f19b293",
+        "de-hb-latein-seki-gym-3fs-2007-022-2e08843c",
+        "de-hb-latein-seki-gym-3fs-2007-023-53687e27"
+      ]
+    },
+    {
+      "id": "de-hb-latein-seki-gym-3fs-2007-ende-jahrgangsstufe-10-standards-sprachliche-kompetenzen",
+      "sourceDocumentKey": "HB-GYM-LATEIN-3FS-2007",
+      "topicCode": "de-hb-latein-seki-gym-3fs-2007-ende-jahrgangsstufe-10-standards-sprachliche-kompetenzen",
+      "title": "Ende Jahrgangsstufe 10 · Standards · Sprachliche Kompetenzen",
+      "rawText": "- erfassen sprachlich einfach strukturierte lateinische Originaltexte (im Schwierigkeits-grad syntaktisch unkomplizierter Stellen aus Caesars „Bellum Gallicum“) mit inhalt-lich bekanntem Kontext mit Hilfe eines zweisprachigen Wörterbuches in Inhalt, Auf-bau und Aussage\n- weisen dieses Verständnis durch eine treffende Übersetzung und einen interpretieren-den Kommentar nach.",
+      "sourceGoalIds": [
+        "de-hb-latein-seki-gym-3fs-2007-024-e836194c",
+        "de-hb-latein-seki-gym-3fs-2007-025-65ebef82"
+      ]
+    },
+    {
+      "id": "de-hb-latein-seki-gym-3fs-2007-ende-jahrgangsstufe-10-standards-inhaltlich-methodische-kompetenzen",
+      "sourceDocumentKey": "HB-GYM-LATEIN-3FS-2007",
+      "topicCode": "de-hb-latein-seki-gym-3fs-2007-ende-jahrgangsstufe-10-standards-inhaltlich-methodische-kompetenzen",
+      "title": "Ende Jahrgangsstufe 10 · Standards · Inhaltlich-methodische Kompetenzen",
+      "rawText": "- haben Grundkenntnisse über die antike Lebens-und Gedankenwelt\n- haben Grundkenntnisse über das Fortleben der antiken Kultur\n- kennen die Bedeutung der Antike für das heutige Europa\n- können einfache lateinische Texte inhaltlich erfassen und in eigenen Worten wieder-geben\n- sind vertraut mit mindestens zwei verschiedenen Textgattungen\n- können antike Texte und ihre Autoren in die historisch – kulturellen Zusammenhänge einordnen\n- können mit Hilfe antiker Gedankengänge eigene Wertvorstellungen reflektieren.",
+      "sourceGoalIds": [
+        "de-hb-latein-seki-gym-3fs-2007-026-08c232b8",
+        "de-hb-latein-seki-gym-3fs-2007-027-0dbcef60",
+        "de-hb-latein-seki-gym-3fs-2007-028-bdd51668",
+        "de-hb-latein-seki-gym-3fs-2007-029-f4b22a2c",
+        "de-hb-latein-seki-gym-3fs-2007-030-5458d0cb",
+        "de-hb-latein-seki-gym-3fs-2007-031-fe47666b",
+        "de-hb-latein-seki-gym-3fs-2007-032-b6670345"
+      ]
+    }
+  ],
+  "sourceGoals": [
+    {
+      "id": "de-hb-latein-seki-gym-3fs-2007-001-89891aca",
+      "sourceDocumentKey": "HB-GYM-LATEIN-3FS-2007",
+      "passageId": "de-hb-latein-seki-gym-3fs-2007-jahrgangsstufe-8-10-aufgaben-und-ziele-sprache",
+      "topicCode": "de-hb-latein-seki-gym-3fs-2007-jahrgangsstufe-8-10-aufgaben-und-ziele-sprache",
+      "title": "Übersetzung lateinischer Texte ins Deutsche, wobei durch die Übersetzung das Ver-ständnis des...",
+      "description": "Die lernende Person kann übersetzung lateinischer Texte ins Deutsche, wobei durch die Übersetzung das Ver-ständnis des Textes deutlich werden soll (Zielsprachen orientiert).",
+      "sourceText": "Übersetzung lateinischer Texte ins Deutsche, wobei durch die Übersetzung das Ver-ständnis des Textes deutlich werden soll (Zielsprachen orientiert)",
+      "sourceRef": "S. 5-6, Jahrgangsstufe 8-10, Aufgaben und Ziele · Sprache",
+      "sourceSpan": {
+        "passageId": "de-hb-latein-seki-gym-3fs-2007-jahrgangsstufe-8-10-aufgaben-und-ziele-sprache",
+        "label": "de-hb-latein-seki-gym-3fs-2007-jahrgangsstufe-8-10-aufgaben-und-ziele-sprache#1"
+      },
+      "stage": "SekI",
+      "courseLevel": "unspecified",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Latein",
+        "stage:SekI"
+      ],
+      "metadata": {
+        "phase": "Jahrgangsstufe 8-10",
+        "field": "Aufgaben und Ziele · Sprache",
+        "extractionMethod": "Extrahiert Aufgaben/Ziele, Themen/Inhalte und Standards aus dem amtlichen Bremer Gymnasium-Bildungsplan Latein als dritte Fremdsprache.",
+        "sourceIndex": 1
+      }
+    },
+    {
+      "id": "de-hb-latein-seki-gym-3fs-2007-002-949f42be",
+      "sourceDocumentKey": "HB-GYM-LATEIN-3FS-2007",
+      "passageId": "de-hb-latein-seki-gym-3fs-2007-jahrgangsstufe-8-10-aufgaben-und-ziele-sprache",
+      "topicCode": "de-hb-latein-seki-gym-3fs-2007-jahrgangsstufe-8-10-aufgaben-und-ziele-sprache",
+      "title": "Entwicklung der Kenntnis sprachtypischer Phänomene auch durch aktive Sprachan-wendung, um Lat...",
+      "description": "Die lernende Person kann entwicklung der Kenntnis sprachtypischer Phänomene auch durch aktive Sprachan-wendung, um Latein auch als gesprochene und lebendige Sprache zu erfahren.",
+      "sourceText": "Entwicklung der Kenntnis sprachtypischer Phänomene auch durch aktive Sprachan-wendung, um Latein auch als gesprochene und lebendige Sprache zu erfahren",
+      "sourceRef": "S. 5-6, Jahrgangsstufe 8-10, Aufgaben und Ziele · Sprache",
+      "sourceSpan": {
+        "passageId": "de-hb-latein-seki-gym-3fs-2007-jahrgangsstufe-8-10-aufgaben-und-ziele-sprache",
+        "label": "de-hb-latein-seki-gym-3fs-2007-jahrgangsstufe-8-10-aufgaben-und-ziele-sprache#2"
+      },
+      "stage": "SekI",
+      "courseLevel": "unspecified",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Latein",
+        "stage:SekI"
+      ],
+      "metadata": {
+        "phase": "Jahrgangsstufe 8-10",
+        "field": "Aufgaben und Ziele · Sprache",
+        "extractionMethod": "Extrahiert Aufgaben/Ziele, Themen/Inhalte und Standards aus dem amtlichen Bremer Gymnasium-Bildungsplan Latein als dritte Fremdsprache.",
+        "sourceIndex": 2
+      }
+    },
+    {
+      "id": "de-hb-latein-seki-gym-3fs-2007-003-a4ea2c2d",
+      "sourceDocumentKey": "HB-GYM-LATEIN-3FS-2007",
+      "passageId": "de-hb-latein-seki-gym-3fs-2007-jahrgangsstufe-8-10-aufgaben-und-ziele-sprache",
+      "topicCode": "de-hb-latein-seki-gym-3fs-2007-jahrgangsstufe-8-10-aufgaben-und-ziele-sprache",
+      "title": "Interpretation lateinischer Texte und deren Inhalte und Abgleich mit heutigen Wert-vorstellun...",
+      "description": "Die lernende Person kann interpretation lateinischer Texte und deren Inhalte und Abgleich mit heutigen Wert-vorstellungen, um zur Reflexion der eigenen Realität angeregt zu werden.",
+      "sourceText": "Interpretation lateinischer Texte und deren Inhalte und Abgleich mit heutigen Wert-vorstellungen, um zur Reflexion der eigenen Realität angeregt zu werden",
+      "sourceRef": "S. 5-6, Jahrgangsstufe 8-10, Aufgaben und Ziele · Sprache",
+      "sourceSpan": {
+        "passageId": "de-hb-latein-seki-gym-3fs-2007-jahrgangsstufe-8-10-aufgaben-und-ziele-sprache",
+        "label": "de-hb-latein-seki-gym-3fs-2007-jahrgangsstufe-8-10-aufgaben-und-ziele-sprache#3"
+      },
+      "stage": "SekI",
+      "courseLevel": "unspecified",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Latein",
+        "stage:SekI"
+      ],
+      "metadata": {
+        "phase": "Jahrgangsstufe 8-10",
+        "field": "Aufgaben und Ziele · Sprache",
+        "extractionMethod": "Extrahiert Aufgaben/Ziele, Themen/Inhalte und Standards aus dem amtlichen Bremer Gymnasium-Bildungsplan Latein als dritte Fremdsprache.",
+        "sourceIndex": 3
+      }
+    },
+    {
+      "id": "de-hb-latein-seki-gym-3fs-2007-004-9910306b",
+      "sourceDocumentKey": "HB-GYM-LATEIN-3FS-2007",
+      "passageId": "de-hb-latein-seki-gym-3fs-2007-jahrgangsstufe-8-10-aufgaben-und-ziele-sprache",
+      "topicCode": "de-hb-latein-seki-gym-3fs-2007-jahrgangsstufe-8-10-aufgaben-und-ziele-sprache",
+      "title": "Steigerung der sprachlichen Kompetenz wie Ausdrucksweise, Textanalyse und Sprachreflexion dur...",
+      "description": "Die lernende Person kann steigerung der sprachlichen Kompetenz wie Ausdrucksweise, Textanalyse und Sprachreflexion durch die Auseinandersetzung mit lateinischen Texten.",
+      "sourceText": "Steigerung der sprachlichen Kompetenz wie Ausdrucksweise, Textanalyse und Sprachreflexion durch die Auseinandersetzung mit lateinischen Texten",
+      "sourceRef": "S. 5-6, Jahrgangsstufe 8-10, Aufgaben und Ziele · Sprache",
+      "sourceSpan": {
+        "passageId": "de-hb-latein-seki-gym-3fs-2007-jahrgangsstufe-8-10-aufgaben-und-ziele-sprache",
+        "label": "de-hb-latein-seki-gym-3fs-2007-jahrgangsstufe-8-10-aufgaben-und-ziele-sprache#4"
+      },
+      "stage": "SekI",
+      "courseLevel": "unspecified",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Latein",
+        "stage:SekI"
+      ],
+      "metadata": {
+        "phase": "Jahrgangsstufe 8-10",
+        "field": "Aufgaben und Ziele · Sprache",
+        "extractionMethod": "Extrahiert Aufgaben/Ziele, Themen/Inhalte und Standards aus dem amtlichen Bremer Gymnasium-Bildungsplan Latein als dritte Fremdsprache.",
+        "sourceIndex": 4
+      }
+    },
+    {
+      "id": "de-hb-latein-seki-gym-3fs-2007-005-c38c60e8",
+      "sourceDocumentKey": "HB-GYM-LATEIN-3FS-2007",
+      "passageId": "de-hb-latein-seki-gym-3fs-2007-jahrgangsstufe-8-10-aufgaben-und-ziele-sprache",
+      "topicCode": "de-hb-latein-seki-gym-3fs-2007-jahrgangsstufe-8-10-aufgaben-und-ziele-sprache",
+      "title": "Erarbeitung und Abstrahierung wesentlicher Sprachelemente (Subjekt, Prädikat, Ob-jekte, Attri...",
+      "description": "Die lernende Person kann erarbeitung und Abstrahierung wesentlicher Sprachelemente (Subjekt, Prädikat, Ob-jekte, Attribute, adverbiale Bestimmungen etc.) anhand des strukturierten Aufbaus der lateinischen Grammatik, um einen leichteren Zugang zu anderen Fremdsprachen zu erlangen.",
+      "sourceText": "Erarbeitung und Abstrahierung wesentlicher Sprachelemente (Subjekt, Prädikat, Ob-jekte, Attribute, adverbiale Bestimmungen etc.) anhand des strukturierten Aufbaus der lateinischen Grammatik, um einen leichteren Zugang zu anderen Fremdsprachen zu erlangen",
+      "sourceRef": "S. 5-6, Jahrgangsstufe 8-10, Aufgaben und Ziele · Sprache",
+      "sourceSpan": {
+        "passageId": "de-hb-latein-seki-gym-3fs-2007-jahrgangsstufe-8-10-aufgaben-und-ziele-sprache",
+        "label": "de-hb-latein-seki-gym-3fs-2007-jahrgangsstufe-8-10-aufgaben-und-ziele-sprache#5"
+      },
+      "stage": "SekI",
+      "courseLevel": "unspecified",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Latein",
+        "stage:SekI"
+      ],
+      "metadata": {
+        "phase": "Jahrgangsstufe 8-10",
+        "field": "Aufgaben und Ziele · Sprache",
+        "extractionMethod": "Extrahiert Aufgaben/Ziele, Themen/Inhalte und Standards aus dem amtlichen Bremer Gymnasium-Bildungsplan Latein als dritte Fremdsprache.",
+        "sourceIndex": 5
+      }
+    },
+    {
+      "id": "de-hb-latein-seki-gym-3fs-2007-006-8dbdac9c",
+      "sourceDocumentKey": "HB-GYM-LATEIN-3FS-2007",
+      "passageId": "de-hb-latein-seki-gym-3fs-2007-jahrgangsstufe-8-10-aufgaben-und-ziele-sprache",
+      "topicCode": "de-hb-latein-seki-gym-3fs-2007-jahrgangsstufe-8-10-aufgaben-und-ziele-sprache",
+      "title": "Entwicklung des Sinn entnehmenden Lesens und der korrekten Textinterpretation durch die genau...",
+      "description": "Die lernende Person kann entwicklung des Sinn entnehmenden Lesens und der korrekten Textinterpretation durch die genaue Beschäftigung mit lateinischen Texten..",
+      "sourceText": "Entwicklung des Sinn entnehmenden Lesens und der korrekten Textinterpretation durch die genaue Beschäftigung mit lateinischen Texten.",
+      "sourceRef": "S. 5-6, Jahrgangsstufe 8-10, Aufgaben und Ziele · Sprache",
+      "sourceSpan": {
+        "passageId": "de-hb-latein-seki-gym-3fs-2007-jahrgangsstufe-8-10-aufgaben-und-ziele-sprache",
+        "label": "de-hb-latein-seki-gym-3fs-2007-jahrgangsstufe-8-10-aufgaben-und-ziele-sprache#6"
+      },
+      "stage": "SekI",
+      "courseLevel": "unspecified",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Latein",
+        "stage:SekI"
+      ],
+      "metadata": {
+        "phase": "Jahrgangsstufe 8-10",
+        "field": "Aufgaben und Ziele · Sprache",
+        "extractionMethod": "Extrahiert Aufgaben/Ziele, Themen/Inhalte und Standards aus dem amtlichen Bremer Gymnasium-Bildungsplan Latein als dritte Fremdsprache.",
+        "sourceIndex": 6
+      }
+    },
+    {
+      "id": "de-hb-latein-seki-gym-3fs-2007-007-7d8d9c2b",
+      "sourceDocumentKey": "HB-GYM-LATEIN-3FS-2007",
+      "passageId": "de-hb-latein-seki-gym-3fs-2007-sprachlehrgangsphase-themen-und-inhalte-einfuhrung-in-die-la",
+      "topicCode": "de-hb-latein-seki-gym-3fs-2007-sprachlehrgangsphase-themen-und-inhalte-einfuhrung-in-die-la",
+      "title": "Deklinationen und Konjugationen 8",
+      "description": "Die lernende Person kann deklinationen und Konjugationen 8.",
+      "sourceText": "Deklinationen und Konjugationen 8",
+      "sourceRef": "S. 7-8, Sprachlehrgangsphase, Themen und Inhalte · Einführung in die la",
+      "sourceSpan": {
+        "passageId": "de-hb-latein-seki-gym-3fs-2007-sprachlehrgangsphase-themen-und-inhalte-einfuhrung-in-die-la",
+        "label": "de-hb-latein-seki-gym-3fs-2007-sprachlehrgangsphase-themen-und-inhalte-einfuhrung-in-die-la#7"
+      },
+      "stage": "SekI",
+      "courseLevel": "unspecified",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Latein",
+        "stage:SekI"
+      ],
+      "metadata": {
+        "phase": "Sprachlehrgangsphase",
+        "field": "Themen und Inhalte · Einführung in die la",
+        "extractionMethod": "Extrahiert Aufgaben/Ziele, Themen/Inhalte und Standards aus dem amtlichen Bremer Gymnasium-Bildungsplan Latein als dritte Fremdsprache.",
+        "sourceIndex": 7
+      }
+    },
+    {
+      "id": "de-hb-latein-seki-gym-3fs-2007-008-b25edf52",
+      "sourceDocumentKey": "HB-GYM-LATEIN-3FS-2007",
+      "passageId": "de-hb-latein-seki-gym-3fs-2007-sprachlehrgangsphase-themen-und-inhalte-teinische-sprache",
+      "topicCode": "de-hb-latein-seki-gym-3fs-2007-sprachlehrgangsphase-themen-und-inhalte-teinische-sprache",
+      "title": "Übersetzung und Beschreibung einfacher Satzstruktu-ren",
+      "description": "Die lernende Person kann übersetzung und Beschreibung einfacher Satzstruktu-ren.",
+      "sourceText": "Übersetzung und Beschreibung einfacher Satzstruktu-ren",
+      "sourceRef": "S. 7-8, Sprachlehrgangsphase, Themen und Inhalte · teinische Sprache",
+      "sourceSpan": {
+        "passageId": "de-hb-latein-seki-gym-3fs-2007-sprachlehrgangsphase-themen-und-inhalte-teinische-sprache",
+        "label": "de-hb-latein-seki-gym-3fs-2007-sprachlehrgangsphase-themen-und-inhalte-teinische-sprache#8"
+      },
+      "stage": "SekI",
+      "courseLevel": "unspecified",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Latein",
+        "stage:SekI"
+      ],
+      "metadata": {
+        "phase": "Sprachlehrgangsphase",
+        "field": "Themen und Inhalte · teinische Sprache",
+        "extractionMethod": "Extrahiert Aufgaben/Ziele, Themen/Inhalte und Standards aus dem amtlichen Bremer Gymnasium-Bildungsplan Latein als dritte Fremdsprache.",
+        "sourceIndex": 8
+      }
+    },
+    {
+      "id": "de-hb-latein-seki-gym-3fs-2007-009-586c962d",
+      "sourceDocumentKey": "HB-GYM-LATEIN-3FS-2007",
+      "passageId": "de-hb-latein-seki-gym-3fs-2007-sprachlehrgangsphase-themen-und-inhalte-teinische-sprache",
+      "topicCode": "de-hb-latein-seki-gym-3fs-2007-sprachlehrgangsphase-themen-und-inhalte-teinische-sprache",
+      "title": "Basiswortschatz",
+      "description": "Die lernende Person kann basiswortschatz.",
+      "sourceText": "Basiswortschatz",
+      "sourceRef": "S. 7-8, Sprachlehrgangsphase, Themen und Inhalte · teinische Sprache",
+      "sourceSpan": {
+        "passageId": "de-hb-latein-seki-gym-3fs-2007-sprachlehrgangsphase-themen-und-inhalte-teinische-sprache",
+        "label": "de-hb-latein-seki-gym-3fs-2007-sprachlehrgangsphase-themen-und-inhalte-teinische-sprache#9"
+      },
+      "stage": "SekI",
+      "courseLevel": "unspecified",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Latein",
+        "stage:SekI"
+      ],
+      "metadata": {
+        "phase": "Sprachlehrgangsphase",
+        "field": "Themen und Inhalte · teinische Sprache",
+        "extractionMethod": "Extrahiert Aufgaben/Ziele, Themen/Inhalte und Standards aus dem amtlichen Bremer Gymnasium-Bildungsplan Latein als dritte Fremdsprache.",
+        "sourceIndex": 9
+      }
+    },
+    {
+      "id": "de-hb-latein-seki-gym-3fs-2007-010-cf212119",
+      "sourceDocumentKey": "HB-GYM-LATEIN-3FS-2007",
+      "passageId": "de-hb-latein-seki-gym-3fs-2007-sprachlehrgangsphase-themen-und-inhalte-teinische-sprache",
+      "topicCode": "de-hb-latein-seki-gym-3fs-2007-sprachlehrgangsphase-themen-und-inhalte-teinische-sprache",
+      "title": "Übersetzungs-und Vokabellernmethodik",
+      "description": "Die lernende Person kann übersetzungs-und Vokabellernmethodik.",
+      "sourceText": "Übersetzungs-und Vokabellernmethodik",
+      "sourceRef": "S. 7-8, Sprachlehrgangsphase, Themen und Inhalte · teinische Sprache",
+      "sourceSpan": {
+        "passageId": "de-hb-latein-seki-gym-3fs-2007-sprachlehrgangsphase-themen-und-inhalte-teinische-sprache",
+        "label": "de-hb-latein-seki-gym-3fs-2007-sprachlehrgangsphase-themen-und-inhalte-teinische-sprache#10"
+      },
+      "stage": "SekI",
+      "courseLevel": "unspecified",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Latein",
+        "stage:SekI"
+      ],
+      "metadata": {
+        "phase": "Sprachlehrgangsphase",
+        "field": "Themen und Inhalte · teinische Sprache",
+        "extractionMethod": "Extrahiert Aufgaben/Ziele, Themen/Inhalte und Standards aus dem amtlichen Bremer Gymnasium-Bildungsplan Latein als dritte Fremdsprache.",
+        "sourceIndex": 10
+      }
+    },
+    {
+      "id": "de-hb-latein-seki-gym-3fs-2007-011-6bffb13a",
+      "sourceDocumentKey": "HB-GYM-LATEIN-3FS-2007",
+      "passageId": "de-hb-latein-seki-gym-3fs-2007-sprachlehrgangsphase-themen-und-inhalte-vertiefung-und-erwei",
+      "topicCode": "de-hb-latein-seki-gym-3fs-2007-sprachlehrgangsphase-themen-und-inhalte-vertiefung-und-erwei",
+      "title": "Morphologie und Syntax der lateinischen Sprache 9",
+      "description": "Die lernende Person kann morphologie und Syntax der lateinischen Sprache 9.",
+      "sourceText": "Morphologie und Syntax der lateinischen Sprache 9",
+      "sourceRef": "S. 7-8, Sprachlehrgangsphase, Themen und Inhalte · Vertiefung und Erwei",
+      "sourceSpan": {
+        "passageId": "de-hb-latein-seki-gym-3fs-2007-sprachlehrgangsphase-themen-und-inhalte-vertiefung-und-erwei",
+        "label": "de-hb-latein-seki-gym-3fs-2007-sprachlehrgangsphase-themen-und-inhalte-vertiefung-und-erwei#11"
+      },
+      "stage": "SekI",
+      "courseLevel": "unspecified",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Latein",
+        "stage:SekI"
+      ],
+      "metadata": {
+        "phase": "Sprachlehrgangsphase",
+        "field": "Themen und Inhalte · Vertiefung und Erwei",
+        "extractionMethod": "Extrahiert Aufgaben/Ziele, Themen/Inhalte und Standards aus dem amtlichen Bremer Gymnasium-Bildungsplan Latein als dritte Fremdsprache.",
+        "sourceIndex": 11
+      }
+    },
+    {
+      "id": "de-hb-latein-seki-gym-3fs-2007-012-60efa331",
+      "sourceDocumentKey": "HB-GYM-LATEIN-3FS-2007",
+      "passageId": "de-hb-latein-seki-gym-3fs-2007-sprachlehrgangsphase-themen-und-inhalte-terung-der-lateinischen",
+      "topicCode": "de-hb-latein-seki-gym-3fs-2007-sprachlehrgangsphase-themen-und-inhalte-terung-der-lateinischen",
+      "title": "Erkennen und Decodierung komplexerer Satzstruktu-Sprachkenntnisse ren",
+      "description": "Die lernende Person kann erkennen und Decodierung komplexerer Satzstruktu-Sprachkenntnisse ren.",
+      "sourceText": "Erkennen und Decodierung komplexerer Satzstruktu-Sprachkenntnisse ren",
+      "sourceRef": "S. 7-8, Sprachlehrgangsphase, Themen und Inhalte · terung der lateinischen",
+      "sourceSpan": {
+        "passageId": "de-hb-latein-seki-gym-3fs-2007-sprachlehrgangsphase-themen-und-inhalte-terung-der-lateinischen",
+        "label": "de-hb-latein-seki-gym-3fs-2007-sprachlehrgangsphase-themen-und-inhalte-terung-der-lateinischen#12"
+      },
+      "stage": "SekI",
+      "courseLevel": "unspecified",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Latein",
+        "stage:SekI"
+      ],
+      "metadata": {
+        "phase": "Sprachlehrgangsphase",
+        "field": "Themen und Inhalte · terung der lateinischen",
+        "extractionMethod": "Extrahiert Aufgaben/Ziele, Themen/Inhalte und Standards aus dem amtlichen Bremer Gymnasium-Bildungsplan Latein als dritte Fremdsprache.",
+        "sourceIndex": 12
+      }
+    },
+    {
+      "id": "de-hb-latein-seki-gym-3fs-2007-013-cd09cfa5",
+      "sourceDocumentKey": "HB-GYM-LATEIN-3FS-2007",
+      "passageId": "de-hb-latein-seki-gym-3fs-2007-sprachlehrgangsphase-themen-und-inhalte-terung-der-lateinischen",
+      "topicCode": "de-hb-latein-seki-gym-3fs-2007-sprachlehrgangsphase-themen-und-inhalte-terung-der-lateinischen",
+      "title": "Übersetzung einfacher lateinischer Texte",
+      "description": "Die lernende Person kann übersetzung einfacher lateinischer Texte.",
+      "sourceText": "Übersetzung einfacher lateinischer Texte",
+      "sourceRef": "S. 7-8, Sprachlehrgangsphase, Themen und Inhalte · terung der lateinischen",
+      "sourceSpan": {
+        "passageId": "de-hb-latein-seki-gym-3fs-2007-sprachlehrgangsphase-themen-und-inhalte-terung-der-lateinischen",
+        "label": "de-hb-latein-seki-gym-3fs-2007-sprachlehrgangsphase-themen-und-inhalte-terung-der-lateinischen#13"
+      },
+      "stage": "SekI",
+      "courseLevel": "unspecified",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Latein",
+        "stage:SekI"
+      ],
+      "metadata": {
+        "phase": "Sprachlehrgangsphase",
+        "field": "Themen und Inhalte · terung der lateinischen",
+        "extractionMethod": "Extrahiert Aufgaben/Ziele, Themen/Inhalte und Standards aus dem amtlichen Bremer Gymnasium-Bildungsplan Latein als dritte Fremdsprache.",
+        "sourceIndex": 13
+      }
+    },
+    {
+      "id": "de-hb-latein-seki-gym-3fs-2007-014-bdcb0dde",
+      "sourceDocumentKey": "HB-GYM-LATEIN-3FS-2007",
+      "passageId": "de-hb-latein-seki-gym-3fs-2007-sprachlehrgangsphase-themen-und-inhalte-terung-der-lateinischen",
+      "topicCode": "de-hb-latein-seki-gym-3fs-2007-sprachlehrgangsphase-themen-und-inhalte-terung-der-lateinischen",
+      "title": "Wortschatzarbeit",
+      "description": "Die lernende Person kann wortschatzarbeit.",
+      "sourceText": "Wortschatzarbeit",
+      "sourceRef": "S. 7-8, Sprachlehrgangsphase, Themen und Inhalte · terung der lateinischen",
+      "sourceSpan": {
+        "passageId": "de-hb-latein-seki-gym-3fs-2007-sprachlehrgangsphase-themen-und-inhalte-terung-der-lateinischen",
+        "label": "de-hb-latein-seki-gym-3fs-2007-sprachlehrgangsphase-themen-und-inhalte-terung-der-lateinischen#14"
+      },
+      "stage": "SekI",
+      "courseLevel": "unspecified",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Latein",
+        "stage:SekI"
+      ],
+      "metadata": {
+        "phase": "Sprachlehrgangsphase",
+        "field": "Themen und Inhalte · terung der lateinischen",
+        "extractionMethod": "Extrahiert Aufgaben/Ziele, Themen/Inhalte und Standards aus dem amtlichen Bremer Gymnasium-Bildungsplan Latein als dritte Fremdsprache.",
+        "sourceIndex": 14
+      }
+    },
+    {
+      "id": "de-hb-latein-seki-gym-3fs-2007-015-f14a0e17",
+      "sourceDocumentKey": "HB-GYM-LATEIN-3FS-2007",
+      "passageId": "de-hb-latein-seki-gym-3fs-2007-sprachlehrgangsphase-themen-und-inhalte-terung-der-lateinischen",
+      "topicCode": "de-hb-latein-seki-gym-3fs-2007-sprachlehrgangsphase-themen-und-inhalte-terung-der-lateinischen",
+      "title": "Übersetzungsmethodik",
+      "description": "Die lernende Person kann übersetzungsmethodik.",
+      "sourceText": "Übersetzungsmethodik",
+      "sourceRef": "S. 7-8, Sprachlehrgangsphase, Themen und Inhalte · terung der lateinischen",
+      "sourceSpan": {
+        "passageId": "de-hb-latein-seki-gym-3fs-2007-sprachlehrgangsphase-themen-und-inhalte-terung-der-lateinischen",
+        "label": "de-hb-latein-seki-gym-3fs-2007-sprachlehrgangsphase-themen-und-inhalte-terung-der-lateinischen#15"
+      },
+      "stage": "SekI",
+      "courseLevel": "unspecified",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Latein",
+        "stage:SekI"
+      ],
+      "metadata": {
+        "phase": "Sprachlehrgangsphase",
+        "field": "Themen und Inhalte · terung der lateinischen",
+        "extractionMethod": "Extrahiert Aufgaben/Ziele, Themen/Inhalte und Standards aus dem amtlichen Bremer Gymnasium-Bildungsplan Latein als dritte Fremdsprache.",
+        "sourceIndex": 15
+      }
+    },
+    {
+      "id": "de-hb-latein-seki-gym-3fs-2007-016-9fdff549",
+      "sourceDocumentKey": "HB-GYM-LATEIN-3FS-2007",
+      "passageId": "de-hb-latein-seki-gym-3fs-2007-sprachlehrgangsphase-themen-und-inhalte-terung-der-lateinischen",
+      "topicCode": "de-hb-latein-seki-gym-3fs-2007-sprachlehrgangsphase-themen-und-inhalte-terung-der-lateinischen",
+      "title": "Interpretieren und Deuten kürzerer, überschaubarer lateinischer Texte",
+      "description": "Die lernende Person kann interpretieren und Deuten kürzerer, überschaubarer lateinischer Texte.",
+      "sourceText": "Interpretieren und Deuten kürzerer, überschaubarer lateinischer Texte",
+      "sourceRef": "S. 7-8, Sprachlehrgangsphase, Themen und Inhalte · terung der lateinischen",
+      "sourceSpan": {
+        "passageId": "de-hb-latein-seki-gym-3fs-2007-sprachlehrgangsphase-themen-und-inhalte-terung-der-lateinischen",
+        "label": "de-hb-latein-seki-gym-3fs-2007-sprachlehrgangsphase-themen-und-inhalte-terung-der-lateinischen#16"
+      },
+      "stage": "SekI",
+      "courseLevel": "unspecified",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Latein",
+        "stage:SekI"
+      ],
+      "metadata": {
+        "phase": "Sprachlehrgangsphase",
+        "field": "Themen und Inhalte · terung der lateinischen",
+        "extractionMethod": "Extrahiert Aufgaben/Ziele, Themen/Inhalte und Standards aus dem amtlichen Bremer Gymnasium-Bildungsplan Latein als dritte Fremdsprache.",
+        "sourceIndex": 16
+      }
+    },
+    {
+      "id": "de-hb-latein-seki-gym-3fs-2007-017-3dedebb6",
+      "sourceDocumentKey": "HB-GYM-LATEIN-3FS-2007",
+      "passageId": "de-hb-latein-seki-gym-3fs-2007-lekturephase-themen-und-inhalte-geschichtsschreibung",
+      "topicCode": "de-hb-latein-seki-gym-3fs-2007-lekturephase-themen-und-inhalte-geschichtsschreibung",
+      "title": "Übersetzung adaptierter Originaltexte",
+      "description": "Die lernende Person kann übersetzung adaptierter Originaltexte.",
+      "sourceText": "Übersetzung adaptierter Originaltexte",
+      "sourceRef": "S. 7-8, Lektürephase, Themen und Inhalte · Geschichtsschreibung",
+      "sourceSpan": {
+        "passageId": "de-hb-latein-seki-gym-3fs-2007-lekturephase-themen-und-inhalte-geschichtsschreibung",
+        "label": "de-hb-latein-seki-gym-3fs-2007-lekturephase-themen-und-inhalte-geschichtsschreibung#17"
+      },
+      "stage": "SekI",
+      "courseLevel": "unspecified",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Latein",
+        "stage:SekI"
+      ],
+      "metadata": {
+        "phase": "Lektürephase",
+        "field": "Themen und Inhalte · Geschichtsschreibung",
+        "extractionMethod": "Extrahiert Aufgaben/Ziele, Themen/Inhalte und Standards aus dem amtlichen Bremer Gymnasium-Bildungsplan Latein als dritte Fremdsprache.",
+        "sourceIndex": 17
+      }
+    },
+    {
+      "id": "de-hb-latein-seki-gym-3fs-2007-018-abba1c8c",
+      "sourceDocumentKey": "HB-GYM-LATEIN-3FS-2007",
+      "passageId": "de-hb-latein-seki-gym-3fs-2007-lekturephase-themen-und-inhalte-und-politik",
+      "topicCode": "de-hb-latein-seki-gym-3fs-2007-lekturephase-themen-und-inhalte-und-politik",
+      "title": "Arbeit mit dem Wörterbuch",
+      "description": "Die lernende Person kann arbeit mit dem Wörterbuch.",
+      "sourceText": "Arbeit mit dem Wörterbuch",
+      "sourceRef": "S. 7-8, Lektürephase, Themen und Inhalte · und Politik",
+      "sourceSpan": {
+        "passageId": "de-hb-latein-seki-gym-3fs-2007-lekturephase-themen-und-inhalte-und-politik",
+        "label": "de-hb-latein-seki-gym-3fs-2007-lekturephase-themen-und-inhalte-und-politik#18"
+      },
+      "stage": "SekI",
+      "courseLevel": "unspecified",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Latein",
+        "stage:SekI"
+      ],
+      "metadata": {
+        "phase": "Lektürephase",
+        "field": "Themen und Inhalte · und Politik",
+        "extractionMethod": "Extrahiert Aufgaben/Ziele, Themen/Inhalte und Standards aus dem amtlichen Bremer Gymnasium-Bildungsplan Latein als dritte Fremdsprache.",
+        "sourceIndex": 18
+      }
+    },
+    {
+      "id": "de-hb-latein-seki-gym-3fs-2007-019-f0c28cf9",
+      "sourceDocumentKey": "HB-GYM-LATEIN-3FS-2007",
+      "passageId": "de-hb-latein-seki-gym-3fs-2007-lekturephase-themen-und-inhalte-die-romische-gesell",
+      "topicCode": "de-hb-latein-seki-gym-3fs-2007-lekturephase-themen-und-inhalte-die-romische-gesell",
+      "title": "Kennenlernen einzelner antiker Autoren",
+      "description": "Die lernende Person kann kennenlernen einzelner antiker Autoren.",
+      "sourceText": "Kennenlernen einzelner antiker Autoren",
+      "sourceRef": "S. 7-8, Lektürephase, Themen und Inhalte · Die römische Gesell",
+      "sourceSpan": {
+        "passageId": "de-hb-latein-seki-gym-3fs-2007-lekturephase-themen-und-inhalte-die-romische-gesell",
+        "label": "de-hb-latein-seki-gym-3fs-2007-lekturephase-themen-und-inhalte-die-romische-gesell#19"
+      },
+      "stage": "SekI",
+      "courseLevel": "unspecified",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Latein",
+        "stage:SekI"
+      ],
+      "metadata": {
+        "phase": "Lektürephase",
+        "field": "Themen und Inhalte · Die römische Gesell",
+        "extractionMethod": "Extrahiert Aufgaben/Ziele, Themen/Inhalte und Standards aus dem amtlichen Bremer Gymnasium-Bildungsplan Latein als dritte Fremdsprache.",
+        "sourceIndex": 19
+      }
+    },
+    {
+      "id": "de-hb-latein-seki-gym-3fs-2007-020-5bb01b18",
+      "sourceDocumentKey": "HB-GYM-LATEIN-3FS-2007",
+      "passageId": "de-hb-latein-seki-gym-3fs-2007-lekturephase-themen-und-inhalte-schaft-der-republik-und",
+      "topicCode": "de-hb-latein-seki-gym-3fs-2007-lekturephase-themen-und-inhalte-schaft-der-republik-und",
+      "title": "Anwendung und Differenzierung grammatischer der Kaiserzeit Kenntnisse Christen und Römer",
+      "description": "Die lernende Person kann anwendung und Differenzierung grammatischer der Kaiserzeit Kenntnisse Christen und Römer.",
+      "sourceText": "Anwendung und Differenzierung grammatischer der Kaiserzeit Kenntnisse Christen und Römer",
+      "sourceRef": "S. 7-8, Lektürephase, Themen und Inhalte · schaft der Republik und",
+      "sourceSpan": {
+        "passageId": "de-hb-latein-seki-gym-3fs-2007-lekturephase-themen-und-inhalte-schaft-der-republik-und",
+        "label": "de-hb-latein-seki-gym-3fs-2007-lekturephase-themen-und-inhalte-schaft-der-republik-und#20"
+      },
+      "stage": "SekI",
+      "courseLevel": "unspecified",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Latein",
+        "stage:SekI"
+      ],
+      "metadata": {
+        "phase": "Lektürephase",
+        "field": "Themen und Inhalte · schaft der Republik und",
+        "extractionMethod": "Extrahiert Aufgaben/Ziele, Themen/Inhalte und Standards aus dem amtlichen Bremer Gymnasium-Bildungsplan Latein als dritte Fremdsprache.",
+        "sourceIndex": 20
+      }
+    },
+    {
+      "id": "de-hb-latein-seki-gym-3fs-2007-021-3f19b293",
+      "sourceDocumentKey": "HB-GYM-LATEIN-3FS-2007",
+      "passageId": "de-hb-latein-seki-gym-3fs-2007-lekturephase-themen-und-inhalte-schaft-der-republik-und",
+      "topicCode": "de-hb-latein-seki-gym-3fs-2007-lekturephase-themen-und-inhalte-schaft-der-republik-und",
+      "title": "Interpretation und Analyse größerer Texteinheiten",
+      "description": "Die lernende Person kann interpretation und Analyse größerer Texteinheiten.",
+      "sourceText": "Interpretation und Analyse größerer Texteinheiten",
+      "sourceRef": "S. 7-8, Lektürephase, Themen und Inhalte · schaft der Republik und",
+      "sourceSpan": {
+        "passageId": "de-hb-latein-seki-gym-3fs-2007-lekturephase-themen-und-inhalte-schaft-der-republik-und",
+        "label": "de-hb-latein-seki-gym-3fs-2007-lekturephase-themen-und-inhalte-schaft-der-republik-und#21"
+      },
+      "stage": "SekI",
+      "courseLevel": "unspecified",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Latein",
+        "stage:SekI"
+      ],
+      "metadata": {
+        "phase": "Lektürephase",
+        "field": "Themen und Inhalte · schaft der Republik und",
+        "extractionMethod": "Extrahiert Aufgaben/Ziele, Themen/Inhalte und Standards aus dem amtlichen Bremer Gymnasium-Bildungsplan Latein als dritte Fremdsprache.",
+        "sourceIndex": 21
+      }
+    },
+    {
+      "id": "de-hb-latein-seki-gym-3fs-2007-022-2e08843c",
+      "sourceDocumentKey": "HB-GYM-LATEIN-3FS-2007",
+      "passageId": "de-hb-latein-seki-gym-3fs-2007-lekturephase-themen-und-inhalte-schaft-der-republik-und",
+      "topicCode": "de-hb-latein-seki-gym-3fs-2007-lekturephase-themen-und-inhalte-schaft-der-republik-und",
+      "title": "Einführung in verschiedene Textgattungen",
+      "description": "Die lernende Person kann einführung in verschiedene Textgattungen.",
+      "sourceText": "Einführung in verschiedene Textgattungen",
+      "sourceRef": "S. 7-8, Lektürephase, Themen und Inhalte · schaft der Republik und",
+      "sourceSpan": {
+        "passageId": "de-hb-latein-seki-gym-3fs-2007-lekturephase-themen-und-inhalte-schaft-der-republik-und",
+        "label": "de-hb-latein-seki-gym-3fs-2007-lekturephase-themen-und-inhalte-schaft-der-republik-und#22"
+      },
+      "stage": "SekI",
+      "courseLevel": "unspecified",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Latein",
+        "stage:SekI"
+      ],
+      "metadata": {
+        "phase": "Lektürephase",
+        "field": "Themen und Inhalte · schaft der Republik und",
+        "extractionMethod": "Extrahiert Aufgaben/Ziele, Themen/Inhalte und Standards aus dem amtlichen Bremer Gymnasium-Bildungsplan Latein als dritte Fremdsprache.",
+        "sourceIndex": 22
+      }
+    },
+    {
+      "id": "de-hb-latein-seki-gym-3fs-2007-023-53687e27",
+      "sourceDocumentKey": "HB-GYM-LATEIN-3FS-2007",
+      "passageId": "de-hb-latein-seki-gym-3fs-2007-lekturephase-themen-und-inhalte-schaft-der-republik-und",
+      "topicCode": "de-hb-latein-seki-gym-3fs-2007-lekturephase-themen-und-inhalte-schaft-der-republik-und",
+      "title": "Aufbau eines lektürebezogenen Wortschatzes",
+      "description": "Die lernende Person kann aufbau eines lektürebezogenen Wortschatzes.",
+      "sourceText": "Aufbau eines lektürebezogenen Wortschatzes",
+      "sourceRef": "S. 7-8, Lektürephase, Themen und Inhalte · schaft der Republik und",
+      "sourceSpan": {
+        "passageId": "de-hb-latein-seki-gym-3fs-2007-lekturephase-themen-und-inhalte-schaft-der-republik-und",
+        "label": "de-hb-latein-seki-gym-3fs-2007-lekturephase-themen-und-inhalte-schaft-der-republik-und#23"
+      },
+      "stage": "SekI",
+      "courseLevel": "unspecified",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Latein",
+        "stage:SekI"
+      ],
+      "metadata": {
+        "phase": "Lektürephase",
+        "field": "Themen und Inhalte · schaft der Republik und",
+        "extractionMethod": "Extrahiert Aufgaben/Ziele, Themen/Inhalte und Standards aus dem amtlichen Bremer Gymnasium-Bildungsplan Latein als dritte Fremdsprache.",
+        "sourceIndex": 23
+      }
+    },
+    {
+      "id": "de-hb-latein-seki-gym-3fs-2007-024-e836194c",
+      "sourceDocumentKey": "HB-GYM-LATEIN-3FS-2007",
+      "passageId": "de-hb-latein-seki-gym-3fs-2007-ende-jahrgangsstufe-10-standards-sprachliche-kompetenzen",
+      "topicCode": "de-hb-latein-seki-gym-3fs-2007-ende-jahrgangsstufe-10-standards-sprachliche-kompetenzen",
+      "title": "erfassen sprachlich einfach strukturierte lateinische Originaltexte (im Schwierigkeits-grad s...",
+      "description": "Die lernende Person kann erfassen sprachlich einfach strukturierte lateinische Originaltexte (im Schwierigkeits-grad syntaktisch unkomplizierter Stellen aus Caesars „Bellum Gallicum“) mit inhalt-lich bekanntem Kontext mit Hilfe eines zweisprachigen Wörterbuches in Inhalt, Auf-bau und Aussage.",
+      "sourceText": "erfassen sprachlich einfach strukturierte lateinische Originaltexte (im Schwierigkeits-grad syntaktisch unkomplizierter Stellen aus Caesars „Bellum Gallicum“) mit inhalt-lich bekanntem Kontext mit Hilfe eines zweisprachigen Wörterbuches in Inhalt, Auf-bau und Aussage",
+      "sourceRef": "S. 9-9, Ende Jahrgangsstufe 10, Standards · Sprachliche Kompetenzen",
+      "sourceSpan": {
+        "passageId": "de-hb-latein-seki-gym-3fs-2007-ende-jahrgangsstufe-10-standards-sprachliche-kompetenzen",
+        "label": "de-hb-latein-seki-gym-3fs-2007-ende-jahrgangsstufe-10-standards-sprachliche-kompetenzen#24"
+      },
+      "stage": "SekI",
+      "courseLevel": "unspecified",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Latein",
+        "stage:SekI"
+      ],
+      "metadata": {
+        "phase": "Ende Jahrgangsstufe 10",
+        "field": "Standards · Sprachliche Kompetenzen",
+        "extractionMethod": "Extrahiert Aufgaben/Ziele, Themen/Inhalte und Standards aus dem amtlichen Bremer Gymnasium-Bildungsplan Latein als dritte Fremdsprache.",
+        "sourceIndex": 24
+      }
+    },
+    {
+      "id": "de-hb-latein-seki-gym-3fs-2007-025-65ebef82",
+      "sourceDocumentKey": "HB-GYM-LATEIN-3FS-2007",
+      "passageId": "de-hb-latein-seki-gym-3fs-2007-ende-jahrgangsstufe-10-standards-sprachliche-kompetenzen",
+      "topicCode": "de-hb-latein-seki-gym-3fs-2007-ende-jahrgangsstufe-10-standards-sprachliche-kompetenzen",
+      "title": "weisen dieses Verständnis durch eine treffende Übersetzung und einen interpretieren-den Komme...",
+      "description": "Die lernende Person kann weisen dieses Verständnis durch eine treffende Übersetzung und einen interpretieren-den Kommentar nach..",
+      "sourceText": "weisen dieses Verständnis durch eine treffende Übersetzung und einen interpretieren-den Kommentar nach.",
+      "sourceRef": "S. 9-9, Ende Jahrgangsstufe 10, Standards · Sprachliche Kompetenzen",
+      "sourceSpan": {
+        "passageId": "de-hb-latein-seki-gym-3fs-2007-ende-jahrgangsstufe-10-standards-sprachliche-kompetenzen",
+        "label": "de-hb-latein-seki-gym-3fs-2007-ende-jahrgangsstufe-10-standards-sprachliche-kompetenzen#25"
+      },
+      "stage": "SekI",
+      "courseLevel": "unspecified",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Latein",
+        "stage:SekI"
+      ],
+      "metadata": {
+        "phase": "Ende Jahrgangsstufe 10",
+        "field": "Standards · Sprachliche Kompetenzen",
+        "extractionMethod": "Extrahiert Aufgaben/Ziele, Themen/Inhalte und Standards aus dem amtlichen Bremer Gymnasium-Bildungsplan Latein als dritte Fremdsprache.",
+        "sourceIndex": 25
+      }
+    },
+    {
+      "id": "de-hb-latein-seki-gym-3fs-2007-026-08c232b8",
+      "sourceDocumentKey": "HB-GYM-LATEIN-3FS-2007",
+      "passageId": "de-hb-latein-seki-gym-3fs-2007-ende-jahrgangsstufe-10-standards-inhaltlich-methodische-kompetenzen",
+      "topicCode": "de-hb-latein-seki-gym-3fs-2007-ende-jahrgangsstufe-10-standards-inhaltlich-methodische-kompetenzen",
+      "title": "haben Grundkenntnisse über die antike Lebens-und Gedankenwelt",
+      "description": "Die lernende Person kann haben Grundkenntnisse über die antike Lebens-und Gedankenwelt.",
+      "sourceText": "haben Grundkenntnisse über die antike Lebens-und Gedankenwelt",
+      "sourceRef": "S. 9-9, Ende Jahrgangsstufe 10, Standards · Inhaltlich-methodische Kompetenzen",
+      "sourceSpan": {
+        "passageId": "de-hb-latein-seki-gym-3fs-2007-ende-jahrgangsstufe-10-standards-inhaltlich-methodische-kompetenzen",
+        "label": "de-hb-latein-seki-gym-3fs-2007-ende-jahrgangsstufe-10-standards-inhaltlich-methodische-kompetenzen#26"
+      },
+      "stage": "SekI",
+      "courseLevel": "unspecified",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Latein",
+        "stage:SekI"
+      ],
+      "metadata": {
+        "phase": "Ende Jahrgangsstufe 10",
+        "field": "Standards · Inhaltlich-methodische Kompetenzen",
+        "extractionMethod": "Extrahiert Aufgaben/Ziele, Themen/Inhalte und Standards aus dem amtlichen Bremer Gymnasium-Bildungsplan Latein als dritte Fremdsprache.",
+        "sourceIndex": 26
+      }
+    },
+    {
+      "id": "de-hb-latein-seki-gym-3fs-2007-027-0dbcef60",
+      "sourceDocumentKey": "HB-GYM-LATEIN-3FS-2007",
+      "passageId": "de-hb-latein-seki-gym-3fs-2007-ende-jahrgangsstufe-10-standards-inhaltlich-methodische-kompetenzen",
+      "topicCode": "de-hb-latein-seki-gym-3fs-2007-ende-jahrgangsstufe-10-standards-inhaltlich-methodische-kompetenzen",
+      "title": "haben Grundkenntnisse über das Fortleben der antiken Kultur",
+      "description": "Die lernende Person kann haben Grundkenntnisse über das Fortleben der antiken Kultur.",
+      "sourceText": "haben Grundkenntnisse über das Fortleben der antiken Kultur",
+      "sourceRef": "S. 9-9, Ende Jahrgangsstufe 10, Standards · Inhaltlich-methodische Kompetenzen",
+      "sourceSpan": {
+        "passageId": "de-hb-latein-seki-gym-3fs-2007-ende-jahrgangsstufe-10-standards-inhaltlich-methodische-kompetenzen",
+        "label": "de-hb-latein-seki-gym-3fs-2007-ende-jahrgangsstufe-10-standards-inhaltlich-methodische-kompetenzen#27"
+      },
+      "stage": "SekI",
+      "courseLevel": "unspecified",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Latein",
+        "stage:SekI"
+      ],
+      "metadata": {
+        "phase": "Ende Jahrgangsstufe 10",
+        "field": "Standards · Inhaltlich-methodische Kompetenzen",
+        "extractionMethod": "Extrahiert Aufgaben/Ziele, Themen/Inhalte und Standards aus dem amtlichen Bremer Gymnasium-Bildungsplan Latein als dritte Fremdsprache.",
+        "sourceIndex": 27
+      }
+    },
+    {
+      "id": "de-hb-latein-seki-gym-3fs-2007-028-bdd51668",
+      "sourceDocumentKey": "HB-GYM-LATEIN-3FS-2007",
+      "passageId": "de-hb-latein-seki-gym-3fs-2007-ende-jahrgangsstufe-10-standards-inhaltlich-methodische-kompetenzen",
+      "topicCode": "de-hb-latein-seki-gym-3fs-2007-ende-jahrgangsstufe-10-standards-inhaltlich-methodische-kompetenzen",
+      "title": "kennen die Bedeutung der Antike für das heutige Europa",
+      "description": "Die lernende Person kann kennen die Bedeutung der Antike für das heutige Europa.",
+      "sourceText": "kennen die Bedeutung der Antike für das heutige Europa",
+      "sourceRef": "S. 9-9, Ende Jahrgangsstufe 10, Standards · Inhaltlich-methodische Kompetenzen",
+      "sourceSpan": {
+        "passageId": "de-hb-latein-seki-gym-3fs-2007-ende-jahrgangsstufe-10-standards-inhaltlich-methodische-kompetenzen",
+        "label": "de-hb-latein-seki-gym-3fs-2007-ende-jahrgangsstufe-10-standards-inhaltlich-methodische-kompetenzen#28"
+      },
+      "stage": "SekI",
+      "courseLevel": "unspecified",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Latein",
+        "stage:SekI"
+      ],
+      "metadata": {
+        "phase": "Ende Jahrgangsstufe 10",
+        "field": "Standards · Inhaltlich-methodische Kompetenzen",
+        "extractionMethod": "Extrahiert Aufgaben/Ziele, Themen/Inhalte und Standards aus dem amtlichen Bremer Gymnasium-Bildungsplan Latein als dritte Fremdsprache.",
+        "sourceIndex": 28
+      }
+    },
+    {
+      "id": "de-hb-latein-seki-gym-3fs-2007-029-f4b22a2c",
+      "sourceDocumentKey": "HB-GYM-LATEIN-3FS-2007",
+      "passageId": "de-hb-latein-seki-gym-3fs-2007-ende-jahrgangsstufe-10-standards-inhaltlich-methodische-kompetenzen",
+      "topicCode": "de-hb-latein-seki-gym-3fs-2007-ende-jahrgangsstufe-10-standards-inhaltlich-methodische-kompetenzen",
+      "title": "können einfache lateinische Texte inhaltlich erfassen und in eigenen Worten wieder-geben",
+      "description": "Die lernende Person kann einfache lateinische Texte inhaltlich erfassen und in eigenen Worten wieder-geben.",
+      "sourceText": "können einfache lateinische Texte inhaltlich erfassen und in eigenen Worten wieder-geben",
+      "sourceRef": "S. 9-9, Ende Jahrgangsstufe 10, Standards · Inhaltlich-methodische Kompetenzen",
+      "sourceSpan": {
+        "passageId": "de-hb-latein-seki-gym-3fs-2007-ende-jahrgangsstufe-10-standards-inhaltlich-methodische-kompetenzen",
+        "label": "de-hb-latein-seki-gym-3fs-2007-ende-jahrgangsstufe-10-standards-inhaltlich-methodische-kompetenzen#29"
+      },
+      "stage": "SekI",
+      "courseLevel": "unspecified",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Latein",
+        "stage:SekI"
+      ],
+      "metadata": {
+        "phase": "Ende Jahrgangsstufe 10",
+        "field": "Standards · Inhaltlich-methodische Kompetenzen",
+        "extractionMethod": "Extrahiert Aufgaben/Ziele, Themen/Inhalte und Standards aus dem amtlichen Bremer Gymnasium-Bildungsplan Latein als dritte Fremdsprache.",
+        "sourceIndex": 29
+      }
+    },
+    {
+      "id": "de-hb-latein-seki-gym-3fs-2007-030-5458d0cb",
+      "sourceDocumentKey": "HB-GYM-LATEIN-3FS-2007",
+      "passageId": "de-hb-latein-seki-gym-3fs-2007-ende-jahrgangsstufe-10-standards-inhaltlich-methodische-kompetenzen",
+      "topicCode": "de-hb-latein-seki-gym-3fs-2007-ende-jahrgangsstufe-10-standards-inhaltlich-methodische-kompetenzen",
+      "title": "sind vertraut mit mindestens zwei verschiedenen Textgattungen",
+      "description": "Die lernende Person kann sind vertraut mit mindestens zwei verschiedenen Textgattungen.",
+      "sourceText": "sind vertraut mit mindestens zwei verschiedenen Textgattungen",
+      "sourceRef": "S. 9-9, Ende Jahrgangsstufe 10, Standards · Inhaltlich-methodische Kompetenzen",
+      "sourceSpan": {
+        "passageId": "de-hb-latein-seki-gym-3fs-2007-ende-jahrgangsstufe-10-standards-inhaltlich-methodische-kompetenzen",
+        "label": "de-hb-latein-seki-gym-3fs-2007-ende-jahrgangsstufe-10-standards-inhaltlich-methodische-kompetenzen#30"
+      },
+      "stage": "SekI",
+      "courseLevel": "unspecified",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Latein",
+        "stage:SekI"
+      ],
+      "metadata": {
+        "phase": "Ende Jahrgangsstufe 10",
+        "field": "Standards · Inhaltlich-methodische Kompetenzen",
+        "extractionMethod": "Extrahiert Aufgaben/Ziele, Themen/Inhalte und Standards aus dem amtlichen Bremer Gymnasium-Bildungsplan Latein als dritte Fremdsprache.",
+        "sourceIndex": 30
+      }
+    },
+    {
+      "id": "de-hb-latein-seki-gym-3fs-2007-031-fe47666b",
+      "sourceDocumentKey": "HB-GYM-LATEIN-3FS-2007",
+      "passageId": "de-hb-latein-seki-gym-3fs-2007-ende-jahrgangsstufe-10-standards-inhaltlich-methodische-kompetenzen",
+      "topicCode": "de-hb-latein-seki-gym-3fs-2007-ende-jahrgangsstufe-10-standards-inhaltlich-methodische-kompetenzen",
+      "title": "können antike Texte und ihre Autoren in die historisch – kulturellen Zusammenhänge einordnen",
+      "description": "Die lernende Person kann antike Texte und ihre Autoren in die historisch – kulturellen Zusammenhänge einordnen.",
+      "sourceText": "können antike Texte und ihre Autoren in die historisch – kulturellen Zusammenhänge einordnen",
+      "sourceRef": "S. 9-9, Ende Jahrgangsstufe 10, Standards · Inhaltlich-methodische Kompetenzen",
+      "sourceSpan": {
+        "passageId": "de-hb-latein-seki-gym-3fs-2007-ende-jahrgangsstufe-10-standards-inhaltlich-methodische-kompetenzen",
+        "label": "de-hb-latein-seki-gym-3fs-2007-ende-jahrgangsstufe-10-standards-inhaltlich-methodische-kompetenzen#31"
+      },
+      "stage": "SekI",
+      "courseLevel": "unspecified",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Latein",
+        "stage:SekI"
+      ],
+      "metadata": {
+        "phase": "Ende Jahrgangsstufe 10",
+        "field": "Standards · Inhaltlich-methodische Kompetenzen",
+        "extractionMethod": "Extrahiert Aufgaben/Ziele, Themen/Inhalte und Standards aus dem amtlichen Bremer Gymnasium-Bildungsplan Latein als dritte Fremdsprache.",
+        "sourceIndex": 31
+      }
+    },
+    {
+      "id": "de-hb-latein-seki-gym-3fs-2007-032-b6670345",
+      "sourceDocumentKey": "HB-GYM-LATEIN-3FS-2007",
+      "passageId": "de-hb-latein-seki-gym-3fs-2007-ende-jahrgangsstufe-10-standards-inhaltlich-methodische-kompetenzen",
+      "topicCode": "de-hb-latein-seki-gym-3fs-2007-ende-jahrgangsstufe-10-standards-inhaltlich-methodische-kompetenzen",
+      "title": "können mit Hilfe antiker Gedankengänge eigene Wertvorstellungen reflektieren.",
+      "description": "Die lernende Person kann mit Hilfe antiker Gedankengänge eigene Wertvorstellungen reflektieren..",
+      "sourceText": "können mit Hilfe antiker Gedankengänge eigene Wertvorstellungen reflektieren.",
+      "sourceRef": "S. 9-9, Ende Jahrgangsstufe 10, Standards · Inhaltlich-methodische Kompetenzen",
+      "sourceSpan": {
+        "passageId": "de-hb-latein-seki-gym-3fs-2007-ende-jahrgangsstufe-10-standards-inhaltlich-methodische-kompetenzen",
+        "label": "de-hb-latein-seki-gym-3fs-2007-ende-jahrgangsstufe-10-standards-inhaltlich-methodische-kompetenzen#32"
+      },
+      "stage": "SekI",
+      "courseLevel": "unspecified",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Latein",
+        "stage:SekI"
+      ],
+      "metadata": {
+        "phase": "Ende Jahrgangsstufe 10",
+        "field": "Standards · Inhaltlich-methodische Kompetenzen",
+        "extractionMethod": "Extrahiert Aufgaben/Ziele, Themen/Inhalte und Standards aus dem amtlichen Bremer Gymnasium-Bildungsplan Latein als dritte Fremdsprache.",
+        "sourceIndex": 32
+      }
+    }
+  ]
+}

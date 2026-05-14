@@ -1,0 +1,1998 @@
+{
+  "schemaVersion": 1,
+  "extractionId": "DE_HB_LATEIN_SEKII_GYO_2008",
+  "sourceLandscapeId": "ddc81dfa-80c8-5684-16e4-919c761a2092",
+  "targetLandscapeId": "668cf206-941e-51f8-8704-3e8938631235",
+  "title": "Latein Oberstufe (Bremen, GyO Qualifikationsphase 2008 Source-Extraction)",
+  "jurisdiction": "DE-HB",
+  "subject": "Latein",
+  "stage": "SekII",
+  "sourceDocument": {
+    "key": "HB-GYO-LATEIN-QPHASE-2008",
+    "title": "Bremen Bildungsplan Latein Gymnasiale Oberstufe Qualifikationsphase, 2008",
+    "path": "curricula/DE/Gymnasium/input/HB/latein/GyO_Latein_2008.pdf",
+    "url": "https://www.lis.bremen.de/sixcms/media.php/13/GyO_Latein_2008.pdf"
+  },
+  "method": {
+    "extractor": "generateHbLatinSourceExtraction.ts",
+    "description": "Extrahiert Aufgaben/Ziele, Themen/Inhalte und Standards aus dem amtlichen Bremer Bildungsplan Latein fuer die gymnasiale Oberstufe."
+  },
+  "qualityReview": {
+    "sourceGoalCountPeerBaseline": {
+      "status": "accepted",
+      "accepted": true,
+      "rationale": "Bremen Latein wird aus expliziten Aufgaben/Zielen, Themen/Inhalten und Standards der amtlichen Gymnasium-Bildungsplaene extrahiert. Die getrennte Fuehrung von 2. Fremdsprache, 3. Fremdsprache und GyO verhindert kuenstliche Verdichtung."
+    }
+  },
+  "pipelineStatus": {
+    "currentStep": "",
+    "steps": [
+      {
+        "id": "ORIGINALQUELLEN",
+        "label": "Originalquellen bereitgestellt",
+        "status": "complete",
+        "dependsOn": [],
+        "checks": [
+          {
+            "id": "source-document-present",
+            "label": "Amtliches Bremer Bildungsplan-PDF liegt lokal vor",
+            "passed": true,
+            "details": "curricula/DE/Gymnasium/input/HB/latein/GyO_Latein_2008.pdf"
+          }
+        ]
+      },
+      {
+        "id": "MAPPING-1",
+        "label": "Original-Lehrplanpassagen extrahiert",
+        "status": "complete",
+        "dependsOn": [
+          "ORIGINALQUELLEN"
+        ],
+        "checks": [
+          {
+            "id": "passage-groups-extracted",
+            "label": "Kompetenz-, Themen- und Standardgruppen extrahiert",
+            "passed": true,
+            "details": "12 Passagegruppen"
+          }
+        ]
+      },
+      {
+        "id": "MAPPING-2",
+        "label": "Source-Ziele aus Lehrplanpassagen erstellt",
+        "status": "complete",
+        "dependsOn": [
+          "MAPPING-1"
+        ],
+        "checks": [
+          {
+            "id": "source-goals-created",
+            "label": "Source-Ziele aus amtlichen Kompetenz- und Inhaltsaussagen erzeugt",
+            "passed": true,
+            "details": "64 Source-Ziele"
+          }
+        ]
+      },
+      {
+        "id": "MAPPING-3",
+        "label": "Source-Ziele auf SkillPilot-Ziele gemappt",
+        "status": "complete",
+        "dependsOn": [
+          "MAPPING-2"
+        ],
+        "checks": [
+          {
+            "id": "all-source-goals-covered",
+            "label": "Alle Source-Ziele sind inhaltlich durch SkillPilot-Ziele abgedeckt",
+            "passed": true,
+            "details": "0 explizite Canonical-Gaps"
+          }
+        ]
+      }
+    ]
+  },
+  "passages": [
+    {
+      "id": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-aufgaben-und-ziele",
+      "sourceDocumentKey": "HB-GYO-LATEIN-QPHASE-2008",
+      "topicCode": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-aufgaben-und-ziele",
+      "title": "Qualifikationsphase · Aufgaben und Ziele",
+      "rawText": "- die Übersetzung lateinischer Texte ins Deutsche, d. h. auf die Dekodierung lateinischer Texte und auf die zielsprachenorientierte Rekodierung ins Deut-sche\n- das Verständnis der ästhetischen Qualitäten von Literatur\n- die Interpretation lateinischer Texte und den Abgleich der Ergebnisse mit heu-tigen Wertvorstellungen, um zur Reflexion der eigenen Realität angeregt zu werden\n- die Entwicklung der Lesekompetenz und des Umgangs mit Texten\n- die Steigerung der allgemeinsprachlichen Kompetenzen wie Ausdrucksweise Textanalyse und Sprachreflexion\n- die Erarbeitung wesentlicher metasprachlicher Kategorien\n- den Erwerb von Kenntnissen über die antike Lebenswelt, Kultur und Geschichte\n- den Einblick in das Fortleben der Antike in Sprache, Literatur, Kunst, Architek-tur, Wissenschaft, Philosophie, Rechtskunde.",
+      "sourceGoalIds": [
+        "de-hb-latein-sekii-gyo-2008-001-fc0942c6",
+        "de-hb-latein-sekii-gyo-2008-002-4ffcdd97",
+        "de-hb-latein-sekii-gyo-2008-003-fd2c18d4",
+        "de-hb-latein-sekii-gyo-2008-004-ca8d1205",
+        "de-hb-latein-sekii-gyo-2008-005-a673c908",
+        "de-hb-latein-sekii-gyo-2008-006-fae6749e",
+        "de-hb-latein-sekii-gyo-2008-007-14c557e8",
+        "de-hb-latein-sekii-gyo-2008-008-b5280795"
+      ]
+    },
+    {
+      "id": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-themen-und-inhalte-inhaltsaspekt",
+      "sourceDocumentKey": "HB-GYO-LATEIN-QPHASE-2008",
+      "topicCode": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-themen-und-inhalte-inhaltsaspekt",
+      "title": "Qualifikationsphase · Themen und Inhalte · Inhaltsaspekt",
+      "rawText": "- Politik / Geschichte\n- historische Persönlichkeiten\n- Sozialgeschichte-Alltag-Religion-Philosophie-Rhetorik\n- zwischenmenschliche Beziehungen-Mythos",
+      "sourceGoalIds": [
+        "de-hb-latein-sekii-gyo-2008-009-17726f62",
+        "de-hb-latein-sekii-gyo-2008-010-5ce99f8a",
+        "de-hb-latein-sekii-gyo-2008-011-6b362ea0",
+        "de-hb-latein-sekii-gyo-2008-012-51038797"
+      ]
+    },
+    {
+      "id": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-themen-und-inhalte-gattungsaspekt",
+      "sourceDocumentKey": "HB-GYO-LATEIN-QPHASE-2008",
+      "topicCode": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-themen-und-inhalte-gattungsaspekt",
+      "title": "Qualifikationsphase · Themen und Inhalte · Gattungsaspekt",
+      "rawText": "- Dichtung (Epik, Lyrik, Drama)-Rede-Brief-Biographie-Inschrift\n- philosophischer und historischer Traktat-Fachschrift\n- bei den epochenspezifischen Aspekten müssen während der Qualifikations-phase die Republik und die Augusteische Zeit sowie mindestens ein weiterer",
+      "sourceGoalIds": [
+        "de-hb-latein-sekii-gyo-2008-013-77820f6c",
+        "de-hb-latein-sekii-gyo-2008-014-e7a8302b",
+        "de-hb-latein-sekii-gyo-2008-019-6b9fa9df"
+      ]
+    },
+    {
+      "id": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-themen-und-inhalte-epochenaspekt",
+      "sourceDocumentKey": "HB-GYO-LATEIN-QPHASE-2008",
+      "topicCode": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-themen-und-inhalte-epochenaspekt",
+      "title": "Qualifikationsphase · Themen und Inhalte · Epochenaspekt",
+      "rawText": "- Augusteische Zeit-Kaiserzeit-Spätantike-Mittelalter\n- Renaissance / Neuzeit\n- je ein oder zwei Inhalts-, Gattungs-und Epochenaspekte bilden zusammen den Schwerpunkt in einem Halbjahresthema.",
+      "sourceGoalIds": [
+        "de-hb-latein-sekii-gyo-2008-015-dc9ac56f",
+        "de-hb-latein-sekii-gyo-2008-016-09ef284f",
+        "de-hb-latein-sekii-gyo-2008-020-d13e9c02"
+      ]
+    },
+    {
+      "id": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-themen-und-inhalte-obligatorik",
+      "sourceDocumentKey": "HB-GYO-LATEIN-QPHASE-2008",
+      "topicCode": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-themen-und-inhalte-obligatorik",
+      "title": "Qualifikationsphase · Themen und Inhalte · Obligatorik",
+      "rawText": "- Es müssen während der Qualifikationsphase mindestens vier inhaltliche As-pekte behandelt werden, kein inhaltlicher Aspekt darf mehr als zwei Mal vor-kommen; in einem Halbjahr dürfen mehrere inhaltliche Aspekte vorkommen\n- bei den gattungsspezifischen Aspekten müssen während der Qualifikations-",
+      "sourceGoalIds": [
+        "de-hb-latein-sekii-gyo-2008-017-03fa487a",
+        "de-hb-latein-sekii-gyo-2008-018-d2500a53"
+      ]
+    },
+    {
+      "id": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-grundkurs-standards-sprachliche-kompetenzen",
+      "sourceDocumentKey": "HB-GYO-LATEIN-QPHASE-2008",
+      "topicCode": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-grundkurs-standards-sprachliche-kompetenzen",
+      "title": "Qualifikationsphase · Grundkurs · Standards · Sprachliche Kompetenzen",
+      "rawText": "- verfügen über einen Grund-und einen lektürebezogenen Wortschatz\n- haben solide Kenntnisse in der lateinischen Grammatik (Morphologie und Syntax)\n- haben Kenntnisse in der Metrik und den wichtigsten Stilmitteln.",
+      "sourceGoalIds": [
+        "de-hb-latein-sekii-gyo-2008-021-9cb63f88",
+        "de-hb-latein-sekii-gyo-2008-022-8606dbea",
+        "de-hb-latein-sekii-gyo-2008-023-183bf4e2"
+      ]
+    },
+    {
+      "id": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-grundkurs-standards-inhaltliche-kompetenzen",
+      "sourceDocumentKey": "HB-GYO-LATEIN-QPHASE-2008",
+      "topicCode": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-grundkurs-standards-inhaltliche-kompetenzen",
+      "title": "Qualifikationsphase · Grundkurs · Standards · Inhaltliche Kompetenzen",
+      "rawText": "- haben solide Kenntnisse über die Geschichte, Kultur und Gesellschaft Roms bezogen auf die römische Republik und die augusteische Zeit\n- haben einen Überblick über die römische Geschichte von den Anfängen bis in die Spätantike\n- haben Kenntnisse über die griechisch-römische Mythologie und Religion\n- können Texte historisch einordnen\n- haben erweiterte Kenntnisse in lektürebezogenen inhaltlichen, gattungsspezifi-schen und historisch-gesellschaftlichen Aspekten\n- sind vertraut mit Beispielen verschiedener Literaturgattungen\n- stellen begründet Bezüge zwischen erarbeiteten (antiken) Inhalten und der ei-genen Lebenswelt her.",
+      "sourceGoalIds": [
+        "de-hb-latein-sekii-gyo-2008-024-469f67d2",
+        "de-hb-latein-sekii-gyo-2008-025-cb9a0157",
+        "de-hb-latein-sekii-gyo-2008-026-3e181eba",
+        "de-hb-latein-sekii-gyo-2008-027-0ea1b9d8",
+        "de-hb-latein-sekii-gyo-2008-028-ea0b6dd1",
+        "de-hb-latein-sekii-gyo-2008-029-3f8e5df8",
+        "de-hb-latein-sekii-gyo-2008-030-b480120e"
+      ]
+    },
+    {
+      "id": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-grundkurs-standards-methodische-textkompetenzen",
+      "sourceDocumentKey": "HB-GYO-LATEIN-QPHASE-2008",
+      "topicCode": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-grundkurs-standards-methodische-textkompetenzen",
+      "title": "Qualifikationsphase · Grundkurs · Standards · Methodische Textkompetenzen",
+      "rawText": "- kennen verschiedene Methoden der Texterschließung\n- können lateinische Originaltexte mit Hilfe eines Wörterbuchs ins Deutsche übersetzen und in Inhalt, Aufbau und Aussage erfassen und dies in einer sach-lich richtigen und treffenden Übersetzung nachweisen\n- verstehen und benennen Probleme des Übersetzens von Texten\n- sind geübt im Umgang mit Hilfsmitteln wie Wörterbüchern, zweisprachigen Textausgaben, Kommentaren etc.\n- können Texte gliedern\n- können Textaussagen erfassen und benennen\n- können Schlüsselbegriffe erkennen\n- können Textvergleiche anstellen\n- sind in der Lage, kritisch zu Texten und deren Aussage Stellung zu beziehen\n- sind mit produktiven Verfahren des Umgangs mit Texten vertraut.",
+      "sourceGoalIds": [
+        "de-hb-latein-sekii-gyo-2008-031-0b6a830d",
+        "de-hb-latein-sekii-gyo-2008-032-b5403e8b",
+        "de-hb-latein-sekii-gyo-2008-033-ca9c4b9f",
+        "de-hb-latein-sekii-gyo-2008-034-b322f9b3",
+        "de-hb-latein-sekii-gyo-2008-035-edca0cc2",
+        "de-hb-latein-sekii-gyo-2008-036-7a069340",
+        "de-hb-latein-sekii-gyo-2008-037-f04e9f2b",
+        "de-hb-latein-sekii-gyo-2008-038-d08cc65e",
+        "de-hb-latein-sekii-gyo-2008-039-df0c9abb",
+        "de-hb-latein-sekii-gyo-2008-040-39ba83d7"
+      ]
+    },
+    {
+      "id": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-leistungskurs-standards-methodische-textkompetenzen",
+      "sourceDocumentKey": "HB-GYO-LATEIN-QPHASE-2008",
+      "topicCode": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-leistungskurs-standards-methodische-textkompetenzen",
+      "title": "Qualifikationsphase · Leistungskurs · Standards · Methodische Textkompetenzen",
+      "rawText": "- die Anzahl und den Umfang der Themen\n- die Komplexität und die Vielfalt der untersuchten Aspekte\n- die erhöhten Ansprüche auf selbstständige Leistungen\n- komplexere Ansprüche an die Deutungskompetenz.",
+      "sourceGoalIds": [
+        "de-hb-latein-sekii-gyo-2008-041-e53cb0fa",
+        "de-hb-latein-sekii-gyo-2008-042-ae1c6ee5",
+        "de-hb-latein-sekii-gyo-2008-043-55fc020a",
+        "de-hb-latein-sekii-gyo-2008-044-58c7c92a"
+      ]
+    },
+    {
+      "id": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-neu-aufgenommene-fremdsprache-standards-sprachliche-kompetenzen",
+      "sourceDocumentKey": "HB-GYO-LATEIN-QPHASE-2008",
+      "topicCode": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-neu-aufgenommene-fremdsprache-standards-sprachliche-kompetenzen",
+      "title": "Qualifikationsphase · neu aufgenommene Fremdsprache · Standards · Sprachliche Kompetenzen",
+      "rawText": "- beherrschen die für die Texterschließung notwendigen Formenlehre und Syn-tax sicher\n- verfügen über einen für die Texterschließung ausreichenden Wortschatz\n- haben solide Kenntnisse in der lateinischen Grammatik (Morphologie und Syntax)\n- haben Kenntnisse in den wichtigsten Stilmitteln.",
+      "sourceGoalIds": [
+        "de-hb-latein-sekii-gyo-2008-045-94b80e4f",
+        "de-hb-latein-sekii-gyo-2008-046-5b40ee1d",
+        "de-hb-latein-sekii-gyo-2008-047-c9a4ff67",
+        "de-hb-latein-sekii-gyo-2008-048-907f418f"
+      ]
+    },
+    {
+      "id": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-neu-aufgenommene-fremdsprache-standards-inhaltliche-kompetenzen",
+      "sourceDocumentKey": "HB-GYO-LATEIN-QPHASE-2008",
+      "topicCode": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-neu-aufgenommene-fremdsprache-standards-inhaltliche-kompetenzen",
+      "title": "Qualifikationsphase · neu aufgenommene Fremdsprache · Standards · Inhaltliche Kompetenzen",
+      "rawText": "- haben die erforderlichen Kenntnisse aus dem Bereich der römischen Ge-schichte, Philosophie und Literatur bezogen auf die römische Republik und die augusteische Zeit\n- haben Kenntnisse über die griechisch-römische Mythologie und Religion\n- können Texte historisch einordnen\n- haben erweiterte Kenntnisse in Lektüre bezogenen inhaltlichen, gattungsspezi-fischen und historisch-gesellschaftlichen Aspekten\n- kennen Beispiele für mindestens zwei verschiedene Literaturgattungen\n- stellen begründet Bezüge zwischen erarbeiteten (antiken) Inhalten und der ei-genen Lebenswelt her.",
+      "sourceGoalIds": [
+        "de-hb-latein-sekii-gyo-2008-049-b99a78ec",
+        "de-hb-latein-sekii-gyo-2008-050-b0560293",
+        "de-hb-latein-sekii-gyo-2008-051-42e91e64",
+        "de-hb-latein-sekii-gyo-2008-052-ae631d81",
+        "de-hb-latein-sekii-gyo-2008-053-5a748b36",
+        "de-hb-latein-sekii-gyo-2008-054-7ab0b7d1"
+      ]
+    },
+    {
+      "id": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-neu-aufgenommene-fremdsprache-standards-methodische-textkompetenzen",
+      "sourceDocumentKey": "HB-GYO-LATEIN-QPHASE-2008",
+      "topicCode": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-neu-aufgenommene-fremdsprache-standards-methodische-textkompetenzen",
+      "title": "Qualifikationsphase · neu aufgenommene Fremdsprache · Standards · Methodische Textkompetenzen",
+      "rawText": "- kennen verschiedene Methoden der Texterschließung\n- können lateinische Originaltexte im sprachlichen Schwierigkeitsgrad inhaltlich anspruchsvollerer Stellen (bezogen auf Autoren wie Cicero, Sallust, Livius) mit Hilfe eines Wörterbuchs ins Deutsche treffend übersetzen und in Inhalt, Aufbau und Aussage erfassen\n- verstehen und benennen Probleme des Übersetzens von Texten\n- sind geübt im Umgang mit Hilfsmitteln wie Wörterbüchern, zweisprachigen Textausgaben, Kommentaren etc.\n- können Texte gliedern\n- können Textaussagen erfassen und benennen\n- können Schlüsselbegriffe erkennen\n- können Textvergleiche anstellen\n- sind in der Lage, kritisch zu Texten und deren Aussage Stellung zu beziehen\n- sind mit produktiven Verfahren des Umgangs mit Texten vertraut.",
+      "sourceGoalIds": [
+        "de-hb-latein-sekii-gyo-2008-055-0fa803e4",
+        "de-hb-latein-sekii-gyo-2008-056-7a85227c",
+        "de-hb-latein-sekii-gyo-2008-057-5729cc27",
+        "de-hb-latein-sekii-gyo-2008-058-86517535",
+        "de-hb-latein-sekii-gyo-2008-059-c5d15bc5",
+        "de-hb-latein-sekii-gyo-2008-060-1e1c5e95",
+        "de-hb-latein-sekii-gyo-2008-061-ef00984f",
+        "de-hb-latein-sekii-gyo-2008-062-d5cf2dc4",
+        "de-hb-latein-sekii-gyo-2008-063-e52e1ed9",
+        "de-hb-latein-sekii-gyo-2008-064-467eab44"
+      ]
+    }
+  ],
+  "sourceGoals": [
+    {
+      "id": "de-hb-latein-sekii-gyo-2008-001-fc0942c6",
+      "sourceDocumentKey": "HB-GYO-LATEIN-QPHASE-2008",
+      "passageId": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-aufgaben-und-ziele",
+      "topicCode": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-aufgaben-und-ziele",
+      "title": "die Übersetzung lateinischer Texte ins Deutsche, d. h. auf die Dekodierung lateinischer Texte...",
+      "description": "Die lernende Person kann die Übersetzung lateinischer Texte ins Deutsche, d. h. auf die Dekodierung lateinischer Texte und auf die zielsprachenorientierte Rekodierung ins Deut-sche.",
+      "sourceText": "die Übersetzung lateinischer Texte ins Deutsche, d. h. auf die Dekodierung lateinischer Texte und auf die zielsprachenorientierte Rekodierung ins Deut-sche",
+      "sourceRef": "S. 5-5, Qualifikationsphase, Aufgaben und Ziele",
+      "sourceSpan": {
+        "passageId": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-aufgaben-und-ziele",
+        "label": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-aufgaben-und-ziele#1"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase",
+        "field": "Aufgaben und Ziele",
+        "extractionMethod": "Extrahiert Aufgaben/Ziele, Themen/Inhalte und Standards aus dem amtlichen Bremer Bildungsplan Latein fuer die gymnasiale Oberstufe.",
+        "sourceIndex": 1
+      }
+    },
+    {
+      "id": "de-hb-latein-sekii-gyo-2008-002-4ffcdd97",
+      "sourceDocumentKey": "HB-GYO-LATEIN-QPHASE-2008",
+      "passageId": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-aufgaben-und-ziele",
+      "topicCode": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-aufgaben-und-ziele",
+      "title": "das Verständnis der ästhetischen Qualitäten von Literatur",
+      "description": "Die lernende Person kann das Verständnis der ästhetischen Qualitäten von Literatur.",
+      "sourceText": "das Verständnis der ästhetischen Qualitäten von Literatur",
+      "sourceRef": "S. 5-5, Qualifikationsphase, Aufgaben und Ziele",
+      "sourceSpan": {
+        "passageId": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-aufgaben-und-ziele",
+        "label": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-aufgaben-und-ziele#2"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase",
+        "field": "Aufgaben und Ziele",
+        "extractionMethod": "Extrahiert Aufgaben/Ziele, Themen/Inhalte und Standards aus dem amtlichen Bremer Bildungsplan Latein fuer die gymnasiale Oberstufe.",
+        "sourceIndex": 2
+      }
+    },
+    {
+      "id": "de-hb-latein-sekii-gyo-2008-003-fd2c18d4",
+      "sourceDocumentKey": "HB-GYO-LATEIN-QPHASE-2008",
+      "passageId": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-aufgaben-und-ziele",
+      "topicCode": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-aufgaben-und-ziele",
+      "title": "die Interpretation lateinischer Texte und den Abgleich der Ergebnisse mit heu-tigen Wertvorst...",
+      "description": "Die lernende Person kann die Interpretation lateinischer Texte und den Abgleich der Ergebnisse mit heu-tigen Wertvorstellungen, um zur Reflexion der eigenen Realität angeregt zu werden.",
+      "sourceText": "die Interpretation lateinischer Texte und den Abgleich der Ergebnisse mit heu-tigen Wertvorstellungen, um zur Reflexion der eigenen Realität angeregt zu werden",
+      "sourceRef": "S. 5-5, Qualifikationsphase, Aufgaben und Ziele",
+      "sourceSpan": {
+        "passageId": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-aufgaben-und-ziele",
+        "label": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-aufgaben-und-ziele#3"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase",
+        "field": "Aufgaben und Ziele",
+        "extractionMethod": "Extrahiert Aufgaben/Ziele, Themen/Inhalte und Standards aus dem amtlichen Bremer Bildungsplan Latein fuer die gymnasiale Oberstufe.",
+        "sourceIndex": 3
+      }
+    },
+    {
+      "id": "de-hb-latein-sekii-gyo-2008-004-ca8d1205",
+      "sourceDocumentKey": "HB-GYO-LATEIN-QPHASE-2008",
+      "passageId": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-aufgaben-und-ziele",
+      "topicCode": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-aufgaben-und-ziele",
+      "title": "die Entwicklung der Lesekompetenz und des Umgangs mit Texten",
+      "description": "Die lernende Person kann die Entwicklung der Lesekompetenz und des Umgangs mit Texten.",
+      "sourceText": "die Entwicklung der Lesekompetenz und des Umgangs mit Texten",
+      "sourceRef": "S. 5-5, Qualifikationsphase, Aufgaben und Ziele",
+      "sourceSpan": {
+        "passageId": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-aufgaben-und-ziele",
+        "label": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-aufgaben-und-ziele#4"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase",
+        "field": "Aufgaben und Ziele",
+        "extractionMethod": "Extrahiert Aufgaben/Ziele, Themen/Inhalte und Standards aus dem amtlichen Bremer Bildungsplan Latein fuer die gymnasiale Oberstufe.",
+        "sourceIndex": 4
+      }
+    },
+    {
+      "id": "de-hb-latein-sekii-gyo-2008-005-a673c908",
+      "sourceDocumentKey": "HB-GYO-LATEIN-QPHASE-2008",
+      "passageId": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-aufgaben-und-ziele",
+      "topicCode": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-aufgaben-und-ziele",
+      "title": "die Steigerung der allgemeinsprachlichen Kompetenzen wie Ausdrucksweise Textanalyse und Sprac...",
+      "description": "Die lernende Person kann die Steigerung der allgemeinsprachlichen Kompetenzen wie Ausdrucksweise Textanalyse und Sprachreflexion.",
+      "sourceText": "die Steigerung der allgemeinsprachlichen Kompetenzen wie Ausdrucksweise Textanalyse und Sprachreflexion",
+      "sourceRef": "S. 5-5, Qualifikationsphase, Aufgaben und Ziele",
+      "sourceSpan": {
+        "passageId": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-aufgaben-und-ziele",
+        "label": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-aufgaben-und-ziele#5"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase",
+        "field": "Aufgaben und Ziele",
+        "extractionMethod": "Extrahiert Aufgaben/Ziele, Themen/Inhalte und Standards aus dem amtlichen Bremer Bildungsplan Latein fuer die gymnasiale Oberstufe.",
+        "sourceIndex": 5
+      }
+    },
+    {
+      "id": "de-hb-latein-sekii-gyo-2008-006-fae6749e",
+      "sourceDocumentKey": "HB-GYO-LATEIN-QPHASE-2008",
+      "passageId": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-aufgaben-und-ziele",
+      "topicCode": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-aufgaben-und-ziele",
+      "title": "die Erarbeitung wesentlicher metasprachlicher Kategorien",
+      "description": "Die lernende Person kann die Erarbeitung wesentlicher metasprachlicher Kategorien.",
+      "sourceText": "die Erarbeitung wesentlicher metasprachlicher Kategorien",
+      "sourceRef": "S. 5-5, Qualifikationsphase, Aufgaben und Ziele",
+      "sourceSpan": {
+        "passageId": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-aufgaben-und-ziele",
+        "label": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-aufgaben-und-ziele#6"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase",
+        "field": "Aufgaben und Ziele",
+        "extractionMethod": "Extrahiert Aufgaben/Ziele, Themen/Inhalte und Standards aus dem amtlichen Bremer Bildungsplan Latein fuer die gymnasiale Oberstufe.",
+        "sourceIndex": 6
+      }
+    },
+    {
+      "id": "de-hb-latein-sekii-gyo-2008-007-14c557e8",
+      "sourceDocumentKey": "HB-GYO-LATEIN-QPHASE-2008",
+      "passageId": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-aufgaben-und-ziele",
+      "topicCode": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-aufgaben-und-ziele",
+      "title": "den Erwerb von Kenntnissen über die antike Lebenswelt, Kultur und Geschichte",
+      "description": "Die lernende Person kann den Erwerb von Kenntnissen über die antike Lebenswelt, Kultur und Geschichte.",
+      "sourceText": "den Erwerb von Kenntnissen über die antike Lebenswelt, Kultur und Geschichte",
+      "sourceRef": "S. 5-5, Qualifikationsphase, Aufgaben und Ziele",
+      "sourceSpan": {
+        "passageId": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-aufgaben-und-ziele",
+        "label": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-aufgaben-und-ziele#7"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase",
+        "field": "Aufgaben und Ziele",
+        "extractionMethod": "Extrahiert Aufgaben/Ziele, Themen/Inhalte und Standards aus dem amtlichen Bremer Bildungsplan Latein fuer die gymnasiale Oberstufe.",
+        "sourceIndex": 7
+      }
+    },
+    {
+      "id": "de-hb-latein-sekii-gyo-2008-008-b5280795",
+      "sourceDocumentKey": "HB-GYO-LATEIN-QPHASE-2008",
+      "passageId": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-aufgaben-und-ziele",
+      "topicCode": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-aufgaben-und-ziele",
+      "title": "den Einblick in das Fortleben der Antike in Sprache, Literatur, Kunst, Architek-tur, Wissensc...",
+      "description": "Die lernende Person kann den Einblick in das Fortleben der Antike in Sprache, Literatur, Kunst, Architek-tur, Wissenschaft, Philosophie, Rechtskunde..",
+      "sourceText": "den Einblick in das Fortleben der Antike in Sprache, Literatur, Kunst, Architek-tur, Wissenschaft, Philosophie, Rechtskunde.",
+      "sourceRef": "S. 5-5, Qualifikationsphase, Aufgaben und Ziele",
+      "sourceSpan": {
+        "passageId": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-aufgaben-und-ziele",
+        "label": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-aufgaben-und-ziele#8"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase",
+        "field": "Aufgaben und Ziele",
+        "extractionMethod": "Extrahiert Aufgaben/Ziele, Themen/Inhalte und Standards aus dem amtlichen Bremer Bildungsplan Latein fuer die gymnasiale Oberstufe.",
+        "sourceIndex": 8
+      }
+    },
+    {
+      "id": "de-hb-latein-sekii-gyo-2008-009-17726f62",
+      "sourceDocumentKey": "HB-GYO-LATEIN-QPHASE-2008",
+      "passageId": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-themen-und-inhalte-inhaltsaspekt",
+      "topicCode": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-themen-und-inhalte-inhaltsaspekt",
+      "title": "Politik / Geschichte",
+      "description": "Die lernende Person kann politik / Geschichte.",
+      "sourceText": "Politik / Geschichte",
+      "sourceRef": "S. 6-7, Qualifikationsphase, Themen und Inhalte · Inhaltsaspekt",
+      "sourceSpan": {
+        "passageId": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-themen-und-inhalte-inhaltsaspekt",
+        "label": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-themen-und-inhalte-inhaltsaspekt#9"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase",
+        "field": "Themen und Inhalte · Inhaltsaspekt",
+        "extractionMethod": "Extrahiert Aufgaben/Ziele, Themen/Inhalte und Standards aus dem amtlichen Bremer Bildungsplan Latein fuer die gymnasiale Oberstufe.",
+        "sourceIndex": 9
+      }
+    },
+    {
+      "id": "de-hb-latein-sekii-gyo-2008-010-5ce99f8a",
+      "sourceDocumentKey": "HB-GYO-LATEIN-QPHASE-2008",
+      "passageId": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-themen-und-inhalte-inhaltsaspekt",
+      "topicCode": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-themen-und-inhalte-inhaltsaspekt",
+      "title": "historische Persönlichkeiten",
+      "description": "Die lernende Person kann historische Persönlichkeiten.",
+      "sourceText": "historische Persönlichkeiten",
+      "sourceRef": "S. 6-7, Qualifikationsphase, Themen und Inhalte · Inhaltsaspekt",
+      "sourceSpan": {
+        "passageId": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-themen-und-inhalte-inhaltsaspekt",
+        "label": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-themen-und-inhalte-inhaltsaspekt#10"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase",
+        "field": "Themen und Inhalte · Inhaltsaspekt",
+        "extractionMethod": "Extrahiert Aufgaben/Ziele, Themen/Inhalte und Standards aus dem amtlichen Bremer Bildungsplan Latein fuer die gymnasiale Oberstufe.",
+        "sourceIndex": 10
+      }
+    },
+    {
+      "id": "de-hb-latein-sekii-gyo-2008-011-6b362ea0",
+      "sourceDocumentKey": "HB-GYO-LATEIN-QPHASE-2008",
+      "passageId": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-themen-und-inhalte-inhaltsaspekt",
+      "topicCode": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-themen-und-inhalte-inhaltsaspekt",
+      "title": "Sozialgeschichte-Alltag-Religion-Philosophie-Rhetorik",
+      "description": "Die lernende Person kann sozialgeschichte-Alltag-Religion-Philosophie-Rhetorik.",
+      "sourceText": "Sozialgeschichte-Alltag-Religion-Philosophie-Rhetorik",
+      "sourceRef": "S. 6-7, Qualifikationsphase, Themen und Inhalte · Inhaltsaspekt",
+      "sourceSpan": {
+        "passageId": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-themen-und-inhalte-inhaltsaspekt",
+        "label": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-themen-und-inhalte-inhaltsaspekt#11"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase",
+        "field": "Themen und Inhalte · Inhaltsaspekt",
+        "extractionMethod": "Extrahiert Aufgaben/Ziele, Themen/Inhalte und Standards aus dem amtlichen Bremer Bildungsplan Latein fuer die gymnasiale Oberstufe.",
+        "sourceIndex": 11
+      }
+    },
+    {
+      "id": "de-hb-latein-sekii-gyo-2008-012-51038797",
+      "sourceDocumentKey": "HB-GYO-LATEIN-QPHASE-2008",
+      "passageId": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-themen-und-inhalte-inhaltsaspekt",
+      "topicCode": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-themen-und-inhalte-inhaltsaspekt",
+      "title": "zwischenmenschliche Beziehungen-Mythos",
+      "description": "Die lernende Person kann zwischenmenschliche Beziehungen-Mythos.",
+      "sourceText": "zwischenmenschliche Beziehungen-Mythos",
+      "sourceRef": "S. 6-7, Qualifikationsphase, Themen und Inhalte · Inhaltsaspekt",
+      "sourceSpan": {
+        "passageId": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-themen-und-inhalte-inhaltsaspekt",
+        "label": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-themen-und-inhalte-inhaltsaspekt#12"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase",
+        "field": "Themen und Inhalte · Inhaltsaspekt",
+        "extractionMethod": "Extrahiert Aufgaben/Ziele, Themen/Inhalte und Standards aus dem amtlichen Bremer Bildungsplan Latein fuer die gymnasiale Oberstufe.",
+        "sourceIndex": 12
+      }
+    },
+    {
+      "id": "de-hb-latein-sekii-gyo-2008-013-77820f6c",
+      "sourceDocumentKey": "HB-GYO-LATEIN-QPHASE-2008",
+      "passageId": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-themen-und-inhalte-gattungsaspekt",
+      "topicCode": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-themen-und-inhalte-gattungsaspekt",
+      "title": "Dichtung (Epik, Lyrik, Drama)-Rede-Brief-Biographie-Inschrift",
+      "description": "Die lernende Person kann dichtung (Epik, Lyrik, Drama)-Rede-Brief-Biographie-Inschrift.",
+      "sourceText": "Dichtung (Epik, Lyrik, Drama)-Rede-Brief-Biographie-Inschrift",
+      "sourceRef": "S. 6-7, Qualifikationsphase, Themen und Inhalte · Gattungsaspekt",
+      "sourceSpan": {
+        "passageId": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-themen-und-inhalte-gattungsaspekt",
+        "label": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-themen-und-inhalte-gattungsaspekt#13"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase",
+        "field": "Themen und Inhalte · Gattungsaspekt",
+        "extractionMethod": "Extrahiert Aufgaben/Ziele, Themen/Inhalte und Standards aus dem amtlichen Bremer Bildungsplan Latein fuer die gymnasiale Oberstufe.",
+        "sourceIndex": 13
+      }
+    },
+    {
+      "id": "de-hb-latein-sekii-gyo-2008-014-e7a8302b",
+      "sourceDocumentKey": "HB-GYO-LATEIN-QPHASE-2008",
+      "passageId": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-themen-und-inhalte-gattungsaspekt",
+      "topicCode": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-themen-und-inhalte-gattungsaspekt",
+      "title": "philosophischer und historischer Traktat-Fachschrift",
+      "description": "Die lernende Person kann philosophischer und historischer Traktat-Fachschrift.",
+      "sourceText": "philosophischer und historischer Traktat-Fachschrift",
+      "sourceRef": "S. 6-7, Qualifikationsphase, Themen und Inhalte · Gattungsaspekt",
+      "sourceSpan": {
+        "passageId": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-themen-und-inhalte-gattungsaspekt",
+        "label": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-themen-und-inhalte-gattungsaspekt#14"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase",
+        "field": "Themen und Inhalte · Gattungsaspekt",
+        "extractionMethod": "Extrahiert Aufgaben/Ziele, Themen/Inhalte und Standards aus dem amtlichen Bremer Bildungsplan Latein fuer die gymnasiale Oberstufe.",
+        "sourceIndex": 14
+      }
+    },
+    {
+      "id": "de-hb-latein-sekii-gyo-2008-015-dc9ac56f",
+      "sourceDocumentKey": "HB-GYO-LATEIN-QPHASE-2008",
+      "passageId": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-themen-und-inhalte-epochenaspekt",
+      "topicCode": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-themen-und-inhalte-epochenaspekt",
+      "title": "Augusteische Zeit-Kaiserzeit-Spätantike-Mittelalter",
+      "description": "Die lernende Person kann augusteische Zeit-Kaiserzeit-Spätantike-Mittelalter.",
+      "sourceText": "Augusteische Zeit-Kaiserzeit-Spätantike-Mittelalter",
+      "sourceRef": "S. 6-7, Qualifikationsphase, Themen und Inhalte · Epochenaspekt",
+      "sourceSpan": {
+        "passageId": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-themen-und-inhalte-epochenaspekt",
+        "label": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-themen-und-inhalte-epochenaspekt#15"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase",
+        "field": "Themen und Inhalte · Epochenaspekt",
+        "extractionMethod": "Extrahiert Aufgaben/Ziele, Themen/Inhalte und Standards aus dem amtlichen Bremer Bildungsplan Latein fuer die gymnasiale Oberstufe.",
+        "sourceIndex": 15
+      }
+    },
+    {
+      "id": "de-hb-latein-sekii-gyo-2008-016-09ef284f",
+      "sourceDocumentKey": "HB-GYO-LATEIN-QPHASE-2008",
+      "passageId": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-themen-und-inhalte-epochenaspekt",
+      "topicCode": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-themen-und-inhalte-epochenaspekt",
+      "title": "Renaissance / Neuzeit",
+      "description": "Die lernende Person kann renaissance / Neuzeit.",
+      "sourceText": "Renaissance / Neuzeit",
+      "sourceRef": "S. 6-7, Qualifikationsphase, Themen und Inhalte · Epochenaspekt",
+      "sourceSpan": {
+        "passageId": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-themen-und-inhalte-epochenaspekt",
+        "label": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-themen-und-inhalte-epochenaspekt#16"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase",
+        "field": "Themen und Inhalte · Epochenaspekt",
+        "extractionMethod": "Extrahiert Aufgaben/Ziele, Themen/Inhalte und Standards aus dem amtlichen Bremer Bildungsplan Latein fuer die gymnasiale Oberstufe.",
+        "sourceIndex": 16
+      }
+    },
+    {
+      "id": "de-hb-latein-sekii-gyo-2008-017-03fa487a",
+      "sourceDocumentKey": "HB-GYO-LATEIN-QPHASE-2008",
+      "passageId": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-themen-und-inhalte-obligatorik",
+      "topicCode": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-themen-und-inhalte-obligatorik",
+      "title": "Es müssen während der Qualifikationsphase mindestens vier inhaltliche As-pekte behandelt werd...",
+      "description": "Die lernende Person kann es müssen während der Qualifikationsphase mindestens vier inhaltliche As-pekte behandelt werden, kein inhaltlicher Aspekt darf mehr als zwei Mal vor-kommen; in einem Halbjahr dürfen mehrere inhaltliche Aspekte vorkommen.",
+      "sourceText": "Es müssen während der Qualifikationsphase mindestens vier inhaltliche As-pekte behandelt werden, kein inhaltlicher Aspekt darf mehr als zwei Mal vor-kommen; in einem Halbjahr dürfen mehrere inhaltliche Aspekte vorkommen",
+      "sourceRef": "S. 6-7, Qualifikationsphase, Themen und Inhalte · Obligatorik",
+      "sourceSpan": {
+        "passageId": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-themen-und-inhalte-obligatorik",
+        "label": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-themen-und-inhalte-obligatorik#17"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase",
+        "field": "Themen und Inhalte · Obligatorik",
+        "extractionMethod": "Extrahiert Aufgaben/Ziele, Themen/Inhalte und Standards aus dem amtlichen Bremer Bildungsplan Latein fuer die gymnasiale Oberstufe.",
+        "sourceIndex": 17
+      }
+    },
+    {
+      "id": "de-hb-latein-sekii-gyo-2008-018-d2500a53",
+      "sourceDocumentKey": "HB-GYO-LATEIN-QPHASE-2008",
+      "passageId": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-themen-und-inhalte-obligatorik",
+      "topicCode": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-themen-und-inhalte-obligatorik",
+      "title": "bei den gattungsspezifischen Aspekten müssen während der Qualifikations-",
+      "description": "Die lernende Person kann bei den gattungsspezifischen Aspekten müssen während der Qualifikations-.",
+      "sourceText": "bei den gattungsspezifischen Aspekten müssen während der Qualifikations-",
+      "sourceRef": "S. 6-7, Qualifikationsphase, Themen und Inhalte · Obligatorik",
+      "sourceSpan": {
+        "passageId": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-themen-und-inhalte-obligatorik",
+        "label": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-themen-und-inhalte-obligatorik#18"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase",
+        "field": "Themen und Inhalte · Obligatorik",
+        "extractionMethod": "Extrahiert Aufgaben/Ziele, Themen/Inhalte und Standards aus dem amtlichen Bremer Bildungsplan Latein fuer die gymnasiale Oberstufe.",
+        "sourceIndex": 18
+      }
+    },
+    {
+      "id": "de-hb-latein-sekii-gyo-2008-019-6b9fa9df",
+      "sourceDocumentKey": "HB-GYO-LATEIN-QPHASE-2008",
+      "passageId": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-themen-und-inhalte-gattungsaspekt",
+      "topicCode": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-themen-und-inhalte-gattungsaspekt",
+      "title": "bei den epochenspezifischen Aspekten müssen während der Qualifikations-phase die Republik und...",
+      "description": "Die lernende Person kann bei den epochenspezifischen Aspekten müssen während der Qualifikations-phase die Republik und die Augusteische Zeit sowie mindestens ein weiterer.",
+      "sourceText": "bei den epochenspezifischen Aspekten müssen während der Qualifikations-phase die Republik und die Augusteische Zeit sowie mindestens ein weiterer",
+      "sourceRef": "S. 6-7, Qualifikationsphase, Themen und Inhalte · Gattungsaspekt",
+      "sourceSpan": {
+        "passageId": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-themen-und-inhalte-gattungsaspekt",
+        "label": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-themen-und-inhalte-gattungsaspekt#19"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase",
+        "field": "Themen und Inhalte · Gattungsaspekt",
+        "extractionMethod": "Extrahiert Aufgaben/Ziele, Themen/Inhalte und Standards aus dem amtlichen Bremer Bildungsplan Latein fuer die gymnasiale Oberstufe.",
+        "sourceIndex": 19
+      }
+    },
+    {
+      "id": "de-hb-latein-sekii-gyo-2008-020-d13e9c02",
+      "sourceDocumentKey": "HB-GYO-LATEIN-QPHASE-2008",
+      "passageId": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-themen-und-inhalte-epochenaspekt",
+      "topicCode": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-themen-und-inhalte-epochenaspekt",
+      "title": "je ein oder zwei Inhalts-, Gattungs-und Epochenaspekte bilden zusammen den Schwerpunkt in ein...",
+      "description": "Die lernende Person kann je ein oder zwei Inhalts-, Gattungs-und Epochenaspekte bilden zusammen den Schwerpunkt in einem Halbjahresthema..",
+      "sourceText": "je ein oder zwei Inhalts-, Gattungs-und Epochenaspekte bilden zusammen den Schwerpunkt in einem Halbjahresthema.",
+      "sourceRef": "S. 6-7, Qualifikationsphase, Themen und Inhalte · Epochenaspekt",
+      "sourceSpan": {
+        "passageId": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-themen-und-inhalte-epochenaspekt",
+        "label": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-themen-und-inhalte-epochenaspekt#20"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase",
+        "field": "Themen und Inhalte · Epochenaspekt",
+        "extractionMethod": "Extrahiert Aufgaben/Ziele, Themen/Inhalte und Standards aus dem amtlichen Bremer Bildungsplan Latein fuer die gymnasiale Oberstufe.",
+        "sourceIndex": 20
+      }
+    },
+    {
+      "id": "de-hb-latein-sekii-gyo-2008-021-9cb63f88",
+      "sourceDocumentKey": "HB-GYO-LATEIN-QPHASE-2008",
+      "passageId": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-grundkurs-standards-sprachliche-kompetenzen",
+      "topicCode": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-grundkurs-standards-sprachliche-kompetenzen",
+      "title": "verfügen über einen Grund-und einen lektürebezogenen Wortschatz",
+      "description": "Die lernende Person kann verfügen über einen Grund-und einen lektürebezogenen Wortschatz.",
+      "sourceText": "verfügen über einen Grund-und einen lektürebezogenen Wortschatz",
+      "sourceRef": "S. 8-10, Qualifikationsphase · Grundkurs, Standards · Sprachliche Kompetenzen",
+      "sourceSpan": {
+        "passageId": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-grundkurs-standards-sprachliche-kompetenzen",
+        "label": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-grundkurs-standards-sprachliche-kompetenzen#21"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase · Grundkurs",
+        "field": "Standards · Sprachliche Kompetenzen",
+        "extractionMethod": "Extrahiert Aufgaben/Ziele, Themen/Inhalte und Standards aus dem amtlichen Bremer Bildungsplan Latein fuer die gymnasiale Oberstufe.",
+        "sourceIndex": 21
+      }
+    },
+    {
+      "id": "de-hb-latein-sekii-gyo-2008-022-8606dbea",
+      "sourceDocumentKey": "HB-GYO-LATEIN-QPHASE-2008",
+      "passageId": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-grundkurs-standards-sprachliche-kompetenzen",
+      "topicCode": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-grundkurs-standards-sprachliche-kompetenzen",
+      "title": "haben solide Kenntnisse in der lateinischen Grammatik (Morphologie und Syntax)",
+      "description": "Die lernende Person kann haben solide Kenntnisse in der lateinischen Grammatik (Morphologie und Syntax).",
+      "sourceText": "haben solide Kenntnisse in der lateinischen Grammatik (Morphologie und Syntax)",
+      "sourceRef": "S. 8-10, Qualifikationsphase · Grundkurs, Standards · Sprachliche Kompetenzen",
+      "sourceSpan": {
+        "passageId": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-grundkurs-standards-sprachliche-kompetenzen",
+        "label": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-grundkurs-standards-sprachliche-kompetenzen#22"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase · Grundkurs",
+        "field": "Standards · Sprachliche Kompetenzen",
+        "extractionMethod": "Extrahiert Aufgaben/Ziele, Themen/Inhalte und Standards aus dem amtlichen Bremer Bildungsplan Latein fuer die gymnasiale Oberstufe.",
+        "sourceIndex": 22
+      }
+    },
+    {
+      "id": "de-hb-latein-sekii-gyo-2008-023-183bf4e2",
+      "sourceDocumentKey": "HB-GYO-LATEIN-QPHASE-2008",
+      "passageId": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-grundkurs-standards-sprachliche-kompetenzen",
+      "topicCode": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-grundkurs-standards-sprachliche-kompetenzen",
+      "title": "haben Kenntnisse in der Metrik und den wichtigsten Stilmitteln.",
+      "description": "Die lernende Person kann haben Kenntnisse in der Metrik und den wichtigsten Stilmitteln..",
+      "sourceText": "haben Kenntnisse in der Metrik und den wichtigsten Stilmitteln.",
+      "sourceRef": "S. 8-10, Qualifikationsphase · Grundkurs, Standards · Sprachliche Kompetenzen",
+      "sourceSpan": {
+        "passageId": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-grundkurs-standards-sprachliche-kompetenzen",
+        "label": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-grundkurs-standards-sprachliche-kompetenzen#23"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase · Grundkurs",
+        "field": "Standards · Sprachliche Kompetenzen",
+        "extractionMethod": "Extrahiert Aufgaben/Ziele, Themen/Inhalte und Standards aus dem amtlichen Bremer Bildungsplan Latein fuer die gymnasiale Oberstufe.",
+        "sourceIndex": 23
+      }
+    },
+    {
+      "id": "de-hb-latein-sekii-gyo-2008-024-469f67d2",
+      "sourceDocumentKey": "HB-GYO-LATEIN-QPHASE-2008",
+      "passageId": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-grundkurs-standards-inhaltliche-kompetenzen",
+      "topicCode": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-grundkurs-standards-inhaltliche-kompetenzen",
+      "title": "haben solide Kenntnisse über die Geschichte, Kultur und Gesellschaft Roms bezogen auf die röm...",
+      "description": "Die lernende Person kann haben solide Kenntnisse über die Geschichte, Kultur und Gesellschaft Roms bezogen auf die römische Republik und die augusteische Zeit.",
+      "sourceText": "haben solide Kenntnisse über die Geschichte, Kultur und Gesellschaft Roms bezogen auf die römische Republik und die augusteische Zeit",
+      "sourceRef": "S. 8-10, Qualifikationsphase · Grundkurs, Standards · Inhaltliche Kompetenzen",
+      "sourceSpan": {
+        "passageId": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-grundkurs-standards-inhaltliche-kompetenzen",
+        "label": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-grundkurs-standards-inhaltliche-kompetenzen#24"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase · Grundkurs",
+        "field": "Standards · Inhaltliche Kompetenzen",
+        "extractionMethod": "Extrahiert Aufgaben/Ziele, Themen/Inhalte und Standards aus dem amtlichen Bremer Bildungsplan Latein fuer die gymnasiale Oberstufe.",
+        "sourceIndex": 24
+      }
+    },
+    {
+      "id": "de-hb-latein-sekii-gyo-2008-025-cb9a0157",
+      "sourceDocumentKey": "HB-GYO-LATEIN-QPHASE-2008",
+      "passageId": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-grundkurs-standards-inhaltliche-kompetenzen",
+      "topicCode": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-grundkurs-standards-inhaltliche-kompetenzen",
+      "title": "haben einen Überblick über die römische Geschichte von den Anfängen bis in die Spätantike",
+      "description": "Die lernende Person kann haben einen Überblick über die römische Geschichte von den Anfängen bis in die Spätantike.",
+      "sourceText": "haben einen Überblick über die römische Geschichte von den Anfängen bis in die Spätantike",
+      "sourceRef": "S. 8-10, Qualifikationsphase · Grundkurs, Standards · Inhaltliche Kompetenzen",
+      "sourceSpan": {
+        "passageId": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-grundkurs-standards-inhaltliche-kompetenzen",
+        "label": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-grundkurs-standards-inhaltliche-kompetenzen#25"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase · Grundkurs",
+        "field": "Standards · Inhaltliche Kompetenzen",
+        "extractionMethod": "Extrahiert Aufgaben/Ziele, Themen/Inhalte und Standards aus dem amtlichen Bremer Bildungsplan Latein fuer die gymnasiale Oberstufe.",
+        "sourceIndex": 25
+      }
+    },
+    {
+      "id": "de-hb-latein-sekii-gyo-2008-026-3e181eba",
+      "sourceDocumentKey": "HB-GYO-LATEIN-QPHASE-2008",
+      "passageId": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-grundkurs-standards-inhaltliche-kompetenzen",
+      "topicCode": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-grundkurs-standards-inhaltliche-kompetenzen",
+      "title": "haben Kenntnisse über die griechisch-römische Mythologie und Religion",
+      "description": "Die lernende Person kann haben Kenntnisse über die griechisch-römische Mythologie und Religion.",
+      "sourceText": "haben Kenntnisse über die griechisch-römische Mythologie und Religion",
+      "sourceRef": "S. 8-10, Qualifikationsphase · Grundkurs, Standards · Inhaltliche Kompetenzen",
+      "sourceSpan": {
+        "passageId": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-grundkurs-standards-inhaltliche-kompetenzen",
+        "label": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-grundkurs-standards-inhaltliche-kompetenzen#26"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase · Grundkurs",
+        "field": "Standards · Inhaltliche Kompetenzen",
+        "extractionMethod": "Extrahiert Aufgaben/Ziele, Themen/Inhalte und Standards aus dem amtlichen Bremer Bildungsplan Latein fuer die gymnasiale Oberstufe.",
+        "sourceIndex": 26
+      }
+    },
+    {
+      "id": "de-hb-latein-sekii-gyo-2008-027-0ea1b9d8",
+      "sourceDocumentKey": "HB-GYO-LATEIN-QPHASE-2008",
+      "passageId": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-grundkurs-standards-inhaltliche-kompetenzen",
+      "topicCode": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-grundkurs-standards-inhaltliche-kompetenzen",
+      "title": "können Texte historisch einordnen",
+      "description": "Die lernende Person kann Texte historisch einordnen.",
+      "sourceText": "können Texte historisch einordnen",
+      "sourceRef": "S. 8-10, Qualifikationsphase · Grundkurs, Standards · Inhaltliche Kompetenzen",
+      "sourceSpan": {
+        "passageId": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-grundkurs-standards-inhaltliche-kompetenzen",
+        "label": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-grundkurs-standards-inhaltliche-kompetenzen#27"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase · Grundkurs",
+        "field": "Standards · Inhaltliche Kompetenzen",
+        "extractionMethod": "Extrahiert Aufgaben/Ziele, Themen/Inhalte und Standards aus dem amtlichen Bremer Bildungsplan Latein fuer die gymnasiale Oberstufe.",
+        "sourceIndex": 27
+      }
+    },
+    {
+      "id": "de-hb-latein-sekii-gyo-2008-028-ea0b6dd1",
+      "sourceDocumentKey": "HB-GYO-LATEIN-QPHASE-2008",
+      "passageId": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-grundkurs-standards-inhaltliche-kompetenzen",
+      "topicCode": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-grundkurs-standards-inhaltliche-kompetenzen",
+      "title": "haben erweiterte Kenntnisse in lektürebezogenen inhaltlichen, gattungsspezifi-schen und histo...",
+      "description": "Die lernende Person kann haben erweiterte Kenntnisse in lektürebezogenen inhaltlichen, gattungsspezifi-schen und historisch-gesellschaftlichen Aspekten.",
+      "sourceText": "haben erweiterte Kenntnisse in lektürebezogenen inhaltlichen, gattungsspezifi-schen und historisch-gesellschaftlichen Aspekten",
+      "sourceRef": "S. 8-10, Qualifikationsphase · Grundkurs, Standards · Inhaltliche Kompetenzen",
+      "sourceSpan": {
+        "passageId": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-grundkurs-standards-inhaltliche-kompetenzen",
+        "label": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-grundkurs-standards-inhaltliche-kompetenzen#28"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase · Grundkurs",
+        "field": "Standards · Inhaltliche Kompetenzen",
+        "extractionMethod": "Extrahiert Aufgaben/Ziele, Themen/Inhalte und Standards aus dem amtlichen Bremer Bildungsplan Latein fuer die gymnasiale Oberstufe.",
+        "sourceIndex": 28
+      }
+    },
+    {
+      "id": "de-hb-latein-sekii-gyo-2008-029-3f8e5df8",
+      "sourceDocumentKey": "HB-GYO-LATEIN-QPHASE-2008",
+      "passageId": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-grundkurs-standards-inhaltliche-kompetenzen",
+      "topicCode": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-grundkurs-standards-inhaltliche-kompetenzen",
+      "title": "sind vertraut mit Beispielen verschiedener Literaturgattungen",
+      "description": "Die lernende Person kann sind vertraut mit Beispielen verschiedener Literaturgattungen.",
+      "sourceText": "sind vertraut mit Beispielen verschiedener Literaturgattungen",
+      "sourceRef": "S. 8-10, Qualifikationsphase · Grundkurs, Standards · Inhaltliche Kompetenzen",
+      "sourceSpan": {
+        "passageId": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-grundkurs-standards-inhaltliche-kompetenzen",
+        "label": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-grundkurs-standards-inhaltliche-kompetenzen#29"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase · Grundkurs",
+        "field": "Standards · Inhaltliche Kompetenzen",
+        "extractionMethod": "Extrahiert Aufgaben/Ziele, Themen/Inhalte und Standards aus dem amtlichen Bremer Bildungsplan Latein fuer die gymnasiale Oberstufe.",
+        "sourceIndex": 29
+      }
+    },
+    {
+      "id": "de-hb-latein-sekii-gyo-2008-030-b480120e",
+      "sourceDocumentKey": "HB-GYO-LATEIN-QPHASE-2008",
+      "passageId": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-grundkurs-standards-inhaltliche-kompetenzen",
+      "topicCode": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-grundkurs-standards-inhaltliche-kompetenzen",
+      "title": "stellen begründet Bezüge zwischen erarbeiteten (antiken) Inhalten und der ei-genen Lebenswelt...",
+      "description": "Die lernende Person kann stellen begründet Bezüge zwischen erarbeiteten (antiken) Inhalten und der ei-genen Lebenswelt her..",
+      "sourceText": "stellen begründet Bezüge zwischen erarbeiteten (antiken) Inhalten und der ei-genen Lebenswelt her.",
+      "sourceRef": "S. 8-10, Qualifikationsphase · Grundkurs, Standards · Inhaltliche Kompetenzen",
+      "sourceSpan": {
+        "passageId": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-grundkurs-standards-inhaltliche-kompetenzen",
+        "label": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-grundkurs-standards-inhaltliche-kompetenzen#30"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase · Grundkurs",
+        "field": "Standards · Inhaltliche Kompetenzen",
+        "extractionMethod": "Extrahiert Aufgaben/Ziele, Themen/Inhalte und Standards aus dem amtlichen Bremer Bildungsplan Latein fuer die gymnasiale Oberstufe.",
+        "sourceIndex": 30
+      }
+    },
+    {
+      "id": "de-hb-latein-sekii-gyo-2008-031-0b6a830d",
+      "sourceDocumentKey": "HB-GYO-LATEIN-QPHASE-2008",
+      "passageId": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-grundkurs-standards-methodische-textkompetenzen",
+      "topicCode": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-grundkurs-standards-methodische-textkompetenzen",
+      "title": "kennen verschiedene Methoden der Texterschließung",
+      "description": "Die lernende Person kann kennen verschiedene Methoden der Texterschließung.",
+      "sourceText": "kennen verschiedene Methoden der Texterschließung",
+      "sourceRef": "S. 8-10, Qualifikationsphase · Grundkurs, Standards · Methodische Textkompetenzen",
+      "sourceSpan": {
+        "passageId": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-grundkurs-standards-methodische-textkompetenzen",
+        "label": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-grundkurs-standards-methodische-textkompetenzen#31"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase · Grundkurs",
+        "field": "Standards · Methodische Textkompetenzen",
+        "extractionMethod": "Extrahiert Aufgaben/Ziele, Themen/Inhalte und Standards aus dem amtlichen Bremer Bildungsplan Latein fuer die gymnasiale Oberstufe.",
+        "sourceIndex": 31
+      }
+    },
+    {
+      "id": "de-hb-latein-sekii-gyo-2008-032-b5403e8b",
+      "sourceDocumentKey": "HB-GYO-LATEIN-QPHASE-2008",
+      "passageId": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-grundkurs-standards-methodische-textkompetenzen",
+      "topicCode": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-grundkurs-standards-methodische-textkompetenzen",
+      "title": "können lateinische Originaltexte mit Hilfe eines Wörterbuchs ins Deutsche übersetzen und in I...",
+      "description": "Die lernende Person kann lateinische Originaltexte mit Hilfe eines Wörterbuchs ins Deutsche übersetzen und in Inhalt, Aufbau und Aussage erfassen und dies in einer sach-lich richtigen und treffenden Übersetzung nachweisen.",
+      "sourceText": "können lateinische Originaltexte mit Hilfe eines Wörterbuchs ins Deutsche übersetzen und in Inhalt, Aufbau und Aussage erfassen und dies in einer sach-lich richtigen und treffenden Übersetzung nachweisen",
+      "sourceRef": "S. 8-10, Qualifikationsphase · Grundkurs, Standards · Methodische Textkompetenzen",
+      "sourceSpan": {
+        "passageId": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-grundkurs-standards-methodische-textkompetenzen",
+        "label": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-grundkurs-standards-methodische-textkompetenzen#32"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase · Grundkurs",
+        "field": "Standards · Methodische Textkompetenzen",
+        "extractionMethod": "Extrahiert Aufgaben/Ziele, Themen/Inhalte und Standards aus dem amtlichen Bremer Bildungsplan Latein fuer die gymnasiale Oberstufe.",
+        "sourceIndex": 32
+      }
+    },
+    {
+      "id": "de-hb-latein-sekii-gyo-2008-033-ca9c4b9f",
+      "sourceDocumentKey": "HB-GYO-LATEIN-QPHASE-2008",
+      "passageId": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-grundkurs-standards-methodische-textkompetenzen",
+      "topicCode": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-grundkurs-standards-methodische-textkompetenzen",
+      "title": "verstehen und benennen Probleme des Übersetzens von Texten",
+      "description": "Die lernende Person kann verstehen und benennen Probleme des Übersetzens von Texten.",
+      "sourceText": "verstehen und benennen Probleme des Übersetzens von Texten",
+      "sourceRef": "S. 8-10, Qualifikationsphase · Grundkurs, Standards · Methodische Textkompetenzen",
+      "sourceSpan": {
+        "passageId": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-grundkurs-standards-methodische-textkompetenzen",
+        "label": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-grundkurs-standards-methodische-textkompetenzen#33"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase · Grundkurs",
+        "field": "Standards · Methodische Textkompetenzen",
+        "extractionMethod": "Extrahiert Aufgaben/Ziele, Themen/Inhalte und Standards aus dem amtlichen Bremer Bildungsplan Latein fuer die gymnasiale Oberstufe.",
+        "sourceIndex": 33
+      }
+    },
+    {
+      "id": "de-hb-latein-sekii-gyo-2008-034-b322f9b3",
+      "sourceDocumentKey": "HB-GYO-LATEIN-QPHASE-2008",
+      "passageId": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-grundkurs-standards-methodische-textkompetenzen",
+      "topicCode": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-grundkurs-standards-methodische-textkompetenzen",
+      "title": "sind geübt im Umgang mit Hilfsmitteln wie Wörterbüchern, zweisprachigen Textausgaben, Komment...",
+      "description": "Die lernende Person kann sind geübt im Umgang mit Hilfsmitteln wie Wörterbüchern, zweisprachigen Textausgaben, Kommentaren etc..",
+      "sourceText": "sind geübt im Umgang mit Hilfsmitteln wie Wörterbüchern, zweisprachigen Textausgaben, Kommentaren etc.",
+      "sourceRef": "S. 8-10, Qualifikationsphase · Grundkurs, Standards · Methodische Textkompetenzen",
+      "sourceSpan": {
+        "passageId": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-grundkurs-standards-methodische-textkompetenzen",
+        "label": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-grundkurs-standards-methodische-textkompetenzen#34"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase · Grundkurs",
+        "field": "Standards · Methodische Textkompetenzen",
+        "extractionMethod": "Extrahiert Aufgaben/Ziele, Themen/Inhalte und Standards aus dem amtlichen Bremer Bildungsplan Latein fuer die gymnasiale Oberstufe.",
+        "sourceIndex": 34
+      }
+    },
+    {
+      "id": "de-hb-latein-sekii-gyo-2008-035-edca0cc2",
+      "sourceDocumentKey": "HB-GYO-LATEIN-QPHASE-2008",
+      "passageId": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-grundkurs-standards-methodische-textkompetenzen",
+      "topicCode": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-grundkurs-standards-methodische-textkompetenzen",
+      "title": "können Texte gliedern",
+      "description": "Die lernende Person kann Texte gliedern.",
+      "sourceText": "können Texte gliedern",
+      "sourceRef": "S. 8-10, Qualifikationsphase · Grundkurs, Standards · Methodische Textkompetenzen",
+      "sourceSpan": {
+        "passageId": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-grundkurs-standards-methodische-textkompetenzen",
+        "label": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-grundkurs-standards-methodische-textkompetenzen#35"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase · Grundkurs",
+        "field": "Standards · Methodische Textkompetenzen",
+        "extractionMethod": "Extrahiert Aufgaben/Ziele, Themen/Inhalte und Standards aus dem amtlichen Bremer Bildungsplan Latein fuer die gymnasiale Oberstufe.",
+        "sourceIndex": 35
+      }
+    },
+    {
+      "id": "de-hb-latein-sekii-gyo-2008-036-7a069340",
+      "sourceDocumentKey": "HB-GYO-LATEIN-QPHASE-2008",
+      "passageId": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-grundkurs-standards-methodische-textkompetenzen",
+      "topicCode": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-grundkurs-standards-methodische-textkompetenzen",
+      "title": "können Textaussagen erfassen und benennen",
+      "description": "Die lernende Person kann Textaussagen erfassen und benennen.",
+      "sourceText": "können Textaussagen erfassen und benennen",
+      "sourceRef": "S. 8-10, Qualifikationsphase · Grundkurs, Standards · Methodische Textkompetenzen",
+      "sourceSpan": {
+        "passageId": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-grundkurs-standards-methodische-textkompetenzen",
+        "label": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-grundkurs-standards-methodische-textkompetenzen#36"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase · Grundkurs",
+        "field": "Standards · Methodische Textkompetenzen",
+        "extractionMethod": "Extrahiert Aufgaben/Ziele, Themen/Inhalte und Standards aus dem amtlichen Bremer Bildungsplan Latein fuer die gymnasiale Oberstufe.",
+        "sourceIndex": 36
+      }
+    },
+    {
+      "id": "de-hb-latein-sekii-gyo-2008-037-f04e9f2b",
+      "sourceDocumentKey": "HB-GYO-LATEIN-QPHASE-2008",
+      "passageId": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-grundkurs-standards-methodische-textkompetenzen",
+      "topicCode": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-grundkurs-standards-methodische-textkompetenzen",
+      "title": "können Schlüsselbegriffe erkennen",
+      "description": "Die lernende Person kann Schlüsselbegriffe erkennen.",
+      "sourceText": "können Schlüsselbegriffe erkennen",
+      "sourceRef": "S. 8-10, Qualifikationsphase · Grundkurs, Standards · Methodische Textkompetenzen",
+      "sourceSpan": {
+        "passageId": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-grundkurs-standards-methodische-textkompetenzen",
+        "label": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-grundkurs-standards-methodische-textkompetenzen#37"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase · Grundkurs",
+        "field": "Standards · Methodische Textkompetenzen",
+        "extractionMethod": "Extrahiert Aufgaben/Ziele, Themen/Inhalte und Standards aus dem amtlichen Bremer Bildungsplan Latein fuer die gymnasiale Oberstufe.",
+        "sourceIndex": 37
+      }
+    },
+    {
+      "id": "de-hb-latein-sekii-gyo-2008-038-d08cc65e",
+      "sourceDocumentKey": "HB-GYO-LATEIN-QPHASE-2008",
+      "passageId": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-grundkurs-standards-methodische-textkompetenzen",
+      "topicCode": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-grundkurs-standards-methodische-textkompetenzen",
+      "title": "können Textvergleiche anstellen",
+      "description": "Die lernende Person kann Textvergleiche anstellen.",
+      "sourceText": "können Textvergleiche anstellen",
+      "sourceRef": "S. 8-10, Qualifikationsphase · Grundkurs, Standards · Methodische Textkompetenzen",
+      "sourceSpan": {
+        "passageId": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-grundkurs-standards-methodische-textkompetenzen",
+        "label": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-grundkurs-standards-methodische-textkompetenzen#38"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase · Grundkurs",
+        "field": "Standards · Methodische Textkompetenzen",
+        "extractionMethod": "Extrahiert Aufgaben/Ziele, Themen/Inhalte und Standards aus dem amtlichen Bremer Bildungsplan Latein fuer die gymnasiale Oberstufe.",
+        "sourceIndex": 38
+      }
+    },
+    {
+      "id": "de-hb-latein-sekii-gyo-2008-039-df0c9abb",
+      "sourceDocumentKey": "HB-GYO-LATEIN-QPHASE-2008",
+      "passageId": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-grundkurs-standards-methodische-textkompetenzen",
+      "topicCode": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-grundkurs-standards-methodische-textkompetenzen",
+      "title": "sind in der Lage, kritisch zu Texten und deren Aussage Stellung zu beziehen",
+      "description": "Die lernende Person kann sind in der Lage, kritisch zu Texten und deren Aussage Stellung zu beziehen.",
+      "sourceText": "sind in der Lage, kritisch zu Texten und deren Aussage Stellung zu beziehen",
+      "sourceRef": "S. 8-10, Qualifikationsphase · Grundkurs, Standards · Methodische Textkompetenzen",
+      "sourceSpan": {
+        "passageId": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-grundkurs-standards-methodische-textkompetenzen",
+        "label": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-grundkurs-standards-methodische-textkompetenzen#39"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase · Grundkurs",
+        "field": "Standards · Methodische Textkompetenzen",
+        "extractionMethod": "Extrahiert Aufgaben/Ziele, Themen/Inhalte und Standards aus dem amtlichen Bremer Bildungsplan Latein fuer die gymnasiale Oberstufe.",
+        "sourceIndex": 39
+      }
+    },
+    {
+      "id": "de-hb-latein-sekii-gyo-2008-040-39ba83d7",
+      "sourceDocumentKey": "HB-GYO-LATEIN-QPHASE-2008",
+      "passageId": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-grundkurs-standards-methodische-textkompetenzen",
+      "topicCode": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-grundkurs-standards-methodische-textkompetenzen",
+      "title": "sind mit produktiven Verfahren des Umgangs mit Texten vertraut.",
+      "description": "Die lernende Person kann sind mit produktiven Verfahren des Umgangs mit Texten vertraut..",
+      "sourceText": "sind mit produktiven Verfahren des Umgangs mit Texten vertraut.",
+      "sourceRef": "S. 8-10, Qualifikationsphase · Grundkurs, Standards · Methodische Textkompetenzen",
+      "sourceSpan": {
+        "passageId": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-grundkurs-standards-methodische-textkompetenzen",
+        "label": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-grundkurs-standards-methodische-textkompetenzen#40"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase · Grundkurs",
+        "field": "Standards · Methodische Textkompetenzen",
+        "extractionMethod": "Extrahiert Aufgaben/Ziele, Themen/Inhalte und Standards aus dem amtlichen Bremer Bildungsplan Latein fuer die gymnasiale Oberstufe.",
+        "sourceIndex": 40
+      }
+    },
+    {
+      "id": "de-hb-latein-sekii-gyo-2008-041-e53cb0fa",
+      "sourceDocumentKey": "HB-GYO-LATEIN-QPHASE-2008",
+      "passageId": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-leistungskurs-standards-methodische-textkompetenzen",
+      "topicCode": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-leistungskurs-standards-methodische-textkompetenzen",
+      "title": "die Anzahl und den Umfang der Themen",
+      "description": "Die lernende Person kann die Anzahl und den Umfang der Themen.",
+      "sourceText": "die Anzahl und den Umfang der Themen",
+      "sourceRef": "S. 8-10, Qualifikationsphase · Leistungskurs, Standards · Methodische Textkompetenzen",
+      "sourceSpan": {
+        "passageId": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-leistungskurs-standards-methodische-textkompetenzen",
+        "label": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-leistungskurs-standards-methodische-textkompetenzen#41"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase · Leistungskurs",
+        "field": "Standards · Methodische Textkompetenzen",
+        "extractionMethod": "Extrahiert Aufgaben/Ziele, Themen/Inhalte und Standards aus dem amtlichen Bremer Bildungsplan Latein fuer die gymnasiale Oberstufe.",
+        "sourceIndex": 41
+      }
+    },
+    {
+      "id": "de-hb-latein-sekii-gyo-2008-042-ae1c6ee5",
+      "sourceDocumentKey": "HB-GYO-LATEIN-QPHASE-2008",
+      "passageId": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-leistungskurs-standards-methodische-textkompetenzen",
+      "topicCode": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-leistungskurs-standards-methodische-textkompetenzen",
+      "title": "die Komplexität und die Vielfalt der untersuchten Aspekte",
+      "description": "Die lernende Person kann die Komplexität und die Vielfalt der untersuchten Aspekte.",
+      "sourceText": "die Komplexität und die Vielfalt der untersuchten Aspekte",
+      "sourceRef": "S. 8-10, Qualifikationsphase · Leistungskurs, Standards · Methodische Textkompetenzen",
+      "sourceSpan": {
+        "passageId": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-leistungskurs-standards-methodische-textkompetenzen",
+        "label": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-leistungskurs-standards-methodische-textkompetenzen#42"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase · Leistungskurs",
+        "field": "Standards · Methodische Textkompetenzen",
+        "extractionMethod": "Extrahiert Aufgaben/Ziele, Themen/Inhalte und Standards aus dem amtlichen Bremer Bildungsplan Latein fuer die gymnasiale Oberstufe.",
+        "sourceIndex": 42
+      }
+    },
+    {
+      "id": "de-hb-latein-sekii-gyo-2008-043-55fc020a",
+      "sourceDocumentKey": "HB-GYO-LATEIN-QPHASE-2008",
+      "passageId": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-leistungskurs-standards-methodische-textkompetenzen",
+      "topicCode": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-leistungskurs-standards-methodische-textkompetenzen",
+      "title": "die erhöhten Ansprüche auf selbstständige Leistungen",
+      "description": "Die lernende Person kann die erhöhten Ansprüche auf selbstständige Leistungen.",
+      "sourceText": "die erhöhten Ansprüche auf selbstständige Leistungen",
+      "sourceRef": "S. 8-10, Qualifikationsphase · Leistungskurs, Standards · Methodische Textkompetenzen",
+      "sourceSpan": {
+        "passageId": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-leistungskurs-standards-methodische-textkompetenzen",
+        "label": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-leistungskurs-standards-methodische-textkompetenzen#43"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase · Leistungskurs",
+        "field": "Standards · Methodische Textkompetenzen",
+        "extractionMethod": "Extrahiert Aufgaben/Ziele, Themen/Inhalte und Standards aus dem amtlichen Bremer Bildungsplan Latein fuer die gymnasiale Oberstufe.",
+        "sourceIndex": 43
+      }
+    },
+    {
+      "id": "de-hb-latein-sekii-gyo-2008-044-58c7c92a",
+      "sourceDocumentKey": "HB-GYO-LATEIN-QPHASE-2008",
+      "passageId": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-leistungskurs-standards-methodische-textkompetenzen",
+      "topicCode": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-leistungskurs-standards-methodische-textkompetenzen",
+      "title": "komplexere Ansprüche an die Deutungskompetenz.",
+      "description": "Die lernende Person kann komplexere Ansprüche an die Deutungskompetenz..",
+      "sourceText": "komplexere Ansprüche an die Deutungskompetenz.",
+      "sourceRef": "S. 8-10, Qualifikationsphase · Leistungskurs, Standards · Methodische Textkompetenzen",
+      "sourceSpan": {
+        "passageId": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-leistungskurs-standards-methodische-textkompetenzen",
+        "label": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-leistungskurs-standards-methodische-textkompetenzen#44"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase · Leistungskurs",
+        "field": "Standards · Methodische Textkompetenzen",
+        "extractionMethod": "Extrahiert Aufgaben/Ziele, Themen/Inhalte und Standards aus dem amtlichen Bremer Bildungsplan Latein fuer die gymnasiale Oberstufe.",
+        "sourceIndex": 44
+      }
+    },
+    {
+      "id": "de-hb-latein-sekii-gyo-2008-045-94b80e4f",
+      "sourceDocumentKey": "HB-GYO-LATEIN-QPHASE-2008",
+      "passageId": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-neu-aufgenommene-fremdsprache-standards-sprachliche-kompetenzen",
+      "topicCode": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-neu-aufgenommene-fremdsprache-standards-sprachliche-kompetenzen",
+      "title": "beherrschen die für die Texterschließung notwendigen Formenlehre und Syn-tax sicher",
+      "description": "Die lernende Person kann beherrschen die für die Texterschließung notwendigen Formenlehre und Syn-tax sicher.",
+      "sourceText": "beherrschen die für die Texterschließung notwendigen Formenlehre und Syn-tax sicher",
+      "sourceRef": "S. 8-10, Qualifikationsphase · neu aufgenommene Fremdsprache, Standards · Sprachliche Kompetenzen",
+      "sourceSpan": {
+        "passageId": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-neu-aufgenommene-fremdsprache-standards-sprachliche-kompetenzen",
+        "label": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-neu-aufgenommene-fremdsprache-standards-sprachliche-kompetenzen#45"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase · neu aufgenommene Fremdsprache",
+        "field": "Standards · Sprachliche Kompetenzen",
+        "extractionMethod": "Extrahiert Aufgaben/Ziele, Themen/Inhalte und Standards aus dem amtlichen Bremer Bildungsplan Latein fuer die gymnasiale Oberstufe.",
+        "sourceIndex": 45
+      }
+    },
+    {
+      "id": "de-hb-latein-sekii-gyo-2008-046-5b40ee1d",
+      "sourceDocumentKey": "HB-GYO-LATEIN-QPHASE-2008",
+      "passageId": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-neu-aufgenommene-fremdsprache-standards-sprachliche-kompetenzen",
+      "topicCode": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-neu-aufgenommene-fremdsprache-standards-sprachliche-kompetenzen",
+      "title": "verfügen über einen für die Texterschließung ausreichenden Wortschatz",
+      "description": "Die lernende Person kann verfügen über einen für die Texterschließung ausreichenden Wortschatz.",
+      "sourceText": "verfügen über einen für die Texterschließung ausreichenden Wortschatz",
+      "sourceRef": "S. 8-10, Qualifikationsphase · neu aufgenommene Fremdsprache, Standards · Sprachliche Kompetenzen",
+      "sourceSpan": {
+        "passageId": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-neu-aufgenommene-fremdsprache-standards-sprachliche-kompetenzen",
+        "label": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-neu-aufgenommene-fremdsprache-standards-sprachliche-kompetenzen#46"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase · neu aufgenommene Fremdsprache",
+        "field": "Standards · Sprachliche Kompetenzen",
+        "extractionMethod": "Extrahiert Aufgaben/Ziele, Themen/Inhalte und Standards aus dem amtlichen Bremer Bildungsplan Latein fuer die gymnasiale Oberstufe.",
+        "sourceIndex": 46
+      }
+    },
+    {
+      "id": "de-hb-latein-sekii-gyo-2008-047-c9a4ff67",
+      "sourceDocumentKey": "HB-GYO-LATEIN-QPHASE-2008",
+      "passageId": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-neu-aufgenommene-fremdsprache-standards-sprachliche-kompetenzen",
+      "topicCode": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-neu-aufgenommene-fremdsprache-standards-sprachliche-kompetenzen",
+      "title": "haben solide Kenntnisse in der lateinischen Grammatik (Morphologie und Syntax)",
+      "description": "Die lernende Person kann haben solide Kenntnisse in der lateinischen Grammatik (Morphologie und Syntax).",
+      "sourceText": "haben solide Kenntnisse in der lateinischen Grammatik (Morphologie und Syntax)",
+      "sourceRef": "S. 8-10, Qualifikationsphase · neu aufgenommene Fremdsprache, Standards · Sprachliche Kompetenzen",
+      "sourceSpan": {
+        "passageId": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-neu-aufgenommene-fremdsprache-standards-sprachliche-kompetenzen",
+        "label": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-neu-aufgenommene-fremdsprache-standards-sprachliche-kompetenzen#47"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase · neu aufgenommene Fremdsprache",
+        "field": "Standards · Sprachliche Kompetenzen",
+        "extractionMethod": "Extrahiert Aufgaben/Ziele, Themen/Inhalte und Standards aus dem amtlichen Bremer Bildungsplan Latein fuer die gymnasiale Oberstufe.",
+        "sourceIndex": 47
+      }
+    },
+    {
+      "id": "de-hb-latein-sekii-gyo-2008-048-907f418f",
+      "sourceDocumentKey": "HB-GYO-LATEIN-QPHASE-2008",
+      "passageId": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-neu-aufgenommene-fremdsprache-standards-sprachliche-kompetenzen",
+      "topicCode": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-neu-aufgenommene-fremdsprache-standards-sprachliche-kompetenzen",
+      "title": "haben Kenntnisse in den wichtigsten Stilmitteln.",
+      "description": "Die lernende Person kann haben Kenntnisse in den wichtigsten Stilmitteln..",
+      "sourceText": "haben Kenntnisse in den wichtigsten Stilmitteln.",
+      "sourceRef": "S. 8-10, Qualifikationsphase · neu aufgenommene Fremdsprache, Standards · Sprachliche Kompetenzen",
+      "sourceSpan": {
+        "passageId": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-neu-aufgenommene-fremdsprache-standards-sprachliche-kompetenzen",
+        "label": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-neu-aufgenommene-fremdsprache-standards-sprachliche-kompetenzen#48"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase · neu aufgenommene Fremdsprache",
+        "field": "Standards · Sprachliche Kompetenzen",
+        "extractionMethod": "Extrahiert Aufgaben/Ziele, Themen/Inhalte und Standards aus dem amtlichen Bremer Bildungsplan Latein fuer die gymnasiale Oberstufe.",
+        "sourceIndex": 48
+      }
+    },
+    {
+      "id": "de-hb-latein-sekii-gyo-2008-049-b99a78ec",
+      "sourceDocumentKey": "HB-GYO-LATEIN-QPHASE-2008",
+      "passageId": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-neu-aufgenommene-fremdsprache-standards-inhaltliche-kompetenzen",
+      "topicCode": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-neu-aufgenommene-fremdsprache-standards-inhaltliche-kompetenzen",
+      "title": "haben die erforderlichen Kenntnisse aus dem Bereich der römischen Ge-schichte, Philosophie un...",
+      "description": "Die lernende Person kann haben die erforderlichen Kenntnisse aus dem Bereich der römischen Ge-schichte, Philosophie und Literatur bezogen auf die römische Republik und die augusteische Zeit.",
+      "sourceText": "haben die erforderlichen Kenntnisse aus dem Bereich der römischen Ge-schichte, Philosophie und Literatur bezogen auf die römische Republik und die augusteische Zeit",
+      "sourceRef": "S. 8-10, Qualifikationsphase · neu aufgenommene Fremdsprache, Standards · Inhaltliche Kompetenzen",
+      "sourceSpan": {
+        "passageId": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-neu-aufgenommene-fremdsprache-standards-inhaltliche-kompetenzen",
+        "label": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-neu-aufgenommene-fremdsprache-standards-inhaltliche-kompetenzen#49"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase · neu aufgenommene Fremdsprache",
+        "field": "Standards · Inhaltliche Kompetenzen",
+        "extractionMethod": "Extrahiert Aufgaben/Ziele, Themen/Inhalte und Standards aus dem amtlichen Bremer Bildungsplan Latein fuer die gymnasiale Oberstufe.",
+        "sourceIndex": 49
+      }
+    },
+    {
+      "id": "de-hb-latein-sekii-gyo-2008-050-b0560293",
+      "sourceDocumentKey": "HB-GYO-LATEIN-QPHASE-2008",
+      "passageId": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-neu-aufgenommene-fremdsprache-standards-inhaltliche-kompetenzen",
+      "topicCode": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-neu-aufgenommene-fremdsprache-standards-inhaltliche-kompetenzen",
+      "title": "haben Kenntnisse über die griechisch-römische Mythologie und Religion",
+      "description": "Die lernende Person kann haben Kenntnisse über die griechisch-römische Mythologie und Religion.",
+      "sourceText": "haben Kenntnisse über die griechisch-römische Mythologie und Religion",
+      "sourceRef": "S. 8-10, Qualifikationsphase · neu aufgenommene Fremdsprache, Standards · Inhaltliche Kompetenzen",
+      "sourceSpan": {
+        "passageId": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-neu-aufgenommene-fremdsprache-standards-inhaltliche-kompetenzen",
+        "label": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-neu-aufgenommene-fremdsprache-standards-inhaltliche-kompetenzen#50"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase · neu aufgenommene Fremdsprache",
+        "field": "Standards · Inhaltliche Kompetenzen",
+        "extractionMethod": "Extrahiert Aufgaben/Ziele, Themen/Inhalte und Standards aus dem amtlichen Bremer Bildungsplan Latein fuer die gymnasiale Oberstufe.",
+        "sourceIndex": 50
+      }
+    },
+    {
+      "id": "de-hb-latein-sekii-gyo-2008-051-42e91e64",
+      "sourceDocumentKey": "HB-GYO-LATEIN-QPHASE-2008",
+      "passageId": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-neu-aufgenommene-fremdsprache-standards-inhaltliche-kompetenzen",
+      "topicCode": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-neu-aufgenommene-fremdsprache-standards-inhaltliche-kompetenzen",
+      "title": "können Texte historisch einordnen",
+      "description": "Die lernende Person kann Texte historisch einordnen.",
+      "sourceText": "können Texte historisch einordnen",
+      "sourceRef": "S. 8-10, Qualifikationsphase · neu aufgenommene Fremdsprache, Standards · Inhaltliche Kompetenzen",
+      "sourceSpan": {
+        "passageId": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-neu-aufgenommene-fremdsprache-standards-inhaltliche-kompetenzen",
+        "label": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-neu-aufgenommene-fremdsprache-standards-inhaltliche-kompetenzen#51"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase · neu aufgenommene Fremdsprache",
+        "field": "Standards · Inhaltliche Kompetenzen",
+        "extractionMethod": "Extrahiert Aufgaben/Ziele, Themen/Inhalte und Standards aus dem amtlichen Bremer Bildungsplan Latein fuer die gymnasiale Oberstufe.",
+        "sourceIndex": 51
+      }
+    },
+    {
+      "id": "de-hb-latein-sekii-gyo-2008-052-ae631d81",
+      "sourceDocumentKey": "HB-GYO-LATEIN-QPHASE-2008",
+      "passageId": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-neu-aufgenommene-fremdsprache-standards-inhaltliche-kompetenzen",
+      "topicCode": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-neu-aufgenommene-fremdsprache-standards-inhaltliche-kompetenzen",
+      "title": "haben erweiterte Kenntnisse in Lektüre bezogenen inhaltlichen, gattungsspezi-fischen und hist...",
+      "description": "Die lernende Person kann haben erweiterte Kenntnisse in Lektüre bezogenen inhaltlichen, gattungsspezi-fischen und historisch-gesellschaftlichen Aspekten.",
+      "sourceText": "haben erweiterte Kenntnisse in Lektüre bezogenen inhaltlichen, gattungsspezi-fischen und historisch-gesellschaftlichen Aspekten",
+      "sourceRef": "S. 8-10, Qualifikationsphase · neu aufgenommene Fremdsprache, Standards · Inhaltliche Kompetenzen",
+      "sourceSpan": {
+        "passageId": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-neu-aufgenommene-fremdsprache-standards-inhaltliche-kompetenzen",
+        "label": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-neu-aufgenommene-fremdsprache-standards-inhaltliche-kompetenzen#52"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase · neu aufgenommene Fremdsprache",
+        "field": "Standards · Inhaltliche Kompetenzen",
+        "extractionMethod": "Extrahiert Aufgaben/Ziele, Themen/Inhalte und Standards aus dem amtlichen Bremer Bildungsplan Latein fuer die gymnasiale Oberstufe.",
+        "sourceIndex": 52
+      }
+    },
+    {
+      "id": "de-hb-latein-sekii-gyo-2008-053-5a748b36",
+      "sourceDocumentKey": "HB-GYO-LATEIN-QPHASE-2008",
+      "passageId": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-neu-aufgenommene-fremdsprache-standards-inhaltliche-kompetenzen",
+      "topicCode": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-neu-aufgenommene-fremdsprache-standards-inhaltliche-kompetenzen",
+      "title": "kennen Beispiele für mindestens zwei verschiedene Literaturgattungen",
+      "description": "Die lernende Person kann kennen Beispiele für mindestens zwei verschiedene Literaturgattungen.",
+      "sourceText": "kennen Beispiele für mindestens zwei verschiedene Literaturgattungen",
+      "sourceRef": "S. 8-10, Qualifikationsphase · neu aufgenommene Fremdsprache, Standards · Inhaltliche Kompetenzen",
+      "sourceSpan": {
+        "passageId": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-neu-aufgenommene-fremdsprache-standards-inhaltliche-kompetenzen",
+        "label": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-neu-aufgenommene-fremdsprache-standards-inhaltliche-kompetenzen#53"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase · neu aufgenommene Fremdsprache",
+        "field": "Standards · Inhaltliche Kompetenzen",
+        "extractionMethod": "Extrahiert Aufgaben/Ziele, Themen/Inhalte und Standards aus dem amtlichen Bremer Bildungsplan Latein fuer die gymnasiale Oberstufe.",
+        "sourceIndex": 53
+      }
+    },
+    {
+      "id": "de-hb-latein-sekii-gyo-2008-054-7ab0b7d1",
+      "sourceDocumentKey": "HB-GYO-LATEIN-QPHASE-2008",
+      "passageId": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-neu-aufgenommene-fremdsprache-standards-inhaltliche-kompetenzen",
+      "topicCode": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-neu-aufgenommene-fremdsprache-standards-inhaltliche-kompetenzen",
+      "title": "stellen begründet Bezüge zwischen erarbeiteten (antiken) Inhalten und der ei-genen Lebenswelt...",
+      "description": "Die lernende Person kann stellen begründet Bezüge zwischen erarbeiteten (antiken) Inhalten und der ei-genen Lebenswelt her..",
+      "sourceText": "stellen begründet Bezüge zwischen erarbeiteten (antiken) Inhalten und der ei-genen Lebenswelt her.",
+      "sourceRef": "S. 8-10, Qualifikationsphase · neu aufgenommene Fremdsprache, Standards · Inhaltliche Kompetenzen",
+      "sourceSpan": {
+        "passageId": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-neu-aufgenommene-fremdsprache-standards-inhaltliche-kompetenzen",
+        "label": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-neu-aufgenommene-fremdsprache-standards-inhaltliche-kompetenzen#54"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase · neu aufgenommene Fremdsprache",
+        "field": "Standards · Inhaltliche Kompetenzen",
+        "extractionMethod": "Extrahiert Aufgaben/Ziele, Themen/Inhalte und Standards aus dem amtlichen Bremer Bildungsplan Latein fuer die gymnasiale Oberstufe.",
+        "sourceIndex": 54
+      }
+    },
+    {
+      "id": "de-hb-latein-sekii-gyo-2008-055-0fa803e4",
+      "sourceDocumentKey": "HB-GYO-LATEIN-QPHASE-2008",
+      "passageId": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-neu-aufgenommene-fremdsprache-standards-methodische-textkompetenzen",
+      "topicCode": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-neu-aufgenommene-fremdsprache-standards-methodische-textkompetenzen",
+      "title": "kennen verschiedene Methoden der Texterschließung",
+      "description": "Die lernende Person kann kennen verschiedene Methoden der Texterschließung.",
+      "sourceText": "kennen verschiedene Methoden der Texterschließung",
+      "sourceRef": "S. 8-10, Qualifikationsphase · neu aufgenommene Fremdsprache, Standards · Methodische Textkompetenzen",
+      "sourceSpan": {
+        "passageId": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-neu-aufgenommene-fremdsprache-standards-methodische-textkompetenzen",
+        "label": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-neu-aufgenommene-fremdsprache-standards-methodische-textkompetenzen#55"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase · neu aufgenommene Fremdsprache",
+        "field": "Standards · Methodische Textkompetenzen",
+        "extractionMethod": "Extrahiert Aufgaben/Ziele, Themen/Inhalte und Standards aus dem amtlichen Bremer Bildungsplan Latein fuer die gymnasiale Oberstufe.",
+        "sourceIndex": 55
+      }
+    },
+    {
+      "id": "de-hb-latein-sekii-gyo-2008-056-7a85227c",
+      "sourceDocumentKey": "HB-GYO-LATEIN-QPHASE-2008",
+      "passageId": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-neu-aufgenommene-fremdsprache-standards-methodische-textkompetenzen",
+      "topicCode": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-neu-aufgenommene-fremdsprache-standards-methodische-textkompetenzen",
+      "title": "können lateinische Originaltexte im sprachlichen Schwierigkeitsgrad inhaltlich anspruchsvolle...",
+      "description": "Die lernende Person kann lateinische Originaltexte im sprachlichen Schwierigkeitsgrad inhaltlich anspruchsvollerer Stellen (bezogen auf Autoren wie Cicero, Sallust, Livius) mit Hilfe eines Wörterbuchs ins Deutsche treffend übersetzen und in Inhalt, Aufbau und Aussage erfassen.",
+      "sourceText": "können lateinische Originaltexte im sprachlichen Schwierigkeitsgrad inhaltlich anspruchsvollerer Stellen (bezogen auf Autoren wie Cicero, Sallust, Livius) mit Hilfe eines Wörterbuchs ins Deutsche treffend übersetzen und in Inhalt, Aufbau und Aussage erfassen",
+      "sourceRef": "S. 8-10, Qualifikationsphase · neu aufgenommene Fremdsprache, Standards · Methodische Textkompetenzen",
+      "sourceSpan": {
+        "passageId": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-neu-aufgenommene-fremdsprache-standards-methodische-textkompetenzen",
+        "label": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-neu-aufgenommene-fremdsprache-standards-methodische-textkompetenzen#56"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase · neu aufgenommene Fremdsprache",
+        "field": "Standards · Methodische Textkompetenzen",
+        "extractionMethod": "Extrahiert Aufgaben/Ziele, Themen/Inhalte und Standards aus dem amtlichen Bremer Bildungsplan Latein fuer die gymnasiale Oberstufe.",
+        "sourceIndex": 56
+      }
+    },
+    {
+      "id": "de-hb-latein-sekii-gyo-2008-057-5729cc27",
+      "sourceDocumentKey": "HB-GYO-LATEIN-QPHASE-2008",
+      "passageId": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-neu-aufgenommene-fremdsprache-standards-methodische-textkompetenzen",
+      "topicCode": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-neu-aufgenommene-fremdsprache-standards-methodische-textkompetenzen",
+      "title": "verstehen und benennen Probleme des Übersetzens von Texten",
+      "description": "Die lernende Person kann verstehen und benennen Probleme des Übersetzens von Texten.",
+      "sourceText": "verstehen und benennen Probleme des Übersetzens von Texten",
+      "sourceRef": "S. 8-10, Qualifikationsphase · neu aufgenommene Fremdsprache, Standards · Methodische Textkompetenzen",
+      "sourceSpan": {
+        "passageId": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-neu-aufgenommene-fremdsprache-standards-methodische-textkompetenzen",
+        "label": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-neu-aufgenommene-fremdsprache-standards-methodische-textkompetenzen#57"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase · neu aufgenommene Fremdsprache",
+        "field": "Standards · Methodische Textkompetenzen",
+        "extractionMethod": "Extrahiert Aufgaben/Ziele, Themen/Inhalte und Standards aus dem amtlichen Bremer Bildungsplan Latein fuer die gymnasiale Oberstufe.",
+        "sourceIndex": 57
+      }
+    },
+    {
+      "id": "de-hb-latein-sekii-gyo-2008-058-86517535",
+      "sourceDocumentKey": "HB-GYO-LATEIN-QPHASE-2008",
+      "passageId": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-neu-aufgenommene-fremdsprache-standards-methodische-textkompetenzen",
+      "topicCode": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-neu-aufgenommene-fremdsprache-standards-methodische-textkompetenzen",
+      "title": "sind geübt im Umgang mit Hilfsmitteln wie Wörterbüchern, zweisprachigen Textausgaben, Komment...",
+      "description": "Die lernende Person kann sind geübt im Umgang mit Hilfsmitteln wie Wörterbüchern, zweisprachigen Textausgaben, Kommentaren etc..",
+      "sourceText": "sind geübt im Umgang mit Hilfsmitteln wie Wörterbüchern, zweisprachigen Textausgaben, Kommentaren etc.",
+      "sourceRef": "S. 8-10, Qualifikationsphase · neu aufgenommene Fremdsprache, Standards · Methodische Textkompetenzen",
+      "sourceSpan": {
+        "passageId": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-neu-aufgenommene-fremdsprache-standards-methodische-textkompetenzen",
+        "label": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-neu-aufgenommene-fremdsprache-standards-methodische-textkompetenzen#58"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase · neu aufgenommene Fremdsprache",
+        "field": "Standards · Methodische Textkompetenzen",
+        "extractionMethod": "Extrahiert Aufgaben/Ziele, Themen/Inhalte und Standards aus dem amtlichen Bremer Bildungsplan Latein fuer die gymnasiale Oberstufe.",
+        "sourceIndex": 58
+      }
+    },
+    {
+      "id": "de-hb-latein-sekii-gyo-2008-059-c5d15bc5",
+      "sourceDocumentKey": "HB-GYO-LATEIN-QPHASE-2008",
+      "passageId": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-neu-aufgenommene-fremdsprache-standards-methodische-textkompetenzen",
+      "topicCode": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-neu-aufgenommene-fremdsprache-standards-methodische-textkompetenzen",
+      "title": "können Texte gliedern",
+      "description": "Die lernende Person kann Texte gliedern.",
+      "sourceText": "können Texte gliedern",
+      "sourceRef": "S. 8-10, Qualifikationsphase · neu aufgenommene Fremdsprache, Standards · Methodische Textkompetenzen",
+      "sourceSpan": {
+        "passageId": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-neu-aufgenommene-fremdsprache-standards-methodische-textkompetenzen",
+        "label": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-neu-aufgenommene-fremdsprache-standards-methodische-textkompetenzen#59"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase · neu aufgenommene Fremdsprache",
+        "field": "Standards · Methodische Textkompetenzen",
+        "extractionMethod": "Extrahiert Aufgaben/Ziele, Themen/Inhalte und Standards aus dem amtlichen Bremer Bildungsplan Latein fuer die gymnasiale Oberstufe.",
+        "sourceIndex": 59
+      }
+    },
+    {
+      "id": "de-hb-latein-sekii-gyo-2008-060-1e1c5e95",
+      "sourceDocumentKey": "HB-GYO-LATEIN-QPHASE-2008",
+      "passageId": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-neu-aufgenommene-fremdsprache-standards-methodische-textkompetenzen",
+      "topicCode": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-neu-aufgenommene-fremdsprache-standards-methodische-textkompetenzen",
+      "title": "können Textaussagen erfassen und benennen",
+      "description": "Die lernende Person kann Textaussagen erfassen und benennen.",
+      "sourceText": "können Textaussagen erfassen und benennen",
+      "sourceRef": "S. 8-10, Qualifikationsphase · neu aufgenommene Fremdsprache, Standards · Methodische Textkompetenzen",
+      "sourceSpan": {
+        "passageId": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-neu-aufgenommene-fremdsprache-standards-methodische-textkompetenzen",
+        "label": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-neu-aufgenommene-fremdsprache-standards-methodische-textkompetenzen#60"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase · neu aufgenommene Fremdsprache",
+        "field": "Standards · Methodische Textkompetenzen",
+        "extractionMethod": "Extrahiert Aufgaben/Ziele, Themen/Inhalte und Standards aus dem amtlichen Bremer Bildungsplan Latein fuer die gymnasiale Oberstufe.",
+        "sourceIndex": 60
+      }
+    },
+    {
+      "id": "de-hb-latein-sekii-gyo-2008-061-ef00984f",
+      "sourceDocumentKey": "HB-GYO-LATEIN-QPHASE-2008",
+      "passageId": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-neu-aufgenommene-fremdsprache-standards-methodische-textkompetenzen",
+      "topicCode": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-neu-aufgenommene-fremdsprache-standards-methodische-textkompetenzen",
+      "title": "können Schlüsselbegriffe erkennen",
+      "description": "Die lernende Person kann Schlüsselbegriffe erkennen.",
+      "sourceText": "können Schlüsselbegriffe erkennen",
+      "sourceRef": "S. 8-10, Qualifikationsphase · neu aufgenommene Fremdsprache, Standards · Methodische Textkompetenzen",
+      "sourceSpan": {
+        "passageId": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-neu-aufgenommene-fremdsprache-standards-methodische-textkompetenzen",
+        "label": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-neu-aufgenommene-fremdsprache-standards-methodische-textkompetenzen#61"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase · neu aufgenommene Fremdsprache",
+        "field": "Standards · Methodische Textkompetenzen",
+        "extractionMethod": "Extrahiert Aufgaben/Ziele, Themen/Inhalte und Standards aus dem amtlichen Bremer Bildungsplan Latein fuer die gymnasiale Oberstufe.",
+        "sourceIndex": 61
+      }
+    },
+    {
+      "id": "de-hb-latein-sekii-gyo-2008-062-d5cf2dc4",
+      "sourceDocumentKey": "HB-GYO-LATEIN-QPHASE-2008",
+      "passageId": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-neu-aufgenommene-fremdsprache-standards-methodische-textkompetenzen",
+      "topicCode": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-neu-aufgenommene-fremdsprache-standards-methodische-textkompetenzen",
+      "title": "können Textvergleiche anstellen",
+      "description": "Die lernende Person kann Textvergleiche anstellen.",
+      "sourceText": "können Textvergleiche anstellen",
+      "sourceRef": "S. 8-10, Qualifikationsphase · neu aufgenommene Fremdsprache, Standards · Methodische Textkompetenzen",
+      "sourceSpan": {
+        "passageId": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-neu-aufgenommene-fremdsprache-standards-methodische-textkompetenzen",
+        "label": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-neu-aufgenommene-fremdsprache-standards-methodische-textkompetenzen#62"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase · neu aufgenommene Fremdsprache",
+        "field": "Standards · Methodische Textkompetenzen",
+        "extractionMethod": "Extrahiert Aufgaben/Ziele, Themen/Inhalte und Standards aus dem amtlichen Bremer Bildungsplan Latein fuer die gymnasiale Oberstufe.",
+        "sourceIndex": 62
+      }
+    },
+    {
+      "id": "de-hb-latein-sekii-gyo-2008-063-e52e1ed9",
+      "sourceDocumentKey": "HB-GYO-LATEIN-QPHASE-2008",
+      "passageId": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-neu-aufgenommene-fremdsprache-standards-methodische-textkompetenzen",
+      "topicCode": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-neu-aufgenommene-fremdsprache-standards-methodische-textkompetenzen",
+      "title": "sind in der Lage, kritisch zu Texten und deren Aussage Stellung zu beziehen",
+      "description": "Die lernende Person kann sind in der Lage, kritisch zu Texten und deren Aussage Stellung zu beziehen.",
+      "sourceText": "sind in der Lage, kritisch zu Texten und deren Aussage Stellung zu beziehen",
+      "sourceRef": "S. 8-10, Qualifikationsphase · neu aufgenommene Fremdsprache, Standards · Methodische Textkompetenzen",
+      "sourceSpan": {
+        "passageId": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-neu-aufgenommene-fremdsprache-standards-methodische-textkompetenzen",
+        "label": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-neu-aufgenommene-fremdsprache-standards-methodische-textkompetenzen#63"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase · neu aufgenommene Fremdsprache",
+        "field": "Standards · Methodische Textkompetenzen",
+        "extractionMethod": "Extrahiert Aufgaben/Ziele, Themen/Inhalte und Standards aus dem amtlichen Bremer Bildungsplan Latein fuer die gymnasiale Oberstufe.",
+        "sourceIndex": 63
+      }
+    },
+    {
+      "id": "de-hb-latein-sekii-gyo-2008-064-467eab44",
+      "sourceDocumentKey": "HB-GYO-LATEIN-QPHASE-2008",
+      "passageId": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-neu-aufgenommene-fremdsprache-standards-methodische-textkompetenzen",
+      "topicCode": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-neu-aufgenommene-fremdsprache-standards-methodische-textkompetenzen",
+      "title": "sind mit produktiven Verfahren des Umgangs mit Texten vertraut.",
+      "description": "Die lernende Person kann sind mit produktiven Verfahren des Umgangs mit Texten vertraut..",
+      "sourceText": "sind mit produktiven Verfahren des Umgangs mit Texten vertraut.",
+      "sourceRef": "S. 8-10, Qualifikationsphase · neu aufgenommene Fremdsprache, Standards · Methodische Textkompetenzen",
+      "sourceSpan": {
+        "passageId": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-neu-aufgenommene-fremdsprache-standards-methodische-textkompetenzen",
+        "label": "de-hb-latein-sekii-gyo-2008-qualifikationsphase-neu-aufgenommene-fremdsprache-standards-methodische-textkompetenzen#64"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase · neu aufgenommene Fremdsprache",
+        "field": "Standards · Methodische Textkompetenzen",
+        "extractionMethod": "Extrahiert Aufgaben/Ziele, Themen/Inhalte und Standards aus dem amtlichen Bremer Bildungsplan Latein fuer die gymnasiale Oberstufe.",
+        "sourceIndex": 64
+      }
+    }
+  ]
+}

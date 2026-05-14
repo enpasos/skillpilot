@@ -1,6 +1,6 @@
 # Curriculum Quality Status
 
-Generated: 2026-05-14T15:53:07.562Z
+Generated: 2026-05-14T20:01:47.263Z
 Rules version: curriculum-quality-v1
 
 ## Summary
@@ -30,7 +30,7 @@ Rules version: curriculum-quality-v1
 | Gymnasium (DE) | M0 | 1 | 0 | - | 0/16 | 0 | 2 | 0 |
 | Informatik (Gymnasium, DE) | M5 | 277 | 232 | 29/29 | 16/16 | 1 | 0 | 0 |
 | Italienisch (Gymnasium, DE) | M0 | 8 | 7 | 0/1 | 0/16 | 0 | 1 | 1 |
-| Latein (Gymnasium, DE) | M0 | 142 | 109 | 2/2 | 2/16 | 0 | 2 | 0 |
+| Latein (Gymnasium, DE) | M0 | 171 | 131 | 22/22 | 12/16 | 1 | 2 | 0 |
 | Mathematik (Gymnasium, DE) | M5 | 1037 | 825 | 31/31 | 16/16 | 2 | 0 | 0 |
 | Musik (Gymnasium, DE) | M0 | 76 | 52 | 2/2 | 2/16 | 0 | 2 | 0 |
 | Physik (Gymnasium, DE) | M5 | 585 | 497 | 25/25 | 16/16 | 2 | 0 | 0 |
@@ -195,8 +195,28 @@ Rules version: curriculum-quality-v1
 | Informatik (Gymnasium, DE) | Informatik Sekundarstufe I (Thueringen, Lehrplan Gymnasium 2012 Source-Extraction) | DE-TH | 1/1 original source(s) | 4/4 | - | 7 | 105 | 9 | 96 | 9% |  |
 | Informatik (Gymnasium, DE) | Informatik Sekundarstufe II (Thueringen, Lehrplan Gymnasium 2012 Source-Extraction) | DE-TH | 1/1 original source(s) | 4/4 | - | 5 | 92 | 23 | 69 | 25% |  |
 | Italienisch (Gymnasium, DE) | Italienisch (Gymnasium) | DE-BY | No extraction | 0/3 | MAPPING-1 | 0 | 0 | 0 | 0 | 0% |  |
+| Latein (Gymnasium, DE) | DE-BB · Latein Oberstufe (Brandenburg, GOST 2025 Source-Extraction) | DE-BB | 1/1 original source(s) | 4/4 | - | 21 | 140 | 79 | 61 | 56% |  |
+| Latein (Gymnasium, DE) | DE-BB · Latein Sekundarstufe I (Brandenburg, RLP 2015 Source-Extraction) | DE-BB | 1/1 original source(s) | 4/4 | - | 8 | 176 | 18 | 158 | 10% |  |
+| Latein (Gymnasium, DE) | DE-BE · Latein Oberstufe (Berlin, GOST 2025 Source-Extraction) | DE-BE | 1/1 original source(s) | 4/4 | - | 21 | 140 | 79 | 61 | 56% |  |
+| Latein (Gymnasium, DE) | DE-BE · Latein Sekundarstufe I (Berlin, RLP 2015 Source-Extraction) | DE-BE | 1/1 original source(s) | 4/4 | - | 8 | 176 | 18 | 158 | 10% |  |
+| Latein (Gymnasium, DE) | Latein Gymnasium (Baden-Wuerttemberg, BP2016 Source-Extraction) | DE-BW | 4/4 original source(s) | 4/4 | - | 87 | 807 | 0 | 807 | 0% |  |
 | Latein (Gymnasium, DE) | Latein (Gymnasium) | DE-BY | 1/1 original source(s) | 3/3 | - | 60 | 832 | 9 | 823 | 1% |  |
+| Latein (Gymnasium, DE) | Latein Oberstufe (Bremen, GyO Qualifikationsphase 2008 Source-Extraction) | DE-HB | 1/1 original source(s) | 4/4 | - | 12 | 64 | 55 | 9 | 86% |  |
+| Latein (Gymnasium, DE) | Latein Sekundarstufe I (Bremen, Gymnasium 2. Fremdsprache 2007 Source-Extraction) | DE-HB | 1/1 original source(s) | 4/4 | - | 21 | 73 | 0 | 73 | 0% |  |
+| Latein (Gymnasium, DE) | Latein Sekundarstufe I (Bremen, Gymnasium 3. Fremdsprache 2007 Source-Extraction) | DE-HB | 1/1 original source(s) | 4/4 | - | 11 | 32 | 0 | 32 | 0% |  |
 | Latein (Gymnasium, DE) | Latein Oberstufe (Hessen, KC 2024) | DE-HE | 1/1 original source(s) | 3/3 | - | 33 | 94 | 94 | 0 | 100% |  |
+| Latein (Gymnasium, DE) | Latein Sekundarstufe I (Hamburg, Bildungsplan 2011 Source-Extraction) | DE-HH | 1/1 original source(s) | 4/4 | - | 51 | 252 | 22 | 230 | 9% |  |
+| Latein (Gymnasium, DE) | Latein Studienstufe (Hamburg, Bildungsplan 2022 Source-Extraction) | DE-HH | 1/1 original source(s) | 4/4 | - | 62 | 326 | 24 | 302 | 7% |  |
+| Latein (Gymnasium, DE) | Latein Oberstufe (Mecklenburg-Vorpommern, Rahmenplan 2019 Source-Extraction) | DE-MV | 1/1 original source(s) | 4/4 | - | 9 | 93 | 74 | 19 | 80% |  |
+| Latein (Gymnasium, DE) | Latein Sekundarstufe I (Mecklenburg-Vorpommern, Rahmenplan 2025 Source-Extraction) | DE-MV | 1/1 original source(s) | 4/4 | - | 17 | 168 | 0 | 168 | 0% |  |
+| Latein (Gymnasium, DE) | Latein Oberstufe (Niedersachsen, KC 2018 Source-Extraction) | DE-NI | 1/1 original source(s) | 4/4 | - | 15 | 345 | 82 | 263 | 24% |  |
+| Latein (Gymnasium, DE) | Latein Sekundarstufe I (Niedersachsen, KC 2017 Source-Extraction) | DE-NI | 1/1 original source(s) | 4/4 | - | 10 | 395 | 113 | 282 | 29% |  |
+| Latein (Gymnasium, DE) | Latein Sekundarstufe I (Nordrhein-Westfalen, KLP 2019 Source-Extraction) | DE-NW | 1/1 original source(s) | 4/4 | - | 18 | 94 | 0 | 94 | 0% |  |
+| Latein (Gymnasium, DE) | Lateinisch Oberstufe (Nordrhein-Westfalen, KLP 2013 Source-Extraction) | DE-NW | 1/1 original source(s) | 4/4 | - | 36 | 204 | 0 | 204 | 0% |  |
+| Latein (Gymnasium, DE) | Latein Oberstufe (Rheinland-Pfalz, Lehrplan 1998 Source-Extraction) | DE-RP | 1/1 original source(s) | 4/4 | - | 20 | 193 | 159 | 34 | 82% |  |
+| Latein (Gymnasium, DE) | Latein Sekundarstufe I (Rheinland-Pfalz, Lehrplan 2009 Source-Extraction) | DE-RP | 1/1 original source(s) | 4/4 | - | 24 | 620 | 0 | 620 | 0% |  |
+| Latein (Gymnasium, DE) | Latein Oberstufe (Schleswig-Holstein, Fachanforderungen 2015 Source-Extraction) | DE-SH | 1/1 original source(s) | 4/4 | - | 22 | 190 | 112 | 78 | 59% |  |
+| Latein (Gymnasium, DE) | Latein Sekundarstufe I (Schleswig-Holstein, Fachanforderungen 2015 Source-Extraction) | DE-SH | 1/1 original source(s) | 4/4 | - | 22 | 129 | 24 | 105 | 19% |  |
 | Mathematik (Gymnasium, DE) | DE-BB - Mathematik Oberstufe (Brandenburg, GOST 2022 Source-Extraction) | DE-BB | 1/1 original source(s) | 4/4 | - | 14 | 196 | 40 | 156 | 20% |  |
 | Mathematik (Gymnasium, DE) | DE-BB - Mathematik Sekundarstufe I (Brandenburg, RLP 1-10 Source-Extraction) | DE-BB | 1/1 original source(s) | 4/4 | - | 19 | 289 | 45 | 244 | 16% |  |
 | Mathematik (Gymnasium, DE) | DE-BE - Mathematik Oberstufe (Berlin, GO 2014 Source-Extraction) | DE-BE | 1/1 original source(s) | 4/4 | - | 15 | 195 | 18 | 177 | 9% |  |
@@ -339,7 +359,7 @@ Rules version: curriculum-quality-v1
 | Gymnasium (DE) | 0/16 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0%) |
 | Informatik (Gymnasium, DE) | 16/16 | 209 | 232 | 16 | 3505 | 3505 | 3505 | 0 | 3505 | 0 | 0 | 0 | 0 | 0 | 207 (100%) |
 | Italienisch (Gymnasium, DE) | 0/16 | 6 | 7 | 1 | 0 | 8 | 8 | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 6 (100%) |
-| Latein (Gymnasium, DE) | 2/16 | 94 | 109 | 2 | 926 | 926 | 926 | 0 | 926 | 0 | 0 | 0 | 0 | 0 | 94 (100%) |
+| Latein (Gymnasium, DE) | 12/16 | 115 | 131 | 12 | 5543 | 5543 | 5543 | 0 | 5543 | 0 | 0 | 0 | 0 | 0 | 115 (100%) |
 | Mathematik (Gymnasium, DE) | 16/16 | 648 | 825 | 16 | 9797 | 9797 | 9797 | 0 | 9797 | 0 | 0 | 0 | 0 | 0 | 648 (100%) |
 | Musik (Gymnasium, DE) | 2/16 | 38 | 52 | 2 | 242 | 242 | 242 | 0 | 242 | 0 | 0 | 0 | 0 | 0 | 38 (100%) |
 | Physik (Gymnasium, DE) | 16/16 | 389 | 497 | 16 | 6342 | 6342 | 6342 | 0 | 6342 | 0 | 0 | 0 | 0 | 0 | 381 (100%) |
