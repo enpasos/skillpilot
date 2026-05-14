@@ -181,3 +181,28 @@ Generated source extractions:
 - `lower-secondary/source-extraction/DE_SL_DEUTSCH_SEKI_GYM9_2023_2025.source-extraction.json`
 - `upper-secondary/source-extraction/DE_SL_DEUTSCH_SEKII_GOS_2019_2022.source-extraction.json`
 <!-- DE-SL-DEUTSCH-SOURCE-EXTRACTION:end -->
+
+<!-- DE-SL-GESCHICHTE-SOURCE-EXTRACTION:start -->
+## Geschichte
+
+Official Saarland source pages:
+
+- https://www.saarland.de/mbk/DE/portale/bildungsserver/unterricht-und-bildungsthemen/lehrplaenehandreichungen/lehrplaeneallgemeinbildende/gymnasium
+- https://www.saarland.de/mbk/DE/portale/bildungsserver/unterricht-und-bildungsthemen/lehrplaenehandreichungen/lehrplaeneallgemeinbildende/gymnasiale-oberstufe-GOS/lehrplaene_GOS_node
+
+Archived official PDFs and generated source extractions:
+
+- **Geschichte Sekundarstufe I (Saarland, G9 Source-Extraction)**
+  - lokale Quelle: `lower-secondary/LP_Ge_gym9_6_2023.pdf` (https://www.saarland.de/SharedDocs/Downloads/DE/mbk/Lehrpl%C3%A4ne/Lehrplaene_Gymnasium_neunjaehriges_23/Geschichte/LP_Ge_gym9_6_2023.pdf?__blob=publicationFile&v=4)
+  - lokale Quelle: `lower-secondary/LP_Ge_gym9_7_2023.pdf` (https://www.saarland.de/SharedDocs/Downloads/DE/mbk/Lehrpl%C3%A4ne/Lehrplaene_Gymnasium_neunjaehriges_23/Geschichte/LP_Ge_gym9_7_2023.pdf?__blob=publicationFile&v=4)
+  - lokale Quelle: `lower-secondary/LP_Ge_gym9_9_2024.pdf` (https://www.saarland.de/SharedDocs/Downloads/DE/mbk/Lehrpl%C3%A4ne/Lehrplaene_Gymnasium_neunjaehriges_23/Geschichte/LP_Ge_gym9_9_2024.pdf?__blob=publicationFile&v=1)
+  - lokale Quelle: `lower-secondary/LP_Ge_gym9_10_2024.pdf` (https://www.saarland.de/SharedDocs/Downloads/DE/mbk/Lehrpl%C3%A4ne/Lehrplaene_Gymnasium_neunjaehriges_23/Geschichte/LP_Ge_gym9_10_2024.pdf?__blob=publicationFile&v=1)
+  - Source extraction: `curricula/DE/Gymnasium/input/SL/lower-secondary/source-extraction/DE_SL_GESCHICHTE_SEKI_GYM9_2023_2024.source-extraction.json`
+  - M3 status: `complete` (197 Source-Ziele)
+- **Geschichte Oberstufe (Saarland, GOS Source-Extraction)**
+  - lokale Quelle: `upper-secondary/LP_Ge_EP_GOS_2016.pdf` (https://www.saarland.de/SharedDocs/Downloads/DE/mbk/Lehrpl%C3%A4ne/Lehrplaene_GOS_ab_2019_2020/Geschichte/LP_Ge_EP_GOS_2016.pdf?__blob=publicationFile&v=4)
+  - lokale Quelle: `upper-secondary/LP_Ge_HP_GK_2019.pdf` (https://www.saarland.de/SharedDocs/Downloads/DE/mbk/Lehrpl%C3%A4ne/Lehrplaene_GOS_ab_2019_2020/Geschichte/LP_Ge_HP_GK_2019.pdf?__blob=publicationFile&v=5)
+  - lokale Quelle: `upper-secondary/LP_Ge_HP_LK_2019.pdf` (https://www.saarland.de/SharedDocs/Downloads/DE/mbk/Lehrpl%C3%A4ne/Lehrplaene_GOS_ab_2019_2020/Geschichte/LP_Ge_HP_LK_2019.pdf?__blob=publicationFile&v=4)
+  - Source extraction: `curricula/DE/Gymnasium/input/SL/upper-secondary/source-extraction/DE_SL_GESCHICHTE_SEKII_GOS_2016_2023.source-extraction.json`
+  - M3 status: `complete` (179 Source-Ziele)
+<!-- DE-SL-GESCHICHTE-SOURCE-EXTRACTION:end -->

@@ -814,6 +814,16 @@ const CANONICAL_GYM_INFORMATICS_PRACTICE_CLUSTER_IDS = [
   '70ef7a45-540a-5d8c-b970-19b9f740c40a',
   '4d22b75a-c395-5785-9131-68a8a5e203c1',
 ]
+const CANONICAL_GYM_HISTORY_LANDSCAPE_ID = '92406d94-e3c1-58ec-b7c6-12122278d25a'
+const CANONICAL_GYM_HISTORY_MOTIVATION_GOAL_ID = '178c5d72-5a0c-514e-abed-0dc65c8d1aa2'
+const CANONICAL_GYM_HISTORY_PRACTICE_CLUSTER_IDS = [
+  '036c1ed0-c535-5fe2-9ffc-739938359583',
+]
+const CANONICAL_GYM_GERMAN_LANDSCAPE_ID = '67bd301b-e11a-582d-94ba-4f4b1a4cefff'
+const CANONICAL_GYM_GERMAN_MOTIVATION_GOAL_ID = 'eff86a92-e048-5494-b561-6ecdda1fbf67'
+const CANONICAL_GYM_GERMAN_PRACTICE_CLUSTER_IDS = [
+  '9d602daf-f4ce-513f-a425-b67240b5c309',
+]
 
 const ruleCatalog: QualityRuleDefinition[] = [
   {
@@ -1044,6 +1054,48 @@ const routeProfiles: RouteProfile[] = [
       && (goal as { phase?: string }).phase !== 'Abitur'
       && !goal.tags?.includes('Abitur'),
   },
+  {
+    profileId: 'canonical-history-crossstage',
+    landscapeId: CANONICAL_GYM_HISTORY_LANDSCAPE_ID,
+    label: 'Sekundarstufe I/II',
+    motivationAnchorGoalIds: [CANONICAL_GYM_HISTORY_MOTIVATION_GOAL_ID],
+    terminalAutonomyClusterIds: CANONICAL_GYM_HISTORY_PRACTICE_CLUSTER_IDS,
+    compositionViewStage: 'CrossStage',
+    goalSelector: (goal) => isAtomicGoal(goal)
+      && isCanonicalGymHistoryGoal(goal)
+      && !isMemoryGoal(goal)
+      && !isPracticeOrAssessmentGoal(goal)
+      && !goal.tags?.includes('Motivation')
+      && !goal.tags?.includes('Orientation')
+      && goal.dimensionTags?.phase !== 'Abitur'
+      && (goal as { phase?: string }).phase !== 'Abitur',
+    clusterSelector: (goal) => isCanonicalGymHistoryGoal(goal)
+      && !isPracticeOrAssessmentGoal(goal)
+      && goal.dimensionTags?.phase !== 'Abitur'
+      && (goal as { phase?: string }).phase !== 'Abitur'
+      && !goal.tags?.includes('Abitur'),
+  },
+  {
+    profileId: 'canonical-german-crossstage',
+    landscapeId: CANONICAL_GYM_GERMAN_LANDSCAPE_ID,
+    label: 'Sekundarstufe I/II',
+    motivationAnchorGoalIds: [CANONICAL_GYM_GERMAN_MOTIVATION_GOAL_ID],
+    terminalAutonomyClusterIds: CANONICAL_GYM_GERMAN_PRACTICE_CLUSTER_IDS,
+    compositionViewStage: 'CrossStage',
+    goalSelector: (goal) => isAtomicGoal(goal)
+      && isCanonicalGymGermanGoal(goal)
+      && !isMemoryGoal(goal)
+      && !isPracticeOrAssessmentGoal(goal)
+      && !goal.tags?.includes('Motivation')
+      && !goal.tags?.includes('Orientation')
+      && goal.dimensionTags?.phase !== 'Abitur'
+      && (goal as { phase?: string }).phase !== 'Abitur',
+    clusterSelector: (goal) => isCanonicalGymGermanGoal(goal)
+      && !isPracticeOrAssessmentGoal(goal)
+      && goal.dimensionTags?.phase !== 'Abitur'
+      && (goal as { phase?: string }).phase !== 'Abitur'
+      && !goal.tags?.includes('Abitur'),
+  },
 ]
 
 function toRepoPath(path: string): string {
@@ -1222,6 +1274,27 @@ function isCanonicalGymInformaticsGoal(goal: LearningGoal): boolean {
   if (goal.tags?.includes('SekI') || goal.tags?.includes('SekII')) return true
   const legacyPhase = (goal as { phase?: string }).phase
   return ['E', 'Q1', 'Q2', 'Q3', 'Q4', 'GLOBAL'].includes(goal.dimensionTags?.phase ?? legacyPhase ?? '')
+}
+
+function isCanonicalGymHistoryGoal(goal: LearningGoal): boolean {
+  if (goal.id === CANONICAL_GYM_HISTORY_MOTIVATION_GOAL_ID) return true
+  if (goal.dimensionTags?.framework === 'canonical-gymnasium-history') return true
+  if (goal.dimensionTags?.framework === 'hessen-kc-2024-history') return true
+  if (goal.tags?.includes('subject:history')) return true
+  if (goal.tags?.includes('subject:Geschichte')) return true
+  const legacyPhase = (goal as { phase?: string }).phase
+  return ['E', 'Q1', 'Q2', 'Q3', 'Q4', 'GLOBAL'].includes(goal.dimensionTags?.phase ?? legacyPhase ?? '')
+}
+
+function isCanonicalGymGermanGoal(goal: LearningGoal): boolean {
+  if (goal.id === CANONICAL_GYM_GERMAN_MOTIVATION_GOAL_ID) return true
+  if (goal.dimensionTags?.framework === 'canonical-gymnasium-german') return true
+  if (goal.dimensionTags?.framework === 'hessen-kc-2024-german') return true
+  if (goal.tags?.includes('subject:german')) return true
+  if (goal.tags?.includes('subject:Deutsch')) return true
+  if (goal.tags?.includes('SekI') || goal.tags?.includes('SekII')) return true
+  const legacyPhase = (goal as { phase?: string }).phase
+  return ['E', 'Q1', 'Q2', 'Q3', 'Q4', 'GLOBAL', 'SekI'].includes(goal.dimensionTags?.phase ?? legacyPhase ?? '')
 }
 
 function parseReference(raw: string, currentLandscapeId: string): { landscapeId: string; goalId: string } {
@@ -2052,6 +2125,8 @@ const compositionViewDirectoryByLandscapeId = new Map<string, string>([
   [CANONICAL_GYM_ECONOMICS_LANDSCAPE_ID, 'wirtschaft'],
   [CANONICAL_GYM_POLITICS_ECONOMICS_LANDSCAPE_ID, 'politik-und-wirtschaft'],
   [CANONICAL_GYM_INFORMATICS_LANDSCAPE_ID, 'informatik'],
+  [CANONICAL_GYM_HISTORY_LANDSCAPE_ID, 'geschichte'],
+  [CANONICAL_GYM_GERMAN_LANDSCAPE_ID, 'deutsch'],
 ])
 
 function readLandscapeForReport(report: CoverageReport): LearningLandscape | null {

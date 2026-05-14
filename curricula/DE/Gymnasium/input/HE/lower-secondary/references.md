@@ -23,3 +23,28 @@ Starting point: https://kultus.hessen.de/unterricht/kerncurricula-und-lehrplaene
 - g9-spanisch.pdf: https://kultus.hessen.de/sites/kultus.hessen.de/files/2021-06/g9-spanisch.pdf
 - japanisch9-13.pdf: https://kultus.hessen.de/sites/kultus.hessen.de/files/2021-06/japanisch9-13.pdf
 - philosophie_0.pdf: https://kultus.hessen.de/sites/kultus.hessen.de/files/2021-06/philosophie_0.pdf
+
+<!-- DE-HE-GESCHICHTE-SEKI-SOURCE-EXTRACTION:start -->
+## Geschichte source PDF (download link)
+
+Starting point: https://kultus.hessen.de/unterricht/kerncurricula-und-lehrplaene/lehrplaene/gymnasium-9
+
+- `g9-geschichte.pdf`:
+  https://kultus.hessen.de/sites/kultus.hessen.de/files/2021-06/g9-geschichte.pdf
+
+Scope:
+
+- Hessen
+- Gymnasium G9
+- Geschichte
+- Sekundarstufe I, Jahrgangsstufen 6-10
+- only mandatory `Verbindliche Unterrichtsinhalte/Aufgaben` are used for source goals
+
+Archived locally at:
+
+- `curricula/DE/Gymnasium/input/HE/lower-secondary/g9-geschichte.pdf`
+
+Source extraction:
+
+- `curricula/DE/Gymnasium/input/HE/lower-secondary/source-extraction/DE_HE_GESCHICHTE_SEKI_G9.source-extraction.json`
+<!-- DE-HE-GESCHICHTE-SEKI-SOURCE-EXTRACTION:end -->

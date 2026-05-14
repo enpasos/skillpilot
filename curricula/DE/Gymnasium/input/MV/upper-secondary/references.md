@@ -47,3 +47,23 @@ Generated source extraction:
 
 - `curricula/DE/Gymnasium/input/MV/upper-secondary/source-extraction/DE_MV_DEUTSCH_SEKII_RAHMENPLAN_2019.source-extraction.json`
 <!-- DE-MV-DEUTSCH-SEKII-SOURCE-EXTRACTION:end -->
+
+<!-- DE-MV-GESCHICHTE-SEKII-SOURCE-EXTRACTION:start -->
+## Geschichte source PDFs
+
+Scope:
+
+- Mecklenburg-Vorpommern
+- Gymnasium
+- Geschichte
+- upper-secondary extraction target: MV Geschichte und Politische Bildung Standards und verbindliche Modul-Inhalte
+
+Archived sources, source extractions and M3 reviews:
+
+- `Rahmenplan Geschichte und Politische Bildung Sekundarstufe II Mecklenburg-Vorpommern (2019)`:
+  - official URL: https://www.bildung-mv.de/export/sites/bildungsserver/.galleries/dokumente/unterricht/rahmenplaene/RP_GEPO_SEK2.pdf
+  - local PDF: `curricula/DE/Gymnasium/input/MV/upper-secondary/RP_GEPO_SEK2.pdf`
+  - source extraction: `curricula/DE/Gymnasium/input/MV/upper-secondary/source-extraction/DE_MV_GESCHICHTE_SEKII_GEPO_RAHMENPLAN_2019.source-extraction.json`
+  - mapping review: `curricula/DE/Gymnasium/mapping/DE-MV/upper-secondary/mv_history_upper_secondary_gepo_source_extraction_to_canonical_history.review.json`
+  - source goals: 97
+<!-- DE-MV-GESCHICHTE-SEKII-SOURCE-EXTRACTION:end -->

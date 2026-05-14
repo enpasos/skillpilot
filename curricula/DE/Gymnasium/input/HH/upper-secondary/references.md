@@ -44,3 +44,29 @@ Archived locally at:
 Generated source extraction:
 
 - `curricula/DE/Gymnasium/input/HH/upper-secondary/source-extraction/DE_HH_INFORMATIK_SEKII_BILDUNGSPLAN_2022.source-extraction.json`
+
+<!-- DE-HH-GESCHICHTE-SEKII-SOURCE-EXTRACTION:start -->
+## Geschichte source PDF
+
+- `Bildungsplan Studienstufe Geschichte Hamburg (2022)`:
+  https://www.hamburg.de/resource/blob/123066/6075aa3887f36e7b3247e79fc267f776/geschichte-gyo-2022-data.pdf
+
+Scope:
+
+- Hamburg
+- Gymnasium
+- Geschichte
+- upper-secondary extraction target: HH Geschichte Kompetenzcodes und Kern-/Wahlmodule (354 Source-Ziele)
+
+Archived locally at:
+
+- `curricula/DE/Gymnasium/input/HH/upper-secondary/geschichte-gyo-2022-data.pdf`
+
+Source extraction:
+
+- `curricula/DE/Gymnasium/input/HH/upper-secondary/source-extraction/DE_HH_GESCHICHTE_SEKII_BILDUNGSPLAN_2022.source-extraction.json`
+
+Mapping review:
+
+- `curricula/DE/Gymnasium/mapping/DE-HH/upper-secondary/hh_history_upper_secondary_source_extraction_to_canonical_history.review.json`
+<!-- DE-HH-GESCHICHTE-SEKII-SOURCE-EXTRACTION:end -->

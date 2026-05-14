@@ -73,3 +73,29 @@ Scope:
 Archived locally at:
 
 - `curricula/DE/Gymnasium/input/NW/lower-secondary/g9_wipo_klp_3429_2019_06_23.pdf`
+
+<!-- DE-NW-GESCHICHTE-SEKI-SOURCE-EXTRACTION:start -->
+## Geschichte source PDF (download link)
+
+- `Kernlehrplan Geschichte Sekundarstufe I Gymnasium Nordrhein-Westfalen (2019)`:
+  https://lehrplannavigator.nrw.de/system/files/media/document/file/g9_ge_klp_3407_2019_06_23.pdf
+
+Scope:
+
+- Nordrhein-Westfalen
+- Gymnasium
+- Geschichte
+- lower-secondary extraction target: NRW Geschichte Erprobungsstufe plus Sek-I-Endstufe (137 Source-Ziele)
+
+Archived locally at:
+
+- `curricula/DE/Gymnasium/input/NW/lower-secondary/g9_ge_klp_3407_2019_06_23.pdf`
+
+Source extraction:
+
+- `curricula/DE/Gymnasium/input/NW/lower-secondary/source-extraction/DE_NW_GESCHICHTE_SEKI_KLP_2019.source-extraction.json`
+
+Mapping review:
+
+- `curricula/DE/Gymnasium/mapping/DE-NW/lower-secondary/nw_history_lower_secondary_source_extraction_to_canonical_history.review.json`
+<!-- DE-NW-GESCHICHTE-SEKI-SOURCE-EXTRACTION:end -->

@@ -140,3 +140,29 @@ Archived locally at:
 Generated source extraction:
 
 - `curricula/DE/Gymnasium/input/SH/lower-secondary/source-extraction/DE_SH_DEUTSCH_SEKI_FACHANFORDERUNGEN_2024.source-extraction.json`
+
+<!-- DE-SH-GESCHICHTE-SEKI-SOURCE-EXTRACTION:start -->
+## Geschichte source PDF (download link)
+
+- `Fachanforderungen Geschichte Sekundarstufe I / Sekundarstufe II Schleswig-Holstein (2016)`:
+  https://fachportal.lernnetz.de/files/Fachanforderungen%20und%20Leitf%C3%A4den/Sek.%20I_II/Fachanforderungen_barrierefrei/Fachanforderungen_Geschichte_SEK_barrierearm.pdf
+
+Scope:
+
+- Schleswig-Holstein
+- Gymnasium
+- Geschichte
+- lower-secondary extraction target: SH Geschichte Kompetenzstandards plus acht verbindliche Halbjahresthemen (87 Source-Ziele)
+
+Archived locally at:
+
+- `curricula/DE/Gymnasium/input/SH/Fachanforderungen_Geschichte_SEK_barrierearm.pdf`
+
+Source extraction:
+
+- `curricula/DE/Gymnasium/input/SH/lower-secondary/source-extraction/DE_SH_GESCHICHTE_SEKI_FACHANFORDERUNGEN_2016.source-extraction.json`
+
+Mapping review:
+
+- `curricula/DE/Gymnasium/mapping/DE-SH/lower-secondary/sh_history_lower_secondary_source_extraction_to_canonical_history.review.json`
+<!-- DE-SH-GESCHICHTE-SEKI-SOURCE-EXTRACTION:end -->

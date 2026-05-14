@@ -85,3 +85,21 @@
   - MAPPING-2 abgeschlossen: 333 Source-Ziele aus den tabellarischen Kompetenz-Bullets erzeugt
   - MAPPING-3 abgeschlossen: 333/333 Source-Ziele fachlich auf kanonische Chemie-Ziele gemappt; 82 passgenau, 251 ueber 1:n-Zuordnungen, 0 offene Canonical-Gaps
   - die hohe Source-Zielzahl ist gegen das PDF plausibilisiert: NI formuliert die verbindlichen Ziele als Einzelkompetenzen ueber Sach-, Erkenntnis-, Kommunikations- und Bewertungskompetenz; Anhaenge und Unterrichtsgang-Beispiele wurden ausgeschlossen
+
+<!-- DE-NI-GESCHICHTE-SOURCE-EXTRACTION:start -->
+## Geschichte
+
+### Sekundarstufe I (Gymnasium, Schuljahrgänge 5-10)
+- **Kerncurriculum Geschichte Gymnasium Schuljahrgänge 5-10 (2015)**
+- Offizielle Quelle: https://cuvo.nibis.de/index.php?docid=1773&p=detail_view
+- Archived source PDF: `lower-secondary/ge_gym_si_kc_druck.pdf`
+- Source extraction: `lower-secondary/source-extraction/DE_NI_GESCHICHTE_SEKI_KC2015.source-extraction.json`
+- M3 status: `complete` (59 Source-Ziele)
+
+### Sekundarstufe II (Gymnasiale Oberstufe)
+- **Kerncurriculum Geschichte Sek II (2017)**
+- Offizielle Quelle: https://cuvo.nibis.de/index.php?docid=1069&p=detail_view
+- Archived source PDF: `upper-secondary/KC-II-neu.pdf`
+- Source extraction: `upper-secondary/source-extraction/DE_NI_GESCHICHTE_SEKII_KC2017.source-extraction.json`
+- M3 status: `complete` (253 Source-Ziele)
+<!-- DE-NI-GESCHICHTE-SOURCE-EXTRACTION:end -->

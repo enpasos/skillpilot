@@ -116,3 +116,29 @@ Archived locally at:
 Generated source extraction:
 
 - `curricula/DE/Gymnasium/input/SH/upper-secondary/source-extraction/DE_SH_DEUTSCH_SEKII_FACHANFORDERUNGEN_2024.source-extraction.json`
+
+<!-- DE-SH-GESCHICHTE-SEKII-SOURCE-EXTRACTION:start -->
+## Geschichte source PDF (download link)
+
+- `Fachanforderungen Geschichte Sekundarstufe I / Sekundarstufe II Schleswig-Holstein (2016)`:
+  https://fachportal.lernnetz.de/files/Fachanforderungen%20und%20Leitf%C3%A4den/Sek.%20I_II/Fachanforderungen_barrierefrei/Fachanforderungen_Geschichte_SEK_barrierearm.pdf
+
+Scope:
+
+- Schleswig-Holstein
+- Gymnasium
+- Geschichte
+- upper-secondary extraction target: SH Geschichte E/Q-Themen mit historischen Inhalten und Problemfragen (110 Source-Ziele)
+
+Archived locally at:
+
+- `curricula/DE/Gymnasium/input/SH/Fachanforderungen_Geschichte_SEK_barrierearm.pdf`
+
+Source extraction:
+
+- `curricula/DE/Gymnasium/input/SH/upper-secondary/source-extraction/DE_SH_GESCHICHTE_SEKII_FACHANFORDERUNGEN_2016.source-extraction.json`
+
+Mapping review:
+
+- `curricula/DE/Gymnasium/mapping/DE-SH/upper-secondary/sh_history_upper_secondary_source_extraction_to_canonical_history.review.json`
+<!-- DE-SH-GESCHICHTE-SEKII-SOURCE-EXTRACTION:end -->

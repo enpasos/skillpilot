@@ -1,6 +1,6 @@
 # Curriculum Quality Status
 
-Generated: 2026-05-14T09:52:12.804Z
+Generated: 2026-05-14T15:53:07.562Z
 Rules version: curriculum-quality-v1
 
 ## Summary
@@ -8,12 +8,12 @@ Rules version: curriculum-quality-v1
 | Metric | Value |
 | --- | ---: |
 | Curricula | 21 |
-| M0 | 14 |
+| M0 | 12 |
 | M1 | 0 |
 | M2 | 0 |
 | M3 | 0 |
 | M4 | 0 |
-| M5 | 7 |
+| M5 | 9 |
 
 ## Curricula
 
@@ -22,10 +22,10 @@ Rules version: curriculum-quality-v1
 | Biologie (Gymnasium, DE) | M5 | 429 | 378 | 17/17 | 16/16 | 1 | 0 | 0 |
 | Chemie (Gymnasium, DE) | M5 | 467 | 399 | 32/32 | 16/16 | 1 | 0 | 0 |
 | Chinesisch (Gymnasium, DE) | M0 | 192 | 181 | 2/2 | 2/16 | 0 | 2 | 0 |
-| Deutsch (Gymnasium, DE) | M0 | 347 | 285 | 25/25 | 13/16 | 0 | 3 | 0 |
+| Deutsch (Gymnasium, DE) | M5 | 349 | 286 | 31/31 | 16/16 | 1 | 0 | 0 |
 | Englisch (Gymnasium, DE) | M0 | 130 | 104 | 2/2 | 2/16 | 0 | 2 | 0 |
 | Französisch (Gymnasium, DE) | M0 | 331 | 275 | 3/3 | 2/16 | 0 | 2 | 0 |
-| Geschichte (Gymnasium, DE) | M0 | 210 | 171 | 2/2 | 2/16 | 0 | 2 | 0 |
+| Geschichte (Gymnasium, DE) | M5 | 212 | 172 | 31/31 | 16/16 | 1 | 0 | 0 |
 | Griechisch (Gymnasium, DE) | M0 | 198 | 185 | 2/2 | 2/16 | 0 | 2 | 0 |
 | Gymnasium (DE) | M0 | 1 | 0 | - | 0/16 | 0 | 2 | 0 |
 | Informatik (Gymnasium, DE) | M5 | 277 | 232 | 29/29 | 16/16 | 1 | 0 | 0 |
@@ -121,13 +121,48 @@ Rules version: curriculum-quality-v1
 | Deutsch (Gymnasium, DE) | Deutsch Sekundarstufe II (Schleswig-Holstein, Fachanforderungen 2024 Source-Extraction) | DE-SH | 1/1 original source(s) | 4/4 | - | 19 | 121 | 5 | 116 | 4% |  |
 | Deutsch (Gymnasium, DE) | DE-SL - Deutsch Oberstufe (Saarland, GOS Source-Extraction) | DE-SL | 3/3 original source(s) | 4/4 | - | 4 | 188 | 12 | 176 | 6% |  |
 | Deutsch (Gymnasium, DE) | DE-SL - Deutsch Sekundarstufe I (Saarland, Gymnasium G9 Source-Extraction) | DE-SL | 5/5 original source(s) | 4/4 | - | 25 | 412 | 37 | 375 | 9% |  |
+| Deutsch (Gymnasium, DE) | DE-SN - Deutsch Oberstufe (Sachsen, Lehrplan Gymnasium Source-Extraction) | DE-SN | 1/1 original source(s) | 4/4 | - | 17 | 84 | 2 | 82 | 2% |  |
+| Deutsch (Gymnasium, DE) | DE-SN - Deutsch Sekundarstufe I (Sachsen, Lehrplan Gymnasium Source-Extraction) | DE-SN | 1/1 original source(s) | 4/4 | - | 26 | 244 | 39 | 205 | 16% |  |
+| Deutsch (Gymnasium, DE) | Deutsch Oberstufe (Sachsen-Anhalt, Fachlehrplan Gymnasium 2022 Source-Extraction) | DE-ST | 1/1 original source(s) | 4/4 | - | 8 | 108 | 0 | 108 | 0% |  |
+| Deutsch (Gymnasium, DE) | Deutsch Sekundarstufe I (Sachsen-Anhalt, Fachlehrplan Gymnasium 2022 Source-Extraction) | DE-ST | 1/1 original source(s) | 4/4 | - | 20 | 239 | 18 | 221 | 8% |  |
+| Deutsch (Gymnasium, DE) | Deutsch Oberstufe (Thueringen, Lehrplan Gymnasium 2019 Source-Extraction) | DE-TH | 1/1 original source(s) | 4/4 | - | 5 | 144 | 13 | 131 | 9% |  |
+| Deutsch (Gymnasium, DE) | Deutsch Sekundarstufe I (Thueringen, Lehrplan Gymnasium 2019 Source-Extraction) | DE-TH | 1/1 original source(s) | 4/4 | - | 15 | 553 | 78 | 475 | 14% |  |
 | Englisch (Gymnasium, DE) | Englisch (Gymnasium) | DE-BY | 1/1 original source(s) | 3/3 | - | 1 | 9 | 1 | 8 | 11% |  |
 | Englisch (Gymnasium, DE) | Englisch Oberstufe (Hessen, KC 2024) | DE-HE | 1/1 original source(s) | 3/3 | - | 21 | 94 | 94 | 0 | 100% |  |
 | Französisch (Gymnasium, DE) | Französisch (Gymnasium) | DE-BY | 1/1 original source(s) | 3/3 | - | 1 | 9 | 7 | 2 | 78% |  |
 | Französisch (Gymnasium, DE) | Französisch Oberstufe (Hessen, KC 2024) | DE-HE | 1/1 original source(s) | 3/3 | - | 8 | 152 | 152 | 0 | 100% |  |
 | Französisch (Gymnasium, DE) | Französisch Sekundarstufe I (Hessen, G9) | DE-HE | 1/1 original source(s) | 3/3 | - | 43 | 108 | 108 | 0 | 100% |  |
+| Geschichte (Gymnasium, DE) | DE-BB - Geschichte Oberstufe (Berlin-Brandenburg, RLP GOST 2025 Source-Extraction) | DE-BB | 1/1 original source(s) | 4/4 | - | 5 | 235 | 0 | 235 | 0% |  |
+| Geschichte (Gymnasium, DE) | DE-BB - Geschichte Sekundarstufe I (Berlin-Brandenburg, RLP 2015 Source-Extraction) | DE-BB | 1/1 original source(s) | 4/4 | - | 7 | 100 | 0 | 100 | 0% |  |
+| Geschichte (Gymnasium, DE) | DE-BE - Geschichte Oberstufe (Berlin-Brandenburg, RLP GOST 2025 Source-Extraction) | DE-BE | 1/1 original source(s) | 4/4 | - | 5 | 235 | 0 | 235 | 0% |  |
+| Geschichte (Gymnasium, DE) | DE-BE - Geschichte Sekundarstufe I (Berlin-Brandenburg, RLP 2015 Source-Extraction) | DE-BE | 1/1 original source(s) | 4/4 | - | 7 | 100 | 0 | 100 | 0% |  |
+| Geschichte (Gymnasium, DE) | Geschichte Kursstufe (Baden-Wuerttemberg, BP2016 Source-Extraction) | DE-BW | 1/1 original source(s) | 3/3 | - | 9 | 72 | 0 | 72 | 0% |  |
+| Geschichte (Gymnasium, DE) | Geschichte Sekundarstufe I (Baden-Wuerttemberg, BP2016 Source-Extraction) | DE-BW | 1/1 original source(s) | 3/3 | - | 21 | 88 | 0 | 88 | 0% |  |
 | Geschichte (Gymnasium, DE) | Geschichte (Gymnasium) | DE-BY | 1/1 original source(s) | 3/3 | - | 36 | 190 | 0 | 190 | 0% |  |
+| Geschichte (Gymnasium, DE) | Geschichte Sekundarstufe I (Bremen, Bildungsplan 2006 Source-Extraction) | DE-HB | 1/1 original source(s) | 4/4 | - | 13 | 104 | 0 | 104 | 0% |  |
 | Geschichte (Gymnasium, DE) | Geschichte Oberstufe (Hessen, KC 2024) | DE-HE | 1/1 original source(s) | 3/3 | - | 13 | 182 | 182 | 0 | 100% |  |
+| Geschichte (Gymnasium, DE) | Geschichte Sekundarstufe I (Hessen, G9 Source-Extraction) | DE-HE | 1/1 original source(s) | 4/4 | - | 20 | 78 | 0 | 78 | 0% |  |
+| Geschichte (Gymnasium, DE) | Geschichte Oberstufe (Hamburg, Bildungsplan 2022 Source-Extraction) | DE-HH | 1/1 original source(s) | 4/4 | - | 29 | 354 | 0 | 354 | 0% |  |
+| Geschichte (Gymnasium, DE) | Geschichte Sekundarstufe I (Hamburg, Bildungsplan Source-Extraction) | DE-HH | 1/1 original source(s) | 4/4 | - | 4 | 134 | 0 | 134 | 0% |  |
+| Geschichte (Gymnasium, DE) | Geschichte Orientierungsstufe 5/6 (Mecklenburg-Vorpommern, Rahmenplan 2025 Source-Extraction) | DE-MV | 1/1 original source(s) | 4/4 | - | 7 | 57 | 0 | 57 | 0% |  |
+| Geschichte (Gymnasium, DE) | Geschichte Sekundarstufe I Gymnasium 7-10 (Mecklenburg-Vorpommern, Rahmenplan 2023 Source-Extraction) | DE-MV | 1/1 original source(s) | 4/4 | - | 4 | 62 | 0 | 62 | 0% |  |
+| Geschichte (Gymnasium, DE) | Geschichte und Politische Bildung Qualifikationsphase (Mecklenburg-Vorpommern, Rahmenplan 2019 Source-Extraction) | DE-MV | 1/1 original source(s) | 4/4 | - | 5 | 97 | 0 | 97 | 0% |  |
+| Geschichte (Gymnasium, DE) | Geschichte Oberstufe (Niedersachsen, KC 2017 Source-Extraction) | DE-NI | 1/1 original source(s) | 4/4 | - | 8 | 253 | 0 | 253 | 0% |  |
+| Geschichte (Gymnasium, DE) | Geschichte Sekundarstufe I (Niedersachsen, KC 2015 Source-Extraction) | DE-NI | 1/1 original source(s) | 4/4 | - | 4 | 59 | 0 | 59 | 0% |  |
+| Geschichte (Gymnasium, DE) | Geschichte Oberstufe (Nordrhein-Westfalen, KLP GOSt 2013 Source-Extraction) | DE-NW | 1/1 original source(s) | 4/4 | - | 14 | 223 | 0 | 223 | 0% |  |
+| Geschichte (Gymnasium, DE) | Geschichte Sekundarstufe I (Nordrhein-Westfalen, KLP 2019 Source-Extraction) | DE-NW | 1/1 original source(s) | 4/4 | - | 13 | 137 | 0 | 137 | 0% |  |
+| Geschichte (Gymnasium, DE) | Geschichte Oberstufe (Rheinland-Pfalz, Lehrplan 2022 Source-Extraction) | DE-RP | 1/1 original source(s) | 4/4 | - | 33 | 132 | 0 | 132 | 0% |  |
+| Geschichte (Gymnasium, DE) | Geschichte Sekundarstufe I (Rheinland-Pfalz, Lehrplan 2021 Source-Extraction) | DE-RP | 1/1 original source(s) | 4/4 | - | 32 | 126 | 0 | 126 | 0% |  |
+| Geschichte (Gymnasium, DE) | Geschichte Sekundarstufe I (Schleswig-Holstein, Fachanforderungen 2016 Source-Extraction) | DE-SH | 1/1 original source(s) | 4/4 | - | 12 | 87 | 0 | 87 | 0% |  |
+| Geschichte (Gymnasium, DE) | Geschichte Sekundarstufe II (Schleswig-Holstein, Fachanforderungen 2016 Source-Extraction) | DE-SH | 1/1 original source(s) | 4/4 | - | 7 | 110 | 0 | 110 | 0% |  |
+| Geschichte (Gymnasium, DE) | Geschichte Oberstufe (Saarland, GOS Source-Extraction) | DE-SL | 3/3 original source(s) | 4/4 | - | 13 | 179 | 0 | 179 | 0% |  |
+| Geschichte (Gymnasium, DE) | Geschichte Sekundarstufe I (Saarland, G9 Source-Extraction) | DE-SL | 4/4 original source(s) | 4/4 | - | 19 | 197 | 0 | 197 | 0% |  |
+| Geschichte (Gymnasium, DE) | Geschichte Oberstufe (Sachsen, Lehrplan Gymnasium Source-Extraction) | DE-SN | 1/1 original source(s) | 4/4 | - | 10 | 116 | 0 | 116 | 0% |  |
+| Geschichte (Gymnasium, DE) | Geschichte Sekundarstufe I (Sachsen, Lehrplan Gymnasium Source-Extraction) | DE-SN | 1/1 original source(s) | 4/4 | - | 29 | 162 | 0 | 162 | 0% |  |
+| Geschichte (Gymnasium, DE) | Geschichte Oberstufe (Sachsen-Anhalt, Fachlehrplan Gymnasium 2022 Source-Extraction) | DE-ST | 1/1 original source(s) | 4/4 | - | 11 | 90 | 0 | 90 | 0% |  |
+| Geschichte (Gymnasium, DE) | Geschichte Sekundarstufe I (Sachsen-Anhalt, Fachlehrplan Gymnasium 2022 Source-Extraction) | DE-ST | 1/1 original source(s) | 4/4 | - | 27 | 234 | 0 | 234 | 0% |  |
+| Geschichte (Gymnasium, DE) | Geschichte Oberstufe (Thueringen, Lehrplan Gymnasium 2025 Source-Extraction) | DE-TH | 2/2 original source(s) | 4/4 | - | 23 | 143 | 0 | 143 | 0% |  |
+| Geschichte (Gymnasium, DE) | Geschichte Sekundarstufe I (Thueringen, Lehrplan Gymnasium 2025 Source-Extraction) | DE-TH | 2/2 original source(s) | 4/4 | - | 30 | 182 | 0 | 182 | 0% |  |
 | Griechisch (Gymnasium, DE) | Griechisch (Gymnasium) | DE-BY | 1/1 original source(s) | 3/3 | - | 35 | 540 | 8 | 532 | 1% |  |
 | Griechisch (Gymnasium, DE) | Griechisch Oberstufe (Hessen, KC 2024) | DE-HE | 1/1 original source(s) | 3/3 | - | 8 | 170 | 170 | 0 | 100% |  |
 | Informatik (Gymnasium, DE) | Informatik Oberstufe (Brandenburg, GOST RLP 2022 Source-Extraction) | DE-BB | 1/1 original source(s) | 4/4 | - | 23 | 139 | 38 | 101 | 27% |  |
@@ -296,10 +331,10 @@ Rules version: curriculum-quality-v1
 | Biologie (Gymnasium, DE) | 16/16 | 357 | 378 | 16 | 999 | 999 | 999 | 0 | 999 | 0 | 0 | 0 | 0 | 0 | 355 (100%) |
 | Chemie (Gymnasium, DE) | 16/16 | 336 | 399 | 16 | 5865 | 5865 | 5865 | 0 | 5865 | 0 | 0 | 0 | 0 | 0 | 334 (100%) |
 | Chinesisch (Gymnasium, DE) | 2/16 | 170 | 181 | 2 | 399 | 399 | 399 | 0 | 399 | 0 | 0 | 0 | 0 | 0 | 170 (100%) |
-| Deutsch (Gymnasium, DE) | 13/16 | 268 | 285 | 13 | 4850 | 4850 | 4850 | 0 | 4850 | 0 | 0 | 0 | 0 | 0 | 268 (100%) |
+| Deutsch (Gymnasium, DE) | 16/16 | 268 | 286 | 16 | 6222 | 6222 | 6222 | 0 | 6222 | 0 | 0 | 0 | 0 | 0 | 268 (100%) |
 | Englisch (Gymnasium, DE) | 2/16 | 89 | 104 | 2 | 103 | 103 | 103 | 0 | 103 | 0 | 0 | 0 | 0 | 0 | 89 (100%) |
 | Französisch (Gymnasium, DE) | 2/16 | 260 | 275 | 2 | 269 | 269 | 269 | 0 | 269 | 0 | 0 | 0 | 0 | 0 | 260 (100%) |
-| Geschichte (Gymnasium, DE) | 2/16 | 156 | 171 | 2 | 372 | 372 | 372 | 0 | 372 | 0 | 0 | 0 | 0 | 0 | 156 (100%) |
+| Geschichte (Gymnasium, DE) | 16/16 | 156 | 172 | 16 | 4518 | 4518 | 4518 | 0 | 4518 | 0 | 0 | 0 | 0 | 0 | 156 (100%) |
 | Griechisch (Gymnasium, DE) | 2/16 | 170 | 185 | 2 | 710 | 710 | 710 | 0 | 710 | 0 | 0 | 0 | 0 | 0 | 170 (100%) |
 | Gymnasium (DE) | 0/16 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0%) |
 | Informatik (Gymnasium, DE) | 16/16 | 209 | 232 | 16 | 3505 | 3505 | 3505 | 0 | 3505 | 0 | 0 | 0 | 0 | 0 | 207 (100%) |

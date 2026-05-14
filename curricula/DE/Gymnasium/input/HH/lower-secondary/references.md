@@ -67,3 +67,29 @@ Archived locally at:
 Generated source extraction:
 
 - `curricula/DE/Gymnasium/input/HH/lower-secondary/source-extraction/DE_HH_INFORMATIK_SEKI_BILDUNGSPLAN.source-extraction.json`
+
+<!-- DE-HH-GESCHICHTE-SEKI-SOURCE-EXTRACTION:start -->
+## Geschichte source PDF
+
+- `Bildungsplan Gymnasium Sekundarstufe I Geschichte Hamburg`:
+  https://www.hamburg.de/resource/blob/123446/e789e93fd921b603d73445348a8d0879/geschichte-gym-seki-data.pdf
+
+Scope:
+
+- Hamburg
+- Gymnasium
+- Geschichte
+- lower-secondary extraction target: HH Geschichte Mindestanforderungen und verbindliche Leitfragen (134 Source-Ziele)
+
+Archived locally at:
+
+- `curricula/DE/Gymnasium/input/HH/lower-secondary/geschichte-gym-seki-data.pdf`
+
+Source extraction:
+
+- `curricula/DE/Gymnasium/input/HH/lower-secondary/source-extraction/DE_HH_GESCHICHTE_SEKI_BILDUNGSPLAN.source-extraction.json`
+
+Mapping review:
+
+- `curricula/DE/Gymnasium/mapping/DE-HH/lower-secondary/hh_history_lower_secondary_source_extraction_to_canonical_history.review.json`
+<!-- DE-HH-GESCHICHTE-SEKI-SOURCE-EXTRACTION:end -->

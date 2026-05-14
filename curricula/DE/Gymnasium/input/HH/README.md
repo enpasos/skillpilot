@@ -69,3 +69,21 @@
 - **Offizielle Quelle**: [Bildungsplan Studienstufe Informatik](https://www.hamburg.de/contentblob/16762768/154d25efc0dc8b08d1bd0e3a6df54392/data/informatik-gyo-2022.pdf)
 - **Aktive Source-Extraction**: `upper-secondary/source-extraction/DE_HH_INFORMATIK_SEKII_BILDUNGSPLAN_2022.source-extraction.json`
 - **Hinweis**: Die Source-Extraction folgt den verbindlichen Themenfeldern Softwareentwicklung und Sicherheit in verteilten Systemen sowie den Wahlmodulen zu Moeglichkeiten und Grenzen von Informatiksystemen.
+
+<!-- DE-HH-GESCHICHTE-SOURCE-EXTRACTION:start -->
+## Geschichte
+
+### Sekundarstufe I (Gymnasium)
+- **Bildungsplan Gymnasium Sekundarstufe I Geschichte**
+- Offizielle Quelle: https://www.hamburg.de/resource/blob/123446/e789e93fd921b603d73445348a8d0879/geschichte-gym-seki-data.pdf
+- Archived source PDF: `lower-secondary/geschichte-gym-seki-data.pdf`
+- Source extraction: `lower-secondary/source-extraction/DE_HH_GESCHICHTE_SEKI_BILDUNGSPLAN.source-extraction.json`
+- M3 status: `complete` (134 Source-Ziele)
+
+### Studienstufe
+- **Bildungsplan Studienstufe Geschichte (2022)**
+- Offizielle Quelle: https://www.hamburg.de/resource/blob/123066/6075aa3887f36e7b3247e79fc267f776/geschichte-gyo-2022-data.pdf
+- Archived source PDF: `upper-secondary/geschichte-gyo-2022-data.pdf`
+- Source extraction: `upper-secondary/source-extraction/DE_HH_GESCHICHTE_SEKII_BILDUNGSPLAN_2022.source-extraction.json`
+- M3 status: `complete` (354 Source-Ziele)
+<!-- DE-HH-GESCHICHTE-SOURCE-EXTRACTION:end -->

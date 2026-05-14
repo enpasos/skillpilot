@@ -70,3 +70,29 @@ Generated source extraction:
 
 - `curricula/DE/Gymnasium/input/MV/lower-secondary/source-extraction/DE_MV_DEUTSCH_SEKI_RAHMENPLAN_2025.source-extraction.json`
 <!-- DE-MV-DEUTSCH-SEKI-SOURCE-EXTRACTION:end -->
+
+<!-- DE-MV-GESCHICHTE-SEKI-SOURCE-EXTRACTION:start -->
+## Geschichte source PDFs
+
+Scope:
+
+- Mecklenburg-Vorpommern
+- Gymnasium
+- Geschichte
+- lower-secondary extraction target: MV Geschichte Orientierungsstufe 5/6 und Gymnasium 7-10 aus den amtlichen Rahmenplaenen
+
+Archived sources, source extractions and M3 reviews:
+
+- `Rahmenplan Geschichte Orientierungsstufe 5/6 Mecklenburg-Vorpommern (2025)`:
+  - official URL: https://www.bildung-mv.de/export/sites/bildungsserver/.galleries/dokumente/unterricht/rahmenplaene/RP_Ges_5-6_OS_2025.pdf
+  - local PDF: `curricula/DE/Gymnasium/input/MV/lower-secondary/RP_Ges_5-6_OS_2025.pdf`
+  - source extraction: `curricula/DE/Gymnasium/input/MV/lower-secondary/source-extraction/DE_MV_GESCHICHTE_OS_RAHMENPLAN_2025.source-extraction.json`
+  - mapping review: `curricula/DE/Gymnasium/mapping/DE-MV/lower-secondary/mv_history_orientation_stage_source_extraction_to_canonical_history.review.json`
+  - source goals: 57
+- `Rahmenplan Geschichte Gymnasium 7-10 Mecklenburg-Vorpommern (2023)`:
+  - official URL: https://www.bildung-mv.de/export/sites/bildungsserver/.galleries/dokumente/unterricht/rahmenplaene/rp_geschichte_sek_I_gym.pdf
+  - local PDF: `curricula/DE/Gymnasium/input/MV/lower-secondary/rp_geschichte_sek_I_gym.pdf`
+  - source extraction: `curricula/DE/Gymnasium/input/MV/lower-secondary/source-extraction/DE_MV_GESCHICHTE_SEKI_GYM_RAHMENPLAN_2023.source-extraction.json`
+  - mapping review: `curricula/DE/Gymnasium/mapping/DE-MV/lower-secondary/mv_history_lower_secondary_gym_source_extraction_to_canonical_history.review.json`
+  - source goals: 62
+<!-- DE-MV-GESCHICHTE-SEKI-SOURCE-EXTRACTION:end -->

@@ -51,3 +51,29 @@ Generated source extraction:
 
 - `curricula/DE/Gymnasium/input/RP/upper-secondary/source-extraction/DE_RP_DEUTSCH_SEKII_MSS_2014.source-extraction.json`
 <!-- DE-RP-DEUTSCH-SEKII-SOURCE-EXTRACTION:end -->
+
+<!-- DE-RP-GESCHICHTE-SEKII-SOURCE-EXTRACTION:start -->
+## Geschichte source PDF (download link)
+
+- `Lehrplan fuer die gesellschaftswissenschaftlichen Faecher Sekundarstufe II Rheinland-Pfalz, Fachlehrplan Geschichte`:
+  https://bildung.rlp.de/fileadmin/user_upload/studienseminar.rlp.de/gy-ko/Koblenz/Ausbildung/Geschichte/Links/Lehrplan_fuer_die_gesellschaftswissenschaftlichen_Faecher_Erdkunde_Geschichte_Sozialkunde_in_der_Sek._II__1_.pdf
+
+Scope:
+
+- Rheinland-Pfalz
+- Gymnasium
+- Geschichte
+- upper-secondary extraction target: RP Geschichte Pflicht- und Wahlmodule 1.1 bis 5.4 (132 Source-Ziele)
+
+Archived locally at:
+
+- `curricula/DE/Gymnasium/input/RP/Gesellschaftswissenschaftliche_Faecher_SekII_2022.pdf`
+
+Source extraction:
+
+- `curricula/DE/Gymnasium/input/RP/upper-secondary/source-extraction/DE_RP_GESCHICHTE_SEKII_LEHRPLAN_2022.source-extraction.json`
+
+Mapping review:
+
+- `curricula/DE/Gymnasium/mapping/DE-RP/upper-secondary/rp_history_upper_secondary_source_extraction_to_canonical_history.review.json`
+<!-- DE-RP-GESCHICHTE-SEKII-SOURCE-EXTRACTION:end -->

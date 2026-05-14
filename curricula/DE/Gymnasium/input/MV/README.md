@@ -110,3 +110,29 @@ Generated source extractions:
 - `lower-secondary/source-extraction/DE_MV_DEUTSCH_SEKI_RAHMENPLAN_2025.source-extraction.json`
 - `upper-secondary/source-extraction/DE_MV_DEUTSCH_SEKII_RAHMENPLAN_2019.source-extraction.json`
 <!-- DE-MV-DEUTSCH-SOURCE-EXTRACTION:end -->
+
+<!-- DE-MV-GESCHICHTE-SOURCE-EXTRACTION:start -->
+## Geschichte
+
+Official Bildungsserver MV source page:
+
+- https://www.bildung-mv.de/unterricht/rahmenplaene/rahmenplaene-fuer-die-allgemein-bildenden-faecher/geschichte/
+
+Archived official PDFs and generated source extractions:
+
+- **Rahmenplan Geschichte Orientierungsstufe 5/6 Mecklenburg-Vorpommern (2025)**
+  - offizielle Quelle: https://www.bildung-mv.de/export/sites/bildungsserver/.galleries/dokumente/unterricht/rahmenplaene/RP_Ges_5-6_OS_2025.pdf
+  - lokale Datei: `lower-secondary/RP_Ges_5-6_OS_2025.pdf`
+  - Source extraction: `curricula/DE/Gymnasium/input/MV/lower-secondary/source-extraction/DE_MV_GESCHICHTE_OS_RAHMENPLAN_2025.source-extraction.json`
+  - M3 status: `complete` (57 Source-Ziele)
+- **Rahmenplan Geschichte Gymnasium 7-10 Mecklenburg-Vorpommern (2023)**
+  - offizielle Quelle: https://www.bildung-mv.de/export/sites/bildungsserver/.galleries/dokumente/unterricht/rahmenplaene/rp_geschichte_sek_I_gym.pdf
+  - lokale Datei: `lower-secondary/rp_geschichte_sek_I_gym.pdf`
+  - Source extraction: `curricula/DE/Gymnasium/input/MV/lower-secondary/source-extraction/DE_MV_GESCHICHTE_SEKI_GYM_RAHMENPLAN_2023.source-extraction.json`
+  - M3 status: `complete` (62 Source-Ziele)
+- **Rahmenplan Geschichte und Politische Bildung Sekundarstufe II Mecklenburg-Vorpommern (2019)**
+  - offizielle Quelle: https://www.bildung-mv.de/export/sites/bildungsserver/.galleries/dokumente/unterricht/rahmenplaene/RP_GEPO_SEK2.pdf
+  - lokale Datei: `upper-secondary/RP_GEPO_SEK2.pdf`
+  - Source extraction: `curricula/DE/Gymnasium/input/MV/upper-secondary/source-extraction/DE_MV_GESCHICHTE_SEKII_GEPO_RAHMENPLAN_2019.source-extraction.json`
+  - M3 status: `complete` (97 Source-Ziele)
+<!-- DE-MV-GESCHICHTE-SOURCE-EXTRACTION:end -->

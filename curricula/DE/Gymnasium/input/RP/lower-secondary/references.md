@@ -51,3 +51,29 @@ Generated source extraction:
 
 - `curricula/DE/Gymnasium/input/RP/lower-secondary/source-extraction/DE_RP_DEUTSCH_SEKI_LEHRPLAN_2022.source-extraction.json`
 <!-- DE-RP-DEUTSCH-SEKI-SOURCE-EXTRACTION:end -->
+
+<!-- DE-RP-GESCHICHTE-SEKI-SOURCE-EXTRACTION:start -->
+## Geschichte source PDF (download link)
+
+- `Lehrplan gesellschaftswissenschaftliche Faecher Sekundarstufe I Rheinland-Pfalz, Fachlehrplan Geschichte`:
+  https://bildung.rlp.de/fileadmin/user_upload/demokratie.bildung.rlp.de/Downloads/Ek_G_Sk_Sek_I__LP_2021_.pdf
+
+Scope:
+
+- Rheinland-Pfalz
+- Gymnasium
+- Geschichte
+- lower-secondary extraction target: RP Geschichte Lernfelder I.1 bis II.2.5 (126 Source-Ziele)
+
+Archived locally at:
+
+- `curricula/DE/Gymnasium/input/RP/Ek_G_Sk_Sek_I_LP_2021.pdf`
+
+Source extraction:
+
+- `curricula/DE/Gymnasium/input/RP/lower-secondary/source-extraction/DE_RP_GESCHICHTE_SEKI_LEHRPLAN_2021.source-extraction.json`
+
+Mapping review:
+
+- `curricula/DE/Gymnasium/mapping/DE-RP/lower-secondary/rp_history_lower_secondary_source_extraction_to_canonical_history.review.json`
+<!-- DE-RP-GESCHICHTE-SEKI-SOURCE-EXTRACTION:end -->

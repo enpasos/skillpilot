@@ -74,3 +74,50 @@ Operational note:
 - Thueringen Chemistry composition views:
   - `active`
 - The next meaningful step is a horizontal Chemistry quality pass now that all 16 Bundesland source lanes are source-backed.
+
+<!-- DE-TH-GESCHICHTE-SOURCE-EXTRACTION:start -->
+## Geschichte
+
+Archived official source input on `2026-05-14`:
+
+- `LP_GY_Geschichte_Entwurfsfassung2025.pdf`
+  - Lehrplan Geschichte Gymnasium Thueringen, Entwurfsfassung 2025
+  - direct PDF source: `https://www.schulportal-thueringen.de/tip/resources/medien/65649?dateiname=LP_GY_Geschichte_Entwurfsfassung2025.pdf`
+- `LP_GY_Geschichte_2021.pdf`
+  - Lehrplan Geschichte Gymnasium Thueringen 2021
+  - direct PDF source: `https://www.schulportal-thueringen.de/tip/resources/medien/15749?dateiname=LP_GY_Ge_Fassung_20210913.pdf`
+  - official Lehrplan overview: `https://www.schulportal-thueringen.de/lehrplaene/gymnasium`
+
+Operational note:
+
+- `DE-TH` now has real archived lower-secondary plus upper-secondary Geschichte source extractions from the official Schulportal PDFs.
+- The 2025 Entwurfsfassung is extracted as the target rollout source; 2021 is retained as official validity/bridge context.
+- The retained source extractions now live at:
+  - `curricula/DE/Gymnasium/input/TH/lower-secondary/source-extraction/DE_TH_GESCHICHTE_SEKI_LEHRPLAN_GYMNASIUM_2025.source-extraction.json`
+  - `curricula/DE/Gymnasium/input/TH/upper-secondary/source-extraction/DE_TH_GESCHICHTE_SEKII_LEHRPLAN_GYMNASIUM_2025.source-extraction.json`
+- Thueringen Geschichte M3 status:
+  - SekI: `complete` (182 Source-Ziele)
+  - SekII: `complete` (143 Source-Ziele)
+<!-- DE-TH-GESCHICHTE-SOURCE-EXTRACTION:end -->
+
+<!-- DE-TH-DEUTSCH-SOURCE-EXTRACTION:start -->
+## Deutsch
+
+Archived official source input on `2026-05-14`:
+
+- `LP_GY_Deutsch_2019.pdf`
+  - Lehrplan Deutsch Gymnasium Thueringen 2019
+  - direct PDF source: `https://www.schulportal-thueringen.de/tip/resources/medien/43341?dateiname=lp_gy_deutsch_neue%20Fassung_08.02.2019_TSP.pdf`
+  - official Lehrplan page: `https://www.schulportal-thueringen.de/media/detail?tspi=9426`
+
+Operational note:
+
+- `DE-TH` now has real archived lower-secondary plus upper-secondary Deutsch source extractions from the official Gymnasium PDF.
+- Only source-backed competency expectations are counted as source goals; transition-only or knowledge-list sections are not double counted as separate Pflichtziele.
+- The retained source extractions now live at:
+  - `curricula/DE/Gymnasium/input/TH/lower-secondary/source-extraction/DE_TH_DEUTSCH_SEKI_LEHRPLAN_GYMNASIUM_2019.source-extraction.json`
+  - `curricula/DE/Gymnasium/input/TH/upper-secondary/source-extraction/DE_TH_DEUTSCH_SEKII_LEHRPLAN_GYMNASIUM_2019.source-extraction.json`
+- DE-TH Deutsch M3 status:
+  - SekI: `complete` (553 Source-Ziele)
+  - SekII: `complete` (144 Source-Ziele)
+<!-- DE-TH-DEUTSCH-SOURCE-EXTRACTION:end -->

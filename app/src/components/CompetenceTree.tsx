@@ -244,7 +244,7 @@ const TreeNode: React.FC<TreeNodeProps> = ({
   // still mark their visible descendants through plannedScopeGoalIds.
   const selfInSubtree = isInPlannedSubtree || isPlanned || isInPlannedScope
   const targetIconClassName =
-    hasActivePlan && isPlanned ? 'text-red-500 dark:text-red-400' : undefined
+    hasActivePlan && selfInSubtree ? 'text-red-500 dark:text-red-400' : undefined
 
   // Active Plan Strategy:
   const plannedCount = aggregatedPlannedGoals?.get(goal.id) ?? plannedScopeDescendantCounts.get(goal.id) ?? 0

@@ -51,3 +51,25 @@ Generated source extraction:
 
 - `curricula/DE/Gymnasium/input/SL/lower-secondary/source-extraction/DE_SL_DEUTSCH_SEKI_GYM9_2023_2025.source-extraction.json`
 <!-- DE-SL-DEUTSCH-SEKI-SOURCE-EXTRACTION:end -->
+
+<!-- DE-SL-GESCHICHTE-SEKI-SOURCE-EXTRACTION:start -->
+## Geschichte source PDFs
+
+Scope:
+
+- Saarland
+- Gymnasium
+- Geschichte
+- lower-secondary extraction target: SL Geschichte G9 Klassenstufen 6, 7, 9 und 10 aus amtlichen Lehrplaenen
+
+Archived sources, source extractions and M3 reviews:
+
+- `Geschichte Sekundarstufe I (Saarland, G9 Source-Extraction)`:
+  - local PDF: `curricula/DE/Gymnasium/input/SL/lower-secondary/LP_Ge_gym9_6_2023.pdf` (https://www.saarland.de/SharedDocs/Downloads/DE/mbk/Lehrpl%C3%A4ne/Lehrplaene_Gymnasium_neunjaehriges_23/Geschichte/LP_Ge_gym9_6_2023.pdf?__blob=publicationFile&v=4)
+  - local PDF: `curricula/DE/Gymnasium/input/SL/lower-secondary/LP_Ge_gym9_7_2023.pdf` (https://www.saarland.de/SharedDocs/Downloads/DE/mbk/Lehrpl%C3%A4ne/Lehrplaene_Gymnasium_neunjaehriges_23/Geschichte/LP_Ge_gym9_7_2023.pdf?__blob=publicationFile&v=4)
+  - local PDF: `curricula/DE/Gymnasium/input/SL/lower-secondary/LP_Ge_gym9_9_2024.pdf` (https://www.saarland.de/SharedDocs/Downloads/DE/mbk/Lehrpl%C3%A4ne/Lehrplaene_Gymnasium_neunjaehriges_23/Geschichte/LP_Ge_gym9_9_2024.pdf?__blob=publicationFile&v=1)
+  - local PDF: `curricula/DE/Gymnasium/input/SL/lower-secondary/LP_Ge_gym9_10_2024.pdf` (https://www.saarland.de/SharedDocs/Downloads/DE/mbk/Lehrpl%C3%A4ne/Lehrplaene_Gymnasium_neunjaehriges_23/Geschichte/LP_Ge_gym9_10_2024.pdf?__blob=publicationFile&v=1)
+  - source extraction: `curricula/DE/Gymnasium/input/SL/lower-secondary/source-extraction/DE_SL_GESCHICHTE_SEKI_GYM9_2023_2024.source-extraction.json`
+  - mapping review: `curricula/DE/Gymnasium/mapping/DE-SL/lower-secondary/sl_history_lower_secondary_gym9_source_extraction_to_canonical_history.review.json`
+  - source goals: 197
+<!-- DE-SL-GESCHICHTE-SEKI-SOURCE-EXTRACTION:end -->
