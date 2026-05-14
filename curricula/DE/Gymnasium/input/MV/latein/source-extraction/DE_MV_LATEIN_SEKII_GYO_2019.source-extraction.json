@@ -1,0 +1,2783 @@
+{
+  "schemaVersion": 1,
+  "extractionId": "DE_MV_LATEIN_SEKII_GYO_2019",
+  "sourceLandscapeId": "9a9099a4-e696-5c38-b035-df297d4705d7",
+  "targetLandscapeId": "668cf206-941e-51f8-8704-3e8938631235",
+  "title": "Latein Oberstufe (Mecklenburg-Vorpommern, Rahmenplan 2019 Source-Extraction)",
+  "jurisdiction": "DE-MV",
+  "subject": "Latein",
+  "stage": "SekII",
+  "sourceDocument": {
+    "key": "MV-LATEIN-SEKII-GYO-2019",
+    "title": "Mecklenburg-Vorpommern Rahmenplan Latein Gymnasiale Oberstufe, 2019",
+    "path": "curricula/DE/Gymnasium/input/MV/latein/RP_LAT_SEK2.pdf",
+    "url": "https://www.bildung-mv.de/export/sites/bildungsserver/.galleries/dokumente/unterricht/rahmenplaene/RP_LAT_SEK2.pdf"
+  },
+  "method": {
+    "extractor": "generateMvLatinSourceExtraction.ts",
+    "description": "Extrahiert Standards, verbindliche Inhalte und prozessbezogene Kompetenzbeispiele aus dem amtlichen MV-Rahmenplan Latein Gymnasiale Oberstufe 2019."
+  },
+  "qualityReview": {
+    "sourceGoalCountPeerBaseline": {
+      "status": "accepted",
+      "accepted": true,
+      "rationale": "Der MV-Sek-II-Rahmenplan 2019 ist das aktuelle Oberstufen-Referenzdokument fuer Latein. Die Zielzahl wird aus expliziten Kompetenz-, Inhalts- und Kenntnisaussagen der amtlichen PDF-Passagen abgeleitet."
+    }
+  },
+  "pipelineStatus": {
+    "currentStep": "",
+    "steps": [
+      {
+        "id": "ORIGINALQUELLEN",
+        "label": "Originalquellen bereitgestellt",
+        "status": "complete",
+        "dependsOn": [],
+        "checks": [
+          {
+            "id": "source-document-present",
+            "label": "Amtliches MV-Latein-Rahmenplan-PDF liegt lokal vor",
+            "passed": true,
+            "details": "curricula/DE/Gymnasium/input/MV/latein/RP_LAT_SEK2.pdf"
+          }
+        ]
+      },
+      {
+        "id": "MAPPING-1",
+        "label": "Original-Lehrplanpassagen extrahiert",
+        "status": "complete",
+        "dependsOn": [
+          "ORIGINALQUELLEN"
+        ],
+        "checks": [
+          {
+            "id": "passage-groups-extracted",
+            "label": "Kompetenz-, Inhalts- und Kenntnispassagen extrahiert",
+            "passed": true,
+            "details": "9 Passagegruppen"
+          }
+        ]
+      },
+      {
+        "id": "MAPPING-2",
+        "label": "Source-Ziele aus Lehrplanpassagen erstellt",
+        "status": "complete",
+        "dependsOn": [
+          "MAPPING-1"
+        ],
+        "checks": [
+          {
+            "id": "source-goals-created",
+            "label": "Source-Ziele aus amtlichen MV-Latein-Kompetenz- und Inhaltsaussagen erzeugt",
+            "passed": true,
+            "details": "93 Source-Ziele"
+          }
+        ]
+      },
+      {
+        "id": "MAPPING-3",
+        "label": "Source-Ziele auf SkillPilot-Ziele gemappt",
+        "status": "complete",
+        "dependsOn": [
+          "MAPPING-2"
+        ],
+        "checks": [
+          {
+            "id": "all-source-goals-covered",
+            "label": "Alle Source-Ziele sind inhaltlich durch SkillPilot-Ziele abgedeckt",
+            "passed": true,
+            "details": "0 explizite Canonical-Gaps"
+          }
+        ]
+      }
+    ]
+  },
+  "passages": [
+    {
+      "id": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-abschlussbezogene-standards",
+      "sourceDocumentKey": "MV-LATEIN-SEKII-GYO-2019",
+      "topicCode": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-abschlussbezogene-standards",
+      "title": "Qualifikationsphase · Abschlussbezogene Standards",
+      "rawText": "- Kompetenzbereich Sprache: Dazu gehören die Nutzung von Kenntnissen in Wortschatz Formenlehre und Syntax, die Anwendung der Wortbildungslehre sowie die Entschlüsselung 4 von Fremdwörtern und Fachtermini und deren richtiger Gebrauch.\n- Kompetenzbereich Text: Diese Kompetenzen betreffen die Übersetzung und Interpretation eines Textes. Weiter gehören dazu Kompetenzen in der Erschließung eines Textes, seiner syntaktischen und semantischen Erfassung sowie der Vergleich verschiedener Übersetzun-gen, die Übersetzungskritik.\n- Kompetenzbereich Kultur: Die Kompetenzen zielen auf die Einordnung von Texten in einen kulturellen Kontext ihrer Entstehung in der Antike ab. Die Kenntnisse und Fähigkeiten wer-den so angewendet und erweitert, auch durch den Umgang mit weiteren Texten sowie den Bezug auf Mittelalter und Neuzeit. Ebenfalls zielt dieser Bereich auf die Reflexionsfähigkeit über die Grundfragen menschlicher Existenz in der Auseinandersetzung mit Texten sowohl innerhalb ihrer historisch-kulturellen Bedingtheit als auch darüber hinaus ab. Weiter erwerben die für die Arbeit mit diesen Gegenständen spezifische Verfahren und Methoden:\n- Kompetenzbereich fachspezifische Methoden: Dazu zählen fachliche Arbeitsverfahren und Lernstrategien, die Nutzung fachspezifischer Hilfsmittel, vielfältige Erschließungsverfahren für die Unterrichtsgegenstände sowie die gezielte Beschaffung und Darstellung fachlicher In-formationen auch im digitalen Bereich. Zu den Methoden gehören die Fähigkeiten zur stata-rischen und kursorischen Lektüre mit der Nutzung zweisprachiger und deutscher Texte. Die im Lateinunterricht geübte intensive und verschränkte Sprach-und Textarbeit fördert nachhaltig sowohl die Sprach-als auch die Textkompetenz: Sie vermittelt den n eine Einsicht in das Funktionieren von Sprache an sich und leitet sie durch den ständigen Vergleich mit dem Deutschen oder anderen Sprachen zu einem bewussten Umgang mit Sprache an. Damit trägt der Unterricht stark zur vertieften Sprachbildung bei. Die Heranwachsenden entwickeln auf diese Weise zugleich mannigfache überfachliche Kompetenzen. Latein ist eine Basissprache Europas und begründet in einzigartiger Weise die Erweiterung kulturellen Wissens und eine kulturelle Kompetenz. Die griechisch-römische Antike stellt einen Ursprung und eine gemeinsame Wurzel des zunehmend zusammenwachsenden modernen Europas dar und hat dessen Wertvorstellungen neben anderen Einflüssen von der Antike bis heute maßgeblich geprägt. Das Lateinische eröffnet einen eigenen Zugang zur Vergangenheit der griechisch-römischen Antike und zu den darauf folgenden Epochen. Die Auseinandersetzung mit der lateinischen Sprache anhand von Originaltexten in ihrem jeweiligen kulturellen Kontext bietet eine wichtige Ergänzung zum mut-tersprachlichen Unterricht und zu den modernen Fremdsprachen. Einen spezifischen Beitrag zur kul-turellen Kommunikation leistet der Lateinunterricht durch soziokulturelles Orientierungswissen und Sensibilisierung für vergangene fremde Wahrnehmungen und Perspektiven besonders aus der Anti-ke. behandeln bedeutende Themen, Denkweisen und Theorien aus der antiken Literatur, Kunst, Geschichte, Philosophie und Mythologie sowie ihre Rezeption bis in die Ge-genwart. Dies fördert die Bereitschaft und Fähigkeit zum Perspektivwechsel und die kritische Wahr-nehmung der eigenen, kulturell geprägten Identität und gegebenenfalls die Relativierung des eige-nen Standpunktes. Das Lateinische trägt so zentral dazu bei, einerseits ein Bewusstsein europäischer Identität, andererseits einen vorurteilsfreien Umgang mit fremden Kulturkreisen zu schaffen. Viele Fragen und Themen der römischen Antike sind von zeitloser Gültigkeit und betreffen die eigene Erfahrungs-und Lebenswelt der Jugendlichen. Somit kommt dem Lateinunterricht in der heutigen Zeit auch eine aktuelle Bedeutung zu. Das Unterrichtsfach Latein leistet einen wichtigen Beitrag zum wissenschaftspropädeutischen Lernen und Arbeiten innerhalb der Qualifikationsstufe, indem die grundlegende",
+      "sourceGoalIds": [
+        "de-mv-latein-sekii-gyo-2019-001-d5f7abde",
+        "de-mv-latein-sekii-gyo-2019-002-99d06bee",
+        "de-mv-latein-sekii-gyo-2019-003-ed7c8c7e",
+        "de-mv-latein-sekii-gyo-2019-004-1cd97f61"
+      ]
+    },
+    {
+      "id": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-romische-gesellschaft-kultur-und-lebensweise",
+      "sourceDocumentKey": "MV-LATEIN-SEKII-GYO-2019",
+      "topicCode": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-romische-gesellschaft-kultur-und-lebensweise",
+      "title": "Qualifikationsphase · Römische Gesellschaft, Kultur und Lebensweise",
+      "rawText": "- Nutzen wissenschaftlicher Hilfsmittel, z. B. Wörterbücher, Lexika, Fachliteratur, Kommentare\n- Finden, Vergleichen, Auswählen, Ordnen und Mitteilen von Informationen sowie sinnvolles und korrektes Zitieren\n- sachlogisch und terminologisch sachgerechtes Darstellen erarbeiteter Ergebnisse\n- Anwenden verschiedener Techniken der schriftlichen, mündlichen und visuellen Präsentation komplexer Gegenstände\n- vertiefte Sprachbeherrschung im Deutschen durch das komparativ-kontrastive Prinzip\n- Einbeziehen fachübergreifender Aspekte Der Leistungskurs unterscheidet sich vom Grundkurs hauptsächlich durch das Anspruchsniveau. Dif-ferenzierungskriterien können sein:\n- Menge der zu verarbeitenden Informationen, z. B. Länge und Vielfalt der Original-und Be-gleittexte\n- Umfang und Art der bereitgestellten Hilfen insbesondere sprachlicher und sachlicher Art\n- Komplexität der Arbeitsverfahren\n- Offenheit der Aufgabenstellung, z. B. vorstrukturierte bzw. komplexe Aufgabenstellung\n- Anforderung an die Selbstständigkeit bei der Bearbeitung der Aufgaben\n- Höhe des Schwierigkeitsgrades, des Abstraktions-und des Reflexionsniveaus, z. B. von Texten und Interpretationsaufgaben\n- Höhe des Anspruchs an die Übersetzungsfähigkeit\n- Grad der Systematisierung von sprachlichen und inhaltlichen Phänomenen\n- Aspektreichtum der Texte und der sich daraus ergebenden Fragestellungen\n- Maß der Einbringung von Theorien und Modellen Im Leistungskurs müssen die Anforderungsbereiche II und III häufiger und in höherem Maße einge-fordert werden als im Grundkurs.",
+      "sourceGoalIds": [
+        "de-mv-latein-sekii-gyo-2019-005-831a1f72",
+        "de-mv-latein-sekii-gyo-2019-006-d394923e",
+        "de-mv-latein-sekii-gyo-2019-007-6ccd98b0",
+        "de-mv-latein-sekii-gyo-2019-008-f714cfcb",
+        "de-mv-latein-sekii-gyo-2019-009-d3175e59",
+        "de-mv-latein-sekii-gyo-2019-010-71900adc",
+        "de-mv-latein-sekii-gyo-2019-011-f7e651c2",
+        "de-mv-latein-sekii-gyo-2019-012-2502acec",
+        "de-mv-latein-sekii-gyo-2019-013-c0699a38",
+        "de-mv-latein-sekii-gyo-2019-014-bd3fc469",
+        "de-mv-latein-sekii-gyo-2019-015-14868f0c",
+        "de-mv-latein-sekii-gyo-2019-016-9e47e538",
+        "de-mv-latein-sekii-gyo-2019-017-81a294ea",
+        "de-mv-latein-sekii-gyo-2019-018-1eba3e94",
+        "de-mv-latein-sekii-gyo-2019-019-0f0ed686",
+        "de-mv-latein-sekii-gyo-2019-020-21e64227"
+      ]
+    },
+    {
+      "id": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-sprache",
+      "sourceDocumentKey": "MV-LATEIN-SEKII-GYO-2019",
+      "topicCode": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-sprache",
+      "title": "Qualifikationsphase · Standards · Sprache",
+      "rawText": "- wenden einen erweiterten themen-und autorenbezogenen Wortschatz an\n- beherrschen lektürerelevante Phänomene der Syntax und Morphologie\n- analysieren komplexe Satzstrukturen\n- ermitteln die zutreffende Bedeutung von Wörtern mit größerem Bedeutungsumfang im Kontext\n- erschließen selbstständig aufgrund von Wortbildungsgesetzen unbekannte lateinische Wörter\n- vergleichen das Lateinische mit anderen Sprachen, insbesondere mit Deutsch, Englisch und den romanischen Sprachen\n- erschließen selbstständig aus dem Lateinischen abgeleitete Fremdwörter und unbekannte Vokabeln moderner Fremdsprachen\n- stellen die Ausdrucksmöglichkeiten und Funktionsweisen gegenüber\n- weisen stilistische Eigenheiten lateinischer Autoren nach\n- bilden ansatzweise sprachlich-stilistische Gestaltungsmittel bei einer Übersetzung nach",
+      "sourceGoalIds": [
+        "de-mv-latein-sekii-gyo-2019-021-eac37638",
+        "de-mv-latein-sekii-gyo-2019-022-7bf6fe03",
+        "de-mv-latein-sekii-gyo-2019-023-b09eee16",
+        "de-mv-latein-sekii-gyo-2019-024-2d39d01d",
+        "de-mv-latein-sekii-gyo-2019-025-89c15a87",
+        "de-mv-latein-sekii-gyo-2019-026-44882f54",
+        "de-mv-latein-sekii-gyo-2019-027-4778997a",
+        "de-mv-latein-sekii-gyo-2019-028-b320030a",
+        "de-mv-latein-sekii-gyo-2019-029-de6c2864",
+        "de-mv-latein-sekii-gyo-2019-030-df4d51ba"
+      ]
+    },
+    {
+      "id": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-text",
+      "sourceDocumentKey": "MV-LATEIN-SEKII-GYO-2019",
+      "topicCode": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-text",
+      "title": "Qualifikationsphase · Standards · Text",
+      "rawText": "- übersetzen lateinische Texte unter Berücksichtigung von lektürerelevanten Phänomenen der Textgrammatik und komplexer Satzstrukturen\n- unterscheiden grundlegende antike Literaturgattungen und erläutern Beispiele ihrer Wir-kungsgeschichte\n- ordnen ausgewählte Werke lateinischer Literatur zeitlich ein\n- setzen sich mit Dichtung als Ausdruck menschlicher Empfindungen auseinander\n- verstehen Werke der Dichtung als Darstellungsform politischer Ideen\n- analysieren ausgewählte lektürerelevante Versmaße\n- vergleichen verschiedene Übersetzungen desselben Textes in Bezug auf den Originaltext und nehmen begründet dazu Stellung\n- lesen und betonen lateinische Texte richtig und sinngemäß",
+      "sourceGoalIds": [
+        "de-mv-latein-sekii-gyo-2019-031-a22f2c0b",
+        "de-mv-latein-sekii-gyo-2019-032-1761f702",
+        "de-mv-latein-sekii-gyo-2019-033-b0fa7fe1",
+        "de-mv-latein-sekii-gyo-2019-034-3b10bacd",
+        "de-mv-latein-sekii-gyo-2019-035-82bb8aea",
+        "de-mv-latein-sekii-gyo-2019-036-0b0f9c36",
+        "de-mv-latein-sekii-gyo-2019-037-00a82ae5",
+        "de-mv-latein-sekii-gyo-2019-038-2db681e8"
+      ]
+    },
+    {
+      "id": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-kultur",
+      "sourceDocumentKey": "MV-LATEIN-SEKII-GYO-2019",
+      "topicCode": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-kultur",
+      "title": "Qualifikationsphase · Standards · Kultur",
+      "rawText": "- setzen sich mit ausgewählten philosophischen Strömungen der römischen Antike auseinan-der\n- würdigen bedeutende Persönlichkeiten der griechischen und römischen Antike\n- stellen exemplarisch Bezüge zwischen der griechischen und römischen Kultur her\n- ordnen die Stellung des frühen Christentums in der antiken Kultur ein\n- nutzen Rezeptionsdokumente unterschiedlicher Epochen und Bereiche für die Interpretation\n- bewerten ausgewählte Nachwirkungen der antiken Kultur in der geistesgeschichtlichen und kulturellen Entwicklung Europas\n- beurteilen römische Haltungen gegenüber Fremden\n- geben strukturiert und systematisch Informationen über das römische Alltagsleben, die römi-sche Geschichte, römische Staats-und Gesellschaftsstrukturen, römische Religion, griechi-sche und römische Mythologie, römische Kunst und Architektur wieder\n- stellen strukturiert und systematisch Informationen über die Topographie der antiken Welt",
+      "sourceGoalIds": [
+        "de-mv-latein-sekii-gyo-2019-039-3077db24",
+        "de-mv-latein-sekii-gyo-2019-040-1c91f0e0",
+        "de-mv-latein-sekii-gyo-2019-041-78b43feb",
+        "de-mv-latein-sekii-gyo-2019-042-51554403",
+        "de-mv-latein-sekii-gyo-2019-043-dc6d56e4",
+        "de-mv-latein-sekii-gyo-2019-044-7e6ca298",
+        "de-mv-latein-sekii-gyo-2019-045-d3b4568e",
+        "de-mv-latein-sekii-gyo-2019-046-670acfed",
+        "de-mv-latein-sekii-gyo-2019-047-9cd388ef"
+      ]
+    },
+    {
+      "id": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-fachspezifische-methoden",
+      "sourceDocumentKey": "MV-LATEIN-SEKII-GYO-2019",
+      "topicCode": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-fachspezifische-methoden",
+      "title": "Qualifikationsphase · Standards · Fachspezifische Methoden",
+      "rawText": "- ordnen komplexe Wissensbestände und nutzen individuelle Wege des Ein-prägens und des Erinnerns\n- sammeln, verarbeiten und präsentieren Informationen bei der themenorien-tierten Arbeit\n- benutzen zur Textarbeit u. a. Nachschlagewerke, Wörterbücher, Sekundärli-9 teratur und digitale Medien\n- leiten aus der Beobachtung und Analyse von Sachverhalten Regeln ab, indem sie Gesetzmäßigkeiten der lateinischen Sprache erfassen\n- bearbeiten Aufgaben methodenbewusst, indem sie komplexe lateinische Tex-te schrittweise erschließen und übersetzen\n- zeigen in der Auseinandersetzung mit lateinischen Texten fremde und eigene Bewertungskriterien auf\n- erschließen und übersetzen Texte im Bewusstsein, dass jede Übersetzung ei-ne Interpretation darstellt, und nach hermeneutischen Regeln, indem sie Ein-zelbeobachtungen und Gesamttext, eigenes Vorverständnis und neue Infor-mationen produktiv aufeinander beziehen\n- nutzen zur Textarbeit das statarische und kursorische Lektüreverfahren sowie zweisprachige Textausgaben\n- verstehen Texte aus ihrem historischen Kontext heraus, indem sie zwischen aktuellem Vorverständnis und den vergangenen Voraussetzungen der Text-produktion und -rezeption unterscheiden duktiven Rezeption\n- gehen kreativ mit der Zielsprache um, indem sie lateinische Texte in ange-messener Form im Deutschen wiedergeben\n- verfassen unterschiedliche Texte bzw. erstellen andere Werke, indem sie sich produktiv mit lateinischen Werken auseinandersetzen.\n- präsentieren Ergebnisse ihrer Arbeit adressatengerecht",
+      "sourceGoalIds": [
+        "de-mv-latein-sekii-gyo-2019-048-07867bc6",
+        "de-mv-latein-sekii-gyo-2019-049-be3b1cbc",
+        "de-mv-latein-sekii-gyo-2019-050-b7d18ee8",
+        "de-mv-latein-sekii-gyo-2019-051-c06bdc7c",
+        "de-mv-latein-sekii-gyo-2019-052-e3a65bb9",
+        "de-mv-latein-sekii-gyo-2019-053-5ef97acd",
+        "de-mv-latein-sekii-gyo-2019-054-ee3801e8",
+        "de-mv-latein-sekii-gyo-2019-055-41d45618",
+        "de-mv-latein-sekii-gyo-2019-056-95c76828",
+        "de-mv-latein-sekii-gyo-2019-057-5bf6a3e8",
+        "de-mv-latein-sekii-gyo-2019-058-8575c289",
+        "de-mv-latein-sekii-gyo-2019-059-ef5eb613"
+      ]
+    },
+    {
+      "id": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-unterrichtsinhalte-romische-gesellschaft-kultur-und-lebensweise",
+      "sourceDocumentKey": "MV-LATEIN-SEKII-GYO-2019",
+      "topicCode": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-unterrichtsinhalte-romische-gesellschaft-kultur-und-lebensweise",
+      "title": "Qualifikationsphase · Unterrichtsinhalte · Römische Gesellschaft, Kultur und Lebensweise",
+      "rawText": "- Struktur und Bedeutung der familia im privaten parentes und liberi, Sklaven als weitere Famili-\n- Lebensbedingungen der verschiedenen gesell-historische Meilensteine des Ständekampfes\n- Rechte und Pflichten, Stellung Ehegesetze und Abhängigkeiten, Entwicklung\n- Idealvorstellungen und Lebenswirklichkeiten die Frau zwischen Matronat und Prostitution\n- Familie: Plin. epist. 3,16, 4,11 u. 19, 8,10\n- Öffentlichkeit/Unterhaltung: Sen. epist.\n- Frau in der Öffentlichkeit: Tac. ann. 3,33\n- berühmte weibliche Vorbilder: Lucretia:\n- Ehefrauen, Mütter, Töchter: Paulina: Sen.\n- Kritik an Frauen: Clodia: Cic. Cael. 31 f.\n- Freizügiger Lebenswandel und Prostitution:\n- Rollenverteilung und Kritik: Columella, z. B.\n- mittel-und neulateinische Schriften\n- Gaius Mucius Scaevola: Liv. Ab urbe condita 2,12\n- Cloelia: Liv. Ab urbe condita 2,13,6-11\n- Lucius Quinctius Cincinnatus: Liv. Ab urbe condita 3,26,29,1-7\n- Horatius Cocles: Liv. Ab urbe condita 2,10 Einfluss des römischen Schulwesens auf die Nachwelt, septem artes liberales\n- Auswahl eines richtigen Lehrers: Plin. epist 2,18\n- Schulgründung in Mediolanum: Plin. epist. 4,13\n- Kritik an Schule seiner Zeit: Sen. epist. 106\n- Klagebrief eines Studenten: Dunkelmän-nerbriefe (epistulae obscurorum virorum 2,19) Vorschlag zur inhaltlichen Vertiefung:",
+      "sourceGoalIds": [
+        "de-mv-latein-sekii-gyo-2019-060-75db8e93",
+        "de-mv-latein-sekii-gyo-2019-061-a4f026db",
+        "de-mv-latein-sekii-gyo-2019-062-75c98947",
+        "de-mv-latein-sekii-gyo-2019-063-2bb9b40c",
+        "de-mv-latein-sekii-gyo-2019-064-640a04cb",
+        "de-mv-latein-sekii-gyo-2019-065-a6919f40",
+        "de-mv-latein-sekii-gyo-2019-066-e225ea8b",
+        "de-mv-latein-sekii-gyo-2019-067-ec4aa660",
+        "de-mv-latein-sekii-gyo-2019-068-e6cdf22f",
+        "de-mv-latein-sekii-gyo-2019-069-9e7bac02",
+        "de-mv-latein-sekii-gyo-2019-070-d510ff16",
+        "de-mv-latein-sekii-gyo-2019-071-75cc6e1f",
+        "de-mv-latein-sekii-gyo-2019-072-c8b600e1",
+        "de-mv-latein-sekii-gyo-2019-073-93ac9ce4",
+        "de-mv-latein-sekii-gyo-2019-074-3e86f159",
+        "de-mv-latein-sekii-gyo-2019-075-42291d56",
+        "de-mv-latein-sekii-gyo-2019-076-b563f2a5",
+        "de-mv-latein-sekii-gyo-2019-077-0d788b63",
+        "de-mv-latein-sekii-gyo-2019-078-6b88f516",
+        "de-mv-latein-sekii-gyo-2019-079-4d9c4781",
+        "de-mv-latein-sekii-gyo-2019-080-34187ec9"
+      ]
+    },
+    {
+      "id": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-unterrichtsinhalte-romische-dichtung-und-rezeption",
+      "sourceDocumentKey": "MV-LATEIN-SEKII-GYO-2019",
+      "topicCode": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-unterrichtsinhalte-romische-dichtung-und-rezeption",
+      "title": "Qualifikationsphase · Unterrichtsinhalte · Römische Dichtung und Rezeption",
+      "rawText": "- mythologische Anspielungen Funktion, Verwandlung, vielschichtige Bezie-\n- Biographisches in poetischer Form Darstellung eines Autors in Relation zum histo-\n- Motive: Liebe, Hass, Macht, Rache als emotio-Eines der Motive ist vertieft zu behandeln.\n- elegisches Distichon, Hexameter\n- poetische Stilistik Verdeutlichung des Zusammenspiels von In-\n- Epochen und Gattungen zwischen imitatio und\n- Einfluss der römischen Literatur auf den euro-",
+      "sourceGoalIds": [
+        "de-mv-latein-sekii-gyo-2019-081-87b7d65f",
+        "de-mv-latein-sekii-gyo-2019-082-354faad2",
+        "de-mv-latein-sekii-gyo-2019-083-de4c22f6",
+        "de-mv-latein-sekii-gyo-2019-084-e25375c3",
+        "de-mv-latein-sekii-gyo-2019-085-1d0a2132",
+        "de-mv-latein-sekii-gyo-2019-086-136c3e1d",
+        "de-mv-latein-sekii-gyo-2019-087-9c76b257"
+      ]
+    },
+    {
+      "id": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-unterrichtsinhalte-geschichte-und-politik",
+      "sourceDocumentKey": "MV-LATEIN-SEKII-GYO-2019",
+      "topicCode": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-unterrichtsinhalte-geschichte-und-politik",
+      "title": "Qualifikationsphase · Unterrichtsinhalte · Geschichte und Politik",
+      "rawText": "- Phasen der römischen Geschichte (Königszeit, Wertbegriffe aus idealisierter Frühzeit, Romi-\n- Grundzüge der römischen Verfassung und des Charakteristika der grundlegenden Verfas-\n- bedeutende Persönlichkeiten Leben und Wirken bei\n- andere Kulturen Rom als Schmelztiegel vieler Kulturen\n- Provinzverwaltung und Provinzialrecht Umgang mit Besiegten, Machtmissbrauch am\n- Expansionspolitik im Laufe der römischen Ge-Phasen der Ausdehnung: Punische Kriege, Gal-",
+      "sourceGoalIds": [
+        "de-mv-latein-sekii-gyo-2019-088-9e363607",
+        "de-mv-latein-sekii-gyo-2019-089-3f3e629f",
+        "de-mv-latein-sekii-gyo-2019-090-aeb4a3ed",
+        "de-mv-latein-sekii-gyo-2019-091-ef5c9b08",
+        "de-mv-latein-sekii-gyo-2019-092-2c52d992",
+        "de-mv-latein-sekii-gyo-2019-093-5a596774"
+      ]
+    }
+  ],
+  "sourceGoals": [
+    {
+      "id": "de-mv-latein-sekii-gyo-2019-001-d5f7abde",
+      "sourceDocumentKey": "MV-LATEIN-SEKII-GYO-2019",
+      "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-abschlussbezogene-standards",
+      "topicCode": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-abschlussbezogene-standards",
+      "title": "Kompetenzbereich Sprache: Dazu gehören die Nutzung von Kenntnissen in Wortschatz Formenlehre ...",
+      "description": "Die lernende Person kann kompetenzbereich Sprache: Dazu gehören die Nutzung von Kenntnissen in Wortschatz Formenlehre und Syntax, die Anwendung der Wortbildungslehre sowie die Entschlüsselung 4 von Fremdwörtern und Fachtermini und deren richtiger Gebrauch..",
+      "sourceText": "Kompetenzbereich Sprache: Dazu gehören die Nutzung von Kenntnissen in Wortschatz Formenlehre und Syntax, die Anwendung der Wortbildungslehre sowie die Entschlüsselung 4 von Fremdwörtern und Fachtermini und deren richtiger Gebrauch.",
+      "sourceRef": "S. 7-9, Qualifikationsphase, Abschlussbezogene Standards",
+      "sourceSpan": {
+        "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-abschlussbezogene-standards",
+        "label": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-abschlussbezogene-standards#1"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase",
+        "field": "Abschlussbezogene Standards",
+        "extractionMethod": "Extrahiert Standards, verbindliche Inhalte und prozessbezogene Kompetenzbeispiele aus dem amtlichen MV-Rahmenplan Latein Gymnasiale Oberstufe 2019.",
+        "sourceIndex": 1
+      }
+    },
+    {
+      "id": "de-mv-latein-sekii-gyo-2019-002-99d06bee",
+      "sourceDocumentKey": "MV-LATEIN-SEKII-GYO-2019",
+      "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-abschlussbezogene-standards",
+      "topicCode": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-abschlussbezogene-standards",
+      "title": "Kompetenzbereich Text: Diese Kompetenzen betreffen die Übersetzung und Interpretation eines T...",
+      "description": "Die lernende Person kann kompetenzbereich Text: Diese Kompetenzen betreffen die Übersetzung und Interpretation eines Textes. Weiter gehören dazu Kompetenzen in der Erschließung eines Textes, seiner syntaktischen und semantischen Erfassung sowie der Vergleich verschiedener Übersetzun-gen, die Übersetzungskritik..",
+      "sourceText": "Kompetenzbereich Text: Diese Kompetenzen betreffen die Übersetzung und Interpretation eines Textes. Weiter gehören dazu Kompetenzen in der Erschließung eines Textes, seiner syntaktischen und semantischen Erfassung sowie der Vergleich verschiedener Übersetzun-gen, die Übersetzungskritik.",
+      "sourceRef": "S. 7-9, Qualifikationsphase, Abschlussbezogene Standards",
+      "sourceSpan": {
+        "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-abschlussbezogene-standards",
+        "label": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-abschlussbezogene-standards#2"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase",
+        "field": "Abschlussbezogene Standards",
+        "extractionMethod": "Extrahiert Standards, verbindliche Inhalte und prozessbezogene Kompetenzbeispiele aus dem amtlichen MV-Rahmenplan Latein Gymnasiale Oberstufe 2019.",
+        "sourceIndex": 2
+      }
+    },
+    {
+      "id": "de-mv-latein-sekii-gyo-2019-003-ed7c8c7e",
+      "sourceDocumentKey": "MV-LATEIN-SEKII-GYO-2019",
+      "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-abschlussbezogene-standards",
+      "topicCode": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-abschlussbezogene-standards",
+      "title": "Kompetenzbereich Kultur: Die Kompetenzen zielen auf die Einordnung von Texten in einen kultur...",
+      "description": "Die lernende Person kann kompetenzbereich Kultur: Die Kompetenzen zielen auf die Einordnung von Texten in einen kulturellen Kontext ihrer Entstehung in der Antike ab. Die Kenntnisse und Fähigkeiten wer-den so angewendet und erweitert, auch durch den Umgang mit weiteren Texten sowie den Bezug auf Mittelalter und Neuzeit. Ebenfalls zielt dieser Bereich auf die Reflexionsfähigkeit über die Grundfragen menschlicher Existenz in der Auseinandersetzung mit Texten sowohl innerhalb ihrer historisch-kulturellen Bedingtheit als auch darüber hinaus ab. Weiter erwerben die für die Arbeit mit diesen Gegenständen spezifische Verfahren und Methoden:.",
+      "sourceText": "Kompetenzbereich Kultur: Die Kompetenzen zielen auf die Einordnung von Texten in einen kulturellen Kontext ihrer Entstehung in der Antike ab. Die Kenntnisse und Fähigkeiten wer-den so angewendet und erweitert, auch durch den Umgang mit weiteren Texten sowie den Bezug auf Mittelalter und Neuzeit. Ebenfalls zielt dieser Bereich auf die Reflexionsfähigkeit über die Grundfragen menschlicher Existenz in der Auseinandersetzung mit Texten sowohl innerhalb ihrer historisch-kulturellen Bedingtheit als auch darüber hinaus ab. Weiter erwerben die für die Arbeit mit diesen Gegenständen spezifische Verfahren und Methoden:",
+      "sourceRef": "S. 7-9, Qualifikationsphase, Abschlussbezogene Standards",
+      "sourceSpan": {
+        "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-abschlussbezogene-standards",
+        "label": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-abschlussbezogene-standards#3"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase",
+        "field": "Abschlussbezogene Standards",
+        "extractionMethod": "Extrahiert Standards, verbindliche Inhalte und prozessbezogene Kompetenzbeispiele aus dem amtlichen MV-Rahmenplan Latein Gymnasiale Oberstufe 2019.",
+        "sourceIndex": 3
+      }
+    },
+    {
+      "id": "de-mv-latein-sekii-gyo-2019-004-1cd97f61",
+      "sourceDocumentKey": "MV-LATEIN-SEKII-GYO-2019",
+      "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-abschlussbezogene-standards",
+      "topicCode": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-abschlussbezogene-standards",
+      "title": "Kompetenzbereich fachspezifische Methoden: Dazu zählen fachliche Arbeitsverfahren und Lernstr...",
+      "description": "Die lernende Person kann kompetenzbereich fachspezifische Methoden: Dazu zählen fachliche Arbeitsverfahren und Lernstrategien, die Nutzung fachspezifischer Hilfsmittel, vielfältige Erschließungsverfahren für die Unterrichtsgegenstände sowie die gezielte Beschaffung und Darstellung fachlicher In-formationen auch im digitalen Bereich. Zu den Methoden gehören die Fähigkeiten zur stata-rischen und kursorischen Lektüre mit der Nutzung zweisprachiger und deutscher Texte. Die im Lateinunterricht geübte intensive und verschränkte Sprach-und Textarbeit fördert nachhaltig sowohl die Sprach-als auch die Textkompetenz: Sie vermittelt den n eine Einsicht in das Funktionieren von Sprache an sich und leitet sie durch den ständigen Vergleich mit dem Deutschen oder anderen Sprachen zu einem bewussten Umgang mit Sprache an. Damit trägt der Unterricht stark zur vertieften Sprachbildung bei. Die Heranwachsenden entwickeln auf diese Weise zugleich mannigfache überfachliche Kompetenzen. Latein ist eine Basissprache Europas und begründet in einzigartiger Weise die Erweiterung kulturellen Wissens und eine kulturelle Kompetenz. Die griechisch-römische Antike stellt einen Ursprung und eine gemeinsame Wurzel des zunehmend zusammenwachsenden modernen Europas dar und hat dessen Wertvorstellungen neben anderen Einflüssen von der Antike bis heute maßgeblich geprägt. Das Lateinische eröffnet einen eigenen Zugang zur Vergangenheit der griechisch-römischen Antike und zu den darauf folgenden Epochen. Die Auseinandersetzung mit der lateinischen Sprache anhand von Originaltexten in ihrem jeweiligen kulturellen Kontext bietet eine wichtige Ergänzung zum mut-tersprachlichen Unterricht und zu den modernen Fremdsprachen. Einen spezifischen Beitrag zur kul-turellen Kommunikation leistet der Lateinunterricht durch soziokulturelles Orientierungswissen und Sensibilisierung für vergangene fremde Wahrnehmungen und Perspektiven besonders aus der Anti-ke. behandeln bedeutende Themen, Denkweisen und Theorien aus der antiken Literatur, Kunst, Geschichte, Philosophie und Mythologie sowie ihre Rezeption bis in die Ge-genwart. Dies fördert die Bereitschaft und Fähigkeit zum Perspektivwechsel und die kritische Wahr-nehmung der eigenen, kulturell geprägten Identität und gegebenenfalls die Relativierung des eige-nen Standpunktes. Das Lateinische trägt so zentral dazu bei, einerseits ein Bewusstsein europäischer Identität, andererseits einen vorurteilsfreien Umgang mit fremden Kulturkreisen zu schaffen. Viele Fragen und Themen der römischen Antike sind von zeitloser Gültigkeit und betreffen die eigene Erfahrungs-und Lebenswelt der Jugendlichen. Somit kommt dem Lateinunterricht in der heutigen Zeit auch eine aktuelle Bedeutung zu. Das Unterrichtsfach Latein leistet einen wichtigen Beitrag zum wissenschaftspropädeutischen Lernen und Arbeiten innerhalb der Qualifikationsstufe, indem die grundlegende.",
+      "sourceText": "Kompetenzbereich fachspezifische Methoden: Dazu zählen fachliche Arbeitsverfahren und Lernstrategien, die Nutzung fachspezifischer Hilfsmittel, vielfältige Erschließungsverfahren für die Unterrichtsgegenstände sowie die gezielte Beschaffung und Darstellung fachlicher In-formationen auch im digitalen Bereich. Zu den Methoden gehören die Fähigkeiten zur stata-rischen und kursorischen Lektüre mit der Nutzung zweisprachiger und deutscher Texte. Die im Lateinunterricht geübte intensive und verschränkte Sprach-und Textarbeit fördert nachhaltig sowohl die Sprach-als auch die Textkompetenz: Sie vermittelt den n eine Einsicht in das Funktionieren von Sprache an sich und leitet sie durch den ständigen Vergleich mit dem Deutschen oder anderen Sprachen zu einem bewussten Umgang mit Sprache an. Damit trägt der Unterricht stark zur vertieften Sprachbildung bei. Die Heranwachsenden entwickeln auf diese Weise zugleich mannigfache überfachliche Kompetenzen. Latein ist eine Basissprache Europas und begründet in einzigartiger Weise die Erweiterung kulturellen Wissens und eine kulturelle Kompetenz. Die griechisch-römische Antike stellt einen Ursprung und eine gemeinsame Wurzel des zunehmend zusammenwachsenden modernen Europas dar und hat dessen Wertvorstellungen neben anderen Einflüssen von der Antike bis heute maßgeblich geprägt. Das Lateinische eröffnet einen eigenen Zugang zur Vergangenheit der griechisch-römischen Antike und zu den darauf folgenden Epochen. Die Auseinandersetzung mit der lateinischen Sprache anhand von Originaltexten in ihrem jeweiligen kulturellen Kontext bietet eine wichtige Ergänzung zum mut-tersprachlichen Unterricht und zu den modernen Fremdsprachen. Einen spezifischen Beitrag zur kul-turellen Kommunikation leistet der Lateinunterricht durch soziokulturelles Orientierungswissen und Sensibilisierung für vergangene fremde Wahrnehmungen und Perspektiven besonders aus der Anti-ke. behandeln bedeutende Themen, Denkweisen und Theorien aus der antiken Literatur, Kunst, Geschichte, Philosophie und Mythologie sowie ihre Rezeption bis in die Ge-genwart. Dies fördert die Bereitschaft und Fähigkeit zum Perspektivwechsel und die kritische Wahr-nehmung der eigenen, kulturell geprägten Identität und gegebenenfalls die Relativierung des eige-nen Standpunktes. Das Lateinische trägt so zentral dazu bei, einerseits ein Bewusstsein europäischer Identität, andererseits einen vorurteilsfreien Umgang mit fremden Kulturkreisen zu schaffen. Viele Fragen und Themen der römischen Antike sind von zeitloser Gültigkeit und betreffen die eigene Erfahrungs-und Lebenswelt der Jugendlichen. Somit kommt dem Lateinunterricht in der heutigen Zeit auch eine aktuelle Bedeutung zu. Das Unterrichtsfach Latein leistet einen wichtigen Beitrag zum wissenschaftspropädeutischen Lernen und Arbeiten innerhalb der Qualifikationsstufe, indem die grundlegende",
+      "sourceRef": "S. 7-9, Qualifikationsphase, Abschlussbezogene Standards",
+      "sourceSpan": {
+        "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-abschlussbezogene-standards",
+        "label": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-abschlussbezogene-standards#4"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase",
+        "field": "Abschlussbezogene Standards",
+        "extractionMethod": "Extrahiert Standards, verbindliche Inhalte und prozessbezogene Kompetenzbeispiele aus dem amtlichen MV-Rahmenplan Latein Gymnasiale Oberstufe 2019.",
+        "sourceIndex": 4
+      }
+    },
+    {
+      "id": "de-mv-latein-sekii-gyo-2019-005-831a1f72",
+      "sourceDocumentKey": "MV-LATEIN-SEKII-GYO-2019",
+      "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-romische-gesellschaft-kultur-und-lebensweise",
+      "topicCode": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-romische-gesellschaft-kultur-und-lebensweise",
+      "title": "Nutzen wissenschaftlicher Hilfsmittel, z. B. Wörterbücher, Lexika, Fachliteratur, Kommentare",
+      "description": "Die lernende Person kann nutzen wissenschaftlicher Hilfsmittel, z. B. Wörterbücher, Lexika, Fachliteratur, Kommentare.",
+      "sourceText": "Nutzen wissenschaftlicher Hilfsmittel, z. B. Wörterbücher, Lexika, Fachliteratur, Kommentare",
+      "sourceRef": "S. 10-15, Qualifikationsphase, Römische Gesellschaft, Kultur und Lebensweise",
+      "sourceSpan": {
+        "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-romische-gesellschaft-kultur-und-lebensweise",
+        "label": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-romische-gesellschaft-kultur-und-lebensweise#5"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase",
+        "field": "Römische Gesellschaft, Kultur und Lebensweise",
+        "extractionMethod": "Extrahiert Standards, verbindliche Inhalte und prozessbezogene Kompetenzbeispiele aus dem amtlichen MV-Rahmenplan Latein Gymnasiale Oberstufe 2019.",
+        "sourceIndex": 5
+      }
+    },
+    {
+      "id": "de-mv-latein-sekii-gyo-2019-006-d394923e",
+      "sourceDocumentKey": "MV-LATEIN-SEKII-GYO-2019",
+      "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-romische-gesellschaft-kultur-und-lebensweise",
+      "topicCode": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-romische-gesellschaft-kultur-und-lebensweise",
+      "title": "Finden, Vergleichen, Auswählen, Ordnen und Mitteilen von Informationen sowie sinnvolles und k...",
+      "description": "Die lernende Person kann finden, Vergleichen, Auswählen, Ordnen und Mitteilen von Informationen sowie sinnvolles und korrektes Zitieren.",
+      "sourceText": "Finden, Vergleichen, Auswählen, Ordnen und Mitteilen von Informationen sowie sinnvolles und korrektes Zitieren",
+      "sourceRef": "S. 10-15, Qualifikationsphase, Römische Gesellschaft, Kultur und Lebensweise",
+      "sourceSpan": {
+        "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-romische-gesellschaft-kultur-und-lebensweise",
+        "label": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-romische-gesellschaft-kultur-und-lebensweise#6"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase",
+        "field": "Römische Gesellschaft, Kultur und Lebensweise",
+        "extractionMethod": "Extrahiert Standards, verbindliche Inhalte und prozessbezogene Kompetenzbeispiele aus dem amtlichen MV-Rahmenplan Latein Gymnasiale Oberstufe 2019.",
+        "sourceIndex": 6
+      }
+    },
+    {
+      "id": "de-mv-latein-sekii-gyo-2019-007-6ccd98b0",
+      "sourceDocumentKey": "MV-LATEIN-SEKII-GYO-2019",
+      "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-romische-gesellschaft-kultur-und-lebensweise",
+      "topicCode": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-romische-gesellschaft-kultur-und-lebensweise",
+      "title": "sachlogisch und terminologisch sachgerechtes Darstellen erarbeiteter Ergebnisse",
+      "description": "Die lernende Person kann sachlogisch und terminologisch sachgerechtes Darstellen erarbeiteter Ergebnisse.",
+      "sourceText": "sachlogisch und terminologisch sachgerechtes Darstellen erarbeiteter Ergebnisse",
+      "sourceRef": "S. 10-15, Qualifikationsphase, Römische Gesellschaft, Kultur und Lebensweise",
+      "sourceSpan": {
+        "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-romische-gesellschaft-kultur-und-lebensweise",
+        "label": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-romische-gesellschaft-kultur-und-lebensweise#7"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase",
+        "field": "Römische Gesellschaft, Kultur und Lebensweise",
+        "extractionMethod": "Extrahiert Standards, verbindliche Inhalte und prozessbezogene Kompetenzbeispiele aus dem amtlichen MV-Rahmenplan Latein Gymnasiale Oberstufe 2019.",
+        "sourceIndex": 7
+      }
+    },
+    {
+      "id": "de-mv-latein-sekii-gyo-2019-008-f714cfcb",
+      "sourceDocumentKey": "MV-LATEIN-SEKII-GYO-2019",
+      "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-romische-gesellschaft-kultur-und-lebensweise",
+      "topicCode": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-romische-gesellschaft-kultur-und-lebensweise",
+      "title": "Anwenden verschiedener Techniken der schriftlichen, mündlichen und visuellen Präsentation kom...",
+      "description": "Die lernende Person kann anwenden verschiedener Techniken der schriftlichen, mündlichen und visuellen Präsentation komplexer Gegenstände.",
+      "sourceText": "Anwenden verschiedener Techniken der schriftlichen, mündlichen und visuellen Präsentation komplexer Gegenstände",
+      "sourceRef": "S. 10-15, Qualifikationsphase, Römische Gesellschaft, Kultur und Lebensweise",
+      "sourceSpan": {
+        "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-romische-gesellschaft-kultur-und-lebensweise",
+        "label": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-romische-gesellschaft-kultur-und-lebensweise#8"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase",
+        "field": "Römische Gesellschaft, Kultur und Lebensweise",
+        "extractionMethod": "Extrahiert Standards, verbindliche Inhalte und prozessbezogene Kompetenzbeispiele aus dem amtlichen MV-Rahmenplan Latein Gymnasiale Oberstufe 2019.",
+        "sourceIndex": 8
+      }
+    },
+    {
+      "id": "de-mv-latein-sekii-gyo-2019-009-d3175e59",
+      "sourceDocumentKey": "MV-LATEIN-SEKII-GYO-2019",
+      "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-romische-gesellschaft-kultur-und-lebensweise",
+      "topicCode": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-romische-gesellschaft-kultur-und-lebensweise",
+      "title": "vertiefte Sprachbeherrschung im Deutschen durch das komparativ-kontrastive Prinzip",
+      "description": "Die lernende Person kann vertiefte Sprachbeherrschung im Deutschen durch das komparativ-kontrastive Prinzip.",
+      "sourceText": "vertiefte Sprachbeherrschung im Deutschen durch das komparativ-kontrastive Prinzip",
+      "sourceRef": "S. 10-15, Qualifikationsphase, Römische Gesellschaft, Kultur und Lebensweise",
+      "sourceSpan": {
+        "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-romische-gesellschaft-kultur-und-lebensweise",
+        "label": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-romische-gesellschaft-kultur-und-lebensweise#9"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase",
+        "field": "Römische Gesellschaft, Kultur und Lebensweise",
+        "extractionMethod": "Extrahiert Standards, verbindliche Inhalte und prozessbezogene Kompetenzbeispiele aus dem amtlichen MV-Rahmenplan Latein Gymnasiale Oberstufe 2019.",
+        "sourceIndex": 9
+      }
+    },
+    {
+      "id": "de-mv-latein-sekii-gyo-2019-010-71900adc",
+      "sourceDocumentKey": "MV-LATEIN-SEKII-GYO-2019",
+      "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-romische-gesellschaft-kultur-und-lebensweise",
+      "topicCode": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-romische-gesellschaft-kultur-und-lebensweise",
+      "title": "Einbeziehen fachübergreifender Aspekte Der Leistungskurs unterscheidet sich vom Grundkurs hau...",
+      "description": "Die lernende Person kann einbeziehen fachübergreifender Aspekte Der Leistungskurs unterscheidet sich vom Grundkurs hauptsächlich durch das Anspruchsniveau. Dif-ferenzierungskriterien können sein:.",
+      "sourceText": "Einbeziehen fachübergreifender Aspekte Der Leistungskurs unterscheidet sich vom Grundkurs hauptsächlich durch das Anspruchsniveau. Dif-ferenzierungskriterien können sein:",
+      "sourceRef": "S. 10-15, Qualifikationsphase, Römische Gesellschaft, Kultur und Lebensweise",
+      "sourceSpan": {
+        "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-romische-gesellschaft-kultur-und-lebensweise",
+        "label": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-romische-gesellschaft-kultur-und-lebensweise#10"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase",
+        "field": "Römische Gesellschaft, Kultur und Lebensweise",
+        "extractionMethod": "Extrahiert Standards, verbindliche Inhalte und prozessbezogene Kompetenzbeispiele aus dem amtlichen MV-Rahmenplan Latein Gymnasiale Oberstufe 2019.",
+        "sourceIndex": 10
+      }
+    },
+    {
+      "id": "de-mv-latein-sekii-gyo-2019-011-f7e651c2",
+      "sourceDocumentKey": "MV-LATEIN-SEKII-GYO-2019",
+      "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-romische-gesellschaft-kultur-und-lebensweise",
+      "topicCode": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-romische-gesellschaft-kultur-und-lebensweise",
+      "title": "Menge der zu verarbeitenden Informationen, z. B. Länge und Vielfalt der Original-und Be-gleit...",
+      "description": "Die lernende Person kann menge der zu verarbeitenden Informationen, z. B. Länge und Vielfalt der Original-und Be-gleittexte.",
+      "sourceText": "Menge der zu verarbeitenden Informationen, z. B. Länge und Vielfalt der Original-und Be-gleittexte",
+      "sourceRef": "S. 10-15, Qualifikationsphase, Römische Gesellschaft, Kultur und Lebensweise",
+      "sourceSpan": {
+        "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-romische-gesellschaft-kultur-und-lebensweise",
+        "label": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-romische-gesellschaft-kultur-und-lebensweise#11"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase",
+        "field": "Römische Gesellschaft, Kultur und Lebensweise",
+        "extractionMethod": "Extrahiert Standards, verbindliche Inhalte und prozessbezogene Kompetenzbeispiele aus dem amtlichen MV-Rahmenplan Latein Gymnasiale Oberstufe 2019.",
+        "sourceIndex": 11
+      }
+    },
+    {
+      "id": "de-mv-latein-sekii-gyo-2019-012-2502acec",
+      "sourceDocumentKey": "MV-LATEIN-SEKII-GYO-2019",
+      "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-romische-gesellschaft-kultur-und-lebensweise",
+      "topicCode": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-romische-gesellschaft-kultur-und-lebensweise",
+      "title": "Umfang und Art der bereitgestellten Hilfen insbesondere sprachlicher und sachlicher Art",
+      "description": "Die lernende Person kann umfang und Art der bereitgestellten Hilfen insbesondere sprachlicher und sachlicher Art.",
+      "sourceText": "Umfang und Art der bereitgestellten Hilfen insbesondere sprachlicher und sachlicher Art",
+      "sourceRef": "S. 10-15, Qualifikationsphase, Römische Gesellschaft, Kultur und Lebensweise",
+      "sourceSpan": {
+        "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-romische-gesellschaft-kultur-und-lebensweise",
+        "label": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-romische-gesellschaft-kultur-und-lebensweise#12"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase",
+        "field": "Römische Gesellschaft, Kultur und Lebensweise",
+        "extractionMethod": "Extrahiert Standards, verbindliche Inhalte und prozessbezogene Kompetenzbeispiele aus dem amtlichen MV-Rahmenplan Latein Gymnasiale Oberstufe 2019.",
+        "sourceIndex": 12
+      }
+    },
+    {
+      "id": "de-mv-latein-sekii-gyo-2019-013-c0699a38",
+      "sourceDocumentKey": "MV-LATEIN-SEKII-GYO-2019",
+      "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-romische-gesellschaft-kultur-und-lebensweise",
+      "topicCode": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-romische-gesellschaft-kultur-und-lebensweise",
+      "title": "Komplexität der Arbeitsverfahren",
+      "description": "Die lernende Person kann komplexität der Arbeitsverfahren.",
+      "sourceText": "Komplexität der Arbeitsverfahren",
+      "sourceRef": "S. 10-15, Qualifikationsphase, Römische Gesellschaft, Kultur und Lebensweise",
+      "sourceSpan": {
+        "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-romische-gesellschaft-kultur-und-lebensweise",
+        "label": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-romische-gesellschaft-kultur-und-lebensweise#13"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase",
+        "field": "Römische Gesellschaft, Kultur und Lebensweise",
+        "extractionMethod": "Extrahiert Standards, verbindliche Inhalte und prozessbezogene Kompetenzbeispiele aus dem amtlichen MV-Rahmenplan Latein Gymnasiale Oberstufe 2019.",
+        "sourceIndex": 13
+      }
+    },
+    {
+      "id": "de-mv-latein-sekii-gyo-2019-014-bd3fc469",
+      "sourceDocumentKey": "MV-LATEIN-SEKII-GYO-2019",
+      "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-romische-gesellschaft-kultur-und-lebensweise",
+      "topicCode": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-romische-gesellschaft-kultur-und-lebensweise",
+      "title": "Offenheit der Aufgabenstellung, z. B. vorstrukturierte bzw. komplexe Aufgabenstellung",
+      "description": "Die lernende Person kann offenheit der Aufgabenstellung, z. B. vorstrukturierte bzw. komplexe Aufgabenstellung.",
+      "sourceText": "Offenheit der Aufgabenstellung, z. B. vorstrukturierte bzw. komplexe Aufgabenstellung",
+      "sourceRef": "S. 10-15, Qualifikationsphase, Römische Gesellschaft, Kultur und Lebensweise",
+      "sourceSpan": {
+        "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-romische-gesellschaft-kultur-und-lebensweise",
+        "label": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-romische-gesellschaft-kultur-und-lebensweise#14"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase",
+        "field": "Römische Gesellschaft, Kultur und Lebensweise",
+        "extractionMethod": "Extrahiert Standards, verbindliche Inhalte und prozessbezogene Kompetenzbeispiele aus dem amtlichen MV-Rahmenplan Latein Gymnasiale Oberstufe 2019.",
+        "sourceIndex": 14
+      }
+    },
+    {
+      "id": "de-mv-latein-sekii-gyo-2019-015-14868f0c",
+      "sourceDocumentKey": "MV-LATEIN-SEKII-GYO-2019",
+      "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-romische-gesellschaft-kultur-und-lebensweise",
+      "topicCode": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-romische-gesellschaft-kultur-und-lebensweise",
+      "title": "Anforderung an die Selbstständigkeit bei der Bearbeitung der Aufgaben",
+      "description": "Die lernende Person kann anforderung an die Selbstständigkeit bei der Bearbeitung der Aufgaben.",
+      "sourceText": "Anforderung an die Selbstständigkeit bei der Bearbeitung der Aufgaben",
+      "sourceRef": "S. 10-15, Qualifikationsphase, Römische Gesellschaft, Kultur und Lebensweise",
+      "sourceSpan": {
+        "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-romische-gesellschaft-kultur-und-lebensweise",
+        "label": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-romische-gesellschaft-kultur-und-lebensweise#15"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase",
+        "field": "Römische Gesellschaft, Kultur und Lebensweise",
+        "extractionMethod": "Extrahiert Standards, verbindliche Inhalte und prozessbezogene Kompetenzbeispiele aus dem amtlichen MV-Rahmenplan Latein Gymnasiale Oberstufe 2019.",
+        "sourceIndex": 15
+      }
+    },
+    {
+      "id": "de-mv-latein-sekii-gyo-2019-016-9e47e538",
+      "sourceDocumentKey": "MV-LATEIN-SEKII-GYO-2019",
+      "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-romische-gesellschaft-kultur-und-lebensweise",
+      "topicCode": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-romische-gesellschaft-kultur-und-lebensweise",
+      "title": "Höhe des Schwierigkeitsgrades, des Abstraktions-und des Reflexionsniveaus, z. B. von Texten u...",
+      "description": "Die lernende Person kann höhe des Schwierigkeitsgrades, des Abstraktions-und des Reflexionsniveaus, z. B. von Texten und Interpretationsaufgaben.",
+      "sourceText": "Höhe des Schwierigkeitsgrades, des Abstraktions-und des Reflexionsniveaus, z. B. von Texten und Interpretationsaufgaben",
+      "sourceRef": "S. 10-15, Qualifikationsphase, Römische Gesellschaft, Kultur und Lebensweise",
+      "sourceSpan": {
+        "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-romische-gesellschaft-kultur-und-lebensweise",
+        "label": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-romische-gesellschaft-kultur-und-lebensweise#16"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase",
+        "field": "Römische Gesellschaft, Kultur und Lebensweise",
+        "extractionMethod": "Extrahiert Standards, verbindliche Inhalte und prozessbezogene Kompetenzbeispiele aus dem amtlichen MV-Rahmenplan Latein Gymnasiale Oberstufe 2019.",
+        "sourceIndex": 16
+      }
+    },
+    {
+      "id": "de-mv-latein-sekii-gyo-2019-017-81a294ea",
+      "sourceDocumentKey": "MV-LATEIN-SEKII-GYO-2019",
+      "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-romische-gesellschaft-kultur-und-lebensweise",
+      "topicCode": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-romische-gesellschaft-kultur-und-lebensweise",
+      "title": "Höhe des Anspruchs an die Übersetzungsfähigkeit",
+      "description": "Die lernende Person kann höhe des Anspruchs an die Übersetzungsfähigkeit.",
+      "sourceText": "Höhe des Anspruchs an die Übersetzungsfähigkeit",
+      "sourceRef": "S. 10-15, Qualifikationsphase, Römische Gesellschaft, Kultur und Lebensweise",
+      "sourceSpan": {
+        "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-romische-gesellschaft-kultur-und-lebensweise",
+        "label": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-romische-gesellschaft-kultur-und-lebensweise#17"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase",
+        "field": "Römische Gesellschaft, Kultur und Lebensweise",
+        "extractionMethod": "Extrahiert Standards, verbindliche Inhalte und prozessbezogene Kompetenzbeispiele aus dem amtlichen MV-Rahmenplan Latein Gymnasiale Oberstufe 2019.",
+        "sourceIndex": 17
+      }
+    },
+    {
+      "id": "de-mv-latein-sekii-gyo-2019-018-1eba3e94",
+      "sourceDocumentKey": "MV-LATEIN-SEKII-GYO-2019",
+      "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-romische-gesellschaft-kultur-und-lebensweise",
+      "topicCode": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-romische-gesellschaft-kultur-und-lebensweise",
+      "title": "Grad der Systematisierung von sprachlichen und inhaltlichen Phänomenen",
+      "description": "Die lernende Person kann grad der Systematisierung von sprachlichen und inhaltlichen Phänomenen.",
+      "sourceText": "Grad der Systematisierung von sprachlichen und inhaltlichen Phänomenen",
+      "sourceRef": "S. 10-15, Qualifikationsphase, Römische Gesellschaft, Kultur und Lebensweise",
+      "sourceSpan": {
+        "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-romische-gesellschaft-kultur-und-lebensweise",
+        "label": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-romische-gesellschaft-kultur-und-lebensweise#18"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase",
+        "field": "Römische Gesellschaft, Kultur und Lebensweise",
+        "extractionMethod": "Extrahiert Standards, verbindliche Inhalte und prozessbezogene Kompetenzbeispiele aus dem amtlichen MV-Rahmenplan Latein Gymnasiale Oberstufe 2019.",
+        "sourceIndex": 18
+      }
+    },
+    {
+      "id": "de-mv-latein-sekii-gyo-2019-019-0f0ed686",
+      "sourceDocumentKey": "MV-LATEIN-SEKII-GYO-2019",
+      "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-romische-gesellschaft-kultur-und-lebensweise",
+      "topicCode": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-romische-gesellschaft-kultur-und-lebensweise",
+      "title": "Aspektreichtum der Texte und der sich daraus ergebenden Fragestellungen",
+      "description": "Die lernende Person kann aspektreichtum der Texte und der sich daraus ergebenden Fragestellungen.",
+      "sourceText": "Aspektreichtum der Texte und der sich daraus ergebenden Fragestellungen",
+      "sourceRef": "S. 10-15, Qualifikationsphase, Römische Gesellschaft, Kultur und Lebensweise",
+      "sourceSpan": {
+        "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-romische-gesellschaft-kultur-und-lebensweise",
+        "label": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-romische-gesellschaft-kultur-und-lebensweise#19"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase",
+        "field": "Römische Gesellschaft, Kultur und Lebensweise",
+        "extractionMethod": "Extrahiert Standards, verbindliche Inhalte und prozessbezogene Kompetenzbeispiele aus dem amtlichen MV-Rahmenplan Latein Gymnasiale Oberstufe 2019.",
+        "sourceIndex": 19
+      }
+    },
+    {
+      "id": "de-mv-latein-sekii-gyo-2019-020-21e64227",
+      "sourceDocumentKey": "MV-LATEIN-SEKII-GYO-2019",
+      "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-romische-gesellschaft-kultur-und-lebensweise",
+      "topicCode": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-romische-gesellschaft-kultur-und-lebensweise",
+      "title": "Maß der Einbringung von Theorien und Modellen Im Leistungskurs müssen die Anforderungsbereich...",
+      "description": "Die lernende Person kann maß der Einbringung von Theorien und Modellen Im Leistungskurs müssen die Anforderungsbereiche II und III häufiger und in höherem Maße einge-fordert werden als im Grundkurs..",
+      "sourceText": "Maß der Einbringung von Theorien und Modellen Im Leistungskurs müssen die Anforderungsbereiche II und III häufiger und in höherem Maße einge-fordert werden als im Grundkurs.",
+      "sourceRef": "S. 10-15, Qualifikationsphase, Römische Gesellschaft, Kultur und Lebensweise",
+      "sourceSpan": {
+        "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-romische-gesellschaft-kultur-und-lebensweise",
+        "label": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-romische-gesellschaft-kultur-und-lebensweise#20"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase",
+        "field": "Römische Gesellschaft, Kultur und Lebensweise",
+        "extractionMethod": "Extrahiert Standards, verbindliche Inhalte und prozessbezogene Kompetenzbeispiele aus dem amtlichen MV-Rahmenplan Latein Gymnasiale Oberstufe 2019.",
+        "sourceIndex": 20
+      }
+    },
+    {
+      "id": "de-mv-latein-sekii-gyo-2019-021-eac37638",
+      "sourceDocumentKey": "MV-LATEIN-SEKII-GYO-2019",
+      "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-sprache",
+      "topicCode": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-sprache",
+      "title": "wenden einen erweiterten themen-und autorenbezogenen Wortschatz an",
+      "description": "Die lernende Person kann wenden einen erweiterten themen-und autorenbezogenen Wortschatz an.",
+      "sourceText": "wenden einen erweiterten themen-und autorenbezogenen Wortschatz an",
+      "sourceRef": "S. 10-15, Qualifikationsphase, Standards · Sprache",
+      "sourceSpan": {
+        "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-sprache",
+        "label": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-sprache#21"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase",
+        "field": "Standards · Sprache",
+        "extractionMethod": "Extrahiert Standards, verbindliche Inhalte und prozessbezogene Kompetenzbeispiele aus dem amtlichen MV-Rahmenplan Latein Gymnasiale Oberstufe 2019.",
+        "sourceIndex": 21
+      }
+    },
+    {
+      "id": "de-mv-latein-sekii-gyo-2019-022-7bf6fe03",
+      "sourceDocumentKey": "MV-LATEIN-SEKII-GYO-2019",
+      "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-sprache",
+      "topicCode": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-sprache",
+      "title": "beherrschen lektürerelevante Phänomene der Syntax und Morphologie",
+      "description": "Die lernende Person kann beherrschen lektürerelevante Phänomene der Syntax und Morphologie.",
+      "sourceText": "beherrschen lektürerelevante Phänomene der Syntax und Morphologie",
+      "sourceRef": "S. 10-15, Qualifikationsphase, Standards · Sprache",
+      "sourceSpan": {
+        "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-sprache",
+        "label": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-sprache#22"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase",
+        "field": "Standards · Sprache",
+        "extractionMethod": "Extrahiert Standards, verbindliche Inhalte und prozessbezogene Kompetenzbeispiele aus dem amtlichen MV-Rahmenplan Latein Gymnasiale Oberstufe 2019.",
+        "sourceIndex": 22
+      }
+    },
+    {
+      "id": "de-mv-latein-sekii-gyo-2019-023-b09eee16",
+      "sourceDocumentKey": "MV-LATEIN-SEKII-GYO-2019",
+      "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-sprache",
+      "topicCode": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-sprache",
+      "title": "analysieren komplexe Satzstrukturen",
+      "description": "Die lernende Person kann analysieren komplexe Satzstrukturen.",
+      "sourceText": "analysieren komplexe Satzstrukturen",
+      "sourceRef": "S. 10-15, Qualifikationsphase, Standards · Sprache",
+      "sourceSpan": {
+        "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-sprache",
+        "label": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-sprache#23"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase",
+        "field": "Standards · Sprache",
+        "extractionMethod": "Extrahiert Standards, verbindliche Inhalte und prozessbezogene Kompetenzbeispiele aus dem amtlichen MV-Rahmenplan Latein Gymnasiale Oberstufe 2019.",
+        "sourceIndex": 23
+      }
+    },
+    {
+      "id": "de-mv-latein-sekii-gyo-2019-024-2d39d01d",
+      "sourceDocumentKey": "MV-LATEIN-SEKII-GYO-2019",
+      "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-sprache",
+      "topicCode": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-sprache",
+      "title": "ermitteln die zutreffende Bedeutung von Wörtern mit größerem Bedeutungsumfang im Kontext",
+      "description": "Die lernende Person kann ermitteln die zutreffende Bedeutung von Wörtern mit größerem Bedeutungsumfang im Kontext.",
+      "sourceText": "ermitteln die zutreffende Bedeutung von Wörtern mit größerem Bedeutungsumfang im Kontext",
+      "sourceRef": "S. 10-15, Qualifikationsphase, Standards · Sprache",
+      "sourceSpan": {
+        "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-sprache",
+        "label": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-sprache#24"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase",
+        "field": "Standards · Sprache",
+        "extractionMethod": "Extrahiert Standards, verbindliche Inhalte und prozessbezogene Kompetenzbeispiele aus dem amtlichen MV-Rahmenplan Latein Gymnasiale Oberstufe 2019.",
+        "sourceIndex": 24
+      }
+    },
+    {
+      "id": "de-mv-latein-sekii-gyo-2019-025-89c15a87",
+      "sourceDocumentKey": "MV-LATEIN-SEKII-GYO-2019",
+      "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-sprache",
+      "topicCode": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-sprache",
+      "title": "erschließen selbstständig aufgrund von Wortbildungsgesetzen unbekannte lateinische Wörter",
+      "description": "Die lernende Person kann erschließen selbstständig aufgrund von Wortbildungsgesetzen unbekannte lateinische Wörter.",
+      "sourceText": "erschließen selbstständig aufgrund von Wortbildungsgesetzen unbekannte lateinische Wörter",
+      "sourceRef": "S. 10-15, Qualifikationsphase, Standards · Sprache",
+      "sourceSpan": {
+        "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-sprache",
+        "label": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-sprache#25"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase",
+        "field": "Standards · Sprache",
+        "extractionMethod": "Extrahiert Standards, verbindliche Inhalte und prozessbezogene Kompetenzbeispiele aus dem amtlichen MV-Rahmenplan Latein Gymnasiale Oberstufe 2019.",
+        "sourceIndex": 25
+      }
+    },
+    {
+      "id": "de-mv-latein-sekii-gyo-2019-026-44882f54",
+      "sourceDocumentKey": "MV-LATEIN-SEKII-GYO-2019",
+      "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-sprache",
+      "topicCode": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-sprache",
+      "title": "vergleichen das Lateinische mit anderen Sprachen, insbesondere mit Deutsch, Englisch und den ...",
+      "description": "Die lernende Person kann vergleichen das Lateinische mit anderen Sprachen, insbesondere mit Deutsch, Englisch und den romanischen Sprachen.",
+      "sourceText": "vergleichen das Lateinische mit anderen Sprachen, insbesondere mit Deutsch, Englisch und den romanischen Sprachen",
+      "sourceRef": "S. 10-15, Qualifikationsphase, Standards · Sprache",
+      "sourceSpan": {
+        "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-sprache",
+        "label": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-sprache#26"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase",
+        "field": "Standards · Sprache",
+        "extractionMethod": "Extrahiert Standards, verbindliche Inhalte und prozessbezogene Kompetenzbeispiele aus dem amtlichen MV-Rahmenplan Latein Gymnasiale Oberstufe 2019.",
+        "sourceIndex": 26
+      }
+    },
+    {
+      "id": "de-mv-latein-sekii-gyo-2019-027-4778997a",
+      "sourceDocumentKey": "MV-LATEIN-SEKII-GYO-2019",
+      "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-sprache",
+      "topicCode": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-sprache",
+      "title": "erschließen selbstständig aus dem Lateinischen abgeleitete Fremdwörter und unbekannte Vokabel...",
+      "description": "Die lernende Person kann erschließen selbstständig aus dem Lateinischen abgeleitete Fremdwörter und unbekannte Vokabeln moderner Fremdsprachen.",
+      "sourceText": "erschließen selbstständig aus dem Lateinischen abgeleitete Fremdwörter und unbekannte Vokabeln moderner Fremdsprachen",
+      "sourceRef": "S. 10-15, Qualifikationsphase, Standards · Sprache",
+      "sourceSpan": {
+        "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-sprache",
+        "label": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-sprache#27"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase",
+        "field": "Standards · Sprache",
+        "extractionMethod": "Extrahiert Standards, verbindliche Inhalte und prozessbezogene Kompetenzbeispiele aus dem amtlichen MV-Rahmenplan Latein Gymnasiale Oberstufe 2019.",
+        "sourceIndex": 27
+      }
+    },
+    {
+      "id": "de-mv-latein-sekii-gyo-2019-028-b320030a",
+      "sourceDocumentKey": "MV-LATEIN-SEKII-GYO-2019",
+      "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-sprache",
+      "topicCode": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-sprache",
+      "title": "stellen die Ausdrucksmöglichkeiten und Funktionsweisen gegenüber",
+      "description": "Die lernende Person kann stellen die Ausdrucksmöglichkeiten und Funktionsweisen gegenüber.",
+      "sourceText": "stellen die Ausdrucksmöglichkeiten und Funktionsweisen gegenüber",
+      "sourceRef": "S. 10-15, Qualifikationsphase, Standards · Sprache",
+      "sourceSpan": {
+        "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-sprache",
+        "label": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-sprache#28"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase",
+        "field": "Standards · Sprache",
+        "extractionMethod": "Extrahiert Standards, verbindliche Inhalte und prozessbezogene Kompetenzbeispiele aus dem amtlichen MV-Rahmenplan Latein Gymnasiale Oberstufe 2019.",
+        "sourceIndex": 28
+      }
+    },
+    {
+      "id": "de-mv-latein-sekii-gyo-2019-029-de6c2864",
+      "sourceDocumentKey": "MV-LATEIN-SEKII-GYO-2019",
+      "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-sprache",
+      "topicCode": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-sprache",
+      "title": "weisen stilistische Eigenheiten lateinischer Autoren nach",
+      "description": "Die lernende Person kann weisen stilistische Eigenheiten lateinischer Autoren nach.",
+      "sourceText": "weisen stilistische Eigenheiten lateinischer Autoren nach",
+      "sourceRef": "S. 10-15, Qualifikationsphase, Standards · Sprache",
+      "sourceSpan": {
+        "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-sprache",
+        "label": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-sprache#29"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase",
+        "field": "Standards · Sprache",
+        "extractionMethod": "Extrahiert Standards, verbindliche Inhalte und prozessbezogene Kompetenzbeispiele aus dem amtlichen MV-Rahmenplan Latein Gymnasiale Oberstufe 2019.",
+        "sourceIndex": 29
+      }
+    },
+    {
+      "id": "de-mv-latein-sekii-gyo-2019-030-df4d51ba",
+      "sourceDocumentKey": "MV-LATEIN-SEKII-GYO-2019",
+      "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-sprache",
+      "topicCode": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-sprache",
+      "title": "bilden ansatzweise sprachlich-stilistische Gestaltungsmittel bei einer Übersetzung nach",
+      "description": "Die lernende Person kann bilden ansatzweise sprachlich-stilistische Gestaltungsmittel bei einer Übersetzung nach.",
+      "sourceText": "bilden ansatzweise sprachlich-stilistische Gestaltungsmittel bei einer Übersetzung nach",
+      "sourceRef": "S. 10-15, Qualifikationsphase, Standards · Sprache",
+      "sourceSpan": {
+        "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-sprache",
+        "label": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-sprache#30"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase",
+        "field": "Standards · Sprache",
+        "extractionMethod": "Extrahiert Standards, verbindliche Inhalte und prozessbezogene Kompetenzbeispiele aus dem amtlichen MV-Rahmenplan Latein Gymnasiale Oberstufe 2019.",
+        "sourceIndex": 30
+      }
+    },
+    {
+      "id": "de-mv-latein-sekii-gyo-2019-031-a22f2c0b",
+      "sourceDocumentKey": "MV-LATEIN-SEKII-GYO-2019",
+      "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-text",
+      "topicCode": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-text",
+      "title": "übersetzen lateinische Texte unter Berücksichtigung von lektürerelevanten Phänomenen der Text...",
+      "description": "Die lernende Person kann übersetzen lateinische Texte unter Berücksichtigung von lektürerelevanten Phänomenen der Textgrammatik und komplexer Satzstrukturen.",
+      "sourceText": "übersetzen lateinische Texte unter Berücksichtigung von lektürerelevanten Phänomenen der Textgrammatik und komplexer Satzstrukturen",
+      "sourceRef": "S. 10-15, Qualifikationsphase, Standards · Text",
+      "sourceSpan": {
+        "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-text",
+        "label": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-text#31"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase",
+        "field": "Standards · Text",
+        "extractionMethod": "Extrahiert Standards, verbindliche Inhalte und prozessbezogene Kompetenzbeispiele aus dem amtlichen MV-Rahmenplan Latein Gymnasiale Oberstufe 2019.",
+        "sourceIndex": 31
+      }
+    },
+    {
+      "id": "de-mv-latein-sekii-gyo-2019-032-1761f702",
+      "sourceDocumentKey": "MV-LATEIN-SEKII-GYO-2019",
+      "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-text",
+      "topicCode": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-text",
+      "title": "unterscheiden grundlegende antike Literaturgattungen und erläutern Beispiele ihrer Wir-kungsg...",
+      "description": "Die lernende Person kann unterscheiden grundlegende antike Literaturgattungen und erläutern Beispiele ihrer Wir-kungsgeschichte.",
+      "sourceText": "unterscheiden grundlegende antike Literaturgattungen und erläutern Beispiele ihrer Wir-kungsgeschichte",
+      "sourceRef": "S. 10-15, Qualifikationsphase, Standards · Text",
+      "sourceSpan": {
+        "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-text",
+        "label": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-text#32"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase",
+        "field": "Standards · Text",
+        "extractionMethod": "Extrahiert Standards, verbindliche Inhalte und prozessbezogene Kompetenzbeispiele aus dem amtlichen MV-Rahmenplan Latein Gymnasiale Oberstufe 2019.",
+        "sourceIndex": 32
+      }
+    },
+    {
+      "id": "de-mv-latein-sekii-gyo-2019-033-b0fa7fe1",
+      "sourceDocumentKey": "MV-LATEIN-SEKII-GYO-2019",
+      "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-text",
+      "topicCode": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-text",
+      "title": "ordnen ausgewählte Werke lateinischer Literatur zeitlich ein",
+      "description": "Die lernende Person kann ordnen ausgewählte Werke lateinischer Literatur zeitlich ein.",
+      "sourceText": "ordnen ausgewählte Werke lateinischer Literatur zeitlich ein",
+      "sourceRef": "S. 10-15, Qualifikationsphase, Standards · Text",
+      "sourceSpan": {
+        "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-text",
+        "label": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-text#33"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase",
+        "field": "Standards · Text",
+        "extractionMethod": "Extrahiert Standards, verbindliche Inhalte und prozessbezogene Kompetenzbeispiele aus dem amtlichen MV-Rahmenplan Latein Gymnasiale Oberstufe 2019.",
+        "sourceIndex": 33
+      }
+    },
+    {
+      "id": "de-mv-latein-sekii-gyo-2019-034-3b10bacd",
+      "sourceDocumentKey": "MV-LATEIN-SEKII-GYO-2019",
+      "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-text",
+      "topicCode": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-text",
+      "title": "setzen sich mit Dichtung als Ausdruck menschlicher Empfindungen auseinander",
+      "description": "Die lernende Person kann setzen sich mit Dichtung als Ausdruck menschlicher Empfindungen auseinander.",
+      "sourceText": "setzen sich mit Dichtung als Ausdruck menschlicher Empfindungen auseinander",
+      "sourceRef": "S. 10-15, Qualifikationsphase, Standards · Text",
+      "sourceSpan": {
+        "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-text",
+        "label": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-text#34"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase",
+        "field": "Standards · Text",
+        "extractionMethod": "Extrahiert Standards, verbindliche Inhalte und prozessbezogene Kompetenzbeispiele aus dem amtlichen MV-Rahmenplan Latein Gymnasiale Oberstufe 2019.",
+        "sourceIndex": 34
+      }
+    },
+    {
+      "id": "de-mv-latein-sekii-gyo-2019-035-82bb8aea",
+      "sourceDocumentKey": "MV-LATEIN-SEKII-GYO-2019",
+      "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-text",
+      "topicCode": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-text",
+      "title": "verstehen Werke der Dichtung als Darstellungsform politischer Ideen",
+      "description": "Die lernende Person kann verstehen Werke der Dichtung als Darstellungsform politischer Ideen.",
+      "sourceText": "verstehen Werke der Dichtung als Darstellungsform politischer Ideen",
+      "sourceRef": "S. 10-15, Qualifikationsphase, Standards · Text",
+      "sourceSpan": {
+        "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-text",
+        "label": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-text#35"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase",
+        "field": "Standards · Text",
+        "extractionMethod": "Extrahiert Standards, verbindliche Inhalte und prozessbezogene Kompetenzbeispiele aus dem amtlichen MV-Rahmenplan Latein Gymnasiale Oberstufe 2019.",
+        "sourceIndex": 35
+      }
+    },
+    {
+      "id": "de-mv-latein-sekii-gyo-2019-036-0b0f9c36",
+      "sourceDocumentKey": "MV-LATEIN-SEKII-GYO-2019",
+      "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-text",
+      "topicCode": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-text",
+      "title": "analysieren ausgewählte lektürerelevante Versmaße",
+      "description": "Die lernende Person kann analysieren ausgewählte lektürerelevante Versmaße.",
+      "sourceText": "analysieren ausgewählte lektürerelevante Versmaße",
+      "sourceRef": "S. 10-15, Qualifikationsphase, Standards · Text",
+      "sourceSpan": {
+        "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-text",
+        "label": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-text#36"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase",
+        "field": "Standards · Text",
+        "extractionMethod": "Extrahiert Standards, verbindliche Inhalte und prozessbezogene Kompetenzbeispiele aus dem amtlichen MV-Rahmenplan Latein Gymnasiale Oberstufe 2019.",
+        "sourceIndex": 36
+      }
+    },
+    {
+      "id": "de-mv-latein-sekii-gyo-2019-037-00a82ae5",
+      "sourceDocumentKey": "MV-LATEIN-SEKII-GYO-2019",
+      "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-text",
+      "topicCode": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-text",
+      "title": "vergleichen verschiedene Übersetzungen desselben Textes in Bezug auf den Originaltext und neh...",
+      "description": "Die lernende Person kann vergleichen verschiedene Übersetzungen desselben Textes in Bezug auf den Originaltext und nehmen begründet dazu Stellung.",
+      "sourceText": "vergleichen verschiedene Übersetzungen desselben Textes in Bezug auf den Originaltext und nehmen begründet dazu Stellung",
+      "sourceRef": "S. 10-15, Qualifikationsphase, Standards · Text",
+      "sourceSpan": {
+        "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-text",
+        "label": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-text#37"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase",
+        "field": "Standards · Text",
+        "extractionMethod": "Extrahiert Standards, verbindliche Inhalte und prozessbezogene Kompetenzbeispiele aus dem amtlichen MV-Rahmenplan Latein Gymnasiale Oberstufe 2019.",
+        "sourceIndex": 37
+      }
+    },
+    {
+      "id": "de-mv-latein-sekii-gyo-2019-038-2db681e8",
+      "sourceDocumentKey": "MV-LATEIN-SEKII-GYO-2019",
+      "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-text",
+      "topicCode": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-text",
+      "title": "lesen und betonen lateinische Texte richtig und sinngemäß",
+      "description": "Die lernende Person kann lesen und betonen lateinische Texte richtig und sinngemäß.",
+      "sourceText": "lesen und betonen lateinische Texte richtig und sinngemäß",
+      "sourceRef": "S. 10-15, Qualifikationsphase, Standards · Text",
+      "sourceSpan": {
+        "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-text",
+        "label": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-text#38"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase",
+        "field": "Standards · Text",
+        "extractionMethod": "Extrahiert Standards, verbindliche Inhalte und prozessbezogene Kompetenzbeispiele aus dem amtlichen MV-Rahmenplan Latein Gymnasiale Oberstufe 2019.",
+        "sourceIndex": 38
+      }
+    },
+    {
+      "id": "de-mv-latein-sekii-gyo-2019-039-3077db24",
+      "sourceDocumentKey": "MV-LATEIN-SEKII-GYO-2019",
+      "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-kultur",
+      "topicCode": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-kultur",
+      "title": "setzen sich mit ausgewählten philosophischen Strömungen der römischen Antike auseinan-der",
+      "description": "Die lernende Person kann setzen sich mit ausgewählten philosophischen Strömungen der römischen Antike auseinan-der.",
+      "sourceText": "setzen sich mit ausgewählten philosophischen Strömungen der römischen Antike auseinan-der",
+      "sourceRef": "S. 10-15, Qualifikationsphase, Standards · Kultur",
+      "sourceSpan": {
+        "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-kultur",
+        "label": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-kultur#39"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase",
+        "field": "Standards · Kultur",
+        "extractionMethod": "Extrahiert Standards, verbindliche Inhalte und prozessbezogene Kompetenzbeispiele aus dem amtlichen MV-Rahmenplan Latein Gymnasiale Oberstufe 2019.",
+        "sourceIndex": 39
+      }
+    },
+    {
+      "id": "de-mv-latein-sekii-gyo-2019-040-1c91f0e0",
+      "sourceDocumentKey": "MV-LATEIN-SEKII-GYO-2019",
+      "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-kultur",
+      "topicCode": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-kultur",
+      "title": "würdigen bedeutende Persönlichkeiten der griechischen und römischen Antike",
+      "description": "Die lernende Person kann würdigen bedeutende Persönlichkeiten der griechischen und römischen Antike.",
+      "sourceText": "würdigen bedeutende Persönlichkeiten der griechischen und römischen Antike",
+      "sourceRef": "S. 10-15, Qualifikationsphase, Standards · Kultur",
+      "sourceSpan": {
+        "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-kultur",
+        "label": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-kultur#40"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase",
+        "field": "Standards · Kultur",
+        "extractionMethod": "Extrahiert Standards, verbindliche Inhalte und prozessbezogene Kompetenzbeispiele aus dem amtlichen MV-Rahmenplan Latein Gymnasiale Oberstufe 2019.",
+        "sourceIndex": 40
+      }
+    },
+    {
+      "id": "de-mv-latein-sekii-gyo-2019-041-78b43feb",
+      "sourceDocumentKey": "MV-LATEIN-SEKII-GYO-2019",
+      "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-kultur",
+      "topicCode": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-kultur",
+      "title": "stellen exemplarisch Bezüge zwischen der griechischen und römischen Kultur her",
+      "description": "Die lernende Person kann stellen exemplarisch Bezüge zwischen der griechischen und römischen Kultur her.",
+      "sourceText": "stellen exemplarisch Bezüge zwischen der griechischen und römischen Kultur her",
+      "sourceRef": "S. 10-15, Qualifikationsphase, Standards · Kultur",
+      "sourceSpan": {
+        "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-kultur",
+        "label": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-kultur#41"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase",
+        "field": "Standards · Kultur",
+        "extractionMethod": "Extrahiert Standards, verbindliche Inhalte und prozessbezogene Kompetenzbeispiele aus dem amtlichen MV-Rahmenplan Latein Gymnasiale Oberstufe 2019.",
+        "sourceIndex": 41
+      }
+    },
+    {
+      "id": "de-mv-latein-sekii-gyo-2019-042-51554403",
+      "sourceDocumentKey": "MV-LATEIN-SEKII-GYO-2019",
+      "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-kultur",
+      "topicCode": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-kultur",
+      "title": "ordnen die Stellung des frühen Christentums in der antiken Kultur ein",
+      "description": "Die lernende Person kann ordnen die Stellung des frühen Christentums in der antiken Kultur ein.",
+      "sourceText": "ordnen die Stellung des frühen Christentums in der antiken Kultur ein",
+      "sourceRef": "S. 10-15, Qualifikationsphase, Standards · Kultur",
+      "sourceSpan": {
+        "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-kultur",
+        "label": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-kultur#42"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase",
+        "field": "Standards · Kultur",
+        "extractionMethod": "Extrahiert Standards, verbindliche Inhalte und prozessbezogene Kompetenzbeispiele aus dem amtlichen MV-Rahmenplan Latein Gymnasiale Oberstufe 2019.",
+        "sourceIndex": 42
+      }
+    },
+    {
+      "id": "de-mv-latein-sekii-gyo-2019-043-dc6d56e4",
+      "sourceDocumentKey": "MV-LATEIN-SEKII-GYO-2019",
+      "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-kultur",
+      "topicCode": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-kultur",
+      "title": "nutzen Rezeptionsdokumente unterschiedlicher Epochen und Bereiche für die Interpretation",
+      "description": "Die lernende Person kann nutzen Rezeptionsdokumente unterschiedlicher Epochen und Bereiche für die Interpretation.",
+      "sourceText": "nutzen Rezeptionsdokumente unterschiedlicher Epochen und Bereiche für die Interpretation",
+      "sourceRef": "S. 10-15, Qualifikationsphase, Standards · Kultur",
+      "sourceSpan": {
+        "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-kultur",
+        "label": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-kultur#43"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase",
+        "field": "Standards · Kultur",
+        "extractionMethod": "Extrahiert Standards, verbindliche Inhalte und prozessbezogene Kompetenzbeispiele aus dem amtlichen MV-Rahmenplan Latein Gymnasiale Oberstufe 2019.",
+        "sourceIndex": 43
+      }
+    },
+    {
+      "id": "de-mv-latein-sekii-gyo-2019-044-7e6ca298",
+      "sourceDocumentKey": "MV-LATEIN-SEKII-GYO-2019",
+      "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-kultur",
+      "topicCode": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-kultur",
+      "title": "bewerten ausgewählte Nachwirkungen der antiken Kultur in der geistesgeschichtlichen und kultu...",
+      "description": "Die lernende Person kann bewerten ausgewählte Nachwirkungen der antiken Kultur in der geistesgeschichtlichen und kulturellen Entwicklung Europas.",
+      "sourceText": "bewerten ausgewählte Nachwirkungen der antiken Kultur in der geistesgeschichtlichen und kulturellen Entwicklung Europas",
+      "sourceRef": "S. 10-15, Qualifikationsphase, Standards · Kultur",
+      "sourceSpan": {
+        "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-kultur",
+        "label": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-kultur#44"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase",
+        "field": "Standards · Kultur",
+        "extractionMethod": "Extrahiert Standards, verbindliche Inhalte und prozessbezogene Kompetenzbeispiele aus dem amtlichen MV-Rahmenplan Latein Gymnasiale Oberstufe 2019.",
+        "sourceIndex": 44
+      }
+    },
+    {
+      "id": "de-mv-latein-sekii-gyo-2019-045-d3b4568e",
+      "sourceDocumentKey": "MV-LATEIN-SEKII-GYO-2019",
+      "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-kultur",
+      "topicCode": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-kultur",
+      "title": "beurteilen römische Haltungen gegenüber Fremden",
+      "description": "Die lernende Person kann beurteilen römische Haltungen gegenüber Fremden.",
+      "sourceText": "beurteilen römische Haltungen gegenüber Fremden",
+      "sourceRef": "S. 10-15, Qualifikationsphase, Standards · Kultur",
+      "sourceSpan": {
+        "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-kultur",
+        "label": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-kultur#45"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase",
+        "field": "Standards · Kultur",
+        "extractionMethod": "Extrahiert Standards, verbindliche Inhalte und prozessbezogene Kompetenzbeispiele aus dem amtlichen MV-Rahmenplan Latein Gymnasiale Oberstufe 2019.",
+        "sourceIndex": 45
+      }
+    },
+    {
+      "id": "de-mv-latein-sekii-gyo-2019-046-670acfed",
+      "sourceDocumentKey": "MV-LATEIN-SEKII-GYO-2019",
+      "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-kultur",
+      "topicCode": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-kultur",
+      "title": "geben strukturiert und systematisch Informationen über das römische Alltagsleben, die römi-sc...",
+      "description": "Die lernende Person kann geben strukturiert und systematisch Informationen über das römische Alltagsleben, die römi-sche Geschichte, römische Staats-und Gesellschaftsstrukturen, römische Religion, griechi-sche und römische Mythologie, römische Kunst und Architektur wieder.",
+      "sourceText": "geben strukturiert und systematisch Informationen über das römische Alltagsleben, die römi-sche Geschichte, römische Staats-und Gesellschaftsstrukturen, römische Religion, griechi-sche und römische Mythologie, römische Kunst und Architektur wieder",
+      "sourceRef": "S. 10-15, Qualifikationsphase, Standards · Kultur",
+      "sourceSpan": {
+        "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-kultur",
+        "label": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-kultur#46"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase",
+        "field": "Standards · Kultur",
+        "extractionMethod": "Extrahiert Standards, verbindliche Inhalte und prozessbezogene Kompetenzbeispiele aus dem amtlichen MV-Rahmenplan Latein Gymnasiale Oberstufe 2019.",
+        "sourceIndex": 46
+      }
+    },
+    {
+      "id": "de-mv-latein-sekii-gyo-2019-047-9cd388ef",
+      "sourceDocumentKey": "MV-LATEIN-SEKII-GYO-2019",
+      "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-kultur",
+      "topicCode": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-kultur",
+      "title": "stellen strukturiert und systematisch Informationen über die Topographie der antiken Welt",
+      "description": "Die lernende Person kann stellen strukturiert und systematisch Informationen über die Topographie der antiken Welt.",
+      "sourceText": "stellen strukturiert und systematisch Informationen über die Topographie der antiken Welt",
+      "sourceRef": "S. 10-15, Qualifikationsphase, Standards · Kultur",
+      "sourceSpan": {
+        "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-kultur",
+        "label": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-kultur#47"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase",
+        "field": "Standards · Kultur",
+        "extractionMethod": "Extrahiert Standards, verbindliche Inhalte und prozessbezogene Kompetenzbeispiele aus dem amtlichen MV-Rahmenplan Latein Gymnasiale Oberstufe 2019.",
+        "sourceIndex": 47
+      }
+    },
+    {
+      "id": "de-mv-latein-sekii-gyo-2019-048-07867bc6",
+      "sourceDocumentKey": "MV-LATEIN-SEKII-GYO-2019",
+      "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-fachspezifische-methoden",
+      "topicCode": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-fachspezifische-methoden",
+      "title": "ordnen komplexe Wissensbestände und nutzen individuelle Wege des Ein-prägens und des Erinnerns",
+      "description": "Die lernende Person kann ordnen komplexe Wissensbestände und nutzen individuelle Wege des Ein-prägens und des Erinnerns.",
+      "sourceText": "ordnen komplexe Wissensbestände und nutzen individuelle Wege des Ein-prägens und des Erinnerns",
+      "sourceRef": "S. 10-15, Qualifikationsphase, Standards · Fachspezifische Methoden",
+      "sourceSpan": {
+        "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-fachspezifische-methoden",
+        "label": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-fachspezifische-methoden#48"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase",
+        "field": "Standards · Fachspezifische Methoden",
+        "extractionMethod": "Extrahiert Standards, verbindliche Inhalte und prozessbezogene Kompetenzbeispiele aus dem amtlichen MV-Rahmenplan Latein Gymnasiale Oberstufe 2019.",
+        "sourceIndex": 48
+      }
+    },
+    {
+      "id": "de-mv-latein-sekii-gyo-2019-049-be3b1cbc",
+      "sourceDocumentKey": "MV-LATEIN-SEKII-GYO-2019",
+      "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-fachspezifische-methoden",
+      "topicCode": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-fachspezifische-methoden",
+      "title": "sammeln, verarbeiten und präsentieren Informationen bei der themenorien-tierten Arbeit",
+      "description": "Die lernende Person kann sammeln, verarbeiten und präsentieren Informationen bei der themenorien-tierten Arbeit.",
+      "sourceText": "sammeln, verarbeiten und präsentieren Informationen bei der themenorien-tierten Arbeit",
+      "sourceRef": "S. 10-15, Qualifikationsphase, Standards · Fachspezifische Methoden",
+      "sourceSpan": {
+        "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-fachspezifische-methoden",
+        "label": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-fachspezifische-methoden#49"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase",
+        "field": "Standards · Fachspezifische Methoden",
+        "extractionMethod": "Extrahiert Standards, verbindliche Inhalte und prozessbezogene Kompetenzbeispiele aus dem amtlichen MV-Rahmenplan Latein Gymnasiale Oberstufe 2019.",
+        "sourceIndex": 49
+      }
+    },
+    {
+      "id": "de-mv-latein-sekii-gyo-2019-050-b7d18ee8",
+      "sourceDocumentKey": "MV-LATEIN-SEKII-GYO-2019",
+      "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-fachspezifische-methoden",
+      "topicCode": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-fachspezifische-methoden",
+      "title": "benutzen zur Textarbeit u. a. Nachschlagewerke, Wörterbücher, Sekundärli-9 teratur und digita...",
+      "description": "Die lernende Person kann benutzen zur Textarbeit u. a. Nachschlagewerke, Wörterbücher, Sekundärli-9 teratur und digitale Medien.",
+      "sourceText": "benutzen zur Textarbeit u. a. Nachschlagewerke, Wörterbücher, Sekundärli-9 teratur und digitale Medien",
+      "sourceRef": "S. 10-15, Qualifikationsphase, Standards · Fachspezifische Methoden",
+      "sourceSpan": {
+        "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-fachspezifische-methoden",
+        "label": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-fachspezifische-methoden#50"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase",
+        "field": "Standards · Fachspezifische Methoden",
+        "extractionMethod": "Extrahiert Standards, verbindliche Inhalte und prozessbezogene Kompetenzbeispiele aus dem amtlichen MV-Rahmenplan Latein Gymnasiale Oberstufe 2019.",
+        "sourceIndex": 50
+      }
+    },
+    {
+      "id": "de-mv-latein-sekii-gyo-2019-051-c06bdc7c",
+      "sourceDocumentKey": "MV-LATEIN-SEKII-GYO-2019",
+      "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-fachspezifische-methoden",
+      "topicCode": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-fachspezifische-methoden",
+      "title": "leiten aus der Beobachtung und Analyse von Sachverhalten Regeln ab, indem sie Gesetzmäßigkeit...",
+      "description": "Die lernende Person kann leiten aus der Beobachtung und Analyse von Sachverhalten Regeln ab, indem sie Gesetzmäßigkeiten der lateinischen Sprache erfassen.",
+      "sourceText": "leiten aus der Beobachtung und Analyse von Sachverhalten Regeln ab, indem sie Gesetzmäßigkeiten der lateinischen Sprache erfassen",
+      "sourceRef": "S. 10-15, Qualifikationsphase, Standards · Fachspezifische Methoden",
+      "sourceSpan": {
+        "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-fachspezifische-methoden",
+        "label": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-fachspezifische-methoden#51"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase",
+        "field": "Standards · Fachspezifische Methoden",
+        "extractionMethod": "Extrahiert Standards, verbindliche Inhalte und prozessbezogene Kompetenzbeispiele aus dem amtlichen MV-Rahmenplan Latein Gymnasiale Oberstufe 2019.",
+        "sourceIndex": 51
+      }
+    },
+    {
+      "id": "de-mv-latein-sekii-gyo-2019-052-e3a65bb9",
+      "sourceDocumentKey": "MV-LATEIN-SEKII-GYO-2019",
+      "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-fachspezifische-methoden",
+      "topicCode": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-fachspezifische-methoden",
+      "title": "bearbeiten Aufgaben methodenbewusst, indem sie komplexe lateinische Tex-te schrittweise ersch...",
+      "description": "Die lernende Person kann bearbeiten Aufgaben methodenbewusst, indem sie komplexe lateinische Tex-te schrittweise erschließen und übersetzen.",
+      "sourceText": "bearbeiten Aufgaben methodenbewusst, indem sie komplexe lateinische Tex-te schrittweise erschließen und übersetzen",
+      "sourceRef": "S. 10-15, Qualifikationsphase, Standards · Fachspezifische Methoden",
+      "sourceSpan": {
+        "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-fachspezifische-methoden",
+        "label": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-fachspezifische-methoden#52"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase",
+        "field": "Standards · Fachspezifische Methoden",
+        "extractionMethod": "Extrahiert Standards, verbindliche Inhalte und prozessbezogene Kompetenzbeispiele aus dem amtlichen MV-Rahmenplan Latein Gymnasiale Oberstufe 2019.",
+        "sourceIndex": 52
+      }
+    },
+    {
+      "id": "de-mv-latein-sekii-gyo-2019-053-5ef97acd",
+      "sourceDocumentKey": "MV-LATEIN-SEKII-GYO-2019",
+      "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-fachspezifische-methoden",
+      "topicCode": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-fachspezifische-methoden",
+      "title": "zeigen in der Auseinandersetzung mit lateinischen Texten fremde und eigene Bewertungskriterie...",
+      "description": "Die lernende Person kann zeigen in der Auseinandersetzung mit lateinischen Texten fremde und eigene Bewertungskriterien auf.",
+      "sourceText": "zeigen in der Auseinandersetzung mit lateinischen Texten fremde und eigene Bewertungskriterien auf",
+      "sourceRef": "S. 10-15, Qualifikationsphase, Standards · Fachspezifische Methoden",
+      "sourceSpan": {
+        "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-fachspezifische-methoden",
+        "label": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-fachspezifische-methoden#53"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase",
+        "field": "Standards · Fachspezifische Methoden",
+        "extractionMethod": "Extrahiert Standards, verbindliche Inhalte und prozessbezogene Kompetenzbeispiele aus dem amtlichen MV-Rahmenplan Latein Gymnasiale Oberstufe 2019.",
+        "sourceIndex": 53
+      }
+    },
+    {
+      "id": "de-mv-latein-sekii-gyo-2019-054-ee3801e8",
+      "sourceDocumentKey": "MV-LATEIN-SEKII-GYO-2019",
+      "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-fachspezifische-methoden",
+      "topicCode": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-fachspezifische-methoden",
+      "title": "erschließen und übersetzen Texte im Bewusstsein, dass jede Übersetzung ei-ne Interpretation d...",
+      "description": "Die lernende Person kann erschließen und übersetzen Texte im Bewusstsein, dass jede Übersetzung ei-ne Interpretation darstellt, und nach hermeneutischen Regeln, indem sie Ein-zelbeobachtungen und Gesamttext, eigenes Vorverständnis und neue Infor-mationen produktiv aufeinander beziehen.",
+      "sourceText": "erschließen und übersetzen Texte im Bewusstsein, dass jede Übersetzung ei-ne Interpretation darstellt, und nach hermeneutischen Regeln, indem sie Ein-zelbeobachtungen und Gesamttext, eigenes Vorverständnis und neue Infor-mationen produktiv aufeinander beziehen",
+      "sourceRef": "S. 10-15, Qualifikationsphase, Standards · Fachspezifische Methoden",
+      "sourceSpan": {
+        "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-fachspezifische-methoden",
+        "label": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-fachspezifische-methoden#54"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase",
+        "field": "Standards · Fachspezifische Methoden",
+        "extractionMethod": "Extrahiert Standards, verbindliche Inhalte und prozessbezogene Kompetenzbeispiele aus dem amtlichen MV-Rahmenplan Latein Gymnasiale Oberstufe 2019.",
+        "sourceIndex": 54
+      }
+    },
+    {
+      "id": "de-mv-latein-sekii-gyo-2019-055-41d45618",
+      "sourceDocumentKey": "MV-LATEIN-SEKII-GYO-2019",
+      "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-fachspezifische-methoden",
+      "topicCode": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-fachspezifische-methoden",
+      "title": "nutzen zur Textarbeit das statarische und kursorische Lektüreverfahren sowie zweisprachige Te...",
+      "description": "Die lernende Person kann nutzen zur Textarbeit das statarische und kursorische Lektüreverfahren sowie zweisprachige Textausgaben.",
+      "sourceText": "nutzen zur Textarbeit das statarische und kursorische Lektüreverfahren sowie zweisprachige Textausgaben",
+      "sourceRef": "S. 10-15, Qualifikationsphase, Standards · Fachspezifische Methoden",
+      "sourceSpan": {
+        "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-fachspezifische-methoden",
+        "label": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-fachspezifische-methoden#55"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase",
+        "field": "Standards · Fachspezifische Methoden",
+        "extractionMethod": "Extrahiert Standards, verbindliche Inhalte und prozessbezogene Kompetenzbeispiele aus dem amtlichen MV-Rahmenplan Latein Gymnasiale Oberstufe 2019.",
+        "sourceIndex": 55
+      }
+    },
+    {
+      "id": "de-mv-latein-sekii-gyo-2019-056-95c76828",
+      "sourceDocumentKey": "MV-LATEIN-SEKII-GYO-2019",
+      "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-fachspezifische-methoden",
+      "topicCode": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-fachspezifische-methoden",
+      "title": "verstehen Texte aus ihrem historischen Kontext heraus, indem sie zwischen aktuellem Vorverstä...",
+      "description": "Die lernende Person kann verstehen Texte aus ihrem historischen Kontext heraus, indem sie zwischen aktuellem Vorverständnis und den vergangenen Voraussetzungen der Text-produktion und -rezeption unterscheiden duktiven Rezeption.",
+      "sourceText": "verstehen Texte aus ihrem historischen Kontext heraus, indem sie zwischen aktuellem Vorverständnis und den vergangenen Voraussetzungen der Text-produktion und -rezeption unterscheiden duktiven Rezeption",
+      "sourceRef": "S. 10-15, Qualifikationsphase, Standards · Fachspezifische Methoden",
+      "sourceSpan": {
+        "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-fachspezifische-methoden",
+        "label": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-fachspezifische-methoden#56"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase",
+        "field": "Standards · Fachspezifische Methoden",
+        "extractionMethod": "Extrahiert Standards, verbindliche Inhalte und prozessbezogene Kompetenzbeispiele aus dem amtlichen MV-Rahmenplan Latein Gymnasiale Oberstufe 2019.",
+        "sourceIndex": 56
+      }
+    },
+    {
+      "id": "de-mv-latein-sekii-gyo-2019-057-5bf6a3e8",
+      "sourceDocumentKey": "MV-LATEIN-SEKII-GYO-2019",
+      "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-fachspezifische-methoden",
+      "topicCode": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-fachspezifische-methoden",
+      "title": "gehen kreativ mit der Zielsprache um, indem sie lateinische Texte in ange-messener Form im De...",
+      "description": "Die lernende Person kann gehen kreativ mit der Zielsprache um, indem sie lateinische Texte in ange-messener Form im Deutschen wiedergeben.",
+      "sourceText": "gehen kreativ mit der Zielsprache um, indem sie lateinische Texte in ange-messener Form im Deutschen wiedergeben",
+      "sourceRef": "S. 10-15, Qualifikationsphase, Standards · Fachspezifische Methoden",
+      "sourceSpan": {
+        "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-fachspezifische-methoden",
+        "label": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-fachspezifische-methoden#57"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase",
+        "field": "Standards · Fachspezifische Methoden",
+        "extractionMethod": "Extrahiert Standards, verbindliche Inhalte und prozessbezogene Kompetenzbeispiele aus dem amtlichen MV-Rahmenplan Latein Gymnasiale Oberstufe 2019.",
+        "sourceIndex": 57
+      }
+    },
+    {
+      "id": "de-mv-latein-sekii-gyo-2019-058-8575c289",
+      "sourceDocumentKey": "MV-LATEIN-SEKII-GYO-2019",
+      "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-fachspezifische-methoden",
+      "topicCode": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-fachspezifische-methoden",
+      "title": "verfassen unterschiedliche Texte bzw. erstellen andere Werke, indem sie sich produktiv mit la...",
+      "description": "Die lernende Person kann verfassen unterschiedliche Texte bzw. erstellen andere Werke, indem sie sich produktiv mit lateinischen Werken auseinandersetzen..",
+      "sourceText": "verfassen unterschiedliche Texte bzw. erstellen andere Werke, indem sie sich produktiv mit lateinischen Werken auseinandersetzen.",
+      "sourceRef": "S. 10-15, Qualifikationsphase, Standards · Fachspezifische Methoden",
+      "sourceSpan": {
+        "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-fachspezifische-methoden",
+        "label": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-fachspezifische-methoden#58"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase",
+        "field": "Standards · Fachspezifische Methoden",
+        "extractionMethod": "Extrahiert Standards, verbindliche Inhalte und prozessbezogene Kompetenzbeispiele aus dem amtlichen MV-Rahmenplan Latein Gymnasiale Oberstufe 2019.",
+        "sourceIndex": 58
+      }
+    },
+    {
+      "id": "de-mv-latein-sekii-gyo-2019-059-ef5eb613",
+      "sourceDocumentKey": "MV-LATEIN-SEKII-GYO-2019",
+      "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-fachspezifische-methoden",
+      "topicCode": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-fachspezifische-methoden",
+      "title": "präsentieren Ergebnisse ihrer Arbeit adressatengerecht",
+      "description": "Die lernende Person kann präsentieren Ergebnisse ihrer Arbeit adressatengerecht.",
+      "sourceText": "präsentieren Ergebnisse ihrer Arbeit adressatengerecht",
+      "sourceRef": "S. 10-15, Qualifikationsphase, Standards · Fachspezifische Methoden",
+      "sourceSpan": {
+        "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-fachspezifische-methoden",
+        "label": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-standards-fachspezifische-methoden#59"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase",
+        "field": "Standards · Fachspezifische Methoden",
+        "extractionMethod": "Extrahiert Standards, verbindliche Inhalte und prozessbezogene Kompetenzbeispiele aus dem amtlichen MV-Rahmenplan Latein Gymnasiale Oberstufe 2019.",
+        "sourceIndex": 59
+      }
+    },
+    {
+      "id": "de-mv-latein-sekii-gyo-2019-060-75db8e93",
+      "sourceDocumentKey": "MV-LATEIN-SEKII-GYO-2019",
+      "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-unterrichtsinhalte-romische-gesellschaft-kultur-und-lebensweise",
+      "topicCode": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-unterrichtsinhalte-romische-gesellschaft-kultur-und-lebensweise",
+      "title": "Struktur und Bedeutung der familia im privaten parentes und liberi, Sklaven als weitere Famili-",
+      "description": "Die lernende Person kann struktur und Bedeutung der familia im privaten parentes und liberi, Sklaven als weitere Famili-.",
+      "sourceText": "Struktur und Bedeutung der familia im privaten parentes und liberi, Sklaven als weitere Famili-",
+      "sourceRef": "S. 10-15, Qualifikationsphase, Unterrichtsinhalte · Römische Gesellschaft, Kultur und Lebensweise",
+      "sourceSpan": {
+        "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-unterrichtsinhalte-romische-gesellschaft-kultur-und-lebensweise",
+        "label": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-unterrichtsinhalte-romische-gesellschaft-kultur-und-lebensweise#60"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase",
+        "field": "Unterrichtsinhalte · Römische Gesellschaft, Kultur und Lebensweise",
+        "extractionMethod": "Extrahiert Standards, verbindliche Inhalte und prozessbezogene Kompetenzbeispiele aus dem amtlichen MV-Rahmenplan Latein Gymnasiale Oberstufe 2019.",
+        "sourceIndex": 60
+      }
+    },
+    {
+      "id": "de-mv-latein-sekii-gyo-2019-061-a4f026db",
+      "sourceDocumentKey": "MV-LATEIN-SEKII-GYO-2019",
+      "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-unterrichtsinhalte-romische-gesellschaft-kultur-und-lebensweise",
+      "topicCode": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-unterrichtsinhalte-romische-gesellschaft-kultur-und-lebensweise",
+      "title": "Lebensbedingungen der verschiedenen gesell-historische Meilensteine des Ständekampfes",
+      "description": "Die lernende Person kann lebensbedingungen der verschiedenen gesell-historische Meilensteine des Ständekampfes.",
+      "sourceText": "Lebensbedingungen der verschiedenen gesell-historische Meilensteine des Ständekampfes",
+      "sourceRef": "S. 10-15, Qualifikationsphase, Unterrichtsinhalte · Römische Gesellschaft, Kultur und Lebensweise",
+      "sourceSpan": {
+        "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-unterrichtsinhalte-romische-gesellschaft-kultur-und-lebensweise",
+        "label": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-unterrichtsinhalte-romische-gesellschaft-kultur-und-lebensweise#61"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase",
+        "field": "Unterrichtsinhalte · Römische Gesellschaft, Kultur und Lebensweise",
+        "extractionMethod": "Extrahiert Standards, verbindliche Inhalte und prozessbezogene Kompetenzbeispiele aus dem amtlichen MV-Rahmenplan Latein Gymnasiale Oberstufe 2019.",
+        "sourceIndex": 61
+      }
+    },
+    {
+      "id": "de-mv-latein-sekii-gyo-2019-062-75c98947",
+      "sourceDocumentKey": "MV-LATEIN-SEKII-GYO-2019",
+      "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-unterrichtsinhalte-romische-gesellschaft-kultur-und-lebensweise",
+      "topicCode": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-unterrichtsinhalte-romische-gesellschaft-kultur-und-lebensweise",
+      "title": "Rechte und Pflichten, Stellung Ehegesetze und Abhängigkeiten, Entwicklung",
+      "description": "Die lernende Person kann rechte und Pflichten, Stellung Ehegesetze und Abhängigkeiten, Entwicklung.",
+      "sourceText": "Rechte und Pflichten, Stellung Ehegesetze und Abhängigkeiten, Entwicklung",
+      "sourceRef": "S. 10-15, Qualifikationsphase, Unterrichtsinhalte · Römische Gesellschaft, Kultur und Lebensweise",
+      "sourceSpan": {
+        "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-unterrichtsinhalte-romische-gesellschaft-kultur-und-lebensweise",
+        "label": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-unterrichtsinhalte-romische-gesellschaft-kultur-und-lebensweise#62"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase",
+        "field": "Unterrichtsinhalte · Römische Gesellschaft, Kultur und Lebensweise",
+        "extractionMethod": "Extrahiert Standards, verbindliche Inhalte und prozessbezogene Kompetenzbeispiele aus dem amtlichen MV-Rahmenplan Latein Gymnasiale Oberstufe 2019.",
+        "sourceIndex": 62
+      }
+    },
+    {
+      "id": "de-mv-latein-sekii-gyo-2019-063-2bb9b40c",
+      "sourceDocumentKey": "MV-LATEIN-SEKII-GYO-2019",
+      "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-unterrichtsinhalte-romische-gesellschaft-kultur-und-lebensweise",
+      "topicCode": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-unterrichtsinhalte-romische-gesellschaft-kultur-und-lebensweise",
+      "title": "Idealvorstellungen und Lebenswirklichkeiten die Frau zwischen Matronat und Prostitution",
+      "description": "Die lernende Person kann idealvorstellungen und Lebenswirklichkeiten die Frau zwischen Matronat und Prostitution.",
+      "sourceText": "Idealvorstellungen und Lebenswirklichkeiten die Frau zwischen Matronat und Prostitution",
+      "sourceRef": "S. 10-15, Qualifikationsphase, Unterrichtsinhalte · Römische Gesellschaft, Kultur und Lebensweise",
+      "sourceSpan": {
+        "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-unterrichtsinhalte-romische-gesellschaft-kultur-und-lebensweise",
+        "label": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-unterrichtsinhalte-romische-gesellschaft-kultur-und-lebensweise#63"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase",
+        "field": "Unterrichtsinhalte · Römische Gesellschaft, Kultur und Lebensweise",
+        "extractionMethod": "Extrahiert Standards, verbindliche Inhalte und prozessbezogene Kompetenzbeispiele aus dem amtlichen MV-Rahmenplan Latein Gymnasiale Oberstufe 2019.",
+        "sourceIndex": 63
+      }
+    },
+    {
+      "id": "de-mv-latein-sekii-gyo-2019-064-640a04cb",
+      "sourceDocumentKey": "MV-LATEIN-SEKII-GYO-2019",
+      "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-unterrichtsinhalte-romische-gesellschaft-kultur-und-lebensweise",
+      "topicCode": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-unterrichtsinhalte-romische-gesellschaft-kultur-und-lebensweise",
+      "title": "Familie: Plin. epist. 3,16, 4,11 u. 19, 8,10",
+      "description": "Die lernende Person kann familie: Plin. epist. 3,16, 4,11 u. 19, 8,10.",
+      "sourceText": "Familie: Plin. epist. 3,16, 4,11 u. 19, 8,10",
+      "sourceRef": "S. 10-15, Qualifikationsphase, Unterrichtsinhalte · Römische Gesellschaft, Kultur und Lebensweise",
+      "sourceSpan": {
+        "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-unterrichtsinhalte-romische-gesellschaft-kultur-und-lebensweise",
+        "label": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-unterrichtsinhalte-romische-gesellschaft-kultur-und-lebensweise#64"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase",
+        "field": "Unterrichtsinhalte · Römische Gesellschaft, Kultur und Lebensweise",
+        "extractionMethod": "Extrahiert Standards, verbindliche Inhalte und prozessbezogene Kompetenzbeispiele aus dem amtlichen MV-Rahmenplan Latein Gymnasiale Oberstufe 2019.",
+        "sourceIndex": 64
+      }
+    },
+    {
+      "id": "de-mv-latein-sekii-gyo-2019-065-a6919f40",
+      "sourceDocumentKey": "MV-LATEIN-SEKII-GYO-2019",
+      "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-unterrichtsinhalte-romische-gesellschaft-kultur-und-lebensweise",
+      "topicCode": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-unterrichtsinhalte-romische-gesellschaft-kultur-und-lebensweise",
+      "title": "Öffentlichkeit/Unterhaltung: Sen. epist.",
+      "description": "Die lernende Person kann öffentlichkeit/Unterhaltung: Sen. epist..",
+      "sourceText": "Öffentlichkeit/Unterhaltung: Sen. epist.",
+      "sourceRef": "S. 10-15, Qualifikationsphase, Unterrichtsinhalte · Römische Gesellschaft, Kultur und Lebensweise",
+      "sourceSpan": {
+        "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-unterrichtsinhalte-romische-gesellschaft-kultur-und-lebensweise",
+        "label": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-unterrichtsinhalte-romische-gesellschaft-kultur-und-lebensweise#65"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase",
+        "field": "Unterrichtsinhalte · Römische Gesellschaft, Kultur und Lebensweise",
+        "extractionMethod": "Extrahiert Standards, verbindliche Inhalte und prozessbezogene Kompetenzbeispiele aus dem amtlichen MV-Rahmenplan Latein Gymnasiale Oberstufe 2019.",
+        "sourceIndex": 65
+      }
+    },
+    {
+      "id": "de-mv-latein-sekii-gyo-2019-066-e225ea8b",
+      "sourceDocumentKey": "MV-LATEIN-SEKII-GYO-2019",
+      "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-unterrichtsinhalte-romische-gesellschaft-kultur-und-lebensweise",
+      "topicCode": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-unterrichtsinhalte-romische-gesellschaft-kultur-und-lebensweise",
+      "title": "Frau in der Öffentlichkeit: Tac. ann. 3,33",
+      "description": "Die lernende Person kann frau in der Öffentlichkeit: Tac. ann. 3,33.",
+      "sourceText": "Frau in der Öffentlichkeit: Tac. ann. 3,33",
+      "sourceRef": "S. 10-15, Qualifikationsphase, Unterrichtsinhalte · Römische Gesellschaft, Kultur und Lebensweise",
+      "sourceSpan": {
+        "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-unterrichtsinhalte-romische-gesellschaft-kultur-und-lebensweise",
+        "label": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-unterrichtsinhalte-romische-gesellschaft-kultur-und-lebensweise#66"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase",
+        "field": "Unterrichtsinhalte · Römische Gesellschaft, Kultur und Lebensweise",
+        "extractionMethod": "Extrahiert Standards, verbindliche Inhalte und prozessbezogene Kompetenzbeispiele aus dem amtlichen MV-Rahmenplan Latein Gymnasiale Oberstufe 2019.",
+        "sourceIndex": 66
+      }
+    },
+    {
+      "id": "de-mv-latein-sekii-gyo-2019-067-ec4aa660",
+      "sourceDocumentKey": "MV-LATEIN-SEKII-GYO-2019",
+      "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-unterrichtsinhalte-romische-gesellschaft-kultur-und-lebensweise",
+      "topicCode": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-unterrichtsinhalte-romische-gesellschaft-kultur-und-lebensweise",
+      "title": "berühmte weibliche Vorbilder: Lucretia:",
+      "description": "Die lernende Person kann berühmte weibliche Vorbilder: Lucretia:.",
+      "sourceText": "berühmte weibliche Vorbilder: Lucretia:",
+      "sourceRef": "S. 10-15, Qualifikationsphase, Unterrichtsinhalte · Römische Gesellschaft, Kultur und Lebensweise",
+      "sourceSpan": {
+        "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-unterrichtsinhalte-romische-gesellschaft-kultur-und-lebensweise",
+        "label": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-unterrichtsinhalte-romische-gesellschaft-kultur-und-lebensweise#67"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase",
+        "field": "Unterrichtsinhalte · Römische Gesellschaft, Kultur und Lebensweise",
+        "extractionMethod": "Extrahiert Standards, verbindliche Inhalte und prozessbezogene Kompetenzbeispiele aus dem amtlichen MV-Rahmenplan Latein Gymnasiale Oberstufe 2019.",
+        "sourceIndex": 67
+      }
+    },
+    {
+      "id": "de-mv-latein-sekii-gyo-2019-068-e6cdf22f",
+      "sourceDocumentKey": "MV-LATEIN-SEKII-GYO-2019",
+      "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-unterrichtsinhalte-romische-gesellschaft-kultur-und-lebensweise",
+      "topicCode": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-unterrichtsinhalte-romische-gesellschaft-kultur-und-lebensweise",
+      "title": "Ehefrauen, Mütter, Töchter: Paulina: Sen.",
+      "description": "Die lernende Person kann ehefrauen, Mütter, Töchter: Paulina: Sen..",
+      "sourceText": "Ehefrauen, Mütter, Töchter: Paulina: Sen.",
+      "sourceRef": "S. 10-15, Qualifikationsphase, Unterrichtsinhalte · Römische Gesellschaft, Kultur und Lebensweise",
+      "sourceSpan": {
+        "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-unterrichtsinhalte-romische-gesellschaft-kultur-und-lebensweise",
+        "label": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-unterrichtsinhalte-romische-gesellschaft-kultur-und-lebensweise#68"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase",
+        "field": "Unterrichtsinhalte · Römische Gesellschaft, Kultur und Lebensweise",
+        "extractionMethod": "Extrahiert Standards, verbindliche Inhalte und prozessbezogene Kompetenzbeispiele aus dem amtlichen MV-Rahmenplan Latein Gymnasiale Oberstufe 2019.",
+        "sourceIndex": 68
+      }
+    },
+    {
+      "id": "de-mv-latein-sekii-gyo-2019-069-9e7bac02",
+      "sourceDocumentKey": "MV-LATEIN-SEKII-GYO-2019",
+      "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-unterrichtsinhalte-romische-gesellschaft-kultur-und-lebensweise",
+      "topicCode": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-unterrichtsinhalte-romische-gesellschaft-kultur-und-lebensweise",
+      "title": "Kritik an Frauen: Clodia: Cic. Cael. 31 f.",
+      "description": "Die lernende Person kann kritik an Frauen: Clodia: Cic. Cael. 31 f..",
+      "sourceText": "Kritik an Frauen: Clodia: Cic. Cael. 31 f.",
+      "sourceRef": "S. 10-15, Qualifikationsphase, Unterrichtsinhalte · Römische Gesellschaft, Kultur und Lebensweise",
+      "sourceSpan": {
+        "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-unterrichtsinhalte-romische-gesellschaft-kultur-und-lebensweise",
+        "label": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-unterrichtsinhalte-romische-gesellschaft-kultur-und-lebensweise#69"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase",
+        "field": "Unterrichtsinhalte · Römische Gesellschaft, Kultur und Lebensweise",
+        "extractionMethod": "Extrahiert Standards, verbindliche Inhalte und prozessbezogene Kompetenzbeispiele aus dem amtlichen MV-Rahmenplan Latein Gymnasiale Oberstufe 2019.",
+        "sourceIndex": 69
+      }
+    },
+    {
+      "id": "de-mv-latein-sekii-gyo-2019-070-d510ff16",
+      "sourceDocumentKey": "MV-LATEIN-SEKII-GYO-2019",
+      "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-unterrichtsinhalte-romische-gesellschaft-kultur-und-lebensweise",
+      "topicCode": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-unterrichtsinhalte-romische-gesellschaft-kultur-und-lebensweise",
+      "title": "Freizügiger Lebenswandel und Prostitution:",
+      "description": "Die lernende Person kann freizügiger Lebenswandel und Prostitution:.",
+      "sourceText": "Freizügiger Lebenswandel und Prostitution:",
+      "sourceRef": "S. 10-15, Qualifikationsphase, Unterrichtsinhalte · Römische Gesellschaft, Kultur und Lebensweise",
+      "sourceSpan": {
+        "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-unterrichtsinhalte-romische-gesellschaft-kultur-und-lebensweise",
+        "label": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-unterrichtsinhalte-romische-gesellschaft-kultur-und-lebensweise#70"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase",
+        "field": "Unterrichtsinhalte · Römische Gesellschaft, Kultur und Lebensweise",
+        "extractionMethod": "Extrahiert Standards, verbindliche Inhalte und prozessbezogene Kompetenzbeispiele aus dem amtlichen MV-Rahmenplan Latein Gymnasiale Oberstufe 2019.",
+        "sourceIndex": 70
+      }
+    },
+    {
+      "id": "de-mv-latein-sekii-gyo-2019-071-75cc6e1f",
+      "sourceDocumentKey": "MV-LATEIN-SEKII-GYO-2019",
+      "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-unterrichtsinhalte-romische-gesellschaft-kultur-und-lebensweise",
+      "topicCode": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-unterrichtsinhalte-romische-gesellschaft-kultur-und-lebensweise",
+      "title": "Rollenverteilung und Kritik: Columella, z. B.",
+      "description": "Die lernende Person kann rollenverteilung und Kritik: Columella, z. B..",
+      "sourceText": "Rollenverteilung und Kritik: Columella, z. B.",
+      "sourceRef": "S. 10-15, Qualifikationsphase, Unterrichtsinhalte · Römische Gesellschaft, Kultur und Lebensweise",
+      "sourceSpan": {
+        "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-unterrichtsinhalte-romische-gesellschaft-kultur-und-lebensweise",
+        "label": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-unterrichtsinhalte-romische-gesellschaft-kultur-und-lebensweise#71"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase",
+        "field": "Unterrichtsinhalte · Römische Gesellschaft, Kultur und Lebensweise",
+        "extractionMethod": "Extrahiert Standards, verbindliche Inhalte und prozessbezogene Kompetenzbeispiele aus dem amtlichen MV-Rahmenplan Latein Gymnasiale Oberstufe 2019.",
+        "sourceIndex": 71
+      }
+    },
+    {
+      "id": "de-mv-latein-sekii-gyo-2019-072-c8b600e1",
+      "sourceDocumentKey": "MV-LATEIN-SEKII-GYO-2019",
+      "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-unterrichtsinhalte-romische-gesellschaft-kultur-und-lebensweise",
+      "topicCode": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-unterrichtsinhalte-romische-gesellschaft-kultur-und-lebensweise",
+      "title": "mittel-und neulateinische Schriften",
+      "description": "Die lernende Person kann mittel-und neulateinische Schriften.",
+      "sourceText": "mittel-und neulateinische Schriften",
+      "sourceRef": "S. 16-19, Qualifikationsphase, Unterrichtsinhalte · Römische Gesellschaft, Kultur und Lebensweise",
+      "sourceSpan": {
+        "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-unterrichtsinhalte-romische-gesellschaft-kultur-und-lebensweise",
+        "label": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-unterrichtsinhalte-romische-gesellschaft-kultur-und-lebensweise#72"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase",
+        "field": "Unterrichtsinhalte · Römische Gesellschaft, Kultur und Lebensweise",
+        "extractionMethod": "Extrahiert Standards, verbindliche Inhalte und prozessbezogene Kompetenzbeispiele aus dem amtlichen MV-Rahmenplan Latein Gymnasiale Oberstufe 2019.",
+        "sourceIndex": 72
+      }
+    },
+    {
+      "id": "de-mv-latein-sekii-gyo-2019-073-93ac9ce4",
+      "sourceDocumentKey": "MV-LATEIN-SEKII-GYO-2019",
+      "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-unterrichtsinhalte-romische-gesellschaft-kultur-und-lebensweise",
+      "topicCode": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-unterrichtsinhalte-romische-gesellschaft-kultur-und-lebensweise",
+      "title": "Gaius Mucius Scaevola: Liv. Ab urbe condita 2,12",
+      "description": "Die lernende Person kann gaius Mucius Scaevola: Liv. Ab urbe condita 2,12.",
+      "sourceText": "Gaius Mucius Scaevola: Liv. Ab urbe condita 2,12",
+      "sourceRef": "S. 16-19, Qualifikationsphase, Unterrichtsinhalte · Römische Gesellschaft, Kultur und Lebensweise",
+      "sourceSpan": {
+        "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-unterrichtsinhalte-romische-gesellschaft-kultur-und-lebensweise",
+        "label": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-unterrichtsinhalte-romische-gesellschaft-kultur-und-lebensweise#73"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase",
+        "field": "Unterrichtsinhalte · Römische Gesellschaft, Kultur und Lebensweise",
+        "extractionMethod": "Extrahiert Standards, verbindliche Inhalte und prozessbezogene Kompetenzbeispiele aus dem amtlichen MV-Rahmenplan Latein Gymnasiale Oberstufe 2019.",
+        "sourceIndex": 73
+      }
+    },
+    {
+      "id": "de-mv-latein-sekii-gyo-2019-074-3e86f159",
+      "sourceDocumentKey": "MV-LATEIN-SEKII-GYO-2019",
+      "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-unterrichtsinhalte-romische-gesellschaft-kultur-und-lebensweise",
+      "topicCode": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-unterrichtsinhalte-romische-gesellschaft-kultur-und-lebensweise",
+      "title": "Cloelia: Liv. Ab urbe condita 2,13,6-11",
+      "description": "Die lernende Person kann cloelia: Liv. Ab urbe condita 2,13,6-11.",
+      "sourceText": "Cloelia: Liv. Ab urbe condita 2,13,6-11",
+      "sourceRef": "S. 16-19, Qualifikationsphase, Unterrichtsinhalte · Römische Gesellschaft, Kultur und Lebensweise",
+      "sourceSpan": {
+        "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-unterrichtsinhalte-romische-gesellschaft-kultur-und-lebensweise",
+        "label": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-unterrichtsinhalte-romische-gesellschaft-kultur-und-lebensweise#74"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase",
+        "field": "Unterrichtsinhalte · Römische Gesellschaft, Kultur und Lebensweise",
+        "extractionMethod": "Extrahiert Standards, verbindliche Inhalte und prozessbezogene Kompetenzbeispiele aus dem amtlichen MV-Rahmenplan Latein Gymnasiale Oberstufe 2019.",
+        "sourceIndex": 74
+      }
+    },
+    {
+      "id": "de-mv-latein-sekii-gyo-2019-075-42291d56",
+      "sourceDocumentKey": "MV-LATEIN-SEKII-GYO-2019",
+      "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-unterrichtsinhalte-romische-gesellschaft-kultur-und-lebensweise",
+      "topicCode": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-unterrichtsinhalte-romische-gesellschaft-kultur-und-lebensweise",
+      "title": "Lucius Quinctius Cincinnatus: Liv. Ab urbe condita 3,26,29,1-7",
+      "description": "Die lernende Person kann lucius Quinctius Cincinnatus: Liv. Ab urbe condita 3,26,29,1-7.",
+      "sourceText": "Lucius Quinctius Cincinnatus: Liv. Ab urbe condita 3,26,29,1-7",
+      "sourceRef": "S. 16-19, Qualifikationsphase, Unterrichtsinhalte · Römische Gesellschaft, Kultur und Lebensweise",
+      "sourceSpan": {
+        "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-unterrichtsinhalte-romische-gesellschaft-kultur-und-lebensweise",
+        "label": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-unterrichtsinhalte-romische-gesellschaft-kultur-und-lebensweise#75"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase",
+        "field": "Unterrichtsinhalte · Römische Gesellschaft, Kultur und Lebensweise",
+        "extractionMethod": "Extrahiert Standards, verbindliche Inhalte und prozessbezogene Kompetenzbeispiele aus dem amtlichen MV-Rahmenplan Latein Gymnasiale Oberstufe 2019.",
+        "sourceIndex": 75
+      }
+    },
+    {
+      "id": "de-mv-latein-sekii-gyo-2019-076-b563f2a5",
+      "sourceDocumentKey": "MV-LATEIN-SEKII-GYO-2019",
+      "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-unterrichtsinhalte-romische-gesellschaft-kultur-und-lebensweise",
+      "topicCode": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-unterrichtsinhalte-romische-gesellschaft-kultur-und-lebensweise",
+      "title": "Horatius Cocles: Liv. Ab urbe condita 2,10 Einfluss des römischen Schulwesens auf die Nachwel...",
+      "description": "Die lernende Person kann horatius Cocles: Liv. Ab urbe condita 2,10 Einfluss des römischen Schulwesens auf die Nachwelt, septem artes liberales.",
+      "sourceText": "Horatius Cocles: Liv. Ab urbe condita 2,10 Einfluss des römischen Schulwesens auf die Nachwelt, septem artes liberales",
+      "sourceRef": "S. 16-19, Qualifikationsphase, Unterrichtsinhalte · Römische Gesellschaft, Kultur und Lebensweise",
+      "sourceSpan": {
+        "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-unterrichtsinhalte-romische-gesellschaft-kultur-und-lebensweise",
+        "label": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-unterrichtsinhalte-romische-gesellschaft-kultur-und-lebensweise#76"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase",
+        "field": "Unterrichtsinhalte · Römische Gesellschaft, Kultur und Lebensweise",
+        "extractionMethod": "Extrahiert Standards, verbindliche Inhalte und prozessbezogene Kompetenzbeispiele aus dem amtlichen MV-Rahmenplan Latein Gymnasiale Oberstufe 2019.",
+        "sourceIndex": 76
+      }
+    },
+    {
+      "id": "de-mv-latein-sekii-gyo-2019-077-0d788b63",
+      "sourceDocumentKey": "MV-LATEIN-SEKII-GYO-2019",
+      "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-unterrichtsinhalte-romische-gesellschaft-kultur-und-lebensweise",
+      "topicCode": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-unterrichtsinhalte-romische-gesellschaft-kultur-und-lebensweise",
+      "title": "Auswahl eines richtigen Lehrers: Plin. epist 2,18",
+      "description": "Die lernende Person kann auswahl eines richtigen Lehrers: Plin. epist 2,18.",
+      "sourceText": "Auswahl eines richtigen Lehrers: Plin. epist 2,18",
+      "sourceRef": "S. 16-19, Qualifikationsphase, Unterrichtsinhalte · Römische Gesellschaft, Kultur und Lebensweise",
+      "sourceSpan": {
+        "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-unterrichtsinhalte-romische-gesellschaft-kultur-und-lebensweise",
+        "label": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-unterrichtsinhalte-romische-gesellschaft-kultur-und-lebensweise#77"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase",
+        "field": "Unterrichtsinhalte · Römische Gesellschaft, Kultur und Lebensweise",
+        "extractionMethod": "Extrahiert Standards, verbindliche Inhalte und prozessbezogene Kompetenzbeispiele aus dem amtlichen MV-Rahmenplan Latein Gymnasiale Oberstufe 2019.",
+        "sourceIndex": 77
+      }
+    },
+    {
+      "id": "de-mv-latein-sekii-gyo-2019-078-6b88f516",
+      "sourceDocumentKey": "MV-LATEIN-SEKII-GYO-2019",
+      "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-unterrichtsinhalte-romische-gesellschaft-kultur-und-lebensweise",
+      "topicCode": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-unterrichtsinhalte-romische-gesellschaft-kultur-und-lebensweise",
+      "title": "Schulgründung in Mediolanum: Plin. epist. 4,13",
+      "description": "Die lernende Person kann schulgründung in Mediolanum: Plin. epist. 4,13.",
+      "sourceText": "Schulgründung in Mediolanum: Plin. epist. 4,13",
+      "sourceRef": "S. 16-19, Qualifikationsphase, Unterrichtsinhalte · Römische Gesellschaft, Kultur und Lebensweise",
+      "sourceSpan": {
+        "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-unterrichtsinhalte-romische-gesellschaft-kultur-und-lebensweise",
+        "label": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-unterrichtsinhalte-romische-gesellschaft-kultur-und-lebensweise#78"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase",
+        "field": "Unterrichtsinhalte · Römische Gesellschaft, Kultur und Lebensweise",
+        "extractionMethod": "Extrahiert Standards, verbindliche Inhalte und prozessbezogene Kompetenzbeispiele aus dem amtlichen MV-Rahmenplan Latein Gymnasiale Oberstufe 2019.",
+        "sourceIndex": 78
+      }
+    },
+    {
+      "id": "de-mv-latein-sekii-gyo-2019-079-4d9c4781",
+      "sourceDocumentKey": "MV-LATEIN-SEKII-GYO-2019",
+      "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-unterrichtsinhalte-romische-gesellschaft-kultur-und-lebensweise",
+      "topicCode": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-unterrichtsinhalte-romische-gesellschaft-kultur-und-lebensweise",
+      "title": "Kritik an Schule seiner Zeit: Sen. epist. 106",
+      "description": "Die lernende Person kann kritik an Schule seiner Zeit: Sen. epist. 106.",
+      "sourceText": "Kritik an Schule seiner Zeit: Sen. epist. 106",
+      "sourceRef": "S. 16-19, Qualifikationsphase, Unterrichtsinhalte · Römische Gesellschaft, Kultur und Lebensweise",
+      "sourceSpan": {
+        "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-unterrichtsinhalte-romische-gesellschaft-kultur-und-lebensweise",
+        "label": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-unterrichtsinhalte-romische-gesellschaft-kultur-und-lebensweise#79"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase",
+        "field": "Unterrichtsinhalte · Römische Gesellschaft, Kultur und Lebensweise",
+        "extractionMethod": "Extrahiert Standards, verbindliche Inhalte und prozessbezogene Kompetenzbeispiele aus dem amtlichen MV-Rahmenplan Latein Gymnasiale Oberstufe 2019.",
+        "sourceIndex": 79
+      }
+    },
+    {
+      "id": "de-mv-latein-sekii-gyo-2019-080-34187ec9",
+      "sourceDocumentKey": "MV-LATEIN-SEKII-GYO-2019",
+      "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-unterrichtsinhalte-romische-gesellschaft-kultur-und-lebensweise",
+      "topicCode": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-unterrichtsinhalte-romische-gesellschaft-kultur-und-lebensweise",
+      "title": "Klagebrief eines Studenten: Dunkelmän-nerbriefe (epistulae obscurorum virorum 2,19) Vorschlag...",
+      "description": "Die lernende Person kann klagebrief eines Studenten: Dunkelmän-nerbriefe (epistulae obscurorum virorum 2,19) Vorschlag zur inhaltlichen Vertiefung:.",
+      "sourceText": "Klagebrief eines Studenten: Dunkelmän-nerbriefe (epistulae obscurorum virorum 2,19) Vorschlag zur inhaltlichen Vertiefung:",
+      "sourceRef": "S. 16-19, Qualifikationsphase, Unterrichtsinhalte · Römische Gesellschaft, Kultur und Lebensweise",
+      "sourceSpan": {
+        "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-unterrichtsinhalte-romische-gesellschaft-kultur-und-lebensweise",
+        "label": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-unterrichtsinhalte-romische-gesellschaft-kultur-und-lebensweise#80"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase",
+        "field": "Unterrichtsinhalte · Römische Gesellschaft, Kultur und Lebensweise",
+        "extractionMethod": "Extrahiert Standards, verbindliche Inhalte und prozessbezogene Kompetenzbeispiele aus dem amtlichen MV-Rahmenplan Latein Gymnasiale Oberstufe 2019.",
+        "sourceIndex": 80
+      }
+    },
+    {
+      "id": "de-mv-latein-sekii-gyo-2019-081-87b7d65f",
+      "sourceDocumentKey": "MV-LATEIN-SEKII-GYO-2019",
+      "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-unterrichtsinhalte-romische-dichtung-und-rezeption",
+      "topicCode": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-unterrichtsinhalte-romische-dichtung-und-rezeption",
+      "title": "mythologische Anspielungen Funktion, Verwandlung, vielschichtige Bezie-",
+      "description": "Die lernende Person kann mythologische Anspielungen Funktion, Verwandlung, vielschichtige Bezie-.",
+      "sourceText": "mythologische Anspielungen Funktion, Verwandlung, vielschichtige Bezie-",
+      "sourceRef": "S. 16-19, Qualifikationsphase, Unterrichtsinhalte · Römische Dichtung und Rezeption",
+      "sourceSpan": {
+        "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-unterrichtsinhalte-romische-dichtung-und-rezeption",
+        "label": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-unterrichtsinhalte-romische-dichtung-und-rezeption#81"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase",
+        "field": "Unterrichtsinhalte · Römische Dichtung und Rezeption",
+        "extractionMethod": "Extrahiert Standards, verbindliche Inhalte und prozessbezogene Kompetenzbeispiele aus dem amtlichen MV-Rahmenplan Latein Gymnasiale Oberstufe 2019.",
+        "sourceIndex": 81
+      }
+    },
+    {
+      "id": "de-mv-latein-sekii-gyo-2019-082-354faad2",
+      "sourceDocumentKey": "MV-LATEIN-SEKII-GYO-2019",
+      "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-unterrichtsinhalte-romische-dichtung-und-rezeption",
+      "topicCode": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-unterrichtsinhalte-romische-dichtung-und-rezeption",
+      "title": "Biographisches in poetischer Form Darstellung eines Autors in Relation zum histo-",
+      "description": "Die lernende Person kann biographisches in poetischer Form Darstellung eines Autors in Relation zum histo-.",
+      "sourceText": "Biographisches in poetischer Form Darstellung eines Autors in Relation zum histo-",
+      "sourceRef": "S. 16-19, Qualifikationsphase, Unterrichtsinhalte · Römische Dichtung und Rezeption",
+      "sourceSpan": {
+        "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-unterrichtsinhalte-romische-dichtung-und-rezeption",
+        "label": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-unterrichtsinhalte-romische-dichtung-und-rezeption#82"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase",
+        "field": "Unterrichtsinhalte · Römische Dichtung und Rezeption",
+        "extractionMethod": "Extrahiert Standards, verbindliche Inhalte und prozessbezogene Kompetenzbeispiele aus dem amtlichen MV-Rahmenplan Latein Gymnasiale Oberstufe 2019.",
+        "sourceIndex": 82
+      }
+    },
+    {
+      "id": "de-mv-latein-sekii-gyo-2019-083-de4c22f6",
+      "sourceDocumentKey": "MV-LATEIN-SEKII-GYO-2019",
+      "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-unterrichtsinhalte-romische-dichtung-und-rezeption",
+      "topicCode": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-unterrichtsinhalte-romische-dichtung-und-rezeption",
+      "title": "Motive: Liebe, Hass, Macht, Rache als emotio-Eines der Motive ist vertieft zu behandeln.",
+      "description": "Die lernende Person kann motive: Liebe, Hass, Macht, Rache als emotio-Eines der Motive ist vertieft zu behandeln..",
+      "sourceText": "Motive: Liebe, Hass, Macht, Rache als emotio-Eines der Motive ist vertieft zu behandeln.",
+      "sourceRef": "S. 16-19, Qualifikationsphase, Unterrichtsinhalte · Römische Dichtung und Rezeption",
+      "sourceSpan": {
+        "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-unterrichtsinhalte-romische-dichtung-und-rezeption",
+        "label": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-unterrichtsinhalte-romische-dichtung-und-rezeption#83"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase",
+        "field": "Unterrichtsinhalte · Römische Dichtung und Rezeption",
+        "extractionMethod": "Extrahiert Standards, verbindliche Inhalte und prozessbezogene Kompetenzbeispiele aus dem amtlichen MV-Rahmenplan Latein Gymnasiale Oberstufe 2019.",
+        "sourceIndex": 83
+      }
+    },
+    {
+      "id": "de-mv-latein-sekii-gyo-2019-084-e25375c3",
+      "sourceDocumentKey": "MV-LATEIN-SEKII-GYO-2019",
+      "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-unterrichtsinhalte-romische-dichtung-und-rezeption",
+      "topicCode": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-unterrichtsinhalte-romische-dichtung-und-rezeption",
+      "title": "elegisches Distichon, Hexameter",
+      "description": "Die lernende Person kann elegisches Distichon, Hexameter.",
+      "sourceText": "elegisches Distichon, Hexameter",
+      "sourceRef": "S. 20-23, Qualifikationsphase, Unterrichtsinhalte · Römische Dichtung und Rezeption",
+      "sourceSpan": {
+        "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-unterrichtsinhalte-romische-dichtung-und-rezeption",
+        "label": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-unterrichtsinhalte-romische-dichtung-und-rezeption#84"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase",
+        "field": "Unterrichtsinhalte · Römische Dichtung und Rezeption",
+        "extractionMethod": "Extrahiert Standards, verbindliche Inhalte und prozessbezogene Kompetenzbeispiele aus dem amtlichen MV-Rahmenplan Latein Gymnasiale Oberstufe 2019.",
+        "sourceIndex": 84
+      }
+    },
+    {
+      "id": "de-mv-latein-sekii-gyo-2019-085-1d0a2132",
+      "sourceDocumentKey": "MV-LATEIN-SEKII-GYO-2019",
+      "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-unterrichtsinhalte-romische-dichtung-und-rezeption",
+      "topicCode": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-unterrichtsinhalte-romische-dichtung-und-rezeption",
+      "title": "poetische Stilistik Verdeutlichung des Zusammenspiels von In-",
+      "description": "Die lernende Person kann poetische Stilistik Verdeutlichung des Zusammenspiels von In-.",
+      "sourceText": "poetische Stilistik Verdeutlichung des Zusammenspiels von In-",
+      "sourceRef": "S. 20-23, Qualifikationsphase, Unterrichtsinhalte · Römische Dichtung und Rezeption",
+      "sourceSpan": {
+        "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-unterrichtsinhalte-romische-dichtung-und-rezeption",
+        "label": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-unterrichtsinhalte-romische-dichtung-und-rezeption#85"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase",
+        "field": "Unterrichtsinhalte · Römische Dichtung und Rezeption",
+        "extractionMethod": "Extrahiert Standards, verbindliche Inhalte und prozessbezogene Kompetenzbeispiele aus dem amtlichen MV-Rahmenplan Latein Gymnasiale Oberstufe 2019.",
+        "sourceIndex": 85
+      }
+    },
+    {
+      "id": "de-mv-latein-sekii-gyo-2019-086-136c3e1d",
+      "sourceDocumentKey": "MV-LATEIN-SEKII-GYO-2019",
+      "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-unterrichtsinhalte-romische-dichtung-und-rezeption",
+      "topicCode": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-unterrichtsinhalte-romische-dichtung-und-rezeption",
+      "title": "Epochen und Gattungen zwischen imitatio und",
+      "description": "Die lernende Person kann epochen und Gattungen zwischen imitatio und.",
+      "sourceText": "Epochen und Gattungen zwischen imitatio und",
+      "sourceRef": "S. 20-23, Qualifikationsphase, Unterrichtsinhalte · Römische Dichtung und Rezeption",
+      "sourceSpan": {
+        "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-unterrichtsinhalte-romische-dichtung-und-rezeption",
+        "label": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-unterrichtsinhalte-romische-dichtung-und-rezeption#86"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase",
+        "field": "Unterrichtsinhalte · Römische Dichtung und Rezeption",
+        "extractionMethod": "Extrahiert Standards, verbindliche Inhalte und prozessbezogene Kompetenzbeispiele aus dem amtlichen MV-Rahmenplan Latein Gymnasiale Oberstufe 2019.",
+        "sourceIndex": 86
+      }
+    },
+    {
+      "id": "de-mv-latein-sekii-gyo-2019-087-9c76b257",
+      "sourceDocumentKey": "MV-LATEIN-SEKII-GYO-2019",
+      "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-unterrichtsinhalte-romische-dichtung-und-rezeption",
+      "topicCode": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-unterrichtsinhalte-romische-dichtung-und-rezeption",
+      "title": "Einfluss der römischen Literatur auf den euro-",
+      "description": "Die lernende Person kann einfluss der römischen Literatur auf den euro-.",
+      "sourceText": "Einfluss der römischen Literatur auf den euro-",
+      "sourceRef": "S. 20-23, Qualifikationsphase, Unterrichtsinhalte · Römische Dichtung und Rezeption",
+      "sourceSpan": {
+        "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-unterrichtsinhalte-romische-dichtung-und-rezeption",
+        "label": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-unterrichtsinhalte-romische-dichtung-und-rezeption#87"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase",
+        "field": "Unterrichtsinhalte · Römische Dichtung und Rezeption",
+        "extractionMethod": "Extrahiert Standards, verbindliche Inhalte und prozessbezogene Kompetenzbeispiele aus dem amtlichen MV-Rahmenplan Latein Gymnasiale Oberstufe 2019.",
+        "sourceIndex": 87
+      }
+    },
+    {
+      "id": "de-mv-latein-sekii-gyo-2019-088-9e363607",
+      "sourceDocumentKey": "MV-LATEIN-SEKII-GYO-2019",
+      "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-unterrichtsinhalte-geschichte-und-politik",
+      "topicCode": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-unterrichtsinhalte-geschichte-und-politik",
+      "title": "Phasen der römischen Geschichte (Königszeit, Wertbegriffe aus idealisierter Frühzeit, Romi-",
+      "description": "Die lernende Person kann phasen der römischen Geschichte (Königszeit, Wertbegriffe aus idealisierter Frühzeit, Romi-.",
+      "sourceText": "Phasen der römischen Geschichte (Königszeit, Wertbegriffe aus idealisierter Frühzeit, Romi-",
+      "sourceRef": "S. 20-23, Qualifikationsphase, Unterrichtsinhalte · Geschichte und Politik",
+      "sourceSpan": {
+        "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-unterrichtsinhalte-geschichte-und-politik",
+        "label": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-unterrichtsinhalte-geschichte-und-politik#88"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase",
+        "field": "Unterrichtsinhalte · Geschichte und Politik",
+        "extractionMethod": "Extrahiert Standards, verbindliche Inhalte und prozessbezogene Kompetenzbeispiele aus dem amtlichen MV-Rahmenplan Latein Gymnasiale Oberstufe 2019.",
+        "sourceIndex": 88
+      }
+    },
+    {
+      "id": "de-mv-latein-sekii-gyo-2019-089-3f3e629f",
+      "sourceDocumentKey": "MV-LATEIN-SEKII-GYO-2019",
+      "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-unterrichtsinhalte-geschichte-und-politik",
+      "topicCode": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-unterrichtsinhalte-geschichte-und-politik",
+      "title": "Grundzüge der römischen Verfassung und des Charakteristika der grundlegenden Verfas-",
+      "description": "Die lernende Person kann grundzüge der römischen Verfassung und des Charakteristika der grundlegenden Verfas-.",
+      "sourceText": "Grundzüge der römischen Verfassung und des Charakteristika der grundlegenden Verfas-",
+      "sourceRef": "S. 20-23, Qualifikationsphase, Unterrichtsinhalte · Geschichte und Politik",
+      "sourceSpan": {
+        "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-unterrichtsinhalte-geschichte-und-politik",
+        "label": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-unterrichtsinhalte-geschichte-und-politik#89"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase",
+        "field": "Unterrichtsinhalte · Geschichte und Politik",
+        "extractionMethod": "Extrahiert Standards, verbindliche Inhalte und prozessbezogene Kompetenzbeispiele aus dem amtlichen MV-Rahmenplan Latein Gymnasiale Oberstufe 2019.",
+        "sourceIndex": 89
+      }
+    },
+    {
+      "id": "de-mv-latein-sekii-gyo-2019-090-aeb4a3ed",
+      "sourceDocumentKey": "MV-LATEIN-SEKII-GYO-2019",
+      "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-unterrichtsinhalte-geschichte-und-politik",
+      "topicCode": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-unterrichtsinhalte-geschichte-und-politik",
+      "title": "bedeutende Persönlichkeiten Leben und Wirken bei",
+      "description": "Die lernende Person kann bedeutende Persönlichkeiten Leben und Wirken bei.",
+      "sourceText": "bedeutende Persönlichkeiten Leben und Wirken bei",
+      "sourceRef": "S. 20-23, Qualifikationsphase, Unterrichtsinhalte · Geschichte und Politik",
+      "sourceSpan": {
+        "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-unterrichtsinhalte-geschichte-und-politik",
+        "label": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-unterrichtsinhalte-geschichte-und-politik#90"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase",
+        "field": "Unterrichtsinhalte · Geschichte und Politik",
+        "extractionMethod": "Extrahiert Standards, verbindliche Inhalte und prozessbezogene Kompetenzbeispiele aus dem amtlichen MV-Rahmenplan Latein Gymnasiale Oberstufe 2019.",
+        "sourceIndex": 90
+      }
+    },
+    {
+      "id": "de-mv-latein-sekii-gyo-2019-091-ef5c9b08",
+      "sourceDocumentKey": "MV-LATEIN-SEKII-GYO-2019",
+      "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-unterrichtsinhalte-geschichte-und-politik",
+      "topicCode": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-unterrichtsinhalte-geschichte-und-politik",
+      "title": "andere Kulturen Rom als Schmelztiegel vieler Kulturen",
+      "description": "Die lernende Person kann andere Kulturen Rom als Schmelztiegel vieler Kulturen.",
+      "sourceText": "andere Kulturen Rom als Schmelztiegel vieler Kulturen",
+      "sourceRef": "S. 24-27, Qualifikationsphase, Unterrichtsinhalte · Geschichte und Politik",
+      "sourceSpan": {
+        "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-unterrichtsinhalte-geschichte-und-politik",
+        "label": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-unterrichtsinhalte-geschichte-und-politik#91"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase",
+        "field": "Unterrichtsinhalte · Geschichte und Politik",
+        "extractionMethod": "Extrahiert Standards, verbindliche Inhalte und prozessbezogene Kompetenzbeispiele aus dem amtlichen MV-Rahmenplan Latein Gymnasiale Oberstufe 2019.",
+        "sourceIndex": 91
+      }
+    },
+    {
+      "id": "de-mv-latein-sekii-gyo-2019-092-2c52d992",
+      "sourceDocumentKey": "MV-LATEIN-SEKII-GYO-2019",
+      "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-unterrichtsinhalte-geschichte-und-politik",
+      "topicCode": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-unterrichtsinhalte-geschichte-und-politik",
+      "title": "Provinzverwaltung und Provinzialrecht Umgang mit Besiegten, Machtmissbrauch am",
+      "description": "Die lernende Person kann provinzverwaltung und Provinzialrecht Umgang mit Besiegten, Machtmissbrauch am.",
+      "sourceText": "Provinzverwaltung und Provinzialrecht Umgang mit Besiegten, Machtmissbrauch am",
+      "sourceRef": "S. 24-27, Qualifikationsphase, Unterrichtsinhalte · Geschichte und Politik",
+      "sourceSpan": {
+        "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-unterrichtsinhalte-geschichte-und-politik",
+        "label": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-unterrichtsinhalte-geschichte-und-politik#92"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase",
+        "field": "Unterrichtsinhalte · Geschichte und Politik",
+        "extractionMethod": "Extrahiert Standards, verbindliche Inhalte und prozessbezogene Kompetenzbeispiele aus dem amtlichen MV-Rahmenplan Latein Gymnasiale Oberstufe 2019.",
+        "sourceIndex": 92
+      }
+    },
+    {
+      "id": "de-mv-latein-sekii-gyo-2019-093-5a596774",
+      "sourceDocumentKey": "MV-LATEIN-SEKII-GYO-2019",
+      "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-unterrichtsinhalte-geschichte-und-politik",
+      "topicCode": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-unterrichtsinhalte-geschichte-und-politik",
+      "title": "Expansionspolitik im Laufe der römischen Ge-Phasen der Ausdehnung: Punische Kriege, Gal-",
+      "description": "Die lernende Person kann expansionspolitik im Laufe der römischen Ge-Phasen der Ausdehnung: Punische Kriege, Gal-.",
+      "sourceText": "Expansionspolitik im Laufe der römischen Ge-Phasen der Ausdehnung: Punische Kriege, Gal-",
+      "sourceRef": "S. 24-27, Qualifikationsphase, Unterrichtsinhalte · Geschichte und Politik",
+      "sourceSpan": {
+        "passageId": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-unterrichtsinhalte-geschichte-und-politik",
+        "label": "de-mv-latein-sekii-gyo-2019-qualifikationsphase-unterrichtsinhalte-geschichte-und-politik#93"
+      },
+      "stage": "SekII",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "subject:Latein",
+        "stage:SekII"
+      ],
+      "metadata": {
+        "phase": "Qualifikationsphase",
+        "field": "Unterrichtsinhalte · Geschichte und Politik",
+        "extractionMethod": "Extrahiert Standards, verbindliche Inhalte und prozessbezogene Kompetenzbeispiele aus dem amtlichen MV-Rahmenplan Latein Gymnasiale Oberstufe 2019.",
+        "sourceIndex": 93
+      }
+    }
+  ]
+}

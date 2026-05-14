@@ -1,0 +1,3251 @@
+{
+  "schemaVersion": 1,
+  "extractionId": "DE_NW_LATEIN_SEKI_KLP2019",
+  "sourceLandscapeId": "bfd2e817-5a88-509d-f120-b6414fd60d7f",
+  "targetLandscapeId": "668cf206-941e-51f8-8704-3e8938631235",
+  "title": "Latein Sekundarstufe I (Nordrhein-Westfalen, KLP 2019 Source-Extraction)",
+  "jurisdiction": "DE-NW",
+  "subject": "Latein",
+  "stage": "SekI",
+  "sourceDocument": {
+    "key": "NW-KLP-LATEIN-SEKI-2019",
+    "title": "Nordrhein-Westfalen Kernlehrplan Latein Sekundarstufe I Gymnasium 2019",
+    "path": "curricula/DE/Gymnasium/input/NW/latein/g9_l_klp_3402_2019_06_23_0.pdf",
+    "url": "https://lehrplannavigator.nrw.de/system/files/media/document/file/g9_l_klp_3402_2019_06_23_0.pdf",
+    "official": true
+  },
+  "method": {
+    "passageExtraction": "pdftotext -layout; Kapitel 2.2 bis 2.4 werden nach Lehrgangsstufe, Kompetenzbereich und Inhaltsfeld segmentiert.",
+    "sourceGoalExtraction": "Ein Source-Ziel pro amtlichem Kompetenz-Bullet nach \"Die Schuelerinnen und Schueler koennen\"; Inhalts-Schwerpunktlisten und Leistungsbewertungsabschnitte werden nicht als fachliche Source-Ziele gezaehlt.",
+    "mappingStatus": "MAPPING-3 complete after fachliche review: all official NRW Latin source goals are covered by canonical Latin goals."
+  },
+  "qualityReview": {
+    "sourceGoalCountPeerBaseline": {
+      "accepted": true,
+      "status": "reviewed",
+      "details": "NRW Sek I konsolidiert Latein als zweite Fremdsprache, Latein ab Jahrgangsstufe 5 und Latein als dritte Fremdsprache in einem KLP. Die geringere Zielzahl gegenueber BW ist plausibel, weil BW vier getrennte Bildungsgang-PDFs mit wiederholten Kompetenzlisten fuehrt.",
+      "rationale": "Die Source-Ziel-Anzahl wurde kritisch gegen die Struktur der amtlichen NRW-KLP-PDFs geprueft; gezaehlt werden nur Kompetenzbullets, keine Inhaltslisten."
+    }
+  },
+  "expectedTopicCodes": [
+    "SekI-latein-als-zweite-fremdsprache-erste-stufe-textkompetenz",
+    "SekI-latein-als-zweite-fremdsprache-erste-stufe-sprachkompetenz",
+    "SekI-latein-als-zweite-fremdsprache-erste-stufe-kulturkompetenz",
+    "SekI-latein-als-zweite-fremdsprache-erste-stufe-inhaltsfeld-antike-welt",
+    "SekI-latein-als-zweite-fremdsprache-erste-stufe-inhaltsfeld-textgestaltung",
+    "SekI-latein-als-zweite-fremdsprache-erste-stufe-inhaltsfeld-sprachsystem",
+    "SekI-latein-als-zweite-fremdsprache-zweite-stufe-textkompetenz",
+    "SekI-latein-als-zweite-fremdsprache-zweite-stufe-sprachkompetenz",
+    "SekI-latein-als-zweite-fremdsprache-zweite-stufe-kulturkompetenz",
+    "SekI-latein-als-zweite-fremdsprache-zweite-stufe-inhaltsfeld-antike-welt",
+    "SekI-latein-als-zweite-fremdsprache-zweite-stufe-inhaltsfeld-textgestaltung",
+    "SekI-latein-als-zweite-fremdsprache-zweite-stufe-inhaltsfeld-sprachsystem",
+    "SekI-latein-als-dritte-fremdsprache-textkompetenz",
+    "SekI-latein-als-dritte-fremdsprache-sprachkompetenz",
+    "SekI-latein-als-dritte-fremdsprache-kulturkompetenz",
+    "SekI-latein-als-dritte-fremdsprache-inhaltsfeld-antike-welt",
+    "SekI-latein-als-dritte-fremdsprache-inhaltsfeld-textgestaltung",
+    "SekI-latein-als-dritte-fremdsprache-inhaltsfeld-sprachsystem"
+  ],
+  "pipelineStatus": {
+    "currentStep": "",
+    "steps": [
+      {
+        "id": "ORIGINALQUELLEN",
+        "label": "Originalquellen bereitgestellt",
+        "status": "complete",
+        "dependsOn": [],
+        "checks": [
+          {
+            "id": "source-document-present",
+            "label": "Amtliches NRW-Latein-KLP-PDF liegt lokal vor",
+            "passed": true,
+            "details": "curricula/DE/Gymnasium/input/NW/latein/g9_l_klp_3402_2019_06_23_0.pdf"
+          }
+        ]
+      },
+      {
+        "id": "MAPPING-1",
+        "label": "Original-Lehrplanpassagen extrahiert",
+        "status": "complete",
+        "dependsOn": [
+          "ORIGINALQUELLEN"
+        ],
+        "checks": [
+          {
+            "id": "expected-topic-coverage",
+            "label": "Alle erwarteten NRW-Latein-Kompetenzpassagen wurden extrahiert",
+            "passed": true,
+            "details": "18/18 Passagegruppen."
+          },
+          {
+            "id": "official-source-extraction",
+            "label": "Passage-Extraction basiert auf amtlicher PDF-Quelle statt Legacy-Snapshot",
+            "passed": true,
+            "details": "Quelle: curricula/DE/Gymnasium/input/NW/latein/g9_l_klp_3402_2019_06_23_0.pdf"
+          }
+        ]
+      },
+      {
+        "id": "MAPPING-2",
+        "label": "Source-Ziele aus Lehrplanpassagen erstellt",
+        "status": "complete",
+        "dependsOn": [
+          "MAPPING-1"
+        ],
+        "checks": [
+          {
+            "id": "source-goals-created",
+            "label": "Source-Ziele aus amtlichen NRW-Latein-Kompetenzerwartungen erzeugt",
+            "passed": true,
+            "details": "94 Source-Ziele; Mindestplausibilitaet: 80."
+          },
+          {
+            "id": "source-goal-count-peer-baseline",
+            "label": "Source-Ziel-Anzahl wurde kritisch plausibilisiert",
+            "passed": true,
+            "details": "NRW Sek I konsolidiert Latein als zweite Fremdsprache, Latein ab Jahrgangsstufe 5 und Latein als dritte Fremdsprache in einem KLP. Die geringere Zielzahl gegenueber BW ist plausibel, weil BW vier getrennte Bildungsgang-PDFs mit wiederholten Kompetenzlisten fuehrt."
+          },
+          {
+            "id": "source-goal-ids-unique",
+            "label": "Source-Ziel-IDs sind eindeutig",
+            "passed": true,
+            "details": "Doppelte IDs: -"
+          },
+          {
+            "id": "source-goals-reference-passages",
+            "label": "Jedes Source-Ziel referenziert eine vorhandene Originalpassage",
+            "passed": true,
+            "details": "Ohne Passage: -"
+          },
+          {
+            "id": "passages-have-source-goals",
+            "label": "Jede Originalpassage hat Source-Ziele",
+            "passed": true,
+            "details": "Ohne Source-Ziele: -"
+          }
+        ]
+      },
+      {
+        "id": "MAPPING-3",
+        "label": "Source-Ziele auf SkillPilot-Ziele gemappt",
+        "status": "complete",
+        "dependsOn": [
+          "MAPPING-2"
+        ],
+        "checks": [
+          {
+            "id": "mapping-2-complete",
+            "label": "MAPPING-2 abgeschlossen",
+            "passed": true,
+            "details": "94 Source-Ziele liegen vor; MAPPING-3 laeuft gegen diese Source-Extraction-IDs."
+          },
+          {
+            "id": "m3-review-file-present",
+            "label": "M3-Review-Datei ist vorhanden",
+            "passed": true,
+            "details": "curricula/DE/Gymnasium/mapping/DE-NW/lower-secondary/nw_latin_lower_secondary_source_extraction_to_canonical_latin.review.json"
+          },
+          {
+            "id": "m3-review-targets-exist",
+            "label": "M3-Review-Ziele referenzieren vorhandene Canonical-Ziele",
+            "passed": true,
+            "details": "Unbekannte Canonical-Ziele: -"
+          },
+          {
+            "id": "m3-all-source-goals-reviewed",
+            "label": "Alle Source-Ziele haben eine fachliche M3-Entscheidung",
+            "passed": true,
+            "details": "94/94 Source-Ziele reviewed; offen: 0."
+          },
+          {
+            "id": "m3-all-source-goals-covered-by-canonical",
+            "label": "Alle Source-Ziele sind inhaltlich durch SkillPilot-Ziele abgedeckt",
+            "passed": true,
+            "details": "Abgedeckt: 94/94; verbleibend: 0 explizite Canonical-Gaps. 1:1 und 1:n sind gleichwertige Abdeckungsformen."
+          }
+        ]
+      }
+    ]
+  },
+  "passages": [
+    {
+      "id": "de-nw-latein-seki-klp2019-SekI-latein-als-zweite-fremdsprache-erste-stufe-textkompetenz",
+      "sourceDocumentKey": "NW-KLP-LATEIN-SEKI-2019",
+      "topicCode": "SekI-latein-als-zweite-fremdsprache-erste-stufe-textkompetenz",
+      "title": "Latein als zweite Fremdsprache - erste Stufe - Textkompetenz",
+      "rawText": "- didaktisierte Texte und adaptierte Originaltexte auf inhaltlicher und formaler Ebene erschließen,\n- didaktisierte Texte und adaptierte Originaltexte zielsprachengerecht übersetzen,\n- didaktisierte Texte und adaptierte Originaltexte in Ansätzen interpretieren.",
+      "sourceGoalIds": [
+        "62b02271-f962-5ef0-cf20-dbe5398f36e9",
+        "173a4b1e-0dbf-5ef5-fc9f-9ab88b0714d6",
+        "06661e2a-d6fc-5795-e98c-fcea08f215f9"
+      ]
+    },
+    {
+      "id": "de-nw-latein-seki-klp2019-SekI-latein-als-zweite-fremdsprache-erste-stufe-sprachkompetenz",
+      "sourceDocumentKey": "NW-KLP-LATEIN-SEKI-2019",
+      "topicCode": "SekI-latein-als-zweite-fremdsprache-erste-stufe-sprachkompetenz",
+      "title": "Latein als zweite Fremdsprache - erste Stufe - Sprachkompetenz",
+      "rawText": "- einen grundlegenden Wortschatz funktional einsetzen,\n- ein grundlegendes Repertoire der Morphologie und Syntax funktional einsetzen,\n- mithilfe ausgewählter Prinzipien der Wortbildungslehre die Bedeutung unbekannter lateinischer Wörter erschließen,\n- grammatische Phänomene fachsprachengerecht beschreiben,\n- mithilfe erster Einsichten in Semantik und Syntax der lateinischen Sprache Wörter und Texte anderer Sprachen erschließen,\n- zur Erweiterung ihrer sprachlichen Kompetenzen ein begrenztes Repertoire von Strategien und Techniken für das Sprachenlernen einsetzen.",
+      "sourceGoalIds": [
+        "ecc6745d-83f6-537e-01a0-c3d78c20707a",
+        "da05b802-037d-5190-a98a-28dfb8e2859b",
+        "dd3f6a7a-39b4-5951-8018-b4c2fec1eb92",
+        "85e5c5cb-2b53-5123-7406-ae1931510b9d",
+        "8e7fc88d-823d-5314-43ab-c88d6762785f",
+        "5de94738-7490-5446-27df-89a7f77deb70"
+      ]
+    },
+    {
+      "id": "de-nw-latein-seki-klp2019-SekI-latein-als-zweite-fremdsprache-erste-stufe-kulturkompetenz",
+      "sourceDocumentKey": "NW-KLP-LATEIN-SEKI-2019",
+      "topicCode": "SekI-latein-als-zweite-fremdsprache-erste-stufe-kulturkompetenz",
+      "title": "Latein als zweite Fremdsprache - erste Stufe - Kulturkompetenz",
+      "rawText": "- historisch-kulturelles Orientierungswissen auch unter Verwendung digitaler Medien ausgehend vom Text themenbezogen recherchieren, strukturieren und präsentieren,\n- Textaussagen im Hinblick auf Perspektiven der historischen Kommunikation (Lebensräume, Lebensgestaltung, Geschlechterrollen, menschliche Beziehungen, soziale und politische Strukturen, Welterklärung) erläutern und bewerten,\n- zu Gemeinsamkeiten und Unterschieden zwischen der antiken Kultur und der eigenen Lebenswirklichkeit wertend Stellung nehmen. Die Kompetenzen der Schülerinnen und Schüler sollen im Rahmen der Behandlung der nachfolgenden, für diese Stufe obligatorischen Inhaltsfelder entwickelt werden.",
+      "sourceGoalIds": [
+        "8959fd83-aba4-570e-5a64-16301b7eed83",
+        "7478a8e3-0e74-54f6-cff7-51547ebb66da",
+        "d13e290e-4704-5b9c-c945-186e2bed263a"
+      ]
+    },
+    {
+      "id": "de-nw-latein-seki-klp2019-SekI-latein-als-zweite-fremdsprache-erste-stufe-inhaltsfeld-antike-welt",
+      "sourceDocumentKey": "NW-KLP-LATEIN-SEKI-2019",
+      "topicCode": "SekI-latein-als-zweite-fremdsprache-erste-stufe-inhaltsfeld-antike-welt",
+      "title": "Latein als zweite Fremdsprache - erste Stufe - Inhaltsfeld: Antike Welt",
+      "rawText": "- Grundzüge des privaten und öffentlichen Lebens erläutern und im Vergleich mit heutigen Lebensweisen und Lebensbedingungen bewerten,\n- grundlegende Strukturen der römischen Gesellschaft und Politik darstellen und vor dem Hintergrund der eigenen Lebenswelt bewerten,\n- die Entwicklung des Imperium Romanum bis zum Ende der Republik in Grundzügen erläutern,\n- zum Handeln zentraler Persönlichkeiten der römischen Geschichte und Mythologie wertend Stellung nehmen,\n- die Funktion von Mythos und Religion für die römische Gesellschaft erläutern und vor dem Hintergrund der eigenen Lebenswelt bewerten,\n- Textinhalte im Vergleich mit ausgewählten Rezeptionsdokumenten aspektbezogen interpretieren.",
+      "sourceGoalIds": [
+        "52536c9a-0d3e-5370-5d8b-17944a08ae5b",
+        "b0579acf-4680-57b5-2b57-874fd5d1b368",
+        "d7290882-ccf0-5f47-4994-31ebd5403fc8",
+        "0ff7f365-393c-52f9-4171-0c83ca7b916a",
+        "fb976c42-6fe2-51f2-1dd0-623b26c71acd",
+        "f0ec83c5-69e3-508b-23df-8d845e5978e8"
+      ]
+    },
+    {
+      "id": "de-nw-latein-seki-klp2019-SekI-latein-als-zweite-fremdsprache-erste-stufe-inhaltsfeld-textgestaltung",
+      "sourceDocumentKey": "NW-KLP-LATEIN-SEKI-2019",
+      "topicCode": "SekI-latein-als-zweite-fremdsprache-erste-stufe-inhaltsfeld-textgestaltung",
+      "title": "Latein als zweite Fremdsprache - erste Stufe - Inhaltsfeld: Textgestaltung",
+      "rawText": "- Texte unter Berücksichtigung der Textstruktur erschließen,\n- Texte unter Berücksichtigung formaler und sprachlich-stilistischer Gestaltungsmittel übersetzen,\n- verschiedene Übersetzungen eines Textes im Hinblick auf das Zusammenwirken von Textaussagen und Textgestaltung vergleichen,\n- Funktionen sprachlich-stilistischer Gestaltungsmittel bezogen auf die Textaussage erläutern,\n- Texte unter Berücksichtigung der Textsorte weitgehend zielsprachengerecht übersetzen.",
+      "sourceGoalIds": [
+        "a752b922-1e2c-5fdd-d92c-ba22c9757241",
+        "bbf0cdb7-24e0-5ffb-5112-d61c7592be8d",
+        "1f9f15cf-f244-5848-37e9-a4846578ddc2",
+        "3313cbff-627b-510c-a01d-12a15d2c8611",
+        "8f931a36-e5c2-549b-61cc-92d44d740388"
+      ]
+    },
+    {
+      "id": "de-nw-latein-seki-klp2019-SekI-latein-als-zweite-fremdsprache-erste-stufe-inhaltsfeld-sprachsystem",
+      "sourceDocumentKey": "NW-KLP-LATEIN-SEKI-2019",
+      "topicCode": "SekI-latein-als-zweite-fremdsprache-erste-stufe-inhaltsfeld-sprachsystem",
+      "title": "Latein als zweite Fremdsprache - erste Stufe - Inhaltsfeld: Sprachsystem",
+      "rawText": "- bei der Erschließung und Übersetzung eines Textes lateinische Wörter des dem Lernstand entsprechenden Grundwortschatzes angemessen monosemieren,\n- durch kontrastive Sprachbetrachtung ihren Wortschatz im Deutschen erweitern,\n- unter Bezugnahme auf die lateinische Ausgangsform die Bedeutung von Lehn- und Fremdwörtern im Deutschen sowie in anderen Sprachen erläutern,\n- bei der Erschließung und Übersetzung angemessene Übersetzungsmöglichkeiten grundlegender Elemente von Morphologie und Syntax weitgehend selbstständig auswählen,\n- syntaktische Strukturen auch unter Verwendung digitaler Werkzeuge weitgehend selbstständig visualisieren,\n- im Rahmen des Sprachenlernens digitale Lernangebote und Werkzeuge zielgerichtet einsetzen.",
+      "sourceGoalIds": [
+        "ca2bc1a8-004d-58f5-db36-82fef85dff6e",
+        "5ceb4fb6-b72e-56f2-1bca-d8cfa5790d3a",
+        "43d32175-1a6c-5787-cafc-922000d5b259",
+        "9c911339-8c11-56b6-ac59-317a363122e8",
+        "d5d27810-0d5c-519e-6ffe-81aa71af7491",
+        "ae274b4e-879b-557f-db16-10e65a6a3530"
+      ]
+    },
+    {
+      "id": "de-nw-latein-seki-klp2019-SekI-latein-als-zweite-fremdsprache-zweite-stufe-textkompetenz",
+      "sourceDocumentKey": "NW-KLP-LATEIN-SEKI-2019",
+      "topicCode": "SekI-latein-als-zweite-fremdsprache-zweite-stufe-textkompetenz",
+      "title": "Latein als zweite Fremdsprache - zweite Stufe - Textkompetenz",
+      "rawText": "- leichtere und mittelschwere Originaltexte auf inhaltlicher und formaler Ebene erschließen,\n- leichtere und mittelschwere Originaltexte zielsprachengerecht übersetzen,\n- leichtere und mittelschwere Originaltexte aspektbezogen interpretieren,\n- bei der Erschließung eines Textes unterschiedliche Texterschließungsverfahren anwenden,\n- lateinische Texte sinngemäß lesen,\n- lateinische Verse nach metrischer Analyse im Lesevortrag darbieten.",
+      "sourceGoalIds": [
+        "0fb2c009-edcc-58f0-7857-fe62d96cb559",
+        "961e88a2-dfe1-5022-6411-92497b0fec20",
+        "cb8ef3e4-e21b-5fcc-3d2f-4609b96e3b0c",
+        "2bc7a93d-ea77-506f-10ee-b1f6d8799df6",
+        "7a17c6ec-077d-5792-de17-3a6114303175",
+        "97e77398-70be-54c4-0b07-ab559e5f7ce5"
+      ]
+    },
+    {
+      "id": "de-nw-latein-seki-klp2019-SekI-latein-als-zweite-fremdsprache-zweite-stufe-sprachkompetenz",
+      "sourceDocumentKey": "NW-KLP-LATEIN-SEKI-2019",
+      "topicCode": "SekI-latein-als-zweite-fremdsprache-zweite-stufe-sprachkompetenz",
+      "title": "Latein als zweite Fremdsprache - zweite Stufe - Sprachkompetenz",
+      "rawText": "- einen erweiterten Wortschatz funktional einsetzen,\n- mithilfe grundlegender Prinzipien der Wortbildungslehre die Bedeutung unbekannter lateinischer Wörter erschließen,\n- ein erweitertes Repertoire der Morphologie und Syntax funktional einsetzen,\n- mithilfe vertiefter Einsichten in Semantik und Syntax der lateinischen Sprache Wörter und Texte anderer Sprachen erschließen,\n- zur Erweiterung ihrer sprachlichen Kompetenzen ein erweitertes Repertoire von Strategien und Techniken für das Sprachenlernen einsetzen.",
+      "sourceGoalIds": [
+        "2b4a0e4c-6ef3-57b4-b0c7-76710650e450",
+        "e9e7ff3b-8a50-5fef-e590-886381af8e8b",
+        "172f501e-e4f9-5632-1b4f-0171d8ef4105",
+        "32f51309-6236-50e2-5da2-528a7d5758fd",
+        "38fc9072-6058-557f-72b1-5bb2673f1c23"
+      ]
+    },
+    {
+      "id": "de-nw-latein-seki-klp2019-SekI-latein-als-zweite-fremdsprache-zweite-stufe-kulturkompetenz",
+      "sourceDocumentKey": "NW-KLP-LATEIN-SEKI-2019",
+      "topicCode": "SekI-latein-als-zweite-fremdsprache-zweite-stufe-kulturkompetenz",
+      "title": "Latein als zweite Fremdsprache - zweite Stufe - Kulturkompetenz",
+      "rawText": "- historisch-kulturelles Orientierungswissen auch unter Verwendung digitaler Medien ausgehend vom Text themenbezogen recherchieren, adressatengerecht strukturieren und entsprechend den Standards der Quellenangaben präsentieren,\n- Textaussagen im Hinblick auf Perspektiven der historischen Kommunikation (Werte und Normen, Macht und Recht, politische Betätigung, Umgang mit Fremdem, existenzielle Grundfragen) differenziert erläutern und beurteilen,\n- Gemeinsamkeiten und Unterschiede zwischen antiker Kultur und Gegenwart in übergreifenden Zusammenhängen differenziert erläutern und beurteilen. Die Kompetenzen der Schülerinnen und Schüler sollen im Rahmen der Behandlung der nachfolgenden, für diese Stufe obligatorischen Inhaltsfelder entwickelt werden.",
+      "sourceGoalIds": [
+        "726490b3-01d0-576f-2673-c28e62166353",
+        "e9b7321a-74cf-5149-a583-e0c0e624cae7",
+        "37fcbe9a-68e9-5ce1-53f7-1e3a9bfb75ad"
+      ]
+    },
+    {
+      "id": "de-nw-latein-seki-klp2019-SekI-latein-als-zweite-fremdsprache-zweite-stufe-inhaltsfeld-antike-welt",
+      "sourceDocumentKey": "NW-KLP-LATEIN-SEKI-2019",
+      "topicCode": "SekI-latein-als-zweite-fremdsprache-zweite-stufe-inhaltsfeld-antike-welt",
+      "title": "Latein als zweite Fremdsprache - zweite Stufe - Inhaltsfeld: Antike Welt",
+      "rawText": "- Spannungen und Konflikte innerhalb der römischen Gesellschaft im Vergleich mit heutigen gesellschaftlichen Verhältnissen erläutern,\n- die Hauptphasen römischer Geschichte historisch einordnen und am Beispiel zentraler Ereignisse und Akteure erläutern,\n- antike Staats- und Gesellschaftsordnungen im Sinne der historischen Kommunikation erläutern und beurteilen,\n- den römischen Herrschaftsanspruch im Sinne der historischen Kommunikation erläutern und beurteilen,\n- Nachwirkungen und Einflüsse römischer Geschichte und Kultur in Europa und in der eigenen Lebenswelt exemplarisch darstellen,\n- Grundgedanken der antiken Philosophie im Hinblick auf ihre Relevanz für die eigene Lebenswelt erläutern und beurteilen,\n- zentrale Autoren und Werke lateinischsprachiger Literatur im historischen Kontext darstellen,\n- Textinhalte im Vergleich mit ausgewählten Rezeptionsdokumenten aus Literatur, Film, Bildender Kunst oder Musik interpretieren.",
+      "sourceGoalIds": [
+        "8cfbd34b-2784-5ce2-1e76-d08d8f5fea95",
+        "ec6dd2ec-aeaf-576d-63dd-6c2812743a9f",
+        "83a3b366-b0fb-5cea-96e0-c6383402396d",
+        "2b54c00a-42d6-5cf5-677a-ff7a1e2771ab",
+        "c6eda474-aa30-53fc-8c08-fcf019aabe68",
+        "07646a98-6018-5693-cbe2-c47fc15aae83",
+        "3ca4bf33-168d-5da6-deba-66991ab07893",
+        "c4af4e8e-ec55-57d5-606c-877be6f3cfc1"
+      ]
+    },
+    {
+      "id": "de-nw-latein-seki-klp2019-SekI-latein-als-zweite-fremdsprache-zweite-stufe-inhaltsfeld-textgestaltung",
+      "sourceDocumentKey": "NW-KLP-LATEIN-SEKI-2019",
+      "topicCode": "SekI-latein-als-zweite-fremdsprache-zweite-stufe-inhaltsfeld-textgestaltung",
+      "title": "Latein als zweite Fremdsprache - zweite Stufe - Inhaltsfeld: Textgestaltung",
+      "rawText": "- Texte unter Berücksichtigung der Textsorte und Textstruktur erschließen,\n- Texte unter Berücksichtigung formaler und sprachlich-stilistischer Gestaltungsmittel übersetzen und interpretieren,\n- verschiedene Übersetzungen eines Textes im Hinblick auf das Zusammenwirken von Textaussagen und Textgestaltung beurteilen,\n- Funktionen formaler und sprachlich-stilistischer Gestaltungsmittel im Hinblick auf den Inhalt und die Aussageabsicht erläutern,\n- Wirkungen formaler und sprachlich-stilistischer Gestaltungsmittel im Hinblick auf den Rezipienten erläutern,\n- Texte unter Berücksichtigung der Textsorte zielsprachengerecht übersetzen.",
+      "sourceGoalIds": [
+        "63db596f-6feb-596d-f876-8cddf8a2119d",
+        "3e024d42-4a6f-5593-e21c-25a875821727",
+        "b9360be1-f276-577b-0911-b19d8ca82ccc",
+        "a914272f-4cdd-5f16-833b-ea440785c7aa",
+        "e0baac31-99f7-515e-3834-1cec99e0b80f",
+        "8cd18f53-d6ba-567a-24aa-c63643a89e6b"
+      ]
+    },
+    {
+      "id": "de-nw-latein-seki-klp2019-SekI-latein-als-zweite-fremdsprache-zweite-stufe-inhaltsfeld-sprachsystem",
+      "sourceDocumentKey": "NW-KLP-LATEIN-SEKI-2019",
+      "topicCode": "SekI-latein-als-zweite-fremdsprache-zweite-stufe-inhaltsfeld-sprachsystem",
+      "title": "Latein als zweite Fremdsprache - zweite Stufe - Inhaltsfeld: Sprachsystem",
+      "rawText": "- bei der Erschließung und Übersetzung eines Textes lateinische Wörter des autoren- und themenspezifisch erweiterten Grundwortschatzes angemessen monosemieren,\n- Wörter unter Verwendung eines zweisprachigen Wörterbuches kontextbezogen monosemieren,\n- bei der Erschließung und Übersetzung angemessene Übersetzungsmöglichkeiten grundlegender Elemente von Morphologie und Syntax auswählen,\n- syntaktische Strukturen auch unter Verwendung digitaler Werkzeuge visualisieren.",
+      "sourceGoalIds": [
+        "47c6f6c9-11a0-5de0-bb3e-b6842b58c0b6",
+        "07b4dd11-25f2-5fbb-0e16-9952f87df8ec",
+        "6a755558-e31e-5cd9-2390-50037b090f42",
+        "d7077ecf-653f-5f07-fdbf-10eaec7e9f85"
+      ]
+    },
+    {
+      "id": "de-nw-latein-seki-klp2019-SekI-latein-als-dritte-fremdsprache-textkompetenz",
+      "sourceDocumentKey": "NW-KLP-LATEIN-SEKI-2019",
+      "topicCode": "SekI-latein-als-dritte-fremdsprache-textkompetenz",
+      "title": "Latein als dritte Fremdsprache - Textkompetenz",
+      "rawText": "- adaptierte und leichtere Originaltexte auf inhaltlicher und formaler Ebene erschließen,\n- adaptierte und leichtere Originaltexte zielsprachengerecht übersetzen,\n- adaptierte und leichtere Originaltexte aspektbezogen interpretieren,\n- bei der Erschließung eines Textes unterschiedliche Texterschließungsverfahren anwenden,\n- lateinische Texte sinngemäß lesen.",
+      "sourceGoalIds": [
+        "bb4b6217-8b77-550a-a55a-2a996f90a21d",
+        "bf2ac061-c40b-5540-4a0f-6a256f33e5d4",
+        "50446fe0-3d1b-5228-b12f-e43571962d82",
+        "3d37ed18-0cfd-5585-74ba-8b814dd20328",
+        "fe0e3755-8a49-541b-d8db-6f793a7871f2"
+      ]
+    },
+    {
+      "id": "de-nw-latein-seki-klp2019-SekI-latein-als-dritte-fremdsprache-sprachkompetenz",
+      "sourceDocumentKey": "NW-KLP-LATEIN-SEKI-2019",
+      "topicCode": "SekI-latein-als-dritte-fremdsprache-sprachkompetenz",
+      "title": "Latein als dritte Fremdsprache - Sprachkompetenz",
+      "rawText": "- einen dem Lernstand entsprechenden Grundwortschatz bei der Erschließung adaptierter und leichterer Originaltexte anwenden,\n- mithilfe grundlegender Prinzipien der Wortbildungslehre die Bedeutung unbekannter lateinischer Wörter erschließen,\n- ein erweitertes Repertoire der Morphologie und Syntax bei der Erschließung und Übersetzung adaptierter und leichterer Originaltexte anwenden,\n- mithilfe vertiefter Einsichten in Semantik und Syntax der lateinischen Sprache Wörter und Texte anderer Sprachen erschließen,\n- zur Erweiterung ihrer sprachlichen Kompetenzen ein erweitertes Repertoire von Strategien und Techniken für das Sprachenlernen einsetzen.",
+      "sourceGoalIds": [
+        "f580b04a-1fd2-52fb-46c2-81c1ef435c2d",
+        "fde3ce61-ef6c-5f52-999e-86fc89172710",
+        "0a222e70-4f41-5f65-3b4c-24a4fad08012",
+        "55740ad3-bafa-5b72-2954-3732d95beee0",
+        "58f33593-81c3-5f77-dfa2-49ccaffa72bb"
+      ]
+    },
+    {
+      "id": "de-nw-latein-seki-klp2019-SekI-latein-als-dritte-fremdsprache-kulturkompetenz",
+      "sourceDocumentKey": "NW-KLP-LATEIN-SEKI-2019",
+      "topicCode": "SekI-latein-als-dritte-fremdsprache-kulturkompetenz",
+      "title": "Latein als dritte Fremdsprache - Kulturkompetenz",
+      "rawText": "- historisch-kulturelles Orientierungswissen auch unter Verwendung digitaler Medien ausgehend vom Text themenbezogen recherchieren, adressatengerecht strukturieren und entsprechend den Standards der Quellenangaben präsentieren,\n- Textaussagen im Hinblick auf Perspektiven der historischen Kommunikation (Lebensräume, Lebensgestaltung, Geschlechterrollen, menschliche Beziehungen, soziale und politische Strukturen, Werte und Normen, Welterklärung, Umgang mit Fremdem, existenzielle Grundfragen) differenziert erläutern und beurteilen,\n- Gemeinsamkeiten und Unterschiede zwischen antiker Kultur und Gegenwart in übergreifenden Zusammenhängen differenziert erläutern und beurteilen. Die Kompetenzen der Schülerinnen und Schüler sollen im Rahmen der Behandlung der nachfolgenden, für diese Stufe obligatorischen Inhaltsfelder entwickelt werden.",
+      "sourceGoalIds": [
+        "08a41da4-63aa-5ee2-9e7d-346b5108a6e7",
+        "f619027e-fd8d-5024-cff3-017d14c57448",
+        "2b6e0b18-5d4a-5122-32d4-d9e18701e26f"
+      ]
+    },
+    {
+      "id": "de-nw-latein-seki-klp2019-SekI-latein-als-dritte-fremdsprache-inhaltsfeld-antike-welt",
+      "sourceDocumentKey": "NW-KLP-LATEIN-SEKI-2019",
+      "topicCode": "SekI-latein-als-dritte-fremdsprache-inhaltsfeld-antike-welt",
+      "title": "Latein als dritte Fremdsprache - Inhaltsfeld: Antike Welt",
+      "rawText": "- Grundzüge des privaten und öffentlichen Lebens erläutern und im Vergleich mit heutigen Lebensweisen und Lebensbedingungen bewerten,\n- Spannungen und Konflikte innerhalb der römischen Gesellschaft und Politik im Vergleich mit heutigen gesellschaftlichen Verhältnissen erläutern,\n- die Hauptphasen römischer Geschichte historisch einordnen und am Beispiel zentraler Ereignisse und Akteure erläutern,\n- zum Handeln berühmter Persönlichkeiten der römischen Geschichte wertend Stellung nehmen,\n- den römischen Herrschaftsanspruch im Sinne der historischen Kommunikation erläutern und beurteilen,\n- die Funktion von Mythos und Religion für die römische Gesellschaft erläutern und vor dem Hintergrund der eigenen Lebenswelt bewerten,\n- Grundgedanken der antiken Philosophie im Hinblick auf ihre Relevanz für die eigene Lebenswelt erläutern und beurteilen,\n- zentrale Autoren und Werke der lateinischen Literatur im historischen Kontext darstellen,\n- Textinhalte im Vergleich mit ausgewählten Rezeptionsdokumenten aus Literatur, Film, Bildender Kunst oder Musik interpretieren.",
+      "sourceGoalIds": [
+        "ca907ee2-fe53-53ad-7cbd-af782ee8b4e5",
+        "a4860fca-44e4-53cf-8d18-e614f588ebeb",
+        "b8b6b33a-dc26-59fb-b109-2c511603853c",
+        "8a6234d2-531a-5f72-6a91-d04959f4c1a8",
+        "01835b36-9eb0-5628-ad88-6be66b01b87c",
+        "cdadfebe-cdb4-55e9-e9d0-7e6e85812422",
+        "c89d198b-d0aa-5675-d341-97f5b9190adf",
+        "ac44a935-b2cc-57b9-f909-082c565f9a14",
+        "1a203a71-8b5a-5595-f82b-6a40a09788ca"
+      ]
+    },
+    {
+      "id": "de-nw-latein-seki-klp2019-SekI-latein-als-dritte-fremdsprache-inhaltsfeld-textgestaltung",
+      "sourceDocumentKey": "NW-KLP-LATEIN-SEKI-2019",
+      "topicCode": "SekI-latein-als-dritte-fremdsprache-inhaltsfeld-textgestaltung",
+      "title": "Latein als dritte Fremdsprache - Inhaltsfeld: Textgestaltung",
+      "rawText": "- Texte unter Berücksichtigung der Textsorte und Textstruktur erschließen,\n- Textaussagen unter Berücksichtigung formaler und sprachlich-stilistischer Gestaltungsmittel übersetzen und interpretieren,\n- verschiedene Übersetzungen eines Textes im Hinblick auf das Zusammenwirken von Textaussagen und Textgestaltung beurteilen,\n- Funktionen formaler und sprachlich-stilistischer Gestaltungsmittel im Hinblick auf den Inhalt und die Aussageabsicht erläutern,\n- Wirkungen formaler und sprachlich-stilistischer Gestaltungsmittel im Hinblick auf den Rezipienten erläutern,\n- Texte unter Berücksichtigung der Textsorte zielsprachengerecht übersetzen.",
+      "sourceGoalIds": [
+        "70354f4f-058f-54e3-4b42-6a1085ba8276",
+        "4c0a5d1e-7bb6-54ff-6c45-ba5f3fa3b7d3",
+        "a8b3adab-400b-5a7c-46f9-f81171327e2b",
+        "ece2ac7d-61e1-5b78-ea38-a4dd2119920d",
+        "02fd3830-9fb5-5e00-7d91-cd109c3ec092",
+        "e3620f4d-fa7a-599f-95ac-b7cfaaa3f59e"
+      ]
+    },
+    {
+      "id": "de-nw-latein-seki-klp2019-SekI-latein-als-dritte-fremdsprache-inhaltsfeld-sprachsystem",
+      "sourceDocumentKey": "NW-KLP-LATEIN-SEKI-2019",
+      "topicCode": "SekI-latein-als-dritte-fremdsprache-inhaltsfeld-sprachsystem",
+      "title": "Latein als dritte Fremdsprache - Inhaltsfeld: Sprachsystem",
+      "rawText": "- bei der Erschließung und Übersetzung eines Textes lateinische Wörter des dem Lernstand entsprechenden Grundwortschatzes angemessen monosemieren,\n- Wörter unter Verwendung eines zweisprachigen Wörterbuches kontextbezogen monosemieren,\n- bei der Erschließung und Übersetzung angemessene Übersetzungsmöglichkeiten grundlegender Elemente von Morphologie und Syntax auswählen,\n- verschiedene Methoden zur Analyse und Visualisierung syntaktischer Strukturen auch unter Verwendung digitaler Medien anwenden,\n- im Rahmen des Sprachenlernens digitale Lernangebote und Werkzeuge zielgerichtet einsetzen.",
+      "sourceGoalIds": [
+        "0422d1a7-1c09-53ee-4d5e-a9fb4aab56bd",
+        "0fe31daf-00c1-5d0d-8fdc-702c68fcabeb",
+        "4ca96e23-c9d9-5513-020b-0b9fb7f3e897",
+        "4dfa3a09-1139-59dd-06a2-d039a7bf90aa",
+        "20d21da6-91a1-5e91-b738-5d3093a8ae17"
+      ]
+    }
+  ],
+  "sourceGoals": [
+    {
+      "id": "62b02271-f962-5ef0-cf20-dbe5398f36e9",
+      "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-zweite-fremdsprache-erste-stufe-textkompetenz",
+      "topicCode": "SekI-latein-als-zweite-fremdsprache-erste-stufe-textkompetenz",
+      "title": "didaktisierte Texte und adaptierte Originaltexte auf inhaltlicher und formaler Ebene erschlie...",
+      "description": "Die lernende Person kann didaktisierte Texte und adaptierte Originaltexte auf inhaltlicher und formaler Ebene erschließen,",
+      "sourceDocumentKey": "NW-KLP-LATEIN-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Latein Sekundarstufe I Gymnasium 2019, Latein als zweite Fremdsprache - erste Stufe, Textkompetenz",
+      "sourceText": "didaktisierte Texte und adaptierte Originaltexte auf inhaltlicher und formaler Ebene erschließen,",
+      "sourceSpan": {
+        "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-zweite-fremdsprache-erste-stufe-textkompetenz",
+        "label": "SekI-latein-als-zweite-fremdsprache-erste-stufe-textkompetenz#1"
+      },
+      "courseLevel": "unspecified",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-NW",
+        "subject:Latein",
+        "stage:SekI",
+        "phase:latein-als-zweite-fremdsprache-erste-stufe",
+        "field:textkompetenz",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-chapter-2-competency-bullet",
+        "phase": "Latein als zweite Fremdsprache - erste Stufe",
+        "field": "Textkompetenz",
+        "bulletSymbol": ""
+      }
+    },
+    {
+      "id": "173a4b1e-0dbf-5ef5-fc9f-9ab88b0714d6",
+      "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-zweite-fremdsprache-erste-stufe-textkompetenz",
+      "topicCode": "SekI-latein-als-zweite-fremdsprache-erste-stufe-textkompetenz",
+      "title": "didaktisierte Texte und adaptierte Originaltexte zielsprachengerecht übersetzen,",
+      "description": "Die lernende Person kann didaktisierte Texte und adaptierte Originaltexte zielsprachengerecht übersetzen,",
+      "sourceDocumentKey": "NW-KLP-LATEIN-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Latein Sekundarstufe I Gymnasium 2019, Latein als zweite Fremdsprache - erste Stufe, Textkompetenz",
+      "sourceText": "didaktisierte Texte und adaptierte Originaltexte zielsprachengerecht übersetzen,",
+      "sourceSpan": {
+        "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-zweite-fremdsprache-erste-stufe-textkompetenz",
+        "label": "SekI-latein-als-zweite-fremdsprache-erste-stufe-textkompetenz#2"
+      },
+      "courseLevel": "unspecified",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-NW",
+        "subject:Latein",
+        "stage:SekI",
+        "phase:latein-als-zweite-fremdsprache-erste-stufe",
+        "field:textkompetenz",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-chapter-2-competency-bullet",
+        "phase": "Latein als zweite Fremdsprache - erste Stufe",
+        "field": "Textkompetenz",
+        "bulletSymbol": ""
+      }
+    },
+    {
+      "id": "06661e2a-d6fc-5795-e98c-fcea08f215f9",
+      "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-zweite-fremdsprache-erste-stufe-textkompetenz",
+      "topicCode": "SekI-latein-als-zweite-fremdsprache-erste-stufe-textkompetenz",
+      "title": "didaktisierte Texte und adaptierte Originaltexte in Ansätzen interpretieren.",
+      "description": "Die lernende Person kann didaktisierte Texte und adaptierte Originaltexte in Ansätzen interpretieren",
+      "sourceDocumentKey": "NW-KLP-LATEIN-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Latein Sekundarstufe I Gymnasium 2019, Latein als zweite Fremdsprache - erste Stufe, Textkompetenz",
+      "sourceText": "didaktisierte Texte und adaptierte Originaltexte in Ansätzen interpretieren.",
+      "sourceSpan": {
+        "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-zweite-fremdsprache-erste-stufe-textkompetenz",
+        "label": "SekI-latein-als-zweite-fremdsprache-erste-stufe-textkompetenz#3"
+      },
+      "courseLevel": "unspecified",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-NW",
+        "subject:Latein",
+        "stage:SekI",
+        "phase:latein-als-zweite-fremdsprache-erste-stufe",
+        "field:textkompetenz",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-chapter-2-competency-bullet",
+        "phase": "Latein als zweite Fremdsprache - erste Stufe",
+        "field": "Textkompetenz",
+        "bulletSymbol": ""
+      }
+    },
+    {
+      "id": "ecc6745d-83f6-537e-01a0-c3d78c20707a",
+      "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-zweite-fremdsprache-erste-stufe-sprachkompetenz",
+      "topicCode": "SekI-latein-als-zweite-fremdsprache-erste-stufe-sprachkompetenz",
+      "title": "einen grundlegenden Wortschatz funktional einsetzen,",
+      "description": "Die lernende Person kann einen grundlegenden Wortschatz funktional einsetzen,",
+      "sourceDocumentKey": "NW-KLP-LATEIN-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Latein Sekundarstufe I Gymnasium 2019, Latein als zweite Fremdsprache - erste Stufe, Sprachkompetenz",
+      "sourceText": "einen grundlegenden Wortschatz funktional einsetzen,",
+      "sourceSpan": {
+        "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-zweite-fremdsprache-erste-stufe-sprachkompetenz",
+        "label": "SekI-latein-als-zweite-fremdsprache-erste-stufe-sprachkompetenz#4"
+      },
+      "courseLevel": "unspecified",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-NW",
+        "subject:Latein",
+        "stage:SekI",
+        "phase:latein-als-zweite-fremdsprache-erste-stufe",
+        "field:sprachkompetenz",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-chapter-2-competency-bullet",
+        "phase": "Latein als zweite Fremdsprache - erste Stufe",
+        "field": "Sprachkompetenz",
+        "bulletSymbol": ""
+      }
+    },
+    {
+      "id": "da05b802-037d-5190-a98a-28dfb8e2859b",
+      "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-zweite-fremdsprache-erste-stufe-sprachkompetenz",
+      "topicCode": "SekI-latein-als-zweite-fremdsprache-erste-stufe-sprachkompetenz",
+      "title": "ein grundlegendes Repertoire der Morphologie und Syntax funktional einsetzen,",
+      "description": "Die lernende Person kann ein grundlegendes Repertoire der Morphologie und Syntax funktional einsetzen,",
+      "sourceDocumentKey": "NW-KLP-LATEIN-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Latein Sekundarstufe I Gymnasium 2019, Latein als zweite Fremdsprache - erste Stufe, Sprachkompetenz",
+      "sourceText": "ein grundlegendes Repertoire der Morphologie und Syntax funktional einsetzen,",
+      "sourceSpan": {
+        "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-zweite-fremdsprache-erste-stufe-sprachkompetenz",
+        "label": "SekI-latein-als-zweite-fremdsprache-erste-stufe-sprachkompetenz#5"
+      },
+      "courseLevel": "unspecified",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-NW",
+        "subject:Latein",
+        "stage:SekI",
+        "phase:latein-als-zweite-fremdsprache-erste-stufe",
+        "field:sprachkompetenz",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-chapter-2-competency-bullet",
+        "phase": "Latein als zweite Fremdsprache - erste Stufe",
+        "field": "Sprachkompetenz",
+        "bulletSymbol": ""
+      }
+    },
+    {
+      "id": "dd3f6a7a-39b4-5951-8018-b4c2fec1eb92",
+      "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-zweite-fremdsprache-erste-stufe-sprachkompetenz",
+      "topicCode": "SekI-latein-als-zweite-fremdsprache-erste-stufe-sprachkompetenz",
+      "title": "mithilfe ausgewählter Prinzipien der Wortbildungslehre die Bedeutung unbekannter lateinischer...",
+      "description": "Die lernende Person kann mithilfe ausgewählter Prinzipien der Wortbildungslehre die Bedeutung unbekannter lateinischer Wörter erschließen,",
+      "sourceDocumentKey": "NW-KLP-LATEIN-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Latein Sekundarstufe I Gymnasium 2019, Latein als zweite Fremdsprache - erste Stufe, Sprachkompetenz",
+      "sourceText": "mithilfe ausgewählter Prinzipien der Wortbildungslehre die Bedeutung unbekannter lateinischer Wörter erschließen,",
+      "sourceSpan": {
+        "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-zweite-fremdsprache-erste-stufe-sprachkompetenz",
+        "label": "SekI-latein-als-zweite-fremdsprache-erste-stufe-sprachkompetenz#6"
+      },
+      "courseLevel": "unspecified",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-NW",
+        "subject:Latein",
+        "stage:SekI",
+        "phase:latein-als-zweite-fremdsprache-erste-stufe",
+        "field:sprachkompetenz",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-chapter-2-competency-bullet",
+        "phase": "Latein als zweite Fremdsprache - erste Stufe",
+        "field": "Sprachkompetenz",
+        "bulletSymbol": ""
+      }
+    },
+    {
+      "id": "85e5c5cb-2b53-5123-7406-ae1931510b9d",
+      "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-zweite-fremdsprache-erste-stufe-sprachkompetenz",
+      "topicCode": "SekI-latein-als-zweite-fremdsprache-erste-stufe-sprachkompetenz",
+      "title": "grammatische Phänomene fachsprachengerecht beschreiben,",
+      "description": "Die lernende Person kann grammatische Phänomene fachsprachengerecht beschreiben,",
+      "sourceDocumentKey": "NW-KLP-LATEIN-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Latein Sekundarstufe I Gymnasium 2019, Latein als zweite Fremdsprache - erste Stufe, Sprachkompetenz",
+      "sourceText": "grammatische Phänomene fachsprachengerecht beschreiben,",
+      "sourceSpan": {
+        "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-zweite-fremdsprache-erste-stufe-sprachkompetenz",
+        "label": "SekI-latein-als-zweite-fremdsprache-erste-stufe-sprachkompetenz#7"
+      },
+      "courseLevel": "unspecified",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-NW",
+        "subject:Latein",
+        "stage:SekI",
+        "phase:latein-als-zweite-fremdsprache-erste-stufe",
+        "field:sprachkompetenz",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-chapter-2-competency-bullet",
+        "phase": "Latein als zweite Fremdsprache - erste Stufe",
+        "field": "Sprachkompetenz",
+        "bulletSymbol": ""
+      }
+    },
+    {
+      "id": "8e7fc88d-823d-5314-43ab-c88d6762785f",
+      "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-zweite-fremdsprache-erste-stufe-sprachkompetenz",
+      "topicCode": "SekI-latein-als-zweite-fremdsprache-erste-stufe-sprachkompetenz",
+      "title": "mithilfe erster Einsichten in Semantik und Syntax der lateinischen Sprache Wörter und Texte a...",
+      "description": "Die lernende Person kann mithilfe erster Einsichten in Semantik und Syntax der lateinischen Sprache Wörter und Texte anderer Sprachen erschließen,",
+      "sourceDocumentKey": "NW-KLP-LATEIN-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Latein Sekundarstufe I Gymnasium 2019, Latein als zweite Fremdsprache - erste Stufe, Sprachkompetenz",
+      "sourceText": "mithilfe erster Einsichten in Semantik und Syntax der lateinischen Sprache Wörter und Texte anderer Sprachen erschließen,",
+      "sourceSpan": {
+        "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-zweite-fremdsprache-erste-stufe-sprachkompetenz",
+        "label": "SekI-latein-als-zweite-fremdsprache-erste-stufe-sprachkompetenz#8"
+      },
+      "courseLevel": "unspecified",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-NW",
+        "subject:Latein",
+        "stage:SekI",
+        "phase:latein-als-zweite-fremdsprache-erste-stufe",
+        "field:sprachkompetenz",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-chapter-2-competency-bullet",
+        "phase": "Latein als zweite Fremdsprache - erste Stufe",
+        "field": "Sprachkompetenz",
+        "bulletSymbol": ""
+      }
+    },
+    {
+      "id": "5de94738-7490-5446-27df-89a7f77deb70",
+      "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-zweite-fremdsprache-erste-stufe-sprachkompetenz",
+      "topicCode": "SekI-latein-als-zweite-fremdsprache-erste-stufe-sprachkompetenz",
+      "title": "zur Erweiterung ihrer sprachlichen Kompetenzen ein begrenztes Repertoire von Strategien und T...",
+      "description": "Die lernende Person kann zur Erweiterung ihrer sprachlichen Kompetenzen ein begrenztes Repertoire von Strategien und Techniken für das Sprachenlernen einsetzen",
+      "sourceDocumentKey": "NW-KLP-LATEIN-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Latein Sekundarstufe I Gymnasium 2019, Latein als zweite Fremdsprache - erste Stufe, Sprachkompetenz",
+      "sourceText": "zur Erweiterung ihrer sprachlichen Kompetenzen ein begrenztes Repertoire von Strategien und Techniken für das Sprachenlernen einsetzen.",
+      "sourceSpan": {
+        "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-zweite-fremdsprache-erste-stufe-sprachkompetenz",
+        "label": "SekI-latein-als-zweite-fremdsprache-erste-stufe-sprachkompetenz#9"
+      },
+      "courseLevel": "unspecified",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-NW",
+        "subject:Latein",
+        "stage:SekI",
+        "phase:latein-als-zweite-fremdsprache-erste-stufe",
+        "field:sprachkompetenz",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-chapter-2-competency-bullet",
+        "phase": "Latein als zweite Fremdsprache - erste Stufe",
+        "field": "Sprachkompetenz",
+        "bulletSymbol": ""
+      }
+    },
+    {
+      "id": "8959fd83-aba4-570e-5a64-16301b7eed83",
+      "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-zweite-fremdsprache-erste-stufe-kulturkompetenz",
+      "topicCode": "SekI-latein-als-zweite-fremdsprache-erste-stufe-kulturkompetenz",
+      "title": "historisch-kulturelles Orientierungswissen auch unter Verwendung digitaler Medien ausgehend v...",
+      "description": "Die lernende Person kann historisch-kulturelles Orientierungswissen auch unter Verwendung digitaler Medien ausgehend vom Text themenbezogen recherchieren, strukturieren und präsentieren,",
+      "sourceDocumentKey": "NW-KLP-LATEIN-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Latein Sekundarstufe I Gymnasium 2019, Latein als zweite Fremdsprache - erste Stufe, Kulturkompetenz",
+      "sourceText": "historisch-kulturelles Orientierungswissen auch unter Verwendung digitaler Medien ausgehend vom Text themenbezogen recherchieren, strukturieren und präsentieren,",
+      "sourceSpan": {
+        "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-zweite-fremdsprache-erste-stufe-kulturkompetenz",
+        "label": "SekI-latein-als-zweite-fremdsprache-erste-stufe-kulturkompetenz#10"
+      },
+      "courseLevel": "unspecified",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-NW",
+        "subject:Latein",
+        "stage:SekI",
+        "phase:latein-als-zweite-fremdsprache-erste-stufe",
+        "field:kulturkompetenz",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-chapter-2-competency-bullet",
+        "phase": "Latein als zweite Fremdsprache - erste Stufe",
+        "field": "Kulturkompetenz",
+        "bulletSymbol": ""
+      }
+    },
+    {
+      "id": "7478a8e3-0e74-54f6-cff7-51547ebb66da",
+      "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-zweite-fremdsprache-erste-stufe-kulturkompetenz",
+      "topicCode": "SekI-latein-als-zweite-fremdsprache-erste-stufe-kulturkompetenz",
+      "title": "Textaussagen im Hinblick auf Perspektiven der historischen Kommunikation (Lebensräume, Lebens...",
+      "description": "Die lernende Person kann textaussagen im Hinblick auf Perspektiven der historischen Kommunikation (Lebensräume, Lebensgestaltung, Geschlechterrollen, menschliche Beziehungen, soziale und politische Strukturen, Welterklärung) erläutern und bewerten,",
+      "sourceDocumentKey": "NW-KLP-LATEIN-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Latein Sekundarstufe I Gymnasium 2019, Latein als zweite Fremdsprache - erste Stufe, Kulturkompetenz",
+      "sourceText": "Textaussagen im Hinblick auf Perspektiven der historischen Kommunikation (Lebensräume, Lebensgestaltung, Geschlechterrollen, menschliche Beziehungen, soziale und politische Strukturen, Welterklärung) erläutern und bewerten,",
+      "sourceSpan": {
+        "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-zweite-fremdsprache-erste-stufe-kulturkompetenz",
+        "label": "SekI-latein-als-zweite-fremdsprache-erste-stufe-kulturkompetenz#11"
+      },
+      "courseLevel": "unspecified",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-NW",
+        "subject:Latein",
+        "stage:SekI",
+        "phase:latein-als-zweite-fremdsprache-erste-stufe",
+        "field:kulturkompetenz",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-chapter-2-competency-bullet",
+        "phase": "Latein als zweite Fremdsprache - erste Stufe",
+        "field": "Kulturkompetenz",
+        "bulletSymbol": ""
+      }
+    },
+    {
+      "id": "d13e290e-4704-5b9c-c945-186e2bed263a",
+      "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-zweite-fremdsprache-erste-stufe-kulturkompetenz",
+      "topicCode": "SekI-latein-als-zweite-fremdsprache-erste-stufe-kulturkompetenz",
+      "title": "zu Gemeinsamkeiten und Unterschieden zwischen der antiken Kultur und der eigenen Lebenswirkli...",
+      "description": "Die lernende Person kann zu Gemeinsamkeiten und Unterschieden zwischen der antiken Kultur und der eigenen Lebenswirklichkeit wertend Stellung nehmen. Die Kompetenzen der Schülerinnen und Schüler sollen im Rahmen der Behandlung der nachfolgenden, für diese Stufe obligatorischen Inhaltsfelder entwickelt werden",
+      "sourceDocumentKey": "NW-KLP-LATEIN-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Latein Sekundarstufe I Gymnasium 2019, Latein als zweite Fremdsprache - erste Stufe, Kulturkompetenz",
+      "sourceText": "zu Gemeinsamkeiten und Unterschieden zwischen der antiken Kultur und der eigenen Lebenswirklichkeit wertend Stellung nehmen. Die Kompetenzen der Schülerinnen und Schüler sollen im Rahmen der Behandlung der nachfolgenden, für diese Stufe obligatorischen Inhaltsfelder entwickelt werden.",
+      "sourceSpan": {
+        "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-zweite-fremdsprache-erste-stufe-kulturkompetenz",
+        "label": "SekI-latein-als-zweite-fremdsprache-erste-stufe-kulturkompetenz#12"
+      },
+      "courseLevel": "unspecified",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-NW",
+        "subject:Latein",
+        "stage:SekI",
+        "phase:latein-als-zweite-fremdsprache-erste-stufe",
+        "field:kulturkompetenz",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-chapter-2-competency-bullet",
+        "phase": "Latein als zweite Fremdsprache - erste Stufe",
+        "field": "Kulturkompetenz",
+        "bulletSymbol": ""
+      }
+    },
+    {
+      "id": "52536c9a-0d3e-5370-5d8b-17944a08ae5b",
+      "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-zweite-fremdsprache-erste-stufe-inhaltsfeld-antike-welt",
+      "topicCode": "SekI-latein-als-zweite-fremdsprache-erste-stufe-inhaltsfeld-antike-welt",
+      "title": "Grundzüge des privaten und öffentlichen Lebens erläutern und im Vergleich mit heutigen Lebens...",
+      "description": "Die lernende Person kann grundzüge des privaten und öffentlichen Lebens erläutern und im Vergleich mit heutigen Lebensweisen und Lebensbedingungen bewerten,",
+      "sourceDocumentKey": "NW-KLP-LATEIN-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Latein Sekundarstufe I Gymnasium 2019, Latein als zweite Fremdsprache - erste Stufe, Inhaltsfeld: Antike Welt",
+      "sourceText": "Grundzüge des privaten und öffentlichen Lebens erläutern und im Vergleich mit heutigen Lebensweisen und Lebensbedingungen bewerten,",
+      "sourceSpan": {
+        "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-zweite-fremdsprache-erste-stufe-inhaltsfeld-antike-welt",
+        "label": "SekI-latein-als-zweite-fremdsprache-erste-stufe-inhaltsfeld-antike-welt#13"
+      },
+      "courseLevel": "unspecified",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-NW",
+        "subject:Latein",
+        "stage:SekI",
+        "phase:latein-als-zweite-fremdsprache-erste-stufe",
+        "field:inhaltsfeld-antike-welt",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-chapter-2-competency-bullet",
+        "phase": "Latein als zweite Fremdsprache - erste Stufe",
+        "field": "Inhaltsfeld: Antike Welt",
+        "bulletSymbol": "à"
+      }
+    },
+    {
+      "id": "b0579acf-4680-57b5-2b57-874fd5d1b368",
+      "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-zweite-fremdsprache-erste-stufe-inhaltsfeld-antike-welt",
+      "topicCode": "SekI-latein-als-zweite-fremdsprache-erste-stufe-inhaltsfeld-antike-welt",
+      "title": "grundlegende Strukturen der römischen Gesellschaft und Politik darstellen und vor dem Hinterg...",
+      "description": "Die lernende Person kann grundlegende Strukturen der römischen Gesellschaft und Politik darstellen und vor dem Hintergrund der eigenen Lebenswelt bewerten,",
+      "sourceDocumentKey": "NW-KLP-LATEIN-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Latein Sekundarstufe I Gymnasium 2019, Latein als zweite Fremdsprache - erste Stufe, Inhaltsfeld: Antike Welt",
+      "sourceText": "grundlegende Strukturen der römischen Gesellschaft und Politik darstellen und vor dem Hintergrund der eigenen Lebenswelt bewerten,",
+      "sourceSpan": {
+        "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-zweite-fremdsprache-erste-stufe-inhaltsfeld-antike-welt",
+        "label": "SekI-latein-als-zweite-fremdsprache-erste-stufe-inhaltsfeld-antike-welt#14"
+      },
+      "courseLevel": "unspecified",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-NW",
+        "subject:Latein",
+        "stage:SekI",
+        "phase:latein-als-zweite-fremdsprache-erste-stufe",
+        "field:inhaltsfeld-antike-welt",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-chapter-2-competency-bullet",
+        "phase": "Latein als zweite Fremdsprache - erste Stufe",
+        "field": "Inhaltsfeld: Antike Welt",
+        "bulletSymbol": "à"
+      }
+    },
+    {
+      "id": "d7290882-ccf0-5f47-4994-31ebd5403fc8",
+      "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-zweite-fremdsprache-erste-stufe-inhaltsfeld-antike-welt",
+      "topicCode": "SekI-latein-als-zweite-fremdsprache-erste-stufe-inhaltsfeld-antike-welt",
+      "title": "die Entwicklung des Imperium Romanum bis zum Ende der Republik in Grundzügen erläutern,",
+      "description": "Die lernende Person kann die Entwicklung des Imperium Romanum bis zum Ende der Republik in Grundzügen erläutern,",
+      "sourceDocumentKey": "NW-KLP-LATEIN-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Latein Sekundarstufe I Gymnasium 2019, Latein als zweite Fremdsprache - erste Stufe, Inhaltsfeld: Antike Welt",
+      "sourceText": "die Entwicklung des Imperium Romanum bis zum Ende der Republik in Grundzügen erläutern,",
+      "sourceSpan": {
+        "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-zweite-fremdsprache-erste-stufe-inhaltsfeld-antike-welt",
+        "label": "SekI-latein-als-zweite-fremdsprache-erste-stufe-inhaltsfeld-antike-welt#15"
+      },
+      "courseLevel": "unspecified",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-NW",
+        "subject:Latein",
+        "stage:SekI",
+        "phase:latein-als-zweite-fremdsprache-erste-stufe",
+        "field:inhaltsfeld-antike-welt",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-chapter-2-competency-bullet",
+        "phase": "Latein als zweite Fremdsprache - erste Stufe",
+        "field": "Inhaltsfeld: Antike Welt",
+        "bulletSymbol": "à"
+      }
+    },
+    {
+      "id": "0ff7f365-393c-52f9-4171-0c83ca7b916a",
+      "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-zweite-fremdsprache-erste-stufe-inhaltsfeld-antike-welt",
+      "topicCode": "SekI-latein-als-zweite-fremdsprache-erste-stufe-inhaltsfeld-antike-welt",
+      "title": "zum Handeln zentraler Persönlichkeiten der römischen Geschichte und Mythologie wertend Stellu...",
+      "description": "Die lernende Person kann zum Handeln zentraler Persönlichkeiten der römischen Geschichte und Mythologie wertend Stellung nehmen,",
+      "sourceDocumentKey": "NW-KLP-LATEIN-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Latein Sekundarstufe I Gymnasium 2019, Latein als zweite Fremdsprache - erste Stufe, Inhaltsfeld: Antike Welt",
+      "sourceText": "zum Handeln zentraler Persönlichkeiten der römischen Geschichte und Mythologie wertend Stellung nehmen,",
+      "sourceSpan": {
+        "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-zweite-fremdsprache-erste-stufe-inhaltsfeld-antike-welt",
+        "label": "SekI-latein-als-zweite-fremdsprache-erste-stufe-inhaltsfeld-antike-welt#16"
+      },
+      "courseLevel": "unspecified",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-NW",
+        "subject:Latein",
+        "stage:SekI",
+        "phase:latein-als-zweite-fremdsprache-erste-stufe",
+        "field:inhaltsfeld-antike-welt",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-chapter-2-competency-bullet",
+        "phase": "Latein als zweite Fremdsprache - erste Stufe",
+        "field": "Inhaltsfeld: Antike Welt",
+        "bulletSymbol": "à"
+      }
+    },
+    {
+      "id": "fb976c42-6fe2-51f2-1dd0-623b26c71acd",
+      "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-zweite-fremdsprache-erste-stufe-inhaltsfeld-antike-welt",
+      "topicCode": "SekI-latein-als-zweite-fremdsprache-erste-stufe-inhaltsfeld-antike-welt",
+      "title": "die Funktion von Mythos und Religion für die römische Gesellschaft erläutern und vor dem Hint...",
+      "description": "Die lernende Person kann die Funktion von Mythos und Religion für die römische Gesellschaft erläutern und vor dem Hintergrund der eigenen Lebenswelt bewerten,",
+      "sourceDocumentKey": "NW-KLP-LATEIN-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Latein Sekundarstufe I Gymnasium 2019, Latein als zweite Fremdsprache - erste Stufe, Inhaltsfeld: Antike Welt",
+      "sourceText": "die Funktion von Mythos und Religion für die römische Gesellschaft erläutern und vor dem Hintergrund der eigenen Lebenswelt bewerten,",
+      "sourceSpan": {
+        "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-zweite-fremdsprache-erste-stufe-inhaltsfeld-antike-welt",
+        "label": "SekI-latein-als-zweite-fremdsprache-erste-stufe-inhaltsfeld-antike-welt#17"
+      },
+      "courseLevel": "unspecified",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-NW",
+        "subject:Latein",
+        "stage:SekI",
+        "phase:latein-als-zweite-fremdsprache-erste-stufe",
+        "field:inhaltsfeld-antike-welt",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-chapter-2-competency-bullet",
+        "phase": "Latein als zweite Fremdsprache - erste Stufe",
+        "field": "Inhaltsfeld: Antike Welt",
+        "bulletSymbol": "à"
+      }
+    },
+    {
+      "id": "f0ec83c5-69e3-508b-23df-8d845e5978e8",
+      "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-zweite-fremdsprache-erste-stufe-inhaltsfeld-antike-welt",
+      "topicCode": "SekI-latein-als-zweite-fremdsprache-erste-stufe-inhaltsfeld-antike-welt",
+      "title": "Textinhalte im Vergleich mit ausgewählten Rezeptionsdokumenten aspektbezogen interpretieren.",
+      "description": "Die lernende Person kann textinhalte im Vergleich mit ausgewählten Rezeptionsdokumenten aspektbezogen interpretieren",
+      "sourceDocumentKey": "NW-KLP-LATEIN-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Latein Sekundarstufe I Gymnasium 2019, Latein als zweite Fremdsprache - erste Stufe, Inhaltsfeld: Antike Welt",
+      "sourceText": "Textinhalte im Vergleich mit ausgewählten Rezeptionsdokumenten aspektbezogen interpretieren.",
+      "sourceSpan": {
+        "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-zweite-fremdsprache-erste-stufe-inhaltsfeld-antike-welt",
+        "label": "SekI-latein-als-zweite-fremdsprache-erste-stufe-inhaltsfeld-antike-welt#18"
+      },
+      "courseLevel": "unspecified",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-NW",
+        "subject:Latein",
+        "stage:SekI",
+        "phase:latein-als-zweite-fremdsprache-erste-stufe",
+        "field:inhaltsfeld-antike-welt",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-chapter-2-competency-bullet",
+        "phase": "Latein als zweite Fremdsprache - erste Stufe",
+        "field": "Inhaltsfeld: Antike Welt",
+        "bulletSymbol": "à"
+      }
+    },
+    {
+      "id": "a752b922-1e2c-5fdd-d92c-ba22c9757241",
+      "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-zweite-fremdsprache-erste-stufe-inhaltsfeld-textgestaltung",
+      "topicCode": "SekI-latein-als-zweite-fremdsprache-erste-stufe-inhaltsfeld-textgestaltung",
+      "title": "Texte unter Berücksichtigung der Textstruktur erschließen,",
+      "description": "Die lernende Person kann texte unter Berücksichtigung der Textstruktur erschließen,",
+      "sourceDocumentKey": "NW-KLP-LATEIN-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Latein Sekundarstufe I Gymnasium 2019, Latein als zweite Fremdsprache - erste Stufe, Inhaltsfeld: Textgestaltung",
+      "sourceText": "Texte unter Berücksichtigung der Textstruktur erschließen,",
+      "sourceSpan": {
+        "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-zweite-fremdsprache-erste-stufe-inhaltsfeld-textgestaltung",
+        "label": "SekI-latein-als-zweite-fremdsprache-erste-stufe-inhaltsfeld-textgestaltung#19"
+      },
+      "courseLevel": "unspecified",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-NW",
+        "subject:Latein",
+        "stage:SekI",
+        "phase:latein-als-zweite-fremdsprache-erste-stufe",
+        "field:inhaltsfeld-textgestaltung",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-chapter-2-competency-bullet",
+        "phase": "Latein als zweite Fremdsprache - erste Stufe",
+        "field": "Inhaltsfeld: Textgestaltung",
+        "bulletSymbol": "à"
+      }
+    },
+    {
+      "id": "bbf0cdb7-24e0-5ffb-5112-d61c7592be8d",
+      "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-zweite-fremdsprache-erste-stufe-inhaltsfeld-textgestaltung",
+      "topicCode": "SekI-latein-als-zweite-fremdsprache-erste-stufe-inhaltsfeld-textgestaltung",
+      "title": "Texte unter Berücksichtigung formaler und sprachlich-stilistischer Gestaltungsmittel übersetzen,",
+      "description": "Die lernende Person kann texte unter Berücksichtigung formaler und sprachlich-stilistischer Gestaltungsmittel übersetzen,",
+      "sourceDocumentKey": "NW-KLP-LATEIN-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Latein Sekundarstufe I Gymnasium 2019, Latein als zweite Fremdsprache - erste Stufe, Inhaltsfeld: Textgestaltung",
+      "sourceText": "Texte unter Berücksichtigung formaler und sprachlich-stilistischer Gestaltungsmittel übersetzen,",
+      "sourceSpan": {
+        "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-zweite-fremdsprache-erste-stufe-inhaltsfeld-textgestaltung",
+        "label": "SekI-latein-als-zweite-fremdsprache-erste-stufe-inhaltsfeld-textgestaltung#20"
+      },
+      "courseLevel": "unspecified",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-NW",
+        "subject:Latein",
+        "stage:SekI",
+        "phase:latein-als-zweite-fremdsprache-erste-stufe",
+        "field:inhaltsfeld-textgestaltung",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-chapter-2-competency-bullet",
+        "phase": "Latein als zweite Fremdsprache - erste Stufe",
+        "field": "Inhaltsfeld: Textgestaltung",
+        "bulletSymbol": "à"
+      }
+    },
+    {
+      "id": "1f9f15cf-f244-5848-37e9-a4846578ddc2",
+      "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-zweite-fremdsprache-erste-stufe-inhaltsfeld-textgestaltung",
+      "topicCode": "SekI-latein-als-zweite-fremdsprache-erste-stufe-inhaltsfeld-textgestaltung",
+      "title": "verschiedene Übersetzungen eines Textes im Hinblick auf das Zusammenwirken von Textaussagen u...",
+      "description": "Die lernende Person kann verschiedene Übersetzungen eines Textes im Hinblick auf das Zusammenwirken von Textaussagen und Textgestaltung vergleichen,",
+      "sourceDocumentKey": "NW-KLP-LATEIN-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Latein Sekundarstufe I Gymnasium 2019, Latein als zweite Fremdsprache - erste Stufe, Inhaltsfeld: Textgestaltung",
+      "sourceText": "verschiedene Übersetzungen eines Textes im Hinblick auf das Zusammenwirken von Textaussagen und Textgestaltung vergleichen,",
+      "sourceSpan": {
+        "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-zweite-fremdsprache-erste-stufe-inhaltsfeld-textgestaltung",
+        "label": "SekI-latein-als-zweite-fremdsprache-erste-stufe-inhaltsfeld-textgestaltung#21"
+      },
+      "courseLevel": "unspecified",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-NW",
+        "subject:Latein",
+        "stage:SekI",
+        "phase:latein-als-zweite-fremdsprache-erste-stufe",
+        "field:inhaltsfeld-textgestaltung",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-chapter-2-competency-bullet",
+        "phase": "Latein als zweite Fremdsprache - erste Stufe",
+        "field": "Inhaltsfeld: Textgestaltung",
+        "bulletSymbol": "à"
+      }
+    },
+    {
+      "id": "3313cbff-627b-510c-a01d-12a15d2c8611",
+      "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-zweite-fremdsprache-erste-stufe-inhaltsfeld-textgestaltung",
+      "topicCode": "SekI-latein-als-zweite-fremdsprache-erste-stufe-inhaltsfeld-textgestaltung",
+      "title": "Funktionen sprachlich-stilistischer Gestaltungsmittel bezogen auf die Textaussage erläutern,",
+      "description": "Die lernende Person kann funktionen sprachlich-stilistischer Gestaltungsmittel bezogen auf die Textaussage erläutern,",
+      "sourceDocumentKey": "NW-KLP-LATEIN-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Latein Sekundarstufe I Gymnasium 2019, Latein als zweite Fremdsprache - erste Stufe, Inhaltsfeld: Textgestaltung",
+      "sourceText": "Funktionen sprachlich-stilistischer Gestaltungsmittel bezogen auf die Textaussage erläutern,",
+      "sourceSpan": {
+        "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-zweite-fremdsprache-erste-stufe-inhaltsfeld-textgestaltung",
+        "label": "SekI-latein-als-zweite-fremdsprache-erste-stufe-inhaltsfeld-textgestaltung#22"
+      },
+      "courseLevel": "unspecified",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-NW",
+        "subject:Latein",
+        "stage:SekI",
+        "phase:latein-als-zweite-fremdsprache-erste-stufe",
+        "field:inhaltsfeld-textgestaltung",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-chapter-2-competency-bullet",
+        "phase": "Latein als zweite Fremdsprache - erste Stufe",
+        "field": "Inhaltsfeld: Textgestaltung",
+        "bulletSymbol": "à"
+      }
+    },
+    {
+      "id": "8f931a36-e5c2-549b-61cc-92d44d740388",
+      "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-zweite-fremdsprache-erste-stufe-inhaltsfeld-textgestaltung",
+      "topicCode": "SekI-latein-als-zweite-fremdsprache-erste-stufe-inhaltsfeld-textgestaltung",
+      "title": "Texte unter Berücksichtigung der Textsorte weitgehend zielsprachengerecht übersetzen.",
+      "description": "Die lernende Person kann texte unter Berücksichtigung der Textsorte weitgehend zielsprachengerecht übersetzen",
+      "sourceDocumentKey": "NW-KLP-LATEIN-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Latein Sekundarstufe I Gymnasium 2019, Latein als zweite Fremdsprache - erste Stufe, Inhaltsfeld: Textgestaltung",
+      "sourceText": "Texte unter Berücksichtigung der Textsorte weitgehend zielsprachengerecht übersetzen.",
+      "sourceSpan": {
+        "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-zweite-fremdsprache-erste-stufe-inhaltsfeld-textgestaltung",
+        "label": "SekI-latein-als-zweite-fremdsprache-erste-stufe-inhaltsfeld-textgestaltung#23"
+      },
+      "courseLevel": "unspecified",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-NW",
+        "subject:Latein",
+        "stage:SekI",
+        "phase:latein-als-zweite-fremdsprache-erste-stufe",
+        "field:inhaltsfeld-textgestaltung",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-chapter-2-competency-bullet",
+        "phase": "Latein als zweite Fremdsprache - erste Stufe",
+        "field": "Inhaltsfeld: Textgestaltung",
+        "bulletSymbol": "à"
+      }
+    },
+    {
+      "id": "ca2bc1a8-004d-58f5-db36-82fef85dff6e",
+      "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-zweite-fremdsprache-erste-stufe-inhaltsfeld-sprachsystem",
+      "topicCode": "SekI-latein-als-zweite-fremdsprache-erste-stufe-inhaltsfeld-sprachsystem",
+      "title": "bei der Erschließung und Übersetzung eines Textes lateinische Wörter des dem Lernstand entspr...",
+      "description": "Die lernende Person kann bei der Erschließung und Übersetzung eines Textes lateinische Wörter des dem Lernstand entsprechenden Grundwortschatzes angemessen monosemieren,",
+      "sourceDocumentKey": "NW-KLP-LATEIN-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Latein Sekundarstufe I Gymnasium 2019, Latein als zweite Fremdsprache - erste Stufe, Inhaltsfeld: Sprachsystem",
+      "sourceText": "bei der Erschließung und Übersetzung eines Textes lateinische Wörter des dem Lernstand entsprechenden Grundwortschatzes angemessen monosemieren,",
+      "sourceSpan": {
+        "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-zweite-fremdsprache-erste-stufe-inhaltsfeld-sprachsystem",
+        "label": "SekI-latein-als-zweite-fremdsprache-erste-stufe-inhaltsfeld-sprachsystem#24"
+      },
+      "courseLevel": "unspecified",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-NW",
+        "subject:Latein",
+        "stage:SekI",
+        "phase:latein-als-zweite-fremdsprache-erste-stufe",
+        "field:inhaltsfeld-sprachsystem",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-chapter-2-competency-bullet",
+        "phase": "Latein als zweite Fremdsprache - erste Stufe",
+        "field": "Inhaltsfeld: Sprachsystem",
+        "bulletSymbol": "à"
+      }
+    },
+    {
+      "id": "5ceb4fb6-b72e-56f2-1bca-d8cfa5790d3a",
+      "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-zweite-fremdsprache-erste-stufe-inhaltsfeld-sprachsystem",
+      "topicCode": "SekI-latein-als-zweite-fremdsprache-erste-stufe-inhaltsfeld-sprachsystem",
+      "title": "durch kontrastive Sprachbetrachtung ihren Wortschatz im Deutschen erweitern,",
+      "description": "Die lernende Person kann durch kontrastive Sprachbetrachtung ihren Wortschatz im Deutschen erweitern,",
+      "sourceDocumentKey": "NW-KLP-LATEIN-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Latein Sekundarstufe I Gymnasium 2019, Latein als zweite Fremdsprache - erste Stufe, Inhaltsfeld: Sprachsystem",
+      "sourceText": "durch kontrastive Sprachbetrachtung ihren Wortschatz im Deutschen erweitern,",
+      "sourceSpan": {
+        "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-zweite-fremdsprache-erste-stufe-inhaltsfeld-sprachsystem",
+        "label": "SekI-latein-als-zweite-fremdsprache-erste-stufe-inhaltsfeld-sprachsystem#25"
+      },
+      "courseLevel": "unspecified",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-NW",
+        "subject:Latein",
+        "stage:SekI",
+        "phase:latein-als-zweite-fremdsprache-erste-stufe",
+        "field:inhaltsfeld-sprachsystem",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-chapter-2-competency-bullet",
+        "phase": "Latein als zweite Fremdsprache - erste Stufe",
+        "field": "Inhaltsfeld: Sprachsystem",
+        "bulletSymbol": "à"
+      }
+    },
+    {
+      "id": "43d32175-1a6c-5787-cafc-922000d5b259",
+      "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-zweite-fremdsprache-erste-stufe-inhaltsfeld-sprachsystem",
+      "topicCode": "SekI-latein-als-zweite-fremdsprache-erste-stufe-inhaltsfeld-sprachsystem",
+      "title": "unter Bezugnahme auf die lateinische Ausgangsform die Bedeutung von Lehn- und Fremdwörtern im...",
+      "description": "Die lernende Person kann unter Bezugnahme auf die lateinische Ausgangsform die Bedeutung von Lehn- und Fremdwörtern im Deutschen sowie in anderen Sprachen erläutern,",
+      "sourceDocumentKey": "NW-KLP-LATEIN-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Latein Sekundarstufe I Gymnasium 2019, Latein als zweite Fremdsprache - erste Stufe, Inhaltsfeld: Sprachsystem",
+      "sourceText": "unter Bezugnahme auf die lateinische Ausgangsform die Bedeutung von Lehn- und Fremdwörtern im Deutschen sowie in anderen Sprachen erläutern,",
+      "sourceSpan": {
+        "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-zweite-fremdsprache-erste-stufe-inhaltsfeld-sprachsystem",
+        "label": "SekI-latein-als-zweite-fremdsprache-erste-stufe-inhaltsfeld-sprachsystem#26"
+      },
+      "courseLevel": "unspecified",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-NW",
+        "subject:Latein",
+        "stage:SekI",
+        "phase:latein-als-zweite-fremdsprache-erste-stufe",
+        "field:inhaltsfeld-sprachsystem",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-chapter-2-competency-bullet",
+        "phase": "Latein als zweite Fremdsprache - erste Stufe",
+        "field": "Inhaltsfeld: Sprachsystem",
+        "bulletSymbol": "à"
+      }
+    },
+    {
+      "id": "9c911339-8c11-56b6-ac59-317a363122e8",
+      "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-zweite-fremdsprache-erste-stufe-inhaltsfeld-sprachsystem",
+      "topicCode": "SekI-latein-als-zweite-fremdsprache-erste-stufe-inhaltsfeld-sprachsystem",
+      "title": "bei der Erschließung und Übersetzung angemessene Übersetzungsmöglichkeiten grundlegender Elem...",
+      "description": "Die lernende Person kann bei der Erschließung und Übersetzung angemessene Übersetzungsmöglichkeiten grundlegender Elemente von Morphologie und Syntax weitgehend selbstständig auswählen,",
+      "sourceDocumentKey": "NW-KLP-LATEIN-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Latein Sekundarstufe I Gymnasium 2019, Latein als zweite Fremdsprache - erste Stufe, Inhaltsfeld: Sprachsystem",
+      "sourceText": "bei der Erschließung und Übersetzung angemessene Übersetzungsmöglichkeiten grundlegender Elemente von Morphologie und Syntax weitgehend selbstständig auswählen,",
+      "sourceSpan": {
+        "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-zweite-fremdsprache-erste-stufe-inhaltsfeld-sprachsystem",
+        "label": "SekI-latein-als-zweite-fremdsprache-erste-stufe-inhaltsfeld-sprachsystem#27"
+      },
+      "courseLevel": "unspecified",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-NW",
+        "subject:Latein",
+        "stage:SekI",
+        "phase:latein-als-zweite-fremdsprache-erste-stufe",
+        "field:inhaltsfeld-sprachsystem",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-chapter-2-competency-bullet",
+        "phase": "Latein als zweite Fremdsprache - erste Stufe",
+        "field": "Inhaltsfeld: Sprachsystem",
+        "bulletSymbol": "à"
+      }
+    },
+    {
+      "id": "d5d27810-0d5c-519e-6ffe-81aa71af7491",
+      "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-zweite-fremdsprache-erste-stufe-inhaltsfeld-sprachsystem",
+      "topicCode": "SekI-latein-als-zweite-fremdsprache-erste-stufe-inhaltsfeld-sprachsystem",
+      "title": "syntaktische Strukturen auch unter Verwendung digitaler Werkzeuge weitgehend selbstständig vi...",
+      "description": "Die lernende Person kann syntaktische Strukturen auch unter Verwendung digitaler Werkzeuge weitgehend selbstständig visualisieren,",
+      "sourceDocumentKey": "NW-KLP-LATEIN-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Latein Sekundarstufe I Gymnasium 2019, Latein als zweite Fremdsprache - erste Stufe, Inhaltsfeld: Sprachsystem",
+      "sourceText": "syntaktische Strukturen auch unter Verwendung digitaler Werkzeuge weitgehend selbstständig visualisieren,",
+      "sourceSpan": {
+        "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-zweite-fremdsprache-erste-stufe-inhaltsfeld-sprachsystem",
+        "label": "SekI-latein-als-zweite-fremdsprache-erste-stufe-inhaltsfeld-sprachsystem#28"
+      },
+      "courseLevel": "unspecified",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-NW",
+        "subject:Latein",
+        "stage:SekI",
+        "phase:latein-als-zweite-fremdsprache-erste-stufe",
+        "field:inhaltsfeld-sprachsystem",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-chapter-2-competency-bullet",
+        "phase": "Latein als zweite Fremdsprache - erste Stufe",
+        "field": "Inhaltsfeld: Sprachsystem",
+        "bulletSymbol": "à"
+      }
+    },
+    {
+      "id": "ae274b4e-879b-557f-db16-10e65a6a3530",
+      "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-zweite-fremdsprache-erste-stufe-inhaltsfeld-sprachsystem",
+      "topicCode": "SekI-latein-als-zweite-fremdsprache-erste-stufe-inhaltsfeld-sprachsystem",
+      "title": "im Rahmen des Sprachenlernens digitale Lernangebote und Werkzeuge zielgerichtet einsetzen.",
+      "description": "Die lernende Person kann im Rahmen des Sprachenlernens digitale Lernangebote und Werkzeuge zielgerichtet einsetzen",
+      "sourceDocumentKey": "NW-KLP-LATEIN-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Latein Sekundarstufe I Gymnasium 2019, Latein als zweite Fremdsprache - erste Stufe, Inhaltsfeld: Sprachsystem",
+      "sourceText": "im Rahmen des Sprachenlernens digitale Lernangebote und Werkzeuge zielgerichtet einsetzen.",
+      "sourceSpan": {
+        "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-zweite-fremdsprache-erste-stufe-inhaltsfeld-sprachsystem",
+        "label": "SekI-latein-als-zweite-fremdsprache-erste-stufe-inhaltsfeld-sprachsystem#29"
+      },
+      "courseLevel": "unspecified",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-NW",
+        "subject:Latein",
+        "stage:SekI",
+        "phase:latein-als-zweite-fremdsprache-erste-stufe",
+        "field:inhaltsfeld-sprachsystem",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-chapter-2-competency-bullet",
+        "phase": "Latein als zweite Fremdsprache - erste Stufe",
+        "field": "Inhaltsfeld: Sprachsystem",
+        "bulletSymbol": "à"
+      }
+    },
+    {
+      "id": "0fb2c009-edcc-58f0-7857-fe62d96cb559",
+      "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-zweite-fremdsprache-zweite-stufe-textkompetenz",
+      "topicCode": "SekI-latein-als-zweite-fremdsprache-zweite-stufe-textkompetenz",
+      "title": "leichtere und mittelschwere Originaltexte auf inhaltlicher und formaler Ebene erschließen,",
+      "description": "Die lernende Person kann leichtere und mittelschwere Originaltexte auf inhaltlicher und formaler Ebene erschließen,",
+      "sourceDocumentKey": "NW-KLP-LATEIN-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Latein Sekundarstufe I Gymnasium 2019, Latein als zweite Fremdsprache - zweite Stufe, Textkompetenz",
+      "sourceText": "leichtere und mittelschwere Originaltexte auf inhaltlicher und formaler Ebene erschließen,",
+      "sourceSpan": {
+        "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-zweite-fremdsprache-zweite-stufe-textkompetenz",
+        "label": "SekI-latein-als-zweite-fremdsprache-zweite-stufe-textkompetenz#30"
+      },
+      "courseLevel": "unspecified",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-NW",
+        "subject:Latein",
+        "stage:SekI",
+        "phase:latein-als-zweite-fremdsprache-zweite-stufe",
+        "field:textkompetenz",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-chapter-2-competency-bullet",
+        "phase": "Latein als zweite Fremdsprache - zweite Stufe",
+        "field": "Textkompetenz",
+        "bulletSymbol": ""
+      }
+    },
+    {
+      "id": "961e88a2-dfe1-5022-6411-92497b0fec20",
+      "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-zweite-fremdsprache-zweite-stufe-textkompetenz",
+      "topicCode": "SekI-latein-als-zweite-fremdsprache-zweite-stufe-textkompetenz",
+      "title": "leichtere und mittelschwere Originaltexte zielsprachengerecht übersetzen,",
+      "description": "Die lernende Person kann leichtere und mittelschwere Originaltexte zielsprachengerecht übersetzen,",
+      "sourceDocumentKey": "NW-KLP-LATEIN-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Latein Sekundarstufe I Gymnasium 2019, Latein als zweite Fremdsprache - zweite Stufe, Textkompetenz",
+      "sourceText": "leichtere und mittelschwere Originaltexte zielsprachengerecht übersetzen,",
+      "sourceSpan": {
+        "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-zweite-fremdsprache-zweite-stufe-textkompetenz",
+        "label": "SekI-latein-als-zweite-fremdsprache-zweite-stufe-textkompetenz#31"
+      },
+      "courseLevel": "unspecified",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-NW",
+        "subject:Latein",
+        "stage:SekI",
+        "phase:latein-als-zweite-fremdsprache-zweite-stufe",
+        "field:textkompetenz",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-chapter-2-competency-bullet",
+        "phase": "Latein als zweite Fremdsprache - zweite Stufe",
+        "field": "Textkompetenz",
+        "bulletSymbol": ""
+      }
+    },
+    {
+      "id": "cb8ef3e4-e21b-5fcc-3d2f-4609b96e3b0c",
+      "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-zweite-fremdsprache-zweite-stufe-textkompetenz",
+      "topicCode": "SekI-latein-als-zweite-fremdsprache-zweite-stufe-textkompetenz",
+      "title": "leichtere und mittelschwere Originaltexte aspektbezogen interpretieren,",
+      "description": "Die lernende Person kann leichtere und mittelschwere Originaltexte aspektbezogen interpretieren,",
+      "sourceDocumentKey": "NW-KLP-LATEIN-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Latein Sekundarstufe I Gymnasium 2019, Latein als zweite Fremdsprache - zweite Stufe, Textkompetenz",
+      "sourceText": "leichtere und mittelschwere Originaltexte aspektbezogen interpretieren,",
+      "sourceSpan": {
+        "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-zweite-fremdsprache-zweite-stufe-textkompetenz",
+        "label": "SekI-latein-als-zweite-fremdsprache-zweite-stufe-textkompetenz#32"
+      },
+      "courseLevel": "unspecified",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-NW",
+        "subject:Latein",
+        "stage:SekI",
+        "phase:latein-als-zweite-fremdsprache-zweite-stufe",
+        "field:textkompetenz",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-chapter-2-competency-bullet",
+        "phase": "Latein als zweite Fremdsprache - zweite Stufe",
+        "field": "Textkompetenz",
+        "bulletSymbol": ""
+      }
+    },
+    {
+      "id": "2bc7a93d-ea77-506f-10ee-b1f6d8799df6",
+      "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-zweite-fremdsprache-zweite-stufe-textkompetenz",
+      "topicCode": "SekI-latein-als-zweite-fremdsprache-zweite-stufe-textkompetenz",
+      "title": "bei der Erschließung eines Textes unterschiedliche Texterschließungsverfahren anwenden,",
+      "description": "Die lernende Person kann bei der Erschließung eines Textes unterschiedliche Texterschließungsverfahren anwenden,",
+      "sourceDocumentKey": "NW-KLP-LATEIN-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Latein Sekundarstufe I Gymnasium 2019, Latein als zweite Fremdsprache - zweite Stufe, Textkompetenz",
+      "sourceText": "bei der Erschließung eines Textes unterschiedliche Texterschließungsverfahren anwenden,",
+      "sourceSpan": {
+        "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-zweite-fremdsprache-zweite-stufe-textkompetenz",
+        "label": "SekI-latein-als-zweite-fremdsprache-zweite-stufe-textkompetenz#33"
+      },
+      "courseLevel": "unspecified",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-NW",
+        "subject:Latein",
+        "stage:SekI",
+        "phase:latein-als-zweite-fremdsprache-zweite-stufe",
+        "field:textkompetenz",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-chapter-2-competency-bullet",
+        "phase": "Latein als zweite Fremdsprache - zweite Stufe",
+        "field": "Textkompetenz",
+        "bulletSymbol": ""
+      }
+    },
+    {
+      "id": "7a17c6ec-077d-5792-de17-3a6114303175",
+      "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-zweite-fremdsprache-zweite-stufe-textkompetenz",
+      "topicCode": "SekI-latein-als-zweite-fremdsprache-zweite-stufe-textkompetenz",
+      "title": "lateinische Texte sinngemäß lesen,",
+      "description": "Die lernende Person kann lateinische Texte sinngemäß lesen,",
+      "sourceDocumentKey": "NW-KLP-LATEIN-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Latein Sekundarstufe I Gymnasium 2019, Latein als zweite Fremdsprache - zweite Stufe, Textkompetenz",
+      "sourceText": "lateinische Texte sinngemäß lesen,",
+      "sourceSpan": {
+        "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-zweite-fremdsprache-zweite-stufe-textkompetenz",
+        "label": "SekI-latein-als-zweite-fremdsprache-zweite-stufe-textkompetenz#34"
+      },
+      "courseLevel": "unspecified",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-NW",
+        "subject:Latein",
+        "stage:SekI",
+        "phase:latein-als-zweite-fremdsprache-zweite-stufe",
+        "field:textkompetenz",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-chapter-2-competency-bullet",
+        "phase": "Latein als zweite Fremdsprache - zweite Stufe",
+        "field": "Textkompetenz",
+        "bulletSymbol": ""
+      }
+    },
+    {
+      "id": "97e77398-70be-54c4-0b07-ab559e5f7ce5",
+      "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-zweite-fremdsprache-zweite-stufe-textkompetenz",
+      "topicCode": "SekI-latein-als-zweite-fremdsprache-zweite-stufe-textkompetenz",
+      "title": "lateinische Verse nach metrischer Analyse im Lesevortrag darbieten.",
+      "description": "Die lernende Person kann lateinische Verse nach metrischer Analyse im Lesevortrag darbieten",
+      "sourceDocumentKey": "NW-KLP-LATEIN-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Latein Sekundarstufe I Gymnasium 2019, Latein als zweite Fremdsprache - zweite Stufe, Textkompetenz",
+      "sourceText": "lateinische Verse nach metrischer Analyse im Lesevortrag darbieten.",
+      "sourceSpan": {
+        "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-zweite-fremdsprache-zweite-stufe-textkompetenz",
+        "label": "SekI-latein-als-zweite-fremdsprache-zweite-stufe-textkompetenz#35"
+      },
+      "courseLevel": "unspecified",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-NW",
+        "subject:Latein",
+        "stage:SekI",
+        "phase:latein-als-zweite-fremdsprache-zweite-stufe",
+        "field:textkompetenz",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-chapter-2-competency-bullet",
+        "phase": "Latein als zweite Fremdsprache - zweite Stufe",
+        "field": "Textkompetenz",
+        "bulletSymbol": ""
+      }
+    },
+    {
+      "id": "2b4a0e4c-6ef3-57b4-b0c7-76710650e450",
+      "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-zweite-fremdsprache-zweite-stufe-sprachkompetenz",
+      "topicCode": "SekI-latein-als-zweite-fremdsprache-zweite-stufe-sprachkompetenz",
+      "title": "einen erweiterten Wortschatz funktional einsetzen,",
+      "description": "Die lernende Person kann einen erweiterten Wortschatz funktional einsetzen,",
+      "sourceDocumentKey": "NW-KLP-LATEIN-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Latein Sekundarstufe I Gymnasium 2019, Latein als zweite Fremdsprache - zweite Stufe, Sprachkompetenz",
+      "sourceText": "einen erweiterten Wortschatz funktional einsetzen,",
+      "sourceSpan": {
+        "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-zweite-fremdsprache-zweite-stufe-sprachkompetenz",
+        "label": "SekI-latein-als-zweite-fremdsprache-zweite-stufe-sprachkompetenz#36"
+      },
+      "courseLevel": "unspecified",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-NW",
+        "subject:Latein",
+        "stage:SekI",
+        "phase:latein-als-zweite-fremdsprache-zweite-stufe",
+        "field:sprachkompetenz",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-chapter-2-competency-bullet",
+        "phase": "Latein als zweite Fremdsprache - zweite Stufe",
+        "field": "Sprachkompetenz",
+        "bulletSymbol": ""
+      }
+    },
+    {
+      "id": "e9e7ff3b-8a50-5fef-e590-886381af8e8b",
+      "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-zweite-fremdsprache-zweite-stufe-sprachkompetenz",
+      "topicCode": "SekI-latein-als-zweite-fremdsprache-zweite-stufe-sprachkompetenz",
+      "title": "mithilfe grundlegender Prinzipien der Wortbildungslehre die Bedeutung unbekannter lateinische...",
+      "description": "Die lernende Person kann mithilfe grundlegender Prinzipien der Wortbildungslehre die Bedeutung unbekannter lateinischer Wörter erschließen,",
+      "sourceDocumentKey": "NW-KLP-LATEIN-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Latein Sekundarstufe I Gymnasium 2019, Latein als zweite Fremdsprache - zweite Stufe, Sprachkompetenz",
+      "sourceText": "mithilfe grundlegender Prinzipien der Wortbildungslehre die Bedeutung unbekannter lateinischer Wörter erschließen,",
+      "sourceSpan": {
+        "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-zweite-fremdsprache-zweite-stufe-sprachkompetenz",
+        "label": "SekI-latein-als-zweite-fremdsprache-zweite-stufe-sprachkompetenz#37"
+      },
+      "courseLevel": "unspecified",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-NW",
+        "subject:Latein",
+        "stage:SekI",
+        "phase:latein-als-zweite-fremdsprache-zweite-stufe",
+        "field:sprachkompetenz",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-chapter-2-competency-bullet",
+        "phase": "Latein als zweite Fremdsprache - zweite Stufe",
+        "field": "Sprachkompetenz",
+        "bulletSymbol": ""
+      }
+    },
+    {
+      "id": "172f501e-e4f9-5632-1b4f-0171d8ef4105",
+      "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-zweite-fremdsprache-zweite-stufe-sprachkompetenz",
+      "topicCode": "SekI-latein-als-zweite-fremdsprache-zweite-stufe-sprachkompetenz",
+      "title": "ein erweitertes Repertoire der Morphologie und Syntax funktional einsetzen,",
+      "description": "Die lernende Person kann ein erweitertes Repertoire der Morphologie und Syntax funktional einsetzen,",
+      "sourceDocumentKey": "NW-KLP-LATEIN-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Latein Sekundarstufe I Gymnasium 2019, Latein als zweite Fremdsprache - zweite Stufe, Sprachkompetenz",
+      "sourceText": "ein erweitertes Repertoire der Morphologie und Syntax funktional einsetzen,",
+      "sourceSpan": {
+        "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-zweite-fremdsprache-zweite-stufe-sprachkompetenz",
+        "label": "SekI-latein-als-zweite-fremdsprache-zweite-stufe-sprachkompetenz#38"
+      },
+      "courseLevel": "unspecified",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-NW",
+        "subject:Latein",
+        "stage:SekI",
+        "phase:latein-als-zweite-fremdsprache-zweite-stufe",
+        "field:sprachkompetenz",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-chapter-2-competency-bullet",
+        "phase": "Latein als zweite Fremdsprache - zweite Stufe",
+        "field": "Sprachkompetenz",
+        "bulletSymbol": ""
+      }
+    },
+    {
+      "id": "32f51309-6236-50e2-5da2-528a7d5758fd",
+      "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-zweite-fremdsprache-zweite-stufe-sprachkompetenz",
+      "topicCode": "SekI-latein-als-zweite-fremdsprache-zweite-stufe-sprachkompetenz",
+      "title": "mithilfe vertiefter Einsichten in Semantik und Syntax der lateinischen Sprache Wörter und Tex...",
+      "description": "Die lernende Person kann mithilfe vertiefter Einsichten in Semantik und Syntax der lateinischen Sprache Wörter und Texte anderer Sprachen erschließen,",
+      "sourceDocumentKey": "NW-KLP-LATEIN-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Latein Sekundarstufe I Gymnasium 2019, Latein als zweite Fremdsprache - zweite Stufe, Sprachkompetenz",
+      "sourceText": "mithilfe vertiefter Einsichten in Semantik und Syntax der lateinischen Sprache Wörter und Texte anderer Sprachen erschließen,",
+      "sourceSpan": {
+        "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-zweite-fremdsprache-zweite-stufe-sprachkompetenz",
+        "label": "SekI-latein-als-zweite-fremdsprache-zweite-stufe-sprachkompetenz#39"
+      },
+      "courseLevel": "unspecified",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-NW",
+        "subject:Latein",
+        "stage:SekI",
+        "phase:latein-als-zweite-fremdsprache-zweite-stufe",
+        "field:sprachkompetenz",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-chapter-2-competency-bullet",
+        "phase": "Latein als zweite Fremdsprache - zweite Stufe",
+        "field": "Sprachkompetenz",
+        "bulletSymbol": ""
+      }
+    },
+    {
+      "id": "38fc9072-6058-557f-72b1-5bb2673f1c23",
+      "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-zweite-fremdsprache-zweite-stufe-sprachkompetenz",
+      "topicCode": "SekI-latein-als-zweite-fremdsprache-zweite-stufe-sprachkompetenz",
+      "title": "zur Erweiterung ihrer sprachlichen Kompetenzen ein erweitertes Repertoire von Strategien und ...",
+      "description": "Die lernende Person kann zur Erweiterung ihrer sprachlichen Kompetenzen ein erweitertes Repertoire von Strategien und Techniken für das Sprachenlernen einsetzen",
+      "sourceDocumentKey": "NW-KLP-LATEIN-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Latein Sekundarstufe I Gymnasium 2019, Latein als zweite Fremdsprache - zweite Stufe, Sprachkompetenz",
+      "sourceText": "zur Erweiterung ihrer sprachlichen Kompetenzen ein erweitertes Repertoire von Strategien und Techniken für das Sprachenlernen einsetzen.",
+      "sourceSpan": {
+        "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-zweite-fremdsprache-zweite-stufe-sprachkompetenz",
+        "label": "SekI-latein-als-zweite-fremdsprache-zweite-stufe-sprachkompetenz#40"
+      },
+      "courseLevel": "unspecified",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-NW",
+        "subject:Latein",
+        "stage:SekI",
+        "phase:latein-als-zweite-fremdsprache-zweite-stufe",
+        "field:sprachkompetenz",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-chapter-2-competency-bullet",
+        "phase": "Latein als zweite Fremdsprache - zweite Stufe",
+        "field": "Sprachkompetenz",
+        "bulletSymbol": ""
+      }
+    },
+    {
+      "id": "726490b3-01d0-576f-2673-c28e62166353",
+      "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-zweite-fremdsprache-zweite-stufe-kulturkompetenz",
+      "topicCode": "SekI-latein-als-zweite-fremdsprache-zweite-stufe-kulturkompetenz",
+      "title": "historisch-kulturelles Orientierungswissen auch unter Verwendung digitaler Medien ausgehend v...",
+      "description": "Die lernende Person kann historisch-kulturelles Orientierungswissen auch unter Verwendung digitaler Medien ausgehend vom Text themenbezogen recherchieren, adressatengerecht strukturieren und entsprechend den Standards der Quellenangaben präsentieren,",
+      "sourceDocumentKey": "NW-KLP-LATEIN-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Latein Sekundarstufe I Gymnasium 2019, Latein als zweite Fremdsprache - zweite Stufe, Kulturkompetenz",
+      "sourceText": "historisch-kulturelles Orientierungswissen auch unter Verwendung digitaler Medien ausgehend vom Text themenbezogen recherchieren, adressatengerecht strukturieren und entsprechend den Standards der Quellenangaben präsentieren,",
+      "sourceSpan": {
+        "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-zweite-fremdsprache-zweite-stufe-kulturkompetenz",
+        "label": "SekI-latein-als-zweite-fremdsprache-zweite-stufe-kulturkompetenz#41"
+      },
+      "courseLevel": "unspecified",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-NW",
+        "subject:Latein",
+        "stage:SekI",
+        "phase:latein-als-zweite-fremdsprache-zweite-stufe",
+        "field:kulturkompetenz",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-chapter-2-competency-bullet",
+        "phase": "Latein als zweite Fremdsprache - zweite Stufe",
+        "field": "Kulturkompetenz",
+        "bulletSymbol": ""
+      }
+    },
+    {
+      "id": "e9b7321a-74cf-5149-a583-e0c0e624cae7",
+      "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-zweite-fremdsprache-zweite-stufe-kulturkompetenz",
+      "topicCode": "SekI-latein-als-zweite-fremdsprache-zweite-stufe-kulturkompetenz",
+      "title": "Textaussagen im Hinblick auf Perspektiven der historischen Kommunikation (Werte und Normen, M...",
+      "description": "Die lernende Person kann textaussagen im Hinblick auf Perspektiven der historischen Kommunikation (Werte und Normen, Macht und Recht, politische Betätigung, Umgang mit Fremdem, existenzielle Grundfragen) differenziert erläutern und beurteilen,",
+      "sourceDocumentKey": "NW-KLP-LATEIN-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Latein Sekundarstufe I Gymnasium 2019, Latein als zweite Fremdsprache - zweite Stufe, Kulturkompetenz",
+      "sourceText": "Textaussagen im Hinblick auf Perspektiven der historischen Kommunikation (Werte und Normen, Macht und Recht, politische Betätigung, Umgang mit Fremdem, existenzielle Grundfragen) differenziert erläutern und beurteilen,",
+      "sourceSpan": {
+        "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-zweite-fremdsprache-zweite-stufe-kulturkompetenz",
+        "label": "SekI-latein-als-zweite-fremdsprache-zweite-stufe-kulturkompetenz#42"
+      },
+      "courseLevel": "unspecified",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-NW",
+        "subject:Latein",
+        "stage:SekI",
+        "phase:latein-als-zweite-fremdsprache-zweite-stufe",
+        "field:kulturkompetenz",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-chapter-2-competency-bullet",
+        "phase": "Latein als zweite Fremdsprache - zweite Stufe",
+        "field": "Kulturkompetenz",
+        "bulletSymbol": ""
+      }
+    },
+    {
+      "id": "37fcbe9a-68e9-5ce1-53f7-1e3a9bfb75ad",
+      "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-zweite-fremdsprache-zweite-stufe-kulturkompetenz",
+      "topicCode": "SekI-latein-als-zweite-fremdsprache-zweite-stufe-kulturkompetenz",
+      "title": "Gemeinsamkeiten und Unterschiede zwischen antiker Kultur und Gegenwart in übergreifenden Zusa...",
+      "description": "Die lernende Person kann gemeinsamkeiten und Unterschiede zwischen antiker Kultur und Gegenwart in übergreifenden Zusammenhängen differenziert erläutern und beurteilen. Die Kompetenzen der Schülerinnen und Schüler sollen im Rahmen der Behandlung der nachfolgenden, für diese Stufe obligatorischen Inhaltsfelder entwickelt werden",
+      "sourceDocumentKey": "NW-KLP-LATEIN-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Latein Sekundarstufe I Gymnasium 2019, Latein als zweite Fremdsprache - zweite Stufe, Kulturkompetenz",
+      "sourceText": "Gemeinsamkeiten und Unterschiede zwischen antiker Kultur und Gegenwart in übergreifenden Zusammenhängen differenziert erläutern und beurteilen. Die Kompetenzen der Schülerinnen und Schüler sollen im Rahmen der Behandlung der nachfolgenden, für diese Stufe obligatorischen Inhaltsfelder entwickelt werden.",
+      "sourceSpan": {
+        "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-zweite-fremdsprache-zweite-stufe-kulturkompetenz",
+        "label": "SekI-latein-als-zweite-fremdsprache-zweite-stufe-kulturkompetenz#43"
+      },
+      "courseLevel": "unspecified",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-NW",
+        "subject:Latein",
+        "stage:SekI",
+        "phase:latein-als-zweite-fremdsprache-zweite-stufe",
+        "field:kulturkompetenz",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-chapter-2-competency-bullet",
+        "phase": "Latein als zweite Fremdsprache - zweite Stufe",
+        "field": "Kulturkompetenz",
+        "bulletSymbol": ""
+      }
+    },
+    {
+      "id": "8cfbd34b-2784-5ce2-1e76-d08d8f5fea95",
+      "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-zweite-fremdsprache-zweite-stufe-inhaltsfeld-antike-welt",
+      "topicCode": "SekI-latein-als-zweite-fremdsprache-zweite-stufe-inhaltsfeld-antike-welt",
+      "title": "Spannungen und Konflikte innerhalb der römischen Gesellschaft im Vergleich mit heutigen gesel...",
+      "description": "Die lernende Person kann spannungen und Konflikte innerhalb der römischen Gesellschaft im Vergleich mit heutigen gesellschaftlichen Verhältnissen erläutern,",
+      "sourceDocumentKey": "NW-KLP-LATEIN-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Latein Sekundarstufe I Gymnasium 2019, Latein als zweite Fremdsprache - zweite Stufe, Inhaltsfeld: Antike Welt",
+      "sourceText": "Spannungen und Konflikte innerhalb der römischen Gesellschaft im Vergleich mit heutigen gesellschaftlichen Verhältnissen erläutern,",
+      "sourceSpan": {
+        "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-zweite-fremdsprache-zweite-stufe-inhaltsfeld-antike-welt",
+        "label": "SekI-latein-als-zweite-fremdsprache-zweite-stufe-inhaltsfeld-antike-welt#44"
+      },
+      "courseLevel": "unspecified",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-NW",
+        "subject:Latein",
+        "stage:SekI",
+        "phase:latein-als-zweite-fremdsprache-zweite-stufe",
+        "field:inhaltsfeld-antike-welt",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-chapter-2-competency-bullet",
+        "phase": "Latein als zweite Fremdsprache - zweite Stufe",
+        "field": "Inhaltsfeld: Antike Welt",
+        "bulletSymbol": "à"
+      }
+    },
+    {
+      "id": "ec6dd2ec-aeaf-576d-63dd-6c2812743a9f",
+      "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-zweite-fremdsprache-zweite-stufe-inhaltsfeld-antike-welt",
+      "topicCode": "SekI-latein-als-zweite-fremdsprache-zweite-stufe-inhaltsfeld-antike-welt",
+      "title": "die Hauptphasen römischer Geschichte historisch einordnen und am Beispiel zentraler Ereigniss...",
+      "description": "Die lernende Person kann die Hauptphasen römischer Geschichte historisch einordnen und am Beispiel zentraler Ereignisse und Akteure erläutern,",
+      "sourceDocumentKey": "NW-KLP-LATEIN-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Latein Sekundarstufe I Gymnasium 2019, Latein als zweite Fremdsprache - zweite Stufe, Inhaltsfeld: Antike Welt",
+      "sourceText": "die Hauptphasen römischer Geschichte historisch einordnen und am Beispiel zentraler Ereignisse und Akteure erläutern,",
+      "sourceSpan": {
+        "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-zweite-fremdsprache-zweite-stufe-inhaltsfeld-antike-welt",
+        "label": "SekI-latein-als-zweite-fremdsprache-zweite-stufe-inhaltsfeld-antike-welt#45"
+      },
+      "courseLevel": "unspecified",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-NW",
+        "subject:Latein",
+        "stage:SekI",
+        "phase:latein-als-zweite-fremdsprache-zweite-stufe",
+        "field:inhaltsfeld-antike-welt",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-chapter-2-competency-bullet",
+        "phase": "Latein als zweite Fremdsprache - zweite Stufe",
+        "field": "Inhaltsfeld: Antike Welt",
+        "bulletSymbol": "à"
+      }
+    },
+    {
+      "id": "83a3b366-b0fb-5cea-96e0-c6383402396d",
+      "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-zweite-fremdsprache-zweite-stufe-inhaltsfeld-antike-welt",
+      "topicCode": "SekI-latein-als-zweite-fremdsprache-zweite-stufe-inhaltsfeld-antike-welt",
+      "title": "antike Staats- und Gesellschaftsordnungen im Sinne der historischen Kommunikation erläutern u...",
+      "description": "Die lernende Person kann antike Staats- und Gesellschaftsordnungen im Sinne der historischen Kommunikation erläutern und beurteilen,",
+      "sourceDocumentKey": "NW-KLP-LATEIN-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Latein Sekundarstufe I Gymnasium 2019, Latein als zweite Fremdsprache - zweite Stufe, Inhaltsfeld: Antike Welt",
+      "sourceText": "antike Staats- und Gesellschaftsordnungen im Sinne der historischen Kommunikation erläutern und beurteilen,",
+      "sourceSpan": {
+        "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-zweite-fremdsprache-zweite-stufe-inhaltsfeld-antike-welt",
+        "label": "SekI-latein-als-zweite-fremdsprache-zweite-stufe-inhaltsfeld-antike-welt#46"
+      },
+      "courseLevel": "unspecified",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-NW",
+        "subject:Latein",
+        "stage:SekI",
+        "phase:latein-als-zweite-fremdsprache-zweite-stufe",
+        "field:inhaltsfeld-antike-welt",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-chapter-2-competency-bullet",
+        "phase": "Latein als zweite Fremdsprache - zweite Stufe",
+        "field": "Inhaltsfeld: Antike Welt",
+        "bulletSymbol": "à"
+      }
+    },
+    {
+      "id": "2b54c00a-42d6-5cf5-677a-ff7a1e2771ab",
+      "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-zweite-fremdsprache-zweite-stufe-inhaltsfeld-antike-welt",
+      "topicCode": "SekI-latein-als-zweite-fremdsprache-zweite-stufe-inhaltsfeld-antike-welt",
+      "title": "den römischen Herrschaftsanspruch im Sinne der historischen Kommunikation erläutern und beurt...",
+      "description": "Die lernende Person kann den römischen Herrschaftsanspruch im Sinne der historischen Kommunikation erläutern und beurteilen,",
+      "sourceDocumentKey": "NW-KLP-LATEIN-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Latein Sekundarstufe I Gymnasium 2019, Latein als zweite Fremdsprache - zweite Stufe, Inhaltsfeld: Antike Welt",
+      "sourceText": "den römischen Herrschaftsanspruch im Sinne der historischen Kommunikation erläutern und beurteilen,",
+      "sourceSpan": {
+        "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-zweite-fremdsprache-zweite-stufe-inhaltsfeld-antike-welt",
+        "label": "SekI-latein-als-zweite-fremdsprache-zweite-stufe-inhaltsfeld-antike-welt#47"
+      },
+      "courseLevel": "unspecified",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-NW",
+        "subject:Latein",
+        "stage:SekI",
+        "phase:latein-als-zweite-fremdsprache-zweite-stufe",
+        "field:inhaltsfeld-antike-welt",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-chapter-2-competency-bullet",
+        "phase": "Latein als zweite Fremdsprache - zweite Stufe",
+        "field": "Inhaltsfeld: Antike Welt",
+        "bulletSymbol": "à"
+      }
+    },
+    {
+      "id": "c6eda474-aa30-53fc-8c08-fcf019aabe68",
+      "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-zweite-fremdsprache-zweite-stufe-inhaltsfeld-antike-welt",
+      "topicCode": "SekI-latein-als-zweite-fremdsprache-zweite-stufe-inhaltsfeld-antike-welt",
+      "title": "Nachwirkungen und Einflüsse römischer Geschichte und Kultur in Europa und in der eigenen Lebe...",
+      "description": "Die lernende Person kann nachwirkungen und Einflüsse römischer Geschichte und Kultur in Europa und in der eigenen Lebenswelt exemplarisch darstellen,",
+      "sourceDocumentKey": "NW-KLP-LATEIN-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Latein Sekundarstufe I Gymnasium 2019, Latein als zweite Fremdsprache - zweite Stufe, Inhaltsfeld: Antike Welt",
+      "sourceText": "Nachwirkungen und Einflüsse römischer Geschichte und Kultur in Europa und in der eigenen Lebenswelt exemplarisch darstellen,",
+      "sourceSpan": {
+        "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-zweite-fremdsprache-zweite-stufe-inhaltsfeld-antike-welt",
+        "label": "SekI-latein-als-zweite-fremdsprache-zweite-stufe-inhaltsfeld-antike-welt#48"
+      },
+      "courseLevel": "unspecified",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-NW",
+        "subject:Latein",
+        "stage:SekI",
+        "phase:latein-als-zweite-fremdsprache-zweite-stufe",
+        "field:inhaltsfeld-antike-welt",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-chapter-2-competency-bullet",
+        "phase": "Latein als zweite Fremdsprache - zweite Stufe",
+        "field": "Inhaltsfeld: Antike Welt",
+        "bulletSymbol": "à"
+      }
+    },
+    {
+      "id": "07646a98-6018-5693-cbe2-c47fc15aae83",
+      "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-zweite-fremdsprache-zweite-stufe-inhaltsfeld-antike-welt",
+      "topicCode": "SekI-latein-als-zweite-fremdsprache-zweite-stufe-inhaltsfeld-antike-welt",
+      "title": "Grundgedanken der antiken Philosophie im Hinblick auf ihre Relevanz für die eigene Lebenswelt...",
+      "description": "Die lernende Person kann grundgedanken der antiken Philosophie im Hinblick auf ihre Relevanz für die eigene Lebenswelt erläutern und beurteilen,",
+      "sourceDocumentKey": "NW-KLP-LATEIN-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Latein Sekundarstufe I Gymnasium 2019, Latein als zweite Fremdsprache - zweite Stufe, Inhaltsfeld: Antike Welt",
+      "sourceText": "Grundgedanken der antiken Philosophie im Hinblick auf ihre Relevanz für die eigene Lebenswelt erläutern und beurteilen,",
+      "sourceSpan": {
+        "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-zweite-fremdsprache-zweite-stufe-inhaltsfeld-antike-welt",
+        "label": "SekI-latein-als-zweite-fremdsprache-zweite-stufe-inhaltsfeld-antike-welt#49"
+      },
+      "courseLevel": "unspecified",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-NW",
+        "subject:Latein",
+        "stage:SekI",
+        "phase:latein-als-zweite-fremdsprache-zweite-stufe",
+        "field:inhaltsfeld-antike-welt",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-chapter-2-competency-bullet",
+        "phase": "Latein als zweite Fremdsprache - zweite Stufe",
+        "field": "Inhaltsfeld: Antike Welt",
+        "bulletSymbol": "à"
+      }
+    },
+    {
+      "id": "3ca4bf33-168d-5da6-deba-66991ab07893",
+      "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-zweite-fremdsprache-zweite-stufe-inhaltsfeld-antike-welt",
+      "topicCode": "SekI-latein-als-zweite-fremdsprache-zweite-stufe-inhaltsfeld-antike-welt",
+      "title": "zentrale Autoren und Werke lateinischsprachiger Literatur im historischen Kontext darstellen,",
+      "description": "Die lernende Person kann zentrale Autoren und Werke lateinischsprachiger Literatur im historischen Kontext darstellen,",
+      "sourceDocumentKey": "NW-KLP-LATEIN-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Latein Sekundarstufe I Gymnasium 2019, Latein als zweite Fremdsprache - zweite Stufe, Inhaltsfeld: Antike Welt",
+      "sourceText": "zentrale Autoren und Werke lateinischsprachiger Literatur im historischen Kontext darstellen,",
+      "sourceSpan": {
+        "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-zweite-fremdsprache-zweite-stufe-inhaltsfeld-antike-welt",
+        "label": "SekI-latein-als-zweite-fremdsprache-zweite-stufe-inhaltsfeld-antike-welt#50"
+      },
+      "courseLevel": "unspecified",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-NW",
+        "subject:Latein",
+        "stage:SekI",
+        "phase:latein-als-zweite-fremdsprache-zweite-stufe",
+        "field:inhaltsfeld-antike-welt",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-chapter-2-competency-bullet",
+        "phase": "Latein als zweite Fremdsprache - zweite Stufe",
+        "field": "Inhaltsfeld: Antike Welt",
+        "bulletSymbol": "à"
+      }
+    },
+    {
+      "id": "c4af4e8e-ec55-57d5-606c-877be6f3cfc1",
+      "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-zweite-fremdsprache-zweite-stufe-inhaltsfeld-antike-welt",
+      "topicCode": "SekI-latein-als-zweite-fremdsprache-zweite-stufe-inhaltsfeld-antike-welt",
+      "title": "Textinhalte im Vergleich mit ausgewählten Rezeptionsdokumenten aus Literatur, Film, Bildender...",
+      "description": "Die lernende Person kann textinhalte im Vergleich mit ausgewählten Rezeptionsdokumenten aus Literatur, Film, Bildender Kunst oder Musik interpretieren",
+      "sourceDocumentKey": "NW-KLP-LATEIN-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Latein Sekundarstufe I Gymnasium 2019, Latein als zweite Fremdsprache - zweite Stufe, Inhaltsfeld: Antike Welt",
+      "sourceText": "Textinhalte im Vergleich mit ausgewählten Rezeptionsdokumenten aus Literatur, Film, Bildender Kunst oder Musik interpretieren.",
+      "sourceSpan": {
+        "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-zweite-fremdsprache-zweite-stufe-inhaltsfeld-antike-welt",
+        "label": "SekI-latein-als-zweite-fremdsprache-zweite-stufe-inhaltsfeld-antike-welt#51"
+      },
+      "courseLevel": "unspecified",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-NW",
+        "subject:Latein",
+        "stage:SekI",
+        "phase:latein-als-zweite-fremdsprache-zweite-stufe",
+        "field:inhaltsfeld-antike-welt",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-chapter-2-competency-bullet",
+        "phase": "Latein als zweite Fremdsprache - zweite Stufe",
+        "field": "Inhaltsfeld: Antike Welt",
+        "bulletSymbol": "à"
+      }
+    },
+    {
+      "id": "63db596f-6feb-596d-f876-8cddf8a2119d",
+      "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-zweite-fremdsprache-zweite-stufe-inhaltsfeld-textgestaltung",
+      "topicCode": "SekI-latein-als-zweite-fremdsprache-zweite-stufe-inhaltsfeld-textgestaltung",
+      "title": "Texte unter Berücksichtigung der Textsorte und Textstruktur erschließen,",
+      "description": "Die lernende Person kann texte unter Berücksichtigung der Textsorte und Textstruktur erschließen,",
+      "sourceDocumentKey": "NW-KLP-LATEIN-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Latein Sekundarstufe I Gymnasium 2019, Latein als zweite Fremdsprache - zweite Stufe, Inhaltsfeld: Textgestaltung",
+      "sourceText": "Texte unter Berücksichtigung der Textsorte und Textstruktur erschließen,",
+      "sourceSpan": {
+        "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-zweite-fremdsprache-zweite-stufe-inhaltsfeld-textgestaltung",
+        "label": "SekI-latein-als-zweite-fremdsprache-zweite-stufe-inhaltsfeld-textgestaltung#52"
+      },
+      "courseLevel": "unspecified",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-NW",
+        "subject:Latein",
+        "stage:SekI",
+        "phase:latein-als-zweite-fremdsprache-zweite-stufe",
+        "field:inhaltsfeld-textgestaltung",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-chapter-2-competency-bullet",
+        "phase": "Latein als zweite Fremdsprache - zweite Stufe",
+        "field": "Inhaltsfeld: Textgestaltung",
+        "bulletSymbol": "à"
+      }
+    },
+    {
+      "id": "3e024d42-4a6f-5593-e21c-25a875821727",
+      "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-zweite-fremdsprache-zweite-stufe-inhaltsfeld-textgestaltung",
+      "topicCode": "SekI-latein-als-zweite-fremdsprache-zweite-stufe-inhaltsfeld-textgestaltung",
+      "title": "Texte unter Berücksichtigung formaler und sprachlich-stilistischer Gestaltungsmittel übersetz...",
+      "description": "Die lernende Person kann texte unter Berücksichtigung formaler und sprachlich-stilistischer Gestaltungsmittel übersetzen und interpretieren,",
+      "sourceDocumentKey": "NW-KLP-LATEIN-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Latein Sekundarstufe I Gymnasium 2019, Latein als zweite Fremdsprache - zweite Stufe, Inhaltsfeld: Textgestaltung",
+      "sourceText": "Texte unter Berücksichtigung formaler und sprachlich-stilistischer Gestaltungsmittel übersetzen und interpretieren,",
+      "sourceSpan": {
+        "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-zweite-fremdsprache-zweite-stufe-inhaltsfeld-textgestaltung",
+        "label": "SekI-latein-als-zweite-fremdsprache-zweite-stufe-inhaltsfeld-textgestaltung#53"
+      },
+      "courseLevel": "unspecified",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-NW",
+        "subject:Latein",
+        "stage:SekI",
+        "phase:latein-als-zweite-fremdsprache-zweite-stufe",
+        "field:inhaltsfeld-textgestaltung",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-chapter-2-competency-bullet",
+        "phase": "Latein als zweite Fremdsprache - zweite Stufe",
+        "field": "Inhaltsfeld: Textgestaltung",
+        "bulletSymbol": "à"
+      }
+    },
+    {
+      "id": "b9360be1-f276-577b-0911-b19d8ca82ccc",
+      "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-zweite-fremdsprache-zweite-stufe-inhaltsfeld-textgestaltung",
+      "topicCode": "SekI-latein-als-zweite-fremdsprache-zweite-stufe-inhaltsfeld-textgestaltung",
+      "title": "verschiedene Übersetzungen eines Textes im Hinblick auf das Zusammenwirken von Textaussagen u...",
+      "description": "Die lernende Person kann verschiedene Übersetzungen eines Textes im Hinblick auf das Zusammenwirken von Textaussagen und Textgestaltung beurteilen,",
+      "sourceDocumentKey": "NW-KLP-LATEIN-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Latein Sekundarstufe I Gymnasium 2019, Latein als zweite Fremdsprache - zweite Stufe, Inhaltsfeld: Textgestaltung",
+      "sourceText": "verschiedene Übersetzungen eines Textes im Hinblick auf das Zusammenwirken von Textaussagen und Textgestaltung beurteilen,",
+      "sourceSpan": {
+        "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-zweite-fremdsprache-zweite-stufe-inhaltsfeld-textgestaltung",
+        "label": "SekI-latein-als-zweite-fremdsprache-zweite-stufe-inhaltsfeld-textgestaltung#54"
+      },
+      "courseLevel": "unspecified",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-NW",
+        "subject:Latein",
+        "stage:SekI",
+        "phase:latein-als-zweite-fremdsprache-zweite-stufe",
+        "field:inhaltsfeld-textgestaltung",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-chapter-2-competency-bullet",
+        "phase": "Latein als zweite Fremdsprache - zweite Stufe",
+        "field": "Inhaltsfeld: Textgestaltung",
+        "bulletSymbol": "à"
+      }
+    },
+    {
+      "id": "a914272f-4cdd-5f16-833b-ea440785c7aa",
+      "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-zweite-fremdsprache-zweite-stufe-inhaltsfeld-textgestaltung",
+      "topicCode": "SekI-latein-als-zweite-fremdsprache-zweite-stufe-inhaltsfeld-textgestaltung",
+      "title": "Funktionen formaler und sprachlich-stilistischer Gestaltungsmittel im Hinblick auf den Inhalt...",
+      "description": "Die lernende Person kann funktionen formaler und sprachlich-stilistischer Gestaltungsmittel im Hinblick auf den Inhalt und die Aussageabsicht erläutern,",
+      "sourceDocumentKey": "NW-KLP-LATEIN-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Latein Sekundarstufe I Gymnasium 2019, Latein als zweite Fremdsprache - zweite Stufe, Inhaltsfeld: Textgestaltung",
+      "sourceText": "Funktionen formaler und sprachlich-stilistischer Gestaltungsmittel im Hinblick auf den Inhalt und die Aussageabsicht erläutern,",
+      "sourceSpan": {
+        "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-zweite-fremdsprache-zweite-stufe-inhaltsfeld-textgestaltung",
+        "label": "SekI-latein-als-zweite-fremdsprache-zweite-stufe-inhaltsfeld-textgestaltung#55"
+      },
+      "courseLevel": "unspecified",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-NW",
+        "subject:Latein",
+        "stage:SekI",
+        "phase:latein-als-zweite-fremdsprache-zweite-stufe",
+        "field:inhaltsfeld-textgestaltung",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-chapter-2-competency-bullet",
+        "phase": "Latein als zweite Fremdsprache - zweite Stufe",
+        "field": "Inhaltsfeld: Textgestaltung",
+        "bulletSymbol": "à"
+      }
+    },
+    {
+      "id": "e0baac31-99f7-515e-3834-1cec99e0b80f",
+      "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-zweite-fremdsprache-zweite-stufe-inhaltsfeld-textgestaltung",
+      "topicCode": "SekI-latein-als-zweite-fremdsprache-zweite-stufe-inhaltsfeld-textgestaltung",
+      "title": "Wirkungen formaler und sprachlich-stilistischer Gestaltungsmittel im Hinblick auf den Rezipie...",
+      "description": "Die lernende Person kann wirkungen formaler und sprachlich-stilistischer Gestaltungsmittel im Hinblick auf den Rezipienten erläutern,",
+      "sourceDocumentKey": "NW-KLP-LATEIN-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Latein Sekundarstufe I Gymnasium 2019, Latein als zweite Fremdsprache - zweite Stufe, Inhaltsfeld: Textgestaltung",
+      "sourceText": "Wirkungen formaler und sprachlich-stilistischer Gestaltungsmittel im Hinblick auf den Rezipienten erläutern,",
+      "sourceSpan": {
+        "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-zweite-fremdsprache-zweite-stufe-inhaltsfeld-textgestaltung",
+        "label": "SekI-latein-als-zweite-fremdsprache-zweite-stufe-inhaltsfeld-textgestaltung#56"
+      },
+      "courseLevel": "unspecified",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-NW",
+        "subject:Latein",
+        "stage:SekI",
+        "phase:latein-als-zweite-fremdsprache-zweite-stufe",
+        "field:inhaltsfeld-textgestaltung",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-chapter-2-competency-bullet",
+        "phase": "Latein als zweite Fremdsprache - zweite Stufe",
+        "field": "Inhaltsfeld: Textgestaltung",
+        "bulletSymbol": "à"
+      }
+    },
+    {
+      "id": "8cd18f53-d6ba-567a-24aa-c63643a89e6b",
+      "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-zweite-fremdsprache-zweite-stufe-inhaltsfeld-textgestaltung",
+      "topicCode": "SekI-latein-als-zweite-fremdsprache-zweite-stufe-inhaltsfeld-textgestaltung",
+      "title": "Texte unter Berücksichtigung der Textsorte zielsprachengerecht übersetzen.",
+      "description": "Die lernende Person kann texte unter Berücksichtigung der Textsorte zielsprachengerecht übersetzen",
+      "sourceDocumentKey": "NW-KLP-LATEIN-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Latein Sekundarstufe I Gymnasium 2019, Latein als zweite Fremdsprache - zweite Stufe, Inhaltsfeld: Textgestaltung",
+      "sourceText": "Texte unter Berücksichtigung der Textsorte zielsprachengerecht übersetzen.",
+      "sourceSpan": {
+        "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-zweite-fremdsprache-zweite-stufe-inhaltsfeld-textgestaltung",
+        "label": "SekI-latein-als-zweite-fremdsprache-zweite-stufe-inhaltsfeld-textgestaltung#57"
+      },
+      "courseLevel": "unspecified",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-NW",
+        "subject:Latein",
+        "stage:SekI",
+        "phase:latein-als-zweite-fremdsprache-zweite-stufe",
+        "field:inhaltsfeld-textgestaltung",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-chapter-2-competency-bullet",
+        "phase": "Latein als zweite Fremdsprache - zweite Stufe",
+        "field": "Inhaltsfeld: Textgestaltung",
+        "bulletSymbol": "à"
+      }
+    },
+    {
+      "id": "47c6f6c9-11a0-5de0-bb3e-b6842b58c0b6",
+      "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-zweite-fremdsprache-zweite-stufe-inhaltsfeld-sprachsystem",
+      "topicCode": "SekI-latein-als-zweite-fremdsprache-zweite-stufe-inhaltsfeld-sprachsystem",
+      "title": "bei der Erschließung und Übersetzung eines Textes lateinische Wörter des autoren- und themens...",
+      "description": "Die lernende Person kann bei der Erschließung und Übersetzung eines Textes lateinische Wörter des autoren- und themenspezifisch erweiterten Grundwortschatzes angemessen monosemieren,",
+      "sourceDocumentKey": "NW-KLP-LATEIN-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Latein Sekundarstufe I Gymnasium 2019, Latein als zweite Fremdsprache - zweite Stufe, Inhaltsfeld: Sprachsystem",
+      "sourceText": "bei der Erschließung und Übersetzung eines Textes lateinische Wörter des autoren- und themenspezifisch erweiterten Grundwortschatzes angemessen monosemieren,",
+      "sourceSpan": {
+        "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-zweite-fremdsprache-zweite-stufe-inhaltsfeld-sprachsystem",
+        "label": "SekI-latein-als-zweite-fremdsprache-zweite-stufe-inhaltsfeld-sprachsystem#58"
+      },
+      "courseLevel": "unspecified",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-NW",
+        "subject:Latein",
+        "stage:SekI",
+        "phase:latein-als-zweite-fremdsprache-zweite-stufe",
+        "field:inhaltsfeld-sprachsystem",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-chapter-2-competency-bullet",
+        "phase": "Latein als zweite Fremdsprache - zweite Stufe",
+        "field": "Inhaltsfeld: Sprachsystem",
+        "bulletSymbol": "à"
+      }
+    },
+    {
+      "id": "07b4dd11-25f2-5fbb-0e16-9952f87df8ec",
+      "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-zweite-fremdsprache-zweite-stufe-inhaltsfeld-sprachsystem",
+      "topicCode": "SekI-latein-als-zweite-fremdsprache-zweite-stufe-inhaltsfeld-sprachsystem",
+      "title": "Wörter unter Verwendung eines zweisprachigen Wörterbuches kontextbezogen monosemieren,",
+      "description": "Die lernende Person kann wörter unter Verwendung eines zweisprachigen Wörterbuches kontextbezogen monosemieren,",
+      "sourceDocumentKey": "NW-KLP-LATEIN-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Latein Sekundarstufe I Gymnasium 2019, Latein als zweite Fremdsprache - zweite Stufe, Inhaltsfeld: Sprachsystem",
+      "sourceText": "Wörter unter Verwendung eines zweisprachigen Wörterbuches kontextbezogen monosemieren,",
+      "sourceSpan": {
+        "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-zweite-fremdsprache-zweite-stufe-inhaltsfeld-sprachsystem",
+        "label": "SekI-latein-als-zweite-fremdsprache-zweite-stufe-inhaltsfeld-sprachsystem#59"
+      },
+      "courseLevel": "unspecified",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-NW",
+        "subject:Latein",
+        "stage:SekI",
+        "phase:latein-als-zweite-fremdsprache-zweite-stufe",
+        "field:inhaltsfeld-sprachsystem",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-chapter-2-competency-bullet",
+        "phase": "Latein als zweite Fremdsprache - zweite Stufe",
+        "field": "Inhaltsfeld: Sprachsystem",
+        "bulletSymbol": "à"
+      }
+    },
+    {
+      "id": "6a755558-e31e-5cd9-2390-50037b090f42",
+      "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-zweite-fremdsprache-zweite-stufe-inhaltsfeld-sprachsystem",
+      "topicCode": "SekI-latein-als-zweite-fremdsprache-zweite-stufe-inhaltsfeld-sprachsystem",
+      "title": "bei der Erschließung und Übersetzung angemessene Übersetzungsmöglichkeiten grundlegender Elem...",
+      "description": "Die lernende Person kann bei der Erschließung und Übersetzung angemessene Übersetzungsmöglichkeiten grundlegender Elemente von Morphologie und Syntax auswählen,",
+      "sourceDocumentKey": "NW-KLP-LATEIN-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Latein Sekundarstufe I Gymnasium 2019, Latein als zweite Fremdsprache - zweite Stufe, Inhaltsfeld: Sprachsystem",
+      "sourceText": "bei der Erschließung und Übersetzung angemessene Übersetzungsmöglichkeiten grundlegender Elemente von Morphologie und Syntax auswählen,",
+      "sourceSpan": {
+        "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-zweite-fremdsprache-zweite-stufe-inhaltsfeld-sprachsystem",
+        "label": "SekI-latein-als-zweite-fremdsprache-zweite-stufe-inhaltsfeld-sprachsystem#60"
+      },
+      "courseLevel": "unspecified",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-NW",
+        "subject:Latein",
+        "stage:SekI",
+        "phase:latein-als-zweite-fremdsprache-zweite-stufe",
+        "field:inhaltsfeld-sprachsystem",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-chapter-2-competency-bullet",
+        "phase": "Latein als zweite Fremdsprache - zweite Stufe",
+        "field": "Inhaltsfeld: Sprachsystem",
+        "bulletSymbol": "à"
+      }
+    },
+    {
+      "id": "d7077ecf-653f-5f07-fdbf-10eaec7e9f85",
+      "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-zweite-fremdsprache-zweite-stufe-inhaltsfeld-sprachsystem",
+      "topicCode": "SekI-latein-als-zweite-fremdsprache-zweite-stufe-inhaltsfeld-sprachsystem",
+      "title": "syntaktische Strukturen auch unter Verwendung digitaler Werkzeuge visualisieren.",
+      "description": "Die lernende Person kann syntaktische Strukturen auch unter Verwendung digitaler Werkzeuge visualisieren",
+      "sourceDocumentKey": "NW-KLP-LATEIN-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Latein Sekundarstufe I Gymnasium 2019, Latein als zweite Fremdsprache - zweite Stufe, Inhaltsfeld: Sprachsystem",
+      "sourceText": "syntaktische Strukturen auch unter Verwendung digitaler Werkzeuge visualisieren.",
+      "sourceSpan": {
+        "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-zweite-fremdsprache-zweite-stufe-inhaltsfeld-sprachsystem",
+        "label": "SekI-latein-als-zweite-fremdsprache-zweite-stufe-inhaltsfeld-sprachsystem#61"
+      },
+      "courseLevel": "unspecified",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-NW",
+        "subject:Latein",
+        "stage:SekI",
+        "phase:latein-als-zweite-fremdsprache-zweite-stufe",
+        "field:inhaltsfeld-sprachsystem",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-chapter-2-competency-bullet",
+        "phase": "Latein als zweite Fremdsprache - zweite Stufe",
+        "field": "Inhaltsfeld: Sprachsystem",
+        "bulletSymbol": "à"
+      }
+    },
+    {
+      "id": "bb4b6217-8b77-550a-a55a-2a996f90a21d",
+      "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-dritte-fremdsprache-textkompetenz",
+      "topicCode": "SekI-latein-als-dritte-fremdsprache-textkompetenz",
+      "title": "adaptierte und leichtere Originaltexte auf inhaltlicher und formaler Ebene erschließen,",
+      "description": "Die lernende Person kann adaptierte und leichtere Originaltexte auf inhaltlicher und formaler Ebene erschließen,",
+      "sourceDocumentKey": "NW-KLP-LATEIN-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Latein Sekundarstufe I Gymnasium 2019, Latein als dritte Fremdsprache, Textkompetenz",
+      "sourceText": "adaptierte und leichtere Originaltexte auf inhaltlicher und formaler Ebene erschließen,",
+      "sourceSpan": {
+        "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-dritte-fremdsprache-textkompetenz",
+        "label": "SekI-latein-als-dritte-fremdsprache-textkompetenz#62"
+      },
+      "courseLevel": "unspecified",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-NW",
+        "subject:Latein",
+        "stage:SekI",
+        "phase:latein-als-dritte-fremdsprache",
+        "field:textkompetenz",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-chapter-2-competency-bullet",
+        "phase": "Latein als dritte Fremdsprache",
+        "field": "Textkompetenz",
+        "bulletSymbol": ""
+      }
+    },
+    {
+      "id": "bf2ac061-c40b-5540-4a0f-6a256f33e5d4",
+      "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-dritte-fremdsprache-textkompetenz",
+      "topicCode": "SekI-latein-als-dritte-fremdsprache-textkompetenz",
+      "title": "adaptierte und leichtere Originaltexte zielsprachengerecht übersetzen,",
+      "description": "Die lernende Person kann adaptierte und leichtere Originaltexte zielsprachengerecht übersetzen,",
+      "sourceDocumentKey": "NW-KLP-LATEIN-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Latein Sekundarstufe I Gymnasium 2019, Latein als dritte Fremdsprache, Textkompetenz",
+      "sourceText": "adaptierte und leichtere Originaltexte zielsprachengerecht übersetzen,",
+      "sourceSpan": {
+        "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-dritte-fremdsprache-textkompetenz",
+        "label": "SekI-latein-als-dritte-fremdsprache-textkompetenz#63"
+      },
+      "courseLevel": "unspecified",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-NW",
+        "subject:Latein",
+        "stage:SekI",
+        "phase:latein-als-dritte-fremdsprache",
+        "field:textkompetenz",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-chapter-2-competency-bullet",
+        "phase": "Latein als dritte Fremdsprache",
+        "field": "Textkompetenz",
+        "bulletSymbol": ""
+      }
+    },
+    {
+      "id": "50446fe0-3d1b-5228-b12f-e43571962d82",
+      "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-dritte-fremdsprache-textkompetenz",
+      "topicCode": "SekI-latein-als-dritte-fremdsprache-textkompetenz",
+      "title": "adaptierte und leichtere Originaltexte aspektbezogen interpretieren,",
+      "description": "Die lernende Person kann adaptierte und leichtere Originaltexte aspektbezogen interpretieren,",
+      "sourceDocumentKey": "NW-KLP-LATEIN-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Latein Sekundarstufe I Gymnasium 2019, Latein als dritte Fremdsprache, Textkompetenz",
+      "sourceText": "adaptierte und leichtere Originaltexte aspektbezogen interpretieren,",
+      "sourceSpan": {
+        "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-dritte-fremdsprache-textkompetenz",
+        "label": "SekI-latein-als-dritte-fremdsprache-textkompetenz#64"
+      },
+      "courseLevel": "unspecified",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-NW",
+        "subject:Latein",
+        "stage:SekI",
+        "phase:latein-als-dritte-fremdsprache",
+        "field:textkompetenz",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-chapter-2-competency-bullet",
+        "phase": "Latein als dritte Fremdsprache",
+        "field": "Textkompetenz",
+        "bulletSymbol": ""
+      }
+    },
+    {
+      "id": "3d37ed18-0cfd-5585-74ba-8b814dd20328",
+      "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-dritte-fremdsprache-textkompetenz",
+      "topicCode": "SekI-latein-als-dritte-fremdsprache-textkompetenz",
+      "title": "bei der Erschließung eines Textes unterschiedliche Texterschließungsverfahren anwenden,",
+      "description": "Die lernende Person kann bei der Erschließung eines Textes unterschiedliche Texterschließungsverfahren anwenden,",
+      "sourceDocumentKey": "NW-KLP-LATEIN-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Latein Sekundarstufe I Gymnasium 2019, Latein als dritte Fremdsprache, Textkompetenz",
+      "sourceText": "bei der Erschließung eines Textes unterschiedliche Texterschließungsverfahren anwenden,",
+      "sourceSpan": {
+        "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-dritte-fremdsprache-textkompetenz",
+        "label": "SekI-latein-als-dritte-fremdsprache-textkompetenz#65"
+      },
+      "courseLevel": "unspecified",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-NW",
+        "subject:Latein",
+        "stage:SekI",
+        "phase:latein-als-dritte-fremdsprache",
+        "field:textkompetenz",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-chapter-2-competency-bullet",
+        "phase": "Latein als dritte Fremdsprache",
+        "field": "Textkompetenz",
+        "bulletSymbol": ""
+      }
+    },
+    {
+      "id": "fe0e3755-8a49-541b-d8db-6f793a7871f2",
+      "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-dritte-fremdsprache-textkompetenz",
+      "topicCode": "SekI-latein-als-dritte-fremdsprache-textkompetenz",
+      "title": "lateinische Texte sinngemäß lesen.",
+      "description": "Die lernende Person kann lateinische Texte sinngemäß lesen",
+      "sourceDocumentKey": "NW-KLP-LATEIN-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Latein Sekundarstufe I Gymnasium 2019, Latein als dritte Fremdsprache, Textkompetenz",
+      "sourceText": "lateinische Texte sinngemäß lesen.",
+      "sourceSpan": {
+        "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-dritte-fremdsprache-textkompetenz",
+        "label": "SekI-latein-als-dritte-fremdsprache-textkompetenz#66"
+      },
+      "courseLevel": "unspecified",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-NW",
+        "subject:Latein",
+        "stage:SekI",
+        "phase:latein-als-dritte-fremdsprache",
+        "field:textkompetenz",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-chapter-2-competency-bullet",
+        "phase": "Latein als dritte Fremdsprache",
+        "field": "Textkompetenz",
+        "bulletSymbol": ""
+      }
+    },
+    {
+      "id": "f580b04a-1fd2-52fb-46c2-81c1ef435c2d",
+      "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-dritte-fremdsprache-sprachkompetenz",
+      "topicCode": "SekI-latein-als-dritte-fremdsprache-sprachkompetenz",
+      "title": "einen dem Lernstand entsprechenden Grundwortschatz bei der Erschließung adaptierter und leich...",
+      "description": "Die lernende Person kann einen dem Lernstand entsprechenden Grundwortschatz bei der Erschließung adaptierter und leichterer Originaltexte anwenden,",
+      "sourceDocumentKey": "NW-KLP-LATEIN-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Latein Sekundarstufe I Gymnasium 2019, Latein als dritte Fremdsprache, Sprachkompetenz",
+      "sourceText": "einen dem Lernstand entsprechenden Grundwortschatz bei der Erschließung adaptierter und leichterer Originaltexte anwenden,",
+      "sourceSpan": {
+        "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-dritte-fremdsprache-sprachkompetenz",
+        "label": "SekI-latein-als-dritte-fremdsprache-sprachkompetenz#67"
+      },
+      "courseLevel": "unspecified",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-NW",
+        "subject:Latein",
+        "stage:SekI",
+        "phase:latein-als-dritte-fremdsprache",
+        "field:sprachkompetenz",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-chapter-2-competency-bullet",
+        "phase": "Latein als dritte Fremdsprache",
+        "field": "Sprachkompetenz",
+        "bulletSymbol": ""
+      }
+    },
+    {
+      "id": "fde3ce61-ef6c-5f52-999e-86fc89172710",
+      "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-dritte-fremdsprache-sprachkompetenz",
+      "topicCode": "SekI-latein-als-dritte-fremdsprache-sprachkompetenz",
+      "title": "mithilfe grundlegender Prinzipien der Wortbildungslehre die Bedeutung unbekannter lateinische...",
+      "description": "Die lernende Person kann mithilfe grundlegender Prinzipien der Wortbildungslehre die Bedeutung unbekannter lateinischer Wörter erschließen,",
+      "sourceDocumentKey": "NW-KLP-LATEIN-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Latein Sekundarstufe I Gymnasium 2019, Latein als dritte Fremdsprache, Sprachkompetenz",
+      "sourceText": "mithilfe grundlegender Prinzipien der Wortbildungslehre die Bedeutung unbekannter lateinischer Wörter erschließen,",
+      "sourceSpan": {
+        "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-dritte-fremdsprache-sprachkompetenz",
+        "label": "SekI-latein-als-dritte-fremdsprache-sprachkompetenz#68"
+      },
+      "courseLevel": "unspecified",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-NW",
+        "subject:Latein",
+        "stage:SekI",
+        "phase:latein-als-dritte-fremdsprache",
+        "field:sprachkompetenz",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-chapter-2-competency-bullet",
+        "phase": "Latein als dritte Fremdsprache",
+        "field": "Sprachkompetenz",
+        "bulletSymbol": ""
+      }
+    },
+    {
+      "id": "0a222e70-4f41-5f65-3b4c-24a4fad08012",
+      "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-dritte-fremdsprache-sprachkompetenz",
+      "topicCode": "SekI-latein-als-dritte-fremdsprache-sprachkompetenz",
+      "title": "ein erweitertes Repertoire der Morphologie und Syntax bei der Erschließung und Übersetzung ad...",
+      "description": "Die lernende Person kann ein erweitertes Repertoire der Morphologie und Syntax bei der Erschließung und Übersetzung adaptierter und leichterer Originaltexte anwenden,",
+      "sourceDocumentKey": "NW-KLP-LATEIN-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Latein Sekundarstufe I Gymnasium 2019, Latein als dritte Fremdsprache, Sprachkompetenz",
+      "sourceText": "ein erweitertes Repertoire der Morphologie und Syntax bei der Erschließung und Übersetzung adaptierter und leichterer Originaltexte anwenden,",
+      "sourceSpan": {
+        "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-dritte-fremdsprache-sprachkompetenz",
+        "label": "SekI-latein-als-dritte-fremdsprache-sprachkompetenz#69"
+      },
+      "courseLevel": "unspecified",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-NW",
+        "subject:Latein",
+        "stage:SekI",
+        "phase:latein-als-dritte-fremdsprache",
+        "field:sprachkompetenz",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-chapter-2-competency-bullet",
+        "phase": "Latein als dritte Fremdsprache",
+        "field": "Sprachkompetenz",
+        "bulletSymbol": ""
+      }
+    },
+    {
+      "id": "55740ad3-bafa-5b72-2954-3732d95beee0",
+      "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-dritte-fremdsprache-sprachkompetenz",
+      "topicCode": "SekI-latein-als-dritte-fremdsprache-sprachkompetenz",
+      "title": "mithilfe vertiefter Einsichten in Semantik und Syntax der lateinischen Sprache Wörter und Tex...",
+      "description": "Die lernende Person kann mithilfe vertiefter Einsichten in Semantik und Syntax der lateinischen Sprache Wörter und Texte anderer Sprachen erschließen,",
+      "sourceDocumentKey": "NW-KLP-LATEIN-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Latein Sekundarstufe I Gymnasium 2019, Latein als dritte Fremdsprache, Sprachkompetenz",
+      "sourceText": "mithilfe vertiefter Einsichten in Semantik und Syntax der lateinischen Sprache Wörter und Texte anderer Sprachen erschließen,",
+      "sourceSpan": {
+        "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-dritte-fremdsprache-sprachkompetenz",
+        "label": "SekI-latein-als-dritte-fremdsprache-sprachkompetenz#70"
+      },
+      "courseLevel": "unspecified",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-NW",
+        "subject:Latein",
+        "stage:SekI",
+        "phase:latein-als-dritte-fremdsprache",
+        "field:sprachkompetenz",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-chapter-2-competency-bullet",
+        "phase": "Latein als dritte Fremdsprache",
+        "field": "Sprachkompetenz",
+        "bulletSymbol": ""
+      }
+    },
+    {
+      "id": "58f33593-81c3-5f77-dfa2-49ccaffa72bb",
+      "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-dritte-fremdsprache-sprachkompetenz",
+      "topicCode": "SekI-latein-als-dritte-fremdsprache-sprachkompetenz",
+      "title": "zur Erweiterung ihrer sprachlichen Kompetenzen ein erweitertes Repertoire von Strategien und ...",
+      "description": "Die lernende Person kann zur Erweiterung ihrer sprachlichen Kompetenzen ein erweitertes Repertoire von Strategien und Techniken für das Sprachenlernen einsetzen",
+      "sourceDocumentKey": "NW-KLP-LATEIN-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Latein Sekundarstufe I Gymnasium 2019, Latein als dritte Fremdsprache, Sprachkompetenz",
+      "sourceText": "zur Erweiterung ihrer sprachlichen Kompetenzen ein erweitertes Repertoire von Strategien und Techniken für das Sprachenlernen einsetzen.",
+      "sourceSpan": {
+        "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-dritte-fremdsprache-sprachkompetenz",
+        "label": "SekI-latein-als-dritte-fremdsprache-sprachkompetenz#71"
+      },
+      "courseLevel": "unspecified",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-NW",
+        "subject:Latein",
+        "stage:SekI",
+        "phase:latein-als-dritte-fremdsprache",
+        "field:sprachkompetenz",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-chapter-2-competency-bullet",
+        "phase": "Latein als dritte Fremdsprache",
+        "field": "Sprachkompetenz",
+        "bulletSymbol": ""
+      }
+    },
+    {
+      "id": "08a41da4-63aa-5ee2-9e7d-346b5108a6e7",
+      "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-dritte-fremdsprache-kulturkompetenz",
+      "topicCode": "SekI-latein-als-dritte-fremdsprache-kulturkompetenz",
+      "title": "historisch-kulturelles Orientierungswissen auch unter Verwendung digitaler Medien ausgehend v...",
+      "description": "Die lernende Person kann historisch-kulturelles Orientierungswissen auch unter Verwendung digitaler Medien ausgehend vom Text themenbezogen recherchieren, adressatengerecht strukturieren und entsprechend den Standards der Quellenangaben präsentieren,",
+      "sourceDocumentKey": "NW-KLP-LATEIN-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Latein Sekundarstufe I Gymnasium 2019, Latein als dritte Fremdsprache, Kulturkompetenz",
+      "sourceText": "historisch-kulturelles Orientierungswissen auch unter Verwendung digitaler Medien ausgehend vom Text themenbezogen recherchieren, adressatengerecht strukturieren und entsprechend den Standards der Quellenangaben präsentieren,",
+      "sourceSpan": {
+        "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-dritte-fremdsprache-kulturkompetenz",
+        "label": "SekI-latein-als-dritte-fremdsprache-kulturkompetenz#72"
+      },
+      "courseLevel": "unspecified",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-NW",
+        "subject:Latein",
+        "stage:SekI",
+        "phase:latein-als-dritte-fremdsprache",
+        "field:kulturkompetenz",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-chapter-2-competency-bullet",
+        "phase": "Latein als dritte Fremdsprache",
+        "field": "Kulturkompetenz",
+        "bulletSymbol": ""
+      }
+    },
+    {
+      "id": "f619027e-fd8d-5024-cff3-017d14c57448",
+      "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-dritte-fremdsprache-kulturkompetenz",
+      "topicCode": "SekI-latein-als-dritte-fremdsprache-kulturkompetenz",
+      "title": "Textaussagen im Hinblick auf Perspektiven der historischen Kommunikation (Lebensräume, Lebens...",
+      "description": "Die lernende Person kann textaussagen im Hinblick auf Perspektiven der historischen Kommunikation (Lebensräume, Lebensgestaltung, Geschlechterrollen, menschliche Beziehungen, soziale und politische Strukturen, Werte und Normen, Welterklärung, Umgang mit Fremdem, existenzielle Grundfragen) differenziert erläutern und beurteilen,",
+      "sourceDocumentKey": "NW-KLP-LATEIN-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Latein Sekundarstufe I Gymnasium 2019, Latein als dritte Fremdsprache, Kulturkompetenz",
+      "sourceText": "Textaussagen im Hinblick auf Perspektiven der historischen Kommunikation (Lebensräume, Lebensgestaltung, Geschlechterrollen, menschliche Beziehungen, soziale und politische Strukturen, Werte und Normen, Welterklärung, Umgang mit Fremdem, existenzielle Grundfragen) differenziert erläutern und beurteilen,",
+      "sourceSpan": {
+        "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-dritte-fremdsprache-kulturkompetenz",
+        "label": "SekI-latein-als-dritte-fremdsprache-kulturkompetenz#73"
+      },
+      "courseLevel": "unspecified",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-NW",
+        "subject:Latein",
+        "stage:SekI",
+        "phase:latein-als-dritte-fremdsprache",
+        "field:kulturkompetenz",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-chapter-2-competency-bullet",
+        "phase": "Latein als dritte Fremdsprache",
+        "field": "Kulturkompetenz",
+        "bulletSymbol": ""
+      }
+    },
+    {
+      "id": "2b6e0b18-5d4a-5122-32d4-d9e18701e26f",
+      "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-dritte-fremdsprache-kulturkompetenz",
+      "topicCode": "SekI-latein-als-dritte-fremdsprache-kulturkompetenz",
+      "title": "Gemeinsamkeiten und Unterschiede zwischen antiker Kultur und Gegenwart in übergreifenden Zusa...",
+      "description": "Die lernende Person kann gemeinsamkeiten und Unterschiede zwischen antiker Kultur und Gegenwart in übergreifenden Zusammenhängen differenziert erläutern und beurteilen. Die Kompetenzen der Schülerinnen und Schüler sollen im Rahmen der Behandlung der nachfolgenden, für diese Stufe obligatorischen Inhaltsfelder entwickelt werden",
+      "sourceDocumentKey": "NW-KLP-LATEIN-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Latein Sekundarstufe I Gymnasium 2019, Latein als dritte Fremdsprache, Kulturkompetenz",
+      "sourceText": "Gemeinsamkeiten und Unterschiede zwischen antiker Kultur und Gegenwart in übergreifenden Zusammenhängen differenziert erläutern und beurteilen. Die Kompetenzen der Schülerinnen und Schüler sollen im Rahmen der Behandlung der nachfolgenden, für diese Stufe obligatorischen Inhaltsfelder entwickelt werden.",
+      "sourceSpan": {
+        "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-dritte-fremdsprache-kulturkompetenz",
+        "label": "SekI-latein-als-dritte-fremdsprache-kulturkompetenz#74"
+      },
+      "courseLevel": "unspecified",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-NW",
+        "subject:Latein",
+        "stage:SekI",
+        "phase:latein-als-dritte-fremdsprache",
+        "field:kulturkompetenz",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-chapter-2-competency-bullet",
+        "phase": "Latein als dritte Fremdsprache",
+        "field": "Kulturkompetenz",
+        "bulletSymbol": ""
+      }
+    },
+    {
+      "id": "ca907ee2-fe53-53ad-7cbd-af782ee8b4e5",
+      "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-dritte-fremdsprache-inhaltsfeld-antike-welt",
+      "topicCode": "SekI-latein-als-dritte-fremdsprache-inhaltsfeld-antike-welt",
+      "title": "Grundzüge des privaten und öffentlichen Lebens erläutern und im Vergleich mit heutigen Lebens...",
+      "description": "Die lernende Person kann grundzüge des privaten und öffentlichen Lebens erläutern und im Vergleich mit heutigen Lebensweisen und Lebensbedingungen bewerten,",
+      "sourceDocumentKey": "NW-KLP-LATEIN-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Latein Sekundarstufe I Gymnasium 2019, Latein als dritte Fremdsprache, Inhaltsfeld: Antike Welt",
+      "sourceText": "Grundzüge des privaten und öffentlichen Lebens erläutern und im Vergleich mit heutigen Lebensweisen und Lebensbedingungen bewerten,",
+      "sourceSpan": {
+        "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-dritte-fremdsprache-inhaltsfeld-antike-welt",
+        "label": "SekI-latein-als-dritte-fremdsprache-inhaltsfeld-antike-welt#75"
+      },
+      "courseLevel": "unspecified",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-NW",
+        "subject:Latein",
+        "stage:SekI",
+        "phase:latein-als-dritte-fremdsprache",
+        "field:inhaltsfeld-antike-welt",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-chapter-2-competency-bullet",
+        "phase": "Latein als dritte Fremdsprache",
+        "field": "Inhaltsfeld: Antike Welt",
+        "bulletSymbol": "à"
+      }
+    },
+    {
+      "id": "a4860fca-44e4-53cf-8d18-e614f588ebeb",
+      "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-dritte-fremdsprache-inhaltsfeld-antike-welt",
+      "topicCode": "SekI-latein-als-dritte-fremdsprache-inhaltsfeld-antike-welt",
+      "title": "Spannungen und Konflikte innerhalb der römischen Gesellschaft und Politik im Vergleich mit he...",
+      "description": "Die lernende Person kann spannungen und Konflikte innerhalb der römischen Gesellschaft und Politik im Vergleich mit heutigen gesellschaftlichen Verhältnissen erläutern,",
+      "sourceDocumentKey": "NW-KLP-LATEIN-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Latein Sekundarstufe I Gymnasium 2019, Latein als dritte Fremdsprache, Inhaltsfeld: Antike Welt",
+      "sourceText": "Spannungen und Konflikte innerhalb der römischen Gesellschaft und Politik im Vergleich mit heutigen gesellschaftlichen Verhältnissen erläutern,",
+      "sourceSpan": {
+        "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-dritte-fremdsprache-inhaltsfeld-antike-welt",
+        "label": "SekI-latein-als-dritte-fremdsprache-inhaltsfeld-antike-welt#76"
+      },
+      "courseLevel": "unspecified",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-NW",
+        "subject:Latein",
+        "stage:SekI",
+        "phase:latein-als-dritte-fremdsprache",
+        "field:inhaltsfeld-antike-welt",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-chapter-2-competency-bullet",
+        "phase": "Latein als dritte Fremdsprache",
+        "field": "Inhaltsfeld: Antike Welt",
+        "bulletSymbol": "à"
+      }
+    },
+    {
+      "id": "b8b6b33a-dc26-59fb-b109-2c511603853c",
+      "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-dritte-fremdsprache-inhaltsfeld-antike-welt",
+      "topicCode": "SekI-latein-als-dritte-fremdsprache-inhaltsfeld-antike-welt",
+      "title": "die Hauptphasen römischer Geschichte historisch einordnen und am Beispiel zentraler Ereigniss...",
+      "description": "Die lernende Person kann die Hauptphasen römischer Geschichte historisch einordnen und am Beispiel zentraler Ereignisse und Akteure erläutern,",
+      "sourceDocumentKey": "NW-KLP-LATEIN-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Latein Sekundarstufe I Gymnasium 2019, Latein als dritte Fremdsprache, Inhaltsfeld: Antike Welt",
+      "sourceText": "die Hauptphasen römischer Geschichte historisch einordnen und am Beispiel zentraler Ereignisse und Akteure erläutern,",
+      "sourceSpan": {
+        "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-dritte-fremdsprache-inhaltsfeld-antike-welt",
+        "label": "SekI-latein-als-dritte-fremdsprache-inhaltsfeld-antike-welt#77"
+      },
+      "courseLevel": "unspecified",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-NW",
+        "subject:Latein",
+        "stage:SekI",
+        "phase:latein-als-dritte-fremdsprache",
+        "field:inhaltsfeld-antike-welt",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-chapter-2-competency-bullet",
+        "phase": "Latein als dritte Fremdsprache",
+        "field": "Inhaltsfeld: Antike Welt",
+        "bulletSymbol": "à"
+      }
+    },
+    {
+      "id": "8a6234d2-531a-5f72-6a91-d04959f4c1a8",
+      "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-dritte-fremdsprache-inhaltsfeld-antike-welt",
+      "topicCode": "SekI-latein-als-dritte-fremdsprache-inhaltsfeld-antike-welt",
+      "title": "zum Handeln berühmter Persönlichkeiten der römischen Geschichte wertend Stellung nehmen,",
+      "description": "Die lernende Person kann zum Handeln berühmter Persönlichkeiten der römischen Geschichte wertend Stellung nehmen,",
+      "sourceDocumentKey": "NW-KLP-LATEIN-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Latein Sekundarstufe I Gymnasium 2019, Latein als dritte Fremdsprache, Inhaltsfeld: Antike Welt",
+      "sourceText": "zum Handeln berühmter Persönlichkeiten der römischen Geschichte wertend Stellung nehmen,",
+      "sourceSpan": {
+        "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-dritte-fremdsprache-inhaltsfeld-antike-welt",
+        "label": "SekI-latein-als-dritte-fremdsprache-inhaltsfeld-antike-welt#78"
+      },
+      "courseLevel": "unspecified",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-NW",
+        "subject:Latein",
+        "stage:SekI",
+        "phase:latein-als-dritte-fremdsprache",
+        "field:inhaltsfeld-antike-welt",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-chapter-2-competency-bullet",
+        "phase": "Latein als dritte Fremdsprache",
+        "field": "Inhaltsfeld: Antike Welt",
+        "bulletSymbol": "à"
+      }
+    },
+    {
+      "id": "01835b36-9eb0-5628-ad88-6be66b01b87c",
+      "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-dritte-fremdsprache-inhaltsfeld-antike-welt",
+      "topicCode": "SekI-latein-als-dritte-fremdsprache-inhaltsfeld-antike-welt",
+      "title": "den römischen Herrschaftsanspruch im Sinne der historischen Kommunikation erläutern und beurt...",
+      "description": "Die lernende Person kann den römischen Herrschaftsanspruch im Sinne der historischen Kommunikation erläutern und beurteilen,",
+      "sourceDocumentKey": "NW-KLP-LATEIN-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Latein Sekundarstufe I Gymnasium 2019, Latein als dritte Fremdsprache, Inhaltsfeld: Antike Welt",
+      "sourceText": "den römischen Herrschaftsanspruch im Sinne der historischen Kommunikation erläutern und beurteilen,",
+      "sourceSpan": {
+        "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-dritte-fremdsprache-inhaltsfeld-antike-welt",
+        "label": "SekI-latein-als-dritte-fremdsprache-inhaltsfeld-antike-welt#79"
+      },
+      "courseLevel": "unspecified",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-NW",
+        "subject:Latein",
+        "stage:SekI",
+        "phase:latein-als-dritte-fremdsprache",
+        "field:inhaltsfeld-antike-welt",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-chapter-2-competency-bullet",
+        "phase": "Latein als dritte Fremdsprache",
+        "field": "Inhaltsfeld: Antike Welt",
+        "bulletSymbol": "à"
+      }
+    },
+    {
+      "id": "cdadfebe-cdb4-55e9-e9d0-7e6e85812422",
+      "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-dritte-fremdsprache-inhaltsfeld-antike-welt",
+      "topicCode": "SekI-latein-als-dritte-fremdsprache-inhaltsfeld-antike-welt",
+      "title": "die Funktion von Mythos und Religion für die römische Gesellschaft erläutern und vor dem Hint...",
+      "description": "Die lernende Person kann die Funktion von Mythos und Religion für die römische Gesellschaft erläutern und vor dem Hintergrund der eigenen Lebenswelt bewerten,",
+      "sourceDocumentKey": "NW-KLP-LATEIN-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Latein Sekundarstufe I Gymnasium 2019, Latein als dritte Fremdsprache, Inhaltsfeld: Antike Welt",
+      "sourceText": "die Funktion von Mythos und Religion für die römische Gesellschaft erläutern und vor dem Hintergrund der eigenen Lebenswelt bewerten,",
+      "sourceSpan": {
+        "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-dritte-fremdsprache-inhaltsfeld-antike-welt",
+        "label": "SekI-latein-als-dritte-fremdsprache-inhaltsfeld-antike-welt#80"
+      },
+      "courseLevel": "unspecified",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-NW",
+        "subject:Latein",
+        "stage:SekI",
+        "phase:latein-als-dritte-fremdsprache",
+        "field:inhaltsfeld-antike-welt",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-chapter-2-competency-bullet",
+        "phase": "Latein als dritte Fremdsprache",
+        "field": "Inhaltsfeld: Antike Welt",
+        "bulletSymbol": "à"
+      }
+    },
+    {
+      "id": "c89d198b-d0aa-5675-d341-97f5b9190adf",
+      "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-dritte-fremdsprache-inhaltsfeld-antike-welt",
+      "topicCode": "SekI-latein-als-dritte-fremdsprache-inhaltsfeld-antike-welt",
+      "title": "Grundgedanken der antiken Philosophie im Hinblick auf ihre Relevanz für die eigene Lebenswelt...",
+      "description": "Die lernende Person kann grundgedanken der antiken Philosophie im Hinblick auf ihre Relevanz für die eigene Lebenswelt erläutern und beurteilen,",
+      "sourceDocumentKey": "NW-KLP-LATEIN-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Latein Sekundarstufe I Gymnasium 2019, Latein als dritte Fremdsprache, Inhaltsfeld: Antike Welt",
+      "sourceText": "Grundgedanken der antiken Philosophie im Hinblick auf ihre Relevanz für die eigene Lebenswelt erläutern und beurteilen,",
+      "sourceSpan": {
+        "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-dritte-fremdsprache-inhaltsfeld-antike-welt",
+        "label": "SekI-latein-als-dritte-fremdsprache-inhaltsfeld-antike-welt#81"
+      },
+      "courseLevel": "unspecified",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-NW",
+        "subject:Latein",
+        "stage:SekI",
+        "phase:latein-als-dritte-fremdsprache",
+        "field:inhaltsfeld-antike-welt",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-chapter-2-competency-bullet",
+        "phase": "Latein als dritte Fremdsprache",
+        "field": "Inhaltsfeld: Antike Welt",
+        "bulletSymbol": "à"
+      }
+    },
+    {
+      "id": "ac44a935-b2cc-57b9-f909-082c565f9a14",
+      "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-dritte-fremdsprache-inhaltsfeld-antike-welt",
+      "topicCode": "SekI-latein-als-dritte-fremdsprache-inhaltsfeld-antike-welt",
+      "title": "zentrale Autoren und Werke der lateinischen Literatur im historischen Kontext darstellen,",
+      "description": "Die lernende Person kann zentrale Autoren und Werke der lateinischen Literatur im historischen Kontext darstellen,",
+      "sourceDocumentKey": "NW-KLP-LATEIN-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Latein Sekundarstufe I Gymnasium 2019, Latein als dritte Fremdsprache, Inhaltsfeld: Antike Welt",
+      "sourceText": "zentrale Autoren und Werke der lateinischen Literatur im historischen Kontext darstellen,",
+      "sourceSpan": {
+        "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-dritte-fremdsprache-inhaltsfeld-antike-welt",
+        "label": "SekI-latein-als-dritte-fremdsprache-inhaltsfeld-antike-welt#82"
+      },
+      "courseLevel": "unspecified",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-NW",
+        "subject:Latein",
+        "stage:SekI",
+        "phase:latein-als-dritte-fremdsprache",
+        "field:inhaltsfeld-antike-welt",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-chapter-2-competency-bullet",
+        "phase": "Latein als dritte Fremdsprache",
+        "field": "Inhaltsfeld: Antike Welt",
+        "bulletSymbol": "à"
+      }
+    },
+    {
+      "id": "1a203a71-8b5a-5595-f82b-6a40a09788ca",
+      "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-dritte-fremdsprache-inhaltsfeld-antike-welt",
+      "topicCode": "SekI-latein-als-dritte-fremdsprache-inhaltsfeld-antike-welt",
+      "title": "Textinhalte im Vergleich mit ausgewählten Rezeptionsdokumenten aus Literatur, Film, Bildender...",
+      "description": "Die lernende Person kann textinhalte im Vergleich mit ausgewählten Rezeptionsdokumenten aus Literatur, Film, Bildender Kunst oder Musik interpretieren",
+      "sourceDocumentKey": "NW-KLP-LATEIN-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Latein Sekundarstufe I Gymnasium 2019, Latein als dritte Fremdsprache, Inhaltsfeld: Antike Welt",
+      "sourceText": "Textinhalte im Vergleich mit ausgewählten Rezeptionsdokumenten aus Literatur, Film, Bildender Kunst oder Musik interpretieren.",
+      "sourceSpan": {
+        "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-dritte-fremdsprache-inhaltsfeld-antike-welt",
+        "label": "SekI-latein-als-dritte-fremdsprache-inhaltsfeld-antike-welt#83"
+      },
+      "courseLevel": "unspecified",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-NW",
+        "subject:Latein",
+        "stage:SekI",
+        "phase:latein-als-dritte-fremdsprache",
+        "field:inhaltsfeld-antike-welt",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-chapter-2-competency-bullet",
+        "phase": "Latein als dritte Fremdsprache",
+        "field": "Inhaltsfeld: Antike Welt",
+        "bulletSymbol": "à"
+      }
+    },
+    {
+      "id": "70354f4f-058f-54e3-4b42-6a1085ba8276",
+      "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-dritte-fremdsprache-inhaltsfeld-textgestaltung",
+      "topicCode": "SekI-latein-als-dritte-fremdsprache-inhaltsfeld-textgestaltung",
+      "title": "Texte unter Berücksichtigung der Textsorte und Textstruktur erschließen,",
+      "description": "Die lernende Person kann texte unter Berücksichtigung der Textsorte und Textstruktur erschließen,",
+      "sourceDocumentKey": "NW-KLP-LATEIN-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Latein Sekundarstufe I Gymnasium 2019, Latein als dritte Fremdsprache, Inhaltsfeld: Textgestaltung",
+      "sourceText": "Texte unter Berücksichtigung der Textsorte und Textstruktur erschließen,",
+      "sourceSpan": {
+        "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-dritte-fremdsprache-inhaltsfeld-textgestaltung",
+        "label": "SekI-latein-als-dritte-fremdsprache-inhaltsfeld-textgestaltung#84"
+      },
+      "courseLevel": "unspecified",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-NW",
+        "subject:Latein",
+        "stage:SekI",
+        "phase:latein-als-dritte-fremdsprache",
+        "field:inhaltsfeld-textgestaltung",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-chapter-2-competency-bullet",
+        "phase": "Latein als dritte Fremdsprache",
+        "field": "Inhaltsfeld: Textgestaltung",
+        "bulletSymbol": "à"
+      }
+    },
+    {
+      "id": "4c0a5d1e-7bb6-54ff-6c45-ba5f3fa3b7d3",
+      "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-dritte-fremdsprache-inhaltsfeld-textgestaltung",
+      "topicCode": "SekI-latein-als-dritte-fremdsprache-inhaltsfeld-textgestaltung",
+      "title": "Textaussagen unter Berücksichtigung formaler und sprachlich-stilistischer Gestaltungsmittel ü...",
+      "description": "Die lernende Person kann textaussagen unter Berücksichtigung formaler und sprachlich-stilistischer Gestaltungsmittel übersetzen und interpretieren,",
+      "sourceDocumentKey": "NW-KLP-LATEIN-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Latein Sekundarstufe I Gymnasium 2019, Latein als dritte Fremdsprache, Inhaltsfeld: Textgestaltung",
+      "sourceText": "Textaussagen unter Berücksichtigung formaler und sprachlich-stilistischer Gestaltungsmittel übersetzen und interpretieren,",
+      "sourceSpan": {
+        "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-dritte-fremdsprache-inhaltsfeld-textgestaltung",
+        "label": "SekI-latein-als-dritte-fremdsprache-inhaltsfeld-textgestaltung#85"
+      },
+      "courseLevel": "unspecified",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-NW",
+        "subject:Latein",
+        "stage:SekI",
+        "phase:latein-als-dritte-fremdsprache",
+        "field:inhaltsfeld-textgestaltung",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-chapter-2-competency-bullet",
+        "phase": "Latein als dritte Fremdsprache",
+        "field": "Inhaltsfeld: Textgestaltung",
+        "bulletSymbol": "à"
+      }
+    },
+    {
+      "id": "a8b3adab-400b-5a7c-46f9-f81171327e2b",
+      "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-dritte-fremdsprache-inhaltsfeld-textgestaltung",
+      "topicCode": "SekI-latein-als-dritte-fremdsprache-inhaltsfeld-textgestaltung",
+      "title": "verschiedene Übersetzungen eines Textes im Hinblick auf das Zusammenwirken von Textaussagen u...",
+      "description": "Die lernende Person kann verschiedene Übersetzungen eines Textes im Hinblick auf das Zusammenwirken von Textaussagen und Textgestaltung beurteilen,",
+      "sourceDocumentKey": "NW-KLP-LATEIN-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Latein Sekundarstufe I Gymnasium 2019, Latein als dritte Fremdsprache, Inhaltsfeld: Textgestaltung",
+      "sourceText": "verschiedene Übersetzungen eines Textes im Hinblick auf das Zusammenwirken von Textaussagen und Textgestaltung beurteilen,",
+      "sourceSpan": {
+        "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-dritte-fremdsprache-inhaltsfeld-textgestaltung",
+        "label": "SekI-latein-als-dritte-fremdsprache-inhaltsfeld-textgestaltung#86"
+      },
+      "courseLevel": "unspecified",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-NW",
+        "subject:Latein",
+        "stage:SekI",
+        "phase:latein-als-dritte-fremdsprache",
+        "field:inhaltsfeld-textgestaltung",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-chapter-2-competency-bullet",
+        "phase": "Latein als dritte Fremdsprache",
+        "field": "Inhaltsfeld: Textgestaltung",
+        "bulletSymbol": "à"
+      }
+    },
+    {
+      "id": "ece2ac7d-61e1-5b78-ea38-a4dd2119920d",
+      "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-dritte-fremdsprache-inhaltsfeld-textgestaltung",
+      "topicCode": "SekI-latein-als-dritte-fremdsprache-inhaltsfeld-textgestaltung",
+      "title": "Funktionen formaler und sprachlich-stilistischer Gestaltungsmittel im Hinblick auf den Inhalt...",
+      "description": "Die lernende Person kann funktionen formaler und sprachlich-stilistischer Gestaltungsmittel im Hinblick auf den Inhalt und die Aussageabsicht erläutern,",
+      "sourceDocumentKey": "NW-KLP-LATEIN-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Latein Sekundarstufe I Gymnasium 2019, Latein als dritte Fremdsprache, Inhaltsfeld: Textgestaltung",
+      "sourceText": "Funktionen formaler und sprachlich-stilistischer Gestaltungsmittel im Hinblick auf den Inhalt und die Aussageabsicht erläutern,",
+      "sourceSpan": {
+        "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-dritte-fremdsprache-inhaltsfeld-textgestaltung",
+        "label": "SekI-latein-als-dritte-fremdsprache-inhaltsfeld-textgestaltung#87"
+      },
+      "courseLevel": "unspecified",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-NW",
+        "subject:Latein",
+        "stage:SekI",
+        "phase:latein-als-dritte-fremdsprache",
+        "field:inhaltsfeld-textgestaltung",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-chapter-2-competency-bullet",
+        "phase": "Latein als dritte Fremdsprache",
+        "field": "Inhaltsfeld: Textgestaltung",
+        "bulletSymbol": "à"
+      }
+    },
+    {
+      "id": "02fd3830-9fb5-5e00-7d91-cd109c3ec092",
+      "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-dritte-fremdsprache-inhaltsfeld-textgestaltung",
+      "topicCode": "SekI-latein-als-dritte-fremdsprache-inhaltsfeld-textgestaltung",
+      "title": "Wirkungen formaler und sprachlich-stilistischer Gestaltungsmittel im Hinblick auf den Rezipie...",
+      "description": "Die lernende Person kann wirkungen formaler und sprachlich-stilistischer Gestaltungsmittel im Hinblick auf den Rezipienten erläutern,",
+      "sourceDocumentKey": "NW-KLP-LATEIN-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Latein Sekundarstufe I Gymnasium 2019, Latein als dritte Fremdsprache, Inhaltsfeld: Textgestaltung",
+      "sourceText": "Wirkungen formaler und sprachlich-stilistischer Gestaltungsmittel im Hinblick auf den Rezipienten erläutern,",
+      "sourceSpan": {
+        "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-dritte-fremdsprache-inhaltsfeld-textgestaltung",
+        "label": "SekI-latein-als-dritte-fremdsprache-inhaltsfeld-textgestaltung#88"
+      },
+      "courseLevel": "unspecified",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-NW",
+        "subject:Latein",
+        "stage:SekI",
+        "phase:latein-als-dritte-fremdsprache",
+        "field:inhaltsfeld-textgestaltung",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-chapter-2-competency-bullet",
+        "phase": "Latein als dritte Fremdsprache",
+        "field": "Inhaltsfeld: Textgestaltung",
+        "bulletSymbol": "à"
+      }
+    },
+    {
+      "id": "e3620f4d-fa7a-599f-95ac-b7cfaaa3f59e",
+      "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-dritte-fremdsprache-inhaltsfeld-textgestaltung",
+      "topicCode": "SekI-latein-als-dritte-fremdsprache-inhaltsfeld-textgestaltung",
+      "title": "Texte unter Berücksichtigung der Textsorte zielsprachengerecht übersetzen.",
+      "description": "Die lernende Person kann texte unter Berücksichtigung der Textsorte zielsprachengerecht übersetzen",
+      "sourceDocumentKey": "NW-KLP-LATEIN-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Latein Sekundarstufe I Gymnasium 2019, Latein als dritte Fremdsprache, Inhaltsfeld: Textgestaltung",
+      "sourceText": "Texte unter Berücksichtigung der Textsorte zielsprachengerecht übersetzen.",
+      "sourceSpan": {
+        "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-dritte-fremdsprache-inhaltsfeld-textgestaltung",
+        "label": "SekI-latein-als-dritte-fremdsprache-inhaltsfeld-textgestaltung#89"
+      },
+      "courseLevel": "unspecified",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-NW",
+        "subject:Latein",
+        "stage:SekI",
+        "phase:latein-als-dritte-fremdsprache",
+        "field:inhaltsfeld-textgestaltung",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-chapter-2-competency-bullet",
+        "phase": "Latein als dritte Fremdsprache",
+        "field": "Inhaltsfeld: Textgestaltung",
+        "bulletSymbol": "à"
+      }
+    },
+    {
+      "id": "0422d1a7-1c09-53ee-4d5e-a9fb4aab56bd",
+      "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-dritte-fremdsprache-inhaltsfeld-sprachsystem",
+      "topicCode": "SekI-latein-als-dritte-fremdsprache-inhaltsfeld-sprachsystem",
+      "title": "bei der Erschließung und Übersetzung eines Textes lateinische Wörter des dem Lernstand entspr...",
+      "description": "Die lernende Person kann bei der Erschließung und Übersetzung eines Textes lateinische Wörter des dem Lernstand entsprechenden Grundwortschatzes angemessen monosemieren,",
+      "sourceDocumentKey": "NW-KLP-LATEIN-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Latein Sekundarstufe I Gymnasium 2019, Latein als dritte Fremdsprache, Inhaltsfeld: Sprachsystem",
+      "sourceText": "bei der Erschließung und Übersetzung eines Textes lateinische Wörter des dem Lernstand entsprechenden Grundwortschatzes angemessen monosemieren,",
+      "sourceSpan": {
+        "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-dritte-fremdsprache-inhaltsfeld-sprachsystem",
+        "label": "SekI-latein-als-dritte-fremdsprache-inhaltsfeld-sprachsystem#90"
+      },
+      "courseLevel": "unspecified",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-NW",
+        "subject:Latein",
+        "stage:SekI",
+        "phase:latein-als-dritte-fremdsprache",
+        "field:inhaltsfeld-sprachsystem",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-chapter-2-competency-bullet",
+        "phase": "Latein als dritte Fremdsprache",
+        "field": "Inhaltsfeld: Sprachsystem",
+        "bulletSymbol": "à"
+      }
+    },
+    {
+      "id": "0fe31daf-00c1-5d0d-8fdc-702c68fcabeb",
+      "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-dritte-fremdsprache-inhaltsfeld-sprachsystem",
+      "topicCode": "SekI-latein-als-dritte-fremdsprache-inhaltsfeld-sprachsystem",
+      "title": "Wörter unter Verwendung eines zweisprachigen Wörterbuches kontextbezogen monosemieren,",
+      "description": "Die lernende Person kann wörter unter Verwendung eines zweisprachigen Wörterbuches kontextbezogen monosemieren,",
+      "sourceDocumentKey": "NW-KLP-LATEIN-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Latein Sekundarstufe I Gymnasium 2019, Latein als dritte Fremdsprache, Inhaltsfeld: Sprachsystem",
+      "sourceText": "Wörter unter Verwendung eines zweisprachigen Wörterbuches kontextbezogen monosemieren,",
+      "sourceSpan": {
+        "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-dritte-fremdsprache-inhaltsfeld-sprachsystem",
+        "label": "SekI-latein-als-dritte-fremdsprache-inhaltsfeld-sprachsystem#91"
+      },
+      "courseLevel": "unspecified",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-NW",
+        "subject:Latein",
+        "stage:SekI",
+        "phase:latein-als-dritte-fremdsprache",
+        "field:inhaltsfeld-sprachsystem",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-chapter-2-competency-bullet",
+        "phase": "Latein als dritte Fremdsprache",
+        "field": "Inhaltsfeld: Sprachsystem",
+        "bulletSymbol": "à"
+      }
+    },
+    {
+      "id": "4ca96e23-c9d9-5513-020b-0b9fb7f3e897",
+      "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-dritte-fremdsprache-inhaltsfeld-sprachsystem",
+      "topicCode": "SekI-latein-als-dritte-fremdsprache-inhaltsfeld-sprachsystem",
+      "title": "bei der Erschließung und Übersetzung angemessene Übersetzungsmöglichkeiten grundlegender Elem...",
+      "description": "Die lernende Person kann bei der Erschließung und Übersetzung angemessene Übersetzungsmöglichkeiten grundlegender Elemente von Morphologie und Syntax auswählen,",
+      "sourceDocumentKey": "NW-KLP-LATEIN-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Latein Sekundarstufe I Gymnasium 2019, Latein als dritte Fremdsprache, Inhaltsfeld: Sprachsystem",
+      "sourceText": "bei der Erschließung und Übersetzung angemessene Übersetzungsmöglichkeiten grundlegender Elemente von Morphologie und Syntax auswählen,",
+      "sourceSpan": {
+        "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-dritte-fremdsprache-inhaltsfeld-sprachsystem",
+        "label": "SekI-latein-als-dritte-fremdsprache-inhaltsfeld-sprachsystem#92"
+      },
+      "courseLevel": "unspecified",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-NW",
+        "subject:Latein",
+        "stage:SekI",
+        "phase:latein-als-dritte-fremdsprache",
+        "field:inhaltsfeld-sprachsystem",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-chapter-2-competency-bullet",
+        "phase": "Latein als dritte Fremdsprache",
+        "field": "Inhaltsfeld: Sprachsystem",
+        "bulletSymbol": "à"
+      }
+    },
+    {
+      "id": "4dfa3a09-1139-59dd-06a2-d039a7bf90aa",
+      "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-dritte-fremdsprache-inhaltsfeld-sprachsystem",
+      "topicCode": "SekI-latein-als-dritte-fremdsprache-inhaltsfeld-sprachsystem",
+      "title": "verschiedene Methoden zur Analyse und Visualisierung syntaktischer Strukturen auch unter Verw...",
+      "description": "Die lernende Person kann verschiedene Methoden zur Analyse und Visualisierung syntaktischer Strukturen auch unter Verwendung digitaler Medien anwenden,",
+      "sourceDocumentKey": "NW-KLP-LATEIN-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Latein Sekundarstufe I Gymnasium 2019, Latein als dritte Fremdsprache, Inhaltsfeld: Sprachsystem",
+      "sourceText": "verschiedene Methoden zur Analyse und Visualisierung syntaktischer Strukturen auch unter Verwendung digitaler Medien anwenden,",
+      "sourceSpan": {
+        "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-dritte-fremdsprache-inhaltsfeld-sprachsystem",
+        "label": "SekI-latein-als-dritte-fremdsprache-inhaltsfeld-sprachsystem#93"
+      },
+      "courseLevel": "unspecified",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-NW",
+        "subject:Latein",
+        "stage:SekI",
+        "phase:latein-als-dritte-fremdsprache",
+        "field:inhaltsfeld-sprachsystem",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-chapter-2-competency-bullet",
+        "phase": "Latein als dritte Fremdsprache",
+        "field": "Inhaltsfeld: Sprachsystem",
+        "bulletSymbol": "à"
+      }
+    },
+    {
+      "id": "20d21da6-91a1-5e91-b738-5d3093a8ae17",
+      "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-dritte-fremdsprache-inhaltsfeld-sprachsystem",
+      "topicCode": "SekI-latein-als-dritte-fremdsprache-inhaltsfeld-sprachsystem",
+      "title": "im Rahmen des Sprachenlernens digitale Lernangebote und Werkzeuge zielgerichtet einsetzen.",
+      "description": "Die lernende Person kann im Rahmen des Sprachenlernens digitale Lernangebote und Werkzeuge zielgerichtet einsetzen",
+      "sourceDocumentKey": "NW-KLP-LATEIN-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Latein Sekundarstufe I Gymnasium 2019, Latein als dritte Fremdsprache, Inhaltsfeld: Sprachsystem",
+      "sourceText": "im Rahmen des Sprachenlernens digitale Lernangebote und Werkzeuge zielgerichtet einsetzen.",
+      "sourceSpan": {
+        "passageId": "de-nw-latein-seki-klp2019-SekI-latein-als-dritte-fremdsprache-inhaltsfeld-sprachsystem",
+        "label": "SekI-latein-als-dritte-fremdsprache-inhaltsfeld-sprachsystem#94"
+      },
+      "courseLevel": "unspecified",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-NW",
+        "subject:Latein",
+        "stage:SekI",
+        "phase:latein-als-dritte-fremdsprache",
+        "field:inhaltsfeld-sprachsystem",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-chapter-2-competency-bullet",
+        "phase": "Latein als dritte Fremdsprache",
+        "field": "Inhaltsfeld: Sprachsystem",
+        "bulletSymbol": "à"
+      }
+    }
+  ]
+}
