@@ -1,5 +1,20 @@
 # Schleswig-Holstein (SH) - Gymnasium Curricula
 
+## Deutsch
+### Sekundarstufe I und II
+- Archiviert:
+  `curricula/DE/Gymnasium/input/SH/Fachanforderungen_Deutsch_Sekundarstufe_2024_barrierearm.pdf`
+- Offizielle Quelle:
+  `https://fachportal.lernnetz.de/sh/faecher/deutsch/fachanforderungen.html?file=files/Fachanforderungen%20und%20Leitf%C3%A4den/Sekundarstufe/Fachanforderungen/Fachanforderungen%20Deutsch%20Sekundarstufe%20%282024%2C%20barrierearm%29.pdf&cid=16956`
+- Hinweis:
+  die 2024er Fachanforderungen liegen als gemeinsame Sek-I/Sek-II-Deutschquelle vor; die Source-Extraction trennt die Sek-I-KMK-Kompetenztabellen von den Sek-II-Prozesskompetenzen und domänenspezifischen KMK-Tabellen
+- Stage-Referenzen:
+  `curricula/DE/Gymnasium/input/SH/lower-secondary/references.md`
+  `curricula/DE/Gymnasium/input/SH/upper-secondary/references.md`
+- Aktive source-extraction-Dateien:
+  `curricula/DE/Gymnasium/input/SH/lower-secondary/source-extraction/DE_SH_DEUTSCH_SEKI_FACHANFORDERUNGEN_2024.source-extraction.json`
+  `curricula/DE/Gymnasium/input/SH/upper-secondary/source-extraction/DE_SH_DEUTSCH_SEKII_FACHANFORDERUNGEN_2024.source-extraction.json`
+
 ## Mathematik
 ### Sekundarstufe I und II
 - Archiviert:

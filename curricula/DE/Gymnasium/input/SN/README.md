@@ -95,3 +95,26 @@ Operational note:
 - Sachsen Informatics quality status:
   - `335/335` Source-Ziele sind in der DE-SN-Sicht abgedeckt.
   - `114/114` sichtbare Atomziele sind source-backed.
+
+<!-- DE-SN-DEUTSCH-SOURCE-EXTRACTION:start -->
+## Deutsch
+
+Archived official source input on `2026-05-14`:
+
+- `lehrplan-gymnasium-deutsch-sachsen-2022.pdf`
+  - Lehrplan Gymnasium Deutsch Sachsen 2004/2007/2009/2011/2013/2019/2022
+  - Klassenstufen `5-10` und Jahrgangsstufen `11/12`
+  - direct PDF source: `https://www.schulportal.sachsen.de/lplandb/lehrplan/file/135/f3QLnBqlLcQXq3XngWT5`
+  - public Lehrplandatenbank overview: `https://www.schulportal.sachsen.de/lplandb/lehrplan/135`
+
+Operational note:
+
+- `DE-SN` now has real archived lower-secondary plus upper-secondary Deutsch source extractions from the shared official Gymnasium PDF.
+- Wahlbereiche are intentionally excluded from the Pflicht-source inventory.
+- The retained source extractions now live at:
+  - `curricula/DE/Gymnasium/input/SN/lower-secondary/source-extraction/DE_SN_DEUTSCH_SEKI_LEHRPLAN_GYMNASIUM_2022.source-extraction.json`
+  - `curricula/DE/Gymnasium/input/SN/upper-secondary/source-extraction/DE_SN_DEUTSCH_SEKII_LEHRPLAN_GYMNASIUM_2022.source-extraction.json`
+- Sachsen Deutsch M3 status:
+  - Sek I: `complete` (244 Source-Ziele)
+  - Sek II: `complete` (84 Source-Ziele)
+<!-- DE-SN-DEUTSCH-SOURCE-EXTRACTION:end -->

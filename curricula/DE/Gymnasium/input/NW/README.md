@@ -9,6 +9,19 @@ Current local archive status on `2026-04-10`:
 - first NRW upper-secondary physics source snapshot is now archived locally as a pilot subset under `upper-secondary/source-json/`
 - first canonical NRW work should start from the locally retained source artifacts and snapshot goal IDs, not from the public links alone
 
+## Deutsch
+### Sekundarstufe I (Klassen 5-10)
+- **Kernlehrplan Deutsch Sekundarstufe I Gymnasium (2019)**: [Lehrplannavigator NRW](https://lehrplannavigator.nrw.de/system/files/media/document/file/g9_d_klp_3409_2019_06_23.pdf)
+- Archived source PDF: `lower-secondary/g9_d_klp_3409_2019_06_23.pdf`
+- Active source extraction: `lower-secondary/source-extraction/DE_NW_DEUTSCH_SEKI_KLP2019.source-extraction.json`
+- M3 review: `curricula/DE/Gymnasium/mapping/DE-NW/lower-secondary/nw_german_lower_secondary_source_extraction_to_canonical_german.review.json`
+
+### Sekundarstufe II (Gymnasiale Oberstufe)
+- **Kernlehrplan Deutsch gymnasiale Oberstufe (2023)**: [Lehrplannavigator NRW](https://lehrplannavigator.nrw.de/system/files/media/document/file/gost_klp_d_2023_06_07.pdf)
+- Archived source PDF: `upper-secondary/gost_klp_d_2023_06_07.pdf`
+- Active source extraction: `upper-secondary/source-extraction/DE_NW_DEUTSCH_SEKII_KLP2023.source-extraction.json`
+- M3 review: `curricula/DE/Gymnasium/mapping/DE-NW/upper-secondary/nw_german_upper_secondary_source_extraction_to_canonical_german.review.json`
+
 ## Mathematik
 ### Sekundarstufe I (Klassen 5-10)
 - **Kernlehrplan Mathematik Sekundarstufe I Gymnasium (2019/2020)**: [Schulentwicklung NRW (QUA-LiS) - Lehrplannavigator Sek I](https://www.schulentwicklung.nrw.de/lehrplaene/lehrplannavigator-s-i/gymnasium-g9/mathematik-g9/)

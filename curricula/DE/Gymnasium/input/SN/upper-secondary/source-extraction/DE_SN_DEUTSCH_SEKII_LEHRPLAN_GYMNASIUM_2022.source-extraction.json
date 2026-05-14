@@ -1,0 +1,2830 @@
+{
+  "schemaVersion": 1,
+  "extractionId": "DE_SN_DEUTSCH_SEKII_LEHRPLAN_GYMNASIUM_2022",
+  "sourceLandscapeId": "da8ab22a-6de0-58c3-c201-f8d503c924a8",
+  "targetLandscapeId": "67bd301b-e11a-582d-94ba-4f4b1a4cefff",
+  "title": "DE-SN - Deutsch Oberstufe (Sachsen, Lehrplan Gymnasium Source-Extraction)",
+  "jurisdiction": "DE-SN",
+  "subject": "Deutsch",
+  "stage": "SekII",
+  "sourceDocument": {
+    "key": "SN-DEUTSCH-GYM-2022",
+    "title": "Lehrplan Gymnasium Deutsch Sachsen 2004/2007/2009/2011/2013/2019/2022",
+    "path": "curricula/DE/Gymnasium/input/SN/lehrplan-gymnasium-deutsch-sachsen-2022.pdf",
+    "url": "https://www.schulportal.sachsen.de/lplandb/lehrplan/file/135/f3QLnBqlLcQXq3XngWT5",
+    "official": true
+  },
+  "sourceDocuments": [
+    {
+      "key": "SN-DEUTSCH-GYM-2022",
+      "title": "Lehrplan Gymnasium Deutsch Sachsen 2004/2007/2009/2011/2013/2019/2022",
+      "path": "curricula/DE/Gymnasium/input/SN/lehrplan-gymnasium-deutsch-sachsen-2022.pdf",
+      "url": "https://www.schulportal.sachsen.de/lplandb/lehrplan/file/135/f3QLnBqlLcQXq3XngWT5",
+      "official": true
+    }
+  ],
+  "method": {
+    "passageExtraction": "pdftotext -bbox-layout; Sachsen Deutsch wird aus der linken, verbindlichen Spalte der Pflicht-Lernbereiche extrahiert. Wahlbereiche werden nicht als Pflicht-Source-Ziele gezaehlt.",
+    "sourceGoalExtraction": "Ein Source-Ziel pro operatorbezogener Lehrplanzeile beziehungsweise fachlich pruefbarem Unterpunkt. Rechte Hinweise, Querverweise und Wahlbereichslisten werden nicht als eigenstaendige Pflichtziele gewertet."
+  },
+  "qualityReview": {
+    "sourceGoalCountPeerBaseline": {
+      "accepted": true,
+      "status": "accepted",
+      "rationale": "84 SN-Deutsch-Source-Ziele; Vergleichskorridor BW/HE/BY/BB/BE/NI/NW/SH/HB/HH/MV/RP/SL = 559/257/434/379/379/273/417/221/226/392/380/333/600 Source-Ziele. Sachsen formuliert verbindliche Lernbereiche mit operatorbezogenen Zeilen; Wahlbereiche sind explizit ausgelassen, damit die Pflichtabdeckung nicht kuenstlich aufgeblasen wird."
+    }
+  },
+  "expectedTopicCodes": [
+    "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-GRUNDKURS-LERNBEREICH-1-DEUTSCHSPRACHIGE-LITERATUR-SEIT-1945-GK",
+    "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-GRUNDKURS-LERNBEREICH-2-GESTALTUNG-VON-REDEN-GK",
+    "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-GRUNDKURS-LERNBEREICH-3-KONKURRENZ-LITERARISCHER-KONZEPTE-UM-1800-GK",
+    "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-GRUNDKURS-LERNBEREICH-4-EIN-ROMAN-IN-SEINER-ZEIT-GK",
+    "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-GRUNDKURS-LERNBEREICH-5-KONKURRENZ-LITERARISCHER-KONZEPTE-UM-1900-GK",
+    "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-GRUNDKURS-LERNBEREICH-6-STOFFE-UND-MOTIVE-GK",
+    "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-GRUNDKURS-LERNBEREICH-7-MATERIALGESTUTZTES-SCHREIBEN-GK",
+    "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-GRUNDKURS-LERNBEREICH-8-SPRACHE-UND-KOMMUNIKATION-GK",
+    "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-LEISTUNGSKURS-LERNBEREICH-1-DEUTSCHSPRACHIGE-LITERATUR-SEIT-1945-LK",
+    "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-LEISTUNGSKURS-LERNBEREICH-2-GESTALTUNG-VON-REDEN-LK",
+    "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-LEISTUNGSKURS-LERNBEREICH-3-KONKURRENZ-LITERARISCHER-KONZEPTE-UM-1800-LK",
+    "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-LEISTUNGSKURS-LERNBEREICH-4-THEATERKONZEPTE-LK",
+    "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-LEISTUNGSKURS-LERNBEREICH-5-EIN-ROMAN-IN-SEINER-ZEIT-LK",
+    "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-LEISTUNGSKURS-LERNBEREICH-6-KONKURRENZ-LITERARISCHER-KONZEPTE-UM-1900-LK",
+    "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-LEISTUNGSKURS-LERNBEREICH-7-STOFFE-UND-MOTIVE-LK",
+    "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-LEISTUNGSKURS-LERNBEREICH-8-MATERIALGESTUTZTES-SCHREIBEN-LK",
+    "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-LEISTUNGSKURS-LERNBEREICH-9-SPRACHE-UND-KOMMUNIKATION-LK"
+  ],
+  "pipelineStatus": {
+    "currentStep": "MAPPING-3",
+    "steps": [
+      {
+        "id": "ORIGINALQUELLEN",
+        "label": "Originalquellen bereitgestellt",
+        "status": "complete",
+        "dependsOn": [],
+        "checks": [
+          {
+            "id": "official-source-document-present-sn-deutsch",
+            "label": "Amtliches Sachsen-Deutsch-Gymnasium-PDF liegt lokal vor",
+            "passed": true,
+            "details": "curricula/DE/Gymnasium/input/SN/lehrplan-gymnasium-deutsch-sachsen-2022.pdf"
+          }
+        ]
+      },
+      {
+        "id": "MAPPING-1",
+        "label": "Original-Lehrplanpassagen extrahiert",
+        "status": "complete",
+        "dependsOn": [
+          "ORIGINALQUELLEN"
+        ],
+        "checks": [
+          {
+            "id": "expected-topic-coverage-sn-deutsch",
+            "label": "SN-Deutsch-Pflicht-Lernbereiche wurden als Lehrplanpassagen extrahiert",
+            "passed": true,
+            "details": "17 Passagegruppen."
+          },
+          {
+            "id": "official-source-extraction-sn-deutsch",
+            "label": "Passage-Extraction basiert auf der amtlichen Sachsen-PDF statt Legacy-Snapshot",
+            "passed": true,
+            "details": "curricula/DE/Gymnasium/input/SN/lehrplan-gymnasium-deutsch-sachsen-2022.pdf"
+          }
+        ]
+      },
+      {
+        "id": "MAPPING-2",
+        "label": "Source-Ziele aus Lehrplanpassagen erstellt",
+        "status": "complete",
+        "dependsOn": [
+          "MAPPING-1"
+        ],
+        "checks": [
+          {
+            "id": "source-goals-created-sn-deutsch",
+            "label": "Source-Ziele aus amtlichen SN-Deutsch-Pflicht-Lernbereichen erzeugt",
+            "passed": true,
+            "details": "84 Source-Ziele."
+          },
+          {
+            "id": "source-goal-count-peer-baseline-sn-deutsch",
+            "label": "Source-Ziel-Anzahl ist gegen geprüfte Deutsch-Inventare plausibilisiert",
+            "passed": true,
+            "details": "84 Source-Ziele; Vergleichskorridor BW/HE/BY/BB/BE/NI/NW/SH/HB/HH/MV/RP/SL = 559/257/434/379/379/273/417/221/226/392/380/333/600 Source-Ziele."
+          },
+          {
+            "id": "source-goal-ids-unique-sn-deutsch",
+            "label": "Source-Ziel-IDs sind eindeutig",
+            "passed": true,
+            "details": "Doppelte IDs: -"
+          },
+          {
+            "id": "source-goals-reference-passages-sn-deutsch",
+            "label": "Jedes Source-Ziel referenziert eine vorhandene Originalpassage",
+            "passed": true,
+            "details": "Ohne Passage: -"
+          }
+        ]
+      },
+      {
+        "id": "MAPPING-3",
+        "label": "Source-Ziele auf SkillPilot-Ziele gemappt",
+        "status": "complete",
+        "dependsOn": [
+          "MAPPING-2"
+        ],
+        "checks": [
+          {
+            "id": "source-goals-reviewed-sn-deutsch",
+            "label": "Alle Source-Ziele haben eine fachliche M3-Entscheidung",
+            "passed": true,
+            "details": "84/84 reviewed."
+          },
+          {
+            "id": "source-goals-covered-sn-deutsch",
+            "label": "Alle Source-Ziele sind inhaltlich durch SkillPilot-Ziele abgedeckt",
+            "passed": true,
+            "details": "84/84 inhaltlich abgedeckt; 1:n ist Zuordnungsform, keine Lücke."
+          }
+        ]
+      }
+    ]
+  },
+  "passages": [
+    {
+      "id": "e88a89ad-6a27-5358-99c4-1949754baf6c",
+      "sourceDocumentKey": "SN-DEUTSCH-GYM-2022",
+      "topicCode": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-GRUNDKURS-LERNBEREICH-1-DEUTSCHSPRACHIGE-LITERATUR-SEIT-1945-GK",
+      "title": "Jahrgangsstufen 11/12 Grundkurs - Lernbereich 1: Deutschsprachige Literatur seit 1945",
+      "rawText": "(1) Sich positionieren zu Aspekten der Literatur im geteilten Deutschland\n(2) Sich positionieren zur Literatur der Gegenwart\n(3) Anwenden von Erschließungsmethoden bei der Auseinandersetzung mit einer Ganzschrift",
+      "sourceGoalIds": [
+        "17f8187f-73fe-5c38-dd92-2b193e2bdefd",
+        "9744be3f-4307-564f-e752-c7f57173c213",
+        "f33a2256-1a15-50f9-fad0-ceae5b4b1579"
+      ]
+    },
+    {
+      "id": "781a55a3-8f45-5cd2-5f58-d61bce35df1b",
+      "sourceDocumentKey": "SN-DEUTSCH-GYM-2022",
+      "topicCode": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-GRUNDKURS-LERNBEREICH-2-GESTALTUNG-VON-REDEN-GK",
+      "title": "Jahrgangsstufen 11/12 Grundkurs - Lernbereich 2: Gestaltung von Reden",
+      "rawText": "(1) Kennen von Faktoren der Redesituation: Sachwissen, Glaubwürdigkeit, Interesse\n(2) Anwenden von Grundregeln der Rhetorik\n(3) Gestalten einer eigenen Kurzrede",
+      "sourceGoalIds": [
+        "0068217e-e185-5650-acfd-781313e1e986",
+        "a843b8f2-b92e-507c-eb7c-c99759d403d2",
+        "e2951afd-d3e5-576e-44b6-1dffcd93cce7"
+      ]
+    },
+    {
+      "id": "353d9e78-4615-545c-15ed-80fc5e35da74",
+      "sourceDocumentKey": "SN-DEUTSCH-GYM-2022",
+      "topicCode": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-GRUNDKURS-LERNBEREICH-3-KONKURRENZ-LITERARISCHER-KONZEPTE-UM-1800-GK",
+      "title": "Jahrgangsstufen 11/12 Grundkurs - Lernbereich 3: Konkurrenz literarischer Konzepte um 1800",
+      "rawText": "(1) Kennen von Gedichten mit unterschiedlicher Naturdarstellung\n(2) Sich positionieren zu Literatur im Spannungsfeld von Gefühl und Verstand\n(3) Kennen einer epischen oder dramatischen Ganzschrift aus einer der genannten Epochen\n(4) Gestalten von Textinterpretationen",
+      "sourceGoalIds": [
+        "29c526e6-c4cb-56e6-37a0-eac3f1df2a79",
+        "219a3535-a868-5f4e-428d-24e72076762e",
+        "60af7551-0ca4-56aa-98c7-a7f5024e2297",
+        "a65e4fd1-f7c0-579f-e32b-aa627c50766d"
+      ]
+    },
+    {
+      "id": "63227b8a-c2ac-5c83-515a-2dade51cada0",
+      "sourceDocumentKey": "SN-DEUTSCH-GYM-2022",
+      "topicCode": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-GRUNDKURS-LERNBEREICH-4-EIN-ROMAN-IN-SEINER-ZEIT-GK",
+      "title": "Jahrgangsstufen 11/12 Grundkurs - Lernbereich 4: Ein Roman in seiner Zeit",
+      "rawText": "(1) Kennen eines Romans als Ganzschrift: Struktur\n(2) Kennen eines Romans als Ganzschrift: Erzähltechnik\n(3) Beurteilen der inhaltlichen und ästhetischen Qualität des Romans\n(4) Anwenden gattungsspezifischer Interpretationsmethoden\n(5) Kennen des biographischen, historischen, politischen Entstehungskontextes",
+      "sourceGoalIds": [
+        "eda3f87c-b9f6-5608-87b7-0f32cedc44a3",
+        "75abd27a-ddfb-592e-683e-2fd5004e64ab",
+        "56441d17-e9b4-5adb-a5ba-a1f264b5920a",
+        "2e2d6f5b-ca9d-5bc0-e3e7-c5f6084bb007",
+        "04aeaba7-90c3-55ba-4a2f-e24c0688fce5"
+      ]
+    },
+    {
+      "id": "ed48a6ca-099d-5fe9-0abb-98d4142f7c3c",
+      "sourceDocumentKey": "SN-DEUTSCH-GYM-2022",
+      "topicCode": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-GRUNDKURS-LERNBEREICH-5-KONKURRENZ-LITERARISCHER-KONZEPTE-UM-1900-GK",
+      "title": "Jahrgangsstufen 11/12 Grundkurs - Lernbereich 5: Konkurrenz literarischer Konzepte um 1900",
+      "rawText": "(1) Kennen wesentlicher Aspekte der literarischen Entwicklung um 1900 in ihrer gesellschaftlichen Bedingtheit\n(2) Beurteilen von Gedichten des Expressionismus und einer weiteren literarischen Strömung zu vergleichbaren Themen und Motiven\n(3) Einblick gewinnen in die Lyrik des Barock im Vergleich\n(4) Gestalten einer vergleichenden Textinterpretation\n(5) Kennen von Besonderheiten der Erzählkunst Kafkas durch Auseinandersetzung mit Kurzprosa",
+      "sourceGoalIds": [
+        "ea70c4de-8e45-5307-8521-8dbc71138454",
+        "48e05ec5-a9f6-5db4-4dfd-737c6171d387",
+        "133eefa0-de39-51e7-62da-d25fa7785b69",
+        "3dfe9a05-2c34-5bca-4dc2-40ad37bc2ef0",
+        "08aafc2f-820e-5171-bc1e-8d435c184a20"
+      ]
+    },
+    {
+      "id": "2a3dfe7c-f829-5bed-3e78-ad7777730141",
+      "sourceDocumentKey": "SN-DEUTSCH-GYM-2022",
+      "topicCode": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-GRUNDKURS-LERNBEREICH-6-STOFFE-UND-MOTIVE-GK",
+      "title": "Jahrgangsstufen 11/12 Grundkurs - Lernbereich 6: Stoffe und Motive",
+      "rawText": "(1) Einblick gewinnen in die funktionale Abhängigkeit von Themen, Stoffen und Motiven\n(2) Kennen von historischer Bedingtheit und historischem Wandel eines literarischen Stoffes\n(3) Einblick gewinnen in die Rezeptionsund Wirkungsgeschichte eines Stoffes\n(4) Gestalten von Variationen eines Stoffes\n(5) Anwenden des Wissens über Themen und Motive bei der Arbeit mit der Ganzschrift: Kernmotive\n(6) Anwenden des Wissens über Themen und Motive bei der Arbeit mit der Ganzschrift: Rahmenund Randmotive\n(7) Anwenden des Wissens über Themen und Motive bei der Arbeit mit der Ganzschrift: literarische Erörterung",
+      "sourceGoalIds": [
+        "2f498683-d5f4-5ae5-a1dd-1fbeef00e729",
+        "7678abf0-c030-50fd-de33-b91386cd07fd",
+        "2da0812d-ba4f-5ee6-2c32-7acbc1763ef9",
+        "75d331e9-4655-5aa8-9703-d21516e5599f",
+        "88af5770-6cbd-53bb-3dfd-7e2083f01143",
+        "244ce732-9526-5fda-4627-6f10234ea711",
+        "ba6b2295-3b98-5e3b-d7e6-a794b4a59f3a"
+      ]
+    },
+    {
+      "id": "eb5ff3a1-49b3-574b-70ed-58d69af22457",
+      "sourceDocumentKey": "SN-DEUTSCH-GYM-2022",
+      "topicCode": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-GRUNDKURS-LERNBEREICH-7-MATERIALGESTUTZTES-SCHREIBEN-GK",
+      "title": "Jahrgangsstufen 11/12 Grundkurs - Lernbereich 7: Materialgestütztes Schreiben",
+      "rawText": "(1) Kennen von Möglichkeiten zur Vorbereitung eines Schreibvorhabens\n(2) Anwenden von Verfahren zur Aufbereitung von Material\n(3) Anwenden von Wissen zum Planen und Schreiben von Texten\n(4) Gestalten von argumentierenden und informierenden Texten",
+      "sourceGoalIds": [
+        "44a1d67b-7952-57a0-1f2e-54e9c61055fd",
+        "34d2cd5e-7163-5ad9-01a1-57f00ed7232d",
+        "f33c8a17-6c55-57db-f668-5c6b8149d10f",
+        "21c2fb3a-024e-582e-a911-2ef404a2d60e"
+      ]
+    },
+    {
+      "id": "95ec9e6f-7f7e-5f81-2752-ce0ee8397117",
+      "sourceDocumentKey": "SN-DEUTSCH-GYM-2022",
+      "topicCode": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-GRUNDKURS-LERNBEREICH-8-SPRACHE-UND-KOMMUNIKATION-GK",
+      "title": "Jahrgangsstufen 11/12 Grundkurs - Lernbereich 8: Sprache und Kommunikation",
+      "rawText": "(1) Kennen von Texten und Modellen zu: Sprache, Wirklichkeit, Denken\n(2) Kennen von Texten und Modellen zu: Funktionen von Sprache\n(3) Kennen von Texten und Modellen zu: Sprachentwicklung\n(4) Kennen von Texten und Modellen zu: Sprache und Medien\n(5) Sich positionieren zu Sprache in politischgesellschaftlichen Zusammenhängen\n(6) Übertragen der Theorien auf die Untersuchung konkreter Kommunikationssituationen",
+      "sourceGoalIds": [
+        "f6217c2a-8a87-5b24-d78b-b478a896cf2d",
+        "fb880601-c7f0-5b65-7da3-4129fc7b78ba",
+        "1ac93102-34f1-50f4-d4b8-a750310b348e",
+        "9882ea79-daf1-5ed9-c573-30a294a6e8cb",
+        "9a05aa04-978c-5b41-2fae-10254c911e50",
+        "29926ac6-311a-5d53-0d7f-3a12198892ff"
+      ]
+    },
+    {
+      "id": "0320df05-4595-5294-0ece-6dbd746807fc",
+      "sourceDocumentKey": "SN-DEUTSCH-GYM-2022",
+      "topicCode": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-LEISTUNGSKURS-LERNBEREICH-1-DEUTSCHSPRACHIGE-LITERATUR-SEIT-1945-LK",
+      "title": "Jahrgangsstufen 11/12 Leistungskurs - Lernbereich 1: Deutschsprachige Literatur seit 1945 (LK)",
+      "rawText": "(1) Sich positionieren zu Aspekten der Literatur im geteilten Deutschland\n(2) Sich positionieren zur Literatur der Gegenwart\n(3) Anwenden von Erschließungsmethoden bei der Auseinandersetzung mit einer Ganzschrift",
+      "sourceGoalIds": [
+        "91b7cee0-03f3-5666-523e-d14b547e9cf6",
+        "49d37ecd-8a7d-54bd-9fcf-7618dec0dd26",
+        "1a27c01e-8d33-54cc-9c0f-cf55166c655e"
+      ]
+    },
+    {
+      "id": "6e24ac0f-7e41-5b12-924b-d10b25ea524c",
+      "sourceDocumentKey": "SN-DEUTSCH-GYM-2022",
+      "topicCode": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-LEISTUNGSKURS-LERNBEREICH-2-GESTALTUNG-VON-REDEN-LK",
+      "title": "Jahrgangsstufen 11/12 Leistungskurs - Lernbereich 2: Gestaltung von Reden (LK)",
+      "rawText": "(1) Kennen von Faktoren der Redesituation: Sachwissen, Glaubwürdigkeit, Interesse\n(2) Anwenden von Grundregeln der Rhetorik\n(3) Kennen von Verhaltensmustern in schwierigen Redesituationen\n(4) Gestalten einer eigenen Kurzrede",
+      "sourceGoalIds": [
+        "08afa078-4047-5ac1-3d5f-adbadd1f2447",
+        "1f57208d-9d80-53d9-051a-357f536918f5",
+        "ad7b7a6d-54ad-576e-cd3c-06a7c95cfbda",
+        "19dda9d6-1b93-5610-e43f-d80ee91aa054"
+      ]
+    },
+    {
+      "id": "f11d6d86-c5ca-5161-7a36-6f2f302c946a",
+      "sourceDocumentKey": "SN-DEUTSCH-GYM-2022",
+      "topicCode": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-LEISTUNGSKURS-LERNBEREICH-3-KONKURRENZ-LITERARISCHER-KONZEPTE-UM-1800-LK",
+      "title": "Jahrgangsstufen 11/12 Leistungskurs - Lernbereich 3: Konkurrenz literarischer Konzepte um 1800 (LK)",
+      "rawText": "(1) Beurteilen von Gedichten mit unterschiedlicher Naturdarstellung\n(2) Sich positionieren zu Literatur im Spannungsfeld von Gefühl und Verstand\n(3) Einblick gewinnen in die Literatur des Mittelalters in Verbindung mit der Literatur der Romantik\n(4) Kennen einer epischen oder dramatischen Ganzschrift aus einer der vier genannten Epochen\n(5) Gestalten von Textinterpretationen\n(6) Übertragen von Wissen über literarische Strömungen auf unterschiedliche Menschenbilder und Gesellschaftskonzepte\n(7) Kennen verschiedener Darstellungen zur Epochenproblematik",
+      "sourceGoalIds": [
+        "8166e113-eff8-5fd8-154b-21cf8698a5a2",
+        "bf5cf44e-2f2e-58ff-abdb-4c0990f68240",
+        "7ff2eec5-e6a4-53a3-d1f4-a39ed2ac3f9c",
+        "9658a991-b251-5161-b85d-37a65eb9ed28",
+        "c4a13a42-4672-58a4-9299-bcef06e00676",
+        "f7bd8bf4-b8ea-55ef-3182-44f8c3f29887",
+        "f4b92838-5a13-5dd0-f3e0-351ddc6f1908"
+      ]
+    },
+    {
+      "id": "b6c1b9e1-658d-5e7c-17b8-f2dcf4acddc6",
+      "sourceDocumentKey": "SN-DEUTSCH-GYM-2022",
+      "topicCode": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-LEISTUNGSKURS-LERNBEREICH-4-THEATERKONZEPTE-LK",
+      "title": "Jahrgangsstufen 11/12 Leistungskurs - Lernbereich 4: Theaterkonzepte (LK)",
+      "rawText": "(1) Kennen eines Dramas als Ganzschrift\n(2) Kennen von zwei Theaterkonzepten mit Merkmalen und Vertretern\n(3) Anwenden von theoretischen Konzepten zum Theater auf die Untersuchung von Szenen\n(4) Sich positionieren zu inhaltlichen, ästhetischen und theoretischen Problemen des Dramas\n(5) Gestalten einer Erörterung zu Problemen des Dramas und des Theaters",
+      "sourceGoalIds": [
+        "28ba89ac-35ae-5d49-c465-60222d68253a",
+        "f4938679-b8f8-5165-89ca-d5ca5e67ff3b",
+        "43699df9-2aa4-55b9-84d1-8414070f1b3a",
+        "398ca1f5-d1f6-5d01-a04e-fb19d8a7a83c",
+        "63e13a9d-35e9-5bc3-3f38-164dab648de5"
+      ]
+    },
+    {
+      "id": "7966da92-06a6-5ff2-9604-e9e468c927d6",
+      "sourceDocumentKey": "SN-DEUTSCH-GYM-2022",
+      "topicCode": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-LEISTUNGSKURS-LERNBEREICH-5-EIN-ROMAN-IN-SEINER-ZEIT-LK",
+      "title": "Jahrgangsstufen 11/12 Leistungskurs - Lernbereich 5: Ein Roman in seiner Zeit (LK)",
+      "rawText": "(1) Kennen eines Romans als Ganzschrift: Struktur, Erzähltechnik\n(2) Kennen eines Romans als Ganzschrift: Raumund Zeitgestaltung\n(3) Kennen eines Romans als Ganzschrift: Figurengestaltung\n(4) Beurteilen der inhaltlichen und ästhetischen Qualität des Romans\n(5) Anwenden gattungsspezifischer Interpretationsmethoden\n(6) Kennen des biographischen, historischen, politischen, philosophischen, religiösen Entstehungskontextes\n(7) Sich positionieren zu Grundzügen der Rezeptionsgeschichte des Romans",
+      "sourceGoalIds": [
+        "3c8dab07-3e9e-5f8a-01c1-37123999c391",
+        "42fb78f7-eb88-5c69-1795-e12dceb86a05",
+        "4befb6eb-5d43-5b92-5f77-9d2dfda90477",
+        "67bbaf43-220f-5146-cb21-bb20e25d7675",
+        "2ad3c1e1-0e97-5928-c033-15e85ee506f2",
+        "6ee0632f-c5ed-5772-67f4-398f759ce091",
+        "3db79925-006a-5cb9-54dd-2ffc7e440264"
+      ]
+    },
+    {
+      "id": "f0ce24ab-3906-5f03-7544-ed01a8c2a7a4",
+      "sourceDocumentKey": "SN-DEUTSCH-GYM-2022",
+      "topicCode": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-LEISTUNGSKURS-LERNBEREICH-6-KONKURRENZ-LITERARISCHER-KONZEPTE-UM-1900-LK",
+      "title": "Jahrgangsstufen 11/12 Leistungskurs - Lernbereich 6: Konkurrenz literarischer Konzepte um 1900 (LK)",
+      "rawText": "(1) Beurteilen von Gedichten des Expressionismus und weiterer literarischer Strömungen um 1900 zu vergleichbaren Themen und Motiven\n(2) Einblick gewinnen in die Lyrik des Barock im Vergleich\n(3) Gestalten einer vergleichenden Textinterpretation\n(4) Kennen von Besonderheiten der Erzählkunst Kafkas durch Erschließen von Kurzprosa\n(5) Kennen einer literarischen Ganzschrift\n(6) Anwenden von Verfahren des Interpretierens und literarischen Erörterns",
+      "sourceGoalIds": [
+        "74c8e855-a6ea-5319-76e3-4e9d56229e4f",
+        "5c2710da-f14a-57c8-2403-5896565f223c",
+        "cb6aa639-1d67-5033-174d-a6346d69b45c",
+        "828d8f1e-119a-539f-2088-65df1ac51900",
+        "9788fd93-a7aa-568d-6ac7-c63509f5534f",
+        "6ed479c5-c65e-5337-d122-a01d1b03bf47"
+      ]
+    },
+    {
+      "id": "845c328e-ae9b-50a4-9913-a0b1a05bb768",
+      "sourceDocumentKey": "SN-DEUTSCH-GYM-2022",
+      "topicCode": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-LEISTUNGSKURS-LERNBEREICH-7-STOFFE-UND-MOTIVE-LK",
+      "title": "Jahrgangsstufen 11/12 Leistungskurs - Lernbereich 7: Stoffe und Motive (LK)",
+      "rawText": "(1) Kennen der funktionalen Abhängigkeit von Themen, Stoffen und Motiven\n(2) Sich positionieren zu einem literarischen Stoff einer Ganzschrift\n(3) Sich positionieren zu weiteren literarischen Bearbeitungen eines Stoffes\n(4) Gestalten von Variationen eines Stoffes\n(5) Anwenden des Wissens über Themen und Motiventfaltung bei der Arbeit mit Ganzschriften",
+      "sourceGoalIds": [
+        "5deab071-99bb-5d27-f773-9fbff892f0ba",
+        "03d70710-4844-58f4-bec6-9e0ab6650f23",
+        "531dba4a-f8b1-5dba-60e0-d48c1ca34e29",
+        "ca9151ec-397b-5722-38ff-7394e8c77b23",
+        "dc53ae77-6e20-5855-a7c8-8c5e72b11fcb"
+      ]
+    },
+    {
+      "id": "0b366af7-6dd4-5090-f5a5-687e6c754852",
+      "sourceDocumentKey": "SN-DEUTSCH-GYM-2022",
+      "topicCode": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-LEISTUNGSKURS-LERNBEREICH-8-MATERIALGESTUTZTES-SCHREIBEN-LK",
+      "title": "Jahrgangsstufen 11/12 Leistungskurs - Lernbereich 8: Materialgestütztes Schreiben (LK)",
+      "rawText": "(1) Kennen von Möglichkeiten zur Vorbereitung eines Schreibvorhabens\n(2) Anwenden von Verfahren zur Aufbereitung von Material: Recherche\n(3) Anwenden von Verfahren zur Aufbereitung von Material: Analyse und Vergleich\n(4) Anwenden von Verfahren zur Aufbereitung von Material: Exzerpt\n(5) Anwenden von Verfahren zur Aufbereitung von Material: Zitiertechnik, Quellenangabe\n(6) Anwenden von Wissen zum Planen und Schreiben von Texten\n(7) Gestalten von informierenden und argumentierenden Texten",
+      "sourceGoalIds": [
+        "389157b7-4351-5ddb-2610-1454cdeaf1d1",
+        "f49c2dfe-21b8-55a2-b6a2-ce60fc6c3710",
+        "b43dc680-4f4c-5b65-0513-43fe4ddfecc5",
+        "95cefdfb-14f1-5dc2-c00e-3d7ecf5b273c",
+        "28405dee-d41b-56c4-b172-2a939c30a60d",
+        "e280718f-964b-5f31-4ef7-33fceef0e266",
+        "91fa247a-90f5-5717-4483-46f5c50c7131"
+      ]
+    },
+    {
+      "id": "53e2ba3c-6580-5071-fb6c-2027cec271c7",
+      "sourceDocumentKey": "SN-DEUTSCH-GYM-2022",
+      "topicCode": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-LEISTUNGSKURS-LERNBEREICH-9-SPRACHE-UND-KOMMUNIKATION-LK",
+      "title": "Jahrgangsstufen 11/12 Leistungskurs - Lernbereich 9: Sprache und Kommunikation (LK)",
+      "rawText": "(1) Kennen von Texten und Modellen zu den Themenkreisen\n(2) Sich positionieren zu Sprache in politischgesellschaftlichen Zusammenhängen\n(3) Anwenden der Theorien bei der Untersuchung konkreter Kommunikationssituationen, Texte oder Sachverhalte",
+      "sourceGoalIds": [
+        "6c0baada-d73b-521d-45cf-512283011da6",
+        "e42d0c26-b29b-56c0-5228-aec8a73c4ad7",
+        "8bf2f992-649d-57b9-e42d-4799880c2134"
+      ]
+    }
+  ],
+  "sourceGoals": [
+    {
+      "id": "17f8187f-73fe-5c38-dd92-2b193e2bdefd",
+      "passageId": "e88a89ad-6a27-5358-99c4-1949754baf6c",
+      "topicCode": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-GRUNDKURS-LERNBEREICH-1-DEUTSCHSPRACHIGE-LITERATUR-SEIT-1945-GK",
+      "title": "Sich positionieren zu Aspekten der Literatur im geteilten Deutschland",
+      "description": "Die lernende Person kann sich positionieren zu Aspekten der Literatur im geteilten Deutschland.",
+      "sourceDocumentKey": "SN-DEUTSCH-GYM-2022",
+      "sourceRef": "Lehrplan Gymnasium Deutsch Sachsen 2004/2007/2009/2011/2013/2019/2022, Jahrgangsstufen 11/12 Grundkurs, Lernbereich 1: Deutschsprachige Literatur seit 1945, PDF-S. 59",
+      "sourceText": "Sich positionieren zu Aspekten der Literatur im geteilten Deutschland",
+      "sourceSpan": {
+        "passageId": "e88a89ad-6a27-5358-99c4-1949754baf6c",
+        "label": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-GRUNDKURS-LERNBEREICH-1-DEUTSCHSPRACHIGE-LITERATUR-SEIT-1945-GK#1"
+      },
+      "courseLevel": "both",
+      "tags": [
+        "jurisdiction:DE-SN",
+        "stage:SekII",
+        "phase:jahrgangsstufen-11-12-grundkurs",
+        "field:lernbereich-1-deutschsprachige-literatur-seit-1945",
+        "courseLevel:both",
+        "sourceDocument:SN-DEUTSCH-GYM-2022"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-bbox-left-column-sn-gymnasium-deutsch-pflicht-lernbereiche-without-wahlbereiche",
+        "phase": "Jahrgangsstufen 11/12 Grundkurs",
+        "field": "Lernbereich 1: Deutschsprachige Literatur seit 1945",
+        "page": 59
+      }
+    },
+    {
+      "id": "9744be3f-4307-564f-e752-c7f57173c213",
+      "passageId": "e88a89ad-6a27-5358-99c4-1949754baf6c",
+      "topicCode": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-GRUNDKURS-LERNBEREICH-1-DEUTSCHSPRACHIGE-LITERATUR-SEIT-1945-GK",
+      "title": "Sich positionieren zur Literatur der Gegenwart",
+      "description": "Die lernende Person kann sich positionieren zur Literatur der Gegenwart.",
+      "sourceDocumentKey": "SN-DEUTSCH-GYM-2022",
+      "sourceRef": "Lehrplan Gymnasium Deutsch Sachsen 2004/2007/2009/2011/2013/2019/2022, Jahrgangsstufen 11/12 Grundkurs, Lernbereich 1: Deutschsprachige Literatur seit 1945, PDF-S. 59",
+      "sourceText": "Sich positionieren zur Literatur der Gegenwart",
+      "sourceSpan": {
+        "passageId": "e88a89ad-6a27-5358-99c4-1949754baf6c",
+        "label": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-GRUNDKURS-LERNBEREICH-1-DEUTSCHSPRACHIGE-LITERATUR-SEIT-1945-GK#2"
+      },
+      "courseLevel": "both",
+      "tags": [
+        "jurisdiction:DE-SN",
+        "stage:SekII",
+        "phase:jahrgangsstufen-11-12-grundkurs",
+        "field:lernbereich-1-deutschsprachige-literatur-seit-1945",
+        "courseLevel:both",
+        "sourceDocument:SN-DEUTSCH-GYM-2022"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-bbox-left-column-sn-gymnasium-deutsch-pflicht-lernbereiche-without-wahlbereiche",
+        "phase": "Jahrgangsstufen 11/12 Grundkurs",
+        "field": "Lernbereich 1: Deutschsprachige Literatur seit 1945",
+        "page": 59
+      }
+    },
+    {
+      "id": "f33a2256-1a15-50f9-fad0-ceae5b4b1579",
+      "passageId": "e88a89ad-6a27-5358-99c4-1949754baf6c",
+      "topicCode": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-GRUNDKURS-LERNBEREICH-1-DEUTSCHSPRACHIGE-LITERATUR-SEIT-1945-GK",
+      "title": "Anwenden von Erschließungsmethoden bei der Auseinandersetzung mit einer Ganzschrift",
+      "description": "Die lernende Person kann anwenden von Erschließungsmethoden bei der Auseinandersetzung mit einer Ganzschrift.",
+      "sourceDocumentKey": "SN-DEUTSCH-GYM-2022",
+      "sourceRef": "Lehrplan Gymnasium Deutsch Sachsen 2004/2007/2009/2011/2013/2019/2022, Jahrgangsstufen 11/12 Grundkurs, Lernbereich 1: Deutschsprachige Literatur seit 1945, PDF-S. 59",
+      "sourceText": "Anwenden von Erschließungsmethoden bei der Auseinandersetzung mit einer Ganzschrift",
+      "sourceSpan": {
+        "passageId": "e88a89ad-6a27-5358-99c4-1949754baf6c",
+        "label": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-GRUNDKURS-LERNBEREICH-1-DEUTSCHSPRACHIGE-LITERATUR-SEIT-1945-GK#3"
+      },
+      "courseLevel": "both",
+      "tags": [
+        "jurisdiction:DE-SN",
+        "stage:SekII",
+        "phase:jahrgangsstufen-11-12-grundkurs",
+        "field:lernbereich-1-deutschsprachige-literatur-seit-1945",
+        "courseLevel:both",
+        "sourceDocument:SN-DEUTSCH-GYM-2022"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-bbox-left-column-sn-gymnasium-deutsch-pflicht-lernbereiche-without-wahlbereiche",
+        "phase": "Jahrgangsstufen 11/12 Grundkurs",
+        "field": "Lernbereich 1: Deutschsprachige Literatur seit 1945",
+        "page": 59
+      }
+    },
+    {
+      "id": "0068217e-e185-5650-acfd-781313e1e986",
+      "passageId": "781a55a3-8f45-5cd2-5f58-d61bce35df1b",
+      "topicCode": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-GRUNDKURS-LERNBEREICH-2-GESTALTUNG-VON-REDEN-GK",
+      "title": "Kennen von Faktoren der Redesituation: Sachwissen, Glaubwürdigkeit, Interesse",
+      "description": "Die lernende Person kann kennen von Faktoren der Redesituation: Sachwissen, Glaubwürdigkeit, Interesse.",
+      "sourceDocumentKey": "SN-DEUTSCH-GYM-2022",
+      "sourceRef": "Lehrplan Gymnasium Deutsch Sachsen 2004/2007/2009/2011/2013/2019/2022, Jahrgangsstufen 11/12 Grundkurs, Lernbereich 2: Gestaltung von Reden, PDF-S. 59",
+      "sourceText": "Kennen von Faktoren der Redesituation: Sachwissen, Glaubwürdigkeit, Interesse",
+      "sourceSpan": {
+        "passageId": "781a55a3-8f45-5cd2-5f58-d61bce35df1b",
+        "label": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-GRUNDKURS-LERNBEREICH-2-GESTALTUNG-VON-REDEN-GK#4"
+      },
+      "courseLevel": "both",
+      "tags": [
+        "jurisdiction:DE-SN",
+        "stage:SekII",
+        "phase:jahrgangsstufen-11-12-grundkurs",
+        "field:lernbereich-2-gestaltung-von-reden",
+        "courseLevel:both",
+        "sourceDocument:SN-DEUTSCH-GYM-2022"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-bbox-left-column-sn-gymnasium-deutsch-pflicht-lernbereiche-without-wahlbereiche",
+        "phase": "Jahrgangsstufen 11/12 Grundkurs",
+        "field": "Lernbereich 2: Gestaltung von Reden",
+        "page": 59
+      }
+    },
+    {
+      "id": "a843b8f2-b92e-507c-eb7c-c99759d403d2",
+      "passageId": "781a55a3-8f45-5cd2-5f58-d61bce35df1b",
+      "topicCode": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-GRUNDKURS-LERNBEREICH-2-GESTALTUNG-VON-REDEN-GK",
+      "title": "Anwenden von Grundregeln der Rhetorik",
+      "description": "Die lernende Person kann anwenden von Grundregeln der Rhetorik.",
+      "sourceDocumentKey": "SN-DEUTSCH-GYM-2022",
+      "sourceRef": "Lehrplan Gymnasium Deutsch Sachsen 2004/2007/2009/2011/2013/2019/2022, Jahrgangsstufen 11/12 Grundkurs, Lernbereich 2: Gestaltung von Reden, PDF-S. 59",
+      "sourceText": "Anwenden von Grundregeln der Rhetorik",
+      "sourceSpan": {
+        "passageId": "781a55a3-8f45-5cd2-5f58-d61bce35df1b",
+        "label": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-GRUNDKURS-LERNBEREICH-2-GESTALTUNG-VON-REDEN-GK#5"
+      },
+      "courseLevel": "both",
+      "tags": [
+        "jurisdiction:DE-SN",
+        "stage:SekII",
+        "phase:jahrgangsstufen-11-12-grundkurs",
+        "field:lernbereich-2-gestaltung-von-reden",
+        "courseLevel:both",
+        "sourceDocument:SN-DEUTSCH-GYM-2022"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-bbox-left-column-sn-gymnasium-deutsch-pflicht-lernbereiche-without-wahlbereiche",
+        "phase": "Jahrgangsstufen 11/12 Grundkurs",
+        "field": "Lernbereich 2: Gestaltung von Reden",
+        "page": 59
+      }
+    },
+    {
+      "id": "e2951afd-d3e5-576e-44b6-1dffcd93cce7",
+      "passageId": "781a55a3-8f45-5cd2-5f58-d61bce35df1b",
+      "topicCode": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-GRUNDKURS-LERNBEREICH-2-GESTALTUNG-VON-REDEN-GK",
+      "title": "Gestalten einer eigenen Kurzrede",
+      "description": "Die lernende Person kann gestalten einer eigenen Kurzrede.",
+      "sourceDocumentKey": "SN-DEUTSCH-GYM-2022",
+      "sourceRef": "Lehrplan Gymnasium Deutsch Sachsen 2004/2007/2009/2011/2013/2019/2022, Jahrgangsstufen 11/12 Grundkurs, Lernbereich 2: Gestaltung von Reden, PDF-S. 60",
+      "sourceText": "Gestalten einer eigenen Kurzrede",
+      "sourceSpan": {
+        "passageId": "781a55a3-8f45-5cd2-5f58-d61bce35df1b",
+        "label": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-GRUNDKURS-LERNBEREICH-2-GESTALTUNG-VON-REDEN-GK#6"
+      },
+      "courseLevel": "both",
+      "tags": [
+        "jurisdiction:DE-SN",
+        "stage:SekII",
+        "phase:jahrgangsstufen-11-12-grundkurs",
+        "field:lernbereich-2-gestaltung-von-reden",
+        "courseLevel:both",
+        "sourceDocument:SN-DEUTSCH-GYM-2022"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-bbox-left-column-sn-gymnasium-deutsch-pflicht-lernbereiche-without-wahlbereiche",
+        "phase": "Jahrgangsstufen 11/12 Grundkurs",
+        "field": "Lernbereich 2: Gestaltung von Reden",
+        "page": 60
+      }
+    },
+    {
+      "id": "29c526e6-c4cb-56e6-37a0-eac3f1df2a79",
+      "passageId": "353d9e78-4615-545c-15ed-80fc5e35da74",
+      "topicCode": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-GRUNDKURS-LERNBEREICH-3-KONKURRENZ-LITERARISCHER-KONZEPTE-UM-1800-GK",
+      "title": "Kennen von Gedichten mit unterschiedlicher Naturdarstellung",
+      "description": "Die lernende Person kann kennen von Gedichten mit unterschiedlicher Naturdarstellung.",
+      "sourceDocumentKey": "SN-DEUTSCH-GYM-2022",
+      "sourceRef": "Lehrplan Gymnasium Deutsch Sachsen 2004/2007/2009/2011/2013/2019/2022, Jahrgangsstufen 11/12 Grundkurs, Lernbereich 3: Konkurrenz literarischer Konzepte um 1800, PDF-S. 60",
+      "sourceText": "Kennen von Gedichten mit unterschiedlicher Naturdarstellung",
+      "sourceSpan": {
+        "passageId": "353d9e78-4615-545c-15ed-80fc5e35da74",
+        "label": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-GRUNDKURS-LERNBEREICH-3-KONKURRENZ-LITERARISCHER-KONZEPTE-UM-1800-GK#7"
+      },
+      "courseLevel": "both",
+      "tags": [
+        "jurisdiction:DE-SN",
+        "stage:SekII",
+        "phase:jahrgangsstufen-11-12-grundkurs",
+        "field:lernbereich-3-konkurrenz-literarischer-konzepte-um-1800",
+        "courseLevel:both",
+        "sourceDocument:SN-DEUTSCH-GYM-2022"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-bbox-left-column-sn-gymnasium-deutsch-pflicht-lernbereiche-without-wahlbereiche",
+        "phase": "Jahrgangsstufen 11/12 Grundkurs",
+        "field": "Lernbereich 3: Konkurrenz literarischer Konzepte um 1800",
+        "page": 60
+      }
+    },
+    {
+      "id": "219a3535-a868-5f4e-428d-24e72076762e",
+      "passageId": "353d9e78-4615-545c-15ed-80fc5e35da74",
+      "topicCode": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-GRUNDKURS-LERNBEREICH-3-KONKURRENZ-LITERARISCHER-KONZEPTE-UM-1800-GK",
+      "title": "Sich positionieren zu Literatur im Spannungsfeld von Gefühl und Verstand",
+      "description": "Die lernende Person kann sich positionieren zu Literatur im Spannungsfeld von Gefühl und Verstand.",
+      "sourceDocumentKey": "SN-DEUTSCH-GYM-2022",
+      "sourceRef": "Lehrplan Gymnasium Deutsch Sachsen 2004/2007/2009/2011/2013/2019/2022, Jahrgangsstufen 11/12 Grundkurs, Lernbereich 3: Konkurrenz literarischer Konzepte um 1800, PDF-S. 60",
+      "sourceText": "Sich positionieren zu Literatur im Spannungsfeld von Gefühl und Verstand",
+      "sourceSpan": {
+        "passageId": "353d9e78-4615-545c-15ed-80fc5e35da74",
+        "label": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-GRUNDKURS-LERNBEREICH-3-KONKURRENZ-LITERARISCHER-KONZEPTE-UM-1800-GK#8"
+      },
+      "courseLevel": "both",
+      "tags": [
+        "jurisdiction:DE-SN",
+        "stage:SekII",
+        "phase:jahrgangsstufen-11-12-grundkurs",
+        "field:lernbereich-3-konkurrenz-literarischer-konzepte-um-1800",
+        "courseLevel:both",
+        "sourceDocument:SN-DEUTSCH-GYM-2022"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-bbox-left-column-sn-gymnasium-deutsch-pflicht-lernbereiche-without-wahlbereiche",
+        "phase": "Jahrgangsstufen 11/12 Grundkurs",
+        "field": "Lernbereich 3: Konkurrenz literarischer Konzepte um 1800",
+        "page": 60
+      }
+    },
+    {
+      "id": "60af7551-0ca4-56aa-98c7-a7f5024e2297",
+      "passageId": "353d9e78-4615-545c-15ed-80fc5e35da74",
+      "topicCode": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-GRUNDKURS-LERNBEREICH-3-KONKURRENZ-LITERARISCHER-KONZEPTE-UM-1800-GK",
+      "title": "Kennen einer epischen oder dramatischen Ganzschrift aus einer der genannten Epochen",
+      "description": "Die lernende Person kann kennen einer epischen oder dramatischen Ganzschrift aus einer der genannten Epochen.",
+      "sourceDocumentKey": "SN-DEUTSCH-GYM-2022",
+      "sourceRef": "Lehrplan Gymnasium Deutsch Sachsen 2004/2007/2009/2011/2013/2019/2022, Jahrgangsstufen 11/12 Grundkurs, Lernbereich 3: Konkurrenz literarischer Konzepte um 1800, PDF-S. 60",
+      "sourceText": "Kennen einer epischen oder dramatischen Ganzschrift aus einer der genannten Epochen",
+      "sourceSpan": {
+        "passageId": "353d9e78-4615-545c-15ed-80fc5e35da74",
+        "label": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-GRUNDKURS-LERNBEREICH-3-KONKURRENZ-LITERARISCHER-KONZEPTE-UM-1800-GK#9"
+      },
+      "courseLevel": "both",
+      "tags": [
+        "jurisdiction:DE-SN",
+        "stage:SekII",
+        "phase:jahrgangsstufen-11-12-grundkurs",
+        "field:lernbereich-3-konkurrenz-literarischer-konzepte-um-1800",
+        "courseLevel:both",
+        "sourceDocument:SN-DEUTSCH-GYM-2022"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-bbox-left-column-sn-gymnasium-deutsch-pflicht-lernbereiche-without-wahlbereiche",
+        "phase": "Jahrgangsstufen 11/12 Grundkurs",
+        "field": "Lernbereich 3: Konkurrenz literarischer Konzepte um 1800",
+        "page": 60
+      }
+    },
+    {
+      "id": "a65e4fd1-f7c0-579f-e32b-aa627c50766d",
+      "passageId": "353d9e78-4615-545c-15ed-80fc5e35da74",
+      "topicCode": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-GRUNDKURS-LERNBEREICH-3-KONKURRENZ-LITERARISCHER-KONZEPTE-UM-1800-GK",
+      "title": "Gestalten von Textinterpretationen",
+      "description": "Die lernende Person kann gestalten von Textinterpretationen.",
+      "sourceDocumentKey": "SN-DEUTSCH-GYM-2022",
+      "sourceRef": "Lehrplan Gymnasium Deutsch Sachsen 2004/2007/2009/2011/2013/2019/2022, Jahrgangsstufen 11/12 Grundkurs, Lernbereich 3: Konkurrenz literarischer Konzepte um 1800, PDF-S. 60",
+      "sourceText": "Gestalten von Textinterpretationen",
+      "sourceSpan": {
+        "passageId": "353d9e78-4615-545c-15ed-80fc5e35da74",
+        "label": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-GRUNDKURS-LERNBEREICH-3-KONKURRENZ-LITERARISCHER-KONZEPTE-UM-1800-GK#10"
+      },
+      "courseLevel": "both",
+      "tags": [
+        "jurisdiction:DE-SN",
+        "stage:SekII",
+        "phase:jahrgangsstufen-11-12-grundkurs",
+        "field:lernbereich-3-konkurrenz-literarischer-konzepte-um-1800",
+        "courseLevel:both",
+        "sourceDocument:SN-DEUTSCH-GYM-2022"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-bbox-left-column-sn-gymnasium-deutsch-pflicht-lernbereiche-without-wahlbereiche",
+        "phase": "Jahrgangsstufen 11/12 Grundkurs",
+        "field": "Lernbereich 3: Konkurrenz literarischer Konzepte um 1800",
+        "page": 60
+      }
+    },
+    {
+      "id": "eda3f87c-b9f6-5608-87b7-0f32cedc44a3",
+      "passageId": "63227b8a-c2ac-5c83-515a-2dade51cada0",
+      "topicCode": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-GRUNDKURS-LERNBEREICH-4-EIN-ROMAN-IN-SEINER-ZEIT-GK",
+      "title": "Kennen eines Romans als Ganzschrift: Struktur",
+      "description": "Die lernende Person kann kennen eines Romans als Ganzschrift: Struktur.",
+      "sourceDocumentKey": "SN-DEUTSCH-GYM-2022",
+      "sourceRef": "Lehrplan Gymnasium Deutsch Sachsen 2004/2007/2009/2011/2013/2019/2022, Jahrgangsstufen 11/12 Grundkurs, Lernbereich 4: Ein Roman in seiner Zeit, PDF-S. 60",
+      "sourceText": "Kennen eines Romans als Ganzschrift: Struktur",
+      "sourceSpan": {
+        "passageId": "63227b8a-c2ac-5c83-515a-2dade51cada0",
+        "label": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-GRUNDKURS-LERNBEREICH-4-EIN-ROMAN-IN-SEINER-ZEIT-GK#11"
+      },
+      "courseLevel": "both",
+      "tags": [
+        "jurisdiction:DE-SN",
+        "stage:SekII",
+        "phase:jahrgangsstufen-11-12-grundkurs",
+        "field:lernbereich-4-ein-roman-in-seiner-zeit",
+        "courseLevel:both",
+        "sourceDocument:SN-DEUTSCH-GYM-2022"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-bbox-left-column-sn-gymnasium-deutsch-pflicht-lernbereiche-without-wahlbereiche",
+        "phase": "Jahrgangsstufen 11/12 Grundkurs",
+        "field": "Lernbereich 4: Ein Roman in seiner Zeit",
+        "page": 60
+      }
+    },
+    {
+      "id": "75abd27a-ddfb-592e-683e-2fd5004e64ab",
+      "passageId": "63227b8a-c2ac-5c83-515a-2dade51cada0",
+      "topicCode": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-GRUNDKURS-LERNBEREICH-4-EIN-ROMAN-IN-SEINER-ZEIT-GK",
+      "title": "Kennen eines Romans als Ganzschrift: Erzähltechnik",
+      "description": "Die lernende Person kann kennen eines Romans als Ganzschrift: Erzähltechnik.",
+      "sourceDocumentKey": "SN-DEUTSCH-GYM-2022",
+      "sourceRef": "Lehrplan Gymnasium Deutsch Sachsen 2004/2007/2009/2011/2013/2019/2022, Jahrgangsstufen 11/12 Grundkurs, Lernbereich 4: Ein Roman in seiner Zeit, PDF-S. 60",
+      "sourceText": "Kennen eines Romans als Ganzschrift: Erzähltechnik",
+      "sourceSpan": {
+        "passageId": "63227b8a-c2ac-5c83-515a-2dade51cada0",
+        "label": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-GRUNDKURS-LERNBEREICH-4-EIN-ROMAN-IN-SEINER-ZEIT-GK#12"
+      },
+      "courseLevel": "both",
+      "tags": [
+        "jurisdiction:DE-SN",
+        "stage:SekII",
+        "phase:jahrgangsstufen-11-12-grundkurs",
+        "field:lernbereich-4-ein-roman-in-seiner-zeit",
+        "courseLevel:both",
+        "sourceDocument:SN-DEUTSCH-GYM-2022"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-bbox-left-column-sn-gymnasium-deutsch-pflicht-lernbereiche-without-wahlbereiche",
+        "phase": "Jahrgangsstufen 11/12 Grundkurs",
+        "field": "Lernbereich 4: Ein Roman in seiner Zeit",
+        "page": 60
+      }
+    },
+    {
+      "id": "56441d17-e9b4-5adb-a5ba-a1f264b5920a",
+      "passageId": "63227b8a-c2ac-5c83-515a-2dade51cada0",
+      "topicCode": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-GRUNDKURS-LERNBEREICH-4-EIN-ROMAN-IN-SEINER-ZEIT-GK",
+      "title": "Beurteilen der inhaltlichen und ästhetischen Qualität des Romans",
+      "description": "Die lernende Person kann beurteilen der inhaltlichen und ästhetischen Qualität des Romans.",
+      "sourceDocumentKey": "SN-DEUTSCH-GYM-2022",
+      "sourceRef": "Lehrplan Gymnasium Deutsch Sachsen 2004/2007/2009/2011/2013/2019/2022, Jahrgangsstufen 11/12 Grundkurs, Lernbereich 4: Ein Roman in seiner Zeit, PDF-S. 60",
+      "sourceText": "Beurteilen der inhaltlichen und ästhetischen Qualität des Romans",
+      "sourceSpan": {
+        "passageId": "63227b8a-c2ac-5c83-515a-2dade51cada0",
+        "label": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-GRUNDKURS-LERNBEREICH-4-EIN-ROMAN-IN-SEINER-ZEIT-GK#13"
+      },
+      "courseLevel": "both",
+      "tags": [
+        "jurisdiction:DE-SN",
+        "stage:SekII",
+        "phase:jahrgangsstufen-11-12-grundkurs",
+        "field:lernbereich-4-ein-roman-in-seiner-zeit",
+        "courseLevel:both",
+        "sourceDocument:SN-DEUTSCH-GYM-2022"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-bbox-left-column-sn-gymnasium-deutsch-pflicht-lernbereiche-without-wahlbereiche",
+        "phase": "Jahrgangsstufen 11/12 Grundkurs",
+        "field": "Lernbereich 4: Ein Roman in seiner Zeit",
+        "page": 60
+      }
+    },
+    {
+      "id": "2e2d6f5b-ca9d-5bc0-e3e7-c5f6084bb007",
+      "passageId": "63227b8a-c2ac-5c83-515a-2dade51cada0",
+      "topicCode": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-GRUNDKURS-LERNBEREICH-4-EIN-ROMAN-IN-SEINER-ZEIT-GK",
+      "title": "Anwenden gattungsspezifischer Interpretationsmethoden",
+      "description": "Die lernende Person kann anwenden gattungsspezifischer Interpretationsmethoden.",
+      "sourceDocumentKey": "SN-DEUTSCH-GYM-2022",
+      "sourceRef": "Lehrplan Gymnasium Deutsch Sachsen 2004/2007/2009/2011/2013/2019/2022, Jahrgangsstufen 11/12 Grundkurs, Lernbereich 4: Ein Roman in seiner Zeit, PDF-S. 60",
+      "sourceText": "Anwenden gattungsspezifischer Interpretationsmethoden",
+      "sourceSpan": {
+        "passageId": "63227b8a-c2ac-5c83-515a-2dade51cada0",
+        "label": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-GRUNDKURS-LERNBEREICH-4-EIN-ROMAN-IN-SEINER-ZEIT-GK#14"
+      },
+      "courseLevel": "both",
+      "tags": [
+        "jurisdiction:DE-SN",
+        "stage:SekII",
+        "phase:jahrgangsstufen-11-12-grundkurs",
+        "field:lernbereich-4-ein-roman-in-seiner-zeit",
+        "courseLevel:both",
+        "sourceDocument:SN-DEUTSCH-GYM-2022"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-bbox-left-column-sn-gymnasium-deutsch-pflicht-lernbereiche-without-wahlbereiche",
+        "phase": "Jahrgangsstufen 11/12 Grundkurs",
+        "field": "Lernbereich 4: Ein Roman in seiner Zeit",
+        "page": 60
+      }
+    },
+    {
+      "id": "04aeaba7-90c3-55ba-4a2f-e24c0688fce5",
+      "passageId": "63227b8a-c2ac-5c83-515a-2dade51cada0",
+      "topicCode": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-GRUNDKURS-LERNBEREICH-4-EIN-ROMAN-IN-SEINER-ZEIT-GK",
+      "title": "Kennen des biographischen, historischen, politischen Entstehungskontextes",
+      "description": "Die lernende Person kann kennen des biographischen, historischen, politischen Entstehungskontextes.",
+      "sourceDocumentKey": "SN-DEUTSCH-GYM-2022",
+      "sourceRef": "Lehrplan Gymnasium Deutsch Sachsen 2004/2007/2009/2011/2013/2019/2022, Jahrgangsstufen 11/12 Grundkurs, Lernbereich 4: Ein Roman in seiner Zeit, PDF-S. 60",
+      "sourceText": "Kennen des biographischen, historischen, politischen Entstehungskontextes",
+      "sourceSpan": {
+        "passageId": "63227b8a-c2ac-5c83-515a-2dade51cada0",
+        "label": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-GRUNDKURS-LERNBEREICH-4-EIN-ROMAN-IN-SEINER-ZEIT-GK#15"
+      },
+      "courseLevel": "both",
+      "tags": [
+        "jurisdiction:DE-SN",
+        "stage:SekII",
+        "phase:jahrgangsstufen-11-12-grundkurs",
+        "field:lernbereich-4-ein-roman-in-seiner-zeit",
+        "courseLevel:both",
+        "sourceDocument:SN-DEUTSCH-GYM-2022"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-bbox-left-column-sn-gymnasium-deutsch-pflicht-lernbereiche-without-wahlbereiche",
+        "phase": "Jahrgangsstufen 11/12 Grundkurs",
+        "field": "Lernbereich 4: Ein Roman in seiner Zeit",
+        "page": 60
+      }
+    },
+    {
+      "id": "ea70c4de-8e45-5307-8521-8dbc71138454",
+      "passageId": "ed48a6ca-099d-5fe9-0abb-98d4142f7c3c",
+      "topicCode": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-GRUNDKURS-LERNBEREICH-5-KONKURRENZ-LITERARISCHER-KONZEPTE-UM-1900-GK",
+      "title": "Kennen wesentlicher Aspekte der literarischen Entwicklung um 1900 in ihrer gesellschaft...",
+      "description": "Die lernende Person kann kennen wesentlicher Aspekte der literarischen Entwicklung um 1900 in ihrer gesellschaftlichen Bedingtheit.",
+      "sourceDocumentKey": "SN-DEUTSCH-GYM-2022",
+      "sourceRef": "Lehrplan Gymnasium Deutsch Sachsen 2004/2007/2009/2011/2013/2019/2022, Jahrgangsstufen 11/12 Grundkurs, Lernbereich 5: Konkurrenz literarischer Konzepte um 1900, PDF-S. 61",
+      "sourceText": "Kennen wesentlicher Aspekte der literarischen Entwicklung um 1900 in ihrer gesellschaftlichen Bedingtheit",
+      "sourceSpan": {
+        "passageId": "ed48a6ca-099d-5fe9-0abb-98d4142f7c3c",
+        "label": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-GRUNDKURS-LERNBEREICH-5-KONKURRENZ-LITERARISCHER-KONZEPTE-UM-1900-GK#16"
+      },
+      "courseLevel": "both",
+      "tags": [
+        "jurisdiction:DE-SN",
+        "stage:SekII",
+        "phase:jahrgangsstufen-11-12-grundkurs",
+        "field:lernbereich-5-konkurrenz-literarischer-konzepte-um-1900",
+        "courseLevel:both",
+        "sourceDocument:SN-DEUTSCH-GYM-2022"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-bbox-left-column-sn-gymnasium-deutsch-pflicht-lernbereiche-without-wahlbereiche",
+        "phase": "Jahrgangsstufen 11/12 Grundkurs",
+        "field": "Lernbereich 5: Konkurrenz literarischer Konzepte um 1900",
+        "page": 61
+      }
+    },
+    {
+      "id": "48e05ec5-a9f6-5db4-4dfd-737c6171d387",
+      "passageId": "ed48a6ca-099d-5fe9-0abb-98d4142f7c3c",
+      "topicCode": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-GRUNDKURS-LERNBEREICH-5-KONKURRENZ-LITERARISCHER-KONZEPTE-UM-1900-GK",
+      "title": "Beurteilen von Gedichten des Expressionismus und einer weiteren literarischen Strömung...",
+      "description": "Die lernende Person kann beurteilen von Gedichten des Expressionismus und einer weiteren literarischen Strömung zu vergleichbaren Themen und Motiven.",
+      "sourceDocumentKey": "SN-DEUTSCH-GYM-2022",
+      "sourceRef": "Lehrplan Gymnasium Deutsch Sachsen 2004/2007/2009/2011/2013/2019/2022, Jahrgangsstufen 11/12 Grundkurs, Lernbereich 5: Konkurrenz literarischer Konzepte um 1900, PDF-S. 61",
+      "sourceText": "Beurteilen von Gedichten des Expressionismus und einer weiteren literarischen Strömung zu vergleichbaren Themen und Motiven",
+      "sourceSpan": {
+        "passageId": "ed48a6ca-099d-5fe9-0abb-98d4142f7c3c",
+        "label": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-GRUNDKURS-LERNBEREICH-5-KONKURRENZ-LITERARISCHER-KONZEPTE-UM-1900-GK#17"
+      },
+      "courseLevel": "both",
+      "tags": [
+        "jurisdiction:DE-SN",
+        "stage:SekII",
+        "phase:jahrgangsstufen-11-12-grundkurs",
+        "field:lernbereich-5-konkurrenz-literarischer-konzepte-um-1900",
+        "courseLevel:both",
+        "sourceDocument:SN-DEUTSCH-GYM-2022"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-bbox-left-column-sn-gymnasium-deutsch-pflicht-lernbereiche-without-wahlbereiche",
+        "phase": "Jahrgangsstufen 11/12 Grundkurs",
+        "field": "Lernbereich 5: Konkurrenz literarischer Konzepte um 1900",
+        "page": 61
+      }
+    },
+    {
+      "id": "133eefa0-de39-51e7-62da-d25fa7785b69",
+      "passageId": "ed48a6ca-099d-5fe9-0abb-98d4142f7c3c",
+      "topicCode": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-GRUNDKURS-LERNBEREICH-5-KONKURRENZ-LITERARISCHER-KONZEPTE-UM-1900-GK",
+      "title": "Einblick gewinnen in die Lyrik des Barock im Vergleich",
+      "description": "Die lernende Person kann einblick gewinnen in die Lyrik des Barock im Vergleich.",
+      "sourceDocumentKey": "SN-DEUTSCH-GYM-2022",
+      "sourceRef": "Lehrplan Gymnasium Deutsch Sachsen 2004/2007/2009/2011/2013/2019/2022, Jahrgangsstufen 11/12 Grundkurs, Lernbereich 5: Konkurrenz literarischer Konzepte um 1900, PDF-S. 61",
+      "sourceText": "Einblick gewinnen in die Lyrik des Barock im Vergleich",
+      "sourceSpan": {
+        "passageId": "ed48a6ca-099d-5fe9-0abb-98d4142f7c3c",
+        "label": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-GRUNDKURS-LERNBEREICH-5-KONKURRENZ-LITERARISCHER-KONZEPTE-UM-1900-GK#18"
+      },
+      "courseLevel": "both",
+      "tags": [
+        "jurisdiction:DE-SN",
+        "stage:SekII",
+        "phase:jahrgangsstufen-11-12-grundkurs",
+        "field:lernbereich-5-konkurrenz-literarischer-konzepte-um-1900",
+        "courseLevel:both",
+        "sourceDocument:SN-DEUTSCH-GYM-2022"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-bbox-left-column-sn-gymnasium-deutsch-pflicht-lernbereiche-without-wahlbereiche",
+        "phase": "Jahrgangsstufen 11/12 Grundkurs",
+        "field": "Lernbereich 5: Konkurrenz literarischer Konzepte um 1900",
+        "page": 61
+      }
+    },
+    {
+      "id": "3dfe9a05-2c34-5bca-4dc2-40ad37bc2ef0",
+      "passageId": "ed48a6ca-099d-5fe9-0abb-98d4142f7c3c",
+      "topicCode": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-GRUNDKURS-LERNBEREICH-5-KONKURRENZ-LITERARISCHER-KONZEPTE-UM-1900-GK",
+      "title": "Gestalten einer vergleichenden Textinterpretation",
+      "description": "Die lernende Person kann gestalten einer vergleichenden Textinterpretation.",
+      "sourceDocumentKey": "SN-DEUTSCH-GYM-2022",
+      "sourceRef": "Lehrplan Gymnasium Deutsch Sachsen 2004/2007/2009/2011/2013/2019/2022, Jahrgangsstufen 11/12 Grundkurs, Lernbereich 5: Konkurrenz literarischer Konzepte um 1900, PDF-S. 61",
+      "sourceText": "Gestalten einer vergleichenden Textinterpretation",
+      "sourceSpan": {
+        "passageId": "ed48a6ca-099d-5fe9-0abb-98d4142f7c3c",
+        "label": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-GRUNDKURS-LERNBEREICH-5-KONKURRENZ-LITERARISCHER-KONZEPTE-UM-1900-GK#19"
+      },
+      "courseLevel": "both",
+      "tags": [
+        "jurisdiction:DE-SN",
+        "stage:SekII",
+        "phase:jahrgangsstufen-11-12-grundkurs",
+        "field:lernbereich-5-konkurrenz-literarischer-konzepte-um-1900",
+        "courseLevel:both",
+        "sourceDocument:SN-DEUTSCH-GYM-2022"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-bbox-left-column-sn-gymnasium-deutsch-pflicht-lernbereiche-without-wahlbereiche",
+        "phase": "Jahrgangsstufen 11/12 Grundkurs",
+        "field": "Lernbereich 5: Konkurrenz literarischer Konzepte um 1900",
+        "page": 61
+      }
+    },
+    {
+      "id": "08aafc2f-820e-5171-bc1e-8d435c184a20",
+      "passageId": "ed48a6ca-099d-5fe9-0abb-98d4142f7c3c",
+      "topicCode": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-GRUNDKURS-LERNBEREICH-5-KONKURRENZ-LITERARISCHER-KONZEPTE-UM-1900-GK",
+      "title": "Kennen von Besonderheiten der Erzählkunst Kafkas durch Auseinandersetzung mit Kurzprosa",
+      "description": "Die lernende Person kann kennen von Besonderheiten der Erzählkunst Kafkas durch Auseinandersetzung mit Kurzprosa.",
+      "sourceDocumentKey": "SN-DEUTSCH-GYM-2022",
+      "sourceRef": "Lehrplan Gymnasium Deutsch Sachsen 2004/2007/2009/2011/2013/2019/2022, Jahrgangsstufen 11/12 Grundkurs, Lernbereich 5: Konkurrenz literarischer Konzepte um 1900, PDF-S. 61",
+      "sourceText": "Kennen von Besonderheiten der Erzählkunst Kafkas durch Auseinandersetzung mit Kurzprosa",
+      "sourceSpan": {
+        "passageId": "ed48a6ca-099d-5fe9-0abb-98d4142f7c3c",
+        "label": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-GRUNDKURS-LERNBEREICH-5-KONKURRENZ-LITERARISCHER-KONZEPTE-UM-1900-GK#20"
+      },
+      "courseLevel": "both",
+      "tags": [
+        "jurisdiction:DE-SN",
+        "stage:SekII",
+        "phase:jahrgangsstufen-11-12-grundkurs",
+        "field:lernbereich-5-konkurrenz-literarischer-konzepte-um-1900",
+        "courseLevel:both",
+        "sourceDocument:SN-DEUTSCH-GYM-2022"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-bbox-left-column-sn-gymnasium-deutsch-pflicht-lernbereiche-without-wahlbereiche",
+        "phase": "Jahrgangsstufen 11/12 Grundkurs",
+        "field": "Lernbereich 5: Konkurrenz literarischer Konzepte um 1900",
+        "page": 61
+      }
+    },
+    {
+      "id": "2f498683-d5f4-5ae5-a1dd-1fbeef00e729",
+      "passageId": "2a3dfe7c-f829-5bed-3e78-ad7777730141",
+      "topicCode": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-GRUNDKURS-LERNBEREICH-6-STOFFE-UND-MOTIVE-GK",
+      "title": "Einblick gewinnen in die funktionale Abhängigkeit von Themen, Stoffen und Motiven",
+      "description": "Die lernende Person kann einblick gewinnen in die funktionale Abhängigkeit von Themen, Stoffen und Motiven.",
+      "sourceDocumentKey": "SN-DEUTSCH-GYM-2022",
+      "sourceRef": "Lehrplan Gymnasium Deutsch Sachsen 2004/2007/2009/2011/2013/2019/2022, Jahrgangsstufen 11/12 Grundkurs, Lernbereich 6: Stoffe und Motive, PDF-S. 61",
+      "sourceText": "Einblick gewinnen in die funktionale Abhängigkeit von Themen, Stoffen und Motiven",
+      "sourceSpan": {
+        "passageId": "2a3dfe7c-f829-5bed-3e78-ad7777730141",
+        "label": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-GRUNDKURS-LERNBEREICH-6-STOFFE-UND-MOTIVE-GK#21"
+      },
+      "courseLevel": "both",
+      "tags": [
+        "jurisdiction:DE-SN",
+        "stage:SekII",
+        "phase:jahrgangsstufen-11-12-grundkurs",
+        "field:lernbereich-6-stoffe-und-motive",
+        "courseLevel:both",
+        "sourceDocument:SN-DEUTSCH-GYM-2022"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-bbox-left-column-sn-gymnasium-deutsch-pflicht-lernbereiche-without-wahlbereiche",
+        "phase": "Jahrgangsstufen 11/12 Grundkurs",
+        "field": "Lernbereich 6: Stoffe und Motive",
+        "page": 61
+      }
+    },
+    {
+      "id": "7678abf0-c030-50fd-de33-b91386cd07fd",
+      "passageId": "2a3dfe7c-f829-5bed-3e78-ad7777730141",
+      "topicCode": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-GRUNDKURS-LERNBEREICH-6-STOFFE-UND-MOTIVE-GK",
+      "title": "Kennen von historischer Bedingtheit und historischem Wandel eines literarischen Stoffes",
+      "description": "Die lernende Person kann kennen von historischer Bedingtheit und historischem Wandel eines literarischen Stoffes.",
+      "sourceDocumentKey": "SN-DEUTSCH-GYM-2022",
+      "sourceRef": "Lehrplan Gymnasium Deutsch Sachsen 2004/2007/2009/2011/2013/2019/2022, Jahrgangsstufen 11/12 Grundkurs, Lernbereich 6: Stoffe und Motive, PDF-S. 61",
+      "sourceText": "Kennen von historischer Bedingtheit und historischem Wandel eines literarischen Stoffes",
+      "sourceSpan": {
+        "passageId": "2a3dfe7c-f829-5bed-3e78-ad7777730141",
+        "label": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-GRUNDKURS-LERNBEREICH-6-STOFFE-UND-MOTIVE-GK#22"
+      },
+      "courseLevel": "both",
+      "tags": [
+        "jurisdiction:DE-SN",
+        "stage:SekII",
+        "phase:jahrgangsstufen-11-12-grundkurs",
+        "field:lernbereich-6-stoffe-und-motive",
+        "courseLevel:both",
+        "sourceDocument:SN-DEUTSCH-GYM-2022"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-bbox-left-column-sn-gymnasium-deutsch-pflicht-lernbereiche-without-wahlbereiche",
+        "phase": "Jahrgangsstufen 11/12 Grundkurs",
+        "field": "Lernbereich 6: Stoffe und Motive",
+        "page": 61
+      }
+    },
+    {
+      "id": "2da0812d-ba4f-5ee6-2c32-7acbc1763ef9",
+      "passageId": "2a3dfe7c-f829-5bed-3e78-ad7777730141",
+      "topicCode": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-GRUNDKURS-LERNBEREICH-6-STOFFE-UND-MOTIVE-GK",
+      "title": "Einblick gewinnen in die Rezeptionsund Wirkungsgeschichte eines Stoffes",
+      "description": "Die lernende Person kann einblick gewinnen in die Rezeptionsund Wirkungsgeschichte eines Stoffes.",
+      "sourceDocumentKey": "SN-DEUTSCH-GYM-2022",
+      "sourceRef": "Lehrplan Gymnasium Deutsch Sachsen 2004/2007/2009/2011/2013/2019/2022, Jahrgangsstufen 11/12 Grundkurs, Lernbereich 6: Stoffe und Motive, PDF-S. 61",
+      "sourceText": "Einblick gewinnen in die Rezeptionsund Wirkungsgeschichte eines Stoffes",
+      "sourceSpan": {
+        "passageId": "2a3dfe7c-f829-5bed-3e78-ad7777730141",
+        "label": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-GRUNDKURS-LERNBEREICH-6-STOFFE-UND-MOTIVE-GK#23"
+      },
+      "courseLevel": "both",
+      "tags": [
+        "jurisdiction:DE-SN",
+        "stage:SekII",
+        "phase:jahrgangsstufen-11-12-grundkurs",
+        "field:lernbereich-6-stoffe-und-motive",
+        "courseLevel:both",
+        "sourceDocument:SN-DEUTSCH-GYM-2022"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-bbox-left-column-sn-gymnasium-deutsch-pflicht-lernbereiche-without-wahlbereiche",
+        "phase": "Jahrgangsstufen 11/12 Grundkurs",
+        "field": "Lernbereich 6: Stoffe und Motive",
+        "page": 61
+      }
+    },
+    {
+      "id": "75d331e9-4655-5aa8-9703-d21516e5599f",
+      "passageId": "2a3dfe7c-f829-5bed-3e78-ad7777730141",
+      "topicCode": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-GRUNDKURS-LERNBEREICH-6-STOFFE-UND-MOTIVE-GK",
+      "title": "Gestalten von Variationen eines Stoffes",
+      "description": "Die lernende Person kann gestalten von Variationen eines Stoffes.",
+      "sourceDocumentKey": "SN-DEUTSCH-GYM-2022",
+      "sourceRef": "Lehrplan Gymnasium Deutsch Sachsen 2004/2007/2009/2011/2013/2019/2022, Jahrgangsstufen 11/12 Grundkurs, Lernbereich 6: Stoffe und Motive, PDF-S. 61",
+      "sourceText": "Gestalten von Variationen eines Stoffes",
+      "sourceSpan": {
+        "passageId": "2a3dfe7c-f829-5bed-3e78-ad7777730141",
+        "label": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-GRUNDKURS-LERNBEREICH-6-STOFFE-UND-MOTIVE-GK#24"
+      },
+      "courseLevel": "both",
+      "tags": [
+        "jurisdiction:DE-SN",
+        "stage:SekII",
+        "phase:jahrgangsstufen-11-12-grundkurs",
+        "field:lernbereich-6-stoffe-und-motive",
+        "courseLevel:both",
+        "sourceDocument:SN-DEUTSCH-GYM-2022"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-bbox-left-column-sn-gymnasium-deutsch-pflicht-lernbereiche-without-wahlbereiche",
+        "phase": "Jahrgangsstufen 11/12 Grundkurs",
+        "field": "Lernbereich 6: Stoffe und Motive",
+        "page": 61
+      }
+    },
+    {
+      "id": "88af5770-6cbd-53bb-3dfd-7e2083f01143",
+      "passageId": "2a3dfe7c-f829-5bed-3e78-ad7777730141",
+      "topicCode": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-GRUNDKURS-LERNBEREICH-6-STOFFE-UND-MOTIVE-GK",
+      "title": "Anwenden des Wissens über Themen und Motive bei der Arbeit mit der Ganzschrift: Kernmotive",
+      "description": "Die lernende Person kann anwenden des Wissens über Themen und Motive bei der Arbeit mit der Ganzschrift: Kernmotive.",
+      "sourceDocumentKey": "SN-DEUTSCH-GYM-2022",
+      "sourceRef": "Lehrplan Gymnasium Deutsch Sachsen 2004/2007/2009/2011/2013/2019/2022, Jahrgangsstufen 11/12 Grundkurs, Lernbereich 6: Stoffe und Motive, PDF-S. 61",
+      "sourceText": "Anwenden des Wissens über Themen und Motive bei der Arbeit mit der Ganzschrift: Kernmotive",
+      "sourceSpan": {
+        "passageId": "2a3dfe7c-f829-5bed-3e78-ad7777730141",
+        "label": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-GRUNDKURS-LERNBEREICH-6-STOFFE-UND-MOTIVE-GK#25"
+      },
+      "courseLevel": "both",
+      "tags": [
+        "jurisdiction:DE-SN",
+        "stage:SekII",
+        "phase:jahrgangsstufen-11-12-grundkurs",
+        "field:lernbereich-6-stoffe-und-motive",
+        "courseLevel:both",
+        "sourceDocument:SN-DEUTSCH-GYM-2022"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-bbox-left-column-sn-gymnasium-deutsch-pflicht-lernbereiche-without-wahlbereiche",
+        "phase": "Jahrgangsstufen 11/12 Grundkurs",
+        "field": "Lernbereich 6: Stoffe und Motive",
+        "page": 61
+      }
+    },
+    {
+      "id": "244ce732-9526-5fda-4627-6f10234ea711",
+      "passageId": "2a3dfe7c-f829-5bed-3e78-ad7777730141",
+      "topicCode": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-GRUNDKURS-LERNBEREICH-6-STOFFE-UND-MOTIVE-GK",
+      "title": "Anwenden des Wissens über Themen und Motive bei der Arbeit mit der Ganzschrift: Rahmenu...",
+      "description": "Die lernende Person kann anwenden des Wissens über Themen und Motive bei der Arbeit mit der Ganzschrift: Rahmenund Randmotive.",
+      "sourceDocumentKey": "SN-DEUTSCH-GYM-2022",
+      "sourceRef": "Lehrplan Gymnasium Deutsch Sachsen 2004/2007/2009/2011/2013/2019/2022, Jahrgangsstufen 11/12 Grundkurs, Lernbereich 6: Stoffe und Motive, PDF-S. 61",
+      "sourceText": "Anwenden des Wissens über Themen und Motive bei der Arbeit mit der Ganzschrift: Rahmenund Randmotive",
+      "sourceSpan": {
+        "passageId": "2a3dfe7c-f829-5bed-3e78-ad7777730141",
+        "label": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-GRUNDKURS-LERNBEREICH-6-STOFFE-UND-MOTIVE-GK#26"
+      },
+      "courseLevel": "both",
+      "tags": [
+        "jurisdiction:DE-SN",
+        "stage:SekII",
+        "phase:jahrgangsstufen-11-12-grundkurs",
+        "field:lernbereich-6-stoffe-und-motive",
+        "courseLevel:both",
+        "sourceDocument:SN-DEUTSCH-GYM-2022"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-bbox-left-column-sn-gymnasium-deutsch-pflicht-lernbereiche-without-wahlbereiche",
+        "phase": "Jahrgangsstufen 11/12 Grundkurs",
+        "field": "Lernbereich 6: Stoffe und Motive",
+        "page": 61
+      }
+    },
+    {
+      "id": "ba6b2295-3b98-5e3b-d7e6-a794b4a59f3a",
+      "passageId": "2a3dfe7c-f829-5bed-3e78-ad7777730141",
+      "topicCode": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-GRUNDKURS-LERNBEREICH-6-STOFFE-UND-MOTIVE-GK",
+      "title": "Anwenden des Wissens über Themen und Motive bei der Arbeit mit der Ganzschrift: literar...",
+      "description": "Die lernende Person kann anwenden des Wissens über Themen und Motive bei der Arbeit mit der Ganzschrift: literarische Erörterung.",
+      "sourceDocumentKey": "SN-DEUTSCH-GYM-2022",
+      "sourceRef": "Lehrplan Gymnasium Deutsch Sachsen 2004/2007/2009/2011/2013/2019/2022, Jahrgangsstufen 11/12 Grundkurs, Lernbereich 6: Stoffe und Motive, PDF-S. 61",
+      "sourceText": "Anwenden des Wissens über Themen und Motive bei der Arbeit mit der Ganzschrift: literarische Erörterung",
+      "sourceSpan": {
+        "passageId": "2a3dfe7c-f829-5bed-3e78-ad7777730141",
+        "label": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-GRUNDKURS-LERNBEREICH-6-STOFFE-UND-MOTIVE-GK#27"
+      },
+      "courseLevel": "both",
+      "tags": [
+        "jurisdiction:DE-SN",
+        "stage:SekII",
+        "phase:jahrgangsstufen-11-12-grundkurs",
+        "field:lernbereich-6-stoffe-und-motive",
+        "courseLevel:both",
+        "sourceDocument:SN-DEUTSCH-GYM-2022"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-bbox-left-column-sn-gymnasium-deutsch-pflicht-lernbereiche-without-wahlbereiche",
+        "phase": "Jahrgangsstufen 11/12 Grundkurs",
+        "field": "Lernbereich 6: Stoffe und Motive",
+        "page": 61
+      }
+    },
+    {
+      "id": "44a1d67b-7952-57a0-1f2e-54e9c61055fd",
+      "passageId": "eb5ff3a1-49b3-574b-70ed-58d69af22457",
+      "topicCode": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-GRUNDKURS-LERNBEREICH-7-MATERIALGESTUTZTES-SCHREIBEN-GK",
+      "title": "Kennen von Möglichkeiten zur Vorbereitung eines Schreibvorhabens",
+      "description": "Die lernende Person kann kennen von Möglichkeiten zur Vorbereitung eines Schreibvorhabens.",
+      "sourceDocumentKey": "SN-DEUTSCH-GYM-2022",
+      "sourceRef": "Lehrplan Gymnasium Deutsch Sachsen 2004/2007/2009/2011/2013/2019/2022, Jahrgangsstufen 11/12 Grundkurs, Lernbereich 7: Materialgestütztes Schreiben, PDF-S. 62",
+      "sourceText": "Kennen von Möglichkeiten zur Vorbereitung eines Schreibvorhabens",
+      "sourceSpan": {
+        "passageId": "eb5ff3a1-49b3-574b-70ed-58d69af22457",
+        "label": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-GRUNDKURS-LERNBEREICH-7-MATERIALGESTUTZTES-SCHREIBEN-GK#28"
+      },
+      "courseLevel": "both",
+      "tags": [
+        "jurisdiction:DE-SN",
+        "stage:SekII",
+        "phase:jahrgangsstufen-11-12-grundkurs",
+        "field:lernbereich-7-materialgestutztes-schreiben",
+        "courseLevel:both",
+        "sourceDocument:SN-DEUTSCH-GYM-2022"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-bbox-left-column-sn-gymnasium-deutsch-pflicht-lernbereiche-without-wahlbereiche",
+        "phase": "Jahrgangsstufen 11/12 Grundkurs",
+        "field": "Lernbereich 7: Materialgestütztes Schreiben",
+        "page": 62
+      }
+    },
+    {
+      "id": "34d2cd5e-7163-5ad9-01a1-57f00ed7232d",
+      "passageId": "eb5ff3a1-49b3-574b-70ed-58d69af22457",
+      "topicCode": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-GRUNDKURS-LERNBEREICH-7-MATERIALGESTUTZTES-SCHREIBEN-GK",
+      "title": "Anwenden von Verfahren zur Aufbereitung von Material",
+      "description": "Die lernende Person kann anwenden von Verfahren zur Aufbereitung von Material.",
+      "sourceDocumentKey": "SN-DEUTSCH-GYM-2022",
+      "sourceRef": "Lehrplan Gymnasium Deutsch Sachsen 2004/2007/2009/2011/2013/2019/2022, Jahrgangsstufen 11/12 Grundkurs, Lernbereich 7: Materialgestütztes Schreiben, PDF-S. 62",
+      "sourceText": "Anwenden von Verfahren zur Aufbereitung von Material",
+      "sourceSpan": {
+        "passageId": "eb5ff3a1-49b3-574b-70ed-58d69af22457",
+        "label": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-GRUNDKURS-LERNBEREICH-7-MATERIALGESTUTZTES-SCHREIBEN-GK#29"
+      },
+      "courseLevel": "both",
+      "tags": [
+        "jurisdiction:DE-SN",
+        "stage:SekII",
+        "phase:jahrgangsstufen-11-12-grundkurs",
+        "field:lernbereich-7-materialgestutztes-schreiben",
+        "courseLevel:both",
+        "sourceDocument:SN-DEUTSCH-GYM-2022"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-bbox-left-column-sn-gymnasium-deutsch-pflicht-lernbereiche-without-wahlbereiche",
+        "phase": "Jahrgangsstufen 11/12 Grundkurs",
+        "field": "Lernbereich 7: Materialgestütztes Schreiben",
+        "page": 62
+      }
+    },
+    {
+      "id": "f33c8a17-6c55-57db-f668-5c6b8149d10f",
+      "passageId": "eb5ff3a1-49b3-574b-70ed-58d69af22457",
+      "topicCode": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-GRUNDKURS-LERNBEREICH-7-MATERIALGESTUTZTES-SCHREIBEN-GK",
+      "title": "Anwenden von Wissen zum Planen und Schreiben von Texten",
+      "description": "Die lernende Person kann anwenden von Wissen zum Planen und Schreiben von Texten.",
+      "sourceDocumentKey": "SN-DEUTSCH-GYM-2022",
+      "sourceRef": "Lehrplan Gymnasium Deutsch Sachsen 2004/2007/2009/2011/2013/2019/2022, Jahrgangsstufen 11/12 Grundkurs, Lernbereich 7: Materialgestütztes Schreiben, PDF-S. 62",
+      "sourceText": "Anwenden von Wissen zum Planen und Schreiben von Texten",
+      "sourceSpan": {
+        "passageId": "eb5ff3a1-49b3-574b-70ed-58d69af22457",
+        "label": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-GRUNDKURS-LERNBEREICH-7-MATERIALGESTUTZTES-SCHREIBEN-GK#30"
+      },
+      "courseLevel": "both",
+      "tags": [
+        "jurisdiction:DE-SN",
+        "stage:SekII",
+        "phase:jahrgangsstufen-11-12-grundkurs",
+        "field:lernbereich-7-materialgestutztes-schreiben",
+        "courseLevel:both",
+        "sourceDocument:SN-DEUTSCH-GYM-2022"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-bbox-left-column-sn-gymnasium-deutsch-pflicht-lernbereiche-without-wahlbereiche",
+        "phase": "Jahrgangsstufen 11/12 Grundkurs",
+        "field": "Lernbereich 7: Materialgestütztes Schreiben",
+        "page": 62
+      }
+    },
+    {
+      "id": "21c2fb3a-024e-582e-a911-2ef404a2d60e",
+      "passageId": "eb5ff3a1-49b3-574b-70ed-58d69af22457",
+      "topicCode": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-GRUNDKURS-LERNBEREICH-7-MATERIALGESTUTZTES-SCHREIBEN-GK",
+      "title": "Gestalten von argumentierenden und informierenden Texten",
+      "description": "Die lernende Person kann gestalten von argumentierenden und informierenden Texten.",
+      "sourceDocumentKey": "SN-DEUTSCH-GYM-2022",
+      "sourceRef": "Lehrplan Gymnasium Deutsch Sachsen 2004/2007/2009/2011/2013/2019/2022, Jahrgangsstufen 11/12 Grundkurs, Lernbereich 7: Materialgestütztes Schreiben, PDF-S. 62",
+      "sourceText": "Gestalten von argumentierenden und informierenden Texten",
+      "sourceSpan": {
+        "passageId": "eb5ff3a1-49b3-574b-70ed-58d69af22457",
+        "label": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-GRUNDKURS-LERNBEREICH-7-MATERIALGESTUTZTES-SCHREIBEN-GK#31"
+      },
+      "courseLevel": "both",
+      "tags": [
+        "jurisdiction:DE-SN",
+        "stage:SekII",
+        "phase:jahrgangsstufen-11-12-grundkurs",
+        "field:lernbereich-7-materialgestutztes-schreiben",
+        "courseLevel:both",
+        "sourceDocument:SN-DEUTSCH-GYM-2022"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-bbox-left-column-sn-gymnasium-deutsch-pflicht-lernbereiche-without-wahlbereiche",
+        "phase": "Jahrgangsstufen 11/12 Grundkurs",
+        "field": "Lernbereich 7: Materialgestütztes Schreiben",
+        "page": 62
+      }
+    },
+    {
+      "id": "f6217c2a-8a87-5b24-d78b-b478a896cf2d",
+      "passageId": "95ec9e6f-7f7e-5f81-2752-ce0ee8397117",
+      "topicCode": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-GRUNDKURS-LERNBEREICH-8-SPRACHE-UND-KOMMUNIKATION-GK",
+      "title": "Kennen von Texten und Modellen zu: Sprache, Wirklichkeit, Denken",
+      "description": "Die lernende Person kann kennen von Texten und Modellen zu: Sprache, Wirklichkeit, Denken.",
+      "sourceDocumentKey": "SN-DEUTSCH-GYM-2022",
+      "sourceRef": "Lehrplan Gymnasium Deutsch Sachsen 2004/2007/2009/2011/2013/2019/2022, Jahrgangsstufen 11/12 Grundkurs, Lernbereich 8: Sprache und Kommunikation, PDF-S. 62",
+      "sourceText": "Kennen von Texten und Modellen zu: Sprache, Wirklichkeit, Denken",
+      "sourceSpan": {
+        "passageId": "95ec9e6f-7f7e-5f81-2752-ce0ee8397117",
+        "label": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-GRUNDKURS-LERNBEREICH-8-SPRACHE-UND-KOMMUNIKATION-GK#32"
+      },
+      "courseLevel": "both",
+      "tags": [
+        "jurisdiction:DE-SN",
+        "stage:SekII",
+        "phase:jahrgangsstufen-11-12-grundkurs",
+        "field:lernbereich-8-sprache-und-kommunikation",
+        "courseLevel:both",
+        "sourceDocument:SN-DEUTSCH-GYM-2022"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-bbox-left-column-sn-gymnasium-deutsch-pflicht-lernbereiche-without-wahlbereiche",
+        "phase": "Jahrgangsstufen 11/12 Grundkurs",
+        "field": "Lernbereich 8: Sprache und Kommunikation",
+        "page": 62
+      }
+    },
+    {
+      "id": "fb880601-c7f0-5b65-7da3-4129fc7b78ba",
+      "passageId": "95ec9e6f-7f7e-5f81-2752-ce0ee8397117",
+      "topicCode": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-GRUNDKURS-LERNBEREICH-8-SPRACHE-UND-KOMMUNIKATION-GK",
+      "title": "Kennen von Texten und Modellen zu: Funktionen von Sprache",
+      "description": "Die lernende Person kann kennen von Texten und Modellen zu: Funktionen von Sprache.",
+      "sourceDocumentKey": "SN-DEUTSCH-GYM-2022",
+      "sourceRef": "Lehrplan Gymnasium Deutsch Sachsen 2004/2007/2009/2011/2013/2019/2022, Jahrgangsstufen 11/12 Grundkurs, Lernbereich 8: Sprache und Kommunikation, PDF-S. 62",
+      "sourceText": "Kennen von Texten und Modellen zu: Funktionen von Sprache",
+      "sourceSpan": {
+        "passageId": "95ec9e6f-7f7e-5f81-2752-ce0ee8397117",
+        "label": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-GRUNDKURS-LERNBEREICH-8-SPRACHE-UND-KOMMUNIKATION-GK#33"
+      },
+      "courseLevel": "both",
+      "tags": [
+        "jurisdiction:DE-SN",
+        "stage:SekII",
+        "phase:jahrgangsstufen-11-12-grundkurs",
+        "field:lernbereich-8-sprache-und-kommunikation",
+        "courseLevel:both",
+        "sourceDocument:SN-DEUTSCH-GYM-2022"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-bbox-left-column-sn-gymnasium-deutsch-pflicht-lernbereiche-without-wahlbereiche",
+        "phase": "Jahrgangsstufen 11/12 Grundkurs",
+        "field": "Lernbereich 8: Sprache und Kommunikation",
+        "page": 62
+      }
+    },
+    {
+      "id": "1ac93102-34f1-50f4-d4b8-a750310b348e",
+      "passageId": "95ec9e6f-7f7e-5f81-2752-ce0ee8397117",
+      "topicCode": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-GRUNDKURS-LERNBEREICH-8-SPRACHE-UND-KOMMUNIKATION-GK",
+      "title": "Kennen von Texten und Modellen zu: Sprachentwicklung",
+      "description": "Die lernende Person kann kennen von Texten und Modellen zu: Sprachentwicklung.",
+      "sourceDocumentKey": "SN-DEUTSCH-GYM-2022",
+      "sourceRef": "Lehrplan Gymnasium Deutsch Sachsen 2004/2007/2009/2011/2013/2019/2022, Jahrgangsstufen 11/12 Grundkurs, Lernbereich 8: Sprache und Kommunikation, PDF-S. 62",
+      "sourceText": "Kennen von Texten und Modellen zu: Sprachentwicklung",
+      "sourceSpan": {
+        "passageId": "95ec9e6f-7f7e-5f81-2752-ce0ee8397117",
+        "label": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-GRUNDKURS-LERNBEREICH-8-SPRACHE-UND-KOMMUNIKATION-GK#34"
+      },
+      "courseLevel": "both",
+      "tags": [
+        "jurisdiction:DE-SN",
+        "stage:SekII",
+        "phase:jahrgangsstufen-11-12-grundkurs",
+        "field:lernbereich-8-sprache-und-kommunikation",
+        "courseLevel:both",
+        "sourceDocument:SN-DEUTSCH-GYM-2022"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-bbox-left-column-sn-gymnasium-deutsch-pflicht-lernbereiche-without-wahlbereiche",
+        "phase": "Jahrgangsstufen 11/12 Grundkurs",
+        "field": "Lernbereich 8: Sprache und Kommunikation",
+        "page": 62
+      }
+    },
+    {
+      "id": "9882ea79-daf1-5ed9-c573-30a294a6e8cb",
+      "passageId": "95ec9e6f-7f7e-5f81-2752-ce0ee8397117",
+      "topicCode": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-GRUNDKURS-LERNBEREICH-8-SPRACHE-UND-KOMMUNIKATION-GK",
+      "title": "Kennen von Texten und Modellen zu: Sprache und Medien",
+      "description": "Die lernende Person kann kennen von Texten und Modellen zu: Sprache und Medien.",
+      "sourceDocumentKey": "SN-DEUTSCH-GYM-2022",
+      "sourceRef": "Lehrplan Gymnasium Deutsch Sachsen 2004/2007/2009/2011/2013/2019/2022, Jahrgangsstufen 11/12 Grundkurs, Lernbereich 8: Sprache und Kommunikation, PDF-S. 62",
+      "sourceText": "Kennen von Texten und Modellen zu: Sprache und Medien",
+      "sourceSpan": {
+        "passageId": "95ec9e6f-7f7e-5f81-2752-ce0ee8397117",
+        "label": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-GRUNDKURS-LERNBEREICH-8-SPRACHE-UND-KOMMUNIKATION-GK#35"
+      },
+      "courseLevel": "both",
+      "tags": [
+        "jurisdiction:DE-SN",
+        "stage:SekII",
+        "phase:jahrgangsstufen-11-12-grundkurs",
+        "field:lernbereich-8-sprache-und-kommunikation",
+        "courseLevel:both",
+        "sourceDocument:SN-DEUTSCH-GYM-2022"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-bbox-left-column-sn-gymnasium-deutsch-pflicht-lernbereiche-without-wahlbereiche",
+        "phase": "Jahrgangsstufen 11/12 Grundkurs",
+        "field": "Lernbereich 8: Sprache und Kommunikation",
+        "page": 62
+      }
+    },
+    {
+      "id": "9a05aa04-978c-5b41-2fae-10254c911e50",
+      "passageId": "95ec9e6f-7f7e-5f81-2752-ce0ee8397117",
+      "topicCode": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-GRUNDKURS-LERNBEREICH-8-SPRACHE-UND-KOMMUNIKATION-GK",
+      "title": "Sich positionieren zu Sprache in politischgesellschaftlichen Zusammenhängen",
+      "description": "Die lernende Person kann sich positionieren zu Sprache in politischgesellschaftlichen Zusammenhängen.",
+      "sourceDocumentKey": "SN-DEUTSCH-GYM-2022",
+      "sourceRef": "Lehrplan Gymnasium Deutsch Sachsen 2004/2007/2009/2011/2013/2019/2022, Jahrgangsstufen 11/12 Grundkurs, Lernbereich 8: Sprache und Kommunikation, PDF-S. 62",
+      "sourceText": "Sich positionieren zu Sprache in politischgesellschaftlichen Zusammenhängen",
+      "sourceSpan": {
+        "passageId": "95ec9e6f-7f7e-5f81-2752-ce0ee8397117",
+        "label": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-GRUNDKURS-LERNBEREICH-8-SPRACHE-UND-KOMMUNIKATION-GK#36"
+      },
+      "courseLevel": "both",
+      "tags": [
+        "jurisdiction:DE-SN",
+        "stage:SekII",
+        "phase:jahrgangsstufen-11-12-grundkurs",
+        "field:lernbereich-8-sprache-und-kommunikation",
+        "courseLevel:both",
+        "sourceDocument:SN-DEUTSCH-GYM-2022"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-bbox-left-column-sn-gymnasium-deutsch-pflicht-lernbereiche-without-wahlbereiche",
+        "phase": "Jahrgangsstufen 11/12 Grundkurs",
+        "field": "Lernbereich 8: Sprache und Kommunikation",
+        "page": 62
+      }
+    },
+    {
+      "id": "29926ac6-311a-5d53-0d7f-3a12198892ff",
+      "passageId": "95ec9e6f-7f7e-5f81-2752-ce0ee8397117",
+      "topicCode": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-GRUNDKURS-LERNBEREICH-8-SPRACHE-UND-KOMMUNIKATION-GK",
+      "title": "Übertragen der Theorien auf die Untersuchung konkreter Kommunikationssituationen",
+      "description": "Die lernende Person kann übertragen der Theorien auf die Untersuchung konkreter Kommunikationssituationen.",
+      "sourceDocumentKey": "SN-DEUTSCH-GYM-2022",
+      "sourceRef": "Lehrplan Gymnasium Deutsch Sachsen 2004/2007/2009/2011/2013/2019/2022, Jahrgangsstufen 11/12 Grundkurs, Lernbereich 8: Sprache und Kommunikation, PDF-S. 62",
+      "sourceText": "Übertragen der Theorien auf die Untersuchung konkreter Kommunikationssituationen",
+      "sourceSpan": {
+        "passageId": "95ec9e6f-7f7e-5f81-2752-ce0ee8397117",
+        "label": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-GRUNDKURS-LERNBEREICH-8-SPRACHE-UND-KOMMUNIKATION-GK#37"
+      },
+      "courseLevel": "both",
+      "tags": [
+        "jurisdiction:DE-SN",
+        "stage:SekII",
+        "phase:jahrgangsstufen-11-12-grundkurs",
+        "field:lernbereich-8-sprache-und-kommunikation",
+        "courseLevel:both",
+        "sourceDocument:SN-DEUTSCH-GYM-2022"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-bbox-left-column-sn-gymnasium-deutsch-pflicht-lernbereiche-without-wahlbereiche",
+        "phase": "Jahrgangsstufen 11/12 Grundkurs",
+        "field": "Lernbereich 8: Sprache und Kommunikation",
+        "page": 62
+      }
+    },
+    {
+      "id": "91b7cee0-03f3-5666-523e-d14b547e9cf6",
+      "passageId": "0320df05-4595-5294-0ece-6dbd746807fc",
+      "topicCode": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-LEISTUNGSKURS-LERNBEREICH-1-DEUTSCHSPRACHIGE-LITERATUR-SEIT-1945-LK",
+      "title": "Sich positionieren zu Aspekten der Literatur im geteilten Deutschland",
+      "description": "Die lernende Person kann sich positionieren zu Aspekten der Literatur im geteilten Deutschland.",
+      "sourceDocumentKey": "SN-DEUTSCH-GYM-2022",
+      "sourceRef": "Lehrplan Gymnasium Deutsch Sachsen 2004/2007/2009/2011/2013/2019/2022, Jahrgangsstufen 11/12 Leistungskurs, Lernbereich 1: Deutschsprachige Literatur seit 1945, PDF-S. 67",
+      "sourceText": "Sich positionieren zu Aspekten der Literatur im geteilten Deutschland",
+      "sourceSpan": {
+        "passageId": "0320df05-4595-5294-0ece-6dbd746807fc",
+        "label": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-LEISTUNGSKURS-LERNBEREICH-1-DEUTSCHSPRACHIGE-LITERATUR-SEIT-1945-LK#38"
+      },
+      "courseLevel": "LK",
+      "tags": [
+        "jurisdiction:DE-SN",
+        "stage:SekII",
+        "phase:jahrgangsstufen-11-12-leistungskurs",
+        "field:lernbereich-1-deutschsprachige-literatur-seit-1945",
+        "courseLevel:LK",
+        "sourceDocument:SN-DEUTSCH-GYM-2022"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-bbox-left-column-sn-gymnasium-deutsch-pflicht-lernbereiche-without-wahlbereiche",
+        "phase": "Jahrgangsstufen 11/12 Leistungskurs",
+        "field": "Lernbereich 1: Deutschsprachige Literatur seit 1945",
+        "page": 67
+      }
+    },
+    {
+      "id": "49d37ecd-8a7d-54bd-9fcf-7618dec0dd26",
+      "passageId": "0320df05-4595-5294-0ece-6dbd746807fc",
+      "topicCode": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-LEISTUNGSKURS-LERNBEREICH-1-DEUTSCHSPRACHIGE-LITERATUR-SEIT-1945-LK",
+      "title": "Sich positionieren zur Literatur der Gegenwart",
+      "description": "Die lernende Person kann sich positionieren zur Literatur der Gegenwart.",
+      "sourceDocumentKey": "SN-DEUTSCH-GYM-2022",
+      "sourceRef": "Lehrplan Gymnasium Deutsch Sachsen 2004/2007/2009/2011/2013/2019/2022, Jahrgangsstufen 11/12 Leistungskurs, Lernbereich 1: Deutschsprachige Literatur seit 1945, PDF-S. 67",
+      "sourceText": "Sich positionieren zur Literatur der Gegenwart",
+      "sourceSpan": {
+        "passageId": "0320df05-4595-5294-0ece-6dbd746807fc",
+        "label": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-LEISTUNGSKURS-LERNBEREICH-1-DEUTSCHSPRACHIGE-LITERATUR-SEIT-1945-LK#39"
+      },
+      "courseLevel": "LK",
+      "tags": [
+        "jurisdiction:DE-SN",
+        "stage:SekII",
+        "phase:jahrgangsstufen-11-12-leistungskurs",
+        "field:lernbereich-1-deutschsprachige-literatur-seit-1945",
+        "courseLevel:LK",
+        "sourceDocument:SN-DEUTSCH-GYM-2022"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-bbox-left-column-sn-gymnasium-deutsch-pflicht-lernbereiche-without-wahlbereiche",
+        "phase": "Jahrgangsstufen 11/12 Leistungskurs",
+        "field": "Lernbereich 1: Deutschsprachige Literatur seit 1945",
+        "page": 67
+      }
+    },
+    {
+      "id": "1a27c01e-8d33-54cc-9c0f-cf55166c655e",
+      "passageId": "0320df05-4595-5294-0ece-6dbd746807fc",
+      "topicCode": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-LEISTUNGSKURS-LERNBEREICH-1-DEUTSCHSPRACHIGE-LITERATUR-SEIT-1945-LK",
+      "title": "Anwenden von Erschließungsmethoden bei der Auseinandersetzung mit einer Ganzschrift",
+      "description": "Die lernende Person kann anwenden von Erschließungsmethoden bei der Auseinandersetzung mit einer Ganzschrift.",
+      "sourceDocumentKey": "SN-DEUTSCH-GYM-2022",
+      "sourceRef": "Lehrplan Gymnasium Deutsch Sachsen 2004/2007/2009/2011/2013/2019/2022, Jahrgangsstufen 11/12 Leistungskurs, Lernbereich 1: Deutschsprachige Literatur seit 1945, PDF-S. 67",
+      "sourceText": "Anwenden von Erschließungsmethoden bei der Auseinandersetzung mit einer Ganzschrift",
+      "sourceSpan": {
+        "passageId": "0320df05-4595-5294-0ece-6dbd746807fc",
+        "label": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-LEISTUNGSKURS-LERNBEREICH-1-DEUTSCHSPRACHIGE-LITERATUR-SEIT-1945-LK#40"
+      },
+      "courseLevel": "LK",
+      "tags": [
+        "jurisdiction:DE-SN",
+        "stage:SekII",
+        "phase:jahrgangsstufen-11-12-leistungskurs",
+        "field:lernbereich-1-deutschsprachige-literatur-seit-1945",
+        "courseLevel:LK",
+        "sourceDocument:SN-DEUTSCH-GYM-2022"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-bbox-left-column-sn-gymnasium-deutsch-pflicht-lernbereiche-without-wahlbereiche",
+        "phase": "Jahrgangsstufen 11/12 Leistungskurs",
+        "field": "Lernbereich 1: Deutschsprachige Literatur seit 1945",
+        "page": 67
+      }
+    },
+    {
+      "id": "08afa078-4047-5ac1-3d5f-adbadd1f2447",
+      "passageId": "6e24ac0f-7e41-5b12-924b-d10b25ea524c",
+      "topicCode": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-LEISTUNGSKURS-LERNBEREICH-2-GESTALTUNG-VON-REDEN-LK",
+      "title": "Kennen von Faktoren der Redesituation: Sachwissen, Glaubwürdigkeit, Interesse",
+      "description": "Die lernende Person kann kennen von Faktoren der Redesituation: Sachwissen, Glaubwürdigkeit, Interesse.",
+      "sourceDocumentKey": "SN-DEUTSCH-GYM-2022",
+      "sourceRef": "Lehrplan Gymnasium Deutsch Sachsen 2004/2007/2009/2011/2013/2019/2022, Jahrgangsstufen 11/12 Leistungskurs, Lernbereich 2: Gestaltung von Reden, PDF-S. 68",
+      "sourceText": "Kennen von Faktoren der Redesituation: Sachwissen, Glaubwürdigkeit, Interesse",
+      "sourceSpan": {
+        "passageId": "6e24ac0f-7e41-5b12-924b-d10b25ea524c",
+        "label": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-LEISTUNGSKURS-LERNBEREICH-2-GESTALTUNG-VON-REDEN-LK#41"
+      },
+      "courseLevel": "LK",
+      "tags": [
+        "jurisdiction:DE-SN",
+        "stage:SekII",
+        "phase:jahrgangsstufen-11-12-leistungskurs",
+        "field:lernbereich-2-gestaltung-von-reden",
+        "courseLevel:LK",
+        "sourceDocument:SN-DEUTSCH-GYM-2022"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-bbox-left-column-sn-gymnasium-deutsch-pflicht-lernbereiche-without-wahlbereiche",
+        "phase": "Jahrgangsstufen 11/12 Leistungskurs",
+        "field": "Lernbereich 2: Gestaltung von Reden",
+        "page": 68
+      }
+    },
+    {
+      "id": "1f57208d-9d80-53d9-051a-357f536918f5",
+      "passageId": "6e24ac0f-7e41-5b12-924b-d10b25ea524c",
+      "topicCode": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-LEISTUNGSKURS-LERNBEREICH-2-GESTALTUNG-VON-REDEN-LK",
+      "title": "Anwenden von Grundregeln der Rhetorik",
+      "description": "Die lernende Person kann anwenden von Grundregeln der Rhetorik.",
+      "sourceDocumentKey": "SN-DEUTSCH-GYM-2022",
+      "sourceRef": "Lehrplan Gymnasium Deutsch Sachsen 2004/2007/2009/2011/2013/2019/2022, Jahrgangsstufen 11/12 Leistungskurs, Lernbereich 2: Gestaltung von Reden, PDF-S. 68",
+      "sourceText": "Anwenden von Grundregeln der Rhetorik",
+      "sourceSpan": {
+        "passageId": "6e24ac0f-7e41-5b12-924b-d10b25ea524c",
+        "label": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-LEISTUNGSKURS-LERNBEREICH-2-GESTALTUNG-VON-REDEN-LK#42"
+      },
+      "courseLevel": "LK",
+      "tags": [
+        "jurisdiction:DE-SN",
+        "stage:SekII",
+        "phase:jahrgangsstufen-11-12-leistungskurs",
+        "field:lernbereich-2-gestaltung-von-reden",
+        "courseLevel:LK",
+        "sourceDocument:SN-DEUTSCH-GYM-2022"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-bbox-left-column-sn-gymnasium-deutsch-pflicht-lernbereiche-without-wahlbereiche",
+        "phase": "Jahrgangsstufen 11/12 Leistungskurs",
+        "field": "Lernbereich 2: Gestaltung von Reden",
+        "page": 68
+      }
+    },
+    {
+      "id": "ad7b7a6d-54ad-576e-cd3c-06a7c95cfbda",
+      "passageId": "6e24ac0f-7e41-5b12-924b-d10b25ea524c",
+      "topicCode": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-LEISTUNGSKURS-LERNBEREICH-2-GESTALTUNG-VON-REDEN-LK",
+      "title": "Kennen von Verhaltensmustern in schwierigen Redesituationen",
+      "description": "Die lernende Person kann kennen von Verhaltensmustern in schwierigen Redesituationen.",
+      "sourceDocumentKey": "SN-DEUTSCH-GYM-2022",
+      "sourceRef": "Lehrplan Gymnasium Deutsch Sachsen 2004/2007/2009/2011/2013/2019/2022, Jahrgangsstufen 11/12 Leistungskurs, Lernbereich 2: Gestaltung von Reden, PDF-S. 68",
+      "sourceText": "Kennen von Verhaltensmustern in schwierigen Redesituationen",
+      "sourceSpan": {
+        "passageId": "6e24ac0f-7e41-5b12-924b-d10b25ea524c",
+        "label": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-LEISTUNGSKURS-LERNBEREICH-2-GESTALTUNG-VON-REDEN-LK#43"
+      },
+      "courseLevel": "LK",
+      "tags": [
+        "jurisdiction:DE-SN",
+        "stage:SekII",
+        "phase:jahrgangsstufen-11-12-leistungskurs",
+        "field:lernbereich-2-gestaltung-von-reden",
+        "courseLevel:LK",
+        "sourceDocument:SN-DEUTSCH-GYM-2022"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-bbox-left-column-sn-gymnasium-deutsch-pflicht-lernbereiche-without-wahlbereiche",
+        "phase": "Jahrgangsstufen 11/12 Leistungskurs",
+        "field": "Lernbereich 2: Gestaltung von Reden",
+        "page": 68
+      }
+    },
+    {
+      "id": "19dda9d6-1b93-5610-e43f-d80ee91aa054",
+      "passageId": "6e24ac0f-7e41-5b12-924b-d10b25ea524c",
+      "topicCode": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-LEISTUNGSKURS-LERNBEREICH-2-GESTALTUNG-VON-REDEN-LK",
+      "title": "Gestalten einer eigenen Kurzrede",
+      "description": "Die lernende Person kann gestalten einer eigenen Kurzrede.",
+      "sourceDocumentKey": "SN-DEUTSCH-GYM-2022",
+      "sourceRef": "Lehrplan Gymnasium Deutsch Sachsen 2004/2007/2009/2011/2013/2019/2022, Jahrgangsstufen 11/12 Leistungskurs, Lernbereich 2: Gestaltung von Reden, PDF-S. 68",
+      "sourceText": "Gestalten einer eigenen Kurzrede",
+      "sourceSpan": {
+        "passageId": "6e24ac0f-7e41-5b12-924b-d10b25ea524c",
+        "label": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-LEISTUNGSKURS-LERNBEREICH-2-GESTALTUNG-VON-REDEN-LK#44"
+      },
+      "courseLevel": "LK",
+      "tags": [
+        "jurisdiction:DE-SN",
+        "stage:SekII",
+        "phase:jahrgangsstufen-11-12-leistungskurs",
+        "field:lernbereich-2-gestaltung-von-reden",
+        "courseLevel:LK",
+        "sourceDocument:SN-DEUTSCH-GYM-2022"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-bbox-left-column-sn-gymnasium-deutsch-pflicht-lernbereiche-without-wahlbereiche",
+        "phase": "Jahrgangsstufen 11/12 Leistungskurs",
+        "field": "Lernbereich 2: Gestaltung von Reden",
+        "page": 68
+      }
+    },
+    {
+      "id": "8166e113-eff8-5fd8-154b-21cf8698a5a2",
+      "passageId": "f11d6d86-c5ca-5161-7a36-6f2f302c946a",
+      "topicCode": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-LEISTUNGSKURS-LERNBEREICH-3-KONKURRENZ-LITERARISCHER-KONZEPTE-UM-1800-LK",
+      "title": "Beurteilen von Gedichten mit unterschiedlicher Naturdarstellung",
+      "description": "Die lernende Person kann beurteilen von Gedichten mit unterschiedlicher Naturdarstellung.",
+      "sourceDocumentKey": "SN-DEUTSCH-GYM-2022",
+      "sourceRef": "Lehrplan Gymnasium Deutsch Sachsen 2004/2007/2009/2011/2013/2019/2022, Jahrgangsstufen 11/12 Leistungskurs, Lernbereich 3: Konkurrenz literarischer Konzepte um 1800, PDF-S. 68",
+      "sourceText": "Beurteilen von Gedichten mit unterschiedlicher Naturdarstellung",
+      "sourceSpan": {
+        "passageId": "f11d6d86-c5ca-5161-7a36-6f2f302c946a",
+        "label": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-LEISTUNGSKURS-LERNBEREICH-3-KONKURRENZ-LITERARISCHER-KONZEPTE-UM-1800-LK#45"
+      },
+      "courseLevel": "LK",
+      "tags": [
+        "jurisdiction:DE-SN",
+        "stage:SekII",
+        "phase:jahrgangsstufen-11-12-leistungskurs",
+        "field:lernbereich-3-konkurrenz-literarischer-konzepte-um-1800",
+        "courseLevel:LK",
+        "sourceDocument:SN-DEUTSCH-GYM-2022"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-bbox-left-column-sn-gymnasium-deutsch-pflicht-lernbereiche-without-wahlbereiche",
+        "phase": "Jahrgangsstufen 11/12 Leistungskurs",
+        "field": "Lernbereich 3: Konkurrenz literarischer Konzepte um 1800",
+        "page": 68
+      }
+    },
+    {
+      "id": "bf5cf44e-2f2e-58ff-abdb-4c0990f68240",
+      "passageId": "f11d6d86-c5ca-5161-7a36-6f2f302c946a",
+      "topicCode": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-LEISTUNGSKURS-LERNBEREICH-3-KONKURRENZ-LITERARISCHER-KONZEPTE-UM-1800-LK",
+      "title": "Sich positionieren zu Literatur im Spannungsfeld von Gefühl und Verstand",
+      "description": "Die lernende Person kann sich positionieren zu Literatur im Spannungsfeld von Gefühl und Verstand.",
+      "sourceDocumentKey": "SN-DEUTSCH-GYM-2022",
+      "sourceRef": "Lehrplan Gymnasium Deutsch Sachsen 2004/2007/2009/2011/2013/2019/2022, Jahrgangsstufen 11/12 Leistungskurs, Lernbereich 3: Konkurrenz literarischer Konzepte um 1800, PDF-S. 68",
+      "sourceText": "Sich positionieren zu Literatur im Spannungsfeld von Gefühl und Verstand",
+      "sourceSpan": {
+        "passageId": "f11d6d86-c5ca-5161-7a36-6f2f302c946a",
+        "label": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-LEISTUNGSKURS-LERNBEREICH-3-KONKURRENZ-LITERARISCHER-KONZEPTE-UM-1800-LK#46"
+      },
+      "courseLevel": "LK",
+      "tags": [
+        "jurisdiction:DE-SN",
+        "stage:SekII",
+        "phase:jahrgangsstufen-11-12-leistungskurs",
+        "field:lernbereich-3-konkurrenz-literarischer-konzepte-um-1800",
+        "courseLevel:LK",
+        "sourceDocument:SN-DEUTSCH-GYM-2022"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-bbox-left-column-sn-gymnasium-deutsch-pflicht-lernbereiche-without-wahlbereiche",
+        "phase": "Jahrgangsstufen 11/12 Leistungskurs",
+        "field": "Lernbereich 3: Konkurrenz literarischer Konzepte um 1800",
+        "page": 68
+      }
+    },
+    {
+      "id": "7ff2eec5-e6a4-53a3-d1f4-a39ed2ac3f9c",
+      "passageId": "f11d6d86-c5ca-5161-7a36-6f2f302c946a",
+      "topicCode": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-LEISTUNGSKURS-LERNBEREICH-3-KONKURRENZ-LITERARISCHER-KONZEPTE-UM-1800-LK",
+      "title": "Einblick gewinnen in die Literatur des Mittelalters in Verbindung mit der Literatur der...",
+      "description": "Die lernende Person kann einblick gewinnen in die Literatur des Mittelalters in Verbindung mit der Literatur der Romantik.",
+      "sourceDocumentKey": "SN-DEUTSCH-GYM-2022",
+      "sourceRef": "Lehrplan Gymnasium Deutsch Sachsen 2004/2007/2009/2011/2013/2019/2022, Jahrgangsstufen 11/12 Leistungskurs, Lernbereich 3: Konkurrenz literarischer Konzepte um 1800, PDF-S. 68",
+      "sourceText": "Einblick gewinnen in die Literatur des Mittelalters in Verbindung mit der Literatur der Romantik",
+      "sourceSpan": {
+        "passageId": "f11d6d86-c5ca-5161-7a36-6f2f302c946a",
+        "label": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-LEISTUNGSKURS-LERNBEREICH-3-KONKURRENZ-LITERARISCHER-KONZEPTE-UM-1800-LK#47"
+      },
+      "courseLevel": "LK",
+      "tags": [
+        "jurisdiction:DE-SN",
+        "stage:SekII",
+        "phase:jahrgangsstufen-11-12-leistungskurs",
+        "field:lernbereich-3-konkurrenz-literarischer-konzepte-um-1800",
+        "courseLevel:LK",
+        "sourceDocument:SN-DEUTSCH-GYM-2022"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-bbox-left-column-sn-gymnasium-deutsch-pflicht-lernbereiche-without-wahlbereiche",
+        "phase": "Jahrgangsstufen 11/12 Leistungskurs",
+        "field": "Lernbereich 3: Konkurrenz literarischer Konzepte um 1800",
+        "page": 68
+      }
+    },
+    {
+      "id": "9658a991-b251-5161-b85d-37a65eb9ed28",
+      "passageId": "f11d6d86-c5ca-5161-7a36-6f2f302c946a",
+      "topicCode": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-LEISTUNGSKURS-LERNBEREICH-3-KONKURRENZ-LITERARISCHER-KONZEPTE-UM-1800-LK",
+      "title": "Kennen einer epischen oder dramatischen Ganzschrift aus einer der vier genannten Epochen",
+      "description": "Die lernende Person kann kennen einer epischen oder dramatischen Ganzschrift aus einer der vier genannten Epochen.",
+      "sourceDocumentKey": "SN-DEUTSCH-GYM-2022",
+      "sourceRef": "Lehrplan Gymnasium Deutsch Sachsen 2004/2007/2009/2011/2013/2019/2022, Jahrgangsstufen 11/12 Leistungskurs, Lernbereich 3: Konkurrenz literarischer Konzepte um 1800, PDF-S. 68",
+      "sourceText": "Kennen einer epischen oder dramatischen Ganzschrift aus einer der vier genannten Epochen",
+      "sourceSpan": {
+        "passageId": "f11d6d86-c5ca-5161-7a36-6f2f302c946a",
+        "label": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-LEISTUNGSKURS-LERNBEREICH-3-KONKURRENZ-LITERARISCHER-KONZEPTE-UM-1800-LK#48"
+      },
+      "courseLevel": "LK",
+      "tags": [
+        "jurisdiction:DE-SN",
+        "stage:SekII",
+        "phase:jahrgangsstufen-11-12-leistungskurs",
+        "field:lernbereich-3-konkurrenz-literarischer-konzepte-um-1800",
+        "courseLevel:LK",
+        "sourceDocument:SN-DEUTSCH-GYM-2022"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-bbox-left-column-sn-gymnasium-deutsch-pflicht-lernbereiche-without-wahlbereiche",
+        "phase": "Jahrgangsstufen 11/12 Leistungskurs",
+        "field": "Lernbereich 3: Konkurrenz literarischer Konzepte um 1800",
+        "page": 68
+      }
+    },
+    {
+      "id": "c4a13a42-4672-58a4-9299-bcef06e00676",
+      "passageId": "f11d6d86-c5ca-5161-7a36-6f2f302c946a",
+      "topicCode": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-LEISTUNGSKURS-LERNBEREICH-3-KONKURRENZ-LITERARISCHER-KONZEPTE-UM-1800-LK",
+      "title": "Gestalten von Textinterpretationen",
+      "description": "Die lernende Person kann gestalten von Textinterpretationen.",
+      "sourceDocumentKey": "SN-DEUTSCH-GYM-2022",
+      "sourceRef": "Lehrplan Gymnasium Deutsch Sachsen 2004/2007/2009/2011/2013/2019/2022, Jahrgangsstufen 11/12 Leistungskurs, Lernbereich 3: Konkurrenz literarischer Konzepte um 1800, PDF-S. 69",
+      "sourceText": "Gestalten von Textinterpretationen",
+      "sourceSpan": {
+        "passageId": "f11d6d86-c5ca-5161-7a36-6f2f302c946a",
+        "label": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-LEISTUNGSKURS-LERNBEREICH-3-KONKURRENZ-LITERARISCHER-KONZEPTE-UM-1800-LK#49"
+      },
+      "courseLevel": "LK",
+      "tags": [
+        "jurisdiction:DE-SN",
+        "stage:SekII",
+        "phase:jahrgangsstufen-11-12-leistungskurs",
+        "field:lernbereich-3-konkurrenz-literarischer-konzepte-um-1800",
+        "courseLevel:LK",
+        "sourceDocument:SN-DEUTSCH-GYM-2022"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-bbox-left-column-sn-gymnasium-deutsch-pflicht-lernbereiche-without-wahlbereiche",
+        "phase": "Jahrgangsstufen 11/12 Leistungskurs",
+        "field": "Lernbereich 3: Konkurrenz literarischer Konzepte um 1800",
+        "page": 69
+      }
+    },
+    {
+      "id": "f7bd8bf4-b8ea-55ef-3182-44f8c3f29887",
+      "passageId": "f11d6d86-c5ca-5161-7a36-6f2f302c946a",
+      "topicCode": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-LEISTUNGSKURS-LERNBEREICH-3-KONKURRENZ-LITERARISCHER-KONZEPTE-UM-1800-LK",
+      "title": "Übertragen von Wissen über literarische Strömungen auf unterschiedliche Menschenbilder...",
+      "description": "Die lernende Person kann übertragen von Wissen über literarische Strömungen auf unterschiedliche Menschenbilder und Gesellschaftskonzepte.",
+      "sourceDocumentKey": "SN-DEUTSCH-GYM-2022",
+      "sourceRef": "Lehrplan Gymnasium Deutsch Sachsen 2004/2007/2009/2011/2013/2019/2022, Jahrgangsstufen 11/12 Leistungskurs, Lernbereich 3: Konkurrenz literarischer Konzepte um 1800, PDF-S. 69",
+      "sourceText": "Übertragen von Wissen über literarische Strömungen auf unterschiedliche Menschenbilder und Gesellschaftskonzepte",
+      "sourceSpan": {
+        "passageId": "f11d6d86-c5ca-5161-7a36-6f2f302c946a",
+        "label": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-LEISTUNGSKURS-LERNBEREICH-3-KONKURRENZ-LITERARISCHER-KONZEPTE-UM-1800-LK#50"
+      },
+      "courseLevel": "LK",
+      "tags": [
+        "jurisdiction:DE-SN",
+        "stage:SekII",
+        "phase:jahrgangsstufen-11-12-leistungskurs",
+        "field:lernbereich-3-konkurrenz-literarischer-konzepte-um-1800",
+        "courseLevel:LK",
+        "sourceDocument:SN-DEUTSCH-GYM-2022"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-bbox-left-column-sn-gymnasium-deutsch-pflicht-lernbereiche-without-wahlbereiche",
+        "phase": "Jahrgangsstufen 11/12 Leistungskurs",
+        "field": "Lernbereich 3: Konkurrenz literarischer Konzepte um 1800",
+        "page": 69
+      }
+    },
+    {
+      "id": "f4b92838-5a13-5dd0-f3e0-351ddc6f1908",
+      "passageId": "f11d6d86-c5ca-5161-7a36-6f2f302c946a",
+      "topicCode": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-LEISTUNGSKURS-LERNBEREICH-3-KONKURRENZ-LITERARISCHER-KONZEPTE-UM-1800-LK",
+      "title": "Kennen verschiedener Darstellungen zur Epochenproblematik",
+      "description": "Die lernende Person kann kennen verschiedener Darstellungen zur Epochenproblematik.",
+      "sourceDocumentKey": "SN-DEUTSCH-GYM-2022",
+      "sourceRef": "Lehrplan Gymnasium Deutsch Sachsen 2004/2007/2009/2011/2013/2019/2022, Jahrgangsstufen 11/12 Leistungskurs, Lernbereich 3: Konkurrenz literarischer Konzepte um 1800, PDF-S. 69",
+      "sourceText": "Kennen verschiedener Darstellungen zur Epochenproblematik",
+      "sourceSpan": {
+        "passageId": "f11d6d86-c5ca-5161-7a36-6f2f302c946a",
+        "label": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-LEISTUNGSKURS-LERNBEREICH-3-KONKURRENZ-LITERARISCHER-KONZEPTE-UM-1800-LK#51"
+      },
+      "courseLevel": "LK",
+      "tags": [
+        "jurisdiction:DE-SN",
+        "stage:SekII",
+        "phase:jahrgangsstufen-11-12-leistungskurs",
+        "field:lernbereich-3-konkurrenz-literarischer-konzepte-um-1800",
+        "courseLevel:LK",
+        "sourceDocument:SN-DEUTSCH-GYM-2022"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-bbox-left-column-sn-gymnasium-deutsch-pflicht-lernbereiche-without-wahlbereiche",
+        "phase": "Jahrgangsstufen 11/12 Leistungskurs",
+        "field": "Lernbereich 3: Konkurrenz literarischer Konzepte um 1800",
+        "page": 69
+      }
+    },
+    {
+      "id": "28ba89ac-35ae-5d49-c465-60222d68253a",
+      "passageId": "b6c1b9e1-658d-5e7c-17b8-f2dcf4acddc6",
+      "topicCode": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-LEISTUNGSKURS-LERNBEREICH-4-THEATERKONZEPTE-LK",
+      "title": "Kennen eines Dramas als Ganzschrift",
+      "description": "Die lernende Person kann kennen eines Dramas als Ganzschrift.",
+      "sourceDocumentKey": "SN-DEUTSCH-GYM-2022",
+      "sourceRef": "Lehrplan Gymnasium Deutsch Sachsen 2004/2007/2009/2011/2013/2019/2022, Jahrgangsstufen 11/12 Leistungskurs, Lernbereich 4: Theaterkonzepte, PDF-S. 69",
+      "sourceText": "Kennen eines Dramas als Ganzschrift",
+      "sourceSpan": {
+        "passageId": "b6c1b9e1-658d-5e7c-17b8-f2dcf4acddc6",
+        "label": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-LEISTUNGSKURS-LERNBEREICH-4-THEATERKONZEPTE-LK#52"
+      },
+      "courseLevel": "LK",
+      "tags": [
+        "jurisdiction:DE-SN",
+        "stage:SekII",
+        "phase:jahrgangsstufen-11-12-leistungskurs",
+        "field:lernbereich-4-theaterkonzepte",
+        "courseLevel:LK",
+        "sourceDocument:SN-DEUTSCH-GYM-2022"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-bbox-left-column-sn-gymnasium-deutsch-pflicht-lernbereiche-without-wahlbereiche",
+        "phase": "Jahrgangsstufen 11/12 Leistungskurs",
+        "field": "Lernbereich 4: Theaterkonzepte",
+        "page": 69
+      }
+    },
+    {
+      "id": "f4938679-b8f8-5165-89ca-d5ca5e67ff3b",
+      "passageId": "b6c1b9e1-658d-5e7c-17b8-f2dcf4acddc6",
+      "topicCode": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-LEISTUNGSKURS-LERNBEREICH-4-THEATERKONZEPTE-LK",
+      "title": "Kennen von zwei Theaterkonzepten mit Merkmalen und Vertretern",
+      "description": "Die lernende Person kann kennen von zwei Theaterkonzepten mit Merkmalen und Vertretern.",
+      "sourceDocumentKey": "SN-DEUTSCH-GYM-2022",
+      "sourceRef": "Lehrplan Gymnasium Deutsch Sachsen 2004/2007/2009/2011/2013/2019/2022, Jahrgangsstufen 11/12 Leistungskurs, Lernbereich 4: Theaterkonzepte, PDF-S. 69",
+      "sourceText": "Kennen von zwei Theaterkonzepten mit Merkmalen und Vertretern",
+      "sourceSpan": {
+        "passageId": "b6c1b9e1-658d-5e7c-17b8-f2dcf4acddc6",
+        "label": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-LEISTUNGSKURS-LERNBEREICH-4-THEATERKONZEPTE-LK#53"
+      },
+      "courseLevel": "LK",
+      "tags": [
+        "jurisdiction:DE-SN",
+        "stage:SekII",
+        "phase:jahrgangsstufen-11-12-leistungskurs",
+        "field:lernbereich-4-theaterkonzepte",
+        "courseLevel:LK",
+        "sourceDocument:SN-DEUTSCH-GYM-2022"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-bbox-left-column-sn-gymnasium-deutsch-pflicht-lernbereiche-without-wahlbereiche",
+        "phase": "Jahrgangsstufen 11/12 Leistungskurs",
+        "field": "Lernbereich 4: Theaterkonzepte",
+        "page": 69
+      }
+    },
+    {
+      "id": "43699df9-2aa4-55b9-84d1-8414070f1b3a",
+      "passageId": "b6c1b9e1-658d-5e7c-17b8-f2dcf4acddc6",
+      "topicCode": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-LEISTUNGSKURS-LERNBEREICH-4-THEATERKONZEPTE-LK",
+      "title": "Anwenden von theoretischen Konzepten zum Theater auf die Untersuchung von Szenen",
+      "description": "Die lernende Person kann anwenden von theoretischen Konzepten zum Theater auf die Untersuchung von Szenen.",
+      "sourceDocumentKey": "SN-DEUTSCH-GYM-2022",
+      "sourceRef": "Lehrplan Gymnasium Deutsch Sachsen 2004/2007/2009/2011/2013/2019/2022, Jahrgangsstufen 11/12 Leistungskurs, Lernbereich 4: Theaterkonzepte, PDF-S. 69",
+      "sourceText": "Anwenden von theoretischen Konzepten zum Theater auf die Untersuchung von Szenen",
+      "sourceSpan": {
+        "passageId": "b6c1b9e1-658d-5e7c-17b8-f2dcf4acddc6",
+        "label": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-LEISTUNGSKURS-LERNBEREICH-4-THEATERKONZEPTE-LK#54"
+      },
+      "courseLevel": "LK",
+      "tags": [
+        "jurisdiction:DE-SN",
+        "stage:SekII",
+        "phase:jahrgangsstufen-11-12-leistungskurs",
+        "field:lernbereich-4-theaterkonzepte",
+        "courseLevel:LK",
+        "sourceDocument:SN-DEUTSCH-GYM-2022"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-bbox-left-column-sn-gymnasium-deutsch-pflicht-lernbereiche-without-wahlbereiche",
+        "phase": "Jahrgangsstufen 11/12 Leistungskurs",
+        "field": "Lernbereich 4: Theaterkonzepte",
+        "page": 69
+      }
+    },
+    {
+      "id": "398ca1f5-d1f6-5d01-a04e-fb19d8a7a83c",
+      "passageId": "b6c1b9e1-658d-5e7c-17b8-f2dcf4acddc6",
+      "topicCode": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-LEISTUNGSKURS-LERNBEREICH-4-THEATERKONZEPTE-LK",
+      "title": "Sich positionieren zu inhaltlichen, ästhetischen und theoretischen Problemen des Dramas",
+      "description": "Die lernende Person kann sich positionieren zu inhaltlichen, ästhetischen und theoretischen Problemen des Dramas.",
+      "sourceDocumentKey": "SN-DEUTSCH-GYM-2022",
+      "sourceRef": "Lehrplan Gymnasium Deutsch Sachsen 2004/2007/2009/2011/2013/2019/2022, Jahrgangsstufen 11/12 Leistungskurs, Lernbereich 4: Theaterkonzepte, PDF-S. 69",
+      "sourceText": "Sich positionieren zu inhaltlichen, ästhetischen und theoretischen Problemen des Dramas",
+      "sourceSpan": {
+        "passageId": "b6c1b9e1-658d-5e7c-17b8-f2dcf4acddc6",
+        "label": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-LEISTUNGSKURS-LERNBEREICH-4-THEATERKONZEPTE-LK#55"
+      },
+      "courseLevel": "LK",
+      "tags": [
+        "jurisdiction:DE-SN",
+        "stage:SekII",
+        "phase:jahrgangsstufen-11-12-leistungskurs",
+        "field:lernbereich-4-theaterkonzepte",
+        "courseLevel:LK",
+        "sourceDocument:SN-DEUTSCH-GYM-2022"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-bbox-left-column-sn-gymnasium-deutsch-pflicht-lernbereiche-without-wahlbereiche",
+        "phase": "Jahrgangsstufen 11/12 Leistungskurs",
+        "field": "Lernbereich 4: Theaterkonzepte",
+        "page": 69
+      }
+    },
+    {
+      "id": "63e13a9d-35e9-5bc3-3f38-164dab648de5",
+      "passageId": "b6c1b9e1-658d-5e7c-17b8-f2dcf4acddc6",
+      "topicCode": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-LEISTUNGSKURS-LERNBEREICH-4-THEATERKONZEPTE-LK",
+      "title": "Gestalten einer Erörterung zu Problemen des Dramas und des Theaters",
+      "description": "Die lernende Person kann gestalten einer Erörterung zu Problemen des Dramas und des Theaters.",
+      "sourceDocumentKey": "SN-DEUTSCH-GYM-2022",
+      "sourceRef": "Lehrplan Gymnasium Deutsch Sachsen 2004/2007/2009/2011/2013/2019/2022, Jahrgangsstufen 11/12 Leistungskurs, Lernbereich 4: Theaterkonzepte, PDF-S. 69",
+      "sourceText": "Gestalten einer Erörterung zu Problemen des Dramas und des Theaters",
+      "sourceSpan": {
+        "passageId": "b6c1b9e1-658d-5e7c-17b8-f2dcf4acddc6",
+        "label": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-LEISTUNGSKURS-LERNBEREICH-4-THEATERKONZEPTE-LK#56"
+      },
+      "courseLevel": "LK",
+      "tags": [
+        "jurisdiction:DE-SN",
+        "stage:SekII",
+        "phase:jahrgangsstufen-11-12-leistungskurs",
+        "field:lernbereich-4-theaterkonzepte",
+        "courseLevel:LK",
+        "sourceDocument:SN-DEUTSCH-GYM-2022"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-bbox-left-column-sn-gymnasium-deutsch-pflicht-lernbereiche-without-wahlbereiche",
+        "phase": "Jahrgangsstufen 11/12 Leistungskurs",
+        "field": "Lernbereich 4: Theaterkonzepte",
+        "page": 69
+      }
+    },
+    {
+      "id": "3c8dab07-3e9e-5f8a-01c1-37123999c391",
+      "passageId": "7966da92-06a6-5ff2-9604-e9e468c927d6",
+      "topicCode": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-LEISTUNGSKURS-LERNBEREICH-5-EIN-ROMAN-IN-SEINER-ZEIT-LK",
+      "title": "Kennen eines Romans als Ganzschrift: Struktur, Erzähltechnik",
+      "description": "Die lernende Person kann kennen eines Romans als Ganzschrift: Struktur, Erzähltechnik.",
+      "sourceDocumentKey": "SN-DEUTSCH-GYM-2022",
+      "sourceRef": "Lehrplan Gymnasium Deutsch Sachsen 2004/2007/2009/2011/2013/2019/2022, Jahrgangsstufen 11/12 Leistungskurs, Lernbereich 5: Ein Roman in seiner Zeit, PDF-S. 69",
+      "sourceText": "Kennen eines Romans als Ganzschrift: Struktur, Erzähltechnik",
+      "sourceSpan": {
+        "passageId": "7966da92-06a6-5ff2-9604-e9e468c927d6",
+        "label": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-LEISTUNGSKURS-LERNBEREICH-5-EIN-ROMAN-IN-SEINER-ZEIT-LK#57"
+      },
+      "courseLevel": "LK",
+      "tags": [
+        "jurisdiction:DE-SN",
+        "stage:SekII",
+        "phase:jahrgangsstufen-11-12-leistungskurs",
+        "field:lernbereich-5-ein-roman-in-seiner-zeit",
+        "courseLevel:LK",
+        "sourceDocument:SN-DEUTSCH-GYM-2022"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-bbox-left-column-sn-gymnasium-deutsch-pflicht-lernbereiche-without-wahlbereiche",
+        "phase": "Jahrgangsstufen 11/12 Leistungskurs",
+        "field": "Lernbereich 5: Ein Roman in seiner Zeit",
+        "page": 69
+      }
+    },
+    {
+      "id": "42fb78f7-eb88-5c69-1795-e12dceb86a05",
+      "passageId": "7966da92-06a6-5ff2-9604-e9e468c927d6",
+      "topicCode": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-LEISTUNGSKURS-LERNBEREICH-5-EIN-ROMAN-IN-SEINER-ZEIT-LK",
+      "title": "Kennen eines Romans als Ganzschrift: Raumund Zeitgestaltung",
+      "description": "Die lernende Person kann kennen eines Romans als Ganzschrift: Raumund Zeitgestaltung.",
+      "sourceDocumentKey": "SN-DEUTSCH-GYM-2022",
+      "sourceRef": "Lehrplan Gymnasium Deutsch Sachsen 2004/2007/2009/2011/2013/2019/2022, Jahrgangsstufen 11/12 Leistungskurs, Lernbereich 5: Ein Roman in seiner Zeit, PDF-S. 69",
+      "sourceText": "Kennen eines Romans als Ganzschrift: Raumund Zeitgestaltung",
+      "sourceSpan": {
+        "passageId": "7966da92-06a6-5ff2-9604-e9e468c927d6",
+        "label": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-LEISTUNGSKURS-LERNBEREICH-5-EIN-ROMAN-IN-SEINER-ZEIT-LK#58"
+      },
+      "courseLevel": "LK",
+      "tags": [
+        "jurisdiction:DE-SN",
+        "stage:SekII",
+        "phase:jahrgangsstufen-11-12-leistungskurs",
+        "field:lernbereich-5-ein-roman-in-seiner-zeit",
+        "courseLevel:LK",
+        "sourceDocument:SN-DEUTSCH-GYM-2022"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-bbox-left-column-sn-gymnasium-deutsch-pflicht-lernbereiche-without-wahlbereiche",
+        "phase": "Jahrgangsstufen 11/12 Leistungskurs",
+        "field": "Lernbereich 5: Ein Roman in seiner Zeit",
+        "page": 69
+      }
+    },
+    {
+      "id": "4befb6eb-5d43-5b92-5f77-9d2dfda90477",
+      "passageId": "7966da92-06a6-5ff2-9604-e9e468c927d6",
+      "topicCode": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-LEISTUNGSKURS-LERNBEREICH-5-EIN-ROMAN-IN-SEINER-ZEIT-LK",
+      "title": "Kennen eines Romans als Ganzschrift: Figurengestaltung",
+      "description": "Die lernende Person kann kennen eines Romans als Ganzschrift: Figurengestaltung.",
+      "sourceDocumentKey": "SN-DEUTSCH-GYM-2022",
+      "sourceRef": "Lehrplan Gymnasium Deutsch Sachsen 2004/2007/2009/2011/2013/2019/2022, Jahrgangsstufen 11/12 Leistungskurs, Lernbereich 5: Ein Roman in seiner Zeit, PDF-S. 69",
+      "sourceText": "Kennen eines Romans als Ganzschrift: Figurengestaltung",
+      "sourceSpan": {
+        "passageId": "7966da92-06a6-5ff2-9604-e9e468c927d6",
+        "label": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-LEISTUNGSKURS-LERNBEREICH-5-EIN-ROMAN-IN-SEINER-ZEIT-LK#59"
+      },
+      "courseLevel": "LK",
+      "tags": [
+        "jurisdiction:DE-SN",
+        "stage:SekII",
+        "phase:jahrgangsstufen-11-12-leistungskurs",
+        "field:lernbereich-5-ein-roman-in-seiner-zeit",
+        "courseLevel:LK",
+        "sourceDocument:SN-DEUTSCH-GYM-2022"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-bbox-left-column-sn-gymnasium-deutsch-pflicht-lernbereiche-without-wahlbereiche",
+        "phase": "Jahrgangsstufen 11/12 Leistungskurs",
+        "field": "Lernbereich 5: Ein Roman in seiner Zeit",
+        "page": 69
+      }
+    },
+    {
+      "id": "67bbaf43-220f-5146-cb21-bb20e25d7675",
+      "passageId": "7966da92-06a6-5ff2-9604-e9e468c927d6",
+      "topicCode": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-LEISTUNGSKURS-LERNBEREICH-5-EIN-ROMAN-IN-SEINER-ZEIT-LK",
+      "title": "Beurteilen der inhaltlichen und ästhetischen Qualität des Romans",
+      "description": "Die lernende Person kann beurteilen der inhaltlichen und ästhetischen Qualität des Romans.",
+      "sourceDocumentKey": "SN-DEUTSCH-GYM-2022",
+      "sourceRef": "Lehrplan Gymnasium Deutsch Sachsen 2004/2007/2009/2011/2013/2019/2022, Jahrgangsstufen 11/12 Leistungskurs, Lernbereich 5: Ein Roman in seiner Zeit, PDF-S. 69",
+      "sourceText": "Beurteilen der inhaltlichen und ästhetischen Qualität des Romans",
+      "sourceSpan": {
+        "passageId": "7966da92-06a6-5ff2-9604-e9e468c927d6",
+        "label": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-LEISTUNGSKURS-LERNBEREICH-5-EIN-ROMAN-IN-SEINER-ZEIT-LK#60"
+      },
+      "courseLevel": "LK",
+      "tags": [
+        "jurisdiction:DE-SN",
+        "stage:SekII",
+        "phase:jahrgangsstufen-11-12-leistungskurs",
+        "field:lernbereich-5-ein-roman-in-seiner-zeit",
+        "courseLevel:LK",
+        "sourceDocument:SN-DEUTSCH-GYM-2022"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-bbox-left-column-sn-gymnasium-deutsch-pflicht-lernbereiche-without-wahlbereiche",
+        "phase": "Jahrgangsstufen 11/12 Leistungskurs",
+        "field": "Lernbereich 5: Ein Roman in seiner Zeit",
+        "page": 69
+      }
+    },
+    {
+      "id": "2ad3c1e1-0e97-5928-c033-15e85ee506f2",
+      "passageId": "7966da92-06a6-5ff2-9604-e9e468c927d6",
+      "topicCode": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-LEISTUNGSKURS-LERNBEREICH-5-EIN-ROMAN-IN-SEINER-ZEIT-LK",
+      "title": "Anwenden gattungsspezifischer Interpretationsmethoden",
+      "description": "Die lernende Person kann anwenden gattungsspezifischer Interpretationsmethoden.",
+      "sourceDocumentKey": "SN-DEUTSCH-GYM-2022",
+      "sourceRef": "Lehrplan Gymnasium Deutsch Sachsen 2004/2007/2009/2011/2013/2019/2022, Jahrgangsstufen 11/12 Leistungskurs, Lernbereich 5: Ein Roman in seiner Zeit, PDF-S. 69",
+      "sourceText": "Anwenden gattungsspezifischer Interpretationsmethoden",
+      "sourceSpan": {
+        "passageId": "7966da92-06a6-5ff2-9604-e9e468c927d6",
+        "label": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-LEISTUNGSKURS-LERNBEREICH-5-EIN-ROMAN-IN-SEINER-ZEIT-LK#61"
+      },
+      "courseLevel": "LK",
+      "tags": [
+        "jurisdiction:DE-SN",
+        "stage:SekII",
+        "phase:jahrgangsstufen-11-12-leistungskurs",
+        "field:lernbereich-5-ein-roman-in-seiner-zeit",
+        "courseLevel:LK",
+        "sourceDocument:SN-DEUTSCH-GYM-2022"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-bbox-left-column-sn-gymnasium-deutsch-pflicht-lernbereiche-without-wahlbereiche",
+        "phase": "Jahrgangsstufen 11/12 Leistungskurs",
+        "field": "Lernbereich 5: Ein Roman in seiner Zeit",
+        "page": 69
+      }
+    },
+    {
+      "id": "6ee0632f-c5ed-5772-67f4-398f759ce091",
+      "passageId": "7966da92-06a6-5ff2-9604-e9e468c927d6",
+      "topicCode": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-LEISTUNGSKURS-LERNBEREICH-5-EIN-ROMAN-IN-SEINER-ZEIT-LK",
+      "title": "Kennen des biographischen, historischen, politischen, philosophischen, religiösen Entst...",
+      "description": "Die lernende Person kann kennen des biographischen, historischen, politischen, philosophischen, religiösen Entstehungskontextes.",
+      "sourceDocumentKey": "SN-DEUTSCH-GYM-2022",
+      "sourceRef": "Lehrplan Gymnasium Deutsch Sachsen 2004/2007/2009/2011/2013/2019/2022, Jahrgangsstufen 11/12 Leistungskurs, Lernbereich 5: Ein Roman in seiner Zeit, PDF-S. 69",
+      "sourceText": "Kennen des biographischen, historischen, politischen, philosophischen, religiösen Entstehungskontextes",
+      "sourceSpan": {
+        "passageId": "7966da92-06a6-5ff2-9604-e9e468c927d6",
+        "label": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-LEISTUNGSKURS-LERNBEREICH-5-EIN-ROMAN-IN-SEINER-ZEIT-LK#62"
+      },
+      "courseLevel": "LK",
+      "tags": [
+        "jurisdiction:DE-SN",
+        "stage:SekII",
+        "phase:jahrgangsstufen-11-12-leistungskurs",
+        "field:lernbereich-5-ein-roman-in-seiner-zeit",
+        "courseLevel:LK",
+        "sourceDocument:SN-DEUTSCH-GYM-2022"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-bbox-left-column-sn-gymnasium-deutsch-pflicht-lernbereiche-without-wahlbereiche",
+        "phase": "Jahrgangsstufen 11/12 Leistungskurs",
+        "field": "Lernbereich 5: Ein Roman in seiner Zeit",
+        "page": 69
+      }
+    },
+    {
+      "id": "3db79925-006a-5cb9-54dd-2ffc7e440264",
+      "passageId": "7966da92-06a6-5ff2-9604-e9e468c927d6",
+      "topicCode": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-LEISTUNGSKURS-LERNBEREICH-5-EIN-ROMAN-IN-SEINER-ZEIT-LK",
+      "title": "Sich positionieren zu Grundzügen der Rezeptionsgeschichte des Romans",
+      "description": "Die lernende Person kann sich positionieren zu Grundzügen der Rezeptionsgeschichte des Romans.",
+      "sourceDocumentKey": "SN-DEUTSCH-GYM-2022",
+      "sourceRef": "Lehrplan Gymnasium Deutsch Sachsen 2004/2007/2009/2011/2013/2019/2022, Jahrgangsstufen 11/12 Leistungskurs, Lernbereich 5: Ein Roman in seiner Zeit, PDF-S. 69",
+      "sourceText": "Sich positionieren zu Grundzügen der Rezeptionsgeschichte des Romans",
+      "sourceSpan": {
+        "passageId": "7966da92-06a6-5ff2-9604-e9e468c927d6",
+        "label": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-LEISTUNGSKURS-LERNBEREICH-5-EIN-ROMAN-IN-SEINER-ZEIT-LK#63"
+      },
+      "courseLevel": "LK",
+      "tags": [
+        "jurisdiction:DE-SN",
+        "stage:SekII",
+        "phase:jahrgangsstufen-11-12-leistungskurs",
+        "field:lernbereich-5-ein-roman-in-seiner-zeit",
+        "courseLevel:LK",
+        "sourceDocument:SN-DEUTSCH-GYM-2022"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-bbox-left-column-sn-gymnasium-deutsch-pflicht-lernbereiche-without-wahlbereiche",
+        "phase": "Jahrgangsstufen 11/12 Leistungskurs",
+        "field": "Lernbereich 5: Ein Roman in seiner Zeit",
+        "page": 69
+      }
+    },
+    {
+      "id": "74c8e855-a6ea-5319-76e3-4e9d56229e4f",
+      "passageId": "f0ce24ab-3906-5f03-7544-ed01a8c2a7a4",
+      "topicCode": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-LEISTUNGSKURS-LERNBEREICH-6-KONKURRENZ-LITERARISCHER-KONZEPTE-UM-1900-LK",
+      "title": "Beurteilen von Gedichten des Expressionismus und weiterer literarischer Strömungen um 1...",
+      "description": "Die lernende Person kann beurteilen von Gedichten des Expressionismus und weiterer literarischer Strömungen um 1900 zu vergleichbaren Themen und Motiven.",
+      "sourceDocumentKey": "SN-DEUTSCH-GYM-2022",
+      "sourceRef": "Lehrplan Gymnasium Deutsch Sachsen 2004/2007/2009/2011/2013/2019/2022, Jahrgangsstufen 11/12 Leistungskurs, Lernbereich 6: Konkurrenz literarischer Konzepte um 1900, PDF-S. 70",
+      "sourceText": "Beurteilen von Gedichten des Expressionismus und weiterer literarischer Strömungen um 1900 zu vergleichbaren Themen und Motiven",
+      "sourceSpan": {
+        "passageId": "f0ce24ab-3906-5f03-7544-ed01a8c2a7a4",
+        "label": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-LEISTUNGSKURS-LERNBEREICH-6-KONKURRENZ-LITERARISCHER-KONZEPTE-UM-1900-LK#64"
+      },
+      "courseLevel": "LK",
+      "tags": [
+        "jurisdiction:DE-SN",
+        "stage:SekII",
+        "phase:jahrgangsstufen-11-12-leistungskurs",
+        "field:lernbereich-6-konkurrenz-literarischer-konzepte-um-1900",
+        "courseLevel:LK",
+        "sourceDocument:SN-DEUTSCH-GYM-2022"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-bbox-left-column-sn-gymnasium-deutsch-pflicht-lernbereiche-without-wahlbereiche",
+        "phase": "Jahrgangsstufen 11/12 Leistungskurs",
+        "field": "Lernbereich 6: Konkurrenz literarischer Konzepte um 1900",
+        "page": 70
+      }
+    },
+    {
+      "id": "5c2710da-f14a-57c8-2403-5896565f223c",
+      "passageId": "f0ce24ab-3906-5f03-7544-ed01a8c2a7a4",
+      "topicCode": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-LEISTUNGSKURS-LERNBEREICH-6-KONKURRENZ-LITERARISCHER-KONZEPTE-UM-1900-LK",
+      "title": "Einblick gewinnen in die Lyrik des Barock im Vergleich",
+      "description": "Die lernende Person kann einblick gewinnen in die Lyrik des Barock im Vergleich.",
+      "sourceDocumentKey": "SN-DEUTSCH-GYM-2022",
+      "sourceRef": "Lehrplan Gymnasium Deutsch Sachsen 2004/2007/2009/2011/2013/2019/2022, Jahrgangsstufen 11/12 Leistungskurs, Lernbereich 6: Konkurrenz literarischer Konzepte um 1900, PDF-S. 70",
+      "sourceText": "Einblick gewinnen in die Lyrik des Barock im Vergleich",
+      "sourceSpan": {
+        "passageId": "f0ce24ab-3906-5f03-7544-ed01a8c2a7a4",
+        "label": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-LEISTUNGSKURS-LERNBEREICH-6-KONKURRENZ-LITERARISCHER-KONZEPTE-UM-1900-LK#65"
+      },
+      "courseLevel": "LK",
+      "tags": [
+        "jurisdiction:DE-SN",
+        "stage:SekII",
+        "phase:jahrgangsstufen-11-12-leistungskurs",
+        "field:lernbereich-6-konkurrenz-literarischer-konzepte-um-1900",
+        "courseLevel:LK",
+        "sourceDocument:SN-DEUTSCH-GYM-2022"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-bbox-left-column-sn-gymnasium-deutsch-pflicht-lernbereiche-without-wahlbereiche",
+        "phase": "Jahrgangsstufen 11/12 Leistungskurs",
+        "field": "Lernbereich 6: Konkurrenz literarischer Konzepte um 1900",
+        "page": 70
+      }
+    },
+    {
+      "id": "cb6aa639-1d67-5033-174d-a6346d69b45c",
+      "passageId": "f0ce24ab-3906-5f03-7544-ed01a8c2a7a4",
+      "topicCode": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-LEISTUNGSKURS-LERNBEREICH-6-KONKURRENZ-LITERARISCHER-KONZEPTE-UM-1900-LK",
+      "title": "Gestalten einer vergleichenden Textinterpretation",
+      "description": "Die lernende Person kann gestalten einer vergleichenden Textinterpretation.",
+      "sourceDocumentKey": "SN-DEUTSCH-GYM-2022",
+      "sourceRef": "Lehrplan Gymnasium Deutsch Sachsen 2004/2007/2009/2011/2013/2019/2022, Jahrgangsstufen 11/12 Leistungskurs, Lernbereich 6: Konkurrenz literarischer Konzepte um 1900, PDF-S. 70",
+      "sourceText": "Gestalten einer vergleichenden Textinterpretation",
+      "sourceSpan": {
+        "passageId": "f0ce24ab-3906-5f03-7544-ed01a8c2a7a4",
+        "label": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-LEISTUNGSKURS-LERNBEREICH-6-KONKURRENZ-LITERARISCHER-KONZEPTE-UM-1900-LK#66"
+      },
+      "courseLevel": "LK",
+      "tags": [
+        "jurisdiction:DE-SN",
+        "stage:SekII",
+        "phase:jahrgangsstufen-11-12-leistungskurs",
+        "field:lernbereich-6-konkurrenz-literarischer-konzepte-um-1900",
+        "courseLevel:LK",
+        "sourceDocument:SN-DEUTSCH-GYM-2022"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-bbox-left-column-sn-gymnasium-deutsch-pflicht-lernbereiche-without-wahlbereiche",
+        "phase": "Jahrgangsstufen 11/12 Leistungskurs",
+        "field": "Lernbereich 6: Konkurrenz literarischer Konzepte um 1900",
+        "page": 70
+      }
+    },
+    {
+      "id": "828d8f1e-119a-539f-2088-65df1ac51900",
+      "passageId": "f0ce24ab-3906-5f03-7544-ed01a8c2a7a4",
+      "topicCode": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-LEISTUNGSKURS-LERNBEREICH-6-KONKURRENZ-LITERARISCHER-KONZEPTE-UM-1900-LK",
+      "title": "Kennen von Besonderheiten der Erzählkunst Kafkas durch Erschließen von Kurzprosa",
+      "description": "Die lernende Person kann kennen von Besonderheiten der Erzählkunst Kafkas durch Erschließen von Kurzprosa.",
+      "sourceDocumentKey": "SN-DEUTSCH-GYM-2022",
+      "sourceRef": "Lehrplan Gymnasium Deutsch Sachsen 2004/2007/2009/2011/2013/2019/2022, Jahrgangsstufen 11/12 Leistungskurs, Lernbereich 6: Konkurrenz literarischer Konzepte um 1900, PDF-S. 70",
+      "sourceText": "Kennen von Besonderheiten der Erzählkunst Kafkas durch Erschließen von Kurzprosa",
+      "sourceSpan": {
+        "passageId": "f0ce24ab-3906-5f03-7544-ed01a8c2a7a4",
+        "label": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-LEISTUNGSKURS-LERNBEREICH-6-KONKURRENZ-LITERARISCHER-KONZEPTE-UM-1900-LK#67"
+      },
+      "courseLevel": "LK",
+      "tags": [
+        "jurisdiction:DE-SN",
+        "stage:SekII",
+        "phase:jahrgangsstufen-11-12-leistungskurs",
+        "field:lernbereich-6-konkurrenz-literarischer-konzepte-um-1900",
+        "courseLevel:LK",
+        "sourceDocument:SN-DEUTSCH-GYM-2022"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-bbox-left-column-sn-gymnasium-deutsch-pflicht-lernbereiche-without-wahlbereiche",
+        "phase": "Jahrgangsstufen 11/12 Leistungskurs",
+        "field": "Lernbereich 6: Konkurrenz literarischer Konzepte um 1900",
+        "page": 70
+      }
+    },
+    {
+      "id": "9788fd93-a7aa-568d-6ac7-c63509f5534f",
+      "passageId": "f0ce24ab-3906-5f03-7544-ed01a8c2a7a4",
+      "topicCode": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-LEISTUNGSKURS-LERNBEREICH-6-KONKURRENZ-LITERARISCHER-KONZEPTE-UM-1900-LK",
+      "title": "Kennen einer literarischen Ganzschrift",
+      "description": "Die lernende Person kann kennen einer literarischen Ganzschrift.",
+      "sourceDocumentKey": "SN-DEUTSCH-GYM-2022",
+      "sourceRef": "Lehrplan Gymnasium Deutsch Sachsen 2004/2007/2009/2011/2013/2019/2022, Jahrgangsstufen 11/12 Leistungskurs, Lernbereich 6: Konkurrenz literarischer Konzepte um 1900, PDF-S. 70",
+      "sourceText": "Kennen einer literarischen Ganzschrift",
+      "sourceSpan": {
+        "passageId": "f0ce24ab-3906-5f03-7544-ed01a8c2a7a4",
+        "label": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-LEISTUNGSKURS-LERNBEREICH-6-KONKURRENZ-LITERARISCHER-KONZEPTE-UM-1900-LK#68"
+      },
+      "courseLevel": "LK",
+      "tags": [
+        "jurisdiction:DE-SN",
+        "stage:SekII",
+        "phase:jahrgangsstufen-11-12-leistungskurs",
+        "field:lernbereich-6-konkurrenz-literarischer-konzepte-um-1900",
+        "courseLevel:LK",
+        "sourceDocument:SN-DEUTSCH-GYM-2022"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-bbox-left-column-sn-gymnasium-deutsch-pflicht-lernbereiche-without-wahlbereiche",
+        "phase": "Jahrgangsstufen 11/12 Leistungskurs",
+        "field": "Lernbereich 6: Konkurrenz literarischer Konzepte um 1900",
+        "page": 70
+      }
+    },
+    {
+      "id": "6ed479c5-c65e-5337-d122-a01d1b03bf47",
+      "passageId": "f0ce24ab-3906-5f03-7544-ed01a8c2a7a4",
+      "topicCode": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-LEISTUNGSKURS-LERNBEREICH-6-KONKURRENZ-LITERARISCHER-KONZEPTE-UM-1900-LK",
+      "title": "Anwenden von Verfahren des Interpretierens und literarischen Erörterns",
+      "description": "Die lernende Person kann anwenden von Verfahren des Interpretierens und literarischen Erörterns.",
+      "sourceDocumentKey": "SN-DEUTSCH-GYM-2022",
+      "sourceRef": "Lehrplan Gymnasium Deutsch Sachsen 2004/2007/2009/2011/2013/2019/2022, Jahrgangsstufen 11/12 Leistungskurs, Lernbereich 6: Konkurrenz literarischer Konzepte um 1900, PDF-S. 70",
+      "sourceText": "Anwenden von Verfahren des Interpretierens und literarischen Erörterns",
+      "sourceSpan": {
+        "passageId": "f0ce24ab-3906-5f03-7544-ed01a8c2a7a4",
+        "label": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-LEISTUNGSKURS-LERNBEREICH-6-KONKURRENZ-LITERARISCHER-KONZEPTE-UM-1900-LK#69"
+      },
+      "courseLevel": "LK",
+      "tags": [
+        "jurisdiction:DE-SN",
+        "stage:SekII",
+        "phase:jahrgangsstufen-11-12-leistungskurs",
+        "field:lernbereich-6-konkurrenz-literarischer-konzepte-um-1900",
+        "courseLevel:LK",
+        "sourceDocument:SN-DEUTSCH-GYM-2022"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-bbox-left-column-sn-gymnasium-deutsch-pflicht-lernbereiche-without-wahlbereiche",
+        "phase": "Jahrgangsstufen 11/12 Leistungskurs",
+        "field": "Lernbereich 6: Konkurrenz literarischer Konzepte um 1900",
+        "page": 70
+      }
+    },
+    {
+      "id": "5deab071-99bb-5d27-f773-9fbff892f0ba",
+      "passageId": "845c328e-ae9b-50a4-9913-a0b1a05bb768",
+      "topicCode": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-LEISTUNGSKURS-LERNBEREICH-7-STOFFE-UND-MOTIVE-LK",
+      "title": "Kennen der funktionalen Abhängigkeit von Themen, Stoffen und Motiven",
+      "description": "Die lernende Person kann kennen der funktionalen Abhängigkeit von Themen, Stoffen und Motiven.",
+      "sourceDocumentKey": "SN-DEUTSCH-GYM-2022",
+      "sourceRef": "Lehrplan Gymnasium Deutsch Sachsen 2004/2007/2009/2011/2013/2019/2022, Jahrgangsstufen 11/12 Leistungskurs, Lernbereich 7: Stoffe und Motive, PDF-S. 70",
+      "sourceText": "Kennen der funktionalen Abhängigkeit von Themen, Stoffen und Motiven",
+      "sourceSpan": {
+        "passageId": "845c328e-ae9b-50a4-9913-a0b1a05bb768",
+        "label": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-LEISTUNGSKURS-LERNBEREICH-7-STOFFE-UND-MOTIVE-LK#70"
+      },
+      "courseLevel": "LK",
+      "tags": [
+        "jurisdiction:DE-SN",
+        "stage:SekII",
+        "phase:jahrgangsstufen-11-12-leistungskurs",
+        "field:lernbereich-7-stoffe-und-motive",
+        "courseLevel:LK",
+        "sourceDocument:SN-DEUTSCH-GYM-2022"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-bbox-left-column-sn-gymnasium-deutsch-pflicht-lernbereiche-without-wahlbereiche",
+        "phase": "Jahrgangsstufen 11/12 Leistungskurs",
+        "field": "Lernbereich 7: Stoffe und Motive",
+        "page": 70
+      }
+    },
+    {
+      "id": "03d70710-4844-58f4-bec6-9e0ab6650f23",
+      "passageId": "845c328e-ae9b-50a4-9913-a0b1a05bb768",
+      "topicCode": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-LEISTUNGSKURS-LERNBEREICH-7-STOFFE-UND-MOTIVE-LK",
+      "title": "Sich positionieren zu einem literarischen Stoff einer Ganzschrift",
+      "description": "Die lernende Person kann sich positionieren zu einem literarischen Stoff einer Ganzschrift.",
+      "sourceDocumentKey": "SN-DEUTSCH-GYM-2022",
+      "sourceRef": "Lehrplan Gymnasium Deutsch Sachsen 2004/2007/2009/2011/2013/2019/2022, Jahrgangsstufen 11/12 Leistungskurs, Lernbereich 7: Stoffe und Motive, PDF-S. 70",
+      "sourceText": "Sich positionieren zu einem literarischen Stoff einer Ganzschrift",
+      "sourceSpan": {
+        "passageId": "845c328e-ae9b-50a4-9913-a0b1a05bb768",
+        "label": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-LEISTUNGSKURS-LERNBEREICH-7-STOFFE-UND-MOTIVE-LK#71"
+      },
+      "courseLevel": "LK",
+      "tags": [
+        "jurisdiction:DE-SN",
+        "stage:SekII",
+        "phase:jahrgangsstufen-11-12-leistungskurs",
+        "field:lernbereich-7-stoffe-und-motive",
+        "courseLevel:LK",
+        "sourceDocument:SN-DEUTSCH-GYM-2022"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-bbox-left-column-sn-gymnasium-deutsch-pflicht-lernbereiche-without-wahlbereiche",
+        "phase": "Jahrgangsstufen 11/12 Leistungskurs",
+        "field": "Lernbereich 7: Stoffe und Motive",
+        "page": 70
+      }
+    },
+    {
+      "id": "531dba4a-f8b1-5dba-60e0-d48c1ca34e29",
+      "passageId": "845c328e-ae9b-50a4-9913-a0b1a05bb768",
+      "topicCode": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-LEISTUNGSKURS-LERNBEREICH-7-STOFFE-UND-MOTIVE-LK",
+      "title": "Sich positionieren zu weiteren literarischen Bearbeitungen eines Stoffes",
+      "description": "Die lernende Person kann sich positionieren zu weiteren literarischen Bearbeitungen eines Stoffes.",
+      "sourceDocumentKey": "SN-DEUTSCH-GYM-2022",
+      "sourceRef": "Lehrplan Gymnasium Deutsch Sachsen 2004/2007/2009/2011/2013/2019/2022, Jahrgangsstufen 11/12 Leistungskurs, Lernbereich 7: Stoffe und Motive, PDF-S. 70",
+      "sourceText": "Sich positionieren zu weiteren literarischen Bearbeitungen eines Stoffes",
+      "sourceSpan": {
+        "passageId": "845c328e-ae9b-50a4-9913-a0b1a05bb768",
+        "label": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-LEISTUNGSKURS-LERNBEREICH-7-STOFFE-UND-MOTIVE-LK#72"
+      },
+      "courseLevel": "LK",
+      "tags": [
+        "jurisdiction:DE-SN",
+        "stage:SekII",
+        "phase:jahrgangsstufen-11-12-leistungskurs",
+        "field:lernbereich-7-stoffe-und-motive",
+        "courseLevel:LK",
+        "sourceDocument:SN-DEUTSCH-GYM-2022"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-bbox-left-column-sn-gymnasium-deutsch-pflicht-lernbereiche-without-wahlbereiche",
+        "phase": "Jahrgangsstufen 11/12 Leistungskurs",
+        "field": "Lernbereich 7: Stoffe und Motive",
+        "page": 70
+      }
+    },
+    {
+      "id": "ca9151ec-397b-5722-38ff-7394e8c77b23",
+      "passageId": "845c328e-ae9b-50a4-9913-a0b1a05bb768",
+      "topicCode": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-LEISTUNGSKURS-LERNBEREICH-7-STOFFE-UND-MOTIVE-LK",
+      "title": "Gestalten von Variationen eines Stoffes",
+      "description": "Die lernende Person kann gestalten von Variationen eines Stoffes.",
+      "sourceDocumentKey": "SN-DEUTSCH-GYM-2022",
+      "sourceRef": "Lehrplan Gymnasium Deutsch Sachsen 2004/2007/2009/2011/2013/2019/2022, Jahrgangsstufen 11/12 Leistungskurs, Lernbereich 7: Stoffe und Motive, PDF-S. 71",
+      "sourceText": "Gestalten von Variationen eines Stoffes",
+      "sourceSpan": {
+        "passageId": "845c328e-ae9b-50a4-9913-a0b1a05bb768",
+        "label": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-LEISTUNGSKURS-LERNBEREICH-7-STOFFE-UND-MOTIVE-LK#73"
+      },
+      "courseLevel": "LK",
+      "tags": [
+        "jurisdiction:DE-SN",
+        "stage:SekII",
+        "phase:jahrgangsstufen-11-12-leistungskurs",
+        "field:lernbereich-7-stoffe-und-motive",
+        "courseLevel:LK",
+        "sourceDocument:SN-DEUTSCH-GYM-2022"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-bbox-left-column-sn-gymnasium-deutsch-pflicht-lernbereiche-without-wahlbereiche",
+        "phase": "Jahrgangsstufen 11/12 Leistungskurs",
+        "field": "Lernbereich 7: Stoffe und Motive",
+        "page": 71
+      }
+    },
+    {
+      "id": "dc53ae77-6e20-5855-a7c8-8c5e72b11fcb",
+      "passageId": "845c328e-ae9b-50a4-9913-a0b1a05bb768",
+      "topicCode": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-LEISTUNGSKURS-LERNBEREICH-7-STOFFE-UND-MOTIVE-LK",
+      "title": "Anwenden des Wissens über Themen und Motiventfaltung bei der Arbeit mit Ganzschriften",
+      "description": "Die lernende Person kann anwenden des Wissens über Themen und Motiventfaltung bei der Arbeit mit Ganzschriften.",
+      "sourceDocumentKey": "SN-DEUTSCH-GYM-2022",
+      "sourceRef": "Lehrplan Gymnasium Deutsch Sachsen 2004/2007/2009/2011/2013/2019/2022, Jahrgangsstufen 11/12 Leistungskurs, Lernbereich 7: Stoffe und Motive, PDF-S. 71",
+      "sourceText": "Anwenden des Wissens über Themen und Motiventfaltung bei der Arbeit mit Ganzschriften",
+      "sourceSpan": {
+        "passageId": "845c328e-ae9b-50a4-9913-a0b1a05bb768",
+        "label": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-LEISTUNGSKURS-LERNBEREICH-7-STOFFE-UND-MOTIVE-LK#74"
+      },
+      "courseLevel": "LK",
+      "tags": [
+        "jurisdiction:DE-SN",
+        "stage:SekII",
+        "phase:jahrgangsstufen-11-12-leistungskurs",
+        "field:lernbereich-7-stoffe-und-motive",
+        "courseLevel:LK",
+        "sourceDocument:SN-DEUTSCH-GYM-2022"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-bbox-left-column-sn-gymnasium-deutsch-pflicht-lernbereiche-without-wahlbereiche",
+        "phase": "Jahrgangsstufen 11/12 Leistungskurs",
+        "field": "Lernbereich 7: Stoffe und Motive",
+        "page": 71
+      }
+    },
+    {
+      "id": "389157b7-4351-5ddb-2610-1454cdeaf1d1",
+      "passageId": "0b366af7-6dd4-5090-f5a5-687e6c754852",
+      "topicCode": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-LEISTUNGSKURS-LERNBEREICH-8-MATERIALGESTUTZTES-SCHREIBEN-LK",
+      "title": "Kennen von Möglichkeiten zur Vorbereitung eines Schreibvorhabens",
+      "description": "Die lernende Person kann kennen von Möglichkeiten zur Vorbereitung eines Schreibvorhabens.",
+      "sourceDocumentKey": "SN-DEUTSCH-GYM-2022",
+      "sourceRef": "Lehrplan Gymnasium Deutsch Sachsen 2004/2007/2009/2011/2013/2019/2022, Jahrgangsstufen 11/12 Leistungskurs, Lernbereich 8: Materialgestütztes Schreiben, PDF-S. 71",
+      "sourceText": "Kennen von Möglichkeiten zur Vorbereitung eines Schreibvorhabens",
+      "sourceSpan": {
+        "passageId": "0b366af7-6dd4-5090-f5a5-687e6c754852",
+        "label": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-LEISTUNGSKURS-LERNBEREICH-8-MATERIALGESTUTZTES-SCHREIBEN-LK#75"
+      },
+      "courseLevel": "LK",
+      "tags": [
+        "jurisdiction:DE-SN",
+        "stage:SekII",
+        "phase:jahrgangsstufen-11-12-leistungskurs",
+        "field:lernbereich-8-materialgestutztes-schreiben",
+        "courseLevel:LK",
+        "sourceDocument:SN-DEUTSCH-GYM-2022"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-bbox-left-column-sn-gymnasium-deutsch-pflicht-lernbereiche-without-wahlbereiche",
+        "phase": "Jahrgangsstufen 11/12 Leistungskurs",
+        "field": "Lernbereich 8: Materialgestütztes Schreiben",
+        "page": 71
+      }
+    },
+    {
+      "id": "f49c2dfe-21b8-55a2-b6a2-ce60fc6c3710",
+      "passageId": "0b366af7-6dd4-5090-f5a5-687e6c754852",
+      "topicCode": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-LEISTUNGSKURS-LERNBEREICH-8-MATERIALGESTUTZTES-SCHREIBEN-LK",
+      "title": "Anwenden von Verfahren zur Aufbereitung von Material: Recherche",
+      "description": "Die lernende Person kann anwenden von Verfahren zur Aufbereitung von Material: Recherche.",
+      "sourceDocumentKey": "SN-DEUTSCH-GYM-2022",
+      "sourceRef": "Lehrplan Gymnasium Deutsch Sachsen 2004/2007/2009/2011/2013/2019/2022, Jahrgangsstufen 11/12 Leistungskurs, Lernbereich 8: Materialgestütztes Schreiben, PDF-S. 71",
+      "sourceText": "Anwenden von Verfahren zur Aufbereitung von Material: Recherche",
+      "sourceSpan": {
+        "passageId": "0b366af7-6dd4-5090-f5a5-687e6c754852",
+        "label": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-LEISTUNGSKURS-LERNBEREICH-8-MATERIALGESTUTZTES-SCHREIBEN-LK#76"
+      },
+      "courseLevel": "LK",
+      "tags": [
+        "jurisdiction:DE-SN",
+        "stage:SekII",
+        "phase:jahrgangsstufen-11-12-leistungskurs",
+        "field:lernbereich-8-materialgestutztes-schreiben",
+        "courseLevel:LK",
+        "sourceDocument:SN-DEUTSCH-GYM-2022"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-bbox-left-column-sn-gymnasium-deutsch-pflicht-lernbereiche-without-wahlbereiche",
+        "phase": "Jahrgangsstufen 11/12 Leistungskurs",
+        "field": "Lernbereich 8: Materialgestütztes Schreiben",
+        "page": 71
+      }
+    },
+    {
+      "id": "b43dc680-4f4c-5b65-0513-43fe4ddfecc5",
+      "passageId": "0b366af7-6dd4-5090-f5a5-687e6c754852",
+      "topicCode": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-LEISTUNGSKURS-LERNBEREICH-8-MATERIALGESTUTZTES-SCHREIBEN-LK",
+      "title": "Anwenden von Verfahren zur Aufbereitung von Material: Analyse und Vergleich",
+      "description": "Die lernende Person kann anwenden von Verfahren zur Aufbereitung von Material: Analyse und Vergleich.",
+      "sourceDocumentKey": "SN-DEUTSCH-GYM-2022",
+      "sourceRef": "Lehrplan Gymnasium Deutsch Sachsen 2004/2007/2009/2011/2013/2019/2022, Jahrgangsstufen 11/12 Leistungskurs, Lernbereich 8: Materialgestütztes Schreiben, PDF-S. 71",
+      "sourceText": "Anwenden von Verfahren zur Aufbereitung von Material: Analyse und Vergleich",
+      "sourceSpan": {
+        "passageId": "0b366af7-6dd4-5090-f5a5-687e6c754852",
+        "label": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-LEISTUNGSKURS-LERNBEREICH-8-MATERIALGESTUTZTES-SCHREIBEN-LK#77"
+      },
+      "courseLevel": "LK",
+      "tags": [
+        "jurisdiction:DE-SN",
+        "stage:SekII",
+        "phase:jahrgangsstufen-11-12-leistungskurs",
+        "field:lernbereich-8-materialgestutztes-schreiben",
+        "courseLevel:LK",
+        "sourceDocument:SN-DEUTSCH-GYM-2022"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-bbox-left-column-sn-gymnasium-deutsch-pflicht-lernbereiche-without-wahlbereiche",
+        "phase": "Jahrgangsstufen 11/12 Leistungskurs",
+        "field": "Lernbereich 8: Materialgestütztes Schreiben",
+        "page": 71
+      }
+    },
+    {
+      "id": "95cefdfb-14f1-5dc2-c00e-3d7ecf5b273c",
+      "passageId": "0b366af7-6dd4-5090-f5a5-687e6c754852",
+      "topicCode": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-LEISTUNGSKURS-LERNBEREICH-8-MATERIALGESTUTZTES-SCHREIBEN-LK",
+      "title": "Anwenden von Verfahren zur Aufbereitung von Material: Exzerpt",
+      "description": "Die lernende Person kann anwenden von Verfahren zur Aufbereitung von Material: Exzerpt.",
+      "sourceDocumentKey": "SN-DEUTSCH-GYM-2022",
+      "sourceRef": "Lehrplan Gymnasium Deutsch Sachsen 2004/2007/2009/2011/2013/2019/2022, Jahrgangsstufen 11/12 Leistungskurs, Lernbereich 8: Materialgestütztes Schreiben, PDF-S. 71",
+      "sourceText": "Anwenden von Verfahren zur Aufbereitung von Material: Exzerpt",
+      "sourceSpan": {
+        "passageId": "0b366af7-6dd4-5090-f5a5-687e6c754852",
+        "label": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-LEISTUNGSKURS-LERNBEREICH-8-MATERIALGESTUTZTES-SCHREIBEN-LK#78"
+      },
+      "courseLevel": "LK",
+      "tags": [
+        "jurisdiction:DE-SN",
+        "stage:SekII",
+        "phase:jahrgangsstufen-11-12-leistungskurs",
+        "field:lernbereich-8-materialgestutztes-schreiben",
+        "courseLevel:LK",
+        "sourceDocument:SN-DEUTSCH-GYM-2022"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-bbox-left-column-sn-gymnasium-deutsch-pflicht-lernbereiche-without-wahlbereiche",
+        "phase": "Jahrgangsstufen 11/12 Leistungskurs",
+        "field": "Lernbereich 8: Materialgestütztes Schreiben",
+        "page": 71
+      }
+    },
+    {
+      "id": "28405dee-d41b-56c4-b172-2a939c30a60d",
+      "passageId": "0b366af7-6dd4-5090-f5a5-687e6c754852",
+      "topicCode": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-LEISTUNGSKURS-LERNBEREICH-8-MATERIALGESTUTZTES-SCHREIBEN-LK",
+      "title": "Anwenden von Verfahren zur Aufbereitung von Material: Zitiertechnik, Quellenangabe",
+      "description": "Die lernende Person kann anwenden von Verfahren zur Aufbereitung von Material: Zitiertechnik, Quellenangabe.",
+      "sourceDocumentKey": "SN-DEUTSCH-GYM-2022",
+      "sourceRef": "Lehrplan Gymnasium Deutsch Sachsen 2004/2007/2009/2011/2013/2019/2022, Jahrgangsstufen 11/12 Leistungskurs, Lernbereich 8: Materialgestütztes Schreiben, PDF-S. 71",
+      "sourceText": "Anwenden von Verfahren zur Aufbereitung von Material: Zitiertechnik, Quellenangabe",
+      "sourceSpan": {
+        "passageId": "0b366af7-6dd4-5090-f5a5-687e6c754852",
+        "label": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-LEISTUNGSKURS-LERNBEREICH-8-MATERIALGESTUTZTES-SCHREIBEN-LK#79"
+      },
+      "courseLevel": "LK",
+      "tags": [
+        "jurisdiction:DE-SN",
+        "stage:SekII",
+        "phase:jahrgangsstufen-11-12-leistungskurs",
+        "field:lernbereich-8-materialgestutztes-schreiben",
+        "courseLevel:LK",
+        "sourceDocument:SN-DEUTSCH-GYM-2022"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-bbox-left-column-sn-gymnasium-deutsch-pflicht-lernbereiche-without-wahlbereiche",
+        "phase": "Jahrgangsstufen 11/12 Leistungskurs",
+        "field": "Lernbereich 8: Materialgestütztes Schreiben",
+        "page": 71
+      }
+    },
+    {
+      "id": "e280718f-964b-5f31-4ef7-33fceef0e266",
+      "passageId": "0b366af7-6dd4-5090-f5a5-687e6c754852",
+      "topicCode": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-LEISTUNGSKURS-LERNBEREICH-8-MATERIALGESTUTZTES-SCHREIBEN-LK",
+      "title": "Anwenden von Wissen zum Planen und Schreiben von Texten",
+      "description": "Die lernende Person kann anwenden von Wissen zum Planen und Schreiben von Texten.",
+      "sourceDocumentKey": "SN-DEUTSCH-GYM-2022",
+      "sourceRef": "Lehrplan Gymnasium Deutsch Sachsen 2004/2007/2009/2011/2013/2019/2022, Jahrgangsstufen 11/12 Leistungskurs, Lernbereich 8: Materialgestütztes Schreiben, PDF-S. 71",
+      "sourceText": "Anwenden von Wissen zum Planen und Schreiben von Texten",
+      "sourceSpan": {
+        "passageId": "0b366af7-6dd4-5090-f5a5-687e6c754852",
+        "label": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-LEISTUNGSKURS-LERNBEREICH-8-MATERIALGESTUTZTES-SCHREIBEN-LK#80"
+      },
+      "courseLevel": "LK",
+      "tags": [
+        "jurisdiction:DE-SN",
+        "stage:SekII",
+        "phase:jahrgangsstufen-11-12-leistungskurs",
+        "field:lernbereich-8-materialgestutztes-schreiben",
+        "courseLevel:LK",
+        "sourceDocument:SN-DEUTSCH-GYM-2022"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-bbox-left-column-sn-gymnasium-deutsch-pflicht-lernbereiche-without-wahlbereiche",
+        "phase": "Jahrgangsstufen 11/12 Leistungskurs",
+        "field": "Lernbereich 8: Materialgestütztes Schreiben",
+        "page": 71
+      }
+    },
+    {
+      "id": "91fa247a-90f5-5717-4483-46f5c50c7131",
+      "passageId": "0b366af7-6dd4-5090-f5a5-687e6c754852",
+      "topicCode": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-LEISTUNGSKURS-LERNBEREICH-8-MATERIALGESTUTZTES-SCHREIBEN-LK",
+      "title": "Gestalten von informierenden und argumentierenden Texten",
+      "description": "Die lernende Person kann gestalten von informierenden und argumentierenden Texten.",
+      "sourceDocumentKey": "SN-DEUTSCH-GYM-2022",
+      "sourceRef": "Lehrplan Gymnasium Deutsch Sachsen 2004/2007/2009/2011/2013/2019/2022, Jahrgangsstufen 11/12 Leistungskurs, Lernbereich 8: Materialgestütztes Schreiben, PDF-S. 71",
+      "sourceText": "Gestalten von informierenden und argumentierenden Texten",
+      "sourceSpan": {
+        "passageId": "0b366af7-6dd4-5090-f5a5-687e6c754852",
+        "label": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-LEISTUNGSKURS-LERNBEREICH-8-MATERIALGESTUTZTES-SCHREIBEN-LK#81"
+      },
+      "courseLevel": "LK",
+      "tags": [
+        "jurisdiction:DE-SN",
+        "stage:SekII",
+        "phase:jahrgangsstufen-11-12-leistungskurs",
+        "field:lernbereich-8-materialgestutztes-schreiben",
+        "courseLevel:LK",
+        "sourceDocument:SN-DEUTSCH-GYM-2022"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-bbox-left-column-sn-gymnasium-deutsch-pflicht-lernbereiche-without-wahlbereiche",
+        "phase": "Jahrgangsstufen 11/12 Leistungskurs",
+        "field": "Lernbereich 8: Materialgestütztes Schreiben",
+        "page": 71
+      }
+    },
+    {
+      "id": "6c0baada-d73b-521d-45cf-512283011da6",
+      "passageId": "53e2ba3c-6580-5071-fb6c-2027cec271c7",
+      "topicCode": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-LEISTUNGSKURS-LERNBEREICH-9-SPRACHE-UND-KOMMUNIKATION-LK",
+      "title": "Kennen von Texten und Modellen zu den Themenkreisen",
+      "description": "Die lernende Person kann kennen von Texten und Modellen zu den Themenkreisen.",
+      "sourceDocumentKey": "SN-DEUTSCH-GYM-2022",
+      "sourceRef": "Lehrplan Gymnasium Deutsch Sachsen 2004/2007/2009/2011/2013/2019/2022, Jahrgangsstufen 11/12 Leistungskurs, Lernbereich 9: Sprache und Kommunikation, PDF-S. 71",
+      "sourceText": "Kennen von Texten und Modellen zu den Themenkreisen",
+      "sourceSpan": {
+        "passageId": "53e2ba3c-6580-5071-fb6c-2027cec271c7",
+        "label": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-LEISTUNGSKURS-LERNBEREICH-9-SPRACHE-UND-KOMMUNIKATION-LK#82"
+      },
+      "courseLevel": "LK",
+      "tags": [
+        "jurisdiction:DE-SN",
+        "stage:SekII",
+        "phase:jahrgangsstufen-11-12-leistungskurs",
+        "field:lernbereich-9-sprache-und-kommunikation",
+        "courseLevel:LK",
+        "sourceDocument:SN-DEUTSCH-GYM-2022"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-bbox-left-column-sn-gymnasium-deutsch-pflicht-lernbereiche-without-wahlbereiche",
+        "phase": "Jahrgangsstufen 11/12 Leistungskurs",
+        "field": "Lernbereich 9: Sprache und Kommunikation",
+        "page": 71
+      }
+    },
+    {
+      "id": "e42d0c26-b29b-56c0-5228-aec8a73c4ad7",
+      "passageId": "53e2ba3c-6580-5071-fb6c-2027cec271c7",
+      "topicCode": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-LEISTUNGSKURS-LERNBEREICH-9-SPRACHE-UND-KOMMUNIKATION-LK",
+      "title": "Sich positionieren zu Sprache in politischgesellschaftlichen Zusammenhängen",
+      "description": "Die lernende Person kann sich positionieren zu Sprache in politischgesellschaftlichen Zusammenhängen.",
+      "sourceDocumentKey": "SN-DEUTSCH-GYM-2022",
+      "sourceRef": "Lehrplan Gymnasium Deutsch Sachsen 2004/2007/2009/2011/2013/2019/2022, Jahrgangsstufen 11/12 Leistungskurs, Lernbereich 9: Sprache und Kommunikation, PDF-S. 72",
+      "sourceText": "Sich positionieren zu Sprache in politischgesellschaftlichen Zusammenhängen",
+      "sourceSpan": {
+        "passageId": "53e2ba3c-6580-5071-fb6c-2027cec271c7",
+        "label": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-LEISTUNGSKURS-LERNBEREICH-9-SPRACHE-UND-KOMMUNIKATION-LK#83"
+      },
+      "courseLevel": "LK",
+      "tags": [
+        "jurisdiction:DE-SN",
+        "stage:SekII",
+        "phase:jahrgangsstufen-11-12-leistungskurs",
+        "field:lernbereich-9-sprache-und-kommunikation",
+        "courseLevel:LK",
+        "sourceDocument:SN-DEUTSCH-GYM-2022"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-bbox-left-column-sn-gymnasium-deutsch-pflicht-lernbereiche-without-wahlbereiche",
+        "phase": "Jahrgangsstufen 11/12 Leistungskurs",
+        "field": "Lernbereich 9: Sprache und Kommunikation",
+        "page": 72
+      }
+    },
+    {
+      "id": "8bf2f992-649d-57b9-e42d-4799880c2134",
+      "passageId": "53e2ba3c-6580-5071-fb6c-2027cec271c7",
+      "topicCode": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-LEISTUNGSKURS-LERNBEREICH-9-SPRACHE-UND-KOMMUNIKATION-LK",
+      "title": "Anwenden der Theorien bei der Untersuchung konkreter Kommunikationssituationen, Texte o...",
+      "description": "Die lernende Person kann anwenden der Theorien bei der Untersuchung konkreter Kommunikationssituationen, Texte oder Sachverhalte.",
+      "sourceDocumentKey": "SN-DEUTSCH-GYM-2022",
+      "sourceRef": "Lehrplan Gymnasium Deutsch Sachsen 2004/2007/2009/2011/2013/2019/2022, Jahrgangsstufen 11/12 Leistungskurs, Lernbereich 9: Sprache und Kommunikation, PDF-S. 72",
+      "sourceText": "Anwenden der Theorien bei der Untersuchung konkreter Kommunikationssituationen, Texte oder Sachverhalte",
+      "sourceSpan": {
+        "passageId": "53e2ba3c-6580-5071-fb6c-2027cec271c7",
+        "label": "SN-DEUTSCH-JAHRGANGSSTUFEN-11-12-LEISTUNGSKURS-LERNBEREICH-9-SPRACHE-UND-KOMMUNIKATION-LK#84"
+      },
+      "courseLevel": "LK",
+      "tags": [
+        "jurisdiction:DE-SN",
+        "stage:SekII",
+        "phase:jahrgangsstufen-11-12-leistungskurs",
+        "field:lernbereich-9-sprache-und-kommunikation",
+        "courseLevel:LK",
+        "sourceDocument:SN-DEUTSCH-GYM-2022"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-bbox-left-column-sn-gymnasium-deutsch-pflicht-lernbereiche-without-wahlbereiche",
+        "phase": "Jahrgangsstufen 11/12 Leistungskurs",
+        "field": "Lernbereich 9: Sprache und Kommunikation",
+        "page": 72
+      }
+    }
+  ]
+}

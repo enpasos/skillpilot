@@ -26,3 +26,28 @@ Mapping review:
 
 - `curricula/DE/Gymnasium/mapping/DE-RP/lower-secondary/rp_sozialkunde_lower_secondary_economics_source_extraction_to_canonical_wirtschaft.review.json`
 <!-- DE-RP-WIRTSCHAFT-SEKI-SOURCE-EXTRACTION:end -->
+
+<!-- DE-RP-DEUTSCH-SEKI-SOURCE-EXTRACTION:start -->
+## Deutsch
+
+Starting point:
+https://bildung.rlp.de/lehrplaene
+
+- Official PDF:
+  https://bildung.rlp.de/lehrplaene/?cHash=451ab34498bbb890d09487fc6fe1577a&tx_rlpbase_download%5Baction%5D=download&tx_rlpbase_download%5Bcontroller%5D=Download&tx_rlpbase_download%5Bitem%5D=56458&type=432522
+
+Scope:
+
+- Rheinland-Pfalz
+- Gymnasium/Gesamtschule
+- Deutsch
+- lower-secondary extraction target: Kompetenzniveautabellen from the official 2022 Deutsch Sek I Lehrplan
+
+Archived locally at:
+
+- `curricula/DE/Gymnasium/input/RP/lower-secondary/Deutsch_Sekundarstufe_I_Klassen_5_10_2022.pdf`
+
+Generated source extraction:
+
+- `curricula/DE/Gymnasium/input/RP/lower-secondary/source-extraction/DE_RP_DEUTSCH_SEKI_LEHRPLAN_2022.source-extraction.json`
+<!-- DE-RP-DEUTSCH-SEKI-SOURCE-EXTRACTION:end -->

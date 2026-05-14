@@ -1,5 +1,18 @@
 # Niedersachsen (NI) - Gymnasium Curricula
 
+## Deutsch
+### Sekundarstufe I (Klassen 5-10)
+- **Kerncurriculum Deutsch Gymnasium Schuljahrgänge 5-10 (2015)**: [NIBIS/CuVo](https://cuvo.nibis.de/index.php?k0_0=Dokumentenart&k0_1=Schulbereich&k0_2=Schulform&k0_3=Fach&p=searched_download&uploadnum=0&v0_0=Kerncurriculum&v0_1=Sek+I&v0_2=Gymnasium-Sek.I&v0_3=Deutsch)
+- Archived source PDF: `lower-secondary/ni_deutsch_gymnasium_seki_kc2015.pdf`
+- Active source extraction: `lower-secondary/source-extraction/DE_NI_DEUTSCH_SEKI_KC2015.source-extraction.json`
+- M3 review: `curricula/DE/Gymnasium/mapping/DE-NI/lower-secondary/ni_german_lower_secondary_source_extraction_to_canonical_german.review.json`
+
+### Sekundarstufe II (Gymnasiale Oberstufe)
+- **Kerncurriculum Deutsch gymnasiale Oberstufe (2016)**: [NIBIS/CuVo](https://cuvo.nibis.de/cuvo.php?p=download&upload=94)
+- Archived source PDF: `upper-secondary/ni_deutsch_gymnasiale_oberstufe_kc2016.pdf`
+- Active source extraction: `upper-secondary/source-extraction/DE_NI_DEUTSCH_SEKII_KC2016.source-extraction.json`
+- M3 review: `curricula/DE/Gymnasium/mapping/DE-NI/upper-secondary/ni_german_upper_secondary_source_extraction_to_canonical_german.review.json`
+
 ## Mathematik
 ### Sekundarstufe I (Klassen 5-10)
 - archived source PDF:

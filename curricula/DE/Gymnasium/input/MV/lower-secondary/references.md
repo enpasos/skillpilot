@@ -45,3 +45,28 @@ Generated source extraction:
 
 - `curricula/DE/Gymnasium/input/MV/lower-secondary/source-extraction/DE_MV_SOZIALKUNDE_SEKI_WIRTSCHAFT_RAHMENPLAN_2023.source-extraction.json`
 <!-- DE-MV-WIRTSCHAFT-SEKI-SOURCE-EXTRACTION:end -->
+
+<!-- DE-MV-DEUTSCH-SEKI-SOURCE-EXTRACTION:start -->
+## Deutsch
+
+Starting point:
+https://www.bildung-mv.de/unterricht/rahmenplaene/rahmenplaene-fuer-die-allgemein-bildenden-faecher/deutsch/
+
+- Official PDF:
+  https://www.bildung-mv.de/export/sites/bildungsserver/.galleries/dokumente/unterricht/rahmenplaene/RP_AB_Deu_Sek_I__Gym_Ges_2025.pdf
+
+Scope:
+
+- Mecklenburg-Vorpommern
+- Gymnasium/Gesamtschule
+- Deutsch
+- lower-secondary extraction target: standards and verbindliche Unterrichtsinhalte from the official 2025 Deutsch Sek I Rahmenplan
+
+Archived locally at:
+
+- `curricula/DE/Gymnasium/input/MV/lower-secondary/RP_AB_Deu_Sek_I_Gym_Ges_2025.pdf`
+
+Generated source extraction:
+
+- `curricula/DE/Gymnasium/input/MV/lower-secondary/source-extraction/DE_MV_DEUTSCH_SEKI_RAHMENPLAN_2025.source-extraction.json`
+<!-- DE-MV-DEUTSCH-SEKI-SOURCE-EXTRACTION:end -->

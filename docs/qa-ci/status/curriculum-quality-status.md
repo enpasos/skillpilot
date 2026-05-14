@@ -1,6 +1,6 @@
 # Curriculum Quality Status
 
-Generated: 2026-05-14T04:54:14.263Z
+Generated: 2026-05-14T09:52:12.804Z
 Rules version: curriculum-quality-v1
 
 ## Summary
@@ -8,12 +8,12 @@ Rules version: curriculum-quality-v1
 | Metric | Value |
 | --- | ---: |
 | Curricula | 21 |
-| M0 | 15 |
+| M0 | 14 |
 | M1 | 0 |
 | M2 | 0 |
 | M3 | 0 |
 | M4 | 0 |
-| M5 | 6 |
+| M5 | 7 |
 
 ## Curricula
 
@@ -22,13 +22,13 @@ Rules version: curriculum-quality-v1
 | Biologie (Gymnasium, DE) | M5 | 429 | 378 | 17/17 | 16/16 | 1 | 0 | 0 |
 | Chemie (Gymnasium, DE) | M5 | 467 | 399 | 32/32 | 16/16 | 1 | 0 | 0 |
 | Chinesisch (Gymnasium, DE) | M0 | 192 | 181 | 2/2 | 2/16 | 0 | 2 | 0 |
-| Deutsch (Gymnasium, DE) | M0 | 181 | 144 | 2/2 | 2/16 | 0 | 2 | 0 |
+| Deutsch (Gymnasium, DE) | M0 | 347 | 285 | 25/25 | 13/16 | 0 | 3 | 0 |
 | Englisch (Gymnasium, DE) | M0 | 130 | 104 | 2/2 | 2/16 | 0 | 2 | 0 |
 | Französisch (Gymnasium, DE) | M0 | 331 | 275 | 3/3 | 2/16 | 0 | 2 | 0 |
 | Geschichte (Gymnasium, DE) | M0 | 210 | 171 | 2/2 | 2/16 | 0 | 2 | 0 |
 | Griechisch (Gymnasium, DE) | M0 | 198 | 185 | 2/2 | 2/16 | 0 | 2 | 0 |
 | Gymnasium (DE) | M0 | 1 | 0 | - | 0/16 | 0 | 2 | 0 |
-| Informatik (Gymnasium, DE) | M0 | 277 | 232 | 29/29 | 2/16 | 1 | 1 | 3 |
+| Informatik (Gymnasium, DE) | M5 | 277 | 232 | 29/29 | 16/16 | 1 | 0 | 0 |
 | Italienisch (Gymnasium, DE) | M0 | 8 | 7 | 0/1 | 0/16 | 0 | 1 | 1 |
 | Latein (Gymnasium, DE) | M0 | 142 | 109 | 2/2 | 2/16 | 0 | 2 | 0 |
 | Mathematik (Gymnasium, DE) | M5 | 1037 | 825 | 31/31 | 16/16 | 2 | 0 | 0 |
@@ -96,11 +96,34 @@ Rules version: curriculum-quality-v1
 | Chemie (Gymnasium, DE) | DE-TH - Chemie Sekundarstufe I (Thueringen, Lehrplan Gymnasium 2024 Source-Extraction) | DE-TH | 1/1 original source(s) | 3/3 | - | 24 | 224 | 56 | 168 | 25% |  |
 | Chinesisch (Gymnasium, DE) | Chinesisch (Gymnasium) | DE-BY | 1/1 original source(s) | 3/3 | - | 19 | 229 | 14 | 215 | 6% |  |
 | Chinesisch (Gymnasium, DE) | Chinesisch Oberstufe (Hessen, KC 2024) | DE-HE | 1/1 original source(s) | 3/3 | - | 6 | 170 | 170 | 0 | 100% |  |
+| Deutsch (Gymnasium, DE) | Deutsch Oberstufe (Brandenburg, RLP GOST 2022 Source-Extraction) | DE-BB | 1/1 original source(s) | 3/3 | - | 12 | 199 | 0 | 199 | 0% |  |
+| Deutsch (Gymnasium, DE) | Deutsch Sekundarstufe I (Brandenburg, RLP 2023 Source-Extraction) | DE-BB | 1/1 original source(s) | 3/3 | - | 15 | 180 | 0 | 180 | 0% |  |
+| Deutsch (Gymnasium, DE) | Deutsch Oberstufe (Berlin, RLP GOST 2022 Source-Extraction) | DE-BE | 1/1 original source(s) | 3/3 | - | 12 | 199 | 0 | 199 | 0% |  |
+| Deutsch (Gymnasium, DE) | Deutsch Sekundarstufe I (Berlin, RLP 2023 Source-Extraction) | DE-BE | 1/1 original source(s) | 3/3 | - | 15 | 180 | 0 | 180 | 0% |  |
+| Deutsch (Gymnasium, DE) | Deutsch Kursstufe (Baden-Wuerttemberg, BP2016 V2 Source-Extraction) | DE-BW | 1/1 original source(s) | 3/3 | - | 10 | 225 | 0 | 225 | 0% |  |
+| Deutsch (Gymnasium, DE) | Deutsch Sekundarstufe I (Baden-Wuerttemberg, BP2016 V2 Source-Extraction) | DE-BW | 1/1 original source(s) | 3/3 | - | 15 | 334 | 0 | 334 | 0% |  |
 | Deutsch (Gymnasium, DE) | Deutsch (Gymnasium) | DE-BY | 1/1 original source(s) | 3/3 | - | 49 | 434 | 11 | 423 | 3% |  |
+| Deutsch (Gymnasium, DE) | Deutsch Oberstufe (Bremen, GyO Bildungsplan 2008 Source-Extraction) | DE-HB | 1/1 original source(s) | 4/4 | - | 8 | 60 | 0 | 60 | 0% |  |
+| Deutsch (Gymnasium, DE) | Deutsch Sekundarstufe I (Bremen, Gymnasium Bildungsplan 2007 Source-Extraction) | DE-HB | 1/1 original source(s) | 4/4 | - | 31 | 166 | 2 | 164 | 1% |  |
 | Deutsch (Gymnasium, DE) | Deutsch Oberstufe (Hessen, KC 2024) | DE-HE | 1/1 original source(s) | 3/3 | - | 33 | 116 | 116 | 0 | 100% |  |
+| Deutsch (Gymnasium, DE) | Deutsch Sekundarstufe I (Hessen, G9) | DE-HE | 1/1 original source(s) | 3/3 | - | 18 | 141 | 141 | 0 | 100% |  |
+| Deutsch (Gymnasium, DE) | Deutsch Sekundarstufe I (Hamburg, Bildungsplan 2022 Source-Extraction) | DE-HH | 1/1 original source(s) | 3/3 | - | 19 | 273 | 60 | 213 | 22% |  |
+| Deutsch (Gymnasium, DE) | Deutsch Studienstufe (Hamburg, Bildungsplan 2022 Source-Extraction) | DE-HH | 1/1 original source(s) | 3/3 | - | 16 | 119 | 6 | 113 | 5% |  |
+| Deutsch (Gymnasium, DE) | DE-MV - Deutsch Oberstufe (Mecklenburg-Vorpommern, Rahmenplan 2019 Source-Extraction) | DE-MV | 1/1 original source(s) | 4/4 | - | 16 | 64 | 3 | 61 | 5% |  |
+| Deutsch (Gymnasium, DE) | DE-MV - Deutsch Sekundarstufe I (Mecklenburg-Vorpommern, Rahmenplan 2025 Source-Extraction) | DE-MV | 1/1 original source(s) | 4/4 | - | 24 | 316 | 36 | 280 | 11% |  |
+| Deutsch (Gymnasium, DE) | Deutsch Oberstufe (Niedersachsen, KC 2016 Source-Extraction) | DE-NI | 1/1 original source(s) | 3/3 | - | 12 | 121 | 5 | 116 | 4% |  |
+| Deutsch (Gymnasium, DE) | Deutsch Sekundarstufe I (Niedersachsen, KC 2015 Source-Extraction) | DE-NI | 1/1 original source(s) | 3/3 | - | 18 | 152 | 24 | 128 | 16% |  |
+| Deutsch (Gymnasium, DE) | Deutsch Oberstufe (Nordrhein-Westfalen, KLP 2023 Source-Extraction) | DE-NW | 1/1 original source(s) | 3/3 | - | 30 | 191 | 10 | 181 | 5% |  |
+| Deutsch (Gymnasium, DE) | Deutsch Sekundarstufe I (Nordrhein-Westfalen, KLP 2019 Source-Extraction) | DE-NW | 1/1 original source(s) | 3/3 | - | 26 | 226 | 16 | 210 | 7% |  |
+| Deutsch (Gymnasium, DE) | DE-RP - Deutsch Oberstufe (Rheinland-Pfalz, MSS/BiSta-Synopse 2014 Source-Extraction) | DE-RP | 1/1 original source(s) | 4/4 | - | 10 | 89 | 1 | 88 | 1% |  |
+| Deutsch (Gymnasium, DE) | DE-RP - Deutsch Sekundarstufe I (Rheinland-Pfalz, Lehrplan 2022 Source-Extraction) | DE-RP | 1/1 original source(s) | 4/4 | - | 56 | 244 | 6 | 238 | 2% |  |
+| Deutsch (Gymnasium, DE) | Deutsch Sekundarstufe I (Schleswig-Holstein, Fachanforderungen 2024 Source-Extraction) | DE-SH | 1/1 original source(s) | 4/4 | - | 21 | 100 | 5 | 95 | 5% |  |
+| Deutsch (Gymnasium, DE) | Deutsch Sekundarstufe II (Schleswig-Holstein, Fachanforderungen 2024 Source-Extraction) | DE-SH | 1/1 original source(s) | 4/4 | - | 19 | 121 | 5 | 116 | 4% |  |
+| Deutsch (Gymnasium, DE) | DE-SL - Deutsch Oberstufe (Saarland, GOS Source-Extraction) | DE-SL | 3/3 original source(s) | 4/4 | - | 4 | 188 | 12 | 176 | 6% |  |
+| Deutsch (Gymnasium, DE) | DE-SL - Deutsch Sekundarstufe I (Saarland, Gymnasium G9 Source-Extraction) | DE-SL | 5/5 original source(s) | 4/4 | - | 25 | 412 | 37 | 375 | 9% |  |
 | Englisch (Gymnasium, DE) | Englisch (Gymnasium) | DE-BY | 1/1 original source(s) | 3/3 | - | 1 | 9 | 1 | 8 | 11% |  |
 | Englisch (Gymnasium, DE) | Englisch Oberstufe (Hessen, KC 2024) | DE-HE | 1/1 original source(s) | 3/3 | - | 21 | 94 | 94 | 0 | 100% |  |
-| Französisch (Gymnasium, DE) | Französisch (Gymnasium) | DE-BY | 1/1 original source(s) | 2/3 | MAPPING-2 | 1 | 9 | 7 | 2 | 78% |  |
+| Französisch (Gymnasium, DE) | Französisch (Gymnasium) | DE-BY | 1/1 original source(s) | 3/3 | - | 1 | 9 | 7 | 2 | 78% |  |
 | Französisch (Gymnasium, DE) | Französisch Oberstufe (Hessen, KC 2024) | DE-HE | 1/1 original source(s) | 3/3 | - | 8 | 152 | 152 | 0 | 100% |  |
 | Französisch (Gymnasium, DE) | Französisch Sekundarstufe I (Hessen, G9) | DE-HE | 1/1 original source(s) | 3/3 | - | 43 | 108 | 108 | 0 | 100% |  |
 | Geschichte (Gymnasium, DE) | Geschichte (Gymnasium) | DE-BY | 1/1 original source(s) | 3/3 | - | 36 | 190 | 0 | 190 | 0% |  |
@@ -236,9 +259,9 @@ Rules version: curriculum-quality-v1
 | Spanisch (Gymnasium, DE) | Spanisch Oberstufe (Hessen, KC 2024) | DE-HE | 1/1 original source(s) | 3/3 | - | 24 | 44 | 44 | 0 | 100% |  |
 | Tschechisch (Gymnasium, DE) | Tschechisch (Gymnasium) | DE-BY | No extraction | 0/3 | MAPPING-1 | 0 | 0 | 0 | 0 | 0% |  |
 | Wirtschaftswissenschaften (Gymnasium, DE) | WAT Sekundarstufe I - wirtschaftliche Inhaltsbereiche (Brandenburg, RLP 2015 Source-Extraction) | DE-BB | 1/1 original source(s) | 3/3 | - | 8 | 48 | 6 | 42 | 13% |  |
-| Wirtschaftswissenschaften (Gymnasium, DE) | Wirtschaftswissenschaft Sekundarstufe II (Brandenburg, RLP GOST 2022 Source-Extraction) | DE-BB | 1/1 original source(s) | 2/3 | MAPPING-2 | 24 | 100 | 33 | 67 | 33% |  |
+| Wirtschaftswissenschaften (Gymnasium, DE) | Wirtschaftswissenschaft Sekundarstufe II (Brandenburg, RLP GOST 2022 Source-Extraction) | DE-BB | 1/1 original source(s) | 3/3 | - | 24 | 100 | 33 | 67 | 33% |  |
 | Wirtschaftswissenschaften (Gymnasium, DE) | WAT Sekundarstufe I - wirtschaftliche Inhaltsbereiche (Berlin, RLP 2015 Source-Extraction) | DE-BE | 1/1 original source(s) | 3/3 | - | 8 | 48 | 6 | 42 | 13% |  |
-| Wirtschaftswissenschaften (Gymnasium, DE) | Wirtschaftswissenschaft Sekundarstufe II (Berlin, RLP GOST 2022 Source-Extraction) | DE-BE | 1/1 original source(s) | 2/3 | MAPPING-2 | 24 | 100 | 33 | 67 | 33% |  |
+| Wirtschaftswissenschaften (Gymnasium, DE) | Wirtschaftswissenschaft Sekundarstufe II (Berlin, RLP GOST 2022 Source-Extraction) | DE-BE | 1/1 original source(s) | 3/3 | - | 24 | 100 | 33 | 67 | 33% |  |
 | Wirtschaftswissenschaften (Gymnasium, DE) | Wirtschaft / Berufs- und Studienorientierung Sekundarstufe I (Baden-Wuerttemberg, BP2016 Source-Extraction) | DE-BW | 1/1 original source(s) | 3/3 | - | 5 | 43 | 9 | 34 | 21% |  |
 | Wirtschaftswissenschaften (Gymnasium, DE) | Wirtschaft Kursstufe (Baden-Wuerttemberg, BP2016 Source-Extraction) | DE-BW | 1/1 original source(s) | 3/3 | - | 7 | 58 | 16 | 42 | 28% |  |
 | Wirtschaftswissenschaften (Gymnasium, DE) | Wirtschaft und Recht (Bayern, LehrplanPLUS Source-Extraction) | DE-BY | 1/1 original source(s) | 3/3 | - | 35 | 184 | 172 | 12 | 93% |  |
@@ -273,13 +296,13 @@ Rules version: curriculum-quality-v1
 | Biologie (Gymnasium, DE) | 16/16 | 357 | 378 | 16 | 999 | 999 | 999 | 0 | 999 | 0 | 0 | 0 | 0 | 0 | 355 (100%) |
 | Chemie (Gymnasium, DE) | 16/16 | 336 | 399 | 16 | 5865 | 5865 | 5865 | 0 | 5865 | 0 | 0 | 0 | 0 | 0 | 334 (100%) |
 | Chinesisch (Gymnasium, DE) | 2/16 | 170 | 181 | 2 | 399 | 399 | 399 | 0 | 399 | 0 | 0 | 0 | 0 | 0 | 170 (100%) |
-| Deutsch (Gymnasium, DE) | 2/16 | 127 | 144 | 2 | 550 | 550 | 550 | 0 | 550 | 0 | 0 | 0 | 0 | 0 | 127 (100%) |
+| Deutsch (Gymnasium, DE) | 13/16 | 268 | 285 | 13 | 4850 | 4850 | 4850 | 0 | 4850 | 0 | 0 | 0 | 0 | 0 | 268 (100%) |
 | Englisch (Gymnasium, DE) | 2/16 | 89 | 104 | 2 | 103 | 103 | 103 | 0 | 103 | 0 | 0 | 0 | 0 | 0 | 89 (100%) |
 | Französisch (Gymnasium, DE) | 2/16 | 260 | 275 | 2 | 269 | 269 | 269 | 0 | 269 | 0 | 0 | 0 | 0 | 0 | 260 (100%) |
 | Geschichte (Gymnasium, DE) | 2/16 | 156 | 171 | 2 | 372 | 372 | 372 | 0 | 372 | 0 | 0 | 0 | 0 | 0 | 156 (100%) |
 | Griechisch (Gymnasium, DE) | 2/16 | 170 | 185 | 2 | 710 | 710 | 710 | 0 | 710 | 0 | 0 | 0 | 0 | 0 | 170 (100%) |
 | Gymnasium (DE) | 0/16 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0%) |
-| Informatik (Gymnasium, DE) | 2/16 | 209 | 232 | 16 | 3505 | 3505 | 3505 | 0 | 3505 | 0 | 1467 | 0 | 0 | 14 | 207 (100%) |
+| Informatik (Gymnasium, DE) | 16/16 | 209 | 232 | 16 | 3505 | 3505 | 3505 | 0 | 3505 | 0 | 0 | 0 | 0 | 0 | 207 (100%) |
 | Italienisch (Gymnasium, DE) | 0/16 | 6 | 7 | 1 | 0 | 8 | 8 | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 6 (100%) |
 | Latein (Gymnasium, DE) | 2/16 | 94 | 109 | 2 | 926 | 926 | 926 | 0 | 926 | 0 | 0 | 0 | 0 | 0 | 94 (100%) |
 | Mathematik (Gymnasium, DE) | 16/16 | 648 | 825 | 16 | 9797 | 9797 | 9797 | 0 | 9797 | 0 | 0 | 0 | 0 | 0 | 648 (100%) |
@@ -301,6 +324,7 @@ Rules version: curriculum-quality-v1
 | CQR-002 | M0 | graph | Stored type metadata agrees with structural atomic/cluster classification. |
 | CQR-003 | M2 | applicability | Bundesland composition-view atoms are source-backed and registered source original goals are fully covered by view atoms. |
 | CQR-004 | M2 | applicability | Upper-secondary GK/LK source-goal levels map only to canonical goals with compatible GK/LK tags; unspecified upper-secondary source goals default to GK/LK unless an LK-only decision is explicitly reviewed. |
+| CQR-005 | M2 | applicability | Source-extraction goal counts are plausible against the reviewed HE/BW peer baseline or explicitly reviewed when they deviate strongly. |
 | CQR-101 | M3 | route | Configured route scopes connect motivation anchors to terminal autonomy goals through effective requires. |
 | CQR-102 | M3 | route | Configured route scopes connect motivation anchors to terminal autonomy goals through direct atomic requires. |
 | CQR-103 | M3 | route | Configured route scopes no longer depend on cluster-level requires for ordinary didactic sequencing. |

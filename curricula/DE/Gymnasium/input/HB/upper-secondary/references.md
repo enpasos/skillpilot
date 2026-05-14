@@ -26,3 +26,23 @@ Informatik source-extraction:
 - `curricula/DE/Gymnasium/input/HB/upper-secondary/source-extraction/DE_HB_INFORMATIK_GYO_2009.source-extraction.json`
 - Review mapping: `curricula/DE/Gymnasium/mapping/DE-HB/upper-secondary/hb_informatics_upper_secondary_source_extraction_to_canonical_informatics.review.json`
 - Note: Bremen Sek I Informatik is not promoted here; the available 2025 file is treated as Erprobungs-/Entwurfsfassung, not as a final source-backed lane.
+
+## Deutsch
+
+Starting point:
+https://www.lis.bremen.de/schulqualitaet/bildungsplaene/sekundarbereich-ii-allgemeinbildend-21954
+
+Scope:
+
+- Bremen
+- Gymnasium
+- Deutsch
+- upper-secondary extraction target: GK/LK standards in the official Bremen GyO German qualification-phase plan
+
+Archived locally at:
+
+- `curricula/DE/Gymnasium/input/HB/upper-secondary/GyO_Deutsch_2008.pdf`
+
+Generated source extraction:
+
+- `curricula/DE/Gymnasium/input/HB/upper-secondary/source-extraction/DE_HB_DEUTSCH_SEKII_GYO_2008.source-extraction.json`

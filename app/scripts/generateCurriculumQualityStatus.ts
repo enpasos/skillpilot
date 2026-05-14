@@ -300,6 +300,9 @@ interface MappingPipelineSourceStatus {
 interface SourceGoalCountPeerBaselineReview {
   accepted?: boolean
   details?: string
+  status?: string
+  rationale?: string
+  assessment?: string
 }
 
 interface SourceGoalGranularitySummary {
@@ -339,6 +342,25 @@ function sourceGoalText(sourceGoal: SourceExtractionGoal): string {
     ?? sourceGoal.description
     ?? sourceGoal.title
     ?? ''
+}
+
+function normalizeSourceGoalCountPeerBaselineReview(
+  review: SourceGoalCountPeerBaselineReview | undefined,
+): SourceGoalCountPeerBaselineReview | undefined {
+  if (!review) return undefined
+  const status = review.status?.trim().toLowerCase()
+  const assessment = review.assessment?.trim().toLowerCase()
+  const accepted = review.accepted === true
+    || status === 'accepted'
+    || assessment === 'accepted'
+    || assessment === 'plausible'
+  return {
+    accepted,
+    details: review.details ?? review.rationale ?? review.assessment,
+    status: review.status,
+    rationale: review.rationale,
+    assessment: review.assessment,
+  }
 }
 
 function summarizeSourceGoalGranularity(sourceGoals: SourceExtractionGoal[]): SourceGoalGranularitySummary {
@@ -384,6 +406,7 @@ function sourceGoalCountGroupKey(source: MappingPipelineSourceStatus): string | 
 function normalizedSourceGoalCountSubject(subject: string | undefined): string | null {
   const normalized = subject?.trim().toLowerCase()
   if (!normalized) return null
+  if (normalized.includes('politik') || normalized.includes('gemeinschaftskunde')) return 'politik-wirtschaft'
   if (normalized.includes('wirtschaft')) return 'wirtschaft'
   return normalized
 }
@@ -827,6 +850,13 @@ const ruleCatalog: QualityRuleDefinition[] = [
     category: 'applicability',
     maturityTarget: 'M2',
     description: 'Upper-secondary GK/LK source-goal levels map only to canonical goals with compatible GK/LK tags; unspecified upper-secondary source goals default to GK/LK unless an LK-only decision is explicitly reviewed.',
+  },
+  {
+    id: 'CQR-005',
+    label: 'Source-goal count plausibility',
+    category: 'applicability',
+    maturityTarget: 'M2',
+    description: 'Source-extraction goal counts are plausible against the reviewed HE/BW peer baseline or explicitly reviewed when they deviate strongly.',
   },
   {
     id: 'CQR-101',
@@ -2681,7 +2711,7 @@ function readSourceExtractionPipelinesByLandscapeId(): Map<string, MappingPipeli
         exactMappings,
         partialMappings,
         otherMappings,
-        sourceGoalCountPeerBaselineReview: extraction.qualityReview?.sourceGoalCountPeerBaseline,
+        sourceGoalCountPeerBaselineReview: normalizeSourceGoalCountPeerBaselineReview(extraction.qualityReview?.sourceGoalCountPeerBaseline),
         sourceGoalGranularity: summarizeSourceGoalGranularity(sourceGoals),
         steps: normalizedSteps,
       })
@@ -3550,6 +3580,60 @@ function evaluateJurisdictionCoverage(coverage: JurisdictionCoverage | undefined
   )
 }
 
+function evaluateSourceGoalCountPlausibility(pipeline: MappingPipelineStatus | undefined): RuleResult {
+  if (!pipeline) {
+    return makeRule(
+      'CQR-005',
+      'not_configured',
+      'No source-extraction pipeline status is available for source-goal count plausibility.',
+    )
+  }
+
+  const peerBaselineFailures: string[] = []
+  const granularityFailures: string[] = []
+  let peerBaselineChecks = 0
+  let granularityChecks = 0
+  const sourceExtractionSources = pipeline.sources.filter((source) => source.sourceKind === 'source-extraction')
+
+  sourceExtractionSources.forEach((source) => {
+    source.steps.forEach((step) => {
+      step.checks.forEach((check) => {
+        if (check.id === 'source-goal-count-peer-baseline') {
+          peerBaselineChecks += 1
+          if (!check.passed) {
+            peerBaselineFailures.push(`${source.jurisdiction}: ${source.title} - ${check.details}`)
+          }
+        }
+        if (check.id === 'source-goal-granularity-peer-audit') {
+          granularityChecks += 1
+          if (!check.passed) {
+            granularityFailures.push(`${source.jurisdiction}: ${source.title} - ${check.details}`)
+          }
+        }
+      })
+    })
+  })
+
+  const failures = [...peerBaselineFailures, ...granularityFailures]
+  const status: RuleStatus = failures.length > 0 ? 'warn' : 'pass'
+
+  return makeRule(
+    'CQR-005',
+    status,
+    status === 'pass'
+      ? 'Source-goal counts are inside the configured peer-baseline corridor or explicitly reviewed.'
+      : `${failures.length} source-goal count plausibility issue(s) need review before this curriculum can be treated as mature.`,
+    {
+      sourceExtractionSources: sourceExtractionSources.length,
+      peerBaselineChecks,
+      failedPeerBaselineChecks: peerBaselineFailures.length,
+      granularityChecks,
+      failedGranularityChecks: granularityFailures.length,
+    },
+    failures,
+  )
+}
+
 function deriveScopeMaturity(rules: RuleResult[]): MaturityLevel {
   if (rules.find((rule) => rule.id === 'CQR-101')?.status !== 'pass') return 'M0'
   if (rules.find((rule) => rule.id === 'CQR-102')?.status !== 'pass') return 'M1'
@@ -3567,6 +3651,7 @@ function deriveCurriculumMaturity(curriculumRules: RuleResult[], scopes: ScopeSt
   if (curriculumRules.find((rule) => rule.id === 'CQR-000')?.status !== 'pass') return 'M0'
   if (curriculumRules.find((rule) => rule.id === 'CQR-003')?.status !== 'pass') return 'M1'
   if (curriculumRules.find((rule) => rule.id === 'CQR-004')?.status === 'fail') return 'M1'
+  if (curriculumRules.find((rule) => rule.id === 'CQR-005')?.status === 'warn') return 'M1'
 
   const routeScopes = scopes.filter((scope) => scope.rules.some((rule) => rule.id === 'CQR-101'))
   if (routeScopes.length === 0) return 'M2'
@@ -3683,12 +3768,14 @@ function main() {
     .map(({ file, landscape }) => {
       const atomicGoals = landscape.goals.filter(isAtomicGoal).length
       const jurisdictionCoverage = jurisdictionCoverageByLandscapeId.get(landscape.landscapeId)
+      const mappingPipeline = mappingPipelineByLandscapeId.get(landscape.landscapeId)
       const curriculumRules: RuleResult[] = [
         evaluateGraphIntegrity(landscape, globalGoalIds),
         evaluateTypeConsistency(landscape),
         evaluateSourceSnapshotIngestion(jurisdictionCoverage),
         evaluateJurisdictionCoverage(jurisdictionCoverage),
         evaluateCourseLevelMappingConsistency(landscape),
+        evaluateSourceGoalCountPlausibility(mappingPipeline),
         evaluateSemanticAtomicity(landscape, semanticConfigsByLandscapeId.get(landscape.landscapeId) ?? []),
         evaluateCompositionViews(compositionViewCountsByLandscapeId.get(landscape.landscapeId) ?? 0),
         evaluateApplicabilityWarnings(applicabilityWarningMetricsByLandscapeId.get(landscape.landscapeId)),
@@ -3714,7 +3801,7 @@ function main() {
         atomicGoals,
         clusterGoals: landscape.goals.length - atomicGoals,
         jurisdictionCoverage: jurisdictionCoverageByLandscapeId.get(landscape.landscapeId),
-        mappingPipeline: mappingPipelineByLandscapeId.get(landscape.landscapeId),
+        mappingPipeline,
         scopes,
         rules: curriculumRules,
       } satisfies CurriculumStatus
