@@ -618,7 +618,7 @@ function inferCanonicalGoalIds(parsedGoal: ParsedGoal): string[] {
   if (/kommunikation|stoerung|kommunikationsmodell|gespraechsverhalten|pragmatik/u.test(text)) {
     add('Pragmatische Modelle', 'Kommunikationsprobleme in Alltagssituationen untersuchen')
   }
-  if (/diskurs|debatte|podiumsdiskussion|talkshow|private und oeffentliche|oeffentliche kommunikationssituationen|authentischen und fiktiven kommunikationssituationen/u.test(text)) {
+  if (/diskurs|debatte|podiumsdiskussion|talkshow|private und oeffentliche|oeffentliche kommunikationssituationen|authentischen und fiktiven kommunikationssituationen|politischgesellschaft|politisch-gesellschaft|sprache in politisch/u.test(text)) {
     add('Diskurspraktiken vergleichen')
   }
   if (/migration|transkultur|postkolonial|identitaet|mehrsprachigkeit/u.test(text)) {

@@ -86,3 +86,33 @@ Generated source extraction:
 
 - `curricula/DE/Gymnasium/input/SN/lower-secondary/source-extraction/DE_SN_DEUTSCH_SEKI_LEHRPLAN_GYMNASIUM_2022.source-extraction.json`
 <!-- DE-SN-DEUTSCH-SEKI-SOURCE-EXTRACTION:end -->
+
+<!-- DE-SN-GESCHICHTE-SEKI-SOURCE-EXTRACTION:start -->
+## Geschichte source PDF
+
+- `Lehrplan Gymnasium Geschichte Sachsen 2004/2007/2009/2011/2019 (PDF-Fassung 2024)`:
+  https://www.schulportal.sachsen.de/lplandb/lehrplan/file/65/aCaTu4iKflh2vcW3XobR
+
+Official source page:
+
+- https://www.schulportal.sachsen.de/lplandb/lehrplan/65
+
+Scope:
+
+- Sachsen
+- Gymnasium
+- Geschichte
+- lower-secondary extraction target: SN Geschichte Pflicht-Ziele und Pflicht-Lernbereiche Klassenstufen 5-10 (162 Source-Ziele)
+
+Archived locally at:
+
+- `curricula/DE/Gymnasium/input/SN/lehrplan-gymnasium-geschichte-sachsen-2026.pdf`
+
+Source extraction:
+
+- `curricula/DE/Gymnasium/input/SN/lower-secondary/source-extraction/DE_SN_GESCHICHTE_SEKI_LEHRPLAN_GYMNASIUM_2019.source-extraction.json`
+
+Mapping review:
+
+- `curricula/DE/Gymnasium/mapping/DE-SN/lower-secondary/sn_history_lower_secondary_source_extraction_to_canonical_history.review.json`
+<!-- DE-SN-GESCHICHTE-SEKI-SOURCE-EXTRACTION:end -->

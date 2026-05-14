@@ -48,3 +48,28 @@ Archived locally at:
 Generated source extraction:
 
 - `curricula/DE/Gymnasium/input/HB/lower-secondary/source-extraction/DE_HB_DEUTSCH_SEKI_BILDUNGSPLAN_2007.source-extraction.json`
+
+<!-- DE-HB-GESCHICHTE-SEKI-SOURCE-EXTRACTION:start -->
+## Geschichte source PDF (download link)
+
+Starting point: https://www.lis.bremen.de/schulqualitaet/bildungsplaene/sekundarbereich-i-21953
+
+- `WUK_Geschichte_Geografie_Politik_Gymnasium_5_10_2006.pdf`:
+  https://edumedia-depot.gei.de/server/api/core/bitstreams/6e665592-f2c1-420c-9f77-d52f4ab2ec5c/content
+
+Scope:
+
+- Bremen
+- Gymnasium
+- Welt-Umweltkunde 5/6 historical dimension
+- Geschichte 7/8 and 9/10 fachliche Standards
+- general methodical competency bullets are not used as content source goals
+
+Archived locally at:
+
+- `curricula/DE/Gymnasium/input/HB/WUK_Geschichte_Geografie_Politik_Gymnasium_5_10_2006.pdf`
+
+Source extraction:
+
+- `curricula/DE/Gymnasium/input/HB/lower-secondary/source-extraction/DE_HB_GESCHICHTE_SEKI_BILDUNGSPLAN_2006.source-extraction.json`
+<!-- DE-HB-GESCHICHTE-SEKI-SOURCE-EXTRACTION:end -->

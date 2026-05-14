@@ -71,3 +71,48 @@
   - source extraction: `curricula/DE/Gymnasium/input/ST/lower-secondary/source-extraction/DE_ST_BIOLOGIE_SEKI_FACHLEHRPLAN_GYMNASIUM_2022.source-extraction.json`
   - reviewed mapping: `curricula/DE/Gymnasium/mapping/DE-ST/lower-secondary/st_biology_lower_secondary_source_extraction_to_canonical_biology.review.json`
   - note: this retained Biology source covers Schuljahrgaenge `5/6`, `7/8`, `9`, and `10 (Einfuehrungsphase)`; the first lower-secondary source-extraction pass maps the official competence areas onto existing canonical Biology atomics.
+
+<!-- DE-ST-GESCHICHTE-SOURCE-EXTRACTION:start -->
+## Geschichte
+
+Archived official source input on `2026-05-14`:
+
+- `FLP_Geschichte_Gym_01082022_swd.pdf`
+  - Fachlehrplan Geschichte Gymnasium Sachsen-Anhalt 01.08.2022
+  - Schuljahrgänge `5/6`, `7/8`, `9`, `10 (Einfuehrungsphase)` und `11/12 (Qualifikationsphase)`
+  - direct PDF source: `https://lisa.sachsen-anhalt.de/fileadmin/Bibliothek/Politik_und_Verwaltung/MK/LISA/Unterricht/Lehrplaene/Gym/Anpassung_2022/FLP_Geschichte_Gym_01082022_swd.pdf`
+  - official Lehrplan overview: `https://lisa.sachsen-anhalt.de/unterricht/lehrplaene`
+
+Operational note:
+
+- `DE-ST` now has real archived lower-secondary plus upper-secondary Geschichte source extractions from the official Fachlehrplan PDF.
+- Abstimmungs-, SDG- and cross-subject reference blocks are intentionally excluded from the Pflicht-source inventory.
+- The retained source extractions now live at:
+  - `curricula/DE/Gymnasium/input/ST/lower-secondary/source-extraction/DE_ST_GESCHICHTE_SEKI_FACHLEHRPLAN_GYMNASIUM_2022.source-extraction.json`
+  - `curricula/DE/Gymnasium/input/ST/upper-secondary/source-extraction/DE_ST_GESCHICHTE_SEKII_FACHLEHRPLAN_GYMNASIUM_2022.source-extraction.json`
+- Sachsen-Anhalt Geschichte M3 status:
+  - SekI: `complete` (234 Source-Ziele)
+  - SekII: `complete` (90 Source-Ziele)
+<!-- DE-ST-GESCHICHTE-SOURCE-EXTRACTION:end -->
+
+<!-- DE-ST-DEUTSCH-SOURCE-EXTRACTION:start -->
+## Deutsch
+
+Archived official source input on `2026-05-14`:
+
+- `FLP_Deutsch_Gym_swd.pdf`
+  - Fachlehrplan Deutsch Gymnasium Sachsen-Anhalt 01.08.2022
+  - direct PDF source: `https://lisa.sachsen-anhalt.de/fileadmin/Bibliothek/Politik_und_Verwaltung/MK/LISA/Unterricht/Lehrplaene/Gym/Anpassung_2022/FLP_Deutsch_Gym_swd.pdf`
+  - official Lehrplan page: `https://lisa.sachsen-anhalt.de/unterricht/lehrplaene`
+
+Operational note:
+
+- `DE-ST` now has real archived lower-secondary plus upper-secondary Deutsch source extractions from the official Gymnasium PDF.
+- Only source-backed competency expectations are counted as source goals; transition-only or knowledge-list sections are not double counted as separate Pflichtziele.
+- The retained source extractions now live at:
+  - `curricula/DE/Gymnasium/input/ST/lower-secondary/source-extraction/DE_ST_DEUTSCH_SEKI_FACHLEHRPLAN_GYMNASIUM_2022.source-extraction.json`
+  - `curricula/DE/Gymnasium/input/ST/upper-secondary/source-extraction/DE_ST_DEUTSCH_SEKII_FACHLEHRPLAN_GYMNASIUM_2022.source-extraction.json`
+- DE-ST Deutsch M3 status:
+  - SekI: `complete` (239 Source-Ziele)
+  - SekII: `complete` (108 Source-Ziele)
+<!-- DE-ST-DEUTSCH-SOURCE-EXTRACTION:end -->

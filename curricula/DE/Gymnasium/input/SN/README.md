@@ -118,3 +118,26 @@ Operational note:
   - Sek I: `complete` (244 Source-Ziele)
   - Sek II: `complete` (84 Source-Ziele)
 <!-- DE-SN-DEUTSCH-SOURCE-EXTRACTION:end -->
+
+<!-- DE-SN-GESCHICHTE-SOURCE-EXTRACTION:start -->
+## Geschichte
+
+Archived official source input on `2026-05-14`:
+
+- `lehrplan-gymnasium-geschichte-sachsen-2026.pdf`
+  - Lehrplan Gymnasium Geschichte Sachsen 2004/2007/2009/2011/2019 (PDF-Fassung 2024)
+  - Klassenstufen `5-10`, Jahrgangsstufen `11/12` Grundkurs und Leistungskurs
+  - direct PDF source: `https://www.schulportal.sachsen.de/lplandb/lehrplan/file/65/aCaTu4iKflh2vcW3XobR`
+  - public Lehrplandatenbank overview: `https://www.schulportal.sachsen.de/lplandb/lehrplan/65`
+
+Operational note:
+
+- `DE-SN` now has real archived lower-secondary plus upper-secondary Geschichte source extractions from the shared official Gymnasium PDF.
+- Wahlbereiche and right-column hints are intentionally excluded from the Pflicht-source inventory.
+- The retained source extractions now live at:
+  - `curricula/DE/Gymnasium/input/SN/lower-secondary/source-extraction/DE_SN_GESCHICHTE_SEKI_LEHRPLAN_GYMNASIUM_2019.source-extraction.json`
+  - `curricula/DE/Gymnasium/input/SN/upper-secondary/source-extraction/DE_SN_GESCHICHTE_SEKII_LEHRPLAN_GYMNASIUM_2019.source-extraction.json`
+- Sachsen Geschichte M3 status:
+  - SekI: `complete` (162 Source-Ziele)
+  - SekII: `complete` (116 Source-Ziele)
+<!-- DE-SN-GESCHICHTE-SOURCE-EXTRACTION:end -->

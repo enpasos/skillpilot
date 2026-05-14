@@ -85,3 +85,13 @@ Generated source extractions:
 
 - `lower-secondary/source-extraction/DE_HB_DEUTSCH_SEKI_BILDUNGSPLAN_2007.source-extraction.json`
 - `upper-secondary/source-extraction/DE_HB_DEUTSCH_SEKII_GYO_2008.source-extraction.json`
+
+<!-- DE-HB-GESCHICHTE-SEKI-SOURCE-EXTRACTION:start -->
+## Geschichte
+### Sekundarstufe I (Klassen 5-10)
+- **Bildungsplan Welt-Umweltkunde/Geschichte/Geografie/Politik Gymnasium 5-10**: [LIS Bremen - Sekundarbereich I](https://www.lis.bremen.de/schulqualitaet/bildungsplaene/sekundarbereich-i-21953)
+- Archived source PDF: `WUK_Geschichte_Geografie_Politik_Gymnasium_5_10_2006.pdf`
+- Source extraction: `lower-secondary/source-extraction/DE_HB_GESCHICHTE_SEKI_BILDUNGSPLAN_2006.source-extraction.json`
+- M3 status: `complete` (104 Source-Ziele)
+- Hinweis: Diese Spur deckt die Bremer Sekundarstufe I ab; eine Geschichte-GyO-Quelle ist hier noch nicht hinterlegt.
+<!-- DE-HB-GESCHICHTE-SEKI-SOURCE-EXTRACTION:end -->

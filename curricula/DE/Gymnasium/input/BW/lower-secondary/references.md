@@ -56,3 +56,27 @@ Scope:
 Archived locally at:
 
 - `curricula/DE/Gymnasium/input/BW/BP2016BW_ALLG_GYM_D_V2.pdf`
+
+<!-- DE-BW-GESCHICHTE-SEKI-SOURCE-EXTRACTION:start -->
+## Geschichte source PDF (download link)
+
+Starting point: https://www.bildungsplaene-bw.de/%2CLde/BP2016BW_ALLG_GYM_G
+
+- `BP2016BW_ALLG_GYM_G.pdf`:
+  https://www.bildungsplaene-bw.de/site/bildungsplan-edit/get/documents/lsbw/export-pdf/depot-pdf/ALLG/BP2016BW_ALLG_GYM_G.pdf
+
+Scope:
+
+- Baden-Wuerttemberg
+- Gymnasium
+- Geschichte
+- lower-secondary extraction target: Geschichte Klassen 5/6, 7/8 and 9/10 from the official BW Gymnasium PDF
+
+Archived locally at:
+
+- `curricula/DE/Gymnasium/input/BW/BP2016BW_ALLG_GYM_G.pdf`
+
+Source extraction:
+
+- `curricula/DE/Gymnasium/input/BW/lower-secondary/source-extraction/DE_BW_GESCHICHTE_SEKI_BP2016.source-extraction.json`
+<!-- DE-BW-GESCHICHTE-SEKI-SOURCE-EXTRACTION:end -->

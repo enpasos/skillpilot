@@ -141,3 +141,21 @@ Generated source extractions:
 - `lower-secondary/source-extraction/DE_RP_DEUTSCH_SEKI_LEHRPLAN_2022.source-extraction.json`
 - `upper-secondary/source-extraction/DE_RP_DEUTSCH_SEKII_MSS_2014.source-extraction.json`
 <!-- DE-RP-DEUTSCH-SOURCE-EXTRACTION:end -->
+
+<!-- DE-RP-GESCHICHTE-SOURCE-EXTRACTION:start -->
+## Geschichte
+
+### Sekundarstufe I (Klassen 7-10)
+- **Lehrplan gesellschaftswissenschaftliche Faecher Sekundarstufe I (2021), Fachlehrplan Geschichte**
+- Offizielle Quelle: https://bildung.rlp.de/fileadmin/user_upload/demokratie.bildung.rlp.de/Downloads/Ek_G_Sk_Sek_I__LP_2021_.pdf
+- Archived source PDF: `Ek_G_Sk_Sek_I_LP_2021.pdf`
+- Source extraction: `lower-secondary/source-extraction/DE_RP_GESCHICHTE_SEKI_LEHRPLAN_2021.source-extraction.json`
+- M3 status: `complete` (126 Source-Ziele)
+
+### Sekundarstufe II (Mainzer Studienstufe)
+- **Lehrplan gesellschaftswissenschaftliche Faecher Sekundarstufe II (2022), Fachlehrplan Geschichte**
+- Offizielle Quelle: https://bildung.rlp.de/fileadmin/user_upload/studienseminar.rlp.de/gy-ko/Koblenz/Ausbildung/Geschichte/Links/Lehrplan_fuer_die_gesellschaftswissenschaftlichen_Faecher_Erdkunde_Geschichte_Sozialkunde_in_der_Sek._II__1_.pdf
+- Archived source PDF: `Gesellschaftswissenschaftliche_Faecher_SekII_2022.pdf`
+- Source extraction: `upper-secondary/source-extraction/DE_RP_GESCHICHTE_SEKII_LEHRPLAN_2022.source-extraction.json`
+- M3 status: `complete` (132 Source-Ziele)
+<!-- DE-RP-GESCHICHTE-SOURCE-EXTRACTION:end -->

@@ -89,3 +89,21 @@
 - Aktive source-extraction-Dateien:
   `curricula/DE/Gymnasium/input/SH/lower-secondary/source-extraction/DE_SH_INFORMATIK_SEKI_FACHANFORDERUNGEN_2021.source-extraction.json`
   `curricula/DE/Gymnasium/input/SH/upper-secondary/source-extraction/DE_SH_INFORMATIK_SEKII_FACHANFORDERUNGEN_2021.source-extraction.json`
+
+<!-- DE-SH-GESCHICHTE-SOURCE-EXTRACTION:start -->
+## Geschichte
+
+### Sekundarstufe I
+- **Fachanforderungen Geschichte Sekundarstufe I / Sekundarstufe II (2016)**
+- Offizielle Quelle: https://fachportal.lernnetz.de/files/Fachanforderungen%20und%20Leitf%C3%A4den/Sek.%20I_II/Fachanforderungen_barrierefrei/Fachanforderungen_Geschichte_SEK_barrierearm.pdf
+- Archived source PDF: `Fachanforderungen_Geschichte_SEK_barrierearm.pdf`
+- Source extraction: `lower-secondary/source-extraction/DE_SH_GESCHICHTE_SEKI_FACHANFORDERUNGEN_2016.source-extraction.json`
+- M3 status: `complete` (87 Source-Ziele)
+
+### Sekundarstufe II
+- **Fachanforderungen Geschichte Sekundarstufe I / Sekundarstufe II (2016)**
+- Offizielle Quelle: https://fachportal.lernnetz.de/files/Fachanforderungen%20und%20Leitf%C3%A4den/Sek.%20I_II/Fachanforderungen_barrierefrei/Fachanforderungen_Geschichte_SEK_barrierearm.pdf
+- Archived source PDF: `Fachanforderungen_Geschichte_SEK_barrierearm.pdf`
+- Source extraction: `upper-secondary/source-extraction/DE_SH_GESCHICHTE_SEKII_FACHANFORDERUNGEN_2016.source-extraction.json`
+- M3 status: `complete` (110 Source-Ziele)
+<!-- DE-SH-GESCHICHTE-SOURCE-EXTRACTION:end -->

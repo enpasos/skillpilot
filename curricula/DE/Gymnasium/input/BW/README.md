@@ -67,3 +67,18 @@ Current local archive status on `2026-04-11`:
 - **Bildungsplan 2016**: [Landesbildungsserver BW - Wirtschaft Gymnasium](https://www.bildungsplaene-bw.de/,Lde/LS/BP2016BW/ALLG/GYM/WI)
 - Archived source PDF: `BP2016BW_ALLG_GYM_WI.pdf`
 - Source extraction: `upper-secondary/source-extraction/DE_BW_WIRTSCHAFT_SEKII_BP2016.source-extraction.json`
+
+<!-- DE-BW-GESCHICHTE-SOURCE-EXTRACTION:start -->
+## Geschichte
+### Sekundarstufe I (Klassen 5-10)
+- **Bildungsplan 2016**: [Landesbildungsserver BW - Geschichte Gymnasium](https://www.bildungsplaene-bw.de/%2CLde/BP2016BW_ALLG_GYM_G)
+- Archived source PDF: `BP2016BW_ALLG_GYM_G.pdf`
+- Source extraction: `lower-secondary/source-extraction/DE_BW_GESCHICHTE_SEKI_BP2016.source-extraction.json`
+- M3 status: `complete` (88 Source-Ziele)
+
+### Sekundarstufe II (Kursstufe, Klassen 11-12)
+- **Bildungsplan 2016 (Basisfach/Leistungsfach)**: [Landesbildungsserver BW - Geschichte Gymnasium](https://www.bildungsplaene-bw.de/%2CLde/BP2016BW_ALLG_GYM_G)
+- Archived source PDF: `BP2016BW_ALLG_GYM_G.pdf`
+- Source extraction: `upper-secondary/source-extraction/DE_BW_GESCHICHTE_SEKII_BP2016.source-extraction.json`
+- M3 status: `complete` (72 Source-Ziele)
+<!-- DE-BW-GESCHICHTE-SOURCE-EXTRACTION:end -->

@@ -51,3 +51,29 @@ Scope:
 Archived locally at:
 
 - `curricula/DE/Gymnasium/input/NI/upper-secondary/KC-CH_SII_Druck.pdf`
+
+<!-- DE-NI-GESCHICHTE-SEKII-SOURCE-EXTRACTION:start -->
+## Geschichte source PDF
+
+- `Kerncurriculum Geschichte Sek II Niedersachsen (2017)`:
+  https://cuvo.nibis.de/index.php?docid=1069&p=detail_view
+
+Scope:
+
+- Niedersachsen
+- Gymnasium
+- Geschichte
+- upper-secondary extraction target: NI Geschichte Einfuehrungsphase and Qualifikationsphase (253 Source-Ziele)
+
+Archived locally at:
+
+- `curricula/DE/Gymnasium/input/NI/upper-secondary/KC-II-neu.pdf`
+
+Source extraction:
+
+- `curricula/DE/Gymnasium/input/NI/upper-secondary/source-extraction/DE_NI_GESCHICHTE_SEKII_KC2017.source-extraction.json`
+
+Mapping review:
+
+- `curricula/DE/Gymnasium/mapping/DE-NI/upper-secondary/ni_history_upper_secondary_source_extraction_to_canonical_history.review.json`
+<!-- DE-NI-GESCHICHTE-SEKII-SOURCE-EXTRACTION:end -->

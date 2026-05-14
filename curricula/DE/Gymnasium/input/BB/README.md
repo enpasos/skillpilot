@@ -102,3 +102,21 @@ Das LISUM gibt gemeinsame Rahmenlehrpläne für Berlin und Brandenburg heraus.
 - die gemeinsame BB/BE-Sek-I- und Sek-II-Quellenlage stabil halten
 - keine zusaetzliche BB/BE-spezifische Chemie-Composition-View erzwingen, solange der gemeinsame LISUM-RLP ausreicht
 - Folgearbeit auf echte retained Residues oder Cutover-Maintenance beschraenken
+
+<!-- DE-BB-GESCHICHTE-SOURCE-EXTRACTION:start -->
+## Geschichte
+
+### Sekundarstufe I (Jahrgangsstufen 7-10)
+- **Rahmenlehrplan Berlin-Brandenburg Teil C Geschichte (2015)**
+- Offizielle Quelle: https://bildungsserver.berlin-brandenburg.de/fileadmin/bbb/unterricht/rahmenlehrplaene/Rahmenlehrplanprojekt/amtliche_Fassung/Teil_C_Geschichte_2015_11_10.pdf
+- Archived source PDF: `lower-secondary/Teil_C_Geschichte_2015_11_10.pdf`
+- Source extraction: `lower-secondary/source-extraction/DE_BB_GESCHICHTE_SEKI_RLP_2015.source-extraction.json`
+- M3 status: `complete` (100 Source-Ziele)
+
+### Sekundarstufe II (Gymnasiale Oberstufe)
+- **Rahmenlehrplan Berlin-Brandenburg GOST Teil C Geschichte (2025)**
+- Offizielle Quelle: https://bildungsserver.berlin-brandenburg.de/fileadmin/bbb/unterricht/rahmenlehrplaene/gymnasiale_oberstufe/curricula/2025/Teil_C_RLP_GOST_2025_Geschichte.pdf
+- Archived source PDF: `upper-secondary/Teil_C_RLP_GOST_2025_Geschichte.pdf`
+- Source extraction: `upper-secondary/source-extraction/DE_BB_GESCHICHTE_SEKII_RLP_GOST_2025.source-extraction.json`
+- M3 status: `complete` (235 Source-Ziele)
+<!-- DE-BB-GESCHICHTE-SOURCE-EXTRACTION:end -->

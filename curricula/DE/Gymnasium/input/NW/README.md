@@ -59,3 +59,21 @@ Current local archive status on `2026-04-10`:
 - **Kernlehrplan Biologie Sekundarstufe I Gymnasium (2019)**: [Lehrplannavigator NRW - Biologie Gymnasium](https://lehrplannavigator.nrw.de/sekundarstufe-i/kernlehrplaene-fuer-das-gymnasium-ab-20192020/biologie)
 - Archived source PDF: `lower-secondary/g9_bi_klp_-3413_2019_06_23_0.pdf`
 - Source references: `lower-secondary/references.md`
+
+<!-- DE-NW-GESCHICHTE-SOURCE-EXTRACTION:start -->
+## Geschichte
+
+### Sekundarstufe I (Gymnasium G9)
+- **Kernlehrplan Geschichte Sekundarstufe I Gymnasium (2019)**
+- Offizielle Quelle: https://lehrplannavigator.nrw.de/system/files/media/document/file/g9_ge_klp_3407_2019_06_23.pdf
+- Archived source PDF: `lower-secondary/g9_ge_klp_3407_2019_06_23.pdf`
+- Source extraction: `lower-secondary/source-extraction/DE_NW_GESCHICHTE_SEKI_KLP_2019.source-extraction.json`
+- M3 status: `complete` (137 Source-Ziele)
+
+### Sekundarstufe II (Gymnasiale Oberstufe)
+- **Kernlehrplan Geschichte gymnasiale Oberstufe (2013)**
+- Offizielle Quelle: https://lehrplannavigator.nrw.de/system/files/media/document/file/klp_gost_geschichte.pdf
+- Archived source PDF: `upper-secondary/klp_gost_geschichte.pdf`
+- Source extraction: `upper-secondary/source-extraction/DE_NW_GESCHICHTE_SEKII_KLP_GOST_2013.source-extraction.json`
+- M3 status: `complete` (223 Source-Ziele)
+<!-- DE-NW-GESCHICHTE-SOURCE-EXTRACTION:end -->

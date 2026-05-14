@@ -38,3 +38,66 @@ Generated source extraction:
 
 - `curricula/DE/Gymnasium/input/TH/lower-secondary/source-extraction/DE_TH_WIRTSCHAFT_RECHT_SEKI_LEHRPLAN_GYMNASIUM_2012.source-extraction.json`
 <!-- DE-TH-WIRTSCHAFT-RECHT-SEKI-SOURCE-EXTRACTION:end -->
+
+<!-- DE-TH-GESCHICHTE-SEKI-SOURCE-EXTRACTION:start -->
+## Geschichte source PDFs
+
+- `Lehrplan Geschichte Gymnasium Thueringen, Entwurfsfassung 2025`:
+  https://www.schulportal-thueringen.de/tip/resources/medien/65649?dateiname=LP_GY_Geschichte_Entwurfsfassung2025.pdf
+- `Lehrplan Geschichte Gymnasium Thueringen 2021`:
+  https://www.schulportal-thueringen.de/tip/resources/medien/15749?dateiname=LP_GY_Ge_Fassung_20210913.pdf
+
+Official source page:
+
+- https://www.schulportal-thueringen.de/lehrplaene/gymnasium
+
+Scope:
+
+- Thueringen
+- Gymnasium
+- Geschichte
+- lower-secondary extraction target: TH Geschichte Klassenstufen 5/6, 7/8 und 9/10 (182 Source-Ziele)
+
+Archived locally at:
+
+- `curricula/DE/Gymnasium/input/TH/LP_GY_Geschichte_Entwurfsfassung2025.pdf`
+- `curricula/DE/Gymnasium/input/TH/LP_GY_Geschichte_2021.pdf`
+
+Source extraction:
+
+- `curricula/DE/Gymnasium/input/TH/lower-secondary/source-extraction/DE_TH_GESCHICHTE_SEKI_LEHRPLAN_GYMNASIUM_2025.source-extraction.json`
+
+Mapping review:
+
+- `curricula/DE/Gymnasium/mapping/DE-TH/lower-secondary/th_history_lower_secondary_source_extraction_to_canonical_history.review.json`
+<!-- DE-TH-GESCHICHTE-SEKI-SOURCE-EXTRACTION:end -->
+
+<!-- DE-TH-DEUTSCH-SekI-SOURCE-EXTRACTION:start -->
+## Deutsch source PDF
+
+- `Lehrplan Deutsch Gymnasium Thueringen 2019`:
+  https://www.schulportal-thueringen.de/tip/resources/medien/43341?dateiname=lp_gy_deutsch_neue%20Fassung_08.02.2019_TSP.pdf
+
+Official source page:
+
+- https://www.schulportal-thueringen.de/media/detail?tspi=9426
+
+Scope:
+
+- DE-TH
+- Gymnasium
+- Deutsch
+- lower-secondary extraction target (553 Source-Ziele)
+
+Archived locally at:
+
+- `curricula/DE/Gymnasium/input/TH/LP_GY_Deutsch_2019.pdf`
+
+Source extraction:
+
+- `curricula/DE/Gymnasium/input/TH/lower-secondary/source-extraction/DE_TH_DEUTSCH_SEKI_LEHRPLAN_GYMNASIUM_2019.source-extraction.json`
+
+Mapping review:
+
+- `curricula/DE/Gymnasium/mapping/DE-TH/lower-secondary/th_german_lower_secondary_source_extraction_to_canonical_german.review.json`
+<!-- DE-TH-DEUTSCH-SekI-SOURCE-EXTRACTION:end -->
