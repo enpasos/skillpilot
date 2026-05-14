@@ -58,7 +58,7 @@ const sourceDocuments = {
   upper: {
     key: 'MV-WIRTSCHAFT-GO-RAHMENPLAN-2019',
     title: 'Rahmenplan Wirtschaft Gymnasiale Oberstufe Mecklenburg-Vorpommern',
-    path: 'curricula/DE/Gymnasium/input/MV/Rahmenplan_Wirtschaft_Gymnasiale_Oberstufe.pdf',
+    path: 'curricula/DE/Gymnasium/input/MV/Rahmenplan_Wirtschaft_GOS_MV.pdf',
     url: 'https://service.mvnet.de/_php/download.php?datei_id=1612623',
   },
 } satisfies Record<'lower' | 'upper', SourceDocument>

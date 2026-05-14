@@ -59,3 +59,18 @@
   `curricula/DE/Gymnasium/input/SH/lower-secondary/references.md`
 - Aktive source-extraction-Datei:
   `curricula/DE/Gymnasium/input/SH/lower-secondary/source-extraction/DE_SH_BIOLOGIE_SEKI_FACHANFORDERUNGEN_2023.source-extraction.json`
+
+## Informatik
+### Sekundarstufe I und II
+- Archiviert:
+  `curricula/DE/Gymnasium/input/SH/Fachanforderungen_Informatik_Sekundarstufe_2021_barrierearm.pdf`
+- Offizielle Quelle:
+  `https://fachportal.lernnetz.de/sh/fachanforderungen/informatik.html`
+- Hinweis:
+  die 2021er Fachanforderungen liegen als gemeinsame Sek-I/Sek-II-Informatikquelle vor; die Source-Extraction trennt die Sek-I-Kompetenzbereiche `Daten und Informationen`, `Informatiksysteme`, `Algorithmen und Programmierung`, `Netzwerke und Internet` von den Sek-II-Kompetenzbereichen `Betriebs- und Kommunikationssysteme`, `Algorithmen und Datenstrukturen`, `Datenbanken`, `Softwareentwicklung`
+- Stage-Referenzen:
+  `curricula/DE/Gymnasium/input/SH/lower-secondary/references.md`
+  `curricula/DE/Gymnasium/input/SH/upper-secondary/references.md`
+- Aktive source-extraction-Dateien:
+  `curricula/DE/Gymnasium/input/SH/lower-secondary/source-extraction/DE_SH_INFORMATIK_SEKI_FACHANFORDERUNGEN_2021.source-extraction.json`
+  `curricula/DE/Gymnasium/input/SH/upper-secondary/source-extraction/DE_SH_INFORMATIK_SEKII_FACHANFORDERUNGEN_2021.source-extraction.json`

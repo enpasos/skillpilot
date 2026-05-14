@@ -20,3 +20,26 @@ Archived locally at:
 Generated source extraction:
 
 - `curricula/DE/Gymnasium/input/SN/upper-secondary/source-extraction/DE_SN_GRW_SEKII_WIRTSCHAFT_LEHRPLAN_GYMNASIUM_2024.source-extraction.json`
+
+## Informatik
+
+Starting point:
+https://www.schulportal.sachsen.de/lplandb/lehrplan/630
+
+- `Informatik_Gymnasium_2022.pdf`:
+  https://www.schulportal.sachsen.de/lplandb/lehrplan/file/630/fTqTlkXseYZLUMB5l3pV
+
+Scope:
+
+- Sachsen
+- Gymnasium
+- Informatik
+- upper-secondary extraction target: Jahrgangsstufen 11/12, Grundkurs and Leistungskurs from the official Gymnasium Informatik Lehrplan
+
+Archived locally at:
+
+- `curricula/DE/Gymnasium/input/SN/Informatik_Gymnasium_2022.pdf`
+
+Generated source extraction:
+
+- `curricula/DE/Gymnasium/input/SN/upper-secondary/source-extraction/DE_SN_INFORMATIK_SEKII_LEHRPLAN_2022.source-extraction.json`

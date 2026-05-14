@@ -72,3 +72,26 @@ Operational note:
 - Sachsen Biology M3 status:
   - Sek I: `complete` (10 Source-Ziele)
 - The next meaningful Biology step is adding the remaining open states `DE-ST` and `DE-TH`.
+
+## Informatik
+
+Archived official source input on `2026-05-14`:
+
+- `Informatik_Gymnasium_2022.pdf`
+  - Lehrplan Gymnasium Informatik Sachsen `2004/2007/2011/2019/2022`
+  - Klassenstufen `7-10` und Jahrgangsstufen `11/12`
+  - direct PDF source: `https://www.schulportal.sachsen.de/lplandb/lehrplan/file/630/fTqTlkXseYZLUMB5l3pV`
+  - public Lehrplandatenbank overview: `https://www.schulportal.sachsen.de/lplandb/lehrplan/630`
+
+Operational note:
+
+- `DE-SN` now has real archived lower-secondary plus upper-secondary Informatics source extractions from the shared official Gymnasium PDF.
+- The retained source extractions now live at:
+  - `curricula/DE/Gymnasium/input/SN/lower-secondary/source-extraction/DE_SN_INFORMATIK_SEKI_LEHRPLAN_2022.source-extraction.json`
+  - `curricula/DE/Gymnasium/input/SN/upper-secondary/source-extraction/DE_SN_INFORMATIK_SEKII_LEHRPLAN_2022.source-extraction.json`
+- Sachsen Informatics M3 status:
+  - Sek I: `complete` (78 Source-Ziele)
+  - Sek II: `complete` (257 Source-Ziele)
+- Sachsen Informatics quality status:
+  - `335/335` Source-Ziele sind in der DE-SN-Sicht abgedeckt.
+  - `114/114` sichtbare Atomziele sind source-backed.

@@ -1,0 +1,2947 @@
+{
+  "schemaVersion": 1,
+  "extractionId": "DE-TH-INFORMATIK-SEKII-LEHRPLAN-GYMNASIUM-2012",
+  "sourceLandscapeId": "a5da5aeb-e9bb-5af0-8374-3e36ecfc4ded",
+  "targetLandscapeId": "7d51b38c-a149-5407-bddc-d2ce7878b020",
+  "jurisdiction": "DE-TH",
+  "subject": "Informatik",
+  "stage": "SekII",
+  "title": "Informatik Sekundarstufe II (Thueringen, Lehrplan Gymnasium 2012 Source-Extraction)",
+  "sourceDocument": {
+    "key": "TH-INF-GYM-2012",
+    "title": "Lehrplan Informatik Gymnasium Thüringen 2012",
+    "path": "curricula/DE/Gymnasium/input/TH/Lehrplan_inf_Gym_9_12_26112012.pdf",
+    "url": "https://www.schulportal-thueringen.de/tip/resources/medien/21770?dateiname=Lehrplan_inf_Gym_9_12_26112012.pdf",
+    "official": true
+  },
+  "sourceDocuments": [
+    {
+      "key": "TH-INF-GYM-2012",
+      "title": "Lehrplan Informatik Gymnasium Thüringen 2012",
+      "path": "curricula/DE/Gymnasium/input/TH/Lehrplan_inf_Gym_9_12_26112012.pdf",
+      "url": "https://www.schulportal-thueringen.de/tip/resources/medien/21770?dateiname=Lehrplan_inf_Gym_9_12_26112012.pdf",
+      "official": true
+    }
+  ],
+  "method": {
+    "passageExtraction": "Source-Ziele wurden aus der Einführungsphase fuer Schueler mit Realschulabschluss und aus den vier Q-Lernbereichen Theoretische, Technische, Praktische und Angewandte Informatik des amtlichen Thüringer Lehrplans Informatik Gymnasium 2012 extrahiert.",
+    "sourceGoalExtraction": "Source-Ziele wurden als fachlich atomare Kompetenzerwartungen aus den amtlichen Kompetenzpassagen formuliert und auf kanonische SkillPilot-Ziele gemappt.",
+    "scopeNote": "Sek II umfasst Brueckenkompetenzen der Einführungsphase und die Qualifikationsphase mit grundlegendem und erhoehtem Anforderungsniveau."
+  },
+  "qualityReview": {
+    "sourceGoalCountPeerBaseline": {
+      "accepted": true,
+      "details": "92 Source-Ziele; Thüringen liegt im Korridor der bereits geprueften Informatik-Laender. Der Lehrplan ist kompakt, deckt aber Sek I, Brueckenphase und Q-Phase ab."
+    }
+  },
+  "expectedTopicCodes": [
+    "TH-INF-SEKII-11-BRIDGE",
+    "TH-INF-SEKII-Q-THEORY",
+    "TH-INF-SEKII-Q-TECH",
+    "TH-INF-SEKII-Q-PRACTICAL",
+    "TH-INF-SEKII-Q-APPLIED"
+  ],
+  "pipelineStatus": {
+    "currentStep": "MAPPING-3",
+    "steps": [
+      {
+        "id": "ORIGINALQUELLEN",
+        "label": "Originalquellen bereitgestellt",
+        "status": "complete",
+        "dependsOn": [],
+        "checks": [
+          {
+            "id": "official-source-document-present-th-informatik-sekii",
+            "label": "Amtlicher Thüringer Lehrplan Informatik Gymnasium 2012 liegt lokal vor",
+            "passed": true,
+            "details": "curricula/DE/Gymnasium/input/TH/Lehrplan_inf_Gym_9_12_26112012.pdf"
+          }
+        ]
+      },
+      {
+        "id": "MAPPING-1",
+        "label": "Original-Lehrplanpassagen extrahiert",
+        "status": "complete",
+        "dependsOn": [
+          "ORIGINALQUELLEN"
+        ],
+        "checks": [
+          {
+            "id": "official-passages-extracted-th-informatik-sekii",
+            "label": "Lehrplanpassagen aus amtlicher Thüringen-Quelle extrahiert",
+            "passed": true,
+            "details": "5 Passagen aus Informatik Sekundarstufe II (Thueringen, Lehrplan Gymnasium 2012 Source-Extraction)."
+          },
+          {
+            "id": "source-extraction-not-legacy-th-informatik-sekii",
+            "label": "Source-Extraction basiert auf amtlichem PDF statt Legacy-Snapshot",
+            "passed": true,
+            "details": "curricula/DE/Gymnasium/input/TH/Lehrplan_inf_Gym_9_12_26112012.pdf"
+          }
+        ]
+      },
+      {
+        "id": "MAPPING-2",
+        "label": "Source-Ziele aus Lehrplanpassagen erstellt",
+        "status": "complete",
+        "dependsOn": [
+          "MAPPING-1"
+        ],
+        "checks": [
+          {
+            "id": "source-goals-present-th-informatik-sekii",
+            "label": "Source-Ziele aus amtlichen Kompetenzpassagen erzeugt",
+            "passed": true,
+            "details": "92 Source-Ziele."
+          },
+          {
+            "id": "source-goal-ids-unique-th-informatik-sekii",
+            "label": "Source-Ziel-IDs sind eindeutig",
+            "passed": true,
+            "details": "Doppelte IDs: -"
+          },
+          {
+            "id": "source-goals-passage-backed-th-informatik-sekii",
+            "label": "Jedes Source-Ziel referenziert eine Originalpassage",
+            "passed": true,
+            "details": "Ohne Passage: -"
+          }
+        ]
+      },
+      {
+        "id": "MAPPING-3",
+        "label": "Source-Ziele auf SkillPilot-Ziele gemappt",
+        "status": "complete",
+        "dependsOn": [
+          "MAPPING-2"
+        ],
+        "checks": [
+          {
+            "id": "m3-decisions-complete-th-informatik-sekii",
+            "label": "Alle Source-Ziele haben fachliche M3-Entscheidung",
+            "passed": true,
+            "details": "92/92 Source-Ziele reviewed; offen: 0."
+          },
+          {
+            "id": "m3-content-covered-th-informatik-sekii",
+            "label": "Alle Source-Ziele sind inhaltlich durch SkillPilot-Ziele abgedeckt",
+            "passed": true,
+            "details": "Abgedeckt: 92/92; verbleibend: 0 explizite Canonical-Gaps, 0 unreviewed."
+          }
+        ]
+      }
+    ]
+  },
+  "passages": [
+    {
+      "id": "de-th-informatik:th-inf-11-bridge",
+      "topicCode": "TH-INF-SEKII-11-BRIDGE",
+      "title": "Einführungsphase: Information, Algorithmen und Projektarbeit",
+      "text": "1. Begriffe Information, Nachricht und Daten, Dateitypen, Objektattribute, Informationsgewinnung und Informatiksysteme konsolidieren\n2. Nachrichtenuebertragung, E-Mail, WWW, Suchmaschinen und Datenkomprimierung modellhaft beschreiben\n3. Grafiken objektorientiert modellieren, Attributwerte aendern, Dateien bearbeiten und Webdokumente erstellen\n4. Verschluesselungsverfahren algorithmisch darstellen, Grundbegriffe erlaeutern und Nachrichten ver- und entschluesseln\n5. Algorithmuseigenschaften, Syntax, Semantik, Variablen, Fehleranalyse, Programmmodifikation, Automaten und Zustandsdiagramme konsolidieren\n6. informatische Projektfragen, Werkzeuge, Fachsprache, Teilziele, Dokumentation, Problemloesungsphasen und Praesentation konsolidieren",
+      "page": 24,
+      "sourcePath": "curricula/DE/Gymnasium/input/TH/Lehrplan_inf_Gym_9_12_26112012.pdf",
+      "sourceUrl": "https://www.schulportal-thueringen.de/tip/resources/medien/21770?dateiname=Lehrplan_inf_Gym_9_12_26112012.pdf",
+      "sourceGoalIds": [
+        "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-11-bridge-001-brueckenphase-information-und-systeme-0bdf6380",
+        "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-11-bridge-002-brueckenphase-nachrichtenmodelle-55ad6078",
+        "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-11-bridge-003-brueckenphase-objektmodellierung-und-web-7f40bcdd",
+        "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-11-bridge-004-brueckenphase-kryptologie-a7c8bf08",
+        "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-11-bridge-005-brueckenphase-algorithmik-64e4bde4",
+        "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-11-bridge-006-brueckenphase-projektarbeit-df61f470"
+      ]
+    },
+    {
+      "id": "de-th-informatik:th-inf-q-theory",
+      "topicCode": "TH-INF-SEKII-Q-THEORY",
+      "title": "Qualifikationsphase: Lernbereich Theoretische Informatik",
+      "text": "1. natuerliche und formale Sprachen vergleichen\n2. Syntax und Semantik erlaeutern\n3. Zusammenhang zwischen formalen Sprachen und Werkzeugen beziehungsweise Programmiersprachen herstellen\n4. Woerter einer formalen Sprache mithilfe ihrer Grammatik ableiten\n5. Zusammenhaenge von formalen Sprachen und Automaten erlaeutern\n6. am Beispiel einer regulaeren Sprache Arbeitsweise eines endlichen Automaten erlaeutern\n7. Arbeitsweise deterministischer Automaten erlaeutern\n8. Modell Turingmaschine beschreiben und ihre Arbeitsweise erklaeren\n9. Halteproblem beschreiben\n10. Grenzen der Berechenbarkeit anhand der Church-Turing-These erlaeutern\n11. Beweisidee fuer die Unentscheidbarkeit des Halteproblems beschreiben\n12. Begriffe Zeit- und Speicherverhalten erklaeren\n13. ein praktisch unloesbares Problem der Informatik erlaeutern\n14. loesbare Probleme nach polynomialem und exponentiellem Aufwand klassifizieren sowie Loesungen und Heuristiken erlaeutern\n15. einfache Grammatiken im erweiterten Backus-Naur-Formalismus darstellen\n16. deterministischen Automaten entwerfen und implementieren\n17. einfache Interpreter entwerfen und implementieren\n18. einfache Turingmaschinen konstruieren\n19. Zeit- und Speicherverhalten iterativer und rekursiver Sortier- und Suchalgorithmen bewerten und mit O-Notation klassifizieren\n20. Arbeitsweise von Compilern und Interpretern vergleichen\n21. Zuverlaessigkeit, ethisch-philosophische Probleme und Pionierleistungen der theoretischen Informatik bewerten",
+      "page": 30,
+      "sourcePath": "curricula/DE/Gymnasium/input/TH/Lehrplan_inf_Gym_9_12_26112012.pdf",
+      "sourceUrl": "https://www.schulportal-thueringen.de/tip/resources/medien/21770?dateiname=Lehrplan_inf_Gym_9_12_26112012.pdf",
+      "sourceGoalIds": [
+        "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-theory-001-natuerliche-und-formale-sprachen-vergleichen-a8ec80b6",
+        "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-theory-002-syntax-und-semantik-in-q-erlaeutern-2187398d",
+        "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-theory-003-formale-sprachen-mit-werkzeugen-verbinden-dd9f518e",
+        "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-theory-004-woerter-aus-grammatik-ableiten-8f361392",
+        "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-theory-005-formale-sprachen-und-automaten-erlaeutern-7b840744",
+        "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-theory-006-endlichen-automaten-erlaeutern-91f6342c",
+        "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-theory-007-deterministische-automaten-erlaeutern-b183b8de",
+        "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-theory-008-turingmaschine-beschreiben-d1881e2d",
+        "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-theory-009-halteproblem-beschreiben-339bf429",
+        "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-theory-010-church-turing-these-erlaeutern-cce2195e",
+        "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-theory-011-unentscheidbarkeit-des-halteproblems-skizzieren-4674b8e4",
+        "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-theory-012-zeit-und-speicherverhalten-erklaeren-55f87033",
+        "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-theory-013-praktisch-unloesbare-probleme-erlaeutern-fecaafd6",
+        "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-theory-014-aufwand-klassifizieren-und-heuristiken-finden-d9c90e9e",
+        "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-theory-015-ebnf-grammatiken-darstellen-4bc11588",
+        "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-theory-016-automaten-entwerfen-und-implementieren-e721c18e",
+        "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-theory-017-interpreter-entwerfen-0e4e2110",
+        "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-theory-018-turingmaschinen-konstruieren-31aabc0c",
+        "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-theory-019-sortier-und-suchaufwand-bewerten-47efaec6",
+        "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-theory-020-compiler-und-interpreter-vergleichen-c84165ac",
+        "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-theory-021-theorie-gesellschaftlich-bewerten-f8ad0baa"
+      ]
+    },
+    {
+      "id": "de-th-informatik:th-inf-q-tech",
+      "topicCode": "TH-INF-SEKII-Q-TECH",
+      "title": "Qualifikationsphase: Lernbereich Technische Informatik",
+      "text": "1. von-Neumann-Rechnerarchitektur erlaeutern\n2. Einheit Byte und Binaerpraefixe einordnen und anwenden\n3. binaere Codierung als Prinzip der Informationsverarbeitung beschreiben\n4. Digitalisierung analoger Groessen erlaeutern\n5. endliche gebrochene Dezimalzahlen in Bitmustern vorgegebener Laenge angeben und Genauigkeit reflektieren\n6. positive und negative Ganzzahlen in einem Bitmuster darstellen\n7. Dualzahlen addieren und subtrahieren\n8. Algorithmus zur Multiplikation zweier positiver Dualzahlen beschreiben\n9. Schaltbelegungstabellen, Schaltsymbole und Funktionsdarstellung der Logikgatter NOT, AND, OR, NAND und NOR angeben\n10. einfache Verknuepfungen aus Logikgattern in disjunktive Normalform ueberfuehren\n11. Schaltbelegungstabellen von Flipflops angeben und Einsatz als Speicherbaustein erklaeren\n12. Schaltbelegungstabellen und Schaltsymbole von Halb- und Volladdierern angeben\n13. ein Addierwerk beschreiben\n14. grundsaetzliche Funktionsweise eines Analog-Digital- und Digital-Analog-Wandlers erlaeutern\n15. Dezimalzahlen in Dualzahlen umwandeln und umgekehrt\n16. Verknuepfungen von Logikgattern konstruieren\n17. Verknuepfungen mittels Schaltbelegungstabellen analysieren\n18. Rechengenauigkeit des Computers einschaetzen\n19. Binaerpraefixe mit metrischen SI-Praefixen vergleichen",
+      "page": 32,
+      "sourcePath": "curricula/DE/Gymnasium/input/TH/Lehrplan_inf_Gym_9_12_26112012.pdf",
+      "sourceUrl": "https://www.schulportal-thueringen.de/tip/resources/medien/21770?dateiname=Lehrplan_inf_Gym_9_12_26112012.pdf",
+      "sourceGoalIds": [
+        "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-tech-001-von-neumann-architektur-erlaeutern-db441691",
+        "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-tech-002-byte-und-binaerpraefixe-anwenden-7a982e61",
+        "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-tech-003-binaere-codierung-erlaeutern-8c640ccf",
+        "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-tech-004-analog-digitalisierung-erklaeren-6dc421dc",
+        "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-tech-005-gebrochene-dezimalzahlen-in-bitmustern-darstellen-24f523d4",
+        "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-tech-006-ganzzahlen-binaer-darstellen-9a62aed9",
+        "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-tech-007-dualzahlen-rechnen-fb787fd4",
+        "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-tech-008-dualzahlmultiplikation-beschreiben-18055f3b",
+        "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-tech-009-logikgatter-angeben-873609db",
+        "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-tech-010-disjunktive-normalform-bilden-60d8a863",
+        "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-tech-011-flipflops-als-speicher-erklaeren-e97e388a",
+        "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-tech-012-halb-und-volladdierer-angeben-06923f01",
+        "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-tech-013-addierwerk-beschreiben-e155f587",
+        "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-tech-014-ad-da-wandler-erlaeutern-79d50230",
+        "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-tech-015-zahlen-umwandeln-c888ac6c",
+        "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-tech-016-logikgatter-konstruieren-50910e0b",
+        "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-tech-017-schaltungen-analysieren-d22cfdd2",
+        "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-tech-018-rechengenauigkeit-einschaetzen-e4b2976d",
+        "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-tech-019-binaer-und-si-praefixe-vergleichen-a7a2c7a9"
+      ]
+    },
+    {
+      "id": "de-th-informatik:th-inf-q-practical",
+      "topicCode": "TH-INF-SEKII-Q-PRACTICAL",
+      "title": "Qualifikationsphase: Lernbereich Praktische Informatik",
+      "text": "1. Algorithmusbegriff erlaeutern\n2. Folge von Anweisungen, Auswahl und Wiederholung zur Strukturierung von Algorithmen anwenden\n3. iterative und rekursive Algorithmen analysieren und vergleichen\n4. Arbeitsweise von Such- und Sortieralgorithmen erlaeutern\n5. Arbeitsweise iterativer und rekursiver Such- und Sortieralgorithmen erlaeutern\n6. iterative Such- und Sortieralgorithmen entwerfen und implementieren\n7. rekursiven Suchalgorithmus entwerfen und implementieren\n8. Programmiersprachen nach Paradigmen klassifizieren\n9. imperativ und prozedural programmieren\n10. imperativ, prozedural und modular programmieren\n11. Variablenkonzept erlaeutern\n12. einfache und strukturierte Datentypen mit wesentlichen Operationen unterscheiden und anwenden\n13. einfache und strukturierte Datentypen sowie dynamische Datenstrukturen Liste, Stapel und Schlange mit Operationen unterscheiden und anwenden\n14. einfach verkettete Liste, binaeren Baum und Graph definieren und erlaeutern\n15. Wegsuche in Graphen beschreiben\n16. Objekt, Klasse und Vererbung erlaeutern\n17. Objekt, Klasse, Vererbung, dynamische Bindung und Polymorphie erlaeutern\n18. einfache Sachverhalte objektorientiert modellieren\n19. einfache Sachverhalte objektorientiert modellieren und implementieren\n20. iterative Algorithmen entwerfen und implementieren\n21. iterative und rekursive Algorithmen entwerfen und implementieren\n22. Problemloesungsmethoden Backtracking und Teile und Herrsche anwenden\n23. objektorientierte Programme analysieren und in Klassendiagrammen darstellen\n24. grundlegende Methoden der Softwareentwicklung und Phasen des Problemloesens anwenden\n25. Werkzeug der Informatik beziehungsweise Programmiersprache zum Problemloesen nutzen\n26. Fehlermeldungen interpretieren, Fehler mit Werkzeugen ermitteln und korrigieren sowie Problemloesungen testen und dokumentieren\n27. ein Werkzeug der Informatik zum Modellieren benutzen\n28. in kooperativen Arbeitsformen komplexe Probleme bearbeiten und den Problemloeseprozess reflektieren",
+      "page": 34,
+      "sourcePath": "curricula/DE/Gymnasium/input/TH/Lehrplan_inf_Gym_9_12_26112012.pdf",
+      "sourceUrl": "https://www.schulportal-thueringen.de/tip/resources/medien/21770?dateiname=Lehrplan_inf_Gym_9_12_26112012.pdf",
+      "sourceGoalIds": [
+        "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-practical-001-algorithmusbegriff-erlaeutern-3e90a87f",
+        "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-practical-002-folge-auswahl-wiederholung-anwenden-cffa35ad",
+        "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-practical-003-iterative-und-rekursive-algorithmen-vergleichen-c527f752",
+        "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-practical-004-such-und-sortieralgorithmen-erlaeutern-ab75be52",
+        "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-practical-005-iterative-und-rekursive-such-und-sortieralgorithmen-erlaeutern-4ce3dcdd",
+        "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-practical-006-iterative-such-und-sortieralgorithmen-implementieren-027e3d4e",
+        "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-practical-007-rekursiven-suchalgorithmus-implementieren-a83f4a37",
+        "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-practical-008-programmiersprachen-nach-paradigmen-klassifizieren-c60cd2bf",
+        "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-practical-009-imperativ-und-prozedural-programmieren-951d42a4",
+        "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-practical-010-modular-programmieren-e260dc2a",
+        "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-practical-011-variablenkonzept-erlaeutern-50c9d9d5",
+        "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-practical-012-datentypen-unterscheiden-und-anwenden-81230555",
+        "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-practical-013-dynamische-datenstrukturen-anwenden-6663a2bb",
+        "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-practical-014-baum-und-graph-definieren-0a02778b",
+        "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-practical-015-wegsuche-in-graphen-beschreiben-aadd7791",
+        "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-practical-016-objekt-klasse-vererbung-erlaeutern-6b9732ce",
+        "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-practical-017-polymorphie-und-dynamische-bindung-erlaeutern-22cd6371",
+        "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-practical-018-sachverhalte-objektorientiert-modellieren-44442573",
+        "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-practical-019-sachverhalte-objektorientiert-implementieren-6e7d2b71",
+        "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-practical-020-iterative-algorithmen-entwerfen-4ae66730",
+        "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-practical-021-rekursive-algorithmen-entwerfen-fa077a5a",
+        "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-practical-022-backtracking-und-teile-und-herrsche-anwenden-38b48dc1",
+        "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-practical-023-oo-programme-analysieren-af844aaa",
+        "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-practical-024-softwareentwicklungsmethoden-anwenden-80f2c66e",
+        "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-practical-025-programmiersprache-als-werkzeug-nutzen-d53abb0f",
+        "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-practical-026-fehler-ermitteln-und-korrigieren-5c155447",
+        "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-practical-027-modellierungswerkzeug-nutzen-f4824592",
+        "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-practical-028-komplexe-probleme-kooperativ-bearbeiten-11b001d4"
+      ]
+    },
+    {
+      "id": "de-th-informatik:th-inf-q-applied",
+      "topicCode": "TH-INF-SEKII-Q-APPLIED",
+      "title": "Qualifikationsphase: Lernbereich Angewandte Informatik",
+      "text": "1. komplexe Probleme mit Methoden der Informatik in einer Projektarbeit loesen\n2. Client-Server-Modell beschreiben\n3. Datenaustausch durch ein Schichtenmodell beschreiben\n4. Aufbau einer IP-Adresse erlaeutern\n5. Namensaufloesung von Internetadressen durch DNS erlaeutern\n6. Wegewahl von Datenpaketen beschreiben\n7. verlustfreie und verlustbehaftete Datenkomprimierungsverfahren beschreiben und erlaeutern\n8. symmetrische Verschluesselungsverfahren erlaeutern\n9. symmetrische und asymmetrische Verschluesselungsverfahren erlaeutern\n10. Sicherheit von Verschluesselungsalgorithmen bewerten und Angriffe erlaeutern\n11. Verlauf einer Projektarbeit und Ergebnisse dokumentieren und praesentieren\n12. im Rahmen von Projektarbeiten Bezüge zu anderen Faechern herstellen\n13. ein symmetrisches Verschluesselungsverfahren implementieren\n14. Projektthema selbststaendig finden und Projektarbeit im Team organisieren\n15. gesellschaftliche und ethische Aspekte der Nutzung sozialer Netzwerke beurteilen\n16. Nutzen und Sicherheit aktueller Internetdienste diskutieren\n17. Fallbeispiele zu Datenschutz, Datensicherheit und Urheberrecht diskutieren\n18. Regeln im Umgang mit kryptografischen Systemen diskutieren",
+      "page": 36,
+      "sourcePath": "curricula/DE/Gymnasium/input/TH/Lehrplan_inf_Gym_9_12_26112012.pdf",
+      "sourceUrl": "https://www.schulportal-thueringen.de/tip/resources/medien/21770?dateiname=Lehrplan_inf_Gym_9_12_26112012.pdf",
+      "sourceGoalIds": [
+        "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-applied-001-projektarbeit-mit-informatikmethoden-loesen-86c3e143",
+        "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-applied-002-client-server-modell-beschreiben-028385b1",
+        "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-applied-003-datenaustausch-mit-schichtenmodell-beschreiben-ae69a6b5",
+        "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-applied-004-ip-adresse-erlaeutern-caa68f25",
+        "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-applied-005-dns-erlaeutern-56056cb2",
+        "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-applied-006-routing-beschreiben-f4ce31e2",
+        "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-applied-007-datenkomprimierung-beschreiben-und-erlaeutern-64553f41",
+        "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-applied-008-symmetrische-verschluesselung-erlaeutern-786e3052",
+        "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-applied-009-symmetrische-und-asymmetrische-verschluesselung-erlaeutern-5677fd0e",
+        "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-applied-010-krypto-sicherheit-bewerten-3c0119aa",
+        "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-applied-011-projekt-dokumentieren-und-praesentieren-cc711986",
+        "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-applied-012-faecherbezuege-herstellen-12214035",
+        "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-applied-013-symmetrische-verschluesselung-implementieren-1c82d093",
+        "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-applied-014-projekt-selbststaendig-organisieren-7927b405",
+        "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-applied-015-soziale-netzwerke-beurteilen-b47cf75c",
+        "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-applied-016-internetdienste-diskutieren-bdce6613",
+        "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-applied-017-datenschutz-datensicherheit-urheberrecht-diskutieren-db73208a",
+        "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-applied-018-kryptosystemregeln-diskutieren-deed390e"
+      ]
+    }
+  ],
+  "sourceGoals": [
+    {
+      "id": "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-11-bridge-001-brueckenphase-information-und-systeme-0bdf6380",
+      "passageId": "de-th-informatik:th-inf-11-bridge",
+      "topicCode": "TH-INF-SEKII-11-BRIDGE-01",
+      "bulletIndex": 1,
+      "title": "TH-INF-SEKII-11-BRIDGE-1: Brueckenphase Information und Systeme",
+      "description": "Source-Ziel aus Einführungsphase: Information, Algorithmen und Projektarbeit: Begriffe Information, Nachricht und Daten, Dateitypen, Objektattribute, Informationsgewinnung und Informatiksysteme konsolidieren",
+      "sourceText": "Begriffe Information, Nachricht und Daten, Dateitypen, Objektattribute, Informationsgewinnung und Informatiksysteme konsolidieren",
+      "sourceSpan": "TH-INF-SEKII-11-BRIDGE.1",
+      "parentBulletText": "Begriffe Information, Nachricht und Daten, Dateitypen, Objektattribute, Informationsgewinnung und Informatiksysteme konsolidieren",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Einführungsphase: Information, Algorithmen und Projektarbeit, S. 24.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:TH-INF-SEKII-11-BRIDGE",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "Begriffe Information, Nachricht und Daten, Dateitypen, Objektattribute, Informationsgewinnung und Informatiksysteme konsolidieren",
+      "rawSourceSpan": "TH-INF-SEKII-11-BRIDGE.1",
+      "rawParentBulletText": "Begriffe Information, Nachricht und Daten, Dateitypen, Objektattribute, Informationsgewinnung und Informatiksysteme konsolidieren",
+      "canonicalTargetIds": [
+        "50d82e9f-737c-5693-90fe-3d534dc8683d",
+        "e382fc41-6f59-5bc5-9514-f2201a3a4c5a",
+        "92f5ecc8-6d7f-50ce-99b9-080e21c894cc"
+      ]
+    },
+    {
+      "id": "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-11-bridge-002-brueckenphase-nachrichtenmodelle-55ad6078",
+      "passageId": "de-th-informatik:th-inf-11-bridge",
+      "topicCode": "TH-INF-SEKII-11-BRIDGE-02",
+      "bulletIndex": 2,
+      "title": "TH-INF-SEKII-11-BRIDGE-2: Brueckenphase Nachrichtenmodelle",
+      "description": "Source-Ziel aus Einführungsphase: Information, Algorithmen und Projektarbeit: Nachrichtenuebertragung, E-Mail, WWW, Suchmaschinen und Datenkomprimierung modellhaft beschreiben",
+      "sourceText": "Nachrichtenuebertragung, E-Mail, WWW, Suchmaschinen und Datenkomprimierung modellhaft beschreiben",
+      "sourceSpan": "TH-INF-SEKII-11-BRIDGE.2",
+      "parentBulletText": "Nachrichtenuebertragung, E-Mail, WWW, Suchmaschinen und Datenkomprimierung modellhaft beschreiben",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Einführungsphase: Information, Algorithmen und Projektarbeit, S. 24.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:TH-INF-SEKII-11-BRIDGE",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "Nachrichtenuebertragung, E-Mail, WWW, Suchmaschinen und Datenkomprimierung modellhaft beschreiben",
+      "rawSourceSpan": "TH-INF-SEKII-11-BRIDGE.2",
+      "rawParentBulletText": "Nachrichtenuebertragung, E-Mail, WWW, Suchmaschinen und Datenkomprimierung modellhaft beschreiben",
+      "canonicalTargetIds": [
+        "e3e5c851-39d8-569f-9f0a-d516c729ed36",
+        "ace0c141-9e7c-546e-914f-64c24d42d85d",
+        "859e875f-6730-5201-b8ed-60fb9374d27b"
+      ]
+    },
+    {
+      "id": "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-11-bridge-003-brueckenphase-objektmodellierung-und-web-7f40bcdd",
+      "passageId": "de-th-informatik:th-inf-11-bridge",
+      "topicCode": "TH-INF-SEKII-11-BRIDGE-03",
+      "bulletIndex": 3,
+      "title": "TH-INF-SEKII-11-BRIDGE-3: Brueckenphase Objektmodellierung und Web",
+      "description": "Source-Ziel aus Einführungsphase: Information, Algorithmen und Projektarbeit: Grafiken objektorientiert modellieren, Attributwerte aendern, Dateien bearbeiten und Webdokumente erstellen",
+      "sourceText": "Grafiken objektorientiert modellieren, Attributwerte aendern, Dateien bearbeiten und Webdokumente erstellen",
+      "sourceSpan": "TH-INF-SEKII-11-BRIDGE.3",
+      "parentBulletText": "Grafiken objektorientiert modellieren, Attributwerte aendern, Dateien bearbeiten und Webdokumente erstellen",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Einführungsphase: Information, Algorithmen und Projektarbeit, S. 24.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:TH-INF-SEKII-11-BRIDGE",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "Grafiken objektorientiert modellieren, Attributwerte aendern, Dateien bearbeiten und Webdokumente erstellen",
+      "rawSourceSpan": "TH-INF-SEKII-11-BRIDGE.3",
+      "rawParentBulletText": "Grafiken objektorientiert modellieren, Attributwerte aendern, Dateien bearbeiten und Webdokumente erstellen",
+      "canonicalTargetIds": [
+        "6c284640-1f28-4837-aabd-445656ad7f54",
+        "2aaefe0b-3e56-477e-94f0-bb05fa035ed5",
+        "a8206bfb-aaed-5502-9df1-55609f3d79b5"
+      ]
+    },
+    {
+      "id": "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-11-bridge-004-brueckenphase-kryptologie-a7c8bf08",
+      "passageId": "de-th-informatik:th-inf-11-bridge",
+      "topicCode": "TH-INF-SEKII-11-BRIDGE-04",
+      "bulletIndex": 4,
+      "title": "TH-INF-SEKII-11-BRIDGE-4: Brueckenphase Kryptologie",
+      "description": "Source-Ziel aus Einführungsphase: Information, Algorithmen und Projektarbeit: Verschluesselungsverfahren algorithmisch darstellen, Grundbegriffe erlaeutern und Nachrichten ver- und entschluesseln",
+      "sourceText": "Verschluesselungsverfahren algorithmisch darstellen, Grundbegriffe erlaeutern und Nachrichten ver- und entschluesseln",
+      "sourceSpan": "TH-INF-SEKII-11-BRIDGE.4",
+      "parentBulletText": "Verschluesselungsverfahren algorithmisch darstellen, Grundbegriffe erlaeutern und Nachrichten ver- und entschluesseln",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Einführungsphase: Information, Algorithmen und Projektarbeit, S. 24.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:TH-INF-SEKII-11-BRIDGE",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "Verschluesselungsverfahren algorithmisch darstellen, Grundbegriffe erlaeutern und Nachrichten ver- und entschluesseln",
+      "rawSourceSpan": "TH-INF-SEKII-11-BRIDGE.4",
+      "rawParentBulletText": "Verschluesselungsverfahren algorithmisch darstellen, Grundbegriffe erlaeutern und Nachrichten ver- und entschluesseln",
+      "canonicalTargetIds": [
+        "6bba1eda-23b1-5b52-ad00-1d6e04db5317",
+        "f029bea7-1c08-5844-894c-9aeb96bf9ec2"
+      ]
+    },
+    {
+      "id": "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-11-bridge-005-brueckenphase-algorithmik-64e4bde4",
+      "passageId": "de-th-informatik:th-inf-11-bridge",
+      "topicCode": "TH-INF-SEKII-11-BRIDGE-05",
+      "bulletIndex": 5,
+      "title": "TH-INF-SEKII-11-BRIDGE-5: Brueckenphase Algorithmik",
+      "description": "Source-Ziel aus Einführungsphase: Information, Algorithmen und Projektarbeit: Algorithmuseigenschaften, Syntax, Semantik, Variablen, Fehleranalyse, Programmmodifikation, Automaten und Zustandsdiagramme konsolidieren",
+      "sourceText": "Algorithmuseigenschaften, Syntax, Semantik, Variablen, Fehleranalyse, Programmmodifikation, Automaten und Zustandsdiagramme konsolidieren",
+      "sourceSpan": "TH-INF-SEKII-11-BRIDGE.5",
+      "parentBulletText": "Algorithmuseigenschaften, Syntax, Semantik, Variablen, Fehleranalyse, Programmmodifikation, Automaten und Zustandsdiagramme konsolidieren",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Einführungsphase: Information, Algorithmen und Projektarbeit, S. 24.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:TH-INF-SEKII-11-BRIDGE",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "Algorithmuseigenschaften, Syntax, Semantik, Variablen, Fehleranalyse, Programmmodifikation, Automaten und Zustandsdiagramme konsolidieren",
+      "rawSourceSpan": "TH-INF-SEKII-11-BRIDGE.5",
+      "rawParentBulletText": "Algorithmuseigenschaften, Syntax, Semantik, Variablen, Fehleranalyse, Programmmodifikation, Automaten und Zustandsdiagramme konsolidieren",
+      "canonicalTargetIds": [
+        "5ca1960e-6b02-5679-b271-043a5c29b189",
+        "18317e31-71f7-4e4a-b18c-f61e2b25769d",
+        "d5914986-fba8-56cc-99be-d9560ac7666d",
+        "7ad8caf0-3a31-56f1-bee1-574c01b0c156"
+      ]
+    },
+    {
+      "id": "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-11-bridge-006-brueckenphase-projektarbeit-df61f470",
+      "passageId": "de-th-informatik:th-inf-11-bridge",
+      "topicCode": "TH-INF-SEKII-11-BRIDGE-06",
+      "bulletIndex": 6,
+      "title": "TH-INF-SEKII-11-BRIDGE-6: Brueckenphase Projektarbeit",
+      "description": "Source-Ziel aus Einführungsphase: Information, Algorithmen und Projektarbeit: informatische Projektfragen, Werkzeuge, Fachsprache, Teilziele, Dokumentation, Problemloesungsphasen und Praesentation konsolidieren",
+      "sourceText": "informatische Projektfragen, Werkzeuge, Fachsprache, Teilziele, Dokumentation, Problemloesungsphasen und Praesentation konsolidieren",
+      "sourceSpan": "TH-INF-SEKII-11-BRIDGE.6",
+      "parentBulletText": "informatische Projektfragen, Werkzeuge, Fachsprache, Teilziele, Dokumentation, Problemloesungsphasen und Praesentation konsolidieren",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Einführungsphase: Information, Algorithmen und Projektarbeit, S. 24.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:TH-INF-SEKII-11-BRIDGE",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "informatische Projektfragen, Werkzeuge, Fachsprache, Teilziele, Dokumentation, Problemloesungsphasen und Praesentation konsolidieren",
+      "rawSourceSpan": "TH-INF-SEKII-11-BRIDGE.6",
+      "rawParentBulletText": "informatische Projektfragen, Werkzeuge, Fachsprache, Teilziele, Dokumentation, Problemloesungsphasen und Praesentation konsolidieren",
+      "canonicalTargetIds": [
+        "8d21085b-9780-599e-ba0e-ccc0c31a5f01",
+        "bf23fafe-423d-561a-b832-cb25a327a508",
+        "f81be4d3-2445-54aa-b17e-2a27466e7e0d"
+      ]
+    },
+    {
+      "id": "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-theory-001-natuerliche-und-formale-sprachen-vergleichen-a8ec80b6",
+      "passageId": "de-th-informatik:th-inf-q-theory",
+      "topicCode": "TH-INF-SEKII-Q-THEORY-01",
+      "bulletIndex": 1,
+      "title": "TH-INF-SEKII-Q-THEORY-1: Natuerliche und formale Sprachen vergleichen",
+      "description": "Source-Ziel aus Qualifikationsphase: Lernbereich Theoretische Informatik: natuerliche und formale Sprachen vergleichen",
+      "sourceText": "natuerliche und formale Sprachen vergleichen",
+      "sourceSpan": "TH-INF-SEKII-Q-THEORY.1",
+      "parentBulletText": "natuerliche und formale Sprachen vergleichen",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Qualifikationsphase: Lernbereich Theoretische Informatik, S. 30.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:TH-INF-SEKII-Q-THEORY",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "natuerliche und formale Sprachen vergleichen",
+      "rawSourceSpan": "TH-INF-SEKII-Q-THEORY.1",
+      "rawParentBulletText": "natuerliche und formale Sprachen vergleichen",
+      "canonicalTargetIds": [
+        "4acfccb7-f38c-5fd4-b24d-b7b002373fde"
+      ]
+    },
+    {
+      "id": "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-theory-002-syntax-und-semantik-in-q-erlaeutern-2187398d",
+      "passageId": "de-th-informatik:th-inf-q-theory",
+      "topicCode": "TH-INF-SEKII-Q-THEORY-02",
+      "bulletIndex": 2,
+      "title": "TH-INF-SEKII-Q-THEORY-2: Syntax und Semantik in Q erlaeutern",
+      "description": "Source-Ziel aus Qualifikationsphase: Lernbereich Theoretische Informatik: Syntax und Semantik erlaeutern",
+      "sourceText": "Syntax und Semantik erlaeutern",
+      "sourceSpan": "TH-INF-SEKII-Q-THEORY.2",
+      "parentBulletText": "Syntax und Semantik erlaeutern",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Qualifikationsphase: Lernbereich Theoretische Informatik, S. 30.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:TH-INF-SEKII-Q-THEORY",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "Syntax und Semantik erlaeutern",
+      "rawSourceSpan": "TH-INF-SEKII-Q-THEORY.2",
+      "rawParentBulletText": "Syntax und Semantik erlaeutern",
+      "canonicalTargetIds": [
+        "cdb24f8f-3596-5e68-a44f-9d651c7eed62"
+      ]
+    },
+    {
+      "id": "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-theory-003-formale-sprachen-mit-werkzeugen-verbinden-dd9f518e",
+      "passageId": "de-th-informatik:th-inf-q-theory",
+      "topicCode": "TH-INF-SEKII-Q-THEORY-03",
+      "bulletIndex": 3,
+      "title": "TH-INF-SEKII-Q-THEORY-3: Formale Sprachen mit Werkzeugen verbinden",
+      "description": "Source-Ziel aus Qualifikationsphase: Lernbereich Theoretische Informatik: Zusammenhang zwischen formalen Sprachen und Werkzeugen beziehungsweise Programmiersprachen herstellen",
+      "sourceText": "Zusammenhang zwischen formalen Sprachen und Werkzeugen beziehungsweise Programmiersprachen herstellen",
+      "sourceSpan": "TH-INF-SEKII-Q-THEORY.3",
+      "parentBulletText": "Zusammenhang zwischen formalen Sprachen und Werkzeugen beziehungsweise Programmiersprachen herstellen",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Qualifikationsphase: Lernbereich Theoretische Informatik, S. 30.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:TH-INF-SEKII-Q-THEORY",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "Zusammenhang zwischen formalen Sprachen und Werkzeugen beziehungsweise Programmiersprachen herstellen",
+      "rawSourceSpan": "TH-INF-SEKII-Q-THEORY.3",
+      "rawParentBulletText": "Zusammenhang zwischen formalen Sprachen und Werkzeugen beziehungsweise Programmiersprachen herstellen",
+      "canonicalTargetIds": [
+        "cdb24f8f-3596-5e68-a44f-9d651c7eed62",
+        "fbd4561a-573e-5f8c-b363-338ee9774b5c"
+      ]
+    },
+    {
+      "id": "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-theory-004-woerter-aus-grammatik-ableiten-8f361392",
+      "passageId": "de-th-informatik:th-inf-q-theory",
+      "topicCode": "TH-INF-SEKII-Q-THEORY-04",
+      "bulletIndex": 4,
+      "title": "TH-INF-SEKII-Q-THEORY-4: Woerter aus Grammatik ableiten",
+      "description": "Source-Ziel aus Qualifikationsphase: Lernbereich Theoretische Informatik: Woerter einer formalen Sprache mithilfe ihrer Grammatik ableiten",
+      "sourceText": "Woerter einer formalen Sprache mithilfe ihrer Grammatik ableiten",
+      "sourceSpan": "TH-INF-SEKII-Q-THEORY.4",
+      "parentBulletText": "Woerter einer formalen Sprache mithilfe ihrer Grammatik ableiten",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Qualifikationsphase: Lernbereich Theoretische Informatik, S. 30.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:TH-INF-SEKII-Q-THEORY",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "Woerter einer formalen Sprache mithilfe ihrer Grammatik ableiten",
+      "rawSourceSpan": "TH-INF-SEKII-Q-THEORY.4",
+      "rawParentBulletText": "Woerter einer formalen Sprache mithilfe ihrer Grammatik ableiten",
+      "canonicalTargetIds": [
+        "fbd4561a-573e-5f8c-b363-338ee9774b5c",
+        "3e3264d6-8cf8-55f9-b085-1aa4a7865476"
+      ]
+    },
+    {
+      "id": "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-theory-005-formale-sprachen-und-automaten-erlaeutern-7b840744",
+      "passageId": "de-th-informatik:th-inf-q-theory",
+      "topicCode": "TH-INF-SEKII-Q-THEORY-05",
+      "bulletIndex": 5,
+      "title": "TH-INF-SEKII-Q-THEORY-5: Formale Sprachen und Automaten erlaeutern",
+      "description": "Source-Ziel aus Qualifikationsphase: Lernbereich Theoretische Informatik: Zusammenhaenge von formalen Sprachen und Automaten erlaeutern",
+      "sourceText": "Zusammenhaenge von formalen Sprachen und Automaten erlaeutern",
+      "sourceSpan": "TH-INF-SEKII-Q-THEORY.5",
+      "parentBulletText": "Zusammenhaenge von formalen Sprachen und Automaten erlaeutern",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Qualifikationsphase: Lernbereich Theoretische Informatik, S. 30.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:TH-INF-SEKII-Q-THEORY",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "Zusammenhaenge von formalen Sprachen und Automaten erlaeutern",
+      "rawSourceSpan": "TH-INF-SEKII-Q-THEORY.5",
+      "rawParentBulletText": "Zusammenhaenge von formalen Sprachen und Automaten erlaeutern",
+      "canonicalTargetIds": [
+        "cdb24f8f-3596-5e68-a44f-9d651c7eed62",
+        "7ad8caf0-3a31-56f1-bee1-574c01b0c156"
+      ]
+    },
+    {
+      "id": "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-theory-006-endlichen-automaten-erlaeutern-91f6342c",
+      "passageId": "de-th-informatik:th-inf-q-theory",
+      "topicCode": "TH-INF-SEKII-Q-THEORY-06",
+      "bulletIndex": 6,
+      "title": "TH-INF-SEKII-Q-THEORY-6: Endlichen Automaten erlaeutern",
+      "description": "Source-Ziel aus Qualifikationsphase: Lernbereich Theoretische Informatik: am Beispiel einer regulaeren Sprache Arbeitsweise eines endlichen Automaten erlaeutern",
+      "sourceText": "am Beispiel einer regulaeren Sprache Arbeitsweise eines endlichen Automaten erlaeutern",
+      "sourceSpan": "TH-INF-SEKII-Q-THEORY.6",
+      "parentBulletText": "am Beispiel einer regulaeren Sprache Arbeitsweise eines endlichen Automaten erlaeutern",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Qualifikationsphase: Lernbereich Theoretische Informatik, S. 30.",
+      "courseLevel": "GK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:TH-INF-SEKII-Q-THEORY",
+        "courseLevel:GK"
+      ],
+      "rawSourceText": "am Beispiel einer regulaeren Sprache Arbeitsweise eines endlichen Automaten erlaeutern",
+      "rawSourceSpan": "TH-INF-SEKII-Q-THEORY.6",
+      "rawParentBulletText": "am Beispiel einer regulaeren Sprache Arbeitsweise eines endlichen Automaten erlaeutern",
+      "canonicalTargetIds": [
+        "7ad8caf0-3a31-56f1-bee1-574c01b0c156",
+        "cdb24f8f-3596-5e68-a44f-9d651c7eed62"
+      ]
+    },
+    {
+      "id": "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-theory-007-deterministische-automaten-erlaeutern-b183b8de",
+      "passageId": "de-th-informatik:th-inf-q-theory",
+      "topicCode": "TH-INF-SEKII-Q-THEORY-07",
+      "bulletIndex": 7,
+      "title": "TH-INF-SEKII-Q-THEORY-7: Deterministische Automaten erlaeutern",
+      "description": "Source-Ziel aus Qualifikationsphase: Lernbereich Theoretische Informatik: Arbeitsweise deterministischer Automaten erlaeutern",
+      "sourceText": "Arbeitsweise deterministischer Automaten erlaeutern",
+      "sourceSpan": "TH-INF-SEKII-Q-THEORY.7",
+      "parentBulletText": "Arbeitsweise deterministischer Automaten erlaeutern",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Qualifikationsphase: Lernbereich Theoretische Informatik, S. 30.",
+      "courseLevel": "LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:TH-INF-SEKII-Q-THEORY",
+        "courseLevel:LK"
+      ],
+      "rawSourceText": "Arbeitsweise deterministischer Automaten erlaeutern",
+      "rawSourceSpan": "TH-INF-SEKII-Q-THEORY.7",
+      "rawParentBulletText": "Arbeitsweise deterministischer Automaten erlaeutern",
+      "canonicalTargetIds": [
+        "7ad8caf0-3a31-56f1-bee1-574c01b0c156",
+        "875cb53c-b48d-5b2b-8cb0-e20f27534f16"
+      ]
+    },
+    {
+      "id": "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-theory-008-turingmaschine-beschreiben-d1881e2d",
+      "passageId": "de-th-informatik:th-inf-q-theory",
+      "topicCode": "TH-INF-SEKII-Q-THEORY-08",
+      "bulletIndex": 8,
+      "title": "TH-INF-SEKII-Q-THEORY-8: Turingmaschine beschreiben",
+      "description": "Source-Ziel aus Qualifikationsphase: Lernbereich Theoretische Informatik: Modell Turingmaschine beschreiben und ihre Arbeitsweise erklaeren",
+      "sourceText": "Modell Turingmaschine beschreiben und ihre Arbeitsweise erklaeren",
+      "sourceSpan": "TH-INF-SEKII-Q-THEORY.8",
+      "parentBulletText": "Modell Turingmaschine beschreiben und ihre Arbeitsweise erklaeren",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Qualifikationsphase: Lernbereich Theoretische Informatik, S. 30.",
+      "courseLevel": "LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:TH-INF-SEKII-Q-THEORY",
+        "courseLevel:LK"
+      ],
+      "rawSourceText": "Modell Turingmaschine beschreiben und ihre Arbeitsweise erklaeren",
+      "rawSourceSpan": "TH-INF-SEKII-Q-THEORY.8",
+      "rawParentBulletText": "Modell Turingmaschine beschreiben und ihre Arbeitsweise erklaeren",
+      "canonicalTargetIds": [
+        "e7f0dec3-3d78-551b-8770-c182670eee6d"
+      ]
+    },
+    {
+      "id": "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-theory-009-halteproblem-beschreiben-339bf429",
+      "passageId": "de-th-informatik:th-inf-q-theory",
+      "topicCode": "TH-INF-SEKII-Q-THEORY-09",
+      "bulletIndex": 9,
+      "title": "TH-INF-SEKII-Q-THEORY-9: Halteproblem beschreiben",
+      "description": "Source-Ziel aus Qualifikationsphase: Lernbereich Theoretische Informatik: Halteproblem beschreiben",
+      "sourceText": "Halteproblem beschreiben",
+      "sourceSpan": "TH-INF-SEKII-Q-THEORY.9",
+      "parentBulletText": "Halteproblem beschreiben",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Qualifikationsphase: Lernbereich Theoretische Informatik, S. 30.",
+      "courseLevel": "GK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:TH-INF-SEKII-Q-THEORY",
+        "courseLevel:GK"
+      ],
+      "rawSourceText": "Halteproblem beschreiben",
+      "rawSourceSpan": "TH-INF-SEKII-Q-THEORY.9",
+      "rawParentBulletText": "Halteproblem beschreiben",
+      "canonicalTargetIds": [
+        "97f80e26-bc3b-5808-8c62-f114ae9ee143"
+      ]
+    },
+    {
+      "id": "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-theory-010-church-turing-these-erlaeutern-cce2195e",
+      "passageId": "de-th-informatik:th-inf-q-theory",
+      "topicCode": "TH-INF-SEKII-Q-THEORY-10",
+      "bulletIndex": 10,
+      "title": "TH-INF-SEKII-Q-THEORY-10: Church-Turing-These erlaeutern",
+      "description": "Source-Ziel aus Qualifikationsphase: Lernbereich Theoretische Informatik: Grenzen der Berechenbarkeit anhand der Church-Turing-These erlaeutern",
+      "sourceText": "Grenzen der Berechenbarkeit anhand der Church-Turing-These erlaeutern",
+      "sourceSpan": "TH-INF-SEKII-Q-THEORY.10",
+      "parentBulletText": "Grenzen der Berechenbarkeit anhand der Church-Turing-These erlaeutern",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Qualifikationsphase: Lernbereich Theoretische Informatik, S. 30.",
+      "courseLevel": "LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:TH-INF-SEKII-Q-THEORY",
+        "courseLevel:LK"
+      ],
+      "rawSourceText": "Grenzen der Berechenbarkeit anhand der Church-Turing-These erlaeutern",
+      "rawSourceSpan": "TH-INF-SEKII-Q-THEORY.10",
+      "rawParentBulletText": "Grenzen der Berechenbarkeit anhand der Church-Turing-These erlaeutern",
+      "canonicalTargetIds": [
+        "e14dc7c6-002b-5da0-af1c-507b6355ccb0",
+        "e7f0dec3-3d78-551b-8770-c182670eee6d"
+      ]
+    },
+    {
+      "id": "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-theory-011-unentscheidbarkeit-des-halteproblems-skizzieren-4674b8e4",
+      "passageId": "de-th-informatik:th-inf-q-theory",
+      "topicCode": "TH-INF-SEKII-Q-THEORY-11",
+      "bulletIndex": 11,
+      "title": "TH-INF-SEKII-Q-THEORY-11: Unentscheidbarkeit des Halteproblems skizzieren",
+      "description": "Source-Ziel aus Qualifikationsphase: Lernbereich Theoretische Informatik: Beweisidee fuer die Unentscheidbarkeit des Halteproblems beschreiben",
+      "sourceText": "Beweisidee fuer die Unentscheidbarkeit des Halteproblems beschreiben",
+      "sourceSpan": "TH-INF-SEKII-Q-THEORY.11",
+      "parentBulletText": "Beweisidee fuer die Unentscheidbarkeit des Halteproblems beschreiben",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Qualifikationsphase: Lernbereich Theoretische Informatik, S. 30.",
+      "courseLevel": "LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:TH-INF-SEKII-Q-THEORY",
+        "courseLevel:LK"
+      ],
+      "rawSourceText": "Beweisidee fuer die Unentscheidbarkeit des Halteproblems beschreiben",
+      "rawSourceSpan": "TH-INF-SEKII-Q-THEORY.11",
+      "rawParentBulletText": "Beweisidee fuer die Unentscheidbarkeit des Halteproblems beschreiben",
+      "canonicalTargetIds": [
+        "97f80e26-bc3b-5808-8c62-f114ae9ee143",
+        "e14dc7c6-002b-5da0-af1c-507b6355ccb0"
+      ]
+    },
+    {
+      "id": "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-theory-012-zeit-und-speicherverhalten-erklaeren-55f87033",
+      "passageId": "de-th-informatik:th-inf-q-theory",
+      "topicCode": "TH-INF-SEKII-Q-THEORY-12",
+      "bulletIndex": 12,
+      "title": "TH-INF-SEKII-Q-THEORY-12: Zeit- und Speicherverhalten erklaeren",
+      "description": "Source-Ziel aus Qualifikationsphase: Lernbereich Theoretische Informatik: Begriffe Zeit- und Speicherverhalten erklaeren",
+      "sourceText": "Begriffe Zeit- und Speicherverhalten erklaeren",
+      "sourceSpan": "TH-INF-SEKII-Q-THEORY.12",
+      "parentBulletText": "Begriffe Zeit- und Speicherverhalten erklaeren",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Qualifikationsphase: Lernbereich Theoretische Informatik, S. 30.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:TH-INF-SEKII-Q-THEORY",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "Begriffe Zeit- und Speicherverhalten erklaeren",
+      "rawSourceSpan": "TH-INF-SEKII-Q-THEORY.12",
+      "rawParentBulletText": "Begriffe Zeit- und Speicherverhalten erklaeren",
+      "canonicalTargetIds": [
+        "bc46922d-d874-528b-a183-5a3eaef12e4d"
+      ]
+    },
+    {
+      "id": "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-theory-013-praktisch-unloesbare-probleme-erlaeutern-fecaafd6",
+      "passageId": "de-th-informatik:th-inf-q-theory",
+      "topicCode": "TH-INF-SEKII-Q-THEORY-13",
+      "bulletIndex": 13,
+      "title": "TH-INF-SEKII-Q-THEORY-13: Praktisch unloesbare Probleme erlaeutern",
+      "description": "Source-Ziel aus Qualifikationsphase: Lernbereich Theoretische Informatik: ein praktisch unloesbares Problem der Informatik erlaeutern",
+      "sourceText": "ein praktisch unloesbares Problem der Informatik erlaeutern",
+      "sourceSpan": "TH-INF-SEKII-Q-THEORY.13",
+      "parentBulletText": "ein praktisch unloesbares Problem der Informatik erlaeutern",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Qualifikationsphase: Lernbereich Theoretische Informatik, S. 30.",
+      "courseLevel": "GK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:TH-INF-SEKII-Q-THEORY",
+        "courseLevel:GK"
+      ],
+      "rawSourceText": "ein praktisch unloesbares Problem der Informatik erlaeutern",
+      "rawSourceSpan": "TH-INF-SEKII-Q-THEORY.13",
+      "rawParentBulletText": "ein praktisch unloesbares Problem der Informatik erlaeutern",
+      "canonicalTargetIds": [
+        "7f41d0a1-19cb-5e08-be07-185a2c9d6bb5",
+        "bc46922d-d874-528b-a183-5a3eaef12e4d"
+      ]
+    },
+    {
+      "id": "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-theory-014-aufwand-klassifizieren-und-heuristiken-finden-d9c90e9e",
+      "passageId": "de-th-informatik:th-inf-q-theory",
+      "topicCode": "TH-INF-SEKII-Q-THEORY-14",
+      "bulletIndex": 14,
+      "title": "TH-INF-SEKII-Q-THEORY-14: Aufwand klassifizieren und Heuristiken finden",
+      "description": "Source-Ziel aus Qualifikationsphase: Lernbereich Theoretische Informatik: loesbare Probleme nach polynomialem und exponentiellem Aufwand klassifizieren sowie Loesungen und Heuristiken erlaeutern",
+      "sourceText": "loesbare Probleme nach polynomialem und exponentiellem Aufwand klassifizieren sowie Loesungen und Heuristiken erlaeutern",
+      "sourceSpan": "TH-INF-SEKII-Q-THEORY.14",
+      "parentBulletText": "loesbare Probleme nach polynomialem und exponentiellem Aufwand klassifizieren sowie Loesungen und Heuristiken erlaeutern",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Qualifikationsphase: Lernbereich Theoretische Informatik, S. 30.",
+      "courseLevel": "LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:TH-INF-SEKII-Q-THEORY",
+        "courseLevel:LK"
+      ],
+      "rawSourceText": "loesbare Probleme nach polynomialem und exponentiellem Aufwand klassifizieren sowie Loesungen und Heuristiken erlaeutern",
+      "rawSourceSpan": "TH-INF-SEKII-Q-THEORY.14",
+      "rawParentBulletText": "loesbare Probleme nach polynomialem und exponentiellem Aufwand klassifizieren sowie Loesungen und Heuristiken erlaeutern",
+      "canonicalTargetIds": [
+        "7f41d0a1-19cb-5e08-be07-185a2c9d6bb5",
+        "bc46922d-d874-528b-a183-5a3eaef12e4d"
+      ]
+    },
+    {
+      "id": "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-theory-015-ebnf-grammatiken-darstellen-4bc11588",
+      "passageId": "de-th-informatik:th-inf-q-theory",
+      "topicCode": "TH-INF-SEKII-Q-THEORY-15",
+      "bulletIndex": 15,
+      "title": "TH-INF-SEKII-Q-THEORY-15: EBNF-Grammatiken darstellen",
+      "description": "Source-Ziel aus Qualifikationsphase: Lernbereich Theoretische Informatik: einfache Grammatiken im erweiterten Backus-Naur-Formalismus darstellen",
+      "sourceText": "einfache Grammatiken im erweiterten Backus-Naur-Formalismus darstellen",
+      "sourceSpan": "TH-INF-SEKII-Q-THEORY.15",
+      "parentBulletText": "einfache Grammatiken im erweiterten Backus-Naur-Formalismus darstellen",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Qualifikationsphase: Lernbereich Theoretische Informatik, S. 30.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:TH-INF-SEKII-Q-THEORY",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "einfache Grammatiken im erweiterten Backus-Naur-Formalismus darstellen",
+      "rawSourceSpan": "TH-INF-SEKII-Q-THEORY.15",
+      "rawParentBulletText": "einfache Grammatiken im erweiterten Backus-Naur-Formalismus darstellen",
+      "canonicalTargetIds": [
+        "fbd4561a-573e-5f8c-b363-338ee9774b5c",
+        "37e57f89-22d8-5565-b9a4-cce151b209a1"
+      ]
+    },
+    {
+      "id": "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-theory-016-automaten-entwerfen-und-implementieren-e721c18e",
+      "passageId": "de-th-informatik:th-inf-q-theory",
+      "topicCode": "TH-INF-SEKII-Q-THEORY-16",
+      "bulletIndex": 16,
+      "title": "TH-INF-SEKII-Q-THEORY-16: Automaten entwerfen und implementieren",
+      "description": "Source-Ziel aus Qualifikationsphase: Lernbereich Theoretische Informatik: deterministischen Automaten entwerfen und implementieren",
+      "sourceText": "deterministischen Automaten entwerfen und implementieren",
+      "sourceSpan": "TH-INF-SEKII-Q-THEORY.16",
+      "parentBulletText": "deterministischen Automaten entwerfen und implementieren",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Qualifikationsphase: Lernbereich Theoretische Informatik, S. 30.",
+      "courseLevel": "LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:TH-INF-SEKII-Q-THEORY",
+        "courseLevel:LK"
+      ],
+      "rawSourceText": "deterministischen Automaten entwerfen und implementieren",
+      "rawSourceSpan": "TH-INF-SEKII-Q-THEORY.16",
+      "rawParentBulletText": "deterministischen Automaten entwerfen und implementieren",
+      "canonicalTargetIds": [
+        "7ad8caf0-3a31-56f1-bee1-574c01b0c156",
+        "875cb53c-b48d-5b2b-8cb0-e20f27534f16"
+      ]
+    },
+    {
+      "id": "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-theory-017-interpreter-entwerfen-0e4e2110",
+      "passageId": "de-th-informatik:th-inf-q-theory",
+      "topicCode": "TH-INF-SEKII-Q-THEORY-17",
+      "bulletIndex": 17,
+      "title": "TH-INF-SEKII-Q-THEORY-17: Interpreter entwerfen",
+      "description": "Source-Ziel aus Qualifikationsphase: Lernbereich Theoretische Informatik: einfache Interpreter entwerfen und implementieren",
+      "sourceText": "einfache Interpreter entwerfen und implementieren",
+      "sourceSpan": "TH-INF-SEKII-Q-THEORY.17",
+      "parentBulletText": "einfache Interpreter entwerfen und implementieren",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Qualifikationsphase: Lernbereich Theoretische Informatik, S. 30.",
+      "courseLevel": "LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:TH-INF-SEKII-Q-THEORY",
+        "courseLevel:LK"
+      ],
+      "rawSourceText": "einfache Interpreter entwerfen und implementieren",
+      "rawSourceSpan": "TH-INF-SEKII-Q-THEORY.17",
+      "rawParentBulletText": "einfache Interpreter entwerfen und implementieren",
+      "canonicalTargetIds": [
+        "cdb24f8f-3596-5e68-a44f-9d651c7eed62",
+        "91230113-91b0-5a8b-94e4-4419014cfb58"
+      ]
+    },
+    {
+      "id": "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-theory-018-turingmaschinen-konstruieren-31aabc0c",
+      "passageId": "de-th-informatik:th-inf-q-theory",
+      "topicCode": "TH-INF-SEKII-Q-THEORY-18",
+      "bulletIndex": 18,
+      "title": "TH-INF-SEKII-Q-THEORY-18: Turingmaschinen konstruieren",
+      "description": "Source-Ziel aus Qualifikationsphase: Lernbereich Theoretische Informatik: einfache Turingmaschinen konstruieren",
+      "sourceText": "einfache Turingmaschinen konstruieren",
+      "sourceSpan": "TH-INF-SEKII-Q-THEORY.18",
+      "parentBulletText": "einfache Turingmaschinen konstruieren",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Qualifikationsphase: Lernbereich Theoretische Informatik, S. 30.",
+      "courseLevel": "LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:TH-INF-SEKII-Q-THEORY",
+        "courseLevel:LK"
+      ],
+      "rawSourceText": "einfache Turingmaschinen konstruieren",
+      "rawSourceSpan": "TH-INF-SEKII-Q-THEORY.18",
+      "rawParentBulletText": "einfache Turingmaschinen konstruieren",
+      "canonicalTargetIds": [
+        "e7f0dec3-3d78-551b-8770-c182670eee6d"
+      ]
+    },
+    {
+      "id": "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-theory-019-sortier-und-suchaufwand-bewerten-47efaec6",
+      "passageId": "de-th-informatik:th-inf-q-theory",
+      "topicCode": "TH-INF-SEKII-Q-THEORY-19",
+      "bulletIndex": 19,
+      "title": "TH-INF-SEKII-Q-THEORY-19: Sortier- und Suchaufwand bewerten",
+      "description": "Source-Ziel aus Qualifikationsphase: Lernbereich Theoretische Informatik: Zeit- und Speicherverhalten iterativer und rekursiver Sortier- und Suchalgorithmen bewerten und mit O-Notation klassifizieren",
+      "sourceText": "Zeit- und Speicherverhalten iterativer und rekursiver Sortier- und Suchalgorithmen bewerten und mit O-Notation klassifizieren",
+      "sourceSpan": "TH-INF-SEKII-Q-THEORY.19",
+      "parentBulletText": "Zeit- und Speicherverhalten iterativer und rekursiver Sortier- und Suchalgorithmen bewerten und mit O-Notation klassifizieren",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Qualifikationsphase: Lernbereich Theoretische Informatik, S. 30.",
+      "courseLevel": "LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:TH-INF-SEKII-Q-THEORY",
+        "courseLevel:LK"
+      ],
+      "rawSourceText": "Zeit- und Speicherverhalten iterativer und rekursiver Sortier- und Suchalgorithmen bewerten und mit O-Notation klassifizieren",
+      "rawSourceSpan": "TH-INF-SEKII-Q-THEORY.19",
+      "rawParentBulletText": "Zeit- und Speicherverhalten iterativer und rekursiver Sortier- und Suchalgorithmen bewerten und mit O-Notation klassifizieren",
+      "canonicalTargetIds": [
+        "2a87fb3c-394b-47b4-bda2-58c5f1403475",
+        "c5c1620d-60a7-521c-9fad-2a180c0a3169",
+        "bc46922d-d874-528b-a183-5a3eaef12e4d"
+      ]
+    },
+    {
+      "id": "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-theory-020-compiler-und-interpreter-vergleichen-c84165ac",
+      "passageId": "de-th-informatik:th-inf-q-theory",
+      "topicCode": "TH-INF-SEKII-Q-THEORY-20",
+      "bulletIndex": 20,
+      "title": "TH-INF-SEKII-Q-THEORY-20: Compiler und Interpreter vergleichen",
+      "description": "Source-Ziel aus Qualifikationsphase: Lernbereich Theoretische Informatik: Arbeitsweise von Compilern und Interpretern vergleichen",
+      "sourceText": "Arbeitsweise von Compilern und Interpretern vergleichen",
+      "sourceSpan": "TH-INF-SEKII-Q-THEORY.20",
+      "parentBulletText": "Arbeitsweise von Compilern und Interpretern vergleichen",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Qualifikationsphase: Lernbereich Theoretische Informatik, S. 30.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:TH-INF-SEKII-Q-THEORY",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "Arbeitsweise von Compilern und Interpretern vergleichen",
+      "rawSourceSpan": "TH-INF-SEKII-Q-THEORY.20",
+      "rawParentBulletText": "Arbeitsweise von Compilern und Interpretern vergleichen",
+      "canonicalTargetIds": [
+        "91230113-91b0-5a8b-94e4-4419014cfb58",
+        "cdb24f8f-3596-5e68-a44f-9d651c7eed62"
+      ]
+    },
+    {
+      "id": "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-theory-021-theorie-gesellschaftlich-bewerten-f8ad0baa",
+      "passageId": "de-th-informatik:th-inf-q-theory",
+      "topicCode": "TH-INF-SEKII-Q-THEORY-21",
+      "bulletIndex": 21,
+      "title": "TH-INF-SEKII-Q-THEORY-21: Theorie gesellschaftlich bewerten",
+      "description": "Source-Ziel aus Qualifikationsphase: Lernbereich Theoretische Informatik: Zuverlaessigkeit, ethisch-philosophische Probleme und Pionierleistungen der theoretischen Informatik bewerten",
+      "sourceText": "Zuverlaessigkeit, ethisch-philosophische Probleme und Pionierleistungen der theoretischen Informatik bewerten",
+      "sourceSpan": "TH-INF-SEKII-Q-THEORY.21",
+      "parentBulletText": "Zuverlaessigkeit, ethisch-philosophische Probleme und Pionierleistungen der theoretischen Informatik bewerten",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Qualifikationsphase: Lernbereich Theoretische Informatik, S. 30.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:TH-INF-SEKII-Q-THEORY",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "Zuverlaessigkeit, ethisch-philosophische Probleme und Pionierleistungen der theoretischen Informatik bewerten",
+      "rawSourceSpan": "TH-INF-SEKII-Q-THEORY.21",
+      "rawParentBulletText": "Zuverlaessigkeit, ethisch-philosophische Probleme und Pionierleistungen der theoretischen Informatik bewerten",
+      "canonicalTargetIds": [
+        "de3af5ce-344c-5e04-a081-4c2904eb9fad",
+        "ae5ae291-aa50-5260-abf4-348a463e9974",
+        "e14dc7c6-002b-5da0-af1c-507b6355ccb0"
+      ]
+    },
+    {
+      "id": "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-tech-001-von-neumann-architektur-erlaeutern-db441691",
+      "passageId": "de-th-informatik:th-inf-q-tech",
+      "topicCode": "TH-INF-SEKII-Q-TECH-01",
+      "bulletIndex": 1,
+      "title": "TH-INF-SEKII-Q-TECH-1: Von-Neumann-Architektur erlaeutern",
+      "description": "Source-Ziel aus Qualifikationsphase: Lernbereich Technische Informatik: von-Neumann-Rechnerarchitektur erlaeutern",
+      "sourceText": "von-Neumann-Rechnerarchitektur erlaeutern",
+      "sourceSpan": "TH-INF-SEKII-Q-TECH.1",
+      "parentBulletText": "von-Neumann-Rechnerarchitektur erlaeutern",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Qualifikationsphase: Lernbereich Technische Informatik, S. 32.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:TH-INF-SEKII-Q-TECH",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "von-Neumann-Rechnerarchitektur erlaeutern",
+      "rawSourceSpan": "TH-INF-SEKII-Q-TECH.1",
+      "rawParentBulletText": "von-Neumann-Rechnerarchitektur erlaeutern",
+      "canonicalTargetIds": [
+        "e382fc41-6f59-5bc5-9514-f2201a3a4c5a",
+        "04b1796d-6086-59b0-9499-e463a7f44bc4"
+      ]
+    },
+    {
+      "id": "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-tech-002-byte-und-binaerpraefixe-anwenden-7a982e61",
+      "passageId": "de-th-informatik:th-inf-q-tech",
+      "topicCode": "TH-INF-SEKII-Q-TECH-02",
+      "bulletIndex": 2,
+      "title": "TH-INF-SEKII-Q-TECH-2: Byte und Binaerpraefixe anwenden",
+      "description": "Source-Ziel aus Qualifikationsphase: Lernbereich Technische Informatik: Einheit Byte und Binaerpraefixe einordnen und anwenden",
+      "sourceText": "Einheit Byte und Binaerpraefixe einordnen und anwenden",
+      "sourceSpan": "TH-INF-SEKII-Q-TECH.2",
+      "parentBulletText": "Einheit Byte und Binaerpraefixe einordnen und anwenden",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Qualifikationsphase: Lernbereich Technische Informatik, S. 32.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:TH-INF-SEKII-Q-TECH",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "Einheit Byte und Binaerpraefixe einordnen und anwenden",
+      "rawSourceSpan": "TH-INF-SEKII-Q-TECH.2",
+      "rawParentBulletText": "Einheit Byte und Binaerpraefixe einordnen und anwenden",
+      "canonicalTargetIds": [
+        "70b8919e-8707-580f-9e13-0536c9e81476",
+        "50d82e9f-737c-5693-90fe-3d534dc8683d"
+      ]
+    },
+    {
+      "id": "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-tech-003-binaere-codierung-erlaeutern-8c640ccf",
+      "passageId": "de-th-informatik:th-inf-q-tech",
+      "topicCode": "TH-INF-SEKII-Q-TECH-03",
+      "bulletIndex": 3,
+      "title": "TH-INF-SEKII-Q-TECH-3: Binaere Codierung erlaeutern",
+      "description": "Source-Ziel aus Qualifikationsphase: Lernbereich Technische Informatik: binaere Codierung als Prinzip der Informationsverarbeitung beschreiben",
+      "sourceText": "binaere Codierung als Prinzip der Informationsverarbeitung beschreiben",
+      "sourceSpan": "TH-INF-SEKII-Q-TECH.3",
+      "parentBulletText": "binaere Codierung als Prinzip der Informationsverarbeitung beschreiben",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Qualifikationsphase: Lernbereich Technische Informatik, S. 32.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:TH-INF-SEKII-Q-TECH",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "binaere Codierung als Prinzip der Informationsverarbeitung beschreiben",
+      "rawSourceSpan": "TH-INF-SEKII-Q-TECH.3",
+      "rawParentBulletText": "binaere Codierung als Prinzip der Informationsverarbeitung beschreiben",
+      "canonicalTargetIds": [
+        "70b8919e-8707-580f-9e13-0536c9e81476",
+        "50d82e9f-737c-5693-90fe-3d534dc8683d"
+      ]
+    },
+    {
+      "id": "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-tech-004-analog-digitalisierung-erklaeren-6dc421dc",
+      "passageId": "de-th-informatik:th-inf-q-tech",
+      "topicCode": "TH-INF-SEKII-Q-TECH-04",
+      "bulletIndex": 4,
+      "title": "TH-INF-SEKII-Q-TECH-4: Analog-Digitalisierung erklaeren",
+      "description": "Source-Ziel aus Qualifikationsphase: Lernbereich Technische Informatik: Digitalisierung analoger Groessen erlaeutern",
+      "sourceText": "Digitalisierung analoger Groessen erlaeutern",
+      "sourceSpan": "TH-INF-SEKII-Q-TECH.4",
+      "parentBulletText": "Digitalisierung analoger Groessen erlaeutern",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Qualifikationsphase: Lernbereich Technische Informatik, S. 32.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:TH-INF-SEKII-Q-TECH",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "Digitalisierung analoger Groessen erlaeutern",
+      "rawSourceSpan": "TH-INF-SEKII-Q-TECH.4",
+      "rawParentBulletText": "Digitalisierung analoger Groessen erlaeutern",
+      "canonicalTargetIds": [
+        "70b8919e-8707-580f-9e13-0536c9e81476",
+        "50d82e9f-737c-5693-90fe-3d534dc8683d"
+      ]
+    },
+    {
+      "id": "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-tech-005-gebrochene-dezimalzahlen-in-bitmustern-darstellen-24f523d4",
+      "passageId": "de-th-informatik:th-inf-q-tech",
+      "topicCode": "TH-INF-SEKII-Q-TECH-05",
+      "bulletIndex": 5,
+      "title": "TH-INF-SEKII-Q-TECH-5: Gebrochene Dezimalzahlen in Bitmustern darstellen",
+      "description": "Source-Ziel aus Qualifikationsphase: Lernbereich Technische Informatik: endliche gebrochene Dezimalzahlen in Bitmustern vorgegebener Laenge angeben und Genauigkeit reflektieren",
+      "sourceText": "endliche gebrochene Dezimalzahlen in Bitmustern vorgegebener Laenge angeben und Genauigkeit reflektieren",
+      "sourceSpan": "TH-INF-SEKII-Q-TECH.5",
+      "parentBulletText": "endliche gebrochene Dezimalzahlen in Bitmustern vorgegebener Laenge angeben und Genauigkeit reflektieren",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Qualifikationsphase: Lernbereich Technische Informatik, S. 32.",
+      "courseLevel": "LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:TH-INF-SEKII-Q-TECH",
+        "courseLevel:LK"
+      ],
+      "rawSourceText": "endliche gebrochene Dezimalzahlen in Bitmustern vorgegebener Laenge angeben und Genauigkeit reflektieren",
+      "rawSourceSpan": "TH-INF-SEKII-Q-TECH.5",
+      "rawParentBulletText": "endliche gebrochene Dezimalzahlen in Bitmustern vorgegebener Laenge angeben und Genauigkeit reflektieren",
+      "canonicalTargetIds": [
+        "70b8919e-8707-580f-9e13-0536c9e81476",
+        "de3af5ce-344c-5e04-a081-4c2904eb9fad"
+      ]
+    },
+    {
+      "id": "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-tech-006-ganzzahlen-binaer-darstellen-9a62aed9",
+      "passageId": "de-th-informatik:th-inf-q-tech",
+      "topicCode": "TH-INF-SEKII-Q-TECH-06",
+      "bulletIndex": 6,
+      "title": "TH-INF-SEKII-Q-TECH-6: Ganzzahlen binaer darstellen",
+      "description": "Source-Ziel aus Qualifikationsphase: Lernbereich Technische Informatik: positive und negative Ganzzahlen in einem Bitmuster darstellen",
+      "sourceText": "positive und negative Ganzzahlen in einem Bitmuster darstellen",
+      "sourceSpan": "TH-INF-SEKII-Q-TECH.6",
+      "parentBulletText": "positive und negative Ganzzahlen in einem Bitmuster darstellen",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Qualifikationsphase: Lernbereich Technische Informatik, S. 32.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:TH-INF-SEKII-Q-TECH",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "positive und negative Ganzzahlen in einem Bitmuster darstellen",
+      "rawSourceSpan": "TH-INF-SEKII-Q-TECH.6",
+      "rawParentBulletText": "positive und negative Ganzzahlen in einem Bitmuster darstellen",
+      "canonicalTargetIds": [
+        "70b8919e-8707-580f-9e13-0536c9e81476"
+      ]
+    },
+    {
+      "id": "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-tech-007-dualzahlen-rechnen-fb787fd4",
+      "passageId": "de-th-informatik:th-inf-q-tech",
+      "topicCode": "TH-INF-SEKII-Q-TECH-07",
+      "bulletIndex": 7,
+      "title": "TH-INF-SEKII-Q-TECH-7: Dualzahlen rechnen",
+      "description": "Source-Ziel aus Qualifikationsphase: Lernbereich Technische Informatik: Dualzahlen addieren und subtrahieren",
+      "sourceText": "Dualzahlen addieren und subtrahieren",
+      "sourceSpan": "TH-INF-SEKII-Q-TECH.7",
+      "parentBulletText": "Dualzahlen addieren und subtrahieren",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Qualifikationsphase: Lernbereich Technische Informatik, S. 32.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:TH-INF-SEKII-Q-TECH",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "Dualzahlen addieren und subtrahieren",
+      "rawSourceSpan": "TH-INF-SEKII-Q-TECH.7",
+      "rawParentBulletText": "Dualzahlen addieren und subtrahieren",
+      "canonicalTargetIds": [
+        "70b8919e-8707-580f-9e13-0536c9e81476",
+        "ca39fae0-1b12-5982-a453-54d12602dde8"
+      ]
+    },
+    {
+      "id": "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-tech-008-dualzahlmultiplikation-beschreiben-18055f3b",
+      "passageId": "de-th-informatik:th-inf-q-tech",
+      "topicCode": "TH-INF-SEKII-Q-TECH-08",
+      "bulletIndex": 8,
+      "title": "TH-INF-SEKII-Q-TECH-8: Dualzahlmultiplikation beschreiben",
+      "description": "Source-Ziel aus Qualifikationsphase: Lernbereich Technische Informatik: Algorithmus zur Multiplikation zweier positiver Dualzahlen beschreiben",
+      "sourceText": "Algorithmus zur Multiplikation zweier positiver Dualzahlen beschreiben",
+      "sourceSpan": "TH-INF-SEKII-Q-TECH.8",
+      "parentBulletText": "Algorithmus zur Multiplikation zweier positiver Dualzahlen beschreiben",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Qualifikationsphase: Lernbereich Technische Informatik, S. 32.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:TH-INF-SEKII-Q-TECH",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "Algorithmus zur Multiplikation zweier positiver Dualzahlen beschreiben",
+      "rawSourceSpan": "TH-INF-SEKII-Q-TECH.8",
+      "rawParentBulletText": "Algorithmus zur Multiplikation zweier positiver Dualzahlen beschreiben",
+      "canonicalTargetIds": [
+        "70b8919e-8707-580f-9e13-0536c9e81476",
+        "5ca1960e-6b02-5679-b271-043a5c29b189"
+      ]
+    },
+    {
+      "id": "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-tech-009-logikgatter-angeben-873609db",
+      "passageId": "de-th-informatik:th-inf-q-tech",
+      "topicCode": "TH-INF-SEKII-Q-TECH-09",
+      "bulletIndex": 9,
+      "title": "TH-INF-SEKII-Q-TECH-9: Logikgatter angeben",
+      "description": "Source-Ziel aus Qualifikationsphase: Lernbereich Technische Informatik: Schaltbelegungstabellen, Schaltsymbole und Funktionsdarstellung der Logikgatter NOT, AND, OR, NAND und NOR angeben",
+      "sourceText": "Schaltbelegungstabellen, Schaltsymbole und Funktionsdarstellung der Logikgatter NOT, AND, OR, NAND und NOR angeben",
+      "sourceSpan": "TH-INF-SEKII-Q-TECH.9",
+      "parentBulletText": "Schaltbelegungstabellen, Schaltsymbole und Funktionsdarstellung der Logikgatter NOT, AND, OR, NAND und NOR angeben",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Qualifikationsphase: Lernbereich Technische Informatik, S. 32.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:TH-INF-SEKII-Q-TECH",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "Schaltbelegungstabellen, Schaltsymbole und Funktionsdarstellung der Logikgatter NOT, AND, OR, NAND und NOR angeben",
+      "rawSourceSpan": "TH-INF-SEKII-Q-TECH.9",
+      "rawParentBulletText": "Schaltbelegungstabellen, Schaltsymbole und Funktionsdarstellung der Logikgatter NOT, AND, OR, NAND und NOR angeben",
+      "canonicalTargetIds": [
+        "ca39fae0-1b12-5982-a453-54d12602dde8"
+      ]
+    },
+    {
+      "id": "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-tech-010-disjunktive-normalform-bilden-60d8a863",
+      "passageId": "de-th-informatik:th-inf-q-tech",
+      "topicCode": "TH-INF-SEKII-Q-TECH-10",
+      "bulletIndex": 10,
+      "title": "TH-INF-SEKII-Q-TECH-10: Disjunktive Normalform bilden",
+      "description": "Source-Ziel aus Qualifikationsphase: Lernbereich Technische Informatik: einfache Verknuepfungen aus Logikgattern in disjunktive Normalform ueberfuehren",
+      "sourceText": "einfache Verknuepfungen aus Logikgattern in disjunktive Normalform ueberfuehren",
+      "sourceSpan": "TH-INF-SEKII-Q-TECH.10",
+      "parentBulletText": "einfache Verknuepfungen aus Logikgattern in disjunktive Normalform ueberfuehren",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Qualifikationsphase: Lernbereich Technische Informatik, S. 32.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:TH-INF-SEKII-Q-TECH",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "einfache Verknuepfungen aus Logikgattern in disjunktive Normalform ueberfuehren",
+      "rawSourceSpan": "TH-INF-SEKII-Q-TECH.10",
+      "rawParentBulletText": "einfache Verknuepfungen aus Logikgattern in disjunktive Normalform ueberfuehren",
+      "canonicalTargetIds": [
+        "ca39fae0-1b12-5982-a453-54d12602dde8"
+      ]
+    },
+    {
+      "id": "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-tech-011-flipflops-als-speicher-erklaeren-e97e388a",
+      "passageId": "de-th-informatik:th-inf-q-tech",
+      "topicCode": "TH-INF-SEKII-Q-TECH-11",
+      "bulletIndex": 11,
+      "title": "TH-INF-SEKII-Q-TECH-11: Flipflops als Speicher erklaeren",
+      "description": "Source-Ziel aus Qualifikationsphase: Lernbereich Technische Informatik: Schaltbelegungstabellen von Flipflops angeben und Einsatz als Speicherbaustein erklaeren",
+      "sourceText": "Schaltbelegungstabellen von Flipflops angeben und Einsatz als Speicherbaustein erklaeren",
+      "sourceSpan": "TH-INF-SEKII-Q-TECH.11",
+      "parentBulletText": "Schaltbelegungstabellen von Flipflops angeben und Einsatz als Speicherbaustein erklaeren",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Qualifikationsphase: Lernbereich Technische Informatik, S. 32.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:TH-INF-SEKII-Q-TECH",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "Schaltbelegungstabellen von Flipflops angeben und Einsatz als Speicherbaustein erklaeren",
+      "rawSourceSpan": "TH-INF-SEKII-Q-TECH.11",
+      "rawParentBulletText": "Schaltbelegungstabellen von Flipflops angeben und Einsatz als Speicherbaustein erklaeren",
+      "canonicalTargetIds": [
+        "ca39fae0-1b12-5982-a453-54d12602dde8",
+        "e382fc41-6f59-5bc5-9514-f2201a3a4c5a"
+      ]
+    },
+    {
+      "id": "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-tech-012-halb-und-volladdierer-angeben-06923f01",
+      "passageId": "de-th-informatik:th-inf-q-tech",
+      "topicCode": "TH-INF-SEKII-Q-TECH-12",
+      "bulletIndex": 12,
+      "title": "TH-INF-SEKII-Q-TECH-12: Halb- und Volladdierer angeben",
+      "description": "Source-Ziel aus Qualifikationsphase: Lernbereich Technische Informatik: Schaltbelegungstabellen und Schaltsymbole von Halb- und Volladdierern angeben",
+      "sourceText": "Schaltbelegungstabellen und Schaltsymbole von Halb- und Volladdierern angeben",
+      "sourceSpan": "TH-INF-SEKII-Q-TECH.12",
+      "parentBulletText": "Schaltbelegungstabellen und Schaltsymbole von Halb- und Volladdierern angeben",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Qualifikationsphase: Lernbereich Technische Informatik, S. 32.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:TH-INF-SEKII-Q-TECH",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "Schaltbelegungstabellen und Schaltsymbole von Halb- und Volladdierern angeben",
+      "rawSourceSpan": "TH-INF-SEKII-Q-TECH.12",
+      "rawParentBulletText": "Schaltbelegungstabellen und Schaltsymbole von Halb- und Volladdierern angeben",
+      "canonicalTargetIds": [
+        "ca39fae0-1b12-5982-a453-54d12602dde8"
+      ]
+    },
+    {
+      "id": "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-tech-013-addierwerk-beschreiben-e155f587",
+      "passageId": "de-th-informatik:th-inf-q-tech",
+      "topicCode": "TH-INF-SEKII-Q-TECH-13",
+      "bulletIndex": 13,
+      "title": "TH-INF-SEKII-Q-TECH-13: Addierwerk beschreiben",
+      "description": "Source-Ziel aus Qualifikationsphase: Lernbereich Technische Informatik: ein Addierwerk beschreiben",
+      "sourceText": "ein Addierwerk beschreiben",
+      "sourceSpan": "TH-INF-SEKII-Q-TECH.13",
+      "parentBulletText": "ein Addierwerk beschreiben",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Qualifikationsphase: Lernbereich Technische Informatik, S. 32.",
+      "courseLevel": "LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:TH-INF-SEKII-Q-TECH",
+        "courseLevel:LK"
+      ],
+      "rawSourceText": "ein Addierwerk beschreiben",
+      "rawSourceSpan": "TH-INF-SEKII-Q-TECH.13",
+      "rawParentBulletText": "ein Addierwerk beschreiben",
+      "canonicalTargetIds": [
+        "ca39fae0-1b12-5982-a453-54d12602dde8",
+        "e382fc41-6f59-5bc5-9514-f2201a3a4c5a"
+      ]
+    },
+    {
+      "id": "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-tech-014-ad-da-wandler-erlaeutern-79d50230",
+      "passageId": "de-th-informatik:th-inf-q-tech",
+      "topicCode": "TH-INF-SEKII-Q-TECH-14",
+      "bulletIndex": 14,
+      "title": "TH-INF-SEKII-Q-TECH-14: AD-DA-Wandler erlaeutern",
+      "description": "Source-Ziel aus Qualifikationsphase: Lernbereich Technische Informatik: grundsaetzliche Funktionsweise eines Analog-Digital- und Digital-Analog-Wandlers erlaeutern",
+      "sourceText": "grundsaetzliche Funktionsweise eines Analog-Digital- und Digital-Analog-Wandlers erlaeutern",
+      "sourceSpan": "TH-INF-SEKII-Q-TECH.14",
+      "parentBulletText": "grundsaetzliche Funktionsweise eines Analog-Digital- und Digital-Analog-Wandlers erlaeutern",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Qualifikationsphase: Lernbereich Technische Informatik, S. 32.",
+      "courseLevel": "LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:TH-INF-SEKII-Q-TECH",
+        "courseLevel:LK"
+      ],
+      "rawSourceText": "grundsaetzliche Funktionsweise eines Analog-Digital- und Digital-Analog-Wandlers erlaeutern",
+      "rawSourceSpan": "TH-INF-SEKII-Q-TECH.14",
+      "rawParentBulletText": "grundsaetzliche Funktionsweise eines Analog-Digital- und Digital-Analog-Wandlers erlaeutern",
+      "canonicalTargetIds": [
+        "bdce4bcd-f0fe-58ce-9781-39de2ade848c",
+        "70b8919e-8707-580f-9e13-0536c9e81476"
+      ]
+    },
+    {
+      "id": "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-tech-015-zahlen-umwandeln-c888ac6c",
+      "passageId": "de-th-informatik:th-inf-q-tech",
+      "topicCode": "TH-INF-SEKII-Q-TECH-15",
+      "bulletIndex": 15,
+      "title": "TH-INF-SEKII-Q-TECH-15: Zahlen umwandeln",
+      "description": "Source-Ziel aus Qualifikationsphase: Lernbereich Technische Informatik: Dezimalzahlen in Dualzahlen umwandeln und umgekehrt",
+      "sourceText": "Dezimalzahlen in Dualzahlen umwandeln und umgekehrt",
+      "sourceSpan": "TH-INF-SEKII-Q-TECH.15",
+      "parentBulletText": "Dezimalzahlen in Dualzahlen umwandeln und umgekehrt",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Qualifikationsphase: Lernbereich Technische Informatik, S. 32.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:TH-INF-SEKII-Q-TECH",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "Dezimalzahlen in Dualzahlen umwandeln und umgekehrt",
+      "rawSourceSpan": "TH-INF-SEKII-Q-TECH.15",
+      "rawParentBulletText": "Dezimalzahlen in Dualzahlen umwandeln und umgekehrt",
+      "canonicalTargetIds": [
+        "70b8919e-8707-580f-9e13-0536c9e81476"
+      ]
+    },
+    {
+      "id": "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-tech-016-logikgatter-konstruieren-50910e0b",
+      "passageId": "de-th-informatik:th-inf-q-tech",
+      "topicCode": "TH-INF-SEKII-Q-TECH-16",
+      "bulletIndex": 16,
+      "title": "TH-INF-SEKII-Q-TECH-16: Logikgatter konstruieren",
+      "description": "Source-Ziel aus Qualifikationsphase: Lernbereich Technische Informatik: Verknuepfungen von Logikgattern konstruieren",
+      "sourceText": "Verknuepfungen von Logikgattern konstruieren",
+      "sourceSpan": "TH-INF-SEKII-Q-TECH.16",
+      "parentBulletText": "Verknuepfungen von Logikgattern konstruieren",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Qualifikationsphase: Lernbereich Technische Informatik, S. 32.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:TH-INF-SEKII-Q-TECH",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "Verknuepfungen von Logikgattern konstruieren",
+      "rawSourceSpan": "TH-INF-SEKII-Q-TECH.16",
+      "rawParentBulletText": "Verknuepfungen von Logikgattern konstruieren",
+      "canonicalTargetIds": [
+        "ca39fae0-1b12-5982-a453-54d12602dde8"
+      ]
+    },
+    {
+      "id": "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-tech-017-schaltungen-analysieren-d22cfdd2",
+      "passageId": "de-th-informatik:th-inf-q-tech",
+      "topicCode": "TH-INF-SEKII-Q-TECH-17",
+      "bulletIndex": 17,
+      "title": "TH-INF-SEKII-Q-TECH-17: Schaltungen analysieren",
+      "description": "Source-Ziel aus Qualifikationsphase: Lernbereich Technische Informatik: Verknuepfungen mittels Schaltbelegungstabellen analysieren",
+      "sourceText": "Verknuepfungen mittels Schaltbelegungstabellen analysieren",
+      "sourceSpan": "TH-INF-SEKII-Q-TECH.17",
+      "parentBulletText": "Verknuepfungen mittels Schaltbelegungstabellen analysieren",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Qualifikationsphase: Lernbereich Technische Informatik, S. 32.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:TH-INF-SEKII-Q-TECH",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "Verknuepfungen mittels Schaltbelegungstabellen analysieren",
+      "rawSourceSpan": "TH-INF-SEKII-Q-TECH.17",
+      "rawParentBulletText": "Verknuepfungen mittels Schaltbelegungstabellen analysieren",
+      "canonicalTargetIds": [
+        "ca39fae0-1b12-5982-a453-54d12602dde8"
+      ]
+    },
+    {
+      "id": "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-tech-018-rechengenauigkeit-einschaetzen-e4b2976d",
+      "passageId": "de-th-informatik:th-inf-q-tech",
+      "topicCode": "TH-INF-SEKII-Q-TECH-18",
+      "bulletIndex": 18,
+      "title": "TH-INF-SEKII-Q-TECH-18: Rechengenauigkeit einschaetzen",
+      "description": "Source-Ziel aus Qualifikationsphase: Lernbereich Technische Informatik: Rechengenauigkeit des Computers einschaetzen",
+      "sourceText": "Rechengenauigkeit des Computers einschaetzen",
+      "sourceSpan": "TH-INF-SEKII-Q-TECH.18",
+      "parentBulletText": "Rechengenauigkeit des Computers einschaetzen",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Qualifikationsphase: Lernbereich Technische Informatik, S. 32.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:TH-INF-SEKII-Q-TECH",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "Rechengenauigkeit des Computers einschaetzen",
+      "rawSourceSpan": "TH-INF-SEKII-Q-TECH.18",
+      "rawParentBulletText": "Rechengenauigkeit des Computers einschaetzen",
+      "canonicalTargetIds": [
+        "70b8919e-8707-580f-9e13-0536c9e81476",
+        "de3af5ce-344c-5e04-a081-4c2904eb9fad"
+      ]
+    },
+    {
+      "id": "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-tech-019-binaer-und-si-praefixe-vergleichen-a7a2c7a9",
+      "passageId": "de-th-informatik:th-inf-q-tech",
+      "topicCode": "TH-INF-SEKII-Q-TECH-19",
+      "bulletIndex": 19,
+      "title": "TH-INF-SEKII-Q-TECH-19: Binaer- und SI-Praefixe vergleichen",
+      "description": "Source-Ziel aus Qualifikationsphase: Lernbereich Technische Informatik: Binaerpraefixe mit metrischen SI-Praefixen vergleichen",
+      "sourceText": "Binaerpraefixe mit metrischen SI-Praefixen vergleichen",
+      "sourceSpan": "TH-INF-SEKII-Q-TECH.19",
+      "parentBulletText": "Binaerpraefixe mit metrischen SI-Praefixen vergleichen",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Qualifikationsphase: Lernbereich Technische Informatik, S. 32.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:TH-INF-SEKII-Q-TECH",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "Binaerpraefixe mit metrischen SI-Praefixen vergleichen",
+      "rawSourceSpan": "TH-INF-SEKII-Q-TECH.19",
+      "rawParentBulletText": "Binaerpraefixe mit metrischen SI-Praefixen vergleichen",
+      "canonicalTargetIds": [
+        "70b8919e-8707-580f-9e13-0536c9e81476",
+        "50d82e9f-737c-5693-90fe-3d534dc8683d"
+      ]
+    },
+    {
+      "id": "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-practical-001-algorithmusbegriff-erlaeutern-3e90a87f",
+      "passageId": "de-th-informatik:th-inf-q-practical",
+      "topicCode": "TH-INF-SEKII-Q-PRACTICAL-01",
+      "bulletIndex": 1,
+      "title": "TH-INF-SEKII-Q-PRACTICAL-1: Algorithmusbegriff erlaeutern",
+      "description": "Source-Ziel aus Qualifikationsphase: Lernbereich Praktische Informatik: Algorithmusbegriff erlaeutern",
+      "sourceText": "Algorithmusbegriff erlaeutern",
+      "sourceSpan": "TH-INF-SEKII-Q-PRACTICAL.1",
+      "parentBulletText": "Algorithmusbegriff erlaeutern",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Qualifikationsphase: Lernbereich Praktische Informatik, S. 34.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:TH-INF-SEKII-Q-PRACTICAL",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "Algorithmusbegriff erlaeutern",
+      "rawSourceSpan": "TH-INF-SEKII-Q-PRACTICAL.1",
+      "rawParentBulletText": "Algorithmusbegriff erlaeutern",
+      "canonicalTargetIds": [
+        "5ca1960e-6b02-5679-b271-043a5c29b189"
+      ]
+    },
+    {
+      "id": "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-practical-002-folge-auswahl-wiederholung-anwenden-cffa35ad",
+      "passageId": "de-th-informatik:th-inf-q-practical",
+      "topicCode": "TH-INF-SEKII-Q-PRACTICAL-02",
+      "bulletIndex": 2,
+      "title": "TH-INF-SEKII-Q-PRACTICAL-2: Folge Auswahl Wiederholung anwenden",
+      "description": "Source-Ziel aus Qualifikationsphase: Lernbereich Praktische Informatik: Folge von Anweisungen, Auswahl und Wiederholung zur Strukturierung von Algorithmen anwenden",
+      "sourceText": "Folge von Anweisungen, Auswahl und Wiederholung zur Strukturierung von Algorithmen anwenden",
+      "sourceSpan": "TH-INF-SEKII-Q-PRACTICAL.2",
+      "parentBulletText": "Folge von Anweisungen, Auswahl und Wiederholung zur Strukturierung von Algorithmen anwenden",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Qualifikationsphase: Lernbereich Praktische Informatik, S. 34.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:TH-INF-SEKII-Q-PRACTICAL",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "Folge von Anweisungen, Auswahl und Wiederholung zur Strukturierung von Algorithmen anwenden",
+      "rawSourceSpan": "TH-INF-SEKII-Q-PRACTICAL.2",
+      "rawParentBulletText": "Folge von Anweisungen, Auswahl und Wiederholung zur Strukturierung von Algorithmen anwenden",
+      "canonicalTargetIds": [
+        "5ca1960e-6b02-5679-b271-043a5c29b189"
+      ]
+    },
+    {
+      "id": "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-practical-003-iterative-und-rekursive-algorithmen-vergleichen-c527f752",
+      "passageId": "de-th-informatik:th-inf-q-practical",
+      "topicCode": "TH-INF-SEKII-Q-PRACTICAL-03",
+      "bulletIndex": 3,
+      "title": "TH-INF-SEKII-Q-PRACTICAL-3: Iterative und rekursive Algorithmen vergleichen",
+      "description": "Source-Ziel aus Qualifikationsphase: Lernbereich Praktische Informatik: iterative und rekursive Algorithmen analysieren und vergleichen",
+      "sourceText": "iterative und rekursive Algorithmen analysieren und vergleichen",
+      "sourceSpan": "TH-INF-SEKII-Q-PRACTICAL.3",
+      "parentBulletText": "iterative und rekursive Algorithmen analysieren und vergleichen",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Qualifikationsphase: Lernbereich Praktische Informatik, S. 34.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:TH-INF-SEKII-Q-PRACTICAL",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "iterative und rekursive Algorithmen analysieren und vergleichen",
+      "rawSourceSpan": "TH-INF-SEKII-Q-PRACTICAL.3",
+      "rawParentBulletText": "iterative und rekursive Algorithmen analysieren und vergleichen",
+      "canonicalTargetIds": [
+        "61b14635-f827-5a5a-8416-fe6eddefc981"
+      ]
+    },
+    {
+      "id": "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-practical-004-such-und-sortieralgorithmen-erlaeutern-ab75be52",
+      "passageId": "de-th-informatik:th-inf-q-practical",
+      "topicCode": "TH-INF-SEKII-Q-PRACTICAL-04",
+      "bulletIndex": 4,
+      "title": "TH-INF-SEKII-Q-PRACTICAL-4: Such- und Sortieralgorithmen erlaeutern",
+      "description": "Source-Ziel aus Qualifikationsphase: Lernbereich Praktische Informatik: Arbeitsweise von Such- und Sortieralgorithmen erlaeutern",
+      "sourceText": "Arbeitsweise von Such- und Sortieralgorithmen erlaeutern",
+      "sourceSpan": "TH-INF-SEKII-Q-PRACTICAL.4",
+      "parentBulletText": "Arbeitsweise von Such- und Sortieralgorithmen erlaeutern",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Qualifikationsphase: Lernbereich Praktische Informatik, S. 34.",
+      "courseLevel": "GK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:TH-INF-SEKII-Q-PRACTICAL",
+        "courseLevel:GK"
+      ],
+      "rawSourceText": "Arbeitsweise von Such- und Sortieralgorithmen erlaeutern",
+      "rawSourceSpan": "TH-INF-SEKII-Q-PRACTICAL.4",
+      "rawParentBulletText": "Arbeitsweise von Such- und Sortieralgorithmen erlaeutern",
+      "canonicalTargetIds": [
+        "2a87fb3c-394b-47b4-bda2-58c5f1403475",
+        "9bb399e1-fd49-5220-9c81-82efbeae47eb"
+      ]
+    },
+    {
+      "id": "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-practical-005-iterative-und-rekursive-such-und-sortieralgorithmen-erlaeutern-4ce3dcdd",
+      "passageId": "de-th-informatik:th-inf-q-practical",
+      "topicCode": "TH-INF-SEKII-Q-PRACTICAL-05",
+      "bulletIndex": 5,
+      "title": "TH-INF-SEKII-Q-PRACTICAL-5: Iterative und rekursive Such- und Sortieralgorithmen erlaeutern",
+      "description": "Source-Ziel aus Qualifikationsphase: Lernbereich Praktische Informatik: Arbeitsweise iterativer und rekursiver Such- und Sortieralgorithmen erlaeutern",
+      "sourceText": "Arbeitsweise iterativer und rekursiver Such- und Sortieralgorithmen erlaeutern",
+      "sourceSpan": "TH-INF-SEKII-Q-PRACTICAL.5",
+      "parentBulletText": "Arbeitsweise iterativer und rekursiver Such- und Sortieralgorithmen erlaeutern",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Qualifikationsphase: Lernbereich Praktische Informatik, S. 34.",
+      "courseLevel": "LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:TH-INF-SEKII-Q-PRACTICAL",
+        "courseLevel:LK"
+      ],
+      "rawSourceText": "Arbeitsweise iterativer und rekursiver Such- und Sortieralgorithmen erlaeutern",
+      "rawSourceSpan": "TH-INF-SEKII-Q-PRACTICAL.5",
+      "rawParentBulletText": "Arbeitsweise iterativer und rekursiver Such- und Sortieralgorithmen erlaeutern",
+      "canonicalTargetIds": [
+        "2a87fb3c-394b-47b4-bda2-58c5f1403475",
+        "c5c1620d-60a7-521c-9fad-2a180c0a3169",
+        "25be929d-624d-5654-bbb8-32fa1fba50c2"
+      ]
+    },
+    {
+      "id": "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-practical-006-iterative-such-und-sortieralgorithmen-implementieren-027e3d4e",
+      "passageId": "de-th-informatik:th-inf-q-practical",
+      "topicCode": "TH-INF-SEKII-Q-PRACTICAL-06",
+      "bulletIndex": 6,
+      "title": "TH-INF-SEKII-Q-PRACTICAL-6: Iterative Such- und Sortieralgorithmen implementieren",
+      "description": "Source-Ziel aus Qualifikationsphase: Lernbereich Praktische Informatik: iterative Such- und Sortieralgorithmen entwerfen und implementieren",
+      "sourceText": "iterative Such- und Sortieralgorithmen entwerfen und implementieren",
+      "sourceSpan": "TH-INF-SEKII-Q-PRACTICAL.6",
+      "parentBulletText": "iterative Such- und Sortieralgorithmen entwerfen und implementieren",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Qualifikationsphase: Lernbereich Praktische Informatik, S. 34.",
+      "courseLevel": "LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:TH-INF-SEKII-Q-PRACTICAL",
+        "courseLevel:LK"
+      ],
+      "rawSourceText": "iterative Such- und Sortieralgorithmen entwerfen und implementieren",
+      "rawSourceSpan": "TH-INF-SEKII-Q-PRACTICAL.6",
+      "rawParentBulletText": "iterative Such- und Sortieralgorithmen entwerfen und implementieren",
+      "canonicalTargetIds": [
+        "2a87fb3c-394b-47b4-bda2-58c5f1403475",
+        "c5c1620d-60a7-521c-9fad-2a180c0a3169"
+      ]
+    },
+    {
+      "id": "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-practical-007-rekursiven-suchalgorithmus-implementieren-a83f4a37",
+      "passageId": "de-th-informatik:th-inf-q-practical",
+      "topicCode": "TH-INF-SEKII-Q-PRACTICAL-07",
+      "bulletIndex": 7,
+      "title": "TH-INF-SEKII-Q-PRACTICAL-7: Rekursiven Suchalgorithmus implementieren",
+      "description": "Source-Ziel aus Qualifikationsphase: Lernbereich Praktische Informatik: rekursiven Suchalgorithmus entwerfen und implementieren",
+      "sourceText": "rekursiven Suchalgorithmus entwerfen und implementieren",
+      "sourceSpan": "TH-INF-SEKII-Q-PRACTICAL.7",
+      "parentBulletText": "rekursiven Suchalgorithmus entwerfen und implementieren",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Qualifikationsphase: Lernbereich Praktische Informatik, S. 34.",
+      "courseLevel": "LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:TH-INF-SEKII-Q-PRACTICAL",
+        "courseLevel:LK"
+      ],
+      "rawSourceText": "rekursiven Suchalgorithmus entwerfen und implementieren",
+      "rawSourceSpan": "TH-INF-SEKII-Q-PRACTICAL.7",
+      "rawParentBulletText": "rekursiven Suchalgorithmus entwerfen und implementieren",
+      "canonicalTargetIds": [
+        "2a87fb3c-394b-47b4-bda2-58c5f1403475",
+        "25be929d-624d-5654-bbb8-32fa1fba50c2"
+      ]
+    },
+    {
+      "id": "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-practical-008-programmiersprachen-nach-paradigmen-klassifizieren-c60cd2bf",
+      "passageId": "de-th-informatik:th-inf-q-practical",
+      "topicCode": "TH-INF-SEKII-Q-PRACTICAL-08",
+      "bulletIndex": 8,
+      "title": "TH-INF-SEKII-Q-PRACTICAL-8: Programmiersprachen nach Paradigmen klassifizieren",
+      "description": "Source-Ziel aus Qualifikationsphase: Lernbereich Praktische Informatik: Programmiersprachen nach Paradigmen klassifizieren",
+      "sourceText": "Programmiersprachen nach Paradigmen klassifizieren",
+      "sourceSpan": "TH-INF-SEKII-Q-PRACTICAL.8",
+      "parentBulletText": "Programmiersprachen nach Paradigmen klassifizieren",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Qualifikationsphase: Lernbereich Praktische Informatik, S. 34.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:TH-INF-SEKII-Q-PRACTICAL",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "Programmiersprachen nach Paradigmen klassifizieren",
+      "rawSourceSpan": "TH-INF-SEKII-Q-PRACTICAL.8",
+      "rawParentBulletText": "Programmiersprachen nach Paradigmen klassifizieren",
+      "canonicalTargetIds": [
+        "7f41d0a1-19cb-5e08-be07-185a2c9d6bb5",
+        "bf23fafe-423d-561a-b832-cb25a327a508"
+      ]
+    },
+    {
+      "id": "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-practical-009-imperativ-und-prozedural-programmieren-951d42a4",
+      "passageId": "de-th-informatik:th-inf-q-practical",
+      "topicCode": "TH-INF-SEKII-Q-PRACTICAL-09",
+      "bulletIndex": 9,
+      "title": "TH-INF-SEKII-Q-PRACTICAL-9: Imperativ und prozedural programmieren",
+      "description": "Source-Ziel aus Qualifikationsphase: Lernbereich Praktische Informatik: imperativ und prozedural programmieren",
+      "sourceText": "imperativ und prozedural programmieren",
+      "sourceSpan": "TH-INF-SEKII-Q-PRACTICAL.9",
+      "parentBulletText": "imperativ und prozedural programmieren",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Qualifikationsphase: Lernbereich Praktische Informatik, S. 34.",
+      "courseLevel": "GK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:TH-INF-SEKII-Q-PRACTICAL",
+        "courseLevel:GK"
+      ],
+      "rawSourceText": "imperativ und prozedural programmieren",
+      "rawSourceSpan": "TH-INF-SEKII-Q-PRACTICAL.9",
+      "rawParentBulletText": "imperativ und prozedural programmieren",
+      "canonicalTargetIds": [
+        "5ca1960e-6b02-5679-b271-043a5c29b189",
+        "5961bae4-87c0-52a3-b9cc-56a71b0d5abb"
+      ]
+    },
+    {
+      "id": "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-practical-010-modular-programmieren-e260dc2a",
+      "passageId": "de-th-informatik:th-inf-q-practical",
+      "topicCode": "TH-INF-SEKII-Q-PRACTICAL-10",
+      "bulletIndex": 10,
+      "title": "TH-INF-SEKII-Q-PRACTICAL-10: Modular programmieren",
+      "description": "Source-Ziel aus Qualifikationsphase: Lernbereich Praktische Informatik: imperativ, prozedural und modular programmieren",
+      "sourceText": "imperativ, prozedural und modular programmieren",
+      "sourceSpan": "TH-INF-SEKII-Q-PRACTICAL.10",
+      "parentBulletText": "imperativ, prozedural und modular programmieren",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Qualifikationsphase: Lernbereich Praktische Informatik, S. 34.",
+      "courseLevel": "LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:TH-INF-SEKII-Q-PRACTICAL",
+        "courseLevel:LK"
+      ],
+      "rawSourceText": "imperativ, prozedural und modular programmieren",
+      "rawSourceSpan": "TH-INF-SEKII-Q-PRACTICAL.10",
+      "rawParentBulletText": "imperativ, prozedural und modular programmieren",
+      "canonicalTargetIds": [
+        "5ca1960e-6b02-5679-b271-043a5c29b189",
+        "5961bae4-87c0-52a3-b9cc-56a71b0d5abb",
+        "d5056ca3-2a3d-5145-a28d-29038038a77f"
+      ]
+    },
+    {
+      "id": "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-practical-011-variablenkonzept-erlaeutern-50c9d9d5",
+      "passageId": "de-th-informatik:th-inf-q-practical",
+      "topicCode": "TH-INF-SEKII-Q-PRACTICAL-11",
+      "bulletIndex": 11,
+      "title": "TH-INF-SEKII-Q-PRACTICAL-11: Variablenkonzept erlaeutern",
+      "description": "Source-Ziel aus Qualifikationsphase: Lernbereich Praktische Informatik: Variablenkonzept erlaeutern",
+      "sourceText": "Variablenkonzept erlaeutern",
+      "sourceSpan": "TH-INF-SEKII-Q-PRACTICAL.11",
+      "parentBulletText": "Variablenkonzept erlaeutern",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Qualifikationsphase: Lernbereich Praktische Informatik, S. 34.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:TH-INF-SEKII-Q-PRACTICAL",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "Variablenkonzept erlaeutern",
+      "rawSourceSpan": "TH-INF-SEKII-Q-PRACTICAL.11",
+      "rawParentBulletText": "Variablenkonzept erlaeutern",
+      "canonicalTargetIds": [
+        "18317e31-71f7-4e4a-b18c-f61e2b25769d"
+      ]
+    },
+    {
+      "id": "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-practical-012-datentypen-unterscheiden-und-anwenden-81230555",
+      "passageId": "de-th-informatik:th-inf-q-practical",
+      "topicCode": "TH-INF-SEKII-Q-PRACTICAL-12",
+      "bulletIndex": 12,
+      "title": "TH-INF-SEKII-Q-PRACTICAL-12: Datentypen unterscheiden und anwenden",
+      "description": "Source-Ziel aus Qualifikationsphase: Lernbereich Praktische Informatik: einfache und strukturierte Datentypen mit wesentlichen Operationen unterscheiden und anwenden",
+      "sourceText": "einfache und strukturierte Datentypen mit wesentlichen Operationen unterscheiden und anwenden",
+      "sourceSpan": "TH-INF-SEKII-Q-PRACTICAL.12",
+      "parentBulletText": "einfache und strukturierte Datentypen mit wesentlichen Operationen unterscheiden und anwenden",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Qualifikationsphase: Lernbereich Praktische Informatik, S. 34.",
+      "courseLevel": "GK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:TH-INF-SEKII-Q-PRACTICAL",
+        "courseLevel:GK"
+      ],
+      "rawSourceText": "einfache und strukturierte Datentypen mit wesentlichen Operationen unterscheiden und anwenden",
+      "rawSourceSpan": "TH-INF-SEKII-Q-PRACTICAL.12",
+      "rawParentBulletText": "einfache und strukturierte Datentypen mit wesentlichen Operationen unterscheiden und anwenden",
+      "canonicalTargetIds": [
+        "18317e31-71f7-4e4a-b18c-f61e2b25769d",
+        "8522727c-8793-57ed-b314-eeff6d17f652"
+      ]
+    },
+    {
+      "id": "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-practical-013-dynamische-datenstrukturen-anwenden-6663a2bb",
+      "passageId": "de-th-informatik:th-inf-q-practical",
+      "topicCode": "TH-INF-SEKII-Q-PRACTICAL-13",
+      "bulletIndex": 13,
+      "title": "TH-INF-SEKII-Q-PRACTICAL-13: Dynamische Datenstrukturen anwenden",
+      "description": "Source-Ziel aus Qualifikationsphase: Lernbereich Praktische Informatik: einfache und strukturierte Datentypen sowie dynamische Datenstrukturen Liste, Stapel und Schlange mit Operationen unterscheiden und anwenden",
+      "sourceText": "einfache und strukturierte Datentypen sowie dynamische Datenstrukturen Liste, Stapel und Schlange mit Operationen unterscheiden und anwenden",
+      "sourceSpan": "TH-INF-SEKII-Q-PRACTICAL.13",
+      "parentBulletText": "einfache und strukturierte Datentypen sowie dynamische Datenstrukturen Liste, Stapel und Schlange mit Operationen unterscheiden und anwenden",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Qualifikationsphase: Lernbereich Praktische Informatik, S. 34.",
+      "courseLevel": "LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:TH-INF-SEKII-Q-PRACTICAL",
+        "courseLevel:LK"
+      ],
+      "rawSourceText": "einfache und strukturierte Datentypen sowie dynamische Datenstrukturen Liste, Stapel und Schlange mit Operationen unterscheiden und anwenden",
+      "rawSourceSpan": "TH-INF-SEKII-Q-PRACTICAL.13",
+      "rawParentBulletText": "einfache und strukturierte Datentypen sowie dynamische Datenstrukturen Liste, Stapel und Schlange mit Operationen unterscheiden und anwenden",
+      "canonicalTargetIds": [
+        "4c12d4f5-ce17-561d-ae96-71bcc10d76c0",
+        "8179e63e-764c-4348-a5f1-f738fb2cc04e",
+        "8522727c-8793-57ed-b314-eeff6d17f652"
+      ]
+    },
+    {
+      "id": "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-practical-014-baum-und-graph-definieren-0a02778b",
+      "passageId": "de-th-informatik:th-inf-q-practical",
+      "topicCode": "TH-INF-SEKII-Q-PRACTICAL-14",
+      "bulletIndex": 14,
+      "title": "TH-INF-SEKII-Q-PRACTICAL-14: Baum und Graph definieren",
+      "description": "Source-Ziel aus Qualifikationsphase: Lernbereich Praktische Informatik: einfach verkettete Liste, binaeren Baum und Graph definieren und erlaeutern",
+      "sourceText": "einfach verkettete Liste, binaeren Baum und Graph definieren und erlaeutern",
+      "sourceSpan": "TH-INF-SEKII-Q-PRACTICAL.14",
+      "parentBulletText": "einfach verkettete Liste, binaeren Baum und Graph definieren und erlaeutern",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Qualifikationsphase: Lernbereich Praktische Informatik, S. 34.",
+      "courseLevel": "LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:TH-INF-SEKII-Q-PRACTICAL",
+        "courseLevel:LK"
+      ],
+      "rawSourceText": "einfach verkettete Liste, binaeren Baum und Graph definieren und erlaeutern",
+      "rawSourceSpan": "TH-INF-SEKII-Q-PRACTICAL.14",
+      "rawParentBulletText": "einfach verkettete Liste, binaeren Baum und Graph definieren und erlaeutern",
+      "canonicalTargetIds": [
+        "4c12d4f5-ce17-561d-ae96-71bcc10d76c0",
+        "56a88f2f-cc47-5e1d-b7d9-1822a66e3b91",
+        "f0910b55-48a9-4f81-aed6-d15ac0446c70"
+      ]
+    },
+    {
+      "id": "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-practical-015-wegsuche-in-graphen-beschreiben-aadd7791",
+      "passageId": "de-th-informatik:th-inf-q-practical",
+      "topicCode": "TH-INF-SEKII-Q-PRACTICAL-15",
+      "bulletIndex": 15,
+      "title": "TH-INF-SEKII-Q-PRACTICAL-15: Wegsuche in Graphen beschreiben",
+      "description": "Source-Ziel aus Qualifikationsphase: Lernbereich Praktische Informatik: Wegsuche in Graphen beschreiben",
+      "sourceText": "Wegsuche in Graphen beschreiben",
+      "sourceSpan": "TH-INF-SEKII-Q-PRACTICAL.15",
+      "parentBulletText": "Wegsuche in Graphen beschreiben",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Qualifikationsphase: Lernbereich Praktische Informatik, S. 34.",
+      "courseLevel": "LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:TH-INF-SEKII-Q-PRACTICAL",
+        "courseLevel:LK"
+      ],
+      "rawSourceText": "Wegsuche in Graphen beschreiben",
+      "rawSourceSpan": "TH-INF-SEKII-Q-PRACTICAL.15",
+      "rawParentBulletText": "Wegsuche in Graphen beschreiben",
+      "canonicalTargetIds": [
+        "35849012-1b9d-58dc-b5c9-e56912acbe96"
+      ]
+    },
+    {
+      "id": "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-practical-016-objekt-klasse-vererbung-erlaeutern-6b9732ce",
+      "passageId": "de-th-informatik:th-inf-q-practical",
+      "topicCode": "TH-INF-SEKII-Q-PRACTICAL-16",
+      "bulletIndex": 16,
+      "title": "TH-INF-SEKII-Q-PRACTICAL-16: Objekt Klasse Vererbung erlaeutern",
+      "description": "Source-Ziel aus Qualifikationsphase: Lernbereich Praktische Informatik: Objekt, Klasse und Vererbung erlaeutern",
+      "sourceText": "Objekt, Klasse und Vererbung erlaeutern",
+      "sourceSpan": "TH-INF-SEKII-Q-PRACTICAL.16",
+      "parentBulletText": "Objekt, Klasse und Vererbung erlaeutern",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Qualifikationsphase: Lernbereich Praktische Informatik, S. 34.",
+      "courseLevel": "GK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:TH-INF-SEKII-Q-PRACTICAL",
+        "courseLevel:GK"
+      ],
+      "rawSourceText": "Objekt, Klasse und Vererbung erlaeutern",
+      "rawSourceSpan": "TH-INF-SEKII-Q-PRACTICAL.16",
+      "rawParentBulletText": "Objekt, Klasse und Vererbung erlaeutern",
+      "canonicalTargetIds": [
+        "cb2af3ef-c261-4d92-bc30-3eeb7a2af96a",
+        "6c284640-1f28-4837-aabd-445656ad7f54",
+        "c54693ae-448b-5a06-8972-785022f35cd7"
+      ]
+    },
+    {
+      "id": "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-practical-017-polymorphie-und-dynamische-bindung-erlaeutern-22cd6371",
+      "passageId": "de-th-informatik:th-inf-q-practical",
+      "topicCode": "TH-INF-SEKII-Q-PRACTICAL-17",
+      "bulletIndex": 17,
+      "title": "TH-INF-SEKII-Q-PRACTICAL-17: Polymorphie und dynamische Bindung erlaeutern",
+      "description": "Source-Ziel aus Qualifikationsphase: Lernbereich Praktische Informatik: Objekt, Klasse, Vererbung, dynamische Bindung und Polymorphie erlaeutern",
+      "sourceText": "Objekt, Klasse, Vererbung, dynamische Bindung und Polymorphie erlaeutern",
+      "sourceSpan": "TH-INF-SEKII-Q-PRACTICAL.17",
+      "parentBulletText": "Objekt, Klasse, Vererbung, dynamische Bindung und Polymorphie erlaeutern",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Qualifikationsphase: Lernbereich Praktische Informatik, S. 34.",
+      "courseLevel": "LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:TH-INF-SEKII-Q-PRACTICAL",
+        "courseLevel:LK"
+      ],
+      "rawSourceText": "Objekt, Klasse, Vererbung, dynamische Bindung und Polymorphie erlaeutern",
+      "rawSourceSpan": "TH-INF-SEKII-Q-PRACTICAL.17",
+      "rawParentBulletText": "Objekt, Klasse, Vererbung, dynamische Bindung und Polymorphie erlaeutern",
+      "canonicalTargetIds": [
+        "cb2af3ef-c261-4d92-bc30-3eeb7a2af96a",
+        "6c284640-1f28-4837-aabd-445656ad7f54",
+        "c54693ae-448b-5a06-8972-785022f35cd7"
+      ]
+    },
+    {
+      "id": "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-practical-018-sachverhalte-objektorientiert-modellieren-44442573",
+      "passageId": "de-th-informatik:th-inf-q-practical",
+      "topicCode": "TH-INF-SEKII-Q-PRACTICAL-18",
+      "bulletIndex": 18,
+      "title": "TH-INF-SEKII-Q-PRACTICAL-18: Sachverhalte objektorientiert modellieren",
+      "description": "Source-Ziel aus Qualifikationsphase: Lernbereich Praktische Informatik: einfache Sachverhalte objektorientiert modellieren",
+      "sourceText": "einfache Sachverhalte objektorientiert modellieren",
+      "sourceSpan": "TH-INF-SEKII-Q-PRACTICAL.18",
+      "parentBulletText": "einfache Sachverhalte objektorientiert modellieren",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Qualifikationsphase: Lernbereich Praktische Informatik, S. 34.",
+      "courseLevel": "GK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:TH-INF-SEKII-Q-PRACTICAL",
+        "courseLevel:GK"
+      ],
+      "rawSourceText": "einfache Sachverhalte objektorientiert modellieren",
+      "rawSourceSpan": "TH-INF-SEKII-Q-PRACTICAL.18",
+      "rawParentBulletText": "einfache Sachverhalte objektorientiert modellieren",
+      "canonicalTargetIds": [
+        "6c284640-1f28-4837-aabd-445656ad7f54",
+        "c10e647b-2f51-5002-b352-830933a67214"
+      ]
+    },
+    {
+      "id": "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-practical-019-sachverhalte-objektorientiert-implementieren-6e7d2b71",
+      "passageId": "de-th-informatik:th-inf-q-practical",
+      "topicCode": "TH-INF-SEKII-Q-PRACTICAL-19",
+      "bulletIndex": 19,
+      "title": "TH-INF-SEKII-Q-PRACTICAL-19: Sachverhalte objektorientiert implementieren",
+      "description": "Source-Ziel aus Qualifikationsphase: Lernbereich Praktische Informatik: einfache Sachverhalte objektorientiert modellieren und implementieren",
+      "sourceText": "einfache Sachverhalte objektorientiert modellieren und implementieren",
+      "sourceSpan": "TH-INF-SEKII-Q-PRACTICAL.19",
+      "parentBulletText": "einfache Sachverhalte objektorientiert modellieren und implementieren",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Qualifikationsphase: Lernbereich Praktische Informatik, S. 34.",
+      "courseLevel": "LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:TH-INF-SEKII-Q-PRACTICAL",
+        "courseLevel:LK"
+      ],
+      "rawSourceText": "einfache Sachverhalte objektorientiert modellieren und implementieren",
+      "rawSourceSpan": "TH-INF-SEKII-Q-PRACTICAL.19",
+      "rawParentBulletText": "einfache Sachverhalte objektorientiert modellieren und implementieren",
+      "canonicalTargetIds": [
+        "6c284640-1f28-4837-aabd-445656ad7f54",
+        "c10e647b-2f51-5002-b352-830933a67214",
+        "5961bae4-87c0-52a3-b9cc-56a71b0d5abb"
+      ]
+    },
+    {
+      "id": "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-practical-020-iterative-algorithmen-entwerfen-4ae66730",
+      "passageId": "de-th-informatik:th-inf-q-practical",
+      "topicCode": "TH-INF-SEKII-Q-PRACTICAL-20",
+      "bulletIndex": 20,
+      "title": "TH-INF-SEKII-Q-PRACTICAL-20: Iterative Algorithmen entwerfen",
+      "description": "Source-Ziel aus Qualifikationsphase: Lernbereich Praktische Informatik: iterative Algorithmen entwerfen und implementieren",
+      "sourceText": "iterative Algorithmen entwerfen und implementieren",
+      "sourceSpan": "TH-INF-SEKII-Q-PRACTICAL.20",
+      "parentBulletText": "iterative Algorithmen entwerfen und implementieren",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Qualifikationsphase: Lernbereich Praktische Informatik, S. 34.",
+      "courseLevel": "GK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:TH-INF-SEKII-Q-PRACTICAL",
+        "courseLevel:GK"
+      ],
+      "rawSourceText": "iterative Algorithmen entwerfen und implementieren",
+      "rawSourceSpan": "TH-INF-SEKII-Q-PRACTICAL.20",
+      "rawParentBulletText": "iterative Algorithmen entwerfen und implementieren",
+      "canonicalTargetIds": [
+        "5ca1960e-6b02-5679-b271-043a5c29b189"
+      ]
+    },
+    {
+      "id": "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-practical-021-rekursive-algorithmen-entwerfen-fa077a5a",
+      "passageId": "de-th-informatik:th-inf-q-practical",
+      "topicCode": "TH-INF-SEKII-Q-PRACTICAL-21",
+      "bulletIndex": 21,
+      "title": "TH-INF-SEKII-Q-PRACTICAL-21: Rekursive Algorithmen entwerfen",
+      "description": "Source-Ziel aus Qualifikationsphase: Lernbereich Praktische Informatik: iterative und rekursive Algorithmen entwerfen und implementieren",
+      "sourceText": "iterative und rekursive Algorithmen entwerfen und implementieren",
+      "sourceSpan": "TH-INF-SEKII-Q-PRACTICAL.21",
+      "parentBulletText": "iterative und rekursive Algorithmen entwerfen und implementieren",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Qualifikationsphase: Lernbereich Praktische Informatik, S. 34.",
+      "courseLevel": "LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:TH-INF-SEKII-Q-PRACTICAL",
+        "courseLevel:LK"
+      ],
+      "rawSourceText": "iterative und rekursive Algorithmen entwerfen und implementieren",
+      "rawSourceSpan": "TH-INF-SEKII-Q-PRACTICAL.21",
+      "rawParentBulletText": "iterative und rekursive Algorithmen entwerfen und implementieren",
+      "canonicalTargetIds": [
+        "5ca1960e-6b02-5679-b271-043a5c29b189",
+        "25be929d-624d-5654-bbb8-32fa1fba50c2"
+      ]
+    },
+    {
+      "id": "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-practical-022-backtracking-und-teile-und-herrsche-anwenden-38b48dc1",
+      "passageId": "de-th-informatik:th-inf-q-practical",
+      "topicCode": "TH-INF-SEKII-Q-PRACTICAL-22",
+      "bulletIndex": 22,
+      "title": "TH-INF-SEKII-Q-PRACTICAL-22: Backtracking und Teile-und-Herrsche anwenden",
+      "description": "Source-Ziel aus Qualifikationsphase: Lernbereich Praktische Informatik: Problemloesungsmethoden Backtracking und Teile und Herrsche anwenden",
+      "sourceText": "Problemloesungsmethoden Backtracking und Teile und Herrsche anwenden",
+      "sourceSpan": "TH-INF-SEKII-Q-PRACTICAL.22",
+      "parentBulletText": "Problemloesungsmethoden Backtracking und Teile und Herrsche anwenden",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Qualifikationsphase: Lernbereich Praktische Informatik, S. 34.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:TH-INF-SEKII-Q-PRACTICAL",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "Problemloesungsmethoden Backtracking und Teile und Herrsche anwenden",
+      "rawSourceSpan": "TH-INF-SEKII-Q-PRACTICAL.22",
+      "rawParentBulletText": "Problemloesungsmethoden Backtracking und Teile und Herrsche anwenden",
+      "canonicalTargetIds": [
+        "3035b447-8287-5d23-85a1-e92cc76248b3",
+        "45a27914-ccbd-5d0b-ad12-6a6ada4362c6"
+      ]
+    },
+    {
+      "id": "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-practical-023-oo-programme-analysieren-af844aaa",
+      "passageId": "de-th-informatik:th-inf-q-practical",
+      "topicCode": "TH-INF-SEKII-Q-PRACTICAL-23",
+      "bulletIndex": 23,
+      "title": "TH-INF-SEKII-Q-PRACTICAL-23: OO-Programme analysieren",
+      "description": "Source-Ziel aus Qualifikationsphase: Lernbereich Praktische Informatik: objektorientierte Programme analysieren und in Klassendiagrammen darstellen",
+      "sourceText": "objektorientierte Programme analysieren und in Klassendiagrammen darstellen",
+      "sourceSpan": "TH-INF-SEKII-Q-PRACTICAL.23",
+      "parentBulletText": "objektorientierte Programme analysieren und in Klassendiagrammen darstellen",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Qualifikationsphase: Lernbereich Praktische Informatik, S. 34.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:TH-INF-SEKII-Q-PRACTICAL",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "objektorientierte Programme analysieren und in Klassendiagrammen darstellen",
+      "rawSourceSpan": "TH-INF-SEKII-Q-PRACTICAL.23",
+      "rawParentBulletText": "objektorientierte Programme analysieren und in Klassendiagrammen darstellen",
+      "canonicalTargetIds": [
+        "6c284640-1f28-4837-aabd-445656ad7f54",
+        "c10e647b-2f51-5002-b352-830933a67214"
+      ]
+    },
+    {
+      "id": "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-practical-024-softwareentwicklungsmethoden-anwenden-80f2c66e",
+      "passageId": "de-th-informatik:th-inf-q-practical",
+      "topicCode": "TH-INF-SEKII-Q-PRACTICAL-24",
+      "bulletIndex": 24,
+      "title": "TH-INF-SEKII-Q-PRACTICAL-24: Softwareentwicklungsmethoden anwenden",
+      "description": "Source-Ziel aus Qualifikationsphase: Lernbereich Praktische Informatik: grundlegende Methoden der Softwareentwicklung und Phasen des Problemloesens anwenden",
+      "sourceText": "grundlegende Methoden der Softwareentwicklung und Phasen des Problemloesens anwenden",
+      "sourceSpan": "TH-INF-SEKII-Q-PRACTICAL.24",
+      "parentBulletText": "grundlegende Methoden der Softwareentwicklung und Phasen des Problemloesens anwenden",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Qualifikationsphase: Lernbereich Praktische Informatik, S. 34.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:TH-INF-SEKII-Q-PRACTICAL",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "grundlegende Methoden der Softwareentwicklung und Phasen des Problemloesens anwenden",
+      "rawSourceSpan": "TH-INF-SEKII-Q-PRACTICAL.24",
+      "rawParentBulletText": "grundlegende Methoden der Softwareentwicklung und Phasen des Problemloesens anwenden",
+      "canonicalTargetIds": [
+        "8d21085b-9780-599e-ba0e-ccc0c31a5f01",
+        "0ef581d1-c033-5a98-a65a-48ea7b80136f"
+      ]
+    },
+    {
+      "id": "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-practical-025-programmiersprache-als-werkzeug-nutzen-d53abb0f",
+      "passageId": "de-th-informatik:th-inf-q-practical",
+      "topicCode": "TH-INF-SEKII-Q-PRACTICAL-25",
+      "bulletIndex": 25,
+      "title": "TH-INF-SEKII-Q-PRACTICAL-25: Programmiersprache als Werkzeug nutzen",
+      "description": "Source-Ziel aus Qualifikationsphase: Lernbereich Praktische Informatik: Werkzeug der Informatik beziehungsweise Programmiersprache zum Problemloesen nutzen",
+      "sourceText": "Werkzeug der Informatik beziehungsweise Programmiersprache zum Problemloesen nutzen",
+      "sourceSpan": "TH-INF-SEKII-Q-PRACTICAL.25",
+      "parentBulletText": "Werkzeug der Informatik beziehungsweise Programmiersprache zum Problemloesen nutzen",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Qualifikationsphase: Lernbereich Praktische Informatik, S. 34.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:TH-INF-SEKII-Q-PRACTICAL",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "Werkzeug der Informatik beziehungsweise Programmiersprache zum Problemloesen nutzen",
+      "rawSourceSpan": "TH-INF-SEKII-Q-PRACTICAL.25",
+      "rawParentBulletText": "Werkzeug der Informatik beziehungsweise Programmiersprache zum Problemloesen nutzen",
+      "canonicalTargetIds": [
+        "a8206bfb-aaed-5502-9df1-55609f3d79b5",
+        "5961bae4-87c0-52a3-b9cc-56a71b0d5abb"
+      ]
+    },
+    {
+      "id": "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-practical-026-fehler-ermitteln-und-korrigieren-5c155447",
+      "passageId": "de-th-informatik:th-inf-q-practical",
+      "topicCode": "TH-INF-SEKII-Q-PRACTICAL-26",
+      "bulletIndex": 26,
+      "title": "TH-INF-SEKII-Q-PRACTICAL-26: Fehler ermitteln und korrigieren",
+      "description": "Source-Ziel aus Qualifikationsphase: Lernbereich Praktische Informatik: Fehlermeldungen interpretieren, Fehler mit Werkzeugen ermitteln und korrigieren sowie Problemloesungen testen und dokumentieren",
+      "sourceText": "Fehlermeldungen interpretieren, Fehler mit Werkzeugen ermitteln und korrigieren sowie Problemloesungen testen und dokumentieren",
+      "sourceSpan": "TH-INF-SEKII-Q-PRACTICAL.26",
+      "parentBulletText": "Fehlermeldungen interpretieren, Fehler mit Werkzeugen ermitteln und korrigieren sowie Problemloesungen testen und dokumentieren",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Qualifikationsphase: Lernbereich Praktische Informatik, S. 34.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:TH-INF-SEKII-Q-PRACTICAL",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "Fehlermeldungen interpretieren, Fehler mit Werkzeugen ermitteln und korrigieren sowie Problemloesungen testen und dokumentieren",
+      "rawSourceSpan": "TH-INF-SEKII-Q-PRACTICAL.26",
+      "rawParentBulletText": "Fehlermeldungen interpretieren, Fehler mit Werkzeugen ermitteln und korrigieren sowie Problemloesungen testen und dokumentieren",
+      "canonicalTargetIds": [
+        "d5914986-fba8-56cc-99be-d9560ac7666d",
+        "df0210bf-735b-54f8-8a1b-8dfca5598ff1"
+      ]
+    },
+    {
+      "id": "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-practical-027-modellierungswerkzeug-nutzen-f4824592",
+      "passageId": "de-th-informatik:th-inf-q-practical",
+      "topicCode": "TH-INF-SEKII-Q-PRACTICAL-27",
+      "bulletIndex": 27,
+      "title": "TH-INF-SEKII-Q-PRACTICAL-27: Modellierungswerkzeug nutzen",
+      "description": "Source-Ziel aus Qualifikationsphase: Lernbereich Praktische Informatik: ein Werkzeug der Informatik zum Modellieren benutzen",
+      "sourceText": "ein Werkzeug der Informatik zum Modellieren benutzen",
+      "sourceSpan": "TH-INF-SEKII-Q-PRACTICAL.27",
+      "parentBulletText": "ein Werkzeug der Informatik zum Modellieren benutzen",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Qualifikationsphase: Lernbereich Praktische Informatik, S. 34.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:TH-INF-SEKII-Q-PRACTICAL",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "ein Werkzeug der Informatik zum Modellieren benutzen",
+      "rawSourceSpan": "TH-INF-SEKII-Q-PRACTICAL.27",
+      "rawParentBulletText": "ein Werkzeug der Informatik zum Modellieren benutzen",
+      "canonicalTargetIds": [
+        "c10e647b-2f51-5002-b352-830933a67214"
+      ]
+    },
+    {
+      "id": "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-practical-028-komplexe-probleme-kooperativ-bearbeiten-11b001d4",
+      "passageId": "de-th-informatik:th-inf-q-practical",
+      "topicCode": "TH-INF-SEKII-Q-PRACTICAL-28",
+      "bulletIndex": 28,
+      "title": "TH-INF-SEKII-Q-PRACTICAL-28: Komplexe Probleme kooperativ bearbeiten",
+      "description": "Source-Ziel aus Qualifikationsphase: Lernbereich Praktische Informatik: in kooperativen Arbeitsformen komplexe Probleme bearbeiten und den Problemloeseprozess reflektieren",
+      "sourceText": "in kooperativen Arbeitsformen komplexe Probleme bearbeiten und den Problemloeseprozess reflektieren",
+      "sourceSpan": "TH-INF-SEKII-Q-PRACTICAL.28",
+      "parentBulletText": "in kooperativen Arbeitsformen komplexe Probleme bearbeiten und den Problemloeseprozess reflektieren",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Qualifikationsphase: Lernbereich Praktische Informatik, S. 34.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:TH-INF-SEKII-Q-PRACTICAL",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "in kooperativen Arbeitsformen komplexe Probleme bearbeiten und den Problemloeseprozess reflektieren",
+      "rawSourceSpan": "TH-INF-SEKII-Q-PRACTICAL.28",
+      "rawParentBulletText": "in kooperativen Arbeitsformen komplexe Probleme bearbeiten und den Problemloeseprozess reflektieren",
+      "canonicalTargetIds": [
+        "8d21085b-9780-599e-ba0e-ccc0c31a5f01",
+        "f81be4d3-2445-54aa-b17e-2a27466e7e0d"
+      ]
+    },
+    {
+      "id": "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-applied-001-projektarbeit-mit-informatikmethoden-loesen-86c3e143",
+      "passageId": "de-th-informatik:th-inf-q-applied",
+      "topicCode": "TH-INF-SEKII-Q-APPLIED-01",
+      "bulletIndex": 1,
+      "title": "TH-INF-SEKII-Q-APPLIED-1: Projektarbeit mit Informatikmethoden loesen",
+      "description": "Source-Ziel aus Qualifikationsphase: Lernbereich Angewandte Informatik: komplexe Probleme mit Methoden der Informatik in einer Projektarbeit loesen",
+      "sourceText": "komplexe Probleme mit Methoden der Informatik in einer Projektarbeit loesen",
+      "sourceSpan": "TH-INF-SEKII-Q-APPLIED.1",
+      "parentBulletText": "komplexe Probleme mit Methoden der Informatik in einer Projektarbeit loesen",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Qualifikationsphase: Lernbereich Angewandte Informatik, S. 36.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:TH-INF-SEKII-Q-APPLIED",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "komplexe Probleme mit Methoden der Informatik in einer Projektarbeit loesen",
+      "rawSourceSpan": "TH-INF-SEKII-Q-APPLIED.1",
+      "rawParentBulletText": "komplexe Probleme mit Methoden der Informatik in einer Projektarbeit loesen",
+      "canonicalTargetIds": [
+        "8d21085b-9780-599e-ba0e-ccc0c31a5f01",
+        "c10e647b-2f51-5002-b352-830933a67214"
+      ]
+    },
+    {
+      "id": "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-applied-002-client-server-modell-beschreiben-028385b1",
+      "passageId": "de-th-informatik:th-inf-q-applied",
+      "topicCode": "TH-INF-SEKII-Q-APPLIED-02",
+      "bulletIndex": 2,
+      "title": "TH-INF-SEKII-Q-APPLIED-2: Client-Server-Modell beschreiben",
+      "description": "Source-Ziel aus Qualifikationsphase: Lernbereich Angewandte Informatik: Client-Server-Modell beschreiben",
+      "sourceText": "Client-Server-Modell beschreiben",
+      "sourceSpan": "TH-INF-SEKII-Q-APPLIED.2",
+      "parentBulletText": "Client-Server-Modell beschreiben",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Qualifikationsphase: Lernbereich Angewandte Informatik, S. 36.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:TH-INF-SEKII-Q-APPLIED",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "Client-Server-Modell beschreiben",
+      "rawSourceSpan": "TH-INF-SEKII-Q-APPLIED.2",
+      "rawParentBulletText": "Client-Server-Modell beschreiben",
+      "canonicalTargetIds": [
+        "ace0c141-9e7c-546e-914f-64c24d42d85d"
+      ]
+    },
+    {
+      "id": "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-applied-003-datenaustausch-mit-schichtenmodell-beschreiben-ae69a6b5",
+      "passageId": "de-th-informatik:th-inf-q-applied",
+      "topicCode": "TH-INF-SEKII-Q-APPLIED-03",
+      "bulletIndex": 3,
+      "title": "TH-INF-SEKII-Q-APPLIED-3: Datenaustausch mit Schichtenmodell beschreiben",
+      "description": "Source-Ziel aus Qualifikationsphase: Lernbereich Angewandte Informatik: Datenaustausch durch ein Schichtenmodell beschreiben",
+      "sourceText": "Datenaustausch durch ein Schichtenmodell beschreiben",
+      "sourceSpan": "TH-INF-SEKII-Q-APPLIED.3",
+      "parentBulletText": "Datenaustausch durch ein Schichtenmodell beschreiben",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Qualifikationsphase: Lernbereich Angewandte Informatik, S. 36.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:TH-INF-SEKII-Q-APPLIED",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "Datenaustausch durch ein Schichtenmodell beschreiben",
+      "rawSourceSpan": "TH-INF-SEKII-Q-APPLIED.3",
+      "rawParentBulletText": "Datenaustausch durch ein Schichtenmodell beschreiben",
+      "canonicalTargetIds": [
+        "6539320a-aa0e-59e5-a34a-55f1a8b78337",
+        "e3e5c851-39d8-569f-9f0a-d516c729ed36"
+      ]
+    },
+    {
+      "id": "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-applied-004-ip-adresse-erlaeutern-caa68f25",
+      "passageId": "de-th-informatik:th-inf-q-applied",
+      "topicCode": "TH-INF-SEKII-Q-APPLIED-04",
+      "bulletIndex": 4,
+      "title": "TH-INF-SEKII-Q-APPLIED-4: IP-Adresse erlaeutern",
+      "description": "Source-Ziel aus Qualifikationsphase: Lernbereich Angewandte Informatik: Aufbau einer IP-Adresse erlaeutern",
+      "sourceText": "Aufbau einer IP-Adresse erlaeutern",
+      "sourceSpan": "TH-INF-SEKII-Q-APPLIED.4",
+      "parentBulletText": "Aufbau einer IP-Adresse erlaeutern",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Qualifikationsphase: Lernbereich Angewandte Informatik, S. 36.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:TH-INF-SEKII-Q-APPLIED",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "Aufbau einer IP-Adresse erlaeutern",
+      "rawSourceSpan": "TH-INF-SEKII-Q-APPLIED.4",
+      "rawParentBulletText": "Aufbau einer IP-Adresse erlaeutern",
+      "canonicalTargetIds": [
+        "6539320a-aa0e-59e5-a34a-55f1a8b78337",
+        "ca07458c-1fc1-5ca1-b226-69f59e2d62d3"
+      ]
+    },
+    {
+      "id": "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-applied-005-dns-erlaeutern-56056cb2",
+      "passageId": "de-th-informatik:th-inf-q-applied",
+      "topicCode": "TH-INF-SEKII-Q-APPLIED-05",
+      "bulletIndex": 5,
+      "title": "TH-INF-SEKII-Q-APPLIED-5: DNS erlaeutern",
+      "description": "Source-Ziel aus Qualifikationsphase: Lernbereich Angewandte Informatik: Namensaufloesung von Internetadressen durch DNS erlaeutern",
+      "sourceText": "Namensaufloesung von Internetadressen durch DNS erlaeutern",
+      "sourceSpan": "TH-INF-SEKII-Q-APPLIED.5",
+      "parentBulletText": "Namensaufloesung von Internetadressen durch DNS erlaeutern",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Qualifikationsphase: Lernbereich Angewandte Informatik, S. 36.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:TH-INF-SEKII-Q-APPLIED",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "Namensaufloesung von Internetadressen durch DNS erlaeutern",
+      "rawSourceSpan": "TH-INF-SEKII-Q-APPLIED.5",
+      "rawParentBulletText": "Namensaufloesung von Internetadressen durch DNS erlaeutern",
+      "canonicalTargetIds": [
+        "ace0c141-9e7c-546e-914f-64c24d42d85d",
+        "6539320a-aa0e-59e5-a34a-55f1a8b78337"
+      ]
+    },
+    {
+      "id": "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-applied-006-routing-beschreiben-f4ce31e2",
+      "passageId": "de-th-informatik:th-inf-q-applied",
+      "topicCode": "TH-INF-SEKII-Q-APPLIED-06",
+      "bulletIndex": 6,
+      "title": "TH-INF-SEKII-Q-APPLIED-6: Routing beschreiben",
+      "description": "Source-Ziel aus Qualifikationsphase: Lernbereich Angewandte Informatik: Wegewahl von Datenpaketen beschreiben",
+      "sourceText": "Wegewahl von Datenpaketen beschreiben",
+      "sourceSpan": "TH-INF-SEKII-Q-APPLIED.6",
+      "parentBulletText": "Wegewahl von Datenpaketen beschreiben",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Qualifikationsphase: Lernbereich Angewandte Informatik, S. 36.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:TH-INF-SEKII-Q-APPLIED",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "Wegewahl von Datenpaketen beschreiben",
+      "rawSourceSpan": "TH-INF-SEKII-Q-APPLIED.6",
+      "rawParentBulletText": "Wegewahl von Datenpaketen beschreiben",
+      "canonicalTargetIds": [
+        "e3e5c851-39d8-569f-9f0a-d516c729ed36",
+        "ca07458c-1fc1-5ca1-b226-69f59e2d62d3"
+      ]
+    },
+    {
+      "id": "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-applied-007-datenkomprimierung-beschreiben-und-erlaeutern-64553f41",
+      "passageId": "de-th-informatik:th-inf-q-applied",
+      "topicCode": "TH-INF-SEKII-Q-APPLIED-07",
+      "bulletIndex": 7,
+      "title": "TH-INF-SEKII-Q-APPLIED-7: Datenkomprimierung beschreiben und erlaeutern",
+      "description": "Source-Ziel aus Qualifikationsphase: Lernbereich Angewandte Informatik: verlustfreie und verlustbehaftete Datenkomprimierungsverfahren beschreiben und erlaeutern",
+      "sourceText": "verlustfreie und verlustbehaftete Datenkomprimierungsverfahren beschreiben und erlaeutern",
+      "sourceSpan": "TH-INF-SEKII-Q-APPLIED.7",
+      "parentBulletText": "verlustfreie und verlustbehaftete Datenkomprimierungsverfahren beschreiben und erlaeutern",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Qualifikationsphase: Lernbereich Angewandte Informatik, S. 36.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:TH-INF-SEKII-Q-APPLIED",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "verlustfreie und verlustbehaftete Datenkomprimierungsverfahren beschreiben und erlaeutern",
+      "rawSourceSpan": "TH-INF-SEKII-Q-APPLIED.7",
+      "rawParentBulletText": "verlustfreie und verlustbehaftete Datenkomprimierungsverfahren beschreiben und erlaeutern",
+      "canonicalTargetIds": [
+        "859e875f-6730-5201-b8ed-60fb9374d27b"
+      ]
+    },
+    {
+      "id": "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-applied-008-symmetrische-verschluesselung-erlaeutern-786e3052",
+      "passageId": "de-th-informatik:th-inf-q-applied",
+      "topicCode": "TH-INF-SEKII-Q-APPLIED-08",
+      "bulletIndex": 8,
+      "title": "TH-INF-SEKII-Q-APPLIED-8: Symmetrische Verschluesselung erlaeutern",
+      "description": "Source-Ziel aus Qualifikationsphase: Lernbereich Angewandte Informatik: symmetrische Verschluesselungsverfahren erlaeutern",
+      "sourceText": "symmetrische Verschluesselungsverfahren erlaeutern",
+      "sourceSpan": "TH-INF-SEKII-Q-APPLIED.8",
+      "parentBulletText": "symmetrische Verschluesselungsverfahren erlaeutern",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Qualifikationsphase: Lernbereich Angewandte Informatik, S. 36.",
+      "courseLevel": "GK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:TH-INF-SEKII-Q-APPLIED",
+        "courseLevel:GK"
+      ],
+      "rawSourceText": "symmetrische Verschluesselungsverfahren erlaeutern",
+      "rawSourceSpan": "TH-INF-SEKII-Q-APPLIED.8",
+      "rawParentBulletText": "symmetrische Verschluesselungsverfahren erlaeutern",
+      "canonicalTargetIds": [
+        "6bba1eda-23b1-5b52-ad00-1d6e04db5317",
+        "f029bea7-1c08-5844-894c-9aeb96bf9ec2"
+      ]
+    },
+    {
+      "id": "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-applied-009-symmetrische-und-asymmetrische-verschluesselung-erlaeutern-5677fd0e",
+      "passageId": "de-th-informatik:th-inf-q-applied",
+      "topicCode": "TH-INF-SEKII-Q-APPLIED-09",
+      "bulletIndex": 9,
+      "title": "TH-INF-SEKII-Q-APPLIED-9: Symmetrische und asymmetrische Verschluesselung erlaeutern",
+      "description": "Source-Ziel aus Qualifikationsphase: Lernbereich Angewandte Informatik: symmetrische und asymmetrische Verschluesselungsverfahren erlaeutern",
+      "sourceText": "symmetrische und asymmetrische Verschluesselungsverfahren erlaeutern",
+      "sourceSpan": "TH-INF-SEKII-Q-APPLIED.9",
+      "parentBulletText": "symmetrische und asymmetrische Verschluesselungsverfahren erlaeutern",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Qualifikationsphase: Lernbereich Angewandte Informatik, S. 36.",
+      "courseLevel": "LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:TH-INF-SEKII-Q-APPLIED",
+        "courseLevel:LK"
+      ],
+      "rawSourceText": "symmetrische und asymmetrische Verschluesselungsverfahren erlaeutern",
+      "rawSourceSpan": "TH-INF-SEKII-Q-APPLIED.9",
+      "rawParentBulletText": "symmetrische und asymmetrische Verschluesselungsverfahren erlaeutern",
+      "canonicalTargetIds": [
+        "6bba1eda-23b1-5b52-ad00-1d6e04db5317",
+        "f029bea7-1c08-5844-894c-9aeb96bf9ec2"
+      ]
+    },
+    {
+      "id": "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-applied-010-krypto-sicherheit-bewerten-3c0119aa",
+      "passageId": "de-th-informatik:th-inf-q-applied",
+      "topicCode": "TH-INF-SEKII-Q-APPLIED-10",
+      "bulletIndex": 10,
+      "title": "TH-INF-SEKII-Q-APPLIED-10: Krypto-Sicherheit bewerten",
+      "description": "Source-Ziel aus Qualifikationsphase: Lernbereich Angewandte Informatik: Sicherheit von Verschluesselungsalgorithmen bewerten und Angriffe erlaeutern",
+      "sourceText": "Sicherheit von Verschluesselungsalgorithmen bewerten und Angriffe erlaeutern",
+      "sourceSpan": "TH-INF-SEKII-Q-APPLIED.10",
+      "parentBulletText": "Sicherheit von Verschluesselungsalgorithmen bewerten und Angriffe erlaeutern",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Qualifikationsphase: Lernbereich Angewandte Informatik, S. 36.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:TH-INF-SEKII-Q-APPLIED",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "Sicherheit von Verschluesselungsalgorithmen bewerten und Angriffe erlaeutern",
+      "rawSourceSpan": "TH-INF-SEKII-Q-APPLIED.10",
+      "rawParentBulletText": "Sicherheit von Verschluesselungsalgorithmen bewerten und Angriffe erlaeutern",
+      "canonicalTargetIds": [
+        "e3e17e48-d772-52ca-b7ac-b0da98134a6a",
+        "58173dab-0cb2-52ae-a052-63d3a0f33644"
+      ]
+    },
+    {
+      "id": "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-applied-011-projekt-dokumentieren-und-praesentieren-cc711986",
+      "passageId": "de-th-informatik:th-inf-q-applied",
+      "topicCode": "TH-INF-SEKII-Q-APPLIED-11",
+      "bulletIndex": 11,
+      "title": "TH-INF-SEKII-Q-APPLIED-11: Projekt dokumentieren und praesentieren",
+      "description": "Source-Ziel aus Qualifikationsphase: Lernbereich Angewandte Informatik: Verlauf einer Projektarbeit und Ergebnisse dokumentieren und praesentieren",
+      "sourceText": "Verlauf einer Projektarbeit und Ergebnisse dokumentieren und praesentieren",
+      "sourceSpan": "TH-INF-SEKII-Q-APPLIED.11",
+      "parentBulletText": "Verlauf einer Projektarbeit und Ergebnisse dokumentieren und praesentieren",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Qualifikationsphase: Lernbereich Angewandte Informatik, S. 36.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:TH-INF-SEKII-Q-APPLIED",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "Verlauf einer Projektarbeit und Ergebnisse dokumentieren und praesentieren",
+      "rawSourceSpan": "TH-INF-SEKII-Q-APPLIED.11",
+      "rawParentBulletText": "Verlauf einer Projektarbeit und Ergebnisse dokumentieren und praesentieren",
+      "canonicalTargetIds": [
+        "8d21085b-9780-599e-ba0e-ccc0c31a5f01",
+        "f81be4d3-2445-54aa-b17e-2a27466e7e0d"
+      ]
+    },
+    {
+      "id": "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-applied-012-faecherbezuege-herstellen-12214035",
+      "passageId": "de-th-informatik:th-inf-q-applied",
+      "topicCode": "TH-INF-SEKII-Q-APPLIED-12",
+      "bulletIndex": 12,
+      "title": "TH-INF-SEKII-Q-APPLIED-12: Faecherbezuege herstellen",
+      "description": "Source-Ziel aus Qualifikationsphase: Lernbereich Angewandte Informatik: im Rahmen von Projektarbeiten Bezüge zu anderen Faechern herstellen",
+      "sourceText": "im Rahmen von Projektarbeiten Bezüge zu anderen Faechern herstellen",
+      "sourceSpan": "TH-INF-SEKII-Q-APPLIED.12",
+      "parentBulletText": "im Rahmen von Projektarbeiten Bezüge zu anderen Faechern herstellen",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Qualifikationsphase: Lernbereich Angewandte Informatik, S. 36.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:TH-INF-SEKII-Q-APPLIED",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "im Rahmen von Projektarbeiten Bezüge zu anderen Faechern herstellen",
+      "rawSourceSpan": "TH-INF-SEKII-Q-APPLIED.12",
+      "rawParentBulletText": "im Rahmen von Projektarbeiten Bezüge zu anderen Faechern herstellen",
+      "canonicalTargetIds": [
+        "8d21085b-9780-599e-ba0e-ccc0c31a5f01",
+        "d848ceb9-cd73-5a13-9407-f3364764c223"
+      ]
+    },
+    {
+      "id": "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-applied-013-symmetrische-verschluesselung-implementieren-1c82d093",
+      "passageId": "de-th-informatik:th-inf-q-applied",
+      "topicCode": "TH-INF-SEKII-Q-APPLIED-13",
+      "bulletIndex": 13,
+      "title": "TH-INF-SEKII-Q-APPLIED-13: Symmetrische Verschluesselung implementieren",
+      "description": "Source-Ziel aus Qualifikationsphase: Lernbereich Angewandte Informatik: ein symmetrisches Verschluesselungsverfahren implementieren",
+      "sourceText": "ein symmetrisches Verschluesselungsverfahren implementieren",
+      "sourceSpan": "TH-INF-SEKII-Q-APPLIED.13",
+      "parentBulletText": "ein symmetrisches Verschluesselungsverfahren implementieren",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Qualifikationsphase: Lernbereich Angewandte Informatik, S. 36.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:TH-INF-SEKII-Q-APPLIED",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "ein symmetrisches Verschluesselungsverfahren implementieren",
+      "rawSourceSpan": "TH-INF-SEKII-Q-APPLIED.13",
+      "rawParentBulletText": "ein symmetrisches Verschluesselungsverfahren implementieren",
+      "canonicalTargetIds": [
+        "6bba1eda-23b1-5b52-ad00-1d6e04db5317",
+        "5ca1960e-6b02-5679-b271-043a5c29b189"
+      ]
+    },
+    {
+      "id": "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-applied-014-projekt-selbststaendig-organisieren-7927b405",
+      "passageId": "de-th-informatik:th-inf-q-applied",
+      "topicCode": "TH-INF-SEKII-Q-APPLIED-14",
+      "bulletIndex": 14,
+      "title": "TH-INF-SEKII-Q-APPLIED-14: Projekt selbststaendig organisieren",
+      "description": "Source-Ziel aus Qualifikationsphase: Lernbereich Angewandte Informatik: Projektthema selbststaendig finden und Projektarbeit im Team organisieren",
+      "sourceText": "Projektthema selbststaendig finden und Projektarbeit im Team organisieren",
+      "sourceSpan": "TH-INF-SEKII-Q-APPLIED.14",
+      "parentBulletText": "Projektthema selbststaendig finden und Projektarbeit im Team organisieren",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Qualifikationsphase: Lernbereich Angewandte Informatik, S. 36.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:TH-INF-SEKII-Q-APPLIED",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "Projektthema selbststaendig finden und Projektarbeit im Team organisieren",
+      "rawSourceSpan": "TH-INF-SEKII-Q-APPLIED.14",
+      "rawParentBulletText": "Projektthema selbststaendig finden und Projektarbeit im Team organisieren",
+      "canonicalTargetIds": [
+        "8d21085b-9780-599e-ba0e-ccc0c31a5f01"
+      ]
+    },
+    {
+      "id": "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-applied-015-soziale-netzwerke-beurteilen-b47cf75c",
+      "passageId": "de-th-informatik:th-inf-q-applied",
+      "topicCode": "TH-INF-SEKII-Q-APPLIED-15",
+      "bulletIndex": 15,
+      "title": "TH-INF-SEKII-Q-APPLIED-15: Soziale Netzwerke beurteilen",
+      "description": "Source-Ziel aus Qualifikationsphase: Lernbereich Angewandte Informatik: gesellschaftliche und ethische Aspekte der Nutzung sozialer Netzwerke beurteilen",
+      "sourceText": "gesellschaftliche und ethische Aspekte der Nutzung sozialer Netzwerke beurteilen",
+      "sourceSpan": "TH-INF-SEKII-Q-APPLIED.15",
+      "parentBulletText": "gesellschaftliche und ethische Aspekte der Nutzung sozialer Netzwerke beurteilen",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Qualifikationsphase: Lernbereich Angewandte Informatik, S. 36.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:TH-INF-SEKII-Q-APPLIED",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "gesellschaftliche und ethische Aspekte der Nutzung sozialer Netzwerke beurteilen",
+      "rawSourceSpan": "TH-INF-SEKII-Q-APPLIED.15",
+      "rawParentBulletText": "gesellschaftliche und ethische Aspekte der Nutzung sozialer Netzwerke beurteilen",
+      "canonicalTargetIds": [
+        "ff6b67e8-dc27-5755-8dab-23ed658194fd",
+        "de3af5ce-344c-5e04-a081-4c2904eb9fad"
+      ]
+    },
+    {
+      "id": "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-applied-016-internetdienste-diskutieren-bdce6613",
+      "passageId": "de-th-informatik:th-inf-q-applied",
+      "topicCode": "TH-INF-SEKII-Q-APPLIED-16",
+      "bulletIndex": 16,
+      "title": "TH-INF-SEKII-Q-APPLIED-16: Internetdienste diskutieren",
+      "description": "Source-Ziel aus Qualifikationsphase: Lernbereich Angewandte Informatik: Nutzen und Sicherheit aktueller Internetdienste diskutieren",
+      "sourceText": "Nutzen und Sicherheit aktueller Internetdienste diskutieren",
+      "sourceSpan": "TH-INF-SEKII-Q-APPLIED.16",
+      "parentBulletText": "Nutzen und Sicherheit aktueller Internetdienste diskutieren",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Qualifikationsphase: Lernbereich Angewandte Informatik, S. 36.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:TH-INF-SEKII-Q-APPLIED",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "Nutzen und Sicherheit aktueller Internetdienste diskutieren",
+      "rawSourceSpan": "TH-INF-SEKII-Q-APPLIED.16",
+      "rawParentBulletText": "Nutzen und Sicherheit aktueller Internetdienste diskutieren",
+      "canonicalTargetIds": [
+        "ace0c141-9e7c-546e-914f-64c24d42d85d",
+        "6c4fd4a4-b245-512f-99ec-4ec6d1e37126"
+      ]
+    },
+    {
+      "id": "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-applied-017-datenschutz-datensicherheit-urheberrecht-diskutieren-db73208a",
+      "passageId": "de-th-informatik:th-inf-q-applied",
+      "topicCode": "TH-INF-SEKII-Q-APPLIED-17",
+      "bulletIndex": 17,
+      "title": "TH-INF-SEKII-Q-APPLIED-17: Datenschutz Datensicherheit Urheberrecht diskutieren",
+      "description": "Source-Ziel aus Qualifikationsphase: Lernbereich Angewandte Informatik: Fallbeispiele zu Datenschutz, Datensicherheit und Urheberrecht diskutieren",
+      "sourceText": "Fallbeispiele zu Datenschutz, Datensicherheit und Urheberrecht diskutieren",
+      "sourceSpan": "TH-INF-SEKII-Q-APPLIED.17",
+      "parentBulletText": "Fallbeispiele zu Datenschutz, Datensicherheit und Urheberrecht diskutieren",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Qualifikationsphase: Lernbereich Angewandte Informatik, S. 36.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:TH-INF-SEKII-Q-APPLIED",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "Fallbeispiele zu Datenschutz, Datensicherheit und Urheberrecht diskutieren",
+      "rawSourceSpan": "TH-INF-SEKII-Q-APPLIED.17",
+      "rawParentBulletText": "Fallbeispiele zu Datenschutz, Datensicherheit und Urheberrecht diskutieren",
+      "canonicalTargetIds": [
+        "71fe327a-9677-5348-a405-fba0dbd302d7",
+        "58173dab-0cb2-52ae-a052-63d3a0f33644",
+        "00f23ea9-4b45-52ea-aef2-7e1314ea3b45"
+      ]
+    },
+    {
+      "id": "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-applied-018-kryptosystemregeln-diskutieren-deed390e",
+      "passageId": "de-th-informatik:th-inf-q-applied",
+      "topicCode": "TH-INF-SEKII-Q-APPLIED-18",
+      "bulletIndex": 18,
+      "title": "TH-INF-SEKII-Q-APPLIED-18: Kryptosystemregeln diskutieren",
+      "description": "Source-Ziel aus Qualifikationsphase: Lernbereich Angewandte Informatik: Regeln im Umgang mit kryptografischen Systemen diskutieren",
+      "sourceText": "Regeln im Umgang mit kryptografischen Systemen diskutieren",
+      "sourceSpan": "TH-INF-SEKII-Q-APPLIED.18",
+      "parentBulletText": "Regeln im Umgang mit kryptografischen Systemen diskutieren",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Qualifikationsphase: Lernbereich Angewandte Informatik, S. 36.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:TH-INF-SEKII-Q-APPLIED",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "Regeln im Umgang mit kryptografischen Systemen diskutieren",
+      "rawSourceSpan": "TH-INF-SEKII-Q-APPLIED.18",
+      "rawParentBulletText": "Regeln im Umgang mit kryptografischen Systemen diskutieren",
+      "canonicalTargetIds": [
+        "f029bea7-1c08-5844-894c-9aeb96bf9ec2",
+        "58173dab-0cb2-52ae-a052-63d3a0f33644"
+      ]
+    }
+  ]
+}

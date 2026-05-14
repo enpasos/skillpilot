@@ -44,3 +44,26 @@ Archived locally at:
 Generated source extraction:
 
 - `curricula/DE/Gymnasium/input/HH/lower-secondary/source-extraction/DE_HH_PGW_SEKI_WIRTSCHAFT_BILDUNGSPLAN_2022.source-extraction.json`
+
+## Informatik
+
+Starting point:
+https://www.hamburg.de/politik-und-verwaltung/behoerden/schulbehoerde/veroeffentlichungen/bildungsplaene/gym-seki-123450
+
+- `informatik-gym-seki-data.pdf`:
+  https://www.hamburg.de/resource/blob/123456/3cdb416176a9efa4644942083736bab8/informatik-gym-seki-data.pdf
+
+Scope:
+
+- Hamburg
+- Gymnasium
+- Informatik
+- lower-secondary extraction target: mandatory module requirements and content bullets from the official Gymnasium Sekundarstufe I Informatik Bildungsplan
+
+Archived locally at:
+
+- `curricula/DE/Gymnasium/input/HH/informatik-gym-seki-data.pdf`
+
+Generated source extraction:
+
+- `curricula/DE/Gymnasium/input/HH/lower-secondary/source-extraction/DE_HH_INFORMATIK_SEKI_BILDUNGSPLAN.source-extraction.json`

@@ -21,3 +21,26 @@ Archived locally at:
 Generated source extraction:
 
 - `curricula/DE/Gymnasium/input/HH/upper-secondary/source-extraction/DE_HH_PGW_SEKII_WIRTSCHAFT_BILDUNGSPLAN_2022.source-extraction.json`
+
+## Informatik
+
+Starting point:
+https://www.hamburg.de/politik-und-verwaltung/behoerden/schulbehoerde/veroeffentlichungen/bildungsplaene
+
+- `informatik-gyo-2022.pdf`:
+  https://www.hamburg.de/contentblob/16762768/154d25efc0dc8b08d1bd0e3a6df54392/data/informatik-gyo-2022.pdf
+
+Scope:
+
+- Hamburg
+- Gymnasium
+- Informatik
+- upper-secondary extraction target: process competencies, mandatory content areas and module bullets from the official Studienstufe Informatik Bildungsplan 2022
+
+Archived locally at:
+
+- `curricula/DE/Gymnasium/input/HH/informatik-gyo-2022.pdf`
+
+Generated source extraction:
+
+- `curricula/DE/Gymnasium/input/HH/upper-secondary/source-extraction/DE_HH_INFORMATIK_SEKII_BILDUNGSPLAN_2022.source-extraction.json`

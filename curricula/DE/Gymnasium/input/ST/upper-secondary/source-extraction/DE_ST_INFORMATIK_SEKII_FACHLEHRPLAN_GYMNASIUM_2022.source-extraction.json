@@ -1,0 +1,2631 @@
+{
+  "schemaVersion": 1,
+  "extractionId": "DE-ST-INFORMATIK-SEKII-FACHLEHRPLAN-GYMNASIUM-2022",
+  "sourceLandscapeId": "96309127-ac64-5983-af2a-cbfc776dc764",
+  "targetLandscapeId": "7d51b38c-a149-5407-bddc-d2ce7878b020",
+  "jurisdiction": "DE-ST",
+  "subject": "Informatik",
+  "stage": "SekII",
+  "title": "Informatik Sekundarstufe II (Sachsen-Anhalt, Fachlehrplan Gymnasium 2022 Source-Extraction)",
+  "sourceDocument": {
+    "key": "ST-INF-GYM-2022",
+    "title": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022",
+    "path": "curricula/DE/Gymnasium/input/ST/FLP_Informatik_Gym_01082022_swd.pdf",
+    "url": "https://lisa.sachsen-anhalt.de/fileadmin/Bibliothek/Politik_und_Verwaltung/MK/LISA/Unterricht/Lehrplaene/Gym/Anpassung_2022/FLP_Informatik_Gym_01082022_swd.pdf",
+    "official": true
+  },
+  "sourceDocuments": [
+    {
+      "key": "ST-INF-GYM-2022",
+      "title": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022",
+      "path": "curricula/DE/Gymnasium/input/ST/FLP_Informatik_Gym_01082022_swd.pdf",
+      "url": "https://lisa.sachsen-anhalt.de/fileadmin/Bibliothek/Politik_und_Verwaltung/MK/LISA/Unterricht/Lehrplaene/Gym/Anpassung_2022/FLP_Informatik_Gym_01082022_swd.pdf",
+      "official": true
+    }
+  ],
+  "method": {
+    "passageExtraction": "Source-Ziele wurden aus den vier Kursen der Qualifikationsphase des amtlichen Fachlehrplans Informatik Gymnasium Sachsen-Anhalt 2022 extrahiert.",
+    "sourceGoalExtraction": "Source-Ziele wurden als fachlich atomare Kompetenzerwartungen aus den amtlichen Kompetenzschwerpunkt-Passagen formuliert und auf kanonische SkillPilot-Ziele gemappt.",
+    "scopeNote": "Sek II umfasst Objektorientiertes Modellieren, Datenbanken, Software Engineering/Projektarbeit und aktuelle Entwicklungen im gesellschaftlichen Kontext."
+  },
+  "qualityReview": {
+    "sourceGoalCountPeerBaseline": {
+      "accepted": true,
+      "details": "82 Source-Ziele; Sachsen-Anhalt liegt mit einem kompakten, aber vollstaendigen 2022-Fachlehrplan im Korridor der bereits geprueften Informatik-Laender."
+    }
+  },
+  "expectedTopicCodes": [
+    "ST-INF-SEKII-Q-OOP",
+    "ST-INF-SEKII-Q-DB",
+    "ST-INF-SEKII-Q-SE",
+    "ST-INF-SEKII-Q-CURRENT"
+  ],
+  "pipelineStatus": {
+    "currentStep": "MAPPING-3",
+    "steps": [
+      {
+        "id": "ORIGINALQUELLEN",
+        "label": "Originalquellen bereitgestellt",
+        "status": "complete",
+        "dependsOn": [],
+        "checks": [
+          {
+            "id": "official-source-document-present-st-informatik-sekii",
+            "label": "Amtlicher Sachsen-Anhalt-Fachlehrplan Informatik Gymnasium 2022 liegt lokal vor",
+            "passed": true,
+            "details": "curricula/DE/Gymnasium/input/ST/FLP_Informatik_Gym_01082022_swd.pdf"
+          }
+        ]
+      },
+      {
+        "id": "MAPPING-1",
+        "label": "Original-Lehrplanpassagen extrahiert",
+        "status": "complete",
+        "dependsOn": [
+          "ORIGINALQUELLEN"
+        ],
+        "checks": [
+          {
+            "id": "official-passages-extracted-st-informatik-sekii",
+            "label": "Lehrplanpassagen aus amtlicher Sachsen-Anhalt-Quelle extrahiert",
+            "passed": true,
+            "details": "4 Passagen aus Informatik Sekundarstufe II (Sachsen-Anhalt, Fachlehrplan Gymnasium 2022 Source-Extraction)."
+          },
+          {
+            "id": "source-extraction-not-legacy-st-informatik-sekii",
+            "label": "Source-Extraction basiert auf amtlichem PDF statt Legacy-Snapshot",
+            "passed": true,
+            "details": "curricula/DE/Gymnasium/input/ST/FLP_Informatik_Gym_01082022_swd.pdf"
+          }
+        ]
+      },
+      {
+        "id": "MAPPING-2",
+        "label": "Source-Ziele aus Lehrplanpassagen erstellt",
+        "status": "complete",
+        "dependsOn": [
+          "MAPPING-1"
+        ],
+        "checks": [
+          {
+            "id": "source-goals-present-st-informatik-sekii",
+            "label": "Source-Ziele aus amtlichen Kompetenzpassagen erzeugt",
+            "passed": true,
+            "details": "82 Source-Ziele."
+          },
+          {
+            "id": "source-goal-ids-unique-st-informatik-sekii",
+            "label": "Source-Ziel-IDs sind eindeutig",
+            "passed": true,
+            "details": "Doppelte IDs: -"
+          },
+          {
+            "id": "source-goals-passage-backed-st-informatik-sekii",
+            "label": "Jedes Source-Ziel referenziert eine Originalpassage",
+            "passed": true,
+            "details": "Ohne Passage: -"
+          }
+        ]
+      },
+      {
+        "id": "MAPPING-3",
+        "label": "Source-Ziele auf SkillPilot-Ziele gemappt",
+        "status": "complete",
+        "dependsOn": [
+          "MAPPING-2"
+        ],
+        "checks": [
+          {
+            "id": "m3-decisions-complete-st-informatik-sekii",
+            "label": "Alle Source-Ziele haben fachliche M3-Entscheidung",
+            "passed": true,
+            "details": "82/82 Source-Ziele reviewed; offen: 0."
+          },
+          {
+            "id": "m3-content-covered-st-informatik-sekii",
+            "label": "Alle Source-Ziele sind inhaltlich durch SkillPilot-Ziele abgedeckt",
+            "passed": true,
+            "details": "Abgedeckt: 82/82; verbleibend: 0 explizite Canonical-Gaps, 0 unreviewed."
+          }
+        ]
+      }
+    ]
+  },
+  "passages": [
+    {
+      "id": "de-st-informatik:st-inf-q-oop",
+      "topicCode": "ST-INF-SEKII-Q-OOP",
+      "title": "Qualifikationsphase Kurs 1: Objektorientiertes Modellieren",
+      "text": "1. Problemstellungen mit Anwendungsfalldiagrammen analysieren und dokumentieren\n2. Objekte, Eigenschaften, Operationen und Beziehungen erkennen und Klassen ableiten\n3. Prozesse mithilfe von Aktivitaets- oder Zustandsdiagrammen modellieren\n4. Klassen mit ihren Methoden in eine Programmiersprache implementieren\n5. Objekte erzeugen, in dynamischen Datenstrukturen verwalten, speichern und laden\n6. Kommunikation zwischen und innerhalb von Objekten organisieren\n7. Module und Bibliotheken in eigene Problemloesungen integrieren\n8. gewaehlte Abstraktion begruenden\n9. eigene Loesungen bewerten und weitere Arbeitsschritte ableiten\n10. gegebene Programme hinsichtlich ihrer Grundkonzepte analysieren\n11. einen objektorientierten Entwurf erstellen\n12. Geheimnisprinzip auf einfache Sachverhalte anwenden\n13. Vererbungskonzept von Klassen auf einfache Sachverhalte anwenden\n14. Probleme in Teilprobleme exemplarisch zerlegen\n15. UML-Diagramme als Kommunikationsmittel in der Gruppe nutzen\n16. objektorientierten Entwurf sprachlich und fachsprachlich praezise reflektieren\n17. Klassen und deren Beziehungen in UML darstellen\n18. Klassendefinitionen und Klassenbeschreibungen interpretieren\n19. Fehlermitteilungen interpretieren und mit Hilfesystemen Loesungsstrategien entwerfen\n20. Erzeugen und Entfernen von Objekten sowie Konstruktoren einordnen\n21. Parameterlisten von Methoden mit Wert- und Referenzparametern verwenden",
+      "page": 24,
+      "sourcePath": "curricula/DE/Gymnasium/input/ST/FLP_Informatik_Gym_01082022_swd.pdf",
+      "sourceUrl": "https://lisa.sachsen-anhalt.de/fileadmin/Bibliothek/Politik_und_Verwaltung/MK/LISA/Unterricht/Lehrplaene/Gym/Anpassung_2022/FLP_Informatik_Gym_01082022_swd.pdf",
+      "sourceGoalIds": [
+        "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-oop-001-anwendungsfalldiagramme-nutzen-55893ca7",
+        "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-oop-002-objektorientierte-analyse-durchfuehren-7407bbdb",
+        "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-oop-003-prozesse-mit-aktivitaets-oder-zustandsdiagrammen-modellieren-8b382b93",
+        "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-oop-004-klassen-implementieren-e0513b1a",
+        "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-oop-005-objekte-in-dynamischen-datenstrukturen-verwalten-48a17501",
+        "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-oop-006-objektkommunikation-organisieren-fae62898",
+        "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-oop-007-module-und-bibliotheken-integrieren-fa11f965",
+        "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-oop-008-abstraktion-begruenden-cfb51a12",
+        "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-oop-009-eigene-loesungen-bewerten-0ae3557e",
+        "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-oop-010-programme-auf-grundkonzepte-analysieren-df545a6d",
+        "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-oop-011-objektorientierten-entwurf-erstellen-b605ac0d",
+        "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-oop-012-geheimnisprinzip-anwenden-db140d3f",
+        "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-oop-013-vererbungskonzept-anwenden-628ed2c3",
+        "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-oop-014-probleme-in-teilprobleme-zerlegen-19458b49",
+        "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-oop-015-uml-in-gruppen-nutzen-1bf1b929",
+        "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-oop-016-oo-entwurf-fachsprachlich-reflektieren-85d5bf52",
+        "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-oop-017-klassen-und-beziehungen-in-uml-darstellen-bb837ff6",
+        "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-oop-018-klassendefinitionen-interpretieren-8adf0cea",
+        "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-oop-019-fehlermitteilungen-mit-hilfesystemen-bearbeiten-0ce9197e",
+        "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-oop-020-objekterzeugung-und-konstruktoren-nutzen-6ed63b3c",
+        "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-oop-021-parameterlisten-verwenden-db4ad75a"
+      ]
+    },
+    {
+      "id": "de-st-informatik:st-inf-q-db",
+      "topicCode": "ST-INF-SEKII-Q-DB",
+      "title": "Qualifikationsphase Kurs 2: Daten erfassen, strukturieren und verarbeiten",
+      "text": "1. Entitaeten, Attribute, Relationen und Kardinalitaeten ermitteln\n2. relationale Datenbankschemata unter Nutzung des ER-Modells entwerfen\n3. ein Entity-Relationship-Modell modifizieren\n4. Primaer- und Sekundaerschluessel bestimmen\n5. relationale Datenbankschemata bis zur dritten Normalform ueberfuehren\n6. eine Abfragesprache anwenden\n7. Daten rechtskonform erfassen und verarbeiten\n8. Funktionen von Datenbankmanagementsystemen exemplarisch begruenden\n9. Datenbankmodellierung und objektorientierte Modellierung methodisch vergleichen und bewerten\n10. Verwendung von Datenstrukturen begruenden\n11. Datenbankmodelle bewerten\n12. Schluesselattribute bewerten\n13. Daten in geeigneter Form strukturieren und verwalten\n14. Relationen zwischen Entitaeten erkennen und darstellen\n15. Entity-Relationship-Diagramme diskutieren und erstellen\n16. Datenbankmodellierung analysieren und erlaeutern\n17. Eigenschaften eines normalisierten Datenbankschemas erlaeutern\n18. Daten in verschiedenen Formen darstellen und interpretieren\n19. Entitaeten, Attribute und Beziehungen mit Kardinalitaeten in einem ER-Diagramm darstellen\n20. Loesch-, Einfuege- und Aktualisierungsanomalien erklaeren",
+      "page": 26,
+      "sourcePath": "curricula/DE/Gymnasium/input/ST/FLP_Informatik_Gym_01082022_swd.pdf",
+      "sourceUrl": "https://lisa.sachsen-anhalt.de/fileadmin/Bibliothek/Politik_und_Verwaltung/MK/LISA/Unterricht/Lehrplaene/Gym/Anpassung_2022/FLP_Informatik_Gym_01082022_swd.pdf",
+      "sourceGoalIds": [
+        "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-db-001-entitaeten-attribute-relationen-kardinalitaeten-ermitteln-d3a65e57",
+        "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-db-002-relationale-schemata-mit-er-modell-entwerfen-43ea3b2c",
+        "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-db-003-er-modell-modifizieren-860dca9b",
+        "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-db-004-primaer-und-sekundaerschluessel-bestimmen-d6e5e86f",
+        "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-db-005-bis-zur-dritten-normalform-normalisieren-b649c1fd",
+        "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-db-006-abfragesprache-anwenden-15244fa6",
+        "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-db-007-daten-rechtskonform-verarbeiten-f4b69608",
+        "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-db-008-dbms-funktionen-begruenden-0ffc0d57",
+        "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-db-009-datenbankmodellierung-und-oop-vergleichen-e70cf6df",
+        "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-db-010-datenstrukturen-begruenden-33bfc29d",
+        "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-db-011-datenbankmodelle-bewerten-996a6d43",
+        "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-db-012-schluesselattribute-bewerten-4fa7f692",
+        "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-db-013-daten-strukturiert-verwalten-ef10751b",
+        "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-db-014-relationen-darstellen-76009f37",
+        "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-db-015-er-diagramme-diskutieren-und-erstellen-8b1e2a91",
+        "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-db-016-datenbankmodellierung-analysieren-d08662c5",
+        "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-db-017-normalisiertes-schema-erlaeutern-c4d53334",
+        "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-db-018-datenformen-darstellen-und-interpretieren-468d993e",
+        "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-db-019-er-mit-kardinalitaeten-grafisch-darstellen-45b9f204",
+        "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-db-020-datenbankanomalien-erklaeren-477f254f"
+      ]
+    },
+    {
+      "id": "de-st-informatik:st-inf-q-se",
+      "topicCode": "ST-INF-SEKII-Q-SE",
+      "title": "Qualifikationsphase Kurs 3: Software Engineering und Projektarbeit",
+      "text": "1. selbststaendig Analysen im Rahmen eines Problemloesungszyklus durchfuehren\n2. aus Analysen benoetigte Objekte und Klassen ableiten\n3. Implementierung der Teilloesungen selbststaendig oder im Team realisieren\n4. Teilloesungen zu einer Gesamtloesung zusammenfuehren\n5. Teilloesungen sowie Endprodukt verifizieren und validieren\n6. Entscheidungen im Rahmen eines Problemloesungszyklus begruenden und bewerten\n7. objektorientierten Entwurf und Spezifikationen anhand von Qualitaetskriterien erlaeutern\n8. Nachhaltigkeit des Softwareprojektes abschaetzen und begruenden\n9. notwendige Abstraktionen selbststaendig vornehmen und begruenden\n10. Auswahl genutzter Algorithmen begruenden und hinsichtlich Zielfuehrung und Effizienz bewerten\n11. Datenhaltung in vernetzten Systemen unter Datenschutz und Datensicherheit beurteilen\n12. Problem in Teilprobleme zerlegen und notwendige Schnittstellen vereinbaren\n13. Teilprobleme so aufteilen, dass Synergieeffekte nutzbar werden\n14. Aspekte der Softwareergonomie umsetzen\n15. Projekte organisieren und bearbeiten\n16. Quellen zur Projektarbeit selbststaendig auswaehlen und rechtskonform nutzen\n17. Abstimmung mit dem Auftraggeber durchfuehren und Zielsetzungen fuer das Endprodukt ableiten\n18. Regeln zur kooperativen Loesung von Teilproblemen, Klassen, Schnittstellen und Zeitmanagement vereinbaren\n19. projektbegleitend Zwischenergebnisse dokumentieren, kommunizieren und Schlussfolgerungen ableiten\n20. Ablaeufe des Software-Engineerings mit Diagrammen veranschaulichen und interpretieren\n21. begleitende Projektdokumentation sprachlich differenziert und grafisch erstellen\n22. Methoden des Software-Engineerings nutzen\n23. Projektplanung und -organisation anwenden\n24. technischen Entwurf der Software erstellen\n25. Implementierung und Test im Projekt verbinden\n26. Qualitaetssicherung im Softwareprojekt einsetzen",
+      "page": 28,
+      "sourcePath": "curricula/DE/Gymnasium/input/ST/FLP_Informatik_Gym_01082022_swd.pdf",
+      "sourceUrl": "https://lisa.sachsen-anhalt.de/fileadmin/Bibliothek/Politik_und_Verwaltung/MK/LISA/Unterricht/Lehrplaene/Gym/Anpassung_2022/FLP_Informatik_Gym_01082022_swd.pdf",
+      "sourceGoalIds": [
+        "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-se-001-problemanalyse-selbststaendig-durchfuehren-4f4d88f8",
+        "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-se-002-objekte-und-klassen-aus-analyse-ableiten-59bd272c",
+        "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-se-003-teilloesungen-implementieren-8dff0725",
+        "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-se-004-teilloesungen-zusammenfuehren-fb5ae6ad",
+        "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-se-005-produkt-verifizieren-und-validieren-1d00c2ab",
+        "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-se-006-projektentscheidungen-bewerten-14e6b3ec",
+        "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-se-007-entwurf-und-spezifikationen-erlaeutern-76029053",
+        "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-se-008-nachhaltigkeit-von-software-abschaetzen-d13071dc",
+        "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-se-009-abstraktionen-vornehmen-6c5a360c",
+        "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-se-010-algorithmusauswahl-effizient-bewerten-230aae49",
+        "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-se-011-datenhaltung-in-vernetzten-systemen-beurteilen-5e563da6",
+        "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-se-012-schnittstellen-vereinbaren-a623e2a0",
+        "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-se-013-teilprobleme-arbeitsteilig-strukturieren-1a844d43",
+        "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-se-014-softwareergonomie-umsetzen-996066f8",
+        "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-se-015-projekt-organisieren-c1719aca",
+        "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-se-016-quellen-rechtskonform-nutzen-cd7e7c22",
+        "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-se-017-auftraggeberabstimmung-in-ziele-ueberfuehren-7592dd48",
+        "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-se-018-kooperationsregeln-vereinbaren-33a279dc",
+        "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-se-019-zwischenergebnisse-dokumentieren-37f9abc6",
+        "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-se-020-software-engineering-ablauf-diagrammatisch-darstellen-2f7e86f4",
+        "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-se-021-projektdokumentation-erstellen-0ff27e06",
+        "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-se-022-methoden-des-software-engineerings-kennen-bd7d01e4",
+        "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-se-023-projektplanung-und-organisation-anwenden-1c7ed4d7",
+        "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-se-024-technischen-entwurf-erstellen-2ba0300f",
+        "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-se-025-implementierung-und-test-verbinden-e2265695",
+        "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-se-026-qualitaetssicherung-einsetzen-eef6473e"
+      ]
+    },
+    {
+      "id": "de-st-informatik:st-inf-q-current",
+      "topicCode": "ST-INF-SEKII-Q-CURRENT",
+      "title": "Qualifikationsphase Kurs 4: Aktuelle Entwicklungen der Informatik im gesellschaftlichen Kontext",
+      "text": "1. wesentliche Aspekte komplexer Informatikinhalte erkennen und modellieren\n2. Chancen, Risiken und Missbrauchsmoeglichkeiten von Informatiksystemen beschreiben und bewerten\n3. Moeglichkeiten und Grenzen in einer von Informatiksystemen dominierten Welt erkennen und bewerten\n4. Potenziale der Digitalisierung im Sinne der Nachhaltigkeit erkennen, bewerten und Handlungsstrategien ableiten\n5. Informatiksysteme aus technischer, informatischer, oekologischer und sozialer Sicht analysieren\n6. Rueckschluesse auf eigenes Verhalten beim Einsatz von Informatiksystemen ziehen\n7. gesellschaftliche Folgen der Nutzung von Informatiksystemen differenziert diskutieren\n8. Handlungsstrategien fuer lebenslanges Lernen sowie soziale Integration und Teilhabe reflektieren\n9. Wechselwirkungen zwischen Informatiksystemen, Individuen, Gesellschaft und Umwelt darstellen\n10. aktuelle Informatiksysteme und Technikfolgenabschaetzung bearbeiten\n11. Gestaltung von Informatiksystemen als aktuelles Themenfeld bearbeiten\n12. virtuelle Welten, zum Beispiel 3D-Modellierung, einordnen\n13. Systeme der kuenstlichen Intelligenz und deren Anwendung bewerten\n14. soziale Netzwerke und kollaboratives Arbeiten analysieren\n15. Ressourcenverbrauch von Informatiksystemen bewerten",
+      "page": 30,
+      "sourcePath": "curricula/DE/Gymnasium/input/ST/FLP_Informatik_Gym_01082022_swd.pdf",
+      "sourceUrl": "https://lisa.sachsen-anhalt.de/fileadmin/Bibliothek/Politik_und_Verwaltung/MK/LISA/Unterricht/Lehrplaene/Gym/Anpassung_2022/FLP_Informatik_Gym_01082022_swd.pdf",
+      "sourceGoalIds": [
+        "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-current-001-komplexe-informatikinhalte-modellieren-7cda7e9d",
+        "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-current-002-chancen-risiken-missbrauch-bewerten-87b54a31",
+        "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-current-003-grenzen-informatikdominierter-welt-bewerten-4dc1392c",
+        "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-current-004-digitalisierung-und-nachhaltigkeit-bewerten-d2c28683",
+        "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-current-005-informatiksysteme-multidimensional-analysieren-a8fb644c",
+        "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-current-006-eigenes-verhalten-ableiten-a73c939a",
+        "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-current-007-gesellschaftliche-folgen-diskutieren-299332f2",
+        "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-current-008-lebenslanges-lernen-und-teilhabe-reflektieren-e61546ed",
+        "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-current-009-wechselwirkungen-darstellen-87543fbd",
+        "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-current-010-aktuelle-informatiksysteme-bewerten-97d52d31",
+        "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-current-011-informatiksysteme-gestalten-c7aba472",
+        "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-current-012-virtuelle-welten-einordnen-470fbd44",
+        "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-current-013-ki-systeme-und-anwendungen-bewerten-bbb93953",
+        "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-current-014-soziale-netzwerke-und-kollaboration-analysieren-cc7d419b",
+        "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-current-015-ressourcenverbrauch-von-informatiksystemen-bewerten-7a6f97bf"
+      ]
+    }
+  ],
+  "sourceGoals": [
+    {
+      "id": "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-oop-001-anwendungsfalldiagramme-nutzen-55893ca7",
+      "passageId": "de-st-informatik:st-inf-q-oop",
+      "topicCode": "ST-INF-SEKII-Q-OOP-01",
+      "bulletIndex": 1,
+      "title": "ST-INF-SEKII-Q-OOP-1: Anwendungsfalldiagramme nutzen",
+      "description": "Source-Ziel aus Qualifikationsphase Kurs 1: Objektorientiertes Modellieren: Problemstellungen mit Anwendungsfalldiagrammen analysieren und dokumentieren",
+      "sourceText": "Problemstellungen mit Anwendungsfalldiagrammen analysieren und dokumentieren",
+      "sourceSpan": "ST-INF-SEKII-Q-OOP.1",
+      "parentBulletText": "Problemstellungen mit Anwendungsfalldiagrammen analysieren und dokumentieren",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Qualifikationsphase Kurs 1: Objektorientiertes Modellieren, S. 24.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:ST-INF-SEKII-Q-OOP",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "Problemstellungen mit Anwendungsfalldiagrammen analysieren und dokumentieren",
+      "rawSourceSpan": "ST-INF-SEKII-Q-OOP.1",
+      "rawParentBulletText": "Problemstellungen mit Anwendungsfalldiagrammen analysieren und dokumentieren",
+      "canonicalTargetIds": [
+        "df1a7c0c-68c4-5262-846d-67f983d79697",
+        "b24084e1-bff3-5fc6-800d-ec6c024e52aa"
+      ]
+    },
+    {
+      "id": "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-oop-002-objektorientierte-analyse-durchfuehren-7407bbdb",
+      "passageId": "de-st-informatik:st-inf-q-oop",
+      "topicCode": "ST-INF-SEKII-Q-OOP-02",
+      "bulletIndex": 2,
+      "title": "ST-INF-SEKII-Q-OOP-2: Objektorientierte Analyse durchfuehren",
+      "description": "Source-Ziel aus Qualifikationsphase Kurs 1: Objektorientiertes Modellieren: Objekte, Eigenschaften, Operationen und Beziehungen erkennen und Klassen ableiten",
+      "sourceText": "Objekte, Eigenschaften, Operationen und Beziehungen erkennen und Klassen ableiten",
+      "sourceSpan": "ST-INF-SEKII-Q-OOP.2",
+      "parentBulletText": "Objekte, Eigenschaften, Operationen und Beziehungen erkennen und Klassen ableiten",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Qualifikationsphase Kurs 1: Objektorientiertes Modellieren, S. 24.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:ST-INF-SEKII-Q-OOP",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "Objekte, Eigenschaften, Operationen und Beziehungen erkennen und Klassen ableiten",
+      "rawSourceSpan": "ST-INF-SEKII-Q-OOP.2",
+      "rawParentBulletText": "Objekte, Eigenschaften, Operationen und Beziehungen erkennen und Klassen ableiten",
+      "canonicalTargetIds": [
+        "6c284640-1f28-4837-aabd-445656ad7f54",
+        "b24084e1-bff3-5fc6-800d-ec6c024e52aa"
+      ]
+    },
+    {
+      "id": "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-oop-003-prozesse-mit-aktivitaets-oder-zustandsdiagrammen-modellieren-8b382b93",
+      "passageId": "de-st-informatik:st-inf-q-oop",
+      "topicCode": "ST-INF-SEKII-Q-OOP-03",
+      "bulletIndex": 3,
+      "title": "ST-INF-SEKII-Q-OOP-3: Prozesse mit Aktivitaets- oder Zustandsdiagrammen modellieren",
+      "description": "Source-Ziel aus Qualifikationsphase Kurs 1: Objektorientiertes Modellieren: Prozesse mithilfe von Aktivitaets- oder Zustandsdiagrammen modellieren",
+      "sourceText": "Prozesse mithilfe von Aktivitaets- oder Zustandsdiagrammen modellieren",
+      "sourceSpan": "ST-INF-SEKII-Q-OOP.3",
+      "parentBulletText": "Prozesse mithilfe von Aktivitaets- oder Zustandsdiagrammen modellieren",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Qualifikationsphase Kurs 1: Objektorientiertes Modellieren, S. 24.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:ST-INF-SEKII-Q-OOP",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "Prozesse mithilfe von Aktivitaets- oder Zustandsdiagrammen modellieren",
+      "rawSourceSpan": "ST-INF-SEKII-Q-OOP.3",
+      "rawParentBulletText": "Prozesse mithilfe von Aktivitaets- oder Zustandsdiagrammen modellieren",
+      "canonicalTargetIds": [
+        "875cb53c-b48d-5b2b-8cb0-e20f27534f16",
+        "b24084e1-bff3-5fc6-800d-ec6c024e52aa"
+      ]
+    },
+    {
+      "id": "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-oop-004-klassen-implementieren-e0513b1a",
+      "passageId": "de-st-informatik:st-inf-q-oop",
+      "topicCode": "ST-INF-SEKII-Q-OOP-04",
+      "bulletIndex": 4,
+      "title": "ST-INF-SEKII-Q-OOP-4: Klassen implementieren",
+      "description": "Source-Ziel aus Qualifikationsphase Kurs 1: Objektorientiertes Modellieren: Klassen mit ihren Methoden in eine Programmiersprache implementieren",
+      "sourceText": "Klassen mit ihren Methoden in eine Programmiersprache implementieren",
+      "sourceSpan": "ST-INF-SEKII-Q-OOP.4",
+      "parentBulletText": "Klassen mit ihren Methoden in eine Programmiersprache implementieren",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Qualifikationsphase Kurs 1: Objektorientiertes Modellieren, S. 24.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:ST-INF-SEKII-Q-OOP",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "Klassen mit ihren Methoden in eine Programmiersprache implementieren",
+      "rawSourceSpan": "ST-INF-SEKII-Q-OOP.4",
+      "rawParentBulletText": "Klassen mit ihren Methoden in eine Programmiersprache implementieren",
+      "canonicalTargetIds": [
+        "6c284640-1f28-4837-aabd-445656ad7f54",
+        "5961bae4-87c0-52a3-b9cc-56a71b0d5abb"
+      ]
+    },
+    {
+      "id": "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-oop-005-objekte-in-dynamischen-datenstrukturen-verwalten-48a17501",
+      "passageId": "de-st-informatik:st-inf-q-oop",
+      "topicCode": "ST-INF-SEKII-Q-OOP-05",
+      "bulletIndex": 5,
+      "title": "ST-INF-SEKII-Q-OOP-5: Objekte in dynamischen Datenstrukturen verwalten",
+      "description": "Source-Ziel aus Qualifikationsphase Kurs 1: Objektorientiertes Modellieren: Objekte erzeugen, in dynamischen Datenstrukturen verwalten, speichern und laden",
+      "sourceText": "Objekte erzeugen, in dynamischen Datenstrukturen verwalten, speichern und laden",
+      "sourceSpan": "ST-INF-SEKII-Q-OOP.5",
+      "parentBulletText": "Objekte erzeugen, in dynamischen Datenstrukturen verwalten, speichern und laden",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Qualifikationsphase Kurs 1: Objektorientiertes Modellieren, S. 24.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:ST-INF-SEKII-Q-OOP",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "Objekte erzeugen, in dynamischen Datenstrukturen verwalten, speichern und laden",
+      "rawSourceSpan": "ST-INF-SEKII-Q-OOP.5",
+      "rawParentBulletText": "Objekte erzeugen, in dynamischen Datenstrukturen verwalten, speichern und laden",
+      "canonicalTargetIds": [
+        "cb2af3ef-c261-4d92-bc30-3eeb7a2af96a",
+        "8522727c-8793-57ed-b314-eeff6d17f652"
+      ]
+    },
+    {
+      "id": "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-oop-006-objektkommunikation-organisieren-fae62898",
+      "passageId": "de-st-informatik:st-inf-q-oop",
+      "topicCode": "ST-INF-SEKII-Q-OOP-06",
+      "bulletIndex": 6,
+      "title": "ST-INF-SEKII-Q-OOP-6: Objektkommunikation organisieren",
+      "description": "Source-Ziel aus Qualifikationsphase Kurs 1: Objektorientiertes Modellieren: Kommunikation zwischen und innerhalb von Objekten organisieren",
+      "sourceText": "Kommunikation zwischen und innerhalb von Objekten organisieren",
+      "sourceSpan": "ST-INF-SEKII-Q-OOP.6",
+      "parentBulletText": "Kommunikation zwischen und innerhalb von Objekten organisieren",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Qualifikationsphase Kurs 1: Objektorientiertes Modellieren, S. 24.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:ST-INF-SEKII-Q-OOP",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "Kommunikation zwischen und innerhalb von Objekten organisieren",
+      "rawSourceSpan": "ST-INF-SEKII-Q-OOP.6",
+      "rawParentBulletText": "Kommunikation zwischen und innerhalb von Objekten organisieren",
+      "canonicalTargetIds": [
+        "54d88684-d4e5-50d3-9453-d141af7316d2",
+        "b24084e1-bff3-5fc6-800d-ec6c024e52aa"
+      ]
+    },
+    {
+      "id": "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-oop-007-module-und-bibliotheken-integrieren-fa11f965",
+      "passageId": "de-st-informatik:st-inf-q-oop",
+      "topicCode": "ST-INF-SEKII-Q-OOP-07",
+      "bulletIndex": 7,
+      "title": "ST-INF-SEKII-Q-OOP-7: Module und Bibliotheken integrieren",
+      "description": "Source-Ziel aus Qualifikationsphase Kurs 1: Objektorientiertes Modellieren: Module und Bibliotheken in eigene Problemloesungen integrieren",
+      "sourceText": "Module und Bibliotheken in eigene Problemloesungen integrieren",
+      "sourceSpan": "ST-INF-SEKII-Q-OOP.7",
+      "parentBulletText": "Module und Bibliotheken in eigene Problemloesungen integrieren",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Qualifikationsphase Kurs 1: Objektorientiertes Modellieren, S. 24.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:ST-INF-SEKII-Q-OOP",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "Module und Bibliotheken in eigene Problemloesungen integrieren",
+      "rawSourceSpan": "ST-INF-SEKII-Q-OOP.7",
+      "rawParentBulletText": "Module und Bibliotheken in eigene Problemloesungen integrieren",
+      "canonicalTargetIds": [
+        "91230113-91b0-5a8b-94e4-4419014cfb58",
+        "8522727c-8793-57ed-b314-eeff6d17f652"
+      ]
+    },
+    {
+      "id": "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-oop-008-abstraktion-begruenden-cfb51a12",
+      "passageId": "de-st-informatik:st-inf-q-oop",
+      "topicCode": "ST-INF-SEKII-Q-OOP-08",
+      "bulletIndex": 8,
+      "title": "ST-INF-SEKII-Q-OOP-8: Abstraktion begruenden",
+      "description": "Source-Ziel aus Qualifikationsphase Kurs 1: Objektorientiertes Modellieren: gewaehlte Abstraktion begruenden",
+      "sourceText": "gewaehlte Abstraktion begruenden",
+      "sourceSpan": "ST-INF-SEKII-Q-OOP.8",
+      "parentBulletText": "gewaehlte Abstraktion begruenden",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Qualifikationsphase Kurs 1: Objektorientiertes Modellieren, S. 24.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:ST-INF-SEKII-Q-OOP",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "gewaehlte Abstraktion begruenden",
+      "rawSourceSpan": "ST-INF-SEKII-Q-OOP.8",
+      "rawParentBulletText": "gewaehlte Abstraktion begruenden",
+      "canonicalTargetIds": [
+        "c10e647b-2f51-5002-b352-830933a67214",
+        "b24084e1-bff3-5fc6-800d-ec6c024e52aa"
+      ]
+    },
+    {
+      "id": "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-oop-009-eigene-loesungen-bewerten-0ae3557e",
+      "passageId": "de-st-informatik:st-inf-q-oop",
+      "topicCode": "ST-INF-SEKII-Q-OOP-09",
+      "bulletIndex": 9,
+      "title": "ST-INF-SEKII-Q-OOP-9: Eigene Loesungen bewerten",
+      "description": "Source-Ziel aus Qualifikationsphase Kurs 1: Objektorientiertes Modellieren: eigene Loesungen bewerten und weitere Arbeitsschritte ableiten",
+      "sourceText": "eigene Loesungen bewerten und weitere Arbeitsschritte ableiten",
+      "sourceSpan": "ST-INF-SEKII-Q-OOP.9",
+      "parentBulletText": "eigene Loesungen bewerten und weitere Arbeitsschritte ableiten",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Qualifikationsphase Kurs 1: Objektorientiertes Modellieren, S. 24.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:ST-INF-SEKII-Q-OOP",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "eigene Loesungen bewerten und weitere Arbeitsschritte ableiten",
+      "rawSourceSpan": "ST-INF-SEKII-Q-OOP.9",
+      "rawParentBulletText": "eigene Loesungen bewerten und weitere Arbeitsschritte ableiten",
+      "canonicalTargetIds": [
+        "d5914986-fba8-56cc-99be-d9560ac7666d",
+        "0ef581d1-c033-5a98-a65a-48ea7b80136f"
+      ]
+    },
+    {
+      "id": "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-oop-010-programme-auf-grundkonzepte-analysieren-df545a6d",
+      "passageId": "de-st-informatik:st-inf-q-oop",
+      "topicCode": "ST-INF-SEKII-Q-OOP-10",
+      "bulletIndex": 10,
+      "title": "ST-INF-SEKII-Q-OOP-10: Programme auf Grundkonzepte analysieren",
+      "description": "Source-Ziel aus Qualifikationsphase Kurs 1: Objektorientiertes Modellieren: gegebene Programme hinsichtlich ihrer Grundkonzepte analysieren",
+      "sourceText": "gegebene Programme hinsichtlich ihrer Grundkonzepte analysieren",
+      "sourceSpan": "ST-INF-SEKII-Q-OOP.10",
+      "parentBulletText": "gegebene Programme hinsichtlich ihrer Grundkonzepte analysieren",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Qualifikationsphase Kurs 1: Objektorientiertes Modellieren, S. 24.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:ST-INF-SEKII-Q-OOP",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "gegebene Programme hinsichtlich ihrer Grundkonzepte analysieren",
+      "rawSourceSpan": "ST-INF-SEKII-Q-OOP.10",
+      "rawParentBulletText": "gegebene Programme hinsichtlich ihrer Grundkonzepte analysieren",
+      "canonicalTargetIds": [
+        "d5914986-fba8-56cc-99be-d9560ac7666d",
+        "54d88684-d4e5-50d3-9453-d141af7316d2"
+      ]
+    },
+    {
+      "id": "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-oop-011-objektorientierten-entwurf-erstellen-b605ac0d",
+      "passageId": "de-st-informatik:st-inf-q-oop",
+      "topicCode": "ST-INF-SEKII-Q-OOP-11",
+      "bulletIndex": 11,
+      "title": "ST-INF-SEKII-Q-OOP-11: Objektorientierten Entwurf erstellen",
+      "description": "Source-Ziel aus Qualifikationsphase Kurs 1: Objektorientiertes Modellieren: einen objektorientierten Entwurf erstellen",
+      "sourceText": "einen objektorientierten Entwurf erstellen",
+      "sourceSpan": "ST-INF-SEKII-Q-OOP.11",
+      "parentBulletText": "einen objektorientierten Entwurf erstellen",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Qualifikationsphase Kurs 1: Objektorientiertes Modellieren, S. 24.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:ST-INF-SEKII-Q-OOP",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "einen objektorientierten Entwurf erstellen",
+      "rawSourceSpan": "ST-INF-SEKII-Q-OOP.11",
+      "rawParentBulletText": "einen objektorientierten Entwurf erstellen",
+      "canonicalTargetIds": [
+        "b24084e1-bff3-5fc6-800d-ec6c024e52aa",
+        "54d88684-d4e5-50d3-9453-d141af7316d2"
+      ]
+    },
+    {
+      "id": "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-oop-012-geheimnisprinzip-anwenden-db140d3f",
+      "passageId": "de-st-informatik:st-inf-q-oop",
+      "topicCode": "ST-INF-SEKII-Q-OOP-12",
+      "bulletIndex": 12,
+      "title": "ST-INF-SEKII-Q-OOP-12: Geheimnisprinzip anwenden",
+      "description": "Source-Ziel aus Qualifikationsphase Kurs 1: Objektorientiertes Modellieren: Geheimnisprinzip auf einfache Sachverhalte anwenden",
+      "sourceText": "Geheimnisprinzip auf einfache Sachverhalte anwenden",
+      "sourceSpan": "ST-INF-SEKII-Q-OOP.12",
+      "parentBulletText": "Geheimnisprinzip auf einfache Sachverhalte anwenden",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Qualifikationsphase Kurs 1: Objektorientiertes Modellieren, S. 24.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:ST-INF-SEKII-Q-OOP",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "Geheimnisprinzip auf einfache Sachverhalte anwenden",
+      "rawSourceSpan": "ST-INF-SEKII-Q-OOP.12",
+      "rawParentBulletText": "Geheimnisprinzip auf einfache Sachverhalte anwenden",
+      "canonicalTargetIds": [
+        "1c1c2576-3e02-5928-8c28-f3aaf528ae55",
+        "54d88684-d4e5-50d3-9453-d141af7316d2"
+      ]
+    },
+    {
+      "id": "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-oop-013-vererbungskonzept-anwenden-628ed2c3",
+      "passageId": "de-st-informatik:st-inf-q-oop",
+      "topicCode": "ST-INF-SEKII-Q-OOP-13",
+      "bulletIndex": 13,
+      "title": "ST-INF-SEKII-Q-OOP-13: Vererbungskonzept anwenden",
+      "description": "Source-Ziel aus Qualifikationsphase Kurs 1: Objektorientiertes Modellieren: Vererbungskonzept von Klassen auf einfache Sachverhalte anwenden",
+      "sourceText": "Vererbungskonzept von Klassen auf einfache Sachverhalte anwenden",
+      "sourceSpan": "ST-INF-SEKII-Q-OOP.13",
+      "parentBulletText": "Vererbungskonzept von Klassen auf einfache Sachverhalte anwenden",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Qualifikationsphase Kurs 1: Objektorientiertes Modellieren, S. 24.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:ST-INF-SEKII-Q-OOP",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "Vererbungskonzept von Klassen auf einfache Sachverhalte anwenden",
+      "rawSourceSpan": "ST-INF-SEKII-Q-OOP.13",
+      "rawParentBulletText": "Vererbungskonzept von Klassen auf einfache Sachverhalte anwenden",
+      "canonicalTargetIds": [
+        "814c7112-f2e7-5719-8896-765d7063e5ff"
+      ]
+    },
+    {
+      "id": "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-oop-014-probleme-in-teilprobleme-zerlegen-19458b49",
+      "passageId": "de-st-informatik:st-inf-q-oop",
+      "topicCode": "ST-INF-SEKII-Q-OOP-14",
+      "bulletIndex": 14,
+      "title": "ST-INF-SEKII-Q-OOP-14: Probleme in Teilprobleme zerlegen",
+      "description": "Source-Ziel aus Qualifikationsphase Kurs 1: Objektorientiertes Modellieren: Probleme in Teilprobleme exemplarisch zerlegen",
+      "sourceText": "Probleme in Teilprobleme exemplarisch zerlegen",
+      "sourceSpan": "ST-INF-SEKII-Q-OOP.14",
+      "parentBulletText": "Probleme in Teilprobleme exemplarisch zerlegen",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Qualifikationsphase Kurs 1: Objektorientiertes Modellieren, S. 24.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:ST-INF-SEKII-Q-OOP",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "Probleme in Teilprobleme exemplarisch zerlegen",
+      "rawSourceSpan": "ST-INF-SEKII-Q-OOP.14",
+      "rawParentBulletText": "Probleme in Teilprobleme exemplarisch zerlegen",
+      "canonicalTargetIds": [
+        "d5056ca3-2a3d-5145-a28d-29038038a77f",
+        "8d21085b-9780-599e-ba0e-ccc0c31a5f01"
+      ]
+    },
+    {
+      "id": "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-oop-015-uml-in-gruppen-nutzen-1bf1b929",
+      "passageId": "de-st-informatik:st-inf-q-oop",
+      "topicCode": "ST-INF-SEKII-Q-OOP-15",
+      "bulletIndex": 15,
+      "title": "ST-INF-SEKII-Q-OOP-15: UML in Gruppen nutzen",
+      "description": "Source-Ziel aus Qualifikationsphase Kurs 1: Objektorientiertes Modellieren: UML-Diagramme als Kommunikationsmittel in der Gruppe nutzen",
+      "sourceText": "UML-Diagramme als Kommunikationsmittel in der Gruppe nutzen",
+      "sourceSpan": "ST-INF-SEKII-Q-OOP.15",
+      "parentBulletText": "UML-Diagramme als Kommunikationsmittel in der Gruppe nutzen",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Qualifikationsphase Kurs 1: Objektorientiertes Modellieren, S. 24.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:ST-INF-SEKII-Q-OOP",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "UML-Diagramme als Kommunikationsmittel in der Gruppe nutzen",
+      "rawSourceSpan": "ST-INF-SEKII-Q-OOP.15",
+      "rawParentBulletText": "UML-Diagramme als Kommunikationsmittel in der Gruppe nutzen",
+      "canonicalTargetIds": [
+        "b24084e1-bff3-5fc6-800d-ec6c024e52aa",
+        "f81be4d3-2445-54aa-b17e-2a27466e7e0d"
+      ]
+    },
+    {
+      "id": "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-oop-016-oo-entwurf-fachsprachlich-reflektieren-85d5bf52",
+      "passageId": "de-st-informatik:st-inf-q-oop",
+      "topicCode": "ST-INF-SEKII-Q-OOP-16",
+      "bulletIndex": 16,
+      "title": "ST-INF-SEKII-Q-OOP-16: OO-Entwurf fachsprachlich reflektieren",
+      "description": "Source-Ziel aus Qualifikationsphase Kurs 1: Objektorientiertes Modellieren: objektorientierten Entwurf sprachlich und fachsprachlich praezise reflektieren",
+      "sourceText": "objektorientierten Entwurf sprachlich und fachsprachlich praezise reflektieren",
+      "sourceSpan": "ST-INF-SEKII-Q-OOP.16",
+      "parentBulletText": "objektorientierten Entwurf sprachlich und fachsprachlich praezise reflektieren",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Qualifikationsphase Kurs 1: Objektorientiertes Modellieren, S. 24.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:ST-INF-SEKII-Q-OOP",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "objektorientierten Entwurf sprachlich und fachsprachlich praezise reflektieren",
+      "rawSourceSpan": "ST-INF-SEKII-Q-OOP.16",
+      "rawParentBulletText": "objektorientierten Entwurf sprachlich und fachsprachlich praezise reflektieren",
+      "canonicalTargetIds": [
+        "bf23fafe-423d-561a-b832-cb25a327a508",
+        "b24084e1-bff3-5fc6-800d-ec6c024e52aa"
+      ]
+    },
+    {
+      "id": "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-oop-017-klassen-und-beziehungen-in-uml-darstellen-bb837ff6",
+      "passageId": "de-st-informatik:st-inf-q-oop",
+      "topicCode": "ST-INF-SEKII-Q-OOP-17",
+      "bulletIndex": 17,
+      "title": "ST-INF-SEKII-Q-OOP-17: Klassen und Beziehungen in UML darstellen",
+      "description": "Source-Ziel aus Qualifikationsphase Kurs 1: Objektorientiertes Modellieren: Klassen und deren Beziehungen in UML darstellen",
+      "sourceText": "Klassen und deren Beziehungen in UML darstellen",
+      "sourceSpan": "ST-INF-SEKII-Q-OOP.17",
+      "parentBulletText": "Klassen und deren Beziehungen in UML darstellen",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Qualifikationsphase Kurs 1: Objektorientiertes Modellieren, S. 24.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:ST-INF-SEKII-Q-OOP",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "Klassen und deren Beziehungen in UML darstellen",
+      "rawSourceSpan": "ST-INF-SEKII-Q-OOP.17",
+      "rawParentBulletText": "Klassen und deren Beziehungen in UML darstellen",
+      "canonicalTargetIds": [
+        "b24084e1-bff3-5fc6-800d-ec6c024e52aa",
+        "84af2e26-45c9-5075-80f7-7c6f37847e9d"
+      ]
+    },
+    {
+      "id": "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-oop-018-klassendefinitionen-interpretieren-8adf0cea",
+      "passageId": "de-st-informatik:st-inf-q-oop",
+      "topicCode": "ST-INF-SEKII-Q-OOP-18",
+      "bulletIndex": 18,
+      "title": "ST-INF-SEKII-Q-OOP-18: Klassendefinitionen interpretieren",
+      "description": "Source-Ziel aus Qualifikationsphase Kurs 1: Objektorientiertes Modellieren: Klassendefinitionen und Klassenbeschreibungen interpretieren",
+      "sourceText": "Klassendefinitionen und Klassenbeschreibungen interpretieren",
+      "sourceSpan": "ST-INF-SEKII-Q-OOP.18",
+      "parentBulletText": "Klassendefinitionen und Klassenbeschreibungen interpretieren",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Qualifikationsphase Kurs 1: Objektorientiertes Modellieren, S. 24.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:ST-INF-SEKII-Q-OOP",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "Klassendefinitionen und Klassenbeschreibungen interpretieren",
+      "rawSourceSpan": "ST-INF-SEKII-Q-OOP.18",
+      "rawParentBulletText": "Klassendefinitionen und Klassenbeschreibungen interpretieren",
+      "canonicalTargetIds": [
+        "6c284640-1f28-4837-aabd-445656ad7f54",
+        "b24084e1-bff3-5fc6-800d-ec6c024e52aa"
+      ]
+    },
+    {
+      "id": "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-oop-019-fehlermitteilungen-mit-hilfesystemen-bearbeiten-0ce9197e",
+      "passageId": "de-st-informatik:st-inf-q-oop",
+      "topicCode": "ST-INF-SEKII-Q-OOP-19",
+      "bulletIndex": 19,
+      "title": "ST-INF-SEKII-Q-OOP-19: Fehlermitteilungen mit Hilfesystemen bearbeiten",
+      "description": "Source-Ziel aus Qualifikationsphase Kurs 1: Objektorientiertes Modellieren: Fehlermitteilungen interpretieren und mit Hilfesystemen Loesungsstrategien entwerfen",
+      "sourceText": "Fehlermitteilungen interpretieren und mit Hilfesystemen Loesungsstrategien entwerfen",
+      "sourceSpan": "ST-INF-SEKII-Q-OOP.19",
+      "parentBulletText": "Fehlermitteilungen interpretieren und mit Hilfesystemen Loesungsstrategien entwerfen",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Qualifikationsphase Kurs 1: Objektorientiertes Modellieren, S. 24.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:ST-INF-SEKII-Q-OOP",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "Fehlermitteilungen interpretieren und mit Hilfesystemen Loesungsstrategien entwerfen",
+      "rawSourceSpan": "ST-INF-SEKII-Q-OOP.19",
+      "rawParentBulletText": "Fehlermitteilungen interpretieren und mit Hilfesystemen Loesungsstrategien entwerfen",
+      "canonicalTargetIds": [
+        "d5914986-fba8-56cc-99be-d9560ac7666d",
+        "df0210bf-735b-54f8-8a1b-8dfca5598ff1"
+      ]
+    },
+    {
+      "id": "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-oop-020-objekterzeugung-und-konstruktoren-nutzen-6ed63b3c",
+      "passageId": "de-st-informatik:st-inf-q-oop",
+      "topicCode": "ST-INF-SEKII-Q-OOP-20",
+      "bulletIndex": 20,
+      "title": "ST-INF-SEKII-Q-OOP-20: Objekterzeugung und Konstruktoren nutzen",
+      "description": "Source-Ziel aus Qualifikationsphase Kurs 1: Objektorientiertes Modellieren: Erzeugen und Entfernen von Objekten sowie Konstruktoren einordnen",
+      "sourceText": "Erzeugen und Entfernen von Objekten sowie Konstruktoren einordnen",
+      "sourceSpan": "ST-INF-SEKII-Q-OOP.20",
+      "parentBulletText": "Erzeugen und Entfernen von Objekten sowie Konstruktoren einordnen",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Qualifikationsphase Kurs 1: Objektorientiertes Modellieren, S. 24.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:ST-INF-SEKII-Q-OOP",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "Erzeugen und Entfernen von Objekten sowie Konstruktoren einordnen",
+      "rawSourceSpan": "ST-INF-SEKII-Q-OOP.20",
+      "rawParentBulletText": "Erzeugen und Entfernen von Objekten sowie Konstruktoren einordnen",
+      "canonicalTargetIds": [
+        "cb2af3ef-c261-4d92-bc30-3eeb7a2af96a",
+        "c5d04946-497e-5ede-84ec-2d019138e3a0"
+      ]
+    },
+    {
+      "id": "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-oop-021-parameterlisten-verwenden-db4ad75a",
+      "passageId": "de-st-informatik:st-inf-q-oop",
+      "topicCode": "ST-INF-SEKII-Q-OOP-21",
+      "bulletIndex": 21,
+      "title": "ST-INF-SEKII-Q-OOP-21: Parameterlisten verwenden",
+      "description": "Source-Ziel aus Qualifikationsphase Kurs 1: Objektorientiertes Modellieren: Parameterlisten von Methoden mit Wert- und Referenzparametern verwenden",
+      "sourceText": "Parameterlisten von Methoden mit Wert- und Referenzparametern verwenden",
+      "sourceSpan": "ST-INF-SEKII-Q-OOP.21",
+      "parentBulletText": "Parameterlisten von Methoden mit Wert- und Referenzparametern verwenden",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Qualifikationsphase Kurs 1: Objektorientiertes Modellieren, S. 24.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:ST-INF-SEKII-Q-OOP",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "Parameterlisten von Methoden mit Wert- und Referenzparametern verwenden",
+      "rawSourceSpan": "ST-INF-SEKII-Q-OOP.21",
+      "rawParentBulletText": "Parameterlisten von Methoden mit Wert- und Referenzparametern verwenden",
+      "canonicalTargetIds": [
+        "5961bae4-87c0-52a3-b9cc-56a71b0d5abb"
+      ]
+    },
+    {
+      "id": "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-db-001-entitaeten-attribute-relationen-kardinalitaeten-ermitteln-d3a65e57",
+      "passageId": "de-st-informatik:st-inf-q-db",
+      "topicCode": "ST-INF-SEKII-Q-DB-01",
+      "bulletIndex": 1,
+      "title": "ST-INF-SEKII-Q-DB-1: Entitaeten Attribute Relationen Kardinalitaeten ermitteln",
+      "description": "Source-Ziel aus Qualifikationsphase Kurs 2: Daten erfassen, strukturieren und verarbeiten: Entitaeten, Attribute, Relationen und Kardinalitaeten ermitteln",
+      "sourceText": "Entitaeten, Attribute, Relationen und Kardinalitaeten ermitteln",
+      "sourceSpan": "ST-INF-SEKII-Q-DB.1",
+      "parentBulletText": "Entitaeten, Attribute, Relationen und Kardinalitaeten ermitteln",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Qualifikationsphase Kurs 2: Daten erfassen, strukturieren und verarbeiten, S. 26.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:ST-INF-SEKII-Q-DB",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "Entitaeten, Attribute, Relationen und Kardinalitaeten ermitteln",
+      "rawSourceSpan": "ST-INF-SEKII-Q-DB.1",
+      "rawParentBulletText": "Entitaeten, Attribute, Relationen und Kardinalitaeten ermitteln",
+      "canonicalTargetIds": [
+        "2cf7589d-5451-5239-badf-1ebb981a2f20",
+        "1eb09d02-9123-50e2-bfee-e2f0b5b23564"
+      ]
+    },
+    {
+      "id": "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-db-002-relationale-schemata-mit-er-modell-entwerfen-43ea3b2c",
+      "passageId": "de-st-informatik:st-inf-q-db",
+      "topicCode": "ST-INF-SEKII-Q-DB-02",
+      "bulletIndex": 2,
+      "title": "ST-INF-SEKII-Q-DB-2: Relationale Schemata mit ER-Modell entwerfen",
+      "description": "Source-Ziel aus Qualifikationsphase Kurs 2: Daten erfassen, strukturieren und verarbeiten: relationale Datenbankschemata unter Nutzung des ER-Modells entwerfen",
+      "sourceText": "relationale Datenbankschemata unter Nutzung des ER-Modells entwerfen",
+      "sourceSpan": "ST-INF-SEKII-Q-DB.2",
+      "parentBulletText": "relationale Datenbankschemata unter Nutzung des ER-Modells entwerfen",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Qualifikationsphase Kurs 2: Daten erfassen, strukturieren und verarbeiten, S. 26.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:ST-INF-SEKII-Q-DB",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "relationale Datenbankschemata unter Nutzung des ER-Modells entwerfen",
+      "rawSourceSpan": "ST-INF-SEKII-Q-DB.2",
+      "rawParentBulletText": "relationale Datenbankschemata unter Nutzung des ER-Modells entwerfen",
+      "canonicalTargetIds": [
+        "2cf7589d-5451-5239-badf-1ebb981a2f20",
+        "42ad3e11-9e31-5e15-b65c-b611ce1537ce"
+      ]
+    },
+    {
+      "id": "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-db-003-er-modell-modifizieren-860dca9b",
+      "passageId": "de-st-informatik:st-inf-q-db",
+      "topicCode": "ST-INF-SEKII-Q-DB-03",
+      "bulletIndex": 3,
+      "title": "ST-INF-SEKII-Q-DB-3: ER-Modell modifizieren",
+      "description": "Source-Ziel aus Qualifikationsphase Kurs 2: Daten erfassen, strukturieren und verarbeiten: ein Entity-Relationship-Modell modifizieren",
+      "sourceText": "ein Entity-Relationship-Modell modifizieren",
+      "sourceSpan": "ST-INF-SEKII-Q-DB.3",
+      "parentBulletText": "ein Entity-Relationship-Modell modifizieren",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Qualifikationsphase Kurs 2: Daten erfassen, strukturieren und verarbeiten, S. 26.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:ST-INF-SEKII-Q-DB",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "ein Entity-Relationship-Modell modifizieren",
+      "rawSourceSpan": "ST-INF-SEKII-Q-DB.3",
+      "rawParentBulletText": "ein Entity-Relationship-Modell modifizieren",
+      "canonicalTargetIds": [
+        "2cf7589d-5451-5239-badf-1ebb981a2f20"
+      ]
+    },
+    {
+      "id": "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-db-004-primaer-und-sekundaerschluessel-bestimmen-d6e5e86f",
+      "passageId": "de-st-informatik:st-inf-q-db",
+      "topicCode": "ST-INF-SEKII-Q-DB-04",
+      "bulletIndex": 4,
+      "title": "ST-INF-SEKII-Q-DB-4: Primaer- und Sekundaerschluessel bestimmen",
+      "description": "Source-Ziel aus Qualifikationsphase Kurs 2: Daten erfassen, strukturieren und verarbeiten: Primaer- und Sekundaerschluessel bestimmen",
+      "sourceText": "Primaer- und Sekundaerschluessel bestimmen",
+      "sourceSpan": "ST-INF-SEKII-Q-DB.4",
+      "parentBulletText": "Primaer- und Sekundaerschluessel bestimmen",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Qualifikationsphase Kurs 2: Daten erfassen, strukturieren und verarbeiten, S. 26.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:ST-INF-SEKII-Q-DB",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "Primaer- und Sekundaerschluessel bestimmen",
+      "rawSourceSpan": "ST-INF-SEKII-Q-DB.4",
+      "rawParentBulletText": "Primaer- und Sekundaerschluessel bestimmen",
+      "canonicalTargetIds": [
+        "42ad3e11-9e31-5e15-b65c-b611ce1537ce"
+      ]
+    },
+    {
+      "id": "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-db-005-bis-zur-dritten-normalform-normalisieren-b649c1fd",
+      "passageId": "de-st-informatik:st-inf-q-db",
+      "topicCode": "ST-INF-SEKII-Q-DB-05",
+      "bulletIndex": 5,
+      "title": "ST-INF-SEKII-Q-DB-5: Bis zur dritten Normalform normalisieren",
+      "description": "Source-Ziel aus Qualifikationsphase Kurs 2: Daten erfassen, strukturieren und verarbeiten: relationale Datenbankschemata bis zur dritten Normalform ueberfuehren",
+      "sourceText": "relationale Datenbankschemata bis zur dritten Normalform ueberfuehren",
+      "sourceSpan": "ST-INF-SEKII-Q-DB.5",
+      "parentBulletText": "relationale Datenbankschemata bis zur dritten Normalform ueberfuehren",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Qualifikationsphase Kurs 2: Daten erfassen, strukturieren und verarbeiten, S. 26.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:ST-INF-SEKII-Q-DB",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "relationale Datenbankschemata bis zur dritten Normalform ueberfuehren",
+      "rawSourceSpan": "ST-INF-SEKII-Q-DB.5",
+      "rawParentBulletText": "relationale Datenbankschemata bis zur dritten Normalform ueberfuehren",
+      "canonicalTargetIds": [
+        "46b4ebba-dbaf-5f5e-be48-7a1dd72bd471"
+      ]
+    },
+    {
+      "id": "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-db-006-abfragesprache-anwenden-15244fa6",
+      "passageId": "de-st-informatik:st-inf-q-db",
+      "topicCode": "ST-INF-SEKII-Q-DB-06",
+      "bulletIndex": 6,
+      "title": "ST-INF-SEKII-Q-DB-6: Abfragesprache anwenden",
+      "description": "Source-Ziel aus Qualifikationsphase Kurs 2: Daten erfassen, strukturieren und verarbeiten: eine Abfragesprache anwenden",
+      "sourceText": "eine Abfragesprache anwenden",
+      "sourceSpan": "ST-INF-SEKII-Q-DB.6",
+      "parentBulletText": "eine Abfragesprache anwenden",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Qualifikationsphase Kurs 2: Daten erfassen, strukturieren und verarbeiten, S. 26.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:ST-INF-SEKII-Q-DB",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "eine Abfragesprache anwenden",
+      "rawSourceSpan": "ST-INF-SEKII-Q-DB.6",
+      "rawParentBulletText": "eine Abfragesprache anwenden",
+      "canonicalTargetIds": [
+        "fd1f5c79-20e6-5829-98c1-0909e047cad4",
+        "fdfa87be-06ca-5c54-9950-d8408dba8e38",
+        "b5926cbc-4bd6-589d-987e-ba468ccebc69"
+      ]
+    },
+    {
+      "id": "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-db-007-daten-rechtskonform-verarbeiten-f4b69608",
+      "passageId": "de-st-informatik:st-inf-q-db",
+      "topicCode": "ST-INF-SEKII-Q-DB-07",
+      "bulletIndex": 7,
+      "title": "ST-INF-SEKII-Q-DB-7: Daten rechtskonform verarbeiten",
+      "description": "Source-Ziel aus Qualifikationsphase Kurs 2: Daten erfassen, strukturieren und verarbeiten: Daten rechtskonform erfassen und verarbeiten",
+      "sourceText": "Daten rechtskonform erfassen und verarbeiten",
+      "sourceSpan": "ST-INF-SEKII-Q-DB.7",
+      "parentBulletText": "Daten rechtskonform erfassen und verarbeiten",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Qualifikationsphase Kurs 2: Daten erfassen, strukturieren und verarbeiten, S. 26.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:ST-INF-SEKII-Q-DB",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "Daten rechtskonform erfassen und verarbeiten",
+      "rawSourceSpan": "ST-INF-SEKII-Q-DB.7",
+      "rawParentBulletText": "Daten rechtskonform erfassen und verarbeiten",
+      "canonicalTargetIds": [
+        "71fe327a-9677-5348-a405-fba0dbd302d7"
+      ]
+    },
+    {
+      "id": "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-db-008-dbms-funktionen-begruenden-0ffc0d57",
+      "passageId": "de-st-informatik:st-inf-q-db",
+      "topicCode": "ST-INF-SEKII-Q-DB-08",
+      "bulletIndex": 8,
+      "title": "ST-INF-SEKII-Q-DB-8: DBMS-Funktionen begruenden",
+      "description": "Source-Ziel aus Qualifikationsphase Kurs 2: Daten erfassen, strukturieren und verarbeiten: Funktionen von Datenbankmanagementsystemen exemplarisch begruenden",
+      "sourceText": "Funktionen von Datenbankmanagementsystemen exemplarisch begruenden",
+      "sourceSpan": "ST-INF-SEKII-Q-DB.8",
+      "parentBulletText": "Funktionen von Datenbankmanagementsystemen exemplarisch begruenden",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Qualifikationsphase Kurs 2: Daten erfassen, strukturieren und verarbeiten, S. 26.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:ST-INF-SEKII-Q-DB",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "Funktionen von Datenbankmanagementsystemen exemplarisch begruenden",
+      "rawSourceSpan": "ST-INF-SEKII-Q-DB.8",
+      "rawParentBulletText": "Funktionen von Datenbankmanagementsystemen exemplarisch begruenden",
+      "canonicalTargetIds": [
+        "2cf7589d-5451-5239-badf-1ebb981a2f20",
+        "42ad3e11-9e31-5e15-b65c-b611ce1537ce"
+      ]
+    },
+    {
+      "id": "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-db-009-datenbankmodellierung-und-oop-vergleichen-e70cf6df",
+      "passageId": "de-st-informatik:st-inf-q-db",
+      "topicCode": "ST-INF-SEKII-Q-DB-09",
+      "bulletIndex": 9,
+      "title": "ST-INF-SEKII-Q-DB-9: Datenbankmodellierung und OOP vergleichen",
+      "description": "Source-Ziel aus Qualifikationsphase Kurs 2: Daten erfassen, strukturieren und verarbeiten: Datenbankmodellierung und objektorientierte Modellierung methodisch vergleichen und bewerten",
+      "sourceText": "Datenbankmodellierung und objektorientierte Modellierung methodisch vergleichen und bewerten",
+      "sourceSpan": "ST-INF-SEKII-Q-DB.9",
+      "parentBulletText": "Datenbankmodellierung und objektorientierte Modellierung methodisch vergleichen und bewerten",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Qualifikationsphase Kurs 2: Daten erfassen, strukturieren und verarbeiten, S. 26.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:ST-INF-SEKII-Q-DB",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "Datenbankmodellierung und objektorientierte Modellierung methodisch vergleichen und bewerten",
+      "rawSourceSpan": "ST-INF-SEKII-Q-DB.9",
+      "rawParentBulletText": "Datenbankmodellierung und objektorientierte Modellierung methodisch vergleichen und bewerten",
+      "canonicalTargetIds": [
+        "2cf7589d-5451-5239-badf-1ebb981a2f20",
+        "b24084e1-bff3-5fc6-800d-ec6c024e52aa"
+      ]
+    },
+    {
+      "id": "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-db-010-datenstrukturen-begruenden-33bfc29d",
+      "passageId": "de-st-informatik:st-inf-q-db",
+      "topicCode": "ST-INF-SEKII-Q-DB-10",
+      "bulletIndex": 10,
+      "title": "ST-INF-SEKII-Q-DB-10: Datenstrukturen begruenden",
+      "description": "Source-Ziel aus Qualifikationsphase Kurs 2: Daten erfassen, strukturieren und verarbeiten: Verwendung von Datenstrukturen begruenden",
+      "sourceText": "Verwendung von Datenstrukturen begruenden",
+      "sourceSpan": "ST-INF-SEKII-Q-DB.10",
+      "parentBulletText": "Verwendung von Datenstrukturen begruenden",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Qualifikationsphase Kurs 2: Daten erfassen, strukturieren und verarbeiten, S. 26.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:ST-INF-SEKII-Q-DB",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "Verwendung von Datenstrukturen begruenden",
+      "rawSourceSpan": "ST-INF-SEKII-Q-DB.10",
+      "rawParentBulletText": "Verwendung von Datenstrukturen begruenden",
+      "canonicalTargetIds": [
+        "8522727c-8793-57ed-b314-eeff6d17f652",
+        "42ad3e11-9e31-5e15-b65c-b611ce1537ce"
+      ]
+    },
+    {
+      "id": "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-db-011-datenbankmodelle-bewerten-996a6d43",
+      "passageId": "de-st-informatik:st-inf-q-db",
+      "topicCode": "ST-INF-SEKII-Q-DB-11",
+      "bulletIndex": 11,
+      "title": "ST-INF-SEKII-Q-DB-11: Datenbankmodelle bewerten",
+      "description": "Source-Ziel aus Qualifikationsphase Kurs 2: Daten erfassen, strukturieren und verarbeiten: Datenbankmodelle bewerten",
+      "sourceText": "Datenbankmodelle bewerten",
+      "sourceSpan": "ST-INF-SEKII-Q-DB.11",
+      "parentBulletText": "Datenbankmodelle bewerten",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Qualifikationsphase Kurs 2: Daten erfassen, strukturieren und verarbeiten, S. 26.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:ST-INF-SEKII-Q-DB",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "Datenbankmodelle bewerten",
+      "rawSourceSpan": "ST-INF-SEKII-Q-DB.11",
+      "rawParentBulletText": "Datenbankmodelle bewerten",
+      "canonicalTargetIds": [
+        "2cf7589d-5451-5239-badf-1ebb981a2f20",
+        "46b4ebba-dbaf-5f5e-be48-7a1dd72bd471"
+      ]
+    },
+    {
+      "id": "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-db-012-schluesselattribute-bewerten-4fa7f692",
+      "passageId": "de-st-informatik:st-inf-q-db",
+      "topicCode": "ST-INF-SEKII-Q-DB-12",
+      "bulletIndex": 12,
+      "title": "ST-INF-SEKII-Q-DB-12: Schluesselattribute bewerten",
+      "description": "Source-Ziel aus Qualifikationsphase Kurs 2: Daten erfassen, strukturieren und verarbeiten: Schluesselattribute bewerten",
+      "sourceText": "Schluesselattribute bewerten",
+      "sourceSpan": "ST-INF-SEKII-Q-DB.12",
+      "parentBulletText": "Schluesselattribute bewerten",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Qualifikationsphase Kurs 2: Daten erfassen, strukturieren und verarbeiten, S. 26.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:ST-INF-SEKII-Q-DB",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "Schluesselattribute bewerten",
+      "rawSourceSpan": "ST-INF-SEKII-Q-DB.12",
+      "rawParentBulletText": "Schluesselattribute bewerten",
+      "canonicalTargetIds": [
+        "42ad3e11-9e31-5e15-b65c-b611ce1537ce"
+      ]
+    },
+    {
+      "id": "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-db-013-daten-strukturiert-verwalten-ef10751b",
+      "passageId": "de-st-informatik:st-inf-q-db",
+      "topicCode": "ST-INF-SEKII-Q-DB-13",
+      "bulletIndex": 13,
+      "title": "ST-INF-SEKII-Q-DB-13: Daten strukturiert verwalten",
+      "description": "Source-Ziel aus Qualifikationsphase Kurs 2: Daten erfassen, strukturieren und verarbeiten: Daten in geeigneter Form strukturieren und verwalten",
+      "sourceText": "Daten in geeigneter Form strukturieren und verwalten",
+      "sourceSpan": "ST-INF-SEKII-Q-DB.13",
+      "parentBulletText": "Daten in geeigneter Form strukturieren und verwalten",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Qualifikationsphase Kurs 2: Daten erfassen, strukturieren und verarbeiten, S. 26.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:ST-INF-SEKII-Q-DB",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "Daten in geeigneter Form strukturieren und verwalten",
+      "rawSourceSpan": "ST-INF-SEKII-Q-DB.13",
+      "rawParentBulletText": "Daten in geeigneter Form strukturieren und verwalten",
+      "canonicalTargetIds": [
+        "19204609-90fd-57c1-aca4-9e1a6a1fea6c",
+        "42ad3e11-9e31-5e15-b65c-b611ce1537ce"
+      ]
+    },
+    {
+      "id": "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-db-014-relationen-darstellen-76009f37",
+      "passageId": "de-st-informatik:st-inf-q-db",
+      "topicCode": "ST-INF-SEKII-Q-DB-14",
+      "bulletIndex": 14,
+      "title": "ST-INF-SEKII-Q-DB-14: Relationen darstellen",
+      "description": "Source-Ziel aus Qualifikationsphase Kurs 2: Daten erfassen, strukturieren und verarbeiten: Relationen zwischen Entitaeten erkennen und darstellen",
+      "sourceText": "Relationen zwischen Entitaeten erkennen und darstellen",
+      "sourceSpan": "ST-INF-SEKII-Q-DB.14",
+      "parentBulletText": "Relationen zwischen Entitaeten erkennen und darstellen",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Qualifikationsphase Kurs 2: Daten erfassen, strukturieren und verarbeiten, S. 26.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:ST-INF-SEKII-Q-DB",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "Relationen zwischen Entitaeten erkennen und darstellen",
+      "rawSourceSpan": "ST-INF-SEKII-Q-DB.14",
+      "rawParentBulletText": "Relationen zwischen Entitaeten erkennen und darstellen",
+      "canonicalTargetIds": [
+        "2cf7589d-5451-5239-badf-1ebb981a2f20",
+        "42ad3e11-9e31-5e15-b65c-b611ce1537ce"
+      ]
+    },
+    {
+      "id": "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-db-015-er-diagramme-diskutieren-und-erstellen-8b1e2a91",
+      "passageId": "de-st-informatik:st-inf-q-db",
+      "topicCode": "ST-INF-SEKII-Q-DB-15",
+      "bulletIndex": 15,
+      "title": "ST-INF-SEKII-Q-DB-15: ER-Diagramme diskutieren und erstellen",
+      "description": "Source-Ziel aus Qualifikationsphase Kurs 2: Daten erfassen, strukturieren und verarbeiten: Entity-Relationship-Diagramme diskutieren und erstellen",
+      "sourceText": "Entity-Relationship-Diagramme diskutieren und erstellen",
+      "sourceSpan": "ST-INF-SEKII-Q-DB.15",
+      "parentBulletText": "Entity-Relationship-Diagramme diskutieren und erstellen",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Qualifikationsphase Kurs 2: Daten erfassen, strukturieren und verarbeiten, S. 26.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:ST-INF-SEKII-Q-DB",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "Entity-Relationship-Diagramme diskutieren und erstellen",
+      "rawSourceSpan": "ST-INF-SEKII-Q-DB.15",
+      "rawParentBulletText": "Entity-Relationship-Diagramme diskutieren und erstellen",
+      "canonicalTargetIds": [
+        "2cf7589d-5451-5239-badf-1ebb981a2f20",
+        "f81be4d3-2445-54aa-b17e-2a27466e7e0d"
+      ]
+    },
+    {
+      "id": "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-db-016-datenbankmodellierung-analysieren-d08662c5",
+      "passageId": "de-st-informatik:st-inf-q-db",
+      "topicCode": "ST-INF-SEKII-Q-DB-16",
+      "bulletIndex": 16,
+      "title": "ST-INF-SEKII-Q-DB-16: Datenbankmodellierung analysieren",
+      "description": "Source-Ziel aus Qualifikationsphase Kurs 2: Daten erfassen, strukturieren und verarbeiten: Datenbankmodellierung analysieren und erlaeutern",
+      "sourceText": "Datenbankmodellierung analysieren und erlaeutern",
+      "sourceSpan": "ST-INF-SEKII-Q-DB.16",
+      "parentBulletText": "Datenbankmodellierung analysieren und erlaeutern",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Qualifikationsphase Kurs 2: Daten erfassen, strukturieren und verarbeiten, S. 26.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:ST-INF-SEKII-Q-DB",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "Datenbankmodellierung analysieren und erlaeutern",
+      "rawSourceSpan": "ST-INF-SEKII-Q-DB.16",
+      "rawParentBulletText": "Datenbankmodellierung analysieren und erlaeutern",
+      "canonicalTargetIds": [
+        "2cf7589d-5451-5239-badf-1ebb981a2f20",
+        "42ad3e11-9e31-5e15-b65c-b611ce1537ce"
+      ]
+    },
+    {
+      "id": "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-db-017-normalisiertes-schema-erlaeutern-c4d53334",
+      "passageId": "de-st-informatik:st-inf-q-db",
+      "topicCode": "ST-INF-SEKII-Q-DB-17",
+      "bulletIndex": 17,
+      "title": "ST-INF-SEKII-Q-DB-17: Normalisiertes Schema erlaeutern",
+      "description": "Source-Ziel aus Qualifikationsphase Kurs 2: Daten erfassen, strukturieren und verarbeiten: Eigenschaften eines normalisierten Datenbankschemas erlaeutern",
+      "sourceText": "Eigenschaften eines normalisierten Datenbankschemas erlaeutern",
+      "sourceSpan": "ST-INF-SEKII-Q-DB.17",
+      "parentBulletText": "Eigenschaften eines normalisierten Datenbankschemas erlaeutern",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Qualifikationsphase Kurs 2: Daten erfassen, strukturieren und verarbeiten, S. 26.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:ST-INF-SEKII-Q-DB",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "Eigenschaften eines normalisierten Datenbankschemas erlaeutern",
+      "rawSourceSpan": "ST-INF-SEKII-Q-DB.17",
+      "rawParentBulletText": "Eigenschaften eines normalisierten Datenbankschemas erlaeutern",
+      "canonicalTargetIds": [
+        "46b4ebba-dbaf-5f5e-be48-7a1dd72bd471"
+      ]
+    },
+    {
+      "id": "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-db-018-datenformen-darstellen-und-interpretieren-468d993e",
+      "passageId": "de-st-informatik:st-inf-q-db",
+      "topicCode": "ST-INF-SEKII-Q-DB-18",
+      "bulletIndex": 18,
+      "title": "ST-INF-SEKII-Q-DB-18: Datenformen darstellen und interpretieren",
+      "description": "Source-Ziel aus Qualifikationsphase Kurs 2: Daten erfassen, strukturieren und verarbeiten: Daten in verschiedenen Formen darstellen und interpretieren",
+      "sourceText": "Daten in verschiedenen Formen darstellen und interpretieren",
+      "sourceSpan": "ST-INF-SEKII-Q-DB.18",
+      "parentBulletText": "Daten in verschiedenen Formen darstellen und interpretieren",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Qualifikationsphase Kurs 2: Daten erfassen, strukturieren und verarbeiten, S. 26.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:ST-INF-SEKII-Q-DB",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "Daten in verschiedenen Formen darstellen und interpretieren",
+      "rawSourceSpan": "ST-INF-SEKII-Q-DB.18",
+      "rawParentBulletText": "Daten in verschiedenen Formen darstellen und interpretieren",
+      "canonicalTargetIds": [
+        "19204609-90fd-57c1-aca4-9e1a6a1fea6c",
+        "f81be4d3-2445-54aa-b17e-2a27466e7e0d"
+      ]
+    },
+    {
+      "id": "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-db-019-er-mit-kardinalitaeten-grafisch-darstellen-45b9f204",
+      "passageId": "de-st-informatik:st-inf-q-db",
+      "topicCode": "ST-INF-SEKII-Q-DB-19",
+      "bulletIndex": 19,
+      "title": "ST-INF-SEKII-Q-DB-19: ER mit Kardinalitaeten grafisch darstellen",
+      "description": "Source-Ziel aus Qualifikationsphase Kurs 2: Daten erfassen, strukturieren und verarbeiten: Entitaeten, Attribute und Beziehungen mit Kardinalitaeten in einem ER-Diagramm darstellen",
+      "sourceText": "Entitaeten, Attribute und Beziehungen mit Kardinalitaeten in einem ER-Diagramm darstellen",
+      "sourceSpan": "ST-INF-SEKII-Q-DB.19",
+      "parentBulletText": "Entitaeten, Attribute und Beziehungen mit Kardinalitaeten in einem ER-Diagramm darstellen",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Qualifikationsphase Kurs 2: Daten erfassen, strukturieren und verarbeiten, S. 26.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:ST-INF-SEKII-Q-DB",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "Entitaeten, Attribute und Beziehungen mit Kardinalitaeten in einem ER-Diagramm darstellen",
+      "rawSourceSpan": "ST-INF-SEKII-Q-DB.19",
+      "rawParentBulletText": "Entitaeten, Attribute und Beziehungen mit Kardinalitaeten in einem ER-Diagramm darstellen",
+      "canonicalTargetIds": [
+        "2cf7589d-5451-5239-badf-1ebb981a2f20",
+        "1eb09d02-9123-50e2-bfee-e2f0b5b23564"
+      ]
+    },
+    {
+      "id": "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-db-020-datenbankanomalien-erklaeren-477f254f",
+      "passageId": "de-st-informatik:st-inf-q-db",
+      "topicCode": "ST-INF-SEKII-Q-DB-20",
+      "bulletIndex": 20,
+      "title": "ST-INF-SEKII-Q-DB-20: Datenbankanomalien erklaeren",
+      "description": "Source-Ziel aus Qualifikationsphase Kurs 2: Daten erfassen, strukturieren und verarbeiten: Loesch-, Einfuege- und Aktualisierungsanomalien erklaeren",
+      "sourceText": "Loesch-, Einfuege- und Aktualisierungsanomalien erklaeren",
+      "sourceSpan": "ST-INF-SEKII-Q-DB.20",
+      "parentBulletText": "Loesch-, Einfuege- und Aktualisierungsanomalien erklaeren",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Qualifikationsphase Kurs 2: Daten erfassen, strukturieren und verarbeiten, S. 26.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:ST-INF-SEKII-Q-DB",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "Loesch-, Einfuege- und Aktualisierungsanomalien erklaeren",
+      "rawSourceSpan": "ST-INF-SEKII-Q-DB.20",
+      "rawParentBulletText": "Loesch-, Einfuege- und Aktualisierungsanomalien erklaeren",
+      "canonicalTargetIds": [
+        "46b4ebba-dbaf-5f5e-be48-7a1dd72bd471"
+      ]
+    },
+    {
+      "id": "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-se-001-problemanalyse-selbststaendig-durchfuehren-4f4d88f8",
+      "passageId": "de-st-informatik:st-inf-q-se",
+      "topicCode": "ST-INF-SEKII-Q-SE-01",
+      "bulletIndex": 1,
+      "title": "ST-INF-SEKII-Q-SE-1: Problemanalyse selbststaendig durchfuehren",
+      "description": "Source-Ziel aus Qualifikationsphase Kurs 3: Software Engineering und Projektarbeit: selbststaendig Analysen im Rahmen eines Problemloesungszyklus durchfuehren",
+      "sourceText": "selbststaendig Analysen im Rahmen eines Problemloesungszyklus durchfuehren",
+      "sourceSpan": "ST-INF-SEKII-Q-SE.1",
+      "parentBulletText": "selbststaendig Analysen im Rahmen eines Problemloesungszyklus durchfuehren",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Qualifikationsphase Kurs 3: Software Engineering und Projektarbeit, S. 28.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:ST-INF-SEKII-Q-SE",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "selbststaendig Analysen im Rahmen eines Problemloesungszyklus durchfuehren",
+      "rawSourceSpan": "ST-INF-SEKII-Q-SE.1",
+      "rawParentBulletText": "selbststaendig Analysen im Rahmen eines Problemloesungszyklus durchfuehren",
+      "canonicalTargetIds": [
+        "df1a7c0c-68c4-5262-846d-67f983d79697",
+        "8d21085b-9780-599e-ba0e-ccc0c31a5f01"
+      ]
+    },
+    {
+      "id": "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-se-002-objekte-und-klassen-aus-analyse-ableiten-59bd272c",
+      "passageId": "de-st-informatik:st-inf-q-se",
+      "topicCode": "ST-INF-SEKII-Q-SE-02",
+      "bulletIndex": 2,
+      "title": "ST-INF-SEKII-Q-SE-2: Objekte und Klassen aus Analyse ableiten",
+      "description": "Source-Ziel aus Qualifikationsphase Kurs 3: Software Engineering und Projektarbeit: aus Analysen benoetigte Objekte und Klassen ableiten",
+      "sourceText": "aus Analysen benoetigte Objekte und Klassen ableiten",
+      "sourceSpan": "ST-INF-SEKII-Q-SE.2",
+      "parentBulletText": "aus Analysen benoetigte Objekte und Klassen ableiten",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Qualifikationsphase Kurs 3: Software Engineering und Projektarbeit, S. 28.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:ST-INF-SEKII-Q-SE",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "aus Analysen benoetigte Objekte und Klassen ableiten",
+      "rawSourceSpan": "ST-INF-SEKII-Q-SE.2",
+      "rawParentBulletText": "aus Analysen benoetigte Objekte und Klassen ableiten",
+      "canonicalTargetIds": [
+        "6c284640-1f28-4837-aabd-445656ad7f54",
+        "b24084e1-bff3-5fc6-800d-ec6c024e52aa"
+      ]
+    },
+    {
+      "id": "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-se-003-teilloesungen-implementieren-8dff0725",
+      "passageId": "de-st-informatik:st-inf-q-se",
+      "topicCode": "ST-INF-SEKII-Q-SE-03",
+      "bulletIndex": 3,
+      "title": "ST-INF-SEKII-Q-SE-3: Teilloesungen implementieren",
+      "description": "Source-Ziel aus Qualifikationsphase Kurs 3: Software Engineering und Projektarbeit: Implementierung der Teilloesungen selbststaendig oder im Team realisieren",
+      "sourceText": "Implementierung der Teilloesungen selbststaendig oder im Team realisieren",
+      "sourceSpan": "ST-INF-SEKII-Q-SE.3",
+      "parentBulletText": "Implementierung der Teilloesungen selbststaendig oder im Team realisieren",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Qualifikationsphase Kurs 3: Software Engineering und Projektarbeit, S. 28.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:ST-INF-SEKII-Q-SE",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "Implementierung der Teilloesungen selbststaendig oder im Team realisieren",
+      "rawSourceSpan": "ST-INF-SEKII-Q-SE.3",
+      "rawParentBulletText": "Implementierung der Teilloesungen selbststaendig oder im Team realisieren",
+      "canonicalTargetIds": [
+        "fcdf8e5f-8b1f-55f7-874d-1fbd9fac0614",
+        "8d21085b-9780-599e-ba0e-ccc0c31a5f01"
+      ]
+    },
+    {
+      "id": "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-se-004-teilloesungen-zusammenfuehren-fb5ae6ad",
+      "passageId": "de-st-informatik:st-inf-q-se",
+      "topicCode": "ST-INF-SEKII-Q-SE-04",
+      "bulletIndex": 4,
+      "title": "ST-INF-SEKII-Q-SE-4: Teilloesungen zusammenfuehren",
+      "description": "Source-Ziel aus Qualifikationsphase Kurs 3: Software Engineering und Projektarbeit: Teilloesungen zu einer Gesamtloesung zusammenfuehren",
+      "sourceText": "Teilloesungen zu einer Gesamtloesung zusammenfuehren",
+      "sourceSpan": "ST-INF-SEKII-Q-SE.4",
+      "parentBulletText": "Teilloesungen zu einer Gesamtloesung zusammenfuehren",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Qualifikationsphase Kurs 3: Software Engineering und Projektarbeit, S. 28.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:ST-INF-SEKII-Q-SE",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "Teilloesungen zu einer Gesamtloesung zusammenfuehren",
+      "rawSourceSpan": "ST-INF-SEKII-Q-SE.4",
+      "rawParentBulletText": "Teilloesungen zu einer Gesamtloesung zusammenfuehren",
+      "canonicalTargetIds": [
+        "8d21085b-9780-599e-ba0e-ccc0c31a5f01",
+        "d5056ca3-2a3d-5145-a28d-29038038a77f"
+      ]
+    },
+    {
+      "id": "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-se-005-produkt-verifizieren-und-validieren-1d00c2ab",
+      "passageId": "de-st-informatik:st-inf-q-se",
+      "topicCode": "ST-INF-SEKII-Q-SE-05",
+      "bulletIndex": 5,
+      "title": "ST-INF-SEKII-Q-SE-5: Produkt verifizieren und validieren",
+      "description": "Source-Ziel aus Qualifikationsphase Kurs 3: Software Engineering und Projektarbeit: Teilloesungen sowie Endprodukt verifizieren und validieren",
+      "sourceText": "Teilloesungen sowie Endprodukt verifizieren und validieren",
+      "sourceSpan": "ST-INF-SEKII-Q-SE.5",
+      "parentBulletText": "Teilloesungen sowie Endprodukt verifizieren und validieren",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Qualifikationsphase Kurs 3: Software Engineering und Projektarbeit, S. 28.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:ST-INF-SEKII-Q-SE",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "Teilloesungen sowie Endprodukt verifizieren und validieren",
+      "rawSourceSpan": "ST-INF-SEKII-Q-SE.5",
+      "rawParentBulletText": "Teilloesungen sowie Endprodukt verifizieren und validieren",
+      "canonicalTargetIds": [
+        "d5914986-fba8-56cc-99be-d9560ac7666d",
+        "0ef581d1-c033-5a98-a65a-48ea7b80136f"
+      ]
+    },
+    {
+      "id": "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-se-006-projektentscheidungen-bewerten-14e6b3ec",
+      "passageId": "de-st-informatik:st-inf-q-se",
+      "topicCode": "ST-INF-SEKII-Q-SE-06",
+      "bulletIndex": 6,
+      "title": "ST-INF-SEKII-Q-SE-6: Projektentscheidungen bewerten",
+      "description": "Source-Ziel aus Qualifikationsphase Kurs 3: Software Engineering und Projektarbeit: Entscheidungen im Rahmen eines Problemloesungszyklus begruenden und bewerten",
+      "sourceText": "Entscheidungen im Rahmen eines Problemloesungszyklus begruenden und bewerten",
+      "sourceSpan": "ST-INF-SEKII-Q-SE.6",
+      "parentBulletText": "Entscheidungen im Rahmen eines Problemloesungszyklus begruenden und bewerten",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Qualifikationsphase Kurs 3: Software Engineering und Projektarbeit, S. 28.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:ST-INF-SEKII-Q-SE",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "Entscheidungen im Rahmen eines Problemloesungszyklus begruenden und bewerten",
+      "rawSourceSpan": "ST-INF-SEKII-Q-SE.6",
+      "rawParentBulletText": "Entscheidungen im Rahmen eines Problemloesungszyklus begruenden und bewerten",
+      "canonicalTargetIds": [
+        "8d21085b-9780-599e-ba0e-ccc0c31a5f01",
+        "c10e647b-2f51-5002-b352-830933a67214"
+      ]
+    },
+    {
+      "id": "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-se-007-entwurf-und-spezifikationen-erlaeutern-76029053",
+      "passageId": "de-st-informatik:st-inf-q-se",
+      "topicCode": "ST-INF-SEKII-Q-SE-07",
+      "bulletIndex": 7,
+      "title": "ST-INF-SEKII-Q-SE-7: Entwurf und Spezifikationen erlaeutern",
+      "description": "Source-Ziel aus Qualifikationsphase Kurs 3: Software Engineering und Projektarbeit: objektorientierten Entwurf und Spezifikationen anhand von Qualitaetskriterien erlaeutern",
+      "sourceText": "objektorientierten Entwurf und Spezifikationen anhand von Qualitaetskriterien erlaeutern",
+      "sourceSpan": "ST-INF-SEKII-Q-SE.7",
+      "parentBulletText": "objektorientierten Entwurf und Spezifikationen anhand von Qualitaetskriterien erlaeutern",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Qualifikationsphase Kurs 3: Software Engineering und Projektarbeit, S. 28.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:ST-INF-SEKII-Q-SE",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "objektorientierten Entwurf und Spezifikationen anhand von Qualitaetskriterien erlaeutern",
+      "rawSourceSpan": "ST-INF-SEKII-Q-SE.7",
+      "rawParentBulletText": "objektorientierten Entwurf und Spezifikationen anhand von Qualitaetskriterien erlaeutern",
+      "canonicalTargetIds": [
+        "df1a7c0c-68c4-5262-846d-67f983d79697",
+        "0ef581d1-c033-5a98-a65a-48ea7b80136f",
+        "b24084e1-bff3-5fc6-800d-ec6c024e52aa"
+      ]
+    },
+    {
+      "id": "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-se-008-nachhaltigkeit-von-software-abschaetzen-d13071dc",
+      "passageId": "de-st-informatik:st-inf-q-se",
+      "topicCode": "ST-INF-SEKII-Q-SE-08",
+      "bulletIndex": 8,
+      "title": "ST-INF-SEKII-Q-SE-8: Nachhaltigkeit von Software abschaetzen",
+      "description": "Source-Ziel aus Qualifikationsphase Kurs 3: Software Engineering und Projektarbeit: Nachhaltigkeit des Softwareprojektes abschaetzen und begruenden",
+      "sourceText": "Nachhaltigkeit des Softwareprojektes abschaetzen und begruenden",
+      "sourceSpan": "ST-INF-SEKII-Q-SE.8",
+      "parentBulletText": "Nachhaltigkeit des Softwareprojektes abschaetzen und begruenden",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Qualifikationsphase Kurs 3: Software Engineering und Projektarbeit, S. 28.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:ST-INF-SEKII-Q-SE",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "Nachhaltigkeit des Softwareprojektes abschaetzen und begruenden",
+      "rawSourceSpan": "ST-INF-SEKII-Q-SE.8",
+      "rawParentBulletText": "Nachhaltigkeit des Softwareprojektes abschaetzen und begruenden",
+      "canonicalTargetIds": [
+        "de3af5ce-344c-5e04-a081-4c2904eb9fad",
+        "0ef581d1-c033-5a98-a65a-48ea7b80136f"
+      ]
+    },
+    {
+      "id": "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-se-009-abstraktionen-vornehmen-6c5a360c",
+      "passageId": "de-st-informatik:st-inf-q-se",
+      "topicCode": "ST-INF-SEKII-Q-SE-09",
+      "bulletIndex": 9,
+      "title": "ST-INF-SEKII-Q-SE-9: Abstraktionen vornehmen",
+      "description": "Source-Ziel aus Qualifikationsphase Kurs 3: Software Engineering und Projektarbeit: notwendige Abstraktionen selbststaendig vornehmen und begruenden",
+      "sourceText": "notwendige Abstraktionen selbststaendig vornehmen und begruenden",
+      "sourceSpan": "ST-INF-SEKII-Q-SE.9",
+      "parentBulletText": "notwendige Abstraktionen selbststaendig vornehmen und begruenden",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Qualifikationsphase Kurs 3: Software Engineering und Projektarbeit, S. 28.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:ST-INF-SEKII-Q-SE",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "notwendige Abstraktionen selbststaendig vornehmen und begruenden",
+      "rawSourceSpan": "ST-INF-SEKII-Q-SE.9",
+      "rawParentBulletText": "notwendige Abstraktionen selbststaendig vornehmen und begruenden",
+      "canonicalTargetIds": [
+        "c10e647b-2f51-5002-b352-830933a67214"
+      ]
+    },
+    {
+      "id": "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-se-010-algorithmusauswahl-effizient-bewerten-230aae49",
+      "passageId": "de-st-informatik:st-inf-q-se",
+      "topicCode": "ST-INF-SEKII-Q-SE-10",
+      "bulletIndex": 10,
+      "title": "ST-INF-SEKII-Q-SE-10: Algorithmusauswahl effizient bewerten",
+      "description": "Source-Ziel aus Qualifikationsphase Kurs 3: Software Engineering und Projektarbeit: Auswahl genutzter Algorithmen begruenden und hinsichtlich Zielfuehrung und Effizienz bewerten",
+      "sourceText": "Auswahl genutzter Algorithmen begruenden und hinsichtlich Zielfuehrung und Effizienz bewerten",
+      "sourceSpan": "ST-INF-SEKII-Q-SE.10",
+      "parentBulletText": "Auswahl genutzter Algorithmen begruenden und hinsichtlich Zielfuehrung und Effizienz bewerten",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Qualifikationsphase Kurs 3: Software Engineering und Projektarbeit, S. 28.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:ST-INF-SEKII-Q-SE",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "Auswahl genutzter Algorithmen begruenden und hinsichtlich Zielfuehrung und Effizienz bewerten",
+      "rawSourceSpan": "ST-INF-SEKII-Q-SE.10",
+      "rawParentBulletText": "Auswahl genutzter Algorithmen begruenden und hinsichtlich Zielfuehrung und Effizienz bewerten",
+      "canonicalTargetIds": [
+        "82fe54dd-d29f-540c-9ef1-f4feb17845c6",
+        "bc46922d-d874-528b-a183-5a3eaef12e4d"
+      ]
+    },
+    {
+      "id": "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-se-011-datenhaltung-in-vernetzten-systemen-beurteilen-5e563da6",
+      "passageId": "de-st-informatik:st-inf-q-se",
+      "topicCode": "ST-INF-SEKII-Q-SE-11",
+      "bulletIndex": 11,
+      "title": "ST-INF-SEKII-Q-SE-11: Datenhaltung in vernetzten Systemen beurteilen",
+      "description": "Source-Ziel aus Qualifikationsphase Kurs 3: Software Engineering und Projektarbeit: Datenhaltung in vernetzten Systemen unter Datenschutz und Datensicherheit beurteilen",
+      "sourceText": "Datenhaltung in vernetzten Systemen unter Datenschutz und Datensicherheit beurteilen",
+      "sourceSpan": "ST-INF-SEKII-Q-SE.11",
+      "parentBulletText": "Datenhaltung in vernetzten Systemen unter Datenschutz und Datensicherheit beurteilen",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Qualifikationsphase Kurs 3: Software Engineering und Projektarbeit, S. 28.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:ST-INF-SEKII-Q-SE",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "Datenhaltung in vernetzten Systemen unter Datenschutz und Datensicherheit beurteilen",
+      "rawSourceSpan": "ST-INF-SEKII-Q-SE.11",
+      "rawParentBulletText": "Datenhaltung in vernetzten Systemen unter Datenschutz und Datensicherheit beurteilen",
+      "canonicalTargetIds": [
+        "ca07458c-1fc1-5ca1-b226-69f59e2d62d3",
+        "71fe327a-9677-5348-a405-fba0dbd302d7",
+        "58173dab-0cb2-52ae-a052-63d3a0f33644"
+      ]
+    },
+    {
+      "id": "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-se-012-schnittstellen-vereinbaren-a623e2a0",
+      "passageId": "de-st-informatik:st-inf-q-se",
+      "topicCode": "ST-INF-SEKII-Q-SE-12",
+      "bulletIndex": 12,
+      "title": "ST-INF-SEKII-Q-SE-12: Schnittstellen vereinbaren",
+      "description": "Source-Ziel aus Qualifikationsphase Kurs 3: Software Engineering und Projektarbeit: Problem in Teilprobleme zerlegen und notwendige Schnittstellen vereinbaren",
+      "sourceText": "Problem in Teilprobleme zerlegen und notwendige Schnittstellen vereinbaren",
+      "sourceSpan": "ST-INF-SEKII-Q-SE.12",
+      "parentBulletText": "Problem in Teilprobleme zerlegen und notwendige Schnittstellen vereinbaren",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Qualifikationsphase Kurs 3: Software Engineering und Projektarbeit, S. 28.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:ST-INF-SEKII-Q-SE",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "Problem in Teilprobleme zerlegen und notwendige Schnittstellen vereinbaren",
+      "rawSourceSpan": "ST-INF-SEKII-Q-SE.12",
+      "rawParentBulletText": "Problem in Teilprobleme zerlegen und notwendige Schnittstellen vereinbaren",
+      "canonicalTargetIds": [
+        "d5056ca3-2a3d-5145-a28d-29038038a77f",
+        "54d88684-d4e5-50d3-9453-d141af7316d2"
+      ]
+    },
+    {
+      "id": "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-se-013-teilprobleme-arbeitsteilig-strukturieren-1a844d43",
+      "passageId": "de-st-informatik:st-inf-q-se",
+      "topicCode": "ST-INF-SEKII-Q-SE-13",
+      "bulletIndex": 13,
+      "title": "ST-INF-SEKII-Q-SE-13: Teilprobleme arbeitsteilig strukturieren",
+      "description": "Source-Ziel aus Qualifikationsphase Kurs 3: Software Engineering und Projektarbeit: Teilprobleme so aufteilen, dass Synergieeffekte nutzbar werden",
+      "sourceText": "Teilprobleme so aufteilen, dass Synergieeffekte nutzbar werden",
+      "sourceSpan": "ST-INF-SEKII-Q-SE.13",
+      "parentBulletText": "Teilprobleme so aufteilen, dass Synergieeffekte nutzbar werden",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Qualifikationsphase Kurs 3: Software Engineering und Projektarbeit, S. 28.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:ST-INF-SEKII-Q-SE",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "Teilprobleme so aufteilen, dass Synergieeffekte nutzbar werden",
+      "rawSourceSpan": "ST-INF-SEKII-Q-SE.13",
+      "rawParentBulletText": "Teilprobleme so aufteilen, dass Synergieeffekte nutzbar werden",
+      "canonicalTargetIds": [
+        "8d21085b-9780-599e-ba0e-ccc0c31a5f01",
+        "ff6b67e8-dc27-5755-8dab-23ed658194fd"
+      ]
+    },
+    {
+      "id": "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-se-014-softwareergonomie-umsetzen-996066f8",
+      "passageId": "de-st-informatik:st-inf-q-se",
+      "topicCode": "ST-INF-SEKII-Q-SE-14",
+      "bulletIndex": 14,
+      "title": "ST-INF-SEKII-Q-SE-14: Softwareergonomie umsetzen",
+      "description": "Source-Ziel aus Qualifikationsphase Kurs 3: Software Engineering und Projektarbeit: Aspekte der Softwareergonomie umsetzen",
+      "sourceText": "Aspekte der Softwareergonomie umsetzen",
+      "sourceSpan": "ST-INF-SEKII-Q-SE.14",
+      "parentBulletText": "Aspekte der Softwareergonomie umsetzen",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Qualifikationsphase Kurs 3: Software Engineering und Projektarbeit, S. 28.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:ST-INF-SEKII-Q-SE",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "Aspekte der Softwareergonomie umsetzen",
+      "rawSourceSpan": "ST-INF-SEKII-Q-SE.14",
+      "rawParentBulletText": "Aspekte der Softwareergonomie umsetzen",
+      "canonicalTargetIds": [
+        "a2431bb5-6491-53fe-8dd3-309546a2cb97",
+        "0ef581d1-c033-5a98-a65a-48ea7b80136f"
+      ]
+    },
+    {
+      "id": "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-se-015-projekt-organisieren-c1719aca",
+      "passageId": "de-st-informatik:st-inf-q-se",
+      "topicCode": "ST-INF-SEKII-Q-SE-15",
+      "bulletIndex": 15,
+      "title": "ST-INF-SEKII-Q-SE-15: Projekt organisieren",
+      "description": "Source-Ziel aus Qualifikationsphase Kurs 3: Software Engineering und Projektarbeit: Projekte organisieren und bearbeiten",
+      "sourceText": "Projekte organisieren und bearbeiten",
+      "sourceSpan": "ST-INF-SEKII-Q-SE.15",
+      "parentBulletText": "Projekte organisieren und bearbeiten",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Qualifikationsphase Kurs 3: Software Engineering und Projektarbeit, S. 28.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:ST-INF-SEKII-Q-SE",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "Projekte organisieren und bearbeiten",
+      "rawSourceSpan": "ST-INF-SEKII-Q-SE.15",
+      "rawParentBulletText": "Projekte organisieren und bearbeiten",
+      "canonicalTargetIds": [
+        "8d21085b-9780-599e-ba0e-ccc0c31a5f01"
+      ]
+    },
+    {
+      "id": "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-se-016-quellen-rechtskonform-nutzen-cd7e7c22",
+      "passageId": "de-st-informatik:st-inf-q-se",
+      "topicCode": "ST-INF-SEKII-Q-SE-16",
+      "bulletIndex": 16,
+      "title": "ST-INF-SEKII-Q-SE-16: Quellen rechtskonform nutzen",
+      "description": "Source-Ziel aus Qualifikationsphase Kurs 3: Software Engineering und Projektarbeit: Quellen zur Projektarbeit selbststaendig auswaehlen und rechtskonform nutzen",
+      "sourceText": "Quellen zur Projektarbeit selbststaendig auswaehlen und rechtskonform nutzen",
+      "sourceSpan": "ST-INF-SEKII-Q-SE.16",
+      "parentBulletText": "Quellen zur Projektarbeit selbststaendig auswaehlen und rechtskonform nutzen",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Qualifikationsphase Kurs 3: Software Engineering und Projektarbeit, S. 28.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:ST-INF-SEKII-Q-SE",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "Quellen zur Projektarbeit selbststaendig auswaehlen und rechtskonform nutzen",
+      "rawSourceSpan": "ST-INF-SEKII-Q-SE.16",
+      "rawParentBulletText": "Quellen zur Projektarbeit selbststaendig auswaehlen und rechtskonform nutzen",
+      "canonicalTargetIds": [
+        "91230113-91b0-5a8b-94e4-4419014cfb58",
+        "00f23ea9-4b45-52ea-aef2-7e1314ea3b45"
+      ]
+    },
+    {
+      "id": "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-se-017-auftraggeberabstimmung-in-ziele-ueberfuehren-7592dd48",
+      "passageId": "de-st-informatik:st-inf-q-se",
+      "topicCode": "ST-INF-SEKII-Q-SE-17",
+      "bulletIndex": 17,
+      "title": "ST-INF-SEKII-Q-SE-17: Auftraggeberabstimmung in Ziele ueberfuehren",
+      "description": "Source-Ziel aus Qualifikationsphase Kurs 3: Software Engineering und Projektarbeit: Abstimmung mit dem Auftraggeber durchfuehren und Zielsetzungen fuer das Endprodukt ableiten",
+      "sourceText": "Abstimmung mit dem Auftraggeber durchfuehren und Zielsetzungen fuer das Endprodukt ableiten",
+      "sourceSpan": "ST-INF-SEKII-Q-SE.17",
+      "parentBulletText": "Abstimmung mit dem Auftraggeber durchfuehren und Zielsetzungen fuer das Endprodukt ableiten",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Qualifikationsphase Kurs 3: Software Engineering und Projektarbeit, S. 28.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:ST-INF-SEKII-Q-SE",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "Abstimmung mit dem Auftraggeber durchfuehren und Zielsetzungen fuer das Endprodukt ableiten",
+      "rawSourceSpan": "ST-INF-SEKII-Q-SE.17",
+      "rawParentBulletText": "Abstimmung mit dem Auftraggeber durchfuehren und Zielsetzungen fuer das Endprodukt ableiten",
+      "canonicalTargetIds": [
+        "df1a7c0c-68c4-5262-846d-67f983d79697",
+        "ff6b67e8-dc27-5755-8dab-23ed658194fd"
+      ]
+    },
+    {
+      "id": "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-se-018-kooperationsregeln-vereinbaren-33a279dc",
+      "passageId": "de-st-informatik:st-inf-q-se",
+      "topicCode": "ST-INF-SEKII-Q-SE-18",
+      "bulletIndex": 18,
+      "title": "ST-INF-SEKII-Q-SE-18: Kooperationsregeln vereinbaren",
+      "description": "Source-Ziel aus Qualifikationsphase Kurs 3: Software Engineering und Projektarbeit: Regeln zur kooperativen Loesung von Teilproblemen, Klassen, Schnittstellen und Zeitmanagement vereinbaren",
+      "sourceText": "Regeln zur kooperativen Loesung von Teilproblemen, Klassen, Schnittstellen und Zeitmanagement vereinbaren",
+      "sourceSpan": "ST-INF-SEKII-Q-SE.18",
+      "parentBulletText": "Regeln zur kooperativen Loesung von Teilproblemen, Klassen, Schnittstellen und Zeitmanagement vereinbaren",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Qualifikationsphase Kurs 3: Software Engineering und Projektarbeit, S. 28.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:ST-INF-SEKII-Q-SE",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "Regeln zur kooperativen Loesung von Teilproblemen, Klassen, Schnittstellen und Zeitmanagement vereinbaren",
+      "rawSourceSpan": "ST-INF-SEKII-Q-SE.18",
+      "rawParentBulletText": "Regeln zur kooperativen Loesung von Teilproblemen, Klassen, Schnittstellen und Zeitmanagement vereinbaren",
+      "canonicalTargetIds": [
+        "ff6b67e8-dc27-5755-8dab-23ed658194fd",
+        "8d21085b-9780-599e-ba0e-ccc0c31a5f01"
+      ]
+    },
+    {
+      "id": "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-se-019-zwischenergebnisse-dokumentieren-37f9abc6",
+      "passageId": "de-st-informatik:st-inf-q-se",
+      "topicCode": "ST-INF-SEKII-Q-SE-19",
+      "bulletIndex": 19,
+      "title": "ST-INF-SEKII-Q-SE-19: Zwischenergebnisse dokumentieren",
+      "description": "Source-Ziel aus Qualifikationsphase Kurs 3: Software Engineering und Projektarbeit: projektbegleitend Zwischenergebnisse dokumentieren, kommunizieren und Schlussfolgerungen ableiten",
+      "sourceText": "projektbegleitend Zwischenergebnisse dokumentieren, kommunizieren und Schlussfolgerungen ableiten",
+      "sourceSpan": "ST-INF-SEKII-Q-SE.19",
+      "parentBulletText": "projektbegleitend Zwischenergebnisse dokumentieren, kommunizieren und Schlussfolgerungen ableiten",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Qualifikationsphase Kurs 3: Software Engineering und Projektarbeit, S. 28.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:ST-INF-SEKII-Q-SE",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "projektbegleitend Zwischenergebnisse dokumentieren, kommunizieren und Schlussfolgerungen ableiten",
+      "rawSourceSpan": "ST-INF-SEKII-Q-SE.19",
+      "rawParentBulletText": "projektbegleitend Zwischenergebnisse dokumentieren, kommunizieren und Schlussfolgerungen ableiten",
+      "canonicalTargetIds": [
+        "bf23fafe-423d-561a-b832-cb25a327a508",
+        "8d21085b-9780-599e-ba0e-ccc0c31a5f01"
+      ]
+    },
+    {
+      "id": "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-se-020-software-engineering-ablauf-diagrammatisch-darstellen-2f7e86f4",
+      "passageId": "de-st-informatik:st-inf-q-se",
+      "topicCode": "ST-INF-SEKII-Q-SE-20",
+      "bulletIndex": 20,
+      "title": "ST-INF-SEKII-Q-SE-20: Software-Engineering-Ablauf diagrammatisch darstellen",
+      "description": "Source-Ziel aus Qualifikationsphase Kurs 3: Software Engineering und Projektarbeit: Ablaeufe des Software-Engineerings mit Diagrammen veranschaulichen und interpretieren",
+      "sourceText": "Ablaeufe des Software-Engineerings mit Diagrammen veranschaulichen und interpretieren",
+      "sourceSpan": "ST-INF-SEKII-Q-SE.20",
+      "parentBulletText": "Ablaeufe des Software-Engineerings mit Diagrammen veranschaulichen und interpretieren",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Qualifikationsphase Kurs 3: Software Engineering und Projektarbeit, S. 28.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:ST-INF-SEKII-Q-SE",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "Ablaeufe des Software-Engineerings mit Diagrammen veranschaulichen und interpretieren",
+      "rawSourceSpan": "ST-INF-SEKII-Q-SE.20",
+      "rawParentBulletText": "Ablaeufe des Software-Engineerings mit Diagrammen veranschaulichen und interpretieren",
+      "canonicalTargetIds": [
+        "df1a7c0c-68c4-5262-846d-67f983d79697",
+        "f81be4d3-2445-54aa-b17e-2a27466e7e0d"
+      ]
+    },
+    {
+      "id": "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-se-021-projektdokumentation-erstellen-0ff27e06",
+      "passageId": "de-st-informatik:st-inf-q-se",
+      "topicCode": "ST-INF-SEKII-Q-SE-21",
+      "bulletIndex": 21,
+      "title": "ST-INF-SEKII-Q-SE-21: Projektdokumentation erstellen",
+      "description": "Source-Ziel aus Qualifikationsphase Kurs 3: Software Engineering und Projektarbeit: begleitende Projektdokumentation sprachlich differenziert und grafisch erstellen",
+      "sourceText": "begleitende Projektdokumentation sprachlich differenziert und grafisch erstellen",
+      "sourceSpan": "ST-INF-SEKII-Q-SE.21",
+      "parentBulletText": "begleitende Projektdokumentation sprachlich differenziert und grafisch erstellen",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Qualifikationsphase Kurs 3: Software Engineering und Projektarbeit, S. 28.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:ST-INF-SEKII-Q-SE",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "begleitende Projektdokumentation sprachlich differenziert und grafisch erstellen",
+      "rawSourceSpan": "ST-INF-SEKII-Q-SE.21",
+      "rawParentBulletText": "begleitende Projektdokumentation sprachlich differenziert und grafisch erstellen",
+      "canonicalTargetIds": [
+        "91230113-91b0-5a8b-94e4-4419014cfb58",
+        "bf23fafe-423d-561a-b832-cb25a327a508"
+      ]
+    },
+    {
+      "id": "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-se-022-methoden-des-software-engineerings-kennen-bd7d01e4",
+      "passageId": "de-st-informatik:st-inf-q-se",
+      "topicCode": "ST-INF-SEKII-Q-SE-22",
+      "bulletIndex": 22,
+      "title": "ST-INF-SEKII-Q-SE-22: Methoden des Software-Engineerings kennen",
+      "description": "Source-Ziel aus Qualifikationsphase Kurs 3: Software Engineering und Projektarbeit: Methoden des Software-Engineerings nutzen",
+      "sourceText": "Methoden des Software-Engineerings nutzen",
+      "sourceSpan": "ST-INF-SEKII-Q-SE.22",
+      "parentBulletText": "Methoden des Software-Engineerings nutzen",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Qualifikationsphase Kurs 3: Software Engineering und Projektarbeit, S. 28.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:ST-INF-SEKII-Q-SE",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "Methoden des Software-Engineerings nutzen",
+      "rawSourceSpan": "ST-INF-SEKII-Q-SE.22",
+      "rawParentBulletText": "Methoden des Software-Engineerings nutzen",
+      "canonicalTargetIds": [
+        "df1a7c0c-68c4-5262-846d-67f983d79697",
+        "0ef581d1-c033-5a98-a65a-48ea7b80136f"
+      ]
+    },
+    {
+      "id": "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-se-023-projektplanung-und-organisation-anwenden-1c7ed4d7",
+      "passageId": "de-st-informatik:st-inf-q-se",
+      "topicCode": "ST-INF-SEKII-Q-SE-23",
+      "bulletIndex": 23,
+      "title": "ST-INF-SEKII-Q-SE-23: Projektplanung und Organisation anwenden",
+      "description": "Source-Ziel aus Qualifikationsphase Kurs 3: Software Engineering und Projektarbeit: Projektplanung und -organisation anwenden",
+      "sourceText": "Projektplanung und -organisation anwenden",
+      "sourceSpan": "ST-INF-SEKII-Q-SE.23",
+      "parentBulletText": "Projektplanung und -organisation anwenden",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Qualifikationsphase Kurs 3: Software Engineering und Projektarbeit, S. 28.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:ST-INF-SEKII-Q-SE",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "Projektplanung und -organisation anwenden",
+      "rawSourceSpan": "ST-INF-SEKII-Q-SE.23",
+      "rawParentBulletText": "Projektplanung und -organisation anwenden",
+      "canonicalTargetIds": [
+        "8d21085b-9780-599e-ba0e-ccc0c31a5f01"
+      ]
+    },
+    {
+      "id": "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-se-024-technischen-entwurf-erstellen-2ba0300f",
+      "passageId": "de-st-informatik:st-inf-q-se",
+      "topicCode": "ST-INF-SEKII-Q-SE-24",
+      "bulletIndex": 24,
+      "title": "ST-INF-SEKII-Q-SE-24: Technischen Entwurf erstellen",
+      "description": "Source-Ziel aus Qualifikationsphase Kurs 3: Software Engineering und Projektarbeit: technischen Entwurf der Software erstellen",
+      "sourceText": "technischen Entwurf der Software erstellen",
+      "sourceSpan": "ST-INF-SEKII-Q-SE.24",
+      "parentBulletText": "technischen Entwurf der Software erstellen",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Qualifikationsphase Kurs 3: Software Engineering und Projektarbeit, S. 28.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:ST-INF-SEKII-Q-SE",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "technischen Entwurf der Software erstellen",
+      "rawSourceSpan": "ST-INF-SEKII-Q-SE.24",
+      "rawParentBulletText": "technischen Entwurf der Software erstellen",
+      "canonicalTargetIds": [
+        "b24084e1-bff3-5fc6-800d-ec6c024e52aa",
+        "df1a7c0c-68c4-5262-846d-67f983d79697"
+      ]
+    },
+    {
+      "id": "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-se-025-implementierung-und-test-verbinden-e2265695",
+      "passageId": "de-st-informatik:st-inf-q-se",
+      "topicCode": "ST-INF-SEKII-Q-SE-25",
+      "bulletIndex": 25,
+      "title": "ST-INF-SEKII-Q-SE-25: Implementierung und Test verbinden",
+      "description": "Source-Ziel aus Qualifikationsphase Kurs 3: Software Engineering und Projektarbeit: Implementierung und Test im Projekt verbinden",
+      "sourceText": "Implementierung und Test im Projekt verbinden",
+      "sourceSpan": "ST-INF-SEKII-Q-SE.25",
+      "parentBulletText": "Implementierung und Test im Projekt verbinden",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Qualifikationsphase Kurs 3: Software Engineering und Projektarbeit, S. 28.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:ST-INF-SEKII-Q-SE",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "Implementierung und Test im Projekt verbinden",
+      "rawSourceSpan": "ST-INF-SEKII-Q-SE.25",
+      "rawParentBulletText": "Implementierung und Test im Projekt verbinden",
+      "canonicalTargetIds": [
+        "fcdf8e5f-8b1f-55f7-874d-1fbd9fac0614",
+        "d5914986-fba8-56cc-99be-d9560ac7666d"
+      ]
+    },
+    {
+      "id": "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-se-026-qualitaetssicherung-einsetzen-eef6473e",
+      "passageId": "de-st-informatik:st-inf-q-se",
+      "topicCode": "ST-INF-SEKII-Q-SE-26",
+      "bulletIndex": 26,
+      "title": "ST-INF-SEKII-Q-SE-26: Qualitaetssicherung einsetzen",
+      "description": "Source-Ziel aus Qualifikationsphase Kurs 3: Software Engineering und Projektarbeit: Qualitaetssicherung im Softwareprojekt einsetzen",
+      "sourceText": "Qualitaetssicherung im Softwareprojekt einsetzen",
+      "sourceSpan": "ST-INF-SEKII-Q-SE.26",
+      "parentBulletText": "Qualitaetssicherung im Softwareprojekt einsetzen",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Qualifikationsphase Kurs 3: Software Engineering und Projektarbeit, S. 28.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:ST-INF-SEKII-Q-SE",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "Qualitaetssicherung im Softwareprojekt einsetzen",
+      "rawSourceSpan": "ST-INF-SEKII-Q-SE.26",
+      "rawParentBulletText": "Qualitaetssicherung im Softwareprojekt einsetzen",
+      "canonicalTargetIds": [
+        "0ef581d1-c033-5a98-a65a-48ea7b80136f",
+        "d5914986-fba8-56cc-99be-d9560ac7666d"
+      ]
+    },
+    {
+      "id": "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-current-001-komplexe-informatikinhalte-modellieren-7cda7e9d",
+      "passageId": "de-st-informatik:st-inf-q-current",
+      "topicCode": "ST-INF-SEKII-Q-CURRENT-01",
+      "bulletIndex": 1,
+      "title": "ST-INF-SEKII-Q-CURRENT-1: Komplexe Informatikinhalte modellieren",
+      "description": "Source-Ziel aus Qualifikationsphase Kurs 4: Aktuelle Entwicklungen der Informatik im gesellschaftlichen Kontext: wesentliche Aspekte komplexer Informatikinhalte erkennen und modellieren",
+      "sourceText": "wesentliche Aspekte komplexer Informatikinhalte erkennen und modellieren",
+      "sourceSpan": "ST-INF-SEKII-Q-CURRENT.1",
+      "parentBulletText": "wesentliche Aspekte komplexer Informatikinhalte erkennen und modellieren",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Qualifikationsphase Kurs 4: Aktuelle Entwicklungen der Informatik im gesellschaftlichen Kontext, S. 30.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:ST-INF-SEKII-Q-CURRENT",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "wesentliche Aspekte komplexer Informatikinhalte erkennen und modellieren",
+      "rawSourceSpan": "ST-INF-SEKII-Q-CURRENT.1",
+      "rawParentBulletText": "wesentliche Aspekte komplexer Informatikinhalte erkennen und modellieren",
+      "canonicalTargetIds": [
+        "c10e647b-2f51-5002-b352-830933a67214"
+      ]
+    },
+    {
+      "id": "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-current-002-chancen-risiken-missbrauch-bewerten-87b54a31",
+      "passageId": "de-st-informatik:st-inf-q-current",
+      "topicCode": "ST-INF-SEKII-Q-CURRENT-02",
+      "bulletIndex": 2,
+      "title": "ST-INF-SEKII-Q-CURRENT-2: Chancen Risiken Missbrauch bewerten",
+      "description": "Source-Ziel aus Qualifikationsphase Kurs 4: Aktuelle Entwicklungen der Informatik im gesellschaftlichen Kontext: Chancen, Risiken und Missbrauchsmoeglichkeiten von Informatiksystemen beschreiben und bewerten",
+      "sourceText": "Chancen, Risiken und Missbrauchsmoeglichkeiten von Informatiksystemen beschreiben und bewerten",
+      "sourceSpan": "ST-INF-SEKII-Q-CURRENT.2",
+      "parentBulletText": "Chancen, Risiken und Missbrauchsmoeglichkeiten von Informatiksystemen beschreiben und bewerten",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Qualifikationsphase Kurs 4: Aktuelle Entwicklungen der Informatik im gesellschaftlichen Kontext, S. 30.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:ST-INF-SEKII-Q-CURRENT",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "Chancen, Risiken und Missbrauchsmoeglichkeiten von Informatiksystemen beschreiben und bewerten",
+      "rawSourceSpan": "ST-INF-SEKII-Q-CURRENT.2",
+      "rawParentBulletText": "Chancen, Risiken und Missbrauchsmoeglichkeiten von Informatiksystemen beschreiben und bewerten",
+      "canonicalTargetIds": [
+        "de3af5ce-344c-5e04-a081-4c2904eb9fad",
+        "e382fc41-6f59-5bc5-9514-f2201a3a4c5a"
+      ]
+    },
+    {
+      "id": "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-current-003-grenzen-informatikdominierter-welt-bewerten-4dc1392c",
+      "passageId": "de-st-informatik:st-inf-q-current",
+      "topicCode": "ST-INF-SEKII-Q-CURRENT-03",
+      "bulletIndex": 3,
+      "title": "ST-INF-SEKII-Q-CURRENT-3: Grenzen informatikdominierter Welt bewerten",
+      "description": "Source-Ziel aus Qualifikationsphase Kurs 4: Aktuelle Entwicklungen der Informatik im gesellschaftlichen Kontext: Moeglichkeiten und Grenzen in einer von Informatiksystemen dominierten Welt erkennen und bewerten",
+      "sourceText": "Moeglichkeiten und Grenzen in einer von Informatiksystemen dominierten Welt erkennen und bewerten",
+      "sourceSpan": "ST-INF-SEKII-Q-CURRENT.3",
+      "parentBulletText": "Moeglichkeiten und Grenzen in einer von Informatiksystemen dominierten Welt erkennen und bewerten",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Qualifikationsphase Kurs 4: Aktuelle Entwicklungen der Informatik im gesellschaftlichen Kontext, S. 30.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:ST-INF-SEKII-Q-CURRENT",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "Moeglichkeiten und Grenzen in einer von Informatiksystemen dominierten Welt erkennen und bewerten",
+      "rawSourceSpan": "ST-INF-SEKII-Q-CURRENT.3",
+      "rawParentBulletText": "Moeglichkeiten und Grenzen in einer von Informatiksystemen dominierten Welt erkennen und bewerten",
+      "canonicalTargetIds": [
+        "de3af5ce-344c-5e04-a081-4c2904eb9fad",
+        "d848ceb9-cd73-5a13-9407-f3364764c223"
+      ]
+    },
+    {
+      "id": "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-current-004-digitalisierung-und-nachhaltigkeit-bewerten-d2c28683",
+      "passageId": "de-st-informatik:st-inf-q-current",
+      "topicCode": "ST-INF-SEKII-Q-CURRENT-04",
+      "bulletIndex": 4,
+      "title": "ST-INF-SEKII-Q-CURRENT-4: Digitalisierung und Nachhaltigkeit bewerten",
+      "description": "Source-Ziel aus Qualifikationsphase Kurs 4: Aktuelle Entwicklungen der Informatik im gesellschaftlichen Kontext: Potenziale der Digitalisierung im Sinne der Nachhaltigkeit erkennen, bewerten und Handlungsstrategien ableiten",
+      "sourceText": "Potenziale der Digitalisierung im Sinne der Nachhaltigkeit erkennen, bewerten und Handlungsstrategien ableiten",
+      "sourceSpan": "ST-INF-SEKII-Q-CURRENT.4",
+      "parentBulletText": "Potenziale der Digitalisierung im Sinne der Nachhaltigkeit erkennen, bewerten und Handlungsstrategien ableiten",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Qualifikationsphase Kurs 4: Aktuelle Entwicklungen der Informatik im gesellschaftlichen Kontext, S. 30.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:ST-INF-SEKII-Q-CURRENT",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "Potenziale der Digitalisierung im Sinne der Nachhaltigkeit erkennen, bewerten und Handlungsstrategien ableiten",
+      "rawSourceSpan": "ST-INF-SEKII-Q-CURRENT.4",
+      "rawParentBulletText": "Potenziale der Digitalisierung im Sinne der Nachhaltigkeit erkennen, bewerten und Handlungsstrategien ableiten",
+      "canonicalTargetIds": [
+        "de3af5ce-344c-5e04-a081-4c2904eb9fad",
+        "d848ceb9-cd73-5a13-9407-f3364764c223"
+      ]
+    },
+    {
+      "id": "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-current-005-informatiksysteme-multidimensional-analysieren-a8fb644c",
+      "passageId": "de-st-informatik:st-inf-q-current",
+      "topicCode": "ST-INF-SEKII-Q-CURRENT-05",
+      "bulletIndex": 5,
+      "title": "ST-INF-SEKII-Q-CURRENT-5: Informatiksysteme multidimensional analysieren",
+      "description": "Source-Ziel aus Qualifikationsphase Kurs 4: Aktuelle Entwicklungen der Informatik im gesellschaftlichen Kontext: Informatiksysteme aus technischer, informatischer, oekologischer und sozialer Sicht analysieren",
+      "sourceText": "Informatiksysteme aus technischer, informatischer, oekologischer und sozialer Sicht analysieren",
+      "sourceSpan": "ST-INF-SEKII-Q-CURRENT.5",
+      "parentBulletText": "Informatiksysteme aus technischer, informatischer, oekologischer und sozialer Sicht analysieren",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Qualifikationsphase Kurs 4: Aktuelle Entwicklungen der Informatik im gesellschaftlichen Kontext, S. 30.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:ST-INF-SEKII-Q-CURRENT",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "Informatiksysteme aus technischer, informatischer, oekologischer und sozialer Sicht analysieren",
+      "rawSourceSpan": "ST-INF-SEKII-Q-CURRENT.5",
+      "rawParentBulletText": "Informatiksysteme aus technischer, informatischer, oekologischer und sozialer Sicht analysieren",
+      "canonicalTargetIds": [
+        "e382fc41-6f59-5bc5-9514-f2201a3a4c5a",
+        "de3af5ce-344c-5e04-a081-4c2904eb9fad"
+      ]
+    },
+    {
+      "id": "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-current-006-eigenes-verhalten-ableiten-a73c939a",
+      "passageId": "de-st-informatik:st-inf-q-current",
+      "topicCode": "ST-INF-SEKII-Q-CURRENT-06",
+      "bulletIndex": 6,
+      "title": "ST-INF-SEKII-Q-CURRENT-6: Eigenes Verhalten ableiten",
+      "description": "Source-Ziel aus Qualifikationsphase Kurs 4: Aktuelle Entwicklungen der Informatik im gesellschaftlichen Kontext: Rueckschluesse auf eigenes Verhalten beim Einsatz von Informatiksystemen ziehen",
+      "sourceText": "Rueckschluesse auf eigenes Verhalten beim Einsatz von Informatiksystemen ziehen",
+      "sourceSpan": "ST-INF-SEKII-Q-CURRENT.6",
+      "parentBulletText": "Rueckschluesse auf eigenes Verhalten beim Einsatz von Informatiksystemen ziehen",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Qualifikationsphase Kurs 4: Aktuelle Entwicklungen der Informatik im gesellschaftlichen Kontext, S. 30.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:ST-INF-SEKII-Q-CURRENT",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "Rueckschluesse auf eigenes Verhalten beim Einsatz von Informatiksystemen ziehen",
+      "rawSourceSpan": "ST-INF-SEKII-Q-CURRENT.6",
+      "rawParentBulletText": "Rueckschluesse auf eigenes Verhalten beim Einsatz von Informatiksystemen ziehen",
+      "canonicalTargetIds": [
+        "de3af5ce-344c-5e04-a081-4c2904eb9fad"
+      ]
+    },
+    {
+      "id": "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-current-007-gesellschaftliche-folgen-diskutieren-299332f2",
+      "passageId": "de-st-informatik:st-inf-q-current",
+      "topicCode": "ST-INF-SEKII-Q-CURRENT-07",
+      "bulletIndex": 7,
+      "title": "ST-INF-SEKII-Q-CURRENT-7: Gesellschaftliche Folgen diskutieren",
+      "description": "Source-Ziel aus Qualifikationsphase Kurs 4: Aktuelle Entwicklungen der Informatik im gesellschaftlichen Kontext: gesellschaftliche Folgen der Nutzung von Informatiksystemen differenziert diskutieren",
+      "sourceText": "gesellschaftliche Folgen der Nutzung von Informatiksystemen differenziert diskutieren",
+      "sourceSpan": "ST-INF-SEKII-Q-CURRENT.7",
+      "parentBulletText": "gesellschaftliche Folgen der Nutzung von Informatiksystemen differenziert diskutieren",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Qualifikationsphase Kurs 4: Aktuelle Entwicklungen der Informatik im gesellschaftlichen Kontext, S. 30.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:ST-INF-SEKII-Q-CURRENT",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "gesellschaftliche Folgen der Nutzung von Informatiksystemen differenziert diskutieren",
+      "rawSourceSpan": "ST-INF-SEKII-Q-CURRENT.7",
+      "rawParentBulletText": "gesellschaftliche Folgen der Nutzung von Informatiksystemen differenziert diskutieren",
+      "canonicalTargetIds": [
+        "de3af5ce-344c-5e04-a081-4c2904eb9fad",
+        "ff6b67e8-dc27-5755-8dab-23ed658194fd"
+      ]
+    },
+    {
+      "id": "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-current-008-lebenslanges-lernen-und-teilhabe-reflektieren-e61546ed",
+      "passageId": "de-st-informatik:st-inf-q-current",
+      "topicCode": "ST-INF-SEKII-Q-CURRENT-08",
+      "bulletIndex": 8,
+      "title": "ST-INF-SEKII-Q-CURRENT-8: Lebenslanges Lernen und Teilhabe reflektieren",
+      "description": "Source-Ziel aus Qualifikationsphase Kurs 4: Aktuelle Entwicklungen der Informatik im gesellschaftlichen Kontext: Handlungsstrategien fuer lebenslanges Lernen sowie soziale Integration und Teilhabe reflektieren",
+      "sourceText": "Handlungsstrategien fuer lebenslanges Lernen sowie soziale Integration und Teilhabe reflektieren",
+      "sourceSpan": "ST-INF-SEKII-Q-CURRENT.8",
+      "parentBulletText": "Handlungsstrategien fuer lebenslanges Lernen sowie soziale Integration und Teilhabe reflektieren",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Qualifikationsphase Kurs 4: Aktuelle Entwicklungen der Informatik im gesellschaftlichen Kontext, S. 30.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:ST-INF-SEKII-Q-CURRENT",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "Handlungsstrategien fuer lebenslanges Lernen sowie soziale Integration und Teilhabe reflektieren",
+      "rawSourceSpan": "ST-INF-SEKII-Q-CURRENT.8",
+      "rawParentBulletText": "Handlungsstrategien fuer lebenslanges Lernen sowie soziale Integration und Teilhabe reflektieren",
+      "canonicalTargetIds": [
+        "de3af5ce-344c-5e04-a081-4c2904eb9fad",
+        "d848ceb9-cd73-5a13-9407-f3364764c223"
+      ]
+    },
+    {
+      "id": "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-current-009-wechselwirkungen-darstellen-87543fbd",
+      "passageId": "de-st-informatik:st-inf-q-current",
+      "topicCode": "ST-INF-SEKII-Q-CURRENT-09",
+      "bulletIndex": 9,
+      "title": "ST-INF-SEKII-Q-CURRENT-9: Wechselwirkungen darstellen",
+      "description": "Source-Ziel aus Qualifikationsphase Kurs 4: Aktuelle Entwicklungen der Informatik im gesellschaftlichen Kontext: Wechselwirkungen zwischen Informatiksystemen, Individuen, Gesellschaft und Umwelt darstellen",
+      "sourceText": "Wechselwirkungen zwischen Informatiksystemen, Individuen, Gesellschaft und Umwelt darstellen",
+      "sourceSpan": "ST-INF-SEKII-Q-CURRENT.9",
+      "parentBulletText": "Wechselwirkungen zwischen Informatiksystemen, Individuen, Gesellschaft und Umwelt darstellen",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Qualifikationsphase Kurs 4: Aktuelle Entwicklungen der Informatik im gesellschaftlichen Kontext, S. 30.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:ST-INF-SEKII-Q-CURRENT",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "Wechselwirkungen zwischen Informatiksystemen, Individuen, Gesellschaft und Umwelt darstellen",
+      "rawSourceSpan": "ST-INF-SEKII-Q-CURRENT.9",
+      "rawParentBulletText": "Wechselwirkungen zwischen Informatiksystemen, Individuen, Gesellschaft und Umwelt darstellen",
+      "canonicalTargetIds": [
+        "e382fc41-6f59-5bc5-9514-f2201a3a4c5a",
+        "de3af5ce-344c-5e04-a081-4c2904eb9fad"
+      ]
+    },
+    {
+      "id": "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-current-010-aktuelle-informatiksysteme-bewerten-97d52d31",
+      "passageId": "de-st-informatik:st-inf-q-current",
+      "topicCode": "ST-INF-SEKII-Q-CURRENT-10",
+      "bulletIndex": 10,
+      "title": "ST-INF-SEKII-Q-CURRENT-10: Aktuelle Informatiksysteme bewerten",
+      "description": "Source-Ziel aus Qualifikationsphase Kurs 4: Aktuelle Entwicklungen der Informatik im gesellschaftlichen Kontext: aktuelle Informatiksysteme und Technikfolgenabschaetzung bearbeiten",
+      "sourceText": "aktuelle Informatiksysteme und Technikfolgenabschaetzung bearbeiten",
+      "sourceSpan": "ST-INF-SEKII-Q-CURRENT.10",
+      "parentBulletText": "aktuelle Informatiksysteme und Technikfolgenabschaetzung bearbeiten",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Qualifikationsphase Kurs 4: Aktuelle Entwicklungen der Informatik im gesellschaftlichen Kontext, S. 30.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:ST-INF-SEKII-Q-CURRENT",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "aktuelle Informatiksysteme und Technikfolgenabschaetzung bearbeiten",
+      "rawSourceSpan": "ST-INF-SEKII-Q-CURRENT.10",
+      "rawParentBulletText": "aktuelle Informatiksysteme und Technikfolgenabschaetzung bearbeiten",
+      "canonicalTargetIds": [
+        "e382fc41-6f59-5bc5-9514-f2201a3a4c5a",
+        "de3af5ce-344c-5e04-a081-4c2904eb9fad"
+      ]
+    },
+    {
+      "id": "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-current-011-informatiksysteme-gestalten-c7aba472",
+      "passageId": "de-st-informatik:st-inf-q-current",
+      "topicCode": "ST-INF-SEKII-Q-CURRENT-11",
+      "bulletIndex": 11,
+      "title": "ST-INF-SEKII-Q-CURRENT-11: Informatiksysteme gestalten",
+      "description": "Source-Ziel aus Qualifikationsphase Kurs 4: Aktuelle Entwicklungen der Informatik im gesellschaftlichen Kontext: Gestaltung von Informatiksystemen als aktuelles Themenfeld bearbeiten",
+      "sourceText": "Gestaltung von Informatiksystemen als aktuelles Themenfeld bearbeiten",
+      "sourceSpan": "ST-INF-SEKII-Q-CURRENT.11",
+      "parentBulletText": "Gestaltung von Informatiksystemen als aktuelles Themenfeld bearbeiten",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Qualifikationsphase Kurs 4: Aktuelle Entwicklungen der Informatik im gesellschaftlichen Kontext, S. 30.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:ST-INF-SEKII-Q-CURRENT",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "Gestaltung von Informatiksystemen als aktuelles Themenfeld bearbeiten",
+      "rawSourceSpan": "ST-INF-SEKII-Q-CURRENT.11",
+      "rawParentBulletText": "Gestaltung von Informatiksystemen als aktuelles Themenfeld bearbeiten",
+      "canonicalTargetIds": [
+        "a2431bb5-6491-53fe-8dd3-309546a2cb97",
+        "0ef581d1-c033-5a98-a65a-48ea7b80136f"
+      ]
+    },
+    {
+      "id": "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-current-012-virtuelle-welten-einordnen-470fbd44",
+      "passageId": "de-st-informatik:st-inf-q-current",
+      "topicCode": "ST-INF-SEKII-Q-CURRENT-12",
+      "bulletIndex": 12,
+      "title": "ST-INF-SEKII-Q-CURRENT-12: Virtuelle Welten einordnen",
+      "description": "Source-Ziel aus Qualifikationsphase Kurs 4: Aktuelle Entwicklungen der Informatik im gesellschaftlichen Kontext: virtuelle Welten, zum Beispiel 3D-Modellierung, einordnen",
+      "sourceText": "virtuelle Welten, zum Beispiel 3D-Modellierung, einordnen",
+      "sourceSpan": "ST-INF-SEKII-Q-CURRENT.12",
+      "parentBulletText": "virtuelle Welten, zum Beispiel 3D-Modellierung, einordnen",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Qualifikationsphase Kurs 4: Aktuelle Entwicklungen der Informatik im gesellschaftlichen Kontext, S. 30.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:ST-INF-SEKII-Q-CURRENT",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "virtuelle Welten, zum Beispiel 3D-Modellierung, einordnen",
+      "rawSourceSpan": "ST-INF-SEKII-Q-CURRENT.12",
+      "rawParentBulletText": "virtuelle Welten, zum Beispiel 3D-Modellierung, einordnen",
+      "canonicalTargetIds": [
+        "c10e647b-2f51-5002-b352-830933a67214",
+        "f81be4d3-2445-54aa-b17e-2a27466e7e0d"
+      ]
+    },
+    {
+      "id": "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-current-013-ki-systeme-und-anwendungen-bewerten-bbb93953",
+      "passageId": "de-st-informatik:st-inf-q-current",
+      "topicCode": "ST-INF-SEKII-Q-CURRENT-13",
+      "bulletIndex": 13,
+      "title": "ST-INF-SEKII-Q-CURRENT-13: KI-Systeme und Anwendungen bewerten",
+      "description": "Source-Ziel aus Qualifikationsphase Kurs 4: Aktuelle Entwicklungen der Informatik im gesellschaftlichen Kontext: Systeme der kuenstlichen Intelligenz und deren Anwendung bewerten",
+      "sourceText": "Systeme der kuenstlichen Intelligenz und deren Anwendung bewerten",
+      "sourceSpan": "ST-INF-SEKII-Q-CURRENT.13",
+      "parentBulletText": "Systeme der kuenstlichen Intelligenz und deren Anwendung bewerten",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Qualifikationsphase Kurs 4: Aktuelle Entwicklungen der Informatik im gesellschaftlichen Kontext, S. 30.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:ST-INF-SEKII-Q-CURRENT",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "Systeme der kuenstlichen Intelligenz und deren Anwendung bewerten",
+      "rawSourceSpan": "ST-INF-SEKII-Q-CURRENT.13",
+      "rawParentBulletText": "Systeme der kuenstlichen Intelligenz und deren Anwendung bewerten",
+      "canonicalTargetIds": [
+        "4525b77a-02de-5ef2-8e93-dc28cc5f6644",
+        "de3af5ce-344c-5e04-a081-4c2904eb9fad"
+      ]
+    },
+    {
+      "id": "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-current-014-soziale-netzwerke-und-kollaboration-analysieren-cc7d419b",
+      "passageId": "de-st-informatik:st-inf-q-current",
+      "topicCode": "ST-INF-SEKII-Q-CURRENT-14",
+      "bulletIndex": 14,
+      "title": "ST-INF-SEKII-Q-CURRENT-14: Soziale Netzwerke und Kollaboration analysieren",
+      "description": "Source-Ziel aus Qualifikationsphase Kurs 4: Aktuelle Entwicklungen der Informatik im gesellschaftlichen Kontext: soziale Netzwerke und kollaboratives Arbeiten analysieren",
+      "sourceText": "soziale Netzwerke und kollaboratives Arbeiten analysieren",
+      "sourceSpan": "ST-INF-SEKII-Q-CURRENT.14",
+      "parentBulletText": "soziale Netzwerke und kollaboratives Arbeiten analysieren",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Qualifikationsphase Kurs 4: Aktuelle Entwicklungen der Informatik im gesellschaftlichen Kontext, S. 30.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:ST-INF-SEKII-Q-CURRENT",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "soziale Netzwerke und kollaboratives Arbeiten analysieren",
+      "rawSourceSpan": "ST-INF-SEKII-Q-CURRENT.14",
+      "rawParentBulletText": "soziale Netzwerke und kollaboratives Arbeiten analysieren",
+      "canonicalTargetIds": [
+        "ff6b67e8-dc27-5755-8dab-23ed658194fd",
+        "de3af5ce-344c-5e04-a081-4c2904eb9fad"
+      ]
+    },
+    {
+      "id": "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-current-015-ressourcenverbrauch-von-informatiksystemen-bewerten-7a6f97bf",
+      "passageId": "de-st-informatik:st-inf-q-current",
+      "topicCode": "ST-INF-SEKII-Q-CURRENT-15",
+      "bulletIndex": 15,
+      "title": "ST-INF-SEKII-Q-CURRENT-15: Ressourcenverbrauch von Informatiksystemen bewerten",
+      "description": "Source-Ziel aus Qualifikationsphase Kurs 4: Aktuelle Entwicklungen der Informatik im gesellschaftlichen Kontext: Ressourcenverbrauch von Informatiksystemen bewerten",
+      "sourceText": "Ressourcenverbrauch von Informatiksystemen bewerten",
+      "sourceSpan": "ST-INF-SEKII-Q-CURRENT.15",
+      "parentBulletText": "Ressourcenverbrauch von Informatiksystemen bewerten",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Qualifikationsphase Kurs 4: Aktuelle Entwicklungen der Informatik im gesellschaftlichen Kontext, S. 30.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:ST-INF-SEKII-Q-CURRENT",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "Ressourcenverbrauch von Informatiksystemen bewerten",
+      "rawSourceSpan": "ST-INF-SEKII-Q-CURRENT.15",
+      "rawParentBulletText": "Ressourcenverbrauch von Informatiksystemen bewerten",
+      "canonicalTargetIds": [
+        "e382fc41-6f59-5bc5-9514-f2201a3a4c5a",
+        "de3af5ce-344c-5e04-a081-4c2904eb9fad"
+      ]
+    }
+  ]
+}

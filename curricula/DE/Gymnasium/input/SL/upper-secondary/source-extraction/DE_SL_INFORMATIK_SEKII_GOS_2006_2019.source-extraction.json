@@ -1,0 +1,2479 @@
+{
+  "schemaVersion": 1,
+  "extractionId": "DE-SL-INFORMATIK-SEKII-GOS-2006-2019",
+  "sourceLandscapeId": "71b107e2-9605-5b59-addd-6874da4d2437",
+  "targetLandscapeId": "7d51b38c-a149-5407-bddc-d2ce7878b020",
+  "jurisdiction": "DE-SL",
+  "subject": "Informatik",
+  "stage": "SekII",
+  "title": "Informatik Sekundarstufe II (Saarland, GOS 2006/2019 Source-Extraction)",
+  "sourceDocument": {
+    "key": "SL-INF-GOS-EP-2006",
+    "title": "Lehrplan Informatik Einfuehrungsphase der gymnasialen Oberstufe Saarland 2006",
+    "path": "curricula/DE/Gymnasium/input/SL/informatics-official/INEinfphFeb2006.web-extract.md",
+    "url": "https://www.saarland.de/SharedDocs/Downloads/DE/mbk/Lehrplaene/Lehrplaene_GOS_ab_2019_2020/Informatik/INEinfphFeb2006.pdf?__blob=publicationFile&v=3",
+    "official": true
+  },
+  "sourceDocuments": [
+    {
+      "key": "SL-INF-GOS-EP-2006",
+      "title": "Lehrplan Informatik Einfuehrungsphase der gymnasialen Oberstufe Saarland 2006",
+      "path": "curricula/DE/Gymnasium/input/SL/informatics-official/INEinfphFeb2006.web-extract.md",
+      "url": "https://www.saarland.de/SharedDocs/Downloads/DE/mbk/Lehrplaene/Lehrplaene_GOS_ab_2019_2020/Informatik/INEinfphFeb2006.pdf?__blob=publicationFile&v=3",
+      "official": true
+    },
+    {
+      "key": "SL-INF-GOS-GK-2019",
+      "title": "Lehrplan Informatik Hauptphase Grundkurs Saarland 2019",
+      "path": "curricula/DE/Gymnasium/input/SL/informatics-official/LP_In_HP_GK_2019.web-extract.md",
+      "url": "https://www.saarland.de/SharedDocs/Downloads/DE/mbk/Lehrplaene/Lehrplaene_GOS_ab_2019_2020/Informatik/LP_In_HP_GK_2019.pdf?__blob=publicationFile&v=3",
+      "official": true
+    },
+    {
+      "key": "SL-INF-GOS-LK-2019",
+      "title": "Lehrplan Informatik Hauptphase Leistungskurs Saarland 2019",
+      "path": "curricula/DE/Gymnasium/input/SL/informatics-official/LP_In_HP_LK_2019.web-extract.md",
+      "url": "https://www.saarland.de/SharedDocs/Downloads/DE/mbk/Lehrplaene/Lehrplaene_GOS_ab_2019_2020/Informatik/LP_In_HP_LK_2019.pdf?__blob=publicationFile&v=3",
+      "official": true
+    }
+  ],
+  "method": {
+    "passageExtraction": "EP/GK/LK wurden aus den amtlichen Saarland-GOS-Webquellen und lokalen Web-Extract-Notizen fachlich in Source-Ziele zerlegt; direkte PDF-Archivierung ist durch saarland.de 403-Schutz blockiert.",
+    "sourceGoalExtraction": "Source-Ziele wurden als fachlich atomare Kompetenzerwartungen aus den Lehrplanpassagen formuliert und jeweils gegen konkrete kanonische SkillPilot-Ziele gemappt.",
+    "scopeNote": "Saarland Sek II umfasst EP-Grundlagen, Grundkurs-Kern und LK-Erweiterungen zu OOP, Algorithmen, Datenstrukturen, Datenbanken, theoretischer und technischer Informatik."
+  },
+  "qualityReview": {
+    "sourceGoalCountPeerBaseline": {
+      "accepted": true,
+      "details": "75 Source-Ziele; die Zielzahl liegt im Korridor der bereits geprueften Informatik-Laender und ist wegen Saarland 7-10 plus Oberstufenprofil nicht auffaellig niedrig."
+    }
+  },
+  "expectedTopicCodes": [
+    "SL-INF-SEKII-EP-PROG",
+    "SL-INF-SEKII-EP-OOP",
+    "SL-INF-SEKII-EP-DATA",
+    "SL-INF-SEKII-GK-OOP",
+    "SL-INF-SEKII-GK-DB",
+    "SL-INF-SEKII-GK-TI",
+    "SL-INF-SEKII-LK-ALG",
+    "SL-INF-SEKII-LK-STRUCT",
+    "SL-INF-SEKII-LK-DB",
+    "SL-INF-SEKII-LK-TI",
+    "SL-INF-SEKII-LK-SYS"
+  ],
+  "pipelineStatus": {
+    "currentStep": "MAPPING-3",
+    "steps": [
+      {
+        "id": "ORIGINALQUELLEN",
+        "label": "Originalquellen bereitgestellt",
+        "status": "complete",
+        "dependsOn": [],
+        "checks": [
+          {
+            "id": "official-source-documents-present-sl-informatik-sekii",
+            "label": "Amtliche Saarland-Informatik-Quellen sind lokal referenziert",
+            "passed": true,
+            "details": "curricula/DE/Gymnasium/input/SL/informatics-official/INEinfphFeb2006.web-extract.md; curricula/DE/Gymnasium/input/SL/informatics-official/LP_In_HP_GK_2019.web-extract.md; curricula/DE/Gymnasium/input/SL/informatics-official/LP_In_HP_LK_2019.web-extract.md"
+          }
+        ]
+      },
+      {
+        "id": "MAPPING-1",
+        "label": "Original-Lehrplanpassagen extrahiert",
+        "status": "complete",
+        "dependsOn": [
+          "ORIGINALQUELLEN"
+        ],
+        "checks": [
+          {
+            "id": "official-passages-extracted-sl-informatik-sekii",
+            "label": "Lehrplanpassagen aus amtlichen Saarland-Quellen extrahiert",
+            "passed": true,
+            "details": "11 Passagen aus Informatik Sekundarstufe II (Saarland, GOS 2006/2019 Source-Extraction)."
+          },
+          {
+            "id": "source-extraction-not-legacy-sl-informatik-sekii",
+            "label": "Source-Extraction basiert auf amtlichen Quellen statt Legacy-Snapshot",
+            "passed": true,
+            "details": "7/8 liegen als lokale PDF-Kopien vor; weitere blockierte saarland.de-PDFs sind lokal als Web-Extract-Quellennotizen dokumentiert."
+          }
+        ]
+      },
+      {
+        "id": "MAPPING-2",
+        "label": "Source-Ziele aus Lehrplanpassagen erstellt",
+        "status": "complete",
+        "dependsOn": [
+          "MAPPING-1"
+        ],
+        "checks": [
+          {
+            "id": "source-goals-created-sl-informatik-sekii",
+            "label": "Source-Ziele aus Lehrplanpassagen erzeugt",
+            "passed": true,
+            "details": "75 Source-Ziele."
+          },
+          {
+            "id": "source-goal-ids-unique-sl-informatik-sekii",
+            "label": "Source-Ziel-IDs sind eindeutig",
+            "passed": true,
+            "details": "Doppelte IDs: -"
+          },
+          {
+            "id": "source-goal-passages-valid-sl-informatik-sekii",
+            "label": "Jedes Source-Ziel referenziert eine vorhandene Originalpassage",
+            "passed": true,
+            "details": "Ohne Passage: -"
+          }
+        ]
+      },
+      {
+        "id": "MAPPING-3",
+        "label": "Source-Ziele auf SkillPilot-Ziele gemappt",
+        "status": "complete",
+        "dependsOn": [
+          "MAPPING-2"
+        ],
+        "checks": [
+          {
+            "id": "review-file-generated-sl-informatik-sekii",
+            "label": "M3-Review-Datei wird generiert",
+            "passed": true,
+            "details": "Alle Source-Ziele erhalten eine fachliche Review-Entscheidung."
+          }
+        ]
+      }
+    ]
+  },
+  "passages": [
+    {
+      "id": "de-sl-informatik:sl-inf-ep-prog",
+      "topicCode": "SL-INF-SEKII-EP-PROG",
+      "title": "Einführungsphase: Programmiergrundlagen und Softwarearbeit",
+      "text": "1. Programmierumgebung und Quelltexte zur Entwicklung einfacher Programme nutzen\n2. Variablen und grundlegende Datentypen in Programmen einsetzen\n3. Verzweigungen und Wiederholungen implementieren\n4. Programme mit Funktionen strukturieren\n5. Programme testen und Fehler korrigieren\n6. Entwicklungsweg und Ergebnisse dokumentieren",
+      "page": 1,
+      "sourcePath": "curricula/DE/Gymnasium/input/SL/informatics-official/INEinfphFeb2006.web-extract.md",
+      "sourceUrl": "https://www.saarland.de/SharedDocs/Downloads/DE/mbk/Lehrplaene/Lehrplaene_GOS_ab_2019_2020/Informatik/INEinfphFeb2006.pdf?__blob=publicationFile&v=3",
+      "sourceGoalIds": [
+        "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-ep-prog-001-programmierumgebung-und-quelltexte-nutzen-791257a7",
+        "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-ep-prog-002-variablen-und-datentypen-einsetzen-b56b29b5",
+        "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-ep-prog-003-bedingte-anweisungen-und-schleifen-implementieren-f023a7d1",
+        "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-ep-prog-004-funktionen-strukturierend-verwenden-dcd17086",
+        "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-ep-prog-005-programme-systematisch-testen-c2b4f445",
+        "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-ep-prog-006-softwareprojekt-dokumentieren-708a8f50"
+      ]
+    },
+    {
+      "id": "de-sl-informatik:sl-inf-ep-oop",
+      "topicCode": "SL-INF-SEKII-EP-OOP",
+      "title": "Einführungsphase: Objektorientierte Modellierung",
+      "text": "1. Objekte, Klassen, Attribute und Methoden unterscheiden\n2. Sachkontexte objektorientiert analysieren und Klassen ableiten\n3. Objektzustand durch Attributwerte beschreiben\n4. Methoden als Verhalten von Objekten modellieren\n5. einfache UML-Klassendiagramme interpretieren und erstellen\n6. Beziehungen zwischen Klassen modellieren",
+      "page": 2,
+      "sourcePath": "curricula/DE/Gymnasium/input/SL/informatics-official/INEinfphFeb2006.web-extract.md",
+      "sourceUrl": "https://www.saarland.de/SharedDocs/Downloads/DE/mbk/Lehrplaene/Lehrplaene_GOS_ab_2019_2020/Informatik/INEinfphFeb2006.pdf?__blob=publicationFile&v=3",
+      "sourceGoalIds": [
+        "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-ep-oop-001-objekte-und-klassen-unterscheiden-07783bdd",
+        "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-ep-oop-002-klassen-aus-sachkontexten-ableiten-2179c249",
+        "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-ep-oop-003-objektzustand-beschreiben-4f7121ce",
+        "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-ep-oop-004-methoden-als-verhalten-modellieren-1437805e",
+        "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-ep-oop-005-uml-klassendiagramme-nutzen-c7480c2b",
+        "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-ep-oop-006-beziehungen-zwischen-klassen-modellieren-ae83c108"
+      ]
+    },
+    {
+      "id": "de-sl-informatik:sl-inf-ep-data",
+      "topicCode": "SL-INF-SEKII-EP-DATA",
+      "title": "Einführungsphase: Daten, Systeme und Netze",
+      "text": "1. Daten und Information fachlich unterscheiden\n2. Codierungen und Binaerdarstellungen anwenden\n3. grundlegende Komponenten von Rechnern beschreiben\n4. grundlegende Betriebssystemfunktionen einordnen\n5. grundlegende Netzwerkdienste erklaeren\n6. Datenschutz und Datensicherheit reflektieren",
+      "page": 3,
+      "sourcePath": "curricula/DE/Gymnasium/input/SL/informatics-official/INEinfphFeb2006.web-extract.md",
+      "sourceUrl": "https://www.saarland.de/SharedDocs/Downloads/DE/mbk/Lehrplaene/Lehrplaene_GOS_ab_2019_2020/Informatik/INEinfphFeb2006.pdf?__blob=publicationFile&v=3",
+      "sourceGoalIds": [
+        "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-ep-data-001-daten-und-information-fachlich-unterscheiden-ce0d28b2",
+        "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-ep-data-002-codierung-und-binaerdarstellung-anwenden-429bf9be",
+        "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-ep-data-003-rechnerkomponenten-beschreiben-6fdb9da7",
+        "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-ep-data-004-betriebssystemfunktionen-einordnen-04ab95c0",
+        "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-ep-data-005-netzwerkdienste-erklaeren-ac159ba8",
+        "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-ep-data-006-datenschutz-und-datensicherheit-reflektieren-91c9e4be"
+      ]
+    },
+    {
+      "id": "de-sl-informatik:sl-inf-gk-oop",
+      "topicCode": "SL-INF-SEKII-GK-OOP",
+      "title": "Hauptphase Grundkurs: Objektorientierung und Algorithmen",
+      "text": "1. objektorientierte Modelle verfeinern und implementieren\n2. Kapselung und Schnittstellen in Klassen nutzen\n3. Sammlungen zur Verwaltung mehrerer Objekte verwenden\n4. Suchverfahren auf linearen Strukturen implementieren\n5. einfache Sortierverfahren implementieren und nachvollziehen\n6. Algorithmen hinsichtlich Effizienz vergleichen\n7. rekursive Loesungen fuer einfache Probleme einordnen\n8. Programmierloesungen dokumentieren und praesentieren",
+      "page": 4,
+      "sourcePath": "curricula/DE/Gymnasium/input/SL/informatics-official/LP_In_HP_GK_2019.web-extract.md",
+      "sourceUrl": "https://www.saarland.de/SharedDocs/Downloads/DE/mbk/Lehrplaene/Lehrplaene_GOS_ab_2019_2020/Informatik/LP_In_HP_GK_2019.pdf?__blob=publicationFile&v=3",
+      "sourceGoalIds": [
+        "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-gk-oop-001-objektorientierte-modelle-verfeinern-ea1c314e",
+        "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-gk-oop-002-kapselung-und-schnittstellen-nutzen-5a767fc3",
+        "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-gk-oop-003-sammlungen-in-programmen-verwenden-ba297fba",
+        "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-gk-oop-004-suchverfahren-implementieren-eca8bb1c",
+        "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-gk-oop-005-einfache-sortierverfahren-implementieren-6fcbd343",
+        "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-gk-oop-006-algorithmische-effizienz-vergleichen-39524f72",
+        "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-gk-oop-007-rekursion-einordnen-678b6e02",
+        "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-gk-oop-008-programmierloesungen-dokumentieren-8ac1b133"
+      ]
+    },
+    {
+      "id": "de-sl-informatik:sl-inf-gk-db",
+      "topicCode": "SL-INF-SEKII-GK-DB",
+      "title": "Hauptphase Grundkurs: Datenbanken",
+      "text": "1. Datenbankanwendungen analysieren\n2. ER-Modelle aus Sachkontexten erstellen\n3. relationale Schemata aus ER-Modellen ableiten\n4. Redundanzprobleme erkennen und vermeiden\n5. SQL-Select-Abfragen formulieren\n6. SQL-Abfragen mit Joins nutzen\n7. Datenschutzaspekte in Datenbanksystemen beachten",
+      "page": 5,
+      "sourcePath": "curricula/DE/Gymnasium/input/SL/informatics-official/LP_In_HP_GK_2019.web-extract.md",
+      "sourceUrl": "https://www.saarland.de/SharedDocs/Downloads/DE/mbk/Lehrplaene/Lehrplaene_GOS_ab_2019_2020/Informatik/LP_In_HP_GK_2019.pdf?__blob=publicationFile&v=3",
+      "sourceGoalIds": [
+        "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-gk-db-001-datenbankanwendungen-analysieren-0c62cbdc",
+        "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-gk-db-002-er-modell-erstellen-4159a107",
+        "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-gk-db-003-relationenmodell-ableiten-8e55125a",
+        "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-gk-db-004-redundanz-vermeiden-55fddeca",
+        "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-gk-db-005-sql-select-abfragen-formulieren-75d24c81",
+        "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-gk-db-006-sql-joins-nutzen-0ae463ec",
+        "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-gk-db-007-datenschutz-in-datenbanken-beachten-25ba241c"
+      ]
+    },
+    {
+      "id": "de-sl-informatik:sl-inf-gk-ti",
+      "topicCode": "SL-INF-SEKII-GK-TI",
+      "title": "Hauptphase Grundkurs: Automaten und formale Sprachen",
+      "text": "1. formale Sprachen beschreiben\n2. natuerliche und formale Sprachen abgrenzen\n3. einfache Grammatiken verwenden\n4. Ableitungen in Grammatiken pruefen\n5. endliche Automaten modellieren\n6. Grenzen endlicher Automaten diskutieren",
+      "page": 6,
+      "sourcePath": "curricula/DE/Gymnasium/input/SL/informatics-official/LP_In_HP_GK_2019.web-extract.md",
+      "sourceUrl": "https://www.saarland.de/SharedDocs/Downloads/DE/mbk/Lehrplaene/Lehrplaene_GOS_ab_2019_2020/Informatik/LP_In_HP_GK_2019.pdf?__blob=publicationFile&v=3",
+      "sourceGoalIds": [
+        "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-gk-ti-001-formale-sprachen-beschreiben-6f494c6d",
+        "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-gk-ti-002-natuerliche-und-formale-sprache-abgrenzen-dc8f8c84",
+        "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-gk-ti-003-grammatiken-verwenden-1bad2091",
+        "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-gk-ti-004-ableitungen-pruefen-d71ceee0",
+        "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-gk-ti-005-endliche-automaten-modellieren-3ed3df8a",
+        "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-gk-ti-006-automatengrenzen-diskutieren-79ccd788"
+      ]
+    },
+    {
+      "id": "de-sl-informatik:sl-inf-lk-alg",
+      "topicCode": "SL-INF-SEKII-LK-ALG",
+      "title": "Hauptphase Leistungskurs: Such- und Sortierverfahren",
+      "text": "1. sequentielle Suche auf eindimensionalen Feldern implementieren\n2. binaere Suche auf eindimensionalen Feldern implementieren\n3. Bubblesort implementieren und nachvollziehen\n4. Selectionsort implementieren und nachvollziehen\n5. Insertionsort implementieren und nachvollziehen\n6. Grundidee von Mergesort formulieren und an Beispielen nachvollziehen\n7. Grundidee von Quicksort formulieren und an Beispielen nachvollziehen\n8. Laufzeitverhalten einfacher Sortierverfahren analysieren\n9. Laufzeitverhalten hoeherer Sortierverfahren analysieren",
+      "page": 9,
+      "sourcePath": "curricula/DE/Gymnasium/input/SL/informatics-official/LP_In_HP_LK_2019.web-extract.md",
+      "sourceUrl": "https://www.saarland.de/SharedDocs/Downloads/DE/mbk/Lehrplaene/Lehrplaene_GOS_ab_2019_2020/Informatik/LP_In_HP_LK_2019.pdf?__blob=publicationFile&v=3",
+      "sourceGoalIds": [
+        "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-lk-alg-001-sequentielle-suche-implementieren-d95bfdf5",
+        "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-lk-alg-002-binaere-suche-implementieren-6d972e10",
+        "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-lk-alg-003-bubblesort-nachvollziehen-e1f30e73",
+        "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-lk-alg-004-selectionsort-nachvollziehen-30ce3697",
+        "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-lk-alg-005-insertionsort-nachvollziehen-5dfe7dd8",
+        "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-lk-alg-006-mergesort-grundidee-erklaeren-f1b5776b",
+        "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-lk-alg-007-quicksort-grundidee-erklaeren-ceea24e0",
+        "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-lk-alg-008-laufzeit-einfacher-sortierverfahren-analysieren-56581436",
+        "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-lk-alg-009-laufzeit-effizienter-sortierverfahren-analysieren-4ce4ced0"
+      ]
+    },
+    {
+      "id": "de-sl-informatik:sl-inf-lk-struct",
+      "topicCode": "SL-INF-SEKII-LK-STRUCT",
+      "title": "Hauptphase Leistungskurs: Dynamische Datenstrukturen",
+      "text": "1. lineare Listen mit head, tail und Laenge definieren\n2. Suchen, Loeschen, Ersetzen und Einfuegen auf linearen Listen ausfuehren\n3. Stack mit isEmpty, top, push und pop verwenden\n4. Queue mit isEmpty, front, enqueue und dequeue verwenden\n5. binaere Baeume mit Wurzel, Teilbaum, Knoten und Tiefe definieren\n6. Suchen, Tiefenbestimmung und Knotenzaehlung auf Baeumen ausfuehren\n7. Suchbaeume mit Suchen, Einfuegen und Loeschen verwenden\n8. preorder-, inorder- und postorder-Durchlaeufe demonstrieren\n9. strukturelle Induktion auf einfache Baum- und Listenbeispiele anwenden",
+      "page": 10,
+      "sourcePath": "curricula/DE/Gymnasium/input/SL/informatics-official/LP_In_HP_LK_2019.web-extract.md",
+      "sourceUrl": "https://www.saarland.de/SharedDocs/Downloads/DE/mbk/Lehrplaene/Lehrplaene_GOS_ab_2019_2020/Informatik/LP_In_HP_LK_2019.pdf?__blob=publicationFile&v=3",
+      "sourceGoalIds": [
+        "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-lk-struct-001-lineare-listen-definieren-4a6dabed",
+        "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-lk-struct-002-listenoperationen-ausfuehren-1fd69439",
+        "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-lk-struct-003-stack-operationen-verwenden-aa729511",
+        "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-lk-struct-004-queue-operationen-verwenden-35fb91e0",
+        "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-lk-struct-005-binaere-baeume-definieren-5df11149",
+        "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-lk-struct-006-baumoperationen-ausfuehren-c936740a",
+        "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-lk-struct-007-suchbaeume-verwenden-c21f2fc6",
+        "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-lk-struct-008-baumtraversierungen-demonstrieren-c266d5b6",
+        "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-lk-struct-009-strukturelle-induktion-anwenden-2274c516"
+      ]
+    },
+    {
+      "id": "de-sl-informatik:sl-inf-lk-db",
+      "topicCode": "SL-INF-SEKII-LK-DB",
+      "title": "Hauptphase Leistungskurs: Datenbanken vertieft",
+      "text": "1. komplexere ER-Modelle erstellen und begruenden\n2. Normalisierung und Normalformen anwenden\n3. SQL-Abfragen mit Gruppierung und Aggregatfunktionen formulieren\n4. erweiterte SQL-Klauseln und verschachtelte Anfragen nutzen\n5. Datenbanksicherheit und Rechtekonzepte bewerten\n6. relationale Operatoren und SQL-Zusammenhaenge einordnen",
+      "page": 11,
+      "sourcePath": "curricula/DE/Gymnasium/input/SL/informatics-official/LP_In_HP_LK_2019.web-extract.md",
+      "sourceUrl": "https://www.saarland.de/SharedDocs/Downloads/DE/mbk/Lehrplaene/Lehrplaene_GOS_ab_2019_2020/Informatik/LP_In_HP_LK_2019.pdf?__blob=publicationFile&v=3",
+      "sourceGoalIds": [
+        "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-lk-db-001-komplexe-er-modelle-erstellen-863232f4",
+        "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-lk-db-002-normalformen-anwenden-7cc8161d",
+        "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-lk-db-003-sql-aggregation-nutzen-d0b56a71",
+        "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-lk-db-004-erweiterte-sql-klauseln-nutzen-4b8b3666",
+        "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-lk-db-005-datenbanksicherheit-bewerten-7e7ae575",
+        "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-lk-db-006-relationenalgebra-einordnen-dc36ca96"
+      ]
+    },
+    {
+      "id": "de-sl-informatik:sl-inf-lk-ti",
+      "topicCode": "SL-INF-SEKII-LK-TI",
+      "title": "Hauptphase Leistungskurs: Automaten, Berechenbarkeit und Logik",
+      "text": "1. formale Grammatiken entwickeln und Ableitungen pruefen\n2. regulaere Sprachen mit endlichen Automaten verbinden\n3. Grenzen regulaerer Sprachen begruenden\n4. Turingmaschinen als Berechnungsmodell programmieren\n5. das Halteproblem als Grenze algorithmischer Entscheidbarkeit erklaeren\n6. Berechenbarkeit und Nichtberechenbarkeit diskutieren\n7. logische Regeln und Fakten in Prolog modellieren",
+      "page": 12,
+      "sourcePath": "curricula/DE/Gymnasium/input/SL/informatics-official/LP_In_HP_LK_2019.web-extract.md",
+      "sourceUrl": "https://www.saarland.de/SharedDocs/Downloads/DE/mbk/Lehrplaene/Lehrplaene_GOS_ab_2019_2020/Informatik/LP_In_HP_LK_2019.pdf?__blob=publicationFile&v=3",
+      "sourceGoalIds": [
+        "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-lk-ti-001-formale-grammatiken-entwickeln-f8a840e3",
+        "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-lk-ti-002-regulaere-sprachen-und-automaten-verbinden-3ad91a9b",
+        "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-lk-ti-003-grenzen-regulaerer-sprachen-begruenden-62a907c0",
+        "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-lk-ti-004-turingmaschinen-programmieren-b2d96cb4",
+        "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-lk-ti-005-halteproblem-erklaeren-155c044a",
+        "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-lk-ti-006-berechenbarkeit-diskutieren-0ddc74a2",
+        "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-lk-ti-007-prolog-regeln-modellieren-ef376215"
+      ]
+    },
+    {
+      "id": "de-sl-informatik:sl-inf-lk-sys",
+      "topicCode": "SL-INF-SEKII-LK-SYS",
+      "title": "Hauptphase Leistungskurs: Technische Informatik und Systeme",
+      "text": "1. Schaltnetze aus logischen Funktionen entwerfen\n2. Assemblerprogramme nachvollziehen\n3. Befehlssatz und grundlegende Rechnerorganisation erklaeren\n4. Netzwerk- und Systemsicherheit vertiefend analysieren\n5. gesellschaftliche Wirkungen informatischer Systeme bewerten",
+      "page": 13,
+      "sourcePath": "curricula/DE/Gymnasium/input/SL/informatics-official/LP_In_HP_LK_2019.web-extract.md",
+      "sourceUrl": "https://www.saarland.de/SharedDocs/Downloads/DE/mbk/Lehrplaene/Lehrplaene_GOS_ab_2019_2020/Informatik/LP_In_HP_LK_2019.pdf?__blob=publicationFile&v=3",
+      "sourceGoalIds": [
+        "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-lk-sys-001-schaltnetze-entwerfen-4c2e5297",
+        "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-lk-sys-002-assemblerprogramme-nachvollziehen-9f382b6f",
+        "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-lk-sys-003-befehlssatz-und-rechnerorganisation-erklaeren-d8f56bf0",
+        "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-lk-sys-004-netzwerksicherheit-vertiefen-ea217d1b",
+        "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-lk-sys-005-informatik-gesellschaftlich-bewerten-4313469e"
+      ]
+    }
+  ],
+  "sourceGoals": [
+    {
+      "id": "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-ep-prog-001-programmierumgebung-und-quelltexte-nutzen-791257a7",
+      "passageId": "de-sl-informatik:sl-inf-ep-prog",
+      "topicCode": "SL-INF-SEKII-EP-PROG-01",
+      "bulletIndex": 1,
+      "title": "SL-INF-SEKII-EP-PROG-1: Programmierumgebung und Quelltexte nutzen",
+      "description": "Source-Ziel aus Einführungsphase: Programmiergrundlagen und Softwarearbeit: Programmierumgebung und Quelltexte zur Entwicklung einfacher Programme nutzen",
+      "sourceText": "Programmierumgebung und Quelltexte zur Entwicklung einfacher Programme nutzen",
+      "sourceSpan": "SL-INF-SEKII-EP-PROG.1",
+      "parentBulletText": "Programmierumgebung und Quelltexte zur Entwicklung einfacher Programme nutzen",
+      "sourceRef": "Lehrplan Informatik Einfuehrungsphase der gymnasialen Oberstufe Saarland 2006, Einführungsphase: Programmiergrundlagen und Softwarearbeit, S. 1.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-SL",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:SL-INF-SEKII-EP-PROG",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "Programmierumgebung und Quelltexte zur Entwicklung einfacher Programme nutzen",
+      "rawSourceSpan": "SL-INF-SEKII-EP-PROG.1",
+      "rawParentBulletText": "Programmierumgebung und Quelltexte zur Entwicklung einfacher Programme nutzen",
+      "canonicalTargetIds": [
+        "a8206bfb-aaed-5502-9df1-55609f3d79b5",
+        "5ca1960e-6b02-5679-b271-043a5c29b189"
+      ]
+    },
+    {
+      "id": "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-ep-prog-002-variablen-und-datentypen-einsetzen-b56b29b5",
+      "passageId": "de-sl-informatik:sl-inf-ep-prog",
+      "topicCode": "SL-INF-SEKII-EP-PROG-02",
+      "bulletIndex": 2,
+      "title": "SL-INF-SEKII-EP-PROG-2: Variablen und Datentypen einsetzen",
+      "description": "Source-Ziel aus Einführungsphase: Programmiergrundlagen und Softwarearbeit: Variablen und grundlegende Datentypen in Programmen einsetzen",
+      "sourceText": "Variablen und grundlegende Datentypen in Programmen einsetzen",
+      "sourceSpan": "SL-INF-SEKII-EP-PROG.2",
+      "parentBulletText": "Variablen und grundlegende Datentypen in Programmen einsetzen",
+      "sourceRef": "Lehrplan Informatik Einfuehrungsphase der gymnasialen Oberstufe Saarland 2006, Einführungsphase: Programmiergrundlagen und Softwarearbeit, S. 1.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-SL",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:SL-INF-SEKII-EP-PROG",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "Variablen und grundlegende Datentypen in Programmen einsetzen",
+      "rawSourceSpan": "SL-INF-SEKII-EP-PROG.2",
+      "rawParentBulletText": "Variablen und grundlegende Datentypen in Programmen einsetzen",
+      "canonicalTargetIds": [
+        "18317e31-71f7-4e4a-b18c-f61e2b25769d"
+      ]
+    },
+    {
+      "id": "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-ep-prog-003-bedingte-anweisungen-und-schleifen-implementieren-f023a7d1",
+      "passageId": "de-sl-informatik:sl-inf-ep-prog",
+      "topicCode": "SL-INF-SEKII-EP-PROG-03",
+      "bulletIndex": 3,
+      "title": "SL-INF-SEKII-EP-PROG-3: Bedingte Anweisungen und Schleifen implementieren",
+      "description": "Source-Ziel aus Einführungsphase: Programmiergrundlagen und Softwarearbeit: Verzweigungen und Wiederholungen implementieren",
+      "sourceText": "Verzweigungen und Wiederholungen implementieren",
+      "sourceSpan": "SL-INF-SEKII-EP-PROG.3",
+      "parentBulletText": "Verzweigungen und Wiederholungen implementieren",
+      "sourceRef": "Lehrplan Informatik Einfuehrungsphase der gymnasialen Oberstufe Saarland 2006, Einführungsphase: Programmiergrundlagen und Softwarearbeit, S. 1.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-SL",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:SL-INF-SEKII-EP-PROG",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "Verzweigungen und Wiederholungen implementieren",
+      "rawSourceSpan": "SL-INF-SEKII-EP-PROG.3",
+      "rawParentBulletText": "Verzweigungen und Wiederholungen implementieren",
+      "canonicalTargetIds": [
+        "5ca1960e-6b02-5679-b271-043a5c29b189"
+      ]
+    },
+    {
+      "id": "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-ep-prog-004-funktionen-strukturierend-verwenden-dcd17086",
+      "passageId": "de-sl-informatik:sl-inf-ep-prog",
+      "topicCode": "SL-INF-SEKII-EP-PROG-04",
+      "bulletIndex": 4,
+      "title": "SL-INF-SEKII-EP-PROG-4: Funktionen strukturierend verwenden",
+      "description": "Source-Ziel aus Einführungsphase: Programmiergrundlagen und Softwarearbeit: Programme mit Funktionen strukturieren",
+      "sourceText": "Programme mit Funktionen strukturieren",
+      "sourceSpan": "SL-INF-SEKII-EP-PROG.4",
+      "parentBulletText": "Programme mit Funktionen strukturieren",
+      "sourceRef": "Lehrplan Informatik Einfuehrungsphase der gymnasialen Oberstufe Saarland 2006, Einführungsphase: Programmiergrundlagen und Softwarearbeit, S. 1.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-SL",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:SL-INF-SEKII-EP-PROG",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "Programme mit Funktionen strukturieren",
+      "rawSourceSpan": "SL-INF-SEKII-EP-PROG.4",
+      "rawParentBulletText": "Programme mit Funktionen strukturieren",
+      "canonicalTargetIds": [
+        "5961bae4-87c0-52a3-b9cc-56a71b0d5abb",
+        "d5056ca3-2a3d-5145-a28d-29038038a77f"
+      ]
+    },
+    {
+      "id": "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-ep-prog-005-programme-systematisch-testen-c2b4f445",
+      "passageId": "de-sl-informatik:sl-inf-ep-prog",
+      "topicCode": "SL-INF-SEKII-EP-PROG-05",
+      "bulletIndex": 5,
+      "title": "SL-INF-SEKII-EP-PROG-5: Programme systematisch testen",
+      "description": "Source-Ziel aus Einführungsphase: Programmiergrundlagen und Softwarearbeit: Programme testen und Fehler korrigieren",
+      "sourceText": "Programme testen und Fehler korrigieren",
+      "sourceSpan": "SL-INF-SEKII-EP-PROG.5",
+      "parentBulletText": "Programme testen und Fehler korrigieren",
+      "sourceRef": "Lehrplan Informatik Einfuehrungsphase der gymnasialen Oberstufe Saarland 2006, Einführungsphase: Programmiergrundlagen und Softwarearbeit, S. 1.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-SL",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:SL-INF-SEKII-EP-PROG",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "Programme testen und Fehler korrigieren",
+      "rawSourceSpan": "SL-INF-SEKII-EP-PROG.5",
+      "rawParentBulletText": "Programme testen und Fehler korrigieren",
+      "canonicalTargetIds": [
+        "d5914986-fba8-56cc-99be-d9560ac7666d"
+      ]
+    },
+    {
+      "id": "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-ep-prog-006-softwareprojekt-dokumentieren-708a8f50",
+      "passageId": "de-sl-informatik:sl-inf-ep-prog",
+      "topicCode": "SL-INF-SEKII-EP-PROG-06",
+      "bulletIndex": 6,
+      "title": "SL-INF-SEKII-EP-PROG-6: Softwareprojekt dokumentieren",
+      "description": "Source-Ziel aus Einführungsphase: Programmiergrundlagen und Softwarearbeit: Entwicklungsweg und Ergebnisse dokumentieren",
+      "sourceText": "Entwicklungsweg und Ergebnisse dokumentieren",
+      "sourceSpan": "SL-INF-SEKII-EP-PROG.6",
+      "parentBulletText": "Entwicklungsweg und Ergebnisse dokumentieren",
+      "sourceRef": "Lehrplan Informatik Einfuehrungsphase der gymnasialen Oberstufe Saarland 2006, Einführungsphase: Programmiergrundlagen und Softwarearbeit, S. 1.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-SL",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:SL-INF-SEKII-EP-PROG",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "Entwicklungsweg und Ergebnisse dokumentieren",
+      "rawSourceSpan": "SL-INF-SEKII-EP-PROG.6",
+      "rawParentBulletText": "Entwicklungsweg und Ergebnisse dokumentieren",
+      "canonicalTargetIds": [
+        "bf23fafe-423d-561a-b832-cb25a327a508",
+        "fcdf8e5f-8b1f-55f7-874d-1fbd9fac0614",
+        "f81be4d3-2445-54aa-b17e-2a27466e7e0d"
+      ]
+    },
+    {
+      "id": "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-ep-oop-001-objekte-und-klassen-unterscheiden-07783bdd",
+      "passageId": "de-sl-informatik:sl-inf-ep-oop",
+      "topicCode": "SL-INF-SEKII-EP-OOP-01",
+      "bulletIndex": 1,
+      "title": "SL-INF-SEKII-EP-OOP-1: Objekte und Klassen unterscheiden",
+      "description": "Source-Ziel aus Einführungsphase: Objektorientierte Modellierung: Objekte, Klassen, Attribute und Methoden unterscheiden",
+      "sourceText": "Objekte, Klassen, Attribute und Methoden unterscheiden",
+      "sourceSpan": "SL-INF-SEKII-EP-OOP.1",
+      "parentBulletText": "Objekte, Klassen, Attribute und Methoden unterscheiden",
+      "sourceRef": "Lehrplan Informatik Einfuehrungsphase der gymnasialen Oberstufe Saarland 2006, Einführungsphase: Objektorientierte Modellierung, S. 2.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-SL",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:SL-INF-SEKII-EP-OOP",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "Objekte, Klassen, Attribute und Methoden unterscheiden",
+      "rawSourceSpan": "SL-INF-SEKII-EP-OOP.1",
+      "rawParentBulletText": "Objekte, Klassen, Attribute und Methoden unterscheiden",
+      "canonicalTargetIds": [
+        "cb2af3ef-c261-4d92-bc30-3eeb7a2af96a",
+        "6c284640-1f28-4837-aabd-445656ad7f54"
+      ]
+    },
+    {
+      "id": "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-ep-oop-002-klassen-aus-sachkontexten-ableiten-2179c249",
+      "passageId": "de-sl-informatik:sl-inf-ep-oop",
+      "topicCode": "SL-INF-SEKII-EP-OOP-02",
+      "bulletIndex": 2,
+      "title": "SL-INF-SEKII-EP-OOP-2: Klassen aus Sachkontexten ableiten",
+      "description": "Source-Ziel aus Einführungsphase: Objektorientierte Modellierung: Sachkontexte objektorientiert analysieren und Klassen ableiten",
+      "sourceText": "Sachkontexte objektorientiert analysieren und Klassen ableiten",
+      "sourceSpan": "SL-INF-SEKII-EP-OOP.2",
+      "parentBulletText": "Sachkontexte objektorientiert analysieren und Klassen ableiten",
+      "sourceRef": "Lehrplan Informatik Einfuehrungsphase der gymnasialen Oberstufe Saarland 2006, Einführungsphase: Objektorientierte Modellierung, S. 2.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-SL",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:SL-INF-SEKII-EP-OOP",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "Sachkontexte objektorientiert analysieren und Klassen ableiten",
+      "rawSourceSpan": "SL-INF-SEKII-EP-OOP.2",
+      "rawParentBulletText": "Sachkontexte objektorientiert analysieren und Klassen ableiten",
+      "canonicalTargetIds": [
+        "6c284640-1f28-4837-aabd-445656ad7f54",
+        "b24084e1-bff3-5fc6-800d-ec6c024e52aa"
+      ]
+    },
+    {
+      "id": "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-ep-oop-003-objektzustand-beschreiben-4f7121ce",
+      "passageId": "de-sl-informatik:sl-inf-ep-oop",
+      "topicCode": "SL-INF-SEKII-EP-OOP-03",
+      "bulletIndex": 3,
+      "title": "SL-INF-SEKII-EP-OOP-3: Objektzustand beschreiben",
+      "description": "Source-Ziel aus Einführungsphase: Objektorientierte Modellierung: Objektzustand durch Attributwerte beschreiben",
+      "sourceText": "Objektzustand durch Attributwerte beschreiben",
+      "sourceSpan": "SL-INF-SEKII-EP-OOP.3",
+      "parentBulletText": "Objektzustand durch Attributwerte beschreiben",
+      "sourceRef": "Lehrplan Informatik Einfuehrungsphase der gymnasialen Oberstufe Saarland 2006, Einführungsphase: Objektorientierte Modellierung, S. 2.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-SL",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:SL-INF-SEKII-EP-OOP",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "Objektzustand durch Attributwerte beschreiben",
+      "rawSourceSpan": "SL-INF-SEKII-EP-OOP.3",
+      "rawParentBulletText": "Objektzustand durch Attributwerte beschreiben",
+      "canonicalTargetIds": [
+        "cb2af3ef-c261-4d92-bc30-3eeb7a2af96a"
+      ]
+    },
+    {
+      "id": "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-ep-oop-004-methoden-als-verhalten-modellieren-1437805e",
+      "passageId": "de-sl-informatik:sl-inf-ep-oop",
+      "topicCode": "SL-INF-SEKII-EP-OOP-04",
+      "bulletIndex": 4,
+      "title": "SL-INF-SEKII-EP-OOP-4: Methoden als Verhalten modellieren",
+      "description": "Source-Ziel aus Einführungsphase: Objektorientierte Modellierung: Methoden als Verhalten von Objekten modellieren",
+      "sourceText": "Methoden als Verhalten von Objekten modellieren",
+      "sourceSpan": "SL-INF-SEKII-EP-OOP.4",
+      "parentBulletText": "Methoden als Verhalten von Objekten modellieren",
+      "sourceRef": "Lehrplan Informatik Einfuehrungsphase der gymnasialen Oberstufe Saarland 2006, Einführungsphase: Objektorientierte Modellierung, S. 2.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-SL",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:SL-INF-SEKII-EP-OOP",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "Methoden als Verhalten von Objekten modellieren",
+      "rawSourceSpan": "SL-INF-SEKII-EP-OOP.4",
+      "rawParentBulletText": "Methoden als Verhalten von Objekten modellieren",
+      "canonicalTargetIds": [
+        "5961bae4-87c0-52a3-b9cc-56a71b0d5abb",
+        "6c284640-1f28-4837-aabd-445656ad7f54"
+      ]
+    },
+    {
+      "id": "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-ep-oop-005-uml-klassendiagramme-nutzen-c7480c2b",
+      "passageId": "de-sl-informatik:sl-inf-ep-oop",
+      "topicCode": "SL-INF-SEKII-EP-OOP-05",
+      "bulletIndex": 5,
+      "title": "SL-INF-SEKII-EP-OOP-5: UML-Klassendiagramme nutzen",
+      "description": "Source-Ziel aus Einführungsphase: Objektorientierte Modellierung: einfache UML-Klassendiagramme interpretieren und erstellen",
+      "sourceText": "einfache UML-Klassendiagramme interpretieren und erstellen",
+      "sourceSpan": "SL-INF-SEKII-EP-OOP.5",
+      "parentBulletText": "einfache UML-Klassendiagramme interpretieren und erstellen",
+      "sourceRef": "Lehrplan Informatik Einfuehrungsphase der gymnasialen Oberstufe Saarland 2006, Einführungsphase: Objektorientierte Modellierung, S. 2.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-SL",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:SL-INF-SEKII-EP-OOP",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "einfache UML-Klassendiagramme interpretieren und erstellen",
+      "rawSourceSpan": "SL-INF-SEKII-EP-OOP.5",
+      "rawParentBulletText": "einfache UML-Klassendiagramme interpretieren und erstellen",
+      "canonicalTargetIds": [
+        "b24084e1-bff3-5fc6-800d-ec6c024e52aa"
+      ]
+    },
+    {
+      "id": "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-ep-oop-006-beziehungen-zwischen-klassen-modellieren-ae83c108",
+      "passageId": "de-sl-informatik:sl-inf-ep-oop",
+      "topicCode": "SL-INF-SEKII-EP-OOP-06",
+      "bulletIndex": 6,
+      "title": "SL-INF-SEKII-EP-OOP-6: Beziehungen zwischen Klassen modellieren",
+      "description": "Source-Ziel aus Einführungsphase: Objektorientierte Modellierung: Beziehungen zwischen Klassen modellieren",
+      "sourceText": "Beziehungen zwischen Klassen modellieren",
+      "sourceSpan": "SL-INF-SEKII-EP-OOP.6",
+      "parentBulletText": "Beziehungen zwischen Klassen modellieren",
+      "sourceRef": "Lehrplan Informatik Einfuehrungsphase der gymnasialen Oberstufe Saarland 2006, Einführungsphase: Objektorientierte Modellierung, S. 2.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-SL",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:SL-INF-SEKII-EP-OOP",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "Beziehungen zwischen Klassen modellieren",
+      "rawSourceSpan": "SL-INF-SEKII-EP-OOP.6",
+      "rawParentBulletText": "Beziehungen zwischen Klassen modellieren",
+      "canonicalTargetIds": [
+        "b24084e1-bff3-5fc6-800d-ec6c024e52aa"
+      ]
+    },
+    {
+      "id": "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-ep-data-001-daten-und-information-fachlich-unterscheiden-ce0d28b2",
+      "passageId": "de-sl-informatik:sl-inf-ep-data",
+      "topicCode": "SL-INF-SEKII-EP-DATA-01",
+      "bulletIndex": 1,
+      "title": "SL-INF-SEKII-EP-DATA-1: Daten und Information fachlich unterscheiden",
+      "description": "Source-Ziel aus Einführungsphase: Daten, Systeme und Netze: Daten und Information fachlich unterscheiden",
+      "sourceText": "Daten und Information fachlich unterscheiden",
+      "sourceSpan": "SL-INF-SEKII-EP-DATA.1",
+      "parentBulletText": "Daten und Information fachlich unterscheiden",
+      "sourceRef": "Lehrplan Informatik Einfuehrungsphase der gymnasialen Oberstufe Saarland 2006, Einführungsphase: Daten, Systeme und Netze, S. 3.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-SL",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:SL-INF-SEKII-EP-DATA",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "Daten und Information fachlich unterscheiden",
+      "rawSourceSpan": "SL-INF-SEKII-EP-DATA.1",
+      "rawParentBulletText": "Daten und Information fachlich unterscheiden",
+      "canonicalTargetIds": [
+        "50d82e9f-737c-5693-90fe-3d534dc8683d"
+      ]
+    },
+    {
+      "id": "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-ep-data-002-codierung-und-binaerdarstellung-anwenden-429bf9be",
+      "passageId": "de-sl-informatik:sl-inf-ep-data",
+      "topicCode": "SL-INF-SEKII-EP-DATA-02",
+      "bulletIndex": 2,
+      "title": "SL-INF-SEKII-EP-DATA-2: Codierung und Binaerdarstellung anwenden",
+      "description": "Source-Ziel aus Einführungsphase: Daten, Systeme und Netze: Codierungen und Binaerdarstellungen anwenden",
+      "sourceText": "Codierungen und Binaerdarstellungen anwenden",
+      "sourceSpan": "SL-INF-SEKII-EP-DATA.2",
+      "parentBulletText": "Codierungen und Binaerdarstellungen anwenden",
+      "sourceRef": "Lehrplan Informatik Einfuehrungsphase der gymnasialen Oberstufe Saarland 2006, Einführungsphase: Daten, Systeme und Netze, S. 3.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-SL",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:SL-INF-SEKII-EP-DATA",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "Codierungen und Binaerdarstellungen anwenden",
+      "rawSourceSpan": "SL-INF-SEKII-EP-DATA.2",
+      "rawParentBulletText": "Codierungen und Binaerdarstellungen anwenden",
+      "canonicalTargetIds": [
+        "70b8919e-8707-580f-9e13-0536c9e81476",
+        "50d82e9f-737c-5693-90fe-3d534dc8683d"
+      ]
+    },
+    {
+      "id": "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-ep-data-003-rechnerkomponenten-beschreiben-6fdb9da7",
+      "passageId": "de-sl-informatik:sl-inf-ep-data",
+      "topicCode": "SL-INF-SEKII-EP-DATA-03",
+      "bulletIndex": 3,
+      "title": "SL-INF-SEKII-EP-DATA-3: Rechnerkomponenten beschreiben",
+      "description": "Source-Ziel aus Einführungsphase: Daten, Systeme und Netze: grundlegende Komponenten von Rechnern beschreiben",
+      "sourceText": "grundlegende Komponenten von Rechnern beschreiben",
+      "sourceSpan": "SL-INF-SEKII-EP-DATA.3",
+      "parentBulletText": "grundlegende Komponenten von Rechnern beschreiben",
+      "sourceRef": "Lehrplan Informatik Einfuehrungsphase der gymnasialen Oberstufe Saarland 2006, Einführungsphase: Daten, Systeme und Netze, S. 3.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-SL",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:SL-INF-SEKII-EP-DATA",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "grundlegende Komponenten von Rechnern beschreiben",
+      "rawSourceSpan": "SL-INF-SEKII-EP-DATA.3",
+      "rawParentBulletText": "grundlegende Komponenten von Rechnern beschreiben",
+      "canonicalTargetIds": [
+        "e382fc41-6f59-5bc5-9514-f2201a3a4c5a"
+      ]
+    },
+    {
+      "id": "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-ep-data-004-betriebssystemfunktionen-einordnen-04ab95c0",
+      "passageId": "de-sl-informatik:sl-inf-ep-data",
+      "topicCode": "SL-INF-SEKII-EP-DATA-04",
+      "bulletIndex": 4,
+      "title": "SL-INF-SEKII-EP-DATA-4: Betriebssystemfunktionen einordnen",
+      "description": "Source-Ziel aus Einführungsphase: Daten, Systeme und Netze: grundlegende Betriebssystemfunktionen einordnen",
+      "sourceText": "grundlegende Betriebssystemfunktionen einordnen",
+      "sourceSpan": "SL-INF-SEKII-EP-DATA.4",
+      "parentBulletText": "grundlegende Betriebssystemfunktionen einordnen",
+      "sourceRef": "Lehrplan Informatik Einfuehrungsphase der gymnasialen Oberstufe Saarland 2006, Einführungsphase: Daten, Systeme und Netze, S. 3.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-SL",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:SL-INF-SEKII-EP-DATA",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "grundlegende Betriebssystemfunktionen einordnen",
+      "rawSourceSpan": "SL-INF-SEKII-EP-DATA.4",
+      "rawParentBulletText": "grundlegende Betriebssystemfunktionen einordnen",
+      "canonicalTargetIds": [
+        "e05d4e40-6267-598c-8c11-8ab6420afea8"
+      ]
+    },
+    {
+      "id": "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-ep-data-005-netzwerkdienste-erklaeren-ac159ba8",
+      "passageId": "de-sl-informatik:sl-inf-ep-data",
+      "topicCode": "SL-INF-SEKII-EP-DATA-05",
+      "bulletIndex": 5,
+      "title": "SL-INF-SEKII-EP-DATA-5: Netzwerkdienste erklaeren",
+      "description": "Source-Ziel aus Einführungsphase: Daten, Systeme und Netze: grundlegende Netzwerkdienste erklaeren",
+      "sourceText": "grundlegende Netzwerkdienste erklaeren",
+      "sourceSpan": "SL-INF-SEKII-EP-DATA.5",
+      "parentBulletText": "grundlegende Netzwerkdienste erklaeren",
+      "sourceRef": "Lehrplan Informatik Einfuehrungsphase der gymnasialen Oberstufe Saarland 2006, Einführungsphase: Daten, Systeme und Netze, S. 3.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-SL",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:SL-INF-SEKII-EP-DATA",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "grundlegende Netzwerkdienste erklaeren",
+      "rawSourceSpan": "SL-INF-SEKII-EP-DATA.5",
+      "rawParentBulletText": "grundlegende Netzwerkdienste erklaeren",
+      "canonicalTargetIds": [
+        "ca07458c-1fc1-5ca1-b226-69f59e2d62d3",
+        "ace0c141-9e7c-546e-914f-64c24d42d85d"
+      ]
+    },
+    {
+      "id": "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-ep-data-006-datenschutz-und-datensicherheit-reflektieren-91c9e4be",
+      "passageId": "de-sl-informatik:sl-inf-ep-data",
+      "topicCode": "SL-INF-SEKII-EP-DATA-06",
+      "bulletIndex": 6,
+      "title": "SL-INF-SEKII-EP-DATA-6: Datenschutz und Datensicherheit reflektieren",
+      "description": "Source-Ziel aus Einführungsphase: Daten, Systeme und Netze: Datenschutz und Datensicherheit reflektieren",
+      "sourceText": "Datenschutz und Datensicherheit reflektieren",
+      "sourceSpan": "SL-INF-SEKII-EP-DATA.6",
+      "parentBulletText": "Datenschutz und Datensicherheit reflektieren",
+      "sourceRef": "Lehrplan Informatik Einfuehrungsphase der gymnasialen Oberstufe Saarland 2006, Einführungsphase: Daten, Systeme und Netze, S. 3.",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-SL",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:SL-INF-SEKII-EP-DATA",
+        "courseLevel:GK_LK"
+      ],
+      "rawSourceText": "Datenschutz und Datensicherheit reflektieren",
+      "rawSourceSpan": "SL-INF-SEKII-EP-DATA.6",
+      "rawParentBulletText": "Datenschutz und Datensicherheit reflektieren",
+      "canonicalTargetIds": [
+        "71fe327a-9677-5348-a405-fba0dbd302d7",
+        "58173dab-0cb2-52ae-a052-63d3a0f33644"
+      ]
+    },
+    {
+      "id": "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-gk-oop-001-objektorientierte-modelle-verfeinern-ea1c314e",
+      "passageId": "de-sl-informatik:sl-inf-gk-oop",
+      "topicCode": "SL-INF-SEKII-GK-OOP-01",
+      "bulletIndex": 1,
+      "title": "SL-INF-SEKII-GK-OOP-1: Objektorientierte Modelle verfeinern",
+      "description": "Source-Ziel aus Hauptphase Grundkurs: Objektorientierung und Algorithmen: objektorientierte Modelle verfeinern und implementieren",
+      "sourceText": "objektorientierte Modelle verfeinern und implementieren",
+      "sourceSpan": "SL-INF-SEKII-GK-OOP.1",
+      "parentBulletText": "objektorientierte Modelle verfeinern und implementieren",
+      "sourceRef": "Lehrplan Informatik Hauptphase Grundkurs Saarland 2019, Hauptphase Grundkurs: Objektorientierung und Algorithmen, S. 4.",
+      "courseLevel": "GK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-SL",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:SL-INF-SEKII-GK-OOP",
+        "courseLevel:GK"
+      ],
+      "rawSourceText": "objektorientierte Modelle verfeinern und implementieren",
+      "rawSourceSpan": "SL-INF-SEKII-GK-OOP.1",
+      "rawParentBulletText": "objektorientierte Modelle verfeinern und implementieren",
+      "canonicalTargetIds": [
+        "54d88684-d4e5-50d3-9453-d141af7316d2",
+        "b24084e1-bff3-5fc6-800d-ec6c024e52aa"
+      ]
+    },
+    {
+      "id": "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-gk-oop-002-kapselung-und-schnittstellen-nutzen-5a767fc3",
+      "passageId": "de-sl-informatik:sl-inf-gk-oop",
+      "topicCode": "SL-INF-SEKII-GK-OOP-02",
+      "bulletIndex": 2,
+      "title": "SL-INF-SEKII-GK-OOP-2: Kapselung und Schnittstellen nutzen",
+      "description": "Source-Ziel aus Hauptphase Grundkurs: Objektorientierung und Algorithmen: Kapselung und Schnittstellen in Klassen nutzen",
+      "sourceText": "Kapselung und Schnittstellen in Klassen nutzen",
+      "sourceSpan": "SL-INF-SEKII-GK-OOP.2",
+      "parentBulletText": "Kapselung und Schnittstellen in Klassen nutzen",
+      "sourceRef": "Lehrplan Informatik Hauptphase Grundkurs Saarland 2019, Hauptphase Grundkurs: Objektorientierung und Algorithmen, S. 4.",
+      "courseLevel": "GK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-SL",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:SL-INF-SEKII-GK-OOP",
+        "courseLevel:GK"
+      ],
+      "rawSourceText": "Kapselung und Schnittstellen in Klassen nutzen",
+      "rawSourceSpan": "SL-INF-SEKII-GK-OOP.2",
+      "rawParentBulletText": "Kapselung und Schnittstellen in Klassen nutzen",
+      "canonicalTargetIds": [
+        "54d88684-d4e5-50d3-9453-d141af7316d2",
+        "1c1c2576-3e02-5928-8c28-f3aaf528ae55"
+      ]
+    },
+    {
+      "id": "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-gk-oop-003-sammlungen-in-programmen-verwenden-ba297fba",
+      "passageId": "de-sl-informatik:sl-inf-gk-oop",
+      "topicCode": "SL-INF-SEKII-GK-OOP-03",
+      "bulletIndex": 3,
+      "title": "SL-INF-SEKII-GK-OOP-3: Sammlungen in Programmen verwenden",
+      "description": "Source-Ziel aus Hauptphase Grundkurs: Objektorientierung und Algorithmen: Sammlungen zur Verwaltung mehrerer Objekte verwenden",
+      "sourceText": "Sammlungen zur Verwaltung mehrerer Objekte verwenden",
+      "sourceSpan": "SL-INF-SEKII-GK-OOP.3",
+      "parentBulletText": "Sammlungen zur Verwaltung mehrerer Objekte verwenden",
+      "sourceRef": "Lehrplan Informatik Hauptphase Grundkurs Saarland 2019, Hauptphase Grundkurs: Objektorientierung und Algorithmen, S. 4.",
+      "courseLevel": "GK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-SL",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:SL-INF-SEKII-GK-OOP",
+        "courseLevel:GK"
+      ],
+      "rawSourceText": "Sammlungen zur Verwaltung mehrerer Objekte verwenden",
+      "rawSourceSpan": "SL-INF-SEKII-GK-OOP.3",
+      "rawParentBulletText": "Sammlungen zur Verwaltung mehrerer Objekte verwenden",
+      "canonicalTargetIds": [
+        "8522727c-8793-57ed-b314-eeff6d17f652"
+      ]
+    },
+    {
+      "id": "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-gk-oop-004-suchverfahren-implementieren-eca8bb1c",
+      "passageId": "de-sl-informatik:sl-inf-gk-oop",
+      "topicCode": "SL-INF-SEKII-GK-OOP-04",
+      "bulletIndex": 4,
+      "title": "SL-INF-SEKII-GK-OOP-4: Suchverfahren implementieren",
+      "description": "Source-Ziel aus Hauptphase Grundkurs: Objektorientierung und Algorithmen: Suchverfahren auf linearen Strukturen implementieren",
+      "sourceText": "Suchverfahren auf linearen Strukturen implementieren",
+      "sourceSpan": "SL-INF-SEKII-GK-OOP.4",
+      "parentBulletText": "Suchverfahren auf linearen Strukturen implementieren",
+      "sourceRef": "Lehrplan Informatik Hauptphase Grundkurs Saarland 2019, Hauptphase Grundkurs: Objektorientierung und Algorithmen, S. 4.",
+      "courseLevel": "GK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-SL",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:SL-INF-SEKII-GK-OOP",
+        "courseLevel:GK"
+      ],
+      "rawSourceText": "Suchverfahren auf linearen Strukturen implementieren",
+      "rawSourceSpan": "SL-INF-SEKII-GK-OOP.4",
+      "rawParentBulletText": "Suchverfahren auf linearen Strukturen implementieren",
+      "canonicalTargetIds": [
+        "2a87fb3c-394b-47b4-bda2-58c5f1403475"
+      ]
+    },
+    {
+      "id": "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-gk-oop-005-einfache-sortierverfahren-implementieren-6fcbd343",
+      "passageId": "de-sl-informatik:sl-inf-gk-oop",
+      "topicCode": "SL-INF-SEKII-GK-OOP-05",
+      "bulletIndex": 5,
+      "title": "SL-INF-SEKII-GK-OOP-5: Einfache Sortierverfahren implementieren",
+      "description": "Source-Ziel aus Hauptphase Grundkurs: Objektorientierung und Algorithmen: einfache Sortierverfahren implementieren und nachvollziehen",
+      "sourceText": "einfache Sortierverfahren implementieren und nachvollziehen",
+      "sourceSpan": "SL-INF-SEKII-GK-OOP.5",
+      "parentBulletText": "einfache Sortierverfahren implementieren und nachvollziehen",
+      "sourceRef": "Lehrplan Informatik Hauptphase Grundkurs Saarland 2019, Hauptphase Grundkurs: Objektorientierung und Algorithmen, S. 4.",
+      "courseLevel": "GK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-SL",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:SL-INF-SEKII-GK-OOP",
+        "courseLevel:GK"
+      ],
+      "rawSourceText": "einfache Sortierverfahren implementieren und nachvollziehen",
+      "rawSourceSpan": "SL-INF-SEKII-GK-OOP.5",
+      "rawParentBulletText": "einfache Sortierverfahren implementieren und nachvollziehen",
+      "canonicalTargetIds": [
+        "9bb399e1-fd49-5220-9c81-82efbeae47eb"
+      ]
+    },
+    {
+      "id": "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-gk-oop-006-algorithmische-effizienz-vergleichen-39524f72",
+      "passageId": "de-sl-informatik:sl-inf-gk-oop",
+      "topicCode": "SL-INF-SEKII-GK-OOP-06",
+      "bulletIndex": 6,
+      "title": "SL-INF-SEKII-GK-OOP-6: Algorithmische Effizienz vergleichen",
+      "description": "Source-Ziel aus Hauptphase Grundkurs: Objektorientierung und Algorithmen: Algorithmen hinsichtlich Effizienz vergleichen",
+      "sourceText": "Algorithmen hinsichtlich Effizienz vergleichen",
+      "sourceSpan": "SL-INF-SEKII-GK-OOP.6",
+      "parentBulletText": "Algorithmen hinsichtlich Effizienz vergleichen",
+      "sourceRef": "Lehrplan Informatik Hauptphase Grundkurs Saarland 2019, Hauptphase Grundkurs: Objektorientierung und Algorithmen, S. 4.",
+      "courseLevel": "GK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-SL",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:SL-INF-SEKII-GK-OOP",
+        "courseLevel:GK"
+      ],
+      "rawSourceText": "Algorithmen hinsichtlich Effizienz vergleichen",
+      "rawSourceSpan": "SL-INF-SEKII-GK-OOP.6",
+      "rawParentBulletText": "Algorithmen hinsichtlich Effizienz vergleichen",
+      "canonicalTargetIds": [
+        "82fe54dd-d29f-540c-9ef1-f4feb17845c6"
+      ]
+    },
+    {
+      "id": "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-gk-oop-007-rekursion-einordnen-678b6e02",
+      "passageId": "de-sl-informatik:sl-inf-gk-oop",
+      "topicCode": "SL-INF-SEKII-GK-OOP-07",
+      "bulletIndex": 7,
+      "title": "SL-INF-SEKII-GK-OOP-7: Rekursion einordnen",
+      "description": "Source-Ziel aus Hauptphase Grundkurs: Objektorientierung und Algorithmen: rekursive Loesungen fuer einfache Probleme einordnen",
+      "sourceText": "rekursive Loesungen fuer einfache Probleme einordnen",
+      "sourceSpan": "SL-INF-SEKII-GK-OOP.7",
+      "parentBulletText": "rekursive Loesungen fuer einfache Probleme einordnen",
+      "sourceRef": "Lehrplan Informatik Hauptphase Grundkurs Saarland 2019, Hauptphase Grundkurs: Objektorientierung und Algorithmen, S. 4.",
+      "courseLevel": "GK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-SL",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:SL-INF-SEKII-GK-OOP",
+        "courseLevel:GK"
+      ],
+      "rawSourceText": "rekursive Loesungen fuer einfache Probleme einordnen",
+      "rawSourceSpan": "SL-INF-SEKII-GK-OOP.7",
+      "rawParentBulletText": "rekursive Loesungen fuer einfache Probleme einordnen",
+      "canonicalTargetIds": [
+        "25be929d-624d-5654-bbb8-32fa1fba50c2"
+      ]
+    },
+    {
+      "id": "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-gk-oop-008-programmierloesungen-dokumentieren-8ac1b133",
+      "passageId": "de-sl-informatik:sl-inf-gk-oop",
+      "topicCode": "SL-INF-SEKII-GK-OOP-08",
+      "bulletIndex": 8,
+      "title": "SL-INF-SEKII-GK-OOP-8: Programmierloesungen dokumentieren",
+      "description": "Source-Ziel aus Hauptphase Grundkurs: Objektorientierung und Algorithmen: Programmierloesungen dokumentieren und praesentieren",
+      "sourceText": "Programmierloesungen dokumentieren und praesentieren",
+      "sourceSpan": "SL-INF-SEKII-GK-OOP.8",
+      "parentBulletText": "Programmierloesungen dokumentieren und praesentieren",
+      "sourceRef": "Lehrplan Informatik Hauptphase Grundkurs Saarland 2019, Hauptphase Grundkurs: Objektorientierung und Algorithmen, S. 4.",
+      "courseLevel": "GK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-SL",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:SL-INF-SEKII-GK-OOP",
+        "courseLevel:GK"
+      ],
+      "rawSourceText": "Programmierloesungen dokumentieren und praesentieren",
+      "rawSourceSpan": "SL-INF-SEKII-GK-OOP.8",
+      "rawParentBulletText": "Programmierloesungen dokumentieren und praesentieren",
+      "canonicalTargetIds": [
+        "bf23fafe-423d-561a-b832-cb25a327a508",
+        "f81be4d3-2445-54aa-b17e-2a27466e7e0d"
+      ]
+    },
+    {
+      "id": "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-gk-db-001-datenbankanwendungen-analysieren-0c62cbdc",
+      "passageId": "de-sl-informatik:sl-inf-gk-db",
+      "topicCode": "SL-INF-SEKII-GK-DB-01",
+      "bulletIndex": 1,
+      "title": "SL-INF-SEKII-GK-DB-1: Datenbankanwendungen analysieren",
+      "description": "Source-Ziel aus Hauptphase Grundkurs: Datenbanken: Datenbankanwendungen analysieren",
+      "sourceText": "Datenbankanwendungen analysieren",
+      "sourceSpan": "SL-INF-SEKII-GK-DB.1",
+      "parentBulletText": "Datenbankanwendungen analysieren",
+      "sourceRef": "Lehrplan Informatik Hauptphase Grundkurs Saarland 2019, Hauptphase Grundkurs: Datenbanken, S. 5.",
+      "courseLevel": "GK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-SL",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:SL-INF-SEKII-GK-DB",
+        "courseLevel:GK"
+      ],
+      "rawSourceText": "Datenbankanwendungen analysieren",
+      "rawSourceSpan": "SL-INF-SEKII-GK-DB.1",
+      "rawParentBulletText": "Datenbankanwendungen analysieren",
+      "canonicalTargetIds": [
+        "2cf7589d-5451-5239-badf-1ebb981a2f20"
+      ]
+    },
+    {
+      "id": "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-gk-db-002-er-modell-erstellen-4159a107",
+      "passageId": "de-sl-informatik:sl-inf-gk-db",
+      "topicCode": "SL-INF-SEKII-GK-DB-02",
+      "bulletIndex": 2,
+      "title": "SL-INF-SEKII-GK-DB-2: ER-Modell erstellen",
+      "description": "Source-Ziel aus Hauptphase Grundkurs: Datenbanken: ER-Modelle aus Sachkontexten erstellen",
+      "sourceText": "ER-Modelle aus Sachkontexten erstellen",
+      "sourceSpan": "SL-INF-SEKII-GK-DB.2",
+      "parentBulletText": "ER-Modelle aus Sachkontexten erstellen",
+      "sourceRef": "Lehrplan Informatik Hauptphase Grundkurs Saarland 2019, Hauptphase Grundkurs: Datenbanken, S. 5.",
+      "courseLevel": "GK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-SL",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:SL-INF-SEKII-GK-DB",
+        "courseLevel:GK"
+      ],
+      "rawSourceText": "ER-Modelle aus Sachkontexten erstellen",
+      "rawSourceSpan": "SL-INF-SEKII-GK-DB.2",
+      "rawParentBulletText": "ER-Modelle aus Sachkontexten erstellen",
+      "canonicalTargetIds": [
+        "2cf7589d-5451-5239-badf-1ebb981a2f20"
+      ]
+    },
+    {
+      "id": "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-gk-db-003-relationenmodell-ableiten-8e55125a",
+      "passageId": "de-sl-informatik:sl-inf-gk-db",
+      "topicCode": "SL-INF-SEKII-GK-DB-03",
+      "bulletIndex": 3,
+      "title": "SL-INF-SEKII-GK-DB-3: Relationenmodell ableiten",
+      "description": "Source-Ziel aus Hauptphase Grundkurs: Datenbanken: relationale Schemata aus ER-Modellen ableiten",
+      "sourceText": "relationale Schemata aus ER-Modellen ableiten",
+      "sourceSpan": "SL-INF-SEKII-GK-DB.3",
+      "parentBulletText": "relationale Schemata aus ER-Modellen ableiten",
+      "sourceRef": "Lehrplan Informatik Hauptphase Grundkurs Saarland 2019, Hauptphase Grundkurs: Datenbanken, S. 5.",
+      "courseLevel": "GK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-SL",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:SL-INF-SEKII-GK-DB",
+        "courseLevel:GK"
+      ],
+      "rawSourceText": "relationale Schemata aus ER-Modellen ableiten",
+      "rawSourceSpan": "SL-INF-SEKII-GK-DB.3",
+      "rawParentBulletText": "relationale Schemata aus ER-Modellen ableiten",
+      "canonicalTargetIds": [
+        "42ad3e11-9e31-5e15-b65c-b611ce1537ce"
+      ]
+    },
+    {
+      "id": "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-gk-db-004-redundanz-vermeiden-55fddeca",
+      "passageId": "de-sl-informatik:sl-inf-gk-db",
+      "topicCode": "SL-INF-SEKII-GK-DB-04",
+      "bulletIndex": 4,
+      "title": "SL-INF-SEKII-GK-DB-4: Redundanz vermeiden",
+      "description": "Source-Ziel aus Hauptphase Grundkurs: Datenbanken: Redundanzprobleme erkennen und vermeiden",
+      "sourceText": "Redundanzprobleme erkennen und vermeiden",
+      "sourceSpan": "SL-INF-SEKII-GK-DB.4",
+      "parentBulletText": "Redundanzprobleme erkennen und vermeiden",
+      "sourceRef": "Lehrplan Informatik Hauptphase Grundkurs Saarland 2019, Hauptphase Grundkurs: Datenbanken, S. 5.",
+      "courseLevel": "GK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-SL",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:SL-INF-SEKII-GK-DB",
+        "courseLevel:GK"
+      ],
+      "rawSourceText": "Redundanzprobleme erkennen und vermeiden",
+      "rawSourceSpan": "SL-INF-SEKII-GK-DB.4",
+      "rawParentBulletText": "Redundanzprobleme erkennen und vermeiden",
+      "canonicalTargetIds": [
+        "46b4ebba-dbaf-5f5e-be48-7a1dd72bd471"
+      ]
+    },
+    {
+      "id": "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-gk-db-005-sql-select-abfragen-formulieren-75d24c81",
+      "passageId": "de-sl-informatik:sl-inf-gk-db",
+      "topicCode": "SL-INF-SEKII-GK-DB-05",
+      "bulletIndex": 5,
+      "title": "SL-INF-SEKII-GK-DB-5: SQL-Select-Abfragen formulieren",
+      "description": "Source-Ziel aus Hauptphase Grundkurs: Datenbanken: SQL-Select-Abfragen formulieren",
+      "sourceText": "SQL-Select-Abfragen formulieren",
+      "sourceSpan": "SL-INF-SEKII-GK-DB.5",
+      "parentBulletText": "SQL-Select-Abfragen formulieren",
+      "sourceRef": "Lehrplan Informatik Hauptphase Grundkurs Saarland 2019, Hauptphase Grundkurs: Datenbanken, S. 5.",
+      "courseLevel": "GK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-SL",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:SL-INF-SEKII-GK-DB",
+        "courseLevel:GK"
+      ],
+      "rawSourceText": "SQL-Select-Abfragen formulieren",
+      "rawSourceSpan": "SL-INF-SEKII-GK-DB.5",
+      "rawParentBulletText": "SQL-Select-Abfragen formulieren",
+      "canonicalTargetIds": [
+        "fd1f5c79-20e6-5829-98c1-0909e047cad4"
+      ]
+    },
+    {
+      "id": "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-gk-db-006-sql-joins-nutzen-0ae463ec",
+      "passageId": "de-sl-informatik:sl-inf-gk-db",
+      "topicCode": "SL-INF-SEKII-GK-DB-06",
+      "bulletIndex": 6,
+      "title": "SL-INF-SEKII-GK-DB-6: SQL-Joins nutzen",
+      "description": "Source-Ziel aus Hauptphase Grundkurs: Datenbanken: SQL-Abfragen mit Joins nutzen",
+      "sourceText": "SQL-Abfragen mit Joins nutzen",
+      "sourceSpan": "SL-INF-SEKII-GK-DB.6",
+      "parentBulletText": "SQL-Abfragen mit Joins nutzen",
+      "sourceRef": "Lehrplan Informatik Hauptphase Grundkurs Saarland 2019, Hauptphase Grundkurs: Datenbanken, S. 5.",
+      "courseLevel": "GK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-SL",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:SL-INF-SEKII-GK-DB",
+        "courseLevel:GK"
+      ],
+      "rawSourceText": "SQL-Abfragen mit Joins nutzen",
+      "rawSourceSpan": "SL-INF-SEKII-GK-DB.6",
+      "rawParentBulletText": "SQL-Abfragen mit Joins nutzen",
+      "canonicalTargetIds": [
+        "2e2e1230-3009-5652-b3a8-68c834e53bd5"
+      ]
+    },
+    {
+      "id": "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-gk-db-007-datenschutz-in-datenbanken-beachten-25ba241c",
+      "passageId": "de-sl-informatik:sl-inf-gk-db",
+      "topicCode": "SL-INF-SEKII-GK-DB-07",
+      "bulletIndex": 7,
+      "title": "SL-INF-SEKII-GK-DB-7: Datenschutz in Datenbanken beachten",
+      "description": "Source-Ziel aus Hauptphase Grundkurs: Datenbanken: Datenschutzaspekte in Datenbanksystemen beachten",
+      "sourceText": "Datenschutzaspekte in Datenbanksystemen beachten",
+      "sourceSpan": "SL-INF-SEKII-GK-DB.7",
+      "parentBulletText": "Datenschutzaspekte in Datenbanksystemen beachten",
+      "sourceRef": "Lehrplan Informatik Hauptphase Grundkurs Saarland 2019, Hauptphase Grundkurs: Datenbanken, S. 5.",
+      "courseLevel": "GK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-SL",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:SL-INF-SEKII-GK-DB",
+        "courseLevel:GK"
+      ],
+      "rawSourceText": "Datenschutzaspekte in Datenbanksystemen beachten",
+      "rawSourceSpan": "SL-INF-SEKII-GK-DB.7",
+      "rawParentBulletText": "Datenschutzaspekte in Datenbanksystemen beachten",
+      "canonicalTargetIds": [
+        "71fe327a-9677-5348-a405-fba0dbd302d7",
+        "43164b7c-3ef9-5d45-9f7d-07adfd13964a"
+      ]
+    },
+    {
+      "id": "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-gk-ti-001-formale-sprachen-beschreiben-6f494c6d",
+      "passageId": "de-sl-informatik:sl-inf-gk-ti",
+      "topicCode": "SL-INF-SEKII-GK-TI-01",
+      "bulletIndex": 1,
+      "title": "SL-INF-SEKII-GK-TI-1: Formale Sprachen beschreiben",
+      "description": "Source-Ziel aus Hauptphase Grundkurs: Automaten und formale Sprachen: formale Sprachen beschreiben",
+      "sourceText": "formale Sprachen beschreiben",
+      "sourceSpan": "SL-INF-SEKII-GK-TI.1",
+      "parentBulletText": "formale Sprachen beschreiben",
+      "sourceRef": "Lehrplan Informatik Hauptphase Grundkurs Saarland 2019, Hauptphase Grundkurs: Automaten und formale Sprachen, S. 6.",
+      "courseLevel": "GK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-SL",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:SL-INF-SEKII-GK-TI",
+        "courseLevel:GK"
+      ],
+      "rawSourceText": "formale Sprachen beschreiben",
+      "rawSourceSpan": "SL-INF-SEKII-GK-TI.1",
+      "rawParentBulletText": "formale Sprachen beschreiben",
+      "canonicalTargetIds": [
+        "cdb24f8f-3596-5e68-a44f-9d651c7eed62"
+      ]
+    },
+    {
+      "id": "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-gk-ti-002-natuerliche-und-formale-sprache-abgrenzen-dc8f8c84",
+      "passageId": "de-sl-informatik:sl-inf-gk-ti",
+      "topicCode": "SL-INF-SEKII-GK-TI-02",
+      "bulletIndex": 2,
+      "title": "SL-INF-SEKII-GK-TI-2: Natuerliche und formale Sprache abgrenzen",
+      "description": "Source-Ziel aus Hauptphase Grundkurs: Automaten und formale Sprachen: natuerliche und formale Sprachen abgrenzen",
+      "sourceText": "natuerliche und formale Sprachen abgrenzen",
+      "sourceSpan": "SL-INF-SEKII-GK-TI.2",
+      "parentBulletText": "natuerliche und formale Sprachen abgrenzen",
+      "sourceRef": "Lehrplan Informatik Hauptphase Grundkurs Saarland 2019, Hauptphase Grundkurs: Automaten und formale Sprachen, S. 6.",
+      "courseLevel": "GK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-SL",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:SL-INF-SEKII-GK-TI",
+        "courseLevel:GK"
+      ],
+      "rawSourceText": "natuerliche und formale Sprachen abgrenzen",
+      "rawSourceSpan": "SL-INF-SEKII-GK-TI.2",
+      "rawParentBulletText": "natuerliche und formale Sprachen abgrenzen",
+      "canonicalTargetIds": [
+        "4acfccb7-f38c-5fd4-b24d-b7b002373fde"
+      ]
+    },
+    {
+      "id": "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-gk-ti-003-grammatiken-verwenden-1bad2091",
+      "passageId": "de-sl-informatik:sl-inf-gk-ti",
+      "topicCode": "SL-INF-SEKII-GK-TI-03",
+      "bulletIndex": 3,
+      "title": "SL-INF-SEKII-GK-TI-3: Grammatiken verwenden",
+      "description": "Source-Ziel aus Hauptphase Grundkurs: Automaten und formale Sprachen: einfache Grammatiken verwenden",
+      "sourceText": "einfache Grammatiken verwenden",
+      "sourceSpan": "SL-INF-SEKII-GK-TI.3",
+      "parentBulletText": "einfache Grammatiken verwenden",
+      "sourceRef": "Lehrplan Informatik Hauptphase Grundkurs Saarland 2019, Hauptphase Grundkurs: Automaten und formale Sprachen, S. 6.",
+      "courseLevel": "GK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-SL",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:SL-INF-SEKII-GK-TI",
+        "courseLevel:GK"
+      ],
+      "rawSourceText": "einfache Grammatiken verwenden",
+      "rawSourceSpan": "SL-INF-SEKII-GK-TI.3",
+      "rawParentBulletText": "einfache Grammatiken verwenden",
+      "canonicalTargetIds": [
+        "fbd4561a-573e-5f8c-b363-338ee9774b5c"
+      ]
+    },
+    {
+      "id": "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-gk-ti-004-ableitungen-pruefen-d71ceee0",
+      "passageId": "de-sl-informatik:sl-inf-gk-ti",
+      "topicCode": "SL-INF-SEKII-GK-TI-04",
+      "bulletIndex": 4,
+      "title": "SL-INF-SEKII-GK-TI-4: Ableitungen pruefen",
+      "description": "Source-Ziel aus Hauptphase Grundkurs: Automaten und formale Sprachen: Ableitungen in Grammatiken pruefen",
+      "sourceText": "Ableitungen in Grammatiken pruefen",
+      "sourceSpan": "SL-INF-SEKII-GK-TI.4",
+      "parentBulletText": "Ableitungen in Grammatiken pruefen",
+      "sourceRef": "Lehrplan Informatik Hauptphase Grundkurs Saarland 2019, Hauptphase Grundkurs: Automaten und formale Sprachen, S. 6.",
+      "courseLevel": "GK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-SL",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:SL-INF-SEKII-GK-TI",
+        "courseLevel:GK"
+      ],
+      "rawSourceText": "Ableitungen in Grammatiken pruefen",
+      "rawSourceSpan": "SL-INF-SEKII-GK-TI.4",
+      "rawParentBulletText": "Ableitungen in Grammatiken pruefen",
+      "canonicalTargetIds": [
+        "3e3264d6-8cf8-55f9-b085-1aa4a7865476"
+      ]
+    },
+    {
+      "id": "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-gk-ti-005-endliche-automaten-modellieren-3ed3df8a",
+      "passageId": "de-sl-informatik:sl-inf-gk-ti",
+      "topicCode": "SL-INF-SEKII-GK-TI-05",
+      "bulletIndex": 5,
+      "title": "SL-INF-SEKII-GK-TI-5: Endliche Automaten modellieren",
+      "description": "Source-Ziel aus Hauptphase Grundkurs: Automaten und formale Sprachen: endliche Automaten modellieren",
+      "sourceText": "endliche Automaten modellieren",
+      "sourceSpan": "SL-INF-SEKII-GK-TI.5",
+      "parentBulletText": "endliche Automaten modellieren",
+      "sourceRef": "Lehrplan Informatik Hauptphase Grundkurs Saarland 2019, Hauptphase Grundkurs: Automaten und formale Sprachen, S. 6.",
+      "courseLevel": "GK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-SL",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:SL-INF-SEKII-GK-TI",
+        "courseLevel:GK"
+      ],
+      "rawSourceText": "endliche Automaten modellieren",
+      "rawSourceSpan": "SL-INF-SEKII-GK-TI.5",
+      "rawParentBulletText": "endliche Automaten modellieren",
+      "canonicalTargetIds": [
+        "7ad8caf0-3a31-56f1-bee1-574c01b0c156"
+      ]
+    },
+    {
+      "id": "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-gk-ti-006-automatengrenzen-diskutieren-79ccd788",
+      "passageId": "de-sl-informatik:sl-inf-gk-ti",
+      "topicCode": "SL-INF-SEKII-GK-TI-06",
+      "bulletIndex": 6,
+      "title": "SL-INF-SEKII-GK-TI-6: Automatengrenzen diskutieren",
+      "description": "Source-Ziel aus Hauptphase Grundkurs: Automaten und formale Sprachen: Grenzen endlicher Automaten diskutieren",
+      "sourceText": "Grenzen endlicher Automaten diskutieren",
+      "sourceSpan": "SL-INF-SEKII-GK-TI.6",
+      "parentBulletText": "Grenzen endlicher Automaten diskutieren",
+      "sourceRef": "Lehrplan Informatik Hauptphase Grundkurs Saarland 2019, Hauptphase Grundkurs: Automaten und formale Sprachen, S. 6.",
+      "courseLevel": "GK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-SL",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:SL-INF-SEKII-GK-TI",
+        "courseLevel:GK"
+      ],
+      "rawSourceText": "Grenzen endlicher Automaten diskutieren",
+      "rawSourceSpan": "SL-INF-SEKII-GK-TI.6",
+      "rawParentBulletText": "Grenzen endlicher Automaten diskutieren",
+      "canonicalTargetIds": [
+        "10a3b2a3-8c1c-4dfb-9d48-8f67f2c0004d"
+      ]
+    },
+    {
+      "id": "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-lk-alg-001-sequentielle-suche-implementieren-d95bfdf5",
+      "passageId": "de-sl-informatik:sl-inf-lk-alg",
+      "topicCode": "SL-INF-SEKII-LK-ALG-01",
+      "bulletIndex": 1,
+      "title": "SL-INF-SEKII-LK-ALG-1: Sequentielle Suche implementieren",
+      "description": "Source-Ziel aus Hauptphase Leistungskurs: Such- und Sortierverfahren: sequentielle Suche auf eindimensionalen Feldern implementieren",
+      "sourceText": "sequentielle Suche auf eindimensionalen Feldern implementieren",
+      "sourceSpan": "SL-INF-SEKII-LK-ALG.1",
+      "parentBulletText": "sequentielle Suche auf eindimensionalen Feldern implementieren",
+      "sourceRef": "Lehrplan Informatik Hauptphase Leistungskurs Saarland 2019, Hauptphase Leistungskurs: Such- und Sortierverfahren, S. 9.",
+      "courseLevel": "LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-SL",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:SL-INF-SEKII-LK-ALG",
+        "courseLevel:LK"
+      ],
+      "rawSourceText": "sequentielle Suche auf eindimensionalen Feldern implementieren",
+      "rawSourceSpan": "SL-INF-SEKII-LK-ALG.1",
+      "rawParentBulletText": "sequentielle Suche auf eindimensionalen Feldern implementieren",
+      "canonicalTargetIds": [
+        "2a87fb3c-394b-47b4-bda2-58c5f1403475"
+      ]
+    },
+    {
+      "id": "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-lk-alg-002-binaere-suche-implementieren-6d972e10",
+      "passageId": "de-sl-informatik:sl-inf-lk-alg",
+      "topicCode": "SL-INF-SEKII-LK-ALG-02",
+      "bulletIndex": 2,
+      "title": "SL-INF-SEKII-LK-ALG-2: Binaere Suche implementieren",
+      "description": "Source-Ziel aus Hauptphase Leistungskurs: Such- und Sortierverfahren: binaere Suche auf eindimensionalen Feldern implementieren",
+      "sourceText": "binaere Suche auf eindimensionalen Feldern implementieren",
+      "sourceSpan": "SL-INF-SEKII-LK-ALG.2",
+      "parentBulletText": "binaere Suche auf eindimensionalen Feldern implementieren",
+      "sourceRef": "Lehrplan Informatik Hauptphase Leistungskurs Saarland 2019, Hauptphase Leistungskurs: Such- und Sortierverfahren, S. 9.",
+      "courseLevel": "LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-SL",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:SL-INF-SEKII-LK-ALG",
+        "courseLevel:LK"
+      ],
+      "rawSourceText": "binaere Suche auf eindimensionalen Feldern implementieren",
+      "rawSourceSpan": "SL-INF-SEKII-LK-ALG.2",
+      "rawParentBulletText": "binaere Suche auf eindimensionalen Feldern implementieren",
+      "canonicalTargetIds": [
+        "2a87fb3c-394b-47b4-bda2-58c5f1403475"
+      ]
+    },
+    {
+      "id": "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-lk-alg-003-bubblesort-nachvollziehen-e1f30e73",
+      "passageId": "de-sl-informatik:sl-inf-lk-alg",
+      "topicCode": "SL-INF-SEKII-LK-ALG-03",
+      "bulletIndex": 3,
+      "title": "SL-INF-SEKII-LK-ALG-3: Bubblesort nachvollziehen",
+      "description": "Source-Ziel aus Hauptphase Leistungskurs: Such- und Sortierverfahren: Bubblesort implementieren und nachvollziehen",
+      "sourceText": "Bubblesort implementieren und nachvollziehen",
+      "sourceSpan": "SL-INF-SEKII-LK-ALG.3",
+      "parentBulletText": "Bubblesort implementieren und nachvollziehen",
+      "sourceRef": "Lehrplan Informatik Hauptphase Leistungskurs Saarland 2019, Hauptphase Leistungskurs: Such- und Sortierverfahren, S. 9.",
+      "courseLevel": "LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-SL",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:SL-INF-SEKII-LK-ALG",
+        "courseLevel:LK"
+      ],
+      "rawSourceText": "Bubblesort implementieren und nachvollziehen",
+      "rawSourceSpan": "SL-INF-SEKII-LK-ALG.3",
+      "rawParentBulletText": "Bubblesort implementieren und nachvollziehen",
+      "canonicalTargetIds": [
+        "9bb399e1-fd49-5220-9c81-82efbeae47eb"
+      ]
+    },
+    {
+      "id": "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-lk-alg-004-selectionsort-nachvollziehen-30ce3697",
+      "passageId": "de-sl-informatik:sl-inf-lk-alg",
+      "topicCode": "SL-INF-SEKII-LK-ALG-04",
+      "bulletIndex": 4,
+      "title": "SL-INF-SEKII-LK-ALG-4: Selectionsort nachvollziehen",
+      "description": "Source-Ziel aus Hauptphase Leistungskurs: Such- und Sortierverfahren: Selectionsort implementieren und nachvollziehen",
+      "sourceText": "Selectionsort implementieren und nachvollziehen",
+      "sourceSpan": "SL-INF-SEKII-LK-ALG.4",
+      "parentBulletText": "Selectionsort implementieren und nachvollziehen",
+      "sourceRef": "Lehrplan Informatik Hauptphase Leistungskurs Saarland 2019, Hauptphase Leistungskurs: Such- und Sortierverfahren, S. 9.",
+      "courseLevel": "LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-SL",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:SL-INF-SEKII-LK-ALG",
+        "courseLevel:LK"
+      ],
+      "rawSourceText": "Selectionsort implementieren und nachvollziehen",
+      "rawSourceSpan": "SL-INF-SEKII-LK-ALG.4",
+      "rawParentBulletText": "Selectionsort implementieren und nachvollziehen",
+      "canonicalTargetIds": [
+        "9bb399e1-fd49-5220-9c81-82efbeae47eb"
+      ]
+    },
+    {
+      "id": "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-lk-alg-005-insertionsort-nachvollziehen-5dfe7dd8",
+      "passageId": "de-sl-informatik:sl-inf-lk-alg",
+      "topicCode": "SL-INF-SEKII-LK-ALG-05",
+      "bulletIndex": 5,
+      "title": "SL-INF-SEKII-LK-ALG-5: Insertionsort nachvollziehen",
+      "description": "Source-Ziel aus Hauptphase Leistungskurs: Such- und Sortierverfahren: Insertionsort implementieren und nachvollziehen",
+      "sourceText": "Insertionsort implementieren und nachvollziehen",
+      "sourceSpan": "SL-INF-SEKII-LK-ALG.5",
+      "parentBulletText": "Insertionsort implementieren und nachvollziehen",
+      "sourceRef": "Lehrplan Informatik Hauptphase Leistungskurs Saarland 2019, Hauptphase Leistungskurs: Such- und Sortierverfahren, S. 9.",
+      "courseLevel": "LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-SL",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:SL-INF-SEKII-LK-ALG",
+        "courseLevel:LK"
+      ],
+      "rawSourceText": "Insertionsort implementieren und nachvollziehen",
+      "rawSourceSpan": "SL-INF-SEKII-LK-ALG.5",
+      "rawParentBulletText": "Insertionsort implementieren und nachvollziehen",
+      "canonicalTargetIds": [
+        "9bb399e1-fd49-5220-9c81-82efbeae47eb"
+      ]
+    },
+    {
+      "id": "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-lk-alg-006-mergesort-grundidee-erklaeren-f1b5776b",
+      "passageId": "de-sl-informatik:sl-inf-lk-alg",
+      "topicCode": "SL-INF-SEKII-LK-ALG-06",
+      "bulletIndex": 6,
+      "title": "SL-INF-SEKII-LK-ALG-6: Mergesort-Grundidee erklaeren",
+      "description": "Source-Ziel aus Hauptphase Leistungskurs: Such- und Sortierverfahren: Grundidee von Mergesort formulieren und an Beispielen nachvollziehen",
+      "sourceText": "Grundidee von Mergesort formulieren und an Beispielen nachvollziehen",
+      "sourceSpan": "SL-INF-SEKII-LK-ALG.6",
+      "parentBulletText": "Grundidee von Mergesort formulieren und an Beispielen nachvollziehen",
+      "sourceRef": "Lehrplan Informatik Hauptphase Leistungskurs Saarland 2019, Hauptphase Leistungskurs: Such- und Sortierverfahren, S. 9.",
+      "courseLevel": "LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-SL",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:SL-INF-SEKII-LK-ALG",
+        "courseLevel:LK"
+      ],
+      "rawSourceText": "Grundidee von Mergesort formulieren und an Beispielen nachvollziehen",
+      "rawSourceSpan": "SL-INF-SEKII-LK-ALG.6",
+      "rawParentBulletText": "Grundidee von Mergesort formulieren und an Beispielen nachvollziehen",
+      "canonicalTargetIds": [
+        "c5c1620d-60a7-521c-9fad-2a180c0a3169",
+        "25be929d-624d-5654-bbb8-32fa1fba50c2"
+      ]
+    },
+    {
+      "id": "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-lk-alg-007-quicksort-grundidee-erklaeren-ceea24e0",
+      "passageId": "de-sl-informatik:sl-inf-lk-alg",
+      "topicCode": "SL-INF-SEKII-LK-ALG-07",
+      "bulletIndex": 7,
+      "title": "SL-INF-SEKII-LK-ALG-7: Quicksort-Grundidee erklaeren",
+      "description": "Source-Ziel aus Hauptphase Leistungskurs: Such- und Sortierverfahren: Grundidee von Quicksort formulieren und an Beispielen nachvollziehen",
+      "sourceText": "Grundidee von Quicksort formulieren und an Beispielen nachvollziehen",
+      "sourceSpan": "SL-INF-SEKII-LK-ALG.7",
+      "parentBulletText": "Grundidee von Quicksort formulieren und an Beispielen nachvollziehen",
+      "sourceRef": "Lehrplan Informatik Hauptphase Leistungskurs Saarland 2019, Hauptphase Leistungskurs: Such- und Sortierverfahren, S. 9.",
+      "courseLevel": "LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-SL",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:SL-INF-SEKII-LK-ALG",
+        "courseLevel:LK"
+      ],
+      "rawSourceText": "Grundidee von Quicksort formulieren und an Beispielen nachvollziehen",
+      "rawSourceSpan": "SL-INF-SEKII-LK-ALG.7",
+      "rawParentBulletText": "Grundidee von Quicksort formulieren und an Beispielen nachvollziehen",
+      "canonicalTargetIds": [
+        "c5c1620d-60a7-521c-9fad-2a180c0a3169",
+        "25be929d-624d-5654-bbb8-32fa1fba50c2"
+      ]
+    },
+    {
+      "id": "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-lk-alg-008-laufzeit-einfacher-sortierverfahren-analysieren-56581436",
+      "passageId": "de-sl-informatik:sl-inf-lk-alg",
+      "topicCode": "SL-INF-SEKII-LK-ALG-08",
+      "bulletIndex": 8,
+      "title": "SL-INF-SEKII-LK-ALG-8: Laufzeit einfacher Sortierverfahren analysieren",
+      "description": "Source-Ziel aus Hauptphase Leistungskurs: Such- und Sortierverfahren: Laufzeitverhalten einfacher Sortierverfahren analysieren",
+      "sourceText": "Laufzeitverhalten einfacher Sortierverfahren analysieren",
+      "sourceSpan": "SL-INF-SEKII-LK-ALG.8",
+      "parentBulletText": "Laufzeitverhalten einfacher Sortierverfahren analysieren",
+      "sourceRef": "Lehrplan Informatik Hauptphase Leistungskurs Saarland 2019, Hauptphase Leistungskurs: Such- und Sortierverfahren, S. 9.",
+      "courseLevel": "LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-SL",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:SL-INF-SEKII-LK-ALG",
+        "courseLevel:LK"
+      ],
+      "rawSourceText": "Laufzeitverhalten einfacher Sortierverfahren analysieren",
+      "rawSourceSpan": "SL-INF-SEKII-LK-ALG.8",
+      "rawParentBulletText": "Laufzeitverhalten einfacher Sortierverfahren analysieren",
+      "canonicalTargetIds": [
+        "82fe54dd-d29f-540c-9ef1-f4feb17845c6"
+      ]
+    },
+    {
+      "id": "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-lk-alg-009-laufzeit-effizienter-sortierverfahren-analysieren-4ce4ced0",
+      "passageId": "de-sl-informatik:sl-inf-lk-alg",
+      "topicCode": "SL-INF-SEKII-LK-ALG-09",
+      "bulletIndex": 9,
+      "title": "SL-INF-SEKII-LK-ALG-9: Laufzeit effizienter Sortierverfahren analysieren",
+      "description": "Source-Ziel aus Hauptphase Leistungskurs: Such- und Sortierverfahren: Laufzeitverhalten hoeherer Sortierverfahren analysieren",
+      "sourceText": "Laufzeitverhalten hoeherer Sortierverfahren analysieren",
+      "sourceSpan": "SL-INF-SEKII-LK-ALG.9",
+      "parentBulletText": "Laufzeitverhalten hoeherer Sortierverfahren analysieren",
+      "sourceRef": "Lehrplan Informatik Hauptphase Leistungskurs Saarland 2019, Hauptphase Leistungskurs: Such- und Sortierverfahren, S. 9.",
+      "courseLevel": "LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-SL",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:SL-INF-SEKII-LK-ALG",
+        "courseLevel:LK"
+      ],
+      "rawSourceText": "Laufzeitverhalten hoeherer Sortierverfahren analysieren",
+      "rawSourceSpan": "SL-INF-SEKII-LK-ALG.9",
+      "rawParentBulletText": "Laufzeitverhalten hoeherer Sortierverfahren analysieren",
+      "canonicalTargetIds": [
+        "82fe54dd-d29f-540c-9ef1-f4feb17845c6",
+        "c5c1620d-60a7-521c-9fad-2a180c0a3169"
+      ]
+    },
+    {
+      "id": "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-lk-struct-001-lineare-listen-definieren-4a6dabed",
+      "passageId": "de-sl-informatik:sl-inf-lk-struct",
+      "topicCode": "SL-INF-SEKII-LK-STRUCT-01",
+      "bulletIndex": 1,
+      "title": "SL-INF-SEKII-LK-STRUCT-1: Lineare Listen definieren",
+      "description": "Source-Ziel aus Hauptphase Leistungskurs: Dynamische Datenstrukturen: lineare Listen mit head, tail und Laenge definieren",
+      "sourceText": "lineare Listen mit head, tail und Laenge definieren",
+      "sourceSpan": "SL-INF-SEKII-LK-STRUCT.1",
+      "parentBulletText": "lineare Listen mit head, tail und Laenge definieren",
+      "sourceRef": "Lehrplan Informatik Hauptphase Leistungskurs Saarland 2019, Hauptphase Leistungskurs: Dynamische Datenstrukturen, S. 10.",
+      "courseLevel": "LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-SL",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:SL-INF-SEKII-LK-STRUCT",
+        "courseLevel:LK"
+      ],
+      "rawSourceText": "lineare Listen mit head, tail und Laenge definieren",
+      "rawSourceSpan": "SL-INF-SEKII-LK-STRUCT.1",
+      "rawParentBulletText": "lineare Listen mit head, tail und Laenge definieren",
+      "canonicalTargetIds": [
+        "4c12d4f5-ce17-561d-ae96-71bcc10d76c0"
+      ]
+    },
+    {
+      "id": "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-lk-struct-002-listenoperationen-ausfuehren-1fd69439",
+      "passageId": "de-sl-informatik:sl-inf-lk-struct",
+      "topicCode": "SL-INF-SEKII-LK-STRUCT-02",
+      "bulletIndex": 2,
+      "title": "SL-INF-SEKII-LK-STRUCT-2: Listenoperationen ausfuehren",
+      "description": "Source-Ziel aus Hauptphase Leistungskurs: Dynamische Datenstrukturen: Suchen, Loeschen, Ersetzen und Einfuegen auf linearen Listen ausfuehren",
+      "sourceText": "Suchen, Loeschen, Ersetzen und Einfuegen auf linearen Listen ausfuehren",
+      "sourceSpan": "SL-INF-SEKII-LK-STRUCT.2",
+      "parentBulletText": "Suchen, Loeschen, Ersetzen und Einfuegen auf linearen Listen ausfuehren",
+      "sourceRef": "Lehrplan Informatik Hauptphase Leistungskurs Saarland 2019, Hauptphase Leistungskurs: Dynamische Datenstrukturen, S. 10.",
+      "courseLevel": "LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-SL",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:SL-INF-SEKII-LK-STRUCT",
+        "courseLevel:LK"
+      ],
+      "rawSourceText": "Suchen, Loeschen, Ersetzen und Einfuegen auf linearen Listen ausfuehren",
+      "rawSourceSpan": "SL-INF-SEKII-LK-STRUCT.2",
+      "rawParentBulletText": "Suchen, Loeschen, Ersetzen und Einfuegen auf linearen Listen ausfuehren",
+      "canonicalTargetIds": [
+        "4c12d4f5-ce17-561d-ae96-71bcc10d76c0"
+      ]
+    },
+    {
+      "id": "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-lk-struct-003-stack-operationen-verwenden-aa729511",
+      "passageId": "de-sl-informatik:sl-inf-lk-struct",
+      "topicCode": "SL-INF-SEKII-LK-STRUCT-03",
+      "bulletIndex": 3,
+      "title": "SL-INF-SEKII-LK-STRUCT-3: Stack-Operationen verwenden",
+      "description": "Source-Ziel aus Hauptphase Leistungskurs: Dynamische Datenstrukturen: Stack mit isEmpty, top, push und pop verwenden",
+      "sourceText": "Stack mit isEmpty, top, push und pop verwenden",
+      "sourceSpan": "SL-INF-SEKII-LK-STRUCT.3",
+      "parentBulletText": "Stack mit isEmpty, top, push und pop verwenden",
+      "sourceRef": "Lehrplan Informatik Hauptphase Leistungskurs Saarland 2019, Hauptphase Leistungskurs: Dynamische Datenstrukturen, S. 10.",
+      "courseLevel": "LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-SL",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:SL-INF-SEKII-LK-STRUCT",
+        "courseLevel:LK"
+      ],
+      "rawSourceText": "Stack mit isEmpty, top, push und pop verwenden",
+      "rawSourceSpan": "SL-INF-SEKII-LK-STRUCT.3",
+      "rawParentBulletText": "Stack mit isEmpty, top, push und pop verwenden",
+      "canonicalTargetIds": [
+        "8179e63e-764c-4348-a5f1-f738fb2cc04e"
+      ]
+    },
+    {
+      "id": "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-lk-struct-004-queue-operationen-verwenden-35fb91e0",
+      "passageId": "de-sl-informatik:sl-inf-lk-struct",
+      "topicCode": "SL-INF-SEKII-LK-STRUCT-04",
+      "bulletIndex": 4,
+      "title": "SL-INF-SEKII-LK-STRUCT-4: Queue-Operationen verwenden",
+      "description": "Source-Ziel aus Hauptphase Leistungskurs: Dynamische Datenstrukturen: Queue mit isEmpty, front, enqueue und dequeue verwenden",
+      "sourceText": "Queue mit isEmpty, front, enqueue und dequeue verwenden",
+      "sourceSpan": "SL-INF-SEKII-LK-STRUCT.4",
+      "parentBulletText": "Queue mit isEmpty, front, enqueue und dequeue verwenden",
+      "sourceRef": "Lehrplan Informatik Hauptphase Leistungskurs Saarland 2019, Hauptphase Leistungskurs: Dynamische Datenstrukturen, S. 10.",
+      "courseLevel": "LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-SL",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:SL-INF-SEKII-LK-STRUCT",
+        "courseLevel:LK"
+      ],
+      "rawSourceText": "Queue mit isEmpty, front, enqueue und dequeue verwenden",
+      "rawSourceSpan": "SL-INF-SEKII-LK-STRUCT.4",
+      "rawParentBulletText": "Queue mit isEmpty, front, enqueue und dequeue verwenden",
+      "canonicalTargetIds": [
+        "8179e63e-764c-4348-a5f1-f738fb2cc04e"
+      ]
+    },
+    {
+      "id": "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-lk-struct-005-binaere-baeume-definieren-5df11149",
+      "passageId": "de-sl-informatik:sl-inf-lk-struct",
+      "topicCode": "SL-INF-SEKII-LK-STRUCT-05",
+      "bulletIndex": 5,
+      "title": "SL-INF-SEKII-LK-STRUCT-5: Binaere Baeume definieren",
+      "description": "Source-Ziel aus Hauptphase Leistungskurs: Dynamische Datenstrukturen: binaere Baeume mit Wurzel, Teilbaum, Knoten und Tiefe definieren",
+      "sourceText": "binaere Baeume mit Wurzel, Teilbaum, Knoten und Tiefe definieren",
+      "sourceSpan": "SL-INF-SEKII-LK-STRUCT.5",
+      "parentBulletText": "binaere Baeume mit Wurzel, Teilbaum, Knoten und Tiefe definieren",
+      "sourceRef": "Lehrplan Informatik Hauptphase Leistungskurs Saarland 2019, Hauptphase Leistungskurs: Dynamische Datenstrukturen, S. 10.",
+      "courseLevel": "LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-SL",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:SL-INF-SEKII-LK-STRUCT",
+        "courseLevel:LK"
+      ],
+      "rawSourceText": "binaere Baeume mit Wurzel, Teilbaum, Knoten und Tiefe definieren",
+      "rawSourceSpan": "SL-INF-SEKII-LK-STRUCT.5",
+      "rawParentBulletText": "binaere Baeume mit Wurzel, Teilbaum, Knoten und Tiefe definieren",
+      "canonicalTargetIds": [
+        "56a88f2f-cc47-5e1d-b7d9-1822a66e3b91"
+      ]
+    },
+    {
+      "id": "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-lk-struct-006-baumoperationen-ausfuehren-c936740a",
+      "passageId": "de-sl-informatik:sl-inf-lk-struct",
+      "topicCode": "SL-INF-SEKII-LK-STRUCT-06",
+      "bulletIndex": 6,
+      "title": "SL-INF-SEKII-LK-STRUCT-6: Baumoperationen ausfuehren",
+      "description": "Source-Ziel aus Hauptphase Leistungskurs: Dynamische Datenstrukturen: Suchen, Tiefenbestimmung und Knotenzaehlung auf Baeumen ausfuehren",
+      "sourceText": "Suchen, Tiefenbestimmung und Knotenzaehlung auf Baeumen ausfuehren",
+      "sourceSpan": "SL-INF-SEKII-LK-STRUCT.6",
+      "parentBulletText": "Suchen, Tiefenbestimmung und Knotenzaehlung auf Baeumen ausfuehren",
+      "sourceRef": "Lehrplan Informatik Hauptphase Leistungskurs Saarland 2019, Hauptphase Leistungskurs: Dynamische Datenstrukturen, S. 10.",
+      "courseLevel": "LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-SL",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:SL-INF-SEKII-LK-STRUCT",
+        "courseLevel:LK"
+      ],
+      "rawSourceText": "Suchen, Tiefenbestimmung und Knotenzaehlung auf Baeumen ausfuehren",
+      "rawSourceSpan": "SL-INF-SEKII-LK-STRUCT.6",
+      "rawParentBulletText": "Suchen, Tiefenbestimmung und Knotenzaehlung auf Baeumen ausfuehren",
+      "canonicalTargetIds": [
+        "56a88f2f-cc47-5e1d-b7d9-1822a66e3b91"
+      ]
+    },
+    {
+      "id": "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-lk-struct-007-suchbaeume-verwenden-c21f2fc6",
+      "passageId": "de-sl-informatik:sl-inf-lk-struct",
+      "topicCode": "SL-INF-SEKII-LK-STRUCT-07",
+      "bulletIndex": 7,
+      "title": "SL-INF-SEKII-LK-STRUCT-7: Suchbaeume verwenden",
+      "description": "Source-Ziel aus Hauptphase Leistungskurs: Dynamische Datenstrukturen: Suchbaeume mit Suchen, Einfuegen und Loeschen verwenden",
+      "sourceText": "Suchbaeume mit Suchen, Einfuegen und Loeschen verwenden",
+      "sourceSpan": "SL-INF-SEKII-LK-STRUCT.7",
+      "parentBulletText": "Suchbaeume mit Suchen, Einfuegen und Loeschen verwenden",
+      "sourceRef": "Lehrplan Informatik Hauptphase Leistungskurs Saarland 2019, Hauptphase Leistungskurs: Dynamische Datenstrukturen, S. 10.",
+      "courseLevel": "LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-SL",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:SL-INF-SEKII-LK-STRUCT",
+        "courseLevel:LK"
+      ],
+      "rawSourceText": "Suchbaeume mit Suchen, Einfuegen und Loeschen verwenden",
+      "rawSourceSpan": "SL-INF-SEKII-LK-STRUCT.7",
+      "rawParentBulletText": "Suchbaeume mit Suchen, Einfuegen und Loeschen verwenden",
+      "canonicalTargetIds": [
+        "56a88f2f-cc47-5e1d-b7d9-1822a66e3b91"
+      ]
+    },
+    {
+      "id": "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-lk-struct-008-baumtraversierungen-demonstrieren-c266d5b6",
+      "passageId": "de-sl-informatik:sl-inf-lk-struct",
+      "topicCode": "SL-INF-SEKII-LK-STRUCT-08",
+      "bulletIndex": 8,
+      "title": "SL-INF-SEKII-LK-STRUCT-8: Baumtraversierungen demonstrieren",
+      "description": "Source-Ziel aus Hauptphase Leistungskurs: Dynamische Datenstrukturen: preorder-, inorder- und postorder-Durchlaeufe demonstrieren",
+      "sourceText": "preorder-, inorder- und postorder-Durchlaeufe demonstrieren",
+      "sourceSpan": "SL-INF-SEKII-LK-STRUCT.8",
+      "parentBulletText": "preorder-, inorder- und postorder-Durchlaeufe demonstrieren",
+      "sourceRef": "Lehrplan Informatik Hauptphase Leistungskurs Saarland 2019, Hauptphase Leistungskurs: Dynamische Datenstrukturen, S. 10.",
+      "courseLevel": "LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-SL",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:SL-INF-SEKII-LK-STRUCT",
+        "courseLevel:LK"
+      ],
+      "rawSourceText": "preorder-, inorder- und postorder-Durchlaeufe demonstrieren",
+      "rawSourceSpan": "SL-INF-SEKII-LK-STRUCT.8",
+      "rawParentBulletText": "preorder-, inorder- und postorder-Durchlaeufe demonstrieren",
+      "canonicalTargetIds": [
+        "56a88f2f-cc47-5e1d-b7d9-1822a66e3b91"
+      ]
+    },
+    {
+      "id": "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-lk-struct-009-strukturelle-induktion-anwenden-2274c516",
+      "passageId": "de-sl-informatik:sl-inf-lk-struct",
+      "topicCode": "SL-INF-SEKII-LK-STRUCT-09",
+      "bulletIndex": 9,
+      "title": "SL-INF-SEKII-LK-STRUCT-9: Strukturelle Induktion anwenden",
+      "description": "Source-Ziel aus Hauptphase Leistungskurs: Dynamische Datenstrukturen: strukturelle Induktion auf einfache Baum- und Listenbeispiele anwenden",
+      "sourceText": "strukturelle Induktion auf einfache Baum- und Listenbeispiele anwenden",
+      "sourceSpan": "SL-INF-SEKII-LK-STRUCT.9",
+      "parentBulletText": "strukturelle Induktion auf einfache Baum- und Listenbeispiele anwenden",
+      "sourceRef": "Lehrplan Informatik Hauptphase Leistungskurs Saarland 2019, Hauptphase Leistungskurs: Dynamische Datenstrukturen, S. 10.",
+      "courseLevel": "LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-SL",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:SL-INF-SEKII-LK-STRUCT",
+        "courseLevel:LK"
+      ],
+      "rawSourceText": "strukturelle Induktion auf einfache Baum- und Listenbeispiele anwenden",
+      "rawSourceSpan": "SL-INF-SEKII-LK-STRUCT.9",
+      "rawParentBulletText": "strukturelle Induktion auf einfache Baum- und Listenbeispiele anwenden",
+      "canonicalTargetIds": [
+        "56a88f2f-cc47-5e1d-b7d9-1822a66e3b91",
+        "25be929d-624d-5654-bbb8-32fa1fba50c2"
+      ]
+    },
+    {
+      "id": "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-lk-db-001-komplexe-er-modelle-erstellen-863232f4",
+      "passageId": "de-sl-informatik:sl-inf-lk-db",
+      "topicCode": "SL-INF-SEKII-LK-DB-01",
+      "bulletIndex": 1,
+      "title": "SL-INF-SEKII-LK-DB-1: Komplexe ER-Modelle erstellen",
+      "description": "Source-Ziel aus Hauptphase Leistungskurs: Datenbanken vertieft: komplexere ER-Modelle erstellen und begruenden",
+      "sourceText": "komplexere ER-Modelle erstellen und begruenden",
+      "sourceSpan": "SL-INF-SEKII-LK-DB.1",
+      "parentBulletText": "komplexere ER-Modelle erstellen und begruenden",
+      "sourceRef": "Lehrplan Informatik Hauptphase Leistungskurs Saarland 2019, Hauptphase Leistungskurs: Datenbanken vertieft, S. 11.",
+      "courseLevel": "LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-SL",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:SL-INF-SEKII-LK-DB",
+        "courseLevel:LK"
+      ],
+      "rawSourceText": "komplexere ER-Modelle erstellen und begruenden",
+      "rawSourceSpan": "SL-INF-SEKII-LK-DB.1",
+      "rawParentBulletText": "komplexere ER-Modelle erstellen und begruenden",
+      "canonicalTargetIds": [
+        "2cf7589d-5451-5239-badf-1ebb981a2f20"
+      ]
+    },
+    {
+      "id": "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-lk-db-002-normalformen-anwenden-7cc8161d",
+      "passageId": "de-sl-informatik:sl-inf-lk-db",
+      "topicCode": "SL-INF-SEKII-LK-DB-02",
+      "bulletIndex": 2,
+      "title": "SL-INF-SEKII-LK-DB-2: Normalformen anwenden",
+      "description": "Source-Ziel aus Hauptphase Leistungskurs: Datenbanken vertieft: Normalisierung und Normalformen anwenden",
+      "sourceText": "Normalisierung und Normalformen anwenden",
+      "sourceSpan": "SL-INF-SEKII-LK-DB.2",
+      "parentBulletText": "Normalisierung und Normalformen anwenden",
+      "sourceRef": "Lehrplan Informatik Hauptphase Leistungskurs Saarland 2019, Hauptphase Leistungskurs: Datenbanken vertieft, S. 11.",
+      "courseLevel": "LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-SL",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:SL-INF-SEKII-LK-DB",
+        "courseLevel:LK"
+      ],
+      "rawSourceText": "Normalisierung und Normalformen anwenden",
+      "rawSourceSpan": "SL-INF-SEKII-LK-DB.2",
+      "rawParentBulletText": "Normalisierung und Normalformen anwenden",
+      "canonicalTargetIds": [
+        "46b4ebba-dbaf-5f5e-be48-7a1dd72bd471"
+      ]
+    },
+    {
+      "id": "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-lk-db-003-sql-aggregation-nutzen-d0b56a71",
+      "passageId": "de-sl-informatik:sl-inf-lk-db",
+      "topicCode": "SL-INF-SEKII-LK-DB-03",
+      "bulletIndex": 3,
+      "title": "SL-INF-SEKII-LK-DB-3: SQL-Aggregation nutzen",
+      "description": "Source-Ziel aus Hauptphase Leistungskurs: Datenbanken vertieft: SQL-Abfragen mit Gruppierung und Aggregatfunktionen formulieren",
+      "sourceText": "SQL-Abfragen mit Gruppierung und Aggregatfunktionen formulieren",
+      "sourceSpan": "SL-INF-SEKII-LK-DB.3",
+      "parentBulletText": "SQL-Abfragen mit Gruppierung und Aggregatfunktionen formulieren",
+      "sourceRef": "Lehrplan Informatik Hauptphase Leistungskurs Saarland 2019, Hauptphase Leistungskurs: Datenbanken vertieft, S. 11.",
+      "courseLevel": "LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-SL",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:SL-INF-SEKII-LK-DB",
+        "courseLevel:LK"
+      ],
+      "rawSourceText": "SQL-Abfragen mit Gruppierung und Aggregatfunktionen formulieren",
+      "rawSourceSpan": "SL-INF-SEKII-LK-DB.3",
+      "rawParentBulletText": "SQL-Abfragen mit Gruppierung und Aggregatfunktionen formulieren",
+      "canonicalTargetIds": [
+        "13be8508-9eb3-510d-bd5c-4ba4efcc2589"
+      ]
+    },
+    {
+      "id": "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-lk-db-004-erweiterte-sql-klauseln-nutzen-4b8b3666",
+      "passageId": "de-sl-informatik:sl-inf-lk-db",
+      "topicCode": "SL-INF-SEKII-LK-DB-04",
+      "bulletIndex": 4,
+      "title": "SL-INF-SEKII-LK-DB-4: Erweiterte SQL-Klauseln nutzen",
+      "description": "Source-Ziel aus Hauptphase Leistungskurs: Datenbanken vertieft: erweiterte SQL-Klauseln und verschachtelte Anfragen nutzen",
+      "sourceText": "erweiterte SQL-Klauseln und verschachtelte Anfragen nutzen",
+      "sourceSpan": "SL-INF-SEKII-LK-DB.4",
+      "parentBulletText": "erweiterte SQL-Klauseln und verschachtelte Anfragen nutzen",
+      "sourceRef": "Lehrplan Informatik Hauptphase Leistungskurs Saarland 2019, Hauptphase Leistungskurs: Datenbanken vertieft, S. 11.",
+      "courseLevel": "LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-SL",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:SL-INF-SEKII-LK-DB",
+        "courseLevel:LK"
+      ],
+      "rawSourceText": "erweiterte SQL-Klauseln und verschachtelte Anfragen nutzen",
+      "rawSourceSpan": "SL-INF-SEKII-LK-DB.4",
+      "rawParentBulletText": "erweiterte SQL-Klauseln und verschachtelte Anfragen nutzen",
+      "canonicalTargetIds": [
+        "2e2e1230-3009-5652-b3a8-68c834e53bd5"
+      ]
+    },
+    {
+      "id": "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-lk-db-005-datenbanksicherheit-bewerten-7e7ae575",
+      "passageId": "de-sl-informatik:sl-inf-lk-db",
+      "topicCode": "SL-INF-SEKII-LK-DB-05",
+      "bulletIndex": 5,
+      "title": "SL-INF-SEKII-LK-DB-5: Datenbanksicherheit bewerten",
+      "description": "Source-Ziel aus Hauptphase Leistungskurs: Datenbanken vertieft: Datenbanksicherheit und Rechtekonzepte bewerten",
+      "sourceText": "Datenbanksicherheit und Rechtekonzepte bewerten",
+      "sourceSpan": "SL-INF-SEKII-LK-DB.5",
+      "parentBulletText": "Datenbanksicherheit und Rechtekonzepte bewerten",
+      "sourceRef": "Lehrplan Informatik Hauptphase Leistungskurs Saarland 2019, Hauptphase Leistungskurs: Datenbanken vertieft, S. 11.",
+      "courseLevel": "LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-SL",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:SL-INF-SEKII-LK-DB",
+        "courseLevel:LK"
+      ],
+      "rawSourceText": "Datenbanksicherheit und Rechtekonzepte bewerten",
+      "rawSourceSpan": "SL-INF-SEKII-LK-DB.5",
+      "rawParentBulletText": "Datenbanksicherheit und Rechtekonzepte bewerten",
+      "canonicalTargetIds": [
+        "43164b7c-3ef9-5d45-9f7d-07adfd13964a",
+        "16ce7d7a-fc31-58d0-83f8-427318331e73"
+      ]
+    },
+    {
+      "id": "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-lk-db-006-relationenalgebra-einordnen-dc36ca96",
+      "passageId": "de-sl-informatik:sl-inf-lk-db",
+      "topicCode": "SL-INF-SEKII-LK-DB-06",
+      "bulletIndex": 6,
+      "title": "SL-INF-SEKII-LK-DB-6: Relationenalgebra einordnen",
+      "description": "Source-Ziel aus Hauptphase Leistungskurs: Datenbanken vertieft: relationale Operatoren und SQL-Zusammenhaenge einordnen",
+      "sourceText": "relationale Operatoren und SQL-Zusammenhaenge einordnen",
+      "sourceSpan": "SL-INF-SEKII-LK-DB.6",
+      "parentBulletText": "relationale Operatoren und SQL-Zusammenhaenge einordnen",
+      "sourceRef": "Lehrplan Informatik Hauptphase Leistungskurs Saarland 2019, Hauptphase Leistungskurs: Datenbanken vertieft, S. 11.",
+      "courseLevel": "LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-SL",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:SL-INF-SEKII-LK-DB",
+        "courseLevel:LK"
+      ],
+      "rawSourceText": "relationale Operatoren und SQL-Zusammenhaenge einordnen",
+      "rawSourceSpan": "SL-INF-SEKII-LK-DB.6",
+      "rawParentBulletText": "relationale Operatoren und SQL-Zusammenhaenge einordnen",
+      "canonicalTargetIds": [
+        "fdfa87be-06ca-5c54-9950-d8408dba8e38",
+        "b5926cbc-4bd6-589d-987e-ba468ccebc69",
+        "2e2e1230-3009-5652-b3a8-68c834e53bd5"
+      ]
+    },
+    {
+      "id": "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-lk-ti-001-formale-grammatiken-entwickeln-f8a840e3",
+      "passageId": "de-sl-informatik:sl-inf-lk-ti",
+      "topicCode": "SL-INF-SEKII-LK-TI-01",
+      "bulletIndex": 1,
+      "title": "SL-INF-SEKII-LK-TI-1: Formale Grammatiken entwickeln",
+      "description": "Source-Ziel aus Hauptphase Leistungskurs: Automaten, Berechenbarkeit und Logik: formale Grammatiken entwickeln und Ableitungen pruefen",
+      "sourceText": "formale Grammatiken entwickeln und Ableitungen pruefen",
+      "sourceSpan": "SL-INF-SEKII-LK-TI.1",
+      "parentBulletText": "formale Grammatiken entwickeln und Ableitungen pruefen",
+      "sourceRef": "Lehrplan Informatik Hauptphase Leistungskurs Saarland 2019, Hauptphase Leistungskurs: Automaten, Berechenbarkeit und Logik, S. 12.",
+      "courseLevel": "LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-SL",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:SL-INF-SEKII-LK-TI",
+        "courseLevel:LK"
+      ],
+      "rawSourceText": "formale Grammatiken entwickeln und Ableitungen pruefen",
+      "rawSourceSpan": "SL-INF-SEKII-LK-TI.1",
+      "rawParentBulletText": "formale Grammatiken entwickeln und Ableitungen pruefen",
+      "canonicalTargetIds": [
+        "fbd4561a-573e-5f8c-b363-338ee9774b5c",
+        "3e3264d6-8cf8-55f9-b085-1aa4a7865476"
+      ]
+    },
+    {
+      "id": "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-lk-ti-002-regulaere-sprachen-und-automaten-verbinden-3ad91a9b",
+      "passageId": "de-sl-informatik:sl-inf-lk-ti",
+      "topicCode": "SL-INF-SEKII-LK-TI-02",
+      "bulletIndex": 2,
+      "title": "SL-INF-SEKII-LK-TI-2: Regulaere Sprachen und Automaten verbinden",
+      "description": "Source-Ziel aus Hauptphase Leistungskurs: Automaten, Berechenbarkeit und Logik: regulaere Sprachen mit endlichen Automaten verbinden",
+      "sourceText": "regulaere Sprachen mit endlichen Automaten verbinden",
+      "sourceSpan": "SL-INF-SEKII-LK-TI.2",
+      "parentBulletText": "regulaere Sprachen mit endlichen Automaten verbinden",
+      "sourceRef": "Lehrplan Informatik Hauptphase Leistungskurs Saarland 2019, Hauptphase Leistungskurs: Automaten, Berechenbarkeit und Logik, S. 12.",
+      "courseLevel": "LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-SL",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:SL-INF-SEKII-LK-TI",
+        "courseLevel:LK"
+      ],
+      "rawSourceText": "regulaere Sprachen mit endlichen Automaten verbinden",
+      "rawSourceSpan": "SL-INF-SEKII-LK-TI.2",
+      "rawParentBulletText": "regulaere Sprachen mit endlichen Automaten verbinden",
+      "canonicalTargetIds": [
+        "7ad8caf0-3a31-56f1-bee1-574c01b0c156",
+        "cdb24f8f-3596-5e68-a44f-9d651c7eed62"
+      ]
+    },
+    {
+      "id": "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-lk-ti-003-grenzen-regulaerer-sprachen-begruenden-62a907c0",
+      "passageId": "de-sl-informatik:sl-inf-lk-ti",
+      "topicCode": "SL-INF-SEKII-LK-TI-03",
+      "bulletIndex": 3,
+      "title": "SL-INF-SEKII-LK-TI-3: Grenzen regulaerer Sprachen begruenden",
+      "description": "Source-Ziel aus Hauptphase Leistungskurs: Automaten, Berechenbarkeit und Logik: Grenzen regulaerer Sprachen begruenden",
+      "sourceText": "Grenzen regulaerer Sprachen begruenden",
+      "sourceSpan": "SL-INF-SEKII-LK-TI.3",
+      "parentBulletText": "Grenzen regulaerer Sprachen begruenden",
+      "sourceRef": "Lehrplan Informatik Hauptphase Leistungskurs Saarland 2019, Hauptphase Leistungskurs: Automaten, Berechenbarkeit und Logik, S. 12.",
+      "courseLevel": "LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-SL",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:SL-INF-SEKII-LK-TI",
+        "courseLevel:LK"
+      ],
+      "rawSourceText": "Grenzen regulaerer Sprachen begruenden",
+      "rawSourceSpan": "SL-INF-SEKII-LK-TI.3",
+      "rawParentBulletText": "Grenzen regulaerer Sprachen begruenden",
+      "canonicalTargetIds": [
+        "10a3b2a3-8c1c-4dfb-9d48-8f67f2c0004d"
+      ]
+    },
+    {
+      "id": "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-lk-ti-004-turingmaschinen-programmieren-b2d96cb4",
+      "passageId": "de-sl-informatik:sl-inf-lk-ti",
+      "topicCode": "SL-INF-SEKII-LK-TI-04",
+      "bulletIndex": 4,
+      "title": "SL-INF-SEKII-LK-TI-4: Turingmaschinen programmieren",
+      "description": "Source-Ziel aus Hauptphase Leistungskurs: Automaten, Berechenbarkeit und Logik: Turingmaschinen als Berechnungsmodell programmieren",
+      "sourceText": "Turingmaschinen als Berechnungsmodell programmieren",
+      "sourceSpan": "SL-INF-SEKII-LK-TI.4",
+      "parentBulletText": "Turingmaschinen als Berechnungsmodell programmieren",
+      "sourceRef": "Lehrplan Informatik Hauptphase Leistungskurs Saarland 2019, Hauptphase Leistungskurs: Automaten, Berechenbarkeit und Logik, S. 12.",
+      "courseLevel": "LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-SL",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:SL-INF-SEKII-LK-TI",
+        "courseLevel:LK"
+      ],
+      "rawSourceText": "Turingmaschinen als Berechnungsmodell programmieren",
+      "rawSourceSpan": "SL-INF-SEKII-LK-TI.4",
+      "rawParentBulletText": "Turingmaschinen als Berechnungsmodell programmieren",
+      "canonicalTargetIds": [
+        "e7f0dec3-3d78-551b-8770-c182670eee6d"
+      ]
+    },
+    {
+      "id": "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-lk-ti-005-halteproblem-erklaeren-155c044a",
+      "passageId": "de-sl-informatik:sl-inf-lk-ti",
+      "topicCode": "SL-INF-SEKII-LK-TI-05",
+      "bulletIndex": 5,
+      "title": "SL-INF-SEKII-LK-TI-5: Halteproblem erklaeren",
+      "description": "Source-Ziel aus Hauptphase Leistungskurs: Automaten, Berechenbarkeit und Logik: das Halteproblem als Grenze algorithmischer Entscheidbarkeit erklaeren",
+      "sourceText": "das Halteproblem als Grenze algorithmischer Entscheidbarkeit erklaeren",
+      "sourceSpan": "SL-INF-SEKII-LK-TI.5",
+      "parentBulletText": "das Halteproblem als Grenze algorithmischer Entscheidbarkeit erklaeren",
+      "sourceRef": "Lehrplan Informatik Hauptphase Leistungskurs Saarland 2019, Hauptphase Leistungskurs: Automaten, Berechenbarkeit und Logik, S. 12.",
+      "courseLevel": "LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-SL",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:SL-INF-SEKII-LK-TI",
+        "courseLevel:LK"
+      ],
+      "rawSourceText": "das Halteproblem als Grenze algorithmischer Entscheidbarkeit erklaeren",
+      "rawSourceSpan": "SL-INF-SEKII-LK-TI.5",
+      "rawParentBulletText": "das Halteproblem als Grenze algorithmischer Entscheidbarkeit erklaeren",
+      "canonicalTargetIds": [
+        "97f80e26-bc3b-5808-8c62-f114ae9ee143"
+      ]
+    },
+    {
+      "id": "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-lk-ti-006-berechenbarkeit-diskutieren-0ddc74a2",
+      "passageId": "de-sl-informatik:sl-inf-lk-ti",
+      "topicCode": "SL-INF-SEKII-LK-TI-06",
+      "bulletIndex": 6,
+      "title": "SL-INF-SEKII-LK-TI-6: Berechenbarkeit diskutieren",
+      "description": "Source-Ziel aus Hauptphase Leistungskurs: Automaten, Berechenbarkeit und Logik: Berechenbarkeit und Nichtberechenbarkeit diskutieren",
+      "sourceText": "Berechenbarkeit und Nichtberechenbarkeit diskutieren",
+      "sourceSpan": "SL-INF-SEKII-LK-TI.6",
+      "parentBulletText": "Berechenbarkeit und Nichtberechenbarkeit diskutieren",
+      "sourceRef": "Lehrplan Informatik Hauptphase Leistungskurs Saarland 2019, Hauptphase Leistungskurs: Automaten, Berechenbarkeit und Logik, S. 12.",
+      "courseLevel": "LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-SL",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:SL-INF-SEKII-LK-TI",
+        "courseLevel:LK"
+      ],
+      "rawSourceText": "Berechenbarkeit und Nichtberechenbarkeit diskutieren",
+      "rawSourceSpan": "SL-INF-SEKII-LK-TI.6",
+      "rawParentBulletText": "Berechenbarkeit und Nichtberechenbarkeit diskutieren",
+      "canonicalTargetIds": [
+        "e14dc7c6-002b-5da0-af1c-507b6355ccb0",
+        "7f41d0a1-19cb-5e08-be07-185a2c9d6bb5",
+        "bc46922d-d874-528b-a183-5a3eaef12e4d"
+      ]
+    },
+    {
+      "id": "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-lk-ti-007-prolog-regeln-modellieren-ef376215",
+      "passageId": "de-sl-informatik:sl-inf-lk-ti",
+      "topicCode": "SL-INF-SEKII-LK-TI-07",
+      "bulletIndex": 7,
+      "title": "SL-INF-SEKII-LK-TI-7: Prolog-Regeln modellieren",
+      "description": "Source-Ziel aus Hauptphase Leistungskurs: Automaten, Berechenbarkeit und Logik: logische Regeln und Fakten in Prolog modellieren",
+      "sourceText": "logische Regeln und Fakten in Prolog modellieren",
+      "sourceSpan": "SL-INF-SEKII-LK-TI.7",
+      "parentBulletText": "logische Regeln und Fakten in Prolog modellieren",
+      "sourceRef": "Lehrplan Informatik Hauptphase Leistungskurs Saarland 2019, Hauptphase Leistungskurs: Automaten, Berechenbarkeit und Logik, S. 12.",
+      "courseLevel": "LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-SL",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:SL-INF-SEKII-LK-TI",
+        "courseLevel:LK"
+      ],
+      "rawSourceText": "logische Regeln und Fakten in Prolog modellieren",
+      "rawSourceSpan": "SL-INF-SEKII-LK-TI.7",
+      "rawParentBulletText": "logische Regeln und Fakten in Prolog modellieren",
+      "canonicalTargetIds": [
+        "82911b58-bd79-5e96-8fcc-2adb029e2f70",
+        "5f48f0bb-a1a6-588e-a498-fab20245efcd"
+      ]
+    },
+    {
+      "id": "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-lk-sys-001-schaltnetze-entwerfen-4c2e5297",
+      "passageId": "de-sl-informatik:sl-inf-lk-sys",
+      "topicCode": "SL-INF-SEKII-LK-SYS-01",
+      "bulletIndex": 1,
+      "title": "SL-INF-SEKII-LK-SYS-1: Schaltnetze entwerfen",
+      "description": "Source-Ziel aus Hauptphase Leistungskurs: Technische Informatik und Systeme: Schaltnetze aus logischen Funktionen entwerfen",
+      "sourceText": "Schaltnetze aus logischen Funktionen entwerfen",
+      "sourceSpan": "SL-INF-SEKII-LK-SYS.1",
+      "parentBulletText": "Schaltnetze aus logischen Funktionen entwerfen",
+      "sourceRef": "Lehrplan Informatik Hauptphase Leistungskurs Saarland 2019, Hauptphase Leistungskurs: Technische Informatik und Systeme, S. 13.",
+      "courseLevel": "LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-SL",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:SL-INF-SEKII-LK-SYS",
+        "courseLevel:LK"
+      ],
+      "rawSourceText": "Schaltnetze aus logischen Funktionen entwerfen",
+      "rawSourceSpan": "SL-INF-SEKII-LK-SYS.1",
+      "rawParentBulletText": "Schaltnetze aus logischen Funktionen entwerfen",
+      "canonicalTargetIds": [
+        "ca39fae0-1b12-5982-a453-54d12602dde8"
+      ]
+    },
+    {
+      "id": "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-lk-sys-002-assemblerprogramme-nachvollziehen-9f382b6f",
+      "passageId": "de-sl-informatik:sl-inf-lk-sys",
+      "topicCode": "SL-INF-SEKII-LK-SYS-02",
+      "bulletIndex": 2,
+      "title": "SL-INF-SEKII-LK-SYS-2: Assemblerprogramme nachvollziehen",
+      "description": "Source-Ziel aus Hauptphase Leistungskurs: Technische Informatik und Systeme: Assemblerprogramme nachvollziehen",
+      "sourceText": "Assemblerprogramme nachvollziehen",
+      "sourceSpan": "SL-INF-SEKII-LK-SYS.2",
+      "parentBulletText": "Assemblerprogramme nachvollziehen",
+      "sourceRef": "Lehrplan Informatik Hauptphase Leistungskurs Saarland 2019, Hauptphase Leistungskurs: Technische Informatik und Systeme, S. 13.",
+      "courseLevel": "LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-SL",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:SL-INF-SEKII-LK-SYS",
+        "courseLevel:LK"
+      ],
+      "rawSourceText": "Assemblerprogramme nachvollziehen",
+      "rawSourceSpan": "SL-INF-SEKII-LK-SYS.2",
+      "rawParentBulletText": "Assemblerprogramme nachvollziehen",
+      "canonicalTargetIds": [
+        "081a6bf9-5bb1-5b90-b264-9d8d55637674",
+        "88a8e785-dba3-5d69-9692-4cd32bdc3197"
+      ]
+    },
+    {
+      "id": "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-lk-sys-003-befehlssatz-und-rechnerorganisation-erklaeren-d8f56bf0",
+      "passageId": "de-sl-informatik:sl-inf-lk-sys",
+      "topicCode": "SL-INF-SEKII-LK-SYS-03",
+      "bulletIndex": 3,
+      "title": "SL-INF-SEKII-LK-SYS-3: Befehlssatz und Rechnerorganisation erklaeren",
+      "description": "Source-Ziel aus Hauptphase Leistungskurs: Technische Informatik und Systeme: Befehlssatz und grundlegende Rechnerorganisation erklaeren",
+      "sourceText": "Befehlssatz und grundlegende Rechnerorganisation erklaeren",
+      "sourceSpan": "SL-INF-SEKII-LK-SYS.3",
+      "parentBulletText": "Befehlssatz und grundlegende Rechnerorganisation erklaeren",
+      "sourceRef": "Lehrplan Informatik Hauptphase Leistungskurs Saarland 2019, Hauptphase Leistungskurs: Technische Informatik und Systeme, S. 13.",
+      "courseLevel": "LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-SL",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:SL-INF-SEKII-LK-SYS",
+        "courseLevel:LK"
+      ],
+      "rawSourceText": "Befehlssatz und grundlegende Rechnerorganisation erklaeren",
+      "rawSourceSpan": "SL-INF-SEKII-LK-SYS.3",
+      "rawParentBulletText": "Befehlssatz und grundlegende Rechnerorganisation erklaeren",
+      "canonicalTargetIds": [
+        "67db0729-63ff-569c-84a6-cc0a559c5ada",
+        "e382fc41-6f59-5bc5-9514-f2201a3a4c5a"
+      ]
+    },
+    {
+      "id": "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-lk-sys-004-netzwerksicherheit-vertiefen-ea217d1b",
+      "passageId": "de-sl-informatik:sl-inf-lk-sys",
+      "topicCode": "SL-INF-SEKII-LK-SYS-04",
+      "bulletIndex": 4,
+      "title": "SL-INF-SEKII-LK-SYS-4: Netzwerksicherheit vertiefen",
+      "description": "Source-Ziel aus Hauptphase Leistungskurs: Technische Informatik und Systeme: Netzwerk- und Systemsicherheit vertiefend analysieren",
+      "sourceText": "Netzwerk- und Systemsicherheit vertiefend analysieren",
+      "sourceSpan": "SL-INF-SEKII-LK-SYS.4",
+      "parentBulletText": "Netzwerk- und Systemsicherheit vertiefend analysieren",
+      "sourceRef": "Lehrplan Informatik Hauptphase Leistungskurs Saarland 2019, Hauptphase Leistungskurs: Technische Informatik und Systeme, S. 13.",
+      "courseLevel": "LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-SL",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:SL-INF-SEKII-LK-SYS",
+        "courseLevel:LK"
+      ],
+      "rawSourceText": "Netzwerk- und Systemsicherheit vertiefend analysieren",
+      "rawSourceSpan": "SL-INF-SEKII-LK-SYS.4",
+      "rawParentBulletText": "Netzwerk- und Systemsicherheit vertiefend analysieren",
+      "canonicalTargetIds": [
+        "6c4fd4a4-b245-512f-99ec-4ec6d1e37126",
+        "58173dab-0cb2-52ae-a052-63d3a0f33644"
+      ]
+    },
+    {
+      "id": "de-sl-informatik-sekii-gos-2006-2019-sl-inf-sekii-lk-sys-005-informatik-gesellschaftlich-bewerten-4313469e",
+      "passageId": "de-sl-informatik:sl-inf-lk-sys",
+      "topicCode": "SL-INF-SEKII-LK-SYS-05",
+      "bulletIndex": 5,
+      "title": "SL-INF-SEKII-LK-SYS-5: Informatik gesellschaftlich bewerten",
+      "description": "Source-Ziel aus Hauptphase Leistungskurs: Technische Informatik und Systeme: gesellschaftliche Wirkungen informatischer Systeme bewerten",
+      "sourceText": "gesellschaftliche Wirkungen informatischer Systeme bewerten",
+      "sourceSpan": "SL-INF-SEKII-LK-SYS.5",
+      "parentBulletText": "gesellschaftliche Wirkungen informatischer Systeme bewerten",
+      "sourceRef": "Lehrplan Informatik Hauptphase Leistungskurs Saarland 2019, Hauptphase Leistungskurs: Technische Informatik und Systeme, S. 13.",
+      "courseLevel": "LK",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-SL",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:SL-INF-SEKII-LK-SYS",
+        "courseLevel:LK"
+      ],
+      "rawSourceText": "gesellschaftliche Wirkungen informatischer Systeme bewerten",
+      "rawSourceSpan": "SL-INF-SEKII-LK-SYS.5",
+      "rawParentBulletText": "gesellschaftliche Wirkungen informatischer Systeme bewerten",
+      "canonicalTargetIds": [
+        "de3af5ce-344c-5e04-a081-4c2904eb9fad",
+        "d848ceb9-cd73-5a13-9407-f3364764c223"
+      ]
+    }
+  ]
+}
