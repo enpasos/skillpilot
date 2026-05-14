@@ -495,6 +495,7 @@ function toParsedGoal(
   stage: 'SekI' | 'SekII',
   courseLevel: CourseLevel,
 ): ParsedGoal {
+  const clean = cleanSourceText(sourceText);
   const passageId = `${spec.jurisdiction.toLowerCase()}-latin-${slug(phase)}-${slug(area)}`;
   const topicCode = passageId.replace(`${spec.jurisdiction.toLowerCase()}-latin-`, '');
   return {
@@ -503,9 +504,9 @@ function toParsedGoal(
     topicCode,
     phase,
     area,
-    title: shortTitle(sourceText),
-    description: asCanStatement(sourceText),
-    sourceText,
+    title: shortTitle(clean),
+    description: asCanStatement(clean),
+    sourceText: clean,
     sourceLocator: `${phase}, ${area}`,
     stage,
     courseLevel,
@@ -973,7 +974,7 @@ function isUsableGoalText(text: string): boolean {
 
 function isNoiseLine(line: string): boolean {
   return /^\d+$/u.test(line)
-    || /^/u.test(line)
+    || /^\f/u.test(line)
     || /^Syntax (Warning|Error):/u.test(line)
     || /^\d+\s+\d{4}\s+GY\s+LA/u.test(line)
     || /^GY\s+LA\s+\d{4}/u.test(line)
@@ -988,11 +989,23 @@ function isNoiseLine(line: string): boolean {
 }
 
 function cleanSourceText(text: string): string {
-  return normalizeWhitespace(text)
+  const cleaned = normalizeWhitespace(text)
     .replace(/­/gu, '')
+    .replace(/\s+(?:GY\s+LA\s+\d{4}\s+\d+|\d+\s+\d{4}\s+GY\s+LA)\b.*$/u, '')
+    .replace(/GY\s+LA\s+\d{4}\s+\d+/gu, ' ')
+    .replace(/\d+\s+\d{4}\s+GY\s+LA/gu, ' ')
+    .replace(/\bLatein\s+(?:vorgezogene\s+zweite|zweite|dritte)\s+Fremdsprache(?:\/[A-Za-zÄÖÜäöüß0-9 .;–-]+)?/gu, ' ')
+    .replace(/\bLatein\s+Jahrgangsstufen\s+11\/12(?:\s+(?:Grundkurs|Leistungskurs))?/gu, ' ')
     .replace(/-\s+/gu, '')
     .replace(/\s+([,.;:])/gu, '$1')
     .replace(/[.;,]\s*$/u, '');
+  return stripInlinePdfPageArtifacts(cleaned);
+}
+
+function stripInlinePdfPageArtifacts(text: string): string {
+  const markerIndex = text.indexOf('GY LA');
+  const withoutMarker = markerIndex >= 0 ? text.slice(0, markerIndex) : text;
+  return normalizeWhitespace(withoutMarker.replace(/\s+\d+\s+\d{4}\s*$/u, ''));
 }
 
 function asCanStatement(text: string): string {
